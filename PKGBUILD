@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6.9'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -228,16 +228,17 @@ disable_mod_xml() {
 }
 
 package() {
-  mkdir -p /var/tmp/bin
-  ln -sf /usr/bin/python2 /var/tmp/bin/python
-  PATH="/var/tmp/bin:${PATH}"
+  # per upstream, shouldn't be necessary with newer versions. 06.22.2016
+  #mkdir -p /var/tmp/bin
+  #ln -sf /usr/bin/python2 /var/tmp/bin/python
+  #PATH="/var/tmp/bin:${PATH}"
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   make DESTDIR="${pkgdir}/" ${_sounds}moh-install
   make DESTDIR="${pkgdir}/" ${_sounds}sounds-install
-  PATH=${_pathorig}
-  rm -rf /var/tmp/bin/python
-  rmdir /var/tmp/bin
+  #PATH=${_pathorig}
+  #rm -rf /var/tmp/bin/python
+  #rmdir /var/tmp/bin
 
   cd ${pkgdir} # MUY IMPORTANT, $PWD is $pkgdir from here on out
   # Mangle freeswitch's installed dirs into a more compliant structure,
