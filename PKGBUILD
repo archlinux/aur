@@ -4,7 +4,7 @@
 pkgname=etherpad-lite
 pkgver=1.6.0
 pkgrel=0
-#epoch=1
+epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
 url="http://etherpad.org"
