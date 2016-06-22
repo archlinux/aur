@@ -31,5 +31,4 @@ package() {
   cd "$srcdir/$_pkgsrcname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/var/lib/monkeysphere"
 }
