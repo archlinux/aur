@@ -39,7 +39,9 @@ build() {
   unset EDITOR VISUAL
 
   AUTOMAKE='automake --add-missing' autoreconf
-  ./configure LIBS="-lbsd" --prefix=/usr
+  ./configure LIBS="-lbsd" --prefix=/usr \
+	--with-editor=/usr/bin/vi \
+	--with-external-zlib
   make
 }
 
