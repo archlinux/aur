@@ -14,7 +14,7 @@ set -u
 _ubver='16.3'; _ubrel='186'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A system restore utility for Linux'
 arch=('i686' 'x86_64')
 #url='https://launchpad.net/~teejee2008/+archive/ubuntu/ppa'
@@ -33,7 +33,7 @@ _srcdir='~teejee2008/timeshift/trunk'
 source=("timeshift_v${_ubver}_r${_ubrel}.tgz::${url//code/bazaar}/trunk/tarball/${_ubrel}" 'sha256sums.txt')
 sha256sums=('SKIP' 'SKIP') # bazaar generates the tarball live. It is different every time so we'll check the contents in prepare()
 
-prepare() {
+prepare_disable() {
   set -u
   cd "${_srcdir}"
   shopt -s globstar
