@@ -2,15 +2,20 @@
 Description=Main Sympa daemon
 After=syslog.target
 Wants=sympa-bulk.service
+Before=sympa-bulk.service
 Wants=sympa-archived.service
+Before=sympa-archived.service
 Wants=sympa-bounced.service
+Before=sympa-bounced.service
 Wants=sympa-task_manager.service
+Before=sympa-task_manager.service
  
 [Service]
 User=sympa
 Group=sympa
 Type=forking
 PIDFile=/run/sympa/sympa_msg.pid
+ExecStartPre=/usr/bin/sympa.pl --health_check
 ExecStart=/usr/bin/sympa_msg.pl
 Restart=on-failure
 

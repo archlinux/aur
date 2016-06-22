@@ -1,8 +1,8 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=sympa
-pkgver=6.2.15
-pkgrel=2
+pkgver=6.2.16
+pkgrel=1
 pkgdesc='Electronic mailing list manager'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -40,24 +40,21 @@ source=("http://www.sympa.org/distribution/${pkgname}-${pkgver}.tar.gz"
         'sympa-task_manager.service'
         'sympa.tmpfiles'
         'apache.conf'
-        'sympa.sysusers'
-	'fix-empty-config.patch')
-md5sums=('533c489d14f89685e05edad1dae125d1'
-         '154530a8fa0a209b3513312a35dfecd1'
+        'sympa.sysusers')
+md5sums=('cc9dea56afc159ef3bacf6c9b09ae338'
+         'a34e73c086e4d63da3166c7010ea9d8b'
          '356475e4f0cdc6b1a1db8e0e9a327038'
          '84bf724827201d02572938d1c2ad26eb'
          'c5722500c63b860e9a7d21f59860cd24'
          '491145d1b9a412ba443cf11d09cb8345'
          '4228fd9c142b0e97550f1640200acf30'
          '68a23e4fc0a842b2d97d430e05400bb1'
-         '2fa16a3085a0587d4eaf1b524d913a7f'
-         'fba35b1f9d9614c32a3a3d65624f7c11')
+         '2fa16a3085a0587d4eaf1b524d913a7f')
 
 _sympauid=219
 
 prepare() {
 	cd $pkgname-$pkgver
-	patch -p2 -i "${srcdir}/fix-empty-config.patch"
 
 	# Fix CA certificate bundle path
 	sed "s|Sympa::Constants::DEFAULTDIR . '/ca-bundle.crt'|'/etc/ssl/certs/ca-certificates.crt'|" -i src/lib/Conf.pm
