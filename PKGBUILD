@@ -12,7 +12,7 @@ md5sums=('45145e4790ce64332b2d8e842ce5f957')
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
   patch -p1 < ../../stdio.patch
-  ./configure
+  ./configure DEFAULT_DICT_SERVER=dict.org 
   make
 }
 
