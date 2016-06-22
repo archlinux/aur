@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/bubbas/ofxstatement-bubbas"
 license=('GPL')
 depends=('ofxstatement')
+makedepends=('git')
 source=('git+https://github.com/bubbas/ofxstatement-bubbas.git')
 md5sums=('SKIP')
 

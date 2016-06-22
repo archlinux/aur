@@ -5,6 +5,7 @@ pkgbase = ofxstatement-bubbas-git
 	url = https://github.com/bubbas/ofxstatement-bubbas
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = ofxstatement
 	source = git+https://github.com/bubbas/ofxstatement-bubbas.git
 	md5sums = SKIP
