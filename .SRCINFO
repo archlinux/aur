@@ -1,7 +1,7 @@
 pkgbase = cameramonitor
 	pkgdesc = A little monitor to check if your Webcam is On.
 	pkgver = 0.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.infinicode.org/code/cameramonitor/
 	install = cameramonitor.install
 	arch = i686
