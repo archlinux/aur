@@ -126,66 +126,6 @@ index 3cfb614..8b7063f 100644
 2.5.0
 
 
-From a6f45e15cf19e29afc5f42d1e87feb2b4f7e9532 Mon Sep 17 00:00:00 2001
-From: Boris Nagaev <bnagaev@gmail.com>
-Date: Sun, 18 Oct 2015 23:11:28 +0300
-Subject: [PATCH 6/8] configure: fix log corruption with option -v
-
-This bug occurs if ./configure is called with -v on systems on
-which fd proc entries point to the files/devices they are open
-on instead of being magic nodes which would basically dup() the
-actual fds (e.g., Linux).
-
-In this case, the command "tee $tty" appends to /dev/stderr, which
-may be already opened by the parent process. This breaks the log file.
-
-Normally, the log file starts with
-
- This is the Qt Open Source Edition.
- ...
-
-but with `-v` flag it would start with output of awkprog and maybe
-some zero bytes. Zero bytes are observed on Debian Wheezy.
-
- DEFAULT_INCDIRS=...
- ...
- ^@^@^@^@^@^@^@^@^@^@^@^@...
- Done running configuration tests.
- ...
-
-To fix this problem, the output of `...` is saved to a variable, and
-then eval'd and echo'd (if -v).
-
-This solution was found by Tony Theodore.
-https://github.com/mxe/mxe/issues/938#issuecomment-149770348
-
-Change-Id: Id0c28598890e813774cc92f38ee46a0697b34e77
-Reviewed-by: Oswald Buddenhagen <oswald.buddenhagen@theqtcompany.com>
-Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
-(cherry picked from commit 45fe3f1cde1e516d1ddccddb5e33ea4316497c36)
-
-diff --git a/configure b/configure
-index 4a4b478..a5c0fd5 100755
---- a/configure
-+++ b/configure
-@@ -3639,10 +3639,9 @@ END {
-         print "DEFAULT_LIBDIRS=\"/lib\n/usr/lib\"\n";
- }'
- 
--unset tty
--[ "$OPT_VERBOSE" = "yes" ] && tty=/dev/stderr
--eval "`LC_ALL=C $TEST_COMPILER $SYSROOT_FLAG $TEST_COMPILER_CXXFLAGS -xc++ -E -v - < /dev/null 2>&1 > /dev/null | $AWK "$awkprog" | tee $tty`"
--unset tty
-+awkprog_result=`LC_ALL=C $TEST_COMPILER $SYSROOT_FLAG $TEST_COMPILER_CXXFLAGS -xc++ -E -v - < /dev/null 2>&1 > /dev/null | $AWK "$awkprog"`
-+eval "$awkprog_result"
-+[ "$OPT_VERBOSE" = "yes" ] && echo "$awkprog_result"
- 
- echo "Done running configuration tests."
- 
--- 
-2.5.0
-
-
 From 6064564099df17f7cddded8ec0c68d9e57d29ae9 Mon Sep 17 00:00:00 2001
 From: Ray Donnelly <mingw.android@gmail.com>
 Date: Wed, 26 Aug 2015 12:45:43 +0100
