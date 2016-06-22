@@ -2,7 +2,7 @@
 # Maintainer: Haron Prime (Haron_Prime) <haron.prime@gmx.com>
 pkgname=gis-weather-git
 pkgver=0.8.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Customizable weather widget"
 arch=('i686' 'x86_64')
 url="https://github.com/RingOV/gis-weather"
