@@ -1,20 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.1.12.r39.g80731d7
+pkgver=0.2.0.r8.g48b7e53
 pkgrel=1
-
-rustv="1.9.0"
-chn=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f1)
-date=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f2- | tr ' ' '-')
-sep="/"
-if [ "$date" == "$rustv" ]; then
-	date=""
-	sep=""
-fi
-if test -n "$date"; then
-	date="-$date"
-fi
-target="rust-$chn-$CARCH-unknown-linux-gnu"
 
 pkgdesc="The Rust toolchain installer"
 arch=('i686' 'x86_64')
@@ -25,10 +12,11 @@ provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustup')
 conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multirust-git' 'rustup')
 replaces=('multirust' 'multirust-git')
 install='post.install'
+
+rust="rust-1.9.0-$CARCH-unknown-linux-gnu"
 source=(
 	"${pkgname}::git+https://github.com/rust-lang-nursery/rustup.rs.git"
-	"$target$date.tar.gz::https://static.rust-lang.org/dist/${date#-}${sep}${target}.tar.gz"
-	"$target$date.tar.gz.asc::https://static.rust-lang.org/dist/${date#-}${sep}${target}.tar.gz.asc"
+	"https://static.rust-lang.org/dist/${rust}.tar.gz"{,.asc}
 )
 # The Rust GPG Key: https://keybase.io/rust
 validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
@@ -42,9 +30,9 @@ pkgver() {
 }
 
 build() {
-	# set up nightly cargo
-	cd "$srcdir/$target"
-	msg2 "Setting up cargo $chn ${date#-}"
+	# set up cargo
+	cd "$srcdir/$rust"
+	msg2 "Setting up cargo"
 	./install.sh --prefix="$srcdir/cargo"
 	export PATH="$srcdir/cargo/bin:$PATH"
 
