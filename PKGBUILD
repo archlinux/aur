@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=codesearch-git
 pkgver=r26.a45d81b
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A tool for indexing and then performing regular expression searches over large bodies of source code."
 arch=('i686' 'x86_64')
@@ -14,24 +14,27 @@ optdepends=()
 checkdepends=()
 provides=('codesearch')
 conflicts=('codesearch')
+_goroot=github.com/google/codesearch
 _gourl=github.com/google/codesearch/cmd/...
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  GOPATH="$srcdir" go get ${_gourl}
+  cd "$srcdir/src/${_goroot}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/"
-  GOPATH="$srcdir" go get -v -x ${_gourl}/...
+  GOPATH="$srcdir" go get -fix -v -x ${_gourl}
 }
 
 package() {
   cd "$srcdir"
   mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "bin/"* "$pkgdir/usr/bin"
-  cd "$srcdir/src/github.com/google/codesearch"
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m755 "bin/cgrep" "$pkgdir/usr/bin/${pkgname%-*}-cgrep"
+  install -m755 "bin/cindex" "$pkgdir/usr/bin/${pkgname%-*}-cindex"
+  install -m755 "bin/csearch" "$pkgdir/usr/bin/${pkgname%-*}-csearch"
+  cd "$srcdir/src/$_goroot"
+  install -Dm644 README "$pkgdir/usr/share/doc/${pkgname%-*}/README"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
 
