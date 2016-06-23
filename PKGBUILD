@@ -7,7 +7,7 @@
 
 pkgname=kimchi
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An HTML5 management interface for KVM"
 
@@ -16,6 +16,8 @@ arch=(any)
 url="http://kimchi-project.github.io/kimchi/"
 
 license=('LGPL2.1' 'APACHE')
+
+groups=('kimchi-project')
 
 depends=('bridge-utils'
          'dnsmasq'
@@ -40,10 +42,8 @@ depends=('bridge-utils'
          'ttf-font-awesome'
          'ttf-opensans'
          'websockify'
-         'wok'
+         'wokd'
 )
-
-provides=('kimchi')
 
 conflicts=('kimchi-git')
 
