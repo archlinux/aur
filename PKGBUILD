@@ -21,9 +21,9 @@ conflicts=(thunar{,-extended})
 options=(!libtool)
 install=$pkgname.install
 source=("$pkgname::git://git.xfce.org/xfce/thunar"
-        '0001-Deactivate-SEND_MOVED-code-paths.patch::http://bug-attachment.xfce.org/attachment.cgi?id=6613')
+        '0001-Deactivate-SEND_MOVED-code-paths.patch::http://bug-attachment.xfce.org/attachment.cgi?id=6530')
 sha256sums=('SKIP'
-            '2b7db92f86682b8178d3a51e268ace83ea7e3b39c082c9183618518f9daf2e58')
+            '2461773024336a94fd70d7f2276aec0f9fc819cb8af96c8689e42c429014ea7d')
 
 prepare() {
     cd "$pkgname"
