@@ -4,8 +4,8 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.30
-_mplabcomm_version=3.17.02
+pkgver=3.35
+_mplabcomm_version=3.20.00
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
@@ -36,7 +36,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('ff1a8f3d41acd8554b50612facfaf93d'
+md5sums=('f9e6ca7a1f1013cc545dc406db557cb1'
          'a34a85b2600a26f1c558bcd14c2444bd')
 md5sums_x86_64=('92b9a1dc8fa0534048790731a7bf2fc5')
 
@@ -102,8 +102,10 @@ EOF
   rm -rf "${pkgdir}/usr/local/"
 
   # Symlink executables
-  ln -sf "${_mplabx_dir}"/mplab_ide/bin/mplab_ide "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabx_dir}"/mplab_ipe/mplab_ipe "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}/mplab_ide/bin/mplab_ide" "${pkgdir}/usr/bin/"
+  ln -sf "${_mplabx_dir}/mplab_ide/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
+  ln -sf "${_mplabx_dir}/mplab_ide/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
+  ln -sf "${_mplabx_dir}/mplab_ipe/mplab_ipe" "${pkgdir}/usr/bin/"
   ln -sf "${_mplabcomm_dir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
