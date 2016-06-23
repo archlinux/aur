@@ -4,6 +4,11 @@ post_install() {
 
   # Create Home folder
   mkdir -p /home/retroarch
+
+  # Create Cache directory
+  mkdir -p /home/retroarch/.cache
+
+  # Fix permissions
   chown -R retroarch:retroarch /home/retroarch
 
   # Swap configuration if it doesn't exist
