@@ -32,6 +32,8 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 	make ROOT="$pkgdir" SYSTEMD=1 install
+	mkdir -p "$pkgdir/usr/share/man"
+	mv "$pkgdir"/usr/share/man{5,8} "$pkgdir/usr/share/man"
 	install -D -m644 "doc/$_pkgname.pdf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.pdf"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
