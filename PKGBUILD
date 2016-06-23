@@ -6,7 +6,7 @@
 pkgname=('ginger-base-git')
 
 # Version
-pkgver=2.1.0.r45.g5c1cb71
+pkgver=2.1.0.r46.g760a5d1
 pkgrel=1
 #epoch=
 
@@ -20,7 +20,7 @@ groups=('kimchi-project')
 # Dependencies
 depends=('python2-configobj'
          'python2-pyparted'
-         'wok')
+         'wokd')
 #optdepends=()
 makedepends=('git')
 #checkdepends=()
