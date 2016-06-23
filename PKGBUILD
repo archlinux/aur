@@ -1,9 +1,8 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic
-pkgver=v0.12.0cl1
-_vertemp=${pkgver%c*}
-_ver=${_vertemp#v}
+pkgver=v1.1.0
+_ver=${pkgver#v}
 _gitver=${_ver%.*}
 pkgrel=1
 pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
@@ -30,7 +29,7 @@ source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/downlo
                "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
 							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
 							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
-md5sums_i686=('4560541b12af93ad81b49032dc731bf9'
+md5sums_i686=('b23fe9936df44bd3e976702cc6ecd4f3'
               '0aa8db6ac0e58ccbe85d0fe4923fb39e'
               '0aae5f0110179e8e1d588530bcce5d2a'
               'a7f496d6996a60a20c2ef025da65773a'
@@ -38,7 +37,7 @@ md5sums_i686=('4560541b12af93ad81b49032dc731bf9'
               'ca3af56933093fd074423eea32c1d650'
               '844dd4c73f9837a6d4fc7db44d67104e'
               'b44a28f73a201403cabb5e0a49e6d1e6')
-md5sums_x86_64=('0bc38d581956e8f9217f2feacc374142'
+md5sums_x86_64=('9a3b253cf5292ef50ff0b54d1daffa66'
                 '0aa8db6ac0e58ccbe85d0fe4923fb39e'
                 '0aae5f0110179e8e1d588530bcce5d2a'
                 'a7f496d6996a60a20c2ef025da65773a'
@@ -46,7 +45,7 @@ md5sums_x86_64=('0bc38d581956e8f9217f2feacc374142'
                 'ca3af56933093fd074423eea32c1d650'
                 '844dd4c73f9837a6d4fc7db44d67104e'
                 'b44a28f73a201403cabb5e0a49e6d1e6')
-sha256sums_i686=('d4e90c85d683b8145603ba87dad6471eaa2d07ea064a75a824a7f397d7b00f73'
+sha256sums_i686=('6648db9f7a2b851a7d2422cbfa5631c7ba23af7da825de00c9c78be370b50bf1'
                  'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                  'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                  '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
@@ -54,7 +53,7 @@ sha256sums_i686=('d4e90c85d683b8145603ba87dad6471eaa2d07ea064a75a824a7f397d7b00f
                  '60a3396e98c24f0599c997edd2c34c414414fffbde84bbe0e4573435dc5bb417'
                  '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
                  '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
-sha256sums_x86_64=('e69614c073ee981168127614811a685f32108471a80d22a145b9e9a0def7d278'
+sha256sums_x86_64=('67a7fba1beccc490be9d92913de632eed96259fba92b6a318321b0b2f247316b'
                    'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
                    'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                    '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
