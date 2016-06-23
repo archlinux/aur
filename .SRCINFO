@@ -18,7 +18,7 @@ pkgbase = htop-vim-git
 	source = git+https://github.com/hishamhm/htop.git
 	source = vim-keybindings.patch
 	sha256sums = SKIP
-	sha256sums = 0c878e943478f5cad1b769cbe8bdedeee4bc07bf179ca684dac2bd52bdb83b76
+	sha256sums = 76073636b87f43cece2072a7c9944768535c147f1b36843345ebba91073adfec
 
 pkgname = htop-vim-git
 

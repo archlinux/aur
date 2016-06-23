@@ -1,5 +1,5 @@
 diff --git a/Action.c b/Action.c
-index 3fc2217..09670fe 100644
+index ee34a4b..b0c8013 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -382,7 +382,7 @@ static Htop_Reaction actionRedraw() {
@@ -65,41 +65,11 @@ index 3fc2217..09670fe 100644
     keys['?'] = actionHelp;
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
-diff --git a/MainPanel.c b/MainPanel.c
-index f9b45d6..630648b 100644
---- a/MainPanel.c
-+++ b/MainPanel.c
-@@ -104,14 +104,14 @@ static HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
-       }
-       switch (ch) {
-       case KEY_LEFT:
--      case KEY_CTRLB:
-+      case 'h':
-          if (super->scrollH > 0) {
-             super->scrollH -= CRT_scrollHAmount;
-             super->needsRedraw = true;
-          }
-          return HANDLED;
-       case KEY_RIGHT:
--      case KEY_CTRLF:
-+      case 'l':
-          super->scrollH += CRT_scrollHAmount;
-          super->needsRedraw = true;
-          return HANDLED;
 diff --git a/Panel.c b/Panel.c
-index 1c45714..395665c 100644
+index 579a82c..12c9703 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -86,6 +86,8 @@ struct Panel_ {
- #define KEY_CTRLP      0020            /* control-p key */
- #define KEY_CTRLF      0006            /* control-f key */
- #define KEY_CTRLB      0002            /* control-b key */
-+#define KEY_CTRLU      0025            /* control-u key */
-+#define KEY_CTRLD      0004            /* control-d key */
- 
- PanelClass Panel_class = {
-    .super = {
-@@ -372,14 +374,16 @@ void Panel_draw(Panel* this, bool focus) {
+@@ -372,14 +372,16 @@ void Panel_draw(Panel* this, bool focus) {
  
  bool Panel_onKey(Panel* this, int key) {
     assert (this != NULL);
@@ -109,51 +79,51 @@ index 1c45714..395665c 100644
     switch (key) {
     case KEY_DOWN:
 +   case 'j':
-    case KEY_CTRLN:
+    case KEY_CTRL('N'):
        this->selected++;
        break;
     case KEY_UP:
 +   case 'k':
-    case KEY_CTRLP:
+    case KEY_CTRL('P'):
        this->selected--;
        break;
-@@ -394,23 +398,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -394,23 +396,33 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     #endif
     case KEY_LEFT:
--   case KEY_CTRLB:
+-   case KEY_CTRL('B'):
 +   case 'h':
        if (this->scrollH > 0) {
-          this->scrollH -= CRT_scrollHAmount;
+          this->scrollH -= MAX(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
        }
        break;
     case KEY_RIGHT:
--   case KEY_CTRLF:
+-   case KEY_CTRL('F'):
 +   case 'l':
        this->scrollH += CRT_scrollHAmount;
        this->needsRedraw = true;
        break;
-+   case KEY_CTRLU:
++   case KEY_CTRL('U'):
 +      this->selected -= (this->h - 1) / 2;
 +      this->needsRedraw = true;
 +      break;
-+   case KEY_CTRLD:
++   case KEY_CTRL('D'):
 +      this->selected += (this->h - 1) / 2;
 +      this->needsRedraw = true;
 +      break;
     case KEY_PPAGE:
-+   case KEY_CTRLB:
++   case KEY_CTRL('B'):
        this->selected -= (this->h - 1);
        this->scrollV -= (this->h - 1);
        this->needsRedraw = true;
        break;
     case KEY_NPAGE:
-+   case KEY_CTRLF:
++   case KEY_CTRL('F'):
        this->selected += (this->h - 1);
-       this->scrollV += (this->h - 1);
+       this->scrollV = MIN(MAX(0, Vector_size(this->items) - this->h), this->selected - this->h);
        this->needsRedraw = true;
-@@ -431,9 +445,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -431,9 +443,11 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     }
     case KEY_HOME:
@@ -164,20 +134,7 @@ index 1c45714..395665c 100644
 +   case 'G':
        this->selected = size - 1;
        break;
-    default:
-diff --git a/Panel.h b/Panel.h
-index 6789770..22a0f3f 100644
---- a/Panel.h
-+++ b/Panel.h
-@@ -74,6 +74,8 @@ struct Panel_ {
- #define KEY_CTRLP      0020            /* control-p key */
- #define KEY_CTRLF      0006            /* control-f key */
- #define KEY_CTRLB      0002            /* control-b key */
-+#define KEY_CTRLU      0025            /* control-u key */
-+#define KEY_CTRLD      0004            /* control-d key */
- 
- extern PanelClass Panel_class;
- 
+    case KEY_CTRL('A'):
 diff --git a/README b/README
 index 1af7377..92a76be 100644
 --- a/README
@@ -228,24 +185,24 @@ index 1af7377..92a76be 100644
  -------------------------------------------
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index db3fdee..7c935bc 100644
+index 05e1c02..df2ac4a 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -279,7 +279,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
--      case KEY_CTRLB:
+-      case KEY_CTRL('B'):
 +      case 'h':
-          if (!this->allowFocusChange)
-             break;
-          tryLeft:
-@@ -290,7 +290,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          if (this->panelCount < 2) {
+             goto defaultHandler;
+          }
+@@ -293,7 +293,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
              goto tryLeft;
           break;
        case KEY_RIGHT:
--      case KEY_CTRLF:
+-      case KEY_CTRL('F'):
 +      case 'l':
        case 9:
-          if (!this->allowFocusChange)
-             break;
+          if (this->panelCount < 2) {
+             goto defaultHandler;
