@@ -1,0 +1,26 @@
+_folder='/usr/lib/bios-lenovo-thinkserver-ts140'
+
+pre_remove() {
+  rm -f "${_folder}/OLDROM.ROM"
+}
+
+post_install() {
+  echo 'To upgrade your BIOS'
+  echo "  cd '${_folder}'"
+  echo '  sudo ./Linux.sh'
+  echo
+  echo 'Warning: This reboots your server immediately for the BIOS to perform the upgrade.'
+  echo 'Do NOT run during production!'
+  echo 'In some cases the BIOS halts at a checksum error so this should not be done'
+  echo 'without physical access or equivalent to the machine.'
+  echo
+  echo 'To test compatibility without rebooting try reading the rom:'
+  echo "  cd '${_folder}'"
+  echo '  sudo ./romtest.sh'
+  pre_remove
+}
+
+post_upgrade() {
+  post_install
+}
+
