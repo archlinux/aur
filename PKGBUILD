@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-hooky
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -11,7 +11,7 @@ conflicts=('ttf-iosevka' 'ttf-iosevka-zshaped')
 install=${pkgname}.install
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/07.iosevka-hooky-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('0c502ef34e81962f739459b39f9ef90fd8dbec3302cb98c003a79d36753c34e7'
+sha256sums=('3462e4368023f28ac5af0d25bffd5d6fec9cf7da1cd3cfbe7603e837c633cb75'
             '1a87755db1a409859006a2472f6038f5e19d1f3a590daf4a92cbe51e0ac1e41a')
 
 package() {
