@@ -1,5 +1,5 @@
 pkgbase = linux-source-el7-centos-plus
-	pkgdesc = Last Linux Kernel source of RHEL7/Centos7 ready to be compiled
+	pkgdesc = Last Linux Kernel source of RHEL7/Centos7
 	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://centos.org

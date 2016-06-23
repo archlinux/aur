@@ -2,7 +2,7 @@
 pkgname='linux-source-el7-centos-plus'
 pkgver='3.10.0'
 pkgrel=1
-pkgdesc='Last Linux Kernel source of RHEL7/Centos7 ready to be compiled'
+pkgdesc='Last Linux Kernel source of RHEL7/Centos7'
 arch=('x86_64')
 url='https://centos.org'
 license=('GPL')
