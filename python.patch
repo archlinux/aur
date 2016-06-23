@@ -1,0 +1,9 @@
+diff -aur wok/src/wok/proxy.py woknew/src/wok/proxy.py
+--- wok/src/wok/proxy.py	2016-06-18 23:00:21.853885216 -0400
++++ woknew/src/wok/proxy.py	2016-06-19 10:12:54.193121423 -0400
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Project Wok
+ #

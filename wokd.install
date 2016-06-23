@@ -1,0 +1,7 @@
+post_install() {
+  echo Start both libvirtd.service and virtlogd.service. Optionally enable
+  echo libvirtd.service. There is no need to enable virtlogd.service, since
+  echo libvirtd.service, when enabled, also enables the virtlogd.socket and
+  echo virtlockd.socket units. Then start/enable wokd.service and connect your
+  echo browser to https://localhost:8001
+}
