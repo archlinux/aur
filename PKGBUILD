@@ -1,7 +1,7 @@
 # Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 pkgbase=cura-not-so-old
 pkgname=cura-not-so-old
-pkgver=15.04.5
+pkgver=15.04.6
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker. (the offical one)"
 depends=('python2' 'wxpython' 'python2-opengl' 'python2-pyserial' 'python2-numpy')
@@ -11,10 +11,10 @@ license=('AGPLv3')
 arch=('i686' 'x86_64')
 if [ "$CARCH" == x86_64 ]; then
     source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_amd64.deb)
-    sha1sums+=('127eed3d5b1bbed0e97a820456ee0e6c112dc6d2')
+    sha1sums+=('1a53337079c45067ed791c94682fcb4771cecc54')
 elif [ "$CARCH" == i686 ]; then
     source+=(http://software.ultimaker.com/current/cura_${pkgver}-debian_i386.deb)
-    sha1sums+=('a4a7f56bdafa5d6190dc3069a14e15f8a20be050')
+    sha1sums+=('245777738ec175fedfd9734637487c34638a0f25')
 fi
 
 install=cura.install
