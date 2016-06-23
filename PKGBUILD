@@ -16,18 +16,18 @@ sha256sums=('6951821d11ad646e6e7651d677bfab8f800fbc52703a0ab9942d03cd13959073'
             '67d756429f0805c9980d61d2ffac69be56906367e90419f3395a0b8bfca39a95')
 
 prepare() {
-  cd "$srcdir/$_pkgsrcname-$pkgver"
+  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
   patch -Ni "${srcdir}/agent-transfer.patch"
 
 }
 
 build() {
-  cd "$srcdir/$_pkgsrcname-$pkgver"
+  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
   make all
 }
 
 package() {
-  cd "$srcdir/$_pkgsrcname-$pkgver"
+  cd "${srcdir}/${_pkgsrcname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}/" install
 }
