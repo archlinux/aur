@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com> (based on the PKGBUILD from cloudprint-cups-git by mortzu and zizzfizzix)
 pkgname=cloudprint-cups
 pkgver=20160502
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Cloud Print driver for CUPS, allows printing to printers hosted on Google Cloud Print.'
 arch=('any')
 url='https://github.com/simoncadman/CUPS-Cloud-Print'
