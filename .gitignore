@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!winbox-beta
+!winbox-beta.desktop
+!winbox-beta.install
+!winbox-beta.png
