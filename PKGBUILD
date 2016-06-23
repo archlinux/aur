@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgsrcname-$pkgver"
-  make DESTDIR="$pkgdir/" all
+  make all
 }
 
 package() {
