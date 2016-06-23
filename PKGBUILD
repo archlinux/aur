@@ -7,15 +7,15 @@
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs libutvideo-asm-git flite-fpic libmfx-git
-# blackmagic-decklink-sdk nvidia-sdk libebur128
+# nut-multimedia-git xavs flite-fpic libmfx-git blackmagic-decklink-sdk
+# nvidia-sdk libebur128
 
 # AUR optional dependency
 # -----------------------
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.80608.g388f095
+pkgver=N.80614.g7e4e8fd
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -165,7 +165,6 @@ build() {
 	        --enable-libtesseract \
 	        --enable-libtheora \
 	        --enable-libtwolame \
-	        --enable-libutvideo \
 	        --enable-libv4l2 \
 	        --enable-libvidstab \
 	        --enable-libvo-amrwbenc \
