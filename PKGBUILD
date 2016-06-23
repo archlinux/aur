@@ -9,34 +9,33 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.3.0.e0.36.12
-pkgrel=2
+pkgver=1.8.0.arch0.3.0.sh0.33.0.t2.1.7
+pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
-_url='https://github.com/atom/atom'
-url='https://fusion809.github.io/atom-editor-arch/'
+url='https://github.com/atom/atom'
 license=('MIT')
 depends=('namcap' 'pkgbuild-introspection' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm' 'hunspell-en')
 conflicts=('atom-editor-bin' 'atom-editor-beta')
 install=${_pkgname}-${_version}.install
-source=("${_pkgname}-${_atomver}.tar.gz::${_url}/archive/v${_atomver}.tar.gz"
+source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
-"dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
-"fusion-ui::git+${_fusurl}/fusion-ui"
-"language-archlinux::git+${_fusurl}/language-archlinux"
-"language-gfm2::git+${_fusurl}/language-gfm2"
-"language-ini-desktop::git+${_fusurl}/language-ini-desktop"
-"language-liquid::git+https://github.com/puranjayjain/language-liquid"
-"language-patch2::git+${_fusurl}/language-patch2"
+"git+https://github.com/Murriouz/dark-bint-syntax"
+"git+${_fusurl}/fusion-ui"
+"git+${_fusurl}/language-archlinux"
+"git+${_fusurl}/language-gfm2"
+"git+${_fusurl}/language-ini-desktop"
+"git+https://github.com/puranjayjain/language-liquid"
+"git+${_fusurl}/language-patch2"
 "language-unix-shell::git+${_fusurl}/language-shellscript"
-"mydict::git+${_fusurl}/mydict"
-"terminal-fusion::git+${_fusurl}/terminal-fusion"
+"git+${_fusurl}/mydict"
+"git+${_fusurl}/terminal-fusion"
 "atom"
 "atom.desktop"
 "theme.patch"
-"about-arch.patch")
+"electron.patch")
 md5sums=('158c18d35d071403db18bdd85fa2e738'
          'SKIP'
          'SKIP'
@@ -52,11 +51,13 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
          '23a0d25e1759dc5bd0e6f7101fd8ea70'
-         'ae16bb627ec10bde20c7093d4be18131')
+         'd31a5fe8685a1886ffd7fcce2fd585e1')
 
 pkgver() {
   _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  printf "${_atomver}.arch${_language_archlinux_ver}.e${_electron_ver}"
+  _language_unix_shell_ver="$(sed -n "s/\"version\": //p" $srcdir/language-unix-shell/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _terminal_fusion_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  printf "${_atomver}.arch${_language_archlinux_ver}.sh${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
 }
 
 prepare() {
@@ -106,7 +107,8 @@ prepare() {
   popd
   cp -a $srcdir/about-arch node_modules/about-arch
 
-  sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
+  sed -i -e "s/atom-editor/atom-editor-${_version}/g" node_modules/about-arch/lib/about-view.coffee
+  sed -i -e "s/<%=Desc=>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
 
   patch -Np1 -i $srcdir/theme.patch
 }

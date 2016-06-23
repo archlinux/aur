@@ -1,0 +1,99 @@
+diff -Naur a/spec/integration/helpers/start-atom.coffee b/spec/integration/helpers/start-atom.coffee
+--- a/spec/integration/helpers/start-atom.coffee	2016-06-08 21:19:13.631777355 +1000
++++ b/spec/integration/helpers/start-atom.coffee	2016-06-08 21:24:45.464619677 +1000
+@@ -1,6 +1,7 @@
+ path = require 'path'
+ http = require 'http'
+ temp = require('temp').track()
++os = require('os')
+ remote = require 'remote'
+ async = require 'async'
+ {map, extend, once, difference} = require 'underscore-plus'
+@@ -10,7 +11,7 @@
+ AtomPath = remote.process.argv[0]
+ AtomLauncherPath = path.join(__dirname, "..", "helpers", "atom-launcher.sh")
+ ChromedriverPath = path.resolve(__dirname, '..', '..', '..', 'electron', 'chromedriver', 'chromedriver')
+-SocketPath = path.join(temp.mkdirSync("socket-dir"), "atom-#{process.env.USER}.sock")
++SocketPath = path.join(os.tmpdir(), "atom-integration-test-#{Date.now()}.sock")
+ ChromedriverPort = 9515
+ ChromedriverURLBase = "/wd/hub"
+ ChromedriverStatusURL = "http://localhost:#{ChromedriverPort}#{ChromedriverURLBase}/status"
+diff -Naur a/src/atom-environment.coffee b/src/atom-environment.coffee
+--- a/src/atom-environment.coffee	2016-06-08 21:22:06.741811646 +1000
++++ b/src/atom-environment.coffee	2016-06-08 21:24:45.464619677 +1000
+@@ -728,7 +728,7 @@
+       @emitter.emit 'will-throw-error', eventObject
+
+       if openDevTools
+-        @openDevTools().then => @executeJavaScriptInDevTools('DevToolsAPI.showConsole()')
++        @openDevTools().then => @executeJavaScriptInDevTools('DevToolsAPI.showPanel("console")')
+
+       @emitter.emit 'did-throw-error', {message, url, line, column, originalError}
+
+diff -Naur a/src/browser/atom-application.coffee b/src/browser/atom-application.coffee
+--- a/src/browser/atom-application.coffee	2016-06-08 21:20:23.068602553 +1000
++++ b/src/browser/atom-application.coffee	2016-06-08 21:24:45.464619677 +1000
+@@ -316,9 +316,6 @@
+     ipcMain.on 'get-auto-update-manager-error', (event) =>
+       event.returnValue = @autoUpdateManager.getErrorMessage()
+
+-    ipcMain.on 'execute-javascript-in-dev-tools', (event, code) ->
+-      event.sender.devToolsWebContents?.executeJavaScript(code)
+-
+   setupDockMenu: ->
+     if process.platform is 'darwin'
+       dockMenu = Menu.buildFromTemplate [
+diff -Naur a/src/browser/atom-window.coffee b/src/browser/atom-window.coffee
+--- a/src/browser/atom-window.coffee	2016-06-08 21:08:06.461701563 +1000
++++ b/src/browser/atom-window.coffee	2016-06-08 21:12:11.016354146 +1000
+@@ -24,11 +24,9 @@
+     options =
+       show: false
+       title: 'Atom'
+-      'web-preferences':
+-        'direct-write': true
+
+     if @isSpec
+-      options['web-preferences']['page-visibility'] = true
++      options.webPreferences = {backgroundThrottling: false}
+
+     # Don't set icon on Windows so the exe's ico will be used as window and
+     # taskbar's icon. See https://github.com/atom/atom/issues/4811 for more.
+diff -Naur a/src/initialize-test-window.coffee b/src/initialize-test-window.coffee
+--- a/src/initialize-test-window.coffee	2016-06-08 21:24:27.743420010 +1000
++++ b/src/initialize-test-window.coffee	2016-06-08 21:24:45.439619396 +1000
+@@ -48,13 +48,6 @@
+
+     document.title = "Spec Suite"
+
+-    # Avoid throttling of test window by playing silence
+-    # See related discussion in https://github.com/atom/atom/pull/9485
+-    context = new AudioContext()
+-    source = context.createBufferSource()
+-    source.connect(context.destination)
+-    source.start(0)
+-
+     testRunner = require(testRunnerPath)
+     legacyTestRunner = require(legacyTestRunnerPath)
+     buildDefaultApplicationDelegate = -> new ApplicationDelegate()
+diff -Naur a/src/module-cache.coffee b/src/module-cache.coffee
+--- a/src/module-cache.coffee	2016-06-08 21:02:07.111538372 +1000
++++ b/src/module-cache.coffee	2016-06-08 21:03:20.502230393 +1000
+@@ -200,14 +200,14 @@
+     cache.builtins.atom = atomCoffeePath if fs.isFileSync(atomCoffeePath)
+   cache.builtins.atom ?= path.join(cache.resourcePath, 'exports', 'atom.js')
+
+-  atomShellRoot = path.join(process.resourcesPath, 'atom.asar')
++  electronAsarRoot = path.join(process.resourcesPath, 'atom.asar')
+
+-  commonRoot = path.join(atomShellRoot, 'common', 'api', 'lib')
++  commonRoot = path.join(electronAsarRoot, 'common', 'api', 'lib')
+   commonBuiltins = ['callbacks-registry', 'clipboard', 'crash-reporter', 'screen', 'shell']
+   for builtin in commonBuiltins
+     cache.builtins[builtin] = path.join(commonRoot, "#{builtin}.js")
+
+-  rendererRoot = path.join(atomShellRoot, 'renderer', 'api', 'lib')
++  rendererRoot = path.join(electronAsarRoot, 'renderer', 'api', 'lib')
+   rendererBuiltins = ['ipc-renderer', 'remote']
+   for builtin in rendererBuiltins
+     cache.builtins[builtin] = path.join(rendererRoot, "#{builtin}.js")
