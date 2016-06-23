@@ -16,6 +16,11 @@ post_install() {
     mv /etc/retroarch-standalone.cfg.pacsave \
       /etc/retroarch-standalone.cfg 2> /dev/null
   fi
+
+  # Print additional useful informations
+  echo "WARNING: If your audio is not working, please check [ audio_device = '' ] setting in your cfg!"
+  echo "INFO: To run Retroarch everytime at boot please run [ systemctl enable retroarch-standalone.service ]"
+  echo "INFO: To simply start Retroarch just run [ systemctl start retroarch-standalone.service ]"
 }
 
 post_upgrade() {
