@@ -29,7 +29,7 @@ depends=('ginger-base'
          'python2-netaddr'
          'tuned'
          'dbus-glib'
-         'wok')
+         'wokd')
 #optdepends=()
 makedepends=('git')
 #checkdepends=()
@@ -58,7 +58,7 @@ source=('git+https://github.com/kimchi-project/ginger.git' 'ginger-git.install')
 #md5sums_x86_64=()
 #sha1sums=()
 sha256sums=('SKIP'
-            '5f66fd556907c8d3bf917742ced53cc198b03c579dd0f0870859f2db81f63684')
+            '32b5d6d0caa31542a0909bef826ef572e7fc0ac82d11ebd3667b508cb62f55aa')
 
 pkgver() {
   cd $srcdir/ginger
