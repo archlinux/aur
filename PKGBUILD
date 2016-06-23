@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.cinelerra-cv.org/five"
 license=('GPL')
 depends=('xorg-server' 'xorg-server-utils' 'libpng' 'libxv' 'libva'
-'libxft' 'freetype2' 'alsa-lib')
+'libxft' 'freetype2' 'alsa-lib' 'inkscape' 'dvdauthor')
 makedepends=('yasm' 'nasm' 'cmake'
 'libxml2' 'perl-xml-libxml' 'perl-xml-parser' 'python2')
 conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
