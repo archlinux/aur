@@ -10,7 +10,7 @@ url='https://containerd.tools/'
 depends=('glibc' 'runc-git')
 makedepends=('go' 'git')
 replaces=('containerd')
-arch=('x86_64')
+arch=('i686' 'x86_64')
 source=("git+https://github.com/docker/containerd.git")
 license=("APACHE")
 md5sums=('SKIP')
@@ -36,4 +36,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
