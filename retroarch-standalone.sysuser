@@ -2,3 +2,7 @@ u retroarch /sbin/nologin "Retroarch user" /home/retroarch
 m retroarch video
 m retroarch audio
 m retroarch input
+m retroarch disk
+m retroarch storage
+m retroarch optical
+m retroarch floppy
