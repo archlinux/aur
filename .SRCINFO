@@ -1,0 +1,21 @@
+pkgbase = mate-applet-dock-gtk3-git
+	pkgdesc = An application dock applet for the GTK3 MATE panel
+	pkgver = 0.72
+	pkgrel = 1
+	url = https://github.com/robint99/dock-applet
+	install = mate-applet-dock-gtk3.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = mate-panel-gtk3
+	depends = python
+	depends = python-xdg
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-scipy
+	source = git+http://github.com/robint99/dock-applet
+	md5sums = SKIP
+
+pkgname = mate-applet-dock-gtk3-git
+
