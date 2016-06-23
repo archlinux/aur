@@ -3,7 +3,7 @@
 pkgname=ncursesfm-git
 _gitname=ncursesFM
 pkgver=v3.0.r77.gf25cc3c
-pkgrel=2
+pkgrel=1
 pkgdesc="A FileManager written in c and ncurses library."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
@@ -12,8 +12,7 @@ depends=('ncurses' 'libconfig' 'libarchive' 'glibc' 'libcups' 'libx11' 'systemd'
 optdepends=('xdg-utils: xdg-open support'
             'udisks2: mountable drives and ISO mount support'
             'packagekit: package installation support'
-            'upower: AC (dis)connection events support'
-            'w3m: images preview support')
+            'upower: AC (dis)connection events support')
 # libcups, libconfig and libx11 are optional build dep.
 # If compiled without them, the program will run just fine;
 # but that would disable xdg-open, config file read and printing support.
@@ -30,8 +29,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
+build() {
     cd $srcdir/$_gitname
     make
 }
