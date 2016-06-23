@@ -1,0 +1,16 @@
+pkgbase = moshy-git
+	pkgdesc = A simple Mosh wrapper with profile settings
+	pkgver = r8.df0b2bc
+	pkgrel = 1
+	url = https://github.com/kiniou/moshy
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-docopt
+	provides = moshy
+	conflicts = moshy
+	source = git+https://github.com/kiniou/moshy.git
+	md5sums = SKIP
+
+pkgname = moshy-git
+
