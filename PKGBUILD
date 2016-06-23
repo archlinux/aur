@@ -3,34 +3,45 @@
 # Contributor: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-wayland
-pkgver=43.0a1
-pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - Beta (build from source) with Wayland patches"
+pkgver=47.0
+pkgrel=2
+pkgdesc="Standalone web browser from mozilla.org with Wayland patches"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://github.com/stransky/gecko-dev"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
+         'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust')
+             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
-install=firefox-wayland.install
-conflicts=("firefox-wayland-bin")            
+conflicts=("firefox")
+provides=("firefox")
 options=('!emptydirs' '!makeflags')
-source=('git+https://github.com/stransky/gecko-dev.git'
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         mozconfig
-        firefox-wayland.desktop
+        firefox.desktop
         firefox-install-dir.patch
         vendor.js
-        firefox-fixed-loading-icon.png)
-sha512sums=('SKIP'
-            'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
-            'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
-            '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
-            'd51119170cc8fb99c50610a8e5e94f38a31722c1c1a2260ca32d8e376732e30c8e1deac7d8c599348892e783fb4c75ce8c38bbd238282b0c9da21608d902ba28')
+        firefox-symbolic.svg
+        firefox-gtk3-20.patch
+	mozilla-1245076.patch
+	mozilla-1245076-1.patch
+        no-libnotify.patch
+	firefox-wayland.patch)
+sha256sums=('51936fcf86c5f84e7fdd377d07658a02a1c99d2ebdc3c8aae01d70f947331d12'
+            'ee8f508442147ad5afcd9c9e60d50d22659ad8c246d35ce8c97aa4463be3a9bc'
+            'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            'f1aaf36c2f059e027fc7384c0943ccd07c6e3d58721ec7a96d5d913a106717cc'
+            '05574c7d0f259da161bcd0e2e8bc9a19401e620ff29439da935d349eebb60efa'
+            '6e7cba25c52b246da183b8309e7b56208bd991d1a7adb40063c5702a6f3722ea'
+            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7'
+	    '011b6769ff9dc793013b3740bb72b96f2830764d5d67e20dcdab29a25d45f288')
+validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -48,11 +59,24 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 
 prepare() {
-  cd gecko-dev
+  cd firefox-$pkgver
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
-  
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
+  patch -Np1 -i ../firefox-gtk3-20.patch
+
+  # GCC 6
+  patch -Np1 -i ../mozilla-1245076.patch
+  patch -Np1 -i ../mozilla-1245076-1.patch
+
+  # Notifications with libnotify are broken
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
+  patch -Np1 -i ../no-libnotify.patch
+
+  patch -Np1 -i ../firefox-wayland.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
@@ -62,69 +86,61 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  rm -r "$srcdir/path"
   mkdir "$srcdir/path"
-
-  # WebRTC build tries to execute "python" and expects Python 2
   ln -s /usr/bin/python2 "$srcdir/path/python"
-
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
-
-  # Fix tab loading icon (doesn't work with libpng 1.6)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/firefox-fixed-loading-icon.png" \
-    browser/themes/linux/tabbrowser/loading.png
 }
 
 build() {
-  cd gecko-dev
+  cd firefox-$pkgver
+
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
+
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
   export PATH="$srcdir/path:$PATH"
-  export PYTHON="/usr/bin/python2"
 
   # Do PGO
-  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+  #xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
+  #  make -f client.mk build MOZ_PGO=1
+  make -f client.mk build
 }
 
 package() {
-  cd gecko-dev
+  cd firefox-$pkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
-  mkdir "$pkgdir"/opt/firefox-wayland
-  mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-wayland/
-  rm -r "$pkgdir"/opt/firefox
 
-  install -Dm644 ../vendor.js "$pkgdir/opt/firefox-wayland/browser/defaults/preferences/vendor.js"
+  install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
 
   for i in 16 22 24 32 48 256; do
       install -Dm644 browser/branding/official/default$i.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox-wayland.png"
+        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
   done
   install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox-wayland.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox.png"
   install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox-wayland.png"
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox-wayland.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox-wayland.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+  install -Dm644 ../firefox-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
-  install -Dm644 ../firefox-wayland.desktop \
-    "$pkgdir/usr/share/applications/firefox-wayland.desktop"
+  install -Dm644 ../firefox.desktop \
+    "$pkgdir/usr/share/applications/firefox.desktop"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/opt/firefox-wayland/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/opt/firefox-wayland/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/opt/firefox-wayland/hyphenation"
+  rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
+  ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
+  ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
-  #workaround for now
-  #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf /opt/firefox-wayland/firefox "$pkgdir/opt/firefox-wayland/firefox-wayland-bin"
-
-  # /usr/bin symlinks
-  rm -f "$pkgdir"/usr/bin/firefox
-  ln -s /opt/firefox-wayland/firefox "$pkgdir"/usr/bin/firefox-wayland
-  ln -s /opt/firefox-wayland/firefox "$pkgdir"/usr/bin/firefox-wayland-bin
+  # Replace duplicate binary with symlink
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }

@@ -1,0 +1,325 @@
+diff --git a/gfx/gl/GLContextProviderGLX.cpp b/gfx/gl/GLContextProviderGLX.cpp
+--- a/gfx/gl/GLContextProviderGLX.cpp
++++ b/gfx/gl/GLContextProviderGLX.cpp
+@@ -177,16 +177,18 @@ GLXLibrary::EnsureInitialized()
+ 
+     if (!GLLibraryLoader::LoadSymbols(mOGLLibrary, &symbols[0])) {
+         NS_WARNING("Couldn't find required entry point in OpenGL shared library");
+         return false;
+     }
+ 
+     Display *display = DefaultXDisplay();
+     int screen = DefaultScreen(display);
++
++    return false;
+ 
+     if (!xQueryVersion(display, &mGLXMajorVersion, &mGLXMinorVersion)) {
+         mGLXMajorVersion = 0;
+         mGLXMinorVersion = 0;
+         return false;
+     }
+ 
+     if (!GLXVersionCheck(1, 1))
+diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -129,6 +129,7 @@
+ #include "nsWindow.h"
+ 
+ #include <dlfcn.h>
++#include <sys/time.h>
+ 
+ #include "mozilla/layers/APZCTreeManager.h"
+ 
+@@ -282,47 +283,55 @@ TimeConverter() {
+     return sTimeConverterSingleton;
+ }
+ 
+ namespace mozilla {
+ 
+ class CurrentX11TimeGetter
+ {
+ public:
+-    explicit CurrentX11TimeGetter(GdkWindow* aWindow)
++    explicit CurrentX11TimeGetter(GdkWindow* aWindow, bool aIsX11Display)
+         : mWindow(aWindow)
++        , mIsX11Display(aIsX11Display)
+         , mAsyncUpdateStart()
+     {
+     }
+ 
+     guint32 GetCurrentTime() const
+     {
+-        return gdk_x11_get_server_time(mWindow);
++        if (mIsX11Display) {
++            return gdk_x11_get_server_time(mWindow);
++        } else {
++            return g_get_monotonic_time()/1000;
++        }
+     }
+ 
+     void GetTimeAsyncForPossibleBackwardsSkew(const TimeStamp& aNow)
+     {
+         // Check for in-flight request
+-        if (!mAsyncUpdateStart.IsNull()) {
++        if (!mIsX11Display || !mAsyncUpdateStart.IsNull()) {
+             return;
+         }
+         mAsyncUpdateStart = aNow;
+ 
+         Display* xDisplay = GDK_WINDOW_XDISPLAY(mWindow);
+         Window xWindow = GDK_WINDOW_XID(mWindow);
+         unsigned char c = 'a';
+         Atom timeStampPropAtom = TimeStampPropAtom();
+         XChangeProperty(xDisplay, xWindow, timeStampPropAtom,
+                         timeStampPropAtom, 8, PropModeReplace, &c, 1);
+         XFlush(xDisplay);
+     }
+ 
+     gboolean PropertyNotifyHandler(GtkWidget* aWidget,
+                                    GdkEventProperty* aEvent)
+     {
++        if (!mIsX11Display)
++            return FALSE;
++
+         if (aEvent->atom !=
+             gdk_x11_xatom_to_atom(TimeStampPropAtom())) {
+             return FALSE;
+         }
+ 
+         guint32 eventTime = aEvent->time;
+         TimeStamp lowerBound = mAsyncUpdateStart;
+ 
+@@ -335,16 +344,17 @@ private:
+     static Atom TimeStampPropAtom() {
+         return gdk_x11_get_xatom_by_name_for_display(
+             gdk_display_get_default(), "GDK_TIMESTAMP_PROP");
+     }
+ 
+     // This is safe because this class is stored as a member of mWindow and
+     // won't outlive it.
+     GdkWindow* mWindow;
++    bool       mIsX11Display;
+     TimeStamp  mAsyncUpdateStart;
+ };
+ 
+ } // namespace mozilla
+ 
+ static NS_DEFINE_IID(kCDragServiceCID,  NS_DRAGSERVICE_CID);
+ 
+ // The window from which the focus manager asks us to dispatch key events.
+@@ -422,16 +432,17 @@ nsWindow::nsWindow()
+     mIsShown             = false;
+     mNeedsShow           = false;
+     mEnabled             = true;
+     mCreated             = false;
+ #if GTK_CHECK_VERSION(3,4,0)
+     mHandleTouchEvent    = false;
+ #endif
+     mIsDragPopup         = false;
++    mIsX11Display        = GDK_IS_X11_DISPLAY(gdk_display_get_default());
+ 
+     mContainer           = nullptr;
+     mGdkWindow           = nullptr;
+     mShell               = nullptr;
+     mPluginNativeWindow  = nullptr;
+     mHasMappedToplevel   = false;
+     mIsFullyObscured     = false;
+     mRetryPointerGrab    = false;
+@@ -1382,16 +1393,20 @@ SetUserTimeAndStartupIDForActivatedWindo
+ /* static */ guint32
+ nsWindow::GetLastUserInputTime()
+ {
+     // gdk_x11_display_get_user_time tracks button and key presses,
+     // DESKTOP_STARTUP_ID used to start the app, drop events from external
+     // drags, WM_DELETE_WINDOW delete events, but not usually mouse motion nor
+     // button and key releases.  Therefore use the most recent of
+     // gdk_x11_display_get_user_time and the last time that we have seen.
++    GdkDisplay *display = gdk_display_get_default();
++    if (!GDK_IS_X11_DISPLAY(display))
++        return sLastUserInputTime;
++
+     guint32 timestamp =
+             gdk_x11_display_get_user_time(gdk_display_get_default());
+     if (sLastUserInputTime != GDK_CURRENT_TIME &&
+         TimestampIsNewerThan(sLastUserInputTime, timestamp)) {
+         return sLastUserInputTime;
+     }       
+ 
+     return timestamp;
+@@ -1532,17 +1547,17 @@ nsWindow::GetClientBounds(LayoutDeviceIn
+     return NS_OK;
+ }
+ 
+ void
+ nsWindow::UpdateClientOffset()
+ {
+     PROFILER_LABEL("nsWindow", "UpdateClientOffset", js::ProfileEntry::Category::GRAPHICS);
+ 
+-    if (!mIsTopLevel || !mShell || !mGdkWindow ||
++    if (!mIsTopLevel || !mShell || !mGdkWindow || !mIsX11Display ||
+         gtk_window_get_window_type(GTK_WINDOW(mShell)) == GTK_WINDOW_POPUP) {
+         mClientOffset = nsIntPoint(0, 0);
+         return;
+     }
+ 
+     GdkAtom cardinal_atom = gdk_x11_xatom_to_atom(XA_CARDINAL);
+ 
+     GdkAtom type_returned;
+@@ -1963,19 +1978,18 @@ nsWindow::HasPendingInputEvent()
+     // This sucks, but gtk/gdk has no way to answer the question we want while
+     // excluding paint events, and there's no X API that will let us peek
+     // without blocking or removing.  To prevent event reordering, peek
+     // anything except expose events.  Reordering expose and others should be
+     // ok, hopefully.
+     bool haveEvent = false;
+ #ifdef MOZ_X11
+     XEvent ev;
+-    GdkDisplay* gdkDisplay = gdk_display_get_default();
+-    if (GDK_IS_X11_DISPLAY(gdkDisplay)) {
+-        Display *display = GDK_DISPLAY_XDISPLAY(gdkDisplay);
++    if (mIsX11Display) {
++        Display *display = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
+         haveEvent =
+             XCheckMaskEvent(display,
+                             KeyPressMask | KeyReleaseMask | ButtonPressMask |
+                             ButtonReleaseMask | EnterWindowMask | LeaveWindowMask |
+                             PointerMotionMask | PointerMotionHintMask |
+                             Button1MotionMask | Button2MotionMask |
+                             Button3MotionMask | Button4MotionMask |
+                             Button5MotionMask | ButtonMotionMask | KeymapStateMask |
+@@ -2609,18 +2623,17 @@ nsWindow::OnMotionNotifyEvent(GdkEventMo
+ {
+     // see if we can compress this event
+     // XXXldb Why skip every other motion event when we have multiple,
+     // but not more than that?
+     bool synthEvent = false;
+ #ifdef MOZ_X11
+     XEvent xevent;
+ 
+-    bool isX11Display = GDK_IS_X11_DISPLAY(gdk_display_get_default());
+-    if (isX11Display) {
++    if (mIsX11Display) {
+         while (XPending (GDK_WINDOW_XDISPLAY(aEvent->window))) {
+             XEvent peeked;
+             XPeekEvent (GDK_WINDOW_XDISPLAY(aEvent->window), &peeked);
+             if (peeked.xany.window != gdk_x11_window_get_xid(aEvent->window)
+                 || peeked.type != MotionNotify)
+                 break;
+ 
+             synthEvent = true;
+@@ -3040,7 +3053,8 @@
+ nsWindow::GetCurrentTimeGetter() {
+     MOZ_ASSERT(mGdkWindow, "Expected mGdkWindow to be set");
+     if (MOZ_UNLIKELY(!mCurrentTimeGetter)) {
+-        mCurrentTimeGetter = new CurrentX11TimeGetter(mGdkWindow);
++        //mCurrentTimeGetter = MakeUnique<CurrentX11TimeGetter>(mGdkWindow, mIsX11Display);
++        mCurrentTimeGetter = new CurrentX11TimeGetter(mGdkWindow,mIsX11Display);
+     }
+     return mCurrentTimeGetter;
+ }
+@@ -3923,17 +3936,18 @@ nsWindow::Create(nsIWidget* aParent,
+             // Visibility events are sent to the owning widget of the relevant
+             // window but do not propagate to parent widgets so connect on
+             // mShell (if it exists) as well as mContainer.
+             g_signal_connect(widgets[i], "visibility-notify-event",
+                              G_CALLBACK(visibility_notify_event_cb), nullptr);
+             // Similarly double buffering is controlled by the window's owning
+             // widget.  Disable double buffering for painting directly to the
+             // X Window.
+-            gtk_widget_set_double_buffered(widgets[i], FALSE);
++            if (mIsX11Display)
++                gtk_widget_set_double_buffered(widgets[i], FALSE);
+         }
+ 
+         // We create input contexts for all containers, except for
+         // toplevel popup windows
+         if (mWindowType != eWindowType_popup) {
+             mIMContext = new IMContextWrapper(this);
+         }
+     } else if (!mIMContext) {
+@@ -3986,17 +4000,17 @@ nsWindow::Create(nsIWidget* aParent,
+              mGdkWindow, gdk_window_get_parent(mGdkWindow)));
+     }
+ 
+     // resize so that everything is set to the right dimensions
+     if (!mIsTopLevel)
+         Resize(mBounds.x, mBounds.y, mBounds.width, mBounds.height, false);
+ 
+ #ifdef MOZ_X11
+-    if (mGdkWindow) {
++    if (mIsX11Display && mGdkWindow) {
+       mXDisplay = GDK_WINDOW_XDISPLAY(mGdkWindow);
+       mXWindow = gdk_x11_window_get_xid(mGdkWindow);
+ 
+       GdkVisual* gdkVisual = gdk_window_get_visual(mGdkWindow);
+       mXVisual = gdk_x11_visual_get_xvisual(gdkVisual);
+       mXDepth = gdk_visual_get_depth(gdkVisual);
+     }
+ #endif
+@@ -4034,17 +4048,17 @@ nsWindow::SetWindowClass(const nsAString
+   }
+   res_name[0] = toupper(res_name[0]);
+   if (!role) role = res_name;
+ 
+   gdk_window_set_role(mGdkWindow, role);
+ 
+ #ifdef MOZ_X11
+   GdkDisplay *display = gdk_display_get_default();
+-  if (GDK_IS_X11_DISPLAY(display)) {
++  if (mIsX11Display) {
+       XClassHint *class_hint = XAllocClassHint();
+       if (!class_hint) {
+         free(res_name);
+         return NS_ERROR_OUT_OF_MEMORY;
+       }
+       class_hint->res_name = res_name;
+       class_hint->res_class = const_cast<char*>(res_class);
+ 
+diff --git a/widget/gtk/nsWindow.h b/widget/gtk/nsWindow.h
+--- a/widget/gtk/nsWindow.h
++++ b/widget/gtk/nsWindow.h
+@@ -402,16 +402,18 @@ protected:
+     // has the native window for this been created yet?
+     bool                mCreated;
+ #if GTK_CHECK_VERSION(3,4,0)
+     // whether we handle touch event
+     bool                mHandleTouchEvent;
+ #endif
+     // true if this is a drag and drop feedback popup
+     bool               mIsDragPopup;
++    // Can we access X?
++    bool               mIsX11Display;
+ 
+ private:
+     void               DestroyChildWindows();
+     GtkWidget         *GetToplevelWidget();
+     nsWindow          *GetContainerWindow();
+     void               SetUrgencyHint(GtkWidget *top_window, bool state);
+     void              *SetupPluginPort(void);
+     void               SetDefaultIcon(void);
+diff --git a/widget/nsShmImage.cpp b/widget/nsShmImage.cpp
+--- a/widget/nsShmImage.cpp
++++ b/widget/nsShmImage.cpp
+@@ -124,16 +124,21 @@ bool
+ nsShmImage::InitExtension()
+ {
+   if (gShmInitialized) {
+     return gShmAvailable;
+   }
+ 
+   gShmInitialized = true;
+ 
++  if (!GDK_IS_X11_DISPLAY(mDisplay)) {
++    gShmAvailable = false;
++    return false;
++  }
++
+   if (!XShmQueryExtension(mDisplay)) {
+     gShmAvailable = false;
+     return false;
+   }
+ 
+   int major, minor;
+   Bool pixmaps;
+   if (!XShmQueryVersion(mDisplay, &major, &minor, &pixmaps)) {
