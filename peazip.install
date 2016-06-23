@@ -1,21 +1,12 @@
 post_install() {
-    ln -sf /home/uncle/.peazip/peazip /usr/bin/peazip
-    ln -sf /home/uncle/.peazip/res/pea /usr/bin/pea
-    ln -sf /home/uncle/.peazip/res/pealauncher /usr/bin/pealauncher
+    ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
     update-desktop-database -q
 }
 
 post_upgrade() {
-    update-desktop-database -q
+    post_install
 }
 
 postmove() {
-    update-desktop-database -q
-}
-
-post_remove() {
-    rm -f /usr/bin/peazip
-    rm -f /usr/bin/pea
-    rm -f /usr/bin/pealauncher
-    update-desktop-database -q
+    post_install
 }
