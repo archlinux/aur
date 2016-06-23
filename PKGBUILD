@@ -7,7 +7,7 @@ pkgdesc='AirVPN client "Eddie" based on OpenVPN, stable version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
 license=(GPL3)
-depends=(gksu 'mono<=4.0.5.1' openvpn)
+depends=(gksu mono openvpn)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
