@@ -1,3 +1,4 @@
 u retroarch /sbin/nologin "Retroarch user" /home/retroarch
-m retroarch uucp
 m retroarch video
+m retroarch audio
+m retroarch input
