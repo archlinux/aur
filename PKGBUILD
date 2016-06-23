@@ -13,12 +13,10 @@ depends=()
 makedepends=('rpmextract')
 install=nrclient.install
 source=('http://download.neorouter.com/Downloads/NRFree/Update_2.3.1.4360/Linux/CentOS/nrclient-2.3.1.4360-free-centos-i386.rpm' 'nrclient.service')
-md5sums=('81b4c36a9c1178086f59bf5d62b4527c'
-'051c0ba7598249e035368f8ecb6ea44d')
+md5sums=('81b4c36a9c1178086f59bf5d62b4527c')
 if test "$CARCH" == x86_64; then
 source=('http://download.neorouter.com/Downloads/NRFree/Update_2.3.1.4360/Linux/CentOS/nrclient-2.3.1.4360-free-centos-x86_64.rpm' 'nrclient.service')
-md5sums=('736946473cc4038e3a8b2274012f483e'
-'051c0ba7598249e035368f8ecb6ea44d')
+md5sums=('736946473cc4038e3a8b2274012f483e')
 fi
 
 build() {
