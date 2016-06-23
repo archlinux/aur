@@ -1,6 +1,6 @@
 pkgbase = oomox-git
 	pkgdesc = Graphical application for generating different color variations of Numix theme (GTK2, GTK3)
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/actionless/oomox
 	arch = x86_64
