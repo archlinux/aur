@@ -4,15 +4,15 @@
 pkgname=vokoscreen
 _pkgver=2.4.30-beta
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 
-depends=('qt5-x11extras' 'ffmpeg' 'lame' 'desktop-file-utils' 'xdg-utils' 'lsof')
-optdepends=(
-	'pulseaudio-alsa: for PulseAudio support'
+depends=(
+	'qt5-x11extras' 'qt5-multimedia' 'ffmpeg' 'lame'
+	'desktop-file-utils' 'xdg-utils' 'lsof' 'pulseaudio-alsa'
 )
 makedepends=('qt5-tools')
 provides=("${pkgname}=${pkgver}")
