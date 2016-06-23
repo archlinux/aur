@@ -17,8 +17,8 @@ post_install() {
     msg_green "Running Post Install Tasks..."
     note "Creating Symlinks in /usr/bin"
     ln -sf /opt/peazip/peazip /usr/bin/peazip
-    ln -sf /opt/peazip/peazip /usr/bin/pea
-    ln -sf /opt/peazip/peazip /usr/bin/pealauncher
+    ln -sf /opt/peazip/res/pea /usr/bin/pea
+    ln -sf /opt/peazip/res/pealauncher /usr/bin/pealauncher
     note "Updating desktop MIME database"
     update-desktop-database -q
 }
@@ -39,5 +39,4 @@ post_remove() {
     rm -rdf /opt/peazip
     note "Updating desktop MIME database"
     update-desktop-database -q
-
 }
