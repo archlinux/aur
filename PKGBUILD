@@ -1,7 +1,7 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 
 pkgname=mdbook
-pkgver=v0.0.11
+pkgver=v0.0.12
 pkgrel=1
 pkgdesc="Command line tool for books written in markdown language."
 url="https://github.com/azerupi/mdBook"
