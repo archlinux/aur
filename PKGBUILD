@@ -1,8 +1,8 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic-git
-pkgver=v0.12.0cl1.r14.gc596b82
-pkgrel=2
+pkgver=v1.1.0.r0.g8cddbdd
+pkgrel=1
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
@@ -12,7 +12,7 @@ makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.12')
+source=('git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=1.1')
 sha256sums=('SKIP')
 
 pkgver() {
