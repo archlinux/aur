@@ -4,6 +4,7 @@ Description=Systemd service and user to run Retroarch in stand-alone mode
 [Service]
 User=retroarch
 Group=retroarch
+PAMName=login
 Type=simple
 ExecStart=/usr/bin/retroarch --appendconfig=/etc/retroarch-standalone.cfg
 TimeoutStopSec=30
