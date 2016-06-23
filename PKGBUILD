@@ -1,7 +1,7 @@
 # Maintainer: Samuel Walladge <swalladge at gmail dot com>
 
 pkgname=peco
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Simplistic interactive filtering tool'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git' )
 depends=('glibc')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('416d2547b639b11563d0bd910fa043e532f25fcc40de3ec0d7bec4943747fff1')
+sha256sums=('edc1ec186a0f439ae84071c9e00f68fec6f8fe49efc9b6bb10462e72f7286b23')
 
 prepare() {
   export GOPATH="$srcdir"
