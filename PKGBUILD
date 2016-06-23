@@ -2,7 +2,7 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.3
+pkgver=7.2.4
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
@@ -16,7 +16,7 @@ source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgve
         "ipe.bash-completion"
         "config.patch"
         )
-md5sums=('ad371b237417d7574b90bc68feed41f6'
+md5sums=('790066c16aafdfdeb610b6e556c33cb3'
          '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          '56c6de89f3def116fac7828f78834d37')
