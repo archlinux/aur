@@ -3,7 +3,7 @@
 # Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.4.0
+pkgver=0.4.902
 pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ groups=('xorg-drivers' 'xorg')
 options=('!emptydirs' '!makeflags')
 source=(#http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fixes.patch
         # there's no release tarball
-        git://anongit.freedesktop.org/openchrome/xf86-video-openchrome#commit=52730d1)
+        git://anongit.freedesktop.org/openchrome/xf86-video-openchrome#commit=54de6f9)
 md5sums=('SKIP')
 
 prepare() {
