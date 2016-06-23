@@ -2,7 +2,7 @@ pkgbase = cin-bin
 	pkgdesc = Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git (20160619)
 	pkgver = 5.1
 	pkgrel = 20160619
-	url = http://www.cinelerra-cv.org
+	url = http://www.cinelerra-cv.org/five
 	arch = x86_64
 	license = GPL
 	makedepends = yasm
@@ -23,7 +23,7 @@ pkgbase = cin-bin
 	conflicts = cinelerra-cv
 	conflicts = cinelerra-heroine
 	conflicts = cin
-	source = https://www.cinelerra-cv.org/five/pkgs/arch/cin_5.1.20160619-x86_64.pkg.tar.xz
+	source = https://www.cinelerra-cv.org/five/pkgs/arch/cin-5.1.20160619-x86_64.pkg.tar.xz
 	md5sums = 29821dfb8238d254968c30e06b5356f9
 
 pkgname = cin-bin
