@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.1.50.r126412
-pkgrel=2
+pkgver=25.1.50.r126415
+pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
