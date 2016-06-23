@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=kfoldersync
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'kconfigwidgets' 'kcoreaddons' 'kdbusaddons' 'ki18
 makedepends=('coreutils' 'extra-cmake-modules' 'gettext' 'phonon-qt5-gstreamer')
 source=("http://kde-apps.org/CONTENT/content-files/164092-kfoldersync-${pkgver}.tar.xz" "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('74ab8ed87c586bde9b5fd34b617d09e6' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('77c59d1ab569682a5801e4202416d671' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
