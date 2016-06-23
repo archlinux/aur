@@ -17,7 +17,7 @@ md5sums=('81b4c36a9c1178086f59bf5d62b4527c'
 '051c0ba7598249e035368f8ecb6ea44d')
 if test "$CARCH" == x86_64; then
 source=('http://download.neorouter.com/Downloads/NRFree/Update_2.3.1.4360/Linux/CentOS/nrclient-2.3.1.4360-free-centos-x86_64.rpm' 'nrclient.service')
-md5sums=('736946473cc4038e3a8b2274012f483e'
+md5sums=('046449a46ee5e7b6bc67b8c079e3e307'
 '051c0ba7598249e035368f8ecb6ea44d')
 fi
 
