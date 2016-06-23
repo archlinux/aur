@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-aurorae-theme
-_commit=ee273e8 # 7 digits
-pkgver=20160601
+_commit=4345d8d # 7 digits
+pkgver=20160620
 pkgrel=1
 pkgdesc="Papirus decorations for Kwin"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -21,6 +21,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
