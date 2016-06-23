@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.1.0.r1031.gdf4eb00
+pkgver=release.2.1.0.r1154.gd8cc782
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url=http://www.darktable.org/
 license=('GPL3')
 depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbus-glib'
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
-	 'libsoup' 'gtk-engines' 'osm-gps-map' 'pugixml')
+	 'libsoup' 'gtk-engines' 'osm-gps-map' 'pugixml' 'colord')
 makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
 optdepends=('librsvg' 'flickcurl: flickr upload')
 conflicts=(darktable)
@@ -41,13 +41,19 @@ build() {
   cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
-      -DDONT_INSTALL_GCONF_SCHEMAS=True \
       -DBINARY_PACKAGE_BUILD=1 \
-      -DUSE_GCONF_BACKEND=Off \
+      -DUSE_LIBSECRET=On \
+      -DUSE_LUA=On \
       -DBUILD_USERMANUAL=False \
       -DUSE_GNOME_KEYRING=Off \
+      -DUSE_COLORD=On \
+      -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-result" \
       ..
+  make
+
+  cd ../tools/basecurve
+  cmake .
   make
 }
 
