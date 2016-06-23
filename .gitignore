@@ -1,0 +1,7 @@
+*
+!apache.example.conf
+!.gitignore
+!librenms.install
+!nginx.example.conf
+!PKGBUILD
+!.SRCINFO
