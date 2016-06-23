@@ -20,13 +20,13 @@ groups=('kimchi-project')
 # Dependencies
 depends=('python2-configobj'
          'python2-pyparted'
-         'wok')
+         'wokd')
 #optdepends=()
 makedepends=('git')
 #checkdepends=()
 
 # Package Relations
-provides=('ginger-base')
+#provides=()
 conflicts=('ginger-base-git')
 #replaces=()
 
