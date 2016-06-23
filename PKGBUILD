@@ -1,10 +1,10 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=symboleditor
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Symbol editor for KXStitch"
 arch=('i686' 'x86_64')
-url="http://kxstitch.sourceforge.net/"
+url="https://userbase.kde.org/SymbolEditor"
 license=('GPL')
 depends=('kdebase-runtime' 'imagemagick')
 makedepends=('cmake' 'automoc4' 'doxygen' 'patch')
