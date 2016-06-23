@@ -4,11 +4,11 @@
 
 pkgname=firefox-wayland
 pkgver=47.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with Wayland patches"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-url="https://github.com/stransky/gecko-dev"
+url="https://bugzilla.mozilla.org/show_bug.cgi?id=635134"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
          'sqlite' 'ttf-font' 'icu')
