@@ -2,14 +2,10 @@ post_install() {
   # Update systemd sysusers
   systemd-sysusers
 
-  # Create Home folder
-  mkdir -p /home/retroarch
-  chown -R retroarch:retroarch /home/retroarch
-
   # Swap configuration if it doesn't exist
-  if [ ! -f /var/lib/oscam/oscam.conf ]; then
-    mv /var/lib/oscam/oscam.conf.pacsave \
-      /var/lib/oscam/oscam.conf 2> /dev/null
+  if [ ! -f /etc/retroarch-standalone.cfg ]; then
+    mv /etc/retroarch-standalone.cfg.pacsave \
+      /etc/retroarch-standalone.cfg 2> /dev/null
   fi
 }
 
@@ -17,12 +13,9 @@ post_upgrade() {
   # Update systemd sysusers
   systemd-sysusers
 
-  # Fix permissions
-  chown -R retroarch:retroarch /home/retroarch
-
   # Swap configuration if it doesn't exist
-  if [ ! -f /var/lib/oscam/oscam.conf ]; then
-    mv /var/lib/oscam/oscam.conf.pacsave \
-      /var/lib/oscam/oscam.conf 2> /dev/null
+  if [ ! -f /etc/retroarch-standalone.cfg ]; then
+    mv /etc/retroarch-standalone.cfg.pacsave \
+      /etc/retroarch-standalone.cfg 2> /dev/null
   fi
 }
