@@ -4,6 +4,7 @@
 pkgname=batman-adv
 pkgver=2016.2
 pkgrel=0
+epoch=1
 pkgdesc='batman kernel module'
 arch=('i686' 'x86_64')
 url='https://www.open-mesh.net/'
