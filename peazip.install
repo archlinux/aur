@@ -10,7 +10,7 @@ note() {
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
-green="${bold}$(tput setaf 10)"
+green="${bold}$(tput setaf 2)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
