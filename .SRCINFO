@@ -1,12 +1,13 @@
 pkgbase = emacs-lucid-git
 	pkgdesc = GNU Emacs. Official git master.
-	pkgver = 25.1.50.r126399
+	pkgver = 25.1.50.r126412
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = texlive-plainextra
 	depends = alsa-lib
 	depends = gpm
 	depends = hicolor-icon-theme

@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.1.50.r126399
+pkgver=25.1.50.r126412
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'giflib'
 	 'm17n-lib' 'libxrandr' 'libxinerama' 'imagemagick'
 	 'librsvg' 'gnutls')
-makedepends=('git')
+makedepends=('git' 'texlive-plainextra')
 conflicts=('emacs')
 provides=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
@@ -44,12 +44,13 @@ build() {
     --with-xft \
     --without-xwidgets
   make
+  make pdf
 }
 
 package() {
   cd "$srcdir/emacs"
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install install-pdf
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
