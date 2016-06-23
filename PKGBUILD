@@ -1,4 +1,6 @@
-# Maintainer: Matthew "zashi" Hiles matthew.hiles at gmail
+# Maintainer: Erez Raviv (erezraviv at gmail com)
+# please be gentel - first AUR package I adopted
+# will be updating thi PKGBUILD 
 pkgname=chirp-daily
 pkgver=$(date +%Y%m%d)
 pkgrel=1

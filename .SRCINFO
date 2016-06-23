@@ -1,6 +1,6 @@
 pkgbase = chirp-daily
 	pkgdesc = Daily build for GUI tool for programming ham radios; this pkgbuild is never out of date
-	pkgver = 20151201
+	pkgver = 20160623
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
 	arch = any
