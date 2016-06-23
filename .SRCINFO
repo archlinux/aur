@@ -1,0 +1,18 @@
+pkgbase = xbps-git
+	pkgdesc = Void Linux's homemade binary package manager
+	pkgver = 0.51.r111.gf196abb
+	pkgrel = 1
+	url = https://github.com/voidlinux/xbps
+	arch = i686
+	arch = x86_64
+	license = custom:2-clause-BSD
+	makedepends = zlib
+	makedepends = openssl
+	makedepends = git
+	depends = ca-certificates
+	depends = libarchive
+	source = git+https://github.com/voidlinux/xbps.git
+	md5sums = SKIP
+
+pkgname = xbps-git
+
