@@ -11,15 +11,14 @@ pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
 license=(custom)
-depends=(gtk2 alsa-lib libxslt libxtst "java-runtime>=7")
+depends=(gtk2 alsa-lib libxslt libxtst "java-runtime>=7" "java-openjfx")
 makedepends=(fakechroot desktop-file-utils)
 makedepends_x86_64=(lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
-            'microchip-mplabc18_bin: C compiler for PIC18 MCUs'
+            'microchip-mplabc18-bin: C compiler for PIC18 MCUs'
             'sdcc: C compiler for PIC16/18 MCUs'
-            'java-openjfx: required JavaFX package for OpenJDK users'
             )
 provides=(mplab)
 conflicts=(mplab)
