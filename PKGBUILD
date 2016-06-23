@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-classic-git
 pkgver=v0.12.1cl1.r0.g049deb2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
