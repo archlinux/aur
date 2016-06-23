@@ -2,7 +2,7 @@
 
 pkgname=emacs-lucid-git
 pkgver=25.1.50.r126412
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -38,7 +38,7 @@ build() {
     --localstatedir=/var \
     --with-x-toolkit=lucid \
     --mandir=/usr/share/man \
-    --pdfdir=/usr/share/doc/emacs/pdf \
+    --pdfdir=/usr/share/doc/emacs \
     --with-sound \
     --without-gconf \
     --with-xft \
