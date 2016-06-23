@@ -1,19 +1,20 @@
 # Colored makepkg-like functions
-msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
+msg_green() {
+    printf "${green}==>${bold} $1${all_off}\n"
 }
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+    printf "${blue}  ->${bold} $1${all_off}\n"
 }
 
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    msg_blue "Running Post Istall Tasks..."
+    msg_green "Creating Symlinks..."
     note "Creating Symlinks in /usr/bin"
     ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
     ln -sf /opt/peazip-gtk2-portable/res/pea /usr/bin/pea
@@ -23,13 +24,13 @@ post_install() {
 }
 
 post_upgrade() {
-    msg_blue "Running Post Upgrade Tasks..."
+    msg_green "Running Post Upgrade Tasks..."
     note "Updating desktop MIME database"
     update-desktop-database -q
 }
 
 post_remove() {
-    msg_blue "Running Post Upgrade Tasks...""
+    msg_green "Running Post Upgrade Tasks..."
     note "Removing old links and folders"
     rm -f /usr/bin/peazip
     rm -f /usr/bin/pea
