@@ -11,7 +11,7 @@ depends=('w3m')
 conflicts=('paclog')
 
 source=("https://github.com/protist/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('eb4473a44e9521dfcae5fc3de66f45b8b2e054bc6291abb8735f9543185ea8d7')
+sha256sums=('b5878de879a7603cea26ec49cc2a23b5d42f10be89b968f71f4e29415df8b734')
 
 package() {
   cd "$pkgname-$pkgver"
