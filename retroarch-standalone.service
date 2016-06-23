@@ -8,6 +8,7 @@ PAMName=login
 Type=simple
 ExecStart=/usr/bin/retroarch --appendconfig=/etc/retroarch-standalone.cfg
 TimeoutStopSec=30
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
