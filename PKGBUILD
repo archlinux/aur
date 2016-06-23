@@ -1,15 +1,14 @@
 pkgname=ravi
-pkgver=0.13
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='a derivative of Lua 5.3 with limited optional static typing and LLVM and libgccjit based JIT compilers'
 arch=(i686 x86_64)
 url='https://github.com/dibyendumajumdar/ravi'
 license=(MIT)
-options=(staticlibs)
-depends=(llvm)
-makedepends=(cmake)
+depends=()
+makedepends=(cmake llvm)
 source=(ravi-$pkgver.zip::https://github.com/dibyendumajumdar/ravi/archive/$pkgver.zip)
-sha1sums=('f3a65185a7cb3030c19b9feb63d74e443e9a029a')
+sha1sums=('cb631180e1cc68a984b2f81da6e606a5e13047bc')
 
 build() {
   cd ravi-$pkgver
