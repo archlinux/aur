@@ -1,7 +1,7 @@
 pkgbase = gnome-keyring-import-export-hg
 	pkgdesc = Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine.
 	pkgver = r15.db0c7ce80e60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/spookylukey/gnome-keyring-import-export
 	arch = any
 	license = unknown

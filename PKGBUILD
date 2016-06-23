@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='gnome-keyring-import-export-hg'
 pkgver=r15.db0c7ce80e60
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine.'
 arch=('any')
 url='https://bitbucket.org/spookylukey/gnome-keyring-import-export'
