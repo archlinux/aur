@@ -45,8 +45,7 @@ prepare() {
         --enable-unicode \
         --enable-openvz \
         --enable-vserver \
-        --enable-cgroup \
-        --enable-oom
+        --enable-cgroup
 }
 
 build() {
