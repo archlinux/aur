@@ -2,7 +2,7 @@
 
 pkgname=python2-pyftdi-git
 _pkgname=pyftdi
-pkgver=v0.10.0.r0.g47eef7a
+pkgver=v0.13.2.r8.g98f6685
 pkgrel=1
 pkgdesc="PyFtdi aims at providing a user-space driver for modern FTDI devices, implemented in pure Python language."
 arch=('any')
