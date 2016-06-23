@@ -9,7 +9,7 @@ _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 _pkgver=5.6
 pkgver=${_pkgver}.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -49,12 +49,12 @@ case "$android_arch" in
 esac
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/${_pkgver}/${pkgver}/single/${_pkgfqn}.tar.xz"
+source=("http://download.qt-project.org/official_releases/qt/${_pkgver}/${pkgver}-1/single/${_pkgfqn}-1.tar.xz"
         "Misc.cpp.patch"
         "JavaScriptCore.pri.patch"
         "imageformats.pro.patch"
         "src.pro.patch")
-sha256sums=('0d3cc75d2368ad988c9ec6bcbed6362dbaa8e03fdfd04e679284f4b9af91e565'
+sha256sums=('ce08a7eb54661705f55fb283d895a089b267c688fabe017062bd71b9231736db'
             '096eef8234f0ea964ac20ca887c8da2e7b5b836de417515acde103c2a27a04de'
             '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
             '943e8c03dc2218250f75cec3b663d90e6bb98d9b64b9f12b01713c284e5e4673'
