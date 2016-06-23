@@ -1,0 +1,23 @@
+pkgbase = retroarch-standalone-service
+	pkgdesc = Systemd service and user to run Retroarch in stand-alone mode
+	pkgver = 1
+	pkgrel = 1
+	install = retroarch-standalone.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = retroarch
+	depends = retroarch-assets-xmb
+	depends = retroarch-autoconfig-udev
+	source = retroarch-standalone.service
+	source = retroarch-standalone.sysuser
+	source = retroarch-standalone.cfg
+	md5sums = a301ddc8992981f3360b121fe830441d
+	md5sums = 38eb1009d03d8ce94187038449bf2d77
+	md5sums = 5206927b9568f5dfd868d65aad781df5
+
+pkgname = retroarch-standalone-service
+
