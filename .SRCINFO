@@ -1,0 +1,13 @@
+pkgbase = python-perf
+	pkgdesc = Interface with the Linux profiling infrastructure
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://perf.wiki.kernel.org
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	source = ftp://195.220.108.108/linux/fedora/linux/updates/24/x86_64/p/python-perf-4.5.7-300.fc24.x86_64.rpm
+	sha256sums = c6f913f3a842a52be1549ff92a05cbbacf673a83e9b6e2b1d3d5a2ea50c8b95f
+
+pkgname = python-perf
+
