@@ -1,0 +1,15 @@
+pkgbase = python-httpie-jwt-auth
+	pkgdesc = JWTAuth (JSON Web Tokens) auth plugin for HTTPie
+	pkgver = 50.3a2ce34
+	pkgrel = 1
+	url = https://github.com/teracyhq/httpie-jwt-auth
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	makedepends = git
+	depends = httpie
+	source = python-httpie-jwt-auth::git://github.com/teracyhq/httpie-jwt-auth.git
+	md5sums = SKIP
+
+pkgname = python-httpie-jwt-auth
+
