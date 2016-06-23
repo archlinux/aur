@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=bunsen-common-git
-pkgver=r7.5ec5e6f
-pkgrel=2
+pkgver=r39.cd8ff41
+pkgrel=1
 pkgdesc="Shared shell scripts commonly used in BunsenLabs Linux projects"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-common"
@@ -21,9 +21,12 @@ pkgver() {
 check() {
   cd "$srcdir/${pkgname%-git}"
   bash -n bl-include.cfg
+  bash -n yad-includes
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm 755 bl-include.cfg "${pkgdir}/usr/lib/bunsen/bunsen-common/bl-include.cfg"
+  install -Dm 644 bl-include.cfg                  "${pkgdir}/usr/lib/bunsen/common/bl-include.cfg"
+  install -Dm 644 yad-includes                    "${pkgdir}/usr/lib/bunsen/common/yad-includes"
+  install -Dm 644 distributor-logo-bunsenlabs.svg "${pkgdir}/usr/share/icons/hicolor/scalable/places/distributor-logo-bunsenlabs.svg"
 }
