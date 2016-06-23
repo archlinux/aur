@@ -1,7 +1,7 @@
 pkgname=cgal-ipelets
 pkgver=4.8
-pkgrel=1
-ipever=7.2.3
+pkgrel=2
+ipever=7.2.4
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
