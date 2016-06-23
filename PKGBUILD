@@ -2,7 +2,7 @@
 # Maintainer: max-k <max-k AT post DOT com>
 
 pkgname=reprepro
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 pkgdesc="A tool to handle local repositories of Debian packages"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('db' 'gpgme' 'zlib' 'bzip2' 'libarchive')
 optdepends=('apt: Importing from other sources')
 source=("http://ftp.debian.org/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('97ef4dc26f6f81981a591d620adadb233074a36d7e042d56711eb4e885ce68fa')
+sha256sums=('1f6668d2dba652a71a7d9fddb39dcf949336513b0aaa4c71c14081e833cc2d5c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
