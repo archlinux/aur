@@ -1,0 +1,85 @@
+diff -ru gypsy-0.9.orig/docs/gypsy-tutorial.html gypsy-0.9/docs/gypsy-tutorial.html
+--- gypsy-0.9.orig/docs/gypsy-tutorial.html	2011-08-09 13:20:15.000000000 +0200
++++ gypsy-0.9/docs/gypsy-tutorial.html	2013-04-30 10:28:42.599711724 +0200
+@@ -97,10 +97,11 @@
+ 		GError *error = NULL;
+ 		char *path;
+ 
++	#if !GLIB_CHECK_VERSION(2,35,0)
+ 		/* Libgypsy uses GObject, so the type system needs
+ 		   to be started up before any Gypsy calls */
+ 		g_type_init ();
+-
++	#endif
+ 		/* Retrieve the default control */
+ 		control = gypsy_control_get_default ();
+ 		
+diff -ru gypsy-0.9.orig/examples/list-known-gps-devices.c gypsy-0.9/examples/list-known-gps-devices.c
+--- gypsy-0.9.orig/examples/list-known-gps-devices.c	2011-10-17 18:32:37.000000000 +0200
++++ gypsy-0.9/examples/list-known-gps-devices.c	2013-04-30 10:26:59.824754298 +0200
+@@ -21,8 +21,9 @@
+     GPtrArray *known_devices;
+     int i;
+ 
++#if !GLIB_CHECK_VERSION(2,35,0)
+     g_type_init ();
+-
++#endif
+     discovery = gypsy_discovery_new ();
+     known_devices = gypsy_discovery_list_devices (discovery, &error);
+ 
+diff -ru gypsy-0.9.orig/examples/simple-gps-dbus.c gypsy-0.9/examples/simple-gps-dbus.c
+--- gypsy-0.9.orig/examples/simple-gps-dbus.c	2011-08-09 13:20:15.000000000 +0200
++++ gypsy-0.9/examples/simple-gps-dbus.c	2013-04-30 10:26:20.862069029 +0200
+@@ -122,7 +122,9 @@
+ 	DBusError error;
+ 	GMainLoop *mainloop;
+ 
++#if !GLIB_CHECK_VERSION(2,35,0)
+ 	g_type_init ();
++#endif
+ 	conn = get_connection ();
+ 
+ 	dbus_error_init (&error);
+diff -ru gypsy-0.9.orig/examples/simple-gps-gypsy.c gypsy-0.9/examples/simple-gps-gypsy.c
+--- gypsy-0.9.orig/examples/simple-gps-gypsy.c	2011-08-09 13:20:15.000000000 +0200
++++ gypsy-0.9/examples/simple-gps-gypsy.c	2013-04-30 10:26:43.778354525 +0200
+@@ -68,8 +68,9 @@
+ 		return 0;
+ 	}
+ 
++#if !GLIB_CHECK_VERSION(2,35,0)
+ 	g_type_init ();
+-
++#endif
+ 	control = gypsy_control_get_default ();
+ 	path = gypsy_control_create (control, argv[1], &error);
+ 	if (path == NULL) {
+diff -ru gypsy-0.9.orig/examples/simple-gps-satellites.c gypsy-0.9/examples/simple-gps-satellites.c
+--- gypsy-0.9.orig/examples/simple-gps-satellites.c	2011-08-09 13:20:15.000000000 +0200
++++ gypsy-0.9/examples/simple-gps-satellites.c	2013-04-30 10:27:21.314396881 +0200
+@@ -43,8 +43,9 @@
+ 		return 0;
+ 	}
+ 
++#if !GLIB_CHECK_VERSION(2,35,0)
+ 	g_type_init ();
+-
++#endif
+ 	control = gypsy_control_get_default ();
+ 	path = gypsy_control_create (control, argv[1], &error);
+ 	if (path == NULL) {
+diff -ru gypsy-0.9.orig/src/main.c gypsy-0.9/src/main.c
+--- gypsy-0.9.orig/src/main.c	2011-10-13 17:44:12.000000000 +0200
++++ gypsy-0.9/src/main.c	2013-04-30 10:27:42.194049621 +0200
+@@ -188,8 +188,9 @@
+ 
+ 	umask (022);
+ 
++#if !GLIB_CHECK_VERSION(2,35,0)
+ 	g_type_init ();
+-
++#endif
+ 	mainloop = g_main_loop_new (NULL, FALSE);
+ 
+ 	conn = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);

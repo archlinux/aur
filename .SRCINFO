@@ -1,0 +1,20 @@
+pkgbase = gypsy
+	pkgdesc = GPS multiplexing daemon
+	pkgver = 0.9
+	pkgrel = 7
+	url = http://gypsy.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxslt
+	depends = dbus-glib
+	depends = bluez
+	depends = bluez-libs
+	options = !libtool
+	source = http://gypsy.freedesktop.org/releases/gypsy-0.9.tar.gz
+	source = g_type_init_deprecation.patch
+	md5sums = e2d186df9c2cc3b70a027043e22acf1a
+	md5sums = f42f0bb01f8a278fce81d6f05305b9fb
+
+pkgname = gypsy
+
