@@ -30,7 +30,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    update-desktop-database -q
     msg_green "Running Post Upgrade Tasks..."
     note "Removing old links and folders"
     rm -f /usr/bin/peazip
