@@ -1,20 +1,21 @@
 pkgbase = amidst
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking
-	pkgver = 3.7
+	pkgver = 4.1
 	pkgrel = 1
-	url = http://www.minecraftforum.net/topic/626786-
+	url = https://github.com/toolbox4minecraft/amidst
 	changelog = ChangeLog
 	arch = any
 	license = GPL3
-	depends = java-runtime
+	depends = java-runtime=8
+	depends = sh
 	optdepends = minecraft: the game itself
-	noextract = AMIDST-3.7.jar
-	source = https://github.com/skiphs/AMIDST/releases/download/3.7/AMIDST-3.7.jar
-	source = amidst.sh
+	noextract = amidst-v4-1.jar
+	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.1/amidst-v4-1.jar
 	source = amidst.desktop
-	md5sums = be52f1eaf644fca9c95e1fbe7e2ee5dc
-	md5sums = 783c4040c9736f96ce72e9997833a0bf
+	source = icon.png
+	md5sums = 1f3d6157e4d0339ad4f2d7996a0f88a6
 	md5sums = 3c6900ac68e3175768322e684f9f1bcb
+	md5sums = 0d90c979cbd12aa7d08d05f5f3299ce7
 
 pkgname = amidst
 

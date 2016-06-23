@@ -1,4 +1,76 @@
-2015-01-04 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+2016-06-23 CubeTheThird <cubethethird@gmail.com>
+
+	* 4.1-1 :
+	New contributor.
+	Updated PKGBUILD.
+		Updated URLs for the new amidst git repository
+		Generates the amidst shell script instead of bundling it.
+		Modified java dependency for java 8 requirement.
+	Bundled higher resolution icon.
+	Version bump.
+	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.1
+
+	Upstream changelog:
+	- added new Ocean Monument algorithm since 15w46a
+	- changed the Slime Chunk color to be better visible in Mushroom Island biomes
+	- fixed the Slime Chunk algorithm
+	- fixed a NullPointerException
+
+	Upstream 4.0 changelog:
+	- New features displayed in the world
+		- igloos
+		- mineshafts
+		- ocean monuments
+		- 1.9 strongholds
+		- the end dimension
+		- the end cities
+		- reduced false positives for villages
+		- increased accuracy of structures
+		- fixed nether fortress locations
+		- fixed player locations for the nether
+		- renamed the biome "Sky" to "The End"
+		- the world spawn is now read from the save game
+		- the player world icons now display the player's current dimension
+	- Player loading, moving and saving
+		- improved workflow for player moving
+		- fixed the player in the sky issue by asking the user for the new y coordinate when a player is moved
+		- fixed player moving context menu on linux (did not show up on right click)
+		- added support for the playerdata directory, which is how players are stored since Minecraft 1.7.6 (saving and loading)
+		- added implementation of another web-service to request player names and skins by uuid
+		- added implementation of another web-service to request player uuids by name
+		- reworked how save games are recognised as single- or multiplayer
+	- GUI
+		- reworked menu structure
+		- reworked keyboard shortcuts and Mnemonics
+		- added new Nether Fortress and Witch Hut icons
+		- added scale widget
+		- added world type to the seed widget
+		- added menu entry switch profile
+		- added menu entry goto spawn
+		- added menu entry reload player locations
+		- added menu entry how can I move a player?
+		- added warning about save game manipulation
+		- debug widget prevented the user to enter the biome highlight mode
+		- updated information in About window
+		- all Operating Systems now use the default Java Look and Feel
+		- made OS X keyboard shortcuts feel more native
+	- Changes under the hood
+		- added information to the seed history file
+		- added useful logging output
+		- changed the update mechanism to work with the new project location
+		- increased the system requirements to Java version 8
+		- improved the command line interface
+		- removed google analytics tracker
+		- removed unused libraries and code
+		- cleaned up the source code
+		- used a code formatter (from eclipse)
+		- added documentation
+		- automated the build process
+		- added tests to ensure the world generation is not changed by accident
+		- changed to new version list URL
+		- updated the cached version list to include all versions up to Minecraft 1.9
+
+	2015-01-04 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 3.7-1 :
 	Version bump.
@@ -95,7 +167,7 @@
 	Version bump.
 
 	Upstream changelog:
-	- Increased performance for filling in image data. 
+	- Increased performance for filling in image data.
 	- Slightly reduce memory usage for structure generation.
 	- Added official support for 13w37b.
 	- Reduced memory usage from grid layer.

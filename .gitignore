@@ -1,2 +1,7 @@
 # source files
-mcpatcher-*.jar
+*.jar
+*.pkg.tar.xz
+pkg/**
+src/**
+build.sh
+test.sh
