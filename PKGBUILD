@@ -1,5 +1,5 @@
 # Maintainer: Robin Thompson <robin*dot*thompson99*at*gmail*dot*com>
-_pkgname=dock-applet-gtk3
+_pkgname=dock-applet
 pkgname=mate-applet-dock-gtk3-git
 pkgver=0.72
 pkgrel=1
