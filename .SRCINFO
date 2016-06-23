@@ -1,0 +1,30 @@
+pkgbase = cin-bin
+	pkgdesc = Cinelerra git://git.cinelerra-cv.org/goodguy/cinelerra.git (20160619)
+	pkgver = 5.1
+	pkgrel = 20160619
+	url = http://www.cinelerra-cv.org
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = nasm
+	makedepends = cmake
+	makedepends = libxml2
+	makedepends = perl-xml-libxml
+	makedepends = perl-xml-parser
+	makedepends = python2
+	depends = xorg-server
+	depends = xorg-server-utils
+	depends = libpng
+	depends = libxv
+	depends = libva
+	depends = libxft
+	depends = freetype2
+	depends = alsa-lib
+	conflicts = cinelerra-cv
+	conflicts = cinelerra-heroine
+	conflicts = cin
+	source = https://www.cinelerra-cv.org/five/pkgs/arch/cin_5.1.20160619-x86_64.pkg.tar.xz
+	md5sums = 29821dfb8238d254968c30e06b5356f9
+
+pkgname = cin-bin
+
