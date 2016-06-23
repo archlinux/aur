@@ -1,0 +1,12 @@
+[Unit]
+Description=NeoRouter Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/ZebraNetworkSystems/NeoRouter
+ExecStart=/usr/bin/nrserver
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

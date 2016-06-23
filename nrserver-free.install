@@ -1,0 +1,4 @@
+post_install() {
+  cd /usr/local/ZebraNetworkSystems/NeoRouter/
+  openssl req -new -newkey rsa:1024 -days 3650 -nodes -x509 -keyout server.key -out server.crt -config openssl.cnf
+}
