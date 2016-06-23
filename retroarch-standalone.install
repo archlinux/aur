@@ -2,6 +2,10 @@ post_install() {
   # Update systemd sysusers
   systemd-sysusers
 
+  # Create Home folder
+  mkdir -p /home/retroarch
+  chown -R retroarch:retroarch /home/retroarch
+
   # Swap configuration if it doesn't exist
   if [ ! -f /var/lib/oscam/oscam.conf ]; then
     mv /var/lib/oscam/oscam.conf.pacsave \
@@ -12,6 +16,9 @@ post_install() {
 post_upgrade() {
   # Update systemd sysusers
   systemd-sysusers
+
+  # Fix permissions
+  chown -R retroarch:retroarch /home/retroarch
 
   # Swap configuration if it doesn't exist
   if [ ! -f /var/lib/oscam/oscam.conf ]; then
