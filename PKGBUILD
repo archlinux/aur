@@ -3,8 +3,8 @@
 pkgname=textsuggest-git
 _gitname=${pkgname%-git*}
 pkgver=r23.1519640
-pkgrel=1
-pkgdesc='Simple Linux utility to autocomplete words using dmenu2'
+pkgrel=2
+pkgdesc='Simple Linux utility to autocomplete words using rofi'
 arch=('any')
 url="https://github.com/bharadwaj-raju/TextSuggest"
 license=('GPL3')
