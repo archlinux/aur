@@ -1,6 +1,7 @@
 *.pkg.tar
 *.pkg.tar.xz
 *.tar.xz
+*.zip
 albion-online-setup
 pkg/
 src/
