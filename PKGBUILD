@@ -6,7 +6,7 @@
 pkgname=('kimchi-git')
 
 # Version
-pkgver=2.1.0.r113.gbcb8917
+pkgver=2.1.0.r114.g9feff9e
 pkgrel=1
 #epoch=
 
@@ -41,7 +41,7 @@ depends=('bridge-utils'
          'ttf-font-awesome'
          'ttf-opensans'
          'websockify'
-         'wok')
+         'wokd')
 #optdepends=()
 makedepends=('git')
 #checkdepends=()
