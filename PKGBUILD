@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=0.9.0.r15.gbaacb4e
+pkgver=1.0.2.r20.g6b11fc8
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
@@ -10,11 +10,12 @@ md5sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
 depends=('pacman>=5.0' 'git' 'expac' 'jshon' 'aria2'
-         'pacutils-git' 'repose-git' 'datamash-git')
+         'pacutils' 'repose')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=('devtools: build in an nspawn container'
-	    'vifm: improved build file interaction')
+            'vifm: improved build file interaction'
+            'datamash: check tsort input')
 
 pkgver() {
   cd aurutils
