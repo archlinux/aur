@@ -1,4 +1,4 @@
-# Maintainer: Yardena Cohen <yardenack at gmail dot com>
+# Maintainer: Felix Wiegand <koffeinflummi@gmail.com>
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
