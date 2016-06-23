@@ -14,7 +14,7 @@ green="${bold}$(tput setaf 2)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    msg_green "Creating Symlinks..."
+    msg_green "Running Post Install Tasks..."
     note "Creating Symlinks in /usr/bin"
     ln -sf /opt/peazip-gtk2-portable/peazip /usr/bin/peazip
     ln -sf /opt/peazip-gtk2-portable/res/pea /usr/bin/pea
