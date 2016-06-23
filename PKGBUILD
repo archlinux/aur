@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=retroarch-standalone-service
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
