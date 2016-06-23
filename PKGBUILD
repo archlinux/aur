@@ -31,7 +31,7 @@ rm $startdir/src/nrserver-2.3.1.4360-free-centos-i386.rpm
 x86_64)
 cd $srcdir/
 rpmextract.sh $startdir/src/nrserver-2.3.1.4360-free-centos-x86_64.rpm
-rm $startdir/src/nrserver-2.3.1.4360-free-centos-x86_64.rpmm
+rm $startdir/src/nrserver-2.3.1.4360-free-centos-x86_64.rpm
 ;;
 esac
 }
