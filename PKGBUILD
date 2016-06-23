@@ -2,7 +2,7 @@
 
 _pkgname=termdown
 pkgname=$_pkgname-git
-pkgver=1.8.0.r11.g8dfcbff
+pkgver=1.10.0.r5.g095c346
 pkgrel=1
 arch=('any')
 pkgdesc='Countdown timer and stopwatch in your terminal'
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
