@@ -1,0 +1,15 @@
+pkgbase = ruby-net-telnet
+	pkgdesc = Provides telnet client functionality.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ruby/net-telnet
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = ruby
+	options = !emptydirs
+	source = https://rubygems.org/downloads/net-telnet-0.1.1.gem
+	sha256sums = dd2146083225de27f64ce120f8ff4325e424b8e8989bb342d170b0caaffd1d8f
+
+pkgname = ruby-net-telnet
+
