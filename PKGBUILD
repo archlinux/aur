@@ -3,7 +3,7 @@
 
 pkgname=netlogo
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
