@@ -2,7 +2,7 @@
 
 pkgname=kdesignerplugin-git
 pkgver=r78.5b1f761
-pkgrel=1
+pkgrel=2
 pkgdesc='KDesignerPlugin'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdesignerplugin'
@@ -29,7 +29,7 @@ build() {
   cmake ../kdesignerplugin \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
