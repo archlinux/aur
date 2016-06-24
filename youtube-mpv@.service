@@ -1,0 +1,15 @@
+[Unit]
+Description=Youtube-mpv
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/opt/youtube-mpv-git/ytdl_server.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+User=%I
+
+[Install]
+WantedBy=multi-user.target
