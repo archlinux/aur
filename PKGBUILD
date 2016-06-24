@@ -2,13 +2,13 @@
 
 pkgname=kparts-git
 pkgver=r75.e010894
-pkgrel=1
+pkgrel=2
 pkgdesc='KParts'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kparts'
 license=('LGPL')
 depends=('kio-git')
-makedepends=('extra-cmake-modules-git' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(kparts)
 provides=(kparts)
@@ -29,7 +29,7 @@ build() {
   cmake ../kparts \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
