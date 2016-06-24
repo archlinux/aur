@@ -1,0 +1,14 @@
+--- kpatch.clean/kpatch-build/kpatch-build	2016-06-24 22:34:07.566260644 +0800
++++ kpatch/kpatch-build/kpatch-build	2016-06-24 22:34:28.806261101 +0800
+@@ -97,9 +98,9 @@
+ 		# git repo
+ 		TOOLSDIR="$SCRIPTDIR"
+ 		DATADIR="$(readlink -f $SCRIPTDIR/../kmod)"
+-	elif [[ -e "$SCRIPTDIR/../libexec/kpatch/create-diff-object" ]]; then
++	elif [[ -e "$SCRIPTDIR/../lib/kpatch/create-diff-object" ]]; then
+ 		# installation path
+-		TOOLSDIR="$(readlink -f $SCRIPTDIR/../libexec/kpatch)"
++		TOOLSDIR="$(readlink -f $SCRIPTDIR/../lib/kpatch)"
+ 		DATADIR="$(readlink -f $SCRIPTDIR/../share/kpatch)"
+ 	else
+ 		return 1
