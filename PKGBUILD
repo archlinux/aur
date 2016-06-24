@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=systemsettings-git
-pkgver=r1459.a19881d
-pkgrel=1
+pkgver=r1558.d55b70d
+pkgrel=2
 pkgdesc='KDE system settings'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -29,7 +29,7 @@ build() {
   cmake ../systemsettings \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
