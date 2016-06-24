@@ -1,7 +1,7 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=archstrike-installer-git
-pkgver=20160624.r5
+pkgver=20160624.r6
 pkgrel=1
 arch=('any')
 pkgdesc="Command line installer for ArchStrike penetration testing layer"
