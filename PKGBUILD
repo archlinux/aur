@@ -5,8 +5,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=mysql-workbench-git
-pkgver=6.3.6.r0.gd46b227
-pkgrel=5
+pkgver=6.3.7.r107.g406ec7d
+pkgrel=1
 # mysql & mysql-connector-c++ from git
 _gdal_version=2.1.0
 _boost_version=1.59.0
@@ -22,13 +22,14 @@ optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
 	'python2-pyodbc: database migration')
 provides=('mysql-workbench')
 conflicts=('mysql-workbench')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'imagemagick')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'java-runtime' 'imagemagick')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-server.git'
 	'git://github.com/mysql/mysql-connector-cpp.git'
 	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.xz"
 	"https://downloads.sourceforge.net/project/boost/boost/${_boost_version}/boost_${_boost_version//./_}.tar.bz2"
+	'http://www.antlr3.org/download/antlr-3.4-complete.jar'
 	'0001-do-not-pass-type-to-std-make_pair.patch'
 	'0001-mysql-workbench-no-check-for-updates.patch'
 	'arch_linux_profile.xml')
@@ -37,6 +38,7 @@ sha256sums=('SKIP'
             'SKIP'
             '568b43441955b306364fcf97fb47d4c1512ac6f2f5f76b2ec39a890d2418ee03'
             '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
+            '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7'
             '9088cdcf82c1a925806d9162702e19c94fa21d89d422370df3f5700e204f5b32'
             'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
@@ -70,9 +72,17 @@ prepare() {
 	# we need python 2.x
 	sed -i '/^FIND_PROGRAM(PYTHON_EXEC /c FIND_PROGRAM(PYTHON_EXEC "python2")' \
 		CMakeLists.txt
+
+	# put antlr into place
+	# release tarball has the files, git still needs antlr!
+	install -D ${srcdir}/antlr-3.4-complete.jar ${srcdir}/linux-res/bin/antlr-3.4-complete.jar
 }
 
 build() {
+	# this uses deprecated auto_ptr...
+	# we known that, so do not flood the logs
+	CXXFLAGS="${CXXFLAGS} -Wno-deprecated-declarations"
+
 	# Build mysql
 	cd "${srcdir}/mysql-server/"
 	cmake . \
