@@ -18,7 +18,7 @@ build() {
   _fmitdir="${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${_fmitdir}/build"
   cd "${_fmitdir}/build"
-  lrelease ../${pkgname}.pro
+  lrelease-qt5 ../${pkgname}.pro
   qmake-qt5 "PREFIX=/usr" "CONFIG+=acs_qt acs_alsa acs_jack acs_portaudio" ../${pkgname}.pro
   make
 }
