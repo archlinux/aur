@@ -1,4 +1,4 @@
-# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann dor de>
+# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann dot de>
 
 pkgname='libqmi-qmi-over-mbim'
 pkgver='latest'
