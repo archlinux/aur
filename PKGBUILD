@@ -2,7 +2,7 @@
 
 pkgname=kplotting-git
 pkgver=r42.d4a1a1b
-pkgrel=1
+pkgrel=2
 pkgdesc='KPlotting'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kplotting'
@@ -10,8 +10,8 @@ license=('LGPL')
 depends=('qt5-base')
 makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
-conflicts=(kplotting)
-provides=(kplotting)
+conflicts=('kplotting')
+provides=('kplotting')
 source=('git://anongit.kde.org/kplotting.git')
 md5sums=('SKIP')
 
@@ -29,7 +29,7 @@ build() {
   cmake ../kplotting \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
