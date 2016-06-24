@@ -2,7 +2,7 @@
 
 pkgname=libksysguard-git
 pkgver=r1507.e52a86f
-pkgrel=1
+pkgrel=2
 pkgdesc='Libksysguard'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -28,7 +28,7 @@ build() {
   cmake ../libksysguard \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DSYSCONF_INSTALL_DIR=/etc \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
