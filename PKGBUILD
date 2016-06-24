@@ -2,11 +2,11 @@
 
 pkgname=adb-sync-git
 pkgver=r16.012b326
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to synchronize files between a PC and an Android device using the ADB'
 url='https://github.com/google/adb-sync'
 arch=(any)
-depends=(python2)
+depends=(python)
 license=(Apache)
 source=(git+https://github.com/google/adb-sync)
 sha1sums=('SKIP')
@@ -14,10 +14,6 @@ sha1sums=('SKIP')
 pkgver() {
   cd adb-sync
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  sed 's|^#!/usr/bin/python|#!/usr/bin/python2|' -i adb-sync/adb-sync
 }
 
 package() {
