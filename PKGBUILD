@@ -6,7 +6,7 @@
 pkgname=('ginger-base')
 
 # Version
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 #epoch=
 
@@ -48,7 +48,7 @@ source=('https://github.com/kimchi-project/gingerbase/archive/'${pkgver}'.tar.gz
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('1b9b02dc64187cfff5fc0a7a548087da197a1b2193ce408f1354e9666695e937')
+sha256sums=('bda800554cada0436244792489b12e5eac4af5718e6b830311953790fe98affe')
 
 #pkgver() {
 #}
