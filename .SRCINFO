@@ -1,6 +1,6 @@
 pkgbase = ploop
 	pkgdesc = Disk loopback block device with many features like dynamic resize, snapshots, etc.
-	pkgver = 7.0.35
+	pkgver = 7.0.38
 	pkgrel = 1
 	url = https://openvz.org/Ploop
 	install = ploop.install
@@ -12,7 +12,7 @@ pkgbase = ploop
 	depends = python
 	depends = libutil-linux
 	depends = bash
-	source = git+https://src.openvz.org/scm/ovz/ploop.git#tag=v7.0.35
+	source = git+https://src.openvz.org/scm/ovz/ploop.git#tag=v7.0.38
 	md5sums = SKIP
 
 pkgname = ploop

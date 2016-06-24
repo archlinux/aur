@@ -1,6 +1,6 @@
 # Maintainer: Pavel Borzenkov <pavel@voidptr.ru>
 pkgname=ploop
-pkgver=7.0.35
+pkgver=7.0.38
 pkgrel=1
 pkgdesc="Disk loopback block device with many features like dynamic resize, snapshots, etc."
 url="https://openvz.org/Ploop"
