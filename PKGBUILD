@@ -2,15 +2,15 @@
 
 pkgname=kdeclarative-git
 pkgver=r313.d27b914
-pkgrel=2
+pkgrel=3
 pkgdesc='KDeclarative'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdeclarative'
-license=(LGPL)
-depends=(kpackage-git kio-git libepoxy)
-makedepends=(extra-cmake-modules-git git)
-conflicts=(kdeclarative)
-provides=(kdeclarative)
+license=('LGPL')
+depends=('kpackage-git' 'kio-git' 'libepoxy')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
+conflicts=('kdeclarative')
+provides=('kdeclarative')
 source=('git://anongit.kde.org/kdeclarative.git')
 md5sums=('SKIP')
 
