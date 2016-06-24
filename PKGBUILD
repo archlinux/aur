@@ -14,7 +14,7 @@ set -u
 _ubver='16.3'; _ubrel='186'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A system restore utility for Linux'
 arch=('i686' 'x86_64')
 #url='https://launchpad.net/~teejee2008/+archive/ubuntu/ppa'
@@ -22,10 +22,10 @@ url='https://code.launchpad.net/~teejee2008/timeshift'
 license=('GPL')
 _arch_depends=('rsync' 'libgee06' 'json-glib') # from installer/install.sh
 _arch_depends[1]="${_libgee}"
-depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}")
+depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'cron')
 unset _arch_depends
 optdepends=('gksu: run timeshift from a menu')
-makedepends=('vala' 'diffutils' 'coreutils')
+makedepends=('vala' 'diffutils' 'coreutils' 'vte3')
 options=('!emptydirs')
 _verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
 #source=("${url}/+files/${_srcdir}.tar.gz")
