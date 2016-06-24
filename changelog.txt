@@ -1,3 +1,13 @@
+Version 2.3.4 - 23 Jun 2016
+- Fix for previously failedtoload img tags causing lookup sleeps.
+- Fix for older harrypotterfanfictioncom stories lacking reviewjs.js.
+- Change adapter_fictionmaniatv to set status Completed instead of
+  Complete (no d).
+- Update StoriesOnlineNet/FineStoriesCom login URL.
+- Different detect StoryDoesNotExist string for ficwad.com.
+- Allow old showpost.php chapter URLs in base_xenforoforum.
+- Update (& Fix) Translations.
+
 Version 2.3.3 - 23 May 2016
 - Fix for adapter_ashwindersycophanthexcom login.
 - Add merged tags to anthology epubs. (plugin only)
@@ -7,25 +17,3 @@ Version 2.3.3 - 23 May 2016
 - Make 'Go back to fix errors?' dialog scroll error list for smaller dialog
   size. (plugin only)
 - Update Translations. (plugin only)
-
-Version 2.3.2 - 17 May 2016
-- Remove some more print output (hopefully the last) in the hopes it will help
-  with Mac.
-- Fix for %p (am/pm) date parsing on non-en_US locales. - AKA Fix for edeniz's
-  date issues with SB.
-- Fix for Yet Another Site Change on quotevcom.
-- Fix for Mac OS X crashes - changes to progress bar dialogs implementation.
-- Update translations.
-- Fix for Mac OS X freezes - set log level to CRITICAL unless calibre in debug
-  or in BG job.
-- Update included html2text for web/plugin, require as dependency for CLI. (Fix
-  for obscure problem with URLs in story with text output.)
-- Change adapter_ncisfictionnet to eFiction Base due to site change.
-- Fixes for ficbook.net changes.
-- Remove dead site: bdsm-geschichten.net
-- Remove dead site: scarhead.net
-- Remove dead site: www.therabidreader.com
-- Remove dead site: grangerenchanted.com
-- Remove dead site: www.nickngreg.nl
-- Remove dead site: tokra.fandomnet.com
-- Remove dead site: buffynfaith.net
