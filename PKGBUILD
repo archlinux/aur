@@ -1,4 +1,4 @@
-# Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
+# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann dor de>
 
 pkgname='libqmi-qmi-over-mbim'
 pkgver='latest'
