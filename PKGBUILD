@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
 
 pkgname='libqmi-qmi-over-mbim'
-pkgver='1.0.0'
-pkgrel=4
+pkgver='latest'
+pkgrel=1
 pkgdesc="QMI modem protocol helper library with experimental qmi-over-mbim patch"
 arch=('x86_64')
 url='http://www.freedesktop.org/wiki/Software/libqmi/'
@@ -15,6 +15,12 @@ source=("git+https://cgit.freedesktop.org/libqmi")
 md5sums=('SKIP')
 pkgdir='pkg'
 srcdir='src'
+
+
+pkgver() {
+    cd libqmi
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 
 prepare() {
