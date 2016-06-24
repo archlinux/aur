@@ -3,7 +3,7 @@
 pkgbase = imagemagick-full-doc
 	pkgdesc = The ImageMagick documentation (utilities manuals and libraries API)
 	pkgver = 7.0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.imagemagick.org/
 	arch = any
 	license = custom
