@@ -1,0 +1,15 @@
+pkgbase = mmkeyosd-git
+	pkgdesc = Use multimedia keys to change stuff and display an OSD
+	pkgver = r55.7a595c0
+	pkgrel = 1
+	url = https://github.com/dapus/mmkeyosd
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = libxft
+	depends = libxinerama
+	source = git://github.com/dapus/mmkeyosd.git
+	md5sums = SKIP
+
+pkgname = mmkeyosd-git
+
