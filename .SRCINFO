@@ -9,8 +9,10 @@ pkgbase = youtube-mpv-git
 	depends = python
 	source = git+https://github.com/agiz/youtube-mpv
 	source = youtube-mpv@.service
+	source = youtube-mpv.service
 	md5sums = SKIP
 	md5sums = a4d0fad3b31b5ed17bb58e90af2f7d14
+	md5sums = 8c7883fb1ac0dd4376cbaf0ee46848e3
 
 pkgname = youtube-mpv-git
 
