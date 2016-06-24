@@ -1,6 +1,6 @@
 pkgname=sunflower-git
 _gitname=Sunflower
-pkgver=0.3.61.r185.gf7b602d
+pkgver=0.3
 pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=('any')
