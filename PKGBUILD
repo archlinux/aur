@@ -11,10 +11,12 @@ depends=('youtube-dl' 'python')
 makedepends=()
 # TODO store config per user?
 source=("git+https://github.com/agiz/youtube-mpv"
-		"youtube-mpv@.service")
+		"youtube-mpv@.service"
+		"youtube-mpv.service")
 noextract=()
 md5sums=('SKIP'
-         'a4d0fad3b31b5ed17bb58e90af2f7d14')
+         'a4d0fad3b31b5ed17bb58e90af2f7d14'
+         '8c7883fb1ac0dd4376cbaf0ee46848e3')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -23,6 +25,7 @@ pkgver() {
 
 package() {
 	install -D -m644 "$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "youtube-mpv.service" "${pkgdir}/usr/lib/systemd/user/youtube-mpv.service"
 	install -D -m644 "youtube-mpv@.service" "${pkgdir}/usr/lib/systemd/system/youtube-mpv@.service"
 
 	install -D -m644 "$_pkgname/ytdl_config.py" "${pkgdir}/opt/${pkgname}/ytdl_config.py"
