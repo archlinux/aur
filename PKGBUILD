@@ -3,7 +3,7 @@
 
 pkgname=plasma-framework-git
 pkgver=r13831.0ffd768
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/playground/libs/plasma-framework'
@@ -30,7 +30,7 @@ build() {
   cmake ../plasma-framework \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
