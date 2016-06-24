@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -26,8 +26,8 @@ md5sums=('41c4e081defd80b09cb0391c894c2f3c'
          'b786935d6517d46fe0944377daba32b8'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
-         '00045683c06924d765ac14887218ffcc'
-         'c6d0d66c643aecf25fa5a694c1462cf2')
+         '2cf2e3fe515be7c76da02256ab14abd4'
+         'af6cd97b9b8d42f4fee75ed0bd0aa04a')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
@@ -43,6 +43,7 @@ package() {
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
+	install -dm775 "${pkgdir}/${_server_root}/logs"
 	ln -s "${_server_root}/logs" "${pkgdir}/var/log/${_game}"
 
 	# Give the group write permissions and set user or group ID on execution

@@ -11,18 +11,14 @@ declare -r game="minecraft"
 # You may use this script for any game server of your choice, just alter the config file
 [[ ! -z "${SERVER_ROOT}" ]]  && declare -r SERVER_ROOT=${SERVER_ROOT}   || SERVER_ROOT="/srv/${game}"
 [[ ! -z "${BACKUP_DEST}" ]]  && declare -r BACKUP_DEST=${BACKUP_DEST}   || BACKUP_DEST="/srv/${game}/backup"
-[[ ! -z "${LOGPATH}" ]]      && declare -r LOGPATH=${LOGPATH}           || LOGPATH="/srv/${game}/logs"
 [[ ! -z "${BACKUP_PATHS}" ]] && declare -r BACKUP_PATHS=${BACKUP_PATHS} || BACKUP_PATHS="world"
 [[ ! -z "${KEEP_BACKUPS}" ]] && declare -r KEEP_BACKUPS=${KEEP_BACKUPS} || KEEP_BACKUPS="10"
 [[ ! -z "${GAME_USER}" ]]    && declare -r GAME_USER=${GAME_USER}       || GAME_USER="minecraft"
 [[ ! -z "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="minecraft_server.jar"
 [[ ! -z "${SESSION_NAME}" ]] && declare -r SESSION_NAME=${SESSION_NAME} || SESSION_NAME="${game}"
 
-# System parameters for java
-[[ ! -z "${MINHEAP}" ]] && declare -r MINHEAP=${MINHEAP} || MINHEAP="512M"
-[[ ! -z "${MAXHEAP}" ]] && declare -r MAXHEAP=${MAXHEAP} || MAXHEAP="1024M"
-[[ ! -z "${THREADS}" ]] && declare -r THREADS=${THREADS} || THREADS="1"
-[[ ! -z "${JAVA_PARMS}" ]] && declare -r JAVA_PARMS=${JAVA_PARMS} || JAVA_PARMS="-Xmx${MAXHEAP} -Xms${MINHEAP} -XX:ParallelGCThreads=${THREADS}"
+# Command and parameter declaration with which to start the server
+[[ ! -z "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="java -Xms512M -Xmx1024M -XX:ParallelGCThreads=1 -jar './${MAIN_EXECUTABLE}' nogui"
 
 # System parameters for the control script
 [[ ! -z "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
@@ -60,28 +56,37 @@ if [[ $(${SUDO_CMD} whoami) != ${GAME_USER} ]]; then
 	exit 21
 fi
 
-# Pipe any given argument to the game server console
+# Pipe any given argument to the game server console,
+# sleep for $sleep_time and return its output if $return_stdout is set
 game_command() {
-	${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
+	if [[ -z "${return_stdout}" ]]; then
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
+	else
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X log on
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
+		sleep ${sleep_time:-0.3}
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X log off
+		${SUDO_CMD} cat "/tmp/${myname}_screen_command_dump.txt"
+		${SUDO_CMD} rm "/tmp/${myname}_screen_command_dump.txt"
+	fi
 }
 
 # Check whether there are player on the server through list
 is_player_online() {
-	game_command list
-	sleep 0.6
+	response="$(sleep_time=0.6 return_stdout=true game_command list)"
 	# The list command prints a line containing the usernames after the last occurrence of ": "
-	# and since playernames may not contain this string the clean player-list can be easily retrieved.
+	# and since playernames may not contain this string the clean player-list can easily be retrieved.
 	# Otherwiese check the first digit after the last occurrence of "There are". If it is 0 then there
 	# are no players on the server. Should this test fail as well. Assume that a player is online.
-	if [[ -z $(tail -n 1 "${LOGPATH}/latest.log" | sed -r -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' | tr -d '\n') ]]; then
+	if [[ $(echo "${response}" | grep ":" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' | tr -d '\n' | wc -c) -le 1 ]]; then
 		# No player is online
-		return 0;
-	elif [[ $(tail -n 10 "${LOGPATH}/latest.log" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -eq 0 ]]; then
+		return 0
+	elif [[ $(echo "${response}" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -eq 0 ]]; then
 		# No player is online
-		return 0;
+		return 0
 	else
 		# A player is online (or it could not be determined)
-		return 1;
+		return 1
 	fi
 }
 
@@ -154,7 +159,8 @@ server_start() {
 		echo "A screen ${SESSION_NAME} session is already running. Please close it first."
 	else
 		echo -en "Starting server..."
-		${SUDO_CMD} screen -dmS "${SESSION_NAME}" /bin/bash -c "cd '${SERVER_ROOT}'; java ${JAVA_PARMS} -jar '${SERVER_ROOT}/${MAIN_EXECUTABLE}' nogui"
+		${SUDO_CMD} screen -dmS "${SESSION_NAME}" /bin/bash -c "cd '${SERVER_ROOT}'; ${SERVER_START_CMD}"
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X logfile "/tmp/${myname}_screen_command_dump.txt"
 		echo -e "\e[39;1m done\e[0m"
 	fi
 
@@ -266,7 +272,7 @@ server_status() {
 		# Calculating memory usage
 		for p in $(${SUDO_CMD} pgrep -f "${MAIN_EXECUTABLE}"); do
 			ps -p${p} -O rss | tail -n 1;
-		done | gawk '{ count ++; sum += $2 }; END {count --; print "Number of processes =", count, "(screen, bash,", count-2, "x java)"; print "Total memory usage =", sum/1024, "MB" ;};'
+		done | gawk '{ count ++; sum += $2 }; END {count --; print "Number of processes =", count, "(screen, bash,", count-2, "x server)"; print "Total memory usage =", sum/1024, "MB" ;};'
 	else
 		echo -e "Status:\e[39;1m stopped\e[0m"
 	fi
@@ -397,9 +403,7 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		${SUDO_CMD} sleep 0.3 & tail -f --pid=$! -s 0.1 -n 0 "${LOGPATH}/latest.log" &
-		game_command "$@"
-		wait
+		return_stdout=true game_command "$@"
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi
