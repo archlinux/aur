@@ -18,5 +18,6 @@ md5sums=('1699e277414cedf2def7df6c3f3f2e54')
 DLAGENTS=('https::/usr/bin/wget -nd -r -l 1 -A fb2k-component %u')
 
 package() {
-	install -Dm644 -t "${pkgdir:?}/usr/share/foobar2000/components" foo_playcount.dll
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir/usr/share/foobar2000/components" foo_playcount.dll
 }
