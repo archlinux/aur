@@ -1,6 +1,6 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgbase=dcrd
+pkgbase=decred
 pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
 pkgver=20160624
 pkgrel=1
