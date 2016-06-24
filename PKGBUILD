@@ -4,12 +4,12 @@
 pkgname=bordermaker
 pkgname1=BorderMaker
 pkgver=5.0
-pkgrel=6
+pkgrel=7
 pkgdesc="a java application to resize and decorate pictures with borders, text and watermarks"
 arch=('any')
 url="http://www.bordermaker.nl/en/"
 license=("GPL")
-depends=('java-runtime=6' 'java-runtime-common')
+depends=('jre6' 'java-runtime-common' 'kdesudo')
 source=("http://www.${pkgname}.nl/en/wp-content/uploads/downloads/2011/01/${pkgname1}-${pkgver}.zip"
         "${pkgname}"
         "${pkgname}.desktop"
