@@ -24,11 +24,11 @@ pkgname=('qt51-base'
          'qt51-x11extras'
          'qt51-xmlpatterns')
 pkgver=5.1.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-makedepends=('libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-keysyms'
+makedepends=('gcc46' 'libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-keysyms'
             'mesa' 'at-spi2-core' 'alsa-lib' 'gstreamer0.10-base-plugins' 'libmng'
             'libjpeg-turbo' 'cups' 'libpulse' 'hicolor-icon-theme' 'desktop-file-utils'
             'postgresql-libs' 'libmariadbclient' 'sqlite' 'unixodbc' 'libfbclient'
@@ -42,6 +42,7 @@ source=("http://download.qt-project.org/official_releases/qt/5.1/${pkgver}/singl
         'linguist-qt51.desktop'
         'qdbusviewer-qt51.desktop'
         'use-python2.patch'
+        'platform-linux-g++-4.6.patch'
         'bison3.patch'
         'CVE-2013-4549.patch'
         'libmng2.patch'
@@ -53,6 +54,7 @@ md5sums=('697b7b8768ef8895e168366ab6b44760'
          '4ce959cbe138df8589e81537ac40f37f'
          '9019f5c97c91c9b29a50b55f3e33c40a'
          '92831f79144d5cb8121915423ba47575'
+         '72451f13cf068f0c137e81b0630c5f44'
          '6b162cd2bc104f0ae83ca039401be7bf'
          'e59ba552e12408dcc9486cdbb1f233e3'
          '478647fa057d190a7d789cf78995167b'
@@ -71,6 +73,9 @@ prepare() {
   sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
     -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
     $(find . -name '*.py')
+  
+  # use gcc-4.6
+  patch -p0 -i "${srcdir}"/platform-linux-g++-4.6.patch
 
   # Fix build with bison 3.x
   cd qtwebkit
@@ -89,6 +94,13 @@ prepare() {
 build() {
   cd ${_pkgfqn}
 
+  CFLAGS=${CFLAGS//-fstack-protector-strong/-fstack-protector}
+  CXXFLAGS=${CXXFLAGS//-fstack-protector-strong/-fstack-protector}
+  echo "QMAKE_CFLAGS_RELEASE=$CFLAGS -fpermissive" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
+  echo "QMAKE_CXXFLAGS_RELEASE=$CXXFLAGS -fpermissive" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
+  echo "QMAKE_CC=gcc-4.6" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
+  echo "QMAKE_CXX=g++-4.6" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
+
   export QTDIR="${srcdir}"/${_pkgfqn}
   export LD_LIBRARY_PATH="${QTDIR}"/qtbase/lib:"${QTDIR}"/qttools/lib:"${LD_LIBRARY_PATH}"
   export QT_PLUGIN_PATH="${QTDIR}"/qtbase/plugins
@@ -102,6 +114,7 @@ build() {
     -no-rpath \
     -optimized-qmake \
     -dbus-linked \
+    -platform linux-g++-4.6 \
     -reduce-relocations
 
   make
