@@ -2,7 +2,7 @@
 
 pkgname=kde-cli-tools-git
 pkgver=r1443.bc5bc76
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/kde-cli-tools'
@@ -29,7 +29,7 @@ build() {
   cmake ../kde-cli-tools/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DLIBEXEC_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
