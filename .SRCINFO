@@ -1,0 +1,13 @@
+pkgbase = ruby-plist
+	pkgdesc = A library to manipulate Property List files
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://plist.rubyforge.org/
+	arch = any
+	license = MIT
+	depends = ruby
+	source = https://rubygems.org/downloads/plist-3.2.0.gem
+	sha256sums = 0b3dd455bde18ba7b954ff2fea4eae733f3b38b71504e723255bccc6567a70a9
+
+pkgname = ruby-plist
+
