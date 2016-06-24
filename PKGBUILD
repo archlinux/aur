@@ -1,7 +1,7 @@
 # Maintainer: 4javier <4javiereg4 _ at _ gmail _ dot _com>
 
 pkgname=brackets
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS. Stable git Tags."
 arch=('i686' 'x86_64')
