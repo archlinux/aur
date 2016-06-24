@@ -2,7 +2,7 @@
 
 pkgname=kservice-git
 pkgver=r199.e4dcb34
-pkgrel=1
+pkgrel=2
 pkgdesc='KService'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kservice'
@@ -29,7 +29,7 @@ build() {
   cmake ../kservice \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
