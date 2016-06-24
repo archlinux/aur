@@ -3,7 +3,7 @@
 
 pkgname=kpackage-git
 pkgver=r198.09e0ac7
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework that lets applications manage user installable packages of non-binary assets"
 arch=(i686 x86_64)
 url="https://projects.kde.org/projects/frameworks/kpackage"
@@ -30,7 +30,7 @@ build() {
   cmake ../kpackage \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
