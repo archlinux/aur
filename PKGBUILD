@@ -31,6 +31,8 @@ package() {
     install -D -m755 TextSuggest.py "$pkgdir/usr/lib/python3.5/site-packages/textsuggest/"
     install -D -m644 EnglishOpenWordList/* "$pkgdir/usr/lib/python3.5/site-packages/textsuggest/EnglishOpenWordList/"
     install -D -m644 Extra_Words.txt "$pkgdir/usr/lib/python3.5/site-packages/textsuggest/"
+    install -D -m644 languages.py "$pkgdir/usr/lib/python3.5/site-packages/textsuggest/"
+    install -D -m644 fonts.py "$pkgdir/usr/lib/python3.5/site-packages/textsuggest/"
     install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
     ln -fs "/usr/lib/python3.5/site-packages/textsuggest/TextSuggest.py" "$pkgdir/usr/bin/textsuggest"
