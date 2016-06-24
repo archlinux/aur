@@ -1,13 +1,13 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=archstrike-installer-git
-pkgver=20160624.r4
+pkgver=20160624.r5
 pkgrel=1
 arch=('any')
 pkgdesc="Command line installer for ArchStrike penetration testing layer"
 url="https://github.com/xorond/archstrike-installer"
 license=('GPL3')
-depends=('bash' 'sudo')
+depends=('bash')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/xorond/archstrike-installer.git")
 sha512sums=('SKIP')
