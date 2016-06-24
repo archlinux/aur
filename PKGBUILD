@@ -1,7 +1,7 @@
 # Maintainer: JC FRANCOIS <jc.francois@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.9.4
+pkgver=1.10
 pkgbuild=52
 pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
@@ -10,7 +10,7 @@ url="http://www.spigotmc.org/"
 license=("BSD")
 depends=(java-runtime-headless fontconfig git mcrcon)
 conflicts=(bukkit craftbukkit craftbukkit-stable)
-provides=(craftbukkit=1.9)
+provides=(craftbukkit=1.10)
 install=craftbukkit-spigot.install
 source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/target/BuildTools.jar"
         "minecraft.service"

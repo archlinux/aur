@@ -1,6 +1,6 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit & Spigot Minecraft servers
-	pkgver = 1.9.4
+	pkgver = 1.10
 	pkgrel = 1
 	url = http://www.spigotmc.org/
 	install = craftbukkit-spigot.install
@@ -10,7 +10,7 @@ pkgbase = craftbukkit-spigot
 	depends = fontconfig
 	depends = git
 	depends = mcrcon
-	provides = craftbukkit=1.9
+	provides = craftbukkit=1.10
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
