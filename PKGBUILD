@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=oxygen-git
-pkgver=r4003.bcf0fd7
-pkgrel=1
+pkgver=r4045.d885ff0
+pkgrel=2
 pkgdesc='KDE Oxygen style'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -30,7 +30,7 @@ build() {
   cmake ../oxygen \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
