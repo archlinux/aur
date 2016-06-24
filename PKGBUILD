@@ -2,7 +2,7 @@
 
 pkgname=solid-git
 pkgver=r196.25657e3
-pkgrel=1
+pkgrel=2
 pkgdesc='Solid'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/solid'
