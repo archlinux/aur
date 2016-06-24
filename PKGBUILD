@@ -9,6 +9,7 @@ pkgdesc="High performance NetFlow v5, v9, IPFIX flow data export module for Linu
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('dkms')
+conflicts=("${pkgname}-git")
 source=("${url}/files/${_pkgbase}/${_pkgbase}-${pkgver}.tgz"
         'Makefile.in.patch'
         'dkms.conf'
