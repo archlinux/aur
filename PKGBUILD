@@ -1,8 +1,8 @@
 # Maintainer: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 pkgname=opensmtpd-extras
 pkgver=5.7.1
-pkgrel=4
-pkgdesc="Additional filters, tables, queues, etc. for OpenSMTPd"
+pkgrel=5
+pkgdesc="EXPERIMENTAL filters, tables, queues, etc. for OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
 license=('custom:opensmtpd')
@@ -17,6 +17,7 @@ optdepends=('python2: python support for filters, tables, scheduler, and queues'
             'postgresql-libs: postgresql support for tables'
             'hiredis: redis support for tables'
             'sqlite: sqlite support for tables')
+install=opensmtpd-extras.install
 backup=('etc/smptd/filter-regex.conf')
 source=("https://www.opensmtpd.org/archives/$pkgname-$pkgver.tar.gz"
         "fix-for-glibc-getaddrinfo-quirks.patch")
