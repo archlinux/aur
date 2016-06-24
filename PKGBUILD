@@ -2,7 +2,7 @@
 
 pkgname=ktextwidgets-git
 pkgver=r62.a71ccac
-pkgrel=1
+pkgrel=2
 pkgdesc='KTextWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/ktextwidgets'
@@ -29,7 +29,7 @@ build() {
   cmake ../ktextwidgets \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF    
   make
