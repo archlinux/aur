@@ -1,35 +1,26 @@
 # Maintainer: Erez Raviv (erezraviv at gmail com)
-# please be gentel - first AUR package I adopted
-# will be updating thi PKGBUILD 
+# Latest revision: Revision 2725
 pkgname=chirp-daily
-pkgver=$(date +%Y%m%d)
+pkgver=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
 pkgrel=1
-pkgdesc="Daily build for GUI tool for programming ham radios; this pkgbuild is never out of date"
+pkgdesc="Daily build for GUI tool for programming ham radios; This package gets updated once an announcement of a new version is made."
 arch=('any')
 url="http://chirp.danplanet.com/"
 license=('GPL')
-depends=('python2-lxml' 'python2-pyserial' 'desktop-file-utils' 'pygtk' 'curl')
+depends=('python2-lxml' 'python2-pyserial' 'desktop-file-utils' 'pygtk' 'curl' 'coreutils')
 options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-#source=("http://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/$pkgname-$pkgver.tar.gz")
-source=()
-
-#yes, I know the below defeats the point
-#md5sums=$(md5sum $pkgname-$pkgver.tar.gz | cut -f1 -d' ') 
+sha1sums=($(curl -q 'http://trac.chirp.danplanet.com/chirp_daily/LATEST/SHA1SUM' | egrep $pkgname"-[0-9]{8}.tar.gz" | cut -c1-40))
+source=("http://trac.chirp.danplanet.com/chirp_daily/LATEST/$pkgname-$pkgver.tar.gz")
 
 build() {
-  LATEST=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
-  # cd src
-  curl -O http://trac.chirp.danplanet.com/chirp_daily/LATEST/$pkgname-$LATEST.tar.gz
-  tar zxvf $pkgname-$LATEST.tar.gz
+  tar zxvf $pkgname-$pkgver.tar.gz
 }
 
 package() {
-  LATEST=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
-  cd "$pkgname-$LATEST"
+  cd "$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
