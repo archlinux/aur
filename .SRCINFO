@@ -1,0 +1,15 @@
+pkgbase = ruby-fuzzyurl
+	pkgdesc = A library for non-strict parsing, construction, and wildcard-matching of URLs.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/gamache/fuzzyurl.rb
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	noextract = fuzzyurl-0.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fuzzyurl-0.8.0.gem
+	sha256sums = 591d82dd0e864c4446e9aef0ede7a5deb604645e77b538947ef33f015e6141ea
+
+pkgname = ruby-fuzzyurl
+
