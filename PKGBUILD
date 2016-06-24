@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=prey-node-client
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ sha256sums_i686=('7617a1d2b94bd85fdee38c78aa439a8f2d0a13b94e4ac84e9ae1c1242342d3
 
 
 package() {
-  cd "$srcdir/prey-$pkgver.$pkgrel"
+  cd "$srcdir/prey-$pkgver"
 
   # We don't need the bundled node.js as we have it installed in the system.
   # Conveniently, the bash script probes for node.js and automatically uses
