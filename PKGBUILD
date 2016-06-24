@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=r13798.3a13719
-pkgrel=1
+pkgver=r14246.6a19f50
+pkgrel=2
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -31,7 +31,7 @@ build() {
   cmake ../kwin \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DLIBEXEC_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
