@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.10.12
-pkgrel=4
+pkgver=2.11.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -14,15 +14,15 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream'
              'avahi' 'tk' 'ca-certificates' 'intltool' 'networkmanager')
 source=(https://downloads.sourceforge.net/project/$pkgname/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc}
-        pidgin-2.10.12-py3-fixes.patch)
-sha256sums=('2c7523f0fefe89749c03b2b738ab9f7bd186da435be4762f1487eee31e77ffdd'
+        pidgin-py3-fixes.patch)
+sha256sums=('f72613440586da3bdba6d58e718dce1b2c310adf8946de66d8077823e57b3333'
             'SKIP'
             'e38bd61e0dcfcc2e5761078ea709b92c5bf8d025d5eb1288aa8a550715babb7e')
 validpgpkeys=('364E2EB38EA6A8D61FB963AD75FE259AA8AC8032')
 
 prepare() {
   cd $pkgbase-$pkgver
-  patch -Np1 -i ../pidgin-2.10.12-py3-fixes.patch
+  patch -Np1 -i ../pidgin-py3-fixes.patch
 }
 
 build() {
