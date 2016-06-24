@@ -1,5 +1,5 @@
 pkgbase = ipt-netflow-dkms
-	pkgdesc = High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel. GIT version.
+	pkgdesc = High performance NetFlow v5, v9, IPFIX flow data export module for Linux kernel
 	pkgver = 2.2
 	pkgrel = 1
 	url = https://sourceforge.net/projects/ipt-netflow
