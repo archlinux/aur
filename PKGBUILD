@@ -2,7 +2,7 @@
 # Latest Revision 2725
 pkgname=chirp-daily
 pkgver=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
-pkgrel=1
+pkgrel=2725
 pkgdesc="Daily build for GUI tool for programming ham radios; This package gets updated once an announcement of a new version is made."
 arch=('any')
 url="http://chirp.danplanet.com/"
