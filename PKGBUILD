@@ -22,7 +22,7 @@ pkgver() {
 build() {
   mkdir -p "${_pkgname}/build"
   cd "${_pkgname}/build"
-  lrelease ../${_pkgname}.pro
+  lrelease-qt5 ../${_pkgname}.pro
   qmake-qt5 "PREFIX=/usr" "CONFIG+=acs_qt acs_alsa acs_jack acs_portaudio" ../${_pkgname}.pro
   make
 }
