@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=geth
-pkgver=1.4.7
-_commit="stable-667a386"
+pkgver=1.4.8
+_commit="stable-98be7cd"
 pkgrel=1
 pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('i686' 'x86_64')
@@ -32,13 +32,13 @@ source_i686=( # Geth cross builds by Péter Szilágyi (Ethereum Core Developer)
   "${pkgname}-${pkgver}-32.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-386.tar.bz2"
 )
 sha256sums_i686=(
-  'c80e1949292af8d9751eb73eee63638d20fc42793b0a3578e1a5fb7fd2e78919'
+  'e2927591aa696f2a8fed96a61cfedbf427a95f5ec778b126bb4ced2518fe3b64'
 )
 source_x86_64=( # Geth cross builds by Péter Szilágyi (Ethereum Core Developer)
   "${pkgname}-${pkgver}-64.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-amd64.tar.bz2"
 )
 sha256sums_x86_64=(
-  'd5608a0f7d10f9c7757484d1621ec0124d9e9f55c53a6602756d15c5cee48aa6'
+  '58334e350600cd44f883ae3fc5c9cd92db3a2b79a2811db1fe1e4ae07a7cc482'
 )
 
 package() {
