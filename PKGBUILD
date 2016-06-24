@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21385
+pkgver=21386
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
     -DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
     -DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
     -DCMAKE_APPDATA_DIR=/usr/share/appdata \
-    -DQT_PREFIX="/usr" 
+    -DQT_PREFIX="/usr" -DWANT_CPP11=1
   make
 }
 
