@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kinfocenter-git
-pkgver=r901.b0291b0
-pkgrel=1
+pkgver=r1115.bf81b3e
+pkgrel=2
 pkgdesc='KInfocenter'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -29,7 +29,7 @@ build() {
   cmake ../kinfocenter \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
