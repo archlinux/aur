@@ -1,3 +1,9 @@
+2016-06-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.0.7:
+    Added !api command. More can be found on the wiki.
+    Increased default value of LoginLimiterDelay from 7 to 10. It seems to solve some recent more aggressive Steam rate-limiting.
+    Fixed incorrect calculation of same-type dupe values which could lead into accepting potentially non-neutral+ trades.
+    Misc code improvements, optimizations and bugfixes.
 2016-06-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.0.6:
     Fixed !2faok confirming only one confirmation at a time (2.1.0.5 regression)
