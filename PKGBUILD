@@ -2,7 +2,7 @@
 
 pkgname=kwidgetsaddons-git
 pkgver=r104.f916635
-pkgrel=1
+pkgrel=2
 pkgdesc='KWidgetsAddons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kwidgetsaddons'
@@ -29,7 +29,7 @@ build() {
   cmake ../kwidgetsaddons \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
