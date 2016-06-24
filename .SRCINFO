@@ -1,0 +1,15 @@
+pkgbase = ruby-mixlib-authentication
+	pkgdesc = Mixes in simple per-request authentication
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://www.chef.io/
+	arch = any
+	license = Apache-2.0
+	depends = ruby-mixlib-log
+	noextract = mixlib-authentication-1.4.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mixlib-authentication-1.4.1.gem
+	sha256sums = 50bd0bb6789ad44a75582942589fd824f2a3d0a5da80c4fd310b31c3e92c59ec
+
+pkgname = ruby-mixlib-authentication
+
