@@ -8,7 +8,6 @@ arch=('any')
 url="http://www.avglab.com/andrew/soft.html"
 license=('custom')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz") # TODO
 source=("${pkgname}::git+https://github.com/iveney/cs2")
 md5sums=('SKIP')
 
