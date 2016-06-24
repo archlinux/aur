@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('java-environment')
 options=(!strip)
 source=(http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-standalone-$pkgver.jar)
-sha1sums=('1ad6cda1f4a68745a522986cde2508136ddfff8a')
+sha1sums=('c50be440cb18baafc94f14b50434bec4f17ccac8')
 noextract=($pkgname-standalone-$pkgver.jar)
 
 package() {
