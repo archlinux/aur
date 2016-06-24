@@ -1,6 +1,6 @@
 pkgbase = ruby-specinfra
 	pkgdesc = Common layer for serverspec and itamae
-	pkgver = 2.35.1
+	pkgver = 2.59.3
 	pkgrel = 1
 	url = https://rubygems.org/gems/specinfra
 	arch = any
@@ -8,10 +8,12 @@ pkgbase = ruby-specinfra
 	depends = ruby
 	depends = ruby-net-ssh
 	depends = ruby-net-scp
-	noextract = specinfra-2.35.1.gem
+	depends = ruby-net-telnet
+	depends = ruby-sfl
+	noextract = specinfra-2.59.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/specinfra-2.35.1.gem
-	sha512sums = a84099f39c0e52c05fd9face13be624fe3b2c9d183bafade43d330d066ce3fd72ce4831e781fc93abec9a89cab925550203d0e0e9f7d85382ceac2b3c54ee1e9
+	source = https://rubygems.org/downloads/specinfra-2.59.3.gem
+	sha256sums = 8f44ddf6033d3b8af490071f7cddf165e06cf424b81a5eb04cabb1c482741822
 
 pkgname = ruby-specinfra
 
