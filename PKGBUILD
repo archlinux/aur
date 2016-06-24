@@ -6,10 +6,10 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=zandronum-dev
 _pkgname=zandronum
 pkgver=3.0
-_pkgver2=160229-1221
+_pkgver2=160519-2047
 _pkgver=${pkgver}-${_pkgver2}
 fmodex_ver=4.24.16
-pkgrel=2
+pkgrel=3
 _pkgdl=ZandroDev
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer. (Development Build ${_pkgver})"
 arch=('i686' 'x86_64')
@@ -40,9 +40,9 @@ sha512sums=('b928f3211ff31f17fc2d754728e299b5783e1b946b4019713718b7613e13ff0a7c4
             'SKIP'
             'SKIP'
             'SKIP')
-sha512sums_i686=('c619be46825b8a0b4468769b831d4db0332fb8220526b7d5bbbadd66309f3659dc724f97ba2b63abe57d1eaf225cc6cb002a15776f55898e46ce3f386350c011'
+sha512sums_i686=('d100f88a76149f7926ed1f100287380c0506566cbc0ef9f0a7bd8d4c8aa2686deed3742887e95778244ad53b90dce5e5c83562859dde2af1ebfd691402017dc3'
                  'SKIP')
-sha512sums_x86_64=('34d748a18ccc3d97131f95ed9de2809d91c02f9794fbecde5424b80abdc2a1f7e39bc942686245adb341f93da192c77d2e5942804b2e477acbaa1936772871f0'
+sha512sums_x86_64=('d313318593d3526f3ff088aaaf18c26ae235cfa298174fac277013fe2ecc14676066236e324bc33edca3e8407790b44e85289068bb786ba90c8a7547c01e11b5'
                    'SKIP')
 
 #prepare() {
