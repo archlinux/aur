@@ -1,0 +1,50 @@
+--- Makefile.in	2016-06-24 18:54:30.904173678 +1100
++++ Makefile.in.new	2016-06-24 18:53:46.212792237 +1100
+@@ -1,8 +1,8 @@
+ # Edit Makefile.in and run ./configure
+ 
+-KVERSION = @KVERSION@
+-KDIR = @KDIR@
+-KINSTDIR = $(shell dirname @KDIR@)
++KVERSION = $(shell uname -r)
++KDIR = /usr/lib/modules/$(KVERSION)/build
++KINSTDIR = /usr/lib/modules/$(KVERSION)
+ KOPTS = @KOPTS@
+ IPTABLES_CFLAGS = @IPTABLES_CFLAGS@
+ IPTABLES_MODULES = @IPTABLES_MODULES@
+@@ -22,22 +22,22 @@
+ 
+ ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@echo Compiling for kernel $(KVERSION)
+-	make -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
++	make -C $(KDIR) M=$(PWD) modules CONFIG_DEBUG_INFO=y
+ 	@touch $@
+ sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
+ 	@echo Compiling for kernel $(KVERSION)
+-	make -C $(KDIR) M=$(CURDIR) modules C=1
++	make -C $(KDIR) M=$(PWD) modules C=1
+ 	@touch ipt_NETFLOW.ko
+ coverity:
+ 	coverity-submit -v
+ 
+ minstall: | ipt_NETFLOW.ko
+ 	@echo " *"
+-	make -C $(KDIR) M=$(CURDIR) modules_install INSTALL_MOD_PATH=$(DESTDIR)
++	make -C $(KDIR) M=$(PWD) modules_install INSTALL_MOD_PATH=$(DESTDIR)
+ 	$(DEPMOD)
+ mclean:
+-	make -C $(KDIR) M=$(CURDIR) clean
++	make -C $(KDIR) M=$(PWD) clean
+ lclean:
+ 	-rm -f *.so *_sh.o
+ clean: mclean lclean
+@@ -96,7 +96,7 @@
+ 	echo " *"; \
+ 	fi
+ 	@if [ "@DKMSINSTALL@" = dinstall ]; then ./install-dkms.sh --uninstall; fi
+-	-rm -f $(DESTDIR)$(KINSTDIR)/extra/ipt_NETFLOW.ko
++	-rm -f $(DESTDIR)$(KINSTDIR)/kernel/misc/ipt_NETFLOW.ko
+ 
+ Makefile: Makefile.in configure
+ 	./configure --make ${CARGS}
