@@ -1,19 +1,20 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
 # Contributor: HLFH
+# Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=h2o
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay' 'zlib')
-makedepends=('cmake' 'libtool' 'make' 'pkg-config')
+makedepends=('cmake' 'libtool' 'make' 'pkg-config' 'ruby')
 url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('068cc88fe7313ea3c637764abc296629f6c9250e12b714f5629065bdc49d28c8'
+sha256sums=('c53d11589c8c76491cf3a940b649d0a9cb27c36eb276963811ac1bc16cd2bf2c'
             '8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
@@ -23,7 +24,11 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Building...'
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_BUNDLED_SSL=on .
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_BUNDLED_SSL=on \
+    -DWITH_MRUBY=on \
+    .
   make
   make libh2o
 }
