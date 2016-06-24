@@ -4,7 +4,7 @@
 pkgname=jlink-systemview
 pkgver=2.38
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
