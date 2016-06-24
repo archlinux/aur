@@ -14,9 +14,11 @@ sha256sums=('f060d7dab825942ca7f86d0c4adadf7d731a2e30f9bce6e4f010ad7d32adbf06')
 
 package() {
 	echo Installation may be a bit slow, please wait
-        cd ${srcdir}/libsass-${pkgver}
-	pip install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
-        pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+    cd ${srcdir}/libsass-${pkgver}
+	echo :: Installing for python3.5 ...
+    pip3 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+    echo :: Installing for python2.7 ...
+    pip2 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
 
 }
 
