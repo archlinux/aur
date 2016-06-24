@@ -2,16 +2,16 @@
 
 pkgname=kdewebkit-git
 pkgver=r45.8f9e1ed
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Webkit'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdewebkit'
 license=('LGPL')
 depends=('qt5-webkit' 'kparts-git')
-makedepends=('extra-cmake-modules-git' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
-conflicts=(kdewebkit)
-provides=(kdewebkit)
+conflicts=('kdewebkit')
+provides=('kdewebkit')
 source=('git://anongit.kde.org/kdewebkit.git')
 md5sums=('SKIP')
 
