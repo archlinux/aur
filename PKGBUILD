@@ -1,7 +1,7 @@
-# Maintainer: Richard Neumann aka. rne <r dot neumann at homeinfo fullstop de>
+# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann dot de>
 
 pkgname='libmbim-qmi-over-mbim'
-pkgver=r412.d36c3c7
+pkgver='latest'
 pkgrel=1
 pkgdesc="MBIM modem protocol helper library with experimental qmi-over-mbim patch"
 arch=('i686' 'x86_64')
