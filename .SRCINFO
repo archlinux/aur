@@ -1,0 +1,14 @@
+pkgbase = ruby-sfl
+	pkgdesc = Spawn for ruby
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/ujihisa/spawn-for-legacy
+	arch = any
+	license = unknown
+	depends = ruby
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sfl-2.2.gem
+	sha256sums = 323cbf7d9af865dc2bd3fd5f4181798e24a07f02f7b1f935e915f5edd7f4072b
+
+pkgname = ruby-sfl
+
