@@ -18,6 +18,6 @@ md5sums=('54709d93ee29bf61a2163e3019f4460e')
 package() {
     cd "${srcdir}/colorlog-${pkgver}"
  	echo :: Installing for python>=3 ...
-    pip3 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+    pip3 install --isolated --prefix=/usr --root="${pkgdir}" --no-deps --ignore-installed .
 }
 
