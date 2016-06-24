@@ -2,12 +2,12 @@
 
 pkgname=blueshift
 pkgver=1.90.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible and highly configurable alternative to redshift"
 arch=(i686 x86_64)
 url="https://github.com/maandree/blueshift"
 license=('AGPL3' 'GPL3' 'custom:GFDL1.3')
-depends=(python3 solar-python argparser pylibgamma libxcb)
+depends=(python3 solar-python argparser-python pylibgamma libxcb)
 optdepends=('adjbacklight: for backlight adjustments without root requirements'
             'linux: for backlight support'
             'wget: for weather support, default command')
