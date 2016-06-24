@@ -2,7 +2,7 @@
 
 pkgname=kwallet-git
 pkgver=r715.fd9aad9
-pkgrel=1
+pkgrel=2
 pkgdesc='KWallet Framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kwallet'
