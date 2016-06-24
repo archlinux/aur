@@ -2,7 +2,7 @@
 
 pkgname=kdelibs4support-git
 pkgver=r544.9d39a69
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE 4 Support'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdelibs4support'
@@ -30,7 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
