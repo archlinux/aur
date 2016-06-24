@@ -11,13 +11,13 @@
 pkgname=gcc46
 _ver=4.6
 pkgver=4.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The GNU Compiler Collection (4.6.x)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'custom')
 url="http://gcc.gnu.org"
 provides=('gcc-4.6')
-depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl' 'cloog' 'elfutils')
+depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl15' 'cloog' 'elfutils')
 makedepends=('flex' 'bison' 'aria2')
 # makedepends=('flex' 'bison' 'aria2' 'dejagnu') # For test
 options=('staticlibs' '!libtool' '!emptydirs')
