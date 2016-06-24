@@ -1,13 +1,13 @@
 # Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khelpcenter-git
-pkgver=r2292.56a33e3
-pkgrel=3
+pkgver=r2331.f7fdf7c
+pkgrel=2
 pkgdesc="Application to show KDE Applications' documentation"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/khelpcenter'
 license=('LGPL')
-depends=('khtml-git' 'kdelibs4support-git' 'kcmutils-git')
+depends=('khtml-git' 'kdelibs4support-git' 'kcmutils-git' 'grantlee-qt5-git' 'xapian-core-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 conflicts=('khelpcenter' 'kdebase-runtime')
 provides=('khelpcenter')
