@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khelpcenter-git
-pkgver=r2127.238f26d
-pkgrel=1
+pkgver=r2292.56a33e3
+pkgrel=2
 pkgdesc="Application to show KDE Applications' documentation"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/khelpcenter'
@@ -29,7 +29,7 @@ build() {
   cmake ../khelpcenter/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
