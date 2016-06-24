@@ -1,0 +1,13 @@
+pkgbase = xfwm4-theme-freshdark
+	pkgdesc = gtk theme inspired by the name of Silicon Valley American teledrama.
+	pkgver = 1
+	pkgrel = 0
+	url = http://xfce-users.deviantart.com/art/FreshDark-XFWM4-98819225
+	arch = any
+	license = NC SA 3.0
+	depends = xfwm4
+	source = http://orig08.deviantart.net/d8d6/f/2008/267/2/9/freshdark_xfwm4_by_jmcknight.gz
+	sha256sums = 60709f6d5a15540edbfc81406703c03435fa4db67baf531ca560a4f61a5773d0
+
+pkgname = xfwm4-theme-freshdark
+
