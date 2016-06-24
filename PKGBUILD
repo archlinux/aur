@@ -4,19 +4,22 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.1.12
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
 source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz"
-'pkexec1.1.12.patch')
+'pkexec1.1.12.patch'
+'keyring1.1.12.patch')
 sha256sums=('76036de6abdf5a2b2fbf66311c369dce7e3755fa778e5f01aa49bc2be68eb9f1'
-            'b5be2317976db5d946047b5daa7ef75b029498225a9bb2763a18c93b07686e5e')
+            'b5be2317976db5d946047b5daa7ef75b029498225a9bb2763a18c93b07686e5e'
+            '9ae26aa553b7917771b97c3f0b16459ea0f79130a7505b09f1feba93d96c1025')
 
 prepare() {
-	cd "$_pkgname-$pkgver/qt4"
-	patch -i "$srcdir/pkexec1.1.12.patch"
+	cd "$_pkgname-$pkgver"
+	patch -Np1 -i "$srcdir/keyring1.1.12.patch"
+	patch -Np1 -i "$srcdir/pkexec1.1.12.patch"
 }
 
 build() {
