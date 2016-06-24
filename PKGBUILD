@@ -14,5 +14,6 @@ source=("$pkgname-$pkgver.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_tex
 md5sums=('29f4b0ded57db27b806b0943ebb239bb')
 
 package() {
-	install -Dm644 -t "${pkgdir:?}/usr/share/foobar2000/components" foo_texttools.dll
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir/usr/share/foobar2000/components" foo_texttools.dll
 }
