@@ -6,7 +6,7 @@
 pkgname=('wokd')
 
 # Version
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 #epoch=
 
@@ -59,7 +59,7 @@ source=('https://github.com/kimchi-project/wok/archive/'${pkgver}'.tar.gz' 'pyth
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('ed1ec9b86f2d6367f53c979f5878bebdc2588ce1b6b1bf7f4dd103df7422082c'
+sha256sums=('c75d0d7018bef12b31df270cc4ee22d19eec6790291c44f7e993e7f39eadabf2'
             '808dcc04b66dd241eb1c434f75221e1c3762f65ed5beec77407bd123b965ee62'
             '21df69251ab787c5c0601bcf6d84fcd2836ad2080b0d6600c817dd290286eb1f')
 
