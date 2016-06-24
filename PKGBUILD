@@ -8,7 +8,7 @@ pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.16+8912.f42ff5f
+pkgver=1.0.16+8951.8ca7e60
 pkgver() {
   "$srcdir/client/packaging/linux/arch/keybase_git_version.sh"
 }
@@ -30,10 +30,14 @@ build() {
 }
 
 package() {
-  if [ "$CARCH" = x86_64 ] ; then
-    debian_arch=amd64
+  if [ "$CARCH" = "i686" ] ; then
+    deb_arch="i386"
+  elif [ "$CARCH" = "x86_64" ] ; then
+    deb_arch="amd64"
   else
-    debian_arch=i386
+    echo "Unknown arch: $CARCH"
+    exit 1
   fi
-  cp -r "$srcdir/build_dir/binaries/$debian_arch"/* "$pkgdir"
+
+  cp -r "$srcdir/build_dir/binaries/$deb_arch"/* "$pkgdir"
 }
