@@ -2,7 +2,7 @@
 
 pkgname=kxmlgui-git
 pkgver=r286.e2cc82a
-pkgrel=1
+pkgrel=2
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kxmlgui'
