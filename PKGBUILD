@@ -2,16 +2,16 @@
 
 pkgname=kdesignerplugin-git
 pkgver=r78.5b1f761
-pkgrel=2
+pkgrel=3
 pkgdesc='KDesignerPlugin'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdesignerplugin'
 license=('LGPL')
 depends=('kplotting-git' 'kdewebkit-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'kdoctools-git')
+makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'kdoctools-git' 'python')
 groups=('kf5')
-conflicts=(kdesignerplugin)
-provides=(kdesignerplugin)
+conflicts=('kdesignerplugin')
+provides=('kdesignerplugin')
 source=('git://anongit.kde.org/kdesignerplugin.git')
 md5sums=('SKIP')
 
