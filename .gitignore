@@ -2,4 +2,5 @@ pkg/
 src/
 *.bz2
 *.sig
+*.tar
 *.xz
