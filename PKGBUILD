@@ -1,18 +1,20 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
-pkgname=python-irclib
-pkgver=0.4.8
-pkgrel=2
+# Maintainer: Andrejs Mivre??iks <gim at fastmail dot fm>
+pkgname='python-irclib'
+pkgver='0.4.8'
+pkgrel=3
 pkgdesc='Internet Relay Chat (IRC) protocol client library'
 arch=('any')
 url='https://pypi.python.org/pypi/python-irclib/'
-license=('MIT')
+license=('LGPL')
 depends=('python')
-makedepends=('python-setuptools')
-changelog='ChangeLog'
-source=("http://sourceforge.net/projects/python-irclib/files/python-irclib/${pkgver}/python-irclib-${pkgver}.tar.gz")
-sha256sums=('81ee3a6401d4f4d1af1975913438a32fa453b4220bd2e509b7b5af4cbc29a4f4')
+makedepends=('python-pip' 'python2-pip')
+source=('git://github.com/jaraco/irc.git')
+sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/python-irclib-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/irc"
+  echo :: Installing for python3.5 ...
+  pip install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+  echo :: Installing for python2.7 ...
+  pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed . 
 }
