@@ -1,0 +1,18 @@
+pkgbase = ruby-chef-config
+	pkgdesc = Chef's default configuration and config loading
+	pkgver = 12.11.18
+	pkgrel = 1
+	url = https://github.com/chef/chef
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-fuzzyurl
+	depends = ruby-mixlib-config
+	depends = ruby-mixlib-shellout
+	noextract = chef-config-12.11.18.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/chef-config-12.11.18.gem
+	sha256sums = de0167c4cd9a6d1a49e2365298b968111e8768f0d1d38a6f4f37f9707525fa7a
+
+pkgname = ruby-chef-config
+
