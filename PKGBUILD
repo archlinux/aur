@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.7.5
-_pkgver=0-7-5
+pkgver=0.7.6
+_pkgver=0-7-6
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -49,13 +49,13 @@ source_i686=(
   "${pkgname}-${_pkgver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
 )
 sha256sums_i686=(
-  "2f40fe810093cf00b777eb93c721aaf4aff87a5db7bc7dbb756ea51aa19daa54"
+  "4cb5c912388d7c6297bb77faad97e282e6acc7263550a54805ae3a16c606ac13"
 )
 source_x86_64=(
   "${pkgname}-${_pkgver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
 )
 sha256sums_x86_64=(
-  "493081687a06fb69aac528651b2aa4b820dd097377052133f0a75468cf2ade4e"
+  "123ff2213170928856aa365b267c1b372576757dc0e53666d8a4760e056cacc6"
 )
 
 package() {
