@@ -1,4 +1,4 @@
-# Maintainer: Leo Schwarz aka. evotopid <mail αt leoschwarz Døt com>
+# Maintainer: Leo Schwarz (evotopid) <mail@leoschwarz.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com> 
 _name=firefox
 _channel=developer
@@ -16,10 +16,11 @@ pkgver="${_release_version}_${_release_year}${_release_month}${_release_day}"
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${_release_version}.de.linux-${CARCH}"
+_file="${_name}-${_release_version}.de.linux-${CARCH}.tar.bz2"
 _release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time}-mozilla-aurora-l10n"
-_srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/${_release_year}/${_release_month}/${_release_dir}"
-source=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
+source=("https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file"
+        "firefox-$_channel.desktop"
+        "vendor.js")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite3' 'dbus-glib')
 provides=(firefox-developer)
 conflicts=(firefox-developer)
@@ -34,6 +35,6 @@ package() {
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-md5sums=('19d96983e9809c813fbbf2d1b5cea201'
+md5sums=('d6bd8c9a1222162a1c87bcc35a8c8014'
          '5979b30b19cd645012ce518321fb16f1'
          '32618013911bf84445afce815e3875b1')
