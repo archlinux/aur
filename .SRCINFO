@@ -6,9 +6,8 @@ pkgbase = ruby-mixlib-cli
 	arch = any
 	license = Apache2
 	depends = ruby
-	depends = ruby-bundler
-	source = git://github.com/chef/mixlib-cli
-	sha256sums = SKIP
+	source = https://rubygems.org/downloads/mixlib-cli-1.6.0.gem
+	sha256sums = 81381d1b4a577cfb9ee49609b23f532334432bc0f747f6c3ffa5ef12114d59d8
 
 pkgname = ruby-mixlib-cli
 
