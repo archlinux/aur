@@ -3,7 +3,7 @@
 
 pkgname=plasma-workspace-git
 pkgver=r4154.a84e771
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -34,7 +34,7 @@ build() {
   cmake ../plasma-workspace \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DLIBEXEC_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
