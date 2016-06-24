@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-hooli
+	pkgdesc = gtk theme inspired by the name of Silicon Valley American teledrama.
+	pkgver = 4
+	pkgrel = 0
+	url = https://www.gnome-look.org/p/1102901/
+	arch = any
+	license = CC by SA3
+	depends = gtk3>3.14
+	source = Hooli-master.zip::https://dl.opendesktop.org/api/files/download?id=1466765754
+	sha256sums = e7509267f1ec402e7bcd0d1d142816fb67a5e5a4a6d161ae6e1ada57d6f33da5
+
+pkgname = gtk-theme-hooli
+
