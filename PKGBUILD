@@ -15,7 +15,7 @@ depends=(
 source=(
 	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64.deb"
 	"http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcue/libcue1_1.4.0-1_amd64.deb"
-	"https://music.163.com/html/web2/service.html"
+	"http://music.163.com/html/web2/service.html"
 	"netease-cloud-music"
 )
 noextract=(
