@@ -7,7 +7,7 @@
 
 
 pkgname=slowmovideo-git
-pkgver=20160408
+pkgver=20160624
 pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ pkgver() {
 build() {
   cd "${srcdir}/slowmoVideo"
   mkdir -p build && cd build
+#export PKG_CONFIG_PATH=/usr/lib/opencv2/pkgconfig"
   export LDFLAGS="-lX11 ${LDFLAGS}"
   cmake -DUSE_QTKIT=FALSE -DENABLE_TESTS=FALSE -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
