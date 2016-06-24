@@ -12,7 +12,7 @@ pkgbase = libqtshadowsocks
 	makedepends = make
 	makedepends = qtchooser
 	depends = qt5-base>=5.2
-	depends = botan-1.10=1.10.12
+	depends = botan-1.10>=1.10.12
 	provides = libqtshadowsocks
 	conflicts = libqtshadowsocks
 	conflicts = libqtshadowsocks-git
