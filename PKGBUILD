@@ -2,7 +2,7 @@
 
 pkgname=knotifications-git
 pkgver=r182.50c0a31
-pkgrel=1
+pkgrel=2
 pkgdesc='KNotifications'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/knotifications'
