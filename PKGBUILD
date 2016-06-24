@@ -9,7 +9,7 @@ pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat'
          'libsystemd-knock-standalone' 'libudev-knock' 'nss-knock-myhostname' 'nss-knock-mymachines' 'nss-knock-resolve')
 pkgver=230
-pkgrel=4
+pkgrel=4.2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -268,9 +268,9 @@ package_libudev-knock() {
   depends=('glibc' 'libcap')
   license=('GPL2')
   provides=('libudev.so' "libudev=$pkgver")
-  conflicts=('libudev-knock')
+  conflicts=('libudev')
 
-  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/$_pkgbase" "$pkgdir"
+  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/${pkgname/-knock/}" "$pkgdir"
 }
 
 package_nss-knock-myhostname() {
@@ -280,7 +280,7 @@ package_nss-knock-myhostname() {
   provides=("nss-myhostname=$pkgver")
   conflicts=('nss-myhostname')
 
-  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/$_pkgbase" "$pkgdir"
+  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/${pkgname/-knock/}" "$pkgdir"
 }
 
 package_nss-knock-mymachines() {
@@ -290,7 +290,7 @@ package_nss-knock-mymachines() {
   provides=("nss-mymachines=$pkgver")
   conflicts=('nss-mymachines')
 
-  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/$_pkgbase" "$pkgdir"
+  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/${pkgname/-knock/}" "$pkgdir"
 }
 
 package_nss-knock-resolve() {
@@ -300,7 +300,7 @@ package_nss-knock-resolve() {
   provides=("nss-resolve=$pkgver")
   conflicts=('nss-resolve')
 
-  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/$_pkgbase" "$pkgdir"
+  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/${pkgname/-knock/}" "$pkgdir"
 }
 
 package_systemd-knock-sysvcompat() {
@@ -310,7 +310,7 @@ package_systemd-knock-sysvcompat() {
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-knock')
 
-  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/$_pkgbase" "$pkgdir"
+  cp -rT -d --no-preserve=ownership,timestamp "$srcdir/dest/${pkgname/-knock/}" "$pkgdir"
 
   install -dm755 "$pkgdir/usr/bin"
   for tool in runlevel reboot shutdown poweroff halt telinit; do
