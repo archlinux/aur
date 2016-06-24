@@ -1,6 +1,6 @@
 # Maintainer: Brent Saner <r00t (at) square-r00t (dot) net> - 748231EBCBD808A14F5E85D28C004C2F93481F6B
 # Co-maintainer: opencode <gitcoder (at) outlook (dot) com>
-# Co-maintainer: silvermonk <aur (at) apsu (dot) be> (pending)
+# Co-maintainer: silvermonk <aur (at) apsu (dot) be>
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 # This builds the FreeSWITCH open source telephone engine
@@ -56,7 +56,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-lite'
 pkgver='1.6.9'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
