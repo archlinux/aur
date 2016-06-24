@@ -2,7 +2,7 @@
 
 pkgname=kiconthemes-git
 pkgver=r175.c4bbb91
-pkgrel=1
+pkgrel=2
 pkgdesc='KIconThemes'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kiconthemes'
@@ -29,7 +29,7 @@ build() {
   cmake ../kiconthemes \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
