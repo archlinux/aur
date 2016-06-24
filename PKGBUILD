@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    sed -i 's/^#CFLAGS/CFLAGS/' makefile
+    sed -i 's/^#CFLAGS =/CFLAGS = -std=c++11 /' makefile
     make
 }
 
