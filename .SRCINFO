@@ -1,0 +1,21 @@
+pkgbase = peruse-git
+	pkgdesc = A comic book viewer based on Frameworks 5, for use on multiple form factors.
+	pkgver = 1.0.r3.g50191c1
+	pkgrel = 1
+	url = http://peruse.kde.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = baloo
+	depends = kdeclarative
+	depends = kirigami-git
+	optdepends = okular-frameworks-git: for cbr, cb*, pdf, deja-vu, epub file support
+	provides = peruse
+	conflicts = peruse
+	source = git://anongit.kde.org/peruse.git
+	md5sums = SKIP
+
+pkgname = peruse-git
+
