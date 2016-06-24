@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 230
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -80,7 +80,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=230
 	provides = udev=230
-	provides = systemd=230-3
+	provides = systemd=230-4
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -120,15 +120,15 @@ pkgname = libsystemd-selinux
 	depends = xz
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=230-3
+	provides = libsystemd=230-4
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=230-3
-	provides = selinux-systemd-sysvcompat=230-3
+	provides = systemd-sysvcompat=230-4
+	provides = selinux-systemd-sysvcompat=230-4
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

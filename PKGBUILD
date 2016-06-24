@@ -7,7 +7,7 @@
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
 pkgver=230
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 groups=('selinux')
@@ -45,6 +45,9 @@ _backports=(
 
   # systemctl: fix return values on success
   5f056378b0ceffb6e6fba3513f7eae72e2d09dc8
+
+  # automount: handle expire_tokens when the mount unit changes its state (#3434)
+  0a62f81045dd810c8f1223cccbac4d706ea2cb45
 )
 
 prepare() {
