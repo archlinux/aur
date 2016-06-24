@@ -2,13 +2,13 @@
 
 pkgname=khelpcenter-git
 pkgver=r2292.56a33e3
-pkgrel=2
+pkgrel=3
 pkgdesc="Application to show KDE Applications' documentation"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/khelpcenter'
 license=('LGPL')
 depends=('khtml-git' 'kdelibs4support-git' 'kcmutils-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 conflicts=('khelpcenter' 'kdebase-runtime')
 provides=('khelpcenter')
 source=('git://anongit.kde.org/khelpcenter.git')
