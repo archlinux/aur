@@ -10,8 +10,12 @@ arch=('any')
 url="https://www.foobar2000.org/components/view/foo_playcount"
 license=('unknown')
 depends=('foobar2000>=1.1.0')
-source=("$pkgname-$pkgver.zip::https://www.dropbox.com/s/xhhydw02dbbg7i1/foo_playcount.fb2k-component")
+makedepends=('wget')
+source=("foo_playcount.fb2k-component::https://www.foobar2000.org/components/view/foo_playcount")
 md5sums=('1699e277414cedf2def7df6c3f3f2e54')
+
+# bypass dynamic download link
+DLAGENTS=('https::/usr/bin/wget -nd -r -l 1 -A fb2k-component %u')
 
 package() {
 	install -Dm644 -t "${pkgdir:?}/usr/share/foobar2000/components" foo_playcount.dll
