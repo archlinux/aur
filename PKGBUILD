@@ -1,13 +1,13 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 pkgname=hy-git
 _gitname=hy
-pkgver=0.11.0.r1.g685688f
+pkgver=0.11.0.r262.g1b8a70e
 pkgrel=1
 pkgdesc="Python <--> Lisp layer"
 arch=('any')
 url="http://hylang.org/"
 license=('MIT')
-depends=('python' 'python-rply-git' 'python-astor-git' 'python-clint' 'python-args-git')
+depends=('python' 'python-rply' 'python-astor' 'python-clint' 'python-args' 'python-setuptools')
 options=(!emptydirs)
 source=("git://github.com/hylang/hy.git")
 md5sums=("SKIP")
