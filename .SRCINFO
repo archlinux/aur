@@ -1,0 +1,14 @@
+pkgbase = ruby-mixlib-cli
+	pkgdesc = Provides a class-based command line option parsing object
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/chef/mixlib-cli
+	arch = any
+	license = Apache2
+	depends = ruby
+	depends = ruby-bundler
+	source = git://github.com/chef/mixlib-cli
+	sha256sums = SKIP
+
+pkgname = ruby-mixlib-cli
+
