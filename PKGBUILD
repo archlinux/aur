@@ -1,26 +1,49 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=btcd
-pkgname=('btcd' 'btcwallet' 'btcgui')
-pkgver=20151128
-pkgrel=2
+pkgname=('btcd' 'btcwallet')
+pkgver=20160624
+pkgrel=1
 arch=('i686' 'x86_64')
-makedepends=('git' 'go')
+makedepends=('git' 'glide' 'go')
 groups=('btcsuite')
 url="https://github.com/btcsuite"
 license=('ISC')
 options=('!strip' '!emptydirs')
+source=(git+https://github.com/btcsuite/btcd
+        git+https://github.com/btcsuite/btcwallet)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   date +%Y%m%d
 }
 
+prepare() {
+  export GOPATH="$srcdir"
+  git clone "$srcdir/btcd" "$GOPATH/src/github.com/btcsuite/btcd"
+  git clone "$srcdir/btcwallet" "$GOPATH/src/github.com/btcsuite/btcwallet"
+}
+
 build() {
+  export GOPATH="$srcdir"
+
   msg2 'Building btcd and dependencies...'
-  GOPATH="$srcdir" go get -u github.com/btcsuite/btcd/...
+  cd "$GOPATH/src/github.com/btcsuite/btcd"
+  glide install
+  go install . ./cmd/...
 
   msg2 'Building btcwallet and dependencies...'
-  GOPATH="$srcdir" go get -u github.com/btcsuite/btcwallet/...
+  cd "$GOPATH/src/github.com/btcsuite/btcwallet"
+  glide install
+  go install . ./cmd/...
+
+  msg2 'Prepending btc to unqualified binaries...'
+  for _bin in $(find "$srcdir/bin"  \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        -type f ! -name "btc*" -printf '%f\n'); do
+    mv "$srcdir/bin/$_bin" "$srcdir/bin/btc$_bin"
+  done
 }
 
 package_btcd() {
@@ -37,31 +60,15 @@ package_btcd() {
     install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/$_doc" \
             -t "$pkgdir/usr/share/doc/btcd"
   done
+  cp -dpr --no-preserve=ownership "$srcdir/src/github.com/btcsuite/btcd/docs" \
+    "$pkgdir/usr/share/doc/btcd"
 
   msg2 'Installing btcd...'
-  find "$srcdir/bin" -mindepth 1 -maxdepth 1 -type f \
-       \( ! -name "btcwallet*"  \)                   \
-    -a \( ! -name "dropwtxmgr*" \)                   \
-    -exec install -Dm 755 '{}' -t "$pkgdir/usr/bin" \;
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
-}
-
-package_btcwallet() {
-  pkgdesc="Daemon handling Bitcoin wallet functions, with asynchronous blockchain queries and notifications over websockets"
-  provides=('btcwallet')
-  conflicts=('btcwallet')
-
-  msg2 'Installing btcwallet docs...'
-  for _doc in CHANGES README.md sample-btcwallet.conf; do
-    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/$_doc" \
-            -t "$pkgdir/usr/share/doc/btcwallet"
-  done
-
-  msg2 'Installing btcwallet...'
-  for _bin in btcwallet dropwtxmgr; do
+  for _bin in btcaddblock \
+              btcctl \
+              btcd \
+              btcfindcheckpoint \
+              btcgencerts; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 
@@ -70,23 +77,30 @@ package_btcwallet() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-package_btcgui() {
-  pkgdesc="Graphical frontend to btcwallet and btcd written using gotk3"
-  makedepends+=('cairo' 'glib2' 'gtk3')
-  provides=('btcgui')
-  conflicts=('btcgui')
+package_btcwallet() {
+  pkgdesc="Secure Bitcoin wallet daemon written in Go"
+  provides=('btcwallet')
+  conflicts=('btcwallet')
 
-  msg2 'Building btcgui and dependencies...'
-  GOPATH="$srcdir" go get -u github.com/btcsuite/btcgui/...
+  msg2 'Installing btcwallet license...'
+  install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/LICENSE" \
+          -t "$pkgdir/usr/share/licenses/btcwallet"
 
-  msg2 'Installing btcgui docs...'
-  for _doc in CHANGES README.md sample-btcgui.conf; do
-    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcgui/$_doc" \
-            -t "$pkgdir/usr/share/doc/btcgui"
+  msg2 'Installing btcwallet docs...'
+  for _doc in CHANGES README.md sample-btcwallet.conf; do
+    install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/$_doc" \
+            -t "$pkgdir/usr/share/doc/btcwallet"
   done
+  cp -dpr --no-preserve=ownership \
+    "$srcdir/src/github.com/btcsuite/btcwallet/docs" \
+    "$pkgdir/usr/share/doc/btcwallet"
 
-  msg2 'Installing btcgui...'
-  install -Dm 755 "$srcdir/bin/btcgui" -t "$pkgdir/usr/bin"
+  msg2 'Installing btcwallet...'
+  for _bin in btcdropwtxmgr \
+              btcsweepaccount \
+              btcwallet; do
+    install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
+  done
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
