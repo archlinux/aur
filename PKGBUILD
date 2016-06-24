@@ -8,10 +8,10 @@ arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kinit'
 license=('LGPL')
 depends=('kio-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
-conflicts=(kinit)
-provides=(kinit)
+conflicts=('kinit')
+provides=('kinit')
 source=('git://anongit.kde.org/kinit.git')
 md5sums=('SKIP')
 
