@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khotkeys-git
-pkgver=r1669.649c690
-pkgrel=1
+pkgver=r1758.4822573
+pkgrel=2
 pkgdesc='KHotKeys'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -29,7 +29,7 @@ build() {
   cmake ../khotkeys \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
