@@ -2,16 +2,16 @@
 
 pkgname=kcmutils-git
 pkgver=r103.f3e45a3
-pkgrel=2
+pkgrel=3
 pkgdesc='Utilities for interacting with KCModules'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcmutils'
 license=('LGPL')
 depends=('kdeclarative-git')
-makedepends=('extra-cmake-modules-git' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
-conflicts=(kcmutils)
-provides=(kcmutils)
+conflicts=('kcmutils')
+provides=('kcmutils')
 source=('git://anongit.kde.org/kcmutils.git')
 md5sums=('SKIP')
 
