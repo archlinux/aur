@@ -2,7 +2,7 @@
 
 pkgname=kjs-git
 pkgver=r95.50a015d
-pkgrel=1
+pkgrel=2
 pkgdesc='Support for JS scripting in applications'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kjs'
@@ -29,7 +29,7 @@ build() {
   cmake ../kjs \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
