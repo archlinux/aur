@@ -1,0 +1,15 @@
+post_upgrade() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_install() {
+  echo "All user customizations (content, preferences, etc.) can now be installed in"
+  echo "the \`~/.stepmania-5.0/' directory.  If you do this, there should no longer be"
+  echo "any need to add users to the \`games' group."
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+}

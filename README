@@ -1,0 +1,11 @@
+StepMania <git: 5_1_0>
+
+NOTES
+
+    Modify the CMAKE_C_COMPILER and CMAKE_CXX_COMPILER variable to point to a
+    GCC 5.4 or lower binary.
+    GCC 6 and higher suffer from a regression which causes a segmentation fault while compiling.
+    see: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70869
+        internal compiler error: Segmentation fault on array of pointer to function members
+
+    StepMania won't be able to compile with GCC 6 or higher!
