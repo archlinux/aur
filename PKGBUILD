@@ -1,4 +1,5 @@
-# Maintainer: StarGater93 <stargater93@gmail.com>
+# Maintainer	: Pablo Lezaeta <prflr88 (arro'a) gmail puntocom>
+# Contributor	: StarGater93 <stargater93@gmail.com>
 
 pkgbase=celestia-medium-redux
 pkgname=(ttf-celestia-medium-redux t1-celestia-medium-redux)
@@ -8,6 +9,7 @@ pkgrel=1
 pkgdesc="A font collection based off on Generation B (used in My Little Pony: Friendship is MAgic), originally created by Purple Tinker, redux by Mattyhex"
 arch=("any")
 url="http://www.mattyhex.net/CMR/"
+depends=('xorg-fonts-alias' 'xorg-fonts-encodings')
 license=('custom:Public Domain')
 source=("${url}media/fonts/${_realname}${pkgver}.ttf"
         "${url}media/fonts/${_realname}_alt${pkgver}.ttf"
@@ -18,8 +20,9 @@ md5sums=('363a277c00badde21964523184d3c1c4'
 
 package_ttf-celestia-medium-redux() {
 	pkgname=ttf-celestia-medium-redux
-	pkgdesc="A TTF font based off on Generation B (used in My Little Pony: Friendship is MAgic), originally created by Purple Tinker, redux by Mattyhex"
-	provides=(ttf-celestia)
+	pkgdesc="A TTF font based off on Generation B (used in My Little Pony: Friendship is Magic), originally created by Purple Tinker, redux by Mattyhex"
+	provides=("ttf-celestia")
+	replaces=("ttf-celestia")
 	depends=('fontconfig' 'xorg-font-utils')
 	
 	mkdir -p "$pkgdir/usr/share/fonts/TTF"
@@ -28,8 +31,9 @@ package_ttf-celestia-medium-redux() {
 
 package_t1-celestia-medium-redux() {
 	pkgname=t1-celestia-medium-redux
-	pkgdesc="A PostScript font based off on Generation B (used in My Little Pony: Friendship is MAgic), originally created by Purple Tinker, redux by Mattyhex"
-        provides=(t1-celestia)
+	pkgdesc="A PostScript font based off on Generation B (used in My Little Pony: Friendship is Magic), originally created by Purple Tinker, redux by Mattyhex"
+        provides=("t1-celestia")
+        replaces=("t1-celestia")
 	depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
 
 	mkdir -p "$pkgdir/usr/share/fonts/Type1"
