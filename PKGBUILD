@@ -2,8 +2,8 @@
 # Contributor: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kdeplasma-addons-git
-pkgver=r6981.8303319
-pkgrel=1
+pkgver=r7143.27606e4
+pkgrel=2
 pkgdesc="All kind of addons to improve your Plasma experience"
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/kdeplasma-addons'
@@ -32,7 +32,7 @@ build() {
   cmake ../kdeplasma-addons \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DLIBEXEC_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON 
   make
