@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org> 
 
 pkgname=discover-git
-pkgver=r4012.6562fa1
-pkgrel=1
+pkgver=r4327.f537e89
+pkgrel=2
 pkgdesc='KDE and Plasma resources management GUI'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/discover'
@@ -31,7 +31,7 @@ build() {
   cmake ../discover \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
