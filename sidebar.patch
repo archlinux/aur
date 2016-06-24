@@ -103,7 +103,7 @@ diff -urN mutt-1.6.1/buffy.c mutt-1.6.1-sidebar/buffy.c
    if ((dirp = opendir (path)) == NULL)
    {
      mailbox->magic = 0;
-@@ -357,6 +394,92 @@
+@@ -357,6 +394,93 @@
  
    return 0;
  }
@@ -188,7 +188,8 @@ diff -urN mutt-1.6.1/buffy.c mutt-1.6.1-sidebar/buffy.c
 +	mailbox->sb_last_checked = time (NULL);
 +
 +	/* make sure the updates are actually put on screen */
-+	mutt_sb_draw();
++	if (SidebarWidth)
++		mutt_sb_draw();
 +}
 +
 +#endif
@@ -208,7 +209,7 @@ diff -urN mutt-1.6.1/buffy.c mutt-1.6.1-sidebar/buffy.c
    {
      if (!option(OPTMAILCHECKRECENT) || sb->st_mtime > mailbox->last_visited)
      {
-@@ -388,6 +515,41 @@
+@@ -388,6 +515,42 @@
    return rc;
  }
  
@@ -243,7 +244,8 @@ diff -urN mutt-1.6.1/buffy.c mutt-1.6.1-sidebar/buffy.c
 +  }
 +
 +  /* make sure the updates are actually put on screen */
-+  mutt_sb_draw();
++  if (SidebarWidth)
++    mutt_sb_draw();
 +}
 +#endif
 +

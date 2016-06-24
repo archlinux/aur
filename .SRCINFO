@@ -1,7 +1,7 @@
 pkgbase = mutt-sidebar
 	pkgdesc = Small but very powerful text-based mail client with sidebar and trash patches from NeoMutt
 	pkgver = 1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.mutt.org/
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = mutt-sidebar
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
 	sha1sums = ff1c76209a5c299018fc72b9e2e1ab98bf5138dd
 	sha1sums = SKIP
-	sha1sums = 11056cb7839684e11d76707167876fda05012b84
+	sha1sums = 4d192a7c60c9d7d54ca1a6dac11ba28d08a07a36
 	sha1sums = 0f598412830d1e3594fd4fd000196d667dee3e19
 
 pkgname = mutt-sidebar
