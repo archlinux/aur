@@ -1,11 +1,18 @@
---- TextSuggest-orig.py	2016-06-22 07:13:54.566518200 +0200
-+++ TextSuggest.py	2016-06-22 07:14:19.063184795 +0200
-@@ -34,7 +34,7 @@
+--- TextSuggest-orig.py	2016-06-24 23:47:38.626860367 +0200
++++ TextSuggest.py	2016-06-24 23:58:54.896907919 +0200
+@@ -44,7 +44,7 @@
  
- 	suggest_method = 'replace'
+ 		suggest_method = 'replace'
  
 -script_cwd = os.path.abspath(os.path.join(__file__, os.pardir))
 +script_cwd = os.path.abspath(os.path.join(__file__, '/usr/lib/python3.5/site-packages/textsuggest/'))
  
- dict_dir = os.path.join(script_cwd, 'EnglishOpenWordList')
+ custom_words_file = os.path.expanduser('~/.Custom_Words.txt')
  
+@@ -348,4 +348,4 @@
+ 
+ if __name__ == '__main__':
+ 
+-	main(current_word)
+\ No newline at end of file
++	main(current_word)
