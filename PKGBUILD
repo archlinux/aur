@@ -1,5 +1,5 @@
-# Maintainer: Erez Raviv (erezraviv at gmail com)
-# Latest revision: Revision 2725
+# Maintainer: Erez Raviv (erezraviv@gmail.com)
+# Latest Revision 2725
 pkgname=chirp-daily
 pkgver=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
 pkgrel=1

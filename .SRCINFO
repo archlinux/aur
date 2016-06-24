@@ -1,5 +1,5 @@
 pkgbase = chirp-daily
-	pkgdesc = Daily build for GUI tool for programming ham radios; this pkgbuild is never out of date
+	pkgdesc = Daily build for GUI tool for programming ham radios; This package gets updated once an announcement of a new version is made.
 	pkgver = 20160623
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
@@ -10,9 +10,12 @@ pkgbase = chirp-daily
 	depends = desktop-file-utils
 	depends = pygtk
 	depends = curl
+	depends = coreutils
 	provides = chirp
 	conflicts = chirp
 	options = !emptydirs
+	source = http://trac.chirp.danplanet.com/chirp_daily/LATEST/chirp-daily-20160623.tar.gz
+	sha1sums = 4bcb2b3397d635b30bb5f648d8af363e7a0db00b
 
 pkgname = chirp-daily
 
