@@ -17,7 +17,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data-git
-pkgver=r2727.fe96b91
+pkgver=r2729.0e83b4c
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -29,7 +29,8 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
   'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
-  'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
+  'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib'
+  'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss')
 makedepends=('autoconf' 'automake' 'libtool' 'git')
 provides=('purr-data' 'pd-l2ork')
 conflicts=('purr-data' 'pd-l2ork' 'pd-l2ork-git')
