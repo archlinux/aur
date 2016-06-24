@@ -2,16 +2,16 @@
 
 pkgname=kunitconversion-git
 pkgver=r87.366d2ff
-pkgrel=2
+pkgrel=3
 pkgdesc='KUnitConversion'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kunitconversion'
 license=('LGPL')
 depends=('ki18n-git')
-makedepends=('extra-cmake-modules-git' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
-conflicts=(kunitconversion)
-provides=(kunitconversion)
+conflicts=('kunitconversion')
+provides=('kunitconversion')
 source=('git://anongit.kde.org/kunitconversion.git')
 md5sums=('SKIP')
 
