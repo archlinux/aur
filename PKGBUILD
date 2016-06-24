@@ -30,7 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
