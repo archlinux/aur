@@ -2,7 +2,7 @@
 
 pkgname=kjobwidgets-git
 pkgver=r63.fe7f90f
-pkgrel=1
+pkgrel=2
 pkgdesc='KJobWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kjobwidgets'
