@@ -2,12 +2,12 @@
 
 pkgname=kemoticons-git
 pkgver=r62.54fe167
-pkgrel=2
+pkgrel=3
 pkgdesc='KEmoticons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kemoticons'
 license=('LGPL')
-depends=('karchive-git' 'kservice-git')
+depends=('kservice-git')
 makedepends=('extra-cmake-modules-git' 'git')
 groups=('kf5')
 conflicts=(kemoticons)
