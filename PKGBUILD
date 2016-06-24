@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
-license=('GPLv3')
+license=('GPL3')
 depends=('nodejs' 'mpg123' 'xawtv' 'scrot' 'openssh' 'wireless_tools' 'lsb-release' 'python2' 'pygtk' 'networkmanager')
 replaces=('prey-tracker')
 # Should be used as soon as the bash client is renamed
