@@ -1,13 +1,14 @@
 pkgbase = python2-uncompyle2
 	pkgdesc = Python 2.7 byte-code decompiler
-	pkgver = 1.1
-	pkgrel = 1
-	url = https://github.com/wibiti/uncompyle2/
+	pkgver = 1.13
+	pkgrel = 2
+	url = https://github.com/wibiti/${_module_}/
 	arch = any
 	license = MIT
+	makedepends = python2-pip
 	depends = python2
-	source = https://github.com/wibiti/uncompyle2/archive/v1.1.tar.gz
-	sha512sums = 54fa5355eaf0973c3b986f39499e2ae700201502ffbde956c47b620117db2a699b9329859f385d063e178223a716088c8b1955eca7d0a22ce6d0145ade56ac01
+	source = git://github.com/wibiti/uncompyle2
+	sha512sums = SKIP
 
 pkgname = python2-uncompyle2
 

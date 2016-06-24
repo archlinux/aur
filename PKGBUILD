@@ -1,19 +1,22 @@
-# Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: Rapha??l Doursenaud <rdoursenaud@free.fr>
 
-pkgname=python2-uncompyle2
-_pkgname=uncompyle2
-pkgver=1.1
-pkgrel=1
-pkgdesc="Python 2.7 byte-code decompiler"
+pkgname='python2-uncompyle2'
+_module_='uncompyle2'
+pkgver='1.13'
+pkgrel=2
+pkgdesc='Python 2.7 byte-code decompiler'
 arch=('any')
-url="https://github.com/wibiti/${_pkgname}/"
+url='https://github.com/wibiti/${_module_}/'
 license=('MIT')
 depends=('python2')
-source=("https://github.com/wibiti/${_pkgname}/archive/v$pkgver.tar.gz")
-sha512sums=('54fa5355eaf0973c3b986f39499e2ae700201502ffbde956c47b620117db2a699b9329859f385d063e178223a716088c8b1955eca7d0a22ce6d0145ade56ac01')
+makedepends=('python2-pip')
+source=('git://github.com/wibiti/uncompyle2')
+sha512sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
+  cd "${srcdir}/${_module_}"
+  echo :: Installing for Python2.7 ...
+  pip2 install --isolated --prefix=/usr --root="${pkgdir}" --no-deps --ignore-installed .
   python2 setup.py install --prefix=/usr --root="${pkgdir}"
 }
