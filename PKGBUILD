@@ -1,12 +1,12 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Andrejs Mivre??iks <gim at fastmail dot fm>
 pkgname='python-irclib'
-pkgver='0.4.8'
+pkgver='14.2.2'
 pkgrel=3
 pkgdesc='Internet Relay Chat (IRC) protocol client library'
 arch=('any')
-url='https://pypi.python.org/pypi/python-irclib/'
-license=('LGPL')
+url='https://pypi.python.org/pypi/python-irc/'
+license=('MIT')
 depends=('python')
 makedepends=('python-pip' 'python2-pip')
 source=('git://github.com/jaraco/irc.git')
