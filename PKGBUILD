@@ -23,8 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir"/"$_gitname"
   PYTHON=python2 ./autogen.sh --prefix=/usr
-  #  ./configure 
-    make
+  make
   for _i in bin/${_gitname} ${_gitname}/*.py
   do
     sed -i 's#/usr/bin/python#/usr/bin/python2#' $_i
