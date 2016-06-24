@@ -4,7 +4,8 @@ After=local-fs.target network.target
 
 [Service]
 Type=forking
-ExecStart=/srv/cuberite/Cuberite -d
+ExecStart=/usr/bin/cuberite start
+ExecStop=/usr/bin/cuberite stop
 User=cuberite
 Group=cuberite
 

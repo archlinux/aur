@@ -4,8 +4,7 @@ After=local-fs.target
 
 [Service]
 Type=forking
-WorkingDirectory=/srv/cuberite/
-ExecStart=/usr/bin/bash -c "tar -czf /srv/cuberite/backup/$(date +%Y_%m_%d_%H.%M.%S).tar.gz --totals world* plugins *.ini"
+ExecStart=/usr/bin/cuberite backup
 User=cuberite
 Group=cuberite
 
