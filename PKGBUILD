@@ -2,7 +2,7 @@
 
 pkgname=kdoctools-git
 pkgver=r186.05ca8f4
-pkgrel=1
+pkgrel=2
 pkgdesc='KDocTools'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdoctools'
@@ -29,7 +29,7 @@ build() {
   cmake ../kdoctools \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
