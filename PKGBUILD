@@ -12,7 +12,7 @@ makedepends=('git' 'go')
 source=("git+https://github.com/rfjakob/gocryptfs.git#tag=$_tag"
         "gocryptfs.1")
 md5sums=('SKIP'
-         'd9d3ea3e1ecfa367d318523fa7e1e65f')
+         '95a1a12f44265dbf68a3c4da8ef62f5c')
 
 prepare() {
     export GOPATH="$PWD/GO"
