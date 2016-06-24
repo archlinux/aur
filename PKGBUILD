@@ -2,7 +2,7 @@
 
 pkgname=ktexteditor-git
 pkgver=r1114.f3f4319
-pkgrel=1
+pkgrel=2
 pkgdesc='KTextEditor framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/ktexteditor'
@@ -32,7 +32,7 @@ build() {
   cmake ../ktexteditor \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
