@@ -1,10 +1,10 @@
 pkgbase = python-irclib
 	pkgdesc = Internet Relay Chat (IRC) protocol client library
-	pkgver = 0.4.8
+	pkgver = 14.2.2
 	pkgrel = 3
-	url = https://pypi.python.org/pypi/python-irclib/
+	url = https://pypi.python.org/pypi/python-irc/
 	arch = any
-	license = LGPL
+	license = MIT
 	makedepends = python-pip
 	makedepends = python2-pip
 	depends = python
