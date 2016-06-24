@@ -1,8 +1,8 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=16.06.14
-pkgrel=2
+pkgver=16.06.23
+pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://qt-apps.org/content/show.php/QMPlay2?content=153339'
@@ -20,8 +20,7 @@ install=$pkgname.install
 
 pkgver()
 {
-	cd $srcdir/QMPlay2
-	./version
+	$srcdir/QMPlay2/version
 }
 
 build()
