@@ -19,7 +19,7 @@ source=("https://github.com/martinrotter/rssguard/archive/$pkgver.tar.gz")
 
 build() {
   cd $pkgname-$pkgver
-  qmake-qt5 -r CONFIG+=release PREFIX=/usr INSTALL_ROOT="$pkgdir/" QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
+  qmake-qt5 -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=. LRELEASE_EXECUTABLE=lrelease-qt5  QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
