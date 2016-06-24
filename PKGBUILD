@@ -2,7 +2,7 @@
 
 pkgname=milou-git
 pkgver=r393.f70d1ee
-pkgrel=1
+pkgrel=2
 pkgdesc="A dedicated search application built on top of Baloo"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/workspace/milou/'
@@ -30,7 +30,7 @@ build() {
   cmake ../milou \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DQML_INSTALL_DIR=lib/qt/qml \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
