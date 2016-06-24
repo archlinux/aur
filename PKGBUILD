@@ -1,6 +1,6 @@
 pkgname=kactivities-stats-git
-pkgver=r76.5954b27
-pkgrel=1
+pkgver=r78.4c7ecc1
+pkgrel=2
 pkgdesc="Core components for the KDE's Activities"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kactivities'
@@ -26,7 +26,7 @@ build() {
   cmake ../kactivities-stats \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
