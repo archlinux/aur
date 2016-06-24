@@ -9,7 +9,7 @@
 name=qbittorrent
 pkgname=${name}-qt4
 pkgver=3.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org"
@@ -19,7 +19,14 @@ makedepends=('boost' 'qt4')
 optdepends=('python: needed for torrent search tab')
 conflicts=(${name})
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/sourceforge/qbittorrent/$name-$pkgver.tar.xz")
+source=("http://downloads.sourceforge.net/sourceforge/qbittorrent/$name-$pkgver.tar.xz" 'qbittorrent-gcc6.patch')
+
+prepare() {
+  cd $name-$pkgver
+  # Fix build with GCC 6 (Fedora)
+  patch -p1 -i ../qbittorrent-gcc6.patch
+  ./bootstrap.sh
+}
 
 build() {
   cd $name-$pkgver
@@ -34,4 +41,5 @@ package() {
   make INSTALL_ROOT="$pkgdir/" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$name/COPYING
 }
-md5sums=('a1aaf4b7789906385861cd2e1a4a206d')
+md5sums=('a1aaf4b7789906385861cd2e1a4a206d'
+         '6f6ab8ccad907521f384c356faefe41e')

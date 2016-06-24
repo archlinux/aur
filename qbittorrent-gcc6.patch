@@ -1,0 +1,14 @@
+diff -up qBittorrent-release-3.3.3/configure.ac.gcc6 qBittorrent-release-3.3.3/configure.ac
+--- qBittorrent-release-3.3.3/configure.ac.gcc6	2016-01-20 16:49:39.000000000 -0600
++++ qBittorrent-release-3.3.3/configure.ac	2016-03-13 07:45:03.512293512 -0500
+@@ -157,8 +157,8 @@ AX_BOOST_BASE([1.35])
+ AS_IF([test "x$BOOST_CPPFLAGS" = "x"],
+       [AC_MSG_ERROR([Could not find Boost])],
+       [AC_MSG_NOTICE([Boost CPPFLGAS: $BOOST_CPPFLAGS])
+-      CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
+-      LDFLAGS="$BOOST_LDFLAGS $LDFLAGS"])
++      #CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
++      #LDFLAGS="$BOOST_LDFLAGS $LDFLAGS"])
+ 
+ AX_BOOST_SYSTEM()
+ # HAVE_BOOST_SYSTEM is set to an empty value when Boost.System is found.
