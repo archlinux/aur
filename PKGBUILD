@@ -10,7 +10,7 @@ license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'giflib'
 	 'm17n-lib' 'libxrandr' 'libxinerama' 'imagemagick'
 	 'librsvg' 'gnutls')
-makedepends=('git' 'texlive-plainextra')
+makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 provides=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
