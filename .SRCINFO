@@ -11,7 +11,7 @@ pkgbase = ruby-rspec-its
 	noextract = rspec-its-1.2.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rspec-its-1.2.0.gem
-	sha512sums = 6b390f92654f8e6482f0da30d4e721ee127f628eb305268e474d4c9fb14fca1d0fb8922cabc9a8c1372976b5a52349c5a5a774e3026f32d8050c5aea2bc9ccae
+	sha256sums = e39e64faceb99d86cbd181b5137c57cbb3b0e54d7a0fd560a88c2b59bc8597df
 
 pkgname = ruby-rspec-its
 
