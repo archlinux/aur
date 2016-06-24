@@ -1,4 +1,5 @@
-# Maintainer: Andrejs Mivre??iks <gim at fastmail dot fm>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: Andrejs Mivre??iks <gim at fastmail dot fm>
 pkgname='python-irclib'
 pkgver='0.4.8'
 pkgrel=3
