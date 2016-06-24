@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 package() {
   cd "${srcdir}/irc"
   echo :: Installing for python3.5 ...
-  pip install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+  pip install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
   echo :: Installing for python2.7 ...
-  pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed . 
+  pip2 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed . 
 }
