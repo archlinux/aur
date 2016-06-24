@@ -12,6 +12,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 #  * mod_spidermonkey
 #  * mod_lua
 # You can modify this and other options in the BUILD CONFIGURATION section below
+# MANY thanks to Mike Jerrit at Freeswitch (<mike (at) freeswitch (dot) org>|<mike (at) jerris (dot) com>)
+# for providing some cleanup and build assistance!
 
 
 # BUILD CONFIGURATION BEGINS #
@@ -50,7 +52,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6.9'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
