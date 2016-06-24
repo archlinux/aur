@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bluedevil-git
-pkgver=r1685.ae0a60a
+pkgver=r1821.eed7586
 pkgrel=1
 pkgdesc='KDE bluetooth framework'
 arch=(i686 x86_64)
@@ -30,8 +30,8 @@ build() {
   cmake ../bluedevil \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
