@@ -2,16 +2,16 @@
 
 pkgname=kjs-git
 pkgver=r95.50a015d
-pkgrel=2
+pkgrel=3
 pkgdesc='Support for JS scripting in applications'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kjs'
-license=(LGPL)
-depends=(qt5-base)
-makedepends=(extra-cmake-modules-git git)
-groups=(kf5-aids)
-conflicts=(kjs)
-provides=(kjs)
+license=('LGPL')
+depends=('qt5-base')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
+groups=('kf5-aids')
+conflicts=('kjs')
+provides=('kjs')
 source=('git://anongit.kde.org/kjs.git')
 md5sums=('SKIP')
 
