@@ -18,7 +18,7 @@ md5sums=('8f5099e11e2137e0ce5acbec91c219be')
 package_python2-exifread() {
     cd "${srcdir}/${_module}-${pkgver}"
     echo :: Installing for python2.7 ...
-    pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+    pip2 install --isolated --prefix=/usr --root="${pkgdir}" --no-deps --ignore-installed .
     
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.txt"
 }
@@ -26,5 +26,5 @@ package_python2-exifread() {
 package_python-exifread() {
     cd "${srcdir}/${_module}-${pkgver}"
     echo :: Installing for python3 up to python3.4 ...
-    pip3 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+    pip3 install --isolated --prefix=/usr --root="${pkgdir}" --no-deps --ignore-installed .
 }
