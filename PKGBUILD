@@ -6,8 +6,8 @@
 # Contributor: Stephan Conrad <stephan.conrad@gmail.com
 
 pkgname=kimchi
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 
 pkgdesc="An HTML5 management interface for KVM"
 
@@ -52,7 +52,7 @@ backup=('etc/wok/plugins.d/kimchi.conf')
 
 source=("https://github.com/kimchi-project/${pkgname}/archive/${pkgver}.tar.gz")
 
-sha256sums=('bd5fa7221c8e7671d221b435f5a29672b160b97e673de465da6342dcb556989f')
+sha256sums=('6968074685f6368735d1ae7c758253728f9a7a71b286c72800137951ec885c80')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
