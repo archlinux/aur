@@ -8,7 +8,7 @@
 
 name=qbittorrent
 pkgname=${name}-qt4
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library"
 arch=('i686' 'x86_64')
@@ -34,4 +34,4 @@ package() {
   make INSTALL_ROOT="$pkgdir/" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$name/COPYING
 }
-md5sums=('2c64aff6246e3117da5d1e4654ee0fb6')
+md5sums=('a1aaf4b7789906385861cd2e1a4a206d')
