@@ -1,0 +1,15 @@
+pkgbase = ruby-wmi-lite
+	pkgdesc = A lightweight utility over win32ole for accessing basic WMI functionality in the Microsoft Windows operating system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/opscode/wmi-lite
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	noextract = wmi-lite-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/wmi-lite-1.0.0.gem
+	sha256sums = e3277c115b4dc58cdfd18224646248bec30d389e4241ae2184d7b227b23cf51a
+
+pkgname = ruby-wmi-lite
+
