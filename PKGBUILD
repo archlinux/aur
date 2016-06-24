@@ -9,8 +9,8 @@ pkgdesc="Free Music Instrument Tuner"
 arch=('i686' 'x86_64')
 url="https://github.com/gillesdegottex/fmit"
 license=('GPL')
-depends=('qt5-multimedia' 'fftw' 'portaudio' 'hicolor-icon-theme')
-makedepends=('qt5-base' 'qt5-tools')
+depends=('fftw' 'qt5-base' 'qt5-multimedia' 'alsa-lib'  'jack' 'portaudio')
+makedepends=('qt5-tools')
 source=("https://github.com/gillesdegottex/fmit/archive/v${pkgver}.tar.gz")
 sha512sums=('44537669391f5043efe35b53d9693f8ab6a151918583d35439c1b29feca4a707225038512c9a2de734ada9e9acb3b4b191b866038edaed9fe8d1fee09c540aac')
 
