@@ -2,7 +2,7 @@
 
 pkgname=kwayland-git
 pkgver=r238.0eca1f7
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -29,7 +29,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DLIB_INSTALL_DIR=lib
+    -DKDE_INSTALL_LIBDIR=lib
   make
 }
 
