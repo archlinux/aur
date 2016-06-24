@@ -1,0 +1,15 @@
+pkgbase = ruby-libyajl2
+	pkgdesc = Installs a vendored copy of libyajl2 for distributions which lack it
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/opscode/libyajl2-gem
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	noextract = libyajl2-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/libyajl2-1.2.0.gem
+	sha256sums = 1117cd1e48db013b626e36269bbf1cef210538ca6d2e62d3fa3db9ded005b258
+
+pkgname = ruby-libyajl2
+
