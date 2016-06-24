@@ -1,14 +1,14 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=r68.e411bd7
+pkgver=r97.2ca90f6
 pkgrel=1
 pkgdesc='Unlock KWallet using PAM'
 url='https://projects.kde.org/kwallet-pam'
 license=('LGPL')
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('kwallet-git' 'pam')
+depends=('kwallet-git' 'pam' 'libgcrypt')
 makedepends=('extra-cmake-modules-git' 'git')
 conflicts=('kwallet-pam')
 provides=('kwallet-pam')
@@ -28,7 +28,8 @@ build() {
   cd build
   cmake ../kwallet-pam \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_LIBDIR=usr/lib
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DKDE_INSTALL_LIBDIR=lib
   make
 }
 
