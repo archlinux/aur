@@ -3,21 +3,23 @@
 
 pkgname=nvidia-340xx-ck
 pkgver=340.96
-_extramodules=extramodules-4.5-ck
-pkgrel=8
+_extramodules=extramodules-4.6-ck
+pkgrel=9
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.5' 'linux-ck<4.6' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.5' 'linux-ck-headers<4.6' 'nvidia-340xx-libgl')
+depends=('linux-ck>=4.6' 'linux-ck<4.7' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.6' 'linux-ck-headers<4.7' 'nvidia-340xx-libgl')
 conflicts=('nvidia-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvidia-96xx-ck' 'nvidia-beta-ck' 'nvidia-ck-atom' 'nvidia-ck-barcelona' 'nvidia-ck-bulldozer' 'nvidia-ck-corex' 'nvidia-ck-core2' 'nvidia-ck-haswell' 'nvidia-ck-broadwell' 'nvidia-ck-skylake' 'nvidia-ck-ivybridge' 'nvidia-ck-kx' 'nvidia-ck-k10' 'nvidia-ck-nehalem' 'nvidia-ck-p4' 'nvidia-ck-piledriver' 'nvidia-ck-pentm' 'nvidia-ck-sandybridge' 'nvidia-304xx-ck-atom' 'nvidia-304xx-ck-barcelona' 'nvidia-304xx-ck-corex' 'nvidia-304xx-ck-core2' 'nvidia-304xx-ck-haswell' 'nvidia-304xx-ck-broadwell' 'nvidia-304xx-ck-skylake' 'nvidia-304xx-ck-ivybridge' 'nvidia-304xx-ck-kx' 'nvidia-304xx-ck-k10' 'nvidia-304xx-ck-nehalem' 'nvidia-304xx-ck-p4' 'nvidia-304xx-ck-piledriver' 'nvidia-304xx-ck-pentm' 'nvidia-304xx-ck-sandybridge' 'nvidia-340xx-ck-atom' 'nvidia-340xx-ck-barcelona' 'nvidia-340xx-ck-bulldozer' 'nvidia-340xx-ck-core2' 'nvidia-340xx-ck-haswell' 'nvidia-340xx-ck-broadwell' 'nvidia-340xx-ck-skylake' 'nvidia-340xx-ck-ivybridge' 'nvidia-340xx-ck-kx' 'nvidia-340xx-ck-k10' 'nvidia-340xx-ck-nehalem' 'nvidia-340xx-ck-p4' 'nvidia-340xx-ck-piledriver' 'nvidia-340xx-ck-pentm' 'nvidia-340xx-ck-sandybridge')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
 install=nvidia-340xx-ck.install
 options=(!strip)
+source=('linux-4.6.patch')
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+sha256sums=('e813c31a9450200f533d12aa98dd5db44d7dc5b548697e9e9251198f917ffba5')
 sha256sums_i686=('c40e2778cd1ab036a76e1896fe2f77c4aa7baa215dbbdb11a2f4c5f05e1a478e')
 sha256sums_x86_64=('280f9db2aea52cab42e141f0393604c7a6d43e7f65d3e60c2319c2674ecc14c4')
 
@@ -27,6 +29,7 @@ sha256sums_x86_64=('280f9db2aea52cab42e141f0393604c7a6d43e7f65d3e60c2319c2674ecc
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
+		patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 }
 
 build() {
