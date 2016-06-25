@@ -1,4 +1,6 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks go to jthan (<jonathan (at) jonathandemasi (dot) com>) for fixing install-mbr.c.
 # ...now, if only I could teach him how to use patch(1).
@@ -7,7 +9,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=mbr
 pkgver=1.1.11
-pkgrel=6
+pkgrel=7
 pkgdesc="A replacement master boot record"
 url="http://www.chiark.greenend.org.uk/~neilt/mbr/"
 license=("GPL")
