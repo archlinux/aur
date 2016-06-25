@@ -1,5 +1,5 @@
 pkgbase = ruby-systemu
-	pkgdesc = systemu
+	pkgdesc = Universal capture of stdout and stderr and handling of child process pid for windows, *nix, etc.
 	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://github.com/ahoward/systemu
@@ -9,7 +9,7 @@ pkgbase = ruby-systemu
 	noextract = systemu-2.6.5.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/systemu-2.6.5.gem
-	sha512sums = 1755e1d24f6d93fd07578859873b94d3fbc855f86c94bf9eb0389959837e94e432883c638ed188e75254312c2ac66eee2041d8b13eff428b473ddf8a8105461f
+	sha256sums = 01f7d014b1453b28e5781e15c4d7d63fc9221c29b174b7aae5253207a75ab33e
 
 pkgname = ruby-systemu
 
