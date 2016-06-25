@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-armadillo
-pkgver=6.700.5
+pkgver=7.200.2
 pkgrel=1
 pkgdesc="C++ linear algebra library (mingw-w64)"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MPL 2.0')
 depends=('mingw-w64-lapack' 'mingw-w64-hdf5')
 makedepends=('mingw-w64-cmake' 'mingw-w64-boost')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://downloads.sourceforge.net/sourceforge/arma/armadillo-$pkgver.tar.gz")
-sha512sums=('1472056a809cc9f79c4e235c871253c689aa359c05efb158c98c8816b9ce7e4997e17bdaf6965711b3d1cc408d2ca74e1d438dcc5aa08cd322b352935f75887d')
+source=("http://downloads.sourceforge.net/sourceforge/arma/armadillo-$pkgver.tar.xz")
+sha512sums=('c92747f256aec96da27f9dce2f33224883fccfc33b3be904d5de8ba52b540e3327f39b865f9547e06b437c9121a65ef42fe744f4319d518b44bc7795e489fc82')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
