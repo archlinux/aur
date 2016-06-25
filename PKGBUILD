@@ -1,6 +1,6 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=libgmxcpp
-pkgver=3.4
+pkgver=4.0
 pkgrel=1
 pkgdesc="A library for use in analyzing GROMACS simulation output files"
 arch=(any)
@@ -8,7 +8,7 @@ url="https://github.com/wesbarnett/libgmxcpp"
 license=('GPL')
 makedepends=('cmake')
 source=(${url}/archive/v${pkgver}.tar.gz)
-md5sums=('f476144d223f2547f5f8d8a2fe922aa0')
+md5sums=('d3fb3bad890045901c2d8f6aa847fbb3')
 
 build() {
 	cd "$pkgname-$pkgver"
