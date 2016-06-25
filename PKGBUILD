@@ -3,7 +3,7 @@
 
 pkgname=pdl2ork-pure
 _pkgname=pd-pure
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="Loader plugin for the Pure programming language, Pd-L2Ork version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://purelang.bitbucket.org/"
 depends=('pd-l2ork' 'pure')
 license=('custom')
 source=(https://bitbucket.org/purelang/pure-lang/downloads/$_pkgname-$pkgver.tar.gz)
-md5sums=('a11b26543f3f865aa80b113e89ba6be8')
+md5sums=('c295d7d33a8c03f4ed410c14f829bbd5')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
