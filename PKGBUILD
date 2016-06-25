@@ -1,8 +1,8 @@
 # Maintainer: David Cao <dcao@protonmail.com>
 pkgname=timew-git
-pkgver=r1688.61c0cb3
+pkgver=r1752.bce2a58
 pkgrel=1
-pkgdesc="A command-line time tracker"
+pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
 url="https://taskwarrior.org/docs/timewarrior/index.html"
 license=('MIT')
