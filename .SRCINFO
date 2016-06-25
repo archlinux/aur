@@ -1,0 +1,16 @@
+pkgbase = ruby-net-sftp
+	pkgdesc = A pure Ruby implementation of the SFTP client protocol
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/net-ssh/net-sftp
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-net-ssh
+	noextract = net-sftp-2.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/net-sftp-2.1.2.gem
+	sha256sums = 3e70b8130b1c86039b0847aeb088a2254df49053023546a5923e5763c923c710
+
+pkgname = ruby-net-sftp
+
