@@ -1,0 +1,19 @@
+pkgbase = ruby-syslog-logger
+	pkgdesc = An improved Logger replacement that logs to syslog. It is almost drop-in with a few caveats.
+	pkgver = 1.6.8
+	pkgrel = 1
+	url = http://github.com/ngmoco/syslog_logger
+	arch = any
+	license = unknown
+	depends = ruby
+	depends = ruby-net-ssh
+	depends = ruby-net-scp
+	depends = ruby-net-telnet
+	depends = ruby-sfl
+	noextract = syslog-logger-1.6.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/syslog-logger-1.6.8.gem
+	sha256sums = 7541f34681c7d10ed63e8ee82733b0a60f79264a6ef3f489a20dce80e105c293
+
+pkgname = ruby-syslog-logger
+
