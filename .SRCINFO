@@ -1,0 +1,13 @@
+pkgbase = keepass-plugin-qrcodeview
+	pkgdesc = KeePass 2.x plugin which shows QR Codes for entry fields.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/KN4CK3R/KeePassQRCodeView
+	arch = any
+	license = MIT
+	depends = keepass
+	source = https://github.com/KN4CK3R/KeePassQRCodeView/releases/download/v1.0.2/KeePassQRCodeView.plgx
+	md5sums = 82b1c458362e88a0f20d27f69ea40e82
+
+pkgname = keepass-plugin-qrcodeview
+
