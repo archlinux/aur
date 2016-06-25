@@ -1,11 +1,13 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: M.Carreira <manuel@carreira.com.pt>
 
 pkgname=buffer
 pkgver=1.19
-pkgrel=7
+pkgrel=8
 pkgdesc="Speed up writing tapes on remote tape drives"
 arch=('i686' 'x86_64')
 url="http://www.hello-penguin.com/software.htm"
