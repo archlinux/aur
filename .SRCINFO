@@ -1,7 +1,7 @@
 pkgbase = ran-git
 	pkgdesc = record audio notes: a front end for sox written in bash
 	pkgver = 6.f67d3cc
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/burt1iband/ran
 	install = ran.install
 	arch = any

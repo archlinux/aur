@@ -5,7 +5,7 @@
 pkgname=ran-git
 _pkgname=ran
 pkgver=6.f67d3cc 
-pkgrel=3
+pkgrel=4
 pkgdesc="record audio notes: a front end for sox written in bash"
 arch=('any')
 url="https://github.com/burt1iband/ran"
