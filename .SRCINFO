@@ -10,6 +10,7 @@ pkgbase = cado-git
 	makedepends = autoconf
 	makedepends = git
 	depends = libcap
+	depends = pam
 	provides = cado
 	provides = caprint
 	conflicts = cado
