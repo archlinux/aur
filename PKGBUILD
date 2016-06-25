@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="http://code.qt.io/cgit/qt/${srcname}"
 license=('LGPL')
 
-depends=('qt5-base' 'gtk2' 'libx11')
-makedepends=('git' 'gconf')
+depends=('qt5-base' 'gconf' 'gtk2' 'libx11')
+makedepends=('git')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
