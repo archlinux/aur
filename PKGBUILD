@@ -3,7 +3,7 @@
 
 _pkgname=rcm
 pkgname=${_pkgname}-git
-pkgver=v1.3.0.r9.gfbb301d
+pkgver=v1.3.0.r12.gee63185
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=("any")
