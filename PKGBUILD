@@ -51,16 +51,16 @@ _BFQ_enable_=
 
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
-_srcname=linux-4.5
-pkgver=4.5.7
+_srcname=linux-4.6
+pkgver=4.6.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc')
+makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=1
-_ckpatchname="patch-4.5-ck${_ckpatchversion}"
+_ckpatchname="patch-4.6-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -70,23 +70,25 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
+'0001-linux-4.6-rtlwifi-fix-atomic.patch'
 # ck1
-"http://ck.kolivas.org/patches/4.0/4.5/4.5-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/4.0/4.6/4.6-ck${_ckpatchversion}/${_ckpatchname}.xz"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
 "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch"
 "${_bfqpath}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch")
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '8fc8b46b44e49d5472745484751ba653be0c0e04554749ad276f3d0bc56a9bb3'
+            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
             'SKIP'
-            '7df3d420abbaac2268f3c5baac0b5eaf0cf12cec5051389a20f0eca7e1814a75'
-            '293c8814a3ec1e6d66b509c0a4896fe9a76fd0b4d639e476857720c54b02d266'
+            '8fea5fed21eabd29befb70fc0f1eea6d92c6a4d9c16b039229b0b6b9322fe8ee'
+            'a1d7dc1d00baf54b623806dd5adc203ed2d215552b8f5f954f08f5bf47af3626'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '582faf80f7ee1e6d9844c598893101d0cf941afa92fc2981e909f1382a36710a'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
+            '4475edebbcac102e5d92921970c12b22482c08069cc1478a7c922453611e0871'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
             '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
@@ -107,10 +109,14 @@ prepare() {
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+	# fix rtlwifi atomic
+	# https://bugs.archlinux.org/task/49401
+	patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
+
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.469"
+	msg "Patching source with ck1 including BFS v0.470"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -234,8 +240,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.469.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.469.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.470.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.470.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
@@ -322,7 +328,7 @@ package_linux-ck-headers() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
 	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia scsi sound trace uapi video xen; do
+		media net pcmcia scsi soc sound trace uapi video xen; do
 	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 	done
 
@@ -410,6 +416,12 @@ package_linux-ck-headers() {
 		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
+
+	# add objtool for external module building and enabled VALIDATION_STACK option
+	if [ -f tools/objtool/objtool ];  then
+		mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+		cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+	fi
 
 	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
 	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
