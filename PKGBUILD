@@ -1,4 +1,6 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 #TODO: set up permissions (e.g. fortress/{progs,sounds, etc.} to be sticky-bit and writable? that way maybe at least files can be downloaded. create maps dir for all mods too.
@@ -9,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.3
-pkgrel=9
+pkgrel=10
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
 license=('GPL2' 'Custom:CC0-1.0' '')
