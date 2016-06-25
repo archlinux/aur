@@ -17,10 +17,10 @@ package() {
   cd yltra-flat-icon-theme
 
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' Yltra\ Flat "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Yltra\ Flat\ Arch\ Blue "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Yltra\ Flat\ Majestic "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Yltra\ Flat\ Mint\ Green "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Yltra\ Flat\ Orange "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Yltra-Flat "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Yltra-Flat-Arch-Blue "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Yltra-Flat-Majestic "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Yltra-Flat-Mint-Green "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Yltra-Flat-Orange "${pkgdir}"/usr/share/icons/
 }
 
