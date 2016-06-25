@@ -1,10 +1,12 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: icaruseffect <icaruseffect at posteo dot net>
 pkgname="burp-backup-git"
 _pkgname="burp"
 pkgver=2.0.30.r48.g1892559
-pkgrel=3
+pkgrel=4
 pkgdesc="Burp is a backup and restore program. It uses librsync in order to save on the amount of space that is used by each backup."
 arch=('i686' 'x86_64')
 license=('AGPLv3')
