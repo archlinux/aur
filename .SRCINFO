@@ -10,6 +10,7 @@ pkgbase = ran-git
 	depends = bash
 	depends = bc
 	depends = sox
+	optdepends = bash-completion
 	optdepends = notification-daemon
 	optdepends = fluxable-newmenu
 	optdepends = orca
