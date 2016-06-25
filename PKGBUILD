@@ -1,11 +1,13 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Max Roder <maxroder@web.de>
 # Contributor: ice-man <icemanf@gmail.com>
 
 pkgname=mdcrack
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="MD4/MD5/NTLM1 hash cracker"
 url="http://c3rb3r.openwall.net/mdcrack/"
 arch=('i686' 'x86_64')
