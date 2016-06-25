@@ -1,9 +1,5 @@
 post-install() {
-  gtk-update-icon-cache -ftq /usr/share/icons/Yltra-Flat
-  gtk-update-icon-cache -ftq /usr/share/icons/Yltra-Flat-Arch-Blue
-  gtk-update-icon-cache -ftq /usr/share/icons/Yltra-Flat-Majestic
-  gtk-update-icon-cache -ftq /usr/share/icons/Yltra-Flat-Mint-Green
-  gtk-update-icon-cache -ftq /usr/share/icons/Yltra-Flat-Orange
+ 
 }
 
 post-upgrade() {
