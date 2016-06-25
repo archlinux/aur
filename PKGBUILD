@@ -1,11 +1,13 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Mauro Andreolini <mauro.andreolini@unimore.it>
 
 pkgname=pack
 _pkgname=PACK
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Password Analysis and Cracking Kit"
 url="http://thesprawl.org/projects/pack/"
 arch=('i686' 'x86_64')
