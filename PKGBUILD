@@ -24,7 +24,6 @@ makedepends=('bower'
 conflicts=('butter')
 provides=('butter')
 options=('!strip')
-install="butter.install"
 
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
