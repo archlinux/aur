@@ -1,8 +1,8 @@
 # Maintainer: Erez Raviv (erezraviv@gmail.com)
-# Latest Revision 2725
+# Latest Revision 2726
 pkgname=chirp-daily
 pkgver=$(curl -q http://trac.chirp.danplanet.com/chirp_daily/LATEST/ | egrep -o "20[0-9]{6}" | uniq -d)
-pkgrel=2725
+pkgrel=2726
 pkgdesc="Daily build for GUI tool for programming ham radios; This package gets updated once an announcement of a new version is made."
 arch=('any')
 url="http://chirp.danplanet.com/"
