@@ -1,15 +1,15 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
-pkgname=sardi-icons
-pkgver=5.4
-pkgrel=6
-pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots > 18 iconsets"
+pkgname=super-ultra-flat-numix-remix-icons
+pkgver=4.2
+pkgrel=0
+pkgdesc="super-ultra-flat-numix-remix is an icon theme build upon 4 different icon sets - check github for more info"
 arch=('any')
-url="http://sourceforge.net/projects/sardi"
+url="http://sourceforge.net/projects/super-ultra-flat-numix-remix"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
-provides=('sardi-icons')
+provides=('super-ultra-flat-numix-remix-icons')
 options=(!strip !emptydirs)
-source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
+source=("http://downloads.sourceforge.net/project/super-ultra-flat-numix-remix/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
