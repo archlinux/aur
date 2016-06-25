@@ -1,0 +1,16 @@
+pkgbase = ruby-win32-process
+	pkgdesc = Adds several Process methods that are either unimplemented or dysfunctional in some way in the default Ruby implementation
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/djberg96/win32-process
+	arch = any
+	license = Artistic-2.0
+	depends = ruby
+	depends = ruby-ffi
+	noextract = win32-process-0.8.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/win32-process-0.8.3.gem
+	sha256sums = 6cee45057fb84b29cf80fc36de2d4ec6e800f6df5da7f3c899bd7faf9553989d
+
+pkgname = ruby-win32-process
+
