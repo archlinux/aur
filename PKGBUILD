@@ -20,7 +20,7 @@ pkgbase=kodi-c2-fb
 pkgname=('kodi-c2-fb' 'kodi-c2-eventclients-fb')
 _commit='cdb7704d1174395f399657fd3f562fe236516b9f'
 pkgver='16.1.20160424'
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -40,17 +40,15 @@ source=("https://github.com/owersun/xbmc/archive/${_commit}.tar.gz"
         'kodi.service'
         'polkit.rules'
         'kodi_permissions.conf'
-        '20-quiet-printk.conf'
         'config_static_ffmpeg.patch'
         'gcc6_fix.patch')
 
 sha256sums=('a56165257af0ee6899317093c412603b01967068536ae200dfcab0b74bdc501d'
             'SKIP'
             '5ddf80329c9f5d054525b45f788b3405d199bfc6cf5b08c543ad29766ec27f6e'
-            '79aa17b475967d97b6c72c850b638705d6feb6d995844476b65d68d33d161114'
+            '61057f631734615c5d113016c70e65064581ecb4b66c88d98f94c6fb9dcfd5a2'
             'c68ed2bd377f80b606b8815d78239b9132b479eafc1d19797cee5824debe1800'
-            '5f76b46d4471661f4a55e3e90ba0654341f24ccfbf696ea44fd13599ba6a2449'
-            'e3cb9a3a3d814295bdfac6ac325b5560e8ba0a2fb00f11d6dcc9afde49f30990'
+            '2d168cb204e2a44d2f7be750f952e4d36446b3b492194c8f0e4d289aad1ba47c'
             'ca8bfce0f5969f6fb64779b9a7136534b4af9f57df3efda8462f169c925dc87c'
             'b0fe75d10b2678894d1dec48f3258c0bec2a4a170f33d76a9a8334bb1969b18f')
 
@@ -153,7 +151,6 @@ package_kodi-c2-fb() {
       ${pkgdir}${_prefix}/share/licenses/${pkgname}
  done
 
-install -Dm0644 $srcdir/20-quiet-printk.conf $pkgdir/etc/sysctl.d/20-quiet-printk.conf
 install -Dm0644 $srcdir/kodi_permissions.conf $pkgdir/etc/tmpfiles.d/kodi_permissions.conf
 install -Dm0644 $srcdir/kodi.service $pkgdir/usr/lib/systemd/system/kodi.service
 install -Dm0644 $srcdir/polkit.rules $pkgdir/etc/polkit-1/rules.d/10-kodi.rules
