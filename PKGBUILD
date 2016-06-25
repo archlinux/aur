@@ -2,7 +2,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=1.1.0.svn.r6276
+pkgver=1.1.1.svn.r6521
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('mpg123: alternative Mpeg-1-2-3 support'
             )
 provides=('qmmp-plugin-pack')
 conflicts=('qmmp-plugin-pack')
-source=('qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.1')
+source=('qmmp-plugin-pack::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.2')
 sha1sums=('SKIP')
 
 pkgver() {
