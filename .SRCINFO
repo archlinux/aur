@@ -1,0 +1,15 @@
+pkgbase = ruby-proxifier
+	pkgdesc = Proxifier adds support for HTTP or SOCKS proxies and lets you force TCPSocket to use proxies.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/samuelkadolph/ruby-proxifier
+	arch = any
+	license = unknown
+	depends = ruby
+	noextract = proxifier-1.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/proxifier-1.0.3.gem
+	sha256sums = 40fef4d2c79313a12b8be2799146cb225b35665975a238ba0d513a96c6a37fa9
+
+pkgname = ruby-proxifier
+
