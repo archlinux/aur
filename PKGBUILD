@@ -1,11 +1,13 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Evan Teitelman <teitelmanevan@gmail.com>
 # Contributor: Tilmann Becker <tilmann.becker@freenet.de>
 
 pkgname=scrounge-ntfs
 pkgver=0.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Data recovery program for NTFS file systems"
 arch=('i686' 'x86_64')
 url="http://thewalter.net/stef/software/scrounge/"
