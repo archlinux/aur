@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.20.5
+pkgver=3.20.6
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -16,12 +16,10 @@ optdepends=('libcanberra: gtk3-widget-factory demo')
 makedepends=(gobject-introspection libcanberra gtk-doc)
 license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
-        scrolledwindow.patch
         settings.ini
         gtk-query-immodules-3.0.hook
         typeahead.patch)
-sha256sums=('9790b0267384904ad8a08e7f16e5f9ff1c4037de57788d48d1eaf528355b1564'
-            '806be66e612c313d42d3f9384cb1bb986f89d1b9c680ab86f9e1032534fb0c09'
+sha256sums=('3f8016563a96b1cfef4ac9e795647f6316deb2978ff939b19e4e4f8f936fa4b2'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             '5b3b9ba35378515359a25714e7c185783d15ec97c137e3564fcb1dbe658c941f')
@@ -31,7 +29,6 @@ prepare() {
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
-    patch -Np1 -i $srcdir/scrolledwindow.patch
 
     NOCONFIGURE=1 ./autogen.sh
 }
