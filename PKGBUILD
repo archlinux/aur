@@ -9,7 +9,7 @@ url="http://sourceforge.net/projects/super-ultra-flat-numix-remix"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 provides=('super-ultra-flat-numix-remix-icons')
 options=(!strip !emptydirs)
-source=("http://downloads.sourceforge.net/project/super-ultra-flat-numix-remix/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
+source=("http://downloads.sourceforge.net/project/super-ultra-flat-numix-remix/super-ultra-flat-numix-remix-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
@@ -19,5 +19,3 @@ package() {
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
 }
-
-
