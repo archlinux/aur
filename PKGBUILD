@@ -5,12 +5,12 @@
 
 pkgbase=linux-macbook-pro       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -22,18 +22,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-macbook-pro.preset'
         'apple-gmux.patch'
         'macbook-suspend.patch'
+        'intel-pstate-backport.patch'
         'change-default-console-loglevel.patch')
-
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
+            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
             'SKIP'
-            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
-            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
+            '5b31f30dc031aa964e7a45a476d479a9f72044729148bb6dd855e958c0fad3b6'
+            '4ffdc4f4e1cccc73312a32c2a700c9197723901f242a11d69f15f1abf582d7ce'
             '2f904d9e7e5f6965178562cfb411ffe370688f40f6f80ab550763dd3bee21e90'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
+            '724f4a7707cf95fe82b7458b37b8c85d5dbf1d8ff753bac4aa09ef90aa091c89'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -58,6 +59,7 @@ prepare() {
 
   patch -p1 -i "${srcdir}/apple-gmux.patch"
   patch -p1 -i "${srcdir}/macbook-suspend.patch"
+  patch -p1 -i "${srcdir}/intel-pstate-backport.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -253,6 +255,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
