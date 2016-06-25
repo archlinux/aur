@@ -1,13 +1,13 @@
 pkgbase = django-recaptcha
 	pkgdesc = Django reCAPTCHA form field/widget integration app
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/praekelt/django-recaptcha
 	arch = any
 	license = BSD
 	depends = python-django
-	source = https://github.com/praekelt/django-recaptcha/archive/1.0.4.tar.gz
-	sha256sums = 8af0da767b07ca4d7a5a2be329776fe6dbab183c3da61ae30796e1a9354eea6c
+	source = https://github.com/praekelt/django-recaptcha/archive/1.0.5.tar.gz
+	sha256sums = 62081dd411dfddcc0b7cb97c358fe449788f7974d19e6e95afd1487574852d6a
 
 pkgname = django-recaptcha
 
