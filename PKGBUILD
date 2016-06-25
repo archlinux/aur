@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.softwarebakery.com/maato/thunar-dropbox.html"
 license=('GPL3')
 depends=('thunar')
-makedepends=('pkg-config' 'python2')
+makedepends=('python2')
 source=(http://www.softwarebakery.com/maato/files/thunar-dropbox/$pkgname-$pkgver.tar.bz2)
 md5sums=('52bb2caa26afaf80835a56b9ad3d2155')
 
