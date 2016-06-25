@@ -1,10 +1,12 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # thanks to Slash <demodevil5[at]yahoo[dot]com> for the original no-git package
 
 pkgname=ezquake-git
 pkgver=r4858.62be229
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
