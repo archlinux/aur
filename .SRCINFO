@@ -1,0 +1,24 @@
+pkgbase = al-anvar
+	pkgdesc = Al-anvar Quran
+	pkgver = 0.6.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = qtwebkit
+	makedepends = autoconf
+	makedepends = pulseaudio-alsa
+	makedepends = gcc
+	makedepends = automake
+	makedepends = libcanberra-pulse
+	makedepends = git
+	makedepends = liblastfm
+	makedepends = phonon-qt4
+	makedepends = phonon-qt4-gstreamer
+	depends = qtwebkit
+	depends = phonon-qt4
+	depends = qt4
+	conflicts = al-anvar-git
+	source = http://downloads.sourceforge.net/project/al-anvar/0.6.0/src-al-anvar-0.6.0.tar.gz
+
+pkgname = al-anvar
+
