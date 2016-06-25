@@ -1,29 +1,29 @@
 # Maintainer: <olegfink@gmail.com>
 
 pkgname=irccloud
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Chat on IRC from anywhere, and never miss a message"
 
 arch=('arm' 'i686' 'x86_64')
-license=('MIT')
+license=('Apache')
 url="http://irccloud.com"
 depends=('electron')
-makedepends=('gendesk' 'npm')
+makedepends=('npm')
 source=("https://github.com/irccloud/irccloud-desktop/archive/v${pkgver}.tar.gz"
         "irccloud"
+	"irccloud.desktop"
         "irccloud.png") 
-sha256sums=('68cfe0d245bd708054aa0c38d43cbdb56631f092bcae9c1ebf0aa50ddf4acd28'
+sha256sums=('d0ed98b94a735fd49f3ecf7767fd25dd1fba8770f11315ac1e8a67bc5d13dec3'
             '620a7208a4a0c0d79546079273e6d4297cd35da897995ca3c15f1c15970222a0'
+            '2f58dd2b70e6867bfddc216c25f704c4ebd9a427bdcbe4de92b0a2ed06407569'
             'd95945490c9728dee963fd98b441293a1e6d664e7a760e610f4622239b26a4d8')
 
-package() {
-	gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name IRCCloud --categories Network 
+package(){
 	install -d "${pkgdir}/usr/share/irccloud"
-	cp -a "${srcdir}/irccloud-desktop-${pkgver}/app/." "${pkgdir}/usr/share/irccloud"
-	npm install  --prefix="${pkgdir}/usr/share/irccloud" configstore
-#	find "${pkgdir}" -type d -exec chmod 755 {} +
-#	find "${pkgdir}" -type f -exec chmod 644 {} +
+	cd "${srcdir}/irccloud-desktop-${pkgver}/app"
+	cp -a . "${pkgdir}/usr/share/irccloud"
+	npm install  --prefix="${pkgdir}/usr/share/irccloud" 
 
 	install -Dm644 "${srcdir}/irccloud.desktop" "${pkgdir}/usr/share/applications/irccloud.desktop"
 	install -Dm644 "${srcdir}/irccloud.png" "${pkgdir}/usr/share/pixmaps/irccloud.png"
