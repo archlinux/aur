@@ -1,14 +1,16 @@
 pkgbase = ruby-mixlib-shellout
 	pkgdesc = Run external commands on Unix or Windows
-	pkgver = 2.1.0
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = http://wiki.opscode.com/
 	arch = any
+	license = unknown
 	depends = ruby
-	noextract = mixlib-shellout-2.1.0.gem
+	depends = ruby-win32-process
+	noextract = mixlib-shellout-2.2.6-universal-mingw32.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mixlib-shellout-2.1.0.gem
-	sha512sums = e383f24cfcfc4917e374b2181f71495637e0839022db6aac49f0edc10efe5bc1e607aa52569506d648d6e85c50cb8c477512d0d0b1fe81de4108d99963efd393
+	source = https://rubygems.org/downloads/mixlib-shellout-2.2.6-universal-mingw32.gem
+	sha256sums = 1b185447852947fafd949cf472462c921c3d6398f13a72c7084c49f7adb3353b
 
 pkgname = ruby-mixlib-shellout
 
