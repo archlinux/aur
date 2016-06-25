@@ -1,29 +1,34 @@
-# Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
-pkgname=python2-pywavelets
-pkgver=0.3.0
-pkgrel=1
-pkgdesc="PyWavelets, wavelet transform module"
-arch=('i686' 'x86_64')
-url="http://pywavelets.readthedocs.org/"
-license=('MIT')
-depends=('python2')
-makedepends=('python2-distribute' 'cython2' 'unzip')
-options=(!emptydirs)
+# Contributor: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Francois Boulogne <fboulogne at april dot org>
 
-source=(http://pypi.python.org/packages/source/P/PyWavelets/PyWavelets-$pkgver.zip)
-md5sums=('b7f01bf7d8dff25d470d3deb3d5a9d0f')
+pkgname=python2-pywavelets
+_pkgname=pywt
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="Discrete Wavelet Transforms in python2"
+arch=('any')
+url="https://github.com/PyWavelets/pywt"
+license=('MIT')
+depends=('python2' 'python2-numpy')
+makedepends=('python2-setuptools' 'cython')
+checkdepends=('python2-nose')
+source=(https://github.com/PyWavelets/pywt/archive/v$pkgver.tar.gz)
+sha256sums=('4d0b852a8bb953f2fc3d735b191191c225d5bf0c825294cea130b2366f2a38ad')
 
 build() {
-  cd "$srcdir"/PyWavelets-$pkgver
-
+  cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py build
 }
 
-package() {
-  cd "$srcdir"/PyWavelets-$pkgver
-
-  python2 setup.py install --root="$pkgdir"/ --optimize=1
-
-  install -D COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python2 -u runtests.py -g -m full --coverage
 }
 
+
+package(){
+  cd "$srcdir/$_pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}
+
+# vim:ts=2:sw=2:et:
