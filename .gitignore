@@ -1,3 +1,5 @@
 *.pkg.tar.xz
 src
 pkg
+symfony-installer_*
+symfony-installer-bin*

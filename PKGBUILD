@@ -3,8 +3,8 @@
 
 _pkgname=symfony-installer
 pkgname=symfony-installer-bin
-pkgver=1.4.4
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="The Symfony Installer"
 url="https://github.com/symfony/symfony-installer"
 license=('MIT')
@@ -12,14 +12,14 @@ arch=('any')
 depends=('php>=5.4.0')
 provides=('symfony-installer')
 conflicts=('symfony-installer')
-source=($_pkgname::http://symfony.com/installer)
-sha512sums=('1d2d489941242f4757e7e6072b3c75adc633aa8bc1b22cc03b66c9966ce694509dd8f1348887a808061ea7235d946b7e12089bc6a9fb26df4054a6049005008c')
+source=("${_pkgname}_${pkgver}"::https://symfony.com/installer)
+sha512sums=('d2571a02855f88c481287cf6092b7db0570f4feff2e294350e5c4e909e8d5f7d11adbfafda520c6af04f702e8655b019a4b5f493f5fee82bb20be2653bb4818e')
 install="$_pkgname.install"
 
 
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname/"
-  install -D "$srcdir/$_pkgname" "$pkgdir/opt/$_pkgname/symfony"
+  install -D "$srcdir/${_pkgname}_${pkgver}" "$pkgdir/opt/$_pkgname/symfony"
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/$_pkgname/symfony" "$pkgdir/usr/bin/symfony"
 }
