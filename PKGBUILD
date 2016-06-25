@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=51.0.2704.103
+pkgver=51.0.2704.106
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         chromium-widevine.patch
         PNGImageDecoder.patch)
-sha256sums=('76735b6dc4100e84c4dbcf5b2336bf8a2eb9cc6402c31e8865878a086971d72b'
+sha256sums=('fb97a6a3119ec2c8cc4ad9a0bd6c4d306516769039a2633633f7d0c770012cfd'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
