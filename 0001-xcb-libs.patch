@@ -1,0 +1,11 @@
+--- a/Makefile	2016-06-25 20:43:42.590739102 +0200
++++ b/Makefile	2016-06-25 20:52:37.994050977 +0200
+@@ -14,7 +14,7 @@
+ 
+ CFLAGS=$(shell pkg-config --cflags xcb-glx xcb-composite xcb-damage glib-2.0) -W -Wall $(PFLAGS) $(DFLAGS)
+ LDFLAGS=$(PFLAGS)
+-LIBS=$(shell pkg-config --libs xcb-glx xcb-composite xcb-damage glib-2.0) -lGL $(PLIBS) -lX11 -lX11-xcb
++LIBS=$(shell pkg-config --libs xcb xcb-xfixes xcb-render xcb-shape xcb-damage xcb-glx xcb-composite glib-2.0) -lGL $(PLIBS) -lX11 -lX11-xcb
+ 
+ dcompmgr: $(objs)
+ 	$(CC) -o $@ $^ $(LIBS) $(LDFLAGS)
