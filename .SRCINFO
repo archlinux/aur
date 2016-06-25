@@ -1,0 +1,15 @@
+pkgbase = python-dirlog
+	pkgdesc = keep a log of directories you visit to get back fast
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/ninjaaron/dirlog
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/9c/79/afe9014ebb79cb034ad676d7d54b99adaab80820d5f30d0a6d59ede11abb/dirlog-0.0.0.tar.gz
+	md5sums = ad09aef72fc44ac208300b3bf0bec95b
+
+pkgname = python-dirlog
+	depends = python
+
