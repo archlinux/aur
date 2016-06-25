@@ -1,4 +1,6 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: GI_Jack <iamjacksemail@hackermail.com>
 # Contributor: Angel Velasquez <angvp@archlinux.org> 
@@ -10,7 +12,7 @@ pkgname=kismet-allplugins
 _pkgname=kismet
 pkgver=2016_01_R1
 _realver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system (all plugins enabled)"
 arch=('i686' 'x86_64')
 url="http://www.kismetwireless.net/"
