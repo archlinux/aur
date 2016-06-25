@@ -1,0 +1,19 @@
+post_install() {
+  echo "Program installed on /opt/crark"
+  echo "Please, read the README"
+  ln -s /opt/crark-opencl/english.def /opt/crark-opencl/password.def
+  ln -s /opt/crark-opencl/crark /usr/bin/crark
+  ln -s /opt/crark-opencl/crark-ocl /usr/bin/crark-ocl
+  ln -s /opt/crark-opencl/crark-cuda /usr/bin/crark-cuda
+} 
+
+pre_remove() {
+  rm /opt/crark-opencl/password.def
+}
+
+post_upgrade() {
+  pre_remove
+  post_install
+}
+
+
