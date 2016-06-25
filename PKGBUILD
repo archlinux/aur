@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+${url}#branch=master")
+source=("${pkgname%-git}::git+${url}#tag=v0.28")
 noextract=()
 sha256sums=('SKIP')
 
