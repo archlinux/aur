@@ -1,6 +1,6 @@
 pkgbase = redmine
 	pkgdesc = A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.redmine.org
 	arch = any
@@ -24,8 +24,9 @@ pkgbase = redmine
 	optdepends = imagemagick: Image export support for Gantt
 	provides = redmine
 	backup = usr/share/webapps/redmine/config/configuration.yml
+	backup = usr/share/webapps/redmine/config/additional_environment.rb
 	backup = usr/share/webapps/redmine/config/database.yml
-	source = http://www.redmine.org/releases/redmine-3.2.0.tar.gz
+	source = http://www.redmine.org/releases/redmine-3.3.0.tar.gz
 	md5sums = b1050c3a0e6effd5a704ef5003d9df06
 
 pkgname = redmine
