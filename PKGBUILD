@@ -2,12 +2,12 @@
 
 pkgname=pure-pandoc
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts Sphinx-formatted Pure documentation files to Markdown and other formats using Pandoc"
 arch=("any")
 license=('GPL')
 url="http://purelang.bitbucket.org/"
-depends=('haskell-pandoc>=1.12.3' 'gawk')
+depends=('pandoc>=1.12.3' 'gawk')
 makedepends=()
 groups=(pure-complete)
 
