@@ -1,7 +1,7 @@
 # Contributor: mihai303
 
 pkgname=rpmdevtools
-pkgver=8.8
+pkgver=8.9
 pkgrel=1
 pkgdesc="RPM Development Tools"
 arch=('any')
@@ -10,7 +10,7 @@ source=("https://fedorahosted.org/released/$pkgname/$pkgname-$pkgver.tar.xz")
 license=('GPL2')
 depends=('python' 'rpm-org')
 makedepends=('bash-completion' 'help2man')
-md5sums=('3025a7736efb7425ead9f661c08be2bd')
+md5sums=('35bab0c28f2af544af53ac1aed598ac0')
 
 build() {
 	cd "$pkgname-$pkgver"
