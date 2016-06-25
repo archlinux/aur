@@ -1,9 +1,10 @@
 pkgbase = ruby-chef
 	pkgdesc = A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure.
-	pkgver = 12.3.0
+	pkgver = 12.11.18
 	pkgrel = 1
 	url = http://www.getchef.com
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = Apache-2.0
 	depends = ruby
 	depends = ruby-mixlib-config
@@ -27,10 +28,13 @@ pkgbase = ruby-chef
 	depends = ruby-rspec_junit_formatter
 	depends = ruby-serverspec
 	depends = ruby-specinfra
-	noextract = chef-12.3.0.gem
+	depends = ruby-proxifier
+	depends = ruby-syslog-logger
+	depends = ruby-net-sftp
+	depends = ruby-iniparse
 	options = !emptydirs
-	source = https://rubygems.org/downloads/chef-12.3.0.gem
-	sha512sums = bc8c621e0dfca3c8292e59162f78ce9082798ba073f1dee3c8984e8d8298a0c5798659882c4454dcf315c200ca69b7a7b64422f4b3de349358325da42429d97b
+	source = https://rubygems.org/downloads/chef-12.11.18.gem
+	sha256sums = 55606b3151413d5051d3df91ad8492d31dcbd3f94b3385206683836da656b912
 
 pkgname = ruby-chef
 
