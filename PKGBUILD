@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.6
-_zenpatch=zen-4.6.2-727af51ebbfb1d1319ad791ff5f58c7034453be9.diff
-pkgver=4.6.2
+_zenpatch=zen-4.6.3-b67c2e2e80b48a09fb861086c954439ef610b722.diff
+pkgver=4.6.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -26,12 +26,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
+            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
             'SKIP'
-            'a87f54cd82f0c0aa91073e26d92a54430f3fdeb9c13ad96e5136710ffe46cad6'
+            '5e37d90ee41028390efa460f2a28e9bf180b467c9da3e60b6bb008e1a16b102c'
             'SKIP'
-            'bcecbe3de614543afda2fd82f0f4650a734727840e8893f33b23f14bb8d627b1'
-            '7f75d902840b95802296928433044b0421e729f73f8d141340d5992e59b0243b'
+            '1cced95778d343cc630debf307ae2939bc6d8b57b57f50cc5e691957dfca251b'
+            'e4a34885e046ae6b786296dad560757a41ffeca67832b2d16768a99a0136d685'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
