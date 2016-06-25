@@ -8,7 +8,7 @@ pkgname=openfoam
 _distpkgname=OpenFOAM
 
 pkgver=3.0.x
-pkgrel=6
+pkgrel=7
 pkgdesc="The open source CFD toolbox"
 arch=("any")
 url="http://www.openfoam.org"
@@ -23,7 +23,8 @@ md5sums=('SKIP')
 
 prepare() {
   # Extract the current version and major of paraview and of scotch for use in the system preferences
-  _pversion=`pacman -Q paraview | sed -e 's/.* //; s/-.*//g'`
+  #_pversion=`pacman -Q paraview | sed -e 's/.* //; s/-.*//g'`
+  _pversion=$(pacman -Q $(pacman -Qqo $(which paraview)) | sed -e 's/.* //; s/-.*//g')
   _pmajor=`echo $_pversion | cut -d '.' -f1`
   _sversion=`pacman -Q scotch | sed -e 's/.* //; s/-.*//g'`
 
