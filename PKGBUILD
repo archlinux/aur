@@ -31,3 +31,4 @@ package() {
 }
 
 
+md5sums=('13575c05adfdec3e96408776067f41eb')
