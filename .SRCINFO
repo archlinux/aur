@@ -1,0 +1,30 @@
+pkgbase = natron_bin
+	pkgdesc = Video compositing software similar to Nuke and Adobe After Effects
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://natron.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ffmpeg
+	depends = p7zip
+	optdepends = blender: for 3d opencolor-io support
+	conflicts = natron
+	conflicts = natron-rc
+	conflicts = natron-bin-dev
+	options = !strip
+	source = natron.desktop
+	source = x-natron.xml
+	source = natronIcon256_linux.png
+	source = natronProjectIcon_linux.png
+	md5sums = 5c65b106c295abe0b5346eff18a06767
+	md5sums = ca5186feb5a7f336517c015f72d0f8c8
+	md5sums = 60eb9f97a0ddeab5acda48d15894559a
+	md5sums = 475e14142c51d8b545f7cbc4b5426ce2
+	source_i686 = http://downloads.natron.fr/Linux/releases/32bit/files/Natron-2.0.5-Linux-x86_32bit-portable.tar.xz
+	md5sums_i686 = 154966f2f9ffee18f90d5d11ce8f698e
+	source_x86_64 = http://downloads.natron.fr/Linux/releases/64bit/files/Natron-2.0.5-Linux-x86_64bit-portable.tar.xz
+	md5sums_x86_64 = 5df8f464d54552644243e3602dba35e5
+
+pkgname = natron_bin
+
