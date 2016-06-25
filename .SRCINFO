@@ -1,0 +1,15 @@
+pkgbase = ruby-iniparse
+	pkgdesc = A pure Ruby library for parsing INI documents
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://github.com/antw/iniparse
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = iniparse-1.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/iniparse-1.4.2.gem
+	sha256sums = 1920345bccaab2e6ffb573add6399273c2a0b9ec463f1dff9126736d86c944de
+
+pkgname = ruby-iniparse
+
