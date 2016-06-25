@@ -1,7 +1,7 @@
 # Maintainer: JC FRANCOIS <jc.francois@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.10
+pkgver=1.10.2
 pkgbuild=52
 pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
