@@ -1,33 +1,39 @@
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-
-pkgname=qt5-styleplugins-git
-_pkgname=qtstyleplugins
-pkgver=5.0.0.r7.5f2549b
-pkgrel=1
-pkgdesc="Additional style plugins for Qt5"
+pkgname=('qt5-qtstyleplugins-git')
+srcname='qtstyleplugins'
+pkgdesc='Additional style plugins for Qt5'
+pkgver='r1'
+pkgrel='1'
 arch=('i686' 'x86_64')
-url="http://code.qt.io/cgit/qt/qtstyleplugins.git"
+url="http://code.qt.io/cgit/qt/${srcname}"
 license=('LGPL')
-depends=('qt5-base')
-makedepends=('git' 'gconf' 'gtk2')
-optdepends=('gconf: for GTK style'
-            'gtk2: for GTK style')
-source=("$_pkgname::git+https://code.qt.io/qt/qtstyleplugins.git")
-md5sums=('SKIP')
+
+depends=('qt5-base' 'gtk2' 'libx11')
+makedepends=('git' 'gconf')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
+
+source=("${srcname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "${srcdir}/${srcname}"
+
+    printf 'r%s.%s.%s\n' \
+        "$( git rev-list --count 'HEAD' )" \
+        "$( git log --max-count='1' --pretty='format:%ct' )" \
+        "$( git rev-parse --short 'HEAD' )"
 }
 
 build() {
-  cd "$_pkgname"
-  qmake PREFIX=/usr LIBDIR=/usr/lib
-  make
+    cd "${srcdir}/${srcname}"
+
+    qmake PREFIX='/usr' LIBDIR='/usr/lib'
+    make
 }
 
 package() {
-  cd "$_pkgname"
-  make INSTALL_ROOT="$pkgdir" install
-  rm -r "$pkgdir/usr/lib/cmake"
+    cd "${srcdir}/${srcname}"
+
+    make INSTALL_ROOT="${pkgdir}" install
+    rm --recursive "${pkgdir}/usr/lib/cmake"
 }
