@@ -2,7 +2,7 @@
 
 pkgname=nvm
 pkgver=0.31.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Node Version Manager - Simple bash script to manage multiple active node.js versions"
 url="https://github.com/creationix/nvm"
 arch=('any')

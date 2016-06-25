@@ -5,7 +5,7 @@ You need to source nvm before you can use it. Do one of the following
 or similar depending on your shell (and then restart your shell):
 
   echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
-  echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zprofile
+  echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc
 
 You can now install node.js versions (e.g. nvm install 5.0) and
 activate them (e.g. nvm use 5.0). You may want to activate your
@@ -29,7 +29,7 @@ post_remove() {
   echo "
 Don't forget to clean up any lines added to your shell's startup script!
 
-For example, from your .bashrc (or .zprofile etc.), delete the line:
+For example, from your .bashrc (or .zshrc etc.), delete the line:
 
 source /usr/share/nvm/init-nvm.sh
 "
