@@ -4,9 +4,8 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.17
-_pkgdir=1883
-pkgrel=2
+pkgver=2.3.18
+pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
@@ -96,15 +95,15 @@ optdepends=(
   # 'perl-net-write-layer2: Wake on Lan'
   'perl-net-write: Wake on Lan ethernet method support'
 )
-source=("http://forge.fusioninventory.org/attachments/download/$_pkgdir/$_pkgname-$pkgver.tar.gz"
+source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   'fusioninventory-agent.service'
   'fusioninventory-agent.config')
-md5sums=('29002653bc5c25cd0e42b5990dc4cd2f'
+md5sums=('caffff2fe695b2262529aa7541f1b94a'
          'cd0d59b266a41977f51d9e99ecca8cd5'
          '7cce12647a737aadcdd79dee4575aff3')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   perl Makefile.PL \
     PREFIX="/usr" \
@@ -118,19 +117,19 @@ build() {
 # needs at least HTTP::Server::Simple:Authen
 # and certainly Test::More and Test::HTTP::Server::Simple
 #check() {
-#  cd "$srcdir/$_pkgname-$pkgver"
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
 #
 #  make test
 #}
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make install DESTDIR="${pkgdir}/"
   install -D -m644 ${srcdir}/fusioninventory-agent.service \
     ${pkgdir}/usr/lib/systemd/system/fusioninventory-agent.service
   mv ${pkgdir}/etc/fusioninventory/agent.cfg \
      ${pkgdir}/etc/fusioninventory/agent.cfg.default
   install -D -m644 ${srcdir}/fusioninventory-agent.config \
     ${pkgdir}/etc/conf.d/fusioninventory-agent
-  mkdir -p "$pkgdir/var/lib/fusioninventory-agent"
+  mkdir -p "${pkgdir}/var/lib/fusioninventory-agent"
 }
