@@ -1,6 +1,6 @@
 pkgbase = ofxstatement-bubbas-git
 	pkgdesc = Plugins for ofxstatement for DKB and Amazon credit cards
-	pkgver = 8.e26e3e5
+	pkgver = r8.e26e3e5
 	pkgrel = 1
 	url = https://github.com/bubbas/ofxstatement-bubbas
 	arch = any

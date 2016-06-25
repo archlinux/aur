@@ -1,6 +1,6 @@
 # Contributor: xduugu
 pkgname=ofxstatement-bubbas-git
-pkgver=8.e26e3e5
+pkgver=r8.e26e3e5
 pkgrel=1
 pkgdesc="Plugins for ofxstatement for DKB and Amazon credit cards"
 arch=('any')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
