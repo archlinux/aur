@@ -2,9 +2,9 @@ _module=diskio
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
 pkgname=moksha-module-${_module}-git
-pkgver=f7db19e
+pkgver=b9eacce
 pkgrel=1
-pkgdesc="Diskio Moksha module"
+pkgdesc="Moksha diskio module - built from git sources"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
@@ -31,12 +31,12 @@ package() {
   make DESTDIR="${pkgdir}" install
 
 #   install text files
-  [[ -e ChangeLog ]] && install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname%-*}/$_module/ChangeLog" || true
-  [[ -e NEWS ]] && install -Dm644 NEWS "${pkgdir}/usr/share/doc/${pkgname%-*}/$_module/NEWS" || true
-  [[ -e README ]] && install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname%-*}/$_module/README" || true
+  [[ -e ChangeLog ]] && install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname%-*}/ChangeLog" || true
+  [[ -e NEWS ]] && install -Dm644 NEWS "${pkgdir}/usr/share/doc/${pkgname%-*}/NEWS" || true
+  [[ -e README ]] && install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname%-*}/README" || true
 
 #   install license files
-  [[ -e AUTHORS ]] && install -Dm644 AUTHORS "${pkgdir}/usr/share/licenses/$pkgname/$_module/AUTHORS" || true
-  [[ -e COPYING ]] && install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/$_module/COPYING" || true
-  [[ -e COPYING-PLAIN ]] && install -Dm644 COPYING-PLAIN "${pkgdir}/usr/share/licenses/$pkgname/$_module/COPYING-PLAIN" || true
+  [[ -e AUTHORS ]] && install -Dm644 AUTHORS "${pkgdir}/usr/share/licenses/$pkgname/AUTHORS" || true
+  [[ -e COPYING ]] && install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING" || true
+  [[ -e COPYING-PLAIN ]] && install -Dm644 COPYING-PLAIN "${pkgdir}/usr/share/licenses/$pkgname/COPYING-PLAIN" || true
 }
