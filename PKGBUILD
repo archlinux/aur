@@ -23,13 +23,13 @@ build() {
   cd "${srcdir}/smpeg2-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    CFLAGS="--std=gnu++98" ${_arch}-configure \
       --disable-sdltest \
       --disable-gtk-player \
       --disable-gtktest \
       --disable-opengl-player \
       --with-sdl-prefix=/usr/${_arch} \
-      --without-x
+      --without-x ..
     make
     popd
   done
