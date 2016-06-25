@@ -1,4 +1,6 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 # based on the zandronum2 PKGBUILD by Morgan Bohn, found at https://aur.archlinux.org/packages/zandronum2
 # Since this is a development build and people may want to have both the latest stable AND development,
 # it installs alongside rather than as a conflict of zandronum2.
@@ -9,7 +11,7 @@ pkgver=3.0
 _pkgver2=160519-2047
 _pkgver=${pkgver}-${_pkgver2}
 fmodex_ver=4.24.16
-pkgrel=3
+pkgrel=4
 _pkgdl=ZandroDev
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer. (Development Build ${_pkgver})"
 arch=('i686' 'x86_64')
