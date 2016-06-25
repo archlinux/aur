@@ -18,9 +18,9 @@ optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
 	    'lightdm-unity-greeter: required for the LightDM Unity theme'
 	    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
 	    'lib32-gtk-engine-murrine: required for multilib')
-_surl="https://github.com/shimmerproject"
-source=("$pkgname-$pkgver.tar.gz"::"$_surl/Greybird/archive/v$pkgver.tar.gz"
-	"GTK3.20-patch.tar.gz"::"https://github.com/Poultryphile/xfce-theme-greybird/archive/1.6.2.tar.gz")
+_github="https://github.com"
+source=("$pkgname-$pkgver.tar.gz"::"$_github/shimmerproject/Greybird/archive/v$pkgver.tar.gz"
+	"GTK3.20-patch.tar.gz"::"$_github/Poultryphile/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('473a38b379381311b68dcc579005c0d5bbfbabefe1de7107d897c68b81e6b460'
 	    'cac9e935b7b5bb216c45fb4df2ddd75d4d8353185189fa763ddaa91025768139')
 
