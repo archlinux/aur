@@ -6,7 +6,7 @@
 
 # icon cache
 echo "Yltra-Flat"
-gtk-update-icon-cache Yltra-Flat
+gtk-update-icon-cache -t Yltra-Flat
 echo "Yltra-Flat-Arch-Blue"
 gtk-update-icon-cache Yltra-Flat-Arch-Blue
 echo "Yltra-Flat-Majestic"
