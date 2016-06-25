@@ -13,7 +13,7 @@ depends=('glibc'
 makedepends=('git')
 provides=('libdvdread' 'libdvdread.so')
 conflicts=('libdvdread')
-source=('git+https://git.videolan.org/git/libdvdread.git')
+source=('git+https://code.videolan.org/videolan/libdvdread.git')
 sha1sums=('SKIP')
 
 pkgver() {
