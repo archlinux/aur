@@ -2,7 +2,7 @@
 # Put icons always in folder with version and release
 pkgname=super-ultra-flat-numix-remix-icons
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="super-ultra-flat-numix-remix is an icon theme build upon 4 different icon sets - check github for more info"
 arch=('any')
 url="http://sourceforge.net/projects/super-ultra-flat-numix-remix"
