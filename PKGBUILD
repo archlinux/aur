@@ -1,10 +1,12 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: M.Carreira <arch@carreira.com.pt>
 
 pkgname=mondo
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A disaster recovery solution to create backup media that can be used to redeploy the damaged system"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
