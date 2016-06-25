@@ -1,0 +1,19 @@
+pkgbase = cado-git
+	pkgdesc = Capability DO (like a sudo providing users with just the capabilities they need))
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/rd235/cado
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = git
+	provides = cado
+	provides = caprint
+	conflicts = cado
+	conflicts = caprint
+	source = git://github.com/rd235/cado.git
+	md5sums = SKIP
+
+pkgname = cado-git
+
