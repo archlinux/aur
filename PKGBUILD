@@ -1,4 +1,4 @@
-pkgname=('qt5-qtstyleplugins-git')
+pkgname=('qt5-styleplugins-git')
 srcname='qtstyleplugins'
 pkgdesc='Additional style plugins for Qt5'
 pkgver='r1'
