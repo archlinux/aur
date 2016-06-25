@@ -3,7 +3,7 @@
 _pkgname=paragon-ufsd
 pkgname=${_pkgname}-dkms-git
 _pkgver=9.4
-pkgver=9.4.r3.g11f2300
+pkgver=9.4.r4.g2ff11e5
 pkgrel=1
 pkgdesc='Paragon NTFS & HFS+ for Linux driver.'
 arch=('i686' 'x86_64')
