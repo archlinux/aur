@@ -3,7 +3,7 @@
 pkgname=jwmappmenugen-git
 _pkgname=jwmappmenugen
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple menu generator for the Joe's Window Manager based on fbmenugen."
 arch=('any')
 url="https://github.com/BlackCodec/jwmappmenugen/tree/master"
@@ -13,7 +13,7 @@ source=("https://github.com/BlackCodec/$_pkgname/archive/master.zip")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-master"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
