@@ -2,13 +2,13 @@
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=ffmulticonverter-git
-pkgver=1.7.0.r6.g97c6ae3
+pkgver=1.7.2.r26.g582403d
 pkgrel=1
 pkgdesc="Convert audio, video, image and document files between all popular formats"
 arch=(any)
 url="https://sites.google.com/site/ffmulticonverter/"
 license=('GPL3')
-depends=('python-pyqt4')
+depends=('python-pyqt5')
 optdepends=('ffmpeg: for video conversions'
             'imagemagick: for image conversions'
             'unoconv: for document conversions')
