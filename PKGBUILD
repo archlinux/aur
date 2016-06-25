@@ -7,10 +7,11 @@ pkgrel=1
 
 pkgdesc="Capability DO (like a sudo providing users with just the
 capabilities they need))"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm')
 url="https://github.com/rd235/cado"
 license=('GPL')
 makedepends=('autoconf' 'git')
+depends=('libcap')
 provides=('cado' 'caprint')
 conflicts=('cado' 'caprint')
 source=("git://github.com/rd235/cado.git")
