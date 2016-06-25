@@ -1,6 +1,6 @@
 pkgbase = paragon-ufsd-dkms-git
 	pkgdesc = Paragon NTFS & HFS+ for Linux driver.
-	pkgver = 9.4.r3.g11f2300
+	pkgver = 9.4.r4.g2ff11e5
 	pkgrel = 1
 	url = https://www.paragon-software.com/home/ntfs-linux-per/
 	install = paragon-ufsd-dkms.install
