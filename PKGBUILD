@@ -23,6 +23,7 @@ makedepends=('extra-cmake-modules'
              'kdnssd'
              'kross'
              'kplotting'
+             'kdesignerplugin'
              )
 optdepends=('kplotting: for stats plugin'
             'taglib: for mediaplayer plugin'
