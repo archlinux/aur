@@ -19,7 +19,6 @@ depends=('flac'
          'qtwebkit')
 optdepends=('log4cxx')
 options=(!strip)
-install=${pkgname}.install
 source_i686=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_i386.deb")
 source_x86_64=("https://dl.google.com/linux/musicmanager/deb/pool/main/g/${pkgname}-beta/${pkgname}-beta_${pkgver/_/-}_amd64.deb")
 md5sums_i686=('d8a6a144e2ee7fc475e02c04745a442d')
