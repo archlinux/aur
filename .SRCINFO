@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid-git
 	pkgdesc = GNU Emacs. Official git master.
-	pkgver = 25.1.50.r126425
+	pkgver = 25.1.50.r126426
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -18,6 +18,9 @@ pkgbase = emacs-lucid-git
 	depends = imagemagick
 	depends = librsvg
 	depends = gnutls
+	depends = xaw3d
+	depends = libdbus
+	depends = libxfixes
 	provides = emacs
 	conflicts = emacs
 	options = docs
