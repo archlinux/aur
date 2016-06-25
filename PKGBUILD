@@ -1,4 +1,6 @@
 # Maintainer: Brent Saner <r00t (at) square-r00t (dot) net> - 748231EBCBD808A14F5E85D28C004C2F93481F6B
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 # Co-maintainer: opencode <gitcoder (at) outlook (dot) com>
 # Co-maintainer: silvermonk <aur (at) apsu (dot) be>
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
@@ -56,7 +58,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-lite'
 pkgver='1.6.9'
-pkgrel='2'
+pkgrel=3
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
