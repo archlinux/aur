@@ -3,7 +3,7 @@
 # Contributor: Jesus Alvarez
 
 pkgname=python-radon
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A tool that computes various metrics for Python source code."
 arch=('any')
@@ -11,8 +11,8 @@ url="https://radon.readthedocs.org/"
 license=('MIT')
 depends=('python-mando' 'python-colorama')
 makedepends=('python-sphinx')
-source=("http://pypi.python.org/packages/source/r/radon/radon-${pkgver}.tar.gz")
-md5sums=('c85e93d17d629d8a0db94d61a254d974')
+source=("https://pypi.python.org/packages/99/f9/31a0a3eb9e63bd8e3a3c44b4c676bf051ec05273ed09dcf00695ee8df318/radon-1.4.0.tar.gz")
+md5sums=('52d5ab0564ceff5edb9b38d8c49cf544')
 
 
 build() {
