@@ -9,8 +9,8 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.3.0.sh0.33.0.t2.1.7
-pkgrel=2
+pkgver=1.8.0.arch0.3.0.sh0.33.2.t2.1.7
+pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
