@@ -9,7 +9,7 @@ _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 _pkgver=5.7
 pkgver=${_pkgver}.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -144,9 +144,15 @@ build() {
              configue_opts+="
                  -skip qt3d"
             ;;
+        x86)
+             configue_opts+="
+                 -no-sql-mysql
+                 -no-sql-psql"
+            ;;
         x86_64)
              configue_opts+="
-                 -no-sql-mysql"
+                 -no-sql-mysql
+                 -no-sql-psql"
             ;;
         *)
             ;;
