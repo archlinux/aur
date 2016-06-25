@@ -1,4 +1,6 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past contributor: Andreas Schrafl <aschrafl@jetnet.ch>
 # based on the work of Jaroslav Lichtblau <tu@dragonlord.cz>
@@ -6,7 +8,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=boxbackup-server
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source, completely automatic on-line backup system for UNIX."
 arch=('i686' 'x86_64')
 url="http://boxbackup.org"
