@@ -11,7 +11,7 @@ depends=('libdvdread-git')
 makedepends=('git')
 provides=('libdvdnav' 'libdvdnav.so')
 conflicts=('libdvdnav')
-source=("git+https://git.videolan.org/git/libdvdnav.git")
+source=("git+https://code.videolan.org/videolan/libdvdnav.git")
 sha1sums=('SKIP')
 
 pkgver() {
