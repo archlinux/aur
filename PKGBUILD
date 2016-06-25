@@ -5,8 +5,8 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.5.0.98.gf352919
-pkgrel=2
+pkgver=1.5.0.103.g760ca24
+pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
 url="http://gottcode.org/${_pkgname}/"
