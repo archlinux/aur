@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=3746.51b6d45
+pkgver=3849.cec8e4b
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -47,5 +47,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         'df533ecfa50dd3287595a83d847ee8da'
+         '29c1b2adff85a66160fdaa0b48174c03'
          'dbca9273e9fc18a7aa5d1c395508fe60')
