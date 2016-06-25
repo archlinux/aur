@@ -1,7 +1,7 @@
 pkgbase = xfce-theme-greybird
 	pkgdesc = A grey and blue Xfce theme, used by default in Xubuntu 12.04
 	pkgver = 1.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://shimmerproject.org/projects/greybird/
 	arch = any
 	groups = xfce-themes-shimmer-collection
