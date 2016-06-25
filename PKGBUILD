@@ -22,8 +22,6 @@ url='https://tox.chat'
 source=("${pkgname}::git+https://github.com/JFreegman/toxic.git")
 sha512sums=('SKIP')
 
-install="${pkgname}.install"
-
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
