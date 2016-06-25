@@ -1,0 +1,19 @@
+pkgbase = python-hipsterplot
+	pkgdesc = ASCII plotting, because matplotlib is too mainstream
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/imh/hipsterplot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/imh/hipsterplot/archive/v0.1.tar.gz
+	sha256sums = aba3c68d5d4ae4d08fc44badbe716968405b15d1442b03555028e0c20135428a
+
+pkgname = python-hipsterplot
+	depends = python
+
+pkgname = python2-hipsterplot
+	depends = python2
+
