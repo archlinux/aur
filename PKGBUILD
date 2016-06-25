@@ -20,14 +20,12 @@ options=(!strip)
 source=(
 	"http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-${pkgver}-${_pkgbuild}/eclipse-platform-${pkgver}-linux-gtk.tar.gz&r=1"
 	"eclipse.sh"
-	"eclipse.svg"
 	"eclipse.desktop"
 )
 
 md5sums=('19e07aba9bda903d4d5b1620b338a0df'
-         'e07b2ccfc4689c288fd876a4beb8403d'
-         'a0f93d5e697837d75911f5af9a386f19'
-         '45b39512f5e3e97fa078598a11245504')
+         '66757230837fdebabb8ce91eb4fccc80'
+         '6978e306347d49393e7ac833ba47c4ac')
 
 if [ "$CARCH" = "x86_64" ]; then
 	source[0]=${source/linux-gtk/linux-gtk-x86_64}
@@ -35,17 +33,14 @@ if [ "$CARCH" = "x86_64" ]; then
 fi
 
 package() {
-	cd "${srcdir}/eclipse"
-	
-	install -d ${pkgdir}/usr/bin ${pkgdir}/usr/lib ${pkgdir}/usr/share/applications ${pkgdir}/usr/share/icons/hicolor/{16x16,32x32,48x48}/apps
+	install -d ${pkgdir}/usr/bin ${pkgdir}/usr/lib ${pkgdir}/usr/share/applications
 	
 	install -m755 "${srcdir}/eclipse.sh" "${pkgdir}/usr/bin/eclipse"
-	install -m644 "${srcdir}/eclipse.desktop" "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/eclipse" "${pkgdir}/usr/share/"
+	install -Dm644 "${srcdir}/eclipse.desktop" "${pkgdir}/usr/share/applications/"
 	
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/eclipse.png"
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/eclipse.png"
-	ln -s /usr/share/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse48.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/eclipse.png"
-	
-	install -Dm644 ${srcdir}/eclipse.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/eclipse.svg
+	for _i in 16 32 48 256; do
+      install -Dm644 ${srcdir}/eclipse/plugins/org.eclipse.platform_${pkgver}*/eclipse${_i}.png "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/eclipse.png"
+    done
+    
+    mv "${srcdir}/eclipse" "${pkgdir}/usr/share/"
 }
