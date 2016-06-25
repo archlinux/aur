@@ -1,0 +1,147 @@
+diff --git a/src/plugins/styles/gtk2/gtk2.pro b/src/plugins/styles/gtk2/gtk2.pro
+index c8462cc..0612132 100644
+--- a/src/plugins/styles/gtk2/gtk2.pro
++++ b/src/plugins/styles/gtk2/gtk2.pro
+@@ -5,7 +5,7 @@ load(qt_plugin)
+ QT = core-private gui-private widgets-private
+ 
+ CONFIG += link_pkgconfig
+-PKGCONFIG += gconf-2.0 gtk+-2.0 x11
++PKGCONFIG += gtk+-2.0 x11
+ 
+ HEADERS += qgtk2painter_p.h qgtkglobal_p.h qgtkpainter_p.h qgtkstyle_p.h qgtkstyle_p_p.h
+ SOURCES += qgtk2painter.cpp qgtkpainter.cpp qgtkstyle.cpp qgtkstyle_p.cpp plugin.cpp
+diff --git a/src/plugins/styles/gtk2/qgtkstyle.cpp b/src/plugins/styles/gtk2/qgtkstyle.cpp
+index ee1fefe..2fb4133 100644
+--- a/src/plugins/styles/gtk2/qgtkstyle.cpp
++++ b/src/plugins/styles/gtk2/qgtkstyle.cpp
+@@ -255,24 +255,6 @@ static const int groupBoxBottomMargin    =  2;  // space below the groupbox
+ static const int groupBoxTitleMargin     =  6;  // space between contents and title
+ static const int groupBoxTopMargin       =  2;
+ 
+-/*!
+-  Returns the configuration string for \a value.
+-  Returns \a fallback if \a value is not found.
+- */
+-QString QGtkStyle::getGConfString(const QString &value, const QString &fallback)
+-{
+-    return QGtkStylePrivate::getGConfString(value, fallback);
+-}
+-
+-/*!
+-  Returns the configuration boolean for \a key.
+-  Returns \a fallback if \a key is not found.
+- */
+-bool QGtkStyle::getGConfBool(const QString &key, bool fallback)
+-{
+-    return QGtkStylePrivate::getGConfBool(key, fallback);
+-}
+-
+ static QColor mergedColors(const QColor &colorA, const QColor &colorB, int factor = 50)
+ {
+     const int maxFactor = 100;
+@@ -846,7 +828,7 @@ int QGtkStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidg
+     }
+ 
+     case SH_DialogButtonBox_ButtonsHaveIcons: {
+-        static bool buttonsHaveIcons = d->getGConfBool(QLS("/desktop/gnome/interface/buttons_have_icons"));
++        static bool buttonsHaveIcons = false;
+         return buttonsHaveIcons;
+     }
+ 
+diff --git a/src/plugins/styles/gtk2/qgtkstyle_p.cpp b/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+index 44a5878..e57b3d8 100644
+--- a/src/plugins/styles/gtk2/qgtkstyle_p.cpp
++++ b/src/plugins/styles/gtk2/qgtkstyle_p.cpp
+@@ -66,8 +66,6 @@
+ #include <QtWidgets/QToolBar>
+ #include <QtWidgets/QToolButton>
+ 
+-#include <gconf/gconf-client.h>
+-
+ // X11 Includes:
+ 
+ // the following is necessary to work around breakage in many versions
+@@ -367,42 +365,6 @@ void QGtkStylePrivate::cleanupGtkWidgets()
+         free(const_cast<char *>(it.key().data()));
+ }
+ 
+-QString QGtkStylePrivate::getGConfString(const QString &value, const QString &fallback)
+-{
+-    QString retVal = fallback;
+-#if !defined(GLIB_VERSION_2_36)
+-    g_type_init();
+-#endif
+-    GConfClient* client = gconf_client_get_default();
+-    GError *err = 0;
+-    char *str = gconf_client_get_string(client, qPrintable(value), &err);
+-    if (!err) {
+-        retVal = QString::fromUtf8(str);
+-        g_free(str);
+-    }
+-    g_object_unref(client);
+-    if (err)
+-        g_error_free (err);
+-    return retVal;
+-}
+-
+-bool QGtkStylePrivate::getGConfBool(const QString &key, bool fallback)
+-{
+-    bool retVal = fallback;
+-#if !defined(GLIB_VERSION_2_36)
+-    g_type_init();
+-#endif
+-    GConfClient* client = gconf_client_get_default();
+-    GError *err = 0;
+-    bool result = gconf_client_get_bool(client, qPrintable(key), &err);
+-    g_object_unref(client);
+-    if (!err)
+-        retVal = result;
+-    else
+-        g_error_free (err);
+-    return retVal;
+-}
+-
+ QString QGtkStylePrivate::getThemeName()
+ {
+     QString themeName;
+diff --git a/src/plugins/styles/gtk2/qgtkstyle_p.h b/src/plugins/styles/gtk2/qgtkstyle_p.h
+index 27a42af..15a2a67 100644
+--- a/src/plugins/styles/gtk2/qgtkstyle_p.h
++++ b/src/plugins/styles/gtk2/qgtkstyle_p.h
+@@ -109,9 +109,6 @@ public:
+ 
+     void unpolish(QWidget *widget) Q_DECL_OVERRIDE;
+     void unpolish(QApplication *app) Q_DECL_OVERRIDE;
+-
+-    static bool getGConfBool(const QString &key, bool fallback = 0);
+-    static QString getGConfString(const QString &key, const QString &fallback = QString());
+ };
+ 
+ QT_END_NAMESPACE
+diff --git a/src/plugins/styles/gtk2/qgtkstyle_p_p.h b/src/plugins/styles/gtk2/qgtkstyle_p_p.h
+index 820b59b..95bf6a0 100644
+--- a/src/plugins/styles/gtk2/qgtkstyle_p_p.h
++++ b/src/plugins/styles/gtk2/qgtkstyle_p_p.h
+@@ -162,9 +162,6 @@ public:
+     static QFont getThemeFont();
+     static bool isThemeAvailable() { return gtkStyle() != 0; }
+ 
+-    static bool getGConfBool(const QString &key, bool fallback = 0);
+-    static QString getGConfString(const QString &key, const QString &fallback = QString());
+-
+     static QString getThemeName();
+     virtual int getSpinboxArrowSize() const;
+ 
+diff --git a/src/plugins/styles/styles.pro b/src/plugins/styles/styles.pro
+index 25d68d0..adcf8e4 100644
+--- a/src/plugins/styles/styles.pro
++++ b/src/plugins/styles/styles.pro
+@@ -5,6 +5,6 @@ SUBDIRS = \
+     plastique \
+     bb10style
+ 
+-packagesExist(gconf-2.0 gtk+-2.0 x11) {
++packagesExist(gtk+-2.0 x11) {
+     SUBDIRS += gtk2
+ }
