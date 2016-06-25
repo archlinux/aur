@@ -1,0 +1,4 @@
+minikube*
+pkg
+src
+!.SRCINFO
