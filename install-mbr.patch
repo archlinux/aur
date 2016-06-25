@@ -1,0 +1,13 @@
+if you're reading this, you owe this guy a beer:
+jonathan (at) jonathandemasi (dot) com
+--- install-mbr.c.old	2006-09-02 10:42:00.000000000 -0400
++++ install-mbr.c	2016-06-25 01:40:40.030483538 -0400
+@@ -640,7 +640,7 @@
+       printf(" F");
+     if(cp->enabled & CPE_A)
+       printf(" A");
+-      printf("\n");
++    printf("\n");
+   }
+   if(cp->flags & CPFLAG_INTERRUPT)
+   {
