@@ -1,7 +1,7 @@
 pkgbase = natron_bin
 	pkgdesc = Video compositing software similar to Nuke and Adobe After Effects
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://natron.fr/
 	arch = i686
 	arch = x86_64

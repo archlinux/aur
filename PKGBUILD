@@ -4,7 +4,7 @@
 # Contributor: gatitofeliz at protonmail dot com
 pkgname=natron_bin
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Video compositing software similar to Nuke and Adobe After Effects'
 url='http://natron.fr/'
