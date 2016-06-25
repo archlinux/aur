@@ -1,7 +1,7 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver
 pkgver=1.0.r9.fa4f860
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=('i686' 'x86_64')
@@ -37,16 +37,17 @@ package() {
 		if [[ $(file "$each") =~ BuildID ]]; then
 			gzip --keep "$each"
 			for tdir in $(echo /usr/lib/modules/extramodules*); do
-				[ -f "$each".gz ] && \
+				# not sure if setting nullglob allowed, so test -d instead:
+				[[ -f "$each".gz && -d "$tdir" ]] &&
 					install -Dm 644 "$each".gz ${pkgdir}/${tdir}/${each}.gz
-			done
+			done && unset tdir
 			if [[ ! "$each" =~ "$_excl" ]]; then
 				echo $(basename "$each" '.ko') >> "$_conf"
 			else
 				echo '#'$(basename "$each" '.ko') >> "$_conf"
 			fi
 		fi
-	done
+	done && unset each
 	install -Dm 644 README.markdown "$_docd"/README.markdown
 	install -Dm 644 keyboard_brightness.sh "$_docd"/keyboard_brightness.sh
 	install -Dm 644 $_conf "$_confd"/"$_conf"
