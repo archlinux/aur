@@ -1,47 +1,47 @@
-# Maintainer: Bjoern Franke <bjo at nord-west.org>
-# Contributor: flan_suse
-#
-# This suite contains the following:
-#        * xfwm4 theme
-#        * xfwm4 compact theme
-#        * metacity theme
-#        * emerald theme
-#        * gtk2 theme
-#        * gtk3 theme
-#        * unity theme
-#        * xfce4-notify theme
-#        * lightdm theme
-#        * wallpaper (found in the shimmer-wallpapers package; optdepends)
+# Maintainer:	M.Reynolds <blackboxnetworkproject@gmail.com>
+# Contributor:	Bjoern Franke <bjo at nord-west.org>
+# Contributor:	flan_suse
 
 pkgname=xfce-theme-greybird
-_pkgname=Greybird
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A grey and blue Xfce theme, used by default in Xubuntu 12.04"
-arch=(any)
-url=http://shimmerproject.org/projects/greybird/
-license=(CCPL:by-sa-3.0 GPL)
-groups=(xfce-themes-shimmer-collection)
-depends=(gtk-engine-murrine)
+arch=('any')
+url="http://shimmerproject.org/projects/greybird/"
+license=('CCPL:by-sa-3.0' 'GPL')
+groups=('xfce-themes-shimmer-collection')
+conflicts=("$pkgname-git")
+depends=('gtk-engine-murrine')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
-    'gtk3: required for CSS/GTK3 theme'
-    'lightdm-gtk-greeter: required for the LightDM GTK theme'
-    'lightdm-unity-greeter: required for the LightDM Unity theme'
-    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
-    'lib32-gtk-engine-murrine: required for multilib')
-conflicts=($pkgname-git)
-source=($pkgname-$pkgver.tar.gz::https://github.com/shimmerproject/$_pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('eddd6b89880dbc034ee32cc17751b6ee1b18b55eef31d745c64f865b96d0fbf36fe6ab59dbe89dbdd032b3ed01395850f9597bdc1897e276b0433e93353d893f')
+	    'gtk3: required for CSS/GTK3 theme'
+	    'lightdm-gtk-greeter: required for the LightDM GTK theme'
+	    'lightdm-unity-greeter: required for the LightDM Unity theme'
+	    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
+	    'lib32-gtk-engine-murrine: required for multilib')
+_surl="https://github.com/shimmerproject"
+source=("$pkgname-$pkgver.tar.gz"::"$_surl/Greybird/archive/v$pkgver.tar.gz"
+	"GTK3.20-patch.tar.gz"::"https://github.com/Poultryphile/xfce-theme-greybird/archive/1.6.2.tar.gz")
+sha256sums=('473a38b379381311b68dcc579005c0d5bbfbabefe1de7107d897c68b81e6b460'
+	    'cac9e935b7b5bb216c45fb4df2ddd75d4d8353185189fa763ddaa91025768139')
 
-
-
+build() {
+	cd "$srcdir"
+	patch -p0 -i "$pkgname-$pkgver/$pkgname-$pkgver-GTK3.20.patch"
+}
 
 package() {
-    local _themedir="$pkgdir/usr/share/themes"
-    install -d "$_themedir/$_pkgname "{Classic,Compact,a11y}
-
-    cp -rf $_pkgname-$pkgver/ "$_themedir"/$_pkgname/
-    rm "$_themedir"/$_pkgname/.gitignore
-    ln -s /usr/share/themes/$_pkgname/xfwm4-compact "$_themedir/$_pkgname Compact/xfwm4"
-    ln -s /usr/share/themes/$_pkgname/xfwm4-a11y "$_themedir/$_pkgname a11y/xfwm4"
+	cd "$srcdir"
+	
+	install -d "$pkgdir/usr/share/themes/Greybird Classic"
+	install -d "$pkgdir/usr/share/themes/Greybird Compact"
+	install -d "$pkgdir/usr/share/themes/Greybird a11y"
+	
+	cp -rf "Greybird-$pkgver/" "$pkgdir/usr/share/themes/Greybird/"
+	rm -rf "$pkgdir/usr/share/themes/Greybird/.gitignore"
+	
+	ln -s "/usr/share/themes/Greybird/xfwm4-compact" \
+	      "$pkgdir/usr/share/themes/Greybird Compact/xfwm4"
+	      
+	ln -s "/usr/share/themes/Greybird/xfwm4-a11y" \
+	      "$pkgdir/usr/share/themes/Greybird a11y/xfwm4"
 }
