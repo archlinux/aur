@@ -2,20 +2,20 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io'
-depends=('ffmpeg' 'lcms2' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('ffmpeg' 'lcms2' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme')
 makedepends=('mesa' 'python-docutils')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('602cd2b0f5fc7e43473234fbb96e3f7bbb6418f15eb8fa720d9433cce31eba6e')
+sha256sums=('b656638d4f6bce2621baaacb60d8be384aa492fcd86dfd43996aaa2c16fee02b')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
@@ -29,11 +29,11 @@ build() {
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --lua=52arch \
-    --enable-gpl3 \
     --enable-zsh-comp \
     --enable-libmpv-shared \
     --enable-termios \
     --enable-shm \
+    --disable-encoding \
     --disable-libsmbclient \
     --disable-libbluray \
     --disable-dvdread \
@@ -54,8 +54,8 @@ build() {
     --disable-pulse \
     --disable-xv \
     --disable-xinerama \
-    --disable-vdpau \
-    --disable-vdpau-gl-x11 \
+    --enable-vdpau \
+    --enable-vdpau-gl-x11 \
     --disable-caca \
     --disable-vdpau-hwaccel \
     --disable-tv \
