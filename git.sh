@@ -4,7 +4,7 @@
 # Website 	: 	http://www.erikdubois.be
 ############################################################################
 
-
+echo "Making of mksrcinfo"
 mksrcinfo
 git add --all .
 
