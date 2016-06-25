@@ -2,14 +2,14 @@ pkgbase = ruby-mixlib-config
 	pkgdesc = A class based configuration library
 	pkgver = 2.2.1
 	pkgrel = 1
-	url = http://www.chef.io
+	url = http://www.chef.io/
 	arch = any
 	license = Apache-2.0
 	depends = ruby
 	noextract = mixlib-config-2.2.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/mixlib-config-2.2.1.gem
-	sha512sums = 843ea7991ae1d1121f2c8ffb22083fe9d40864a41648738a6f185e66efafe70a8c9de033890c4f3ff9413b6b163f73f8d86319b2ed0ef13e63c0ef640c04bca3
+	sha256sums = 637e137aff4e94ed7c683e417458237a6db5e8ed57fdd3f22649edc0a1b7b06a
 
 pkgname = ruby-mixlib-config
 
