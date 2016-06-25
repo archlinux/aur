@@ -1,7 +1,7 @@
 pkgbase = makemkv
 	pkgdesc = DVD and Blu-ray to MKV converter and network streamer
 	pkgver = 1.9.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.makemkv.com
 	install = makemkv.install
 	arch = i686

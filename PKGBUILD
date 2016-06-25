@@ -2,7 +2,7 @@
 
 pkgname=makemkv
 pkgver=1.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="DVD and Blu-ray to MKV converter and network streamer"
 arch=('i686' 'x86_64')
 url="http://www.makemkv.com"
