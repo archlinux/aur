@@ -1,5 +1,5 @@
 pkgbase = chirp-daily
-	pkgdesc = Daily build for GUI tool for programming ham radios; This package gets updated once an announcement of a new version is made.
+	pkgdesc = Latest build for GUI tool for programming ham radios
 	pkgver = 20160625
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
