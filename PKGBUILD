@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
 pkgname=sardi-icons
-pkgver=5.4
-pkgrel=5
+pkgver=5.3
+pkgrel=0
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots > 18 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 package() {
 
   install -dm 755 "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/* ${pkgdir}/usr/share/icons/
+  cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
 }
