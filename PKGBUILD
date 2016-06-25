@@ -1,12 +1,12 @@
 pkgname=mutt-sidebar
 _pkgname=mutt
 pkgver=1.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Small but very powerful text-based mail client with sidebar and trash patches from NeoMutt'
 url='http://www.mutt.org/'
 license=('GPL')
 backup=('etc/Muttrc')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 conflicts=('mutt')
 provides=('mutt')
 depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')

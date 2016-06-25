@@ -1,10 +1,11 @@
 pkgbase = mutt-sidebar
 	pkgdesc = Small but very powerful text-based mail client with sidebar and trash patches from NeoMutt
 	pkgver = 1.6.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.mutt.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = GPL
 	depends = gpgme
 	depends = ncurses
