@@ -11,7 +11,7 @@ url='http://natron.fr/'
 license=('GPL')
 depends=('ffmpeg' 'p7zip')
 optdepends=('blender: for 3d opencolor-io support')
-conflicts=('natron' 'natron-rc' 'natron-bin')
+conflicts=('natron' 'natron-dev' 'natron-bin')
 
 options=('!strip')
 
