@@ -1,0 +1,3 @@
+post_install() {
+  echo serve dcrdocs: darkhttpd /srv/http/dcrdocs --port 54321
+}
