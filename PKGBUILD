@@ -4,14 +4,15 @@
 
 _pkgname=lxqt-admin
 pkgname=$_pkgname-git
-pkgver=0.9.0.14.gdce4b16
-pkgrel=2
-pkgdesc="LXQt system administration"
-arch=("i686" "x86_64" "armv6h")
-url="http://lxqt.org"
-license=("LGPL")
-depends=("liblxqt-git" "liboobs")
-makedepends=("git" "cmake" "qt5-tools")
+pkgver=0.10.0.19.g6ce3e29
+pkgrel=1
+pkgdesc='LXQt system administration'
+arch=('i686' 'x86_64' 'armv6h')
+url='http://lxqt.org'
+license=('LGPL')
+depends=('libqtxdg-git' 'liblxqt-git' 'polkit')
+optdepends=('lxqt-policykit-git: polkit authentication agent provided by LXQt')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
