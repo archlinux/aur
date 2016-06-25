@@ -61,6 +61,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
   ${srcdir}/${_basedir}/configure --prefix=/usr \
+      --build=${CHOST} \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
