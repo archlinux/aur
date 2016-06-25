@@ -1,7 +1,7 @@
 # Maintainer: Julian Orth <ju.orth@gmail.com>
 
 pkgname=spotblock-git
-pkgver=r1.2628a12
+pkgver=r9.a9fc6e2
 pkgrel=1
 pkgdesc='A spotify ad blocker'
 arch=('i686' 'x86_64')
