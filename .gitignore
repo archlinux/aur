@@ -1,0 +1,5 @@
+moksha-modules-extra
+*.xz
+*.gz
+src
+pkg
