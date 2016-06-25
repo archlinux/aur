@@ -25,7 +25,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=5.5.36
+pkgver=5.5.37
 pkgrel=1
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "http://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz.asc"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
-md5sums=('1db93aa3a3cfd7cfe0f41f3697db35a4'
+md5sums=('707a528176283b8eecba1fa3c7123dd2'
          'SKIP'
          '7b61f3f94afbe598256fba61663f2822'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
