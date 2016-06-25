@@ -1,12 +1,12 @@
 pkgbase = dgr
 	pkgdesc = App Container Image Build and Runtime Tool
-	pkgver = 69
-	pkgrel = 2
+	pkgver = 70
+	pkgrel = 1
 	url = https://github.com/blablacar/dgr
 	arch = x86_64
 	license = Apache
 	options = !strip
-	source = https://github.com/blablacar/dgr/releases/download/69/dgr-linux-amd64-69.tar.gz
+	source = https://github.com/blablacar/dgr/releases/download/70/dgr-linux-amd64-70.tar.gz
 	md5sums = SKIP
 
 pkgname = dgr

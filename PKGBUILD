@@ -1,7 +1,7 @@
 pkgdesc="App Container Image Build and Runtime Tool"
 pkgname=dgr
-pkgver=69
-pkgrel=2
+pkgver=70
+pkgrel=1
 url="https://github.com/blablacar/$pkgname"
 source=("$url/releases/download/$pkgver/$pkgname-linux-amd64-$pkgver.tar.gz")
 md5sums=('SKIP')
