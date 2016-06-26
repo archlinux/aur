@@ -4,7 +4,8 @@
 pkgname=icecat-bin
 _pkgname=icecat
 pkgver=38.8.0
-pkgrel=1
+_pkgver=${pkgver}-gnu2
+pkgrel=2
 pkgdesc="Binary build of the GNU version of the Mozilla Firefox browser"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gnuzilla/"
@@ -16,10 +17,10 @@ makedepends=()
 provides=('icecat')
 conflicts=('icecat')
 replaces=('icecat')
-source_x86_64=(https://ftp.gnu.org/gnu/gnuzilla/$pkgver/$_pkgname-$pkgver.en-US.linux-x86_64.tar.bz2
-               https://ftp.gnu.org/gnu/gnuzilla/$pkgver/$_pkgname-$pkgver.en-US.linux-x86_64.tar.bz2.sig)
-source_i686=(https://ftp.gnu.org/gnu/gnuzilla/$pkgver/$_pkgname-$pkgver.en-US.linux-i686.tar.bz2
-             https://ftp.gnu.org/gnu/gnuzilla/$pkgver/$_pkgname-$pkgver.en-US.linux-i686.tar.bz2.sig)
+source_x86_64=(https://ftp.gnu.org/gnu/gnuzilla/$_pkgver/$_pkgname-$pkgver.en-US.linux-x86_64.tar.bz2
+               https://ftp.gnu.org/gnu/gnuzilla/$_pkgver/$_pkgname-$pkgver.en-US.linux-x86_64.tar.bz2.sig)
+source_i686=(https://ftp.gnu.org/gnu/gnuzilla/$_pkgver/$_pkgname-$pkgver.en-US.linux-i686.tar.bz2
+             https://ftp.gnu.org/gnu/gnuzilla/$_pkgver/$_pkgname-$pkgver.en-US.linux-i686.tar.bz2.sig)
 source=($_pkgname.desktop
 	$_pkgname-safe.desktop
 	$_pkgname.sh
@@ -29,9 +30,9 @@ sha256sums=('2ac72dba9c63ad16e33c6907c541b5a7f62148a237d342f7a61a843eceb2f79c'
             '05f5472a4a845c5fa81f1fb871a6f6dd90923d888f1d68c6789cbbd9537306d6'
             'b009bc989a164c8aea7ff6a1920675b74c90d1b38bb1b3b60f96296913a8de27'
             'b49fe5ba063002ad2cbf5e981b98d08e4157e20f5a4f00971a5f73eeca6ddbba')
-sha256sums_i686=('d439fa3042b9c342e5294595bf73162cc3955830dcac327b999de265f4cdeea5'
+sha256sums_i686=('987036cf392b0b6aee42235046f7412a80bcbc24bb6542f6eefe9c1fbf85b41c'
                  'SKIP')
-sha256sums_x86_64=('1b5e5dd695a18974d7ea2cdf80085ff8adbc1f8a4a173b4d675c0645c47badbe'
+sha256sums_x86_64=('de119d14c51dc648e22cdfc0281b4a9a5b1c01fdf6091d53181f8587812eb230'
                    'SKIP')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
