@@ -1,0 +1,17 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = boot/*
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+
+[Action]
+Description = Mounting /boot ...
+When = PreTransaction
+Exec = /usr/bin/mount /boot
+AbortOnFail

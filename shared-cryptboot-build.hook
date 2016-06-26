@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+
+[Action]
+Description = Rebuilding boot files on shared boot device...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/shared-cryptboot-build

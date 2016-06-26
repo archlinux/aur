@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SHARED_CRYPTBOOT_IMAGE_SUFFIX=${SHARED_CRYPTBOOT_IMAGE_SUFFIX:-$(hostname)}
+
+cp /boot/vmlinuz-linux /boot/vmlinuz-linux-${SHARED_CRYPTBOOT_IMAGE_SUFFIX}
+cp /boot/initramfs-linux.img /boot/initramfs-linux-${SHARED_CRYPTBOOT_IMAGE_SUFFIX}.img

@@ -1,0 +1,16 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = boot/*
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+
+[Action]
+Description = Unmounting /boot ...
+When = PostTransaction
+Exec = /usr/bin/umount /boot
