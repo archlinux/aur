@@ -1,0 +1,25 @@
+pkgbase = smartgit_preview
+	pkgdesc = Git client with Hg and SVN support. Preview version.
+	pkgver = 7.2_preview_9
+	pkgrel = 1
+	url = https://www.syntevo.com/smartgit/preview
+	install = smartgit_preview.install
+	arch = any
+	license = custom
+	makedepends = desktop-file-utils
+	makedepends = sh
+	depends = java-environment
+	depends = python
+	depends = hicolor-icon-theme
+	optdepends = mercurial: hg repositories support
+	optdepends = git: git repositories support
+	provides = smartgit
+	conflicts = smartgit
+	replaces = smartgithg
+	source = https://www.syntevo.com/static/smart/download/smartgit/smartgit-linux-7.2-preview-9.tar.gz
+	source = smartgit.desktop
+	sha1sums = 7be106736f79ac78af5a62c06c2b5e3e34aa3d3d
+	sha1sums = bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3
+
+pkgname = smartgit_preview
+
