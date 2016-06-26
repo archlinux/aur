@@ -1,0 +1,102 @@
+--- moc-2.5.0.orig/configure.in
++++ moc-2.5.0/configure.in
+@@ -557,22 +557,6 @@ then
+ 	echo
+ fi
+ 
+-dnl
+-dnl  If the warning below gets reported, then for further guidance:
+-dnl
+-dnl         vi +/REQUEST_CHANNELS decoder_plugins/ffmpeg/ffmpeg.c
+-dnl
+-if test "x$want_ffmpeg" = "xyes" && \
+-   test "x$ac_cv_member_struct_AVCodecContext_request_channels" != "xyes"
+-then
+-	echo "WARNING: It appears that the FFmpeg/LibAV API has changed and no longer"
+-	echo "         supports downmixing to stereo as it did previously.  Report"
+-	echo "         this message along with the output of 'ffmpeg -version' to"
+-	echo "         <$PACKAGE_BUGREPORT>.  Meanwhile, you may have to live without"
+-	echo "         stereo downmixing."
+-	echo
+-fi
+-
+ echo "WARNING: Since MOC version 2 the executable file name has changed to mocp!"
+ echo "         Please remove old moc binary if you have installed an older version."
+ echo
+--- moc-2.5.0.orig/decoder_plugins/ffmpeg/ffmpeg.c
++++ moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -67,7 +67,7 @@ GCC_DIAG_OFF(deprecated-declarations)
+ GCC_DIAG_ON(deprecated-declarations)
+ #include <libavutil/mathematics.h>
+ #ifdef HAVE_AV_GET_CHANNEL_LAYOUT_NB_CHANNELS
+-#include <libavutil/audioconvert.h>
++#include <libavutil/channel_layout.h>
+ #endif
+ #else
+ #include <ffmpeg/avformat.h>
+@@ -823,17 +823,6 @@ static bool is_seek_broken (struct ffmpe
+ 	return false;
+ }
+ 
+-#ifdef HAVE_STRUCT_AVCODECCONTEXT_REQUEST_CHANNELS
+-/* This warning reset suppresses a deprecation warning message
+- * for the AVCodecContext's 'request_channels' field. */
+-GCC_DIAG_OFF(deprecated-declarations)
+-static inline void set_request_channels (AVCodecContext *enc, int channels)
+-{
+-	enc->request_channels = channels;
+-}
+-GCC_DIAG_ON(deprecated-declarations)
+-#endif
+-
+ /* Downmix multi-channel audios to stereo. */
+ static void set_downmixing (struct ffmpeg_data *data)
+ {
+@@ -847,30 +836,11 @@ static void set_downmixing (struct ffmpe
+ 
+ 	data->enc->channels = 2;
+ 
+-#ifdef HAVE_STRUCT_AVCODECCONTEXT_REQUEST_CHANNELS
+-
+-	/*
+-	 * When FFmpeg breaks its API (and it will), this code will be
+-	 * disabled and users will complain that MOC no longer downmixes
+-	 * to stereo.  This is because the 'request_channels' field in
+-	 * AVCodecContext is marked as deprecated (and so will probably
+-	 * be removed at some time) but FFmpeg requires it to be set to
+-	 * trigger downmixing (go figure!).  Currently, there is no
+-	 * guidance on how it will work in the future, but looking at
+-	 * where 's->downmixed' is set near the end of 'ac3_decode_init()'
+-	 * in the FFmpeg's source code file 'libavcodec/ac3dec.c' might
+-	 * help (in the absence of proper documentation).
+-	 */
+-
+-	set_request_channels (data->enc, 2);
+-
+ #ifdef AV_CH_LAYOUT_STEREO_DOWNMIX
+ 	data->enc->request_channel_layout = AV_CH_LAYOUT_STEREO_DOWNMIX;
+ #else
+ 	data->enc->request_channel_layout = CH_LAYOUT_STEREO_DOWNMIX;
+ #endif
+-
+-#endif
+ }
+ 
+ static void *ffmpeg_open (const char *file)
+--- moc-2.5.0.orig/decoder_plugins/ffmpeg/ffmpeg.m4
++++ moc-2.5.0/decoder_plugins/ffmpeg/ffmpeg.m4
+@@ -51,14 +51,6 @@ then
+ 		save_LIBS="$LIBS"
+ 		LIBS="$LIBS $ffmpeg_LIBS"
+ 		AC_CHECK_HEADERS(ffmpeg/avformat.h libavformat/avformat.h)
+-		if test "x$ac_cv_header_ffmpeg_avformat_h" = "xyes"
+-		then
+-			AC_CHECK_MEMBERS([struct AVCodecContext.request_channels], [], [],
+-		                     [#include <ffmpeg/avcodec.h>])
+-		else
+-			AC_CHECK_MEMBERS([struct AVCodecContext.request_channels], [], [],
+-		                     [#include <libavcodec/avcodec.h>])
+-		fi
+ 		AC_SEARCH_LIBS(avcodec_open2, avcodec,
+ 			[AC_DEFINE([HAVE_AVCODEC_OPEN2], 1,
+ 				[Define to 1 if you have the `avcodec_open2' function.])])
