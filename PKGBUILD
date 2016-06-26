@@ -1,14 +1,14 @@
-# Maintainer: Ilias Stamatis <stamatis.iliass at gmail dot com>
+# Maintainer: Ilias Stamatis <stamatis.iliass at gmail dot com>, Saren Arterius <saren at wtako dot net>
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=snapper-gui-git
-pkgver=1.7.0.r6.g97c6ae3
+pkgver=0.1.r0.gc4c01ff
 pkgrel=1
 pkgdesc="Gui for snapper, a tool of managing snapshots of Btrfs subvolumes and LVM volumes"
 arch=(any)
 url="https://github.com/ricardomv/snapper-gui"
 license=('GPL2')
-depends=('python3' 'gtk3' 'python-dbus' 'python-gobject' 'python-setuptools' 'gtksourceview3' 'snapper-git')
+depends=('python3' 'gtk3' 'python-dbus' 'python-gobject' 'python-setuptools' 'gtksourceview3' 'snapper')
 optdepends=('gksu: Access snapper-gui from application menu under GTK-base DE'
             'kdesu: Access snapper-gui from application menu under KDE')
 makedepends=('git')
