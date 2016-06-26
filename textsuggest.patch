@@ -1,18 +1,11 @@
---- TextSuggest-orig.py	2016-06-24 23:47:38.626860367 +0200
-+++ TextSuggest.py	2016-06-24 23:58:54.896907919 +0200
-@@ -44,7 +44,7 @@
+--- TextSuggest.py	2016-06-26 03:58:15.207902622 +0200
++++ textsuggest.new	2016-06-26 05:19:07.357888524 +0200
+@@ -89,7 +89,7 @@
  
- 		suggest_method = 'replace'
+ hist_file = os.path.expanduser('~/.config/textsuggest/history.txt')
  
--script_cwd = os.path.abspath(os.path.join(__file__, os.pardir))
-+script_cwd = os.path.abspath(os.path.join(__file__, '/usr/lib/python3.5/site-packages/textsuggest/'))
+-extra_words_file = os.path.expanduser('~/.config/textsuggest/Extra_Words.txt')
++extra_words_file = os.path.expanduser('/usr/share/textsuggest/Extra_Words.txt')
  
- custom_words_file = os.path.expanduser('~/.Custom_Words.txt')
+ custom_words_file = os.path.expanduser('~/.config/textsuggest/Custom_Words.txt')
  
-@@ -348,4 +348,4 @@
- 
- if __name__ == '__main__':
- 
--	main(current_word)
-\ No newline at end of file
-+	main(current_word)
