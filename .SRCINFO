@@ -1,6 +1,6 @@
 pkgbase = flycheck
 	pkgdesc = Modern on-the-fly syntax checking extension for GNU Emacs
-	pkgver = 0.25
+	pkgver = 0.28
 	pkgrel = 1
 	url = http://www.flycheck.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = flycheck
 	makedepends = texinfo
 	depends = emacs
 	depends = emacs-dash
-	source = https://github.com/flycheck/flycheck/archive/0.25.tar.gz
-	sha256sums = dc85d1e67a83020aafc63df980aa6bbb07595f6ef32d8888089066b8f62ad34a
+	source = https://github.com/flycheck/flycheck/archive/0.28.tar.gz
+	sha256sums = skip
 
 pkgname = flycheck
 
