@@ -2,7 +2,7 @@
 # Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
-pkgname=st-git
+pkgname=st-test
 _pkgname=st
 pkgver=20160603.528241a
 pkgrel=1

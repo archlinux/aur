@@ -1,4 +1,4 @@
-pkgbase = st-git
+pkgbase = st-test
 	pkgdesc = Simple virtual terminal emulator for X
 	pkgver = 20160603.528241a
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = st-git
 	sha1sums = SKIP
 	sha1sums = SKIP
 
-pkgname = st-git
+pkgname = st-test
 
