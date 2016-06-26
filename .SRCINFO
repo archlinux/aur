@@ -1,0 +1,16 @@
+pkgbase = papirus-dark-color-scheme-git
+	pkgdesc = Papirus Dark color scheme for KDE (git version)
+	pkgver = 20160615
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-color-scheme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = plasma-desktop
+	options = !strip
+	source = papirus-dark-color-scheme-git::git+https://github.com/droserasprout/papirus-dark-color-scheme.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-color-scheme-git
+
