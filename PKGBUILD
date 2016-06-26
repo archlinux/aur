@@ -6,7 +6,7 @@
 pkgname=('kimchi-git')
 
 # Version
-pkgver=2.1.0.r114.g9feff9e
+pkgver=2.2.0.r0.g7b5be35
 pkgrel=1
 #epoch=
 
@@ -91,4 +91,8 @@ build() {
 package() {
   cd $srcdir/kimchi
   make DESTDIR=$pkgdir install
+  mv $pkgdir/etc/systemd $pkgdir/usr/lib/systemd
+  cd $pkgdir/usr/lib/systemd/system/wokd.service.d
+  sed s:wokd.service::g kimchi.conf > kimchi.conf.new
+  mv kimchi.conf.new kimchi.conf
 }
