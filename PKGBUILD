@@ -19,11 +19,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-        cd "$srcdir/$_gitname"
-                patch -uN "TextSuggest.py" "$startdir/textsuggest.patch"
-}
-
 package() {
     cd "$srcdir/$_gitname"
     install -d "$pkgdir/usr/share/"
