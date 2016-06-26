@@ -7,7 +7,7 @@
 
 pkgname=mingw-w64-gtest
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
 arch=(any)
 url="https://github.com/google/googletest"
@@ -43,14 +43,14 @@ package() {
     cd "googletest-release-${pkgver}"
 
     for _arch in "${_mingw_arch[@]}"; do
-        mkdir -pm 0755 "${pkgdir}/${_arch}"/{bin,lib,include/gtest/internal,share/licenses/${pkgname},src/gtest/src,src/gtest/cmake}
-        install -m 0644 "build_${_arch}"/libgtest{,_main}.dll "${pkgdir}/${_arch}"/bin
-        install -m 0644 "build_${_arch}"/libgtest{,_main}.dll.a "${pkgdir}/${_arch}"/lib
-        install -m 0644 include/gtest/*.h "${pkgdir}/${_arch}"/include/gtest
-        install -m 0644 include/gtest/internal/*.h "${pkgdir}/${_arch}"/include/gtest/internal/
-        install -m 0644 LICENSE "${pkgdir}/${_arch}"/share/licenses/${pkgname}/
-        install -m 0644 fused-src/gtest/* "${pkgdir}/${_arch}"/src/gtest/src/
-        install -m 0644 CMakeLists.txt "${pkgdir}/${_arch}"/src/gtest/
-        install -m 0644 cmake/* "${pkgdir}/${_arch}"/src/gtest/cmake/
+        mkdir -pm 0755 "${pkgdir}/usr/${_arch}"/{bin,lib,include/gtest/internal,share/licenses/${pkgname},src/gtest/src,src/gtest/cmake}
+        install -m 0644 "build_${_arch}"/libgtest{,_main}.dll "${pkgdir}/usr/${_arch}"/bin
+        install -m 0644 "build_${_arch}"/libgtest{,_main}.dll.a "${pkgdir}/usr/${_arch}"/lib
+        install -m 0644 include/gtest/*.h "${pkgdir}/usr/${_arch}"/include/gtest
+        install -m 0644 include/gtest/internal/*.h "${pkgdir}/usr/${_arch}"/include/gtest/internal/
+        install -m 0644 LICENSE "${pkgdir}/usr/${_arch}"/share/licenses/${pkgname}/
+        install -m 0644 fused-src/gtest/* "${pkgdir}/usr/${_arch}"/src/gtest/src/
+        install -m 0644 CMakeLists.txt "${pkgdir}/usr/${_arch}"/src/gtest/
+        install -m 0644 cmake/* "${pkgdir}/usr/${_arch}"/src/gtest/cmake/
     done
 }
