@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-icon-theme-kde
-_commit=cebe7a0 # 7 digits
-pkgver=20160623
+_commit=b91e8d3 # 7 digits
+pkgver=20160626
 pkgrel=1
 pkgdesc="Papirus icon theme for KDE"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
