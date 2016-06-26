@@ -2,15 +2,14 @@
 
 pkgname=ascii-design
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to create Ascii arts"
 arch=('i686' 'x86_64')
-url="http://ascii-design.sourceforge.net/"
+url="https://github.com/Faster3ck/Ascii-Design"
 license=('GPL2')
 depends=('qt5-base' 'figlet' 'figlet-fonts')
 makedepends=('make' 'cmake')
-#source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/Ascii-Design%20$pkgver/${pkgname}-$pkgver.tar.bz2")
-source=("https://github.com/Faster3ck/Ascii-Design/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('ebe9a3492a9082c7417a06d70a3727951b017b97')
 
 build() {
