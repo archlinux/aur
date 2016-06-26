@@ -2,9 +2,9 @@
 
 pkgname=gnome-shell-extension-backslide-3.18-git
 _pkgname="backslide"
-pkgver=r94.2f24b1f
+pkgver=r96.f04ccaf
 pkgrel=1
-pkgdesc="A GNOME Shell extension to cycle between wallpapers over time. Supports gnome shell 3.14, 3.16 and 3.18."
+pkgdesc="A GNOME Shell extension to cycle between wallpapers over time. Supports gnome shell 3.14, 3.16, 3.18 and 3.20."
 arch=('any')
 url="https://bitbucket.org/p91paul/backslide"
 license=('GPL3')
