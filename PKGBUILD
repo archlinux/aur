@@ -18,8 +18,8 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+ssh://git@github.com/dswd/vpncloud.rs.git#tag=v0.6.0'
-        'git+ssh://git@github.com/jedisct1/libsodium.git#tag=1.0.10')
+source=('git+https://github.com/dswd/vpncloud.rs.git#tag=v0.6.0'
+        'git+https://github.com/jedisct1/libsodium.git#tag=1.0.10')
 noextract=()
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
