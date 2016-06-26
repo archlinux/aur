@@ -1,0 +1,10 @@
+post_install () {
+    cat << EOF
+Please read the install instructions at:
+https://github.com/autodl-community/autodl-rutorrent/wiki
+
+Specifically, make sure your PHP install has sockets, json, and xml
+support activated. Check your \`php.ini' file.
+EOF
+}
+
