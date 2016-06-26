@@ -1,0 +1,16 @@
+pkgbase = papirus-dark-yakuake-theme-git
+	pkgdesc = Papirus Dark theme for Yakuake (git version)
+	pkgver = 20160606
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-yakuake-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = yakuake
+	options = !strip
+	source = papirus-dark-yakuake-theme-git::git+https://github.com/droserasprout/papirus-dark-yakuake-theme.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-yakuake-theme-git
+
