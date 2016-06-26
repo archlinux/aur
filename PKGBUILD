@@ -5,7 +5,7 @@ pkgrel=5
 arch=(i686 x86_64)
 pkgdesc="Imaging device calibration tool"
 url="http://lprof.sourceforge.net/"
-license="GPL"
+license=("GPL")
 depends=('qt3' 'lcms>=1.12' 'vigra>=1.3')
 makedepends=('python2' 'scons')
 source=(http://downloads.sourceforge.net/lprof/${pkgname}-${pkgver}.tar.gz
