@@ -49,10 +49,16 @@ EOF
         echo "Use 'cryptdevice=${root}:root root=/dev/mapper/root' instead."
     }
 
+    local headerFlag=false
     for cryptopt in ${cryptoptions//,/ }; do
         case ${cryptopt} in
             allow-discards)
                 cryptargs="${cryptargs} --allow-discards"
+                ;;
+            header=*)
+                cryptargs="${cryptargs} --header ${cryptopt#header=}"
+                headerFlag=true
+                echo "Using detached header ${cryptopt#header=}"
                 ;;
             *)
                 echo "Encryption option '${cryptopt}' not known, ignoring." >&2
@@ -61,7 +67,7 @@ EOF
     done
 
     if resolved=$(resolve_device "${cryptdev}" ${rootdelay}); then
-        if cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
+        if $headerFlag || cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
             [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
             dopassphrase=1
             # If keyfile exists, try to use that

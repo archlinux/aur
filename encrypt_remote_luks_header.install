@@ -25,9 +25,12 @@ build() {
 help() {
     cat <<HELPEOF
 This hook allows for an encrypted root device. Users should specify the device
-to be unlocked using 'cryptdevice=device:dmname' on the kernel command line,
-where 'device' is the path to the raw device, and 'dmname' is the name given to
-the device after unlocking, and will be available as /dev/mapper/dmname.
+to be unlocked using 'cryptdevice=device:dmname:header=<path>' on the kernel
+command line, where 'device' is the path to the raw device, and 'dmname' is the
+name given to the device after unlocking, and will be available as
+/dev/mapper/dmname. The 'header' option is optional; if present, the
+<path> (in the initramfs) will be used as a detached LUKS header for the
+cryptdevice.
 
 For unlocking via keyfile, 'cryptkey=device:fstype:path' should be specified on
 the kernel cmdline, where 'device' represents the raw block device where the key
