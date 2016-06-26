@@ -18,7 +18,6 @@ url="https://justgetflux.com/"
 source=("git://github.com/xflux-gui/xflux-gui")
 md5sums=('SKIP')
 install="${pkgname}".install
-[ "$CARCH" = "x86_64" ] && depends+=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libx11' 'lib32-libxau' 'lib32-libxcb' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxxf86vm')
 
 package() {
   cd "${srcdir}/${_pkgname_}"
