@@ -1,0 +1,14 @@
+pkgbase = nodejs-git-open
+	pkgdesc = Open a BitBucket/GitHub/GitLab page or website for a repository in your browser.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/paulirish/git-open
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = git-open-1.0.2.tgz
+	source = http://registry.npmjs.org/git-open/-/git-open-1.0.2.tgz
+	md5sums = a7e4b1128bff5b92be1fdafa8424eaea
+
+pkgname = nodejs-git-open
+
