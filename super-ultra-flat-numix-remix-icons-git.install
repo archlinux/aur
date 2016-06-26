@@ -1,13 +1,13 @@
 post-install() {
 # icon cache
 
-echo "Super-Ultra-Flat-Numix-Remix-Arch-Blue"
+
 gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Arch-Blue
-echo "Super-Ultra-Flat-Numix-Remix-Majestic"
+
 gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Majestic
-echo "Super-Ultra-Flat-Numix-Remix-Orange"
+
 gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Orange
-echo "Super-Ultra-Flat-Numix-Remix"
+
 gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix
  
 }
