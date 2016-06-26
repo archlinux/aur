@@ -1,0 +1,16 @@
+pkgbase = python-jupyter_kernel_test
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/jupyter/jupyter_kernel_test
+	arch = any
+	makedepends = python-pip
+	depends = python
+	depends = jupyter
+	depends = ipython
+	depends = python-nose
+	noextract = jupyter_kernel_test-0.2.2-py2.py3-none-any.whl
+	source = https://pypi.python.org/packages/09/f7/101f866f27c88242f4e146e4ee5712285916ecc5c43bfed4d781bb663fd4/jupyter_kernel_test-0.2.2-py2.py3-none-any.whl
+	md5sums = 4cc7e539059c10681b2d67604f3fd302
+
+pkgname = python-jupyter_kernel_test
+
