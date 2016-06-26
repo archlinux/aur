@@ -1,0 +1,18 @@
+pkgbase = vpncloud
+	pkgdesc = Peer-to-peer VPN
+	pkgver = 0.6.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = libsystemd
+	source = git+ssh://git@github.com/dswd/vpncloud.rs.git#tag=v0.6.0
+	source = git+ssh://git@github.com/jedisct1/libsodium.git#tag=1.0.10
+	validpgpkeys = 6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vpncloud
+
