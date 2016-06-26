@@ -8,9 +8,8 @@ _pkgname_='xflux-gui'
 pkgver='1.1.8'
 pkgrel=12
 pkgdesc="(f.lux for X) Changes monitor color temperature based on time of day and position in world to ease eye strain."
-arch=('i686' 'x86_64')
-depends=('libindicator-gtk2' 'libdbusmenu-glib' 'libdbusmenu-gtk2' 
-'libappindicator-gtk2' 'python2-pexpect' 'python2-xdg' 'python2-gconf')
+arch=('x86_64')
+depends=('libindicator-gtk2' 'libdbusmenu-glib' 'libdbusmenu-gtk2' 'libappindicator-gtk2' 'python2-pexpect' 'python2-xdg' 'python2-gconf' 'python2-appindicator')
 makedepends=('python2-pip')
 license=('MIT')
 conflicts=('xflux')
