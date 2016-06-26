@@ -39,40 +39,40 @@ sha512sums=(
 )
 
 _do_package() {
-  luarocks --tree="$pkgdir/usr" install "$pkgname-$pkgver-$pkgrel.src.rock"
+	luarocks --tree="$pkgdir/usr" install "$pkgname-$pkgver-$pkgrel.src.rock"
 
-  mkdir -p "$pkgdir/usr/share/doc"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/lib/luarocks/rocks-"*"/$pkgname/$pkgver-$pkgrel/doc" "$pkgdir/usr/share/doc/$pkgname"
-  chmod -R 0644 "$pkgdir/usr/share/doc/$pkgname"/*
-  rm -f "$pkgdir/usr/share/doc/$pkgname/.gitignore"
-  ln -s "../../doc/$pkgname/license.html" "$pkgdir/usr/share/licenses/$pkgname/license.html"
-  rm -rf "$pkgdir/usr/lib/luarocks"
+	mkdir -p "$pkgdir/usr/share/doc"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	mv "$pkgdir/usr/lib/luarocks/rocks-"*"/$pkgname/$pkgver-$pkgrel/doc" "$pkgdir/usr/share/doc/$pkgname"
+	chmod -R 0644 "$pkgdir/usr/share/doc/$pkgname"/*
+	rm -f "$pkgdir/usr/share/doc/$pkgname/.gitignore"
+	ln -s "../../doc/$pkgname/license.html" "$pkgdir/usr/share/licenses/$pkgname/license.html"
+	rm -rf "$pkgdir/usr/lib/luarocks"
 }
 
 package_lrexlib-gnu() {
-  _do_package
+	_do_package
 }
 
 package_lrexlib-oniguruma() {
-  depends+=('oniguruma')
+	depends+=('oniguruma')
 
-  _do_package
+	_do_package
 }
 
 package_lrexlib-pcre() {
-  depends+=('pcre')
-  conflicts=('lrexlib-pcre5.1')
+	depends+=('pcre')
+	conflicts=('lrexlib-pcre5.1')
 
-  _do_package
+	_do_package
 }
 
 package_lrexlib-posix() {
-  _do_package
+	_do_package
 }
 
 package_lrexlib-tre() {
-  depends+=('tre')
+	depends+=('tre')
 
-  _do_package
+	_do_package
 }
