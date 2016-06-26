@@ -1,0 +1,11 @@
+post_install () {
+    cat << EOF
+The plugin has been installed at /usr/share/autodl-irssi. If you wish to use it
+then create the local directory ~/.irssi/scripts/autorun and symbolicly link
+\`autodl-irssi.pl' in /usr/share/autodl-irssi. In ~/.irssi/scripts/ *copy* the
+\`AutodlIrssi' directory from /usr/share/autodl-irssi. Finally, create ~/.autodl
+directory and touch \`autodl.cfg' in there.
+
+More information can be found on the project site.
+EOF
+}

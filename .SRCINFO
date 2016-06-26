@@ -1,0 +1,27 @@
+pkgbase = autodl-irssi-community
+	pkgdesc = Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.
+	pkgver = 1.62
+	pkgrel = 1
+	url = https://github.com/autodl-community/autodl-irssi
+	install = autodl-irssi-community.install
+	changelog = CHANGELOG.md
+	arch = any
+	license = MPL
+	makedepends = git
+	depends = irssi
+	depends = perl-archive-zip
+	depends = perl-net-ssleay
+	depends = perl-html-parser
+	depends = perl-xml-libxml
+	depends = perl-digest-sha1
+	depends = perl-json
+	depends = perl-json-xs
+	depends = perl-xml-libxslt
+	optdepends = rutorrent-autodl-irssi-community: Community autodl-irssi plugin for rutorrent.
+	provides = autodl-irssi
+	replaces = autodl-irssi
+	source = https://github.com/autodl-community/autodl-irssi/releases/download/community-v1.62/autodl-irssi-community-v1.62.zip
+	md5sums = 1fd5701578f69a293547fea7f697c6e1
+
+pkgname = autodl-irssi-community
+
