@@ -1,7 +1,7 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=girl
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=(libgnomeui totem streamripper)  #gtk-update-icon-cache desktop-file-uti
 makedepends=(intltool gtk-doc)
 url="https://wiki.gnome.org/Apps/Girl"
 source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
-sha256sums=('039af9b3f9f41c1fbf0c6f58429f68940823603479730663b120ddd9d0406837')
+sha256sums=('6016e4b26ae13a24571d4a882ca4bccdf4b3813aa7af7efd8bda06a52bc216de')
 
 build() {
   cd $pkgname-$pkgver
