@@ -5,7 +5,7 @@
 
 _pkgname=kbibtex
 pkgname=kbibtex-git
-pkgver=20151231_728bcdf
+pkgver=20160618_4349a09
 pkgrel=1
 pkgdesc="A BibTeX editor for KDE"
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ url='http://home.gna.org/kbibtex/'
 license=('GPL2')
 depends=('kparts' 'poppler-qt5' 'qca-qt5')   
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
-install=$pkgname.install
 provides=('kbibtex')
 conflicts=('kbibtex')
-replaces=('kbibtex-svn')
 source=("git://anongit.kde.org/kbibtex#branch=master")
 md5sums=('SKIP')
 
