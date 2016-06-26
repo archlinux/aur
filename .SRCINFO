@@ -1,0 +1,16 @@
+pkgbase = papirus-dark-aurorae-theme-git
+	pkgdesc = Papirus Dark decorations for Kwin (git version)
+	pkgver = 20160606
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-aurorae-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = kwin
+	options = !strip
+	source = papirus-dark-aurorae-theme-git::git+https://github.com/droserasprout/papirus-dark-aurorae-theme.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-aurorae-theme-git
+
