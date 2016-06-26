@@ -1,6 +1,6 @@
 pkgbase = oh-my-zsh-git
 	pkgdesc = A community-driven framework for managing your zsh configuration. Includes 180+ optional plugins and over 120 themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community
-	pkgver = 3143.4224c2a
+	pkgver = r3993.7fabc8b
 	pkgrel = 1
 	url = https://github.com/robbyrussell/oh-my-zsh
 	install = oh-my-zsh-git.install
@@ -9,11 +9,14 @@ pkgbase = oh-my-zsh-git
 	makedepends = git
 	depends = zsh
 	optdepends = ruby: for some plugin functionality
+	optdepends = python: for some plugin functionality
 	optdepends = oh-my-zsh-powerline-theme-git: great theme
 	optdepends = bullet-train-oh-my-zsh-theme-git: better powerline theme
 	optdepends = git: most themes use git (highly recommended but still optional)
 	source = oh-my-zsh-git::git+git://github.com/robbyrussell/oh-my-zsh.git
+	source = 0001-zshrc.patch
 	md5sums = SKIP
+	md5sums = d3efcbb22500b696442e2e83f81e699c
 
 pkgname = oh-my-zsh-git
 
