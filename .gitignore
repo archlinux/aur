@@ -4,5 +4,5 @@
 !PKGBUILD
 !chromium-dev.install
 !chromium-dev.svg
-!enable_vaapi_on_linux-r12.diff
+!enable_vaapi_on_linux-r13.diff
 !chromium-widevine-r1.patch

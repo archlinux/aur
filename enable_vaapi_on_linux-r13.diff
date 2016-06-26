@@ -26,7 +26,7 @@
        DXVAVideoDecodeAccelerator::GetSupportedProfiles();
 -#elif defined(OS_CHROMEOS)
 +#elif defined(OS_CHROMEOS) || defined(OS_LINUX)
-   media::VideoDecodeAccelerator::SupportedProfiles vda_profiles;
+   VideoDecodeAccelerator::SupportedProfiles vda_profiles;
  #if defined(USE_V4L2_CODEC)
    vda_profiles = V4L2VideoDecodeAccelerator::GetSupportedProfiles();
 @@ -129,7 +126,7 @@
@@ -44,18 +44,18 @@
  
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_LINUX)
- std::unique_ptr<media::VideoDecodeAccelerator>
+ std::unique_ptr<VideoDecodeAccelerator>
  GpuVideoDecodeAcceleratorFactoryImpl::CreateVaapiVDA(
      const gpu::GpuPreferences& gpu_preferences) const {
 --- orig/media/gpu/gpu_video_decode_accelerator_factory_impl.h
 +++ mod/media/gpu/gpu_video_decode_accelerator_factory_impl.h
 @@ -95,7 +95,7 @@
-   std::unique_ptr<media::VideoDecodeAccelerator> CreateV4L2SVDA(
+   std::unique_ptr<VideoDecodeAccelerator> CreateV4L2SVDA(
        const gpu::GpuPreferences& gpu_preferences) const;
  #endif
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_LINUX)
-   std::unique_ptr<media::VideoDecodeAccelerator> CreateVaapiVDA(
+   std::unique_ptr<VideoDecodeAccelerator> CreateVaapiVDA(
        const gpu::GpuPreferences& gpu_preferences) const;
  #endif
 --- orig/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
@@ -181,9 +181,9 @@
 -      ]
 -    },
 -    {
-       "id": 49,
-       "description": "NVidia GeForce GT 650M can cause the system to hang with flash 3D",
-       "cr_bugs": [140175],
+       "id": 50,
+       "description": "Disable VMware software renderer on older Mesa",
+       "cr_bugs": [145531, 332596, 571899],
 --- orig/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 +++ mod/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 @@ -22,6 +22,8 @@

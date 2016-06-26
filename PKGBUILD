@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=53.0.2756.0
+pkgver=53.0.2774.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -62,7 +62,6 @@ makedepends=('libexif'
              'git'
              'imagemagick'
              )
-# makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel) (64bits only)'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel) (64bits only)'
             #
@@ -79,11 +78,11 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r10.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r11.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r0.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-linker-warnings-r0.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r12.diff'
+        'enable_vaapi_on_linux-r13.diff'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch' # https://crbug.com/473866
@@ -94,11 +93,11 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
-          '81d072e4d88ce3dfd0a4f3ce3b642a74c82143e0'
+          '7f835fba97fe94109e72d3be49ec28a89e30713f'
           '3a1c57ae49a31e8eff64b32c4196433ea240e4ea'
           '39caf5a74fe2dd1832c803b9e6fab5d21e3cbe36'
           # Misc Patches
-          '709000b63bb1614de605c6fda4611516d49ca45f'
+          '66b343fb7057341641339fb1bab42b6fdd1a361c'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
           '3032c9aeb68d80d8ef3cb8029be0d06ee402fa7f'
@@ -149,6 +148,7 @@ fi
 # Build with GTK3?
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
+  makedepends+=('gtk2')
   _launcher_gtk='GTK=3'
   optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
 elif [ "${_use_gtk3}" = "0" ]; then
@@ -205,6 +205,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/WebKit'
            'third_party/analytics'
            'third_party/angle'
+           'third_party/angle/src/common/third_party/numerics'
            'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/murmurhash'
            'third_party/angle/src/third_party/trace_event'
@@ -440,11 +441,11 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r2.patch"
-  patch -p0 -i "${srcdir}/chromium-system-jinja-r10.patch"
+  patch -p0 -i "${srcdir}/chromium-system-jinja-r11.patch"
   patch -p0 -i "${srcdir}/chromium-linker-warnings-r0.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r12.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r13.diff"
   patch -p1 -i "${srcdir}/minizip.patch"
 
   # Patch from crbug (chromium bugtracker)
