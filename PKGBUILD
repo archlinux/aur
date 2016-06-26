@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgver=2.8.0
 pkgrel=1
-pkgdesc="Regular expression libraries for lua"
+pkgdesc="Regular expression libraries for Lua"
 arch=('i686' 'x86_64')
 url="http://rrthomas.github.com/lrexlib/"
 license=('custom')
@@ -51,20 +51,20 @@ _do_package() {
 }
 
 package_lrexlib-gnu() {
-	pkgdesc="Regular expression library for lua - GNU version"
+	pkgdesc="Regular expression library for Lua - GNU version"
 
 	_do_package
 }
 
 package_lrexlib-oniguruma() {
-	pkgdesc="Regular expression library for lua - Oniguruma version"
+	pkgdesc="Regular expression library for Lua - Oniguruma version"
 	depends+=('oniguruma')
 
 	_do_package
 }
 
 package_lrexlib-pcre() {
-	pkgdesc="Regular expression library for lua - PCRE version"
+	pkgdesc="Regular expression library for Lua - PCRE version"
 	depends+=('pcre')
 	conflicts=('lrexlib-pcre5.1')
 
@@ -72,13 +72,13 @@ package_lrexlib-pcre() {
 }
 
 package_lrexlib-posix() {
-	pkgdesc="Regular expression library for lua - POSIX version"
+	pkgdesc="Regular expression library for Lua - POSIX version"
 
 	_do_package
 }
 
 package_lrexlib-tre() {
-	pkgdesc="Regular expression library for lua - TRE version"
+	pkgdesc="Regular expression library for Lua - TRE version"
 	depends+=('tre')
 
 	_do_package
