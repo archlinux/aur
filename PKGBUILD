@@ -11,10 +11,19 @@
 #
 # StepMania 5.1.0+ won't be able to compile with GCC 6 or higher!
 #
+#
+#
+# Modify the 'depends' so it requires only at least one sound system of your choice.
+# Of course you can also install and build for all sound systems at once.
+#   - jack
+#   - pulseaudio
+#   - alsa-lib
+#
+#
 
 pkgname=stepmania-latest-git
 _shortname=stepmania
-pkgver=v5.1.0a2.r141.g17ab2b5
+pkgver=v5.1.0a2.r148.gb5aac90
 pkgrel=1
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
