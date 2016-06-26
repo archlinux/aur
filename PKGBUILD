@@ -1,7 +1,7 @@
 # Maintainer: Sander Smid <sander..smid@gmail.com>
 pkgname=stencyl
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Create amazing games without code'
 arch=(i686 x86_64)
 url=http://www.stencyl.com
@@ -23,11 +23,11 @@ md5sums=('e97ff31637ae4f223062269bfce3f8ab'
 
 [ "$CARCH" = "i686" ]   && {
     source+=("${pkgname}-linux.tar.gz::http://www.stencyl.com/download/get/lin32/")
-    md5sums+=('1992b924a6827ef696370aa58df93f6b')
+    md5sums+=('18d53b51115a9a061333666f8a6eb864')
 }
 [ "$CARCH" = "x86_64" ] && {
     source+=("${pkgname}-linux.tar.gz::http://www.stencyl.com/download/get/lin64/")
-    md5sums+=('99ebe687175d7b498c7c7be812c5d8aa')
+    md5sums+=('94189d5f907c6acf0a7b3c253eba2e81')
 }
 
 noextract=("$pkgname.tar.gz")
