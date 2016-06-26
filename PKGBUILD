@@ -2,13 +2,12 @@
 # Contributor: crabmanX
 pkgname='m4baker-git'
 pkgver=0.1.92.r23.gf282d42
-pkgrel=1
+pkgrel=2
 pkgdesc="Bake full-featured m4b-audiobooks"
 arch=('any')
 url="https://github.com/crabmanX/m4baker"
-license='unknown'
+license=('GPL2')
 depends=('python2' 'qt4>=4.5' 'python2-pyqt4>=4.6' 'faac>=1.26' 'sox>=14.3' 'libmp4v2>=1.9')
-makedepends=()
 replaces=('m4baker')
 conflicts=('m4baker')
 source=('m4baker::git+https://github.com/Sonic-Y3k/m4baker.git')

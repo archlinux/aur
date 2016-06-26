@@ -1,10 +1,10 @@
 pkgbase = m4baker-git
 	pkgdesc = Bake full-featured m4b-audiobooks
 	pkgver = 0.1.92.r23.gf282d42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crabmanX/m4baker
 	arch = any
-	license = unknown
+	license = GPL2
 	depends = python2
 	depends = qt4>=4.5
 	depends = python2-pyqt4>=4.6
