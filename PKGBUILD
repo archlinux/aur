@@ -3,7 +3,7 @@
 pkgname=imagej
 pkgver=1.50h
 _pkgver=149
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -19,7 +19,7 @@ source=("http://rsbweb.nih.gov/ij/download/zips/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 md5sums=('a0998c0e6aec078a8f9681f5088c41f2'
-         'e35a21eb8203496697de4e60464957cf'
+         'a2c20f7b1d494c1aa535a6f6137539d1'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
          'e7a7cef1b44ad3a8752ba63885fd88fb')
