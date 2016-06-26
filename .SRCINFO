@@ -1,0 +1,23 @@
+pkgbase = st-git
+	pkgdesc = Simple virtual terminal emulator for X
+	pkgver = 20160603.528241a
+	pkgrel = 1
+	url = http://git.suckless.org/st/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git://git.suckless.org/st
+	source = http://st.suckless.org/patches/st-no_bold_colors-git-20160620-528241a.diff
+	source = http://st.suckless.org/patches/st-solarized-dark-git-20160620-528241a.diff
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = st-git
+
