@@ -12,7 +12,7 @@ depends=('gtk2' 'gtkmm')
 madepends=('make' 'intltool')
 source=(https://launchpad.net/%7Emusic1/+archive/ppa/+files/${pkgname}_${pkgver}.orig.tar.gz longloops.desktop)
 md5sums=('0e4470e33ad299e04753a0f17d108298'
-         '8701f4631dc8f5555bff5231eda84456')
+         'e3552cecd0d1165eac9e74b6f1889464')
 
 build()
 {
