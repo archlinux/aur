@@ -1,0 +1,15 @@
+pkgbase = archivo-narrow
+	pkgdesc = Archivo Narrow Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/archivo-narrow
+	install = archivo-narrow.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://fontlibrary.org/assets/downloads/archivo-narrow/670092d441e4e200e60b24ea7c7198c0/archivo-narrow.zip
+	md5sums = 670092d441e4e200e60b24ea7c7198c0
+
+pkgname = archivo-narrow
+
