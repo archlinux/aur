@@ -1,0 +1,13 @@
+pkgbase = fluxbox-theme-ciremai
+	pkgdesc = Simple fluxbox theme based on OSX Yosemite look
+	pkgver = 20160422
+	pkgrel = 1
+	url = https://www.box-look.org/p/1016926/
+	arch = any
+	license = GPL
+	depends = fluxbox
+	source = 173825-Ciremai.tar.gz::https://dl.opendesktop.org/api/files/download?id=1461767798
+	sha256sums = 7d5b86f9333ec760a5d80f020c8cb5040d7fc4a29287537d3e908be31da0f11f
+
+pkgname = fluxbox-theme-ciremai
+
