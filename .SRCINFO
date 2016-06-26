@@ -1,6 +1,6 @@
 pkgbase = multimarkdown
 	pkgdesc = A superset of Markdown with various output formats
-	pkgver = 4.7.1
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = http://fletcherpenney.net/multimarkdown/
 	arch = i686
@@ -9,10 +9,11 @@ pkgbase = multimarkdown
 	license = MIT
 	makedepends = git
 	makedepends = glib2
+	makedepends = cmake
 	depends = bash
 	optdepends = texlive-most: LaTeX and PDF output support
 	options = !buildflags
-	source = multimarkdown::git+https://github.com/fletcher/MultiMarkdown-4.git#tag=4.7.1
+	source = multimarkdown::git+https://github.com/fletcher/MultiMarkdown-5.git#tag=5.3.0
 	sha1sums = SKIP
 
 pkgname = multimarkdown
