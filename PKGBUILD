@@ -4,13 +4,13 @@
 
 pkgname=xcursor-mirrunde
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="mirRunde cursor theme"
 arch=('any')
 url="http://gnome-look.org/content/show.php/mirRunde?content=81843"
 license=('GPL')
 depends=()
-source=("http://gnome-look.org/CONTENT/content-files/81843-mirRunde.tar.gz")
+source=("81843-mirRunde.tar.gz::https://dl.opendesktop.org/api/files/download?id=1460734914")
 md5sums=('24eda74893129dbc71aca6e35bd8b322')
 
 package() {
