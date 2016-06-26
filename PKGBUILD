@@ -7,7 +7,7 @@
 
 pkgname=kimchi
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An HTML5 management interface for KVM"
 
@@ -63,4 +63,8 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR=$pkgdir install
+  mv $pkgdir/etc/systemd $pkgdir/usr/lib/systemd
+  cd $pkgdir/usr/lib/systemd/system/wokd.service.d
+  sed s:wokd.service::g kimchi.conf > kimchi.conf.new
+  mv kimchi.conf.new kimchi.conf
 }
