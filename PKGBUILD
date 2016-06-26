@@ -22,6 +22,6 @@ install="${pkgname}".install
 package() {
   cd "${srcdir}/${_pkgname_}"
   pip2 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
-  install -dm644 "${pkgdir}/usr/licenses/${pkgname}/"
-  cp LICENSE "${pkgdir}/usr/licenses/${pkgname}/"
+  install -dm644 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
