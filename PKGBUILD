@@ -10,7 +10,7 @@ _electron_ver=0.36.12
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
 pkgver=1.8.0.arch0.4.0.sh0.33.5.t2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -107,7 +107,6 @@ prepare() {
   popd
   cp -a $srcdir/about-arch node_modules/about-arch
 
-  sed -i -e "s/atom-editor/atom-editor-${_version}/g" node_modules/about-arch/lib/about-view.coffee
   sed -i -e "s/<%=Desc=>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
 
   patch -Np1 -i $srcdir/theme.patch
