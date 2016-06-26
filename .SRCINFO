@@ -1,6 +1,6 @@
 pkgbase = webtorrent-desktop
 	pkgdesc = Streaming torrent client.
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://webtorrent.io/desktop
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = webtorrent-desktop
 	depends = gconf
 	conflicts = webtorrent-desktop-git
 	conflicts = webtorrent-desktop-bin
-	source = https://github.com/feross/webtorrent-desktop/archive/v0.7.2.tar.gz
-	sha256sums = ceb0597e43bc94238897afc84ea532ccfd852f3c863a703c6fdc5bd85e8f7449
+	source = https://github.com/feross/webtorrent-desktop/archive/v0.8.0.tar.gz
+	sha256sums = 4d3eab327509404b83663d728d9bc60752d9f406a910649090e6c9c5e2de1f03
 
 pkgname = webtorrent-desktop
 
