@@ -1,21 +1,25 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
-pkgname=super-ultra-flat-numix-remix-icons
+pkgname=super-ultra-flat-numix-remix-icons-git
 pkgver=4.2
-pkgrel=3
-pkgdesc="super-ultra-flat-numix-remix is an icon theme build upon 4 different icon sets - check github for more info"
+pkgrel=0
+pkgdesc="super-ultra-flat-numix-remix-git is an icon theme build upon 4 different icon sets - check github for more info"
 arch=('any')
-url="http://sourceforge.net/projects/super-ultra-flat-numix-remix"
+url="https://github.com/erikdubois/Super-Ultra-Flat-Numix-Remix"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
-provides=('super-ultra-flat-numix-remix-icons')
+makedepends=('git')
+provides=('super-ultra-flat-numix-remix-icons-git')
 options=(!strip !emptydirs)
-source=("http://downloads.sourceforge.net/project/super-ultra-flat-numix-remix/super-ultra-flat-numix-remix-${pkgver}-${pkgrel}.tar.gz")
+install='super-ultra-flat-numix-remix-icons-git.install'
+source=('Super-Ultra-Flat-Numix-Remix::git+https://github.com/erikdubois/Super-Ultra-Flat-Numix-Remix.git')
 sha256sums=('SKIP')
 
 package() {
+  cd Super-Ultra-Flat-Numix-Remix
 
-  install -dm 755 "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
-  find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
-  find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
+  install -dm 755 "${pkgdir}"/usr/share/icons
+  cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Arch-Blue "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Majestic "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Orange "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix "${pkgdir}"/usr/share/icons/
 }
