@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-icon-theme-gtk
-_commit=d7fad09 # 7 digits
-pkgver=20160623
+_commit=c1115bf # 7 digits
+pkgver=20160626
 pkgrel=1
 pkgdesc="Papirus icon theme for GTK"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
