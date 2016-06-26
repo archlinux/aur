@@ -2,13 +2,13 @@
 
 pkgname=singularityviewer-skins-git
 _gitname=SingularityViewer
-pkgver=1.8.6.361.ga4da61a
+pkgver=1.8.6.710.g684ab3e
 pkgrel=1
 pkgdesc="Extra skins for Singularity (and any other V1-type viewers) for Second Life (secondlife) and OpenSim (opensimulator)."
 url="http://github.com/singularity-viewer/SingularityViewer/tree/master/indra/newview/skins"
 license=('GPL')
 depends=('singularityviewer')
-replaces=('singularityviewer-skins')
+provides=('singularityviewer-skins')
 conflicts=('singularityviewer-skins')
 arch=('any')
 
