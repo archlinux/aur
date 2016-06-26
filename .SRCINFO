@@ -1,0 +1,19 @@
+pkgbase = doom-retro-git
+	pkgdesc = DOOM Retro is the classic, refined DOOM source port.
+	pkgver = r4596.655043e
+	pkgrel = 1
+	url = http://doomretro.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	provides = doom-retro
+	source = git://github.com/bradharding/doomretro.git
+	md5sums = SKIP
+
+pkgname = doom-retro-git
+
