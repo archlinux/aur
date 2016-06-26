@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
-pkgver=1.4
+pkgver=1.5
 pkgrel=0
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
