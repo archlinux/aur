@@ -6,7 +6,7 @@
 pkgname=('ginger-git')
 
 # Version
-pkgver=2.1.0.r153.g63b5258
+pkgver=2.2.0.r0.g2bf9e05
 pkgrel=1
 #epoch=
 
@@ -80,4 +80,8 @@ build() {
 package() {
   cd $srcdir/ginger
   make DESTDIR=$pkgdir install
+  mv $pkgdir/etc/systemd $pkgdir/usr/lib/systemd
+  cd $pkgdir/usr/lib/systemd/system/wokd.service.d
+  sed s:wokd.service::g ginger.conf >> ginger.conf.new
+  mv ginger.conf.new ginger.conf
 }
