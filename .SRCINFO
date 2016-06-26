@@ -1,5 +1,5 @@
 pkgbase = lrexlib
-	pkgdesc = regular expression libraries for lua
+	pkgdesc = Regular expression libraries for lua
 	pkgver = 2.8.0
 	pkgrel = 1
 	url = http://rrthomas.github.com/lrexlib/
@@ -25,19 +25,24 @@ pkgbase = lrexlib
 	sha512sums = 798ea42aa4974a30db889addb788f22e058594a10c506aa6371715a97ca85972a9bfedf4026a355c1ae0ff74d650b41847402eb04b82cdc7dda15e770006d01b
 
 pkgname = lrexlib-gnu
+	pkgdesc = Regular expression library for lua - GNU version
 
 pkgname = lrexlib-oniguruma
+	pkgdesc = Regular expression library for lua - Oniguruma version
 	depends = 
 	depends = oniguruma
 
 pkgname = lrexlib-pcre
+	pkgdesc = Regular expression library for lua - PCRE version
 	depends = 
 	depends = pcre
 	conflicts = lrexlib-pcre5.1
 
 pkgname = lrexlib-posix
+	pkgdesc = Regular expression library for lua - POSIX version
 
 pkgname = lrexlib-tre
+	pkgdesc = Regular expression library for lua - TRE version
 	depends = 
 	depends = tre
 
