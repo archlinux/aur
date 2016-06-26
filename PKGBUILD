@@ -2,8 +2,8 @@
 
 pkgname=adobe-base-14-fonts
 pkgver=3.01
-pkgrel=1
-pkgdesc="Adobe base 14 fonts (Type1)"
+pkgrel=2
+pkgdesc="Adobe base 14 fonts (Courier, Helvetica, Times, Symbol, ZapfDingbats with Type1)"
 url="ftp://ftp://ftp.adobe.com/pub/adobe/acrobatreader/unix/3.x/"
 license=('custom')
 arch=('any')
