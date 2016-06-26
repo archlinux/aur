@@ -1,7 +1,7 @@
 pkgbase = ttf-linex-fonts
 	pkgdesc = Fonts suitable for education and institutional use
 	pkgver = 2.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gata.linex.org/trac/browser/fonts-linex/
 	install = ttf-linex-fonts.install
 	changelog = ChangeLog

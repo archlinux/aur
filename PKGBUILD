@@ -1,14 +1,14 @@
 # Maintainer: Spiros Georgaras <sng@hellug.gr>
 pkgname=ttf-linex-fonts
 pkgver=2.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Fonts suitable for education and institutional use"
 arch=('any')
 license=('GPL2')
 url="http://gata.linex.org/trac/browser/fonts-linex/"
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('sed' 'binutils')
-source=('http://httpredir.debian.org/debian/pool/main/f/fonts-linex/fonts-linex_2.2-7_all.deb')
+source=('http://members.hellug.gr/sng/AUR/fonts-linex_2.2-7_all.deb')
 md5sums=('d1bf208d3df1efe26718357863c0a016')
 install=${pkgname}.install
 changelog=ChangeLog
