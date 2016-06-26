@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Johnny
+GenericName=Johnny
+Comment=A GUI for John the Ripper
+Exec=/usr/bin/johnny
+Icon=/usr/share/pixmaps/johnny.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;System
