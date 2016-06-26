@@ -4,10 +4,10 @@
 pkgname='rutorrent-autodl-irssi-community'
 _pkgname='autodl-rutorrent-community'
 pkgver=1.62
-pkgrel=1
+pkgrel=2
 pkgdesc='Community fork of the autodl-irssi rutorrent plugin.'
 arch=('any')
-url='http://sourceforge.net/projects/autodl-irssi'
+url='https://github.com/autodl-community/autodl-rutorrent'
 license=('MPL')
 install='rutorrent-autodl-irssi-community.install'
 depends=('rutorrent' "autodl-irssi-community=${pkgver}")
