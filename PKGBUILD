@@ -18,8 +18,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_zipname}"
-  install -D -m 644 KeeChallenge.dll.config ${pkgdir}/usr/share/keepass/plugins/KeeChallenge.dll.config
-  install -D -m 644 KeeChallenge.dll ${pkgdir}/usr/share/keepass/plugins/KeeChallenge.dll
+  install -D -m 644 KeeChallenge.dll.config ${pkgdir}/usr/share/keepass/Plugins/KeeChallenge.dll.config
+  install -D -m 644 KeeChallenge.dll ${pkgdir}/usr/share/keepass/Plugins/KeeChallenge.dll
 }
 
 md5sums=('80a7eada1c86332b3f91b75e4e8317f0')
