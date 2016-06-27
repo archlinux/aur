@@ -1,9 +1,9 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de> 
 # Previously:John Lane <archlinux at jelmail dot com>
-# Previously: Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
+# Previously:Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
 
 pkgname=cyrus-imapd
-pkgver=2.5.7
+pkgver=2.5.8
 pkgrel=2
 pkgdesc="Cyrus IMAP mail server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ source=(ftp://ftp.cyrusimap.org/cyrus-imapd/$pkgname-$pkgver.tar.gz
         'cyrus-master-conf.d'
         'cyrus-imapd.install'
         'cyrus-master.service')
-sha512sums=('7514779cb3e36fb76bddfd12c7ec8d986609af671f8a1f0f3ae5007f5a7aa80c3c440bfbc8e7766d4de178dd5aa704076401b35cb5f03a2e25d2ea97ccbc7642'
+sha512sums=('e9c94696b980c7b10c52ee2c46f2dbdadc633a63ad943ebd5002c2052b13a64d8917e4e0ac4e4ae44a1f553e1fda02010840c9053c936374c06c7e88e09302ef'
             '881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f'
             '80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386'
             '6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe')
@@ -82,3 +82,5 @@ package() {
     install -Dm 644 $srcdir/$pkgname-$pkgver/README \
         $pkgdir/usr/share/doc/$pkgname/README
 }
+
+
