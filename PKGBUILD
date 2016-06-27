@@ -18,7 +18,7 @@ install=openframeworks.install
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
 _name="of_v${pkgver}_${_arch}_release"
 
-source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz"
+source=("http://openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz"
 				"rtAudio.patch"
 				"of-make-workspace")
 
