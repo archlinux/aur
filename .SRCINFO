@@ -1,13 +1,13 @@
 pkgbase = sofa
 	pkgdesc = Set of algorithms and procedures used in fundamental astronomy
-	pkgver = 20150209
+	pkgver = 20160503
 	pkgrel = 1
 	url = http://www.iausofa.org
 	arch = x86_64
 	arch = i686
 	license = custom
-	source = http://www.iausofa.org/2015_0209_C/sofa_c-20150209_a.tar.gz
-	md5sums = ef408af60c8ca022ca7e0215c6933f0f
+	source = http://www.iausofa.org/2016_0503_C/sofa_c-20160503.tar.gz
+	md5sums = dd16d9ec74c92eb97d0c4a713ec4585f
 
 pkgname = sofa
 
