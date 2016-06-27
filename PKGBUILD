@@ -21,25 +21,9 @@ license=('GPL')
 depends=('apache')
 makedepends=('patch')
 source=("http://apache.webthing.com/svn/apache/forms/mod_form.c"
-        "http://apache.webthing.com/svn/apache/forms/mod_form.h"
-        'preserve-args.patch')
-md5sums=('8339effe63ec1ea8ade1e8b90aabb23c'
-         'e524cf838ae990bf6e118d985b1b91ca'
-         '24f531501e999ff46bdbb920edf7a4a4')
-
-prepare() {
-  # we need to copy the source files into a clean subdir
-  # because makepkg now symlinks source files to the parent
-  # directory. we could use --follow-symlinks but the
-  # patch man page says that is discouraged.
-  rm -Rf "$srcdir"/$pkgname-$pkgversion || true # cleanup if makepkg has been previously run
-  mkdir "$srcdir"/$pkgname-$pkgversion
-  cp --dereference "$srcdir"/mod_form.? preserve-args.patch $pkgname-$pkgversion/
-
-  cd "$srcdir"/$pkgname-$pkgversion
-
-  patch < preserve-args.patch
-}
+        "http://apache.webthing.com/svn/apache/forms/mod_form.h")
+sha256sums=('fea0d16ad45be310658bc623d9d9ad9d82bd3f4aedc80ecb969a534b56124437'
+            '70bd77cbce33c2031890a4c7cc4e069555aa2d15bb2a9c432f947005bdb82d49')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgversion
