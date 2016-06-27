@@ -22,7 +22,7 @@ depends=('apache>=2.2.6' 'apache-mod_form' 'apache-mod_geoip2' 'geoip'
          'perl' 'perl-config-inifiles' 'perl-libwww' 'perl-dbd-pg' 'perl-digest-md4' 'perl-timedate'
          'python2' 'python2-psycopg2' 'python2-sqlobject' 'cmdln')
 makedepends=('apache>=2.2.6' 'apache-mod_form' 'python')
-optdepends=('postgresqli-server: recommended database, but can use any database the Apache DBD API supports'
+optdepends=('postgresql: recommended database, but can use any database the Apache DBD API supports'
             'mod_asn: refined mirror selection and full exploitation of network locality')
 provides=('mod_mirrorbrain')
 backup=("etc/$pkgname.conf")
