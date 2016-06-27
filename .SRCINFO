@@ -1,0 +1,14 @@
+pkgbase = tk-brief
+	pkgdesc = GUI for easily writing letters with LaTeX
+	pkgver = 5.9
+	pkgrel = 1
+	url = http://mirror.unitedcolo.de/debian/pool/main/t/tk-brief/tk-brief_5.9-1.1.tar.gz
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = tk
+	source = http://mirror.unitedcolo.de/debian/pool/main/t/tk-brief/tk-brief_5.9-1.1.tar.gz
+	md5sums = ec7fffeec95eedea5f918a9757ea537c
+
+pkgname = tk-brief
+
