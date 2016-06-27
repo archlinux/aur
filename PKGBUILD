@@ -21,7 +21,7 @@ _release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time
 source=("https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file"
         "firefox-$_channel.desktop"
         "vendor.js")
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite3' 'dbus-glib')
+depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 provides=(firefox-developer)
 conflicts=(firefox-developer)
 
