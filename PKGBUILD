@@ -1,4 +1,5 @@
-# Maintainer: Étienne André <eti.andre@gmail.com>
+# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Contributor: Étienne André <eti.andre@gmail.com>
 pkgname='python-fusepy-git'
 pkgver=2.0.4.r0.g0eafeb5
 pkgrel=1
@@ -8,6 +9,8 @@ arch=('any')
 license=('custom:ISCL')
 depends=('fuse>=2.6' 'python')
 makedepends=('python-setuptools')
+provides=('fusepy' 'python-fusepy')
+conflicts=('fusepy' 'python-fusepy' 'python2-fusepy' 'python2-fusepy-git')
 source=('git+https://github.com/terencehonles/fusepy.git')
 md5sums=('SKIP')
 
