@@ -1,12 +1,12 @@
 pkgname=janusvr
 pkgdesc='JanusVR is a 3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
-pkgver=46.10
+pkgver=50.5
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 janusver=$(curl http://www.janusvr.com/version.html)
-source=("janusvr${janusver}.gz::http://www.janusvr.com/downloads/janusvr_linux.tar.gz"
+source=("janusvr${janusver}.gz::http://downloads.janusvr.com/janusvr_linux.tar.gz"
         "janusvr.sh" "http://www.dgp.toronto.edu/~mccrae/projects/firebox/img/janus_logo5.jpg"
         "janusvr.desktop")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib' 'qt5-multimedia')
