@@ -1,0 +1,15 @@
+pkgbase = accelerated-domains-china-list-git
+	pkgdesc = convert dnsmasq-china-list to dnsmasq, unbound and bind format, with multiple nameservers support
+	pkgver = r1.666a96a.r33418.252343a
+	pkgrel = 1
+	url = https://github.com/JaHIY/accelerated-doamins-china-list
+	arch = any
+	makedepends = git
+	makedepends = php
+	source = git+https://github.com/felixonmars/dnsmasq-china-list.git
+	source = git+https://github.com/JaHIY/accelerated-domains-china-list.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = accelerated-domains-china-list-git
+
