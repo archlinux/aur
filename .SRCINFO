@@ -1,0 +1,19 @@
+pkgbase = ams-lv2-git
+	pkgdesc = Alsa Modular modules in LV2 form.
+	pkgver = 86
+	pkgrel = 1
+	url = https://objectivewave.wordpress.com/ams-lv2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtkmm
+	depends = gtk2
+	depends = lvtk-git
+	depends = fftw
+	depends = cairo
+	depends = lv2
+	source = git+https://github.com/blablack/ams-lv2
+	md5sums = SKIP
+
+pkgname = ams-lv2-git
+
