@@ -9,7 +9,6 @@ url="http://eaglemode.sourceforge.net/"
 license=('GPL3')
 depends=('desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'libtiff' 'libpng' 'librsvg' 'poppler-glib' 'xdg-utils' 'xine-lib' 'xz')
 makedepends=('perl')
-install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
 sha256sums=('9ed28d0f6f7d25ca41c09f89cfe34fc322c894e24c8f0642bc4ba00449a90aa4')
 
