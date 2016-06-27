@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=eaglemode
-pkgver=0.90.0
+pkgver=0.91.0
 pkgrel=1
 pkgdesc="Visit almost everything in your PC simply by zooming in"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'libtiff' 'libpng' 'li
 makedepends=('perl')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('7c05bea244b11b78a528e75170f5ef45ccd10c03fd3f05c3dae59ee79e9c28ae')
+sha256sums=('9ed28d0f6f7d25ca41c09f89cfe34fc322c894e24c8f0642bc4ba00449a90aa4')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
