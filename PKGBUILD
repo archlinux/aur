@@ -1,4 +1,4 @@
-# Maintainer: Raphael Scholer <rascholer@gmail.com>
+# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgname=pep8-naming
 pkgname="python-${_pkgname}"
 pkgver=0.4.1
