@@ -4,7 +4,7 @@
 _pkgbase=smuxi
 pkgbase=${_pkgbase}-git
 pkgname=('smuxi-server-git' 'smuxi-git')
-pkgver=1.0.r120.gb1bca5b
+pkgver=1.0.r131.gbd5845e
 pkgrel=1
 pkgdesc="free, distributed and user-friendly IRC / Twitter / XMPP / Campfire / JabbR client for GNOME/GTK+"
 arch=('any')
@@ -40,7 +40,7 @@ build() {
 	--enable-frontend-stfl \
 	--with-vendor-package-version="Arch Linux Git-$pkgver-$pkgrel (master)"
 
-  make
+  make -j1
 }
 
 package_smuxi-server-git() {
