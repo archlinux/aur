@@ -1,0 +1,14 @@
+pkgbase = python-dodgy
+	pkgdesc = Looks at Python code to search for things which look dodgy such as passwords or diffs
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/landscapeio/dodgy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/landscapeio/dodgy/archive/0.1.9.tar.gz
+	md5sums = fd268f48162cc6a5dc62f784b7d61e85
+
+pkgname = python-dodgy
+
