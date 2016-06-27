@@ -1,0 +1,19 @@
+pkgbase = python-limix
+	pkgdesc = A flexible and fast mixed model toolbox
+	pkgver = 0.8.0.dev0
+	pkgrel = 1
+	url = http://pmbio.github.io/limix
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = python
+	depends = python-scikit-learn
+	depends = python-pandas
+	provides = python-hcache
+	source = https://files.pythonhosted.org/packages/source/l/limix/limix-0.8.0.dev0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/h/hcache/hcache-0.0.8.tar.gz
+	md5sums = ace3fe515ef3f4d87427f632ea7d2cbb
+	md5sums = e036dc8f5ec3c71059efadda7655a430
+
+pkgname = python-limix
+
