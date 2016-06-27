@@ -1,6 +1,6 @@
 # Maintainer: zml <zml@aoeu.xyz>
 pkgname=base16-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r618.9b24598
+pkgver=r635.f78f49a
 pkgrel=1
 pkgdesc="A color scheme and template for color schemes"
 arch=('any')
@@ -13,13 +13,11 @@ options=('!strip')
 source=('base16::git+https://github.com/chriskempson/base16-builder.git'
         'base16-template-for'
         'base16-list-schemes'
-        'base16.default'
-        'fix-dmenu.patch')
+        'base16.default')
 sha256sums=('SKIP'
             'c1008db7487d261306db1cd20ba6258a1862b899fefaf7e6fd623ca58f31b4ad'
             'ebfd99c08bb03ce3029d3b792ffbee63b861300ab1aafb07e0a80ca380df0607'
-            '54d9c2b1043a6b408fa5ef22aad435eb0178f773f8d616aebf2795bd87bb11b6'
-            '992ab670f643107d0f30c57b88390ca29b50401b8a62a4a91f48ee52827834ec')
+            '54d9c2b1043a6b408fa5ef22aad435eb0178f773f8d616aebf2795bd87bb11b6')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -33,8 +31,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-
-    patch -p1 < ../fix-dmenu.patch
 
     ./base16
 
