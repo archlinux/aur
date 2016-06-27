@@ -1,7 +1,7 @@
 pkgbase = ruby-compass-core
 	pkgdesc = The Compass core stylesheet library
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://compass-style.org/reference/compass/
 	arch = any
 	license = MIT
