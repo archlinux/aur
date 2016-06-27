@@ -3,14 +3,14 @@ _plugin_name=addonbar
 _plugin_version=3.2.9
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives you a place to put all your add-on buttons without over-crowding the navigation bar."
 license=('MIT')
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/the-addon-bar/"
 depends=("firefox")
-source=('https://addons.cdn.mozilla.net/user-media/addons/473193/the_addon_bar_restored-3.2.9-compat-fixed-fx.xpi')
-sha256sums=('04ac402bfbd4e1c738d0f6c968d25ff9779bd20ac7e19711ba235a3a218c4da0')
+source=('https://addons.cdn.mozilla.net/user-media/addons/473193/the_addon_bar_restored-3.2.9-compat-fixed-4-fx.xpi')
+sha256sums=('bdcfe3582a92217597c2f996a1662a8c69f817c4a88403d968f868fb641830f0')
 
 package() {
   cd $srcdir
