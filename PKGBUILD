@@ -167,6 +167,20 @@ build() {
     mkdir -p "$srcdir/tdesktop/Linux/ReleaseIntermediate"
     cd "$srcdir/tdesktop/Linux/ReleaseIntermediate"
     
+    ./../codegen/Release/codegen_style \
+        "-I./../../Telegram/Resources" \
+        "-I./../../Telegram/SourceFiles" \
+        "-o./../../Telegram/GeneratedFiles/styles" \
+        all_files.style --rebuild
+    
+    ./../codegen/Release/codegen_numbers \
+        "-o./../../Telegram/GeneratedFiles" \
+        "./../../Telegram/Resources/numbers.txt"
+    
+    ./../ReleaseLang/MetaLang \
+        -lang_in ./../../Telegram/Resources/langs/lang.strings \
+        -lang_out ./../../Telegram/GeneratedFiles/lang_auto
+    
     qmake CONFIG+=release QT_TDESKTOP_PATH="$srcdir/qt" "../../Telegram/Telegram.pro"
     make
 }
