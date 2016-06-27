@@ -13,7 +13,7 @@ pkgbase = mpv-bash-completion-git
 	depends = lua
 	provides = mpv-bash-completion
 	conflicts = mpv-bash-completion
-	source = git+https://github.com/2ion/mpv-bash-completion.git#branch=lua-rewrite
+	source = git+https://github.com/2ion/mpv-bash-completion.git#branch=master
 	source = mpv-bash-completion.hook
 	source = mpv-bash-completion.install
 	sha256sums = SKIP

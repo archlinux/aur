@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=mpv-bash-completion.install
-source=('git+https://github.com/2ion/mpv-bash-completion.git#branch=lua-rewrite'\
+source=('git+https://github.com/2ion/mpv-bash-completion.git#branch=master'\
   'mpv-bash-completion.hook'\
   'mpv-bash-completion.install')
 sha256sums=('SKIP'\
