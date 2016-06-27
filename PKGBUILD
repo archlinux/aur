@@ -1,12 +1,11 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgname=pep8-naming
-pkgname="python-${_pkgname}"
+pkgname=python-pep8-naming
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="This module provides a name plugin for flake8, the Python code checker."
+pkgdesc="This module provides a name plugin for flake8, the Python code checker"
 arch=('any')
-url="https://github.com/flintwork/${_pkgname}"
-conflicts=("${pkgname}")
+url="https://github.com/PyCQA/pep8-naming"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
