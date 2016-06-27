@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm-git
-pkgver=0.5.9.r8.g919d7b6
+pkgver=0.5.9.r10.g228499f
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('GPL')
 provides=('adwm')
 conflicts=('adwm')
 depends=('libxfixes' 'libxft' 'libxrandr' 'libxinerama' 'libxpm' 'startup-notification' 'imlib2')
-optdepends=('xde-ctools: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu default bindings'
+optdepends=('xdg-launch: for application launching key bindings'
+            'xde-ctools: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu default bindings'
             'xde-menu: for xde-menu root menu default bindings'
             'xde-session: for xde-logout and xde-xlock default bindings')
 options=('!libtool')
