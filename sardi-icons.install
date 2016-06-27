@@ -1,0 +1,33 @@
+post-install() {
+# icon cache
+
+gtk-update-icon-cache -f Sardi
+gtk-update-icon-cache -f Sardi\ Faenza\ Black
+gtk-update-icon-cache -f Sardi\ Flat
+gtk-update-icon-cache -f Sardi\ Flat\ Black
+gtk-update-icon-cache -f Sardi\ Flat\ Majestic
+gtk-update-icon-cache -f Sardi\ Flat\ Orange
+gtk-update-icon-cache -f Sardi\ Flexible
+gtk-update-icon-cache -f Sardi\ Ghost\ Flexible
+gtk-update-icon-cache -f Sardi\ Grey
+gtk-update-icon-cache -f Sardi\ Mono
+gtk-update-icon-cache -f Sardi\ Mono Mint-X-Grey
+gtk-update-icon-cache -f Sardi\ Mono Numix
+gtk-update-icon-cache -f Sardi\ Mono Numix Grey
+gtk-update-icon-cache -f Sardi\ Mono Orange
+gtk-update-icon-cache -f Sardi\ Mono Vertexed
+gtk-update-icon-cache -f Sardi\ Orange
+gtk-update-icon-cache -f Sardi\ Red
+gtk-update-icon-cache -f Sardi\ Vertexed
+
+ 
+}
+
+post-upgrade() {
+  post-install
+}
+
+post-remove() {
+  post-install
+}
+
