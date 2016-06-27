@@ -3,7 +3,7 @@
 # Contributor: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package () {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha256sums=('ee62eecb410530174b1d184a5b46dce83a164f0b1fe162411dc594125151e02f')
+sha256sums=('28a83b78ee15e11799be30c94cb9a4472c9bb19d3f2480daa6a1abcb31052c16')
