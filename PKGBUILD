@@ -1,6 +1,6 @@
 pkgname=grads
-pkgver=2.1.a3
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="The Grid Analysis and Display System (GrADS) is an interactive \
 desktop tool that is used for easy access, manipulation, and visualization \
 of earth science data. The format of the data may be either binary, GRIB, \
@@ -13,13 +13,13 @@ arch=(i686 x86_64)
 provides=(grads)
 conflicts=(grads)
 source=(ftp://cola.gmu.edu/grads/2.1/${pkgname}-${pkgver}-src.tar.gz time_unit.patch)
-md5sums=('57f097ddea5cb6189bbac511b52b12dd'
-         '4267574ffb319dfef225a923fa7d6975')
+md5sums=('4393a23e23e10a495a299c76088c5699'
+         '8b6559bdff9605a1bfce506cd0315b57')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   patch -p0 -i ${srcdir}/time_unit.patch
-  sed -i configure.ac -e 's/png15/png16/g'
+  sed -i configure.ac -e 's/png15/png16/g' -e 's/grib2c/g2c/g'
   sed -i acinclude.m4 \
     -e 's/${ga_lib_prefix}${ga_lib_name}${ga_lib_suffix}/-l${ga_lib_name}/'
   sed 's!/usr/local/lib/grads!/usr/share/grads!' -i src/gx.h
