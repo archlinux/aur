@@ -2,13 +2,13 @@ post-install() {
 # icon cache
 
 
-gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Arch-Blue
+gtk-update-icon-cache -f Super-Ultra-Flat-Numix-Remix-Arch-Blue
 
-gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Majestic
+gtk-update-icon-cache -f Super-Ultra-Flat-Numix-Remix-Majestic
 
-gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix-Orange
+gtk-update-icon-cache -f Super-Ultra-Flat-Numix-Remix-Orange
 
-gtk-update-icon-cache Super-Ultra-Flat-Numix-Remix
+gtk-update-icon-cache -f Super-Ultra-Flat-Numix-Remix
  
 }
 
