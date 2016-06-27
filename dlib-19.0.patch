@@ -1,7 +1,7 @@
-diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find_blas.txt
---- dlib-18.18/dlib/cmake_find_blas.txt	2015-10-29 08:27:41.000000000 +0800
-+++ dlib-18.18-patched/dlib/cmake_find_blas.txt	2015-10-29 13:03:20.968515000 +0800
-@@ -273,6 +273,89 @@
+diff -ruN dlib-19.0/dlib/cmake_find_blas.txt dlib-19.0-patched/dlib/cmake_find_blas.txt
+--- dlib-19.0/dlib/cmake_find_blas.txt	2016-06-26 03:05:41.000000000 +0800
++++ dlib-19.0-patched/dlib/cmake_find_blas.txt	2016-06-27 13:03:20.968515000 +0800
+@@ -310,6 +310,116 @@
      endif()
  
  
@@ -15,10 +15,35 @@ diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find
 +        /usr/i686-w64-mingw32/lib/atlas-sse3
 +        /usr/i686-w64-mingw32/lib/atlas-sse2
 +        /usr/i686-w64-mingw32/lib/atlas
++        /usr/i686-w64-mingw32/lib/openblas-base
 +        /usr/x86_64-w64-mingw32/lib
 +        /usr/x86_64-w64-mingw32/lib/atlas-sse3
 +        /usr/x86_64-w64-mingw32/lib/atlas-sse2
++        /usr/x86_64-w64-mingw32/lib/openblas-base
 +        /usr/x86_64-w64-mingw32/lib/atlas)
++        )
++
++   INCLUDE (CheckFunctionExists)
++
++   if (NOT blas_found)
++      find_library(cblas_lib openblas PATHS ${extra_paths})
++      if (cblas_lib)
++         set(blas_libraries ${cblas_lib})
++         set(blas_found 1)
++         message(STATUS "Found OpenBLAS library")
++         set(CMAKE_REQUIRED_LIBRARIES ${blas_libraries})
++         # If you compiled OpenBLAS with LAPACK in it then it should have the
++         # sgetrf_single function in it.  So if we find that function in
++         # OpenBLAS then just use OpenBLAS's LAPACK. 
++         CHECK_FUNCTION_EXISTS(sgetrf_single OPENBLAS_HAS_LAPACK)
++         if (OPENBLAS_HAS_LAPACK)
++            message(STATUS "Using OpenBLAS's built in LAPACK")
++            # set(lapack_libraries gfortran) 
++            set(lapack_found 1)
++         endif()
++      endif()
++      mark_as_advanced( cblas_lib)
++   endif()
 +
 +   if (NOT lapack_found)
 +      find_library(lapack_lib NAMES lapack lapack-3 PATHS ${extra_paths})
@@ -30,8 +55,7 @@ diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find
 +      mark_as_advanced( lapack_lib)
 +   endif()
 +
-+   # try to find some other BLAS libraries if we didn't find the MKL
-+   
++   # try to find BLAS libraries while cross compiling
 +   if (NOT blas_found)
 +      find_library(atlas_lib atlas PATHS ${extra_paths})
 +      find_library(cblas_lib cblas PATHS ${extra_paths})
@@ -52,7 +76,7 @@ diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find
 +      endif()
 +      mark_as_advanced( cblas_lib)
 +   endif()
-+
++   
 +   if (NOT blas_found)
 +      find_library(generic_blas blas PATHS ${extra_paths})
 +      if (generic_blas)
@@ -69,7 +93,6 @@ diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find
 +   # we found the Intel MKL since for some reason CHECK_FUNCTION_EXISTS doesn't work
 +   # with it.  But it's fine since the MKL should always have cblas.
 +   if (blas_found AND NOT found_intel_mkl)
-+      INCLUDE (CheckFunctionExists)
 +      set(CMAKE_REQUIRED_LIBRARIES ${blas_libraries})
 +      CHECK_FUNCTION_EXISTS(cblas_ddot HAVE_CBLAS)
 +      if (NOT HAVE_CBLAS)
@@ -82,23 +105,27 @@ diff -ruN dlib-18.18/dlib/cmake_find_blas.txt dlib-18.18-patched/dlib/cmake_find
 +   if (NOT blas_found)
 +      message(" *****************************************************************************")
 +      message(" *** No BLAS library found so using dlib's built in BLAS.  However, if you ***")
-+      message(" *** install an optimized BLAS such as openblas or the Intel MKL your code ***")
-+      message(" *** will run faster.  On Ubuntu you can install openblas by executing:    ***")
++      message(" *** install an optimized BLAS such as OpenBLAS or the Intel MKL your code ***")
++      message(" *** will run faster.  On Ubuntu you can install OpenBLAS by executing:    ***")
 +      message(" ***    sudo apt-get install libopenblas-dev liblapack-dev                 ***")
++      message(" *** Or you can easily install OpenBLAS from source by downloading the     ***")
++      message(" *** source tar file from http://www.openblas.net, extracting it, and      ***")
++      message(" *** running:                                                              ***")
++      message(" ***    make; sudo make install                                            ***")
 +      message(" *****************************************************************************")
 +   endif()
 +
  endif()
  
  
-diff -ruN dlib-18.18/dlib/CMakeLists.txt dlib-18.18-patched/dlib/CMakeLists.txt
---- dlib-18.18/dlib/CMakeLists.txt	2015-10-29 08:27:41.000000000 +0800
-+++ dlib-18.18-patched/dlib/CMakeLists.txt	2015-10-29 13:03:20.968515000 +0800
-@@ -234,6 +234,7 @@
+diff -ruN dlib-19.0/dlib/CMakeLists.txt dlib-19.0-patched/dlib/CMakeLists.txt
+--- dlib-19.0/dlib/CMakeLists.txt	2016-06-26 03:05:41.000000000 +0800
++++ dlib-19.0-patched/dlib/CMakeLists.txt	2016-06-27 13:03:20.968515000 +0800
+@@ -308,6 +308,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})
              set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
 +            set (dlib_needed_libraries ${dlib_needed_libraries} ${ZLIB_LIBRARY})
+             set(REQUIRES_LIBS " libpng")
           else()
              # If we can't find libpng then statically compile it in.
-             include_directories(external/libpng external/zlib)
