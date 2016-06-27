@@ -9,8 +9,8 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'fontconfig'
          'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 'opencl-headers'
          'openjpeg' 'opus' 'rubberband' 'rtmpdump' 'schroedinger' 'sdl' 'smbclient' 'speex' 'shine'
          'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 
-         'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libdcadec.so'
+         'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
          'snappy' 'openh264' 'xavs')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
@@ -39,7 +39,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('30e3c77c2f4c358ed087869455a7496cbd7753a5e1b98d20ba49c1004009fd36'
+sha256sums=('2100fca81627e6cbe937fd6a071ae89277c02350538944b2b0c3c2cc71d9402a'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -93,7 +93,6 @@ build() {
     --enable-libcdio \
     --enable-libcelt \
     --enable-libdc1394 \
-    --enable-libdcadec \
     --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfreetype \
