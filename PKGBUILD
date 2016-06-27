@@ -3,12 +3,12 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc       # Build kernel with a different name
-_srcname=linux-4.5
-_stable=4.5.5
-_patchver=4.5.6
+_srcname=linux-4.6
+_stable=4.6.2
+_patchver=4.6.3
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
