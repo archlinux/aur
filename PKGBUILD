@@ -1,8 +1,8 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
-pkgver=0.9.9.7
-pkgrel=2
+pkgver=1.0rc1
+pkgrel=1
 pkgdesc="A PHP web-based bug tracker"
 arch=('any')
 url="http://www.flyspray.org/"
@@ -12,20 +12,14 @@ makedepends=('unzip')
 backup=('etc/webapps/flyspray/.htaccess')
 options=('!strip')
 noextract=(flyspray-$pkgver.zip)
-source=(http://flyspray.org/flyspray-$pkgver.zip
-	"flyspray-php-5.4.patch::https://projects.archlinux.org/vhosts/bugs.archlinux.org.git/patch/?id=aaeeeb05f6d81ce88131239126b9da189fd1f904")
-md5sums=('3a218c5447d64af18f19bc63bb825e58'
-         'b278362976074d963f74767c7e79bf11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Flyspray/flyspray/archive/v${pkgver/rc/-rc}.tar.gz")
+md5sums=('8edb8af9ce298440b21b165646130c61')
 
 package() {
-  mkdir $srcdir/flyspray-${pkgver}
-  (cd $srcdir/flyspray-${pkgver} && \
-	unzip ../flyspray-$pkgver.zip)
-
   _instdir=$pkgdir/usr/share/webapps/flyspray
   mkdir -p ${_instdir} $pkgdir/etc/webapps/flyspray
   cd ${_instdir}
-  cp -ra $srcdir/flyspray-${pkgver}/* .
+  cp -ra $srcdir/flyspray-${pkgver/rc/-rc}/* .
   echo "deny from all" > $pkgdir/etc/webapps/flyspray/.htaccess
   ln -s /etc/webapps/flyspray/.htaccess .htaccess
 }
