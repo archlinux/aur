@@ -3,7 +3,7 @@
 pkgname=kodi-addon-screensaver-apple-aerial
 _pkgname=screensaver.atv4
 pkgver=r26.d59f47d
-pkgrel=2
+pkgrel=3
 pkgdesc="The Apple TV4 aerial screensaver for kodi"
 arch=('i686' 'x86_64')
 url='https://github.com/enen92/screensaver.atv4'
@@ -22,12 +22,15 @@ package() {
 	install -dm755 "$pkgdir/usr/share/kodi/addons"
 	install -dm755 "$pkgdir/usr/share/licenses/$_pkgname"
 	cp -a "$srcdir/$_pkgname" "$pkgdir/usr/share/kodi/addons/$_pkgname"
-	
+
 	# clean up
 	rm -rf "$pkgdir/usr/share/kodi/addons/$_pkgname/.git"
 	rm -f "$pkgdir/usr/share/kodi/addons/$_pkgname/resources/.DS_Store"
 	rm -f "$pkgdir/usr/share/kodi/addons/$_pkgname/changelog.txt"
 	mv "$pkgdir/usr/share/kodi/addons/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
+	
+	# set premissions
+	find "$pkgdir" -type f -print0 | xargs -0 chmod 644
 }
 	
 
