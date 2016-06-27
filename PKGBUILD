@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch-git
-pkgver=0.8.r0.ga7edfd0
+pkgver=0.9.r0.g026cc0b
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
@@ -10,10 +10,9 @@ license=('GPL')
 groups=('xde')
 provides=('xdg-launch')
 conflicts=('xdg-launch')
-depends=('desktop-file-utils' 'libxrandr' 'libxinerama' 'libnotify')
+depends=('libxrandr' 'libxinerama' 'libnotify')
 optdepends=('dmenu: to use dmenu_launch script')
 makedepends=('git' 'pkgconfig')
-install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/bbidulock/xdg-launch")
 md5sums=('SKIP')
 
