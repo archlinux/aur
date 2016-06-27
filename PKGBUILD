@@ -5,12 +5,19 @@ pkgname="${_pkgname}"
 _pkgver=1.7.4
 # epoch=0
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Create portable, self-containing Linux executables: Creates from dynamically linked executables and all it's libraries one file. Note: Does not play well with VDSO, which most modern kernels have activated."
 arch=('i386' 'i486' 'i586' 'i686' 'x86_64')
 url="http://statifier.sourceforge.net/"
 license=('GPL2')
-# depends=('zlib' 'gnutls' 'libgcrypt')
+
+depends=(
+  'glibc'
+)
+
+depends_x86_64=(
+  'lib32-glibc'
+)
 
 provides=(
 )
@@ -58,5 +65,4 @@ package() {
   
   install -dv -m 755 "${_docdir}/detailed/"
   cp -av "${_unpackeddir}/doc"/* "${_docdir}/detailed/"
-
 }
