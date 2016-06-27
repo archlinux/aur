@@ -2,7 +2,7 @@
 pkgname='molden'
 pkgver=5.6
 pkgrel=1
-pkgdesc="A visualization program of molecular and electronic structure"
+pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="http://www.cmbi.ru.nl/molden/"
 license=('custom')
