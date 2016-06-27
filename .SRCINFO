@@ -1,0 +1,16 @@
+pkgbase = statifier
+	pkgdesc = A tool for creating portable, self-containing Linux executables: Creates from dynamically linked executables and all it's libraries one file. This file can be copied and run on another machine without need to drag all it's libraries.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://statifier.sourceforge.net/
+	arch = i386
+	arch = i486
+	arch = i586
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = statifier-1.7.4.tar.gz::https://sourceforge.net/projects/statifier/files/statifier/1.7.4/statifier-1.7.4.tar.gz/download
+	sha256sums = c8a758ee1f3604d1c6fa755e2422ac4e741008536c9065508050da69149d9f0e
+
+pkgname = statifier
+
