@@ -1,0 +1,17 @@
+pkgbase = mfcuk-git
+	pkgdesc = MiFare Classic Universal toolKit (MFCUK)
+	pkgver = r54.5acc9f4
+	pkgrel = 1
+	url = https://github.com/nfc-tools/mfcuk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	depends = libnfc
+	source = mfcuk-git::git+https://github.com/nfc-tools/mfcuk.git
+	sha256sums = SKIP
+
+pkgname = mfcuk-git
+
