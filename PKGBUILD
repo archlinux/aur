@@ -25,13 +25,17 @@ pkgver()
 
 build()
 {
-	#Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
-	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=No'
+	# Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
+	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
+
+	# Uncomment below two lines if you want to use 'jemalloc' and add it to 'depends' list
+	#unset LDFLAGS
+	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_QT5=YES $USE_SIDPLAYFP
+	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_QT5=YES $USE_JEMALLOC $USE_SIDPLAYFP
 	time make
 }
 
