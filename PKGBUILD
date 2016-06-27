@@ -2,7 +2,7 @@
 
 pkgname=landeseternelles
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Landes Eternelles is a frensh role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="http://www.landes-eternelles.com"
@@ -27,6 +27,8 @@ build() {
     make -f Makefile.linux || return 1
 
     cd "$srcdir/editeur_sources"
+    sed -i -r "s/#define min/\/\/#define min/g" $srcdir/editeur_sources/global.h
+    sed -i -r "s/#define max/\/\/#define max/g" $srcdir/editeur_sources/global.h
 
     make -f Makefile.linux || return 1
 }

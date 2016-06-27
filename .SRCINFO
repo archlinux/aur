@@ -1,7 +1,7 @@
 pkgbase = landeseternelles
 	pkgdesc = Landes Eternelles is a frensh role playing game (mmorpg), forked from Eternal Lands.
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.landes-eternelles.com
 	install = landeseternelles.install
 	arch = i686
