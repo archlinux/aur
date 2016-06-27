@@ -1,5 +1,5 @@
 pkgname=crate
-pkgver=0.54.9
+pkgver=0.54.10
 pkgrel=1
 pkgdesc="shared nothing, fully searchable, document oriented cluster datastore."
 arch=('any')
