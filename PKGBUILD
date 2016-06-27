@@ -3,15 +3,13 @@
 pkgname=accel-ppp-ipoe-dkms
 _pkgname=accel-ppp
 pkgver=1.10.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
 license=('GPL')
-depends=('dkms' 'gcc' 'make' 'lua51')
+depends=('dkms' 'lua51')
 conflicts=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git')
-optdepends=('linux-headers: build modules against Arch kernel'
-            'linux-lts-headers: build modules against LTS kernel')
 source=(http://sourceforge.net/projects/$_pkgname/files/$_pkgname-$pkgver.tar.bz2
         dkms.conf)
 
