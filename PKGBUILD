@@ -2,7 +2,7 @@
 # Contributor: Giuseppe Borzi <gborzi@ieee.org>
 pkgname=superlu
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of subroutines to solve a sparse linear system"
 arch=('i686' 'x86_64')
 url="http://crd.lbl.gov/~xiaoye/SuperLU/"
@@ -33,8 +33,8 @@ build() {
 cd ../static
   msg "Building static library..."
   make -f ../SRC/Makefile VPATH=../SRC srcdir=../SRC CC=cc \
-          CFLAGS="$CFLAGS" FORTRAN=gfortran FFLAGS="$CFLAGS" \
-          PLAT="" BLASDEF="" BLASLIB="-lblas" CDEFS="-DAdd_" \
+          CFLAGS="$CFLAGS -fPIC" FORTRAN=gfortran FFLAGS="$CFLAGS -fPIC" \
+          PLAT="" BLASDEF="" BLASLIB="-lblas" CDEFS="-DAdd_" NOOPTS="-fPIC" \
           ARCH="echo" ARCHFLAGS="" RANLIB="echo" \
           SUPERLULIB=$srcdir/SuperLU_$pkgver/lib/lib$pkgname.a
   ar cr ../lib/lib$pkgname.a *.o
