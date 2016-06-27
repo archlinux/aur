@@ -9,6 +9,13 @@ post_install() {
 
 post_upgrade() {
     post_install "$1"
+    echo ""
+    echo "Note: As LibrePCB is still in development, you should clone"
+    echo "the demo workspace from https://github.com/LibrePCB/demo-workspace"
+    echo "and use it as your LibrePCB workspace."
+    echo "Otherwise you won't have a components library and some parts"
+    echo "of the UI will not work."
+    echo ""
 }
 
 post_remove() {
