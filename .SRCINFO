@@ -1,16 +1,16 @@
 pkgbase = rundeck
 	pkgdesc = Open source automation service with a web console, command line tools and a WebAPI
-	pkgver = 2.6.7
-	pkgrel = 2
+	pkgver = 2.6.8
+	pkgrel = 1
 	url = http://messengerfordesktop.com/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = APACHE
 	depends = java-environment
-	source = https://github.com/rundeck/rundeck/archive/v2.6.7.tar.gz
+	depends = bash
+	source = https://github.com/rundeck/rundeck/archive/v2.6.8.tar.gz
 	source = start.sh
-	md5sums = bee9c70580aa85e92ecfeefec6e673fb
-	md5sums = a8e31d4a8d91239bdc326118d6b20c02
+	md5sums = 7b8991d4530406f88884a2bed9df0d04
+	md5sums = 520c429435ea55c694b66dfa969f98ca
 
 pkgname = rundeck
 
