@@ -2,13 +2,13 @@
 
 pkgbase=gtksourceview-pkgbuild
 pkgname=('mime-pkgbuild' 'gtksourceview2-pkgbuild' 'gtksourceview3-pkgbuild')
-pkgver=2
+pkgver=3
 pkgrel=1
 arch=(any)
 license=('free')
 source=(pkgbuild.lang
         pkgbuild.xml)
-md5sums=('d5b937ec089e7a2274f28fc1f6429af1'
+md5sums=('8e826a434d0708951a2538270d21a8ff'
          '1ebd783f76c5ae95d9a34fc91b50fbdd')
 
 package_mime-pkgbuild() {
