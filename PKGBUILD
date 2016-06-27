@@ -1,19 +1,18 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/${pkgname}"
 license=('GPL')
 groups=('xde')
-depends=('desktop-file-utils' 'gtk2' 'libnotify' 'startup-notification')
+depends=('gtk2' 'libnotify')
 optdepends=('dmenu: to use dmenu_launch script')
 makedepends=('pkgconfig')
-install="${pkgname}.install"
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('65b0ea10f9f0c91059215549bdb9081e')
+md5sums=('42ac28bda990195057fadb8a7433b2d9')
 
 build() {
   cd ${pkgname}-${pkgver}
