@@ -1,25 +1,16 @@
 pkgbase = accel-ppp-ipoe-dkms-git
 	pkgdesc = Accel-ppp ipoe kernel module sources
 	pkgver = r1350.d682a0a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = dkms
-	depends = gcc
-	depends = make
 	depends = lua51
-	optdepends = linux-headers: build modules against Arch kernel
-	optdepends = linux-lts-headers: build modules against LTS kernel
-	replaces = accel-ppp-ipoe-module
-	replaces = accel-ppp-ipoe-module-git
-	replaces = accel-ppp-ipoe-module-lts
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
-	source = ipoe.conf
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = ecf99787915602dcedef531d5f8c42c9
 	md5sums = 62ed71ee1ee1c812d3cda24b72392dcd
 
 pkgname = accel-ppp-ipoe-dkms-git
