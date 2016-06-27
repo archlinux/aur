@@ -1,0 +1,14 @@
+pkgbase = python-setoptconf
+	pkgdesc = A library that can be used to retrieve program settings from a variety of sources
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jayclassless/setoptconf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/jayclassless/setoptconf/archive/0.2.0.tar.gz
+	md5sums = f2a056f7546c9b3a8e0ff6f6e688065d
+
+pkgname = python-setoptconf
+
