@@ -2,17 +2,16 @@
 
 _pkgname=nomacs
 pkgname=$_pkgname-git
-pkgver=3.0.0.233.gc4e8903
+pkgver=3.2.0.50.g6e79e97
 pkgrel=1
-pkgdesc="Free, open source image viewer, which supports multiple platforms."
-arch=("i686" "x86_64")
-url="http://nomacs.org"
-license=("GPL3")
-depends=("qt5-svg" "exiv2" "libraw" "opencv" "desktop-file-utils")
-makedepends=("git" "cmake" "qt5-tools")
+pkgdesc='Free, open source image viewer, which supports multiple platforms.'
+arch=('i686' 'x86_64')
+url='http://nomacs.org'
+license=('GPL3')
+depends=('qt5-svg' 'exiv2' 'libraw' 'opencv' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install="$pkgname.install"
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
 sha256sums=("SKIP")
 
@@ -22,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build
+  rm -Rf build && mkdir build
   cd build
   cmake "$srcdir/$_pkgname/ImageLounge" \
     -DCMAKE_INSTALL_PREFIX=/usr
