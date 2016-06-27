@@ -1,0 +1,17 @@
+[Unit]
+Description=Factorio game headless server
+Documentation=http://www.factorio.com/
+After=network.target
+
+[Service]
+User=factorio
+EnvironmentFile=/etc/conf.d/factorio
+TimeoutStartSec=5
+ExecStart=/usr/bin/factorio --start-server $SAVE_NAME --autosave-interval $AUTOSAVE_INTERVAL --autosave-slots $AUTOSAVE_SLOTS --latency-ms $LATENCY $FACTORIO_EXTRA_ARGS
+TimeoutStopSec=10
+KillSignal=SIGINT
+RestartSec=10
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
