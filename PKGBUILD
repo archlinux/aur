@@ -6,12 +6,12 @@ _version=git
 
 # Module Versions
 _about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.5.18
-_language_gfm2_ver=0.90.4
+_about_arch_ver=1.6.1
+_language_gfm2_ver=0.92.0
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.10.0.dev.m0.90.4.r1.e5a3c9e
+pkgver=1.10.0.dev.m0.90.4.r1.3fd0d30
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ source=("git+${url}.git"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
-            '1fd7f3e1336820b8243241dd34bc0783d20e14652e40494453d3997f2b46541a'
+            '85b904a247078121ccfe14f1d18fa49facc8747a4ac731591dadc85fa3c1e093'
             '8fd5c1f23ec4110ab339d2c8c4305c6d0e9f11f7f6ddc80f3c45ca990691ac43'
             '8e7723a0618661f5dabc5729deaf0b453ef7945ec904690a95d446eb517ec522'
             '542c10ffb540bd91a441682867517a02a959a20625293f72f33fab71cd3602be')
