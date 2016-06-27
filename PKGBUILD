@@ -10,7 +10,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -70,7 +70,6 @@ build() {
                     ${_cudainc} \
                     -I/usr/lib/jvm/$(archlinux-java get)/include \
                     -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
-    --extra-cxxflags="-std=gnu++98" \
     --extra-ldflags="${_cudalib} ${_intelsdklib}" \
     \
     --enable-rpath \
