@@ -2,22 +2,20 @@
 
 pkgname=gef-git
 _gitname=gef
-pkgver=0.0.0.86.34f2ad7
+pkgver=0.0.0.302.ecedb11
 pkgrel=1
-pkgdesc="Multi-Architecture GDB Enhanced Features for Exploiters & Reverse-Engineers"
+pkgdesc='Multi-Architecture GDB Enhanced Features for Exploiters & Reverse-Engineers'
 url='https://github.com/hugsy/gef'
 arch=('any')
 license=('MIT')
-depends=( 'gdb' 'python')
-optdepends=(
-  'python-capstone: extended disassemble support'
-  'ropgadget: ROP support'
-  'rarade2-bindings: code assemble support'
-)
+depends=('gdb' 'python')
+optdepends=('python-capstone: extended disassemble support'
+            'python-keystone: assembler support'
+            'python-unicorn: emulation support'
+            'ropgadget: ROP gadget support')
 makedepends=('git')
 provides=('gef')
 conflicts=('gef')
-install='gef.install'
 source=(${pkgname}::git+https://github.com/hugsy/${_gitname})
 sha512sums=('SKIP')
 
