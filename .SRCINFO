@@ -1,0 +1,20 @@
+pkgbase = ingen-git
+	pkgdesc = A modular plugin host for Jack and LV2.
+	pkgver = 3345880
+	pkgrel = 1
+	url = http://drobilla.net/software/ingen/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lv2>=1.11.0
+	depends = glibmm>=2.14.0
+	depends = lilv>=0.21.5
+	depends = suil>=0.2.0
+	depends = raul
+	depends = ganv
+	depends = python2
+	source = ingen-git::git+http://git.drobilla.net/ingen-git.git
+	md5sums = SKIP
+
+pkgname = ingen-git
+
