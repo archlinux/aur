@@ -1,0 +1,16 @@
+pkgbase = ruby-gemgen
+	pkgdesc = The Compass core stylesheet library
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = None
+	arch = any
+	license = unknown
+	depends = ruby
+	depends = ruby-bundler
+	noextract = gemgen-0.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gemgen-0.0.4.gem
+	sha256sums = e99f294c0a17fbca4c9d3d2ddd60eea3568d48e2733d83a0465adab1df4edaec
+
+pkgname = ruby-gemgen
+
