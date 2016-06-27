@@ -5,7 +5,7 @@ pkgname=bedup
 pkgver=0.10.1
 pkgrel=1
 pkgdesc="Offline deduplication utility for the BTRFS filesystem"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 depends=('python' 'python-distribute' 'python-alembic' 'python-sqlalchemy'
          'python-cffi' 'python-xdg' 'python-mako')
