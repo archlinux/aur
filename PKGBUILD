@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}
-pkgver=3.1.1
+pkgver=3.1.1.2
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ install='install'
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
         "${_name}.desktop")
 _srcsubdir="SLADE-${pkgver}"
-sha256sums=('da7efc529823772b561a2405dbbc8b59467f3dfc98b9d753af9b1836d3a97529'
+sha256sums=('9f7a30163f0fa9d754000e2fada8b20ae07df160617fd8a1e898c261edd0e773'
             'e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb')
 
 prepare() {
