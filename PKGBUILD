@@ -3,21 +3,21 @@
 # Contributor: Firmicus <firmicus at gmx dot net>
 
 pkgname=ttf-sil-scheherazade
-pkgver=2.020
-pkgrel=2
-pkgdesc="OpenType Arabic font from SIL"
+pkgver=2.100
+pkgrel=1
+pkgdesc="A font designed in a similar style to traditional Naskh typefaces"
 arch=('any')
-url="http://scripts.sil.org/ArabicFonts"
+url="http://software.sil.org/scheherazade/"
 license=('custom:OFL')
 install=$pkgname.install
-source=('http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=Scheherazade-2.020.zip&filename=Scheherazade-2.020.zip')
-sha256sums=('d8bb12997507937347efba4e59550a9655350563d1df662f0651e04ba916aff1')
+source=('http://software.sil.org/downloads/scheherazade/Scheherazade-2.100.zip')
+sha256sums=('251c8817ceb87d9b661ce1d5b49e732a0116add10abc046be4b8ba5196e149b5')
 
 package() {
   # Font installation
   cd "$srcdir/Scheherazade-$pkgver"
   install -d ${pkgdir}/usr/share/fonts/TTF 
-  install -m 644 Scheherazade-R.ttf ${pkgdir}/usr/share/fonts/TTF/scheherazade.ttf
+  install -m 644 Scheherazade-Regular.ttf Scheherazade-Bold.ttf ${pkgdir}/usr/share/fonts/TTF/
 
   # license
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
