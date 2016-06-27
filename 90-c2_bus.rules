@@ -1,0 +1,2 @@
+KERNEL=="c2_gpio", SUBSYSTEM=="module", ACTION=="add", PROGRAM="/usr/bin/grep c2_gpio /proc/devices", RUN+="/usr/bin/bash -c '/usr/bin/mknod /dev/c2_bus c %c{1} 0 && /usr/bin/chmod 777 /dev/c2_bus'"
+KERNEL=="c2_gpio", SUBSYSTEM=="module", ACTION=="remove", RUN+="/usr/bin/rm /dev/c2_bus"

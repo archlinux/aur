@@ -1,0 +1,5 @@
+post_install() {
+	echo ">>>> If you want to automatically load c2_gpio on system start execute"
+	echo ">>>>     echo c2_gpio > /etc/modules-load.d/c2_gpio.conf"
+	echo ">>>> as root"
+}
