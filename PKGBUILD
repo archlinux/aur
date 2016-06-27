@@ -4,12 +4,12 @@
 pkgname=qt5-virtualkeyboard
 _qtver=5.7.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3')
 pkgdesc='Virtual keyboard framework'
-depends=('qt5-declarative' 'qt5-svg')
+depends=('qt5-declarative' 'qt5-svg' 'hunspell')
 makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd build
 
-  qmake ../${_pkgfqn} CONFIG+=lang-all
+  qmake ../${_pkgfqn} CONFIG+="lang-all handwriting"
   make
 }
 
