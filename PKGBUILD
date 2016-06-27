@@ -3,7 +3,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-linuxtools
-pkgver=4.2.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Eclipse Linux Tools Project"
 url="http://www.eclipse.org/linuxtools"
@@ -18,8 +18,8 @@ optdepends=(
 	'eclipse-antlr-runtime: Tracing/LTTng'
 )
 makedepends=('java-environment')
-source=("http://www.eclipse.org/downloads/download.php?r=1&file=/linuxtools/linuxtools-${pkgver}.zip")
-sha256sums=('5ae38475a68d1ee5b6a9c5b56c6ab505682250cee1686262e682d240b59b231e')
+source=("http://www.eclipse.org/downloads/download.php?r=1&mirror_id=274&file=/linuxtools/linuxtools-${pkgver}.zip")
+sha256sums=('65ebc216f6117ae477f9c22812203ce5767f3b79c7c585bee247a34669a62adc')
 
 package() {
   d="$pkgdir/usr/lib/eclipse/dropins/linuxtools/eclipse"
