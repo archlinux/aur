@@ -1,6 +1,6 @@
 pkgbase = python2-astropy
 	pkgdesc = A community python library for astronomy
-	pkgver = 1.1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://www.astropy.org/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = python2-astropy
 	conflicts = python2-pyfits
 	conflicts = python-pywcs
 	conflicts = python2-vo
-	source = http://pypi.python.org/packages/source/a/astropy/astropy-1.1.2.tar.gz
-	md5sums = cbe32023b5b1177d1e2498a0d00cda51
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-1.2.1.tar.gz
+	md5sums = a3399f67897cdb75e0efa56c463b0497
 
 pkgname = python2-astropy
 
