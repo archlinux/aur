@@ -2,13 +2,13 @@
 
 _pkgname=qlipper
 pkgname=$_pkgname-git
-pkgver=2.0.2.23.g4d52f94
+pkgver=2.0.2.31.gdae06f3
 pkgrel=1
 pkgdesc='Cross-platform clipboard history applet'
 arch=('i686' 'x86_64')
 url='https://github.com/pvanek/qlipper'
 license=('GPL2')
-depends=('qt5-base' 'libxkbcommon-x11')
+depends=('qt5-base' 'gtk-update-icon-cache')
 makedepends=('cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build ; cd build
+  rm -Rf build && mkdir build && cd build
   cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
