@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at coredump dot fr>
 pkgname=dnsdist-git
-pkgver=r10371.f0b90d0
+pkgver=r10561.c1fabdf
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 source=("${pkgname}::git+https://github.com/PowerDNS/pdns")
 sha512sums=('SKIP')
 makedepends=('boost' 'git' 'pandoc' 'ragel')
-depends=('libedit' 'libsodium' 'libsystemd' 'lua52' 'protobuf' )
+depends=('libedit' 'libsodium' 'libsystemd' 'lua' 'protobuf' )
 provides=('dnsdist')
 conflicts=('dnsdist')
 
