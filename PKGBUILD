@@ -7,7 +7,7 @@ _srcname=linux-4.6
 _stable=4.6.2
 _patchver=4.6.3
 pkgver=${_patchver}rc1
-_rcpatch=patch-${_patchver}-rc1
+_rcpatch=patch-${_patchver}-rc2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -27,14 +27,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'f25ce19ee44d93eb8b228c0f3df3082b94ea84d9b28a9fb8ba170ecce5acd78c'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
-            'b26f0b14969ee80412ce712d217b5daf023acb336f431b30175bae5626e231d8'
+            '152c34a511a7fe388d6c1dac7e214d308599ade4794959938e0657dd71e9eb84'
             'SKIP'
-            '8a8a955f015ee8342701231a63836cec0e300fd7e96d30e8696fde8a383fcdc9'
-            '8b60911aad591306336e300e27071f2d108c5016e66a04327b82ac69acbfefff'
+            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
+            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
