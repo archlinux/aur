@@ -16,22 +16,22 @@ pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidi
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'fontconfig'
-         'frei0r-plugins' 'fribidi' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
-         'libavc1394'  'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug' 'libpulse' 
-         'libsoxr' 'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'flite' 'fontconfig' 'frei0r-plugins'
+         'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
+         'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libebur128' 'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug'
+         'libomxil-bellagio' 'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 'opencl-headers'
          'openjpeg' 'opus' 'rubberband' 'rtmpdump' 'schroedinger' 'sdl' 'smbclient' 'speex' 'shine'
          'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 
          'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
-         'snappy' 'openh264' 'xavs')
+         'snappy' 'openh264' 'xavs' 'java-environment')
+depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations')
-optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)'
-                   'cuda: for CUDA support')
+optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -51,20 +51,27 @@ build() {
       _cuda="--enable-cuda"
       _cudainc="-I/opt/cuda/include"
       _cudalib="-L/opt/cuda/lib64"
+      _cuvid="--enable-cuvid"
+      _libnpp="--enable-libnpp"
       _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
   else
       _cuda=""
       _cudainc=""
       _cudalib=""
+      _cuvid=""
+      _libnpp=""
      _intelsdklib=""
   fi
 
   msg "Starting configure..."
   ./configure \
     --prefix=/usr \
-    --extra-cflags="-I/usr/include/nvidia-sdk" \
+    --extra-cflags="-I/usr/include/nvidia-sdk \
+                    ${_cudainc} \
+                    -I/usr/lib/jvm/$(archlinux-java get)/include \
+                    -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
     --extra-cxxflags="-std=gnu++98" \
-    --extra-ldflags="${_intelsdklib}" \
+    --extra-ldflags="${_cudalib} ${_intelsdklib}" \
     \
     --enable-rpath \
     --enable-gpl \
@@ -74,7 +81,15 @@ build() {
     --enable-shared \
     --enable-avresample \
     \
+    $_cuda \
+    $_cuvid \
+    --enable-libmfx \
+    --enable-nvenc \
+    --enable-omx \
+    --enable-omx-rpi \
+    \
     --enable-avisynth \
+    --enable-audiotoolbox \
     --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
@@ -85,6 +100,7 @@ build() {
     --enable-gpl \
     --enable-gray \
     --enable-iconv \
+    --enable-jni \
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
@@ -93,6 +109,7 @@ build() {
     --enable-libcdio \
     --enable-libcelt \
     --enable-libdc1394 \
+    --enable-libebur128 \
     --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfreetype \
@@ -102,9 +119,9 @@ build() {
     --enable-libiec61883 \
     --enable-libilbc \
     --enable-libkvazaar \
-    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
+    $_libnpp \
     --enable-libnut \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
@@ -125,7 +142,6 @@ build() {
     --enable-libtesseract \
     --enable-libtheora \
     --enable-libtwolame \
-    --enable-libutvideo \
     --enable-libv4l2 \
     --enable-libvidstab \
     --enable-libvo-amrwbenc \
@@ -144,13 +160,18 @@ build() {
     --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
+    --enable-mediacodec \
     --enable-netcdf \
-    --enable-nvenc \
     --enable-openal \
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
-    --enable-x11grab
+    --enable-sdl \
+    --enable-videotoolbox \
+    --enable-x11grab \
+    --enable-xlib \
+    --enable-zlib
+
     
   msg "Starting make"
   make
