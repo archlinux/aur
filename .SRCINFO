@@ -1,7 +1,7 @@
 pkgbase = mpv-bash-completion-git
 	pkgdesc = Bash completion for the mpv video player
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 8
 	url = https://github.com/2ion/mpv-bash-completion
 	install = mpv-bash-completion.install
@@ -11,6 +11,7 @@ pkgbase = mpv-bash-completion-git
 	depends = mpv
 	depends = bash
 	depends = lua
+	depends = xorg-xrandr
 	provides = mpv-bash-completion
 	conflicts = mpv-bash-completion
 	source = git+https://github.com/2ion/mpv-bash-completion.git#branch=master
