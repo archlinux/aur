@@ -2,7 +2,7 @@
 
 pkgname=osslsigncode
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Platform-independent tool for Authenticode signing of PE/CAB/MSI files"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/osslsigncode/"
