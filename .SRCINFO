@@ -1,7 +1,7 @@
 pkgbase = splitsh-lite-git
 	pkgdesc = Split your monorepo into many repos
 	pkgver = r15.ec01ec9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/splitsh/lite
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = splitsh-lite-git
 	makedepends = go
 	makedepends = git
 	makedepends = libgit2
+	depends = libgit2
 	options = !strip
 	options = !emptydirs
 	source = splitsh-lite::git+https://github.com/splitsh/lite.git

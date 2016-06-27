@@ -3,12 +3,13 @@
 _pkgname=splitsh-lite
 pkgname=$_pkgname-git
 pkgver=r15.ec01ec9
-pkgrel=1
+pkgrel=2
 pkgdesc="Split your monorepo into many repos"
 arch=('x86_64' 'i686')
 url="https://github.com/splitsh/lite"
 license=('MIT')
 makedepends=('go' 'git' 'libgit2')
+depends=('libgit2')
 options=('!strip' '!emptydirs')
 source=("splitsh-lite::git+https://github.com/splitsh/lite.git")
 sha256sums=('SKIP')
