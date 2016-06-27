@@ -29,7 +29,7 @@ install=
 changelog=
 source=(ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz)
 noextract=()
-md5sums=('cb23ad1485a772c23b7da41b2b099d1d')
+md5sums=('1b090b6ed52e1d58f09a535978506bcd')
 
 build() {
   cd "$pkgname$pkgver"
