@@ -4,7 +4,7 @@
 pkgname=qt5-virtualkeyboard
 _qtver=5.7.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3')
@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd build
 
-  qmake ../${_pkgfqn}
+  qmake ../${_pkgfqn} CONFIG+=lang-all
   make
 }
 
