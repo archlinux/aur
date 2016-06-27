@@ -1,0 +1,14 @@
+pkgbase = python2-pylint-common
+	pkgdesc = Pylint plugin for augmenting and improving error detection and analysis in the standard Python library
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pylint-common
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/p/pylint-common/pylint-common-0.2.5.tar.gz
+	md5sums = 821725a39702815c68558df3059cb176
+
+pkgname = python2-pylint-common
+
