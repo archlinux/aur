@@ -1,0 +1,14 @@
+pkgbase = python-requirements-detector
+	pkgdesc = A library that can be used to retrieve program settings from a variety of sources
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/landscapeio/requirements-detector
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/landscapeio/requirements-detector/archive/0.4.1.tar.gz
+	md5sums = 67a96af759662d842a33492337c6fba1
+
+pkgname = python-requirements-detector
+
