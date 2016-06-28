@@ -12,8 +12,7 @@ epoch=1
 pkgdesc="GUI for managing Windows programs under linux"
 url="http://www.playonlinux.com/"
 license=('GPL')
-depends=( 'imagemagick' 'xterm' 'wxpython' 'cabextract' 'unzip' 'mesa-demos' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip')
+depends=('wine' 'imagemagick' 'xterm' 'wxpython' 'cabextract' 'unzip' 'mesa-demos' 'gnupg' 'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip')
 arch=('any')
 provides=('playonlinux')
 conflicts=('playonlinux')
@@ -27,8 +26,8 @@ pkgver() {
 }
 
 build() {
-        cd "${srcdir}/${gitdir}"
-        make
+    cd "${srcdir}/${gitdir}"
+    make
 }
 package() {
 	cd "${srcdir}/${gitdir}"

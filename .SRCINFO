@@ -6,6 +6,7 @@ pkgbase = playonlinux-git
 	url = http://www.playonlinux.com/
 	arch = any
 	license = GPL
+	depends = wine
 	depends = imagemagick
 	depends = xterm
 	depends = wxpython
