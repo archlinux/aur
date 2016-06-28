@@ -1,0 +1,14 @@
+pkgbase = python-vulture
+	pkgdesc = Finds dead code in Python projects
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://bitbucket.org/jendrikseipp/vulture
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://bitbucket.org/jendrikseipp/vulture/get/v0.8.1.tar.bz2
+	md5sums = a302f97c06e07ace7995b3016456ca1d
+
+pkgname = python-vulture
+
