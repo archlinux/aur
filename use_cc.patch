@@ -1,0 +1,12 @@
+diff -r f270a1cf86ce Makefile
+--- a/Makefile	Sun Jan 10 19:49:52 2016 +0100
++++ b/Makefile	Mon Jun 20 15:34:28 2016 +0200
+@@ -33,7 +33,7 @@
+ 	xsltproc root-anchors.xsl root-anchors.xml > $@
+ 
+ %.so: %.o
+-	$(LD) $(LDFLAGS) -o $@ $^ $(LDLIBS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+ 
+ install:
+ 	install -d $(DESTDIR)$(LUA_LIBDIR)/
