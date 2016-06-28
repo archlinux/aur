@@ -1,0 +1,20 @@
+pkgbase = javafx-gluon-scenebuilder
+	pkgdesc = An open source tool that allows for drag and drop design of JavaFX user interfaces.
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = http://gluonhq.com/labs/scene-builder/
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	makedepends = gradle
+	depends = java-environment>=8
+	depends = java-openjfx
+	source = scenebuilder::hg+https://bitbucket.org/gluon-oss/scenebuilder#tag=8.2.0
+	source = gluon-scenebuilder_base.desktop
+	source = gluon-scenebuilder.png
+	sha256sums = SKIP
+	sha256sums = 8bd4f4a9ae2f687a25cd00b8319f582ca37bad96054761bcfa970d2cfae210af
+	sha256sums = b77517f70237350a26fca72b19222fc1d669704ed8aa9125d85b73f10afa1907
+
+pkgname = javafx-gluon-scenebuilder
+
