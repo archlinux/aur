@@ -2,11 +2,12 @@
 pkgname=('gitsome')
 _module='gitsome'
 pkgver='0.6.0'
-pkgrel=3
+pkgrel=4
 pkgdesc="A Supercharged Git/Shell Autocompleter with GitHub Integration."
 url="https://github.com/donnemartin/gitsome"
 depends=('python' 'python-ply' 'python-prompt_toolkit' 'python-requests' 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser' 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
 makedepends=('python-setuptools')
+conflicts=('xonsh' 'python-gitsome')
 license=('APACHE')
 arch=('any')
 source=("https://pypi.python.org/packages/30/9a/2ac38108d08869abbcb757f52f28b6730f6cf249b2f13c161783655f1a0f/gitsome-${pkgver}.tar.gz")
