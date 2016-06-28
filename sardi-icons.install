@@ -11,6 +11,7 @@ gtk-update-icon-cache -f Sardi\ Flexible
 gtk-update-icon-cache -f Sardi\ Ghost\ Flexible
 gtk-update-icon-cache -f Sardi\ Grey
 gtk-update-icon-cache -f Sardi\ Mono
+gtk-update-icon-cache -f Sardi\ Mono\ Grey
 gtk-update-icon-cache -f Sardi\ Mono\ Mint-X-Grey
 gtk-update-icon-cache -f Sardi\ Mono\ Numix
 gtk-update-icon-cache -f Sardi\ Mono\ Numix\ Grey
