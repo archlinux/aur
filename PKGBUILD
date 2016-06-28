@@ -6,7 +6,7 @@
 # The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12)
 
 pkgname='unreal-engine'
-pkgver=4.12.3
+pkgver=4.12.4
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -27,8 +27,8 @@ options=(!strip staticlibs)
 build() {
   cd $srcdir/UnrealEngine
   
-  # clean up old build, otherwise there are errors building a new version in same dir
-  git clean -xdf
+  # might help to clean up old builds when there is a new version
+  # git clean -xdf
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
