@@ -5,7 +5,7 @@
 
 _gemname=colorize
 pkgname=ruby-$_gemname
-pkgver=0.7.7
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Add color methods to String class'
 arch=(any)
@@ -15,7 +15,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha512sums=('ac55d281a3ac7aa72c02ecdc27a1936410cb2754e48e0c23b98eba5e98a8bf42e362fe3a86e73c12ff5445f2e0a92a7c561e82a4d85aae0ef08a9855b056f359')
+sha256sums=('43c0daf332260b67d844487b2975830d31d1ca49fd427f9d2468bd52324fb1d6')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
