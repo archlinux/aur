@@ -1,0 +1,46 @@
+commit 17cab371bcd9bb08c7ffd0f2a4d3b7efafa5ab6b
+Author: Sergio Correia <sergio@correia.cc>
+Date:   Tue Jun 28 15:16:04 2016 -0400
+
+    Fix the following compile errors in a modern gcc:
+    
+    - error: reference to ‘hash’ is ambiguous
+      > use the global namespace `::', as `::hash'
+    
+    - narrowing conversion of ‘252’ from ‘int’ to ‘char’ inside { }
+      > use a static_cast to convert to `char'
+
+diff --git a/bitmap/play.xbm b/bitmap/play.xbm
+index 4d63679..0bda522 100644
+--- a/bitmap/play.xbm
++++ b/bitmap/play.xbm
+@@ -1,5 +1,5 @@
+ #define play_width 15
+ #define play_height 12
+ static char play_bits[] = {
+-   0x00, 0x00, 0x0c, 0x00, 0x3c, 0x00, 0xfc, 0x00, 0xfc, 0x03, 0xfc, 0x0f,
+-   0xfc, 0x0f, 0xfc, 0x03, 0xfc, 0x00, 0x3c, 0x00, 0x0c, 0x00, 0x00, 0x00};
++   0x00, 0x00, 0x0c, 0x00, 0x3c, 0x00, static_cast<char>(0xfc), 0x00, static_cast<char>(0xfc), 0x03, static_cast<char>(0xfc), 0x0f,
++   static_cast<char>(0xfc), 0x0f, static_cast<char>(0xfc), 0x03, static_cast<char>(0xfc), 0x00, 0x3c, 0x00, 0x0c, 0x00, 0x00, 0x00};
+diff --git a/mdart/mdart_adp.cc b/mdart/mdart_adp.cc
+index a96346e..6bb9225 100644
+--- a/mdart/mdart_adp.cc
++++ b/mdart/mdart_adp.cc
+@@ -105,7 +105,7 @@ void ADP::sendDarq(nsaddr_t reqId, int reqpktId) {
+ #ifdef DEBUG_ADP
+ 	fprintf(stdout, "%.9f\tADP::sendDarq(%d)\t\t\tin node %d\twith address %s\n", CURRENT_TIME, reqId, mdart_->id_, bitString(mdart_->address_));
+ #endif
+-	nsaddr_t dstAdd_ = hash(reqId);
++	nsaddr_t dstAdd_ = ::hash(reqId);
+ #ifdef DEBUG_ADP
+ 	fprintf(stdout, "\tsending darq for node %s\n", bitString(dstAdd_));
+ #endif
+@@ -393,7 +393,7 @@ void ADP::sendDaup() {
+ 	fprintf(stdout, "%.9f\tMDART::sendDaup()\t\t\t\tin node %d\twith address %s\n", CURRENT_TIME, mdart_->id_, bitString(mdart_->address_));
+ //	printDHT();
+ #endif
+-	nsaddr_t dstAdd_ = hash(mdart_->id_);
++	nsaddr_t dstAdd_ = ::hash(mdart_->id_);
+ #ifdef DEBUG_ADP
+ 	fprintf(stdout, "\tsending daup for node  %s\n", bitString(dstAdd_));
+ 	mdart_->routingTable_->print();

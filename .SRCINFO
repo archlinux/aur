@@ -1,7 +1,7 @@
 pkgbase = ns
 	pkgdesc = Discrete event simulator targeted at networking research
 	pkgver = 2.35
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.isi.edu/nsnam/ns/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,12 @@ pkgbase = ns
 	source = ns-2.35-linkstate-erase.fix
 	source = ns-2.35-tcl86.patch
 	source = ns-2.35-getopts.patch
+	source = ns-2.35-gcc-compile-errors.patch
 	sha256sums = 2a32e831bcec7d255042a544577559d15eae67696d0e3d30881cedc1112e2387
 	sha256sums = aedba646d1bc4d716031f9ea996e6d99c9bb227e7647138cccf39bdd6c069c3a
 	sha256sums = 7aa4a22492f2be37c81fcdc813972a6bde105e183a013d7b814a56f7bcef872c
 	sha256sums = 4d02ff0cf1c79d67c440c788d7163c7c873a6e4e2970bab3319cbe29f9b20c14
+	sha256sums = efbbe60f2be7f3daf28eec60437d6d2fc24e8b934e24d6b4b35cbc5a270f88c0
 
 pkgname = ns
 
