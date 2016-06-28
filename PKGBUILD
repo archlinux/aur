@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.5
+_basekernel=4.6
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.7
+pkgver=${_basekernel}.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -18,8 +18,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('cb0d5f30baff37dfea40fbc1119a1482182f95858c883e019ee3f81055c8efbdb9dba7dfc02ebcc4216db38f03ece58688e69efc0fce1dade359af30bd5426de' 'SKIP'
-            '948fb18128eacf421ae92fc466bc395b4a0fd7bb514afb52b910f0f860dbc56cb6318ae604082892d93e293cc9987cf61177b1280c79474533f0d0f7113682f5' 'SKIP'
+sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b' 'SKIP'
+            'd479c54e7b379595b4ad0a107f973c85f5e3f163147417ff60c3d01e5b4c7e1f04e49bdff22973f67e8abfdeaafa481fffe503e7d531a73f9f42e67f0f6a16b2' 'SKIP'
             '1d088854ab958c4c48a2a6fed3319e5d658e2330a122f58bc94ee3a9340a8bdeb1d94f5ea0518068516d9eb6505a624d65ead9eaa0bf3d79598080f14320ad93'
             '8ab21958c5aaa514cc2e3f2e1a5aa6d78299f9484a1b9d9f7c0ee687d7b0bc97bde9787aab574e49df76601af1f0864bc31a8e032a3450c72025984322800da3'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
