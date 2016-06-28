@@ -1,0 +1,14 @@
+pkgbase = python-pylint-celery
+	pkgdesc = pylint plugin for analyzing celery
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/landscapeio/pylint-celery
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/landscapeio/pylint-celery/archive/d688f97c7da6ea729d7a632db28bb37fc4aadf94.tar.gz
+	md5sums = 26051966e31fb9e8f4c127f935e424df
+
+pkgname = python-pylint-celery
+
