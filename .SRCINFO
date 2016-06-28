@@ -1,0 +1,14 @@
+pkgbase = python-pylint-plugin-utils
+	pkgdesc = Utilities and helpers for writing Pylint plugins
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/landscapeio/pylint-plugin-utils
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/landscapeio/pylint-plugin-utils/archive/0.2.3.tar.gz
+	md5sums = 392bdb012310a621242c17365b9947c5
+
+pkgname = python-pylint-plugin-utils
+
