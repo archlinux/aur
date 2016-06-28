@@ -1,52 +1,34 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 # Contributor: Mike Redd <mredd@0tue0.com>
 
-pkgbase=python-cmdln-git
-pkgname=(python-cmdln-git python2-cmdln-git)
-pkgver=2.0.0.r1.g55e980c
-pkgrel=3
+pkgbase=python-cmdln
+pkgname=(python-cmdln python2-cmdln)
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='a Python module for easily building good multi-command scripts'
 arch=('i686' 'x86_64')
 url='http://github.com/trentm/cmdln'
 license=('MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('python2')
 provides=('cmdln')
-source=('git://github.com/trentm/cmdln.git')
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trentm/cmdln/archive/${pkgver}.tar.gz")
+sha256sums=('5545a51770d494b9297dce4e2ad2d06efbd133d29184e97393710dec954cb6e4')
 
-pkgver() {
-	cd cmdln/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
-	fi
-}
-
-
-package_python-cmdln-git() {
+package_python-cmdln() {
 	depends=('python')
-	provides=('python-cmdln')
 
-	cd cmdln/
+	cd cmdln-${pkgver}/
 
 	python setup.py build
 
 	python setup.py install --prefix="${pkgdir}"/usr
 }
 
-package_python2-cmdln-git() {
+package_python2-cmdln() {
 	depends=('python2')
-	provides=('python2-cmdln')
 
-	cd cmdln/
+	cd cmdln-${pkgver}/
 
 	python2 setup.py build
 
