@@ -1,6 +1,6 @@
 pkgbase = qputty-qt5-git
 	pkgdesc = A Qt 5 port for putty, the free telnet/ssh client
-	pkgver = 503
+	pkgver = 504
 	pkgrel = 1
 	url = https://github.com/dsmorozov/qputty-qt5
 	arch = i686
