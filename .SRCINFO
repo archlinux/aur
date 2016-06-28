@@ -1,0 +1,16 @@
+pkgbase = papirus-dark-look-and-feel-git
+	pkgdesc = Look-and-feel package for modified and adaptive Papirus Dark theme for KDE (git version)
+	pkgver = 20160615
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-look-and-feel
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = plasma-desktop
+	options = !strip
+	source = papirus-dark-look-and-feel-git::git+https://github.com/droserasprout/papirus-dark-look-and-feel.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-look-and-feel-git
+
