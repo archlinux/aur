@@ -2,12 +2,12 @@
 pkgname=scroller-git
 _gitname=scroller
 pkgver=r19.7c7cb5a
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for truncating text by rolling it like a news ticker"
 arch=(any)
 url=https://github.com/kbrgl/scroller
 license=(custom)
-depends=(python)
+depends=(python python-setuptools)
 makedepends=(git)
 provides=(scroller)
 conflicts=(scroller)
