@@ -1,16 +1,16 @@
 pkgbase = lantern
 	pkgdesc = Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel)
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://getlantern.org
 	install = lantern.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = npm
 	makedepends = go>=1.6
 	makedepends = make
 	makedepends = gulp
+	makedepends = npm
 	depends = libappindicator-gtk3
 	depends = xcb-util
 	depends = xdg-utils
@@ -20,10 +20,10 @@ pkgbase = lantern
 	options = !emptydirs
 	options = !strip
 	options = !docs
-	source = https://github.com/getlantern/lantern/archive/2.2.4.tar.gz
+	source = https://github.com/getlantern/lantern/archive/2.2.5.tar.gz
 	source = lantern.service
 	source = git-update-index.patch
-	sha1sums = 26fa91dfe92f90c677aa8cc0f410486dffed9e43
+	sha1sums = 3f001eb4543b1f272c3144171c7ceed438c22975
 	sha1sums = da705ba2fa3608a17258009b933e8bb58b3172a2
 	sha1sums = 0949f76ee7d695156c0a85565ce516a7f3637b2a
 

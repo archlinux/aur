@@ -3,7 +3,7 @@
 # Contributor: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel)'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/getlantern/lantern/archive/${pkgver}.tar.gz"
         'lantern.service'
         'git-update-index.patch')
 
-sha1sums=('26fa91dfe92f90c677aa8cc0f410486dffed9e43'
+sha1sums=('3f001eb4543b1f272c3144171c7ceed438c22975'
           'da705ba2fa3608a17258009b933e8bb58b3172a2'
           '0949f76ee7d695156c0a85565ce516a7f3637b2a')
 
