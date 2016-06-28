@@ -1,6 +1,6 @@
 pkgname=pyneedle
 pkgnameorig=pyneedle
-pkgver=r77.ebd0d29c1b8f
+pkgver=r80.1ad6219
 pkgrel=1
 pkgdesc="Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)"
 arch=('any')
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python2 setup.py build
+  python3 setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
+  python3 setup.py install --prefix=/usr --root="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
