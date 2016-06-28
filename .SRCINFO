@@ -1,0 +1,15 @@
+pkgbase = ruby-rails-dom-testing
+	pkgdesc = Compares doms and assert certain elements exists in doms using Nokogiri
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/rails/rails-dom-testing
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-nokogiri
+	source = https://rubygems.org/downloads/rails-dom-testing-2.0.1.gem
+	sha256sums = b108ebe8d0b61729921e1380983f663912edcf90e8dec822dae9001a9b3d4e97
+
+pkgname = ruby-rails-dom-testing
+
