@@ -1,0 +1,22 @@
+pkgbase = sometris-git
+	pkgdesc = Tetris-like game written in C and SDL.
+	pkgver = 20160628
+	pkgrel = 1
+	url = http://dev.ivanov.eu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = git
+	depends = sdl
+	depends = sdl_gfx
+	depends = sdl_image
+	source = sometris.png
+	source = sometris.desktop
+	source = sometris_sdl::git://github.com/ivanovp/sometris_sdl.git
+	md5sums = 7c27ac4528052e18b6a78b206d510242
+	md5sums = 79f447ebd88622389dcf8e77093850e6
+	md5sums = SKIP
+
+pkgname = sometris-git
+

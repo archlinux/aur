@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sometris
+GenericName=Tetris-like game
+Comment=Tetris-like block game
+Exec=sometris
+Icon=sometris
+Terminal=false
+Type=Application
+Categories=Game
+StartupNotify=false
