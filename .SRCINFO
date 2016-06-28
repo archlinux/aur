@@ -1,0 +1,15 @@
+pkgbase = ruby-backbone_extensions
+	pkgdesc = Adds extensions to the backbone javascript library
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = http://github.com/rdy/underscore_extensions
+	arch = any
+	license = unknown
+	depends = ruby
+	depends = backbonejs
+	depends = ruby-rails
+	source = https://rubygems.org/downloads/backbone_extensions-0.0.26.gem
+	sha256sums = 8b499702d500cd05889b47265aa8937ea7a094923b855ae3a69e122581493fd0
+
+pkgname = ruby-backbone_extensions
+
