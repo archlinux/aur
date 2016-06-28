@@ -2,14 +2,14 @@
 
 pkgname=quake3-edawn
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Quake III Arena mod with numerous improvements"
 arch=('any')
 url="http://edawn-mod.org/"
 license=('custom')
 depends=('quake3')
 source=("http://edawn-mod.org/binaries/edawn-${pkgver}-1.zip")
-sha256sums=('a6a232f64fcfd3f6387d809b8a7912d6095b6dcd39cc6572407a54c96ab68a27')
+sha256sums=('5af1bb6291200d721046d009a61b98ef061974691d3dac1c589911b3b7692ac5')
 
 package() {
   # Non-modified Quake 3 engines may have problems loading
