@@ -1,15 +1,14 @@
 pkgbase = playonlinux-git
 	pkgdesc = GUI for managing Windows programs under linux
-	pkgver = 4.2.9.r1.g1157b14
+	pkgver = 4.2.10.r19.gfe283cd
 	pkgrel = 1
 	epoch = 1
 	url = http://www.playonlinux.com/
 	arch = any
 	license = GPL
-	depends = wine
 	depends = imagemagick
 	depends = xterm
-	depends = wxpython2.8
+	depends = wxpython
 	depends = cabextract
 	depends = unzip
 	depends = mesa-demos
@@ -23,7 +22,7 @@ pkgbase = playonlinux-git
 	provides = playonlinux
 	conflicts = playonlinux
 	options = !strip
-	source = playonlinux::git://github.com/PlayOnLinux/POL-POM-4.git
+	source = git://github.com/PlayOnLinux/POL-POM-4.git
 	md5sums = SKIP
 
 pkgname = playonlinux-git
