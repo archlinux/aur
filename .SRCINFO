@@ -1,7 +1,7 @@
 pkgbase = openpht
 	pkgdesc = OpenPHT is a community driven fork of Plex Home Theater
 	pkgver = 1.6.1.120
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RasPlex/OpenPHT/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,9 @@ pkgbase = openpht
 	makedepends = swig
 	makedepends = unzip
 	makedepends = zip
+	makedepends = gcc-libs<=5.3.0
+	makedepends = glibc<=2.23-1
+	makedepends = llvm-libs<=3.7.1
 	depends = openpht-ffmpeg
 	depends = alsa-lib
 	depends = avahi
@@ -25,9 +28,9 @@ pkgbase = openpht
 	depends = expat
 	depends = freetype2
 	depends = fribidi
-	depends = gcc-libs<=5.3.0
+	depends = gcc-libs
 	depends = glew
-	depends = glibc<=2.23-1
+	depends = glibc
 	depends = glu
 	depends = libcdio
 	depends = libgl
@@ -38,7 +41,7 @@ pkgbase = openpht
 	depends = libpng
 	depends = libpulse
 	depends = libsamplerate
-	depends = llvm-libs<=3.7.1
+	depends = llvm-libs
 	depends = libssh
 	depends = libtiff
 	depends = libusb-compat
