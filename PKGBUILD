@@ -2,10 +2,10 @@
 # Contributor: honzor 
 
 pkgname=libmodbus-dev
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (development version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://libmodbus.org"
 license=('LGPL')
 groups=()
@@ -20,7 +20,7 @@ options=(!libtool)
 install=
 _pkgfqn="libmodbus-${pkgver}"
 source=(http://libmodbus.org/releases/libmodbus-$pkgver.tar.gz)
-md5sums=(dd4262f87ed835c4d1e560f8321a222c)
+md5sums=(b1a8fd3a40d2db4de51fb0cbcb201806)
 noextract=()
 
 
