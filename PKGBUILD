@@ -8,6 +8,8 @@ arch=('any')
 makedepends=('python-setuptools' 'pydocstyle' 'python-pep8-naming' 'python-yaml' 'python-dodgy' 'python-setoptconf'
              'python-requirements-detector' 'python-pylint-common' 'python-pylint-plugin-utils'
              'python-pylint-django' 'python-pylint-celery' 'python-pylint-flask')
+optdeps=('python-pyroma: check setup.py'
+         'python-vulture: find dead code')
 url="https://github.com/landscapeio/prospector"
 license=('GPL2')
 source=(https://github.com/landscapeio/prospector/archive/${pkgver}.tar.gz)
