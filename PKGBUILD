@@ -2,16 +2,16 @@
 
 _pkgname=cmst
 pkgname=$_pkgname-git
-pkgver=2015.03.01.69.g19feb80
+pkgver=2016.04.03.11.g9a45c29
 pkgrel=1
-pkgdesc="QT GUI for Connman with system tray icon"
-arch=("i686" "x86_64")
+pkgdesc='QT GUI for Connman with system tray icon'
+arch=('i686' 'x86_64')
 url=https://github.com/andrew-bibb/cmst
-license=("MIT")
-depends=("qt5-base" "libxkbcommon-x11" "connman")
-makedepends=("git")
-provides=("cmst")
-conflicts=("cmst")
+license=('MIT')
+depends=('qt5-base' 'connman' 'gtk-update-icon-cache')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+https://github.com/andrew-bibb/cmst.git")
 sha256sums=("SKIP")
 
