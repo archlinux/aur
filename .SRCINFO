@@ -1,0 +1,14 @@
+pkgbase = python-pylint-flask
+	pkgdesc = A Pylint plugin to analyze Flask applications
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/jschaf/pylint-flask
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/jschaf/pylint-flask/archive/v0.3.tar.gz
+	md5sums = ddc7bde244e7cdfdb2326d2c87a96d73
+
+pkgname = python-pylint-flask
+
