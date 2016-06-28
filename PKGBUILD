@@ -7,7 +7,8 @@ set -u
 _gitname='SICOM'
 _pkgname='rlib'
 pkgname="lib${_pkgname}" # libr seems a bit short
-pkgver='2.0.9'
+pkgver='2.0.11'
+# 2.0.10 won't compile
 pkgrel='1'
 pkgdesc='Advanced reporting engine that generates professional reports in PDF, HTML, CSV, and text formats from a simple XML definition language.'
 arch=('i686' 'x86_64')
@@ -27,11 +28,12 @@ _giturl="https://github.com/${_gitname}/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 #source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz") # <=1.3.7
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz")
-sha256sums=('efa181857c536ef04da0546e2b82f079883ef4bbda043ba368178245e41d4f25')
+sha256sums=('febab24447f4f83686e8f08ef5e2ea1f0fe380a7b3b1c9d106437715e105de02')
 
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
+  export CPPFLAGS="${CPPFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter"
   if [ -f 'autogen.sh' ]; then
     # Postgres wants a config file. Perl won't compile. Python configure claims no but is really yes. db2pdf doesn't work.
     # Configure gives us a Python.h error that needs to be fixed.
@@ -42,6 +44,7 @@ prepare() {
     # From http://sisyphus.ru/en/srpm/Branch5/librlib/spec Version: 1.3.7
     #./configure --disable-static --with-pythonver=%__python_version --disable-postgres --disable-php --disable-perl --disable-python
   fi
+  #sed -i -e 's: -Werror::g' -e 's: -Wextra::g' -e 's: -Wall::g' 'Makefile'
   set +u
 }
 
