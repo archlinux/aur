@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgbase=diaspora
 pkgname=('diaspora-mysql' 'diaspora-postgresql')
-pkgver=0.5.9.1
+pkgver=0.5.10.1
 pkgrel=1
 pkgdesc="A distributed privacy aware social network"
 arch=('i686' 'x86_64')
@@ -146,7 +146,7 @@ package_diaspora-postgresql() {
   _package postgres
 }
 
-sha256sums=('4237ed24433ad87ed960f03d37c0d5d468afd8a151ff26ba761b9613838623b7'
+sha256sums=('7ffba317ef328b29c77708c8e411706effe5e27bd802d2756723d4b627358acf'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'f1770d7cfa2b3344e697ee664f5ab49e7cdeb50e93230a358a1ab5776824c81b'
             '26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be'
