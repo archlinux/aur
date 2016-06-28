@@ -2,14 +2,14 @@
 _pkgname=alsa-lib
 pkgname="${_pkgname}"-noassertion
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative implementation of Linux sound support, built without assertions"
 arch=('i686' 'x86_64')
 url="http://www.alsa-project.org"
 depends=('glibc')
 optdepends=('python2: for python smixer plugin')
 makedepends=('python2')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 license=('GPL')
 source=(ftp://ftp.alsa-project.org/pub/lib/${_pkgname}-$pkgver.tar.bz2)
