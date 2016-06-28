@@ -3,9 +3,9 @@
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.6.1.120
-_pkghash=4ab39d17
-pkgrel=4
+pkgver=1.6.2.123
+_pkghash=e23a7eef
+pkgrel=1
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -25,7 +25,7 @@ optdepends=('libplist: AirPlay support'
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
         'plexhometheater.sh'
 	'fribidi.patch')
-sha256sums=('a537af170dd03a9b4e094cb99b787237ae003f839e267072b3e6e3dbc9335f8a'
+sha256sums=('21375fbe78d894b1ff9e636b9d24a5434a34634495e07981f82d2240a9858e8b'
             'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb'
 	    '966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea')
 prepare() {
