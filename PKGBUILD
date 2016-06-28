@@ -4,7 +4,7 @@
 
 pkgname=ns
 pkgver=2.35
-pkgrel=5
+pkgrel=6
 pkgdesc="Discrete event simulator targeted at networking research"
 url="http://www.isi.edu/nsnam/ns/"
 license=('GPL')
@@ -14,11 +14,13 @@ arch=('i686' 'x86_64')
 source=(http://downloads.sourceforge.net/sourceforge/nsnam/ns-2/"${pkgver}"/ns-src-"${pkgver}".tar.gz
         ns-2.35-linkstate-erase.fix
         ns-2.35-tcl86.patch
-        ns-2.35-getopts.patch)
+        ns-2.35-getopts.patch
+        ns-2.35-gcc-compile-errors.patch)
 sha256sums=('2a32e831bcec7d255042a544577559d15eae67696d0e3d30881cedc1112e2387'
             'aedba646d1bc4d716031f9ea996e6d99c9bb227e7647138cccf39bdd6c069c3a'
             '7aa4a22492f2be37c81fcdc813972a6bde105e183a013d7b814a56f7bcef872c'
-            '4d02ff0cf1c79d67c440c788d7163c7c873a6e4e2970bab3319cbe29f9b20c14')
+            '4d02ff0cf1c79d67c440c788d7163c7c873a6e4e2970bab3319cbe29f9b20c14'
+            'efbbe60f2be7f3daf28eec60437d6d2fc24e8b934e24d6b4b35cbc5a270f88c0')
 
 optdepends=('nam: Tcl/TK based animation tool for viewing network simulation traces',
 	    'xgraph: X-Windows application for interactive plotting and graphing')
@@ -28,6 +30,7 @@ prepare() {
   patch -uNp1 -i ../ns-2.35-linkstate-erase.fix
   patch -uNp1 -i ../ns-2.35-tcl86.patch
   patch -uNp1 -i ../ns-2.35-getopts.patch
+  patch -uNp1 -i ../ns-2.35-gcc-compile-errors.patch
 }
 
 build() {
