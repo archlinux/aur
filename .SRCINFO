@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libmodbus-dev
 	pkgdesc = A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (development version) (mingw-w64)
-	pkgver = 3.1.2
+	pkgver = 3.1.4
 	pkgrel = 1
 	url = http://libmodbus.org/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-libmodbus-dev
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://libmodbus.org/releases/libmodbus-3.1.2.tar.gz
-	md5sums = dd4262f87ed835c4d1e560f8321a222c
+	source = http://libmodbus.org/releases/libmodbus-3.1.4.tar.gz
+	md5sums = b1a8fd3a40d2db4de51fb0cbcb201806
 
 pkgname = mingw-w64-libmodbus-dev
 

@@ -1,7 +1,7 @@
 # Contributor: Stas Elensky <stas-at-flexsys-dot-com-dot-ua>
 
 pkgname=mingw-w64-libmodbus-dev
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (development version) (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-gcc')
 options=(!strip !buildflags staticlibs)
 _pkgfqn="libmodbus-${pkgver}"
 source=("http://libmodbus.org/releases/libmodbus-$pkgver.tar.gz")
-md5sums=('dd4262f87ed835c4d1e560f8321a222c')
+md5sums=('b1a8fd3a40d2db4de51fb0cbcb201806')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,6 +26,9 @@ build() {
 
   # skip tests
   sed -i 's/ tests//' Makefile.am
+
+  # fix for undefined reference to `rpl_malloc'
+  export set ac_cv_func_malloc_0_nonnull=yes
 
   autoreconf --install --symlink --force
 
