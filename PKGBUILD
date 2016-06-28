@@ -21,6 +21,7 @@ optdepends=('python2-vobject: for ics/vcal importing'
               "eod tomorrow", etc.')
 source=('git+https://github.com/insanum/gcalcli')
 md5sums=('SKIP')
+conflicts=('gcalcli')
 _gitname=gcalcli
 
 pkgver() {
