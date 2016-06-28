@@ -18,13 +18,14 @@ source=("${pkgname}-${pkgver}.zip"::"https://github.com/Brewtarget/${pkgname}/ar
 sha512sums=('a0e4ecadfaaaa7f6b2d53f21c5d6d2a54b76dfb29f3210235121b638e385b3b373747a18a3782bae8f5107e6631544d94791d3f8ff1f85fe4f353a0151e68d70')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir -p "${pkgname}-build"
+  cd "${pkgname}-build"
+  cmake "../${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-build"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING.GPLv3 "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPLv3"
+  install -Dm644 "../${pkgname}-${pkgver}/COPYING.GPLv3" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPLv3"
 }
