@@ -1,0 +1,16 @@
+pkgbase = papirus-dark-konsole-colorscheme-git
+	pkgdesc = Papirus Dark color scheme for Konsole (git version)
+	pkgver = 20160606
+	pkgrel = 1
+	url = https://github.com/droserasprout/papirus-dark-konsole-colorscheme
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = konsole
+	options = !strip
+	source = papirus-dark-konsole-colorscheme-git::git+https://github.com/droserasprout/papirus-dark-konsole-colorscheme.git
+	sha256sums = SKIP
+
+pkgname = papirus-dark-konsole-colorscheme-git
+
