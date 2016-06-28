@@ -1,0 +1,12 @@
+pkgbase = ruby-cancan
+	pkgdesc = Simple authorization solution for Rails which is decoupled from user roles
+	pkgver = 1.6.10
+	pkgrel = 1
+	url = http://github.com/ryanb/cancan
+	arch = any
+	license = unknown
+	source = https://rubygems.org/downloads/cancan-1.6.10.gem
+	sha256sums = 04ac3df0bae528c2304bf3e523f64cbaa5d4345bedaccd0c33b8635104862d23
+
+pkgname = ruby-cancan
+
