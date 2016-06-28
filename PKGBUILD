@@ -1,8 +1,8 @@
 #Maintainer: Musikolo<musikolo {at} hotmail [dot] com>
 #Contributor: Martin špelina<shpelda [at]gmail[dot]com>
 pkgname=dbvis
-pkgver=9.2.15
-__pkgver_underscore=9_2_15
+pkgver=9.5
+__pkgver_underscore=9_5
 pkgrel=1
 pkgdesc="DbVisualizer free - The Universal Database Tool"
 url="http://www.dbvis.com/"
@@ -11,7 +11,7 @@ arch=('any')
 depends=('java-runtime')
 makedepends=(coreutils sed grep unzip)
 source=('http://www.dbvis.com/product_download/'$pkgname'-'$pkgver'/media/'$pkgname'_unix_'$__pkgver_underscore'.tar.gz')
-sha256sums=('46f7e07484c9f464cd4c12533b7b76d6d72024ca22fbd9011fccce3e61550891')
+sha256sums=('1bdc03039b50807206fd72ecf8ba0b940f5bb0386f483e10b7c0b2fa75cac021')
 
 package() {
   __dbvis_lib=/usr/share/java/$pkgname
@@ -63,10 +63,11 @@ package() {
 
   #install icons
   __dbvis_temp=/tmp/dbvis.pkgbuild.$$ 
-  unzip -o -j lib/dbvis.jar "images/ix2/toolIcon*.png" -d $__dbvis_temp
+  unzip -o -j lib/dbvis.jar "images/ix3/dbvis-icon*.png" -d $__dbvis_temp
+  rm $__dbvis_temp/{*@2x.png,*white.png}
   for i in $__dbvis_temp/*;do
     __dbvis_icon_source=`basename $i`
-    __dbvis_icon_resolution=`echo $__dbvis_icon_source | sed 's/.*toolIcon\([^.]*\)\.png/\1/g'`;
+    __dbvis_icon_resolution=`echo $__dbvis_icon_source | sed 's/.*dbvis-icon\([^.]*\)\.png/\1/g'`;
     __dbvis_icon_resolved=`echo $__dbvis_icon | sed 's/@@RESOLUTION@@/'$__dbvis_icon_resolution'/g'`
     mkdir -p `dirname $pkgdir/$__dbvis_icon_resolved`;
     mv $i $pkgdir/$__dbvis_icon_resolved
