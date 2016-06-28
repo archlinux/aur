@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=('python-gitsome')
+pkgname=('gitsome')
 _module='gitsome'
 pkgver='0.6.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="A Supercharged Git/Shell Autocompleter with GitHub Integration."
 url="https://github.com/donnemartin/gitsome"
 depends=('python' 'python-ply' 'python-prompt_toolkit' 'python-requests' 'python-colorama' 'python-click' 'python-pygments' 'python-feedparser' 'python-pytz' 'python-docopt' 'python-uritemplate.py' 'python-numpydoc')
