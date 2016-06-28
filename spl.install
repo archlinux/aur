@@ -27,5 +27,5 @@ check_hostid() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.6.2-1-ARCH
+    depmod -a 4.6.3-1-ARCH
 }
