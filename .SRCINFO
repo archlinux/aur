@@ -1,0 +1,27 @@
+pkgbase = citra-nightly-bin
+	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
+	pkgver = 9cde5cb
+	pkgrel = 1
+	url = https://github.com/citra-emu/citra/
+	arch = x86_64
+	license = GPL
+	provides = citra
+	provides = citra-qt
+	source = https://builds.citra-emu.org/citra/nightly/citra-latest-linux-amd64.tar.xz,
+	source = https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop,
+	source = https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = citra-nightly-bin
+	depends = sdl2
+	depends = libpng
+
+pkgname = citra-qt-nightly-bin
+	depends = qt5-base
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	optdepends = libxkbcommon-x11: for X11 support
+	optdepends = qt5-wayland: for Wayland support
+
