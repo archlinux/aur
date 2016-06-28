@@ -1,9 +1,5 @@
-file('.SRCINFO') do |t|
-  sh "makepkg --printsrcinfo > #{t.name}"
-end
+task :info  do; sh "makepkg --printsrcinfo > .SRCINFO"; end
+task :build do; sh "makepkg"; end
 
-task :build do |t|
-  sh "makepkg"
-end
-
-task :default => [:build,'.SRCINFO']
+desc "build package in info file"
+task :default => [:build,:info]
