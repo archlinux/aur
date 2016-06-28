@@ -1,6 +1,6 @@
-diff -aur a/quisk-4.0.3/makefile b/quisk-4.0.1/makefile
---- a/quisk-4.0.4/makefile	2014-10-29 13:12:20.000000000 +0200
-+++ b/quisk-4.0.4/makefile	2014-10-29 23:57:32.359350909 +0100
+diff -aur a/quisk-4.1.1/makefile b/quisk-4.1.1/makefile
+--- a/quisk-4.1.1/makefile	2014-10-29 13:12:20.000000000 +0200
++++ b/quisk-4.1.1/makefile	2014-10-29 23:57:32.359350909 +0100
 @@ -1,6 +1,6 @@
  
  all:
