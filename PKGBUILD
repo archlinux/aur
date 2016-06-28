@@ -2,8 +2,8 @@
 
 _pkgname=demlo
 pkgname=$_pkgname
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.org/$_pkgname/"
@@ -12,7 +12,7 @@ depends=("ffmpeg" "lua51" "taglib")
 makedepends=("go" "git")
 optdepends=("chromaprint: Internet tagging")
 source=("$_pkgname-$pkgver.tar.gz::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.gz")
-md5sums=('17718df8412cb1aa62f9a5ba4b64c1fe')
+md5sums=('be7510d6f5d38bf980e0ed4f49a75550')
 _gourl="bitbucket.org/ambrevar/$_pkgname"
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
 	cd "$srcdir"
 	rm -rfv "src/$_gourl"
 	mkdir -p "src/bitbucket.org/ambrevar"
-	mv "ambrevar-$_pkgname-3346f42d82c8" "src/$_gourl"
+	mv "ambrevar-$_pkgname-0a723c3467bf" "src/$_gourl"
 }
 
 build() {
