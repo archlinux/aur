@@ -1,7 +1,7 @@
 pkgbase = phoenix-git
 	pkgdesc = A super-slick libretro frontend powered by Qt 5
 	pkgver = r1270.f77e221
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/team-phoenix/Phoenix
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = phoenix-git
 	optdepends = libretro-snes9x
 	provides = phoenix
 	conflicts = phoenix
-	source = git+https://github.com/team-phoenix/Phoenix.git
+	source = git+https://github.com/team-phoenix/Phoenix.git#commit=f77e221415a911365d311d412153590b59c1730a
 	md5sums = SKIP
 
 pkgname = phoenix-git
