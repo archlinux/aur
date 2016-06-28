@@ -1,21 +1,24 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-_ver='2.5.6'
+_ver='2.5.8'
 _quagga='quagga'
 _cumulus='CumulusNetworks'
 pkgname="${_quagga}_cumulus"
 pkgver='0.99.23.1'
-pkgrel='1'
-pkgdesc="Routing daemon suite with Cumulus Network patches. Support Multi-Instance OSPF."
+pkgrel='2'
+pkgdesc="Routing daemon suite with ${_cumulus} patches. Support Multi-Instance OSPF."
 arch=('i686' 'x86_64')
 url="https://github.com/${_cumulus}/${_quagga}"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c')
+makedepends=('patch' 'gcc' 'grep')
 conflicts=("${_quagga}")
 provides=("${_quagga}")
 install="${_quagga}.install"
-source=("${url}/archive/${_cumulus}/${_ver}.tar.gz"
+source=("http://download.savannah.gnu.org/releases/${_quagga}/${_quagga}-${pkgver}.tar.gz"
+	"http://http.debian.net/debian/pool/main/q/${_quagga}/${_quagga}_0.99.22.4-1+wheezy2.debian.tar.gz"
+	"http://oss.cumulusnetworks.com/CumulusLinux-${_ver}.tar.gz"
         "${_quagga}.sysusers"
         "${_quagga}.tmpfiles"
         "babeld.service"
@@ -28,8 +31,10 @@ source=("${url}/archive/${_cumulus}/${_ver}.tar.gz"
         "ripd.service"
         "ripngd.service"
         "zebra.service"
-        "${_quagga}-${_cumulus}-${_ver}_json-c.patch")
-sha256sums=('daa2b3bb9515dabc5ad5fdc159b3739f8aadf7b966cc61989617178fb3def000'
+        "${_quagga}-${_cumulus}-2.5.6_json-c.patch")
+sha256sums=('3abf2046bc27539ce2d17c238e06c8fd0d479a8e402580c6aa455808bd48e004'
+            '091e57dfe070c70264079e436999dd629cbe18f03a4eaff29cd87718669e05de'
+            'd378608d28b32e9200dd3e9377e2a81fd9be81bcc2bdacfcfe0c7c4264e02399'
             'b531818654f9656c6a07127707785e55f7b3bd14568849e2f63c8f8e761223d0'
             '4debff53306539b79d8e3e08844081a388f1897cee20bf2bc84e0efaff40fd9b'
             '105b8eac3c7d7dc2f1fffa382a2d9d6bf86182c9462708465a5d7216e2be41bd'
@@ -45,14 +50,22 @@ sha256sums=('daa2b3bb9515dabc5ad5fdc159b3739f8aadf7b966cc61989617178fb3def000'
             '8a41060483d3b3b8645ffb18519efc3799c7819d1cfedc12c33eeb72483bd312')
 
 prepare() {
-  cd "${_quagga}-${_cumulus}-${_ver}"
+  # Cumulus patch set loads to Debian dpkg sources
+  cp -ax "${srcdir}/debian" "${srcdir}/${_quagga}-${pkgver}"
+  sed -i 1d "${srcdir}/patches/${_quagga}/series"
+
+  cd "${srcdir}/${_quagga}-${pkgver}"
+  for p in $(< "${srcdir}/patches/${_quagga}/series"); do
+    echo -e "Applying ${_cumulus} patch: ${p}"
+    patch -p1 -i "${srcdir}/patches/${_quagga}/${p}"
+  done
 
   # json in Debian = json-c in Arch
-  patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-${_ver}_json-c.patch"
+  patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-2.5.6_json-c.patch"
 }
-build() {
-  cd "${_quagga}-${_cumulus}-${_ver}"
 
+build() {
+  cd "${srcdir}/${_quagga}-${pkgver}"
   autoreconf -i
   ./configure \
     --prefix=/usr \
@@ -60,6 +73,17 @@ build() {
     --sysconfdir=/etc/quagga \
     --localstatedir=/run/quagga \
     --enable-exampledir=/usr/share/doc/quagga/examples \
+    --enable-ipv6 \
+    --enable-doc \
+    --enable-zebra \
+    --enable-bgpd \
+    --enable-ripd \
+    --enable-ripngd \
+    --enable-ospfd \
+    --enable-ospf-te \
+    --enable-opaque-lsa \
+    --enable-ospf6d \
+    --enable-babeld \
     --enable-vtysh \
     --enable-isisd \
     --enable-isis-topology \
@@ -72,15 +96,14 @@ build() {
     --enable-group=quagga \
     --enable-configfile-mask=0640 \
     --enable-logfile-mask=0640 \
-    --enable-ospf-te \
-    --enable-opaque-lsa \
     --enable-systemd=yes \
-    --enable-poll=yes
+    --enable-poll=yes \
+    --enable-tcp-zebra
   make
 }
 
 package() {
-  pushd "${_quagga}-${_cumulus}-${_ver}"
+  pushd "${srcdir}/${_quagga}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 "redhat/${_quagga}.logrotate" "$pkgdir/etc/logrotate.d/${_quagga}"
