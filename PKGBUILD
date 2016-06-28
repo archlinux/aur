@@ -3,13 +3,13 @@
 
 pkgname=brewtarget
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="http://www.brewtarget.org/"
 arch=('x86_64' 'i686')
 license=('GPL3'
          'WTFPL-2')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-svg' 'phonon')
+depends=('qt5-tools' 'qt5-multimedia' 'qt5-webkit' 'qt5-svg')
 optdepends=()
 makedepends=('cmake')
 conflicts=("${pkgname}-git")
