@@ -1,0 +1,20 @@
+update_helptag() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done. "
+}
+
+post_install() {
+    update_helptag
+    echo "To use it for thesaurus query:"
+    echo "    In normal or visual mode: $(tput bold)<leader>cs$(tput sgr0)"
+    echo "    in insert mode with cursor at end of target word: $(tput bold)<c-x><c-u>$(tput sgr0)"
+}
+
+post_upgrade() {
+    update_helptag ${1}
+}
+
+post_remove() {
+    update_helptag
+}
