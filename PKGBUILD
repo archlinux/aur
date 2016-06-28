@@ -1,8 +1,8 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
-_pkgname="fatrat"
+_pkgname='fatrat'
 pkgname="$_pkgname-git"
-pkgver=1.2.0_beta2.37.gcd646de
+pkgver=1.2.0_beta2.38.gd215e77
 pkgrel=1
 pkgdesc='Qt Download/Upload Manager'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://fatrat.dolezel.info'
 license=('custom: GPL2 + complement')
 depends=('curl' 'libtorrent-rasterbar<=1:1.0.9' "qt5-"{tools,svg,webengine})
 optdepends=('desktop-file-utils: add application to MIME database')
-makedepends=('git' 'cmake' 'boost' 'qt5-webkit')
+makedepends=('git' 'cmake' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/LubosD/fatrat.git")
