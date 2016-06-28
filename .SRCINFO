@@ -1,0 +1,16 @@
+pkgbase = ruby-jquery-rails
+	pkgdesc = Provides jQuery and the jQuery-ujs driver for your Rails 4+ application
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://rubygems.org/gems/jquery-rails
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rails-dom-testing
+	depends = ruby-railties
+	depends = ruby-thor
+	source = https://rubygems.org/downloads/jquery-rails-4.1.1.gem
+	sha256sums = 413a5046709d4ba36742df1cd8ec15e1ba5369710739b970c283380c53ce4bab
+
+pkgname = ruby-jquery-rails
+
