@@ -2,8 +2,8 @@
 
 _pkgname=nm-tray
 pkgname=$_pkgname-git
-pkgver=r34.261cfb6
-pkgrel=2
+pkgver=r37.abbe586
+pkgrel=1
 pkgdesc='Pure Qt NetworkManager front-end residing in panels'
 arch=('i686' 'x86_64')
 url='https://github.com/palinek/nm-tray'
