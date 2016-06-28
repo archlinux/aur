@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=oce
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
@@ -10,7 +10,7 @@ license=('GPLv2.1')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oce.sh 99_oce.conf)
-md5sums=('36c67b87093c675698b483454258af91'
+md5sums=('bf2226be4cd192606af677cf178088e5'
          '606e400a97d9947459e4de2eca65f04c'
          '167a9f5c94a16d7855c3ac99e34a4506')
 
@@ -31,8 +31,8 @@ build() {
 package() {
   cd oce-OCE-${pkgver}/build
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ${srcdir}/oce-OCE-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
-  install -Dm644 ${srcdir}/oce-OCE-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
+  install -Dm644 "${srcdir}/oce-OCE-${pkgver}/LICENSE_LGPL_21.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
+  install -Dm644 "${srcdir}/oce-OCE-${pkgver}/OCCT_LGPL_EXCEPTION.txt" "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
   
   install -m644 -D "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
   install -m755 -D "${srcdir}/99_oce.sh" -t "${pkgdir}/etc/profile.d"
