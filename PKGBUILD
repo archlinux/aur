@@ -1,14 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vuvuzela-git
-pkgver=20151205
+pkgver=20160420
 pkgrel=1
 pkgdesc="Scalable Private Messaging"
 arch=('i686' 'x86_64')
 depends=('ncurses')
 makedepends=('git' 'go')
 url="https://github.com/davidlazar/vuvuzela"
-license=('GPL')
+license=('AGPL3')
 source=(git+https://github.com/davidlazar/vuvuzela)
 sha256sums=('SKIP')
 provides=('vuvuzela')
@@ -23,7 +23,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  GOPATH="$srcdir" TMPDIR=/tmp go get -u github.com/davidlazar/vuvuzela/...
+  GOPATH="$srcdir" TMPDIR=/tmp go get -u -v github.com/davidlazar/vuvuzela/...
 }
 
 package() {
@@ -33,7 +33,7 @@ package() {
   install -dm 755 "$pkgdir/usr/share/doc/${pkgname%-git}"
   for _doc in README.md confs screenshots; do
     cp -dpr --no-preserve=ownership $_doc \
-       -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+      "$pkgdir/usr/share/doc/${pkgname%-git}"
   done
 
   msg2 'Installing executables...'
