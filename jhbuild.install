@@ -1,13 +1,10 @@
 post_install() {
-    usr/bin/update-jhbuild-cfgs
+    cat << _EOF
+Now, create your ~/.config/jhbuildrc file. For an example, see:
+    /usr/share/jhbuild/examples/sample.jhbuildrc
 
-    echo 'Now, look at'
-    echo
-    echo '    http://git.gnome.org/browse/jhbuild/tree/examples/sample.jhbuildrc'
-    echo
-    echo 'and create your ~/.config/jhbuildrc file.'
-}
+For a list of modulesets, see:
+    https://git.gnome.org/browse/jhbuild/tree/modulesets
 
-post_upgrade() {
-    usr/bin/update-jhbuild-cfgs
+_EOF
 }
