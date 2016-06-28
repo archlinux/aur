@@ -1,6 +1,6 @@
 pkgbase = python-hg
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.6.0a0.r101162+.f4c6dab59cd8+
+	pkgver = 3.6.0a0.r102219+.e5063a82f490+
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686

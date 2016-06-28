@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.6.0a0.r101162+.f4c6dab59cd8+
+pkgver=3.6.0a0.r102219+.e5063a82f490+
 pkgrel=1
 _pybasever=3.6
 _pkgname=cpython
@@ -65,13 +65,13 @@ package() {
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \
-    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m/libpython${_pybasever}m.so"
+    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
 
   # Fix pycairo build
   ln -sf python3.6m-config "${pkgdir}/usr/bin/python3.6-config"
 
   # Clean-up reference to build directory
-  sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m/Makefile"
+  sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
