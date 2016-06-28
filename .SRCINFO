@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-slide-for-keyboard-git
+	pkgdesc = Shows virtual keyboard with a slide from the bottom screen edge.
+	pkgver = r6.da19b12
+	pkgrel = 1
+	url = https://github.com/schuhumi/gnome-shell-extension-slide-for-keyboard
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/schuhumi/gnome-shell-extension-slide-for-keyboard
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-slide-for-keyboard-git
+
