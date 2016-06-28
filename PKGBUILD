@@ -1,8 +1,8 @@
 # Maintainer: Ralf Mueller <stark.dreamdetective@gmail.com>
 # Contributor: Ralf Mueller <stark.dreamdetective@gmail.com>
 pkgname=cdo
-pkgver=1.7.1
-fileID=12070
+pkgver=1.7.2
+fileID=12760
 pkgrel=0
 pkgdesc="CDO is a collection of command line Operators to manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
@@ -16,11 +16,10 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f513a4bef1cf081cab3cfdc79d177bc5')
+md5sums=('f08e4ce8739a4f2b63fc81a24db3ee31')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p0 <../../isnan.patch
   ./configure --prefix=/usr \
     --with-netcdf=/usr \
     --with-udunits2=/usr \
