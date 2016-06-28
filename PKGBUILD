@@ -2,7 +2,7 @@
 
 pkgname=gnome-twofactorauth
 _gitname=Gnome-TwoFactorAuth
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Two-Factor Authentication code generator for Gnome'
 arch=('i686' 'x86_64')
