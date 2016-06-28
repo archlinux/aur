@@ -1,16 +1,17 @@
 pkgbase = sshprint
 	pkgdesc = A ZSH script to print local files on remote printers using SSH
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/hv15/sshprint
 	install = sshprint.install
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	depends = openssh
 	depends = zsh
 	depends = gawk
-	source = https://github.com/hv15/sshprint/archive/1.6.2-beta.tar.gz
-	md5sums = 7516b88549057ef577ae7904e3328e46
+	source = https://github.com/hv15/sshprint/archive/1.6.3-beta.tar.gz
+	md5sums = 4435f2d92d1cd18d4d7388918535fd78
 
 pkgname = sshprint
 

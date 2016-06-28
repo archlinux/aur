@@ -1,19 +1,20 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 at hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 pkgname=sshprint
-pkgver=1.6.2
-_pkgrel=beta
+pkgver=1.6.3
 pkgrel=1
+_pkgrel=beta
 pkgdesc="A ZSH script to print local files on remote printers using SSH"
 arch=('any')
 url="https://github.com/hv15/sshprint"
 license=('MIT')
+changelog='CHANGELOG.md'
 install=sshprint.install
 depends=('openssh' 'zsh' 'gawk')
 source=("https://github.com/hv15/sshprint/archive/${pkgver}-${_pkgrel}.tar.gz")
-md5sums=('7516b88549057ef577ae7904e3328e46')
+md5sums=('4435f2d92d1cd18d4d7388918535fd78')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}"
+  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}"
   # place the doc
   install -d "${pkgdir}/usr/share/doc/sshprint"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/sshprint/README"
@@ -24,3 +25,4 @@ package() {
   # place the script
   install -Dm755 "sshprint" "${pkgdir}/usr/bin/sshprint"
 }
+# vim:ts=2 sw=2
