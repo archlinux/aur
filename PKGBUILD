@@ -1,7 +1,8 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 
 _pyname=pyFFTW
-pkgname=python-pyfftw
+pkgname=("python-pyfftw" "python2-pyfftw")
+pkgbase="python-pyfftw"
 pkgver=0.10.4
 pkgrel=1
 pkgdesc='A pythonic wrapper around FFTW.'
@@ -23,8 +24,14 @@ build() {
   python setup.py test
 }
 
-package() {
+package_python-pyfftw() {
   cd $srcdir/$_pyname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-pyfftw() {
+  cd $srcdir/$_pyname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1 
   install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
