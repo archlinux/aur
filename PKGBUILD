@@ -3,13 +3,13 @@
 
 pkgname=pepper
 pkgver=0.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/taylor001/crown"
 license=('MIT' 'GPL')
-depends=('glib2'
-         'gtk3'
+depends=('glib2>=2.40'
+         'gtk3>=3.14'
          'libgl'
          'libpulse'
          'libx11'
