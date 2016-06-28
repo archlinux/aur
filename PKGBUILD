@@ -2,7 +2,7 @@
 
 pkgname=minetest-mod-mobs_redo-git
 _gitname=${pkgname%-git*}
-pkgver=265.55c0ed5
+pkgver=44.80ba7db
 pkgrel=1
 pkgdesc='Mobs Redo mod for Minetest'
 arch=('any')
