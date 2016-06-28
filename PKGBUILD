@@ -3,6 +3,7 @@
 # Contributor: Nagisa <simonas@kazlauskas.me>
 # Contributor: Misc <andreas.reis@gmail.com>
 # Contributor: Jeagoss <jgoliver@jeago.com>
+# Contributor: Saikrishna Arcot <saiarcot895@gmail.com> (Author of https://github.com/saiarcot895/chromium-ubuntu-build/blob/master/debian/patches/enable_vaapi_on_linux.diff)
 
 #########################
 ## -- Build options -- ##
