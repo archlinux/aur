@@ -16,14 +16,16 @@ depends_x86_64=(
 	'lib32-libsm'
 	'lib32-libxinerama'
 	'lib32-libxrender'
-	'lib32-libjpeg6-turbo')
+	'lib32-libjpeg6-turbo'
+  'libxtst')
 depends_i686=(
 	'fontconfig'
 	'libpng12'
 	'libsm'
 	'libxinerama'
 	'libxrender'
-	'libjpeg6-turbo')
+	'libjpeg6-turbo'
+  'libxtst')
 install=teamviewer.install
 source_x86_64=("https://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("https://download.teamviewer.com/download/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
