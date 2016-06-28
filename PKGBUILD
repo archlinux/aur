@@ -3,14 +3,14 @@
 pkgname=gtk-theme-adapta-git
 _pkgname=Adapta
 _pkgauthor=tista500
-pkgver=347.32157e8
+pkgver=1095.a4b9982
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines - git master"
 arch=('any')
 url="https://github.com/tista500/${_pkgname}"
 license=('GPLv2')
-depends=('gtk3' 'gdk-pixbuf2')
-makedepends=('git')
+depends=('gtk2' 'gtk3' 'gdk-pixbuf2' 'gtk-engine-murrine')
+makedepends=('git' 'autoconf' 'automake' 'inkscape' 'glib2' 'libxml2' 'ruby-bundler' 'ruby-sass')
 source=(${_pkgname}::"git+https://github.com/tista500/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('adapta-gtk-theme')
@@ -22,10 +22,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh --prefix=/usr
+	./autogen.sh --prefix=/usr --enable-chrome --enable-plank
 }
 
 package() {
-	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}"
+  make
+	make DESTDIR="${pkgdir}" install
 }
 
