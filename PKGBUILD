@@ -16,8 +16,8 @@ url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
 source=('packettracer' 'linguist' 'packettracer.sh')
-source_i686=('http://PacketTracer70_32bit_linux.tar.gz')
-source_x86_64=('http://PacketTracer70_64bit_linux.tar.gz')
+source_i686=('local://PacketTracer70_32bit_linux.tar.gz')
+source_x86_64=('local://PacketTracer70_64bit_linux.tar.gz')
 sha512sums=(
 '3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
 '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')

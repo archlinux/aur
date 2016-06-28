@@ -1,20 +1,5 @@
-packtracer_update_cache_database() {
-  gtk-update-icon-cache -f -q /usr/share/icons/hicolor
-  update-desktop-database -q
-  update-mime-database /usr/share/mime
-}
-
 post_install() {
-  packtracer_update_cache_database
   echo "### NOTICE ###"
   echo "Please read the EULA at /usr/share/licenses/packettracer/eula.txt and uninstall if you do not agree."
-}
-
-post_upgrade() {
-  packtracer_update_cache_database
-}
-
-post_remove() {
-  packtracer_update_cache_database
 }
 
