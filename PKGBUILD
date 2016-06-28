@@ -9,7 +9,7 @@ pkgname=icecat
 pkgver=38.8.0
 _pkgver=38.8.0-gnu2
 _pkgverbase=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Firefox browser."
 arch=(i686 x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -38,7 +38,7 @@ source=(http://ftpmirror.gnu.org/gnuzilla/${_pkgver}/${pkgname}-${_pkgver}.tar.b
 
 sha256sums=('0b0a323c7e167c3d23df9c1d33d2ca2d8c5deaca3f43841f4b2a5fac7f5067f9'
             'SKIP'
-            'e7c819ab41ad96c19c976243b881fc35645db4becf398c98f69d366507999c91'
+            'abaecb3101c6731a2303ef6a874179f5fa9514f5d00fe5bbe3258142a1475c60'
             'c44eab35f71dd3028a74632463710d674b2e8a0682e5e887535e3233a3b7bbb3'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
