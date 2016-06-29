@@ -1,49 +1,35 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
-pkgver=2.8.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=(http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/${pkgname}_${pkgver}.orig.tar.gz)
-depends=('python2-pyqt4' 'python2-notify' 'rtmpdump')
+depends=('python-pyqt5')
 optdepends=('cronie: for differed download')
-md5sums=('4a16eea0aa640eb34ccb88b9e4abd401')
+md5sums=('5f84ef5b5e64a75ac90aab3cbf8a1e62')
 
 package() {
 	cd $srcdir/${pkgname}-${pkgver}
-
-	# Python2 fix
-	sed -i 's_python_python2_' qarte
-	sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' qarte.py
-
-	# For crontab
-	sed -i "/.replace('<root>', root)/ s/.*/                                    .replace('python', 'python2')\\\\\n&/" differedTask.py
-	sed -i 's/from crontab.crontab import CronTab/from crontab import CronTab/g' differedTask.py
-
-	# Fix chmod on loaders.py
-	chmod 755 loaders.py
 
 	# Man compression
 	gzip qarte.1
 
 	bin_dir="$pkgdir/usr/bin"
-	doc_dir="$pkgdir/usr/share/doc/${pkgname}-${pkgver}"
 	man_dir="$pkgdir/usr/share/man/man1"
 	application_dir="$pkgdir/usr/share/applications"
 	pixmaps_dir="$pkgdir/usr/share/pixmaps"
 	qarte_dir="$pkgdir/usr/share/${pkgname}"
 
 	mkdir -p $bin_dir
-	mkdir -p $doc_dir
 	mkdir -p $man_dir
 	mkdir -p $application_dir
 	mkdir -p $pixmaps_dir
 	mkdir -p $qarte_dir
 
 	mv qarte $bin_dir
-	mv README $doc_dir
 	mv qarte.1.gz $man_dir
 	mv q_arte.desktop $application_dir
 	mv qarte.png $pixmaps_dir
