@@ -1,6 +1,6 @@
 pkgbase = sagittarius
 	pkgdesc = R6RS/R7RS Scheme system.
-	pkgver = 0.7.3
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://bitbucket.org/ktakashi/sagittarius-scheme/wiki/Home
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sagittarius
 	depends = libffi
 	depends = zlib
 	depends = unixodbc
-	source = https://bitbucket.org/ktakashi/sagittarius-scheme/downloads/sagittarius-0.7.3.tar.gz
-	md5sums = cac054ff7b4c01cc03485b7d91c3fd61
+	source = https://bitbucket.org/ktakashi/sagittarius-scheme/downloads/sagittarius-0.7.5.tar.gz
+	md5sums = ff9151208808f449e8ae3df87c7a2899
 
 pkgname = sagittarius
 
