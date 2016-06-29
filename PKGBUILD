@@ -1,38 +1,27 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.2.0
-_pkgver=10.02
+pkgver=10.2.2
+_pkgver=10.02.p02
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
          'xerces-c'
-	 # qt group
-         'qt5-base'
          'qt5-connectivity'
-         'qt5-declarative'
-         'qt5-enginio'
          'qt5-graphicaleffects'
          'qt5-imageformats'
-         'qt5-location'
          'qt5-multimedia'
          'qt5-quick1'
          'qt5-quickcontrols'
-         'qt5-script'
-         'qt5-sensors'
          'qt5-serialport'
          'qt5-svg'
          'qt5-tools'
          'qt5-translations'
          'qt5-wayland'
-         'qt5-webchannel'
          'qt5-webengine'
-         'qt5-webkit'
          'qt5-websockets'
          'qt5-x11extras'
-         'qt5-xmlpatterns'
          'glu'
          'soxt'
-         'mesa'
         )
 replaces=('geant4-deb')
 optdepends=('java-environment: for histogram visualizations and
@@ -56,7 +45,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('ce96232e6301562f483e0409a1079541'
+md5sums=('6aae1d0fc743b0edc358c5c8fbe48657'
          '8b7f137c5f36006a8589d717059b5464')
 
 ## Remove this if you want to keep an even smaller package
