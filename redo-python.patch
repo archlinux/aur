@@ -1,0 +1,142 @@
+diff --git a/Documentation/md2man.py b/Documentation/md2man.py
+index 54c1918..b7178a1 100755
+--- a/Documentation/md2man.py
++++ b/Documentation/md2man.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os, markdown, re
+ from BeautifulSoup import BeautifulSoup
+ 
+diff --git a/install.do b/install.do
+index 9a736f0..7fa80b1 100644
+--- a/install.do
++++ b/install.do
+@@ -26,7 +26,7 @@ for d in *.py version/*.py; do
+ 	fix=$(echo $d | sed 's,-,_,g')
+ 	$INSTALL -m 0644 $d $LIBDIR/$fix
+ done
+-python -mcompileall $LIBDIR
++python2 -mcompileall $LIBDIR
+ 
+ # It's important for the file to actually be named 'sh'.  Some shells (like
+ # bash and zsh) only go into POSIX-compatible mode if they have that name.
+@@ -37,7 +37,7 @@ for dd in redo*.py; do
+ 	d=$(basename $dd .py)
+ 	fix=$(echo $d | sed -e 's,-,_,g')
+ 	cat >install.wrapper <<-EOF
+-		#!/usr/bin/python
++		#!/usr/bin/env python2
+ 		import sys, os;
+ 		exedir = os.path.dirname(os.path.abspath(sys.argv[0]))
+ 		sys.path.insert(0, os.path.join(exedir, '../lib/redo'))
+diff --git a/redo-always.py b/redo-always.py
+index d8ddb9b..3f2b569 100755
+--- a/redo-always.py
++++ b/redo-always.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ import vars, state
+ from log import err
+diff --git a/redo-ifchange.py b/redo-ifchange.py
+index 5cb92fb..e1f1cae 100755
+--- a/redo-ifchange.py
++++ b/redo-ifchange.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ 
+ import vars_init
+diff --git a/redo-ifcreate.py b/redo-ifcreate.py
+index 08a9cd4..63baa89 100755
+--- a/redo-ifcreate.py
++++ b/redo-ifcreate.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ import vars, state
+ from log import err
+diff --git a/redo-ood.py b/redo-ood.py
+index 433d7ea..7485f05 100755
+--- a/redo-ood.py
++++ b/redo-ood.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ 
+ import vars_init
+diff --git a/redo-sources.py b/redo-sources.py
+index 5c54aba..6b89ece 100755
+--- a/redo-sources.py
++++ b/redo-sources.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ 
+ import vars_init
+diff --git a/redo-stamp.py b/redo-stamp.py
+index 2862fe5..87989d6 100755
+--- a/redo-stamp.py
++++ b/redo-stamp.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ import vars, state
+ from log import err, debug2
+diff --git a/redo-targets.py b/redo-targets.py
+index afb6356..ab953fb 100755
+--- a/redo-targets.py
++++ b/redo-targets.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ 
+ import vars_init
+diff --git a/redo-unlocked.py b/redo-unlocked.py
+index 06759a3..bc49001 100755
+--- a/redo-unlocked.py
++++ b/redo-unlocked.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ import state
+ from log import err
+diff --git a/redo.py b/redo.py
+index 1298d0e..52a25d7 100755
+--- a/redo.py
++++ b/redo.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os
+ import options
+ from helpers import atoi
+diff --git a/t/101-atime/tick b/t/101-atime/tick
+index f40e325..787574a 100755
+--- a/t/101-atime/tick
++++ b/t/101-atime/tick
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import time
+ 
+ t1 = int(time.time())
+diff --git a/t/flush-cache b/t/flush-cache
+index 53e5af6..f96abf1 100755
+--- a/t/flush-cache
++++ b/t/flush-cache
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import sys, os, sqlite3
+ 
+ if "DO_BUILT" in os.environ:
