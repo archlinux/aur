@@ -23,13 +23,13 @@ prepare() {
   cd "$pkgname" || exit
   git submodule update --init --recursive
   mkdir build
+  sed 's/python2.7/python3.5/g' -i lib/xpp/CMakeLists.txt
 }
 
 build() {
   cd "${pkgname}/build" || exit
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
-  sed 's/python2.7/python3.5/g' -i lib/xpp/CMakeLists.txt
 }
 
 package() {
