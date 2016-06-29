@@ -1,7 +1,7 @@
 pkgbase = lima
 	pkgdesc = Personal Cloud software
-	pkgver = 1.1.0beta
-	pkgrel = 2
+	pkgver = 1.1.1beta
+	pkgrel = 1
 	url = https://meetlima.com
 	install = lima.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = lima
 	depends = fuse
 	optdepends = python2-gnomekeyring: Gnome Keyring support
 	optdepends = kdebindings-python2: KWallet support
-	source = https://static.meetlima.com/linux-client/lima-1.1.0beta-amd64.tgz
+	source = https://static.meetlima.com/linux-client/lima-1.1.1beta-amd64.tgz
 	source = lima.service
-	sha256sums = 1b845f976c127c9abe0f46c51347e9c74afd69a1cda35289f470c861ca92f8db
+	sha256sums = 02be5205081b22ca09fc9a7d1e0546e0f952ee15640aa6c6b0f2f40fe1871e61
 	sha256sums = 68662c1437f88403f38b0e80da3b2b546512fe524b791cba27791cd2d5033e7c
 
 pkgname = lima

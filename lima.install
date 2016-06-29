@@ -1,7 +1,13 @@
 post_install () {
+    echo "To use Lima with systemd, run \`systemctl --user daemon-reload\` first."
     echo "To start the Lima service, run \`systemctl --user start lima.service\`."
     echo "To start automatically on login, run \`systemctl --user enable lima.service\`."
     echo "For more information, run \`lima help\` and \`lima readme\`."
+}
+
+post_upgrade () {
+    echo "If you use systemd to run Lima, run \`systemctl --user daemon-reload\`"
+    echo "followed by \`systemctl --user restart lima.service\` now."
 }
 
 post_remove () {
