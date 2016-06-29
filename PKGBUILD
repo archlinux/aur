@@ -1,10 +1,10 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=cryfs
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Cryptographic filesystem for the cloud"
-arch=('i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'crypto++'
@@ -17,7 +17,7 @@ url="https://www.cryfs.org"
 license=('LGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/$pkgver
         git+https://github.com/cryfs/cryfs.wiki)
-sha256sums=('6ebbeaee71ac9b2416d2b51a8c9f3d896db794fb6ebe896eb59a5f28d8a81a9b'
+sha256sums=('84ecc4615ef9e563a2a9570cd90af4e755b4667958fb939a474fb112ac3eadd1'
             'SKIP')
 
 build() {
@@ -25,7 +25,11 @@ build() {
 
   msg2 'Building...'
   mkdir cmake && cd cmake
-  cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=off ..
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=off \
+    ..
   make
 }
 
