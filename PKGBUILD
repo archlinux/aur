@@ -41,6 +41,6 @@ msg2 "Installing icons and desktop menu entry"
   install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
-md5sums=('a22da51cdba6c17a0813ef097bbafc51'
+md5sums=('aa159e13b64f308d7f445a266c596f38'
          '29c1b2adff85a66160fdaa0b48174c03'
          'dbca9273e9fc18a7aa5d1c395508fe60')
