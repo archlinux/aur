@@ -17,16 +17,19 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname#lib32-}/0.7/${pkgname#
 sha512sums=('5d656ee7ee5caeb95aec4adb973795dc72fc620cd36b9fe3d4f910951945bd5df70ee1c422cd6aca9c38a9ba2760562e479fc8fb9269449924a5b24d762d03df')
 
 build() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+#  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
+  cd "${pkgname#lib32-}-${pkgver}"
   ./configure --prefix=/usr --disable-static --libdir=/usr/lib32
   make
 }
 
 package() {
-  make -C "${srcdir}/${pkgname#lib32-}-${pkgver}" DESTDIR="${pkgdir}" install
+  make -C "${pkgname#lib32-}-${pkgver}" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
 }
