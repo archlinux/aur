@@ -43,14 +43,18 @@ _NUMAdisable=y
 # https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
 _BFQ_enable_=y
 
+# Disable alternative CPU scheduler by Con Kolivas
+#_BFS_disable_=y
+
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
 _srcname=linux-4.6
 _ckpatchname="patch-4.6-ck1"
-pkgver=4.6.2
-pkgrel=3
+pkgver=4.6.3
+pkgrel=1
 arch=("i686" "x86_64")
 url="http://www.kernel.org/"
 license=("GPL2")
@@ -85,21 +89,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "linux.preset")
 
 md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
-         'c064bbe8108b8e5304f3db2130a96845'
-         '69281829b5135f1a34ccd393159c74e9'
-         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-         'b65081ff1ace9b352f80b23093e79397'
-         'c30fe04a9ba0a7c652cecac9320bbb4c'
-         '4675e1fe4bd326a50f168c5674bab13c'
-         '64c87cfec450389cc158ba0cf6fe7a1e'
-         'c96372203aec1ebc0fd8404bdddcc0b8'
-         '8b7ca23aa660578023a0a244ae235888'
-         'b3b845477eb2e62e745803685bde9057'
-         '7e50b0145ed002319a8fb651b72f7cd0'
-         'a873c975acf24c3ef0225b9fcd3f3e1e'
-         'd122753e36b01f3c4cc614b764fa2777'
-         '802a62b556c6f0715fe3eb0933fa7d3b'
-         'eb14dcfd80c00852ef81ded6e826826a')
+'0d59cb81eb7c0daf0f5019deda65af90'
+'69281829b5135f1a34ccd393159c74e9'
+'df7fceae6ee5d7e7be7b60ecd7f6bb35'
+'b65081ff1ace9b352f80b23093e79397'
+'c30fe04a9ba0a7c652cecac9320bbb4c'
+'4675e1fe4bd326a50f168c5674bab13c'
+'64c87cfec450389cc158ba0cf6fe7a1e'
+'c96372203aec1ebc0fd8404bdddcc0b8'
+'8b7ca23aa660578023a0a244ae235888'
+'b3b845477eb2e62e745803685bde9057'
+'7e50b0145ed002319a8fb651b72f7cd0'
+'a873c975acf24c3ef0225b9fcd3f3e1e'
+'d122753e36b01f3c4cc614b764fa2777'
+'802a62b556c6f0715fe3eb0933fa7d3b'
+'eb14dcfd80c00852ef81ded6e826826a')
 
 _kernelname=${pkgbase#linux}
 
@@ -175,6 +179,12 @@ prepare() {
       -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
   fi
 
+  ### Optionally disable BFS as the default CPU scheduler
+  if [ -n "$_BFS_disable_" ]; then
+    msg "Disabling BFS as default CPU scheduler..."
+    sed -i -e 's/CONFIG_SCHED_BFS=y/CONFIG_SCHED_BFS=n/' ./.config
+  fi
+
   # Optionally disable NUMA since >99% of users have mono-socket systems.
   if [ -n "$_NUMAdisable" ]; then
     if [ "${CARCH}" = "x86_64" ]; then
@@ -205,7 +215,7 @@ prepare() {
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
+  if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
       [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
