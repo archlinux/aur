@@ -5,7 +5,7 @@
 _hkgname=gio
 pkgname=haskell-${_hkgname}
 pkgver=0.13.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Binding to the GIO."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL-2.1')
@@ -51,7 +51,7 @@ package() {
 
     cd "${srcdir}/${_hkgname}-${pkgver}"
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
-    install    -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     install -d -m755 "${pkgdir}/usr/share/doc/ghc/html/libraries"
     ln -s "/usr/share/doc/${pkgname}/html" "${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}"
     runhaskell Setup copy "--destdir=${pkgdir}"
