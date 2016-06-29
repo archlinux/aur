@@ -17,7 +17,7 @@ sha256sums=(
 
 pkgver() {
 	cd $_pkgname
-	echo "$(python -c "print(__import__('pytoml').loads('\n'.join(text.splitlines()[:7]))['package']['version'])").$(git rev-list --count HEAD)"
+	echo "$(python -c "print(__import__('pytoml').loads('\n'.join(open('Cargo.toml').read().splitlines()[:7]))['package']['version'])").$(git rev-list --count HEAD)"
 }
 
 build() {
