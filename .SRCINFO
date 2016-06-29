@@ -1,0 +1,18 @@
+pkgbase = python-pymc3
+	pkgdesc = Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI.
+	pkgver = 3.0beta
+	pkgrel = 1
+	url = http://pymc-devs.github.io/pymc3/
+	arch = any
+	license = APACHE
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-theano
+	depends = python-pandas
+	options = !emptydirs
+	source = https://github.com/pymc-devs/pymc3/archive/v3.0beta.tar.gz
+	md5sums = 0e6ae1df523e904e658e96a2b5ac7764
+
+pkgname = python-pymc3
+
