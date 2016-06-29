@@ -1,5 +1,5 @@
 _rev=r01
-_sdkver=7.0
+_sdkver=N
 _sdkint=24
 pkgname=android-platform-${_sdkint,,}
 pkgver=${_sdkver}_${_rev}

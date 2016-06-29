@@ -1,6 +1,6 @@
 pkgbase = android-platform-24
 	pkgdesc = Android SDK Platform, API-24
-	pkgver = 7.0_r01
+	pkgver = N_r01
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
