@@ -1,7 +1,7 @@
 # Maintainter: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=frc-2016
-pkgver=20160107
+pkgver=20160629
 pkgrel=1
 pkgdesc="Metapackage for installing all of the FIRST Robotics Competition C/C++ build system components"
 arch=('any')
