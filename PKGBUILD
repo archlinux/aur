@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=7089.26da37a
+pkgver=7584.33009c4
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -25,13 +25,12 @@ conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
 options=('strip' 'staticlibs')
-source=("$pkgname::git+git://git.code.sf.net/p/faudiostream/code"
+source=("$pkgname::git+git://git.code.sf.net/p/faudiostream/code#branch=faust2"
 	"git+https://github.com/rukano/emacs-faust-mode.git")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
-  git checkout faust2 > /dev/null 2>&1
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
