@@ -3,18 +3,16 @@
 # Contributor: stef312 <stef312_at_gmail_dot_com>
 # Contributor: Gaspar de Elías <caspercba_at_hotmail_dot_com>
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
-
 pkgname=sky
-pkgver=2.1.0.8
+pkgver=2.1.6306_1
 pkgrel=1
-pkgdesc="Lync & Skype for Business on Linux"
-_skyrel=2
+pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
-    'x86_64'
+	'x86_64'
 )
 if [[ $CARCH == 'x86_64' ]]; then
-    _arch=64
+	_arch=64
 fi
 
 url="http://tel.red"
@@ -24,49 +22,55 @@ options=('!strip')
 install="${pkgname}.install"
 
 depends=(
-    'ffmpeg2.8'
-    'libcurl-compat>=7.38'
-    'libjpeg6-turbo'
-    'libxss'
-    'libxrandr'
-    'qt5-base>=5.6'
+	'ffmpeg2.8'
+	'libcurl-compat>=7.38'
+	'libjpeg6-turbo'
+	'libxss'
+	'libxrandr'
+	'qt5-base>=5.6'
+	'qt5-base<5.7'
 )
 makedepends=(
-    'binutils'
-    'tar'
-    'xz'
+	'binutils'
+	'tar'
+	'xz'
+)
+optdepends=(
+	'ibus'
 )
 
-source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver}-${_skyrel}deb8+jessie_amd64.deb")
-sha256sums_x86_64=('2d4fbff0435512beee3f085b75eb087d7fdaadf6aea800cd5985e78ee9ac7791')
+source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver//_/-}deb8+jessie_amd64.deb")
+sha256sums_x86_64=('3d2ee894d2318a85b69fdbe749af6edec9bf61e764b5a88d2218d9a74d7339de')
 
 package() {
-    local _sky_libdir="/usr/lib/sky/lib"
-    local _sky_bindir="/usr/lib/sky"
-    local _sky_datadir=( "${_sky_bindir}/sounds" )
-    
-    cd "${srcdir}"
-    ar x "sky_${pkgver}-${_skyrel}deb8+jessie_amd64.deb" >/dev/null
-    tar -Jxf data.tar.xz
+	local _sky_libdir="/usr/lib/sky/lib"
+	local _sky_bindir="/usr/lib/sky"
+	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
-    install -dm 0755 "${srcdir}${_sky_libdir}" "${pkgdir}${_sky_libdir}"
-    find "${srcdir}${_sky_libdir}" -maxdepth 1 \( -type f -o -type l \) -a \( ! -name 'libQt5*' \) -exec install -m 0755 {} "${pkgdir}${_sky_libdir}/" \;
-    ln -s "/usr/lib64/libcurl.so.3" "${pkgdir}${_sky_libdir}/libcurl.so.4"
+	cd "${srcdir}"
+	ar x "sky_${pkgver//_/-}deb8+jessie_amd64.deb" >/dev/null
+	tar -Jxf data.tar.xz
 
-    install -dm 0755 "${srcdir}${_sky_bindir}" "${pkgdir}${_sky_libdir}"
-    find "${srcdir}${_sky_bindir}" -maxdepth 1 -type f -perm /0111 -exec install -m 0755 {} "${pkgdir}${_sky_bindir}/" \;
-    sed -i s/QT_PLUGIN_PATH=\"[^\"]*\"\\W*//g "${pkgdir}${_sky_bindir}/sky.sh"
-    install -dm 0755 "${pkgdir}/usr/bin"
-    ln -s "../..${_sky_bindir}/sky.sh" "${pkgdir}/usr/bin/sky"
+	install -dm 0755 "${srcdir}${_sky_libdir}" "${pkgdir}${_sky_libdir}"
+	find "${srcdir}${_sky_libdir}" -maxdepth 1 \( -type f -o -type l \) -a \( ! -name 'libQt5*' \) -exec install -m 0755 {} "${pkgdir}${_sky_libdir}/" \;
+	ln -s "/usr/lib64/libcurl.so.3" "${pkgdir}${_sky_libdir}/libcurl.so.4"
 
-    for dd in ${_sky_datadir[@]} ; do
-        install -dm 0755 "${srcdir}${dd}" "${pkgdir}${dd}"
-        cp -arT "${srcdir}${dd}" "${pkgdir}${dd}"
-    done
-    
-    install -Dm 0644 ${srcdir}/usr/share/doc/sky/copyright ${pkgdir}/usr/share/licenses/sky/LICENSE
-    install -Dm 0644 ${srcdir}/usr/share/applications/sky.desktop ${pkgdir}/usr/share/applications/sky.desktop
-    install -Dm 0644 ${srcdir}/usr/share/pixmaps/sky/sky.png ${pkgdir}/usr/share/pixmaps/sky/sky.png
+	install -dm 0755 "${srcdir}${_sky_bindir}" "${pkgdir}${_sky_libdir}"
+	find "${srcdir}${_sky_bindir}" -maxdepth 1 -type f -perm /0111 -exec install -m 0755 {} "${pkgdir}${_sky_bindir}/" \;
+	sed -i s/QT_PLUGIN_PATH=\"[^\"]*\"\\s*//g "${pkgdir}${_sky_bindir}/sky.sh"
+	install -dm 0755 "${pkgdir}/usr/bin"
+	ln -s "../..${_sky_bindir}/sky.sh" "${pkgdir}/usr/bin/sky"
+
+	for dd in ${_sky_datadir[@]} ; do
+		install -dm 0755 "${srcdir}${dd}" "${pkgdir}${dd}"
+		cp -arT "${srcdir}${dd}" "${pkgdir}${dd}"
+	done
+
+	install -Dm 0644 ${srcdir}/usr/share/doc/sky/copyright ${pkgdir}/usr/share/licenses/sky/LICENSE
+	install -Dm 0644 ${srcdir}/usr/share/applications/sky.desktop ${pkgdir}/usr/share/applications/sky.desktop
+	for icon in 'sky.png' 'sky.svg'; do
+		install -Dm 0644 ${srcdir}/usr/share/pixmaps/${icon} ${pkgdir}/usr/share/pixmaps/${icon}
+	done
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
