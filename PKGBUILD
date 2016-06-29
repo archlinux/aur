@@ -2,7 +2,7 @@
 
 pkgname=yawls
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor"
 url="https://launchpad.net/yawls"
 arch=('any')
@@ -50,9 +50,9 @@ prepare() {
 
 	# Fix paths because of ArchLinux packaging
 	# Its conventions are different than Ubuntu ones
-	sed "s/share\/OpenCV/share\/opencv/g" -i yawls_cli.sh
-	sed "s/share\/OpenCV/share\/opencv/g" -i build.xml
-	sed "s/java-7-openjdk-\*/default-runtime/" -i yawls_cli.sh
+	sed "s,share/OpenCV,share/opencv,g" -i yawls_cli.sh
+	sed "s,share/OpenCV,share/opencv,g" -i build.xml
+	sed "s,java-7-openjdk-\*,default-runtime," -i yawls_cli.sh
 	# Fix also comments, lol
 	sed "s/openjdk 7/the default JVM/" -i yawls_cli.sh
 
@@ -60,14 +60,19 @@ prepare() {
 	sed "s/\$(arch)/\"\$(uname -m)\"/" -i yawls_cli.sh
 
 	# Prevent errors in refreshing symlink for the OpenCV library
-	sed "s/ls \/usr\/share\/opencv\/java/ls -1 \/usr\/share\/opencv\/java\/ \| grep jar/" -i yawls_cli.sh
+	sed "s,ls /usr/share/opencv/java,ls -1 /usr/share/opencv/java/ \| grep jar," -i yawls_cli.sh
 
 	# Add the native library to the Java library path
-	sed "s/\$OPTIONS/\$OPTIONS -Djava.library.path=\/usr\/share\/opencv\/java/" -i yawls_cli.sh
+	sed "s,\$OPTIONS,\$OPTIONS -Djava.library.path=/usr/share/opencv/java," -i yawls_cli.sh
 
 	# We use systemd on Arch
+	sed "/prerotate/d" -i yawls
 	sed "/invoke-rc.d --quiet yawls stop/d" -i yawls
+	sed "/rm \/var\/log\/yawls*/d" -i yawls
 	sed "/invoke-rc.d --quiet yawls start/d" -i yawls
+	sed "/endscript/d" -i yawls
+
+	# Remove useless part in logrotate script
 
 	# Fix build on OpenCV 3
 	sed "s/highgui/videoio/" -i src/com/blogspot/thedsweb/engine/Brightness.java
