@@ -1,7 +1,7 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
 url=http://www.libressl.org
@@ -29,12 +29,9 @@ make -k check
 
 package() {
 cd $srcdir/libressl-${pkgver}
-mkdir -p $pkgdir/usr/bin
-install -m 755 ./apps/nc/nc $pkgdir/usr/bin/nc
+install -Dm 755 ./apps/nc/nc $pkgdir/usr/bin/nc
 ln -s nc $pkgdir/usr/bin/netcat
-mkdir -p $pkgdir/usr/share/man/man1
-install -m 644 ./apps/nc/nc.1 $pkgdir/usr/share/man/man1/nc.1
-mkdir -p $pkgdir/usr/share/licenses/$pkgname
-install -m 644 ./COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+install -Dm 644 ./apps/nc/nc.1 $pkgdir/usr/share/man/man1/nc.1
+install -Dm 644 ./COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
