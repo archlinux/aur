@@ -1,0 +1,17 @@
+pkgbase = omnisharp
+	pkgdesc = cross platform .NET development!
+	pkgver = 1.9_alpha13
+	pkgrel = 0
+	url = http://www.omnisharp.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = GPL2
+	license = LGPL2.1
+	depends = mono
+	noextract = omnisharp-linux.tar.gz
+	source = omnisharp-linux.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.9-alpha13/omnisharp-linux-mono.tar.gz
+	md5sums = ad143121cb07c2197a7c845969841edd
+
+pkgname = omnisharp
+
