@@ -2,8 +2,10 @@ post_install() {
     systemd-sysusers factorio.conf
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
 
+    source /etc/conf.d/factorio
+
     # create empty game
-    [[ -f /var/lib/factorio/.factorio/saves/factorio-service-save.zip ]] || su - factorio -s /bin/sh -c 'factorio --create factorio-service-save 2>&1 >/dev/null'
+    [[ -f "/var/lib/factorio/${SAVE_NAME}.zip" ]] || su - factorio -s /bin/sh -c "factorio --create '${SAVE_NAME}.zip' 2>&1 >/dev/null"
 }
 
 post_upgrade() {
