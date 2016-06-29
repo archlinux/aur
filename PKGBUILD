@@ -9,8 +9,8 @@ url='https://jwilm.github.io/racerd/libracerd/'
 license=('Apache')
 depends=('rust-racer')
 makedepends=('git' 'rust' 'cargo')
-source+=('git+git://github.com/jwilm/racerd')
-sha256sums+=('SKIP')
+source=('git+git://github.com/jwilm/racerd')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/racerd"
