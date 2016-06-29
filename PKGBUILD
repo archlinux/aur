@@ -15,20 +15,16 @@ makedepends=('cmake' 'gcc-multilib')
 source=("${pkgname#lib32-}-${pkgver}.tar.gz::https://github.com/${pkgname#lib32-}/${pkgname#lib32-}/archive/v${pkgver}.tar.gz")
 sha512sums=('0b80f9aa40e0a485371b5949152c10d7fffb6e0dfe8c2aabc3c6e4e97ba0cdd465ae7093343245be60173bc7b24e80e919c0c0e199ff0bb2b14ed94af7087c4f')
 
-prepare() {
-  cd "${pkgname#lib32-}-${pkgver}"
-  [ -d build ] || mkdir build
-}
-
 build() {
-  cd "${pkgname#lib32-}-${pkgver}/build"
-
-  # Override the defaults with 32-bit options.
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
+  cd "${pkgname#lib32-}-${pkgver}"
+  [ -d build ] || mkdir build
+  cd "${pkgname#lib32-}-${pkgver}/build"
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DSHARED_ONLY=true \
