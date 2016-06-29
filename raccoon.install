@@ -1,0 +1,9 @@
+post_upgrade(){
+    cat << \here
+Please note that all user data has moved from ~/Raccoon to ~/.Raccoon.
+Move your config dir with 'mv ~/Raccoon ~/.Raccoon' before starting the program
+to avoid breakage.
+Also you need to change the path to the last used archive:
+sed -i "s/Raccoon/.Raccoon/" ~/.java/.userPrefs/de/onyxbits/raccoon/gui/prefs.xml
+here
+}
