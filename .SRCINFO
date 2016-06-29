@@ -1,13 +1,13 @@
 pkgbase = frc-2016
 	pkgdesc = Metapackage for installing all of the FIRST Robotics Competition C/C++ build system components
-	pkgver = 20160107
+	pkgver = 20160629
 	pkgrel = 1
 	url = https://bitbucket.org/byteit101/toolchain-builder/
 	arch = any
 	groups = frc-2016
 	license = GPL
 	depends = arm-frc-linux-gnueabi-gcc
-	depends = arm-frc-linux-gnueabi-wpilib-git
+	depends = arm-frc-linux-gnueabi-wpilib
 	depends = arm-frc-linux-gnueabi-frcmake-hg
 	depends = arm-frc-linux-gnueabi-gdb
 	conflicts = frc-2015
