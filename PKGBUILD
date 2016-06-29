@@ -8,7 +8,6 @@ pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework."
 arch=('any')
 url="http://www.monogame.net/"
 license=('custom', 'MIT')
-install="monogame.install"
 source=("http://www.monogame.net/releases/v${pkgver}/monogame-sdk.run"
         "https://raw.githubusercontent.com/mono/MonoGame/develop/LICENSE.txt"
         "Monogame Pipeline.desktop")
@@ -24,6 +23,7 @@ package_monogame-bin() {
     depends=('mono')
     conflicts=("${_pkgname}" 'tao-framework' 'tao-framework-svn')
     provides=("${_pkgname}")
+    install="monogame.install"
 
     # License
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"

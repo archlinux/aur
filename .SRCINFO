@@ -3,7 +3,6 @@ pkgbase = monogame-bin
 	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://www.monogame.net/
-	install = monogame.install
 	arch = any
 	license = custom,
 	license = MIT
@@ -15,6 +14,7 @@ pkgbase = monogame-bin
 	md5sums = a8fd2a407aef36d2209faad11ae7b186
 
 pkgname = monogame-bin
+	install = monogame.install
 	depends = mono
 	provides = monogame
 	conflicts = monogame
