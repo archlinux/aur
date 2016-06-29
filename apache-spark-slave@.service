@@ -1,0 +1,13 @@
+[Unit]
+Description=Apache Spark Standalone Master
+After=network.target
+
+[Service]
+User=apache-spark
+Group=apache-spark
+Environment=SPARK_LOG_DIR=/var/log/apache-spark
+ExecStart=/opt/apache-spark/sbin/run-slave.sh %i
+
+[Install]
+WantedBy=multi-user.target
+DefaultInstance=127.0.0.1:7077

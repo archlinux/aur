@@ -1,0 +1,12 @@
+[Unit]
+Description=Apache Spark Standalone Master
+After=network.target
+
+[Service]
+User=apache-spark
+Group=apache-spark
+Environment=SPARK_LOG_DIR=/var/log/apache-spark
+ExecStart=/opt/apache-spark/sbin/run-master.sh
+
+[Install]
+WantedBy=multi-user.target
