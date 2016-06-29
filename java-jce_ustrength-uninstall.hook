@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Upgrade
+Operation = Remove
+Target = usr/share/java/java-jce_ustrength/*
+
+[Action]
+Description = Uninstall java_jce-ustrength
+When = PreTransaction
+Exec = /usr/bin/install_java_jce_ustrength uninstall
+NeedsTargets

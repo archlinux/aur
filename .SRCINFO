@@ -1,7 +1,7 @@
 pkgbase = java-jce_ustrength
 	pkgdesc = Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 8
 	pkgver = 8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
 	install = java-jce_ustrength.install
 	arch = any
@@ -9,8 +9,12 @@ pkgbase = java-jce_ustrength
 	depends = java-runtime>=8
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = install_java_jce_ustrength
+	source = java-jce_ustrength-install.hook
+	source = java-jce_ustrength-uninstall.hook
 	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
 	sha256sums = 3c7cc3b3aa0d748ce540ef4b679a1e01e3609144d3ca37ec9885d05d44d4c467
+	sha256sums = 0d9940a49b4c9933e7cdc2c237d6f275a898e40a7a9505df81aa474d90579ff9
+	sha256sums = d8a48f9980744ea00d5373984154137b0042276c94c4cd8465b95fb4b1fad72a
 
 pkgname = java-jce_ustrength
 
