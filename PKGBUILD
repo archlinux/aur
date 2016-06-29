@@ -17,7 +17,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data-git
-pkgver=r2729.0e83b4c
+pkgver=r2740.c6097dc
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
