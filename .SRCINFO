@@ -1,12 +1,13 @@
 pkgbase = haskell-alsa-core
 	pkgdesc = Provides access to ALSA infrastructure
 	pkgver = 0.5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/alsa-core
 	install = haskell-alsa-core.install
 	arch = i686
 	arch = x86_64
 	license = BSD
+	depends = ghc=8.0.1
 	depends = haskell-base
 	depends = haskell-extensible-exceptions
 	options = staticlibs
