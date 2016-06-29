@@ -1,26 +1,20 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
-# Up to date with fedora's ibacm-1.1.0-1.el7.src.rpm, except not using their coverity and compile warning fixes patch, for arch's preference of vanilla upstream, unless substantial need shown
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=ibacm
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand communication manager daemon for librdmacm'
-#        Helps reduce load of managing path lookup records on large InfiniBand fabrics.
-#        When properly configured, can reduce SA packet load of a large IB cluster from O(n^2) to O(n).
-#        Provides framework for name, address, and route resolution services over InfiniBand.
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs' 'libibumad')
 source=("https://downloads.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz"
         'ibacm.service')
-md5sums=('0e31f454343f5adb677c443125680eae'
+md5sums=('4efc8ac70bc2334f2195137d4f1c6385'
          'ddb76ae6e28a18fcc984770b5699ea00')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # Not sure why lpthread isn't used by default, without it, it gives linker errors
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --libexecdir=/usr/lib \
