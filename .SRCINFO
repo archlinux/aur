@@ -1,6 +1,6 @@
 pkgbase = geary-devel
 	pkgdesc = A lightweight email client for the GNOME desktop
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Geary
 	install = geary.install
@@ -20,8 +20,8 @@ pkgbase = geary-devel
 	depends = webkitgtk
 	provides = geary
 	conflicts = geary
-	source = https://download.gnome.org/sources/geary/0.11/geary-0.11.0.tar.xz
-	sha256sums = c947bb1e70bd3d3f4799e59ddd05b27b08a8132674f64c68c919974595bdcd9f
+	source = https://download.gnome.org/sources/geary/0.11/geary-0.11.1.tar.xz
+	sha256sums = 6efc5e1a944ca1c1a991d50d558fbe46ed58763b3f8b7bcd451b15078a9b2eb2
 
 pkgname = geary-devel
 
