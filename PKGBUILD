@@ -22,12 +22,16 @@ source=("git+$url#tag=$_commit")
 sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname#lib32-}
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+#  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
   export MOC_QT4=/usr/bin/moc-qt4 PYTHON=/usr/bin/python2
+
+  cd ${pkgname#lib32-}
   NOCONFIGURE=1 ./autogen.sh
 
   ./configure \
