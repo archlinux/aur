@@ -5,7 +5,7 @@
 _hkgname=gio
 pkgname=haskell-${_hkgname}
 pkgver=0.13.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binding to the GIO."
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL-2.1')
@@ -26,7 +26,8 @@ md5sums=('8d3c4d06a275ab4e464de0e70128f44e')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
-       --prefix=/usr --docdir=/usr/share/doc/${pkgname} --libsubdir=\$compiler/site-local/\$pkgid
+       --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
+       --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
     runhaskell Setup haddock
     runhaskell Setup register   --gen-script
@@ -48,10 +49,10 @@ package() {
     _update_deps ghc
     _update_deps haskell-mtl
 
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    install -D -m744 register.sh   ${pkgdir}/usr/share/haskell/${pkgname}/register.sh
-    install    -m744 unregister.sh ${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh
-    install -d -m755 ${pkgdir}/usr/share/doc/ghc/html/libraries
-    ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}
-    runhaskell Setup copy --destdir=${pkgdir}
+    cd "${srcdir}/${_hkgname}-${pkgver}"
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install    -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
+    install -d -m755 "${pkgdir}/usr/share/doc/ghc/html/libraries"
+    ln -s "/usr/share/doc/${pkgname}/html" "${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}"
+    runhaskell Setup copy "--destdir=${pkgdir}"
 }
