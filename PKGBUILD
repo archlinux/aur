@@ -1,6 +1,6 @@
 pkgname=bdf-creep
 pkgdesc="A pretty sweet 4px wide pixel font with box-drawing, powerline, braille and sparklines glyphs."
-pkgver=0.31.r19.gb03111f
+pkgver=0.31.r23.g98bbf59
 pkgrel=1
 arch=('any')
 url='https://github.com/romeovs/creep'
