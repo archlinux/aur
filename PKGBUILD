@@ -1,15 +1,15 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
-_ipn=pcap
+_ipn=hgettext
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
-pkgver=0.4.5.2
+pkgver=0.1.30
 pkgrel=1
-pkgdesc="A system-independent interface for user-level packet capture"
+pkgdesc="bindings to libintl.h (gettext, bindtextdomain)"
 arch=(x86_64)
-url="https://github.com/bos/pcap"
+url="https://github.com/vasylp/hgettext"
 license=('custom:BSD3')
 groups=()
-depends=(ghc)
+depends=(ghc haskell-src-exts haskell-uniplate)
 makedepends=(git)
 provides=(${_bpn})
 conflicts=(${_bpn})
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://hackage.haskell.org/packages/archive/${_ipn}/${pkgver}/${_ipn}-${pkgver}.tar.gz")
-md5sums=('492b7ecc53d0ac3599845ab8ac553997')
+md5sums=('6b36a5c86e13de18c7daef124d9e9a71')
 
 build() {
   cd "$srcdir/${_ipn}-${pkgver}"
@@ -48,8 +48,6 @@ package() {
   install -dm755 ${pkgdir}/usr/share/doc/ghc/html/libraries
   ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_ipn}
   runhaskell Setup copy --destdir=${pkgdir}
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:

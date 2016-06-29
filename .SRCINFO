@@ -1,17 +1,19 @@
-pkgbase = haskell-pcap
-	pkgdesc = A system-independent interface for user-level packet capture
-	pkgver = 0.4.5.2
+pkgbase = haskell-hgettext
+	pkgdesc = bindings to libintl.h (gettext, bindtextdomain)
+	pkgver = 0.1.30
 	pkgrel = 1
-	url = https://github.com/bos/pcap
+	url = https://github.com/vasylp/hgettext
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = git
 	depends = ghc
-	provides = haskell-pcap
-	conflicts = haskell-pcap
+	depends = haskell-src-exts
+	depends = haskell-uniplate
+	provides = haskell-hgettext
+	conflicts = haskell-hgettext
 	options = !emptydirs
-	source = http://hackage.haskell.org/packages/archive/pcap/0.4.5.2/pcap-0.4.5.2.tar.gz
-	md5sums = 492b7ecc53d0ac3599845ab8ac553997
+	source = http://hackage.haskell.org/packages/archive/hgettext/0.1.30/hgettext-0.1.30.tar.gz
+	md5sums = 6b36a5c86e13de18c7daef124d9e9a71
 
-pkgname = haskell-pcap
+pkgname = haskell-hgettext
 
