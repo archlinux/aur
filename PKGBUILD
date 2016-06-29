@@ -3,12 +3,12 @@
 _pkgname=qupzilla
 pkgname=$_pkgname-qtwebkit-git
 pkgver=1.8.9.34.gc59b1f1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform Qt web browser. QtWebKit branch.'
 arch=('i686' 'x86_64')
 url='http://www.qupzilla.com'
 license=('GPL3' 'custom')
-depends=('qt5-webkit' 'qt5-script' 'qt5-x11extras')
+depends=('qt5-webkit' 'qt5-script' 'qt5-x11extras' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname" "$_pkgname-qt4" "$_pkgname-qt5" "$_pkgname-git" "$_pkgname-qt5-qtwebkit-git")
 conflicts=("$_pkgname" "$_pkgname-qt4" "$_pkgname-qt5" "$_pkgname-git" "$_pkgname-qt5-qtwebkit-git")
