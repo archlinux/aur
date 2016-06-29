@@ -1,15 +1,15 @@
 # Maintainer: Cody P Schafer <archlinux at codyps.com>
-_bpn=bustle
+_bpn=bustle-pcap
 pkgname=${_bpn}-git
 pkgver=0.5.4.r2.g0a426c3
 pkgrel=2
-pkgdesc="A dbus profiler"
+pkgdesc="Capture traces for use in bustle"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/Bustle/"
 license=('GPLv3')
 groups=()
-depends=(ghc happy alex gtk2hs-buildtools haskell-cairo haskell-dbus haskell-glib haskell-gtk haskell-mtl haskell-pango haskell-parsec haskell-setlocale haskell-pcap haskell-hgettext haskell-gio)
-makedepends=(git)
+depends=(libdbus glib2 libpcap)
+makedepends=(git pkg-config )
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
@@ -26,23 +26,13 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  runhaskell Setup configure -O --prefix=/usr "--docdir=/usr/share/doc/${pkgname}" --datasubdir="$pkgname"
-  runhaskell Setup build
-}
-
-_ghcver_set() {
-  local _i
-  _ghcver=`pacman -Q ghc | cut -f2 -d\  | cut -f1 -d-`
-  depends[0]="ghc=$_ghcver"
+  make
 }
 
 package() {
-  _ghcver_set
   cd "$pkgname"
-
-  runhaskell Setup copy --destdir=${pkgdir}
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+  install -Dm755 dist/build/bustle-pcap ${pkgdir}/usr/bin/bustle-pcap
+  install -Dm644 bustle-pcap.1 ${pkgdir}/usr/share/man/man1/bustle-pcap.1
 }
 
 # vim:set ts=2 sw=2 et:
