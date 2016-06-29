@@ -1,18 +1,16 @@
 # Maintainer: Janne Heß <jannehess@gmail.com>
 
-# Contributor: Janne Heß <jannehess@gmail.com>
-
 pkgname=archivemount
 pkgver=0.8.7
 pkgrel=1
 pkgdesc="FUSE filesystem using libarchive"
-url="http://www.cybernoia.de/software/archivemount/"
+url="http://www.cybernoia.de/software/${pkgname}/"
 license=("GPL2")
 depends=("fuse" "libarchive")
-makedepends=("automake" "autoconf")
-conflicts=("archivemount-git")
+makedepends=("automake" "autoconf" "make")
+conflicts=("${pkgname}-git")
 source=("http://www.cybernoia.de/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('47045ca8d4d62fbe0b4248574c65cf90a6d29b488d166aec8c365b6aafe131b6')
+sha512sums=('8869786b7fe6ef12eef2150c42a4e152e033a9387383a689a4e9ab4ead7548c11f9db8f19c62ef55ab858a6387b02af59741f39de3d600aee08ed4ddd0afe7c1')
 arch=("i686" "x86_64")
 
 build() {
