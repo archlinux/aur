@@ -16,10 +16,10 @@ source=("http://downloads.sourceforge.net/freeglut/${pkgname#lib32-}-${pkgver}.t
 sha512sums=('9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8a795a80f499a2d23df84b4909dbd7c1bab20d7dd3555d3d88782ce9dd15b0')
 
 build() {
-  # Override the defaults with 32-bit options.
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgname#lib32-}-${pkgver}"
