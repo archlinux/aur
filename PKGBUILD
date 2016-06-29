@@ -20,16 +20,16 @@ sha512sums=('SKIP')
 
 build()
 {
-  cd "${srcdir}/${pkgname#lib32-}"
-
-  # Override the defaults with 32-bit options.
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
-  # GCC 6.1.1 introduced new behaviour that breaks things, using older standard allows successful build.
+  # GCC 6.1.1 introduced new behaviour that breaks things, using the previous standard allows for a successful build.
   export CXX='g++ -m32 -std=gnu++03'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   export LIBS="-lX11"
+
+  cd "${pkgname#lib32-}"
   ./autogen.sh
   ./configure --prefix=/usr --libdir=/usr/lib32  --disable-static
   make
@@ -37,7 +37,7 @@ build()
 
 package()
 {
-  cd "${srcdir}/${pkgname#lib32-}"
+  cd "${pkgname#lib32-}"
   make DESTDIR="${pkgdir}" install
   rm -r "${pkgdir}/usr/"{bin,include,share}
 }
