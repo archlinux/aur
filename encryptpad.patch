@@ -1,0 +1,21 @@
+diff --git a/deps/stlplus/subsystems/library_manager.cpp b/deps/stlplus/subsystems/library_manager.cpp
+index 1d2c27f..a6576dc 100644
+--- a/deps/stlplus/subsystems/library_manager.cpp
++++ b/deps/stlplus/subsystems/library_manager.cpp
+@@ -2279,14 +2279,14 @@ bool stlplus::library_manager::print(std::ostream& str) const
+ {
+   for (std::list<lm_library>::const_iterator l = m_libraries.begin(); l != m_libraries.end(); l++)
+     l->print(str);
+-  return str;
++  return bool(str);
+ }
+ 
+ bool stlplus::library_manager::print_long(std::ostream& str) const
+ {
+   for (std::list<lm_library>::const_iterator l = m_libraries.begin(); l != m_libraries.end(); l++)
+     l->print_long(str);
+-  return str;
++  return bool(str);
+ }
+ 
+ // find a library by name
