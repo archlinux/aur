@@ -3,4 +3,4 @@
 *.xz
 src/
 pkg/
-git/
+archivemount-git/

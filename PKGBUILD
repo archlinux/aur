@@ -10,17 +10,17 @@ depends=("fuse" "libarchive")
 makedepends=("automake" "autoconf" "make")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+http://www.cybernoia.de/software/${pkgname%-git}/git")
+source=("${pkgname}::git+http://www.cybernoia.de/software/${pkgname%-git}/git")
 sha512sums=('SKIP')
 arch=("i686" "x86_64")
 
 pkgver() {
-	cd git
+	cd "${pkgname}"
 	git describe --tags --always | sed 's/-[[:digit:]]*-/./g'
 }
 
 build() {
-	cd git
+	cd "${pkgname}"
 	aclocal
 	autoheader
 	automake --add-missing
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-	cd "git"
+	cd "${pkgname}"
 	install -Dm755 "${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 	make PREFIX="/usr" DESTDIR="${pkgdir}/" install-man
 	mv "${pkgdir}/usr/local/share" "${pkgdir}/usr"
