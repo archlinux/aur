@@ -1,2 +1,4 @@
 src
+pkg
 mongobooster-*-amd64.deb
+mongobooster-*-x86_64.pkg.tar
