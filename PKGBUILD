@@ -6,15 +6,16 @@
 
 pkgname=('opencv-contrib' 'opencv-samples-contrib')
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library including additional 'contrib' modules"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://opencv.org/"
 depends=('intel-tbb' 'openexr' 'xine-lib' 'libdc1394' 'gtkglext')
-makedepends=('cmake' 'python2-numpy' 'mesa' 'eigen2')
-optdepends=('eigen2'
+makedepends=('cmake' 'python2-numpy' 'python-numpy' 'mesa' 'eigen')
+optdepends=('eigen'
             'libcl: For coding with OpenCL'
+            'python-numpy: Python 3.x interface'
             'python2-numpy: Python 2.x interface')
 
 source=("${pkgname%-contrib}-$pkgver::https://github.com/Itseez/opencv/archive/$pkgver.zip"
@@ -32,6 +33,8 @@ _cmakeopts=('-D WITH_OPENCL=ON'
             '-D BUILD_TESTS=OFF'
             '-D BUILD_PERF_TESTS=OFF'
             '-D BUILD_EXAMPLES=ON'
+            '-DBUILD_opencv_python2=ON',
+            '-DBUILD_opencv_python3=ON',
             '-D INSTALL_C_EXAMPLES=ON'
             '-D INSTALL_PYTHON_EXAMPLES=ON'
             '-D CMAKE_BUILD_TYPE=Release'
