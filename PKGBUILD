@@ -1,7 +1,7 @@
 # Maintainer: pzl <alsoelp@gmail.com>
 
 pkgname=pacvcs
-pkgver=5.1c4c288
+pkgver=6.56a4c7c
 pkgrel=1
 pkgdesc="Pacman VCS version checker"
 arch=('any')
