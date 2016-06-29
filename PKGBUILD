@@ -7,10 +7,9 @@ pkgdesc='Full CJK and Latin-1 TTF font combining Sazanami-Mincho and Hanazono gl
 arch=('any')
 url='http://www.javadikt.net/sazanami-hanazono/'
 license=('BSD3')
-provides='ttf-sazanami-hanazono'
 makedepends=('unzip')
-source=(http://forja.rediris.es/frs/download.php/2336/Sazanami-Hanazono.zip)
-sha256sums=('SKIP')
+source=(https://bitbucket.org/limadm/ttf-sazanami-hanazono/downloads/Sazanami-Hanazono.zip)
+sha256sums=('596b8912778317319e871ceb8985b3644dc5b46e6eb7ce317ff2b2bf02bccef5')
 
 package() {
 	cd Sazanami-Hanazono
