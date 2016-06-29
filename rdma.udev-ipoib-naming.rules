@@ -1,5 +1,3 @@
-# Copied from Fedora's rdma-2.0-15.fc22.noarch.rpm
-
 # This is a sample udev rules file that demonstrates how to get udev to
 # set the name of IPoIB interfaces to whatever you wish.  There is a
 # 16 character limit on network device names though, so don't go too nuts

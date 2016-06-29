@@ -1,5 +1,3 @@
-# Copied from Fedora's rdma-2.0-15.fc22.noarch.rpm
-
 # This is a simple script that checks the contents of /proc/mtrr to see if
 # the BIOS maker for the computer took the easy way out in terms of
 # specifying memory regions when there is a hole below 4GB for PCI access

@@ -1,5 +1,3 @@
-# Copied from Fedora's rdma-2.0-15.fc22.noarch.rpm
-
 # We list all the various kernel modules that drive hardware in the
 # InfiniBand stack (and a few in the network stack that might not actually
 # be RDMA capable, but we don't know that at this time and it's safe to
@@ -15,5 +13,6 @@ SUBSYSTEM=="module", KERNEL=="usnic*", ACTION=="add", TAG+="systemd", ENV{SYSTEM
 
 # When we detect a new verbs device is added to the system, set the node
 # description on that device
-SUBSYSTEM=="infiniband", KERNEL=="*", ACTION=="add", RUN+="/bin/bash -c 'sleep 1; echo -n `hostname -s` %k > /sys/class/infiniband/%k/node_desc'"
+# If rdma-ndd is installed, defer the setting of the node description to it.
+SUBSYSTEM=="infiniband", KERNEL=="*", ACTION=="add", TEST!="/usr/sbin/rdma-ndd", RUN+="/bin/bash -c 'sleep 1; echo -n `hostname -s` %k > /sys/class/infiniband/%k/node_desc'"
 

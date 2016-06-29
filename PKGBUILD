@@ -1,33 +1,64 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# namcap says dependency 'systemd' is not needed, but rdma.service is a systemd script
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=rdma
-pkgver=3.01
-pkgrel=1
-pkgdesc='Remote direct memory access scripts, for kernel InfiniBand and iWARP drivers'
+pkgver=2.0
+pkgrel=23
+pkgdesc='User space initialization scripts for the kernel InfiniBand/iWARP drivers'
 arch=('any')
-url=('https://apps.fedoraproject.org/packages/rdma')
+url='https://apps.fedoraproject.org/packages/rdma'
 license=('GPL2')
-depends=('systemd')
-source=('70-persistent-ipoib.rules'
-        '98-rdma.rules'
-        'rdma.conf'
-        'rdma-fixup-mtrr.awk'
-        'rdma-init-kernel'
-        'rdma.service')
-# (Fedora's rdma.modules-setup.sh is omitted because it's never used.)
-md5sums=('163f7a6b114f9223efce59f8c2b8dafc'
-         '3b95c1ce438004f1fc114137efa1455e'
-         '9fb936e312afd4b2c1b8ad8d597b7e60'
-         'afa0ae69de23d2bd8886c7bae1013f26'
-         'e9426ad7097fd001f4c4bd3a39b7dcb9'
-         'abb7786f98c132def4592fe40138d2e1')
+depends=('bash')
+source=('rdma.conf'
+        'rdma.mlx4.conf'
+        'rdma.sriov-vfs'
+        'rdma.udev-ipoib-naming.rules'
+        'rdma.mlx4.user.modprobe'
+        'rdma.service'
+        'rdma.kernel-init'
+        'rdma.fixup-mtrr.awk'
+        'rdma.sriov-init'
+        'rdma.udev-rules'
+        'rdma.cxgb3.sys.modprobe'
+        'rdma.cxgb4.sys.modprobe'
+        'rdma.mlx4.sys.modprobe'
+        'rdma.mlx4-setup.sh')
+md5sums=('cc042504f04ade59635be71f92e1388a'
+         'a06176747bd47a53781f1b53e00b8171'
+         '169118e0e1ebe9c6b0f936a8b0847ac6'
+         'cc45e00c6292da12fd89549db8463256'
+         '533498977140d6c0786a8d56b2d70afa'
+         '2bae331341f9232699b9bc24343ee4ee'
+         '461c3076ee47ef4f2f0e3933e3bf64d0'
+         '878c87d2fcb8e753fb4e2ea3d5fbec56'
+         '040338a17c13b03eff4333626f246346'
+         '48ab029cb720c85fadaa110a39ace07d'
+         '2212ac94d531d0f971ac559c748270f8'
+         '3471c53e96a4261d173e1e9038c1305d'
+         'ced62d61acf3c8df65871794fe50e5c7'
+         '5f5de576e9c5f21ca66f40c42c5d7754')
 
 package() {
-  install -Dm644 "${srcdir}/70-persistent-ipoib.rules" "${pkgdir}/usr/lib/udev/rules.d/70-persistent-ipoib.rules"
-  install -Dm644 "${srcdir}/98-rdma.rules" "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
-  install -Dm644 "${srcdir}/rdma.conf" "${pkgdir}/etc/rdma.conf"
-  install -Dm644 "${srcdir}/rdma-fixup-mtrr.awk" "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
-  install -Dm755 "${srcdir}/rdma-init-kernel" "${pkgdir}/usr/bin/rdma-init-kernel"
-  install -Dm644 "${srcdir}/rdma.service" "${pkgdir}/usr/lib/systemd/system/rdma.service"
+install -d ${pkgdir}/etc/rdma
+install -d ${pkgdir}/etc/modprobe.d
+install -d ${pkgdir}/etc/udev/rules.d
+install -d ${pkgdir}/usr/lib/rdma
+install -d ${pkgdir}/usr/lib/systemd/system
+install -d ${pkgdir}/usr/lib/udev/rules.d
+install -d ${pkgdir}/usr/lib/modprobe.d
+
+# Stuff to go into the base package
+install -m 0644 ${srcdir}/rdma.conf ${pkgdir}/etc/rdma/rdma.conf
+install -m 0644 ${srcdir}/rdma.mlx4.conf ${pkgdir}/etc/rdma/mlx4.conf
+install -m 0644 ${srcdir}/rdma.sriov-vfs ${pkgdir}/etc/rdma/sriov-vfs
+install -m 0644 ${srcdir}/rdma.udev-ipoib-naming.rules ${pkgdir}/etc/udev/rules.d/70-persistent-ipoib.rules
+install -m 0644 ${srcdir}/rdma.mlx4.user.modprobe ${pkgdir}/etc/modprobe.d/mlx4.conf
+install -m 0644 ${srcdir}/rdma.service ${pkgdir}/usr/lib/systemd/system/rdma.service
+install -m 0755 ${srcdir}/rdma.kernel-init ${pkgdir}/usr/lib/rdma/rdma-init-kernel
+install -m 0644 ${srcdir}/rdma.fixup-mtrr.awk ${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk
+install -m 0755 ${srcdir}/rdma.sriov-init ${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf
+install -m 0644 ${srcdir}/rdma.udev-rules ${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules
+install -m 0644 ${srcdir}/rdma.cxgb3.sys.modprobe ${pkgdir}/usr/lib/modprobe.d/libcxgb3.conf
+install -m 0644 ${srcdir}/rdma.cxgb4.sys.modprobe ${pkgdir}/usr/lib/modprobe.d/libcxgb4.conf
+install -m 0644 ${srcdir}/rdma.mlx4.sys.modprobe ${pkgdir}/usr/lib/modprobe.d/libmlx4.conf
+install -m 0755 ${srcdir}/rdma.mlx4-setup.sh ${pkgdir}/usr/lib/rdma/mlx4-setup.sh
 }
