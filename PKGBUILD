@@ -58,7 +58,7 @@ package_monogame-bin() {
 }
 
 package_monodevelop-monogame-addin() {
-    depends=('monodevelop')
+    depends=('monodevelop' 'monogame')
 
     # License
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
