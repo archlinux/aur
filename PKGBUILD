@@ -1,8 +1,8 @@
-# Maintainer: Jeena Paradies <spam@jeenaparadies.net>
+# Maintainer: Jeena Paradies <hello@jeena.net
 
 pkgname=feedthemonkey
 _name=FeedTheMonkey
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Desktop client for the TinyTinyRSS reader"
 arch=('i686' 'x86_64')
