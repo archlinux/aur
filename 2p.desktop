@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=tuProlog
+Comment=Prolog system
+Exec=2p
+Icon=2p
+Terminal=false
+Categories=Education;Science;Java;
