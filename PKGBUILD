@@ -8,8 +8,11 @@ pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework (official b
 arch=('x86_64')
 url="http://www.monogame.net/"
 license=('custom', 'MIT')
-depends=('mono')
-optdepends=('monodevelop: to use the bundled IDE addin')
+depends=('mono'
+         'gtk-sharp-3'
+         'openal')
+optdepends=('monodevelop: to use the bundled IDE addin'
+            'mono-pcl: to use the PCL template')
 conflicts=("${_pkgname}" 'tao-framework' 'tao-framework-svn')
 provides=("${_pkgname}")
 install="monogame.install"
@@ -24,7 +27,7 @@ prepare() {
 	sh monogame-sdk.run --noexec --target "${_pkgname}-${pkgver}"
 }
 
-package_monogame-bin() {
+package() {
     # License
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
