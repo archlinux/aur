@@ -1,0 +1,17 @@
+pkgbase = dbus-test-runner-bzr
+	pkgdesc = A small little utility to run a couple of executables under a new DBus session for testing
+	pkgver = r39
+	pkgrel = 1
+	url = https://launchpad.net/dbus-test-runner
+	arch = x86_64
+	license = GPLv3
+	makedepends = bzr
+	makedepends = gnome-common
+	provides = dbus-test-runner
+	conflicts = dbus-test-runner
+	options = !emptydirs
+	source = dbus-test-runner-bzr::bzr+http://bazaar.launchpad.net/~indicator-applet-developers/dbus-test-runner/trunk
+	md5sums = SKIP
+
+pkgname = dbus-test-runner-bzr
+
