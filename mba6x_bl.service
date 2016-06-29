@@ -1,9 +1,0 @@
-[Unit]
-Description=Remove and reload mba6x to workaround no brightness bug
-
-[Service]
-ExecStart=/bin/sh -c "modprobe -r mba6x_bl && modprobe mba6x_bl"
-Type=oneshot
-
-[Install]
-WantedBy=multi-user.target
