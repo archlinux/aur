@@ -3,17 +3,17 @@
 pkgname=redo-sh
 _pkgname=redo
 pkgver=1.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Redo implementation in Bourne Shell."
 arch=("any")
 license=("AGPL3")
 url="http://news.dieweltistgarnichtso.net/bin/redo-sh.html"
 depends=("sh")
 optdepends=("graphviz: dependency graph support via redo-dot")
-conflicts=("redo-c-git" "redo-git")
 provides=("redo")
+conflicts=("redo-c-git" "redo-git" "redo-python")
 source=("http://daten.dieweltistgarnichtso.net/src/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('68577c4e97b3707ab23999fa5d8886cbd509ea528a5becb40a8cc34528d7e8f5')
+sha256sums=('5f115693469023c0d75185bd457a9fa1b438cc0e5be3f9d0b3d160066bced2af')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
