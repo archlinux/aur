@@ -7,7 +7,7 @@ pkgdesc="Application to visualize the locations and physical properties of deep 
 arch=('any')
 url="http://www.thinkastronomy.com/M13/index.html"
 license=('Custom:ThinkAstronomy')
-depends=('java-environment')
+depends=('java-runtime')
 source=("$pkgname-$pkgver.zip"::"http://www.thinkastronomy.com/M13/downloads/WhereIsM13_$pkgver.zip")
 sha256sums=("b9152359584a7f2283560559fdf35348e018254ae965cdbfa624c662687ccadc")
 
