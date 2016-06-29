@@ -1,0 +1,26 @@
+pkgbase = monogame-bin
+	pkgdesc = Open Source implementation of the Microsoft XNA 4 Framework.
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = http://www.monogame.net/
+	install = monogame.install
+	arch = any
+	license = custom,
+	license = MIT
+	source = http://www.monogame.net/releases/v3.5.1/monogame-sdk.run
+	source = https://raw.githubusercontent.com/mono/MonoGame/develop/LICENSE.txt
+	source = Monogame Pipeline.desktop
+	md5sums = 3cf5ca64bd9cb62db5d83066df568727
+	md5sums = 2c8089207448fa9571c65eb00f0c9cd1
+	md5sums = a8fd2a407aef36d2209faad11ae7b186
+
+pkgname = monogame-bin
+	depends = mono
+	provides = monogame
+	conflicts = monogame
+	conflicts = tao-framework
+	conflicts = tao-framework-svn
+
+pkgname = monodevelop-monogame-addin
+	depends = monodevelop
+

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=MonoGame Pipeline
+GenericName=MonoGame Pipeline
+Comment=Used to create platform specific .xnb files
+Exec=monogame-pipeline %F
+TryExec=monogame-pipeline
+Icon=monogame
+StartupNotify=true
+Terminal=false
+Type=Application
+MimeType=text/mgcb;
+Categories=Development;
