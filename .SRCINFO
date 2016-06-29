@@ -1,7 +1,7 @@
 pkgbase = cross-m68k-atari-mint-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the M68K architecture
 	pkgver = 2.23.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
