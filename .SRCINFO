@@ -1,12 +1,12 @@
 pkgbase = xmobar-alsa
 	pkgdesc = A Minimalistic Text Based Status Bar compiled with ALSA
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/xmobar
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = ghc=7.10.3
+	makedepends = ghc=8.0.1
 	makedepends = haskell-x11
 	makedepends = haskell-x11-xft
 	makedepends = haskell-utf8-string
