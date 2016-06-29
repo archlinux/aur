@@ -1,18 +1,15 @@
 pkgbase = otf-texgyre-pagella-math
 	pkgdesc = Math companion for the TeX Gyre Pagella family
-	pkgver = 1.605
+	pkgver = 1.632
 	pkgrel = 1
 	url = http://www.gust.org.pl/projects/e-foundry/tg-math
-	install = otf-texgyre-pagella-math.install
 	arch = any
 	license = custom:GUST Font License
 	makedepends = unzip
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://www.gust.org.pl/projects/e-foundry/tg-math/download/texgyrepagella-math-1605.zip
-	source = http://www.gust.org.pl/projects/e-foundry/licenses/GUST-FONT-LICENSE.txt
-	md5sums = 48f1b1074f03edf0d5374cec85b96223
-	md5sums = 7ab98aedba83bca3de4a3ca3792e7390
+	source = http://www.gust.org.pl/projects/e-foundry/tg-math/download/texgyrepagella-math-1632.zip
+	md5sums = 4cec48f51c2520397fc6161aad566545
 
 pkgname = otf-texgyre-pagella-math
 
