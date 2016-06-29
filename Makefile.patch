@@ -1,0 +1,73 @@
+--- Makefile	2016-06-28 19:06:49.804833739 -0400
++++ Makefile	2016-06-28 19:10:33.958170494 -0400
+@@ -6,7 +6,7 @@
+ USE_ZLIB = -DHAVE_ZLIB
+ LZLIB    = -lz
+ USE_GIFTI = -DHAVE_GIFTI
+-LGIFTI    = /usr/lib64/libexpat.a
++LGIFTI    = /usr/lib/libexpat.so
+ 
+ # ------------------------------
+ # python from C (off for now)
+@@ -17,7 +17,7 @@
+ # X configuration
+ #
+ # uncomment to build using local /usr/local/afniX 'X' tree
+-USE_LOCAL_X_TREE = 1
++#USE_LOCAL_X_TREE = 1
+ ifdef USE_LOCAL_X_TREE
+     XROOT = /usr/local/afniX
+     XROOT_I = -I$(XROOT)/include
+@@ -33,20 +33,22 @@
+     XLIBS = $(XROOT)/lib64/libXm.a $(XROOT)/lib64/libXt.a
+ else
+     # default is static motif
+-    XLIBS = $(XROOT)/lib64/libXm.a -lXt
++    XLIBS = $(XROOT)/lib/libXm.so -lXt
+ endif
+ 
+ # in case user wants to override with system dynamic libs
+-# XLIBS = -lXm -lXt
++XLIBS = -lXm -lXt
+ # ----------------------------------------------------------------------
+ 
+ CCDEBS = -DAFNI_DEBUG -DIMSEQ_DEBUG -DDISPLAY_DEBUG -DTHD_DEBUG
+-CEXTRA = -Wcomment -Wformat -DUSE_TRACING -DHAVE_XDBE $(CPROF) -DDONT_USE_XTDESTROY $(LESSTIF_DEFS)
++#CEXTRA = -Wcomment -Wformat -DUSE_TRACING -DHAVE_XDBE $(CPROF) -DDONT_USE_XTDESTROY $(LESSTIF_DEFS)
++CEXTRA = -march=native -Wcomment -Wformat -DUSE_TRACING -DHAVE_XDBE $(CPROF) -DDONT_USE_XTDESTROY $(LESSTIF_DEFS)
+ 
+ CC     = /usr/bin/gcc -O2 -m64 -fPIC -DREAD_WRITE_64 -DLINUX2 $(CEXTRA)
+ CCVOL  = /usr/bin/gcc -O2 -m64 -fPIC -DREAD_WRITE_64 -DLINUX2 $(CEXTRA)
+ CCFAST = /usr/bin/gcc -O2 -m64 -fPIC -DREAD_WRITE_64 -DLINUX2 $(CEXTRA)
+-CCOLD  = /usr/bin/gcc -V 34 -O2 -m64 -fPIC -DREAD_WRITE_64 -DLINUX2 $(CEXTRA)
++#CCOLD  = /usr/bin/gcc -V 34 -O2 -m64 -fPIC -DREAD_WRITE_64 -DLINUX2 $(CEXTRA)
++CCOLD = ${CCFAST}
+ 
+ # The following line includes compiling for the SSE operations.
+ # However, I found that it actually makes things worse in some test code.
+@@ -59,14 +61,14 @@
+ CCD    = $(CC) $(CCDEBS)
+ 
+ IFLAGS = -I. $(XROOT_I) -I/usr/include
+-LFLAGS = -L. -L/usr/lib64
++LFLAGS = -L. -L/usr/lib
+ 
+ CCSVD  = /usr/bin/gcc -O0 -m64 -fPIC
+ 
+ PLUGIN_SUFFIX = so
+ PLUGIN_LFLAGS = -shared -fPIC
+ PLUGIN_CC     = $(CC)
+-PLFLAGS       = -rdynamic -L. -L/usr/lib64
++PLFLAGS       = -rdynamic -L. -L/usr/lib
+ 
+ SYSTEM_NAME = linux_openmp_64
+ SHOWOFF = -DSHOWOFF=$(SYSTEM_NAME)
+@@ -84,7 +86,7 @@
+ 
+ LINT = /usr/bin/lint -a -b -u -v -x $(IFLAGS) $(CCDEFS)
+ 
+-INSTALLDIR = ./linux_openmp_64
++INSTALLDIR = ../build
+ LIBDIR = $(INSTALLDIR)
+ 
+ #INSTALL_PREREQ = suma
