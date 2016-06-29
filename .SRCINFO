@@ -10,6 +10,7 @@ pkgbase = dotnet-cli
 	makedepends = clang
 	makedepends = llvm
 	makedepends = gettext
+	depends = lldb
 	depends = libunwind
 	depends = icu
 	depends = lttng-ust
