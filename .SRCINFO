@@ -1,13 +1,14 @@
 pkgbase = haskell-alsa-mixer
 	pkgdesc = Provides bindings to the ALSA simple mixer API
 	pkgver = 0.2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/alsa-core
 	install = haskell-alsa-mixer.install
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = c2hs
+	depends = ghc=8.0.1
 	depends = haskell-alsa-core
 	depends = haskell-base
 	depends = haskell-unix
