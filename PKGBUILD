@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lima <mail@tinyprog.tk>
+# Maintainer: Daniel Lima <danielm@tinyhub.tk>
 
 pkgname=luajit-2.1
 pkgver=2.1.0.beta2.r34.g344fe5f
