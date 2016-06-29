@@ -24,7 +24,7 @@ build() {
 
   cd "${pkgname#lib32-}-${pkgver}"
   [ -d build ] || mkdir build
-  cd "${pkgname#lib32-}-${pkgver}/build"
+  cd build
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DSHARED_ONLY=true \
