@@ -1,7 +1,7 @@
 pkgbase = haskell-gio
 	pkgdesc = Binding to the GIO.
 	pkgver = 0.13.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hackage.haskell.org/package/gio
 	arch = i686
 	arch = x86_64
