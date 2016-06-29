@@ -14,7 +14,7 @@ makedepends=('gcc' 'git')
 source=("git+https://github.com/dynup/kpatch.git"
 	"no-libexec.patch")
 md5sums=('SKIP'
-         '06398d03cd37fe65136086c01ca56bd6')
+'c6182ee2867efdea9ff144a9f8ebdb06')
 
 prepare() {
 	patch -p0 < $srcdir/no-libexec.patch
@@ -35,9 +35,6 @@ package() {
 	mv $pkgdir/usr/libexec/kpatch/* $pkgdir/usr/lib/kpatch/
 	
 	rm -fr $pkgdir/usr/libexec $pkgdir/usr/local $pkgdir/usr/sbin $pkgdir/usr/libexec
-
-	cp $srcdir/kpatch/kmod/Makefile $pkgdir/usr/share/kpatch/
-	cp -r $srcdir/kpatch/kmod/core $pkgdir/usr/share/kpatch/
 }
 
 pkgver() {

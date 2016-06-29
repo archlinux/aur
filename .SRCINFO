@@ -11,7 +11,7 @@ pkgbase = kpatch-git
 	source = git+https://github.com/dynup/kpatch.git
 	source = no-libexec.patch
 	md5sums = SKIP
-	md5sums = 06398d03cd37fe65136086c01ca56bd6
+	md5sums = c6182ee2867efdea9ff144a9f8ebdb06
 
 pkgname = kpatch-git
 

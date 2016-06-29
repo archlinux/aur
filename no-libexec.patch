@@ -1,6 +1,8 @@
---- kpatch.clean/kpatch-build/kpatch-build	2016-06-24 22:34:07.566260644 +0800
-+++ kpatch/kpatch-build/kpatch-build	2016-06-24 22:34:28.806261101 +0800
-@@ -97,9 +98,9 @@
+diff --git a/kpatch-build/kpatch-build b/kpatch-build/kpatch-build
+index a57dd77..057259c 100755
+--- a/kpatch-build/kpatch-build
++++ b/kpatch-build/kpatch-build
+@@ -97,9 +97,9 @@ find_dirs() {
  		# git repo
  		TOOLSDIR="$SCRIPTDIR"
  		DATADIR="$(readlink -f $SCRIPTDIR/../kmod)"
@@ -12,3 +14,12 @@
  		DATADIR="$(readlink -f $SCRIPTDIR/../share/kpatch)"
  	else
  		return 1
+@@ -111,7 +111,7 @@ find_core_symvers() {
+ 	if [[ -e "$SCRIPTDIR/create-diff-object" ]]; then
+ 		# git repo
+ 		SYMVERSFILE="$DATADIR/core/Module.symvers"
+-	elif [[ -e "$SCRIPTDIR/../libexec/kpatch/create-diff-object" ]]; then
++	elif [[ -e "$SCRIPTDIR/../lib/kpatch/create-diff-object" ]]; then
+ 		# installation path
+ 		if [[ -e $SCRIPTDIR/../lib/kpatch/$ARCHVERSION/Module.symvers ]]; then
+ 			SYMVERSFILE="$(readlink -f $SCRIPTDIR/../lib/kpatch/$ARCHVERSION/Module.symvers)"
