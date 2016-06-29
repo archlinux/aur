@@ -1,12 +1,11 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# No namcap warnings or errors
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=infiniband-diags
 pkgver=1.6.6
 pkgrel=2
 pkgdesc='OpenFabrics Alliance diagnostic programs and scripts for InfiniBand subnets'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibmad' 'opensm' 'systemd' 'glib2')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz"
@@ -35,7 +34,6 @@ package() {
   rm -rf ${pkgdir}/etc/init.d
   install -Dm644 "${srcdir}/rdma-ndd.service" "${pkgdir}/usr/lib/systemd/system/rdma-ndd.service"
 
-  # 1.6.6 erroneously makes an empty /var/run directory - remove /var/runa nd /var with rmdir rather than "rm -r" so it will fail if not empty (future versions)
   rmdir "${pkgdir}/var/run"
   rmdir "${pkgdir}/var"
 }
