@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC"
 license=('GPL')
 depends=('paraview' 'openmpi' 'voro++' 'fftw') 
+makedepends=('git')
 source=('fftw3.patch' 'usrlocal.patch')
 md5sums=('20fb3f88185884af9f0e16477671ca8e' 'ea4006138a0750ab6223678bb767ef0c')
 
