@@ -23,12 +23,6 @@ conflicts=('atom-editor-bin' 'atom-editor-beta')
 install=${_pkgname}-${_version}.install
 source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
-"archive-view::git+${_url}/archive-view"
-"autocomplete-atom-api::git+${_url}/autocomplete-atom-api"
-"autocomplete-css::git+${_url}/autocomplete-css"
-"autocomplete-html::git+${_url}/autocomplete-html"
-"autocomplete-plus::git+${_url}/autocomplete-plus"
-"autocomplete-snippets::git+${_url}/autocomplete-snippets"
 "dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
 "fusion-ui::git+${_fusurl}/fusion-ui"
 "language-archlinux::git+${_fusurl}/language-archlinux"
