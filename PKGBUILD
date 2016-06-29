@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Frank Shin <frankshin82@gmail.com>
 
-pkgname=mba6x_bl-dkms
+pkgname=mba6x_bl-dkms-git
 _gitname=mba6x_bl
 pkgver=latest
 pkgrel=1
