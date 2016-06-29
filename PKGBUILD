@@ -1,4 +1,4 @@
-# Maintainer: Jeena Paradies <hello@jeena.net
+# Maintainer: Jeena Paradies <hello@jeena.net>
 
 pkgname=feedthemonkey
 _name=FeedTheMonkey
