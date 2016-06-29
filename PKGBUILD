@@ -1,8 +1,8 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=seexpr-git
-pkgver=2.9.r0.g36ffb81
-pkgrel=2
-pkgdesc="An embeddable expression evaluation engine"
+pkgver=2.11.r0.ga5f02bb
+pkgrel=1
+pkgdesc="An embeddable expression evaluation engine (git version)"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/seexpr.html"
 license=('custom')
