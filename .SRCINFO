@@ -1,0 +1,32 @@
+pkgbase = bustle-git
+	pkgdesc = A dbus profiler
+	pkgver = 0.5.4.r2.g0a426c3
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/Bustle/
+	arch = x86_64
+	license = GPLv3
+	makedepends = bzr
+	makedepends = gnome-common
+	depends = ghc
+	depends = happy
+	depends = alex
+	depends = gtk2hs-buildtools
+	depends = haskell-cairo
+	depends = haskell-dbus
+	depends = haskell-glib
+	depends = haskell-gtk
+	depends = haskell-mtl
+	depends = haskell-pango
+	depends = haskell-parsec
+	depends = haskell-setlocale
+	depends = haskell-pcap
+	depends = haskell-hgettext
+	depends = haskell-gio
+	provides = bustle
+	conflicts = bustle
+	options = !emptydirs
+	source = bustle-git::git+https://anongit.freedesktop.org/git/bustle.git
+	md5sums = SKIP
+
+pkgname = bustle-git
+
