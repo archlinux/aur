@@ -15,6 +15,10 @@ post_install() {
 	chown oneadmin:cloud -R /var/log/one /var/lib/one /run/one /run/lock/one
 }
 
+post_upgrade(){
+	printf "NOTE: This is may be an major upgrade! If you are not installing from scratch, check the compatibility guide at:\n\n\thttp://docs.opennebula.org/5.0/intro_release_notes/release_notes/compatibility.html\n\thttp://docs.opennebula.org/5.0/intro_release_notes/upgrades/upgrade_414.html\n"
+}
+
 pre_remove() {
 	userdel oneadmin && echo ">> User 'oneadmin' has been removed."
 	groupdel cloud && echo ">> Group 'cloud' has been removed."

@@ -5,8 +5,8 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=4.14.2
-pkgrel=3
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -31,9 +31,59 @@ makedepends=('xmlrpc-c>=1.31'
              'scons>=0.98')
 optdepends=('nfs-utils: for using the shared file system storage model'
             'mariadb>=5.1: optional replacement for SQLite as the DB back-end'
-            'libmariadbclient>=5.1: required if using MariaDB/MySQL instead of SQLite')
+            'libmariadbclient>=5.1: required if using MariaDB/MySQL instead of SQLite'
+            'ruby-sequel: required when upgrading the database'
+            'ruby-sqlite3: required when upgrading the database')
 conflicts=('opennebula-unstable')
 install=opennebula.install
+backup=('etc/one/oned.conf'
+        'etc/one/sunstone-server.conf'
+        'etc/one/cli/onedatastore.yaml'
+        'etc/one/cli/oneshowback.yaml'
+        'etc/one/cli/onevdc.yaml'
+        'etc/one/cli/onemarket.yaml'
+        'etc/one/cli/onetemplate.yaml'
+        'etc/one/cli/onevm.yaml'
+        'etc/one/cli/oneacct.yaml'
+        'etc/one/cli/oneuser.yaml'
+        'etc/one/cli/onevrouter.yaml'
+        'etc/one/cli/oneimage.yaml'
+        'etc/one/cli/onemarketapp.yaml'
+        'etc/one/cli/onehost.yaml'
+        'etc/one/cli/onevnet.yaml'
+        'etc/one/cli/onecluster.yaml'
+        'etc/one/cli/onezone.yaml'
+        'etc/one/cli/onesecgroup.yaml'
+        'etc/one/cli/onegroup.yaml'
+        'etc/one/cli/oneacl.yaml'
+        'etc/one/ec2_driver.conf'
+        'etc/one/econe.conf'
+        'etc/one/az_driver.conf'
+        'etc/one/onegate-server.conf'
+        'etc/one/oneflow-server.conf'
+        'etc/one/az_driver.default'
+        'etc/one/tmrc'
+        'etc/one/vmm_exec/vmm_execrc'
+        'etc/one/vmm_exec/vmm_exec_vcenter.conf'
+        'etc/one/vmm_exec/vmm_exec_kvm.conf'
+        'etc/one/oned.conf'
+        'etc/one/auth/ldap_auth.conf'
+        'etc/one/auth/x509_auth.conf'
+        'etc/one/auth/server_x509_auth.conf'
+        'etc/one/ec2query_templates/m1.small.erb'
+        'etc/one/defaultrc'
+        'etc/one/sunstone-views.yaml'
+        'etc/one/hm/hmrc'
+        'etc/one/sunstone-logos.yaml'
+        'etc/one/sunstone-views/admin.yaml'
+        'etc/one/sunstone-views/groupadmin_vcenter.yaml'
+        'etc/one/sunstone-views/cloud_vcenter.yaml'
+        'etc/one/sunstone-views/admin_vcenter.yaml'
+        'etc/one/sunstone-views/cloud.yaml'
+        'etc/one/sunstone-views/groupadmin.yaml'
+        'etc/one/sunstone-views/user.yaml'
+        'etc/one/sched.conf'
+        'etc/one/ec2_driver.default')
 changelog=ChangeLog
 source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'opennebula.service'
@@ -41,7 +91,7 @@ source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname
         'chown_fix.patch'
         'set_locations.patch'
         'fix_kvm_emulator.patch')
-sha512sums=('ed572bf1a6e0a4eecb85c1f2beb1f686e6729f74a354f41dbb5113fd089af06013f63d022ee8c068234e5be64df818771a0ba0c452ffbf4fd096dd16cf878926'
+sha512sums=('335dc802f4e24e33177854466ca1dc76e08f784dd6ca2748989870cfed3581eb208c1091a1ecbfd962fe7b4461fde62a4ba89fdfd62a928790e27a834f9b4475'
             'bd8ed1a94dbb57f8fa65803688cefe7e628bc019e7fbac4a8a19f8a68ea4d656d7e834f879fb2f9acd2dee8933b2bebf046b40c94a44c6ccbefc11406a032b64'
             '8024c51db09d2bfcb1ea90a6f893903d7fd021a912d338132cf95eb685261cb67c803798c9ff0669aff371e1abec54291c39cbebf84c695ac7553acb90a6d94f'
             '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677'
@@ -85,14 +135,5 @@ package() {
   install -D -m644 "${srcdir}/opennebula.service" "${pkgdir}/usr/lib/systemd/system/opennebula.service"
   install -D -m644 "${srcdir}/opennebula-sunstone.service" "${pkgdir}/usr/lib/systemd/system/opennebula-sunstone.service"
 
-  # This checks to see whether OpenNebula is currently installed. To avoid
-  # a potentially scary message, errors are sent to /dev/null
-  if [[ ("$(pacman -Qq ${pkgname} 2>/dev/null)" == "${pkgname}") || ("$(pacman -Qq ${_unstable_pkg} 2>/dev/null)" == "${_unstable_pkg}") ]]; then
-    # Use -k when running ./install.sh to keep previous configuration files
-    # Note: It is highly recommended to not keep the oned.conf file.
-    DESTDIR="${pkgdir}" ./install.sh -k -u oneadmin -g cloud
-  else
-    # Do not use -k when running ./install.sh for new installations
-    DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud
-  fi
+  DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud
 }
