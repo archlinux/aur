@@ -16,5 +16,5 @@ license=('GPL2')
 depends=('mba6x_bl-dkms-git')
 
 package() {
-  return
+  true
 }
