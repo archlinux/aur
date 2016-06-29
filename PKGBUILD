@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf)
@@ -21,7 +21,6 @@ url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine.install
 
 _depends=(
   fontconfig      lib32-fontconfig
