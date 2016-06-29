@@ -1,28 +1,6 @@
 pkgbase = libressl-netcat
 	pkgdesc = Low level UDP/TCP connection tool with support for TLS protocol
 	pkgver = 2.4.1
-	pkgrel = 1
-	url = http://www.libressl.org
-	arch = x86_64
-	arch = i686
-	license = bsd
-	license = custom:Openssl
-	depends = glibc
-	depends = ca-certificates
-	provides = netcat
-	conflicts = openbsd-netcat
-	conflicts = gnu-netcat
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.4.1.tar.gz
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.4.1.tar.gz.asc
-	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-	sha256sums = 121922b13169cd47a85e3e77f0bc129f8d04247193b42491cb1fab9074e80477
-	sha256sums = SKIP
-
-pkgname = libressl-netcat
-
-pkgbase = libressl-netcat
-	pkgdesc = Low level UDP/TCP connection tool with support for TLS protocol
-	pkgver = 2.4.1
 	pkgrel = 2
 	url = http://www.libressl.org
 	arch = x86_64
