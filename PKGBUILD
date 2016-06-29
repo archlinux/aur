@@ -1,20 +1,20 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
-# Contributor: Bazon <bazonbloch@arcor.de>
+# Maintainer: Bazon <bazonbloch@arcor.de>
+# Contributor: Jose Riha <jose1711 gmail com>
 pkgname=activinspire
-pkgver=2.3.65940
-pkgrel=3
+pkgver=2.4.66096
+pkgrel=1
 pkgdesc="Presentation Software to use with Promethean Hardware products."
 arch=('i686' 'x86_64')
 url="http://activsoftware.co.uk/linux/repos/ubuntu/dists/precise/Release"
 license=('unknown')
 if [ "$CARCH" = "i686" ]; then
   _arch='i386'
-  _md5sum='faed7e0ca0f04190df6702ebc18c7489'
+  _md5sum='84c938dc4c06e47223d00575f42c563e'
   depends=('qt4' 'gstreamer0.10-good-plugins' 'libjpeg6' 'jre7-openjdk' 'openssl098' 'libpulse')
 else
   _arch='amd64'
-  _md5sum='3b5ada7a4a713d2e3b0d4547530f2919'
-  depends=('qt4' 'gstreamer0.10-good-plugins' 'bin32-jre' 'lib32-libjpeg' 'lib32-libjpeg6' 'lib32-libxmu' 'lib32-gstreamer0.10-base' 'lib32-alsa-lib' 'lib32-openssl098' 'lib32-libpulse')
+  _md5sum='41bc8381221eadeb72ec6f1eaf6d2e70'
+  depends=('qt4' 'gstreamer0.10-good-plugins' 'bin32-jre' 'lib32-libjpeg' 'lib32-libxmu' 'lib32-gstreamer0.10-base' 'lib32-alsa-lib' 'lib32-openssl098' 'lib32-libpulse' 'lib32-libjpeg6-turbo')
 fi
 optdepends=('activdriver: promethean hardware support'
             'activtools: hardware calibration')
