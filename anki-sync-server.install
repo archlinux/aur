@@ -1,13 +1,13 @@
 #!/bin/bash
 
 post_install() {
-	getent passwd anki-sync-server &>/dev/null || useradd -mc 'Anki Sync Server user' -d '/var/lib/anki-sync-server' -s /usr/bin/nologin anki-sync-server
+	getent passwd anki-sync-server &>/dev/null || useradd -Mrc 'Anki Sync Server user' -d /var/lib/anki-sync-server -s /usr/bin/nologin anki-sync-server
 	chown -R anki-sync-server: /var/lib/anki-sync-server
 	chown anki-sync-server /usr/bin/ankiserverctl
 }
 
 post_remove() {
-	getent passwd anki-sync-server &>/dev/null && userdel -r anki-sync-server || true
+	getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
 	getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
 }
 

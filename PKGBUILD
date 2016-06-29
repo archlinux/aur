@@ -1,20 +1,22 @@
 # Maintainer: Janne Heß <jannehess@gmail.com>
 
 pkgname=anki-sync-server-git
-pkgver=2.0.5.g07eaac8
+pkgver=2.0.6.g4391731
 pkgrel=1
 pkgdesc='A personal Anki sync server (so you can sync against your own server rather than AnkiWeb)'
 url='https://github.com/dsnopek/anki-sync-server'
 license=('GPL')
 provides=('anki-sync-server')
 conflicts=('anki-sync-server')
-depends=('python2' 'python2-webob' 'python2-pastedeploy' 'python2-sqlalchemy' 'python2-simplejson' 'python2-paste-script' 'anki')
-makedepends=('patch')
+depends=('python2' 'python2-webob' 'python2-sqlalchemy' 'python2-simplejson' 'python2-paste-script' 'anki') # TODO Replace anki with libanki
+makedepends=('patch' 'python2-setuptools')
 backup=('etc/webapps/anki-sync-server/production.ini' 'etc/webapps/anki-sync-server/logging.conf')
-source=("git://github.com/dsnopek/${pkgname%-git}" 'ankiserverctl.py.patch' "${pkgname%-git}.service")
+source=("git://github.com/dsnopek/${pkgname%-git}"
+        'ankiserverctl.py.patch'
+        "${pkgname%-git}.service")
 sha512sums=('SKIP'
             'f247d0b64a8d9df9b636e1e8f9fe8894982f3a26e0cf9297cebcb8bf51b7526e451e495e15c7f1cc1c250c265d44723f710c8a13d5cabeede4ebe222d3e3dff0'
-            '7a11d2ac2d33d0888f5d1d777134348367116b8d2ba199a11aa55bab5b39d232ca91c4329635f2b1ffd4189b7e7ea0c49aa377d6396ae28dbf269e0706509b9e')
+            '1d0666f17c181b4946fd37cc5d323a53d674b0b7e330eac515f4bea74e726162bd357b51e00bf162de7f2229aabec6859363f8c4aa7ce5e8e1974d72661b2860')
 arch=('any')
 install="${pkgname%-git}.install"
 
@@ -25,7 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
-
 	patch -p0 -i "${srcdir}/ankiserverctl.py.patch"
 }
 
