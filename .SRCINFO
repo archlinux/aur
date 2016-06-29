@@ -1,12 +1,11 @@
 pkgbase = bustle-git
 	pkgdesc = A dbus profiler
 	pkgver = 0.5.4.r2.g0a426c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/Bustle/
 	arch = x86_64
 	license = GPLv3
-	makedepends = bzr
-	makedepends = gnome-common
+	makedepends = git
 	depends = ghc
 	depends = happy
 	depends = alex

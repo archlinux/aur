@@ -2,14 +2,14 @@
 _bpn=bustle
 pkgname=${_bpn}-git
 pkgver=0.5.4.r2.g0a426c3
-pkgrel=1
+pkgrel=2
 pkgdesc="A dbus profiler"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/Bustle/"
 license=('GPLv3')
 groups=()
 depends=(ghc happy alex gtk2hs-buildtools haskell-cairo haskell-dbus haskell-glib haskell-gtk haskell-mtl haskell-pango haskell-parsec haskell-setlocale haskell-pcap haskell-hgettext haskell-gio)
-makedepends=(bzr gnome-common)
+makedepends=(git)
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
