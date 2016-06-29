@@ -19,7 +19,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname/completions"
-	for file in $(ls); do
+	for file in * ; do
 		install -Dm644 $file "$pkgdir/usr/share/bash-completion/completions/$file"
 	done
 }
