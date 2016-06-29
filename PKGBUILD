@@ -1,14 +1,11 @@
-# Maintainer: James Harvey <jamespharvey20@gmail.com>
-# * No namcap warnings or errors
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=libmlx4
 pkgver=1.0.6
 pkgrel=1
 pkgdesc='OpenFabrics Alliance userspace Mellanox ConnectX InfiniBand HCA driver'
-#        Plug-in module for libibverbs.
-#        Allows programs to use Mellanox hardware directly from userspace.
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/downloads/mlx4/README.html')
+url='https://www.openfabrics.org/downloads/mlx4/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/mlx4/${pkgname}-${pkgver}.tar.gz")
