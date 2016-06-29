@@ -19,15 +19,14 @@ sha256sums=('dada8b812055afcad4546d9966f9a763e4723169e89706e2b240c7b7e998dc27'
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 build() {
-  cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
-
-  # Override the defaults with 32-bit options.
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
+  cd "${pkgbase#lib32-}-${pkgver}"
   ./configure \
               --prefix=/usr \
               --mandir=/usr/share/man \
@@ -42,7 +41,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
+  cd "${pkgbase#lib32-}-${pkgver}"
   make check
 }
 
