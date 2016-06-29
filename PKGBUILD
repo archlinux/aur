@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'libvpx.so' 'libx264.so' 'libx265.so'
          'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'jack' 'kvazaar'
          'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libutvideo-git' 'libxv'
+         'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
          'mesa' 'nut-multimedia-git' 'openal' 'opencl-headers' 'openh264' 'rubberband'
          'rtmpdump' 'shine' 'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab'
          'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
@@ -101,7 +101,6 @@ build() {
     --enable-libtesseract \
     --enable-libtheora \
     --enable-libtwolame \
-    --enable-libutvideo \
     --enable-libv4l2 \
     --enable-libvidstab \
     --enable-libvo-amrwbenc \
