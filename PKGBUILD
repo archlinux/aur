@@ -1,12 +1,12 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
-pkgver=1.10
-pkgrel=3
+pkgver=1.10.2
+pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="https://www.spigotmc.org/"
 license=("LGPL")
-depends=(java-runtime-headless screen sudo fontconfig bash sed)
+depends=(java-runtime-headless screen sudo fontconfig bash awk sed)
 optdepends=("tar: needed in order to create world backups"
 "netcat: required in order to suspend an idle server")
 makedepends=(java-environment git)
@@ -25,8 +25,8 @@ md5sums=('SKIP'
          '7bb2dc610c5f55e133bd41ab608ec7a1'
          '872d2e03799f1f8f0c75acdebce91894'
          '1eb2d5f485cf9eff7a99c826ad56fcf4'
-         'f04e0bcf8d771b0d1dc0206dc173d77a'
-         'd5253665976acd7206339a713b62f220')
+         'd0ae1d07bfa6dd5b628a2b5cd61feebd'
+         '016361b2a94c7be32a2816adcd5b3dca')
 
 _game="spigot"
 _server_root="/srv/craftbukkit"
@@ -52,7 +52,6 @@ package() {
 	# Give the group write permissions and set user or group ID on execution
 	chmod g+ws "${pkgdir}${_server_root}"
 	
-	# make plugins folder drag n drop easy
-	mkdir -p "${pkgdir}/${_server_root}/plugins"
-	chmod -R 777 "${pkgdir}/${_server_root}/plugins"
+	# Make plugins folder ready for drag and drop
+	install -dm777 "${pkgdir}/${_server_root}/plugins"
 }
