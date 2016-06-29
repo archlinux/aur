@@ -5,7 +5,7 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 pkgname=sky
 pkgver=2.1.6306_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
