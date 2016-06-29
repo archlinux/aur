@@ -5,7 +5,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.5.3'
+pkgver='1.6.0'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ url='http://www.pmacct.net/'
 license=('GPL2')
 depends=('libpcap' 'libmysqlclient' 'postgresql-libs' 'sqlite3')
 _verwatch=("${url}" "${url}${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
-source=("http://www.pmacct.net/${pkgname}-${pkgver}.tar.gz"
+source=("${url}${pkgname}-${pkgver}.tar.gz"
         'pmacctd.rc.d' \
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('2ef7646828168eb5e5cc1c5cb76d20b9a8ca05eae0bf34fc26bebefbf92c33a4'
+sha256sums=('1b8d65032b21e152811b6a20ee38ac18ded7ee9ff27cd86870673f088db3c395'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
@@ -34,7 +34,8 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j "$(nproc)"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
   set +u
 }
 
