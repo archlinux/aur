@@ -4,9 +4,9 @@
 
 pkgname=fusion-icon0.9
 _realname=fusion-icon-gtk3
-_commit=b3ec91cb2b6a73803bb734612efd2bf6ca503b16
+_commit=ceff5be7ac43b3083e0f30653ba44401357f6c54
 pkgver=0.2+git${_commit:0:7}
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple tray icon for Compiz 0.9 and GTK3"
 arch=('any')
 url="https://github.com/kozec/fusion-icon-gtk3"
@@ -15,7 +15,7 @@ provides=('fusion-icon=0.2')
 conflicts=('fusion-icon')
 depends=('python2' 'compiz>=0.9' 'python2-gobject' 'gtk3' 'hicolor-icon-theme' 'xorg-utils' 'mesa-demos')
 source=("https://github.com/kozec/${_realname}/archive/${_commit}.tar.gz")
-sha256sums=('eb47d5fdce12528634f6bd5ab11ccd8bad1736f93a315a433d7c6ac0e93ebd23')
+sha256sums=('cc18320aec9b82b497200a64f28f6dcd17ac86308ebd0e202b6a55e114b9ab7a')
 
 package() {
   cd $srcdir/${_realname}-${_commit}
