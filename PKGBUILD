@@ -6,9 +6,9 @@ pkgver=1.9.2.4
 pkgrel=1
 pkgdesc="Programming game, where the goal is to develop a robot battle tank to battle against other tanks in Java or .NET. The robot battles are running in real-time and on-screen."
 arch=(any)
-url=('http://robocode.sourceforge.net')
+url='http://robocode.sourceforge.net'
 depends=(java-environment)
-license=EPL
+license=('EPL')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver-setup.jar robocode.desktop)
 md5sums=('86a0ea89607b8c30ebe5e3f26ba0c264'
          '8a556209b3ffb39839f28f30479a8c8d')
