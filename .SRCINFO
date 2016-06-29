@@ -1,0 +1,14 @@
+pkgbase = minisign
+	pkgdesc = Minisign is a dead simple tool to sign files and verify signatures.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://jedisct1.github.io/minisign/
+	arch = x86_64
+	license = minisign/LICENSE
+	makedepends = libsodium
+	makedepends = cmake
+	source = git+https://github.com/jedisct1/minisign.git
+	md5sums = SKIP
+
+pkgname = minisign
+
