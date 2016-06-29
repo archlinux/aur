@@ -1,12 +1,12 @@
 pkgbase = kubectl-bin
 	pkgdesc = Kubernetes.io client binary
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = http://kubernetes.io
 	arch = i686
 	arch = x86_64
 	license = apache
-	source = https://github.com/kubernetes/kubernetes/releases/download/v1.2.4/kubernetes.tar.gz
-	md5sums = ab0aca3a20e8eba43c8ff9d672793618
+	source = https://github.com/kubernetes/kubernetes/releases/download/v1.2.5/kubernetes.tar.gz
+	md5sums = 69d770df8fa4eceb57167e34df3962ca
 
 pkgname = kubectl-bin
