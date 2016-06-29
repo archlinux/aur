@@ -1,15 +1,16 @@
 pkgbase = android-platform-24
-    pkgdesc = Android SDK Platform, API-24
-        pkgver = 7.0_r01
-            pkgrel = 1
-                url = http://developer.android.com/sdk/index.html
-                    arch = any
-                        license = custom
-                            depends = android-sdk
-                                depends = android-sdk-platform-tools
-                                    conflicts = android-platform==24
-                                        options = !strip
-                                            source = http://dl.google.com/android/repository/platform-24_r01.zip
-                                                sha1sums = b58f5dd3f60ee0fbaa09cce6372157c36c688075
+	pkgdesc = Android SDK Platform, API-24
+	pkgver = 7.0_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	conflicts = android-platform==24
+	options = !strip
+	source = http://dl.google.com/android/repository/platform-24_r01.zip
+	sha1sums = b58f5dd3f60ee0fbaa09cce6372157c36c688075
 
-                                                pkgname = android-platform-24
+pkgname = android-platform-24
+
