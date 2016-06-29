@@ -1,0 +1,59 @@
+From 56ab756b0e9afef24cf9151a4a43f23e8d78de29 Mon Sep 17 00:00:00 2001
+From: Jan Vorlicek <janvorli@microsoft.com>
+Date: Tue, 28 Jun 2016 21:34:04 +0200
+Subject: [PATCH] Fix Windows context to Unix context translation on AMD64
+ (#6027)
+
+There was a bug in the context translation between the Windows context
+and Unix context on AMD64 caused by the fact that the Unix context
+gregs array contains CS, GS and FS in a single field (REG_CSGSFS) and
+the MCREG_SegCs accessor macro was incorrectly written to use the
+whole field as CS. So writing the CS into the Unix context also
+cleared the GS, FS and the topmost 16 bits described as padding.
+This issue was exposed on the Linux kernel >= 4.6.0 where the padding
+for some reason was not zero, probably used by the kernel for some
+internal purposes.
+I have fixed it by changing the accessor to modify only the 16 bits
+corresponding to the CS.
+I have also changed the code in the inject_activation_handler to
+save cycles and not to copy the Windows context back to the Unix one
+in case the activation function was not called and so the context
+was not possibly changed.
+---
+ src/pal/src/exception/signal.cpp  | 5 ++---
+ src/pal/src/include/pal/context.h | 2 +-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/pal/src/exception/signal.cpp b/src/pal/src/exception/signal.cpp
+index dc26ee4..adeada1 100644
+--- a/src/pal/src/exception/signal.cpp
++++ b/src/pal/src/exception/signal.cpp
+@@ -464,10 +464,9 @@ static void inject_activation_handler(int code, siginfo_t *siginfo, void *contex
+         if (g_safeActivationCheckFunction(CONTEXTGetPC(&winContext), /* checkingCurrentThread */ TRUE))
+         {
+             g_activationFunction(&winContext);
++            // Activation function may have modified the context, so update it.
++            CONTEXTToNativeContext(&winContext, ucontext);
+         }
+-
+-        // Activation function may have modified the context, so update it.
+-        CONTEXTToNativeContext(&winContext, ucontext);
+     }
+     else if (g_previous_activation.sa_sigaction != NULL)
+     {
+diff --git a/src/pal/src/include/pal/context.h b/src/pal/src/include/pal/context.h
+index 7591703..6f1b3fe 100644
+--- a/src/pal/src/include/pal/context.h
++++ b/src/pal/src/include/pal/context.h
+@@ -111,7 +111,7 @@ typedef ucontext_t native_context_t;
+ #define MCREG_Rax(mc)       ((mc).gregs[REG_RAX])
+ #define MCREG_Rip(mc)       ((mc).gregs[REG_RIP])
+ #define MCREG_Rsp(mc)       ((mc).gregs[REG_RSP])
+-#define MCREG_SegCs(mc)     ((mc).gregs[REG_CSGSFS])
++#define MCREG_SegCs(mc)     (*(WORD*)&((mc).gregs[REG_CSGSFS]))
+ #define MCREG_R8(mc)        ((mc).gregs[REG_R8])
+ #define MCREG_R9(mc)        ((mc).gregs[REG_R9])
+ #define MCREG_R10(mc)       ((mc).gregs[REG_R10])
+-- 
+2.9.0
+

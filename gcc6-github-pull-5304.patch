@@ -1,0 +1,28 @@
+From 41912e3adb789b62f4cb46acffe915b6f1ab0e1e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=BCrgen=20H=C3=B6tzel?= <juergen@hoetzel.info>
+Date: Mon, 30 May 2016 11:45:49 +0200
+Subject: [PATCH] Don't use libstdc++ wrappers for stdlib.h (#5304)
+
+This prevents #undef of min/max macros. Refs #5006.
+---
+ src/pal/src/include/pal/palinternal.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/pal/src/include/pal/palinternal.h b/src/pal/src/include/pal/palinternal.h
+index 4c01be8..fdebc8d 100644
+--- a/src/pal/src/include/pal/palinternal.h
++++ b/src/pal/src/include/pal/palinternal.h
+@@ -567,6 +567,10 @@ function_name() to call the system's implementation
+ #endif
+ #include <ctype.h>
+ 
++// Don't use C++ wrappers for stdlib.h
++// https://gcc.gnu.org/ml/libstdc++/2016-01/msg00025.html 
++#define _GLIBCXX_INCLUDE_NEXT_C_HEADERS 1
++
+ #define _WITH_GETLINE
+ #include <stdio.h>
+ #include <stdlib.h>
+-- 
+2.9.0
+

@@ -1,0 +1,33 @@
+pkgbase = dotnet-cli
+	pkgdesc = A command line utility for building, testing, packaging and running .NET Core applications and libraries
+	pkgver = 1.0.0_preview2_003121
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = clang
+	makedepends = llvm
+	makedepends = gettext
+	depends = libunwind
+	depends = icu
+	depends = lttng-ust
+	depends = openssl
+	depends = curl
+	provides = dotnet
+	noextract = dotnet-cli-1.0.0_preview2_003121.tar.gz
+	options = staticlibs
+	source = coreclr-1.0.0.tar.gz::https://github.com/dotnet/coreclr/archive/v1.0.0.tar.gz
+	source = corefx-1.0.0.tar.gz::https://github.com/dotnet/corefx/archive/v1.0.0.tar.gz
+	source = dotnet-cli-1.0.0_preview2_003121.tar.gz::https://go.microsoft.com/fwlink/?LinkID=816869
+	source = gcc6-github-pull-5304.patch
+	source = segv-github-pull-6027.patch
+	sha256sums = fad7bb05f78d90dfea6e8fec59f79ff12648fe95c0965cda5bc11beafabd0f27
+	sha256sums = 98f9475ea42e5d55ad9402424e342a6c0ea7351f3fb5805a602132969b44b774
+	sha256sums = dde9f8326583f351a89e57095dc523ba92560896cd1d4b8e0ca5ac7fd8499138
+	sha256sums = 0905f9f8e6e33a7a6e5f4acf9ec54ec3796400dce28f0d71c1d1d8bcd9b7e068
+	sha256sums = a039329f892c55a400537ea4da61de86af195d143d758b6019fbae76f17ef6f1
+
+pkgname = dotnet-cli
+
