@@ -1,8 +1,8 @@
 # Maintainer: Adam Scott <ascott.ca@gmail.com>
 pkgname='pico8-bin'
 _pkgname='pico8'
-pkgver='0.1.6'
-pkgrel=2
+pkgver='0.1.8'
+pkgrel=1
 pkgdesc="PICO-8 is a fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64')
 url="http://www.lexaloffle.com/pico-8.php"
@@ -16,8 +16,8 @@ _filename="pico-8_${pkgver}_${_platform}"
 # Hardcodes the source file for the .SRCINFO file
 source_i686=("local://pico-8_${pkgver}_i386.zip")
 source_x86_64=("local://pico-8_${pkgver}_amd64.zip")
-sha256sums_i686=('5f84055d7bd25556d1512b3dd9fdea6ef1b70f1df3c785f16ed91d8c1c22e5fc')
-sha256sums_x86_64=('ed2cf0c3298ecab68865e5605d34b996cf54f09a6cbfc86182546594af44fbcc')
+sha256sums_i686=('ea5dedfb078e29f2f2e635708cace383a75a60fb864414b8ee1eb1e2bdcfc041')
+sha256sums_x86_64=('6e851e40883e03bb94369b9d25bec3e3baa21bc7d18e0063937b5bb19903ce8a')
 noextract=("pico-8_${pkgver}_i386.zip" "pico-8_${pkgver}_amd64.zip")
 
 prepare () {
@@ -47,8 +47,9 @@ package () {
   # Creates local variables storing filenames
   local _pico8_license="LICENSE"
   local _pico8_bin="pico8"
+  local _pico8_dyn="pico8_dyn"
   local _pico8_dat="pico8.dat"
-  local _pico8_txt="pico8.txt"
+  local _pico8_txt="pico-8.txt"
   local _pico8_mime="pico8.xml"
   local _pico8_desktop="pico8.desktop"
   local _pico8_icon="pico8.png"
@@ -83,6 +84,7 @@ Categories=Development;Game" > "${_pico8_desktop}"
   # Installs the extracted files
   install -Dm644 "${_pico8_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_pico8_license}"
   install -Dm755 "${_pico8_bin}" "${_destdir}/${_pico8_bin}"
+  install -Dm644 "${_pico8_dyn}" "${_destdir}/${_pico8_dyn}"
   install -Dm644 "${_pico8_dat}" "${_destdir}/${_pico8_dat}"
   install -Dm644 "${_pico8_txt}" "${_destdir}/${_pico8_txt}"
   install -Dm644 "${_pico8_mime}" "${_mimedir}/${_pico8_mime}"
@@ -91,3 +93,4 @@ Categories=Development;Game" > "${_pico8_desktop}"
   # Links the installed binary to /usr/bin
   ln -s "/usr/share/${_pkgname}/pico8" "${_bindir}/pico8"
 }
+

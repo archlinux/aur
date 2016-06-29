@@ -1,19 +1,19 @@
 pkgbase = pico8-bin
 	pkgdesc = PICO-8 is a fantasy console for making, sharing and playing tiny games and other computer programs.
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgver = 0.1.8
+	pkgrel = 1
 	url = http://www.lexaloffle.com/pico-8.php
 	arch = i686
 	arch = x86_64
 	license = custom:commercial
 	makedepends = unzip
 	depends = glibc
-	noextract = pico-8_0.1.6_i386.zip
-	noextract = pico-8_0.1.6_amd64.zip
-	source_i686 = local://pico-8_0.1.6_i386.zip
-	sha256sums_i686 = 5f84055d7bd25556d1512b3dd9fdea6ef1b70f1df3c785f16ed91d8c1c22e5fc
-	source_x86_64 = local://pico-8_0.1.6_amd64.zip
-	sha256sums_x86_64 = ed2cf0c3298ecab68865e5605d34b996cf54f09a6cbfc86182546594af44fbcc
+	noextract = pico-8_0.1.8_i386.zip
+	noextract = pico-8_0.1.8_amd64.zip
+	source_i686 = local://pico-8_0.1.8_i386.zip
+	sha256sums_i686 = ea5dedfb078e29f2f2e635708cace383a75a60fb864414b8ee1eb1e2bdcfc041
+	source_x86_64 = local://pico-8_0.1.8_amd64.zip
+	sha256sums_x86_64 = 6e851e40883e03bb94369b9d25bec3e3baa21bc7d18e0063937b5bb19903ce8a
 
 pkgname = pico8-bin
 
