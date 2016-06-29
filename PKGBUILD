@@ -1,7 +1,5 @@
 # Maintainer: Janne Heß <jannehess@gmail.com>
 
-# Contributor: Janne Heß <jannehess@gmail.com>
-
 pkgname=zfsmond-git
 pkgver=487922c
 pkgrel=1
@@ -9,20 +7,14 @@ pkgdesc='Tiny ZFS Web Interface written in AngularJS and Flask Restful'
 url='https://github.com/FireDrunk/ZFSmond'
 license=('GPL')
 depends=('python2-pyudev' 'python2-pysmart' 'python2-flask' 'python2-flask-restful' 'python2-enum34' 'python2-cffi' 'python2-libzfs-git')
-source=('git://github.com/FireDrunk/ZFSmond'
-'zfsmond.service')
-sha256sums=('SKIP'
-            '27f05cd919b88ee691c6a1fd95c51ced540bbbd96b1ba3458c17149cc8fd25da')
+source=('git://github.com/FireDrunk/ZFSmond' 'zfsmond.service')
+sha512sums=('SKIP'
+            'd37468885d1160086f37795ed552fc890db650602424c4f6724ed06cc70dd931a171bf05b26a87b0af499d15fb909d52af2605971cd02b1e3511f01e8f060b47')
 arch=('any')
 
 pkgver() {
 	cd "${srcdir}/ZFSmond"
 	git describe --always
-}
-
-build() {
-	# Ugly hack to decrease verbosity
-	sed -i 's/app.debug = True/app.debug = False'$"\n"'import logging'$"\n"'logging.getLogger("werkzeug").setLevel(logging.ERROR)/g' "${srcdir}/ZFSmond/main.py"
 }
 
 package() {

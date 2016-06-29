@@ -1,6 +1,5 @@
 [Unit]
 Description=Tiny ZFS Web Interface
-After=elasticsearch.service
 
 [Service]
 Type=simple
