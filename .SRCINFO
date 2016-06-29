@@ -1,7 +1,7 @@
 pkgbase = sozi
 	pkgdesc = A zooming presentation based on SVG, using JavaScript
 	pkgver = 16.02
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sozi.baierouge.fr/
 	arch = i686
 	arch = x86_64

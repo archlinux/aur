@@ -8,7 +8,7 @@ pkgver=16.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=16.02.141048
 _pkgverpostfix="-fix344" # this is required because the pkgver cannot contain hyphen
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -135,6 +135,7 @@ build() {
   done
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
+  rm -rf "build"
   rm -rf "node_modules"; mkdir "node_modules"
   cat package.json | jq -r '.dependencies, .devDependencies | to_entries? | map(.key + "@" + .value) | .[]' | sort -u | while read dep; do
     local package="$(echo "$dep" | gawk -F'@' '{ print $1 }')"
