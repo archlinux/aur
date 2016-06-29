@@ -13,7 +13,8 @@ pkgver=1.8.0.arch0.5.2.sh0.34.2.t2.2.1
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
-url='https://github.com/atom/atom'
+_url='https://github.com/atom'
+url="${_url}/atom"
 license=('MIT')
 depends=('namcap' 'pkgbuild-introspection' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2' 'git')
 optdepends=('gvfs: file deletion support')
@@ -22,13 +23,21 @@ conflicts=('atom-editor-bin' 'atom-editor-beta')
 install=${_pkgname}-${_version}.install
 source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
-"git+https://github.com/Murriouz/dark-bint-syntax"
-"git+${_fusurl}/fusion-ui"
-"git+${_fusurl}/language-archlinux"
-"git+${_fusurl}/language-gfm2"
-"git+${_fusurl}/language-ini-desktop"
-"git+https://github.com/puranjayjain/language-liquid"
-"git+${_fusurl}/language-patch2"
+"archive-view::git+${_url}/archive-view"
+"autocomplete-atom-api::git+${_url}/autocomplete-atom-api"
+"autocomplete-css::git+${_url}/autocomplete-css"
+"autocomplete-html::git+${_url}/autocomplete-html"
+"autocomplete-plus::git+${_url}/autocomplete-plus"
+"autocomplete-snippets::git+${_url}/autocomplete-snippets"
+"dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
+"fusion-ui::git+${_fusurl}/fusion-ui"
+"language-archlinux::git+${_fusurl}/language-archlinux"
+"language-c::git+${_url}/language-c"
+"language-css::git+${_url}/language-css"
+"language-gfm2::git+${_fusurl}/language-gfm2"
+"language-ini-desktop::git+${_fusurl}/language-ini-desktop"
+"language-liquid::git+https://github.com/puranjayjain/language-liquid"
+"language-patch2::git+${_fusurl}/language-patch2"
 "language-unix-shell::git+${_fusurl}/language-shellscript"
 "git+${_fusurl}/mydict"
 "git+${_fusurl}/terminal-fusion"
