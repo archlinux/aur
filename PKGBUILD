@@ -5,7 +5,7 @@ pkgname=("${_pkgname}-bin" "monodevelop-${_pkgname}-addin")
 pkgver=3.5.1
 pkgrel=1
 pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework."
-arch=('any')
+arch=('x86_64')
 url="http://www.monogame.net/"
 license=('custom', 'MIT')
 source=("http://www.monogame.net/releases/v${pkgver}/monogame-sdk.run"
@@ -37,6 +37,7 @@ package_monogame-bin() {
 
     # SDK
     cp -rf "MonoGameSDK/." "${pkgdir}${mgroot}"
+    rm -f "${pkgdir}${mgroot}/uninstall.sh"
 
     # Bundled tools
     chmod +x "${pkgdir}${mgroot}/Tools/ffmpeg"
