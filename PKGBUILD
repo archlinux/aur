@@ -24,14 +24,13 @@ prepare() {
 }
 
 build() {
-  cd libgcrypt-${pkgver}
-
-  # Override the defaults with 32-bit options.
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export LDFLAGS='-m32'
+  export LDFLAGS+=' -m32'
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
+  cd libgcrypt-${pkgver}
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
