@@ -1,7 +1,7 @@
 pkgbase = stout-bin
 	pkgdesc = A reliable static website deploy tool
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EagerIO/Stout
 	arch = any
 	license = MIT
