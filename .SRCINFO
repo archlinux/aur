@@ -1,0 +1,20 @@
+pkgbase = ruby-capybara
+	pkgdesc = An integration testing tool for rack based web applications
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/jnicklas/capybara
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-mime-types
+	depends = ruby-nokogiri
+	depends = ruby-rack
+	depends = ruby-rack-test
+	depends = ruby-xpath
+	options = !emptydirs
+	source = https://rubygems.org/downloads/capybara-2.7.1.gem
+	sha256sums = 2c010cefb36e701bc576223c877ed173b316d06e5d50512eb242cde487bed513
+
+pkgname = ruby-capybara
+
