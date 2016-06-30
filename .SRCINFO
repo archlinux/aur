@@ -1,0 +1,17 @@
+pkgbase = go-boom-git
+	pkgdesc = HTTP(S) load generator, ApacheBench (ab) replacement, written in Go
+	pkgver = r188.4a00fe2
+	pkgrel = 1
+	url = https://github.com/rakyll/boom
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+	source = boom::git+https://github.com/rakyll/boom.git
+	sha256sums = SKIP
+
+pkgname = go-boom-git
+
