@@ -1,7 +1,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-git
-pkgver=v0.2.5.r12.g0cd9b5d
+pkgver=v0.2.6.r1.geb1fe4e
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver"
 arch=('i686' 'x86_64')

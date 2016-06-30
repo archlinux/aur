@@ -3,7 +3,5 @@ post_install() {
   echo -e 'Start ckb-daemon manually or enable the service:'
   echo -e 'systemctl start ckb-daemon'
   echo -e 'systemctl enable ckb-daemon'
-  echo -e '\nATTENTION!\n'
-  echo -e "If your keyboard's firmware is 2.04 or higher, install ckb-git-latest instead!"
   echo -e '====================================================\n'
 }
