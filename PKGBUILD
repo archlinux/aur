@@ -2,14 +2,14 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=4
-pkgrel=5
+pkgver=5
+pkgrel=6
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
 license=('unlicense')
 depends=('speech-dispatcher' 'allegro')
-makedepends=('gcc' 'git' 'git-lfs')
+makedepends=('gcc' 'git')
 optdepends=('espeak: TTS support'
 	'festival: TTS support'
 	'flite: TTS support')
