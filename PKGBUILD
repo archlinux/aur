@@ -2,7 +2,7 @@
 
 pkgname=snapper-git
 _gitname=snapper
-pkgver=0.2.7.git.1070.29b76bb
+pkgver=0.3.2.git.1223.0b36c71
 pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 provides=('snapper')
