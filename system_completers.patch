@@ -1,0 +1,118 @@
+commit 7b6f5c6d2f4010d9ca103fb09559221d488cbdb9
+Author: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
+Date:   Wed Jun 29 16:18:34 2016 +0200
+
+    Search for completers binaries in system path
+    
+    The Rust and Typescript completers are already searching the system path
+    if a binary is not installed alongside YCM.
+    This commit adds the same behavior to the C#, Go and Javascript
+    completers.
+
+diff --git a/ycmd/completers/cs/cs_completer.py b/ycmd/completers/cs/cs_completer.py
+index ba85ea4..03d03f0 100755
+--- a/ycmd/completers/cs/cs_completer.py
++++ b/ycmd/completers/cs/cs_completer.py
+@@ -51,6 +51,18 @@ PATH_TO_OMNISHARP_BINARY = os.path.join(
+   'OmniSharp', 'bin', 'Release', 'OmniSharp.exe' )
+ 
+ 
++def FindOmniSharpBinary():
++  """Find the path to the OmniSharp binary.
++
++  If a version is installed with YCM, use that.
++  Otherwise try to find one installed in the system.
++  If that fails, return None."""
++
++  if os.path.exists( PATH_TO_OMNISHARP_BINARY ):
++    return PATH_TO_OMNISHARP_BINARY
++
++  return utils.PathToFirstExistingExecutable( [ 'OmniSharp', 'OmniSharp.exe' ] )
++
+ class CsharpCompleter( Completer ):
+   """
+   A Completer that uses the Omnisharp server as completion engine.
+@@ -66,7 +78,7 @@ class CsharpCompleter( Completer ):
+       'max_diagnostics_to_display' ]
+     self._solution_state_lock = threading.Lock()
+ 
+-    if not os.path.isfile( PATH_TO_OMNISHARP_BINARY ):
++    if not FindOmniSharpBinary():
+       raise RuntimeError(
+            SERVER_NOT_FOUND_MSG.format( PATH_TO_OMNISHARP_BINARY ) )
+ 
+@@ -348,7 +360,7 @@ class CsharpSolutionCompleter( object ):
+ 
+       self._ChooseOmnisharpPort()
+ 
+-      command = [ PATH_TO_OMNISHARP_BINARY,
++      command = [ FindOmniSharpBinary(),
+                   '-p',
+                   str( self._omnisharp_port ),
+                   '-s',
+diff --git a/ycmd/completers/go/go_completer.py b/ycmd/completers/go/go_completer.py
+index 6a7c4b5..1d50a7b 100755
+--- a/ycmd/completers/go/go_completer.py
++++ b/ycmd/completers/go/go_completer.py
+@@ -70,7 +70,8 @@ def FindBinary( binary, user_options ):
+ 
+   If 'gocode_binary_path' or 'godef_binary_path'
+   in the options is blank, use the version installed
+-  with YCM, if it exists.
++  with YCM, if it exists. Otherwise try to find one
++  installed on the system.
+ 
+   If the 'gocode_binary_path' or 'godef_binary_path' is
+   specified, use it as an absolute path.
+@@ -87,7 +88,7 @@ def FindBinary( binary, user_options ):
+   binary_path = _FindPath()
+   if os.path.isfile( binary_path ):
+     return binary_path
+-  return None
++  return utils.PathToFirstExistingExecutable( [ binary ] )
+ 
+ 
+ def ShouldEnableGoCompleter( user_options ):
+diff --git a/ycmd/completers/javascript/tern_completer.py b/ycmd/completers/javascript/tern_completer.py
+index 3d34d35..1a87620 100644
+--- a/ycmd/completers/javascript/tern_completer.py
++++ b/ycmd/completers/javascript/tern_completer.py
+@@ -59,6 +59,18 @@ PATH_TO_NODE = utils.PathToFirstExistingExecutable( [ 'node' ] )
+ SERVER_HOST = '127.0.0.1'
+ 
+ 
++def FindTernBinary():
++  """Find the path to the tern binary.
++
++  If a version is installed with YCM, use that.
++  Otherwise try to find one installed in the system.
++  If that fails, return None."""
++
++  if os.path.exists( PATH_TO_TERNJS_BINARY ):
++    return PATH_TO_TERNJS_BINARY
++
++  return utils.PathToFirstExistingExecutable( [ 'tern' ] )
++
+ def ShouldEnableTernCompleter():
+   """Returns whether or not the tern completer is 'installed'. That is whether
+   or not the tern submodule has a 'node_modules' directory. This is pretty much
+@@ -71,9 +83,7 @@ def ShouldEnableTernCompleter():
+ 
+   _logger.info( 'Using node binary from: ' + PATH_TO_NODE )
+ 
+-  installed = os.path.exists( PATH_TO_TERNJS_BINARY )
+-
+-  if not installed:
++  if not FindTernBinary():
+     _logger.info( 'Not using Tern completer: not installed at ' +
+                   PATH_TO_TERNJS_BINARY )
+     return False
+@@ -380,7 +390,7 @@ class TernCompleter( Completer ):
+       extra_args = []
+ 
+     command = [ PATH_TO_NODE,
+-                PATH_TO_TERNJS_BINARY,
++                FindTernBinary(),
+                 '--port',
+                 str( self._server_port ),
+                 '--host',

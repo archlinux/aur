@@ -11,12 +11,17 @@
 _use_python2=y
 _use_system_boost=n
 
+# this uses a downstream patch
+# using system completers is not supported by upstream
+# see https://github.com/Valloric/ycmd/pull/535
+_search_system_completers=y
+
 # clang completion is builtin and cannot be provided separately (?)
 _clang_completer=y
-_clang_completer_system_libclang=n
+_clang_completer_system_libclang=y
 
 pkgname=vim-youcompleteme-core-git
-pkgver=1819.0de1c0c
+pkgver=r1819.0de1c0c
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -24,10 +29,6 @@ url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
 depends=('vim')
-optdepends=('python2-jedi' 'gocode-git' 'godef-git' 'racerd-git' 'nodejs-tern')
-# missing completers:
-# JediHTTP - see https://github.com/vheon/JediHTTP/issues/17
-# OmniSharp-Roslyn - ???
 makedepends=('git' 'cmake')
 provides=('vim-youcompleteme-git')
 conflicts=('vim-youcompleteme-git')
@@ -44,12 +45,27 @@ pkgver() {
 if [ "${_use_python2}" == 'y' ]; then
 	depends+=('python2' 'python2-bottle' 'python2-argparse' 'python2-waitress' 'python2-frozendict' 'python2-requests-futures')
 else
-	depends+=('python' 'python-bottle' 'python-argparse' 'python-waitress' 'python-frozendict') # 'python-requests-futures'
+	depends+=('python' 'python-bottle' 'python-waitress' 'python-frozendict') # 'python-argparse', 'python-requests-futures'
 fi
 
 if [ "${_use_system_boost}" == 'y' ]; then
 	depends+=('boost-libs')
 	makedepends+=('boost')
+fi
+
+if [ "${_search_system_completers}" == 'y' ]; then
+	source+=('system_completers.patch')
+	sha256sums+=('fde169f2a96aceb11172603d9c56254879177cb268ed8c05fb1117ead636468a')
+	optdepends+=(
+		'gocode-git: Go semantic completion'
+		'godef-git: Go semantic completion'
+		'nodejs-tern: JavaScript semantic completion'
+		'racerd-git: Rust semantic completion'
+		'typescript: Typescript semantic completion'
+	)
+	# missing completers:
+	# JediHTTP - see https://github.com/vheon/JediHTTP/issues/17
+	# OmniSharp-Roslyn - ???
 fi
 
 if [ "${_clang_completer}" == 'y' ]; then
@@ -68,7 +84,7 @@ if [ "${_clang_completer}" == 'y' ]; then
 		fi
 		source+=("http://llvm.org/releases/3.8.0/${clang_filename}"{,.sig})
 		noextract+=("${clang_filename}")
-		validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
+		validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
 		unset clang_version
 	fi
 fi
@@ -78,6 +94,11 @@ prepare() {
 	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
 	git submodule update --init 'third_party/ycmd'
 	cd 'third_party/ycmd'
+	git reset --hard
+
+	if [ "${_search_system_completers}" == 'y' ]; then
+		patch -p1 -i "${srcdir}/system_completers.patch"
+	fi
 
 	if [ "${_clang_completer}" == 'y' -a "${_clang_completer_system_libclang}" != 'y' ]; then
 		mkdir -p "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
