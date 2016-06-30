@@ -4,7 +4,7 @@
 # PKGBUILD based on extra\deluge's PKGBUILD, adapted for -git version by Berseker
 
 pkgname=deluge-git
-pkgver=2.0.0.dev556
+pkgver=2.0.0.dev726
 pkgrel=1
 pkgdesc="A bittorrent client written with python and pygtk - Git Version"
 arch=('any')
@@ -29,7 +29,8 @@ makedepends=('intltool'
              'pygtk'
              'python2-mako'
              'python2-setuptools'
-             'git' )
+             'git'
+             'python2-jsmin')
 
 optdepends=('python2-pillow'
             'librsvg: needed for gtk ui'
