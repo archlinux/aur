@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+	echo "You may need to restart pcscd for the driver to start working."
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "You may need to restart pcscd for the driver to start working."
+}
+
