@@ -1,10 +1,11 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='runes-git'
-pkgver=r316.7f3b17b
+pkgver=r447.df7ea0e
 pkgrel=1
 pkgdesc='A modern terminal client'
 arch=('x86_64')
-depends=('libuv' 'libx11' 'cairo')
+depends=('pango' 'libevent')
+license=('MIT')
 url='https://github.com/doy/runes'
 source=("${pkgname}::git+${url}" "libvt100::git://github.com/doy/libvt100")
 sha512sums=('SKIP' 'SKIP')
@@ -27,11 +28,15 @@ prepare () {
 
 build () {
 	cd "${pkgname}"
-	make
+	make release
 }
 
 package () {
 	cd "${pkgname}"
-	install -Dm755 runes "${pkgdir}/usr/bin/runes"
-	install -Dm755 libvt100/libvt100.so "${pkgdir}/usr/lib/libvt100.so"
+	for file in runesc runesd runes ; do
+		install -Dm755 "${file}" "${pkgdir}/usr/bin/${file}"
+	done
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 runes.conf.default "${pkgdir}/etc/runesrc"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
