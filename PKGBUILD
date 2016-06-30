@@ -20,7 +20,7 @@ _srcver=$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | sed '
 _srcverregex=$(echo "$_srcver" | sed 's/\./\\\./g') # translate source version to a regular expression
 pkgname=imagemagick-full
 pkgver=$(echo "$_srcver" | tr '-' '.')
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -58,17 +58,17 @@ build() {
 	./configure \
 	        --prefix=/usr \
 	        --sysconfdir=/etc \
-	        --enable-static=no \
-	        --enable-shared=yes \
-	        --enable-fast-install=yes \
 	        --enable-openmp \
 	        --enable-opencl \
 	        --enable-largefile \
+	        --enable-static=no \
+	        --enable-shared=yes \
+	        --enable-fast-install=yes \
+	        --disable-delegate-build \
 	        --enable-cipher \
 	        --enable-hdri \
 	        --enable-hugepages \
 	        --enable-docs \
-	        --disable-delegate-build \
 	        --with-threads \
 	        --with-modules \
 	        --with-quantum-depth=32 \
