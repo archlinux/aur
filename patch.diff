@@ -1,0 +1,51 @@
+Only in old/: .directory
+diff -aur old/MP3Diags-unstable-1.3.03/src/ExportDlgImpl.cpp new/MP3Diags-unstable-1.3.03/src/ExportDlgImpl.cpp
+--- old/MP3Diags-unstable-1.3.03/src/ExportDlgImpl.cpp	2012-03-04 09:59:08.000000000 +0200
++++ new/MP3Diags-unstable-1.3.03/src/ExportDlgImpl.cpp	2016-06-29 13:58:59.071399156 +0300
+@@ -371,7 +371,7 @@
+         out << "\n\n";
+     }
+ 
+-    return out;
++    return (bool)out;
+ }
+ 
+ 
+@@ -424,7 +424,7 @@
+         out << pCodec->fromUnicode(qs).constData() << endl;
+     }
+ 
+-    return out;
++    return (bool)out;
+ }
+ 
+ 
+@@ -761,6 +761,6 @@
+ 
+     out << "</files>\n";
+ 
+-    return out;
++    return (bool)out;
+ }
+ 
+diff -aur old/MP3Diags-unstable-1.3.03/src/MainFormDlgImpl.cpp new/MP3Diags-unstable-1.3.03/src/MainFormDlgImpl.cpp
+--- old/MP3Diags-unstable-1.3.03/src/MainFormDlgImpl.cpp	2015-03-08 19:04:11.000000000 +0200
++++ new/MP3Diags-unstable-1.3.03/src/MainFormDlgImpl.cpp	2016-06-29 13:37:47.284684767 +0300
+@@ -119,7 +119,7 @@
+         {
+             m_strFileName = strFileName;
+             ofstream_utf8 out (m_strFileName.c_str(), ios_base::app);
+-            return out;
++            return (bool)out;
+         }
+ 
+         void close() { m_strFileName.clear(); }
+@@ -128,7 +128,7 @@
+         {
+             ofstream_utf8 out (m_strFileName.c_str(), ios_base::app);
+             out << s;
+-            return out;
++            return (bool)out;
+         }
+     };
+ #else // #ifndef WIN32

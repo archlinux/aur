@@ -1,9 +1,9 @@
 # Maintainer: Harvey <harv|at|gmx.de>
-# Contributors: Dan Serban, Dany Martineau, Jordi De Groof, RTFreedman
+# Contributors: Dan Serban, Dany Martineau, Jordi De Groof, RTFreedman, Ciobi (himself!)
 
 pkgname="mp3diags-unstable"
 pkgver="1.3.03"
-pkgrel=1
+pkgrel=2
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
@@ -15,6 +15,7 @@ source=("http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP
 sha1sums=('9afee373045bf13dbded4eb2cd1b7edce90cb7dd')
 
 build() {
+	patch -p 1 < ../patch.diff
 	cd "${srcdir}/MP3Diags-unstable-${pkgver}"
 	./AdjustMt.sh
 	qmake-qt4
