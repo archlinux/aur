@@ -6,24 +6,22 @@
 
 _pkgname=vim
 pkgname="gvim-git"
-pkgver=7.4.824
+pkgver=7.4.1967
 pkgrel=1
-pkgdesc="Vim the editor. CLI version and GTK2 GUI providing majority of features."
-arch=("i686" "x86_64")
-url="http://www.vim.org"
-license=("custom:vim")
-depends=("vim-runtime-git" "gtk2" "hicolor-icon-theme" "gtk-update-icon-cache" "desktop-file-utils")
-optdepends=("lua: Lua interpreter" "perl: Perl interpreter" "python: Python 3 interpreter"
-            "python2: Python 2 interpreter" "ruby: Ruby interpreter")
-makedepends=("git" "lua" "python" "python2" "ruby")
-provides=("gvim" "xxd")
-conflicts=("vim-minimal-git" "vim-git"
-           "vim-minimal" "vim" "vim-python3" "gvim" "gvim-python3")
-source=("git+https://github.com/vim/vim.git"
+pkgdesc='Vim the editor. CLI version and GTK2 GUI providing majority of features.'
+arch=('i686' 'x86_64')
+url='http://www.vim.org'
+license=('custom:vim')
+depends=('vim-runtime-git' 'libxt' 'gtk2')
+optdepends=('lua: Lua interpreter' 'perl: Perl interpreter' 'python: Python 3 interpreter'
+            'python2: Python 2 interpreter' 'ruby: Ruby interpreter')
+makedepends=('git' 'lua' 'python' 'python2' 'ruby')
+provides=('gvim' 'xxd')
+conflicts=("vim-minimal"{,-git} "vim-git"{,-git} 'vim-python3' "gvim"{,-python3})
+source=("git+https://github.com/$_pkgname/$_pkgname.git"
         "gvim.desktop")
 sha256sums=("SKIP"
             "97e94c3ca5825d6ab50096eb8449adf1b05c88ad13e60e6a99be8daacc797eac")
-install=gvim-git.install
 
 pkgver() {
     cd $_pkgname
