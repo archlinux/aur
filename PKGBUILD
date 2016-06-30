@@ -3,9 +3,9 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=eclipse-dltk-rse
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
-_pkgdate="201602110510"
+_pkgdate=201605241149
 pkgdesc="Mylyn support for remote systems in Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/dltk/"
@@ -13,7 +13,7 @@ license=('EPL')
 depends=("eclipse-dltk-core" "eclipse-rse")
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
 source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkgdate/${pkgname#eclipse-}-R-$pkgver-$_pkgdate.zip")
-md5sums=('9e05089cb47418dc8ffbc1c9744125c8')
+md5sums=('6dbfbe30e1852435acf1b4e218948bb9')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
