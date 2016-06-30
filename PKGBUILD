@@ -15,7 +15,7 @@ _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 pkgname=imagemagick-full-git
-pkgver=7.0.1.10.r10954.g83bceaa
+pkgver=7.0.2.3.r11035.g32b5039
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
@@ -66,17 +66,17 @@ build() {
 	./configure \
 	        --prefix=/usr \
 	        --sysconfdir=/etc \
-	        --enable-static=no \
-	        --enable-shared=yes \
-	        --enable-fast-install=yes \
 	        --enable-openmp \
 	        --enable-opencl \
 	        --enable-largefile \
+	        --enable-static=no \
+	        --enable-shared=yes \
+	        --enable-fast-install=yes \
+	        --disable-delegate-build \
 	        --enable-cipher \
 	        --enable-hdri \
 	        --enable-hugepages \
 	        --enable-docs \
-	        --disable-delegate-build \
 	        --with-threads \
 	        --with-modules \
 	        --with-quantum-depth=32 \
