@@ -1,0 +1,18 @@
+pkgbase = timew
+	pkgdesc = Timewarrior is a command line time tracking application
+	pkgver = 0.9.5.alpha
+	pkgrel = 1
+	url = http://taskwarrior.org/docs/timewarrior/
+	install = timew.install
+	arch = i866
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc-libs
+	source = http://taskwarrior.org/download/timew-0.9.5.alpha.tar.gz
+	source = timew-refresh-python2.patch
+	sha256sums = 883e4e98d455cd3db4cea63772200473dee3b4d1870540de59e157d69f2e8d94
+	sha256sums = be49866d0998c8a62245c843d3244883aba4256a878ab72e277aef4ca59b2885
+
+pkgname = timew
+
