@@ -8,3 +8,14 @@
              if self.sys_version_info < (3, 4, 0):  # workaround for https://github.com/kennethreitz/requests/issues/2303
                  try:
                      session.close()
+--- src/jira-1.0.7.dev20160607111203/jira/client.py     2016-06-30 16:20:03.575269305 +0200
++++ src/jira-1.0.7.dev20160607111203/jira/client.py	2016-06-30 16:20:57.357414523 +0200
+@@ -321,7 +321,7 @@
+         try:
+             data = requests.get("http://pypi.python.org/pypi/jira/json", timeout=2.001).json()
+ 
+-            released_version = data['info']['version']
++            released_version = '.'.join(data['info']['version'].split('.')[0:3])
+             if released_version > __version__:
+                 warnings.warn(
+                     "You are running an outdated version of JIRA Python %s. Current version is %s. Do not file any bugs against older versions." % (
