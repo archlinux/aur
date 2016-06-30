@@ -1,6 +1,7 @@
 post-install() {
-    echo "You can use /usr/bin/timew-refresh-holidays to download holiday
-    schedules"
-    echo "Please see: http://taskwarrior.org/docs/timewarrior/holidays.html for
-    more info"
+    echo "You can find the taskwarrior on-modify-hook at:
+        /usr/share/doc/timew/on-modify.timewarrior"
+    echo
+    echo "You can use /usr/bin/timew-refresh-holidays to download holiday schedules"
+    echo "Please see: http://taskwarrior.org/docs/timewarrior/holidays.html for more info"
 }
