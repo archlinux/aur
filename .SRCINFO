@@ -1,12 +1,11 @@
 pkgbase = sozi
 	pkgdesc = A zooming presentation based on SVG, using JavaScript
 	pkgver = 16.02
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sozi.baierouge.fr/
 	arch = i686
 	arch = x86_64
 	license = custom:MPL2.0
-	makedepends = nodejs5
 	makedepends = npm
 	makedepends = bower
 	makedepends = nodejs-grunt-cli

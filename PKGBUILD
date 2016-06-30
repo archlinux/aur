@@ -8,7 +8,7 @@ pkgver=16.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=16.02.141048
 _pkgverpostfix="-fix344" # this is required because the pkgver cannot contain hyphen
-pkgrel=3
+pkgrel=4
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -20,7 +20,7 @@ depends=("gconf" "libnotify" "alsa-lib" "nss" "gtk2" "libxtst")
 optdepends=(
   'inkscape: for editing the original SVG document (any SVG editor can be used)'
 )
-makedepends=('nodejs5' 'npm' 'bower' 'nodejs-grunt-cli'
+makedepends=('npm' 'bower' 'nodejs-grunt-cli'
   'jq' 'semver')
 
 source=("https://github.com/senshu/Sozi/archive/${pkgver}${_pkgverpostfix}.tar.gz"
@@ -133,6 +133,14 @@ build() {
     local target="${package}-$(bestmatch "$package" "$semverspec")"
     npminstallpackage "$target"
   done
+
+  oldarchiver="${srcdir}/build/archiver-0.13.1/"
+  if [ -d "$oldarchiver" ]; then
+    cd "$oldarchiver/lib/util/"
+    sed "s/var buf = new Buffer(size, 'utf8');/var buf = new Buffer(size);/" "index.js" > index.js.patched
+    cp "index.js.patched" "index.js"
+    rm "index.js.patched"
+  fi
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
   rm -rf "build"
