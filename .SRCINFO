@@ -1,6 +1,6 @@
 pkgbase = haste-applet
 	pkgdesc = A Budgie applet for the haste service.
-	pkgver = 0.1.1
+	pkgver = 0.2.3
 	pkgrel = 0.1
 	url = https://github.com/cybre/haste-applet
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = haste-applet
 	depends = libpeas
 	depends = budgie-desktop
 	depends = libsoup
-	source = https://github.com/cybre/haste-applet/archive/0.1.1.zip
-	md5sums = 448c464008abf836ce3c6ea8ccb12cdb
+	source = https://github.com/cybre/haste-applet/archive/0.2.3.zip
+	md5sums = 617e91737dad6ecd667098d76ad262ec
 
 pkgname = haste-applet
 
