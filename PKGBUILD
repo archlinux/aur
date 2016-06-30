@@ -3,9 +3,9 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=eclipse-dltk-core
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
-_pkgdate="201602110510"
+_pkgdate=201605241149
 pkgdesc="Support for dynamic languages in Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/dltk/"
@@ -15,7 +15,7 @@ replaces=("eclipse-dltk-core-index")
 optdepends=("eclipse-dltk-core-index" "eclipse-dltk-javascript" "eclipse-dltk-mylyn" "eclipse-dltk-python" "eclipse-dltk-rse" "eclipse-dltk-ruby" "eclipse-dltk-tcl")
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
 source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkgdate/${pkgname#eclipse-}-R-$pkgver-$_pkgdate.zip")
-md5sums=('6c3013400aa5cc71563d50e98e83e952')
+md5sums=('b8c9f0006f4c4373d7360fa32676249f')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/eclipse
