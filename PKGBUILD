@@ -3,8 +3,8 @@
 # Contributors: jdc, rayman2200
 
 pkgname=corsix-th
-pkgver=0.50
-pkgrel=3
+pkgver=0.60
+pkgrel=1
 pkgdesc='Reimplementation of the game engine of Theme Hospital'
 url='https://github.com/CorsixTH/CorsixTH'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,22 +13,11 @@ makedepends=('cmake')
 depends=('lua' 'lua-lpeg' 'lua-filesystem' 'sdl2_mixer' 'ffmpeg' 'timidity-freepats')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::"https://github.com/CorsixTH/CorsixTH/archive/v$pkgver.tar.gz"
-        $pkgname-fix-parameters-to-sws_scale.patch::"https://github.com/CorsixTH/CorsixTH/commit/4ae56e100911c1763cb9fd9a4b8647e323ecc032.patch"
-        "$pkgname.sh")
-sha256sums=('822cb5b4a4ec863ba410b6a37e456b360516b2362337532689070e4555c037ee'
-            '65161006dfc0aaff77d0beffd3894203ca2f304d0db71f54329859fa08c712ab'
-            '3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158')
-
-prepare() {
-  cd CorsixTH-$pkgver
-
-  # fix location in .desktop entry
-  sed 's/games/share/g' DebianPackage/usr/share/applications/CorsixTH.desktop > ../$pkgname.desktop
-  # fix crash in ffmpeg 2.8+
-  patch -Np1 < ../$pkgname-fix-parameters-to-sws_scale.patch
-  # fix compilation with recent ffmpeg
-  sed 's/PIX_FMT_RGB24/AV_&/g;s/PixelFormat/AV&/g' -ibak CorsixTH/Src/th_movie.{cpp,h}
-}
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('f5ff7839b6469f1da39804de1df0a86e57b45620c26f044a1700e43d8da19ce9'
+            '3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158'
+            'f802f8acdc8b3d0370344c608b780620f83a21f04bdf32507466adb4222ba4bc')
 
 build() {
   cd CorsixTH-$pkgver

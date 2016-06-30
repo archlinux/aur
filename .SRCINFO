@@ -1,7 +1,7 @@
 pkgbase = corsix-th
 	pkgdesc = Reimplementation of the game engine of Theme Hospital
-	pkgver = 0.50
-	pkgrel = 3
+	pkgver = 0.60
+	pkgrel = 1
 	url = https://github.com/CorsixTH/CorsixTH
 	install = corsix-th.install
 	arch = i686
@@ -15,12 +15,12 @@ pkgbase = corsix-th
 	depends = sdl2_mixer
 	depends = ffmpeg
 	depends = timidity-freepats
-	source = corsix-th-0.50.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/v0.50.tar.gz
-	source = corsix-th-fix-parameters-to-sws_scale.patch::https://github.com/CorsixTH/CorsixTH/commit/4ae56e100911c1763cb9fd9a4b8647e323ecc032.patch
+	source = corsix-th-0.60.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/v0.60.tar.gz
 	source = corsix-th.sh
-	sha256sums = 822cb5b4a4ec863ba410b6a37e456b360516b2362337532689070e4555c037ee
-	sha256sums = 65161006dfc0aaff77d0beffd3894203ca2f304d0db71f54329859fa08c712ab
+	source = corsix-th.desktop
+	sha256sums = f5ff7839b6469f1da39804de1df0a86e57b45620c26f044a1700e43d8da19ce9
 	sha256sums = 3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158
+	sha256sums = f802f8acdc8b3d0370344c608b780620f83a21f04bdf32507466adb4222ba4bc
 
 pkgname = corsix-th
 
