@@ -1,0 +1,16 @@
+pkgbase = libmbus-git
+	pkgdesc = Meter-bus library and utility programs
+	pkgver = 0.8.0.r280.g6fd4ca2
+	pkgrel = 1
+	url = http://www.rscada.se/libmbus/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = libmbus
+	conflicts = libmbus
+	source = git://github.com/rscada/libmbus.git
+	md5sums = SKIP
+
+pkgname = libmbus-git
+
