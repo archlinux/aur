@@ -1,3 +1,4 @@
+# Maintainer: twa022 <twa022 at gmail dot com>
 # Contributor: Jaroslaw Rosiek <jaroslaw.rosiek@interia.pl>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
