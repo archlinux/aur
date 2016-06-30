@@ -9,8 +9,8 @@ arch=(i686 x86_64)
 depends=(python2 qtwebkit)
 optdepends=(gconf)
 license=(custom:mendeley_eula)
-md5sums_i686=('48417538df6a36661c44a08bbd45652b')
-md5sums_x86_64=('cda785b501a642c6a69baeb14a26ddea')
+md5sums_i686=('75e058eb144efd714053a2cb4f554f79')
+md5sums_x86_64=('c04827078f5a7e23d47e46506b40cf7e')
 if [[ $CARCH = i686 ]];then
   _arch=i486
 else
