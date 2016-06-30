@@ -1,0 +1,26 @@
+pkgbase = vzlogger-git
+	pkgdesc = Tool to read and log measurements of many smart meters and sensors
+	pkgver = r602.b5c381f
+	pkgrel = 1
+	url = http://wiki.volkszaehler.org/software/controller/vzlogger
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libsml
+	depends = libmbus
+	depends = json-c
+	depends = libmicrohttpd
+	depends = curl
+	provides = vzlogger
+	conflicts = vzlogger
+	backup = etc/vzlogger.conf
+	source = git://github.com/volkszaehler/vzlogger.git
+	source = https://patch-diff.githubusercontent.com/raw/volkszaehler/vzlogger/pull/267.patch
+	source = https://patch-diff.githubusercontent.com/raw/volkszaehler/vzlogger/pull/269.patch
+	sha1sums = SKIP
+	sha1sums = 2d44f55067b25b0c50b96b2dae73b71610b94ef7
+	sha1sums = cd57018434a305d512cb6ce775ae0cb09c1c9081
+
+pkgname = vzlogger-git
+
