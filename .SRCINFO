@@ -1,0 +1,28 @@
+pkgbase = morpheus-modeling
+	pkgdesc = It's a modeling and simulation environment for the study of multiscale and multicellular systems.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://imc.zih.tu-dresden.de/wiki/morpheus
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc>=4.6
+	makedepends = cmake>=1.8
+	makedepends = libxslt
+	makedepends = doxygen
+	makedepends = git
+	makedepends = qt5-svg
+	depends = zlib
+	depends = libtiff
+	depends = graphviz
+	depends = qt4
+	depends = sqlite
+	depends = qtwebkit
+	optdepends = libxml2:
+	optdepends = gnuplot: Used for generating graphics
+	optdepends = ffmpeg: Used for generating movies
+	source = morpheus-modeling-2.0::git+https://gitlab.com/morpheus.lab/morpheus.git
+	md5sums = SKIP
+
+pkgname = morpheus-modeling
+
