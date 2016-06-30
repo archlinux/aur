@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgbase=wireguard-git
-pkgname=(wireguard-dkms-git wireguard-git)
-pkgver=0.r3.g3e8c04a
+pkgname=(wireguard-dkms-git wireguard-tools-git)
+pkgver=0.0.20160630.r1.g9a052f6
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
@@ -46,7 +46,7 @@ package_wireguard-dkms-git() {
 	install -m0755 crypto/* "${pkgdir}"/usr/src/wireguard-${pkgver}/crypto/
 }
 
-package_wireguard-git() {
+package_wireguard-tools-git() {
 	depends=('libmnl')
 
 	cd WireGuard/src/tools/
