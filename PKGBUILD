@@ -1,4 +1,4 @@
-key_bucket_filename="key.p")me=python-pymc3-git
+pkgname=python-pymc3-git
 pkgver=v3.0beta.r653.g935779a
 pkgrel=1
 pkgdesc="Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI."
@@ -9,7 +9,7 @@ depends=('python-joblib' 'python-scipy' 'python-numpy' 'python-matplotlib' 'pyth
 conflicts=('python-pymc3')
 makedepends=('git' 'python-setuptools')
 options=(!emptydirs)
-source=("git+https://github.com/pymc-devs/pymc3.git")
+source=("git://github.com/pymc-devs/pymc3.git")
 md5sums=('SKIP')
 
 pkgver() {
