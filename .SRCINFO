@@ -1,0 +1,16 @@
+pkgbase = ruby-jbuilder
+	pkgdesc = Create JSON structures via a Builder-style DSL
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/rails/jbuilder
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-multi_json
+	depends = ruby-activesupport
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jbuilder-2.5.0.gem
+	sha256sums = 135e5406a2bb7a1256dab97a3beee5ea79d9a7c939e76ddfe43f4000a7a3af74
+
+pkgname = ruby-jbuilder
+
