@@ -52,8 +52,8 @@ build() {
 
 package_libappindicator-gtk2() {
     depends=('libdbusmenu-gtk2' 'libindicator-gtk2')
-    provides=('${pkgbase}')
-    conflicts=('${pkgbase}')
+    provides=("${pkgbase}")
+    conflicts=("${pkgbase}")
 
     cd ${pkgbase}-gtk2-${pkgver}
     make -j1 DESTDIR="${pkgdir}" install
@@ -63,8 +63,8 @@ package_libappindicator-gtk2() {
 
 package_libappindicator-gtk3() {
     depends=('libdbusmenu-gtk3' 'libindicator-gtk3')
-    provides=('${pkgbase}3')
-    conflicts=('${pkgbase}3')
+    provides=("${pkgbase}3")
+    conflicts=("${pkgbase}3")
 
     cd ${pkgbase}-${pkgver}
     make -j1 DESTDIR="${pkgdir}" install
@@ -73,7 +73,7 @@ package_libappindicator-gtk3() {
 }
 
 package_libappindicator-sharp() {
-    depends=('${pkgbase}-gtk3' 'gtk-sharp-3')
+    depends=("${pkgbase}-gtk3" 'gtk-sharp-3')
 
     cd ${pkgbase}-${pkgver}
     make -j1 -C bindings/mono DESTDIR="${pkgdir}" install
