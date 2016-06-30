@@ -2,7 +2,7 @@
 
 pkgname=monitorix
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
 url='http://www.monitorix.org'
@@ -14,7 +14,9 @@ optdepends=(
 	'anything-sync-daemon: offload your databases to tmpfs to save i/o to your disk.'
 	'hddtemp: enable support for hdd temp monitoring.'
 	'lm_sensors: enable support for system temp monitoring.'
+	'net-tools: for netstat monitoring'
 	'nvidia: enable support for nVidia card temp and usage monitoring.'
+	'perl-dbd-mysql: for mysql monitoring'
 	'smartmontools: enable support for hdd bad sector monitoring.'
 	'terminus-font: if graphs do not contain characters, you may need this font package.')
 conflicts=("$pkgname-git")
