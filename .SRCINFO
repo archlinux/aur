@@ -1,4 +1,4 @@
-pkgbase = python-pip
+pkgbase = python-pip-git
 	pkgdesc = The PyPA recommended tool for installing Python packages
 	pkgver = 8.1.2
 	pkgrel = 1
@@ -12,11 +12,11 @@ pkgbase = python-pip
 	source = git://github.com/pypa/pip
 	md5sums = SKIP
 
-pkgname = python-pip
+pkgname = python-pip-git
 	depends = python
 	depends = python-setuptools
 
-pkgname = python2-pip
+pkgname = python2-pip-git
 	depends = python2
 	depends = python2-setuptools
 	conflicts = python-pyinstall

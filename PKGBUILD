@@ -1,6 +1,6 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgbase='python-pip'
-pkgname=('python-pip' 'python2-pip')
+pkgbase='python-pip-git'
+pkgname=('python-pip-git' 'python2-pip-git')
 pkgver='8.1.2'
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
@@ -11,7 +11,7 @@ makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=('git://github.com/pypa/pip')
 md5sums=('SKIP')
 
-package_python-pip() {
+package_python-pip-git() {
   depends=('python' 'python-setuptools')
 
   cd "${srcdir}/pip"
@@ -21,7 +21,7 @@ package_python-pip() {
   cp LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_python2-pip() {
+package_python2-pip-git() {
   depends=('python2' 'python2-setuptools')
   conflicts=('python-pyinstall')
   replaces=('python-pyinstall')
