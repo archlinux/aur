@@ -1,0 +1,12 @@
+pkgbase = gnuplot-colorbrewer-git
+	pkgdesc = ColorBrewer color schemes in gnuplot
+	pkgver = 1.0.9.ge8e4742
+	pkgrel = 1
+	url = https://github.com/aschn/gnuplot-colorbrewer
+	arch = any
+	license = Apache
+	source = git+https://github.com/aschn/gnuplot-colorbrewer.git
+	md5sums = SKIP
+
+pkgname = gnuplot-colorbrewer-git
+
