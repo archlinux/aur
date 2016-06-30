@@ -7,7 +7,7 @@ pkgrel=1
 
 pkgdesc="Algorithms for unsupervised learning and inference of Hidden Markov Models for Python."
 arch=('i686' 'x86_64')
-url="http://hmmlearn.github.io/hmmlearn/"
+url="http://hmmlearn.readthedocs.io/en/latest/"
 license=('Custom: Copyright (c) 2015, hmmlearn authors and contributors')
 
 makedepends=('git')
