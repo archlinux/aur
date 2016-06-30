@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS and CBZ viewer
-	pkgver = 20160421.0278606
+	pkgver = 20160630.5da66a0
 	pkgrel = 1
 	url = http://mupdf.com/
 	arch = i686

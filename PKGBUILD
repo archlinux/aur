@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20160421.0278606
+pkgver=20160630.5da66a0
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,8 +28,9 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git submodule update --init thirdparty/openjpeg
+
 	git submodule update --init thirdparty/mujs
+	git submodule update --init thirdparty/openjpeg
 
 	# needed for zathura-pdf-mupdf
 	CFLAGS+=' -fPIC'
@@ -42,13 +43,13 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	make build=release prefix="${pkgdir}"/usr
+	make release XCFLAGS="$CPPFLAGS $CFLAGS" XLIBS="$LDFLAGS"
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
 
-	make build=release prefix="${pkgdir}"/usr install
+	make install DESTDIR="${pkgdir}" prefix=/usr
 	mv "${pkgdir}"/usr/bin/mupdf-x11-curl "${pkgdir}"/usr/bin/mupdf
 	rm "${pkgdir}"/usr/bin/mupdf-x11
 
