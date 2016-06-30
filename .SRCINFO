@@ -1,0 +1,18 @@
+pkgbase = gst-transcoder
+	pkgdesc = GStreamer Transcoding API
+	pkgver = 1.8.0
+	pkgrel = 0
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = meson
+	depends = gst-plugins-base-libs
+	provides = gst-transcoder=1.8.0
+	options = !libtool
+	options = !emptydirs
+	source = https://github.com/pitivi/gst-transcoder/archive/1.8.0.tar.gz
+	sha256sums = e63923e29f57fd40d9cab75079867a73052c0775705ee3b4abecdcdaa2c9ef45
+
+pkgname = gst-transcoder
+
