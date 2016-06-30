@@ -1,11 +1,11 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 # % Trigger: 1434722047 %
-# vim: ft=sh syn=sh ts=2 et
+# vim: ft=sh
 
 pkgdesc="Standalone systemd libs (including -compat)"
-pkgname=( 'libsystemd-standalone' 'libsystemd-login' 'libsystemd-journal' 'libsystemd-id128' 'libsystemd-daemon' 'libsystemd-udev' )
-pkgver=229
-pkgrel=2
+pkgname=( 'libsystemd-standalone' 'libsystemd-udev' )
+pkgver=230
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -15,93 +15,54 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
 options=('strip')
 source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
 
-conflicts=( 'libsystemd' )
-
 build() {
   cd "systemd-$pkgver"
 
   ./autogen.sh
-  ./configure --enable-compat-libs
+  ./configure
 
   make
 }
 
 package_libsystemd-standalone() {
-  install='libsystemd.install'
-  provides=( 'libsystemd.so' 'libsystemd' )
+	install='libsystemd.install'
+	provides=( 'libsystemd.so' 'libsystemd' )
 
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd.so.0.14.0 "${pkgdir}/usr/lib/libsystemd.so.0.14.0"
-  ln -s libsystemd.so.0.14.0 "${pkgdir}/usr/lib/libsystemd.so"
+	make -C "systemd-$pkgver" DESTDIR="$pkgdir" install-libLTLIBRARIES
 
-  # Headers
-  install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
-  install -Dm644 src/systemd/sd-messages.h "${pkgdir}/usr/include/systemd/sd-messages.h"
-  install -Dm644 src/systemd/sd-bus.h "${pkgdir}/usr/include/systemd/sd-bus.h"
-  install -Dm644 src/systemd/sd-event.h "${pkgdir}/usr/include/systemd/sd-event.h"
+	# Headers
+	cd "systemd-$pkgver"
+	install -Dm644 src/systemd/_sd-common.h "${pkgdir}/usr/include/systemd/_sd-common.h"
+	install -Dm644 src/systemd/sd-messages.h "${pkgdir}/usr/include/systemd/sd-messages.h"
+	install -Dm644 src/systemd/sd-event.h "${pkgdir}/usr/include/systemd/sd-event.h"
+	install -Dm644 src/systemd/sd-bus.h "${pkgdir}/usr/include/systemd/sd-bus.h"
+	install -Dm644 src/systemd/sd-bus-protocol.h "${pkgdir}/usr/include/systemd/sd-bus-protocol.h"
+	install -Dm644 src/systemd/sd-bus-vtable.h "${pkgdir}/usr/include/systemd/sd-bus-vtable.h"
+	install -Dm644 src/systemd/sd-daemon.h "${pkgdir}/usr/include/systemd/sd-daemon.h"
+	install -Dm644 src/systemd/sd-id128.h "${pkgdir}/usr/include/systemd/sd-id128.h"
+	install -Dm644 src/systemd/sd-journal.h "${pkgdir}/usr/include/systemd/sd-journal.h"
+	install -Dm644 src/systemd/sd-login.h "${pkgdir}/usr/include/systemd/sd-login.h"
 
-  install -Dm644 src/libsystemd/libsystemd.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd.pc"
-}
+	# pkg-config
+	install -Dm644 src/libsystemd/libsystemd.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd.pc"
 
-package_libsystemd-login() {
-  install='libsystemd.install'
-  provides=( 'libsystemd-login.so' )
-
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd-login.so.0.9.3 "${pkgdir}/usr/lib/libsystemd-login.so.0.9.3"
-  ln -s libsystemd-login.so.0.9.3  "${pkgdir}/usr/lib/libsystemd-login.so"
-
-  install -Dm644 src/systemd/sd-login.h "${pkgdir}/usr/include/systemd/sd-login.h"
-  install -Dm644 src/compat-libs/libsystemd-login.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd-login.pc"
-}
-
-package_libsystemd-journal() {
-  install='libsystemd.install'
-  provides=( 'libsystemd-journal.so' )
-
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd-journal.so.0.11.5 "${pkgdir}/usr/lib/libsystemd-journal.so.0.11.5"
-  ln -s libsystemd-journal.so.0.11.5 "${pkgdir}/usr/lib/libsystemd-journal.so"
-
-  install -Dm644 src/systemd/sd-journal.h "${pkgdir}/usr/include/systemd/sd-journal.h"
-  install -Dm644 src/compat-libs/libsystemd-journal.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd-journal.pc"
-}
-
-package_libsystemd-id128() {
-  install='libsystemd.install'
-  provides=( 'libsystemd-id128.so' )
-
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd-id128.so.0.0.28 "${pkgdir}/usr/lib/libsystemd-id128.so.0.0.28"
-  ln -s libsystemd-id128.so.0.0.28 "${pkgdir}/usr/lib/libsystemd-id128.so"
-
-  install -Dm644 src/systemd/sd-id128.h "${pkgdir}/usr/include/systemd/sd-id128.h"
-  install -Dm644 src/compat-libs/libsystemd-id128.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd-id128.pc"
-}
-
-package_libsystemd-daemon() {
-  install='libsystemd.install'
-  provides=( 'libsystemd-daemon.so' )
-
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libsystemd-daemon.so.0.0.12 "${pkgdir}/usr/lib/libsystemd-daemon.so.0.0.12"
-  ln -s libsystemd-daemon.so.0.0.12 "${pkgdir}/usr/lib/libsystemd-daemon.so"
-
-  install -Dm644 src/systemd/sd-daemon.h "${pkgdir}/usr/include/systemd/sd-daemon.h"
-  install -Dm644 src/compat-libs/libsystemd-daemon.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd-daemon.pc"
+	# remove libudev stuff
+	cd "$pkgdir/usr/lib"
+	rm libudev.so* libudev.la
 }
 
 package_libsystemd-udev() {
-  install='libsystemd.install'
-  provides=( 'libudev.so' 'libudev' )
+	_libudev_version='1.6.4'
+	install='libsystemd.install'
+	provides=( 'libudev.so' 'libudev' )
 
-  cd "$srcdir/systemd-${pkgver}"
-  install -Dm644 .libs/libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1.6.4"
-  ln -s libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so"
-  ln -s libudev.so.1.6.4 "${pkgdir}/usr/lib/libudev.so.1"
+	install -Dm644 "systemd-$pkgver/.libs/libudev.la" "${pkgdir}/usr/lib/libudev.la"
+	install -Dm644 "systemd-$pkgver/.libs/libudev.so.$_libudev_version" "${pkgdir}/usr/lib/libudev.so.$_libudev_version"
+		ln -s "libudev.so.$_libudev_version" "$pkgdir/usr/lib/libudev.so.1"
+		ln -s "libudev.so.$_libudev_version" "$pkgdir/usr/lib/libudev.so"
 
-  install -Dm644 src/libudev/libudev.pc "${pkgdir}/usr/lib/pkgconfig/libudev.pc"
-  install -Dm644 src/libudev/libudev.h "${pkgdir}/usr/include/libudev.h"
+	install -Dm644 "systemd-$pkgver/src/libudev/libudev.pc" "$pkgdir/usr/lib/pkgconfig/libudev.pc"
+	install -Dm644 "systemd-$pkgver/src/libudev/libudev.h" "$pkgdir/usr/include/libudev.h"
 }
 
-sha1sums=('6e1bf5b5746fa5015f04a08881795fee7a5a4f47')
+sha1sums=('2196493295e96527e0c1ee960e3d17e1d2165e9f')
