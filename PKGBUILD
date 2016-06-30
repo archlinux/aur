@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 223919 2014-10-06 14:51:49Z tpowa $
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: timbosa <tinny_tim@dodo.com.au>
@@ -6,10 +5,10 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-rt-lts             # Build kernel with a different name
-_srcname=linux-3.18
-_pkgver=3.18.29
-_rtpatchver=rt30
+pkgbase=linux-rt-lts         # Build kernel with a different name
+_srcname=linux-4.4
+_pkgver=4.4.12
+_rtpatchver=rt19
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,33 +16,38 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${_pkgver}."{xz,sign}
-        #"https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/3.18/patch-${_pkgver}-${_rtpatchver}.patch."{xz,sign}
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
+        '0001-sdhci-revert.patch'
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 
-sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c406a8488d8d4d9e11934479b188126bce5dc41477be19a1bb389fd4a94ecb53'
+            '1eb89dddd7e89caf2df17470b4b15da451ef1aa97f8e1a88578a8ee2da75729a'
             'SKIP'
-            'd75ff961fc5ea4d2d338db1fe9ab31baf32eb6bf1851d1c1932259ccfd4cc616'
+            '0fe3f95956b73d0682c44c0520eef11a9de067739d799c33eaf8bc1130331a1d'
             'SKIP'
-            '3c876bd83489e56e62629fc09ce85391bef5ef94cb2feab7751841c221c000c6'
-            '49202f4733bd9de254083a85d0a17390f78e68fc6e4bea9e91bfce7e8167349e'
+            '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
+            'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
               '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt
+              'E644E2F1D45FA0B2EAA02F33109F098506FF0B14' # Thomas Gleixner
              )
 
 _kernelname=${pkgbase#linux}
@@ -60,17 +64,24 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  msg "0001-sdhci-revert.patch"
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  msg "change-default-console-loglevel.patch"
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
   # Stops X from hanging on certain NVIDIA cards
-  msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-  patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-  
+  msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
+  patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
+
   msg "All patches have successfully been applied"
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -116,9 +127,6 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${_pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install="${pkgbase}.install"
 
@@ -156,8 +164,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
@@ -177,9 +183,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${_pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -293,13 +296,15 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${_pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 
