@@ -45,7 +45,7 @@ depends=('glib2')
 }
 
 package_libdbusmenu-gtk2() {
-depends=('${pkgbase}-glib' 'gtk2')
+depends=("${pkgbase}-glib" 'gtk2')
 
   cd "${pkgbase}-gtk2-${pkgver}"
 
@@ -55,7 +55,7 @@ depends=('${pkgbase}-glib' 'gtk2')
 }
 
 package_libdbusmenu-gtk3() {
-depends=('${pkgbase}-glib' 'gtk3')
+depends=("${pkgbase}-glib" 'gtk3')
 
   cd "${pkgbase}-${pkgver}"
 
