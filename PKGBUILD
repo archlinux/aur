@@ -4,7 +4,7 @@ _distro="ubuntu16.04"
 
 pkgname=netease-cloud-music
 pkgver=1.0.0
-pkgrel=7
+pkgrel=1
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
