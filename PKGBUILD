@@ -1,8 +1,6 @@
-# Maintainer: Egor Panfilov <multicolor{dot}mood{at}gmail{dot}com>
-
 pkgbase=python-pydy-git
 pkgname=('python2-pydy-git' 'python-pydy-git')
-pkgver=0.3.1.r36.g4daff3f
+pkgver=0.3.1.r86.g1117a58
 pkgrel=1
 
 pkgdesc="Multibody dynamics toolkit for Python."
