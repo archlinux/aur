@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=gitdit
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="gitdit - Git DIalog inTerface"
 arch=('any')

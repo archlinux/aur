@@ -1,6 +1,6 @@
 pkgbase = gitdit
 	pkgdesc = gitdit - Git DIalog inTerface
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://proyecto.jkanetwork.com
 	arch = any
