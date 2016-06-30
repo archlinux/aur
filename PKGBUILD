@@ -80,8 +80,7 @@ build() {
 package() {
   cd $srcdir/ginger
   make DESTDIR=$pkgdir install
-  mv $pkgdir/etc/systemd $pkgdir/usr/lib/systemd
-  cd $pkgdir/usr/lib/systemd/system/wokd.service.d
+  cd $pkgdir/etc/systemd/system/wokd.service.d
   sed s:wokd.service::g ginger.conf >> ginger.conf.new
   mv ginger.conf.new ginger.conf
 }
