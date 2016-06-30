@@ -3,13 +3,13 @@
 _pkgname=encryptpad
 pkgname=${_pkgname}-git
 pkgver=v0.3.2.2.r11.gfa39929
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format"
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
-makedepends=('git' 'python2' 'qt5-tools' 'gendesk')
+makedepends=('git' 'python' 'gendesk')
 options=('!makeflags')
 source=("${_pkgname}::git+git://github.com/evpo/EncryptPad.git"
   "encryptpad.patch")

@@ -1,14 +1,13 @@
 pkgbase = encryptpad-git
 	pkgdesc = Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format
 	pkgver = v0.3.2.2.r11.gfa39929
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evpo/encryptpad
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = python2
-	makedepends = qt5-tools
+	makedepends = python
 	makedepends = gendesk
 	depends = qt5-base
 	depends = hicolor-icon-theme
