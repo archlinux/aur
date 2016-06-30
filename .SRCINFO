@@ -1,6 +1,6 @@
 pkgbase = freenet
 	pkgdesc = An encrypted network without censorship
-	pkgver = 0.7.5.1473
+	pkgver = 0.7.5.1475
 	pkgrel = 1
 	url = https://downloads.freenetproject.org
 	install = freenet.install
@@ -23,11 +23,11 @@ pkgbase = freenet
 	noextract = bcprov-jdk15on-154.jar
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git#tag=build01473
+	source = git+https://github.com/freenet/fred.git#tag=build01475
 	source = git+https://github.com/freenet/contrib.git#tag=v50
 	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
 	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5026
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#tag=build0018
+	source = git+https://github.com/freenet/plugin-WebOfTrust.git#commit=3aff914
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
 	source = https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar
