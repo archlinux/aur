@@ -1,13 +1,19 @@
 pkgbase = python-django-simple-permissions
+	pkgdesc = A enhanced permission system which enable logical permissionsystems to complex permissions
 	pkgver = 0.2.1
 	pkgrel = 1
+	url = https://github.com/lambdalisue/django-permission/
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = python2-pip
 	makedepends = python-pip
 	depends = python
 	depends = python2-django
 	depends = python-django
+	depends = python-django-appconf
+	depends = python2-django-appconf
+	depends = python-app_version
+	depends = python2-app_version
 	source = https://pypi.python.org/packages/fe/82/d1a9f4e1559c95cfc480b98d48784b7d556d11aa697fb2f1228eaa19fd18/django-simple-permissions-0.2.1.tar.gz
 	md5sums = 4739e4c0ed669b51199d13075f27ac5a
 
