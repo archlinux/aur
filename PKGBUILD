@@ -2,13 +2,13 @@
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=v0.2.8.1.r25.8647941
+pkgver=v0.2.9.r1.8edf6d0
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
 url='https://github.com/kozec/sc-controller'
 license=('GPL2')
-depends=('gtk3' 'python2-gobject' 'python2-cairo')
+depends=('gtk3' 'python2-gobject' 'python2-cairo' 'pylibacl')
 makedepends=('python2-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
