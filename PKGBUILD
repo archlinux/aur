@@ -2,11 +2,11 @@
 
 pkgname=libsml-git
 pkgver=0.1.1.r58.ga83ec40
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation in C of the Smart Message Language (SML) protocol"
 arch=('i686' 'x86_64')
 license=('GPL')
-makedepends=('git' 'gcc')
+makedepends=('git')
 depends=('libutil-linux')
 optdepends=()
 provides=('libsml')
