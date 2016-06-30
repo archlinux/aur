@@ -1,6 +1,6 @@
 pkgbase = libqb-git
 	pkgdesc = Library with the primary purpose of providing high performance client server reusable features
-	pkgver = 1.0.19.g70340f7
+	pkgver = 1.0.26.g495389d
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/libqb
 	arch = i686
