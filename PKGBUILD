@@ -3,15 +3,15 @@ pkgname=nvpy-git
 pkgver=r430.d1c926c
 pkgrel=1
 pkgdesc="Simplenote syncing note-taking application, inspired by Notational Velocity and ResophNotes, but uglier and cross-platformerer."
-arch=('any')
+arch=("any")
 url="https://github.com/cpbotha/nvpy"
-license=('BSD')
-depends=('python2-docutils' 'python2-markdown')
-makedepends=('git' 'python2')
+license=("BSD")
+depends=("python2-docutils" "python2-markdown" "python2-setuptools" "python2-pmw")
+makedepends=("git" "python2")
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=('nvpy::git+https://github.com/cpbotha/nvpy.git')
-md5sums=('SKIP')
+source=("nvpy::git+https://github.com/cpbotha/nvpy.git")
+md5sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
