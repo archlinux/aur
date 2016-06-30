@@ -9,6 +9,8 @@ url="http://taskwarrior.org/docs/timewarrior/"
 license=('MIT')
 makedepends=('cmake' 'gcc-libs')
 install=timew.install
+provides=('timew')
+conficts=('timew-git')
 
 source=("http://taskwarrior.org/download/timew-${pkgver}.tar.gz"
         "timew-refresh-python2.patch")
