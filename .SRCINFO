@@ -1,0 +1,19 @@
+pkgbase = python2-requests-negotiate
+	pkgdesc = Negotiate authentication for the requests HTTP client library
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/ox-it/requests-negotiate
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	depends = python2-www-authenticate
+	depends = python2-gssapi
+	source = https://pypi.python.org/packages/fa/b8/d42bf2a1f759064fc68193fd810eb68e5a058d827c627d67caecfc992d24/requests-negotiate-1.3.5.tar.gz
+	source = LICENSE
+	md5sums = c367e991785519c22a90b36a6722bbb7
+	md5sums = 51ec989993f192a55975cc94a1560c01
+
+pkgname = python2-requests-negotiate
+
