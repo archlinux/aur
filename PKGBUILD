@@ -21,7 +21,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=3.9.0svn_r274134
+pkgver=3.9.0svn_r274222
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -47,7 +47,6 @@ source=(
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
     'llvm-Config-llvm-config.h'
-    'D18035-add-gcc-abi_tag-support-mangler-part.patch'
 )
 
 sha256sums=(
@@ -56,7 +55,6 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-    '3a55b621bcef0ecb464184c6b38c41386f61b2f7a792f21c46beaaae8c892f41'
 )
 
 #
@@ -130,12 +128,6 @@ prepare() {
     sed -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/html|\1share/doc|' \
         -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/ocaml/html|\1share/doc/ocaml|' \
         -i docs/CMakeLists.txt
-
-    # https://llvm.org/bugs/show_bug.cgi?id=23529
-    # http://reviews.llvm.org/D12834
-    # http://reviews.llvm.org/D17567
-    # http://reviews.llvm.org/D18035
-    patch -N -p0 -d tools/clang -i "${srcdir}/D18035-add-gcc-abi_tag-support-mangler-part.patch"
 
     mkdir -p "${srcdir}/build"
 }
