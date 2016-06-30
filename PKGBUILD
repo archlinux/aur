@@ -1,5 +1,5 @@
 pkgname=libhif
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Library providing a high level package-manager. It uses librepo and hawkey under the hood."
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('LGPL2.1')
 depends=('hawkey>=0.4.6' 'librepo>=1.7.11' 'rpm-org>=4.11.0')
 makedepends=('gobject-introspection' 'gtk-doc')
 source=("$url/archive/${pkgname}_${pkgver//./_}.tar.gz")
-md5sums=('1eb3d11860d5321d182bd065e70e9deb')
+md5sums=('1af1bc8e7c5f1fda66fee9ababf9498f')
 
 prepare() {
 	mv  "$pkgname-${pkgname}_${pkgver//./_}" "$pkgname-$pkgver"
