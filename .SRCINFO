@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-dev
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 16.05.0
+	pkgver = 16.05.1
 	pkgrel = 1
 	url = http://www.schedmd.com
 	install = slurm-llnl-dev.install
@@ -24,7 +24,7 @@ pkgbase = slurm-llnl-dev
 	optdepends = numactl: NUMA support in the task/affinity plugin
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
-	provides = slurm-llnl=16.05.0
+	provides = slurm-llnl=16.05.1
 	conflicts = slurm-llnl
 	conflicts = slurm-llnl-git
 	backup = etc/default/slurm-llnl
@@ -33,12 +33,12 @@ pkgbase = slurm-llnl-dev
 	source = slurmctld.service
 	source = slurmd.service
 	source = slurmdbd.service
-	source = http://www.schedmd.com/download/total/slurm-16.05.0.tar.bz2
+	source = http://www.schedmd.com/download/total/slurm-16.05.1.tar.bz2
 	md5sums = 51e4ae2c51edf7c145d1b87bec4c344e
 	md5sums = cae664b8ef44d01783dade9088e25b53
 	md5sums = 834b641efbcb45d300630f51f08a9122
 	md5sums = 231a6634fcf774642021377920fffe39
 	md5sums = cef9d45137b9bd431dce3cbe85ef9bca
-	md5sums = c1b38584e0a69f5e0d854a9aa70c1cd7
+	md5sums = 335e7c892915b4e6252a135cb8482736
 
 pkgname = slurm-llnl-dev
