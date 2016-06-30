@@ -1,0 +1,15 @@
+pkgbase = ruby-xpath
+	pkgdesc = A Ruby DSL for generating XPath expressions
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://github.com/jnicklas/xpath
+	arch = any
+	license = unknown
+	depends = ruby
+	depends = ruby-nokogiri
+	options = !emptydirs
+	source = https://rubygems.org/downloads/xpath-2.0.0.gem
+	sha256sums = 9ca4a1cc88d9ab16c591468cce7b5d00ee06a8a76b841f8438970c7a44c86c12
+
+pkgname = ruby-xpath
+
