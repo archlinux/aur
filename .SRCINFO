@@ -1,0 +1,17 @@
+pkgbase = python-tolerance
+	pkgdesc = A function decorator which makes a function tolerant
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/lambdalisue/tolerance
+	arch = any
+	license = MIT
+	makedepends = python2-pip
+	makedepends = python-pip
+	depends = python
+	source = https://pypi.python.org/packages/68/19/e49b2915d182f9967bb6950faad6935ece45566356a3bf50e8f5c73ab4d7/tolerance-0.1.2.tar.gz
+	md5sums = b092c809d6c9b31c32d84411597c8d93
+
+pkgname = python2-tolerance
+
+pkgname = python-tolerance
+
