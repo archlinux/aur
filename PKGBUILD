@@ -9,11 +9,11 @@
 
 # setting to no seems to break things
 _use_python2=y
-_use_system_boost=y
+_use_system_boost=n
 
 # clang completion is builtin and cannot be provided separately (?)
 _clang_completer=y
-_clang_completer_system_libclang=y
+_clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
 pkgver=1819.0de1c0c
@@ -89,8 +89,8 @@ build() {
 	mkdir -p "${srcdir}/ycmd_build"
 	cd "${srcdir}/ycmd_build"
 
-	cmake_flags="-DUSE_PYTHON2=$([[ "${_use_python2}" == 'y' ]] && echo ON || echo OFF)" \
-	            " -DUSE_SYSTEM_BOOST=$([[ "${_use_system_boost}" == 'y' ]] && echo ON || echo OFF)"
+	cmake_flags="-DUSE_PYTHON2=$([[ "${_use_python2}" == 'y' ]] && echo ON || echo OFF)"
+	cmake_flags+=" -DUSE_SYSTEM_BOOST=$([[ "${_use_system_boost}" == 'y' ]] && echo ON || echo OFF)"
 
 	if [ "${_clang_completer}" == 'y' ]; then
 		cmake_flags+=' -DUSE_CLANG_COMPLETER=ON'
