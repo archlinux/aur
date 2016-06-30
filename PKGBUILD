@@ -27,6 +27,8 @@ md5sums=(
 options=(!strip staticlibs)
 
 build() {
+  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" 0001-ignore-return-value-error.patch
+
   cd $srcdir/UnrealEngine
   
   # might help to clean up old builds when there is a new version
