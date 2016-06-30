@@ -9,6 +9,8 @@ post_upgrade() {
   getent passwd telegraf >/dev/null || useradd -c 'telegraf' -g telegraf -d '/var/lib/telegraf' -m -s /bin/false telegraf
 
   mkdir -p /var/lib/telegraf
+  mkdir -p /var/log/telegraf
   mkdir -p /etc/telegraf/telegraf.d
   chown telegraf.telegraf /var/lib/telegraf
+  chown telegraf.telegraf /var/log/telegraf
 }
