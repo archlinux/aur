@@ -1,0 +1,12 @@
+diff -Naur onedrive.service-orig onedrive.service
+--- onedrive.service-orig	2016-06-30 08:38:51.605726140 -0400
++++ onedrive.service	2016-06-30 08:39:00.102474667 -0400
+@@ -3,7 +3,7 @@
+ Documentation=https://github.com/skilion/onedrive
+ 
+ [Service]
+-ExecStart=/usr/local/bin/onedrive -m
++ExecStart=/usr/bin/onedrive -m
+ Restart=no
+ 
+ [Install]
