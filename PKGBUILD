@@ -1,7 +1,7 @@
 # Current Maintainer: Sean Lynch <seanl@literati.org>
 pkgname=beignet-git
-pkgver=Release_v1.0.0.r676.gad86ed3
-pkgrel=2
+pkgver=1.0.0.r799.gcf95b44
+pkgrel=1
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
@@ -14,9 +14,9 @@ replaces=('beignet' 'opencl-intel' 'opencl-headers' 'opencl-headers12')
 source=("git://anongit.freedesktop.org/beignet")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/beignet"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+function pkgver() {
+	cd "$srcdir/beignet"
+	git describe --long --tags | sed 's/^Release_v//;s/-/.r/;s/-/./'
 }
 
 build() {
