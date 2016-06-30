@@ -1,0 +1,19 @@
+pkgbase = python-app_version
+	pkgdesc = A tiny utility to get application version from pkg_resouces
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/lambdalisue/app_version
+	arch = any
+	license = MIT
+	makedepends = python2-pip
+	makedepends = python-pip
+	depends = python
+	depends = python-tolerance
+	depends = python2-tolerance
+	source = https://pypi.python.org/packages/ac/a7/dedf1c4302ffcd271cdc788308bd0c4ae0c1b6e8aeef63295259213cfa3b/app_version-0.2.1.tar.gz
+	md5sums = fc09b5d2a8d7f35636dc0adfe0617b5a
+
+pkgname = python2-app_version
+
+pkgname = python-app_version
+
