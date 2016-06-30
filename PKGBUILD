@@ -1,15 +1,16 @@
 # Maintainer: skydrome <skydrome at@at i2pmail do.t org>
 # Contributors:
 
-_fred=#tag=build01473
+_fred=#tag=build01475
 _contrib=#tag=v50
-_wot=#tag=build0018
-#_wot=#commit=f8d98130e65de53bb315312f6300ebd28d7399c2
+#_wot=#tag=build0018
+#_wot=#branch=next
+_wot=#commit=3aff914
 _keyutils=#tag=v5026
 _upnp=#tag=10007
 
 pkgname=freenet
-pkgver=0.7.5.1473
+pkgver=0.7.5.1475
 pkgrel=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
@@ -89,11 +90,6 @@ sha256sums=('SKIP'
             'e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476'
             '73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f')
 
-pkgver() {
-    cd "$srcdir/fred"
-    echo "${_pkgver}.$(git describe |sed 's/build0//;s/-/./g')"
-}
-
 if [[ "$CARCH" = 'i686' ]]; then
      _arch=x86
     __arch=i386
@@ -101,6 +97,11 @@ else
      _arch=x86_64
     __arch=amd64
 fi
+
+pkgver() {
+    cd "$srcdir/fred"
+    echo "${_pkgver}.$(git describe |sed 's/build0//;s/-/./g')"
+}
 
 prepare() {
     cd "$srcdir/fred"
@@ -278,10 +279,7 @@ package() {
     install -m640 contrib/freenet-ext/dist/freenet-ext.jar \
                   dist/freenet.jar                         \
                   lib/bcprov.jar                                "$pkgdir"/opt/freenet/lib
-
-    # FIXME Workaround for https://bugs.freenetproject.org/view.php?id=6684
-    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet
-    ln -s /opt/freenet/seednodes.fref "$pkgdir"/opt/freenet/noderef/
+    install -m640 "$srcdir"/seednodes.fref                      "$pkgdir"/opt/freenet/noderef
 
     # plugins
     for plugin in ${_plugins[@]}; do
