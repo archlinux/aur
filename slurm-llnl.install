@@ -56,10 +56,7 @@ pre_remove() {
 
 ## arg 1:  the old package version
 post_remove() {
-	echo -e "\e[34;1m==>\e[39;1m Removing slurm system user/group... \e[0m"
-	userdel slurm
-
-	# deleting remnant recusivly
+	# Deleting remnant recusivly
 	rm -rf /var/lib/slurm-llnl
 
 	# Change directories which formerly belonged to slurm to be owned by root
@@ -67,4 +64,7 @@ post_remove() {
 	# notifying the user of kept dirs
 	[[ -d /etc/slurm-llnl ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Custom configuration-file(s) in /etc/slurm-llnl/ were kept on your system.\e[0m"
 	[[ -d /var/log/slurm-llnl ]] && chown -R root:root /var/log/slurm-llnl && echo -e "\e[34;1m==>\e[39;1m NOTE: Logfiles were preserved. They reside under /var/log/slurm-llnl .\e[0m"
+
+	echo -e "\e[34;1m==>\e[39;1m Removing slurm system user/group... \e[0m"
+	userdel slurm
 }
