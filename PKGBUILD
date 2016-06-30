@@ -1,7 +1,8 @@
 # Maintainer: jrdemasi <jrdemasi@gmail.com>
+validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=cryptcat
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cryptcat is the standard netcat enhanced with twofish encryption"
 arch=(i686 x86_64)
 url="https://cryptcat.sourceforge.net"
