@@ -1,6 +1,9 @@
 # Maintainer: Justin Wong <justin.w.xd at gmail dot com>
+# Co-Maintainer: Peter Cai <peter at typeblog dot net>
+_distro="ubuntu16.04"
+
 pkgname=netease-cloud-music
-pkgver=0.9.0_2
+pkgver=1.0.0
 pkgrel=7
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
@@ -13,7 +16,7 @@ depends=(
 	"gst-plugins-good" "gst-plugins-ugly" 
 )
 source=(
-	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64.deb"
+	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64_${_distro}.deb"
 	"http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcue/libcue1_1.4.0-1_amd64.deb"
 	"http://music.163.com/html/web2/service.html"
 	"netease-cloud-music"
@@ -21,7 +24,7 @@ source=(
 noextract=(
 	"libcue1_1.4.0-1_amd64.deb"
 )
-md5sums=('24c44fe5e71e69cd7ac252c2ce611270'
+md5sums=('c1430b695eff22294ab3b84205105cdf'
          '51920df6edb60d9ef5e4e9f3ae3be0d6'
          '2f06d90c7b3362a01c287ec7b6a40f27'
          '31a25ac517facc48762a6a9378a66f58')
