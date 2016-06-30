@@ -1,0 +1,26 @@
+From 44fdb710fe4151f0ca8a84521c89c5bc73874257 Mon Sep 17 00:00:00 2001
+From: acerix <dylan@psilly.com>
+Date: Thu, 30 Jun 2016 13:59:39 -0400
+Subject: [PATCH 1/1] ignore return value error error: ignoring return value of
+ function declared with warn_unused_result attribute
+
+---
+ Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs
+index f2f9a59..18ec222 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs
+@@ -363,6 +363,8 @@ namespace UnrealBuildTool
+ 			Result += " -Wno-unknown-pragmas";			// Slate triggers this (with its optimize on/off pragmas)
+ 			// needed to suppress warnings about using offsetof on non-POD types.
+ 			Result += " -Wno-invalid-offsetof";
++			// suppress errors about ignoring return value of function
++			Result += " -Wno-unused-result";
+ 			// we use this feature to allow static FNames.
+ 			Result += " -Wno-gnu-string-literal-operator-template";
+ 
+-- 
+2.9.0
+

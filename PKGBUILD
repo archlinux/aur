@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -17,10 +17,12 @@ license=('custom:UnrealEngine')
 source=(
   "git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
+  '0001-ignore-return-value-error.patch'
 )
 md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
+  '08e0e6b8e6c9b186191a8419cc7bd435'
 )
 options=(!strip staticlibs)
 
