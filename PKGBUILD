@@ -1,7 +1,7 @@
 # Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-git-latest
-pkgver=v0.2.5.r7.g7eaf1ae
+pkgver=v0.2.6.r34.g34cd4c8
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('ckb-git')
 conflicts=('ckb-git')
 install=ckb-git-latest.install
-source=('ckb-git-latest::git+https://github.com/ccMSC/ckb.git#branch=fw2kb')
+source=('ckb-git-latest::git+https://github.com/ccMSC/ckb.git#branch=testing')
 md5sums=('SKIP')
 
 pkgver() {
