@@ -1,0 +1,24 @@
+pkgbase = python-pip
+	pkgdesc = The PyPA recommended tool for installing Python packages
+	pkgver = 8.1.2
+	pkgrel = 1
+	url = https://pip.pypa.io/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = git://github.com/pypa/pip
+	md5sums = SKIP
+
+pkgname = python-pip
+	depends = python
+	depends = python-setuptools
+
+pkgname = python2-pip
+	depends = python2
+	depends = python2-setuptools
+	conflicts = python-pyinstall
+	replaces = python-pyinstall
+
