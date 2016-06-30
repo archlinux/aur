@@ -3,7 +3,7 @@
 _srcname=leap.bitmask
 pkgname=bitmask_client
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
