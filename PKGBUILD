@@ -3,22 +3,22 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=5.12h
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('jlink')
 depends=('glibc')
-source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ64_${pkgver/./}")
-source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/jlink-software.html?step=1&file=JLinkLinuxTGZ32_${pkgver/./}")
+source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
+source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 md5sums_i686=('5777412fde128a37134585f0e5c6319e')
 md5sums_x86_64=('95ee3d2f59a01d748d1a956320e5f370')
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
 conflicts=("j-link-software-and-documentation")
 replaces=("j-link-software-and-documentation")
-DLAGENTS=("https::/usr/bin/env curl -o %o -d agree=1 -d confirm=yes ")
+DLAGENTS=("https::/usr/bin/env curl -o %o -d accept_license_agreement=accepted -d confirm=yes ")
 
 prepare() {
     # Change src path name
