@@ -91,8 +91,7 @@ build() {
 package() {
   cd $srcdir/kimchi
   make DESTDIR=$pkgdir install
-  mv $pkgdir/etc/systemd $pkgdir/usr/lib/systemd
-  cd $pkgdir/usr/lib/systemd/system/wokd.service.d
+  cd $pkgdir/etc/systemd/system/wokd.service.d
   sed s:wokd.service::g kimchi.conf > kimchi.conf.new
   mv kimchi.conf.new kimchi.conf
 }
