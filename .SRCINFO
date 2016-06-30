@@ -1,0 +1,18 @@
+pkgbase = python2-gssapi
+	pkgdesc = Python GSSAPI Wrapper
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/pythongssapi/python-gssapi
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-decorator
+	depends = python2-six
+	depends = python2-enum34
+	depends = krb5
+	source = https://pypi.python.org/packages/d3/ef/6f659d93575a387910edcc0574445f8edfa3e926e6312b39b947c2923d64/gssapi-1.2.0.tar.gz
+	md5sums = 5897be5470210cded323add54ba2ca56
+
+pkgname = python2-gssapi
+
