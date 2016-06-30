@@ -2,7 +2,7 @@
 pkgname=perl-latexml
 _realname=LaTeXML
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="LaTeX to XML converter"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -10,7 +10,8 @@ url="http://dlmf.nist.gov/LaTeXML/"
 depends=('perl' 'perl-parse-recdescent' 
     'imagemagick' 'perl-xml-libxml' 
     'perl-xml-libxslt' 'db' 'texlive-core'
-    'perl-image-size' 'perl-file-which')
+    'perl-image-size' 'perl-file-which'
+    'perl-libwww' 'perl-io-string' 'perl-archive-zip')
 options=(!emptydirs)
 source=("http://dlmf.nist.gov/$_realname/releases/$_realname-$pkgver.tar.gz")
 sha256sums=('a495019f2828f0734e9e41f0398f6c8d60ba6a934d4ccad4fea7d588ab060388')
