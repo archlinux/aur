@@ -1,0 +1,17 @@
+pkgbase = python-django-simple-permissions
+	pkgver = 0.2.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = python2-pip
+	makedepends = python-pip
+	depends = python
+	depends = python2-django
+	depends = python-django
+	source = https://pypi.python.org/packages/fe/82/d1a9f4e1559c95cfc480b98d48784b7d556d11aa697fb2f1228eaa19fd18/django-simple-permissions-0.2.1.tar.gz
+	md5sums = 4739e4c0ed669b51199d13075f27ac5a
+
+pkgname = python2-django-simple-permissions
+
+pkgname = python-django-simple-permissions
+
