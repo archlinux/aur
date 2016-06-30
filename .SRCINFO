@@ -1,0 +1,18 @@
+pkgbase = libsml-git
+	pkgdesc = Implementation in C of the Smart Message Language (SML) protocol
+	pkgver = 0.1.1.r58.ga83ec40
+	pkgrel = 1
+	url = https://github.com/volkszaehler/libsml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = libutil-linux
+	provides = libsml
+	conflicts = libsml
+	source = git://github.com/volkszaehler/libsml.git
+	md5sums = SKIP
+
+pkgname = libsml-git
+
