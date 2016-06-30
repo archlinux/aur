@@ -1,5 +1,5 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pyname='scrapy'
+pyname='Scrapy'
 pkgname='python2-scrapy'
 pkgver='1.1.0'
 pkgrel=1
