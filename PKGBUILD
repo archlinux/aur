@@ -2,13 +2,13 @@
 
 pkgname='dfix'
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for automatically upgrading D source code'
 arch=('i686' 'x86_64')
 url='https://github.com/Hackerpilot/dfix'
 license=('custom: BSL')
 groups=('dlang')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('dmd' 'git')
 provides=('dfix')
 source=("git://github.com/Hackerpilot/${pkgname}#tag=v${pkgver}"
