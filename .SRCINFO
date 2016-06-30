@@ -1,0 +1,20 @@
+pkgbase = gi
+	pkgdesc = Git wrapper to perform Mercurial-like short unique abbreviation searching for commands
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://bitbucket.org/gagarski/gi
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-marisa-trie
+	depends = git
+	optdepends = gi-bash-completion: for bash-completion support
+	provides = gi
+	conflicts = gi
+	source = git+https://gagarski@bitbucket.org/gagarski/gi.git#tag=0.0.2
+	md5sums = SKIP
+
+pkgname = gi
+
