@@ -11,6 +11,7 @@ license=('GPL3')
 depends=(
   'desktop-file-utils'
   'xdg-utils'
+  'openvpn'
   'python2-argh'
   'python2-requests'
   'python2-srp'
