@@ -8,8 +8,10 @@ arch=('any')
 url="http://www.thinkastronomy.com/M13/index.html"
 license=('Custom:ThinkAstronomy')
 depends=('java-runtime')
-source=("$pkgname-$pkgver.zip"::"http://www.thinkastronomy.com/M13/downloads/WhereIsM13_$pkgver.zip")
-sha256sums=("b9152359584a7f2283560559fdf35348e018254ae965cdbfa624c662687ccadc")
+source=("$pkgname-$pkgver.zip"::"http://www.thinkastronomy.com/M13/downloads/WhereIsM13_$pkgver.zip"
+	"icons.tar.xz")
+sha256sums=("b9152359584a7f2283560559fdf35348e018254ae965cdbfa624c662687ccadc"
+	    "ea7d7053f86a23c195f06d67c591f4e26c5c779834c46af3bb065a564a88aca2")
 
 package() {
 
