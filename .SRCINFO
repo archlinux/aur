@@ -1,0 +1,9 @@
+pkgbase = hopper
+	pkgdesc = Hopper disassembler
+	pkgver = 2.8.10
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+
+pkgname = hopper
+
