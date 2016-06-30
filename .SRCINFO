@@ -1,6 +1,6 @@
 pkgbase = feedthemonkey
 	pkgdesc = Desktop client for the TinyTinyRSS reader
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = http://jabs.nu/feedthemonkey
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = feedthemonkey
 	depends = qt5-quick1
 	depends = qt5-quickcontrols
 	depends = qt5-webengine
-	source = https://github.com/jeena/FeedTheMonkey/archive/v2.1.1.tar.gz
+	source = https://github.com/jeena/FeedTheMonkey/archive/v2.1.2.tar.gz
 	md5sums = SKIP
 
 pkgname = feedthemonkey
