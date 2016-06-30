@@ -1,8 +1,18 @@
-diff -rupN old/src/include/ci/efhw/common.h new/src/include/ci/efhw/common.h
---- old/src/include/ci/efhw/common.h	2013-10-11 10:28:47.000000000 -0400
-+++ new/src/include/ci/efhw/common.h	2013-11-05 10:59:34.023661092 -0500
-@@ -62,7 +62,7 @@ enum efhw_arch {
- };
+From 0fdfc0f7ea9db1036bb6895d2f9704b6f05411ff Mon Sep 17 00:00:00 2001
+From: Ido Rosen <code@idorosen.com>
+Date: Thu, 30 Jun 2016 15:16:17 -0400
+Subject: [PATCH 1/2] openonload-201310-cpp11-space-literal-fix
+
+---
+ src/include/ci/efhw/common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/include/ci/efhw/common.h b/src/include/ci/efhw/common.h
+index 10d854c..4a4edd5 100644
+--- a/src/include/ci/efhw/common.h
++++ b/src/include/ci/efhw/common.h
+@@ -58,7 +58,7 @@
+ #include <ci/efhw/device.h>
  
  typedef uint32_t efhw_buffer_addr_t;
 -#define EFHW_BUFFER_ADDR_FMT	"[ba:%"PRIx32"]"
@@ -10,3 +20,6 @@ diff -rupN old/src/include/ci/efhw/common.h new/src/include/ci/efhw/common.h
  
  /* Below event structure is in NIC bytes order. When using either field for
   * something other then check against 0xffff one should convert the event
+-- 
+2.7.4 (Apple Git-66)
+

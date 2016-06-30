@@ -1,1 +1,5 @@
 /openonload-*.tgz
+/src/
+/pkg/
+/*.pkg.tar.xz
+/*.src.tar.gz

@@ -1,0 +1,64 @@
+From 59fe13806e0d055dc2cdc88fcaef502e1721a2ad Mon Sep 17 00:00:00 2001
+From: Ido Rosen <code@idorosen.com>
+Date: Thu, 30 Jun 2016 15:30:17 -0400
+Subject: [PATCH 2/2] openonload-201606-archlinux
+
+---
+ scripts/onload_install | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/scripts/onload_install b/scripts/onload_install
+index 3526705..eb8e672 100755
+--- a/scripts/onload_install
++++ b/scripts/onload_install
+@@ -292,7 +292,7 @@ echo
+   install_x onload_tool "$i_sbin/onload_tool"
+   install_x onload "$i_usrbin/onload"
+   install_x sfcirqaffinity "$i_usrsbin/sfcirqaffinity"
+-  install_x onload_misc/onload_init_rc "$i_etc/init.d/openonload"
++  install_x onload_misc/onload_init_rc "$i_usrlibexec/onload_init_rc"
+   install_f onload_misc/onload_sysconfig "$i_etc/sysconfig/openonload"
+   install_x onload_tcpdump "$i_usrbin/onload_tcpdump"
+   install_x onload_iptables "$i_usrbin/onload_iptables"
+@@ -354,7 +354,7 @@ install_ldconfig() {
+ 
+ install_kernel_modules() {
+   # Install kernel drivers.
+-  did="$i_prefix/lib/modules/$KVER/extra"
++  did="$i_prefix$(readlink -f /lib/modules/$KVER/extramodules)"
+   try $do cd "$TOP/build"
+   d=$(mmaketool --driverbuild)
+   if ! $test; then
+@@ -525,9 +525,7 @@ check_whether_installed() {
+   fi
+   local drv where
+   for drv in sfc.ko onload.ko; do
+-    for where in updates extra; do
+-      check_file_installed "$i_prefix/lib/modules/$KVER/$where/$drv"
+-    done
++    check_file_installed "$i_prefix$(readlink -f /lib/modules/$KVER/extramodules)/$drv"
+   done
+ }
+ 
+@@ -545,7 +543,7 @@ do_rpm_install() {
+ 
+ do_rpm_post() {
+   # Invoked by the rpm install.
+-  install_init_script
++  #install_init_script
+   is_rhel4 && rhel4_modprobe_fixup
+   exit
+ }
+@@ -602,7 +600,8 @@ install_modules=true
+ install_user=true
+ ppc_at=
+ 
+-KVER=$(uname -r)
++KVER=$(pacman -Q linux-lts | cut -d' ' -f2) # installed
++KVER=${KVER:-$(uname -r)} # running
+ export KVER
+ 
+ while [ $# -gt 0 ]; do
+-- 
+2.7.4 (Apple Git-66)
+
