@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160615.10471
+pkgver=20160630.10518
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -22,14 +22,10 @@ makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-R-plugin-fix-preprocessor.patch"
         "0002-Sage-plugin-fix-which-not-found.patch"
-        "0003-Revert-Further-fixes-for-iconv.patch"
-        "0004-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
         )
 sha1sums=('SKIP'
           '72c9ed59808b1d43bdff98f6ce306a8752d08175'
-          'e977a4331ed8341e49adc924feeda054aab97836'
-          'c0417abbf2ac6b405dc6d2af63508ffde5255e59'
-          '947695826852e1885838b87945dd31177891fcd3')
+          'e977a4331ed8341e49adc924feeda054aab97836')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -47,8 +43,8 @@ prepare() {
 
   patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
   patch -Np1 -i ../0002-Sage-plugin-fix-which-not-found.patch
-  patch -Np1 -i ../0003-Revert-Further-fixes-for-iconv.patch
-  patch -Np1 -i ../0004-Fix-mktemp-too-few-X-s-in-template-texmacs.patch
+
+  autoreconf
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
