@@ -2,11 +2,11 @@
 pkgname=gi-bash-completion
 
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash completion support for gi"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi-bash-completion"
-license=('custom')
+license=('GPL')
 makedepends=('git')
 depends=('gi' 'bash-completion')
 provides=('gi-bash-completion')

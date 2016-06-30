@@ -1,10 +1,10 @@
 pkgbase = gi-bash-completion
 	pkgdesc = Bash completion support for gi
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/gagarski/gi-bash-completion
 	arch = any
-	license = custom
+	license = GPL
 	makedepends = git
 	depends = gi
 	depends = bash-completion
