@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=speedtest-zpeters
-pkgver=0.8.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Command line client for speedtest.net written in Go'
 url=https://github.com/zpeters/speedtest
