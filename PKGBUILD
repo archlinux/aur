@@ -1,7 +1,7 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.0.28
-pkgrel=2
+pkgver=2.0.29
+pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -18,7 +18,7 @@ source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${p
 	'lvm_create_filesystem_snapshot'
 	'lvm_remove_filesystem_snapshot')
 
-md5sums=('009fdbed706714c6946aef7a136df710'
+md5sums=('2abba0a9a1339257aa127f055c5ea65b'
          'fcdef7852b3d847c5c2468a619e7fba9'
          'b5f82ed45105f9929e9b98eee8b288fc'
          '5a3c106ff05e9939902272c936b653eb'
