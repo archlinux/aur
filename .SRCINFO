@@ -1,0 +1,14 @@
+pkgbase = aiu-git
+	pkgdesc = Simple media manager written in sh
+	pkgver = r9.303c34c
+	pkgrel = 1
+	url = https://github.com/autrimpo/aiu
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = bash
+	source = git://github.com/autrimpo/aiu.git
+	md5sums = SKIP
+
+pkgname = aiu-git
+
