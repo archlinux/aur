@@ -13,6 +13,7 @@ pkgbase = ruby-thin
 	noextract = thin-1.7.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/thin-1.7.0.gem
+	sha256sums = b8a49db7527ec1163ff06700b62d6e28c70ab4c822d8ba0821e479e9f1c109b7
 
 pkgname = ruby-thin
 

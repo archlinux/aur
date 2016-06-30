@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-rack' 'ruby-eventmachine' 'ruby-daemons')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname_}-${pkgver}.gem")
 noextract=("${_gemname_}-${pkgver}.gem")
-sha56sums=('b8a49db7527ec1163ff06700b62d6e28c70ab4c822d8ba0821e479e9f1c109b7')
+sha256sums=('b8a49db7527ec1163ff06700b62d6e28c70ab4c822d8ba0821e479e9f1c109b7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
