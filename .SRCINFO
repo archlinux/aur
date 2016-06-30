@@ -1,12 +1,11 @@
 pkgbase = weborf
-	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
 	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://ltworf.github.io/weborf/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = file
+	makedepends = python-pyqt5
 	source = https://github.com/ltworf/weborf/releases/download/0.13.3/weborf_0.13.3.orig.tar.gz
 	source = https://github.com/ltworf/weborf/releases/download/0.13.3/weborf_0.13.3.orig.tar.gz.asc
 	validpgpkeys = 42748B9E76D899799E1FBE14B3A7CF0C801886CF
@@ -14,4 +13,13 @@ pkgbase = weborf
 	sha512sums = SKIP
 
 pkgname = weborf
+	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
+	depends = file
+
+pkgname = qweborf
+	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP - Qt frontend
+	arch = any
+	depends = python
+	depends = python-pyqt5
+	depends = weborf
 
