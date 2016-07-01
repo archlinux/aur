@@ -2,7 +2,7 @@
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-atom-bin
-pkgver=26.3.1
+pkgver=26.3.3
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
 arch=('i686')
@@ -19,7 +19,7 @@ conflicts=('palemoon')
 options=('!strip')
 source=("http://linux.palemoon.org/files/atom/$pkgver/palemoon-$pkgver-atom.en-US.linux-i686.tar.bz2"
         "palemoon.desktop")
-sha1sums=('3494657aad469652c635d4759bbb0cc7515b1599'
+sha1sums=('f4b2379fbb9034ab914463d709f7de18f95d9104'
           'e8d4cbcd51326c337a2c901e7aff7b6c54043dec')
 
 package() {
