@@ -2,13 +2,13 @@
 
 pkgname=cufflinks
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples.."
 arch=("x86_64")
 url="http://cufflinks.cbcb.umd.edu"
 license=('Artistic')
 depends=('boost' 'eigen3' 'python2' 'samtools' 'perl')
-source=(http://cufflinks.cbcb.umd.edu/downloads/$pkgname-$pkgver.tar.gz)
+source=(http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/$pkgname-$pkgver.tar.gz)
 md5sums=('9a5ba7a7710cd864932cf205c17851f0')
 
 build() {
