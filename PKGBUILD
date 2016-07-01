@@ -1,7 +1,8 @@
-# Maintainer: Zanny <lordzanny@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Zanny <lordzanny@gmail.com>
 
-pkgname=clinfo
-pkgver=2.0.15.03.24
+pkgname=clinfo-git
+pkgver=2.1.16.01.12.r2.g271b884
 pkgrel=1
 pkgdesc="Print all known information about all available OpenCL platforms and devices in the system"
 arch=(i686 x86_64)
@@ -15,19 +16,19 @@ replaces=(clinfo)
 source=(git+https://github.com/oblomov/clinfo.git)
 md5sums=('SKIP')
 
-pkgver() {
-    cd ${srcdir}/${pkgname}
-    echo $(git describe --tags | cut -f1 -d"-")
+function pkgver() {
+	cd clinfo
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
-    make
+	cd clinfo
+	make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
-    install -D -m755 clinfo "${pkgdir}/usr/bin/clinfo"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 man/clinfo.1 "${pkgdir}/usr/share/man/man1/clinfo.1"
+	cd clinfo
+	install -D -m755 clinfo "${pkgdir}/usr/bin/clinfo"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 man/clinfo.1 "${pkgdir}/usr/share/man/man1/clinfo.1"
 }
