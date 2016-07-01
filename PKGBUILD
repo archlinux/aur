@@ -27,7 +27,7 @@ _pgo=false
 _debname=firefox
 _brandingver=45.0
 _brandingrel=2
-_debver=47.0
+_debver=47.0.1
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
@@ -63,15 +63,15 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		mozilla-1245076.patch
 		mozilla-1245076-1.patch
 		enable-object-directory-paths.patch)
-md5sums=('d889e912716b7a05b86bcec44b75e159'
-         '080af93523f37cd885a0af191c71b339'
+md5sums=('f8f80a87e2b84c92f45cbcd56761bf28'
+         'f6f66a94a9019fd34c4b4ede7a6bb4b4'
          '18ddaa5f1b70cbf12110471d50746339'
          'c76cb41d436754382ef26f986d0e021f'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
          'c4a7a21445579167bff3d787e887903e'
-         'f6c4c052d5cf8b050f72e3db6677f176'
+         'bc7e5c42165cc59501cf193ed7b73d11'
          '43550e772f110a338d5a42914ee2c3a6'
          '772aac58e3a7e8a32bedd898bc35dc90'
          '0ee21722e64602526ebde2539fe3e9b6')
