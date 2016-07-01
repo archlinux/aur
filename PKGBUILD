@@ -6,8 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.0
-_pkgseries=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -18,17 +17,16 @@ optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 conflicts=('compiz-core')
-source=("http://bazaar.launchpad.net/~compiz-team/compiz/0.9.12/tarball/4063"
+source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "trailfocus-fix.patch")
-sha256sums=('SKIP'
+sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce')
 
 prepare() {
-  mv "${srcdir}/~compiz-team/compiz/0.9.12" "${srcdir}/${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
 
   # Fix decorator start command
