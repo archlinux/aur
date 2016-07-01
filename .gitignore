@@ -1,5 +1,8 @@
 /cpplint-*.py
+/cpplint_unittest-*.py
+/cpplint_test_header-*.h
 /cpplint-*.pkg.tar.xz
 /README-*
 /pkg/
 /src/
+/styleguide.bare/
