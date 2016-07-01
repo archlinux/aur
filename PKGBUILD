@@ -1,14 +1,14 @@
 # Maintainer: Zygmunt Krynicki <me at zygoon dot pl>
 pkgname=snap-confine
 pkgver=1.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Confinement system for snap applications"
 arch=('i686' 'x86_64')
 url="git://github.com/snapcore/snap-confine"
 license=('GPL3')
 groups=()
 depends=('glibc' 'bash')
-makedepends=('indent' 'shellcheck' 'python-docutils')
+makedepends=('indent' 'shellcheck' 'python-docutils' 'libseccomp' 'systemd')
 provides=()
 conflicts=()
 replaces=()
@@ -35,7 +35,6 @@ build() {
         --prefix=/usr \
         --libexecdir=/usr/lib/snap-confine \
         --disable-apparmor \
-        --disable-seccomp \
         --enable-rootfs-is-core-snap \
         --enable-nvidia-arch
     make
