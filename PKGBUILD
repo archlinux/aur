@@ -1,20 +1,21 @@
-# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='virt-viewer'
-pkgver='3.1'
-pkgrel='3'
+pkgver='4.0'
+pkgrel='1'
 pkgdesc='Lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('any')
 url='http://virt-manager.org'
-depends=('spice' 'libvirt' 'libxml2' 'spice-gtk3' 'spice-protocol' 'gtk-vnc')
-makedepends=('libtool' 'intltool')
+depends=('spice' 'libvirt' 'libvirt-glib' 'libxml2' 'spice-gtk3' 'spice-protocol' 'gtk-vnc')
+makedepends=('libtool' 'intltool' 'gettext' 'automake' 'autoconf' 'pkg-config' 'intltool')
 license=('GPL')
 source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('be4e49470b650fc22513c2c01f2e13e30ee2d494d0d7b319b6f414ca781078c7')
+sha256sums=('1c427b0ea104539342519334735e6f667d5784c42a5aafc253b580875d88fa1f')
 install="${pkgname}.install"
 
 prepare() {
-  pushd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -26,19 +27,15 @@ prepare() {
     --datadir=/usr/share \
     --infodir=/usr/share/info \
     --includedir=/usr/include/security \
-    --with-gtk=3.0 \
     --disable-update-mimedb
-  popd
 }
 
 build() {
-  pushd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
-  popd
 }
 
 package() {
-  pushd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  popd
 }
