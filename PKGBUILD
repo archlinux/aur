@@ -34,7 +34,7 @@ package() {
 
   for size in 16 32 48 256; do
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    convert -resize "${size}x${size}" tyqt/images/tyqt.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyqt.png"
+    convert -resize "${size}x${size}" src/tyqt/images/tyqt.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyqt.png"
   done
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/ty-git/LICENSE.txt"
