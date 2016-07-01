@@ -1,5 +1,5 @@
 pkgname=mingw-w64-xerces-c
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A validating XML parser written in a portable subset of C++ (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
 source=("http://apache.osuosl.org/xerces/c/3/sources/xerces-c-${pkgver}.tar.gz"
 "001-no-undefined.patch")
-md5sums=('70320ab0e3269e47d978a6ca0c0e1e2d'
+md5sums=('21bb097b711a513275379b59757cba4c'
          '65846bed6ac34fdcc2dfbaf6245f37f6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
