@@ -2,7 +2,7 @@
 
 pkgname=lxd
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -14,7 +14,7 @@ optdepends=(
     'lvm2: for lvm2 support'
     'thin-provisioning-tools: for thin provisioning support'
     'btrfs-progs: for btrfs support'
-    'linux-user-ns-enabled: kernel with CONFIG_USER_NS enabled'
+    'linux-userns: kernel with CONFIG_USER_NS enabled'
     'linux-lts-userns: LTS kernel with CONFIG_USER_NS enabled'
 )
 source=(
