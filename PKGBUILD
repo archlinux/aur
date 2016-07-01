@@ -1,14 +1,14 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Twitch Chat Client for Desktop"
 arch=('any')
 url="http://chatty.github.io/" 
 license=('MIT')
-depends=('java-environment' 'sh')
+depends=('jre8-openjdk' 'sh')
 optdepends=('livestreamer: for watching streams in a custom video player.')
-makedepends=('apache-ant' 'jre7-openjdk')
+makedepends=('apache-ant' 'jdk8-openjdk')
 
 source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
         "${pkgname}.png"
@@ -18,10 +18,10 @@ source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
         "manifest.patch"
         "disable_version_check.patch"
         "build.patch")
-md5sums=('1172b5f7d788a7258fbbec07f6ca7dcc'
+md5sums=('48afdbdfb9d9a2e3162f3e18a1aafd84'
          '2bdf69cd81d941dba97d55694f9da26d'
          '9d8950b786e1af5614bc705ad478b019'
-         '8f74b121a39705a33687ddf26dfdd2ac'
+         'e79577c8044fbee51426aaeb7613501f'
          'b94cff3408dc359815283663610ab866'
          '4de1c8a5b0fb16932b6106d8bdd193f7'
          '4e3d8490acd2f8ba700d03809a8ca8cf'
@@ -37,7 +37,7 @@ prepare() {
 
 build() {
   cd chatty-${pkgver}
-  ant
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk ant
 }
 
 package(){
