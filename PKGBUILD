@@ -4,7 +4,7 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
