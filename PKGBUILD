@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon
 pkgver=2.1.0.r563.g41e032c
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -25,12 +25,13 @@ build() {
   cd "${pkgname}"
 
   msg2 'Building...'
-  ./autogen.sh
+  autoreconf --force --install --verbose
   LIBS="-lz" ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/bin \
     --sysconfdir=/etc \
+    --with-contrib="no" \
     --enable-ipv6
   make
 }
