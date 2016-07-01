@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mongoclient
+Comment=MongoDB Client
+Exec=/opt/mongoclient/Mongoclient
+Icon=/usr/share/mongoclient/img/icon.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Development;
