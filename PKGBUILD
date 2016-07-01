@@ -12,5 +12,5 @@ source=("http://httpredir.debian.org/debian/pool/main/liba/libarchive-zip-perl/l
 sha256sums=('d0428915e54b8b2236cc7ad48498c7c52d173ac22b7b41e7c6a7ce20d43dba1f')
 
 package() {
-	install -Dm 644 $srcdir/debian/crc32.1 $pkgdir/usr/share/man/man1/crc32.1.gz
+	install -Dm 644 $srcdir/debian/crc32.1 $pkgdir/usr/share/man/man1/crc32.1
 }
