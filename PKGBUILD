@@ -4,15 +4,15 @@
 
 _pkgname=procps-ng
 pkgname=procps-ng-classic
-pkgver=3.3.10
-pkgrel=2
+pkgver=3.3.11
+pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes (with classic top)'
 url='http://sourceforge.net/projects/procps-ng/'
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('ncurses' 'systemd')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/Production/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('a02e6f98974dfceab79884df902ca3df30b0e9bad6d76aee0fb5dce17f267f04')
+sha256sums=('e9493169a2d2adc0bc045538707310c8e877b385e4e296143b62607d2bb044ed')
 
 groups=('base')
 
