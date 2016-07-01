@@ -1,7 +1,7 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -29,6 +29,9 @@ package() {
 	cd "${srcdir}/urbackup-server-${pkgver}"
 
 	make DESTDIR=$pkgdir install
+
+	# Correct some file mode bits, thanks cfstras
+	chmod a+x "${pkgdir}/usr/share/urbackup/www/"{css,fonts,js,images,}
 
 	install -Dm644 "${srcdir}/urbackup-server-${pkgver}"/urbackup-server.service \
 		"${pkgdir}"/usr/lib/systemd/system/urbackup-server.service

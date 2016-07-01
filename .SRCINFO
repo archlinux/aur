@@ -1,7 +1,7 @@
 pkgbase = urbackup2-server
 	pkgdesc = Client Server backup system
 	pkgver = 2.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.urbackup.org/
 	install = urbackup.install
 	arch = i686
