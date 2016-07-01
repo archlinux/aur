@@ -32,7 +32,7 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'libtinfo5' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
+depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
 # use system's libclang on non-x86_64 architectures
 [[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
