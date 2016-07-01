@@ -1,6 +1,6 @@
 # Maintainer: Zygmunt Krynicki <me at zygoon dot pl>
 pkgname=snapd
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Service and tools for management of snap packages."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install=snapd.install
 source=("https://github.com/snapcore/$pkgname/archive/$pkgver.tar.gz" 
         'snapd.sh')
 noextract=()
-md5sums=('8aff95eed4ab350f1653d3b14856bb68'
+md5sums=('af789f427239a22e2d15d729cd94f95b'
          '1d841a1d09ba86945551dfc5c5658b2e')
 
 _gourl=github.com/snapcore/snapd
