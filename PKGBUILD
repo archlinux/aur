@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.8.0rc0.r595.g5681406
+pkgver=0.9.0.r807.gaa2cacd
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
