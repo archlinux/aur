@@ -3,7 +3,7 @@
 pkgname=('rust-git' 'rust-doc-git')
 pkgver=1.0.0.beta.2833.gb850046
 epoch=3
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe, concurrent, practical language from Mozilla."
 arch=('i686' 'x86_64')
 url="http://www.rust-lang.org/"
@@ -22,11 +22,9 @@ source=("git+https://github.com/rust-lang/rust.git"
 
         "git+https://github.com/rust-lang/rust.vim.git"
         "git+https://github.com/rust-lang/rust-mode.git"
-        "git+https://github.com/rust-lang/nano-config.git"
         "git+https://github.com/rust-lang/zsh-config.git")
 _noclone=(compiler-rt jemalloc libc llvm hoedown rust-installer)
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,9 +86,6 @@ package_rust-git() {
 
 	install --directory "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 	cp -a "$srcdir"/zsh-config/_* "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
-
-	install --directory "$pkgdir"/usr/share/nano/
-	cp -a "$srcdir"/nano-config/*.nanorc "$pkgdir"/usr/share/nano/
 
 	cd "$srcdir"/rust-mode
 	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
