@@ -11,7 +11,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 provides=('cython2=0.23')
 conflicts=('cython2')
-source=("http://cython.org/release/Cython-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/6a/91/d417a732e958b0f6f3d415d35915634120dc6c4707dca08a78322e29e72d/Cython-0.23.tar.gz#md5=63d472d0a9b3b39b9651f7bf568bb4a5")
 sha256sums=('9fd01e8301c24fb3ba0411ad8eb16f5d9f9f8e66b1281fbe7aba2a9bd9d343dc')
 
 package() {
