@@ -68,6 +68,8 @@ build() {
   CXXFLAGS=${CXXFLAGS/-pipe/}
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
+ export LD_PRELOAD=/usr/lib/libstdc++.so.6
+
  ${srcdir}/${_basedir}/configure --prefix=/usr/gcc53 --exec-prefix=/usr/gcc53 \
       --libdir=/usr/gcc53/lib --libexecdir=/usr/gcc53/lib \
       --mandir=/usr/gcc53/share/man --infodir=/usr/gcc53/share/info \
