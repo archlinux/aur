@@ -1,5 +1,5 @@
 pkgbase = gnome-terminal-kali
-	pkgdesc = The GNOME Terminal Emulator, with Kali Linux patch
+	pkgdesc = The GNOME Terminal Emulator with Kali Linux patches (background transparent, chunked resize & ...)
 	pkgver = 3.20.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
