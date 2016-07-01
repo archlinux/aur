@@ -3,8 +3,8 @@
 # AUR dependencies: esound
 
 pkgname=xine-lib-hg
-pkgver=r12707.b748a9de57de
-pkgrel=3
+pkgver=1.2.6.r12710.24fc93301077
+pkgrel=1
 pkgdesc="A multimedia playback engine (Mercurial version with all possible libs)"
 arch=('i686' 'x86_64')
 url="https://www.xine-project.org/"
@@ -27,7 +27,9 @@ pkgver() {
 	cd "${srcdir}/${pkgname}"
 	
 	# Mercurial        
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	printf "%s.r%s.%s" "$(hg log -r "." --template "{latesttag}")" \
+	                   "$(hg identify -n)" \
+	                   "$(hg identify -i)"
 }
 
 build() {
