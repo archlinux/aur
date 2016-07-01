@@ -2,7 +2,7 @@
 # Contributor: filip <fila pruda.com>
 
 pkgname=esets
-pkgver=4.0.10
+pkgver=4.5.5.0
 pkgrel=1
 pkgdesc="ESET Mail Security provides comercial Antivirus and Antispam"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ _password=
 
 source=("http://$_username:$_password@download.eset.com/download/unix/esets.$_arch.tgz.bin" "esets.service")
 
-[ "$CARCH" = "i686"   ] && md5sums=('d6040b2923e107d871cc7fabddecf05b' '8140d3acd8021b81adc67acf8a34ddc2')
-[ "$CARCH" = "x86_64" ] && md5sums=('bce9a4da472e36a08fba827675ba7416' '8140d3acd8021b81adc67acf8a34ddc2')
+[ "$CARCH" = "i686"   ] && md5sums=('cb5502826a20ab9028b8ec0142c66d7b' '8140d3acd8021b81adc67acf8a34ddc2')
+[ "$CARCH" = "x86_64" ] && md5sums=('7c83211cfacfe2c067964f82e9506bd9' '8140d3acd8021b81adc67acf8a34ddc2')
 
 
 
