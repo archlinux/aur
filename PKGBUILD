@@ -6,12 +6,12 @@
 _gemname=sass-rails
 pkgname=ruby-$_gemname
 pkgver=5.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Sass adapter for the Rails asset pipeline.'
 arch=(any)
 url='https://github.com/rails/sass-rails'
 license=(MIT)
-depends=(ruby ruby-railties ruby-sass-3.2 ruby-sprockets-rails ruby-sprockets)
+depends=(ruby ruby-railties ruby-sass ruby-sprockets-rails ruby-sprockets ruby-tilt)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
