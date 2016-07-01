@@ -1,32 +1,67 @@
 pkgbase = postgresql-beta
-	pkgdesc = Beta version of the PostgreSQL database (includes both server and libs)
-	pkgver = 9.1beta3
+	pkgver = 9.6beta2
 	pkgrel = 1
-	url = http://www.postgresql.org/developer/alpha
+	url = http://www.postgresql.org/
 	arch = i686
 	arch = x86_64
 	license = custom:PostgreSQL
-	makedepends = python2
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
 	makedepends = perl
-	depends = libxml2
-	depends = readline>=6.0
-	depends = openssl
-	depends = bash
-	provides = postgresql-libs=9.1beta3
-	provides = postgresql=9.1beta3
-	conflicts = postgresql-libs
-	conflicts = postgresql
-	options = !strip
-	backup = etc/conf.d/postgresql
-	backup = etc/pam.d/postgresql
-	source = http://ftp.de.postgresql.org/packages/databases/PostgreSQL/source/v9.1beta3/postgresql-9.1beta3.tar.bz2
-	source = postgresql.rc
-	source = postgresql.confd
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	source = http://ftp.postgresql.org/pub/source/v9.6beta2/postgresql-9.6beta2.tar.bz2
+	source = postgresql-run-socket.patch
 	source = postgresql.pam
-	md5sums = b40a59b229750505152c8f07caf30137
-	md5sums = 86e0161343ce80e544aba999f284bc88
-	md5sums = df6ddf9e2ab4700a3415f17c0f4f4172
+	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	md5sums = 23600491f6422cd34be443d679ff723b
+	md5sums = 75c579eed03ffb2312631f0b649175b4
 	md5sums = 96f82c38f3f540b53f3e5144900acf17
+	md5sums = d28e443f9f65a5712c52018b84e27137
+	md5sums = 5a7933453a572bbe12320b088272ee71
+	md5sums = 6eb990a98cdd2e385de2c53c288a388c
+	sha256sums = cf4e28263eeb855632545b778445e2591847df0587178b21e0346540c4c344eb
+	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = b48fe97f8e43ed0d2041d519119a4dafb70fcae72870951bf4fb7350fe169ac8
+	sha256sums = 40da687da4fb1f6b35f406dd0f48922065d8c905d678e2a27da05806f874b780
+
+pkgname = postgresql-beta-libs
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	provides = postgresql-client
+	provides = postgresql-libs
+	conflicts = postgresql-client
+	conflicts = postgresql-libs
+
+pkgname = postgresql-beta-docs
+	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs
+	conflicts = postgresql-docs
+	options = docs
 
 pkgname = postgresql-beta
+	pkgdesc = A sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql-beta-libs>=9.6beta2
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	optdepends = python: for PL/Python support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	provides = postgresql
+	conflicts = postgresql
+	options = staticlibs
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql
 
