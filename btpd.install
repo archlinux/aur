@@ -1,0 +1,13 @@
+post_install() {
+	getent passwd btpd > /dev/null 2>&1 || \
+	useradd -r -m -d /var/btpd -s /bin/nologin btpd
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd btpd > /dev/null 2>&1 || \
+	userdel -r btpd > /dev/null 2>&1
+}
