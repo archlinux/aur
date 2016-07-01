@@ -2,8 +2,8 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=frama-c
-_codename=Magnesium
-pkgver=20151002
+_codename=Aluminium
+pkgver=20160501
 pkgrel=1
 pkgdesc='Extensible platform dedicated to source-code analysis of C software.'
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ depends=('gtksourceview2' 'libgnomecanvas' 'zarith')
 makedepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba' 'ocaml')
 optdepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba')
 source=("http://frama-c.com/download/${pkgname}-${_codename}-${pkgver}.tar.gz")
-md5sums=('b7d761bdf0a58f3f8ec4242a3b67d50a')
-sha1sums=('5aa50a310bf35f9a4acc5931b0e3f119ff65eb71')
-sha256sums=('161f65bd66ed5fe10205462d534d1b387ac727666cd974ccd49d14a50492681e')
+md5sums=('e52271640aebcccab894ae038c9579aa')
+sha1sums=('9120171dc34683ed78f1f79f5de1ac97544702e1')
+sha256sums=('20ddc3112b1d0e0c36dcb4e0dca06f69eca5b2cb8c9c2ed7834433f16868e40b')
 
 build() {
   cd "$srcdir/$pkgname-$_codename-$pkgver"
