@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-sstp
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
@@ -14,7 +14,7 @@ options=()
 makedepends=('git' 'intltool' 'ppp>=2.4.6' 'gawk' 'python')
 provides=('networkmanager-sstp')
 source=("https://github.com/enaess/network-manager-sstp/archive/release-${pkgver}.tar.gz")
-sha1sums=('1e1f81a9046aa186c36e0f7b057fbe719642d479')
+sha1sums=('2d27f07a94f1c9dd66faa2503b653bea28a8a368')
 
 build() {
   pppd_version=(`pppd --version 2>&1 | awk '{print $3}'`)
