@@ -1,0 +1,14 @@
+pkgbase = postgrest
+	pkgdesc = REST API for any Postgres database
+	pkgver = 0.3.2.0
+	pkgrel = 1
+	url = https://github.com/begriffs/postgrest
+	arch = x86_64
+	license = MIT
+	depends = postgresql-libs
+	provides = postgrest
+	source = https://github.com/begriffs/postgrest/releases/download/v0.3.2.0/postgrest-0.3.2.0-ubuntu.tar.xz
+	md5sums = 391c8e6a9a01b5a6723852686571e5c0
+
+pkgname = postgrest
+
