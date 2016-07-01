@@ -11,10 +11,10 @@ license=('GPL3')
 depends=('openbox')
 provides=("${pkgname}=${pkgver}")
 
-# Mirror
-# https://www.dropbox.com/s/k9k98zsrcjw7ue7/66397-Surreal.tar.bz2
+# Using mirror, original source returns HTTP 403
+# http://box-look.org/CONTENT/content-files/66397-Surreal.tar.bz2
 source=(
-	'http://box-look.org/CONTENT/content-files/66397-Surreal.tar.bz2'
+	'https://www.dropbox.com/s/k9k98zsrcjw7ue7/66397-Surreal.tar.bz2'
 	'osd_tweaks.patch'
 )
 sha512sums=(
@@ -23,12 +23,12 @@ sha512sums=(
 )
 
 prepare() {
-	cd ${srcdir}/Surreal
-	patch openbox-3/themerc ../osd_tweaks.patch
+	cd "${srcdir}"/Surreal
+	patch -Np1 < ../osd_tweaks.patch
 }
 
 package() {	
 	# Copy theme
-	mkdir -p ${pkgdir}/usr/share/themes
-	cp -R ${srcdir}/Surreal ${pkgdir}/usr/share/themes
+	mkdir -p "${pkgdir}"/usr/share/themes
+	cp -R "${srcdir}"/Surreal "${pkgdir}"/usr/share/themes
 }
