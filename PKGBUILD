@@ -1,6 +1,6 @@
 # Maintainer:  Quint Guvernator <quint@guvernator.net>
 # Contributor: Marq Schneider   <queueRAM@gmail.com>
-# Contributor: Alive 4ever      <alive4ever@live.com>
+# Contributor: Alif             <alive4ever at live dot com>
 
 pkgname=btpd
 pkgver=0.16
