@@ -8,12 +8,12 @@
 pkgbase=libappindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp")
 pkgver=12.10.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Allow applications to export a menu into the Unity Menu bar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
 license=('LGPL')
-makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-3'
+makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
              'libdbusmenu-gtk2' 'libdbusmenu-gtk3' 'libindicator-gtk2'
              'libindicator-gtk3' 'mono' 'perl-xml-libxml' 'pygtk' 'vala')
 options=('!emptydirs')
@@ -73,8 +73,8 @@ package_libappindicator-gtk3() {
 }
 
 package_libappindicator-sharp() {
-    depends=("${pkgbase}-gtk3" 'gtk-sharp-3')
+    depends=("${pkgbase}-gtk2" 'gtk-sharp-2')
 
-    cd ${pkgbase}-${pkgver}
+    cd ${pkgbase}-gtk2-${pkgver}
     make -j1 -C bindings/mono DESTDIR="${pkgdir}" install
 }
