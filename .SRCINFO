@@ -1,0 +1,18 @@
+pkgbase = httpie-unixsocket-git
+	pkgdesc = UNIX socket transport plugin for HTTPie
+	pkgver = r10.4fd1413
+	pkgrel = 1
+	url = https://github.com/msabramo/httpie-unixsocket
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = httpie
+	depends = python-requests-unixsocket
+	provides = httpie-unixsocket
+	conflicts = httpie-unixsocket
+	source = git+https://github.com/msabramo/httpie-unixsocket.git
+	md5sums = SKIP
+
+pkgname = httpie-unixsocket-git
+
