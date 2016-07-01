@@ -1,7 +1,7 @@
 # Maintainer: White-Oak <lpzhelud@gmail.com>
 pkgname=servo-latest
 pkgver=20160701
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
 url="https://servo-builds.s3.amazonaws.com/index.html"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 source=("https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz")
 
 prepare(){
-	gendesk -f --pkgname "Servo" --pkgdesc "$pkgdesc" --exec '/opt/servo/runservo.sh'
+	gendesk -f --pkgname "Servo" --pkgdesc "$pkgdesc" --exec '/opt/servo/servo -w -b --pref dom.mozbrowser.enabled --pref dom.forcetouch.enabled --pref shell.builtin-key-shortcuts.enabled=false /opt/servo/build/browserhtml-3e3805f69808f24d/out/index.html'
 }
 
 pkgver(){
