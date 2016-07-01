@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libraqm-git
-pkgver=v0.1.0.r25.gf45042d
-pkgrel=2
+pkgver=0.1.0.r28.gadb5ea2
+pkgrel=1
 pkgdesc="A library that encapsulates the logic for complex text layout"
 arch=('i686' 'x86_64')
 url="https://github.com/HOST-Oman/libraqm"
@@ -17,10 +17,15 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	
-	# Git, with or without tags available
-	# Using the most recent un-annotated tag reachable from the last commit: 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-	  
+	# Git, tags available
+	
+	_tmppkgver=$(printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')")
+	
+	if [ "$(echo ${_tmppkgver} | head -c1)" = "v" ]; then
+	    echo "$_tmppkgver" | cut -c2-
+	else
+	    echo "$_tmppkgver"
+	fi
 }
 
 build() {
