@@ -1,7 +1,7 @@
 pkgbase = cvs-feature
 	pkgdesc = Concurrent Versions System - a source control system ("feature" release series, with Debian patches)
 	pkgver = 1.12.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cvs.nongnu.org/
 	arch = i686
 	arch = x86_64

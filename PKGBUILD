@@ -6,7 +6,7 @@
 
 pkgname=cvs-feature
 pkgver=1.12.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Concurrent Versions System - a source control system (\"feature\" release series, with Debian patches)"
 arch=(i686 x86_64)
 provides=(cvs)
