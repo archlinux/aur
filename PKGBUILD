@@ -1,66 +1,25 @@
-# Maintainer: jfperini <@jfperini>
+# Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: jfperini <@jfperini>
-
 pkgname=dukto
-pkgver=R6+r111
+pkgver=R6
 pkgrel=1
 pkgdesc="A simple, fast and multi-platform file transfer tool for LAN users."
-arch=('any')
-url="http://sourceforge.net/projects/dukto"
-license=('GPLv2')
-depends=('qt5-quick1' 'qt5-script' 'qt5-xmlpatterns')
+arch=('i686' 'x86_64')
+url="https://sourceforge.net/projects/dukto"
+license=('GPL2')
+depends=('qt4')
 makedepends=('subversion')
-# conflicts=('')
-source=("$pkgname"::'svn+http://svn.code.sf.net/p/dukto/code/trunk')
+source=(dukto::'svn+http://svn.code.sf.net/p/dukto/code/trunk#revision=109')
 sha256sums=('SKIP')
 
-pkgver() {
-
-      cd "$srcdir/$pkgname"
-
-      local ver="$(svnversion)"
-      printf "R6+r%s" "${ver//[[:alpha:]]}"
-
+build() {
+	cd dukto
+	qmake-qt4
+	make
 }
 
-build()
-{
-
-	    cd "$srcdir/$pkgname"
-
-	    msg2 "  -> Build program..."
-	    qmake-qt4 $pkgname.pro
-	    make
-
+package() {
+	cd dukto
+	install -Dm755 dukto "$pkgdir/usr/bin/dukto"
+	make INSTALL_ROOT="$pkgdir" install_desktop install_icon
 }
-
-package (){
-  
-	cd "$srcdir/$pkgname"
-
-    	msg2 "  -> Installing program..."
-  	  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-
-    	msg2 "  -> Installing icons..."
-  	  install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
-    	msg2 "  -> Installing .desktop file..."
-    	echo "[Desktop Entry]
-    	Version=1.0
-    	Encoding=UTF-8
-    	Type=Application
-	    Name=Dukto
-    	GenericName=Transfer files across the LAN
-    	Comment=Transfer files across the LAN
-    	Exec=$pkgname
-    	Icon=$pkgname.png
-    	StartupNotify=true
-    	Terminal=false 
-    	Categories=Network;Application;" | tee "$pkgname.desktop"
-    	echo -e "...Ok.\n"
-
-    	install -Dm644  "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-}
-
-# vim: ts=2 sw=2 et:
