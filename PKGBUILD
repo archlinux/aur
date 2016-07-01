@@ -25,7 +25,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  install -D -m644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/user/$pkgname.service
+  install -D -m644 $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
   install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
 }
 
