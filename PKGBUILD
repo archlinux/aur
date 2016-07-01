@@ -1,10 +1,11 @@
-# Maintainer : jyantis <yantis@yantis.net>
+# Maintainer :  Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Contributor: jyantis <yantis@yantis.net>
 # Contributor: jjdanimoth <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="emerald-themes"
 _pkgver=0.8.12
-_micro=""
+_micro=".1"
 
 pkgname=emerald-themes
 pkgver="${_pkgver}${_micro}"
@@ -31,4 +32,4 @@ package() {
   make DESTDIR="${pkgdir}" install 
 }
 
-sha256sums=('b9b2e4bb10765d8a242d54698d07a48b64be6156b8a1990d4edd6b2ebb82fce4')
+sha256sums=('3ea1635e93b4713e1f7878528d08349f88566136350b10e8bc4b7299a13a6ec8')
