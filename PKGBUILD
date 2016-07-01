@@ -2,7 +2,7 @@
 
 pkgname=cruiser
 pkgver=1.2.7
-pkgrel=2
+pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
 url="http://wiki.openstreetmap.org/wiki/Cruiser"
