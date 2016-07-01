@@ -4,8 +4,8 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=4.9.1
-pkgrel=4
+pkgver=4.10.0
+pkgrel=5
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
 url='http://www.itk.org/'
@@ -21,8 +21,8 @@ optdepends=('python2: build python wrapping'
             'castxml-git: for wrapping and docs'
             'clang: for swig')
 makedepends=('cmake')
-source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:3}/InsightToolkit-${pkgver}.tar.xz")
-sha512sums=('6c7c177e6ae64b653e9dfad52028d3d104d9a10e5921b6b003241c76c2e73186be2576b7d64385e7b7a2e94e912ced9c99dd282df570fb0c4707b05e9f9da226')
+source=("http://downloads.sourceforge.net/project/itk/itk/${pkgver:0:4}/InsightToolkit-${pkgver}.tar.xz")
+sha512sums=('a564f9910548c66741d3a5e54ac16b694374112296bb1055762f076f5184486bcba02aacbe6a14c16baabab86e8922ae07affba5852799d371f0a37b709fcd20')
 
 _usepython=false
 
@@ -49,6 +49,7 @@ build() {
     $( $_usepython && echo "-DModule_ITKReview:BOOL=OFF") \
     $( $_usepython && echo "-DITK_USE_SYSTEM_SWIG:BOOL=ON") \
     $( $_usepython && echo "-DITK_USE_SYSTEM_CASTXML:BOOL=ON") \
+    -DCMAKE_CXX_FLAGS:STRING="-std=c++98" \
     -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
