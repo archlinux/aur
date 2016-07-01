@@ -8,6 +8,6 @@ post_upgrade() {
 }
 
 post_remove() {
-	getent passwd btpd > /dev/null 2>&1 || \
+	getent passwd btpd > /dev/null 2>&1 && \
 	userdel -r btpd > /dev/null 2>&1
 }
