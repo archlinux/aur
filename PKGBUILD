@@ -1,7 +1,7 @@
 # Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
 # Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-ssl
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="http://savonet.sourceforge.net/"
 license=('custom')
 depends=('openssl')
 makedepends=('ocaml' 'ocaml-findlib' 'autoconf')
-source=(https://github.com/savonet/${pkgname}/archive/${pkgver}.tar.gz)
+source=(https://github.com/savonet/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 options=(!libtool !strip zipman !makeflags staticlibs)
-md5sums=('5449389dfefac721d28144665db1643f')
+md5sums=('404f71d33885c985a8ff579996a5cda8')
 
 
 build() {
