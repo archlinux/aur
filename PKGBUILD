@@ -41,5 +41,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
