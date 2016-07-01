@@ -1,9 +1,10 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
+# Contributer: David McInnis <davidm@eagles.ewu.ewu>
 
 pkgbase="python-keras"
 pkgname=("python-keras" "python2-keras")
 _pkgname="keras"
-pkgver="1.0.4"
+pkgver="1.0.5"
 pkgrel="1"
 pkgdesc="Theano-based Deep Learning library (convnets, recurrent neural networks, and more)"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-
             )
 changelog="ChangeLog"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fchollet/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('64abdd31dabb1abf704b922412e190fde8fe6777d1ff6396e48e75ff51024364')
+sha256sums=('dd4c3d343a79bfa8f8fbc956eca30a480fd93be9fbbcc27d5851c94a1ad22016')
 
 prepare() {
   cd "$srcdir/"
@@ -40,12 +41,14 @@ package_python2-keras() {
   depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-theano' 'python2-h5py')
   cd "$srcdir/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python-keras() {
   depends=('python' 'python-numpy' 'python-scipy' 'python-theano' 'python-h5py')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 # vim:set ts=2 sw=2 et:
