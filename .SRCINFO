@@ -10,7 +10,9 @@ pkgbase = rtl8192eu
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=a322c84595b526fc27b979109998188b4ff8042e
-	md5sums = SKIP
+	source = fix.patch
+	sha256sums = SKIP
+	sha256sums = 582f8e8f8bd513b598ada3a1ac625f188fbf313cddf018a440ca4cd8aaf9964c
 
 pkgname = rtl8192eu
 

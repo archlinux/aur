@@ -8,21 +8,20 @@ url="https://github.com/Mange/rtl8192eu-linux-driver"
 license=('GPL')
 depends=("dkms")
 makedepends=('linux-headers' 'git')
-source=("git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=a322c84595b526fc27b979109998188b4ff8042e")
+source=("git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=a322c84595b526fc27b979109998188b4ff8042e" "fix.patch")
+sha256sums=("SKIP" "582f8e8f8bd513b598ada3a1ac625f188fbf313cddf018a440ca4cd8aaf9964c")
 install=${pkgname}.install
-md5sums=('SKIP')
 
 build() {
-	
 	cd "rtl8192eu-linux-driver"
-	make
+	make -j`cat /proc/cpuinfo |grep "processor"|wc -l`
 }
 prepare(){
-	cd "rtl8192eu-linux-driver"
-	sed -i '1341i\	install -d $(MODDESTDIR)' Makefile
-	sed -i 's/$(MODDESTDIR)/$(DESTDIR)$(MODDESTDIR)/g' Makefile
+	cd "rtl8192eu-linux-driver" 
+	patch Makefile<../fix.patch
 }
 package() {
+	mkdir -p $pkgdir/usr/lib/modules/`uname -r`/kernel/drivers/net/wireless
 	cd "rtl8192eu-linux-driver"
-	make DESTDIR="$pkgdir/usr/" install
+	make DESTDIR="$pkgdir/usr" install
 }

@@ -1,0 +1,12 @@
+0a1
+> EXTRA_CFLAGS += --std=gnu90
+1339a1341
+> 	install -d $(DESTDIR)$(MODDESTDIR)
+1341c1343
+< 	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
+---
+> 	install -D -p -m 644 $(MODULE_NAME).ko  $(DESTDIR)$(MODDESTDIR)
+1345c1347
+< 	rm -f $(MODDESTDIR)/$(MODULE_NAME).ko
+---
+> 	rm -f $(DESTDIR)$(MODDESTDIR)/$(MODULE_NAME).ko
