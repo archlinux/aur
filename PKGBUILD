@@ -1,19 +1,19 @@
-# Maintainer: Thiago Yukio Kikuchi Oliveira <stratust@gmail.com>
+# Maintainer: Grey Christoforo <first name @ last name .net>
 
 pkgname=cufflinks
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples.."
 arch=("x86_64")
-url="http://cufflinks.cbcb.umd.edu"
+url="http://cole-trapnell-lab.github.io/projects/cufflinks/"
 license=('Artistic')
 depends=('boost' 'eigen3' 'python2' 'samtools' 'perl')
-source=(http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('9a5ba7a7710cd864932cf205c17851f0')
+source=(https://github.com/cole-trapnell-lab/${pkgname}/archive/v${pkgver}.tar.gz)
+md5sums=('80328ff4169f2778c0728a4795da85e2')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  # cufflinks use python2 but archlinux uses python3 as default python
+  # cufflinks uses python2 but archlinux uses python3 as default python
   perl -i -pne '$_ =~ s/python/python2/ if $_ =~ /^#!\/usr/' src/cuffmerge
 
   export EIGEN_CPPFLAGS="-I/usr/include/eigen3"
