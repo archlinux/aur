@@ -4,7 +4,7 @@
 
 pkgname=saleae-logic-beta
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed USB logic analyzer."
 arch=('i686' 'x86_64')
 url="http://www.saleae.com/"
@@ -17,7 +17,7 @@ case $CARCH in
   'i686')
     source=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
-            "http://kde-look.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+            "133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
     sha256sums=('94d675f4b33a265ebfffc9f77a2c7228e6e49bda274d1d22df4ec8c70e90d9b7'
              'b862b10c75d57010b15663e0f26976ec7a1fc0d7a5a2d4e299b17c5a06185d18'
@@ -27,7 +27,7 @@ case $CARCH in
   'x86_64')
     source=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-bit).zip"
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
-            "http://kde-look.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+            "133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
     sha256sums=('07121e7833a14cae929b5d84e0faa56e77f1e659381976b4f6f7b068dd157dea'
              'b862b10c75d57010b15663e0f26976ec7a1fc0d7a5a2d4e299b17c5a06185d18'
