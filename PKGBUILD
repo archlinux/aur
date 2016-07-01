@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon-git
 pkgver=20160630
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
 url="http://ring.cx"
@@ -26,7 +26,7 @@ build() {
 
   msg2 'Building...'
   ./autogen.sh
-  ./configure \
+  LIBS="-lz" ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/bin \
