@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon
-pkgver=2.1.0.r532.gf86f2a1
-pkgrel=2
+pkgver=2.1.0.r563.g41e032c
+pkgrel=1
 epoch=1
 pkgdesc="A secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -10,9 +10,10 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp')
+         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp'
+         'pjproject-savoirfairelinux')
 makedepends=('git' 'boost' 'msgpack-c')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=f86f2a179ec3bb7fd0680b8509b0ebecb3dad91a")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=41e032c81a9cdef457d2ead3767abbd6bcee2a16")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,16 +24,7 @@ pkgver() {
 build() {
   cd "${pkgname}"
 
-  msg2 'Building pjproject...'
-  # Build the customised version of pjproject (heavily patched...)
-  mkdir -p contrib/native
-  cd contrib/native
-  ../bootstrap
-  make .pjproject
-
-  cd ../..
   msg2 'Building...'
-  # Build dring
   ./autogen.sh
   ./configure \
     --prefix=/usr \
