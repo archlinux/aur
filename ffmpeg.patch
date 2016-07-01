@@ -1,16 +1,3 @@
-diff --git a/graphic.cc b/graphic.cc
-index 419d7df..ec5acf1 100644
---- a/graphic.cc
-+++ b/graphic.cc
-@@ -55,7 +55,7 @@ Graphic& Graphic::Equalize() {
-     return std::min(255, std::max(0, static_cast<int>(v * kBins)));
-   };
- 
--  // Count the occurrence of each color into bins.
-+  // Count the occurence of each color into bins.
-   for (int y = 0; y < height_; ++y) {
-     for (int x = 0; x < width_; ++x) {
-       const Pixel& pixel = Get(x, y);
 diff --git a/hiptext.cc b/hiptext.cc
 index a23fa02..f21c483 100644
 --- a/hiptext.cc
@@ -30,19 +17,6 @@ index a23fa02..f21c483 100644
      artiste.PrintMovie(Movie(path));
    } else {
      fprintf(stderr, "Unknown Filetype: %s\n", extension.data());
-diff --git a/macterm.cc b/macterm.cc
-index 1042a9a..20ba55f 100644
---- a/macterm.cc
-+++ b/macterm.cc
-@@ -99,7 +99,7 @@ MactermColor::MactermColor(const Pixel& top, const Pixel& bot) {
- // Terminal.app on Mac OS X is interesting. First of all, it doesn't follow the
- // xterm-256color standard, but that's probably for the best since xterm's
- // palette was obviously chosen by engineers rather than designers. The problem
--// is I'm not quite sure what Terminal.app is doing. It slightly adjusts the
-+// is I'm not quite sure what Terminal.app is doing. It slightly ajusts the
- // color when displaying foregrounds and backgrounds but I'm not sure what
- // formula they're using to do it. They also seem to slightly alter colors
- // depending on the terminal theme. The following colors are what I scraped
 diff --git a/movie.cc b/movie.cc
 index 9ad9368..4fb6b73 100644
 --- a/movie.cc
@@ -74,29 +48,3 @@ index 9ad9368..4fb6b73 100644
    CHECK_GE(prep, 0) << "Failed to prepare RGB buffer.";
    LOG(INFO) << "RGB dimensions: " << width_  << "x" << height_;
  }
-diff --git a/pixel.cc b/pixel.cc
-index eb52f61..2a6ecdf 100644
---- a/pixel.cc
-+++ b/pixel.cc
-@@ -166,7 +166,7 @@ Pixel& Pixel::Mix(const Pixel& other) {
- 
- // http://www.springerreference.com/docs/html/chapterdbid/212829.html
- static double A(double c) {
--  // This is K/S part of the equations on that website.
-+  // This is K/S part of the the equations on that website.
-   // a = (1 - c)^2 / (2c)
-   return std::pow(1.0 - c, 2.0) / (2.0 * max(c, 1e-6));
- }
-diff --git a/xterm256.cc b/xterm256.cc
-index 0db765e..1622255 100644
---- a/xterm256.cc
-+++ b/xterm256.cc
-@@ -6,7 +6,7 @@
- #include <glog/logging.h>
- #include "pixel.h"
- 
--DEFINE_bool(fast, false, "Use O(1) xterm256 approximate color quantizer.");
-+DEFINE_bool(fast, false, "Use O(1) xterm256 aproximate color quantizer.");
- 
- static const uint8_t g_cube_steps[] = {0, 95, 135, 175, 215, 255};
- 
