@@ -4,7 +4,7 @@
 
 _plugin_name=ghostery
 pkgname=firefox-extension-$_plugin_name
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Plugin for Firefox which detects and/or blocks website trackers"
 arch=('any')
@@ -14,7 +14,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://addons.mozilla.org/firefox/downloads/latest/9609/addon-9609-latest.xpi"
         "ghostery.license")
-sha1sums=('20aa4bef1c21d35172eee1a0f573147c4fd43e90'
+sha1sums=('42a261f3276f8727d64dd6f191d45d669549fad0'
           'cf0f4f850554edfd907f07ce3a6451cbc5637e68')
 noextract=('addon-9609-latest.xpi')
 
