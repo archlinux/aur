@@ -1,6 +1,6 @@
 post_install() {
 	getent passwd btpd > /dev/null 2>&1 || \
-	useradd -r -m -d /var/btpd -s /bin/nologin btpd
+	useradd -r -m -d /var/lib/btpd -s /bin/nologin btpd
 }
 
 post_upgrade() {
