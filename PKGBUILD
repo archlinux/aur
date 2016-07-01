@@ -1,14 +1,15 @@
 # Maintainer: M0Rf30
 
-pkgname=namecoin-core
-pkgver=0.12.0
-pkgrel=2
+pkgname=namecoin-core-git
+pkgver=r11557.38d71f5
+pkgrel=1
 pkgdesc="namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://namecoin.org"
 depends=('boost'
-         'boost-libs'
-         'zeromq')
+         'libevent'
+         'zeromq'
+         'miniupnpc')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -17,9 +18,8 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/namecoin/namecoin-core/tar.gz/v$pkgver
+source=("${pkgname%-core}::git+https://github.com/namecoin/namecoin-core.git"
         namecoin.conf
         namecoin.logrotate
         namecoin.service
@@ -30,8 +30,13 @@ provides=('namecoin-cli' 'namecoin-daemon' 'namecoin-tx')
 conflicts=('namecoin-cli' 'namecoin-daemon' 'namecoin-qt' 'namecoin-tx')
 install=namecoin.install
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "$srcdir/${pkgname}"
 
   msg2 'Building...'
   ./autogen.sh
@@ -50,7 +55,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "$srcdir/${pkgname}"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
@@ -82,8 +87,8 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-md5sums=('887e618fa025e98e1c7d6f88facadee2'
-         '85dbcf29d1dade4df781a95c6b502220'
-         '2ca92d94c329bf54b8df70f22c27ba98'
-         'd4694928d3e62f9215ce641663564eee'
-         '1f3e4182d57987e4f42962cd2da94661')
+sha256sums=('SKIP'
+            '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
+            '45f70de4b665fc598420494b5af4982e737f3353b20b0a7c0829e35610aadfc9'
+            '88bec6b0289babad8bf53669a9c9caea1f6890e824fa0482da7a9506cd0ffd8e'
+            '2ba4020a9d696c485d69446ceb72a9dd41a0af6dda8d07b9d521426913b41478')

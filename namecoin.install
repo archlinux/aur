@@ -7,12 +7,14 @@ post_install() {
   for _dir in /srv/namecoin; do
     _is_btrfs "$_dir" && _disable_cow "$_dir"
   done
+  mkdir -p /srv/namecoin
   chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
   printf "%b\n" "$namecoin"
 }
 
 post_upgrade() {
   _mkuser
+  mkdir -p /srv/namecoin
   chown -R $_bc_user:$_bc_group /etc/namecoin /srv/namecoin
   printf "%b\n" "$namecoin"
 }
@@ -94,28 +96,28 @@ read -d '' namecoin <<'EOF'
 ########################################################################
 ########################################################################
 ##                                                                    ##
-##  namecoin Core                                                      ##
+##  namecoin Core                                                     ##
 ##  ____________                                                      ##
 ##                                                                    ##
-##  To start namecoin-core:                                            ##
+##  To start namecoin-core:                                           ##
 ##                                                                    ##
-##      # systemctl start namecoin                                     ##
+##      # systemctl start namecoin                                    ##
 ##                                                                    ##
-##  To communicate with namecoin-core as a normal user:                ##
+##  To communicate with namecoin-core as a normal user:               ##
 ##                                                                    ##
-##      $ mkdir -p ~/.namecoin                                         ##
-##      $ cat > ~/.namecoin/namecoin.conf <<'EOF'                       ##
+##      $ mkdir -p ~/.namecoin                                        ##
+##      $ cat > ~/.namecoin/namecoin.conf <<'EOF'                     ##
 ##      rpcconnect=127.0.0.1                                          ##
-##      rpcport=8332                                                  ##
-##      rpcuser=namecoin                                               ##
+##      rpcport=8336                                                  ##
+##      rpcuser=namecoin                                              ##
 ##      rpcpassword=secret                                            ##
 ##      EOF                                                           ##
 ##                                                                    ##
-##      $ namecoin-cli getmininginfo                                   ##
+##      $ namecoin-cli getmininginfo                                  ##
 ##                                                                    ##
-##  Config:        /etc/namecoin/namecoin.conf                          ##
-##  Blockchain:    /srv/namecoin                                       ##
-##  Documentation: /usr/share/doc/namecoin                             ##
+##  Config:        /etc/namecoin/namecoin.conf                        ##
+##  Blockchain:    /srv/namecoin                                      ##
+##  Documentation: /usr/share/doc/namecoin                            ##
 ##                                                                    ##
 ########################################################################
 ########################################################################
