@@ -1,0 +1,8 @@
+post_install() {
+	echo " --> To enable/use, follow the steps here:"
+	echo " --> https://github.com/vilemnovak/blendercam/wiki/Using-Blendercam-from-github#enable-blendercam-add-on"
+}
+
+post_upgrade() {
+  post_install
+}
