@@ -4,7 +4,7 @@
 
 pkgname=xine-lib-hg
 pkgver=r12707.b748a9de57de
-pkgrel=2
+pkgrel=3
 pkgdesc="A multimedia playback engine (Mercurial version with all possible libs)"
 arch=('i686' 'x86_64')
 url="https://www.xine-project.org/"
@@ -15,8 +15,7 @@ depends=(
     'ffmpeg' 'a52dec' 'faad2' 'gdk-pixbuf2' 'libjpeg-turbo' 'libdca' 'libmad'
     'libmodplug' 'libmpeg2' 'libmpcdec' 'libmng' 'libvpx' 'freetype2' 'fontconfig'
     'xorg-server-devel' 'alsa-lib' 'esound' 'jack' 'pulseaudio' 'libcaca' 'sdl'
-    'libxcb' 'xcb-util-image' 'imagemagick' 'flac' 'speex' 'libtheora' 'libvorbis'
-    'wavpack' 'libxv'
+    'libxcb' 'flac' 'speex' 'libtheora' 'libvorbis' 'wavpack' 'libxv'
 )
 makedepends=('mercurial')
 provides=('xine-lib')
@@ -91,13 +90,17 @@ build() {
 	        --without-linux-path \
 	        --without-libstk \
 	        --with-sdl \
-	        --with-xcb \
-	        --with-imagemagick \
+	        --without-xcb \
+	        --without-imagemagick \
 	        --with-libflac \
 	        --with-speex \
 	        --with-theora \
 	        --with-vorbis \
 	        --with-wavpack
+	        
+	        # NOTE:
+	        # (1): "--enable-vaapi" and "--with-xcb" doesn't work. Disabled
+	        # (2): "--with-imagemagick" doesn't work with ImageMagick 7 (and imagemagick git). Disabled.
 	        
 	        # TODO:
 	        # --enable-dha-kmod
@@ -105,9 +108,6 @@ build() {
 	        # --with-fusionsound
 	        # --with-linux-path=/usr/lib/modules/$(uname -r)/build
 	        # --with-libstk
-	        
-	        # NOTE:
-	        # --enable-vaapi doesn't work
 	
 	make
 }
