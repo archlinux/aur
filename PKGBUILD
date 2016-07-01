@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gdnsd
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="an Authoritative-only DNS server which does geographic balancing, redirection, weighting, and service-state-conscious failover at the DNS layer"
 arch=(i686 x86_64)
 url="http://gdnsd.org/"
@@ -21,8 +21,8 @@ build() {
 	./configure \
  	  --prefix=/usr \
 	  --sbindir=/usr/bin \
-	  --localstatedir=/var/run \
-	  --sysconfdir=/etc \
+	  --localstatedir=/ \
+	  --libexecdir=/usr/lib \
 	  --with-systemdsystemunitdir=/usr/lib/systemd/system
 	  
 	make
@@ -36,5 +36,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	rm -rf $pkgdir/lib
 }
 
