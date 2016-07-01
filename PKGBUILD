@@ -3,7 +3,7 @@
 pkgbase=wireguard
 pkgname=(wireguard-dkms wireguard-tools)
 pkgver=0.0.20160630
-pkgrel=1
+pkgrel=2
 pkgdesc='next generation secure network tunnel'
 arch=('x86_64' 'i686')
 url='http://www.wireguard.io/'
