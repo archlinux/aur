@@ -4,7 +4,7 @@
 
 pkgname=xine-lib-hg
 pkgver=r12707.b748a9de57de
-pkgrel=1
+pkgrel=2
 pkgdesc="A multimedia playback engine (Mercurial version with all possible libs)"
 arch=('i686' 'x86_64')
 url="https://www.xine-project.org/"
@@ -31,14 +31,10 @@ pkgver() {
 	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
+build() {
 	cd "${srcdir}/${pkgname}"
 	
 	./autogen.sh
-}
-
-build() {
-	cd "${srcdir}/${pkgname}"
 	
 	./configure \
 	        --prefix=/usr \
