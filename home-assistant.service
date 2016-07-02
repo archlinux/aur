@@ -8,6 +8,7 @@ User=hass
 Group=hass
 
 ExecStart=/usr/bin/hass --config /var/lib/hass/ --log-rotate-days 7
+RestartForceExitStatus=100
 
 [Install]
 WantedBy=multi-user.target
