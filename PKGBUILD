@@ -5,7 +5,7 @@ _lang=hu
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Hungarian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('fd9f670970f66361a8eb12f5c71cd3e8784d24537a037a3c831b75cefc66c5ad4dd14df588d2bb11f54290e0ac267124e631b4fb87aeecaff944bdc4e3551910')
+sha512sums=('928bcf5102306d9011a64bac57b7c035334521415fd9ef167c874bcdd3906a900f44d8fe73efeafa2a68c6ec3318d7320128eef38b94fe5c0326f6e5bb903d86')
