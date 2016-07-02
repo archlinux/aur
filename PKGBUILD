@@ -1,13 +1,12 @@
 pkgname=zxfer
-pkgver=0.9.9
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="transfer ZFS filesystems, snapshots, properties, files and directories"
 arch=('any')
 url="https://code.google.com/p/zxfer"
 license=('BSD')
 depends=('zfs')
-source=("https://zxfer.googlecode.com/files/zxfer-${pkgver}.tar.bz2")
-md5sums=('3a2a52de6ac4a8b1565d875ccde90f2d')
+source=("https://github.com/allanjude/zxfer/archive/${pkgver}.tar.gz")
 
 package() {
     cd "$srcdir/zxfer-${pkgver}"
@@ -19,3 +18,6 @@ package() {
     install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/zxfer/COPYING"
     install -D -m644 "CHANGELOG.txt" "$pkgdir/usr/share/doc/zxfer/CHANGELOG.txt"
 }
+md5sums=('11b0402782505cd7ee8982ad59297280')
+sha1sums=('54145499afab815d126ca8c75a714c308477de4e')
+sha256sums=('eb5ef76fedcdbb551ada990e4355fcd4ecb65a0a223c14a2b4ac69e49cf0a974')
