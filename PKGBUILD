@@ -6,7 +6,7 @@ _lang=hi-in
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Hindi language pack for Iceweasel (India)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('001125c9f979795b95815db88bf3a3ffe8cdc67366161f5bb87341e94de66bc3a85808bdd3f579ce90df077fec806daf2f8c58f6bc5a30f42457b1452b2eb751')
+sha512sums=('5ae0dfe25f2b5259b006f0db04a9a7fff07984e7d3a8b8435a93a14c926b5890c4618c8e34e83fd15a1003532413d4e03ac20120cfd90457274ff7511b20a154')
