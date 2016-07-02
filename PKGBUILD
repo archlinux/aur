@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=16.06.14
-tag="46b24ac4836ef3c6d99451faab3edfd929a31aec"
+pkgver=16.07.0
+tag="f713fb753c7221dc8e6d729229b6080bdf9f4d66"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64' 'armv7l')
@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl')
 makedepends=('qt5-tools')
 source=("http://downloads.sourceforge.net/project/${pkgname}/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('44db7ea25738ba2d7e7612c39bc95c4c0d29e1dfa8abb1295d62fc5f8fb19bf4')
+sha256sums=('844c316cab50e96f287e0263a5ed7416d478d467994ada63f47db9b29c236f6e')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -28,29 +28,18 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 
-    install -D -m 0755 QOwnNotes $pkgdir/usr/bin/QOwnNotes
-    install -D -m 0644 QOwnNotes.desktop $pkgdir/usr/share/applications/QOwnNotes.desktop
-    install -D -m 0644 images/icons/128x128/QOwnNotes.png $pkgdir/usr/share/pixmaps/QOwnNotes.png
-    install -D -m 0644 images/icons/16x16/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/16x16/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/24x24/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/24x24/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/32x32/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/32x32/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/48x48/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/48x48/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/64x64/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/64x64/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/96x96/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/96x96/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/128x128/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/128x128/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/256x256/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/256x256/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/512x512/QOwnNotes.png $pkgdir/usr/share/icons/hicolor/512x512/apps/QOwnNotes.png
-    install -D -m 0644 images/icons/scalable/QOwnNotes.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg
-    install -D -m 0644 languages/QOwnNotes_en.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_en.qm
-    install -D -m 0644 languages/QOwnNotes_de.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_de.qm
-    install -D -m 0644 languages/QOwnNotes_fr.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_fr.qm
-    install -D -m 0644 languages/QOwnNotes_pl.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_pl.qm
-    install -D -m 0644 languages/QOwnNotes_zh.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_zh.qm
-    install -D -m 0644 languages/QOwnNotes_ru.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_ru.qm
-    install -D -m 0644 languages/QOwnNotes_pt.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_pt.qm
-    install -D -m 0644 languages/QOwnNotes_es.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_es.qm
-    install -D -m 0644 languages/QOwnNotes_nl.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_nl.qm
-    install -D -m 0644 languages/QOwnNotes_hu.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_hu.qm
-    install -D -m 0644 languages/QOwnNotes_ja.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_ja.qm
-    install -D -m 0644 languages/QOwnNotes_it.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_it.qm
+    # install application
+    install -D -m755 QOwnNotes "${pkgdir}/usr/bin/QOwnNotes"
+
+    # install visuals
+    install -D -m644 QOwnNotes.desktop "${pkgdir}/usr/share/applications/QOwnNotes.desktop"
+    install -D -m644 "images/icons/128x128/QOwnNotes.png" "${pkgdir}/usr/share/pixmaps/QOwnNotes.png"
+    for format in {16x16,24x24,32x32,48x48,64x64,96x96,128x128,256x256,512x512}; do
+        install -D -m644 "images/icons/${format}/QOwnNotes.png" "${pkgdir}/usr/share/icons/hicolor/$format/apps/QOwnNotes.png"
+    done
+    install -D -m644 "images/icons/scalable/QOwnNotes.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg"
+
+    # install languages
+    install -d "${pkgdir}/usr/share/QOwnNotes/languages/"
+    install -D -m644 languages/*.qm "${pkgdir}/usr/share/QOwnNotes/languages/"
 }
