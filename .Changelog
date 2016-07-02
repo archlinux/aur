@@ -1,0 +1,14 @@
+2.7.1 - 2 July 2016
+* NEW: Mac: Support for macOS Sierra (10.12).
+* NEW: Windows: New updater to improve future updates and for a better update experience.
+* NEW: Keyboard Heat-map: Add a view with a table with the key counts.
+* FIXED: Pulsing: Fix situations where the client could pulse every minute.
+* FIXED: Make the "I" button clickable again for the window with all the facts.
+* FIXED: Fix premium expiration date presentation.
+* FIXED: Never allow negative application uptime (when a computers clock changes).
+* FIXED: Keyboard Heat-map: Fix the color overlay positioning of the keyboard when switching between regular and with numpad.
+* FIXED: Input - Mouse Heat-map: Show the export button.
+* FIXED: Windows: Better handle hibernation/sleep and make sure the counters are still active.
+* FIXED: Fix the sizes of the dots in the reboot dot chart when there's just 1 day of the week with reboots.
+* REMOVED: Remove psvince.dll file from installer (was used to detect if the client is running), some A/Vs seemed to have problems with it.
+* IMPROVED: Show a notice when trying to login to an account which is waiting for activation.
