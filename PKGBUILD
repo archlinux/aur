@@ -5,7 +5,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=1.3.3.178.g727a3c5
+pkgver=2.0.0.35.gfe8567f
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -68,14 +68,11 @@ install="libvirt.install"
 source=('git+git://libvirt.org/libvirt.git'
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
-	libvirt.tmpfiles.d
-	'systemd.patch::https://bugs.archlinux.org/task/48440?getfile=13914')
+	libvirt.tmpfiles.d)
 md5sums=('SKIP'
 	 '5e31269067dbd12ca871234450bb66bb'
 	 '384fff96c6248d4f020f6fa66c32b357'
-	 '020971887442ebbf1b6949e031c8dd3f'
-	 '8b5cb657b3fa08c3cd888d48a2227a39')
-	 
+	 '020971887442ebbf1b6949e031c8dd3f')	 
 pkgver() {
   cd "$SRCDEST/${pkgname/-git/}"
   git describe --always | sed 's|-|.|g' | sed 's/^.//'
@@ -101,8 +98,6 @@ prepare() {
     src/qemu/test_libvirtd_qemu.aug.in
 
   sed -i 's/notify/simple/' daemon/libvirtd.service.in
-
-  patch -p1 -i $srcdir/systemd.patch
 }
 
 build() {

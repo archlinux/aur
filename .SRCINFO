@@ -1,6 +1,6 @@
 pkgbase = libvirt-git
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = pkgver=1.3.3.178.g727a3c5
+	pkgver = pkgver=2.0.0.35.gfe8567f
 	pkgrel = 1
 	url = http://libvirt.org/
 	install = libvirt.install
@@ -96,12 +96,10 @@ pkgbase = libvirt-git
 	source = libvirtd.conf.d
 	source = libvirtd-guests.conf.d
 	source = libvirt.tmpfiles.d
-	source = systemd.patch::https://bugs.archlinux.org/task/48440?getfile=13914
 	md5sums = SKIP
         md5sums = 5e31269067dbd12ca871234450bb66bb
         md5sums = 384fff96c6248d4f020f6fa66c32b357
         md5sums = 020971887442ebbf1b6949e031c8dd3f
-        md5sums = 8b5cb657b3fa08c3cd888d48a2227a39
 
 pkgname = libvirt-git
 
