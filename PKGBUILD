@@ -182,10 +182,10 @@ build() {
 	make
 
 	# Build codegen_style
-	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
-	cd "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
+	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_style/Release"
+	cd "$srcdir/tdesktop/Linux/obj/codegen_style/Release"
 	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
-		CONFIG+=debug \
+		CONFIG+=release \
 		../../../../Telegram/build/qmake/codegen_style/codegen_style.pro
 	make
 
@@ -193,7 +193,7 @@ build() {
 	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
 	cd "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
 	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
-		CONFIG+=debug \
+		CONFIG+=release \
 		../../../../Telegram/build/qmake/codegen_numbers/codegen_numbers.pro
 	make
 
@@ -201,7 +201,7 @@ build() {
 	mkdir -p "$srcdir/tdesktop/Linux/DebugIntermediateLang"
 	cd "$srcdir/tdesktop/Linux/DebugIntermediateLang"
 	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
-		CONFIG+=debug "../../Telegram/MetaLang.pro"
+		CONFIG+=release "../../Telegram/MetaLang.pro"
 	make
 
 	# Prepare for Telegram Desktop
@@ -209,18 +209,19 @@ build() {
 	cd "$srcdir/tdesktop/Linux/ReleaseIntermediate"
 
 	# Generate missing dependencies
-	./../codegen/Debug/codegen_style \
-		"-I./../../Telegram/Resources" \
-		"-I./../../Telegram/SourceFiles" \
-		"-o./../../Telegram/GeneratedFiles/styles" \
-		all_files.style \
-		--rebuild
-	./../codegen/Debug/codegen_numbers \
-		"-o./../../Telegram/GeneratedFiles" \
-		"./../../Telegram/Resources/numbers.txt"
-	./../DebugLang/MetaLang \
-		-lang_in ./../../Telegram/Resources/langs/lang.strings \
-		-lang_out ./../../Telegram/GeneratedFiles/lang_auto
+	# Seems not needed for now, but keep lines here
+	#./../codegen/Debug/codegen_style \
+	#	"-I./../../Telegram/Resources" \
+	#	"-I./../../Telegram/SourceFiles" \
+	#	"-o./../../Telegram/GeneratedFiles/styles" \
+	#	all_files.style \
+	#	--rebuild
+	#./../codegen/Debug/codegen_numbers \
+	#	"-o./../../Telegram/GeneratedFiles" \
+	#	"./../../Telegram/Resources/numbers.txt"
+	#./../DebugLang/MetaLang \
+	#	-lang_in ./../../Telegram/Resources/langs/lang.strings \
+	#	-lang_out ./../../Telegram/GeneratedFiles/lang_auto
 
 	# Finally, build Telegram
 	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
