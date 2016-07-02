@@ -1,12 +1,16 @@
 # Maintainer: Francisco Demartino <demartino.francisco@gmail.com>
 pkgname=deflemask
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Multi-System music tracker (Genesis/MegaDrive, NES/Famicom (nsf), Commodore 64 (sid), and many others)"
 arch=('i686' 'x86_64')
 url='http://www.delek.com.ar/deflemask'
 license=('unknown')
-depends=(sdl freeglut unionfs-fuse)
+
+depends=(freeglut unionfs-fuse)
+depends_i686=(sdl)
+depends_x86_64=(lib32-sdl)
+
 _tarfile=DefleMask_Linux.tar.gz
 _tarlink=http://www.deflemask.com/$_tarfile
 source=($_tarlink
