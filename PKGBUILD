@@ -5,7 +5,7 @@ _lang=ta
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Tamil language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('e7f22dcea0087d405522f7325e96432cc265bae659de62b7f1519208c055fafb0bcb164311af11077c2a0147ce7e9a300bacc3ed92c091f956979eece10b09ea')
+sha512sums=('e88643011892faf369b5620be1a91231c2018ad8d664766660ef8fc5eae68bf3ab8453f1d4b5647d73ac0958d7487dbb592689b92b8e755b288f02829b94f47d')
