@@ -1,0 +1,21 @@
+post_install() {
+	getent group jabber &>/dev/null || groupadd -r jabber >/dev/null
+	getent passwd jabber &>/dev/null || useradd -r -g jabber -d /etc/jabberd -s /bin/false -c jabber jabber >/dev/null
+	mkdir -p /var/lib/jabberd/{db,log,pid}
+	[ -f /var/lib/jabberd/db/sqlite.db ] || sqlite3 /var/lib/jabberd/db/sqlite.db < /usr/share/jabberd/db-setup.sqlite
+	chown -R jabber:jabber /var/lib/jabberd
+	chown -R root:jabber /etc/jabberd
+	cat <<EOF
+==> Customize the configuration files in /etc/jabberd/.
+==> For details, see: https://github.com/jabberd2/jabberd2/wiki/InstallGuide
+EOF
+}
+
+pre_remove() {
+	systemctl stop jabberd.service
+}
+
+post_remove() {
+	getent passwd jabber &>/dev/null && userdel jabber >/dev/null
+	getent group jabber &>/dev/null && groupdel jabber >/dev/null
+}
