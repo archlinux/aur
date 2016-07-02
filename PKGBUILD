@@ -5,7 +5,7 @@ _lang=th
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Thai language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('8a7dd12b9b13326d13def16aa8a19be8bfb2e2032f209cc5963c352d881ea3ec54c38fae916396f5497cdbe46e844144ac166e279738b34af897abfec9aeea3c')
+sha512sums=('4d3fe4e7a7ccd0bb2d2cc7509eadfaadc0b0a8d286ef0bb872bb80710dc048b2690259247943f5af66f32d010aa3504e22ea6476d863e83014ad101abb0dca04')
