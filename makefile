@@ -10,6 +10,7 @@ todo.o: todo.cpp
 
 clean:
 	rm *.o
+	rm todo
 
 mrproper: clean
 	rm todo
