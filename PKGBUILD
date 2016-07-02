@@ -5,8 +5,8 @@ _lang=ast
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Asturian language package for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('3f81457d804e619c8ab66ef189c8c0a910601c673fe513d057f28331b16773a5736e52b756248f4f2befdc77c2f612dbc777bc936d1ea54c7f69465f7a0cfe3a')
+sha512sums=('77dc3af3d55007cae9d5cde82f573d62c9c33269736478b8216df56a75da25b116563b62d182b5f7ffd6d041524782e98139cc07e3c07ddf0752c13848bef6b2')
