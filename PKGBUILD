@@ -6,7 +6,7 @@ _lang=en-gb
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="English language package for Iceweasel (United Kingdom)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('e7180ac5e7d9ea66494f6f1431e02656e073a43a0d47f7a95f06986537162672c760bc9659380bec974363b00572cff7283eb6160108029c52054aa2155c6882')
+sha512sums=('2ddf7f9391a24491729ff438dc5a3e279726895f1f4fb98d9ac6d291c92b82b6538d86c4f0ca76f9f1131db257f7d8c8055118c6610f22094a8e3336002c7c45')
