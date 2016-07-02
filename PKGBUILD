@@ -2,12 +2,12 @@
 pkgname=phoenix-git
 _gitname=Phoenix
 pkgver=r1270.f77e221
-pkgrel=5
+pkgrel=6
 pkgdesc="A super-slick libretro frontend powered by Qt 5"
 arch=('i686' 'x86_64')
 url="https://github.com/team-phoenix/Phoenix"
 license=('GPL')
-depends=('sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg')
+depends=('sdl2' 'qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg')
 makedepends=('git')
 optdepends=('libretro-bsnes' 'libretro-gambatte' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x')
 provides=('phoenix')
