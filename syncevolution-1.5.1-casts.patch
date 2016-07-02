@@ -1,0 +1,24 @@
+diff -aur syncevolution-1.5.1.pristine/src/syncevo/Logging.h syncevolution-1.5.1.new/src/syncevo/Logging.h
+--- syncevolution-1.5.1.pristine/src/syncevo/Logging.h	2014-04-25 09:55:47.000000000 +0200
++++ syncevolution-1.5.1.new/src/syncevo/Logging.h	2016-06-18 14:27:00.536255709 +0200
+@@ -255,7 +255,7 @@
+         Handle &operator = (const Handle &other) throw ();
+         ~Handle() throw ();
+ 
+-        operator bool () const { return m_logger; }
++        operator bool () const { return (bool)m_logger; }
+         bool operator == (Logger *logger) const { return m_logger.get() == logger; }
+         Logger *get() const { return m_logger.get(); }
+ 
+diff -aur syncevolution-1.5.1.pristine/src/synthesis/src/sysync/itemfield.cpp syncevolution-1.5.1.new/src/synthesis/src/sysync/itemfield.cpp
+--- syncevolution-1.5.1.pristine/src/synthesis/src/sysync/itemfield.cpp	2015-03-03 09:06:40.000000000 +0100
++++ syncevolution-1.5.1.new/src/synthesis/src/sysync/itemfield.cpp	2016-06-18 11:59:31.504138508 +0200
+@@ -1488,7 +1488,7 @@
+       " %c%02hd%02hd",
+       moffs>=0 ? '+' : '-',
+       (uInt16)(abs(moffs) / MinsPerHour),
+-      (uInt16)(abs(moffs) % MinsPerHour)
++      (uInt16)(abs((int)moffs) % MinsPerHour)
+     );
+   }
+ } // TTimestampField::getAsRFC822date

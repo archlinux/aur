@@ -1,0 +1,39 @@
+diff -aur syncevolution-1.5.1.pristine/Makefile.in syncevolution-1.5.1.new/Makefile.in
+--- syncevolution-1.5.1.pristine/Makefile.in	2015-06-05 15:50:50.000000000 +0200
++++ syncevolution-1.5.1.new/Makefile.in	2016-06-18 11:43:14.163743670 +0200
+@@ -11946,7 +11946,7 @@
+ 	  fi; \
+ 	done
+ src/ClientTest.cpp.html: build/source2html.py test/ClientTest.cpp
+-	$(AM_V_GEN)python $+ >$@
++	$(AM_V_GEN)python2 $+ >$@
+ 
+ # copy base test files
+ $(filter-out %.tem, $(filter src/testcases/%, $(subst $(top_srcdir)/test/,src/,$(CLIENT_LIB_TEST_FILES)))) : src/% : $(top_srcdir)/test/%
+diff -aur syncevolution-1.5.1.pristine/test/log2html.py syncevolution-1.5.1.new/test/log2html.py
+--- syncevolution-1.5.1.pristine/test/log2html.py	2014-04-25 09:55:47.000000000 +0200
++++ syncevolution-1.5.1.new/test/log2html.py	2016-06-18 12:43:42.570003467 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ """
+ Converts the .log output for a client-test test into HTML, with
+diff -aur syncevolution-1.5.1.pristine/test/syncevo-http-server.py syncevolution-1.5.1.new/test/syncevo-http-server.py
+--- syncevolution-1.5.1.pristine/test/syncevo-http-server.py	2015-06-05 15:50:15.000000000 +0200
++++ syncevolution-1.5.1.new/test/syncevo-http-server.py	2016-06-18 12:54:34.426457910 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ '''Usage: syncevo-http-server.py <URL>
+ Runs a SyncML HTTP server under the given base URL.'''
+diff -aur syncevolution-1.5.1.pristine/test/syncevo-phone-config.py syncevolution-1.5.1.new/test/syncevo-phone-config.py
+--- syncevolution-1.5.1.pristine/test/syncevo-phone-config.py	2014-04-25 09:55:48.000000000 +0200
++++ syncevolution-1.5.1.new/test/syncevo-phone-config.py	2016-06-18 12:39:53.882242126 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Copyright (C) 2010 Intel Corporation
+ #

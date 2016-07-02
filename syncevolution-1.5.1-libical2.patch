@@ -1,0 +1,12 @@
+diff -aur syncevolution-1.5.1.pristine/src/syncevo/icaltz-util.c syncevolution-1.5.1.new/src/syncevo/icaltz-util.c
+--- syncevolution-1.5.1.pristine/src/syncevo/icaltz-util.c	2014-04-28 11:55:52.000000000 +0200
++++ syncevolution-1.5.1.new/src/syncevo/icaltz-util.c	2016-06-18 11:43:50.107173288 +0200
+@@ -162,7 +162,7 @@
+ } leap;
+ 
+ #ifndef EVOLUTION_ICAL_COMPATIBILITY
+-extern const char *ical_tzid_prefix;
++const char *ical_tzid_prefix = "/freeassociation.sourceforge.net/";
+ #endif
+ 
+ static int
