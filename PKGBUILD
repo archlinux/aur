@@ -2,7 +2,7 @@
 pkgname=gi-zsh-completion
 
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Zsh completion support for gi"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi-bash-completion"
@@ -15,7 +15,6 @@ install=
 source=(git+https://bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
 md5sums=('SKIP')
 
-optdepends=('gi-bash-completion: for bash-completion support')
 
 package() {
   cd "$srcdir/$pkgname"
