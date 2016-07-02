@@ -5,7 +5,7 @@ _lang=lij
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Ligurian language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('a3ad30e446e65f8b033db0c8d98e05c331381785cfecc8b771fcedb0b9e5db5d291037a65deb69f13d5ca0017a0a08f2ea506aebcbdd074e71a35e5f5c7df9ac')
+sha512sums=('49481a5281938c6a0026a7fcbb9d1ff10c3366c98c7e0291ee6fe66cf71f43b24fc5af4c4247510283e805d52dd01a43eb362cf661ed827ccb9763195af850c2')
