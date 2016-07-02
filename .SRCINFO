@@ -7,14 +7,14 @@ pkgbase = libretro-mednafen-psx-git
 	arch = x86_64
 	license = GPLv2
 	makedepends = git
-	provides = libretro-mednafen-psx
-	conflicts = libretro-mednafen-psx
 	source = beetle-psx-libretro::git://github.com/libretro/beetle-psx-libretro.git
 	source = beetle-psx-libretro.info::https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/beetle_psx_libretro.info
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libretro-mednafen-psx-git
+	provides = libretro-mednafen-psx
+	conflicts = libretro-mednafen-psx
 
 pkgname = libretro-mednafen-psx-hw-git
 
