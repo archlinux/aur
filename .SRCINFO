@@ -1,0 +1,17 @@
+pkgbase = gtk-theme-arc-grey-git
+	pkgdesc = A flat, grey theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Latest commit from the master branch on Github.
+	pkgver = 605.4cb45e6
+	pkgrel = 1
+	url = https://github.com/eti1337/arc-grey-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = gtk-engine-murrine
+	provides = gtk-theme-arc-grey
+	conflicts = gtk-theme-arc-grey
+	source = arc-grey-theme::git+https://github.com/eti1337/arc-grey-theme.git
+	sha256sums = SKIP
+
+pkgname = gtk-theme-arc-grey-git
+
