@@ -6,7 +6,7 @@ _lang=es-ar
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Spanish language pack for Iceweasel (Argentina)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('929d95537d51f13995a311688ee21cf68f41f93d3f33a49b068d179395da185450bf0715b1d06bdb8bef1c36228688e9ad5f805a579faa4f076839d21294554a')
+sha512sums=('e4f8e7568657e44a24af32afd3ea3e529cda5ab35f0281e74a9d778b13bdcf86391dc673a8bbbdadf925e93e7cf39eff36bce484adf530f7490b8264675b47eb')
