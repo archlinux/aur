@@ -5,65 +5,50 @@
 # - https://aur.archlinux.org/packages/arangodb-git
 
 pkgname=arangodb
-pkgver=2.8.9
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("python go")
+makedepends=("cmake binutils python2 go")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
-backup=('etc/arangodb/arangob.conf'
-  'etc/arangodb/arangodump.conf'
-  'etc/arangodb/arangorestore.conf'
-  'etc/arangodb/arangod.conf'
-  'etc/arangodb/arangoimp.conf'
-  'etc/arangodb/arangosh.conf'
-  'etc/arangodb/arango-dfdb.conf'
-  'etc/arangodb/foxx-manager.conf'
-)
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2" "arangodb.service")
-sha256sums=('a8d7b3750d8b16a1873d471ebe8aaa48a0653446e110fb2a7996e13def323c06'
+sha256sums=('9a543b421e914dd5f8ff6a16514d8509d12ed085255ba935ef150c290f9ccf05'
             'ccde74e481761e2879845a0c9fbef601f4cdd73465d425549d3ad6714e99443d')
 
 build() {
+  msg2 "Symlinking 'python' to python2."
+  ln -s -f /usr/bin/python2 python
   export PATH="`pwd`:$PATH"
-  export CFLAGS="-g -O2 -fno-delete-null-pointer-checks -std=gnu++0x"
-  export CXXFLAGS="-g -O2 -fno-delete-null-pointer-checks"
+  export LD="ld.gold"
 
   msg2 "Configuring ArangoDB."
-  cd $srcdir/ArangoDB-$pkgver
-  make setup
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --enable-all-in-one-etcd \
-    --enable-armv7
-
+  mv $srcdir/ArangoDB-$pkgver $srcdir/arangodb
+  cd $srcdir/arangodb
+  [ -d build ] || mkdir build && cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" ..
   msg2 "Building ArangoDB."
-  make -j $(nproc) CXX="g++ -fno-delete-null-pointer-checks -std=gnu++0x"
+  make -j $(nproc)
 }
 
 package() {
   msg2 "Preparing ArangoDB."
-  cd $srcdir/ArangoDB-$pkgver
-  make DESTDIR="$pkgdir/" install
+  mkdir -p $pkgdir/usr/libexec/arangodb
+  cp -R $srcdir/arangodb/build/etc $pkgdir
+  cp -R $srcdir/arangodb/build/var $pkgdir
+  cp -R $srcdir/arangodb/build/bin $pkgdir/usr
+  cp -R $srcdir/arangodb/build/lib $pkgdir/usr
   mkdir -p $pkgdir/usr/share/doc/arangodb
-  cp -R $srcdir/ArangoDB-$pkgver/Documentation/* $pkgdir/usr/share/doc/arangodb/
+  mkdir -p $pkgdir/usr/share/arangodb/js
+  cp -R $srcdir/arangodb/js/* $pkgdir/usr/share/arangodb/js
+  cp -R $srcdir/arangodb/Documentation/* $pkgdir/usr/share/doc/arangodb/
 
   msg2 "Preparing systemd service."
   mkdir -p $pkgdir/usr/lib/systemd/system
   cp $srcdir/arangodb.service $pkgdir/usr/lib/systemd/system/
 }
-
-check() {
-  cd $srcdir/ArangoDB-$pkgver
-  make -k check
-}
-
