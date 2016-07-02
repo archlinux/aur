@@ -1,0 +1,19 @@
+commit e3eda343a30b9b77efb95f92087a8f7ee86ad5c8
+Author: Albert Graef <aggraef@gmail.com>
+Date:   Wed Jun 29 23:26:50 2016 +0200
+
+    Fix zero division problem in glassHarmonica.dsp (Romain Michon).
+
+diff --git a/pd-faust/examples/dsp/glassHarmonica.dsp b/pd-faust/examples/dsp/glassHarmonica.dsp
+index 3433679..a8529e1 100644
+--- a/pd-faust/examples/dsp/glassHarmonica.dsp
++++ b/pd-faust/examples/dsp/glassHarmonica.dsp
+@@ -64,7 +64,7 @@ modes(3,4) = 9.38;
+ basegains(3,4) = pow(0.999,5);
+ excitation(3,4) = 1*gain*gate/(nMode(3) - 1);
+ 
+-modes(3,5) = 0 : float;
++modes(3,5) = 9 : float;
+ basegains(3,5) = 0 : float;
+ excitation(3,5) = 0 : float;
+ 
