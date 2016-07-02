@@ -5,7 +5,7 @@ _lang=ms
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Malay language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('cd1ea9ff8da2c200a2229acf796362ca4ad5c326f543fb8e67f31d2d8bf2c7938717b61215caa02a1ec0fbbc8067ddcb1e6d76f030123b194bf3a0d386673a54')
+sha512sums=('d3a636bb8e756bc116b58f192d45246ec4cad35672324c4efa326f231cd0a1f515769242b3d04819209c086b5fa3cdae0ca49a67c93f284149a99dcc56f31bbc')
