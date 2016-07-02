@@ -5,8 +5,8 @@ _lang=az
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Azerbaijani language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('1da7c948034f016b554ce642305b05ec8bc9e5585a23dc5a6493cf7ee68832acc64aba80f7e5337c7e13683b344f95d088c241f5368f2d0fb2f1e1252ef5ca11')
+sha512sums=('0ac8e165bfe66b0960549321c87f2375fda131fb3124757d6762637d9aa9e04c045e06722eef7673848354fb0aa75e6ee058b8d0dc49a504c6fffd9552fefaf2')
