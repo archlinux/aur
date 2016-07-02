@@ -6,7 +6,7 @@ _lang=pa-in
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Punjabi language pack for Iceweasel (India)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('8d833af013f7943ed87b04cee8258ee11c43616b4e974487b94c3af062ae33f5d73fbd33a4fe7fe83744eec5c26aed4b04cb470bb3a9b42dc7133b9217226fe6')
+sha512sums=('a6159a8cc47a6346657ae8c0c363d0220c035ce3fa054797a276057303f2691529471cbdcc112d26232b467f9fd299b1806c81d9f6de3f560175254eaecd5845')
