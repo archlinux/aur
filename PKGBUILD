@@ -2,7 +2,7 @@
 pkgname=gi
 
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Git wrapper to perform Mercurial-like short unique abbreviation searching for commands"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi"
@@ -12,7 +12,7 @@ depends=('python' 'python-marisa-trie' 'git')
 provides=('gi')
 conflicts=('gi')
 install=
-source=(git+https://gagarski@bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
+source=(git+https://bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
 md5sums=('SKIP')
 
 optdepends=('gi-bash-completion: for bash-completion support')
