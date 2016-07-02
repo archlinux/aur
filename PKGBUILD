@@ -1,7 +1,7 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-light
-pkgver=0.9.51
-pkgrel=3
+pkgver=0.9.56
+pkgrel=2
 _qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Uses system libraries.'
 arch=('i686' 'x86_64')
@@ -72,10 +72,14 @@ optdepends=(
 	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
 	'pulseaudio-jack: JACK support behind PulseAudio'
 )
+
 # Name of the archive. To use in case of broken things.
-_commit_hash="a058b6e3a6a99e3815d2cbfecce96b32307bb90d"
-_archive="${_commit_hash}"
-#_archive="v$pkgver"
+# Release based on specific commit
+#_commit_hash="a058b6e3a6a99e3815d2cbfecce96b32307bb90d"
+#_archive="${_commit_hash}"
+# Release based on version tag
+_archive="v$pkgver"
+
 source=(
 	"tdesktop-${pkgver}.tar.gz::https://github.com/telegramdesktop/tdesktop/archive/${_archive}.tar.gz"
 	#"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qt5-opensource-src-$_qtver.tar.xz"
@@ -90,17 +94,16 @@ noextract=(
 	'breakpad.tar.gz'
 	'breakpad-lss.tar.gz'
 )
-sha256sums=('d341f26f4109951cfbd05db516385e721b87f7357d750d0475b8744789258799'
+sha256sums=('69ed7364e87f8f24d6f68ddc0a5b98dfd5dae74ecc93e456cede9e65878ef404'
             '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
             '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
-            '5610b4425696d44a68e7bd7438ad2321fec04e1760927d391c515575ae2b0689'
-            'ed8d89d3267bd7bc5cd9617ab6ea171ad726201beac4b89f77e88ddf4e1dbf88'
+            'SKIP'
+            'SKIP'
             'bfc45add9e72ecc8ad07e2b4fdb6a4f52eb1cf284f76c3379efd201e78def63a'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 
 prepare() {
-	#ln -sf "$srcdir/tdesktop-$pkgver" "$srcdir/tdesktop"
-	ln -sf "$srcdir/tdesktop-${_commit_hash}" "$srcdir/tdesktop"
+	ln -sf "$srcdir/tdesktop-${_archive#v}" "$srcdir/tdesktop"
 	cd "$srcdir/tdesktop"
 
 	mkdir -p "$srcdir/Libraries"
