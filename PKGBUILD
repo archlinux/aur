@@ -5,7 +5,7 @@ _lang=tr
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Turkish language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('cc45fa6af8e16228705eef2bd75ab76b4784f59aa09f7150861ddaebfbc53b1c6140d0389699beb0c55893231a949ebb8ba9400de16f0ef5c5bdff8ab58d41f8')
+sha512sums=('802f276dc50f8116430175b4480883895f664d8eabeadf471b8ae5eb0cd0b2506643ba5b57921ee773921382781a219dcec03a4165a8982b1472ec5fac4fbf60')
