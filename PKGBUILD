@@ -2,7 +2,7 @@
 _gitname=morituri-eaclogger
 _gituser=JoeLametta
 pkgname=whipper-eaclogger-git
-pkgver=31.b0a5fd2
+pkgver=3.a9c7ea5
 pkgrel=1
 pkgdesc='whipper logger meant to mimic EAC style logs'
 arch=('any')

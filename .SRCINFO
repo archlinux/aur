@@ -1,6 +1,6 @@
 pkgbase = whipper-eaclogger-git
 	pkgdesc = whipper logger meant to mimic EAC style logs
-	pkgver = 31.b0a5fd2
+	pkgver = 3.a9c7ea5
 	pkgrel = 1
 	url = https://github.com/JoeLametta/morituri-eaclogger
 	arch = any
