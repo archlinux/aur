@@ -5,8 +5,8 @@ _lang=bg
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Bulgarian language package for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('5a2ceadf2a3a7cf52a2f0dec015065e3c3f4d7ded4fea6c4d80f05f635fbba39df026f3bfded1cdcfdfe52104d5a962b2520f3e727f70983e93982dd28127982')
+sha512sums=('12987278ff9087fdf7e8224d245daeb046cc712b07cd9174557fa891f822505ae61df00a37aed9f29e50581fec686fdc5e123b3ab2093c043f107a12ff3f841a')
