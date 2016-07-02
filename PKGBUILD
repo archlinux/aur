@@ -1,3 +1,4 @@
+# Maintainer: Samantha Baldwin <fuhsaz 'plus' aur 'at' cryptic 'dot' li>
 _gitname=morituri-eaclogger
 _gituser=JoeLametta
 pkgname=whipper-eaclogger-git
