@@ -14,7 +14,6 @@ pkgbase = fluxgui
 	depends = python2-pexpect
 	depends = python2-xdg
 	depends = python2-gconf
-	depends = python2-appindicator
 	conflicts = xflux
 	source = git://github.com/xflux-gui/xflux-gui
 	md5sums = SKIP
