@@ -1,12 +1,12 @@
-# The Lounge's official ArchLinux package
+# Arch Linux package for The Lounge
 
 This is a clone of the repository [already available](https://aur.archlinux.org/packages/thelounge/) on the [AUR](https://wiki.archlinux.org/index.php/Arch_User_Repository).
 
-This repository is to be used to track ArchLinux's specific issues with this package and allow users to contribute changes to it as well.
+This repository is to be used to track Arch Linux's specific issues with this package and allow users to contribute to it.
 
 ## Installation
 
-Please follow the usual ArchLinux documentation to install this package fromt he AUR either manually or using your favorite AUR helper. These instructions are only provided as a quick example, but as typical with ArchLinux you are strongly encouraged to read the approprite documentation.
+Please follow the usual Arch Linux documentation to install this package from the AUR either manually or using your favorite AUR helper. These instructions are only provided as a quick example, but as typical with Arch Linux you are strongly encouraged to read the approprite documentation.
 
 ### Manually
 ```
