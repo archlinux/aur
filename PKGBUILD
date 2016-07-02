@@ -5,12 +5,13 @@
 
 pkgname=whatpulse
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
 url=http://www.whatpulse.org
 # I have yet to find the actual licence, but alternatively: it's basically freeware
 license=(custom:whatpulse_tos)
+changelog="$pkgname.changelog"
 install="$pkgname.install"
 depends=(qt4)
 optdepends=(
@@ -24,6 +25,14 @@ sha256sums=('9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7')
 sha256sums_i686=('1662da8504d03bc14e7195087f5989e6657ad3de2a226f9e0248e0bb49bc83d5')
 sha256sums_x86_64=('c7e9090866e115486b56a2dc47f920be40354fe6680af0646f3355d9cd8167d2')
 
+build() {
+	# Extract the tiny, tiny bit of license/usage information that exists
+	# in this piece of software distribution.
+	ls 
+	ls $srcdir
+	sed -n '/By installing/,/ any way./p' README.txt > LICENSE
+}
+
 package() {
     cd $srcdir/
     # Install the binary
@@ -32,9 +41,12 @@ package() {
     # Install the freedesktop shortcut
     mkdir -p ${pkgdir}/usr/share/applications
     install -m0644 whatpulse.desktop ${pkgdir}/usr/share/applications/
-    
+    # Install the input rules 
     mkdir -p ${pkgdir}/etc/udev/rules.d/
     cat >${pkgdir}/etc/udev/rules.d/99-whatpulse-input.rules <<__EOF__
 KERNEL=="event*", NAME="input/%k", MODE="640", GROUP="input"
 __EOF__
+
+	 # Install the license
+	 install -Dm0755 LICENSE ${pkgdir}/usr/share/licenses/whatpulse/LICENSE
 }
