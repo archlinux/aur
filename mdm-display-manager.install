@@ -7,7 +7,6 @@ post_install() {
 	chown root:mdm /var/lib/mdm > /dev/null
 	chmod 1770 /var/lib/mdm > /dev/null
 
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 	printf "\n By default the tty1 is disabled, this because a bug"
 	printf "\n that if tty1 is runing, then mdm is automagically  "
 	printf "\n restarted in a infinite loop, this take around     "
@@ -19,7 +18,6 @@ post_install() {
 }
 
 post_remove() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 	getent passwd mdm || userdel mdm
 	getent group mdm || groupdel mdm
 }
