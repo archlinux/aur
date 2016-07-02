@@ -1,6 +1,6 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=cum
-pkgver=0.5.2
+pkgver=0.6
 pkgrel=1
 pkgdesc="Comic Updater, Mangafied"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-click' 'python' 'python-requests' 'python-sqlalchemy'
 source=("https://github.com/Hamuko/cum/archive/v${pkgver}.tar.gz"
         "cumpletion.sh")
 options=(!emptydirs)
-sha256sums=('c2a480e58e37a0190757b0d979971abbe030296e1c34960782e6047fd49fefd7'
+sha256sums=('59e4a9707d20afcaf87b0f709e9ea7055ac95992cefb9e88298a4c3f5199f5ba'
             'b24dcf05451e83932d741e5088b4526d1ce9f45e97698c37d74f2a2c54618651')
 
 prepare() {
