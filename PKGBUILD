@@ -6,7 +6,7 @@ _lang=fy-nl
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Frisian language package for Iceweasel (Netherlands)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('3c1f4a1b4be2899df34312afda52d322bfefe7437d2da96aa51fdecb9dc59dd7c40d295fbcaca332ec0e56978fc726cdd6633032b1cfac9a7c662267ed54f011')
+sha512sums=('180f5dc4321fbab1e99bd8103160325c7a2b40e73b39ae6dfc8913f9f8abbfd4c8c38f1de51b0ac6fee7de0747b1ad7ac665f824bd3900df9832d77dc9bddcc9')
