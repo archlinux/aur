@@ -5,8 +5,8 @@ _lang=ach
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Acholi language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('b8196636bcd46730bd87af6f2e543b00aa67ffec53b01021320f43a4978a87cf81ab7f3d99879369f0de72de19189f3b3b8357cf3fe4bcfc67ec6c114cb78ddc')
+sha512sums=('82e8f3a28b6b841b23a6d3d0dfe80593e0aaa9ec4d5da8c8fa7d1ac5848943ffb1c0d3307ae47749ec6fd757bf3717101d2e57d2653734f2d117bd835f1588d5')
