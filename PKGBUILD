@@ -5,8 +5,8 @@ _lang=eo
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Esperanto language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('895a202a63edd094634a684418216d93d808257f5761c8c5c0c667d579b7736ae13fcb0db639026939d36e7531dbe905494c10d552fe8c59c3d706ea7447be10')
+sha512sums=('b3c50e30f386fd550e356f5bc67c192a8ce1d63fc302c1143c2fbba114e66827b21728849eaaea990ce24718a3861f11233d49e53f04d68d465b69979731a6b7')
