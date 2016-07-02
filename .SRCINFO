@@ -1,0 +1,15 @@
+pkgbase = ipod-shuffle-4g
+	pkgdesc = Python script for building the track and playlist database for the newer gen IPod Shuffle
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/nims11/
+	arch = any
+	license = GPL2
+	depends = python
+	depends = mutagen
+	optdepends = espeak: Voiceover support
+	source = https://github.com/nims11/ipod-shuffle-4g/archive/v1.3.tar.gz
+	sha256sums = 2584dadecbaa751d0b62c38823b7962daab02b7e429ec6cc6869d8e1427908ca
+
+pkgname = ipod-shuffle-4g
+
