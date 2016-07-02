@@ -1,6 +1,6 @@
 pkgbase = libretro-mednafen-psx-git
 	pkgdesc = libretro implementation of Mednafen PSX
-	pkgver = 1102.e2a4cef
+	pkgver = 1238.4ad02c7
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-psx-libretro
 	arch = i686
