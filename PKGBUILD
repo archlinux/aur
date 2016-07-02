@@ -93,7 +93,7 @@ build()
 
   AWK=/usr/bin/nawk  ./configure  --prefix=/usr
 
-  ADA_PROJECT_PATH=/usr/lib/gnat make -j1
+  PROCESSORS=5  ADA_PROJECT_PATH=/usr/lib/gnat  make -j5
 }
 
 
