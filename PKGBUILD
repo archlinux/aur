@@ -6,7 +6,7 @@ _lang=zh-cn
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Chinese language pack for Iceweasel (Simplified)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('fa5bdfb49af6ec85cd3f758bbbac926de1f7d948019a260d573af4ee4cbbbb19a886abaa4ea836b26e1d1532a625bb78a5901d9cd8e332d84788f8485061fec2')
+sha512sums=('6166573df48b45722bf90abb8b3aac48d15d8c812862d9f3f378e396695077b8b84338bb9a7784cbef803687988966c9214697ba94c983917a6b4f688943ef20')
