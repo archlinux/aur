@@ -5,7 +5,7 @@ _lang=km
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Khmer language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('7a39a71d094c31f260d4fafe2e2eca4aaab9c72c5ec5ca142244eb6647c56d119e25e5b1fd60f8da1efc62e8c6846b82319b066d4cda50e7dcb653673789b894')
+sha512sums=('aa3ff7a524f0019452fe9cd0a44c79586581133eabae4401d36921c0c7f05d6230951e02d7ad70260c8bde83a9c9eea08c75a43405cdd8211f9b175a0fdf0f9e')
