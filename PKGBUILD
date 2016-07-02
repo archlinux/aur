@@ -1,6 +1,6 @@
 # Maintainer: Andrew Nelless <andrew at nelless dot net>
 pkgname='avro-cpp'
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 arch=('i686' 'x86_64')
 
@@ -14,7 +14,7 @@ makedepends=('boost' 'cmake' 'python2')
 source=("http://www.us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
 	$pkgname-python2.patch
         $pkgname-boost160.patch)
-sha256sums=('ec6e2ec957e95ca07f70cc25f02f5c416f47cb27bd987a6ec770dcbe72527368'
+sha256sums=('6559755ac525e908e42a2aa43444576cba91e522fe989088ee7f70c169bcc403'
             '5d54151dd25e717a19109c97e68ce2a07d3b28b9fd3fb3ae1dc5df06b8600fd4'
             '3c35ec2d6982b98accad0663d9ce732718c4c775631a7a07b473613deb9e30c9')
 
