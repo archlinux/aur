@@ -1,3 +1,15 @@
+2016-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.1.7:
+    [!] ASF now supports SteamPassword also in encrypted form. Visit configuration for info about new PasswordFormat bot config property, as well as security for further explanation.
+    Added GiftsLimiterDelay and MaxTradeHoldDuration global config properties. Visit configuration for more info.
+    Added !lootall and !password commands.
+    ASF can now become installed and run as a Windows service, thanks to @justin-gerhardt
+    Commands are now case-insensitive (but bot names remain case-sensitive).
+    Fixed rare Steam issue that could lead to ASF trying to redeem the same gift twice (thanks GabeN).
+    Fixed rare Steam issue that could lead to ASF crash due to failure to log in, after successfully logging in (yes, you read it right - thanks GabeN).
+    Fixed rare ASF issue that could lead to program crash during !redeem command when one or more bots had broken database.
+    [ConfigGenerator] Added version check, CG will now ensure that it's running only with compatible version of ASF.
+    Massive portion of code improvements, optimizations and bugfixes.
 2016-06-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.0.7:
     Added !api command. More can be found on the wiki.
