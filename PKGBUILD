@@ -6,7 +6,7 @@ _version=beta
 
 # Versions
 _about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.6.1
+_about_arch_ver=1.6.2
 _language_gfm2_ver=0.92.0
 _language_liquid_ver=0.5.1
 
@@ -14,7 +14,7 @@ pkgname=${_pkgname}-editor-${_version}
 _pkgrel=0
 _pkgver=1.9.0
 pkgver="${_pkgver}.${_pkgrel}.m${_language_gfm2_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -30,7 +30,7 @@ source=("$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}"
 "about-beta.patch")
 sha256sums=('794ee5c9cc46e9568150db3cb6e2a0791a0cd4e9c243f29d65616adf5e15a210'
-            '85b904a247078121ccfe14f1d18fa49facc8747a4ac731591dadc85fa3c1e093'
+            'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc'
             'f0af112075822a7163a5f9be7a096524fbdd4c39f1c56c6913b3f9f99aea0491')
