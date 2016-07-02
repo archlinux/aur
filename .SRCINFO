@@ -1,16 +1,22 @@
 pkgbase = timew-git
 	pkgdesc = A command-line time tracker (also known as timewarrior)
 	pkgver = r1752.bce2a58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taskwarrior.org/docs/timewarrior/index.html
+	install = timew-git.install
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
+	optdepends = task: Taskwarrior integration
+	provides = timew
+	conflicts = timew
 	source = git+https://git.tasktools.org/scm/tm/timew.git
 	source = git+https://git.tasktools.org/scm/tm/libshared.git
+	source = timew-refresh-python2.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

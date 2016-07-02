@@ -1,16 +1,22 @@
 # Maintainer: David Cao <dcao@protonmail.com>
 pkgname=timew-git
 pkgver=r1752.bce2a58
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
 url="https://taskwarrior.org/docs/timewarrior/index.html"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
+optdepends=('task: Taskwarrior integration')
+provides=('timew')
+conflicts=('timew')
+
+install=timew-git.install
 source=('git+https://git.tasktools.org/scm/tm/timew.git'
-        'git+https://git.tasktools.org/scm/tm/libshared.git')
-md5sums=('SKIP' 'SKIP')
+        'git+https://git.tasktools.org/scm/tm/libshared.git'
+        'timew-refresh-python2.patch')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,17 +31,24 @@ prepare() {
   git submodule init
   git config submodule.src/libshared.url "${srcdir}/libshared"
   git submodule update src/libshared
+
+  patch -p1 -i "${srcdir}/timew-refresh-python2.patch"
+
+  cp "ext/on-modify-hook.timewarrior" "${srcdir}"
 }
 
 build() {
   cd "${pkgname%-git}"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
+
+  install -Dm644 "${srcdir}/on-modify-hook.timewarrior" \
+    "${pkgdir}/usr/share/doc/timew/on-modify.timewarrior"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

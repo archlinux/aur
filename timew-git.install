@@ -1,0 +1,7 @@
+post-install() {
+  echo "The taskwarrior on-modify-hook has been installed at:"
+  echo "/usr/share/doc/timew/on-modify.timewarrior"
+  echo
+  echo "Refreshing holidays can be done by running /usr/share/doc/timew/holidays/refresh"
+  echo "Please see http://taskwarrior.org/docs/timewarrior/holidays.html for more info" 
+}
