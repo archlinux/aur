@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xviewer
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -13,14 +13,14 @@ conflicts=('xviewer-git')
 url='https://github.com/linuxmint/xviewer'
 install=xviewer.install
 
-source=("https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c6ec85d6508e05218a9451cb95de4865')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('56e0956f180f5947517358a05f2173a0')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     gnome-autogen.sh --prefix="/usr" \
         --localstatedir="/var" \
-         --libexecdir="/usr/lib/xviewer"
+         --libexecdir="/usr/lib/${pkgname}"
     make
 }
 
