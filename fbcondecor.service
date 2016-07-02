@@ -4,7 +4,7 @@ After=systemd-user-sessions.service
 
 [Service]
 Type=simple
-ExecStart=/etc/rc.d/fbcondecor start
+ExecStart=/etc/rc.d/fbcondecor restart
 ExecStop=/etc/rc.d/fbcondecor stop
 RemainAfterExit=yes
 Restart=on-failure
