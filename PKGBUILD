@@ -5,8 +5,8 @@ _lang=as
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Assamese language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('458dd4b50f50a878c504c137291ed592f2d4cbb236353e8263440581fdecd66e8a498eef09b1b8c8687e66907415e0a384ba539800c380843a04808c35294a61')
+sha512sums=('22adb492954e3436232bb3eececf2269b825dca56c439e5c3fe54fe313b4c68999f8caacbdc1ae8f2246736479c31ec730ceebdef8eb195de5d6bc3b445a3272')
