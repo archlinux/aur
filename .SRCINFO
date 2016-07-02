@@ -1,7 +1,7 @@
 pkgbase = beignet-git
 	pkgdesc = A GPGPU System for Intel Ivybridge GPUs
-	pkgver = Release_v1.0.0.r676.gad86ed3
-	pkgrel = 2
+	pkgver = 1.0.0.r799.gcf95b44
+	pkgrel = 1
 	url = http://cgit.freedesktop.org/beignet/
 	arch = x86_64
 	license = LGPL2.1
