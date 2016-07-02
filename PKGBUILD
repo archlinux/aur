@@ -5,8 +5,8 @@ _lang=dsb
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Catalan language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('a50955475fd42c01495c07420dd42085a5c0fd7ab9d46dc53b0dd72d37defc6323d63c3f3a00b33544dbf724a39a496911a8ec36163b269c70ab7462d1dae1d3')
+sha512sums=('54b7bfc4c4fea56b9fa83262f87ee4a7717f874abdd0072a9f8cec4f4646697330490cdaae137a43317a55ff7badd68e3090da9d359b810a9f2f74ff369b1fe6')
