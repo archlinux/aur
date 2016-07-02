@@ -5,8 +5,8 @@ _lang=cy
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Welsh language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('4bf644130845e79705b055954dbf4533f5ff8dd89d65b55d676ee1dcb00b347b627c341c107aada07de50c0ede8fa01006138b794add041366aad1a7b1aab5cf')
+sha512sums=('c5915ad1ac6cb5a8ff699898b41f03cd3660d1e449b3ba0aa009c85756201d6b436a176b94acdc2855879aadc267e51e83bbb1d05bcc4500a9197c3b1c10ea46')
