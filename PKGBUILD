@@ -5,7 +5,7 @@ _lang=sl
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Slovenian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('a0330cea2e5bd3c4e4465d462ce5e86580ecc1363f40ebdb22c3d1a43947619da6bd0f83034841d7fc4500f439ec20d06e340d42899831420b226fd7b78f3f6c')
+sha512sums=('b1cbb629a8da615d9bce2397bd960c21059fb3b9c95a7a9b0075379a09eb15a60df67e839900442c721c565525427724ef20962f547575d07256496a4f1ec742')
