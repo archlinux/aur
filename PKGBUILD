@@ -13,26 +13,39 @@ arch=('any')
 license=('GPL')
 url="http://www.adacore.com/gnatpro/toolsuite/gprbuild/"
 
-source=("gprbuild-gpl-2016-src.tar.gz::http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8"
-        "gprbuild-gpl-2016-x86_64-linux-bin::http://mirrors.cdn.adacore.com/art/5739cbf1c7a447658d00e326")
+source=("http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8"
+        "Makefile.archy")
 
 sha1sums=('c85b877596dbc53bfc39ec5b23f674e8463677ce'
-          '270aa41c2ed6381460502ac00ecef7dfefd07000')
+          '222357dc7f46b9ab6a8c2df098632c67b4505743')
+
+
+
+prepare()
+{
+  WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
+
+  cp $srcdir/Makefile.archy ${WRKSRC}
+
+  cd $pkgname-gpl-$pkgver-src
+  mkdir -p obj
+}
+
 
 
 build() 
 {
   cd $pkgname-gpl-$pkgver-src
 
-  export PATH=$srcdir/gprbuild-gpl-2016-x86_64-linux-bin/bin:$PATH
   ./configure --prefix="/usr"
-  make
+  PREFIX=/usr  make -j13 -f Makefile.archy all
 }
+
 
 
 package() 
 {
   cd $pkgname-gpl-$pkgver-src
 
-  DESTDIR=$pkgdir  PREFIX=/usr  make  prefix="$pkgdir/usr"  install
+  DESTDIR=$pkgdir  PREFIX=/usr  make  -f Makefile.archy  prefix="$pkgdir/usr"  install
 }
