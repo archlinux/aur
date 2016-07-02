@@ -5,7 +5,7 @@ _lang=hr
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Croatian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('15532aafd7b0775e61f033e2cb61670353f095b47dd6016b1bcfcc057889e264a5fd036f8104a5b722ae8e9341db374d6ff9c9dcb94dd2dec2e21a9b5057f072')
+sha512sums=('a87b2bd62601cf80a492c8f9cd6208f6e17840ff2d6381e6056b23231fcaf43862790efbf98b63de1cb19b0e175d560f41811df2d77da7e4df23a32de8241685')
