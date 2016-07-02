@@ -6,7 +6,7 @@ _lang=nn-no
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Nynorsk language package for Iceweasel (Norway)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('b7d26ea16df524103e588af89697ba45477b4e5e762a048abbb9fcc8b1f6e13761071cddb8ba89ceb997aa1a033d6bfc43afbddae51913afb25ae3294c940a22')
+sha512sums=('087f1b66a47a8a96906411dbb2c33df871f7fd21cdd93d425eaecdff12a0cf7607cc8ffd4c947f43e43c9e2f7bfecea494dcca7d6c39e1c05d7a12511635ed65')
