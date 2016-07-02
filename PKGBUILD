@@ -2,10 +2,10 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.21.3
+pkgver=1.22.0
 pkgrel=1
-everelname="citadel"
-everelver=1.11
+everelname="yc_118.6"
+everelver=1.0
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="http://github.com/DarkFenX/Pyfa"
@@ -29,6 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('1cb0cc93f4448e998172a877a2ea6bdc'
-         '8afa835e791f1bb9d8256c0ba9ddbd0f'
+md5sums=('be4ee04969e9e12b137182fa26138019'
+         'b57da416f24e8ebf145019883b8e9081'
          '9937192cfce7f5e16e9cf26086f1899c')
