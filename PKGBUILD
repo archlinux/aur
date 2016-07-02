@@ -1,10 +1,11 @@
-# Submitter: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Moritz Rudert (helios) <helios@planetcyborg.de>
 # Contributer: Janusz Lewandowski <lew21@enves.pl>
-# Maintainer: ushi <ushi+arch@honkgong.info>
+# Contributor: ushi <ushi+arch@honkgong.info>
+# Maintainer: dequis <dx@dxzone.com.ar>
 
 pkgname=jabberd2
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
 arch=('i686' 'x86_64' 'armv6h')
@@ -22,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-  'c6c2f34d0811e90c5c791143018bb5b07ecbe2ea5d8cc10140235d25815cb030'
+  '1101571f4a94d7ec5a82839e9e2abee51f3983e3b9c416f1b7f2f738ebebdee1'
   '89809dbf3f42f9df4690c3f98c1c74174f53774859d88374947b4123552c2dc8'
 )
 
