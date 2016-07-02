@@ -5,7 +5,7 @@ _lang=id
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Indonesian language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('4092d39818f051d78552a7c2330eb52a647bd86a28f5588be5d39fc5592da1db7fe61077369d17d2488da5f02ed37e65420dcf51bdc593699fe00ac4231ba214')
+sha512sums=('9d2eed7df529356d251e03073446887e3b0361a50ddafc5f43555477dfd8507be584d1b22a6ec86e4fefd49b96a80f0a382cc873c1ded4c387dbe0ebac6411c1')
