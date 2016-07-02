@@ -5,7 +5,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.16.4
+pkgver=2.16.5
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file-deskt
 options=('!makeflags')
 source=(http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz fixes.patch)
 install='devscripts.install'
-md5sums=('42e31c40bf2ff83340e2e616c01e6757'
+md5sums=('a46ead9163102b60d27de67ce62dc4c1'
          '110857b0eb4a9dbf57a8b562d992ab33')
 
 build() {
