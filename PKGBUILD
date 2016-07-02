@@ -5,8 +5,8 @@ _lang=af
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Afrikaans language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('d2dbf98d501290391b957f8a12b5c8b19f059e4a1a172b766a91c2edbf227d2be42e6c4e497b009f30b029950252e80483c83b1ac95d5d9765b88eb1b9b0edd6')
+sha512sums=('509e2a3f14922c070c187c6a54815b4785f2ff76f66bd333c0c19da1c107bf9c963ef6fe42bf516724e0ea3f98aea37473b1d032507194b258c22ca04a33467c')
