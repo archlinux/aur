@@ -5,7 +5,7 @@ _lang=lv
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Latvian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('576117be1676486756344f08724fc4f60d779d9cf91bc577ad1c6e43d7f274fbe23ad3a5fe365af5e053a13332555bfc028d9e1220d4128a659056e9b326e06a')
+sha512sums=('57c8c0b6853fdb6737a9bfa6bf468d8363fe67636adc1a00107d2ab67369ccac6acda6251a53dab84ffb6ac0c5a138805a062de2f14535ee2ddda967749f6290')
