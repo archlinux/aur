@@ -6,7 +6,7 @@ _lang=pt-br
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Portuguese language package for Iceweasel (Brazil)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('71b6809597da252b357d4e692695d7f1b9d779499de4311a2948615da0bbbceb23f586acd620d87171f955c60cbbf0e00c3be57ea6814f88a6fc7516d87e2f33')
+sha512sums=('c040327330e2074b939fbe31cfed2e49271b77688e3660815713f6ac0f5beb1d7354651b728cb1a947936d4e3c0fd5d55867b2704132e2f7543e935990b2a573')
