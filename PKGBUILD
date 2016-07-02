@@ -4,12 +4,12 @@
 
 pkgname=qsampler
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LinuxSampler Qt GUI"
 arch=('i686' 'x86_64')
 url="http://qsampler.sourceforge.net/"
 license=('GPL')
-depends=('qt5-base' 'qt5-tools' 'linuxsampler' 'liblscp')
+depends=('qt5-base' 'qt5-tools' 'qt5-x11extras' 'linuxsampler' 'liblscp')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('02a39ca85bf13a18646ff80161949e2e')
 
