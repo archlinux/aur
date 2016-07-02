@@ -5,7 +5,7 @@ _lang=eu
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Basque language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('9fed8375ee1a5259bc28e2fcba7b87e403d6780ea87c717de1a06185a976556ede01a0c139b445312ef4ed5f9cf584c01250c125fa98b67c9d838193bd6b82f2')
+sha512sums=('bb011dba495f4177c998ea242ea416d595c7d8abe52ff5d8ae2ea056db920aaa95e19a8334450999caf870b655cad629506d3ed18f184d90d54fec1e7a305600')
