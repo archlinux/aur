@@ -1,8 +1,8 @@
 #Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-moreunit
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='MoreUnit plugins for Eclipse IDE to assist in writing more unit tests'
 arch=('any')
 url='http://moreunit.sourceforge.net/'
@@ -10,7 +10,7 @@ license=('EPL')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 source=("download.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%20${pkgver}/org.moreunit-${pkgver}.zip")
-sha256sums=('fdfb613385deff09c8f34ad886f2b9326860fc32df17b14afed6c3388830d1f6')
+sha256sums=('ba5622f56bb3457daeedbd9bfb9741b5924bb67b68d210d5a7d1f67db643e360')
 
 package() {
   # sub folder of the zip file containing the features and plugins folder

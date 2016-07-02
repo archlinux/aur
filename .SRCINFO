@@ -1,14 +1,14 @@
 pkgbase = eclipse-moreunit
 	pkgdesc = MoreUnit plugins for Eclipse IDE to assist in writing more unit tests
-	pkgver = 3.1.0
-	pkgrel = 5
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = http://moreunit.sourceforge.net/
 	arch = any
 	license = EPL
 	depends = eclipse>=4.5.0
 	options = !strip
-	source = download.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%203.1.0/org.moreunit-3.1.0.zip
-	sha256sums = fdfb613385deff09c8f34ad886f2b9326860fc32df17b14afed6c3388830d1f6
+	source = download.zip::http://sourceforge.net/projects/moreunit/files/moreunit/Version%203.1.1/org.moreunit-3.1.1.zip
+	sha256sums = ba5622f56bb3457daeedbd9bfb9741b5924bb67b68d210d5a7d1f67db643e360
 
 pkgname = eclipse-moreunit
 
