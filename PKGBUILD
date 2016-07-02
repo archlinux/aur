@@ -16,13 +16,15 @@ source=(http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
         patch-gnatcoll_full.gpr
         patch-Makefile
         patch-gnatcoll-scripts.ads
-        patch-gnatcoll-scripts.adb)
+        patch-gnatcoll-scripts.adb
+        patch-gnatcoll-projects-normalize.adb);
 
 sha1sums=('921c17e7dcb2cc00e4fe0f58d34896ed1d11fc5e'
           'd9b99596d69800aa5ad0d107a456195e1fdd7bc2'
           '80d6204a1ac0040f867184dfea75cc2988ba05da'
           'bcb378d479bf88343e2c6ec8beb599287c0f7139'
-          '3f58009f5d7188addc50e65ae5fb18b07f03f52c')
+          '3f58009f5d7188addc50e65ae5fb18b07f03f52c'
+          '5eb0af7dd112d949653b10a2345cb27e0ebc0f0a')
 
 
 prepare()
@@ -33,6 +35,7 @@ prepare()
   patch -p0 -i ../patch-Makefile
   patch -p0 -i ../patch-gnatcoll-scripts.ads
   patch -p0 -i ../patch-gnatcoll-scripts.adb
+  patch -p0 -i ../patch-gnatcoll-projects-normalize.adb
 }
 
 
