@@ -3,7 +3,7 @@
 
 pkgname=factorio-experimental
 pkgver=0.13.3
-pkgrel=3
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)"
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
