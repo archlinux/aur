@@ -68,6 +68,8 @@ int main(int argc, char *argv[]) {
             action = 1;
         }else if ( !strcmp( argv[1], "remove") ) {
             action = 2;
+        }else if ( !strcmp( argv[1], "rm") ) {
+            action = 2;
         }else if ( !strcmp( argv[1], "check") ) {
             action = 3;
         }else if ( !strcmp( argv[1], "set") ) {
