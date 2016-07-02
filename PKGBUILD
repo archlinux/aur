@@ -2,7 +2,7 @@
 pkgname=gi-bash-completion
 
 pkgver=0.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Bash completion support for gi"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi-bash-completion"
@@ -12,7 +12,7 @@ depends=('gi' 'bash-completion')
 provides=('gi-bash-completion')
 conflicts=('gi-bash-completion')
 install=
-source=(git+https://gagarski@bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
+source=(git+https://bitbucket.org/gagarski/$pkgname.git#tag=$pkgver)
 md5sums=('SKIP')
 
 
@@ -20,6 +20,6 @@ package() {
   cd "$srcdir/$pkgname"
   git checkout $pkgver
 
-  mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-  cp $srcdir/$pkgname/gi "$pkgdir/usr/share/bash-completion/completions/"
+  install -m0755 -d "$pkgdir/usr/share/bash-completion/completions/"
+  install -m0644 $srcdir/$pkgname/gi "$pkgdir/usr/share/bash-completion/completions/"
 }
