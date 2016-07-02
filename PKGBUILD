@@ -1,7 +1,7 @@
 # Maintainer: David Cao <dcao@protonmail.com>
 pkgname=timew-git
 pkgver=r1752.bce2a58
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
 url="https://taskwarrior.org/docs/timewarrior/index.html"
@@ -34,7 +34,7 @@ prepare() {
 
   patch -p1 -i "${srcdir}/timew-refresh-python2.patch"
 
-  cp "ext/on-modify-hook.timewarrior" "${srcdir}"
+  cp "${srcdir}/${pkgname%-git}/ext/on-modify.timewarrior" "${srcdir}"
 }
 
 build() {
@@ -47,7 +47,7 @@ package() {
   cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}/" install
 
-  install -Dm644 "${srcdir}/on-modify-hook.timewarrior" \
+  install -Dm644 "${srcdir}/on-modify.timewarrior" \
     "${pkgdir}/usr/share/doc/timew/on-modify.timewarrior"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
