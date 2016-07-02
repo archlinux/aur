@@ -5,7 +5,7 @@ _lang=uz
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Uzbek language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('dd9010157ab771239d6eb2bce00eb3984689fb1391f9446bc5e09ee835054316073a5e3f5caeeba22d69d2dd3364e68547268b63b0312d4c0a8ea6baa6c7e8b0')
+sha512sums=('7dabb9c967262a403d29331239abfb5a6f3a6475c826ac071c941cdd706b8cc20d443526a91d278f6c1698dd3449c756e6601e7c9e6779ba09b4eb6a2802951c')
