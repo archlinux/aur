@@ -5,7 +5,7 @@ _lang=vi
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Vietnamese language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('9b395c60b159272ffd8977de6aab8aae69d0873df2f7fee0eebdf05725cd4008ccf735fa5dfe6664dade6156e100822102266c1c09993540e931bf3a85537e79')
+sha512sums=('4110485e68bf303db801098123722ff3e3e26bccb0ab231132130c540841ca003c945567424de4b630ad27169a75e4063a7fcf30af3aab88df7584ba4fe11b8e')
