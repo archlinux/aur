@@ -9,9 +9,9 @@ pkgbase = anonsurf
 	depends = iptables
 	depends = resolvconf
 	depends = dnsmasq
-	source = https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf_2.0%2Bparrot3_all.deb
+	source = https://github.com/ParrotSec/anonsurf/blob/master/anonsurf_2.0+parrot4_all.deb?raw=true
 	source = https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf/torrc
-	md5sums = f26d3de73b7da4164ee00347c6d44c5d
+	md5sums = 412d3524f15feb7b995ad4ab62cb745f
 	md5sums = 60129a23feb63567b11ad21179303d6b
 
 pkgname = anonsurf
