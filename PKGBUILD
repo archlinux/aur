@@ -2,7 +2,7 @@
 
 pkgname=prometheus-bin
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source service monitoring system and time series database (binary, not built from source)"
 arch=('x86_64')
 url="http://prometheus.io"
@@ -15,7 +15,7 @@ install='prometheus.install'
 backup=('etc/prometheus/prometheus.yml')
 source=('prometheus.service'
 "https://github.com/prometheus/prometheus/releases/download/${pkgver}/prometheus-${pkgver}.linux-amd64.tar.gz" )
-sha256sums=('54e24e90fd323156e52b075eada302afc8d0513d6b24e16dba90c0f01250f0c2'
+sha256sums=('4a021c97178c244b844b659f36fdef4c33c1176aacd9ea570396acf49b398182'
             '660ba94efb1f4cff4934dc55bfe1b920f9bc4630bf731de4a67599b048c42c5c')
 
 package() {
