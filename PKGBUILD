@@ -5,8 +5,8 @@ _lang=da
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Danish language package for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('6305e5dd0db87fb2790fef3f991ea069d5bcc0f1d729aaee61dcc727be18aa4a093105d0e0ba09ace535c8bb686a03636746c358de35393527121a6e45af4da3')
+sha512sums=('01bb376f774e28ec7249588e6db7f68d943b86bc162a7f8216ebd3f605ceeae79d62b0f76cbe687264cb6bc2b8ff3f0fa0daff802174fe1675c790bc6111c1bb')
