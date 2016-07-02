@@ -1,0 +1,20 @@
+pkgbase = gi-zsh-completion
+	pkgdesc = Zsh completion support for gi
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://bitbucket.org/gagarski/gi-bash-completion
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = git
+	depends = gi
+	depends = zsh
+	depends = zsh-completions
+	optdepends = gi-bash-completion: for bash-completion support
+	provides = gi-zsh-completion
+	conflicts = gi-zsh-completion
+	source = git+https://bitbucket.org/gagarski/gi-zsh-completion.git#tag=0.0.3
+	md5sums = SKIP
+
+pkgname = gi-zsh-completion
+
