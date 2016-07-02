@@ -30,7 +30,7 @@ arch=('any')
 url='http://renew.de/'
 license=('LGPL')
 groups=("$pkgbase")
-depends=('java-environment>=7' 'hicolor-icon-theme' 'bash')
+depends=('java-environment>=7' 'bash')
 _baseurl="http://www.informatik.uni-hamburg.de/TGI/${pkgbase}/${pkgver}"
 source=("$_baseurl/${pkgbase}${pkgver}base.zip"
         'fix-desktop-file.patch'
