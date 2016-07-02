@@ -6,7 +6,7 @@ _lang=gu-in
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Gujarati language pack for Iceweasel (India)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('ae1d3564a45f621dffc781e5109783b989ec7cd20fb7dfe32816d27fe118d7904fe988f150ea7bdac173f504399d659cefe6f414777ef4ac0551aad338faa53b')
+sha512sums=('67c199333d697c4d7d5c6e782a2f202d4ee5b0b99c6f71a0c30934e7f175765a7a031ffd9317f4d09d11d4b24accccb449fa5b71afa4a4b6a805cbd6d4f6228e')
