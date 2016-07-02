@@ -19,7 +19,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=53.0.2774.3
+pkgver=53.0.2783.2
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -83,7 +83,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r0.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-linker-warnings-r0.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r13.diff'
+        'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch' # https://crbug.com/473866
@@ -98,7 +98,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '3a1c57ae49a31e8eff64b32c4196433ea240e4ea'
           '39caf5a74fe2dd1832c803b9e6fab5d21e3cbe36'
           # Misc Patches
-          '66b343fb7057341641339fb1bab42b6fdd1a361c'
+          '80122f1da3df77309fdee7dad4bf6370d9b6f350'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
           '3032c9aeb68d80d8ef3cb8029be0d06ee402fa7f'
@@ -149,7 +149,7 @@ fi
 # Build with GTK3?
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
-  makedepends+=('gtk2')
+   makedepends+=('gtk2')
   _launcher_gtk='GTK=3'
   optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
 elif [ "${_use_gtk3}" = "0" ]; then
@@ -446,7 +446,7 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-linker-warnings-r0.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r13.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
   patch -p1 -i "${srcdir}/minizip.patch"
 
   # Patch from crbug (chromium bugtracker)
