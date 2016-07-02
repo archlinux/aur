@@ -5,7 +5,7 @@ _lang=et
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Estonian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('dc11874e5b0eacd652b2929fe6018ee1ce789fb6b5fa7700a49a0f2e65aa29a27836ab57fa0a4e54049881433b393611f86b0576610edf3bc33d74cb6d26dbcb')
+sha512sums=('27026f8731a22de0bdff1d707ecf73626e88adf0a55f855babf7d4ee8f8bc746dab95942a13f3a43589437c7856a9fe2146804a646588475ebee21f6c2fbbd40')
