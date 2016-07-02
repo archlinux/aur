@@ -1,4 +1,4 @@
-*.pkg.tar*
+/*.pkg.tar*
 /pkg/
 /src/
 /numix-themes-darkblue-*.tar.gz
