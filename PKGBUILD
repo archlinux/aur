@@ -5,7 +5,7 @@
 set -u
 _pkgname='dropbox-uploader'
 pkgname="${_pkgname}-git"
-pkgver=0.15c.r0.g43e32ae
+pkgver=0.19c.r0.g9bf5490
 pkgrel=1
 pkgdesc='A bash script to manage Dropbox from the CLI'
 arch=('any')
@@ -15,10 +15,10 @@ license=('GPL3')
 depends=('bash' 'curl')
 makedepends=('git')
 #source=('git://github.com/andreafabrizi/Dropbox-Uploader.git')
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=("${_pkgname}")
 source=('git://github.com/severach/Dropbox-Uploader.git')
 sha256sums=('SKIP')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver%.r*}")
 
 pkgver() {
   set -u
@@ -39,6 +39,10 @@ package() {
   cd "${srcdir}/Dropbox-Uploader"
   install -Dpm755 'dropbox_uploader.sh' "${pkgdir}/usr/bin/dropbox_uploader"
   install -Dpm755 'dropShell.sh' "${pkgdir}/usr/bin/dropShell"
+  sed -i -e 's:^BRANDING=.*$'":BRANDING='Arch Linux':g" \
+         -e '# curl depends on ca-certificates so this message should never be seen' \
+         -e 's:^PACKAGE_CACERT_INSTALL=.*$'":PACKAGE_CACERT_INSTALL='pacman -S ca-certificates':g" \
+    "${pkgdir}/usr/bin"/{dropShell,dropbox_uploader}
   set +u
 }
 set +u
