@@ -1,4 +1,4 @@
-pkgbase = morituri-eaclogger-git
+pkgbase = whipper-eaclogger-git
 	pkgdesc = whipper logger meant to mimic EAC style logs
 	pkgver = 31.b0a5fd2
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = morituri-eaclogger-git
 	source = git+https://github.com/JoeLametta/morituri-eaclogger.git
 	md5sums = SKIP
 
-pkgname = morituri-eaclogger-git
+pkgname = whipper-eaclogger-git
 
