@@ -5,7 +5,7 @@ _lang=rm
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Romansh language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('00c7f5fc2b28421f22d90378e61db124108f358bbc2a4f60118ac908c62d804b2be2e1b59b4120d40b5dc680ce24573da8fdf81318f0aa115724ffa9e083f76f')
+sha512sums=('a2850d42fc931d1d54fbaf4e2fce488d39d864614568f0adfaddebe16678961e12f85224b0387f6f84cc0a8132852125f0dd4f9813bb3d20bf8e70c4da2a026a')
