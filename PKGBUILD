@@ -5,7 +5,7 @@ _lang=xh
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Xhosa language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('031138eb9acdb7f50198019583cdb27f0b004a7e3559e73c35f394edffcd1a8cb103b5f219b5632f2fa3fe8ed6d4c091007fc5efc6436544241fc93f7b12a758')
+sha512sums=('47fdda2a26221d828944d8eb8821eba1b598d4626bfd079772453f3a7287ee0970d5b1ad56deaf362eae2142d941fe02a9ed10d1fda2f11cd90757944241df15')
