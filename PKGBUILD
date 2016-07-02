@@ -100,91 +100,81 @@ package_renew-base() {
 
 package_renew-fa-base() {
   pkgdesc='The Reference Net Workshop - Finite Automata Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-faformalism() {
   pkgdesc='The Reference Net Workshop - FAFormalism Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-fs() {
   pkgdesc='The Reference Net Workshop - Feature Structure Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-guiprompt() {
   pkgdesc='The Reference Net Workshop - GUI Prompt Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-imagenetdiff() {
   pkgdesc='The Reference Net Workshop - ImageNetDiff Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=('imagemagick' "${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-jgit() {
   pkgdesc='The Reference Net Workshop - JGitLibs Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
   install -d "${pkgdir}/usr/share/java/${pkgbase}/plugins"
-  cp -dR "${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}" "${pkgdir}/usr/share/java/${pkgbase}/plugins"
+  cp -dR ${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]} "${pkgdir}/usr/share/java/${pkgbase}/plugins"
 }
 
 package_renew-refactoring() {
   pkgdesc='The Reference Net Workshop - Refactoring Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-svn() {
   pkgdesc='The Reference Net Workshop - SvnLibs Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
   
   install -d "${pkgdir}/usr/share/java/${pkgbase}/plugins"
-  cp -dR "${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}" "${pkgdir}/usr/share/java/${pkgbase}/plugins"
+  cp -dR ${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]} "${pkgdir}/usr/share/java/${pkgbase}/plugins"
 }
 
 package_renew-tablet() {
   pkgdesc='The Reference Net Workshop - Tablet Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")  
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 
 package_renew-xrn() {
   pkgdesc='The Reference Net Workshop - XRN Plug-in'
-  pkgver=${_pkgvers[$pkgname]}
   depends=("${pkgbase}-base")
 
-  local filename="${pkgname/renew-/}-${_pkgvers[${pkgbase}-base]}_${pkgver}.jar"
-  install -Dm 0644 "${filename}" "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
+  local filename="${pkgname/renew-/}-${pkgver}_${_pkgvers[$pkgname]}.jar"
+  install -Dm 0644 ${filename} "${pkgdir}/usr/share/java/${pkgbase}/plugins/${filename}"
 }
 # vim:set ft=sh ts=2 sw=2 et:
