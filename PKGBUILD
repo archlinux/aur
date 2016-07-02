@@ -10,8 +10,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/libretro/beetle-psx-libretro"
 license=('GPLv2')
 makedepends=('git')
-conflicts=('libretro-mednafen-psx')
-provides=('libretro-mednafen-psx')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
         "${_gitname}.info::https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/beetle_psx_libretro.info")
 md5sums=('SKIP'
@@ -32,6 +30,9 @@ build()
 
 package_libretro-mednafen-psx-git()
 {
+	conflicts=('libretro-mednafen-psx')
+	provides=('libretro-mednafen-psx')
+	
 	sed -ie "s/display_version =.*/display_version = \"${pkgver}\"/" $srcdir/$_gitname.info
 	install -v -Dm644 $srcdir/$_gitname.info $pkgdir/usr/lib/libretro/mednafen_psx_libretro.info
 	install -v -Dm644 $srcdir/$_gitname/mednafen_psx_libretro.so $pkgdir/usr/lib/libretro/mednafen_psx_libretro.so
