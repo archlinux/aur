@@ -6,7 +6,7 @@ _lang=sv-se
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Swedish language package for Iceweasel"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('aaf43512d497b78f36fbc149128a47fd449e67d6a4db5a109847469cdd5a30dc171b9e875829b4d2306fc2b12bbb4b4ea64e78a8858421ac08151c485c67108b')
+sha512sums=('f9b9840203bf0a1d674282fea9caf29794900681781f9b86a623a40e1d115d71f72c744aa22f1d0fbb4ad6cfa60652f34935536b17c2528f57bb483669ddc011')
