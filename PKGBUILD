@@ -6,7 +6,7 @@ _lang=en-za
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="English (South Africa) language package for Iceweasel"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('64d41b3c51418783e9615bc2dd5aa4538610cda30fab6642996f9b656771355d83acf9a6ecd0d014f92383455488e73667ae02fbe5e248a953df2b7869885345')
+sha512sums=('f65bc81dfa201605c87a1cfe4c73088cfa0d4975b46e734da9645d19453fb11694a74c1be66cc8a055c21942d1cddc2d28eab45cdef67a0cc3cf3a999ece86bb')
