@@ -1,7 +1,7 @@
 pkgbase = gi
 	pkgdesc = Git wrapper to perform Mercurial-like short unique abbreviation searching for commands
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/gagarski/gi
 	arch = any
 	license = custom
