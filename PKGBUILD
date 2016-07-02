@@ -6,7 +6,7 @@ _lang=nb-no
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Bokmål language package for Iceweasel (Norway)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('0d002beb50dc02872203ae279d6128db28f11ee823d03fab71f6563093bb087934d75d921cfa348b09e3c011954aec28543651933c26e656c96a9121380eb903')
+sha512sums=('f64b29957a3e431000a7b5ca037c1cd20aca7fd23a1d636a7f040de98ca2be4c58914d2ec96a8f5029741fce92745c09cfbdde97a2cf15491ed3a0811cf9b6ef')
