@@ -2,15 +2,14 @@
 _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('insight-toolkit')
-makedepends=('cmake' 'git' 'java-environment' 'mono' 'python' 'python-pip' 'python-virtualenv' 'r' 'ruby' 'swig' 'tcl' 'tk')
+makedepends=('cmake' 'git' 'mono' 'python' 'python-pip' 'python-virtualenv' 'r' 'ruby' 'swig' 'tcl' 'tk')
 optdepends=(
-    'java-runtime: Java bindings'
     'mono: C# bindings'
     'python: Python bindings'
     'r: R bindings'
@@ -45,7 +44,7 @@ prepare() {
 build() {
     cd "$_pkgname-$pkgver/build"
 
-    env JAVA_HOME=/usr/lib/jvm/default \
+    # TODO: Java binding is broken with swig 3.0.9 and openjdk8
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_RPATH:BOOL=ON \
@@ -53,6 +52,7 @@ build() {
         -DBUILD_TESTING:BOOL=OFF \
         -DBUILD_EXAMPLES:BOOL=OFF \
         -DSimpleITK_PYTHON_WHEEL:BOOL=ON \
+        -DWRAP_JAVA:BOOL=OFF \
         ..
 
     make all dist
@@ -75,7 +75,4 @@ package() {
 
     install -d -Dm755 "$pkgdir/usr/lib/R/library/"
     cp -dr --no-preserve=ownership "$_builddir/Wrapping/Rpackaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
-
-    install -d -Dm755 "$pkgdir/usr/share/java/$_pkgname"
-    cp -d --no-preserve=ownership "$_builddir/Wrapping/dist/$_pkgname-$pkgver-"*"-Java-"*/* "$pkgdir/usr/share/java/$_pkgname/"
 }
