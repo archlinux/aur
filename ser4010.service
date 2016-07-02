@@ -1,0 +1,11 @@
+[Unit]
+Description=Flash ser4010 firmware on startup
+Requires=systemd-modules-load.service
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/si4010prog -d c2drv:///dev/c2_bus reset prg:/opt/ser4010_firmware/ser4010-0.2.0.hex run
+
+[Install]
+WantedBy=multi-user.target

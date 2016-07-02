@@ -1,0 +1,15 @@
+pkgbase = ser4010_firmware
+	pkgdesc = Firmware for UART controllable SI4010 based tunable OOK/FSK RF transmitter
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dimhoff/ser4010
+	arch = any
+	depends = si4010prog
+	depends = c2_gpio-dkms
+	source = https://github.com/dimhoff/ser4010/releases/download/v0.2.0/ser4010_firmware-0.2.0.tar.gz
+	source = ser4010.service
+	md5sums = b009db33ae46efead5a273e1a46d10bb
+	md5sums = a1f69e8ea25172077c8af56114e2fcf4
+
+pkgname = ser4010_firmware
+
