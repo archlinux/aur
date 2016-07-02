@@ -5,7 +5,7 @@ _lang=fa
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Persian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('0a9d826e0ab14cd34c2f4bdbb593e35c9c4ee896cdfe920df17e330483425fc11d7747fe4aed54931084bca25d6b002a02a5a9013dbbb65a8e3e74edd368ccad')
+sha512sums=('02192324055249cd8e06a004dcb2533f3bbb02b8952cbcc9c5ca19f98c8d03c54ef163720b3653fb05e9a8705bb5801251aa474753b938c82f4b7ac5297ad5a4')
