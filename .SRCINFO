@@ -3,7 +3,7 @@
 pkgbase = vala-panel-git
 	pkgdesc = Gtk3 panel for compositing window managers
 	pkgver = 0.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rilian-la-te/vala-panel
 	install = vala-panel.install
 	arch = i686
