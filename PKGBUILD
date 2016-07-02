@@ -1,7 +1,7 @@
 # Maintainer: Flow
 
 pkgname=svfs
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="The Swift Virtual File System for hubiC (ovh)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -16,11 +16,11 @@ source_armv6h=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgna
 source_armv7h=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgname}_${pkgver}_armel.deb")
 source_x86_64=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
 source_i686=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgname}_${pkgver}_386.deb")
-md5sums_i686=('c88d7ece9684a41333dd7bbed3922b65')
-md5sums_x86_64=('2415a33c10ffed7f8897c2ee7c6de4bd')
-md5sums_arm=('4e8ab3490fd6640aa77047d755c79899')
-md5sums_armv6h=('4e8ab3490fd6640aa77047d755c79899')
-md5sums_armv7h=('4e8ab3490fd6640aa77047d755c79899')
+md5sums_i686=('5e3a9882e29cad5caa95b7b3b6e320ea')
+md5sums_x86_64=('d9d5cbad822a56ade569f3d2ca7d4520')
+md5sums_arm=('e7aaae00037b85570b10dd48a65e158c')
+md5sums_armv6h=('e7aaae00037b85570b10dd48a65e158c')
+md5sums_armv7h=('e7aaae00037b85570b10dd48a65e158c')
 
 package() {  
     cd "${srcdir}"
