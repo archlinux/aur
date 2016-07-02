@@ -5,7 +5,7 @@ _lang=sq
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Albanian language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('4c36be56cce4849b2e5ca844fcd29c27a455339635bf367787fcf817a60ba4c7f705efd11c1fb154f87ad55ae1e5eecc3fcb97d7eec0fc5d6a9a7e3944beebfd')
+sha512sums=('f0aeb39a74b15b94ba5d62ca745ccf34d8d963b2efcb127e3fe554f412357a307d1d6f33c16c4f4b14915035df5ea32e80cab900cc1575cd548f23b6ee9c541a')
