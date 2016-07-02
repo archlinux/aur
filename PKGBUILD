@@ -21,7 +21,7 @@ optdepends=('gvfs: file deletion support')
 makedepends=('npm' 'hunspell-en')
 conflicts=('atom-editor-bin' 'atom-editor-beta')
 install=${_pkgname}-${_version}.install
-source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
+source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
 "dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
 "fusion-ui::git+${_fusurl}/fusion-ui"
