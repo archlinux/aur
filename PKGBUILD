@@ -28,8 +28,6 @@ sha256sums_x86_64=('c7e9090866e115486b56a2dc47f920be40354fe6680af0646f3355d9cd81
 build() {
 	# Extract the tiny, tiny bit of license/usage information that exists
 	# in this piece of software distribution.
-	ls 
-	ls $srcdir
 	sed -n '/By installing/,/ any way./p' README.txt > LICENSE
 }
 
