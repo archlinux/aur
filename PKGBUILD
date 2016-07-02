@@ -6,8 +6,8 @@ _lang=pt-pt
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Portuguese language package for Iceweasel (Portugal)"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('c0be2d7bf7b30da5d1f0b2b70e673cf2730c50f862c9ce9e8e4011ed2338f6d9a31cc29e059ffb4835e640f3afeb684e280053dbaef0a3229fc134d9d7b94b5f')
+sha512sums=('726eff7999a804bd8a5060cdf5b88dd1a9ea8355e54241c1bead055ab351044155231c443bff4b6f2ed056d96256a4345f2f756436af715f60fe9f56ee82722b')
