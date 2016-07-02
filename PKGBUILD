@@ -4,7 +4,7 @@
 
 pkgname=xmlada
 pkgver=2016
-pkgrel=2
+pkgrel=1
 pkgdesc="A full XML suite for Ada"
 
 arch=('i686' 'x86_64')
@@ -14,60 +14,151 @@ license=('GPL')
 depends=("gcc-ada")
 
 source=(http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0
-        patch-aclocal.m4
-        patch-Makefile.in)
+        Makefile.archy
+        generic_gpr.in)
 
-sha1sums=('a9c840d9d05ed865aa7c960d9f27cf7cd93e12b9'
-          '20fa4ccacd2cebd2b0b349dc11371730a50a0fd2'
-          '33ac945685c79befd86c3c4f6093202a5e7b209a')
+md5sums=('631957d2f55277f1d58a68186fbf5022'
+         '6f4761c7b3374c27828ba573f0463069'
+         'cde06f485e180f4cc82bcdb450d36153')
 
+
+GREP=grep
+AWK=gawk
+ECHO=echo
+SORT=sort
+MKDIR=mkdir
+INSTALL_DATA=install
+INSTALL_SCRIPT=install
+RM=rm
+FIND=find
+PRINTF=printf
+SED=sed
+REINPLACE_CMD=sed
 
 
 prepare()
 {
-  cd $srcdir/$pkgname-gpl-$pkgver-src
-	
-  patch -p0 -i ../patch-aclocal.m4
-  patch -p0 -i ../patch-Makefile.in
+  WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
+  FILESDIR=$srcdir
 
+  DUNICODE=$WRKSRC/unicode/dummy_unicode.adb
+  DINPSRC=${WRKSRC}/input_sources/dummy_input_sources.adb
+  DSAX=${WRKSRC}/sax/dummy_sax.adb
+  DDOM=${WRKSRC}/dom/dummy_dom.adb
+  DSCHEMA=${WRKSRC}/schema/dummy_schema.adb
+
+  cd $srcdir/$pkgname-gpl-$pkgver-src
+
+  # dummy-unicode:
+	${GREP}  --no-filename  ^package ${WRKSRC}/unicode/unicode-*.ads | \
+		${AWK} '{print "with " $$2 ";"}' | ${SORT} > ${DUNICODE}
+	${ECHO} 'procedure dummy_unicode is' >> ${DUNICODE}
+	${ECHO} 'begin' >> ${DUNICODE}
+	${ECHO} '   null;' >> ${DUNICODE}
+	${ECHO} 'end dummy_unicode;' >> ${DUNICODE}
+
+    sed 's/ is;/;/g' ${DUNICODE} > tmp
+    sed 's/with package/with/g' tmp > ${DUNICODE}
+
+  # dummy-input_sources:
+	${GREP}  --no-filename   ^package ${WRKSRC}/input_sources/input_sources-*.ads | \
+		${AWK} '{print "with " $$2 ";"}' | ${SORT} > ${DINPSRC}
+	${ECHO} 'procedure dummy_input_sources is' >> ${DINPSRC}
+	${ECHO} 'begin' >> ${DINPSRC}
+	${ECHO} '   null;' >> ${DINPSRC}
+	${ECHO} 'end dummy_input_sources;' >> ${DINPSRC}
+
+    sed 's/ is;/;/g' ${DINPSRC} > tmp
+    sed 's/with package/with/g' tmp > ${DINPSRC}
+
+  # dummy-sax:
+	${GREP}  --no-filename   ^package ${WRKSRC}/sax/sax-*.ads | \
+		${AWK} '{print "with " $$2 ";"}' | ${SORT} > ${DSAX}
+	${ECHO} 'procedure dummy_sax is' >> ${DSAX}
+	${ECHO} 'begin' >> ${DSAX}
+	${ECHO} '   null;' >> ${DSAX}
+	${ECHO} 'end dummy_sax;' >> ${DSAX}
+
+    sed 's/ is;/;/g' ${DSAX} > tmp
+    sed 's/with package/with/g' tmp > ${DSAX}
+
+  # dummy-dom:
+	${GREP}  --no-filename   ^package ${WRKSRC}/dom/dom-*.ads | \
+		${AWK} '{print "with " $$2 ";"}' | ${SORT} > ${DDOM}
+	${ECHO} 'procedure dummy_dom is' >> ${DDOM}
+	${ECHO} 'begin' >> ${DDOM}
+	${ECHO} '   null;' >> ${DDOM}
+	${ECHO} 'end dummy_dom;' >> ${DDOM}
+
+    sed 's/ is;/;/g' ${DDOM} > tmp
+    sed 's/with package/with/g' tmp > ${DDOM}
+
+  # dummy-schema:
+	${GREP}  --no-filename   ^package ${WRKSRC}/schema/schema-*.ads | \
+		${AWK} '{print "with " $$2 ";"}' | ${SORT} > ${DSCHEMA}
+	${ECHO} 'procedure dummy_schema is' >> ${DSCHEMA}
+	${ECHO} 'begin' >> ${DSCHEMA}
+	${ECHO} '   null;' >> ${DSCHEMA}
+	${ECHO} 'end dummy_schema;' >> ${DSCHEMA}
+
+    sed 's/ is;/;/g' ${DSCHEMA} > tmp
+    sed 's/with package/with/g' tmp > ${DSCHEMA}
+ 
+
+	# vital gpr files are missing from GPL 2015, recreate them
+    #
+
+    PORTVERSION="2016"
+
+    FIND1=$(cd ${WRKSRC}/unicode       &&  find * -maxdepth 0  \( -name "unicode*.ads"   -o -name "unicode*.adb"      \) -exec printf ', "%s"' {} \; )
+    FIND2=$(cd ${WRKSRC}/input_sources &&  find * -maxdepth 0  \( -name "input*.ad[bs]"  -o -name "input_sources.ads" \) -exec printf ', "%s"' {} \; )
+    FIND3=$(cd ${WRKSRC}/sax           &&  find * -maxdepth 0     -name "sax-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND4=$(cd ${WRKSRC}/dom           &&  find * -maxdepth 0     -name "dom-*.ad[bs]"                                  -exec printf ', "%s"' {} \; )
+    FIND5=$(cd ${WRKSRC}/schema        &&  find * -maxdepth 0  \( -name "schema*.ad[bs]" -o -name "schema.ads"        \)  -exec printf ', "%s"' {} \; )
+
+
+	${SED} -e '/^with/d' -e 's|@ZONE@|unicode|' \
+		-e "s|@FILES@|${FIND1}|" \
+		-e 's|@VERSION@|2016|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_unicode.gpr
+
+	${SED} -e 's|@DEPENDS@|unicode|' -e 's|@ZONE@|input_sources|' \
+		-e "s|@FILES@|${FIND2}|" \
+		-e 's|@VERSION@|2016|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_input_sources.gpr
+
+	${SED} -e 's|@DEPENDS@|input_sources|' -e 's|@ZONE@|sax|' \
+		-e "s|@FILES@|${FIND3}|" \
+		-e 's|@VERSION@|2016|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_sax.gpr
+
+	${SED} -e 's|@DEPENDS@|sax|' -e 's|@ZONE@|dom|' \
+		-e "s|@FILES@|${FIND4}|" \
+		-e 's|@VERSION@|2016|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_dom.gpr
+
+	${SED} -e 's|@DEPENDS@|dom|' -e 's|@ZONE@|schema|' \
+		-e "s|@FILES@|${FIND5}|" \
+		-e 's|@VERSION@|2016|' ${FILESDIR}/generic_gpr.in \
+		> ${WRKSRC}/distrib/xmlada_schema.gpr
+
+	# Since we want to pull in all 5 libs, we only need to specify schema
+    #
+	${REINPLACE_CMD} -i -e '/unicode/d' ${WRKSRC}/distrib/xmlada.gpr
 }
 
 
 
-build()
+build() 
 {
   cd $srcdir/$pkgname-gpl-$pkgver-src
 
-  autoconf
   ./configure --prefix=/usr
-  make static relocatable
 
-
-  rm -fr lib
-  mkdir -p lib/xmlada/xmlada_dom.relocatable
-
-  cp ./dom/lib/relocatable/libxmlada_dom.so                          lib/xmlada/xmlada_dom.relocatable
-  cp ./dom/lib/relocatable/libxmlada_dom.so.2016                     lib/xmlada/xmlada_dom.relocatable
-  cp ./input_sources/lib/relocatable/libxmlada_input_sources.so      lib/xmlada/xmlada_input.relocatable
-  cp ./input_sources/lib/relocatable/libxmlada_input_sources.so.2016 lib/xmlada/xmlada_input.relocatable
-  cp ./sax/lib/relocatable/libxmlada_sax.so                          lib/xmlada/xmlada_sax.relocatable
-  cp ./sax/lib/relocatable/libxmlada_sax.so.2016                     lib/xmlada/xmlada_sax.relocatable
-  cp ./schema/lib/relocatable/libxmlada_schema.so                    lib/xmlada/xmlada_schema.relocatable
-  cp ./schema/lib/relocatable/libxmlada_schema.so.2016               lib/xmlada/xmlada_schema.relocatable
-  cp ./unicode/lib/relocatable/libxmlada_unicode.so                  lib/xmlada/xmlada_unicode.relocatable
-  cp ./unicode/lib/relocatable/libxmlada_unicode.so.2016             lib/xmlada/xmlada_unicode.relocatable
-
-  ln -s xmlada/xmlada_dom.relocatable/libxmlada_dom.so.2016               lib/libxmlada_dom.so.2016
-  ln -s xmlada/xmlada_input.relocatable/libxmlada_input_sources.so.2016   lib/libxmlada_input_sources.so.2016
-  ln -s xmlada/xmlada_sax.relocatable/libxmlada_sax.so.2016               lib/libxmlada_sax.so.2016
-  ln -s xmlada/xmlada_schema.relocatable/libxmlada_schema.so.2016         lib/libxmlada_schema.so.2016
-  ln -s xmlada/xmlada_unicode.relocatable/libxmlada_unicode.so.2016       lib/libxmlada_unicode.so.2016
+  PROCESSORS=5   make -f ../Makefile.archy all
 }
 
 
-
-INSTALL_DATA=install
-INSTALL_SCRIPT=install
 
 package() 
 {
@@ -78,73 +169,52 @@ package()
   WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
 
 
-	mkdir -p \
+	${MKDIR} -p \
         ${STAGEDIR}${PREFIX}/bin \
         ${STAGEDIR}${PREFIX}/include/xmlada \
 		${STAGEDIR}${PREFIX}/lib/gnat \
-		${STAGEDIR}${PREFIX}/share/gps/plug-ins \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_dom.relocatable \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_input.relocatable \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_sax.relocatable \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_schema.relocatable \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_unicode.relocatable \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_dom.static \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_input.static \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_sax.static \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_schema.static \
-        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_unicode.static \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_dom.relocatable \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_input.relocatable \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_sax.relocatable \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_schema.relocatable \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_unicode.relocatable \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_dom.static \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_input.static \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_sax.static \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_schema.static \
-        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_unicode.static
-
+		${STAGEDIR}${PREFIX}/lib/xmlada/relocatable \
+		${STAGEDIR}${PREFIX}/lib/xmlada/static \
+		${STAGEDIR}${PREFIX}/share/gps/plug-ins
 #		${STAGEDIR}${DOCSDIR}
 
+	${INSTALL_DATA} ${WRKSRC}/dom/*.ad[bs] \
+		${WRKSRC}/input_sources/*.ad[bs] \
+		${WRKSRC}/sax/*.ad[bs] \
+		${WRKSRC}/schema/*.ad[bs] \
+		${WRKSRC}/unicode/*.ad[bs] \
+		${STAGEDIR}${PREFIX}/include/xmlada
 
-	${INSTALL_DATA} ${WRKSRC}/dom/*.ad[bs]           ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_dom.relocatable
-	${INSTALL_DATA} ${WRKSRC}/input_sources/*.ad[bs] ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_input.relocatable
-	${INSTALL_DATA} ${WRKSRC}/sax/*.ad[bs]           ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_sax.relocatable
-	${INSTALL_DATA} ${WRKSRC}/schema/*.ad[bs]        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_schema.relocatable
-	${INSTALL_DATA} ${WRKSRC}/unicode/*.ad[bs]       ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_unicode.relocatable
+	${RM} ${STAGEDIR}${PREFIX}/include/xmlada/dummy_*.adb
 
-	${INSTALL_DATA} ${WRKSRC}/dom/*.ad[bs]           ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_dom.static
-	${INSTALL_DATA} ${WRKSRC}/input_sources/*.ad[bs] ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_input.static
-	${INSTALL_DATA} ${WRKSRC}/sax/*.ad[bs]           ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_sax.static
-	${INSTALL_DATA} ${WRKSRC}/schema/*.ad[bs]        ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_schema.static
-	${INSTALL_DATA} ${WRKSRC}/unicode/*.ad[bs]       ${STAGEDIR}${PREFIX}/include/xmlada/xmlada_unicode.static
+	${INSTALL_DATA} \
+        ${WRKSRC}/dom/obj/relocatable/*.ali \
+		${WRKSRC}/input_sources/obj/relocatable/*.ali \
+		${WRKSRC}/sax/obj/relocatable/*.ali \
+		${WRKSRC}/schema/obj/relocatable/*.ali \
+		${WRKSRC}/unicode/obj/relocatable/*.ali \
+		${STAGEDIR}${PREFIX}/lib/xmlada/relocatable
 
-	${INSTALL_DATA} ${WRKSRC}/dom/lib/relocatable/*           ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_dom.relocatable
-	${INSTALL_DATA} ${WRKSRC}/input_sources/lib/relocatable/* ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_input.relocatable
-	${INSTALL_DATA} ${WRKSRC}/sax/lib/relocatable/*           ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_sax.relocatable
-	${INSTALL_DATA} ${WRKSRC}/schema/lib/relocatable/*        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_schema.relocatable
-	${INSTALL_DATA} ${WRKSRC}/unicode/lib/relocatable/*       ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_unicode.relocatable
+     cp -av \
+		${WRKSRC}/dom/lib/relocatable/*           \
+		${WRKSRC}/input_sources/lib/relocatable/* \
+		${WRKSRC}/sax/lib/relocatable/* \
+		${WRKSRC}/schema/lib/relocatable/* \
+		${WRKSRC}/unicode/lib/relocatable/* \
+		${STAGEDIR}${PREFIX}/lib/xmlada/relocatable
 
-	${INSTALL_DATA} ${WRKSRC}/dom/lib/static/*           ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_dom.static
-	${INSTALL_DATA} ${WRKSRC}/input_sources/lib/static/* ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_input.static
-	${INSTALL_DATA} ${WRKSRC}/sax/lib/static/*           ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_sax.static
-	${INSTALL_DATA} ${WRKSRC}/schema/lib/static/*        ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_schema.static
-	${INSTALL_DATA} ${WRKSRC}/unicode/lib/static/*       ${STAGEDIR}${PREFIX}/lib/xmlada/xmlada_unicode.static
+	${INSTALL_DATA} ${WRKSRC}/dom/obj/static/*.ali \
+		${WRKSRC}/input_sources/obj/static/*.ali \
+		${WRKSRC}/sax/obj/static/*.ali \
+		${WRKSRC}/schema/obj/static/*.ali \
+		${WRKSRC}/unicode/obj/static/*.ali \
+		${WRKSRC}/dom/lib/static/* \
+		${WRKSRC}/input_sources/lib/static/* \
+		${WRKSRC}/sax/lib/static/* \
+		${WRKSRC}/schema/lib/static/* \
+		${WRKSRC}/unicode/lib/static/* \
+		${STAGEDIR}${PREFIX}/lib/xmlada/static
 
-
-	${INSTALL_DATA}                \
-        ${WRKSRC}/distrib/xml*.gpr \
-        ${WRKSRC}/dom/xml*.gpr \
-        ${WRKSRC}/input_sources/xml*.gpr \
-        ${WRKSRC}/sax/xml*.gpr \
-        ${WRKSRC}/schema/xml*.gpr \
-        ${WRKSRC}/unicode/xml*.gpr \
+	${INSTALL_DATA} ${WRKSRC}/distrib/xml*.gpr \
 		${STAGEDIR}${PREFIX}/lib/gnat
-
-
-    mv lib/libxmlada_dom.so.2016           ${STAGEDIR}${PREFIX}/lib
-    mv lib/libxmlada_input_sources.so.2016 ${STAGEDIR}${PREFIX}/lib
-    mv lib/libxmlada_sax.so.2016           ${STAGEDIR}${PREFIX}/lib
-    mv lib/libxmlada_schema.so.2016        ${STAGEDIR}${PREFIX}/lib
-    mv lib/libxmlada_unicode.so.2016       ${STAGEDIR}${PREFIX}/lib
 }
