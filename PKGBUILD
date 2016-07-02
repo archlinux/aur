@@ -6,7 +6,7 @@ _lang=bn-in
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Bengali language pack for Iceweasel (India)"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('21f0d9458872f158513a4e05814f0bf46c3567b3e48ae826542761b401d971656e596199598f3e292b90eaaf62306e1f3128bcb458db34a94d1fe6d9337c5db8')
+sha512sums=('c0c23b75aae2b68388696290c90c0d2068460ede85080727647f59e1bbf3c6b0ad6687171a25b3b51fce82d2290021608b55c03bce9f69fdbdbb625fc7b7f47e')
