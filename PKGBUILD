@@ -13,8 +13,8 @@ pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('glu' 'kded' qt5-quickcontrols' 'plasma-desktop' 'python' v4l-utils' 'breeze-icons' 'qt5-webkit' 'kfilemetadata' 'knewstuff' 
-'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
+depends=('glu' 'kded' 'qt5-quickcontrols' 'plasma-desktop' 'python' 'v4l-utils' 'breeze-icons' 'qt5-webkit'
+	 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
             'cdrkit: for creation of DVD ISO images'
