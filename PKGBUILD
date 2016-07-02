@@ -5,7 +5,7 @@ _lang=pl
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Polish language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('4c00ee06f5d5aa96b8060e23cdf5a78538c7baf17e977997343db0d349fba062daf43f27b11765aa53e4edb440aa16fdc870971ae15eb547f1175c8796680251')
+sha512sums=('dfde79312a71ffabf87409aadc380fec95c4143cc81b456768a12f4e61805544b3725325e5224271028b437a14fb5c7828bf6126bce10c9c45f519cfeb5f8305')
