@@ -5,7 +5,7 @@ _lang=gl
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Galician language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('ee55723fd85599d97935d61a63d8cd69d9e30a263343fa831f77f98bd8f73357eb7f1d4318b1035564d80d76ba03654a4059f085ceb6f349bbf5856ce4cbeefc')
+sha512sums=('0283241a1c8be51898017b9c6a34e170d3aa6f2dcc612dd677659dee2e90fc1c68576344a84d7fbeeecb82f26fcf49e1d2b474a4b825dfcabe016b7d9bbe4601')
