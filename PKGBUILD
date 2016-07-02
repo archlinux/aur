@@ -6,11 +6,11 @@ _lang=es-es
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Spanish language package for Iceweasel"
 arch=('any')
-url="https://wiki.debian.org/it/Iceweasel"
+url="https://wiki.debian.org/Iceweasel"
 license=('MPL' 'GPL')
 depends=("iceweasel>=$pkgver")
 makedepends=('unzip' 'zip')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('a026efb52fe328e5337c8a04b373c1d1078f3ac4f169740ba53a1c137971b6c6285494d3632cf15c803ff19df946ec8b4fb9b0ab7ba1da7c3d6dffe97acbc55a')
+sha512sums=('0d08c8f1413533779443aa6505fed454214639e2d88624c5880fb79488bf8bfcb815d619428130d8e6efcb6ce377a6099935ad10e3c52f479fb3b0f942cdfc11')
