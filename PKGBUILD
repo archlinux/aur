@@ -5,7 +5,7 @@ _lang=ff
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Fulah language pack for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('bb3bb326cacaf7a1be09286a5e369b7c0d9ea1eb965124a6c0211a64eb17d25c05c37f40c95bc4e8c0232f3303fda3db73455f594d9714019c4bb8a565845ac5')
+sha512sums=('fa1307b16eead08ebabfa96b4383f35005177eb9c05ecf96fcec0ce6d7452d6f199e7580458a4205dd944330989c0348f688505641c2bcc42dfebb3f3d76b712')
