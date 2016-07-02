@@ -1,7 +1,7 @@
 pkgbase = python-home-assistant
 	pkgdesc = Home Assistant is an open-source home automation platform running on Python 3
 	pkgver = 0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://home-assistant.io/
 	install = hass.install
 	arch = any
