@@ -1,9 +1,10 @@
 # Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
 
 pkgname="qt5-python27-git"
-pkgver=3.0+16.gf3755ad.dirty
-pkgrel=2
-arch=("any")
+_qtver=5.7.0
+pkgver=3.1
+pkgrel=1
+arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
 license=("LGPL")
 url="https://github.com/knossos-project/PythonQt"
@@ -11,31 +12,28 @@ makedepends=("cmake"
   "ninja"
 )
 depends=("python2"
-  "qt5-base"
+  "qt5-declarative" # =$_qtver
   "qt5-multimedia"
   "qt5-svg"
-  "qt5-tools"
-  "qt5-webkit"
-  "qt5-xmlpatterns"
 )
 provides=("qt5-python27"
   "pythonqt"
 )
 conflicts=("pythonqt")
-replaces=("qt5-python26"
-  "qt5-python25"
-  "qt5-python24"
-  "qt5-python23"
-  "qt5-python22"
-  "qt5-python21"
-  "qt5-python20"
-)
-source=("git+https://github.com/knossos-project/PythonQt.git")
-md5sums=('SKIP')
+replaces=("qt5-python26") # conflicting older versions is the idea
+source=("git+https://github.com/knossos-project/PythonQt.git"
+  "qmetaobjectbuilder_p.h::http://code.qt.io/cgit/qt/qtbase.git/plain/src/corelib/kernel/qmetaobjectbuilder_p.h?h=$_qtver")
+md5sums=('SKIP'
+         'cee8d4c63cf37186a6076465a1b40e70')
 
 pkgver() {
   cd "PythonQt"
   git describe --always --dirty --tags | sed 's/^v//;s/-/+/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p PythonQt/src/private
+  cp qmetaobjectbuilder_p.h PythonQt/src/private/qmetaobjectbuilder_p.h
 }
 
 build() {
