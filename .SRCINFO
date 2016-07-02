@@ -1,0 +1,18 @@
+pkgbase = luaradio
+	pkgdesc = A lightweight, embeddable software-defined radio framework built on LuaJIT
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://luaradio.io
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = luajit
+	depends = liquid-dsp-git
+	optdepends = libvolk
+	optdepends = fftw
+	source = git+https://github.com/vsergeev/luaradio.git#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = luaradio
+
