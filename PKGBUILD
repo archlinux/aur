@@ -6,7 +6,7 @@ _lang=ga-ie
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Irish language package for Iceweasel"
 arch=('any')
@@ -38,4 +38,4 @@ package() {
 
 	
 }
-sha512sums=('a3f71959b5acc69f8f95647fa6fbb64b4434c43df5516c51b1a8e358118e38b84d3ca96d4bd5f0818680cf2a3ff2bd25b3d077f4a97c300986ddefdf11f24488')
+sha512sums=('8492f9e4574463ddffc669f128e4b6a35413fb9d528ef31d7af14c631b52c3bb35aa0036400cb419d9d698ecbe3806f4c26deec70807f4ddf0e0ca0db5f3c9ee')
