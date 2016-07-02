@@ -1,6 +1,6 @@
 pkgbase = ty-git
 	pkgdesc = GUI and command-line tools to manage Teensy devices
-	pkgver = 0.7.0.r232.g7866541
+	pkgver = 0.7.5.r58.gf6d89e8
 	pkgrel = 1
 	url = http://github.com/Koromix/ty
 	arch = x86_64
