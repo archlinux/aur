@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus service monitoring system and time series database
+After=network.target
+
+[Service]
+User=prometheus
+Group=prometheus
+ExecStart=/usr/bin/prometheus -config.file /etc/prometheus/prometheus.yml -storage.local.path /var/lib/prometheus
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
