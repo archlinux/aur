@@ -5,7 +5,7 @@ _lang=fi
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Finnish language package for Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('874361cd566c8eee25607a645aded2deeb436acbc8accb3ced9ea01c47dc3e2f62909f59d7af0d09cf02db404bd4fa951c328235c2926027d495b75366a8e40c')
+sha512sums=('d52f9150e9fd32333ecfeef8e6e7a6309343025fededd6e35bb3cce6d094c68a09422f2a029f58547a15c9b54610d0d0e14f10a55c6688d0c8a73e7fbe291848')
