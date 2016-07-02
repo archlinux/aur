@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=162.1024.9
+pkgver=162.1120.17
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -16,9 +16,10 @@ options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 optdepends=(
-  'java-runtime: native JRE (Edit PKGBUILD to remove bundled JRE)'
+  'java-runtime: native JRE (Please edit PKGBUILD to remove the bundled one)'
   'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
+  'lldb: native debugger [experimental] (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
@@ -26,19 +27,22 @@ optdepends=(
   'swift: Swift programming language support (Also requires the plugin)'
   'python: Python programming language support (Also requires the plugin)'
   'python2: Python 2 programming language support (Also requires the plugin)'
+  'doxygen: Code documentation generation'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('a5243aceac4c4ec0212433c1b196377471078e0bf6420da911342e0d2c861e95f6242aa63cde6cb4727280d8019cebaa35898d9094bb282cb5ac828945de8eae')
+sha512sums=('60841fa6bb9d14f2ffa4c8dfd5352847b15b78b59b04b8da7c847f892467b3f2dc3525ce783af2c9b08539355127e2053dfa6c6ee5674176618ecb6477708f33')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   bsdtar --strip-components 1 -xf "${_archname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
-  # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
+  # Uncomment to use system JRE
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
+  # Uncomment to remove bundled CMake, GDB and/or LLDB
   #rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
   #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
+  #rm -r "${pkgdir}/opt/${pkgname}/bin/lldb"
 
   if [[ $CARCH = 'i686' ]]; then
     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
@@ -73,7 +77,7 @@ EOF
 
   install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
-  ln -s "/opt/${pkgname}/bin/${_pkgname}.svg"                     "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.svg"               "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
   ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/opt/${pkgname}/bin/${_pkgname}.sh"                 "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.sh"                "${pkgdir}/usr/bin/${pkgname}"
 }
