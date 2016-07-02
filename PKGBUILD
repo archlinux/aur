@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xreader
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -16,14 +16,14 @@ conflicts=('xreader-git')
 url='https://github.com/linuxmint/xreader'
 install=xreader.install
 
-source=("https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7eee552b1e3b804061f2ba38270ba3d3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('a92cced139687ef463092d665f914788')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     ./autogen.sh --prefix="/usr" \
          --localstatedir="/var" \
-         --libexecdir="/usr/lib/xreader" \
+         --libexecdir="/usr/lib/${pkgname}" \
         --disable-caja --disable-nemo
     make
 }
