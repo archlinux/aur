@@ -4,13 +4,13 @@ post_install(){
 
     /usr/bin/mkdir -p /opt/sentry/celery
 
-    /usr/bin/chown -R sentry:sentry /opt/sentry
-    /usr/bin/chown -R sentry:sentry /etc/sentry
-
     # Generate a new configuration.
     if [ ! -e "/etc/sentry/sentry.conf.py" ] || [ ! -e "/etc/sentry/config.yml" ] ; then
         "/opt/sentry/bin/sentry" init "/etc/sentry"
     fi
+
+    /usr/bin/chown -R sentry:sentry /opt/sentry
+    /usr/bin/chown -R sentry:sentry /etc/sentry
 
     /usr/bin/chmod 0600 /etc/sentry/sentry.conf.py
     /usr/bin/chmod 0600 /etc/sentry/config.yml
@@ -19,12 +19,7 @@ cat << EOF
 
 INSTALLATION STEPS
 
-1) Initialize Sentry's configuration:
-
-    sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry
-
-Be sure to edit the configurations in /etc/sentry before proceeding to the next
-step.
+1) Edit the configurations in /etc/sentry before proceeding to the next step.
 
 2) Run migrations:
 
