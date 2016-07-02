@@ -2,7 +2,7 @@
 
 pkgname=fbcondecor-systemd
 pkgver=1.5.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple systemd service to activate console decorations on system start. Requires fbsplash and a kernel with fbcondecor patch applied."
 arch=('any')
 url="http://sourceforge.net/projects/fbsplash.berlios/"
