@@ -36,7 +36,6 @@ build() {
 
   msg "GIT checkout done or server timeout"
 
-  ./configure --prefix=/usr
   for k in $library_kinds
   do
     make libgpr.build.$k
