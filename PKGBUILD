@@ -5,7 +5,7 @@ _lang=uk
 _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
-pkgver=47.0
+pkgver=47.0.1
 pkgrel=1
 pkgdesc="Ukrainian language pack for Debian Iceweasel"
 arch=('any')
@@ -38,3 +38,4 @@ package() {
 	
 }
 sha512sums=('69b7ccca8e05bb677f7490bb599fa2e514277e8de8336b63a6ced26473d715ade0f3691e1fd6942e4dd671c822c96218fe2c8ba10f1112a9148a2797ed136e0c')
+sha512sums=('1ab349eb0061046b3110afeba337ee9c40b93464dc760e130f2c32436c5da2b0ccbf8314e37e9ae36ee891b6ae68de57c80d69f886e2c730f9160518edb80d9a')
