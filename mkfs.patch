@@ -1,0 +1,6 @@
+--- mkfs.sdfs	2016-07-03 00:48:24.582190077 +0200
++++ mod-mkfs.sdfs	2016-06-06 21:54:29.000000000 +0200
+@@ -1,2 +1,2 @@
+-/usr/share/sdfs/bin/jre/bin/java  -Dfile.encoding=UTF-8 -classpath /usr/share/sdfs/lib/sdfs.jar:/usr/share/sdfs/lib/* org.opendedup.sdfs.VolumeConfigWriter "$@"
++java -Dfile.encoding=UTF-8 -classpath /usr/share/sdfs/lib/sdfs.jar:/usr/share/sdfs/lib/* org.opendedup.sdfs.VolumeConfigWriter "$@"
+ 

@@ -1,0 +1,15 @@
+--- mount.sdfs	2016-04-17 20:43:31.000000000 +0200
++++ mod-mount.sdfs	2016-07-03 00:46:23.919483868 +0200
+@@ -36,11 +36,8 @@
+ else
+         MEMORY=$MEM
+ fi
+-else
+-	MEMORY=$MEM
+-fi
+ 
+-LD_PRELOAD="/usr/share/sdfs/bin/libfuse.so.2" $EXEC -server -outfile '&1' -errfile '&2' -Djava.library.path=/usr/share/sdfs/bin/ -home /usr/share/sdfs/bin/jre -Dorg.apache.commons.logging.Log=fuse.logging.FuseLog\
++LD_PRELOAD="/usr/share/sdfs/bin/libfuse.so.2" $EXEC -server -outfile '&1' -errfile '&2' -Djava.library.path=/usr/share/sdfs/bin/ -home /usr/lib/jvm/default-runtime -Dorg.apache.commons.logging.Log=fuse.logging.FuseLog\
+  -Dfuse.logging.level=INFO -Xmx$MEMORY$MU -Xms$MEMORY$MU \
+ -XX:+DisableExplicitGC -pidfile /var/run/$PF -XX:+UseG1GC -Djava.awt.headless=true \
+  -cp /usr/share/sdfs/lib/commons-daemon-1.0.15.jar:/usr/share/sdfs/lib/sdfs.jar:/usr/share/sdfs/lib/* fuse.SDFS.MountSDFS "$@"
