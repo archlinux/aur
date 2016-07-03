@@ -7,7 +7,7 @@ url="http://pecl.php.net/package/redis"
 arch=('x86_64' 'i686')
 license=('PHP')
 depends=(
-    'php'
+    'php>=7.0.0'
     'redis'
 )
 conflicts=(

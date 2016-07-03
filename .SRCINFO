@@ -6,7 +6,7 @@ pkgbase = php-redis
 	arch = x86_64
 	arch = i686
 	license = PHP
-	depends = php
+	depends = php>=7.0.0
 	depends = redis
 	conflicts = phpredis
 	conflicts = phpredis-git
