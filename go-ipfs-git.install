@@ -3,8 +3,11 @@ post_upgrade() {
 	NEW="$1"
 
 	if [ $(vercmp "0.4.3dev" "$OLD") -gt 0 ]; then
-		echo "IPFS repo format hash changed."
-		echo "You will have to run migrations tool."
-		echo "See: https://github.com/ipfs/fs-repo-migrations/"
+		echo
+		echo "    ################################################"
+		echo "             IPFS repo format hash changed."
+		echo "          You will have to run migrations tool."
+		echo "    See: https://github.com/ipfs/fs-repo-migrations/"
+		echo "    ################################################"
 	fi
 }
