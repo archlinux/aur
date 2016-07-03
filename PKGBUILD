@@ -3,10 +3,10 @@
 # Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: Ari Mizrahi <codemunchies@gmail.com>
 # Contributor: CRT <cirkit@kode.email>
-
+validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
