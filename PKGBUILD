@@ -1,6 +1,6 @@
 # Maintainer: Loïc Damien <loic.damien at dzamlo dot ch>
 pkgname=treeify
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="converts the output of a command that lists files into a tree representation similar to \
          the output of the command tree"
@@ -9,8 +9,8 @@ url="https://github.com/dzamlo/treeify"
 license=('MIT' 'Apache')
 depends=(gcc-libs)
 makedepends=(cargo)
-source=("https://github.com/dzamlo/treeify/archive/treeify-0.1.3.tar.gz")
-sha256sums=('55e27fc14e40c76c61e5eeb01e5bce1720e15f4ed489056d27ce81e2b3440a21')
+source=("https://github.com/dzamlo/$pkgname/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('e5e112f958c78a590db12e67f1d2d3b84236e1315bb6e058b3112985c01cbc4a')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
