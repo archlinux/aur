@@ -3,28 +3,38 @@
 
 set -u
 pkgname='wipefreespace'
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 pkgdesc='Securely wipe the free space on an ext2/3/4,NTFS, XFS,ReiserFSv3, ReiserFSv4, FAT12/16/32,Minix,JFS and HFS+ partition or drive'
 arch=('i686' 'x86_64')
-url='http://wipefreespace.sourceforge.net/'
+url='https://wipefreespace.sourceforge.net/'
 license=('GPL')
+_verwatch=('https://sourceforge.net/projects/wipefreespace/rss' ".*<title>.*/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('69bea29c5dba71b774cbfeba1a54dc863bda9f70ecdbab654493e2d0f3d1a0e6')
+sha256sums=('676c1de1c06a1da43ac8cb5b4bb2082867cef29a0377a3a74d889b4e0459eb61')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  set -u
+  cd "${pkgbase}-${pkgver}"
+  CFLAGS="${CFLAGS} -Wno-unused-result" \
   ./configure --prefix='/usr'
+  echo '#define HAVE_LINUX_LOOP_H 1' >> 'config.h'
+  set +u
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j "$(nproc)"
+  set -u
+  cd "${pkgbase}-${pkgver}"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
+  set +u
 }
 
 package () {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  set -u
+  cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  set +u
 }
 set +u
 # vim:set ts=2 sw=2 et:
