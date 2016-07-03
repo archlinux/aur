@@ -6,7 +6,7 @@ pkgdesc='A simple script to quickly check your AUR packages'
 arch=('any')
 url='https://github.com/christopherloen/jeeves'
 license=('None')
-depends=('wget')
+depends=('wget' 'pacaur')
 source=('https://raw.githubusercontent.com/christopherloen/jeeves/master/jeeves')
 sha256sums=('2c485ade8a7a6280dfc92448dc15ee426629a215b08a53aea0dc43ec10cb5d4b')
 
