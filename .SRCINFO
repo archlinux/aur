@@ -1,0 +1,13 @@
+pkgbase = jeeves
+	pkgdesc = A simple script to quickly check your AUR packages
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/christopherloen/jeeves
+	arch = any
+	license = None
+	depends = wget
+	source = https://raw.githubusercontent.com/christopherloen/jeeves/master/jeeves
+	sha256sums = 2c485ade8a7a6280dfc92448dc15ee426629a215b08a53aea0dc43ec10cb5d4b
+
+pkgname = jeeves
+
