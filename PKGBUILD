@@ -1,7 +1,7 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
 pkgver=2.9.7b
-pkgrel=2
+pkgrel=3
 pkgdesc="Micro air vehicle ground control station."
 arch=('any')
 url="http://qgroundcontrol.org/"
@@ -17,7 +17,7 @@ md5sums=('64cad9e9597e2896602c6a1480ff9829')
 package() {
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
   cp -R "$srcdir/${pkgname}" "${pkgdir}/opt/qgroundcontrol"
-  ln -s "${pkgdir}/opt/qgroundcontrol/qgroundcontrol-start.sh" "${pkgdir}/usr/bin/qgroundcontrol"
+  ln -s "/opt/qgroundcontrol/qgroundcontrol-start.sh" "${pkgdir}/usr/bin/qgroundcontrol"
 }
 
 # vim:set ts=2 sw=2 et:
