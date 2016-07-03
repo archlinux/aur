@@ -2,7 +2,7 @@
 # Thu Feb 18 13:48:25 UTC 2016
 pkgbase = qtermwidget-cjk-git
 	pkgdesc = Qtermwidget with supporting characters width in East Asian ambiguous category
-	pkgver = r1.a5c43f5
+	pkgver = r3.ee5d67b
 	pkgrel = 1
 	url = https://github.com/rago1975/qtermwidget-cjk
 	arch = i686
