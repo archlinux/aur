@@ -5,12 +5,12 @@
 # Contributor: Gabor Nyekhelyi (n0gabor) <n0gabor@vipmail.hu>
 
 pkgname=pitivi-git
-pkgver=0.94.6386.937f6cf
+pkgver=0.96.0.1.7113.0bfa7db
 pkgrel=1
 pkgdesc='Pitivi allows users to easily edit audio/video projects based on the GStreamer framework (Git version)'
 arch=('any')
 license=('LGPL')
-depends=('gstreamer' 'gst-plugins-base' 'gobject-introspection' 'python' 'python-gobject' 'goocanvas' 'gst-python-git' 'gst-editing-services-git' 'python-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'python-numpy')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gobject-introspection' 'python' 'python-gobject' 'goocanvas' 'gst-python' 'gst-editing-services' 'python-xdg' 'desktop-file-utils' 'hicolor-icon-theme' 'python-numpy' 'gst-transcoder-git' 'python-matplotlib' 'python-cairo')
 makedepends=('automake' 'libtool' 'intltool' 'itstool' 'pygobject-devel' 'gtk-doc' 'gnome-doc-utils' 'yelp-tools')
 optdepends=('python-pycanberra-git: sound notifications')
 install=pitivi-git.install
