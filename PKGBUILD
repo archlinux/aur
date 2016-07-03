@@ -1,12 +1,12 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Twitch Chat Client for Desktop"
 arch=('any')
 url="http://chatty.github.io/" 
 license=('MIT')
-depends=('jre8-openjdk' 'sh')
+depends=('java-environment' 'sh')
 optdepends=('livestreamer: for watching streams in a custom video player.')
 makedepends=('apache-ant' 'jdk8-openjdk')
 
