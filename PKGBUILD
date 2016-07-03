@@ -2,8 +2,8 @@
 
 pkgname=vuze-plugin-countrylocator
 _name=CountryLocator
-pkgver=1.8.7
-pkgrel=2
+pkgver=1.8.9
+pkgrel=1
 pkgdesc='A plugin to include country flags in the "Peers" tab'
 arch=('any')
 url="http://plugins.vuze.com/details/$_name"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('vuze')
 source=("http://plugins.vuze.com/plugins/${_name}_$pkgver.jar")
 noextract=("${_name}_$pkgver.jar")
-md5sums=('6441e5ddceb8f4a17116bde6ba693c84')
+md5sums=('3fbf9195a7b806e3c73bc8542e3d4e7c')
 
 package () {
   for i in /opt/vuze*; do
