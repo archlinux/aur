@@ -1,9 +1,9 @@
 # Maintainer: Louis Opter <kalessin@kalessin.fr>
 
 pkgname=lightsd
-pkgver=1.2.0~rc.2
+pkgver=1.2.0~rc.3
 # This will have - instead of ~ for rc versions:
-_lightsdver=1.2.0-rc.2
+_lightsdver=1.2.0-rc.3
 pkgrel=1
 epoch=1
 pkgdesc="Daemon to control your LIFX smart bulbs via a JSON-RPC API"
@@ -16,8 +16,8 @@ optdepends=(
     "ipython: makes lightsc.py more user-friendly"
 )
 makedepends=("cmake>=2.8.11")
-source=("https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.2.tar.gz")
-sha256sums=("aecd8062cb7a1e8bd97db8d4319c446eb07b27bf3be35fae89eae12ef3fecc2e")
+source=("https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.3.tar.gz")
+sha256sums=("996e7d39a51aa9227d2ec3da186c7ebef5b604ecd50f06255a7e424b837979da")
 install=lightsd.install
 
 build() {
