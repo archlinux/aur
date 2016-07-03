@@ -1,7 +1,7 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 pkgname=netgen-nogui
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NETGEN is an automatic 3d tetrahedral mesh generator"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/netgen-mesher"
