@@ -1,0 +1,32 @@
+pkgbase = opentoonz-git
+	pkgdesc = 2D Animation software.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/opentoonz/opentoonz
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = boost
+	depends = boost-libs
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-script
+	depends = qt5-tools
+	depends = lz4
+	depends = libusb
+	depends = lzo
+	depends = libjpeg-turbo
+	depends = glew
+	depends = freeglut
+	depends = sdl2
+	depends = freetype2
+	depends = blas
+	depends = cblas
+	source = git+https://github.com/opentoonz/opentoonz.git
+	md5sums = SKIP
+
+pkgname = opentoonz-git
+
