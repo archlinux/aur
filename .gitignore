@@ -5,6 +5,6 @@
 *.tar.gz.asc
 *.tgz
 *.bz2
-*/pkg
-*/src
+/pkg
+/src
 *.gz
