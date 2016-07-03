@@ -17,7 +17,7 @@ makedepends=('glib2' 'automake' 'libtool' 'geoip' 'libpcap' 'wget' 'libxml2' 'sq
 source=("http://downloads.sourceforge.net/project/ntop/ntopng/ntopng-2.4-stable.tar.gz" "ntopng@.service" "ntopng-2.4-stable.tar.gz.sig" "ntopng@.service.sig")
 
 sha512sums=('515dd7889ae3aaf2482371bb2c55ab7300cf4207fe07f37029b7529bfb710379c19a54f58cf6df87e42454c0c99d15291af334adff676252301d9edd0acf3c7a'
-            'cb83d75e867c28bfaa6d5a6bea60660d75fe35c96bb3c000c3ce947c1e34352914f0e5231e07b875cb4c613071a5d1988cc582410898704b5e065575d67c05b4'
+            'b3d9a2032cce91ee4faf81522a30a2877540b3fc7a0d43f8fe4f01c16efb0b8f6e73cfe26028b3a070296d7156abf511d3e11f93635ca2de8a4d67322b0ade60'
             'SKIP'
             'SKIP')
 
