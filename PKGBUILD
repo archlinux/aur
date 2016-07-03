@@ -10,7 +10,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/cppit/jucipp"
 license=('MIT')
-depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2')
+depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2' 'ctags')
 makedepends=('git' 'cmake' 'pkg-config' 'boost') 
 
 source=("$_pkgbase::git+https://github.com/cppit/jucipp.git"
