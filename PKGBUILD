@@ -2,7 +2,7 @@
 pkgname='farbfeld-resize-git'
 pkgdesc='Farbfeld image resizing filter'
 pkgver=r6.ac511a5
-pkgrel=1
+pkgrel=2
 license=('Custom')
 depends=('glibc')
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build () {
 
 package () {
 	cd "${pkgname}"
-	install -Dm755 resize    "${pkgdir}/usr/bin/resize"
+	install -Dm755 resize    "${pkgdir}/usr/bin/ffresize"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
