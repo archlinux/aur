@@ -1,6 +1,6 @@
 pkgname=krudio-git
-pkgver=20160429
-_git=578e6161e87dd58aec1617a1b63968869b38696f
+pkgver=20160703
+_git=f41c7009ddc64afec464a0a53da6444aff33ffe5
 _repo=krudio
 pkgrel=1
 pkgdesc="Simple Qt5 radio player"
