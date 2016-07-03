@@ -24,7 +24,7 @@ build()
 {
 	cd "$_gitname"
 	make
-	sed -ri "s/HAVE_OPENGL ?= ?0/HAVE_OPENGL=1/" Makefile
+	sed -ri "s/(HAVE_OPENGL ?= ?)0/\11/" Makefile
 	make
 }
 
