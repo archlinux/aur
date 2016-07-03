@@ -1,7 +1,7 @@
 pkgbase = python-hipsterplot
 	pkgdesc = ASCII plotting, because matplotlib is too mainstream
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imh/hipsterplot
 	arch = any
 	license = MIT
