@@ -28,5 +28,5 @@ package() {
   cp -dr --no-preserve=ownership usr ${pkgdir}
   
   install -d ${pkgdir}/usr/bin/
-  install -D sbin/* ${pkgdir}/usr/bin
+   cp -dr --no-preserve=ownership sbin/* ${pkgdir}/usr/bin
 }
