@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.172
+pkgver=0.175
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -15,7 +15,6 @@ depends=('sdl2_ttf'
          'flac'
          'portmidi'
          'libjpeg-turbo'
-         'sqlite'
          'fontconfig'
          )
 makedepends=('nasm'
@@ -27,7 +26,7 @@ makedepends=('nasm'
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         'extras.tar.gz')
-sha1sums=('f6ea29f7880a05f8d835c538f4316bd4b0adad18'
+sha1sums=('5b308fa2f0d825090a59e18d5172b99f4503c111'
           '1ed8016f41edecfca746fadcfb40eab78845a3d6'
           '75732974431844670aa3904d8f9ce3f5c5504827')
 install=sdlmame-wout-toolkits.install
@@ -49,9 +48,9 @@ build() {
        SSE2="${_use_64bits}" \
        OPTIMIZE=2 \
        NOWERROR=1 \
-       USE_OPENGL=1 \
        USE_QTDEBUG=0 \
        TOOLS=1 \
+       TEST=0 \
        STRIP_SYMBOLS=1 \
        VERBOSE=1 \
        USE_SYSTEM_LIB_EXPAT=1 \
@@ -59,8 +58,8 @@ build() {
        USE_SYSTEM_LIB_JPEG=1 \
        USE_SYSTEM_LIB_FLAC=1 \
        USE_SYSTEM_LIB_LUA=1 \
-       USE_SYSTEM_LIB_SQLITE3=1 \
-       USE_SYSTEM_LIB_PORTMIDI=1
+       USE_SYSTEM_LIB_PORTMIDI=1 \
+       USE_SYSTEM_LIB_PORTAUDIO=1
 }
 
 package() {
@@ -89,7 +88,6 @@ package() {
   install -Dm755 split      "${pkgdir}/usr/bin/splitmamerom"
   install -Dm755 src2html   "${pkgdir}/usr/bin/src2html"
   install -Dm755 srcclean   "${pkgdir}/usr/bin/srcclean"
-  install -Dm755 testkeys   "${pkgdir}/usr/bin/testkeys"
   install -Dm755 unidasm    "${pkgdir}/usr/bin/unidasm"
 
   # Install the extra bits
@@ -100,14 +98,14 @@ package() {
   install -m644 src/osd/modules/opengl/shader/glsl*.*h "${pkgdir}/usr/share/sdlmame/shader/"
 
   # Install man
-  (cd src/osd/sdl/man/; for i in $(find . -type f -name '*.1'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man1/${i}"; done)
-  install -Dm644 src/osd/sdl/man/mame.6 "${pkgdir}/usr/share/man/man6/sdlmame.6"
+  (cd docs/man/; for i in $(find . -type f -name '*.1'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man1/${i}"; done)
+  (cd docs/man/; for i in $(find . -type f -name '*.6'); do install -Dm644 "${i}" "${pkgdir}/usr/share/man/man6/${i}"; done)
 
   # Include the license
   install -Dm644 docs/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # documentation
-  (cd docs; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
+  (cd docs; for i in $(find . -maxdepth 1 -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
 
   # FS#28203
   sed -e 's|KEYCODE_2_PAD|KEYCODE_2PAD|' \
