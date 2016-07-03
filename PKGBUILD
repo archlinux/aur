@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow
-pkgver=0.9.0rc0
+pkgver=0.9.0
 pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
@@ -14,7 +14,7 @@ optdepends=('cuda: GPU support'
 makedepends=('python2-pip' 'python2-wheel' 'bazel' 'swig' 'rsync')
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
          "flags.patch")
-sha256sums=('80321417caf8a0a8e40a568f99d453b1a3ae603464d147b76321b335783153bb'
+sha256sums=('3128c396af19518c642d3e590212291e1d93c5b047472a10cf3245b53adac9c9'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 conflicts=('python2-tensorflow-git')
 
