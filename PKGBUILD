@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.12.20.r11089.486b1dc
+pkgver=1.14.21.r11423.b4dd268
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -105,7 +105,6 @@ package_marble-git() {
   groups=('kde-applications'
           'kdeedu'
           )
-  install=marble-git.install
 
   make -C build DESTDIR="${pkgdir}" install
 
@@ -114,7 +113,7 @@ package_marble-git() {
   rm "${pkgdir}/usr/lib/"libastro.*
 
   # provided by marble-data
-  rm -r "${pkgdir}/usr/share/"{icons,marble/data}
+  rm -r "${pkgdir}/usr/share/"{icons,mime,marble/data}
 }
 
 package_marble-data-git() {
@@ -127,7 +126,6 @@ package_marble-data-git() {
              'marble-data'
              )
   provides=('marble-data')
-  install=marble-git.install
 
   make -C build/data DESTDIR="${pkgdir}" install
 }
