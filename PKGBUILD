@@ -7,7 +7,7 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=yabause-qt5-svn
-pkgver=0.9.14.3265
+pkgver=0.9.14.3267M
 pkgrel=1
 pkgdesc="A Sega Saturn emulator. Qt5 port (SVN version)"
 arch=('x86_64' 'i386')
@@ -25,16 +25,14 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd yabause
-  _major_v="$(grep -e "YAB_VERSION_MAJOR" CMakeLists.txt -num1 | tr -d ')' | cut -d ' ' -f2)"
-  _minor_v="$(grep -e "YAB_VERSION_MINOR" CMakeLists.txt -num1 | tr -d ')' | cut -d ' ' -f2)"
-  _patch_v="$(grep -e "YAB_VERSION_PATCH" CMakeLists.txt -num1 | tr -d ')' | cut -d ' ' -f2)"
-  echo "$(echo -n ${_major_v}.${_minor_v}.${_patch_v}).$(svnversion)"
+  _ver="$(cat CMakeLists.txt | grep -m3 "YAB_VERSION" | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "$(echo -n ${_ver}).$(svnversion)"
 }
 
 prepare() {
   mkdir -p build
   cd yabause
-  patch -Np1 -i ../rwx.patch
+  patch -Np1 -i "${srcdir}/rwx.patch"
 }
 
 build() {
