@@ -29,5 +29,5 @@ package() {
            install -dm755 "${pkgdir}/etc/${pkgname}"
            cp -rf usr/bin/anonsurf "${pkgdir}/usr/bin/anonsurf"
            cp torrc "${pkgdir}/etc/${pkgname}/torrc"
-           cp "usr/share/doc/anonsurf/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+           cp usr/share/doc/anonsurf/copyright "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
