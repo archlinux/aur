@@ -1,12 +1,11 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
 pkgver=2.9.7b
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro air vehicle ground control station."
 arch=('any')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
-conflicts=('qgroundcontrol-git')
 depends=(\
   'espeak'  # optional but you have to decide if you want it at built-time\
   'qt5-svg' 'qt5-graphicaleffects' 'qt5-webkit' 'phonon-qt4' 'qt5-serialport'\
