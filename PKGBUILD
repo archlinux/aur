@@ -7,7 +7,7 @@ pkgname=(
 	psf-unifont
 	unifont-utils
 )
-pkgver=8.0.01
+pkgver=9.0.01
 pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
@@ -23,11 +23,13 @@ source=(
 	ttf.install
 )
 noextract=()
-sha512sums=('171b8caff9d2f821fa0759a55d102edcaf23be592c0619c8148c95aac353834bf096591710e9dedf18aa6c1dde051d1caee5c7b2b3a0d302ae9ab64bcfd731a5'
-            'SKIP'
-            'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
-            '4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
-            '408162c01ed2a0591ab81e1810db0c258a3b5db072ce7ea40924491797ddd0f15162b3ec01cfaa9e7adb901226610090cd5927738a1360ddadd572f7e732c0eb')
+sha512sums=(
+	'ff9de0293c7ee6394b9de5c41b43cfe797051222f27010871d44aa7a626d7db880f253679b7ff88c2b3621de42b67c3b1f0c97db37e7cf13ad72855acb55192a'
+	'SKIP'
+	'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
+	'4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
+	'408162c01ed2a0591ab81e1810db0c258a3b5db072ce7ea40924491797ddd0f15162b3ec01cfaa9e7adb901226610090cd5927738a1360ddadd572f7e732c0eb'
+)
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
 # _use_precompiled=1
@@ -50,23 +52,20 @@ if [[ -z "$_use_precompiled" ]]; then
 fi
 
 build() {
-	cd "$srcdir/unifont-$pkgver"
+	cd "$srcdir/unifont-${pkgver%.*}"
 	make -j1 distclean
 	make -j1 clean
 
-	cd "$srcdir/unifont-$pkgver/src"
+	cd "$srcdir/unifont-${pkgver%.*}/src"
 	msg2 "Building utilities"
 	make -j1
 
-	cd "$srcdir/unifont-$pkgver/font"
-	if _wanted bdf-unifont; then
-		# always building it, because the _csur variants
-		# are missing in the precompiled font
-		msg2 "Building the BDF version"
-		make -j1 bdf -o distclean
-	fi
-
+	cd "$srcdir/unifont-${pkgver%.*}/font"
 	if [[ -z "$_use_precompiled" ]]; then
+		if _wanted bdf-unifont; then
+			msg2 "Building the BDF version"
+			make -j1 bdf -o distclean
+		fi
 		if _wanted psf-unifont; then
 			msg2 "Building the PSF version"
 			make -j1 psf -o distclean
@@ -94,7 +93,7 @@ package_ttf-unifont() {
 
 	_ttfdir=/usr/share/fonts/TTF
 
-	cd "$srcdir/unifont-$pkgver/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.ttf" \
 		"${pkgdir}${_ttfdir}/unifont.ttf"
 	install -D -m0644 "unifont_csur-${pkgver}.ttf" \
@@ -119,7 +118,7 @@ package_pcf-unifont() {
 
 	_pcfdir=/usr/share/fonts/misc
 
-	cd "$srcdir/unifont-$pkgver/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.pcf.gz" \
 		"${pkgdir}${_pcfdir}/unifont.pcf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.pcf.gz" \
@@ -134,8 +133,7 @@ package_bdf-unifont() {
 
 	_bdfdir=/usr/share/fonts/misc
 
-	# always use the compiled version, see build() above
-	cd "$srcdir/unifont-$pkgver/font/compiled"
+	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.bdf.gz" \
 		"${pkgdir}${_bdfdir}/unifont.bdf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.bdf.gz" \
@@ -148,8 +146,8 @@ package_psf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PSF version, for APL)"
 	arch=(any)
 
-	cd "$srcdir/unifont-$pkgver/font/$_compiled"
-	install -D -m 0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
+	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
+	install -D -m0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
 		"${pkgdir}/usr/share/kbd/consolefonts/Unifont-APL8x16.psf.gz"
 }
 
@@ -159,8 +157,8 @@ package_unifont-utils() {
 	optdepends+=('perl-wx: for the unifont-viewer utility')
 	arch=(i686 x86_64)
 
-	cd "$srcdir/unifont-$pkgver/src"
+	cd "$srcdir/unifont-${pkgver%.*}/src"
 	make install PREFIX="$pkgdir/usr"
-	cd "$srcdir/unifont-$pkgver/man"
+	cd "$srcdir/unifont-${pkgver%.*}/man"
 	make install PREFIX="$pkgdir/usr" COMPRESS=1
 }
