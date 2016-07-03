@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.6-gnu
-_pkgver=4.6.2-gnu
+_pkgver=4.6.3-gnu
 _knockpatchver=4.6_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -62,7 +62,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
+            '5a6abaddb87c6dd655c3c894bcdfb91e776b36b84c290d446667e5d08121f85a'
             'SKIP'
             '8845e8c3439d3329e5a7b16211aafc78671f11ea4cdc77cc5dc8043a3863a892'
             'SKIP'
