@@ -1,6 +1,6 @@
 pkgname=tclln
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="TclLN is a library for integrating a tcl-shell with custom commands"
 url="https://github.com/TestudoAquatilis/tclln"
 arch=('x86_64' 'i686' 'armv7h')
