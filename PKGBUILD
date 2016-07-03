@@ -2,14 +2,14 @@
 
 pkgname=foobar2000
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced freeware audio player (uses Wine)."
 arch=(i686 x86_64)
 url="http://www.foobar2000.org/"
 license=('custom')
 depends=(wine desktop-file-utils)
-makedepends=(unarchiver)
-source=("https://dl.dropboxusercontent.com/u/24761750/${pkgname}_v${pkgver}.exe"
+makedepends=(unarchiver wget)
+source=("foobar2000_v$pkgver.exe::https://www.foobar2000.org/download"
         "LICENSE"
         "${pkgname}.sh"
         "${pkgname}.png"
@@ -20,6 +20,7 @@ sha256sums=('48295452e95a8e4e907eba4aafa88b70e6e202cff23b42a53500aefd6c1a48b4'
             '3a1876b7f7f9b0297a633d7e6a480f92a2eeea46d8496a3546fcb1b0859be7aa'
             '2031e952d1d1d6cb4c2ff2b879421149f3f0780ca5d3ac03bc9c23fcbbd053d6'
             'cf54a01fdba4fe3de60514fe898680f24439eb43c4655d6892272c15e489eb2d')
+DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe %u')
 
 package() {
   # unpack NSIS installer .exe into destination
