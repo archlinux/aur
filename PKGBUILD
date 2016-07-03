@@ -5,7 +5,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=xf86-input-wacom-git
-pkgver=0.31.0+2
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="X.Org Wacom tablet driver (from git)"
 url="http://linuxwacom.sourceforge.net"
@@ -23,11 +23,17 @@ md5sums=('SKIP')
 
 pkgver() {
   cd xf86-input-wacom
-  git describe | sed -r 's/^xf86-input-wacom-([^-]+)-([0-9]+)-g.*$/\1+\2/'
+  git describe | sed -r 's/^xf86-input-wacom-//'
+}
+
+mkdir_needed() {
+  if [ ! -d $1 ]; then
+    mkdir -p $1
+  fi
 }
 
 prepare() {
-  mkdir xf86-input-wacom/m4
+  mkdir_needed xf86-input-wacom/m4
 }
 
 build() {
