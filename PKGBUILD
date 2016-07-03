@@ -34,18 +34,15 @@ build() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/${_appname}"
+  install -d "${pkgdir}/opt/${_appname}" \
+             "${pkgdir}/usr/bin" \
+             "${pkgdir}/usr/share/applications" \
+             "${pkgdir}/usr/share/licenses/${_appname}" \
+             "${pkgdir}/usr/share/pixmaps"
+  
   install -m755 "${srcdir}/${_basename}/build/libs/${_basename}-${pkgver}-SNAPSHOT.jar" "${pkgdir}/opt/${_appname}/${_appname}.jar"
-  
-  mkdir -p "${pkgdir}/usr/bin"
   install -m755 "${srcdir}/${_appname}" "${pkgdir}/usr/bin/"
-  
-  mkdir -p "${pkgdir}/usr/share/applications"
   install -m644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/"
-  
-  mkdir -p "${pkgdir}/usr/share/licenses/${_appname}"
   install -m644 "${srcdir}/${_basename}/build/resources/main/LICENSE" "${pkgdir}/usr/share/licenses/${_appname}/"
-  
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
   install -m644 "${srcdir}/${_appname}.png" "${pkgdir}/usr/share/pixmaps/"
 }
