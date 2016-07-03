@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160501.f54e555
+pkgver=20160626.c509420
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -99,7 +99,6 @@ prepare() {
         --enable-zsh-comp \
         --enable-libarchive \
         --lua=luajit \
-        --enable-gpl3 \
         --enable-libavdevice \
         --disable-vapoursynth-lazy" > mpv_options
 
