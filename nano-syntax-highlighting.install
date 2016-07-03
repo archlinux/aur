@@ -5,8 +5,9 @@ post_install() {
 ==> To prevent overwriting your existing configuration, nanorc
 ==> was installed to /usr/share/nano-syntax-highlighting/nanorc.sample
 ==>
-==> To install you should add the languages you want to your nano configuration file /etc/nanorc or ~/.nanorc
-==> $ echo "include /usr/share/nano-syntax-highlighting/*.nanorc" >> nanorc
+==> To install you should add the languages you want to your nano configuration file, system-wide or user-specific
+==> system-wide: $ echo " include /usr/share/nano-syntax-highlighting/*.nanorc" >> /etc/nanorc
+==> user-specific: $ echo "include /usr/share/nano-syntax-highlighting/*.nanorc" >> nanorc
 
 _EOF
 }
