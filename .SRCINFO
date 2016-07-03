@@ -1,0 +1,15 @@
+pkgbase = aard2-slob
+	pkgdesc = Aard 2 Dictionary - Tool to work with Slob (sorted list of blobs) dictionary files.
+	pkgver = 47.31ad0e7
+	pkgrel = 1
+	url = https://github.com/itkach/slob
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyicu
+	source = slob::git+https://github.com/itkach/slob.git
+	sha512sums = SKIP
+
+pkgname = aard2-slob
+
