@@ -45,7 +45,7 @@ provides=('caffe' 'pycaffe' 'python2-pycaffe' )
 conflicts=('caffe' 'pycaffe' 'python2-pycaffe' 'pycaffe-git' 'python2-pycaffe-git')
 sha256sums=('SKIP'
             'c12ddbd524c1b5871cb42a8775cf17a3ef86ae8a859837a6c6c4e2c19deca3d5'
-            '91ac4b31b72c9c6fb8b1242c945d8caf32f1876ef4befa3c81b7d19940b6a143')
+            '129fd75304dc478e20180bf428c6b02eb0e7fff503b650e1b32cfcb860794e3d')
 
 pkgver() {
   cd $srcdir/caffe
