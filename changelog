@@ -1,3 +1,6 @@
+2016-07-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.1.8:
+    Changed repack tool used by ASF (ILRepack -> LibZ) which should hopefully fix remaining AV false-positives.
 2016-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.1.7:
     [!] ASF now supports SteamPassword also in encrypted form. Visit configuration for info about new PasswordFormat bot config property, as well as security for further explanation.
