@@ -5,7 +5,10 @@ pkgver=0.0.3
 pkgrel=1
 pkgdesc="Double-entry bookkeeping transaction journal parser and serializer"
 arch=('any')
-depends=('perl6' 'perl6-config-toml' 'perl6-txn-parser')
+depends=('perl6'
+         'perl6-config-toml'
+         'perl6-file-presence'
+         'perl6-txn-parser')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6' 'nightscape')
