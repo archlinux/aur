@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.6-gnu
-_pkgver=4.6.2-gnu
+_pkgver=4.6.3-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -58,9 +58,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
+            '5a6abaddb87c6dd655c3c894bcdfb91e776b36b84c290d446667e5d08121f85a'
             'SKIP'
-            'b010218003db64ee50854b58c3c6a5a63e5663e709501a24d87cae6c125dafb4'
+            '0b7b40a8eb66111ee3d96ef2c75969e57ab12750f480dc08d184575d2c5fb362'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
