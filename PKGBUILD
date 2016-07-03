@@ -2,16 +2,16 @@
 
 pkgname=where-is-m13
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Application to visualize the locations and physical properties of deep sky objects."
 arch=('any')
 url="http://www.thinkastronomy.com/M13/index.html"
 license=('Custom:ThinkAstronomy')
 depends=('java-runtime')
 source=("$pkgname-$pkgver.zip"::"http://www.thinkastronomy.com/M13/downloads/WhereIsM13_$pkgver.zip"
-	"$pkgname-$pkgver-icons.tar.xz")
+	"$pkgname-$pkgver-icons.tar.gz"::"https://github.com/Poultryphile/$pkgname-icons/archive/icons-$pkgver.tar.gz")
 sha256sums=("b9152359584a7f2283560559fdf35348e018254ae965cdbfa624c662687ccadc"
-	    "4c328ae76bbff3401489a5adbbf7d9ea8d685e775c7bd8c3caa3a73e9ffc2105")
+	    "cf39f4f68a3e231fc8cbae0b7a68f38d3a556d96e80bba65e9c6b75bc2bedaf1")
 
 package() {
 	cd "$srcdir/Where is M13"
@@ -41,7 +41,7 @@ package() {
 	
 	install -Dm 644 "License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
-	cd "$srcdir/$pkgname-$pkgver-icons"
+	cd "$srcdir/$pkgname-icons-icons-$pkgver"
 	
 	_icondir="$pkgdir/usr/share/icons/hicolor"
 	install -Dm 644 "m13.svg" "$_icondir/scalable/m13.svg"
