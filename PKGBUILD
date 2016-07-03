@@ -15,7 +15,7 @@ makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 options=('!emptydirs')
 install=gnome-twofactorauth.install
 source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.zip")
-md5sums=('f77324cb7431bdc98a8c990f0307ef8b')
+md5sums=('391986ea27aaa2a9345574f5388552a3')
 conflicts=('gnome-twofactorauth-git')
 provides=("gnome-twofactorauth=$pkgver")
 
