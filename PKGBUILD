@@ -5,7 +5,7 @@
 
 pkgname=python2-apscheduler
 _pkgname=APScheduler
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 arch=('any')
@@ -19,8 +19,8 @@ depends=('python2'
          'python2-six'
          'python2-setuptools'
         )
-source=("https://pypi.python.org/packages/source/A/APScheduler/APScheduler-$pkgver.tar.gz")
-sha256sums=('96a7ca40dbfb16502b44740c31c935943532f5a13be114e75419ca86fa264486')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('5baa1195ba711868fae257612cf80372ff1124014ca896884bf132f75636f638')
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1

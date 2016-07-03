@@ -1,6 +1,6 @@
 pkgbase = python2-apscheduler
 	pkgdesc = In-process task scheduler with Cron-like capabilities
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/APScheduler
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python2-apscheduler
 	depends = python2-funcsigs
 	depends = python2-six
 	depends = python2-setuptools
-	source = https://pypi.python.org/packages/source/A/APScheduler/APScheduler-3.1.0.tar.gz
-	sha256sums = 96a7ca40dbfb16502b44740c31c935943532f5a13be114e75419ca86fa264486
+	source = https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-3.2.0.tar.gz
+	sha256sums = 5baa1195ba711868fae257612cf80372ff1124014ca896884bf132f75636f638
 
 pkgname = python2-apscheduler
 
