@@ -1,7 +1,7 @@
 pkgbase = jdownloader2
 	pkgdesc = Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.
 	pkgver = latest
-	pkgrel = 9
+	pkgrel = 10
 	url = http://jdownloader.org/
 	install = jdownloader.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = jdownloader2
 	depends = desktop-file-utils
 	depends = fontconfig
 	depends = ttf-dejavu
+	optdepends = phantomjs: needed for some remote capture solving
 	conflicts = jdownloader
 	replaces = jdownloader
 	source = JDownloader
