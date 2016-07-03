@@ -6,12 +6,12 @@ epoch=1
 pkgrel=1
 pkgdesc="Tools to operate on Lojban text (main feature: approximate translation to English)."
 arch=('i686' 'x86_64')
-url="https://github.com/lojban/jbofihe"
+url="https://github.com/spider-mario/jbofihe"
 license=('GPL2')
 depends=('glibc')
 makedepends=('git' 'perl')
 options=('!makeflags')
-source=(git+https://github.com/lojban/jbofihe)
+source=(git+https://github.com/spider-mario/jbofihe)
 sha512sums=(SKIP)
 
 pkgver() {
