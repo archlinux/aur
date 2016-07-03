@@ -2,7 +2,7 @@
 # Sat Jan  9 06:29:43 UTC 2016
 pkgbase = backup-conf
 	pkgdesc = This script create a backup of your config files in a tree format on current folder
-	pkgver = 5.1.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/ShyPixie/backup-conf
 	install = backup-conf.install
@@ -14,9 +14,9 @@ pkgbase = backup-conf
 	optdepends = diffutils: the default diff tool
 	optdepends = colordiff: a colored diff tool
 	optdepends = git: for git management
-	source = https://github.com/ShyPixie/backup-conf/archive/v5.1.1.tar.gz
+	source = https://github.com/ShyPixie/backup-conf/archive/v5.2.1.tar.gz
 	source = backup-conf.install
-	md5sums = 9db16eb74da5bbf1283ee283ff978110
+	md5sums = SKIP
 	md5sums = b452e0f879c2d25650330a37ed13f110
 
 pkgname = backup-conf
