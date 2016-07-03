@@ -2,7 +2,7 @@
 
 _pkgname=qtermwidget-cjk
 pkgname=$_pkgname-git
-pkgver=r1.a5c43f5
+pkgver=r3.ee5d67b
 pkgrel=1
 pkgdesc="Qtermwidget with supporting characters width in East Asian ambiguous category" 
 arch=("i686" "x86_64")
