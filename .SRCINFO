@@ -1,6 +1,6 @@
 pkgbase = udfclient
 	pkgdesc = a userland implementation of the UDF filingsystem
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = http://www.13thmonkey.org/udfclient/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = udfclient
 	license = custom:Clarified Artistic
 	makedepends = bmake
 	depends = glibc
-	source = http://www.13thmonkey.org/udfclient/releases/UDFclient.0.8.5.tgz
-	md5sums = 24d1fa36cc2c52153e6fa165deec435b
+	source = http://www.13thmonkey.org/udfclient/releases/UDFclient.0.8.6.tgz
+	md5sums = 600213a10a6032fa4a0bf88c6a6af0b1
 
 pkgname = udfclient
 
