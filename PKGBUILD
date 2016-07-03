@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=si4010prog-git
-pkgver=r48.2d5f58f
+pkgver=r49.f312bcd
 pkgrel=1
 pkgdesc="A tool to program and debug the Silicon Labs SI4010 micro controller."
 arch=('any')
@@ -12,10 +12,8 @@ makedepends=('git'
 'gcc')
 optdepends=('c2_gpio-dkms-git: accessing the si4010 chip via GPIO')
 provides=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/dimhoff/si4010prog.git"
-'cmake_c_flags_fix.patch')
-md5sums=('SKIP'
-         '824b2c6c2fa5ac3b7902858f83ee5b35')
+source=("${pkgname%-git}::git+https://github.com/dimhoff/si4010prog.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,7 +23,6 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}/build"
 	rm -rf *
-  patch "$srcdir/${pkgname%-git}"/CMakeLists.txt "$srcdir"/cmake_c_flags_fix.patch
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
