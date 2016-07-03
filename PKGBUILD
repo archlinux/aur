@@ -24,7 +24,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20160703.r2760.c81b9e5
+pkgver=20160703.r2762.af99ee6
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -37,7 +37,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
   'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib'
-  'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss')
+  'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
 makedepends=('autoconf' 'automake' 'libtool' 'git')
 provides=('pd-l2ork')
 conflicts=('pd-l2ork' 'pd-l2ork-git')
@@ -95,8 +95,10 @@ package() {
   # Remove init.d-related stuff.
   cd "$pkgdir/etc"
   rm -rf default init.d
-  # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
+  # Remove the included DejaVu font, it's in the standard repos.
   cd "$pkgdir/usr"
+  rm -f lib/pd-l2ork/bin/DejaVuSansMono.ttf
+  # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
   # Get rid of the corresponding manpages
   rm -f share/man/man1/pdreceive.* share/man/man1/pdsend.*
