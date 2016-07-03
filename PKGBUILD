@@ -4,7 +4,7 @@
 
 _pkgname=glib2
 pkgname=$_pkgname-git
-pkgver=2.45.3.26.g27fae83
+pkgver=2.49.2.20.g27fad7a
 pkgrel=1
 pkgdesc="Common C routines used by GTK+ 2.4 and other libs"
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
     cd $pkgname/
     touch gtk-doc.make
-    sed -i '1i\EXTRA_DIST=""\nCLEANFILES=""\n' docs/reference/{gio{,/gdbus-object-manager-example},gobject,glib}/Makefile.am
+    sed -i '1i\EXTRA_DIST=""\nCLEANFILES=""\n' docs/reference/{gio,gobject,glib}/Makefile.am
 }
 
 build() {
