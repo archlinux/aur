@@ -13,8 +13,9 @@ conflicts=('mint-y-icons-git')
 source=("${url}/pool/main/m/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('3c01ee0b2c646f4b2e909b8ea9280cbf5f3a9711ec629bffd9530fbe912fcb94')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
+prepare() {
+	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
+	find "${srcdir}" -type f ! -perm 644 -exec chmod 644 {} +
 }
 
 package() {
