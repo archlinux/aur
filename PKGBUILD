@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdb-git
-pkgver=2.96.1.r1863.07a0fb2
+pkgver=2.96.3.r1953.d842d28
 pkgrel=1
 pkgdesc="A database connectivity and creation framework for various database vendors. (GIT version)"
 arch=('i686' 'x86_64')
@@ -33,8 +34,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  sed 's|python|python2|g' -i kdb/cmake/modules/KDbCreateSharedDataClasses.cmake
 }
 
 build() {
