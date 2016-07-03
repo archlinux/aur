@@ -1,0 +1,9 @@
+pkgbase = dry
+	pkgdesc = A Docker container manager for the terminal
+	pkgver = 0.5
+	pkgrel = 4
+	arch = x86_64
+	arch = i686
+
+pkgname = dry
+
