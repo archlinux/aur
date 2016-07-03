@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=ser4010-tools-git
-pkgver=r26.21fdaf0
+pkgver=r27.8c843cc
 pkgrel=1
 pkgdesc="Tools for UART controllable SI4010 based tunable OOK/FSK RF transmitter"
 arch=('any')
@@ -13,10 +13,8 @@ makedepends=('git'
 optdepends=('si4010prog: si4010 chip programming',
 'ser4010_firmware: firmware to be flashed to si4010 chip')
 provides=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/dimhoff/ser4010.git"
-'cmake_c_flags_fix.patch')
-md5sums=('SKIP'
-         '896dc38975f112e0885d6bb37d40c28d')
+source=("${pkgname%-git}::git+https://github.com/dimhoff/ser4010.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -26,7 +24,6 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}/build"
   rm -rf *
-  patch "$srcdir/${pkgname%-git}"/CMakeLists.txt "$srcdir"/cmake_c_flags_fix.patch
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \

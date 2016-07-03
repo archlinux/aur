@@ -1,6 +1,6 @@
 pkgbase = ser4010-tools-git
 	pkgdesc = Tools for UART controllable SI4010 based tunable OOK/FSK RF transmitter
-	pkgver = r26.21fdaf0
+	pkgver = r27.8c843cc
 	pkgrel = 1
 	url = https://github.com/dimhoff/ser4010
 	arch = any
@@ -13,9 +13,7 @@ pkgbase = ser4010-tools-git
 	optdepends = ser4010_firmware: firmware to be flashed to si4010 chip
 	provides = ser4010-tools
 	source = ser4010-tools::git+https://github.com/dimhoff/ser4010.git
-	source = cmake_c_flags_fix.patch
 	md5sums = SKIP
-	md5sums = 896dc38975f112e0885d6bb37d40c28d
 
 pkgname = ser4010-tools-git
 
