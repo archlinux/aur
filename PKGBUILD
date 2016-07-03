@@ -39,6 +39,7 @@ build() {
 
   cmake -DJREEN_FORCE_QT4=yes \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \ 
         -DCMAKE_BUILD_TYPE=${_buildtype} \
         ../${pkgname}-${pkgver}
 
