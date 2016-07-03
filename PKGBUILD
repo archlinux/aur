@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kexi-git
-pkgver=3.0.89.r11880.5102e31
+pkgver=3.0.89.r12056.2599dc0
 pkgrel=1
 pkgdesc="A visual database applications creator. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -25,13 +25,13 @@ makedepends=('extra-cmake-modules'
              'kreport-git'
              'kdb-git'
              )
-optdepends=(             'kreport-git'
-             'marble')
+optdepends=('kreport-git: Report plugin'
+            'marble: Geolocation plugin'
+            )
 provides=('kexi')
 conflicts=('kexi')
 source=('git://anongit.kde.org/kexi.git')
 sha1sums=('SKIP')
-install=kexi-git.install
 
 pkgver() {
   cd kexi
