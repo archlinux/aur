@@ -1,6 +1,6 @@
 --- a/Action.c
 +++ b/Action.c
-@@ -402,7 +402,7 @@
+@@ -403,7 +403,7 @@ static struct { const char* key; const char* info; } helpRight[] = {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -9,7 +9,7 @@
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
  #if (HAVE_LIBHWLOC || HAVE_LINUX_AFFINITY)
-@@ -550,7 +550,7 @@
+@@ -551,7 +552,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['q'] = actionQuit;
     keys['a'] = actionSetAffinity;
     keys[KEY_F(9)] = actionKill;
