@@ -37,5 +37,5 @@ build() {
 package() {
   cd $_gitname
   make DESTDIR="${pkgdir}" install
-  mv ${pkgdir}/usr/lib64/* ${pkgdir}/usr/lib
+  mv ${pkgdir}/usr/lib64/ ${pkgdir}/usr/lib
 }
