@@ -1,4 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer:
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
