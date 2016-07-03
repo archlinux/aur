@@ -10,6 +10,9 @@
 # If you don't want CUDA/CUVID support, you can remove
 # depends_x86_64=('cuda') line and 
 # $_cuda \, $_cuvid \, $_libnpp \ lines from PKGBUILD
+#
+# Add "--enable-decklink \" to configure flags
+# if you have decklink-sdk installed
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
@@ -34,7 +37,8 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'flite' 'fontconfig' 'fr
 depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
-            'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations')
+            'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations'
+            'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -68,6 +72,9 @@ build() {
   fi
 
   msg "Starting configure..."
+
+  ## Add "--enable-decklink \" 
+  ## if you have decklink-sdk installed
   ./configure \
     --prefix=/usr \
     --extra-cflags="-I/usr/include/nvidia-sdk \
