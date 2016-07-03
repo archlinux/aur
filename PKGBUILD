@@ -7,6 +7,10 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# If you don't want CUDA/CUVID support, you can remove
+# depends_x86_64=('cuda') line and 
+# $_cuda \, $_cuvid \, $_libnpp \ lines from PKGBUILD
+
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1
@@ -80,12 +84,16 @@ build() {
     --enable-shared \
     --enable-avresample \
     \
+    \
     $_cuda \
     $_cuvid \
+    $_libnpp \
+    \
     --enable-libmfx \
     --enable-nvenc \
     --enable-omx \
     --enable-omx-rpi \
+    \
     \
     --enable-avisynth \
     --enable-audiotoolbox \
@@ -120,7 +128,6 @@ build() {
     --enable-libkvazaar \
     --enable-libmodplug \
     --enable-libmp3lame \
-    $_libnpp \
     --enable-libnut \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
