@@ -1,32 +1,33 @@
-# Maintainer: Fernando Manfredi <contact at acidhub.click>
+# Maintainer: jrdemasi <jrdemasi@gmai.com>
+# Contributor: Fernando Manfredi <contact at acidhub.click>
 # Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: Ari Mizrahi <codemunchies@gmail.com>
 # Contributor: CRT <cirkit@kode.email>
 
 pkgname=ntopng
-pkgver=2.2
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
 license=('GPL3')
 depends=('redis' 'geoip')
 makedepends=('glib2' 'automake' 'libtool' 'geoip' 'libpcap' 'wget' 'libxml2' 'sqlite' 'curl' 'libmariadbclient')
-source=("http://sourceforge.net/projects/ntop/files/$pkgname/$pkgname-$pkgver.tar.gz"
-        ntopng@.service)
+source=("http://downloads.sourceforge.net/project/ntop/ntopng/ntopng-2.4-stable.tar.gz" "ntopng@.service" "ntopng-2.4-stable.tar.gz.sig")
 
-sha256sums=('4fccfc9e9f333addcd3c957b4520c471117bc2df5655d6eabf328c7385fb255e'
-            '034d4fa2a6616a6240edc74e278b96e45730e7acc12d60a7b4458b04906c127b')
+sha512sums=('515dd7889ae3aaf2482371bb2c55ab7300cf4207fe07f37029b7529bfb710379c19a54f58cf6df87e42454c0c99d15291af334adff676252301d9edd0acf3c7a'
+            'b3d9a2032cce91ee4faf81522a30a2877540b3fc7a0d43f8fe4f01c16efb0b8f6e73cfe26028b3a070296d7156abf511d3e11f93635ca2de8a4d67322b0ade60'
+            'SKIP')
 
 build() {
-  cd "$srcdir/ntopng-$pkgver"
+  cd ntopng-2.4-stable
   ./autogen.sh && ./configure --prefix=$pkgdir/usr
   make geoip
   make
 }
 
 package() {
-  cd "$srcdir/ntopng-$pkgver"
+  cd ntopng-2.4-stable
 
   make DESTDIR=$pkgdir install
 
