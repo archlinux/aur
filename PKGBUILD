@@ -28,8 +28,7 @@ build()
 	# Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
 
-	# Uncomment below two lines if you want to use 'jemalloc' and add it to 'depends' list
-	#unset LDFLAGS
+	# Uncomment below line if you want to use 'jemalloc' and add it to 'depends' list
 	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
 	cd $srcdir
