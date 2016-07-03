@@ -1,0 +1,10 @@
+--- configure.in	2016-07-03 07:07:21.106014999 +1000
++++ configure.in-new	2016-07-03 07:07:32.079348333 +1000
+@@ -9,6 +9,6 @@
+                   *) is_windows="false";;
+ esac
+ AC_SUBST(is_windows)
+-AM_CHECK_XMLADA
++#AM_CHECK_XMLADA
+ AM_GNAT_BUILDS_SHARED
+ AC_OUTPUT(Makefile)
