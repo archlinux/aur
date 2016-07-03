@@ -2,28 +2,31 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.93
+pkgver=0.0.93.97
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
 url='https://github.com/mmitch/gbsplay'
 license=('GPL')
 depends=('libpulse' 'nas')
-source=("https://github.com/mmitch/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('25ecd55c8bc46be26ebf790db99a2593ad9fbe348efb738e588c36436aea84d30393b3af4be39d57df1ca7bfe89c66b24f5a146dff2ec7712c0ace74f0bba8e9')
+makedepends=('git')
+source=('git+https://github.com/mmitch/gbsplay.git#commit=33c5d7197792a9f869b8c44f374a8b1f2afc5c50')
+sha512sums=('SKIP')
+
+prepare() {
+	cd gbsplay
+	sed 's|gbs2ogg.sh|$0|g' --in-place contrib/gbs2ogg.sh
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd gbsplay
 
 	./configure --prefix=/usr --mandir=/usr/share/man
-
-	sed 's|gbs2ogg.sh|$0|g' --in-place contrib/gbs2ogg.sh
-
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd gbsplay
 
 	make DESTDIR="$pkgdir" install
 
