@@ -4,10 +4,11 @@
 pkgname=ntfs-3g-compress-git
 _pkgname=ntfs-3g
 pkgver=2016.2.22.r4907.321c9da
-pkgrel=1
-pkgdesc='Fork of ntfs-3g with experimental Windows 10 System Compression support'
+pkgrel=2
+pkgdesc='DEPRECATED: Use ntfs-3g-system-compression-git instead.'
 url='https://github.com/ebiggers/ntfs-3g/tree/system_compression'
 arch=('i686' 'x86_64')
+install=deprecated.install
 license=('GPL2')
 depends=('util-linux' 'fuse')
 makedepends=('git')

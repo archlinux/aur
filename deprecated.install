@@ -1,0 +1,14 @@
+_deprecation_notice='
+===========================================
+This package is deprecated.
+Use ntfs-3g-system-compression-git instead.
+===========================================
+'
+
+post_install() {
+  echo -e "${_deprecation_notice}"
+}
+
+post_upgrade() {
+  echo -e "${_deprecation_notice}"
+}
