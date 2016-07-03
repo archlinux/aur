@@ -2,24 +2,23 @@
 # Contributor: Carl George < arch at cgtx dot us >
 # thanks to the Linux Mint project http://linuxmint.com/
 
-# Versioning of the package will not be the same as GTK2 or GTK3 versions, however, I'll keep
-# it with the existing numbering to upgrade
+# Versioning of the package will not be the same as GTK2 or GTK3 versions
 pkgname='mint-x-theme'
 _namegtk2='mint-themes'
 _namegtk3='mint-themes-gtk3'
-pkgver='1.6'
-_gtk3ver='3.18+6'
-_gtk2ver='1.4.6'
+pkgver='1.7'
+_gtk3ver='3.18+7'
+_gtk2ver='1.4.7'
 pkgrel='1'
 pkgdesc='A Linux Mint theme.  Includes GTK2, GTK3, Metacity and Xfce components.'
 arch=('any')
 url='http://packages.linuxmint.com'
 license=('GPL3')
 conflicts=('mint-themes')
-source=("${url}/pool/main/m/${_namegtk2}/${_namegtk2}_${_gtk2ver}.tar.gz"
+source=("${url}/pool/main/m/${_namegtk2}/${_namegtk2}_${_gtk2ver}.tar.xz"
         "${url}/pool/main/m/${_namegtk3}/${_namegtk3}_${_gtk3ver}.tar.xz")
-sha256sums=('49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2'
-            '643ea8b0f8171e5e6e565e3a305809620090f4e8c20e52d980a2decdf4cc2fcd')
+sha256sums=('924765b8fba708dbf053698002e65f6ea4c6b41880fa8bf423563b86f1400005'
+            '026d0b82eda6582a1022350bee8b4aad1c79c5880f8be1accdae9b9c80f405a3')
 
 prepare() {
 	find ${srcdir} -name .gitkeep -type f -delete
