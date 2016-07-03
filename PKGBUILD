@@ -1,11 +1,12 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Art Gramlich <art@gramlich-net.com>
 # Contributor: twa022 <twa022 at gmail dot com>
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Anselmo L. S. Melo <anselmolsm@gmail.com> 
 
 _pkgname=icu
-pkgname=${_pkgname}55
-pkgver=55.1
+pkgname=${_pkgname}54
+pkgver=54.1
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
@@ -13,7 +14,7 @@ url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5' 'sh')
 source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
-sha256sums=('e16b22cbefdd354bec114541f7849a12f8fc2015320ca5282ee4fd787571457b')
+sha256sums=('d42bc9a8ca6a91c55eb0925c279f49e5b508d51ef26ac9850d9be55de5bb8ab3')
 
 build() {
   cd ${srcdir}/${_pkgname}/source
