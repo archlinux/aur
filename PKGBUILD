@@ -6,12 +6,12 @@
 validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
 pkgver=2.4
-pkgrel=6
+pkgrel=7
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
 license=('GPL3')
-depends=('redis' 'geoip')
+depends=('redis' 'geoip' 'libmariadbclient')
 # Add ndpi as dep once issues is fixed with 404 on source
 makedepends=('glib2' 'automake' 'libtool' 'geoip' 'libpcap' 'wget' 'libxml2' 'sqlite' 'curl' 'libmariadbclient')
 source=("http://downloads.sourceforge.net/project/ntop/ntopng/ntopng-2.4-stable.tar.gz" "ntopng@.service" "ntopng-2.4-stable.tar.gz.sig" "ntopng@.service.sig")
