@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v2.9.0.0.0.ge46bc5e
+pkgver=v2.9.6.0.0.g4cbce04
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -37,8 +37,7 @@ pkgver() {
 
 prepare() {
   cd megasync
-  sed 's|git@github.com:meganz/sdk.git|https://github.com/meganz/sdk.git|g' -i .gitmodules
-  git submodule update --init --recursive
+  git submodule update --init
 
   cd src/MEGASync/mega
   ./autogen.sh
