@@ -1,18 +1,9 @@
---- src/pyarchey-0.6.8/pyarchey/pyarchey.py	2015-09-26 17:16:41.076808842 +0200
-+++ src/pyarchey-0.6.8/pyarchey/pyarchey.py	2015-09-26 17:21:38.420151890 +0200
-@@ -444,7 +444,7 @@
- 		Does the printing. Either picture and info to screen or dumps json.
- 		"""
- 		if js:
--			print json.dumps(self.json)
-+			print(json.dumps(self.json))
- 		else:
- 			print(logosDict[self.distro].format(color = colorDict[self.distro], results = self.results))
-
-@@ -555,9 +555,13 @@
+--- src/pyarchey-0.7/pyarchey/pyarchey.py	2016-07-03 21:06:51.984648092 +0200
++++ src/pyarchey-0.7/pyarchey/pyarchey.py	2016-07-03 21:12:46.701437069 +0200
+@@ -563,9 +563,11 @@
  
  class Disk(object):
- 	def __init__(self,json=False):
+ 	def __init__(self, json=False):
 -		p = ps.disk_usage('/')
 -		total = p.total
 -		used = p.used
@@ -21,12 +12,10 @@
 +		#used = p.used
 +		total = sum([ps.disk_usage(part.mountpoint).total for part in ps.disk_partitions()])
 +		used = sum([ps.disk_usage(part.mountpoint).used for part in ps.disk_partitions()])
-+
-+
  
- 		used,total,size = autoSize(used,total)
+ 		used, total, size = autoSize(used, total)
  
-@@ -566,11 +570,11 @@
+@@ -574,11 +576,11 @@
  		if json:
  			disk = '%s / %s %s' % (used, total, size)
  		else:
@@ -41,13 +30,13 @@
  				disk = '%s%s %s/ %s %s' % (colorDict['Sensors'][0], used, colorDict['Clear'][0], total, size)
  		self.key = 'Disk'
  		self.value = disk
-@@ -592,7 +596,8 @@
+@@ -601,7 +603,8 @@
  				if host.find('.local') < 0:
- 					host=host + '.local'
+ 					host = host + '.local'
  
 -			ip = socket.gethostbyname(host)
 +			#ip = socket.gethostbyname(host)
-+			ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
++			ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s     in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
  		except:
  			print('Error in IP()')
- 		
+ 
