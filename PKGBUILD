@@ -1,7 +1,7 @@
 # Maintainer: bazzletoe <barry.keegan at gmail.com>
 _pkgname=nwjs-sdk
 pkgname=$_pkgname
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js. SDK version includes dev tools."
 arch=("i686" "x86_64")
@@ -25,8 +25,8 @@ fi
 source_common="http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-sha256sums_i686=("3b683457f0f57c495cb7621281277d0c34fce38702aa9cb63163b96feb77c555")
-sha256sums_x86_64=("a1a6bcbfad178dd537729f2606c20c820f4ced9fef31ee8e509ab2f8114752ed")
+sha256sums_i686=("12d5c88f776bb3b372b0bd589b8090ddf22fa7d93986d6de5734eef3388e9dee")
+sha256sums_x86_64=("752bab1ca2cacb65ec0d342d71b4b7bcd788ba55e34ba6f61ba620a7fe0b7f19")
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
