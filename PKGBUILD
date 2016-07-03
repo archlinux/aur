@@ -6,7 +6,7 @@
 validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
 pkgver=2.4
-pkgrel=4
+pkgrel=5
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
@@ -23,7 +23,8 @@ sha512sums=('515dd7889ae3aaf2482371bb2c55ab7300cf4207fe07f37029b7529bfb710379c19
 
 build() {
   cd ntopng-2.4-stable
-  ./autogen.sh && ./configure 
+  ./autogen.sh
+  ./configure --prefix=$pkgdir/usr
   make geoip
   make
 }
@@ -31,9 +32,9 @@ build() {
 package() {
   cd ntopng-2.4-stable
 
-#  make install
-  make DESTDIR="$pkgdir/" install
+  make install
 
+  mv $pkgdir/usr/man $pkgdir/usr/share/
   mkdir -p $pkgdir/usr/lib/systemd/system
   install -m644 "$srcdir/ntopng@.service" "$pkgdir/usr/lib/systemd/system"
 
