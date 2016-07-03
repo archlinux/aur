@@ -39,11 +39,12 @@ post_install() {
   done
 
   /usr/share/doc/zarafa/install-ssl.sh
+  return0
 }
 
-#post_upgrade() {
-#  post_install $1
-#}
+post_upgrade() {
+  return 0
+}
 
 pre_remove() {
   userdel zarafa &> /dev/null
