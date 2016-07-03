@@ -1,6 +1,6 @@
 # Maintainer: nrio <nrio@mailbox.org>
 pkgname=vim-elixir-git
-pkgver=r251.fe61852
+pkgver=r253.e5030e0
 pkgrel=1
 pkgdesc="Vim configuration files for Elixir"
 arch=('any')

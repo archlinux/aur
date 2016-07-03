@@ -1,6 +1,6 @@
 pkgbase = vim-elixir-git
 	pkgdesc = Vim configuration files for Elixir
-	pkgver = r251.fe61852
+	pkgver = r253.e5030e0
 	pkgrel = 1
 	url = https://github.com/elixir-lang/vim-elixir
 	install = vim-elixir-git.install
