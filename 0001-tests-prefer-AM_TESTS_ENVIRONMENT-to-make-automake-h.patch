@@ -1,0 +1,97 @@
+From 9c5ebca1509558fde91ed1cd75784cd5f0dd9f69 Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Sun, 26 Jun 2016 12:58:33 +0200
+Subject: [PATCH] tests: prefer AM_TESTS_ENVIRONMENT to make automake happy
+
+The new test runner seems to require this variable.
+See #68
+---
+ Makefile.tests.am                  | 2 +-
+ docs/reference/bt-cmd/Makefile.am  | 2 +-
+ docs/reference/bt-core/Makefile.am | 2 +-
+ docs/reference/bt-edit/Makefile.am | 2 +-
+ docs/reference/bt-gst/Makefile.am  | 2 +-
+ docs/reference/bt-ic/Makefile.am   | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.tests.am b/Makefile.tests.am
+index b7ce34c..0184931 100644
+--- a/Makefile.tests.am
++++ b/Makefile.tests.am
+@@ -37,7 +37,7 @@ CHECK_REGISTRY = $(top_builddir)/tests/test-registry.reg
+ # for gtk/x11 issues
+ #    GDK_SYNCHRONIZE=1
+ #
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+ 	CK_DEFAULT_TIMEOUT=20 \
+ 	LANG=C \
+ 	XDG_CACHE_HOME=$(abs_builddir) \
+diff --git a/docs/reference/bt-cmd/Makefile.am b/docs/reference/bt-cmd/Makefile.am
+index 91ddb30..d1a9652 100644
+--- a/docs/reference/bt-cmd/Makefile.am
++++ b/docs/reference/bt-cmd/Makefile.am
+@@ -89,7 +89,7 @@ EXTRA_DIST += \
+ 
+ # Comment this out if you want your docs-status tested during 'make check'
+ if ENABLE_GTK_DOC
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+ 	DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+ 	SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+ TESTS = $(GTKDOC_CHECK)
+diff --git a/docs/reference/bt-core/Makefile.am b/docs/reference/bt-core/Makefile.am
+index 9cf0049..f559ca9 100644
+--- a/docs/reference/bt-core/Makefile.am
++++ b/docs/reference/bt-core/Makefile.am
+@@ -73,7 +73,7 @@ EXTRA_DIST += $(DOC_MODULE).types
+ 
+ # Comment this out if you want your docs-status tested during 'make check'
+ if ENABLE_GTK_DOC
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+ 	DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+ 	SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+ TESTS = $(GTKDOC_CHECK)
+diff --git a/docs/reference/bt-edit/Makefile.am b/docs/reference/bt-edit/Makefile.am
+index 11542e3..e3ccca0 100644
+--- a/docs/reference/bt-edit/Makefile.am
++++ b/docs/reference/bt-edit/Makefile.am
+@@ -92,7 +92,7 @@ EXTRA_DIST += \
+ 
+ # Comment this out if you want your docs-status tested during 'make check'
+ if ENABLE_GTK_DOC
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+ 	DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+ 	SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+ TESTS = $(GTKDOC_CHECK)
+diff --git a/docs/reference/bt-gst/Makefile.am b/docs/reference/bt-gst/Makefile.am
+index eaddd9b..2f4df52 100644
+--- a/docs/reference/bt-gst/Makefile.am
++++ b/docs/reference/bt-gst/Makefile.am
+@@ -96,7 +96,7 @@ EXTRA_DIST += $(DOC_MODULE).types
+ 
+ # Comment this out if you want your docs-status tested during 'make check'
+ if ENABLE_GTK_DOC
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+ 	SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+ 
+diff --git a/docs/reference/bt-ic/Makefile.am b/docs/reference/bt-ic/Makefile.am
+index 60bdf7d..3ee7c6e 100644
+--- a/docs/reference/bt-ic/Makefile.am
++++ b/docs/reference/bt-ic/Makefile.am
+@@ -90,7 +90,7 @@ EXTRA_DIST += $(DOC_MODULE).types
+ 
+ # Comment this out if you want your docs-status tested during 'make check'
+ if ENABLE_GTK_DOC
+-TESTS_ENVIRONMENT = \
++AM_TESTS_ENVIRONMENT = \
+ 	DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
+ 	SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
+ TESTS = $(GTKDOC_CHECK)
+-- 
+2.9.0
+
