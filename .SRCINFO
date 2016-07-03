@@ -17,7 +17,7 @@ pkgbase = archon
 	options = !strip
 	source_i686 = http://archon.vf.io/ARChon-v2.1.0-x86_32.zip
 	sha512sums_i686 = 23cd42c41a6bfb2a6bffcd42efbb3f32c781609a7b4ed01c716ca817213298e0bd83550759b0e4979703d9011e40e54faf9fe8b64eba260637909dc6296f8dcc
-	source_x86_64 = https://bitbucket.org/vladikoff/archon/get/v2.1.0-x86_64.zip
+	source_x86_64 = http://archon.vf.io/ARChon-v2.1.0-x86_64.zip
 	sha512sums_x86_64 = 16ce5d52b7835e4eb755c3bd3e99db3dabdeec5f93c6812400fc25f7ff8e2be878e678f4404def3a180ec3f5354f6d5b5470832f3626d7a95efc131c80ccae5e
 
 pkgname = archon
