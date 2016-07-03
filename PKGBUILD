@@ -4,13 +4,13 @@ pkgbase=python-workalendar
 pkgname=('python-workalendar'
 	 'python2-workalendar')
 pkgdesc="Worldwide holidays and working days helper and toolkit"
-pkgver=0.4.3
+pkgver=0.6.1
 pkgrel=1
 url="https://github.com/novafloss/workalendar"
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/w/workalendar/workalendar-${pkgver}.tar.gz")
-md5sums=('058c3bc935fb180a5c0a7ad5e45fa240')
+source=("https://github.com/novafloss/workalendar/archive/${pkgver}.tar.gz")
+md5sums=('52660bac664924c82464407e4cce6202')
 makedepends=('python'
              'python-lunardate'
              'python-pycalverter'
