@@ -16,9 +16,8 @@ md5sums=('bbb4239126e9c99e2effc83b02bf8755')
 package() {
   cd "${srcdir}/Pympler-${pkgver}"
   echo :: Installing for python2.7 ...
-  pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+  PIP_CONFIG_FILE=/dev/null pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
   echo :: Installing for python3.5 ...
-  pip install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+  PIP_CONFIG_FILE=/dev/null pip3 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
