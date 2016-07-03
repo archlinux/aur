@@ -4,7 +4,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.2.r0.g41c5e11
+pkgver=0.4.2.r267.g50a7df6
 pkgrel=1
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
@@ -21,7 +21,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+ git describe --long --tags | sed -e 's/^v//' -e 's/^\(.*\)-\([0-9]*\)-\(g[0-9a-f]*\)$/\1.r\2.\3/' -e 's/-//g'
 }
 
 prepare() {
