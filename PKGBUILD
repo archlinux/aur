@@ -1,36 +1,26 @@
 # Contributor: p2k <me@p2k-network.org>
 # Contributor: Yaohan Chen <yaohan.chen@gmail.com>
+# Contributor: raingloom <raingloom42@gmail.com>
 pkgname=wakfu-transition
-provides=wakfu
-conflicts=wakfu
+provides=( wakfu )
+conflicts=( wakfu )
 pkgver=1.38
 pkgrel=2
 pkgdesc="A turn-based tactical Massively Multiplayer Online Role-playing Game (MMORPG) written in Java/OpenGL."
 url="http://www.wakfu.com/"
-license="custom"
+license=( "custom" )
 arch=('i686' 'x86_64')
-source=('http://dl.ak.ankama.com/games/installers/wakfu-amd64.tar.gz'
-        'http://dl.ak.ankama.com/games/installers/wakfu-x86.tar.gz'
-        'wakfu.sh'
+source_x86_64=('http://dl.ak.ankama.com/games/installers/wakfu-amd64.tar.gz')
+md5sums_x86_64=('f93c4f7aea95e8f181dfe65b1d231dfd')
+source_i686=('http://dl.ak.ankama.com/games/installers/wakfu-x86.tar.gz')
+md5sums_i686=('ffe64c2f296828da44c51667344dec4d')
+source=('wakfu.sh'
         'wakfu.desktop'
         'transition.conf.patch')
-md5sums=('7ba0cc436e6039db8155ee6b702d879e'
-         'c90b4da24ab48a7daf73f25ab42eb78d'
-         '56f3145a28f2a608576d3751de757380'
+md5sums=('56f3145a28f2a608576d3751de757380'
          '6790dbbfdcb60fe9344cb23bb3dc9ab7'
          '97e66dc65ec89fb1cc819fadf771fbd0')
 
-# Skip this block if PKGBUILD is sourced by updpkgsums (pstree is used for this check,
-# and if not available, this check is skipped)
-if ! ( command -v pstree >/dev/null 2>&1 && \
-       pstree --show-parents $$ | grep -q updpkgsums ) ; then
-  # Remove source and md5sum for the wrong arch
-  if [ "$CARCH" == "x86_64" ];then
-    unset source[1] md5sums[1]
-  else
-    unset source[0] md5sums[0]
-  fi
-fi
 
 install='wakfu.install'
 depends=('libglapi' 'openal' 'java-environment' 'ankama-transition')
