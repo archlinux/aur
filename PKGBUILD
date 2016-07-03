@@ -8,7 +8,7 @@ url='https://github.com/christopherloen/jeeves'
 license=('None')
 depends=('wget' 'cower' 'git')
 source=('https://raw.githubusercontent.com/christopherloen/jeeves/master/jeeves')
-sha256sums=('71d06b294e446e267d3a716938b2999ee1625b5c80bf1ccd43db5999c650872e')
+sha256sums=('b094fc67740e1c1bcf03f2247920862ee679b7a52e0804be200f216932bf22e9')
 
 
 package() {
