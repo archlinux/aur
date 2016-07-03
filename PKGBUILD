@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kreport-git
-pkgver=2.96.1.r1023.c021aa0
+pkgver=2.97.0.r1084.3c791e9
 pkgrel=1
 pkgdesc="A framework for creation and generation of reports in multiple formats. (GIT version)"
 url='https://www.kde.org/applications/graphics/kreport'
@@ -20,7 +20,6 @@ conflicts=('kreport')
 provides=('kreport')
 source=('git://anongit.kde.org/kreport.git')
 sha1sums=('SKIP')
-install=kreport-git.install
 
 pkgver() {
   cd kreport
@@ -41,7 +40,7 @@ build() {
   cmake ../kreport \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
