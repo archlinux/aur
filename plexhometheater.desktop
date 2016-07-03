@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenPHT
+Name[en_US]=OpenPHT
+Exec=/usr/bin/plexhometheater.sh
+Icon=plexhometheater
+Comment[en_US]=OpenPHT
+StartupNotify=true
+Categories=AudioVideo

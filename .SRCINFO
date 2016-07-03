@@ -69,9 +69,11 @@ pkgbase = openpht
 	source = https://github.com/RasPlex/OpenPHT/archive/v1.6.2.123-e23a7eef.tar.gz
 	source = plexhometheater.sh
 	source = fribidi.patch
+	source = plexhometheater.desktop
 	sha256sums = 21375fbe78d894b1ff9e636b9d24a5434a34634495e07981f82d2240a9858e8b
 	sha256sums = dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb
 	sha256sums = 966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea
+	sha256sums = 354429ce7dcafaa8b619b000000f4f4f8fc0a1545b9656f6beb9f85ebb8f4e41
 
 pkgname = openpht
 
