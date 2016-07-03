@@ -57,10 +57,10 @@ build() {
 }
 
 package() {
-  cd $srcdir/flann-${pkgver}-src
-  
+  cd "$srcdir/flann-${pkgver}-src"
+
   cd build
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 
   #install license file
   install -D -m644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
