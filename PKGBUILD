@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow-git
-pkgver=0.8.0rc0.r1639.gbdc4373
+pkgver=0.9.0.r852.g70de76e
 pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
