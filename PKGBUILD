@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec
 _pkgbasever=4.5-gnu
 _pkgver=4.5.7-gnu
 _grsecver=3.1
-_timestamp=201606080852
+_timestamp=201606262019
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
@@ -67,7 +67,7 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             'eeb0df2627d7c26db930918d2d05d76fe0556f552531c2e56e892cb3b4a26ec7'
             'SKIP'
-            '13f8fdb40ae19f5adbbd35a531dbee0c6a7c1b9d272252ea9050cfa318494dbf'
+            '5925e72e79ac5f9c39770ed8d9fe4b271daceb68cdaa96481ac52dd78d786104'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
