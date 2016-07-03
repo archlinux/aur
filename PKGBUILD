@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.5-gnu
 _pkgver=4.5.7-gnu
 _grsecver=3.1
-_timestamp=201606080852
+_timestamp=201606262019
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
@@ -72,7 +72,7 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             'eeb0df2627d7c26db930918d2d05d76fe0556f552531c2e56e892cb3b4a26ec7'
             'SKIP'
-            '13f8fdb40ae19f5adbbd35a531dbee0c6a7c1b9d272252ea9050cfa318494dbf'
+            '5925e72e79ac5f9c39770ed8d9fe4b271daceb68cdaa96481ac52dd78d786104'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
