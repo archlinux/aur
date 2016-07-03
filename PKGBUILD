@@ -1,24 +1,23 @@
-# Maintainer: Niels Martignène <niels.martignene@gmail.com>
+# Maintainer: buckket <buckket@cock.li>
+# Contributor: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=arduino-mk
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
-pkgdesc="A Makefile for Arduino Sketches"
+pkgdesc='A Makefile for Arduino Sketches'
 arch=(any)
-url="https://github.com/sudar/Arduino-Makefile"
+url='https://github.com/sudar/Arduino-Makefile'
 license=('LGPL2.1')
-depends=('arduino' 'make' 'python' 'python-pyserial')
+depends=('arduino' 'make' 'python-pyserial')
+optdepends=('screen: monitor support'
+            'picocom: monitor support')
 source=("https://github.com/sudar/Arduino-Makefile/archive/${pkgver}.tar.gz")
-sha256sums=('4b05faff3c5b647471652420b2b80a3f6edbf4fa08d422476cd4c2d546b44441')
+sha256sums=('91a41838685f1f52bf3a7da770f633a76be4b0dd71aea94a484b9827c56315bf')
 
 prepare() {
   cd "${srcdir}/Arduino-Makefile-${pkgver}"
 
   find -name ".gitignore" -delete
-}
-
-build() {
-  cd "${srcdir}/Arduino-Makefile-${pkgver}"
 }
 
 package() {
