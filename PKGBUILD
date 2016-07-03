@@ -1,4 +1,4 @@
-# Maintainer: Jesse Nazario <jessenzr@gmail.com>
+# Maintainer: Syn Waker <syncrtl64@gmail.com>
 pkgname=gdx-setup
 pkgver=`date +"%Y%m%d"`
 pkgrel=11

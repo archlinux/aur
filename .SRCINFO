@@ -1,6 +1,6 @@
 pkgbase = gdx-setup
 	pkgdesc = Libgdx project setup
-	pkgver = 20150704
+	pkgver = 20160703
 	pkgrel = 11
 	url = http://libgdx.badlogicgames.com
 	arch = any
