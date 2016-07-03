@@ -18,7 +18,7 @@
 
 pkgname=purr-data-git
 pkgver=r2750.5f60042
-pkgrel=2
+pkgrel=3
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
 arch=('i686' 'x86_64')
@@ -90,7 +90,7 @@ package() {
   rm -rf default init.d
   # Remove the included DejaVu font, it's in the standard repos.
   cd "$pkgdir/usr"
-  rm -f lib/pd-l2ork/bin/DejaVuSansMono.ttf
+  #rm -f lib/pd-l2ork/bin/DejaVuSansMono.ttf
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
   # Get rid of the corresponding manpages
