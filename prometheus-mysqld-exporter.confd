@@ -1,0 +1,6 @@
+# By default, mysqld_exporter will look for the "DATA_SOURCE_NAME" environment variable (hostname can be omitted if running on localhost, but keep the slash)
+DATA_SOURCE_NAME="user:pass@hostname/"
+
+# You can specify additional daemon options here
+DAEMON_OPTIONS=""
+

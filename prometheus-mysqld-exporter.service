@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus Exporter for machine metrics
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/prometheus-mysqld-exporter
+ExecStart=/usr/bin/prometheus_mysqld_exporter ${DAEMON_OPTIONS}
+
+[Install]
+WantedBy=multi-user.target
