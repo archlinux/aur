@@ -1,0 +1,16 @@
+pkgbase = beadm
+	pkgdesc = Manage Boot Environments on ZFS filesystems
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/b333z/beadm
+	arch = any
+	license = BSD2
+	depends = awk
+	depends = sh
+	depends = zfs-utils
+	backup = etc/beadm.conf
+	source = beadm-1.2.5::https://github.com/b333z/beadm/archive/1.2.5.tar.gz
+	md5sums = 67f7062af87915b0ee448cbc63567200
+
+pkgname = beadm
+
