@@ -18,7 +18,7 @@ source=(http://mirrors.cdn.adacore.com/art/57399978c7a447658e0affc0
         generic_gpr.in)
 
 md5sums=('631957d2f55277f1d58a68186fbf5022'
-         '6f4761c7b3374c27828ba573f0463069'
+         'ccb2b5dbfbf9e26b6544102e24cb6d5e'
          'cde06f485e180f4cc82bcdb450d36153')
 
 
