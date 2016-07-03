@@ -4,13 +4,13 @@
 
 pkgname=onedrive-d-git
 _pkgname=onedrive-d-old
-pkgver=20150407.g62a0733
-pkgrel=5
+pkgver=20150921.ga28186b
+pkgrel=1
 pkgdesc="Client daemon for Microsoft OneDrive service"
 url="https://github.com/xybu/onedrive-d-old"
 license=('LGPL')
-arch=('i686' 'x86_64')
-provides='onedrive-d'
+arch=('any')
+provides=('onedrive-d')
 depends=('inotify-tools'
          'python-certifi'
          'python-click'
