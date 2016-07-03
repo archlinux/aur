@@ -4,7 +4,7 @@
 #   this PKGBUILD is updated as well and this will let helpers know that there is anew verion.  No not really the "arch way"
 #   but neither are helpers :)
 pkgname=chirp-daily
-pkgver=20160702
+pkgver=20160703
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
 arch=('any')
@@ -15,8 +15,8 @@ options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-sha1sums=("3a8a07aa04962e5bb68a496f940739774f2027de")
-source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20160702/chirp-daily-20160702.tar.gz")
+sha1sums=("265593ee7285ac55656c2fd01dd3f37ea1fb9cfa")
+source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20160703/chirp-daily-20160703.tar.gz")
 
 build() {
   tar zxvf $pkgname-$pkgver.tar.gz
