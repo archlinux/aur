@@ -1,7 +1,7 @@
 pkgbase = netgen-nogui
 	pkgdesc = NETGEN is an automatic 3d tetrahedral mesh generator
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/netgen-mesher
 	arch = i686
 	arch = x86_64

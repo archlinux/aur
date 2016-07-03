@@ -1,7 +1,7 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 pkgname=netgen-nogui
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="NETGEN is an automatic 3d tetrahedral mesh generator"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/netgen-mesher"
@@ -31,8 +31,8 @@ build() {
 	# create dir for out-of-source build
 	mkdir "$_builddir" && cd "$_builddir"
 
-	CPPFLAGS="-I/usr/include/openmpi/ompi/mpi/cxx -I/opt/opencascade/inc/oce"
-	../configure --prefix=/usr --with-occ=/opt/opencascade/ --enable-occ \
+	CPPFLAGS="-I/usr/include/openmpi/ompi/mpi/cxx -I/opt/oce/include/oce"
+	../configure --prefix=/usr --with-occ=/opt/oce/ --enable-occ \
 		--disable-gui --enable-nglib --datadir=/usr/share
 	make
 }
