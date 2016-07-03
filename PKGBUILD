@@ -2,25 +2,22 @@
 # Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
 
 pkgname=specto-bzr
-pkgver=126
-pkgrel=2
+pkgver=176
+pkgrel=1
 pkgdesc="A desktop application that will watch configurable events"
 arch=('any')
 url="http://code.launchpad.net/specto"
 license=('GPL2')
 depends=('python2-notify' 'gnome-python-extras' 'dbus-python' 'pygtk' 'gnome-icon-theme')
-makedepends=('bzr' 'librsvg')
+makedepends=('bzr' 'librsvg' 'intltool')
 conflicts=('specto' 'specto-svn')
 provides=('specto')
-install=$pkgname.install
-
 source=()
-md5sums=()
 
 _bzrbranch=https://code.launchpad.net/~specto/specto/main
 _bzrmod=specto
 
-build() {
+prepare() {
   cd "${srcdir}"
 
   msg "Connecting to the server...."
@@ -38,8 +35,14 @@ build() {
   cp -r ./$_bzrmod ./$_bzrmod-build
 }
 
+build() {
+  cd "${srcdir}"/$_bzrmod-build
+
+  python2 setup.py build
+}
+
 package() {
-  cd ./$_bzrmod-build
+  cd "${srcdir}"/$_bzrmod-build
 
   python2 setup.py install --prefix=/usr --root="${pkgdir}"
 }
