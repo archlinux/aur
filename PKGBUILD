@@ -1,6 +1,6 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
 pkgname='jeeves'
-pkgver='0.1'
+pkgver='0.3'
 pkgrel=1
 pkgdesc='A simple script to quickly check your AUR packages'
 arch=('any')
