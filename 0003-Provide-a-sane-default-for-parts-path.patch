@@ -1,7 +1,7 @@
-From be14b73eb744b928c69b98a1679808f18b2d6c5c Mon Sep 17 00:00:00 2001
+From 67fcfc02ff4f799742ad6b29cb9a5a46c782a1a0 Mon Sep 17 00:00:00 2001
 From: Michael Lass <lass@mail.uni-paderborn.de>
 Date: Sat, 11 Jun 2016 23:07:30 +0200
-Subject: [PATCH 7/7] Provide a sane default for parts path
+Subject: [PATCH 3/3] Provide a sane default for parts path
 
 ---
  src/fapplication.cpp | 1 +
@@ -20,5 +20,5 @@ index 5a2693c..0624012 100644
  		if ((m_arguments[i].compare("-h", Qt::CaseInsensitive) == 0) || 
  			(m_arguments[i].compare("-help", Qt::CaseInsensitive) == 0) || 
 -- 
-2.8.3
+2.9.0
 

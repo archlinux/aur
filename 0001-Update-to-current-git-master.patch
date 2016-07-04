@@ -1,0 +1,1190 @@
+From af3340df2d4d2e773aa413111eed3f47c8ec6f71 Mon Sep 17 00:00:00 2001
+From: Michael Lass <lass@mail.uni-paderborn.de>
+Date: Mon, 4 Jul 2016 19:47:26 +0200
+Subject: [PATCH 1/3] Update to current git master
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit 7ab7da8ef9ccccb05c2feaa566dd337c1b16ccd6
+Merge: daac3da 8d44113
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Mon Jul 4 11:37:47 2016 +0200
+
+    Merge pull request #3232 from cjmayo/release
+
+    minimise initial size of cloned parts repository in releases
+
+commit daac3daddc553d7c890e4252c6788829ed1d49be
+Merge: 21e1f5d c0f4dbb
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Mon Jul 4 11:16:37 2016 +0200
+
+    Merge pull request #3249 from fritzing/cjmayo-system-libs
+
+    Update to "Support System Boost and libgit2"
+
+commit c0f4dbb03622ae524a1d544cad5a3f13f32c3cd4
+Author: André Knörig <andre.knoerig@gmail.com>
+Date:   Mon Jul 4 11:05:11 2016 +0200
+
+    adjust libgit2 paths
+
+commit 19234581eeec87037732f60be813cfe7cbc49f5f
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:54:36 2016 +0100
+
+    detect and use system libgit2 with pkg-config
+
+commit 4d55a72f5fc82f3f2e100fcb79ae63bc767392c0
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:54:36 2016 +0100
+
+    add the option to use installed boost
+
+commit 1d904ca3099661e67b15f70b5071f2bf3d18d900
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:54:36 2016 +0100
+
+    phoenix.pro: use else consistently
+
+commit b189d64861ef5f64fd4bb3008c24862a4908c970
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:54:36 2016 +0100
+
+    phoenix.pro: tidy-up whitespace
+
+commit 8d44113af154e3dfcbb6a4de71bc3a8428cdaabd
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Wed Jun 29 21:07:53 2016 +0100
+
+    minimise initial size of cloned parts repository in releases
+
+    Only copy master branch.
+
+commit 21e1f5d69f67c289b5928bf43b7dec5723281321
+Merge: 913dca8 3d66435
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Thu Jun 23 11:47:47 2016 +0200
+
+    Merge pull request #3241 from cjmayo/forum
+
+    update forum address in readme.md
+
+commit 3d664357409a3d44d143cea5375cd2cd6b01041b
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 19 20:38:07 2016 +0100
+
+    update forum address in readme.md
+
+commit 913dca8ab12ac17147edaf8935f57bdef3343100
+Merge: de84594 c8c7fc5
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Sun Jun 19 11:58:53 2016 +0200
+
+    Merge pull request #3239 from cjmayo/help
+
+    remove extra spaces and blank lines in --help
+
+commit de84594f3b32d7d3996416c30fcdd4778bc8e013
+Merge: 22158d1 9bcffaf
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Sun Jun 19 11:57:42 2016 +0200
+
+    Merge pull request #3240 from cjmayo/libs
+
+    phoenix.pro: with system quazip don't need -lz -lminizp or minizip.h
+
+commit c8c7fc5a3bfe5e493a865917dad8e148bd8abba0
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sat Jun 18 15:21:05 2016 +0100
+
+    remove extra spaces and blank lines in --help
+
+    Replace comma between versions with hyphen.
+
+    qDebug() automatically puts a single space between each item, and
+    outputs a newline at the end.
+    http://doc.qt.io/qt-5/qtglobal.html#qDebug
+
+commit 9bcffaf26301a4bb6161a0c712ca481629cffce8
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Fri Jun 17 21:04:17 2016 +0100
+
+    phoenix.pro: with system quazip don't need -lz -lminizp or minizip.h
+
+commit 22158d1e3b114ed8eed0ed06662747b070eaf809
+Merge: 91014aa 1fa87c4
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Sun Jun 12 19:57:55 2016 +0200
+
+    Merge pull request #3234 from cjmayo/remove-types
+
+    install_fritzing.sh: user does not need ~/.mime.types
+
+commit 1fa87c4a7d4e82c5c84315f30f510d46feb03887
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:50:40 2016 +0100
+
+    install_fritzing.sh: user does not need ~/.mime.types
+
+commit 91014aa821ad3d9e269eb953c5ae591b5f7ee7d8
+Merge: 1bdaf5e 4cb5185
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Sun Jun 12 17:42:35 2016 +0200
+
+    Merge pull request #3233 from cjmayo/git_remote_connect
+
+    make compatible with libgit2 >= 0.24.0
+
+commit 1bdaf5ed0fab899302d4e81f3b10754f9f011544
+Merge: 8a408b3 db04764
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Sun Jun 12 17:34:47 2016 +0200
+
+    Merge pull request #3231 from cjmayo/mime
+
+    use MIME database XML file and install_fritzing.sh
+
+commit 4cb5185d464bf98e9da5ceca72d5af907ff824ef
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:31:35 2016 +0100
+
+    make compatible with libgit2 >= 0.24.0
+
+    Based on:
+    https://github.com/fritzing/fritzing-app/pull/3203/commits/1ffea750c05fda78c88b60b84545f6a3e1371159
+
+commit db04764d3113e130a5cc7c14cf65bf004dff4d38
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:11:52 2016 +0100
+
+    install_fritzing.sh: update comments
+
+commit 4b5ab126d13bb4541f52f2fd7eee5f9f8b507524
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:11:52 2016 +0100
+
+    install_fritzing.sh: install application icon
+
+commit 2b848f1b226e24c4fb07e0dcb537952021fe69ce
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:11:52 2016 +0100
+
+    install_fritzing.sh: install desktop file
+
+    Provides desktop menu entry and MIME associations.
+
+commit 620f85dbc31f376303839ed24cf4c6b0f55f3859
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:11:52 2016 +0100
+
+    use MIME database XML file
+
+    Replaces individual MIME type files which are created by
+    update-mime-database.
+    https://specifications.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html
+
+    Install with install_fritzing.sh and phoenix.pro generated Makefile.
+
+commit a795b9f388e74d0a4043a06a9107b664db6605d2
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jun 12 16:11:52 2016 +0100
+
+    install_fritzing.sh: use for loops to install icons
+
+commit 8a408b330741ee10b844611b437d4bb00b073bf3
+Merge: c6187b9 7891497
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Thu Jun 9 10:42:20 2016 +0200
+
+    Merge pull request #3224 from cjmayo/desktop
+
+    Issues with fritzing.desktop
+
+commit 789149760451defdf55a27647fcf1c20105cb2f8
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Tue Jun 7 20:01:55 2016 +0100
+
+    remove desktop Version entry
+
+    Version is the version of the Desktop Entry Specification not Fritzing
+
+commit a64635049f62234e03344da5be6f8d3bf09e2072
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Tue Jun 7 20:01:55 2016 +0100
+
+    fix desktop Categories entry
+
+    Single entry prefixing non-standard categories
+
+commit f712d0139e3a0b1146566c989a3d523da9cdcd42
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Tue Jun 7 20:01:55 2016 +0100
+
+    fix application icon does not show on GNOME desktop
+
+    - phoenix.pro renames fritzing_icon.png to fritzing.png
+    - Icon value should be either an absolute path or icon name
+
+commit c6187b94ddd8896e0de470772447466bb0004b1f
+Author: André Knörig <andre.knoerig@gmail.com>
+Date:   Mon Jun 6 11:14:23 2016 +0200
+
+    fix vs folder paths in release script
+---
+ fritzing.desktop                                 |   6 +-
+ install_fritzing.sh                              |  87 +++------
+ phoenix.pro                                      | 237 ++++++++++-------------
+ pri/boostdetect.pri                              |  58 ++++++
+ pri/libgit2detect.pri                            |  60 ++++++
+ pri/utils.pri                                    |  45 +----
+ readme.md                                        |   2 +-
+ resources/system_icons/linux/fritzing.xml        |  31 +++
+ resources/system_icons/linux/x-fritzing-fz.xml   |   8 -
+ resources/system_icons/linux/x-fritzing-fzb.xml  |   8 -
+ resources/system_icons/linux/x-fritzing-fzbz.xml |   8 -
+ resources/system_icons/linux/x-fritzing-fzm.xml  |   8 -
+ resources/system_icons/linux/x-fritzing-fzp.xml  |   8 -
+ resources/system_icons/linux/x-fritzing-fzpz.xml |   8 -
+ resources/system_icons/linux/x-fritzing-fzz.xml  |   8 -
+ src/main.cpp                                     |   7 +-
+ src/version/partschecker.cpp                     |   6 +
+ tools/deploy_fritzing_mac.sh                     |   2 +-
+ tools/linux_release_script/release.sh            |   2 +-
+ tools/release_fritzing.bat                       |  20 +-
+ 20 files changed, 304 insertions(+), 315 deletions(-)
+ create mode 100644 pri/boostdetect.pri
+ create mode 100644 pri/libgit2detect.pri
+ create mode 100644 resources/system_icons/linux/fritzing.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fz.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzb.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzbz.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzm.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzp.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzpz.xml
+ delete mode 100644 resources/system_icons/linux/x-fritzing-fzz.xml
+
+diff --git a/fritzing.desktop b/fritzing.desktop
+index 854319e..6b88de2 100644
+--- a/fritzing.desktop
++++ b/fritzing.desktop
+@@ -1,14 +1,12 @@
+ [Desktop Entry]
+-Version=0.9.3b
+ Name=Fritzing
+ GenericName=Fritzing
+ Comment=Electronic Design Automation software
+ Exec=Fritzing
+-Icon=icons/fritzing_icon.png
++Icon=fritzing
+ Terminal=false
+ Type=Application
+-Categories=Development;IDE;Electronics;EDA;
++Categories=Development;IDE;Electronics;X-EDA;X-PCB;
+ X-SuSE-translate=false
+ StartupNotify=true
+-Categories=PCB;
+ MimeType=application/x-fritzing-fz;application/x-fritzing-fzz;application/x-fritzing-fzp;application/x-fritzing-fzpz;application/x-fritzing-fzb;application/x-fritzing-fzbz;application/x-fritzing-fzm;
+diff --git a/install_fritzing.sh b/install_fritzing.sh
+index 5a1a6a9..30ddc59 100644
+--- a/install_fritzing.sh
++++ b/install_fritzing.sh
+@@ -1,71 +1,46 @@
+ #!/bin/sh
+ #
+ # this is a rough beginning of a linux install script for fritzing
+-# sets up document icons and file associations using mime types
+-
+-APPDIR=$(dirname "$0")
++# sets up document icons and file associations using MIME types
++#
++# first ensure fritzing is unpacked in its final destination
++# and then run this script
+ 
+-# check if user .mime.types file exists, otherwise create it
+-if [ ! -f ~/.mime.types ]
+-then
+-	echo "creating user mime.types file"
+-	touch ~/.mime.types
+-fi
++APPLICATIONSDIR="${HOME}/.local/share/applications"
++MIMEDIR="${HOME}/.local/share/mime"
++PACKAGESDIR="${MIMEDIR}/packages"
+ 
+-# add mime types for fritzing file formats
+-grep -q application/x-fritzing ~/.mime.types
+-if [ $? -eq 0 ]
+-then
+-	echo "fritzing mime types already registered"
+-else
+-	echo "application/x-fritzing-fz 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzz 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzp 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzpz 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzb 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzbz 	fritzing" >> ~/.mime.types
+-	echo "application/x-fritzing-fzm 	fritzing" >> ~/.mime.types
+-fi
++APPDIR=$(dirname "$0")
+ 
+ cd $APPDIR
+ 
+-# install fritzing into mime user directory
+-xdg-mime install --mode user 'icons/x-fritzing-fz.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzz.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzp.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzpz.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzb.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzbz.xml'
+-xdg-mime install --mode user 'icons/x-fritzing-fzm.xml'
++# install fritzing into user MIME packages directory
++mkdir -p "${PACKAGESDIR}"
++cp icons/fritzing.xml "${PACKAGESDIR}" || exit 1
+ 
+-# set the default application to fritzing.desktop
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fz
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzz
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzp
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzpz
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzb
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzbz
+-xdg-mime default 'fritzing.desktop' application/x-fritzing-fzm
++# install fritzing desktop entry for user (includes MIME associations)
++desktop-file-edit --set-key=Exec --set-value="$(pwd)/Fritzing" fritzing.desktop
++xdg-desktop-menu install --novendor --mode user fritzing.desktop
+ 
+-# install image-files into user mime system with specified size
++# install image-files into user hicolor theme with specified size
+ # ~/.local/share/icons/hicolor/*size*
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fz_icon128.png' application-x-fritzing-fz
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fz_icon256.png' application-x-fritzing-fz
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzz_icon128.png' application-x-fritzing-fzz
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzz_icon256.png' application-x-fritzing-fzz
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzp_icon128.png' application-x-fritzing-fzp
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzp_icon256.png' application-x-fritzing-fzp
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzpz_icon128.png' application-x-fritzing-fzpz
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzpz_icon256.png' application-x-fritzing-fzpz
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzb_icon128.png' application-x-fritzing-fzb
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzb_icon256.png' application-x-fritzing-fzb
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzbz_icon128.png' application-x-fritzing-fzbz
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzbz_icon256.png' application-x-fritzing-fzbz
+-xdg-icon-resource install --mode user --context mimetypes --size 128 'icons/fzm_icon128.png' application-x-fritzing-fzm
+-xdg-icon-resource install --mode user --context mimetypes --size 256 'icons/fzm_icon256.png' application-x-fritzing-fzm
++#    /apps
++xdg-icon-resource install --noupdate --novendor --mode user --context apps \
++	--size 256 icons/fritzing_icon.png fritzing
++#    /mimetypes
++ICON_SIZES="128 256"
++FILE_EXTENSIONS="fz fzz fzb fzbz fzp fzpz fzm"
++for size in ${ICON_SIZES}; do
++	for extension in ${FILE_EXTENSIONS}; do
++		xdg-icon-resource install --noupdate --mode user --context mimetypes \
++			--size ${size} "icons/${extension}_icon${size}.png" \
++			"application-x-fritzing-${extension}"
++	done
++done
+ 
+ # update user databases
+-update-desktop-database ~/.local/share/applications
+-update-mime-database ~/.local/share/mime
++update-desktop-database "${APPLICATIONSDIR}"
++update-mime-database "${MIMEDIR}"
++xdg-icon-resource forceupdate --mode user
+ 
+ echo "installed fritzing system icons"
+diff --git a/phoenix.pro b/phoenix.pro
+index 301ce0c..cff7b0b 100644
+--- a/phoenix.pro
++++ b/phoenix.pro
+@@ -1,7 +1,7 @@
+ # /*******************************************************************
+ #
+ # Part of the Fritzing project - http://fritzing.org
+-# Copyright (c) 2007-08 Fritzing
++# Copyright (c) 2007-16 Fritzing
+ #
+ # Fritzing is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -30,116 +30,123 @@
+ #
+ # QTPLUGIN  += qjpeg qsqlite
+ 
+-
+ CONFIG += debug_and_release
+ 
++unix:!macx {
++    CONFIG += link_pkgconfig
++}
++
+ win32 {
+ # release build using msvc 2010 needs to use Multi-threaded (/MT) for the code generation/runtime library option
+ # release build using msvc 2010 needs to add msvcrt.lib;%(IgnoreSpecificDefaultLibraries) to the linker/no default libraries option
+-        CONFIG -= embed_manifest_exe
+-        INCLUDEPATH += $$[QT_INSTALL_HEADERS]/QtZlib
+-        DEFINES += _CRT_SECURE_NO_DEPRECATE
+-        DEFINES += _WINDOWS
+-	RELEASE_SCRIPT = $$(RELEASE_SCRIPT)			# environment variable set from release script
+-
+-        message("target arch: $${QMAKE_TARGET.arch}")
+-        contains(QMAKE_TARGET.arch, x86_64) {
+-                RELDIR = ../release64
+-                DEBDIR = ../debug64
+-                DEFINES += WIN64
+-       }
+-       !contains(QMAKE_TARGET.arch, x86_64) {
+-                RELDIR = ../release32
+-                DEBDIR = ../debug32
+-        }
++    CONFIG -= embed_manifest_exe
++    INCLUDEPATH += $$[QT_INSTALL_HEADERS]/QtZlib
++    DEFINES += _CRT_SECURE_NO_DEPRECATE
++    DEFINES += _WINDOWS
++    RELEASE_SCRIPT = $$(RELEASE_SCRIPT)    # environment variable set from release script
+ 
+-	Release:DESTDIR = $${RELDIR}
+-	Release:OBJECTS_DIR = $${RELDIR}
+-	Release:MOC_DIR = $${RELDIR}
+-	Release:RCC_DIR = $${RELDIR}
+-	Release:UI_DIR = $${RELDIR}
+-
+-	Debug:DESTDIR = $${DEBDIR}
+-	Debug:OBJECTS_DIR = $${DEBDIR}
+-	Debug:MOC_DIR = $${DEBDIR}
+-	Debug:RCC_DIR = $${DEBDIR}
+-	Debug:UI_DIR = $${DEBDIR}
+-}
+-macx {
++    message("target arch: $${QMAKE_TARGET.arch}")
++    contains(QMAKE_TARGET.arch, x86_64) {
+         RELDIR = ../release64
+         DEBDIR = ../debug64
+-        Release:DESTDIR = $${RELDIR}
+-        Release:OBJECTS_DIR = $${RELDIR}
+-        Release:MOC_DIR = $${RELDIR}
+-        Release:RCC_DIR = $${RELDIR}
+-        Release:UI_DIR = $${RELDIR}
+-
+-        Debug:DESTDIR = $${DEBDIR}
+-        Debug:OBJECTS_DIR = $${DEBDIR}
+-        Debug:MOC_DIR = $${DEBDIR}
+-        Debug:RCC_DIR = $${DEBDIR}
+-        Debug:UI_DIR = $${DEBDIR}
+-
+-        QMAKE_MAC_SDK = macosx10.11             # uncomment/adapt for your version of OSX
+-        CONFIG += x86_64 # x86 ppc
+-        QMAKE_INFO_PLIST = FritzingInfo.plist
+-        #DEFINES += QT_NO_DEBUG   		# uncomment this for xcode
+-        LIBS += -lz
+-        LIBS += /usr/lib/libz.dylib
+-        LIBS += /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+-        LIBS += /System/Library/Frameworks/Carbon.framework/Carbon
+-        LIBS += /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
++        DEFINES += WIN64
++    } else {
++        RELDIR = ../release32
++        DEBDIR = ../debug32
++    }
++
++    Release:DESTDIR = $${RELDIR}
++    Release:OBJECTS_DIR = $${RELDIR}
++    Release:MOC_DIR = $${RELDIR}
++    Release:RCC_DIR = $${RELDIR}
++    Release:UI_DIR = $${RELDIR}
++
++    Debug:DESTDIR = $${DEBDIR}
++    Debug:OBJECTS_DIR = $${DEBDIR}
++    Debug:MOC_DIR = $${DEBDIR}
++    Debug:RCC_DIR = $${DEBDIR}
++    Debug:UI_DIR = $${DEBDIR}
++}
++macx {
++    RELDIR = ../release64
++    DEBDIR = ../debug64
++    Release:DESTDIR = $${RELDIR}
++    Release:OBJECTS_DIR = $${RELDIR}
++    Release:MOC_DIR = $${RELDIR}
++    Release:RCC_DIR = $${RELDIR}
++    Release:UI_DIR = $${RELDIR}
++
++    Debug:DESTDIR = $${DEBDIR}
++    Debug:OBJECTS_DIR = $${DEBDIR}
++    Debug:MOC_DIR = $${DEBDIR}
++    Debug:RCC_DIR = $${DEBDIR}
++    Debug:UI_DIR = $${DEBDIR}
++
++    QMAKE_MAC_SDK = macosx10.11            # uncomment/adapt for your version of OSX
++    CONFIG += x86_64 # x86 ppc
++    QMAKE_INFO_PLIST = FritzingInfo.plist
++    #DEFINES += QT_NO_DEBUG                # uncomment this for xcode
++    LIBS += -lz
++    LIBS += /usr/lib/libz.dylib
++    LIBS += /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
++    LIBS += /System/Library/Frameworks/Carbon.framework/Carbon
++    LIBS += /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+ }
+ unix {
+     !macx { # unix is defined on mac
+         HARDWARE_PLATFORM = $$system(uname -m)
+-        contains( HARDWARE_PLATFORM, x86_64 ) {
++        contains(HARDWARE_PLATFORM, x86_64) {
+             DEFINES += LINUX_64
+         } else {
+             DEFINES += LINUX_32
+         }
+-        LIBS += -lz
++        !contains(DEFINES, QUAZIP_INSTALLED) {
++            LIBS += -lz
++        }
+     }
+ 
+-        isEmpty(PREFIX) {
+-                PREFIX = /usr
+-        }
+-        BINDIR = $$PREFIX/bin
+-        DATADIR = $$PREFIX/share
+-        PKGDATADIR = $$DATADIR/fritzing
++    isEmpty(PREFIX) {
++        PREFIX = /usr
++    }
++    BINDIR = $$PREFIX/bin
++    DATADIR = $$PREFIX/share
++    PKGDATADIR = $$DATADIR/fritzing
+ 
+-        DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
++    DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
+ 
+-        target.path =$$BINDIR
++    target.path = $$BINDIR
+ 
+-        desktop.path = $$DATADIR/applications
+-        desktop.files += fritzing.desktop
++    desktop.path = $$DATADIR/applications
++    desktop.files += fritzing.desktop
+ 
+-        manpage.path = $$DATADIR/man/man1
+-        manpage.files += Fritzing.1
++    mimedb.path = $$DATADIR/mime/packages
++    mimedb.files += resources/system_icons/linux/fritzing.xml
+ 
+-        icon.path = $$DATADIR/icons
+-        icon.extra = install -D -m 0644 $$PWD/resources/images/fritzing_icon.png $(INSTALL_ROOT)$$DATADIR/icons/fritzing.png
++    manpage.path = $$DATADIR/man/man1
++    manpage.files += Fritzing.1
+ 
+-        parts.path = $$PKGDATADIR
+-        parts.files += parts
++    icon.path = $$DATADIR/icons
++    icon.extra = install -D -m 0644 $$PWD/resources/images/fritzing_icon.png $(INSTALL_ROOT)$$DATADIR/icons/fritzing.png
+ 
+-        help.path = $$PKGDATADIR
+-        help.files += help
++    parts.path = $$PKGDATADIR
++    parts.files += parts
+ 
+-        sketches.path = $$PKGDATADIR
+-        sketches.files += sketches
++    help.path = $$PKGDATADIR
++    help.files += help
+ 
+-        bins.path = $$PKGDATADIR
+-        bins.files += bins
++    sketches.path = $$PKGDATADIR
++    sketches.files += sketches
+ 
+-        translations.path = $$PKGDATADIR/translations
+-        translations.extra = find $$PWD/translations -name "*.qm" -size +128c -exec cp -pr {} $(INSTALL_ROOT)$$PKGDATADIR/translations \\;
++    bins.path = $$PKGDATADIR
++    bins.files += bins
+ 
+-        syntax.path = $$PKGDATADIR/translations/syntax
+-        syntax.files += translations/syntax/*.xml
++    translations.path = $$PKGDATADIR/translations
++    translations.extra = find $$PWD/translations -name "*.qm" -size +128c -exec cp -pr {} $(INSTALL_ROOT)$$PKGDATADIR/translations \\;
+ 
+-        INSTALLS += target desktop manpage icon parts sketches bins translations syntax help
++    syntax.path = $$PKGDATADIR/translations/syntax
++    syntax.files += translations/syntax/*.xml
++
++    INSTALLS += target desktop mimedb manpage icon parts sketches bins translations syntax help
+ }
+ 
+ ICON = resources/system_icons/macosx/fritzing_icon.icns
+@@ -160,61 +167,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
+ RC_FILE = fritzing.rc
+ RESOURCES += phoenixresources.qrc
+ 
+-
+ # Fritzing is using libgit2 since version 0.9.3
+-
+-LIBGIT2INCLUDE = ../libgit2/include
+-exists($$LIBGIT2INCLUDE/git2.h) {
+-    message("found libgit2 include path at $$LIBGIT2INCLUDE")
+-}
+-else {
+-    message("Fritzing requires libgit2")
+-    message("Build it from the repo at https://github.com/libgit2")
+-    message("See https://github.com/fritzing/fritzing-app/wiki for details.")
+-
+-    error("libgit2 include path not found in $$LIBGIT2INCLUDE")
+-}
+-
+-INCLUDEPATH += $$LIBGIT2INCLUDE
+-
+-win32 {
+-    contains(QMAKE_TARGET.arch, x86_64) {
+-            LIBGIT2LIB = ../libgit2/build64
+-    }
+-    else {
+-            LIBGIT2LIB = ../libgit2/build32
+-    }
+-
+-    exists($$LIBGIT2LIB/git2.lib) {
+-        message("found libgit2 library in $$LIBGIT2LIB")
+-    }
+-    else {
+-        error("libgit2 library not found in $$LIBGIT2LIB")
+-    }
+-}
+-
+-unix {
+-    LIBGIT2LIB = ../libgit2/build
+-    macx {
+-        exists($$LIBGIT2LIB/libgit2.dylib) {
+-            message("found libgit2 library in $$LIBGIT2LIB")
+-        }
+-        else {
+-            error("libgit2 library not found in $$LIBGIT2LIB")
+-        }
+-    }
+-    !macx {
+-        exists($$LIBGIT2LIB/libgit2.so) {
+-            message("found libgit2 library in $$LIBGIT2LIB")
+-        }
+-        else {
+-            error("libgit2 library not found in $$LIBGIT2LIB")
+-        }
+-    }
++packagesExist(libgit2) {
++    PKGCONFIG += libgit2
++} else {
++    include(pri/libgit2detect.pri)
+ }
+ 
+-LIBS += -L$$LIBGIT2LIB -lgit2
+-
+ include(pri/kitchensink.pri)
+ include(pri/mainwindow.pri)
+ include(pri/partsbinpalette.pri)
+@@ -237,16 +196,18 @@ include(pri/translations.pri)
+ include(pri/program.pri)
+ include(pri/qtsysteminfo.pri)
+ 
+-!contains(DEFINES, QUAZIP_INSTALLED) {
+-        include(pri/quazip.pri)
++!contains(DEFINES, BOOST_INSTALLED) {
++    include(pri/boostdetect.pri)
+ }
++
+ contains(DEFINES, QUAZIP_INSTALLED) {
+-        INCLUDEPATH += /usr/include/quazip /usr/include/minizip
+-        LIBS += -lquazip -lminizip
++    INCLUDEPATH += /usr/include/quazip
++    LIBS += -lquazip
++} else {
++    include(pri/quazip.pri)
+ }
+ 
+ TARGET = Fritzing
+ TEMPLATE = app
+ 
+-
+ message("libs $$LIBS")
+diff --git a/pri/boostdetect.pri b/pri/boostdetect.pri
+new file mode 100644
+index 0000000..26367eb
+--- /dev/null
++++ b/pri/boostdetect.pri
+@@ -0,0 +1,58 @@
++# /*******************************************************************
++# Part of the Fritzing project - http://fritzing.org
++# Copyright (c) 2007-16 Fritzing
++# Fritzing is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 3 of the License, or
++# (at your option) any later version.
++# Fritzing is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++# GNU General Public License for more details.
++# You should have received a copy of the GNU General Public License
++# along with Fritzing. If not, see <http://www.gnu.org/licenses/>.
++# ********************************************************************
++# $Revision: 6796 $:
++# $Author: irascibl@gmail.com $:
++# $Date: 2013-01-12 07:45:08 +0100 (Sa, 12. Jan 2013) $
++# ********************************************************************/
++
++# boost_1_54_0 is buggy
++BOOSTS = 43 44 45 46 47 48 49 50 51 52 53 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
++LATESTBOOST = 0
++for(boost, BOOSTS) {
++    exists(../src/lib/boost_1_$${boost}_0) {
++        LATESTBOOST = $$boost
++    }
++}
++
++contains(LATESTBOOST, 0) {
++    unix {
++        !macx {
++            BOOSTINFO = $$system(dpkg -s libboost-dev | grep 'Version')
++            BADVERSION = $$find(BOOSTINFO, 1\.54)
++            !isEmpty(BADVERSION) {
++                message("Boost 1.54 has a bug in a function that Fritzing uses, so download or install some other version")
++                error("Easiest to copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
++            }
++            isEmpty(BADVERSION) {
++                BOOSTVERSION = $$find(BOOSTINFO, 1\...\.0)
++                !isEmpty(BOOSTVERSION) {
++                    LATESTBOOST = installed
++                    message("using installed BOOST library")
++                }
++            }
++        }
++    }
++}
++
++contains(LATESTBOOST, 0) {
++    message("Please download the boost library--you can find it at http://www.boost.org/")
++    message("Note that boost 1.54 has a bug in a function that Fritzing uses, so download some other version")
++    error("Copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
++}
++
++!contains(LATESTBOOST, installed) {
++    message("using boost from src/lib/boost_1_$${LATESTBOOST}_0")
++    INCLUDEPATH += src/lib/boost_1_$${LATESTBOOST}_0
++}
+diff --git a/pri/libgit2detect.pri b/pri/libgit2detect.pri
+new file mode 100644
+index 0000000..9512f9d
+--- /dev/null
++++ b/pri/libgit2detect.pri
+@@ -0,0 +1,60 @@
++# /*******************************************************************
++# Part of the Fritzing project - http://fritzing.org
++# Copyright (c) 2016 Fritzing
++# Fritzing is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 3 of the License, or
++# (at your option) any later version.
++# Fritzing is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++# GNU General Public License for more details.
++# You should have received a copy of the GNU General Public License
++# along with Fritzing. If not, see <http://www.gnu.org/licenses/>.
++# ********************************************************************
++
++LIBGIT2INCLUDE = $$_PRO_FILE_PWD_/../libgit2/include
++exists($$LIBGIT2INCLUDE/git2.h) {
++    message("found libgit2 include path at $$LIBGIT2INCLUDE")
++} else {
++    message("Fritzing requires libgit2")
++    message("Build it from the repo at https://github.com/libgit2")
++    message("See https://github.com/fritzing/fritzing-app/wiki for details.")
++
++    error("libgit2 include path not found in $$LIBGIT2INCLUDE")
++}
++
++INCLUDEPATH += $$LIBGIT2INCLUDE
++
++win32 {
++    contains(QMAKE_TARGET.arch, x86_64) {
++        LIBGIT2LIB = ../libgit2/build64
++    } else {
++        LIBGIT2LIB = ../libgit2/build32
++    }
++
++    exists($$LIBGIT2LIB/git2.lib) {
++        message("found libgit2 library in $$LIBGIT2LIB")
++    } else {
++        error("libgit2 library not found in $$LIBGIT2LIB")
++    }
++}
++
++unix {
++    LIBGIT2LIB = $$_PRO_FILE_PWD_/../libgit2/build
++    macx {
++        exists($$LIBGIT2LIB/libgit2.dylib) {
++            message("found libgit2 library in $$LIBGIT2LIB")
++        } else {
++            error("libgit2 library not found in $$LIBGIT2LIB")
++        }
++    } else {
++        exists($$LIBGIT2LIB/libgit2.so) {
++            message("found libgit2 library in $$LIBGIT2LIB")
++        } else {
++            error("libgit2 library not found in $$LIBGIT2LIB")
++        }
++    }
++}
++
++LIBS += -L$$LIBGIT2LIB -lgit2
+diff --git a/pri/utils.pri b/pri/utils.pri
+index ae14ea8..3cd7082 100644
+--- a/pri/utils.pri
++++ b/pri/utils.pri
+@@ -1,6 +1,6 @@
+ # /*******************************************************************
+ # Part of the Fritzing project - http://fritzing.org
+-# Copyright (c) 2007-08 Fritzing
++# Copyright (c) 2007-16 Fritzing
+ # Fritzing is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+@@ -17,46 +17,6 @@
+ # $Date: 2013-01-12 07:45:08 +0100 (Sa, 12. Jan 2013) $
+ # ********************************************************************/
+ 
+-# boost_1_54_0 is buggy
+-BOOSTS = 43 44 45 46 47 48 49 50 51 52 53 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
+-LATESTBOOST = 0
+-for(boost, BOOSTS) {
+-        exists(../src/lib/boost_1_$${boost}_0) {
+-                LATESTBOOST = $$boost
+-        }
+-}
+-
+-contains(LATESTBOOST, 0) {
+-    unix {
+-        !macx {
+-             BOOSTINFO = $$system(dpkg -s libboost-dev | grep 'Version')
+-             BADVERSION = $$find(BOOSTINFO, 1\.54)
+-             !isEmpty(BADVERSION) {
+-                 message("Boost 1.54 has a bug in a function that Fritzing uses, so download or install some other version")
+-                 error("Easiest to copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
+-             }
+-             isEmpty(BADVERSION) {
+-                 BOOSTVERSION = $$find(BOOSTINFO, 1\...\.0)
+-                 !isEmpty(BOOSTVERSION) {
+-                     LATESTBOOST = installed
+-                     message("using installed BOOST library")
+-                 }
+-             }
+-        }
+-    }
+-}
+-
+-contains(LATESTBOOST, 0) {
+-        message("Please download the boost library--you can find it at http://www.boost.org/")
+-        message("Note that boost 1.54 has a bug in a function that Fritzing uses, so download some other version")
+-        error("Copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
+-}
+-
+-!contains(LATESTBOOST, installed) {
+-    message("using boost from src/lib/boost_1_$${LATESTBOOST}_0")
+-    INCLUDEPATH += src/lib/boost_1_$${LATESTBOOST}_0
+-}
+-
+ HEADERS += \
+ src/utils/abstractstatesbutton.h \
+ src/utils/autoclosemessagebox.h \
+@@ -110,6 +70,3 @@ src/utils/schematicrectconstants.cpp \
+ src/utils/s2s.cpp \
+ src/utils/textutils.cpp \
+ src/utils/zoomslider.cpp 
+-
+-
+-
+diff --git a/readme.md b/readme.md
+index 35cf623..35bfc89 100644
+--- a/readme.md
++++ b/readme.md
+@@ -4,7 +4,7 @@ The Fritzing application is an Electronic Design Automation software with a low
+ 
+ * For more information on Fritzing and its related activities, visit [http://fritzing.org](http://fritzing.org). There you can also [download](http://fritzing.org/download) the latest releases for all platforms and get help on getting started.
+ 
+-* To report a problem or suggest improvements, use the [issue tracker](https://github.com/fritzing/fritzing-app/issues) or the [user forums](http://fritzing.org/forum)
++* To report a problem or suggest improvements, use the [issue tracker](https://github.com/fritzing/fritzing-app/issues) or the [user forum](http://forum.fritzing.org)
+ 
+ * If you would like to help with the development, please take a look at the [developer instructions](https://github.com/fritzing/fritzing-app/wiki). This includes information about how to compile and run the Fritzing app in a few steps.
+ 
+diff --git a/resources/system_icons/linux/fritzing.xml b/resources/system_icons/linux/fritzing.xml
+new file mode 100644
+index 0000000..21c2d8f
+--- /dev/null
++++ b/resources/system_icons/linux/fritzing.xml
+@@ -0,0 +1,31 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
++<mime-type type="application/x-fritzing-fzb">  
++<comment>Fritzing Parts Bin</comment>
++<glob pattern="*.fzb"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fzbz">
++<comment>Fritzing Parts Bin Bundle</comment>
++<glob pattern="*.fzbz"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fzm">
++<comment>Fritzing Module</comment>
++<glob pattern="*.fzm"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fzp">
++<comment>Fritzing Part Definition</comment>
++<glob pattern="*.fzp"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fzpz">
++<comment>Fritzing Part Bundle</comment>
++<glob pattern="*.fzpz"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fz">
++<comment>Fritzing Sketch</comment>
++<glob pattern="*.fz"/>
++</mime-type>
++<mime-type type="application/x-fritzing-fzz">
++<comment>Fritzing Sketch Bundle</comment>
++<glob pattern="*.fzz"/>
++</mime-type>
++</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fz.xml b/resources/system_icons/linux/x-fritzing-fz.xml
+deleted file mode 100644
+index 95c664b..0000000
+--- a/resources/system_icons/linux/x-fritzing-fz.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fz">  
+-<comment>Fritzing Sketch</comment>
+-<generic-icon name="application-x-fritzing-fz"/>
+-<glob pattern="*.fz"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzb.xml b/resources/system_icons/linux/x-fritzing-fzb.xml
+deleted file mode 100644
+index 855f1fa..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzb.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzb">  
+-<comment>Fritzing Parts Bin</comment>
+-<generic-icon name="application-x-fritzing-fzb"/>
+-<glob pattern="*.fzb"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzbz.xml b/resources/system_icons/linux/x-fritzing-fzbz.xml
+deleted file mode 100644
+index 6259c91..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzbz.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzbz">
+-<comment>Fritzing Parts Bin Bundle</comment>
+-<generic-icon name="application-x-fritzing-fzbz"/>
+-<glob pattern="*.fzbz"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzm.xml b/resources/system_icons/linux/x-fritzing-fzm.xml
+deleted file mode 100644
+index d7bd74c..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzm.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzm">
+-<comment>Fritzing Module</comment>
+-<generic-icon name="application-x-fritzing-fzm"/>
+-<glob pattern="*.fzm"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzp.xml b/resources/system_icons/linux/x-fritzing-fzp.xml
+deleted file mode 100644
+index d7eeb8d..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzp.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzp">
+-<comment>Fritzing Part Definition</comment>
+-<generic-icon name="application-x-fritzing-fzp"/>
+-<glob pattern="*.fzp"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzpz.xml b/resources/system_icons/linux/x-fritzing-fzpz.xml
+deleted file mode 100644
+index d6e7ea6..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzpz.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzpz">
+-<comment>Fritzing Part Bundle</comment>
+-<generic-icon name="application-x-fritzing-fzpz"/>
+-<glob pattern="*.fzpz"/>
+-</mime-type>
+-</mime-info>
+diff --git a/resources/system_icons/linux/x-fritzing-fzz.xml b/resources/system_icons/linux/x-fritzing-fzz.xml
+deleted file mode 100644
+index 865b0f1..0000000
+--- a/resources/system_icons/linux/x-fritzing-fzz.xml
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+-<mime-type type="application/x-fritzing-fzz">
+-<comment>Fritzing Sketch Bundle</comment>
+-<generic-icon name="application-x-fritzing-fzz"/>
+-<glob pattern="*.fzz"/>
+-</mime-type>
+-</mime-info>
+diff --git a/src/main.cpp b/src/main.cpp
+index ae484b5..32bf90d 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -151,8 +151,8 @@ int main(int argc, char *argv[])
+ 			app->finish();
+ 		}
+ 		else {
+-			qDebug() << "\n"
+-                "Fritzing version " << Version::versionString() << " , Qt version " << QT_VERSION_STR << "\n"
++			qDebug() <<
++                "Fritzing version" << Version::versionString() << "- Qt version" << QT_VERSION_STR << "\n"
+                 "\n"
+                 "usage: fritzing [-d] [-f path] filename\n"
+                 "       fritzing [-f path] -geda folder\n"
+@@ -191,8 +191,7 @@ int main(int argc, char *argv[])
+ 				"The -ep option creates a menu item to launch an external process,\n"
+ 				"and puts the standard output of that process into a dialog window in Fritzing.\n"
+ 				"The process path follows the -ep argument; the name of the menu item follows the -epname argument;\n"
+-				"and any arguments to pass to the external process are provided in the -eparg argments.\n"
+-				"\n";
++				"and any arguments to pass to the external process are provided in the -eparg argments.";
+ 		}
+ 		delete app;
+ 	}
+diff --git a/src/version/partschecker.cpp b/src/version/partschecker.cpp
+index a3e3967..3d54c6b 100644
+--- a/src/version/partschecker.cpp
++++ b/src/version/partschecker.cpp
+@@ -121,7 +121,13 @@ bool PartsChecker::newPartsAvailable(const QString &repoPath, const QString & sh
+     /**
+      * Connect to the remote.
+      */
++#if LIBGIT2_VER_MINOR > 24
++    error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL, NULL);
++#elif LIBGIT2_VER_MINOR == 24
++    error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL);
++#else
+     error = git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks);
++#endif
+     if (error) {
+         partsCheckerResult.partsCheckerError = PARTS_CHECKER_ERROR_REMOTE;
+         partsCheckerResult.errorMessage = QObject::tr("Unable to access network site for '%1'. %2").arg(repoPath).arg(sBoilerPlate1);
+diff --git a/tools/deploy_fritzing_mac.sh b/tools/deploy_fritzing_mac.sh
+index 3f73fe9..ff6aa54 100755
+--- a/tools/deploy_fritzing_mac.sh
++++ b/tools/deploy_fritzing_mac.sh
+@@ -42,7 +42,7 @@ rm ./translations/*.ts  			# remove translation xml files, since we only need th
+ find ./translations -name "*.qm" -size -128c -delete   # delete empty translation binaries
+ 
+ echo ">> clone parts repository"
+-git clone https://github.com/fritzing/fritzing-parts.git
++git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git
+ echo ">> build parts database and run fritzing"
+ ./Fritzing -db "fritzing-parts/parts.db"  # -pp "fritzing-parts" -f "."
+ 
+diff --git a/tools/linux_release_script/release.sh b/tools/linux_release_script/release.sh
+index 60b96dc..d082101 100755
+--- a/tools/linux_release_script/release.sh
++++ b/tools/linux_release_script/release.sh
+@@ -64,7 +64,7 @@ echo "cleaning translations"
+ rm ./translations/*.ts  			# remove translation xml files, since we only need the binaries in the release
+ find ./translations -name "*.qm" -size -128c -delete   # delete empty translation binaries
+ 
+-git clone https://github.com/fritzing/fritzing-parts.git
++git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git
+ 
+ echo "making library folders"
+ mkdir lib
+diff --git a/tools/release_fritzing.bat b/tools/release_fritzing.bat
+index 314cd9b..4c7c6fd 100644
+--- a/tools/release_fritzing.bat
++++ b/tools/release_fritzing.bat
+@@ -3,7 +3,7 @@ echo off
+ echo .
+ echo you must start this script from the Visual Studio Command Line Window
+ echo find this under the start menu at (depending on your version of Visual Studio):
+-echo     All Programs / Microsoft Visual Studio 2012 / Visual Studio Tools / Developer Command Prompt 
++echo     All Programs / Microsoft Visual Studio 2012 / Visual Studio Tools / Developer Command Prompt
+ echo for the 64-bit build, use the 64-bit prompt:
+ echo     All Programs / Microsoft Visual Studio 2012 / Visual Studio Tools / VS2012 x64 Cross Tools Command Prompt
+ echo.
+@@ -59,7 +59,7 @@ IF %2==64 (
+ 		set arch=.
+ 	) ELSE (
+ 		echo second parameter--target architecture--should be either "32" for a 32-bit build or "64" for a 64-bit build
+-		EXIT /B	
++		EXIT /B
+ 	)
+ )
+ 
+@@ -77,7 +77,7 @@ cd ..
+ set LIBGIT2=%~dp0..\..\libgit2\build%2
+ 
+ rem set environment variable for qmake phoenix.pro
+-set RELEASE_SCRIPT="release_script"	
++set RELEASE_SCRIPT="release_script"
+ 
+ 
+ %QMAKE% -o Makefile phoenix.pro %arch%
+@@ -128,7 +128,7 @@ xcopy /q %QTBIN%\icu*.dll %DESTDIR%\deploy /E  /I
+ copy %QTBIN%\..\plugins\imageformats\qjpeg.dll %DESTDIR%\deploy\lib\imageformats\qjpeg.dll
+ copy %QTBIN%\..\plugins\sqldrivers\qsqlite.dll %DESTDIR%\deploy\lib\sqldrivers\qsqlite.dll
+ copy %QTBIN%\..\plugins\platforms\qwindows.dll %DESTDIR%\deploy\platforms\qwindows.dll
+-copy %QTBIN%\..\plugins\printsupport\windowsprintersupport.dll  %DESTDIR%\deploy\lib\printsupport\windowsprintersupport.dll 
++copy %QTBIN%\..\plugins\printsupport\windowsprintersupport.dll  %DESTDIR%\deploy\lib\printsupport\windowsprintersupport.dll
+ 
+ echo copying git2.dll from %LIBGIT2%
+ copy %LIBGIT2%\git2.dll  %DESTDIR%\deploy\git2.dll
+@@ -157,7 +157,7 @@ set CURRENTDIR=%cd%
+ cd %DESTDIR%
+ cd deploy
+ 
+-git clone https://github.com/fritzing/fritzing-parts.git
++git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git
+ 
+ del/s placeholder.txt
+ cd translations
+@@ -177,11 +177,11 @@ IF %2==32 (
+ )
+ 
+ IF %3==2012 (
+-    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\msvcp110.dll" %DESTDIR%\deploy\msvcp110.dll
+-    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\msvcr110.dll" %DESTDIR%\deploy\msvcr110.dll
++    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC110.CRT\msvcp110.dll" %DESTDIR%\deploy\msvcp110.dll
++    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC110.CRT\msvcr110.dll" %DESTDIR%\deploy\msvcr110.dll
+ ) ELSE IF %3==2013 (
+-    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\msvcp120.dll" %DESTDIR%\deploy\msvcp120.dll
+-    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\msvcr120.dll" %DESTDIR%\deploy\msvcr120.dll
++    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC120.CRT\msvcp120.dll" %DESTDIR%\deploy\msvcp120.dll
++    copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC120.CRT\msvcr120.dll" %DESTDIR%\deploy\msvcr120.dll
+ ) ELSE IF %3==2015 (
+     copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\msvcp140.dll" %DESTDIR%\deploy\msvcp140.dll
+ 	copy  "%VCINSTALLDIR%redist\%XFOLDER%\Microsoft.VC140.CRT\vcruntime140.dll" %DESTDIR%\deploy\vcruntime140.dll
+@@ -198,4 +198,4 @@ FOR /F %%i IN ("%DESTDIR%\forzip") DO SET SRC=%%~fi
+ FOR /F %%i IN ("%DESTDIR%\fritzing.%1.%2.pc.zip") DO SET DEST=%%~fi
+ CScript .\tools\zip.vbs %SRC% %DEST%
+ 
+-echo done
+\ No newline at end of file
++echo done
+-- 
+2.9.0
+
