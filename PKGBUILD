@@ -1,7 +1,7 @@
 pkgname=('shotcut')
 srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='16.06'
+pkgver='16.07'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
