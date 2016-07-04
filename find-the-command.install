@@ -26,7 +26,7 @@ post_upgrade() {
 
 pre_remove() {
 	printf "\t>> Disabling pacman files systemd timer\n"
-	sytemctl disable pacman-files.timer
+	systemctl disable pacman-files.timer
 }
 
 post_remove() {

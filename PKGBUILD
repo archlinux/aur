@@ -1,7 +1,7 @@
 # Maintainer: Alexander Agura <agur4ik09@gmail.com>
 pkgname=find-the-command
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive command-not-found hook for bash and zsh using the power of pacman"
 arch=('any')
 url="https://github.com/agur4ik/find-the-command"
