@@ -14,7 +14,7 @@ pkgbase = kargo-cli
 	options = !emptydirs
 	backup = etc/kargo/kargo.yml
 	source = kargo-cli::https://github.com/kubespray/kargo-cli/archive/0.2.8.zip
-	sha256sums = 8bf4086f30b0cdbb3e054ba280b6f4822e2d3f25364f7c47ae97007066971359
+	sha256sums = 655953eb35a73c428ecf1940f8b974ab8d8d339aa1574cdf0d48d262ee6a934e
 
 pkgname = kargo-cli
 
