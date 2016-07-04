@@ -1,0 +1,41 @@
+From 7f8aaf74302816d03fbff62dab5c987d498acdde Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Mon, 4 Jul 2016 21:01:51 +0200
+Subject: [PATCH] extend global CFLAGS and LDFLAGS to aid distro packaging
+
+This preserves globally defined CFLAGS and LDFLAGS and simply
+extends those variables to aid distro based packaging toolchains
+and predefined distro wide defaults like SSP, relro etc.
+---
+ src/Makefile | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 9f11325..cf44590 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -90,7 +90,7 @@ VERSION_TAG              := $(shell test -d .git && git describe --tags --dirty=
+ ## Compiler flags
+ ##
+ 
+-CFLAGS                   := -pipe -W -Wall -std=c99 -Iinclude/ -IOpenCL/ -I$(OPENCL_HEADERS_KHRONOS)/
++CFLAGS                   += -pipe -W -Wall -std=c99 -Iinclude/ -IOpenCL/ -I$(OPENCL_HEADERS_KHRONOS)/
+ 
+ ifndef DEBUG
+ CFLAGS                   += -O2
+@@ -112,6 +112,7 @@ export MACOSX_DEPLOYMENT_TARGET=10.9
+ CFLAGS_NATIVE            := -D_POSIX -DDARWIN
+ CFLAGS_NATIVE            += $(CFLAGS)
+ LFLAGS_NATIVE            := -lpthread
++LFLAGS_NATIVE            += $(LDFLAGS)
+ endif # darwin
+ 
+ ifeq ($(UNAME),Linux)
+@@ -122,6 +123,7 @@ endif
+ CFLAGS_NATIVE            += $(CFLAGS)
+ LFLAGS_NATIVE            := -lpthread -ldl
+ CFLAGS_NATIVE            += -DHAVE_HWMON
++LFLAGS_NATIVE            += $(LDFLAGS)
+ endif # linux
+ 
+ ##
