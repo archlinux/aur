@@ -1,3 +1,11 @@
+2016-07-04 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added "--enable-turbo" option to the configure script
+	Added ffmpeg2.8 as a dependency instead of ffmpeg
+	Exported a pkg-config variable in order to compile with FFmpeg 2.8
+	Added commands to remove empty directories from the package
+
 2015-08-22 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
