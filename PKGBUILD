@@ -1,11 +1,11 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=ser4010-tools-git
 pkgver=r27.8c843cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for UART controllable SI4010 based tunable OOK/FSK RF transmitter"
 arch=('any')
 url="https://github.com/dimhoff/ser4010"
-license=('custom')
+license=('BSD')
 makedepends=('git'
 'cmake'
 'make'

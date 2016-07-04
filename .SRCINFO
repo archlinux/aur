@@ -1,10 +1,10 @@
 pkgbase = ser4010-tools-git
 	pkgdesc = Tools for UART controllable SI4010 based tunable OOK/FSK RF transmitter
 	pkgver = r27.8c843cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dimhoff/ser4010
 	arch = any
-	license = custom
+	license = BSD
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
