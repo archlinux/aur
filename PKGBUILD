@@ -3,7 +3,7 @@
 
 pkgname=uniutils
 pkgver=2.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs for manipulating and analyzing Unicode text"
 arch=('i686' 'x86_64')
 url="http://billposer.org/Software/unidesc.html"

@@ -1,7 +1,7 @@
 pkgbase = uniutils
 	pkgdesc = A set of programs for manipulating and analyzing Unicode text
 	pkgver = 2.27
-	pkgrel = 1
+	pkgrel = 2
 	url = http://billposer.org/Software/unidesc.html
 	arch = i686
 	arch = x86_64
