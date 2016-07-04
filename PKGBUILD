@@ -8,8 +8,8 @@ arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('git' 'ruby-bundler' 'imagemagick')
-source=("${pkgname%-*}-${pkgver}.tar.gz::https://codeload.github.com/numixproject/numix-gtk-theme/tar.gz/${pkgver}")
+makedepends=('ruby-bundler' 'imagemagick')
+source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
 md5sums=('499e2e8e9d7d1d81403ebf8f65c8ced6')
 
 
