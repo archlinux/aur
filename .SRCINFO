@@ -1,0 +1,15 @@
+pkgbase = tarsnap-gui
+	pkgdesc = Cross-platform GUI for the Tarsnap backup service.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/Tarsnap/tarsnap-gui
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt5-base
+	depends = tarsnap
+	source = https://github.com/Tarsnap/tarsnap-gui/archive/v0.9.zip
+	sha256sums = 75c2649538f3965d55b744683e88bda5e9064e3de53c4387cd0dccf05530047c
+
+pkgname = tarsnap-gui
+
