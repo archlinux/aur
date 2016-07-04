@@ -1,12 +1,13 @@
-# Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: PyroPeter <googlemail.com@abi1789>
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
-pkgname=arduino
+pkgname='arduino'
 epoch=1
-pkgver=1.6.9
+pkgver='1.6.9'
 pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64')
@@ -34,11 +35,11 @@ build() {
 package() {
   cd "arduino-${pkgver}"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/"{doc,applications,mime/packages}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/"{doc,applications,mime/packages}
 
   # copy the whole SDK to /usr/share/arduino/
-  cp -a . "${pkgdir}/usr/share/arduino"
+  cp -rf . "${pkgdir}/usr/share/arduino/"
 
   # at least support the FHS a little bit
   ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
