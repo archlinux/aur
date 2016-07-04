@@ -1,6 +1,6 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ _gitname=vk
 
 build() {
   cd "$srcdir/$_gitname"
-  dub build
+  dub build --config=release-shared --build=release
 }
 
 package() {
