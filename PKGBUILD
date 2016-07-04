@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-extension-languagetool
 _pkgname=languagetool
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="An Open Source style and grammar checker (30 languages)"
 arch=('any')
@@ -13,7 +13,7 @@ groups=('libreoffice-extensions')
 depends=('libreoffice')
 source=("http://www.languagetool.org/download/LanguageTool-${pkgver}.oxt")
 noextract=("LanguageTool-${pkgver}.oxt")
-sha512sums=('cb9542bfa979c76680137335c785bfbf2caf3655788cd9a004ec489866a5a726715b1b15d4e743c4afc93b52a6c12269236b40f9516efc0da114a4347da2a389')
+sha512sums=('29eda8c4a26eb4da4dce68db6f962c8a8828bb0eb76aef3e31a58607aea9a15705aaccc4a1bc5366760bdb00c9133ef225291941e5873cbcc384627464eb9a8f')
 
 package() {
   _DESTDIR="${pkgdir}/usr/lib/libreoffice/share/extensions/${_pkgname}/"
