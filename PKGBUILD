@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/platformsh/platformsh-cli"
 license=('MIT')
 groups=()
-depends=('php')
+depends=('php>=5.4.0')
 makedepends=()
 checkdepends=()
 optdepends=()
