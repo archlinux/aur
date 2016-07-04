@@ -6,7 +6,7 @@
 pkgbase=linux-macbook-pro       # Build kernel with a different name
 _srcname=linux-4.6
 pkgver=4.6.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'apple-gmux.patch'
         'macbook-suspend.patch'
         'intel-pstate-backport.patch'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch')
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
@@ -34,8 +35,9 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             '2f904d9e7e5f6965178562cfb411ffe370688f40f6f80ab550763dd3bee21e90'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
-            '724f4a7707cf95fe82b7458b37b8c85d5dbf1d8ff753bac4aa09ef90aa091c89'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            'dc0b1eed205118261f3894750cab4ed5a13c8d5e8132c623890efd11976e9326'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -56,6 +58,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   patch -p1 -i "${srcdir}/apple-gmux.patch"
   patch -p1 -i "${srcdir}/macbook-suspend.patch"
