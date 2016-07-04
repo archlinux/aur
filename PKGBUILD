@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.5.1.r308.8c5fbff
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -9,20 +9,12 @@ url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'ruby-bundler' 'imagemagick')
-_commit='8c5fbffa1386df71f0e71dd8284fcf0541290645'
-source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-
-
-pkgver() {
-   cd numix-gtk-theme
-   git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
-}
+source=("${pkgname%-*}-${pkgver}.tar.gz::https://codeload.github.com/numixproject/numix-gtk-theme/tar.gz/${pkgver}")
+md5sums=('499e2e8e9d7d1d81403ebf8f65c8ced6')
 
 
 prepare() {
-   cd numix-gtk-theme
+   cd numix-gtk-theme-${pkgver}
    for FILE in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
       gtk-3.0/assets/*.svg \
@@ -34,7 +26,8 @@ prepare() {
       xfwm4/themerc \
       xfwm4/*.xpm \
       unity/*.svg \
-      index.theme
+      index.theme \
+      Makefile
    do
       sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
       sed -i 's/#d64937/#697740/Ig'  "${FILE}"
@@ -63,16 +56,16 @@ prepare() {
 
 
 build() {
-   cd numix-gtk-theme
+   cd numix-gtk-theme-${pkgver}
    bundle install --path .
    make SASS="bundle exec sass"
 }
 
 
 package() {
-   cd numix-gtk-theme
-   rm -rf .git .gitignore CREDITS LICENSE README.md Makefile Gemfile{,.lock} ruby
-   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
-   cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Numix-Green
+   cd numix-gtk-theme-${pkgver}
+   make SASS="bundle exec sass" DESTDIR="${pkgdir}" install
+   #rm -rf .git .gitignore CREDITS LICENSE README.md Makefile Gemfile{,.lock} ruby circle.yml
+   #install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
+   #cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Numix-Green
 }
-
