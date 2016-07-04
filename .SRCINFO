@@ -1,6 +1,6 @@
 pkgbase = gitdit
 	pkgdesc = gitdit - Git DIalog inTerface
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://proyecto.jkanetwork.com
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gitdit
 	license = GPL3
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/gitdit
-	md5sums = 3949b686dc6a5732faa66d30b59f1f71
+	md5sums = 03aee2f971077fa2745da2e3d679923d
 
 pkgname = gitdit
 
