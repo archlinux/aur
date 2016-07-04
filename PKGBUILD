@@ -2,7 +2,7 @@
 
 pkgname=ruby-excon
 _gemname=excon
-pkgver=0.45.4
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="EXtended http(s) CONnections"
 arch=('any')
@@ -19,4 +19,4 @@ package() {
 
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" "${_gemname}-${pkgver}.gem"
 }
-sha512sums=('e723b974de1bd90fb4d3acc014788e553d41b936d6e18464b5b821444966eafb6f8ccaf559f939f096691fbfe3e771f508b20188d1216a86612116eef55d99c1')
+sha512sums=('ab54beb2a12c27077c65cdebae44b1794a2fd727c0afb57d5dcbf00bf6e6418cdb2fddfdcc0f0b00110aea0887ea9d3109d3772d1c3c89deb8f528913bc55079')
