@@ -14,10 +14,8 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf"
-        'esee.patch::https://paste.kde.org/pmj720gta/3rxajn/raw')
-sha1sums=('SKIP'
-          'SKIP')
+source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf")
+sha1sums=('SKIP')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
