@@ -1,6 +1,6 @@
-diff -ruN scidavis.1.D9.orig/scidavis/python-includepath.py scidavis.1.D9/scidavis/python-includepath.py
---- scidavis.1.D9.orig/scidavis/python-includepath.py	2016-01-11 21:28:27.808718321 +0300
-+++ scidavis.1.D9/scidavis/python-includepath.py	2016-01-11 21:30:45.280849080 +0300
+diff -ruN scidavis.1.D13.orig/scidavis/python-includepath.py scidavis.1.D13/scidavis/python-includepath.py
+--- scidavis.1.D13.orig/scidavis/python-includepath.py	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D13/scidavis/python-includepath.py	2016-01-11 21:30:45.280849080 +0300
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
@@ -16,9 +16,9 @@ diff -ruN scidavis.1.D9.orig/scidavis/python-includepath.py scidavis.1.D9/scidav
 -config = pyqtconfig.Configuration()
 -print " ".join([sysconfig.get_python_inc(), config.sip_inc_dir])
 +print sysconfig.get_python_inc()
-diff -ruN scidavis.1.D9.orig/scidavis/python-sipcmd.py scidavis.1.D9/scidavis/python-sipcmd.py
---- scidavis.1.D9.orig/scidavis/python-sipcmd.py	2016-01-11 21:28:27.808718321 +0300
-+++ scidavis.1.D9/scidavis/python-sipcmd.py	2016-01-11 21:32:15.821088729 +0300
+diff -ruN scidavis.1.D13.orig/scidavis/python-sipcmd.py scidavis.1.D13/scidavis/python-sipcmd.py
+--- scidavis.1.D13.orig/scidavis/python-sipcmd.py	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D13/scidavis/python-sipcmd.py	2016-01-11 21:32:15.821088729 +0300
 @@ -27,10 +27,6 @@
  #                                                                          #
  ############################################################################
@@ -32,9 +32,9 @@ diff -ruN scidavis.1.D9.orig/scidavis/python-sipcmd.py scidavis.1.D9/scidavis/py
 -print " ".join([config.sip_bin, "-I", config.pyqt_sip_dir, config.pyqt_sip_flags] + flags)
 +flags.append("-o")
 +print " ".join(["/usr/bin/sip", "-I", "/usr/share/sip/PyQt4", "-x VendorID -t WS_X11 -t Qt_4_8_6 -x Py_v3"] + flags)
-diff -ruN scidavis.1.D9.orig/scidavis/python.pri scidavis.1.D9/scidavis/python.pri
---- scidavis.1.D9.orig/scidavis/python.pri	2016-01-11 21:28:27.808718321 +0300
-+++ scidavis.1.D9/scidavis/python.pri	2016-01-11 21:34:17.050282684 +0300
+diff -ruN scidavis.1.D13.orig/scidavis/python.pri scidavis.1.D13/scidavis/python.pri
+--- scidavis.1.D13.orig/scidavis/python.pri	2016-01-11 21:28:27.808718321 +0300
++++ scidavis.1.D13/scidavis/python.pri	2016-01-11 21:34:17.050282684 +0300
 @@ -24,14 +24,14 @@
  
    message("Making PyQt bindings via SIP")

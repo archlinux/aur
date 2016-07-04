@@ -1,6 +1,6 @@
-diff -ruN scidavis.1.D9.orig/libscidavis/src/ColorMapEditor.cpp scidavis.1.D9/libscidavis/src/ColorMapEditor.cpp
---- scidavis.1.D9.orig/libscidavis/src/ColorMapEditor.cpp	2016-05-31 17:42:49.661018699 +0300
-+++ scidavis.1.D9/libscidavis/src/ColorMapEditor.cpp	2016-05-31 17:44:58.232963857 +0300
+diff -ruN scidavis.1.D13.orig/libscidavis/src/ColorMapEditor.cpp scidavis.1.D13/libscidavis/src/ColorMapEditor.cpp
+--- scidavis.1.D13.orig/libscidavis/src/ColorMapEditor.cpp	2016-05-31 17:42:49.661018699 +0300
++++ scidavis.1.D13/libscidavis/src/ColorMapEditor.cpp	2016-05-31 17:44:58.232963857 +0300
 @@ -124,7 +124,7 @@
  		
  	QColor c = QColor(map.rgb(QwtDoubleInterval(0, 1), colors[i]));
@@ -19,9 +19,9 @@ diff -ruN scidavis.1.D9.orig/libscidavis/src/ColorMapEditor.cpp scidavis.1.D9/li
  it->setBackground(QBrush(c));
  it->setForeground(QBrush(c));
  table->setItem(row, 1, it);
-diff -ruN scidavis.1.D9.orig/libscidavis/src/FitDialog.cpp scidavis.1.D9/libscidavis/src/FitDialog.cpp
---- scidavis.1.D9.orig/libscidavis/src/FitDialog.cpp	2016-05-31 17:42:49.664351910 +0300
-+++ scidavis.1.D9/libscidavis/src/FitDialog.cpp	2016-05-31 17:44:51.333217278 +0300
+diff -ruN scidavis.1.D13.orig/libscidavis/src/FitDialog.cpp scidavis.1.D13/libscidavis/src/FitDialog.cpp
+--- scidavis.1.D13.orig/libscidavis/src/FitDialog.cpp	2016-05-31 17:42:49.664351910 +0300
++++ scidavis.1.D13/libscidavis/src/FitDialog.cpp	2016-05-31 17:44:51.333217278 +0300
 @@ -655,7 +655,7 @@
      for (int i = param_table_rows; i<paramList.count(); i++)
  	{

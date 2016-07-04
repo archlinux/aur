@@ -1,12 +1,12 @@
-diff -ruN scidavis.1.D9.orig/config.pri scidavis.1.D9/config.pri
---- scidavis.1.D9.orig/config.pri	2015-11-24 08:07:15.000000000 +0300
-+++ scidavis.1.D9/config.pri	2016-01-11 21:44:21.933009085 +0300
-@@ -254,7 +254,7 @@
+diff -ruN scidavis.1.D13.orig/config.pri scidavis.1.D13/config.pri
+--- scidavis.1.D13.orig/config.pri	2016-07-04 13:34:25.366655195 +0300
++++ scidavis.1.D13/config.pri	2016-07-04 13:35:36.194158360 +0300
+@@ -295,7 +295,7 @@
  	INCLUDEPATH  += /usr/include/qwtplot3d
  	LIBS         += -lqwtplot3d$${qwtsuff}
  
--	LIBS         += -lqwt$${qwtsuff} -lz -lGLU 
-+	LIBS         += -lqwt5 -lz -lGLU
+-	LIBS         += -lz -lGLU 
++	LIBS         += -lz -lGLU -lqwt5
  
-         !noassistant {LIBS+=-lQtAssistantClient}
- 
+ 	INCLUDEPATH  += /usr/include/muParser
+ 	LIBS         += -lgsl -lgslcblas

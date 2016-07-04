@@ -5,7 +5,7 @@
 # Contributor: Alexander <chronischzuspaet at gmail dot com> Kempen
 
 pkgname=scidavis
-pkgver=1.D9
+pkgver=1.D13
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
@@ -17,19 +17,16 @@ depends=('gsl' 'glu' 'mesa' 'muparser' 'python2-pyqt4' 'shared-mime-info'
 source=(http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}.${pkgver}.tar.gz
         scidavis-tableitem.patch
         scidavis-python.patch
-        scidavis-qtassistant.patch
         scidavis-qwt5.patch)
+md5sums=('8400d1b48dcb24068d2e371b9021db7d'
+         '8cf280ba7d60e2d0664edfb0919ceb09'
+         'c8c0606a58ece369cf5b09276559b830'
+         '6b6c88d1e26b39cde2b88bb71f5fc3ae')
 install=${pkgname}.install
-md5sums=('fccb771fea021a61055d554db6230b51'
-         '5948728d8281089cc32e168c5b83d339'
-         'bf3725530f5d66c7234232ba5500b308'
-         '14199d381631fa2db8450a66ea5ca1cc'
-         'f9b3979ee4e255b0dc2d26f1b5ff82c2')
+
 prepare() {
   # python patch
   patch -p0 -i "scidavis-python.patch"
-  # fix qtassistant
-  patch -p0 -i "scidavis-qtassistant.patch"
   # fix qwt
   patch -p0 -i "scidavis-qwt5.patch"
   # fix table item attributes
