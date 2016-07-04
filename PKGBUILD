@@ -2,7 +2,7 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.7.6.r0.g36c70f4
+pkgver=0.7.6.r16.gc807077
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
