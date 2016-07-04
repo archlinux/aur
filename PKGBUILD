@@ -14,11 +14,11 @@ _use_system_boost=n
 # this uses a downstream patch
 # using system completers is not supported by upstream
 # see https://github.com/Valloric/ycmd/pull/535
-_search_system_completers=y
+_search_system_completers=n
 
 # clang completion is builtin and cannot be provided separately (?)
 _clang_completer=y
-_clang_completer_system_libclang=y
+_clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
 pkgver=r1819.0de1c0c
