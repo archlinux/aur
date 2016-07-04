@@ -1,4 +1,4 @@
-# Maintainer: David Parrish <daveparrish@gmail.com>
+# Maintainer: David Parrish <daveparrish@tutanota.com>
 # Co-Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=geth-git
