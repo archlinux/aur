@@ -1,6 +1,6 @@
 # Maintainer: Hexchain Tong <i at hexchain dot org>
 pkgname=neovim-remote
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Support --remote and friends for Neovim"
 arch=(any)
