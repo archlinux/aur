@@ -1,4 +1,5 @@
 /pkg
 /src
 /qgroundcontrol
+*.tar.bz2
 *.tar.xz
