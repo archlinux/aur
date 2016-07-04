@@ -2,8 +2,8 @@
 # Contributor: Feifei Jia <feifei.j at gmail dot com>
 
 pkgname=fingerprint-gui
-pkgver=1.07
-pkgrel=2
+pkgver=1.08
+pkgrel=1
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
@@ -12,7 +12,7 @@ depends=('libfprint' 'libfakekey' 'polkit-qt4' 'qca')
 optdepends=('libusb: for libbsapi')
 source=("http://ullrich-online.cc/nview/Appliance/fingerprint/download/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
-md5sums=('a909b2fb386abc9259aac727e8ad97c8')
+md5sums=('5f4163acc051eff1d438199cecc125ec')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
