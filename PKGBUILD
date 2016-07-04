@@ -13,14 +13,14 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=47.0
-pkgrel=3
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'hicolor-icon-theme'
 	 'libvpx' 'icu'  'libevent' 'nss>=3.18.1' 'nspr>=4.10.6' 'hunspell'
 	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' )
 if [ $_gtk3 ] ; then
@@ -33,7 +33,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'upower: Battery API' )
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=2f9f2e040647
+_patchrev=6838f0c032f8
 options=('!emptydirs'  'strip' )
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -200,7 +200,7 @@ package() {
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
-md5sums=('0bd5991a6c821dd1a34ead0f8bbb301a'
+md5sums=('aba4b673b10e3fdcee80f88300829613'
          '90a94e20dc3bb447d420225c005faa10'
          '9b02198df96be08f2a0a323ac2e6c2a2'
          'dbf14588e85812ee769bd735823a0146'
@@ -210,7 +210,7 @@ md5sums=('0bd5991a6c821dd1a34ead0f8bbb301a'
          '121a0d61ebe994e69f4428c13a4a5549'
          '04ff0dcb88fd94363f9936701a58925e'
          '6c9a8cb4bcaa71e5f98648b6baee9ccd'
-         '1a2454e6ae55b05b52a2f4fa15c74d32'
+         'f9278c5e917f6d4faa9dadb555fec7f1'
          '903307f923a459189a5a6062ff9df38c'
          '0c684360f1df4536512d51873c1d243d'
          'ca230419b22e31220f1278ef639db0dd'
@@ -218,4 +218,4 @@ md5sums=('0bd5991a6c821dd1a34ead0f8bbb301a'
          '3fa8bd22d97248de529780f5797178af'
          '43550e772f110a338d5a42914ee2c3a6'
          '0c1ed789c06297659137a2ed2ef769f7'
-         'e39f1e1f732b55b5ccb007a90b66798c')
+         'f6c4c052d5cf8b050f72e3db6677f176')
