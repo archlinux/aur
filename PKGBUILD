@@ -55,7 +55,6 @@ for subpkg in ${pkgname[*]}; do
   source+=("$_baseurl/plugins${pkgver}/$filename")
 done
 sha256sums=('facc2726120c52fecb84540b1d53d20513a4fe2d0d57c547c624072a79d9797b'
-            'a4ec6bfc6eb1770a9eacf0791f7c737d3559efbb98a4caecee030af924108d59'
             'dbe0b1ee17634d98d0b8b8ef7f862d6b56421ae6d92867800e4a00cf0ff3d17d'
             'e33ece1a400120aa4a11915f881b413adc6aa958be889e2fb7a55aaf44ab4b60'
             '9ad46fc4ecf80d7ceea5afc4f95c91d0995f605315075d4735e6f0980509082d'
