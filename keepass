@@ -4,8 +4,8 @@ export WINEARCH=win32
 export WINEDEBUG=-all
 
 if [ ! -d "$WINEPREFIX" ] ; then
-    mkdir -p "$WINEPREFIX"
-    cp -r "/usr/share/keepass/wine/*" "$WINEPREFIX"
+    mkdir -p `dirname $WINEPREFIX`
+    wine "/usr/share/keepass/dotnetfx.exe" /c:"install.exe /q"
 fi
 
 wine "/usr/share/keepass/KeePass.exe" "`winepath -w "$@"`"

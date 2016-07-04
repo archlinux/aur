@@ -26,7 +26,7 @@ source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver-Source.zip"
 sha256sums=('e3f184e4deddd1aa5ee2b52e2373c772d3f3975e5eddb2fd729eb27b437011aa'
             'SKIP'
             '46693d9b74d12454d117cc61ff2e9481cabb100b4d74eb5367d3cf88b89a0e71'
-            'a44456b7da55432867bcdfdda051a5b25601616a943fdc1dd1be30bd562f7ffb'
+            '08ac90c19da3208d24a94d72d111e802c85f0655ec43d79d7cfb6a35f5679f73'
             'a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f'
             '1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140'
             '3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194')
@@ -46,9 +46,6 @@ prepare() {
 }
 
 build() {
-  export WINEPREFIX=`pwd`/wine
-  export WINEARCH=win32
-  wine dotnetfx.exe /q:a /c:”install.exe /q”
   #wine 'C:\windows\Microsoft.NET\Framework\v2.0.50727\MSBuild.exe' KeePass.sln /property:Configuration=Release
   xbuild /target:KeePass /property:Configuration=Release
   cp Ext/KeePass.exe.config Build/KeePass/Release/
@@ -57,9 +54,9 @@ build() {
 package() {
   install -dm755 "$pkgdir"/usr/bin
   install -dm755 "$pkgdir"/usr/share/keepass/XSL
-  install -dm755 "$pkgdir"/usr/share/keepass/wine
 
   install -Dm755 keepass "$pkgdir"/usr/bin/keepass
+  install -Dm755 dotnetfx.exe "$pkgdir"/usr/share/keepass/dotnetfx.exe
   install -Dm755 Build/KeePass/Release/KeePass.exe "$pkgdir"/usr/share/keepass/KeePass.exe
   install -Dm755 Ext/KeePass.config.xml "$pkgdir"/usr/share/keepass/KeePass.config.xml
   install -Dm755 Ext/KeePass.exe.config "$pkgdir"/usr/share/keepass/KeePass.exe.config
@@ -67,8 +64,6 @@ package() {
   install -m644 Ext/XSL/* "$pkgdir"/usr/share/keepass/XSL
 
   install -Dm644 keepass.1 "$pkgdir"/usr/share/man/man1/keepass.1
-
-  cp -dr --no-preserve=ownership wine "$pkgdir"/usr/share/keepass/
 
   # Proper installation of .desktop file
   desktop-file-install -m 644 --dir "$pkgdir"/usr/share/applications/ keepass.desktop
