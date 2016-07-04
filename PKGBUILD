@@ -1,14 +1,14 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=teeworlds-ddnet
-pkgver=10.1.1
-pkgrel=2
+pkgver=10.2
+pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
 license=('custom')
 depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl')
-makedepends=('bam' 'imagemagick' 'gendesk')
+makedepends=('bam' 'imagemagick' 'gendesk' 'python')
 optdepends=('teeworlds-ddnet-skins: more skins for your tee'
             'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
 provides=('teeworlds')
@@ -17,7 +17,7 @@ source=("ddnet-$pkgver.tar.gz::https://github.com/ddnet/ddnet/archive/$pkgver.ta
         "0001-updated-build-files-for-bam-0.5.patch")
 source_i686=("https://ddnet.tw/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("https://ddnet.tw/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('4e38f82bf06b39758b57e989126114c2'
+md5sums=('392bc973ba3bef9bb6b302418c271b9a'
          'caf0f0c06ff54672e12829b1cbedd5f6')
 md5sums_i686=('566354c3b4510b032af7d891381ee711')
 md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
