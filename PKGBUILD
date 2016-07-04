@@ -7,7 +7,7 @@ pkgname=openfoam
 # The distributors package name
 _distpkgname=OpenFOAM
 
-pkgver=3.0.x
+pkgver=4.x
 pkgrel=7
 pkgdesc="The open source CFD toolbox"
 arch=("any")
@@ -15,7 +15,7 @@ url="http://www.openfoam.org"
 license=("GPL")
 depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal')
         
-source=("git+git://github.com/OpenFOAM/OpenFOAM-3.0.x.git")        
+source=("git+git://github.com/OpenFOAM/OpenFOAM-4.x.git")        
 
 install="${pkgname}.install"
         
