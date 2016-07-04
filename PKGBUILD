@@ -24,7 +24,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20160704.r2772.070b1e3
+pkgver=20160704.r2776.e85fcf0
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -43,7 +43,7 @@ provides=('pd-l2ork')
 conflicts=('pd-l2ork' 'pd-l2ork-git')
 install=purr-data.install
 options=('!makeflags')
-source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=nodebug"
+source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
 	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
@@ -64,6 +64,12 @@ elif [ "$CARCH" = "x86_64" ]; then
   _arch="x64"
 fi
 
+# Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
+# Gem which takes a *long* time to buidl). Note that this will only produce a
+# proper package if src still contains the results of a previous full build,
+# otherwise Gem will be missing in the resulting package!
+buildopt=${buildopt:--B}
+
 pkgver() {
   cd $srcdir/$pkgname
   printf "%s.r%s.%s" "$(git log -1 --format=%cd --date=short | sed -e 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -71,9 +77,13 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
+  # first make sure that we get any checked out submodules in pristine state
+  # again, so that our patches apply cleanly
+  git submodule foreach git checkout .
   # check out the latest source of all submodules
   git submodule update --init
   # copy the nw.js sources to where purr-data wants them
+  rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
   # make the sources compile with gcc 6.1+
   cd $srcdir/$pkgname/Gem && patch -Np1 < $srcdir/Gem-pix_colorclassify.patch
@@ -86,7 +96,7 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  ./tar_em_up.sh -B -n
+  ./tar_em_up.sh $buildopt -n
 }
 
 package() {
@@ -116,12 +126,12 @@ package() {
   chmod -R go-w *
   chmod -R a+r *
   chmod a-x usr/lib/pd-l2ork/default.settings
-  find usr/lib/pd-l2ork/bin/nw -executable -not -type d | xargs chmod a+x
-  #find . -executable -name '*.pd_linux' | xargs chmod a-x
-  find . -executable -name '*.pd' | xargs chmod a-x
-  find . -executable -name '*.txt' | xargs chmod a-x
-  find . -executable -name '*.aif*' | xargs chmod a-x
-  find . -type d | xargs chmod a+x
+  find usr/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
+  #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
+  find . -executable -name '*.pd' -exec chmod a-x {} +
+  find . -executable -name '*.txt' -exec chmod a-x {} +
+  find . -executable -name '*.aif*' -exec chmod a-x {} +
+  find . -type d -exec chmod a+x {} +
 }
 
 # vim:set ts=2 sw=2 et:
