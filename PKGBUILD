@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python2-tifffile
-pkgver=0.8.0
+pkgver=0.9.2
 _name=tifffile
 pkgrel=1
 pkgdesc="Read and write image data from and to TIFF files"
@@ -11,8 +11,8 @@ url="https://pypi.python.org/pypi/tifffile"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=(https://github.com/blink1073/tifffile/archive/v${pkgver}.zip)
-sha256sums=('caaec90acc18a8395df922543b25ec8f5ded03e6d5896342f2f23c4824ca17fb')
+source=(https://pypi.python.org/packages/82/ee/4fd48630aa104e568c4abcdec2e0cddf4f9c662d81eb3a0980282a31b32d/tifffile-${pkgver}.zip)
+sha256sums=('950f14febf08f5bb6daa40137761d31ec38482dace3edea24feb54e229a4efbf')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
