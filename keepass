@@ -1,0 +1,11 @@
+#!/bin/sh
+export WINEPREFIX="$HOME/.keepass/wine"
+export WINEARCH=win32
+export WINEDEBUG=-all
+
+if [ ! -d "$WINEPREFIX" ] ; then
+    mkdir -p "$WINEPREFIX"
+    cp -r "/usr/share/keepass/wine/*" "$WINEPREFIX"
+fi
+
+wine "/usr/share/keepass/KeePass.exe" "`winepath -w "$@"`"

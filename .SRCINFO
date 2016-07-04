@@ -1,0 +1,36 @@
+pkgbase = keepass-wine
+	pkgdesc = A easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices.
+	pkgver = 2.34
+	pkgrel = 1
+	url = http://keepass.info/
+	install = keepass-wine.install
+	arch = any
+	license = GPL
+	makedepends = icoutils
+	makedepends = mono
+	depends = wine
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = shared-mime-info
+	depends = gtk-update-icon-cache
+	optdepends = xdotool: if you want to use auto-type
+	optdepends = xsel: clipboard operations
+	provides = keepass
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.34-Source.zip
+	source = http://keepass.info/integrity/v2/KeePass-2.34-Source.zip.asc
+	source = http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/dotnetfx.exe
+	source = keepass
+	source = keepass.1
+	source = keepass.desktop
+	source = keepass.xml
+	validpgpkeys = C2DAB36D996021CF18B8D4F4158DFACCBE64B2C1
+	sha256sums = e3f184e4deddd1aa5ee2b52e2373c772d3f3975e5eddb2fd729eb27b437011aa
+	sha256sums = SKIP
+	sha256sums = 46693d9b74d12454d117cc61ff2e9481cabb100b4d74eb5367d3cf88b89a0e71
+	sha256sums = a44456b7da55432867bcdfdda051a5b25601616a943fdc1dd1be30bd562f7ffb
+	sha256sums = a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f
+	sha256sums = 1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140
+	sha256sums = 3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194
+
+pkgname = keepass-wine
+
