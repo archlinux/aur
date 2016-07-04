@@ -25,7 +25,6 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     python2 setup.py install --root="$pkgdir/" --optimize=1
-		pwd
     install -Dm644 "$srcdir"/nvpy.desktop "${pkgdir}"/usr/share/applications/nvpy.desktop
 
     mkdir -p  $pkgdir/usr/share/licenses/$pkgname
