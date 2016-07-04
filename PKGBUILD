@@ -5,7 +5,7 @@
 _pkg=pidgin-libnotify
 pkgname=$_pkg-notify-osd
 pkgver=0.14
-pkgrel=6
+pkgrel=7
 pkgdesc="Patched pidgin-libnotify version for notify-osd"
 arch=('i686' 'x86_64')
 url="http://gaim-libnotify.sourceforge.net/"
@@ -15,9 +15,9 @@ makedepends=('intltool')
 provides=('pidgin-libnotify')
 conflicts=('pidgin-libnotify' 'pidgin-libnotify-ubuntu')
 options=('!libtool')
-source=("http://downloads.sourceforge.net/sourceforge/gaim-libnotify/$_pkg-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/gaim-libnotify/$_pkg-$pkgver.tar.gz"
         "$pkgname.patch"
-	"language_fixes.patch")
+        "language_fixes.patch")
 
 md5sums=('bfb5368b69c02d429b2b17c00a6673c0'
          'e77341ecd8a9da3720c91e38781e72ae'
