@@ -10,8 +10,8 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=20160614.r1705.ea4eb01
-pkgrel=3
+pkgver=20160619.r1716.a1424f0
+pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
@@ -27,12 +27,18 @@ makedepends=('autoconf' 'automake' 'libtool' 'git')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=ea4eb01884a2f5fbc5ff9dbdc7519feaa95c09ad"
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=a1424f03364e5cbb79a19ee4142c6b4c101f597c"
 	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
          '33dc1880e38ac8dbc7aa5075bfe49abd'
          '39c53063dc18681f29b12c08d9c453aa')
+
+# Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
+# Gem which takes a *long* time to build). Note that this will only produce a
+# proper package if src still contains the results of a previous full build,
+# otherwise Gem will be missing in the resulting package!
+buildopt=${buildopt:--B}
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -41,6 +47,9 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
+  # first make sure that we get any checked out submodules in pristine state
+  # again, so that our patches apply cleanly
+  git submodule foreach git checkout .
   # check out the latest source of all submodules
   git submodule update --init
   # make the sources compile with gcc 6.1+
@@ -54,21 +63,17 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  inst_dir=/usr ./tar_em_up.sh -F -n
+  ./tar_em_up.sh $buildopt -n
 }
 
 package() {
   cd "$srcdir/$pkgname/packages/linux_make/build"
-  mv usr "$pkgdir"
-  # Extra L2Ork-specific stuff that doesn't get installed automatically.
-  cd "$srcdir/$pkgname"
-  cp -Rf l2ork_addons/K12 externals/hardware/arduino "$pkgdir/usr/lib/pd-l2ork/extra"
-  install -d "$pkgdir/etc/bash_completion.d"
-  cp -f scripts/bash_completion/pd-l2ork "$pkgdir/etc/bash_completion.d"
-  # Remove extra packaging files.
-  cd "$pkgdir/usr"
-  rm -f Makefile README.txt
+  cp -a * "$pkgdir"
+  # Remove init.d-related stuff.
+  cd "$pkgdir/etc"
+  rm -rf default init.d
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
+  cd "$pkgdir/usr"
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
   # Get rid of the corresponding manpages
   rm -f share/man/man1/pdreceive.* share/man/man1/pdsend.*
@@ -81,21 +86,16 @@ package() {
   #rm -f lib/pd-l2ork/doc/manuals/StartHere/+ここからスタート.pd
   # Remove libtool archives and extra object files.
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
-  # Extra icons, desktop files and mime types.
-  cd "$srcdir/$pkgname/packages/linux_make"
-  cp -f pd-l2ork.gif "$pkgdir/usr/lib/pd-l2ork"
-  install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-  cp -f pd-l2ork*.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  install -d "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes"
-  cp -f text-x-pd-l2ork.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-  install -d "$pkgdir/usr/share/applications"
-  cp -f pd-l2ork*.desktop "$pkgdir/usr/share/applications/"
-  install -d "$pkgdir/usr/share/mime/packages"
-  cp -f pd-l2ork.xml "$pkgdir/usr/share/mime/packages/"
-  # Default prefs file.
-  install -d "$pkgdir/etc/pd-l2ork"
-  ln -s -f /usr/lib/pd-l2ork/default.settings "$pkgdir/etc/pd-l2ork/default.settings"
-  cp -f default.settings "$pkgdir/usr/lib/pd-l2ork"
+  # Sanitize permissions.
+  cd "$pkgdir"
+  chmod -R go-w *
+  chmod -R a+r *
+  chmod a-x usr/lib/pd-l2ork/default.settings
+  #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
+  find . -executable -name '*.pd' -exec chmod a-x {} +
+  find . -executable -name '*.txt' -exec chmod a-x {} +
+  find . -executable -name '*.aif*' -exec chmod a-x {} +
+  find . -type d -exec chmod a+x {} +
 }
 
 # vim:set ts=2 sw=2 et:
