@@ -1,7 +1,7 @@
 pkgbase = find-the-command
 	pkgdesc = Interactive command-not-found hook for bash and zsh using the power of pacman
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agur4ik/find-the-command
 	install = find-the-command.install
 	arch = any
