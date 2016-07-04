@@ -1,15 +1,15 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=('python-wcwidth' 'python2-wcwidth')
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Measures number of Terminal column cells of wide-character codes"
 url="https://github.com/jquast/wcwidth"
 license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/w/wcwidth/wcwidth-${pkgver}.tar.gz")
-sha512sums=('da22fbbd8172673532b47d07f5285fbbb1c9e5d72f6593c5e194af6c94520653025805ff94b9cd829cd2d44e263349eb9896ebd3c2982059d1b2772850863ab3')
+source=("https://pypi.python.org/packages/55/11/e4a2bb08bb450fdbd42cc709dd40de4ed2c472cf0ccb9e64af22279c5495/wcwidth-${pkgver}.tar.gz")
+sha512sums=('5bc9625fbd10721a50a3ac7d7f91012cca8e4f83533f265cf56890498bc52a53b155c82e67d6bc5523a5593c8d7992a1dec2a0f590318170eddf987c56f9c368')
 
 prepare() {
     cp -a "${srcdir}/wcwidth-${pkgver}"{,-python2}
