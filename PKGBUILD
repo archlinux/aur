@@ -5,7 +5,7 @@
 
 _gemname=sprockets
 pkgname=ruby-$_gemname
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='Rack-based asset packaging system'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby ruby-rack)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('51cd3818fd7889eacd19614303297107249433e8')
+sha1sums=('2e7fbd43114963a5543e06c576e920aec64ed987')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
