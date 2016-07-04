@@ -1,14 +1,14 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
 pkgname='jeeves'
-pkgver='0.3'
+pkgver='0.3.1'
 pkgrel=1
-pkgdesc='A simple script to quickly check your AUR packages'
+pkgdesc='A simple AUR helper to quickly install or upload packages'
 arch=('any')
 url='https://github.com/christopherloen/jeeves'
 license=('None')
 depends=('wget' 'cower' 'git')
 source=('https://raw.githubusercontent.com/christopherloen/jeeves/master/jeeves')
-sha256sums=('b094fc67740e1c1bcf03f2247920862ee679b7a52e0804be200f216932bf22e9')
+sha256sums=('1afdfb021a1c95b47d23186dc709a0f35c4fbb8d909160bbd4205d244c780a33')
 
 
 package() {
