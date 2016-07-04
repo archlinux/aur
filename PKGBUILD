@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$_gitname"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-sse
   make
 }
 
