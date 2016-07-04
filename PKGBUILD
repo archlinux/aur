@@ -5,8 +5,8 @@
 pkgname=reaver-wps-fork-t6x-git
 _pkgname=reaver-wps-fork-t6x
 pkgver=1.5.2.r21.ged98a95
-pkgrel=1
-pkgdesc="Brute force attack against Wifi Protected Setup mod with Pixie Dust Attack"
+pkgrel=2
+pkgdesc="reaver-wps-fork-t6x is a community forked version of reaver, which has included various bug fixes and additional attack method (the offline Pixie Dust attack)."
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/t6x/reaver-wps-fork-t6x"
 license=('GPL2')
