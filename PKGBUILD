@@ -2,14 +2,14 @@
 
 pkgname=liquidsoap
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
 depends=('faad2' 'ffmpeg' 'gavl' 'gd' 'giflib' 'gst-plugins-base-libs' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 
-'ocaml-camomile' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
-makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
+'ocaml-camomile' 'openssl' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
+makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-ssl' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
 source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.gz
 PACKAGES
 $pkgname.service
