@@ -3,7 +3,7 @@
 
 pkgname=python2-jedihttp-git
 pkgver=r141.ec6e097
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
 arch=('any')
@@ -14,6 +14,7 @@ source=('git+https://github.com/vheon/JediHTTP'
         'packaging.patch'::'https://github.com/vheon/JediHTTP/compare/master...yan12125:packaging.patch')
 sha256sums=('SKIP'
             'fe4e479ed0c616608ec35150965f696fa1e9daae1b9209adbb51131dda294f54')
+conflicts=('python-jedihttp-git')
 
 pkgver() {
   cd "$srcdir/JediHTTP"
