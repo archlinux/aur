@@ -10,6 +10,7 @@ url='http://keepass.info/'
 license=('GPL')
 depends=('wine' 'desktop-file-utils' 'xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache')
 provides=('keepass')
+conflicts=('keepass')
 makedepends=('icoutils' 'mono')
 optdepends=('xdotool: if you want to use auto-type'
             'xsel: clipboard operations')
@@ -29,7 +30,7 @@ sha256sums=('e3f184e4deddd1aa5ee2b52e2373c772d3f3975e5eddb2fd729eb27b437011aa'
             'a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f'
             '1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140'
             '3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194')
-validpgpkeys=('C2DAB36D996021CF18B8D4F4158DFACCBE64B2C1')
+validpgpkeys=('D95044283EE948D911E8B606A4F762DC58C6F98E')
 
 prepare() {
   # "Convert" to mono 4.0
