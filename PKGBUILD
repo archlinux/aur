@@ -5,7 +5,7 @@
 pkgname=openpht
 pkgver=1.6.2.123
 _pkghash=e23a7eef
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -17,11 +17,12 @@ depends=('openpht-ffmpeg' 'alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freety
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib' 'rtmpdump')
-makedepends=('boost' 'cmake' 'doxygen' 'git' 'java-environment'
+makedepends=('boost' 'cmake' 'doxygen' 'git' 'java-environment' 'shairplay'
              'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip' 'gcc-libs<=5.3.0' 'glibc<=2.23-1' 'llvm-libs<=3.7.1')
 optdepends=('libplist: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
-            'pulseaudio: PulseAudio support')
+            'pulseaudio: PulseAudio support'
+             'shairplay: Shairplay Support')
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
         'plexhometheater.sh'
 	'fribidi.patch'
