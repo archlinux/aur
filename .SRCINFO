@@ -1,0 +1,15 @@
+pkgbase = k380-function-keys-conf-git
+	pkgdesc = Make function keys on Logitech K380 bluetooth keyboard default
+	pkgver = r3.b1798b8
+	pkgrel = 1
+	url = https://github.com/jergusg/k380-function-keys-conf
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = k380-function-keys-conf::git+https://github.com/jergusg/k380-function-keys-conf
+	md5sums = SKIP
+
+pkgname = k380-function-keys-conf-git
+
