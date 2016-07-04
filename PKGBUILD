@@ -1,14 +1,15 @@
-# Maintainer: Robert Schwarz <mail@rschwarz.net>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Robert Schwarz <mail@rschwarz.net>
+
 pkgname=geosteiner
-pkgver=3.1
-pkgrel=3
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="Compute Euclidean and Rectilinear Steiner Trees"
 arch=(i686 x86_64)
-url="http://www.diku.dk/hjemmesider/ansatte/martinz/geosteiner/"
+url="http://www.geosteiner.com/"
 license=(custom)
-depends=(glibc)
-source=(http://www.cs.sunysb.edu/~algorith/implement/geosteiner/distrib/$pkgname-$pkgver.tar.gz)
-md5sums=(89bf30c923aa2bc61c04906c52cb6780)
+source=("http://www.geosteiner.com/geosteiner-$pkgver.tar.gz")
+md5sums=('12dfdd602a1944ae70ddff48c992e2bb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -20,7 +21,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   mkdir -p $pkgdir/usr/bin
-  TARGETS=(bb dumpfst efst fst2graph kr lib_points plotfst prunefst rand_points rfst)
+  TARGETS=(bb dumpfst efst fst2graph lib_points plotfst prunefst rand_points rfst smt ufst analyze_ckpt demo1 demo2 demo3 demo4 hgmst merge_ckpt)
   for i in ${TARGETS[@]}; do
       install -c -m 755 $i $pkgdir/usr/bin
   done
