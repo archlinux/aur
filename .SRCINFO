@@ -1,7 +1,7 @@
 pkgbase = openpht
 	pkgdesc = OpenPHT is a community driven fork of Plex Home Theater
 	pkgver = 1.6.2.123
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/RasPlex/OpenPHT/
 	arch = i686
 	arch = x86_64
@@ -62,6 +62,7 @@ pkgbase = openpht
 	depends = tinyxml
 	depends = yajl
 	depends = zlib
+	depends = rtmpdump
 	optdepends = libplist: AirPlay support
 	optdepends = libcec: Pulse-Eight USB-CEC adapter support
 	optdepends = pulseaudio: PulseAudio support

@@ -5,7 +5,7 @@
 pkgname=openpht
 pkgver=1.6.2.123
 _pkghash=e23a7eef
-pkgrel=1
+pkgrel=3
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
@@ -16,7 +16,7 @@ depends=('openpht-ffmpeg' 'alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freety
          'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
-         'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
+         'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib' 'rtmpdump')
 makedepends=('boost' 'cmake' 'doxygen' 'git' 'java-environment'
              'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip' 'gcc-libs<=5.3.0' 'glibc<=2.23-1' 'llvm-libs<=3.7.1')
 optdepends=('libplist: AirPlay support'
