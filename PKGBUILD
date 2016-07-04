@@ -3,26 +3,16 @@
 
 _pkgname=libarchive
 pkgname=lib32-${_pkgname}
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (32 bit)"
 arch=('x86_64')
 url="http://libarchive.org"
 license=('BSD')
 depends=('lib32-acl' 'lib32-bzip2' 'lib32-expat' 'lib32-lzo' 'lib32-openssl' 'lib32-xz' "${_pkgname}")
 makedepends=('gcc-multilib' 'lib32-zlib')
-source=("http://libarchive.org/downloads/${_pkgname}-${pkgver}.tar.gz"
-        '0001-mtree-fix-line-filename-length-calculation.patch')
-md5sums=('efad5a503f66329bb9d2f4308b5de98a'
-         '9727baf88b928417d5d1269891b1209a')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-
-  # https://code.google.com/p/libarchive/issues/detail?id=301
-  # upstream commit e65bf287f0133426b26611fe3e80b51267987106
-  patch -Np1 -i "${srcdir}/0001-mtree-fix-line-filename-length-calculation.patch"
-}
+source=("http://libarchive.org/downloads/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('afa257047d1941a565216edbf0171e72')
 
 build() {
   export CC="gcc -m32"
