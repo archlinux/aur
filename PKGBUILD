@@ -1,25 +1,26 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.6.r551.4c133ab
+pkgver=0.0.0.9.r126.effd379
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
 url='https://github.com/DHrpcs3/rpcs3'
 license=('GPL2')
-depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libx11' 'openal' 'wxgtk'
+depends=('boost-libs' 'gcc-libs' 'glew' 'glibc' 'libgl' 'libx11' 'openal'
+         'wxgtk'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so')
-makedepends=('cmake' 'git')
+makedepends=('boost' 'cmake' 'git' 'yaml-cpp')
 provides=('rpcs3')
 conflicts=('rpcs3')
 source=('git+https://github.com/RPCS3/rpcs3.git'
         'git+https://github.com/RPCS3/common'
+        'git+https://github.com/RPCS3/pugixml'
         'git+https://github.com/RPCS3/rsx_program_decompiler.git'
         'git+https://github.com/kobalicek/asmjit.git#commit=b0dad1a'
-        'git+https://github.com/Microsoft/GSL.git'
-        'git+https://github.com/KhronosGroup/glslang.git'
-        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git'
-        'rpcs3-system-libs.patch')
+        'git+https://github.com/Microsoft/GSL.git#commit=fc5fce4'
+        'git+https://github.com/KhronosGroup/glslang.git#commit=3c5b1e6'
+        'git+https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git#commit=1affe90')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -27,7 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '892f75551e2335e1614451da43b48a927469f3b5242467f1dd3cdcc64b0bbbc6')
+            'SKIP')
 
 pkgver() {
   cd rpcs3
@@ -44,15 +45,14 @@ prepare() {
 
   cd ../rpcs3
 
-  git submodule init asmjit GSL rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
+  git submodule init 3rdparty/{GSL,pugixml} asmjit rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
   git config submodule.asmjit.url ../asmjit
   git config submodule.GSL.url ../GSL
+  git config submodule.pugixml.url ../pugixml
   git config submodule.rsx_program_decompiler.url ../rsx_program_decompiler
   git config submodule.glslang.url ../glslang
   git config submodule.Vulkan-LoaderAndValidationLayers ../Vulkan-LoaderAndValidationLayers
-  git submodule update asmjit GSL rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
-
-  patch -Np1 -i ../rpcs3-system-libs.patch
+  git submodule update 3rdparty/{GSL,pugixml} asmjit rsx_program_decompiler Vulkan/{glslang,Vulkan-LoaderAndValidationLayers}
 
   if [[ -d build ]]; then
     rm -rf build
@@ -66,7 +66,9 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_SKIP_RPATH='TRUE'
+    -DCMAKE_SKIP_RPATH='ON' \
+    -DUSE_SYSTEM_LIBPNG='ON' \
+    -DUSE_SYSTEM_FFMPEG='ON'
   make
 }
 
