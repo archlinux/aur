@@ -12,7 +12,7 @@
 
 pkgname=pd-l2ork-git
 pkgver=r1716.a1424f0
-pkgrel=1
+pkgrel=2
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
@@ -36,6 +36,12 @@ md5sums=('SKIP'
          '33dc1880e38ac8dbc7aa5075bfe49abd'
          '39c53063dc18681f29b12c08d9c453aa')
 
+# Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
+# Gem which takes a *long* time to build). Note that this will only produce a
+# proper package if src still contains the results of a previous full build,
+# otherwise Gem will be missing in the resulting package!
+buildopt=${buildopt:--B}
+
 pkgver() {
   cd $srcdir/$pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -43,6 +49,9 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
+  # first make sure that we get any checked out submodules in pristine state
+  # again, so that our patches apply cleanly
+  git submodule foreach git checkout .
   # check out the latest source of all submodules
   git submodule update --init
   # make the sources compile with gcc 6.1+
@@ -56,7 +65,7 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  ./tar_em_up.sh -B -n
+  ./tar_em_up.sh $buildopt -n
 }
 
 package() {
@@ -84,11 +93,11 @@ package() {
   chmod -R go-w *
   chmod -R a+r *
   chmod a-x usr/lib/pd-l2ork/default.settings
-  #find . -executable -name '*.pd_linux' | xargs chmod a-x
-  find . -executable -name '*.pd' | xargs chmod a-x
-  find . -executable -name '*.txt' | xargs chmod a-x
-  find . -executable -name '*.aif*' | xargs chmod a-x
-  find . -type d | xargs chmod a+x
+  #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
+  find . -executable -name '*.pd' -exec chmod a-x {} +
+  find . -executable -name '*.txt' -exec chmod a-x {} +
+  find . -executable -name '*.aif*' -exec chmod a-x {} +
+  find . -type d -exec chmod a+x {} +
 }
 
 # vim:set ts=2 sw=2 et:
