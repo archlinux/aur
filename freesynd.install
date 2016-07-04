@@ -1,0 +1,10 @@
+
+post_install() {
+  echo "The game automatically creates a config file in ~/.freesynd on first start."
+  echo "Please change the 'data_dir' setting to point to your 'Syndicate' installation."
+  echo "A sample file is provided in /usr/share/doc/freesynd for reference."
+}
+
+post_upgrade() {
+  post_install
+}
