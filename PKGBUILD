@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=flake8-docstrings
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A plugin to flake8 to include checks provided by pydocstyle"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('flake8' 'pydocstyle')
 makedepends=('python-setuptools')
 source=("https://github.com/PyCQA/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('185b59fe10d6ca7a4b589f574734d8b46426581d79d1d1e4da68988ba388bfe4')
+sha256sums=('48be6b1eb1711e18714965bbc6475de9b698e5dd1a6abcc65aad0d4a4d403302')
 
 prepare() {
   cd "$pkgname-$pkgver"
