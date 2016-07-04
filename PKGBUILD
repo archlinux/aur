@@ -11,11 +11,10 @@ license=('GPL3')
 url="http://ffmpeg.org/"
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug' 'libpulse' 
-		 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-		 'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-		 'v4l-utils' 'xvidcore' 'zlib'
-		 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-		 'libx264.so' 'libx265.so')
+	 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+	 'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+	 'v4l-utils' 'xvidcore' 'zlib'  'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 
+	 'libvpx.so' 'libx264.so' 'libx265.so')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
