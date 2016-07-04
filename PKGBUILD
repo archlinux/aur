@@ -1,7 +1,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 pkgname=python2-pims
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Image Sequence: Load video and sequential images"
 url="https://github.com/soft-matter/pims"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
     cd $srcdir/pims-"$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('0cc4c4b185cd9c1db51054b3982aa140')
+md5sums=('b0e28eece086264c979ce838d27a92e7')
