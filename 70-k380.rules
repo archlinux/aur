@@ -1,0 +1,1 @@
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{address}=="%keyboard_id%", RUN+="/usr/bin/k380_enable_function_keys.sh %p"
