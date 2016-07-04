@@ -1,7 +1,7 @@
 # Maintainer: Evgeny Pokhilko <software@evpo.net>
 
 _pkgname=encryptpad
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}
 pkgver=0.3.2.2
 pkgrel=2
 pkgdesc="Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format"

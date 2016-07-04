@@ -1,4 +1,4 @@
-pkgbase = encryptpad-git
+pkgbase = encryptpad
 	pkgdesc = Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format
 	pkgver = 0.3.2.2
 	pkgrel = 2
@@ -21,5 +21,5 @@ pkgbase = encryptpad-git
 	sha1sums = SKIP
 	sha1sums = fc181153279e6c1167b506a50b4c685475f08bc3
 
-pkgname = encryptpad-git
+pkgname = encryptpad
 
