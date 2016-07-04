@@ -2,15 +2,15 @@ post_install() {
 	cat <<EOF
 	>> To enable command-not-found hook for your shell 
 	>> add any of the following to your .bashrc or .zshrc file
-	>> depending on shell you use:
-	>> for bash (interactive):
-	source /usr/share/doc/find-the-command/ftc-interactive.bash
-	>> for non-interactive use:
+	>> depending on the shell you use:
+	>> for bash:
 	source /usr/share/doc/find-the-command/ftc.bash
-	>> for zsh (interactive):
-	source /usr/share/doc/find-the-command/ftc-interactive.zsh
-	>> non-interactive:
+	>> for zsh:
 	source /usr/share/doc/find-the-command/ftc.zsh
+	>> You can also append 'su' option to use su instead of sudo
+	>> for root access or 'noprompt' to disable inatallation
+	>> prompt at all. I.e.:
+	source /usr/share/doc/find-the-command/ftc.zsh noprompt
 
 	>> It is necessary to create pacman files database, run
 	sudo pacman -Fy
@@ -30,5 +30,5 @@ pre_remove() {
 }
 
 post_remove() {
-	printf "\t>> Don't for get to remove hook from your shell rc-file\n"
+	printf "\t>> Don't forget to remove the hook from your shell rc-file\n"
 }
