@@ -2,7 +2,7 @@
 # Contributor: Xentec <xentec at aix0 dot eu>
 
 pkgname=glbinding
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A C++ binding for the OpenGL API, generated using the gl.xml specification"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libgl' 'glfw')
 makedepends=('cmake' 'mesa')
 checkdepends=('python')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/cginternals/glbinding/archive/v$pkgver.tar.gz")
-sha256sums=('6712d91c5f8de81089549e499d8d63554f20abcd250cbfbfae34065760ddf6cb')
+sha256sums=('253671f2b730a6efa55de92a704938bb0f1761d151f3f8e87c043c51d46ea1e4')
 
 prepare() {
   cd $pkgname-$pkgver
