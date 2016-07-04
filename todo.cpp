@@ -4,7 +4,8 @@
 #include<string>
 #include<fstream>
 #include<string.h>
-#include <sstream>
+#include<sstream>
+#include<cctype>
 
 using namespace std;
 
@@ -61,8 +62,13 @@ int main(int argc, char *argv[]) {
     color = true;
     vector<todo> listTodo;
     int action = -1;
+    int startArgv = 2;
+
     if( argc > 1 )
-        if( !strcmp( argv[1], "show") ) {
+        if( isalpha(argv[1][0]) && toupper(argv[1][0]) == argv[1][0] ) {
+            action = 1;
+            startArgv = 1;
+        }else if( !strcmp( argv[1], "show") ) {
             action = 0;
         }else if ( !strcmp( argv[1], "add") ) {
             action = 1;
@@ -114,7 +120,7 @@ int main(int argc, char *argv[]) {
             case 1:
                 {
                     string sargv("");
-                    for( int i = 2 ; i < argc ; i++) {
+                    for( int i = startArgv ; i < argc ; i++) {
                         sargv += " ";
                         sargv += argv[i];
                     }
