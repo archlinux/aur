@@ -1,7 +1,7 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=gb
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="The project based build tool for Go"
 url="https://github.com/constabulary/${pkgname}"
@@ -18,6 +18,7 @@ _cmds="gb gb-vendor"
 prepare() {
 	cd "${srcdir}"
 	mkdir -p "src/github.com/constabulary"
+	GOPATH="$PWD" go get -d github.com/pkg/errors
 	mv "${pkgname}" "src/github.com/constabulary/${pkgname}"
 }
 
