@@ -1,0 +1,65 @@
+
+pre_remove()
+{
+    echo "Running forge pre_remove script..."
+
+    if [ -d /opt/jboss/forge ]; then
+        echo "Removing your existing Forge installation."
+    fi
+
+    rm -rf /opt/jboss/forge
+    rm /usr/bin/forge
+
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_install() {
+
+    echo "Running forge post_install script..."
+
+    ln -s /opt/jboss/forge/bin/forge /usr/bin/forge
+
+
+#Java Check
+if type -p java; then
+    _java=java
+elif [ -n "$JAVA_HOME" -a -x "$JAVA_HOME/bin/java" ]; then   
+    _java="$JAVA_HOME/bin/java"
+else
+    echo "Java not installed . Please install java. Aborting"
+    exit 1
+fi
+
+if [ "$_java" ]; then
+    version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    if [ "$version" \< "1.7" ]; then           
+        echo "JDK Version is less than 1.7 . Forge requires JDK 7+ . Aborting."
+        exit 1
+    fi
+fi
+
+cat <<EOF
+
+To get started fast:
+run forge
+localhost:~ $ forge
+[~] $
+
+If you have not yet seen the Forge built-in commands, you may either press TAB to see a list of the currently available commands, or get a more descriptive list by typing:
+
+$ command-list
+
+Then to get started - see the docs at
+http://forge.jboss.org/documentation 
+Consider installing Git and Maven 3.1+ (both optional)
+
+EOF
+
+}

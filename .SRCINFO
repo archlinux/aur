@@ -1,0 +1,14 @@
+pkgbase = jboss-forge-offline
+	pkgdesc = JBoss Forge is the Fastest way to build Maven-based Java EE projects, and anything else you fancy.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://forge.jboss.org/
+	install = jboss-forge-offline.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	source = https://oss.sonatype.org/service/local/repositories/releases/content/org/jboss/forge/forge-distribution/3.2.2.Final/forge-distribution-3.2.2.Final-offline.zip
+	md5sums = 26efe6662a0027aafe9d037b6dde0472
+
+pkgname = jboss-forge-offline
+
