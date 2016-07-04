@@ -9,27 +9,28 @@ pkgdesc="Complete solution to record, convert and stream audio and video (git ve
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://ffmpeg.org/"
-depends=(
-      'alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
-      'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
-      'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg' 'opus'
-      'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-      'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 
-      'libx264.so' 'libx265.so' 'libfdk-aac')
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
+         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug' 'libpulse' 
+		 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+		 'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+		 'v4l-utils' 'xvidcore' 'zlib'
+		 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
+		 'libx264.so' 'libx265.so')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
-provides=(
-      'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-      'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-      'libswscale.so' 'ffmpeg'
-)
+provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
+		  'libswscale.so')
 conflicts=('ffmpeg' 'ffmpeg-full-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(git describe --tags | sed 's|-[^-]*$||' | sed 's|^n||')"
+  _rev="$(git rev-list --count HEAD)"
+  _gitid="$(git rev-parse --short HEAD)"
+  echo "${_ver}.r${_rev}.g${_gitid}"
 }
 
 build() {
@@ -47,7 +48,6 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
-    --enable-libdcadec \
     --enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libfribidi \
