@@ -1,0 +1,7 @@
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+*.tar.gz
+*.asc
+/pkg
+/src
+/flent
