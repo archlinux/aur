@@ -2,18 +2,18 @@
 
 pkgname=timekpr
 pkgver=0.3.2
-pkgrel=12
+pkgrel=13
 pkgdesc="Control the computer usage of your users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in."
-arch=('i686' 'x86_64')
+arch=('any')
 url=https://launchpad.net/timekpr
 license=('GPL')
-depends=('python2')
+depends=('python2' 'pygtk')
 optdepends=('gksu: run with root privileges'
             'kdesu: run with root privileges'
             'kdesudo: run with root privileges')
 source=("http://launchpad.net/$pkgname/trunk/$pkgver/+download/${pkgname}_${pkgver}~ppa1~ubuntu2.tar.gz"
-	"timekpr.service"
-	"Initializes_lastNotified_before_it_is_used.patch")
+        "timekpr.service"
+        "Initializes_lastNotified_before_it_is_used.patch")
 backup=('etc/timekpr.conf')
 install='timekpr.install'
 md5sums=('0626ee6b6b6d218dfdd6e79331f789a2'
