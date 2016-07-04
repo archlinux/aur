@@ -2,7 +2,7 @@
 
 pkgname=gb-git
 _name="${pkgname/-git/}"
-pkgver=v0.4.1.2.g9eb1c13
+pkgver=v0.4.3.8.gf25e86b
 pkgrel=1
 pkgdesc="The project based build tool for Go"
 url="https://github.com/constabulary/${_name}"
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}"
 	mkdir -p "src/github.com/constabulary"
+	GOPATH="$PWD" go get -d github.com/pkg/errors
 	mv "${_name}" "src/github.com/constabulary/${_name}"
 }
 
