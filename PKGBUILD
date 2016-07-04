@@ -1,5 +1,5 @@
 pkgname=babelmap
-pkgver=8.0.0.5
+pkgver=9.0.0.1
 pkgrel=1
 pkgdesc="A Unicode character map for Windows."
 arch=('any')
@@ -7,15 +7,14 @@ url="http://www.babelstone.co.uk/Software/BabelMap.html"
 license=('custom')
 depends=('wine' 'xdg-utils')
 makedepends=('icoutils' 'imagemagick')
-source=('http://www.babelstone.co.uk/Software/BabelMap.zip'
+source=('http://www.babelstone.co.uk/Software/3004/BabelMap.zip'
         'babelmap'
         'babelmap.desktop'
         'LICENSE')
-sha256sums=('d3193014d22d617a258d1688017ac31bd2bf98dd012b6f2ba0d61de17f3bdc6e'
+sha256sums=('24af25ed0b3cb6ad51bba668f4f4552db08e247e1ebff9c802c4eef2778fa307'
             '5d62cd3c9bf31ca196e98da3d2eff27c6642c05f8ad9893cd1e73cdf08eb1573'
             '332804bcab37fdf223a9b55cead76c1c12e4c0e7f3df1691c93c9ad98e537274'
             '90544b87643dad089f816791171a909827bbdce12df7113543d005ffbfb53d64')
-install='babelmap.install'
 
 build() {
   wrestool -x -n 131 BabelMap.exe > babelmap.ico 2>/dev/null
