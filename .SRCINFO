@@ -1,6 +1,6 @@
 pkgbase = jkazip
-	pkgdesc = A script which use the differents zip and unzip programs
-	pkgver = 2.0.3
+	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://proyecto.jkanetwork.com
 	arch = any
@@ -11,12 +11,11 @@ pkgbase = jkazip
 	depends = unzip
 	depends = zip
 	depends = lzip
-	depends = tar
 	provides = jkazip
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/jkazip
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/i18n/jkazip/es.mo
-	md5sums = c9af26225bd54e04925e8dd134dd2cec
+	md5sums = eb5bc2197d77ecb2d0d812cf1fb7b3a8
 	md5sums = 60bb5d465748ace2b3db7a471d92a1d0
 
 pkgname = jkazip
