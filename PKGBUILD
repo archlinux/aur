@@ -1,6 +1,6 @@
 # Maintainer: Kai Michaelis <seu@panopticon.re>
 pkgname=panopticon-git
-pkgver=0.14.0.1143
+pkgver=0.15.0.1203
 pkgrel=1
 pkgdesc="A libre cross platform disassembler"
 arch=('x86_64' 'i686')
