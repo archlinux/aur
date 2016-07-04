@@ -1,12 +1,12 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 _pkgname=pwntools
 
-pkgname=python2-${_pkgname}-git
-pkgver=2.2.r427.gd498a34
+pkgname="python2-${_pkgname}-git"
+pkgver=2.3.0.r822.g3d5f859
 pkgrel=1
-pkgdesc="The CTF framework used by Gallopsled in every CTF"
+pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
-url="http://pwntools.com/"
+url='http://pwntools.com/'
 license=('MIT' 'GPL2' 'BSD')
 makedepends=('lib32-glibc'
              'python2-setuptools')
@@ -20,7 +20,7 @@ depends=('python2>=2.7'
          'python2-psutil'
          'ropgadget')
 conflicts=('python2-pwntools-git' 'python2-pwntools')
-source=("${pkgname}"::'git+https://github.com/Gallopsled/pwntools.git')
+source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  sed -i "s/'capstone==2.1'/'capstone'/" setup.py
 }
 
 build() {
