@@ -27,9 +27,9 @@ build() {
 
 package() {
   cd "$srcdir/ocamlgraph-$pkgver"
-  export OCAMLFIND_DESTDIR=$pkgdir$(ocamlfind printconf destdir)
+  OCAMLFIND_DESTDIR=$pkgdir$(ocamlfind printconf destdir)
   mkdir -p $OCAMLFIND_DESTDIR
-  make DESTDIR=$pkgdir install-findlib
+  make DESTDIR=$pkgdir OCAMLFINDDEST="-destdir $OCAMLFIND_DESTDIR" install-findlib
   install -d -m 0755 "${pkgdir}/usr/share/doc/$pkgname"
   install -t "${pkgdir}/usr/share/doc/$pkgname/" doc/*
   install -Dm 755 dgraph/dgraph.opt "${pkgdir}/usr/bin/graph-viewer"
