@@ -7,16 +7,16 @@
 pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
-pkgver=2.6.0.r45341.bfc766d
+pkgver=2.6.0.r46889.3173a1f
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
-makedepends=('pixman' 'glib2'
-             'gnutls' 'util-linux' 'curl' 'libiscsi' 'libsasl'
+makedepends=('glib2' 'pixman'
+             'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2' 'usbredir' 'lzo'
-             'dtc' 'git' 'texi2html' 'perl' 'numactl')
+             'dtc' 'git' 'texi2html' 'perl')
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
         qemu-ga.service
@@ -53,14 +53,15 @@ build() {
               --disable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm --enable-libiscsi --enable-curl \
-              --enable-modules --enable-curl --disable-werror
+              --enable-tpm --enable-curl \
+              --enable-modules --enable-curl --disable-werror \
+              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
 }
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo' 'numactl' 'libepoxy')
+  depends=('gnutls' 'dtc' 'usbredir' 'lzo')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
