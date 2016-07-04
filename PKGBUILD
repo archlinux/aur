@@ -1,6 +1,6 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname=fllog
-pkgver=1.2.1
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="An Amateur Radio Logbook"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha512sums=('32c9d2693c35b857bd313d25e2bee555b70c8708f6c1bf5319287df043b58b027e91d1f2b38d8dd62ec9c7ef6b19ea77fa282e98f14f4a4256907ce6c7a23c38')
+sha512sums=('20a827655a2db5e6c4f1fb17b637f31bf7aaceeaaeef9c3b8af4d295aa3d29cae65f81bbf71a489a9f7305146071096cb045805bf7947431d8a283234846f2f3')
