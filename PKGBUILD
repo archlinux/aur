@@ -2,13 +2,13 @@
 
 pkgname=udr-git
 pkgver=v0.9.4.r11.g7885528
-pkgrel=2
+pkgrel=3
 pkgdesc="A UDT wrapper for rsync that improves throughput of large dataset transfers over long distances."
 arch=('i686' 'x86_64')
 url="https://github.com/LabAdvComp/UDR"
 license=('apache-2.0' )
 makedepends=('git')
-depends=('openssl' 'crypto++')
+depends=('openssl' 'crypto++' 'rsync')
 makedepends=('git')
 provides=('udr')
 source=('git://github.com/LabAdvComp/UDR')
