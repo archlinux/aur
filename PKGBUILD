@@ -3,7 +3,7 @@
 
 _pkgname=pim
 pkgname=pim-git
-pkgver=0.8.0.r0.geb0dbfd
+pkgver=0.8.0.r15.gfba920f
 pkgrel=1
 pkgdesc="Python image viewer with vim-like keybindings. Git-Version"
 arch=('any')
@@ -27,6 +27,6 @@ package() {
   cd ${srcdir}/${_pkgname}
 
   install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-  install -D -m644 LICENSE $pkgdir/usr/share/licenses/${_pkgname}/LICENSE
+  install -D -m644 LICENSE-MIT $pkgdir/usr/share/licenses/${_pkgname}/LICENSE
   install -D -m644 pim.desktop "${pkgdir}/usr/share/applications/pim.desktop"
 }
