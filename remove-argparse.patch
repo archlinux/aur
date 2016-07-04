@@ -1,26 +1,12 @@
-diff --git a/docs/requirements.txt b/docs/requirements.txt
-index 6c1e3b1..3de1462 100644
---- a/docs/requirements.txt
-+++ b/docs/requirements.txt
-@@ -1,6 +1,5 @@
- paramiko
--argparse
- mako
- pyelftools
- sphinxcontrib-napoleon
--sphinxcontrib-autoprogram
-\ No newline at end of file
-+sphinxcontrib-autoprogram
 diff --git a/setup.py b/setup.py
-index 28dcacf..450cfe7 100644
+index fed5c02..cf075b7 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -32,7 +32,7 @@ for filename in glob.glob('pwnlib/commandline/*'):
-     script = '%s=pwnlib.commandline.%s:main' % (filename, filename)
+@@ -33,7 +33,6 @@ for filename in glob.glob('pwnlib/commandline/*'):
      console_scripts.append(script)
  
--install_requires     = ['paramiko','argparse', 'mako', 'pyelftools',
-+install_requires     = ['paramiko', 'mako', 'pyelftools',
-                         'capstone==2.1', 'ropgadget', 'pyserial', 'requests']
- 
- # This is a hack until somebody ports psutil to OpenBSD
+ install_requires     = ['paramiko>=1.15.2',
+-                        'argparse',
+                         'mako>=1.0.0',
+                         'pyelftools>=0.2.3',
+                         'capstone',

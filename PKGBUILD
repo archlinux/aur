@@ -1,7 +1,7 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=python2-pwntools
-pkgver=2.2.0
-pkgrel=5
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools/'
@@ -21,15 +21,14 @@ conflicts=('python2-pwntools' 'python2-pwntools-git')
 options=('strip')
 source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz"
         'remove-argparse.patch')
-md5sums=('3ab358401ec751436f71633fb7476c28'
-         'b0d3d53980787e7fd841526e4d92b194')
+sha1sums=('bb15fb7365093e1ddc7417896843e5e3868bec72'
+          '42ba67adb748fdc31a95ecb108814ca33eee5c36')
 
 _repodir="pwntools-${pkgver}"
 
 prepare() {
   cd "${srcdir}/${_repodir}"
   patch -Np1 < "${srcdir}/remove-argparse.patch"
-  sed -i "s/'capstone==2.1'/'capstone'/" setup.py
 }
 
 package() {
