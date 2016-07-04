@@ -1,0 +1,16 @@
+pkgbase = drush-config-extra-git
+	pkgdesc = Additional configuration management Drush commands for Drupal, notably config-merge.
+	pkgver = 1.0.1.r1.ga6942ba
+	pkgrel = 1
+	url = https://github.com/drush-ops/config-extra
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = drush
+	provides = drush-config-extra=1.0.1.r1.ga6942ba
+	conflicts = drush-config-extra
+	source = config-extra::git+https://github.com/drush-ops/config-extra.git
+	md5sums = SKIP
+
+pkgname = drush-config-extra-git
+
