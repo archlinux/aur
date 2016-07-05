@@ -1,5 +1,5 @@
 # Maintainer: Daniel Landau <daniel.landau@iki.fi>
-# Contributor: Einhard Leichtfuß <archer@respiranto.de>
+# Co-Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 # Contributor: Xyne
 # Contributor: David Manouchehri <d@32t.ca>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
@@ -10,18 +10,19 @@
 # pull requests are welcome
 
 pkgname=thunderbird-enigmail
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Thunderbird extension that enables sending and receiving signed and encrypted e-mail messages"
 arch=('any')
 url="https://www.enigmail.net/"
 license=('MPL' 'GPL')
+# Actually thunderbird=38 OR thunderbird>=45:
 depends=('thunderbird>=38' 'gnupg>=2.0.7')
 makedepends=('zip' 'python2' 'perl>=5.8')
 source=("https://www.enigmail.net/download/source/enigmail-${pkgver}.tar.gz"{,.asc}) # gpg --recv-keys 9369CDF3 DD5F693B
 validpgpkeys=('10B2E4A0E718BB1B2791DAC4F040E41B9369CDF3'
               '4F9F89F5505AC1D1A260631CDB1187B9DD5F693B')
-sha256sums=('1dee90ff4ad51d361335686ab4ed722d34d2502b36b609680e2aabe3bb50729a'
+sha256sums=('03e9358ef3d6950b176112edf211399dd57be36b0f9fef09c0ceafcfb7cd18c7'
             'SKIP')
 
 build() {
