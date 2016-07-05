@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL2')
 url="https://github.com/graysky2/lostfiles"
 source=("https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('771adffeb9eafe3c3ca1bca1394264ee981545dfd90ba601f18cd5b2088a41a2')
+sha256sums=('c6d9ee0b3e57387faa72fb82164fc3db5241ee4501b538b7180363d5e70e4dd4')
 
 package() {
 	cd "$pkgname-$pkgver"
