@@ -3,7 +3,7 @@
 pkgname=brother-ql500-cupswrapperinch
 _pkgname=ql500cupswrapperinch
 pkgver=1.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="LPR-to-CUPS wrapper for Brother P-Touch QL-500 labelprinter (imperial)"
 url="http://solutions.brother.com/linux/en_us/"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('rpmextract')
 source=("http://www.brother.com/pub/bsc/linux/dlf/${_pkgname}-${pkgver}-1.redhat.i386.rpm"
         "cupswrapper.install")
 md5sums=('4040ef6abc7966ee2fa850b611948545'
-         '7e9b6dd6f9cebbbd6cfc31ad65b6db2c')
+         '83cafa21ea6766b3373fe0643ce9267b')
 noextract=("${_pkgname}-${pkgver}-1.redhat.i386.rpm")
 install='cupswrapper.install'
 
