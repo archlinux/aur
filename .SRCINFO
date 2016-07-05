@@ -4,12 +4,17 @@ pkgbase = servo-latest
 	pkgrel = 1
 	url = https://servo-builds.s3.amazonaws.com/index.html
 	arch = x86_64
-	license = unknown
-	makedepends = gendesk
+	license = custom:Mozilla Public License v2.0
 	provides = servo
 	conflicts = servo
 	source = https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz
-	md5sums = SKIP
+	source = Servo.desktop
+	source = LICENSE
+	source = servo-latest
+	sha256sums = SKIP
+	sha256sums = 7087917409c30bb5de3931dc35d18f60407837165d6f9dda941a27928e07512f
+	sha256sums = 3db78572e8657cca9e9446ce56a057b8a981eb41af318c49a5fe08e7a10fa52a
+	sha256sums = f7e2444f37fbd5149e7239b2a837f5e2ee062c78ef42f72c2ad87fc7c787472c
 
 pkgname = servo-latest
 

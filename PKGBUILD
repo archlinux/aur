@@ -5,16 +5,19 @@ pkgrel=1
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
 url="https://servo-builds.s3.amazonaws.com/index.html"
-license=('unknown')
+license=('custom:Mozilla Public License v2.0')
 provides=('servo')
 conflicts=('servo')
-makedepends=('gendesk')
-md5sums=('SKIP')
-source=("https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz")
-
-prepare(){
-	gendesk -f --pkgname "Servo" --pkgdesc "$pkgdesc" --exec '/opt/servo/servo -w -b --pref dom.mozbrowser.enabled --pref dom.forcetouch.enabled --pref shell.builtin-key-shortcuts.enabled=false /opt/servo/build/browserhtml-3e3805f69808f24d/out/index.html'
-}
+sha256sums=('SKIP'
+            '7087917409c30bb5de3931dc35d18f60407837165d6f9dda941a27928e07512f'
+            '3db78572e8657cca9e9446ce56a057b8a981eb41af318c49a5fe08e7a10fa52a'
+            'f7e2444f37fbd5149e7239b2a837f5e2ee062c78ef42f72c2ad87fc7c787472c')
+source=(
+	"https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz"
+	"Servo.desktop"
+	"LICENSE"
+	"servo-latest"
+)
 
 pkgver(){
 	time=$(curl -s -v -X HEAD "https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz" 2>&1\
@@ -24,7 +27,13 @@ pkgver(){
 }
 
 package() {
-	install -Dm644 "Servo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -d "$pkgdir/opt/servo"
+	install -Dm755 "$srcdir/Servo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+
+	install -dm755 "$pkgdir/opt/servo"
 	cp -r "servo" "$pkgdir/opt"
+
+	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

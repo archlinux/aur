@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Servo
+Comment=A modern, high-performance browser engine being developed for application and embedded use
+Exec=/opt/servo/servo -w -b --pref dom.mozbrowser.enabled --pref dom.forcetouch.enabled --pref shell.builtin-key-shortcuts.enabled=false /opt/servo/build/browserhtml-3e3805f69808f24d/out/index.html
+Icon=Servo
+Terminal=false
+StartupNotify=false
+Categories=Application;Network;
