@@ -7,8 +7,10 @@ pkgbase = adobe-flashplugin
 	arch = i686
 	license = custom
 	depends = gcc-libs
+	optdepends = freshplayerplugin: Firefox support
 	provides = pepper-flash
 	conflicts = chromium-pepper-flash
+	conflicts = flashplugin
 	source = https://launchpad.net/ubuntu/+archive/partner/+files/adobe-flashplugin_20160616.1.orig.tar.gz
 	sha256sums = 56fca7a80832295a1f542bda27c79bfc1bfc6106cc36e05684e6b86b38dbcd16
 
