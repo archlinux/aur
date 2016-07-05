@@ -7,7 +7,7 @@ pre_install() {
 
 post_install() {
 	/usr/share/brother/PTouch/ql500/cupswrapper/cupswrapperql500pt1
-	systemctl restart cups
+	systemctl restart org.cups.cupsd
 }
 
 pre_remove() {
@@ -15,5 +15,5 @@ pre_remove() {
 }
 
 post_remove() {
-	systemctl restart cups
+	systemctl restart org.cups.cupsd
 }
