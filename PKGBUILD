@@ -4,8 +4,8 @@
 
 pkgname=phc-intel
 _phcver=0.3.2
-pkgver=$_phcver.12.21
-_realver=pack-rev21
+pkgver=$_phcver.12.21.1
+_realver=pack-rev21.1
 pkgrel=1
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
@@ -15,10 +15,10 @@ depends=('dkms')
 provides=('linux-phc')
 backup=('etc/default/phc-intel')
 install=phc-intel.install
-source=($pkgname-$_realver.tar.bz2::$url/forum/download/file.php?id=170
+source=($pkgname-$_realver.tar.bz2::$url/forum/download/file.php?id=171
         phc-intel.{default,sh,sleep,system-sleep}
         dkms.conf)
-sha256sums=('714fc70ce4cbf5c90e1a9966b19985b375a6ce5e99e90861f7d5addc18b57c95'
+sha256sums=('03df566d26cd013c09d1e64d92146e56122058ad77d27be339e3b1e6fb80db9a'
             'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
             'b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
@@ -27,7 +27,6 @@ sha256sums=('714fc70ce4cbf5c90e1a9966b19985b375a6ce5e99e90861f7d5addc18b57c95'
 
 prepare() {
 	cd $pkgname-$_realver
-	sed -i 's,all: .prepare $(TARGET),all: $(TARGET)\n$(SOURCE): .prepare,' Makefile
 	sed -i 's,/sbin/modprobe phc-intel |,/sbin/modprobe phc-intel \&\& /usr/bin/phc-intel set |,' phc-intel.modprobe
 }
 
