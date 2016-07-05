@@ -8,8 +8,8 @@
 
 pkgname=bleachbit-cli
 _pkgname=bleachbit
-pkgver=1.10
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 arch=('any')
 url='http://bleachbit.sourceforge.net/'
@@ -18,7 +18,7 @@ license=('GPL3')
 depends=('python2' 'desktop-file-utils')
 provides=("bleachbit=${pkgver}")
 source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('33209c8f11a1417ef61231a34a8468831b1583a000330092034568b0904f6948')
+sha256sums=('55188debde6ccb9d83ebf5bb9f8c821c616fa0dfe309779d3d87059c04b1a8f4')
 
 #prepare() {
 #	cd "$_pkgname-$pkgver"
