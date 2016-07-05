@@ -22,6 +22,13 @@ pkgver() {
 } 
 
 prepare() {
+  sed -i 's|"pep8"|"pycodestyle"|g' $_pkgname2/spyderlib/utils/codeanalysis.py
+  sed -i "s|'pep8'|'pycodestyle'|g" $_pkgname2/create_app.py \
+                                    $_pkgname2/setup.py \
+                                    $_pkgname2/spyderlib/plugins/editor.py \
+                                    $_pkgname2/spyderlib/utils/codeanalysis.py \
+                                    $_pkgname2/spyderlib/widgets/editor.py
+
   rm -rf $_pkgname3
   cp -a $_pkgname2 $_pkgname3
 }
