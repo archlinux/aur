@@ -1,13 +1,20 @@
 [Unit]
-Description=An open platform to manage code quality
+Description=An open source platform for continuous inspection of code quality
+Documentation=http://www.sonarqube.org
+Wants=network.target
 After=network.target
 
 [Service]
+Type=forking
 User=sonarqube
 Group=sonarqube
-PIDFile=/opt/sonarqube/run/SonarQube.pid
-ExecStart=/opt/sonarqube/bin/ARCH/sonar.sh start
-ExecStop=/opt/sonarqube/bin/ARCH/sonar.sh stop
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=sonarqube
+RuntimeDirectory=sonarqube
+ExecStart=/usr/share/sonarqube/bin/$ARCH/sonar.sh start
+ExecStop=/usr/share/sonarqube/bin/$ARCH/sonar.sh stop
 
 [Install]
 WantedBy=multi-user.target
+

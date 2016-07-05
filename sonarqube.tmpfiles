@@ -1,0 +1,2 @@
+d /run/sonarqube 0755 sonarqube sonarqube - -
+f /run/sonarqube/SonarQube.pid 0644 sonarqube sonarqube - -
