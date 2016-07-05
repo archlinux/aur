@@ -1,7 +1,7 @@
 # Maintainer: Florian "Bluewind" Pritz <flo@xssn.at>
 pkgname=spampd
 pkgver=2.30
-pkgrel=11
+pkgrel=12
 pkgdesc="Spamassassin Proxy Daemon"
 arch=('any')
 url="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm"
@@ -11,7 +11,7 @@ install=spampd.install
 source=("http://www.worlddesign.com/Content/rd/mta/$pkgname/$pkgname-$pkgver.tar.gz"
         spampd.service perl-5.18-fixes.patch)
 md5sums=('742c6f2cb75db54e59d044a8ee40445f'
-         '5bd4895da473e4e505956789de6b54d5'
+         'afc4f2c824bfbd1cc81db3e740f29078'
          '55ea1067be9e70c60b708d355b085a0a')
 
 prepare() {
