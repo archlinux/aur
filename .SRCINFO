@@ -1,15 +1,16 @@
 pkgbase = ruby-rack-test
 	pkgdesc = Simple testing API built on Rack
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/brynary/rack-test
 	arch = any
+	license = MIT
 	depends = ruby
 	depends = ruby-rack
 	noextract = rack-test-0.6.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rack-test-0.6.3.gem
-	sha512sums = a5ad0f20130eedc153515127d2483cb1322c230ab772307943ec6eb295706f3aab26c8599cba69323b3cdc5692b284ba0609d8db957ade7085a95d94ccdf8b41
+	sha256sums = ff60b122e2940e32e94a2e4a61bceb8d9c99a97c1817ecc47e535522b02cdd40
 
 pkgname = ruby-rack-test
 
