@@ -2,7 +2,7 @@
 
 pkgname=perl-class-returnvalue
 pkgver=0.55
-pkgrel=1
+pkgrel=2
 pkgdesc="A smart return value object"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Class-ReturnValue/"
@@ -13,31 +13,34 @@ sha256sums=('ed3836885d78f734ccd7a98550ec422a616df7c31310c1b7b1f6459f5fb0e4bd')
 depends=('perl-devel-stacktrace' )
 options=(!emptydirs)
 
-build() {
-  _dir=$(find $srcdir -maxdepth 2 -type f -name 'Makefile.PL')
-  if [ ! -z "$_dir" ]; then
-    cd $(dirname "$_dir")
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-    make  || return 1
-    make install DESTDIR="${pkgdir}" || return 1
-
-  else
-  _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
-  if [ ! -z "$_dir" ]; then
-    cd $(dirname "$_dir")
-    PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor || return 1
-    ./Build  || return 1
-    ./Build install destdir=${pkgdir} || return 1
-
-  else
-    echo "error: failed to detect build method for $pkgname"
-    echo "you may be able to fix this by editing the PKGBUILD"
-    return 1
-  fi fi
-
-  # remove perllocal.pod and .packlist
-  find ${pkgdir} -name perllocal.pod -delete
-  find ${pkgdir} -name .packlist -delete
+prepareEnvironment() {
+        cd "$srcdir/$_cpanname-$pkgver"
+        export \
+                PERL_MM_USE_DEFAULT=1 \
+                PERL_AUTOINSTALL=--skipdeps \
+                PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+                PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+                MODULEBUILDRC=/dev/null
 }
+
+build() {
+        prepareEnvironment
+        /usr/bin/perl Makefile.PL
+        make
+}
+
+check() {
+        prepareEnvironment
+        make test
+}
+
+package() {
+        prepareEnvironment
+        make install
+
+        # Remove "perllocal.pod" and ".packlist".
+        find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
 
 
