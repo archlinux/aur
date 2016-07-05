@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/tools/gnat-component-collection"
 license=('GPL')
 
-depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "gnat_util" "libgpr" "python2" "python2-pep8" "python2-jedi" "python2-gobject")
+depends=("gcc-ada" "xmlada" "gtkada" "gprbuild" "gnat_util" "libgpr" "python2" "python2-pycodestyle" "python2-jedi" "python2-gobject")
 makedepends=("nawk")
 
 source=(http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
