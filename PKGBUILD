@@ -1,13 +1,13 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=python-autopep8-git
-pkgver=1.2a0r2182.429bfd4
-pkgrel=2
+pkgver=2.0a0r2231.152dcbc
+pkgrel=1
 pkgdesc='Automatically formats Python code to conform to the PEP 8 style guide.'
 arch=('any')
 url='https://github.com/hhatto/autopep8'
 license=('MIT')
-depends=('python' 'pep8')
+depends=('python' 'python-pycodestyle')
 source=('git+https://github.com/hhatto/autopep8.git')
 sha256sums=('SKIP')
 makedepends=('git')
