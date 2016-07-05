@@ -1,16 +1,16 @@
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Barthalion <echo YXVyQGJwaW90cm93c2tpLnBsCg== | base64 -d>
-# Maintainer: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
+# Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=sandbox
-pkgver=2.6
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 pkgdesc="sandbox'd LD_PRELOAD hack"
 arch=('i686' 'x86_64')
 url='http://www.gentoo.org/'
 license=('GPL')
-depends=('glibc')
 source=(http://distfiles.gentoo.org/distfiles/$pkgname-$pkgver.tar.xz)
-md5sums=('83c63d4959c0ebe89685b83f4bbd9f23')
+md5sums=('0580e04f2f8ff6ce44a020ff47e011ac')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
