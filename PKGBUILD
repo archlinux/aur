@@ -4,7 +4,7 @@
 pkgdesc='Homegear plugin for Homematic BidCos communication'
 _gitname=('homegear-homematicbidcos')
 pkgname=('homegear-homematicbidcos-git')
-pkgver=0.6.0
+pkgver=0.6.138.96bda68
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,6 +15,8 @@ conflicts=('homegear-homematicbidcos')
 provides=('homegear-homematicbidcos')
 source=("git+https://github.com/Homegear/homegear-homematicbidcos")
 md5sums=('SKIP')
+
+backup=(etc/homegear/families/homematicbidcos.conf)
 
 pkgver() {
 	cd "$srcdir"/${_gitname}
