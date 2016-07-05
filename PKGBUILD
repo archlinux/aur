@@ -1,11 +1,12 @@
-# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
+# Maintainer: Carlos Solis <csolisr /at/ azkware /dot/ net>
+# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 # Contributor: Felix Hanley <felix /at/ seconddrawer /dot/ com /dot/ au>
-# Contributor: Carlos Solis <csolisr /at/ azkware /dot/ net>
+# Contributor: Gesina Schwalbe <gesina.schwalbe /at/ pheerai /dot/ de>
 
 pkgname=multimarkdown
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
@@ -28,23 +29,24 @@ prepare() {
 build() {
 	cd "$srcdir/multimarkdown"
 	make
+	cd "$srcdir/multimarkdown/build"
+	make
 }
 
 package() {
-	cd "$srcdir/multimarkdown/scripts"
-	mv ./markdown ./multimarkdown
+	cd "$srcdir/multimarkdown"
 
+	# install executable and helper scripts
 	install -dm755 "$pkgdir/usr/bin"
-	install -Dm755 multimarkdown \
-		mmd2tex \
-		mmd2pdf \
-		mmd2opml \
-		mmd2odf \
-		mmd2all \
+	install -Dm755 build/multimarkdown \
+		scripts/mmd2tex \
+		scripts/mmd2pdf \
+		scripts/mmd2opml \
+		scripts/mmd2odf \
+		scripts/mmd2all \
 		"$pkgdir/usr/bin/"
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	cd ..
 	cp -a submodules/documentation/* "$pkgdir/usr/share/doc/$pkgname"
 
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
