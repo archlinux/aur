@@ -1,0 +1,4 @@
+post_install() {
+	echo "  > Please read the Wiki for information on how to configure RT:"
+	echo "  > https://wiki.archlinux.org/index.php/Request_Tracker"
+}
