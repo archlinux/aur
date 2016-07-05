@@ -1,0 +1,28 @@
+pkgbase = legend-of-grimrock
+	pkgdesc = A 3D grid-based dungeon crawler inspired by classic 1980s and 1990s action role-playing games Dungeon Master, Eye of the Beholder and Ultima Underworld.
+	pkgver = 20130515
+	pkgrel = 1
+	url = http://www.grimrock.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = freeimage
+	depends = minizip
+	depends = sdl-hg
+	depends = libvorbis
+	depends = freetype2
+	depends = zlib
+	depends = openal
+	depends = libgl
+	depends = libx11
+	depends = libogg
+	depends = libxext
+	depends = desktop-file-utils
+	optdepends = libtxc_dxtn: For Mesa S3TC support.
+	source = local://LegendOfGrimrock-Linux-2013-05-15.sh
+	source = legend-of-grimrock.desktop
+	sha256sums = 005066be6ce12ba342e499369070113c6b66a9bea03c6ecb1e5fd0758eb0c39d
+	sha256sums = a989d2d0d896ec4adaf3d66e19050c519d9e58efc8d588a51ab0185283bf21fb
+
+pkgname = legend-of-grimrock
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Game;RolePlaying;
+Encoding=UTF-8
+Name=Legend of Grimrock
+Exec=/usr/bin/legend-of-grimrock
+Icon=/usr/share/legend-of-grimrock/grimrock.png
+Type=Application
