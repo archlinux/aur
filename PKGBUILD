@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RU/RUZ/Text-Quoted-$pkgver.tar.gz")
-md5sums=('6ae8d3aa3a54c5f05bcd0c2313ebfa4d')
+sha256sums=('05384b89e359cd1fc3ac6a632b5b5ddc0662d15627f75138d5910c5edbba7a51')
 
 build() {
 	cd "$srcdir/Text-Quoted-$pkgver"
