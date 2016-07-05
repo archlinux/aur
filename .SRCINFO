@@ -1,7 +1,7 @@
 pkgbase = multimarkdown
 	pkgdesc = A superset of Markdown with various output formats
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fletcherpenney.net/multimarkdown/
 	arch = i686
 	arch = x86_64
