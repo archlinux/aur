@@ -7,7 +7,7 @@ url='https://launchpad.net/qarte'
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=(http://ppa.launchpad.net/vincent-vandevyvre/vvv/ubuntu/pool/main/q/qarte/${pkgname}_${pkgver}.orig.tar.gz)
-depends=('python-pyqt5')
+depends=('qt5-translations' 'python-pyqt5')
 optdepends=('cronie: for differed download')
 md5sums=('5f84ef5b5e64a75ac90aab3cbf8a1e62')
 
