@@ -8,12 +8,12 @@ pkgdesc='A 3D grid-based dungeon crawler inspired by classic 1980s and 1990s act
 url='http://www.grimrock.net/'
 _pkgdate=2013-05-15
 pkgver=20130515
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(custom)
 PKGEXT=.pkg.tar
 depends=(
-  freeimage minizip sdl-hg libvorbis freetype2 zlib openal libgl libx11 libogg
+  freeimage minizip sdl libvorbis freetype2 zlib openal libgl libx11 libogg
   libxext desktop-file-utils
 )
 optdepends=('libtxc_dxtn: For Mesa S3TC support.')
