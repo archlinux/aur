@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=2.1.0.33
+Type=Application
+Name=Quest for Glory 1 (VGA)
+GenericName=Quest for Glory 1 (VGA)
+Comment=Quest for Glory 1 (VGA remake)
+Icon=/opt/gog/qfg1/goggame-1207661313.ico
+Exec=/opt/gog/qfg1/run-qfg1.sh
+Categories=Game;
+Path=/opt/gog/qfg1

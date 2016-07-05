@@ -1,0 +1,23 @@
+pkgbase = gog-qfg1
+	pkgdesc = Quest for Glory 1: So You Want to Be a Hero
+	pkgver = 2.1.0.33
+	pkgrel = 1
+	url = https://www.gog.com/game/quest_for_glory
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	depends = dosbox
+	depends = unionfs-fuse
+	source = local://setup_quest_for_glory_vga_2.1.0.33.exe
+	source = local://RESOURCE.CFG
+	source = local://gog-qfg1.desktop
+	source = local://run-qfg1.conf
+	source = local://run-qfg1.sh
+	sha256sums = 728aec4488c22aa43be8a362f9100b6fa63e14bf492aacb70d088199f4baf0f0
+	sha256sums = 81af12e1292b6ef70ea03a8dbfd42ee7ade79da36a7ebfa5765ed3baa4809a2d
+	sha256sums = 80baf0c3984902d4e7b3a1e4b1c76e3bf3fa1f7077de6c0c21b9ab1a406a85bc
+	sha256sums = 1fed72d017ec186e00bc386da0d1044b0088e4a09f6a6f725756cb79ff6529c3
+	sha256sums = 6324d9de9f8dc4a15211cbe3d0e4dfe58ae0bf47dbb29778c59928fe084eceb6
+
+pkgname = gog-qfg1
+
