@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 270309 2016-06-20 19:20:42Z andyrtr $
+# $Id: PKGBUILD 270948 2016-07-04 20:02:38Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
@@ -6,8 +6,8 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=47.0
-pkgrel=2
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -31,7 +31,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         mozilla-1245076.patch
         mozilla-1245076-1.patch
         no-libnotify.patch)
-sha256sums=('51936fcf86c5f84e7fdd377d07658a02a1c99d2ebdc3c8aae01d70f947331d12'
+sha256sums=('5ac36c3481dde80ef2e36237badef6cb8ec5fe7e3b5ac1728839477de0cc034c'
             '859c9d9793e9d21f2b97b2bece201c777542be6dacb6dfb113f6c230b30e8d51'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
