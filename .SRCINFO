@@ -1,0 +1,22 @@
+pkgbase = pofwjs
+	pkgdesc = A port forwarding tool implemented in Node.Js
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PeterCxy/pofw.js
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = npm
+	makedepends = coffee-script
+	depends = nodejs
+	depends = bash
+	backup = etc/pofwjs/config.json
+	source = https://github.com/PeterCxy/pofw.js/archive/1.0.0.tar.gz
+	source = pofwjs.service
+	source = config.json
+	md5sums = df8f2265b71ab048b9ea801c7b907e3c
+	md5sums = 689439125b8cb4266d6a939933b7989d
+	md5sums = edf8fc78149b537cd3d01b22cdb52941
+
+pkgname = pofwjs
+

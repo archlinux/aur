@@ -1,0 +1,14 @@
+[Unit]
+Description=A port-forwarding program
+After=network.target
+
+[Service]
+User=nobody
+Type=simple
+WorkingDirectory=/etc/pofwjs
+ExecStart=/usr/bin/pofwjs -c /etc/pofwjs/config.json
+KillSignal=SIGINT
+SuccessExitStatus=2
+
+[Install]
+WantedBy=multi-user.target

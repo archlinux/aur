@@ -1,0 +1,18 @@
+[
+  {
+    "from_protocol": "tcp",
+    "from_ip": "0.0.0.0",
+    "from_port": "3389",
+    "to_protocol": "tcp",
+    "to_ip": "10.0.0.1",
+    "to_port": "3389"
+  },
+  {
+    "from_protocol": "udp",
+    "from_ip": "0.0.0.0",
+    "from_port": "5353",
+    "to_protocol": "udp6",
+    "to_ip": "2001:4860:4860::8888",
+    "to_port": "53"
+  }
+]
