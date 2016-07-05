@@ -1,0 +1,23 @@
+pkgbase = shared-mime-info-git
+	pkgdesc = Freedesktop.org Shared MIME Info
+	pkgver = 1.6.r41.gc3430af
+	pkgrel = 1
+	url = http://freedesktop.org/Software/shared-mime-info
+	install = shared-mime-info.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = pkgconfig
+	depends = libxml2
+	depends = glib2
+	provides = shared-mime-info
+	conflicts = shared-mime-info
+	options = !makeflags
+	source = git+https://anongit.freedesktop.org/git/xdg/shared-mime-info.git
+	source = update-mime-database.hook
+	md5sums = SKIP
+	md5sums = fc48155d8fb2147b8fc72597e79936b4
+
+pkgname = shared-mime-info-git
+
