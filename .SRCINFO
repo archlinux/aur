@@ -1,17 +1,16 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera
 	pkgver = 16.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = xdg-utils
-	depends = dcraw
+	depends = libraw
 	depends = gtk3
 	depends = libchamplain
 	depends = perl-image-exiftool>=0.8.6
-	depends = desktop-file-utils
 	optdepends = mashup: for composing pages to print from within fotoxx
 	optdepends = brasero: for burning
 	options = !makeflags
