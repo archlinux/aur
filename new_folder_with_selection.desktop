@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,all/allfiles
+MimeType=Application/octet-stream;inode/directory
+Actions=NFFS
+
+[Desktop Action NFFS]
+Name=New Folder with Selection
+Icon=folder-download
+Exec=sh /usr/share/new_folder_with_selection/new_folder_with_selection.sh %U 
