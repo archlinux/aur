@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.5.0')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/$_cpanname-$pkgver.tar.gz")
-md5sums=('623d791f1b57c076e18e5090d0cb2aca')
+sha256sums=('3785171ceb78cc7671319a3a6d8ced9b190e097dfcd9b2a9ebc804cd1a282f96')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
