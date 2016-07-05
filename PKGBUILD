@@ -1,6 +1,8 @@
-# Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Veeti Paananen <veeti.paananen@rojekti.fi>
+
 pkgname=porg
-pkgver=0.8
+pkgver=0.10
 pkgrel=1
 pkgdesc="A program to aid management of software packages installed from source code"
 arch=('i686' 'x86_64')
@@ -8,7 +10,7 @@ url="http://porg.sourceforge.net/"
 license=('GPL')
 depends=('bash')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a3915768580658125572a6c68ff8cd7c927537bc26d02a8dc6294f6220e94e6b')
+sha256sums=('48f8433193f92097824ed7a72c4babafb29dc2ffe60e7df3635664f59f09cedd')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,4 +25,3 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 }
-

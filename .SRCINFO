@@ -1,14 +1,14 @@
 pkgbase = porg
 	pkgdesc = A program to aid management of software packages installed from source code
-	pkgver = 0.8
+	pkgver = 0.10
 	pkgrel = 1
 	url = http://porg.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = bash
-	source = http://downloads.sourceforge.net/porg/porg-0.8.tar.gz
-	sha256sums = a3915768580658125572a6c68ff8cd7c927537bc26d02a8dc6294f6220e94e6b
+	source = http://downloads.sourceforge.net/porg/porg-0.10.tar.gz
+	sha256sums = 48f8433193f92097824ed7a72c4babafb29dc2ffe60e7df3635664f59f09cedd
 
 pkgname = porg
 
