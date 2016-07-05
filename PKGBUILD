@@ -10,8 +10,7 @@ license=('GPL')
 depends=('dolphin')
 source=('new_folder_with_selection.desktop' 'new_folder_with_selection.sh')
 sha256sums=('b5c13fd2a196e1b0976dc2485774fefb32f1e39b1b84dc72f7bd849649697eb1'
-            '7ff641e263c93fa61809567861ab54de9091dc557d396d22ee0fa46988d7fe7e')
-
+            '95979e46ddd2b144da223aae01427c952baf37ff58dbc7b149884e02a1d489cc')
 package() {
 	mkdir -p ${pkgdir}/usr/share/kservices5/ServiceMenus/
 	mkdir -p ${pkgdir}/usr/share/new_folder_with_selection/	

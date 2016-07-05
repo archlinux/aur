@@ -1,21 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-SAVEIFS=$IFS
-IFS=$(echo -en "\n\b")
+dirname="$(kdialog \
+  --inputbox "Folder to be created" "New Folder" \
+  --title "Create New Folder with selection" \
+  --caption "Dolphin" --icon "dolphin" \
+  )" &&
 
-foldname=`kdialog --inputbox "Folder to be created" "New Folder" --title "Create New Folder with Selection" --caption "Dolphin" --icon "dolphin"`
+mkdir -p -- "$dirname" &&
 
-if [ $? = 0 ]; then
-	dir=`dirname $1`
-	mkdir "$dir"/"$foldname"
+mv --target-directory="$dirname" -- "$@" ||
 
-if [ $? = 1 ]; then
-	kdialog --error "Invalid Name"
-	else
-	for file in ${@} ; do
-	mv "$file" -t "$dir"/"$foldname"
-	done
-fi
-fi
-
-IFS=$SAVEIFS
+kdialog --error "Something went wrong"
