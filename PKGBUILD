@@ -14,7 +14,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'  'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 
-         'libvpx.so' 'libx264.so' 'libx265.so')
+         'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -56,6 +56,7 @@ build() {
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
     --enable-libopus \
+	--enable-libfdk-aac \
     --enable-libpulse \
     --enable-libschroedinger \
     --enable-libsoxr \
