@@ -3,7 +3,7 @@
 
 pkgname=stardict-full-rus-eng
 pkgver=2.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Large russian-english dictionary for Stardict"
 license=('GPL')
 optdepends=(
@@ -13,13 +13,13 @@ optdepends=(
 url='http://download.huzheng.org/ru/'
 source=("http://download.huzheng.org/ru/$pkgname-$pkgver.tar.bz2")
 md5sums=('91465d9fa5c469c088eb2e63a423f7bb')
-makedepends=('stardict-tools-git')
+makedepends=('stardict-tools-git' 'dictd')
 arch=(any)
 prepare() {
     msg2 "Repairing dictionary using stardict-repair from stardict-tools-git..."
     cd $srcdir/
     mkdir -p repaired
-    stardict-repair -q $pkgname-$pkgver/*.ifo -O repaired
+    stardict-repair --compress-dict -q $pkgname-$pkgver/*.ifo -O repaired
 }
 package() {
     mkdir -p $pkgdir/usr/share/stardict/dic/
