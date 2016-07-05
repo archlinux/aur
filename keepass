@@ -1,11 +1,29 @@
 #!/bin/sh
+
 export WINEPREFIX="$HOME/.keepass/wine"
 export WINEARCH=win32
 export WINEDEBUG=-all
 
+function setpath(){
+    # PathExt
+    keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+    valuename="PATHEXT"
+    value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
+    wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+    # Path
+    keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+    valuename="PATH"
+    value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
+    wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+}
+
+# First Run
 if [ ! -d "$WINEPREFIX" ] ; then
     mkdir -p `dirname $WINEPREFIX`
+    # Install dotnetfx
     wine "/usr/share/keepass/dotnetfx.exe" /c:"install.exe /q"
+    setpath
 fi
 
+# Start Keepass
 wine "/usr/share/keepass/KeePass.exe" "`winepath -w "$@"`"
