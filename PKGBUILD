@@ -1,6 +1,6 @@
 # Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=entr
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="Run arbitrary commands when files change"
 arch=('i686' 'x86_64')
@@ -8,10 +8,10 @@ url="http://entrproject.org/"
 license=('MIT')
 depends=('glibc')
 source=("https://bitbucket.org/eradman/entr/get/entr-$pkgver.tar.gz")
-sha256sums=('e3e455346bcaf1e9099547eb050fbf667a96610b34304e5513f90265a5976416')
+sha256sums=('a42746d81c548d7e557d500f93422b8ec9731d719309eb2601b8be69ae0dc8eb')
 
 # bad tar
-_srcdir='eradman-entr-697748046070'
+_srcdir='eradman-entr-c15b0be493fc'
 
 build() {
   cd "$srcdir/$_srcdir"
