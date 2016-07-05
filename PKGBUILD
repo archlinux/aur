@@ -3,7 +3,7 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.3+p104+g7f569f4
+pkgver=2.6.4+p0+gd80fe69
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
