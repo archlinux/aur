@@ -6,7 +6,7 @@
 
 _modpkver=2.9.1
 pkgname=nginx-mainline-modsecurity
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with ModSecurity module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -32,7 +32,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         https://www.modsecurity.org/tarball/$_modpkver/modsecurity-$_modpkver.tar.gz)
-md5sums=('0f3900165b11c417854535f3538913cb'
+md5sums=('9db11337a924a665ff68c1785bcf314e'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '0fa92b852abc857a20b9e24f83f814cf')
