@@ -2,7 +2,7 @@
 
 pkgname=perl-class-returnvalue
 pkgver=0.55
-pkgrel=2
+pkgrel=3
 pkgdesc="A smart return value object"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Class-ReturnValue/"
@@ -14,7 +14,7 @@ depends=('perl-devel-stacktrace' )
 options=(!emptydirs)
 
 prepareEnvironment() {
-        cd "$srcdir/$_cpanname-$pkgver"
+        cd "$srcdir/$pkgname-$pkgver"
         export \
                 PERL_MM_USE_DEFAULT=1 \
                 PERL_AUTOINSTALL=--skipdeps \
