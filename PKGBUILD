@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/gps"
 license=('GPL')
 
-depends=("gcc-ada" "clang" "xmlada" "gtkada" "gprbuild" "gnat_util" "python2" "python2-pep8" "python2-jedi" "python2-gobject" "gnatcoll")
+depends=("clang" "gnatcoll")
 makedepends=("nawk")
 
 source=(http://mirrors.cdn.adacore.com/art/573996dec7a447658e0affaa
