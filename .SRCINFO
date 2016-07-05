@@ -1,7 +1,7 @@
 pkgbase = terminess-powerline-font-git
 	pkgdesc = Terminess Powerline
 	pkgver = r100.a44abd0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/powerline/fonts
 	install = terminess-powerline-font-git.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = terminess-powerline-font-git
 	makedepends = git
 	depends = fontconfig
 	depends = xorg-font-utils
-	conflicts = powerline-fonts
 	conflicts = powerline-fonts-git
 	source = git+https://github.com/powerline/fonts.git
 	md5sums = SKIP

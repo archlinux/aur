@@ -1,14 +1,14 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=terminess-powerline-font-git
 pkgver=r100.a44abd0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminess Powerline"
 arch=('any')
 url='https://github.com/powerline/fonts'
 license=('custom:SIL Open Font License, Version 1.1')
 depends=(fontconfig xorg-font-utils )
 makedepends=('git')
-conflicts=(powerline-fonts powerline-fonts-git)
+conflicts=(powerline-fonts-git)
 install=$pkgname.install
 source=('git+https://github.com/powerline/fonts.git')
 md5sums=('SKIP')
