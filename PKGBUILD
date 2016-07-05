@@ -3,7 +3,7 @@
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
-pkgver=0.13.9
+pkgver=0.13.10
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
@@ -19,7 +19,7 @@ source=(
   "$pkgname.tmpfiles.conf"
 )
 sha512sums=(
-  '07939eb068b417a8dc0ad4a868e5b5fd22ff14297e0b77d0d08fc14631d3ffe957da3ad4a745a4f37bae4a3bed8ac98a859037273b040a8abc88f7d5a67dc871'
+  '199c38644a7e5d43777ca2e497d5304d8e77485d21aeed9a00efc74dd98bfb0c473dd0bf3230b8e1e9742315915419f198bb8d0a9b294d2f6fe918b6e0175812'
   'b2a8daa48be57ad47542569473128c8590d4bbe124de0912ce5b3de7deb1b54dd0d3ed66e925fc11addded075d24d6a1fe822d71338d128b7ca03fd43c082d8c'
   '28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27'
 )
