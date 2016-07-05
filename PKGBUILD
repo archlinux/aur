@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-cvs
-pkgver=0.9.22.20160614
+pkgver=0.9.22.20160704
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Tux Paint is a free drawing program designed for young children."
