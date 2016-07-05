@@ -1,6 +1,6 @@
 pkgbase = opencpn
 	pkgdesc = Open Source Chart Plotting / Marine Navigation
-	pkgver = 4.2.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://opencpn.org
 	install = opencpn.install
@@ -13,8 +13,8 @@ pkgbase = opencpn
 	depends = portaudio
 	depends = tinyxml
 	depends = hicolor-icon-theme
-	source = https://github.com/OpenCPN/OpenCPN/archive/v4.2.0.tar.gz
-	sha1sums = cde4552bc0f539eebc8c03570dc637b349d00812
+	source = https://github.com/OpenCPN/OpenCPN/archive/v4.4.0.tar.gz
+	sha1sums = 27f2b0e71376406217172332ac7bd0fc87e85475
 
 pkgname = opencpn
 
