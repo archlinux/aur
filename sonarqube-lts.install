@@ -1,13 +1,22 @@
 #!/usr/bin/env sh
 # vim:set ts=4 sw=4 et:
 
+username="sonarqube"
+
 post_install() {
-    local username="sonarqube"
-    if ! getent passwd "$username" &>/dev/null; then
-        groupadd -g 123 "$username"
-        useradd -c 'User to manage the SonarQube code analysis platform' -u 123 -g "$username" -d "/var/lib/$username" -s /bin/false "$username"
-        passwd -l "$username" &>/dev/null
-    fi
-    chown -R "$username:$username" /etc/sonarqube /run/sonarqube /usr/share/sonarqube /var/log/sonarqube
+    systemd-sysusers "${username}.conf"
+    systemd-tmpfiles --create "${username}.conf"
+    chown -R "$username:$username" /etc/$username /run/$username /usr/share/$username /var/log/$username
 }
 
+
+post_upgrade(){
+    getent passwd "${username}" >/dev/null 2>&1 || systemd-sysusers "${username}.conf"
+    systemd-tmpfiles --create sonarqube.conf
+
+    if [ "$(vercmp $2 5.6)" -lt 0 ]; then
+        echo " >> "
+        echo " >> Major version update from 4.5.7 to 5.6. Please take a look at http://www.sonarqube.org/downloads/ for more information."
+        echo " >> "
+    fi
+}
