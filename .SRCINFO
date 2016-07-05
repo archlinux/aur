@@ -1,0 +1,15 @@
+pkgbase = ruby-shoes
+	pkgdesc = The best little GUI toolkit for Ruby
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://github.com/shoes/shoes
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = shoes-3.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/shoes-3.0.1.gem
+	sha1sums = 61a92fc933e1d8335bfd65dcc46a3198ed5803a9
+
+pkgname = ruby-shoes
+
