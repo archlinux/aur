@@ -1,16 +1,16 @@
-# $Id: PKGBUILD 249854 2015-10-29 13:12:08Z tpowa $
+# $Id: PKGBUILD 267890 2016-05-12 16:05:36Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Tony Lambiris <tony@critialstack.com>
 
-pkgbase=linux-macbook               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.2
-pkgver=4.2.5
-pkgrel=1
+pkgbase=linux-macbook       # Build kernel with a different name
+_srcname=linux-4.6
+pkgver=4.6.3
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -19,19 +19,25 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        'bluetooth.patch'
-        'change-default-console-loglevel.patch')
+        'linux-macbook.preset'
+        'apple-gmux.patch'
+        'macbook-suspend.patch'
+        'intel-pstate-backport.patch'
+        'change-default-console-loglevel.patch'
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch')
 
-sha256sums=('cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'b631eb4e8b4911b31111b0838e00f7c4a1b7689abcd2233609831b638493f4fb'
+            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
             'SKIP'
-            'e6f6f804f98ad321ce3e4395924993b51decb89699fde369391ccbb4bae928b2'
-            '6f2cf8449aeda3473e0577ef13e8cd7b0bd2fc2dee8d6d830eeb73e485279f2d'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'dcbed1ae73c4e1383210bad6f1f446bdd13f8b1c24d89bcf0483acc5e178c379'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '5b31f30dc031aa964e7a45a476d479a9f72044729148bb6dd855e958c0fad3b6'
+            '4ffdc4f4e1cccc73312a32c2a700c9197723901f242a11d69f15f1abf582d7ce'
+            'eeb4a578e4ec4babc279084b224e44f85dd7b654f970df14c01e2372d07decb3'
+            'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
+            '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
+            'dc0b1eed205118261f3894750cab4ed5a13c8d5e8132c623890efd11976e9326'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,12 +54,18 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  patch -p1 -i "${srcdir}/bluetooth.patch"
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
+
+  patch -p1 -i "${srcdir}/apple-gmux.patch"
+  patch -p1 -i "${srcdir}/macbook-suspend.patch"
+  patch -p1 -i "${srcdir}/intel-pstate-backport.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -94,12 +106,12 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules (with brightness key and suspend patches)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux.install
+  install=linux-macbook.install
 
   cd "${srcdir}/${_srcname}"
 
@@ -123,7 +135,7 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux-macbook.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
@@ -149,11 +161,11 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -250,6 +262,12 @@ _package-headers() {
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
 
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+  fi
+
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
@@ -267,10 +285,15 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel, with patches for 11,4 and 12,1 Macbook pros (2015)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
 
   cd "${srcdir}/${_srcname}"
 

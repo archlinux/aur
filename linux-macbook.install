@@ -1,8 +1,24 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=
+KERNEL_NAME=-macbook-pro
 KERNEL_VERSION=
+
+display_requirements () {
+cat <<-EOF
+
+	To get suspend working properly you must do the following:
+
+	Add disable_mode=1 to your kernel boot options.
+	In my case I use grub so I appended this to GRUB_CMDLINE_LINUX
+	in /etc/default/grub and then ran the following command as root:
+	grub-mkconfig -o /boot/grub/grub.cfg
+
+	Create /etc/tmpfiles.d/wakeup.conf with the contents:
+	w /proc/acpi/wakeup - - - - LID0
+
+EOF
+}
 
 post_install () {
   # updating module dependencies
@@ -10,6 +26,8 @@ post_install () {
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
+
+  display_requirements
 }
 
 post_upgrade() {
@@ -28,6 +46,8 @@ post_upgrade() {
     echo ">>>          In order to use your keyboard during early init, you MUST"
     echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
   fi
+
+  display_requirements
 }
 
 post_remove() {
