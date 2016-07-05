@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Trine 3
+Comment=action role-playing platform and puzzle video game
+Path=/usr/bin
+Exec=trine3
+Icon=
+Terminal=false
+Categories=Game;
