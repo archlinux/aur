@@ -1,6 +1,6 @@
 pkgbase = python-pgspecial
 	pkgdesc = Meta-commands handler for Postgres Database.
-	pkgver = 1.3.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/dbcli/pgspecial
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pgspecial
 	depends = python
 	provides = python-pgspecial
 	options = !emptydirs
-	source = python-pgspecial-1.3.0.zip::https://github.com/dbcli/pgspecial/archive/v1.3.0.zip
-	md5sums = f12cff74a1bced25dc30b39383eee877
+	source = python-pgspecial-1.5.0.zip::https://github.com/dbcli/pgspecial/archive/v1.5.0.zip
+	md5sums = 5c12c6e57f4d7a20107dcd11ae22f017
 
 pkgname = python-pgspecial
 

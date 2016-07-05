@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 _pkgmain=pgspecial
 pkgname=python-$_pkgmain
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Meta-commands handler for Postgres Database."
 arch=('any')
@@ -19,4 +19,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('f12cff74a1bced25dc30b39383eee877')
+md5sums=('5c12c6e57f4d7a20107dcd11ae22f017')
