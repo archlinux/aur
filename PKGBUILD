@@ -21,7 +21,7 @@ _clang_completer=y
 _clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
-pkgver=r1819.0de1c0c
+pkgver=r1821.c4a410b
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -98,6 +98,10 @@ prepare() {
 
 	if [ "${_search_system_completers}" == 'y' ]; then
 		patch -p1 -i "${srcdir}/system_completers.patch"
+	else
+		echo '[1;33mNote:[0m'
+		echo '  YouCompleteMe will be built with basic completion.'
+		echo '  If you want semantic completion, you need to turn on _search_system_completers in the PKGBUILD.'
 	fi
 
 	if [ "${_clang_completer}" == 'y' -a "${_clang_completer_system_libclang}" != 'y' ]; then
