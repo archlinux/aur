@@ -1,6 +1,7 @@
 # Maintainer: Ruben Kelevra <ruben@vfn-nrw.de>
 
 pkgname=perl-class-returnvalue
+_cpanname="Class-ReturnValue"
 pkgver=0.55
 pkgrel=3
 pkgdesc="A smart return value object"
@@ -14,7 +15,7 @@ depends=('perl-devel-stacktrace' )
 options=(!emptydirs)
 
 prepareEnvironment() {
-        cd "$srcdir/$pkgname"
+	cd "$srcdir/$_cpanname-$pkgver"
         export \
                 PERL_MM_USE_DEFAULT=1 \
                 PERL_AUTOINSTALL=--skipdeps \
