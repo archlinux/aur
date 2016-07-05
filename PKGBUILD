@@ -7,7 +7,7 @@ pkgver=3.2.r80913.gce466d0
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('GPL3' 'Non-free')
 url="http://ffmpeg.org/"
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug' 'libpulse' 
