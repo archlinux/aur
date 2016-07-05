@@ -1,7 +1,7 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
 arch=('i686' 'x86_64')
