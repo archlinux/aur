@@ -2,7 +2,7 @@
 
 pkgname=qownnotes
 pkgver=16.07.2
-tag="ea17d71d3f980d3985dae5a44d45d5f08851176d"
+tag="816de6223aba1517885096a672c652ac1a3864a6"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64' 'armv7l')
@@ -33,7 +33,7 @@ package() {
 
     # install visuals
     install -D -m644 QOwnNotes.desktop "${pkgdir}/usr/share/applications/QOwnNotes.desktop"
-    install -D -m644 "images/icons/128x128/QOwnNotes.png" "${pkgdir}/usr/share/pixmaps/QOwnNotes.png"
+    install -D -m644 "images/icons/128x128/apps/QOwnNotes.png" "${pkgdir}/usr/share/pixmaps/QOwnNotes.png"
     for format in {16x16,24x24,32x32,48x48,64x64,96x96,128x128,256x256,512x512}; do
         install -D -m644 "images/icons/${format}/apps/QOwnNotes.png" "${pkgdir}/usr/share/icons/hicolor/$format/apps/QOwnNotes.png"
     done
