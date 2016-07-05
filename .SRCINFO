@@ -1,15 +1,15 @@
 pkgbase = ruby-tilt
 	pkgdesc = Generic interface to multiple Ruby template engines
-	pkgver = 2.0.2
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/rtomayko/tilt/
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = tilt-2.0.2.gem
+	noextract = tilt-2.0.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tilt-2.0.2.gem
-	sha1sums = 1a375a60049215d6c63040940ab33f6893c7f000
+	source = https://rubygems.org/downloads/tilt-2.0.5.gem
+	sha256sums = 0ec3e46ff4dcbabe0e90af1e92786b3c88312ebca55816b04f2511d1dd42f351
 
 pkgname = ruby-tilt
 
