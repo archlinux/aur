@@ -3,21 +3,21 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.6.5
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
 url='https://userbase.kde.org/KSysGuard'
 license=('LGPL')
-depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils'
-         'hicolor-icon-theme' 'kdelibs4support')
-makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'kdesignerplugin')
+depends=('knewstuff' 'libksysguard' 'lm_sensors' 'hicolor-icon-theme')
+makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('589644d5a9ba6040c38bf21a942cfbcb5cfe1254d6e09563dea7bca225c2244a'
+sha256sums=('32d346bb6a31f5bc2deac92f85c4b2f809d1aede8653ee1e14b2f867a6d47324'
             'SKIP')
-validpgpkeys=('13C16D03EDE728514473AA73A506E6D4DD4D5088') # Jonathan Riddell
+validpgpkeys=('13C16D03EDE728514473AA73A506E6D4DD4D5088'  # Jonathan Riddell
+              'D07BD8662C56CB291B316EB2F5675605C74E02CF') # David Edmundson
 
 prepare() {
   mkdir -p build
