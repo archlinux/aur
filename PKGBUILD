@@ -1,7 +1,7 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur@gmail.com>
 
 pkgname=mpdas
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="An AudioScrobbler client for MPD written in C++."
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ backup=('etc/mpdasrc')
 install=mpdas.install
 source=("https://github.com/hrkfdn/${pkgname}/archive/${pkgver}.tar.gz"
         'mpdas.service')
-sha256sums=('f790be8e85c0d1324d7346b5b0fa3713db8db7fd4ea304c5c8d2921bf3855014'
+sha256sums=('8ebdd0518cbdb033fc0578c9ea894d4670de1d67bf2541418cb5f7ac1210db6f'
             '0a98de8f69da7cb34dcc4747d4d1bb015d6065779103db724a309b400c3cccb8')
 
 prepare() {
