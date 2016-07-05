@@ -56,7 +56,7 @@ build() {
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
     --enable-libopus \
-	--enable-libfdk-aac \
+    --enable-libfdk-aac \
     --enable-libpulse \
     --enable-libschroedinger \
     --enable-libsoxr \
