@@ -1,7 +1,7 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=lostfiles
-pkgver=3.21
+pkgver=3.22
 pkgrel=1
 pkgdesc='Find orphaned files not owned by any Arch packages'
 arch=('any')
