@@ -22,7 +22,6 @@ build(){
 	cd $_pkgid
 	autoreconf -i
 	./configure --prefix=/usr
-	# make CFLAGS+="-O3 -march=native" ${MAKEFLAGS}
   make ${MAKEFLAGS}
 }
 
