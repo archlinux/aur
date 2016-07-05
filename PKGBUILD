@@ -1,33 +1,36 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Gustavo Alvarez Lopez <sl1pkn07@gmail.com>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Score_Under <seejay.11@gmail.com>
 
 pkgname=xnp2
-pkgver=20140607
-pkgrel=2
+pkgver=0.86
+pkgrel=1
 pkgdesc="X Neko Project II, a PC-9801 emulator"
 arch=('i686' 'x86_64')
-url="http://www.nonakap.org/np2/"
+url='http://www.nonakap.org/np2'
 license=('BSD')
-depends=('gtk2' 'sdl_mixer')
-source=("http://www.nonakap.org/np2/${pkgname}-${pkgver}.tar.bz2"
-        "fix-alignment.patch")
-md5sums=('4e2e01bc75479ef196b0056a78d31bd6'
-         '8aa797282e965289d59b1ca0c7160435')
+depends=('gtk2'
+         'sdl2_mixer'
+         )
+source=("http://www.nonakap.org/np2/release/xnp2-${pkgver}.tar.bz2"
+        'patch.patch')
+sha1sums=('02ade03afe672cc18068e75374eecc26ec53e32e'
+          'f0056b23ae5fdc2b435f16a4879e495c45807375')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p0 < ../fix-alignment.patch
+  cd "xnp2-${pkgver}"
+  patch -p1 -i "${srcdir}/patch.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/x11"
-  ./configure --prefix=/usr --enable-ia32
-  make
+  cd "xnp2-${pkgver}/x11"
+  ./configure \
+    --prefix=/usr \
+    --enable-build-all \
+    #--enable-gtk3
+  LC_ALL=C make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/x11"
-  make DESTDIR="$pkgdir/" install
+  make -C "xnp2-${pkgver}/x11" DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sts=2 sw=2 et:
