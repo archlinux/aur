@@ -4,8 +4,8 @@
 
 pkgname=prog-express
 pkgver=3.7.8
-pkgrel=1
-pkgdesc="Prog-Express is a modern, intuitive and free control software for the Batronix USB programming devices"
+pkgrel=2
+pkgdesc="Prog-Express is a control software for the Batronix USB programming devices to program FLASH/PROM/EPROM/EEPROM chips"
 arch=('i686' 'x86_64')
 url="http://www.batronix.com/"
 license=('custom:Freeware')
