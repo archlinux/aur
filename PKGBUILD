@@ -4,85 +4,85 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
-pkgver=4.14.0
-pkgrel=7
+_pkgver=5.0.0
+pkgver=${_pkgver//-/_}
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-makedepends=('kdepimlibs4' 'libkexiv2_4' 'libkdcraw4' 'libkipi4' 'libksane4' 'liblqr'
-             'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
-             'cmake' 'automoc4' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 
-	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface4' 'libkgeomap4' 'libmediawiki')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-	lensfun-0.3.2.patch::"https://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=0f15998&o=plain")
-sha1sums=('08bbded5433e442dce8ac00eb301606ef0924e8c'
-          'b2e262ea5060ad5ffd7d92d41a9badcea6e6c299')
+makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost' 'grantlee-qt5'
+             'libgpod' 'hugin' 'opencv' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 'libusb' 'kio' 'kdoctools' 'marble'
+             'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'kdesignerplugin' 'threadweaver' 'kcalcore'
+             'knotifyconfig' 'kdelibs4support' 'qt5-xmlpatterns' 'libmediawiki' 'libkvkontakte' 'kqoauth')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
+sha1sums=('e0dec2eba9ab3a51d632b69b3dd6daf8dca64a45')
 
 prepare() {
-# Fix build with lensfun 0.3.2
-  cd $pkgbase-$pkgver/core
-  patch -p1 -i "$srcdir"/lensfun-0.3.2.patch
+  mkdir -p build
+
+# Build fails
+  sed -e '/add_subdirectory(showfoto)/d' -i $pkgname-${_pkgver}/doc-translated/digikam/CMakeLists.txt
 }
 
 build() {
-  mkdir build
   cd build
-  cmake ../${pkgname}-${pkgver} \
+
+  cmake ../${pkgname}-${_pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DBUILD_tests=OFF \
+    -DBUILD_TESTING=OFF \
+    -DENABLE_KFILEMETADATASUPPORT=ON \
+    -DENABLE_MEDIAPLAYER=ON \
+    -DENABLE_AKONADICONTACTSUPPORT=ON \
+    -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_OPENCV3=ON
   make
 }
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('kdebase-runtime' 'libgphoto2' 'opencv' 'liblqr'
-           'libkipi4' 'libkexiv2_4' 'libkdcraw4' 'libkface4' 'libkgeomap4' 'lensfun' 
-	   'libpgf' 'libbaloo4')
+  depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contact'
+	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: more tools and plugins')
 
   cd build/core
-  make DESTDIR="${pkgdir}" install
-  cd ../../build/doc/digikam/digikam
-  make DESTDIR="${pkgdir}" install
-  cd ../showfoto
-  make DESTDIR="${pkgdir}" install
-  cd ../../../../build/po
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
+  cd $srcdir/build/doc/digikam
+  make DESTDIR="$pkgdir" install
+  cd $srcdir/build/doc-translated/digikam
+  make DESTDIR="$pkgdir" install
+  cd $srcdir/build/po
+  make DESTDIR="$pkgdir" install
 
-  # Put these in the relevant splitted packages
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/kipiplugin*.mo
-  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
-  # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
+# Provided by kipi-plugins
+  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kipiplugin*,libkvkontakte}.mo
 }
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kdebase-runtime' 'libkdcraw4' 'libkipi4' 'libksane4' 'libkexiv2_4')
-  optdepends=('libkgeomap4: Geolocalize tool'
-              'libmediawiki: MediaWiki Export plugin'
+  depends=('kio' 'libkipi')
+  optdepends=('libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin'
               'libgpod: iPodExport plugin'
               'opencv: Remove Red Eyes plugin'
               'imagemagick: Video SlideShow plugin'
-	      'hugin: panorama tools')
-  options=('staticlibs')
+              'qt5-gstreamer: Video SlideShow plugin'
+              'threadweaver: panorama plugin'
+	      'hugin: panorama plugin'
+              'kqoauth: OAuth authentication for imgur')
 
-  cd build/extra/kipi-plugins
-  make DESTDIR="${pkgdir}" install
+  cd build/extra
+  make DESTDIR="$pkgdir" install
+  cd $srcdir/build/doc/kipi-plugins
+  make DESTDIR="$pkgdir" install
+  cd $srcdir/build/doc-translated/kipi-plugins
+  make DESTDIR="pkgdir" install
+  cd $srcdir/build/po
+  make DESTDIR="$pkgdir" install
 
-  cd ../../../build/po
-  make DESTDIR="${pkgdir}" install
-  # Put these in the relevant splitted packages
-  #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap.mo
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/digikam.mo
-  # Fix conflicts with kde-l10n-* (FS#33762)
-  rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-
-  cd ../../build/doc/kipi-plugins
-  make DESTDIR="${pkgdir}" install
+# Provided by digikam
+  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/digikam.mo
 }
