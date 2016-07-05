@@ -1,7 +1,7 @@
 pkgbase = racer-nocg-car-69-chevrolet-camaro-z28
 	pkgdesc = 1969 Chevrolet Camaro Z/28 car model for Racer (CG version) by Cosmo°
 	pkgver = 2013
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.racedepartment.com/threads/chevrolet-camaro-z-28-1969.29105/
 	arch = any
 	license = custom
