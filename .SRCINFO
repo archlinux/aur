@@ -1,0 +1,27 @@
+pkgbase = python-owslib-git
+	pkgver = 0.11_dev
+	pkgrel = 1
+	url = http://geopython.github.io/OWSLib
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python2-pip
+	source = git://github.com/geopython/OWSLib.git
+	sha256sums = SKIP
+
+pkgname = python-owslib-git
+	pkgdesc = Python package for client programming with Open Geospatial Consortium (OGC) web service interface standards, and their related content models
+	depends = python-dateutil
+	depends = python-pytz
+	depends = python-requests
+	depends = python-pyproj
+	conflicts = python-owslib
+
+pkgname = python2-owslib-git
+	pkgdesc = Python2 package for client programming with Open Geospatial Consortium (OGC) web service interface standards, and their related content models
+	depends = python2-dateutil
+	depends = python2-pytz
+	depends = python2-requests
+	depends = python2-pyproj
+	conflicts = python2-owslib
+
