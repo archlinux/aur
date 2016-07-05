@@ -1,7 +1,7 @@
 pkgbase = legend-of-grimrock
 	pkgdesc = A 3D grid-based dungeon crawler inspired by classic 1980s and 1990s action role-playing games Dungeon Master, Eye of the Beholder and Ultima Underworld.
 	pkgver = 20130515
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.grimrock.net/
 	arch = i686
 	arch = x86_64

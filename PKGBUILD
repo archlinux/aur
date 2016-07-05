@@ -8,7 +8,7 @@ pkgdesc='A 3D grid-based dungeon crawler inspired by classic 1980s and 1990s act
 url='http://www.grimrock.net/'
 _pkgdate=2013-05-15
 pkgver=20130515
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(custom)
 PKGEXT=.pkg.tar
@@ -18,7 +18,7 @@ depends=(
 )
 optdepends=('libtxc_dxtn: For Mesa S3TC support.')
 source=(
-  "local://LegendOfGrimrock-Linux-$_pkgdate.sh"
+  local://LegendOfGrimrock-Linux-$_pkgdate.sh
   $pkgname.desktop
 )
 
@@ -28,7 +28,7 @@ source=(
 }
 
 package() {
-  sh ${source[0]//::/} --tar xf
+  sh ${source[0]//"local://"/} --tar xf
 
   _target=$pkgdir/usr/share/$pkgname
 
