@@ -14,7 +14,7 @@ replaces=('perlio-eol')
 depends=('perl')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/A/AU/AUDREYT/PerlIO-eol-$pkgver.tar.gz")
-md5sums=('55c5d3fafab00a511ff1c2722060235c')
+sha256sums=('423b8006d80c7a4385ce4144cd3949abe1c31ac5ed7deb40dbdbc972400692e7')
 
 build() {
 	cd "$srcdir/PerlIO-eol-$pkgver"
