@@ -13,7 +13,7 @@ md5sums=('36c589d083ebf931b1af8538ef37d072')
 
 package() {
     cd gplaycli-$pkgver
+    find . -name "*.py" -exec sed -i 's$#!/usr/bin/python$#!/usr/bin/python2$' {} \;
+    find . -name "*.py" -exec sed -i 's$#!/usr/bin/env python$#!/usr/bin/env python2$' {} \;
     python2 setup.py install --root="$pkgdir/" --optimize=1
-    sed -i 's$#!/usr/bin/env python$#!/usr/bin/env python2$' $pkgdir/usr//lib/python2.7/site-packages/ext_libs/androguard/core/bytecodes/libdvm/test_dvm.py
-    sed -i 's$#!/usr/bin/python$#!/usr/bin/python2$' $pkgdir/usr//lib/python2.7/site-packages/ext_libs/googleplay_api/googleplay.py
 }
