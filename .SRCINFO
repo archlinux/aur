@@ -1,0 +1,25 @@
+pkgbase = python-debian-git
+	pkgdesc = Python modules to work with Debian-related data formats
+	pkgver = 0.1.28
+	pkgrel = 1
+	url = http://packages.debian.org/sid/python-debian
+	arch = any
+	license = GPL
+	makedepends = python-pip
+	makedepends = python2-pip
+	options = !emptydirs
+	source = git://anonscm.debian.org/pkg-python-debian/python-debian.git
+	sha256sums = SKIP
+
+pkgname = python-debian-git
+	depends = python-chardet
+	depends = python-six
+	optdepends = python-apt: interface to libapt-pkg
+	conflicts = python-debian
+
+pkgname = python2-debian-git
+	depends = python2-chardet
+	depends = python2-six
+	optdepends = python2-apt: interface to libapt-pkg
+	conflicts = python2-debian
+
