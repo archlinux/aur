@@ -3,7 +3,7 @@
 
 pkgname=stardict-full-eng-rus
 pkgver=2.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Large english-russian dictionary for Stardict"
 license=('GPL')
 optdepends=(
@@ -19,7 +19,7 @@ arch=(any)
 prepare() {
     msg "Repairing dictionary using stardict-repair from stardict-tools-git..."
     cd $srcdir/
-    mkdir repaired
+    mkdir -p repaired
     stardict-repair -q $pkgname-$pkgver/*.ifo -O repaired
 }
 package() {
