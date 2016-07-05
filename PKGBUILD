@@ -1,7 +1,7 @@
 # Maintainer: gilzoide <gilzoide@gmail.com>
 
 pkgname=lap-git
-pkgver=r14.6af1ab9
+pkgver=r19.148013a
 pkgrel=1
 pkgdesc="A functional style C++11 library for parsing command line arguments"
 arch=('i686' 'x86_64')
