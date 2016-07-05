@@ -1,0 +1,22 @@
+pkgbase = aseman-qt-tools-git
+	pkgdesc = the shared tools and functions used in the aseman's projects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://launchpad.net/libqtelegram
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-multimedia
+	depends = qt5-location
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-sensors
+	depends = qtkeychain
+	conflicts = aseman-qt-tools
+	source = aseman-qt-tools::git+https://github.com/Aseman-Land/aseman-qt-tools.git
+	md5sums = SKIP
+
+pkgname = aseman-qt-tools-git
+
