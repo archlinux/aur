@@ -1,0 +1,22 @@
+pkgbase = brother-mfc-250c
+	pkgdesc = LPR and CUPS driver for the Brother MFC-250c
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-250c.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc250clpr-1.1.2-2.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc250ccupswrapper-1.1.2-2.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 154cec370113400e1485900a91c0924f
+	md5sums = 45e8867bd4f2b6cf7661ce5a9a7ad7a3
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-mfc-250c
+
