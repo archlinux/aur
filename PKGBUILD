@@ -22,7 +22,7 @@ _clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
 pkgver=r1821.c4a410b
-pkgrel=1
+pkgrel=2
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='http://valloric.github.com/YouCompleteMe/'
@@ -55,7 +55,7 @@ fi
 
 if [ "${_search_system_completers}" == 'y' ]; then
 	source+=('system_completers.patch')
-	sha256sums+=('fde169f2a96aceb11172603d9c56254879177cb268ed8c05fb1117ead636468a')
+	sha256sums+=('3f328dad9cac09798dfc2586d47e6bd835a8c118d364c674fd368d335b932df8')
 	optdepends+=(
 		'gocode-git: Go semantic completion'
 		'godef-git: Go semantic completion'
