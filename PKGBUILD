@@ -2,9 +2,9 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=hashcat-git
-pkgver=3.00.1210.30919d4
+pkgver=3.00.1214.69e3e39
 pkgrel=1
-pkgdesc='A multithreaded cross platform hash cracker'
+pkgdesc='Multithreaded advanced password recovery utility'
 url='https://hashcat.net/hashcat'
 arch=('i686' 'x86_64')
 depends=('gmp' 'libcl')
@@ -15,10 +15,8 @@ makedepends=('git' 'opencl-headers')
 license=('MIT')
 provides=('hashcat')
 conflicts=('hashcat')
-source=(${pkgname}::git+https://github.com/hashcat/hashcat
-        makefile.patch)
-sha512sums=('SKIP'
-            'be389cce5f325437b965c755819c09d6b997c534caebd74a947659f8d950e9b3cee365c993928c5522188e53412156eb64218dd844952125de96e7b764716a7d')
+source=(${pkgname}::git+https://github.com/hashcat/hashcat)
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -26,11 +24,6 @@ pkgver() {
     "$(git describe --tags --abbrev=0|sed -r 's|v?(.+)|\1|'|tr '-' '.')" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgname}
-  patch -p1 < "${srcdir}/makefile.patch"
 }
 
 build() {
