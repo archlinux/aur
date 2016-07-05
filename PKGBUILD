@@ -1,7 +1,7 @@
 # Maintainer: White-Oak <lpzhelud@gmail.com>
 pkgname=servo-latest
 pkgver=r20160705
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
 url="https://servo-builds.s3.amazonaws.com/index.html"
