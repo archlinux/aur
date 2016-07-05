@@ -1,7 +1,7 @@
 pkgbase = sdfs
 	pkgdesc = Deduplication file system from Opendedup
 	pkgver = 3.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opendedup.org
 	arch = x86_64
 	license = GPL2
@@ -10,9 +10,7 @@ pkgbase = sdfs
 	depends = fuse
 	source = https://github.com/opendedup/sdfs/archive/3.1.7.zip
 	source = mount.patch
-	source = mkfs.patch
 	md5sums = cdc1af3868c8a2660e16796fcee6f636
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = sdfs
