@@ -4,13 +4,13 @@
 
 pkgname=sam2p
 pkgver=0.49.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
 license=('GPL2')
 depends=('gcc-libs')
-makedepends=('imake')
+#makedepends=('imake')
 optdepends=('ghostscript: PS, EPS, PDF support'
 'libjpeg: JPEG support'
 'tif22pnm: for tiff and png support')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix="$pkgdir"/usr --enable-lzw --enable-gif
+  CXX="g++ --std=c++98" ./configure --prefix="$pkgdir"/usr --enable-lzw --enable-gif
   make all
 }
 

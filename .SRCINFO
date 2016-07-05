@@ -1,12 +1,11 @@
 pkgbase = sam2p
 	pkgdesc = A bitmap-to-eps-or-pdf-converter that produces very small files
 	pkgver = 0.49.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.inf.bme.hu/~pts
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = imake
 	depends = gcc-libs
 	optdepends = ghostscript: PS, EPS, PDF support
 	optdepends = libjpeg: JPEG support
