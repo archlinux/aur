@@ -3,7 +3,7 @@
 _pkgname="xournalpp"
 pkgname="${_pkgname}-git"
 
-pkgver=1.0.0.317.g283273c
+pkgver=1.0.0.328.gbb3c205
 pkgrel=1
 pkgdesc="C++ re-write of tablet notetaking app Xournal - GIT development branch"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'texlive
 provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
 conflicts=('xournal' 'xournalpp' 'xournal-dmgerman' 'xournal-image-patched' 'xournalpp-svn')
 install="xournalpp.install"
-source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=development" "patch-isnan.patch")
-sha256sums=('SKIP' '825b7aeb4c30805324062e3e13759bf9a4f7b59f25d0df0b2f266c2a55e4a41a')
+source=("${_pkgname}::git+https://github.com/xournalpp/xournalpp.git#branch=development")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}/"
@@ -33,10 +33,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	patch src/control/tools/EditSelectionContents.cpp <../../patch-isnan.patch
-
-	cd build
+	cd "${srcdir}/${_pkgname}/build"
 	make
 	echo
 }
