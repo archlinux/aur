@@ -2,7 +2,7 @@
 
 pkgname=csxlock-git
 _pkgname=csxlock
-pkgver=1.1.r20.g0cd844b
+pkgver=1.1.r21.g0e97d28
 pkgrel=1
 pkgdesc="Simple screen locker utility for X, fork of sxlock. Uses PAM authentication, suid needed (tty lock)."
 arch=('i686' 'x86_64')
