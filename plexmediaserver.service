@@ -3,6 +3,7 @@ Description=Plex Media Server
 After=network.target
 
 [Service]
+WorkingDirectory=/opt/plexmediaserver
 EnvironmentFile=/etc/conf.d/plexmediaserver
 ExecStart=/opt/plexmediaserver/Plex\x20Media\x20Server
 Type=simple
