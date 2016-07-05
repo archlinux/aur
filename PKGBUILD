@@ -2,7 +2,7 @@
 
 pkgname=douban.fm
 pkgver=0.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="a tiny and smart cli player of douban.fm based on Python"
 url="https://github.com/taizilongxu/douban.fm"
 depends=('python2' 'python2-termcolor' 'python2-requests' 'python2-cookiecheat' 'mplayer' 'python2-pip')
@@ -22,5 +22,5 @@ package() {
     cd "${srcdir}/douban.fm-${pkgver}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     echo '#!/usr/bin/env sh' > "${pkgdir}/usr/bin/douban.fm"
-    echo 'python2 -c "from doubanfm import douban as db;db.main()" "$@"' > "${pkgdir}/usr/bin/douban.fm"
+    echo 'python2 -c "from doubanfm import douban as db;db.main()" "$@"' >> "${pkgdir}/usr/bin/douban.fm"
 }
