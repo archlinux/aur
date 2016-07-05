@@ -14,7 +14,7 @@ depends=('perl-devel-stacktrace' )
 options=(!emptydirs)
 
 prepareEnvironment() {
-        cd "$srcdir/$pkgname-$pkgver"
+        cd "$srcdir/$pkgname"
         export \
                 PERL_MM_USE_DEFAULT=1 \
                 PERL_AUTOINSTALL=--skipdeps \
