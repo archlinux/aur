@@ -1,4 +1,4 @@
-# Maintainer: farseerfc <farseerfc@gmail.com> 
+# Maintainer: farseerfc <farseerfc@gmail.com>
 
 _pkgname=aseman-qt-tools
 pkgname=${_pkgname}-git
@@ -13,6 +13,7 @@ makedepends=('cmake' 'git')
 source=("$_pkgname"::"git+https://github.com/Aseman-Land/aseman-qt-tools.git")
 md5sums=('SKIP')
 conflicts=('aseman-qt-tools')
+provides=("aseman-qt-tools=${pkgver}")
 
 pkgver() {
   cd "$srcdir/$_pkgname"

@@ -14,6 +14,7 @@ pkgbase = aseman-qt-tools-git
 	depends = qt5-quickcontrols
 	depends = qt5-sensors
 	depends = qtkeychain
+	provides = aseman-qt-tools=1.0.0
 	conflicts = aseman-qt-tools
 	source = aseman-qt-tools::git+https://github.com/Aseman-Land/aseman-qt-tools.git
 	md5sums = SKIP
