@@ -5,13 +5,13 @@
 
 pkgname=qalculate-gtk-nognome
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ frontend for libqalculate, without gnome dependencies"
 arch=('i686' 'x86_64')
-url="http://qalculate.sourceforge.net/"
+url="http://qalculate.github.io/"
 license=('GPL')
-depends=("libqalculate>=${pkgver}" 'libglade' 'cln>=1.2.0')
-makedepends=('perl-xml-parser' 'rarian')
+depends=("libqalculate>=${pkgver}" 'gtk3' 'cln>=1.2.0')
+makedepends=('perl-xml-parser' 'rarian' 'intltool')
 replaces=('qalculate-gtk')
 provides=('qalculate-gtk')
 _nick=('qalculate-gtk')
