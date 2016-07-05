@@ -5,7 +5,7 @@
 pkgdesc='Homegear home automation software'
 _gitname=('homegear')
 pkgname=('homegear-git')
-pkgver=0.6.0
+pkgver=0.6.1245.6150f26
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -25,6 +25,11 @@ pkgver() {
 	cd "$srcdir"/${_gitname}
 	echo "0.6.$(git rev-list --count HEAD).$(git describe --always)"
 }
+
+backup=(etc/homegear/{main,mqtt,rpcclients,rpcservers}.conf
+	etc/homegear/php.ini
+	etc/homegear/families/miscellaneous.conf
+	etc/logrotate.d/homegear)
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
