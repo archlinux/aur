@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=goonies
 pkgver=1.4.1528
