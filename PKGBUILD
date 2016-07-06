@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: pj1031999 <pj1031999@gmail.com>
 # Contributor: Michal Docekal <docekal@gmail.com>
 # Contributor: Laurie Clark-Michalek <bluepeppers (at) archlinux (dot) us>
