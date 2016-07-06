@@ -68,10 +68,8 @@ package_kipi-plugins() {
               'libkvkontakte: VKontakte.ru Exporter plugin'
               'libgpod: iPodExport plugin'
               'opencv: Remove Red Eyes plugin'
-              'imagemagick: Video SlideShow plugin'
-              'qt5-gstreamer: Video SlideShow plugin'
               'threadweaver: panorama plugin'
-	      'hugin: panorama plugin'
+              'hugin: panorama plugin'
               'kqoauth: OAuth authentication for imgur')
 
   cd build/extra
