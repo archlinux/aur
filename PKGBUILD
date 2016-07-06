@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=leave
 pkgver=1.12
@@ -28,7 +28,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm 0755 leave "$pkgdir/usr/bin/leave"
-  install -Dm 0644 leave.1 "$pkgdir/usr/share/man/man1/leave.1"
-  install -Dm 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 leave "$pkgdir/usr/bin/leave"
+  install -Dm644 leave.1 "$pkgdir/usr/share/man/man1/leave.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
