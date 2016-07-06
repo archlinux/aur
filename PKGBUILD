@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd osvr-steamvr-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release ../osvr-steamvr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON ../osvr-steamvr
   make
 }
 
