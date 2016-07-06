@@ -1,13 +1,13 @@
 pkgbase = worksnaps
 	pkgdesc = Time Tracking with Screenshots for Remote Teams
-	pkgver = 1.1.20150618
-	pkgrel = 3
+	pkgver = 1.1.20160625
+	pkgrel = 1
 	url = http://www.worksnaps.com/www/download.shtml
 	arch = any
 	license = unknown
 	depends = java-runtime
-	source = http://worksnaps-download.s3.amazonaws.com/WSClient-linux-1.1.20150618.zip
-	md5sums = 7bc4f74ac3d7ed0e889172596c32eff7
+	source = http://worksnaps-download.s3.amazonaws.com/WSClient-linux-1.1.20160625.zip
+	md5sums = 4dffa33186c3d3827ddf9ca5c3a502c7
 
 pkgname = worksnaps
 
