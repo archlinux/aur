@@ -1,6 +1,6 @@
 pkgbase = rhvoice-dictionary-git
 	pkgdesc = Русский словарь для RHVoice
-	pkgver = 20160620
+	pkgver = 20160706
 	pkgrel = 1
 	url = https://github.com/vantu5z/RHVoice-dictionary
 	arch = i686
