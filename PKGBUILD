@@ -3,7 +3,7 @@
 # Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.4.902
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
@@ -16,25 +16,18 @@ conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSIO
            'xf86-video-via' 'xf86-video-unichrome' 'openchrome')
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
-options=('!emptydirs' '!makeflags')
-source=(#http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fixes.patch
-        # there's no release tarball
-        git://anongit.freedesktop.org/openchrome/xf86-video-openchrome#commit=54de6f9)
-md5sums=('SKIP')
-
-prepare() {
-  cd ${pkgname} #-${pkgver}
-  autoreconf -vfi
-}
+#options=('!emptydirs' '!makeflags')
+source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('9c7ad349de6dd350252ccda8da56fa1e2a6afa32')
 
 build() {
-  cd ${pkgname} #-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname} #-${pkgver}
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
