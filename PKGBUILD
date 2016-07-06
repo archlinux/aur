@@ -3,26 +3,33 @@
 
 pkgname=perl-data-ical
 _perlname=Data-ICal
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Generates iCalendar (RFC 2445) calendar files"
 arch=('any')
-url=("https://metacpan.org/release/${_perlname}/")
+url="https://metacpan.org/release/${_perlname}/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.12' 'perl-dbi>=1.30')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/A/AL/ALEXMV/${_perlname}-${pkgver}.tar.gz")
-md5sums=('6b5a8286d906264d82a372e33594c5d0')
+md5sums=('7ba398c22481d8de8e2bb317173b3483')
 
 build() {
-  cd "$srcdir/${_perlname}-${pkgver}"
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-    make 
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/${_perlname}-${pkgver}"
+    /usr/bin/perl Makefile.PL
+    make
+  )
 }
 
 package() {
   cd "$srcdir/${_perlname}-${pkgver}"
-  make install DESTDIR="$pkgdir"
+  make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
