@@ -1,0 +1,18 @@
+pkgbase = abakus
+	pkgdesc = A simple calculator for KDE. Think of it as bc (the command-line calculator) with a nice GUI
+	pkgver = 0.92
+	pkgrel = 4
+	url = http://purinchu.net/abakus
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = flex
+	makedepends = bison
+	depends = kdebase-runtime
+	source = http://purinchu.net/abakus/abakus-0.92.tar.bz2
+	sha1sums = b03e5d378015345f0c49f89f3590cd36bbcc21b6
+
+pkgname = abakus
+
