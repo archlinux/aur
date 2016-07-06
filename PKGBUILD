@@ -3,7 +3,7 @@
 
 pkgname=pure-docs
 pkgver=0.64
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Language and Library Documentation"
 arch=('any')
 url="http://purelang.bitbucket.org/"
@@ -14,12 +14,12 @@ md5sums=('b1ec4450cdcbc5af67105b16fc8b0531')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make 
+  make -j1
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install install-tm
+  make -j1 DESTDIR="$pkgdir" install install-tm
 }
 
 # vim:set ts=2 sw=2 et:
