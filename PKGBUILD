@@ -16,7 +16,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/nullptrT/grub2-theme-a
         "grub2-theme-arch-suse.install")
 
 md5sums=('9ddf9b38301a6040367def78e3280185'
-         '460923a2a8efcf3311e4209ca092d10a')
+         '4173c0f06dc634a9e1b78f2260a8d8e0')
 
 package() {
   cd $srcdir
