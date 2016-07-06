@@ -1,0 +1,17 @@
+post_install() {
+	update-desktop-database -q
+	echo "If the launcher ‘Cannot set locale to 'en_GB'’,"
+	echo "uncomment 'en_GB.UTF-8 UTF-8' in /etc/locale.gen"
+	echo "then run 'locale-gen' as root/superuser."
+	echo "--------------------WARNING--------------------"
+	echo "Click on 'Wait' if the game stops responding:"
+	echo "it takes time but it works."
+}
+
+post_upgrade() {
+        post_install $1
+}
+
+post_remove() {
+	update-desktop-database -q
+}

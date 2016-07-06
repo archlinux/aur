@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Trine Enchanted Edition
+Comment=Fantasy action platformer with a fairytale-like atmosphere
+Path=/opt/trine_enchanted_edition
+Exec=trine_enchanted_edition
+Icon=trine_enchanted_edition
+Terminal=false
+Categories=Game;
