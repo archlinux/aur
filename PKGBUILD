@@ -1,4 +1,5 @@
-# Maintainer: darkapex <me@jailuthra.in>
+# Maintainer: Michael Straube <michael_straube web de>
+# Contributor: darkapex <me@jailuthra.in>
 # Contributor: sevenfourk <sevenfourk@gmail.com>
 
 pkgname=abakus
