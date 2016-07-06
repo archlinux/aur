@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=trine3-hib
 pkgver=2015.12.01
-pkgrel=2
+pkgrel=3
 pkgdesc="action role-playing platform and puzzle video game. humblebundle version."
 url="https://trine3.com"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("hib://trine3_linux.zip"
         "http://frozenbyte.com/presskit/trine_3/images/logo.png")
 # there is a patch downloadable, but it is already included in the game
 md5sums=('28070d73b2291c30e31b5ef486b9f3ac'
-         '07c2c50dfa0a87e66076b13bfaf83730'
+         '39ab5e4a22180be7fae2735ba76340ae'
          '1e36d51c0b6ddf8f283a46404796d85b')
 PKGEXT=".pkg.tar"
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')

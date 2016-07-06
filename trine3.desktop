@@ -5,6 +5,6 @@ Name=Trine 3
 Comment=action role-playing platform and puzzle video game
 Path=/usr/bin
 Exec=trine3
-Icon=
+Icon=/usr/share/pixmaps/trine3_64.png
 Terminal=false
 Categories=Game;
