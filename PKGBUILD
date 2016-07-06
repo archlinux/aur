@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 9978 2008-08-21 12:43:50Z allan $
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Suzy Williams <suzanne.williams3@verizon.net>
