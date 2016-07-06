@@ -6,8 +6,8 @@ _version=git
 
 # Module Versions
 _about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.6.1
-_language_gfm2_ver=0.92.0
+_about_arch_ver=1.6.2
+_language_gfm2_ver=0.92.1
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
@@ -27,7 +27,7 @@ source=("git+${url}.git"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
-            '85b904a247078121ccfe14f1d18fa49facc8747a4ac731591dadc85fa3c1e093'
+            'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
             '8fd5c1f23ec4110ab339d2c8c4305c6d0e9f11f7f6ddc80f3c45ca990691ac43'
             '8e7723a0618661f5dabc5729deaf0b453ef7945ec904690a95d446eb517ec522'
             '542c10ffb540bd91a441682867517a02a959a20625293f72f33fab71cd3602be')
