@@ -2,7 +2,7 @@
 
 pkgname=kasync
 pkgver=4.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library for controlling asynchronous tasks'
 arch=('i686' 'x86_64')
 url='https://github.com/KDE/kasync'
@@ -14,6 +14,7 @@ sha256sums=('c447b3bfd7a0a8ff5a0937dfd68d85162078cfa8f7256ebc45de3f5951afbee6')
 
 prepare() {
   mkdir -p build
+  tar -xzf "${pkgname}-${pkgver}.tar.gz"
 }
 
 build() { 
