@@ -1,6 +1,6 @@
 pkgbase = ruby-sass
 	pkgdesc = Tools and Ruby libraries for the CSS3 extension languages: Sass and SCSS.
-	pkgver = 3.4.21
+	pkgver = 3.4.22
 	pkgrel = 1
 	url = http://sass-lang.com/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-sass
 	makedepends = rubygems
 	depends = ruby-yard
 	depends = ruby-maruku
-	noextract = sass-3.4.21.gem
-	source = http://gems.rubyforge.org/gems/sass-3.4.21.gem
-	sha256sums = 05f907ae3bde56e0133298295ff0befcfec2cb29799ef4f40236eb7abb5173d2
+	noextract = sass-3.4.22.gem
+	source = http://gems.rubyforge.org/gems/sass-3.4.22.gem
+	sha256sums = 9e7bad9b3854e1913a6d30eb3bae69eca8dd61e55c63a92a78e14d67c4367236
 
 pkgname = ruby-sass
 
