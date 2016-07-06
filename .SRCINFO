@@ -1,0 +1,15 @@
+pkgbase = faba-icon-theme
+	pkgdesc = A sexy and modern icon theme with Tango influences.
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://snwh.org/moka
+	arch = any
+	license = LGPL3
+	license = CCPL-4.0:by-sa
+	depends = gtk-update-icon-cache
+	source = faba-icon-theme-4.1.2.tar.gz::https://github.com/moka-project/faba-icon-theme/archive/v4.1.2.tar.gz
+	md5sums = 7966a99b8e9098e2474655229093e08c
+	sha512sums = fd11e0aa1ab3e57ec2bde29a493dd58922759080291e7bd91b53d1395984a33e1e82da606d8e08fd8ce16e82f3709e90b12e5592261e2e450ad54d2a43d49fe4
+
+pkgname = faba-icon-theme
+
