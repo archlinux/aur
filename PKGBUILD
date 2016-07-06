@@ -1,14 +1,14 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 pkgname=grub2-theme-arch-leap
 pkgver=1
 pkgrel=1
 pkgdesc="Arch Linux branded theme adapted from openSUSE Leap 42.1"
-url="https://github.com/mis2/grub2-theme-arch-leap"
+url="https://github.com/mstraube/grub2-theme-arch-leap"
 arch=('any')
 license=('GPL')
 depends=('grub')
-source=("https://github.com/mis2/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('04f0662dc3a550cff61c9cfab50669b05bd2ac09')
+source=("https://github.com/mstraube/$pkgname/archive/$pkgver.tar.gz")
+sha1sums=('0fa3aaf3957aeba7adc3e838ae08179495fc969c')
 
 package() {
   cd $pkgname-$pkgver/theme
