@@ -1,5 +1,5 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r92.gaa4b206
+pkgver=v0.1.r194.g92739af
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
@@ -38,8 +38,6 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # *sigh*
-  install -d "$pkgdir/usr/lib/steamvr/"
-  mv "$pkgdir/usr/drivers" "$pkgdir/usr/lib/steamvr"
 }
 md5sums=('SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
