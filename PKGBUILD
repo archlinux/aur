@@ -10,6 +10,7 @@ arch=("any")
 url="https://github.com/ODiogoSilva/TriFusion"
 licence=("GPL3")
 depends=("python2-kivy" "python2-numpy" "python2-scipy" "python2-matplotlib" "python2-psutil" "python2-seaborn" "python2-configparser")
+conflicts=("trifusion-git")
 source=("https://github.com/ODiogoSilva/${_pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("3a5e2c57ff16b6da8aedfaa31a526b78")
 
