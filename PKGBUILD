@@ -3,7 +3,7 @@
 
 pkgname=pure-docs-git
 pkgver=r48.dec7c17
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Language and Library Documentation, latest snapshot"
 arch=('any')
 url="http://purelang.bitbucket.org/"
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd $srcdir/puredocs.bitbucket.org
-  make 
+  make -j1
 }
 
 package() {
   cd $srcdir/puredocs.bitbucket.org
-  make DESTDIR="$pkgdir" install install-tm
+  make -j1 DESTDIR="$pkgdir" install install-tm
 }
 
 # vim:set ts=2 sw=2 et:
