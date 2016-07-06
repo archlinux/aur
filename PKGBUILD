@@ -1,6 +1,6 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname="lsdesktopf"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=0
 pkgdesc="List available *.desktop files and search in their content."
 arch=(any)
