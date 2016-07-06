@@ -1,31 +1,47 @@
-# Maintainer:  Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 # Contributor: Philipp Joram <phijor AT t-online DOT de>
 
-pkgname='python2-axolotl-curve25519-git'
-_pkgname='python-axolotl-curve25519'
+pkgbase='python-axolotl-curve25519'
+pkgname=('python-axolotl-curve25519' 'python2-axolotl-curve25519')
 pkgver=r14.e4a9c4d
 pkgrel=1
 pkgdesc="Python wrapper for curve25519 library"
-url="https://github.com/tgalal/${_pkgname}"
+url="https://github.com/tgalal/${pkgbase}"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('python2')
-makedepends=('python2-setuptools')
-conflicts=('python2-axolotl-curve25519')
-provides=('python2-axolotl-curve25519')
-source=('git://github.com/tgalal/python-axolotl-curve25519')
+license=('GPL3')
+makedepends=('python-setuptools'
+             'python2-setuptools')
+source=("git://github.com/tgalal/${pkgbase}#commit=e4a9c4de0eae27223200579c58d1f8f6d20637e2")
 sha512sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "${pkgbase}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
-  python2 setup.py install --root="$pkgdir/"
+prepare() {
+	cp -a "${pkgbase}"{,-python2}
+}
+
+build() {
+	cd "${srcdir}/${pkgbase}"
+	python setup.py build
+
+	cd "${srcdir}/${pkgbase}-python2"
+	python2 setup.py build
+}
+
+package_python-axolotl-curve25519() {
+	depends=('python')
+
+	cd "${pkgbase}"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
+
+package_python2-axolotl-curve25519() {
+	depends=('python2')
+
+	cd "${pkgbase}-python2"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
