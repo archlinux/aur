@@ -1,8 +1,9 @@
-# Maintainer: Quint Guvernator <quint@guvernator.net>
+# Maintainer:  Quint Guvernator <quint@guvernator.net>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=dwm-qguv-git
 _pkgname=dwm
-pkgver=6.1.10.gdedbe4e
+pkgver=6.1.16.gad24916
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
