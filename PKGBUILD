@@ -10,21 +10,10 @@ depends=('qt5-base')
 source=("https://github.com/goetzc/qtResistors/archive/$pkgver.tar.gz")
 sha256sums=('806982cd62f7ac29f71141e318acbd79791aa279697d04226cfb8109647e838d')
 
-# To build using Qt 4, change to 1
-_Qt4=0
-[ "$_Qt4" = '1' ] && depends=('qt4')
-
 build() {
   cd qtResistors-$pkgver/src
-  
-  if [ "$_Qt4" = '0' ]; then
-    qmake-qt5
-  elif [ "$_Qt4" = '1' ]; then
-    qmake-qt4
-  else
-    qmake
-  fi
-  
+
+  qmake
   make
 }
 
