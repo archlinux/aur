@@ -1,6 +1,6 @@
 pkgbase = button
 	pkgdesc = A fast, correct, and robust build system
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/jasonwhite/button
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = button
 	depends = sqlite
 	depends = strace
 	depends = button-lua
-	source = https://github.com/jasonwhite/button/archive/v0.0.1/button-0.0.1.tar.gz
-	md5sums = 8b01fddfe4a319d9ed62898d406fcb62
+	source = https://github.com/jasonwhite/button/archive/v0.1.0/button-0.1.0.tar.gz
+	md5sums = 0ba98e2b759e00a3628d5d99b87166e3
 
 pkgname = button
 
