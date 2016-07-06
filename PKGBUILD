@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
 source=("https://packages.chef.io/stable/ubuntu/12.04/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('39e71f3924e03e5f1083a5e3d43b387eda4be9a399f4715fc09cbefe61f230d497b097a95b896d4197f73745b30b9ec25acdba2673102def07a1f38310c24c2d')
+sha512sums=('f63368e9ccd3899b9139b79d2f2d3e85f105b14c25cc9fa61d3aa77d976e0e58e8adab3c41c58133010aa81e651bb11a6ab36510c3a77acececa1f0ef7855baa')
 
 package() {
   cd "$srcdir"
