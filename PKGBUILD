@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc='PHP extensions for classes supporting common datastructures'
 arch=('any')
 url="https://github.com/eosforphp/$_pkgname"
-license=('GPL')
+license=('MIT')
 depends=('php')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
@@ -43,4 +43,6 @@ package() {
   cd "$_pkgname"
 
   make INSTALL_ROOT="$pkgdir/" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
 }
