@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-ykfde-git
-pkgver=0.6.1.r0.g4b24670
+pkgver=0.6.3.r14.g16cc1d8
 pkgrel=1
 pkgdesc='Full disk encryption with Yubikey (Yubico key) - git checkout'
 arch=('i686' 'x86_64')
@@ -19,7 +19,9 @@ backup=('etc/ykfde.conf')
 pkgver() {
 	cd mkinitcpio-ykfde/
 
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+	# usauall I use 'git describe' with '--tags'
+	# skip it here as we want signed tags only
+	if GITTAG="$(git describe --abbrev=0 2>/dev/null)"; then
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
