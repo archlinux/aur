@@ -46,7 +46,7 @@ package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contact'
 	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
-  optdepends=('kipi-plugins: more tools and plugins'
+  optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool')
 
   cd build/core
