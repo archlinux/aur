@@ -1,4 +1,5 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
+
 pkgname=fluxbox-style-debian-dark
 pkgver=1.3.5
 _debpkgrel=2
@@ -8,7 +9,7 @@ url="https://packages.debian.org/jessie/fluxbox"
 license=('custom:Expat')
 arch=('any')
 source=("http://http.debian.net/debian/pool/main/f/fluxbox/fluxbox_$pkgver-$_debpkgrel.debian.tar.xz")
-sha256sums=('0c3d66e6585d6f46f1f569b514a0e39e551d8598ba52b1b13325690b9aa25fef')
+sha1sums=('7afa1a1e61566500b76aa89656bb9a92e3126eaf')
 
 prepare() {
   # extract the license from copyright file
