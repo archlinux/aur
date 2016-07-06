@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=vlc-extension-lyricsfinder-git
 pkgver=0.3.2.r23.ga5a4321
