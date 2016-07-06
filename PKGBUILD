@@ -8,7 +8,8 @@ pkgdesc='An immutable dictionary'
 license=('MIT')
 arch=('any')
 url='https://pypi.python.org/pypi/frozendict/'
-makedepends=('python2-setuptools')
+makedepends=('python'
+             'python2')
 source=("https://pypi.python.org/packages/source/f/frozendict/frozendict-${pkgver}.tar.gz")
 md5sums=('d8d6c488b81987356f674fb1c9a68ebb')
 
