@@ -7,14 +7,13 @@
 
 
 pkgname=kdenlive-git
-pkgver=16.07.70.r7601.2fe5a63
+pkgver=16.07.70.r7612.9a6517c
 pkgrel=1
-pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version)"
+pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('glu' 'kded' 'qt5-quickcontrols' 'plasma-desktop' 'python' 'v4l-utils' 'breeze-icons' 'qt5-webkit'
-	 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
+depends=('qt5-webkit' 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
             'cdrkit: for creation of DVD ISO images'
@@ -23,11 +22,13 @@ optdepends=('ffmpeg: for FFmpeg plugin'
             'libdv: for webcam capture (if FFmpeg is not installed)'
             'recordmydesktop: for screen capture'
             'xine-ui: for DVD preview'
-	    'oxygen-icons: optional for xfce')
+	    'oxygen-icons: optional for xfce'
+	    'breeze-icons: otional for default theme')
 provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
-source=(git://anongit.kde.org/kdenlive) 
+#source=(git://anongit.kde.org/kdenlive) 
+source=('git://anongit.kde.org/kdenlive')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)
