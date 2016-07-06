@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=actiona
 pkgver=3.9.2
@@ -14,11 +14,13 @@ sha1sums=('ba01c13e32624d1d61d6e13e036efbf711102c77')
 
 build() {
   cd $pkgname-$pkgver
+
   qmake-qt5 -r PREFIX=/usr
   make && make locale_release
 }
 
 package() {
   cd $pkgname-$pkgver
+
   make INSTALL_ROOT="$pkgdir" install
 }
