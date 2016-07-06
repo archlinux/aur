@@ -2,7 +2,7 @@
 # Contributor: Stunts <f.pinamartins@gmail.com>
 
 _pkgname=TriFusion
-pkgname=trifusion
+pkgname=trifusion-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Streamlining phylogenomic data gathering, processing and visualization"
