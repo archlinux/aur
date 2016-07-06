@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#    Created by vendforce for the Matthew Woelk	in the arch AUR
+#    Created by vendforce for the Matthew Woelk in the arch AUR
 #    Nessusdownlader is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -26,17 +26,22 @@ RELEASE=6.7.0
 
 echo -e "Downloading Nessus $RELEASE from downloads.nessus.org ... "
 
-for FEDORA in {0..9}
-	do
-ID=$(wget $WGET_HSTS -qO - /dev/null  "https://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes" | grep "og:description" | cut -d= -f3  | sed -e 's/^"*//' | cut -d* -f1)
-	DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" && echo "exists" || echo "not exist")
-if [[ $DOWNLOAD == exists ]] ;then
-	wget $WGET_HSTS -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" -O Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm
-	break
-else
-	echo "Doesn't Exist" > /dev/null
-	break
-fi
+for FEDORA in {0..9}; do
+
+    if [ -f Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm ] ; then
+        echo -e "Local file already exists for Nessus $RELEASE. No need to re-download it."
+        continue
+    fi
+
+    ID=$(wget $WGET_HSTS -qO - /dev/null  "https://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes" | grep "og:description" | cut -d= -f3  | sed -e 's/^"*//' | cut -d* -f1)
+    DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" && echo "exists" || echo "not exist")
+    if [[ $DOWNLOAD == exists ]] ;then
+        wget $WGET_HSTS -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" -O Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm
+        break
+    else
+        echo "Doesn't Exist" > /dev/null
+        break
+    fi
 done
 
 echo -e "... Download script has finished."
