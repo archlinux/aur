@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/maandree/correctpony"
 license=('AGPL3')
 depends=('java-runtime>=6' 'argparser-java')
-makedepends=('java-environment>=6' 'argparser' 'make' 'sed' 'coreutils' 'auto-auto-complete' 'texinfo' 'gzip')
+makedepends=('java-environment>=6' 'argparser-java' 'make' 'sed' 'coreutils' 'auto-auto-complete' 'texinfo' 'gzip')
 provides=('correctpony')
 conflicts=('correctpony')
 source=($url/archive/$pkgver.tar.gz)
