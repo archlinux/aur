@@ -37,7 +37,7 @@ package() {
   cd osvr-steamvr-build
   make DESTDIR="$pkgdir/" install
 
-  # *sigh*
+  rm -f "$pkgdir"/usr/bin/osvr_print_displays
 }
 md5sums=('SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
