@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=lighttpd2-git
-pkgver=1544.b37d95f
+pkgver=1556.3a4698d
 pkgrel=1
 pkgdesc="The new Lighty: A small, secure, scalable, flexible webserver"
 arch=(i686 x86_64)
@@ -25,8 +25,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
-	export LUA_LIBS=$(pkg-config --libs lua5.1)
-	export LUA_CFLAGS=$(pkg-config --cflags lua5.1)
+	export LUA_LIBS=$(pkg-config --libs lua51)
+	export LUA_CFLAGS=$(pkg-config --cflags lua51)
 	
 	./autogen.sh
 	./configure \
