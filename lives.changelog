@@ -1,3 +1,11 @@
+2016-07-06 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Removed "!libtool" option and added "!emptydirs
+	Removed the fix to call the touch command
+	Removed the command to create a symlink to the executable
+	Deleted commands to remove empty directories from the package
+
 2016-07-04 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
