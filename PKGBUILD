@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=grub2-theme-breeze-git
