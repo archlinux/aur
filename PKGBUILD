@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
@@ -12,8 +12,8 @@ depends=('gtkmm' 'gnet' 'freealut')
 makedepends=('asciidoc' 'texlive-latexextra')
 source=("http://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
         "freedoko-$pkgver-archlinux.patch")
-sha256sums=('a27ab7acabb28aa8d038f0022377ea3e68d52626d454beaf0f65e0b91c777de9'
-            '186ba8739c9df7b8ce09b6dd4ed337fb01e5e16d931af435d921b61fec5d53c8')
+sha1sums=('178d351adf7cf70f5c5fa132a2b468645dac670d'
+          '33f2c8d1cfbecb3b1d86b694535a333b644c72fa')
 
 prepare() {
   cd FreeDoko_$pkgver
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
   cd FreeDoko_$pkgver
+
   make compile
   make documentation
 }
