@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=last.dev.email.r453.g2280edb
+pkgver=0.2.r2061.g8796762
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -18,10 +18,7 @@ source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 
 pkgver() {
   cd "$srcdir/osvr-core"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
