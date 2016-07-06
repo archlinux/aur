@@ -2,13 +2,14 @@
 
 _gopkgname=minio
 pkgname=$_gopkgname-git
-pkgver=VERSION
+pkgver=r3058.01cbacd
 pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
 arch=('x86_64' 'i686')
 url='https://minio.io'
 license=('APACHE')
 makedepends=('go')
+depends=('glibc')
 options=('!strip')
 source=('git://github.com/minio/minio.git')
 md5sums=('SKIP')
