@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=chef-dk
-pkgver=0.15.15
+pkgver=0.15.16
 pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
