@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: Rikard Falkeborn <rikard.falkeborn@gmail.com>
 # Contributor: Hubert Maraszek <marach5 at gmail dot com>
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
@@ -12,9 +12,9 @@ license=('ZLIB')
 arch=('i686' 'x86_64')
 depends=('sdl_image' 'sdl_ttf' 'xdg-utils')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        gcc6.patch)
-sha256sums=('5d7c04f37d6b4a1821594512c7ddbc8189f968e08ecfd5af55231302f2f917d8'
-            '7b674fbfc81d7105fe667a267217f89cbe50012e06065626d778e4d4563de54f')
+        "gcc6.patch")
+sha1sums=('bdfc3d88fbc852fa728c9981f83c9dd048d159ae'
+          'ad7a6186f5729beeb77d4b54df3e8b03038a9eb8')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -28,12 +28,14 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
+
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
