@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 
 pkgname=spriteilluminator
