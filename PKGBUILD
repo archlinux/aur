@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('gtkmm' 'libxml++')
 source=("http://download.savannah.gnu.org/releases/galois/source/galois-$pkgver.tar.gz"
         "fix-install-path.patch")
-sha256sums=('a168ae6514da1eda5afd761fa4eeaf510d79988d450a716a0c41ce978d99e447'
-            'c4247271776f7b5df2b6bb92911c25a9ba3c30796171de5cd7dc1bd78e5a800d')
+sha1sums=('72659cc08123b4c43678e3c68f43b29ff41c3a9e'
+          '588e1df837e64165c011da4afe48db83f8135d2f')
 
 prepare() {
   patch -p0 < fix-install-path.patch
@@ -21,11 +21,13 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
+
   make DESTDIR="$pkgdir" install
 }
