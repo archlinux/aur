@@ -1,13 +1,13 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=xpybar
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
 url="https://github.com/maandree/xpybar"
 license=('GPL3' 'AGPL3')
-depends=(python3 argparser python-xlib xorg-xrandr)
+depends=(python3 argparser-python python-xlib xorg-xrandr)
 optdepends=("linux: most of the monitors require Linux's procfs or sysfs"
             "curl: for Internet services"
 	    "python-pyalsaaudio: for ALSA volume control"
@@ -21,11 +21,12 @@ optdepends=("linux: most of the monitors require Linux's procfs or sysfs"
 	    "graphicsmagick: for image support"
 	    "imagemagick: for image support"
 	    "file: for image support"
-	    "librsvg: for image support")
+	    "librsvg: for image support"
+	    "librsvg>=2.5: for solar data")
 makedepends=(make coreutils sed zip auto-auto-complete texinfo)
 install=xpybar.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(22183b85da87094a7c5d454b76e6dc7b77bbb008914390ccfb153a0c36713f38)
+sha256sums=(b4b687c5eb97357a93529cb4976b2aad352a73e7fc2367c29f2291ecaeaac43e)
 
 
 build() {
