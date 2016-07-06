@@ -3,21 +3,19 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python2-graph-tool
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
 license=(GPL3)
-depends=(boost python2 expat python2-scipy python2-numpy cgal)
-makedepends=(sparsehash python2-cairo)
+depends=(boost python2 expat python2-scipy python2-numpy cgal cairomm python2-cairo)
+makedepends=(sparsehash)
 optdepends=('graphviz: graph layout'
-'cairomm: graph drawing'
-'python2-cairo: graph drawing'
 'python2-matplotlib: graph drawing')
 options=(!libtool)
 source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('3784d4a15b6b5d0e6dab5e3941d24c1e3fee509f7abf9008f64fef2760bd610d')
+sha256sums=('ba4addde63377e73226bc70873ba48d768cc6983f0655189b43c29f70ebd732b')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
