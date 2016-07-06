@@ -5,8 +5,8 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=9.16
-pkgrel=3
+pkgver=9.17
+pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -15,12 +15,15 @@ depends=('glib2')
 optdepends=('python: python support'
             'python2: python2 support')
 backup=("etc/$pkgname/config.py")
-source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"
+source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-md5sums=('62d31d27d437cf48458a997f977caab4'
+md5sums=('623e0c02fb09ade3eee3fc9101d5eb86'
+         'SKIP'
          '241257feba9f2242ff445a18acab391f')
-sha512sums=('5d3dba6134a9583d269ae0df93b05e536a753e00568c1a5562cf1e28bff07eb31185404f4a8b355832096aeb7ea320307e7ec620fc09e56c026c8143c3e4104a'
+sha512sums=('d126bd069e8342683282c472db797c874b8058bcc9a3b482f06831e58ba484b43270c53bdd498d55f9f8daf6220764ad9cd44ad6d0233fe19800e662b316aa8e'
+            'SKIP'
             '5ac8aeb58148a5ad387d3f2730036bd91a8e5bd6cb921dd2d2601df533fd7d6b5355f4fdc172926e76036f845873ad0d0718d1b5d13db50ade2ee5707df00c7a')
+validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
 
 package() {
     _MODINSTALL="/usr/lib/$pkgname"
