@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=combblas
@@ -16,7 +16,7 @@ sha1sums=('e2a9ff8d33c03f6e2a68d7c64098d3c1120364dc'
           'bf87cca1a5e476826933677b4084c3decbb4147e')
 
 build() {
-  install -d -m 755 CombBLAS/build
+  install -d CombBLAS/build
   cd CombBLAS/build
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
