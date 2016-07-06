@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx de>
+# Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=alterego-dreamwalker
 # could not find any version number, so using 1.0
