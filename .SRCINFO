@@ -1,4 +1,4 @@
-pkgbase = trifusion
+pkgbase = trifusion-bin
 	pkgdesc = Streamlining phylogenomic data gathering, processing and visualization
 	pkgver = 0.4.0
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = trifusion
 	source = https://github.com/ODiogoSilva/TriFusion/releases/download/0.4.0/TriFusion-0.4.0-linux-arch.tar.xz
 	md5sums = 7db55826cb37c7eebdd0337f286f74e7
 
-pkgname = trifusion
+pkgname = trifusion-bin
 
