@@ -2,7 +2,7 @@
 
 pkgname=pylama
 pkgver=7.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Code audit tool for python"
 arch=('any')
 url="https://github.com/klen/pylama"

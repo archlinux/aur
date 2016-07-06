@@ -1,7 +1,7 @@
 pkgbase = pylama
 	pkgdesc = Code audit tool for python
 	pkgver = 7.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klen/pylama
 	arch = any
 	license = GPL3
