@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost' 'grantlee-qt5'
-             'libgpod' 'hugin' 'opencv' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 'libusb' 'kio' 'kdoctools' 'marble'
+             'hugin' 'opencv' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 'libusb' 'kio' 'kdoctools' 'marble'
              'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'kdesignerplugin' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'kdelibs4support' 'qt5-xmlpatterns' 'libmediawiki' 'libkvkontakte' 'kqoauth')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
@@ -66,10 +66,6 @@ package_kipi-plugins() {
   depends=('kio' 'libkipi')
   optdepends=('libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin'
-              'libgpod: iPodExport plugin'
-              'opencv: Remove Red Eyes plugin'
-              'threadweaver: panorama plugin'
-              'hugin: panorama plugin'
               'kqoauth: OAuth authentication for imgur')
 
   cd build/extra
