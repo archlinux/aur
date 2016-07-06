@@ -1,13 +1,12 @@
 pkgbase = php-datastructures-git
 	pkgdesc = PHP extensions for classes supporting common datastructures
 	pkgver = r11.c4d68d6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eosforphp/php-datastructures
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = php
-	depends = cairo
 	provides = php-datastructures=r11.c4d68d6
 	conflicts = php-datastructures
 	source = php-datastructures::git+https://github.com/eosforphp/datastructures.git

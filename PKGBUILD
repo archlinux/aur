@@ -4,12 +4,12 @@ pkgname=php-datastructures-git
 _pkgname=${pkgname%-git}
 __pkgname=${_pkgname#php-}
 pkgver=r11.c4d68d6
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP extensions for classes supporting common datastructures'
 arch=('any')
 url="https://github.com/eosforphp/$_pkgname"
 license=('GPL')
-depends=('php' 'cairo')
+depends=('php')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
