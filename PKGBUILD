@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=solar-python
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Solar data calculation and prediction library for Python"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python3)
 makedepends=(make coreutils python3 texinfo)
 install=solar-python.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(fda9576e26d4e46989d36cfba0208bf7167a063c4f5b62cf9c7f9a0bfacfb740)
+sha256sums=(fb62ee7ddaafae0ee92d00b4b1efdbb01f5c9eb93bc8e7007379adefed7899a4)
 
 
 build() {
