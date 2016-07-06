@@ -11,10 +11,10 @@ pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost' 'grantlee-qt5'
-             'hugin' 'opencv' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 'libusb' 'kio' 'kdoctools' 'marble'
-             'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'kdesignerplugin' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'kdelibs4support' 'qt5-xmlpatterns' 'libmediawiki' 'libkvkontakte' 'kqoauth')
+makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
+             'opencv' 'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
+             'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'threadweaver' 'kcalcore'
+             'knotifyconfig' 'libmediawiki' 'libkvkontakte' 'kqoauth')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
 sha1sums=('e0dec2eba9ab3a51d632b69b3dd6daf8dca64a45')
 
