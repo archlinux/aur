@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 
 pkgname=pofwjs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A port forwarding tool implemented in Node.Js"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(
   "pofwjs.service"
   "config.json"
 )
-md5sums=('df8f2265b71ab048b9ea801c7b907e3c'
+md5sums=('21ac8b18a9b3ec852dc31027eefc6eea'
          '689439125b8cb4266d6a939933b7989d'
          'edf8fc78149b537cd3d01b22cdb52941')
 

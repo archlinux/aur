@@ -1,6 +1,6 @@
 pkgbase = pofwjs
 	pkgdesc = A port forwarding tool implemented in Node.Js
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/PeterCxy/pofw.js
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = pofwjs
 	depends = nodejs
 	depends = bash
 	backup = etc/pofwjs/config.json
-	source = https://github.com/PeterCxy/pofw.js/archive/1.0.0.tar.gz
+	source = https://github.com/PeterCxy/pofw.js/archive/1.0.1.tar.gz
 	source = pofwjs.service
 	source = config.json
-	md5sums = df8f2265b71ab048b9ea801c7b907e3c
+	md5sums = 21ac8b18a9b3ec852dc31027eefc6eea
 	md5sums = 689439125b8cb4266d6a939933b7989d
 	md5sums = edf8fc78149b537cd3d01b22cdb52941
 
