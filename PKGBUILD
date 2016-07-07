@@ -1,6 +1,6 @@
 # Maintainer: Wieland Hoffmann <the_mineo@web.de>
 pkgname=chromaprint-git
-pkgver=v0.7_11_gc17e6c5
+pkgver=v1.3.1.r5.9e30d9c
 pkgrel=1
 pkgdesc="Client library, written in C++, for extracting audio fingerprints. "
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/chromaprint"
-    echo "$(git describe --tags --always | sed 's/-/_/g')"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
