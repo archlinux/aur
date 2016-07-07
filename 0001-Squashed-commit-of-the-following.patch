@@ -1,10 +1,34 @@
-From af3340df2d4d2e773aa413111eed3f47c8ec6f71 Mon Sep 17 00:00:00 2001
+From aa327cb7a3e992a60ce92502223307058a4f4003 Mon Sep 17 00:00:00 2001
 From: Michael Lass <lass@mail.uni-paderborn.de>
-Date: Mon, 4 Jul 2016 19:47:26 +0200
-Subject: [PATCH 1/3] Update to current git master
+Date: Thu, 7 Jul 2016 18:31:27 +0200
+Subject: [PATCH] Squashed commit of the following:
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+
+commit c1c1dbfbac2fe59d4d33fb731dcb20ea5476b0e1
+Merge: e4a0794 30942e9
+Author: Michael Lass <lass@mail.uni-paderborn.de>
+Date:   Thu Jul 7 18:30:18 2016 +0200
+
+    Merge branch 'master' into pkgpath
+
+commit 30942e950c38370606a6d3c5f39edf966c932bb8
+Merge: 7ab7da8 701e3a3
+Author: André Knörig <aknoerig@users.noreply.github.com>
+Date:   Tue Jul 5 13:12:16 2016 +0200
+
+    Merge pull request #3251 from cjmayo/nodpkg
+
+    check Boost version with qtCompileTest instead of dpkg
+
+commit 701e3a3440295dfd13b2be8eaf2badee342a1dd3
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Mon Jul 4 20:42:54 2016 +0100
+
+    check Boost version with qtCompileTest instead of dpkg
+
+    Removes use of BOOST_INSTALLED and removes boostdetect.pri
 
 commit 7ab7da8ef9ccccb05c2feaa566dd337c1b16ccd6
 Merge: daac3da 8d44113
@@ -53,6 +77,49 @@ Author: Chris Mayo <aklhfex@gmail.com>
 Date:   Sun Jul 3 17:54:36 2016 +0100
 
     phoenix.pro: tidy-up whitespace
+
+commit e4a0794fb62afe4f8a90617ad6ef2c6b9c553f6e
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:52:24 2016 +0100
+
+    provide script for user to clone parts library
+
+commit c1bce451169b37b4390f46dfde81d1ddacd6c21d
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:52:24 2016 +0100
+
+    allow user and administrator to install parts library
+
+    Fritzing may be installed in a location that is read-only but the user
+    may want to control their own parts library e.g. to keep up-to-date
+    using the new Git facility.
+
+    Look for parts directory in the order:
+    ~/.local/share/fritzing - user override
+    /usr/local/share/fritzing - adminstrator override
+    <m_appPath> - the location of translations and help directories, could
+    be either of the above but as installed will default to PKGDATADIR, may
+    be set at runtime with -f
+
+    Default to <m_appPath>/parts
+
+    Use the definition of PKGDATADIR as an indicator that Fritzing will be
+    installed.
+
+commit d95cc53fab4304e7f08748b6fe0105bfe7413f96
+Author: Chris Mayo <aklhfex@gmail.com>
+Date:   Sun Jul 3 17:52:24 2016 +0100
+
+    don't scan filesystem for application directory if installed
+
+    Look for application files in the order:
+    ~/.local/share/fritzing - user override
+    /usr/local/share/fritzing - adminstrator override
+    PKGDATADIR - default installation (PKGDATADIR could be
+      /usr/local/share/fritzing)
+
+    Use the definition of PKGDATADIR as an indicator that Fritzing will be
+    installed.
 
 commit 8d44113af154e3dfcbb6a4de71bc3a8428cdaabd
 Author: Chris Mayo <aklhfex@gmail.com>
@@ -233,12 +300,13 @@ Date:   Mon Jun 6 11:14:23 2016 +0200
 
     fix vs folder paths in release script
 ---
+ config.tests/boost/boost.pro                     |   1 +
+ config.tests/boost/main.cpp                      |   8 +
  fritzing.desktop                                 |   6 +-
  install_fritzing.sh                              |  87 +++------
  phoenix.pro                                      | 237 ++++++++++-------------
- pri/boostdetect.pri                              |  58 ++++++
  pri/libgit2detect.pri                            |  60 ++++++
- pri/utils.pri                                    |  45 +----
+ pri/utils.pri                                    |  42 ++--
  readme.md                                        |   2 +-
  resources/system_icons/linux/fritzing.xml        |  31 +++
  resources/system_icons/linux/x-fritzing-fz.xml   |   8 -
@@ -249,12 +317,15 @@ Date:   Mon Jun 6 11:14:23 2016 +0200
  resources/system_icons/linux/x-fritzing-fzpz.xml |   8 -
  resources/system_icons/linux/x-fritzing-fzz.xml  |   8 -
  src/main.cpp                                     |   7 +-
+ src/utils/folderutils.cpp                        |  38 +++-
  src/version/partschecker.cpp                     |   6 +
  tools/deploy_fritzing_mac.sh                     |   2 +-
  tools/linux_release_script/release.sh            |   2 +-
  tools/release_fritzing.bat                       |  20 +-
- 20 files changed, 304 insertions(+), 315 deletions(-)
- create mode 100644 pri/boostdetect.pri
+ tools/user_parts_clone.sh                        |   8 +
+ 23 files changed, 302 insertions(+), 311 deletions(-)
+ create mode 100644 config.tests/boost/boost.pro
+ create mode 100644 config.tests/boost/main.cpp
  create mode 100644 pri/libgit2detect.pri
  create mode 100644 resources/system_icons/linux/fritzing.xml
  delete mode 100644 resources/system_icons/linux/x-fritzing-fz.xml
@@ -264,7 +335,29 @@ Date:   Mon Jun 6 11:14:23 2016 +0200
  delete mode 100644 resources/system_icons/linux/x-fritzing-fzp.xml
  delete mode 100644 resources/system_icons/linux/x-fritzing-fzpz.xml
  delete mode 100644 resources/system_icons/linux/x-fritzing-fzz.xml
+ create mode 100644 tools/user_parts_clone.sh
 
+diff --git a/config.tests/boost/boost.pro b/config.tests/boost/boost.pro
+new file mode 100644
+index 0000000..bba41b9
+--- /dev/null
++++ b/config.tests/boost/boost.pro
+@@ -0,0 +1 @@
++SOURCES = main.cpp
+diff --git a/config.tests/boost/main.cpp b/config.tests/boost/main.cpp
+new file mode 100644
+index 0000000..a245b7c
+--- /dev/null
++++ b/config.tests/boost/main.cpp
+@@ -0,0 +1,8 @@
++#include <boost/version.hpp>
++#if BOOST_VERSION / 100000 == 1 && BOOST_VERSION / 100 % 1000 == 54
++#error "Boost 1.54 found"
++#endif
++
++int main()
++{
++}
 diff --git a/fritzing.desktop b/fritzing.desktop
 index 854319e..6b88de2 100644
 --- a/fritzing.desktop
@@ -394,7 +487,7 @@ index 5a1a6a9..30ddc59 100644
  
  echo "installed fritzing system icons"
 diff --git a/phoenix.pro b/phoenix.pro
-index 301ce0c..cff7b0b 100644
+index 301ce0c..26e25b5 100644
 --- a/phoenix.pro
 +++ b/phoenix.pro
 @@ -1,7 +1,7 @@
@@ -406,7 +499,7 @@ index 301ce0c..cff7b0b 100644
  #
  # Fritzing is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
-@@ -30,116 +30,123 @@
+@@ -30,116 +30,125 @@
  #
  # QTPLUGIN  += qjpeg qsqlite
  
@@ -416,6 +509,8 @@ index 301ce0c..cff7b0b 100644
 +unix:!macx {
 +    CONFIG += link_pkgconfig
 +}
++
++load(configure)
 +
  win32 {
  # release build using msvc 2010 needs to use Multi-threaded (/MT) for the code generation/runtime library option
@@ -550,67 +645,67 @@ index 301ce0c..cff7b0b 100644
 +    BINDIR = $$PREFIX/bin
 +    DATADIR = $$PREFIX/share
 +    PKGDATADIR = $$DATADIR/fritzing
- 
--        DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
++
 +    DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
  
--        target.path =$$BINDIR
+-        DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 +    target.path = $$BINDIR
  
--        desktop.path = $$DATADIR/applications
--        desktop.files += fritzing.desktop
+-        target.path =$$BINDIR
 +    desktop.path = $$DATADIR/applications
 +    desktop.files += fritzing.desktop
  
--        manpage.path = $$DATADIR/man/man1
--        manpage.files += Fritzing.1
+-        desktop.path = $$DATADIR/applications
+-        desktop.files += fritzing.desktop
 +    mimedb.path = $$DATADIR/mime/packages
 +    mimedb.files += resources/system_icons/linux/fritzing.xml
  
--        icon.path = $$DATADIR/icons
--        icon.extra = install -D -m 0644 $$PWD/resources/images/fritzing_icon.png $(INSTALL_ROOT)$$DATADIR/icons/fritzing.png
+-        manpage.path = $$DATADIR/man/man1
+-        manpage.files += Fritzing.1
 +    manpage.path = $$DATADIR/man/man1
 +    manpage.files += Fritzing.1
  
--        parts.path = $$PKGDATADIR
--        parts.files += parts
+-        icon.path = $$DATADIR/icons
+-        icon.extra = install -D -m 0644 $$PWD/resources/images/fritzing_icon.png $(INSTALL_ROOT)$$DATADIR/icons/fritzing.png
 +    icon.path = $$DATADIR/icons
 +    icon.extra = install -D -m 0644 $$PWD/resources/images/fritzing_icon.png $(INSTALL_ROOT)$$DATADIR/icons/fritzing.png
  
--        help.path = $$PKGDATADIR
--        help.files += help
+-        parts.path = $$PKGDATADIR
+-        parts.files += parts
 +    parts.path = $$PKGDATADIR
 +    parts.files += parts
  
--        sketches.path = $$PKGDATADIR
--        sketches.files += sketches
+-        help.path = $$PKGDATADIR
+-        help.files += help
 +    help.path = $$PKGDATADIR
 +    help.files += help
  
--        bins.path = $$PKGDATADIR
--        bins.files += bins
+-        sketches.path = $$PKGDATADIR
+-        sketches.files += sketches
 +    sketches.path = $$PKGDATADIR
 +    sketches.files += sketches
  
--        translations.path = $$PKGDATADIR/translations
--        translations.extra = find $$PWD/translations -name "*.qm" -size +128c -exec cp -pr {} $(INSTALL_ROOT)$$PKGDATADIR/translations \\;
+-        bins.path = $$PKGDATADIR
+-        bins.files += bins
 +    bins.path = $$PKGDATADIR
 +    bins.files += bins
  
--        syntax.path = $$PKGDATADIR/translations/syntax
--        syntax.files += translations/syntax/*.xml
+-        translations.path = $$PKGDATADIR/translations
+-        translations.extra = find $$PWD/translations -name "*.qm" -size +128c -exec cp -pr {} $(INSTALL_ROOT)$$PKGDATADIR/translations \\;
 +    translations.path = $$PKGDATADIR/translations
 +    translations.extra = find $$PWD/translations -name "*.qm" -size +128c -exec cp -pr {} $(INSTALL_ROOT)$$PKGDATADIR/translations \\;
  
--        INSTALLS += target desktop manpage icon parts sketches bins translations syntax help
+-        syntax.path = $$PKGDATADIR/translations/syntax
+-        syntax.files += translations/syntax/*.xml
 +    syntax.path = $$PKGDATADIR/translations/syntax
 +    syntax.files += translations/syntax/*.xml
-+
+ 
+-        INSTALLS += target desktop manpage icon parts sketches bins translations syntax help
 +    INSTALLS += target desktop mimedb manpage icon parts sketches bins translations syntax help
  }
  
  ICON = resources/system_icons/macosx/fritzing_icon.icns
-@@ -160,61 +167,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
+@@ -160,61 +169,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
  RC_FILE = fritzing.rc
  RESOURCES += phoenixresources.qrc
  
@@ -676,16 +771,13 @@ index 301ce0c..cff7b0b 100644
  include(pri/kitchensink.pri)
  include(pri/mainwindow.pri)
  include(pri/partsbinpalette.pri)
-@@ -237,16 +196,18 @@ include(pri/translations.pri)
+@@ -237,16 +198,14 @@ include(pri/translations.pri)
  include(pri/program.pri)
  include(pri/qtsysteminfo.pri)
  
 -!contains(DEFINES, QUAZIP_INSTALLED) {
 -        include(pri/quazip.pri)
-+!contains(DEFINES, BOOST_INSTALLED) {
-+    include(pri/boostdetect.pri)
- }
-+
+-}
  contains(DEFINES, QUAZIP_INSTALLED) {
 -        INCLUDEPATH += /usr/include/quazip /usr/include/minizip
 -        LIBS += -lquazip -lminizip
@@ -700,70 +792,6 @@ index 301ce0c..cff7b0b 100644
  
 -
  message("libs $$LIBS")
-diff --git a/pri/boostdetect.pri b/pri/boostdetect.pri
-new file mode 100644
-index 0000000..26367eb
---- /dev/null
-+++ b/pri/boostdetect.pri
-@@ -0,0 +1,58 @@
-+# /*******************************************************************
-+# Part of the Fritzing project - http://fritzing.org
-+# Copyright (c) 2007-16 Fritzing
-+# Fritzing is free software: you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation, either version 3 of the License, or
-+# (at your option) any later version.
-+# Fritzing is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+# GNU General Public License for more details.
-+# You should have received a copy of the GNU General Public License
-+# along with Fritzing. If not, see <http://www.gnu.org/licenses/>.
-+# ********************************************************************
-+# $Revision: 6796 $:
-+# $Author: irascibl@gmail.com $:
-+# $Date: 2013-01-12 07:45:08 +0100 (Sa, 12. Jan 2013) $
-+# ********************************************************************/
-+
-+# boost_1_54_0 is buggy
-+BOOSTS = 43 44 45 46 47 48 49 50 51 52 53 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
-+LATESTBOOST = 0
-+for(boost, BOOSTS) {
-+    exists(../src/lib/boost_1_$${boost}_0) {
-+        LATESTBOOST = $$boost
-+    }
-+}
-+
-+contains(LATESTBOOST, 0) {
-+    unix {
-+        !macx {
-+            BOOSTINFO = $$system(dpkg -s libboost-dev | grep 'Version')
-+            BADVERSION = $$find(BOOSTINFO, 1\.54)
-+            !isEmpty(BADVERSION) {
-+                message("Boost 1.54 has a bug in a function that Fritzing uses, so download or install some other version")
-+                error("Easiest to copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
-+            }
-+            isEmpty(BADVERSION) {
-+                BOOSTVERSION = $$find(BOOSTINFO, 1\...\.0)
-+                !isEmpty(BOOSTVERSION) {
-+                    LATESTBOOST = installed
-+                    message("using installed BOOST library")
-+                }
-+            }
-+        }
-+    }
-+}
-+
-+contains(LATESTBOOST, 0) {
-+    message("Please download the boost library--you can find it at http://www.boost.org/")
-+    message("Note that boost 1.54 has a bug in a function that Fritzing uses, so download some other version")
-+    error("Copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
-+}
-+
-+!contains(LATESTBOOST, installed) {
-+    message("using boost from src/lib/boost_1_$${LATESTBOOST}_0")
-+    INCLUDEPATH += src/lib/boost_1_$${LATESTBOOST}_0
-+}
 diff --git a/pri/libgit2detect.pri b/pri/libgit2detect.pri
 new file mode 100644
 index 0000000..9512f9d
@@ -831,7 +859,7 @@ index 0000000..9512f9d
 +
 +LIBS += -L$$LIBGIT2LIB -lgit2
 diff --git a/pri/utils.pri b/pri/utils.pri
-index ae14ea8..3cd7082 100644
+index ae14ea8..210570f 100644
 --- a/pri/utils.pri
 +++ b/pri/utils.pri
 @@ -1,6 +1,6 @@
@@ -842,14 +870,10 @@ index ae14ea8..3cd7082 100644
  # Fritzing is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or
-@@ -17,46 +17,6 @@
- # $Date: 2013-01-12 07:45:08 +0100 (Sa, 12. Jan 2013) $
- # ********************************************************************/
- 
--# boost_1_54_0 is buggy
--BOOSTS = 43 44 45 46 47 48 49 50 51 52 53 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
--LATESTBOOST = 0
--for(boost, BOOSTS) {
+@@ -21,39 +21,24 @@
+ BOOSTS = 43 44 45 46 47 48 49 50 51 52 53 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
+ LATESTBOOST = 0
+ for(boost, BOOSTS) {
 -        exists(../src/lib/boost_1_$${boost}_0) {
 -                LATESTBOOST = $$boost
 -        }
@@ -872,24 +896,32 @@ index ae14ea8..3cd7082 100644
 -                 }
 -             }
 -        }
--    }
--}
--
--contains(LATESTBOOST, 0) {
++    exists(../src/lib/boost_1_$${boost}_0) {
++        LATESTBOOST = $$boost
+     }
+ }
+ 
+ contains(LATESTBOOST, 0) {
 -        message("Please download the boost library--you can find it at http://www.boost.org/")
 -        message("Note that boost 1.54 has a bug in a function that Fritzing uses, so download some other version")
 -        error("Copy the boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
--}
--
--!contains(LATESTBOOST, installed) {
++    qtCompileTest(boost)
++    config_boost {
++        LATESTBOOST = installed
++        message("using installed Boost library")
++    } else {
++        message("Boost 1.54 has a bug in a function that Fritzing uses, so download or install some other version")
++        error("Easiest to copy the Boost library to .../src/lib/, so that you have .../src/lib/boost_1_xx_0")
++    }
+ }
+ 
+ !contains(LATESTBOOST, installed) {
 -    message("using boost from src/lib/boost_1_$${LATESTBOOST}_0")
--    INCLUDEPATH += src/lib/boost_1_$${LATESTBOOST}_0
--}
--
- HEADERS += \
- src/utils/abstractstatesbutton.h \
- src/utils/autoclosemessagebox.h \
-@@ -110,6 +70,3 @@ src/utils/schematicrectconstants.cpp \
++    message("using Boost from src/lib/boost_1_$${LATESTBOOST}_0")
+     INCLUDEPATH += src/lib/boost_1_$${LATESTBOOST}_0
+ }
+ 
+@@ -110,6 +95,3 @@ src/utils/schematicrectconstants.cpp \
  src/utils/s2s.cpp \
  src/utils/textutils.cpp \
  src/utils/zoomslider.cpp 
@@ -1069,6 +1101,95 @@ index ae484b5..32bf90d 100644
  		}
  		delete app;
  	}
+diff --git a/src/utils/folderutils.cpp b/src/utils/folderutils.cpp
+index 96f10c7..000037a 100644
+--- a/src/utils/folderutils.cpp
++++ b/src/utils/folderutils.cpp
+@@ -80,6 +80,7 @@ QDir  FolderUtils::getApplicationSubFolder(QString search) {
+     path += "/" + search;
+ 	//DebugDialog::debug(QString("path %1").arg(path) );
+     QDir dir(path);
++#ifndef PKGDATADIR
+     while (!dir.exists()) {
+     	// if we're running from the debug or release folder, go up one to find things
+         dir.cdUp();
+@@ -88,7 +89,7 @@ QDir  FolderUtils::getApplicationSubFolder(QString search) {
+ 
+         dir.setPath(dir.absolutePath() + "/" + search);
+    	}
+-
++#endif
+    	return dir;
+ }
+ 
+@@ -120,6 +121,23 @@ QDir FolderUtils::getAppPartsSubFolder(QString search) {
+ 
+ QDir FolderUtils::getAppPartsSubFolder2(QString search) {
+     if (m_partsPath.isEmpty()) {
++#ifdef PKGDATADIR
++        QStringList candidates;
++        candidates.append(QDir::homePath() + "/.local/share/fritzing");
++        candidates.append("/usr/local/share/fritzing");
++        candidates.append(m_appPath);
++        foreach (const QString &candidate, candidates) {
++            QList<QDir> dirList;
++            dirList.append(QDir(candidate + "/fritzing-parts"));
++            dirList.append(QDir(candidate + "/parts"));
++            foreach (const QDir &dir, dirList) {
++                m_partsPath = dir.absolutePath();
++                if (dir.exists()) {
++                    goto setpath;
++                }
++            }
++        }
++#else
+         QDir dir = getApplicationSubFolder("fritzing-parts");
+         if (dir.exists()) {
+             m_partsPath = dir.absolutePath();
+@@ -130,9 +148,10 @@ QDir FolderUtils::getAppPartsSubFolder2(QString search) {
+                 m_partsPath = dir.absolutePath();
+             }
+         }
++#endif
+     }
+ 
+-
++setpath:
+     QString path = search.isEmpty() ? m_partsPath : m_partsPath + "/" + search;
+     //DebugDialog::debug(QString("path %1").arg(path) );
+     QDir dir(path);
+@@ -218,8 +237,15 @@ const QString FolderUtils::applicationDirPath() {
+ #ifdef Q_OS_WIN
+         m_appPath = QCoreApplication::applicationDirPath();
+ #else
+-		// look in standard Fritzing location (applicationDirPath and parent folders) then in standard linux locations
+ 		QStringList candidates;
++		// Look in standard Linux user and local administrator locations
++		candidates.append(QDir::homePath() + "/.local/share/fritzing");
++		candidates.append("/usr/local/share/fritzing");
++#ifdef PKGDATADIR
++		// look in installed location
++		candidates.append(QLatin1String(PKGDATADIR));
++#else
++		// look in standard Fritzing location (applicationDirPath and parent folders)
+ 		candidates.append(QCoreApplication::applicationDirPath());
+ 		QDir dir(QCoreApplication::applicationDirPath());
+ 		if (dir.cdUp()) {
+@@ -231,14 +257,8 @@ const QString FolderUtils::applicationDirPath() {
+ 				}
+ 			}
+ 		}
+-		
+-#ifdef PKGDATADIR
+-		candidates.append(QLatin1String(PKGDATADIR));
+-#else
+ 		candidates.append("/usr/share/fritzing");
+-		candidates.append("/usr/local/share/fritzing");
+ #endif
+-		candidates.append(QDir::homePath() + "/.local/share/fritzing");
+ 		foreach (QString candidate, candidates) {
+             //DebugDialog::debug(QString("candidate:%1").arg(candidate));
+ 			QDir dir(candidate);
 diff --git a/src/version/partschecker.cpp b/src/version/partschecker.cpp
 index a3e3967..3d54c6b 100644
 --- a/src/version/partschecker.cpp
@@ -1185,6 +1306,20 @@ index 314cd9b..4c7c6fd 100644
 -echo done
 \ No newline at end of file
 +echo done
+diff --git a/tools/user_parts_clone.sh b/tools/user_parts_clone.sh
+new file mode 100644
+index 0000000..ce171b8
+--- /dev/null
++++ b/tools/user_parts_clone.sh
+@@ -0,0 +1,8 @@
++#!/bin/sh
++#
++# enable user to override installed parts library with GitHub clone
++
++REPODIR="${HOME}/.local/share/fritzing/fritzing-parts"
++mkdir -p "${REPODIR}"
++git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git "${REPODIR}" || exit 1
++Fritzing -db "${REPODIR}/parts.db"
 -- 
 2.9.0
 
