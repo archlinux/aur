@@ -1,7 +1,7 @@
 # Maintainer: sulhan <ms at kilabit.info>
 _pkgname=rescached
 pkgname=rescached-git
-pkgver=r123.94e4d7a
+pkgver=1.1.0.r0.g6be6500
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha1sums=(
 
 pkgver() {
 	cd "$srcdir/$_pkgname/src"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -59,4 +59,4 @@ post_install() {
   [[ -f /etc/rescached/hosts.ads ]] && rm -f /etc/rescached/hosts.ads
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2:
