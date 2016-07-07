@@ -1,7 +1,7 @@
 pkgbase = php-cairo-git
 	pkgdesc = PHP Object Oriented interface to Cairo Graphics library.
-	pkgver = r205.9662114
-	pkgrel = 2
+	pkgver = 1.0.0_dev.r9.9662114
+	pkgrel = 1
 	url = https://github.com/gtkforphp/cairo
 	arch = any
 	license = PHP
@@ -9,7 +9,7 @@ pkgbase = php-cairo-git
 	depends = php
 	depends = cairo
 	depends = php-datastructures
-	provides = php-cairo=r205.9662114
+	provides = php-cairo=1.0.0_dev.r9.9662114
 	conflicts = php-cairo
 	source = php-cairo::git+https://github.com/gtkforphp/cairo.git#branch=php7
 	md5sums = SKIP
