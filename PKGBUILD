@@ -5,8 +5,8 @@
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
 epoch=2
-pkgver=1.18.1
-pkgrel=1 # 1=2 in xorg-server
+pkgver=1.18.3
+pkgrel=1 # 2 in xorg-server
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-evdev)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
@@ -25,12 +25,14 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
 source=(${url}/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
         xvfb-run
         xvfb-run.1
+	call-eglBindAPI-after-eglInitialize.patch
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('85ec56dbeb89a951295cdf4f39bf38e515f900d35e06d4a8081b114d1520789d'
+sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+	    '45fdc2a1241d458756c41a93c01846e04cc75f3c75f81f48b61533d08280918d'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
 	    'be9169b937b5d0b44f7f05d7c08aaa5f0c1092e128ce261d9cb350f09dfe1fb0'
 	    '0a643ae83e03faee0f4db669a33c5b3c99edbba5c86cde2c83962ae536d31081')
@@ -42,6 +44,9 @@ prepare() {
   patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
   patch -Np1 -i ../0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
   patch -Np1 -i ../0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch
+
+  msg2 'Apply call-eglBindAPI-after-eglInitialize.patch'
+  patch -Np1 -i ../call-eglBindAPI-after-eglInitialize.patch
 }
 
 build() {
