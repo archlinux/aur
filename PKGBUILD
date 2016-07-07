@@ -8,7 +8,6 @@ url="https://github.com/phw/peek"
 license=('GPL3')
 depends=(gtk3 ffmpeg imagemagick)
 makedepends=(cmake vala gettext)
-install=peek.install
 source=(git+https://github.com/phw/peek.git#tag=v${pkgver})
 sha1sums=('SKIP')
 
