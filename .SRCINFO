@@ -1,0 +1,16 @@
+pkgbase = updatehint
+	pkgdesc = Provides notifications about Arch Linux updates.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/updatehint
+	arch = any
+	license = GPL3
+	depends = cower
+	depends = zenity
+	optdepends = gnome-icon-theme-symbolic: icons in notification boxes
+	optdepends = ncurses: console text formatting (tput)
+	source = updatehint.sh
+	sha256sums = eca9a95e0fd41ce4a5a1c852eef238e6eeb484434495625ce05c7810615f25ee
+
+pkgname = updatehint
+
