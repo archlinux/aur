@@ -16,7 +16,7 @@ md5sums=("7db55826cb37c7eebdd0337f286f74e7")
 package() {
 	cd ${srcdir}
 	mv TriFusion-0.4.0-linux-arch TriFusion
-	install -Dm644 TriFusion "${pkgdir}/usr/bin/TriFusion"
+	install -Dm755 TriFusion "${pkgdir}/usr/bin/TriFusion"
 	install -Dm644 trifusion.desktop "${pkgdir}/usr/share/applications/trifusion.desktop"
 	install -Dm644 trifusion-icon-128.png "${pkgdir}/usr/share/pixmaps/trifusion-icon-128.png"
 }
