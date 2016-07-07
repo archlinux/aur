@@ -4,7 +4,7 @@
 
 pkgname=qnapi
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24"
 arch=('i686' 'x86_64')
 url="https://github.com/QNapi/${pkgname}"
@@ -16,7 +16,7 @@ sha256sums=('48241041eb9a92203885b1083e40a57f4f3a1674036b44d6539aade333d73b69')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake-qt5 ${pkgname}.pro 
+    qmake-qt5 QMAKE_DEFAULT_INCDIRS="" ${pkgname}.pro
     make
 }
 
