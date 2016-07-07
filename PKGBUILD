@@ -15,6 +15,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
+# plumbum is plain python and therefore we don't need to run strip
 options=(!emptydirs !strip)
 install=
 source=("https://pypi.python.org/packages/66/a2/eb943bf1efa2b403debe5b276b024222bd9cecb737f41dd06db6606a43f1/${_pkgname}-${pkgver}.tar.gz")
