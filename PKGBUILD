@@ -9,7 +9,7 @@ pkgdesc="Streamlining phylogenomic data gathering, processing and visualization"
 arch=("any")
 url="https://github.com/ODiogoSilva/TriFusion"
 licence=("GPL3")
-conflicts=("trifusion-git", "trifusion")
+conflicts=("trifusion-git" "trifusion")
 source=("https://github.com/ODiogoSilva/${_pkgname}/releases/download/${pkgver}/TriFusion-${pkgver}-linux-arch.tar.xz")
 md5sums=("7db55826cb37c7eebdd0337f286f74e7")
 
