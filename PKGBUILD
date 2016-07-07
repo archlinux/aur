@@ -4,12 +4,12 @@ _pkgname=stardict-3
 _basever=3.0.6
 pkgname=stardict-tools-git
 pkgver=3.0.6.r653.c00d1e9
-pkgrel=1
+pkgrel=2
 pkgdesc='Stardict tools'
 arch=('i686' 'x86_64')
 url='http://stardict.org/'
 license=('GPLv3')
-depends=('gtk3' 'glib2')
+depends=('gtk3' 'glib2' 'libmariadbclient')
 makedepends=('intltool')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
