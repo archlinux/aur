@@ -4,12 +4,12 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
 depends=('libelf')
-makedepends=('ocaml' 'git' 'mercurial')
+makedepends=('ocaml')
 url="http://flowtype.org"
 license=('BSD')
 source=(
@@ -17,7 +17,7 @@ source=(
     'Makefile-fPIC.patch'
 )
 sha256sums=(
-    'c2e2b9d398815825a7bf06c019652a3e3daa8d859e939dbf1d8ed6cb03635462'
+    'bcd09f106d4959f82fd8525194414a26089151af780992ff13148ef17e75c358'
     '4a91103c7c41bd8176a821edd5d5d4f246cc66eb43d1909289e95b8a515a0b84'
 )
 
