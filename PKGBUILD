@@ -108,7 +108,7 @@ package() {
   #find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
 
   # Create links for gcc-4.3 build environment (useful for CUDA)
   mkdir -p "${pkgdir}/opt/gcc-${_pkgver}"
@@ -116,7 +116,7 @@ package() {
   ln -s '/usr/bin/g++-4.3' "${pkgdir}/opt/gcc-${_pkgver}/g++"
 
   # Install Runtime Library Exception
-  install -Dm644 "${srcdir}/gcc-${pkgver}/COPYING.RUNTIME" \
+  install -Dpm644 '../COPYING.RUNTIME' \
     "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
   set +u
 }
