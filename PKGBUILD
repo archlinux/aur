@@ -4,30 +4,17 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server','-common'})
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('karchive' 'qt5-multimedia' 'qt5-tools' 'qt5-svg' 'ninja' 'cmake')
-source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz"
-	'drawpile103.patch')
-sha256sums=('012a470316ccca51a28700948cd3f866c9b7fcc8fa9bfa21f27f28e9dc53f019'
-	'f25371be6b712c079dc1e742f246e2b9b60a9c6b083c3cebf60916c80521e160')
+source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
+sha256sums=('d224543869039acaaaf7e3116332013acd81230f10efa80017d5af512281f7c9')
 
 _cmakeargs+=('-Wno-dev')
-
-## Used for interactive makepkg later ##
-# msg  "If you wish to only install the server or client set '_build' to 'SERVER' or 'CLIENT' in the provided PKGBUILD file and recompile this package."
-# msg2 "The package 'customizepkg' may be helpful in this case."
-
-prepare() {
-	cd "${pkgbase}-${pkgver}"
-
-	msg2 'Applying patches of unofficial Drawpile 1.0.3'
-	patch -p1 -i '../drawpile103.patch'
-}
 
 build() {
 	cd "${pkgbase}-${pkgver}"
@@ -63,13 +50,12 @@ package_drawpile-client() {
 package_drawpile-server() {
 	pkgdesc+=' (server)'
 	depends=('drawpile-common' 'karchive')
-	optdepends=('libmicrohttpd: web-admin feature (server dependency)'
-		'libsystemd: systemd and logging support (server dependency)')
+	optdepends=('libmicrohttpd: web-admin feature'
+		'libsystemd: systemd and logging support')
 	cd "${pkgbase}-${pkgver}"
 
 	DESTDIR="${pkgdir}" ninja -C 'build' install
 	rm -rfv "${pkgdir}"/usr/{share,bin/drawpile{,-1.*}}
-	#find "${pkgdir}/usr/bin" -not -type d -not -name 'drawpile-srv' -exec rm -f {} \;
 }
 
 package_drawpile-common() {
