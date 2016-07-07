@@ -2,7 +2,7 @@
 
 pkgname=ucsc-kent-genome-tools
 pkgver=334
-pkgrel=1
+pkgrel=2
 pkgdesc="UCSC genome browser 'kent' bioinformatic utilities"
 arch=('i686' 'x86_64')
 url="http://hgdownload.soe.ucsc.edu/admin/exe/"
@@ -19,7 +19,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/userApps/"
-   
+  # don't know why I need the next three lines
+  make libs
+  cp kent/src/lib/x86_64/* kent/src/lib/local/.
+  cp kent/src/lib/local/* kent/src/lib/x86_64/.
   make all
 }
 
