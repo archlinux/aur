@@ -2,11 +2,11 @@
 # Contributor: Milo Mirate <mmirate@gmx.com>
 _pkgname=plumbum
 pkgname=python-plumbum
-pkgver=1.5.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Shell combinators library."
 arch=('any')
-url="http://pypi.python.org/pypi/plumbum"
+url="https://pypi.python.org/pypi/plumbum"
 license=('GPL')
 groups=()
 depends=('python' 'python-six')
@@ -17,8 +17,8 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("http://pypi.python.org/packages/source/p/plumbum/plumbum-${pkgver}.tar.gz")
-md5sums=('88d2537fb6310920e000f87f6608b07f')
+source=("https://pypi.python.org/packages/66/a2/eb943bf1efa2b403debe5b276b024222bd9cecb737f41dd06db6606a43f1/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('fb124f7b70d00686831d8d0f74829e65')
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
