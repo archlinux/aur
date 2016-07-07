@@ -83,15 +83,22 @@ ${bold}OPTIONS${normal}
        -h, -?, --help
               Display this helpful information.
        -i ${underline}n${nounderline}, --interval ${underline}n${nounderline}
-              Check reularly every ${underline}n${nounderline} minutes.
+              Check regularly every ${underline}n${nounderline} minutes.
        -s, --stdout
               Print to standard out even if zenity and ${underline}DISPLAY${nounderline} are found.
        -v, --verbose
-              Notify even when no updates avalable.
+              Notify even when no updates available.
 
 ${bold}EXIT STATUS${normal}
        Exits with status 0 if available updates were found.
        If no updates could be found 1 is returned, in case of errors 2.
+
+${bold}BUGS${normal}
+       If you stumble upon some bugs or have helpful thoughts to share, feel 
+       free to leave a comment at AUR (see section HOMEPAGE).
+       
+${bold}HOMEPAGE${normal}
+       https://aur.archlinux.org/packages/updatehint
 
 ${bold}AUTHOR${normal}
        Tinxy <arch äŧ tinx ðøŧ eu>
