@@ -4,7 +4,7 @@
 pkgbase=libmicrohttpd
 pkgname=lib32-${pkgbase}
 pkgver=0.9.49
-pkgrel=1
+pkgrel=2
 pkgdesc="a small C library that is supposed to make it easy to run an HTTP server as part of another application."
 arch=('x86_64')
 url="http://www.gnu.org/software/libmicrohttpd/"
