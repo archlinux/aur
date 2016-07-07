@@ -1,7 +1,7 @@
 # Maintainer: crasm <crasm@vczf.io>
 
 pkgname=lily-git
-pkgver=?
+pkgver=git
 pkgrel=1
 pkgdesc='An interpreted language with a focus on expressiveness and type safety'
 arch=('any')
