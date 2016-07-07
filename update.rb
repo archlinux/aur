@@ -74,7 +74,7 @@ if success
 	puts "Finishing update to version #{new_version}."
 
 	# Make sure the old src downloads don't exist anymore.
-	Dir["firefox-*.de.linux-x86_64.tar.bz2"].each {|f| File.unlink f}
+	Dir["firefox_*.tar.bz2"].each {|f| File.unlink f}
 
 	# Update package sums & srcinfo.
 	system "updpkgsums"
