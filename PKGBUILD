@@ -2,7 +2,7 @@
 
 pkgname=lzfse-git
 pkgver=r20.4591228
-pkgrel=1
+pkgrel=2
 pkgdesc="The LZFSE compression library and command line tool"
 arch=("x86_64")
 url="https://github.com/lzfse/lzfse"
@@ -28,7 +28,8 @@ build() {
 
 package() {
     install -Dm755 ${srcdir}/${_pkgname}/build/bin/lzfse ${pkgdir}/usr/bin/lzfse
-    install -d ${pkgdir}/usr/lib
+    install -d ${pkgdir}/usr/{include,lib}
+    install -Dm644 ${srcdir}/${_pkgname}/src/lzfse.h ${pkgdir}/usr/include/lzfse.h
     install -Dm644 ${srcdir}/${_pkgname}/build/bin/liblzfse.a ${pkgdir}/usr/lib/
     install -d ${pkgdir}/usr/share/licenses/lzfse
     install -Dm644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/lzfse/
