@@ -149,10 +149,12 @@ while [ -n "$1" ]; do
   fi
 done
 
-if [ -n "$CHECK_INTERVAL" ] && [ -e "$LOCKFILE" ]; then
+if [ -e "$LOCKFILE" ]; then
   trap - EXIT # clears trap to keep lockfile
-  echo -e "Found lockfile at: ${LOCKFILE}\nExiting."
-  exit 2
+  if [ -n "$CHECK_INTERVAL" ]; then
+    echo -e "Found lockfile at: ${LOCKFILE}\nExiting."
+    exit 2
+  fi
 else
   touch "$LOCKFILE"
 fi
