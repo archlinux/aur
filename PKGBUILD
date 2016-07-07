@@ -26,8 +26,8 @@ sha256sums=('92a7854b8ddad6a28efddf226bcbe8e79b051dff859246fcb5f2c7d0828f3d6d'
 
 build() {
   cd ${srcdir}/xpra-$pkgver
-  echo $CFLAGS
   #python2 setup.py build || return 1
+  CFLAGS="$CFLAGS -Wno-error=deprecated-declarations" && export CFLAGS
   CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build || return 1
   cd rencode
   python2 setup.py build || return 1
