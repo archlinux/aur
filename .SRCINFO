@@ -1,7 +1,7 @@
 pkgbase = netease-cloud-music
 	pkgdesc = Netease Cloud Music, converted from .deb package
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://music.163.com/
 	arch = x86_64
 	license = custom
@@ -15,6 +15,7 @@ pkgbase = netease-cloud-music
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
+	depends = gnome-themes-standard
 	source = http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb
 	source = http://music.163.com/html/web2/service.html
 	source = netease-cloud-music

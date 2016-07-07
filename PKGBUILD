@@ -4,7 +4,7 @@ _distro="ubuntu16.04"
 
 pkgname=netease-cloud-music
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
@@ -13,7 +13,8 @@ depends=(
 	"alsa-lib" "gtk2" "nss" "libxss"
 	"qt5-multimedia" "qt5-x11extras"
 	"gst-libav" "gst-plugins-base"
-	"gst-plugins-good" "gst-plugins-ugly" 
+	"gst-plugins-good" "gst-plugins-ugly"
+	"gnome-themes-standard"
 )
 source=(
 	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64_${_distro}.deb"
