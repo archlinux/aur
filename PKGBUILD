@@ -5,7 +5,7 @@
 set -u
 _pkgname='dropbox-uploader'
 pkgname="${_pkgname}-git"
-pkgver=0.19c.r0.g9bf5490
+pkgver=0.20c.r0.gb745657
 pkgrel=1
 pkgdesc='A bash script to manage Dropbox from the CLI'
 arch=('any')
