@@ -1,15 +1,15 @@
 pkgbase = injection-git
 	pkgdesc = A Python-based ASCII programming-puzzle game.
-	pkgver = r7.a8a7133
+	pkgver = r42.6cfd4e8
 	pkgrel = 1
 	url = https://schilcote.itch.io/injection
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python-cx_freeze
 	makedepends = unzip
 	makedepends = curl
 	makedepends = python-pip
+	makedepends = git
 	depends = python-pygame
 	depends = python-pyperclip
 	depends = python-rsa
@@ -20,8 +20,12 @@ pkgbase = injection-git
 	conflicts = injection
 	source = git+https://gitlab.com/toastengineer/INJECTION.git
 	source = injection.sh
+	source = injection.desktop
+	source = icon.png
 	md5sums = SKIP
 	md5sums = 5f21ca7a8891291e250f5296ba855324
+	md5sums = cf419413f1dda3dcae7c665c9bb4bf46
+	md5sums = 2e6543984ecc80ddf57ed822b344e0e1
 
 pkgname = injection-git
 
