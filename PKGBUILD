@@ -10,7 +10,7 @@ arch=("any")
 url="https://github.com/ODiogoSilva/TriFusion"
 licence=("GPL3")
 depends=("python2-kivy" "python2-numpy" "python2-scipy" "python2-matplotlib" "python2-psutil" "python2-seaborn" "python2-configparser")
-conflicts=("trifusion", "trifusion-bin")
+conflicts=("trifusion" "trifusion-bin")
 source=("git+https://github.com/ODiogoSilva/TriFusion.git")
 md5sums=("SKIP")
 
