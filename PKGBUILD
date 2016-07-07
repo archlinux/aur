@@ -18,8 +18,8 @@ pkgver() {
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_release_url="https://schilcote.itch.io/injection/file/204814?after_download_lightbox=true"
-_release_ver=0.9.1
+_release_url="https://schilcote.itch.io/injection/file/235400?after_download_lightbox=true"
+_release_ver=0.9.2
 prepare() {
 	_direct_link=$(curl -s -XPOST "${_release_url}" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g') #Thanks, dcelasun
 	curl "$_direct_link" -o "INJECTION_${_release_ver}_src.zip"
