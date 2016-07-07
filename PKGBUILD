@@ -1,5 +1,5 @@
 pkgname=abzer-git
-pkgver=f2811a6
+pkgver=0.1.r6.ddacffb
 pkgrel=1
 pkgdesc="AcousticBrainz submission tool"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=('git')
 
 pkgver(){
   cd "${srcdir}/abzer"
-  echo "$(git describe --tags --always | sed 's/-/./g' )"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
