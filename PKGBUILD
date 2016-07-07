@@ -1,42 +1,26 @@
-# Maintainer: bhushan
-# thanks to huma, adlaiff6, Invie, solarce
-pkgname=tmate
-pkgver=1.8.10
-pkgrel=1
-pkgdesc="Instant terminal sharing"
-arch=('i686' 'x86_64')
-license=('MIT')
-url="http://tmate.io/"
-makedepends=('cmake' 'libevent' 'ncurses' 'openssl' 'zlib' 'ruby')
-source=('pedantic.patch')
-md5sums=('452225069476d70bc24fce03a152a489')
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributors: bhushan, huma, adlaiff6, Invie, solarce
 
-gitroot="https://github.com/nviennot/tmate.git"
-gitname="tmate"
-gitrev="a1c9d8784f"
+pkgname='tmate'
+pkgver='2.2.1'
+pkgrel='1'
+pkgdesc='Instant Terminal Sharing'
+arch=('i686' 'x86_64')
+url='http://tmate.io/'
+license=('BSD')
+makedepends=('cmake' 'libevent' 'ncurses' 'openssl' 'zlib' 'ruby'
+             'msgpack-c')
+source=("https://github.com/tmate-io/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d9c2ac59f42e65aac5f500f0548ea8056fd79c9c5285e5af324d833e2a84c305')
 
 build() {
-  cd ${srcdir}
-
-  if [[ -d ${gitname} ]] ; then
-    cd ${gitname}
-    git fetch -q
-    git reset -q --hard origin/master
-    git checkout -f -q ${gitrev}
-  else
-    git clone ${gitroot}
-    cd ${gitname}
-    git checkout -f -q ${gitrev}
-  fi
-
-  patch -p1 -i ${srcdir}/../pedantic.patch
-
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }

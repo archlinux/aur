@@ -1,19 +1,20 @@
 pkgbase = tmate
-	pkgdesc = Instant terminal sharing
-	pkgver = 1.8.10
+	pkgdesc = Instant Terminal Sharing
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://tmate.io/
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = BSD
 	makedepends = cmake
 	makedepends = libevent
 	makedepends = ncurses
 	makedepends = openssl
 	makedepends = zlib
 	makedepends = ruby
-	source = pedantic.patch
-	md5sums = 452225069476d70bc24fce03a152a489
+	makedepends = msgpack-c
+	source = https://github.com/tmate-io/tmate/archive/2.2.1/tmate-2.2.1.tar.gz
+	sha256sums = d9c2ac59f42e65aac5f500f0548ea8056fd79c9c5285e5af324d833e2a84c305
 
 pkgname = tmate
 
