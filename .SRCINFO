@@ -1,4 +1,4 @@
-pkgbase = lib32-libmicrohttpd
+pkgbase = libmicrohttpd
 	pkgdesc = a small C library that is supposed to make it easy to run an HTTP server as part of another application.
 	pkgver = 0.9.49
 	pkgrel = 1
@@ -7,10 +7,9 @@ pkgbase = lib32-libmicrohttpd
 	license = LGPL
 	depends = lib32-gnutls
 	depends = lib32-libgcrypt
-	optdepends = lib32-file
 	optdepends = lib32-curl
 	options = !libtool
-	source = ftp://ftp.gnu.org/gnu/libmicrohttpd/lib32-libmicrohttpd-0.9.49.tar.gz
+	source = ftp://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.49.tar.gz
 	md5sums = 3209aa2ac6199b874a6325342b86edbc
 
 pkgname = lib32-libmicrohttpd
