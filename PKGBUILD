@@ -2,12 +2,13 @@
 
 pkgname=jetbrains-toolbox
 pkgver=1.0.1569
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage all your JetBrains Projects and Tools"
 arch=('x86_64' 'i686')
 options=('!strip')
 url="http://www.jetbrains.com/${pkgname}/"
 license=('Commercial')
+depends=('fuse')
 optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz)
