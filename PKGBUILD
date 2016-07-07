@@ -1,13 +1,13 @@
 # Maintainer: pigt <pay2630@gmail.com>
 pkgname=injection-git
-pkgver=r7.a8a7133
+pkgver=r27.9b764e7
 pkgrel=1
 pkgdesc="A Python-based ASCII programming-puzzle game."
 arch=('i686' 'x86_64')
 url="https://schilcote.itch.io/injection"
 license=('MIT')
 depends=('python-pygame' 'python-pyperclip' 'python-rsa' 'python-numpy' 'cython' 'tk' 'python-dill')
-makedepends=('python-cx_freeze' 'unzip' 'curl' 'python-pip' 'git')
+makedepends=('unzip' 'curl' 'python-pip' 'git')
 conflicts=('injection')
 source=('git+https://gitlab.com/toastengineer/INJECTION.git' injection.sh)
 md5sums=('SKIP'
