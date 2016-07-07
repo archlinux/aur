@@ -1,6 +1,6 @@
 pkgbase = lily-git
 	pkgdesc = An interpreted language with a focus on expressiveness and type safety
-	pkgver = ?
+	pkgver = git
 	pkgrel = 1
 	url = https://jesserayadkins.github.io/lily/
 	arch = any
