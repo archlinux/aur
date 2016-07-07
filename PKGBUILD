@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-marshmallow
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes"
 arch=('any')
@@ -12,9 +12,9 @@ optdepends=('python-dateutil: robust datetime deserialization'
 url="https://github.com/marshmallow-code/marshmallow"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/4f/64/9393d77847d86981c84b88bbea627d30ff71b5ab1402636b366f73737817/marshmallow-2.8.0.tar.gz)
-md5sums=('204513fc123a3d9bdd7b63b9747f02e6')
-sha256sums=('7c519e0e4c74270bae8dfb20b611910cfb4b78e02ecc1c8c4e3fbc58de2698df')
+source=(https://pypi.python.org/packages/3c/08/12d7d988c540184616bbb7c6635bbae6f7c558db84979bc7a9fdaa0a5f7c/marshmallow-2.9.0.tar.gz)
+md5sums=('15ebc05a75de782116ab1d5eee807e73')
+sha256sums=('4ef51025bfe84639f2dc42ea29c06fd6a487231b12d48a81ac9a24dbeb7b1b9f')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
