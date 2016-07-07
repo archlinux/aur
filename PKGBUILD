@@ -84,7 +84,8 @@ build() {
       --enable-lto --enable-plugin --enable-install-libiberty \
       --with-linker-hash-style=gnu \
       --enable-multilib --disable-werror \
-      --enable-checking=release
+      --enable-checking=release \
+      --build="${CHOST}"
 
   make
 
