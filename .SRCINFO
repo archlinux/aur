@@ -1,0 +1,18 @@
+pkgbase = libusrsctp
+	pkgdesc = A portable SCTP userland stack
+	pkgver = 0.9.3.0
+	pkgrel = 1
+	url = https://github.com/sctplab/usrsctp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = automake
+	makedepends = autoconf
+	depends = glibc
+	provides = libusrsctp-git
+	conflicts = libusrsctp-git
+	source = https://github.com/sctplab/usrsctp/archive/0.9.3.0.tar.gz
+	sha512sums = ef9c6361ad0183f887666883f9fc8911267797c3a7a9f03712249db350b3602eda70b60bbf93eabcf46049dd922e18ffa7ea6f49a69490ef2b815e812dfbbefb
+
+pkgname = libusrsctp
+
