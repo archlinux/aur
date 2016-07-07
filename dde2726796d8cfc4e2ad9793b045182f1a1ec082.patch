@@ -1,0 +1,33 @@
+From dde2726796d8cfc4e2ad9793b045182f1a1ec082 Mon Sep 17 00:00:00 2001
+From: Victor <theonlypwner@users.noreply.github.com>
+Date: Mon, 4 Jul 2016 11:43:56 -0600
+Subject: [PATCH] Update blinking text code and fix #200
+
+---
+ source/src/rendertext.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/source/src/rendertext.cpp b/source/src/rendertext.cpp
+index 5ddc698..22f7a34 100644
+--- a/source/src/rendertext.cpp
++++ b/source/src/rendertext.cpp
+@@ -330,7 +330,7 @@ static void text_color(char c, char *stack, int size, int &sp, bvec color, int a
+         if(c=='r') c = stack[(sp > 0) ? --sp : sp]; // restore color
+         else if(c == 'b') { if(allowblinkingtext && !ignoreblinkingbit) stack[sp] *= -1; } // blinking text - only if allowed
+         else stack[sp] = c;
+-        switch(abs(stack[sp]))
++        switch(abs(static_cast<int>(stack[sp])))
+         {
+             case '0': color = bvec( 2,  255,  128 ); break;   // green: player talk
+             case '1': color = bvec( 96,  160, 255 ); break;   // blue: team chat
+@@ -383,7 +383,9 @@ static void text_color(char c, char *stack, int size, int &sp, bvec color, int a
+             // white (provided color): everything else
+             //default: color = bvec( 255, 255, 255 ); break;
+         }
+-        glColor4ub(color.x, color.y, color.z, stack[sp] > 0 ? a : a * min<float>(fabs(sinf(lastmillis / 200.f) * 1.15f), 1.f));
++        if (stack[sp] <= 0)
++            a = min(abs((int) (a * sinf(lastmillis / 200.0f) * 1.15f)), 100);
++        glColor4ub(color.x, color.y, color.z, a);
+     }
+ }
+ 

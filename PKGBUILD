@@ -2,7 +2,7 @@
 
 pkgname=assaultcube-reloaded
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='AssaultCube Reloaded'
 arch=('i686' 'x86_64')
 url='http://acr.victorz.ca'
@@ -13,12 +13,14 @@ source=("https://github.com/actf/acr/archive/v${pkgver}.tar.gz"
         'acreloaded'
         'acreloaded-server'
         'acreloaded.desktop'
-        'acreloaded.svg')
+        'acreloaded.svg'
+	dde2726796d8cfc4e2ad9793b045182f1a1ec082.patch)
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  
+  install -d "${pkgdir}"/usr/bin
+  install -d "${pkgdir}"/usr/share/acreloaded  
   cd ${srcdir}/acr-${pkgver}
+  patch -Np1 -i ../dde2726796d8cfc4e2ad9793b045182f1a1ec082.patch
   cd  source/src
 
   make DESTDIR=$pkgdir install
@@ -44,4 +46,5 @@ md5sums=('260e71aa128710012a94e53fdde61286'
          'c6db5816ce66282f6d6c7d08792b6095'
          '53b17712afb7f0a5646b9894032d06ff'
          'bff621e554812c7325b2bd7f56e9e881'
-         '3b142417157d73da4a7981fd07bcb628')
+         '3b142417157d73da4a7981fd07bcb628'
+         '45a0c9247df6cd6547ee9f90ff181024')
