@@ -1,8 +1,9 @@
-# Maintainer: TingPing <tingping@tingping.se>
+# Maintainer: Tom Richards <tom@tomrichards.net>
+# Contributor: TingPing <tingping@tingping.se>
 
 _gitname=gnome-games
 pkgname=gnome-games-git
-pkgver=3.18.0.r0.g9fbaeca
+pkgver=3.21.2.r1.g0da3e43
 pkgrel=1
 pkgdesc='A game manager application for GNOME'
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ install='gnome-games.install'
 #conflicts=('gnome-games')
 depends=('retro-gtk' 'libarchive' 'libtracker-sparql')
 makedepends=('git' 'intltool' 'automake' 'autoconf' 'vala')
-source=('git+https://github.com/Kekun/gnome-games.git')
+source=('git+https://git.gnome.org/browse/gnome-games/')
 sha256sums=('SKIP')
 
 pkgver() {
