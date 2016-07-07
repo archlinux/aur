@@ -1,14 +1,14 @@
 pkgbase = python-pylint-django
 	pkgdesc = Pylint plugin for improving code analysis for when using Django
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/landscapeio/pylint-django
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/landscapeio/pylint-django/archive/0.7.1.tar.gz
-	md5sums = 66dd51ea91cffca8bab28b30a4fb99cb
+	source = https://github.com/landscapeio/pylint-django/archive/e381721eedcaf240bf56b038878c1e7fad848183.tar.gz
+	md5sums = 2106197486ad595e192242221493df7f
 
 pkgname = python-pylint-django
 
