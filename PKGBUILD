@@ -6,7 +6,7 @@
 # The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12)
 
 pkgname='unreal-engine'
-pkgver=4.12.4
+pkgver=4.12.5
 pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
 
   cd $srcdir/UnrealEngine
   
-  # might help to clean up old builds when there is a new version
+  # help to clean up old builds when there is a new version
   # git clean -xdf
 
   ./Setup.sh
@@ -54,20 +54,20 @@ package() {
   # engine
   install -d "$pkgdir/opt/$pkgname/Engine"
   # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
-  # @todo probably not all these folders need to be writable and/or installed, and maybe some should be moved to user's home
   cp -r Engine/Binaries "$pkgdir/opt/$pkgname/Engine/Binaries"
   cp -r Engine/Build "$pkgdir/opt/$pkgname/Engine/Build"
   cp -r Engine/Config "$pkgdir/opt/$pkgname/Engine/Config"
   cp -r Engine/Content "$pkgdir/opt/$pkgname/Engine/Content"
-  install -d "$pkgdir/opt/$pkgname/Engine/DerivedDataCache" # created when UE4Editor is run
+  install -d "$pkgdir/opt/$pkgname/Engine/DerivedDataCache" # editor needs this
   cp -r Engine/Documentation "$pkgdir/opt/$pkgname/Engine/Documentation"
   cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Extras"
+  install -d "$pkgdir/opt/$pkgname/Engine/Intermediate" # editor needs this, but not the files from the build
   cp -r Engine/Intermediate "$pkgdir/opt/$pkgname/Engine/Intermediate"
   cp -r Engine/Plugins "$pkgdir/opt/$pkgname/Engine/Plugins"
   cp -r Engine/Programs "$pkgdir/opt/$pkgname/Engine/Programs"
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
   cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
-  cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source"
+  cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source" # the source cannot be redistributed, but seems to be needed to compile c++ projects
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
   # content
