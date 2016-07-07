@@ -3,13 +3,13 @@
 
 pkgname='tmate'
 pkgver='2.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Instant Terminal Sharing'
 arch=('i686' 'x86_64')
 url='http://tmate.io/'
 license=('BSD')
-makedepends=('cmake' 'libevent' 'ncurses' 'openssl' 'zlib' 'ruby'
-             'msgpack-c')
+depends=('libevent' 'libssh' 'libutempter' 'msgpack-c' 'ncurses' 'openssl' 'zlib')
+makedepends=('cmake' 'ruby')
 source=("https://github.com/tmate-io/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('d9c2ac59f42e65aac5f500f0548ea8056fd79c9c5285e5af324d833e2a84c305')
 
