@@ -2,7 +2,7 @@
 
 _gemname=pg
 pkgname=ruby-pg
-pkgver=0.18.1
+pkgver=0.18.4
 pkgrel=1
 pkgdesc="Pg is the Ruby interface to the Postgresql RDBMS"
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=("rubygems" "postgresql-libs")
 conflicts=("")
 options=(!emptydirs)
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-md5sums=('bc21aeb047b159ef68de2a84061e7f80')
+md5sums=('ac35f7c82ca7ca7b8dfd8533a238a83d')
 noextract=(${_gemname}-${pkgver}.gem)
 
 package() {
