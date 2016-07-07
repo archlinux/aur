@@ -2,19 +2,18 @@
 
 pkgname="php-cairo-git"
 _pkgname=${pkgname%-git}
-pkgver=0.3.2.beta.r31.g1bc059c
-pkgrel=1
+__pkgname=${_pkgname#php-}
+pkgver=r205.9662114
+pkgrel=2
 pkgdesc="PHP Object Oriented interface to Cairo Graphics library."
 arch=('any')
-url="https://github.com/gtkforphp/${_pkgname#php-}"
-license=('LGPL2')
-depends=('php' 'cairo')
+url="https://github.com/gtkforphp/$__pkgname"
+depends=('php' "$__pkgname" 'php-datastructures')
+license=('PHP')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=()
-install=
-source=("$_pkgname"::"git+https://github.com/jamesan/${_pkgname#php-}.git")
+source=("$_pkgname"::"git+https://github.com/gtkforphp/$__pkgname.git#branch=php7")
 md5sums=('SKIP')
 
 pkgver() {
