@@ -1,22 +1,25 @@
-# Maintainer:  Quint Guvernator <quint@guvernator.net>
+# Maintainer: Edward Herández <ehernandez@email.wm.edu>
+# Contributor:  Quint Guvernator <quint@guvernator.net>
 
 pkgname=fenix-git
 _pkgname=fenix
-pkgver=r1.2422293
+pkgver=r1.e517992
 pkgrel=1
 pkgdesc="respawn a process unless the user really wants to quit"
-url="http://github.com/qguv/fenix"
+url="http://github.com/syntactician/fenix"
 arch=('i686' 'x86_64')
 license=('Artistic2.0')
 makedepends=('git')
-source=("$_pkgname::git+https://github.com/qguv/fenix")
+source=("$_pkgname::git+https://github.com/syntactician/fenix")
 md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
