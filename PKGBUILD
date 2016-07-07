@@ -1,26 +1,23 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 # Notes on dependencies
-# - GL2PS: Using the system library triggers FTBFS, see http://www.vtk.org/Bug/view.php?id=16083. Thus
-#   the in-tree version is used instead. Shouldn't do any harm as the resulting libraries are named
-#   libvtkgl2ps-<VTK version>.so*.
 # - Java: In order to discover all components needed the binary directory that's included in PATH by files
 #   /etc/profile.d/jre.* of package java-runtime-common isn't sufficient but the JDK needs to be found.
 #   Hence its path is set in JAVA_HOME.
 # - NetCDF: System library can still be accessed via the legacy C++ API only, see
 #   http://www.vtk.org/Bug/view.php?id=15549.
-# - PROJ.4: System library doesn't get recognized, see http://www.vtk.org/Bug/view.php?id=14126. Same
-#   solution as with GL2PS.
+# - PROJ.4: System library doesn't get recognized, see http://www.vtk.org/Bug/view.php?id=14126. In tree
+#   version is used which doesn't introduce problems as all relevant upstream names are changed by default.
 
 _pkgname=vtk
 pkgname=$_pkgname-git
-pkgver=7.0.0.1346.g2b54134
+pkgver=7.0.0.1656.gba7417a
 pkgrel=1
 pkgdesc='Open-source software system for image processing, 3D graphics, volume rendering and visualization'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org'
 license=('BSD')
-depends=('jsoncpp' 'libxt' 'tk' 'netcdf-cxx-legacy' 'ffmpeg' 'gdal')
+depends=('jsoncpp' 'libxt' 'tk' 'netcdf-cxx-legacy' 'ffmpeg' 'gdal' 'gl2ps-svn')
 makedepends=('git' 'cmake' 'doxygen' 'boost' 'java-environment')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -44,7 +41,6 @@ build() {
       -DVTK_USE_CXX11_FEATURES=ON \
       -DVTK_USE_LARGE_DATA=ON \
       -DVTK_USE_SYSTEM_LIBRARIES=ON \
-      -DVTK_USE_SYSTEM_GL2PS=OFF \
       -DVTK_USE_SYSTEM_LIBPROJ4=OFF \
       -DVTK_USE_SYSTEM_XDMF3=OFF \
       -DModule_vtkIOFFMPEG=ON \
