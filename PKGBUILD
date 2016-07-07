@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-beets
-pkgver=2.0.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=0
 pkgdesc="Mopidy extension for playing music from a Beets collection"
 arch=('any')
 url="http://www.mopidy.com"
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python2')
 provides=('mopidy-beets')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('f838580ebd76eae37be146d545e41a1e')
+md5sums=('b0f1f05497183300e7b9e3bb288ad6cb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
