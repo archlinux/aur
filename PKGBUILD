@@ -1,5 +1,5 @@
 pkgname=lala-git
-pkgver=0.2_129_g891b782
+pkgver=0.4.r61.f876246
 pkgrel=1
 pkgdesc="irc bot"
 arch=("any")
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver(){
   cd "$srcdir/lala"
-  echo "$(git describe --tags --always | sed 's/-/_/g')"
+  printf "%s" "$(git describe --long --tags| sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
