@@ -1,7 +1,7 @@
 # Maintainer: White-Oak <lpzhelud@gmail.com>
 pkgname=servo-latest
 pkgver=r20160707
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
 url="https://servo-builds.s3.amazonaws.com/index.html"
@@ -33,6 +33,7 @@ package() {
 	install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
 	install -dm755 "$pkgdir/opt/servo"
+	chmod -R 755 servo
 	cp -r "servo" "$pkgdir/opt"
 
 	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
