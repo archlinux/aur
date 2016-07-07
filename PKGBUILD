@@ -12,7 +12,7 @@ conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
 'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon')
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
 install=psd.install
-sha256sums=('e5348ea3fd8624ae8b4a67e17966eee394dd9836832a3c3b08d50e67355cff22')
+sha256sums=('99843d7ece67dd795280f913c5ea4881781465751db12f0d410f297419a2e3a9')
 
 build() {
   cd "$pkgname-$pkgver"
