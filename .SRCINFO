@@ -1,0 +1,21 @@
+pkgbase = pentmenu
+	pkgdesc = A bash script inspired by pentbox.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/GinjaChris/pentmenu
+	arch = any
+	groups = archstrike
+	groups = archstrike-misc
+	license = GPL3
+	depends = bash
+	depends = hping
+	depends = gnu-netcat
+	depends = openssl
+	depends = stunnel
+	depends = nmap
+	depends = whois
+	source = https://github.com/GinjaChris/pentmenu/archive/1.2.0.tar.gz
+	sha512sums = 81729731235c929a369cd87045e894108ccb063a27cabb1c079bda7e54aecad68ce73c5c7e7c2aaacdcce4f3bb54a3a0b91b97781f521dc3cbdb10623bb8780c
+
+pkgname = pentmenu
+
