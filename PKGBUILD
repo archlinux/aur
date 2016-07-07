@@ -2,7 +2,7 @@
 # Maintainer: Alastair Pharo  asppsa at gmail dot com
 
 pkgname=pure-reduce-git
-pkgver=r5646.3811e20
+pkgver=r5648.758494c
 pkgrel=1
 pkgdesc="Computer Algebra with Pure: A Reduce Interface"
 arch=("i686" "x86_64")
