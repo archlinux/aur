@@ -1,10 +1,11 @@
-#editor
-*.swp
+*
 
-#package
-*.tar
-*.xz
-*.gz
-*.zip
-pkg/
-src/
+!.gitignore
+!.SRCINFO
+!LICENSE
+!logrotate
+!nginx-passenger.install
+!packaging.patch
+!PKGBUILD
+!README.md
+!service
