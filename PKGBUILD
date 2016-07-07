@@ -9,29 +9,32 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname='gcc49-multilib'
+set -u
 _pkgver='4.9'
-_pkgver_minor='3'
-pkgver="${_pkgver}.${_pkgver_minor}"
+pkgname="gcc${_pkgver//\./}-multilib"
+pkgver="${_pkgver}.3"
 _islver='0.12.2'
 _cloogver='0.18.1'
 pkgrel='3'
 #_snapshot=4.9-20150304
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
-url="http://gcc.gnu.org"
+url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
+depends=('zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 makedepends+=('lib32-glibc>=2.20')
 checkdepends=('dejagnu' 'inetutils')
-provides=('gcc49')
-conflicts=('gcc49')
+provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
+conflicts=("gcc${_pkgver//\./}")
 options=('!emptydirs')
-source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-        "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
-        "gcc-4.9-fix-build-with-gcc-6.patch")
+source=(
+  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+  #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+  "gcc-4.9-fix-build-with-gcc-6.patch"
+)
 sha256sums=('2332b2a5a321b57508b9031354a8503af6fdfb868b8c1748d33028d100a8b67e'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
@@ -47,6 +50,7 @@ fi
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
+  set -u
   cd "${_basedir}"
 
   # link isl/cloog for in-tree builds
@@ -69,11 +73,6 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i -e '/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/' {libiberty,gcc}/configure
 
-  mkdir "${srcdir}/gcc-build"
-
-  # build
-  cd "${srcdir}/gcc-build"
-
   # Doesn't like FORTIFY_SOURCE
   export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -86,15 +85,20 @@ prepare() {
   export CFLAGS="${CFLAGS/-pipe/}"
   export CXXFLAGS="${CXXFLAGS/-pipe/}"
 
-  # The following options are one per line, sorted so they are easy to diff compare to other gcc packages.
-  "${srcdir}/${_basedir}/configure" \
+  rm -rf 'gcc-build'
+  mkdir 'gcc-build'
+  cd 'gcc-build'
+
+  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+  ../configure \
     --build="${CHOST}" \
     --disable-libssp \
     --disable-libstdcxx-pch \
     --disable-libunwind-exceptions \
+    --enable-multilib \
     --disable-werror \
     --enable-__cxa_atexit \
-    --enable-checking=release \
+    --enable-checking='release' \
     --enable-clocale='gnu' \
     --enable-cloog-backend='isl' \
     --enable-gnu-unique-object \
@@ -102,7 +106,6 @@ prepare() {
     --enable-languages='c,c++,fortran,go,lto,objc,obj-c++' \
     --enable-linker-build-id \
     --enable-lto \
-    --enable-multilib \
     --enable-plugin \
     --enable-shared \
     --enable-threads='posix' \
@@ -111,33 +114,36 @@ prepare() {
     --libdir='/usr/lib' \
     --libexecdir='/usr/lib' \
     --mandir='/usr/share/man' \
-    --prefix='/usr' \
     --program-suffix="-${_pkgver}" \
     --with-bugurl='https://bugs.archlinux.org/' \
     --with-linker-hash-style='gnu' \
-    --with-system-zlib
+    --with-system-zlib \
+    --prefix='/usr'
 #    CXX='g++-4.9' CC='gcc-4.9'
 
 # gcc-5.0 changes
 #      --with-default-libstdcxx-abi=c++98    - before gcc-5.0 c++ rebuild
 #      --enable-gnu-indirect-function
 #      --with-isl    - cloog no longer needed
-
+  set +u
 }
 
 build() {
-  cd "${srcdir}/gcc-build"
+  set -u
+  cd "${_basedir}/gcc-build"
 
-  export LD_PRELOAD='/usr/lib/libstdc++.so'
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
   make -s -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
+  set +u
 }
 
 _fn_check() {
-  cd "${srcdir}/gcc-build"
+  set -u
+  cd "${_basedir}/gcc-build"
 
   # increase stack size to prevent test failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
@@ -146,11 +152,12 @@ _fn_check() {
   # do not abort on error as some are "expected"
   make -k check || :
   "${srcdir}/${_basedir}/contrib/test_summary"
+  set +u
 }
 
-package()
-{
-  cd "${srcdir}/gcc-build"
+package() {
+  set -u
+  cd "${_basedir}/gcc-build"
 
   make -s -j1 DESTDIR="${pkgdir}" install
 
@@ -159,11 +166,11 @@ package()
   find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
 
   # Install Runtime Library Exception
-  install -Dm644 "${srcdir}/gcc-${pkgver}/COPYING.RUNTIME" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION"
-
-  # We don't want symlinks. There's no point in installing gcc-4.9.{0..infinity}. One x.x version will be fine!
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
+  set +u
 }
+set +u
