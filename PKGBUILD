@@ -1,7 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
 pkgver=16.1.16125.489
-pkgrel=1
+pkgrel=2
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
 url="https://www.gov.uk/basic-paye-tools"
@@ -23,7 +23,7 @@ install=payetools-rti.install
 changelog=
 source=( "https://www.gov.uk/government/uploads/uploaded/hmrc/$pkgname-$pkgver-linux.zip" )
 noextract=( "$pkgname-$pkgver-linux.zip" )
-md5sums=('b688b71ad5570104ca749d88acf59f87') #autofill using updpkgsums
+md5sums=('b688b71ad5570104ca749d88acf59f87')
 
 prepare() {
   unzip "$pkgname-$pkgver-linux.zip"
@@ -40,7 +40,7 @@ package() {
   ./$pkgname-$pkgver-linux --prefix ${pkgdir}/opt/HMRC/basic-paye-tools --check_for_updates 0 --mode unattended --debuglevel 4
   rm $pkgname-$pkgver-linux
   install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${pkgdir}/opt/HMRC/basic-paye-tools/license.txt
-  sed -i "s#${pkgdir}#/#g" ${pkgdir}/tmp/.local/share/applications/*.desktop
+  sed -i "s#${pkgdir}##g" ${pkgdir}/tmp/.local/share/applications/*.desktop
   install -D -t ${pkgdir}/usr/share/applications/ ${pkgdir}/tmp/.local/share/applications/*.desktop
   rm -fr ${pkgdir}/tmp
 }
