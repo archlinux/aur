@@ -16,7 +16,7 @@ sha256sums=('48241041eb9a92203885b1083e40a57f4f3a1674036b44d6539aade333d73b69')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake-qt5 ${pkgname}.pro 
+    qmake-qt5 QMAKE_DEFAULT_INCDIRS="" ${pkgname}.pro
     make
 }
 
