@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=opendht
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
