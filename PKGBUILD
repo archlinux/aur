@@ -4,7 +4,7 @@
 
 pkgname=shinken
 pkgver=2.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
@@ -105,6 +105,7 @@ prepare() {
     find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
     find bin -type f -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
     sed -i "s#/usr/lib/nagios/plugins#/usr/lib/monitoring-plugins#" etc/resource.d/paths.cfg
+    sed -i "s#'sphinx.ext.pngmath', ##" doc/source/conf.py
 }
 
 build() {

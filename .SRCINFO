@@ -1,7 +1,7 @@
 pkgbase = shinken
 	pkgdesc = An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios
 	pkgver = 2.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.shinken-monitoring.org/
 	install = shinken.install
 	arch = any
