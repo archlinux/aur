@@ -1,7 +1,7 @@
 # Maintainer:  Drew Noel <drewmnoel@gmail.com>
 
 pkgname=caffe-git
-pkgver=rc3.r184.gdf412ac
+pkgver=rc3.r186.gf28f5ae
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
@@ -121,30 +121,30 @@ package() {
 
   # Install shared libraries
   mkdir -p $pkgdir/usr/lib/
-  install -Dm644 .build_release/lib/* "${pkgdir}/usr/lib/"
+  install -Dm644 build/lib/* "${pkgdir}/usr/lib/"
 
   ### Install all the execulables ###
   mkdir -p $pkgdir/usr/bin/
 
   # Primary executable
-  install -D -m755 .build_release/tools/caffe.bin "$pkgdir/usr/bin/caffe"
+  install -D -m755 build/tools/caffe.bin "$pkgdir/usr/bin/caffe"
 
   # Conversion executables 
-  install -D -m755 .build_release/examples/cifar10/convert_cifar_data.bin "$pkgdir/usr/bin/convert_cifar_data"
-  install -D -m755 .build_release/examples/mnist/convert_mnist_data.bin "$pkgdir/usr/bin/convert_mnist_data"
-  install -D -m755 .build_release/examples/siamese/convert_mnist_siamese_data.bin "$pkgdir/usr/bin/convert_mnist_siamese_data"
+  install -D -m755 build/examples/cifar10/convert_cifar_data.bin "$pkgdir/usr/bin/convert_cifar_data"
+  install -D -m755 build/examples/mnist/convert_mnist_data.bin "$pkgdir/usr/bin/convert_mnist_data"
+  install -D -m755 build/examples/siamese/convert_mnist_siamese_data.bin "$pkgdir/usr/bin/convert_mnist_siamese_data"
 
   # Depreciated executables. All in caffe executable now but included here for backwards compatiblity
-  install -D -m755 .build_release/tools/finetune_net.bin "$pkgdir/usr/bin/finetune_net"
-  install -D -m755 .build_release/tools/train_net.bin "$pkgdir/usr/bin/train_net"
-  install -D -m755 .build_release/tools/device_query.bin "$pkgdir/usr/bin/device_query"
-  install -D -m755 .build_release/tools/net_speed_benchmark.bin "$pkgdir/usr/bin/net_speed_benchmark"
-  install -D -m755 .build_release/tools/compute_image_mean.bin "$pkgdir/usr/bin/compute_image_mean"
-  install -D -m755 .build_release/tools/convert_imageset.bin "$pkgdir/usr/bin/convert_imageset"
-  install -D -m755 .build_release/tools/test_net.bin "$pkgdir/usr/bin/test_net"
-  install -D -m755 .build_release/tools/upgrade_net_proto_text.bin "$pkgdir/usr/bin/upgrade_net_proto_text"
-  # install -D -m755 .build_release/tools/dump_network.bin "$pkgdir/usr/bin/dump_network"
-  install -D -m755 .build_release/tools/extract_features.bin "$pkgdir/usr/bin/extract_features"
+  install -D -m755 build/tools/finetune_net.bin "$pkgdir/usr/bin/finetune_net"
+  install -D -m755 build/tools/train_net.bin "$pkgdir/usr/bin/train_net"
+  install -D -m755 build/tools/device_query.bin "$pkgdir/usr/bin/device_query"
+  install -D -m755 build/tools/net_speed_benchmark.bin "$pkgdir/usr/bin/net_speed_benchmark"
+  install -D -m755 build/tools/compute_image_mean.bin "$pkgdir/usr/bin/compute_image_mean"
+  install -D -m755 build/tools/convert_imageset.bin "$pkgdir/usr/bin/convert_imageset"
+  install -D -m755 build/tools/test_net.bin "$pkgdir/usr/bin/test_net"
+  install -D -m755 build/tools/upgrade_net_proto_text.bin "$pkgdir/usr/bin/upgrade_net_proto_text"
+  # install -D -m755 build/tools/dump_network.bin "$pkgdir/usr/bin/dump_network"
+  install -D -m755 build/tools/extract_features.bin "$pkgdir/usr/bin/extract_features"
 
   # Make main target dir
   mkdir -p $pkgdir/opt/caffe
