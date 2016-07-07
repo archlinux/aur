@@ -11,7 +11,7 @@ diff -rupN a/product.json b/product.json
  	"win32MutexName": "vscodeoss",
  	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
--	"welcomePage": "https://go.microsoft.com/fwlink/?LinkId=723048"
+-	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new"
 -}
 \ No newline at end of file
 +	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048",
@@ -25,7 +25,7 @@ diff -rupN a/product.json b/product.json
 +	"releaseNotesUrl": "https://go.microsoft.com/fwlink/?LinkID=533483#vscode",
 +	"twitterUrl": "https://go.microsoft.com/fwlink/?LinkID=533687",
 +	"requestFeatureUrl": "https://go.microsoft.com/fwlink/?LinkID=533482",
-+	"reportIssueUrl": "https://go.microsoft.com/fwlink/?LinkId=534872",
++	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
 +	"privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
 +	"commit": "@COMMIT@",
 +	"date": "@DATE@"
