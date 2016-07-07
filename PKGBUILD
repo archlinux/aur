@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=12.1.0_devel.82587.154c0a4
-pkgrel=1
+pkgver=12.1.0_devel.83009.7a9d6ab
+pkgrel=1.1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
@@ -133,8 +133,8 @@ package_opencl-mesa-git () {
   mv -v "${srcdir}"/fakeinstall/usr/lib/lib*OpenCL* "${pkgdir}/usr/lib/"
   mv -v "${srcdir}"/fakeinstall/usr/lib/gallium-pipe/pipe_{r600,radeonsi}.so "${pkgdir}/usr/lib/gallium-pipe/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa-git"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa-git/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa-git/"
 }
 
 package_mesa-vulkan-intel-git() {
@@ -145,12 +145,14 @@ package_mesa-vulkan-intel-git() {
   replaces=('vulkan-intel')
   conflicts=('vulkan-intel')
   
-  install -m755 -d ${pkgdir}/etc
-  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
+#  install -m755 -d ${pkgdir}/etc
+#  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
 
-  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
-  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
+  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib,share/{vulkan,licenses}}
+  
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib
   mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/ ${pkgdir}/usr/share/
 
   install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git/"
@@ -162,11 +164,11 @@ package_libva-mesa-driver-git() {
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
-  install -v -m755 -d "${pkgdir}/usr/lib"
+  install -m755 -d "${pkgdir}/usr/lib"
   mv -v "${srcdir}/fakeinstall/usr/lib/dri" "${pkgdir}/usr/lib/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver-git"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver-git/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver-git/"
 }
 
 
@@ -180,8 +182,8 @@ package_mesa-vdpau-git() {
   install -v -m755 -d "${pkgdir}/usr/lib"
   mv -v "${srcdir}/fakeinstall/usr/lib/vdpau" "${pkgdir}/usr/lib/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau-git"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau-git/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau-git/"
 }
 
 package_mesa-git () {
@@ -195,10 +197,10 @@ package_mesa-git () {
   replaces=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
   conflicts=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
 
-  install -v -m755 -d "${pkgdir}/etc"
+  install -m755 -d "${pkgdir}/etc"
   mv -v "${srcdir}/fakeinstall/etc/drirc" "${pkgdir}/etc/"
 
-  install -v -m755 -d "${pkgdir}/usr/lib/xorg/modules/dri"
+  install -m755 -d "${pkgdir}/usr/lib/xorg/modules/dri"
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
   mv -v "${srcdir}"/fakeinstall/usr/lib/xorg/modules/dri/* "${pkgdir}/usr/lib/xorg/modules/dri/"
 
@@ -212,14 +214,14 @@ package_mesa-git () {
 
   mv -v "${srcdir}/fakeinstall/usr/lib/pkgconfig" "${pkgdir}/usr/lib/"
  
-  install -v -m755 -d "${pkgdir}/usr/lib/mesa"
+  install -m755 -d "${pkgdir}/usr/lib/mesa"
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
   mv -v "${pkgdir}"/usr/lib/libGL.so*    "${pkgdir}/usr/lib/mesa/"
   mv -v "${pkgdir}"/usr/lib/libEGL.so*   "${pkgdir}/usr/lib/mesa/"
   mv -v "${pkgdir}"/usr/lib/libGLES*.so* "${pkgdir}/usr/lib/mesa/"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-git"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-git/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-git/"
 }
 
 package_mesa-libgl-git () {
@@ -230,25 +232,25 @@ package_mesa-libgl-git () {
   conflicts=('mesa-libgl')
 
   # See FS#26284
-  install -v -m755 -d "${pkgdir}/usr/lib/xorg/modules/extensions"
-  ln -sfv libglx.xorg "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so"
+  install -m755 -d "${pkgdir}/usr/lib/xorg/modules/extensions"
+  ln -s libglx.xorg "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so"
 
-  ln -sfv /usr/lib/mesa/libGL.so.1.2.0 "${pkgdir}/usr/lib/libGL.so.1.2.0"
-  ln -sfv libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so.1"
-  ln -sfv libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so"
+  ln -s /usr/lib/mesa/libGL.so.1.2.0 "${pkgdir}/usr/lib/libGL.so.1.2.0"
+  ln -s libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so.1"
+  ln -s libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so"
 
-  ln -sfv /usr/lib/mesa/libEGL.so.1.0.0 "${pkgdir}/usr/lib/libEGL.so.1.0.0"
-  ln -sfv libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so.1"
-  ln -sfv libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so"
+  ln -s /usr/lib/mesa/libEGL.so.1.0.0 "${pkgdir}/usr/lib/libEGL.so.1.0.0"
+  ln -s libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so.1"
+  ln -s libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so"
 
-  ln -sfv /usr/lib/mesa/libGLESv1_CM.so.1.1.0 "${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0"
-  ln -sfv libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
-  ln -sfv libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so"
+  ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 "${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0"
+  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
+  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so"
 
-  ln -sfv /usr/lib/mesa/libGLESv2.so.2.0.0 "${pkgdir}/usr/lib/libGLESv2.so.2.0.0"
-  ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so.2"
-  ln -sfv libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so"
+  ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 "${pkgdir}/usr/lib/libGLESv2.so.2.0.0"
+  ln -s libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so.2"
+  ln -s libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so"
 
-  install -v -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl-git"
-  install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl-git/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl-git/"
 }
