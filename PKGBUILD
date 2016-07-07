@@ -10,16 +10,16 @@ arch=('i686' 'x86_64')
 license=('GPL3' 'Non-free')
 url="http://ffmpeg.org/"
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
-         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug' 'libpulse' 
+         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug' 'libpulse'
          'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib'  'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 
+         'v4l-utils' 'xvidcore' 'zlib'  'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
          'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so')
+provides=('ffmpeg' 'libavcodec.so' 'libavdevice.so' 'libavfilter.so'
+          'libavformat.so' 'libavresample.so' 'libavutil.so' 'libpostproc.so'
+		  'libswresample.so' 'libswscale.so')
 conflicts=('ffmpeg' 'ffmpeg-full-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
