@@ -44,7 +44,7 @@ package() {
   msg2 'Installing main application'
   _installdir="opt/ankama/wakfu"
   install -d "$pkgdir/$_installdir"
-  mv game "$pkgdir/$_installdir"
+  cp -ar game "$pkgdir/$_installdir"
   install -m644 transition.conf "$pkgdir/$_installdir"
   ln -s /opt/ankama/transition "$pkgdir/$_installdir"
 }
