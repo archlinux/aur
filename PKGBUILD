@@ -27,5 +27,5 @@ build() {
 package() {
     install -dm755 "$pkgdir"/{opt,usr/bin}
     cp -R "$pkgname/dist/Kitematic-linux-x64/" "$pkgdir/opt/$pkgname"
-    ln -s "$pkgdir/opt/$pkgname/Kitematic" "$pkgdir/usr/bin/kitematic"
+    ln -s "/opt/$pkgname/Kitematic" "$pkgdir/usr/bin/kitematic"
 }
