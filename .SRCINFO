@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libarchive
+	pkgdesc = Multi-format archive and compression library (mingw-w64)
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://www.libarchive.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = ninja
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.libarchive.org/downloads/libarchive-3.2.1.tar.gz
+	md5sums = afa257047d1941a565216edbf0171e72
+
+pkgname = mingw-w64-libarchive
+
