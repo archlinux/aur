@@ -1,7 +1,7 @@
 pkgbase = oomox-git
 	pkgdesc = Graphical application for generating different color variations of Numix theme (GTK2, GTK3) and gnome-colors icon theme
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actionless/oomox
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = oomox-git
 	optdepends = xorg-xrdb: for the `xresources` theme
 	optdepends = imagemagick: for icon theme generation
 	optdepends = inkscape: for icon theme generation
-	source = git://github.com/actionless/oomox.git#branch=master
+	source = git+https://github.com/actionless/oomox.git#branch=master
 	md5sums = SKIP
 
 pkgname = oomox-git
