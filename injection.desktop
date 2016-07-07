@@ -1,0 +1,12 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=INJECTION
+Comment=A Python-based ASCII programming-puzzle game.
+Path=/usr/lib/injection
+Exec=injection
+#Icon= TODO
+Terminal=false
+
+

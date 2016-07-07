@@ -54,5 +54,6 @@ package() {
 	cp -r "$srcdir/INJECTION_${_release_ver}_src" "${pkgdir}/usr/lib/injection"
 	install -D -m644 $srcdir/INJECTION_${_release_ver}_src/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m 755 "${srcdir}/injection.sh" "${pkgdir}/usr/lib/injection/injection.sh"
+	install -D -m644 $srcdir/injection.desktop "${pkgdir}/usr/share/applications/injection.desktop"
 	ln -s '/usr/lib/injection/injection.sh' "${pkgdir}/usr/bin/injection"
 }
