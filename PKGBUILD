@@ -3,11 +3,11 @@
 # Contributor: TuxSpirit <tuxspirit AT archlinux DOT fr>
 
 pkgname=rar-beta
-pkgver=5.4.b2
+pkgver=5.4.b3
 pkgrel=1
 pkgdesc="A command-line port of the rar compression utility (beta 
 version)"
-url="http://www.rarlab.com/rarnew.htm"
+url="http://www.rarlab.com"
 arch=('i686' 'x86_64')
 license=('custom')
 backup=('etc/rarfiles.lst')
