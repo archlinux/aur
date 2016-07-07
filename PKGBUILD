@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2
-pkgver=16.07.02
+pkgver=16.07.07
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
@@ -13,16 +13,14 @@ optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'cmake')
 source=("http://downloads.sourceforge.net/project/zaps166/QMPlay2/QMPlay2-src-${pkgver}.tar.xz")
-sha256sums=(20d820b996cf66b832ab6339515e1fbb41da0b048713db0fa7f96a7e587dbd00)
-install=$pkgname.install
+sha256sums=(34a489937cbcbf650a806f5a23a9d6f26099eca906f42e41ba5c2cfef18a9970)
 
 build()
 {
 	# Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
 
-	# Uncomment below two lines if you want to use 'jemalloc' and add it to 'depends' list
-	#unset LDFLAGS
+	# Uncomment below line if you want to use 'jemalloc' and add it to 'depends' list
 	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
 	cd $srcdir
