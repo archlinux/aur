@@ -21,3 +21,6 @@ build() {
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 }
 
+package(){
+	:
+}
