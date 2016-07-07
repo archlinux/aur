@@ -1,0 +1,13 @@
+pkgbase = osx-arc-shadow
+	pkgdesc = OSX-Arc-Shadow Theme for GTK 3.x
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1013481/
+	arch = any
+	makedepends = unzip
+	depends = gtk3
+	source = https://dl.opendesktop.org/api/files/download/id/1464732043/175679-OSX-Arc-Shadow.zip
+	md5sums = f7e3c41c3014940ca194bcffdb61693d
+
+pkgname = osx-arc-shadow
+
