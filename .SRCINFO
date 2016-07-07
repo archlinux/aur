@@ -1,0 +1,20 @@
+pkgbase = krill-git
+	pkgdesc = Read and filter web feeds.
+	pkgver = v0.3.0.r1.ga1031ea
+	pkgrel = 1
+	url = https://github.com/p-e-w/krill
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-blessings
+	depends = python-feedparser
+	depends = python-requests
+	provides = krill
+	conflicts = krill
+	source = git+https://github.com/p-e-w/krill.git
+	sha256sums = SKIP
+
+pkgname = krill-git
+
