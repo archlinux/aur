@@ -1,0 +1,16 @@
+# Source: https://gist.github.com/PaBLoX-CL/6664716
+
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!ChangeLog
+
+# common wing-man files
+!*.diff
+!*.patch
+
+# local source files
