@@ -1,7 +1,7 @@
 pkgbase = python-pythonz
 	pkgdesc = Python installation manager supporting CPython, Stackless, PyPy and Jython
-	pkgver = 1.11.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/saghul/pythonz
 	arch = any
 	license = MIT
@@ -11,8 +11,10 @@ pkgbase = python-pythonz
 	depends = python-resumable-urlretrieve
 	optdepends = libtinfo: for running pypy
 	conflicts = python-pythonz-bd
-	source = https://github.com/saghul/pythonz/archive/pythonz-1.11.0.tar.gz
-	md5sums = a110750833e973adde144c292a7a3ee9
+	source = https://github.com/saghul/pythonz/archive/pythonz-2.0.1.tar.gz
+	source = pythonz.sh
+	md5sums = f421f13c6c24685d673c462e9771ada6
+	md5sums = b600ba39aed7de0e1ed2ed42ff11908c
 
 pkgname = python-pythonz
 

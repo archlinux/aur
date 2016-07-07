@@ -1,6 +1,6 @@
 pkgname='python-pythonz'
-pkgver=1.11.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Python installation manager supporting CPython, Stackless, PyPy and Jython"
 url="https://github.com/saghul/pythonz"
 arch=('any')
@@ -8,13 +8,18 @@ license=('MIT')
 depends=('python' 'python-resumable-urlretrieve')
 makedepends=('python' 'python-setuptools')
 conflicts=('python-pythonz-bd')
-source=("https://github.com/saghul/pythonz/archive/pythonz-$pkgver.tar.gz")
+source=(
+    "https://github.com/saghul/pythonz/archive/pythonz-$pkgver.tar.gz"
+    "pythonz.sh"
+)
 optdepends=('libtinfo: for running pypy')
 
 package() {
   cd "$srcdir/pythonz-pythonz-$pkgver"
-  python3 setup.py build
-  python3 setup.py install --prefix=/usr --root="$pkgdir"
+  PYTHONZ_ROOT="$pkgdir/opt/pythonz" python -c "from pythonz.installer import install_pythonz ; install_pythonz()"
+  mkdir -p $pkgdir/etc/profile.d
+  install $srcdir/pythonz.sh $pkgdir/etc/profile.d
 }
 
-md5sums=('a110750833e973adde144c292a7a3ee9')
+md5sums=('f421f13c6c24685d673c462e9771ada6'
+         'b600ba39aed7de0e1ed2ed42ff11908c')
