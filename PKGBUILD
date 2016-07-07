@@ -1,4 +1,5 @@
-# Maintainer: Milo Mirate <mmirate@gmx.com>
+# Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
+# Contributor: Milo Mirate <mmirate@gmx.com>
 _pkgname=plumbum
 pkgname=python-plumbum
 pkgver=1.5.0
