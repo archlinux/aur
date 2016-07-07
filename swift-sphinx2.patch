@@ -1,0 +1,20 @@
+diff -rupN a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+--- a/docs/CMakeLists.txt	2016-06-01 09:50:24.174184477 -0700
++++ b/docs/CMakeLists.txt	2016-06-01 09:51:02.687901780 -0700
+@@ -1,7 +1,7 @@
+ add_subdirectory(tools)
+ 
+ find_program(SPHINX_EXECUTABLE
+-  NAMES sphinx-build
++  NAMES sphinx-build2
+   HINTS $ENV{SPHINX_DIR}
+   PATH_SUFFIXES bin
+   DOC "Sphinx documentation generator")
+@@ -10,7 +10,6 @@ SET(SWIFT_SPHINX_PAPER_SIZE "letter"
+   CACHE STRING "Paper size for generated documentation")
+ 
+ SET(SPHINX_ARGS
+-  -W
+   -D latex_paper_size=${SWIFT_SPHINX_PAPER_SIZE}
+   -d ${CMAKE_BINARY_DIR}/doctrees)
+ 
