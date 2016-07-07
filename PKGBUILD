@@ -1,4 +1,4 @@
-# Maintainer: Edward Herández <ehernandez@email.wm.edu>
+# Maintainer: Edward Hernández <ehernandez@email.wm.edu>
 # Contributor:  Quint Guvernator <quint@guvernator.net>
 
 pkgname=fenix-git
