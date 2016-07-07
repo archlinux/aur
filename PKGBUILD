@@ -2,7 +2,7 @@
 
 pkgname=caffe-git
 pkgver=rc3.r186.gf28f5ae
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
 url='https://github.com/BVLC/caffe'
