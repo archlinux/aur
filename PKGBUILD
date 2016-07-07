@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-pygame' 'python-pyperclip' 'python-rsa' 'python-numpy' 'cython' 'tk' 'python-dill')
 makedepends=('unzip' 'curl' 'python-pip' 'git')
 conflicts=('injection')
-source=('git+https://gitlab.com/toastengineer/INJECTION.git' injection.sh)
+source=('git+https://gitlab.com/toastengineer/INJECTION.git' injection.sh injection.desktop icon.png)
 md5sums=('SKIP'
          '5f21ca7a8891291e250f5296ba855324')
 
@@ -23,7 +23,8 @@ _release_ver=0.9.2
 prepare() {
 	_direct_link=$(curl -s -XPOST "${_release_url}" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g') #Thanks, dcelasun
 	curl "$_direct_link" -o "INJECTION_${_release_ver}_src.zip"
-	unzip "INJECTION_${_release_ver}_src.zip"
+	mkdir "INJECTION_${_release_ver}_src"
+	unzip "INJECTION_${_release_ver}_src.zip" -d "INJECTION_${_release_ver}_src"
 	
 	#Backup music folder.
 	mv INJECTION_${_release_ver}_src/music .
@@ -55,5 +56,6 @@ package() {
 	install -D -m644 $srcdir/INJECTION_${_release_ver}_src/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m 755 "${srcdir}/injection.sh" "${pkgdir}/usr/lib/injection/injection.sh"
 	install -D -m644 $srcdir/injection.desktop "${pkgdir}/usr/share/applications/injection.desktop"
+	install -D -m644 $srcdir/icon.png $pkgdir/usr/share/licenses/$pkgname/icon.png
 	ln -s '/usr/lib/injection/injection.sh' "${pkgdir}/usr/bin/injection"
 }

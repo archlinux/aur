@@ -6,7 +6,7 @@ Name=INJECTION
 Comment=A Python-based ASCII programming-puzzle game.
 Path=/usr/lib/injection
 Exec=injection
-#Icon= TODO
+Icon=/usr/lib/injection/icon.png
 Terminal=false
 
 
