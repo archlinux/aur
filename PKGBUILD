@@ -1,5 +1,5 @@
 pkgname=mplayer-autocmd-git
-pkgver=3.7.g4d9267f
+pkgver=4.r18.3157ade
 pkgrel=1
 pkgdesc="Per-file options and keybindings for mpv"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=('git')
 
 pkgver(){
   cd "${srcdir}/mplayer-autocmd"
-  echo "$(git describe --tags --always | sed 's/-/./g' )"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
