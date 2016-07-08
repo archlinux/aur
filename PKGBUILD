@@ -1,17 +1,18 @@
 # Maintainer: White-Oak <lpzhelud@gmail.com>
 pkgname=servo-latest
-pkgver=r20160707
-pkgrel=2
+pkgver=r20160708
+pkgrel=1
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
 url="https://servo-builds.s3.amazonaws.com/index.html"
 license=('custom:Mozilla Public License v2.0')
 provides=('servo')
 conflicts=('servo')
+dependencies=('desktop-file-utils')
 sha256sums=('SKIP'
             '7087917409c30bb5de3931dc35d18f60407837165d6f9dda941a27928e07512f'
             '3db78572e8657cca9e9446ce56a057b8a981eb41af318c49a5fe08e7a10fa52a'
-            'f7e2444f37fbd5149e7239b2a837f5e2ee062c78ef42f72c2ad87fc7c787472c')
+            '2d006fbdb6434b7470d5fc1d0abd5ba4ce9436b29443fc527067fa421d0c1ac2')
 source=(
 	"https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz"
 	"Servo.desktop"
