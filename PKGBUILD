@@ -2,7 +2,7 @@
 
 pkgname=infernal
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -11,7 +11,7 @@ depends=('glibc')
 optdepends=()
 makedepends=()
 provides=()
-source=("http://selab.janelia.org/software/infernal/${pkgname}-${pkgver}.tar.gz")
+source=("http://eddylab.org/infernal/${pkgname}-${pkgver}.tar.gz")
 md5sums=( 'c5bff318f78c194a0d9b2a6bf1abb169')
 
 build() {
