@@ -9,11 +9,11 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.57.1.r17.g9d46a5a
-pkgrel=2
+pkgver=2.62.0.r1.gdb8742a
+pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
-url="http://calibre-ebook.com/"
+url="https://calibre-ebook.com/"
 license=('GPL3')
 depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
          'podofo' 'poppler' 'libwmf' 'chmlib' 'python2-lxml'

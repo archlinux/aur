@@ -1,8 +1,8 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 2.57.1.r17.g9d46a5a
-	pkgrel = 2
-	url = http://calibre-ebook.com/
+	pkgver = 2.62.0.r1.gdb8742a
+	pkgrel = 1
+	url = https://calibre-ebook.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
