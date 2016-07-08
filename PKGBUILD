@@ -9,7 +9,7 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.5.3.sh0.34.3.t2.2.3
+pkgver=1.8.0.arch0.5.3.sh0.35.1.t2.2.3
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -26,8 +26,6 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
 "fusion-ui::git+${_fusurl}/fusion-ui"
 "language-archlinux::git+${_fusurl}/language-archlinux"
-"language-c::git+${_url}/language-c"
-"language-css::git+${_url}/language-css"
 "language-gfm2::git+${_fusurl}/language-gfm2"
 "language-ini-desktop::git+${_fusurl}/language-ini-desktop"
 "language-liquid::git+https://github.com/puranjayjain/language-liquid"
@@ -40,8 +38,6 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "theme.patch"
 "about-arch.patch")
 md5sums=('158c18d35d071403db18bdd85fa2e738'
-         'SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
