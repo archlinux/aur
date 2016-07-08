@@ -140,7 +140,7 @@ build() {
     --enable-libopencore-amrwb \
     --enable-libopencv \
     --enable-libopenh264 \
-    --disable-openjpeg \
+    --disable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-librubberband \
