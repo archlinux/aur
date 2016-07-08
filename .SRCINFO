@@ -1,6 +1,6 @@
 pkgbase = astrosound-redux-git
 	pkgdesc = A modern music player made with Electron
-	pkgver = 0.0.0
+	pkgver = r49.a6c1853
 	pkgrel = 1
 	url = https://github.com/XNBlank/astrosound-redux
 	arch = i686
