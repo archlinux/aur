@@ -1,7 +1,7 @@
 #Maintainer: Martin Lukes <martin.meridius@gmail.com>
 _appname=smartgit
 pkgname=${_appname}_preview
-pkgver=7.2_preview_9
+pkgver=7.2_preview_11
 pkgrel=1
 pkgdesc="Git client with Hg and SVN support. Preview version."
 arch=("any")
@@ -21,7 +21,7 @@ _pkgver=${pkgver//_/-}
 source=(https://www.syntevo.com/static/smart/download/${_appname}/${_appname}-linux-${_pkgver}.tar.gz
         smartgit.desktop)
 install="smartgit_preview.install"
-sha1sums=('7be106736f79ac78af5a62c06c2b5e3e34aa3d3d'
+sha1sums=('00faa832465b6d4103ff38b989b3f1217b2a32f0'
           'bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3')
 
 package() {
