@@ -1,7 +1,7 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
 pkgname='cutiefeed'
-pkgver='0.8.0'
+pkgver='0.8.1'
 pkgdesc="Qt-client for IDEC and ii-based networks (russian)"
 pkgrel=1
 arch=('any')
@@ -9,7 +9,7 @@ depends=('python' 'python-pyqt5' 'bash')
 makedepends=('git')
 conflicts=('iicli-modular')
 license=('GPL3')
-url="http://ii-net.tk/idec-doc"
+url="https://ii-net.tk/idec-doc"
 source=('git+https://github.com/vit1-irk/cutiefeed/')
 md5sums=('SKIP')
 install=cutiefeed.install
