@@ -3,8 +3,8 @@
 pkgname=mist-git
 _pkgname=mist
 pkgver=0.8.r0.gd8b0bfe
-pkgrel=1
-pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
+pkgrel=2
+pkgdesc="Mist dapp browser and Ethereum wallet (git version)."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
@@ -74,7 +74,7 @@ build() {
   npm install gulp
   npm install
   gulp update-nodes
-  gulp wallet --platform linux
+  gulp mist --platform linux
 }
 
 package() {
@@ -85,14 +85,14 @@ package() {
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/mist"
-  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux${_arch}/." "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "${srcdir}/${pkgname}/dist_mist/Mist-linux${_arch}/." "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/mist"
 
   install -d "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${_pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
+  ln -s "/usr/share/${_pkgname}/Mist" "${pkgdir}/usr/bin/mist"
   ln -s "/usr/share/${_pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
@@ -107,7 +107,7 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/usr/share/${_pkgname}/Ethereum-Wallet"
+  chmod 755 "${pkgdir}/usr/share/${_pkgname}/Mist"
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/libnode.so"
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/resources/node/geth/geth"
 }
