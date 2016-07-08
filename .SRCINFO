@@ -9,7 +9,7 @@ pkgbase = cryptomator
 	makedepends = apache-ant
 	depends = java-runtime=8
 	depends = java-openjfx
-	source = antkit-1.1.0.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/1.1.0/antkit.tar.gz
+	source = antkit-1.1.1.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/1.1.1/antkit.tar.gz
 	source = cryptomator.sh
 	source = cryptomator.desktop
 	source = cryptomator-vault.xml
