@@ -17,7 +17,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -140,7 +140,6 @@ build() {
     --enable-libopencore-amrwb \
     --enable-libopencv \
     --enable-libopenh264 \
-    --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-librubberband \
