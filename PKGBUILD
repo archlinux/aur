@@ -27,7 +27,7 @@ build() {
 
 	export QT_SELECT=5
 
-    qmake ../src/VPaint.pro -r -spec linux-g++ QMAKE_CXXFLAGS+="-fPIC -fno-delete-null-pointer-checks"
+	qmake ../src/VPaint.pro -r -spec linux-g++ QMAKE_CXXFLAGS+="-fPIC -fno-delete-null-pointer-checks"
 	make
 }
 
