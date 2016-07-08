@@ -24,7 +24,7 @@ _release_url="https://schilcote.itch.io/injection/file/235400?after_download_lig
 _release_ver=0.9.2
 prepare() {
 	_direct_link=$(curl -s -XPOST "${_release_url}" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g') #Thanks, dcelasun
-	#curl "$_direct_link" -o "INJECTION_${_release_ver}_src.zip"
+	curl "$_direct_link" -o "INJECTION_${_release_ver}_src.zip"
 	mkdir "INJECTION_${_release_ver}_src"
 	unzip "INJECTION_${_release_ver}_src.zip" -d "INJECTION_${_release_ver}_src"
 	
