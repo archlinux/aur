@@ -3,10 +3,10 @@
 pkgname=rotd
 pkgver=1.0
 pkgrel=1
-pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
+pkgdesc="Generate a paper with important or fun information for the day"
 arch=(any)
 url="https://github.com/maandree/rotd"
-license=('custom:ISC Generate a paper with important or fun information for the day')
+license=('custom:ISC')
 depends=(python3 texlive-bin)
 optdepends=("curl: for leap second announcements"
 	    "fortune-mod: for fortune cookies"
