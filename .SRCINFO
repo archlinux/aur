@@ -1,0 +1,20 @@
+pkgbase = python-agate-dbf
+	pkgdesc = Adds read support for dbf files to agate
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://agate-dbf.readthedocs.org/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-nose
+	depends = python-tox
+	depends = python-sphinx
+	depends = python-sphinx_rtd_theme
+	depends = python-wheel
+	depends = python-dbfread
+	depends = python-agate
+	source = https://pypi.python.org/packages/c4/b2/94632d367b6db0dc03d95f171e38b621c85f49e55b7c33a55fd3032336d9/agate-dbf-0.1.0.tar.gz
+	sha256sums = ffd9bfc7c04fc3ce1c54522f41aeccba5a7f3cee951b26c8a0ab1348c940ff77
+
+pkgname = python-agate-dbf
+
