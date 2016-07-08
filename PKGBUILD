@@ -50,7 +50,7 @@ package() {
   ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
-  for size in 16 32 48 256; do
+  for size in 32 48 256; do
     install -Dm644 ../arduino_icon_*_${size}x${size}x32.png \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/arduino.png"
   done
