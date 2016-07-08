@@ -1,7 +1,7 @@
 # Maintainer: Kalentia <kalentia.git@gmail.com>
 _pkgname=astrosound-redux
 pkgname=astrosound-redux-git
-pkgver=0.0.0
+pkgver=r49.a6c1853
 pkgrel=1
 pkgdesc="A modern music player made with Electron"
 arch=('i686' 'x86_64')
