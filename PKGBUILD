@@ -2,7 +2,7 @@
 
 _pkgname=dcmtk
 pkgname=$_pkgname-snapshot
-pkgver=3.6.1_20160216
+pkgver=3.6.1_20160630
 pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'libsndfile' 'doxygen')
 provides=("$_pkgname")
 conflicts=("$_pkgname"{,-git})
 source=("http://dicom.offis.de/download/dcmtk/snapshot/dcmtk-$pkgver.tar.gz")
-sha256sums=('51c1075a5c0b631ac0849a967862eaa55466df0aa8c4704f9d67b541bedba812')
+sha256sums=('7dacf0e704f9b5a3a92bd40f1391be3e4473c06c0adb4dbf5855b5c5ddc5f12a')
 
 build() {
   # man pages get created only when compiling inside the source tree
