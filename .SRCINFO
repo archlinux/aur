@@ -1,0 +1,29 @@
+pkgbase = injection
+	pkgdesc = A Python-based ASCII programming-puzzle game.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://schilcote.itch.io/injection
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	makedepends = curl
+	makedepends = python-pip
+	depends = python-pygame
+	depends = python-pyperclip
+	depends = python-rsa
+	depends = python-numpy
+	depends = cython
+	depends = tk
+	depends = python-dill
+	source = injection.sh
+	source = injection.desktop
+	source = icon.png
+	source = INJECTION_0.9.2_src.zip.md5
+	md5sums = 5f21ca7a8891291e250f5296ba855324
+	md5sums = cf419413f1dda3dcae7c665c9bb4bf46
+	md5sums = 2e6543984ecc80ddf57ed822b344e0e1
+	md5sums = d06f2f1c19813ef44a6a62f53c1331b9
+
+pkgname = injection
+
