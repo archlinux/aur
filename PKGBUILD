@@ -1,9 +1,9 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.16.1
-pkgver="${_pkgver/-rc/rc}"
-pkgrel=2
+_pkgver=0.16.1-r1
+pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.r}"
+pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
@@ -18,16 +18,14 @@ depends=('python2-matrix-angular-sdk'
          'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
-source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
+source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
 		'sysusers-synapse.conf'
 		'deps-relax-pynacl-check.patch'
-		'deps-relax-pysaml2-check.patch'
-		'sec.patch')
+		'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
          'a2b653d523161a33a36e931b60a234f2'
-         '80e8116e3f39889b16fb748b6cba83e8'
-         'b39e317f1b2d71774cdbad3fbb9e709c')
+         '80e8116e3f39889b16fb748b6cba83e8')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
@@ -35,7 +33,6 @@ prepare() {
 	cd "synapse"
 	git am < "$srcdir/deps-relax-pynacl-check.patch"
 	git am < "$srcdir/deps-relax-pysaml2-check.patch"
-	git apply "$srcdir/sec.patch"
 }
 
 build() {
