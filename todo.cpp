@@ -112,12 +112,12 @@ int main(int argc, char *argv[]) {
             return 1;
         }
         switch( action ) {
-            case 0:
+            case 0:   // Show
                 for (auto it = begin(listTodo); it != end(listTodo); ++it)
                     cout << *it;
 
                 return 0;
-            case 1:
+            case 1:  // Add
                 {
                     string sargv("");
                     for( int i = startArgv ; i < argc ; i++) {
@@ -132,19 +132,21 @@ int main(int argc, char *argv[]) {
 
                     break;
                 }
-            case 2:
+            case 2: // Rm
                 {
                     for ( int i =  listTodo.size()-1; i >= 0 ; --i) {
                         bool active = true;
                         for( int j = 2 ; j < argc && active ; j++ )
                             if( listTodo.at(i).str.find(argv[j]) == string::npos)
                                 active = false;
-                        if( active )
+                        if( active ) {
                             listTodo.erase(begin(listTodo)+i);
+                            act = true;
+                        }
                     }
                     break;
                 }
-            case 3:
+            case 3:  // check
                 for (auto it = begin(listTodo); it != end(listTodo); ++it) {
                     bool active = true;
                     for( int i = 2 ; i < argc && active ; i++ )
@@ -155,7 +157,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 break;
-            case 4:
+            case 4: // set
                 for (auto it = begin(listTodo); it != end(listTodo); ++it) {
                     bool active = true;
                     for( int i = 3 ; i < argc && active ; i++ )
@@ -166,17 +168,17 @@ int main(int argc, char *argv[]) {
                     }
                 }
                 break;
-            case 5:
+            case 5:  // s 
                 for (auto it = begin(listTodo); it != end(listTodo); ++it)
                     if( it->priorite == atoi(argv[2]) )
                         cout << *it;
                 return 0;
-            case 6:
+            case 6:  // Checked
                 for (auto it = begin(listTodo); it != end(listTodo); ++it)
                     if( it->etat )
                         cout << *it;
                 return 0;
-            case 7:
+            case 7:  // Clean
                 {
                     for ( int i =  listTodo.size()-1; i >= 0 ; --i) {
                         if( listTodo.at(i).etat )
@@ -184,7 +186,7 @@ int main(int argc, char *argv[]) {
                     }
                     break;
                 }
-            case 8:
+            case 8:  // Unchecked
                 for (auto it = begin(listTodo); it != end(listTodo); ++it)
                     if( !it->etat )
                         cout << *it;
