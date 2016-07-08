@@ -8,7 +8,8 @@ pkgdesc='A python library used to interact with git repositories'
 arch=('any')
 url='https://gitpython.readthedocs.io/'
 license=('BSD')
-makedepends=('python' 'python2' 'python-gitdb' 'python2-gitdb')
+makedepends=('python' 'python2' 'python-gitdb' 'python2-gitdb'
+             'python-setuptools' 'python2-setuptools')
 source=(${pkgbase}-${pkgver}.tar.gz::"https://github.com/gitpython-developers/GitPython/archive/${pkgver}.tar.gz")
 md5sums=('4439aeabe21eb76ead0c0c4c1b47b4b7')
 
