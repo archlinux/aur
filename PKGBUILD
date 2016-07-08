@@ -1,8 +1,8 @@
 # Maintainer: robus
 _pkgname=wine-wizard
 pkgname=${_pkgname}-git
-pkgver=1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 
 source=(git+https://github.com/LLIAKAJL/WineWizard.git)
 md5sums=('SKIP')
@@ -14,14 +14,14 @@ license=('GPLv3')
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
 provides=("$_pkgname=$pkgver")
-depends=("qt5-base")
+depends=("qt5-base" "bzip2" "cabextract" "tar" "unzip" "wget")
 
 makedepends=("git")
 
-#pkgver() {
-#	cd "./WineWizard"
-#	git describe --long | sed -r "s/^${_pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
-#}
+pkgver() {
+	cd "./WineWizard"
+    git describe --abbrev=0 --tags
+}
 
 prepare() {
   mkdir "$srcdir/WineWizard/build"
