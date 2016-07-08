@@ -1,78 +1,75 @@
 pkgbase = amdgpu-pro-installer
 	pkgver = 16.30.3.306809
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.amd.com
 	arch = x86_64
+	license = custom:AMD
+	makedepends = wget
 	source = https://www2.ati.com/drivers/linux/amdgpu-pro_16.30.3-306809.tar.xz
 	sha256sums = 40fc78dc10823096882bd5840a0c49221bbd977e1eda1a9b79b620d06298c389
 
 pkgname = amdgpu-pro
 	pkgdesc = This package install all amdgpu-pro components.
 	arch = x86_64
-	depends = amdgpu-pro-graphics=16.30.3.306809-3
-	depends = amdgpu-pro-computing=16.30.3.306809-3
+	depends = amdgpu-pro-graphics=16.30.3.306809-4
+	depends = amdgpu-pro-computing=16.30.3.306809-4
 
 pkgname = amdgpu-pro-clinfo
 	pkgdesc = AMD OpenCL info utility
 	arch = x86_64
-	depends = amdgpu-pro-libopencl1=16.30.3.306809-3
+	depends = amdgpu-pro-libopencl1=16.30.3.306809-4
 
 pkgname = amdgpu-pro-computing
 	pkgdesc = This package install amdgpu-pro OpenCL components.
 	arch = x86_64
-	depends = amdgpu-pro-core=16.30.3.306809-3
-	depends = amdgpu-pro-clinfo=16.30.3.306809-3
-	depends = amdgpu-pro-opencl-icd=16.30.3.306809-3
-	depends = amdgpu-pro-libopencl-dev=16.30.3.306809-3
+	depends = amdgpu-pro-core=16.30.3.306809-4
+	depends = amdgpu-pro-clinfo=16.30.3.306809-4
+	depends = amdgpu-pro-opencl-icd=16.30.3.306809-4
+	depends = amdgpu-pro-libopencl-dev=16.30.3.306809-4
 
 pkgname = amdgpu-pro-core
 	pkgdesc = This package switchs the GPU stack to amdgpu-pro with basic components.
 	install = amdgpu-pro-core.install
 	arch = x86_64
 	depends = linux-firmware
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
-
-pkgname = amdgpu-pro-dkms
-	pkgdesc = amdgpu-pro driver in DKMS format.
-	arch = any
-	depends = dkms>=1.95
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 
 pkgname = amdgpu-pro-graphics
 	pkgdesc = This package install amdgpu-pro graphics components.
 	arch = x86_64
-	depends = amdgpu-pro-core=16.30.3.306809-3
-	depends = libgles2-amdgpu-pro=16.30.3.306809-3
-	depends = libgl1-amdgpu-pro-dev=16.30.3.306809-3
-	depends = libgl1-amdgpu-pro-dri=16.30.3.306809-3
-	depends = xserver-xorg-video-amdgpu-pro=16.30.3.306809-3
-	depends = amdgpu-pro-vulkan-driver=16.30.3.306809-3
-	depends = libvdpau-amdgpu-pro=16.30.3.306809-3
+	depends = amdgpu-pro-core=16.30.3.306809-4
+	depends = libgles2-amdgpu-pro=16.30.3.306809-4
+	depends = libgl1-amdgpu-pro-dev=16.30.3.306809-4
+	depends = libgl1-amdgpu-pro-dri=16.30.3.306809-4
+	depends = xserver-xorg-video-amdgpu-pro=16.30.3.306809-4
+	depends = amdgpu-pro-vulkan-driver=16.30.3.306809-4
+	depends = libvdpau-amdgpu-pro=16.30.3.306809-4
 	provides = libgl
 	conflicts = libgl
 
 pkgname = lib32-amdgpu-pro-lib32
 	pkgdesc = This package contains x86 libs for x86_64 machine usage.
 	arch = x86_64
-	depends = lib32-libgles2-amdgpu-pro=16.30.3.306809-3
-	depends = lib32-libgl1-amdgpu-pro-dev=16.30.3.306809-3
-	depends = lib32-libgl1-amdgpu-pro-dri=16.30.3.306809-3
-	depends = lib32-libgbm1-amdgpu-pro=16.30.3.306809-3
-	depends = lib32-amdgpu-pro-opencl-icd=16.30.3.306809-3
-	depends = lib32-amdgpu-pro-libopencl-dev=16.30.3.306809-3
-	depends = lib32-amdgpu-pro-vulkan-driver=16.30.3.306809-3
-	depends = lib32-libvdpau-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libgles2-amdgpu-pro=16.30.3.306809-4
+	depends = lib32-libgl1-amdgpu-pro-dev=16.30.3.306809-4
+	depends = lib32-libgl1-amdgpu-pro-dri=16.30.3.306809-4
+	depends = lib32-libgbm1-amdgpu-pro=16.30.3.306809-4
+	depends = lib32-amdgpu-pro-opencl-icd=16.30.3.306809-4
+	depends = lib32-amdgpu-pro-libopencl-dev=16.30.3.306809-4
+	depends = lib32-amdgpu-pro-vulkan-driver=16.30.3.306809-4
+	depends = lib32-libvdpau-amdgpu-pro=16.30.3.306809-4
 	provides = lib32-libgl
 	conflicts = lib32-libgl
 
 pkgname = lib32-amdgpu-pro-libopencl-dev
 	pkgdesc = AMD OpenCL ICD Loader library
 	arch = x86_64
-	depends = lib32-amdgpu-pro-libopencl1=16.30.3.306809-3
+	depends = lib32-amdgpu-pro-libopencl1=16.30.3.306809-4
 
 pkgname = amdgpu-pro-libopencl-dev
 	pkgdesc = AMD OpenCL ICD Loader library
 	arch = x86_64
-	depends = amdgpu-pro-libopencl1=16.30.3.306809-3
+	depends = amdgpu-pro-libopencl1=16.30.3.306809-4
 
 pkgname = lib32-amdgpu-pro-libopencl1
 	pkgdesc = AMD OpenCL ICD Loader library
@@ -97,40 +94,40 @@ pkgname = amdgpu-pro-opencl-icd
 pkgname = amdgpu-pro-vulkan-driver
 	pkgdesc = AMDGPU Pro Vulkan driver
 	arch = x86_64
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 
 pkgname = lib32-amdgpu-pro-vulkan-driver
 	pkgdesc = AMDGPU Pro Vulkan driver
 	arch = x86_64
-	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 
 pkgname = libdrm-amdgpu-pro-amdgpu1
 	pkgdesc = Userspace interface to amdgpu-specific kernel DRM services -- runtime
 	arch = x86_64
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libdrm-amdgpu-pro-amdgpu1
 	pkgdesc = Userspace interface to amdgpu-specific kernel DRM services -- runtime
 	arch = x86_64
-	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libdrm-amdgpu-pro-dev
 	pkgdesc = Userspace interface to kernel DRM services -- development files
 	arch = x86_64
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 
 pkgname = lib32-libdrm-amdgpu-pro-dev
 	pkgdesc = Userspace interface to kernel DRM services -- development files
 	arch = x86_64
-	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-3
-	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-4
+	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 
 pkgname = libdrm-amdgpu-pro-tools
 	pkgdesc = testing tools for libdrm-amdgpu-pro
 	arch = x86_64
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libdrm2-amdgpu-pro
 	pkgdesc = Userspace interface to kernel DRM services -- runtime
@@ -155,44 +152,44 @@ pkgname = lib32-libegl1-amdgpu-pro
 pkgname = libegl1-amdgpu-pro-dev
 	pkgdesc = implementation of the EGL API -- development files
 	arch = x86_64
-	depends = libegl1-amdgpu-pro=16.30.3.306809-3
+	depends = libegl1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libegl1-amdgpu-pro-dev
 	pkgdesc = implementation of the EGL API -- development files
 	arch = x86_64
-	depends = lib32-libegl1-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libegl1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libgbm-amdgpu-pro-dev
 	pkgdesc = generic buffer management API -- development files
 	arch = x86_64
-	depends = lib32-libgbm1-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libgbm1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libgbm-amdgpu-pro-dev
 	pkgdesc = generic buffer management API -- development files
 	arch = x86_64
-	depends = libgbm1-amdgpu-pro=16.30.3.306809-3
+	depends = libgbm1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libgbm1-amdgpu-pro
 	pkgdesc = generic buffer management API -- runtime
 	arch = x86_64
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libgbm1-amdgpu-pro
 	pkgdesc = generic buffer management API -- runtime
 	arch = x86_64
-	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
-	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
+	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libgl1-amdgpu-pro-dev
 	pkgdesc = implementation of the OpenGL API -- GLX development files
 	arch = x86_64
-	depends = lib32-libgl1-amdgpu-pro-glx=16.30.3.306809-3
+	depends = lib32-libgl1-amdgpu-pro-glx=16.30.3.306809-4
 
 pkgname = libgl1-amdgpu-pro-dev
 	pkgdesc = implementation of the OpenGL API -- GLX development files
 	arch = x86_64
-	depends = libgl1-amdgpu-pro-glx=16.30.3.306809-3
+	depends = libgl1-amdgpu-pro-glx=16.30.3.306809-4
 
 pkgname = lib32-libgl1-amdgpu-pro-dri
 	pkgdesc = implementation of the OpenGL API -- DRI modules
@@ -209,7 +206,7 @@ pkgname = libgl1-amdgpu-pro-dri
 pkgname = lib32-libgl1-amdgpu-pro-glx
 	pkgdesc = implementation of the OpenGL API -- GLX runtime
 	arch = x86_64
-	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-4
 	depends = lib32-libx11>=1.4.99.1
 	depends = lib32-libxcb>=1.8
 	depends = lib32-libxcb
@@ -223,7 +220,7 @@ pkgname = lib32-libgl1-amdgpu-pro-glx
 pkgname = libgl1-amdgpu-pro-glx
 	pkgdesc = implementation of the OpenGL API -- GLX runtime
 	arch = x86_64
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 	depends = libx11>=1.4.99.1
 	depends = libxcb>=1.8
 	depends = libxcb
@@ -237,29 +234,29 @@ pkgname = libgl1-amdgpu-pro-glx
 pkgname = libgles2-amdgpu-pro
 	pkgdesc = implementation of the OpenGL|ES 2.x API -- runtime
 	arch = x86_64
-	depends = libegl1-amdgpu-pro=16.30.3.306809-3
+	depends = libegl1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libgles2-amdgpu-pro
 	pkgdesc = implementation of the OpenGL|ES 2.x API -- runtime
 	arch = x86_64
-	depends = lib32-libegl1-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libegl1-amdgpu-pro=16.30.3.306809-4
 
 pkgname = lib32-libgles2-amdgpu-pro-dev
 	pkgdesc = implementation of the OpenGL|ES 2.x API -- development files
 	arch = x86_64
-	depends = lib32-libgles2-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libgles2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libgles2-amdgpu-pro-dev
 	pkgdesc = implementation of the OpenGL|ES 2.x API -- development files
 	arch = x86_64
-	depends = libgles2-amdgpu-pro=16.30.3.306809-3
+	depends = libgles2-amdgpu-pro=16.30.3.306809-4
 
 pkgname = libvdpau-amdgpu-pro
 	pkgdesc = AMDGPU Pro VDPAU driver
 	arch = x86_64
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 	depends = libdrm>=2.4.31
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 	depends = openssl>=1.0.0
 	depends = libx11
 	depends = libxcb>=1.8
@@ -268,9 +265,9 @@ pkgname = libvdpau-amdgpu-pro
 pkgname = lib32-libvdpau-amdgpu-pro
 	pkgdesc = AMDGPU Pro VDPAU driver
 	arch = x86_64
-	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
+	depends = lib32-libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
 	depends = lib32-libdrm>=2.4.31
-	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = lib32-libdrm2-amdgpu-pro=16.30.3.306809-4
 	depends = lib32-openssl>=1.0.0
 	depends = lib32-libx11
 	depends = lib32-libxcb>=1.8
@@ -280,11 +277,11 @@ pkgname = lib32-libvdpau-amdgpu-pro
 pkgname = xserver-xorg-video-amdgpu-pro
 	pkgdesc = X.Org X server -- AMD/ATI Amdgpu-Pro display driver
 	arch = x86_64
-	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-3
-	depends = libdrm2-amdgpu-pro=16.30.3.306809-3
+	depends = libdrm-amdgpu-pro-amdgpu1=16.30.3.306809-4
+	depends = libdrm2-amdgpu-pro=16.30.3.306809-4
 	depends = libepoxy>=1.0
-	depends = libgbm1-amdgpu-pro=16.30.3.306809-3
-	depends = libgl1-amdgpu-pro-glx=16.30.3.306809-3
+	depends = libgbm1-amdgpu-pro=16.30.3.306809-4
+	depends = libgl1-amdgpu-pro-glx=16.30.3.306809-4
 	depends = libsystemd>=183
 	depends = libx11
 	depends = libxcb
