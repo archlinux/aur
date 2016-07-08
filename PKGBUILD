@@ -50,9 +50,10 @@ package() {
   ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
+  install -dm755 "${pkgdir}/usr/share/icons"
   for size in 32 48 256; do
-    install -Dm644 ../arduino_icon_*_${size}x${size}x32.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/arduino.png"
+    mv "${pkgdir}/usr/share/arduino/lib/icons/${size}x${size}/" \
+      "${pkgdir}/usr/share/icons/${size}x${size}"
   done
 
   # desktop and mimetype files
