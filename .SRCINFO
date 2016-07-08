@@ -1,0 +1,26 @@
+pkgbase = python-agate
+	pkgdesc = A data analysis library that is optimized for humans instead of machines
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://agate.readthedocs.org/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-nose
+	depends = python-tox
+	depends = python-sphinx
+	depends = python-coverage
+	depends = python-six
+	depends = python-sphinx_rtd_theme
+	depends = python-wheel
+	depends = python-pytimeparse
+	depends = python-babel
+	depends = python-parsedatetime
+	depends = python-pytz
+	depends = python-isodate
+	depends = python-awesome-slugify
+	source = https://pypi.python.org/packages/11/c1/519ef060fb62a089b9fda346d471a382a456ad23ccbe49885812d6cf45a9/agate-1.4.0.tar.gz
+	sha256sums = 4436fca90177886e7747ce0a2dc293c3a49d4152baead4784c8da80861085eaf
+
+pkgname = python-agate
+
