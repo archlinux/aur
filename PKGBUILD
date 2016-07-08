@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <matej.tyc@gmail.com>
+# Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=argbash
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Bash argument parsing code generator"
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz" LICENSE)
+source=("https://github.com/matejak/argbash/archive/$pkgname-$pkgver.tar.gz" LICENSE)
 noextract=()
-md5sums=('cea70f809ddc07c2d2d927831e2b2a6d' '830d8b1dc53dad7f53d6112c924c91ec')
+sha256sums=('996154d4e91fad6d7d73cb13235fdd19f09751c83fe89b711788a78f6dafa2b1' '9ee9a6920cd16723e49b065f4ae101127d353fc5400d849e269482fbf4f56a45')
 validpgpkeys=()
 
 build() {
