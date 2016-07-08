@@ -1,7 +1,7 @@
 pkgname=mutt-sidebar
 _pkgname=mutt
-pkgver=1.6.1
-pkgrel=6
+pkgver=1.6.2
+pkgrel=1
 pkgdesc='Small but very powerful text-based mail client with sidebar and trash patches from NeoMutt'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('gpgme' 'ncurses' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb
 source=("http://ftp.mutt.org/pub/mutt/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         "sidebar.patch"
         "trash.patch")
-sha1sums=('ff1c76209a5c299018fc72b9e2e1ab98bf5138dd'
+sha1sums=('67910ea4025a7f5ac8808e34bd55519200e08bcf'
           'SKIP'
           '4d192a7c60c9d7d54ca1a6dac11ba28d08a07a36'
           '0f598412830d1e3594fd4fd000196d667dee3e19')
