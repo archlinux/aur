@@ -2,7 +2,7 @@
 
 pkgname="asf"
 pkgver="2.1.1.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam cards farmer."
 arch=('any')
 url="https://github.com/JustArchi/ArchiSteamFarm"
@@ -28,6 +28,7 @@ package() {
     install -D -m755 "${srcdir}/${pkgname}-config.sh" "${pkgdir}/usr/bin/${pkgname}-config"
     install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
-    # disable auto-updates
+    # disable auto-updates and version checks
     sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' ${pkgdir}/opt/asf/config/ASF.json
+    sed -i 's/"UpdateChannel": 1,/"UpdateChannel": 0,/g' ${pkgdir}/opt/asf/config/ASF.json
 }
