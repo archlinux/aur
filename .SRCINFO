@@ -1,0 +1,16 @@
+pkgbase = python-awesome-slugify
+	pkgdesc = Flexible slugify function
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://github.com/dimka665/awesome-slugify
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-regex
+	depends = python-unidecode
+	depends = python-nose
+	source = https://pypi.python.org/packages/34/39/79ef4e640c3651b40de7812f5fcd04698abf14de4f57a81e12b6c753d168/awesome-slugify-1.6.5.tar.gz
+	sha256sums = bbdec3fa2187917473a2efad092b57f7125a55f841a7cf6a1773178d32ccfd71
+
+pkgname = python-awesome-slugify
+
