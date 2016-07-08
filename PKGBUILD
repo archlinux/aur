@@ -17,8 +17,8 @@ optdepends=('pandoc-bin'
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
-_x86md5=a3651d0382c4af1ca82e4ea775f175e3
-_x64md5=1e933be66317cad1280965e1f6ca3e04
+_x86md5=c0c525cf1864ca36ccb8b77278da21da
+_x64md5=e8eb2b25df6c2edf8ef9234eae727a8e
 
 case "$CARCH" in
 	'i686')
