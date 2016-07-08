@@ -3,13 +3,15 @@
 
 pkgname=kanboard
 pkgver=1.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
 license=('AGL3')
 depends=('php' 'php-gd')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
+backup=('etc/webapps/kanboard/config.php', 'etc/webapps/kanboard/kanboard-apache.conf', 'etc/webapps/kanboard/kanboard-nginx.conf', 
+'etc/webapps/kanboard-nginx-subdir.conf')
 install="$pkgname.install"
 options=(!strip)
 source=("http://kanboard.net/kanboard-$pkgver.zip"
