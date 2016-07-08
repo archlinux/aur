@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=mimic-git
-pkgver=r116.e30edcd
+pkgver=r167.0513650
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
