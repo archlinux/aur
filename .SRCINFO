@@ -1,0 +1,17 @@
+pkgbase = organtrail-hib
+	pkgdesc = A retro zombie survival game. (Humble Bundle version)
+	pkgver = 1366135254
+	pkgrel = 1
+	url = http://www.hatsproductions.com/organtraildc/
+	arch = i686
+	arch = x86_64
+	license = custom: Proprietary
+	depends = libxcursor
+	depends = glu
+	depends = gcc-libs
+	optdepends = gendesk: create desktop shortcut
+	source = hib://OrganTrail_Linux_1366135254.tar.gz
+	md5sums = 089396dd1b7a4ec9ee1f1b5898038bb3
+
+pkgname = organtrail-hib
+
