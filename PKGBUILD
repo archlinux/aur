@@ -5,8 +5,8 @@ pkgname=mist
 pkgver=0.8
 _strver=0-8-0
 _tagver=0.8
-pkgrel=1
-pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
+pkgrel=2
+pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
@@ -47,16 +47,16 @@ sha256sums=(
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
 )
 source_i686=(
-  "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Ethereum-Wallet-linux32-$_strver.zip"
+  "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Mist-linux32-$_strver.zip"
 )
 sha256sums_i686=(
-  "1b178a9e785008df90d01cdc5d4f6f83b99313a48208b3f9235567f1012bbec1"
+  "8eef40bfb8106ab799c50819beeea030bf8c07603c7d6a530d0c6f4f39c81bce"
 )
 source_x86_64=(
-  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Ethereum-Wallet-linux64-$_strver.zip"
+  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Mist-linux64-$_strver.zip"
 )
 sha256sums_x86_64=(
-  "493995bd28697989dc11771c42c3ffd49c7631bc8bc0369ab233a202ec556751"
+  "99cfd15e7382814f8c1862e73b8a64eb11efe06fb304bab520e2bfa81ed8b933"
 )
 
 package() {
@@ -69,14 +69,14 @@ package() {
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -a "${srcdir}/Ethereum-Wallet-linux${_arch}-${_strver}/." "${pkgdir}/usr/share/${pkgname}"
+  cp -a "${srcdir}/Mist-linux${_arch}-${_strver}/." "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}"
 
   install -d "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
+  ln -s "/usr/share/${pkgname}/Mist" "${pkgdir}/usr/bin/mist"
   ln -s "/usr/share/${pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -91,7 +91,7 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/Ethereum-Wallet"
+  chmod 755 "${pkgdir}/usr/share/${pkgname}/Mist"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/resources/node/geth/geth"
 }
