@@ -30,10 +30,9 @@ build() {
 	mkdir -p "$srcdir/$pkgname/build"
 	cd       "$srcdir/$pkgname/build"
 
-	export CXXFLAGS="$CXXFLAGS -fPIC"
 	export QT_SELECT=5
 
-	qmake ../src/VPaint.pro -r -spec linux-g++
+	qmake ../src/VPaint.pro -r -spec linux-g++ QMAKE_CXXFLAGS+="-fno-delete-null-pointer-checks"
 	make
 }
 
