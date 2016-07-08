@@ -1,0 +1,15 @@
+pkgbase = hkg2arch
+	pkgdesc = A simple script to generate PKGBUILDs of haskell packages
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/christopherloen/hkg2arch
+	arch = any
+	license = MIT
+	depends = wget
+	depends = ghc
+	depends = cabal-install
+	source = git://github.com/christopherloen/hkg2arch.git
+	sha256sums = SKIP
+
+pkgname = hkg2arch
+
