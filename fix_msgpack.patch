@@ -1,0 +1,37 @@
+diff -uprNEBZ --suppress-blank-empty a/src/network/networkpacket.cpp b/src/network/networkpacket.cpp
+--- a/src/network/networkpacket.cpp	2016-05-16 01:59:02.000000000 -0500
++++ b/src/network/networkpacket.cpp	2016-07-07 22:30:52.572633557 -0500
+@@ -539,11 +539,11 @@ Buffer<u8> NetworkPacket::oldForgePacket
+ }
+
+ //freeminer:
+-bool parse_msgpack_packet(char *data, u32 datasize, MsgpackPacket *packet, int *command, msgpack::unpacked *msg) {
++bool parse_msgpack_packet(char *data, u32 datasize, MsgpackPacket *packet, int *command, msgpack::unpacked &msg) {
+ 	try {
+ 		//msgpack::unpacked msg;
+ 		msgpack::unpack(msg, data, datasize);
+-		msgpack::object obj = msg->get();
++		msgpack::object obj = msg.get();
+ 		*packet = obj.as<MsgpackPacket>();
+
+ 		*command = (*packet)[MSGPACK_COMMAND].as<int>();
+@@ -576,7 +576,7 @@ int NetworkPacket::packet_unpack() {
+ 		packet = new MsgpackPacketSafe;
+ 	if (!packet_unpacked)
+ 		packet_unpacked = new msgpack::unpacked;
+-	if (!parse_msgpack_packet(getString(0), datasize, packet, &command, packet_unpacked)) {
++	if (!parse_msgpack_packet(getString(0), datasize, packet, &command, *packet_unpacked)) {
+ 		//verbosestream<<"Server: Ignoring broken packet from " <<addr_s<<" (peer_id="<<peer_id<<") size="<<datasize<<std::endl;
+ 		return 0;
+ 	}
+diff -uprNEBZ --suppress-blank-empty a/src/network/networkpacket.h b/src/network/networkpacket.h
+--- a/src/network/networkpacket.h	2016-05-16 01:59:02.000000000 -0500
++++ b/src/network/networkpacket.h	2016-07-07 22:31:26.005881914 -0500
+@@ -140,6 +140,6 @@ private:
+ };
+
+ #include "../util/msgpack_serialize.h"
+-bool parse_msgpack_packet(char *data, u32 datasize, MsgpackPacket *packet, int *command, msgpack::unpacked *msg);
++bool parse_msgpack_packet(char *data, u32 datasize, MsgpackPacket *packet, int *command, msgpack::unpacked &msg);
+
+ #endif
