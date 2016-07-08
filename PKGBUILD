@@ -2,11 +2,11 @@
 
 pkgname=infernal
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)"
 arch=('x86_64' 'i686')
 license=('GPL3')
-url="http://infernal.janelia.org/"
+url="http://eddylab.org/infernal/"
 depends=('glibc')
 optdepends=()
 makedepends=()
