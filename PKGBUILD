@@ -6,7 +6,7 @@
 
 pkgname=pkgtools
 pkgver=25
-pkgrel=5
+pkgrel=6
 pkgdesc="A collection of scripts for Arch Linux packages"
 arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?pid=384196"
@@ -30,7 +30,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Daenyth/pkgtools/tarba
         'whoneeds.bash')
 md5sums=('9e9d7aad5ba8ecee1b798c3ed4e0a0a7'
          '9267993a72489019ec1536c887304374'
-         'e0b7b1b320ead7a552be1b9eae29b494')
+         'ec05d3bd65bb492dfb7a528b3d42fbf5')
 
 prepare() {
 	cp -f pip2arch.py Daenyth-"$pkgname"-*/scripts/pip2arch/

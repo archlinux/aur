@@ -1,7 +1,7 @@
 pkgbase = pkgtools
 	pkgdesc = A collection of scripts for Arch Linux packages
 	pkgver = 25
-	pkgrel = 5
+	pkgrel = 6
 	url = https://bbs.archlinux.org/viewtopic.php?pid=384196
 	install = pkgtools.install
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = pkgtools
 	source = whoneeds.bash
 	md5sums = 9e9d7aad5ba8ecee1b798c3ed4e0a0a7
 	md5sums = 9267993a72489019ec1536c887304374
-	md5sums = e0b7b1b320ead7a552be1b9eae29b494
+	md5sums = ec05d3bd65bb492dfb7a528b3d42fbf5
 
 pkgname = pkgtools
 
