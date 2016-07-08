@@ -3,20 +3,20 @@
 
 pkgname=sncli-git
 _pkgname=sncli
-pkgver=0.172.0.1.3
+pkgver=0.1.3.r1.g073e0c3
 pkgrel=1
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/${_pkgname}"
 license=('MIT')
-depends=('python-urwid' 'python-requests')
+depends=('python-urwid' 'python-requests' 'python-setuptools')
 makedepends=('git')
 source=("git://github.com/insanum/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
