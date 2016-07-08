@@ -6,7 +6,7 @@ pkgdesc="Fast NumPy array functions written in Cython"
 url="https://github.com/biolab/bottlechest"
 arch=(any)
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy')
 source=("https://github.com/biolab/bottlechest/archive/${pkgver}.tar.gz")
 md5sums=('4e2f678b8af8decd157f74a76fb2a76b')
 
