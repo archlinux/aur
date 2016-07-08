@@ -1,4 +1,5 @@
 post_upgrade() {
+    echo ">>> The run command changed from DiscordCanary to discord-canary"
     echo ">>> You may need to delete discord's cache directory ~/.cache/discord"
     echo ">>> try this if discord is stuck on the updating screen or if nothing displays but a gray box"
     echo ">>> if this doesn't work ask for help in #linux in the Discord Developers server"
