@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libarchive
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-format archive and compression library (mingw-w64)"
 arch=('any')
 url="http://www.libarchive.org/"
@@ -20,6 +20,7 @@ build() {
         mkdir -p build-${_arch} && pushd build-${_arch}
         ${_arch}-cmake -GNinja \
                 -DCMAKE_BUILD_TYPE=Release \
+                -DENABLE_TEST=OFF \
                 ..
         ninja
         popd
@@ -29,7 +30,7 @@ build() {
 package() {
     for _arch in ${_architectures}; do
         cd "${srcdir}/libarchive-$pkgver/build-${_arch}"
-        ninja DESTDIR="${pkgdir}" install
+        DESTDIR="${pkgdir}" ninja install
         ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
         ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     done

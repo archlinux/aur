@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libarchive
 	pkgdesc = Multi-format archive and compression library (mingw-w64)
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libarchive.org/
 	arch = any
 	license = BSD
