@@ -2,7 +2,7 @@ pkgbase = kotlinc
 	pkgdesc = Kotlin compiler
 	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://github.com/JetBrains/kotlin/releases/tag/v1.0.3"
+	url = https://github.com/JetBrains/kotlin/releases/tag/v1.0.3
 	arch = any
 	license = Apache License, Version 2.0
 	depends = java-environment>=6
