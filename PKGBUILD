@@ -1,18 +1,17 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=nmclient2
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Novell Messenger client for linux (version 2)"
 url="http://gwclient.provo.novell.com/"
 arch=('i686' 'x86_64')
 license=(custom)
 provides=("nmclient")
 conflicts=("nmclient")
-depends=('bash' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('unzip' 'rpmextract')
-depends_i686=('java-runtime' 'glib2' 'libxext' 'gtk2')
-depends_x86_64=('java32-runtime' 'lib32-glib2' 'lib32-libxext' 'lib32-gtk2')
+depends_i686=('java-runtime' 'gtk2' 'libxss' 'libpng12' 'glitz')
+depends_x86_64=('java32-runtime'  'lib32-gtk2' 'lib32-libxss' 'lib32-libpng12' 'lib32-glitz')
 source=("https://nm-pers.hj.se:8300/~down/client/xplat/linux/nvlmsgr.bin")
    # another source URL: https://gwm.health.unm.edu:8300/~down/client/xplat/linux/nvlmsgr.bin
 md5sums=('d2f94e16858f1f06385ade028557e810')
