@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!aur-auto-vote-git.install
+!aur-auto-vote.service.skel
+!aur-auto-vote.timer

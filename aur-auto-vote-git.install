@@ -1,0 +1,6 @@
+post_install() {
+    echo "    You can export your password via the AUR_AUTO_VOTE_PASSWORD env"
+    echo "    variable if you don't want to type it all the time. Also there is"
+    echo "    a aur-auto-vote.service.skel and corresponding timer file "
+    echo "    included."
+}

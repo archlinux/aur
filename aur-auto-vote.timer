@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly vote on installed and uninstalled AUR packages
+Unit=aur-auto-vote.service
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=1d
+Persistent=true
+
+[Install]
+WantedBy=timers.target

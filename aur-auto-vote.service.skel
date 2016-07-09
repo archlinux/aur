@@ -1,0 +1,9 @@
+[Unit]
+Description=Automates voting on installed and uninstalled AUR packages
+
+[Service]
+Type=simple
+User=root
+# enter your username and password here
+ExecStart=/usr/bin/aur-auto-vote $username
+Environment="AUR_AUTO_VOTE_PASSWORD=$password"
