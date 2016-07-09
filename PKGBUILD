@@ -13,7 +13,7 @@ conflicts=('openlp')
 checkdepends=('python-mock' 'python-nose')
 makedepends=('qt5-tools' 'bzr')
 depends=('python' 'python-pyqt5' 'phonon'
-         'python-chardet' 'python-lxml' 'pyhon-six'
+         'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant'
          'python-alembic' 'mediainfo' 'qt5-multimedia'
         )
