@@ -1,7 +1,7 @@
 # Maintainer: Ben Cooper <contactme@bengcooper.co.uk>
 pkgname=ttf-spacemono
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Space Mono font by Colophon (from Google Fonts)'
 arch=('any')
 url='https://fonts.google.com/specimen/Space+Mono'
