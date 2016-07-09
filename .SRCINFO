@@ -1,7 +1,7 @@
 pkgbase = mpv-bash-completion-git
 	pkgdesc = Bash completion for the mpv video player
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 8
 	url = https://github.com/2ion/mpv-bash-completion
 	install = mpv-bash-completion.install
@@ -18,7 +18,7 @@ pkgbase = mpv-bash-completion-git
 	source = mpv-bash-completion.hook
 	source = mpv-bash-completion.install
 	sha256sums = SKIP
-	sha256sums = 47e79efd255f67b29da87262fc353abefa209044ac8224245dce998269a1635b
+	sha256sums = 2bb01148863811ac4b4cedc19a89e421bdc1c289d38e97024c8cda3658110727
 	sha256sums = 1b966b8cb521cce44fa8cc9c197d5d9b9f3f36481c40ce4003c81edad7de092c
 
 pkgname = mpv-bash-completion-git
