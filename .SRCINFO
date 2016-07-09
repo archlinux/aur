@@ -1,12 +1,12 @@
 pkgbase = fluxbox-styles-mint-x
 	pkgdesc = Fluxbox styles for gtk themes aur/mint-themes and aur/mint-x-icons
-	pkgver = 20151206
+	pkgver = 20160709
 	pkgrel = 1
-	url = https://github.com/corebob/fluxbox-styles-mint-x
+	url = https://github.com/corebob/fluxbox-styles-corebob
 	arch = any
-	license = CCPL
-	source = https://github.com/corebob/fluxbox-styles-mint-x/archive/v0.3.zip
-	md5sums = c3999ec12a0594e39a2ece4e6bbffe1c
+	license = GPL3
+	source = https://github.com/corebob/fluxbox-styles-corebob/archive/v1.0.zip
+	md5sums = 742c8c97f793a6e52791eee65c775695
 
 pkgname = fluxbox-styles-mint-x
 
