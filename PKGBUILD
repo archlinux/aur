@@ -1,7 +1,7 @@
 pkgbase=mdxmini-git
 pkgname=(mdxmini-git mdxplay-git)
 pkgver=r19.eda5bca
-pkgrel=2
+pkgrel=3
 pkgdesc='Library and command line player for Sharp X68000 MDX music files'
 arch=(i686 x86_64)
 # BouKiCHi's original repo seems to be gone so use this random, most up to
@@ -11,10 +11,12 @@ license=(GPL2)
 makedepends=(git)
 source=("$pkgbase"::'git+https://github.com/weimingtom/mdxplayer.git'
         buffer-size.patch
-        makefiles.patch)
+        makefiles.patch
+        integer-overflow.patch)
 sha256sums=('SKIP'
             '4f8ec91487736c9ad864f54c615b491c406464573469ed59b1d4f6be77cf2812'
-            '8711dd394c9b99e351026a8e88583d61142cab29a344434338b9589022a64582')
+            '8711dd394c9b99e351026a8e88583d61142cab29a344434338b9589022a64582'
+            'e6210879c1418b30ed6645675822a572edae1b223cbca9fdf30b3d398c787a4c')
 
 pkgver() {
   cd "$srcdir/$pkgbase"
@@ -28,6 +30,7 @@ prepare() {
   cd "$srcdir/$pkgbase"
   patch -p1 -i "$srcdir"/makefiles.patch
   patch -p1 -i "$srcdir"/buffer-size.patch
+  patch -p0 -i "$srcdir"/integer-overflow.patch
 }
 
 build() {

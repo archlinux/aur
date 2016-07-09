@@ -1,0 +1,22 @@
+diff --git jni/mdxmini/src/mdxmini.c jni/mdxmini/src/mdxmini.c
+index a5bb8e3..3a07c26 100755
+--- jni/mdxmini/src/mdxmini.c
++++ jni/mdxmini/src/mdxmini.c
+@@ -276,7 +276,7 @@ int mdx_calc_sample(t_mdxmini *data, short *buf, int buffer_size)
+ 			frame = mdx_frame_length(data);
+             
+             // 生成可能サンプル数
+-			data->samples += (data->mdx->dsp_speed * frame)/1000000;
++			data->samples += ((long)data->mdx->dsp_speed * (long)frame)/1000000;
+ 		}
+         
+         int len = data->samples;
+@@ -324,7 +324,7 @@ int mdx_calc_log(t_mdxmini *data, short *buf, int buffer_size)
+ #endif
+ 			next = mdx_next_frame(data);
+ 			frame = mdx_frame_length(data);
+-			data->samples = (data->mdx->dsp_speed * frame)/1000000;
++			data->samples = ((long)data->mdx->dsp_speed * (long)frame)/1000000;
+ 		}
+         
+         int calc_len = data->samples;
