@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
 pkgname=sardi-icons
-pkgver=6.0
-pkgrel=5
+pkgver=6.1
+pkgrel=1
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots > 18 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
