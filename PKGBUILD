@@ -2,7 +2,7 @@
 
 pkgname=cmake-doc-qch
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CMake documentation in Qt Help format"
 arch=('any')
 license=('CCPL:cc-by')
