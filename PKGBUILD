@@ -16,15 +16,15 @@ _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 pkgname=imagemagick-full-git
 pkgver=7.0.2.3.r11035.g32b5039
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
 depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw' 'flif-git'
-         'libfpx' 'djvulibre' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts' 'graphviz'
-         'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 
-         'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
+         'libfpx' 'djvulibre' 'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts'
+         'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango'
+         'libpng' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
 provides=("imagemagick" "imagemagick-full" "imagemagick-git" "imagemagick-fftw"
           "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
           "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
