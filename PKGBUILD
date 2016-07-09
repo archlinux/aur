@@ -1,10 +1,10 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=freeoffice
-pkgver=755
+pkgver=756
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.freeoffice.com/"
 license=('custom')
 depends=('xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache' 'desktop-file-utils')
