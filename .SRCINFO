@@ -1,12 +1,12 @@
 pkgbase = fluxbox-style-jet-gray
 	pkgdesc = Fluxbox style for Jet-Gray and Zukitwo Dark
-	pkgver = 20160608
+	pkgver = 20160709
 	pkgrel = 1
-	url = https://github.com/corebob/fluxbox-style-jet-gray
+	url = https://github.com/corebob/fluxbox-styles-corebob
 	arch = any
-	license = CCPL
-	source = https://github.com/corebob/fluxbox-style-jet-gray/archive/v1.0.zip
-	md5sums = 7da58c6f884e2fac781a6563dbbaee15
+	license = GPL3
+	source = https://github.com/corebob/fluxbox-styles-corebob/archive/v1.0.zip
+	md5sums = 742c8c97f793a6e52791eee65c775695
 
 pkgname = fluxbox-style-jet-gray
 
