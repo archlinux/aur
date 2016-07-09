@@ -1,0 +1,33 @@
+Only in evolvotron.mod/evolvotron: evolvotron
+Only in evolvotron.mod/evolvotron: evolvotron.gch
+Only in evolvotron.mod/evolvotron: Makefile
+Only in evolvotron.mod/evolvotron: moc
+Only in evolvotron.mod/evolvotron_mutate: evolvotron_mutate
+Only in evolvotron.mod/evolvotron_mutate: evolvotron_mutate.gch
+Only in evolvotron.mod/evolvotron_mutate: Makefile
+Only in evolvotron.mod/evolvotron_mutate: moc
+Only in evolvotron.mod/evolvotron_render: evolvotron_render
+Only in evolvotron.mod/evolvotron_render: evolvotron_render.gch
+Only in evolvotron.mod/evolvotron_render: Makefile
+Only in evolvotron.mod/evolvotron_render: moc
+Only in evolvotron.mod/libevolvotron: evolvotron.gch
+Only in evolvotron.mod/libevolvotron: libevolvotron.a
+Only in evolvotron.mod/libevolvotron: Makefile
+Only in evolvotron.mod/libevolvotron: moc
+diff -aur evolvotron/libevolvotron/mutatable_image_computer.h evolvotron.mod/libevolvotron/mutatable_image_computer.h
+--- evolvotron/libevolvotron/mutatable_image_computer.h	2013-01-26 04:48:42.000000000 -0800
++++ evolvotron.mod/libevolvotron/mutatable_image_computer.h	2016-07-08 19:33:36.357723781 -0700
+@@ -193,7 +193,7 @@
+   //! Indicate whether computation us taking place (only intended for counting outstanding threads).
+   bool active() const
+     {
+-      return _task;
++      return _task != NULL;
+     }
+ };
+ 
+Only in evolvotron.mod/libfunction: function.gch
+Only in evolvotron.mod/libfunction: libfunction.a
+Only in evolvotron.mod/libfunction: Makefile
+Only in evolvotron.mod/libfunction: moc
+Only in evolvotron.mod: Makefile
