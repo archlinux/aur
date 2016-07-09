@@ -1,0 +1,20 @@
+diff --git jni/mdxmini/src/mdxmml_ym2151.c jni/mdxmini/src/mdxmml_ym2151.c
+index 4594762..cc9ca7c 100755
+--- jni/mdxmini/src/mdxmml_ym2151.c
++++ jni/mdxmini/src/mdxmml_ym2151.c
+@@ -1041,6 +1041,7 @@ set_plfo( int track, int v1, int v2, int v3, int v4, int v5, songdata *data )
+   if ( v1 > 4  ) d*=256;
+   /*fprintf(stderr,"%d %d %d %d\n", track, v1, t, d);fflush(stderr);*/
+   mdx->track[track].p_lfo_form  = v1;
++  if (t < 2) t = 2; /* HACK to prevent zero division, no idea what's correct */
+   mdx->track[track].p_lfo_clock = t;
+   mdx->track[track].p_lfo_depth = d;
+   mdx->track[track].p_lfo_flag  = FLAG_TRUE;
+@@ -1092,6 +1093,7 @@ set_alfo( int track, int v1, int v2, int v3, int v4, int v5, songdata *data )
+     d = d-0x10000;
+   }
+   mdx->track[track].a_lfo_form  = v1;
++  if (t < 2) t = 2; /* HACK to prevent zero division, no idea what's correct */
+   mdx->track[track].a_lfo_clock = t;
+   mdx->track[track].a_lfo_depth = d;
+   mdx->track[track].a_lfo_flag  = FLAG_TRUE;
