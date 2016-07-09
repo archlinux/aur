@@ -2,8 +2,8 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.8.r0.gd8b0bfe
-pkgrel=2
+pkgver=0.8.r1.g83b87bf
+pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet (git version)."
 arch=('i686' 'x86_64')
 depends=(
