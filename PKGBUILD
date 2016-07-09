@@ -1,7 +1,7 @@
 # Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
 
 pkgname=cmake-doc-qch
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="CMake documentation in Qt Help format"
 arch=('any')
