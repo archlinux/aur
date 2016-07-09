@@ -2,39 +2,30 @@
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 
 pkgname=eclipse-pde
-pkgver=4.5
-pkgdate=201506032000
+pkgver=4.6
+_pkgdate=201606061100
 pkgrel=1
 pkgdesc="Plug-in Development Environment - Separated from Eclipse SDK package. Use with eclipse-platform"
 url="http://www.eclipse.org/pde/"
 arch=('any')
 license=('EPL')
-depends=('eclipse-common')
+depends=('eclipse>=4.5')
 makedepends=('unzip')
 options=(!strip)
-source=("http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops4/R-${pkgver}-${pkgdate}/org.eclipse.pde-${pkgver}.zip")
-md5sums=('fbe20c39bdebad4959e416e2a92396ba')
+_mirror="http://www.eclipse.org/downloads/download.php?mirror_id=1&file="
+source=(${_mirror}"/eclipse/downloads/drops4/R-${pkgver}-${_pkgdate}/org.eclipse.pde-${pkgver}.zip")
+md5sums=('041eb743921b659b2e7e13908334f238')
+
+# find new versions in http://download.eclipse.org/eclipse/downloads/drops4/R-4.6-201606061100/
 
 package() {
+  _dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/"
+  
+  cd "$srcdir"
+  mkdir -p "${_dest}"
+  
+  cp -r {features,plugins} "$_dest/"
 
-  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
-
-  cd ${srcdir}
-
-  # Features
-  find features -type f | while read _feature ; do
-    if [[ ${_feature} =~ (.*\.jar$) ]] ; then
-      install -dm755 ${_dest}/${_feature%*.jar}
-      cd ${_dest}/${_feature/.jar}
-      jar xf ${srcdir}/${_feature} || return 1
-    else
-      install -Dm644 ${_feature} ${_dest}/${_feature}
-    fi
-  done
-
-  # Plugins
-  find plugins -type f | while read _plugin ; do
-    install -Dm644 ${_plugin} ${_dest}/${_plugin}
-  done
-
+  find "$pkgdir/usr/lib/eclipse" -type d -exec chmod 755 {} \;
+  find "$pkgdir/usr/lib/eclipse" -type f -exec chmod 644 {} \;
 }
