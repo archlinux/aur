@@ -3,7 +3,7 @@ pkgname=bloonix-agent
 #_pkgname=
 provides=('bloonix-agent')
 pkgver=0.75
-pkgrel=5
+pkgrel=6
 pkgdesc='Bloonix Monitoring Agent'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
@@ -36,6 +36,7 @@ package() {
     cd perl && perl Build install destdir=$pkgdir create_packlist=0
     #cp $pkgdir/usr/lib/bloonix/etc $pkgdir/etc -r
     cp $pkgdir/usr/lib/bloonix/etc/systemd/ $pkgdir/etc/systemd -r
+    chmod 750 $pkgdir/usr/lib/bloonix/etc/sudoers.d -R
     cp $pkgdir/usr/lib/bloonix/etc/sudoers.d/ $pkgdir/etc/sudoers.d -r
     cp $pkgdir/usr/lib/bloonix/etc/agent $pkgdir/etc/bloonix -r
 
