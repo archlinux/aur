@@ -19,7 +19,7 @@ _gitname=vk
 
 build() {
   cd "$srcdir/$_gitname"
-  dub build --config=release-shared --build=release
+  dub build --config=release-shared
 }
 
 package() {
