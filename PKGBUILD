@@ -8,7 +8,7 @@ license=('MIT')
 depends=('desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgudev' 'libgcrypt' 'libnotify' 'libxtst' 'nss' 'python' 'xdg-utils' 'libcap')
 optdepends=('hunspell: spell check')
 options=('!docs' '!emptydirs')
-install=.INSTALL
+install=whatsie.install
 source=("whatsie-$pkgver-linux-amd64.deb::https://github.com/Aluxian/Whatsie/releases/download/v$pkgver/whatsie-$pkgver-linux-amd64.deb")
 md5sums=('caeedca3cc47ab414923c1ffa9ec9fca')
 package() {

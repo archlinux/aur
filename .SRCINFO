@@ -3,7 +3,7 @@ pkgbase = whatsie
 	pkgver = 2.0.15
 	pkgrel = 1
 	url = https://github.com/Aluxian/Whatsie
-	install = .INSTALL
+	install = whatsie.install
 	arch = x86_64
 	license = MIT
 	depends = desktop-file-utils
@@ -26,4 +26,3 @@ pkgbase = whatsie
 	md5sums = caeedca3cc47ab414923c1ffa9ec9fca
 
 pkgname = whatsie
-
