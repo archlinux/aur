@@ -3,7 +3,7 @@ pkgname=bloonix-agent
 #_pkgname=
 provides=('bloonix-agent')
 pkgver=0.75
-pkgrel=10
+pkgrel=11
 pkgdesc='Bloonix Monitoring Agent'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
@@ -12,7 +12,7 @@ options=('!emptydirs')
 install='bloonix-agent.install'
 
 depends=('perl-module-build' 'perl-io-socket-inet6' 'perl-params-validate'
-'perl-term-readkey' 'perl-log-handler' 'bloonix-core' 'facter')
+'perl-term-readkey' 'perl-log-handler' 'perl-json' 'bloonix-core' 'facter')
 source=(https://download.bloonix.de/sources/$pkgname-$pkgver.tar.gz)
 
 build() {
