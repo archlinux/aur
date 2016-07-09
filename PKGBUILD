@@ -9,7 +9,7 @@ pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
 url="https://github.com/cryzed/bin"
 license=('MIT')
-depends=('python-beautifulsoup4' 'python-requests' 'python-html5lib')
+depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-html5lib')
 source=("git+https://github.com/cryzed/bin.git"
         "aur-auto-vote.service.skel"
         "aur-auto-vote.timer")
