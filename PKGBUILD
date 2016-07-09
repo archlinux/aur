@@ -1,16 +1,16 @@
 # Maintainer: dag.robole at gmail dot com
 
 pkgname=fluxbox-style-solarized-light
-pkgver=20151105
+pkgver=20160709
 pkgrel=1
 pkgdesc="Solarized Light style for Fluxbox"
-url="https://github.com/corebob/fluxbox-style-solarized-light"
-license=('CCPL')
+url="https://github.com/corebob/fluxbox-styles-corebob"
+license=('GPL3')
 arch=('any')
-source=("https://github.com/corebob/fluxbox-style-solarized-light/releases/download/v1.0/fluxbox-style-solarized-light.zip")
-md5sums=('e9312cbbd60fd31fd56e7399da845b47')
+source=("https://github.com/corebob/fluxbox-styles-corebob/archive/v1.0.zip")
+md5sums=('742c8c97f793a6e52791eee65c775695')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/solarized-light"
-  cp -r ${srcdir}/fluxbox-style-solarized-light-master/solarized-light "${pkgdir}/usr/share/fluxbox/styles/"
+  cp -r ${srcdir}/fluxbox-styles-corebob/solarized-light/* "${pkgdir}/usr/share/fluxbox/styles/solarized-light"
 }
