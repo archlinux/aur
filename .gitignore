@@ -1,4 +1,4 @@
 /src/
 /pkg/
-/CMake.qch
+/CMake-*.qch
 *.pkg.tar.xz
