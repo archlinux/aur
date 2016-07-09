@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=si4010prog-git
 pkgver=r49.f312bcd
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to program and debug the Silicon Labs SI4010 micro controller."
 arch=('any')
 url="https://github.com/dimhoff/si4010prog"
@@ -12,6 +12,7 @@ makedepends=('git'
 'gcc')
 optdepends=('c2_gpio-dkms-git: accessing the si4010 chip via GPIO')
 provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/dimhoff/si4010prog.git")
 md5sums=('SKIP')
 

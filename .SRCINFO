@@ -1,7 +1,7 @@
 pkgbase = si4010prog-git
 	pkgdesc = A tool to program and debug the Silicon Labs SI4010 micro controller.
 	pkgver = r49.f312bcd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dimhoff/si4010prog
 	arch = any
 	license = GPL2
@@ -11,6 +11,7 @@ pkgbase = si4010prog-git
 	makedepends = gcc
 	optdepends = c2_gpio-dkms-git: accessing the si4010 chip via GPIO
 	provides = si4010prog
+	conflicts = si4010prog
 	source = si4010prog::git+https://github.com/dimhoff/si4010prog.git
 	md5sums = SKIP
 
