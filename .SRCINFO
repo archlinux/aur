@@ -1,7 +1,7 @@
 pkgbase = stencyl
 	pkgdesc = Create amazing games without code
 	pkgver = 3.3.3
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.stencyl.com
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = stencyl
 	source = stencyl.png
 	source = LICENSE
 	md5sums = e97ff31637ae4f223062269bfce3f8ab
-	md5sums = fc7e89167715c5a6d4d520c405deec16
+	md5sums = db8e44b1c3a6b5402ae1d6f3aec551d2
 	md5sums = c99ae55db267e86c0936e01662ee12ea
 	md5sums = 986e231db4a39dd7fa59c93a7e06b7c2
 
