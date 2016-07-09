@@ -11,7 +11,7 @@ depends=('glibc')
 conflicts=("${pkgname}-bin")
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=("SKIP")
+sha512sums=('ac4a75d69a7bad7c77fd6d752b061456ed9298dd2b561139ad9fd71b08f373b5e6e04f6bc4379e42982d63ffc68d89f40d209193b1d95e73cc3ccb40416c4293')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
