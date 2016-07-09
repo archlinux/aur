@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 
 pkgname="qt5-plugin-sql-oci"
-pkgver=5.6.0
+pkgver=5.7.0
 _pkgicver=12.1.0.2.0
 pkgrel=1
 pkgdesc="QT5 Oracle OCI SQL plugin."
@@ -13,7 +13,7 @@ makedepends=("oracle-instantclient-sdk>=${_pkgicver}")
 groups=('qt' 'qt5')
 _pkgfqn="qtbase-opensource-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('d6b6cfd333c22829c6c85fc52ceed019')
+md5sums=('184f9460b40752d71b15b827260580c2')
 
 build() {
     cd "${srcdir}/${_pkgfqn}/src/plugins/sqldrivers/oci"
@@ -24,4 +24,3 @@ build() {
 package() {  
   install -D "${srcdir}/${_pkgfqn}/plugins/sqldrivers/libqsqloci.so" "${pkgdir}/usr/lib/qt/plugins/sqldrivers/libqsqloci.so"
 }
-
