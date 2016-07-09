@@ -7,6 +7,8 @@ pkgdesc='A customized version of Scratch (http://scratch.mit.edu) prepared to in
 arch=('any')
 url='http://s4a.cat'
 depends=('squeak-vm')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
     'http://vps34736.ovh.net/S4A/S4A16.deb'
 )
