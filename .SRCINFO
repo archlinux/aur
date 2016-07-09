@@ -1,7 +1,7 @@
 pkgbase = pkgtools
 	pkgdesc = A collection of scripts for Arch Linux packages
 	pkgver = 25
-	pkgrel = 6
+	pkgrel = 7
 	url = https://bbs.archlinux.org/viewtopic.php?pid=384196
 	install = pkgtools.install
 	arch = any
@@ -18,7 +18,6 @@ pkgbase = pkgtools
 	provides = newpkg
 	provides = pip2arch
 	backup = etc/pkgtools/newpkg.conf
-	backup = etc/pkgtools/pkgfile.conf
 	backup = etc/pkgtools/spec2arch.conf
 	source = pkgtools-v25.tar.gz::https://github.com/Daenyth/pkgtools/tarball/v25
 	source = https://raw.githubusercontent.com/bluepeppers/pip2arch/master/pip2arch.py
