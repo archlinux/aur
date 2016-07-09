@@ -11,11 +11,11 @@ license=('GPL2')
 depends=('libcups' 'poppler-qt4' 'desktop-file-utils' 'hicolor-icon-theme' 
          'texlive-bin' 'libspectre' 'djvulibre')
 install='qpdfview.install'
-source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
+source=("$url/trunk/$pkgver/+download/qpdfview-$pkgver.tar.gz")
 sha256sums=('fad416e8fefc3057fa1b8d12d964c7eccd16dffe0307a0d6e9d55a543294da7f')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "qpdfview-$pkgver"
 
   lrelease-qt4 qpdfview.pro
   qmake-qt4 CONFIG+="$config" qpdfview.pro
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "qpdfview-$pkgver"
 
   make INSTALL_ROOT="$pkgdir" install
 }
