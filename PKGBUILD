@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=freeoffice
-pkgver=756
+pkgver=758
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("http://www.softmaker.net/down/softmaker-${pkgname}-${pkgver}.tgz"
         "${pkgname}-textmaker.desktop"
         "${pkgname}-planmaker.desktop"
         "${pkgname}-presentations.desktop")
-sha256sums=('8a02aa49c175c132b35634bdeec0e072441d6d574d7705825d3629b62c451657'
+sha256sums=('74204e3158c870bfd1d73ca8d0a883ae122978e2a53ac23c253590b630dc0131'
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'
@@ -64,5 +64,5 @@ package() {
   install -m 755 -t "${pkgdir}/usr/share/applications" "${pkgname}-presentations.desktop"
   msg2 "Installing mime file..."
   install -d "${pkgdir}/usr/share/mime/packages"
-  install -m 644 -t "${pkgdir}/usr/share/mime/packages" "${srcdir}/${pkgname}/mime/softmaker-freeoffice.xml"
+  install -m 644 -t "${pkgdir}/usr/share/mime/packages" "${srcdir}/${pkgname}/mime/softmaker-freeoffice16.xml"
 }
