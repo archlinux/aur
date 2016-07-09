@@ -1,6 +1,6 @@
 pkgbase = cutegram-git
 	pkgdesc = Telegram client by Aseman Land
-	pkgver = 2.9.5.dev.r10.g2827175
+	pkgver = 2.9.5.dev.r16.gd6329cb
 	pkgrel = 1
 	url = http://aseman.co/cutegram
 	arch = i686
