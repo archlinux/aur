@@ -1,0 +1,59 @@
+post_install(){
+
+if [ -e "/bin/systemctl" ] ; then
+    cp -a /usr/lib/bloonix/etc/systemd/bloonix-agent.service /lib/systemd/system/bloonix-agent.service
+    systemctl daemon-reload
+else
+    cp -a /usr/lib/bloonix/etc/init.d/bloonix-agent /etc/init.d/bloonix-agent
+fi
+
+if [ "$1" = "configure" ] ; then
+    if [ -e "/bin/systemctl" ] ; then
+        echo "Configure bloonix with systemd"
+        systemctl preset bloonix-agent.service
+    else
+        echo "Configure bloonix with update-rc.d"
+        update-rc.d bloonix-agent defaults >/dev/null
+    fi
+fi
+
+/usr/bin/bloonix-init-agent
+
+echo "Starting (condrestart) bloonix-agent..";
+
+if [ -e "/bin/systemctl" ] ; then
+    systemctl condrestart bloonix-agent.service
+elif [ -e "/usr/share/upstart" ] ; then
+    service bloonix-agent condrestart
+else
+    /etc/init.d/bloonix-agent condrestart
+fi
+
+
+
+}
+
+pre_remove(){
+if [ "$1" = "remove" ] ; then
+    echo "Removing bloonix-agent.."
+
+    if [ -e "/bin/systemctl" ] ; then
+        systemctl --no-reload disable bloonix-agent.service
+        echo "Stopping bloonix-agent.."
+        systemctl stop bloonix-agent.service
+        systemctl daemon-reload
+    else
+        update-rc.d -f bloonix-agent remove >/dev/null
+        echo "Stopping bloonix-agent.."
+        if [ -e "/usr/share/upstart" ] ; then
+            service bloonix-agent stop
+        else
+            /etc/init.d/bloonix-agent stop
+        fi
+    fi
+fi
+	
+}
+
+post_remove(){
+}

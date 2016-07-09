@@ -3,7 +3,7 @@ pkgname=bloonix-agent
 #_pkgname=
 provides=('bloonix-agent')
 pkgver=0.75
-pkgrel=1
+pkgrel=4
 pkgdesc='Bloonix Monitoring Agent'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
@@ -19,11 +19,26 @@ build() {
     #perl Configure.PL
     perl Configure.PL --prefix /usr --without-perl --ssl-ca-path /etc/ssl/certs --build-package
     make
+    pod2man bin/bloonix-agent >bin/bloonix-agent.1
+    cd perl && perl Build.PL installdirs=vendor && cd ..
+    cd perl && perl Build
 }
 
 package() {
+    install=bloonix-agent.install
 	cd "$srcdir"/$pkgname-$pkgver
     make DESTDIR="$pkgdir" install
+    install -d -m 0755 $pkgdir/etc/logrotate.d
+    install -d -m 0755 $pkgdir/etc/bloonix
+    install -d -m 0755 $pkgdir/etc/bloonix/agent/conf.d
+    cp etc/logrotate.d/bloonix $pkgdir/etc/logrotate.d/bloonix
+
+    cd perl && perl Build install destdir=$pkgdir create_packlist=0
+    #cp $pkgdir/usr/lib/bloonix/etc $pkgdir/etc -r
+    cp $pkgdir/usr/lib/bloonix/etc/systemd/ $pkgdir/etc/systemd -r
+    cp $pkgdir/usr/lib/bloonix/etc/sudoers.d/ $pkgdir/etc/sudoers.d -r
+    cp $pkgdir/usr/lib/bloonix/etc/agent $pkgdir/etc/bloonix -r
+
 }
 
 # vim:set ts=2 sw=2 et:
