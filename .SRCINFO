@@ -1,7 +1,7 @@
 pkgbase = c2_gpio-dkms-git
 	pkgdesc = Linux GPIO C2 Bus Master Implementation
 	pkgver = r62.2bc8b52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dimhoff/si4010prog
 	install = c2_gpio-dkms-git.install
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = c2_gpio-dkms-git
 	makedepends = gcc
 	depends = dkms
 	provides = c2_gpio-dkms
+	provides = c2_gpio
+	conflicts = c2_gpio-dkms
 	conflicts = c2_gpio
 	source = c2_gpio-dkms-git::git+git://github.com/dimhoff/si4010prog.git
 	source = dkms.conf
