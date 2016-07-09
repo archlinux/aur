@@ -1,0 +1,17 @@
+pkgbase = wifijammer-git
+	pkgdesc = Continuously jam all wifi clients and access points within range.
+	pkgver = r66.abf7ea0
+	pkgrel = 1
+	url = https://github.com/DanMcInerney/wifijammer
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = scapy
+	depends = python2
+	provides = wifijammer-git
+	conflicts = wifijammer-git
+	source = wifijammer-git::git+https://github.com/DanMcInerney/wifijammer.git#branch=master
+	md5sums = SKIP
+
+pkgname = wifijammer-git
+
