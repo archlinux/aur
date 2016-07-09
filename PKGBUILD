@@ -1,16 +1,16 @@
 # Maintainer: dag.robole at gmail dot com
 
 pkgname=fluxbox-style-zukitwo
-pkgver=20151105
+pkgver=20160709
 pkgrel=1
 pkgdesc="Zukitwo style for Fluxbox"
-url="https://github.com/corebob/fluxbox-style-zukitwo"
-license=('CCPL')
+url="https://github.com/corebob/fluxbox-styles-corebob"
+license=('GPL3')
 arch=('any')
-source=("https://github.com/corebob/fluxbox-style-zukitwo/releases/download/v1.0/fluxbox-style-zukitwo.zip")
-md5sums=('8991ae2a40d05522ba737520a1017480')
+source=("https://github.com/corebob/fluxbox-styles-corebob/archive/v1.0.zip")
+md5sums=('742c8c97f793a6e52791eee65c775695')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/zukitwo"
-  cp -r ${srcdir}/fluxbox-style-zukitwo-master/zukitwo "${pkgdir}/usr/share/fluxbox/styles/"
+  cp -r ${srcdir}/fluxbox-styles-corebob-1.0/zukitwo/* "${pkgdir}/usr/share/fluxbox/styles/zukitwo"
 }
