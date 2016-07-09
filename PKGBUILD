@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=ecdsatool-git
 pkgver=r23.7a196ce
-pkgrel=2
+pkgrel=3
 pkgdesc="Creates and manipulates ECC NISTP256 keypairs"
 arch=('i686' 'x86_64')
 url="https://github.com/kaniini/ecdsatool"
@@ -36,5 +36,5 @@ build() {
 package() {
         cd "${srcdir}/${_pkgname}"
 	make install
-	install -Dm0644 "${srcdir}"/cap_sasl.pl /usr/share/irssi/scripts/cap_sasl.pl
+	install -Dm0644 "${srcdir}"/cap_sasl.pl "${pkgdir}"/usr/share/irssi/scripts/cap_sasl.pl
 }
