@@ -2,7 +2,7 @@
 
 pkgname=faust2pd
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Pd GUI abstractions from Faust programs"
 arch=("i686" "x86_64")
 license=('GPL3')
@@ -20,7 +20,7 @@ md5sums=('6737b9948be8276f8213b84e48260115')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  make prefix=/usr PUREC_FLAGS=-mcpu=generic realclean all examples
+  make realclean && make prefix=/usr PUREC_FLAGS=-mcpu=generic examples
 }
 
 package() {
