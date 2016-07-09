@@ -2,13 +2,13 @@
 
 _pkgname=nutty
 pkgname=$_pkgname-bzr
-pkgver=r52
+pkgver=r80
 pkgrel=1
 pkgdesc="Network utility providing essential information on network related aspects (nethogs, nmap, traceroute, vnstat, ...)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/nutty"
 license=('GPL3')
-makedepends=('bzr')
+makedepends=('bzr' 'cmake' 'vala')
 depends=('granite' 'gtk3' 'libgee' 'net-tools' 'nethogs' 'nmap' 'traceroute' 'vnstat')
 provides=($_pkgname)
 conflicts=($_pkgname)
