@@ -13,17 +13,21 @@
 # This Windows font directory example is for people that copy/link fonts from a Windows
 # installation. If you prefer, you can choose an AUR package that provides the Windows fonts
 # as described in the Wiki and change the directory accordingly.
+# Apple fonts through AUR package 'tff-mac-fonts' are optional due to licensing issues. It
+# places fonts in directories '/usr/share/fonts/TTF' and '/usr/share/fonts/Type1'.
 
 _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
+_1st_apple_font_dir="/usr/share/fonts/TTF"
+_2nd_apple_font_dir="/usr/share/fonts/Type1"
 _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
 _srcver=$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
 _srcverregex=$(echo "$_srcver" | sed 's/\./\\\./g') # translate source version to a regular expression
 pkgname=imagemagick-full
 pkgver=$(echo "$_srcver" | tr '-' '.')
-pkgrel=3
+pkgrel=4
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -32,6 +36,7 @@ depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace
          'libfpx' 'djvulibre' 'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts'
          'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango'
          'libpng' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
+optdepends=('ttf-mac-fonts: for Apple fonts support')
 provides=("imagemagick"
           "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
           "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
@@ -110,7 +115,9 @@ build() {
 	        --with-xml \
 	        --with-dejavu-font-dir="$_dejavu_font_dir" \
 	        --with-gs-font-dir="$_gs_font_dir" \
-	        --with-windows-font-dir="$_windows_font_dir"
+	        --with-windows-font-dir="$_windows_font_dir" \
+	        --with-apple-font-dir="$_1st_apple_font_dir" \
+	        --with-fontpath="$_2nd_apple_font_dir"
 	        
 	make
 }
