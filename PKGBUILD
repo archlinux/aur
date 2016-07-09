@@ -24,7 +24,7 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'kwallet: for storing passwords in KWallet')
 options=('!strip')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
