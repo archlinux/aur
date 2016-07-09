@@ -1,0 +1,1 @@
+export FT2_SUBPIXEL_HINTING=0 
