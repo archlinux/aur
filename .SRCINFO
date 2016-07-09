@@ -1,7 +1,7 @@
 pkgbase = stencyl
 	pkgdesc = Create amazing games without code
 	pkgver = 3.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.stencyl.com
 	arch = i686
 	arch = x86_64

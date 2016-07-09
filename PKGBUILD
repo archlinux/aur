@@ -23,11 +23,11 @@ md5sums=('e97ff31637ae4f223062269bfce3f8ab'
 
 [ "$CARCH" = "i686" ]   && {
     source+=("${pkgname}-linux.tar.gz::http://www.stencyl.com/download/get/lin32/")
-    md5sums+=('18d53b51115a9a061333666f8a6eb864')
+    md5sums+=('d539bf55deca4bcb90e5f44ef245f410')
 }
 [ "$CARCH" = "x86_64" ] && {
     source+=("${pkgname}-linux.tar.gz::http://www.stencyl.com/download/get/lin64/")
-    md5sums+=('94189d5f907c6acf0a7b3c253eba2e81')
+    md5sums+=('025f200d90a5ecf9c681f00dc193a58a')
 }
 
 noextract=("$pkgname.tar.gz")
