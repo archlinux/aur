@@ -1,6 +1,6 @@
 pkgbase = hkg2arch
 	pkgdesc = A simple script to generate PKGBUILDs of haskell packages
-	pkgver = 0.1
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/christopherloen/hkg2arch
 	arch = any
