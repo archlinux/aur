@@ -1,7 +1,7 @@
 pkgbase = arduino
 	pkgdesc = Arduino prototyping platform SDK
 	pkgver = 1.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arduino.cc/en/Main/Software
 	install = arduino.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = arduino
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info
+	depends = avrdude
 	options = !strip
 	options = staticlibs
 	source_i686 = https://downloads.arduino.cc/arduino-1.6.9-linux32.tar.xz

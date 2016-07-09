@@ -1,20 +1,20 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Co-Maintainer: NicoHood <aur {at} nicohood {dot} de>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: PyroPeter <googlemail.com@abi1789>
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
-
-pkgname='arduino'
-pkgver='1.6.9'
-pkgrel=1
+pkgname=arduino
+pkgver=1.6.9
+pkgrel=2
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://arduino.cc/en/Main/Software"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'avrdude')
 install="arduino.install"
 source_i686=("https://downloads.arduino.cc/arduino-${pkgver}-linux32.tar.xz")
 source_x86_64=("https://downloads.arduino.cc/arduino-${pkgver}-linux64.tar.xz")
@@ -32,25 +32,26 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/"{doc,icons/hicolor,applications,mime/packages}
 
-  # copy the whole SDK to /usr/share/arduino/
-  cp -rf . "${pkgdir}/usr/share/arduino/"
+  # Copy the whole SDK
+  cp -a . "${pkgdir}/usr/share/arduino"
 
+  # Create symlinks
   ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
   ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
 
-  # fix avrdude
+  # fix avrdude (see https://github.com/arduino/Arduino/issues/5094)
   rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
   ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
-  # desktop icon
+  # Install desktop icons (keep a symlink for the arduino binary)
   cp -a lib/icons/* "${pkgdir}/usr/share/icons/hicolor"
   rm -rf "${pkgdir}/usr/share/arduino/lib/icons"
   ln -s /usr/share/icons/hicolor "${pkgdir}/usr/share/arduino/lib/icons"
 
-  #create desktop file using existing template
-  sed "s,<BINARY_LOCATION>,arduino %U,g;s,<ICON_NAME>,arduino,g" "lib/desktop.template" > "${pkgdir}/usr/share/applications/arduino.desktop"
+  # Create desktop file using existing template
+  sed "s,<BINARY_LOCATION>,arduino %U,g;s,<ICON_NAME>,arduino,g" "lib/desktop.template" \
+  > "${pkgdir}/usr/share/applications/arduino.desktop"
 
-  # desktop and mimetype files
-  install -m644 "${srcdir}/arduino.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/arduino.xml" "${pkgdir}/usr/share/mime/packages/"
+  # Install Arduino mime type
+  ln -s /usr/share/arduino/lib/arduino-arduinoide.xml "${pkgdir}/usr/share/mime/packages/arduino.xml"
 }
