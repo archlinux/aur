@@ -3,8 +3,8 @@
 
 pkgbase=bcc-git
 pkgname=('bcc-git' 'bcc-tools-git' 'python-bcc-git' 'python2-bcc-git')
-pkgver=v0.1.7.r88.f50ca1f
-pkgrel=2
+pkgver=v0.1.8.r330.52cd371
+pkgrel=1
 pkgdesc="BPF Compiler Collection - latest git code"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
@@ -39,6 +39,7 @@ package_bcc-git() {
   makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison')
   provides=('bcc-git' 'libbcc-git')
   conflicts=('bcc')
+  depends=('linux-headers')
   optdepends=('bcc-tools-git: Python utilites using the BCC library'
               'python-bcc-git: Python 3 bindings for BCC'
               'python2-bcc-git: Python 2 bindings for BCC')
