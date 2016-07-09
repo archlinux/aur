@@ -1,6 +1,6 @@
 # Maintainer: Dicebot <public@dicebot.lv>
 pkgname=git-hub
-pkgver=0.10
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Git command line interface to GitHub"
 arch=('i686' 'x86_64')
