@@ -1,0 +1,17 @@
+pkgbase = i2pd-openrc
+	pkgdesc = i2pd init scripts for OpenRC
+	pkgver = 20160709
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/i2pd-openrc/
+	arch = any
+	license = BSD
+	depends = i2pd-git
+	depends = openrc
+	source = i2pd.initd
+	source = i2pd.confd
+	md5sums = 5c7fe0e1982e8d0ea69b7a157d6c23e3
+	md5sums = b549d534c16243a0cbce382b312fd39c
+
+pkgname = i2pd-openrc
+	install = i2pd.install
+

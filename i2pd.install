@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add i2pd to system startup with 'rc-update add i2pd default'"
+	echo " ==> Edit /etc/conf.d/i2pd to change paths if required"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure to 'rc-update del i2pd default'"
+}
