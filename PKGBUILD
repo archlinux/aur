@@ -11,6 +11,8 @@ license=('GPL2')
 depends=('libcups' 'poppler-qt4' 'desktop-file-utils' 'hicolor-icon-theme' 
          'texlive-bin' 'libspectre' 'djvulibre')
 install='qpdfview.install'
+conflicts=('qpdfview' 'qpdfview-git')
+provides=('qpdfview')
 source=("$url/trunk/$pkgver/+download/qpdfview-$pkgver.tar.gz")
 sha256sums=('fad416e8fefc3057fa1b8d12d964c7eccd16dffe0307a0d6e9d55a543294da7f')
 
