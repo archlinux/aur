@@ -1,4 +1,4 @@
-pkgbase = chromium
+pkgbase = chromium-vaapi
 	pkgdesc = The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser
 	pkgver = 51.0.2704.106
 	pkgrel = 1
@@ -42,7 +42,7 @@ pkgbase = chromium
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
 	options = !strip
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-51.0.2704.106.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-vaapi-51.0.2704.106.tar.xz
 	source = chromium-launcher-3.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v3.tar.gz
 	source = chromium.desktop
 	source = chromium-widevine.patch
@@ -55,5 +55,5 @@ pkgbase = chromium
 	sha256sums = d9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd
 	sha256sums = 2258e5ab6ea5e06cee9d3740cf5c62ee04c41e300f6d27561c2788f78b1c70ab
 
-pkgname = chromium
+pkgname = chromium-vaapi
 

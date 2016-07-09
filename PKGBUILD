@@ -4,7 +4,7 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=chromium
+pkgname=chromium-vaapi
 pkgver=51.0.2704.106
 pkgrel=1
 _launcher_ver=3
