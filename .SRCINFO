@@ -8,7 +8,7 @@ pkgbase = govpn
 	arch = armv7h
 	license = GPL
 	makedepends = go
-	source = http://sourceforge.net/projects/govpn/files/govpn-5.9.tar.xz
+	source = http://sourceforge.net/projects/govpn/files/govpn-5.10.tar.xz
 	sha256sums = bc624265cfcda8ce1c1bbf9d016683c50ec6cba5aeccf33d93fca4e5d52098bd
 
 pkgname = govpn
