@@ -1,7 +1,7 @@
 pkgbase = bigloo-devel
 	pkgdesc = Fast scheme compiler
 	pkgver = 4.3a.alpha08Jul16
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 17
 	url = http://www-sop.inria.fr/mimosa/fp/Bigloo/
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = bigloo-devel
 	options = !strip
 	source = ftp://ftp-sop.inria.fr/indes/fp/Bigloo/bigloo4.3a-alpha08Jul16.tar.gz
 	source = satisfy-ldconfig.sh
-	md5sums = 874f89103b6ce637a1827ff4310cc92b
+	md5sums = d06336560d333366f9998783ff9d3c3f
 	md5sums = c253eb5651c81204f6c16b89c3c2cb6a
 
 pkgname = bigloo-devel
