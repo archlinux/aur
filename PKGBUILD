@@ -10,13 +10,17 @@
 # Change font directories bellow to match yours.
 # DeJaVu and GhostScript font directories provided bellow are the default ones.
 # Windows font directory provided bellow is set according to the example in Arch Linux Wiki.
+# This Windows font directory example is for people that copy/link fonts from a Windows
+# installation. If you prefer, you can choose an AUR package that provides the Windows fonts
+# as described in the Wiki and change the directory accordingly.
+
 
 _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 pkgname=imagemagick-full-git
 pkgver=7.0.2.3.r11035.g32b5039
-pkgrel=2
+pkgrel=3
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
