@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55cf225..270b4b1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,8 @@ file(GLOB_RECURSE widgets ./widgets/*.cpp ./widgets/*.h)
+ file(GLOB_RECURSE docimages ./resources/doc/images/*)
+ set(SRC_LIST ${openjpeg} ${root} ${segmentation} ${scriptengine} ${skeleton} ${widgets})
+ 
++set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)#resources.qrc
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+@@ -156,7 +158,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN")
+ #uncomment if you are to lazy to do »ninja install« to get the RPATH
+ set_target_properties(${PROJECT_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ #target_compile_options(${PROJECT_NAME} PRIVATE "-fcolor-diagnostics")
+ target_compile_options(${PROJECT_NAME} PRIVATE "-Wall" "-Wextra" "-Wpedantic")
+ 

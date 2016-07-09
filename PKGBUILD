@@ -5,16 +5,16 @@
 
 pkgname=knossos
 pkgver=4.1.2
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="http://www.knossostool.org/"
 license=("GPL2")
 depends=("curl"
-	"freeglut"
 	"glu"
 	"glut"
 	"qt5-python27"
+	"qt5-tools"
 	"quazip-qt5"
 	"snappy"
 )
@@ -25,15 +25,18 @@ makedepends=("boost"
 )
 source=("https://github.com/knossos-project/knossos/archive/v$pkgver.tar.gz"
 	"knossos.desktop"
+	"qt-5.7.patch"
 	"quazip.patch"
 )
 md5sums=('c648b510bcec05a914540eea7f577bfa'
          '1a2b3733cf5fcb3e1845ce771abb58e9'
+         '10ac71de3331013293518da4be88cde6'
          'be06cd6e91c80b63b9bfe4184b537d7e')
 
 prepare() {
 	cd "knossos-$pkgver"
 	patch -p 1 -i ../quazip.patch
+	patch -p 1 -i ../qt-5.7.patch
 }
 
 build() {
