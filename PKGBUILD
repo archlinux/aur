@@ -2,7 +2,7 @@
 # Contributor: Hy Goldsher <hyness-at-hyness-dot-com>
 
 pkgname=openjo-git
-pkgver=3296.ff3fc25
+pkgver=3305.233a5a9
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II - Jedi Outcast Engine"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url=https://github.com/JACoders/OpenJK
 license=('GPL')
 depends=('libgl' 'openal' 'zlib' 'sdl2' 'libjpeg' 'glu')
 optdepends=('libpng')
-makedepends=('cmake' 'yasm')
+makedepends=('git' 'cmake' 'yasm')
 source=("openjo::git://github.com/JACoders/OpenJK.git"
         'openjo.install'
         'openjosp.desktop'

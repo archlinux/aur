@@ -1,12 +1,13 @@
 pkgbase = openjo-git
 	pkgdesc = Open Source Jedi Knight II - Jedi Outcast Engine
-	pkgver = 3296.ff3fc25
+	pkgver = 3305.233a5a9
 	pkgrel = 1
 	url = https://github.com/JACoders/OpenJK
 	install = openjo.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = cmake
 	makedepends = yasm
 	depends = libgl
