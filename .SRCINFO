@@ -1,0 +1,17 @@
+pkgbase = haskell-curl
+	pkgdesc = Haskell binding to libcurl
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = None
+	arch = any
+	license = BSD3
+	depends = ghc
+	depends = haskell-base
+	depends = haskell-bytestring
+	depends = haskell-containers
+	options = strip
+	source = https://hackage.haskell.org/package/curl-1.3.8/curl-1.3.8.tar.gz
+	sha256sums = 9087c936bfcdb865bad3166baa3f12bf37acf076fa76010e3b5f82a1d485446e
+
+pkgname = haskell-curl
+
