@@ -4,12 +4,12 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20160630.5da66a0
+pkgver=20160709.67af3ff
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://mupdf.com/'
-license=('GPL3')
+license=('AGPL3')
 makedepends=('git')
 depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg' 'libxext')
 source=('git://git.ghostscript.com/mupdf.git'
@@ -19,7 +19,6 @@ sha1sums=('SKIP'
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-options=('staticlibs')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -32,18 +31,17 @@ prepare() {
 	git submodule update --init thirdparty/mujs
 	git submodule update --init thirdparty/openjpeg
 
-	# needed for zathura-pdf-mupdf
-	CFLAGS+=' -fPIC'
-	CXXFLAGS+=' -fPIC'
-
 	# fix memento.h confusion
 	sed '/^JBIG2DEC_CFLAGS :=/s|$| -I./include/mupdf|' -i Makethird
+
+	# embedding a CJK font into each binary is madness...
+	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	make release XCFLAGS="$CPPFLAGS $CFLAGS" XLIBS="$LDFLAGS"
+	make release XCFLAGS="$CFLAGS -fPIC" XLIBS="$LDFLAGS"
 }
 
 package() {
@@ -54,5 +52,8 @@ package() {
 	rm "${pkgdir}"/usr/bin/mupdf-x11
 
 	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
-	find "${pkgdir}"/usr/{include,lib,share} -type f | xargs chmod 644
+	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
+
+	# prevent the static-linking madness from spreading...
+	rm -fr "${pkgdir}"/usr/{include,lib}
 }
