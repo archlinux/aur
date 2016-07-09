@@ -12,6 +12,6 @@ makedepends = python2-docutils
 depends = python2
 depends = git
 depends = bash-completion
-source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v0.10
+source = git+https://github.com/sociomantic-tsunami/git-hub.git#tag=v0.10.2
 sha1sums = SKIP
 pkgname = git-hub
