@@ -4,8 +4,8 @@
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 
 _pkgver_year=2016
-_pkgver_month=02
-_pkgver_day=08
+_pkgver_month=05
+_pkgver_day=05
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
@@ -13,20 +13,22 @@ pkgrel=1
 pkgdesc="A set of tools for converting ABC files to MIDI files and vice versa, as well as other small utilities"
 url="http://abc.sourceforge.net/abcMIDI/"
 license=('GPL')
-depends=('glibc')
-makedepends=('unzip')
+depends=()
+makedepends=()
 changelog=ChangeLog
-source=("http://ifdo.pugmarks.com/~seymour/runabc/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.zip")
+source=("https://github.com/leesavide/abcmidi/archive/abcmidi-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.tar.gz")
 arch=(i686 x86_64)
-sha256sums=('e9c07721b41dc1aa4e492fd8682ad6ca9a60558098816c68811f544e84549b36')
+sha256sums=('ad5a42215ba9d247864e19f7fe2ea20906e686279dd7b5659314c52bb2df24e0')
+
+_srcdir=abcmidi-abcmidi-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}
 
 build() {
-    cd $srcdir/abcmidi
+    cd $srcdir/$_srcdir
     make 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch'
 }
 
 package() {
-    cd $srcdir/abcmidi
+    cd $srcdir/$_srcdir
     mkdir -p $pkgdir/usr/bin
     make prefix=$pkgdir/usr 'binaries=abc2midi midi2abc abc2abc mftext midicopy abcmatch' install
     # install programming documentation to docdir
