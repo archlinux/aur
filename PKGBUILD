@@ -9,7 +9,7 @@ pkgver=51.0.2704.106
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by 
-your GPU to be used."
+your GPU."
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
