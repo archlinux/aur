@@ -1,14 +1,14 @@
 pkgbase = rct2-data-gog
 	pkgdesc = RoallerCoaster Tycoon 2 is a theme park simulation game (gog.com version)
 	pkgver = 2.0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/game/rollercoaster_tycoon_2
 	install = rct2-data-gog.install
 	arch = any
 	license = custom: commercial
 	makedepends = innoextract
 	optdepends = openrct2: to play it natively
-	source = setup.exe::gogdownloader://rollercoaster_tycoon_2/en1installer0
+	source = setup_rollercoaster_tycoon2_2.0.0.6.exe::gogdownloader://rollercoaster_tycoon_2/en1installer0
 	sha256sums = 0587ec988c637497b63110e302b91c1d2dbd2d418ee1b5983c872b0c0a410b53
 
 pkgname = rct2-data-gog

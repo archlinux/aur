@@ -3,7 +3,7 @@
 
 pkgname=rct2-data-gog
 pkgver=2.0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="RoallerCoaster Tycoon 2 is a theme park simulation game (gog.com version)"
 url="https://www.gog.com/game/rollercoaster_tycoon_2"
 license=('custom: commercial')
@@ -11,7 +11,7 @@ arch=('any')
 makedepends=('innoextract')
 optdepends=('openrct2: to play it natively')
 install=$pkgname.install
-source=("setup.exe"::"gogdownloader://rollercoaster_tycoon_2/en1installer0")
+source=("setup_rollercoaster_tycoon2_$pkgver.exe"::"gogdownloader://rollercoaster_tycoon_2/en1installer0")
 sha256sums=('0587ec988c637497b63110e302b91c1d2dbd2d418ee1b5983c872b0c0a410b53')
 PKGEXT=".pkg.tar"
 
@@ -24,7 +24,7 @@ DLAGENTS+=('gogdownloader::/usr/bin/awk BEGIN{print"Please\ download\ the\ file\
 
 prepare() {
   # extract installer
-  innoextract -e -L -d "$srcdir" setup.exe
+  innoextract -e -L -d "$srcdir" setup_rollercoaster_tycoon2_$pkgver.exe
   
 }
 
@@ -32,7 +32,7 @@ package() {
   # data
   install -d "$pkgdir"/usr/share/$pkgname
   cd app
-  #see https://github.com/OpenRCT2/OpenRCT2/wiki/Required-RCT2-files
+  # see https://github.com/OpenRCT2/OpenRCT2/wiki/Required-RCT2-files
   cp -r objdata "$pkgdir"/usr/share/$pkgname/ObjData
   cp -r scenarios "$pkgdir"/usr/share/$pkgname/Scenarios
   install -d "$pkgdir"/usr/share/$pkgname/Data
