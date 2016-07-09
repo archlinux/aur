@@ -3,12 +3,13 @@ pkgname=bloonix-agent
 #_pkgname=
 provides=('bloonix-agent')
 pkgver=0.75
-pkgrel=7
+pkgrel=8
 pkgdesc='Bloonix Monitoring Agent'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
 license=('GPLv3')
 options=('!emptydirs')
+install='bloonix-agent.install'
 
 depends=('perl-module-build' 'perl-io-socket-inet6' 'perl-params-validate'
 'perl-term-readkey' 'perl-log-handler' 'bloonix-core' 'facter')
@@ -25,7 +26,6 @@ build() {
 }
 
 package() {
-    install=bloonix-agent.install
 	cd "$srcdir"/$pkgname-$pkgver
     make DESTDIR="$pkgdir" install
     install -d -m 0755 $pkgdir/etc/logrotate.d
