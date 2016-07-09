@@ -1,6 +1,6 @@
 # Maintainer: Wyatt J. Brown <sushidudeteam@gmail.com>
 pkgname=all-repository-fonts
-pkgver=20160116
+pkgver=20160709
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -30,6 +30,7 @@ depends=('adobe-source-code-pro-fonts'
          'otf-fira-mono'
          'otf-fira-sans'
          'otf-ipafont'
+         'powerline-fonts'
          'profont'
          'tamsyn-font'
          'terminus-font'
@@ -60,6 +61,7 @@ depends=('adobe-source-code-pro-fonts'
          'ttf-linux-libertine'
          'ttf-linux-libertine-g'
          'ttf-mph-2b-damase'
+         'ttf-overpass'
          'ttf-oxygen'
          'ttf-sazanami'
          'ttf-symbola'
@@ -78,6 +80,7 @@ depends=('adobe-source-code-pro-fonts'
          'xorg-fonts-type1')
 source=(LICENSE)
 sha512sums=('57f083acfdb3b05be097f27d8df8afb77820c61ca138f097f22564d3e10dd0b713aaf02e421d6ab8223b6fb462ad16833ce08a0f10ed17a0d3a82f34b9494df0')
+
 package()
 {
 	cd "$srcdir"
