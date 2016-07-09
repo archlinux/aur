@@ -25,6 +25,6 @@ build() {
 package() {
   cd ${srcdir}/luabind
   bjam --prefix=${pkgdir}/usr/ install
-  cd ${pkgdir}/usr/
+  cd ${pkgdir}/usr/lib
   ln -s libluabindd.so libluabind.so
 }
