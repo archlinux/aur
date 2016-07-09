@@ -1,12 +1,12 @@
 # Maintainer: Manuel Coenen <manuel dot coenen at gmail dot com>
 pkgname=ser4010_firmware
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for UART controllable SI4010 based tunable OOK/FSK RF transmitter"
 arch=('any')
 url="https://github.com/dimhoff/ser4010"
-depends=('si4010prog'
-'c2_gpio-dkms')
+depends=('si4010prog-git'
+'c2_gpio-dkms-git')
 source=('https://github.com/dimhoff/ser4010/releases/download/v0.2.0/ser4010_firmware-0.2.0.tar.gz'
 'ser4010.service')
 md5sums=('b009db33ae46efead5a273e1a46d10bb'
