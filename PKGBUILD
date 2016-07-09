@@ -2,8 +2,8 @@
 
 pkgname=github-release-bin
 pkgver=0.6.2
-pkgrel=2
-pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts)"
+pkgrel=3
+pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts) — built from pre-compiled binary."
 arch=('x86_64')
 url="https://github.com/aktau/github-release"
 license=('MIT')
