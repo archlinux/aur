@@ -1,6 +1,6 @@
 pkgbase = conky-nvidia
 	pkgdesc = Lightweight system monitor for X
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = http://conky.sourceforge.net/
 	arch = i686
@@ -20,14 +20,15 @@ pkgbase = conky-nvidia
 	depends = libxml2
 	depends = libxft
 	depends = libxdamage
+	depends = libxinerama
 	depends = imlib2
 	depends = libxnvctrl
 	provides = conky
 	conflicts = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.10.2.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.3.tar.gz
 	source = ascii.patch
 	source = lua53.patch
-	sha1sums = 7392523d2eb9e2044faae8d44cbd006b387d0a85
+	sha1sums = 971b20be2d8c2e676374441469e8525708500776
 	sha1sums = 96cdbc38e8706c8a3120601983df5c7265716128
 	sha1sums = a3a74542b6524e5663ad37aaba292b48e8bea3b1
 
