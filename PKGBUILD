@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.20.2
+pkgver=3.20.3
 pkgrel=1
 pkgdesc="A window manager for GNOME with patch for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -36,7 +36,7 @@ groups=('gnome')
 options=('!emptydirs')
 source=(https://download.gnome.org/sources//$_realname/${pkgver:0:4}/$_realname-$pkgver.tar.xz
         catalyst-workaround.patch)
-sha256sums=('1e8c46a81e21f382f56729282fcd0bb1c3a2067135f4b0f3651b307bf7a5b454'
+sha256sums=('142c5271df4bde968c725ed09026173292c07b4dd7ba75f19c4b14fc363af916'
             'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655')
 
 prepare() {
