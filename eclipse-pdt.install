@@ -1,8 +1,0 @@
-post_install() {
-  echo "  >>> run 'eclipse -clean' to complete the update of eclipse-pdt."
-  /bin/true
-}
-
-pre_upgrade() {
-  post_install $1
-}

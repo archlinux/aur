@@ -5,9 +5,8 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgname=eclipse-pdt
-_pkgver=3.6.0
-_reltag=201509151953
-pkgver=${_pkgver}_${_reltag}
+pkgver=4.0.0
+_reltag=201606081033
 pkgrel=1
 pkgdesc="PHP Development Tools for Eclipse"
 arch=('any')
@@ -16,24 +15,19 @@ license=('EPL')
 depends=('eclipse-dltk-core' 'eclipse-dtp' 'eclipse-wtp')
 optdepends=('eclipse-rse: For remote projects' 'php: The interpreter' 'xdebug: Better debug experience')
 makedepends=('unzip')
-install=eclipse-pdt.install
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
-source=("$_mirror/tools/pdt/downloads/pdt-Update-${_pkgver}.${_reltag}.zip")
-noextract=("pdt-Update-${_pkgver}.${_reltag}.zip")
+source=("$_mirror/tools/pdt/downloads/pdt-Update-${pkgver}.${_reltag}.zip")
 
-sha256sums=('f9ada9f7b9a70ad36508817ff93042de3839cfc1c45427b0b9493eaaf6fdfd29')
-
-prepare() {
-    unzip pdt-Update-${_pkgver}.${_reltag}.zip || true
-}
-build() {
-  true
-}
+sha256sums=('346687b6672e71c3a9cf4c16ba05815098820f33b4fff796f847689808d94d35')
 
 package() {
-    _installdir="$pkgdir/usr/share/eclipse/dropins/pdt"
-    cd "$srcdir"
-    install -d "$_installdir/eclipse"
-    cp -a features "$_installdir/eclipse"
-    cp -a plugins "$_installdir/eclipse"
+  _dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/"
+  
+  cd "$srcdir/${pkgver%.*}"
+  mkdir -p "${_dest}"
+  
+  cp -r {features,plugins} "$_dest/"
+
+  find "$pkgdir/usr/lib/eclipse" -type d -exec chmod 755 {} \;
+  find "$pkgdir/usr/lib/eclipse" -type f -exec chmod 644 {} \;
 }
