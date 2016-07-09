@@ -1,7 +1,7 @@
 pkgbase = python2-q
 	pkgdesc = Quick-and-dirty debugging output for tired programmers
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zestyping/q
 	arch = any
 	license = APACHE
