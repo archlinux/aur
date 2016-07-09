@@ -1,7 +1,7 @@
 # Maintainer: Sander Smid <sander..smid@gmail.com>
 pkgname=stencyl
 pkgver=3.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Create amazing games without code'
 arch=(i686 x86_64)
 url=http://www.stencyl.com
