@@ -1,22 +1,23 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 
 pkgbasename='robofab'
-pkgname=('python-'$pkgbasename'-git')
-pkgver=r441.f646d1f
+pkgname=('python2-'$pkgbasename'-git')
+pkgver=r319.62229c4
 pkgrel=1
 pkgdesc=""
 arch=('any')
-url="https://github.com/trufont/"$pkgbasename
-license=('custom:robofab')
+url="http://robofab.com/"
+license=('custom:BSD')
 makedepends=('git')
-source=("git+https://github.com/trufont/"$pkgbasename".git")
+depends=('python2' 'python2-numpy' 'python2-fonttools')
+source=("$pkgbasename::git+https://github.com/robofab-developers/$pkgbasename.git")
 sha256sums=('SKIP')
 
 package() {
-  depends=('python-setuptools')
+  depends=('python2-setuptools')
 
   cd "$srcdir/"$pkgbasename
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 pkgver() {
