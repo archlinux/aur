@@ -1,0 +1,23 @@
+pkgbase = ttf-spacemono
+	pkgdesc = Space Mono font by Colophon (from Google Fonts)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Space+Mono
+	install = ttf-spacemono.install
+	arch = any
+	license = SIL Open Font License v1.1
+	depends = fontconfig
+	depends = xorg-font-encodings
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = https://raw.githubusercontent.com/googlefonts/spacemono/master/fonts/SpaceMono-Regular.ttf
+	source = https://raw.githubusercontent.com/googlefonts/spacemono/master/fonts/SpaceMono-Bold.ttf
+	source = https://raw.githubusercontent.com/googlefonts/spacemono/master/fonts/SpaceMono-Italic.ttf
+	source = https://raw.githubusercontent.com/googlefonts/spacemono/master/fonts/SpaceMono-BoldItalic.ttf
+	sha256sums = 4c322514d265062aa3f7fbd81f5b79391ccb74268e6a20600061e0ce33234f41
+	sha256sums = 1d36265a139d549efca59711072bbf67f39ae51ae1c94315f0bdc3bb77c8c0eb
+	sha256sums = 6fecfc6b7d792370394d9e85d89b190eb9e6ea6443a7fc866d6e2e66cd5ad570
+	sha256sums = 4a89b64ec4896b3b9046b03cb49d854e381c3f03e44dff50f9861af025f5a26f
+
+pkgname = ttf-spacemono
+
