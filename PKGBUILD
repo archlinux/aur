@@ -13,7 +13,7 @@ sha512sums=("SKIP")
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  make
+  GOROOT=/usr/lib/go GOPATH=$HOME/go PATH=$PATH:$GOROOT/bin make
 }
 
 package() {
