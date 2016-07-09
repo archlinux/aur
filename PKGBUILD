@@ -12,5 +12,5 @@ md5sums=('742c8c97f793a6e52791eee65c775695')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/solarized-light"
-  cp -r ${srcdir}/fluxbox-styles-corebob/solarized-light/* "${pkgdir}/usr/share/fluxbox/styles/solarized-light"
+  cp -r ${srcdir}/fluxbox-styles-corebob-1.0/solarized-light/* "${pkgdir}/usr/share/fluxbox/styles/solarized-light"
 }
