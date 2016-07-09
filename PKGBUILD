@@ -29,7 +29,13 @@ pkgver() {
 build() {
     cd ${srcdir}/${pkgname}
     sed -i 's/PYTHON=python/PYTHON=python2/g' py-compile
-    ./autogen.sh --with-gtk=3.0 --prefix="/usr" \
+
+    # https://github.com/linuxmint/xplayer/issues/22
+    # I don't think there is a switch to disable grilo, so just bump the required
+    # version to something that obviously won't be satisfied.
+    sed -i 's/GRILO_REQS=0.2.0/GRILO_REQS=0.9.0/g' configure.ac
+
+    ./autogen.sh --prefix="/usr" \
         --localstatedir="/var" \
         --libexecdir="/usr/lib/${_pkgbasename}"
     make
