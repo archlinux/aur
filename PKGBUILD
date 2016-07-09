@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-ykfde-git
-pkgver=0.6.3.r14.g16cc1d8
+pkgver=0.6.4.r0.g95f195c
 pkgrel=1
 pkgdesc='Full disk encryption with Yubikey (Yubico key) - git checkout'
 arch=('i686' 'x86_64')
