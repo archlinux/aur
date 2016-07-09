@@ -1,4 +1,5 @@
 # Maintainer: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
+# Contributor: yan12125
 # The following contributors are from the vim-youcompleteme-git AUR package
 # Contributor: Babken Vardanyan <483ken 4tgma1l
 # Contributor: stykr
@@ -7,7 +8,6 @@
 # Contributor: Simon Gomizelj <simongmzlj@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
-# setting to no seems to break things
 _use_python2=y
 _use_system_boost=n
 
@@ -22,7 +22,7 @@ _clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
 pkgver=r1821.c4a410b
-pkgrel=2
+pkgrel=3
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='http://valloric.github.com/YouCompleteMe/'
@@ -33,8 +33,10 @@ makedepends=('git' 'cmake')
 provides=('vim-youcompleteme-git')
 conflicts=('vim-youcompleteme-git')
 source=('git+https://github.com/Valloric/YouCompleteMe.git'
-        'git+https://github.com/Valloric/ycmd')
-sha256sums=('SKIP' 'SKIP')
+        'git+https://github.com/Valloric/ycmd'
+        'boost-python3.patch'::'https://github.com/Valloric/ycmd/pull/537.patch')
+sha256sums=('SKIP' 'SKIP'
+            'bb42d14ef0ca04618c6f3a30e9a754388a0231f00e798509b803638974e656e5')
 install="${pkgname}.install"
 
 pkgver() {
@@ -43,9 +45,9 @@ pkgver() {
 }
 
 if [ "${_use_python2}" == 'y' ]; then
-	depends+=('python2' 'python2-bottle' 'python2-argparse' 'python2-waitress' 'python2-frozendict' 'python2-requests-futures')
+	depends+=('python2>=2.7' 'python2-bottle' 'python2-waitress' 'python2-frozendict' 'python2-requests-futures' 'python2-future')
 else
-	depends+=('python' 'python-bottle' 'python-waitress' 'python-frozendict') # 'python-argparse', 'python-requests-futures'
+	depends+=('python>=3.2' 'python-bottle' 'python-waitress' 'python-frozendict' 'python-requests-futures' 'python-future')
 fi
 
 if [ "${_use_system_boost}" == 'y' ]; then
@@ -55,7 +57,7 @@ fi
 
 if [ "${_search_system_completers}" == 'y' ]; then
 	source+=('system_completers.patch')
-	sha256sums+=('3f328dad9cac09798dfc2586d47e6bd835a8c118d364c674fd368d335b932df8')
+	sha256sums+=('6533f957fae4de2aa2d4be1903686328170ecd44c59487a7478aabc8544a966f')
 	optdepends+=(
 		'gocode-git: Go semantic completion'
 		'godef-git: Go semantic completion'
@@ -63,8 +65,12 @@ if [ "${_search_system_completers}" == 'y' ]; then
 		'racerd-git: Rust semantic completion'
 		'typescript: Typescript semantic completion'
 	)
+	if [ "${_use_python2}" == 'y' ]; then
+		optdepends+=('python2-jedihttp-git: Python semantic completion')
+	else
+		optdepends+=('python-jedihttp-git: Python semantic completion')
+	fi
 	# missing completers:
-	# JediHTTP - see https://github.com/vheon/JediHTTP/issues/17
 	# OmniSharp-Roslyn - ???
 fi
 
@@ -106,7 +112,11 @@ prepare() {
 
 	if [ "${_clang_completer}" == 'y' -a "${_clang_completer_system_libclang}" != 'y' ]; then
 		mkdir -p "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
-		cp "${srcdir}/$clang_filename}" "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
+		cp "${srcdir}/${clang_filename}" "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
+	fi
+
+	if [ "${_use_python2}" != 'y' -a "${_use_system_boost}" == 'y' ]; then
+		patch -i "${srcdir}/boost-python3.patch" -p1
 	fi
 }
 

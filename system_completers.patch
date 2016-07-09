@@ -74,7 +74,7 @@ index 6a7c4b5..1d50a7b 100755
  
  def ShouldEnableGoCompleter( user_options ):
 diff --git a/ycmd/completers/javascript/tern_completer.py b/ycmd/completers/javascript/tern_completer.py
-index 3d34d35..1a87620 100644
+index b7a2d26..40e9877 100644
 --- a/ycmd/completers/javascript/tern_completer.py
 +++ b/ycmd/completers/javascript/tern_completer.py
 @@ -59,6 +59,18 @@ PATH_TO_NODE = utils.PathToFirstExistingExecutable( [ 'node' ] )
@@ -116,3 +116,21 @@ index 3d34d35..1a87620 100644
                    '--port',
                    str( self._server_port ),
                    '--host',
+diff --git a/ycmd/completers/python/jedi_completer.py b/ycmd/completers/python/jedi_completer.py
+index 50b1916..4514490 100644
+--- a/ycmd/completers/python/jedi_completer.py
++++ b/ycmd/completers/python/jedi_completer.py
+@@ -155,8 +156,12 @@ class JediCompleter( Completer ):
+         json.dump( { 'hmac_secret': ToUnicode(
+                         b64encode( self._hmac_secret ) ) },
+                    hmac_file )
++        if os.path.exists(PATH_TO_JEDIHTTP):
++            jedihttp_path = PATH_TO_JEDIHTTP
++        else:
++            jedihttp_path = utils.PathToFirstExistingExecutable( [ 'jedihttp-main.py' ] )
+         command = [ self._python_binary_path,
+-                    PATH_TO_JEDIHTTP,
++                    jedihttp_path,
+                     '--port', str( self._jedihttp_port ),
+                     '--log', self._GetLoggingLevel(),
+                     '--hmac-file-secret', hmac_file.name ]
