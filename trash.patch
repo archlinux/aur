@@ -1,7 +1,106 @@
-diff -urN mutt-1.6.1/commands.c mutt-1.6.1-trash/commands.c
---- mutt-1.6.1/commands.c	2016-06-12 18:43:00.397447512 +0100
-+++ mutt-1.6.1-trash/commands.c	2016-06-12 18:43:04.892517610 +0100
-@@ -720,6 +720,7 @@
+diff --git a/OPS b/OPS
+index 8414a8b..02cea8e 100644
+--- a/OPS
++++ b/OPS
+@@ -142,6 +142,7 @@ OP_PREV_ENTRY "move to the previous entry"
+ OP_PREV_LINE "scroll up one line"
+ OP_PREV_PAGE "move to the previous page"
+ OP_PRINT "print the current entry"
++OP_PURGE_MESSAGE "really delete the current entry, bypassing the trash folder"
+ OP_QUERY "query external program for addresses"
+ OP_QUERY_APPEND "append new query results to current results"
+ OP_QUIT "save changes to mailbox and quit"
+diff --git a/PATCHES b/PATCHES
+index e69de29..2e1605a 100644
+--- a/PATCHES
++++ b/PATCHES
+@@ -0,0 +1 @@
++patch-trash-neo-git
+diff --git a/README.trash b/README.trash
+new file mode 100644
+index 0000000..fd62c6a
+--- /dev/null
++++ b/README.trash
+@@ -0,0 +1,74 @@
++Trash Folder Patch
++==================
++
++    Automatically move "deleted" emails to a trash bin
++
++Patch
++-----
++
++    To check if Mutt supports "Trash Folder", look for "patch-trash" in the
++    mutt version.
++
++    If IMAP is enabled, this patch will use it
++
++    Dependencies
++    * mutt-1.6.1
++    * IMAP support
++
++Introduction
++------------
++
++    In Mutt, when you "delete" an email it is first marked deleted. The email
++    isn't really gone until <sync-mailbox> is called. This happens when the
++    user leaves the folder, or the function is called manually.
++
++    After '<sync-mailbox>' has been called the email is gone forever.
++
++    The $trash variable defines a folder in which to keep old emails. As
++    before, first you mark emails for deletion. When <sync-mailbox> is called
++    the emails are moved to the trash folder.
++
++    The '$trash' path can be either a full directory, or be relative to the
++    $folder variable, like the 'mailboxes' command.
++
++    > Note
++    >
++    > Emails deleted from the trash folder are gone forever.
++
++Variables
++---------
++
++    Trash Variables
++
++    | Name  | Type   | Default |
++    |-------|--------|---------|
++    | trash | string | (none)  |
++
++Functions
++---------
++
++    Trash Functions
++
++    | Menus       | Default Key | Function          | Description                                                 |
++    |-------------|-------------|-------------------|-------------------------------------------------------------|
++    | index,pager | (none)      | '<purge-message>' | really delete the current entry, bypassing the trash folder |
++
++See Also
++--------
++
++    * NeoMutt project
++    * folder-hook
++
++Known Bugs
++----------
++
++    None
++
++Credits
++-------
++
++    * Cedric Duval <cedricduval@free.fr>
++    * Benjamin Kuperman <kuperman@acm.org>
++    * Paul Miller <paul@voltar.org>
++    * Richard Russon <rich@flatcap.org>
++
+diff --git a/commands.c b/commands.c
+index 2a0cdc9..554efb6 100644
+--- a/commands.c
++++ b/commands.c
+@@ -720,6 +720,7 @@ int _mutt_save_message (HEADER *h, CONTEXT *ctx, int delete, int decode, int dec
      if (option (OPTDELETEUNTAG))
        mutt_set_flag (Context, h, M_TAG, 0);
    }
@@ -9,10 +108,11 @@ diff -urN mutt-1.6.1/commands.c mutt-1.6.1-trash/commands.c
    
    return 0;
  }
-diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
---- mutt-1.6.1/curs_main.c	2016-06-12 18:43:00.399447544 +0100
-+++ mutt-1.6.1-trash/curs_main.c	2016-06-12 18:43:04.895517656 +0100
-@@ -1919,6 +1919,7 @@
+diff --git a/curs_main.c b/curs_main.c
+index a76aac9..5ebe014 100644
+--- a/curs_main.c
++++ b/curs_main.c
+@@ -1919,6 +1919,7 @@ int mutt_index_menu (void)
  	MAYBE_REDRAW (menu->redraw);
  	break;
  
@@ -20,7 +120,7 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
        case OP_DELETE:
  
  	CHECK_MSGCOUNT;
-@@ -1930,6 +1931,7 @@
+@@ -1930,6 +1931,7 @@ int mutt_index_menu (void)
  	if (tag)
  	{
  	  mutt_tag_set_flag (M_DELETE, 1);
@@ -28,7 +128,7 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
  	  if (option (OPTDELETEUNTAG))
  	    mutt_tag_set_flag (M_TAG, 0);
  	  menu->redraw = REDRAW_INDEX;
-@@ -1937,6 +1939,8 @@
+@@ -1937,6 +1939,8 @@ int mutt_index_menu (void)
  	else
  	{
  	  mutt_set_flag (Context, CURHDR, M_DELETE, 1);
@@ -37,7 +137,7 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
  	  if (option (OPTDELETEUNTAG))
  	    mutt_set_flag (Context, CURHDR, M_TAG, 0);
  	  if (option (OPTRESOLVE))
-@@ -2242,11 +2246,13 @@
+@@ -2242,11 +2246,13 @@ int mutt_index_menu (void)
  	if (tag)
  	{
  	  mutt_tag_set_flag (M_DELETE, 0);
@@ -51,7 +151,7 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
  	  if (option (OPTRESOLVE) && menu->current < Context->vcount - 1)
  	  {
  	    menu->current++;
-@@ -2268,9 +2274,11 @@
+@@ -2268,9 +2274,11 @@ int mutt_index_menu (void)
  	CHECK_ACL(M_ACL_DELETE, _("Cannot undelete message(s)"));
  
  	rc = mutt_thread_set_flag (CURHDR, M_DELETE, 0,
@@ -65,10 +165,11 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
  	{
  	  if (option (OPTRESOLVE))
  	  {
-diff -urN mutt-1.6.1/doc/manual.xml.head mutt-1.6.1-trash/doc/manual.xml.head
---- mutt-1.6.1/doc/manual.xml.head	2016-06-12 18:43:00.402447590 +0100
-+++ mutt-1.6.1-trash/doc/manual.xml.head	2016-06-12 18:43:04.901517750 +0100
-@@ -7467,6 +7467,16 @@
+diff --git a/doc/manual.xml.head b/doc/manual.xml.head
+index b90908f..4f77d0d 100644
+--- a/doc/manual.xml.head
++++ b/doc/manual.xml.head
+@@ -7467,6 +7467,16 @@ would contain:
  
  </sect2>
  
@@ -85,7 +186,7 @@ diff -urN mutt-1.6.1/doc/manual.xml.head mutt-1.6.1-trash/doc/manual.xml.head
  <sect2 id="url-syntax">
  <title>URL Syntax</title>
  
-@@ -8081,6 +8091,175 @@
+@@ -8081,6 +8091,175 @@ please have a look at the mixmaster documentation.
  
  </sect1>
  
@@ -261,9 +362,11 @@ diff -urN mutt-1.6.1/doc/manual.xml.head mutt-1.6.1-trash/doc/manual.xml.head
  </chapter>
  
  <chapter id="security">
-diff -urN mutt-1.6.1/doc/muttrc.trash mutt-1.6.1-trash/doc/muttrc.trash
---- mutt-1.6.1/doc/muttrc.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/doc/muttrc.trash	2016-06-12 18:43:04.768515676 +0100
+diff --git a/doc/muttrc.trash b/doc/muttrc.trash
+new file mode 100644
+index 0000000..8ecf8f0
+--- /dev/null
++++ b/doc/muttrc.trash
 @@ -0,0 +1,16 @@
 +# Example Mutt config file for the 'trash' feature.
 +
@@ -281,9 +384,11 @@ diff -urN mutt-1.6.1/doc/muttrc.trash mutt-1.6.1-trash/doc/muttrc.trash
 +# Note: Deleting emails from the 'trash' folder will REALLY delete them.
 +
 +# vim: syntax=muttrc
-diff -urN mutt-1.6.1/doc/vimrc.trash mutt-1.6.1-trash/doc/vimrc.trash
---- mutt-1.6.1/doc/vimrc.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/doc/vimrc.trash	2016-06-12 18:43:04.769515692 +0100
+diff --git a/doc/vimrc.trash b/doc/vimrc.trash
+new file mode 100644
+index 0000000..73b3137
+--- /dev/null
++++ b/doc/vimrc.trash
 @@ -0,0 +1,7 @@
 +" Vim syntax file for the mutt trash patch
 +
@@ -292,10 +397,11 @@ diff -urN mutt-1.6.1/doc/vimrc.trash mutt-1.6.1-trash/doc/vimrc.trash
 +syntax match muttrcFunction     contained "\<purge-message\>"
 +
 +" vim: syntax=vim
-diff -urN mutt-1.6.1/flags.c mutt-1.6.1-trash/flags.c
---- mutt-1.6.1/flags.c	2016-06-12 18:43:00.403447606 +0100
-+++ mutt-1.6.1-trash/flags.c	2016-06-12 18:43:04.902517766 +0100
-@@ -65,7 +65,13 @@
+diff --git a/flags.c b/flags.c
+index f0f3d81..7ddb20a 100644
+--- a/flags.c
++++ b/flags.c
+@@ -65,7 +65,13 @@ void _mutt_set_flag (CONTEXT *ctx, HEADER *h, int flag, int bf, int upd_ctx)
        {
  	h->deleted = 0;
          update = 1;
@@ -310,7 +416,7 @@ diff -urN mutt-1.6.1/flags.c mutt-1.6.1-trash/flags.c
  #ifdef USE_IMAP
          /* see my comment above */
  	if (ctx->magic == M_IMAP) 
-@@ -87,6 +93,27 @@
+@@ -87,6 +93,27 @@ void _mutt_set_flag (CONTEXT *ctx, HEADER *h, int flag, int bf, int upd_ctx)
        }
        break;
  
@@ -338,10 +444,11 @@ diff -urN mutt-1.6.1/flags.c mutt-1.6.1-trash/flags.c
      case M_NEW:
  
        if (!mutt_bit_isset(ctx->rights,M_ACL_SEEN))
-diff -urN mutt-1.6.1/functions.h mutt-1.6.1-trash/functions.h
---- mutt-1.6.1/functions.h	2016-06-12 18:43:00.403447606 +0100
-+++ mutt-1.6.1-trash/functions.h	2016-06-12 18:43:04.902517766 +0100
-@@ -121,6 +121,7 @@
+diff --git a/functions.h b/functions.h
+index 7a1c5a9..a29388c 100644
+--- a/functions.h
++++ b/functions.h
+@@ -121,6 +121,7 @@ const struct binding_t OpMain[] = { /* map: index */
    { "toggle-write",		OP_TOGGLE_WRITE,		"%" },
    { "next-thread",		OP_MAIN_NEXT_THREAD,		"\016" },
    { "next-subthread",		OP_MAIN_NEXT_SUBTHREAD,		"\033n" },
@@ -349,7 +456,7 @@ diff -urN mutt-1.6.1/functions.h mutt-1.6.1-trash/functions.h
    { "query",			OP_QUERY,			"Q" },
    { "quit",			OP_QUIT,			"q" },
    { "reply",			OP_REPLY,			"r" },
-@@ -213,6 +214,7 @@
+@@ -213,6 +214,7 @@ const struct binding_t OpPager[] = { /* map: pager */
    { "print-message",	OP_PRINT,			"p" },
    { "previous-thread",	OP_MAIN_PREV_THREAD,		"\020" },
    { "previous-subthread",OP_MAIN_PREV_SUBTHREAD,	"\033p" },
@@ -357,10 +464,11 @@ diff -urN mutt-1.6.1/functions.h mutt-1.6.1-trash/functions.h
    { "quit",		OP_QUIT,			"Q" },
    { "exit",		OP_EXIT,			"q" },
    { "reply",		OP_REPLY,			"r" },
-diff -urN mutt-1.6.1/globals.h mutt-1.6.1-trash/globals.h
---- mutt-1.6.1/globals.h	2016-06-12 18:43:00.403447606 +0100
-+++ mutt-1.6.1-trash/globals.h	2016-06-12 18:43:04.903517781 +0100
-@@ -141,6 +141,7 @@
+diff --git a/globals.h b/globals.h
+index abefade..241758d 100644
+--- a/globals.h
++++ b/globals.h
+@@ -141,6 +141,7 @@ WHERE char *StChars;
  WHERE char *Status;
  WHERE char *Tempdir;
  WHERE char *Tochars;
@@ -368,10 +476,11 @@ diff -urN mutt-1.6.1/globals.h mutt-1.6.1-trash/globals.h
  WHERE char *TSStatusFormat;
  WHERE char *TSIconFormat;
  WHERE short TSSupported;
-diff -urN mutt-1.6.1/imap/imap.c mutt-1.6.1-trash/imap/imap.c
---- mutt-1.6.1/imap/imap.c	2016-06-12 18:43:00.405447637 +0100
-+++ mutt-1.6.1-trash/imap/imap.c	2016-06-12 18:43:04.905517812 +0100
-@@ -888,6 +888,12 @@
+diff --git a/imap/imap.c b/imap/imap.c
+index 1b63b3a..af7607b 100644
+--- a/imap/imap.c
++++ b/imap/imap.c
+@@ -888,6 +888,12 @@ static int imap_make_msg_set (IMAP_DATA* idata, BUFFER* buf, int flag,
            if (hdrs[n]->deleted != HEADER_DATA(hdrs[n])->deleted)
              match = invert ^ hdrs[n]->deleted;
  	  break;
@@ -384,7 +493,7 @@ diff -urN mutt-1.6.1/imap/imap.c mutt-1.6.1-trash/imap/imap.c
          case M_FLAG:
            if (hdrs[n]->flagged != HEADER_DATA(hdrs[n])->flagged)
              match = invert ^ hdrs[n]->flagged;
-@@ -2038,3 +2044,53 @@
+@@ -2038,3 +2044,53 @@ int imap_complete(char* dest, size_t dlen, char* path) {
  
    return -1;
  }
@@ -438,10 +547,11 @@ diff -urN mutt-1.6.1/imap/imap.c mutt-1.6.1-trash/imap/imap.c
 +
 +	return 1;
 +}
-diff -urN mutt-1.6.1/imap/imap.h mutt-1.6.1-trash/imap/imap.h
---- mutt-1.6.1/imap/imap.h	2016-06-12 18:43:00.405447637 +0100
-+++ mutt-1.6.1-trash/imap/imap.h	2016-06-12 18:43:04.774515769 +0100
-@@ -72,4 +72,7 @@
+diff --git a/imap/imap.h b/imap/imap.h
+index a914b40..a8f762b 100644
+--- a/imap/imap.h
++++ b/imap/imap.h
+@@ -72,4 +72,7 @@ void imap_keepalive (void);
  
  int imap_account_match (const ACCOUNT* a1, const ACCOUNT* a2);
  
@@ -449,10 +559,11 @@ diff -urN mutt-1.6.1/imap/imap.h mutt-1.6.1-trash/imap/imap.h
 +int imap_fast_trash (void);
 +
  #endif
-diff -urN mutt-1.6.1/imap/message.c mutt-1.6.1-trash/imap/message.c
---- mutt-1.6.1/imap/message.c	2016-06-12 18:43:00.406447652 +0100
-+++ mutt-1.6.1-trash/imap/message.c	2016-06-12 18:43:04.906517828 +0100
-@@ -886,6 +886,7 @@
+diff --git a/imap/message.c b/imap/message.c
+index 02a726f..7a79f44 100644
+--- a/imap/message.c
++++ b/imap/message.c
+@@ -886,6 +886,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
          if (ctx->hdrs[n]->tagged)
          {
            mutt_set_flag (ctx, ctx->hdrs[n], M_DELETE, 1);
@@ -460,7 +571,7 @@ diff -urN mutt-1.6.1/imap/message.c mutt-1.6.1-trash/imap/message.c
            if (option (OPTDELETEUNTAG))
              mutt_set_flag (ctx, ctx->hdrs[n], M_TAG, 0);
          }
-@@ -893,6 +894,7 @@
+@@ -893,6 +894,7 @@ int imap_copy_messages (CONTEXT* ctx, HEADER* h, char* dest, int delete)
      else
      {
        mutt_set_flag (ctx, h, M_DELETE, 1);
@@ -468,10 +579,11 @@ diff -urN mutt-1.6.1/imap/message.c mutt-1.6.1-trash/imap/message.c
        if (option (OPTDELETEUNTAG))
          mutt_set_flag (ctx, h, M_TAG, 0);
      }
-diff -urN mutt-1.6.1/init.h mutt-1.6.1-trash/init.h
---- mutt-1.6.1/init.h	2016-06-12 18:43:00.408447684 +0100
-+++ mutt-1.6.1-trash/init.h	2016-06-12 18:43:04.909517875 +0100
-@@ -3419,6 +3419,16 @@
+diff --git a/init.h b/init.h
+index 5a12ec0..c43e246 100644
+--- a/init.h
++++ b/init.h
+@@ -3419,6 +3419,16 @@ struct option_t MuttVars[] = {
    ** provided that ``$$ts_enabled'' has been set. This string is identical in
    ** formatting to the one used by ``$$status_format''.
    */
@@ -488,10 +600,11 @@ diff -urN mutt-1.6.1/init.h mutt-1.6.1-trash/init.h
  #ifdef USE_SOCKET
    { "tunnel",            DT_STR, R_NONE, UL &Tunnel, UL 0 },
    /*
-diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
---- mutt-1.6.1/mutt.h	2016-06-12 18:43:00.410447715 +0100
-+++ mutt-1.6.1-trash/mutt.h	2016-06-12 18:43:04.912517922 +0100
-@@ -182,6 +182,8 @@
+diff --git a/mutt.h b/mutt.h
+index de26fd8..0f0cf73 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -182,6 +182,8 @@ enum
    M_DELETE,
    M_UNDELETE,
    M_DELETED,
@@ -500,7 +613,7 @@ diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
    M_FLAG,
    M_TAG,
    M_UNTAG,
-@@ -719,6 +721,8 @@
+@@ -719,6 +721,8 @@ typedef struct header
    unsigned int mime : 1;    		/* has a MIME-Version header? */
    unsigned int flagged : 1; 		/* marked important? */
    unsigned int tagged : 1;
@@ -509,7 +622,7 @@ diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
    unsigned int deleted : 1;
    unsigned int changed : 1;
    unsigned int attach_del : 1; 		/* has an attachment marked for deletion */
-@@ -891,6 +895,7 @@
+@@ -891,6 +895,7 @@ typedef struct _context
    int new;			/* how many new messages? */
    int unread;			/* how many unread messages? */
    int deleted;			/* how many deleted messages */
@@ -517,10 +630,11 @@ diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
    int flagged;			/* how many flagged messages */
    int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
  
-diff -urN mutt-1.6.1/muttlib.c mutt-1.6.1-trash/muttlib.c
---- mutt-1.6.1/muttlib.c	2016-06-12 18:43:00.411447731 +0100
-+++ mutt-1.6.1-trash/muttlib.c	2016-06-12 18:43:04.913517937 +0100
-@@ -1511,7 +1511,9 @@
+diff --git a/muttlib.c b/muttlib.c
+index a57dbf4..7a2d849 100644
+--- a/muttlib.c
++++ b/muttlib.c
+@@ -1511,7 +1511,9 @@ int mutt_save_confirm (const char *s, struct stat *st)
  
    if (magic > 0 && !mx_access (s, W_OK))
    {
@@ -531,10 +645,11 @@ diff -urN mutt-1.6.1/muttlib.c mutt-1.6.1-trash/muttlib.c
      {
        snprintf (tmp, sizeof (tmp), _("Append messages to %s?"), s);
        if ((rc = mutt_yesorno (tmp, M_YES)) == M_NO)
-diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
---- mutt-1.6.1/mx.c	2016-06-12 18:43:00.411447731 +0100
-+++ mutt-1.6.1-trash/mx.c	2016-06-12 18:43:04.914517953 +0100
-@@ -776,6 +776,62 @@
+diff --git a/mx.c b/mx.c
+index acc81d4..ccefa21 100644
+--- a/mx.c
++++ b/mx.c
+@@ -776,6 +776,62 @@ static int sync_mailbox (CONTEXT *ctx, int *index_hint)
    return rc;
  }
  
@@ -597,7 +712,7 @@ diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
  /* save changes and close mailbox */
  int mx_close_mailbox (CONTEXT *ctx, int *index_hint)
  {
-@@ -912,6 +968,7 @@
+@@ -912,6 +968,7 @@ int mx_close_mailbox (CONTEXT *ctx, int *index_hint)
  	  if (mutt_append_message (&f, ctx, ctx->hdrs[i], 0, CH_UPDATE_LEN) == 0)
  	  {
  	    mutt_set_flag (ctx, ctx->hdrs[i], M_DELETE, 1);
@@ -605,7 +720,7 @@ diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
  	  }
  	  else
  	  {
-@@ -936,6 +993,14 @@
+@@ -936,6 +993,14 @@ int mx_close_mailbox (CONTEXT *ctx, int *index_hint)
      return 0;
    }
    
@@ -620,7 +735,7 @@ diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
  #ifdef USE_IMAP
    /* allow IMAP to preserve the deleted flag across sessions */
    if (ctx->magic == M_IMAP)
-@@ -1140,6 +1205,12 @@
+@@ -1140,6 +1205,12 @@ int mx_sync_mailbox (CONTEXT *ctx, int *index_hint)
    msgcount = ctx->msgcount;
    deleted = ctx->deleted;
  
@@ -633,21 +748,11 @@ diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
  #ifdef USE_IMAP
    if (ctx->magic == M_IMAP)
      rc = imap_sync_mailbox (ctx, purge, index_hint);
-diff -urN mutt-1.6.1/OPS mutt-1.6.1-trash/OPS
---- mutt-1.6.1/OPS	2016-06-12 18:43:00.389447388 +0100
-+++ mutt-1.6.1-trash/OPS	2016-06-12 18:43:04.883517469 +0100
-@@ -142,6 +142,7 @@
- OP_PREV_LINE "scroll up one line"
- OP_PREV_PAGE "move to the previous page"
- OP_PRINT "print the current entry"
-+OP_PURGE_MESSAGE "really delete the current entry, bypassing the trash folder"
- OP_QUERY "query external program for addresses"
- OP_QUERY_APPEND "append new query results to current results"
- OP_QUIT "save changes to mailbox and quit"
-diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
---- mutt-1.6.1/pager.c	2016-06-12 18:43:00.412447746 +0100
-+++ mutt-1.6.1-trash/pager.c	2016-06-12 18:43:04.915517968 +0100
-@@ -2351,6 +2351,7 @@
+diff --git a/pager.c b/pager.c
+index 8bfe72c..b9f72c2 100644
+--- a/pager.c
++++ b/pager.c
+@@ -2351,6 +2351,7 @@ search_next:
  	MAYBE_REDRAW (redraw);
  	break;
  
@@ -655,7 +760,7 @@ diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
        case OP_DELETE:
  	CHECK_MODE(IsHeader (extra));
  	CHECK_READONLY;
-@@ -2358,6 +2359,8 @@
+@@ -2358,6 +2359,8 @@ search_next:
  	CHECK_ACL(M_ACL_DELETE, _("Cannot delete message"));
  
  	mutt_set_flag (Context, extra->hdr, M_DELETE, 1);
@@ -664,7 +769,7 @@ diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
          if (option (OPTDELETEUNTAG))
  	  mutt_set_flag (Context, extra->hdr, M_TAG, 0);
  	redraw = REDRAW_STATUS | REDRAW_INDEX;
-@@ -2688,6 +2691,7 @@
+@@ -2688,6 +2691,7 @@ search_next:
  	CHECK_ACL(M_ACL_DELETE, _("Cannot undelete message"));
  
  	mutt_set_flag (Context, extra->hdr, M_DELETE, 0);
@@ -672,7 +777,7 @@ diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
  	redraw = REDRAW_STATUS | REDRAW_INDEX;
  	if (option (OPTRESOLVE))
  	{
-@@ -2704,9 +2708,11 @@
+@@ -2704,9 +2708,11 @@ search_next:
  	CHECK_ACL(M_ACL_DELETE, _("Cannot undelete message(s)"));
  
  	r = mutt_thread_set_flag (extra->hdr, M_DELETE, 0,
@@ -685,15 +790,11 @@ diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
  	{
  	  if (option (OPTRESOLVE))
  	  {
-diff -urN mutt-1.6.1/PATCHES mutt-1.6.1-trash/PATCHES
---- mutt-1.6.1/PATCHES	2016-06-12 18:43:00.395447481 +0100
-+++ mutt-1.6.1-trash/PATCHES	2016-06-12 18:43:04.889517563 +0100
-@@ -0,0 +1 @@
-+patch-trash-neo-20160612
-diff -urN mutt-1.6.1/pattern.c mutt-1.6.1-trash/pattern.c
---- mutt-1.6.1/pattern.c	2016-06-12 18:43:00.413447762 +0100
-+++ mutt-1.6.1-trash/pattern.c	2016-06-12 18:43:04.916517984 +0100
-@@ -1367,8 +1367,9 @@
+diff --git a/pattern.c b/pattern.c
+index d954cdc..ea0230e 100644
+--- a/pattern.c
++++ b/pattern.c
+@@ -1367,8 +1367,9 @@ int mutt_pattern_func (int op, char *prompt)
        {
  	switch (op)
  	{
@@ -704,10 +805,11 @@ diff -urN mutt-1.6.1/pattern.c mutt-1.6.1-trash/pattern.c
  	    mutt_set_flag (Context, Context->hdrs[Context->v2r[i]], M_DELETE, 
  			  (op == M_DELETE));
  	    break;
-diff -urN mutt-1.6.1/postpone.c mutt-1.6.1-trash/postpone.c
---- mutt-1.6.1/postpone.c	2016-06-12 18:43:00.414447777 +0100
-+++ mutt-1.6.1-trash/postpone.c	2016-06-12 18:43:04.917518000 +0100
-@@ -277,6 +277,9 @@
+diff --git a/postpone.c b/postpone.c
+index cec150f..fdeb172 100644
+--- a/postpone.c
++++ b/postpone.c
+@@ -277,6 +277,9 @@ int mutt_get_postponed (CONTEXT *ctx, HEADER *hdr, HEADER **cur, char *fcc, size
    /* finished with this message, so delete it. */
    mutt_set_flag (PostContext, h, M_DELETE, 1);
  
@@ -717,81 +819,3 @@ diff -urN mutt-1.6.1/postpone.c mutt-1.6.1-trash/postpone.c
    /* update the count for the status display */
    PostCount = PostContext->msgcount - PostContext->deleted;
  
-diff -urN mutt-1.6.1/README.trash mutt-1.6.1-trash/README.trash
---- mutt-1.6.1/README.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/README.trash	2016-06-12 18:43:04.748515364 +0100
-@@ -0,0 +1,74 @@
-+Trash Folder Patch
-+==================
-+
-+    Automatically move "deleted" emails to a trash bin
-+
-+Patch
-+-----
-+
-+    To check if Mutt supports "Trash Folder", look for "patch-trash" in the
-+    mutt version.
-+
-+    If IMAP is enabled, this patch will use it
-+
-+    Dependencies
-+    * mutt-1.6.1
-+    * IMAP support
-+
-+Introduction
-+------------
-+
-+    In Mutt, when you "delete" an email it is first marked deleted. The email
-+    isn't really gone until <sync-mailbox> is called. This happens when the
-+    user leaves the folder, or the function is called manually.
-+
-+    After '<sync-mailbox>' has been called the email is gone forever.
-+
-+    The $trash variable defines a folder in which to keep old emails. As
-+    before, first you mark emails for deletion. When <sync-mailbox> is called
-+    the emails are moved to the trash folder.
-+
-+    The '$trash' path can be either a full directory, or be relative to the
-+    $folder variable, like the 'mailboxes' command.
-+
-+    > Note
-+    >
-+    > Emails deleted from the trash folder are gone forever.
-+
-+Variables
-+---------
-+
-+    Trash Variables
-+
-+    | Name  | Type   | Default |
-+    |-------|--------|---------|
-+    | trash | string | (none)  |
-+
-+Functions
-+---------
-+
-+    Trash Functions
-+
-+    | Menus       | Default Key | Function          | Description                                                 |
-+    |-------------|-------------|-------------------|-------------------------------------------------------------|
-+    | index,pager | (none)      | '<purge-message>' | really delete the current entry, bypassing the trash folder |
-+
-+See Also
-+--------
-+
-+    * NeoMutt project
-+    * folder-hook
-+
-+Known Bugs
-+----------
-+
-+    None
-+
-+Credits
-+-------
-+
-+    * Cedric Duval <cedricduval@free.fr>
-+    * Benjamin Kuperman <kuperman@acm.org>
-+    * Paul Miller <paul@voltar.org>
-+    * Richard Russon <rich@flatcap.org>
-+
