@@ -5,7 +5,7 @@
 
 pkgbase=virtualbox-modules-bfq
 pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
-pkgver=5.0.22
+pkgver=5.0.24
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
