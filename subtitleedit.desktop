@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Subtitle Edit
+Comment=A subtitle editor
+Exec=/usr/bin/subtitleedit
+Icon=/usr/share/pixmaps/subtitleedit.png
+Terminal=false
+Type=Application
+Categories=Video;AudioVideo;AudioVideoEditing;
