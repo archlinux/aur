@@ -1,0 +1,16 @@
+pkgbase = man-db-systemd
+	pkgdesc = Systemd timer to rebuild man-db cache and speed up pacman install operations
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://github.com/graysky2/man-db-systemd
+	install = man-db-systemd.install
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = man-db
+	optdepends = gzip
+	source = https://github.com/graysky2/man-db-systemd/archive/v1.00.tar.gz
+	sha256sums = 1cf69d78295c2898cc57fbc67164b6e05a90eebf4e919ad8daf0b2004fbe06c9
+
+pkgname = man-db-systemd
+

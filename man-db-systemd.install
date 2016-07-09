@@ -1,0 +1,9 @@
+post_install() {
+	if [ ! -f /var/cache/man/index.db ]; then
+		echo "it's recommended to create an initial"
+		echo "database running as root:"
+		echo "\"/usr/bin/mandb --quiet\""
+	else
+		true
+	fi
+}
