@@ -1,16 +1,16 @@
 # Maintainer: dag.robole at gmail dot com
 
 pkgname=fluxbox-style-elegant-brit
-pkgver=20150813
+pkgver=20160709
 pkgrel=1
 pkgdesc="Elegant Brit style for Fluxbox"
-url="https://github.com/corebob/fluxbox-style-elegant-brit"
+url="https://github.com/corebob/fluxbox-styles-corebob"
 license=('GPL3')
 arch=('any')
-source=("https://github.com/corebob/fluxbox-style-elegant-brit/archive/master.zip")
-md5sums=('a2c9691207fb539312aa7bdad58d3fe9')
+source=("https://github.com/corebob/fluxbox-styles-corebob/archive/v1.0.zip")
+md5sums=('742c8c97f793a6e52791eee65c775695')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/fluxbox/styles/Elegant Brit/"
-  cp -r ${srcdir}/fluxbox-style-elegant-brit-master/* "${pkgdir}/usr/share/fluxbox/styles/Elegant Brit/"
+  cp -r ${srcdir}/fluxbox-styles-corebob-1.0/elegant-brit/* "${pkgdir}/usr/share/fluxbox/styles/Elegant Brit/"
 }
