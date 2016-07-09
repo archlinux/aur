@@ -1,5 +1,5 @@
 # Maintainer: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
-# Contributor: yan12125
+# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 # The following contributors are from the vim-youcompleteme-git AUR package
 # Contributor: Babken Vardanyan <483ken 4tgma1l
 # Contributor: stykr
