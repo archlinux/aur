@@ -1,7 +1,7 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=gog-qfg1
 pkgver=2.1.0.33
-pkgrel=2
+pkgrel=3
 pkgdesc="Quest for Glory 1: So You Want to Be a Hero"
 arch=('x86_64')
 url="https://www.gog.com/game/quest_for_glory"
@@ -17,7 +17,7 @@ sha256sums=('728aec4488c22aa43be8a362f9100b6fa63e14bf492aacb70d088199f4baf0f0'
             '81af12e1292b6ef70ea03a8dbfd42ee7ade79da36a7ebfa5765ed3baa4809a2d'
             '80baf0c3984902d4e7b3a1e4b1c76e3bf3fa1f7077de6c0c21b9ab1a406a85bc'
             '10e4bbf6562aee29c3258d482fc482f43b7d5304e84da5a31204610a2bb7990d'
-            '6324d9de9f8dc4a15211cbe3d0e4dfe58ae0bf47dbb29778c59928fe084eceb6')
+            '626dc2363536802d402e8f1144182dd3ba1eb39a103efbdaa6e95a078d025e95')
 
 prepare() {
   innoextract setup_quest_for_glory_vga_2.1.0.33.exe
