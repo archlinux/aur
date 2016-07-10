@@ -31,21 +31,19 @@ md5sums=('SKIP'
 		'SKIP')
 
 pkgver() {
-	cd $srcdir/_pkgname
+	cd $_pkgname
 	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $srcdir/$_pkgname
+	cd $_pkgname
 	sed -i 's/env python/env python2/g' $_pkgname/__init__.py
 	sed -i 's:var/lib:usr/share:g' Makefile
 }
 
 package() {
-	cd $srcdir/$_pkgname
-	install -d $pkgdir/usr/{bin,share/selfspy}
-	install -d $pkgdir/usr/lib/systemd/system
+	cd $_pkgname
 	python2 setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 ../$_pkgname@.service $pkgdir/usr/lib/systemd/system/
+	install -Dm644 ../$_pkgname@.service $pkgdir/usr/lib/systemd/system/$_pkgname@.service
 	install -Dm644 ../$_pkgname.conf $pkgdir/usr/share/$_pkgname/$_pkgname.conf.example
 }
