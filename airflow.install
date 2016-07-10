@@ -1,0 +1,52 @@
+post_install() {
+  if ! getent group airflow >/dev/null; then
+    groupadd airflow
+  fi
+  if ! getent passwd airflow >/dev/null; then
+    useradd -c 'Airflow user' -g airflow -d '/var/lib/airflow' -s /bin/bash airflow
+    passwd -l airflow >/dev/null
+  fi
+  if [ ! -d '/var/lib/airflow' ]; then
+    mkdir -p '/var/lib/airflow'
+    chown airflow:airflow '/var/lib/airflow'
+  fi
+  if [ ! -d '/var/lib/airflow/dags' ]; then
+    mkdir -p '/var/lib/airflow/dags'
+    chown airflow:airflow '/var/lib/airflow/dags'
+  fi
+  echo "To use Airflow, you can now edit the configuration it generates upon first run."
+  echo "Remember to run 'sudo -u airflow airflow initdb' before enabling airflow in systemd."
+}
+
+pre_upgrade() {
+  for i in flower kerberos scheduler webserver worker; do
+    systemctl stop airflow-${i}
+  done
+}
+
+post_upgrade() {
+  post_install $1
+  airflow_shell=$(getent passwd postgres | cut -d: -f7)
+  if [ "$airflow_shell" = "/sbin/nologin" ]; then
+    chsh -s /bin/bash airflow
+  fi
+  systemctl daemon-reload
+}
+
+pre_remove() {
+  for i in flower kerberos scheduler webserver worker; do
+    systemctl stop airflow-${i}
+  done
+
+}
+
+post_remove() {
+  systemctl daemon-reload
+
+  if getent group airflow >/dev/null; then
+    groupdel airflow
+  fi
+  if getent passwd airflow >/dev/null; then
+    userdel airflow
+  fi
+}
