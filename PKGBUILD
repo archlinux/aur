@@ -1,7 +1,7 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=gog-qfg2
 pkgver=2.1.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Quest for Glory 2: Trial by Fire"
 arch=('x86_64')
 url="https://www.gog.com/game/quest_for_glory"
@@ -15,7 +15,7 @@ source=("local://setup_quest_for_glory2_${pkgver}.exe"
 sha256sums=('efda9c4ddd5753cbf39a25a3d90337f278ea11bd6c8f6352aab934c9d29a2796'
             '68e6421220d95d4440bfcbd29030133dada506476f11e92b74bd3439937a0ec6'
             'e8e28abd0667bce3d7fbcb66a814d8f445f1d012ee2b084a8e4a57e342900c6c'
-            'ecf34182fe14cc193c1e1cef698d9295000c42b35bc0dde24a259d5ded1c466e')
+            'e88ab7fe5da10ddf5e5b1cb68740a16b0406f942792daea91d8015916c1c8765')
 
 prepare() {
   innoextract setup_quest_for_glory2_${pkgver}.exe

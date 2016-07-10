@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-homedir="$HOME/.local/share/gog/qfg2"
+homedir="$HOME/.local/share/gog/qfg"
 gogdir="/opt/gog/qfg2"
 rundir="$XDG_RUNTIME_DIR/gog/qfg2"
 mkdir -p "$homedir"
