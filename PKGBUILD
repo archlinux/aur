@@ -2,7 +2,7 @@
 
 pkgname=nodejs-ungit
 _npmname=ungit
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
