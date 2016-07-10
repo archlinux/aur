@@ -1,6 +1,6 @@
 # Maintainer: nrio <nrio@mailbox.org>
 pkgname=tcharmap-git
-pkgver=r15.f3884a6
+pkgver=r17.bd21536
 pkgrel=1
 pkgdesc="Overview of unicode characters and their LaTeX counterpart"
 arch=('any')
@@ -8,11 +8,11 @@ url="https://github.com/nrio0/tcharmap"
 license=('MIT')
 options=(!emptydirs)
 depends=('python' 'python-yaml' 'python-pyqt5')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'xdg-utils')
 source=('git+https://github.com/nrio0/tcharmap.git'
         'tcharmap_start')
 sha256sums=('SKIP'
-            '5b72ad0b095beb7c8becb647b2f2cc054e0bb4f476bce66cf2d33af907dec4e5')
+            'eb60997b8de05779860d6a7b86758e75c575ed0bef1a54b8ffbc820c12c610a2')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -22,6 +22,17 @@ pkgver() {
 package() {
   install -Dm755 "$srcdir/tcharmap_start" "$pkgdir/usr/bin/tcharmap"
 	cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname-%git}/LICENSE"
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/tcharmap"
+  install -Dm644  tcharmap/charmap "$pkgdir/usr/share/tcharmap"
+  install -Dm644  tcharmap/tcharmap.py "$pkgdir/usr/share/tcharmap"
+  install -Dm644  tcharmap/icons_rc.py "$pkgdir/usr/share/tcharmap"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -d "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 16 --novendor "misc/hicolor/16x16/apps/tcharmap.png"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 22 --novendor "misc/hicolor/22x22/apps/tcharmap.png"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 24 --novendor "misc/hicolor/24x24/apps/tcharmap.png"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 32 --novendor "misc/hicolor/32x32/apps/tcharmap.png"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 48 --novendor "misc/hicolor/48x48/apps/tcharmap.png"
+  XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-desktop-menu install --noupdate --novendor misc/tcharmap.desktop
 }
