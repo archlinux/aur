@@ -1,0 +1,12 @@
+pkgbase = json-stroller-git
+	pkgdesc = A ncurse tool for viewing json formatted data
+	pkgver = v1.0.b
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = json-stroller-git::git://github.com/isundil/jsonStroller.git
+	md5sums = SKIP
+
+pkgname = json-stroller-git
+
