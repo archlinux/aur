@@ -4,7 +4,7 @@
 pkgname=selfspy-git
 _pkgname=${pkgname%-git}
 pkgver=0.1.4.r194.gb0be0ab
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="X11 personal keylogger daemon with statistical analysis."
 url="https://github.com/gurgeh/selfspy"
@@ -14,21 +14,19 @@ license=('GPL')
 arch=('i686' 'x86_64')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-depends=('python2'
-		'python2-daemon'
-		'python2-lockfile'
+depends=('python2-daemon'
 		'python2-keyring'
 		'python2-xlib'
 		'python2-sqlalchemy'
 		'tk'
-		'pycrypto')
+		'python2-crypto')
 makedepends=('git')
-source=("git://github.com/gurgeh/$_pkgname.git"
+source=("$_pkgname"::"git+https://github.com/gurgeh/$_pkgname.git"
 		"$_pkgname.conf"
 		"$_pkgname@.service")
 md5sums=('SKIP'
-		'SKIP'
-		'SKIP')
+		'c19d0212e7c6c1fe90c6975da9937db2'
+		'2874c55b09f87c946824dfdf4f60e1ed')
 
 pkgver() {
 	cd $_pkgname
