@@ -19,7 +19,7 @@ makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'git')
 optdepends=('ladspa: LADSPA filters')
 provides=('ffmpeg' 'libavcodec.so' 'libavdevice.so' 'libavfilter.so'
           'libavformat.so' 'libavresample.so' 'libavutil.so' 'libpostproc.so'
-		  'libswresample.so' 'libswscale.so')
+	  'libswresample.so' 'libswscale.so')
 conflicts=('ffmpeg' 'ffmpeg-full-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
