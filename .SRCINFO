@@ -1,0 +1,18 @@
+pkgbase = vim-conflict-marker-git
+	pkgdesc = Weapon to fight against conflicts in Vim
+	pkgver = 20151228
+	pkgrel = 1
+	url = https://github.com/rhysd/conflict-marker.vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-conflict-marker
+	conflicts = vim-conflict-marker
+	source = git+https://github.com/rhysd/conflict-marker.vim.git
+	md5sums = SKIP
+
+pkgname = vim-conflict-marker-git
+
