@@ -1,13 +1,13 @@
 pkgbase = argbash
 	pkgdesc = Bash argument parsing code generator
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matejak/argbash
 	arch = any
 	license = BSD
 	makedepends = make
 	depends = autoconf
-	source = https://github.com/matejak/argbash/archive/argbash-1.2.1.tar.gz
+	source = https://github.com/matejak/argbash/archive/1.2.1.tar.gz
 	source = LICENSE
 	sha256sums = 44ea8211d313e5fc0a9fe6b47b206c457c5f08f54e6c841764e894312659109a
 	sha256sums = 9ee9a6920cd16723e49b065f4ae101127d353fc5400d849e269482fbf4f56a45
