@@ -18,7 +18,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/JetBrains/jdk8u'
 license=('custom')
-makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
+makedepends=('jdk7-openjdk' 'gcc5' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
 _url_src=https://github.com/JetBrains
 source=(jdk8u-${_repo_ver}::git+${_url_src}/jdk8u.git
@@ -68,6 +68,12 @@ prepare() {
 }
 
 build() {
+  # Workaround for OpenJDK not compiling with GCC 6
+  mkdir -p "${srcdir}/gcc-bin-override"
+  ln -sf "/usr/bin/gcc-5" "${srcdir}/gcc-bin-override/gcc"
+  ln -sf "/usr/bin/g++-5" "${srcdir}/gcc-bin-override/g++"
+  export PATH="${srcdir}/gcc-bin-override/:${PATH}"
+
   cd "${srcdir}/jdk8u-${_repo_ver}"
 
   unset JAVA_HOME
