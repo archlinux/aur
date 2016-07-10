@@ -1,9 +1,10 @@
 # Maintainer: jakob <grandchild@gmx.net>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=selfspy-git
 _pkgname=selfspy
 pkgver=0.1.4.r194.gb0be0ab
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="X11 personal keylogger daemon with statistical analysis."
 url="https://github.com/gurgeh/selfspy"
@@ -45,8 +46,8 @@ package() {
 	install -d $pkgdir/usr/{bin,share/selfspy}
 	install -d $pkgdir/usr/lib/systemd/system
 	python2 setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 $srcdir/../${_pkgname}@.service \
+	install -Dm644 ../${_pkgname}@.service \
 		$pkgdir/usr/lib/systemd/system/
-	install -Dm644 $srcdir/../${_pkgname}.conf \
+	install -Dm644 ../${_pkgname}.conf \
 		$pkgdir/usr/share/${_pkgname}/${_pkgname}.conf.example
 }
