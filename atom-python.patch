@@ -1,6 +1,6 @@
 --- a/usr/bin/atom-beta
 +++ b/usr/bin/atom-beta
-@@ -1,5 +1,13 @@
+@@ -1,5 +1,12 @@
  #!/bin/bash
 
 +# Allow users to override command-line options
@@ -9,12 +9,11 @@
 +fi
 +
 +export PYTHON=python2
-+unset GTK_IM_MODULE QT_IM_MODULE XMODIFIERS
 +
  if [ "$(uname)" == 'Darwin' ]; then
    OS='Mac'
  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-@@ -99,11 +107,11 @@ elif [ $OS == 'Linux' ]; then
+@@ -101,11 +108,11 @@
    [ -x "$ATOM_PATH" ] || ATOM_PATH="$TMPDIR/atom-build/Atom/atom"
 
    if [ $EXPECT_OUTPUT ]; then
