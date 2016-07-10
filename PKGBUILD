@@ -56,7 +56,7 @@ if [[ $CARCH == i686 ]]; then
 fi
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
@@ -97,7 +97,7 @@ build() {
 
   make PREFIX=/usr
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
 
@@ -176,7 +176,7 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
 
