@@ -1,13 +1,114 @@
 RescueTime for Linux Release Notes
-2.8.5.890 - 2013/11/19 (Beta)
+2.9.10.1255 - 2016/04/21 (Release)
+
+Changes
+
+  Fixed issue where Chrome was not collecting website information.
+  Removed a major memory leak while collecting website information in Chrome/Firefox.
+  Optimized Chrome website collection.
+
+2.9.10.1250 - 2016/04/15
+
+Changes
+
+  Updated a software dependency to fix an issue on Windows with RescueTime keeping the computer awake.
+
+2.9.10.1230 - 2015/12/17
+
+Changes
+
+  Forcing SSL usage and verifying peer for more secure communications.
+
+2.8.9.1185 - 2015/8/31
+
+Changes
+
+  Fix for opening more than just http:// links from RescueTime alerts.
+
+2.8.9.1170 - 2015/7/9
+
+Changes
+
+  FocusTime end notifying server for other IFTTT / Zapier services.
+
+2.8.9.1165 - 2015/6/10
+
+Changes
+
+  FocusTime duration sent to server when starting session.
+  Removed information from debug log, unless higher logging level is used.
+
+2.8.9.1160 - 2015/6/4
+
+Changes
+
+  Fixed the secondary window title collector, removed extra string and quotes.
+  Now encoding the FocusTime redirect URL.
+
+2.8.9.1155 - 2015/5/28
+
+Changes
+
+  Fix for configuration loading issue with OfflineTime labels containing - or ,
+  Added more debug prints to track down crashing issues.
+
+2.8.9.1150 - 2015/5/7
+
+Changes
+
+  Release of Menu changes and fixed ui threading crashes.
+  Fixed pause for 60 minutes displaying until midnight.
+
+2.8.9.1145 - 2015/5/4
+
+Changes
+
+  Modified Menu to show Pause and Focus time remaining, change to Unpause button.
+  Testing a FocusTime shutoff command from server.
+  Fix for google-chrome-unstable location.
+  Fix for google-chrome location changes for communicating with extension.
+  Several fixed regardning the new menu system.
+  Fix for two possible ui thread crashes.
+
+2.8.8.1040 - 2015/2/3
+
+  Idle Activity feature to not go idle for some period of time with specific activities (for movies).
+  Support for firefox-dev to collect website information.
+
+2.8.7.1025 - 2014/12/29
+
+  Idle Activity feature to not go idle for some period of time with specific activities.
+  Support information shows premium/lite status for diagnostic purposes.
+  Support for chrome-stable to collect website information.
+
+2.8.6.1015 - 2014/07/11
+
+Changes
+
+  Update data version of activity reporting to distinguish between offline and other activities.
+  Removed a misleading cause for unknown default error, should have more information.
+  Fixed user:taken issue when signing in with new user.
+
+2.8.6.988 - 2014/03/31
 
 Bugs Fixed
 
-    Reduced server load for activation.
-    Disabled text entry and button on FocusTime window for lite users.
-    Fixed possible but unlikely crash when loading configuration at startup.
+  Fixed issue with FocusTime not turning off.
+  Updated activation process.
+  Removed the excessive "unknown default error" status report.
 
-2.8.5.870 - 2013/11/14 (Release)
+2.8.5.964 - 2013/11/21
+
+Bugs Fixed
+
+  Reduced server load for activation.
+  Disabled text entry and button on FocusTime window for lite users.
+  Fixed possible but unlikely crash when loading configuration at startup.
+  Fixed crash with alert messages.
+  Fixed issue with seconds vs milliseconds with delay before reading url.
+  Other minor bug fixes and maintenance.
+
+2.8.5.870 - 2013/11/14
 
 Bugs Fixed
 

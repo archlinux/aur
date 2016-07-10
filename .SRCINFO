@@ -1,7 +1,7 @@
 pkgbase = rescuetime
 	pkgdesc = Application time-tracking for Linux. Stable version
-	pkgver = 2.8.9.1185
-	pkgrel = 1
+	pkgver = 2.9.10.1255
+	pkgrel = 3
 	url = https://www.rescuetime.com
 	install = rescuetime.install
 	changelog = rescuetime.changelog
@@ -12,8 +12,10 @@ pkgbase = rescuetime
 	depends = xorg-xprop
 	depends = xprintidle
 	conflicts = rescuetime-beta
-	source = https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
-	md5sums = 905cf3b44940ce83031d40c96694f680
+	source_i686 = https://www.rescuetime.com/installers/rescuetime_current_i386.deb
+	md5sums_i686 = 79ef7170b5e047712751fa769fd21465
+	source_x86_64 = https://www.rescuetime.com/installers/rescuetime_current_amd64.deb
+	md5sums_x86_64 = bd81f31fbb13a5b73ac5bf41bbf243f6
 
 pkgname = rescuetime
 
