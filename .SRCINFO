@@ -6,6 +6,7 @@ pkgbase = ruby-gstreamer
 	arch = any
 	license = LGPL
 	makedepends = ruby-pkgconfig
+	depends = gstreamer
 	depends = ruby-gobject-introspection
 	noextract = gstreamer-3.0.8.gem
 	options = !emptydirs
