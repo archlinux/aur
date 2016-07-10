@@ -4,7 +4,7 @@
 
 _gemname=gstreamer
 pkgname=ruby-$_gemname
-pkgver=2.2.4
+pkgver=3.0.8
 pkgrel=1
 pkgdesc='A Ruby binding for GStreamer'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('ruby' 'ruby-glib2' 'ruby-gobject-introspection')
 makedepends=('ruby-pkgconfig')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-md5sums=('c9bc8e55664840dd75081b3f3d16038e')
+md5sums=('0bab53c1e29ea2c47062be19f764de2f')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
