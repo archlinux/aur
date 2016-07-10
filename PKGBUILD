@@ -2,18 +2,18 @@
 # Contributor: James An <james@jamesan.ca>
 
 pkgname=selfspy-git
-_pkgname=selfspy
+_pkgname=${pkgname%-git}
 pkgver=0.1.4.r194.gb0be0ab
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="X11 personal keylogger daemon with statistical analysis."
 url="https://github.com/gurgeh/selfspy"
-install=selfspy.install
+install="$_pkgname.install"
 changelog=.Changelog
 license=('GPL')
 arch=('i686' 'x86_64')
-provides=('selfspy')
-conflicts=('selfspy')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 depends=('python2'
 		'python2-daemon'
 		'python2-lockfile'
@@ -23,31 +23,29 @@ depends=('python2'
 		'tk'
 		'pycrypto')
 makedepends=('git')
-source=('git://github.com/gurgeh/selfspy.git'
-		"${_pkgname}.conf"
-		"${_pkgname}@.service")
+source=("git://github.com/gurgeh/$_pkgname.git"
+		"$_pkgname.conf"
+		"$_pkgname@.service")
 md5sums=('SKIP'
 		'SKIP'
 		'SKIP')
 
 pkgver() {
-	cd $srcdir/${_pkgname}
+	cd $srcdir/_pkgname
 	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $srcdir/${_pkgname}
-	sed -i 's/env python/env python2/g' selfspy/__init__.py
+	cd $srcdir/$_pkgname
+	sed -i 's/env python/env python2/g' $_pkgname/__init__.py
 	sed -i 's:var/lib:usr/share:g' Makefile
 }
 
 package() {
-	cd $srcdir/${_pkgname}
+	cd $srcdir/$_pkgname
 	install -d $pkgdir/usr/{bin,share/selfspy}
 	install -d $pkgdir/usr/lib/systemd/system
 	python2 setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 ../${_pkgname}@.service \
-		$pkgdir/usr/lib/systemd/system/
-	install -Dm644 ../${_pkgname}.conf \
-		$pkgdir/usr/share/${_pkgname}/${_pkgname}.conf.example
+	install -Dm644 ../$_pkgname@.service $pkgdir/usr/lib/systemd/system/
+	install -Dm644 ../$_pkgname.conf $pkgdir/usr/share/$_pkgname/$_pkgname.conf.example
 }
