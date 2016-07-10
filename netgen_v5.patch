@@ -1,0 +1,11 @@
+diff -aur freecad.pristine/cMake/FindNETGEN.cmake freecad/cMake/FindNETGEN.cmake
+--- freecad.pristine/cMake/FindNETGEN.cmake	2016-07-04 00:03:21.842625925 +0200
++++ freecad/cMake/FindNETGEN.cmake	2016-07-04 00:03:40.172626584 +0200
+@@ -57,6 +57,7 @@
+ FIND_PATH(NETGEN_DIR_occ occgeom.hpp PATHS ${NETGENDATA}/occ)
+ FIND_PATH(NETGEN_DIR_stlgeom stlgeom.hpp PATHS ${NETGENDATA}/stlgeom)
+ 
++LIST( APPEND NETGEN_DEFINITIONS -DNETGEN_V5 )
+ LIST( APPEND NETGEN_INCLUDE_DIRS
+       ${NETGEN_DIR_csg} ${NETGEN_DIR_gen} ${NETGEN_DIR_geom2d} 
+       ${NETGEN_DIR_gprim} ${NETGEN_DIR_la} ${NETGEN_DIR_mesh}
