@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=irssi-plugin-otr-git
-pkgver=v1.0.0.10.g4ad3b7b
+pkgver=1.0.1.r15.gf75eb26
 pkgrel=1
 pkgdesc="LibOTR functionality in Irssi."
 arch=('i686' 'x86_64')
