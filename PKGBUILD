@@ -1,9 +1,13 @@
-# $Id: PKGBUILD 270821 2016-06-30 18:36:16Z bpiotrowski $
+# Maintainer: Samantha McVey samantham@posteo.net
+# Based off the official Chromium package, but with a patch to enable VA-API
+# 
+# Official Arch Linux Chromium package Maintainers and Contributors:
+#
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-
+# 
 pkgname=chromium-vaapi
 pkgver=51.0.2704.106
 pkgrel=2
