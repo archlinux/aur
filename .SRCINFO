@@ -1,6 +1,6 @@
 pkgbase = elm-format-0.17-bin
 	pkgdesc = Format Elm source code according to a standard set of rules based on the official Elm Style Guide.
-	pkgver = 0.3.1_alpha
+	pkgver = 0.4.0_alpha
 	pkgrel = 1
 	url = https://github.com/avh4/elm-format
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = elm-format-0.17-bin
 	license = unknown
 	provides = elm-format
 	conflicts = elm-format-0.16-bin
-	source = https://github.com/avh4/elm-format/releases/download/0.3.1-alpha/elm-format-0.17-0.3.1-alpha-linux-x64.tgz
-	md5sums = ab6b85e80b020b3358d4aba179f4fa38
+	source = https://github.com/avh4/elm-format/releases/download/0.4.0-alpha/elm-format-0.17-0.4.0-alpha-linux-x64.tgz
+	md5sums = ea3feef40d6e9c6dead3419e7d5088b6
 
 pkgname = elm-format-0.17-bin
 
