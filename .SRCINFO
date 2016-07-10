@@ -1,0 +1,16 @@
+pkgbase = git-subrepo-git
+	pkgdesc = Git command is an improvement from git-submodule and git-subtree.
+	pkgver = 0.3.0.r72.g1e79595
+	pkgrel = 1
+	url = https://github.com/ingydotnet/git-subrepo
+	arch = any
+	license = GPL
+	provides = git-subrepo=0.3.0.r72.g1e79595
+	conflicts = git-subrepo
+	source = git-subrepo::git+https://github.com/ingydotnet/git-subrepo.git
+	source = make-destdir.patch
+	md5sums = SKIP
+	md5sums = ee9d7137bb4fe4b0cc7da8f669e26ddf
+
+pkgname = git-subrepo-git
+
