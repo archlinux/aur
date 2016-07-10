@@ -1,7 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Quick tip:
+# When developing this package
+# Use `PKGEXT=".pkg.tar" makepkg` to build
+# That way you don't have to wait for ~150MB to compress down to ~40MB.
 
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=moeditor-bin
