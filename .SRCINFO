@@ -1,6 +1,6 @@
 pkgbase = otf-pragmatapro
 	pkgdesc = PragmataPro by Fabrizio Schiavi
-	pkgver = 0.821
+	pkgver = 0.822
 	pkgrel = 1
 	url = http://www.fsd.it/shop/fonts/pragmatapro/
 	install = otf-pragmatapro.install

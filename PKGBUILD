@@ -3,7 +3,7 @@
 # requires that you already have a full copy of this font
 
 pkgname=otf-pragmatapro
-pkgver=0.821
+pkgver=0.822
 pkgrel=1
 pkgdesc="PragmataPro by Fabrizio Schiavi"
 arch=('any')
