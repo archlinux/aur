@@ -8,7 +8,7 @@ pkgdesc="HTerm serial terminal"
 arch=("i686" "x86_64")
 url="http://www.der-hammer.info/terminal"
 license=(properitary)
-depends=("lib32-gtk2" "lib32-libpng12")
+depends=("lib32-gtk2" "lib32-libpng12" "lib32-libsm")
 optdepends=()
 conflicts=()
 
