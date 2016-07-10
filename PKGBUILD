@@ -3,7 +3,7 @@
 # Contributor: jebaum <jebaum at ucla dot edu>
 
 pkgname=fzf-git
-pkgver=20160425
+pkgver=20160710
 pkgrel=1
 pkgdesc="Command-line fuzzy finder"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -66,6 +66,7 @@ package() {
 
   msg2 'Installing manual...'
   install -Dm 644 "man/man1/fzf.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "man/man1/fzf-tmux.1" -t "$pkgdir/usr/share/man/man1"
 
   msg2 'Installing executables...'
   install -Dm 755 "$srcdir/bin/fzf" -t "$pkgdir/usr/bin"
