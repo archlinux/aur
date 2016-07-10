@@ -6,7 +6,7 @@ _version=git
 pkgname=${_pkgname}-${_version}
 # todo, extract from ./toonz/sources/toonz/main.cpp, applicationFullName
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="2D Animation software."
 arch=('i686' 'x86_64')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -14,10 +14,10 @@ license=('BSD')
 groups=()
 depends=(
     'boost' 'boost-libs'
-    'qt5-base' 'qt5-svg' 'qt5-script' 'qt5-tools'
+    'qt5-base' 'qt5-svg' 'qt5-script' 'qt5-tools' 'qt5-multimedia'
     'lz4' 'libusb' 'lzo' 'libjpeg-turbo'
     'glew' 'freeglut' 'sdl2' 'freetype2'
-    'blas' 'cblas')
+    'blas' 'cblas' 'superlu')
 makedepends=('cmake' 'make' 'git')
 optdepends=()
 provides=()
