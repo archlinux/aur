@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.0.0.80
+pkgver=4.0.0.81
 pkgrel=1
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("http://www.svp-team.com/files/svp4-linux-64.tbz2")
 noextract=()
-sha1sums=("5b1d81d5d856596d5c992f5635bf3190e690ee60")
+sha1sums=('ba41038c4ac20997d090a6d552c865d039a49108')
 validpgpkeys=()
 
 prepare() {
