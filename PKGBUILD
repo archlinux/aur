@@ -1,36 +1,24 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers
-pkgver=1.1.195
+pkgver=1.2
 pkgrel=1
 arch=('any')
 license=('GPL')
 url="http://github.com/bbidulock/xde-helpers"
 groups=('xde')
 depends=('xde-icons' 'xdg-utils' 'gxmessage')
-makedepends=('git')
-install="xde-helpers.install"
-source=("$pkgname::git+https://github.com/bbidulock/$pkgname.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --always | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
-}
-
-prepare() {
-  cd $pkgname
-  ./autogen.sh
-}
+source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+md5sums=('5ccb751bb249bf2e1657cd0cc1424f42')
 
 build() {
- cd $pkgname
- ./configure --prefix=/usr --sysconfdir=/etc
- make V=0
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make V=0
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
