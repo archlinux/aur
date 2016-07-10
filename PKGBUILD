@@ -1,21 +1,24 @@
 # Maintainer: Julian Sanin <sanin89julian@gmail.com>
 
 pkgname=liberasurecode
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Erasure Code API library written in C with pluggable Erasure Code backends"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 url="https://github.com/openstack/liberasurecode"
 makedepends=('doxygen')
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "disable-sse.patch")
-md5sums=('04f9d15cd5e645392811dd5e96e68c98'
-         'a088b148c73df00f8aa72e3edd1e2818')
+source=("${url}/archive/${pkgver}.tar.gz"
+        "disable-sse.patch"
+        "disable-doc-full-path-names.patch")
+md5sums=('5c69a112c872267db2af8d3fc3bbc1d1'
+         '7dd209992c2d9390e2ebcad67fc5e785'
+         '961c0db9f9d1bb23ceee9b28480f42c5')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -p1 <../disable-sse.patch
+  patch -p1 <../disable-doc-full-path-names.patch
 }
 
 build() {
@@ -32,7 +35,6 @@ check() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  mkdir -p ${pkgdir}/usr/include
   make DESTDIR=${pkgdir} install
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

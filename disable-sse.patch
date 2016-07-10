@@ -7,20 +7,20 @@ Description: Disable SSE flags
  yet. Patches to do exactly that would be welcome!
 Author: Thomas Goirand <zigo@debian.org>
 Forwarded: no
-Last-Update: 2014-11-14
+Last-Update: 2016-06-01
 
 --- a/configure.ac
 +++ b/configure.ac
-@@ -23,8 +23,6 @@ AC_PROG_CXX
- AC_PROG_INSTALL
- AC_PROG_MAKE_SET
+@@ -79,8 +79,6 @@
+ 
+ AC_CONFIG_HEADER(include/config_liberasurecode.h)
  
 -AX_EXT()
 -
  ################################################################################
  #                             System Headers
  ################################################################################
-@@ -94,68 +92,6 @@ dnl Expand the sources and objects neede
+@@ -150,70 +148,6 @@
  AC_SUBST(ac_aux_dir)
  AC_SUBST(OBJECTS)
  
@@ -70,7 +70,9 @@ Last-Update: 2014-11-14
 -
 -# Detect the SIMD features supported by both the compiler and the CPU
 -SIMD_FLAGS=""
--cat get_flags_from_cpuid.c | sed "s/FLAGSFROMAUTOCONF/${SUPPORTED_FLAGS}/" | $CC -x c -g - -o get_flags_from_cpuid
+-cat "$srcdir/get_flags_from_cpuid.c" \
+-    | sed "s/FLAGSFROMAUTOCONF/${SUPPORTED_FLAGS}/" \
+-    | $CC -x c -g - -o get_flags_from_cpuid
 -if [[ -e ./get_flags_from_cpuid ]]; then
 -  chmod 755 get_flags_from_cpuid; ./get_flags_from_cpuid; rm ./get_flags_from_cpuid
 -  if [[ -e compiler_flags ]]; then

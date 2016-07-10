@@ -1,0 +1,24 @@
+Description: Remove full path names from the documentation directory 
+ On Arch Linux makepkg complains with:
+  WARNING: Package contains reference to $srcdir
+ meaning that the doxygen generated HTML files contain references to the source
+ directory of the build system. I.e. the documentation contains the absolute
+ path of the form:
+  /<path-to-package-build-system>/liberasurecode/src ...
+ which may not be the original intention. Therefore, the patch disables in the
+ doxygen configuration file the FULL_PATH_NAMES option to remove the parent
+ directories from the source directory upwards.
+Author: Julian Sanin <sanin89julian@gmail.com>
+Last-Update: 2016-07-10
+
+--- a/doc/doxygen.cfg.in
++++ b/doc/doxygen.cfg.in
+@@ -140,7 +140,7 @@
+ # shortest path that makes the file name unique will be used
+ # The default value is: YES.
+
+-FULL_PATH_NAMES        = YES
++FULL_PATH_NAMES        = NO
+
+ # The STRIP_FROM_PATH tag can be used to strip a user-defined part of the path.
+ # Stripping is only done if one of the specified strings matches the left-hand
