@@ -12,7 +12,7 @@ pkgbase=java8-openjdk-jetbrains-git
 _java_ver=8
 _jdk_update=76
 _jdk_build=03
-pkgver=8.u76.b03.r6.g8818da1
+pkgver=8.u76.b241.r0.gf3983c7
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ _nonheadless=(bin/policytool
 
 pkgver() {
   cd "${srcdir}/jdk8u-${_repo_ver}"
-  git describe --long --tags | sed 's/^jdk//;0,/u/{s/u/\.u/};s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^jb//;0,/u/{s/u/\.u/};s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
