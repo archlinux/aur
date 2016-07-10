@@ -2,23 +2,23 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: James An <james@jamesan.ca>
 
-_gemname=gstreamer
-pkgname=ruby-$_gemname
+pkgname=ruby-gstreamer
+_pkgname=${pkgname#ruby-}
 pkgver=3.0.8
 pkgrel=1
 pkgdesc='A Ruby binding for GStreamer'
 arch=('any')
 url='http://ruby-gnome2.sourceforge.jp'
 license=(LGPL)
-depends=('ruby' 'ruby-glib2' 'ruby-gobject-introspection')
+depends=('ruby-gobject-introspection')
 makedepends=('ruby-pkgconfig')
 options=(!emptydirs)
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+source=("https://rubygems.org/downloads/$_pkgname-$pkgver.gem")
 md5sums=('0bab53c1e29ea2c47062be19f764de2f')
-noextract=($_gemname-$pkgver.gem)
+noextract=($_pkgname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
 }
