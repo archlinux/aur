@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer
-pkgver=1.8.7.6866
-_pkgver=1_8_7_6866
+pkgver=1.8.7.6888
+_pkgver=1_8_7_6888
 pkgrel=1
 pkgdesc="A Second Life (secondlife) protocol compatible client application, used to access its service as well as a number of other such as those based upon OpenSim platform"
 url="http://www.singularityviewer.org/"
@@ -22,11 +22,10 @@ source_x86_64=("http://67.170.30.149/Singularity_${_pkgver}_$CARCH.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher"
         "http://dl.dropboxusercontent.com/u/4361965/singularityviewer.png")
-md5sums_x86_64=('0629f59fb74649b17058ba04c022fe08'
+md5sums_x86_64=('d7604c7cb594a82c184a528dd9753f8e'
                 '3b6c5641f35a099af35ff4065733049f'
                 'eb596f5cf7b6f2d0c55c0082fb99a905'
                 '0c825fe422dadd0cac9010e7ff152cfa')
-
 
 package() {
 cd $srcdir
