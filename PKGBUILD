@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=notmuchfs-git
 pkgver=0.r9.1f34bc6
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual maildir file system for notmuch queries."
 arch=('i686' 'x86_64')
 url="https://github.com/tsto/notmuchfs"
@@ -18,14 +18,17 @@ options=()
 install=notmuchfs-git.install
 source=("$pkgname::git+https://github.com/tsto/notmuchfs.git")
 noextract=()
-md5sums=('SKIP'
-         '56beb2adc61118dd872c09e362f5a4d2')
-sha1sums=('SKIP'
-          'cc0b10e49d84d6ebe3630b9979f8a76f015f277e')
+md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  sed -i '22s/-Werror//' Makefile
 }
 
 build() {
