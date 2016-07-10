@@ -26,8 +26,8 @@ depends=('python2'
 #makedepends=()
 install=${pkgname%%-git}.install
 options=('emptydirs')
-provides=('airflow')
-conflicts=('airflow')
+provides=('airflow' 'python2-airflow')
+conflicts=('airflow' 'python2-airflow')
 source=("${pkgname%%-git}::git+https://github.com/apache/incubator-airflow.git#tag=$pkgver"
         "${pkgname%%-git}.install")
 sha256sums=('SKIP'
