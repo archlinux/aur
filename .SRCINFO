@@ -1,0 +1,29 @@
+pkgbase = xplorers
+	pkgdesc = Xplorers Board game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://games.asobrain.com/
+	arch = any
+	license = Other
+	depends = icedtea-web
+	source = xplorersCities1.jnlp::file://xplorersCities1.jnlp
+	source = xplorersBasic1.jnlp::file://xplorersBasic1.jnlp
+	source = xplorersPractice1.jnlp::file://xplorersPractice1.jnlp
+	source = xplorersPractice2.jnlp::file://xplorersPractice2.jnlp
+	source = xplorersTeam1.jnlp::file://xplorersTeam1.jnlp
+	source = xplorersTournament1.jnlp::file://xplorersTournament1.jnlp
+	source = xplorersTournament2.jnlp::file://xplorersTournament2.jnlp
+	source = xplorersTournament3.jnlp::file://xplorersTournament3.jnlp
+	source = xplorers.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = e7bb46f10f60e1aa4917d60bd9c4104f
+
+pkgname = xplorers
+
