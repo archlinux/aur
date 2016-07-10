@@ -1,11 +1,12 @@
 # @Author: Jules <archjules>
 # @Date:   2016-07-10T23:16:42+02:00
 # @Last modified by:   archjules
-# @Last modified time: 2016-07-10T23:41:54+02:00
+# @Last modified time: 2016-07-10T23:57:51+02:00
 
 pkgname='casiousb-git'
 pkgver=V0.0.2.r1.gd3663fb
 pkgrel=1
+pkgdesc='A program allowing you to send files to your Casio graphical calculator'
 arch=('i686' 'x86_64')
 
 depends=('libusb')
