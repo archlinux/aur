@@ -1,4 +1,5 @@
 pkgbase = casiousb-git
+	pkgdesc = A program allowing you to send files to your Casio graphical calculator
 	pkgver = V0.0.2.r1.gd3663fb
 	pkgrel = 1
 	arch = i686
