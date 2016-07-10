@@ -1,6 +1,6 @@
 pkgbase = thunderbird-earlybird
 	pkgdesc = Standalone Mail/News reader - Earlybird channel
-	pkgver = 49.0a2.20160708004103
+	pkgver = 49.0a2.20160709004046
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird/channel
 	install = thunderbird-earlybird.install
@@ -35,7 +35,7 @@ pkgbase = thunderbird-earlybird
 	source = thunderbird-earlybird.desktop
 	source = http://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-aurora/thunderbird-49.0a2.en-US.linux-x86_64.tar.bz2
 	sha512sums = a36bb5710b9cd6637cf6f538808e2fba8c99fdd1d486446ff9ee8094ca30b5592c17b3e808cae1da7ff2b28123f54902ed4ee1501585a8dcfc54d581588638d3
-	sha512sums = 416fcadf6261873b8a70b564d50dea7a8fd0c47fd0d4df0cc3b1d09589f25311585991cbd64bed4d35048993d20e2e7b42460b05af6afe218f8308fbcc021817
+	sha512sums = 8832eec4c1b5dffbf2537233efde020821d2c31616734feeeef832a14733726f4df6d71f4a63491bd835ea5b932a38737e35144552589825351100adaa2b6f84
 
 pkgname = thunderbird-earlybird
 
