@@ -1,0 +1,11 @@
+pkgbase = casiousb-git
+	pkgver = V0.0.2.r1.gd3663fb
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = libusb
+	source = git+https://github.com/nessotrin/CasioUsb
+	md5sums = SKIP
+
+pkgname = casiousb-git
+
