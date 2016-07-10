@@ -7,7 +7,7 @@ pkgname='ros-indigo-stdr-launchers'
 pkgver='0.2.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPLv3')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -16,6 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
 
 ros_depends=(ros-indigo-stdr-gui
   ros-indigo-rviz
+  ros-indigo-stdr-resources
   ros-indigo-stdr-robot
   ros-indigo-stdr-server)
 depends=(${ros_depends[@]})
