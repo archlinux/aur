@@ -25,55 +25,55 @@ source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	_ver="$(git describe --tags | sed 's|-[^.]*$||' | sed 's|^n||')"
-	_rev="$(git rev-list --count HEAD)"
-	_gitid="$(git rev-parse --short HEAD)"
-	echo "${_ver}.r${_rev}.g${_gitid}"
+  cd "$srcdir/$pkgname"
+  _ver="$(git describe --tags | sed 's|-[^.]*$||' | sed 's|^n||')"
+  _rev="$(git rev-list --count HEAD)"
+  _gitid="$(git rev-parse --short HEAD)"
+  echo "${_ver}.r${_rev}.g${_gitid}"
 }
 
 build() {
   cd "$srcdir/$pkgname"
 
   ./configure --prefix=/usr \
-			  --disable-debug \
-			  --disable-static \
-			  --enable-avisynth \
-			  --enable-avresample \
-			  --enable-fontconfig \
-			  --enable-gnutls \
-			  --enable-gpl \
-			  --enable-ladspa \
-			  --enable-libass \
-			  --enable-libbluray \
-			  --enable-libfreetype \
-			  --enable-libfribidi \
-			  --enable-libgsm \
-			  --enable-libmodplug \
-			  --enable-libmp3lame \
-			  --enable-libopencore_amrnb \
-			  --enable-libopencore_amrwb \
-			  --enable-libopenjpeg \
-			  --enable-libopus \
-			  --enable-libfdk-aac \
-			  --enable-libpulse \
-			  --enable-libschroedinger \
-			  --enable-libsoxr \
-			  --enable-libspeex \
-			  --enable-libssh \
-			  --enable-libtheora \
-			  --enable-libv4l2 \
-			  --enable-libvidstab \
-			  --enable-libvorbis \
-			  --enable-libvpx \
-			  --enable-libwebp \
-			  --enable-libx264 \
-			  --enable-libx265 \
-			  --enable-libxvid \
-			  --enable-nonfree \
-			  --enable-shared \
-			  --enable-version3 \
-			  --enable-x11grab \
+	      --disable-debug \
+	      --disable-static \
+	      --enable-avisynth \
+	      --enable-avresample \
+	      --enable-fontconfig \
+	      --enable-gnutls \
+	      --enable-gpl \
+	      --enable-ladspa \
+	      --enable-libass \
+    	      --enable-libbluray \
+	      --enable-libfreetype \
+    	      --enable-libfribidi \
+	      --enable-libgsm \
+	      --enable-libmodplug \
+	      --enable-libmp3lame \
+	      --enable-libopencore_amrnb \
+	      --enable-libopencore_amrwb \
+	      --enable-libopenjpeg \
+	      --enable-libopus \
+	      --enable-libfdk-aac \
+	      --enable-libpulse \
+	      --enable-libschroedinger \
+	      --enable-libsoxr \
+	      --enable-libspeex \
+	      --enable-libssh \
+	      --enable-libtheora \
+	      --enable-libv4l2 \
+	      --enable-libvidstab \
+	      --enable-libvorbis \
+	      --enable-libvpx \
+	      --enable-libwebp \
+	      --enable-libx264 \
+	      --enable-libx265 \
+	      --enable-libxvid \
+	      --enable-nonfree \
+	      --enable-shared \
+	      --enable-version3 \
+	      --enable-x11grab \
 
   make EXTRA_CFLAGS="$CFLAGS"
   make tools/qt-faststart
