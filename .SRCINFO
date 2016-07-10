@@ -1,0 +1,24 @@
+pkgbase = nana
+	pkgdesc = An opensource cross-platform GUI library written in modern C++11 for static linking
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://nanapro.org/en-us/
+	arch = i686
+	arch = x86_64
+	license = custom:Boost Software License
+	makedepends = alsa-lib
+	makedepends = cmake
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	depends = alsa-lib
+	depends = libjpeg-turbo
+	depends = libpng
+	source = http://downloads.sourceforge.net/project/nanapro/Nana/Nana 1.x/nana 1.3.0.zip
+	source = fix_cmake_alsa.patch
+	source = fix_memcpy.patch
+	sha256sums = 9d3eea56cf330e7064bb193bc53d102f34b14a3a6dc415585f011f6638ec395d
+	sha256sums = c0fd8c44b51d663e5191dd859e033fbd2ec096df9f0c0b68c868e3a88b14bda4
+	sha256sums = 98c5401396583534682c21b8b2762a1cbbcbecd997804a5b11aabe1094ac4b44
+
+pkgname = nana
+

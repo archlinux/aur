@@ -1,0 +1,22 @@
+diff -urpN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-02-08 12:57:40.000000000 +0100
++++ b/CMakeLists.txt	2016-07-10 12:28:14.355518026 +0200
+@@ -108,12 +108,12 @@ endif(ENABLE_JPEG)
+ if(ENABLE_AUDIO)
+     add_definitions(-DNANA_ENABLE_AUDIO)
+     if(UNIX)
+-        find_package(asound)
+-        if (ASOUND_FOUND)
+-            include_directories( ${ASOUND_INCLUDE_DIRS})
+-        else(ASOUND_FOUND)
+-            message(FATAL_ERROR "libasound is not found")
+-        endif(ASOUND_FOUND)
++        find_package(ALSA)
++        if (ALSA_FOUND)
++            include_directories( ${ALSA_INCLUDE_DIRS})
++        else(ALSA_FOUND)
++            message(FATAL_ERROR "ALSA is not found")
++        endif(ALSA_FOUND)
+     endif(UNIX)
+ endif(ENABLE_AUDIO)
+ 

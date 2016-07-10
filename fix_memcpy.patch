@@ -1,0 +1,12 @@
+diff -urpN a/source/paint/detail/image_png.hpp b/source/paint/detail/image_png.hpp
+--- a/source/paint/detail/image_png.hpp	2016-02-08 12:57:42.000000000 +0100
++++ b/source/paint/detail/image_png.hpp	2016-07-10 12:20:27.927506748 +0200
+@@ -10,7 +10,7 @@
+ 	#include <png.h>
+ #endif
+ 
+-#include <stdio.h>
++#include <cstring>
+ 
+ namespace nana
+ {
