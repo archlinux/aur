@@ -1,0 +1,18 @@
+pkgbase = hterm
+	pkgdesc = HTerm serial terminal
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://www.der-hammer.info/terminal
+	arch = i686
+	arch = x86_64
+	license = properitary
+	depends = lib32-gtk2
+	source = hterm.png
+	source = hterm.desktop
+	source = http://www.der-hammer.info/terminal/hterm.tar.gz
+	sha256sums = 358862a79e6a88ca07dc86faa5e29d862bbf2aa2ca16e7f43e2f00a8c444e683
+	sha256sums = fba0a7159c9187bfe8d2c7f63611bf4c2193a69566566bca79f2ce3ff46073f7
+	sha256sums = a329b7f671da73bbffaa3ff828db299ba8e4a52415777ed41d24bb6780647c7a
+
+pkgname = hterm
+
