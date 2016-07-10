@@ -1,6 +1,6 @@
 # Maintainer: Christoph Wiechert <wio@psitrax.de>
 pkgname=purple-facebook
-pkgver=26
+pkgver=27
 pkgrel=1
 VERSION=66ee77378d82
 pkgdesc="Facebook Messenger protocol into pidgin, finch, and libpurple"
