@@ -1,8 +1,8 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf-git
-pkgver=0.4.1.r7.g8031cb7
-pkgrel=2
+pkgver=0.4.1.r18.g80985d2
+pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
@@ -13,11 +13,6 @@ depends=('gcc-libs' 'expat' 'icu')
 makedepends=('git')
 source=(liblcf::"git+https://github.com/EasyRPG/liblcf.git")
 md5sums=('SKIP')
-
-prepare() {
-  # fix an error
-  sed -i 's|^time_stamp_CXXFLAGS =|& -std=c++11|' liblcf/Makefile.am
-}
 
 pkgver() {
   cd liblcf
