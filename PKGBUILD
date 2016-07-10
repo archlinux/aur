@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reflac
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Recompresses FLAC files while preserving tags"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('flac')
 makedepends=('asciidoc')
 license=('ISC')
 source=("$url"/archive/"$pkgver".tar.gz)
-sha256sums=('fe01275ad52b9a983faa276a2f2b39689e0f5c10158f9ae924944a306c4e638a')
+sha256sums=('c6030c804511edb38560f57dfe4876f89d161fbafefbff18afe21e7bbb258724')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
