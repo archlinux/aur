@@ -1,6 +1,6 @@
 # Maintainer: Christoph Vigano <mail@cvigano.de>
 pkgname=ikiwiki
-pkgver=3.20160121
+pkgver=3.20160509
 pkgrel=1
 pkgdesc="wiki/blog compiler"
 arch=(any)
@@ -31,4 +31,4 @@ package() {
   #RST plugin docutils hack
   sed -i 's/env python/python2/' "$pkgdir"/usr/lib/ikiwiki/plugins/rst
 }
-md5sums=('627976bce7c92456cde52302a3a61efb')
+md5sums=('22fe66e77d6062ddf68ef5e9ec184dc0')
