@@ -9,7 +9,8 @@ url="https://github.com/bbidulock/xde-session"
 license=('GPL')
 provides=('xde-session')
 conflicts=('xde-session')
-depends=('m4' 'libunique' 'libxss' 'libxvnc' 'libxxf86misc' 'xde-theme' 'xde-ctools' 'xde-helpers')
+depends=('m4' 'libunique' 'libxss' 'libxvnc' 'libxxf86misc' 'xde-theme' 'xde-ctools'
+	 'xde-helpers' 'xde-menu' 'xdg-launch')
 optdepends=('xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/xde-session.git")
