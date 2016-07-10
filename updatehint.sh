@@ -89,37 +89,38 @@ ${bold}OPTIONS${normal}
        -v, --verbose
               Notify even when no updates available.
 
+${bold}LOCK FILE${normal}
+       A lock file is automatically checked and (if not present) created. This 
+       prevents ${bold}$(basename $0)${normal} from being run several times. 
+       When the lock file is present, intervals are not allowed and the program 
+       terminates with a hint. 
+       The lock file will usually be deleted when the program terminates but
+       in some cases (e.g. system crash) the file can stay present even after 
+       ${bold}$(basename $0)${normal} has terminated. In that case it can help running 
+       ${bold}$(basename $0)${normal} from a terminal emulator of your choice to read the 
+       hint and see if that is the case and where that file is located 
+       (should be ${underline}${LOCKFILE}${nounderline}).
+
 ${bold}EXIT STATUS${normal}
        Exits with status 0 if available updates were found.
        If no updates could be found 1 is returned, in case of errors 2.
 
 ${bold}NOTES${normal}
-       It could be helpful to add ${bold}$(basename $0)${normal} to either the startup functionality 
-       of your desktop environment (e.g. as desktop file in ${underline}~/.config/autostart/${nounderline})
-       or your (global or local) ${underline}.bashrc${nounderline}.
-       Here is an example how it could be added to your ${underline}~/.bashrc${nounderline}:
-              # Display hourly update notifications
-              if [ -n \"\$DISPLAY\" ]; then
-                nohup $(basename $0) -i 60 &>/dev/null &
-              fi
-       This will start ${bold}$(basename $0)${normal} only if ${underline}DISPLAY${nounderline} is available and
-       detach it from the terminal session.
-       
-       A lock file is automatically checked and (if not present) created. This 
-       prevents ${bold}$(basename $0)${normal} from being run several times. 
-       When the lock file is present intervals are not allowed and the program 
-       terminates with a hint. 
-       The lock file will usually be deleted when the program terminates but
-       in some cases (e.g. system crash) the file can stay present even after 
-       ${bold}$(basename $0)${normal} has terminated. In that case it can help running 
-       ${bold}$(basename $0)${normal} from a terminal emulator of  your choice so that you can 
-       read the hint and see if that is the case and where that file is located 
-       (should be ${underline}${LOCKFILE}${nounderline}).
+       It could be helpful to add ${bold}$(basename $0)${normal} to the startup functionality 
+       of your desktop environment (e.g. as desktop file in ${underline}~/.config/autostart/${nounderline}).
+       Here is an example how such a desktop file could look like:
+              [Desktop Entry]
+              Name=$(basename $0)
+              Comment=Provides notifications about Arch Linux updates
+              Exec=$(readlink -f $0) -i 60
+              Type=Application
+              Terminal=false
+              StartupNotify=false
 
 ${bold}BUGS${normal}
        If you stumble upon some bugs or have helpful thoughts to share, feel 
        free to leave a comment at AUR (see section HOMEPAGE).
-       
+
 ${bold}HOMEPAGE${normal}
        https://aur.archlinux.org/packages/updatehint
 
