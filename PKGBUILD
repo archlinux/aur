@@ -3,15 +3,16 @@
 
 pkgname=cuttlefish-bzr
 pkgver=76
-pkgrel=6
+pkgrel=7
 pkgdesc="Adapt your computer's appearance and settings according to the environment."
 arch=('any')
 url="https://launchpad.net/cuttlefish"
 license=('GPL')
-depends=('python2-distutils-extra' 'python2-psutil' 'python2-udev' 'python2-dbus' 'python2-xdg' 'gnome-menus' 'libwnck3')
+depends=('python2' 'python2-distutils-extra' 'python2-psutil' 'python2-udev'
+         'python2-gobject' 'python2-xdg' 'gnome-menus' 'libwnck3' 'dconf'
+         'python2-dbus')
 makedepends=('bzr')
 conflicts=('cuttlefish')
-install="${pkgname}.install"
 source=("${pkgname}"::"bzr+https://code.launchpad.net/~noneed4anick/cuttlefish/trunk"
         "plugins-use-site-packages.patch"
         "desktop-autostart.patch"
