@@ -5,12 +5,12 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
-pkgname=nginx
-pkgver=1.10.0
+pkgname=nginx-pagespeed
+pkgver=1.10.0+1.11.33.2
 pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
-url='http://nginx.org'
+url='https://developers.google.com/speed/pagespeed/module/'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
 backup=('etc/nginx/fastcgi.conf'
@@ -24,12 +24,19 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz
+conflicts=('nginx')
+replaces=('nginx')
+provides=('nginx')
+source=(http://nginx.org/download/nginx-${pkgver%+*}.tar.gz
+        https://github.com/pagespeed/ngx_pagespeed/archive/release-${pkgver#*+}-beta.zip
+		https://dl.google.com/dl/page-speed/psol/${pkgver#*+}.tar.gz
         service
         logrotate)
 md5sums=('c184c873d2798c5ba92be95ed1209c02'
-         '5dd4d09914a4403b9df778ec1d66167c'
-         '19a26a61c8afe78defb8b4544f79a9a0')
+         'dfdd5d7e4fab941789b1c3e932e7b314'
+		 '0979af30ce2892e934d54e60ae00c7f3'
+         'SKIP'
+         'SKIP')
 
 _common_flags=(
   --with-ipv6
@@ -61,7 +68,9 @@ _stable_flags=(
 )
 
 build() {
-  cd $pkgname-$pkgver
+  cd nginx-${pkgver%+*}
+
+  [[ ! -d $srcdir/ngx_pagespeed-release-${pkgver#*+}-beta/psol ]] && mv $srcdir/psol $srcdir/ngx_pagespeed-release-${pkgver#*+}-beta/
 
   ./configure \
     --prefix=/etc/nginx \
@@ -79,13 +88,14 @@ build() {
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     ${_common_flags[@]} \
-    ${_stable_flags[@]}
+    ${_stable_flags[@]} \
+    --add-module=$srcdir/ngx_pagespeed-release-${pkgver#*+}-beta
 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd nginx-${pkgver%+*}
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
