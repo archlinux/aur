@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r30.22.g5f46305
+pkgver=r32.36.ge3b9f52
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,11 +24,12 @@ provides=('vapoursynth')
 conflicts=('vapoursynth')
 source=('git+http://github.com/vapoursynth/vapoursynth.git'
         'vapoursynth.xml'
-        'wtfpl.txt::http://www.wtfpl.net/txt/COPYING')
+        'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
+        )
 sha1sums=('SKIP'
           '71e04f8a7c177b44e4ce93e5eecbb4242a3c2215'
-          '337ece375beddfdb7392699fd00eb9b3e823d03f')
-install=vapoursynth-git.install
+          '337ece375beddfdb7392699fd00eb9b3e823d03f'
+          )
 
 pkgver() {
   cd vapoursynth
