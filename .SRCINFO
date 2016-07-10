@@ -1,11 +1,12 @@
 pkgbase = java8-openjdk-jetbrains-git
-	pkgver = 8.u76.b03.r6.g8818da1
+	pkgver = 8.u76.b241.r0.gf3983c7
 	pkgrel = 1
 	url = https://github.com/JetBrains/jdk8u
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = jdk7-openjdk
+	makedepends = gcc5
 	makedepends = ccache
 	makedepends = cpio
 	makedepends = unzip
@@ -48,7 +49,7 @@ pkgname = jre8-openjdk-headless-jetbrains-git
 pkgname = jre8-openjdk-jetbrains-git
 	pkgdesc = OpenJDK Java 8 full runtime environment with JetBrains modifications
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-headless-jetbrains-git=8.u76.b03.r6.g8818da1-1
+	depends = jre8-openjdk-headless-jetbrains-git=8.u76.b241.r0.gf3983c7-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -64,7 +65,7 @@ pkgname = jdk8-openjdk-jetbrains-git
 	pkgdesc = OpenJDK Java 8 development kit with JetBrains modifications
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-jetbrains-git=8.u76.b03.r6.g8818da1-1
+	depends = jre8-openjdk-jetbrains-git=8.u76.b241.r0.gf3983c7-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	conflicts = jdk8-openjdk
