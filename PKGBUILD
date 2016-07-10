@@ -1,7 +1,7 @@
 # Contributor: noonov <noonov@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qemacs-cvs
-pkgver=0.3.2.r2016.06.11
+pkgver=0.3.2.r2016.06.26
 pkgrel=1
 pkgdesc="A very small but powerful UNIX editor."
 arch=('i686' 'x86_64')
@@ -27,9 +27,6 @@ prepare() {
   msg "Starting make..."
   rm -rf ${_cvsmod}-build
   cp -r ${_cvsmod} ${_cvsmod}-build
-  ##
-  cd ${srcdir}/${_cvsmod}-build
-  sed -i 's|texi2html -monolithic -number|texi2html -monolithic|' Makefile
 }
 
 pkgver() {
@@ -40,7 +37,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${_cvsmod}-build
-  ./configure --prefix=/usr --disable-x11
+  ./configure --prefix=/usr --enable-xshm
   make -j1
 }
 
