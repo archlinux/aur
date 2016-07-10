@@ -77,7 +77,7 @@ build() {
 
   make EXTRA_CFLAGS="$CFLAGS"
   make tools/qt-faststart
-  make doc
+  make doc/ff{mpeg,play,server}.1
 }
 
 package() {
@@ -85,3 +85,5 @@ package() {
   make DESTDIR="$pkgdir" install install-man
   install -D -m755 tools/qt-faststart "$pkgdir/usr/bin/qt-faststart"
 }
+
+# vim: ts=8 sw=8 et:
