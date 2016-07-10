@@ -3,8 +3,8 @@
 
 pkgname=selfspy-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.4.r194.gb0be0ab
-pkgrel=4
+pkgver=0.1.4.r202.ga98a9c0
+pkgrel=1
 epoch=1
 pkgdesc="X11 personal keylogger daemon with statistical analysis."
 url="https://github.com/gurgeh/selfspy"

@@ -1,7 +1,7 @@
 pkgbase = selfspy-git
 	pkgdesc = X11 personal keylogger daemon with statistical analysis.
-	pkgver = 0.1.4.r194.gb0be0ab
-	pkgrel = 4
+	pkgver = 0.1.4.r202.ga98a9c0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/gurgeh/selfspy
 	install = selfspy.install
@@ -16,7 +16,7 @@ pkgbase = selfspy-git
 	depends = python2-sqlalchemy
 	depends = tk
 	depends = python2-crypto
-	provides = selfspy=0.1.4.r194.gb0be0ab
+	provides = selfspy=0.1.4.r202.ga98a9c0
 	conflicts = selfspy
 	source = selfspy::git+https://github.com/gurgeh/selfspy.git
 	source = selfspy.conf
