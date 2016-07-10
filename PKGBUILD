@@ -2,13 +2,14 @@
 
 pkgname=cuttlefish
 pkgver=12.08
-pkgrel=7
+pkgrel=8
 pkgdesc="Adapt your computer's appearance and settings according to the environment."
 arch=('any')
 url="https://launchpad.net/cuttlefish"
 license=('GPL')
-depends=('python2' 'python2-distutils-extra' 'python2-psutil' 'python2-udev' 'python2-gobject' 'python2-xdg' 'gnome-menus' 'libwnck3' 'dconf')
-install='cuttlefish.install'
+depends=('python2' 'python2-distutils-extra' 'python2-psutil' 'python2-udev'
+         'python2-gobject' 'python2-xdg' 'gnome-menus' 'libwnck3' 'dconf'
+         'python2-dbus')
 source=("https://launchpad.net/cuttlefish/trunk/${pkgver}/+download/cuttlefish_${pkgver}.tar.gz"
         "plugins-use-site-packages.patch"
         "desktop-autostart.patch"
