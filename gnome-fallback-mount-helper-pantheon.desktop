@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Auto-mount
+Exec=/usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
+Icon=multimedia
+Terminal=false
+Type=Application
+Categories=
+NoDisplay=true
+OnlyShowIn=Pantheon;
+X-GNOME-Autostart-Notify=true

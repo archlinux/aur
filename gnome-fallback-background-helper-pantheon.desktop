@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Desktop Background
+Exec=/usr/lib/gnome-settings-daemon/gnome-fallback-background-helper
+Icon=multimedia
+Terminal=false
+Type=Application
+Categories=
+NoDisplay=true
+OnlyShowIn=Pantheon;
+X-GNOME-Autostart-Notify=true
