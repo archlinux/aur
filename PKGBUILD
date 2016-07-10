@@ -1,32 +1,27 @@
-# Maintainer: Ricardo Wurmus <maintainer name + @gmail.com>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Ricardo Wurmus <maintainer name + @gmail.com>
+
 pkgname=soundcli
 pkgver=0.0.5
-pkgrel=2
-pkgdesc="Command line interface to stream/download songs from soundcloud.com"
-url="http://soundcli.elephly.net"
-arch=('x86_64' 'i686')
-license=('GPLv3')
-depends=('ruby' 'ruby-gstreamer' 'ruby-curb' 'ruby-json' 'gstreamer0.10-good')
-makedepends=(rubygems)
-source=(https://github.com/rekado/soundCLI/tarball/$pkgver)
-md5sums=('1422280932a7e30fa3545e0a00947d99')
+pkgrel=3
+pkgdesc='CLI client for soundcloud'
+arch=('any')
+url='http://soundcli.elephly.net'
+license=('GPL3')
+depends=(ruby-gstreamer ruby-curb ruby-json)
+source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
+#~ noextract=($pkgname-$pkgver.gem)
+md5sums=('32b0ff3ef7cdfe6095a2bcb8c37b346c')
 
-build() {
-  # github names the directory in a funny way...
-  cd $srcdir/rekado-soundCLI-1575db9
-
-  msg "Configuring source..."
-
-  ruby ./setup.rb config --prefix=${pkgdir}/usr \
-    --siterubyver=${pkgdir}/usr/lib/ruby/site_ruby/1.9.1/ \
-    --sysconfdir=${pkgdir}/etc
-
-  msg "Running setup..."
-  ruby ./setup.rb setup
+prepare() {
+  # Relax dependency version restrictions to allow the latest versions.
+  zcat metadata.gz | sed 's/~>/">="/' | gzip -c - >| metadata.gz~
+  mv -f metadata.gz~ metadata.gz
+  tar -cf "$pkgname-$pkgver.new.gem" data.tar.gz metadata.gz
 }
 
 package() {
-  msg "Installing files..."
-  cd $srcdir/rekado-soundCLI-1575db9
-  ruby ./setup.rb install
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.new.gem"
+  rm "$pkgdir$_gemdir/cache/$pkgname-$pkgver.gem"
 }
