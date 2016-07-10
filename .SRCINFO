@@ -1,0 +1,14 @@
+pkgbase = razercommander-git
+	pkgdesc = A simple GTK control center for managing razer peripherals on Linux. Make sure to install https://github.com/pez2001/razer_chroma_drivers/ first.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/gabmus/razercommander
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = gtk3>=3.16,gksu,python
+	source = razercommander::git+git://github.com/gabmus/razercommander
+	md5sums = SKIP
+
+pkgname = razercommander-git
+
