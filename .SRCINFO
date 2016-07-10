@@ -1,0 +1,21 @@
+pkgbase = gog-qfg2
+	pkgdesc = Quest for Glory 2: Trial by Fire
+	pkgver = 2.1.0.34
+	pkgrel = 1
+	url = https://www.gog.com/game/quest_for_glory
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	depends = dosbox
+	depends = unionfs-fuse
+	source = local://setup_quest_for_glory2_2.1.0.34.exe
+	source = local://gog-qfg2.desktop
+	source = local://run-qfg2.conf
+	source = local://run-qfg2.sh
+	sha256sums = efda9c4ddd5753cbf39a25a3d90337f278ea11bd6c8f6352aab934c9d29a2796
+	sha256sums = 68e6421220d95d4440bfcbd29030133dada506476f11e92b74bd3439937a0ec6
+	sha256sums = e8e28abd0667bce3d7fbcb66a814d8f445f1d012ee2b084a8e4a57e342900c6c
+	sha256sums = ecf34182fe14cc193c1e1cef698d9295000c42b35bc0dde24a259d5ded1c466e
+
+pkgname = gog-qfg2
+

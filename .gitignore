@@ -1,0 +1,5 @@
+setup_*.exe
+*.tar.gz
+*.tar.xz
+pkg/
+src/

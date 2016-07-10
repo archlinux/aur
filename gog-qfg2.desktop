@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=2.1.0.34
+Type=Application
+Name=Quest for Glory 2
+GenericName=Quest for Glory 2
+Comment=Quest for Glory 2
+Icon=/opt/gog/qfg2/goggame-1207661323.ico
+Exec=/opt/gog/qfg2/run-qfg2.sh
+Categories=Game;
+Path=/opt/gog/qfg2
