@@ -24,7 +24,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20160704.r2778.c7a9ca3
+pkgver=20160711.r2791.31efcfd
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -65,7 +65,7 @@ elif [ "$CARCH" = "x86_64" ]; then
 fi
 
 # Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
-# Gem which takes a *long* time to buidl). Note that this will only produce a
+# Gem which takes a *long* time to build). Note that this will only produce a
 # proper package if src still contains the results of a previous full build,
 # otherwise Gem will be missing in the resulting package!
 buildopt=${buildopt:--B}
@@ -105,10 +105,8 @@ package() {
   # Remove init.d-related stuff.
   cd "$pkgdir/etc"
   rm -rf default init.d
-  # Remove the included DejaVu font, it's in the standard repos.
-  cd "$pkgdir/usr"
-  rm -f lib/pd-l2ork/bin/DejaVuSansMono.ttf
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
+  cd "$pkgdir/usr"
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
   # Get rid of the corresponding manpages
   rm -f share/man/man1/pdreceive.* share/man/man1/pdsend.*
