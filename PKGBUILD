@@ -29,7 +29,7 @@ md5sums=('378f41e469e8c8b5c1ae46ba122c012a'
 
 build() {
   cd "$pkgname-$pkgver"
-  #PATH=/usr/lib/jvm/java-8-openjdk/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-8-openjdk ./sbt -java-home /usr/lib/jvm/java-8-openjdk clean dist
+  PATH=/usr/lib/jvm/java-8-openjdk/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-8-openjdk ./sbt -java-home /usr/lib/jvm/java-8-openjdk clean dist
 }
 
 package() {
