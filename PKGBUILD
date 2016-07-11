@@ -5,6 +5,7 @@
 # NB: This package does not edit the functionality of sudo in any way apart
 #     from adding extra insults for obvious reasons, and tracks sudo
 #     directly from upstream.
+# Credit goes to the #archlinux-offtopic IRC chan for the constant inspiration
 #
 # Maintainer: NextHendrix <cjones12@sheffield.ac.uk>
 
