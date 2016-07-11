@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=vim-conflict-marker-git
-pkgver=20151228
+pkgver=r56.46f5c6f
 pkgrel=1
 pkgdesc="Weapon to fight against conflicts in Vim"
 arch=('any')
