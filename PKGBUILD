@@ -3,12 +3,12 @@
 _pkgname=ucto
 pkgname=ucto-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced rule-based (regular-expression) and unicode-aware tokenizer for various languages. Tokenization is an essential first step in any NLP pipeline."
 arch=('i686' 'x86_64')
-url="http://ilk.uvt.nl/"
+url="http://languagemachines.github.io/ucto/"
 license=('GPL')
-depends=('ticcutils' 'icu' 'libxml2' 'libfolia')
+depends=('ticcutils' 'icu' 'libxml2' 'libfolia' 'uctodata')
 provides=('ucto')
 conflicts=('ucto')
 makedepends=('libtool' 'autoconf')
