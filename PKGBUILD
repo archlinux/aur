@@ -2,20 +2,20 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh
-pkgver=2.29
-pkgrel=2
+pkgver=2.31
+pkgrel=1
 pkgdesc='Parallel Distributed Shell'
-url='http://code.google.com/p/pdsh/'
+url='https://github.com/grondo/pdsh'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc' 'openssh' 'readline')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("http://pdsh.googlecode.com/files/$pkgname-$pkgver.tar.bz2")
-md5sums=('e3512d03e491de6f1a735ab0ff702108')
+source=("https://github.com/grondo/pdsh/archive/pdsh-2.31.tar.gz")
+md5sums=('cab34b0ca78f3cf596fd648b265223ed')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --without-rsh \
               --with-ssh \
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install || return 1
   rmdir "${pkgdir}/usr/sbin"
 }
