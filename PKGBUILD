@@ -6,7 +6,7 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=6.0.1.9
+pkgver=6.0.2.41
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('any')
@@ -40,7 +40,7 @@ package() {
   
   LD_PRELOAD="" make DESTDIR=$pkgdir install
   # delete conflicting files
-  rm -rf $(find $pkgdir/usr/share/mime/ -type f | grep -v "packages")
+  rm -r $(find $pkgdir/usr/share/mime/ -type f | grep -v "packages")
   rm -r $MONO_SHARED_DIR
   
   # NuGet.exe is missing somehow, fixed FS#43423

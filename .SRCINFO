@@ -1,6 +1,6 @@
 pkgbase = monodevelop-stable
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
-	pkgver = 6.0.1.9
+	pkgver = 6.0.2.41
 	pkgrel = 1
 	url = http://www.monodevelop.com
 	install = monodevelop.install
