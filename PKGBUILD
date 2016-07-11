@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-spindle-git
-pkgver=3.2
+pkgver=3.3.r15.g4758500
 pkgrel=1
 pkgdesc="Git subcommands for integrating with central services like github, gitlab and bitbucket"
 arch=('any')
