@@ -4,8 +4,6 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A git remote helper for GPG-encrypted remotes."
 arch=(any)
-# Currently, there’s no canonical upstream for git-remote-gcrypt. For now,
-# use Azulinho’s fork, which provides some commits for GPG2 compatibility.
 url=https://spwhitton.name/tech/code/git-remote-gcrypt/
 license=(GPL)
 makedepends=(git python-docutils)
