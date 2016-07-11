@@ -2,13 +2,13 @@
 # Contributor: Adam Russell <adamlr6+arch@gmail.com>
 pkgname=vim-pep8
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 _scriptid=14366
 pkgdesc="A PEP 8 Python source file checker for Vim"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=2914"
 license=('unknown')
-depends=('vim' 'pep8')
+depends=('vim' 'python-pycodestyle')
 groups=('vim-plugins')
 source=(pep8.vim::"http://www.vim.org/scripts/download_script.php?src_id=$_scriptid")
 md5sums=('393df8ac20d34f2ea8ec48420eac414e')
