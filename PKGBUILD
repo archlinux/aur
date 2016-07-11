@@ -1,7 +1,7 @@
 pkgname=colobot-gold
-pkgver=0.1.7b_alpha
-_data_ver=0.1.7_alpha
-_ver=0.1.7b-alpha
+pkgver=0.1.8_alpha
+_data_ver=0.1.8_alpha
+_ver=0.1.8-alpha
 pkgrel=1
 pkgdesc="Colobot GOLD is a real-time strategy game with programmable bots."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('libsndfile' 'glew' 'sdl2' 'libvorbis' 'libpng' 'libogg' 'gettext' 'libgl' 'sdl2_image' 'sdl2_ttf' 'boost-libs' 'openal' "colobot-gold-data=$_data_ver" 'physfs')
 makedepends=('cmake'  'boost')
 source=("https://github.com/colobot/colobot/archive/colobot-gold-$_ver.zip")
-md5sums=('10a977e630c2ec7b4e657bd9a5ad4615')
-sha1sums=('736e8d69877028e890e045c331465d19b9fec5b2')
+md5sums=('7dccc786facd103bebc1a22e9805bcd9')
+sha1sums=('de16178a2eeafbda508e0e68e88941f51550fafd')
 _archive_dir="colobot-colobot-gold-$_ver"
 install=colobot.install
 
