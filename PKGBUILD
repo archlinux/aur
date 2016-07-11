@@ -1,13 +1,14 @@
 # Maintainer: yubimusubi
 pkgbase=3dstool
 pkgname=('3dstool')
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms."
 arch=('i686' 'x86_64')
 url="https://github.com/dnasdw/3dstool"
 license=('unknown') # FIXME
-makedepends=('git' 'cmake')
+depends=('openssl')
+makedepends=('git' 'cmake' 'glibc') # glibc provides iconv
 options=('!strip')
 
 source=(
@@ -15,7 +16,7 @@ source=(
     '00-3dstool-share-ignore.patch'
 )
 sha256sums=(
-    '461639f89ad3e329d1f44c3cb7f2a8a95dfdaba1533439fcbd3f3984df3e19aa'
+    'a90bdc6c817c045f8d9ae0319feda9c88362de9e15d32e2a8b13e5b1e793169b'
     '3d55e1bb49caa79648cd27aacba3793cfa38882cd740661560bc3d0d68da8d3d'
 )
 
