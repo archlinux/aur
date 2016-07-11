@@ -1,6 +1,6 @@
 pkgbase = mutt-slang
-	pkgdesc = Small but very powerful text-based mail client
-	pkgver = 1.6.1
+	pkgdesc = Small but very powerful text-based mail client - slang version
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://www.mutt.org/
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = mutt-slang
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.1.tar.gz
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.1.tar.gz.asc
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.2.tar.gz
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.2.tar.gz.asc
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
-	sha512sums = a45c7bc681ea31a6ee37e95a11f3ec84f580478367250c80eaf5aceeba87e34411346a8b7e80a0f236c507cec1199ddc3ccf4596b81d7e31c235099dccdd4fd5
+	sha512sums = c4348ba55459a2f9d5bedda1ec63b7520c0bdcd285bf791972dbd11a947be47e7c88b02c7d244e65c7c0f1be252c43240b570457a5812bf8160611bba7b01916
 	sha512sums = SKIP
 
 pkgname = mutt-slang
