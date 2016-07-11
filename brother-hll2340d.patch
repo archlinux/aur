@@ -1,0 +1,31 @@
+diff --git a/opt/brother/Printers/HLL2340D/cupswrapper/brother_lpdwrapper_HLL2340D b/opt/brother/Printers/HLL2340D/cupswrapper/brother_lpdwrapper_HLL2340D
+index 1af93d4..eef1112 100755
+--- a/opt/brother/Printers/HLL2340D/cupswrapper/brother_lpdwrapper_HLL2340D
++++ b/opt/brother/Printers/HLL2340D/cupswrapper/brother_lpdwrapper_HLL2340D
+@@ -43,14 +43,7 @@ if ( $DEBUG > 0 ){
+ $width=-1;
+ $height=-1;
+ 
+-#my $basedir = Cwd::realpath ($0);
+-my $basedir = `readlink $0`;
+-if ( $basedir eq '' ){
+-    $basedir = `realpath $0`;
+-}
+-chomp($basedir);
+-
+-$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
++my $basedir = "/usr/share/brother/Printers/HLL2340D/";
+ 
+ 
+ %units = ( pt   => \&pt2dot, 
+@@ -84,9 +77,7 @@ if ( @ARGV >= 6 ){
+ }
+ 
+ 
+-$PRINTER =~ s/^\/opt\/.*\/Printers\///g;
+-$PRINTER =~ s/\/cupswrapper//g;
+-$PRINTER =~ s/\///g;
++$PRINTER = "HLL2340D";
+ 
+ for  (my $i = 0 ; $i < @ARGV ; $i ++){
+     logprint( 0 , "ARG$i      = $ARGV[$i]\n");
