@@ -16,7 +16,7 @@ pkgbase = alphaplot
 	depends = qt4
 	depends = qwt5
 	depends = qwtplot3d
-	source = git+https://github.com/narunlifescience/alphaplot.git
+	source = git+https://github.com/narunlifescience/alphaplot.git#branch=release-0.01A-alpha
 	sha256sums = SKIP
 
 pkgname = alphaplot

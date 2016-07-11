@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake')
 depends=('gsl' 'glu' 'mesa' 'shared-mime-info' 'qt4' 'qwt5' 'qwtplot3d')
 
 # source download from git repo & prepare
-source=(git+https://github.com/narunlifescience/alphaplot.git)
+source=(git+https://github.com/narunlifescience/alphaplot.git#branch=release-0.01A-alpha)
 install=${pkgname}.install
 sha256sums=('SKIP')
 prepare() {
