@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -29,11 +29,11 @@ else
 fi
 
 package () {
-  srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
-  binary="${pkgname}"
+  #srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
+  binary="${_pkgname}"
   if [[ $CARCH == "x86_64" ]]; then
-      srcpath+="_x64"
-      binary+="_x64"
+  #    srcpath+="_x64"
+      binary="${pkgname}_x64"
   fi
 
   cd "${srcpath}"
