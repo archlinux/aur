@@ -2,12 +2,12 @@
 pkgname=('3dsconv')
 provides=('3dsconv')
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to convert Nintendo 3DS CTR Cart Image files (CCI, ".3ds") to the CTR Importable Archive format (CIA).'
 arch=('any')
 url="https://github.com/ihaveamac/3dsconv"
 license=('MIT')
-depends=('projectctr-makerom-git' 'python2') #FIXME preferably projectctr-makerom-git should have "makerom" in "provides"
+depends=('python2')
 makedepends=('tar')
 options=('!strip')
 
