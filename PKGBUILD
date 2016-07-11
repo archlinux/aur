@@ -1,4 +1,5 @@
-# Maintainer: François Garillot ("huitseeker") <francois [at] garillot.net>
+# Maintainer: Xiang Gao ("zasdfgbnm") <qasdfgtyuiop@gmail.com>
+# Contributor: François Garillot ("huitseeker") <francois [at] garillot.net>
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark-git
