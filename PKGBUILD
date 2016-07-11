@@ -2,7 +2,7 @@
 
 pkgname=sanoid
 pkgver=1.4.6c
-pkgrel=1
+pkgrel=2
 pkgdesc="Sanoid is a policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
