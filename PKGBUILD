@@ -1,7 +1,7 @@
 # Maintainer: Cedric Meury <cedric@meury.com>
 pkgname=kafka-manager
 pkgver=1.3.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for managing Apache Kafka."
 arch=('any')
 url="https://github.com/yahoo/kafka-manager"
