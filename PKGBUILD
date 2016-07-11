@@ -2,8 +2,8 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
 url="https://expressvpn.com"
@@ -20,9 +20,9 @@ source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 
 sha512sums=('95fa06939cd318962d11076443c0f3fe46f73509fcd09ad39513a8f3ea6d010c9c9607ec38506f1503efde70519a2aa9aed3d201b7c3b37c4324c68fc91a2073'
             'SKIP')
-sha512sums_x86_64=('909399d0790b792c098d9327b5d7f79e0bee988f77886bccddf15edb0f8befe1ce40f65b2eff797d7f984c1f51a2223109fc5665a4667c2e02de3f3ae838e39d'
+sha512sums_x86_64=('4d9ca887e39297a8f50d0b08ee90fc264600514f539162c54c7f56e4389fca8b0d3d971b6e47f9ac5e422bcd2a26a002c0283bee9deb63e22d0828d765edc56a'
                    'SKIP')
-sha512sums_i686=('247f8783a7667176e65edb2e7ee309dbedae77e9395ddd0d3b07c8163c3a93b4a07688b8b475433b8c4c770a60958517438caf27d50565d759230ae8d3c3aad5'
+sha512sums_i686=('9f782a4ec6db8a7950325e36c3b083dbc8db39d8b5bd5a1444a6f936905f3867e489ffb2b6d9899eface4074c97d0853977aaed8d674090982f15a3e63515d9c'
                  'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
@@ -34,4 +34,5 @@ package() {
     install -Dm644 "${srcdir}/expressvpnd.service" "${pkgdir}/usr/lib/systemd/system/expressvpnd.service"
 
     install -Dm644 "${srcdir}/license-${_date}.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+    install -dm755 "$pkgdir/var/lib/expressvpn/certs"
 }

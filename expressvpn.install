@@ -1,9 +1,9 @@
 post_install() {
   /usr/bin/printf "----------------------------------------------\n"
   /usr/bin/printf " Start the expressvpn daemon with\n"
-  /usr/bin/printf "     systemctl start expressvpnd.service\n"
+  /usr/bin/printf "     # systemctl start expressvpnd.service\n"
   /usr/bin/printf " Then activate your expressVPN account with\n"
-  /usr/bin/printf "     expressvpn activate [activation code]\n"
+  /usr/bin/printf "     $ expressvpn activate [activation code]\n"
   /usr/bin/printf " (Your activation code can be found at\n"
   /usr/bin/printf " https://www.expressvpn.com/licenses/current)\n"
   /usr/bin/printf "\n"
@@ -15,9 +15,22 @@ post_install() {
 }
 
 post_upgrade() {
+  /usr/bin/expressvpnd --workdir "/var/lib/expressvpn/" generate-client-ca > /dev/null 2>&1
+  /usr/bin/expressvpnd --workdir "/var/lib/expressvpn/" generate-client-certs > /dev/null 2>&1
+  /usr/bin/chmod 644 "/var/lib/expressvpn/certs/client.key" > /dev/null 2>&1
+  /usr/bin/rm -f /var/lib/expressvpn/certs/client.req > /dev/null 2>&1
+  /usr/bin/rm -f /var/lib/expressvpn/certs/clientca.srl > /dev/null 2>&1
   /usr/bin/printf "------------------------------------------------\n"
   /usr/bin/printf " You may need to restart the expressvpn daemon:\n"
-  /usr/bin/printf "     systemctl restart expressvpnd.service\n"
+  /usr/bin/printf "     # systemctl daemon-reload\n"
+  /usr/bin/printf "     # systemctl restart expressvpnd.service\n"
   /usr/bin/printf "------------------------------------------------\n"
 }
 
+post_remove() {
+  /usr/bin/rm -f /var/lib/expressvpn/certs/client.key
+  /usr/bin/rm -f /var/lib/expressvpn/certs/client.crt
+  /usr/bin/rm -f /var/lib/expressvpn/certs/client.p12
+  /usr/bin/rm -f /var/lib/expressvpn/certs/clientca.crt
+  /usr/bin/rm -f /var/lib/expressvpn/certs/clientca.key
+}
