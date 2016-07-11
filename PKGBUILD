@@ -2,12 +2,13 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.1.2
-_gitrev=351
-_gitver=3847fd9a
+pkgver=1.1.3
+_gitrev=380
+_gitver=a2959899
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-_webclientver=9d674f3 # Set in CMakeModules/WebClientVariables.cmake
-_webclientbuild=142
+_webclientver=6ec8fed # Set in CMakeModules/WebClientVariables.cmake
+_webclientbuild=149
+_webclientversionnr=2.6.9
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -16,11 +17,11 @@ url='https://github.com/plexinc/plex-media-player'
 depends=('mpv' 'qt5-webengine>=5.6' 'libcec' 'sdl2' 'qt5-x11extras')
 makedepends=('cmake')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
-        "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/${_webclientbuild}/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
+        "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/${_webclientbuild}/plex-web-client-pmp-${_webclientversionnr}-${_webclientver}.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('6d924e1319e72b01a3fbf5abf1d345f8ff73c9b3571b01b5d99eadfea10001e2'
-            '3b37cbab3d4905b5f6e30d3377dd4334a8bddf1dbefd8a6a962bea48438fc29f'
+sha256sums=('48acb0f0ae909d381706b2b1ff472b50715a5150d5a4a81c8d3fc176234b7c53'
+            '9213d353eb15a665b37fcd2e32578a8b28deeb452b6068cd4a4e720776de0352'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
 # NOTE:
