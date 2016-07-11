@@ -1,16 +1,15 @@
 pkgbase = python-autopep8
 	pkgdesc = Automatically formats Python code to conform to the PEP 8 style guide.
-	pkgver = 1.2.1
+	pkgver = 1.2.4
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/autopep8/1.2.1
+	url = http://pypi.python.org/pypi/autopep8/1.2.4
 	arch = any
 	license = MIT
 	makedepends = python-distribute
 	depends = python
-	depends = pep8-python3
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/a/autopep8/autopep8-1.2.1.tar.gz
-	md5sums = 4167555f521ddd69b66f13819604f3db
+	source = https://github.com/hhatto/autopep8/archive/v1.2.4.tar.gz
+	md5sums = 0458db85159a9e1b45f3e71ce6c158da
 
 pkgname = python-autopep8
 
