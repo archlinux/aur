@@ -14,7 +14,7 @@ makedepends=('geneet-git' 'git')
 conflicts=('efbb-svn')
 replaces=('efbb-svn')
 options=('!libtool')
-source="git://git.enlightenment.org/games/$_pkgname.git"
+source=("git://git.enlightenment.org/games/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
