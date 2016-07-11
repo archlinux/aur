@@ -4,7 +4,7 @@
 
 _pkgname=php-codesniffer-drupal
 pkgname=${_pkgname}
-pkgver=8.x_2.7
+pkgver=8.x_2.8
 _pkgver=${pkgver//[_]/-}
 pkgrel=2
 pkgdesc="Drupal coding standard for PHP_CodeSniffer"
