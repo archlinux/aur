@@ -1,0 +1,28 @@
+pkgbase = sudo-masochist
+	pkgdesc = Sudo with a little extra edge
+	pkgver = 1.8.17.p1
+	pkgrel = 1
+	url = https://www.sudo.ws/sudo/
+	install = sudo-masochist.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = pam
+	depends = libldap
+	provides = sudo
+	conflicts = sudo
+	backup = etc/sudoers
+	backup = etc/pam.d/sudo
+	source = https://www.sudo.ws/sudo/dist/sudo-1.8.17p1.tar.gz
+	source = https://www.sudo.ws/sudo/dist/sudo-1.8.17p1.tar.gz.sig
+	source = sudo.pam
+	source = git+http://bitbucket.org/NextHendrix/sudo-masochist
+	validpgpkeys = CCB24BE9E9481B15D34159535A89DFA27EE470C4
+	sha256sums = c690d707fb561b3ecdf6a6de5563bc0b769388eff201c851edbace408bb155cc
+	sha256sums = SKIP
+	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
+	sha256sums = SKIP
+
+pkgname = sudo-masochist
+
