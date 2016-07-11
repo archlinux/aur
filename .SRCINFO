@@ -1,0 +1,26 @@
+pkgbase = mono42
+	pkgdesc = Free implementation of the .NET platform including runtime and compiler
+	pkgver = 4.2.4.4
+	pkgrel = 1
+	url = http://www.mono-project.com/
+	install = mono42.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	license = custom:MITX11
+	depends = zlib
+	depends = libgdiplus>=3.8
+	depends = sh
+	depends = python
+	depends = ca-certificates
+	provides = monodoc
+	provides = mono=4.2.4.4
+	conflicts = monodoc
+	conflicts = mono
+	source = http://download.mono-project.com/sources/mono/mono-4.2.4.4.tar.bz2
+	sha256sums = ae74292c672e276276edc5461914f3e184d427a7a2ac099d3ce2640abe5dc0c6
+
+pkgname = mono42
+
