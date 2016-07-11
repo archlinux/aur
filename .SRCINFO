@@ -1,0 +1,15 @@
+pkgbase = ttf-material-design-icons-git
+	pkgdesc = Material Design Icons Web Font
+	pkgver = v1.6.50.r0.ga791eeb
+	pkgrel = 1
+	url = https://materialdesignicons.com
+	install = ttf-material-design-icons-git.install
+	arch = any
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/Templarian/MaterialDesign-Webfont.git
+	md5sums = SKIP
+
+pkgname = ttf-material-design-icons-git
+
