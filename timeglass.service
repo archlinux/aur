@@ -1,0 +1,15 @@
+[Unit]
+Description=Timeglass daemon
+
+[Service]
+PIDFile=/run/timeglass/timeglass.pid
+Type=forking
+ProtectSystem=full
+ProtectHome=true
+
+ExecStart=/usr/bin/glass install
+ExecStop=/usr/bin/kill -QUIT $MAINPID
+ExecReload=/usr/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

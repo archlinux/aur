@@ -1,0 +1,17 @@
+pkgbase = timeglass-bin
+	pkgdesc = Automated time tracking for Git repositories
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/timeglass/glass
+	arch = x86_64
+	license = MPL
+	depends = glibc
+	optdepends = git: kind of useless without it
+	provides = glass glass-daemon
+	source = https://github.com/timeglass/glass/releases/download/v0.6.0/linux_amd64_0.6.0.zip
+	source = timeglass.service
+	md5sums = 2b6b29146c3b71cd480f7958c2c0e5b4
+	md5sums = 04dc99adeea514e7a9cfb65aff20b79a
+
+pkgname = timeglass-bin
+
