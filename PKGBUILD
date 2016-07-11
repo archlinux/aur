@@ -1,7 +1,7 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=partio-git
 pkgver=1.1.0.r73.g7f3e0d1
-pkgrel=3
+pkgrel=4
 pkgdesc="Particle IO and manipulation library (git version)"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/partio.html"
@@ -14,7 +14,7 @@ makedepends=('cmake>=2.4.6' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wdas/partio.git' 'CMakeLists.txt.patch' 'py_CMakeLists.txt.patch')
-md5sums=('SKIP' '795fd5b88af781f3d94d51bea44518f3' 'eddbcda29bf7957fd423296b9271c7ea')
+md5sums=('SKIP' '795fd5b88af781f3d94d51bea44518f3' '306cacec7af0af3adb7876c288881062')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
