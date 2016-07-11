@@ -1,18 +1,19 @@
 # Maintainer: James An <james@jamesan.ca>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
-_pkgname=crypt
-pkgname="libtom$_pkgname"
+pkgname='libtomcrypt'
+_prjname='libtom'
+_pkgname=${pkgname#$_prjname}
 pkgver=1.17
-pkgrel=10
+pkgrel=11
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
-url="http://libtom.net/?page=features&newsitems=5&whatfile=$_pkgname"
+url="http://$_prjname.net/?page=features&newsitems=5&whatfile=$_pkgname"
 license=('custom:Public Domain' 'custom:WTFPL')
 arch=('i686' 'x86_64')
 depends=('gmp')
-makedepends=('libtommath')
+makedepends=("${_prjname}math")
 options=('!emptydirs')
-source=("https://github.com/libtom/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
+source=("https://github.com/$_prjname/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
 md5sums=('cea7e5347979909f458fe7ebb5a44f85')
 
 package() {
