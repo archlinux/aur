@@ -2,10 +2,10 @@ post_install() {
   groupadd -r -f apache-spark
   useradd -r -g apache-spark -s /usr/bin/nologin -d /var/lib/apache-spark apache-spark || true
 
-  [[ ! -d /var/lib/apache-spark ]] &&
-  install -d /var/lib/apache-spark
+  [[ ! -d /var/lib/apache-spark/work ]] &&
+  install -d /var/lib/apache-spark/work
 
-  chown -R apache-spark:apache-spark /var/lib/apache-spark
+  chown -R apache-spark:apache-spark /var/{lib,log}/apache-spark
 }
 
 post_remove() {
