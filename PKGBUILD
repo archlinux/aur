@@ -1,8 +1,8 @@
-# Maintainer: Bruno Pagani <bruno.n.pagani at gmail dot com>
+# Maintainer: Bruno Pagani <bruno.n.pagani@gmail.com>
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!emptydirs' '!buildflags')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('b656638d4f6bce2621baaacb60d8be384aa492fcd86dfd43996aaa2c16fee02b')
+sha256sums=('e413d57fec4ad43b9f9b848f38d13fb921313fc9a4a64bf1e906c8d0f7a46329')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
