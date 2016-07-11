@@ -1,0 +1,20 @@
+index cf40f31..5c9d110 100755
+--- a/main.cpp
++++ b/main.cpp
+@@ -345,14 +345,14 @@ int main(int argc, const char * argv[])
+ {
+     int ret = 0;
+     bool background = false, redirect_to_null = false;
+-    std::string config_path = "EasyDrcom.conf";
++    std::string config_path = "/etc/EasyDrcom.conf";
+     auto clog_def = std::clog.rdbuf();
+     auto cout_def = std::cout.rdbuf();
+     auto cerr_def = std::cerr.rdbuf();
+ #ifdef OPENWRT
+     std::string log_path = "/tmp/EasyDrcom.log";
+ #else
+-    std::string log_path = "EasyDrcom.log";
++    std::string log_path = "/tmp/EasyDrcom.log";
+ #endif
+     
+     for (int i = 1; i < argc; i++)

@@ -1,0 +1,22 @@
+pkgbase = easydrcom-git
+	pkgdesc = 3rd Party Dr.COM Client for HITwh
+	pkgver = 08f4404
+	pkgrel = 1
+	url = https://github.com/coverxit/EasyDrcom
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = boost
+	depends = libpcap
+	provides = EasyDrcom
+	options = !buildflags
+	source = git+https://github.com/coverxit/EasyDrcom.git
+	source = EasyDrcom.conf
+	source = patch.txt
+	md5sums = SKIP
+	md5sums = ed15888b134b18d885d81567542042a4
+	md5sums = 1dba42fe14d02ec886d8023f835fe21e
+
+pkgname = easydrcom-git
+
