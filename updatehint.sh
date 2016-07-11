@@ -20,6 +20,8 @@ update_notify () {
   UPDATES_ARCH=$($UPDATE_CHECK_CMD_ARCH)
   UPDATES_AUR=$($UPDATE_CHECK_CMD_AUR | sed 's/:: \(.*\)/\1/')
   
+  unset UPDATE_HEADER_ARCH_LOCAL
+  unset UPDATE_HEADER_AUR_LOCAL
   if [ -n "$UPDATES_ARCH" ]; then
     UPDATE_HEADER_ARCH_LOCAL="$UPDATE_HEADER_ARCH"
   fi

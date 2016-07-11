@@ -1,7 +1,7 @@
 # Maintainer: Tinxy <arch äŧ tinx ðøŧ eu>
 
 pkgname="updatehint"
-pkgver='1.4'
+pkgver='1.5'
 pkgrel=1
 arch=('any')
 pkgdesc='Provides notifications about Arch Linux updates.'
@@ -13,7 +13,7 @@ depends=('cower'  # Checking for AUR updates
 optdepends=('gnome-icon-theme-symbolic: icons in notification boxes'
             'ncurses: console text formatting (tput)')
 source=("${pkgname}.sh" )
-sha256sums=('b1bf5955ca998d111124b8b9167066c67bdc7f67a356414ab2d52b41684d66cc' )
+sha256sums=('65797a64f2270c9800d8c214c641cb22328429e7bd62c1a079da22675ad8f2fa' )
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
