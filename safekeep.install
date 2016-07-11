@@ -30,18 +30,18 @@ _EOF
 }
 
 post_remove() {
-  /usr/sbin/userdel safekeep
-  /usr/sbin/groupdel safekeep
-
   cat << _EOF
 
 	NOTE: You will have to manually take care of a number of
 	steps such as removing the cron job script, removing the
-	safekeep user, and removing ssh keys.
+	safekeep user and group, and removing ssh keys.
 
 	To remove the user called "safekeep," issue:
 		userdel -r safekeep
 
+	To remove the user called "safekeep," issue:
+		groupdel safekeep
+		
 	To remove the cron job script, issue:
 		rm /etc/cron.daily/safekeep
 

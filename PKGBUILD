@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=safekeep
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A client/server backup system which enhances the power of rdiff-backup"
 arch=('any')
@@ -13,7 +13,7 @@ install=$pkgname.install
 backup=('etc/safekeep/safekeep.conf'
         'etc/cron.daily/safekeep')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('7c2380a9b6bb5384b89e39503eae8cdb37496c5617fb0e3c0bb3f74d8e80931a')
+sha256sums=('928f75cf035d0eccc5a8c9c953411f6e65be2913ed9a59598729519404605627')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -30,6 +30,6 @@ package () {
   make DESTDIR="${pkgdir}" install
 
 #installing files
-  install -D -m644 samples/sample.backup "${pkgdir}"/etc/safekeep/backup.d/sample.backup
-  install -D -m644 samples/client-script-sample.sh "${pkgdir}"/etc/safekeep/backup.d/client-script-sample.sh
+  install -Dm644 samples/sample.backup "${pkgdir}"/etc/safekeep/backup.d/sample.backup
+  install -Dm644 samples/client-script-sample.sh "${pkgdir}"/etc/safekeep/backup.d/client-script-sample.sh
 }
