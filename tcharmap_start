@@ -2,5 +2,5 @@
 
 import sys
 sys.path.insert(0, "/usr/share/tcharmap")
-import tcharmap
+from tcharmap import tcharmap
 tcharmap.main()

@@ -1,6 +1,6 @@
 # Maintainer: nrio <nrio@mailbox.org>
 pkgname=tcharmap-git
-pkgver=r17.bd21536
+pkgver=r18.333b132
 pkgrel=1
 pkgdesc="Overview of unicode characters and their LaTeX counterpart"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'xdg-utils')
 source=('git+https://github.com/nrio0/tcharmap.git'
         'tcharmap_start')
 sha256sums=('SKIP'
-            'eb60997b8de05779860d6a7b86758e75c575ed0bef1a54b8ffbc820c12c610a2')
+            '47bf16b6510c9f1b9bcf052ee0c268cdeb715a6f52290996659b6ce3fdc2a56b')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -23,10 +23,10 @@ package() {
   install -Dm755 "$srcdir/tcharmap_start" "$pkgdir/usr/bin/tcharmap"
 	cd "$srcdir/${pkgname%-git}"
   mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/tcharmap"
-  install -Dm644  tcharmap/charmap "$pkgdir/usr/share/tcharmap"
-  install -Dm644  tcharmap/tcharmap.py "$pkgdir/usr/share/tcharmap"
-  install -Dm644  tcharmap/icons_rc.py "$pkgdir/usr/share/tcharmap"
+  mkdir -p "$pkgdir/usr/share/tcharmap/tcharmap/resources"
+  install -Dm644  tcharmap/charmap "$pkgdir/usr/share/tcharmap/tcharmap"
+  install -Dm644  tcharmap/{tcharmap.py,__init__.py,__main__.py} "$pkgdir/usr/share/tcharmap/tcharmap"
+  install -Dm644  tcharmap/resources/{icons_rc.py,__init__.py} "$pkgdir/usr/share/tcharmap/tcharmap/resources"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
   install -d "${pkgdir}"/usr/share/{applications,desktop-directories,icons/hicolor}
   XDG_DATA_DIRS="${pkgdir}/usr/share" xdg-icon-resource install --size 16 --novendor "misc/hicolor/16x16/apps/tcharmap.png"
