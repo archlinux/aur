@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.12.1.1322
+pkgver=3.12.2.1329
 pkgrel=1
 pkgdesc="Library for creating DigiDoc signature files"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('LGPL')
 depends=('xml-security-c' 'minizip' 'libdigidoc')
 makedepends=('cmake' 'xsd>=4.0' 'pcsclite' 'opensc' 'xxd')
 source=("https://installer.id.ee/media/ubuntu/pool/main/libd/$pkgname/${pkgname}_$pkgver.orig.tar.xz")
-sha256sums=('5f21dd80e6526343df30ee8627edde17f842f23fd830e9b2efb424cf24e19a91')
+sha256sums=('0e91c8eee3fb26101b141bebfe804314e88aa3ba93a39e6b873290b47b1f43dd')
 validpgpkeys=('43650273CE9516880D7EB581B339B36D592073D4')
 
 build() {
