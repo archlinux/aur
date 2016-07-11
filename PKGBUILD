@@ -1,8 +1,8 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh
-pkgver=2.12.0
-pkgrel=3
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('i686' 'x86_64')
 url="http://www.geuz.org/gmsh/"
@@ -13,26 +13,19 @@ optdepends=('gmsh-docs: docs for gmsh'
             'python2: for onelab.py'
             'python: for onelab.py')
 options=(!emptydirs)
-source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion string-refpointer.diff 130_gcc6_fix.patch)
-md5sums=('03cbeb28c1e2b4fd5c2065be25df8b8f'
+source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
+md5sums=('4a7476a5dc2426fdaf300b599b819c69'
          'e63dc24ba025741fc1a82633b475e4a8'
-         '9ee4b5bf27956de5aa412bbc939660d3'
-         'ef9faa9020a790eead71201a12685d84'
-         'a0925bbf2fa5abd27a2d3e36034bc185')
+         '9ee4b5bf27956de5aa412bbc939660d3')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}-source"
 
    # Help links to local doc (package gmsh-docs)
-   sed -e "s|http://geuz.org/gmsh/doc/texinfo/|file:///usr/share/doc/gmsh/gmsh.html|" \
+   sed -e "s|http://gmsh.info/doc/texinfo/|file:///usr/share/doc/gmsh/gmsh.html|" \
        -i Fltk/graphicWindow.cpp
-   sed -e "s|http://geuz.org/gmsh/doc/|file:///usr/share/licenses/gmsh/|" \
+   sed -e "s|http://gmsh.info/doc/|file:///usr/share/licenses/gmsh/|" \
        -i Fltk/helpWindow.cpp
-
-   # Fix MED file saving, provided by Michele Mocciola 
-   patch -Np1 -i "${srcdir}/string-refpointer.diff"
-   # Fix gcc 6 compilation, patch from debian
-   patch -Np1 -i "${srcdir}/130_gcc6_fix.patch"
 
    mkdir -p build
 
