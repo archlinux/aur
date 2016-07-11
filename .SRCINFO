@@ -1,8 +1,8 @@
-pkgbase = stratagus
-	pkgdesc = A free cross-platform real-time strategy gaming engine
-	pkgver = 2.3.0
+pkgbase = stratagus-git
+	pkgdesc = A free cross-platform real-time strategy gaming engine (git version)
+	pkgver = 2.4.0
 	pkgrel = 1
-	url = https://launchpad.net/stratagus
+	url = https://github.com/Wargus/stratagus
 	changelog = stratagus.changelog
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,11 @@ pkgbase = stratagus
 	depends = libmikmod
 	depends = lua51
 	depends = sqlite
-	source = http://launchpad.net/stratagus/trunk/2.3/+download/stratagus_2.3.0.orig.tar.gz
-	md5sums = bf64b87f387c8281350e4b54327bc95f
+	provides = stratagus=2.4.0
+	conflicts = stratagus
+	replaces = stratagus
+	source = stratagus::git://github.com/Wargus/stratagus.git
+	md5sums = SKIP
 
-pkgname = stratagus
+pkgname = stratagus-git
 
