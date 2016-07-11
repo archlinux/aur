@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=High Fidelity Interface
+Comment=Client for the decentralized, open source High Fidelity metaverse
+Exec=/opt/hifi/interface/interface
+Icon=/usr/share/pixmaps/hifi-interface.png
+Terminal=false
+StartupNotify=true
+Categories=Network;Game;3DGraphics
+MimeType=x-scheme-handler/hifi;

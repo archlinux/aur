@@ -1,0 +1,14 @@
+post_install() {
+  echo
+  echo "==> The following can now be executed:"
+  echo "==> hifi-interface: The graphical archways to the boundless multiverse."
+  echo "==> hifi-domain-server: Provides assignments to the assignment-client for features such as audio, avatars, particles, etc."
+  echo "==> hifi-assignment-client: This pulls an assignment from the queue and executes it."
+  echo "==> hifi-ice-server: Orchestrates domain-server's ability to be accessed by avatars on the Internet without requiring firewall configuration."
+  echo
+  echo "==> To run your own server, follow the readme:"
+  echo "==> https://github.com/highfidelity/hifi#running-your-own-servers"
+  echo "==> ..and the online documentation:"
+  echo "==> https://readme.highfidelity.com/docs/domain-setup-quickstart"
+  echo
+}
