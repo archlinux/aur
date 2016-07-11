@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.36.5.76.g0a8bf0b
+pkgver=1.36.5.86.g7cc73a0
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
