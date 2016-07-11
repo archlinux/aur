@@ -1,15 +1,14 @@
 pkgbase = libtomcrypt
 	pkgdesc = A fairly comprehensive, modular and portable cryptographic toolkit
 	pkgver = 1.17
-	pkgrel = 11
+	pkgrel = 12
 	url = http://libtom.net/?page=features&newsitems=5&whatfile=crypt
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
 	license = custom:WTFPL
-	makedepends = libtommath
 	depends = gmp
-	options = !emptydirs
+	depends = libtommath
 	source = https://github.com/libtom/libtomcrypt/releases/download/1.17/crypt-1.17.tar.bz2
 	md5sums = cea7e5347979909f458fe7ebb5a44f85
 
