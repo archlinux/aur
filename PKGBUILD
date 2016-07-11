@@ -16,9 +16,8 @@ md5sums=('cea7e5347979909f458fe7ebb5a44f85')
 
 package() {
   cd $pkgname-$pkgver
-  make NODOCS=1 DESTDIR="$pkgdir" install
-  make NODOCS=1 DESTDIR="$pkgdir" clean
+
   export CFLAGS="-DLTM_DESC -DGMP_DESC"
   export EXTRALIBS="-ltommath -lgmp"
-  make -f makefile.shared NODOCS=1 DESTDIR="$pkgdir" install
+  make -f makefile.shared DESTDIR="$pkgdir" install
 }
