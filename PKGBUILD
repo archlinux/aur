@@ -2,7 +2,7 @@
 
 pkgbase=wireguard
 pkgname=(wireguard-dkms wireguard-tools)
-pkgver=0.0.20160708.1
+pkgver=0.0.20160711
 pkgrel=1
 pkgdesc='next generation secure network tunnel'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('git' 'libmnl')
 source=("${pkgbase}-${pkgver}.tar.xz::https://git.zx2c4.com/WireGuard/snapshot/WireGuard-experimental-${pkgver}.tar.xz"
 	'dkms.conf')
-sha256sums=('11faf795dd45ff0d13cdd204775b07e01fda596b4a9c2a1b326614c226e9725d'
+sha256sums=('4ab876642236abcac416f7b75cf5e9e28b8581d5b7741d36a437af08c42d8081'
             'f34dced05d2b1d9713da12eeef02e71db213646a4c8f6852227430bd84127433')
 
 build() {
