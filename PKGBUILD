@@ -14,11 +14,12 @@
 # Contributor: Michał Masłowski <mtjm@mtjm.eu>
 # Thank you very much to the older contributors:
 # Contributor: evr <evanroman at gmail>
-# Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com>
+# Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 # Firefox PKGBUILD (Arch Linux) :
 
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 _pgo=false
@@ -34,8 +35,8 @@ _parabolarepo=https://repo.parabola.nu/other/iceweasel
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
-pkgrel=1
-pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
+pkgrel=2
+pkgdesc="Web Browser based on Mozilla Firefox, with Debian patches and Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
 depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=57.1 libevent libvpx=1.5.0 libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
@@ -49,7 +50,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 			'upower: Battery API'
 			'ffmpeg: H264/AAC/MP3 decoding'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines')
-url="https://wiki.debian.org/it/Iceweasel"
+url="https://wiki.parabola.nu/Iceweasel"
 provides=("$pkgname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
