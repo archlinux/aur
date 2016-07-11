@@ -1,0 +1,123 @@
+pkgbase = nginx-mainline-addons
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = http://nginx.org
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = hardening-wrapper
+	makedepends = geoip
+	makedepends = leiningen
+	makedepends = java-environment-openjdk>=8
+	source = http://nginx.org/download/nginx-1.11.2.tar.gz
+	source = service
+	source = logrotate
+	source = nginx-addon-fancyindex::git+https://github.com/aperezdc/ngx-fancyindex.git
+	source = nginx-addon-brotli::git+https://github.com/google/ngx_brotli.git
+	source = nginx-addon-headers-more::git+https://github.com/openresty/headers-more-nginx-module.git
+	source = nginx-addon-ct::git+https://github.com/grahamedgecombe/nginx-ct.git
+	source = nginx-addon-auth-pam::git+https://github.com/stogh/ngx_http_auth_pam_module.git
+	source = nginx-addon-clojure::git+https://github.com/nginx-clojure/nginx-clojure.git
+	source = nginx-addon-ndk::git+https://github.com/simpl/ngx_devel_kit.git
+	source = nginx-addon-encrypted-session::git+https://github.com/openresty/encrypted-session-nginx-module.git
+	source = nginx-addon-lua-http::git+https://github.com/openresty/lua-nginx-module.git
+	source = nginx-addon-nchan::git+https://github.com/slact/nchan.git
+	source = nginx-addon-rtmp::git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git#branch=dev
+	md5sums = 9db11337a924a665ff68c1785bcf314e
+	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
+	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = nginx-mainline-addons
+	depends = pcre
+	depends = zlib
+	depends = openssl
+	depends = gperftools
+	provides = nginx
+	provides = nginx-mainline
+	conflicts = nginx
+	conflicts = nginx-mainline
+	replaces = nginx
+	replaces = nginx-mainline
+	backup = etc/nginx/fastcgi.conf
+	backup = etc/nginx/fastcgi_params
+	backup = etc/nginx/koi-win
+	backup = etc/nginx/koi-utf
+	backup = etc/nginx/mime.types
+	backup = etc/nginx/nginx.conf
+	backup = etc/nginx/scgi_params
+	backup = etc/nginx/uwsgi_params
+	backup = etc/nginx/win-utf
+	backup = etc/logrotate.d/nginx
+
+pkgname = nginx-mainline-full
+	pkgdesc = Full set of addons for Nginx server
+	depends = nginx-mainline-addons
+	depends = nginx-mainline-addon-rtmp=1.11.2-1
+
+pkgname = nginx-mainline-addon-geoip
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-image_filter
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-perl
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-xslt_filter
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-stream
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-mail
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-fancyindex
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-brotli
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-headers-more
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-ct
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-auth-pam
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-clojure
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-ndk
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-encrypted-session
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-lua-http
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-nchan
+	depends = nginx-mainline-addons=1.11.2-1
+
+pkgname = nginx-mainline-addon-rtmp
+	depends = nginx-mainline-addons=1.11.2-1
+
