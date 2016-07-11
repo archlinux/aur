@@ -2,7 +2,7 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.95.gc8e126f
+pkgver=1.2.0.106.g3eb92c7
 pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ build() {
 	# Needed for the self-compiled version
 	local _consumer_key='ef5d77317892721a0acebbbc8157272b055da8074'
 	local _consumer_secret='2d745141473f640b566aba29147fd672'
-	
+
 	# Building package
 	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
@@ -52,11 +52,7 @@ build() {
 package() {
 	# Installing package
 	cd "${srcdir}"/build
-	
+
 	# Install files
 	make DESTDIR="${pkgdir}" install
-	
-	# Create a symbolic link to the Python module
-	mkdir -p "${pkgdir}"/usr/lib/python3.5/site-packages
-	ln -sf /usr/share/screencloud/modules/ScreenCloud.py "${pkgdir}"/usr/lib/python3.5/site-packages/ScreenCloud.py
 }
