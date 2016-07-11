@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-remote-hg-git
-pkgver=0.3
+pkgver=0.3.r11.g628d26c
 pkgrel=1
 provides=("git-remote-hg")
 conflicts=("git-remote-hg")
