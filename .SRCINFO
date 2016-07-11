@@ -1,7 +1,7 @@
 pkgbase = libtomcrypt
 	pkgdesc = A fairly comprehensive, modular and portable cryptographic toolkit
 	pkgver = 1.17
-	pkgrel = 9
+	pkgrel = 10
 	url = http://libtom.net/?page=features&newsitems=5&whatfile=crypt
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,8 @@ pkgbase = libtomcrypt
 	makedepends = libtommath
 	depends = gmp
 	options = !emptydirs
-	source = http://libtom.net/files/crypt-1.17.tar.bz2
-	source = http://libtom.net/files/crypt-1.17.tar.bz2.sig
+	source = https://github.com/libtom/libtomcrypt/releases/download/1.17/crypt-1.17.tar.bz2
 	md5sums = cea7e5347979909f458fe7ebb5a44f85
-	md5sums = SKIP
 
 pkgname = libtomcrypt
 
