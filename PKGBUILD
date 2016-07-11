@@ -13,14 +13,14 @@
 
 pkgname=mirrorbrain
 pkgver=2.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="an open source framework to run a content delivery network using mirror servers."
 arch=('i686' 'x86_64')
 url="http://mirrorbrain.org"
 license=('GPL')
 depends=('apache>=2.2.6' 'apache-mod_form' 'apache-mod_geoip2' 'geoip'
          'perl' 'perl-config-inifiles' 'perl-libwww' 'perl-dbd-pg' 'perl-digest-md4' 'perl-timedate'
-         'python2' 'python2-psycopg2' 'python2-sqlobject' 'cmdln')
+         'python2' 'python2-psycopg2' 'python2-sqlobject' 'python2-cmdln')
 makedepends=('apache>=2.2.6' 'apache-mod_form' 'python')
 optdepends=('postgresql: recommended database, but can use any database the Apache DBD API supports'
             'mod_asn: refined mirror selection and full exploitation of network locality')
@@ -61,7 +61,7 @@ prepare() {
 build() {
   # Compile the apache modules
   cd "$srcdir/$pkgname-$pkgver/mod_mirrorbrain/"
-  apxs -c mod_mirrorbrain.c
+  apxs -lm -c mod_mirrorbrain.c
   cd "$srcdir/$pkgname-$pkgver/mod_autoindex_mb/"
   apxs -c mod_autoindex_mb.c
 }
