@@ -1,7 +1,7 @@
 pkgbase = libtomcrypt
 	pkgdesc = A fairly comprehensive, modular and portable cryptographic toolkit
 	pkgver = 1.17
-	pkgrel = 12
+	pkgrel = 13
 	url = http://libtom.net/?page=features&newsitems=5&whatfile=crypt
 	arch = i686
 	arch = x86_64
