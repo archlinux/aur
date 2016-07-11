@@ -22,7 +22,7 @@ source=(stepmania.sh
         stepmania.install
         $pkgname-$pkgver.tar.gz::https://github.com/stepmania/stepmania/archive/v$pkgver.tar.gz)
 sha512sums=('e066ac27932e795078a3a9b1073f280f10f140b2dd776f12efdc469d327d13c2fccdc87f823a32d91c9896b5ea1e98fca404cfadcf55c97ea22a179e5ca21412'
-            'a136c74c71730bbac0d90e876d0f8de066c5f4cfba1923f649d085c7590a3624bd469d03daacc7e4ff5f23c1de2907c015c5a9b6df66f5fce584cf912e9e5c58'
+            '0ef2509a88688687c5fb1ce63e4a35b17bcdeca8451118980e2228a677da27e05b43a6115db2d9c9c7fa4a0e775d95f9ce29f407772d039c2a86cb64030cd9cd'
             '6ef126da5b5690e8fcdbebd9b3a0ee6411dd3cb43209c0e209399e711dc6d449aae1372de92ee0be20af9c3fba1c55ec27087e86a0aeb874535d0a39167f98c3')
 
 build() {
