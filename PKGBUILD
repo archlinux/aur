@@ -14,15 +14,15 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=pppconfig
-pkgver=2.3.21
+pkgver=2.3.23
 pkgrel=1
 pkgdesc="A text menu based utility for configuring ppp."
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://ftp.debian.org/debian/pool/main/p/pppconfig"
+url="http://httpredir.debian.org/debian/pool/main/p/pppconfig"
 depends=('ppp' 'dialog' 'perl')
-source=("http://ftp.debian.org/debian/pool/main/p/pppconfig/${pkgname}_${pkgver}.tar.gz")
-md5sums=('ad3c74ab14827fa841be72cb4283b0c5')
+source=("http://httpredir.debian.org/debian/pool/main/p/pppconfig/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('7502c947dc8854c1bfebbef1f8da4fe3b9ba047fdc6365b6520cdf483925c41f')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -33,6 +33,7 @@ package() {
   install -D -m644 man/pppconfig.8 "$pkgdir"/usr/share/man/man8/pppconfig.8
 
   install -dm755 "$pkgdir"/etc/ppp/{peers,resolv} "$pkgdir"/etc/chatscripts
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/pppconfig/COPYING.txt
 }
 
 # vim:set ts=2 sw=2 et:
