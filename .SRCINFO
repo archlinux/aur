@@ -1,15 +1,15 @@
 pkgbase = xscast-git
 	pkgdesc = screencasts of windows with keystrokes overlayed
 	pkgver = r12.12760b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KeyboardFire/xscast
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = ffmpeg
 	depends = imagemagick
-	depends = xorg-utils
-	depends = xorg-server-utils
+	depends = xorg-xinput
+	depends = xorg-xwininfo
 	depends = dzen2
 	provides = xscast
 	source = xscast::git+git://github.com/KeyboardFire/xscast#branch=master

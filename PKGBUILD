@@ -1,12 +1,12 @@
 # Maintainer: KeyboardFire <andy@keyboardfire.com>
 pkgname=xscast-git
 pkgver=r12.12760b6
-pkgrel=1
+pkgrel=2
 pkgdesc='screencasts of windows with keystrokes overlayed'
 arch=('any')
 url='https://github.com/KeyboardFire/xscast'
 license=('MIT')
-depends=('ffmpeg' 'imagemagick' 'xorg-utils' 'xorg-server-utils' 'dzen2')
+depends=('ffmpeg' 'imagemagick' 'xorg-xinput' 'xorg-xwininfo' 'dzen2')
 makedepends=('git')
 provides=('xscast')
 source=('xscast::git+git://github.com/KeyboardFire/xscast#branch=master')
