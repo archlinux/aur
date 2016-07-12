@@ -3,14 +3,13 @@ _gitbranch="develop"
 _gitname="Sming"
 pkgname=sming-git
 pkgver=r875.210e026
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source framework for high efficiency WiFi SoC ESP8266 native development with C++ language"
 arch=('i686' 'x86_64')
 url="https://github.com/SmingHub/Sming"
 license=('LGPL3')
 depends=('esp-open-sdk' 'esptool' 'esptool2-git')
 makedepends=('esp-open-sdk' 'git' 'rsync')
-optdepends=('spiffy-git: SPIFF file system access')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=("${pkgname%-git}")
@@ -22,7 +21,6 @@ md5sums=('SKIP'
 
 pkgver()
 {
-  #cd "$srcdir/${_gitname}"
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
