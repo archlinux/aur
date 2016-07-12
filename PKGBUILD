@@ -33,7 +33,7 @@ options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/$pkgver
         setup.py.patch)
 sha256sums=('f6eb9da1961dec5f5bb805fc9a90425ea429f3177abf16742af05adb63104dc8'
-            'c5d9f4707d64718c1d19e1b08554c3e6848801b44fc650a35210cfdb441a6e98')
+            'e1b5edabf31ed909d08a9e9e6aa97445a6e6b9a27854020e53ddae1ff9f9d102')
 
 prepare() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
