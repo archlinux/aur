@@ -2,14 +2,13 @@
 
 pkgname=regexxer
 pkgver=0.10
-pkgrel=6
+pkgrel=7
 pkgdesc="Interactive search and replace tool for GNOME"
 arch=('i686' 'x86_64')
 url="http://regexxer.sourceforge.net/"
 license=('GPL')
-depends=('gtksourceviewmm' 'dconf')
+depends=('gtksourceviewmm')
 makedepends=('intltool')
-install=$pkgname.install
 source=(https://download.gnome.org/sources/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz
         regexxer-glib2.32.patch
         fix-deprecated.patch)
