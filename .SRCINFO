@@ -1,0 +1,18 @@
+pkgbase = mandb-ondemand
+	pkgdesc = Rebuild man-db cache/purge ondemand and speed up pacman operations.
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://github.com/graysky2/mandb-ondemand
+	install = mandb-ondemand.install
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = man-db
+	optdepends = gzip
+	conflicts = man-db-systemd
+	replaces = man-db-systemd
+	source = https://github.com/graysky2/mandb-ondemand/archive/v1.10.tar.gz
+	sha256sums = 02cc1eb12a6dcd6d39ac11a5fe6fcc29928289c35a89d8ad419e061572e440a4
+
+pkgname = mandb-ondemand
+
