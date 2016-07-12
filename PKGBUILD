@@ -1,6 +1,6 @@
 pkgname=pass-web
-_npmpkgver=1.0.0-beta.9
-pkgver=1.0.0.beta.9
+_npmpkgver=1.0.0-beta.10
+pkgver=1.0.0.beta.10
 pkgrel=1
 pkgdesc="A web interface for pass (password-store)"
 arch=('any')
@@ -14,4 +14,4 @@ noextract=($pkgname-$_npmpkgver.tgz)
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$_npmpkgver.tgz
 }
-sha256sums=('fe71761183b69e37f04fe4df9008ec27f05f189de0c08e0159d0ceca9f26475f')
+sha256sums=('8d3c7aaef91d779c879f655e73bd2d6aa8617f424ee5c09224a12fc113d6c6a8')
