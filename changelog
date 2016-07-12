@@ -1,3 +1,17 @@
+2016-07-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.2.5-1:
+    Fixed ASF crash related to being unable to execute WMI queries on machines previously affected by HackIgnoreMachineID.
+    Removed old ASF 2FA V2.0 -> V2.1 converter, as stated in previous release.
+  * 2.1.2.4:
+    [!] Next ASF version will come without ASF 2FA converter capable of converting V2.0 formats into V2.1. If you didn't update your old ASF V2.0 yet, it's wise to do so.
+    [!] Implemented new smart and persistent CMs list - ASF will no longer need to ask Steam network for list of CMs at startup, significantly improving startup time. The list is saved in ASF.db.
+    [!] ASF logging module has been rewritten and is now based on NLog project. New module supports standard built-in ASF rules, as well as custom NLog configuration, in which you can define your own loggers, targets, rules and formats. Check out Logging section in the wiki to learn more.
+    Removed LogToFile global config property, which is now always true unless ASF is running as a service. The file logging is now customizable through NLog and described in Logging section in the wiki.
+    Updated internal SteamKit2 ASF library to version 1.8, improving stability and compatibility with Steam network.
+    Removed HackIgnoreMachineID global config property. New SK2 version should solve the issue for all affected people that had to keep this property at true previously.
+    ASF service is now available as ASF-Service.exe extra binary due to incompatibility with new repacking method. There is also new article on the wiki explaining how to run ASF as a service.
+    ASF can now log it's messages also to event log, which is enabled by default when ASF is run as a service. You can override this through custom NLog config if you want to.
+    Misc portion of code improvements, optimizations and bugfixes.
 2016-07-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.1.8-2:
     Disable update notifications.
