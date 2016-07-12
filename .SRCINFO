@@ -1,6 +1,6 @@
 pkgbase = archstrike-setuptool-git
 	pkgdesc = Command line installer for ArchStrike penetration testing layer
-	pkgver = 20160706.r14
+	pkgver = 20160712.r15
 	pkgrel = 1
 	url = https://github.com/xorond/archstrike-setuptool
 	arch = any

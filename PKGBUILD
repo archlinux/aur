@@ -1,7 +1,7 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=archstrike-setuptool-git
-pkgver=20160706.r14
+pkgver=20160712.r15
 pkgrel=1
 arch=('any')
 pkgdesc="Command line installer for ArchStrike penetration testing layer"
@@ -23,7 +23,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
             
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm755 archstrike-installer.sh "${pkgdir}/usr/bin/archstrike-setuptool"
+  install -Dm755 archstrike-setuptool.sh "${pkgdir}/usr/bin/archstrike-setuptool"
   chmod 755 "${pkgdir}/usr/bin/archstrike-setuptool"
 }
 
