@@ -1,0 +1,13 @@
+post_install() {
+  killall -HUP dbus-daemon 2>&1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
+
+# vim:set ts=2 sw=2 et:
