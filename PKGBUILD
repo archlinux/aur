@@ -2,15 +2,15 @@
 
 pkgname="udash-generator"
 pkgdesc="Udash project generator"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 url="https://github.com/UdashFramework/udash-generator"
 license=('Apache')
 arch=('any')
 source=("https://github.com/UdashFramework/udash-generator/releases/download/v${pkgver}/udash-generator.zip"
         "https://raw.githubusercontent.com/UdashFramework/udash-generator/master/LICENSE"
         "udash-generator.sh")
-md5sums=('625bb9b049195e331222b4d12412e7fa'
+md5sums=('5d7c9fef852af63f089a939df5681043'
          '175792518e4ac015ab6696d16c4f607e'
          '88d5a254ac9d259bf693cf45c93b2021')
 depends=('java-environment')
