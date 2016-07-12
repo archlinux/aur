@@ -2,13 +2,13 @@ post_install() {
   if type -P systemd-tmpfiles >/dev/null; then
     systemd-tmpfiles --create sudo.conf
   fi
-  printf "#####################################################################################\n"
-  printf "# I hope you weren't dumb enough to disable the root password!                      #\n"
-  printf "# Your old config is stored at /etc/sudoers.pacsave should you want to restore it.  #\n"
-  printf "# Don't forget to add 'Defaults !lecture,tty_tickets,insults' to your sudoers file. #\n"
-  printf "# Type your sudo password wrong and it will make you cry.                           #\n"
-  printf "# Also, reinstall every now and again im adding insults all the time.               #\n"
-  printf "#####################################################################################\n"
+  printf "  #####################################################################################\n"
+  printf "  # I hope you weren't dumb enough to disable the root password!                      #\n"
+  printf "  # Your old config is stored at /etc/sudoers.pacsave should you want to restore it.  #\n"
+  printf "  # Don't forget to add 'Defaults !lecture,tty_tickets,insults' to your sudoers file. #\n"
+  printf "  # Type your sudo password wrong and it will make you cry.                           #\n"
+  printf "  # Also, reinstall every now and again im adding insults all the time.               #\n"
+  printf "  #####################################################################################\n"
 }
 
 pre_upgrade() {
