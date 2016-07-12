@@ -5,12 +5,12 @@ _gitname=rigs-of-rods
 
 pkgname=$_pkgname-noangelscript-git
 pkgver=0.4.5.1.r1049.g5fb089e
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source vehicle simulator based on soft-body physics - version without Angelscript - may be required at 32 bit systems"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
 license=('GPL')
-depends=('openal' 'wxgtk' 'ogre' 'caelum-git' 'mygui' 'ogre-pagedgeometry-git' 'socketw')
+depends=('openal' 'wxgtk' 'ogre>=1.8.0' 'ogre<2.0.0' 'caelum-git' 'mygui' 'ogre-pagedgeometry-git' 'socketw')
 optdepends=('sh: for being able to run the commands rigsofrods and rigsofrods-config instead of /opt/rigsofrods/RoR and /opt/rigsofrods/RoRConfig')
 makedepends=('cmake' 'git')
 conflicts=('rigsofrods' 'rigsofrods-hg' 'rigsofrods-git')
