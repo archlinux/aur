@@ -5,7 +5,7 @@ _gitname=rigs-of-rods
 
 pkgname=$_pkgname-noangelscript-git
 pkgver=0.4.5.1.r1049.g5fb089e
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source vehicle simulator based on soft-body physics - version without Angelscript - may be required at 32 bit systems"
 arch=('i686' 'x86_64')
 url="http://rigsofrods.org"
