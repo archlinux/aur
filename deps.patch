@@ -1,0 +1,9 @@
+--- src/GeomSpace/make/deps	2016-06-11 17:25:08.000000000 +0200
++++ /home/photon/Desktop/GeomSpace/make/deps	2016-04-30 11:06:16.384909352 +0200
+@@ -1,5 +1,5 @@
+ FLTK = fltk-1.3.3
+-FLTK_DIR = $(BASEDIR)/../$(FLTK)/
++FLTK_DIR = /usr/bin/
+ 
+ DEPS = FLTK
+ 

@@ -1,0 +1,13 @@
+--- src/GeomSpace/bin/GeomSpace.desktop	2016-07-12 09:57:48.214925029 +0200
++++ src/GeomSpace/bin/GeomSpace_new.desktop	2016-07-12 10:00:01.335729107 +0200
+@@ -2,8 +2,8 @@
+ Type=Application
+ Name=GeomSpace
+ Comment=Interactive geometry software for Euclidean and non Euclidean homogeneous spaces
+-Exec=/usr/bin/GeomSpace
+-Icon=/usr/share/GeomSpace/icn/GeomSpace.png
++Exec=/usr/bin/geomspace
++Icon=/usr/share/pixmaps/geomspace.png
+ Terminal=false
+ Encoding=UTF-8
+ Categories=Application;Education;Science;Mathematics;Geometry
