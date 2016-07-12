@@ -1,7 +1,7 @@
 # Maintainer: KeyboardFire <andy@keyboardfire.com>
 pkgname=xscast-git
-pkgver=r12.12760b6
-pkgrel=2
+pkgver=r14.1b22738
+pkgrel=1
 pkgdesc='screencasts of windows with keystrokes overlayed'
 arch=('any')
 url='https://github.com/KeyboardFire/xscast'
