@@ -1,0 +1,27 @@
+--- sfs_select/sfs-select.py
++++ sfs_select/__init__.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # sfs-select.py - Steam Family Sharing source selection
+@@ -12,9 +11,9 @@
+ import sys
+ import psutil
+ 
+-import vdf
+-import binvdf
+-import gui
++from . import vdf
++from . import binvdf
++from . import gui
+ 
+ from PySide import QtCore, QtGui
+ from collections import defaultdict
+@@ -463,6 +462,3 @@
+     mainw = MainProgram()
+     mainw.show()
+     gui.exec_()
+-
+-if __name__ == '__main__':
+-    main()

@@ -1,0 +1,39 @@
+--- sfs-select/sfs-select.py
++++ sfs_select/sfs-select.py
+@@ -19,13 +18,18 @@
+ from PySide import QtCore, QtGui
+ from collections import defaultdict
+ 
++config_dir = os.path.join(os.getenv("XDG_CONFIG_HOME", os.path.join(os.getenv("HOME"), ".config")), "sfs-select")
++userdata_dir = os.getenv("XDG_DATA_HOME", os.path.join(os.getenv("HOME"), ".local/share"))
++
+ class sfs_select(object):
+-    settings_file = "sfs-settings.json"
++    settings_file = os.path.join(config_dir, "sfs-settings.json")
++    file_disabled = os.path.join(config_dir, "sfs-disabled.vdf")
+ 
+     def __init__(self):
+         self.read_settings()
+ 
+     def read_settings(self):
++        os.makedirs(config_dir, exist_ok=True)
+         newfile = False
+         try:
+             with open(self.settings_file, encoding="utf-8") as handle:
+@@ -33,7 +37,7 @@
+         except IOError:
+             self.settings = {}
+             newfile = True
+-        self.settings.setdefault("steampath", os.path.join("..", ".."))
++        self.settings.setdefault("steampath", os.path.join(userdata_dir, "Steam"))
+         self.settings.setdefault("order", [])
+         self.settings.setdefault("namecache", {})
+         self.settings.setdefault("autoquit", False)
+@@ -53,7 +57,6 @@
+             self.steam_name = "steam"
+ 
+         self.file_config = os.path.join(self.settings["steampath2"], "config", "config.vdf")
+-        self.file_disabled = "sfs-disabled.vdf"
+         if newfile:
+             self.write_settings()
+ 
