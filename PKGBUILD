@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2016.05.08
+pkgver=2016.06.16
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -10,7 +10,7 @@ makedepends=('rsync')
 optdepends=('fontconfig: xetex support'
             'ruby: pdftex support'
             'ghostscript: support for PS and EPS images'
-            'graphicmagic: support for GIF and TIFF images'
+            'graphicsmagic: support for GIF and TIFF images'
             'inkscape: support for SVG images'
             'pstoedit: support for metapost outlines for fonts'
             'zint: support for barcodes'
