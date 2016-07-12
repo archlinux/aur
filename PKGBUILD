@@ -2,7 +2,7 @@
 
 pkgname=persian-fonts
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -20,5 +20,7 @@ depends=('ttf-borna'
          'ttf-parastoo'
          'ttf-persian-hm-xs2'
          'ttf-persian-hm-ftx'
+         'ttf-iranian-sans'
+         'ttf-iranian-serif'
 )
 
