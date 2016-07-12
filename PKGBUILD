@@ -2,7 +2,7 @@
 
 pkgname=libubox-lua-git
 _gitname=libubox
-pkgver=r364.155bf39
+pkgver=r377.d3fa561
 pkgrel=1
 pkgdesc='A small utility library developed for OpenWrt containing a event loop, linked lists, blobmsg, stream buffer management, [...]'
 url='http://git.openwrt.org/?p=project/libubox.git'
