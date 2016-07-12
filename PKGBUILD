@@ -26,6 +26,7 @@ package() {
   cd "${srcdir}/alacarte-${pkgver}/build"
   make DESTDIR=${pkgdir} install
   install -D -m644 "${srcdir}/alacarte-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/alacarte-${pkgver}/data/alacarte-maps.service" "${pkgdir}/usr/lib/systemd/system/alacarte-maps.service"
 }
 
 # vim:set ts=2 sw=2 et:
