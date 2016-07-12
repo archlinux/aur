@@ -2,7 +2,7 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r439.3409c3f
+pkgver=r618.c91b15a
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(zlib)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
-source=("git://anongit.kde.org/$_gitname.git")
+source=("git+https://github.com/Kaffeine/$_gitname")
 md5sums=('SKIP')
 
 pkgver() {
