@@ -9,7 +9,7 @@ pkgname='vtk-visit'
 _pkgname=vtk
 _PKGNAME=VTK
 pkgver=6.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (legacy version for VisIt).'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
@@ -37,23 +37,23 @@ optdepends=('python2: python bindings'
             'mariadb')
 provides=('vtk=6.1.0')
 source=("http://www.vtk.org/files/release/${pkgver:0:3}/${_PKGNAME}-${pkgver}.tar.gz"
-        'mesa.patch' 'hdf5.patch' 'vtk-type.patch' 'gdal2.patch' 'gcc6.patch')
+        'mesa.patch' 'vtk-type.patch' 'gdal2.patch' 'gcc6.patch' 'ffmpeg3_compat.patch')
 sha256sums=('bd7df10a479606d529a8b71f466c44a2bdd11fd534c62ce0aa44fad91883fa34'
             '47fee3346c0d751ef58d1049c2c2160f741b3122058c0f0482ff6153c6c2f3f8'
-            'd081f31463c1cab05e8e628550c89559236813af2b7511198e5768868ad601f0'
             '32a2a771cc6b0aa8c98399fa0b0294e2a1f98c15a5d7ad9cccf2bc50c68da492'
             '57ae622a7e281887f7948f4d5a53ff0e0301bbdf70594691dd74f20f14b6e882'
-            '44ed94ca9fcc073f93938f44050a8af883f211b126fafaf860fa1be5af60c769')
+            '44ed94ca9fcc073f93938f44050a8af883f211b126fafaf860fa1be5af60c769'
+            'fb1c2b404193fce1383c5b7fb18b6fec69fc3126a488c3903a51d8aa5528a9c5')
 
 prepare() {
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
 
   # fix compilation errors:
   patch -Np1 -i "${srcdir}/mesa.patch"
-  patch -Np1 -i "${srcdir}/hdf5.patch"
   patch -Np1 -i "${srcdir}/vtk-type.patch"
   patch -Np1 -i "${srcdir}/gdal2.patch"
   patch -Np1 -i "${srcdir}/gcc6.patch"
+  patch -Np1 -i "${srcdir}/ffmpeg3_compat.patch"
 
   # Use python2
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
@@ -75,7 +75,7 @@ build() {
 
   # Flags to enable using system libs
   local vtk_system_flags=""
-  for lib in AUTHOBAHN EXPAT FREETYPE GLEW GL2PS HDF5 JPEG JSONCPP LIBXML2 MPI4PY OGGTHEORA PNG SIX TIFF TWISTED ZLIB ZOPE; do
+  for lib in AUTHOBAHN EXPAT FREETYPE GLEW GL2PS JPEG JSONCPP LIBXML2 MPI4PY OGGTHEORA PNG SIX TIFF TWISTED ZLIB ZOPE; do
     vtk_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
