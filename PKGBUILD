@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-freetype2-bootstrap
 pkgver=2.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType font rendering library (mingw-w64)"
 arch=('any')
 url="http://www.freetype.org/"
@@ -36,9 +36,9 @@ else
   # adding harfbuzz for improved OpenType features auto-hinting
   # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
   depends+=(mingw-w64-harfbuzz)
+  replaces+=(${_provides})
 fi
 provides+=(${_provides})
-replaces+=(${_provides})
 conflicts+=(${_provides})
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
