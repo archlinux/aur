@@ -3,7 +3,7 @@
 # https://github.com/victorhaggqvist/archlinux-pkgbuilds
 
 pkgname=minikube
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
@@ -11,11 +11,11 @@ license=('Apache')
 arch=('x86_64')
 makedepends=()
 
-source=(minikube::https://storage.googleapis.com/minikube/releases/v0.3.0/minikube-linux-amd64)
-sha512sums=('6ef86da03ee7ce412af288d11faed2c37710bcd9f00aa4aa0b643d72fbe061941d89eef9f10df00d26c0744c61870fde4ac02514e2cb78ef0925d725f974d94e')
+source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
+sha512sums=('ab6e79ee42c4fe8ca873c061e10d45506739ac29228b6aa8a62e53655a4152911d74440feb1320a98e43ab3f7b3815608e063da1378250030fe3659d726be8cf')
 
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
-  install -m755 minikube "$pkgdir/usr/bin/minikube"
+  install -m755 minikube_$pkgver "$pkgdir/usr/bin/minikube"
 }
