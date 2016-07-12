@@ -1,0 +1,19 @@
+pkgbase = sc-hsm-embedded-git
+	pkgdesc = sc-hsm-embedded pkcs#11 library by CardContact
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/CardContact/sc-hsm-embedded
+	arch = any
+	license = bsd
+	makedepends = git
+	depends = automake
+	depends = libtool
+	depends = libusb
+	depends = pcsclite
+	provides = sc-hsm-embedded-git
+	conflicts = sc-hsm-embedded-git
+	source = sc-hsm-embedded::git+https://github.com/CardContact/sc-hsm-embedded
+	md5sums = SKIP
+
+pkgname = sc-hsm-embedded-git
+
