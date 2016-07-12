@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network
+Exec=/usr/bin/xdg-open http://localhost:8384
+Icon=/usr/share/pixmaps/syncthing.svg
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=Syncthing
+Comment=Syncthing Web Interface

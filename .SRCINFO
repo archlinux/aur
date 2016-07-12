@@ -1,0 +1,13 @@
+pkgbase = syncthing-appmenu
+	pkgdesc = Adds Syncthing Web GUI to applications menu
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = syncthing.desktop
+	source = syncthing.svg
+	sha256sums = 17c97f58a24726c52d1771d6ccd7db70c7a707126dde8d1cf48e12caec3fe220
+	sha256sums = 519f08b9ba5d0308d62491a6788d1671208da3029af0a23940c93b4abe10728a
+
+pkgname = syncthing-appmenu
+
