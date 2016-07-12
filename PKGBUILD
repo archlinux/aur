@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=kitch
-pkgver=18.2.3
+pkgver=18.2.4
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -11,13 +11,13 @@ url="https://github.com/itchio/kitch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'p7zip')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'ruby' 'ruby-bundler')
+makedepends=('nodejs' 'nodejs-grunt-cli' 'npm')
 options=('!strip')
 install="kitch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('03ea5b4acdacff851ea3d740a0e5fc2bfe1d79a4777a3a7dc811f5d4d3d0dcba')
+sha256sums=('7a0af6acba41c514a5c3b09f66c35032698958b1498015ae939bbfd99876071d')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,18 +34,18 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}-canary"
-  export CI_BUILD_TAG="v18.2.3-canary"
+  export CI_BUILD_TAG="v18.2.4-canary"
   export CI_CHANNEL="canary"
 
-  release/ci-compile.rb
-  release/ci-generate-linux-extras.rb
+  release/ci-compile.js
+  release/ci-generate-linux-extras.js
 
   grunt -v "electron:linux-${_ELECTRON_ARCH}"
 }
 
 check() {
   cd "${srcdir}/itch-${pkgver}-canary"
-  npm test
+  node test/runner.js
 }
 
 package() {
