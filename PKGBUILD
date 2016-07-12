@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 
 pkgname=ttf-vazir
-pkgver=2_RC13
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A beautiful Persian font."
 arch=('any')
@@ -9,10 +9,10 @@ url="https://rastikerdar.github.io/vazir-font/"
 license=('custom')
 groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::https://github.com/rastikerdar/vazir-font/releases/download/v${pkgver//_/-}/vazir-font-v${pkgver//_/-}.zip")
+source=("$pkgname.zip::https://github.com/rastikerdar/vazir-font/releases/download/v${pkgver}/vazir-font-v${pkgver}.zip")
 noextract=("$pkgname.zip")
 install=$pkgname.install
-md5sums=('a3cf92638dffc7c136e73419a60be194')
+md5sums=('9c309d307ae9e17df9bdcd610ce9505c')
 
 prepare() {
   unzip -o -LL -qq $pkgname.zip -d $srcdir/$pkgname/
