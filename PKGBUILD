@@ -10,7 +10,7 @@ makedepends=('rsync')
 optdepends=('fontconfig: xetex support'
             'ruby: pdftex support'
             'ghostscript: support for PS and EPS images'
-            'graphicsmagic: support for GIF and TIFF images'
+            'graphicsmagick: support for GIF and TIFF images'
             'inkscape: support for SVG images'
             'pstoedit: support for metapost outlines for fonts'
             'zint: support for barcodes'
