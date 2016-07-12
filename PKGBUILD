@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-persian-hm-ftx
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="An improved and corrected font series derived from ttf-x2 Persian font series, Metafont and FarsiTeX fonts with Kashida feature."
 arch=('any')
@@ -11,7 +11,7 @@ groups=('persian-fonts')
 depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
 source=("$pkgname-$pkgver.7z::https://bitbucket.org/dma8hm1334/persian-hm-ftx-$pkgver/downloads/persian-hm-ftx-$pkgver.7z")
-md5sums=('2e6a861cef1fbcb24dcf2fb0e522a338')
+md5sums=('2d5a3ad31c8aab0df8bc5dc103852d5c')
 
 package() {
 	cd $srcdir/persian-hm-ftx-$pkgver
