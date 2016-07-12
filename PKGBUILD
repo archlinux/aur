@@ -1,6 +1,6 @@
 # Maintainer: Dan Milon  <dan@platform.sh>
 pkgname=platformsh-cli
-pkgver='3.3.1'
+pkgver='3.3.4'
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/platformsh/platformsh-cli/releases/download/v$pkgver/platform.phar")
 noextract=('platform.phar')
-sha1sums=('300c51300f54edaf598d42dec240303ed1f120e7')
+sha1sums=('f2908ce8e92347a6ed7e6a421500edf3994ebef7')
 
 build() {
   mv platform.phar platform
