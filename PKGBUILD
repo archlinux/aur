@@ -2,8 +2,8 @@
 # Original script by: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=5.0.24
-_build=108355
+pkgver=5.1.0
+_build=108711
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
@@ -37,36 +37,39 @@ source=(
   '10-vboxdrv.rules'
   'vboxweb.rc'
   'vboxweb.conf'
+  'do_dkms'
+  'dkms.conf'
 )
 
 
-md5sums=('1de2b51bec7741a5ea7f721f5a32d3ec'
+md5sums=('0e674d323c616636334eb9c7653727d0'
          '2d04c2e2d8c71558c910a51ec773731a'
          'fe60f9510502bea67383d9198ae8c13c'
          'c159d683ba1947290fc2ad2c64194150'
-         '3ac185709bfe688bb753c46e170d0546')
+         '3ac185709bfe688bb753c46e170d0546'
+         '31144fa409c0d7c6b464d44b2140b521'
+         '05175249e1206c491b2b36670e8db9ec')
 
 _installdir='/opt/VirtualBox'
 
 package() {
   # Check and unpack the run package via sh(1)
-  sh "VirtualBox-$pkgver-$_build-Linux_$_arch.run" --check
   echo yes | sh "VirtualBox-$pkgver-$_build-Linux_$_arch.run" --target "$srcdir" \
     --nox11 --noexec &> /dev/null
 
   # Unpack bundled files
   install -d "$pkgdir/$_installdir"
-  cd "$pkgdir/$_installdir"
-  tar -xjf "$srcdir/VirtualBox.tar.bz2"
+  tar -jxf "$srcdir/VirtualBox.tar.bz2" -C "$pkgdir/$_installdir"
 
   # Hardened build: Mark binaries suid root, create symlinks for working around
   #                 unsupported $ORIGIN/.. in VBoxC.so and make sure the
   #                 directory is only writable by the user (paranoid).
-  chmod 4511 VirtualBox VBox{SDL,Headless,NetDHCP,NetAdpCtl}
-  for _lib in VBox{VMM,REM,RT,DDU,XPCOM}.so; do
+  cd "$pkgdir/$_installdir"
+  chmod 4511 VirtualBox VBox{SDL,Headless,NetDHCP,NetNAT,NetAdpCtl,VolInfo}
+  for _lib in VBox{VMM,RT}.so; do
     ln -sf "$_installdir/$_lib" "components/$_lib"
   done
-  chmod go-w .
+  chmod go-w "$pkgdir/$_installdir"
 
   # Install the SDK
   pushd 'sdk/installer'
@@ -76,22 +79,16 @@ package() {
 
   # Install udev rules
   install -D -m 0644 "$srcdir/10-vboxdrv.rules" "$pkgdir/usr/lib/udev/rules.d/10-vboxdrv.rules"
-  # we need to move and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
+  # we need to copy and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
   # to look /opt when /opt is not mounted. This can be done until VBoxCreateUSBNode.sh doesn't
   # need more stuff from /opt
-  mv VBoxCreateUSBNode.sh "$pkgdir/usr/lib/udev/"
+  cp VBoxCreateUSBNode.sh "$pkgdir/usr/lib/udev/"
 
   # Install Fixusb script
   install -D -m 0755 "$srcdir/VBoxFixUSB" VBoxFixUSB
 
   # Patch "vboxshell.py" to use Python 2.x instead of Python 3
   sed -i 's#/usr/bin/python#\02#' vboxshell.py
-
-  # Update Arch initscripts way of life in VBox.sh
-  sed -i -e 's,sudo /etc/init.d/vboxdrv setup,/etc/rc.d/dkms start,g' \
-    "$pkgdir/$_installdir/VBox.sh"
-  sed -i -e 's,sudo /etc/init.d/vboxdrv restart,/etc/rc.d/dkms start,g' \
-    "$pkgdir/$_installdir/VBox.sh"
 
   # Install vboxweb initscript
   install -D -m 0755 "$srcdir/vboxweb.rc" "$pkgdir/etc/rc.d/vboxweb"
@@ -133,6 +130,13 @@ package() {
     cd - >/dev/null
   done
   popd
+
+  # With the relase of VBox 5.1.0, Oracle dropped DKMS from their package
+  # We will restore DKMS with the use of these config files
+  install -m 0755 "${srcdir}/do_dkms" "${pkgdir}/${_installdir}/src/vboxhost/do_dkms"
+  # Update module version
+  sed -i "s/PACKAGE_VERSION=/PACKAGE_VERSION=${pkgver}/" "${srcdir}/dkms.conf"
+  install -m 0644 "${srcdir}/dkms.conf" "${pkgdir}/${_installdir}/src/vboxhost/dkms.conf"
 
   # module sources in /usr/src
   install -d -m 0755 "${pkgdir}/usr/src"
