@@ -25,6 +25,7 @@ prepare() {
   cd "Fluid_Designer_Source"
 
   sed -i 's|set(FFMPEG_INCLUDE_DIRS ${FFMPEG}/include)|set(FFMPEG_INCLUDE_DIRS /usr/include/ffmpeg2.8)|g' CMakeLists.txt
+  sed -i 's|set(FFMPEG_LIBPATH ${FFMPEG}/lib)|set(FFMPEG_LIBPATH /usr/lib/ffmpeg2.8)|g' CMakeLists.txt
 }
 
 build() {
@@ -57,7 +58,7 @@ build() {
     -DPYTHON_LIBPATH=/usr/lib \
     -DPYTHON_LIBRARY=python3.4m \
     -DPYTHON_INCLUDE_DIRS=/usr/include/python3.4m
-  make -j4 # -j5 needs 48 GB of RAM while -j9 needs 64 GB
+  make  # -j5 needs 48 GB of RAM while -j9 needs 64 GB
 }
 
 package() {
