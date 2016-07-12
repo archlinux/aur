@@ -2,14 +2,14 @@
 
 pkgname=rtv
 pkgver=1.10.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
 url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv-git')
 makedepends=('git' 'python-setuptools')
-depends=('python-tornado' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw')
+depends=('python-tornado' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw-git')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
 md5sums=('c71eefdf21107896c2343dbfcbfb83ae')
 
