@@ -1,7 +1,7 @@
 # Maintainer: m4dz <code(at)m4dz(dot)net>
 
 pkgname=gitbook-editor
-pkgver=5.0.5
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Gitbook Editor - Write and publish books"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('custom')
 source_x86_64=("gitbook-editor-${pkgver}-linux-x64.deb::http://downloads.editor.gitbook.com/download/version/${pkgver}/linux-x64")
 source_i686=("gitbook-editor-${pkgver}-linux-ia32.deb::http://downloads.editor.gitbook.com/download/version/${pkgver}/linux-ia32")
 
-sha256sums_x86_64=('576ea0cec4370aafbe4ccdaf164a0551e531078f6ac30bbb7b9d074a9fc8e390')
-sha256sums_i686=('00a74ca22ea7a1f78cacdbe241c45a8e60503f023c8221ebfe66c57c41d550fe')
+md5sums_i686=('a2ea4cb8f190a6c711876697de341dec')
+md5sums_x86_64=('def500a99b7cdb82f1d4ef93c69f5c48')
 
 prepare() {
     bsdtar -xJf data.tar.xz
