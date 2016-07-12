@@ -1,13 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-counterparty-lib
-pkgver=9.54.0
+pkgver=9.55.0
 pkgrel=1
 pkgdesc="Counterparty Protocol Reference Implementation"
 arch=('any')
 depends=('python'
          'python-appdirs'
          'python-apsw'
+         'python-cachetools'
          'python-colorlog'
          'python-crypto'
          'python-dateutil'
@@ -29,8 +30,17 @@ groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterparty-lib"
 license=('MIT')
 options=('!emptydirs')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/v$pkgver)
-sha256sums=('5038dc973c4bed599f98450e1c6aa40421ae08a79336d6cf535a301aac39fdc6')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-lib/tar.gz/$pkgver
+        setup.py.patch)
+sha256sums=('f6eb9da1961dec5f5bb805fc9a90425ea429f3177abf16742af05adb63104dc8'
+            'c5d9f4707d64718c1d19e1b08554c3e6848801b44fc650a35210cfdb441a6e98')
+
+prepare() {
+  cd "$srcdir/${pkgname#python-}-$pkgver"
+
+  msg2 'Fixing setup.py...'
+  patch -p1 < "$srcdir/setup.py.patch"
+}
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
