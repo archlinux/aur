@@ -1,6 +1,6 @@
 pkgbase = apache-spark-git
 	pkgdesc = fast and general engine for large-scale data processing
-	pkgver = 2.0.0.SNAPSHOT.20160708.16957
+	pkgver = 2.1.0.SNAPSHOT.20160712.16979
 	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
@@ -25,6 +25,7 @@ pkgbase = apache-spark-git
 	source = spark-daemon-run.sh
 	source = run-master.sh
 	source = run-slave.sh
+	source = apache-spark.sh
 	md5sums = SKIP
 	md5sums = 9ffe1f9c4bb2ea4e5a75ab6469fe76d4
 	md5sums = 8d34bd4cc946f46625597ca606da8ab6
@@ -32,6 +33,7 @@ pkgbase = apache-spark-git
 	md5sums = 8ff953f0436209b6190add59703a34f0
 	md5sums = 028472b82e9def7d5d409f008d064fe2
 	md5sums = 99115eedc453c9b8ca04cca2e32e4537
+	md5sums = 9b81f0be89236ffcfaeb9dc2c3bddf4a
 
 pkgname = apache-spark-git
 

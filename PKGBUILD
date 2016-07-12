@@ -3,7 +3,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark-git
-pkgver=2.0.0.SNAPSHOT.20160708.16957
+pkgver=2.1.0.SNAPSHOT.20160712.16979
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -19,21 +19,22 @@ optdepends=('python2: python2 support for pyspark'
             'r: support for sparkR'
             'rsync: support rsync hadoop binaries from master')
 install=apache-spark.install
-#'git://github.com/apache/spark.git'
 source=('git://git.apache.org/spark.git'
         'apache-spark-master.service'
         'apache-spark-slave@.service'
         'spark-env.sh'
         'spark-daemon-run.sh'
         'run-master.sh'
-        'run-slave.sh')
+        'run-slave.sh'
+        'apache-spark.sh')
 md5sums=( SKIP
          '9ffe1f9c4bb2ea4e5a75ab6469fe76d4'
          '8d34bd4cc946f46625597ca606da8ab6'
          'f8cc449543df418b8adfcc36a3afb384'
          '8ff953f0436209b6190add59703a34f0'
          '028472b82e9def7d5d409f008d064fe2'
-         '99115eedc453c9b8ca04cca2e32e4537')
+         '99115eedc453c9b8ca04cca2e32e4537'
+         '9b81f0be89236ffcfaeb9dc2c3bddf4a')
 backup=('etc/apache-spark/spark-env.sh')
 
 pkgver() {
@@ -52,32 +53,24 @@ build() {
 package() {
         cd "$srcdir/spark"
 
-        install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-spark"
+        # install files to spark home (/opt/apache-spark)
+        sparkhome="$pkgdir/opt/apache-spark"
+        jarpath="assembly/target/scala-2.11/jars"
+        install -d "$sparkhome"
+        cp -r "$srcdir/spark"/{bin,conf,data,docs,examples,licenses,python,R,sbin,CONTRIBUTING.md,LICENSE,NOTICE,README.md} "$pkgdir/opt/apache-spark/"
+        install -D "$srcdir/spark/$jarpath"/* -t "$sparkhome/$jarpath"
+        rm -rf "$sparkhome/bin"/*.cmd
 
-        cp -r "$srcdir/spark" "$pkgdir/opt/apache-spark/"
+        # install files to system
+        install -d "$pkgdir/usr/bin" "$pkgdir/var/log/apache-spark"
+        ln -s /opt/apache-spark/bin/$(ls "$sparkhome/bin") "$pkgdir/usr/bin"
+        install -D "$srcdir"/*.service -t "$pkgdir/usr/lib/systemd/system/"
+        install -D "$srcdir"/{run-master.sh,run-slave.sh,spark-daemon-run.sh} "$pkgdir/opt/apache-spark/sbin/"
+        install -D "$srcdir/spark/conf"/* "$srcdir/spark-env.sh" -t "$pkgdir/etc/apache-spark"
+        install -D "$srcdir/apache-spark.sh" "$pkgdir/etc/profile.d/apache-spark.sh"
 
-        cd "$pkgdir/usr/bin"
-        for binary in beeline pyspark sparkR spark-class spark-shell spark-sql spark-submit load-spark-env.sh; do
-                binpath="/opt/apache-spark/bin/$binary"
-                ln -s "$binpath" $binary
-                sed -i 's|^export SPARK_HOME=.*$|export SPARK_HOME=/opt/apache-spark|' "$pkgdir/$binpath"
-        done
-
-        mkdir -p $pkgdir/etc/profile.d
-        echo '#!/bin/sh' > $pkgdir/etc/profile.d/apache-spark.sh
-        echo 'SPARK_HOME=/opt/apache-spark' >> $pkgdir/etc/profile.d/apache-spark.sh
-        echo 'export SPARK_HOME' >> $pkgdir/etc/profile.d/apache-spark.sh
-        chmod 755 $pkgdir/etc/profile.d/apache-spark.sh
-
-        install -Dm644 "$srcdir/apache-spark-master.service" "$pkgdir/usr/lib/systemd/system/apache-spark-master.service"
-        install -Dm644 "$srcdir/apache-spark-slave@.service" "$pkgdir/usr/lib/systemd/system/apache-spark-slave@.service"
-        install -Dm644 "$srcdir/spark-env.sh" "$pkgdir/etc/apache-spark/spark-env.sh"
-        for script in run-master.sh run-slave.sh spark-daemon-run.sh; do
-            install -Dm755 "$srcdir/$script" "$pkgdir/opt/apache-spark/sbin/$script"
-        done
-        install -Dm644 "$srcdir/spark/conf"/* "$pkgdir/etc/apache-spark"
-
-        cd "$pkgdir/opt/apache-spark"
+        # lines files in system to spark home
+        cd "$sparkhome"
         mv conf conf-templates
         ln -sf "/etc/apache-spark" conf
         ln -sf "/var/lib/apache-spark/work" .
