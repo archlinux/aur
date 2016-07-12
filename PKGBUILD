@@ -1,15 +1,16 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools-git
-pkgver=1.1.27.geda1fdb
+pkgver=1.4.0.g418235a
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
+groups=('xde-git')
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/xde-ctools"
 license=('GPL')
 provides=('xde-ctools')
 conflicts=('xde-ctools')
-depends=('libsm' 'libwnck+-git' 'gtk2')
+depends=('libxss' 'libnotify' 'libxxf86misc' 'libsm' 'libwnck+' 'gtk2')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/bbidulock/xde-ctools.git")
 md5sums=('SKIP')
