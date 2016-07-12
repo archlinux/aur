@@ -1,10 +1,10 @@
 # Maintainer: Sebastian Lau <lauseb644@gmail.com>
-# Contributor: Serede Sixty Six <serede.dev@gmail.com>
+# Contributor: Serede Sixty Six <serede.dev@gmail.com>, ptrxyz <ptrxyz@gmx.de>
 
 pkgname=nemo-terminal
 pkgver=3.0.1
 #_mintrel=betsy
-pkgrel=1
+pkgrel=2
 pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
 arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
@@ -26,10 +26,10 @@ prepare() {
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
   msg2 "Patching for API change from vte 2.90 to vte 2.91..."
-  sed -i 's/2.90/2.91/' "${srcdir}/${pkgname}/src/nemo_terminal.py"
+  sed -i 's/2\.90/2.91/' "${srcdir}/${pkgname}/src/nemo_terminal.py"
   sed -i 's/fork_command_full/spawn_sync/' "${srcdir}/${pkgname}/src/nemo_terminal.py"
-  sed -i 's/self.vscrollbar =/#self.vscrollbar =/g' "${srcdir}/${pkgname}/src/nemo_terminal.py"
-  sed -i 's/self.hbox.pack_end/#self.hbox.pack_end/g' "${srcdir}/${pkgname}/src/nemo_terminal.py"
+  sed -i 's/self.vscrollbar =/pass #self.vscrollbar =/g' "${srcdir}/${pkgname}/src/nemo_terminal.py"
+  sed -i 's/self.hbox.pack_end/pass #self.hbox.pack_end/g' "${srcdir}/${pkgname}/src/nemo_terminal.py"
 
 }
 
