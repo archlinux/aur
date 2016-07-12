@@ -3,7 +3,7 @@
 pkgname=gothub
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts)"
+pkgdesc="Command-line app to create and edit releases on GitHub (and upload artifacts), fork of github-release."
 arch=('i686' 'x86_64')
 url="https://github.com/itchio/${pkgname}"
 makedepends=('go')
