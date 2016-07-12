@@ -1,4 +1,4 @@
-From 27d96091b2bb0a825cbd62a332ef918f39c6126f Mon Sep 17 00:00:00 2001
+From 6a8bbe968954bcc54fdfcd5a71c7632370e3066a Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:43:07 +0200
 Subject: [PATCH 2/4] Enable subpixel rendering
@@ -8,7 +8,7 @@ Subject: [PATCH 2/4] Enable subpixel rendering
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 4970945..ab407e3 100644
+index 2556c64d9d6c0838..8e58403529f597e5 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -92,7 +92,7 @@ FT_BEGIN_HEADER
@@ -21,5 +21,5 @@ index 4970945..ab407e3 100644
  
    /*************************************************************************/
 -- 
-2.6.0
+2.9.0
 

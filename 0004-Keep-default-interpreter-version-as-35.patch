@@ -1,0 +1,29 @@
+From 88e7474320b8d2b5333e276b8b1771bc2690c43f Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 12 Jul 2016 12:47:57 +0200
+Subject: [PATCH 4/4] Keep default interpreter version as 35
+
+---
+ src/truetype/ttobjs.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/truetype/ttobjs.c b/src/truetype/ttobjs.c
+index d89f92e94d0e816b..efca66fc21c0287a 100644
+--- a/src/truetype/ttobjs.c
++++ b/src/truetype/ttobjs.c
+@@ -1292,12 +1292,6 @@
+     const char *envval;
+ 
+     driver->interpreter_version = TT_INTERPRETER_VERSION_35;
+-#ifdef TT_SUPPORT_SUBPIXEL_HINTING_INFINALITY
+-    driver->interpreter_version = TT_INTERPRETER_VERSION_38;
+-#endif
+-#ifdef TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL
+-    driver->interpreter_version = TT_INTERPRETER_VERSION_40;
+-#endif
+ 
+     errno = 0;
+     envval = getenv( "FT2_SUBPIXEL_HINTING" );
+-- 
+2.9.0
+
