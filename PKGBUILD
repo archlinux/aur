@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=counterparty-cli
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Counterparty Protocol Command‐Line Interface"
 arch=('any')
@@ -22,21 +22,28 @@ groups=('counterparty')
 url="https://github.com/CounterpartyXCP/counterparty-cli"
 license=('MIT')
 options=(!emptydirs)
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/$pkgname/tar.gz/v$pkgver)
-sha256sums=('2bf762c1fb9f89ef35c5d0fe73d45de6c7f704a5500432e5432af24c9971fe90')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/CounterpartyXCP/$pkgname/tar.gz/$pkgver)
+sha256sums=('f1eef35ca55d95de78d23348c245924a08314ffd4b139cc1d2424d41618abbc1')
 provides=('counterparty-cli' 'counterparty-client' 'counterparty-server')
 conflicts=('counterparty-client' 'counterparty-server')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Fixing setup.py...'
+  sed -i "/'setup_requires':.*/d" setup.py
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 }
