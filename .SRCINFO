@@ -1,0 +1,13 @@
+pkgbase = eyesleep
+	pkgdesc = Rest your eyes using the 20-20-20 rule
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/intersimone999/eyesleep
+	arch = any
+	license = GPL
+	depends = java-environment
+	source = https://github.com/intersimone999/eyesleep/releases/download/v1.0/Eyesleep.aur.zip
+	md5sums = b88ea45647814e6c83af2836a94a62fe
+
+pkgname = eyesleep
+
