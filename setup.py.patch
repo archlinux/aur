@@ -1,0 +1,21 @@
+diff --git a/setup.py b/setup.py
+index f0724c6..3899276 100644
+--- a/setup.py
++++ b/setup.py
+@@ -245,15 +245,8 @@ setup_options = {
+     'provides': ['counterpartylib'],
+     'packages': find_packages(),
+     'zip_safe': False,
+-    'setup_requires': ['appdirs'],
+     'install_requires': required_packages,
+-    'include_package_data': True,
+-    'cmdclass': {
+-        'install': install,
+-        'move_old_db': move_old_db,
+-        'install_apsw': install_apsw,
+-        'install_serpent': install_serpent
+-    }
++    'include_package_data': True
+ }
+ 
+ if sys.argv[1] == 'sdist':
