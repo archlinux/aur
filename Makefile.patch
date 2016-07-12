@@ -1,0 +1,12 @@
+--- a/sming/Sming/Makefile	2016-07-12 13:51:38.265837000 +0200
++++ b/sming/Sming/Makefile	2016-07-12 22:35:44.345706658 +0200
+@@ -15,3 +15,3 @@
+ ## MacOS / Linux:
+-# ESP_HOME = /opt/esp-open-sdk
++ESP_HOME = /opt/esp-open-sdk
+ 
+@@ -22,3 +22,3 @@
+ # MacOS / Linux
+-# SMING_HOME = /opt/esp-open-sdk
++SMING_HOME = /opt/sming/Sming
+ 
