@@ -9,9 +9,9 @@ post_upgrade() {
   your environment, for example /etc/environment or ~/.pam_environment .
 
   Available settings:
-      FT2_SUBPIXEL_HINTING=0  # Classic mode
+      FT2_SUBPIXEL_HINTING=0  # Classic mode (default in 2.6)
       FT2_SUBPIXEL_HINTING=1  # Infinality mode
-      FT2_SUBPIXEL_HINTING=2  # Default mode
+      FT2_SUBPIXEL_HINTING=2  # Minimal mode (default in 2.7)
 MSG
   fi
 }
