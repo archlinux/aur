@@ -24,7 +24,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20160711.r2791.31efcfd
+pkgver=20160712.r2794.f38acb9
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -105,6 +105,10 @@ package() {
   # Remove init.d-related stuff.
   cd "$pkgdir/etc"
   rm -rf default init.d
+  # Remove extra icons. DEBUG icon seems dysfunctional, K12 mode is not
+  # supported by purr-data yet.
+  cd "$pkgdir/usr/share/applications"
+  rm -f pd-l2ork-debug.desktop pd-l2ork-k12*.desktop
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
   cd "$pkgdir/usr"
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
