@@ -1,6 +1,15 @@
 --- a/lua/CMakeLists.txt
 +++ b/lua/CMakeLists.txt
-@@ -25,7 +25,7 @@
+@@ -15,7 +15,7 @@ IF(NOT LUA_CFLAGS)
+ 	ENDIF()
+ ENDIF()
+ 
+-ADD_DEFINITIONS(-Os -Wall -Werror --std=gnu99 -g3 -I.. ${LUA_CFLAGS})
++ADD_DEFINITIONS(-Os -Wall -Werror -Wno-error=implicit-function-declaration --std=gnu99 -g3 -I.. ${LUA_CFLAGS})
+ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/..)
+ LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/..)
+ 
+@@ -25,7 +25,7 @@ ENDIF(APPLE)
  
  IF(NOT LUAPATH)
  	EXECUTE_PROCESS(

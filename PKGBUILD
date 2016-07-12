@@ -2,7 +2,7 @@
 
 pkgname=ubus-lua-git
 _gitname=ubus
-pkgver=r251.fcf5d8a
+pkgver=r257.053be7d
 pkgrel=1
 pkgdesc='An embedded bus system developed for OpenWrt. It is like dbus but simple and small.'
 url='http://git.openwrt.org/?p=project/ubus.git;a=summary'
