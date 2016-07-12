@@ -2,7 +2,7 @@
 
 pkgname=rpcd-git
 _gitname=rpcd
-pkgver=r129.73aea9b
+pkgver=r131.23417e9
 pkgrel=1
 pkgdesc='OpenWrt ubus RPC backend server'
 url='http://git.openwrt.org/?p=project/rpcd.git;a=summary'
