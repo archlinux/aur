@@ -1,5 +1,4 @@
 # Maintainer: Dennis Holierhoek <dennis.hh@hotmail.com>
-# Contributor: Dennis Holierhoek <dennis.hh@hotmail.com>
 
 _pkgname=rigsofrods
 _gitname=rigs-of-rods
