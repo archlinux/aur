@@ -1,0 +1,29 @@
+diff --git a/src/HP-15C.tcl b/src/HP-15C.tcl
+index 7d6acda..e9b6544 100644
+--- a/HP-15C.tcl
++++ b/HP-15C.tcl
+@@ -3084,22 +3084,7 @@ proc help { topic } {
+ 
+   global APPDATA HP15 errorInfo
+ 
+-  switch $topic {
+-    simulator {
+-# Differentiate between running from a starpack or from wish
+-      if {[info exists ::starkit::topdir]} {
+-        set helpdir [file dirname $::starkit::topdir]
+-      } else {
+-        set helpdir [file dirname $::argv0]
+-      }
+-      if {[string compare $helpdir "."] == 0} {set helpdir [pwd]}
+-      set helpfile "$helpdir/doc/index.htm"
+-    }
+-    prgm {
+-      set helpfile "$HP15(prgmdir)/$HP15(prgmname).htm"
+-    }
+-  }
+-  catch {set helpfile [file nativename [lindex [glob "$helpfile*"] 0]]}
++  set helpfile "/usr/share/doc/hp15c/index.htm"
+ 
+   if {[string length $HP15(browser)] == 0} {
+     set msg [mc help.nobrowser]
+---
