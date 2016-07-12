@@ -2,9 +2,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=5.1
-_gromacsver=5.1
-_plumedver=2.2.0
+pkgver=5.1.2
+_gromacsver=5.1.2
+_plumedver=2.2.3
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -14,8 +14,10 @@ depends=('plumed' 'fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('1630297e853ff9be0767cf348f86effafb1dc1a9')
+sha1sums=('4a9a77711206c8cd0e1f4dd31f2edc569589e9dc')
 
+export CC=gcc-5
+export CXX=g++-5
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -24,7 +26,7 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
 prepare() {
   msg2 "Patching plumed for gromacs"
   cd ${srcdir}/gromacs-${pkgver}
-  plumed patch -p -e gromacs-5.1.0 --shared
+  plumed patch -p -e gromacs-${_gromacsver} --shared
 }
 
 build() {
@@ -32,13 +34,12 @@ build() {
 
   msg2 "Building the single precision files"
   cd ${srcdir}/single
-  cmake ../gromacs-5.1 \
+  cmake ../gromacs-${_gromacsver} \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=OFF \
         -DGMX_BUILD_MDRUN_ONLY=ON
   make
 
-#        -DREGRESSIONTEST_DOWNLOAD=ON \
 }
 
 check () {

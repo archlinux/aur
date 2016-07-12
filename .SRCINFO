@@ -1,6 +1,6 @@
 pkgbase = gromacs-plumed
 	pkgdesc = GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)
-	pkgver = 5.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = http://www.gromacs.org/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = gromacs-plumed
 	depends = libsm
 	depends = libx11
 	options = !libtool
-	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.tar.gz
-	sha1sums = 1630297e853ff9be0767cf348f86effafb1dc1a9
+	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.2.tar.gz
+	sha1sums = 4a9a77711206c8cd0e1f4dd31f2edc569589e9dc
 
 pkgname = gromacs-plumed
 
