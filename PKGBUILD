@@ -4,7 +4,7 @@
 
 pkgname=apache-spark-git
 pkgver=2.1.0.SNAPSHOT.20160712.16979
-pkgrel=1
+pkgrel=2
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
@@ -47,7 +47,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/spark"
-    build/mvn -DskipTests clean package
+    #build/mvn -DskipTests clean package
 }
 
 package() {
@@ -63,7 +63,7 @@ package() {
 
         # install files to system
         install -d "$pkgdir/usr/bin" "$pkgdir/var/log/apache-spark"
-        ln -s /opt/apache-spark/bin/$(ls "$sparkhome/bin") "$pkgdir/usr/bin"
+        for i in $(ls "$sparkhome/bin");do ln -sf /opt/apache-spark/bin/$i "$pkgdir/usr/bin"; done
         install -D "$srcdir"/*.service -t "$pkgdir/usr/lib/systemd/system/"
         install -D "$srcdir"/{run-master.sh,run-slave.sh,spark-daemon-run.sh} "$pkgdir/opt/apache-spark/sbin/"
         install -D "$srcdir/spark/conf"/* "$srcdir/spark-env.sh" -t "$pkgdir/etc/apache-spark"
