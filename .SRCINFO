@@ -1,7 +1,7 @@
 pkgbase = rigsofrods-noangelscript-git
 	pkgdesc = An open source vehicle simulator based on soft-body physics - version without Angelscript - may be required at 32 bit systems
 	pkgver = 0.4.5.1.r1049.g5fb089e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rigsofrods.org
 	arch = i686
 	arch = x86_64
