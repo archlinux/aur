@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -15,18 +15,25 @@ source=(
   elm-make-${pkgver}.zip::https://github.com/elm-lang/elm-make/archive/${pkgver}.zip
   elm-reactor-${pkgver}.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
   elm-repl-${pkgver}.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
+  https://github.com/elm-lang/elm-compiler/pull/1431.patch
 )
 sha256sums=('3daed1d5099e539945ed2c92cc37c46efed48b32e0adeb37e81788bf400dbd98'
             'fbf34165dc22c1cc8b39750900d6c8644e7d7916377fffb6ddc2ea2eef263637'
             'b948c211e893003e5d55f9ecb2fee8bb44b8d3e04bf778764952d8fd908766b3'
             'b82e9e3220c5edc85321c0d9e524c237e4f2bed61b746e6bfb95af1fb1a53daa'
-            '4f32cd19ae6e85a56703723eb5ba23012109c1571e59c37465eddcfe92d8734b')
+            '4f32cd19ae6e85a56703723eb5ba23012109c1571e59c37465eddcfe92d8734b'
+            '4f11e645b4190eb3b0cbea7c641d4b28b307b811889f3b8206f45f6e53a5575b')
 
 prepare() {
   cd "$srcdir"
 
   # This is currently necessary to build with GHC 8, see https://github.com/elm-lang/elm-compiler/issues/1397
   echo 'allow-newer: aeson,base,HTTP,time,transformers' > cabal.config
+
+  # GHC 8 compat
+  # https://github.com/Homebrew/homebrew-core/blob/8e62a010dbaf0f9626daa2cfae5d2aeea01a65ee/Formula/elm.rb#L43
+  cd elm-compiler-${pkgver}
+  patch -p1 < "$srcdir"/1431.patch
 }
 
 # This does not actually use the build script in the elm-lang/elm-platform
