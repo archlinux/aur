@@ -1,0 +1,16 @@
+pkgbase = tlsobs-git
+	pkgdesc = An observatory for TLS configurations, X509 certificates, and more.
+	pkgver = 20160712+9a8a92b
+	pkgrel = 1
+	url = https://github.com/mozilla/tls-observatory
+	arch = x86_64
+	arch = i686
+	license = MPL
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = tls-observatory::git+https://github.com/mozilla/tls-observatory
+	sha256sums = SKIP
+
+pkgname = tlsobs-git
+
