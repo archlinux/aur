@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch. It includes a tokenizer, part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser."
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('ticcutils>=0.13' 'ucto>=0.9.0' 'libfolia>=1.3.0' 'icu' 'libxml2'  'frogdata>=0.10' 'timbl' 'mbt')
+depends=('ticcutils>=0.13' 'ucto>=0.9.0' 'libfolia>=1.3' 'icu' 'libxml2'  'frogdata>=0.10' 'timbl' 'mbt')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
 _gituser="LanguageMachines"
