@@ -6,7 +6,7 @@ pkgname=('strongswan-devel'
          'python-vici-devel'
          'python2-vici-devel'
          'ruby-vici-devel')
-pkgver=5.4.1dr4
+pkgver=5.5.0rc1
 pkgrel=1
 
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ url='http://www.strongswan.org'
 
 makedepends=('doxygen' 'gperf' 'systemd' 'unbound' 'pcsclite' 'libmariadbclient'
              'libnm-glib' 'python-setuptools' 'python2-setuptools' 'ruby')
-sha256sums=('c5a1c9e89b1324277df6bfd8123a91aafe25d755bd878d65da60f62f753e3d4e'
+sha256sums=('6edcce6c97ad5292b17ed010c80d9729c337662b41b8365981c2505cd242b98e'
             'SKIP'
             '59b410cf04e7ff599a097c8f2f291f4cc836e5cb28ecce98df45a41f61a516d6')
 source=("https://download.strongswan.org/strongswan-$pkgver.tar.bz2"
