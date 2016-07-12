@@ -2,19 +2,20 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=cloog-git
+_origpkgname=cloog
 pkgver=0.18.4
 pkgrel=2
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64')
 url="http://www.bastoul.net/cloog/"
 license=('GPL')
-depends=('isl')
+depends=('')
 source=('cloog-0.18.4::git+http://repo.or.cz/cloog.git#branch=master')
 provides=('isl15' 'cloog')
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_origpkgname}-${pkgver}"
   git submodule init
   git submodule update --recursive
   sh autogen.sh
@@ -23,13 +24,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_origpkgname}-${pkgver}"
   # There are certain race conditions on running the tests, so we restrict
   # it to one job (one CPU core).
   make -j1 check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_origpkgname}-${pkgver}"
   make DESTDIR=$pkgdir/ install
 }
