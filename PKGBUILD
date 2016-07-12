@@ -6,23 +6,16 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-yoga900               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.4.15
-#_patchname=patch-4.4-rc8
 pkgver=4.4.15
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
-        # the main kernel config files
         'config' 'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
         'yoga900-touchpad_4.4rc7.patch')
@@ -41,62 +34,27 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
-  # mainline: not needed
-  # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # mainline: add patch
-  # patch -p1 -i "${srcdir}/${_patchname}" || true
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
-
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
   # Patch for yoga900 touchpad via Thomas Meyer
   patch -Np1 -i ${srcdir}/yoga900-touchpad_4.4rc7.patch
-  # set extraversion to pkgrel
-  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
   make olddefconfig
-  # ... or manually edit .config
-
-  # get kernel version
   make prepare
-
-  # rewrite configuration
   yes "" | make config >/dev/null
 }
-
 build() {
   cd "${srcdir}/${_srcname}"
-
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
-
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
@@ -104,11 +62,8 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
-
   cd "${srcdir}/${_srcname}"
-
   KARCH=x86
-
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
   _basekernel=${_kernver%%-*}
@@ -153,7 +108,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -297,5 +252,3 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
