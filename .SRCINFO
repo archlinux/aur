@@ -1,0 +1,14 @@
+pkgbase = latexrun-git
+	pkgdesc = A 21st century LaTeX wrapper
+	pkgver = r134.38ff6ec
+	pkgrel = 1
+	url = https://github.com/aclements/latexrun
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git://github.com/aclements/latexrun.git
+	sha256sums = SKIP
+
+pkgname = latexrun-git
+
