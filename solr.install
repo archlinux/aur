@@ -1,19 +1,30 @@
-post_install(){
-  groupadd solr &>/dev/null
-  useradd -g solr -d /var/lib/solr -s /bin/false solr &>/dev/null
-  chown -R solr:solr var/lib/solr etc/solr &>/dev/null
+print_core_message() {
+  cat <<EOT
+Start the solr service first!
+  $ sudo systemctl restart solr
+
+Then, create new Solr core(s) from the command line:
+  $ sudo -u solr -s /bin/bash
+  $ cd
+  $ bin/solr create_core -c new_core
+EOT
 }
 
-post_upgrade(){
-  getent group solr >/dev/null 2>&1 || groupadd solr &>/dev/null
-  getent passwd solr >/dev/null 2>&1 || useradd -g solr -d /var/lib/solr -s /bin/false solr &>/dev/null
+install_solr_user() {
+  if ! getent group solr >/dev/null; then
+    groupadd -g 114 solr
+  fi
+  if ! getent passwd solr >/dev/null; then
+    useradd -c 'Apache Solr user' -u 114 -g solr -d '/opt/solr' -s /bin/bash solr
+    passwd -l solr >/dev/null
+  fi
 }
 
-post_remove(){
-  if getent passwd solr >/dev/null 2>&1; then
-    userdel solr
-  fi
-  if getent group solr >/dev/null 2>&1; then
-    groupdel solr
-  fi
+post_install() {
+  print_core_message
+  install_solr_user
+}
+
+post_upgrade() {
+  post_install $1
 }

@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!solr.install
+!solr.service
