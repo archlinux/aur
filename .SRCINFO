@@ -14,6 +14,7 @@ pkgbase = gromacs-plumed
 	depends = libxml2
 	depends = libsm
 	depends = libx11
+	depends = gcc5
 	options = !libtool
 	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.2.tar.gz
 	sha1sums = 4a9a77711206c8cd0e1f4dd31f2edc569589e9dc
