@@ -1,24 +1,27 @@
 pkgbase = uci-lua-git
 	pkgdesc = C library for the Unified Configuration Interface (UCI)
-	pkgver = r482.2cd94fd
+	pkgver = r491.e1bf435
 	pkgrel = 1
-	url = http://nbd.name/gitweb.cgi?p=uci.git
+	url = http://git.openwrt.org/?p=project/uci.git
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = LGPLv2.1
-	license = GPLv2
-	depends = libubox-lua-git
-	depends = lua51
+	license = LGPLv2.1 GPLv2
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
 	makedepends = pkg-config
+	depends = libubox-lua-git
+	depends = lua51
 	provides = uci
 	conflicts = uci
 	conflicts = uci-git
-	replaces = uci
+	source = git://git.openwrt.org/project/uci.git
+	source = 001-lua-version.patch
+	md5sums = SKIP
+	md5sums = 34e0767e6d1df56d188b1e18d91ef46f
 
 pkgname = uci-lua-git
+
