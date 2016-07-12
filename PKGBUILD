@@ -1,5 +1,5 @@
-# Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
-#
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Arthur Borsboom <arthurborsboom@gmail.com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
@@ -15,18 +15,11 @@
 #
 # Original credits go to Edgar Hucek <gimli at dark-green dot com>
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
-#
-# To build a specific commit without having to clone the whole repository
-#   set "pkgver" as commit sha and "_gitver" as "$pkgver".
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
-_gitname=xbmc
-
-pkgver=16.0
-_gitver=$pkgver-Jarvis
-
-_pkgsrcname=$_gitname-$_gitver
+pkgver=17.0a2
+_codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://xbmc.org"
@@ -38,20 +31,20 @@ makedepends=(
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'lame'  'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcrossguid-git' 'kodi-devel-libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libsamplerate' 'libssh'
-  'libva' 'libvdpau' 'libvorbis' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'python2-pillow'
+  'libva' 'libvdpau' 'libxrandr' 'libxslt' 'nasm' 'python2-pillow'
   'python2-simplejson' 'rtmpdump' 'sdl2' 'shairplay' 'smbclient' 'swig' 'taglib'
   'tinyxml' 'unzip' 'upower' 'xorg-xdpyinfo' 'yajl' 'zip'
 )
 
-source=("https://github.com/xbmc/xbmc/archive/$_gitver.tar.gz")
-sha256sums=('0421ea1337cdee674f8a36d995f54152b5ddc4100e53410b3aeeb3b3f7d53946')
+source=("https://github.com/xbmc/xbmc/archive/${pkgver}-${_codename}.tar.gz")
+sha256sums=('271c08e25a6946c35293127a51241de459956d71c190635c057fcbfafc87fc33')
 
 _prefix='/usr'
 
 prepare() {
   msg "Starting make..."
 
-  cd "${srcdir}/$_pkgsrcname"
+  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
 
   find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
@@ -67,7 +60,7 @@ install:' -i tools/EventClients/Makefile.in
 }
 
 build() {
-  cd "${srcdir}/$_pkgsrcname"
+  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
 
   msg "Starting make..."
 
@@ -86,7 +79,7 @@ build() {
 
   msg2 "Configuring Kodi"
   export PYTHON_VERSION=2  # external python v2
-  ./configure --prefix=$_prefix --exec-prefix=$_prefix \
+  ./configure --prefix=${_prefix} --exec-prefix=${_prefix} \
     --disable-optimizations \
     --enable-avahi \
     --enable-libbluray \
@@ -102,12 +95,13 @@ package_kodi-devel() {
   pkgdesc="Kodi Media Center monthly development releases"
   provides=('xbmc' 'kodi')
   conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn' 'xbmc-git-xvba' 'xbmc-git' 'kodi' 'kodi-git')
+  install="${pkgname}.install"
 
   depends=(
     'bluez-libs' 'libcrossguid-git' 'curl' 'dcadec-git' 'glew' 'hicolor-icon-theme' 'lame'
     'libaacs' 'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
-    'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau' 'libvorbis'
-    'libxrandr' 'libxslt' 'lzo' 'mesa' 'python2-pillow' 'python2-simplejson'
+    'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau'
+    'libxrandr' 'libxslt' 'python2-pillow' 'python2-simplejson'
     'rtmpdump' 'sdl2' 'smbclient' 'taglib' 'tinyxml' 'xorg-xdpyinfo' 'yajl'
   )
 
@@ -172,23 +166,22 @@ package_kodi-devel() {
     'unzip: Archives support'
     'upower: Display battery level'
   )
-  install="$pkgname.install"
 
-  cd $_pkgsrcname
-  msg2 "Running make install" 
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
+  msg2 "Running make install"
+  make DESTDIR="${pkgdir}" install
 
   # Tools
   msg2 "Tools"
-  install -Dm755 $srcdir/$_pkgsrcname/tools/TexturePacker/TexturePacker \
-    ${pkgdir}${_prefix}/lib/kodi/
+  install -Dm755 "${srcdir}/xbmc-${pkgver}-${_codename}/tools/TexturePacker/TexturePacker" \
+    "${pkgdir}${_prefix}/lib/kodi/"
 
   # Licenses
   msg2 "Copy licenses"
   install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
   for licensef in LICENSE.GPL copying.txt; do
-    mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
-      ${pkgdir}${_prefix}/share/licenses/${pkgname}
+    mv "${pkgdir}${_prefix}/share/doc/kodi/${licensef}" \
+      "${pkgdir}${_prefix}/share/licenses/${pkgname}"
   done
 }
 
@@ -198,7 +191,7 @@ package_kodi-devel-eventclients() {
   conflicts=('kodi-eventclients' 'kodi-eventclients-devel')
   replaces=('kodi-eventclients-devel')
 
-  cd "$srcdir/$_pkgsrcname"
+  cd "${srcdir}/xbmc-${pkgver}-${_codename}"
 
-  make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
+  make DESTDIR="${pkgdir}" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
 }
