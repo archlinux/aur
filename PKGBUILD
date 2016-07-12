@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/cybre/${pkgname}"
 md5sums=('617e91737dad6ecd667098d76ad262ec')
-depends=('libpeas' 'budgie-desktop' 'libsoup')
+depends=('libpeas' 'budgie-desktop-git' 'libsoup')
 makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools')
 source=(https://github.com/cybre/${pkgname}/archive/${pkgver}.zip)
 
