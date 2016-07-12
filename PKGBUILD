@@ -7,7 +7,7 @@ _gitauth='AlexsJones'
 _pkgname='jnxlibc'
 _vopt='v' # '' or 'v', starts at v1.7
 pkgname="${_pkgname}"
-pkgver='2.1'
+pkgver='2.2'
 pkgrel='1'
 pkgdesc='General purpose C library with many useful components'
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('doxygen' 'cmake')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/${_vopt}\(.*\)\.tar\.gz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${_vopt}${pkgver}.tar.gz")
-sha256sums=('1a80d68e095201fb50ebae9bd70185422d97fc613678f37a3e325a4bd12d22fa')
+sha256sums=('7415d7b6be16cdcf8f526d84fcbf500ffceb118d5e4b375914a2f94fc29462b6')
 
 prepare() {
   set -u
