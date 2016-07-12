@@ -2,12 +2,13 @@
 
 pkgname=gnome-shell-extension-topicons-plus-git
 pkgver=r70.1c158ee
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
 url="https://extensions.gnome.org/extension/495/topicons/"
 license=('GPL')
 depends=('gnome-shell')
+makedepends=('git')
 groups=('gnome-shell-extensions')
 #source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
 source=("git+https://github.com/phocean/TopIcons.git")
