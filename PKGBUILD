@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ package () {
       binary="${pkgname}_x64"
   fi
 
-  cd "${srcpath}"
+  #cd "${srcpath}"
+  cd "${srcdir}"
 #  install -m775 -g games -d "${pkgdir}/opt/${pkgname}/"{plugins,bios,memcards,cfg,cdimages,cheats,patches,sstates,snap}
   install -d "${pkgdir}"/usr/{share/doc/"${pkgname}",lib}
 
