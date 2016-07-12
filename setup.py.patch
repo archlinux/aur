@@ -1,8 +1,45 @@
 diff --git a/setup.py b/setup.py
-index f0724c6..3899276 100644
+index f0724c6..ebc3714 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -245,15 +245,8 @@ setup_options = {
+@@ -199,22 +199,20 @@ class bdist_egg(_bdist_egg):
+         self.execute(post_install, (self, False), msg="Running post install tasks")
+ 
+ required_packages = [
+-    'python-dateutil==2.5.3',
+-    'Flask-HTTPAuth==3.1.2',
+-    'Flask==0.11',
+-    'appdirs==1.4.0',
+-    'colorlog==2.7.0',
+-    'json-rpc==1.10.3',
+-    'pycoin==0.62',
+-    'pycrypto==2.6.1',
+-    'pysha3==0.3',
+-    'pytest==2.9.1',
+-    'pytest-cov==2.2.1',
+-    'python-bitcoinlib==0.5.1',
+-    'requests==2.10.0',
+-    'tendo==0.2.8',
+-    'xmltodict==0.10.1',
+-    'cachetools==1.1.6',
++    'python-dateutil',
++    'Flask-HTTPAuth',
++    'Flask',
++    'appdirs',
++    'colorlog',
++    'json-rpc',
++    'pycoin',
++    'pycrypto',
++    'pysha3',
++    'python-bitcoinlib',
++    'requests',
++    'tendo',
++    'xmltodict',
++    'cachetools',
+ ]
+ 
+ setup_options = {
+@@ -245,15 +243,8 @@ setup_options = {
      'provides': ['counterpartylib'],
      'packages': find_packages(),
      'zip_safe': False,

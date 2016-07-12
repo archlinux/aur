@@ -33,7 +33,7 @@ options=('!emptydirs')
 source=(${pkgname%-git}::git+https://github.com/CounterpartyXCP/counterparty-lib
         setup.py.patch)
 sha256sums=('SKIP'
-            'c5d9f4707d64718c1d19e1b08554c3e6848801b44fc650a35210cfdb441a6e98')
+            'e1b5edabf31ed909d08a9e9e6aa97445a6e6b9a27854020e53ddae1ff9f9d102')
 provides=('python-counterparty-lib')
 conflicts=('python-counterparty-lib')
 
