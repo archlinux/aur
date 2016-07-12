@@ -1,4 +1,4 @@
-From 27f765b5f41638de36de728e9018a1400b0be615 Mon Sep 17 00:00:00 2001
+From a7e32953f291c39a8286b87516cd0c0516c2c89b Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:40:29 +0200
 Subject: [PATCH 1/4] Enable table validation modules
@@ -8,7 +8,7 @@ Subject: [PATCH 1/4] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 2984e51..a5db21d 100644
+index d677565a2bc2b5a2..f19cbec33384a86f 100644
 --- a/modules.cfg
 +++ b/modules.cfg
 @@ -110,7 +110,7 @@ RASTER_MODULES += smooth
@@ -30,5 +30,5 @@ index 2984e51..a5db21d 100644
  # Auxiliary PostScript driver component to share common code.
  #
 -- 
-2.6.0
+2.9.0
 
