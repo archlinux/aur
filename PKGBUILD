@@ -12,6 +12,7 @@ license=('GPL')
 depends=('')
 source=('cloog-0.18.4::git+http://repo.or.cz/cloog.git#branch=master')
 provides=('isl15' 'cloog')
+conflicts=('isl15' 'isl' 'cloog')
 md5sums=('SKIP')
 
 build() {

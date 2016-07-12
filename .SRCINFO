@@ -8,6 +8,9 @@ pkgbase = cloog-git
 	license = GPL
 	provides = isl15
 	provides = cloog
+	conflicts = isl15
+	conflicts = isl
+	conflicts = cloog
 	source = cloog-0.18.4::git+http://repo.or.cz/cloog.git#branch=master
 	md5sums = SKIP
 
