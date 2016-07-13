@@ -8,12 +8,12 @@ pkgbase = mate-panel-1.15-gtk3
 	groups = mate
 	license = GPL
 	makedepends = gobject-introspection
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	makedepends = yelp-tools
 	makedepends = gtk3
-	makedepends = libmateweather>=1.15
+	makedepends = libmateweather-1.15-gtk3
 	makedepends = libwnck3
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	depends = dbus-glib
 	depends = dconf
 	depends = glib2
@@ -22,13 +22,13 @@ pkgbase = mate-panel-1.15-gtk3
 	depends = libwnck3
 	depends = libcanberra
 	depends = libice
-	depends = libmateweather>=1.15
+	depends = libmateweather-1.15-gtk3
 	depends = librsvg
 	depends = libsm
 	depends = libsoup
 	depends = libxau
-	depends = mate-menus>=1.15
-	depends = mate-desktop>=1.15
+	depends = mate-menus-1.15-gtk3
+	depends = mate-desktop-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-panel
 	provides = mate-panel-gtk3
