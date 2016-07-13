@@ -15,7 +15,7 @@ depends=('gtk-update-icon-cache')
 makedepends=('git' 'icon-naming-utils' 'mate-common>=1.15')
 options=(!strip)
 groups=('mate-extra')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('ceccc58647798b55c9a9d34a2ab91e3838617736')
 
 prepare() {
