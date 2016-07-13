@@ -11,7 +11,7 @@ pkgbase = eom-1.15-gtk3
 	makedepends = mate-common
 	makedepends = yelp-tools
 	makedepends = gtk3
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = glib2
@@ -23,7 +23,7 @@ pkgbase = eom-1.15-gtk3
 	depends = libexif
 	depends = libjpeg-turbo
 	depends = librsvg
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = pygtk
 	depends = python2-gobject2
 	depends = startup-notification
