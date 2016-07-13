@@ -1,4 +1,4 @@
-# Maintainer: Romain Bazile <romain.bazile@ubiant.com>
+# Maintainer: Romain Bazile <gromain.baz@gmail.com>
 
 
 pkgname=flash
@@ -14,6 +14,5 @@ source=("https://raw.githubusercontent.com/hypriot/flash/master/Linux/flash")
 sha1sums=('0182b262a6618667a2d0cfd57a955048a22b13bb')
 
 package() {
-        chmod +x ${srcdir}/flash;
-        install -D -m644 ${srcdir}/flash ${pkgdir}/usr/local/bin/flash;
+        install -D -m751 ${srcdir}/flash ${pkgdir}/usr/local/bin/flash;
 }
