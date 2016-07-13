@@ -7,7 +7,7 @@ pkgbase = mate-polkit-1.15-gtk3
 	arch = x86_64
 	license = LGPL
 	makedepends = gobject-introspection
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	depends = gtk3
 	depends = polkit
 	depends = accountsservice
