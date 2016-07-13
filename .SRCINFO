@@ -1,4 +1,4 @@
-pkgbase = mate-system-monitor
+pkgbase = mate-system-monitor-1.15-gtk3
 	pkgdesc = A system monitor for MATE
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -24,5 +24,5 @@ pkgbase = mate-system-monitor
 	source = http://pub.mate-desktop.org/releases/1.15/mate-system-monitor-1.15.0.tar.xz
 	sha1sums = baa314bc4215d53678716aa1ce7d5b0d2e17edcb
 
-pkgname = mate-system-monitor
+pkgname = mate-system-monitor-1.15-gtk3
 

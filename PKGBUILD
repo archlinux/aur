@@ -34,7 +34,7 @@ build() {
     make
 }
 
-package_mate-system-monitor() {
+package() {
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
 }
