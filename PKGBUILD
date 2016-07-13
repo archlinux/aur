@@ -3,12 +3,13 @@
 _srcver="1.3.1-6"
 pkgname=libfpx
 pkgver="${_srcver//-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="FlashPIX OpenSource Toolkit"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/download/delegates/"
 license=('custom')
 depends=('gcc-libs')
+makedepends=('gcc5')
 provides=('libfpx.so')
 source=("http://www.imagemagick.org/download/delegates/${pkgname}-${_srcver}.tar.bz2")
 sha256sums=('84e663bb23619e19195777a7c5d348046756f28cffda3d0ea2160ed0b55a698a')
@@ -16,6 +17,10 @@ sha256sums=('84e663bb23619e19195777a7c5d348046756f28cffda3d0ea2160ed0b55a698a')
 build() {
 	cd "$pkgname"-"$_srcver"
 	
+	CC="gcc-5" \
+	CPP="gcc-5 -E" \
+	CXX="g++-5" \
+	CXXCPP="g++-5 -E" \
 	./configure \
                 --prefix=/usr \
                 --enable-static=no \
