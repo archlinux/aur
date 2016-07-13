@@ -3,14 +3,14 @@
 
 _ver=1.15
 _pkgbase=mate-notification-daemon
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.1
 pkgrel=1
 provides=('notification-daemon' "${_pkgbase}" "${_pkgbase}-gtk3")
 pkgdesc="Notification daemon for MATE"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
-conflicts=("${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dconf' 'dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache'
          'libcanberra' 'libwnck3' 'libwnck3' 'libnotify')
