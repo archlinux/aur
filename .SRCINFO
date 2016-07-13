@@ -10,12 +10,12 @@ pkgbase = mate-power-manager-1.15-gtk3
 	makedepends = docbook2x
 	makedepends = docbook-xml
 	makedepends = mate-common
-	makedepends = mate-panel>=1.15
+	makedepends = mate-panel-1.15-gtk3
 	makedepends = xmlto
 	makedepends = yelp-tools
 	makedepends = gtk3
 	makedepends = libunique3
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	depends = dbus-glib
 	depends = dconf
 	depends = glib2
@@ -25,7 +25,7 @@ pkgbase = mate-power-manager-1.15-gtk3
 	depends = libgnome-keyring
 	depends = libnotify
 	depends = libunique3
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = upower
 	optdepends = mate-panel: Set brightness and inhibit power management from the panel
 	optdepends = yelp: for reading MATE help documents
