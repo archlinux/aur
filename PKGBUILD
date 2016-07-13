@@ -29,7 +29,7 @@ build() {
     make
 }
 
-package_mozo() {
+package() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
