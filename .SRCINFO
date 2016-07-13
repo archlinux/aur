@@ -1,0 +1,19 @@
+pkgbase = libmatemixer
+	pkgdesc = Mixer library for MATE Desktop
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = mate-common
+	depends = alsa-lib
+	depends = libpulse
+	provides = libmatemixer
+	provides = libmatemixer-gtk3
+	conflicts = libmatemixer-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/libmatemixer-1.15.0.tar.xz
+	sha1sums = 925b1ccff7ced44458dfbb82550a47b939de306d
+
+pkgname = libmatemixer
+

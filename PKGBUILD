@@ -1,0 +1,33 @@
+# Maintainer:  eadrom <eadrom@archlinux.info>
+# Contributor:  Martin Wimpress <code@flexion.org>
+
+_ver=1.15
+_pkgbase=libmatemixer
+pkgname="${_pkgbase}-1.15-gtk3"
+pkgver=${_ver}.0
+pkgrel=1
+pkgdesc="Mixer library for MATE Desktop"
+url="http://mate-desktop.org"
+arch=('i686' 'x86_64')
+provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${pkgname}-gtk3")
+license=('LGPL')
+depends=('alsa-lib' 'libpulse')
+makedepends=('mate-common')
+source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('925b1ccff7ced44458dfbb82550a47b939de306d')
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-static
+    make
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+}
