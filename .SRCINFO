@@ -1,0 +1,38 @@
+pkgbase = engrampa
+	pkgdesc = Archive manipulator for MATE (GTK2 version)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = caja>=1.15
+	makedepends = yelp-tools
+	depends = bzip2
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = gzip
+	depends = libarchive
+	depends = tar
+	optdepends = caja: file archiver extension
+	optdepends = unrar: for RAR uncompression
+	optdepends = zip: for ZIP archives
+	optdepends = unzip: for ZIP archives
+	optdepends = p7zip: 7zip compression utility
+	optdepends = arj: for ARJ archives
+	optdepends = unace: extraction tool for the proprietary ace archive format
+	optdepends = yelp: for reading MATE help documents
+	provides = engrampa
+	provides = engrampa-gtk3
+	conflicts = engrampa-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/engrampa-1.15.0.tar.xz
+	source = fr-rpm-bsdtar.patch
+	sha1sums = bbe49dc29e4f1cbf85d3cefab2a9056612970268
+	sha1sums = 219b05a979bf6f249aaae27964f02345fd81168d
+
+pkgname = engrampa
+	pkgdesc = Archive manipulator for MATE (GTK2 version) (GTK3 version)
+
