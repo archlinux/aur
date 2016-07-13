@@ -3,14 +3,14 @@
 
 _ver=1.15
 _pkgbase=libmatemixer
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Mixer library for MATE Desktop"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
-conflicts=("${pkgname}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('alsa-lib' 'libpulse')
 makedepends=('mate-common')
