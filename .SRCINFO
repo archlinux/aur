@@ -1,0 +1,23 @@
+pkgbase = libmateweather
+	pkgdesc = Provides access to weather information from the Internet.
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = mate-common>=1.15
+	depends = dconf
+	depends = gtk3
+	depends = libsoup
+	depends = glib2
+	depends = gtk-update-icon-cache
+	provides = libmateweather
+	provides = libmateweather-gtk3
+	conflicts = libmateweather-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/libmateweather-1.15.0.tar.xz
+	sha1sums = ad4357c0a2e2d5c61b601b4b8fddbd409b82186f
+
+pkgname = libmateweather
+	pkgdesc = Provides access to weather information from the Internet. (GTK3 version [EXPERIMENTAL])
+
