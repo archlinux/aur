@@ -4,8 +4,8 @@ mingw_prefix=/usr/@TRIPLE@
 export PKG_CONFIG_LIBDIR="${mingw_prefix}/lib/pkgconfig"
 
 mingw_c_flags="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-export CFLAGS="$mingw_c_flags"
-export CXXFLAGS="$mingw_c_flags"
+export CFLAGS="$mingw_c_flags $CFLAGS"
+export CXXFLAGS="$mingw_c_flags $CXXFLAGS"
 
 PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${mingw_prefix} \
