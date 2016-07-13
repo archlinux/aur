@@ -14,19 +14,19 @@ source=("https://github.com/ALPSCore/ALPSCore/archive/v$pkgver.tar.gz")
 md5sums=('b887c9328e2a22afa123663cf888b768')
 
 build() {
-	cd "ALPSCore-$pkgver"
+  cd "ALPSCore-$pkgver"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
-	make
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
+  make
 }
 
 check() {
-	cd "ALPSCore-$pkgver/build"
-	make test
+  cd "ALPSCore-$pkgver/build"
+  make test
 }
 
 package() {
-	cd "ALPSCore-$pkgver/build"
-	make DESTDIR="$pkgdir/" install
+  cd "ALPSCore-$pkgver/build"
+  make DESTDIR="$pkgdir/" install
 }
