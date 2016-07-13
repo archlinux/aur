@@ -51,7 +51,7 @@ build() {
     make
 }
 
-package_mate-power-manager() {
+package() {
     pkgdesc+=' (GTK3 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install

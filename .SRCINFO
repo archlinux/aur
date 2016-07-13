@@ -1,4 +1,4 @@
-pkgbase = mate-power-manager
+pkgbase = mate-power-manager-1.15-gtk3
 	pkgdesc = Power management tool for the MATE desktop
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -35,6 +35,6 @@ pkgbase = mate-power-manager
 	source = http://pub.mate-desktop.org/releases/1.15/mate-power-manager-1.15.0.tar.xz
 	sha1sums = f8138b3833ed115bf8fabcea095eaf681bcee3fe
 
-pkgname = mate-power-manager
+pkgname = mate-power-manager-1.15-gtk3
 	pkgdesc = Power management tool for the MATE desktop (GTK3 version)
 
