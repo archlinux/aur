@@ -3,7 +3,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPla
 	'crashplan.service'
 	'install.vars'
 	'sysctl-crashplan.conf')
-sha256sums=('bb3c52259cf56759c004b9c3126a8c483bf1795f2bfa4575d35de2cdb577a0e4'
+sha256sums=('c8e69b3b6e7dee276e5bd7580cd8ecaf5b0f2dcfc6b1f6725720b1891c6e26ee'
             '259d38afa8fc34246ac0ecfeefc701d47501c552eb0ffcd1bd4b8e9a2751c3c8'
             'a2b4d4469847721f8e68970fb55a2c78655441e124ad8db151e047ff6a592416'
             'c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617'
