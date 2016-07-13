@@ -27,6 +27,6 @@ package() {
     make INSTALL_ROOT="$pkgdir" install
     popd
     pushd "$srcdir/trace-$pkgver"
-    install -Dm644 trace.ini "$pkgdir/etc/php56/conf.d/trace.ini"
+    install -Dm644 trace.ini "$pkgdir/etc/php/conf.d/trace.ini"
     popd
 }
