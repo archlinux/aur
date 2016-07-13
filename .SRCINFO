@@ -1,4 +1,4 @@
-pkgbase = mate-common
+pkgbase = mate-common-1.15-gtk3
 	pkgdesc = Common development macros for MATE
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -15,8 +15,8 @@ pkgbase = mate-common
 	depends = pkg-config
 	provides = mate-common
 	provides = mate-common-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-common-1.15.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/mate-common-1.15-gtk3-1.15.0.tar.xz
 	sha1sums = f9fa3d4758472f79850f864177ed879059f1e34f
 
-pkgname = mate-common
+pkgname = mate-common-1.15-gtk3
 
