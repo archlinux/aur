@@ -1,4 +1,4 @@
-pkgbase = mate-media
+pkgbase = mate-media-1.15-gtk3
 	pkgdesc = MATE Media Tools
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -25,6 +25,6 @@ pkgbase = mate-media
 	source = http://pub.mate-desktop.org/releases/1.15/mate-media-1.15.0.tar.xz
 	sha1sums = 13043b1dcf8e4fbe93dba44566eecd1e70870131
 
-pkgname = mate-media
+pkgname = mate-media-1.15-gtk3
 	pkgdesc = MATE Media Tools (GTK2 version)
 
