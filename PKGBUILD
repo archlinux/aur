@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=carve
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, robust constructive solid geometry library"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/carve/"
@@ -11,14 +11,17 @@ makedepends=('boost' 'cmake' 'freeglut')
 optdepends=('freeglut: carve-view')
 source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tgz"
         "boost.patch"
+        "read_ply.patch"
         "rng.patch")
 md5sums=('5c3ea3b80e94adc549611f80e729acc9'
          '126433e01f1eeef41a7b1b5e9c0207df'
+         'a3eda1e28e52a4acb08d5ba061ab560d'
          'b2f407c6d8e1fbc9d436a1fef4f611e3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/boost.patch"
+  patch -Np1 -i "${srcdir}/read_ply.patch"
   patch -Np1 -i "${srcdir}/rng.patch"
   [[ -d build ]] && rm -r build
   mkdir build && cd build
