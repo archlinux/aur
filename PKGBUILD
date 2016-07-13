@@ -11,7 +11,9 @@ depends=('python' 'avahi' 'systemtap' 'procps-ng')
 makedepends=('libmicrohttpd' 'cairo' 'qt4')
 optdepends=('libmicrohttpd: support for pmwebd'
             'cairo: support for pmwebd'
-	    'qt4: support for PCP-GUI and pmchart')
+	    'qt4: support for PCP-GUI and pmchart'
+	    'perl-xml-tokeparser: support for sar2pcp'
+	    'perl-date-parse: support for sar2pcp')
 install="pcp.install"
 source=("https://bintray.com/artifact/download/pcp/source/pcp-$pkgver.src.tar.gz"
         "pcp.install"
