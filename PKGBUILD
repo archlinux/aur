@@ -1,21 +1,21 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=2.0.52458.0531
+pkgver=2.0.57232.0713
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('desktop-file-utils' 'gstreamer0.10-base' 'xcb-util-cursor' 'libxml2'
-	'libsm' 'sqlite' 'libxrender' 'fontconfig' 'libxcomposite' 'libxi' 'libgl'
-	'openssl' 'libxslt' 'pulseaudio' 'glib2' 'libxcb' 'qt5-webkit' 'qt5-svg' 'qt5-script')
-# The dependencies were reconstructed in order to fit the ones from debian
+depends=('libx11' 'libsm' 'libxi' 'nss' 'xcb-util-image' 'xcb-util-keysyms' 'libxcb' 'glib2' 'libxshmfence' 'libpulse'
+	'pulseaudio-alsa' 'libxfixes' 'libxrandr' 'fontconfig' 'mesa' 'libxrender' 'libxcomposite' 'libxslt' 'gstreamer' 'ibus'
+	'ibus-qt')
+# The dependencies are those from the original package
 options=(!strip)
 source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
 source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
-md5sums_i686=('f26ae1bf43c94af7879f50fb9d7c2955')
-md5sums_x86_64=('f9aa119d96d026abb812873ef2093ffc')
+md5sums_i686=('5db442015916f528bdf5f4d22dfed90d')
+md5sums_x86_64=('aaf14b8075a9500b58b74f9ff63beea0')
 
 package() {
 	bsdtar xf data.tar.xz
