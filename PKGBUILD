@@ -3,7 +3,7 @@
 
 _ver=1.15
 _pkgbase=mate-user-guide
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="MATE User Guide"
@@ -11,6 +11,7 @@ groups=('mate' 'mate-gtk3')
 url="http://mate-desktop.org"
 arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('desktop-file-utils' 'yelp')
 makedepends=('mate-common-1.15-gtk3' 'yelp-tools')
