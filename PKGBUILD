@@ -3,13 +3,14 @@
 
 _ver=1.15
 _pkgbase=mozo
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="MATE menu editing tool"
 url="http://mate-desktop.org"
 arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('gtk-update-icon-cache' 'mate-menus-1.15-gtk3' 'python2-gobject')
 makedepends=('mate-common-1.15-gtk3')
