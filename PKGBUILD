@@ -12,15 +12,14 @@ options=(!strip !buildflags staticlibs)
 source=("https://github.com/lhmouse/mcfgthread/archive/alpha-0.9.tar.gz")
 md5sums=('bbd2e4497255b314f5adf78a83063aad')
 
-# _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_architectures="x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/mcfgthread-alpha-0.9"
   autoreconf -vfi
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    CFLAGS="-fno-exceptions" ${_arch}-configure ..
     make
     popd
   done
