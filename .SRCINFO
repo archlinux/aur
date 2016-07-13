@@ -1,0 +1,29 @@
+pkgbase = mate-terminal
+	pkgdesc = The MATE Terminal Emulator
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = docbook2x
+	makedepends = yelp-tools
+	makedepends = vte3
+	makedepends = mate-desktop>=1.15
+	depends = dbus
+	depends = dconf
+	depends = glib2
+	depends = libsm
+	depends = mate-desktop>=1.15
+	depends = vte3
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-terminal
+	provides = mate-terminal-gtk3
+	conflicts = mate-terminal-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-terminal-1.15.0.tar.xz
+	sha1sums = f396f1a0fe3449ed380900b8a66a7cc77e61880a
+
+pkgname = mate-terminal
+	pkgdesc = The MATE Terminal Emulator (GTK3 version)
+
