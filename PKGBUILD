@@ -2,7 +2,7 @@
 
 pkgname=lyx-git
 _pkgname=lyx
-pkgver=2.2.0.r468.g5d292fc
+pkgver=2.2.0.r477.g2b6f822
 pkgrel=1
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=(texlive-core rcs texlive-latexextra)
 provides=('lyx-git')
 conflicts=('lyx lyx-git')
 replaces=('lyx lyx-git')
-source=(git://git.lyx.org/lyx.git#branch=master)
+source=("git://git.lyx.org/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
