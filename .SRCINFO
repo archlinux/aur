@@ -8,7 +8,7 @@ pkgbase = mate-system-monitor-1.15-gtk3
 	groups = mate-extra
 	license = GPL
 	makedepends = docbook2x
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	makedepends = yelp-tools
 	depends = dconf
 	depends = dbus-glib
