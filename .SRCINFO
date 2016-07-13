@@ -1,0 +1,28 @@
+pkgbase = mate-system-monitor
+	pkgdesc = A system monitor for MATE
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = docbook2x
+	makedepends = mate-common>=1.15
+	makedepends = yelp-tools
+	depends = dconf
+	depends = dbus-glib
+	depends = glibmm
+	depends = gtkmm3
+	depends = libgtop
+	depends = libwnck3
+	depends = librsvg
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-system-monitor
+	provides = mate-system-monitor-gtk3
+	conflicts = mate-system-monitor-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-system-monitor-1.15.0.tar.xz
+	sha1sums = baa314bc4215d53678716aa1ce7d5b0d2e17edcb
+
+pkgname = mate-system-monitor
+
