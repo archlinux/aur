@@ -1,11 +1,11 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
 pkgname=saw-script
 
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="The SAW scripting language."
 url="http://saw.galois.com/"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('noncommercial')
 depends=('cvc4' 'libtinfo' 'java-environment')
 makedepends=()
@@ -15,22 +15,14 @@ replaces=()
 backup=()
 conflicts=('')
 provides=('saw-script')
-md5sums=('SKIP')
+sha512sums=('097e1a9468cc76d3ec31598d9ad120b3d3d49f55ef1399f981eb60b0ccb5283996dfb3e9f41ed209cb11496c7c096b45f774ad84d44592454e23628847742e38')
 
-source=('https://github.com/GaloisInc/saw-script/releases/download/v0.1.1-dev/saw-0.1.1-dev-2015-07-31-CentOS6-64.tar.gz')
-
-#build() {
-  #echo "HI"
-#}
+source=('https://github.com/GaloisInc/saw-script/releases/download/v0.2/saw-0.2-2016-04-12-Ubuntu14.04-64.tar.gz')
 
 package() {
-  cd $srcdir/"saw-0.1.1-dev-2015-07-31-CentOS6-64"
-  mkdir -p "$pkgdir/usr/bin"
-  cp bin/* "$pkgdir/usr/bin"
-  #mkdir -p "$pkgdir/usr/share/cryptol"
-  #mkdir -p "$pkgdir/usr/share/licenses/$_pkgname/"
-  ##cp .cabal-sandbox/bin/cryptol "$pkgdir/usr/bin"
-  #cp dist/build/cryptol/cryptol "$pkgdir/usr/bin"
-  #cp lib/* "$pkgdir/usr/share/cryptol"
-  #cp LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
+    cd "$srcdir/saw-0.2-2016-04-12-Ubuntu14.04-64"
+    mkdir -p "$pkgdir/usr/bin"
+    cp bin/* "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
