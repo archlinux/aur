@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=suricata
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('i686' 'x86_64')
@@ -10,8 +10,10 @@ license=('GPL2')
 depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
 optdepends=('snort: suricata can use rulesets provided by snort')
 backup=('etc/suricata/suricata.yaml')
-source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz)
-sha256sums=('264cbdc380717590a9c33d3b3dc92fc488f376873e869bf71601b1d4a9a8e601')
+source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig})
+validpgpkeys=('801C7171DAC74A6D3A61ED81F7F9B0A300C1B70D') # Open Information Security Foundation
+sha256sums=('b8f5711f4c24627b056a3889b296b29ec515b34bc2287ad20d13ca20da777ff7'
+            'SKIP')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
