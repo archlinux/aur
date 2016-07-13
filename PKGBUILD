@@ -38,7 +38,7 @@ build() {
     make
 }
 
-package_mate-settings-daemon() {
+package() {
     pkgdesc+=' (GTK3 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install

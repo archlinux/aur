@@ -1,4 +1,4 @@
-pkgbase = mate-settings-daemon
+pkgbase = mate-settings-daemon-1.15-gtk3
 	pkgdesc = The MATE Settings daemon
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -35,6 +35,6 @@ pkgbase = mate-settings-daemon
 	source = http://pub.mate-desktop.org/releases/1.15/mate-settings-daemon-1.15.0.tar.xz
 	sha1sums = 563c6b50669cde375e333aaba1f1919351372871
 
-pkgname = mate-settings-daemon
+pkgname = mate-settings-daemon-1.15-gtk3
 	pkgdesc = The MATE Settings daemon (GTK3 version)
 
