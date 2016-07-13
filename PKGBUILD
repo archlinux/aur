@@ -13,10 +13,10 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'glib2' 'gtk2' 'gtk-update-icon-cache' 'libwnck3'
-         'libcanberra' 'libice' 'libmateweather>=1.15' 'librsvg' 'libsm' 'libsoup'
-         'libxau' 'mate-menus>=1.15' 'mate-desktop>=1.15')
-makedepends=('gobject-introspection' 'mate-common>=1.15' 'yelp-tools' 'gtk3'
-             'libmateweather>=1.15' 'libwnck3' 'mate-desktop>=1.15')
+         'libcanberra' 'libice' 'libmateweather-1.15-gtk3' 'librsvg' 'libsm' 'libsoup'
+         'libxau' 'mate-menus-1.15-gtk3' 'mate-desktop-1.15-gtk3')
+makedepends=('gobject-introspection' 'mate-common-1.15-gtk3' 'yelp-tools' 'gtk3'
+             'libmateweather-1.15-gtk3' 'libwnck3' 'mate-desktop-1.15-gtk3')
 optdepends=('yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate')
