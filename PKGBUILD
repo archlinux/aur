@@ -41,7 +41,7 @@ build() {
     make
 }
 
-package_mate-applets() {
+package() {
     pkgdesc+=' (GTK3 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install

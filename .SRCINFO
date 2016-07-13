@@ -1,4 +1,4 @@
-pkgbase = mate-applets
+pkgbase = mate-applets-1.15-gtk3
 	pkgdesc = Applets for MATE panel
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -31,6 +31,6 @@ pkgbase = mate-applets
 	source = http://pub.mate-desktop.org/releases/1.15/mate-applets-1.15.0.tar.xz
 	sha1sums = 4d6534cb83ec88fe247f8550e518977d10938640
 
-pkgname = mate-applets
+pkgname = mate-applets-1.15-gtk3
 	pkgdesc = Applets for MATE panel (GTK3 version)
 
