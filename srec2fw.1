@@ -1,0 +1,27 @@
+.\"
+.\" This man page was written by Tormod Volden for Debian
+.\" 
+.TH SREC2FW "1"
+.SH NAME
+srec2fw \- convert from SREC format to linux kernel format
+.SH SYNOPSIS
+.B srec2fw
+[\fIOPTION\fR]...
+[\fIsrc.hex\fR] [\fIdst.fw\fR] 
+.SH DESCRIPTION
+Converts srec firmware files into binary representation for use by Linux kernel.
+.PP
+If the source file is `-' stdin will be read, and if destination file is `-'
+the converted data will be written to stdout.
+.TP
+\fB\-w\fR
+Source file uses wide records (16-bit length)
+.SH "RETURN VALUE"
+Returns 0 if no errors were encountered.
+.SH EXAMPLES
+.B srec2fw firmware.hex firmware.fw
+.SH AUTHOR
+Karl Relton <karllinuxtest.relton@ntlworld.com>,
+David Woodhouse <dwmw2@infradead.org>,
+Jan Harkes <jaharkes@cs.cmu.edu>
+
