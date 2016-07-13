@@ -1,13 +1,12 @@
 [Desktop Entry]
 Categories=Network;Application;
-Comment=Joxi
-Exec=joxi
+Comment=joxi
+Exec=/usr/bin/joxi
 GenericName=joxi
 Name=Joxi
 X-KDE-StartupNotify=true
 MimeType=application/x-designer;
-Icon=joxi.png
+Icon=/usr/share/icons/hicolor/icon_64.png
 Terminal=false
 Type=Application
 Version=0.1
-Name[ru_RU]=Joxi
