@@ -8,12 +8,12 @@ pkgbase = mate-control-center-1.15-gtk3
 	groups = mate
 	license = GPL
 	makedepends = docbook2x
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	makedepends = yelp-tools
 	makedepends = libmatekbd
 	makedepends = libunique3
 	makedepends = marco
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	makedepends = mate-settings-daemon
 	depends = dbus-glib
 	depends = dconf
@@ -22,12 +22,12 @@ pkgbase = mate-control-center-1.15-gtk3
 	depends = gsettings-desktop-schemas
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	depends = mate-desktop>=1.15
-	depends = mate-menus>=1.15
-	depends = mate-settings-daemon>=1.15
-	depends = marco>=1.15
+	depends = mate-desktop-1.15-gtk3
+	depends = mate-menus-1.15-gtk3
+	depends = mate-settings-daemon-1.15-gtk3
+	depends = marco-1.15-gtk3
 	depends = libgtop
-	depends = libmatekbd>=1.15
+	depends = libmatekbd-1.15-gtk3
 	depends = libunique3
 	depends = librsvg
 	depends = libxss
