@@ -19,7 +19,7 @@ pkgbase = caja-1.15-gtk3
 	depends = libexif
 	depends = libunique3
 	depends = libxt
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = shared-mime-info
 	depends = startup-notification
 	optdepends = gstreamer: automatic media playback when mouseover
