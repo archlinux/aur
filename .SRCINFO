@@ -7,7 +7,7 @@ pkgbase = atril-1.15-gtk3
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = caja>=1.15
+	makedepends = caja-1.15-gtk3
 	makedepends = djvulibre
 	makedepends = gobject-introspection
 	makedepends = libgxps
@@ -23,7 +23,7 @@ pkgbase = atril-1.15-gtk3
 	depends = libsecret
 	depends = libsm
 	depends = libspectre
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = mathjax
 	depends = poppler-glib
 	depends = webkitgtk
