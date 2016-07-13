@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=alpscore-git
-pkgver=0.5.4.r11.gf1ade94
+pkgver=0.5.4.r44.g6f37262
 pkgrel=1
 pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ build() {
     cd "$pkgname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
 	make
 }
 
