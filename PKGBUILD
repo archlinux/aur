@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.152.0
+pkgver=0.154.0
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -23,9 +23,9 @@ optdepends=('obs-build: required to run local builds'
 conflicts=('osc-git' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
 source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
-        "_osc::http://sourceforge.net/p/zsh/code/ci/master/tree/Completion/openSUSE/Command/_osc?format=raw")
-sha256sums=('2aa347e64e6c3f6c57e5b375a43b92ada06a5606d135c7015e4f9422f7dae8f9'
-            '7b048c4af5fc21130912322f7e905fa17fc2a0f8db76a981d440664eef34fb09')
+        "_osc")
+sha256sums=('88daae5b94354e9bcab03523aa7e3d270f69ffeaef8e4a1493bce19757d4699d'
+            '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
@@ -39,7 +39,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
 
   cd "${pkgdir}/usr/bin"
   ln -s osc-wrapper.py osc
