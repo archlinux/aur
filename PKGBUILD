@@ -12,10 +12,10 @@ depends=('openbox')
 makedepends=('p7zip')
 provides=("${pkgname}=${pkgver}")
 
-# Mirror
-# https://www.dropbox.com/s/p3q19muy49qjkhs/mistral_openbox_by_phobi4n-d8ztvoc.7z
+# Using mirror, original source has been deleted
+# http://orig01.deviantart.net/2870/f/2015/184/6/8/mistral_openbox_by_phobi4n-d8ztvoc.7z
 source=(
-	"${pkgname}-${pkgver}.7z::http://orig01.deviantart.net/2870/f/2015/184/6/8/mistral_openbox_by_phobi4n-d8ztvoc.7z"
+	"${pkgname}-${pkgver}.7z::https://www.dropbox.com/s/p3q19muy49qjkhs/mistral_openbox_by_phobi4n-d8ztvoc.7z"
 )
 noextract=(
 	"${pkgname}-${pkgver}.7z"
