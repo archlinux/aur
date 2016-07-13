@@ -10,12 +10,12 @@ pkgbase = mate-terminal-1.15-gtk3
 	makedepends = docbook2x
 	makedepends = yelp-tools
 	makedepends = vte3
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	depends = dbus
 	depends = dconf
 	depends = glib2
 	depends = libsm
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = vte3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-terminal
