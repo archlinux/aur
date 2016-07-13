@@ -1,4 +1,6 @@
 # Maintainer: Ilya Kovalenko <agentsib@gmail.com>
+# Contributors: elbahek <elbahek@gmail.com>
+
 
 pkgname=joxi
 pkgver=3.0.9
