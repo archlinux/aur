@@ -7,10 +7,10 @@ pkgbase = pluma-1.15-gtk3
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	makedepends = yelp-tools
 	makedepends = gtksourceview3
-	makedepends = mate-desktop>=1.15
+	makedepends = mate-desktop-1.15-gtk3
 	depends = desktop-file-utils
 	depends = enchant
 	depends = glib2
@@ -18,7 +18,7 @@ pkgbase = pluma-1.15-gtk3
 	depends = gtksourceview2
 	depends = iso-codes
 	depends = libsm
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = gtksourceview3
 	depends = python2-gobject
 	depends = zenity
