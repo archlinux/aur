@@ -1,4 +1,4 @@
-pkgbase = mate-user-guide
+pkgbase = mate-user-guide-1.15-gtk3
 	pkgdesc = MATE User Guide
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = mate-user-guide
 	source = http://pub.mate-desktop.org/releases/1.15/mate-user-guide-1.15.0.tar.xz
 	sha1sums = b14cab398b894c93a34ced91bd991650686e465f
 
-pkgname = mate-user-guide
+pkgname = mate-user-guide-1.15-gtk3
 
