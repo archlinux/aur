@@ -1,0 +1,30 @@
+pkgbase = mate-media
+	pkgdesc = MATE Media Tools
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = mate-common
+	makedepends = gtk3
+	makedepends = libunique3
+	depends = gtk3
+	depends = libcanberra
+	depends = libmatemixer
+	depends = libunique3
+	depends = mate-desktop>=1.15
+	provides = mate-media
+	provides = mate-media-gtk3
+	conflicts = mate-media-gtk3
+	conflicts = mate-media-gstreamer
+	conflicts = mate-media-pulseaudio
+	replaces = mate-media-gstreamer
+	replaces = mate-media-pulseaudio
+	source = http://pub.mate-desktop.org/releases/1.15/mate-media-1.15.0.tar.xz
+	sha1sums = 13043b1dcf8e4fbe93dba44566eecd1e70870131
+
+pkgname = mate-media
+	pkgdesc = MATE Media Tools (GTK2 version)
+
