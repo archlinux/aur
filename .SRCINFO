@@ -1,4 +1,4 @@
-pkgbase = mate-terminal
+pkgbase = mate-terminal-1.15-gtk3
 	pkgdesc = The MATE Terminal Emulator
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -24,6 +24,6 @@ pkgbase = mate-terminal
 	source = http://pub.mate-desktop.org/releases/1.15/mate-terminal-1.15.0.tar.xz
 	sha1sums = f396f1a0fe3449ed380900b8a66a7cc77e61880a
 
-pkgname = mate-terminal
+pkgname = mate-terminal-1.15-gtk3
 	pkgdesc = The MATE Terminal Emulator (GTK3 version)
 
