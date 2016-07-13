@@ -1,0 +1,21 @@
+pkgbase = mate-user-guide
+	pkgdesc = MATE User Guide
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = any
+	groups = mate
+	groups = mate-gtk3
+	license = GPL
+	license = LGPL
+	makedepends = mate-common>=1.15
+	makedepends = yelp-tools
+	depends = desktop-file-utils
+	depends = yelp
+	provides = mate-user-guide
+	provides = mate-user-guide-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-user-guide-1.15.0.tar.xz
+	sha1sums = b14cab398b894c93a34ced91bd991650686e465f
+
+pkgname = mate-user-guide
+
