@@ -2,8 +2,8 @@
 
 _srcver="1.3.1-6"
 pkgname=libfpx
-pkgver="$(echo "$_srcver" | tr '-' '_')"
-pkgrel=1
+pkgver="${_srcver//-/.}"
+pkgrel=2
 pkgdesc="FlashPIX OpenSource Toolkit"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/download/delegates/"
