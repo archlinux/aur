@@ -2,7 +2,7 @@
 
 pkgname=cov-analysis
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD'
 url='https://scan.coverity.com/download'
 arch=('i686' 'x86_64')
