@@ -1,0 +1,5 @@
+node_modules/
+pkg/
+src/
+typescript-tools-*.pkg.*
+v*.tar.gz
