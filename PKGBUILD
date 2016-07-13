@@ -3,14 +3,14 @@
 
 _ver=1.15
 _pkgbase=pluma
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="A powerful text editor for MATE (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
-conflicts=("${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('desktop-file-utils' 'enchant' 'glib2' 'gtk3' 'gtksourceview2' 'iso-codes'
          'libsm' 'mate-desktop-1.15-gtk3' 'gtksourceview3' 'python2-gobject' 'zenity')
