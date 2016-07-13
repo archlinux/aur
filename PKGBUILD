@@ -1,15 +1,15 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-eclemma
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="A free Java code coverage tool for Eclipse"
 url="http://www.eclemma.org/"
 arch=('any')
 license=('EPL')
 depends=('eclipse')
 source=("http://download.eclipselab.org/eclemma/release/${pkgname/eclipse-}-${pkgver}.zip")
-sha256sums=('5e3c04fdfe1d9d4d6423fb1860c924dc68d2d9c497a67ac123160470b2fc1cd9')
+sha256sums=('4dad65e9aeb378f08c2d218cdf037dbb506dbf2b263e5328abb01631aae8a401')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
