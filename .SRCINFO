@@ -1,0 +1,19 @@
+pkgbase = mozo
+	pkgdesc = MATE menu editing tool
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = any
+	groups = mate-extra
+	license = GPL
+	makedepends = mate-common>=1.15
+	depends = gtk-update-icon-cache
+	depends = mate-menus>=1.15
+	depends = python2-gobject
+	provides = mozo
+	provides = mozo-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mozo-1.15.0.tar.xz
+	sha1sums = f15807f9050cb92d444c9e2e06c73b5aedda85cb
+
+pkgname = mozo
+
