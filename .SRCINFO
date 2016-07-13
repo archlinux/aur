@@ -1,0 +1,21 @@
+pkgbase = mate-menus
+	pkgdesc = MATE menu specifications
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = mate-common>=1.15
+	depends = glib2
+	depends = python2
+	provides = mate-menus
+	provides = mate-menus-gtk3
+	conflicts = mate-menus-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-menus-1.15.0.tar.xz
+	sha1sums = 6083819d5e3e07c6317a49247fc63c178f80db86
+
+pkgname = mate-menus
+
