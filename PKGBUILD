@@ -3,11 +3,12 @@
 pkgname='php56-trace'
 pkgver='0.3.0'
 pkgrel='1'
-pkgdesc='A tracing and troubleshooting tool for PHP scripts'
+pkgdesc='Extension for the tracing and troubleshooting tool for PHP scripts'
 arch=('i686' 'x86_64')
 url='https://pecl.php.net/package/trace'
 license=('Apache')
 depends=('php>=5.1', 'php<7.0')
+provides=('php-trace')
 source=("http://pecl.php.net/get/trace-$pkgver.tgz")
 sha256sums=('aa5f6a91a77ef11f4102b542847b32fce03ea7777081ebb86a812228526b38f7')
 
