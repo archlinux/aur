@@ -8,7 +8,7 @@ pkgbase = mate-utils-1.15-gtk3
 	groups = mate-extra
 	license = GPL
 	makedepends = mate-common
-	makedepends = mate-panel>=1.15
+	makedepends = mate-panel-1.15-gtk3
 	makedepends = rarian
 	makedepends = yelp-tools
 	makedepends = gtk3
