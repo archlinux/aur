@@ -22,7 +22,7 @@ docutils>=0.10
 -e git://github.com/boto/s3transfer.git@develop#egg=s3transfer
 -e git://github.com/boto/jmespath.git@develop#egg=jmespath
 nose==1.3.0
-colorama>=0.2.5,<=0.3.3
+colorama>=0.2.5,<=0.3.7
 mock==1.3.0
 rsa>=3.1.2,<=3.5.0
 wheel==0.24.0
@@ -31,8 +31,8 @@ wheel==0.24.0
 import awscli
 
 
-requires = ['botocore==1.4.36',
-            'colorama>=0.2.5,<=0.3.3',
+requires = ['botocore==1.4.37',
+            'colorama>=0.2.5,<=0.3.7',
             'docutils>=0.10',
             'rsa>=3.1.2,<=3.5.0',
             's3transfer==0.0.1']
@@ -50,7 +50,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.10.46.r3917.g28f4a8b
+pkgver=1.10.47.r3926.g2543380
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -59,8 +59,8 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
-  "${_pyver}-botocore>=1.4.36" # AUR == would make upgrades from AUR impossible. See below.
-  "${_pyver}-colorama>=0.2.5" #,"<=0.3.3"}   # COM requested by phw
+  "${_pyver}-botocore>=1.4.37" # AUR == would make upgrades from AUR impossible. See below.
+  "${_pyver}-colorama>=0.2.5" #,"<=0.3.7"}   # COM requested by phw
   "${_pyver}-rsa"{'>=3.2','<=3.5.0'}
   "${_pyver}-s3transfer>=0.0.1" # AUR
 
@@ -84,7 +84,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('066d01c4f80dfaa9817f3932695cb0e52baf60d8ba1f174a88775793d48ba7db')
+sha256sums=('6921f83e16d6642480887706bcb8f63fa25fbe3f32148f3069a1d26d8fb226eb')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
