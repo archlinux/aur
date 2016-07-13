@@ -3,7 +3,7 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.10.2
+pkgver=2.10.3
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
@@ -18,11 +18,13 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         "https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/${_pkgname}${pkgver}.tar.gz"
         "visit.sh"
         'no_extract_visit.patch'
+        "vtk_gcc6.patch"
         'qt5-qpa.patch')
-sha256sums=('5848da740242f7516df7eae48c804e795065f55d48f9d194477e3296477cf9c3'
-            '89ecdfaf197ef431685e31b75628774deb6cd75d3e332ef26505774403e8beff'
+sha256sums=('72694d887700d642c0d23ac02bff62cfcabb2ba7d0f567c0bbbb870b0187eff2'
+            '05018215c4727eb42d47bb5cc4ff937b2a2ccaca90d141bc7fa426a0843a5dbc'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'fe8ffacc194689bf5f3165a4cc54b0ef49371b34ef68dd952b5a828a82364108'
+            'f08e867357837dd6e2fa8b20d033ad39aa0f59fc13d2333f7153d0eb83b2cb5a'
             'a523dd42c61ccd6743f23d35e63518c4dd33a465fa024e4431f002932464f26b')
 
 options=(!emptydirs)
@@ -44,6 +46,9 @@ prepare(){
 
   # Do not re-extract the visit source code
   patch "${srcdir}/build_${_pkgname}${_pkgver}" no_extract_visit.patch
+
+  # Patch build_visit to apply patch that permits to build vtk with gcc6
+  patch "${srcdir}/build_${_pkgname}${_pkgver}" vtk_gcc6.patch
 
   # Fix to use python2 in every scripts
   sed -i 's/exec\ python/exec\ python2/' \
@@ -115,7 +120,6 @@ _build_command(){
     --netcdf \
     --silo \
     --szip \
-    --xdmf \
     --zlib \
     ${opt}
 }
