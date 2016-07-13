@@ -1,4 +1,4 @@
-pkgbase = mate-icon-theme-faenza
+pkgbase = mate-icon-theme-faenza-1.15-gtk3
 	pkgdesc = Faenza icon theme for MATE
 	pkgver = 1.15.1
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = mate-icon-theme-faenza
 	provides = mate-icon-theme-faenza
 	provides = mate-icon-theme-faenza-gtk3
 	options = !strip
-	source = http://pub.mate-desktop.org/releases/1.15/mate-icon-theme-faenza-1.15.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/mate-icon-theme-faenza-1.15-gtk3-1.15.1.tar.xz
 	sha1sums = ceccc58647798b55c9a9d34a2ab91e3838617736
 
-pkgname = mate-icon-theme-faenza
+pkgname = mate-icon-theme-faenza-1.15-gtk3
 
