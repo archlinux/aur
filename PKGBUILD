@@ -4,7 +4,7 @@
 
 pkgname=gnuplot-cvs
 pkgver=5.1r20160708
-pkgrel=1
+pkgrel=2
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
 url="http://www.gnuplot.info"
@@ -18,8 +18,10 @@ _cvsmod="gnuplot"
 _cvsroot=":pserver:anonymous:@gnuplot.cvs.sourceforge.net:/cvsroot/$_cvsmod"
 
 prepare() {
-  cd "$srcdir/$_cvsmod"
-  sed -i 's+-fPIE+-fPIC+' configure.ac 
+  if [ -d $_cvsmod/CVS ]; then
+      cd "$srcdir/$_cvsmod"
+      sed -i 's+-fPIE+-fPIC+' configure.ac
+  fi
 }
 
 pkgver() {
