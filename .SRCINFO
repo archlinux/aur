@@ -1,0 +1,41 @@
+pkgbase = mate-session-manager
+	pkgdesc = The MATE Session Handler (GTK2 version)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate
+	license = GPL
+	license = LGPL
+	makedepends = mate-common
+	makedepends = xmlto
+	makedepends = xtrans
+	makedepends = gtk3
+	makedepends = mate-desktop>=1.15
+	makedepends = mate-polkit>=1.15
+	makedepends = mate-settings-daemon>=1.15
+	depends = dbus-glib
+	depends = glib2
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libsm
+	depends = libxtst
+	depends = mate-desktop>=1.15
+	depends = mate-polkit>=1.15
+	depends = mate-settings-daemon>=1.15
+	depends = ttf-dejavu
+	depends = xdg-user-dirs
+	optdepends = lightdm-gtk-greeter: A lightweight display manager
+	optdepends = onboard: On-screen keyboard useful for mobility impaired users
+	optdepends = orca: Screen reader for blind or visually impaired individuals
+	optdepends = xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales
+	provides = mate-session-manager
+	provides = mate-session-manager-gtk3
+	conflicts = mate-session-manager-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-session-manager-1.15.0.tar.xz
+	sha1sums = f8e7383072511117a7f1fe4ca56afe7a5c3c9e35
+
+pkgname = mate-session-manager
+	pkgdesc = The MATE Session Handler (GTK2 version) (GTK3 version)
+
