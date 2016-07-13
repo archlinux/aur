@@ -12,7 +12,7 @@ optdepends=('pulseaudio: PulseAudio support'
             'youtube-dl: Better YouTube support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'cmake')
-source=("http://downloads.sourceforge.net/project/zaps166/QMPlay2/QMPlay2-src-${pkgver}.tar.xz")
+source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
 sha256sums=(34a489937cbcbf650a806f5a23a9d6f26099eca906f42e41ba5c2cfef18a9970)
 
 build()
