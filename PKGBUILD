@@ -16,7 +16,7 @@ license=('EULA')
 groups=('base-devel')
 depends=()
 options=('!strip')
-source=("kinetis-design-studio_${pkgver}-1_amd64.deb")
+source=("file://kinetis-design-studio_${pkgver}-1_amd64.deb")
 sha512sums=('93c0f2f5e78f1cd2d184bf8ab26e72d4565e552a0c36a31d34a9b9b35e5c2d04cab41b1c5e3c37d9d5e9f653124b33db6a2f3224a30424ed53a1d8d811f70e5c')
 
 package() {
