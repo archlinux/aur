@@ -8,7 +8,7 @@ pkgbase = mate-icon-theme-faenza-1.15-gtk3
 	license = LGPL
 	makedepends = git
 	makedepends = icon-naming-utils
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	depends = gtk-update-icon-cache
 	provides = mate-icon-theme-faenza
 	provides = mate-icon-theme-faenza-gtk3
