@@ -1,4 +1,4 @@
-pkgbase = mate-screensaver
+pkgbase = mate-screensaver-1.15-gtk3
 	pkgdesc = Screensaver for MATE
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -24,6 +24,6 @@ pkgbase = mate-screensaver
 	source = http://pub.mate-desktop.org/releases/1.15/mate-screensaver-1.15.0.tar.xz
 	sha1sums = 8cf4d7faff9b9bec37d007cd1320673205824b66
 
-pkgname = mate-screensaver
+pkgname = mate-screensaver-1.15-gtk3
 	pkgdesc = Screensaver for MATE (GTK3 version)
 
