@@ -30,7 +30,7 @@ prepare() {
 
 prepare() {
     cd "${srcdir}"
-    mv "${pkgname}-${pkgver}" "${_pkgbase}-gtk3"
+    mv "${_pkgbase}-${pkgver}" "${_pkgbase}-gtk3"
     cd "${srcdir}/${_pkgbase}-gtk3"
     #Work around a problem where the .sgml fails to parse.
     sed -e 's:@HAVE_DOCBOOK2MAN_TRUE@.*::' -i man/Makefile.in
