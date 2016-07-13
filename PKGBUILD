@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=18.2.0
+pkgver=18.3.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -11,13 +11,13 @@ url="https://github.com/itchio/itch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'p7zip')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'ruby' 'ruby-bundler')
+makedepends=('nodejs' 'nodejs-grunt-cli' 'npm')
 options=('!strip')
 install="itch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('f5828b0c7fd0cfb979ddb0b466d9625f7f2ffe222f7ac6ea6ebce726b5c80e0e')
+sha256sums=('2842fccc90cb2cad86cbbe4492780a19cb580edfee611220aad27210a229d5a9')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,18 +34,18 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}"
-  export CI_BUILD_TAG="v18.2.0"
+  export CI_BUILD_TAG="v18.3.0"
   export CI_CHANNEL="stable"
 
-  release/ci-compile.rb
-  release/ci-generate-linux-extras.rb
+  release/ci-compile.js
+  release/ci-generate-linux-extras.js
 
   grunt -v "electron:linux-${_ELECTRON_ARCH}"
 }
 
 check() {
   cd "${srcdir}/itch-${pkgver}"
-  npm test
+  node test/runner.js
 }
 
 package() {
