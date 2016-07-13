@@ -1,17 +1,16 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=git-remote-gcrypt-git
 _gitname=git-remote-gcrypt
-pkgver=20150101.r1.ge914827
+pkgver=1.0.0.r2.gaaa874f
+epoch=1
 pkgrel=1
 pkgdesc="A git remote helper for GPG-encrypted remotes."
 arch=(any)
-# Currently, there’s no canonical upstream for git-remote-gcrypt. For now,
-# use Azulinho’s fork, which provides some commits for GPG2 compatibility.
-url=https://github.com/Azulinho/git-remote-gcrypt
+url=https://spwhitton.name/tech/code/git-remote-gcrypt
 license=(GPL)
 makedepends=(git python-docutils)
 depends=(git gnupg bash)
-source=(git+https://github.com/Azulinho/git-remote-gcrypt)
+source=(git+https://github.com/spwhitton/git-remote-gcrypt)
 md5sums=(SKIP)
 
 
