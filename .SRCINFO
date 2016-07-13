@@ -6,7 +6,7 @@ pkgbase = libmateweather-1.15-gtk3
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	depends = dconf
 	depends = gtk3
 	depends = libsoup
