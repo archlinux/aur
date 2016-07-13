@@ -1,6 +1,6 @@
 pkgbase = kpm
 	pkgdesc = CLI to deploy and manage applications stack on Kubernetes
-	pkgver = v0.16.0
+	pkgver = v0.17.0
 	pkgrel = 1
 	url = https://github.com/kubespray/kpm
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = kpm
 	depends = python2-tabulate
 	depends = python2-termcolor
 	options = !emptydirs
-	source = kpm::https://github.com/kubespray/kpm/archive/v0.16.0.zip
-	sha256sums = c5da3b0a6f55228bf55039ee97786e624b9b8dbfd0e930d617bc412baedc30d4
+	source = kpm::https://github.com/kubespray/kpm/archive/v0.17.0.zip
+	sha256sums = 58b07746033558ee0b709e31a0329611102c8bacf612f5b541be397f7b8968f8
 
 pkgname = kpm
 
