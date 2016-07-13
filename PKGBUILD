@@ -9,7 +9,7 @@ url="http://sourceforge.net/projects/tunesviewer/"
 options=('!strip')
 
 source=("http://tenet.dl.sourceforge.net/project/tunesviewer/${pkgname}_${pkgver}.deb")
-sha1sums=('92f756ea12acce46f76008da88413edb8546ec50')
+sha1sums=('258F1CF066C2BAC39292627D2BE2E8E97380FA66')
 
 depends=("python2" "pygtk" "python2-lxml" "pywebkitgtk")
 
