@@ -1,10 +1,6 @@
 # Maintainer: Erez Raviv (erezraviv@gmail.com)
-# yes, I know the previous version had the PKGBUILD script look for the latest revision.  
-# yes, this is more hard coded but this way when the upstream code gets updated (no - they don't do it every day) 
-#   this PKGBUILD is updated as well and this will let helpers know that there is anew verion.  No not really the "arch way"
-#   but neither are helpers :)
 pkgname=chirp-daily
-pkgver=20160706
+pkgver=20160713
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
 arch=('any')
@@ -15,8 +11,8 @@ options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-sha1sums=("99c983471914017cc0f3b3f006a6de2101e95d9e")
-source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20160706/chirp-daily-20160706.tar.gz")
+sha1sums=("70bba3a38ab5612b98997edcde76d2eef2a27eef")
+source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20160713/chirp-daily-20160713.tar.gz")
 
 build() {
   tar zxvf $pkgname-$pkgver.tar.gz
