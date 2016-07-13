@@ -6,7 +6,7 @@ pkgbase = python-caja-1.15-gtk3
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = caja>=1.15
+	depends = caja-1.15-gtk3
 	depends = python2-gobject
 	depends = mate-common
 	provides = python-caja
