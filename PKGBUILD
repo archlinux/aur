@@ -13,9 +13,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libsm' 'libxtst'
-         'mate-desktop>=1.15' 'mate-polkit>=1.15' 'mate-settings-daemon>=1.15'
+         'mate-desktop-1.15-gtk3' 'mate-polkit-1.15-gtk3' 'mate-settings-daemon-1.15-gtk3'
          'ttf-dejavu' 'xdg-user-dirs')
-makedepends=('mate-common' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.15' 'mate-polkit>=1.15' 'mate-settings-daemon>=1.15')
+makedepends=('mate-common' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop-1.15-gtk3' 'mate-polkit-1.15-gtk3' 'mate-settings-daemon-1.15-gtk3')
 optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'onboard: On-screen keyboard useful for mobility impaired users'
             'orca: Screen reader for blind or visually impaired individuals'
