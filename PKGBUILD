@@ -24,11 +24,11 @@ sha1sums=('2c52fded9b5c4b6967113727ba0047590b1415ca')
 
 prepare() {
     cd "${srcdir}"
-    mv "${pkgname}-${pkgver}" "${pkgname}-gtk3"
+    mv "${_pkgbase}-${pkgver}" "${_pkgbase}-gtk3"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-gtk3"
+    cd "${srcdir}/${_pkgbase}-gtk3"
     ./configure \
         --prefix=/usr \
         --localstatedir=/var \
