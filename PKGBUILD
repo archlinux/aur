@@ -1,6 +1,6 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
-pkgname='php-trace'
+pkgname='php56-trace'
 pkgver='0.3.0'
 pkgrel='1'
 pkgdesc='A tracing and troubleshooting tool for PHP scripts'
