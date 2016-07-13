@@ -1,4 +1,4 @@
-pkgbase = engrampa
+pkgbase = engrampa-1.15-gtk3
 	pkgdesc = Archive manipulator for MATE (GTK2 version)
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -33,6 +33,6 @@ pkgbase = engrampa
 	sha1sums = bbe49dc29e4f1cbf85d3cefab2a9056612970268
 	sha1sums = 219b05a979bf6f249aaae27964f02345fd81168d
 
-pkgname = engrampa
+pkgname = engrampa-1.15-gtk3
 	pkgdesc = Archive manipulator for MATE (GTK2 version) (GTK3 version)
 
