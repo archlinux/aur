@@ -1,15 +1,18 @@
 pkgbase = sqlectron-gui
 	pkgdesc = A simple and lightweight SQL client desktop with cross database and platform support.
-	pkgver = 1.11.0
-	pkgrel = 1
+	pkgver = 1.11.2
+	pkgrel = 2
 	url = https://sqlectron.github.io/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
 	depends = libnotify
-	source = https://github.com/sqlectron/sqlectron-gui/releases/download/v1.11.0/Sqlectron-1.11.0.deb
 	source = Sqlectron.sh
-	md5sums = 98d393328a4b7a0871a8a5e2762d4465
 	md5sums = f0770e47e7ad5926d24cf9953c1ceb71
+	source_i686 = https://github.com/sqlectron/sqlectron-gui/releases/download/v1.11.2/Sqlectron-1.11.2-ia32.deb
+	md5sums_i686 = 3d337882cfdece7abf268fe4a37bf21c
+	source_x86_64 = https://github.com/sqlectron/sqlectron-gui/releases/download/v1.11.2/Sqlectron-1.11.2.deb
+	md5sums_x86_64 = fd0102f2de072ef54fce0007ede7317e
 
 pkgname = sqlectron-gui
 

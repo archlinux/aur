@@ -1,17 +1,18 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=sqlectron-gui
-pkgver=1.11.0
-pkgrel=1
+pkgver=1.11.2
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
-arch=("any")
+arch=('i686' 'x86_64')
 url="https://sqlectron.github.io/"
 license=("MIT")
 
-source=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.deb"
-        "Sqlectron.sh")
-md5sums=('98d393328a4b7a0871a8a5e2762d4465'
-         'f0770e47e7ad5926d24cf9953c1ceb71')
-
+source=("Sqlectron.sh")
+source_x86_64=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.deb")
+source_i686=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver-ia32.deb")
+md5sums=('f0770e47e7ad5926d24cf9953c1ceb71')
+md5sums_i686=('3d337882cfdece7abf268fe4a37bf21c')
+md5sums_x86_64=('fd0102f2de072ef54fce0007ede7317e')
 
 depends=('libnotify')
 
@@ -22,8 +23,9 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -dm 775 "$pkgdir/opt"
+  install -dm 755 "$pkgdir/opt"
   cp -rf "$srcdir/opt/Sqlectron" "$pkgdir/opt"
+  install -dm 775 "$pkgdir/opt/Sqlectron"
   install -dm 755 "$pkgdir/usr/bin/"
   install -Dm 775 "Sqlectron.sh" "$pkgdir/usr/bin/Sqlectron"
   install -Dm 644 "$srcdir/usr/share/applications/Sqlectron.desktop" "$pkgdir/usr/share/applications/Sqlectron.desktop"
