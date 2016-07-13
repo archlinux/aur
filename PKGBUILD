@@ -33,7 +33,7 @@ build() {
     make
 }
 
-package_mate-notification-daemon() {
+package() {
     pkgdesc+=' (GTK3 version [EXPERIMENTAL])'
     groups=('mate')
     cd "${srcdir}/${_pkgbase}-gtk3"

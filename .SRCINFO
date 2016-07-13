@@ -1,4 +1,4 @@
-pkgbase = mate-notification-daemon
+pkgbase = mate-notification-daemon-1.15-gtk3
 	pkgdesc = Notification daemon for MATE
 	pkgver = 1.15.1
 	pkgrel = 1
@@ -24,7 +24,7 @@ pkgbase = mate-notification-daemon
 	source = http://pub.mate-desktop.org/releases/1.15/mate-notification-daemon-1.15.1.tar.xz
 	sha1sums = ffb3d87230fb5db38a581ddfc8199efc872cf472
 
-pkgname = mate-notification-daemon
+pkgname = mate-notification-daemon-1.15-gtk3
 	pkgdesc = Notification daemon for MATE (GTK3 version [EXPERIMENTAL])
 	groups = mate
 
