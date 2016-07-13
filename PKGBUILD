@@ -3,14 +3,14 @@
 
 _ver=1.15
 _pkgbase=mate-polkit
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="PolicyKit integration for the MATE desktop"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
-conflicts=("${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('gtk3' 'polkit' 'accountsservice')
 makedepends=('gobject-introspection' 'mate-common-1.15-gtk3')
