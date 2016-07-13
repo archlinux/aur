@@ -1,0 +1,33 @@
+pkgbase = mate-utils
+	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = mate-common
+	makedepends = mate-panel>=1.15
+	makedepends = rarian
+	makedepends = yelp-tools
+	makedepends = gtk3
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libcanberra
+	depends = libgtop
+	depends = libsm
+	depends = zlib
+	optdepends = mate-panel: Look up words in dictionaries from the panel
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-utils
+	provides = mate-utils-gtk3
+	conflicts = mate-utils-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-utils-1.15.0.tar.xz
+	sha1sums = 20c863e3bc944cb291edb734389079a1330bc6cc
+
+pkgname = mate-utils
+	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files (GTK3 version)
+
