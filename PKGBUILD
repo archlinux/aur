@@ -1,19 +1,18 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=ignuit
-pkgver=2.20.0
+pkgver=2.24.2
 pkgrel=1
 pkgdesc="A memorization aid based on the Leitner flashcard system"
 arch=('i686' 'x86_64')
 url="http://homepages.ihug.co.nz/~trmusson/programs.html#ignuit"
 license=('GPL')
 depends=('gconf' 'gnome-doc-utils' 'gstreamer0.10-base' 'hicolor-icon-theme' 'intltool' 'libgnomeui' 'libglade' 'libxslt')
-install=$pkgname.install
 source=(http://homepages.ihug.co.nz/~trmusson/stuff/$pkgname-$pkgver.tar.gz
         $pkgname.desktop
         http://homepages.ihug.co.nz/~trmusson/$pkgname/countries_and_capitals-en.xml
         http://homepages.ihug.co.nz/~trmusson/$pkgname/numbers_days_months-en_ru-without_audio.xml)
-sha256sums=('5dc75cef0707677421c272c430cebf5c3730cbcfaeba6428fe14f6bd085d3630'
+sha256sums=('71d6b21f75a927ab733084603659cf8e0360cad8f83fef62853d96ed7834eebe'
             '89c160391f5d39b47a9b0ce6dc28080d96acebee356d1a7372a18a8511fea935'
             '60f82b36b02bfa504f5a3f9f0c1c1d96856f675470ecd5fd56dbf4c185e381e7'
             '77523badda6c08af9728f1f45defc04c1c609154cdb285088228f96dc1930191')
