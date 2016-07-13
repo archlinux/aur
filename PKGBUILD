@@ -4,25 +4,24 @@ pkgname=rsbot
 pkgver=7029
 pkgrel=1
 pkgdesc="The world's most popular RuneScape® bot since 2006"
-arch=(any)
+arch=('any')
 url="http://www.powerbot.org/"
-license=("Custom")
-depends=(
-  'java-runtime'
-)
-
-source=("http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-${pkgver}.jar" "icon.png" "rsbot.desktop")
+license=("custom")
+depends=('java-runtime')
+noextract=("RSBot-${pkgver}.jar")
+source=("http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-${pkgver}.jar"
+        'icon.png'
+        'rsbot.desktop')
 md5sums=('41d93b6f63def11e633bb3280dfbbbc3'
          '8cb7793ff1e3ab3057bb9e1218d71a87'
-         'e86b4f975c1ae3ad22d6b00eb0d3a987')
+         '7a78455bf7f06bdac59b8699eeab362d')
 
 package() {
-  cd $srcdir
-  mv RSBot* rsbot.jar
+  cd "${srcdir}"
 
-  mkdir -p "${pkgdir}/opt/rsbot/"
+  mkdir -p "${pkgdir}/usr/share/rsbot/"
 
-  install -D -m644 "rsbot.jar" "${pkgdir}/opt/rsbot/"
+  install -D -m644 "RSBot-${pkgver}.jar" "${pkgdir}/usr/share/rsbot/rsbot.jar"
   install -D -m644 "rsbot.desktop" "${pkgdir}/usr/share/applications/rsbot.desktop"
   install -D -m644 "icon.png" "${pkgdir}/usr/share/pixmaps/rsbot.png"
 }
