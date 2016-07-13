@@ -4,7 +4,7 @@ _gtk3_min='3.18'
 _gtk3_max='3.21'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="${_gtk3_max}.3.62"
+pkgver="${_gtk3_max}.3.68"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -14,15 +14,14 @@ depends=("gtk2>=${_gtk2_min}"
          "gtk3>=${_gtk3_min}"
          "gtk3<=${_gtk3_max}.99"
          'gtk-engines>=2.21.0'
-         'gtk-engine-murrine>=0.98.2')
+         'gtk-engine-murrine>=0.98.1')
 optdepends=("gnome-shell>=${_gtk3_min}: The GNOME Shell"
             "gnome-flashback>=${_gtk3_min}: The GNOME flashback shell"
             'budgie-desktop>=10.2.4: The Budgie desktop'
             'cinnamon>=2.8: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
             'paper-icon-theme: A fitting icon theme'
-            'gnome-tweak-tool: A graphical tool to tweak gnome settings'
-            "unity>=7.4.0: Ubuntu's Unity desktop")
+            'gnome-tweak-tool: A graphical tool to tweak gnome settings')
 makedepends=('glib2>=2.48.0'
              'libxml2'
              'ruby-bundler>=1.11.0'
@@ -30,7 +29,7 @@ makedepends=('glib2>=2.48.0'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('c0d3010ae9921900dada3c1fb67280d81a602df0203f6c3fd7d501a127fa2a01'
+sha256sums=('a65922a6d6d30d4d351d6640c4f72df38e796b7fb56a797a0b4079cb95f1f156'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 _bundle="ruby-bundle"
