@@ -1,4 +1,4 @@
-pkgbase = mate-session-manager
+pkgbase = mate-session-manager-1.15-gtk3
 	pkgdesc = The MATE Session Handler (GTK2 version)
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -36,6 +36,6 @@ pkgbase = mate-session-manager
 	source = http://pub.mate-desktop.org/releases/1.15/mate-session-manager-1.15.0.tar.xz
 	sha1sums = f8e7383072511117a7f1fe4ca56afe7a5c3c9e35
 
-pkgname = mate-session-manager
+pkgname = mate-session-manager-1.15-gtk3
 	pkgdesc = The MATE Session Handler (GTK2 version) (GTK3 version)
 
