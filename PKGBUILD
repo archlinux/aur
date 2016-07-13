@@ -10,14 +10,14 @@ makedepends=('git')
 source=("genwipe.sh::git+https://github.com/AndyCrowd/genwipe.sh.git")
 license=('GPL3')
 md5sums=('SKIP')
-url="https://github.com/AndyCrowd/list-desktop-files"
+url="https://github.com/AndyCrowd/genwipe.sh"
 
 package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir/usr/share/doc/$pkgname"
 
-  install -m755 "$srcdir/$pkgname/lsdesktopf" "$pkgdir/usr/bin"
+  install -m755 "$srcdir/$pkgname/genwipe.sh" "$pkgdir/usr/bin"
   install -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
