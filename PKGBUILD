@@ -3,13 +3,14 @@
 
 _ver=3.20
 _pkgbase=mate-themes
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.8
 pkgrel=1
 pkgdesc="Default themes for the MATE desktop"
 url="http://mate-desktop.org"
 arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine' 'gtk-update-icon-cache'
          'librsvg' 'mate-icon-theme')
