@@ -1,4 +1,4 @@
-pkgbase = mate-user-share
+pkgbase = mate-user-share-1.15-gtk3
 	pkgdesc = User level public file sharing via WebDAV for MATE.
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -27,6 +27,6 @@ pkgbase = mate-user-share
 	source = http://pub.mate-desktop.org/releases/1.15/mate-user-share-1.15.0.tar.xz
 	sha1sums = 149527ef51c89e5838efd0939204a5a5bd66e605
 
-pkgname = mate-user-share
+pkgname = mate-user-share-1.15-gtk3
 	pkgdesc = User level public file sharing via WebDAV for MATE. (GTK3 version)
 

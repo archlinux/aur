@@ -37,7 +37,7 @@ build() {
     make
 }
 
-package_mate-user-share() {
+package() {
     pkgdesc+=' (GTK3 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
