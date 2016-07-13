@@ -1,0 +1,14 @@
+pkgbase = dirr
+	pkgdesc = List directories and files in *nix system. A colourful alternative for /bin/ls
+	pkgver = 3.36.6
+	pkgrel = 1
+	url = http://bisqwit.iki.fi/source/dirr.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = clang
+	source = http://bisqwit.iki.fi/src/arch/dirr-3.36.6.tar.bz2
+	md5sums = b5a083dfaf2b30f74c002d58443d5406
+
+pkgname = dirr
+
