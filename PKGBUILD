@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libhaiku
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Poetic error messages"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(glibc make coreutils gcc 'texinfo>=4.11')
 install=$pkgname.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(2d4b2f5fc669e3f100b917f84c00340a81cc5e6b2ccac3ce69cad51ed6871bc5)
+sha256sums=(40cc93f224038a2374006518d55ff106b225600e9bc7a0df27653a52d5a6e8a8)
 
 
 build() {
