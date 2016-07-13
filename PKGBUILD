@@ -5,7 +5,7 @@
 
 _gemname=msgpack
 pkgname=ruby-$_gemname
-pkgver=0.7.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=("ruby")
 license=('Apache 2.0')
 source=("http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=("ccb200af9a4fafad22af4c23617a7d41c955d8de6973ee597ef27fb0bf7d0721")
+sha256sums=("14a6f9fefc354f169ab016258677b25ae082cf8af9ff667166cc50679686f4bd")
 
 package() {
         cd "$srcdir"
