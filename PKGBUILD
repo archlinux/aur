@@ -3,7 +3,7 @@
 
 _ver=1.15
 _pkgbase=mate-media
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 url="http://mate-desktop.org"
@@ -16,7 +16,7 @@ makedepends=('mate-common' 'gtk3' 'libunique3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
-conflicts=("${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 sha1sums=('13043b1dcf8e4fbe93dba44566eecd1e70870131')
 
 prepare() {
