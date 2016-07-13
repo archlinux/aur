@@ -19,7 +19,7 @@ depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime
 makedepends=('gobject-introspection' 'mate-common' 'yelp-tools' 'gtk3' 'mate-desktop>=1.15')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('2c52fded9b5c4b6967113727ba0047590b1415ca')
 
 prepare() {
