@@ -1,4 +1,4 @@
-pkgbase = mate-menus
+pkgbase = mate-menus-1.15-gtk3
 	pkgdesc = MATE menu specifications
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = mate-menus
 	source = http://pub.mate-desktop.org/releases/1.15/mate-menus-1.15.0.tar.xz
 	sha1sums = 6083819d5e3e07c6317a49247fc63c178f80db86
 
-pkgname = mate-menus
+pkgname = mate-menus-1.15-gtk3
 
