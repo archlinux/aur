@@ -1,0 +1,45 @@
+# Maintainer:  eadrom <eadrom@archlinux.info>
+# Contributor:  Martin Wimpress <code@flexion.org>
+
+_ver=1.15
+_pkgbase=eom
+pkgname="${_pkgbase}-1.15-gtk3"
+pkgver=${_ver}.0
+pkgrel=1
+pkgdesc="An image viewing and cataloging program for MATE"
+url="http://mate-desktop.org"
+arch=('i686' 'x86_64')
+provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}-gtk3")
+license=('GPL')
+depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime'
+         'gtk3' 'gtk-update-icon-cache' 'exempi' 'lcms2' 'libexif' 'libjpeg-turbo'
+         'librsvg' 'mate-desktop>=1.15' 'pygtk' 'python2-gobject2'
+         'startup-notification' 'zlib')
+makedepends=('gobject-introspection' 'mate-common' 'yelp-tools' 'gtk3' 'mate-desktop>=1.15')
+optdepends=('yelp: for reading MATE help documents')
+groups=('mate-extra')
+source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('2c52fded9b5c4b6967113727ba0047590b1415ca')
+
+prepare() {
+    cd "${srcdir}"
+    mv "${pkgname}-${pkgver}" "${pkgname}-gtk3"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}-gtk3"
+    ./configure \
+        --prefix=/usr \
+        --localstatedir=/var \
+        --with-gtk=3.0 \
+        --with-librsvg \
+        --disable-python
+    make
+}
+
+package_eom() {
+    pkgdesc+=' (GTK3 version)'
+    cd "${srcdir}/${_pkgbase}-gtk3"
+    make DESTDIR="${pkgdir}" install
+}
