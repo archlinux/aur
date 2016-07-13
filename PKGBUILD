@@ -1,7 +1,7 @@
 # Maintainer: Gus deMayo <gus@thegusproject.xyz>
 
 pkgname=tunesviewer
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="TunesViewer is a small, easy to use program to access iTunes-university media and podcasts in Linux."
 arch=('x86_64' 'i686')
