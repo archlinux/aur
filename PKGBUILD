@@ -2,7 +2,7 @@
 
 pkgname=('python-jwt' 'python2-jwt')
 _pkgbase='pyjwt'
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="JSON Web Token implementation"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/jpadilla/pyjwt"
 license=('MIT')
 options=(!emptydirs)
 source=("https://github.com/jpadilla/pyjwt/archive/${pkgver}.tar.gz")
-sha256sums=('821c2ed6cb8b6fd1c817832551ff459626ab58edb2642db0fd6f43bd320cf9be')
+sha256sums=('caa35e98dafd811fea665cea0311111fc521187b25805f84d46433de71e412a9')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-jwt() {
