@@ -14,9 +14,9 @@ conflicts=("${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime'
          'gtk3' 'gtk-update-icon-cache' 'exempi' 'lcms2' 'libexif' 'libjpeg-turbo'
-         'librsvg' 'mate-desktop>=1.15' 'pygtk' 'python2-gobject2'
+         'librsvg' 'mate-desktop-1.15-gtk3' 'pygtk' 'python2-gobject2'
          'startup-notification' 'zlib')
-makedepends=('gobject-introspection' 'mate-common' 'yelp-tools' 'gtk3' 'mate-desktop>=1.15')
+makedepends=('gobject-introspection' 'mate-common' 'yelp-tools' 'gtk3' 'mate-desktop-1.15-gtk3')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
