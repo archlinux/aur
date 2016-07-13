@@ -15,7 +15,7 @@ pkgbase = marco-1.15-gtk3
 	depends = libice
 	depends = libsm
 	depends = libxt
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = startup-notification
 	depends = zenity
 	optdepends = yelp: for reading MATE help documents
