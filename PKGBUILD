@@ -13,7 +13,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'libcanberra' 'libgtop' 'libice' 'libsm' 'libxt'
-         'mate-desktop>=1.15' 'startup-notification' 'zenity')
+         'mate-desktop-1.15-gtk3' 'startup-notification' 'zenity')
 makedepends=('mate-common' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
