@@ -1,0 +1,41 @@
+pkgbase = mate-panel
+	pkgdesc = The MATE Panel
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = mate-common>=1.15
+	makedepends = yelp-tools
+	makedepends = gtk3
+	makedepends = libmateweather>=1.15
+	makedepends = libwnck3
+	makedepends = mate-desktop>=1.15
+	depends = dbus-glib
+	depends = dconf
+	depends = glib2
+	depends = gtk2
+	depends = gtk-update-icon-cache
+	depends = libwnck3
+	depends = libcanberra
+	depends = libice
+	depends = libmateweather>=1.15
+	depends = librsvg
+	depends = libsm
+	depends = libsoup
+	depends = libxau
+	depends = mate-menus>=1.15
+	depends = mate-desktop>=1.15
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-panel
+	provides = mate-panel-gtk3
+	conflicts = mate-panel-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-panel-1.15.0.tar.xz
+	sha1sums = 58d011e2340d17e5c678725c22bfbddc96a6f7d4
+
+pkgname = mate-panel
+	pkgdesc = The MATE Panel (GTK3 version)
+
