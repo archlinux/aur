@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}-gtk3")
 license=('GPL')
 depends=('bzip2' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'gzip'
          'libarchive' 'tar')
-makedepends=('caja>=1.15' 'yelp-tools')
+makedepends=('caja-1.15-gtk3' 'yelp-tools')
 optdepends=('caja: file archiver extension'
             'unrar: for RAR uncompression'
             'zip: for ZIP archives' 'unzip: for ZIP archives'
