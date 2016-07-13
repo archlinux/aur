@@ -1,0 +1,13 @@
+pkgbase = multichain-bin
+	pkgdesc = Open platform for building blockchains
+	pkgver = alpha_21
+	pkgrel = 1
+	url = http://www.multichain.com/
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs>=6.0.0
+	source = http://www.multichain.com/download/multichain-1.0-alpha-21.tar.gz
+	md5sums = 43314e5e3bcd38c4b4c0ec43d2ba76fe
+
+pkgname = multichain-bin
+
