@@ -6,9 +6,9 @@ pkgbase = mozo-1.15-gtk3
 	arch = any
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	depends = gtk-update-icon-cache
-	depends = mate-menus>=1.15
+	depends = mate-menus-1.15-gtk3
 	depends = python2-gobject
 	provides = mozo
 	provides = mozo-gtk3
