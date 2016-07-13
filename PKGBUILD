@@ -11,7 +11,7 @@ url="http://sourceforge.net/projects/opencore-amr/"
 license=('APACHE')
 depends=('glibc')
 options=('!emptydirs' '!libtool')
-source=(http://downloads.sourceforge.net/opencore-amr/${pkgname}-${pkgver}.tar.gz)
+source=(https://repo.dray.be/package-files/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('5652b391e0f0e296417b841b02987d3fd33e6c0af342c69542cbb016a71d9d4e')
 
 build() {
