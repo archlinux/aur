@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=ec-devutil-git
-pkgver=r5364.d55bd1f
+pkgver=r5566.3cb77ee
 pkgrel=1
 pkgdesc='Host development utilities for Chromium OS EC'
 url='https://www.chromium.org/chromium-os/ec-development'
