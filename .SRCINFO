@@ -1,0 +1,32 @@
+pkgbase = mate-user-share
+	pkgdesc = User level public file sharing via WebDAV for MATE.
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = caja>=1.15
+	makedepends = libcanberra
+	makedepends = libnotify
+	makedepends = mate-common
+	makedepends = yelp-tools
+	makedepends = libunique3
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = dconf
+	depends = glib2
+	depends = gtk-update-icon-cache
+	depends = libunique3
+	depends = mod_dnssd
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-user-share
+	provides = mate-user-share-gtk3
+	conflicts = mate-user-share-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-user-share-1.15.0.tar.xz
+	sha1sums = 149527ef51c89e5838efd0939204a5a5bd66e605
+
+pkgname = mate-user-share
+	pkgdesc = User level public file sharing via WebDAV for MATE. (GTK3 version)
+
