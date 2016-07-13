@@ -7,7 +7,7 @@ pkgbase = mate-user-share-1.15-gtk3
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = caja>=1.15
+	makedepends = caja-1.15-gtk3
 	makedepends = libcanberra
 	makedepends = libnotify
 	makedepends = mate-common
