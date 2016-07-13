@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('dconf' 'gtk3' 'iso-codes' 'libxklavier')
 makedepends=('mate-common>=1.15')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('79886718fdca006066897b78beb4d77c939817d3')
 
 prepare() {
