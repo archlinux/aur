@@ -1,4 +1,4 @@
-pkgbase = libmatemixer
+pkgbase = libmatemixer-1.15-gtk3
 	pkgdesc = Mixer library for MATE Desktop
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -11,9 +11,9 @@ pkgbase = libmatemixer
 	depends = libpulse
 	provides = libmatemixer
 	provides = libmatemixer-gtk3
-	conflicts = libmatemixer-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/libmatemixer-1.15.0.tar.xz
+	conflicts = libmatemixer-1.15-gtk3-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/libmatemixer-1.15-gtk3-1.15.0.tar.xz
 	sha1sums = 925b1ccff7ced44458dfbb82550a47b939de306d
 
-pkgname = libmatemixer
+pkgname = libmatemixer-1.15-gtk3
 
