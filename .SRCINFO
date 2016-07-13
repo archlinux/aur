@@ -1,4 +1,4 @@
-pkgbase = marco
+pkgbase = marco-1.15-gtk3
 	pkgdesc = A window manager for MATE
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -25,6 +25,6 @@ pkgbase = marco
 	source = http://pub.mate-desktop.org/releases/1.15/marco-1.15.0.tar.xz
 	sha1sums = 44e29286538caac21597e543e208bd99254e7b9a
 
-pkgname = marco
+pkgname = marco-1.15-gtk3
 	pkgdesc = A window manager for MATE (GTK3 version)
 
