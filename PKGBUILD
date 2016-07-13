@@ -19,7 +19,7 @@ sha1sums=('f70a0efc5c484f265eea08f2a8315b2cfc4cb99f')
 
 prepare() {
     cd "${srcdir}"
-    mv "${pkgname}-${pkgver}" "${_pkgbase}-gtk3"
+    mv "${_pkgbase}-${pkgver}" "${_pkgbase}-gtk3"
 }
 
 build() {
