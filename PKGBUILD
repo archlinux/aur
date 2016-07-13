@@ -4,7 +4,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-git
-pkgver=7.1.P1.r189.g5ac712d
+pkgver=7.2.P1.r126.g6310ef2
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
@@ -24,24 +24,28 @@ source=('openssh::git://anongit.mindrot.org/openssh.git'
         'sshd.conf'
         'sshd.pam')
 sha256sums=('SKIP'
-            'ff3cbdd0e59ff7dac4dc797d5c0f2b1db4117ddbb49d52f1c4f1771961903878'
+            '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             '69cc2abaaae0aa8071b8eac338b2df725f60ce73381843179b74eaac78ba7f1d'
             'c5ed9fa629f8f8dbf3bae4edbad4441c36df535088553fe82695c52d7bde30aa'
             'de14363e9d4ed92848e524036d9e6b57b2d35cc77d377b7247c38111d2a3defd'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
-
-backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
-
-install=install
+backup=('etc/ssh/ssh_config'
+	'etc/ssh/sshd_config'
+	'etc/pam.d/sshd')
 
 pkgver() {
 	cd openssh/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
