@@ -1,4 +1,4 @@
-pkgbase = mate-themes
+pkgbase = mate-themes-1.15-gtk3
 	pkgdesc = Default themes for the MATE desktop
 	pkgver = 3.20.8
 	pkgrel = 1
@@ -16,8 +16,8 @@ pkgbase = mate-themes
 	depends = mate-icon-theme
 	provides = mate-themes
 	provides = mate-themes-gtk3
-	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-3.20.8.tar.xz
+	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-1.15-gtk3-3.20.8.tar.xz
 	sha1sums = b135248110ddca8083f66d8d206aa51ef01d9421
 
-pkgname = mate-themes
+pkgname = mate-themes-1.15-gtk3
 
