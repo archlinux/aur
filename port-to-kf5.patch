@@ -1,0 +1,55 @@
+diff -ur kde-odf-thumbnail-1.0.0.old/CMakeLists.txt kde-odf-thumbnail-1.0.0/CMakeLists.txt
+--- kde-odf-thumbnail-1.0.0.old/CMakeLists.txt	2010-01-20 15:41:31.000000000 +0100
++++ kde-odf-thumbnail-1.0.0/CMakeLists.txt	2016-03-05 23:49:12.947874730 +0100
+@@ -1,8 +1,18 @@
+ project(OpenDocumentThumbnail)
+ 
+-find_package(KDE4 REQUIRED)
+-include (KDE4Defaults)
++cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++set(QT_MIN_VERSION "5.2.0")
+ 
+-include_directories( ${KDE4_INCLUDES} ${QT_INCLUDES} )
++find_package(ECM 1.0.0 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++
++find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Gui)
++find_package(KF5 REQUIRED COMPONENTS KIO Archive)
++
++add_definitions(${QT_DEFINITIONS} -DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+ 
+ add_subdirectory( src )
+diff -ur kde-odf-thumbnail-1.0.0.old/src/CMakeLists.txt kde-odf-thumbnail-1.0.0/src/CMakeLists.txt
+--- kde-odf-thumbnail-1.0.0.old/src/CMakeLists.txt	2010-01-20 15:44:25.000000000 +0100
++++ kde-odf-thumbnail-1.0.0/src/CMakeLists.txt	2016-03-05 23:48:14.807877671 +0100
+@@ -1,11 +1,11 @@
+ 
+ set(OpenDocumentThumbnail_SRCS opendocumentcreator.cpp)
+ 
+-qt4_add_resources(OpenDocumentThumbnail_SRCS opendocumentthumbnail.qrc)
++qt5_add_resources(OpenDocumentThumbnail_SRCS opendocumentthumbnail.qrc)
+ 
+-kde4_add_plugin(opendocumentthumbnail ${OpenDocumentThumbnail_SRCS})
++add_library(opendocumentthumbnail MODULE ${OpenDocumentThumbnail_SRCS})
+ 
+-target_link_libraries(opendocumentthumbnail ${KDE4_KIO_LIBS} )
++target_link_libraries(opendocumentthumbnail Qt5::Gui KF5::KIOWidgets KF5::Archive)
+ 
+ install(TARGETS opendocumentthumbnail DESTINATION ${PLUGIN_INSTALL_DIR} )
+ 
+diff -ur kde-odf-thumbnail-1.0.0.old/src/opendocumentcreator.cpp kde-odf-thumbnail-1.0.0/src/opendocumentcreator.cpp
+--- kde-odf-thumbnail-1.0.0.old/src/opendocumentcreator.cpp	2010-01-22 21:39:46.000000000 +0100
++++ kde-odf-thumbnail-1.0.0/src/opendocumentcreator.cpp	2016-03-05 23:42:31.955638510 +0100
+@@ -28,7 +29,7 @@
+ 
+ extern "C"
+ {
+-    KDE_EXPORT ThumbCreator *new_creator()
++    Q_DECL_EXPORT ThumbCreator *new_creator()
+     {
+         return new ODFCreator;
+     }
