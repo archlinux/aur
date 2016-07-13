@@ -1,0 +1,24 @@
+diff -aur ultradefrag-5.0.0AB.7.pristine/src/Makefile ultradefrag-5.0.0AB.7.new/src/Makefile
+--- ultradefrag-5.0.0AB.7.pristine/src/Makefile	2011-11-24 04:57:55.000000000 -0600
++++ ultradefrag-5.0.0AB.7.new/src/Makefile	2016-07-11 22:57:15.172203741 -0500
+@@ -24,7 +24,7 @@
+ COPT=-DPPGC=1 -O2
+ GCCOPT=-DPPGC=1 -O2
+ LIB1=/usr/lib64
+-LIB2=/usr/lib/gcc/x86_64-redhat-linux/4.6.0
++LIB2=/usr/lib/gcc/x86_64-pc-linux-gnu/6.1.1
+ NTFSLIB=/lib64/libntfs-3g.so.*.0.0
+ 
+ A=console.a udefrag.a zenwinx.a wincalls.a
+diff -aur ultradefrag-5.0.0AB.7.pristine/src/wincalls/ntfs-3g.c ultradefrag-5.0.0AB.7.new/src/wincalls/ntfs-3g.c
+--- ultradefrag-5.0.0AB.7.pristine/src/wincalls/ntfs-3g.c	2011-11-26 07:56:37.000000000 -0600
++++ ultradefrag-5.0.0AB.7.new/src/wincalls/ntfs-3g.c	2016-07-11 22:57:54.575886431 -0500
+@@ -144,7 +144,7 @@
+ 	ntfs_volume *vol;
+ 
+ 	if (do_nothing)
+-		vol = ntfs_mount(device,MS_RDONLY);
++		vol = ntfs_mount(device,"MS_RDONLY");
+ 	else
+ 		vol = ntfs_mount(device,0);
+ #ifdef NVolSetNoFixupWarn
