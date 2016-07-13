@@ -9,6 +9,7 @@ license=('GPL2')
 depends=('fftw')
 optdepends=('openmp: for OpenMP support')
 provides=($pkgname=$pkgver)
+conflicts=('nfft-git')
 source=("https://www-user.tu-chemnitz.de/~potts/nfft/download/$pkgname-$pkgver.tar.gz")
 md5sums=('8c0516e3252ff39a245e62f1a59d0165')
 
