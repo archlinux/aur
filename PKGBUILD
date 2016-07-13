@@ -13,7 +13,7 @@ arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('desktop-file-utils' 'yelp')
-makedepends=('mate-common>=1.15' 'yelp-tools')
+makedepends=('mate-common-1.15-gtk3' 'yelp-tools')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('b14cab398b894c93a34ced91bd991650686e465f')
 
