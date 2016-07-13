@@ -4,15 +4,14 @@
 # Contributor: Martin Erik Werner ("arand") <martinerikwerner@gmail.com>
 
 pkgname="redeclipse"
-pkgver="1.5.3"
+pkgver="1.5.5"
 pkgrel="1"
 pkgdesc="free, casual arena shooter"
 arch=("i686" "x86_64")
 url="http://redeclipse.net"
-license=("custom" "CC0" "CCPL:by" "CCPL:by-sa" "ZLIB" "MIT")
-makedepends=("ed")
-depends=("sdl_image"  "libgl" "sdl_mixer" "hicolor-icon-theme" "glu")
-install="redeclipse.install"
+license=("ZLIB" "CCPL:by-sa" "CCPL:by" "custom")
+makedepends=("ed" "sdl2_mixer" "sdl2_image" "enet")
+depends=("sdl2_image" "sdl2_mixer" "enet" "hicolor-icon-theme")
 source=("base-${pkgver}.tar.gz::https://github.com/red-eclipse/base/archive/v${pkgver}.tar.gz"
         "acerspyro-${pkgver}.tar.gz::https://github.com/red-eclipse/acerspyro/archive/v${pkgver}.tar.gz"
         "actors-${pkgver}.tar.gz::https://github.com/red-eclipse/actors/archive/v${pkgver}.tar.gz"
@@ -20,6 +19,7 @@ source=("base-${pkgver}.tar.gz::https://github.com/red-eclipse/base/archive/v${p
         "blendbrush-${pkgver}.tar.gz::https://github.com/red-eclipse/blendbrush/archive/v${pkgver}.tar.gz"
         "caustics-${pkgver}.tar.gz::https://github.com/red-eclipse/caustics/archive/v${pkgver}.tar.gz"
         "crosshairs-${pkgver}.tar.gz::https://github.com/red-eclipse/crosshairs/archive/v${pkgver}.tar.gz"
+        "dziq-${pkgver}.tar.gz::https://github.com/red-eclipse/dziq/archive/v${pkgver}.tar.gz"
         "elyvisions-${pkgver}.tar.gz::https://github.com/red-eclipse/elyvisions/archive/v${pkgver}.tar.gz"
         "fonts-${pkgver}.tar.gz::https://github.com/red-eclipse/fonts/archive/v${pkgver}.tar.gz"
         "freezurbern-${pkgver}.tar.gz::https://github.com/red-eclipse/freezurbern/archive/v${pkgver}.tar.gz"
@@ -31,12 +31,14 @@ source=("base-${pkgver}.tar.gz::https://github.com/red-eclipse/base/archive/v${p
         "mayhem-${pkgver}.tar.gz::https://github.com/red-eclipse/mayhem/archive/v${pkgver}.tar.gz"
         "mikeplus64-${pkgver}.tar.gz::https://github.com/red-eclipse/mikeplus64/archive/v${pkgver}.tar.gz"
         "misc-${pkgver}.tar.gz::https://github.com/red-eclipse/misc/archive/v${pkgver}.tar.gz"
+        "nieb-${pkgver}.tar.gz::https://github.com/red-eclipse/nieb/archive/v${pkgver}.tar.gz"
         "nobiax-${pkgver}.tar.gz::https://github.com/red-eclipse/nobiax/archive/v${pkgver}.tar.gz"
         "particles-${pkgver}.tar.gz::https://github.com/red-eclipse/particles/archive/v${pkgver}.tar.gz"
         "philipk-${pkgver}.tar.gz::https://github.com/red-eclipse/philipk/archive/v${pkgver}.tar.gz"
         "projectiles-${pkgver}.tar.gz::https://github.com/red-eclipse/projectiles/archive/v${pkgver}.tar.gz"
         "props-${pkgver}.tar.gz::https://github.com/red-eclipse/props/archive/v${pkgver}.tar.gz"
         "skyboxes-${pkgver}.tar.gz::https://github.com/red-eclipse/skyboxes/archive/v${pkgver}.tar.gz"
+        "snipergoth-${pkgver}.tar.gz::https://github.com/red-eclipse/snipergoth/archive/v${pkgver}.tar.gz"
         "sounds-${pkgver}.tar.gz::https://github.com/red-eclipse/sounds/archive/v${pkgver}.tar.gz"
         "textures-${pkgver}.tar.gz::https://github.com/red-eclipse/textures/archive/v${pkgver}.tar.gz"
         "torley-${pkgver}.tar.gz::https://github.com/red-eclipse/torley/archive/v${pkgver}.tar.gz"
@@ -46,53 +48,59 @@ source=("base-${pkgver}.tar.gz::https://github.com/red-eclipse/base/archive/v${p
         "vanities-${pkgver}.tar.gz::https://github.com/red-eclipse/vanities/archive/v${pkgver}.tar.gz"
         "vegetation-${pkgver}.tar.gz::https://github.com/red-eclipse/vegetation/archive/v${pkgver}.tar.gz"
         "weapons-${pkgver}.tar.gz::https://github.com/red-eclipse/weapons/archive/v${pkgver}.tar.gz"
-        "wicked-${pkgver}.tar.gz::https://github.com/red-eclipse/wicked/archive/v${pkgver}.tar.gz")
-sha256sums=('94b0475c7c161d4fdb59a9ebe0d740ec07b1934abf348d78d4f127f369d912f8'
-            '18718286a72298b0a016d147524bc53094c4ad3897859ec8422131b5acc9bd3f'
-            '34825b5bb7f79bf9518e5e48f01ecb720cc559bb969575b93da05b5305c209cb'
-            '05c5aae92779ef8b6feb74ee396d27001aa8692610c35b33421419dd0d0bc4b2'
-            'c0fb3257fd4a9b425bfa015ff0126807af85dbada89223765689e618ad7d4b72'
-            '25b0366b0e434049d382fdeda0b62e38a7fdadf398d714713d829908f10dbb3f'
-            '732e0a874ad39d4ee329e4b82badd8e3b513ad4a5a6f7ea5c5c2d30a42839e6e'
-            '29d8554151789578cbce17718d911c36e3453ee3b700b96b4ca0b9d4f2391468'
-            'b88246a3a194afd0e3928d447d9e49c8869ce157c005dca2ad7610479344f62a'
-            '9669ca25a3cdffaf6172829a1e04dad51f43bf4bd98b794d1574a18dded0c078'
-            '8d02259d0878b91c2c16b8c323f2bbf8fba521a5694f9bb160ca5f7c32b0bcd2'
-            'a97b45a1e095c11f1b9b5c34ed2f28e6427a784c56fc0a143288638a59cc036a'
-            '539873a19cbafd10499959619199791ebc6feabcde20c4db1e9298dea14c85e4'
-            '21516564ba832507ecb93f05d03e662bd4dc0944d7bc800bc1127c96d941b823'
-            '71a79ec665e99268637952bd883afcda02345c9944494822fe96b45511c410b8'
-            '95a9ce7bfa8bc4e38da8197ef85e530e312ba040cf772bae99e84745cc95c9c2'
-            '57a92abff536d459e413d424e8a948c2951a7f476dbb00831bf54ddfedff42ce'
-            'aec506cf659452a717430fe6104e0624eac5bd59f22c64ca5033d65cb4fc15de'
-            '159e98527ea953e1af8f49808ad61f34d08189b720e070463ff88a4a044b3622'
-            '759b46e2d8edc2ac893dd8fce8820b208789d9bc2c63679db35366b88d1e8d71'
-            'ea4daa2e02c13bbb8d0ba18ad7d3dfdc0f39355dccc36c556bbaec88aeaa13e8'
-            'd2beb17e7b7928718d5c4d9697238027523ddd6a2f168d900b8d599d93ceb075'
-            '79f474367f808faa7293e73851e0331a354760db0dd0b8d061f1d74b921a70e9'
-            'f17df31c857abd7106159e82ba92b252db8ce68df21a893023d3017d8d2ac943'
-            'ebcc960b5e3ecee80e04aec8335554ffdb36ecc030791666903a85cad469dede'
-            'a59c604d134bf0e82d31340878c4790060dc82f7a4417ada1d7782da09b3ae3f'
-            '4607d60be7080b0ac5c6ef801f158d2ba6e79982e9861eecdd15698a5c2d31b3'
-            '78e9bb131fe144b516ce29be6c9f64f2991731e49935576caa3ed999ca2fd377'
-            '638fb7ac0e0d8eb1f13c7a01d00d31ce7844c06d8907ad2a20ea571b094b3b7e'
-            'bd7da14d9e715d6dcc2687921f668739d0ba45a9f01350c1b5347e956648a242'
-            'bcd9a0f22314c0bb98fc193f18f04a3cc9f1aa6b83c70a02de34b779cc166ce1'
-            'c076f3f50caac5bec5889fc8e11028882b7a39cee8560684918c3a0eb847228d'
-            '23d70fb68fe34ba9c952f74b2ec6ca30b9dda8664248db10f5b434cb9c3516be'
-            '0fc5a75c6b0a2a9c90a664e2b9ec958928b3059f03e90228cca547f376532b61')
+        "wicked-${pkgver}.tar.gz::https://github.com/red-eclipse/wicked/archive/v${pkgver}.tar.gz"
+        "redeclipse-1.5.5-build-with-system-enet.patch")
+sha256sums=('26799fa1def529a131f40e19a93db7897ba0c7b91ef81e6d91289a834a318376'
+            'f71e7575605999bf268a85f842b26925479a40280f9c4e8fa937ab5aa229d868'
+            '613b246036de98d223bd8725a5329c7d73544b474f2dde9f0d2812f323ab9449'
+            '04cf453782c6aa39da25e6150b587915e23e65db047ee061a355e9d9fe8be5c7'
+            '7b9dbba44d91201fcf718d110de388a155a87c0702dca6588fad887b6de9e3c3'
+            '9094bf5fba0211dee091c93be876ff18d82018974653238f9bd4b04c0d914b17'
+            'd0b5c2817964d2730c2e2324fa75bacd3ffa1c28e5c53f83f32da4ba0deb6e17'
+            '0629a10b07b5bd0c0efb0b85ca8edef047095d2648da10651c9c2211827acb6c'
+            '29b6b69a4175e37e992e71e96e03354c3ea1bd369dd2b0c9aef83d40585fed3b'
+            'f97d5041083abbc09daf87c5bbe2679c3b74cdd00128197c4be4466552b37b69'
+            '96e3fab4fee56b1ea2782d2a275f99c643aa88d3eb380cccc0ae0a82ff6fc04c'
+            '819de2100643c9a543d735e58362a8ffc74a3c438350dff656ef81ea36dac9d2'
+            '6175081cd3c6fa30d0b315b411f8dedc2fab0e2d58bb0336c5a62ea205a2af31'
+            '406c51a55c4f4bb2810389bb37162157c303b83e889058a57b9379e762dee579'
+            '334dd7f1a52563af4a3b0ba8a73de045262a075cd462046acadafe04b0620239'
+            '94ca178eab91b9765690f45060095f72f2ab682f33c5d3a15522dc58071ca292'
+            '2a03e51b536bc9da2c13e0aaebb2e7f58245814fd26122ce5327629599c9b937'
+            '9a056ba8dece0bee02b6312f39767943a459093ea337d8b511adc131b38f0f10'
+            '184cba7f7dd201ab94ae089251c654f6d1d8bd2dc66d41f3110fea6761d2ae1f'
+            'b559547b0e84dd5f5b4022fe039113fbd0a56c07bbf162ad587b1f1d8ed40bf7'
+            '06ceb535f31ce50879835b2f559072fa0cfb108c4e67b2d517d90852227c76d8'
+            'eda1cba383d02865cab39bc9bc7802df2d61bfa01d1d014aefcf0daaa6b7407a'
+            '926dab518e6d2c2ef88febfe830543ec6c76edd3e585d7ebb253c384fbcc73d4'
+            '6ae53481528c2a116078cbd088d4b0bfcdb28a35234cda06c37f1f25a9da5c17'
+            'de0287f86675084b5bd11eafec4385c04502698c719a6e80bce5135df83311b3'
+            '2ce6867d109deecc967ccd2f4052e6b76e7d5a4cc9e201054589829510eda6d6'
+            '94566bebdddd73d6e76ac74ef6cb78e69c7636a850484c9cdc1e30fb09d0edda'
+            '5408f1b1261f6c2a88d42220eaca6593d9c6578e9d25a5a2ff1a32e0be92070f'
+            'd12a69bc17736aabd58eee9fff20f3d81e1a769baa18a6a0bf3ccf9e54f758b1'
+            '34eed3582080dd6229edbd0d1ede0b81c72686b651e564e5c01eb78affa4e8c2'
+            'd9f7dfb34d65d39771b1712efb3abb22954abbc5843d5ace87008fd195fc8c72'
+            '64b0b2263afa3fc74a573871f1854a8458527ed9a46ae2356c518be43a3e7636'
+            'ab99d7ee850795781cd1b50ef8eba7883278c7580a23d83dd795de0daeab355d'
+            '9b8ac66a71b3c5e3230675095acfc751a254662b6bf7c54a9f44ee4a474143f0'
+            'f6b2439e236f2503d81bf95c560ed0b93215bd46d1b448e7fe4e985da1a4814b'
+            '9c4f69a51e379df05e401bf5cd5319c80c74ba982d8b68ea9bf078a283cfc4dc'
+            'a9f546cd75f21eabe2f0a2b7618193e2b08cc773fe6a893328d0d312acf0b7ce'
+            '394cfa3f64385f05935467c88243432425304ef73dabd96fc35dcd66742f7bf9')
 
 prepare() {
     cd "${srcdir}/base-${pkgver}"
     for i in \
-    acerspyro actors appleflap blendbrush caustics crosshairs elyvisions \
+    acerspyro actors appleflap blendbrush caustics crosshairs dziq elyvisions \
     fonts freezurbern john jojo jwin luckystrike maps mayhem mikeplus64 misc \
-    nobiax particles philipk projectiles props skyboxes sounds textures \
-    torley trak ulukai unnamed vanities vegetation weapons wicked
+    nieb nobiax particles philipk projectiles props skyboxes snipergoth sounds \
+    textures torley trak ulukai unnamed vanities vegetation weapons wicked
     do
         rmdir "data/${i}"
         mv "${srcdir}/${i}-${pkgver}" "data/${i}"
     done
+    patch -p0 -i "${srcdir}/redeclipse-1.5.5-build-with-system-enet.patch"
 }
 
 build() {

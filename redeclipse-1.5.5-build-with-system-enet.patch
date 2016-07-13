@@ -1,0 +1,44 @@
+Based on Fedora patch, rebased for 1.5.5.
+
+--- src/Makefile.old	2016-07-12 22:58:56.364814328 -0500
++++ src/Makefile	2016-07-12 22:59:02.521605818 -0500
+@@ -40,7 +40,7 @@ CC_TEMP:=$(CC)
+ override CXX=$(TOOLSET_PREFIX)$(CXX_TEMP)
+ override CC=$(TOOLSET_PREFIX)$(CC_TEMP)
+ 
+-INCLUDES= -I. -Ishared -Iengine -Igame -Ienet/include -Isupport
++INCLUDES= -I. -Ishared -Iengine -Igame -Isupport
+ 
+ STRIP=
+ ifeq (,$(findstring -g,$(CXXFLAGS)))
+@@ -83,7 +83,7 @@ BIN_SUFFIX=_native
+ endif
+ endif
+ CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl2-config --cflags`
+-CLIENT_LIBS= -Lenet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
++CLIENT_LIBS= -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
+ endif
+ ifneq (,$(findstring linux,$(PLATFORM)))
+ CLIENT_LIBS+= -lrt
+@@ -161,7 +161,7 @@ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES
+ SERVER_LIBS= -mwindows $(STD_LIBS) -L$(WINDLL) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
+ else
+ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
+-SERVER_LIBS= -Lenet -lenet -lz
++SERVER_LIBS= -lenet -lz
+ endif
+ SERVER_OBJS= \
+ 	shared/crypto-standalone.o \
+@@ -223,10 +223,10 @@ $(APPSERVER)_windows$(BIN_SUFFIX): $(SER
+ 	$(WINDRES) -i $(APPNAME).rc -J rc -o $(APPNAME).res -O coff
+ 	$(CXX) $(CXXFLAGS) -o $@ $(APPNAME).res $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+-$(APPCLIENT)$(BIN_SUFFIX): $(LIBENET) $(CLIENT_OBJS)
++$(APPCLIENT)$(BIN_SUFFIX): $(CLIENT_OBJS)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(CLIENT_OBJS) $(CLIENT_LIBS)
+ 
+-$(APPSERVER)$(BIN_SUFFIX): $(LIBENET) $(SERVER_OBJS)
++$(APPSERVER)$(BIN_SUFFIX): $(SERVER_OBJS)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+ client: $(APPCLIENT)$(APPMODIFIER)$(BIN_SUFFIX)
