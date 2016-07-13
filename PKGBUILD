@@ -1,8 +1,8 @@
 # Maintainer: Urs Wolfer <uwolfer @ fwo.ch>
 
 pkgname=intellij-idea-ultimate-edition
-pkgver=2016.1.3
-_buildver=145.1617.8
+pkgver=2016.2
+_buildver=162.1121.32
 pkgrel=1
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 arch=('any')
@@ -15,7 +15,7 @@ source=(https://download.jetbrains.com/idea/ideaIU-$pkgver-no-jdk.tar.gz \
         intellijidea.sh \
         jetbrains-idea.desktop
 )
-sha256sums=('0b2df0d937e05aa9577ed2da4d588e90f2462ecc6660c6eb181c0f0c8bdad591'
+sha256sums=('317df889f7987b32c777d24afe24a05d4e9950fdf5547b0687d8b059f55a194a'
             'ed7883b33b6fa9f2e303e5549bd238ceb552ec11ca116730271a58aca685229a'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b'
 )
