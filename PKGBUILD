@@ -23,7 +23,7 @@ noextract=("${_tarball}")
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cd "${pkgdir}/opt/${pkgname}"
-  tar --strip-components=1 -xf "${srcdir}/${_tarball}"
+  tar --strip-components=2 -xf "${srcdir}/${_tarball}"
 
   cd "${srcdir}"
   install -dm755 "${pkgdir}/etc/profile.d"
