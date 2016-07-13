@@ -3,13 +3,14 @@
 
 _ver=1.15
 _pkgbase=mate-icon-theme-faenza
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="Faenza icon theme for MATE"
 url="http://mate-desktop.org"
 arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('gtk-update-icon-cache')
 makedepends=('git' 'icon-naming-utils' 'mate-common-1.15-gtk3')
