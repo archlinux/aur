@@ -1,0 +1,36 @@
+pkgbase = mate-applets
+	pkgdesc = Applets for MATE panel
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = docbook2x
+	makedepends = docbook-xsl
+	makedepends = mate-common
+	makedepends = yelp-tools
+	makedepends = gtksourceview3
+	makedepends = mate-panel>=1.15
+	depends = glib2
+	depends = gtksourceview2
+	depends = gtk-update-icon-cache
+	depends = libgtop
+	depends = libnotify
+	depends = mate-panel>=1.15
+	depends = polkit
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = upower
+	optdepends = fortune-mod: for displaying fortune cookies in the Wanda the Fish applet
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-applets
+	provides = mate-applets-gtk3
+	conflicts = mate-applets-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-applets-1.15.0.tar.xz
+	sha1sums = 4d6534cb83ec88fe247f8550e518977d10938640
+
+pkgname = mate-applets
+	pkgdesc = Applets for MATE panel (GTK3 version)
+
