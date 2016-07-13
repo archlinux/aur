@@ -1,18 +1,18 @@
-# Author: DiogoNSilva <o.diogosilva@gmail.com>
+# Maintainer: DiogoNSilva <o.diogosilva@gmail.com>
 # Contributor: Stunts <f.pinamartins@gmail.com>
 
 _pkgname=TriFusion
 pkgname=trifusion
-pkgver=0.4.0
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Streamlining phylogenomic data gathering, processing and visualization"
 arch=("any")
 url="https://github.com/ODiogoSilva/TriFusion"
-licence=("GPL3")
+license=("GPL3")
 depends=("python2-kivy" "python2-numpy" "python2-scipy" "python2-matplotlib" "python2-psutil" "python2-seaborn" "python2-configparser")
 conflicts=("trifusion-git" "trifusion-bin")
 source=("https://github.com/ODiogoSilva/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("3a5e2c57ff16b6da8aedfaa31a526b78")
+md5sums=("2d020f4ad4448153fc2d1550ebb5e4ff")
 
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
