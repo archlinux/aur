@@ -12,13 +12,13 @@ pkgbase = mate-applets-1.15-gtk3
 	makedepends = mate-common
 	makedepends = yelp-tools
 	makedepends = gtksourceview3
-	makedepends = mate-panel>=1.15
+	makedepends = mate-panel-1.15-gtk3
 	depends = glib2
 	depends = gtksourceview2
 	depends = gtk-update-icon-cache
 	depends = libgtop
 	depends = libnotify
-	depends = mate-panel>=1.15
+	depends = mate-panel-1.15-gtk3
 	depends = polkit
 	depends = python2-dbus
 	depends = python2-gobject
