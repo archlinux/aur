@@ -11,7 +11,7 @@ pkgdesc="MATE Media Tools"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('gtk3' 'libcanberra' 'libmatemixer' 'libunique3' 'mate-desktop>=1.15')
+depends=('gtk3' 'libcanberra' 'libmatemixer' 'libunique3' 'mate-desktop-1.15-gtk3')
 makedepends=('mate-common' 'gtk3' 'libunique3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
