@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ghetto-Skype
+Comment=Ghetto-Skype Internet Messaging
+Icon=ghetto-skype.png
+Exec=ghetto-skype %U
+NoDisplay=false
+Categories=Network;
+StartupNotify=false
+Terminal=false

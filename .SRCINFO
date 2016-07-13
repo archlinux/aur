@@ -1,0 +1,21 @@
+pkgbase = ghetto-skype-git
+	pkgdesc = Are you tired of a buggy 32 bit official Skype client? Then Ghetto Skype is for you!
+	pkgver = v1.3.2.r8.gf66cb2f
+	pkgrel = 1
+	url = https://github.com/stanfieldr/ghetto-skype
+	install = install
+	arch = any
+	license = GPLv3
+	depends = electron
+	depends = hicolor-icon-theme
+	depends = npm
+	conflicts = ghetto-skype
+	source = ghetto-skype-git::git+https://github.com/stanfieldr/ghetto-skype.git
+	source = desktop
+	source = sh
+	md5sums = SKIP
+	md5sums = d64f8096b45034b1af93134cfdaaeece
+	md5sums = a3a1b0db9f82c4893b99ad03ab2b9b94
+
+pkgname = ghetto-skype-git
+
