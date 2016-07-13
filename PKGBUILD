@@ -1,7 +1,7 @@
 # Maintainer: Aaron Brodersen <aaron at abrodersen dot com>
 pkgname=dotnet-cli
 pkgver="1.0.0_preview2_003121"
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -27,19 +27,26 @@ source=(
   "${_corefx}.tar.gz::https://github.com/dotnet/corefx/archive/v${_corefxver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz::https://go.microsoft.com/fwlink/?LinkID=816869"
   'gcc6-github-pull-5304.patch'
-  'segv-github-pull-6027.patch')
+  'segv-github-pull-6027.patch'
+  'unused-attr-coreclr.patch'
+  'unused-attr-corefx.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=(
-  'fad7bb05f78d90dfea6e8fec59f79ff12648fe95c0965cda5bc11beafabd0f27'
-  '98f9475ea42e5d55ad9402424e342a6c0ea7351f3fb5805a602132969b44b774'
-  'dde9f8326583f351a89e57095dc523ba92560896cd1d4b8e0ca5ac7fd8499138'
-  '0905f9f8e6e33a7a6e5f4acf9ec54ec3796400dce28f0d71c1d1d8bcd9b7e068'
-  'a039329f892c55a400537ea4da61de86af195d143d758b6019fbae76f17ef6f1')
+sha256sums=('fad7bb05f78d90dfea6e8fec59f79ff12648fe95c0965cda5bc11beafabd0f27'
+            '98f9475ea42e5d55ad9402424e342a6c0ea7351f3fb5805a602132969b44b774'
+            'dde9f8326583f351a89e57095dc523ba92560896cd1d4b8e0ca5ac7fd8499138'
+            '0905f9f8e6e33a7a6e5f4acf9ec54ec3796400dce28f0d71c1d1d8bcd9b7e068'
+            'a039329f892c55a400537ea4da61de86af195d143d758b6019fbae76f17ef6f1'
+            '8a33c449312f90660d431177f7ee0a36894b75749f79ecf8995c64d82197af90'
+            '9ecdd0ca615b988b67cc4c6a9f5035fb3fb70b16d9281d07c17a28a784a6d4ab')
 
 prepare() {
   cd "${srcdir}/${_coreclr}"
   patch -p1 < "${srcdir}/gcc6-github-pull-5304.patch"
   patch -p1 < "${srcdir}/segv-github-pull-6027.patch"
+  patch -p1 < "${srcdir}/unused-attr-coreclr.patch"
+
+  cd "${srcdir}/${_corefx}"
+  patch -p1 < "${srcdir}/unused-attr-corefx.patch"
 }
 
 build() {
