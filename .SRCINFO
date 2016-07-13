@@ -1,0 +1,70 @@
+pkgbase = caja-extensions-common-1.15-gtk3
+	pkgdesc = MATE extensions for Caja (GTK3 version)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = caja
+	depends = caja>=1.15
+	depends = dbus-glib
+	depends = gksu
+	depends = gtk3
+	depends = gupnp
+	depends = imagemagick
+	depends = samba
+	provides = caja-extensions
+	provides = caja-extensions-gtk3
+	conflicts = caja-extensions-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/caja-extensions-1.15.0.tar.xz
+	sha1sums = f4299e99fe889038834ab9743cf6418f01a777cc
+
+pkgname = caja-extensions-common-1.15-gtk3
+	pkgdesc = Caja extensions (common files)
+
+pkgname = caja-gksu-1.15-gtk3
+	pkgdesc = Privilege granting extension for Caja using gksu (GTK3 version [EXPERIMENTAL])
+	groups = mate-extra
+	depends = caja
+	depends = "caja-extensions-common-1.15-gtk3"
+	depends = gksu
+	conflicts = "caja-gksu-1.15-gtk3"-gtk3
+
+pkgname = caja-image-converter-1.15-gtk3
+	pkgdesc = A Caja extension for simple image conversions (GTK3 version [EXPERIMENTAL])
+	groups = mate-extra
+	depends = caja
+	depends = "caja-extensions-common-1.15-gtk3"
+	depends = imagemagick
+	conflicts = "caja-image-converter-1.15-gtk3"-gtk3
+
+pkgname = caja-open-terminal-1.15-gtk3
+	pkgdesc = A Caja extension for opening terminals in arbitrary local paths (GTK3 version [EXPERIMENTAL])
+	groups = mate-extra
+	depends = caja
+	depends = "caja-extensions-common-1.15-gtk3"
+	depends = glib2
+	conflicts = "caja-open-terminal-1.15-gtk3"-gtk3
+
+pkgname = caja-sendto-1.15-gtk3
+	pkgdesc = A Caja extension for sending files (GTK3 version [EXPERIMENTAL])
+	groups = mate-extra
+	depends = caja
+	depends = "caja-extensions-common-1.15-gtk3"
+	depends = dbus-glib
+	depends = glib2
+	depends = gupnp
+	optdepends = pidgin: Support for sending to instant messaging networks.
+	optdepends = gajim: Support for sending to Jabber.
+	conflicts = "caja-sendto-1.15-gtk3"-gtk3
+
+pkgname = caja-share-1.15-gtk3
+	pkgdesc = A Caja extension to quickly share a folder (GTK3 version [EXPERIMENTAL])
+	groups = mate-extra
+	depends = caja
+	depends = "caja-extensions-common-1.15-gtk3"
+	depends = samba
+	conflicts = "caja-share-1.15-gtk3"-gtk3
+
