@@ -19,13 +19,13 @@ source=("http://pub.mate-desktop.org/releases/themes/${_ver}/${_pkgbase}-${pkgve
 sha1sums=('b135248110ddca8083f66d8d206aa51ef01d9421')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
     ./configure \
         --prefix=/usr
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
