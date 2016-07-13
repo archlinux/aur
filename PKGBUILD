@@ -20,7 +20,7 @@ prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
     sed -i 's/python-config/python2-config/' configure
     cd "${srcdir}"
-    mv "${pkgname}-${pkgver}" "${_pkgbase}-gtk3"
+    mv "${_pkgbase}-${pkgver}" "${_pkgbase}-gtk3"
     cd "${srcdir}/${_pkgbase}-gtk3"
     sed -i 's/python-config/python2-config/' configure
 }
