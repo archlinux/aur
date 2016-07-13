@@ -10,7 +10,7 @@ pkgbase = mate-backgrounds-1.15-gtk3
 	makedepends = mate-common
 	provides = mate-backgrounds
 	provides = mate-backgrounds-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-backgrounds-1.15-gtk3-1.15.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/mate-backgrounds-1.15.0.tar.xz
 	sha1sums = a7929a9bcd40d14f26e1a33da6bf9d4aceadc15f
 
 pkgname = mate-backgrounds-1.15-gtk3

@@ -13,7 +13,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 makedepends=('mate-common')
 groups=('mate' 'mate-gtk3')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('a7929a9bcd40d14f26e1a33da6bf9d4aceadc15f')
 
 build() {
