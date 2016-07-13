@@ -22,7 +22,7 @@ sha1sums=('f31eb5cb1ac0a2a24aa5a3f0c5948da319d75328')
 
 prepare() {
     cd "${srcdir}"
-    mv "${pkgname}-${pkgver}" "${_pkgbase}-gtk3"
+    mv "${_pkgbase}-${pkgver}" "${_pkgbase}-gtk3"
     cd "${srcdir}/${_pkgbase}-gtk3"
     sed -i 's/python/python2/' plugins/externaltools/data/switch-c.tool.in
 }
