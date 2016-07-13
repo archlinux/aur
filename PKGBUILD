@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('dconf' 'gtk3' 'libsoup' 'glib2' 'gtk-update-icon-cache')
 makedepends=('mate-common>=1.15')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('ad4357c0a2e2d5c61b601b4b8fddbd409b82186f')
 
 prepare() {

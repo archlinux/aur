@@ -15,7 +15,7 @@ pkgbase = libmateweather-1.15-gtk3
 	provides = libmateweather
 	provides = libmateweather-gtk3
 	conflicts = libmateweather-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/libmateweather-1.15-gtk3-1.15.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/libmateweather-1.15.0.tar.xz
 	sha1sums = ad4357c0a2e2d5c61b601b4b8fddbd409b82186f
 
 pkgname = libmateweather-1.15-gtk3
