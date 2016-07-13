@@ -7,10 +7,10 @@ pkgbase = mate-settings-daemon-1.15-gtk3
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common>=1.15
+	makedepends = mate-common-1.15-gtk3
 	makedepends = gtk3
-	makedepends = libmatekbd>=1.15
-	makedepends = mate-desktop>=1.15
+	makedepends = libmatekbd-1.15-gtk3
+	makedepends = mate-desktop-1.15-gtk3
 	depends = dbus-glib
 	depends = dconf
 	depends = fontconfig
@@ -18,11 +18,11 @@ pkgbase = mate-settings-daemon-1.15-gtk3
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libcanberra-pulse
-	depends = libmatekbd>=1.15
+	depends = libmatekbd-1.15-gtk3
 	depends = libmatemixer
 	depends = libnotify
 	depends = libxt
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	depends = nss
 	depends = polkit
 	provides = mate-settings-daemon
