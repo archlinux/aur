@@ -24,15 +24,15 @@ build() {
     mkdir -p build
     cd build
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
-	make
+    make
 }
 
 check() {
     cd "$pkgname/build"
-	make test
+    make test
 }
 
 package() {
     cd "$pkgname/build"
-	make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install
 }
