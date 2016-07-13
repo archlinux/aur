@@ -4,7 +4,7 @@ pkgname=kde-thumbnailer-odf
 _pkgname=kde-odf-thumbnail
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Thumbnailer to show odf previews in KDE file managers."
+pkgdesc="Thumbnailer to show ODF (OpenDocument Format) previews in KDE file managers."
 arch=('x86_64' 'i686')
 url="http://kde-apps.org/content/show.php?content=110864"
 license=('LGPL3')
@@ -29,5 +29,5 @@ build() {
 }
 
 package() {
-	make -C "${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
+  make -C "${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
 }
