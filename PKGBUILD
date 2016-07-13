@@ -37,6 +37,7 @@ build() {
   sed -i 's+/usr/local+/usr+g' Makefile 
   make
 }
+
 package() {
   cd $srcdir/$_cvsmod
   make DESTDIR=$pkgdir install 
