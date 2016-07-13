@@ -8,7 +8,7 @@ pkgbase = caja-extensions-common-1.15-gtk3
 	license = GPL
 	makedepends = mate-common
 	makedepends = caja
-	depends = caja>=1.15
+	depends = caja-1.15-gtk3
 	depends = dbus-glib
 	depends = gksu
 	depends = gtk3
