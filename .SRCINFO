@@ -1,0 +1,40 @@
+pkgbase = mate-settings-daemon
+	pkgdesc = The MATE Settings daemon
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate
+	license = GPL
+	makedepends = mate-common>=1.15
+	makedepends = gtk3
+	makedepends = libmatekbd>=1.15
+	makedepends = mate-desktop>=1.15
+	depends = dbus-glib
+	depends = dconf
+	depends = fontconfig
+	depends = glib2
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libcanberra-pulse
+	depends = libmatekbd>=1.15
+	depends = libmatemixer
+	depends = libnotify
+	depends = libxt
+	depends = mate-desktop>=1.15
+	depends = nss
+	depends = polkit
+	provides = mate-settings-daemon
+	provides = mate-settings-daemon-gtk3
+	conflicts = mate-settings-daemon-gtk3
+	conflicts = mate-settings-daemon-gstreamer
+	conflicts = mate-settings-daemon-pulseaudio
+	replaces = mate-settings-daemon-gstreamer
+	replaces = mate-settings-daemon-pulseaudio
+	source = http://pub.mate-desktop.org/releases/1.15/mate-settings-daemon-1.15.0.tar.xz
+	sha1sums = 563c6b50669cde375e333aaba1f1919351372871
+
+pkgname = mate-settings-daemon
+	pkgdesc = The MATE Settings daemon (GTK3 version)
+
