@@ -1,4 +1,4 @@
-pkgbase = mate-panel
+pkgbase = mate-panel-1.15-gtk3
 	pkgdesc = The MATE Panel
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -36,6 +36,6 @@ pkgbase = mate-panel
 	source = http://pub.mate-desktop.org/releases/1.15/mate-panel-1.15.0.tar.xz
 	sha1sums = 58d011e2340d17e5c678725c22bfbddc96a6f7d4
 
-pkgname = mate-panel
+pkgname = mate-panel-1.15-gtk3
 	pkgdesc = The MATE Panel (GTK3 version)
 
