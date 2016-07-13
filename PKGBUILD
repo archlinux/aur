@@ -1,0 +1,29 @@
+# Maintainer:  eadrom <eadrom@archlinux.info>
+# Contributor:  Martin Wimpress <code@flexion.org>
+
+_ver=1.15
+_pkgbase=mate-backgrounds
+pkgname="${_pkgbase}-1.15-gtk3"
+pkgver=${_ver}.0
+pkgrel=1
+pkgdesc="Background images and data for MATE"
+url="http://mate-desktop.org"
+arch=('any')
+provides=("${_pkgbase}" "${_pkgbase}-gtk3")
+license=('GPL')
+makedepends=('mate-common')
+groups=('mate' 'mate-gtk3')
+source=("http://pub.mate-desktop.org/releases/${_ver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('a7929a9bcd40d14f26e1a33da6bf9d4aceadc15f')
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure \
+        --prefix=/usr
+    make
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+}
