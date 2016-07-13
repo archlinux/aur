@@ -1,4 +1,4 @@
-pkgbase = mate-control-center
+pkgbase = mate-control-center-1.15-gtk3
 	pkgdesc = The Control Center for MATE
 	pkgver = 1.15.1
 	pkgrel = 1
@@ -41,6 +41,6 @@ pkgbase = mate-control-center
 	source = http://pub.mate-desktop.org/releases/1.15/mate-control-center-1.15.1.tar.xz
 	sha1sums = 4768131e6ae32decde532187f1d4c789c6e6df68
 
-pkgname = mate-control-center
+pkgname = mate-control-center-1.15-gtk3
 	pkgdesc = The Control Center for MATE (GTK3 version)
 

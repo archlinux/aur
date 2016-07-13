@@ -42,7 +42,7 @@ build() {
     make
 }
 
-package_mate-control-center() {
+package() {
     pkgdesc+=' (GTK3 version)'
 
     cd "${srcdir}/${_pkgbase}-gtk3"
