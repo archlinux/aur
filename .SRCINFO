@@ -9,12 +9,12 @@ pkgbase = mate-screensaver-1.15-gtk3
 	license = GPL
 	depends = dbus-glib
 	depends = glib2
-	depends = libmatekbd>=1.15
+	depends = libmatekbd-1.15-gtk3
 	depends = libnotify
 	depends = libxss
-	depends = mate-desktop>=1.15
-	depends = mate-menus>=1.15
-	depends = mate-session-manager>=1.15
+	depends = mate-desktop-1.15-gtk3
+	depends = mate-menus-1.15-gtk3
+	depends = mate-session-manager-1.15-gtk3
 	optdepends = mate-power-manager: Add power management support.
 	optdepends = mate-screensaver-hacks: Additional screensavers.
 	optdepends = rss-glx: Really slick screensavers.
