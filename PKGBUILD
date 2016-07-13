@@ -3,14 +3,14 @@
 
 _ver=1.15
 _pkgbase=engrampa
-pkgname="${_pkgbase}-1.15-gtk3"
+pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Archive manipulator for MATE (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
-conflicts=("${_pkgbase}-gtk3")
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('bzip2' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'gzip'
          'libarchive' 'tar')
