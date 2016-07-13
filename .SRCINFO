@@ -1,0 +1,44 @@
+pkgbase = atril
+	pkgdesc = MATE document viewer
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = caja>=1.15
+	makedepends = djvulibre
+	makedepends = gobject-introspection
+	makedepends = libgxps
+	makedepends = texlive-bin
+	makedepends = yelp-tools
+	makedepends = webkit2gtk
+	depends = dconf
+	depends = dbus
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libsecret
+	depends = libsm
+	depends = libspectre
+	depends = mate-desktop>=1.15
+	depends = mathjax
+	depends = poppler-glib
+	depends = webkitgtk
+	depends = zlib
+	optdepends = caja: Document Properties extension
+	optdepends = djvulibre: DjVu support
+	optdepends = libgxps: XPS support
+	optdepends = texlive-bin: DVI support
+	optdepends = yelp: for reading MATE help documents
+	provides = atril
+	provides = atril-gtk3
+	conflicts = atril-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/atril-1.15.1.tar.xz
+	sha1sums = c9793a09cc59038500bec703aa56236225b24d74
+
+pkgname = atril
+	pkgdesc = MATE document viewer (GTK3 version)
+
