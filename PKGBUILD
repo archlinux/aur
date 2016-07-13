@@ -31,7 +31,7 @@ build() {
     make
 }
 
-package_libmatekbd() {
+package() {
     pkgdesc+=' (GTK3 version [EXPERIMENTAL])'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
