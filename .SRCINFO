@@ -14,7 +14,7 @@ pkgbase = mate-media-1.15-gtk3
 	depends = libcanberra
 	depends = libmatemixer
 	depends = libunique3
-	depends = mate-desktop>=1.15
+	depends = mate-desktop-1.15-gtk3
 	provides = mate-media
 	provides = mate-media-gtk3
 	conflicts = mate-media-gtk3
