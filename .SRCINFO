@@ -1,4 +1,4 @@
-pkgbase = mate-icon-theme
+pkgbase = mate-icon-theme-1.15-gtk3
 	pkgdesc = MATE icon theme
 	pkgver = 1.15.0
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = mate-icon-theme
 	provides = mate-icon-theme-gtk3
 	options = !strip
 	options = !emptydirs
-	source = http://pub.mate-desktop.org/releases/1.15/mate-icon-theme-1.15.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/mate-icon-theme-1.15-gtk3-1.15.0.tar.xz
 	sha1sums = c83b1b4e53faf4a6991406e059192c4dc439d851
 
-pkgname = mate-icon-theme
+pkgname = mate-icon-theme-1.15-gtk3
 
