@@ -1,4 +1,4 @@
-pkgbase = mate-desktop
+pkgbase = mate-desktop-1.15-gtk3
 	pkgdesc = Library with common API for various MATE modules
 	pkgver = 1.15.1
 	pkgrel = 1
@@ -16,10 +16,10 @@ pkgbase = mate-desktop
 	provides = mate-desktop
 	provides = mate-desktop-gtk3
 	conflicts = mate-desktop-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-desktop-1.15.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/mate-desktop-1.15-gtk3-1.15.1.tar.xz
 	sha1sums = 03fe1d8769d88dc9a6ed059acc8e02d7141ba3f9
 
-pkgname = mate-desktop
+pkgname = mate-desktop-1.15-gtk3
 	pkgdesc = Library with common API for various MATE modules (GTK3 version)
 	groups = mate
 

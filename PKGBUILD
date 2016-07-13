@@ -33,7 +33,7 @@ build() {
     make
 }
 
-package_mate-desktop() {
+package() {
     pkgdesc+=' (GTK3 version)'
     groups=('mate')
     cd "${srcdir}/${_pkgbase}-gtk3"
