@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+mdl/
+pkg/
+src/
