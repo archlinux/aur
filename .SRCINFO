@@ -20,6 +20,7 @@ pkgbase = mate-screensaver-1.15-gtk3
 	optdepends = rss-glx: Really slick screensavers.
 	provides = mate-screensaver
 	provides = mate-screensaver-gtk3
+	conflicts = mate-screensaver
 	conflicts = mate-screensaver-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-screensaver-1.15.0.tar.xz
 	sha1sums = 8cf4d7faff9b9bec37d007cd1320673205824b66
