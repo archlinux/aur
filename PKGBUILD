@@ -32,11 +32,16 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-psycopg2: Processing plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
-source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('33547fe3a0a0a87de209702a9bb60fcc')
+source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
+        'https://github.com/qgis/QGIS/commit/1cff3b57f023b90513f00e44a03b2f1340ac8ff1.patch')
+md5sums=('33547fe3a0a0a87de209702a9bb60fcc'
+         'cef83c9ae72b4288f73e6133ec78716b')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  # Fix building with a single process
+  patch -p1 -i ../1cff3b57f023b90513f00e44a03b2f1340ac8ff1.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
