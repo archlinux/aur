@@ -1,0 +1,24 @@
+pkgbase = razer_chroma_drivers
+	pkgver = 20160714
+	pkgrel = 1
+	url = http://pez2001.github.io/razer_chroma_drivers/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = git
+	makedepends = linux-headers
+	source = git+https://github.com/m4ng0squ4sh/razer_chroma_drivers.git
+	md5sums = SKIP
+
+pkgname = razer_chroma_drivers
+	pkgdesc = A collection of Linux drivers for Razer Chroma devices.
+	install = razer_chroma_drivers.install
+	depends = libdbus
+	depends = jq
+	depends = python
+	depends = package_razer_chroma_drivers-dkms
+
+pkgname = razer_chroma_drivers-dkms
+	pkgdesc = DKMS support for the razer_chroma_drivers package.
+	depends = dkms
+

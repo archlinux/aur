@@ -1,0 +1,6 @@
+#!/bin/bash
+
+post_install() {
+    echo ":: Enable the systemd service with:"
+    echo "   systemctl enable razer_bcd.service"
+}
