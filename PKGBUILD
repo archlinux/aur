@@ -4,12 +4,6 @@ pkgname=godo
 pkgver=2.0.9
 pkgrel=1
 pkgdesc="Task runner and file watcher for golang in the spirit of rake, gulp"
-# Maintainer: Dmitri Goutnik <dg@syrec.org>
-
-pkgname=godo
-pkgver=2.0.9
-pkgrel=1
-pkgdesc="Task runner and file watcher for golang in the spirit of rake, gulp"
 arch=('i686' 'x86_64')
 url="https://github.com/go-godo/${pkgname}"
 license=('MIT')
