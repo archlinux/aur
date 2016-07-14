@@ -1,0 +1,15 @@
+pkgbase = godo
+	pkgdesc = Task runner and file watcher for golang in the spirit of rake, gulp
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://github.com/go-godo/godo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = godo-2.0.9.tar.gz::https://github.com/go-godo/godo/archive/v2.0.9.tar.gz
+	sha256sums = 7ba11bec0de3404b3d4317e3d66fdbab013e7677150e6e0200c451d667385a85
+
+pkgname = godo
+
