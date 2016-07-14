@@ -5,14 +5,14 @@
 
 pkgname=gimagereader
 pkgver=3.1.91
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical frontend to tesseract-ocr"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gimagereader/"
 license=('GPL3')
 depends=('gtksourceviewmm' 'hicolor-icon-theme' 'libxml++' 'sane' 'tesseract' 'gtkspellmm')
 #depends=('hicolor-icon-theme' 'sane' 'tesseract' 'qtspell' 'poppler-qt4')
-makedepends=('desktop-file-utils' 'intltool' 'poppler-glib')
+makedepends=('desktop-file-utils' 'intltool' 'poppler-glib' 'cmake')
 #makedepends=('desktop-file-utils' 'intltool')
 install=${pkgname}.install
 source=(
