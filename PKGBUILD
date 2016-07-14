@@ -29,7 +29,7 @@ makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('libva-intel-driver: Needed to support VA-API for Intel graphics cards'
             'mesa-vdpau: needed for ATI graphics cards to enable VDPAU'
             'nvidia-utils: needed for NVIDIA graphics cards to enable VDPAU'
-            'libva-vdpau: needed by NVIDIA/ATI graphics cards to expose VA-API using a VDPAU backend'
+            'libva-vdpau-driver: needed by NVIDIA/ATI graphics cards to expose VA-API using a VDPAU backend'
             'kwallet: for storing passwords in KWallet')
 options=('!strip')
 install=chromium.install
