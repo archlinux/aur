@@ -1,15 +1,12 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
-# Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname='grass6'
 pkgver='6.4.5'
 pkgrel='3'
-pkgdesc="GRASS GIS ${pkgver}: geospatial data management and analysis, image \
-processing, graphics/maps production, spatial modeling and visualization."
+pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
 license=('GPL')
-provides=("$pkgname")
 
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
 depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
@@ -17,16 +14,8 @@ depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
          'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc' 'bc' 'xml2'
          'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
          'subversion')
-
 makedepends=('doxygen')
-
-optdepends=('r: R language interface; see http://grasswiki.osgeo.org/wiki/R_statistics'
-            'mariadb: MySQL database interface'
-            'ffmpeg: ffmpeg support'
-            'lapack: required for GMATH library'
-            'blas: required for GMATH library'
-            'lesstif: Motif support')
-
+optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 source=("https://grass.osgeo.org/grass64/source/grass-${pkgver}.tar.gz")
 md5sums=('c58ab8db635ebd06cfd93dce7b70b6cb')
 
@@ -68,7 +57,7 @@ build() {
   # usefull ones, only DWG, MySQL, FFMPEG and Motif are left disabled. LAPACK
   # and BLAS are not used for anything in GRASS anyway.
 
-  # GRASS build dystem can't cope with current Arch's /etc/makepkg.conf default
+  # GRASS build system can't cope with current Arch's /etc/makepkg.conf default
   # CPPFLAGS="-D_FORTIFY_SOURCE=2".
   #
   # At configure it throws:
@@ -92,7 +81,6 @@ build() {
     --exec_prefix=/opt/$pkgname \
     --with-cxx \
     --with-cairo \
-    --with-freetype \
     --with-freetype-includes=/usr/include/freetype2 \
     --with-geos \
     --with-nls \
@@ -100,9 +88,6 @@ build() {
     --with-postgres \
     --with-python=/usr/bin/python2-config \
     --with-readline \
-    --with-proj-includes=/usr/include \
-    --with-proj-libs=/usr/lib \
-    --with-proj-share=/usr/share/proj \
     --with-sqlite \
     --with-wxwidgets=/usr/bin/wx-config-2.8
 
@@ -141,7 +126,7 @@ package() {
                           "${pkgdir}/opt/${pkgname}/bin/grass64"
 
   # Link GRASS exec script and gem binary in /usr/bin under a custom name.
-  # This allows e.g. grass6 and grass6-svn be co-installed:
+  # This allows e.g. grass64 and grass64-svn be easily co-installed.
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/bin/grass64" "${pkgdir}/usr/bin/${pkgname}"
   ln -sf "/opt/${pkgname}/bin/gem64" "${pkgdir}/usr/bin/gem6"
@@ -171,4 +156,3 @@ package() {
   install -D -m644 "${srcdir}/grass-${pkgver}/gui/icons/grass-64x64.png" "${pkgdir}/usr/share/icons/${pkgname}-64x64.png"
   install -D -m644 "${srcdir}/grass-${pkgver}/gui/icons/grass.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
-
