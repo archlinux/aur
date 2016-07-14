@@ -7,6 +7,7 @@ pkgdesc="Parallel file download client"
 arch=('i686' 'x86_64')
 url="https://github.com/Code-Hex/${pkgname}"
 license=('GPL3')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Code-Hex/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('39234a2d56935d86467c9db0dabec21bb98d3c88138b13a87396b259923a2dd8')

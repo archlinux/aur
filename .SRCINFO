@@ -8,6 +8,7 @@ pkgbase = pget
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	source = pget-0.0.3.tar.gz::https://github.com/Code-Hex/pget/archive/0.0.3.tar.gz
 	sha256sums = 39234a2d56935d86467c9db0dabec21bb98d3c88138b13a87396b259923a2dd8
 
