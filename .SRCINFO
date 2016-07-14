@@ -15,6 +15,7 @@ pkgbase = mate-desktop-1.15-gtk3
 	depends = startup-notification
 	provides = mate-desktop
 	provides = mate-desktop-gtk3
+	conflicts = mate-desktop
 	conflicts = mate-desktop-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-desktop-1.15.1.tar.xz
 	sha1sums = 03fe1d8769d88dc9a6ed059acc8e02d7141ba3f9
