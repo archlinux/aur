@@ -2,19 +2,23 @@
 
 pkgname=nightcode-git
 
-pkgver=0.4.7.SNAPSHOT
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A Editor/IDE described as "The only thing you need to create Clojure and Java projects"'
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
-depends=('bash' 'java-runtime>6')
-makedepends=('leiningen' 'git')
+depends=('bash' 'java-runtime>7')
+makedepends=('git')
 
 pkgver() {
-  # process version number as defined in project.clj (defproject nightcode "0.4.2-SNAPSHOT" ...
   cd $srcdir/Nightcode-master
-  lein update-in :plugins conj '[lein-pprint "1.1.2"]' -- pprint :version | sed 's/"//g' | sed "s/-/./g"
+
+  msg2 "fetching boot.sh [build-tool] from https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
+  curl -fsSLo boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh && chmod 755 boot
+
+  ./boot pom
+  cat target/META-INF/maven/nightcode/nightcode/pom.properties | grep version | cut -d= -f2
 }
 
 source=('https://github.com/oakes/nightcode/archive/master.zip')
@@ -22,11 +26,8 @@ md5sums=('SKIP')
 
 build() {
   cd $srcdir/Nightcode-master
-  lein clean
-  msg2 "fullfilling dependencies [maven]"
-  lein deps
   msg2 "compiling and building uberjar - this may take some time"
-  LEIN_SNAPSHOTS_IN_RELEASE=1 lein uberjar
+  ./boot build
 }
 
 package() {
@@ -34,7 +35,7 @@ package() {
 
   #artifact
   mkdir -p "$pkgdir/usr/share/java/nightcode-git/"
-  cp $srcdir/Nightcode-master/target/nightcode*-standalone.jar "$pkgdir/usr/share/java/nightcode-git/$JARNAME"
+  cp $srcdir/Nightcode-master/target/project.jar "$pkgdir/usr/share/java/nightcode-git/$JARNAME"
   
   #license
   mkdir -p "$pkgdir/usr/share/licenses/nightcode-git/"
