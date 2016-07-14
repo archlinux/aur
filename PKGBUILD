@@ -2,7 +2,7 @@
 
 pkgname=urw
 pkgver=3.32
-pkgrel=1
+pkgrel=2
 _pkgver=3.32-1
 pkgdesc="UnReal World is a unique low-fantasy roguelike game set in the far north during the late Iron-Age"
 url="http://unrealworld.fi"
