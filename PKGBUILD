@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('dbus-glib' 'dconf' 'glib2' 'gtk2' 'gtk-update-icon-cache' 'libwnck3'
+depends=('dbus-glib' 'dconf' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libwnck3'
          'libcanberra' 'libice' 'libmateweather-1.15-gtk3' 'librsvg' 'libsm' 'libsoup'
          'libxau' 'mate-menus-1.15-gtk3' 'mate-desktop-1.15-gtk3')
 makedepends=('gobject-introspection' 'mate-common-1.15-gtk3' 'yelp-tools' 'gtk3'
