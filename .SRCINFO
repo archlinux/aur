@@ -1,0 +1,15 @@
+pkgbase = pget
+	pkgdesc = Parallel file download client
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Code-Hex/pget
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = pget-0.0.3.tar.gz::https://github.com/Code-Hex/pget/archive/0.0.3.tar.gz
+	sha256sums = 39234a2d56935d86467c9db0dabec21bb98d3c88138b13a87396b259923a2dd8
+
+pkgname = pget
+
