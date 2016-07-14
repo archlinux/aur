@@ -12,6 +12,8 @@ pkgbase = mozo-1.15-gtk3
 	depends = python2-gobject
 	provides = mozo
 	provides = mozo-gtk3
+	conflicts = mozo
+	conflicts = mozo-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mozo-1.15.0.tar.xz
 	sha1sums = f15807f9050cb92d444c9e2e06c73b5aedda85cb
 
