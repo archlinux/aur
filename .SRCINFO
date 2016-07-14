@@ -1,0 +1,13 @@
+pkgbase = gopanda
+	pkgdesc = GoPanda 2 is a modern client to Pandanet that runs in the browser.
+	pkgver = 2
+	pkgrel = 1
+	url = http://pandanet-igs.com/communities/gopanda
+	arch = x86_64
+	license = custom
+	depends = xdg-utils
+	source = http://pandanet-igs.com/gopanda2/installer/stable/linux-64/gopanda2-linux-64.tar.gz
+	md5sums = d1fcd13d8de0f2c0331ee0a9cb58a58a
+
+pkgname = gopanda
+
