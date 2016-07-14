@@ -2,10 +2,10 @@
 # Contributor: Daniel Oertwig <Daniel.Oertwig+customizepkgpatching at gmail dot com>
 pkgname=customizepkg-patching
 pkgver=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automate modification of PKGBUILDs using patch" 
 #url="" 
-license="GPL" 
+license=('GPL') 
 arch=('any')
 depends=('bash' 'diffutils' 'patch')
 optdepends=('vim: For using vimdiff')
