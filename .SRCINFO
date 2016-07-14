@@ -27,5 +27,4 @@ pkgbase = mate-media-1.15-gtk3
 	sha1sums = 13043b1dcf8e4fbe93dba44566eecd1e70870131
 
 pkgname = mate-media-1.15-gtk3
-	pkgdesc = MATE Media Tools (GTK3 version) (GTK2 version)
 

@@ -37,7 +37,6 @@ build() {
 }
 
 package() {
-    pkgdesc+=' (GTK2 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
 }
