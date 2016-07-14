@@ -1,0 +1,14 @@
+pkgbase = python2-webapp2
+	pkgdesc = A lightweight Python web framework compatible with Google App Engine’s
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/webapp2
+	arch = any
+	license = Apache
+	depends = python2
+	depends = python2-webob
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/webapp-improved/webapp2-2.5.1.zip
+	md5sums = 9d0f997ffc0fbddba4a829df9d0bd821
+
+pkgname = python2-webapp2
+
