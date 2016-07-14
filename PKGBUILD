@@ -1,4 +1,5 @@
-# Maintainer:  eadrom <eadrom@archlinux.info>
+# Maintainer:   Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com> 
+# Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
 _ver=1.15
