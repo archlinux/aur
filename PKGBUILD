@@ -1,6 +1,6 @@
 # Originally submitted by: Gwenn Gueguen <arch@grumly.info>
 
-pkgname=engine_pkcs11
+pkgname=engine_pkcs11_alternative
 pkgver=0.1.8
 pkgrel=3
 pkgdesc="Implementation of a PKCS11 engine for OpenSSL"
