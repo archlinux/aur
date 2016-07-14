@@ -27,6 +27,7 @@ pkgbase = mate-settings-daemon-1.15-gtk3
 	depends = polkit
 	provides = mate-settings-daemon
 	provides = mate-settings-daemon-gtk3
+	conflicts = mate-settings-daemon
 	conflicts = mate-settings-daemon-gtk3
 	conflicts = mate-settings-daemon-gstreamer
 	conflicts = mate-settings-daemon-pulseaudio
