@@ -15,10 +15,10 @@ source_i686=("http://downloads.rclone.org/rclone-v$pkgver-linux-386.zip")
 source_x86_64=("http://downloads.rclone.org/rclone-v$pkgver-linux-amd64.zip")
 source_armv6h=("http://downloads.rclone.org/rclone-v$pkgver-linux-arm.zip")
 source_armv7h=("http://downloads.rclone.org/rclone-v$pkgver-linux-arm.zip")
-md5sums_i686=('6a8700eb807b2bad81bc12fab8467b62')
-md5sums_x86_64=('755a9737e1d0797c05ff5f143b7c2707')
-md5sums_armv6h=('ad52d3ad5435b1f119ea7938a5ad3ddf')
-md5sums_armv7h=('ad52d3ad5435b1f119ea7938a5ad3ddf')
+md5sums_i686=('8ffa0eaa0ceb81641bf25fc2812fe7d0')
+md5sums_x86_64=('c0c29b2eb0e2916d096bb276e775d649')
+md5sums_armv6h=('4475540ba4d731e4d7e454a40f655155')
+md5sums_armv7h=('4475540ba4d731e4d7e454a40f655155')
 
 package() {
   mkdir -p $pkgdir/usr/bin || return 1
