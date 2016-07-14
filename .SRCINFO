@@ -1,0 +1,19 @@
+pkgbase = libadios-git
+	pkgdesc = ADIOS Adaptable IO system for simulations. The Adaptable IO System (ADIOS) provides a simple, flexible way for scientists to describe the data in their code that may need to be written, read, or processed outside of the running simulation.
+	pkgver = 1.10.0.r422.g084b08f
+	pkgrel = 1
+	url = https://www.olcf.ornl.gov/center-projects/adios/
+	install = libadios-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = openmpi
+	depends = python2
+	depends = mxml
+	depends = gcc-fortran
+	source = libadios-git::git://github.com/ornladios/ADIOS.git
+	sha256sums = SKIP
+
+pkgname = libadios-git
+
