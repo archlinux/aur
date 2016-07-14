@@ -2,21 +2,29 @@
 
 pkgname=libadios
 pkgver=1.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="ADIOS Adaptable IO system for simulations. The Adaptable IO System (ADIOS) provides a simple, flexible way for scientists to describe the data in their code that may need to be written, read, or processed outside of the running simulation."
 url="https://www.olcf.ornl.gov/center-projects/adios/"
 install=$pkgname.install
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('openmpi' 'python2' 'mxml' 'gcc-fortran')
-source=(http://users.nccs.gov/~pnorbert/adios-$pkgver.tar.gz)
-sha256sums=('f752b2093f5453b3ec4717aad67da7c3227b3687367a0b3fe7ad80eed391327e')
+source=(
+    http://users.nccs.gov/~pnorbert/adios-$pkgver.tar.gz
+    libc-2.23-fixes.patch
+    )
+sha256sums=(
+    'f752b2093f5453b3ec4717aad67da7c3227b3687367a0b3fe7ad80eed391327e'
+    '565d06199f35a2c0c459e31b821b915fb76be27e8c919d2166be04466404fcb2'
+    )
 
 prepare() {
     cd $srcdir/adios-$pkgver
 
     # replace all occurences of python with python2 to avoid using the default python3
     find . -type f -print0 | xargs -0 sed -i -e 's/\(#\!\/usr\/bin\/env python\)/\12/' -e 's/python \(.*.py\)/python2 \1/'
+
+    patch -p1 < ../libc-2.23-fixes.patch
 }
 
 build() {
