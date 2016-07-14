@@ -1,0 +1,13 @@
+pkgbase = roundup
+	pkgdesc = A simple-to-use and -install issue-tracking system with command-line, web and e-mail interfaces. Highly customisable.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://www.roundup-tracker.org
+	arch = any
+	license = PSF
+	depends = python2
+	source = https://pypi.python.org/packages/bf/14/d61fac5ed2aaca8c720ac4d4077428b8fdafa356089516ba9ee630975d2a/roundup-1.5.1.tar.gz
+	sha1sums = cf302aa375d27cecc7081cf313da00966db41ea4
+
+pkgname = roundup
+
