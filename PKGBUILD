@@ -1,4 +1,4 @@
-# Maintainer: Andrew Shunick <andrew at shunick dot info>
+# Maintainer: Andrew Shunick <aur at shunick dot info>
 pkgname=python2-doom_py-git
 pkgver=r47.a242ce7
 pkgrel=1
