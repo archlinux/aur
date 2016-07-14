@@ -1,11 +1,10 @@
 pkgbase = nightcode-git
 	pkgdesc = A Editor/IDE described as "The only thing you need to create Clojure and Java projects"
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sekao.net/nightcode/
 	arch = any
 	license = custom
-	makedepends = git
 	depends = bash
 	depends = java-runtime>7
 	noextract = boot.sh

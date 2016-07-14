@@ -3,20 +3,18 @@
 pkgname=nightcode-git
 
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Editor/IDE described as "The only thing you need to create Clojure and Java projects"'
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
 depends=('bash' 'java-runtime>7')
-makedepends=('git')
 
 pkgver() {
   cd $srcdir/Nightcode-master
   bash $startdir/boot.sh pom
   cat target/META-INF/maven/nightcode/nightcode/pom.properties | grep version | cut -d= -f2
 }
-
 
 source=('https://github.com/oakes/nightcode/archive/master.zip'
         'https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh')
