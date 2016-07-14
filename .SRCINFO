@@ -1,11 +1,13 @@
 pkgbase = python-testpath
 	pkgdesc = Test utilities for code working with files and commands
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/testpath
 	arch = any
 	license = MIT
+	makedepends = python-pip
 	depends = python
+	noextract = testpath-0.3-py2.py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py2.py3/t/testpath/testpath-0.3-py2.py3-none-any.whl
 	md5sums = 8d73a01748dca501886c65ff442a61da
 
