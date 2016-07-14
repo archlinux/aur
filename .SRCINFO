@@ -14,6 +14,8 @@ pkgbase = mate-user-guide-1.15-gtk3
 	depends = yelp
 	provides = mate-user-guide
 	provides = mate-user-guide-gtk3
+	conflicts = mate-user-guide
+	conflicts = mate-user-guide-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-user-guide-1.15.0.tar.xz
 	sha1sums = b14cab398b894c93a34ced91bd991650686e465f
 
