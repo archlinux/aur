@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.7
-pkgrel=5
+pkgver=2.8
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -48,7 +48,7 @@ prepare() {
   msg2 "Fixing Openvpn Files..."
   for file in *.ovpn
   do
-	msg2 "  ${file/%.ovpn/ }..."
+    msg2 "  ${file/%.ovpn/ }..."
     # Switch .ovpn file extensions to .conf.  This is what the openvpn systemd
     # service expects
     new_file_name="${file/%.ovpn/.conf}"
