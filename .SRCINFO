@@ -37,6 +37,7 @@ pkgbase = mate-control-center-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-control-center
 	provides = mate-control-center-gtk3
+	conflicts = mate-control-center
 	conflicts = mate-control-center-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-control-center-1.15.1.tar.xz
 	sha1sums = 4768131e6ae32decde532187f1d4c789c6e6df68
