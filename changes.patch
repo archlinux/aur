@@ -1,102 +1,110 @@
+diff --git a/.gitignore b/.gitignore
+index c63307f..c5029f8 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,7 +11,8 @@
+ *.pydev*
+ *.vcproj
+ .idea/
+-uid.dll
++lib/uid
++lib/uid.exe
+ build/
+ dist/
+ Thumbs.db
+diff --git a/.travis.yml b/.travis.yml
+index b28d989..1b93ba1 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -10,6 +10,7 @@ install:
+   - "pip install cx_Freeze"
+   - "pip install python-coveralls"
+   - "pip install -r requirements.txt --trusted-host content.faforever.com"
++  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/uid
+ 
+ 
+ before_script:
+diff --git a/appveyor.yml b/appveyor.yml
+index c4e0009..5f1a5ba 100644
+--- a/appveyor.yml
++++ b/appveyor.yml
+@@ -19,6 +19,7 @@ install:
+   - ps: "$env:PYTEST_QT_API=\"pyqt4v2\""
+   - ps: "$env:FAF_FORCE_PRODUCTION=true"
+   - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt --trusted-host content.faforever.com"
++  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\uid.exe" }
+ 
+ test_script:
+     - "%PYTHON%\\Scripts\\py.test.exe -vv --full-trace"
+diff --git a/requirements.txt b/requirements.txt
+index 9683392..29144a5 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,6 +1,8 @@
+ bsdiff4==1.1.4
+ cx_Freeze==4.3.4
+ enum34
++pillow
++lupa
+ git+https://github.com/FAForever/faftools.git@develop#egg=faftools
+ ipaddress
+ lupa
 diff --git a/setup.py b/setup.py
-index cec04dc..3927938 100644
+index cec04dc..fd9c8eb 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -1,120 +1,146 @@
- import os
- import sys
+@@ -11,7 +11,10 @@ sip.setapi('QList', 2)
+ sip.setapi('QProcess', 2)
  
--import sip
--from pathlib import Path
--
--sip.setapi('QString', 2)
--sip.setapi('QVariant', 2)
--sip.setapi('QStringList', 2)
--sip.setapi('QList', 2)
--sip.setapi('QProcess', 2)
--
--import PyQt4.uic
+ import PyQt4.uic
 -from cx_Freeze import setup, Executable
--
--sys.path.insert(0, "src")
--sys.path.insert(0, "lib")
--
++if sys.platform == 'win32':
++    from cx_Freeze import setup, Executable
++else:
++    from distutils.core import setup
+ 
+ sys.path.insert(0, "src")
+ sys.path.insert(0, "lib")
+@@ -19,16 +22,17 @@ sys.path.insert(0, "lib")
  company_name = 'FAF Community'
  product_name = 'Forged Alliance Forever'
--
+ 
 -import config.version as version
 -import PyQt4.uic
 -git_version = version.get_git_version()
 -msi_version = version.msi_version(git_version)
 -appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
 -version.write_release_version(appveyor_build_version)
--
++if sys.platform == 'win32':
++  import config.version as version
++  import PyQt4.uic
++  git_version = version.get_git_version()
++  msi_version = version.msi_version(git_version)
++  appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
++  version.write_release_version(appveyor_build_version)
+ 
 -print('Git version:', git_version,
 -      'Release version:', appveyor_build_version,
 -      'Build version:', msi_version)
--
--# Ugly hack to fix broken PyQt4
--try:
--    silly_file = Path(PyQt4.__path__[0]) / "uic" / "port_v3" / "proxy_base.py"
--    print("Removing {}".format(silly_file))
--    silly_file.unlink()
--except OSError:
--    pass
--
--
--# Dependencies are automatically detected, but it might need fine tuning.
--build_exe_options = {
--    'include_files': ['res',
--                      'RELEASE-VERSION',
++  print('Git version:', git_version,
++        'Release version:', appveyor_build_version,
++        'Build version:', msi_version)
+ 
+ # Ugly hack to fix broken PyQt4
+ try:
+@@ -43,7 +47,7 @@ except OSError:
+ build_exe_options = {
+     'include_files': ['res',
+                       'RELEASE-VERSION',
 -                      ('lib/uid.dll', 'uid.dll'),
--                      ('lib/qt.conf', 'qt.conf'),
--                      ('lib/xdelta3.exe', 'xdelta3.exe'),
--                      ('lib/lua51.dll', 'lua51.dll')],
--    'icon': 'res/faf.ico',
--    'include_msvcr': True,
--    'optimize': 2,
--    'packages': ['cffi', 'pycparser', 'PyQt4', 'PyQt4.uic',
--                 'PyQt4.QtGui', 'PyQt4.QtNetwork', 'win32com', 'win32com.client'],
--    'silent': True,
--    'excludes': ['numpy', 'scipy', 'matplotlib', 'tcl', 'Tkinter']
--}
--
--shortcut_table = [
--    ('DesktopShortcut',           # Shortcut
--     'DesktopFolder',             # Directory_
--     'FA Forever',                # Name
--     'TARGETDIR',                 # Component_
--     '[TARGETDIR]FAForever.exe',  # Target
--     None,                        # Arguments
--     None,                        # Description
--     None,                        # Hotkey
--     None,                        # Icon
--     None,                        # IconIndex
--     None,                        # ShowCmd
--     'TARGETDIR'                  # WkDir
--     )
--]
--
--target_dir = '[ProgramFilesFolder][ProductName]'
--upgrade_code = '{ADE2A55B-834C-4D8D-A071-7A91A3A266B7}'
--
--if False:  # Beta build
--    product_name += " Beta"
--    upgrade_code = '{2A336240-1D51-4726-B36f-78B998DD3740}'
--
--bdist_msi_options = {
--    'upgrade_code': upgrade_code,
--    'initial_target_dir': target_dir,
--    'add_to_path': False,
--    'data': {'Shortcut': shortcut_table},
--}
--
--# GUI applications require a different base on Windows (the default is for a
--# console application).
--base = None
--if sys.platform == 'win32':
--    base = 'Win32GUI'
--
++                      ('lib/uid.exe', 'uid.exe'),
+                       ('lib/qt.conf', 'qt.conf'),
+                       ('lib/xdelta3.exe', 'xdelta3.exe'),
+                       ('lib/lua51.dll', 'lua51.dll')],
+@@ -92,18 +96,31 @@ base = None
+ if sys.platform == 'win32':
+     base = 'Win32GUI'
+ 
 -exe = Executable(
 -    'src/__main__.py',
 -    base=base,
@@ -105,291 +113,459 @@ index cec04dc..3927938 100644
 -    includes=[os.path.join(os.path.dirname(PyQt4.uic.__file__), "widget-plugins"),
 -            "PyQt4.uic.widget-plugins"]
 -)
--
--setup(
--    name=product_name,
++if sys.platform == 'win32':
++    platform_options = {
++        'executables': [Executable(
++                          'src/__main__.py',
++                          base=base,
++                          targetName='FAForever.exe',
++                          icon='res/faf.ico',
++                          includes=[os.path.join(os.path.dirname(PyQt4.uic.__file__), "widget-plugins"),
++                                  "PyQt4.uic.widget-plugins"]
++                      )],
++        'requires': ['bsdiff4', 'sip', 'PyQt4', 'cx_Freeze', 'cffi', 'py', 'faftools'],
++        'options': {'build_exe': build_exe_options,
++                 'bdist_msi': bdist_msi_options},
++        'version': msi_version,
++                 }
++        
++else:
++    from setuptools import find_packages
++    platform_options = {
++        'packages': find_packages(),
++        'version': os.getenv('FAFCLIENT_VERSION'),
++        }
+ 
+ setup(
+     name=product_name,
 -    version=msi_version,
--    description='Forged Alliance Forever - Lobby Client',
--    long_description='FA Forever is a community project that allows you to play \
-+description='Forged Alliance Forever - Lobby Client'
-+long_description='FA Forever is a community project that allows you to play \
+     description='Forged Alliance Forever - Lobby Client',
+     long_description='FA Forever is a community project that allows you to play \
  Supreme Commander and Supreme Commander: Forged Alliance online \
- with people across the globe. Provides new game play modes, including cooperative play, \
--ranked ladder play, and featured mods.',
--    author='FA Forever Community',
--    maintainer='Sheeo',
--    url='http://www.faforever.com',
--    license='GNU General Public License, Version 3',
+@@ -113,8 +130,5 @@ ranked ladder play, and featured mods.',
+     maintainer='Sheeo',
+     url='http://www.faforever.com',
+     license='GNU General Public License, Version 3',
 -    options={'build_exe': build_exe_options,
 -             'bdist_msi': bdist_msi_options},
 -    executables=[exe],
 -    requires=['bsdiff4', 'sip', 'PyQt4', 'cx_Freeze', 'cffi', 'py', 'faftools'],
--)
-+ranked ladder play, and featured mods.'
-+author='FA Forever Community'
-+maintainer='Sheeo'
-+url='http://www.faforever.com'
-+license='GNU General Public License, Version 3'
-+
-+if sys.platform == 'win32':
-+    import sip
-+    from pathlib import Path
-+
-+    sip.setapi('QString', 2)
-+    sip.setapi('QVariant', 2)
-+    sip.setapi('QStringList', 2)
-+    sip.setapi('QList', 2)
-+    sip.setapi('QProcess', 2)
-+
-+    import PyQt4.uic
-+    from cx_Freeze import setup, Executable
-+
-+    sys.path.insert(0, "src")
-+    sys.path.insert(0, "lib")
-+
-+    import config.version as version
-+    import PyQt4.uic
-+    git_version = version.get_git_version()
-+    msi_version = version.msi_version(git_version)
-+    appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
-+    version.write_release_version(appveyor_build_version)
-+
-+    print('Git version:', git_version,
-+          'Release version:', appveyor_build_version,
-+          'Build version:', msi_version)
-+
-+    # Ugly hack to fix broken PyQt4
-+    try:
-+        silly_file = Path(PyQt4.__path__[0]) / "uic" / "port_v3" / "proxy_base.py"
-+        print("Removing {}".format(silly_file))
-+        silly_file.unlink()
-+    except OSError:
-+        pass
-+
-+
-+    # Dependencies are automatically detected, but it might need fine tuning.
-+    build_exe_options = {
-+        'include_files': ['res',
-+                          'RELEASE-VERSION',
-+                          ('lib/uid.dll', 'uid.dll'),
-+                          ('lib/qt.conf', 'qt.conf'),
-+                          ('lib/xdelta3.exe', 'xdelta3.exe'),
-+                          ('lib/lua51.dll', 'lua51.dll')],
-+        'icon': 'res/faf.ico',
-+        'include_msvcr': True,
-+        'optimize': 2,
-+        'packages': ['cffi', 'pycparser', 'PyQt4', 'PyQt4.uic',
-+                     'PyQt4.QtGui', 'PyQt4.QtNetwork', 'win32com', 'win32com.client'],
-+        'silent': True,
-+        'excludes': ['numpy', 'scipy', 'matplotlib', 'tcl', 'Tkinter']
-+    }
-+
-+    shortcut_table = [
-+        ('DesktopShortcut',           # Shortcut
-+         'DesktopFolder',             # Directory_
-+         'FA Forever',                # Name
-+         'TARGETDIR',                 # Component_
-+         '[TARGETDIR]FAForever.exe',  # Target
-+         None,                        # Arguments
-+         None,                        # Description
-+         None,                        # Hotkey
-+         None,                        # Icon
-+         None,                        # IconIndex
-+         None,                        # ShowCmd
-+         'TARGETDIR'                  # WkDir
-+         )
-+    ]
-+
-+    target_dir = '[ProgramFilesFolder][ProductName]'
-+    upgrade_code = '{ADE2A55B-834C-4D8D-A071-7A91A3A266B7}'
-+
-+    if False:  # Beta build
-+        product_name += " Beta"
-+        upgrade_code = '{2A336240-1D51-4726-B36f-78B998DD3740}'
-+
-+    bdist_msi_options = {
-+        'upgrade_code': upgrade_code,
-+        'initial_target_dir': target_dir,
-+        'add_to_path': False,
-+        'data': {'Shortcut': shortcut_table},
-+    }
-+
-+    # GUI applications require a different base on Windows (the default is for a
-+    # console application).
-+    base = None
-+    if sys.platform == 'win32':
-+        base = 'Win32GUI'
-+
-+    exe = Executable(
-+        'src/__main__.py',
-+        base=base,
-+        targetName='FAForever.exe' if sys.platform == 'win32' else 'FAForever',
-+        icon='res/faf.ico',
-+        includes=[os.path.join(os.path.dirname(PyQt4.uic.__file__), "widget-plugins"),
-+                "PyQt4.uic.widget-plugins"]
-+    )
-+
-+    setup(
-+        name=product_name,
-+        version=msi_version,
-+        description=description,
-+        long_description=long_description,
-+        author=author,
-+        maintainer=maintainer,
-+        url=url,
-+        license=license,
-+        options={'build_exe': build_exe_options,
-+                 'bdist_msi': bdist_msi_options},
-+        executables=[exe],
-+        requires=['bsdiff4', 'sip', 'PyQt4', 'cx_Freeze', 'cffi', 'py', 'faftools'],
-+    )
-+else:
-+    from distutils.core import setup
-+    from setuptools import find_packages
-+    product_name = 'fafclient'
-+    packages=find_packages()
-+    print(packages)
-+    setup(
-+        name=product_name,
-+        version=os.getenv('FAFCLIENT_VERSION'),
-+        description=description,
-+        long_description=long_description,
-+        author=author,
-+        maintainer=maintainer,
-+        url=url,
-+        license=license,
-+        packages=packages,
-+        #package_dir={'fafclient':'src'}
-+    )
-+  
++    **platform_options
+ )
 diff --git a/src/__main__.py b/src/__main__.py
-index 9daf832..52162bb 100644
+index 9daf832..e05d737 100644
 --- a/src/__main__.py
 +++ b/src/__main__.py
-@@ -26,6 +26,7 @@ from PyQt4 import QtGui, uic
- path = os.path.join(os.path.dirname(sys.argv[0]), "PyQt4.uic.widget-plugins")
- uic.widgetPluginPath.append(path)
- 
-+
- # Are we running from a frozen interpreter?
+@@ -30,14 +30,16 @@ uic.widgetPluginPath.append(path)
  if getattr(sys, 'frozen', False):
      os.chdir(os.path.dirname(sys.executable))
-@@ -37,8 +38,7 @@ else:
-     # We need to set the working directory correctly.
+ else:
+-    # We are most likely running from source
+-    srcDir = os.path.dirname(os.path.relpath(__file__))
+-    devRoot = os.path.abspath(os.path.join(srcDir, os.pardir))
+-    os.chdir(devRoot)
+-    # We need to set the working directory correctly.
++    if sys.platform == 'win32':
++        # We are most likely running from source
++        srcDir = os.path.dirname(os.path.relpath(__file__))
++        devRoot = os.path.abspath(os.path.join(srcDir, os.pardir))
++        os.chdir(devRoot)
++        # We need to set the working directory correctly.
  
  import util
 -util.COMMON_DIR = os.path.join(os.getcwd(), "res")
--
-+import util.crash
++if sys.platform == 'win32':
++    util.COMMON_DIR = os.path.join(os.getcwd(), "res")
+ 
  import config
  import platform
- 
-@@ -52,7 +52,8 @@ def excepthook(exc_type, exc_value, traceback_object):
-     sys.excepthook = excepthook_original
- 
-     logger.error("Uncaught exception", exc_info=(exc_type, exc_value, traceback_object))
--    dialog = util.CrashDialog((exc_type, exc_value, traceback_object))
-+
-+    dialog = util.crash.CrashDialog((exc_type, exc_value, traceback_object))
-     answer = dialog.exec_()
- 
-     if answer == QtGui.QDialog.Rejected:
 diff --git a/src/chat/_chatwidget.py b/src/chat/_chatwidget.py
-index 0bf737b..395c7b7 100644
+index 3fca596..a352a78 100644
 --- a/src/chat/_chatwidget.py
 +++ b/src/chat/_chatwidget.py
-@@ -7,7 +7,7 @@ from PyQt4 import QtGui, QtCore
- from PyQt4.QtNetwork import QNetworkAccessManager
- from PyQt4.QtCore import QSocketNotifier, QTimer
+@@ -264,9 +264,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
  
--from config import Settings
-+from config import Settings, VERSION
+         for user in listing:
+             name = user.strip(chat.IRC_ELEVATION)
+-            id = -1
+-            if name in self.client.players:
+-                id = self.client.players[name].id
++            id = self.client.players.getID(name)
+             self.channels[channel].addChatter(name, id, user[0] if user[0] in chat.IRC_ELEVATION else None, '')
+ 
+         logger.debug("Added " + str(len(listing)) + " Chatters")
+diff --git a/src/chat/channel.py b/src/chat/channel.py
+index 4bd8eba..1391219 100644
+--- a/src/chat/channel.py
++++ b/src/chat/channel.py
+@@ -226,7 +226,10 @@ class Channel(FormClass, BaseClass):
+             cursor.removeSelectedText()
+             self.lines = self.lines - CHAT_REMOVEBLOCK
+ 
+-        player = self.lobby.client.players.get(name, IRCPlayer(name))
++        if self.lobby.client.players.isPlayer(name):
++            player = self.lobby.client.players[name]
++        else:
++            player = IRCPlayer(name)
+ 
+         displayName = name
+         if player.clan is not None:
+@@ -247,7 +250,7 @@ class Channel(FormClass, BaseClass):
+ 
+         else:
+             # Fallback and ask the client. We have no Idea who this is.
+-            color = self.lobby.client.players.getUserColor(name)
++            color = self.lobby.client.players.getUserColor(player.id)
+ 
+         if mentioned:
+             color = self.lobby.client.getColor("you")
+@@ -305,31 +308,30 @@ class Channel(FormClass, BaseClass):
+         '''
+         Print an raw message in the chatArea of the channel
+         '''
+-        try:
+-            color = self.lobby.client.players.getUserColor(name)
+-                
+-            # Play a ping sound
+-            if self.private and name != self.lobby.client.login:
+-                self.pingWindow()
+-                
+-            # scroll if close to the last line of the log
+-            scroll_current = self.chatArea.verticalScrollBar().value()
+-            scroll_needed = scroll_forced or ((self.chatArea.verticalScrollBar().maximum() - scroll_current) < 20)
+-            
+-            cursor = self.chatArea.textCursor()
+-            cursor.movePosition(QtGui.QTextCursor.End)
+-            self.chatArea.setTextCursor(cursor)
+-                                
+-            formatter = Formatters.FORMATTER_RAW
+-            line = formatter.format(time=self.timestamp(), name=name, color=color, width=self.maxChatterWidth, text=text)
+-            self.chatArea.insertHtml(line)
+-            
+-            if scroll_needed:
+-                self.chatArea.verticalScrollBar().setValue(self.chatArea.verticalScrollBar().maximum())
+-            else:
+-                self.chatArea.verticalScrollBar().setValue(scroll_current)
+-        except:
+-            pass
++        id = self.lobby.client.players.getID(name)
++
++        color = self.lobby.client.players.getUserColor(id)
++
++        # Play a ping sound
++        if self.private and name != self.lobby.client.login:
++            self.pingWindow()
++
++        # scroll if close to the last line of the log
++        scroll_current = self.chatArea.verticalScrollBar().value()
++        scroll_needed = scroll_forced or ((self.chatArea.verticalScrollBar().maximum() - scroll_current) < 20)
++
++        cursor = self.chatArea.textCursor()
++        cursor.movePosition(QtGui.QTextCursor.End)
++        self.chatArea.setTextCursor(cursor)
++
++        formatter = Formatters.FORMATTER_RAW
++        line = formatter.format(time=self.timestamp(), name=name, color=color, width=self.maxChatterWidth, text=text)
++        self.chatArea.insertHtml(line)
++
++        if scroll_needed:
++            self.chatArea.verticalScrollBar().setValue(self.chatArea.verticalScrollBar().maximum())
++        else:
++            self.chatArea.verticalScrollBar().setValue(scroll_current)
+ 
+     def timestamp(self):
+         '''returns a fresh timestamp string once every minute, and an empty string otherwise'''
+diff --git a/src/chat/chatter.py b/src/chat/chatter.py
+index 704aff0..c6bb61b 100644
+--- a/src/chat/chatter.py
++++ b/src/chat/chatter.py
+@@ -13,6 +13,7 @@ from fa.replay import replay
  import util
  
- import sys
-@@ -248,7 +248,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
-         self.autoJoin(self.crucialChannels)
+ import client
++from config import Settings
  
-     def on_version(self, c, e):
--        self.connection.privmsg(e.source(), "Forged Alliance Forever " + util.VERSION_STRING)
-+        self.connection.privmsg(e.source(), "Forged Alliance Forever " + VERSION)
+ """
+ A chatter is the representation of a person on IRC, in a channel's nick list.
+@@ -147,7 +148,7 @@ class Chatter(QtGui.QTableWidgetItem):
+         """
+         # First make sure we've got the correct id for ourselves
+         if self.id == -1 and self.lobby.client.players.isPlayer(self.name):
+-            self.id = self.lobby.client.players[self.name].id
++            self.id = self.lobby.client.players.getID(self.name)
+         
+         # Color handling
+         self.set_color()
+@@ -301,10 +302,12 @@ class Chatter(QtGui.QTableWidgetItem):
+                 menu.addAction(action_inspect_in_mordor)
  
-     def on_motd(self, c, e):
-         self.log_event(e)
+                 def send_the_orcs():
++                    route = Settings.get('mordor/host')
++
+                     if self.id != -1:
+-                        QtGui.QDesktopServices.openUrl(QUrl("http://mordor.faforever.com/users/{}".format(self.id)))
++                        QtGui.QDesktopServices.openUrl(QUrl("{}/users/{}".format(route, self.id)))
+                     else:
+-                        QtGui.QDesktopServices.openUrl(QUrl("http://mordor.faforever.com/users/{}".format(self.name)))
++                        QtGui.QDesktopServices.openUrl(QUrl("{}/users/{}".format(route, self.name)))
+ 
+                 action_inspect_in_mordor.triggered.connect(send_the_orcs)
+ 
 diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
-index e1a58e0..c7b29c2 100644
+index 8f605ee..10f6142 100644
 --- a/src/client/_clientwindow.py
 +++ b/src/client/_clientwindow.py
-@@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QAbstractSocket
- import config
- import connectivity
- from base import Client
--from config import Settings
-+from config import Settings, VERSION
- import chat
- from client.player import Player
- from client.players import Players
-@@ -36,6 +36,7 @@ import logging
- logger = logging.getLogger(__name__)
+@@ -1051,15 +1051,15 @@ class ClientWindow(FormClass, BaseClass):
  
- import util
-+import util.crash
- import secondaryServer
+     def joinChannel(self, username, channel):
+         '''Join users to a channel'''
+-        self.send(dict(command="admin", action="join_channel", user_ids=[self.players[username].id], channel=channel))
++        self.send(dict(command="admin", action="join_channel", user_ids=[self.players.getID(username)], channel=channel))
  
- import json
-@@ -212,7 +213,7 @@ class ClientWindow(FormClass, BaseClass):
-         self.setStyleSheet(util.readstylesheet("client/client.css"))
-         self.whatNewsView.setHtml("<body style='background-color: #000;'></body>")
+     def closeFA(self, username):
+         '''Close FA remotly'''
+-        self.send(dict(command="admin", action="closeFA", user_id=self.players[username].id))
++        self.send(dict(command="admin", action="closeFA", user_id=self.players.getID(username)))
  
--        self.setWindowTitle("FA Forever " + util.VERSION_STRING)
-+        self.setWindowTitle("FA Forever " + VERSION)
+     def closeLobby(self, username):
+         '''Close lobby remotly'''
+-        self.send(dict(command="admin", action="closelobby", user_id=self.players[username].id))
++        self.send(dict(command="admin", action="closelobby", user_id=self.players.getID(username)))
  
-         # Frameless
-         self.setWindowFlags(
-@@ -749,7 +750,7 @@ class ClientWindow(FormClass, BaseClass):
-     @QtCore.pyqtSlot()
-     def linkAbout(self):
-         dialog = util.loadUi("client/about.ui")
--        dialog.version_label.setText("Version: {}".format(util.VERSION_STRING))
-+        dialog.version_label.setText("Version: {}".format(VERSION))
-         dialog.exec_()
+     def addFriend(self, friend_id):
+         if friend_id in self.players:
+@@ -1420,7 +1420,7 @@ class ClientWindow(FormClass, BaseClass):
+             self.usersUpdated.emit([player['login']])
  
-     def saveWindow(self):
+             if self.me.clan is not None and new_player.clan == self.me.clan:
+-                self.players.clanlist.add(player['login'])
++                self.players.clanlist.add(player['id'])
+ 
+     def avatarManager(self):
+         self.requestAvatars(0)
+diff --git a/src/client/players.py b/src/client/players.py
+index 13234f3..c641709 100644
+--- a/src/client/players.py
++++ b/src/client/players.py
+@@ -57,7 +57,7 @@ class Players:
+         '''
+         Convenience function for other modules to inquire about a user's civilian status.
+         '''
+-        return name in self or name == self.me.login
++        return name in self
+ 
+     def getUserColor(self, id):
+         '''
+@@ -65,19 +65,18 @@ class Players:
+         '''
+         if id == self.me.id:
+             return self.getColor("self")
+-        elif id in self.friends:
++        if id in self.friends:
+             return self.getColor("friend")
+-        elif id in self.foes:
++        if id in self.foes:
+             return self.getColor("foe")
+-        elif id in self.clanlist:
++        if id in self.clanlist:
+             return self.getColor("clan")
+-        else:
+-            if self.coloredNicknames:
+-                return self.getRandomColor(id)
+-            if id in self:
+-                return self.getColor("player")
++        if self.coloredNicknames:
++            return self.getRandomColor(id)
++        if id in self:
++            return self.getColor("player")
+ 
+-            return self.getColor("default")
++        return self.getColor("default")
+ 
+     def getRandomColor(self, id):
+         '''Generate a random color from a name'''
+@@ -103,17 +102,20 @@ class Players:
+         val = self.__getitem__(item)
+         return val if val else default
+ 
++    def getID(self, name):
++        if name in self._logins:
++            return self._logins[name].id
++        return -1
++
+     def __contains__(self, item):
+         return self.__getitem__(item) is not None
+ 
+     def __getitem__(self, item):
+         if isinstance(item, Player):
+             return item
+-        try:
+-            # Lets hope that nobody has an integer valued name
+-            return self._players[int(item)]
+-        except (ValueError, KeyError):
+-            if item in self._logins:
++        if isinstance(item, int) and item in self._players:
++            return self._players[item]
++        if item in self._logins:
+                 return self._logins[item]
+ 
+     def __setitem__(self, key, value):
+diff --git a/src/config/__init__.py b/src/config/__init__.py
+index 29d06a2..38bb1d0 100644
+--- a/src/config/__init__.py
++++ b/src/config/__init__.py
+@@ -101,6 +101,10 @@ if environment == 'production':
+ elif environment == 'development':
+     from develop import defaults
+ 
++for k, v in defaults.iteritems():
++    if isinstance(v, str):
++        defaults[k] = v.format(host = Settings.get('host'))
++
+ # Setup normal rotating log handler
+ make_dirs()
+ rotate = RotatingFileHandler(os.path.join(Settings.get('client/logs/path'), 'forever.log'),
+diff --git a/src/config/develop.py b/src/config/develop.py
+index 738502c..1a2ed03 100644
+--- a/src/config/develop.py
++++ b/src/config/develop.py
+@@ -10,10 +10,4 @@ else:
+     APPDATA_DIR = os.path.join(os.environ['HOME'], "FAForever")
+ 
+ defaults = production_defaults.copy()
+-
+-defaults['client/log/level'] = logging.INFO
+-defaults['turn/host'] = 'dev.faforever.com'
+-defaults['lobby/host'] = 'lobby.dev.faforever.com'
+-defaults['proxy/host'] = 'proxy.dev.faforever.com'
+-defaults['replay_server/host'] = 'lobby.dev.faforever.com'
+-defaults['relay_server/host'] = 'lobby.dev.faforever.com'
++defaults['host'] = 'test.faforever.com'
+diff --git a/src/config/production.py b/src/config/production.py
+index ed8faee..690fa2b 100644
+--- a/src/config/production.py
++++ b/src/config/production.py
+@@ -16,24 +16,26 @@ defaults = {
+     'client/logs/level': logging.INFO,
+     'client/logs/max_size': 512*1024,
+     'client/logs/buffer_size': 8*1024,
++    'content/host': 'http://content.{host}',
+     'chat/enabled': True,
+     'game/bin/path': join(APPDATA_DIR, 'bin'),
+     'game/engine/path': join(join(APPDATA_DIR, 'repo'), 'binary-patch'),
+     'game/logs/path': join(APPDATA_DIR, 'logs'),
+     'game/mods/path': join(join(APPDATA_DIR, 'repo'), 'mods'),
+     'game/maps/path': join(join(APPDATA_DIR, 'repo'), 'maps'),
+-    'proxy/host': 'proxy.faforever.com',
++    'host': 'faforever.com',
++    'proxy/host': 'proxy.{host}',
+     'proxy/port': 9124,
+     'lobby/relay/port': 15000,
+-    'lobby/host': 'lobby.faforever.com',
++    'lobby/host': 'lobby.{host}',
+     'lobby/port': 8001,
+-    'turn/host': 'faforever.com',
++    'mordor/host': 'http://mordor.{host}',
++    'turn/host': '{host}',
+     'turn/port': 3478,
+-    'replay_server/host': 'lobby.faforever.com',
++    'replay_server/host': 'lobby.{host}',
+     'replay_server/port': 15000,
+-    'relay_server/host': 'lobby.faforever.com',
++    'relay_server/host': 'lobby.{host}',
+     'relay_server/port': 8000,
+-    'MUMBLE_URL': 'mumble://{login}@mumble.faforever.com/Games?version:1.2.0',
+     'FORUMS_URL': 'http://forums.faforever.com/forums',
+     'WEBSITE_URL': 'http://www.faforever.com',
+     'UNITDB_URL': 'http://faforever.com/faf/unitsDB/',
 diff --git a/src/config/version.py b/src/config/version.py
-index 8ee2014..da6a1d9 100644
+index 8ee2014..80d2437 100644
 --- a/src/config/version.py
 +++ b/src/config/version.py
-@@ -40,7 +40,7 @@ def call_git_describe():
-         return line.strip()
-     except Exception as e:
-         print("Error grabbing git version: {}".format(e))
--        return "0.0.0-dev"
-+        return None
+@@ -79,7 +79,7 @@ def get_git_version():
+     # Read in the version that's currently in RELEASE-VERSION.
+     release_version = read_release_version()
  
- def is_development_version(version):
-     return "-" in version and not is_prerelease_version(version)
-@@ -51,7 +51,9 @@ def is_prerelease_version(version):
+-    if hasattr(sys, 'frozen'):
++    if hasattr(sys, 'frozen') or sys.platform != 'win32':
+         return release_version
  
- def read_release_version():
-     try:
--        f = open("RELEASE-VERSION", "r")
-+        import util
-+        import os.path
-+        f = open(os.path.join(util.COMMON_DIR,"RELEASE-VERSION"), "r")
+     # First try to get the current version using “git describe”.
+diff --git a/src/downloadManager/__init__.py b/src/downloadManager/__init__.py
+index 46bf985..9a1e8de 100644
+--- a/src/downloadManager/__init__.py
++++ b/src/downloadManager/__init__.py
+@@ -5,24 +5,25 @@ import logging
+ import os
+ import util
+ import warnings
++from config import Settings
  
-         try:
-             version = f.readlines()[0]
+ logger= logging.getLogger(__name__)
+ 
+-VAULT_PREVIEW_ROOT = "http://content.faforever.com/faf/vault/map_previews/small/"
++VAULT_PREVIEW_ROOT = "{}/faf/vault/map_previews/small/".format(Settings.get('content/host'))
+ 
+ class downloadManager(QtCore.QObject):
+     ''' This class allows downloading stuff in the background'''
+-    
++
+     def __init__(self, parent = None):
+         self.client = parent
+         self.nam = QNetworkAccessManager()
+-        
++
+         self.nam.finished.connect(self.finishedDownload)
+ 
+         self.modRequests = {}
+         self.mapRequests = {}
+         self.mapRequestsItem = []
+-        
++
+     def finishedDownload(self,reply):
+         ''' finishing downloads '''
+         urlstring = reply.url().toString()
+@@ -59,7 +60,7 @@ class downloadManager(QtCore.QObject):
+                         requester.setIcon(util.icon(pathimg, False))
+             if urlstring in self.mapRequests: del self.mapRequests[urlstring]
+             if urlstring in self.modRequests: del self.modRequests[urlstring]
+-            
++
+     def downloadMap(self, name, requester, item=False):
+         '''
+         Downloads a preview image from the web for the given map name
+@@ -68,7 +69,7 @@ class downloadManager(QtCore.QObject):
+         name = name.lower()
+         if len(name) == 0:
+             return
+-        
++
+ 
+         url = QtCore.QUrl(VAULT_PREVIEW_ROOT + urllib2.quote(name) + ".png")
+         if not url.toString() in self.mapRequests:
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
-index 9052f31..6260763 100644
+index 9052f31..61d2c63 100644
 --- a/src/fa/game_process.py
 +++ b/src/fa/game_process.py
-@@ -41,7 +41,15 @@ class GameProcess(QtCore.QProcess):
+@@ -1,9 +1,11 @@
+ import os
++import sys
+ 
+ from PyQt4 import QtCore, QtGui
+ import config
+ import re
+ 
++import util
+ import logging
+ logger = logging.getLogger(__name__)
+ 
+@@ -41,8 +43,14 @@ class GameProcess(QtCore.QProcess):
  
              executable = os.path.join(config.Settings.get('game/bin/path'),
                                        "ForgedAlliance.exe")
 -            command = '"' + executable + '" ' + " ".join(arguments)
-+            import util
-+            if util.WINDOWS:
+-
++            if sys.platform == 'win32':
 +                command = '"' + executable + '" ' + " ".join(arguments)
 +            else:
 +                command = util.wine_cmd_prefix + " " + util.wine_exe + ' "' + executable + '" ' + " ".join(arguments)
@@ -397,154 +573,286 @@ index 9052f31..6260763 100644
 +                    wine_env = QtCore.QProcessEnvironment.systemEnvironment()
 +                    wine_env.insert("WINEPREFIX", util.wine_prefix)
 +                    QtCore.QProcess.setProcessEnvironment(self, wine_env)
- 
              logger.info("Running FA with info: " + str(info))
              logger.info("Running FA via command: " + command)
+             logger.info("Running FA via executable: " + executable)
 diff --git a/src/fa/maps.py b/src/fa/maps.py
-index ea97dd4..e4c7fb4 100644
+index ce307d1..47dfbf5 100644
 --- a/src/fa/maps.py
 +++ b/src/fa/maps.py
-@@ -191,13 +191,18 @@ def folderForMap(mapname):
-     Returns the folder where the application could find the map
-     '''
-     if isBase(mapname):
--        return os.path.join(getBaseMapsFolder(), mapname)
--    
--    if os.path.isdir(getUserMapsFolder()):
--        for infile in os.listdir(getUserMapsFolder()) :
--            if infile.lower() == mapname.lower(): 
--                return os.path.join(getUserMapsFolder(), mapname)
-+        mapsfolder = getBaseMapsFolder()
-+    else:
-+        mapsfolder = getUserMapsFolder()
+@@ -16,10 +16,12 @@ import urllib2
+ import zipfile
+ import tempfile
+ import re
++from config import Settings
  
-+    if not os.path.isdir(mapsfolder):
-+        return None
-+
-+    for infile in os.listdir(mapsfolder):
-+        if infile.lower() == mapname.lower():
-+            result = os.path.join(mapsfolder, infile)
-+            if os.path.isdir(result):
-+                return result
-     return None
- 
- def getBaseMapsFolder():
-@@ -250,18 +255,13 @@ def __exportPreviewFromMap(mapname, positions=None):
-     largeExists = False
-     ddsExists = False
-     previews = {"cache":None, "tozip":list()}
--    
--    if os.path.isdir(mapname):
--        mapdir = mapname
--    elif os.path.isdir(os.path.join(getUserMapsFolder(), mapname)):
--        mapdir = os.path.join(getUserMapsFolder(), mapname)
--    elif os.path.isdir(os.path.join(getBaseMapsFolder(), mapname)):
--        mapdir = os.path.join(getBaseMapsFolder(), mapname)
--    else:
-+
-+    mapdir = folderForMap(mapname)
-+    if not mapdir:
-         logger.debug("Can't find mapname in file system: " + mapname)
-         return previews
+-VAULT_PREVIEW_ROOT = "http://content.faforever.com/faf/vault/map_previews/small/"
+-VAULT_DOWNLOAD_ROOT = "http://content.faforever.com/faf/vault/"
+-VAULT_COUNTER_ROOT = "http://content.faforever.com/faf/vault/map_vault/inc_downloads.php"
++route = Settings.get('content/host')
++VAULT_PREVIEW_ROOT = "{}/faf/vault/map_previews/small/".format(route)
++VAULT_DOWNLOAD_ROOT = "{}/faf/vault/".format(route)
++VAULT_COUNTER_ROOT = "{}/faf/vault/map_vault/inc_downloads.php".format(route)
+  
+ maps = { # A Lookup table for info (names, sizes, players) of the official Forged Alliance Maps
+                  "scmp_001" : ["Burial Mounds", "1024x1024", 8],
+diff --git a/src/games/gameitem.py b/src/games/gameitem.py
+index ed40e6d..c6c97b1 100644
+--- a/src/games/gameitem.py
++++ b/src/games/gameitem.py
+@@ -81,6 +81,7 @@ class GameItem(QtGui.QListWidgetItem):
+         self.client         = None
+         self.title          = None
+         self.host           = None
++        self.hostid         = -1
+         self.teams          = []
+         self.password_protected = False
+         self.mod            = None
+@@ -119,7 +120,7 @@ class GameItem(QtGui.QListWidgetItem):
          
--    mapname = os.path.basename(mapdir).lower()
-+    mapname = os.path.basename(mapdir)
-     mapfilename = os.path.join(mapdir, mapname.split(".")[0]+".scmap")
+     @QtCore.pyqtSlot()
+     def announceReplay(self):
+-        if not self.client.players.isFriend(self.host):
++        if not self.client.players.isFriend(self.hostid):
+             return
+ 
+         if not self.state == "playing":
+@@ -139,7 +140,7 @@ class GameItem(QtGui.QListWidgetItem):
      
-     mode = os.stat(mapdir)[0]
+     @QtCore.pyqtSlot()
+     def announceHosting(self):
+-        if not self.client.players.isFriend(self.host) or self.isHidden():
++        if not self.client.players.isFriend(self.hostid) or self.isHidden():
+             return
+ 
+         if not self.state == "open":
+@@ -168,6 +169,9 @@ class GameItem(QtGui.QListWidgetItem):
+         self.title = message['title']
+         self.host = message['host']
+ 
++        if self.client.players.isPlayer(self.host):
++            self.hostid = self.client.players.isPlayer(self.host)
++
+         # Maps integral team numbers (from 2, with 1 "none") to lists of names.
+         teams_map = dict.copy(message['teams'])
+         self.password_protected = message.get('password_protected', False)
+@@ -263,7 +267,7 @@ class GameItem(QtGui.QListWidgetItem):
+         else:
+             playerstring = "players"
+ 
+-        color = client.players.getUserColor(self.host)
++        color = client.players.getUserColor(self.hostid)
+ 
+         self.editTooltip(teams)
+ 
+@@ -369,8 +373,8 @@ class GameItem(QtGui.QListWidgetItem):
+         if not other.client: return False;
+         
+         # Friend games are on top
+-        if self.client.players.isFriend(self.host) and not self.client.players.isFriend(other.host): return True
+-        if not self.client.players.isFriend(self.host) and self.client.players.isFriend(other.host): return False
++        if self.client.players.isFriend(self.hostid) and not self.client.players.isFriend(other.hostid): return True
++        if not self.client.players.isFriend(self.hostid) and self.client.players.isFriend(other.hostid): return False
+ 
+         # Sort Games
+         # 0: By Player Count
+diff --git a/src/modvault/utils.py b/src/modvault/utils.py
+index f16e263..ccb1508 100644
+--- a/src/modvault/utils.py
++++ b/src/modvault/utils.py
+@@ -14,11 +14,12 @@ import warnings
+ 
+ import cStringIO
+ import zipfile
++from config import Settings
+ 
+ logger = logging.getLogger(__name__)
+ 
+ MODFOLDER = os.path.join(util.PERSONAL_DIR, "My Games", "Gas Powered Games", "Supreme Commander Forged Alliance", "Mods")
+-MODVAULT_DOWNLOAD_ROOT = "http://content.faforever.com/faf/vault/"
++MODVAULT_DOWNLOAD_ROOT = "{}/faf/vault/".format(Settings.get('content/host'))
+ 
+ installedMods = [] # This is a global list that should be kept intact. So it should be cleared using installedMods[:] = []
+ 
+diff --git a/src/replays/_replayswidget.py b/src/replays/_replayswidget.py
+index 7b463a4..f96050d 100644
+--- a/src/replays/_replayswidget.py
++++ b/src/replays/_replayswidget.py
+@@ -291,7 +291,6 @@ class ReplaysWidget(BaseClass, FormClass):
+                         # Add additional info
+                         item.setText(3, item.info['featured_mod'])
+                         item.setTextAlignment(3, QtCore.Qt.AlignCenter)
+-                        item.setTextColor(1, QtGui.QColor(client.instance.players.getUserColor(item.info.get('recorder', ""))))
+                     else:
+                         bucket = buckets.setdefault("incomplete", [])                    
+                         item.setIcon(0, util.icon("replays/replay.png"))
+@@ -405,31 +404,33 @@ class ReplaysWidget(BaseClass, FormClass):
+                 if team == "-1": #skip observers, they don't seem to stream livereplays
+                     continue
+                 
+-                for player in info['teams'][team]:
++                for name in info['teams'][team]:
+                     playeritem = QtGui.QTreeWidgetItem()
+-                    playeritem.setText(0, player)  
++                    playeritem.setText(0, name)
++
++                    playerid = self.client.players.getID(name)
+ 
+                     url = QtCore.QUrl()
+                     url.setScheme("faflive")
+                     url.setHost("lobby.faforever.com")
+-                    url.setPath(str(info["uid"]) + "/" + player + ".SCFAreplay")
++                    url.setPath(str(info["uid"]) + "/" + name + ".SCFAreplay")
+                     url.addQueryItem("map", info["mapname"])
+                     url.addQueryItem("mod", info["featured_mod"])
+                     
+                     playeritem.url = url
+-                    if client.instance.login == player:
++                    if client.instance.login == name:
+                         mygame = True
+                         item.setTextColor(1, QtGui.QColor(client.instance.getColor("self")))
+                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("self")))
+                         playeritem.setToolTip(0, url.toString())
+                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
+-                    elif client.instance.players.isFriend(player):
++                    elif client.instance.players.isFriend(playerid):
+                         if not mygame:
+                             item.setTextColor(1, QtGui.QColor(client.instance.getColor("friend")))
+                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("friend")))
+                         playeritem.setToolTip(0, url.toString())
+                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
+-                    elif client.instance.players.isPlayer(player):
++                    elif client.instance.players.isPlayer(playerid):
+                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("player")))                        
+                         playeritem.setToolTip(0, url.toString())
+                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
+diff --git a/src/replays/replayitem.py b/src/replays/replayitem.py
+index 9e7b245..b0b9234 100644
+--- a/src/replays/replayitem.py
++++ b/src/replays/replayitem.py
+@@ -7,6 +7,7 @@ from fa import maps
+ import util
+ import os, time
+ from games.moditem import mods
++from config import Settings
+ 
+ import client
+ 
+@@ -77,6 +78,7 @@ class ReplayItem(QtGui.QTreeWidgetItem):
+     def __init__(self, uid, parent, *args, **kwargs):
+         QtGui.QTreeWidgetItem.__init__(self, *args, **kwargs)
+ 
++        ROOT = Settings.get('content/host')
+         
+         self.uid            = uid
+         self.parent         = parent
+@@ -94,7 +96,7 @@ class ReplayItem(QtGui.QTreeWidgetItem):
+         self.moreInfo       = False
+         self.replayInfo     = False
+         self.spoiled        = False
+-        self.url            = "http://content.faforever.com/faf/vault/replay_vault/replay.php?id=%i" % self.uid
++        self.url            = "{}/faf/vault/replay_vault/replay.php?id={}".format(Settings.get('content/host'), self.uid)
+         
+         self.teams          = {}
+         self.access         = None
+diff --git a/src/stats/_statswidget.py b/src/stats/_statswidget.py
+index 7bf3f5d..89bd118 100644
+--- a/src/stats/_statswidget.py
++++ b/src/stats/_statswidget.py
+@@ -11,6 +11,8 @@ import time
+ import logging
+ logger = logging.getLogger(__name__)
+ 
++from config import Settings
++
+ ANTIFLOOD = 0.1
+ 
+ FormClass, BaseClass = util.loadUiType("stats/stats.ui")
+@@ -216,4 +218,4 @@ class StatsWidget(BaseClass, FormClass):
+         if util.themeurl("ladder/style.css"):
+             self.webview.settings().setUserStyleSheetUrl(util.themeurl("ladder/style.css"))
+ 
+-        self.webview.setUrl(QtCore.QUrl("http://content.faforever.com/faf/leaderboards/read-leader.php?board=1v1&username=%s" % me.login))
++        self.webview.setUrl(QtCore.QUrl("{}/faf/leaderboards/read-leader.php?board=1v1&username={}".format(Settings.get('content/host'), me.login)))
+diff --git a/src/tutorials/tutorialitem.py b/src/tutorials/tutorialitem.py
+index 3881cfe..ceb23ce 100644
+--- a/src/tutorials/tutorialitem.py
++++ b/src/tutorials/tutorialitem.py
+@@ -5,6 +5,7 @@
+ from PyQt4 import QtCore, QtGui
+ from fa import maps
+ import util
++from config import Settings
+ 
+ class TutorialItemDelegate(QtGui.QStyledItemDelegate):
+     
+@@ -85,12 +86,11 @@ class TutorialItem(QtGui.QListWidgetItem):
+         '''
+         Updates this item from the message dictionary supplied
+         '''
+-        
+-        
++
+         self.client = client
+         self.tutorial      = message['tutorial']
+         self.description   = message['description']
+-        self.url           = "http://content.faforever.com/faf/tutorials/" + message['url']
++        self.url           = "{}/faf/tutorials/{}".format(Settings.get('content/host'), message['url'])
+ 
+         # Map preview code
+         if self.mapname != message['mapname']:
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 47d7c02..7207b97 100644
+index fdcf950..a58fef2 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -1,22 +1,42 @@
+@@ -1,21 +1,26 @@
  import sys
  
  import os
--from ctypes import *
++import subprocess
+ from ctypes import *
++from config import Settings
  
  # Developer mode flag
  def developer():
 -    return sys.executable.endswith("python.exe")
-+    return "python" in sys.executable
++    return sys.executable.contains("python")
  
--from config import VERSION as VERSION_STRING
-+import platform
-+if platform.system() == "Windows":
-+    WINDOWS = True
-+else:
-+    WINDOWS = False
-+
-+#This data path is relative to the executable or main.py script
-+COMMON_DIR = os.path.join(os.getcwd(), "res")
-+if not os.path.exists(COMMON_DIR) and not WINDOWS:
-+    # support a separation of the res folder into /usr/share/fafclient
-+    COMMON_DIR = os.path.join("/usr", "share", "fafclient")
-+
-+# Public settings object
-+# Stolen from Config because reasons
-+from config import _settings
-+settings = _settings
-+
-+# initialize wine settings for non Windows platforms
-+if not WINDOWS:
-+    wine_exe = settings.value("wine/exe", "wine", type=str)
-+    wine_cmd_prefix = settings.value("wine/cmd_prefix", "", type=str)
-+    if settings.contains("wine/prefix"):
-+        wine_prefix = str(settings.value("wine/prefix", type=str))
-+    else:
-+        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
+ from config import VERSION as VERSION_STRING
  
  LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
  
++UNITS_PREVIEW_ROOT = "{}/faf/unitsDB/icons/big/".format(Settings.get('content/host'))
  
- UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
- 
+-UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
+-
 -#These are paths relative to the executable or main.py script
 -COMMON_DIR = os.path.join(os.getcwd(), "res")
--
++if sys.platform == 'win32':
++    #On Windows the res dir is relative to the executable or main.py script
++    COMMON_DIR = os.path.join(os.getcwd(), "res")
++else:
++    #On Linux the res dir is instaled as /usr/share/fafclient
++    COMMON_DIR = os.path.join("/usr", "share", "fafclient")
+ 
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
-     APPDATA_DIR = os.path.join(os.environ['ALLUSERSPROFILE'], "FAForever")
-@@ -58,32 +78,46 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
- if not os.path.exists(REPO_DIR):
-     os.makedirs(REPO_DIR)
- 
--LOCALFOLDER = os.path.join(os.path.expandvars("%LOCALAPPDATA%"), "Gas Powered Games",
--                           "Supreme Commander Forged Alliance")
--if not os.path.exists(LOCALFOLDER):
--    LOCALFOLDER = os.path.join(os.path.expandvars("%USERPROFILE%"), "Local Settings", "Application Data",
--                               "Gas Powered Games", "Supreme Commander Forged Alliance")
-+if WINDOWS:
-+    LOCALFOLDER = os.path.join(os.path.expandvars("%LOCALAPPDATA%"), "Gas Powered Games",
-+                               "Supreme Commander Forged Alliance")
-+    if not os.path.exists(LOCALFOLDER):
-+        LOCALFOLDER = os.path.join(os.path.expandvars("%USERPROFILE%"), "Local Settings", "Application Data",
-+                                   "Gas Powered Games", "Supreme Commander Forged Alliance")
-+else:
-+    import getpass
-+    LOCALFOLDER = os.path.join(wine_prefix, 'drive_c', 'users', getpass.getuser(), "Local Settings", "Application Data",
-+                                   "Gas Powered Games", "Supreme Commander Forged Alliance")
-+
- PREFSFILENAME = os.path.join(LOCALFOLDER, "game.prefs")
-+if not os.path.exists(PREFSFILENAME):
-+    PREFSFILENAME = os.path.join(LOCALFOLDER, "Game.prefs") #fix wrong case on some Linux machines
-+
- 
+@@ -62,23 +67,26 @@ PREFSFILENAME = os.path.join(LOCALFOLDER, "game.prefs")
  DOWNLOADED_RES_PIX = {}
  DOWNLOADING_RES_PIX = {}
  
- # This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
- # so we are nice and create a new home for them in the APPDATA_DIR
+-# This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
+-# so we are nice and create a new home for them in the APPDATA_DIR
 -try:
 -    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
-+if WINDOWS:
-+    try:
-+        os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
- 
+-
 -    import ctypes
 -    from ctypes.wintypes import MAX_PATH
-+        import ctypes
-+        from ctypes.wintypes import MAX_PATH
++if sys.platform == 'win32':
++    # This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
++    # so we are nice and create a new home for them in the APPDATA_DIR
++    try:
++        os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
  
 -    dll = ctypes.windll.shell32
 -    buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
@@ -554,6 +862,9 @@ index 47d7c02..7207b97 100644
 -        raise StandardError
 -except:
 -    PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
++        import ctypes
++        from ctypes.wintypes import MAX_PATH
+ 
 +        dll = ctypes.windll.shell32
 +        buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
 +        if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
@@ -561,64 +872,94 @@ index 47d7c02..7207b97 100644
 +        else:
 +            raise StandardError
 +    except:
-+        # wine points the "My Documents" folder to the users home directory on linux
 +        PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
 +else:
-+    from os.path import expanduser
-+    PERSONAL_DIR = expanduser("~")
- 
++    PERSONAL_DIR = os.path.expanduser("~")
++    
  #Ensure Application data directories exist
  if not os.path.isdir(APPDATA_DIR):
-@@ -161,11 +195,6 @@ __theme = None
- __themedir = None
+     os.makedirs(APPDATA_DIR)
+@@ -154,6 +162,15 @@ __themedir = None
+ from config import _settings
+ settings = _settings
  
- 
--# Public settings object
--# Stolen from Config because reasons
--from config import _settings
--settings = _settings
--
++# initialize wine settings for non Windows platforms
++if sys.platform != 'win32':
++    wine_exe = settings.value("wine/exe", "wine", type=str)
++    wine_cmd_prefix = settings.value("wine/cmd_prefix", "", type=str)
++    if settings.contains("wine/prefix"):
++        wine_prefix = str(settings.value("wine/prefix", type=str))
++    else:
++        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
++
  def clean_slate(path):
      if os.path.exists(path):
          logger.info("Wiping " + path)
-@@ -200,7 +229,8 @@ def setTheme(theme, restart=True):
-         test_dir = os.path.join(THEME_DIR, theme)
-         if os.path.isdir(test_dir):
-             version_file = os.path.join(THEME_DIR, theme, "version")
--            if os.path.isfile(version_file) and (VERSION_STRING == open(version_file).read()):
-+            from config import VERSION
-+            if os.path.isfile(version_file) and (VERSION == open(version_file).read()):
-                 logger.info("Using theme: " + theme + " in directory " + test_dir)
-                 __themedir = test_dir
-                 __theme = theme
-@@ -607,5 +637,3 @@ def datetostr(d):
- def now():
-     return _dateDummy.now()
+@@ -560,23 +577,17 @@ def md5(file_name):
  
--from crash import CrashDialog
+ def uniqueID(user, session):
+     ''' This is used to uniquely identify a user's machine to prevent smurfing. '''
++    env = os.environ
++    env['PATH'] += ":" + os.getcwd() # the Windows setup places executables in the root/CWD
++    env['PATH'] += ":" + os.path.join(os.getcwd(), "lib") # the default download location for travis/Appveyor
+     try:
+-        if os.path.isfile("uid.dll"):
+-            mydll = cdll.LoadLibrary("uid.dll")
+-        else:
+-            mydll = cdll.LoadLibrary(os.path.join("lib", "uid.dll"))
 -
-diff --git a/src/util/crash.py b/src/util/crash.py
-index 47e232d..a675b12 100644
---- a/src/util/crash.py
-+++ b/src/util/crash.py
-@@ -2,9 +2,9 @@
- import config
- import traceback
- import util
--from config import Settings
-+from config import Settings, VERSION
+-        mydll.uid.restype = c_char_p
+-        baseString = (mydll.uid(session, os.path.join(LOG_DIR, "uid.log")) )
+-        DllCanUnloadNow()
+-
+-        return baseString
+-
+-    except:
+-        QtGui.QMessageBox.warning(None, "C++ 2010 Runtime Missing",
+-                                  "You are missing the Microsoft Visual C++ 2010 Runtime.<br><br>Get it from here: <a href='https://www.microsoft.com/en-us/download/details.aspx?id=5555'>https://www.microsoft.com/en-us/download/details.aspx?id=5555</a>")
+-        logger.warning("UniqueID Failure, user warned", exc_info=sys.exc_info())
+-        QtGui.QApplication.quit()
++        # on error, the uid exe returns 1 which will result in a CalledProcessError exception
++        return subprocess.check_output(["uid", session], env=env, stderr=subprocess.STDOUT)
++    except OSError as err:
++        logger.error("UniqueID error finding the executable: {}".format(err))
++    except subprocess.CalledProcessError as exc:
++        logger.error("UniqueID executable error: {}".format(exc.output))
++    return None
  
--from . import APPDATA_DIR, PERSONAL_DIR, VERSION_STRING, LOG_FILE_FAF, \
-+from . import APPDATA_DIR, PERSONAL_DIR, LOG_FILE_FAF, \
-     readlines
  
- from PyQt4 import QtGui, QtCore
-@@ -46,7 +46,7 @@ class CrashDialog(QtGui.QDialog):
-         description = u""
-         try:
-             description += (u"\n**FAF Username:** " + CRASH_REPORT_USER)
--            description += (u"\n**FAF Version:** " + VERSION_STRING)
-+            description += (u"\n**FAF Version:** " + VERSION)
-             description += (u"\n**FAF Environment:** " + config.environment)
-             description += (u"\n**FAF Directory:** " + APPDATA_DIR)
-             description += (u"\n**FA Path:** " + str(util.settings.value("ForgedAlliance/app/path", None, type=str)))
+ import datetime
+diff --git a/src/vault/__init__.py b/src/vault/__init__.py
+index a15d931..112b3bd 100644
+--- a/src/vault/__init__.py
++++ b/src/vault/__init__.py
+@@ -14,6 +14,7 @@ from vault import luaparser
+ import urllib2
+ import re
+ import json
++from config import Settings
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -56,7 +57,8 @@ class MapVault(QtCore.QObject):
+         if util.themeurl("vault/style.css"):
+             self.ui.settings().setUserStyleSheetUrl(util.themeurl("vault/style.css"))
+ 
+-        self.ui.setUrl(QtCore.QUrl("http://content.faforever.com/faf/vault/maps.php?username={user}&pwdhash={pwdhash}".format(user=self.client.login, pwdhash=self.client.password)))
++        ROOT = Settings.get('content/host')
++        self.ui.setUrl(QtCore.QUrl("{route}/faf/vault/maps.php?username={user}&pwdhash={pwdhash}".format(route = Settings.get('content/host'), user = self.client.login, pwdhash = self.client.password)))
+ 
+     @QtCore.pyqtSlot()
+     def addScript(self):
+diff --git a/tests/unit_tests/client/test_updating.py b/tests/unit_tests/client/test_updating.py
+index 05b4ca4..ebf086a 100644
+--- a/tests/unit_tests/client/test_updating.py
++++ b/tests/unit_tests/client/test_updating.py
+@@ -6,7 +6,6 @@ import config
+ def test_client_sends_current_version(qtbot, mocker):
+     import client
+     c = client.instance
+-    mocker.patch('util.uniqueID', side_effect='some_unique_id')
+     mocker.patch.object(c, 'send')
+     mocker.patch.object(c, 'connected')
+     mocker.patch.object(c, 'socket')
