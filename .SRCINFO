@@ -16,7 +16,7 @@ pkgname = razer_chroma_drivers
 	depends = libdbus
 	depends = jq
 	depends = python
-	depends = package_razer_chroma_drivers-dkms
+	depends = razer_chroma_drivers-dkms
 
 pkgname = razer_chroma_drivers-dkms
 	pkgdesc = DKMS support for the razer_chroma_drivers package.
