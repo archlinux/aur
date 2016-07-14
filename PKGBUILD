@@ -4,7 +4,7 @@ _name="apache-libcloud"
 _module="${_name#apache-}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.0.0"
+pkgver="1.1.0"
 pkgrel="1"
 pkgdesc="A standard Python library that abstracts away differences among multiple cloud provider APIs."
 arch=("any")
@@ -12,7 +12,7 @@ url="https://libcloud.apache.org"
 license=("Apache")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a04278781250fbb7d448203daedb4a3428183ef05b4d72cbbf28971775404df2')
+sha256sums=('494b17bf38df7d90bf1d847caebaa69a999ae4c6852b348a07d709280a3d57a0')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
