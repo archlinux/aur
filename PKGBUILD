@@ -6,7 +6,7 @@ _pkgbase=engrampa
 pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.0
 pkgrel=1
-pkgdesc="Archive manipulator for MATE (GTK2 version)"
+pkgdesc="Archive manipulator for MATE (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
@@ -47,7 +47,6 @@ build() {
 }
 
 package() {
-    pkgdesc+=' (GTK3 version)'
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
 }
