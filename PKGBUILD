@@ -1,7 +1,7 @@
 # Maintainer: François Garillot <francois[@]garillot.net>
 
 pkgname=zinc-git
-pkgver=0.3.8
+pkgver=0.3.11
 pkgrel=5
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler."
 license="GPL"
