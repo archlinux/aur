@@ -1,4 +1,4 @@
-pkgbase = theshell
+pkgbase = theshell-blueprint
 	pkgdesc = Desktop Shell that gets out of your way
 	pkgver = 3.1b
 	pkgrel = 0
@@ -22,8 +22,8 @@ pkgbase = theshell
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-3.1b::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-blueprint-3.1b::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
-pkgname = theshell
+pkgname = theshell-blueprint
 

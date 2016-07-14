@@ -1,6 +1,6 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
-pkgname=theshell
+pkgname=theshell-blueprint
 pkgver=3.1b
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
