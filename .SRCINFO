@@ -31,6 +31,7 @@ pkgbase = mate-power-manager-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-power-manager
 	provides = mate-power-manager-gtk3
+	conflicts = mate-power-manager
 	conflicts = mate-power-manager-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-power-manager-1.15.0.tar.xz
 	sha1sums = f8138b3833ed115bf8fabcea095eaf681bcee3fe
