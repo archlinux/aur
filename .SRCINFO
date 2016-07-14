@@ -24,6 +24,7 @@ pkgbase = mate-utils-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-utils
 	provides = mate-utils-gtk3
+	conflicts = mate-utils
 	conflicts = mate-utils-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-utils-1.15.0.tar.xz
 	sha1sums = 20c863e3bc944cb291edb734389079a1330bc6cc
