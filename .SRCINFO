@@ -1,0 +1,25 @@
+pkgbase = mate-themes
+	pkgdesc = Default themes for the MATE desktop
+	pkgver = 3.20.8
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = any
+	groups = mate
+	groups = mate-gtk3
+	license = GPL
+	makedepends = mate-common
+	makedepends = icon-naming-utils
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	depends = mate-icon-theme
+	provides = mate-themes
+	provides = mate-themes-gtk3
+	conflicts = mate-themes
+	conflicts = mate-themes-gtk3
+	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-3.20.8.tar.xz
+	sha1sums = b135248110ddca8083f66d8d206aa51ef01d9421
+
+pkgname = mate-themes
+
