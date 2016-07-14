@@ -1,7 +1,7 @@
 pkgbase = gopanda
 	pkgdesc = GoPanda 2 is a modern client to Pandanet that runs in the browser.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pandanet-igs.com/communities/gopanda
 	arch = x86_64
 	license = custom

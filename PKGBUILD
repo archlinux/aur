@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Sébastien Feugère <smonff@riseup.net>
 pkgname=gopanda
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="GoPanda 2 is a modern client to Pandanet that runs in the browser."
 arch=('x86_64')
 url="http://pandanet-igs.com/communities/$pkgname$pkgversion"
