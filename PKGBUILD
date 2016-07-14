@@ -12,7 +12,7 @@ pkgdesc='XML-RPC for C and C++'
 arch=('x86_64')
 url='http://xmlrpc-c.sourceforge.net/'
 license=('custom')
-depends=('xmlrpc-c' 'lib32-gcc-libs' 'lib32-curl' 'lib32-libxml2' 'lib32-xz')
+depends=('xmlrpc-c' 'lib32-gcc-libs' 'lib32-curl' 'lib32-xz')
 makedepends=('gcc-multilib' 'libtool' 'subversion')
 source=("svn://svn.code.sf.net/p/xmlrpc-c/code/stable")
 sha1sums=('SKIP')
@@ -26,7 +26,6 @@ build() {
 	./configure --prefix=/usr \
 		--libdir=/usr/lib32 \
 		--mandir=/usr/share/man \
-		--enable-libxml2-backend \
 		--disable-cgi-server \
 		--disable-libwww-client \
 		--disable-wininet-client \

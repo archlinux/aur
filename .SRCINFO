@@ -11,7 +11,6 @@ pkgbase = lib32-xmlrpc-c
 	depends = xmlrpc-c
 	depends = lib32-gcc-libs
 	depends = lib32-curl
-	depends = lib32-libxml2
 	depends = lib32-xz
 	source = svn://svn.code.sf.net/p/xmlrpc-c/code/stable
 	sha1sums = SKIP
