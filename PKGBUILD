@@ -1,7 +1,6 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 pkgname=huggle
-_gitver=019045a6887e5e0a81624a6ea31997bfee605475
-pkgver=3.1.20.g${_gitver:0:7}
+pkgver=3.1.21
 pkgrel=2
 pkgdesc="diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects"
 arch=('i686' 'x86_64')
@@ -10,18 +9,18 @@ license=('GPL')
 depends=('qt5-base' 'qt5-webkit')
 makedepends=('cmake' 'unzip')
 groups=('base-devel')
-source=("https://github.com/huggle/huggle3-qt-lx/archive/${_gitver}.tar.gz")
-sha256sums=('6f8a4fc53f188fb5751839c25495f24722fcf92453c610dbd8f81166dc563630')
+source=("https://github.com/huggle/huggle3-qt-lx/archive/${pkgver}.tar.gz")
+sha256sums=('7c7f78d794e82a982368816d043450e85c70369db992689f0778457eaebfef8a')
 
 prepare() {
-    cd "$srcdir/huggle3-qt-lx-${_gitver}/huggle"
+    cd "$srcdir/huggle3-qt-lx-${pkgver}/huggle"
 
     pushd libs
     unzip libirc.zip
 }
 
 build() {
-    cd "$srcdir/huggle3-qt-lx-${_gitver}/huggle"
+    cd "$srcdir/huggle3-qt-lx-${pkgver}/huggle"
 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr -DQT5_BUILD=true
 
@@ -29,6 +28,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/huggle3-qt-lx-${_gitver}/huggle"
+    cd "$srcdir/huggle3-qt-lx-${pkgver}/huggle"
     make DESTDIR=$pkgdir install
 }
