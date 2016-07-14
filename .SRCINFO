@@ -1,0 +1,29 @@
+pkgbase = bluez-ps3
+	pkgdesc = Daemons for the bluetooth protocol stack. Patched to support PS3 controllers, including Gasia/Shanwan clones
+	pkgver = 5.39
+	pkgrel = 1
+	url = https://github.com/luetzel/bluez
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = dbus
+	makedepends = libical
+	makedepends = systemd
+	depends = libical
+	depends = dbus
+	depends = glib2
+	provides = bluez
+	provides = bluez-plugins
+	conflicts = bluez
+	conflicts = bluez-plugins
+	conflicts = obexd-client
+	conflicts = obexd-server
+	backup = etc/dbus-1/system.d/bluetooth.conf
+	backup = etc/bluetooth/main.conf
+	source = git+https://github.com/luetzel/bluez
+	source = bluetooth.modprobe
+	sha256sums = SKIP
+	sha256sums = 46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4
+
+pkgname = bluez-ps3
+
