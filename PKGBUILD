@@ -2,8 +2,8 @@
 
 pkgname=nunit3
 
-pkgver_link=3.2.1
-pkgver_linkname=3.2.1
+pkgver_link=3.4.1
+pkgver_linkname=3.4.1
 pkgver=`echo $pkgver_linkname | sed 's/-/./; s/-//'`
 
 pkgrel=1
@@ -14,7 +14,7 @@ url="http://www.nunit.com"
 depends=('mono')
 makedepends=('sed')
 source=("https://github.com/nunit/nunit/releases/download/${pkgver_link}/NUnit-${pkgver_linkname}.zip")
-sha256sums=('41c25a96f1aef7aff0d7de6d50f09d5e65493ad1450dfcde190ba06363c8667c')
+sha256sums=('a97cac037ac6c54b46eae5c688b3f9d82f299831fd133b7db428a2eea1518989')
 
 package() {  
   mkdir -p $pkgdir/usr/{share/licenses,share/icons,lib}/$pkgname

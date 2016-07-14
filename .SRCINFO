@@ -1,14 +1,14 @@
 pkgbase = nunit3
 	pkgdesc = Unit-testing framework for all .NET languages.
-	pkgver = 3.2.1
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://www.nunit.com
 	arch = any
 	license = custom
 	makedepends = sed
 	depends = mono
-	source = https://github.com/nunit/nunit/releases/download/3.2.1/NUnit-3.2.1.zip
-	sha256sums = 41c25a96f1aef7aff0d7de6d50f09d5e65493ad1450dfcde190ba06363c8667c
+	source = https://github.com/nunit/nunit/releases/download/3.4.1/NUnit-3.4.1.zip
+	sha256sums = a97cac037ac6c54b46eae5c688b3f9d82f299831fd133b7db428a2eea1518989
 
 pkgname = nunit3
 
