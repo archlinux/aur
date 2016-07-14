@@ -1,0 +1,3 @@
+post_install() {
+  echo to use, set KEYMAP=us-capslock-backspace in /etc/vconsole.conf
+}
