@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-scummvm-git
-pkgver=71580.2d437b4
+pkgver=71588.2094f56
 pkgrel=1
 pkgdesc="libretro implementation of ScummVM."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
- install -Dm644 "${_gitname}/backends/platform/libretro/build/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
- install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_gitname}/backends/platform/libretro/build/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
 }
