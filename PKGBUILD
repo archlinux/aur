@@ -19,6 +19,6 @@ md5sums_x86_64=('74537b77ccbcc037d7ba87c643f2ae4a')
 
 package() {
     cd "${pkgdir}"
-    tar xf "${srcdir}/urw-${_pkgver}-${arch}.pkg.tar.xz"
+    tar xf "${srcdir}/urw-${_pkgver}-${CARCH}.pkg.tar.xz"
 }
 
