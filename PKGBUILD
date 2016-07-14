@@ -12,7 +12,7 @@ depends=('java-environment>=8' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
-sha256sums=('2bb8e10018426c6bee415937612ba777b7a3779bc02a7dbb27b96a7440cc2a02')
+sha512sums=('2397e1d2046c130c6f8a353d4c38dabb50a2786c5d73bf896f4b2fa2e743b454550ef07398f24da7395245b21a2f3bd86c8818ca15a838a69d30660e628d716d')
 
 build() {
   cd ${pkgname}-${pkgver}
