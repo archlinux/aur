@@ -1,3 +1,4 @@
+# Maintainer:   Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com> 
 _ver=1.15
 _pkgbase=mate-meta
 pkgname="${_pkgbase}-${_ver}-gtk3"
