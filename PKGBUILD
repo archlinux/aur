@@ -13,7 +13,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('caja-1.15-gtk3' 'dbus-glib' 'gksu' 'gtk3' 'gupnp' 'imagemagick' 'samba')
-makedepends=('mate-common' 'caja')
+makedepends=('mate-common' 'caja-1.15-gtk3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('f4299e99fe889038834ab9743cf6418f01a777cc')
 
@@ -38,7 +38,7 @@ package_caja-extensions-common-1.15-gtk3() {
 
 package_caja-gksu-1.15-gtk3() {
     pkgdesc="Privilege granting extension for Caja using gksu (GTK3 version)"
-    depends=('caja' '"caja-extensions-common-1.15-gtk3"' 'gksu')
+    depends=('caja-1.15-gtk3' '"caja-extensions-common-1.15-gtk3"-1.15-gtk3' 'gksu')
     groups=('mate-extra')
     conflicts=('"caja-gksu-1.15-gtk3"' '"caja-gksu-1.15-gtk3"-gtk3')
 
@@ -48,7 +48,7 @@ package_caja-gksu-1.15-gtk3() {
 
 package_caja-image-converter-1.15-gtk3() {
     pkgdesc="A Caja extension for simple image conversions (GTK3 version)"
-    depends=('caja' '"caja-extensions-common-1.15-gtk3"' 'imagemagick')
+    depends=('caja-1.15-gtk3' '"caja-extensions-common-1.15-gtk3"-1.15-gtk3' 'imagemagick')
     groups=('mate-extra')
     conflicts=('"caja-image-converter-1.15-gtk3"' '"caja-image-converter-1.15-gtk3"-gtk3')
 
@@ -58,7 +58,7 @@ package_caja-image-converter-1.15-gtk3() {
 
 package_caja-open-terminal-1.15-gtk3() {
     pkgdesc="A Caja extension for opening terminals in arbitrary local paths (GTK3 version)"
-    depends=('caja' '"caja-extensions-common-1.15-gtk3"' 'glib2')
+    depends=('caja-1.15-gtk3' '"caja-extensions-common-1.15-gtk3"-1.15-gtk3' 'glib2')
     groups=('mate-extra')
     conflicts=('"caja-open-terminal-1.15-gtk3"' '"caja-open-terminal-1.15-gtk3"-gtk3')
 
@@ -68,7 +68,7 @@ package_caja-open-terminal-1.15-gtk3() {
 
 package_caja-sendto-1.15-gtk3() {
     pkgdesc="A Caja extension for sending files (GTK3 version)"
-    depends=('caja' '"caja-extensions-common-1.15-gtk3"' 'dbus-glib' 'glib2' 'gupnp')
+    depends=('caja-1.15-gtk3' '"caja-extensions-common-1.15-gtk3"-1.15-gtk3' 'dbus-glib' 'glib2' 'gupnp')
     groups=('mate-extra')
     optdepends=('pidgin: Support for sending to instant messaging networks.'
                 'gajim: Support for sending to Jabber.')
@@ -80,7 +80,7 @@ package_caja-sendto-1.15-gtk3() {
 
 package_caja-share-1.15-gtk3() {
     pkgdesc="A Caja extension to quickly share a folder (GTK3 version)"
-    depends=('caja' '"caja-extensions-common-1.15-gtk3"' 'samba')
+    depends=('caja-1.15-gtk3' '"caja-extensions-common-1.15-gtk3"-1.15-gtk3' 'samba')
     groups=('mate-extra')
     conflicts=('"caja-share-1.15-gtk3"' '"caja-share-1.15-gtk3"-gtk3')
 
