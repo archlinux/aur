@@ -1,5 +1,5 @@
 pkgbase = mate-session-manager-1.15-gtk3
-	pkgdesc = The MATE Session Handler (GTK2 version)
+	pkgdesc = The MATE Session Handler (GTK3 version)
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://mate-desktop.org
@@ -32,10 +32,10 @@ pkgbase = mate-session-manager-1.15-gtk3
 	optdepends = xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales
 	provides = mate-session-manager
 	provides = mate-session-manager-gtk3
+	conflicts = mate-session-manager
 	conflicts = mate-session-manager-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-session-manager-1.15.0.tar.xz
 	sha1sums = f8e7383072511117a7f1fe4ca56afe7a5c3c9e35
 
 pkgname = mate-session-manager-1.15-gtk3
-	pkgdesc = The MATE Session Handler (GTK2 version) (GTK3 version)
 
