@@ -1,5 +1,5 @@
 pkgbase = mate-media-1.15-gtk3
-	pkgdesc = MATE Media Tools
+	pkgdesc = MATE Media Tools (GTK3 version)
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://mate-desktop.org
@@ -17,6 +17,7 @@ pkgbase = mate-media-1.15-gtk3
 	depends = mate-desktop-1.15-gtk3
 	provides = mate-media
 	provides = mate-media-gtk3
+	conflicts = mate-media
 	conflicts = mate-media-gtk3
 	conflicts = mate-media-gstreamer
 	conflicts = mate-media-pulseaudio
@@ -26,5 +27,5 @@ pkgbase = mate-media-1.15-gtk3
 	sha1sums = 13043b1dcf8e4fbe93dba44566eecd1e70870131
 
 pkgname = mate-media-1.15-gtk3
-	pkgdesc = MATE Media Tools (GTK2 version)
+	pkgdesc = MATE Media Tools (GTK3 version) (GTK2 version)
 
