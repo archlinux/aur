@@ -1,0 +1,20 @@
+pkgbase = lib32-xmlrpc-c
+	pkgdesc = XML-RPC for C and C++
+	pkgver = 1.43.01
+	pkgrel = 1
+	url = http://xmlrpc-c.sourceforge.net/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = libtool
+	makedepends = subversion
+	depends = xmlrpc-c
+	depends = lib32-gcc-libs
+	depends = lib32-curl
+	depends = lib32-libxml2
+	depends = lib32-xz
+	source = svn://svn.code.sf.net/p/xmlrpc-c/code/stable
+	sha1sums = SKIP
+
+pkgname = lib32-xmlrpc-c
+
