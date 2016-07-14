@@ -1,13 +1,13 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=legit-git
-pkgver=0.r228.473d87d
+pkgver=0.r324.0eb31ef
 pkgrel=1
 pkgdesc="Sexy Git CLI, Inspired by GitHub for Mac™."
 arch=('any')
 url="https://github.com/kennethreitz/legit"
 license=('BSD')
-depends=('python2' 'python2-gitpython' 'python2-clint' 'python2-gitdb' 'python2-args')
+depends=('python2' 'python2-git' 'python2-clint' 'python2-gitdb' 'python2-args')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/kennethreitz/legit.git")
 md5sums=('SKIP')
