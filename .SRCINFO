@@ -20,4 +20,5 @@ pkgbase = libmateweather-1.15-gtk3
 	sha1sums = ad4357c0a2e2d5c61b601b4b8fddbd409b82186f
 
 pkgname = libmateweather-1.15-gtk3
+	pkgdesc = Provides access to weather information from the Internet (GTK3 version) (GTK3 version [EXPERIMENTAL])
 
