@@ -19,7 +19,7 @@ build() {
 
 package_razer_chroma_drivers() {
     pkgdesc='A collection of Linux drivers for Razer Chroma devices.'
-    depends=('libdbus' 'jq' 'python' 'package_razer_chroma_drivers-dkms')
+    depends=('libdbus' 'jq' 'python' 'razer_chroma_drivers-dkms')
     install="razer_chroma_drivers.install"
 
     cd "$srcdir/razer_chroma_drivers"
