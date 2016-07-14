@@ -47,7 +47,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/spark"
-    #build/mvn -DskipTests clean package
+    build/mvn -DskipTests clean package
 }
 
 package() {
