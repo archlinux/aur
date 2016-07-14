@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.1214
+pkgver=0.99.1258
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.8.0
@@ -11,8 +11,8 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'pam' 'wget')
+depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit' 'clang')
+makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime=8' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'pam' 'wget')
 optdepends=('git: for git support'
 	    'subversion: for subversion suuport'
 	    'openssh-askpass: for a git ssh access')
@@ -42,7 +42,7 @@ prepare() {
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
-    install -d dictionaries mathjax-23 pandoc libclang/{3.5,builtin-headers}
+    install -d dictionaries mathjax-26 pandoc libclang/{3.5,builtin-headers}
 
     msg "Downloading and installing R packages"
     ./install-packages
@@ -65,12 +65,12 @@ package() {
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     # Remove unnecessary directories
-    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-23}
+    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-26}
     # Creaate symlinks
     install -d "${pkgdir}/usr/bin"
     ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
     ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
-    ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-23"
+    ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-26"
     install -d "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5"
     ln -sf /usr/lib/libclang.so "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5/libclang.so"
     ln -sf /usr/lib/clang/$_clangver/include "${pkgdir}/usr/lib/rstudio/resources/libclang/builtin-headers/3.5"
