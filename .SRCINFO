@@ -35,6 +35,7 @@ pkgbase = atril-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = atril
 	provides = atril-gtk3
+	conflicts = atril
 	conflicts = atril-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/atril-1.15.1.tar.xz
 	sha1sums = c9793a09cc59038500bec703aa56236225b24d74
