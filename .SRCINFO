@@ -1,0 +1,18 @@
+pkgbase = python2-pachi_py-git
+	pkgdesc = Pachi (game of Go) environment for OpenAI gym
+	pkgver = r18.9cb949b
+	pkgrel = 1
+	url = https://gym.openai.com/
+	arch = any
+	license = GPLv2
+	makedepends = python2-setuptools
+	makedepends = gcc
+	makedepends = cmake
+	depends = python2
+	depends = python2-numpy
+	provides = python2-pachi_py
+	source = python2-pachi_py-git::git+https://github.com/openai/pachi-py
+	sha512sums = SKIP
+
+pkgname = python2-pachi_py-git
+
