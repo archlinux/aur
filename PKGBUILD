@@ -41,6 +41,9 @@ prepare() {
   cp "$srcdir/package.json" "package.json"
   cp "$srcdir/torrent_collection.js" "src/app/lib/views/torrent_collection.js"
   cp "$srcdir/ysubs.js" "src/app/lib/providers/ysubs.js"
+
+  sed -i '/repo\/nw/d' gulpfile.js Gruntfile.js
+
   npm install
 }
 
