@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20151130
+pkgver=3.0.0v20160704
 _pkgver=3.0.0
-_snapshot_=20151130
-_snapver_=0543
+_snapshot_=20160704
+_snapver_=0536
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -63,7 +63,7 @@ replaces=("${_appname_}-plugin")
 #        "usr/share/${_appname_}/lua/http/dialogs/.hosts")
 options=("!libtool" "!emptydirs")
 install="${pkgname}.install"
-source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}.tar.xz")
+source=("http://altair.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}.tar.xz")
 
 pkgver() {
  printf 3.0.0v$_snapshot_
@@ -111,4 +111,4 @@ package() {
 	done
 }
 
-sha1sums=('2a908d0c2fded1d20b666a0eee201a5b5a0946cc')
+sha1sums=('9bfd839e48d1fa41de91c953617386968ecd3bf3')
