@@ -1,0 +1,18 @@
+pkgbase = razer_chroma_drivers-git
+	pkgdesc = A collection of Linux drivers for Razer Chroma devices, it supports all lighting modes and includes a daemon for advanced effects + gui configuration app.
+	pkgver = 20160714
+	pkgrel = 1
+	url = https://github.com/pez2001/razer_chroma_drivers
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = git
+	makedepends = linux-headers
+	depends = libdbus
+	depends = jq
+	depends = python
+	source = git+https://github.com/pez2001/razer_chroma_drivers.git
+	md5sums = SKIP
+
+pkgname = razer_chroma_drivers-git
+
