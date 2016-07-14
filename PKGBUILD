@@ -1,6 +1,6 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
-pkgname=tspolkit
+pkgname=ts-polkitagent
 pkgver=1.0
 pkgrel=0
 pkgdesc="Polkit Agent for theShell"
