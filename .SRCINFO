@@ -1,0 +1,26 @@
+pkgbase = python2-doom_py-git
+	pkgdesc = Doom environment for OpenAI gym
+	pkgver = r47.a242ce7
+	pkgrel = 1
+	url = https://gym.openai.com/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = cmake
+	makedepends = boost
+	makedepends = gcc
+	depends = python2
+	depends = python2-numpy
+	depends = python2-six
+	depends = zlib
+	depends = libjpeg
+	depends = boost-libs
+	depends = sdl2
+	depends = wget
+	depends = unzip
+	provides = python2-doom_py
+	source = python2-doom_py-git::git+https://github.com/openai/doom-py
+	sha512sums = SKIP
+
+pkgname = python2-doom_py-git
+
