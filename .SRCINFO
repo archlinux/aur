@@ -27,6 +27,7 @@ pkgbase = mate-applets-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = mate-applets
 	provides = mate-applets-gtk3
+	conflicts = mate-applets
 	conflicts = mate-applets-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-applets-1.15.0.tar.xz
 	sha1sums = 4d6534cb83ec88fe247f8550e518977d10938640
