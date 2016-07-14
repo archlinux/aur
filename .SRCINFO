@@ -1,5 +1,5 @@
 pkgbase = pluma-1.15-gtk3
-	pkgdesc = A powerful text editor for MATE (GTK2 version)
+	pkgdesc = A powerful text editor for MATE (GTK3 version)
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://mate-desktop.org
@@ -25,10 +25,10 @@ pkgbase = pluma-1.15-gtk3
 	optdepends = yelp: for reading MATE help documents
 	provides = pluma
 	provides = pluma-gtk3
+	conflicts = pluma
 	conflicts = pluma-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/pluma-1.15.0.tar.xz
 	sha1sums = f31eb5cb1ac0a2a24aa5a3f0c5948da319d75328
 
 pkgname = pluma-1.15-gtk3
-	pkgdesc = A powerful text editor for MATE (GTK2 version) (GTK3 version)
 
