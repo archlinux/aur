@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gog-lovers-in-a-dangerous-spacetime
-pkgver=2.5.0.7
+pkgver=2.6.0.8
 pkgrel=1
 pkgdesc="Only through teamwork can you triumph over the evil forces of Anti-Love."
 url="http://www.loversinadangerousspacetime.com/"
@@ -12,7 +12,7 @@ depends_x86_64=('lib32-glib2')
 depends_i686=('glib2')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('aaa84d507a4b8a63c4d13f14eac6864c7224442fe644a5928fbd8d2abaa4a4ac'
+sha256sums=('85b7c2f823be67b772a645e078729515b52b04ffcbc29874cf1d448576c0b7c6'
             '996a51f45a1745d5641eab449efe5d3d0fa8d6786599ca997af493f7a7cb81d6')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
@@ -36,6 +36,8 @@ package(){
     install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
     cp -r "data/noarch/game/" "${pkgdir}/opt/${pkgname}/"
+    # using straight cp on the supplied tarball tends to have screwy permissions
+    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
     install -Dm755 "data/noarch/start.sh" \
         "${pkgdir}/opt/${pkgname}/"
     install -Dm755 data/noarch/support/*.{sh,shlib} -t \
