@@ -2,13 +2,13 @@
 
 pkgname=easy-rsa-git
 pkgver=3.0.1.r14.g5a429d2
-pkgrel=1
-pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) - git checkout"
-arch=('i686' 'x86_64')
-url="https://github.com/OpenVPN/easy-rsa"
-depends=('openssl')
+pkgrel=2
+pkgdesc='Simple shell based CA utility - git checkout'
+arch=('any')
+url='https://github.com/OpenVPN/easy-rsa'
+depends=('openssl' 'sh')
 makedepends=('git')
-conflicts=('easy-rsa' 'openvpn')
+conflicts=('easy-rsa')
 provides=('easy-rsa')
 license=('custom')
 backup=('etc/easy-rsa/openssl-1.0.cnf'
