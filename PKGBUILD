@@ -1,4 +1,5 @@
-# Maintainer: martadinata666 <martadinata666@gmail.com>
+# Maintainer:  Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Contributor: martadinata666 <martadinata666@gmail.com>
 
 _use_marco=0
 
@@ -7,7 +8,7 @@ _upstream="compiz"
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
 pkgver=0.8.12.3.r24.g292d9a2
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
@@ -33,13 +34,19 @@ _configure_opts=(
   --disable-inotify
 )
 
-if (("${_use_marco}"));then
+if (("${_use_marco}" == 1));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
   msg "Marco theme support enabled"
+elif (("${_use_marco}" == 2));then
+  _configure_opts+=("--enable-marco")
+  _configure_opts+=("--with-gtk=3.0")
+  makedepends+=("marco-gtk3")
+  msg "Marco theme support enabled with GTK+3"
 else
   _configure_opts+=("--disable-marco")
   msg "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it"
+  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk3"
 fi
 
 pkgver() {
@@ -56,7 +63,7 @@ build()
 
   if ! grep -q pkg_cv_GTK config.log;then
     # make sure only compiz-core-git is created if gtk is missing
-    msg "Making sure only $pkgbase is made, gtk+2 is missing"
+    msg "Making sure only $pkgbase is made, gtk+2 or gtk+3 is missing"
     pkgname=("$pkgbase")
   fi
 
@@ -88,9 +95,11 @@ package_compiz-core-git() {
 
 package_compiz-gtk-git()
 {
-  if (("${_use_marco}"));then
-    #separating libmarco-private would be nice, but this is a workaround for now
+  #separating libmarco-private would be nice, but this is a workaround for now
+  if (("${_use_marco}" == 1));then
     depends+=('marco')
+  elif (("${_use_marco}" == 2));then
+    depends+=('marco-gtk3')
   else
     depends+=('gtk2')
   fi
