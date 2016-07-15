@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 71073 2012-05-23 06:56:29Z allan $
-# Mantainer: Hector Mtz-Seara <hseara.at.gmail.com>
+# Maintainer:  Michael Lass <bevan@bi-co.net>
+# Contributor: Hector Mtz-Seara <hseara.at.gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Christian Storm <Christian.Storm@gmx.de>
 
@@ -7,7 +7,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=jabref
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${pkgver}.jar
         jabref.sh
         jabref.desktop)
-sha256sums=('0dbe96ea837ce35a624ddad65458916dee2245b12985b8612ae18b42429735de'
+sha256sums=('b5a9148008005f7ba081614693275d6b9226875286e99cda47d2648c583708a7'
             '0355f5135a6d855416160d4ff1cf8fe5e55921088b83491647b6a714dae87dda'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
 
