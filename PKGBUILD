@@ -2,17 +2,22 @@
 # Contributor: Antonio Rojas
 
 pkgname=prison-frameworks-git
-pkgver=r75.8f25e5a
+pkgver=r63.beb567b
 pkgrel=1
-pkgdesc="Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. KF5 Frameworks branch. (GIT version)"
+pkgdesc="Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kdesupport/prison'
 license=('LGPL')
-depends=('libdmtx' 'qrencode' 'qt5-base')
-makedepends=('extra-cmake-modules' 'git')
+depends=('libdmtx'
+         'qrencode'
+         'qt5-base'
+         )
+makedepends=('extra-cmake-modules'
+             'git'
+             )
 conflicts=('prison-frameworks')
 provides=('prison-frameworks')
-source=('git://anongit.kde.org/prison#branch=frameworks')
+source=('git://anongit.kde.org/prison')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -29,7 +34,7 @@ build() {
   cmake ../prison \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
