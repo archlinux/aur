@@ -67,7 +67,14 @@ package() {
 
 	# Copy docs
 	install -d -m 0770 $pkgdir/usr/share/doc/$pkgname/
+	install -d -m 0770 $pkgdir/usr/share/doc/$pkgname/examples/
+
 	cp ./AUTHORS ./Changelog ./COPYING $pkgdir/usr/share/doc/$pkgname/
+	cp contrib/$pkgname.conf $pkgdir/usr/share/doc/$pkgname/
+	cp -a contrib/docs/ $pkgdir/usr/share/doc/$pkgname/
+	cp -a contrib/images/ $pkgdir/usr/share/doc/$pkgname/
+	cp -a contrib/apache/* $pkgdir/usr/share/doc/$pkgname/examples/
+	cp -a contrib/lighttpd/* $pkgdir/usr/share/doc/$pkgname/examples/
 
 	# Move fusiondirectory.conf in template
 	cp ./contrib/fusiondirectory.conf $pkgdir/var/cache/$pkgname/template/
