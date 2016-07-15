@@ -4,7 +4,7 @@
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 pkgver=10043
-pkgrel=2
+pkgrel=3
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -72,7 +72,6 @@ package_theide-nightly(){
   install -D "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
   # man pages
   install -D "$srcdir/theide.1" "$pkgdir/usr/share/man/man1/theide.1"
-  install -D "$srcdir/umk.1" "$pkgdir/usr/share/man/man1/umk.1"
   # desktop entry
   install -D "$srcdir/upp-x11-src-$pkgver/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
   # icon
