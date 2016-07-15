@@ -2,7 +2,7 @@
 
 _gemname=em-proxy
 pkgname=ruby-${_gemname}
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='EventMachine Proxy DSL for writing high-performance transparent / intercepting proxies'
 url='https://github.com/igrigorik/em-proxy'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby' 'ruby-eventmachine')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/igrigorik/em-proxy/archive/v${pkgver}.tar.gz)
-sha512sums=('115313d328692e27de0b4824b06080bbdbec57e23dd8005bad64cd1db71ddb46f84b1541f23de26d5f01c67aea972e529bf264327a19c339b05302e68dd14acb')
+sha512sums=('722b5010c8de9a809016b330e2123dc3bfb61e0c497844babb3af283e166271c00d74d58ca24c14e02b89346c114a2fd516a62ea00d5efe75981785719ad48e6')
 
 prepare() {
   cd ${_gemname}-${pkgver}
