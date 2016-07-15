@@ -37,7 +37,6 @@ build() {
 }
 
 package() {
-    pkgdesc+=' (GTK3 version [EXPERIMENTAL])'
     groups=('mate')
     cd "${srcdir}/${_pkgbase}-gtk3"
     make DESTDIR="${pkgdir}" install
