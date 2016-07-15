@@ -1,5 +1,5 @@
---- makefile.orig	2015-11-13 15:35:00.000000000 +0100
-+++ makefile	2015-12-24 12:41:27.805245263 +0100
+--- makefile	2016-02-23 16:57:00.000000000 +0100
++++ makefile.new	2016-07-15 08:40:50.162429077 +0200
 @@ -77,8 +77,8 @@
  #
  SHELL=/bin/sh
@@ -40,15 +40,15 @@
  USE_PNG=1
  USE_JASPER=1
  
-@@ -186,7 +186,7 @@
+@@ -187,7 +187,7 @@
  # wLDFLAGS has the directory/name of the library
  
  ifeq ($(findstring gcc,$(notdir $(CC))),gcc)
 -   wCPPFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -Werror=format-security -ffast-math  -O3
 +   wCPPFLAGS+=$(CPPFLAGS) -DGFORTRAN
+    netcdf3CPPFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -Werror=format-security -O3
     hdf5CFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -O1
  endif
- ifeq ($(findstring opencc,$(notdir $(CC))),opencc)
 @@ -261,7 +261,7 @@
        wLDFLAGS+=-L$(GFORTLIBDIR)
        wLDFLAGS+=-lgfortran
@@ -58,7 +58,7 @@
     endif
  
  # for open64 fortran - personal system
-@@ -307,10 +307,9 @@
+@@ -305,10 +305,9 @@
  #   
  
  ifeq ($(USE_G2CLIB),1)
@@ -66,13 +66,13 @@
 -   glib:=${lib}/libgrib2c.a
 -   wLDFLAGS+=-lgrib2c
 -   wCPPFLAGS+=-I$g
-+  glib:=/usr/lib/libgrib2c.a
-+  wLDFLAGS+=-L/usr/lib -lgrib2c
++  glib:=/usr/lib/libg2c.a
++  wLDFLAGS+=-L/usr/lib -lg2c
 +  wCPPFLAGS+=-I/usr/include
  endif
  
  
-@@ -321,19 +320,17 @@
+@@ -319,19 +318,17 @@
  endif
  
  # gctpc library
@@ -99,7 +99,7 @@
     a:=$(shell echo "\#define USE_PROJ4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_PROJ4" >> ${CONFIG_H})
-@@ -342,12 +339,9 @@
+@@ -340,12 +337,9 @@
  # Jasper
  
  ifeq ($(USE_JASPER),1)
@@ -115,7 +115,7 @@
     a:=$(shell echo "\#define USE_JASPER" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_JASPER" >> ${CONFIG_H})
-@@ -366,14 +360,11 @@
+@@ -364,14 +358,11 @@
  endif
  
  ifeq ($(USE_NETCDF4),1)
@@ -135,12 +135,12 @@
     a:=$(shell echo "\#define USE_NETCDF4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_NETCDF4" >> ${CONFIG_H})
-@@ -430,19 +421,14 @@
+@@ -428,19 +419,14 @@
  # png 
  
  ifeq ($(USE_PNG),1)
--   p=${cwd}/libpng-1.2.52
--   psrc=${cwd}/libpng-1.2.52.tar.gz
+-   p=${cwd}/libpng-1.2.54
+-   psrc=${cwd}/libpng-1.2.54.tar.gz
 -   plib=${lib}/libpng.a
 -   wLDFLAGS+=-lpng
 -# wCPPFLAGS+=-I$p
@@ -162,7 +162,7 @@
  else
     a:=$(shell echo "//\#define USE_PNG" >> ${CONFIG_H})
  endif
-@@ -496,81 +482,6 @@
+@@ -494,81 +480,6 @@
  	cp wgrib2/wgrib2_api.h lib/
  	cd lib ; touch libwgrib2.a ; rm libwgrib2.a ; ar crsT libwgrib2.a *.a
  
@@ -218,7 +218,7 @@
 -	gunzip -f tmpn.tar.gz
 -	tar -xvf tmpn.tar
 -	rm tmpn.tar
--	cd $n && export CPPFLAGS="${wCPPFLAGS}" && ./configure --enable-c-only --prefix=${cwd} && ${MAKE} check install
+-	cd $n && export CPPFLAGS="${netcdf3CPPFLAGS}" && ./configure --enable-c-only --prefix=${cwd} && ${MAKE} check install
 -
 -${n4lib}:	${zlib} ${netcdf4src} ${h5lib}
 -	cp ${netcdf4src} tmpn4.tar.gz

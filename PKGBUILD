@@ -2,7 +2,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A program to manipulate, inventory and decode GRIB-2 files"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('netcdf' 'jasper' 'libpng' 'libmariadbclient' 'proj')
 makedepends=('g2clib' 'gctpc')
 source=(ftp://ftp.cpc.ncep.noaa.gov/wd51we/${pkgname}/${pkgname}_nolib.tgz.v${pkgver}
         wgrib2.patch)
-md5sums=('2fba3e3c0a16e646d3b59c5982eebc7a'
-         'c389471947e7bcd6538716b4ceaf5b53')
+md5sums=('d6e2eb0a998593559283e9f617d6c311'
+         '45a1a193959c4ca518f3bc0cacf1d63c')
 
 build() {
   cd ${srcdir}/grib2
