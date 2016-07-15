@@ -1,6 +1,6 @@
 pkgbase = letsencrypt-cli
 	pkgdesc = Yet another Letsencrypt (ACME) client using Ruby.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/zealot128/ruby-letsencrypt-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = letsencrypt-cli
 	depends = ruby-colorize
 	depends = ruby-acme-client
 	depends = ruby-thor
-	source = https://github.com/zealot128/ruby-letsencrypt-cli/archive/v0.3.0.tar.gz
-	md5sums = 513cceaeb6ea6e1053d865ee6f64773d
+	source = https://github.com/zealot128/ruby-letsencrypt-cli/archive/v0.4.0.tar.gz
+	md5sums = ac090ad095b67ea2a923fb9674ac8226
 
 pkgname = letsencrypt-cli
 
