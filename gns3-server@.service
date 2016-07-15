@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=%i
-ExecStart=/usr/bin/gns3server
+ExecStart=/usr/bin/gns3server --local
 
 [Install]
 WantedBy=multi-user.target
