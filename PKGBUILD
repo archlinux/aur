@@ -2,11 +2,11 @@
 
 pkgname=openvpn
 pkgver=2.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
-depends=('openssl' 'lzo' 'iproute2' 'libsystemd')
+depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 makedepends=('systemd')
 license=('custom')
 install=openvpn.install
@@ -27,6 +27,7 @@ build() {
     --mandir=/usr/share/man \
     --enable-iproute2 \
     --enable-systemd \
+    --enable-pkcs11 \
     --enable-x509-alt-username
   make
 }
