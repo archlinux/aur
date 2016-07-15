@@ -2,12 +2,13 @@
 pkgname=mpv-bash-completion-git
 pkgver=3.3
 epoch=8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash completion for the mpv video player"
 arch=('any')
 url="https://github.com/2ion/mpv-bash-completion"
 license=('GPL')
-depends=('mpv' 'bash' 'lua' 'xorg-xrandr')
+depends=('mpv' 'bash' 'lua')
+optdepends=('xorg-xrandr: dynamic detection of valid screen resolutions (X11, xwayland)')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
