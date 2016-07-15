@@ -5,7 +5,7 @@ pkgbase=upp-git
 pkgname=(upp-git theide-git umk-git)
 pkgver=981f26c
 pkgrel=1
-pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
+pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — built from git sources"
 arch=('any')
 url="http://www.ultimatepp.org"
 license=('BSD')
@@ -59,7 +59,7 @@ build() {
 
 package_theide-git(){
   # theide specific settings
-  pkgdesc="Modern IDE designed for developping large U++/C++ applications"
+  pkgdesc="Modern IDE designed for developping large U++/C++ applications — built from git sources"
   arch=('i686' 'x86_64')
   conflicts=('theide' 'theide-nightly')
   provides=('theide')
@@ -91,7 +91,7 @@ package_theide-git(){
 
 package_umk-git(){
   # theide specific settings
-  pkgdesc="Command line builder for U++ applications"
+  pkgdesc="Command line builder for U++ applications — built from git sources"
   arch=('i686' 'x86_64')
   conflicts=('umk' 'umk-nightly')
   provides=('umk')
@@ -111,7 +111,7 @@ package_umk-git(){
 }
 
 package_upp-git() {
-  pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
+  pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — built from git sources"
   arch=('any')
   depends=('theide-git')
   conflicts=('upp' 'upp-nightly')
