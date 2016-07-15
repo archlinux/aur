@@ -26,7 +26,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=18543.ce1647f
+pkgver=19443.e2f5c49
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -70,6 +70,9 @@ _prepare_tianocore_sources() {
 	rm -rf "${_UDK_DIR}/Conf/" || true
 	mkdir -p "${_UDK_DIR}/Conf/"
 	mkdir -p "${_UDK_DIR}/Build/"
+
+	msg "Delete bogus dependency files"
+	find . -name '*.d' -delete
 	
 	sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
 	
