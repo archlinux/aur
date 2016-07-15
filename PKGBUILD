@@ -3,7 +3,7 @@
 pkgname=libui
 pkgver=0.3.1.alpha
 _pkgver=alpha3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
 url='https://github.com/andlabs/libui'
