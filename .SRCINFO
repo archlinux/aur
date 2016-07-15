@@ -1,6 +1,6 @@
 pkgbase = osvr-oculus-rift-git
 	pkgdesc = A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications.
-	pkgver = v0.1.r83.g3fb935e
+	pkgver = v0.1.r87.g53cf8e4
 	pkgrel = 1
 	url = https://github.com/OSVR/OSVR-Oculus-Rift
 	arch = i686

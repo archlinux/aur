@@ -1,5 +1,5 @@
 pkgname=osvr-oculus-rift-git
-pkgver=v0.1.r83.g3fb935e
+pkgver=v0.1.r87.g53cf8e4
 pkgrel=1
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd osvr-oculus-rift-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ ../osvr-oculus-rift
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOVR_ROOT_DIR=/usr/include/ovr-$(pkg-config --modversion libovr)/ -DCMAKE_INSTALL_LIBDIR=lib ../osvr-oculus-rift
   make
 }
 
@@ -42,7 +42,7 @@ package() {
   #set absolute path for display config supplied by osvr-core. May or may not be necessary.
   sed -i "s;displays/Oculus_Rift_DK2.json;/usr/share/osvrcore/displays/Oculus_Rift_DK2.json;g" "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.oculusrift.sample.json
 
-  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
+  #mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
 }
 
 # vim:set ts=2 sw=2 et:
