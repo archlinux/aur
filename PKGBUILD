@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh && ./configure --prefix=/usr 
+	./autogen.sh && ./configure --enable-qt5 --prefix=/usr 
 	make
 }
 
