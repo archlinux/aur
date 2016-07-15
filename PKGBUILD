@@ -1,6 +1,6 @@
 pkgname=fusiondirectory-plugin-ipmi-schema
-pkgver=1.0.12
-pkgver=1.0.12
+pkgver=1.0.14
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory ipmi plugin"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("fusiondirectory-schema>=$pkgver" "fusiondirectory-plugin-systems-schem
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('b77d8739d6fa058d74e4ddd142072549' 'e36740e481a0878778e9b5c2e6d2ffba')
+md5sums=('1c2b1713cc5a71abe6259f9e1d4dbdda' 'dfa7f9b317f5d13c49b573eee7b88788')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
