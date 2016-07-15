@@ -5,7 +5,7 @@ pkgdesc="Management plugin for audit"
 arch=("any")
 url="http://fusiondirectory.org/"
 license=("LGPL")
-depends=("fusiondirectory>=$pkgver" "fusiondirectory-plugin-systems>=$pkgver")
+depends=("fusiondirectory>=$pkgver")
 
 install=fusiondirectory-plugin-audit.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
