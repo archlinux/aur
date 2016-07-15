@@ -4,14 +4,15 @@
 # Contributor: Dylon Edwards <deltaecho@archlinux.us>
 pkgname=kcm-wacomtablet
 pkgver=3.0.0~beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE GUI for the Wacom Linux Drivers"
 arch=('i686' 'x86_64')
-url="http://kde-apps.org/content/show.php/wacom+tablet?content=114856"
+url="https://www.linux-apps.com/p/1127862/"
 license=('GPL2')
 depends=('plasma-framework' 'xf86-input-wacom')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'kdelibs4support')
-source=("http://kde-apps.org/CONTENT/content-files/114856-wacomtablet-${pkgver}.tar.xz")
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'kdelibs4support' 'python')
+# https://quickgit.kde.org/?p=wacomtablet.git
+source=("https://dl.opendesktop.org/api/files/download/id/1466630714/114856-wacomtablet-${pkgver}.tar.xz")
 md5sums=('95d1d29063d6de2ab0881c33e8eacb05')
 
 prepare() {
