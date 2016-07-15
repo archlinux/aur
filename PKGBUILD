@@ -2,7 +2,7 @@
 # Contributor: Alex Jordan <alexander3223098@gmail.com>
 pkgname=zerotier-one
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates virtual Ethernet networks of almost unlimited size."
 arch=('i686' 'x86_64')
 url="https://www.zerotier.com/index.html"
@@ -29,6 +29,7 @@ package() {
   mkdir -p $pkgdir/var/lib/zerotier-one $pkgdir/usr/bin $pkgdir/usr/lib/systemd/system
   install zerotier-one $pkgdir/var/lib/zerotier-one
   install debian/zerotier-one.service $pkgdir/usr/lib/systemd/system
+  chmod -x $pkgdir/usr/lib/systemd/system/zerotier-one.service
   cd $pkgdir/usr/bin
   ln -s ../../var/lib/zerotier-one/zerotier-one zerotier-cli
   ln -s ../../var/lib/zerotier-one/zerotier-one zerotier-idtool
