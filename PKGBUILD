@@ -6,7 +6,8 @@ _name=at-home-modifier
 pkgname=xf86-input-evdev-ahm
 _pkgname_orig=xf86-input-evdev
 pkgver=2.10.3
-pkgrel=1
+_ahmver=2.10.3
+pkgrel=2
 pkgdesc='X.org evdev input driver + at-home-modifier patch'
 arch=(i686 x86_64)
 url='https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home'
@@ -19,16 +20,16 @@ conflicts=('xorg-server<1.18.0' 'X-ABI-XINPUT_VERSION<22' 'X-ABI-XINPUT_VERSION>
 options=('!makeflags')
 groups=('xorg-drivers' 'xorg')
 source=(${_url_orig}/releases/individual/driver/${_pkgname_orig}-${pkgver}.tar.bz2{,.sig}
-        https://gitlab.com/at-home-modifier/download/raw/master/patch/ahm-2.10.1.patch)
+        https://gitlab.com/at-home-modifier/download/raw/master/patch/ahm-${_ahmver}.patch)
 sha256sums=('5aa21ba4be8df927e5676a99c7f4f0343abc089f5451b7e73e39536f29b332a2'
             'SKIP'
-            '75dd9ec06f02afa41b8e86e65e7f0ebc48c6169fc30a959eddd12a540b3f17ca')
+            '2868a8f63b492a8486e3e9bb45c56811cbc4dbcdac1bfe459eb1cc8610bf7bed')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
   cd "${_pkgname_orig}-${pkgver}"
   # at-home-modifier patch
-  patch -p1 -i "${srcdir}/ahm-2.10.1.patch"
+  patch -p1 -i "${srcdir}/ahm-${_ahmver}.patch"
 }
 
 build() {
