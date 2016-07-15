@@ -2,7 +2,7 @@
 
 pkgname=easy-rsa-git
 pkgver=3.0.1.r14.g5a429d2
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple shell based CA utility - git checkout'
 arch=('any')
 url='https://github.com/OpenVPN/easy-rsa'
@@ -34,9 +34,6 @@ pkgver() {
 prepare() {
 	cd easy-rsa/
 
-	# change path for configuration in /etc
-	sed -i "/set_var EASYRSA\t/c \\\tset_var EASYRSA\t\t\"/etc/easy-rsa\"" easyrsa3/easyrsa
-
 	# fix output of help command, we have it in PATH
 	sed -i 's|./easyrsa|easyrsa|' easyrsa3/easyrsa
 }
@@ -52,8 +49,8 @@ package() {
 	install -m0644 easyrsa3/x509-types/* "${pkgdir}"/etc/easy-rsa/x509-types/
 
 	install -d -m0755  ${pkgdir}/usr/share/doc/easy-rsa/
-	install -m0644 doc/* ChangeLog KNOWN_ISSUES ${pkgdir}/usr/share/doc/easy-rsa/
+	install -m0644 doc/* ChangeLog ${pkgdir}/usr/share/doc/easy-rsa/
 
-	install -D -m0644 COPYING.md ${pkgdir}/usr/share/licenses/easy-rsa/COPYING.md
+	install -D -m0644 COPYING.md ${pkgdir}/usr/share/licenses/easy-rsa/COPYING
 }
 
