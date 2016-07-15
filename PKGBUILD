@@ -2,17 +2,19 @@
 # Contributor: archshift
 
 pkgname=jucipp
+ghub="https://github.com"
+cpp="$ghub/cppit"
 pkgdesc='A lightweight cross-platform C++ IDE'
 pkgver=1.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/cppit/jucipp"
+url="$cpp/jucipp"
 license=('MIT')
 depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb' 'boost-libs' 'libgit2' 'ctags')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
-source=("$pkgname::git+https://github.com/cppit/jucipp.git#tag=v${pkgver}"
-  "git+https://github.com/cppit/libclangmm.git"
-  "git+https://github.com/eidheim/tiny-process-library")
+source=("$pkgname::git+$url.git#tag=v${pkgver}"
+  "git+$cpp/libclangmm.git"
+  "git+$ghub/eidheim/tiny-process-library")
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
