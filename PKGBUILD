@@ -46,7 +46,7 @@ package() {
 	rmdir "${pkgdir}"/var/run
 
 	# Securing the installation (this is optional)
-	chmod 0700 /etc/munge
-	chmod 0711 /var/lib/munge
-	chmod 0700 /var/log/munge
+	chmod 0700 "${pkgdir}"/etc/munge
+	chmod 0711 "${pkgdir}"/var/lib/munge
+	chmod 0700 "${pkgdir}"/var/log/munge
 }
