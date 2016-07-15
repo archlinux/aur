@@ -17,10 +17,12 @@ conflicts=('opensm')
 depends=('libibumad' 'rdma')
 source=("https://www.openfabrics.org/downloads/management/${_pkgbase}-${pkgver}.tar.gz"
         'opensm.service'
-        'opensm.launch')
+        'opensm.launch'
+        'opensm_extra.conf')
 md5sums=('ed615b4681e94ef2e13a5de773ab89a3'
-         'f1155dd8fb07ce56c427bceb7ce3fffb'
-         '7cd151f96d46ba1bc651fce0e2b7e8dc')
+         'd70efe82917527515520aca4fff840e9'
+         'b8827f86be787ede5093c7395bb03928'
+         '733983c333d652907145a7ae8ab09d85')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -40,11 +42,8 @@ package() {
 
   # Convert from init.d to systemd
   rm -rf ${pkgdir}/etc/init.d
-  # If ${pkgdir}/etc is empty (it should be, since /etc/init.d/ was removed) remove it
-  if ! [ "$(ls -A ${pkgdir}/etc)" ]; then
-     rm -rf ${pkgdir}/etc/
-  fi
 
   install -Dm644 "${srcdir}/opensm.service" "${pkgdir}/usr/lib/systemd/system/opensm.service"
   install -Dm755 "${srcdir}/opensm.launch" "${pkgdir}/usr/bin/opensm.launch"
+  install -Dm644 "${srcdir}/opensm_extra.conf" "${pkgdir}/etc/opensm_extra.conf"
 }
