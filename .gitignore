@@ -1,0 +1,7 @@
+jucipp/*
+src/*
+pkg/*
+*.pkg.tar.xz
+*.swp
+libclangmm/*
+tiny-process-library/*
