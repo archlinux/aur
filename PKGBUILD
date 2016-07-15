@@ -32,5 +32,3 @@ package() {
     install -Dm0644 README "$pkgdir/usr/share/doc/$pkgname/README" 
 }
 
-md5sums=('ac9fa4dd38d2893d7eea91368448e7c9'
-         '853cc12517dca9610fb843c652f613de')
