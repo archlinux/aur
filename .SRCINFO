@@ -1,6 +1,6 @@
 pkgbase = ts-polkitagent
 	pkgdesc = Polkit Agent for theShell
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 0
 	url = https://github.com/vicr123/ts-polkitagent
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ts-polkitagent
 	makedepends = qtchooser
 	makedepends = git
 	depends = polkit-qt5
-	source = ts-polkitagent-1.1::git+https://github.com/vicr123/ts-polkitagent#branch=master
+	source = ts-polkitagent-1.2::git+https://github.com/vicr123/ts-polkitagent#branch=master
 	md5sums = SKIP
 
 pkgname = ts-polkitagent
