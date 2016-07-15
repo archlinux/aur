@@ -13,13 +13,11 @@ makedepends=('scons' 'unzip')
 install="$pkgname.install"
 source=("http://www.dxx-rebirth.com/download/dxx/${pkgname}_v${pkgver}-src.tar.gz"
         "$pkgname.desktop"
-        "$pkgname.install"
         "http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa"
         "http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa")
 noextract=("d1xr-hires.dxa" "d1xr-sc55-music.dxa")
 md5sums=('8f43e66191fdedd0c7ff9278719accf1'
          'ded1f8c2deb3825134e1a984985684cb'
-         '78c79b2b82175ebd4073edf257a9bd68'
          '7d978ce3875995e54cbf426167e88b94'
          'bf54b45a648052b2531bbb95c001403b')
 
