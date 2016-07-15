@@ -22,21 +22,21 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.26.r85898.67dd2c2
+pkgver=2.26.r87884.50c1cbe
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
+provides='binutils=${pkgver}'
 groups=('base-devel')
-depends=('glibc>=2.22' 'zlib')
+depends=('glibc>=2.23' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 replaces=('binutils-multilib')
 options=('staticlibs' '!distcc' '!ccache')
-install=binutils.install
 source=(git://sourceware.org/git/binutils-gdb.git)
 md5sums=('SKIP')
 
@@ -88,4 +88,6 @@ package() {
 
   # No shared linking to these files outside binutils
   rm ${pkgdir}/usr/lib/lib{bfd,opcodes}.so
+  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz -ldl )" > "$pkgdir"/usr/lib/libbfd.so
+  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > "$pkgdir"/usr/lib/libopcodes.so
 }
