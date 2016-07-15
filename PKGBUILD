@@ -2,7 +2,7 @@
 
 pkgname=nfs2se-git
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64')
 url='https://github.com/zaps166/NFSIISE'
@@ -10,10 +10,10 @@ license=('MIT')
 
 if [ $(uname -m) == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
-	makedepends=('gcc-multilib' 'curl')
+	makedepends=('gcc-multilib' 'yasm')
 else
 	depends=('sdl2' 'libgl')
-	makedepends=('gcc' 'curl')
+	makedepends=('gcc' 'yasm')
 fi
 
 source=('git+https://github.com/zaps166/NFSIISE'
@@ -25,6 +25,8 @@ install=nfs2se-git.install
 build()
 {
 	cd $srcdir/NFSIISE
+	git submodule init
+	git submodule update
 	./compile_nfs
 }
 
