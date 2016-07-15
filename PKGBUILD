@@ -1,8 +1,8 @@
 # Maintainer: Jeffrey Clark (h0tw1r3) <dude@zaplabs.com>
 
 pkgname=attract
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A graphical front-end for command line emulators that hides the underlying operating system and is intended to be controlled with a joystick or gamepad."
 arch=('i686' 'x86_64')
 url="http://www.attractmode.org/"
@@ -12,22 +12,16 @@ makedepends=('git')
 provides=('attract')
 conflicts=('attractmode-git')
 source=("https://github.com/mickelson/${pkgname}/archive/v${pkgver}.tar.gz"
-	"0001-fix-build-when-TR1-enabled.patch"
 	"https://github.com/mickelson/${pkgname}/releases/download/v1.6.2/ATTRACT.MODE.intro.16-9.v6.1080p.mp4"
 	"https://github.com/mickelson/${pkgname}/releases/download/v1.6.2/ATTRACT.MODE.intro.4-3.v6.1080p.mp4"
 	attract.desktop
 	attract.install)
-sha1sums=('f658c5eb69ca405e2b0764e9365d1c5a5ff1e57a'
-	'cc6294a66c3e88861a7bb17eaba1edaabc095317'
+sha1sums=('138f593b84756cf05d312e97eb928261f90a278b'
 	'37885c5f2e6194e689c36eb88c43bd5bb23363d0'
 	'445bb161b9c06749347974b6c19c846d86b00ceb'
 	'cf599edbff2962b5ff0a77560a95d80cec828264'
 	'284afdf55086f2a626d5ab617240ff74cea30f53')
 install=attract.install
-
-prepare() {
-    patch -N -p1 -d "${pkgname}-${pkgver}" -i ../0001-fix-build-when-TR1-enabled.patch
-}
 
 build() {
 	cd "${pkgname}-${pkgver}"
