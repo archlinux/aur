@@ -1,6 +1,6 @@
 pkgbase = github-notify
 	pkgdesc = GitHub notification notifier
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://www.github.com/Xandaros/GithubNotify
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = github-notify
 	makedepends = gtk2hs-buildtools
 	depends = libnotify
 	depends = notification-daemon
-	source = https://github.com/Xandaros/GithubNotify/archive/0.1.1.tar.gz
-	md5sums = 727c42c7f2be8eaefaa09335bd6e390d
+	source = https://github.com/Xandaros/GithubNotify/archive/0.1.2.tar.gz
+	md5sums = 0cf9a7064e8f067d16c84711f5b83798
 
 pkgname = github-notify
 

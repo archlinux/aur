@@ -1,6 +1,6 @@
 pkgname=github-notify
 _projectname=GithubNotify
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GitHub notification notifier"
 url="https://www.github.com/Xandaros/GithubNotify"
@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/Xandaros/GithubNotify/archive/${pkgver}.tar.gz")
-md5sums=('727c42c7f2be8eaefaa09335bd6e390d')
+md5sums=('0cf9a7064e8f067d16c84711f5b83798')
 
 build() {
   cd "$srcdir/$_projectname-$pkgver"
