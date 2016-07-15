@@ -1,6 +1,6 @@
 # Contributor: Benjamin Sick
 pkgname=gmt-coast
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="The full resolution coastline dataset for the Generic Mapping Tools."
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=()
 provides=()
 source=(ftp://ftp.soest.hawaii.edu/gshhg/gshhg-gmt-${pkgver}.tar.gz)
-md5sums=('80947a92cc88927aff070556ca5ab133')
+md5sums=('12c6604d779ddd1727e96433da20e147')
 
 build() {
   echo "Nothing to build."
