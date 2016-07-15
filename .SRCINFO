@@ -1,0 +1,18 @@
+pkgbase = slowrx-git
+	pkgdesc = An SSTV decoder that aims for intuitive simplicity and lack of features not needed by a shortwave listener (SWL).
+	pkgver = r128.1760187
+	pkgrel = 1
+	url = https://windytan.github.io/slowrx/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gtk3
+	depends = fftw
+	depends = alsa-lib
+	conflicts = slowrx
+	source = git+https://github.com/windytan/slowrx.git
+	sha512sums = SKIP
+
+pkgname = slowrx-git
+
