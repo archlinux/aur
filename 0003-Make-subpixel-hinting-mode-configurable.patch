@@ -1,24 +1,22 @@
-From d0d93c2496175aa42b4c4bb3a45e4f0a6d264112 Mon Sep 17 00:00:00 2001
+From be997becc28dfbf2077cca55dc9a6a090d13e22a Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Wed, 15 Jun 2016 14:10:20 +0200
-Subject: [PATCH 3/3] Make subpixel hinting mode configurable
+Subject: [PATCH 3/4] Make subpixel hinting mode configurable
 
 ---
- include/freetype/config/ftoption.h |  4 ++--
+ include/freetype/config/ftoption.h |  2 +-
  src/truetype/ttobjs.c              | 37 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 39 insertions(+), 2 deletions(-)
+ 2 files changed, 38 insertions(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 33d563c4e1e47228..a401fc8e9efbbd79 100644
+index 8e58403529f597e5..197e15cdc3cc1e74 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -631,8 +631,8 @@ FT_BEGIN_HEADER
-   /* [1] http://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
+@@ -632,7 +632,7 @@ FT_BEGIN_HEADER
    /*                                                                       */
- /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1     */
--#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     2
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
 -/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
-+/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2     */
 +#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     ( 1 | 2 )
  
  
@@ -86,5 +84,5 @@ index ed3be2dbee79427c..d89f92e94d0e816b 100644
  
      FT_UNUSED( ttdriver );
 -- 
-2.8.3
+2.9.0
 

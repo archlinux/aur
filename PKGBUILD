@@ -3,7 +3,7 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.4+p12+g605946a
+pkgver=2.6.5+p11+gff65543
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -23,9 +23,9 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         0003-Make-subpixel-hinting-mode-configurable.patch)
 sha1sums=('SKIP'
           'SKIP'
-          '045b1b6a56151ab46a8300e6fd09f24294258e97'
-          'afd6f9504516fa02e57890dde820f488e0df36bb'
-          '2a1d6e734001e196c7a7790c78165d9b9fe49f7f')
+          'e1fde7854d2a64868a5eef07415ad23c339fc630'
+          '7da3af8e1e002e39a247c37a05a10beb576007d6'
+          'c64ba9d37732fc75de7817d1d679a3e38efdb4cb')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare() {
