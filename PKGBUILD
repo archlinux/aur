@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=prison-git
-pkgver=r80.041c75a
+pkgver=r63.beb567b
 pkgrel=1
 pkgdesc="Barcode api currently offering a nice Qt api to produce QRCode barcodes and DataMatrix barcodes. (GIT version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,9 @@ depends=('libdmtx'
 makedepends=('extra-cmake-modules'
              'git'
              )
-source=('git://anongit.kde.org/prison#branch=frameworks')
+conflicts=('prison')
+provides=('prison')
+source=('git://anongit.kde.org/prison')
 sha1sums=('SKIP')
 
 pkgver() {
