@@ -1,0 +1,9 @@
+src
+pkg
+*.xz
+*.gz
+*.bz2
+theide.1
+umk.1
+mkfile
+mirror
