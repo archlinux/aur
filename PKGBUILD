@@ -51,9 +51,9 @@ _use_current=
 pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
-_srcname=linux-4.4
-_pkgver=4.4.12
-_rtpatchver=rt20
+_srcname=linux-4.4.15
+_pkgver=4.4.15
+_rtpatchver=rt23
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -68,8 +68,8 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patc
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
+        #"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.4.0.patch"
@@ -86,8 +86,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patch
-        msg "Add upstream patch"
-        patch -Np1 -i "${srcdir}/patch-${_pkgver}"
+        #msg "Add upstream patch"
+        #patch -Np1 -i "${srcdir}/patch-${_pkgver}"
     
     ### Add rt patch
         msg "Add rt patch"
@@ -456,11 +456,9 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
+sha512sums=('f5c2ecb327b2c23bf92cf524e7b9dc644fc312fc1f2e38ba5267dfb922c7ce84d67264cd77788e54af191f0b8409c50ae224f6d70d726d5e64f300ec0935541f'
             'SKIP'
-            'c3aca55f26fc883b489635a90b79c03d7c6d591efddb4e406b5bfe49fc4326ff2a957521b1d8ea126b95f1d0573e5185d96bce10d05eae595a51f8eb27690404'
-            'SKIP'
-            '12eaebd7cc02c6e5de66e39b6be0c8bb34eda4d2db73d1141ca3735dc4b92e81c64747d60632ffe8fed3a350bf808523fcacb14ab1f3c03f8e5f5b70cb197a23'
+            'f347be4186869184826be9c413bd90ab2078132b0fb4bca3ac286635eaa7eedafb36511a186f116fc72571d6fb232511b212cd10425e37d61aeefe78e695124a'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
