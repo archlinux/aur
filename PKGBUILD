@@ -1,7 +1,7 @@
 # Maintainer: Luke R. <g4jc@openmailbox.org> GPG: rsa4096/3EAE8697
 
 pkgname=samhain
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="file integrity / intrusion detection system"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ source=("http://www.la-samhna.de/samhain/${pkgname}-current.tar.gz"
 'PKGBUILD')
 validpgpkeys=('CB6E213A349B8DF9E96B622AC3F4FFCF3EAE8697' # PKGBUILD Maintainer's key
 'EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C') # Rainer Wichmann
-sha512sums=('0dcb89b7a11b0aaef7b306360857c64b505651b526f7c3030ac7186f1c334c745df7b544e16fa9edac260156b1fa32d44e2276cf2476807d0ea0c011d05c9e4f'
+sha512sums=('72e75e7a34705fa61d48c82e4c0ab1ac523c9bd5480c9335e305230e04d7c6295094ef616d9fca05b091d99659982d130812be36e9676ede68d743a4a1c46013'
             'SKIP'
             'SKIP')
 
@@ -24,7 +24,7 @@ tar -ztvf samhain-current.tar.gz | head -n1 | awk '{print $6}' | sed "s/samhain-
 build() {
   gpg --verify PKGBUILD.sig PKGBUILD
   echo "Note: If the GPG verification fails, import the PKGBUILD maintainer's GPG key. See: https://wiki.parabola.nu/GnuPG#Import_key"
-  whirlpoolsum=('09be99572c31d76dc58ccb5963e615ea87faf689858cd4372883df5905d1fff792807641adb85c9719269577ae81e679936d0488a27cdb055724c6ed6eaa3d5b')
+  whirlpoolsum=('515e5d2c297e2ca2e0d69d0bad200eb4bc81449a907346c9976124381a9ab910a6fca6024853ce76d21928d12281aa236b5ed76ac3df511cef3b4f5766a865fc')
   [[ "$(openssl dgst -r -whirlpool samhain-current.tar.gz | awk '{print $1}')" = ${whirlpoolsum} ]] && echo "Whirlpool checksum passed." || { echo "Whirlpool checksum failed!!" ;  exit 1; } # This is an added security layer. If SHA512 for some unlikely reason fails, whirlpool will check and abort if it too fails to match.
   gpg --verify samhain-${pkgver}.tar.gz.asc samhain-${pkgver}.tar.gz
   echo "Note: If the GPG verification fails, import the Samhain GPG key: http://www.la-samhna.de/samhain/s_rkey.html"
