@@ -25,8 +25,6 @@ prepare() {
 
 package() {
   cd $pkgname
-  env CC=gcc
-  env CXX=gcc
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
