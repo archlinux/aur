@@ -1,5 +1,5 @@
 post_install() {
-  echo 'Put your Descent 1 datas either to /usr/share/d1x-rebirth/ or ~/.d1x-rebirth/'
+  echo 'Put your Descent 1 data files either to /usr/share/d1x-rebirth/ or ~/.d1x-rebirth/'
 
   cat << EOF
 Following files are needed to run the game:
