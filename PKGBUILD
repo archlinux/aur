@@ -35,5 +35,5 @@ package() {
 
   echo -e $license_content
 
-  ln -s "$install_path" /usr/bin/gopanda2
+  sudo ln -s "$install_path" /usr/bin/gopanda2
 }
