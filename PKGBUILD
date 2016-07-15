@@ -57,6 +57,7 @@ package_theide-nightly(){
   pkgdesc="Modern IDE designed for developping large U++/C++ applications"
   arch=('i686' 'x86_64')
   conflicts=('theide')
+  provides=('theide')
   if [ "$USE_NOGTK" = true ]; then
     depends=('libpng' 'gcc-libs' 'libxft' 'libxinerama' 'desktop-file-utils')
     optdepends=('sox: Enables notification sounds')
@@ -89,6 +90,7 @@ package_umk-nightly(){
   pkgdesc="Command line builder for U++ applications"
   arch=('i686' 'x86_64')
   conflicts=('umk')
+  provides=('umk')
   depends=('gcc-libs' 'desktop-file-utils')
   options=(!makeflags emptydirs)
 
@@ -109,6 +111,7 @@ package_upp-nightly() {
   arch=('any')
   depends=('theide')
   conflicts=('upp')
+  provides=('upp')
   optdepends=('libnotify: Enables compiling gtk-styled apps')
   options=(emptydirs !strip)
   #copy source files
