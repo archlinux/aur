@@ -1,5 +1,5 @@
 pkgbase = mate-meta-1.15-gtk3
-	pkgdesc = Meta package for MATE
+	pkgdesc = Meta package for MATE. This installs all MATE 1.15 gtk3 packages - through dependencies
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://mate-desktop.org
