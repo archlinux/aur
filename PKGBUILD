@@ -1,8 +1,8 @@
 # Maintainer: Michael Greene <mgreene@securityinnovation.com>
 
 pkgname=eluminance-git
-pkgver=0.9.r67
-pkgrel=2
+pkgver=0.9.r76
+pkgrel=1
 pkgdesc="A fast photo browser, written in Python using EFL"
 arch=('any')
 url="https://github.com/DaveMDS/eluminance"
