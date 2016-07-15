@@ -1,0 +1,11 @@
+--- terminal.py.old	2016-07-15 18:56:06.339216999 -0700
++++ terminal.py	2016-07-15 18:56:26.132648665 -0700
+@@ -28,7 +28,7 @@
+                     c.append(s)
+             return c
+         else:
+-            return term + cmd
++            return term + [cmd]
+         raise Exception('No terminal launcher for platform: ' + sys.platform)
+ 
+ def get_configured_terminal():
