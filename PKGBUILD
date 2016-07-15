@@ -1,20 +1,20 @@
-# Maintainer: dk0r <dk0r.public@gmail.com>
+# Maintainer: dk0r <parchd@archlinux.info>
 
 model="9020cdw"
 pkgname="brother-dcp-$model"
-pkgver="1.1.2"
+pkgver="1.1.4"
 pkgrel=1
-_revision=1
+_revision=0
 pkgdesc="LPR and CUPS driver for the Brother DCP-9020CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license='unknown'
+license=('mixed')
 install="brother-dcp-${model}.install"
-depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
-source=("http://www.brother.com/pub/bsc/linux/dlf/dcp${model}lpr-${pkgver}-${_revision}.i386.deb"
-    "http://www.brother.com/pub/bsc/linux/dlf/dcp${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
+depends=('tcsh' 'deb2targz' 'perl' 'a2ps' 'lib32-glibc')
+source=("http://www.brother.com/pub/bsc/linux/dlf/dcp9020cdwlpr-1.1.2-1.i386.deb"
+    "http://download.brother.com/welcome/dlf100443/dcp${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
 md5sums=('d7fb28e4d73d56b1181833787968d0fb'
-    '51394c2c90d5c642758d0e0f6eee73e0')
+    '8283e3ca2d8e8873f852ed2321483fdc')
 package() {
     deb2targz *.deb >/dev/null || return 1
     rm -f *.deb || return 1
