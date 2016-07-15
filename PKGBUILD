@@ -32,7 +32,7 @@ build() {
 }
 
 package_caja-extensions-common-1.15-gtk3() {
-    pkgdesc="Caja extensions (common files)"
+    pkgdesc="Caja extensions common files (GTK3 version)"
     cd "${srcdir}/${_pkgbase}-gtk3"
     make -C po DESTDIR="${pkgdir}" install
 }
