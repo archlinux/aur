@@ -1,5 +1,4 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
-# Maintainer: Brice Waegeneire <brice dot wge at gmail dot com>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=progressbar
 pkgname=ruby-$_gemname
