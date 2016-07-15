@@ -1,4 +1,5 @@
-# Maintainer: martadinata666 <martadinata666@gmail.com>
+# Maintainer:  Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Contributor: martadinata666 <martadinata666@gmail.com>
 
 _use_marco=0
 
@@ -9,7 +10,7 @@ _micro=.3
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=3
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -30,13 +31,19 @@ _configure_opts=(
   --disable-inotify
 )
 
-if (("${_use_marco}"));then
+if (("${_use_marco}" == 1));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
   msg "Marco theme support enabled"
+elif (("${_use_marco}" == 2));then
+  _configure_opts+=("--enable-marco")
+  _configure_opts+=("--with-gtk=3.0")
+  makedepends+=("marco-gtk3")
+  msg "Marco theme support enabled with GTK+3"
 else
   _configure_opts+=("--disable-marco")
   msg "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it"
+  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk3"
 fi
 
 build()
@@ -48,7 +55,7 @@ build()
 
   if ! grep -q pkg_cv_GTK config.log;then
     # make sure only compiz-core is created if gtk is missing
-    msg "Making sure only $pkgbase is made, gtk+2 is missing"
+    msg "Making sure only $pkgbase is made, gtk+2 or gtk+3 is missing"
     pkgname=("$pkgbase")
   fi
   make
@@ -79,9 +86,11 @@ package_compiz-core() {
 
 package_compiz-gtk()
 {
-  if (("${_use_marco}"));then
-    #separating libmarco-private would be nice, but this is a workaround for now
+  #separating libmarco-private would be nice, but this is a workaround for now
+  if (("${_use_marco}" == 1));then
     depends+=('marco')
+  elif (("${_use_marco}" == 2));then
+    depends+=('marco-gtk3')
   else
     depends+=('gtk2')
   fi
