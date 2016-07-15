@@ -18,5 +18,5 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir/razer-drivers"
-    make -s -j1 DESTDIR="$pkgdir" UDEVRULESDIR="/usr/lib/udev/rules.d" install_dkms
+    make -s -j1 DESTDIR="$pkgdir" UDEVDIR="/usr/lib/udev" install_dkms
 }
