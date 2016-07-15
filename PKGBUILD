@@ -4,8 +4,8 @@
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 pkgver=10043
-pkgrel=3
-pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
+pkgrel=4
+pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — nightly build"
 arch=('any')
 url="http://www.ultimatepp.org"
 license=('BSD')
@@ -54,7 +54,7 @@ build() {
 
 package_theide-nightly(){
   # theide specific settings
-  pkgdesc="Modern IDE designed for developping large U++/C++ applications"
+  pkgdesc="Modern IDE designed for developping large U++/C++ applications — nightly build"
   arch=('i686' 'x86_64')
   conflicts=('theide')
   provides=('theide')
@@ -86,7 +86,7 @@ package_theide-nightly(){
 
 package_umk-nightly(){
   # theide specific settings
-  pkgdesc="Command line builder for U++ applications"
+  pkgdesc="Command line builder for U++ applications — nightly build"
   arch=('i686' 'x86_64')
   conflicts=('umk')
   provides=('umk')
@@ -106,7 +106,7 @@ package_umk-nightly(){
 }
 
 package_upp-nightly() {
-  pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
+  pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — nightly build"
   arch=('any')
   depends=('theide-nightly')
   conflicts=('upp')
