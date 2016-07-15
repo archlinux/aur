@@ -24,7 +24,7 @@ md5sums=('e36740e481a0878778e9b5c2e6d2ffba'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
          "b88da1c13e73cdeb2a89d3c115b2e3e0"
          "0a78917932d864cbaefa0139f90c6ab0"
-         "ff7e4454dcabb975c14672cc2e4dcbb7")
+         "762da632f39f44d8fe3a7fff72feec36")
 
 prepare() {
   # In srcdir
