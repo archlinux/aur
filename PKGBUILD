@@ -3,7 +3,7 @@
 pkgname=libkcddb-git
 pkgver=v16.04.3.17.g8b122fe
 pkgrel=1
-pkgdesc="KDE CDDB library. KF5 Frameworks branch. (GIT version)"
+pkgdesc="KDE CDDB library. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kdemultimedia/libkcddb'
 license=('GPL' 'LGPL' 'FDL')
