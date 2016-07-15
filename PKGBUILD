@@ -22,7 +22,6 @@ conflicts=('kdegraphics-kolourpaint'
            'kolourpaint'
            )
 provides=('kolourpaint')
-conflicts=('kolourpaint')
 source=('git://anongit.kde.org/kolourpaint')
 sha1sums=('SKIP')
 
@@ -33,8 +32,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  #sed 's|<KSane>|<KSaneWidget>|g' -i kolourpaint/scan/sanedialog.h
 }
 
 build() {
