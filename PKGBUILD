@@ -1,4 +1,5 @@
-# Maintainer: Jan Dolinar <dolik.rce@gmail.com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
@@ -8,12 +9,8 @@ pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
 license=('BSD')
-groups=()
 depends=('gtk2' 'libnotify' 'libpng' 'gcc-libs' 'libxft' 'desktop-file-utils')
-makedepends=()
 optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing notification sounds')
-replaces=()
-backup=()
 options=(!makeflags emptydirs !strip)
 source=("http://www.ultimatepp.org/downloads/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
@@ -59,6 +56,7 @@ package_theide-nightly(){
   # theide specific settings
   pkgdesc="Modern IDE designed for developping large U++/C++ applications"
   arch=('i686' 'x86_64')
+  conflicts=('theide')
   if [ "$USE_NOGTK" = true ]; then
     depends=('libpng' 'gcc-libs' 'libxft' 'libxinerama' 'desktop-file-utils')
     optdepends=('sox: Enables notification sounds')
@@ -90,6 +88,7 @@ package_umk-nightly(){
   # theide specific settings
   pkgdesc="Command line builder for U++ applications"
   arch=('i686' 'x86_64')
+  conflicts=('umk')
   depends=('gcc-libs' 'desktop-file-utils')
   options=(!makeflags emptydirs)
 
@@ -109,6 +108,7 @@ package_upp-nightly() {
   pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
   arch=('any')
   depends=('theide')
+  conflicts=('upp')
   optdepends=('libnotify: Enables compiling gtk-styled apps')
   options=(emptydirs !strip)
   #copy source files
