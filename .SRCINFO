@@ -1,0 +1,21 @@
+pkgbase = ophidia-terminal
+	pkgdesc = The Ophidia Terminal is an advanced bash-like interpreter through which it is possible to submit arbitrary requests to an Ophidia Server
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/OphidiaBigData/ophidia-terminal
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jansson
+	depends = graphviz
+	depends = gtk2
+	depends = libxml2
+	depends = curl
+	depends = openssl
+	depends = readline
+	depends = libssh2
+	source = https://github.com/OphidiaBigData/ophidia-terminal/archive/v0.10.1.tar.gz
+	md5sums = 695965c4e67df3a08292761f35c028e5
+
+pkgname = ophidia-terminal
+
