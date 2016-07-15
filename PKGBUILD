@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd osvr-rendermanager-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release ../osvr-rendermanager
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib ../osvr-rendermanager
   make
 }
 
