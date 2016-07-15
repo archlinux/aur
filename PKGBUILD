@@ -3,7 +3,7 @@
 
 _pkgname=geoip-gobject
 pkgname=$_pkgname-git
-pkgver=r2.0220db4
+pkgver=r1
 pkgrel=1
 pkgdesc="GObject wrapper for MaxMind's GeoIP C API"
 arch=('i686' 'x86_64')
