@@ -1,18 +1,19 @@
 # Maintainer: Matthew Monaco <cx monaco dgbaley27>
+#                  Ivan <vantu5z@mail.ru>
 
 # http://kernel.opensuse.org/cgit/kernel-source/
 # http://kernel.opensuse.org/cgit/kernel-source/commit/patches.drivers?id=940e57e2c66093f6fee481ab4224dd4294e3793f
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=4.4
+_kver=4.6
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=3
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -22,7 +23,7 @@ makedepends=(git linux-headers)
 install="$pkgname.install"
 
 source=(
-	SHA256SUMS_for_4.4
+	SHA256SUMS_for_4
 	"$pkgname.install"
 	0003-patch_for_kernel_4.patch
 )
@@ -41,7 +42,7 @@ build() {
 	cd "drivers/input/mouse"
 
 	msg2 "Performing Integrity Check"
-	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4.4"
+	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4"
 
 	msg2 "Patching source"
 	patch -p4 -i "$srcdir/0003-patch_for_kernel_4.patch"
@@ -58,11 +59,13 @@ package() {
 	cd "$srcdir/drivers/input/mouse"
 
 	# determin dir name in /usr/lib/modules/
-	_EXTRAMODULES=$(find /usr/lib/modules -name version | sed 's|\/usr\/lib\/modules\/||; s|\/version||')
+	# for lts kernel you can make like this (if it not only one):
+	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep lts)
+	_EXTRAMODULES=$(ls /usr/lib/modules | grep extra)
 
 	install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/${_EXTRAMODULES}/psmouse.ko.gz"
 
-	# if you have not one kernel installed, you should change install string:
+	# if you have not one kernel installed, you should change install string or EXTRAMODULES determin:
 	# install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
 
 }
