@@ -3,8 +3,8 @@
 
 pkgbase=upp-git
 pkgname=(upp-git theide-git umk-git)
-pkgver=10043
-pkgrel=3
+pkgver=981f26c
+pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -30,6 +30,11 @@ md5sums=('SKIP'
 
 # uncomment this to true to build theide with simpler GUI (with no GTK dependecies)
 #USE_NOGTK=false
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git rev-parse --short HEAD
+}
 
 build() {
   cd "$srcdir/mirror"
