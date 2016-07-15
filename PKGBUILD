@@ -4,7 +4,7 @@
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 pkgver=10043
-pkgrel=1
+pkgrel=2
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
@@ -109,7 +109,7 @@ package_umk-nightly(){
 package_upp-nightly() {
   pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
   arch=('any')
-  depends=('theide')
+  depends=('theide-nightly')
   conflicts=('upp')
   provides=('upp')
   optdepends=('libnotify: Enables compiling gtk-styled apps')
