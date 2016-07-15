@@ -1,0 +1,25 @@
+--- Makefile	2016-07-15 18:44:15.481315032 +1100
++++ Makefile.new	2016-07-15 18:42:14.297637526 +1100
+@@ -3,10 +3,10 @@
+ ARCH=$(PROG)-$(VERSION).tar.bz2
+ SERVICE=$(PROG)
+ 
+-PREFIX?=/usr/local
+-SBINDIR?=$(PREFIX)/sbin
++PREFIX?=/usr
++SBINDIR?=$(PREFIX)/bin
+ MANDIR?=$(PREFIX)/share/man
+-INITDIR?=/etc/init.d
++INITDIR?=/usr/lib/systemd/scripts
+ CONFDIR?=/etc/$(PROG)
+ 
+ CLFILES?=$(PROG).8 $(PROG).conf.5 $(ARCH) *.batch
+@@ -31,7 +31,7 @@
+ 	 echo "  uninstall  uninstall program"
+ 
+ install: $(PROG) $(PROG).init $(PROG).conf.5 $(PROG).8 $(PROG).conf
+-	install -D -m 755 $(PROG) $(DESTDIR)$(SBINDIR)
++	install -D -m 755 $(PROG) $(DESTDIR)$(SBINDIR)/$(PROG)
+ 	install -D -m 644 $(PROG).8 $(DESTDIR)$(MANDIR)/man8/$(PROG).8
+ 	install -D -m 644 $(PROG).conf.5 $(DESTDIR)$(MANDIR)/man5/$(PROG).conf.5
+ 	install -D -m 755 $(PROG).init $(DESTDIR)$(INITDIR)/$(SERVICE)

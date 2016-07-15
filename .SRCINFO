@@ -1,0 +1,15 @@
+pkgbase = sc-tool
+	pkgdesc = Administration tool for Linux-based ISP traffic shaper
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/sc-tool/files/sc-tool
+	arch = any
+	license = GPL
+	depends = perl
+	source = https://sourceforge.net/projects/sc-tool/files/sc-tool/sc-1.5.7.tar.bz2
+	source = Makefile.patch
+	md5sums = ac9fa4dd38d2893d7eea91368448e7c9
+	md5sums = 853cc12517dca9610fb843c652f613de
+
+pkgname = sc-tool
+
