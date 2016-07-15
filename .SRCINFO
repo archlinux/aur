@@ -1,5 +1,5 @@
 pkgbase = mozo-1.15-gtk3
-	pkgdesc = MATE menu editing tool
+	pkgdesc = MATE menu editing tool (GTK3 version)
 	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://mate-desktop.org
