@@ -1,13 +1,13 @@
 pkgbase = servo-latest
 	pkgdesc = A modern, high-performance browser engine being developed for application and embedded use
-	pkgver = r20160713
+	pkgver = r20160715
 	pkgrel = 1
 	url = https://servo-builds.s3.amazonaws.com/index.html
 	arch = x86_64
 	license = custom:Mozilla Public License v2.0
 	provides = servo
 	conflicts = servo
-	source = https://servo-builds.s3.amazonaws.com/nightly/linux/servo-latest.tar.gz
+	source = https://download.servo.org/nightly/linux/servo-latest.tar.gz
 	source = Servo.desktop
 	source = LICENSE
 	sha256sums = SKIP
