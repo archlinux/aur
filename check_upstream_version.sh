@@ -5,15 +5,15 @@
 ###
 
 start="$PWD"
-bare="$PWD/styleguide.bare"
+mirror="$PWD/styleguide.mirror"
 working="$PWD/styleguide"
 
-# clone or update bare styleguide repo
-if [ ! -d "$bare" ]; then
-    git clone --bare "https://github.com/google/styleguide" "$bare"
+# clone or update mirror styleguide repo
+if [ ! -d "$mirror" ]; then
+    git clone --mirror "https://github.com/google/styleguide" "$mirror"
 else
-    cd "$bare" || exit
-    git fetch --all
+    cd "$mirror" || exit
+    git remote update
     cd "$start" || exit
 fi
 
@@ -23,7 +23,7 @@ if [ -d "$working" ] && [ -d "$working/.git" ]; then
 fi
 
 # clone new styleguide repo
-git clone "$bare" "$working"
+git clone "$mirror" "$working"
 cd "$working" || exit
 
 # make new branch
