@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.80926.g83a940e
-pkgrel=2
+pkgrel=3
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -194,6 +194,9 @@ build() {
 	        --enable-nvenc \
 	        --enable-omx \
 	        --enable-omx-rpi \
+	        --enable-vaapi \
+	        --enable-vda \
+	        --enable-vdpau \
 	        --enable-videotoolbox
 	
 	make
