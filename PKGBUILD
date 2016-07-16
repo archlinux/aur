@@ -20,9 +20,15 @@ optdepends=(
 source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${pkgver}.jar
         jabref.sh
         jabref.desktop)
+noextract=(JabRef-${pkgver}.jar)
 sha256sums=('b5a9148008005f7ba081614693275d6b9226875286e99cda47d2648c583708a7'
             '0355f5135a6d855416160d4ff1cf8fe5e55921088b83491647b6a714dae87dda'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
+
+prepare() {
+  cd ${srcdir}
+  bsdtar -xf JabRef-${pkgver}.jar images/icons/JabRef-icon-48.png
+}
 
 package() {
   cd ${srcdir}
