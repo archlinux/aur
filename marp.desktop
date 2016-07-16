@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Marp
+Categories=Utility;TextEditor;Development
+Comment=Markdown presentation writer, powered by Electron
+Exec=/usr/bin/marp
+GenericName=Presentation Writer
+Icon=marp
+StartupNotify=false
+Type=Application

@@ -1,0 +1,21 @@
+pkgbase = marp
+	pkgdesc = Markdown presentation writer, powered by Electron
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/yhatt/marp
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = gtk2
+	depends = xdg-utils
+	source = https://raw.githubusercontent.com/yhatt/marp/master/images/marp.png
+	source = marp.desktop
+	md5sums = 095ab0c670c1d311be1b066e416efed3
+	md5sums = 734a3e3bd102ee9de4bc78d25008a92d
+	source_x86_64 = https://github.com/yhatt/marp/releases/download/v0.0.8/0.0.8-Marp-linux-x64.tar.gz
+	md5sums_x86_64 = bfdb8ed0f137d1f3f0d34dda96dc6611
+	source_i686 = https://github.com/yhatt/marp/releases/download/v0.0.8/0.0.8-Marp-linux-ia32.tar.gz
+	md5sums_i686 = bb508a0f4dfe7d3ed924f066a7992b97
+
+pkgname = marp
+
