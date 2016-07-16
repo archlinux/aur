@@ -30,7 +30,7 @@ package() {
   gzip ./contrib/man/*
 
   # Copy files
-  cp ./contrib/bin/* %{buildroot}/usr/bin/
-  cp ./contrib/docs/* %{buildroot}/usr/share/doc/fusiondirectory-webservice-shell/
-  cp ./contrib/man/* %{buildroot}/usr/share/man/man1/
+  cp ./contrib/bin/* $pkgdir/usr/bin/
+  cp ./contrib/docs/* $pkgdir/usr/share/doc/fusiondirectory-webservice-shell/
+  cp ./contrib/man/* $pkgdir/usr/share/man/man1/
 }
