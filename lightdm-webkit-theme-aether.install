@@ -1,0 +1,11 @@
+post_install() {
+  echo "Setting Aether as your default login theme."
+  sed -i 's/^webkit-theme\s*=\s*\(.*\)/webkit-theme = lightdm-webkit-aether #\1/g' etc/lightdm/lightdm-webkit2-greeter.conf
+  sed -i 's/^\(#?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter #\1/ #\2g' etc/lightdm/lightdm.conf
+}
+
+post_remove() {
+  echo "Resetting default login theme."
+  sed -i 's/^webkit-theme.\+#\(.\+\)/webkit-theme = \1/g' etc/lightdm/lightdm-webkit2-greeter.conf
+  sed -i 's/^greeter-session\+*#\(\+*\)\s#\(\+*\)\s/\1-session = \2/g' etc/lightdm/lightdm.conf
+}

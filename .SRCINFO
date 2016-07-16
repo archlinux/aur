@@ -1,0 +1,16 @@
+pkgbase = lightdm-webkit-theme-aether
+	pkgdesc = A sleek, straightforward Archlinux theme for lightdm.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/NoiSek/Aether
+	install = lightdm-webkit-theme-aether.install
+	changelog = changelog.txt
+	arch = any
+	license = GPLv2
+	depends = lightdm
+	depends = lightdm-webkit2-greeter
+	source = https://github.com/NoiSek/Aether/archive/v1.0.tar.gz
+	md5sums = 9f5388abd2f1126633a19cc2dbe55223
+
+pkgname = lightdm-webkit-theme-aether
+
