@@ -7,7 +7,7 @@ _openjpeg_version=2.1.0
 
 pkgname=k2pdfopt
 pkgver=2.34a
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
@@ -53,13 +53,20 @@ prepare() {
 	cd "${srcdir}"
 	patch -p0 -i "${srcdir}/tesseract.patch"
 	patch -p1 -i "${srcdir}/k2pdfopt.patch"
-	mkdir -p "patched_libraries"
+	mkdir -p "patched_libraries/lib"
 }
 
 build() {
+    cd "${srcdir}/openjpeg-${_openjpeg_version}/"
+    cmake -D BUILD_SHARED_LIBS:bool=off .
+    make openjp2
+    cp bin/libopenjp2.a "${srcdir}/patched_libraries/lib/"
+
 	cd "${srcdir}/mupdf-${_mupdf_version}-source/"
-	make prefix="${srcdir}/patched_libraries" install
+#Use the same openjpeg2 libraries as mupdf
+	make SYS_OPENJPEG_LIBS=-L/${srcdir}/patched_libraries/lib\ -lopenjp2 prefix="${srcdir}/patched_libraries" install
         install -Dm644 build/debug/libmujs.a "${srcdir}/patched_libraries/lib/"
+
 	cd "${srcdir}/tesseract-${_tesseract_version}/"
 	./autogen.sh
 	./configure --prefix="${srcdir}/patched_libraries" --disable-shared
@@ -70,10 +77,6 @@ build() {
 	cp include/config.h "${srcdir}/patched_libraries/include"
 	make libs
 	cp src/libPgm2asc.a "${srcdir}/patched_libraries/lib"
-    cd "${srcdir}/openjpeg-${_openjpeg_version}/"
-    cmake -D BUILD_SHARED_LIBS:bool=off .
-    make openjp2
-    cp bin/libopenjp2.a "${srcdir}/patched_libraries/lib"
 
 	cd "${srcdir}/${pkgname}_v${pkgver}/k2pdfoptlib"
 	gcc -Ofast -Wall -c *.c -I ../include_mod/ -I ${srcdir}/patched_libraries/include \
