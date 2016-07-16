@@ -16,8 +16,8 @@
 # mg8100 - 377
 #
 # Just change the following variables accordingly:
-_name=mg5200
-_id=374
+_name=mg5100
+_id=373
 
 pkgname=cnijfilter-${_name}
 pkgver=3.40
@@ -31,12 +31,12 @@ depends=('popt' 'gtk2' 'cups')
 source=(http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-${_pkgver}.tar.gz
         fix_cups.patch
         fix_png.patch
-        fix_ppd_mg5200.patch
+        fix_ppd_mg5100.patch
         fix_configures.patch)
 md5sums=('609975a05d6050fcca88f312d3f35c6a'
          '1355804664f5901c68a446de36d933de'
          '5f665042df2175da3629667aaf258782'
-         '6d87bce9cd0ab8c1b35685e2341b089e'
+         'd23aa1d98c1611c80274a1085046b98e'
          '607b0e194f74bf7663ef13641f62a31a')
 
 if [ "$CARCH" == "x86_64" ]; then  
@@ -50,7 +50,7 @@ build() {
 	cd ${srcdir}/cnijfilter-source-${_pkgver}
 	patch -p1 -i ${srcdir}/fix_cups.patch || return 1
 	patch -p1 -i ${srcdir}/fix_png.patch || return 1
-	patch -p1 -i ${srcdir}/fix_ppd_mg5200.patch || return 1
+	patch -p1 -i ${srcdir}/fix_ppd_mg5100.patch || return 1
 	patch -p1 -i ${srcdir}/fix_configures.patch || return 1
 	
 	## Compile model specific stuff

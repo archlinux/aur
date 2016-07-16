@@ -1,6 +1,6 @@
-diff -Naur a/ppd/canonmg5200.ppd b/ppd/canonmg5200.ppd
---- a/ppd/canonmg5200.ppd	2010-03-15 09:48:58.000000000 +0100
-+++ b/ppd/canonmg5200.ppd	2012-04-09 20:27:01.978690140 +0200
+diff -Naur a/ppd/canonmg5100.ppd b/ppd/canonmg5100.ppd
+--- a/ppd/canonmg6100.ppd	2010-03-15 09:48:58.000000000 +0100
++++ b/ppd/canonmg6100.ppd	2012-04-09 20:27:01.978690140 +0200
 @@ -58,16 +58,48 @@
  *ParamCustomPageSize Orientation: 5 int 1 1
  *CustomPageSize True: "pop pop pop <</PageSize [5 -2 roll] /ImagingBBox null>>setpagedevice"
