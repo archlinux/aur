@@ -11,10 +11,10 @@ set -u
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='16.3'; _ubrel='186'; _libgee='libgee>=0.18.0'
+_ubver='16.7'; _ubrel='194'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='A system restore utility for Linux'
 arch=('i686' 'x86_64')
 #url='https://launchpad.net/~teejee2008/+archive/ubuntu/ppa'
