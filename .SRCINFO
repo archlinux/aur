@@ -1,0 +1,12 @@
+pkgbase = xim
+	pkgdesc = Manage multiple .xinitrc configs.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = Xorg
+	provides = xim
+	conflicts = xim
+
+pkgname = xim
+

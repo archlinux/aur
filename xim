@@ -1,0 +1,83 @@
+ # xim / xim.sh
+ # 
+ # Copyright 2016 Rick Chamblee <rchamblee@tutanota.de>
+ # 
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ # 
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ # 
+ # You should have received a copy of the GNU General Public License
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ # MA 02110-1301, USA.
+ #
+
+#!/bin/bash
+ls ~/.config/xim/configs >/dev/null 2>/dev/null || echo "Creating directories" && mkdir -v -p {~/.config/xim/configs,~/.config/xim/license}
+savecur() {
+	f1=$(cat ~/.xinitrc | grep -o -i 'exec.[a-zA-Z0-9]*' | tail -1)
+	fname=${f1:5}.xinitrc
+	if [[ `ls ~/.config/xim/configs/$fname 2>/dev/null` ]]
+	then
+		echo "Warning! $fname already exists. Overwrite? (y/N)" 
+		read yorn
+		if [[ $yorn == "y" ]]
+		then
+			cat ~/.xinitrc > ~/.config/xim/configs/$fname 2>/dev/null
+		else 
+			echo "Aborting..." && exit
+		fi
+	else
+		cat ~/.xinitrc > ~/.config/xim/configs/$fname 2>/dev/null
+	fi
+}
+help() {
+	echo "xim -l will list all saved configs. You will probably not have any on first use."
+	echo "xim -a will save your current config."
+	echo "xim -n will save your current config and open up either nano, vim, or vi to a blank xinitrc file."
+	echo "xim -s will replace the current xinitrc file with the config specified. Use xim -l to see appropriate arguments."
+	echo "xim -b will backup all config files to the directory specified."
+	echo "Doing anything else will result in this screen."
+	echo "All configs are stored as .xinitrc files in ~/.config/xim/configs"
+	echo "The appropriate copy of the GNU General Public License is in /usr/share/licenses/xim"
+}
+if [[ "$1" == "-s" ]] 
+then
+	if [[ "$2" ]]
+	then
+		savecur
+		cat ~/.config/xim/configs/$2.xinitrc > ~/.xinitrc
+	else
+			echo "xim -s requires name of config to use, use xim -l to list possible configs."
+	fi
+elif [[ "$1" == "-a" ]]
+then
+	savecur
+elif [[ "$1" == "-l" ]]
+then
+	ls ~/.config/xim/configs | sed 's/\.xinitrc//'
+elif [[ "$1" == "-n" ]]
+then
+	savecur
+	echo "Do not log out of your current DE/WM unless you default to a TTY." && read
+	rm -f ~/.xinitrc
+	nano ~/.xinitrc || vim ~/.xinitrc || vi ~/.xinitrc
+	savecur
+elif [[ "$1" == "-b" ]] 
+then
+	if [[ "$2" ]]
+	then
+		echo "Backing up configs to $2..."
+		cp -r ~/.config/xim/configs/ $2
+	else
+		echo "xim -b requires a path for the config files to be backed up to."
+	fi
+else
+	help
+fi
