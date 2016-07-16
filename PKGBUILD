@@ -1,16 +1,15 @@
 #Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=legendofedgar
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="2D platformer: Venture across the world, battle fearsome creatures and solve puzzles to rescue your father."
 arch=('i686' 'x86_64')
 url="http://www.parallelrealities.co.uk/p/legend-of-edgar.html"
 license=('GPL')
 depends=('sdl_image' 'sdl_mixer' 'sdl_ttf' 'hicolor-icon-theme')
-install=legendofedgar.install
 source=("https://github.com/riksweeney/edgar/releases/download/${pkgver}/edgar-${pkgver}-1.tar.gz")
-md5sums=('db5e7b8dcc9d3a569d0ad61632b65e02')
+md5sums=('4a16e9721fc9a22132fd8cb36e3082d1')
 
 build() {
   cd "${srcdir}/edgar-${pkgver}"
