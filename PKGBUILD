@@ -1,10 +1,10 @@
 pkgbase=linux-criu
-# $Id: PKGBUILD 270711 2016-06-27 13:23:08Z tpowa $
+# $Id: PKGBUILD 271903 2016-07-15 14:17:15Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 _srcname=linux-4.6
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
+            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
             'SKIP'
             'fd2da1e632159a82060d2a5c021bb52cef9cf07cfc5bd9dfb4f3c8a7093a96f1'
             '20b07e820d7b21fea58170574ac550cf2db7572de05aef4e2c5b7a565fc9a135'
