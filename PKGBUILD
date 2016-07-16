@@ -5,7 +5,7 @@
 
 pkgname=nvidia-173xx-dkms
 pkgver=173.14.39
-pkgrel=7
+pkgrel=8
 pkgdesc="NVIDIA kernel module sources (DKMS), 173xx branch"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"   ] && _arch=x86
@@ -24,6 +24,7 @@ source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.
          linux-3.19.patch
          linux-4.0.patch
          linux-4.3.patch
+         linux-4.6.patch
          dkms.conf)
 options=(!strip)
 [ "$CARCH" = "i686"   ] && md5sums=('5b423543428554ef33a200fbbe3cb9fc')
@@ -33,6 +34,7 @@ md5sums+=('6dfb34d8fdf35c1637932f95d2216c46'
           'be7d8583f27021dde68e87239d547457'
           'c84147f5645290b6d840e987e5413536'
           '20bde657bb715e16295d7e82fe799fca'
+          'a5b751e62ee8caba525c059035568422'
           'd784fa643442852babc56f60705387a4')
 
 prepare() {
@@ -48,6 +50,7 @@ prepare() {
   patch -p1 -i "$srcdir/linux-3.19.patch"
   patch -p1 -i "$srcdir/linux-4.0.patch"
   patch -p1 -i "$srcdir/linux-4.3.patch"
+  patch -p1 -i "$srcdir/linux-4.6.patch"
 }
 
 package() {

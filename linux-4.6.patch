@@ -1,0 +1,134 @@
+diff -Naur nv.orig/conftest.sh nv/conftest.sh
+--- nv.orig/conftest.sh	2016-07-16 20:25:07.153494000 +0200
++++ nv/conftest.sh	2016-07-16 20:27:16.887189475 +0200
+@@ -651,7 +651,7 @@
+             # a match() member.
+             #
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi_bus.h>
++            #include <linux/acpi.h>
+             int conftest_acpi_device_ops(void) {
+                 return offsetof(struct acpi_device_ops, match);
+             }" > conftest$$.c
+@@ -669,13 +669,49 @@
+             fi
+         ;;
+ 
++        acpi_op_remove)
++            #
++            # Determine the number of arguments to pass to the
++            # 'acpi_op_remove' routine.
++            #
++
++            echo "$CONFTEST_PREAMBLE
++            #include <linux/acpi.h>
++
++            acpi_op_remove conftest_op_remove_routine;
++
++            int conftest_acpi_device_ops_remove(struct acpi_device *device) {
++                return conftest_op_remove_routine(device);
++            }" > conftest$$.c
++
++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++            rm -f conftest$$.c
++
++            if [ -f conftest$$.o ]; then
++                rm -f conftest$$.o
++                echo "#define NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT 1"  >> conftest.h
++                return
++            fi
++
++            CODE="
++            #include <linux/acpi.h>
++
++            acpi_op_remove conftest_op_remove_routine;
++
++            int conftest_acpi_device_ops_remove(struct acpi_device *device, int type) {
++                return conftest_op_remove_routine(device, type);
++            }"
++
++            compile_check_conftest "$CODE" "NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT" "2" "types"
++        ;;
++
+         acpi_device_id)
+             #
+             # Determine if the 'acpi_device_id' structure has 
+             # a 'driver_data' member.
+             #
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi_drivers.h>
++            #include <linux/acpi.h>
+             int conftest_acpi_device_id(void) {
+                 return offsetof(struct acpi_device_id, driver_data);
+             }" > conftest$$.c
+@@ -893,7 +929,7 @@
+             #
+ 
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi_bus.h>
++            #include <linux/acpi.h>
+             acpi_status acpi_evaluate_integer(acpi_handle h, acpi_string s,
+                 struct acpi_object_list *l, unsigned long long *d) {
+                 return AE_OK;
+@@ -910,7 +946,7 @@
+             fi
+ 
+             echo "$CONFTEST_PREAMBLE
+-            #include <acpi/acpi_bus.h>
++            #include <linux/acpi.h>
+             acpi_status acpi_evaluate_integer(acpi_handle h, acpi_string s,
+                 struct acpi_object_list *l, unsigned long *d) {
+                 return AE_OK;
+diff -Naur nv.orig/Makefile.kbuild nv/Makefile.kbuild
+--- nv.orig/Makefile.kbuild	2016-07-16 20:25:07.150161000 +0200
++++ nv/Makefile.kbuild	2016-07-16 20:34:59.820895692 +0200
+@@ -153,6 +153,7 @@
+ 	pci_choose_state \
+ 	vm_insert_page \
+ 	acpi_device_ops \
++	acpi_op_remove \
+ 	acpi_device_id \
+ 	acquire_console_sem \
+ 	kmem_cache_create \
+diff -Naur nv.orig/nvacpi.c nv/nvacpi.c
+--- nv.orig/nvacpi.c	2016-07-16 20:25:07.150161000 +0200
++++ nv/nvacpi.c	2016-07-16 20:29:08.010416632 +0200
+@@ -30,7 +30,11 @@
+  *
+  */
+ static int         nv_acpi_add         (struct acpi_device *device);
+-static int         nv_acpi_remove      (struct acpi_device *device, int type);
++#if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
++static int         nv_acpi_remove_two_args(struct acpi_device *device, int type);
++#else
++static int         nv_acpi_remove_one_arg(struct acpi_device *device);
++#endif
+ static void        nv_acpi_event       (acpi_handle, u32, void *);
+ 
+ #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH)
+@@ -64,7 +68,11 @@
+ #endif
+     .ops = {
+         .add = nv_acpi_add,
+-        .remove = nv_acpi_remove,
++#if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
++        .remove = nv_acpi_remove_two_args,
++#else
++        .remove = nv_acpi_remove_one_arg,
++#endif
+ #if defined(NV_ACPI_DEVICE_OPS_HAS_MATCH)
+         .match = nv_acpi_match,
+ #endif
+@@ -234,7 +242,11 @@
+     return 0;
+ }
+ 
+-static int nv_acpi_remove(struct acpi_device *device, int type)
++#if !defined(NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT) || (NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT == 2)
++static int nv_acpi_remove_two_args(struct acpi_device *device, int type)
++#else
++static int nv_acpi_remove_one_arg(struct acpi_device *device)
++#endif
+ {
+     /*
+      * This function will cause RM to relinquish control of the VGA ACPI device.
