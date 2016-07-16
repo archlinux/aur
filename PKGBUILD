@@ -3,7 +3,7 @@
 
 pkgname=malaga
 pkgver=7.12
-pkgrel=6
+pkgrel=7
 pkgdesc="A software for the development and application of grammars that are used for the analysis of words and sentences of natural languages."
 arch=('i686' 'x86_64')
 url="http://home.arcor.de/bjoern-beutel/malaga/"
