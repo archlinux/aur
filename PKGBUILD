@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=mingw-w64-kdreports-git
-pkgver=1.7.50.r132.049ff54
+pkgver=1.7.50.r136.667f94b
 pkgrel=1
 pkgdesc="A Qt library for creating printable reports (mingw-w64)"
 arch=('any')
@@ -38,8 +38,9 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd KDReports/build-${_arch}
+    pushd build-${_arch}
     make DESTDIR="${pkgdir}" install
     rm -r ${pkgdir}/usr/${_arch}/share
+    popd
   done
 }
