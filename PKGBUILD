@@ -3,7 +3,7 @@
 pkgname=feed_parser-git
 pkgver=0.1.0.r41.f9a390a
 pkgrel=1
-pkgdesc=""
+pkgdesc="Parse RSS and Atom feeds in C++"
 arch=('i686' 'x86_64')
 url="https://github.com/ohmyarch/feed_parser"
 license=('GPL' 'LGPL3')
