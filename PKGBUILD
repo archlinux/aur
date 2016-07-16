@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
 arch=('i686' 'x86_64')
@@ -15,12 +15,13 @@ install='post.install'
 
 rust="rust-1.9.0-$CARCH-unknown-linux-gnu"
 source=(
-	"${pkgname}-${pkgver}.tgz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz"
+	#"git+https://github.com/rust-lang-nursery/rustup.rs.git#tag=${pkgver}"
+	"git+https://github.com/rust-lang-nursery/rustup.rs.git#commit=7d7fed264d9cedf431a44974454e27eedc8182cd" # commit hasn't been tagged yet
 	"https://static.rust-lang.org/dist/${rust}.tar.gz"{,.asc}
 )
 # The Rust GPG Key: https://keybase.io/rust
 validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
-md5sums=('90288d98c47aff0e0886272362e83118'
+md5sums=('SKIP'
          'dc994c38b56c97081a5006c7553a55e1'
          'SKIP')
 
@@ -32,7 +33,7 @@ build() {
 	export PATH="$srcdir/cargo/bin:$PATH"
 
 	msg2 "Building rustup"
-	cd "$srcdir/$pkgname.rs-$pkgver"
+	cd "$srcdir/$pkgname.rs"
 	cargo build --release --bin rustup-init
 
 	msg2 "Running rustup-init"
@@ -41,7 +42,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname.rs-$pkgver"
+	cd "$pkgname.rs"
 	install -dm755 "$pkgdir/usr/bin"
 	cp "$srcdir/tmp/.cargo/bin"/* "$pkgdir/usr/bin/"
 }
