@@ -56,7 +56,7 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.6
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -86,7 +86,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch")
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
+            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
             'SKIP'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42'
             '8c3721ca8465f2cdb354637f3f76c1aab5eee0064d5a6ec8cb5c3d6540520b57'
@@ -255,8 +255,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.469 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.469 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.470 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.470 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
@@ -345,7 +345,7 @@ package_linux-ck-fbcondecor-headers() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
 	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia scsi sound trace uapi video xen; do
+		media net pcmcia scsi soc sound trace uapi video xen; do
 	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 	done
 
@@ -434,6 +434,12 @@ package_linux-ck-fbcondecor-headers() {
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
 
+	# add objtool for external module building and enabled VALIDATION_STACK option
+	if [ -f tools/objtool/objtool ];  then
+		mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+		cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+	fi
+
 	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
 	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
@@ -451,6 +457,7 @@ package_linux-ck-fbcondecor-headers() {
 
 	 # remove unneeded architectures
 	 rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
 	 # remove a files already in linux-docs package
 	 rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
 	 rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
