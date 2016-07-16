@@ -1,7 +1,7 @@
 # Maintainer: imp0 <jan at siteworld dot be>
 pkgname=apt-dater
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Terminal-based remote package update manager"
 arch=('i686' 'x86_64')
 url="https://www.ibh.de/apt-dater"
@@ -10,23 +10,25 @@ depends=('glib2' 'libxml2' 'lockfile-progs' 'ncurses' 'openssh' 'perl' 'popt' 't
 makedepends=('pkg-config' 'vim')
 backup=('etc/apt-dater/apt-dater.xml' 'etc/apt-dater/hosts.xml')
 source=("https://github.com/DE-IBH/${pkgname}/archive/v${pkgver}.tar.gz"
-'apt-dater.install')
-sha256sums=('4d01e734f4dac32ff2eb279e6493a1019f2c2fce0e35cea48df027a593df0355'
-'6f06dbc545d8a42b7ea0bb67f5c90514bbe9b793a3a36a3c3544072691ce0dc9')
+    'apt-dater.install')
+sha256sums=('891b15e4dd37c7b35540811bbe444e5f2a8d79b1c04644730b99069eabf1e10f'
+    '6f06dbc545d8a42b7ea0bb67f5c90514bbe9b793a3a36a3c3544072691ce0dc9')
 install=apt-dater.install
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
-	--disable-rpath \
-	--enable-debug \
-	--enable-xmlreport \
-	--enable-autoref \
-	--enable-history \
-	--enable-clusters \
-	--enable-tclfilter \
-	--enable-tmux
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-rpath \
+    --enable-debug \
+    --enable-xmlreport \
+    --enable-autoref \
+    --enable-history \
+    --enable-clusters \
+    --enable-tclfilter \
+    --enable-tmux
   make
 }
 
@@ -37,7 +39,7 @@ package() {
   # Fix permissions
   _aptd_etc="${pkgdir}/etc/apt-dater"
   chmod 644 $_aptd_etc/apt-dater.xml $_aptd_etc/hosts.xml
-  for _d in post-con.d post-ins.d post-ref.d post-upd.d pre-con.d pre-ins.d pre-ref.d pre-upd.d; do
+  for _d in post-con.d post-ins.d post-ref.d post-upg.d pre-con.d pre-ins.d pre-ref.d pre-upg.d; do
     chmod 755 $_aptd_etc/$_d
   done
 }
