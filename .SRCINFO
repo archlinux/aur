@@ -1,0 +1,34 @@
+pkgbase = k3d
+	pkgdesc = A free 3D modelling and animation software.
+	pkgver = 0.8.0.5
+	pkgrel = 1
+	url = http://www.k-3d.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = asciidoc
+	makedepends = boost>=1.42
+	makedepends = cmake>=3.1
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = libxslt
+	depends = cgal
+	depends = ftgl
+	depends = glew
+	depends = gnome-vfs>=2.0
+	depends = gtkglext>=1.0
+	depends = gtkmm>=2.4
+	depends = gtksourceview2>=2.0
+	depends = gts
+	depends = imagemagick
+	depends = lib3ds
+	depends = libjpeg-turbo
+	depends = ode
+	depends = openexr
+	source = git+https://github.com/K-3D/k3d.git#tag=k3d-0.8.0.5
+	source = cmake_paths_and_defs_fixes.patch
+	sha256sums = SKIP
+	sha256sums = fc8b7be14382b6b49fa908ff43773df5ec4e7b3401cc22629f6e2f6f7c4ee704
+
+pkgname = k3d
+
