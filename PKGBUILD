@@ -27,7 +27,7 @@ pkgdesc="Canon Scanner Driver (${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100303302.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('sane' 'gimp')
+depends=('sane' 'gimp' 'libusb-compat')
 source=(http://gdlp01.c-wss.com/gds/3/0100003033/01/scangearmp-source-${_pkgver}.tar.gz
         fix_png15.patch
         fix_configure.patch)
