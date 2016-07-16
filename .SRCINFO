@@ -1,6 +1,6 @@
 pkgbase = sbt-extras-git
 	pkgdesc = An alternative script for running sbt
-	pkgver = 20140505
+	pkgver = 20160701
 	pkgrel = 1
 	url = https://github.com/paulp/sbt-extras
 	arch = any
