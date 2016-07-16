@@ -1,0 +1,20 @@
+diff -Naur a/scangearmp/src/scanfile.c b/scangearmp/src/scanfile.c
+--- a/scangearmp/src/scanfile.c	2012-03-20 19:57:12.964097377 +0100
++++ b/scangearmp/src/scanfile.c	2012-03-20 19:58:28.515479817 +0100
+@@ -34,6 +34,7 @@
+ //#include <sys/types.h>
+ //#include <unistd.h>
+ #include <limits.h>
++#include <zlib.h>
+ 
+ #include "cnmsfunc.h"
+ #include "png.h"
+@@ -386,7 +387,7 @@
+ 
+ void write_data_for_png( png_structp png_ptr, png_bytep data, png_size_t length )
+ {
+-	FileControlWriteFile( *( (int *)png_ptr->io_ptr ), (CNMSLPSTR)data, length );
++	FileControlWriteFile( *( (int *)png_get_io_ptr(png_ptr)), (CNMSLPSTR)data, length );
+ 
+ 	return;
+ }
