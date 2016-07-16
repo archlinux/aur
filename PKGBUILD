@@ -2,7 +2,7 @@
 # Contributor: sumito3478 <sumito3478@gmail.com>
 # Contributor: rbellamy <rbellamy@pteradigm.com>
 pkgname=sbt-extras-git
-pkgver=20150920
+pkgver=20160701
 pkgrel=1
 pkgdesc="An alternative script for running sbt"
 arch=('any')
