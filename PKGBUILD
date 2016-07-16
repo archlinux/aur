@@ -53,57 +53,56 @@ pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
 _srcname=linux-4.6
 _ckpatchname="patch-4.6-ck1"
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
-arch=("i686" "x86_64")
+arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
-makedepends=("xmlto" 
-"docbook-xsl" 
-"kmod" 
-"inetutils" 
-"bc")
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 optdepends=("nvidia-think: nvidia drivers"
-"bbswitch-think: optimus support"
-"linux-think-firmware: BRCM bluetooth firmware")
+            "bbswitch-think: optimus support"
+            "linux-think-firmware: BRCM bluetooth firmware")
 options=("!strip")
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-# ck1 patchset
-"http://ck.kolivas.org/patches/4.0/4.6/4.6-ck1/${_ckpatchname}.xz"
-"001-change_default_console_loglevel.patch"
-"002-i915_vga_arbiter-4.6.2.patch"
-"003-acs_override-4.6.2.patch"
-"004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
-"005-intel_fifo_underrun_error_to_debug.patch"
-"006-microphone_mute_light.patch"
-"007-fbcondecor.patch"
-# BFQ
-"008-cgroups_kconfig_build_bits_for_BFQ-4.5.0.patch"
-"009-introduce_the_BFQ-4.5.0.patch"
-"010-add_Early_Queue_Merge_to_BFQ-4.5.0.patch"
-# The main kernel config files
-"config" 
-"config.x86_64"
-# Standard config files for mkinitcpio ramdisk
-"linux.preset")
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        # ck1 patchset
+        "http://ck.kolivas.org/patches/4.0/4.6/4.6-ck1/${_ckpatchname}.xz"
+        "001-change_default_console_loglevel.patch"
+        "002-i915_vga_arbiter-4.6.2.patch"
+        "003-acs_override-4.6.2.patch"
+        "004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
+        "005-intel_fifo_underrun_error_to_debug.patch"
+        "006-microphone_mute_light.patch"
+        "007-fbcondecor.patch"
+        # BFQ
+        "008-cgroups_kconfig_build_bits_for_BFQ-4.5.0.patch"
+        "009-introduce_the_BFQ-4.5.0.patch"
+        "010-add_Early_Queue_Merge_to_BFQ-4.5.0.patch"
+        # The main kernel config files
+        "config.x86_64"
+        # Standard config files for mkinitcpio ramdisk
+        "linux.preset")
 
 md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
-'0d59cb81eb7c0daf0f5019deda65af90'
-'69281829b5135f1a34ccd393159c74e9'
-'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-'b65081ff1ace9b352f80b23093e79397'
-'c30fe04a9ba0a7c652cecac9320bbb4c'
-'4675e1fe4bd326a50f168c5674bab13c'
-'64c87cfec450389cc158ba0cf6fe7a1e'
-'c96372203aec1ebc0fd8404bdddcc0b8'
-'8b7ca23aa660578023a0a244ae235888'
-'b3b845477eb2e62e745803685bde9057'
-'7e50b0145ed002319a8fb651b72f7cd0'
-'a873c975acf24c3ef0225b9fcd3f3e1e'
-'d122753e36b01f3c4cc614b764fa2777'
-'802a62b556c6f0715fe3eb0933fa7d3b'
-'eb14dcfd80c00852ef81ded6e826826a')
+         'c8ff415734155965ae7a2a85ef9c9e03'
+         '69281829b5135f1a34ccd393159c74e9'
+         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
+         'b65081ff1ace9b352f80b23093e79397'
+         'c30fe04a9ba0a7c652cecac9320bbb4c'
+         '4675e1fe4bd326a50f168c5674bab13c'
+         '64c87cfec450389cc158ba0cf6fe7a1e'
+         'c96372203aec1ebc0fd8404bdddcc0b8'
+         '8b7ca23aa660578023a0a244ae235888'
+         'b3b845477eb2e62e745803685bde9057'
+         '7e50b0145ed002319a8fb651b72f7cd0'
+         'a873c975acf24c3ef0225b9fcd3f3e1e'
+         'fc1a5b2433b25f2218f69a86fe582f0e'
+         'eb14dcfd80c00852ef81ded6e826826a')
+
+#validpgpkeys=('79BE3E4300411886' 
+#'38DBBDC86092693E') 
 
 _kernelname=${pkgbase#linux}
 
@@ -164,7 +163,7 @@ prepare() {
     cat "${srcdir}/config" > ./.config
   fi
 
-  ### Optionally set tickrate to 1000 
+  # Optionally set tickrate to 1000 
   if [ -n "$_1k_Hz_ticks" ]; then
     msg "Setting tick rate to 1k..."
     sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
@@ -172,20 +171,20 @@ prepare() {
       -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
   fi
 
-  ### Optionally enable BFQ as the default I/O scheduler
+  # Optionally enable BFQ as the default I/O scheduler
   if [ -n "$_BFQ_enable_" ]; then
     msg "Setting BFQ as default I/O scheduler..."
     sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
       -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
   fi
 
-  ### Optionally disable BFS as the default CPU scheduler
+  # Optionally disable BFS as the default CPU scheduler
   if [ -n "$_BFS_disable_" ]; then
     msg "Disabling BFS as default CPU scheduler..."
     sed -i -e 's/CONFIG_SCHED_BFS=y/CONFIG_SCHED_BFS=n/' ./.config
   fi
 
-  # Optionally disable NUMA since >99% of users have mono-socket systems.
+  # Optionally disable NUMA since >99% of users have mono-socket systems (only for 64 bit)
   if [ -n "$_NUMAdisable" ]; then
     if [ "${CARCH}" = "x86_64" ]; then
       msg "Disabling NUMA from kernel config..."
@@ -213,7 +212,7 @@ prepare() {
   # Don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  ### Optionally load needed modules for the make localmodconfig
+  # Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
@@ -300,23 +299,23 @@ _package() {
 }
 
 _package-headers() {
-pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-cd "${srcdir}/${_srcname}"
-install -D -m644 Makefile \
-  "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-install -D -m644 kernel/Makefile \
-  "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-install -D -m644 .config \
-  "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+  cd "${srcdir}/${_srcname}"
+  install -D -m644 Makefile \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
+  install -D -m644 kernel/Makefile \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
+  install -D -m644 .config \
+    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
 
-mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-  media net pcmcia scsi sound trace uapi video xen; do
-cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
+  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
+    media net pcmcia scsi sound trace uapi video xen; do
+    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
   # copy arch includes for external modules
@@ -402,32 +401,32 @@ cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 
   # strip scripts directory
   find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-  case "$(file -bi "${binary}")" in
-    *application/x-sharedlib*) # Libraries (.so)
-      /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-    *application/x-archive*) # Libraries (.a)
-      /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-    *application/x-executable*) # Binaries
-      /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-  esac
-done
+    case "$(file -bi "${binary}")" in
+      *application/x-sharedlib*) # Libraries (.so)
+        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+      *application/x-archive*) # Libraries (.a)
+        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+      *application/x-executable*) # Binaries
+        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+    esac
+  done
 
-# remove unneeded architectures
-rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+  # remove unneeded architectures
+  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
 _package-docs() {
-pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}"
 
-mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-find "${pkgdir}" -type f -exec chmod 444 {} \;
-find "${pkgdir}" -type d -exec chmod 755 {} \;
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  find "${pkgdir}" -type f -exec chmod 444 {} \;
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-# remove a file already in linux package
-rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+  # remove a file already in linux package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
