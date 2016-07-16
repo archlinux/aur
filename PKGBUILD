@@ -15,8 +15,8 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.80926.g83a940e
-pkgrel=3
+pkgver=N.81032.gdf9cc7f
+pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -27,7 +27,7 @@ depends=(
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libebur128' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
-    'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'opus' 'pulseaudio'
+    'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'opus' 'pulseaudio' 'libopenmpt-svn'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
     'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
@@ -142,6 +142,7 @@ build() {
 	        --enable-libopencv \
 	        --enable-libopenh264 \
 	        --disable-libopenjpeg \
+	        --enable-libopenmpt \
 	        --enable-libopus \
 	        --enable-libpulse \
 	        --enable-librubberband \
