@@ -7,8 +7,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.12
-_rtpatchver=rt19
+_pkgver=4.4.15
+_rtpatchver=rt23
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -32,9 +32,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '1eb89dddd7e89caf2df17470b4b15da451ef1aa97f8e1a88578a8ee2da75729a'
+            '69fcb928e4958f87fb134d0f6acf98072655b5572dd3497c3a0844882f261bf8'
             'SKIP'
-            '0fe3f95956b73d0682c44c0520eef11a9de067739d799c33eaf8bc1130331a1d'
+            'aaa5dcc4a0f3a49c3612b4560467ff5d8c3d67eab794abea3b9ba2d6566ca8c4'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
