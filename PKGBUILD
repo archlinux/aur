@@ -17,7 +17,7 @@ conflicts=('java-saxon')
 source=("http://sourceforge.net/projects/saxon/files/Saxon-HE/${_major}/SaxonHE${_pkgver}J.zip"
         saxon-xslt.sh
         saxon-xquery.sh)
-md5sums=('f6171ba5d4204bfddb20536918d51a22'
+md5sums=('ea819757df93a0f674edc4ec2634f57d'
          '4197e2b5278a02e0aa7d383d9dc4f11d'
          '1a37078990f913ce7c37eb3a1bd39283')
 
