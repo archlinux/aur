@@ -4,6 +4,8 @@ post_install() {
   dkms install -m nvidia/${1%-*}
   echo "==> To build your modules automatically at startup, run:"
   echo "    # systemctl enable dkms"
+
+  echo ":: NOTE: You may want to stick to .27: https://devtalk.nvidia.com/default/topic/950647/linux/black-screen-with-367-35/"
 }
 
 # arg 1:  the new package version
