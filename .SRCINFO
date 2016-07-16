@@ -1,0 +1,15 @@
+pkgbase = nodejs-tsd
+	pkgdesc = TypeScript Definition manager for DefinitelyTyped
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/DefinitelyTyped/tsd
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	depends = npm
+	noextract = tsd-0.6.5.tgz
+	source = http://registry.npmjs.org/tsd/-/tsd-0.6.5.tgz
+	sha1sums = 34a0b64c1db6a70b3860fe4f5571d9d1357421ad
+
+pkgname = nodejs-tsd
+
