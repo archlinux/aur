@@ -7,7 +7,7 @@ pkgdesc="A set of QtQuick components extending QtQuick.Controls for building app
 arch=('i686' 'x86_64')
 url="https://github.com/iBeliever/quickpaper/"
 license=('MPL2')
-depends=('qt5-declarative>=5.7.0rc-1')
+depends=('qt5-declarative>=5.7.0')
 makedepends=('git')
 conflicts=('quickpaper')
 provides=('quickpaper')
