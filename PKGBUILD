@@ -8,7 +8,7 @@
 
 pkgbase=python-matplotlib2
 pkgname=('python2-matplotlib2' 'python-matplotlib2')
-pkgver=2.0.0b1
+pkgver=2.0.0b2
 pkgrel=1
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ url='http://matplotlib.org'
 license=('custom')
 checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock' 'xorg-server-xvfb'
               'texlive-core' 'texlive-latexextra' 'imagemagick' 'ffmpeg' 'mencoder' 'inkscape'
-              'pep8' 'python2-pep8' 'python-pandas' 'python2-pandas')
+              'python-pycodestyle' 'python2-pycodestyle' 'python-pandas' 'python2-pandas')
 makedepends=('python2-pytz' 'python2-numpy' 'python2-pyqt4' 'python-pytz' 'python-numpy'
              'python-pyqt4' 'tk' 'python-cairocffi' 'python2-cairocffi' 'python-dateutil'
              'python2-dateutil' 'python-gobject' 'python2-gobject' 'python-pyparsing'
@@ -26,7 +26,7 @@ makedepends=('python2-pytz' 'python2-numpy' 'python2-pyqt4' 'python-pytz' 'pytho
              'python2-setuptools' 'python-cycler' 'python2-cycler')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/matplotlib/matplotlib/archive/v$pkgver.tar.gz"
         setup.cfg)
-sha512sums=('83e00044efd5408b6e0ec79a917f0089a474fd6c507e6e00f62e689784cc99cf73fb98f6a7d3674b0c0c6116b061b6e6ac02476a68efadda49a192d8b383c997'
+sha512sums=('e8713561412607d940e59679cb7729642c1f257d0857348cb6a0e40db70bfda0982fb87246cfa4254d6d818a0d62632f38b18132d79c3f4fb48c88a4e26baf62'
             '493a08914755d7d27d98025fc309f19cc3ec45e777fc81a56fa50430f90c0b39c2f66c2a01f6fd14a2e351005151365a25d2ab71ae2e80a54c6f57ceeacea35b')
 
 prepare() {
