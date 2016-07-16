@@ -2,7 +2,7 @@
 
 _pkgname=ghetto-skype
 pkgname=ghetto-skype-git
-pkgver=v1.3.2.r8.gf66cb2f
+pkgver=v1.4.0.r0.g35d72e3
 pkgrel=1
 pkgdesc="Are you tired of a buggy 32 bit official Skype client? Then Ghetto Skype is for you!"
 arch=("any")
