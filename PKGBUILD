@@ -9,7 +9,8 @@ arch=("any")
 url="https://github.com/stanfieldr/ghetto-skype"
 license=("GPLv3")
 depends=("electron" "hicolor-icon-theme" "npm")
-conflicts=("${_pkgname}")
+conflicts=('ghetto-skype')
+provides=('ghetto-skype')
 source=("${pkgname}::git+https://github.com/stanfieldr/ghetto-skype.git"
 	"desktop"
 	"sh")
