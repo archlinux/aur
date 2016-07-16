@@ -1,32 +1,6 @@
-diff -aur ngs-1.2.3.pristine/Makefile ngs-1.2.3.new/Makefile
---- ngs-1.2.3.pristine/Makefile	2015-11-23 18:38:45.000000000 +0000
-+++ ngs-1.2.3.new/Makefile	2016-01-25 21:42:41.455818616 +0000
-@@ -29,7 +29,6 @@
- SUBDIRS =    \
- 	ngs-sdk \
- 	ngs-java \
--	ngs-python \
-
- 
- SUBDIRS_CLN = \
-diff -aur ngs-1.2.3.pristine/ngs-bam/setup/install.perl ngs-1.2.3.new/ngs-bam/setup/install.perl
---- ngs-1.2.3.pristine/ngs-bam/setup/install.perl	2015-11-23 18:38:45.000000000 +0000
-+++ ngs-1.2.3.new/ngs-bam/setup/install.perl	2016-01-25 22:20:30.522404231 +0000
-@@ -81,11 +81,9 @@
- prepare();
- 
- my $LINUX_ROOT;
--++$LINUX_ROOT if (linux_root());
- my $ROOT = '';
- if ($OPT{root}) {
-     $ROOT = "$OPT{root}/root";
--    ++$LINUX_ROOT;
-     foreach ("$ROOT/usr/include", "$ROOT/etc/profile.d") {
-         unless (-e $_) {
-             print "mkdir -p $_... ";
-diff -aur ngs-1.2.3.pristine/ngs-java/Makefile.java ngs-1.2.3.new/ngs-java/Makefile.java
---- ngs-1.2.3.pristine/ngs-java/Makefile.java	2015-11-23 18:38:45.000000000 +0000
-+++ ngs-1.2.3.new/ngs-java/Makefile.java	2016-01-25 21:16:43.505874267 +0000
+diff -aur ngs-1.2.5.pristine/ngs-java/Makefile.java ngs-1.2.5.new/ngs-java/Makefile.java
+--- ngs-1.2.5.pristine/ngs-java/Makefile.java	2016-07-15 18:45:56.228525816 +0000
++++ ngs-1.2.5.new/ngs-java/Makefile.java	2016-07-15 18:46:43.595193491 +0000
 @@ -59,12 +59,13 @@
  JAR_TARGET = $(INST_JARDIR)/ngs-java.jar
  DOC_TARGET = $(INST_SHAREDIR)/doc/
@@ -47,9 +21,9 @@ diff -aur ngs-1.2.3.pristine/ngs-java/Makefile.java ngs-1.2.3.new/ngs-java/Makef
  
  install: $(TARGETS) $(INST_JARDIR) $(INST_JARDIR)/ngs-java.jar.$(VERSION) copydocs copyexamples 
  ifeq (true, $(LINUX_ROOT))
-diff -aur ngs-1.2.3.pristine/ngs-python/Makefile.python ngs-1.2.3.new/ngs-python/Makefile.python
---- ngs-1.2.3.pristine/ngs-python/Makefile.python	2015-11-23 18:38:45.000000000 +0000
-+++ ngs-1.2.3.new/ngs-python/Makefile.python	2016-01-25 21:19:48.709200984 +0000
+diff -aur ngs-1.2.5.pristine/ngs-python/Makefile.python ngs-1.2.5.new/ngs-python/Makefile.python
+--- ngs-1.2.5.pristine/ngs-python/Makefile.python	2016-07-15 18:45:56.235192482 +0000
++++ ngs-1.2.5.new/ngs-python/Makefile.python	2016-07-15 18:47:44.511861457 +0000
 @@ -56,7 +56,7 @@
  install: $(TARGETS) $(INST_PYTHONDIR) copyexamples
  ifeq (0, $(shell id -u))
@@ -68,9 +42,9 @@ diff -aur ngs-1.2.3.pristine/ngs-python/Makefile.python ngs-1.2.3.new/ngs-python
     
  else
  	@ echo "Installing ngs package..."
-diff -aur ngs-1.2.3.pristine/ngs-sdk/Makefile.install ngs-1.2.3.new/ngs-sdk/Makefile.install
---- ngs-1.2.3.pristine/ngs-sdk/Makefile.install	2015-11-23 18:38:45.000000000 +0000
-+++ ngs-1.2.3.new/ngs-sdk/Makefile.install	2016-01-25 21:09:31.642556359 +0000
+diff -aur ngs-1.2.5.pristine/ngs-sdk/Makefile.install ngs-1.2.5.new/ngs-sdk/Makefile.install
+--- ngs-1.2.5.pristine/ngs-sdk/Makefile.install	2016-07-15 18:45:56.248525816 +0000
++++ ngs-1.2.5.new/ngs-sdk/Makefile.install	2016-07-15 18:48:18.855195523 +0000
 @@ -63,11 +63,12 @@
  INCLUDE_SYMLINK = $(ROOT)/usr/include/ngs
  PROFILE_FILE = $(ROOT)/etc/profile.d/ngs-sdk
@@ -80,12 +54,12 @@ diff -aur ngs-1.2.3.pristine/ngs-sdk/Makefile.install ngs-1.2.3.new/ngs-sdk/Make
 -        LINUX_ROOT = true
 -    endif
 -endif
-+LINUX_ROOT = false
 +#ifeq (linux, $(OS))
 +#    ifeq (0, $(shell id -u))
 +#        LINUX_ROOT = true
 +#    endif
 +#endif
++LINUX_ROOT = false
  
  install: copylibs copyincludes copyexamples
  ifeq (true, $(LINUX_ROOT))
