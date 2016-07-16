@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=timeslottracker
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Simple and useful time tracker"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 provides=("timeslottracker")
 depends=("java-environment")
 source=("http://downloads.sourceforge.net/project/timeslottracker/TimeSlotTracker/${pkgver}/timeslottracker_${pkgver}_all.deb")
-md5sums=('e5f6b0f936d866f066a070e562170d6e')
+md5sums=('154c3b0777f2b94049f2d6b9d5dc2581')
 
 package() {
 	bsdtar xf data.tar.xz
