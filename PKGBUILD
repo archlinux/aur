@@ -3,7 +3,7 @@
 
 pkgbase=upp-git
 pkgname=(upp-git theide-git umk-git)
-pkgver=981f26c
+pkgver=8fd89a6
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — built from git sources"
 arch=('any')
