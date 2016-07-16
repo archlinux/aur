@@ -4,9 +4,9 @@
 # Contributor:	julroy67	<gmail.com:	julroy67>
 
 pkgname=libvpx-git
-pkgver=v1.5.0.621.gbfc2a7e
+pkgver=v1.5.0.1276.gf44db14
 pkgrel=1
-pkgdesc="The VP8, VP9 & VP10 Codec SDK (git version)"
+pkgdesc="The VP8 and VP9 Codec SDK (git version)"
 arch=('i686' 'x86_64')
 url="http://www.webmproject.org/"
 license=('BSD')
@@ -30,7 +30,6 @@ build() {
 	--enable-vp8 \
 	--enable-vp9 \
         --enable-vp9-highbitdepth \
-        --enable-vp10 \
         --enable-runtime-cpu-detect \
         --enable-shared \
         --enable-postproc \
