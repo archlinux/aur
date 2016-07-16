@@ -3,7 +3,7 @@
 pkgname=('python-jwt' 'python2-jwt')
 _pkgbase='pyjwt'
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON Web Token implementation"
 arch=(any)
 url="https://github.com/jpadilla/pyjwt"
@@ -25,6 +25,7 @@ package_python2-jwt() {
   cd "$srcdir/$_pkgbase-$pkgver"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  mv "$pkgdir/usr/bin/jwt" "$pkgdir/usr/bin/jwt2"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = python-jwt
 	pkgdesc = JSON Web Token implementation
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpadilla/pyjwt
 	arch = any
 	license = MIT
