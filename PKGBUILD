@@ -22,7 +22,7 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
 
 md5sums=('dfa7f9b317f5d13c49b573eee7b88788'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
-         "b88da1c13e73cdeb2a89d3c115b2e3e0"
+         "b00b69054c4c40847aa9c575d4550244"
          "0a78917932d864cbaefa0139f90c6ab0"
          "762da632f39f44d8fe3a7fff72feec36")
 
