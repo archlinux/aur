@@ -2,7 +2,7 @@
 # Contributor: Lara Maia <lara@craft.net.br>
 
 pkgname=gimp-plugin-bimp
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc='Batch Image Manipulation Plugin for GIMP.'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='http://www.alessandrofrancesconi.it/projects/bimp/'
 license=('GPL')
 depends=('gimp')
 source=(https://github.com/alessandrofrancesconi/${pkgname}/archive/v$pkgver.tar.gz)
-md5sums=('5c9664c486889fc28d0a5c43665faa83')
+md5sums=('6ed12c904f76cf3bd2a435f617ddfa01')
 
 
 build() {
