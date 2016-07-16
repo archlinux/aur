@@ -3,7 +3,7 @@
 _pkgname=omnibook-git
 pkgname=omnibook-dkms-git
 pkgver=20150227
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for HP OmniBook,Pavilion,Toshiba and Compal ACL00 laptops"
 arch=('any')
 url="http://omnibook.sourceforge.net"
@@ -18,7 +18,7 @@ provides=('omnibook-git')
 source=("$_pkgname::git://devoid-pointer.net/omnibook.git"
         "dkms.conf" "makefile.patch")
 md5sums=('SKIP'
-         '8e2713c9bd733157d140f2e2bd3dc316'
+         '46cb4a99d3331123d7a04bcefcbde916'
          '7d2830930ad14b1125b219b18acb37c0')
 
 
