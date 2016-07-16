@@ -10,6 +10,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    EXTRAMODULES='extramodules-4.5-think'
+    EXTRAMODULES='extramodules-4.6-think'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
