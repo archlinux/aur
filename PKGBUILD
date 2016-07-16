@@ -1,7 +1,7 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
 pkgname=magicseteditor
 pkgver=2.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="A program to help create Magic: the Gathering cards and sets. Comes with no game support."
 arch=('i686' 'x86_64')
 url="http://magicseteditor.sourceforge.net"
@@ -20,7 +20,7 @@ build() {
 	./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.8
 	#sed -e 's|^\(AM_LDFLAGS = .*\),--as-needed|\1,-Bsymbolic-functions|' -i Makefile
 	make LIBS="-lboost_system $(pkg-config --libs hunspell) $(wx-config-2.8 --libs)" \
-		CPPFLAGS="-I/usr/include/hunspell -fpermissive" || return 1
+		CPPFLAGS="-std=c++98 -I/usr/include/hunspell -fpermissive" || return 1
 
 }
 
