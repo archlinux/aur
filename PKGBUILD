@@ -1,6 +1,6 @@
 # Maintainer: metamer <metamer at openmailbox dot org>
 pkgname=infra-arcana
-pkgver=18.1
+pkgver=18.2
 pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
@@ -13,22 +13,37 @@ depends=('sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
 backup=()
 options=()
 install=${pkgname}.install
-source=("https://github.com/InfraArcana/ia/archive/v${pkgver}.zip"
+source=( "git+https://github.com/martin-tornqvist/ia.git"#"tag=v${pkgver}"
+		"rl-utils-numeric-include.patch"
+		"room-numeric-include.patch"
 		"${pkgname}.install"
 		"${pkgname}.desktop"
 		"${pkgname}.sh")
-md5sums=('fc6561591d30b7af0d86390ee547bd4a'
+md5sums=('SKIP'
+         'fd8cacaa622c4363787cff2e575a8938'
+         '3c05836d84ad451d5d8034267b21ade8'
          '2bc0fb64e8593e25009b1dc50e642cd8'
          '2e28c2803d7d2cd4376dcd3aa6512774'
          '87294b81f5a2f98a78d318a5dcec7caf')
 
+prepare(){
+	cd $srcdir/"ia"
+	cd src
+	patch -uN room.cpp $srcdir/room-numeric-include.patch
+	cd $srcdir/"ia"
+	git submodule init
+	git submodule update
+	cd rl_utils/src
+	patch -uN rl_utils.cpp $srcdir/rl-utils-numeric-include.patch
+}
+
 build() {
-	cd "ia-${pkgver}"
+	cd $srcdir/"ia"
 	make
 }
 
 package() {
-	cd "ia-$pkgver"
+	cd "ia"
         #install licenses
 	install -DTm644 "target/license.txt"\
           "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
