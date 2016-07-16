@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.80926.g83a940e
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -100,23 +100,14 @@ build() {
 	        --enable-gpl \
 	        --enable-version3 \
 	        --enable-nonfree \
-	        --enable-gray \
-	        --disable-static \
 	        --enable-shared \
+	        --disable-static \
+	        --enable-gray \
 	        --enable-avresample \
 	        \
-	        $_cuda \
-	        $_cuvid \
-	        --enable-libmfx \
-	        --enable-nvenc \
-	        --enable-omx \
-	        --enable-omx-rpi \
-	        \
-	        --enable-audiotoolbox \
 	        --enable-avisynth \
 	        --enable-bzlib \
 	        --enable-chromaprint \
-	        --enable-fontconfig \
 	        --enable-frei0r \
 	        --enable-gcrypt \
 	        --enable-gmp \
@@ -135,6 +126,7 @@ build() {
 	        --enable-libfaac \
 	        --enable-libfdk-aac \
 	        --enable-libflite \
+	        --enable-fontconfig \
 	        --enable-libfreetype \
 	        --enable-libfribidi \
 	        --enable-libgme \
@@ -145,7 +137,6 @@ build() {
 	        --enable-libmodplug \
 	        --enable-libmp3lame \
 	        --enable-libnut \
-	        $_libnpp \
 	        --enable-libopencore-amrnb \
 	        --enable-libopencore-amrwb \
 	        --enable-libopencv \
@@ -190,11 +181,20 @@ build() {
 	        --enable-opencl \
 	        --enable-opengl \
 	        --enable-openssl \
-	        --enable-videotoolbox \
 	        --enable-sdl \
 	        --enable-x11grab \
 	        --enable-xlib \
-	        --enable-zlib
+	        --enable-zlib \
+	        \
+	        --enable-audiotoolbox \
+	        $_cuda \
+	        $_cuvid \
+	        --enable-libmfx \
+	        $_libnpp \
+	        --enable-nvenc \
+	        --enable-omx \
+	        --enable-omx-rpi \
+	        --enable-videotoolbox
 	
 	make
 	
