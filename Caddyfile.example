@@ -1,0 +1,4 @@
+localhost {
+   root /usr/share/webapps/vector-web
+   gzip
+}
