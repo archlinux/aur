@@ -1,6 +1,6 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mojo-ide
-pkgver=B1.3.2
+pkgver=B1.3.3
 pkgrel=1
 pkgdesc="The IDE for Mojo"
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 source=("https://embeddedmicro.com/ide/$pkgname-$pkgver-linux64.tgz"
         "mojo-ide.desktop"
         "run-mojo-ide.sh")
-sha512sums=("007fbdb8a5a444fe41f73272d78918ef5638de72464a98d48fa9e9ad5f0b3e4d07af199204ad11bcead743cda9b4d26390d601c3947f0dddf7528222f88108fa"
+sha512sums=("5accc4796ac26adbd7e69cfabdc8e3ea22ac05d5d037b5dae2f56cd12c3fe2cf977d301cfa850dedb8d47cd0aa536708718a843743ecfc46147652820e30e3ec"
             "ed041393bd96b6522a43ddc90877d9fcd6f9ebce0ea5271746508d2d7434a8d8cadf267f589d034f85edabe2d108a86fd953b9a401fd2b026aeaa85c4c5db006"
             "80aa2594e159fdee6f765ca0394a9f811664bc620c123601dc2d4b1f40c0786d40137ebe360a74eae398556803d492ef40b1cb037cbd0e83c31e0d3a21c6e200")
 
