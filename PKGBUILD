@@ -50,8 +50,7 @@ build() {
 	git submodule update
 
 	echo "Running 'go get'..."
-	GO15VENDOREXPERIMENT=1 go get \
-		-ldflags="-X main.version=$pkgver-$pkgrel"
+	go get -ldflags="-X main.version=$pkgver-$pkgrel -X main.build=$(git rev-parse --short HEAD)"
 }
 
 package() {
