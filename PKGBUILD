@@ -1,48 +1,50 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=0.9.1
+pkgver=0.10rc1
+_pypkgver=0.10.0rc1
 pkgrel=3
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
-depends=('insight-toolkit')
-makedepends=('cmake' 'git' 'mono' 'python' 'python-pip' 'python-virtualenv' 'r' 'ruby' 'swig' 'tcl' 'tk')
+depends=('gcc-libs' 'insight-toolkit')
+makedepends=('cmake' 'clang' 'git' 'lua51' 'mono' 'python' 'python-pip' 'python-virtualenv' 'python-numpy' 'r' 'ruby' 'swig' 'tcl' 'tk')
 optdepends=(
+    'lua51: Lua bindings'
     'mono: C# bindings'
     'python: Python bindings'
+    'python-numpy: Python bindings'
     'r: R bindings'
     'ruby: Ruby bindings'
     'tcl: Tcl/TK bindings'
     'tk: Tcl/TK bindings'
 )
 source=(
-    "https://sourceforge.net/projects/$pkgname/files/$_pkgname/$pkgver/Source/$_pkgname-$pkgver.tar.xz"
-    'python-package.patch'
+    "git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver"
     'Rlib.patch'
-    "cthead1.png"::"http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=b23198c9e44a48edfd5b83f075eb455c&algorithm=md5"
-    "cthead1-Float.mha"::"http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=25de5707b18c0c684fd5fa30351bf787&algorithm=md5"
+    'lua51.patch'
 )
-md5sums=('3b759cf21b89e213343ac6a4e616cd45'
-         '1c97647461d932ca2e672606d1687f77'
-         '3b6569561ed5047f3232b4f96ae98d74'
-         'b23198c9e44a48edfd5b83f075eb455c'
-         '25de5707b18c0c684fd5fa30351bf787')
+md5sums=('SKIP'
+         '2888336abcbb122a49cb5817ac98f36c'
+         '89cd23ce562229b3b2b6301aee18fced')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
 
-    mkdir -p build/ExternalData/Testing/Data/Input/
+    mkdir -p build
 
-    cp ../{cthead1.png,cthead1-Float.mha} build/ExternalData/Testing/Data/Input/
-
-    patch -Np1 -i ../python-package.patch
     patch -Np1 -i ../Rlib.patch
+    patch -Np1 -i ../lua51.patch
 }
 
 build() {
-    cd "$_pkgname-$pkgver/build"
+    cd "$_pkgname/build"
+
+    export CC=clang
+    export CXX=clang++
+    export CXXFLAGS="-std=c++11 $CXXFLAGS"
+    export CPP="clang -E"
 
     # TODO: Java binding is broken with swig 3.0.9 and openjdk8
     cmake \
@@ -59,20 +61,26 @@ build() {
 }
 
 package() {
-    _builddir="$srcdir/$_pkgname-$pkgver/build"
+    _builddir="$srcdir/$_pkgname/build"
 
     cd $_builddir
+
+    export CC=clang
+    export CXX=clang++
+    export CXXFLAGS="-std=c++11 $CXXFLAGS"
+    export CPP="clang -E"
 
     make DESTDIR="$pkgdir/" install
 
     pip install --root="$pkgdir/" --ignore-installed \
-        "$_builddir/Wrapping/dist/$_pkgname-$pkgver-"*"-linux_$CARCH.whl"
+        "$_builddir/Wrapping/Python/dist/$_pkgname-$_pypkgver"*"-linux_$CARCH.whl"
 
-    install -Dm755 "$_builddir/bin/SimpleITKLua" "$pkgdir/usr/bin/SimpleITKLua"
-    install -Dm755 "$_builddir/bin/SimpleITKTclsh" "$pkgdir/usr/bin/SimpleITKTclsh"
-    install -Dm755 "$_builddir/Wrapping/CSharpBinaries/libSimpleITKCSharpNative.so" "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
-    install -Dm755 "$_builddir/Wrapping/CSharpBinaries/SimpleITKCSharpManaged.dll" "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
+    install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
+    install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
+    install -Dm755 "$_builddir/Wrapping/Tcl/bin/SimpleITKTclsh" "$pkgdir/usr/bin/SimpleITKTclsh"
+    install -Dm755 "$_builddir/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
+    install -Dm755 "$_builddir/Wrapping/CSharp/CSharpBinaries/SimpleITKCSharpManaged.dll" "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
 
     install -d -Dm755 "$pkgdir/usr/lib/R/library/"
-    cp -dr --no-preserve=ownership "$_builddir/Wrapping/Rpackaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
+    cp -dr --no-preserve=ownership "$_builddir/Wrapping/R/Packaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
 }

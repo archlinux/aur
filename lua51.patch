@@ -1,0 +1,68 @@
+--- a/CMake/FindLuaInterp.cmake	2016-07-15 02:29:39.418795763 +0800
++++ b/CMake/FindLuaInterp.cmake	2016-07-15 02:29:45.812129311 +0800
+@@ -11,7 +11,7 @@
+ #   LUA_EXECUTABLE_VERSION_STRING - version of lua found
+ 
+ find_program(LUA_EXECUTABLE
+-  NAMES lua
++  NAMES lua5.1 lua
+   )
+ 
+ if(LUA_EXECUTABLE)
+--- a/Wrapping/Lua/CMakeLists.txt	2016-07-15 02:21:14.748778896 +0800
++++ Wrapping/Lua/CMakeLists.txt.orig	2016-07-15 02:20:55.322111581 +0800
+@@ -5,14 +5,7 @@
+ include(../../CMake/sitkProjectLanguageCommon.cmake)
+ 
+ 
+-if (CMAKE_VERSION VERSION_LESS "3")
+-  find_package ( Lua51 ${_QUIET} )
+-  if ( NOT LUA_FOUND )
+-    find_package ( Lua50 ${_QUIET} )
+-  endif()
+-else()
+-  find_package ( Lua ${_QUIET} )
+-endif()
++find_package ( Lua51 ${_QUIET} )
+ 
+ set( LUA_ADDITIONAL_LIBRARIES "" CACHE STRING "Additional libraries which may be needed for lua executable such as readline.")
+ mark_as_advanced( LUA_ADDITIONAL_LIBRARIES )
+--- a/CMake/sitkGenerateFilterSource.cmake	2016-07-15 04:16:21.529009726 +0800
++++ b/CMake/sitkGenerateFilterSource.cmake	2016-07-15 04:16:41.519010392 +0800
+@@ -2,16 +2,8 @@
+ # Find a Lua executable
+ #
+ if ( NOT SITK_LUA_EXECUTABLE )
+-  set ( SAVE_LUA_EXECUTABLE ${LUA_EXECUTABLE} )
+-
+   find_package( LuaInterp REQUIRED 5.1 )
+   set( SITK_LUA_EXECUTABLE ${LUA_EXECUTABLE} CACHE PATH "Lua executable used for code generation." )
+-
+-  if (DEFINED SAVE_LUA_EXECUTABLE)
+-    set( LUA_EXECUTABLE ${SAVE_LUA_EXECUTABLE} CACHE )
+-  else()
+-    unset( LUA_EXECUTABLE CACHE )
+-  endif()
+ endif()
+ 
+ # Get the Lua version
+--- a/CMake/sitkLanguageOptions.cmake	2016-07-15 17:56:50.830654990 +0800
++++ b/CMake/sitkLanguageOptions.cmake	2016-07-15 17:57:23.547322749 +0800
+@@ -31,15 +31,8 @@
+ # Setup the option for each language
+ #
+ set_QUIET( WRAP_LUA )
+-if (CMAKE_VERSION VERSION_LESS "3")
+-  find_package ( Lua51 ${_QUIET} )
+-  if ( NOT LUA_FOUND )
+-    find_package ( Lua50 ${_QUIET} )
+-  endif()
+-else()
+-  find_package ( Lua ${_QUIET} )
+-endif()
+-if ( LUA_FOUND )
++find_package ( Lua51 ${_QUIET} )
++if ( LUA51_FOUND )
+   set( WRAP_LUA_DEFAULT ON )
+ else()
+   set( WRAP_LUA_DEFAULT OFF )
