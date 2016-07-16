@@ -154,7 +154,10 @@ package_psf-unifont() {
 package_unifont-utils() {
 	pkgdesc="A free bitmap font with wide Unicode support - utilities"
 	depends=('perl')
-	optdepends+=('perl-wx: for the unifont-viewer utility')
+	optdepends+=(
+		'perl-wx: for the unifont-viewer utility'
+		'perl-gd: for the unihex2png and unipng2hex utilities'
+	)
 	arch=(i686 x86_64)
 
 	cd "$srcdir/unifont-${pkgver%.*}/src"

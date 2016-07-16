@@ -34,4 +34,5 @@ pkgname = unifont-utils
 	depends = perl
 	optdepends = 
 	optdepends = perl-wx: for the unifont-viewer utility
+	optdepends = perl-gd: for the unihex2png and unipng2hex utilities
 
