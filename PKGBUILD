@@ -3,7 +3,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark-git
-pkgver=2.1.0.SNAPSHOT.20160714.17009
+pkgver=2.1.0.SNAPSHOT.20160715.17026
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
@@ -57,7 +57,7 @@ package() {
         sparkhome="$pkgdir/opt/apache-spark"
         jarpath="assembly/target/scala-2.11/jars"
         install -d "$sparkhome"
-        cp -r "$srcdir/spark"/{bin,conf,data,docs,examples,licenses,python,R,sbin,CONTRIBUTING.md,LICENSE,NOTICE,README.md} "$pkgdir/opt/apache-spark/"
+        cp -r "$srcdir/spark"/{bin,conf,data,docs,examples,licenses,python,R,sbin,CONTRIBUTING.md,LICENSE,NOTICE,README.md} "$sparkhome"
         install -D "$srcdir/spark/$jarpath"/* -t "$sparkhome/$jarpath"
         rm -rf "$sparkhome/bin"/*.cmd
 
@@ -65,7 +65,7 @@ package() {
         install -d "$pkgdir/usr/bin" "$pkgdir/var/log/apache-spark"
         for i in $(ls "$sparkhome/bin");do ln -sf /opt/apache-spark/bin/$i "$pkgdir/usr/bin"; done
         install -D "$srcdir"/*.service -t "$pkgdir/usr/lib/systemd/system/"
-        install -D "$srcdir"/{run-master.sh,run-slave.sh,spark-daemon-run.sh} "$pkgdir/opt/apache-spark/sbin/"
+        install -D "$srcdir"/{run-master.sh,run-slave.sh,spark-daemon-run.sh} "$sparkhome/sbin/"
         install -D "$srcdir/spark/conf"/* "$srcdir/spark-env.sh" -t "$pkgdir/etc/apache-spark"
         install -D "$srcdir/apache-spark.sh" "$pkgdir/etc/profile.d/apache-spark.sh"
 
