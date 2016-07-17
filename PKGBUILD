@@ -6,8 +6,8 @@
 
 pkgname=geany-plugins-gtk3
 _pkgname=geany-plugins
-pkgver=1.27
-pkgrel=2
+pkgver=1.28
+pkgrel=1
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
@@ -19,7 +19,8 @@ optdepends=('hspell: hebrew spell checker')
 provides=("geany-plugins")
 conflicts=("geany-plugins")
 source=("http://plugins.geany.org/${_pkgname}/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('31e4aa4b771a4ff8ccfd74efe7ba7b44')
+md5sums=('54ad042b6f91ff8e7a497c22faa2db4b')
+
 
 
 build() {
