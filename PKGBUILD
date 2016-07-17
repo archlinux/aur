@@ -6,7 +6,7 @@ pkgname_=gnupg
 pkgver=1.4.20
 pkgrel=5
 pkgdesc="GNU Privacy Guard - a PGP replacement tool"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'armv8h' 'armv8l')
 license=('GPL3')
 depends=('zlib' 'bzip2' 'libldap>=2.4.18' 'libusb-compat' 'curl>=7.16.2' 'readline>=6.0.00')
 source=("https://gnupg.org/ftp/gcrypt/gnupg/$pkgname_-$pkgver.tar.bz2"{,.sig})
