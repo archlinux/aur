@@ -2,7 +2,7 @@
 
 _plug=flt
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.0.g3a05971
+pkgver=r5.0.gbf0d8f8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,12 +24,13 @@ prepare() {
   cd "${_plug}"
   rm -fr VapourSynth.h VSHelper.h
 
+  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
+      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
+      -i Source.cpp
+
   echo "all:
-	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o FloatFilters.o FloatFilters.cpp
-	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o InDeflate.o InDeflate.cpp
-	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o MaxMinimum.o MaxMinimum.cpp
-	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Median.o Median.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so FloatFilters.o InDeflate.o MaxMinimum.o Median.o" > Makefile
+	  g++ -c -std=gnu++14 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o Source.o Source.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so Source.o" > Makefile
 }
 
 build() {
