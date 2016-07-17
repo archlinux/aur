@@ -1,13 +1,13 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.26.18.14
+pkgver=1.26.18.15
 pkgrel=1
-pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; native 32bit, binary)"
+pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
 license=('custom')
-depends_i686=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
-optdepends_i686=(
+depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
+optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support'
@@ -16,33 +16,22 @@ optdepends_i686=(
 	'gst-plugins-bad: for video support'
 	'gst-plugins-ugly: for video support'
 	'lib32-freealut: for OpenAL support')
-
-depends_x86_64=('apr-util' 'lib32-glib2>=2.32' 'lib32-libgl' 'lib32-libidn' 'lib32-libjpeg-turbo' 'lib32-mesa' 'lib32-nss' 'lib32-sdl' 'lib32-glu' 'lib32-pangox-compat')
-optdepends_x86_64=(
-	'lib32-libpulse: for PulseAudio support'
-	'lib32-alsa-lib: for ALSA support'
-	'lib32-nvidia-utils: for NVIDIA support'
-	'lib32-gst-plugins-good: for video support'
-	'lib32-gst-plugins-bad: for video support'
-	'lib32-gst-plugins-ugly: for video support'
-	'lib32-freealut: for OpenAL support')
-
-arch=('i686' 'x86_64')
+arch=('x86_64')
 conflicts=('coolvlviewer-legacy' 'coolvlviewer-experimental')
 install=coolvlviewer.install
-source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86-Setup"
+source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
 
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('f7c1ca5c2927494c56bfd05dd15934f5'
+md5sums=('6ec19b57dc66b94d51d9ec1d9a17db44'
          '88b0bca907149f4c26389449081a13fd'
          'fd78de1f6c1333a5120ece89873515e0')
 
 build() {
 cd $srcdir
 # Run the installer
-chmod +x CoolVLViewer-${pkgver}-Linux-x86-Setup
-./CoolVLViewer-${pkgver}-Linux-x86-Setup --mode silent --destination $srcdir/coolvlviewer/
+chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
+./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
 
 }
 
