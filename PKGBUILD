@@ -3,36 +3,37 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=26.2.2_RC1
+pkgver=27.0.0_alpha1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib'
+depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu'
          'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell' 'gcc5')
 optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'gst-libav: h.264 support'
             'gst-plugins-good: h.264 support')
 conflicts=('palemoon' 'palemoon-bin')
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
+source=(#git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver" #pm-proper
+        git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha1"
         mozconfig.in)
 md5sums=('SKIP'
-         'c3af6b33006a95e8844cbe4fea8b2309')
+         'ff85a559cb8104a18e77cb84247f6687')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
-  cd Pale-Moon
+  cd Tycho
 
   chmod -R +x build/autoconf/* python/*
   find . -name '*.sh' -exec chmod +x {} \;
 }
   
 build() {
-  cd Pale-Moon
+  cd Tycho
 
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
@@ -70,5 +71,5 @@ package() {
   rm -f "$pkgdir/usr/lib/$pkgname/palemoon-bin"
 
   # install desktop file
-  install -Dm644 "$srcdir/Pale-Moon/browser/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/Tycho/browser/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
