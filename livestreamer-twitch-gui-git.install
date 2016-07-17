@@ -1,0 +1,15 @@
+post_install() {
+	/opt/livestreamer-twitch-gui/add-menuitem.sh
+}
+
+pre_remove() {
+	/opt/livestreamer-twitch-gui/remove-menuitem.sh
+}
+
+pre_upgrade() {
+	/opt/livestreamer-twitch-gui/remove-menuitem.sh
+}
+
+post_upgrade() {
+	/opt/livestreamer-twitch-gui/add-menuitem.sh
+}

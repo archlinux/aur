@@ -1,0 +1,31 @@
+pkgbase = livestreamer-twitch-gui-git
+	pkgdesc = A multi platform Twitch.tv browser for Livestreamer
+	pkgver = 1171.ebc4688
+	pkgrel = 1
+	url = https://github.com/bastimeyer/livestreamer-twitch-gui
+	install = livestreamer-twitch-gui-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = bower
+	makedepends = nodejs-grunt-cli
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = libxtst
+	depends = livestreamer
+	depends = nss
+	depends = xdg-utils
+	depends = xorg-xwininfo
+	provides = livestreamer-twitch-gui
+	conflicts = livestreamer-twitch-gui
+	options = !strip
+	source = livestreamer-twitch-gui::git+https://github.com/bastimeyer/livestreamer-twitch-gui.git
+	sha256sums = SKIP
+
+pkgname = livestreamer-twitch-gui-git
+
