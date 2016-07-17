@@ -1,0 +1,4 @@
+#!/bin/bash
+unset WINEPREFIX
+. /usr/share/pxtone/launcher
+WINEDEBUG=-all wine "$HOME"/.pxtone/ptVoice.exe "$@"

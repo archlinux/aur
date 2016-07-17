@@ -1,0 +1,32 @@
+pkgbase = pxtone-collage
+	pkgdesc = A set of tools for creating or playing pxtone files and other pxtone-related formats.
+	pkgver = 0925
+	pkgrel = 1
+	url = http://www.cavestory.org/pixels-works/pxtone-collage.php
+	arch = any
+	license = BSD
+	makedepends = gendesk
+	depends = wine
+	source = http://homepage2.nifty.com/rochet/binaries/pxtone_0925.zip
+	source = pxtone-collage.png
+	source = pxtone-noise.png
+	source = pxtone-voice.png
+	source = pxtone-player.png
+	source = pxtone-collage
+	source = pxtone-noise
+	source = pxtone-voice
+	source = pxtone-player
+	source = launcher
+	md5sums = caa267b0255e2c10f62dbea236c317f3
+	md5sums = 222ec089021c3199bdad842c4cdbfc92
+	md5sums = 2c33da583d58d5622557a696d432663a
+	md5sums = 20c1465e5cb81d5472a7b736de25b18b
+	md5sums = 55583c6a843be421297ef74d35ef523e
+	md5sums = c89fe485d7177d8902e5c0993870220f
+	md5sums = fbea9e51af9a97aadcac46480fc3f5c5
+	md5sums = a2959cd6ebbddbde0ff676e5b298f175
+	md5sums = 24b5fbce51f0f2017e21aeedefd2802d
+	md5sums = f8df510bd8562648bd328172994e768b
+
+pkgname = pxtone-collage
+

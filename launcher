@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ ! -d "$HOME"/.pxtone ] ; then
+	mkdir -p "$HOME"/.pxtone
+	cp -r /usr/share/pxtone/{my_material,my_project} "$HOME"/.pxtone
+	ln -s /usr/share/pxtone/pt{Collage,Noise,Voice,Player}.exe "$HOME"/.pxtone
+	ln -s /usr/share/pxtone/{sample,pxtone_include} "$HOME"/.pxtone
+	ln -s /usr/share/pxtone/pxtone{Tool,Win32}.dll "$HOME"/.pxtone
+fi
