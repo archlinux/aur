@@ -1,14 +1,10 @@
 # Maintainer: sinkuu <sinkuupump@gmail.com>
-#
-# Note:
-# clamav-unofficial-sigs.sh will refuse to work
-# unless you enable "user_configuration_complete" in /etc/clamav-unofficial-sigs/user.conf
 
 _install_cron_file=
 _install_logrotate_file="y"
 
 pkgname=clamav-unofficial-sigs
-pkgver=5.3.2
+pkgver=5.4
 pkgrel=1
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
@@ -20,12 +16,13 @@ source=("https://github.com/extremeshok/clamav-unofficial-sigs/archive/$pkgver.t
     'logrotate'
     'clamav-unofficial-sigs.8'
     'clamav-unofficial-sigs.service.patch')
-sha256sums=('3abe1c22133d879318cebc18d3224a820ea1747524425d4a2efd337749596589'
+sha256sums=('df6caa5d11c1db3bc9db7462680bdea082381ed043a855b738b80fc3af4a7d20'
             '82d1db1f7f8400d4b5457343a6c6e1c32cffbee06b0f73104c5b11641b58fa74'
             'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79'
             '53fe3143db5d422e6306bc9c7ba400976328faaf79cade5f669b48bb1ce6f7bf'
             '227d4e6b7d3611765ed3d8cfdca902ff5a991139babfd4645bdacbb66d3fc416')
 backup=('etc/clamav-unofficial-sigs/user.conf')
+install='clamav-unofficial-sigs.install'
 
 package() {
     cd "$pkgname-$pkgver"

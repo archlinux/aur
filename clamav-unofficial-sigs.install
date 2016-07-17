@@ -1,0 +1,5 @@
+post_install() {
+    echo '| You need to complete configuration'
+    echo '| and enable "user_configuration_complete"'
+    echo '| in /etc/clamav-unofficial-sigs/user.conf'
+}
