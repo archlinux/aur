@@ -1,5 +1,6 @@
-# $Id: 4515499571aa39f41ce74823f6074dea4ece5f17 $
+# $Id$
 # Maintainer: Ido Rosen <ido@kernel.org>
+# Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 # Contributor: Mateusz Paluszkiewcz <aifam96 at gmail dot com>
 # Contributor: Christopher Reimer <vdr4arch at creimer dot net>
 #
@@ -9,7 +10,7 @@
 #
 
 pkgname=poco
-pkgver=1.6.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, complete edition with debug libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,19 +18,11 @@ url="http://www.pocoproject.org/"
 license=('custom:boost')
 depends=('libmariadbclient' 'openssl' 'unixodbc')
 makedepends=('chrpath')
-source=("http://pocoproject.org/releases/poco-${pkgver%p?}/poco-${pkgver}-all.tar.bz2"
-        'poco-1.6.0-patch-for-libpcre.diff')
-sha256sums=('bf5b98a62412dd635910de03ec350825afd3416cd3cc42e12f8e24b69f5c0601'
-            '163b7f26425128218128174d0349d3fabe7cb1068e59c20533124e84b46be910')
+source=("http://pocoproject.org/releases/poco-${pkgver%p?}/poco-${pkgver}-all.tar.bz2")
+sha256sums=('b6592e6b0a5295b3a972cabdedc8ba5fde6270ae6bc4c3b1d851f32bbbcde2f0')
 conflicts=('poco-dev')
 provides=('poco-dev')
 replaces=('poco-dev')
-
-prepare()
-{
-  cd "${srcdir}/poco-${pkgver}-all"
-  patch -p1 -i "$srcdir/poco-1.6.0-patch-for-libpcre.diff"
-}
 
 build()
 {
