@@ -25,10 +25,7 @@ md5sums=('c7467ac2b75290bd086fc60f8243ad77')
 build() {
     cd $srcdir/$_pkgname-$pkgver
 
-    aclocal
-    autoconf
-    autoheader
-    automake --add-missing
+    autoreconf -is
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc
