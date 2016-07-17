@@ -1,6 +1,6 @@
 pkgbase = wine-wizard-git
 	pkgdesc = Modern Wine GUI
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://wwizard.net
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = wine-wizard-git
 	depends = tar
 	depends = unzip
 	depends = wget
-	provides = wine-wizard=2.0.0
+	provides = wine-wizard=2.0.1
 	conflicts = wine-wizard
 	replaces = wine-wizard
 	source = git+https://github.com/LLIAKAJL/WineWizard.git
