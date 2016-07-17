@@ -15,7 +15,7 @@ pkgbase = crashplan-pro
 	source = http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_4.7.0_Linux.tgz
 	source = crashplan-pro
 	source = crashplan-pro.service
-	sha256sums = 6bbdd637c3fff85b66273a9e084814d55f45d5f1575619ce5be19738b2a1f7c4
+	sha256sums = b50b190f6ce853c4d6d12bde95de7a21b3a456f065fbe9bd7fd349414c7b647d
 	sha256sums = b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6
 	sha256sums = c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3
 
