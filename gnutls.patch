@@ -460,7 +460,7 @@ new file mode 100644
 index 0000000..6864740
 --- /dev/null
 +++ b/pjlib/src/pj/ssl_sock_gtls.c
-@@ -0,0 +1,2869 @@
+@@ -0,0 +1,2865 @@
 +/* $Id$ */
 +/*
 + * Copyright (C) 2014-2015 Savoir-faire Linux. (http://www.savoirfairelinux.com)
@@ -1155,11 +1155,7 @@ index 0000000..6864740
 +    if (ssock->param.proto & PJ_SSL_SOCK_PROTO_TLS1) {
 +        pj_strcat2(&priority, "+VERS-TLS1.0:");
 +    }
-+    if (ssock->param.proto & PJ_SSL_SOCK_PROTO_SSL3) {
-+        pj_strcat2(&priority, "+VERS-SSL3.0:");
-+    } else {
-+        pj_strcat2(&priority, "-VERS-SSL3.0:");
-+    }
++    pj_strcat2(&priority, "-VERS-SSL3.0:");
 +    pj_strcat2(&priority, "%LATEST_RECORD_VERSION");
 +
 +    pj_strcat(&cipher_list, &priority);

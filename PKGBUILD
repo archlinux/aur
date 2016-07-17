@@ -2,7 +2,7 @@
 _pkgname=pjproject
 pkgname=${_pkgname}-savoirfairelinux
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
@@ -19,7 +19,7 @@ source=("http://www.pjsip.org/release/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
         pj_ice_sess.patch)
 sha256sums=('086f5e70dcaee312b66ddc24dac6ef85e6f1fec4eed00ff2915cebe0ee3cdd8d'
             '294d9fba18a8c903979de2c9b531a3ca32a28f90658bf0613a32ebfa7d5e3a69'
-            '5de398030b9a872981d9f0f5c830c781faa3d22a05513e895174628f54cc1b90'
+            'a7a947db7088806649e878ebde8e1afa395a333b10fe8893c5f7ac890e4968d0'
             'f88f3e73d2f62ae60d93e84e08f98da7d5febe93f1f390286cafa106178c4f27'
             'fdf64f3260aecbbc5433ae784e12dde462f1a15361f14c5cd0f7be0a3d13f802'
             'b15829c960bf7b58b4b7660e5ce98f59c72b71fce714602bca479b58891621db'
