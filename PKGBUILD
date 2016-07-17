@@ -11,7 +11,7 @@
 #
 
 pkgname=gnupg-largekeys
-pkgver=2.0.29
+pkgver=2.0.30
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
@@ -25,7 +25,7 @@ depends=('bzip2' 'libksba' 'libgcrypt' 'pth' 'libassuan' 'readline' 'pinentry' '
 source=("ftp://ftp.gnupg.org/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-${pkgver}.tar.bz2"
         'gnupg2-large-keys.patch'
         'install')
-sha256sums=('68ed6b386ba78425b05a60e8ee22785ff0fef190bdc6f1c612f19a58819d4ac9'
+sha256sums=('e329785a4f366ba5d72c2c678a7e388b0892ac8440c2f4e6810042123c235d71'
             '189c33de215b3a026175f9fbaa1dac82fdc30b6c9dbfa5aafa9027af401f6fc5'
             'ab1406c54804692dcc8144fc01a90ffd27250a3b53a89b0ab8a5cb2807fe6423')
 
