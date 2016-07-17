@@ -13,6 +13,11 @@ arch=('i686' 'x86_64')
 license=('GPL')
 sha256sums=('13dac884ff52951636f651c421f5ff4a853218a95aa28a4a852402ee385a2ab8')
 
+prepare() {
+  cd "$srcdir"/NetPIPE-$pkgver
+  sed -r 's#\$cwd/##' -i bin/nplaunch
+}
+
 build() {
   cd "$srcdir"/NetPIPE-$pkgver
   make memcpy tcp
