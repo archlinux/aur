@@ -1,7 +1,7 @@
 pkgbase = photomatix
 	pkgdesc = Professional HDR Creation Program
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hdrsoft.com/download/photomatix-linux.html
 	arch = x86_64
 	license = custom
