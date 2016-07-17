@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=clang+llvm-binaries
-pkgver=3.8.0
+pkgver=3.8.1
 _name="clang+llvm-${pkgver}-x86_64-opensuse13.2"
 pkgrel=1
 pkgdesc='Clang and LLVM Pre-Built Binaries'
@@ -14,10 +14,10 @@ install="${pkgname}".install
 source=("${url}/releases/${pkgver}/${_name}.tar.xz"
         "${url}/releases/${pkgver}/${_name}.tar.xz.sig"
         "clang+llvm-binaries.conf")
-sha256sums=('b4b20a35232595b12f90788b9ca42c4bf559e81013bf26f043ee3b88ea02c9ac'
+sha256sums=('3cd11c0a995ee0ac9b1e16f580095a425e241110dcf78375fc08e6ce9e5eb826'
             'SKIP'
             'f283a326962a77447bcb562fe2c4a81ca556ae2ffaacc35375207fd378574ccd')
-validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
+validpgpkeys=('11E521D646982372EB577A1F8F0871F202119294')
 
 prepare() {
   cd "${srcdir}/${_name}"
