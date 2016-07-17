@@ -1,0 +1,14 @@
+[Unit]
+Description=The osquery Daemon
+After=network.service syslog.service
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/osqueryd --config_path /etc/osquery/osquery.conf
+Restart=on-abort
+KillMode=process
+KillSignal=SIGTERM
+SendSIGKILL=yes
+
+[Install]
+WantedBy=multi-user.target

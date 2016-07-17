@@ -1,0 +1,72 @@
+diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
+index b96fb5f..8f3a500 100644
+--- a/osquery/CMakeLists.txt
++++ b/osquery/CMakeLists.txt
+@@ -98,6 +98,9 @@ ADD_OSQUERY_LINK_CORE("glog")
+ ADD_OSQUERY_LINK_CORE("boost_system")
+ ADD_OSQUERY_LINK_CORE("boost_filesystem")
+ ADD_OSQUERY_LINK_CORE("boost_regex")
++ADD_OSQUERY_LINK_CORE("bz2")
++ADD_OSQUERY_LINK_CORE("cryptsetup")
++ADD_OSQUERY_LINK_CORE("lz4")
+ 
+ # TODO(#1956): Ignoring on WIN32 for now
+ if(NOT WIN32)
+diff --git a/osquery/remote/transports/tls.cpp b/osquery/remote/transports/tls.cpp
+index 4273293..f181af9 100644
+--- a/osquery/remote/transports/tls.cpp
++++ b/osquery/remote/transports/tls.cpp
+@@ -30,12 +30,12 @@ SSL_CTX* TLSv1_2_method(void) { return nullptr; }
+ SSL_CTX* TLSv1_2_server_method(void) { return nullptr; }
+ #endif
+ #if defined(NO_SSL_TXT_SSLV3)
+-SSL_METHOD* SSLv3_server_method(void) { return nullptr; }
+-SSL_METHOD* SSLv3_client_method(void) { return nullptr; }
+-SSL_METHOD* SSLv3_method(void) { return nullptr; }
+-SSL_METHOD* SSLv2_server_method(void) { return nullptr; }
+-SSL_METHOD* SSLv2_client_method(void) { return nullptr; }
+-SSL_METHOD* SSLv2_method(void) { return nullptr; }
++const SSL_METHOD* SSLv3_server_method(void) { return nullptr; }
++const SSL_METHOD* SSLv3_client_method(void) { return nullptr; }
++const SSL_METHOD* SSLv3_method(void) { return nullptr; }
++const SSL_METHOD* SSLv2_server_method(void) { return nullptr; }
++const SSL_METHOD* SSLv2_client_method(void) { return nullptr; }
++const SSL_METHOD* SSLv2_method(void) { return nullptr; }
+ #endif
+ #endif
+ }
+diff --git a/osquery/remote/transports/tls.h b/osquery/remote/transports/tls.h
+index 751c416..55038dc 100644
+--- a/osquery/remote/transports/tls.h
++++ b/osquery/remote/transports/tls.h
+@@ -27,9 +27,9 @@
+ /// Newer versions of LibreSSL will lack SSL methods.
+ extern "C" {
+ #if defined(NO_SSL_TXT_SSLV3)
+-SSL_METHOD* SSLv3_server_method(void);
+-SSL_METHOD* SSLv3_client_method(void);
+-SSL_METHOD* SSLv3_method(void);
++const SSL_METHOD* SSLv3_server_method(void);
++const SSL_METHOD* SSLv3_client_method(void);
++const SSL_METHOD* SSLv3_method(void);
+ #endif
+ void ERR_remove_state(unsigned long);
+ }
+diff --git a/tools/provision/arch.sh b/tools/provision/arch.sh
+index d6498d4..6f7a7ce 100755
+--- a/tools/provision/arch.sh
++++ b/tools/provision/arch.sh
+@@ -30,12 +30,10 @@ function main_arch() {
+   package thrift
+   package yara
+ 
+-  install_aws_sdk
+-
+   echo ""
+   echo "The following packages need to be installed from the AUR:"
+   echo "rocksdb or rocksdb-static (if using rocksdb export BUILD_LINK_SHARED=True)"
+-  echo "cpp-netlib and magic"
++  echo "aws-sdk-cpp-git, cpp-netlib and magic"
+   echo ""
+ }
+ 
