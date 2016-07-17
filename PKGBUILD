@@ -3,7 +3,7 @@
 pkgname=spm
 pkgver=1.4.5
 pkgrel=1
-pkgdesc="simple password manager, a fork of nmeum's tpm"
+pkgdesc="simple password manager, a fork of mneum's tpm"
 arch=('any')
 url="https://notabug.org/kl3/spm"
 license=('GPL')
