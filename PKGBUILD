@@ -2,7 +2,7 @@
 
 _pkgname=psmoveapi
 pkgname=${_pkgname}-git
-pkgver=3.0.0.r183.gaa44c88
+pkgver=3.9.1.r97.gf08c337
 pkgrel=1
 pkgdesc="Playstation Move Motion Controller API"
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule init
   git submodule update
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPSMOVEAPI_LIB_DEST=lib .
 }
 
 build() {
