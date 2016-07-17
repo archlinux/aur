@@ -1,0 +1,16 @@
+pkgbase = neap
+	pkgdesc = A X11 workspace pager that runs in the notification area of your panel
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/vzxwco/neap
+	arch = any
+	license = custom:new-BSD
+	depends = pygtk
+	depends = python2-xlib
+	provides = neap
+	conflicts = neap-hotkey
+	source = https://github.com/vzxwco/neap/archive/v0.7.2.tar.gz
+	md5sums = b841bc3d454b00cb89d3183516f517ba
+
+pkgname = neap
+
