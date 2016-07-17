@@ -1,29 +1,23 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Conrad Kleinespel <conradk@conradk.com>
 
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=rooster
-pkgver=1
+pkgver=2.1.0
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=()
-url=""
-license=('Apache-2.0')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-noextract=()
-md5sums=()
-validpgpkeys=()
+pkgdesc="A simple password manager for geeks"
+url="https://github.com/conradkleinespel/rooster"
+makedepends=('cargo')
+arch=('i686' 'x86_64')
+license=('Apache')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha256sums=('00fffc19e3edf0e06113665012c6234d77e1653688afdfafc0dfec28a427c947')
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 target/release/rooster "$pkgdir/usr/bin/rooster"
+  install -Dm755 target/release/rooster-clipboard "$pkgdir/usr/bin/rooster-clipboard"
+}
