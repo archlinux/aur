@@ -20,6 +20,7 @@ build() {
   make RELEASE=true
   sed -i 's,rom_path=.*,rom_path=/usr/share/caprice32/rom/,' cap32.cfg
   sed -i 's,resources_path=.*,resources_path=/usr/share/caprice32/resources/,' cap32.cfg
+  sed -i 's,cart_path=.*,cart_path=/usr/share/caprice32/rom/,' cap32.cfg
 }
 
 package() {
