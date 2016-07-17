@@ -1,19 +1,20 @@
 pkgbase = famitracker
 	pkgdesc = Free tracker for producing music for the NES/Famicom-systems.
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.famitracker.com
 	arch = any
 	license = GPL
-	makedepends = gendesk
 	makedepends = unzip
-	makedepends = icoutils
-	makedepends = imagemagick
 	depends = wine
 	source = http://www.famitracker.com/files/FamiTracker-v0.4.6.zip
 	source = famitracker
+	source = famitracker.desktop
+	source = famitracker.png
 	md5sums = 344e4b3cc20628237c50adffdc216cd9
 	md5sums = 6230d525ce2919ddd875904f70721179
+	md5sums = 80e0f0f0b6f21fa7932013c0b23c08bc
+	md5sums = 7a31ce754a85075758323db042deed51
 
 pkgname = famitracker
 

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=FamiTracker
+Comment=Free tracker for producing music for the NES/Famicom-systems.
+Exec=famitracker
+Icon=famitracker
+Terminal=false
+StartupNotify=false
+Categories=Wine;AudioVideo;Audio;
