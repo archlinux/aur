@@ -4,8 +4,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-nosystemd
-pkgname=('opencl-mesa-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=11.2.2
+pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
+pkgver=12.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -14,11 +14,22 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
-        LICENSE)
-sha256sums=('40e148812388ec7c6d7b6657d5a16e2e8dabba8b97ddfceea5197947647bdfb4'
+        LICENSE
+        remove-libpthread-stubs.patch)
+sha256sums=('bab24fb79f78c876073527f515ed871fc9c81d816f66c8a0b051d8d653896389'
             'SKIP'
-            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
+            'd82c329e89754266eb1538df29b94d33692a66e3b6882b2cee78f4d5aab4a39c')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
+
+prepare() {
+  cd ${srcdir}/?esa-*
+
+  # Now mesa checks for libpthread-stubs - so remove the check
+  patch -Np1 -i ../remove-libpthread-stubs.patch
+
+  autoreconf -fiv
+}
 
 build() {
   cd ${srcdir}/?esa-*
@@ -29,18 +40,19 @@ build() {
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
     --with-egl-platforms=x11,drm,wayland \
+    --with-vulkan-drivers=intel \
     --with-sha1=libgcrypt \
-    --enable-llvm-shared-libs \
-    --enable-egl \
-    --enable-gbm \
     --enable-gallium-llvm \
+    --enable-llvm-shared-libs \
     --enable-shared-glapi \
+    --enable-egl \
     --enable-glx \
     --enable-glx-tls \
-    --enable-dri \
-    --enable-osmesa \
     --enable-gles1 \
     --enable-gles2 \
+    --enable-gbm \
+    --enable-dri \
+    --enable-osmesa \
     --enable-texture-float \
     --enable-xa \
     --enable-vdpau \
@@ -73,6 +85,24 @@ package_opencl-mesa-nosystemd() {
 
   install -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa/"
+}
+
+package_vulkan-intel-nosystemd() {
+  pkgdesc="Intel's Vulkan mesa driver"
+  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb')
+  provides=('vulkan-intel-nosystemd')
+  conflicts=('vulkan-intel-nosystemd')
+  replaces=('vulkan-intel-nosystemd')
+  
+  install -m755 -d ${pkgdir}/usr/share
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan ${pkgdir}/usr/share/
+
+  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
+  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/vulkan-intel"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vulkan-intel/"
 }
 
 package_libva-mesa-driver-nosystemd() {
@@ -132,6 +162,9 @@ package_mesa-nosystemd() {
   cp -rv ${srcdir}/fakeinstall/usr/include ${pkgdir}/usr
   cp -rv ${srcdir}/fakeinstall/usr/lib/pkgconfig ${pkgdir}/usr/lib/
   
+  # remove vulkan headers
+  rm -rf ${pkgdir}/usr/include/vulkan
+
   install -m755 -d ${pkgdir}/usr/lib/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
   cp -rv ${srcdir}/fakeinstall/usr/lib/libGL.so* 	${pkgdir}/usr/lib/mesa/
