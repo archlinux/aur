@@ -1,14 +1,14 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+pkgname=(pasystray-git pasystray-gtk2-git)
 _pkgname=pasystray
-pkgname=${_pkgname}-git
-pkgver=0.5.2.r46.gcd1929a
+pkgver=0.6.0.r0.g6f6dd61
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
 url="https://github.com/christophgysin/pasystray"
 license=('LGPL')
 groups=('multimedia')
-depends=('libpulse' 'gtk3' 'libnotify' 'avahi' 'libx11' 'gnome-icon-theme'
+depends=('libpulse' 'libnotify' 'avahi' 'libx11' 'gnome-icon-theme'
     'gtk-update-icon-cache')
 makedepends=('git' 'pkg-config')
 optdepends=(
@@ -25,18 +25,39 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    git describe --long | sed -r "s/^${pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
+    git describe --long | sed -r "s/^${_pkgname%-git}-//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    autoreconf -is
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc
+    cp -r $srcdir/$_pkgname{,-gtk2}
+
+    for gtk in "" 2; do
+        cd $srcdir/$_pkgname${gtk:+-gtk$gtk}
+
+        autoreconf -is
+        ./configure \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            ${gtk:+--with-gtk=$gtk}
+        make
+    done
 }
 
-package() {
-    cd "$srcdir/$_pkgname"
+package_pasystray-gtk2-git() {
+    depends+=(gtk2)
+    cd $srcdir/$_pkgname-gtk2
+
+    # hack: do not require gtk-3
+    sed -i \
+        -e '/<requires /d' \
+        -e '/license_type/d' \
+        src/pasystray.glade
+
+    make DESTDIR="$pkgdir/" install
+}
+
+package_pasystray-git() {
+    depends+=(gtk3)
+    cd $srcdir/$_pkgname
     make DESTDIR="$pkgdir/" install
 }
