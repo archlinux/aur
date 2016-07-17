@@ -1,10 +1,9 @@
 # Mantainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Submitter: Samuel FORGIONE <samuel.forgione@gmail.com>
-# Contributor: DasFranck
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.11.1
+pkgver=3.12
 pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
@@ -19,7 +18,7 @@ source=("${url}${_appname}-${pkgver}.zip"
 "$_appname.csh"
 )
 sha1sums=(
-'6af829e1b77c1d57f2d8bb74ceb68234b9ede8bd'
+'558f7dc86453f1f1ff6fd89ae01fd3f0ded8b327'
 '2cff669a51b66d513824be811688aa9da553e400'
 '353bdefe07bdb6eb7f53aff20d20e83b488c1c05'
 '49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
@@ -50,11 +49,10 @@ package() {
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
 	fi
 
-	# Inconsistent executable test name patch
-	sed -i 's/cpp_tests/cpp-tests/g' "$srcdir/$_appname-$pkgver/tests/cpp-tests/CMakeLists.txt"
-	sed -i 's/js_tests/js-tests/g' "$srcdir/$_appname-$pkgver/tests/js-tests/project/CMakeLists.txt"
-	sed -i 's/lua_tests/lua-tests/g' "$srcdir/$_appname-$pkgver/tests/lua-tests/project/CMakeLists.txt"
+	# Set sdkbox python interpreter to python2
+	sed -e 's/python/python2/g' -i "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/plugins/plugin_package/sdkbox
 
 	# Package source
 	mv "$srcdir"/$_appname-$pkgver/* "$pkgdir/opt/$_appname" 	
+
 }
