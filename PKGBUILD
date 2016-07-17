@@ -2,12 +2,13 @@
 
 pkgname='persepolis-git'
 pkgver=r12.f43347d
-pkgrel=1
-pkgdesc="A front-end for aria2 download manager with lots of stuff."
+pkgrel=2
+pkgdesc="A graphical front-end for aria2 download manager with lots of stuff."
 arch=('any')
 url="https://github.com/alireza-amirsamimi/persepolis"
 license=('GPL')
-depends=('git' 'aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5')
+depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5')
+makedepends=('git')
 optdepends=('firefox-flashgot: for integrating with firefox')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
@@ -23,10 +24,10 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
+	cd "${srcdir}/${pkgname}"
 	install -d ${pkgdir}/usr/{bin,share/{persepolis,applications,pixmaps,licenses/persepolis}}
 	cp -a ./files/*   ${pkgdir}/usr/share/persepolis
-	install -Dm0755 ./persepolis ${pkgdir}/usr/bin/persepolis	
+	install -Dm755 ./persepolis ${pkgdir}/usr/bin/persepolis	
 	install -Dm644 ./Persepolis\ Download\ Manager.desktop ${pkgdir}/usr/share/applications/persepolis.desktop
 	cp ./files/icon.png ${pkgdir}/usr/share/pixmaps/persepolis.png
 	cp ./LICENSE ${pkgdir}/usr/share/licenses/persepolis/
