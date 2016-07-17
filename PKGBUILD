@@ -1,13 +1,13 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
 arch=(any)
 url="https://github.com/orbifx/portal"
 license=('LGPL3')
 groups=()
-depends=(sudo postfix dovecot nginx)
+depends=(sudo postfix dovecot nginx avahi)
 makedepends=()
 optdepends=(yamado-git)
 provides=("portal")
@@ -28,4 +28,5 @@ package() {
 	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}"
 	install -Dm544 ../master.cf "$pkgdir/usr/share/portal/master.cf"
 	install -Dm544 ../10-master.conf "$pkgdir/usr/share/portal/10-master.conf"
+	install -Dm544 ../avahi.service "$pkgdir/etc/avahi/services/portal.service"
 }

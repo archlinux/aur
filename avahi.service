@@ -1,0 +1,7 @@
+<service-group>
+	<name replace-wildcards="yes">Portal@%h</name>
+	<service>
+		<type>_portal._ssh:Portal over SSH</type>
+		<port>21</port>
+	</service>
+</service-group>
