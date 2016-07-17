@@ -1,8 +1,9 @@
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Gilles CHAUVIN <gcnweb at gmail dot com>
 
 pkgname=netpipe
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A protocol independent performance tool that visually represents the network performance."
 url="http://bitspjoule.org/netpipe/"
 depends=('glibc')
@@ -18,6 +19,7 @@ build() {
 
 package() {
   cd "$srcdir"/NetPIPE-$pkgver
+  install -Dm0755 bin/nplaunch  "$pkgdir"/usr/bin/nplaunch
   install -Dm0755 NPmemcpy      "$pkgdir"/usr/bin/NPmemcpy
   install -Dm0755 NPtcp         "$pkgdir"/usr/bin/NPtcp
   install -Dm0644 dox/netpipe.1 "$pkgdir"/usr/share/man/man1/netpipe.1
