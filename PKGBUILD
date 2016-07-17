@@ -1,8 +1,9 @@
+# Maintainer: M0Rf30
 # This file is part of BlackArch Linux ( http://blackarch.org ).
 # See COPYING for license details.
 
 pkgname='wifiphisher'
-pkgver=12.73f24a7
+pkgver=1.1
 pkgrel=1
 groups=('blackarch' 'blackarch-wireless' 'blackarch-social')
 pkgdesc='Fast automated phishing attacks against WPA networks.'
@@ -11,18 +12,11 @@ url='https://github.com/sophron/wifiphisher'
 license=('MIT')
 depends=('python2' 'python2-httplib2' 'scapy' 'aircrack-ng')
 makedepends=('git')
-source=('git+https://github.com/sophron/wifiphisher.git')
-sha1sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/wifiphisher"
-
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+source=("https://github.com/sophron/wifiphisher/archive/v$pkgver.tar.gz"
+	$pkgname.sh)
 
 package() {
-  cd "$srcdir/wifiphisher"
-
+  cd "$srcdir/$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/wifiphisher"
 
@@ -32,12 +26,9 @@ package() {
   rm README.md LICENSE
 
   cp -a * "$pkgdir/usr/share/wifiphisher"
-
-  cat > "$pkgdir/usr/bin/wifiphisher" << EOF
-#!/bin/sh
-cd /usr/share/wifiphisher
-exec python2 wifiphisher.py "\$@"
-EOF
-
+  cp ../$pkgname.sh "$pkgdir/usr/bin/wifiphisher"
   chmod a+x "$pkgdir/usr/bin/wifiphisher"
 }
+
+md5sums=('413c69ec546d647faca3120d9e074ba2'
+         '20fc8c517c5e85c8a47e2372beecd83c')
