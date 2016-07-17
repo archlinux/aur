@@ -13,7 +13,7 @@ provides=('gr')
 source=("git://github.com/jheinen/gr.git"
         "GR.sh")
 md5sums=('SKIP'
-         '2d404dcad9da344dde04da439df13034')
+         '999585076fa84f29ef6c11591302ca3a')
 
 pkgver() {
   cd $_pkgid
