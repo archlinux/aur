@@ -18,12 +18,12 @@ optdepends=(
     'pavumeter: Launch PulseAudio volume meter from tray icon'
     'paprefs: Launch PulseAudio preferences from tray icon'
 )
-source=("https://github.com/christophgysin/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('938d295520eb0605031f9f3531d5b1d6')
+source=($_pkgname-$pkgver.tar.gz::https://github.com/christophgysin/$_pkgname/archive/$pkgver.tar.gz)
+md5sums=('c7467ac2b75290bd086fc60f8243ad77')
 
 
 build() {
-    cd $srcdir/${_pkgname}-${_pkgname}-$pkgver
+    cd $srcdir/$_pkgname-$pkgver
 
     aclocal
     autoconf
@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-    cd $srcdir/${_pkgname}-${_pkgname}-$pkgver
+    cd $srcdir/$_pkgname-$pkgver
     make DESTDIR="$pkgdir/" install
 }
