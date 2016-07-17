@@ -6,7 +6,6 @@ pkgbase = geomspace
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libxpm
 	depends = mesa
 	depends = fltk
 	source = http://downloads.sourceforge.net/project/geomspace/0.14/GeomSpace-0.14-src.tar.gz

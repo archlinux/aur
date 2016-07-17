@@ -7,7 +7,7 @@ pkgdesc="A browser for geometric (i.e. Euclidean, Riemann, Minkowski) spaces"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/geomspace/"
 license=('GPL')
-depends=('libxpm' 'mesa' 'fltk')
+depends=('mesa' 'fltk')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgver/GeomSpace-$pkgver-src.tar.gz \
 	http://downloads.sourceforge.net/project/$pkgname/Theory/UniformGeomSpace-2010.11.02-en.pdf \
 	http://sourceforge.net/projects/geomspace/files/Models/5Cubes.gmsp \
