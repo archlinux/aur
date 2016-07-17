@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 pkgname=(pasystray-git pasystray-gtk2-git)
 _pkgname=pasystray
-pkgver=0.6.0.r0.g6f6dd61
+pkgver=0.6.0.r2.g14b4bce
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
@@ -46,13 +46,6 @@ build() {
 package_pasystray-gtk2-git() {
     depends+=(gtk2)
     cd $srcdir/$_pkgname-gtk2
-
-    # hack: do not require gtk-3
-    sed -i \
-        -e '/<requires /d' \
-        -e '/license_type/d' \
-        src/pasystray.glade
-
     make DESTDIR="$pkgdir/" install
 }
 
