@@ -18,6 +18,7 @@ depends=(
 	"xdg-utils"
 )
 provides=("livestreamer-twitch-gui")
+conflicts=("livestreamer-twitch-gui-git")
 options=(!strip)
 install=$pkgname.install
 source=("https://raw.githubusercontent.com/bastimeyer/livestreamer-twitch-gui/master/LICENSE")

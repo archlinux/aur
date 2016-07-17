@@ -19,6 +19,7 @@ pkgbase = livestreamer-twitch-gui
 	depends = xorg-xwininfo
 	depends = xdg-utils
 	provides = livestreamer-twitch-gui
+	conflicts = livestreamer-twitch-gui-git
 	options = !strip
 	source = https://raw.githubusercontent.com/bastimeyer/livestreamer-twitch-gui/master/LICENSE
 	md5sums = 0b62e5d2cf76f19fea17c82c1a56c583
