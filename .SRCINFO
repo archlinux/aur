@@ -1,6 +1,6 @@
 pkgbase = dpkg
 	pkgdesc = The Debian Package Manager. Don't use it instead of Arch's 'pacman'.
-	pkgver = 1.17.25
+	pkgver = 1.18.9
 	pkgrel = 1
 	url = http://packages.debian.org/dpkg
 	arch = i686
