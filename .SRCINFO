@@ -1,0 +1,18 @@
+pkgbase = stcgal
+	pkgdesc = Open Source STC MCU ISP flash tool
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/grigorig/stcgal
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-pyserial
+	depends = python-setuptools
+	optdepends = python-pyusb: Native USB programming support
+	source = https://github.com/grigorig/stcgal/archive/v1.2.zip
+	source = LICENSE
+	md5sums = c942810581b77cf64983c645aa64b797
+	md5sums = 79a3d9f649d76086966bde308915defa
+
+pkgname = stcgal
+
