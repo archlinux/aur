@@ -98,7 +98,7 @@ md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
          'b3b845477eb2e62e745803685bde9057'
          '7e50b0145ed002319a8fb651b72f7cd0'
          'a873c975acf24c3ef0225b9fcd3f3e1e'
-         'ac232f0a3c180e64813ce31598371a56'
+         'f4dc20ff1e29e287d3c6922f1319dda8'
          'eb14dcfd80c00852ef81ded6e826826a')
 
 #validpgpkeys=('79BE3E4300411886' 
