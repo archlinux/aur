@@ -1,6 +1,6 @@
 pkgname=subuser
 _name=subuser
-pkgver=0.5.6
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Run programs in linux with selectively restricted permissions"
 url="http://subuser.org"
@@ -10,7 +10,7 @@ optdepends=()
 license=('LGPL3')
 arch=('any')
 source=("https://github.com/subuser-security/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('1c2d55f6efdf7dd1921ef4a4aca93bde9c6e2de509890cb6e39c2507704a5196')
+sha256sums=('5be72dd366b3a6ac21fb560642d38563e1ce5fe041069fd4d2f75007f0b639ea')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
