@@ -8,7 +8,6 @@ arch=('x86_64')
 url="http://www.latticesemi.com/latticediamond"
 license=('custom')
 options=('!strip')
-makedepends=('rpmextract')
 provides=('lattice-diamond')
 conflicts=('lattice-diamond')
 source=(http://files.latticesemi.com/Diamond/3.7/diamond_3_7-base_x64-96-1-x86_64-linux.rpm
