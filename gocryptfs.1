@@ -45,21 +45,6 @@ Enable debug output
 .RS
 .RE
 .TP
-.B \f[B]\-diriv\f[]
-Use per\-directory file name IV (default true) This flag is useful when
-recovering old gocryptfs filesystems using "\-masterkey".
-It is ignored (stays at the default) otherwise.
-.RS
-.RE
-.TP
-.B \f[B]\-emenames\f[]
-Use EME filename encryption (default true), implies diriv.
-This flag is useful when recovering old gocryptfs filesystems using
-"\-masterkey".
-It is ignored (stays at the default) otherwise.
-.RS
-.RE
-.TP
 .B \f[B]\-extpass string\f[]
 Use an external program (like ssh\-askpass) for the password prompt.
 The program should return the password on stdout, a trailing newline is
@@ -76,17 +61,6 @@ Stay in the foreground instead of forking away.
 .TP
 .B \f[B]\-fusedebug\f[]
 Enable fuse library debug output
-.RS
-.RE
-.TP
-.B \f[B]\-gcmiv128\f[]
-Use an 128\-bit IV for GCM encryption instead of Go\[aq]s default of 96
-bits (default true).
-This pushes back the birthday bound for IV collisions far enough to make
-it irrelevant.
-This flag is useful when recovering old gocryptfs filesystems using
-"\-masterkey".
-It is ignored (stays at the default) otherwise.
 .RS
 .RE
 .TP
@@ -132,6 +106,19 @@ This is used internally for daemonization.
 .RS
 .RE
 .TP
+.B \f[B]\-o\f[]
+Pass additonal mount options to the kernel (comma\-separated list).
+FUSE filesystems are mounted with "nodev,nosuid" by default.
+If gocryptfs runs as root, you can enable device files by passing the
+opposite mount option, "dev", and if you want to enable suid\-binaries,
+pass "suid".
+"ro" (equivalent to passing the "\-ro" option) and "noexec" may also be
+interesting.
+For a complete liste see the section
+\f[C]FILESYSTEM\-INDEPENDENT\ MOUNT\ OPTIONS\f[] in mount(8).
+.RS
+.RE
+.TP
 .B \f[B]\-openssl bool\f[]
 Use OpenSSL instead of built\-in Go crypto (default "auto").
 Using built\-in crypto is 4x slower unless your CPU has AES instructions
@@ -146,7 +133,7 @@ Change password
 .RE
 .TP
 .B \f[B]\-plaintextnames\f[]
-Do not encrypt file names
+Do not encrypt file names and symlink targets
 .RS
 .RE
 .TP
@@ -168,7 +155,11 @@ susceptible to brute\-force attacks (default 16)
 .RE
 .TP
 .B \f[B]\-version\f[]
-Print version and exit
+Print version and exit.
+The output contains three fields seperated by ";".
+Example: "gocryptfs v0.12\-2; go\-fuse a4c968c; go1.6.2".
+Field 1 is the gocryptfs version, field 2 is the version of the go\-fuse
+library, field 3 is the Go version that was used to compile the binary.
 .RS
 .RE
 .TP
