@@ -6,7 +6,7 @@ pkgbase=grpc
 # PHP is disabled until https://github.com/grpc/grpc/issues/4337 is fixed
 #pkgname=('grpc' 'php-grpc')
 pkgname=('grpc')
-pkgver=0.15.0
+pkgver=0.15.1
 _pkgver=$(echo $pkgver | tr . _)
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -19,7 +19,7 @@ source=(
     https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
 )
 noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('7b73fd17c1aee47e41ea53fe3a2ff21d'
+md5sums=('c48c1ee83da752483cb2d939d24d5c68'
          '30c6553c1f51f613eb0733d6451f9b97')
 
 build() {
