@@ -1,35 +1,33 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine-git
-_pkgname=${pkgname/-git/}
-pkgver=3.40.46.188.gb653b64
+pkgver=3.40.46.r508.fd12c16
 pkgrel=1
+epoch=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
 makedepends=('git' 'cmake')
-conflicts=(${_pkgname})
-source=(${_pkgname}::git+https://github.com/team-eternity/eternity.git)
+conflicts=(${pkgname%-git})
+source=(${pkgname%-git}::git+https://github.com/team-eternity/eternity.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  local version=$(git describe --tags)
-  local version=${version//-/.}
-  echo $version
+  cd ${pkgname%-git}
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
   # Cannot do in-tree build.
-  mkdir "$srcdir/ee-build"
-  cd "$srcdir/ee-build"
-  cmake ../$_pkgname -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir ee-build
+  cd ee-build
+  cmake ../${pkgname%-git} -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "$srcdir/ee-build"
+  cd ee-build
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
