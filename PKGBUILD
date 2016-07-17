@@ -19,7 +19,8 @@ optdepends=(
     'paprefs: Launch PulseAudio preferences from tray icon'
 )
 source=("https://github.com/christophgysin/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('0ea894a47a8ab10b830051e3bd89294d')
+md5sums=('938d295520eb0605031f9f3531d5b1d6')
+
 
 build() {
     cd $srcdir/${_pkgname}-${_pkgname}-$pkgver
