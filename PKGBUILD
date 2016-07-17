@@ -3,8 +3,8 @@
 # Contributor: Jeremy Lynch <jl at archassault dot org>
 
 pkgname=python2-enum
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="Robust enumerated type support in Python."
 arch=('any')
 url="http://pypi.python.org/pypi/enum/"
@@ -14,14 +14,14 @@ makedepends=('python2-distribute')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://pypi.python.org/packages/source/e/enum/enum-${pkgver}.tar.gz")
-sha512sums=('67819dc2412f833b4d27171dd71d12a7b67a35c1e8401d03938621273b1c13b6ec6d561b2cddaaf2080d92abfed5ccaa460996a3e7f7058e0f90ae3a0dd0f552')
+sha512sums=('b3ccc5bd7cc613f7683f12247a26aae9dacde37e60616c3078c7505fb1defbb512451a2e3e8cd1db3e84d115af01420e3ceaea0d58ae38975f40220e59531227')
 
 build() {
-  cd "${srcdir}/enum-${pkgver}"
+  cd "enum-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/enum-${pkgver}"
+  cd "enum-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 
 }
