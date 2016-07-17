@@ -13,7 +13,7 @@
 #       Otherwise, open a GitHub issue.  Thank you! -Ido
 #
 pkgname=dpkg
-pkgver=1.17.25
+pkgver=1.18.9
 pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=(
 	http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
 	dpkg-gzip-rsyncable.patch
 )
-md5sums=('e48fcfdb2162e77d72c2a83432d537ca'
+md5sums=('8a28f8cd4b85d10a8a23e6428dd41c41'
          '71fd0c244ca1fc7132c708022ca50ef0')
 
 build() {
