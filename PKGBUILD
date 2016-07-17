@@ -2,13 +2,13 @@
 
 pkgname=ndpi
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
 license=('GPL3')
 conflicts=('ndpi-svn')
-
+options=('staticlibs')
 source=("http://downloads.sourceforge.net/project/ntop/nDPI/nDPI-$pkgver.tar.gz")
 
 build() {
