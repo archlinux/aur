@@ -2,15 +2,15 @@
 
 pkgname=("python-keras-doc")
 _pkgname="keras"
-pkgver="0.3.2"
+pkgver="1.0.6"
 pkgrel="1"
 pkgdesc="Documentation and examples for python-keras"
 arch=('any')
 url="https://github.com/fchollet/keras"
 license=('MIT')
 makedepends=('mkdocs')
-source=("${_pkgname}.tar.gz::https://github.com/fchollet/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('cd2cd768b039703eb9e4a9fac154588a4f36daad53f4c359c241333ee36af7cf')
+source=("${_pkgname}-${pkgver}::https://github.com/fchollet/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('426773d4f54f8332c78556dcd9bbcc83f6869fefbc6ecb33424252890bf65e80')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}/docs"
