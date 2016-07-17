@@ -13,14 +13,24 @@ depends=('libusb>=1.0' 'gd>=2.0.16')
 source=(git://github.com/dradermacher/ptouch-print.git)
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "${srcdir}/ptouch-print"
+	local ver=$(grep AC_INIT configure.ac | cut -d ',' -f2 |sed -e 's/\[//' -e 's/\]//' -e's/ //')
+	(
+		set -o pipefail
+		git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/${_gitname}.//" ||
+		printf "%sr%s.%s" "${ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
 build() {
-	cd $srcdir/ptouch-print
+	cd ${srcdir}/ptouch-print
 	touch ./AUTHORS
 	autoreconf -i
 	./configure --prefix=/usr
 	make
 }
 package() {
-	cd $srcdir/ptouch-print
-	make DESTDIR=$pkgdir install
+	cd ${srcdir}/ptouch-print
+	make DESTDIR=${pkgdir} install
 }
