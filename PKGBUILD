@@ -54,7 +54,7 @@ pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcon
 _srcname=linux-4.6
 _ckpatchname="patch-4.6-ck1"
 pkgver=4.6.4
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
@@ -98,7 +98,7 @@ md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
          'b3b845477eb2e62e745803685bde9057'
          '7e50b0145ed002319a8fb651b72f7cd0'
          'a873c975acf24c3ef0225b9fcd3f3e1e'
-         '9539b2c1ab27d7962125b5884b358bd5'
+         'ac232f0a3c180e64813ce31598371a56'
          'eb14dcfd80c00852ef81ded6e826826a')
 
 #validpgpkeys=('79BE3E4300411886' 
