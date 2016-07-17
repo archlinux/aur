@@ -5,11 +5,11 @@ _pkgver=2.2-beta2
 pkgrel=6
 pkgdesc="Open source SDK used for the development of 3D sensing middleware libraries and applications"
 arch=('i686' 'x86_64')
-url="https://github.com/OpenNI/OpenNI2"
+url="https://github.com/occipital/OpenNI2"
 license=('Apache')
 depends=(glu)
 makedepends=(doxygen java-environment freeglut)
-source=(https://github.com/OpenNI/OpenNI2/archive/${_pkgver}.tar.gz
+source=(https://github.com/occipital/OpenNI2/archive/${_pkgver}.tar.gz
         libopenni2.pc)
 md5sums=('3f2cd6a64776821fb2837c442539f65b'
          '37b0b6a6932f94269fdff88ace4d8844')
