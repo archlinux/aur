@@ -1,7 +1,7 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=pymonopoly-git
-pkgver=0.249.c148629
+pkgver=0.269.5476d7c
 pkgrel=1
 pkgdesc="Famous monopoly board game (russian variation - 'Manager'). In active development"
 arch=('any')
