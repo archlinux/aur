@@ -8,7 +8,8 @@
 
 pkgbase=util-linux-nosystemd
 pkgname=(util-linux-nosystemd libutil-linux-nosystemd)
-pkgver=2.27
+_pkgmajor=2.28
+pkgver=${_pkgmajor}
 pkgrel=1
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -18,11 +19,9 @@ license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$pkgver/${pkgname%-nosystemd}-$pkgver.tar."{xz,sign}
-        uuidd.tmpfiles
         pam-{login,common,su})
-md5sums=('5b06bbda9309624ee7add15bc8d8ca22'
+md5sums=('e534e6ccc49107e5d31c329af798ef7d'
          'SKIP'
-         'a39554bfd65cccfd8254bb46922f4a67'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad')
@@ -41,9 +40,11 @@ build() {
               --enable-chfn-chsh \
               --enable-write \
               --enable-mesg \
-              --enable-libmount-force-mountinfo \
               --with-python=3 \
+              --with-systemdsystemunitdir=no \
 			  --with-systemd=no
+			  #--enable-libmount-force-mountinfo \ #recommended for systemd
+              #--enable-socket-activation \ #??? option not available 
   make
 }
 
@@ -75,9 +76,6 @@ package_util-linux-nosystemd() {
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
   install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
-  # include tmpfiles fragment for uuidd
-  # TODO(dreisner): offer this upstream?
-  install -Dm644 "$srcdir/uuidd.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/uuidd.conf"
 
   # usrmove
   cd "$pkgdir"
