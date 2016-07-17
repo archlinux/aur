@@ -1,0 +1,22 @@
+pkgbase = lattice-diamond
+	pkgdesc = Lattice Diamond design software
+	pkgver = 3.7
+	pkgrel = 1
+	url = http://www.latticesemi.com/latticediamond
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	provides = lattice-diamond
+	conflicts = lattice-diamond
+	options = !strip
+	source = http://files.latticesemi.com/Diamond/3.7/diamond_3_7-base_x64-96-1-x86_64-linux.rpm
+	source = synp-plat-check.patch
+	source = lattice-diamond.png
+	source = lattice-diamond.desktop
+	md5sums = 162ab905a552a72763aa62dc3efe0ef7
+	md5sums = b03c61ceb13d196d651a6ed26f61c796
+	md5sums = d04fb58bdb5f67e44b5058e14f3aacf9
+	md5sums = fbba8b33146178b861871aabdc779fbd
+
+pkgname = lattice-diamond
+

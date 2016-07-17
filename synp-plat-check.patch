@@ -1,0 +1,37 @@
+diff -ruN src/usr/local/diamond/3.7_x64/synpbase/bin/config/platform_check src.work/usr/local/diamond/3.7_x64/synpbase/bin/config/platform_check
+--- src/usr/local/diamond/3.7_x64/synpbase/bin/config/platform_check	2015-12-09 21:12:13.000000000 +0100
++++ src.work/usr/local/diamond/3.7_x64/synpbase/bin/config/platform_check	2016-07-17 15:32:55.368029939 +0200
+@@ -9,18 +9,21 @@
+ # $Header: //synplicity/ui201509rc/unix_scripts/bin/config/platform_check#2 $
+ #
+ #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+-case $PLATFORM in
+-    linux | linux_a_64 )
+-        case $VERSION in
+-            3.* | 2.4.* | 2.6.*  )
+-                PLATFORM_STATUS="ok";;
+-            *)
+-                PLATFORM_STATUS=`echo $PLATFORM $VERSION`;;
+-        esac;;
+-    *)
+-        PLATFORM_STATUS=`echo $PLATFORM $VERSION`
+-        ;;
+-esac
++# Skip platform check to allow running on non officially supported platforms
++#case $PLATFORM in
++#    linux | linux_a_64 )
++#        case $VERSION in
++#            3.* | 2.4.* | 2.6.*  )
++#                PLATFORM_STATUS="ok";;
++#            *)
++#                PLATFORM_STATUS=`echo $PLATFORM $VERSION`;;
++#        esac;;
++#    *)
++#        PLATFORM_STATUS=`echo $PLATFORM $VERSION`
++#        ;;
++#esac
++
++PLATFORM_STATUS="ok"
+ 
+ #+-+-+-+-+-+-+-+-    Platform Checking                            +-+-+-+-+-+-+
+ #

@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=lattice-diamond
+Name=Lattice Diamond
+Exec=/usr/local/diamond/3.7_x64/bin/lin64/diamond
+Categories=Development;
+Comment=Lattice Diamond Design Software
