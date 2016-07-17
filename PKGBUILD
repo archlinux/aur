@@ -2,7 +2,7 @@
 
 pkgname=python2-stomper
 _libname=${pkgname/python2-/}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A transport neutral client implementation of the STOMP protocol."
 arch=('any')
@@ -24,4 +24,4 @@ package() {
 	python2 setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
-sha256sums=('1c39d14b099e49ae12006366357b36b243b13cd960c124a63f926ba49affe764')
+sha256sums=('3b3f1238579fcbb7d79dd3e32d22caadf419e3a73c18f40672ab8dbbeef692e1')
