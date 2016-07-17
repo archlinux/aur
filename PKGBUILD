@@ -7,7 +7,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip-gui
-pkgver=15.14.1
+pkgver=16.02
 pkgrel=1
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
@@ -22,7 +22,7 @@ options=(!makeflags)
 install='p7zip-gui.install'
 source=("http://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
-sha256sums=('699db4da3621904113e040703220abb1148dfef477b55305e2f14a4f1f8f25d4'
+sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             '8cb662ccbacd1badc2c41ff00618c53d1c7fb8bca5472cca4ac7bd7f619acb27')
 
 prepare() {
