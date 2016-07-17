@@ -7,6 +7,7 @@ pkgrel=2
 pkgdesc="A protocol independent performance tool that visually represents the network performance."
 url="http://bitspjoule.org/netpipe/"
 depends=('glibc')
+optdepends=('tcsh: for nplaunch script')
 source=(http://bitspjoule.org/netpipe/code/NetPIPE-$pkgver.tar.gz)
 arch=('i686' 'x86_64')
 license=('GPL')
