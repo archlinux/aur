@@ -1,7 +1,7 @@
 pkgbase = binfmt_aout
 	pkgdesc = binfmt_aout kernel module, for running an a.out binary format
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org
 	install = binfmt_aout.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = binfmt_aout
 	source = https://raw.githubusercontent.com/torvalds/linux/v{4.0}/fs/binfmt_aout.c
 	source = Makefile
 	sha1sums = 461efd1c09b0b2420c1544ba5ec94952ecef4255
-	sha1sums = 24969cd0bfe0eba16b15a714839891615001842f
+	sha1sums = bb9af2aea2fe37ec2e54820762b862d02668bed6
 
 pkgname = binfmt_aout
 
