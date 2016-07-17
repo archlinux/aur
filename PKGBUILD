@@ -1,4 +1,4 @@
-# $Id$
+# $Id: ff2dae5d6715bf31a3852a3b84a0fac2112e2d45 $
 # Maintainer: Ido Rosen <ido@kernel.org>
 #
 # NOTE: To request changes to this package, please submit a pull request
@@ -12,7 +12,7 @@
 
 pkgname='mosek'
 pkgdesc="A tool for solving mathematical optimization problems."
-pkgver=7.0.0.128
+pkgver=7.1.0.53
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mosek.com/'
@@ -26,10 +26,10 @@ options=('!libtool' '!strip')
 
 if test "$CARCH" == "x86_64"; then
   _mosekarch=linux64x86
-  sha512sums=('fb0a3e96e5bba55fbf0289fe4a4f10b5feca760b2e96007167bcecbddf47b159a2961ba9a3cde5da5d59542da86c1b6b686ec38799828d6e7eb8d82fc610c39d')
+  sha512sums=('f53b8b8549283c42d2aa5e9f1e7aa9f3e0eb3607e8c64f5508ead86182a7b727bc8f2b188d15223dbdafd43e9333863c4db3bd043d6398be3f743dd4525e6f6c')
 elif test "$CARCH" == "i686"; then
   _mosekarch=linux32x86
-  sha512sums=('9e64284d3e56608b15f181f58b282e3894940b6eb984d97fcdf5144611902fdb9d0253600beab6e75b19be5e7e5b52a1f6ca61b84ef2dc67937f465eb34b758b')
+  sha512sums=('6d14b0147033790419b7f019d75049b0e18b73184a6296bda4c9c97681ad53ca908198412a548baad313d05ffc27796e6a7077a6b5841ea82a7009e72ebd0cb4')
 fi
 
 source=("http://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
