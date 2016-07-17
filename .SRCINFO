@@ -19,9 +19,9 @@ pkgbase = dpkg
 	optdepends = fakeroot
 	conflicts = dpkg-ubuntu
 	replaces = dpkg-ubuntu
-	source = http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_1.17.25.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_1.18.9.tar.xz
 	source = dpkg-gzip-rsyncable.patch
-	md5sums = e48fcfdb2162e77d72c2a83432d537ca
+	md5sums = 8a28f8cd4b85d10a8a23e6428dd41c41
 	md5sums = 71fd0c244ca1fc7132c708022ca50ef0
 
 pkgname = dpkg
