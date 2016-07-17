@@ -1,4 +1,5 @@
 post_install() {
-  echo "Don't forget to add yourself to the uucp and lock groups: gpasswd -a <user> uucp && gpasswd -a <user> lock (execute as root)"
+  echo "Add yourself to the uucp group to access the serial ports:"
+  echo "sudo usermod -a -G uucp <user>"
 }
 

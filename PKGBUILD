@@ -7,7 +7,7 @@ pkgname=teensyduino
 pkgver=1.28
 _pkgver=1.28
 _arduino=1.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
@@ -15,12 +15,11 @@ options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
 depends=('gtk2' 'libusb-compat' 'libusb' 'java-runtime' 'libpng12' 'libsm'
          'desktop-file-utils' 'giflib' 'avrdude')
-makedepends=('xorg-server-xvfb' 'libxft' 'xdotool' 'icoutils')
+makedepends=('xorg-server-xvfb' 'libxft' 'xdotool')
 provides=('arduino')
 conflicts=('arduino' 'teensy-loader-cli')
 install="teensyduino.install"
-source=('arduino.desktop'
-        'arduino.xml'
+source=('arduino.xml'
         'teensyduino.sh'
         'teensy-loader.desktop'
         "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=f9e6a039f0031569d955fc4e40e02b59e5759007"
@@ -30,8 +29,7 @@ source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
               "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux32")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
                 "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
-sha256sums=('ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
-            '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
+sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
             'ee25f5421e529aacb11c19307c78ce97202329b14935f8eb6cbbf70806ae183b'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
@@ -47,12 +45,6 @@ if [ "$CARCH" == 'x86_64' ]; then
 elif [ "$CARCH" == 'i686' ]; then
   _bits=32
 fi
-
-prepare() {
-  cd "arduino-${_arduino}"
-
-  icotool -x -o .. lib/arduino_icon.ico
-}
 
 build() {
   msg2 "Running Teensyduino installer (takes around 60 seconds)"
@@ -70,7 +62,7 @@ package() {
   cd "arduino-${_arduino}"
 
   mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/"{doc,applications,mime/packages,licenses/teensyduino}
+  mkdir -p "${pkgdir}/usr/share/"{doc,applications,icons/hicolor,mime/packages,licenses/teensyduino}
   mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
 
   # copy the whole SDK to /usr/share/arduino/
@@ -93,13 +85,12 @@ package() {
   ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
 
   # desktop icon
-  for size in 16 32 48 256; do
-    install -Dm644 ../arduino_icon_*_${size}x${size}x32.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/arduino.png"
-  done
+  cp -a lib/icons/* "${pkgdir}/usr/share/icons/hicolor"
+  rm -rf "${pkgdir}/usr/share/arduino/lib/icons"
+  ln -s /usr/share/icons/hicolor "${pkgdir}/usr/share/arduino/lib/icons"
 
   # desktop and mimetype files
-  install -m644 "${srcdir}/arduino.desktop" "${pkgdir}/usr/share/applications/"
+  sed "s,<BINARY_LOCATION>,arduino %U,g;s,<ICON_NAME>,arduino,g" lib/desktop.template > "${pkgdir}/usr/share/applications/arduino.desktop"
   install -m644 "${srcdir}/arduino.xml" "${pkgdir}/usr/share/mime/packages/"
 
   # install custom PJRC license
