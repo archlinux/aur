@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-  pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
+  pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. Contains x86_64 emulator only.'
   depends=('gnutls' 'dtc' 'usbredir' 'lzo')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'

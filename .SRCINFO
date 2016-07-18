@@ -34,7 +34,7 @@ pkgbase = qemu-minimal-git
 	sha256sums = 0df69a77645c9a05f98635773666b6212084525d7801ef8382242b06baebe5aa
 
 pkgname = qemu-minimal-git
-	pkgdesc = A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.
+	pkgdesc = A generic and open source processor emulator. This is a stripped-down version for running on a headless server. Contains x86_64 emulator only.
 	install = qemu.install
 	depends = gnutls
 	depends = dtc
