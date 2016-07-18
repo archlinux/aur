@@ -1,0 +1,20 @@
+pkgbase = timemon.app
+	pkgdesc = An abstract graphical representation of where your CPU cycles are going.
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://www.nongnu.org/gap/timemon/index.html
+	arch = i686
+	arch = x86_64
+	groups = gnustep
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	source = http://savannah.nongnu.org/download/gap/TimeMon-4.2.tar.gz
+	source = TimeMon.desktop
+	sha256sums = 3204e7cc454db233cebb93bb7cc8ad56bf5754063ed7be1a765051615a04ec0f
+	sha256sums = d899dd9da09c11f5a3910b34c1db4df85ae91307e76b12b0e27037ec1ddef314
+
+pkgname = timemon.app
+

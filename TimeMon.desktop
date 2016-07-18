@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=X-GNUstep;
+Name=TimeMon
+Comment=System load monitor
+Icon=/usr/lib/GNUstep/Applications/TimeMon.app/Resources/TimeMon.tiff
+Exec=/usr/bin/openapp TimeMon
+FilePattern=TimeMon.app;TimeMon;
