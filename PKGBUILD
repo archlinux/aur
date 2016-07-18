@@ -1,4 +1,4 @@
-# Partially based on the package arangodb, from which Christoph Grabo <asaaki at mannaz dot cc> is the maintainer
+# Partially based on the package `arangodb', from which Christoph Grabo <asaaki at mannaz dot cc> is the maintainer
 # Maintainer: helq <linuxero789 \at/ gmail \./ com>
 
 # allow to download a shallow copy of the repository, if not it delegates the
@@ -73,12 +73,12 @@ if [ $_shallow_git_copy ] ; then
   
     cd "$srcdir"
     # copying/updating repo to $srcdir
-    #if [[ -d "$_pkgname" ]]; then
-    #  cd "$_pkgname"
-    #  git pull origin "$_branch"
-    #else
+    if [[ -d "$_pkgname" ]]; then
+      cd "$_pkgname"
+      git pull origin "$_branch"
+    else
       git clone "$startdir/$_pkgname" "$_pkgname"
-    #fi
+    fi
   }
 fi
 

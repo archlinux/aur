@@ -1,6 +1,6 @@
 pkgbase = arangodb-git
 	pkgdesc = A distributed open-source database with a flexible data model for documents, graphs, and key-values.
-	pkgver = 3.0.0.d20160622_1146.43546f5
+	pkgver = 3.0.3.d20160717_0823.31c6b72
 	pkgrel = 1
 	url = https://www.arangodb.com/
 	install = arangodb.install
