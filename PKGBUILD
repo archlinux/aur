@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=odt2tex
-pkgver=0.0.9b
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="Convert odt files to tex"
 url="https://www.chronowerks.de"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libzip' 'expat')
 makedepends=('libzip' 'expat')
 source=("https://github.com/simonaw/odt2tex/archive/${pkgver}.tar.gz")
-md5sums=('a4abb98d2f33445a717b1de5ae9e5e60');
+md5sums=('575875f940998a7e2a376bebb01c2e85');
  
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
