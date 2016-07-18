@@ -4,7 +4,7 @@
 # Contributor Florian Pritz <bluewind@xinu.at>
 
 pkgname=python2-puppetboard
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Web frontend for PuppetDB which relies on pypuppetdb'
 arch=(any)
@@ -23,7 +23,7 @@ depends=('python2'
 
 install=puppetboard.install
 source=("https://github.com/puppet-community/puppetboard/archive/v${pkgver}.tar.gz")
-sha512sums=('28a9d97e488651455daa1d5b6dc83a1d067dd0f969485f02b89f3382b39cca7d5ff0e21ab7f6ff7b174afecc893f1771b7c4c4de144b8ac14e415eda4db393ea')
+sha512sums=('6a2a58ed2ffe991946dc85402faf876b9eb6fddd8238faf0a9dd4277a40b596a962846934bd32a823f5404824616aeff48fc028fed1ab9171d4d31586e418847')
 
 package() {
   cd "${srcdir}/puppetboard-${pkgver}"
