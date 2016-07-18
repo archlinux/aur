@@ -1,15 +1,20 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=opentracker
-pkgver=1.0
-pkgrel=3
+pkgver=20160718
+pkgrel=1
 pkgdesc="A free and open torrent tracker"
-arch=('x86_64' 'i686' 'armv7h' 'armv7l')
+arch=('x86_64' 'i686' 'armv7h' 'armv7l' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
 license=('GPL')
-makedepends=('git' 'cvs')
+depends=('git' 'cvs')
 provides=(opentracker)
 conflicts=(opentracker)
+
+pkgver() {
+#  cd "$srcdir/opentracker"
+  git log -n 1 --pretty=format:"%cd" --date=short | sed "s/-/./g"
+}
 
 build() {
 	cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat
