@@ -3,7 +3,7 @@
 # Contributor: Constantinko <helllamer@gmail.com>
 
 pkgname=isl29018_driver
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=7
 pkgdesc='Intersil ISL29018 sensor kernel driver(light sensor in Chromebook Pixel)'
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ build() {
 
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-4.5-ARCH
+	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH
 
-	install -D -m0755 ${startdir}/isl29018.ko ${pkgdir}/usr/lib/modules/extramodules-4.5-ARCH/
+	install -D -m0755 ${startdir}/isl29018.ko ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH/
 
 }
 
