@@ -1,0 +1,14 @@
+pkgbase = perl-libwww-dict-leo-org
+	pkgdesc = leo - commandline interface to http://dict.leo.org/.
+	pkgver = 1.40
+	pkgrel = 1
+	url = http://search.cpan.org/~tlinden/WWW-Dict-Leo-Org-1.40/Org.pm
+	arch = any
+	makedepends = perl
+	depends = perl-html-tableparser
+	source = http://search.cpan.org/CPAN/authors/id/T/TL/TLINDEN/WWW-Dict-Leo-Org-1.40.tar.gz
+	md5sums = SKIP
+	sha256sums = 4285702fd5d3e0633891739cb149b9f950afe4c69ad0a10a9c6e185ff29552da
+
+pkgname = perl-libwww-dict-leo-org
+
