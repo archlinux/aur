@@ -47,7 +47,7 @@ prepare() {
 	chmod 755 -R package.json
 
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
-  ./script/build || die "Fail fixing verbosity of script/build"
+  ./script/build
 
   if ! [[ -d node_modules ]]; then
     mkdir -p node_modules
