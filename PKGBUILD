@@ -9,8 +9,8 @@ pkgdesc="Mupen64plus with dynarec and vulvan powered rdp lle"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('custom' 'GPL' 'LGPL')
-makedepends=('git' 'vulkan-headers' 'vulkan-icd-loader')
-depends=('libglvnd')
+makedepends=('git' 'vulkan-headers')
+depends=('libglvnd' 'vulkan-icd-loader')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
 
