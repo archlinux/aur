@@ -6,21 +6,21 @@
 
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
-pkgver=367.27
+pkgver=367.35
 _extramodules=extramodules-4.6.4-grsec
-pkgrel=3
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.5' 'linux-grsec-headers<4.6')
 license=('custom')
 options=(!strip)
-source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-364.27-pax.patch")
+source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums=('b5565defe3ee85dd1329f37b0630363b787497bcbfed40d5909e9dba0281bf1ceb23929fb76331277653effca1bc64a944427cc6901a05a0c2f04af5aa3ad3b1')
-sha512sums_i686=('54302f0de936a859561b756989ff84f73afe41dfb89ed680ee3df3c46b0de9d57eaf2d07876dea0eb1154fbc1a716d4d3e693cb7eaa7ab325b4bbee569ddb709')
-sha512sums_x86_64=('bb1cdfb28cf2c2216b39380994aedd4c5568d83e759aeb588be0f4784475a34c23410c2d6076b05a8163cc6cd1428c6a79e172bb3327e0160c4adf34454d3968')
+sha512sums=('33d2d308c04e9e39dd391fcfe22fe7bfb312a7f73af8eba80e7ac2fad8f424c2a8fce7008148badf8b6b72dc23a9948bb932d241588ab3fab19b132c098f04b2')
+sha512sums_i686=('3151995153a3c3857e291df933dbaeaad779544a39a9482980ccb89531ca924d71e6bf0e44767755c484c4b693cfaf01f55e61e3d82cef79f73c0b1964411f39')
+sha512sums_x86_64=('b86374ca954eb2c2d1efea35eeefefc6a80382734fe2e70d8ae3bf5faea284884104004c200f7b3b97d063847be488ca128c96757bc63e0a9d4dfefe40521acd')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -30,7 +30,7 @@ prepare() {
     cd "${_pkg}"
     # patches here
     # Using the updated grsecurity-provided patch
-    patch -Np1 -i "../nvidia-drivers-364.27-pax.patch"
+    patch -Np1 -i "../nvidia-drivers-${pkgver}-pax.patch"
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
