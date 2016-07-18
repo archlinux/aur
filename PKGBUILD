@@ -1,8 +1,8 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-meta
-pkgver=0.6.90.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Hawaii desktop environment meta package"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hawaiios.org"
