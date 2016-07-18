@@ -16,13 +16,14 @@ groups=()
 depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang' 'cmake'
 		 'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
 		 'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
-makedepends=('rocksdb' 'rocksdb-static' 'cpp-netlib' 'magic' 'unzip')
+makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb'
+             'rocksdb-static' 'cpp-netlib' 'magic' 'unzip' 'wget')
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=()
+backup=('etc/osquery/osquery.conf')
 options=()
 install=
 changelog=
@@ -31,8 +32,8 @@ source=("${pkgname}-${pkgver}::git+https://github.com/facebook/osquery"
 		"arch-linux.patch")
 noextract=()
 sha256sums=('SKIP'
-            '6f1d7950f547ba6e39a67a267c0a8a46424dd9707cec9041a95fb75fc35a3dcf'
-            '8da0d77bd189f4bb778a6be719322ea8c0cd624d2ad3e76bee584bd1d1259542')
+            '1fa367325d4a7ad7dfef3b7b817b3c7588ad02a8d08fc11db24de66b486c6503'
+            '745e4561eb065d05826d8f96d1cd06640463a5a85f38d2581ea85d2e33fd8d24')
 validpgpkeys=()
 
 _gitname=${pkgname}-${pkgver}
@@ -50,13 +51,12 @@ prepare() {
 	patch -p1 -i "${srcdir}/arch-linux.patch"
 }
 
-
 build() {
 	cd $_gitname
 
 	make deps
-	cmake -DCMAKE_INSTALL_PREFIX=/usr
-	make -j $(nproc) -C osquery DESTDIR="${pkgdir}"
+	cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr
+	make -j $(nproc)
 }
 
 package() {

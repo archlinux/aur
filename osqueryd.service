@@ -5,10 +5,11 @@ After=network.service syslog.service
 [Service]
 TimeoutStartSec=0
 ExecStart=/usr/bin/osqueryd --config_path /etc/osquery/osquery.conf
-Restart=on-abort
+Restart=on-failure
 KillMode=process
 KillSignal=SIGTERM
-SendSIGKILL=yes
+SuccessExitStatus=143
+PIDFile=/var/osquery/osqueryd.pidfile
 
 [Install]
 WantedBy=multi-user.target

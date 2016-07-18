@@ -52,21 +52,46 @@ index 751c416..55038dc 100644
  #endif
  void ERR_remove_state(unsigned long);
  }
-diff --git a/tools/provision/arch.sh b/tools/provision/arch.sh
-index d6498d4..6f7a7ce 100755
---- a/tools/provision/arch.sh
-+++ b/tools/provision/arch.sh
-@@ -30,12 +30,10 @@ function main_arch() {
-   package thrift
-   package yara
+diff --git a/tools/provision.sh b/tools/provision.sh
+index 7ca0498..3dc412c 100755
+--- a/tools/provision.sh
++++ b/tools/provision.sh
+@@ -93,11 +93,6 @@ function main() {
  
--  install_aws_sdk
+   cd "$SCRIPT_DIR/../"
+ 
+-  # Pip may have just been installed.
+-  PIP=`which pip`
+-  sudo $PIP install --upgrade pip
+-  sudo $PIP install -r requirements.txt
 -
-   echo ""
-   echo "The following packages need to be installed from the AUR:"
-   echo "rocksdb or rocksdb-static (if using rocksdb export BUILD_LINK_SHARED=True)"
--  echo "cpp-netlib and magic"
-+  echo "aws-sdk-cpp-git, cpp-netlib and magic"
-   echo ""
+   initialize $OS
  }
  
+diff --git a/tools/provision/arch.sh b/tools/provision/arch.sh
+index d6498d4..73759b6 100755
+--- a/tools/provision/arch.sh
++++ b/tools/provision/arch.sh
+@@ -8,8 +8,6 @@
+ #  of patent rights can be found in the PATENTS file in the same directory.
+ 
+ function main_arch() {
+-  sudo pacman -Syu
+-
+   package wget
+   package asio
+   package audit
+@@ -29,13 +27,4 @@ function main_arch() {
+   package snappy
+   package thrift
+   package yara
+-
+-  install_aws_sdk
+-
+-  echo ""
+-  echo "The following packages need to be installed from the AUR:"
+-  echo "rocksdb or rocksdb-static (if using rocksdb export BUILD_LINK_SHARED=True)"
+-  echo "cpp-netlib and magic"
+-  echo ""
+ }
+-
