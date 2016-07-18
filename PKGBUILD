@@ -3,21 +3,22 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark-git
-pkgver=2.1.0.SNAPSHOT.20160715.17026
+pkgver=2.1.0.SNAPSHOT.20160718.17034
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('java-environment>=6' 'hadoop')
-makedepends=('git' 'maven')
+depends=('java-environment>=6')
+makedepends=('git')
 conflicts=('apache-spark')
 optdepends=('python2: python2 support for pyspark'
             'ipython2: ipython2 support for pyspark'
             'python: python3 support for pyspark'
             'ipython: ipython3 support for pyspark'
             'r: support for sparkR'
-            'rsync: support rsync hadoop binaries from master')
+            'rsync: support rsync spark binaries from master'
+	    'hadoop: run spark on hadoop')
 install=apache-spark.install
 source=('git://git.apache.org/spark.git'
         'apache-spark-master.service'
