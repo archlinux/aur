@@ -22,8 +22,6 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  odroid=$(grep -i 'odroid' /proc/cpuinfo)
-
   if grep -q odroid /proc/cpuinfo ;then
    platform=odroid make WITH_DYNAREC=arm
   elif grep -q BCM /proc/cpuinfo ;then
