@@ -2,12 +2,12 @@
 
 pkgname=hawaii-shell
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://hawaiios.org'
 license=('GPL' 'LGPL')
-depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
+depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg' 'qt5-wayland'
          'pam' 'libpulse' 'libqtxdg' 'glib2' 'networkmanager-qt' 'solid'
          'greenisland' 'hawaii-icon-theme' 'hawaii-wallpapers' 'libhawaii' 'fluid' 'hawaii-workspace'
          'ttf-dejavu' 'ttf-droid')
