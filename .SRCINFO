@@ -1,6 +1,6 @@
 pkgbase = python2-puppetboard
 	pkgdesc = Web frontend for PuppetDB which relies on pypuppetdb
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/puppet-community/puppetboard
 	install = puppetboard.install
@@ -16,8 +16,8 @@ pkgbase = python2-puppetboard
 	depends = python2-itsdangerous
 	depends = python2-requests
 	depends = python2-pypuppetdb
-	source = https://github.com/puppet-community/puppetboard/archive/v0.1.1.tar.gz
-	sha512sums = 6a2a58ed2ffe991946dc85402faf876b9eb6fddd8238faf0a9dd4277a40b596a962846934bd32a823f5404824616aeff48fc028fed1ab9171d4d31586e418847
+	source = https://github.com/puppet-community/puppetboard/archive/v0.2.0.tar.gz
+	sha512sums = d525bd48a0a0ee6c22f08226026f45684980279ccef386ec1890aa9cb728126bc7fd104d094b56dea85bf14c0b8cafa641f7d2596f25bf99d63fce856966424c
 
 pkgname = python2-puppetboard
 
