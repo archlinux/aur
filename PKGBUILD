@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-widget-styles
-pkgver=0.6.90.20160327
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Hawaii widget styles"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,9 +11,8 @@ depends=('fluid')
 makedepends=('extra-cmake-modules')
 conflicts=('hawaii-widget-styles-git')
 groups=('hawaii')
-#source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-source=("https://codeload.github.com/hawaii-desktop/${pkgname}/legacy.tar.gz/20ffdadd04e9f98124ea14690fdf89d7567956c2")
-sha1sums=('5078f7b5c420d323a9da8acef7ce1449a5750a46')
+source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('4b47ba51b46aa64857c4b6d3c012b4f71750de04')
 
 prepare() {
 	mkdir -p build
@@ -21,8 +20,7 @@ prepare() {
 
 build() {
 	cd build
-	#cmake ../${pkgname}-${pkgver} \
-	cmake ../hawaii-desktop-hawaii-widget-styles-20ffdad \
+	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=lib \
 		-DLIBEXEC_INSTALL_DIR=lib \
