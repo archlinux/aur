@@ -1,0 +1,33 @@
+From b66d3ea328ee42d3d4f56ed9736c315833dee67d Mon Sep 17 00:00:00 2001
+From: Timothy Redaelli <timothy.redaelli@gmail.com>
+Date: Fri, 1 Jul 2016 15:28:46 +0200
+Subject: [PATCH] Fix ./run-checks --static
+
+Python doesn't like LANG=C.UTF-8 so just open the files
+using UTF-8 directly
+---
+ mdlint.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mdlint.py b/mdlint.py
+index 533c812..a1bd4ac 100755
+--- a/mdlint.py
++++ b/mdlint.py
+@@ -7,7 +7,7 @@
+ # http://pythonhosted.org/Markdown/
+ 
+ import sys
+-
++import codecs
+ 
+ def lint_li(fname, text):
+     """Ensure that the list-items are multiplies of 4"""
+@@ -23,7 +23,7 @@ def lint(md_files):
+     """lint all md files"""
+     all_clean = True
+     for md in md_files:
+-        with open(md) as f:
++        with codecs.open(md, "r", "utf-8") as f:
+             buf = f.read()
+             for fname, func in globals().items():
+                 if fname.startswith("lint_"):

@@ -1,0 +1,31 @@
+pkgbase = snapd-confinement
+	pkgdesc = Service and tools for management of snap packages (with confinement enabled).
+	pkgver = 2.0.10
+	pkgrel = 1
+	url = https://github.com/snapcore/snapd
+	install = snapd.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = python
+	makedepends = git
+	makedepends = go
+	makedepends = go-tools
+	makedepends = bzr
+	depends = snap-confine-apparmor
+	depends = squashfs-tools
+	conflicts = snapd
+	replaces = snapd
+	options = !strip
+	options = emptydirs
+	source = git+https://github.com/snapcore/snapd.git#tag=2.0.10
+	source = snapd.sh
+	source = fix_test.patch
+	source = disable-devmode-enforcing.patch
+	md5sums = SKIP
+	md5sums = 1d841a1d09ba86945551dfc5c5658b2e
+	md5sums = 7fd19e053051825b189914cedb95c3e7
+	md5sums = cf60668da3dbce5a779aec3c52c69528
+
+pkgname = snapd-confinement
+

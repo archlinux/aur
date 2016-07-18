@@ -1,0 +1,32 @@
+--- snapd/release/release.go.bak	2016-07-18 16:43:17.137859989 +0200
++++ snapd/release/release.go	2016-07-18 16:50:05.033109215 +0200
+@@ -43,6 +43,10 @@
+ 	switch os.ID {
+ 	case "neon":
+ 		fallthrough
++	case "arch":
++		fallthrough
++	case "parabola":
++		fallthrough
+ 	case "ubuntu":
+ 		return false
+ 
+--- snapd/release/release_test.go.bak	2016-07-18 16:48:05.185499404 +0200
++++ snapd/release/release_test.go	2016-07-18 16:49:34.725213399 +0200
+@@ -107,7 +107,7 @@
+ 		devmode   bool
+ 	}{
+ 		// Please keep this list sorted
+-		{id: "arch", devmode: true},
++		{id: "arch", devmode: false},
+ 		{id: "debian", devmode: true},
+ 		{id: "elementary", devmode: true},
+ 		{id: "elementary", idVersion: "0.4", devmode: false},
+@@ -115,6 +115,7 @@
+ 		{id: "gentoo", devmode: true},
+ 		{id: "neon", devmode: false},
+ 		{id: "opensuse", devmode: true},
++		{id: "parabola", devmode: false},
+ 		{id: "rhel", devmode: true},
+ 		{id: "ubuntu", devmode: false},
+ 	}
