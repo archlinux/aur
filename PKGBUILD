@@ -20,7 +20,7 @@ install=
 changelog=
 source=(git+https://github.com/jonasdn/nsntrace.git)
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
