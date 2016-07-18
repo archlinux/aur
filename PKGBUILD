@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-wallpapers-git
-pkgver=20150824.ffca94d
+pkgver=20160621.3d3bc24
 pkgrel=1
 pkgdesc="Wallpapers for the Hawaii desktop environment"
 arch=('any')
