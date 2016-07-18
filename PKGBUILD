@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=test.doc.5.r31.g516c589
+pkgver=0.18.7.r173.g5859965
 _last_release="0.18.7-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
 license=('Apache')
 depends=('gc' 'libatomic_ops' 'pcre' 'libevent')
-makedepends=('git' 'libxml2' 'llvm35')
+makedepends=('git' 'libxml2' 'llvm')
 checkdepends=('libyaml' 'libxml2' 'gmp' 'git' 'inetutils')
 optdepends=('shards: To make the crystal deps command work'
             'libyaml: For YAML support'
@@ -44,11 +44,10 @@ build() {
 check() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make -j1 compiler_spec \
-           std_spec  \
-           CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-           CRYSTAL_CONFIG_VERSION="$pkgver" \
-           CRYSTAL_CACHE_DIR="/tmp/crystal"
+  make spec \
+       CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
+       CRYSTAL_CONFIG_VERSION="$pkgver" \
+       CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
 
 package() {
