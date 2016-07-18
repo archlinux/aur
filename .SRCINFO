@@ -1,0 +1,17 @@
+pkgbase = librsskit
+	pkgdesc = A simple library for reading the different types of RSS file formats.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.nongnu.org/gap/grr/index.html
+	arch = i686
+	arch = x86_64
+	groups = gnustep
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	source = http://savannah.nongnu.org/download/gap/RSSKit-0.4.tar.gz
+	sha256sums = 5dffff7005468aacc45c117a1c86b0d0e72e0d617b35c79b820973390b3a8886
+
+pkgname = librsskit
+
