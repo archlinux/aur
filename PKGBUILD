@@ -90,9 +90,9 @@ package_opencl-mesa-nosystemd() {
 package_vulkan-intel-nosystemd() {
   pkgdesc="Intel's Vulkan mesa driver"
   depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb')
-  provides=('vulkan-intel-nosystemd')
-  conflicts=('vulkan-intel-nosystemd')
-  replaces=('vulkan-intel-nosystemd')
+  provides=('vulkan-intel')
+  conflicts=('vulkan-intel')
+  replaces=('vulkan-intel')
   
   install -m755 -d ${pkgdir}/usr/share
   mv -v ${srcdir}/fakeinstall/usr/share/vulkan ${pkgdir}/usr/share/
