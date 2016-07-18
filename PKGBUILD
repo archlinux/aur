@@ -7,7 +7,7 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=sudo-selinux
-_sudover=1.8.16
+_sudover=1.8.17p1
 pkgver=${_sudover/p/.p}
 pkgrel=1
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -23,7 +23,7 @@ backup=('etc/sudoers' 'etc/pam.d/sudo')
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo.pam)
-sha256sums=('2d83826fc5125bf073acc203dbda1cf2abeee017090ccc9dddb0431a53d5064d'
+sha256sums=('c690d707fb561b3ecdf6a6de5563bc0b769388eff201c851edbace408bb155cc'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
 validpgpkeys=('CCB24BE9E9481B15D34159535A89DFA27EE470C4')
@@ -59,7 +59,7 @@ package() {
   cd "$srcdir/${pkgname/-selinux}-$_sudover"
   make DESTDIR="$pkgdir" install
 
-  # Remove /run/sudo directory from the package; we create it using tmpfiles.d
+  # Remove /run/sudo directory; we create it using systemd-tmpfiles
   rmdir "$pkgdir/run/sudo"
   rmdir "$pkgdir/run"
 
