@@ -6,7 +6,7 @@
 #
 pkgname=pegdbserver_power
 pkgver=1.3.3.201605241936
-pkgrel=1
+pkgrel=2
 pkgdesc="GDB server for Power devices using P&E JTAG hardware"
 arch=('i386' 'x86_64')
 url="http://www.nxp.com/products/microcontrollers-and-processors/arm-processors/s32-arm-processors-microcontrollers/s32-design-studio-ide:S32DS?code=S32DS&nodeId=0150522FC830D4&fpsp=1&tab=Design_Tools_Tab"
@@ -24,17 +24,19 @@ build() {
 }
 
 package() {
-	mkdir -p '$pkgdir/opt/$pkgname'
-	cp -r plugins/com.pemicro.debug.gdbjtag.ppc_$pkgver/lin/* '$pkgdir/opt/$pkgname'
-	chmod +x '$pkgdir/opt/$pkgname/pegdbserver_power_console'
+	mkdir -p "$pkgdir/opt/$pkgname"
+	cp -r plugins/com.pemicro.debug.gdbjtag.ppc_$pkgver/lin/* "$pkgdir/opt/$pkgname"
+	chmod +x "$pkgdir/opt/$pkgname/pegdbserver_power_console"
+	chmod 644 "$pkgdir/opt/$pkgname/gdi/P&E"/*
+	chmod 666 "$pkgdir/opt/$pkgname/gdi/P&E"/*.add
 
-	mkdir -p '$pkgdir/etc/udev/rules.d'
-	cp libusb_64_32/55-pemicro.rules '$pkgdir/etc/udev/rules.d'
+	mkdir -p "$pkgdir/etc/udev/rules.d"
+	cp libusb_64_32/55-pemicro.rules "$pkgdir/etc/udev/rules.d"
 
-	mkdir -p '$pkgdir/usr/bin'
-	ln -s /opt/$pkgname/pegdbserver_power_console '$pkgdir/usr/bin/pegdbserver_power_console'
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s /opt/$pkgname/pegdbserver_power_console "$pkgdir/usr/bin/pegdbserver_power_console"
 
-	mkdir -p '$pkgdir/usr/share/licenses/$pkgname'
-	cp license_gdb.pdf '$pkgdir/usr/share/licenses/$pkgname'
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cp license_gdb.pdf "$pkgdir/usr/share/licenses/$pkgname"
 }
 
