@@ -1,7 +1,7 @@
 # Maintainer: Steffen Weber <-boenki-gmx-de->
 
 pkgname=lepton
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Tool and file format for losslessly compressing JPEGs"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dropbox/lepton"
 license=('APACHE')
 makedepends=('cmake' 'zlib' 'openssl')
 source=($pkgname-$pkgver::$url/archive/$pkgver.tar.gz)
-md5sums=('5da93593f776280125cb3baf3ac3ded5')
+md5sums=('52c4c582a213037ef63c9643b51264d9')
 
 build() {
   cd $pkgname-$pkgver
