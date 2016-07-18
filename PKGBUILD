@@ -1,16 +1,17 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer: Alex Eckhart <eckhartalex@gmail.com>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
-pkgname=libretro-mupen64plus-git
+pkgname=libretro-parallel-git
 _gitname=mupen64plus-libretro
-pkgver=4135.ba9f101
+pkgver=4141.c52af9b
 pkgrel=1
-pkgdesc="libretro implementation of mupen64plus with dynarec (even for rpi)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+pkgdesc="Mupen64plus with dynarec and vulvan powered rdp lle"
+arch=('i686' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('custom' 'GPL' 'LGPL')
 makedepends=('git')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/mupen64plus_libretro.info")
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
 
 md5sums=('SKIP'
 	 'SKIP')
@@ -22,18 +23,14 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  if grep -q odroid /proc/cpuinfo ;then
-   platform=odroid make WITH_DYNAREC=arm
-  elif grep -q BCM /proc/cpuinfo ;then
-   platform=rpi make WITH_DYNAREC=arm
-  elif [ $CARCH == "i686" ];then
-   make WITH_DYNAREC=x86
+  if [ $CARCH == "i686" ];then
+   make WITH_DYNAREC=x86 HAVE_VULKAN=1
   else
-   make WITH_DYNAREC=$CARCH
+   make WITH_DYNAREC=$CARCH HAVE_VULKAN=1
   fi
 }
 
 package() {
-  install -Dm644 "${srcdir}/mupen64plus_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.info"
-  install -Dm644 "${_gitname}/mupen64plus_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.so"
+  install -Dm644 "${srcdir}/parallel_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-parallel.info"
+  install -Dm644 "${_gitname}/parallel_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-parallel.so"
 }
