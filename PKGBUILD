@@ -31,7 +31,7 @@ build() {
     --prefix=/usr \
     --libexecdir=/usr/lib/snap-confine \
     --enable-rootfs-is-core-snap \
-    --enable-nvidia-arch
+#    --enable-nvidia-arch
   make
 }
 
