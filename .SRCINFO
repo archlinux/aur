@@ -18,6 +18,7 @@ pkgbase = arduino
 	depends = jre8-openjdk
 	depends = avrdude
 	provides = arduino
+	conflicts = arduino-bin
 	source = https://github.com/arduino/Arduino/archive/1.6.9.tar.gz
 	sha512sums = 92b3508068e3aae6a88c3a395d0906fb63d2fd8ee20d003173b96f3f0ff6851eddcdb77c6349dfec3ad0ee36976f53432c643f56724490e9187d4af049fd4bf8
 

@@ -17,6 +17,7 @@ depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'jre8-openjdk' 'avrdude'
 makedepends=('jdk8-openjdk' 'apache-ant')
 install="arduino.install"
 provides=('arduino')
+conflicts=('arduino-bin')
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz")
 sha512sums=('92b3508068e3aae6a88c3a395d0906fb63d2fd8ee20d003173b96f3f0ff6851eddcdb77c6349dfec3ad0ee36976f53432c643f56724490e9187d4af049fd4bf8')
 
@@ -27,7 +28,7 @@ build() {
 
 package() {
 	cd "Arduino-${pkgver}/build/linux/work"
-	
+
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/usr/share/"{doc,icons/hicolor,applications,mime/packages}
 
