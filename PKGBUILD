@@ -5,8 +5,8 @@
 #it is configured to be build as backlight(look at make CFLAGS parameter) 
 
 pkgname=pixel_keyboard_backlight_driver
-pkgver=0.1.5
-pkgrel=8
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Chromebook Pixel keyboard backlight kernel driver'
 arch=('i686' 'x86_64')
 url='https://github.com/xhcnb/pixel_keyboard_backlight_driver'
@@ -21,9 +21,9 @@ build() {
 
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-4.5-ARCH
+	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH
 
-	install -D -m0755 ${srcdir}/${pkgname}/pixel_kb_backlight.ko ${pkgdir}/usr/lib/modules/extramodules-4.5-ARCH/
-	install -D -m0755 ${srcdir}/${pkgname}/chromeos_keyboard_bl.ko ${pkgdir}/usr/lib/modules/extramodules-4.5-ARCH/
+	install -D -m0755 ${srcdir}/${pkgname}/pixel_kb_backlight.ko ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH/
+	install -D -m0755 ${srcdir}/${pkgname}/chromeos_keyboard_bl.ko ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH/
 }
 
