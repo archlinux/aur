@@ -6,8 +6,8 @@
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
 
 pkgname=pam-selinux
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -23,7 +23,7 @@ source=(http://linux-pam.org/library/Linux-PAM-$pkgver.tar.bz2
         https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
         pam_unix2-glibc216.patch
         pam_unix2-rm_selinux_check_access.patch)
-md5sums=('9dc53067556d2dd567808fd509519dd6'
+md5sums=('da4b2289b7cfb19583d54e9eaaef1c3a'
          'da6a46e5f8cd3eaa7cbc4fc3a7e2b555'
          'dac109f68e04a4df37575fda6001ea17'
          '6a0a6bb6f6f249ef14f6b21ab9880916')
