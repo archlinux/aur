@@ -1,0 +1,22 @@
+pkgbase = gmsh-bin
+	pkgdesc = a free 3D finite element grid generator with a build-in CAD engine and post-processor
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = http://gmsh.info/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+	makedepends = tar
+	makedepends = gendesk
+	makedepends = chrpath
+	depends = libxft
+	depends = libxinerama
+	depends = libxcursor
+	depends = glu
+	depends = libsm
+	provides = gmsh
+	conflicts = gmsh
+
+pkgname = gmsh-bin
+
