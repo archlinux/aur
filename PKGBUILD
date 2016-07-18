@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="http://radegast.org"
 license=('BSD')
 depends=('mono')
+replaces=('radegast')
 makedepends=('dos2unix' 'recode')
 source=(radegast.desktop radegast)
 sha256sums=('8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
