@@ -22,12 +22,16 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  if [ $CARCH == "armv6h" ];then
-  platform=rpi make WITH_DYNAREC=arm
+  odroid=$(grep -i 'odroid' /proc/cpuinfo)
+
+  if grep -q odroid /proc/cpuinfo ;then
+   platform=odroid make WITH_DYNAREC=arm
+  elif grep -q BCM /proc/cpuinfo ;then
+   platform=rpi make WITH_DYNAREC=arm
   elif [ $CARCH == "i686" ];then
-  make WITH_DYNAREC=x86
+   make WITH_DYNAREC=x86
   else
-  make WITH_DYNAREC=$CARCH
+   make WITH_DYNAREC=$CARCH
   fi
 }
 
