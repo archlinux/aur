@@ -1,6 +1,6 @@
 pkgbase = pget
 	pkgdesc = Parallel file download client
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/Code-Hex/pget
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = pget
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = pget-0.0.3.tar.gz::https://github.com/Code-Hex/pget/archive/0.0.3.tar.gz
-	sha256sums = 39234a2d56935d86467c9db0dabec21bb98d3c88138b13a87396b259923a2dd8
+	source = pget-0.0.4.tar.gz::https://github.com/Code-Hex/pget/archive/0.0.4.tar.gz
+	sha256sums = f9f0a6931674afe15646a05c2ba341b0c5e42d999e8abbe5f43b1009e91ef515
 
 pkgname = pget
 
