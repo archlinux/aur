@@ -2,7 +2,7 @@
 # Contributor: adagari <adam.garibay at gmail dot com>
 
 pkgname=ut4
-pkgver=2984440
+pkgver=3045522
 pkgrel=1
 pkgdesc="Pre-Alpha of the new Unreal Tournament based on Unreal Engine 4."
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(file://"UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
         "UnrealTournament4.desktop")
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
 sha512sums=(
-    'e7c8110dbbf56ca52848133f4d8960fe72f66de44409257efbea9311cdd959040b2cf299fd9d5ebcae42a0448a2d174345cf78a6f469c31b7a61ac43197e7103'
+    'ba5be673f736d308d5aa757b9514f86c96898d084e4a0506fc5be44a50363cd3758c204d1de6f453a0b5c0042fb5c8b0624b9303ad0859064997ae69fa75b99e'
     'f0e737f9d331e938b5b3433e8e182792339e5ec804923e78beed813e472ab24a45db25c01227e42256dece7170e967f6a87795c3d4591ebcfaa876cee12249b8'
     '0d0d92628c98113b4fd7ae2ce496fd679e90b115f701979edd99e9cb89826fd647cac15402ba3467755b96173330c7b47505d32798f926803bcf1beaf73f6942'
 )
