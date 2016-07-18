@@ -1,0 +1,39 @@
+--- a/src/dvb/dvbdevice.cpp	2011-04-17 21:17:19.000000000 +0200
++++ b/src/dvb/dvbdevice.cpp	2016-07-17 16:43:02.485477721 +0200
+@@ -353,7 +353,7 @@
+ 
+ 	switch (config->configuration) {
+ 	case DvbConfigBase::DiseqcSwitch: {
+-		char cmd[] = { 0xe0, 0x10, 0x38, 0x00 };
++		char cmd[] = { char(0xe0), 0x10, 0x38, 0x00 };
+ 		cmd[3] = 0xf0 | (config->lnbNumber << 2) | (horPolar ? 2 : 0) | (highBand ? 1 : 0);
+ 		backend->sendMessage(cmd, sizeof(cmd));
+ 		usleep(15000);
+@@ -391,15 +391,15 @@
+ 
+ 		if (angle >= 0) {
+ 			// east
+-			value = ((16 * angle * 180 / M_PI) + 0.5);
++			value = int ((16 * angle * 180 / M_PI) + 0.5);
+ 			value |= 0xe000;
+ 		} else {
+ 			// west
+-			value = ((16 * (-angle) * 180 / M_PI) + 0.5);
++			value = int ((16 * (-angle) * 180 / M_PI) + 0.5);
+ 			value |= 0xd000;
+ 		}
+ 
+-		char cmd[] = { 0xe0, 0x31, 0x6e, (value / 256), (value % 256) };
++		char cmd[] = { char(0xe0), 0x31, 0x6e, char(value / 256), char(value % 256) };
+ 		backend->sendMessage(cmd, sizeof(cmd));
+ 		usleep(15000);
+ 		moveRotor = true;
+@@ -407,7 +407,7 @@
+ 	    }
+ 
+ 	case DvbConfigBase::PositionsRotor: {
+-		char cmd[] = { 0xe0, 0x31, 0x6b, config->lnbNumber };
++		char cmd[] = { char(0xe0), 0x31, 0x6b, char(config->lnbNumber) };
+ 		backend->sendMessage(cmd, sizeof(cmd));
+ 		usleep(15000);
+ 		moveRotor = true;
