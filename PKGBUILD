@@ -20,7 +20,7 @@ source=("http://www.ultimatepp.org/downloads/upp-x11-src-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-md5sums=('7dac9835e946451a1bfb8e973b74905f'
+md5sums=('93403116ea918bb241df1a96fa9099a1'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
          '204e9ece27294b4b73cb3a31f0474d8d'
