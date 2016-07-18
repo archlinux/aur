@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-shell
-pkgver=0.6.90.20160327
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,9 +18,8 @@ makedepends=('gdb' 'extra-cmake-modules')
 conflicts=('hawaii-shell-git')
 groups=('hawaii')
 options=('debug')
-#source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-source=("https://codeload.github.com/hawaii-desktop/${pkgname}/legacy.tar.gz/5a84205994497c7a603074e7ad5120af4e9f4038")
-sha1sums=('c4f6f2cce7d1d8ee328c18e7986a0b29e4f65da2')
+source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('a758d67401e410d80f39c902d706bdbf7ebe2d51')
 
 prepare() {
 	mkdir -p build
@@ -28,8 +27,7 @@ prepare() {
 
 build() {
 	cd build
-	#cmake ../${pkgname}-${pkgver} \
-	cmake ../hawaii-desktop-hawaii-shell-5a84205 \
+	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=lib \
 		-DLIBEXEC_INSTALL_DIR=lib \
