@@ -1,27 +1,15 @@
-# This file is part of package arangodb-git.
-#
-# Description:
-#
-#  Used to start ArangoDB
-#
-#  A distributed open-source database with a flexible data model
-#  for documents, graphs, and key-values. Build high
-#  performance applications using a convenient sql-like query
-#  language or JavaScript/Ruby extensions.
-#
-#  http://www.arangodb.org
-#
+# systemd service copied from the arango AUR package
 
 [Unit]
 Description=ArangoDB
 After=syslog.target network.target
 
 [Service]
-Type=forking
+Type=simple
+User=arangodb
+Group=arangodb
 PIDFile=/var/run/arangodb/arangod.pid
-ExecStartPre=/usr/bin/install -g arangodb -o arangodb -d /var/run/arangodb
-ExecStart=/usr/bin/arangod -c /etc/arangodb/arangod.conf --pid-file /var/run/arangodb/arangod.pid --supervisor --uid arangodb --gid arangodb
+ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /var/run/arangodb/arangod.pid --temp.path /var/tmp/arangod3
 
 [Install]
 WantedBy=multi-user.target
-

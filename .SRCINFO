@@ -1,25 +1,25 @@
 pkgbase = arangodb-git
 	pkgdesc = A distributed open-source database with a flexible data model for documents, graphs, and key-values.
-	pkgver = p20140814
+	pkgver = 3.0.0.d20160622_1146.43546f5
 	pkgrel = 1
-	url = http://www.arangodb.org
+	url = https://www.arangodb.com/
 	install = arangodb.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = python2
 	makedepends = git
 	makedepends = go
+	makedepends = python2
+	makedepends = cmake
+	makedepends = clang
 	depends = openssl
-	depends = bash
+	depends = readline
 	depends = systemd
 	depends = icu
 	provides = arangodb
 	conflicts = arangodb
-	source = git://github.com/arangodb/arangodb:master
 	source = arangodb.service
-	md5sums = SKIP
-	md5sums = ccb8ede90277b4f78493c0466a797348
+	sha1sums = bc2830bd209c7659a7cde5ab8e7f860b62db74c4
 
 pkgname = arangodb-git
 
