@@ -31,7 +31,7 @@ source=('git://git.apache.org/spark.git'
 md5sums=( SKIP
          '9ffe1f9c4bb2ea4e5a75ab6469fe76d4'
          '8d34bd4cc946f46625597ca606da8ab6'
-         'f8cc449543df418b8adfcc36a3afb384'
+         '348c1550272ada89c982865c20dad9d6'
          '8ff953f0436209b6190add59703a34f0'
          '028472b82e9def7d5d409f008d064fe2'
          '99115eedc453c9b8ca04cca2e32e4537'
