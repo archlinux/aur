@@ -23,7 +23,7 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
-    cd "src/$pkgname"
+    cd "$srcdir/$pkgname"
 
     ./autogen.sh
     ./configure --prefix=/usr
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    cd "src/$pkgname"
+    cd "$srcdir/$pkgname"
 
     make DESTDIR="$pkgdir/" install
 }
