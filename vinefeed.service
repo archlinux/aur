@@ -1,0 +1,9 @@
+[Unit]
+Description=Vine Atom feed HTTP server
+
+[Service]
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/vinefeed
+
+[Install]
+WantedBy=multi-user.target
