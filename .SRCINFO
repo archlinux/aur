@@ -1,0 +1,15 @@
+pkgbase = razer-drivers-legacy-dkms
+	pkgdesc = Legacy linux kernel drivers to support various Razer Chroma devices.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/openrazer/razer-drivers-legacy
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/openrazer/razer-drivers-legacy.git
+	md5sums = SKIP
+
+pkgname = razer-drivers-legacy-dkms
+
