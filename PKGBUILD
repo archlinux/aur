@@ -1,5 +1,5 @@
 pkgname=kobalt
-pkgver=0.833
+pkgver=0.853
 pkgrel=1
 pkgdesc="A modern and versatile build system (for the JVM)."
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('Apache')
 depends=('java-environment' 'bash')
 makedepends=('unzip')
 source=("https://github.com/cbeust/kobalt/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha512sums=("0f719b6ba5c9be974b67774173a7441f029de58b5430daee6d5421e5b5259cfe0d0d794f773adce1335bbe3359ad4706d5d228d002e410d25cb2264a21b3ee13")
+sha512sums=("b8ece78957dbede2ac7439aca5ff8f6113fb13c1ed57c4b7a1f4535a5e45b850a3d09ac33fb0257ff3ac27796ec13b8dab237e174aaaaa4bb4ae4fbbf800b1ad")
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
