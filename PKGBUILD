@@ -2,10 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8
-_strver=0-8-0
-_tagver=0.8
-pkgrel=4
+pkgver=0.8.1
+_strver=0-8-1
+pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
 depends=(
@@ -47,16 +46,16 @@ sha256sums=(
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
 )
 source_i686=(
-  "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Mist-linux32-$_strver.zip"
+  "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux32-$_strver.zip"
 )
 sha256sums_i686=(
-  "d5ae27fb3bc0483156c531176fe9f9fe2d6d6ab281de8c46ba9acca2178f01c4"
+  "ac12b1ce1252c8256da489da5314985216e517a651cd4063ed79b1c960d23724"
 )
 source_x86_64=(
-  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${_tagver}/Mist-linux64-$_strver.zip"
+  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux64-$_strver.zip"
 )
 sha256sums_x86_64=(
-  "358b4fb3bd3e4c384f1c018cfc94841ddb862020d1a147780f35fb1361c6c285"
+  "2a3cf6e5ddfc46df75f78c4dc7bb2e6248fac2ce84cb2708882895b9f2eda1b7"
 )
 
 package() {
