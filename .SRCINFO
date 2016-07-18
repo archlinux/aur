@@ -1,0 +1,46 @@
+pkgbase = linux-ubuntu
+	pkgver = 4.4.0_31.50
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = tar
+	noextract = linux-headers-4.4.0-31_4.4.0-31.50_all.deb
+	noextract = linux-ubuntu.preset
+	noextract = linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	noextract = linux-image-extra-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	noextract = linux-headers-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	noextract = linux-image-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	noextract = linux-image-extra-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	noextract = linux-headers-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	options = !strip
+	source = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-4.4.0-31_4.4.0-31.50_all.deb
+	source = linux-ubuntu.preset
+	sha256sums = 04c6de52c7423924ffbcb0771e42795e2809d4b05dab34290382e7a24c3bdaed
+	sha256sums = 1117944cc09613f305f985f6e17f67c14bdaacb0e8ac2b9cbc5beef74c10763c
+	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-extra-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-4.4.0-31-generic_4.4.0-31.50_amd64.deb
+	sha256sums_x86_64 = 3b8dc893081dbb53868e9b71507d397388d2a4a465d1c892e587b1c4e4addad6
+	sha256sums_x86_64 = 451da56c1374895a0e3ac607a3c07a25b0e71fda894cc4dc74d9ab734e0bea12
+	sha256sums_x86_64 = f444b484cb983ac94a1d392cc8b172d058a157f99095503f851fc39db7801005
+	source_i686 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	source_i686 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-extra-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	source_i686 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-4.4.0-31-generic_4.4.0-31.50_i386.deb
+	sha256sums_i686 = 16365b61629a8d41496b06db06521f69cea274cd32eac9889a4e41bf7fec772c
+	sha256sums_i686 = 3e4900b1137915b742f7949e851b20e6c085022bae5fe77109f9e662cd37ab4b
+	sha256sums_i686 = 41e66e04f63fda9d57bd16f964020465590ce1df4e5c94ee4b07546a70699db3
+
+pkgname = linux-ubuntu
+	pkgdesc = Linux kernel image with Ubuntu Patches (binary)
+	install = linux-ubuntu.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+
+pkgname = linux-ubuntu-headers
+	pkgdesc = Header files and scripts for building modules for Linux-ubuntu kernel
+
