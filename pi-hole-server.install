@@ -5,6 +5,7 @@ post_install() {
     ==> ver.   2.7-1: lighttpd conf file is changed, please repeat the installation steps
     ==> first install/update run...
 EOF
+  cat /proc/net/if_inet6 2>&1 > /dev/null && touch /etc/pihole/.useIPv6
   chown -R http.http /srv/http/pihole
   systemd-tmpfiles --create pi-hole.conf
   /usr/bin/gravity.sh > /dev/null
@@ -22,3 +23,4 @@ post_remove() {
   rm -R /etc/pihole/
   rm /run/log/pihole.log
 }
+
