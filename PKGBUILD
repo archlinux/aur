@@ -2,7 +2,7 @@
 
 pkgname=libretro-mupen64plus-git
 _gitname=mupen64plus-libretro
-pkgver=3064.a0158bd
+pkgver=4135.ba9f101
 pkgrel=1
 pkgdesc="libretro implementation of mupen64plus with dynarec (even for rpi)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
