@@ -1,7 +1,7 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_1434_g6a78217
+pkgver=1.3.0_1471_gac134d3
 pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 source=("http://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha256sums=('c35fc7372bb4ffac84605cc09e670dfb2fc6f85692f7dd4f3596c0539d91f98f')
+sha256sums=('098d8db81c74e02c3e57ddee5ef10a93622403e5cd3816ee597d21c17d185cec')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
@@ -50,7 +50,6 @@ package() {
 
     # plugins
     install -m755 -D ./release/plugins/liblink.so $pkgdir/usr/lib/mumble/liblink.so
-    install -m755 -D ./release/plugins/libmanual.so $pkgdir/usr/lib/mumble/libmanual.so
 
     # other
     install -m755 -d $pkgdir/usr/share/man/man1
