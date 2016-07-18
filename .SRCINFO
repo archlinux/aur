@@ -1,0 +1,28 @@
+pkgbase = zipper.app
+	pkgdesc = Multi-format archive extractor with compression services.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.nongnu.org/gap/zipper/index.html
+	arch = i686
+	arch = x86_64
+	groups = gnustep
+	license = GPL
+	makedepends = gcc-objc
+	makedepends = gnustep-make
+	depends = gnustep-base
+	depends = gnustep-gui
+	optdepends = arj
+	optdepends = bzip2
+	optdepends = gzip
+	optdepends = lha
+	optdepends = p7zip
+	optdepends = rar
+	optdepends = tar
+	optdepends = unarj
+	optdepends = unrar
+	optdepends = zoo
+	source = http://savannah.nongnu.org/download/gap/Zipper-1.5.tar.gz
+	sha256sums = 3ecf9cd7e2242c62e38a4933ce4f3da35e90f52ca94ac030a1f2a717e6561392
+
+pkgname = zipper.app
+
