@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=greenisland
-pkgver=0.7.90.20160327
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,9 +12,8 @@ depends=('systemd' 'wayland-protocols' 'libdrm' 'libinput' 'qt5-declarative'
 conflicts=('greenisland-git')
 makedepends=('gdb' 'extra-cmake-modules' 'xcb-util-cursor' 'libxcursor')
 options=('debug')
-#source=("https://github.com/greenisland/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-source=("https://codeload.github.com/greenisland/greenisland/legacy.tar.gz/b37dfb679026c0ecee5786b93d3976ae483963d0")
-sha1sums=('ffe8aa31ce7616e284d3ce6f885dd3aeb57a69b0')
+source=("https://github.com/greenisland/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('13c10cebc6881946c065d5ccc2bb1558feac4db3')
 
 prepare() {
 	mkdir build
@@ -22,8 +21,7 @@ prepare() {
 
 build() {
 	cd build
-	#cmake ../${pkgname}-${pkgver} \
-	cmake ../greenisland-greenisland-b37dfb6 \
+	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=lib \
 		-DLIBEXEC_INSTALL_DIR=lib \
