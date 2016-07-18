@@ -10,8 +10,8 @@ arch=("any")
 url="https://github.com/ODiogoSilva/TriFusion"
 license=("GPL3")
 conflicts=("trifusion-git" "trifusion")
-source=("https://github.com/ODiogoSilva/${_pkgname}/releases/download/${pkgver}/trifusion-bin-${pkgver}-arch.tar.xz")
-md5sums=("2b3d92586e33b534dccd0243b4b40cd5")
+source=("https://github.com/ODiogoSilva/${_pkgname}/releases/download/${pkgver}/trifusion-bin-${pkgver}-linux-arch.tar.xz")
+md5sums=("038c551e032f1bfa9b8325f6a3286c72")
 
 package() {
 	cd ${srcdir}
