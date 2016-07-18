@@ -1,7 +1,7 @@
 # Maintainer: Marcelo Garlet Millani <marcelogmillani at gmail dot com>
 pkgname=boomange
-pkgver=0.1.3.1
-pkgrel=2
+pkgver=0.1.3.2
+pkgrel=1
 pkgdesc='A Bookmarks manager with a HTML generator'
 url="http://hackage.haskell.org/package/${pkgname}"
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=('gmp' 'libffi')
 makedepends=('haskell-simtreelo' 'haskell-descrilo' 'ghc')
 ###
 source=( "http://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz" )
-sha256sums=('a0e249f91c62048a2cbf1d2935deab37ff214099634c15bb308a41fa72a3e1e9')
+sha256sums=('0a0d3eab319a67e76c0552a6d7bee457b7e102a2b10a9ba56b186dccfa008069')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
