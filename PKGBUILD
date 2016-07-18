@@ -4,7 +4,7 @@
 # Contributor: Danie Roux <accounts@danieroux.com>
 
 pkgname=etckeeper-git
-pkgver=1.18.3.r27.geeae1aa
+pkgver=1.18.5.r1.g58ded87
 pkgrel=1
 pkgdesc='collection of tools to let /etc be stored in a git, hg or bzr repository - git checkout'
 arch=('any')
@@ -50,6 +50,6 @@ build() {
 package() {
 	cd "${srcdir}/etckeeper/"
 
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="${pkgdir}" systemddir=/usr/lib/systemd/system install
 }
 
