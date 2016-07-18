@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.6.0a0.r102277+.fe168c2b5e95+
+pkgver=3.6.0a0.r102398+.646ad4894c32+
 pkgrel=1
 _pybasever=3.6
 _pkgname=cpython
@@ -31,9 +31,6 @@ prepare() {
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
 
-  # http://bugs.python.org/issue26662
-  make touch
-
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
@@ -53,6 +50,9 @@ build() {
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
               --with-system-ffi
+
+  # http://bugs.python.org/issue26662
+  make touch
 
   make
 }
