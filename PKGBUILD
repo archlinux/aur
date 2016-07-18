@@ -20,7 +20,7 @@ _git="git://github.com/$_pkgname/$_pkgname"
 
 #
 pkgname=${_pkgname}-git
-pkgver=3.0.0.d20160622_1146.43546f5
+pkgver=3.0.3.d20160717_0823.31c6b72
 pkgrel=1
 
 pkgdesc="A distributed open-source database with a flexible data model for documents, graphs, and key-values."
@@ -73,12 +73,12 @@ if [ $_shallow_git_copy ] ; then
   
     cd "$srcdir"
     # copying/updating repo to $srcdir
-    if [[ -d "$_pkgname" ]]; then
-      cd "$_pkgname"
-      git pull origin "$_branch"
-    else
+    #if [[ -d "$_pkgname" ]]; then
+    #  cd "$_pkgname"
+    #  git pull origin "$_branch"
+    #else
       git clone "$startdir/$_pkgname" "$_pkgname"
-    fi
+    #fi
   }
 fi
 

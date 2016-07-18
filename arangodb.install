@@ -19,7 +19,7 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  #post_install $1
 
   echo
   echo ">> You might need to reload the systemd service definition:"
@@ -31,9 +31,7 @@ post_upgrade() {
   echo "     sudo systemctl restart arangodb.service"
   echo
   echo ">> Take a look at \`/var/log/arangodb3/arangod.log' to make sure the server"
-  echo "   is running as expected:"
-  echo
-  echo "     sudo systemctl restart arangodb.service"
+  echo "   is running as expected."
 }
 
 pre_remove() {
