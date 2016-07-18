@@ -12,7 +12,7 @@ pkgname=("${pkgbase}-base"
          "${pkgbase}-tablet"
          "${pkgbase}-xrn")
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 declare -Ag _pkgvers
 _pkgvers[${pkgbase}-base]=$pkgver
 _pkgvers[${pkgbase}-fa-base]=0.7
@@ -34,6 +34,7 @@ depends=('java-environment>=7' 'bash')
 _baseurl="http://www.informatik.uni-hamburg.de/TGI/${pkgbase}/${pkgver}"
 source=("$_baseurl/${pkgbase}${pkgver}base.zip"
         'renew.sh'
+        'renewexport.sh'
         'compilestub.sh'
         'makestub.sh'
         'loadrenew.sh'
@@ -56,6 +57,7 @@ for subpkg in ${pkgname[*]}; do
 done
 sha256sums=('facc2726120c52fecb84540b1d53d20513a4fe2d0d57c547c624072a79d9797b'
             'dbe0b1ee17634d98d0b8b8ef7f862d6b56421ae6d92867800e4a00cf0ff3d17d'
+            '901de7a27ed88e724571ff2acff1879b9ec29cfa82fd3a87f816991b16426075'
             'e33ece1a400120aa4a11915f881b413adc6aa958be889e2fb7a55aaf44ab4b60'
             '9ad46fc4ecf80d7ceea5afc4f95c91d0995f605315075d4735e6f0980509082d'
             'f2da435e28be3424e13147681854173f193e9e1a34f7e5217ecbae503012e073'
@@ -77,6 +79,7 @@ package_renew-base() {
   install -D loadrenew.sh "${pkgdir}/usr/bin/loadrenew"
   install -D makestub.sh "${pkgdir}/usr/bin/makestub"
   install -D renew.sh "${pkgdir}/usr/bin/renew"
+  install -D renewexport.sh "${pkgdir}/usr/bin/renewexport"
 
   cd ${pkgbase}${pkgver}
 
