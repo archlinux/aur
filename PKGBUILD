@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-workspace
-pkgver=0.6.90
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Applications for the Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,9 +13,8 @@ conflicts=('hawaii-workspace-git')
 groups=('hawaii')
 options=('debug')
 install=$pkgname.install
-#source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-source=("https://codeload.github.com/hawaii-desktop/${pkgname}/legacy.tar.gz/3f301004ddd506834b1f008c3514275d33f8c74d")
-sha1sums=('9dc3e46b8f65b5619b5a6c6ab4ca5425e4b7cab2')
+source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha1sums=('92f2d4c61b3185d44a40093d2d2d37bb1644d5ea')
 
 prepare() {
 	mkdir -p build
@@ -23,8 +22,7 @@ prepare() {
 
 build() {
 	cd build
-	#cmake ../${pkgname}-${pkgver} \
-	cmake ../hawaii-desktop-hawaii-workspace-3f30100 \
+	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=lib \
 		-DLIBEXEC_INSTALL_DIR=lib \
