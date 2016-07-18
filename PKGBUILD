@@ -7,8 +7,8 @@
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=367.27
-_extramodules=extramodules-4.5.7-grsec
-pkgrel=2
+_extramodules=extramodules-4.6.4-grsec
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -46,7 +46,7 @@ DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[3]="nvidia-drm"\
 DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 echo -e "# Only build for scoped kernels." >> dkms.conf
-echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.5.*grsec$\0042" >> dkms.conf
+echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.6.*grsec$\0042" >> dkms.conf
 }
 
 build() {
@@ -57,7 +57,7 @@ build() {
 
 package_nvidia-grsec() {
     pkgdesc="NVIDIA drivers for linux-grsec kernel"
-    depends=('linux-grsec>=4.5' 'linux-grsec<4.6' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-grsec>=4.6' 'linux-grsec<4.7' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia-grsec.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
