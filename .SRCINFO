@@ -1,0 +1,14 @@
+pkgbase = craftbukkit-plugin-vanishnopacket
+	pkgdesc = The unhackable Vanish plugin
+	pkgver = 3.20
+	pkgrel = 1
+	url = http://dev.bukkit.org/bukkit-plugins/vanish/
+	arch = any
+	license = Apache
+	makedepends = dos2unix
+	depends = craftbukkit>=1.7.9
+	source = http://dev.bukkit.org/media/files/911/277/VanishNoPacket.jar
+	sha256sums = e7d9805f16ade6dc0c97e019c7dc17c28f9047b7b06fa4d9ac3f053cc845020f
+
+pkgname = craftbukkit-plugin-vanishnopacket
+
