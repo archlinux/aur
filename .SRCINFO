@@ -1,0 +1,14 @@
+pkgbase = craftbukkit-plugin-lockette
+	pkgdesc = The sign-based container and door lock for Bukkit!
+	pkgver = 1.8.33
+	pkgrel = 1
+	url = http://dev.bukkit.org/bukkit-plugins/lockette/
+	arch = any
+	license = NPOSL
+	makedepends = dos2unix
+	depends = craftbukkit
+	source = http://dev.bukkit.org/media/files/920/598/Lockette.jar
+	sha256sums = 18af84556dcba961b4cee1099793cb5ffa450e618799c96e64313fd9ba2a465e
+
+pkgname = craftbukkit-plugin-lockette
+
