@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-workspace-git
-pkgver=20160428.cd41612
+pkgver=20160706.858ce72
 pkgrel=1
 pkgdesc="Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
