@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=2.7
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://github.com/jacobsalmela/pi-hole"
 depends=('dnsmasq' 'openresolv')
 conflicts=('pi-hole-server')
 install=$pkgname.install
+backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	configuration
@@ -21,7 +22,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('1caf939ad916be62b84890ca357389ec'
+md5sums=('9542c877ebd348aa15a62cd50a08c1c9'
          '925e5f23e36320ec13f55cff3f1bdcb7'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
@@ -33,22 +34,23 @@ md5sums=('1caf939ad916be62b84890ca357389ec'
 prepare() {
   _ssc="/tmp/sedcontrol"
 
-  # change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole)
-  sed -n "/^function gravity_reload() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole)" && return 1 ; fi
-  sed -i '/^function gravity_reload() {/a sed -i "s/^[0-9\\.]\\+\\s/0.0.0.0 /g" /etc/pihole/gravity.list' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  # change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
+  sed -n "/if \[\[ -f \$piholeIPfile \]\]\;then/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 1" && return 1 ; fi
+  sed -i '/if \[\[ -f \$piholeIPfile \]\]\;then/,+15d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
-# -----------------
+  sed -n "/blacklistScript=\/opt\/pihole\/blacklist.sh/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 2" && return 1 ; fi
+  sed -i '/blacklistScript=\/opt\/pihole\/blacklist.sh/a piholeIP="0.0.0.0"\npiholeIPv6="::"' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
-  # undebianizing
-  sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 1" && return 1 ; fi
-  sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 2" && return 1 ; fi
-  sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 3" && return 1 ; fi
-  sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 4" && return 1 ; fi
+  sed -i 's|ipv4addr=\"\$piholeIP\"|ipv4addr=\"0.0.0.0\"|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 3" && return 1 ; fi
+  sed -i 's|ipv6addr=\"\$piholeIPv6\"|ipv6addr=\"::\"|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 4" && return 1 ; fi
+  sed -i 's|ipv4addr=\"\$piholeIP\"|ipv4addr=\"0.0.0.0\"|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 5" && return 1 ; fi
+  sed -i 's|ipv6addr=\"\$piholeIPv6\"|ipv6addr=\"::\"|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6 6" && return 1 ; fi
 
 # -----------------
 
@@ -153,6 +155,7 @@ package() {
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
+  install -Dm644 useIPv6 "$pkgdir"/etc/pihole/.useIPv6
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
   install -Dm644 dnsmasq.complete "$pkgdir"/etc/pihole/configs/dnsmasq.complete || return 1
