@@ -2,13 +2,13 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.4.r40.gd920f8b
+pkgver=2.5.4.r66.geb774d8
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net"
 license=('GPL')
-depends=('fftw' 'fltk' 'lash' 'liblo' 'portaudio' 'mxml' 'ntk-git')
+depends=('fftw' 'fltk' 'ladspa' 'lash' 'liblo' 'portaudio' 'mxml' 'ntk-git')
 makedepends=('git' 'cmake' 'dssi' 'gendesk' 'setconf')
 optdepends=('dssi: dssi plugin')
 provides=("${pkgname%-*}")
