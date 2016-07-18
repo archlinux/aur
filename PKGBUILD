@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-shell-git
-pkgver=20160712.533ca81
+pkgver=20160719.262b30e
 pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
