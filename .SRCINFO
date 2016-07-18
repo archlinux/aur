@@ -1,0 +1,13 @@
+pkgbase = perl-html-tableparser
+	pkgdesc = HTML::TableParser - Extract data from an HTML table
+	pkgver = 0.40
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = perl-html-parser
+	source = http://search.cpan.org/CPAN/authors/id/D/DJ/DJERIUS/HTML-TableParser-0.40.tar.gz
+	md5sums = SKIP
+	sha256sums = 34e5782ef23c0d9c10c63ad3cc79f5e2769f6e169caf38792a0ed5457437ebbb
+
+pkgname = perl-html-tableparser
+
