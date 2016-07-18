@@ -1,14 +1,14 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcodecs-git
-pkgver=r57.b88a81a
+pkgver=r134.b78683f
 pkgrel=2
 pkgdesc='Plugins allowing Qt applications to access further types of images'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcodecs'
 license=('LGPL')
 depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
+makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
 groups=('kf5')
 conflicts=(kcodecs)
 provides=(kcodecs)
