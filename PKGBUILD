@@ -3,8 +3,8 @@
 _pkgname=idos-package-updater-script
 pkgname="${_pkgname}"
 epoch=0
-pkgver=20160706
-pkgrel=2
+pkgver=20160718
+pkgrel=1
 pkgdesc="Bash script which automates the process of updating installed IDOS timetable browser related packages by reinstalling and thus fetching the newest version."
 arch=('any')
 license=('custom')
@@ -34,7 +34,7 @@ source=(
 )
 
 sha256sums=(
-  "c7b82eb0e686a20ffe51dc3544f2fe4c3d8f892c714ac3a7b5c7dcc7376140d2"
+  "7af76c65a5a30852346746a268c597c9de5b0278f020de636321a93c04bc5c5b"
   "c3cbff25307e905545788f5c74cc137d79706c60549092f2a37919b93cf55ee3"
 )
 
