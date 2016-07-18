@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('GPL2')
@@ -155,7 +155,6 @@ package() {
   install -dm777 "$pkgdir"/etc/pihole
   install -dm755 "$pkgdir"/etc/pihole/configs
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
-  install -Dm644 useIPv6 "$pkgdir"/etc/pihole/.useIPv6
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
   install -Dm644 dnsmasq.complete "$pkgdir"/etc/pihole/configs/dnsmasq.complete || return 1
