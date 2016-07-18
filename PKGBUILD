@@ -4,14 +4,14 @@
 
 pkgbase=python-pypuppetdb
 pkgname=('python2-pypuppetdb' 'python-pypuppetdb')
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('any')
 url='https://github.com/puppet-community/pypuppetdb'
 license=('APACHE')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=("https://github.com/puppet-community/pypuppetdb/archive/v${pkgver}.tar.gz")
-sha512sums=('795969ce1aebc6a75752f7d011c442ea1e96a7904eaed8b1041103df8738fa7c44062e3e9baee8ba8b8591bea50b4707735dd202b628025963a19b4674d4751e')
+sha512sums=('7ad85971c7582a20e7d357aff456f5ed63c31e887573e754cb818c21148a3997c6dd3e2287726bffd339f440535fb8bc9d3423ef86ea834f914b5a5d8f3fef59')
 
 package_python2-pypuppetdb() {
   pkgdesc='Python library for working with the PuppetDB API (Python 2 version)'
