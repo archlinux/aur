@@ -1,8 +1,8 @@
 pkgbase = arduino
 	pkgdesc = Arduino prototyping platform SDK
 	pkgver = 1.6.9
-	pkgrel = 2
-	url = https://arduino.cc/en/Main/Software
+	pkgrel = 3
+	url = https://github.com/arduino/Arduino
 	install = arduino.install
 	arch = i686
 	arch = x86_64
@@ -10,20 +10,16 @@ pkgbase = arduino
 	arch = armv7h
 	license = GPL
 	license = LGPL
+	makedepends = jdk8-openjdk
+	makedepends = apache-ant
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info
+	depends = jre8-openjdk
 	depends = avrdude
-	options = !strip
-	options = staticlibs
-	source_i686 = https://downloads.arduino.cc/arduino-1.6.9-linux32.tar.xz
-	sha256sums_i686 = b164905f281ad34ca4ca0d58b2b4c0d67d8125dbcd43ad73d536effd02ef8e56
-	source_x86_64 = https://downloads.arduino.cc/arduino-1.6.9-linux64.tar.xz
-	sha256sums_x86_64 = 8da3920fe9e168bcf3fe31fef9e1f8454ba5366e7f2e297cf264485e59e8a1a0
-	source_armv6h = https://downloads.arduino.cc/arduino-1.6.9-linuxarm.tar.xz
-	sha256sums_armv6h = 6a960d8a2e9559fa7496ee7341be81e7ec91e769beeb63a5de8d1f740996e53a
-	source_armv7h = https://downloads.arduino.cc/arduino-1.6.9-linuxarm.tar.xz
-	sha256sums_armv7h = 6a960d8a2e9559fa7496ee7341be81e7ec91e769beeb63a5de8d1f740996e53a
+	provides = arduino
+	source = https://github.com/arduino/Arduino/archive/1.6.9.tar.gz
+	sha512sums = 92b3508068e3aae6a88c3a395d0906fb63d2fd8ee20d003173b96f3f0ff6851eddcdb77c6349dfec3ad0ee36976f53432c643f56724490e9187d4af049fd4bf8
 
 pkgname = arduino
 
