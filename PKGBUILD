@@ -2,7 +2,7 @@
 # http://github.com/fukawi2/aur-packages
 
 pkgname=quickrdp
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Connection manager program for your remote desktop, telnet, SSH or VNC connections."
 arch=('i686' 'x86_64')  # untested on i686; please let me know if it works
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('wxgtk' 'curl')
 optdepends=('rdesktop: remote desktop support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arnestig/quickrdp/archive/$pkgver.tar.gz")
-md5sums=('92f6c355d1945ab8856ba2baa88aecac')
+md5sums=('e9d7c6863c2081f0a4dab43712a6fccb')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
