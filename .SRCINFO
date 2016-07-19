@@ -1,0 +1,30 @@
+pkgbase = animewatch-pyqt5
+	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt5-WebEngine
+	pkgver = 3.0.0.r12.0840967
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = qt5-webengine
+	depends = python-pyqt5
+	depends = python-pycurl
+	depends = python-urllib3
+	depends = curl
+	depends = libnotify
+	depends = python-dbus
+	depends = python-beautifulsoup4
+	depends = python-psutil
+	depends = python-pillow
+	depends = python-lxml
+	depends = mpv
+	depends = mplayer
+	depends = ffmpegthumbnailer
+	depends = sqlite3
+	depends = python-pytaglib
+	conflicts = animewatch-pyqt4
+	source = git+https://github.com/kanishka-linux/AnimeWatch.git
+	md5sums = SKIP
+
+pkgname = animewatch-pyqt5
+
