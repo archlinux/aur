@@ -16,7 +16,9 @@ md5sums_i686=('7f8805fa8143a8683d855c5f937b3186')
 md5sums_x86_64=('2d0926595b8e67bf81d773517bf225b7')
 
 package() {
-	bsdtar xf data.tar.xz
-	chmod -R g-w usr
-	mv usr "${pkgdir}"
+  bsdtar xf data.tar.xz
+  chmod -R g-w usr
+  mv usr "${pkgdir}"
 }
+
+# vim:set ts=2 sw=2 et:
