@@ -1,0 +1,16 @@
+pkgbase = perl-class-multimethods
+	pkgdesc = Support multimethods and function overloading in Perl
+	pkgver = 1.70
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Multimethods
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Class-Multimethods-1.70.tar.gz
+	md5sums = 5fdc79daa81b102b956b1a61531fd6a7
+	sha512sums = 41a6e40e7cebd1f4273a8d410dda0a7fda1d235ed86902a18505274c7b7d9170921a02b5a4328c0a0cb0820455a3376b8e78f453b38af13f184c2f8908253b44
+
+pkgname = perl-class-multimethods
+
