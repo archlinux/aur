@@ -1,7 +1,7 @@
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler"
 pkgname="zinc"
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 url="https://github.com/typesafehub/zinc"
 arch=('any')
 license=('Apache')
@@ -13,6 +13,9 @@ source=(
     "zincer.sh" # server launcher
     "zincer.conf" # service env vars
     "zincer.service" # systemd service
+)
+backup=(
+    'etc/conf.d/zincer.conf'
 )
 md5sums=(
     'SKIP'
