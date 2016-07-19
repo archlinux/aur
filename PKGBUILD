@@ -3,7 +3,7 @@
 pkgname="php-cairo-git"
 _pkgname=${pkgname%-git}
 __pkgname=${_pkgname#php-}
-pkgver=1.0.0_dev.r9.9662114
+pkgver=1.0.0_dev.r9.g9662114
 pkgrel=1
 pkgdesc="PHP Object Oriented interface to Cairo Graphics library."
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
     set -o pipefail
     release="$(grep VERSION src/php_cairo.h | cut -f2 -d\" | tr - _)"
     hash="$(git blame src/php_cairo.h | grep VERSION | cut -f1 -d\ )"
-    revision="$(git rev-list --count $hash..HEAD).$(git rev-parse --short HEAD)"
+    revision="$(git rev-list --count $hash..HEAD).g$(git rev-parse --short HEAD)"
     printf "%s.r%s" "$release" "$revision"
   )
 }
