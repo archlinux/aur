@@ -1,8 +1,8 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=flatcam
 _pkgname=FlatCAM
-pkgver=8.4.1
-pkgrel=3
+pkgver=8.5
+pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG)"
 arch=('any')
 url="http://flatcam.org"
@@ -12,7 +12,7 @@ depends=('tk' 'python2-simplejson' 'python2-pyqt4' 'python2-scipy' 'python2-matp
 source=("https://bitbucket.org/jpcgt/$pkgname/downloads/$_pkgname-$pkgver.zip"
 		"$pkgname"
 		"$pkgname.desktop")
-md5sums=('c22318217a7c2383e1581487d3fd6404'
+md5sums=('4a758880b5122ff146c22a7ad0fa563f'
          '80700f0bb07c959dc3019d9664472387'
          '3ceea80a75a2bcfecc348a7399731c7c')
 
