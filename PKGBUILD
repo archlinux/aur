@@ -16,7 +16,7 @@ depends=('')
 
 source=(teamdrive.desktop)
 #source_i686=("http://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/${pkgver}/TMDR/linux/Install-TeamDrive-${pkgver}_TMDR.run")
-source_x86_64=("http://s3download.teamdrive.net.s3.amazonaws.com/${pkgver}/TMDR/linux-x86_64/Install-TeamDrive-${pkgver}_TMDR.run")
+source_x86_64=("http://s3download.teamdrive.net.s3.amazonaws.com/4.2.1501/TMDR/linux-x86_64/Install-TeamDrive-4.2.0.1501_TMDR.run")
 
 sha256sums=('f3b06b1d5f285e6a7c5db19fc441da3f82062a1c529b17137d19e5450b6b314f')
 #sha256sums_i686=('4ccc5d00788cc44bd76dbc8fb40c2cd6335ab4a955ad37a75d13d499e30b85b1')
@@ -32,7 +32,8 @@ build() {
 package() {
     ./Install-TeamDrive-${pkgver}_TMDR.run --mode unattended --prefix ${pkgdir}/opt/${pkgname}
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    rm -f "${pkgdir}/opt/${pkgname}/Uninstall TeamDrive 3.desktop"
+    rm -f "${pkgdir}/opt/${pkgname}/Uninstall TeamDrive.desktop"
     rm -f "${pkgdir}/opt/${pkgname}/uninstall"
 }
+
 
