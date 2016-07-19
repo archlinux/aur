@@ -1,8 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=qmc2-svn
-pkgname=('qmc2-common-svn' 'qmc2-sdlmame-svn' 'qmc2-arcade-svn')
-pkgver=0.62.7449
+pkgname=('qmc2-common-svn'
+         'qmc2-sdlmame-svn'
+         'qmc2-arcade-svn'
+         )
+pkgver=0.66.7702
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME. (SVN version)"
 url='http://qmc2.arcadehits.net/wordpress'
@@ -24,7 +27,7 @@ makedepends=('subversion'
 source=("qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk")
 sha1sums=('SKIP')
 
-_buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=0 CCACHE=1"
+_buildopts="PREFIX=/usr MAN_DIR=/usr/share/man QMAKE=/usr/bin/qmake-qt5 LRELEASE=/usr/bin/lrelease-qt5 LUPDATE=/usr/bin/lupdate-qt5 JOYSTICK=1 SDL=2 LIBARCHIVE=1 WIP=1 CCACHE=1"
 
 pkgver() {
   cd qmc2
@@ -34,7 +37,7 @@ pkgver() {
 
 build() {
   msg2 "Build QMC2"
-  make -C qmc2 ${_buildopts} all arcade tools man
+  LC_ALL=C make -C qmc2 ${_buildopts} all arcade tools man
   msg2 "build QMC2 Options Editor"
   (cd qmc2/tools/qmc2_options_editor_java; sh build.sh)
 }
