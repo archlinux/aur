@@ -10,12 +10,11 @@ depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
-install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz{,.asc}
         openvpn@.service)
 sha256sums=('0f5f1ca1dc5743fa166d93dd4ec952f014b5f33bafd88f0ea34b455cae1434a7'
             'SKIP'
-            '47a4ee993f8aaa7370e9a84384fcfc993fd76aa4db11c46629b156d0c5fad49a')
+            '28840ef1e4c7c80da1d9de3224fad8e8540e0cf58326d65227cf3ce7ab867990')
 validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3')  # Samuli Seppänen
 
 build() {
