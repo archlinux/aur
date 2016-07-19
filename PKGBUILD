@@ -11,10 +11,10 @@ license=('GPL3')
 depends=('openbox')
 provides=("${pkgname}=${pkgver}")
 
-# Using mirror, original source returns HTTP 403
-# http://box-look.org/CONTENT/content-files/66397-Surreal.tar.bz2
+# Mirror
+# https://www.dropbox.com/s/k9k98zsrcjw7ue7/66397-Surreal.tar.bz2
 source=(
-	'https://www.dropbox.com/s/k9k98zsrcjw7ue7/66397-Surreal.tar.bz2'
+	'https://dl.opendesktop.org/api/files/download/id/1460769300/66397-Surreal.tar.bz2'
 	'osd_tweaks.patch'
 )
 sha512sums=(
