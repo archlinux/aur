@@ -1,4 +1,5 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+
 pkgname=python-pkgbuild-git
 pkgver=r7.7afcd99
 pkgrel=1
@@ -22,3 +23,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
+# vim:set ts=2 sw=2 et:
