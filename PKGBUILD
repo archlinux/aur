@@ -15,7 +15,6 @@ url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'jre8-openjdk' 'avrdude')
 makedepends=('jdk8-openjdk' 'apache-ant')
-install="arduino.install"
 provides=('arduino')
 conflicts=('arduino-bin')
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz")

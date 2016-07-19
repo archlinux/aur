@@ -3,7 +3,6 @@ pkgbase = arduino
 	pkgver = 1.6.9
 	pkgrel = 3
 	url = https://github.com/arduino/Arduino
-	install = arduino.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
