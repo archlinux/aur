@@ -2,7 +2,7 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=20160624
+pkgver=20160719
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
