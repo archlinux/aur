@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch-git
-pkgver=1.0.r1.gb13f0ad
+pkgver=1.3.r0.gdf24e0b
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
