@@ -1,7 +1,7 @@
 pkgbase = whatsie
 	pkgdesc = A simple & beautiful desktop client for WhatsApp Web.
 	pkgver = 2.0.18
-	pkgrel = 
+	pkgrel = 618
 	url = https://whatsie.chat/
 	install = whatsie.install
 	arch = x86_64
