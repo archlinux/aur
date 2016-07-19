@@ -1,14 +1,13 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=f3-git
-pkgver=6.0.r13.g2cd7e41
+pkgver=6.0.r16.gd00b9f2
 pkgrel=1
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('i686' 'x86_64')
 url="http://oss.digirati.com.br/f3/"
 license=('GPL3')
-depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'parted' 'systemd')
 provides=('f3')
 conflicts=('f3')
 source=('git+https://github.com/AltraMayor/f3.git'
