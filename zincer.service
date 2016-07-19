@@ -8,7 +8,7 @@ EnvironmentFile=/etc/conf.d/zincer.conf
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=zincer
-ExecStart=/opt/zincer.sh
+ExecStart=/opt/zinc/zincer.sh
 Restart=on-failure
 RestartSec=3s
 
