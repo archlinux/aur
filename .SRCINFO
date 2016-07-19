@@ -16,6 +16,7 @@ pkgbase = arduino-bin
 	depends = avrdude
 	provides = arduino
 	conflicts = arduino
+	conflicts = arduino-git
 	options = !strip
 	options = staticlibs
 	source_i686 = https://downloads.arduino.cc/arduino-1.6.9-linux32.tar.xz
