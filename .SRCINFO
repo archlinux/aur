@@ -1,0 +1,26 @@
+pkgbase = xfont2-git
+	pkgdesc = X.org xfont2 - Git version
+	pkgver = g33a98f2.r324.
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/xorg/lib/libXfont
+	arch = x86_64
+	groups = xorg
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	makedepends = git
+	depends = glibc
+	depends = systemd-tools
+	depends = mtdev
+	provides = xfont2=g33a98f2.r324.
+	provides = xfont2
+	conflicts = xorg-server<1.18.0
+	conflicts = xfont2
+	options = !libtool
+	options = !makeflags
+	source = git://anongit.freedesktop.org/xorg/lib/libXfont
+	md5sums = SKIP
+
+pkgname = xfont2-git
+
