@@ -8,6 +8,7 @@ url="http://www.ibm.com/"
 license=("IBM Licensed Materials")
 groups=('Cell Simulator')
 depends=(blt perl)
+optdepends=('xterm: console support')
 options=(!strip)
 source_i686=(systemsim-cell-3.1-25.f9.i386.rpm)
 source_x86_64=(systemsim-cell-3.1-25.f9.x86_64.rpm)
