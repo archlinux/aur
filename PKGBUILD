@@ -18,12 +18,14 @@ prepare() {
 package_python-nexpy() {
     depends=('python-numpy' 'python-h5py' 'python-scipy' 'python-nexusformat' 'jupyter' 'python-matplotlib')
     cd "$srcdir/$_pkgname-$pkgver"
+    sed -i 's/jupyter/jupyter_core/' src/nexpy/requires.py # Can't find jupyter at run time
     python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-nexpy() {
     depends=('python2-numpy' 'python2-h5py' 'python2-scipy' 'python2-nexusformat' 'ipython2-notebook' 'python2-matplotlib')
     cd "$srcdir/$_pkgname-$pkgver-py2"
+    sed -i 's/jupyter/jupyter_core/' src/nexpy/requires.py # Can't find jupyter at run time
     python2 setup.py install --root="$pkgdir/" --optimize=1
     # Conflict with python3 version
     mv $pkgdir/usr/bin/nexpy{,2}
