@@ -12,6 +12,7 @@ source=("sjk.jar::https://bintray.com/artifact/download/aragozin/generic/${pkgna
         "sjk")
 sha256sums=('de61af81e073c494cc36b054f98688ac4f4f039a04fda6138fdc2dfc6b67332d'
             '62d6e80ec8d66bd2b68760599d5b2320910d961405d85560de09481bbfb0d7c0')
+noextract=('sjk.jar')
 
 package() {
   install -m644 -D "${pkgname}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
