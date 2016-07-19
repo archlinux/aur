@@ -96,7 +96,7 @@ echo ""
 
 
 ### Reinstall installed and available packages:
-# yaourt -S --noconfirm ${installed_and_available}
+yaourt -S --noconfirm ${installed_and_available}
 
 
 ### Get version numbers of installed packages after upgrade:
