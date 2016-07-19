@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/baskerville/${pkgname}"
 license=('custom:Unlicense')
 depends=('libxcb' 'xcb-util-wm')
+makedepends=('xcb-util-wm')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("https://www.github.com/baskerville/${pkgname}/archive/${pkgver}.tar.gz")
