@@ -8,13 +8,12 @@ pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
 url="http://zynaddsubfx.sourceforge.net"
 license=('GPL')
-depends=('fftw' 'fltk' 'ladspa' 'lash' 'liblo' 'portaudio' 'mxml' 'ntk-git')
-makedepends=('git' 'cmake' 'dssi' 'gendesk' 'setconf')
+depends=('fftw' 'fltk' 'lash' 'liblo' 'portaudio' 'mxml' 'ntk-git')
+makedepends=('git' 'cmake' 'dssi' 'gendesk' 'ladspa' 'setconf')
 optdepends=('dssi: dssi plugin')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!emptydirs')
-install="${pkgname}.install"
 source=("${pkgname}::git://git.code.sf.net/p/zynaddsubfx/code/"
         "http://zynaddsubfx.sourceforge.net/doc/instruments/unsortedzynaddsubfxParameters_20140402.zip")
 noextract=("${source[1]##*/}")
