@@ -1,10 +1,10 @@
 pkgbase = pyconfigure
 	pkgdesc = Build autotools/autoconf configure scripts for Python packages
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/pyconfigure/
 	arch = any
-	license = GPL3
+	license = custom
 	depends = autoconf
 	depends = python
 	source = https://ftp.gnu.org/gnu/pyconfigure/pyconfigure-0.2.3.tar.gz
