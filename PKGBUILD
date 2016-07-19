@@ -10,7 +10,7 @@ pkgdesc="A personal and small-business financial-accounting application. Include
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('slib' 'goffice0.8' 'libgnomeui' 'libdbi-drivers' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'python2')
+depends=('slib' 'goffice0.8' 'libgnomeui' 'libdbi-drivers' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'python2' 'sqlite2')
 makedepends=('intltool')
 optdepends=('evince: for print preview'
             'perl-finance-quote: for stock information lookups'
