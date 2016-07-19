@@ -5,13 +5,13 @@
 #   https://github.com/archhaskell/habs/blob/master/ghc/PKGBUILD
 pkgname=ghc7.10-bin
 pkgver=7.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Binary version of legacy GHC (7.10).  Originally released on December 2015.'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
-depends=('perl' 'gmp' 'gcc' 'libffi')
-makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl')
+depends=('perl' 'gmp' 'gcc' 'libffi' 'ncurses5-compat-libs')
+makedepends=('ghc' 'perl' 'libxslt' 'docbook-xsl' 'ncurses5-compat-libs')
 checkdepends=('python2')
 install='ghc.install'
 options=('staticlibs')
