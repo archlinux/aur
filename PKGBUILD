@@ -1,6 +1,6 @@
 # Maintainer: Marco Dinis <marcoandredinis@gmail.com>
 pkgname=klish
-pkgver=2.0.4
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A modular framework for implementing a CISCO-like CLI. The klish is a fork of clish 0.7.3 project."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('gcc-libs' 'zlib' 'expat')
 options=('!libtool')
 provides=('clish')
 conflicts=('clish')
-source=(http://libcode.org/attachments/download/55/$pkgname-$pkgver.tar.xz)
-md5sums=('f71d9948705da50094d7b7129fe39275')
+source=(http://libcode.org/attachments/download/64/$pkgname-$pkgver.tar.xz)
+md5sums=('fd33f454118aa173b9e4b3faf9a0b1a5')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
