@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=4chan-downloader
+Icon=/usr/share/pixmaps/4chan-downloader.png
+Exec=4chan-downloader
+Terminal=false
+Categories=Graphics;Network

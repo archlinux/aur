@@ -1,0 +1,18 @@
+pkgbase = 4chan-downloader
+	pkgdesc = A tool to download images from 4chan, 2chan and more!
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/fourchan-dl/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://sourceforge.net/projects/fourchan-dl/files/v1.7.0/fourchan-dl-src-v1.7.0.zip
+	source = 4chan-downloader
+	source = 4chan-downloader.desktop
+	md5sums = 4f517439357a46ee9e1ac31a6a86a459
+	md5sums = a36be476ed2702a5cee6305a58a795e0
+	md5sums = 54184e14df4d5da32e10e2be19100c87
+
+pkgname = 4chan-downloader
+
