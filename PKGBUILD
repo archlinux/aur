@@ -4,7 +4,7 @@
 
 pkgname=snap-confine-apparmor
 _pkgname=snap-confine
-pkgver=1.0.35
+pkgver=1.0.38
 pkgrel=1
 pkgdesc="Confinement system for snap applications (with apparmor)"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ conflicts=('snap-confine')
 replaces=('snap-confine')
 source=("https://github.com/snapcore/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"
         usr.lib.snap-confine.snap-confine)
-md5sums=('d4e1f8e978d4ce07eb07f394174af185'
-         'db28b8a4dd97dace091b4eae3127750f')
+md5sums=('1ab7bcb5074f47b3dc818c0d06c1eb37'
+         'fa07839504e15406279fd25adbca353a')
 
 build() {
   cd "$_pkgname-$pkgver"

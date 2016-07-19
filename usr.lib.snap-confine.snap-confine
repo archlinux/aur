@@ -5,17 +5,17 @@
     # We run privileged, so be fanatical about what we include and don't use
     # any abstractions
     /etc/ld.so.cache r,
-    /usr/lib/ld-*.so mr,
+    /lib/@{multiarch}/ld-*.so mr,
     # libc, you are funny
-    /usr/lib/libc{,-[0-9]*}.so* mr,
-    /usr/lib/libpthread{,-[0-9]*}.so* mr,
-    /usr/lib/librt{,-[0-9]*}.so* mr,
-    /usr/lib/libgcc_s.so* mr,
+    /lib/@{multiarch}/libc{,-[0-9]*}.so* mr,
+    /lib/@{multiarch}/libpthread{,-[0-9]*}.so* mr,
+    /lib/@{multiarch}/librt{,-[0-9]*}.so* mr,
+    /lib/@{multiarch}/libgcc_s.so* mr,
     # normal libs in order
-    /usr/lib/libapparmor.so* mr,
-    /usr/lib/libudev.so* mr,
-    /usr/lib/libseccomp.so* mr,
-    /usr/lib/libseccomp.so* mr,
+    /lib/@{multiarch}/libapparmor.so* mr,
+    /lib/@{multiarch}/libudev.so* mr,
+    /usr/lib/@{multiarch}/libseccomp.so* mr,
+    /lib/@{multiarch}/libseccomp.so* mr,
 
     /usr/lib/snap-confine/snap-confine r,
 
@@ -39,8 +39,8 @@
     /run/udev/** rw,
     /{,usr/}bin/tr ixr,
     /usr/lib/locale/** r,
-    /usr/lib/gconv/gconv-modules r,
-    /usr/lib/gconv/gconv-modules.cache r,
+    /usr/lib/@{multiarch}/gconv/gconv-modules r,
+    /usr/lib/@{multiarch}/gconv/gconv-modules.cache r,
 
     # priv dropping
     capability setuid,
@@ -106,7 +106,7 @@
     mount options=(rw rbind) /var/tmp/ -> /tmp/snap.rootfs_*/var/tmp/,
     mount options=(rw rbind) /run/ -> /tmp/snap.rootfs_*/run/,
     mount options=(rw rbind) /media/ -> /tmp/snap.rootfs_*/media/,
-    mount options=(rw rbind) /lib/modules/ -> /tmp/snap.rootfs_*/lib/modules/,
+    mount options=(rw rbind) /usr/lib/modules/ -> /tmp/snap.rootfs_*/lib/modules/,
     mount options=(rw bind) /snap/ubuntu-core/*/etc/alternatives/ -> /tmp/snap.rootfs_*/etc/alternatives/,
 
     # Allow to mkdir /var/lib/snapd/hostfs
@@ -126,7 +126,6 @@
     # nvidia handling, glob needs /usr/** and the launcher must be
     # able to bind mount the nvidia dir
     /usr/** r,
-    mount options=(rw nodev noexec) none -> /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/,
     mount options=(rw bind) /usr/lib/nvidia-*/ -> /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/,
 
     # for chroot on steroids, we use pivot_root as a better chroot that makes
