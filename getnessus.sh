@@ -17,31 +17,26 @@
 #### Wget https settings
 WGET_HSTS="--no-hsts"
 
-#### Check for the latest available version, and get the current changelog version
-# TODO: This is currently not working (as of 6.7.0) so I'm hard-coding it.
-#VERSION=$(wget $WGET_HSTS -qO - /dev/null "http://www.tenable.com/products/nessus/new-in-nessus"  | grep -o "New in Nessus [0-9.0-9.0-9]*"  | grep -o "[0-9.0-9.0-9]*" | head -1 | sed s/[.]/-/g)
-#RELEASE=$(wget $WGET_HSTS -qO - /dev/null  http://www.tenable.com/products/nessus/new-in-nessus/$VERSION | grep -o "Changelog - [0-9.0-9.0-9]*" | head -1 | awk '{print $NF}')
-
-RELEASE=6.7.0
+RELEASE=6.8.0
 
 echo -e "Downloading Nessus $RELEASE from downloads.nessus.org ... "
 
-for FEDORA in {0..9}; do
+if [ -f Nessus-$RELEASE-fc20.x86_64.rpm ] ; then
+    echo -e "Local file already exists for Nessus $RELEASE. No need to re-download it."
+    exit
+fi
 
-    if [ -f Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm ] ; then
-        echo -e "Local file already exists for Nessus $RELEASE. No need to re-download it."
-        continue
-    fi
+# These two lines disabled for now (hard-coded instead) because getting the ID this way is no longer working
+#ID=$(wget $WGET_HSTS -qO - /dev/null  "https://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes" | grep "og:description" | cut -d= -f3  | sed -e 's/^"*//' | cut -d* -f1)
+#DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID" && echo "exists" || echo "not exist")
+DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=39834650794bd3c9ec30dbb14d625b23" && echo "exists" || echo "not exist")
 
-    ID=$(wget $WGET_HSTS -qO - /dev/null  "https://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes" | grep "og:description" | cut -d= -f3  | sed -e 's/^"*//' | cut -d* -f1)
-    DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" && echo "exists" || echo "not exist")
-    if [[ $DOWNLOAD == exists ]] ;then
-        wget $WGET_HSTS -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm&licence_accept=yes&t=$ID" -O Nessus-$RELEASE-fc2$FEDORA.x86_64.rpm
-        break
-    else
-        echo "Doesn't Exist" > /dev/null
-        break
-    fi
-done
+echo "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID"
+if [[ $DOWNLOAD == exists ]] ;then
+    wget $WGET_HSTS -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID" -O Nessus-$RELEASE-fc20.x86_64.rpm
+else
+    echo "... Downloading the file did not work properly. Get it manually from http://www.tenable.com/products/nessus/select-your-operating-system#tos"
+    exit 1
+fi
 
 echo -e "... Download script has finished."
