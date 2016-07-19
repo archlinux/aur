@@ -8,8 +8,8 @@ pkgdesc="Tools to work with Ubuntu Touch"
 url="https://launchpad.net/goget-ubuntu-touch"
 arch=('x86_64' 'i686')
 license=('GPL3')
+makedepends=('go' 'bzr' 'git')
 depends=('android-tools')
-makedepends=('go' 'bzr')
 # options='!emptydirs'
 provides=("ubuntu-device-flash")
 conflicts=("ubuntu-device-flash")
@@ -45,3 +45,5 @@ package() {
   install -Dm755 "$SOURCE_PATH/${_pkgname}/${_pkgname}" \
     "$pkgdir/usr/bin/$_pkgname"
 }
+
+# vim:set ts=2 sw=2 et:
