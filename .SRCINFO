@@ -1,0 +1,17 @@
+pkgbase = ttf-rajdhani
+	pkgdesc = Rajdhani font by ITFoundry
+	pkgver = 2.000
+	pkgrel = 0
+	url = https://github.com/itfoundry/rajdhani
+	install = ttf-rajdhani.install
+	arch = any
+	license = SIL Open Font License v1.1
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = https://github.com/itfoundry/rajdhani/releases/download/v2.000/Rajdhani-2_000.zip
+	sha256sums = 2dd0b14ed9989319fde8518e4b596467ae635571ffe7733d7968201d8cdeb9cf
+
+pkgname = ttf-rajdhani
+
