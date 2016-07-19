@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 206564 2014-03-01 15:20:03Z bpiotrowski $
-# Maintainer: Juergen Hoetzel <juergen@archlinux.org>
+# Maintainer: Jörg Schuck <joerg_schuck@web.de>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 # Contributor: David Madl <xuphiexu@abanbytes.eu>
 
