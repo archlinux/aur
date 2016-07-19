@@ -3,7 +3,7 @@
 
 pkgname=xubuntu-artwork
 pkgver=16.04.2
-pkgrel=1
+pkgrel=3
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
@@ -11,15 +11,14 @@ url="https://launchpad.net/xubuntu-artwork"
 license=("GPL")
 #depends=("xfce-theme-albatross" "xfce-theme-bluebird" "xfce-theme-greybird" "shimmer-wallpapers")
 makedepends=("zip")
-optdepends=("plymouth: For plymouth theme to work"
-        "lightdm-gtk-greeter: For LightDM GTK-3 Greeter theme to work"
+optdepends=("plymouth: For the plymouth theme to work"
+        "lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
         "shimmer-wallpapers: Wallpapers not included in the main package"
-        "xfce-theme-albatross: Official theming, git or stable versions are ok"
-        "xfce-theme-bluebird: Official theming, git or stable version are ok"
-        "xfce-theme-greybird: Official theming, git or stable version are ok"
-	"elementary-xfce-icons: For matching icon theme, or if you want use the git version"
-	"libreoffice: For the new elementary icon style")
-source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz")
+        "xfce-theme-albatross: Official theming, git or stable versions"
+        "xfce-theme-bluebird: Official theming, git or stable version"
+        "xfce-theme-greybird: Official theming, git or stable version"
+	"elementary-xfce-icons: For matching icon theme, or the git version")
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
 
 package() {
   cd "${srcdir}/trunk"
@@ -39,6 +38,5 @@ package() {
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
-
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
 md5sums=('165d4c5cc1d23c1490243b4f85230db6')
