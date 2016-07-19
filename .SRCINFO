@@ -1,0 +1,28 @@
+pkgbase = animewatch-pyqt4
+	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt4
+	pkgver = 2.4.1
+	pkgrel = 2
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt4
+	depends = python-pycurl
+	depends = python-urllib3
+	depends = curl
+	depends = libnotify
+	depends = python-dbus
+	depends = python-beautifulsoup4
+	depends = python-psutil
+	depends = python-pillow
+	depends = python-lxml
+	depends = mpv
+	depends = mplayer
+	depends = ffmpegthumbnailer
+	depends = sqlite3
+	depends = python-pytaglib
+	conflicts = animewatch-pyqt5
+	source = https://github.com/kanishka-linux/animewatch-pyqt4/archive/v2.4.1-2.zip
+	md5sums = SKIP
+
+pkgname = animewatch-pyqt4
+
