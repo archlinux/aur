@@ -1,5 +1,5 @@
 pkgbase = remake
-	pkgdesc = Enhanced version of GNU make with better error reporting and otherfunctionality
+	pkgdesc = Enhanced version of GNU make with better error reporting and other functionality
 	pkgver = 4.1_1.1
 	pkgrel = 1
 	url = http://bashdb.sourceforge.net/remake/
