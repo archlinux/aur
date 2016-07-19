@@ -1,0 +1,14 @@
+pkgbase = remake
+	pkgdesc = Enhanced version of GNU make with better error reporting and otherfunctionality
+	pkgver = 4.1_1.1
+	pkgrel = 1
+	url = http://bashdb.sourceforge.net/remake/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = guile
+	source = http://downloads.sourceforge.net/project/bashdb/remake/4.1+dbg-1.1/remake-4.1+dbg1.1.tar.bz2
+	md5sums = 31ea8f49313636ec252692b7429d637a
+
+pkgname = remake
+
