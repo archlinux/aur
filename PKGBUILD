@@ -1,7 +1,7 @@
 pkgbase=('python2-efilter')
 pkgname=('python2-efilter')
 _module='efilter'
-pkgver='1438631774'
+pkgver='1453815385'
 pkgrel=1
 pkgdesc="EFILTER query language"
 url="https://github.com/google/dotty/"
@@ -9,8 +9,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('unknown')
 arch=('any')
-source=("https://pypi.python.org/packages/20/83/ecdf93ca3a02d26d86766af1e077b7c20b2b133a1dff8e37707c8e1eea1a/efilter-1438631774.tar.gz#md5=9bad2387facf706b1f7ba1411274406a")
-md5sums=('9bad2387facf706b1f7ba1411274406a')
+source=("https://pypi.python.org/packages/31/13/a8f1bfc1fa269f2e0177ad6f0da51cb5c5671fba10c1d7abdb108d23bcab/efilter-1453815385.tar.gz#md5=fee6d4220462be189fe3cd7453effc79")
+md5sums=('fee6d4220462be189fe3cd7453effc79')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -20,5 +20,6 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
+    chmod -R o+r efilter.egg-info 
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
