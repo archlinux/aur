@@ -2,8 +2,8 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.5.6.r0.g50ca636
-pkgrel=2
+pkgver=v0.8.0.0Beta2.r0.gf03b8aa
+pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
@@ -14,7 +14,7 @@ provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install='jasp-desktop-git.install'
 options=('!strip')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.5.6" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.0.0Beta2" 
 	"jasp-desktop.svg"
 	"include.patch"
 	"sem.patch")
@@ -53,7 +53,7 @@ package() {
   mkdir -p $pkgdir/usr/share/$_pkgname
   mkdir -p $pkgdir/usr/lib
   cp -r R $pkgdir/usr/lib/
-  cp -r JASP JASPEngine Resources $pkgdir/usr/share/$_pkgname/
+  cp -r jasp JASPEngine Resources libJASP-Common.a libJASP-Desktop.a $pkgdir/usr/share/$_pkgname/
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
@@ -66,7 +66,7 @@ cat  << EOF > $pkgdir/usr/share/applications/jasp-desktop.desktop
 Name=JASP Desktop
 GenericName=Statistical Program
 Comment=A low fat alternative to SPSS, a delicious alternative to R.
-Exec=/usr/share/jasp-desktop/JASP
+Exec=/usr/share/jasp-desktop/jasp
 Icon=jasp-desktop
 Type=Application
 Categories=Science;
