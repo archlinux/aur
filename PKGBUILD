@@ -17,7 +17,7 @@ _gitname=AnimeWatch-PyQt4-Stable
 
 package() {
 
-  _bpath="${srcdir}/${pkgname}-${pkgver}-${pkgrel}/${_gitname}"
+  _bpath="${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_gitname}"
 
   install -d "${pkgdir}/usr/share/${_pkgname}/"
   install -d "${pkgdir}/usr/share/${_pkgname}/Plugins/"
