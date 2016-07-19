@@ -116,7 +116,7 @@ echo "${installed}" | while read pkg; do
   else
     echo -n "   (y)  "
   fi
-  echo -n "${pkg}"
+  echo -n "${pkg}   "
   echo -n "${_old_ver} "
   if [[ "${_old_ver}" == "${_new_ver}" ]]; then
     echo "(not upgraded.)"
