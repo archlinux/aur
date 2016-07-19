@@ -29,11 +29,12 @@ $JAVA_EXEC \
 -XX:ReservedCodeCacheSize=$JAVA_CODE \
 \
 -Djava.net.preferIPv4Stack=true \
+$JAVA_OPTS \
 \
 -Dzinc.home=$ZINC_HOME \
 -classpath $ZINC_HOME/lib/*:. \
 com.typesafe.zinc.Nailgun \
-$ZINC_PORT $ZINC_TIMEOUT \
+$ZINC_PORT $ZINC_TIMEOUT $ZINC_OPTS \
 "
 
 exec $COMMAND
