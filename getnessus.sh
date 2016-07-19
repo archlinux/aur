@@ -19,6 +19,15 @@ WGET_HSTS="--no-hsts"
 
 RELEASE=6.8.0
 
+echo -e "The Nessus downloader is temporarily broken due to an upstream change."
+echo -e "Please download Nessus from http://www.tenable.com/products/nessus/select-your-operating-system#tos"
+echo -e "Then put Nessus-$RELEASE-fc20.x86_64.rpm in the tmp folder for this package and run the installer again."
+exit
+
+
+
+
+
 echo -e "Downloading Nessus $RELEASE from downloads.nessus.org ... "
 
 if [ -f Nessus-$RELEASE-fc20.x86_64.rpm ] ; then
@@ -30,8 +39,9 @@ fi
 #ID=$(wget $WGET_HSTS -qO - /dev/null  "https://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes" | grep "og:description" | cut -d= -f3  | sed -e 's/^"*//' | cut -d* -f1)
 #DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID" && echo "exists" || echo "not exist")
 DOWNLOAD=$(wget $WGET_HSTS -O/dev/null -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=39834650794bd3c9ec30dbb14d625b23" && echo "exists" || echo "not exist")
+http://downloads.nessus.org/nessus3dl.php?file=Nessus-6.8.0-fc20.x86_64.rpm&licence_accept=yes&t=39834650794bd3c9ec30dbb14d625b23
 
-echo "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID"
+echo "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=39834650794bd3c9ec30dbb14d625b23"
 if [[ $DOWNLOAD == exists ]] ;then
     wget $WGET_HSTS -q "http://downloads.nessus.org/nessus3dl.php?file=Nessus-$RELEASE-fc20.x86_64.rpm&licence_accept=yes&t=$ID" -O Nessus-$RELEASE-fc20.x86_64.rpm
 else

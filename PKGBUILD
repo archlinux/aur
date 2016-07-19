@@ -19,7 +19,7 @@ source=($_bigver.x86_64.rpm
         nessus.sh
         LICENSE.NESSUS
         nessus.install)
-md5sums=('d41d8cd98f00b204e9800998ecf8427e'
+md5sums=('4106308f11c6b56f05932ee7bf9e71e1'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '8ff98bc9488304fcb66753d3cfb5f30e'
          'd9d25d4075acc50c0050c7a4f244c7cb')
