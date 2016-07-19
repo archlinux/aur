@@ -13,19 +13,20 @@ source=("blobby-code::svn+http://svn.code.sf.net/p/blobby/code/trunk")
 md5sums=('SKIP')
 
 pkgver() {
-	cd blobby-code
-	local ver="$(svnversion)"
-	printf "r%s" "${ver//[[:alpha:]]}"
+  cd blobby-code
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
-	cd $srcdir/blobby-code
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+  cd $srcdir/blobby-code
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make
 }
 
 package() {
-	cd blobby-code
-	make DESTDIR="$pkgdir/" install
+  cd blobby-code
+  make DESTDIR="$pkgdir/" install
 }
 
+# vim:set ts=2 sw=2 et:
