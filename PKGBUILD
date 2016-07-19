@@ -1,18 +1,26 @@
-# Maintainer: Henrik Hodne <henrik@hodne.io>
+# Contributor: Henrik Hodne <henrik@hodne.io>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=otf-fira-code
-pkgver=1.102
+pkgbase=otf-fira-code
+pkgname=('otf-fira-code' 'ttf-fira-code')
+pkgver=1.200
 pkgrel=1
 pkgdesc="monospaced font with programming ligatures"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=(https://github.com/tonsky/FiraCode/archive/${pkgver}.tar.gz)
-sha256sums=('1f131945c5a71572a6442a252e457711425b660edb26a950efdc24dee1e7f94a')
+sha256sums=('4b7a4da9cdcbde4bb7b7f2df9e6d278d86d933be603867ae1ca844a43138c0b1')
 install=${pkgname}.install
 license=("custom: SIL Open Font License")
 
-package() {
+package_otf-fira-code() {
 	install -d "${pkgdir}/usr/share/fonts/OTF"
-	install -m644 "${srcdir}/FiraCode-${pkgver}/"*.otf "${pkgdir}/usr/share/fonts/OTF/"
-	install -D -m644 "${srcdir}/FiraCode-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -m644 "${srcdir}/FiraCode-${pkgver}/"distr/otf/*.otf "${pkgdir}/usr/share/fonts/OTF/"
+	install -D -m644 "${srcdir}/FiraCode-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname[0]}/LICENSE"
+}
+
+package_ttf-fira-code() {
+	install -d "${pkgdir}/usr/share/fonts/TTF"
+	install -m644 "${srcdir}/FiraCode-${pkgver}/"distr/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+	install -D -m644 "${srcdir}/FiraCode-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
