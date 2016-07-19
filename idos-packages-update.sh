@@ -83,7 +83,8 @@ installed_and_available="$(echo "${avail}" | grep -F -x "${installed}" | sort | 
 
 ### Print some information:
 _reinstall_marker="(x)"
-echo "Installed IDOS-related packages with version. Packages marked with ${_reinstall_marker} can and will be reinstalled."
+echo "Installed IDOS-related packages with version. Packages marked with '${_reinstall_marker}'"
+echo "can and will be reinstalled."
 echo ""
 _pkgnr=0
 echo "${installed}" | while read pkg; do
@@ -95,22 +96,27 @@ echo ""
 
 
 ### Reinstall installed and available packages:
-yaourt -S --noconfirm ${installed_and_available}
+# yaourt -S --noconfirm ${installed_and_available}
 
 
 ### Get version numbers of installed packages after upgrade:
 new_vers="$(echo "${installed}" | while read pkg; do get_installed_pkgs_version "${pkg}"; done)"
 
 ### Print information about changes that were carried out:
-echo "Upgrade results:"
+echo "Upgrade results ('(y)': Upgraded, '(n)': Not upgraded, no marker: Not"
+echo "available in repositories) with version information:"
 echo ""
 _pkgnr=0
 echo "${installed}" | while read pkg; do
   _pkgnr="$(( ${_pkgnr} + 1 ))"
   _old_ver="$(echo "${old_vers}" | sed -n "${_pkgnr}"p)"
   _new_ver="$(echo "${new_vers}" | sed -n "${_pkgnr}"p)"
-  if echo "${avail}" | grep -q -F -x "${pkg}"; then echo -n "   ${_reinstall_marker}  "; else echo -n "        "; fi
-  echo -n "${pkg}   "
+  if [[ "${_old_ver}" == "${_new_ver}" ]]; then
+    if echo "${avail}" | grep -q -F -x "${pkg}"; then echo -n "   (n)  "; else echo -n "        "; fi
+  else
+    echo -n "   (y)  "
+  fi
+  echo -n "${pkg}"
   echo -n "${_old_ver} "
   if [[ "${_old_ver}" == "${_new_ver}" ]]; then
     echo "(not upgraded.)"
