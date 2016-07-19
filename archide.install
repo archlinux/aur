@@ -1,0 +1,3 @@
+post_install() {
+  echo "To run ArchIDE, enter 'archide' in your terminal"
+}

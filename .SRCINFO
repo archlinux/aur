@@ -1,0 +1,16 @@
+pkgbase = archide
+	pkgdesc = A tiny utility to create, edit and upload your AUR packages
+	pkgver = 0.2.1.alpha
+	pkgrel = 1
+	url = https://christopherloen.github.io/ArchIDE
+	install = archide.install
+	arch = any
+	license = MIT
+	depends = jre8-openjdk
+	depends = gedit
+	depends = jeeves
+	source = git://github.com/christopherloen/ArchIDE.git
+	md5sums = SKIP
+
+pkgname = archide
+
