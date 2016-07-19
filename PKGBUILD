@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-idsjmk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_5_4
+pkgver=2016_5_24
 pkgrel=1
 pkgdesc="Photographs of some stops within the IDSJMK (Brno region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
