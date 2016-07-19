@@ -1,0 +1,29 @@
+pkgbase = arduino-git
+	pkgdesc = Arduino prototyping platform SDK
+	pkgver = 1.6.9.r53.g6521a7a
+	pkgrel = 1
+	url = https://github.com/arduino/Arduino
+	install = arduino.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	license = LGPL
+	makedepends = jdk8-openjdk
+	makedepends = apache-ant
+	depends = gtk2
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = jre8-openjdk
+	depends = avrdude
+	provides = arduino
+	conflicts = arduino
+	conflicts = arduino-bin
+	options = !strip
+	options = staticlibs
+	source = arduino-git::git+https://github.com/arduino/Arduino/#branch=master
+	sha512sums = SKIP
+
+pkgname = arduino-git
+
