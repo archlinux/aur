@@ -1,0 +1,12 @@
+--- usr.bin.snap-confine~	2016-07-19 11:57:30.631396908 +0200
++++ usr.bin.snap-confine	2016-07-19 17:16:25.836666661 +0200
+@@ -127,6 +127,9 @@
+     # able to bind mount the nvidia dir
+     /usr/** r,
+     mount options=(rw bind) /usr/lib/nvidia-*/ -> /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/,
++    mount options=(rw nodev noexec) -> /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/,
++    mount options=(ro remount) -> /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/,
++    /{tmp/snap.rootfs_*/,}var/lib/snapd/lib/gl/** w,
+ 
+     # for chroot on steroids, we use pivot_root as a better chroot that makes
+     # apparmor rules behave the same on classic and outside of classic.
