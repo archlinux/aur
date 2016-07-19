@@ -2,13 +2,14 @@
 # Contributor: Ng Oon-Ee <n g  o o n  e e dot t a l k AT g m a i l DOT c o m>
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
-pkgver=2016r2
-pkgrel=1
+pkgver=2016r2.0
+_pkgvershort=2016r2
+pkgrel=2
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
 license=("custom")
-source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rackcdn.com/Xojo$pkgver/xojo$pkgver.tgz"
+source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rackcdn.com/Xojo$_pkgvershort/xojo$_pkgvershort.tgz"
 "xojo.desktop"
 "lingua.desktop"
 "RemoteDebuggerDesktop.desktop")
@@ -29,13 +30,13 @@ options=(!strip)
 
 package() {
 	cd $srcdir
-#	mv "xojo2016r1.1" "xojo$pkgver"
+#	mv "xojo2016r1.1" "xojo$_pkgvershort"
 	find . -name '.DS_Store' -exec rm {} \;
-	find "./xojo$pkgver/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
+	find "./xojo$_pkgvershort/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
     xargs -rtl1 -I {} rm -r {}
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo"
 	# "$pkgdir/usr/lib32"
-	cp -r "xojo$pkgver" "$pkgdir/opt/xojo"
+	cp -r "xojo$_pkgvershort" "$pkgdir/opt/xojo"
 	##cp "xojo.xpm" "$pkgdir/opt/xojo" Now Shipped with the App again.
 	# Reparieren der Dateirechte	
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
