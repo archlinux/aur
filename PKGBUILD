@@ -4,7 +4,7 @@
 # Contributor: David Madl <xuphiexu@abanbytes.eu>
 
 pkgname=gnucash-python
-pkgver=2.6.3
+pkgver=2.6.13
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application. Includes Python2 support."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('evince: for print preview'
 options=('!makeflags' '!emptydirs')
 install=gnucash.install
 source=(http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-${pkgver}.tar.bz2)
-sha1sums=('40ea9c069d0ad0a811b74f00c2b32faad6108a6a')
+sha512sums=('daad6d55485de6ce3ca6affe232c51252d853c803734f4737ab2477e7724c42fa2ea764f5fdeea00d956bcbaad338a30fe21c62a578a818d5e8b4f5878f060b5')
 provides=("gnucash=${pkgver}")
 conflicts=('gnucash')
 
