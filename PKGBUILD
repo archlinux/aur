@@ -4,15 +4,14 @@
 
 pkgname=nextcloud-news-updater
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This Python library is a parllel feed updater for the nextCloud News app"
 arch=('any')
 url="https://github.com/nextcloud/news-updater"
 license=('GPL3')
-depends=('python')
+depends=('python-setuptools')
 optdepends=('nextcloud-app-news: Updating a local instance of the nextCloud News app')
 backup=("etc/webapps/nextcloud/news/${pkgname}.ini")
-makedepends=('python-setuptools')
 options=('!strip')
 conflicts=('owncloud-news-updater')
 source=("https://github.com/nextcloud/news-updater/archive/${pkgver}.tar.gz"
