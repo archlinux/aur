@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=vicare-scheme-git
-pkgver=20160509.a4c3802
-pkgrel=2
+pkgver=20160718.113c72d
+pkgrel=1
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
 license=('GPL3')
-depends=('gmp')
+depends=('gmp' 'readline')
 makedepends=('git')
 provides=('vicare-scheme')
 conflicts=('vicare-scheme')
