@@ -18,9 +18,11 @@ pkgbase = snap-confine-apparmor
 	conflicts = snap-confine
 	replaces = snap-confine
 	source = https://github.com/snapcore/snap-confine/releases/download/1.0.38/snap-confine-1.0.38.tar.gz
-	source = usr.lib.snap-confine.snap-confine
+	source = https://raw.githubusercontent.com/snapcore/snap-confine/1.0.38/debian/usr.bin.snap-confine
+	source = usr.bin.snap-confine-fix-modules-path.patch
 	md5sums = 1ab7bcb5074f47b3dc818c0d06c1eb37
-	md5sums = fa07839504e15406279fd25adbca353a
+	md5sums = fe651e15ebb5053f226be45f3e41a9b0
+	md5sums = 0933340c38cdad2dccd57a0b91489714
 
 pkgname = snap-confine-apparmor
 

@@ -1,0 +1,11 @@
+--- usr.bin.snap-confine~	2016-07-19 11:04:48.650010141 +0200
++++ usr.bin.snap-confine	2016-07-19 11:09:10.489405307 +0200
+@@ -106,7 +106,7 @@
+     mount options=(rw rbind) /var/tmp/ -> /tmp/snap.rootfs_*/var/tmp/,
+     mount options=(rw rbind) /run/ -> /tmp/snap.rootfs_*/run/,
+     mount options=(rw rbind) /media/ -> /tmp/snap.rootfs_*/media/,
+-    mount options=(rw rbind) /lib/modules/ -> /tmp/snap.rootfs_*/lib/modules/,
++    mount options=(rw rbind) {/usr,}/lib/modules/ -> /tmp/snap.rootfs_*/lib/modules/,
+     mount options=(rw bind) /snap/ubuntu-core/*/etc/alternatives/ -> /tmp/snap.rootfs_*/etc/alternatives/,
+ 
+     # Allow to mkdir /var/lib/snapd/hostfs
