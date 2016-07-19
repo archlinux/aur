@@ -1,6 +1,6 @@
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler"
 pkgname="zinc"
-pkgver=0.3.9
+pkgver=0.3.11
 pkgrel=1
 url="https://github.com/typesafehub/zinc"
 arch=('any')
@@ -11,9 +11,11 @@ conflicts=('zinc-git')
 source=(
     "http://downloads.typesafe.com/zinc/$pkgver/zinc-$pkgver.tgz"
     "zincer.sh" # server launcher
+    "zincer.conf" # service env vars
     "zincer.service" # systemd service
 )
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -45,6 +47,7 @@ package() {
     cp -a "$source/." "$target/"
     
     install -D -m755 zincer.sh         "$target/zincer.sh"
+    install -D -m644 zincer.conf       "$pkgdir/etc/conf.d/zincer.conf"
     install -D -m644 zincer.service    "$pkgdir/usr/lib/systemd/system/zincer.service"
     
     mkdir -p $pkgdir/usr/bin

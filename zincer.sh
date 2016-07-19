@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# zinc server launcher
-
 [[ $ZINC_HOME ]]    || ZINC_HOME=/opt/zinc
 [[ $ZINC_PORT ]]    || ZINC_PORT=3030
 [[ $ZINC_TIMEOUT ]] || ZINC_TIMEOUT=0
@@ -12,7 +10,7 @@
 [[ $JAVA_CODE ]]  || JAVA_CODE=256m
 [[ $JAVA_STACK ]] || JAVA_STACK=1m
 
-command="\
+COMMAND="\
 \
 $JAVA_EXEC \
 \
@@ -38,4 +36,4 @@ com.typesafe.zinc.Nailgun \
 $ZINC_PORT $ZINC_TIMEOUT \
 "
 
-exec $command
+exec $COMMAND
