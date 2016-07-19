@@ -21,7 +21,7 @@ pkgbase = animewatch-pyqt4
 	depends = sqlite3
 	depends = python-pytaglib
 	conflicts = animewatch-pyqt5
-	source = https://github.com/kanishka-linux/animewatch-pyqt4/archive/v2.4.1-2.zip
+	source = https://github.com/kanishka-linux/AnimeWatch/archive/v2.4.1-2.zip
 	md5sums = SKIP
 
 pkgname = animewatch-pyqt4

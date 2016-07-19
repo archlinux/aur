@@ -10,7 +10,7 @@ depends=('python' 'python-pyqt4' 'python-pycurl' 'python-urllib3' 'curl' 'libnot
         'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib')
 
 #source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
-source=("https://github.com/kanishka-linux/"${pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
+source=("https://github.com/kanishka-linux/"${_pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
 md5sums=('SKIP')
 _gitname=AnimeWatch-PyQt4-Stable
 
