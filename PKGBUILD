@@ -31,7 +31,7 @@ build() {
   cd "$_pkgname"
 
   phpize
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-cairo
   make
 }
 
@@ -45,4 +45,5 @@ package() {
   cd "$_pkgname"
 
   make INSTALL_ROOT="$pkgdir/" install
+  install -Dm644 src/php_cairo_api.h "$pkgdir/usr/include/php/ext/cairo/php_cairo_api.h"
 }
