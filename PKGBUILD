@@ -13,8 +13,7 @@ url="https://wiki.freedesktop.org/www/Software/xdg-utils/"
 license=('MIT')
 depends=('sh' 'xorg-xset') # xset needed inside xdg-screensaver
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
-optdepends=('kdebase-runtime: for KDE4 support in xdg-open'
-            'kde-cli-tools: for KDE Plasma5 support in xdg-open'
+optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'libgnome: for GNOME support in xdg-open'
             'exo: for Xfce support in xdg-open'
             'xorg-xprop: for Xfce support in xdg-open'
