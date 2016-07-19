@@ -1,5 +1,5 @@
 # Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
-pkgbase=linux-ubuntu
+pkgbase=linux-ubuntu-bin
 pkgver="4.4.0_31.50"
 _pkgbasever=${pkgver%.*}
 _pkgbasever=${_pkgbasever/_/-}
@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=(tar)
 options=(!strip)
 source=(http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-${_pkgbasever}_${pkgver/_/-}_all.deb
-        linux-ubuntu.preset)
+        linux-ubuntu-bin.preset)
 source_x86_64=(http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb
                http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-extra-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb
                http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb)
@@ -23,7 +23,7 @@ noextract=("${source[@]##*/}"
            "${source_i686[@]##*/}")
 
 sha256sums=('04c6de52c7423924ffbcb0771e42795e2809d4b05dab34290382e7a24c3bdaed'
-            '1117944cc09613f305f985f6e17f67c14bdaacb0e8ac2b9cbc5beef74c10763c')
+            '4c417300e4ad14f5eac9291c0bd87e26201b513375bb74f74567d3bb4135537c')
 sha256sums_x86_64=('3b8dc893081dbb53868e9b71507d397388d2a4a465d1c892e587b1c4e4addad6'
                    '451da56c1374895a0e3ac607a3c07a25b0e71fda894cc4dc74d9ab734e0bea12'
                    'f444b484cb983ac94a1d392cc8b172d058a157f99095503f851fc39db7801005')
@@ -33,16 +33,17 @@ sha256sums_i686=('16365b61629a8d41496b06db06521f69cea274cd32eac9889a4e41bf7fec77
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 
-package_linux-ubuntu() {
+package_linux-ubuntu-bin() {
   pkgdesc="Linux kernel image with Ubuntu Patches (binary)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  install=linux-ubuntu.install
+  install=linux-ubuntu-bin.install
+  provides=(linux-ubuntu)
 
   for x in linux-image-*.deb; do
     ar p "$x" data.tar.bz2 | tar -xjf - -C "$pkgdir/" --transform='s,^./lib,usr/lib,'
   done
-  ln -sf "vmlinuz-${_pkgbasever}-${_kind}" "$pkgdir/boot/vmlinuz-$pkgname"
+  mv "$pkgdir/boot/vmlinuz-${_pkgbasever}-${_kind}" "$pkgdir/boot/vmlinuz-$pkgname"
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -56,8 +57,9 @@ package_linux-ubuntu() {
   install -D -m644 "${srcdir}/${pkgname}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
 }
 
-package_linux-ubuntu-headers() {
+package_linux-ubuntu-bin-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  provides=(linux-ubuntu-headers)
 
   for x in linux-headers-*.deb; do
     ar p "$x" data.tar.xz | tar -xJf - -C "$pkgdir/" --transform='s,^./lib,usr/lib,'

@@ -1,4 +1,4 @@
-pkgbase = linux-ubuntu
+pkgbase = linux-ubuntu-bin
 	pkgver = 4.4.0_31.50
 	pkgrel = 1
 	url = http://www.kernel.org/
@@ -7,7 +7,7 @@ pkgbase = linux-ubuntu
 	license = GPL2
 	makedepends = tar
 	noextract = linux-headers-4.4.0-31_4.4.0-31.50_all.deb
-	noextract = linux-ubuntu.preset
+	noextract = linux-ubuntu-bin.preset
 	noextract = linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb
 	noextract = linux-image-extra-4.4.0-31-generic_4.4.0-31.50_amd64.deb
 	noextract = linux-headers-4.4.0-31-generic_4.4.0-31.50_amd64.deb
@@ -16,9 +16,9 @@ pkgbase = linux-ubuntu
 	noextract = linux-headers-4.4.0-31-generic_4.4.0-31.50_i386.deb
 	options = !strip
 	source = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-4.4.0-31_4.4.0-31.50_all.deb
-	source = linux-ubuntu.preset
+	source = linux-ubuntu-bin.preset
 	sha256sums = 04c6de52c7423924ffbcb0771e42795e2809d4b05dab34290382e7a24c3bdaed
-	sha256sums = 1117944cc09613f305f985f6e17f67c14bdaacb0e8ac2b9cbc5beef74c10763c
+	sha256sums = 4c417300e4ad14f5eac9291c0bd87e26201b513375bb74f74567d3bb4135537c
 	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-4.4.0-31-generic_4.4.0-31.50_amd64.deb
 	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-extra-4.4.0-31-generic_4.4.0-31.50_amd64.deb
 	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-4.4.0-31-generic_4.4.0-31.50_amd64.deb
@@ -32,15 +32,17 @@ pkgbase = linux-ubuntu
 	sha256sums_i686 = 3e4900b1137915b742f7949e851b20e6c085022bae5fe77109f9e662cd37ab4b
 	sha256sums_i686 = 41e66e04f63fda9d57bd16f964020465590ce1df4e5c94ee4b07546a70699db3
 
-pkgname = linux-ubuntu
+pkgname = linux-ubuntu-bin
 	pkgdesc = Linux kernel image with Ubuntu Patches (binary)
-	install = linux-ubuntu.install
+	install = linux-ubuntu-bin.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-ubuntu
 
-pkgname = linux-ubuntu-headers
-	pkgdesc = Header files and scripts for building modules for Linux-ubuntu kernel
+pkgname = linux-ubuntu-bin-headers
+	pkgdesc = Header files and scripts for building modules for Linux-ubuntu-bin kernel
+	provides = linux-ubuntu-headers
 
