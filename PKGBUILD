@@ -18,7 +18,7 @@ depends=('perl>=5.16.0' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' '
 optdepends=(
             'perl-json-xs: faster JSON to HASH conversion'
             'perl-lwp-useragent-cached: cache support'
-            'perl-text-charwidth: to print the results in a fixed-width format (-W)'
+            'perl-unicode-linebreak: to print the results in a fixed-width format (-W)'
             'perl-term-readline-gnu: for better STDIN support'
             'youtube-dl: for playing videos with encrypted signatures'
             'wget: for downloading videos with wget'
