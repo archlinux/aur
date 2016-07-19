@@ -1,0 +1,30 @@
+From 275f92e382f1f8287566282a972378a6cfba9a52 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Leonard=20K=C3=B6nig?= <leonard.r.koenig@googlemail.com>
+Date: Tue, 19 Jul 2016 21:26:54 +0200
+Subject: [PATCH] [Makefile] fix order of execution
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c5ea74c..fac717c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -48,11 +48,11 @@ clean-sty:
+ $(CACHE_DIR):
+ 	@mkdir -p $(CACHE_DIR)
+ 
+-$(PACKAGE_STY): $(PACKAGE_SRC) $(INS) | $(CACHE_DIR) clean-cache
++$(PACKAGE_STY): $(PACKAGE_SRC) $(INS) | clean-cache $(CACHE_DIR)
+ 	@cd $(dir $(INS)) && latex -output-directory=$(CACHE_DIR) $(notdir $(INS))
+ 	@cp $(addprefix $(CACHE_DIR)/,$(PACKAGE_STY)) .
+ 
+-$(DOC_PDF): %.pdf: %.dtx $(PACKAGE_STY) | $(CACHE_DIR) clean-cache
++$(DOC_PDF): %.pdf: %.dtx $(PACKAGE_STY) | clean-cache $(CACHE_DIR)
+ 	$(COMPILE_TEX) $<
+ 	@cp $(CACHE_DIR)/$(notdir $@) $@
+ 
+-- 
+2.9.0
+
