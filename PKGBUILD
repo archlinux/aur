@@ -1,17 +1,20 @@
 # Maintainer: 0strodamus <0strodamus at cox dot net>
 # Contributor : Martin Wimpress <code@flexion.org>
+#
+# notes: if you want epub support, add 'mathjax' to depends
+#        and change --disable-epub to --enable-epub in build function
 
 pkgname=atril-xfce
 _pkgname=atril
-pkgver=1.12.2
-_pkgver=1.12
+_ver=1.15
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="MATE document viewer slimmed down for Xfce (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dconf' 'dbus' 'desktop-file-utils' 'gtk2' 'libsecret' 'libsm' 'libspectre' 'mathjax' 'poppler-glib' 'webkitgtk2' 'zlib')
-makedepends=('djvulibre' 'gobject-introspection' 'libgxps' 'mate-common' 'texlive-bin' 'yelp-tools')
+depends=('dconf' 'dbus' 'desktop-file-utils' 'gtk2' 'libsecret' 'libsm' 'libspectre' 'poppler-glib' 'webkitgtk2' 'zlib')
+makedepends=('djvulibre' 'gobject-introspection' 'libgxps' 'mate-common>=1.15.0' 'texlive-bin' 'yelp-tools')
 optdepends=('djvulibre: DjVu support'
             'libgxps: XPS support'
             'texlive-bin: DVI support'
@@ -19,11 +22,10 @@ optdepends=('djvulibre: DjVu support'
 provides=('atril')
 conflicts=('atril' 'atril-gtk3')
 replaces=('atril')
-source=("http://pub.mate-desktop.org/releases/${_pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "${pkgname}.desktop")
-sha1sums=('c8d9ecf779f398439d67899e31722dd15d8b3b85'
+source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
+        'atril-xfce.desktop')
+sha1sums=('c9793a09cc59038500bec703aa56236225b24d74'
           'eb7bc2b54bcfff8df68f2a6a10e7aa16c85d3b59')
-install=atril.install
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -34,7 +36,7 @@ build() {
         --enable-gtk-doc \
         --enable-djvu \
         --enable-dvi \
-        --enable-epub \
+        --disable-epub \
         --enable-t1lib \
         --enable-pixbuf \
         --enable-comics \
