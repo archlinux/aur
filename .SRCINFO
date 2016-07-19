@@ -1,0 +1,15 @@
+pkgbase = python2-efilter
+	pkgdesc = EFILTER query language
+	pkgver = 1438631774
+	pkgrel = 1
+	url = https://github.com/google/dotty/
+	arch = any
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/20/83/ecdf93ca3a02d26d86766af1e077b7c20b2b133a1dff8e37707c8e1eea1a/efilter-1438631774.tar.gz#md5=9bad2387facf706b1f7ba1411274406a
+	md5sums = 9bad2387facf706b1f7ba1411274406a
+
+pkgname = python2-efilter
+	depends = python2
+
