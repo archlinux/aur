@@ -1,4 +1,5 @@
-# Maintainer: Lauri Niskanen <ape@ape3000.com>
+# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Previous Maintainer: Lauri Niskanen <ape@ape3000.com>
 
 pkgname=coffeelint
 pkgver=1.15.7
@@ -22,3 +23,5 @@ package() {
   npm install --user root -g --prefix "$pkgdir/usr" $pkgname@$pkgver
   rmdir $pkgdir/usr/etc
 }
+
+# vim:set ts=2 sw=2 et:
