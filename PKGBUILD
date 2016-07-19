@@ -7,11 +7,11 @@ pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Ne
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
+optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
 install=openvpn.install
-source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz
-        http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz.asc
+source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz{,.asc}
         openvpn@.service)
 sha256sums=('0f5f1ca1dc5743fa166d93dd4ec952f014b5f33bafd88f0ea34b455cae1434a7'
             'SKIP'

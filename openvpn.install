@@ -1,8 +1,0 @@
-## arg 1:  the new package version
-## arg 2:  the old package version
-post_upgrade() {
-  if [ $(vercmp 2.3.2-1 $2) -ge 0 ]; then
-    echo ">>> easy-rsa has moved into its own package. Run:"
-    echo ">>>  # pacman -S easy-rsa"
-  fi
-}
