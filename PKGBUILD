@@ -1,3 +1,5 @@
+# Maintainer: Seth Barberee <seth.barberee@gmail.com>
+
 pkgname=animewatch-pyqt4
 _pkgname=AnimeWatch
 pkgver=2.4.1
@@ -6,6 +8,7 @@ pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special empha
 arch=(any)
 conflicts=('animewatch-pyqt5')
 license=('GPL3')
+url="https://github.com/kanishka-linux/AnimeWatch"
 depends=('python' 'python-pyqt4' 'python-pycurl' 'python-urllib3' 'curl' 'libnotify' 'python-dbus'
         'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib')
 

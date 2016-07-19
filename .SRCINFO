@@ -2,6 +2,7 @@ pkgbase = animewatch-pyqt4
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt4
 	pkgver = 2.4.1
 	pkgrel = 2
+	url = https://github.com/kanishka-linux/AnimeWatch
 	arch = any
 	license = GPL3
 	depends = python
