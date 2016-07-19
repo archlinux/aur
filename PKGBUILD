@@ -5,7 +5,7 @@ pkgname=micropolis-java
 _rpkgname=micropolisj
 pkgver=1.6.r505
 pkgrel=1
-pkgdesc="Micropolis Unix version [SimCity 1] rewrited in Java"
+pkgdesc="Micropolis, Unix version of SimCity 1 rewrited in Java"
 arch=("any")
 url="https://github.com/jason17055/micropolis-java"
 license=("custom:GPL3")
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	
+
 	ant
 }
 
@@ -33,20 +33,20 @@ package(){
 
 	install -Dm677 "${srcdir}/${pkgname}/${_rpkgname}.jar" \
 		"${pkgdir}/usr/share/micropolis-java/${_rpkgname}.jar"
-		
+
 	install -Dm677 "${srcdir}/${pkgname}/COPYING" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	
+
 	install -Dm677 "${srcdir}/${pkgname}/README" \
 		"${pkgdir}/usr/share/doc/${pkgname}/README"
-	
+
 	install -Dm677 "${srcdir}/${pkgname}/build/micropolism.png" \
 		"${pkgdir}/usr/share/pixmaps/${_rpkgname}.png"
-	
+
 	install -Dm677 "${srcdir}/micropolis-java.sh" \
 		"${pkgdir}/usr/bin/micropolis-java"
-	
+
 	install -Dm677 "${srcdir}/micropolis-java.desktop" \
 		"${pkgdir}/usr/share/applications/micropolis-java.desktop"
 }
