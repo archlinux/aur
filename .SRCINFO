@@ -1,0 +1,23 @@
+pkgbase = terminus
+	pkgdesc = The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform https://pantheon.io
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/pantheon-systems/terminus
+	arch = any
+	license = MIT
+	checkdepends = php-behat
+	checkdepends = phpunit
+	makedepends = git
+	depends = php
+	optdepends = composer
+	optdepends = drush
+	optdepends = git
+	source = https://github.com/pantheon-systems/terminus/releases/download/0.11.2/terminus.phar
+	source = https://raw.githubusercontent.com/pantheon-systems/terminus/0.11.2/LICENSE.txt
+	source = https://raw.githubusercontent.com/pantheon-systems/terminus/0.11.2/utils/terminus-completion.bash
+	md5sums = 3d502ca3bf6c24fc4164f8c0a17523c6
+	md5sums = 727fd1133932956555ff7dbbf03f8d19
+	md5sums = ee0ac20ffb763afccf64234c96575b8c
+
+pkgname = terminus
+
