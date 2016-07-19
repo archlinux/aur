@@ -1,3 +1,5 @@
+# Maintainer: Seth Barberee <seth.barberee@gmail.com>
+
 pkgname=animewatch-pyqt5
 _pkgname=AnimeWatch
 pkgver=3.0.0.r12.0840967
@@ -5,6 +7,7 @@ pkgrel=1
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt5-WebEngine"
 arch=(any)
 conflicts=('animewatch-pyqt4')
+url="https://github.com/kanishka-linux/AnimeWatch"
 license=('GPL3')
 depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'python-urllib3' 'curl' 'libnotify' 'python-dbus'
         'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib')
@@ -12,7 +15,7 @@ depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'python-urllib3
 makedepends=('git')
 
 source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
-#source=("https://github.com/kanishka-linux/"${pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
+#source=("https://github.com/kanishka-linux/"${_pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
 md5sums=('SKIP')
 _gitname=AnimeWatch-PyQt5-WebEngine-Stable
 
