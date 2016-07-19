@@ -2,7 +2,7 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.3.0.3.gf352935
+pkgver=3.3.0.21.g37e17bc
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ build() {
   cd "$srcdir/$_name"
   npm install
   npm uninstall ll-keyboard-hook-win -O
+  npm uninstall appdmg -O
   npm update
   npm run build
 
