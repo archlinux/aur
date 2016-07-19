@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
-pkgver=20160624
+pkgver=20160719
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   export GOPATH="$srcdir"
-  # git clone "$srcdir/dcrd" "$GOPATH/src/github.com/decred/dcrd"
+  git clone "$srcdir/dcrd" "$GOPATH/src/github.com/decred/dcrd"
   git clone "$srcdir/dcrwallet" "$GOPATH/src/github.com/decred/dcrwallet"
   git clone "$srcdir/dcrticketbuyer" \
     "$GOPATH/src/github.com/decred/dcrticketbuyer"
@@ -31,10 +31,9 @@ build() {
   export GOPATH="$srcdir"
 
   msg2 'Building dcrd and dependencies...'
-  # cd "$GOPATH/src/github.com/decred/dcrd"
-  # glide install
-  # go install . ./cmd/...
-  go get -u -v github.com/decred/dcrd/...
+  cd "$GOPATH/src/github.com/decred/dcrd"
+  glide install
+  go install $(glide novendor)
 
   msg2 'Building dcrticketbuyer and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrticketbuyer"
