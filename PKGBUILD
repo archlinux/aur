@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-pae
 pkgname=(nvidia-pae nvidia-pae-dkms)
-pkgver=367.27
+pkgver=367.35
 _extramodules=extramodules-4.6-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux"
@@ -16,7 +16,7 @@ license=('custom')
 options=('!strip')
 # See nvidia-utils
 source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-md5sums=('f32b9ab673acce56990f2b5acdc1e77f')
+md5sums=('42db6f6485c3c337c7c756380ec64b7a')
 
 _pkg="NVIDIA-Linux-x86-${pkgver}"
 
