@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=OMOptim
+Comment=Open Modelicas OMOptim
+Terminal=false
+Type=Application
+Categories=Development;OpenModelica;
+Exec=OMOptim
+Icon=omoptim
