@@ -1,27 +1,33 @@
-# Maintainer: Michael Fellinger <m.fellinger@gmail.com>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Michael Fellinger <m.fellinger@gmail.com>
+
 pkgname=vms-empire
-pkgver=1.11
+pkgver=1.14
 pkgrel=1
 pkgdesc="Empire is a simulation of a full-scale war between two emperors, the computer and you."
 arch=('i686' 'x86_64')
 url="http://www.catb.org/~esr/vms-empire/"
 license=('GPL')
 depends=('ncurses')
+makedepends=('xmlto')
 source=(
   http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz
 )
-md5sums=('55c3e79e249c1664b8323e4645ab0be1')
+md5sums=('9defc2be52380171f293b5bfb4c5fa28')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i 's/^install: empire.6 uninstall/install: empire.6/' Makefile
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make PREFIX="/usr"
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 empire.6 "$pkgdir/usr/share/man/man6/empire.6"
-  install -D -m755 vms-empire "$pkgdir/usr/bin/vms-empire"
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
