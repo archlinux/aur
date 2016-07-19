@@ -1,0 +1,14 @@
+pkgbase = mcu-info-util-git
+	pkgdesc = Small utility for generate C/C++ headers and linker script for some MCUs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/KivApple/mcu-info-util
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = mcu-info-util::git+https://github.com/KivApple/mcu-info-util
+	md5sums = SKIP
+
+pkgname = mcu-info-util-git
+
