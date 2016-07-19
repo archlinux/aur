@@ -3,7 +3,7 @@
 
 pkgname=ahven
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Ahven is a simple unit test framework for the Ada programming language."
 
 arch=('i686' 'x86_64')
@@ -14,23 +14,42 @@ depends=('gcc-ada')
 makedepends=('sphinxcontrib-adadomain')
 
 
-source=(http://www.ahven-framework.com/releases/ahven-2.6.tar.gz)
-md5sums=('776d3da3cd30a9c8d7db1f84f55c8381')
+source=(http://www.ahven-framework.com/releases/ahven-2.6.tar.gz
+        ahven.gpr
+        patch-comfignat.mk)
+
+md5sums=('776d3da3cd30a9c8d7db1f84f55c8381'
+         'ea461d9f823370b1bbf509f8230fb26d'
+         'c2f87072663a2a77cbbb590ef4eb49b6')
 
 
-build() {
+prepare()
+{
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 -i ../patch-comfignat.mk
+}
+
+
+build() 
+{
   cd "$srcdir/$pkgname-$pkgver"
   make
 }
 
 
-check() {
+check() 
+{
   cd "$srcdir/$pkgname-$pkgver"
   make check
 }
 
 
-package() {
+package() 
+{
   cd "$srcdir/$pkgname-$pkgver"
-  make  DESTDIR=$pkgdir  PREFIX="$pkgdir/usr"  SPHINXBUILD=sphinx-build2  install
+
+  make  DESTDIR=$pkgdir  SPHINXBUILD=sphinx-build2  install
+
+  mkdir -p $pkgdir/usr/lib/gnat
+  cp ../ahven.gpr  $pkgdir/usr/lib/gnat
 }
