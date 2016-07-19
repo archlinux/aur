@@ -1,3 +1,5 @@
+# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+
 _npmname=electron-rebuild
 _npmver=1.1.5
 pkgname=nodejs-electron-rebuild # All lowercase
@@ -7,8 +9,8 @@ pkgdesc="Electron supporting package to rebuild native node modules against the 
 arch=(any)
 url="https://github.com/paulcbetts/electron-rebuild"
 license=()
-depends=('nodejs' 'npm' )
-optdepends=()
+makedepends=('python2')
+depends=('nodejs' 'npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
 sha1sums=(2db95e9a6a52685c8c1cb9acfd05aaa23f7352f2)
