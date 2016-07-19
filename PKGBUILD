@@ -42,4 +42,4 @@ package() {
   install -m644 "${srcdir}/hyperlightdrifter.desktop" "${pkgdir}/usr/share/applications/hyperlightdrifter.desktop"
 }
 
-# vim:set ts=8 sts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
