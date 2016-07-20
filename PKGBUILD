@@ -3,7 +3,7 @@
 pkgname="popcorntime-ce-git"
 _pkgname="popcorntime-ce"
 _device="desktop"
-pkgver=r191.fcd39e1
+pkgver="r209.36fb825"
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition."
 arch=("x86_64" "i686")
