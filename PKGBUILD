@@ -4,7 +4,7 @@ pkgbase=python-nikola-git
 _pyname=nikola
 _gitname=nikola
 pkgname=('python-nikola-git' 'python-nikola-doc-git')
-pkgver=7.7.9.r3.g43d3c51
+pkgver=7.7.11.r1.g098f574
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git'
              'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
              'python-blinker' 'python-natsort' 'python-setuptools'
-             'python-requests' 'python-husl')
+             'python-requests' 'python-husl' 'python-piexif')
 source=("git+https://github.com/getnikola/${_gitname}.git")
 md5sums=('SKIP')
 
@@ -35,7 +35,7 @@ package_python-nikola-git() {
            'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
            'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
            'python-blinker' 'python-natsort' 'python-setuptools'
-           'python-requests' 'python-husl')
+           'python-requests' 'python-husl' 'python-piexif')
   optdepends=('python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
               'python-pyphen>=0.9.1: for hyphenation'

@@ -1,6 +1,6 @@
 pkgbase = python-nikola-git
 	pkgdesc = A modular, fast, simple, static website generator. (git version)
-	pkgver = 7.7.9.r3.g43d3c51
+	pkgver = 7.7.11.r1.g098f574
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = python-nikola-git
 	makedepends = python-setuptools
 	makedepends = python-requests
 	makedepends = python-husl
+	makedepends = python-piexif
 	options = !emptydirs
 	source = git+https://github.com/getnikola/nikola.git
 	md5sums = SKIP
@@ -45,6 +46,7 @@ pkgname = python-nikola-git
 	depends = python-setuptools
 	depends = python-requests
 	depends = python-husl
+	depends = python-piexif
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
 	optdepends = python-pyphen>=0.9.1: for hyphenation
