@@ -11,8 +11,8 @@ pkgdesc="A multi-model NoSQL database, combining key-value, document and graph d
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
-depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
-makedepends=("cmake binutils python2 go")
+depends=("glibc" "gcc-libs" "openssl" "systemd")
+makedepends=("cmake binutils python2")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
 options=()
