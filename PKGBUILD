@@ -38,7 +38,8 @@ package_01_locate() {
 
 package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
+    -exec install -Dm644 -t "$destdir" '{}' +
 }
 depends[125]=gnome-shell
 
