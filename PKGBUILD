@@ -8,7 +8,7 @@
 pkgname=gnome-shell-extension-dash-to-dock-git
 pkgver=53
 pkgrel=1
-pkgdesc="move the dash out of the overview transforming it in a dock for an easier launching of applications and a faster switching between windows and desktops"
+pkgdesc="move the dash out of the overview transforming it in a dock"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
 _giturl="git+https://github.com/micheleg/dash-to-dock/"
@@ -48,7 +48,8 @@ package_01_locate() {
 
 package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
+    -exec install -Dm644 -t "$destdir" '{}' +
 }
 
 package_09_media() {
