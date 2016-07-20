@@ -28,8 +28,7 @@ build() {
   export LD="ld.gold"
 
   msg2 "Configuring ArangoDB."
-  mv $srcdir/ArangoDB-$pkgver $srcdir/arangodb
-  cd $srcdir/arangodb
+  cd $srcdir/ArangoDB-$pkgver
   [ -d build ] || mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" ..
   msg2 "Building ArangoDB."
@@ -39,14 +38,14 @@ build() {
 package() {
   msg2 "Preparing ArangoDB."
   mkdir -p $pkgdir/usr/libexec/arangodb
-  cp -R $srcdir/arangodb/build/etc $pkgdir
-  cp -R $srcdir/arangodb/build/var $pkgdir
-  cp -R $srcdir/arangodb/build/bin $pkgdir/usr
-  cp -R $srcdir/arangodb/build/lib $pkgdir/usr
+  cp -R $srcdir/ArangoDB-$pkgver/build/etc $pkgdir
+  cp -R $srcdir/ArangoDB-$pkgver/build/var $pkgdir
+  cp -R $srcdir/ArangoDB-$pkgver/build/bin $pkgdir/usr
+  cp -R $srcdir/ArangoDB-$pkgver/build/lib $pkgdir/usr
   mkdir -p $pkgdir/usr/share/doc/arangodb
   mkdir -p $pkgdir/usr/share/arangodb/js
-  cp -R $srcdir/arangodb/js/* $pkgdir/usr/share/arangodb/js
-  cp -R $srcdir/arangodb/Documentation/* $pkgdir/usr/share/doc/arangodb/
+  cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb/js
+  cp -R $srcdir/ArangoDB-$pkgver/Documentation/* $pkgdir/usr/share/doc/arangodb/
 
   msg2 "Preparing systemd service."
   mkdir -p $pkgdir/usr/lib/systemd/system
