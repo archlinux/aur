@@ -1,8 +1,8 @@
 diff --git a/config/Makefile b/config/Makefile
-index 6f8c759..2aa9506 100644
+index 6f8c759..af9397b 100644
 --- a/config/Makefile
 +++ b/config/Makefile
-@@ -8,11 +8,11 @@ endif
+@@ -8,14 +8,16 @@ endif
  NAME=$(shell basename $(shell pwd))
  
  CPPFLAGS += -I../shared/configeditor/include -I../shared/controller/include
@@ -16,6 +16,11 @@ index 6f8c759..2aa9506 100644
        `curl-config --libs` \
        -lxml2 \
        -lstdc++ \
++      -lcrypto \
++	  -lssl \
+       -lm
+ ifeq ($(OS),Windows_NT)
+ LDLIBS += -lSDL2 -lintl -liconv
 diff --git a/core/display.c b/core/display.c
 index b1ac9ef..b324689 100644
 --- a/core/display.c
@@ -834,6 +839,39 @@ index 6f8c759..2aa9506 100644
        `curl-config --libs` \
        -lxml2 \
        -lstdc++ \
+diff --git a/launcher/Makefile b/launcher/Makefile
+index 17d5f93..8c403a9 100644
+--- a/launcher/Makefile
++++ b/launcher/Makefile
+@@ -19,6 +19,8 @@ LDLIBS := ../shared/configeditor/configeditor.a \
+       `curl-config --libs` \
+       -lxml2 \
+       -lstdc++ \
++      -lcrypto \
++      -lssl \
+       -lm
+ ifeq ($(OS),Windows_NT)
+ LDLIBS += -lSDL2 -lintl -liconv
+diff --git a/shared/configupdater/configupdater.cpp b/shared/configupdater/configupdater.cpp
+index 0d90bb4..5677af7 100644
+--- a/shared/configupdater/configupdater.cpp
++++ b/shared/configupdater/configupdater.cpp
+@@ -11,6 +11,7 @@
+ #include <curl/curl.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <openssl/ssl.h>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+@@ -38,6 +39,7 @@ const char * configupdater::configs_file = "configs";
+ 
+ configupdater::configupdater()
+ {
++  SSL_library_init();
+   curl_global_init(CURL_INIT_FLAGS);
+ }
+ 
 diff --git a/shared/event/src/linux/timer.c b/shared/event/src/linux/timer.c
 index 2967c02..8b55369 100644
 --- a/shared/event/src/linux/timer.c
