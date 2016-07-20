@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # just verify version and stuff
-makepkg --noextract --nobuild
+makepkg --nobuild
 # and update .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
