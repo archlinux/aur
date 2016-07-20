@@ -4,7 +4,7 @@ pkgdesc='Additional style plugins for Qt5'
 pkgver='5.0.0'
 pkgrel='1'
 arch=('i686' 'x86_64')
-url="http://code.qt.io/cgit/qt/${srcname}"
+url="https://code.qt.io/cgit/qt/${srcname}"
 license=('LGPL')
 
 depends=('qt5-base' 'gconf' 'gtk2' 'libx11')
