@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-middleclickclose-git
-	pkgdesc = Close windows with a button click (the middle one by default) when in overview mode
+	pkgdesc = Close windows with a button click when in overview mode
 	pkgver = r23
 	pkgrel = 1
 	url = https://github.com/p91paul/middleclickclose

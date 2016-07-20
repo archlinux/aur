@@ -5,7 +5,7 @@
 pkgname=gnome-shell-extension-middleclickclose-git
 pkgver=r23
 pkgrel=1
-pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
+pkgdesc="Close windows with a button click when in overview mode"
 arch=(any)
 url='https://github.com/p91paul/middleclickclose'
 license=(GPL)
@@ -36,7 +36,8 @@ package_01_locate() {
 
 package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
+    -exec install -Dm644 -t "$destdir" '{}' +
 }
 if [ -z "$install" ]
 then
