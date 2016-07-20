@@ -1,28 +1,3 @@
-From cccb20479d97e0853fb7eec14c46b492568e6075 Mon Sep 17 00:00:00 2001
-From: stevijo <stevijo.mayer@googlemail.com>
-Date: Sun, 3 Jan 2016 16:16:33 +0100
-Subject: [PATCH 1/1] arch changes
-
----
- config/Makefile                         |   4 +-
- core/adapter.c                          |   2 +-
- core/calibration.c                      |   6 +-
- core/config.c                           |  10 +-
- core/display.c                          |   2 +-
- core/include/adapter.h                  |   2 +-
- core/include/bluetooth/mgmt.h           | 772 ++++++++++++++++++++++++++++++++
- core/include/calibration.h              |   6 +-
- core/include/config.h                   |  10 +-
- fpsconfig/Makefile                      |   4 +-
- launcher/Makefile                       |   8 +-
- shared/configupdater/configupdater.cpp  |  15 +-
- shared/controller/include/controller2.h |  10 +-
- shared/controller/src/controller.c      |  10 +-
- shared/event/src/linux/timer.c          |   2 +-
- utils/Makefile                          |   5 +-
- 16 files changed, 821 insertions(+), 47 deletions(-)
- create mode 100644 core/include/bluetooth/mgmt.h
-
 diff --git a/config/Makefile b/config/Makefile
 index 6f8c759..2aa9506 100644
 --- a/config/Makefile
@@ -41,95 +16,8 @@ index 6f8c759..2aa9506 100644
        `curl-config --libs` \
        -lxml2 \
        -lstdc++ \
-diff --git a/core/adapter.c b/core/adapter.c
-index e16daef..7a0fd9b 100644
---- a/core/adapter.c
-+++ b/core/adapter.c
-@@ -119,7 +119,7 @@ int adapter_set_port(unsigned char index, char* portname)
-   return 0;
- }
- 
--inline s_adapter* adapter_get(unsigned char index)
-+s_adapter* adapter_get(unsigned char index)
- {
-   if(index < MAX_CONTROLLERS)
-   {
-diff --git a/core/calibration.c b/core/calibration.c
-index fcf7d80..08cb5d0 100644
---- a/core/calibration.c
-+++ b/core/calibration.c
-@@ -44,7 +44,7 @@ s_mouse_cal mouse_cal[MAX_DEVICES][MAX_CONFIGURATIONS] = {};
- 
- int mouse_controller[MAX_DEVICES];
- 
--inline int cal_get_controller(int mouse)
-+int cal_get_controller(int mouse)
- {
-   return mouse_controller[mouse];
- }
-@@ -59,12 +59,12 @@ void cal_init()
-   memset(mouse_cal, 0x00, sizeof(mouse_cal));
- }
- 
--inline s_mouse_cal* cal_get_mouse(int mouse, int conf)
-+s_mouse_cal* cal_get_mouse(int mouse, int conf)
- {
-   return &(mouse_cal[mouse][conf]);
- }
- 
--inline void cal_set_mouse(s_config_entry* entry)
-+void cal_set_mouse(s_config_entry* entry)
- {
-   mouse_cal[entry->device.id][entry->config_id].options = entry->params.mouse_options;
- }
-diff --git a/core/config.c b/core/config.c
-index bf3cde3..568c4bb 100644
---- a/core/config.c
-+++ b/core/config.c
-@@ -139,7 +139,7 @@ inline s_mapper_table* cfg_get_keyboard_buttons(int device, int controller, int
-   return &(keyboard_buttons[device][controller][config]);
- }
- 
--inline void cfg_set_trigger(s_config_entry* entry)
-+void cfg_set_trigger(s_config_entry* entry)
- {
-   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.event.button = entry->event.id;
-   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.event.device_id = entry->device.id;
-@@ -148,12 +148,12 @@ inline void cfg_set_trigger(s_config_entry* entry)
-   cfg_controllers[entry->controller_id].profiles[entry->config_id].trigger.delay = entry->params.trigger.delay;
- }
- 
--inline void cfg_set_controller_dpi(int controller, unsigned int dpi)
-+void cfg_set_controller_dpi(int controller, unsigned int dpi)
- {
-   controller_dpi[controller] = dpi;
- }
- 
--inline void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity)
-+void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity)
- {
-   s_intensity * target = axis_intensity[entry->controller_id][entry->config_id] + axis;
- 
-@@ -293,7 +293,7 @@ static struct
-   int elapsed; //the time elapsed since the last GE_JoystickSetRumble() call
- } joystick_rumble[MAX_DEVICES] = {};
- 
--inline void cfg_process_rumble_event(GE_Event* event)
-+void cfg_process_rumble_event(GE_Event* event)
- {
-   joystick_rumble[event->jrumble.which].weak = event->jrumble.weak;
-   joystick_rumble[event->jrumble.which].strong = event->jrumble.strong;
-@@ -346,7 +346,7 @@ int cfg_is_joystick_used(int id)
-   return used;
- }
- 
--inline s_mouse_control* cfg_get_mouse_control(int id)
-+s_mouse_control* cfg_get_mouse_control(int id)
- {
-   if(id >= 0)
-   {
 diff --git a/core/display.c b/core/display.c
-index 387f558..e3993b5 100644
+index b1ac9ef..b324689 100644
 --- a/core/display.c
 +++ b/core/display.c
 @@ -8,7 +8,7 @@
@@ -141,19 +29,15 @@ index 387f558..e3993b5 100644
  #endif
  
  #include "display.h"
-diff --git a/core/include/adapter.h b/core/include/adapter.h
-index 6b797a1..2271821 100644
---- a/core/include/adapter.h
-+++ b/core/include/adapter.h
-@@ -73,7 +73,7 @@ int adapter_start();
- int adapter_send();
- void adapter_clean();
+@@ -308,7 +308,7 @@ void display_init()
+   init_pair(4, COLOR_RED, COLOR_BLACK);
  
--inline s_adapter* adapter_get(unsigned char index);
-+s_adapter* adapter_get(unsigned char index);
- int adapter_set_port(unsigned char index, char* portname);
- 
- void adapter_set_device(int controller, e_device_type device_type, int device_id);
+   wrefresh(stdscr);//first call clears the screen
+-  
++
+   mvaddstr(1, LSTICK_X_P + 1, _("Left stick"));
+   mvaddstr(1, RSTICK_X_P + 1, _("Right stick"));
+   mvaddstr(1, BUTTON_X_P + 1, _("Buttons"));
 diff --git a/core/include/bluetooth/mgmt.h b/core/include/bluetooth/mgmt.h
 new file mode 100644
 index 0000000..46766a9
@@ -932,50 +816,6 @@ index 0000000..46766a9
 +		return "<unknown status>";
 +	return mgmt_status[status];
 +}
-diff --git a/core/include/calibration.h b/core/include/calibration.h
-index a3e977b..cf97d82 100644
---- a/core/include/calibration.h
-+++ b/core/include/calibration.h
-@@ -31,11 +31,11 @@ extern e_current_cal current_cal;
- 
- void cal_button(int, int);
- void cal_key(int, int, int);
--inline s_mouse_cal* cal_get_mouse(int mouse, int conf);
--inline void cal_set_mouse(s_config_entry* entry);
-+s_mouse_cal* cal_get_mouse(int mouse, int conf);
-+void cal_set_mouse(s_config_entry* entry);
- int cal_skip_event(GE_Event*);
- void cal_init();
--inline int cal_get_controller(int);
-+int cal_get_controller(int);
- inline void cal_set_controller(int, int);
- void calibration_test();
- 
-diff --git a/core/include/config.h b/core/include/config.h
-index 200c670..415ca2c 100644
---- a/core/include/config.h
-+++ b/core/include/config.h
-@@ -175,15 +175,15 @@ void cfg_trigger_lookup(GE_Event*);
- void cfg_config_activation();
- void cfg_intensity_lookup(GE_Event*);
- void cfg_process_event(GE_Event*);
--inline s_mouse_control* cfg_get_mouse_control(int);
--inline void cfg_process_rumble_event(GE_Event* event);
-+s_mouse_control* cfg_get_mouse_control(int);
-+void cfg_process_rumble_event(GE_Event* event);
- void cfg_process_rumble();
- int cfg_is_joystick_used(int);
- void cfg_process_motion_event(GE_Event*);
- void cfg_process_motion();
--inline void cfg_set_trigger(s_config_entry* entry);
--inline void cfg_set_controller_dpi(int controller, unsigned int dpi);
--inline void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity);
-+void cfg_set_trigger(s_config_entry* entry);
-+void cfg_set_controller_dpi(int controller, unsigned int dpi);
-+void cfg_set_axis_intensity(s_config_entry* entry, int axis, s_intensity* intensity);
- void cfg_intensity_init();
- int cfg_add_binding(s_config_entry* entry);
- inline s_mapper_table* cfg_get_mouse_axes(int, int, int);
 diff --git a/fpsconfig/Makefile b/fpsconfig/Makefile
 index 6f8c759..2aa9506 100644
 --- a/fpsconfig/Makefile
@@ -994,179 +834,11 @@ index 6f8c759..2aa9506 100644
        `curl-config --libs` \
        -lxml2 \
        -lstdc++ \
-diff --git a/launcher/Makefile b/launcher/Makefile
-index 17d5f93..8cbbb4b 100644
---- a/launcher/Makefile
-+++ b/launcher/Makefile
-@@ -10,16 +10,18 @@ NAME=$(shell basename $(shell pwd))
- CPPFLAGS += -I../shared/configeditor/include \
-       -I../shared/controller/include \
-       -I../shared/async/include
--CPPFLAGS += -Wno-unused-local-typedefs `wx-config --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
-+CPPFLAGS += -Wno-unused-local-typedefs `wx-config-2.8 --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
- LDLIBS := ../shared/configeditor/configeditor.a \
-       $(LDLIBS) \
-       ../shared/updater/updater.a \
-       ../shared/configupdater/configupdater.a \
--      `wx-config --libs` \
-+      `wx-config-2.8 --libs` \
-       `curl-config --libs` \
-       -lxml2 \
-       -lstdc++ \
--      -lm
-+      -lm \
-+      -lcrypto \
-+      -lssl
- ifeq ($(OS),Windows_NT)
- LDLIBS += -lSDL2 -lintl -liconv
- endif
-diff --git a/shared/configupdater/configupdater.cpp b/shared/configupdater/configupdater.cpp
-index 0d90bb4..a0964e5 100644
---- a/shared/configupdater/configupdater.cpp
-+++ b/shared/configupdater/configupdater.cpp
-@@ -11,6 +11,7 @@
- #include <curl/curl.h>
- #include <stdlib.h>
- #include <string.h>
-+#include <openssl/ssl.h>
- 
- #ifdef WIN32
- #include <windows.h>
-@@ -38,6 +39,7 @@ const char * configupdater::configs_file = "configs";
- 
- configupdater::configupdater()
- {
-+  SSL_library_init();
-   curl_global_init(CURL_INIT_FLAGS);
- }
- 
-@@ -86,6 +88,7 @@ int configupdater::getconfiglist(const char * url)
-         curl_easy_setopt(curl_handle, CURLOPT_HTTPHEADER, headers);
-         curl_easy_setopt(curl_handle, CURLOPT_URL, url);
-         curl_easy_setopt(curl_handle, CURLOPT_FOLLOWLOCATION, 1L);
-+        curl_easy_setopt(curl_handle, CURLOPT_VERBOSE, 1L);
-         curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_data);
-         curl_easy_setopt(curl_handle, CURLOPT_FILE, outfile);
-         curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
-@@ -142,26 +145,26 @@ int configupdater::getconfiglist(const char * url)
- list<string>* configupdater::getconfiglist()
- {
-   configlist.clear();
--  
-+
-   int ret = getconfiglist(configs_url);
--  
-+
-   return (ret != -1) ? &configlist : NULL;
- }
- 
- int configupdater::getconfigs(list<string>* cl)
- {
-   int ret = -1;
--  
-+
-   if(configs_dir.empty())
-   {
-     return -1;
-   }
--  
-+
-   for(list<string>::iterator it = cl->begin(); it != cl->end(); ++it)
-   {
-     string config = configs_download_url + *it;
-     string output = configs_dir + *it;
--    
-+
-     FILE* outfile = fopen(output.c_str(), "wb");
-     if(outfile)
-     {
-@@ -200,6 +203,6 @@ int configupdater::getconfigs(list<string>* cl)
-     }
- #endif
-   }
--  
-+
-   return ret;
- }
-diff --git a/shared/controller/include/controller2.h b/shared/controller/include/controller2.h
-index a717486..f7e5703 100644
---- a/shared/controller/include/controller2.h
-+++ b/shared/controller/include/controller2.h
-@@ -58,7 +58,7 @@ typedef struct
-   void (*fp_init_report)(s_report * report);
- } s_controller;
- 
--inline int clamp(int min, int val, int max);
-+int clamp(int min, int val, int max);
- 
- const char* controller_get_name(e_controller_type type);
- e_controller_type controller_get_type(const char* name);
-@@ -68,10 +68,10 @@ void controller_register(e_controller_type type, s_controller * controller);
- int controller_get_min_refresh_period(e_controller_type type);
- int controller_get_default_refresh_period(e_controller_type type);
- 
--inline int controller_get_max_signed(e_controller_type, int);
--inline int controller_get_max_unsigned(e_controller_type, int);
--inline int controller_get_mean_unsigned(e_controller_type, int);
--inline double controller_get_axis_scale(e_controller_type, int);
-+int controller_get_max_signed(e_controller_type, int);
-+int controller_get_max_unsigned(e_controller_type, int);
-+int controller_get_mean_unsigned(e_controller_type, int);
-+double controller_get_axis_scale(e_controller_type, int);
- 
- s_axis_props controller_get_axis_index_from_name(const char*);
- 
-diff --git a/shared/controller/src/controller.c b/shared/controller/src/controller.c
-index eb4291c..3e50a45 100644
---- a/shared/controller/src/controller.c
-+++ b/shared/controller/src/controller.c
-@@ -11,7 +11,7 @@
- 
- s_controller * controllers[C_TYPE_MAX] = {};
- 
--inline int clamp(int min, int val, int max)
-+int clamp(int min, int val, int max)
- {
-   if (val < min)
-     return min;
-@@ -82,7 +82,7 @@ int controller_get_default_refresh_period(e_controller_type type)
-   return DEFAULT_REFRESH_PERIOD;
- }
- 
--inline int controller_get_max_unsigned(e_controller_type type, int axis)
-+int controller_get_max_unsigned(e_controller_type type, int axis)
- {
-   if(type < C_TYPE_MAX && axis < AXIS_MAX)
-   {
-@@ -91,7 +91,7 @@ inline int controller_get_max_unsigned(e_controller_type type, int axis)
-   return DEFAULT_MAX_AXIS_VALUE;
- }
- 
--inline int controller_get_max_signed(e_controller_type type, int axis)
-+int controller_get_max_signed(e_controller_type type, int axis)
- {
-   if(axis < abs_axis_0)
-   {
-@@ -109,12 +109,12 @@ inline int controller_get_max_signed(e_controller_type type, int axis)
-   }
- }
- 
--inline int controller_get_mean_unsigned(e_controller_type type, int axis)
-+int controller_get_mean_unsigned(e_controller_type type, int axis)
- {
-   return controller_get_max_unsigned(type, axis) / 2 + 1;
- }
- 
--inline double controller_get_axis_scale(e_controller_type type, int axis)
-+double controller_get_axis_scale(e_controller_type type, int axis)
- {
-   return (double) controller_get_max_unsigned(type, axis) / DEFAULT_MAX_AXIS_VALUE;
- }
 diff --git a/shared/event/src/linux/timer.c b/shared/event/src/linux/timer.c
-index 0722dea..01d5c4b 100644
+index 2967c02..8b55369 100644
 --- a/shared/event/src/linux/timer.c
 +++ b/shared/event/src/linux/timer.c
-@@ -10,7 +10,7 @@
+@@ -12,7 +12,7 @@
  
  static int tfd = -1;
  
@@ -1175,8 +847,17 @@ index 0722dea..01d5c4b 100644
  {
    return tfd;
  }
+@@ -29,7 +29,7 @@ int timer_start(int usec)
+       .it_interval = period,
+       .it_value = period,
+   };
+-  
++
+   if(tfd != -1)
+   {
+     return tfd;
 diff --git a/utils/Makefile b/utils/Makefile
-index 148caa9..1ac32bf 100644
+index 148caa9..85cd8ad 100644
 --- a/utils/Makefile
 +++ b/utils/Makefile
 @@ -7,7 +7,7 @@ endif
@@ -1184,7 +865,7 @@ index 148caa9..1ac32bf 100644
  BINS=ds4tool sixaddr
  ifneq ($(OS),Windows_NT)
 -BINS+= bdaddr hcirevision
-+BINS+=hcirevision
++BINS+= hcirevision
  OUT=$(BINS)
  else
  OUT=
@@ -1198,6 +879,3 @@ index 148caa9..1ac32bf 100644
  hcirevision: linux/hcirevision.o
  	$(CC) $^ -o $@ -lbluetooth
  endif
--- 
-2.6.4
-
