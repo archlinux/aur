@@ -3,7 +3,7 @@
 pkgname=gog-undertale
 pkgver=2.0.0.1
 pkgrel=1
-pkgdesc="Only through teamwork can you triumph over the evil forces of Anti-Love."
+pkgdesc="In UNDERTALE you play as a human child who falls underground into the world of monsters."
 url="http://undertale.com/"
 license=('custom')
 arch=('i686' 'x86_64')
