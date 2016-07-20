@@ -14,11 +14,9 @@ optdepends=('java-environment>=8: use system java'
 provides=('0xdbe' '0xdbe-eap')
 conflicts=('0xdbe' '0xdbe-eap')
 source=(https://download.jetbrains.com/$pkgname/${pkgname}-${pkgver}.tar.gz
-        jetbrains-datagrip.desktop
-        datagrip.sh)
+        jetbrains-datagrip.desktop)
 sha512sums=('f188357e407bd5f9ed525506b944cee97bafedd78bdb727506cbcc2b725ec13d849bbbc78c29bada28a25003f638acc98e4337614e1a5b2efced50f75d041ac7'
-            '76b68a198e50c9c89ce3638b7a4dd1a53dbe902396d0c9af77beb9243fcf9c503694cce1063e9535b8bf3e6f1912b2aa80ecf58285abc42f947f60a7fc4fb1d9'
-            '8a94e7542650a83611b883fc0d9da98bd2cf5c9cc3ef93b30648830187d41e354c2a4c1f0705d4a63a2218b830d72d19292719980159e91f6149b468aa8fbc4f')
+            '76b68a198e50c9c89ce3638b7a4dd1a53dbe902396d0c9af77beb9243fcf9c503694cce1063e9535b8bf3e6f1912b2aa80ecf58285abc42f947f60a7fc4fb1d9')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
