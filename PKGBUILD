@@ -18,23 +18,21 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'libxshmfence' 'libunwind')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
-        xvfb-run.1
-        call-eglBindAPI-after-eglInitialize.patch)
+        xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '45fdc2a1241d458756c41a93c01846e04cc75f3c75f81f48b61533d08280918d')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
-prepare() {
-  cd "${_pkgbase}-${pkgver}"
+# prepare() {
+  # cd "${_pkgbase}-${pkgver}"
 
-  msg2 "Fix glamor failing to initialize with mesa"
-  patch -Np1 -i ../call-eglBindAPI-after-eglInitialize.patch
-}
+  # msg2 "Fix glamor failing to initialize with mesa"
+  # patch -Np1 -i ../call-eglBindAPI-after-eglInitialize.patch
+# }
 
 build() {
   cd "${_pkgbase}-${pkgver}"
