@@ -3,8 +3,8 @@
 #
 
 pkgname=ffmpeg-full
-pkgver=3.0.2
-pkgrel=4
+pkgver=3.1.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -15,14 +15,15 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
-         'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-         'libvpx.so' 'libx264.so' 'libx265.so'
+         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
+         'libx264.so' 'libx265.so'
          'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'jack' 'kvazaar'
          'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
-         'mesa' 'nut-multimedia-git' 'openal' 'opencl-headers' 'openh264' 'rubberband'
-         'rtmpdump' 'shine' 'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab'
-         'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
+         'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
+         'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
+         'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
+         'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
+         'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
@@ -33,7 +34,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('30e3c77c2f4c358ed087869455a7496cbd7753a5e1b98d20ba49c1004009fd36'
+sha256sums=('a5bca50a90a37b983eaa17c483a387189175f37ca678ae7e51d43e7610b4b3b4'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -42,8 +43,9 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --extra-cflags="-I/usr/include/nvidia-sdk" \
-    --extra-cxxflags="-std=gnu++98" \
+    --extra-cflags="-I/usr/include/nvidia-sdk \
+                    -I/usr/lib/jvm/$(archlinux-java get)/include \
+                    -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
@@ -52,14 +54,13 @@ build() {
     --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
-    --enable-dxva2 \
-    --enable-fontconfig \
     --enable-frei0r \
     --enable-gcrypt \
     --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
     --enable-gray \
+    --enable-jni \
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
@@ -68,9 +69,10 @@ build() {
     --enable-libcdio \
     --enable-libcelt \
     --enable-libdc1394 \
-    --enable-libdcadec \
+    --enable-libebur128 \
     --enable-libfaac \
     --enable-libfdk-aac \
+    --enable-libfontconfig \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgme \
@@ -122,6 +124,7 @@ build() {
     --enable-netcdf \
     --enable-nonfree \
     --enable-nvenc \
+    --enable-omx \
     --enable-openal \
     --enable-opencl \
     --enable-opengl \
