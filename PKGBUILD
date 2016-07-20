@@ -23,7 +23,6 @@ package() {
   install -d -m 755 ${pkgdir}/usr/bin/
   install -d -m 755 ${pkgdir}/usr/share/applications/
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
-  install -d -m 755 ${pkgdir}/etc/profile.d/
 
   cp -a ${srcdir}/${_pkgname}-${pkgver} $pkgdir/opt/${pkgname}
   # if using system java you may remove the bundled jre and save about 100M
@@ -31,6 +30,5 @@ package() {
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 ${srcdir}/${pkgname}.sh ${pkgdir}/etc/profile.d/
   install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/product.png" "${pkgdir}/usr/share/pixmaps/product.png"
 }
