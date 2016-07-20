@@ -1,7 +1,7 @@
 pkgbase = crashplan
 	pkgdesc = An online/offsite backup solution
 	pkgver = 4.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.crashplan.com
 	install = crashplan.install
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = crashplan
 	makedepends = cpio
 	depends = bash
 	depends = java-runtime-headless
+	optdepends = java-runtime: For Crashplan GUI
+	optdepends = gtk2: For Crashplan GUI
 	backup = opt/crashplan/bin/run.conf
 	source = https://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_4.7.0_Linux.tgz
 	source = https://raw.githubusercontent.com/pdemonaco/init/master/crashplan/crashplan
