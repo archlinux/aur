@@ -2,11 +2,11 @@
 
 pkgname=psmoveapi
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation Move Motion Controller API"
 arch=(i686 x86_64)
 url="http://thp.io/2010/psmove/"
-license=('GPL2')
+license=('custom')
 depends=('bluez-libs' 'libsystemd')
 makedepends=('cmake' 'git')
 source=("http://thp.io/2010/psmove/$pkgname-$pkgver.tar.gz")
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -D -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
