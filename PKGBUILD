@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-data-inprop-mhd-banskabystrica
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_5_17
+pkgver=2016_6_13
 pkgrel=1
 pkgdesc="Banská Bystrica public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
