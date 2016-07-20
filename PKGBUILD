@@ -3,9 +3,9 @@
 # not for the easily offended
 #
 # NB: This package does not edit the functionality of sudo in any way apart
-#     from adding extra insults for obvious reasons, and tracks sudo
+#     from adding extra insults, for obvious reasons, and tracks sudo
 #     directly from upstream.
-# Credit goes to the #archlinux-offtopic IRC chan for the constant inspiration
+# Credit goes to the #archlinux-offtopic IRC channel for the constant inspiration
 #
 # Maintainer: NextHendrix <cjones12@sheffield.ac.uk>
 
@@ -13,7 +13,7 @@
 pkgname=sudo-masochist
 _sudover=1.8.17p1
 pkgver=${_sudover/p/.p}
-pkgrel=1
+pkgrel=2
 pkgdesc="Sudo with a lot of extra insults"
 arch=('i686' 'x86_64')
 url="https://www.sudo.ws/sudo/"
