@@ -2,9 +2,8 @@
 Description=Isso Comment Server
 
 [Service]
-EnvironmentFile=/etc/conf.d/isso
-ExecStart=/usr/bin/isso -c $ISSO_CONF
+Environment="ISSO_SETTINGS=/etc/isso.conf"
+ExecStart=/usr/bin/isso run
 
 [Install]
 WantedBy=multi-user.target
-
