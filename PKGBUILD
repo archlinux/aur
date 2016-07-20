@@ -4,7 +4,7 @@
 _pkgname=jre
 pkgname=bin32-jre
 _major=8
-_minor=92
+_minor=102
 _build=b14
 pkgver=${_major}u${_minor}
 pkgrel=1
@@ -46,7 +46,7 @@ install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-i586.tar.gz"
         "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
         "policytool32-$_jname.desktop")
-md5sums=('e2157870ce7f0484f347b8374da863a0'
+md5sums=('77199a65cc3dd11e6a5dbb3144fad968'
          'b3c7031bc65c28c2340302065e7d00d3'
          '271b97a9b95d809a99999ec5fb74313c')
 
