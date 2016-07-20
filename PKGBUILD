@@ -5,7 +5,7 @@
 pkgname=snapd-confinement
 _pkgname=snapd
 pkgver=2.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Service and tools for management of snap packages (with confinement enabled)."
 arch=('i686' 'x86_64')
 url="https://github.com/snapcore/snapd"
@@ -24,7 +24,7 @@ source=("git+https://github.com/snapcore/$_pkgname.git#tag=$pkgver"
         'disable-devmode-enforcing.patch')
 md5sums=('SKIP'
          '1d841a1d09ba86945551dfc5c5658b2e'
-         '53722064f5e270fd7530de6ba4590f04'
+         'f53ccd2070be9165c0790ea6684c5999'
          '7fd19e053051825b189914cedb95c3e7'
          '48be5347e87d12f2b200e46d11da3a7a')
 
@@ -43,15 +43,14 @@ prepare() {
   # above describes.
   mkdir -p "$(dirname "$GOPATH/src/${_gourl}")"
   ln --no-target-directory -fs "$srcdir/$_pkgname" "$GOPATH/src/${_gourl}"
-
-  # Use get-deps.sh provided by upstream to fetch go dependencies using the
-  # godeps tool and dependencies.tsv (maintained upstream).
-  cd "$GOPATH/src/${_gourl}"
-  ./get-deps.sh
 }
 
 build() {
   export GOPATH="$srcdir/go"
+  # Use get-deps.sh provided by upstream to fetch go dependencies using the
+  # godeps tool and dependencies.tsv (maintained upstream).
+  cd "$GOPATH/src/${_gourl}"
+  ./get-deps.sh
   # Build/install snap and snapd
   go install "${_gourl}/cmd/snap"
   go install "${_gourl}/cmd/snapd"

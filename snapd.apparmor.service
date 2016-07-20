@@ -1,13 +1,12 @@
 [Unit]
 Description=Snap AppArmor profiles
-DefaultDependencies=no
-After=local-fs.target
-Before=sysinit.target
+After=apparmor.service
+Before=snapd.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/find /var/lib/snapd/apparmor/profiles -maxdepth 1 -type f -exec /usr/bin/apparmor_parser -r {} +
-ExecStop=/usr/bin/find /var/lib/snapd/apparmor/profiles -maxdepth 1 -type f -exec /usr/bin/apparmor_parser -R {} +
+ExecStart=-/usr/bin/find /var/lib/snapd/apparmor/profiles -maxdepth 1 -type f -exec /usr/bin/apparmor_parser -r {} +
+ExecStop=-/usr/bin/find /var/lib/snapd/apparmor/profiles -maxdepth 1 -type f -exec /usr/bin/apparmor_parser -R {} +
 RemainAfterExit=yes
 
 [Install]

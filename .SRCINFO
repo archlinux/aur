@@ -1,7 +1,7 @@
 pkgbase = snapd-confinement
 	pkgdesc = Service and tools for management of snap packages (with confinement enabled).
 	pkgver = 2.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = snapd-confinement
 	source = disable-devmode-enforcing.patch
 	md5sums = SKIP
 	md5sums = 1d841a1d09ba86945551dfc5c5658b2e
-	md5sums = 53722064f5e270fd7530de6ba4590f04
+	md5sums = f53ccd2070be9165c0790ea6684c5999
 	md5sums = 7fd19e053051825b189914cedb95c3e7
 	md5sums = 48be5347e87d12f2b200e46d11da3a7a
 
