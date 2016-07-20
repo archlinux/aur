@@ -3,13 +3,12 @@
 
 pkgname=otf-gfs-majuscule
 pkgver=20160313
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Font Majuscule typefaces, provided by the Greek Font Society'
 arch=(any)
 url='http://www.greekfontsociety.gr/typefaces/majuscule'
 license=('custom:OTF')
 depends=('fontconfig' 'xorg-font-utils')
-install='otf-gfs-majuscule.install'
 source=("http://www.greekfontsociety.gr/_assets/fonts/GFS_Ignacio.zip"
 	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Garaldus.zip"
 	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Jackson.zip"
