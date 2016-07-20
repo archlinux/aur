@@ -1,14 +1,14 @@
 pkgbase = mbrowse
 	pkgdesc = A graphical SNMP MIB browser based on GTK+ and Net-SNMP
 	pkgver = 0.4.3
-	pkgrel = 2
-	url = http://sourceforge.net/projects/mbrowse/
+	pkgrel = 3
+	url = https://sourceforge.net/projects/mbrowse/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gtk2
 	depends = net-snmp
-	source = https://sourceforge.net/projects/mbrowse/files/0.4.3/mbrowse-0.4.3.tar.gz/download
+	source = https://sourceforge.net/projects/mbrowse/files/0.4.3/mbrowse-0.4.3.tar.gz
 	sha256sums = 735a86a027659d3be39723d554758d6b51cce56ef3807efd5123d48ebf41506e
 
 pkgname = mbrowse
