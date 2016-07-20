@@ -1,14 +1,14 @@
 pkgbase = owncloud-app-announcementcenter
 	pkgdesc = An Announcement Center app for ownCloud
-	pkgver = 9.0.3
+	pkgver = 9.0.4
 	pkgrel = 1
 	url = https://github.com/owncloud/announcementcenter
 	arch = any
 	license = AGPL
 	depends = owncloud
 	options = !strip
-	source = owncloud-app-announcementcenter-9.0.3.tar.gz::https://github.com/owncloud/announcementcenter/archive/v9.0.3.tar.gz
-	sha512sums = 6e4b9c4516fd21fa9ea0c24eb705926bb9d60478100f95046318cd2484d26ccd295e2076a1bdb23c4f7f957861ba0a197b35ce29c10fdfec3584a2aa3c1b94fb
+	source = owncloud-app-announcementcenter-9.0.4.tar.gz::https://github.com/owncloud/announcementcenter/archive/v9.0.4.tar.gz
+	sha512sums = db3e03d1124a2ac248d7944218abbec88c201f01d735baba5662fc8a141ec646741745278fc1c7bbdd30fad31c45c9e0725cc02057c098182ea3549c6ee43842
 
 pkgname = owncloud-app-announcementcenter
 
