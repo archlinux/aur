@@ -14,7 +14,6 @@ pkgbase = libubox-git
 	makedepends = patch
 	makedepends = pkg-config
 	depends = json-c
-	depends = lua51
 	provides = libubox
 	conflicts = libubox
 	conflicts = libubox-lua-git

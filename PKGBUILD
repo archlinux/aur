@@ -8,7 +8,7 @@ pkgdesc='A small utility library developed for OpenWrt containing a event loop, 
 url='http://git.openwrt.org/?p=project/libubox.git'
 arch=('i686' 'x86_64' 'armv7h')
 license=('ISC BSD-3c')
-depends=('json-c' 'lua51')
+depends=('json-c')
 makedepends=('git' 'cmake' 'gcc' 'make' 'patch' 'pkg-config')
 conflicts=('libubox' 'libubox-lua-git')
 provides=('libubox')
