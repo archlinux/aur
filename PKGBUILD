@@ -4,14 +4,15 @@ pkgver="4.4.0_31.50"
 _pkgbasever=${pkgver%.*}
 _pkgbasever=${_pkgbasever/_/-}
 _kind=generic
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=(tar)
 options=(!strip)
 source=(http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-${_pkgbasever}_${pkgver/_/-}_all.deb
-        linux-ubuntu-bin.preset)
+        linux-ubuntu-bin.preset
+        blacklist.conf)
 source_x86_64=(http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb
                http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-image-extra-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb
                http://mirrors.kernel.org/ubuntu/pool/main/l/linux/linux-headers-${_pkgbasever}-${_kind}_${pkgver/_/-}_amd64.deb)
@@ -23,7 +24,8 @@ noextract=("${source[@]##*/}"
            "${source_i686[@]##*/}")
 
 sha256sums=('04c6de52c7423924ffbcb0771e42795e2809d4b05dab34290382e7a24c3bdaed'
-            '4c417300e4ad14f5eac9291c0bd87e26201b513375bb74f74567d3bb4135537c')
+            '4c417300e4ad14f5eac9291c0bd87e26201b513375bb74f74567d3bb4135537c'
+            'c8baec090a5d917eaa7f62fdccf43525c97ac5abc5ea35638d669e169f8dec00')
 sha256sums_x86_64=('3b8dc893081dbb53868e9b71507d397388d2a4a465d1c892e587b1c4e4addad6'
                    '451da56c1374895a0e3ac607a3c07a25b0e71fda894cc4dc74d9ab734e0bea12'
                    'f444b484cb983ac94a1d392cc8b172d058a157f99095503f851fc39db7801005')
@@ -55,6 +57,9 @@ package_linux-ubuntu-bin() {
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/${pkgname}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
+
+  # install modprobe.d blacklist file (taked from kmod_22-1.1ubuntu1.debian.tar.xz)
+  install -D -m644 "${srcdir}/blacklist.conf" "${pkgdir}/etc/modprobe.d/ubuntu-blacklist.conf"
 }
 
 package_linux-ubuntu-bin-headers() {
