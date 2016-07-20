@@ -1,0 +1,19 @@
+pkgbase = appstreamrunner-git
+	pkgdesc = Use KRunner to list software
+	pkgver = r4012.6562fa1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = git
+	makedepends = python
+	depends = appstream-qt
+	depends = archlinux-appstream-data
+	depends = krunner
+	provides = appstreamrunner
+	source = git://anongit.kde.org/scratch/apol/appstreamrunner.git
+	md5sums = SKIP
+
+pkgname = appstreamrunner-git
+
