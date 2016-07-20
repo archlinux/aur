@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.0.18
-pkgrel=618
+pkgrel=619
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
 url="https://whatsie.chat/"
