@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.45.1.25.g47b45b5
+pkgver=2.19.45.1.30.g96b15d6
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -20,8 +20,9 @@ optdepends=('imagemagick: building HTML documentation'
             'rsync: installing HTML documentation')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
-source=(git://git.sv.gnu.org/lilypond.git)
-md5sums=('SKIP')
+source=(git://git.sv.gnu.org/lilypond.git audio-item.patch)
+md5sums=('SKIP'
+         '9795811b1d588296e1b483ec107389ea')
 options=('!makeflags')
 
 pkgver() {
@@ -42,7 +43,7 @@ prepare() {
   sed -i 's|GUILE_LDFLAGS=.*|GUILE_LDFLAGS="`pkg-config --libs guile`"|' configure.ac
   
   rm -rf python/out/
-  sed -i '28iusing namespace std;' lily/main.cc
+  patch -p1 < "$srcdir"/audio-item.patch
 }
 
 build() {
@@ -51,9 +52,9 @@ build() {
   export PYTHON_CONFIG="python2-config"
   [ -f config.hh ] && rm config.hh
   ./autogen.sh \
-          --prefix=/usr \
-          --disable-documentation \
-	  --enable-guile2
+      --prefix=/usr \
+      --disable-documentation \
+      --enable-guile2
   make all
 }
 

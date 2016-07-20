@@ -1,0 +1,34 @@
+diff --git a/lily/audio-item.cc b/lily/audio-item.cc
+index 2c5d691..c5b1f87 100644
+--- a/lily/audio-item.cc
++++ b/lily/audio-item.cc
+@@ -102,9 +102,9 @@ Audio_key::Audio_key (int acc, bool major)
+   major_ = major;
+ }
+ 
+-const Real Audio_span_dynamic::MINIMUM_VOLUME;
+-const Real Audio_span_dynamic::MAXIMUM_VOLUME;
+-const Real Audio_span_dynamic::DEFAULT_VOLUME;
++constexpr Real Audio_span_dynamic::MINIMUM_VOLUME;
++constexpr Real Audio_span_dynamic::MAXIMUM_VOLUME;
++constexpr Real Audio_span_dynamic::DEFAULT_VOLUME;
+ 
+ Audio_span_dynamic::Audio_span_dynamic (Moment mom, Real volume)
+   : start_moment_ (mom),
+diff --git a/lily/include/audio-item.hh b/lily/include/audio-item.hh
+index 597fa6a..9a2eea0 100644
+--- a/lily/include/audio-item.hh
++++ b/lily/include/audio-item.hh
+@@ -48,9 +48,9 @@ private:
+ class Audio_span_dynamic : public Audio_element
+ {
+ public:
+-  static const Real MINIMUM_VOLUME = 0.0;
+-  static const Real MAXIMUM_VOLUME = 1.0;
+-  static const Real DEFAULT_VOLUME = 90.0 / 127.0;
++  static constexpr Real MINIMUM_VOLUME = 0.0;
++  static constexpr Real MAXIMUM_VOLUME = 1.0;
++  static constexpr Real DEFAULT_VOLUME = 90.0 / 127.0;
+ 
+ private:
+   Moment start_moment_;
