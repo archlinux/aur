@@ -6,7 +6,7 @@ pkgdesc='A C library and utility for parsing and writing OpenType font files.'
 arch=('i686' 'x86_64')
 url='https://github.com/caryll/otfcc'
 license=('APACHE')
-makedepends=('premake5')
+makedepends=('premake-git') # premake5
 source=("https://github.com/caryll/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('e3694cb5fea99488bba4de1ae40cc79b')
 
