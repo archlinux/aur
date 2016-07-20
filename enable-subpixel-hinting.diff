@@ -1,0 +1,15 @@
+diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+index 8e58403529f597e5..197e15cdc3cc1e74 100644
+--- a/include/freetype/config/ftoption.h
++++ b/include/freetype/config/ftoption.h
+@@ -632,7 +632,7 @@ FT_BEGIN_HEADER
+   /*                                                                       */
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
+-/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
++#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     ( 1 | 2 )
+ 
+ 
+   /*************************************************************************/
+--
+2.9.0
