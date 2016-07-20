@@ -10,8 +10,8 @@ groups=('Cell Simulator')
 depends=(blt perl)
 optdepends=('xterm: console support')
 options=(!emptydirs !strip)
-source_i686=(systemsim-cell-3.1-25.f9.i386.rpm)
-source_x86_64=(systemsim-cell-3.1-25.f9.x86_64.rpm)
+source_i686=(file://systemsim-cell-3.1-25.f9.i386.rpm)
+source_x86_64=(file://systemsim-cell-3.1-25.f9.x86_64.rpm)
 source=(99-systemsim-cell.rules
         LICENSE
         systemsim-cell.sh)
