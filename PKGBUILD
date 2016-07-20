@@ -2,13 +2,13 @@
 
 pkgname=nightcode-git
 
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='A Editor/IDE described as "The only thing you need to create Clojure and Java projects"'
 arch=('any')
 url="https://sekao.net/nightcode/"
 license=('custom')
-depends=('bash' 'java-runtime>7')
+depends=('bash' 'java-runtime>7' 'java-openjfx')
 
 pkgver() {
   cd $srcdir/Nightcode-master
