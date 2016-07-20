@@ -1,0 +1,19 @@
+pkgbase = seamulator-git
+	pkgdesc = Seamulator is an ocean wave simulator.
+	pkgver = r23.8f1fd27
+	pkgrel = 1
+	url = http://git.treefish.org/~alex/seamulator.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = boost>=1.60.0
+	depends = fftw>=3.3.4
+	depends = freeglut>=3.0.0
+	depends = libgl
+	depends = boost-libs>=1.60.0
+	source = seamulator-git::git+https://git.treefish.org/~alex/seamulator.git
+	md5sums = SKIP
+
+pkgname = seamulator-git
+
