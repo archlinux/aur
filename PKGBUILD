@@ -1,7 +1,7 @@
 # Maintainer: Chris Simpson <csimpson.aur at gmail dot com>
 
 pkgname=libretro-fba-git
-pkgver=142.13f8a05
+pkgver=143.e7f7e1c
 pkgrel=1
 pkgdesc="libretro implementation of Final Burn Alpha (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
