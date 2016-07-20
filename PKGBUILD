@@ -13,7 +13,7 @@ optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'cmake')
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha1sums=(8dd70d580de2ef192f54caa33f3c89034dc9bd64)
+sha1sums=(1c55badb569b8e21cc12c1f10468fd5fa8478d1f)
 
 build()
 {
