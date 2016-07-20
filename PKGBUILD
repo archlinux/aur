@@ -4,7 +4,7 @@
 
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
-_minor=92
+_minor=102
 _build=b14
 pkgver=${_major}u${_minor}
 pkgrel=1
@@ -19,8 +19,8 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver
         "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
         'LICENSE-Documentation'
         'LICENSE-Oracle-Legal-Notices')
-md5sums=('a4bc1ff14e617ec9f6a15bf77c2c1b71'
-         'b0b87529ba6843f6c9b7ac6f342ce262'
+md5sums=('a69f65da842feb0fa6713d7da343a659'
+         'f2f7f1ac40eda1494b14b1a037d9dba2'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
