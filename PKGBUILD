@@ -4,7 +4,7 @@ _name="GitPython"
 _module="git"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.0.6"
+pkgver="2.0.7"
 pkgrel="1"
 pkgdesc="Python Git Library"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/gitpython-developers/${_name}"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('282268c4eab0d53a44fe40af038625be307560370c38d2882f3b6763642785db')
+sha256sums=('d8e7adaacceedd3d043e6cd2544f57dbe00c53fc26374880b7cea67f3188aa68')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
