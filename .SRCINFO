@@ -9,11 +9,10 @@ pkgbase = arangodb
 	arch = armv7l
 	arch = armv7h
 	license = APACHE
-	makedepends = cmake binutils python2 go
+	makedepends = cmake binutils python2
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	depends = readline
 	depends = systemd
 	provides = arangodb=3.0.3
 	conflicts = arangodb-latest
