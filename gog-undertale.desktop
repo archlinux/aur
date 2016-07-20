@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=UNDERTALE
+Comment=In UNDERTALE you play as a human child who falls underground into the world of monsters.
+Exec=gog-undertale
+Icon=gog-undertale
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
