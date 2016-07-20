@@ -17,7 +17,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1.1
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -45,11 +45,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc}
+        'openh264-1.6-fix.patch'
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('a5bca50a90a37b983eaa17c483a387189175f37ca678ae7e51d43e7610b4b3b4'
             'SKIP'
+            '5120e4ff1399d454f9232f5d379d2f20930f2d89915b9d332a6594b2be830778'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+
+prepare() {
+  cd "$_pkgbasename-$pkgver"
+  git apply ../openh264-1.6-fix.patch
+}
 
 build() {
   cd $_pkgbasename-$pkgver
