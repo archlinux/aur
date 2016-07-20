@@ -1,6 +1,6 @@
 pkgbase = appstreamrunner-git
 	pkgdesc = Use KRunner to list software
-	pkgver = r4012.6562fa1
+	pkgver = r3.c8e9bbf
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

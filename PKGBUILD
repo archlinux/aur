@@ -1,7 +1,7 @@
 # Maintainer: Aleix Pol
 
 pkgname=appstreamrunner-git
-pkgver=r4012.6562fa1
+pkgver=r3.c8e9bbf
 pkgrel=1
 pkgdesc='Use KRunner to list software'
 arch=(i686 x86_64)
