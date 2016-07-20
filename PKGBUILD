@@ -7,7 +7,7 @@
 pkgname=clion
 _pkgname=CLion
 # Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
-pkgver=2016.1.3
+pkgver=2016.2
 pkgrel=1
 # Bump when JetBrains uses silly letters in stable releases
 epoch=1
@@ -17,9 +17,10 @@ options=(!strip)
 url="http://www.jetbrains.com/${pkgname}"
 license=('custom')
 optdepends=(
-  'java-runtime: native JRE (Edit PKGBUILD to remove bundled JRE)'
+  'java-runtime: native JRE (Please edit PKGBUILD to remove the bundled one)'
   'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
+  'lldb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
@@ -27,19 +28,22 @@ optdepends=(
   'swift: Swift programming language support (Also requires the plugin)'
   'python: Python programming language support (Also requires the plugin)'
   'python2: Python 2 programming language support (Also requires the plugin)'
+  'doxygen: Code documentation generation'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('470063f1bb65ba03c6e1aba354cb81e2c04bd280d9b8da98622be1ba6b0a9c88')
+sha256sums=('647be9c5e20b76114ad20b9cb7a5458b172f6a839bdc617f81531a7d31c18a37')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   bsdtar --strip-components 1 -xf "${_pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
-  # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
+  # Uncomment to use system JRE
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
+  # Uncomment to remove bundled CMake, GDB and/or LLDB
   #rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
   #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
+  #rm -r "${pkgdir}/opt/${pkgname}/bin/lldb"
 
   if [[ $CARCH = 'i686' ]]; then
     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
