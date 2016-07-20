@@ -1,0 +1,16 @@
+pkgbase = vim-blade-git
+	pkgdesc = Blade syntax highlighting for VIM
+	pkgver = r109.0af360e
+	pkgrel = 1
+	url = https://github.com/jwalton512/vim-blade
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	optdepends = vim: to use this plugin
+	provides = vim-blade=r109.0af360e
+	source = git+https://github.com/jwalton512/vim-blade.git
+	sha512sums = SKIP
+
+pkgname = vim-blade-git
+
