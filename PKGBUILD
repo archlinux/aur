@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc='QML syntax highlighting for VIM'
 arch=('any')
 url='https://github.com/peterhoeg/vim-qml'
-license=('unknown')
+license=('custom:vim')
 groups=('vim-plugins')
 
 optdepends=(
-	'vim-python3: for vim with Python 3 interpreter support'
+	'vim: to use this plugin'
 )
 makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
@@ -33,5 +33,5 @@ package() {
 	# Installing package
 	cd "${srcdir}"/${_pkgname}
 	mkdir -p "${pkgdir}"/usr/share/vim/vimfiles
-	cp -R ./{ftdetect,ftplugin,indent,syntax} "${pkgdir}"/usr/share/vim/vimfiles
+	cp -R {ftdetect,ftplugin,indent,syntax} "${pkgdir}"/usr/share/vim/vimfiles
 }
