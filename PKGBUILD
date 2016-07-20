@@ -24,7 +24,7 @@ conflicts=("zsh-theme-${_pkgname}")
 install="zsh-theme-${_pkgname}.install"
 
 package(){
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # No license
   # Install Readme as License in case in the future some type of license is
