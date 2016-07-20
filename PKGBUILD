@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
 pkgver=4.0.0.85
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.svp-team.com/wiki/SVP:Linux"
 license=('custom')
 groups=()
 depends=(libmediainfo qt5-svg qt5-script vapoursynth libusb xdg-utils)
-makedepends=(p7zip qt-installer-framework)
+makedepends=(p7zip qt-installer-framework libxml2)
 checkdepends=()
 optdepends=(
 	'mpv-git: needed for mpv vapoursynth support'
@@ -33,6 +33,10 @@ prepare() {
 	for f in "$srcdir/installer/metadata/"*/*.7z; do
 		7z x -o"$srcdir/extracted/" "$f"
 	done
+}
+
+pkgver() {
+	xmllint --xpath '/Updates/PackageUpdate[Name="core.full"]/Version/text()' "$srcdir/installer/metadata/Updates.xml"
 }
 
 package() {

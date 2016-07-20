@@ -1,12 +1,13 @@
 pkgbase = svp
 	pkgdesc = SmoothVideo Project 4 (SVP4)
 	pkgver = 4.0.0.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.svp-team.com/wiki/SVP:Linux
 	arch = x86_64
 	license = custom
 	makedepends = p7zip
 	makedepends = qt-installer-framework
+	makedepends = libxml2
 	depends = libmediainfo
 	depends = qt5-svg
 	depends = qt5-script
