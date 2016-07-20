@@ -1,7 +1,7 @@
-# Maintainer: Chris Simpson <csimpson.aur at gmail dot com>
+# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-vecx-git
-pkgver=48.2bb82ae
+pkgver=50.5f9d330
 pkgrel=1
 pkgdesc="libretro implementation of vecx (Vectrex)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ _gitname=libretro-vecx
 source=("git+https://github.com/libretro/libretro-vecx.git"
 	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/vecx_libretro.info")
 sha256sums=('SKIP'
-         'SKIP')
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
