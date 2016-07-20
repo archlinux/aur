@@ -5,7 +5,7 @@
 pkgname=gnome-shell-extension-remove-dropdown-arrows-git
 pkgver=7
 pkgrel=1
-pkgdesc="Removes the dropdown arrows from the AppMenu and SystemMenu (AggregateMenu) which were introduced in Gnome 3.10."
+pkgdesc="Removes dropdown arrows from Top Bar menus which were introduced in Gnome 3.10."
 arch=(any)
 url="https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows#branch=master"
 license=(GPLv3)
@@ -37,7 +37,8 @@ package_01_locate() {
 
 package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
+    -exec install -Dm644 -t "$destdir" '{}' +
 }
 depends[125]=gnome-shell
 
