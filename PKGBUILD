@@ -2,7 +2,7 @@
 # Original Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=nsq
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A realtime distributed messaging platform"
 arch=( 'i686' 'x86_64' )
@@ -10,7 +10,8 @@ url="http://nsq.io/"
 makedepends=( "go-gpm" "git" "go" )
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitly/nsq/archive/v$pkgver.tar.gz")
-sha256sums=('fb71e28c757dd485b43b9bc75d90eb44ff9166ccb3d8a928c5e655b483da316e')
+sha256sums=('d9107cdfe218523a74ee801caaa97968becb4b82dae7085dbb52d05c25028ff3')
+options=( '!strip' )
 
 
 build() {
@@ -22,7 +23,7 @@ build() {
   mv nsq-$pkgver "$NSQIO/nsq"
   cd             "$NSQIO/nsq"
   go-gpm install
-  make PREFIX=/usr
+  make GOFLAGS='-ldflags="-s -w"'
 }
 
 package() {
