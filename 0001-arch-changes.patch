@@ -840,10 +840,21 @@ index 6f8c759..2aa9506 100644
        -lxml2 \
        -lstdc++ \
 diff --git a/launcher/Makefile b/launcher/Makefile
-index 17d5f93..8c403a9 100644
+index 17d5f93..6082d7e 100644
 --- a/launcher/Makefile
 +++ b/launcher/Makefile
-@@ -19,6 +19,8 @@ LDLIBS := ../shared/configeditor/configeditor.a \
+@@ -10,15 +10,17 @@ NAME=$(shell basename $(shell pwd))
+ CPPFLAGS += -I../shared/configeditor/include \
+       -I../shared/controller/include \
+       -I../shared/async/include
+-CPPFLAGS += -Wno-unused-local-typedefs `wx-config --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
++CPPFLAGS += -Wno-unused-local-typedefs `wx-config-2.8 --cflags` -Winvalid-pch -include wx_pch.h -DWX_PRECOMP `curl-config --cflags`
+ LDLIBS := ../shared/configeditor/configeditor.a \
+       $(LDLIBS) \
+       ../shared/updater/updater.a \
+       ../shared/configupdater/configupdater.a \
+-      `wx-config --libs` \
++      `wx-config-2.8 --libs` \
        `curl-config --libs` \
        -lxml2 \
        -lstdc++ \
