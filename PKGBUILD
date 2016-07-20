@@ -4,7 +4,7 @@
 _author=C/CH/CHORNY
 _perlmod=Linux-Distribution
 pkgname=perl-linux-distribution
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc='Linux::Distribution - Perl extension to detect on which Linux distribution we are running'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('0443af872db14764461797741f100b1d5969871d3a9b403406363e8bb6db58ad')
+sha256sums=('603e27da607b3e872a669d7a66d75982f0969153eab2d4b20c341347b4ebda5f')
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
