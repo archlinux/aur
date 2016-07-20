@@ -1,6 +1,6 @@
 pkgname=('mcu-info-util-git')
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small utility for generate C/C++ headers and linker script for some MCUs'
 arch=('any')
 url='https://github.com/KivApple/mcu-info-util'
