@@ -1,6 +1,6 @@
 pkgbase = hell-git
 	pkgdesc = The Hell build system
-	pkgver = r101.9e721d3
+	pkgver = r102.cfa62d6
 	pkgrel = 1
 	url = https://github.com/gilzoide/hell
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: gilzoide <gilzoide@gmail.com>
 
 pkgname=hell-git
-pkgver=r101.9e721d3
+pkgver=r102.cfa62d6
 pkgrel=1
 pkgdesc="The Hell build system"
 arch=('i686' 'x86_64')
