@@ -1,8 +1,9 @@
-# Maintainer: Antonis G. <capoiosct at gmail dot com>
+# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Contributor: Antonis G. <capoiosct at gmail dot com>
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20160313
+pkgver=20160720
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -10,7 +11,6 @@ url='http://www.greekfontsociety.gr/pages/gr_typefaces1.html'
 license=('custom')
 makedepends=('unzip')
 depends=()
-install='otf-gfs.install'
 
 
 source=("http://www.greekfontsociety.gr/_assets/fonts/GFS_Pyrsos.zip"
@@ -43,7 +43,7 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'c557a9e9e366b938d4c85ef15059b868'
          '3cba29df7b102c10c1612f15d0b6b6d3'
          '2672799c089cc78212046e7effcd0b3b'
-         'c37d6490a648ab987743c0878c9a423c'
+         'f07c7b92d98a99bfbab579b8780a922d'
          '2409b756a28631aae2912004c2a867e9'
          '55684035c46a240699d3d13b34c6affe'
          '7294978fb48cec9317d68d68378f2abb'
