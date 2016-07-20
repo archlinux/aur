@@ -10,7 +10,7 @@ license=('MIT')
 provides=('mdl')
 conflicts=('mdl')
 depends=('boost-libs')
-source=('git://github.com/dopsi/mdl')
+source=('git://github.com/dopsi/mdl#branch=features')
 sha1sums=('SKIP')
 
 _gitname=mdl
