@@ -1,6 +1,6 @@
 pkgbase = update-hosts-git
 	pkgdesc = Generate a hosts file based on multiple sources (git)
-	pkgver = r162.3a6cc03
+	pkgver = r179.a1cb216
 	pkgrel = 1
 	url = https://github.com/pyamsoft/update-hosts.git
 	arch = any
