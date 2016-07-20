@@ -27,7 +27,7 @@ pkgbase = snapd-confinement
 	md5sums = 1d841a1d09ba86945551dfc5c5658b2e
 	md5sums = 53722064f5e270fd7530de6ba4590f04
 	md5sums = 7fd19e053051825b189914cedb95c3e7
-	md5sums = cf60668da3dbce5a779aec3c52c69528
+	md5sums = 48be5347e87d12f2b200e46d11da3a7a
 
 pkgname = snapd-confinement
 

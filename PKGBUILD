@@ -26,7 +26,7 @@ md5sums=('SKIP'
          '1d841a1d09ba86945551dfc5c5658b2e'
          '53722064f5e270fd7530de6ba4590f04'
          '7fd19e053051825b189914cedb95c3e7'
-         'cf60668da3dbce5a779aec3c52c69528')
+         '48be5347e87d12f2b200e46d11da3a7a')
 
 _gourl=github.com/snapcore/snapd
 

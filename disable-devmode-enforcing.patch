@@ -1,19 +1,23 @@
---- snapd/release/release.go.bak	2016-07-18 16:43:17.137859989 +0200
-+++ snapd/release/release.go	2016-07-18 16:50:05.033109215 +0200
-@@ -43,6 +43,10 @@
+--- a/release/release.go
++++ b/release/release.go
+@@ -41,8 +41,14 @@ type OS struct {
+ // security features for confinement and devmode is forced.
+ func (os *OS) ForceDevMode() bool {
  	switch os.ID {
- 	case "neon":
- 		fallthrough
 +	case "arch":
 +		fallthrough
++	case "manjaro":
++		fallthrough
+ 	case "neon":
+ 		fallthrough
 +	case "parabola":
 +		fallthrough
  	case "ubuntu":
  		return false
  
---- snapd/release/release_test.go.bak	2016-07-18 16:48:05.185499404 +0200
-+++ snapd/release/release_test.go	2016-07-18 16:49:34.725213399 +0200
-@@ -107,7 +107,7 @@
+--- a/release/release_test.go
++++ b/release/release_test.go
+@@ -107,14 +107,16 @@ func (s *ReleaseTestSuite) TestForceDevMode(c *C) {
  		devmode   bool
  	}{
  		// Please keep this list sorted
@@ -22,8 +26,9 @@
  		{id: "debian", devmode: true},
  		{id: "elementary", devmode: true},
  		{id: "elementary", idVersion: "0.4", devmode: false},
-@@ -115,6 +115,7 @@
+ 		{id: "fedora", devmode: true},
  		{id: "gentoo", devmode: true},
++		{id: "manjaro", devmode: false},
  		{id: "neon", devmode: false},
  		{id: "opensuse", devmode: true},
 +		{id: "parabola", devmode: false},
