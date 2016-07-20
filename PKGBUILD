@@ -5,7 +5,7 @@
 pkgname=gnome-shell-extension-activities-config
 pkgver=44
 pkgrel=1
-pkgdesc="Configure the Activities Button with the Activities Configurator Extension and the Gnome Shell Extension Preferences Tool."
+pkgdesc="Configure the Activities Button via the Gnome Shell Extension Preferences Tool."
 arch=(any)
 url="https://extensions.gnome.org/extension/358/activities-configurator/"
 license=(GPLv2)
@@ -18,7 +18,8 @@ find_version() {
   if [ ! -d version ]; then
     grep -Po '(?<=data-svm=").*(?=")' extension.html |  # extract version information
     sed 's/&quot;/"/g' |  # unescape quotes
-    sed 's/[{ ,]*"[[:digit:].]\+": {"pk": \([[:digit:]]\+\), "version": \([[:digit:]]\+\)}[ ,}]*/\2 \1\n/g' |  # list one version per line
+    sed 's/[{ ,]*"[[:digit:].]\+": {"pk": \([[:digit:]]\+\),'$(
+      )' "version": \([[:digit:]]\+\)}[ ,}]*/\2 \1\n/g' |  # list one version per line
     sort -nr | head -n1 | tr ' ' '\n' > version  # get newest and write
   fi
 }
@@ -61,7 +62,8 @@ package_01_locate() {
 
 package_02_install() {
   msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
+  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
+    -exec install -Dm644 -t "$destdir" '{}' +
 }
 depends+=(gnome-shell-extensions)
 
