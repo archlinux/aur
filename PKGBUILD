@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-services-systemd-git
 _pkgname=${pkgname%-git}
 
-pkgver=r32.22a73ed
+pkgver=r35.4134a10
 pkgrel=1
 pkgdesc="Toggle systemd services on/off from a menu in the gnome shell top panel"
 arch=('any')
@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	glib-compile-schemas "$_gitfolder/schemas/"
+    cd "$srcdir/$_pkgname"
+    glib-compile-schemas "$_gitfolder/schemas/"
 }
 
 package() {
     cd "$srcdir/$_pkgname"
-	mkdir -p "$pkgdir/usr/share/gnome-shell/extensions"
-	cp -r "$_gitfolder" "$pkgdir/usr/share/gnome-shell/extensions/"
+    mkdir -p "$pkgdir/usr/share/gnome-shell/extensions"
+    cp -r "$_gitfolder" "$pkgdir/usr/share/gnome-shell/extensions/"
 }
