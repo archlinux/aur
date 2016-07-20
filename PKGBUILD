@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 pkgname=systemsim-cell
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Full-System Simulator for the Cell Broadband Engine Processor"
 arch=(i686 x86_64)
 url="http://www.ibm.com/"
