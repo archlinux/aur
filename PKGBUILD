@@ -1,6 +1,6 @@
 pkgname=perl-datetime-format-pg
-pkgver="0.16011"
-pkgrel="2"
+pkgver="0.16012"
+pkgrel="1"
 pkgdesc="'Parse and format PostgreSQL dates and times'"
 arch=(i686 x86_64)
 license=('perl')
@@ -9,8 +9,8 @@ options=(!emptydirs)
 depends=('perl-datetime-format-builder>=0.72' 'perl-datetime-timezone>=0.05' 'perl-datetime>=0.10')
 makedepends=('perl-module-build')
 source=("https://cpan.metacpan.org/authors/id/D/DM/DMAKI/DateTime-Format-Pg-${pkgver}.tar.gz")
-md5sums=('8e462e583bd4b51b30255f522e887932')
-sha512sums=('6f5d6c6c8160b38dec2fc5edcb8113c1747f8a7caacc385b55da9e71e7ce083a48177c7f64fd20cc6f2e9878dda9069517ba3f71ef889d691d14d5fd6bf8637f')
+md5sums=('cf82f93a58ad3ef043e5186daf2d1df4')
+sha512sums=('8c0409ab3f054328f26169d1179756dff51ab0d51b09a2a2b7941d536795928545bf4e8c4c23f6fb085c7e718a628f4f0f4bde6719dc1173eeff8a3166cdb0ff')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
