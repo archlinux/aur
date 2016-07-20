@@ -3,8 +3,8 @@
 _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
-pkgver=20160520
-pkgrel=3
+pkgver=20160720
+pkgrel=1
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
