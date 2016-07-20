@@ -2,14 +2,14 @@
 
 _pkgbase=noto-fonts
 pkgname=noto-fonts-unhinted
-pkgver=20151224
-_commit=3f1dc1
-pkgrel=2
+pkgver=20160613
+_commit=19ce9d5
+pkgrel=1
 pkgdesc='unhinted complement for noto-fonts'
 arch=(any)
 url='http://www.google.com/get/noto'
 license=(custom:OFL)
-depends=(noto-fonts)
+depends=('noto-fonts>='"$pkgver")
 source=("https://github.com/googlei18n/noto-fonts/archive/$_commit.zip")
 install="$pkgname.install"
 
@@ -33,4 +33,4 @@ package()
         install -m644 "$file" "$pkgdir"/usr/share/fonts/noto/unhinted
     done
 }
-md5sums=('460cc0060652b912a050f8f820b49a0d')
+md5sums=('2b03df1b4ae95d076f892d69d4f2265f')
