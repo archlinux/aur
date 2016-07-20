@@ -4,7 +4,7 @@
 
 pkgname=ttf-textfonts
 pkgver=6.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
 url="http://users.teilar.gr/~g1951d/"
@@ -17,7 +17,6 @@ source=("http://users.teilar.gr/~g1951d/Aroania.zip"
 	"http://users.teilar.gr/~g1951d/Avdira.zip"
 	"http://users.teilar.gr/~g1951d/Asea.zip"
 	 "LICENSE")
-install=$pkgname.install
 md5sums=('9ce238bc6b3bfe4fcaadf8d2f10c6022'
          '64ea1f884be91a2b6e0de43c776ac5e3'
          '3773ef9f17a547cd12b3e170c08068c0'
