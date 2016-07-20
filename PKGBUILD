@@ -17,7 +17,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1.1
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'flite' 'fontconfig' 'fr
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
          'snappy' 'openh264' 'xavs' 'java-environment')
 depends_x86_64=('cuda')
-makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
+makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm' 'git')
 optdepends=('avxsynth-git: for Avisynth support'
             'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
