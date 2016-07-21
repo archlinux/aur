@@ -1,18 +1,19 @@
 # Maintainer: Toqoz <https://github.com/Toqozz/slip>
 
 pkgname=slip
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
-pkgdesc='dmenu interface to select and upload screen(shot) to imgur with the help of slop.  (Screencasts too)'
+pkgdesc='dmenu (optional) interface to select and upload screen(shots) to imgur with the help of slop.  (Screencasts too)'
 arch=('any')
 url='https://github.com/Toqozz/slip'
 license=('GPL')
-depends=('curl' 'slop' 'dmenu' 'maim')
-optdepends=('ffmpeg:    taking screencasts'
+depends=('curl' 'slop' 'maim')
+optdepends=('dmenu:     interface'
+            'ffmpeg:    taking screencasts'
             'libnotify: upload notification'
             'xsel:      copy link to clipboard')
 source=("https://github.com/Toqozz/slip/archive/${pkgver}.tar.gz")
-sha256sums=('ca22d1e8f01a4e53f963574fdf5e689d05a3b442d427e01de3d1da69d2c6ef0b')
+sha256sums=('7ac499f791d14dd38b2af22becfcafb43ad17cbd62462174e4adf8ee6b397a44')
 
 package() {
     cd "$pkgname-$pkgver"
