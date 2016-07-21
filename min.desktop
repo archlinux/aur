@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Min
+Comment=A smarter, faster web browser
+GenericName=Web Browser
+Exec=electron --app=/usr/lib/min
+Icon=/usr/lib/min/icons/icon256.png
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Network;WebBrowser;
