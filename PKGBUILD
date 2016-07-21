@@ -1,9 +1,9 @@
 # Maintainer: Dan Collins <collins.dan.openlava@badbytes.net>
 
 pkgname=openlava
-pkgver=3.3.1
-pkgvershort=3.3
-pkgrel=2
+pkgver=4.0
+pkgvershort=4.0
+pkgrel=3
 pkgdesc="A open source cluster scheduler"
 conflicts=("openlava")
 depends=("autoconf")
@@ -113,4 +113,4 @@ package() {
     #opt/openlava/etc
 }
 
-sha256sums=('3330ea7a30985d1723f915040ad57cecab15f7886e70cec4e65f87d8b0b2e0e7')
+sha256sums=('0a694392786b4994973ff39e0aecfc92115f083666750810738e1d2baffad3df')
