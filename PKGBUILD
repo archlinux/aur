@@ -5,13 +5,13 @@
 
 pkgname=mingw-w64-l-smash
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='MP4 muxer and other tools'
 arch=('any')
 url='https://github.com/l-smash/l-smash'
 license=('custom')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-gcc' 'fakeroot')
 options=(!strip !buildflags staticlibs)
 source=("l-smash-${pkgver}.tar.gz::https://github.com/l-smash/l-smash/archive/v${pkgver}.tar.gz")
 sha256sums=('17f24fc8bffba753f8c628f1732fc3581b80362341274747ef6fb96af1cac45c')
