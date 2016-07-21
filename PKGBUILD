@@ -23,12 +23,6 @@ pkgver() {
 build() {
   cd $pkgname
 
-  # Fix libconfig.h configure error: _FORTIFY_SOURCE requires compiling with optimization (-O)"
-  #CFLAGS="$CFLAGS $CPPFLAGS"
-  #unset CPPFLAGS
-  # OR
-  CPPFLAGS="$CPPFLAGS -O2"
-
   ./autogen.sh
   ./configure --prefix=/usr
   make
