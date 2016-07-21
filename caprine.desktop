@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Caprine
+Comment=Unofficial Facebook Messenger app
+GenericName=IM Client
+Exec=electron --app=/usr/lib/caprine
+Icon=/usr/lib/caprine/media/Icon.svg
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;InstantMessaging;Network;
