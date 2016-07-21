@@ -29,7 +29,7 @@ pkgbase = caja-1.15-gtk3
 	conflicts = caja
 	conflicts = caja-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/caja-1.15.1.tar.xz
-	sha1sums = 5aef36806409593d4f50b788bbe81180185b1093
+	sha1sums = d47c82f39448027fd5767c3c6dccadfb819f378a
 
 pkgname = caja-1.15-gtk3
 	pkgdesc = File manager for the MATE desktop (GTK3 version)
