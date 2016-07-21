@@ -23,6 +23,11 @@ options=()
 _conf_all=(--disable-werror)
 _conf_emu=(--with-bootdir='/usr/lib')
 
+# There is no such thing as an "optional make dependency"...
+# If you do not want PFF2 Unifont in the common package, remove this line.
+# (Any variant of Unifont will do, but depending on BDF because it's packaged officially.)
+makedepends+=('bdf-unifont')
+
 ### PACKAGE BUILD INSTRUCTIONS
 source=(grub::'git://git.savannah.gnu.org/grub.git#branch=master')
 sha256sums=('SKIP')
@@ -35,7 +40,7 @@ url="http://gnu.org/software/grub/"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=('git' 'python2')
+makedepends+=('git' 'python2')
 checkdepends=('xorriso')
 provides=()
 replaces=()
