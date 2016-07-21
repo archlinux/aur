@@ -1,30 +1,37 @@
+# $Id: PKGBUILD 272009 2016-07-19 18:14:23Z alucryd $
 # Maintainer: Jan Koppe <post@jankoppe.de>
+#
 # This package is a modified version of extra/ffmpeg with --enable-decklink
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-decklink
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
+depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
-         'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-         'libvpx.so' 'libx264.so' 'libx265.so')
+         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
+         'libx264.so' 'libx265.so')
 makedepends=('decklink-sdk' 'hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg')
+          'libswscale.so')
 conflicts=('ffmpeg')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('30e3c77c2f4c358ed087869455a7496cbd7753a5e1b98d20ba49c1004009fd36'
+sha256sums=('a5bca50a90a37b983eaa17c483a387189175f37ca678ae7e51d43e7610b4b3b4'
             'SKIP')
 
 build() {
@@ -39,12 +46,12 @@ build() {
     --enable-avresample \
     --enable-decklink \
     --enable-fontconfig \
+    --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
-    --enable-libdcadec \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
