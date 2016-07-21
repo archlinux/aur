@@ -3,7 +3,7 @@
 pkgname=wingide
 _wingver=5.1.12
 _wingrel=1
-_wing_patch_lvl=1
+_wing_patch_lvl=2 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
@@ -12,8 +12,8 @@ license=('custom')
 arch=('i686' 'x86_64')
 [ "$CARCH" = 'i686' ] && _pkgarch=i386
 [ "$CARCH" = 'x86_64' ] && _pkgarch=x86_64
-#_wingpatch_x86_64=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar" "all-classes-5.1.11p3-all.tar")
-#_wingpatch_i686=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar" "all-classes-5.1.11p3-all.tar")
+_wingpatch_x86_64=("detect-bad-window-sizes-5.1.12p1-all.tar")
+_wingpatch_i686=("detect-bad-window-sizes-5.1.12p1-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 if [[ ! -z "$_wingpatch_x86_64" ]]; then
     _wingpatch_x86_64=( "${_wingpatch_x86_64[@]/#/$_patch_url_prefix}" )
@@ -25,8 +25,10 @@ source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_
 source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" ${_wingpatch_i686[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums_i686=('6d3e20447ea2b772e4da38bf02c81031')
-md5sums_x86_64=('52b7f26a71e2a1ea9cbb51ade7181825')
+md5sums_i686=('6d3e20447ea2b772e4da38bf02c81031'
+              '19a4bb32566a523d1acc677c8456c938')
+md5sums_x86_64=('52b7f26a71e2a1ea9cbb51ade7181825'
+                '19a4bb32566a523d1acc677c8456c938')
 install=${pkgname}.install
 
 prepare() {
