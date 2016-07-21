@@ -1,6 +1,6 @@
 pkgbase = vim-renamer-git
 	pkgdesc = Rename files in the Vim buffer
-	pkgver = 20150515
+	pkgver = 20160127
 	pkgrel = 1
 	url = https://github.com/qpkorr/vim-renamer
 	install = vimdoc.install
