@@ -2,7 +2,7 @@
 
 pkgname=gajim-plugin-omemo
 _pkgname=gajim-omemo
-pkgver=0.7.0
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
@@ -12,10 +12,11 @@ depends=("gajim" "python2-axolotl-git")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://github.com/omemo/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('ca110c26ed43c5fbd189e0c65d9d16224abb81d02d43e8c25f34de10eeb1e59cd3e1ba1568abbf2b9a0c3cb3a8ff3ecc9e7c30f3c6bd96a512eb365b9c117725')
+sha512sums=('5a74b836c5197894ae1a26fab93f3edaa354aeb5ab068f3b82e5609678705728709a76b9fc2e3249931f37940da7e6d3b339ddba424254095fde269fb56f001d')
 
 package() {
   cd $srcdir/gajim-omemo-${pkgver}
+  rm -r CHANGELOG COPYING doc pkgs README.md
   install -d ${pkgdir}/usr/share/gajim/plugins/omemo
   cp -r * ${pkgdir}/usr/share/gajim/plugins/omemo/
 }
