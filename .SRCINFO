@@ -1,6 +1,6 @@
 pkgbase = eventd-git
 	pkgdesc = A small daemon to act on remote or local events
-	pkgver = 0.18.2.r19.g5b9dfe9
+	pkgver = 0.19.0.r0.gc93adbd
 	pkgrel = 1
 	url = https://www.eventd.org
 	arch = i686

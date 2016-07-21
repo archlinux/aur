@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.18.2.r19.g5b9dfe9
+pkgver=0.19.0.r0.gc93adbd
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
