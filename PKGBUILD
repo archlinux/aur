@@ -2,18 +2,18 @@
 
 pkgname=vim-renamer-git
 pkgdesc='Rename files in the Vim buffer'
-pkgver=20160127
+pkgver=20150515
 pkgrel=1
 url='https://github.com/qpkorr/vim-renamer'
-install='vimdoc.install'
+install=('vimdoc.install')
 arch=('any')
 license=('unknown')
 makedepends=('git')
 depends=('vim')
 provides=('vim-renamer')
 conflicts=('vim-renamer')
-source=("$pkgname::git://github.com/qpkorr/vim-renamer.git")
-sha256sums=('SKIP')
+source="$pkgname::git://github.com/qpkorr/vim-renamer.git"
+sha256sums='SKIP'
 
 pkgver() {
     cd "$srcdir/$pkgname"
