@@ -14,7 +14,7 @@ pkgname=${_pkgname}-editor-${_version}
 _pkgrel=1
 _pkgver=1.9.0
 pkgver="${_pkgver}.${_pkgrel}.m${_language_gfm2_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -29,7 +29,7 @@ source=("$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}"
 "about-beta.patch")
-sha256sums=('9544f143db4338555568656553a89b9e730ff4ae22bd333bdff3d18cc7b66bda'
+sha256sums=('e13d3a270988d4af487c52b1b4242d6990050d1410aa291e1ea75a4e07254c14'
             'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc'
