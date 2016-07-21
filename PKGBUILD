@@ -2,15 +2,15 @@
 # * No namcap warnings or errors
 
 pkgname=libibverbs
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance RDMA (remote direct memory access) InfiniBand verbs library'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/downloads/verbs/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
-depends=('glibc' 'libnl')
+depends=('libnl')
 source=("https://www.openfabrics.org/downloads/verbs/${pkgname}-${pkgver}.tar.gz")
-md5sums=('208df0056ce9ae81b668c2d2d0cf2ec7')
+md5sums=('1544ebb89d861ce84057ab43dfcd22a0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
