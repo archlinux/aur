@@ -11,10 +11,10 @@ license=('GPL3')
 depends=('openbox')
 provides=("${pkgname}=${pkgver}")
 
-# Using mirror, original source returns HTTP 403
-# http://box-look.org/CONTENT/content-files/88560-Mythos_OB.tar.gz
+# Mirror
+# https://www.dropbox.com/s/q40ppjtue8z2me7/88560-Mythos_OB.tar.gz
 source=(
-	'https://www.dropbox.com/s/q40ppjtue8z2me7/88560-Mythos_OB.tar.gz'
+	'https://dl.opendesktop.org/api/files/download/id/1460769207/88560-Mythos_OB.tar.gz'
 )
 sha512sums=(
 	'1774264dd799b008f47a61facd0b6bdd3983048f3a795eeb84076bdfed77422b63acf158204f77ef21487a541a5f6d13da570344b48d0c374a17fd2e42b8d3ce'
