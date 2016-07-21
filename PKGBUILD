@@ -17,13 +17,13 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.1.1
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'flite' 'fontconfig' 'frei0r-plugins'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'faac' 'flite' 'fontconfig' 'frei0r-plugins'
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug'
@@ -37,7 +37,6 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'flite' 'fontconfig' 'fr
 depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm' 'git')
 optdepends=('avxsynth-git: for Avisynth support'
-            'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
