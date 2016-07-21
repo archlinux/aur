@@ -2,7 +2,7 @@
 # Fixes: Brian Bidulock <bidulock at openss7 dot org>
  
 pkgname=linuxptp
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=()
 source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tgz/download")
-md5sums=('6aa15d83f5a35f1fd076ba9adc4e7285')
+md5sums=('5360d6b0a150228fa04c0cc6be0a6e23')
  
 build() {
   cd ${pkgname}-${pkgver}
