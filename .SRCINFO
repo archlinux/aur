@@ -1,0 +1,24 @@
+pkgbase = dune-pdelab
+	pkgdesc = Assembly for partial differential equations in DUNE
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.dune-project.org/pdelab
+	arch = i686
+	arch = x86_64
+	groups = dune
+	license = custom
+	makedepends = cmake
+	makedepends = dune-common=2.4.1
+	makedepends = dune-typetree=2.4.1
+	makedepends = dune-geometry=2.4.1
+	makedepends = dune-grid=2.4.1
+	makedepends = dune-istl=2.4.1
+	makedepends = dune-localfunctions=2.4.1
+	optdepends = dune-alugrid>=2.4.0: unstructured simplicial and cube grids
+	optdepends = petsc: toolkit for scientific computation
+	optdepends = eigen: linear algebra package
+	source = http://dune-project.org/download/pdelab/2.4.1/dune-pdelab-2.4.1.tar.gz
+	md5sums = c43dcdbcc92bb4440c2657ce12ad3f2b
+
+pkgname = dune-pdelab
+
