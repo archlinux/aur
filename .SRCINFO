@@ -1,6 +1,6 @@
 pkgbase = python-plotly
 	pkgdesc = An interactive, browser-based charting library for python
-	pkgver = 1.9.9
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = https://plot.ly/python/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-plotly
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-pytz
-	source = https://pypi.python.org/packages/source/p/plotly/plotly-1.9.9.tar.gz
+	source = https://pypi.python.org/packages/02/e0/5b739403c3180298ebe277cbc9f5ee99e546ab24768b1732a2d6b381091b/plotly-1.12.4.tar.gz
 	md5sums = SKIP
 
 pkgname = python-plotly
