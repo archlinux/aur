@@ -1,12 +1,11 @@
-# $Id: PKGBUILD 134052 2015-05-25 12:02:54Z spupykin $
 # Maintainer: orumin <dev@orum.in>
 
 pkgname=python2-junos-eznc
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for Junos automation"
 arch=('any')
-url="https://pypi.python.org/pypi/IPy"
+url="https://github.com/Juniper/py-junos-eznc"
 license=('Apache')
 depends=('python2')
 source=(https://github.com/Juniper/py-junos-eznc/archive/1.3.1.tar.gz)
