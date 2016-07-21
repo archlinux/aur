@@ -7,10 +7,20 @@ post_install() {
 }
 
 post_upgrade() {
+  old_version=$2
   post_install
   systemctl daemon-reload
-  echo "Will now restart home-assistant (if started)"
-  systemctl is-enabled home-assistant.service > /dev/null && systemctl restart home-assistant.service
+  if [[ "$old_version" < "0.24" ]]; then # TODO remove this code in while (in Sept 2016 for instance)
+    echo "Will migrate database to new format"
+    echo "stopping home-assistant if necessary"
+    systemctl is-enabled home-assistant.service > /dev/null && systemctl stop home-assistant.service
+    echo "Running: hass --script db_migrator --config /var/lib/hass/"
+    sudo -u ${HASS_USER} hass --script db_migrator --config /var/lib/hass/
+    systemctl start home-assistant.service
+  else
+    echo "Will now restart home-assistant (if started)"
+    systemctl is-enabled home-assistant.service > /dev/null && systemctl restart home-assistant.service
+  fi
 }
 
 post_remove() {
