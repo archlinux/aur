@@ -1,7 +1,7 @@
 pkgbase = mcu-info-util-git
 	pkgdesc = Small utility for generate C/C++ headers and linker script for some MCUs
 	pkgver = 0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/KivApple/mcu-info-util
 	arch = any
 	license = custom
