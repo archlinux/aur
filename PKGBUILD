@@ -3,14 +3,14 @@
 
 pkgname=transwhat
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A gateway between the XMPP and the WhatsApp IM networks"
 arch=('any')
 url="https://github.com/stv0g/transwhat"
 license=('GPL')
 provides=('transwhat')
-depends=('python' 'protobuf-python' 'python-pillow' 'python-dateutil' 'python-yowsup-git>=2' 'python-e4u')
+depends=('python' 'protobuf-python' 'python-pillow' 'python-dateutil' 'python-yowsup>=2' 'python-e4u')
 makedepends=('python-setuptools')
 options=('!strip' '!emptydirs')
 
