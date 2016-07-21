@@ -2,7 +2,7 @@
 
 pkgname=black-screen
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal emulator for the 21st century.'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
@@ -17,7 +17,7 @@ sha256sums=('2705ca0464f0f20c837b0f2431ab9ba93bf67becb9d400dd7460a73024e2c81c'
 build() {
     cd ${pkgname}-${pkgver}
 
-    _electron_version=$(</usr/lib/electron/version)
+    _electron_version=$(electron --version)
 
     if [ "${CARCH}" == 'x86_64' ]; then
         _target=x64
