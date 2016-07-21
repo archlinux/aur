@@ -1,0 +1,14 @@
+diff -aur libinput-1.4.0.orig/src/evdev-mt-touchpad-tap.c libinput-1.4.0/src/evdev-mt-touchpad-tap.c
+--- libinput-1.4.0.orig/src/evdev-mt-touchpad-tap.c	2016-07-21 09:44:45.356904331 -0400
++++ libinput-1.4.0/src/evdev-mt-touchpad-tap.c	2016-07-21 09:46:08.803983720 -0400
+@@ -108,8 +108,8 @@
+ 
+ 	switch (nfingers) {
+ 	case 1: button = BTN_LEFT; break;
+-	case 2: button = BTN_RIGHT; break;
+-	case 3: button = BTN_MIDDLE; break;
++	case 2: button = BTN_MIDDLE; break;
++	case 3: button = BTN_RIGHT; break;
+ 	default:
+ 		return;
+ 	}

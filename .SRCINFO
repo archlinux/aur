@@ -1,0 +1,24 @@
+pkgbase = libinput-swap-two-and-three-finger-tap
+	pkgdesc = Input device management and event handling library with patch to swap two and three finger tap on touchpads
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/libinput/
+	arch = i686
+	arch = x86_64
+	license = custom:X11
+	depends = mtdev
+	depends = systemd
+	depends = libevdev
+	depends = libwacom
+	provides = libinput=1.4.0
+	conflicts = libinput
+	source = http://freedesktop.org/software/libinput/libinput-1.4.0.tar.xz
+	source = http://freedesktop.org/software/libinput/libinput-1.4.0.tar.xz.sig
+	source = swap-two-and-three-finger-tap.patch
+	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+	sha256sums = 76ef10874519d1a67b57e5c68ede06106b9fbf611a3ecf69c84886107c67b420
+	sha256sums = SKIP
+	sha256sums = be55ea78922c5f36a57cf267f02fe291d9fe18524e533101bda7204c7630e455
+
+pkgname = libinput-swap-two-and-three-finger-tap
+
