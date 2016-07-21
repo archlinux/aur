@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-services-systemd-git
 _pkgname=${pkgname%-git}
 
-pkgver=r35.4134a10
+pkgver=r37.ad1df82
 pkgrel=1
 pkgdesc="Toggle systemd services on/off from a menu in the gnome shell top panel"
 arch=('any')
