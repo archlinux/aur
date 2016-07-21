@@ -1,6 +1,6 @@
 pkgbase = caja-1.15-gtk3
 	pkgdesc = File manager for the MATE desktop
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
