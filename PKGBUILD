@@ -1,17 +1,17 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-uvloop
-pkgver=0.4.34
+pkgver=0.5.0
 pkgrel=1
 _libname=${pkgname/python-/}
 pkgdesc="A fast, drop-in replacement of the built-in asyncio event loop."
 url="https://github.com/MagicStack/uvloop"
-license=('MIT')
+license=('MIT' 'APACHE')
 arch=('i686' 'x86_64')
 depends=('python' 'libuv')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/MagicStack/uvloop/archive/v$pkgver/$_libname-$pkgver.tar.gz")
-sha256sums=('ddbf7f068ed3e131233ce6e1e54df00b64168bb1c6661b2d10798d943c7ea928')
+sha256sums=('61c3728f1ce8e70a829ff1eeba8e6ac540a77a8aeef188484cf18f0f09433d5e')
 
 prepare() {
 	cd "$srcdir"/$_libname-$pkgver
@@ -32,5 +32,6 @@ build() {
 package() {
 	cd "$srcdir"/$_libname-$pkgver
 	python setup.py install -O1 --skip-build --root="$pkgdir"
-	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -m0644 -D LICENSE-MIT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
+	install -m0644 -D LICENSE-APACHE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-APACHE
 }
