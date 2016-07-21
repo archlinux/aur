@@ -1,8 +1,9 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: portals <portals at riseup.net>
 # Contributor: novemberist
 # Contributor: PyroDevil
-# Contributor: giacomogiorgianni@gmail.com 
+# Contributor: giacomogiorgianni@gmail.com
 
 pkgname=tesseract-game
 pkgver=1
@@ -47,5 +48,3 @@ package() {
   done
   install -Dm644 "../${pkgname}48.png" "$pkgdir/usr/share/pixmaps/$n.png"
 }
-
-# vim:set ts=2 sw=2 et:
