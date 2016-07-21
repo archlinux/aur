@@ -2,7 +2,7 @@
 
 _pkgname=ngp
 pkgname=$_pkgname-git
-pkgver=1.3.r30.g8d134cd
+pkgver=1.3.r61.g80dd78b
 pkgrel=1
 pkgdesc="Ncurses grep tool"
 arch=('i686' 'x86_64')
@@ -22,6 +22,9 @@ pkgver() {
 
 build() {
   cd $pkgname
+
+  # Ignore warning
+  CFLAGS="$CFLAGS -Wno-error=misleading-indentation"
 
   ./autogen.sh
   ./configure --prefix=/usr
