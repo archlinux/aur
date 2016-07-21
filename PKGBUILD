@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.18.2ù†žª 
+pkgver=0.19.0
 _pkgdir=${pkgname}-${pkgver}
 pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
@@ -16,7 +16,6 @@ license=(
     MIT
 )
 depends=(
-    avahi
     'cairo>=1.14.0'
     gdk-pixbuf2
     'glib2>=2.40.0'
@@ -33,7 +32,10 @@ makedepends=(
     docbook-xsl
 )
 optdepends=(
+    'avahi: DNS-SD support'
+    'gssdp: SSDP support'
     'librsvg: SVG images support'
+    'libsoup: WebSocket support'
 )
 options=(
     !strip
@@ -42,7 +44,7 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    917c13ed4b9e311bdca908b71d4c56853dd948be4dda672d6cb30b71c0389c74
+    eafa1803df73ea6e74bbfc8e772fb681436b615e1a107ceb78600719f06059fb
 )
 
 build() {
@@ -50,7 +52,6 @@ build() {
         --prefix=/usr
         --enable-systemd
         --disable-introspection
-        --disable-ssdp
         --disable-nd-wayland
         --disable-im
         --disable-sound
