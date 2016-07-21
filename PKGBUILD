@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname='php-recode'
-pkgver=7.0.7
+pkgver=7.0.9
 pkgrel=1
 pkgdesc="PHP recode extension"
 arch=('i686' 'x86_64')
