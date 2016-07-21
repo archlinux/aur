@@ -1,9 +1,9 @@
-# Maintainer: Koncz László
+# Maintainer: Koncz László <konlaasz at gmail dot com>
 
 pkgname=vim-colors-zenburn-git
 pkgdesc='Nothing too fancy, just some alien fruit salad to keep you in the zone'
-pkgver=20141008
-pkgrel=2
+pkgver=20150918
+pkgrel=1
 url='http://kippura.org/zenburnpage/'
 arch=('any')
 license=('GPL')
@@ -11,8 +11,8 @@ makedepends=('git')
 depends=('vim')
 provides=('vim-colors-zenburn')
 conflicts=('vim-colors-zenburn' 'vim-colorsamplerpack')
-source="$pkgname::git://github.com/jnurmine/Zenburn.git"
-sha256sums='SKIP'
+source=("$pkgname::git://github.com/jnurmine/Zenburn.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
