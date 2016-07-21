@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <cyrond@gmail.com>
 
 pkgname=rk-desktop-gnome
-pkgver=2016.6.26
+pkgver=2016.7.21
 pkgrel=1
 pkgdesc="Metapackage that installs a full gnome desktop. Enables all needed services."
 url="http://notyetthere.com"
@@ -138,6 +138,10 @@ depends=("pkgtools"
 "libreoffice-still-de"
 "psi"
 "redshift"
+"networkmanager-openconnect"
+"networkmanager-openvpn"
+"networkmanager-pptp"
+"networkmanager-vpnc"
 
 "gparted"
 "nrg2iso"
