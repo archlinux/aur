@@ -6,9 +6,9 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.26
-pkgrel=4
-_commit=43e2c3de
+pkgver=2.26.1
+pkgrel=1
+_commit=c29838e7
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
@@ -16,16 +16,16 @@ license=('GPL')
 depends=('glibc>=2.23' 'zlib')
 options=('staticlibs' '!distcc' '!ccache')
 source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
-        http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2
-        binutils-${_commit}.patch)
+        http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
+        #binutils-${_commit}.patch)
 md5sums=(#'SKIP'
-         '64146a0faa3b411ba774f47d41de239f'
-         '0820efe4f2087f5f557602a32f561dcd')
+         'd2b24e5b5301b7ff0207414c34c3e0fb')
+         #'0820efe4f2087f5f557602a32f561dcd')
 
 prepare() {
   cd binutils-${pkgver}
 
-  patch -p1 -i ${srcdir}/binutils-${_commit}.patch
+  #patch -p1 -i ${srcdir}/binutils-${_commit}.patch
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
