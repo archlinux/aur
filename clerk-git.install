@@ -1,0 +1,8 @@
+#!/bin/bash
+post_install() {
+echo '
+Copy /etc/clerk_fzf.conf to $HOME/.config/clerk/clerk_fzf.conf
+To initialize cache files, run "clerk_update --create-caches". clerk_fzf is started with clerk_starter.
+'
+}
+#post_install
