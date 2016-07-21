@@ -1,7 +1,7 @@
 pkgbase = mysqltcl
 	pkgdesc = Mysqltcl allows to connect Mysql-Database from Tcl scripting language.
 	pkgver = 3.052
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xdobry/mysqltcl
 	arch = any
 	depends = tcl
