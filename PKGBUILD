@@ -12,7 +12,7 @@ _clang=
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.0.r395.g0d84a55
+pkgver=v0.6.0.r707.g6cdeed6
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -58,7 +58,7 @@ build() {
 	LANG=C ./version_detail.sh
 	cd ../..
 
-	qmake   "${_options}" \
+	qmake   ${_options} \
 		CONFIG-=debug CONFIG+=release \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
