@@ -1,0 +1,14 @@
+diff -rupN libmlx4-1.0.6/src/mlx4.c libmlx4-1.0.6.patched/src/mlx4.c
+--- libmlx4-1.0.6/src/mlx4.c	2014-05-06 13:32:08.000000000 -0400
++++ libmlx4-1.0.6.patched/src/mlx4.c	2016-07-16 23:41:20.624834694 -0400
+@@ -203,8 +203,8 @@ static int mlx4_init_context(struct verb
+ 	verbs_set_ctx_op(verbs_ctx, get_srq_num, verbs_get_srq_num);
+ 	verbs_set_ctx_op(verbs_ctx, create_qp_ex, mlx4_create_qp_ex);
+ 	verbs_set_ctx_op(verbs_ctx, open_qp, mlx4_open_qp);
+-	verbs_set_ctx_op(verbs_ctx, drv_ibv_create_flow, ibv_cmd_create_flow);
+-	verbs_set_ctx_op(verbs_ctx, drv_ibv_destroy_flow, ibv_cmd_destroy_flow);
++	verbs_set_ctx_op(verbs_ctx, ibv_create_flow, ibv_cmd_create_flow);
++	verbs_set_ctx_op(verbs_ctx, ibv_destroy_flow, ibv_cmd_destroy_flow);
+ 
+ 	return 0;
+ 
