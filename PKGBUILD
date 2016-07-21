@@ -36,7 +36,7 @@ package() {
 
 	# Install a specially crafted invocation for the binary
 	install -d "${pkgdir}"/usr/bin
-	echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./rsf.py \"$@\"\ncd -" > "${pkgdir}/usr/bin/rsf"
+	echo -e "#!/bin/sh\ncd /opt/${_pkgname} && exec ./rsf.py \"\$@\"\ncd -" > "${pkgdir}/usr/bin/rsf"
 	chmod 755 "${pkgdir}/usr/bin/rsf"
 
 	install -D ./LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
