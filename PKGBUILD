@@ -8,8 +8,8 @@ pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'jre8-openjdk' 'avrdude')
-makedepends=('jdk8-openjdk' 'apache-ant')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'avrdude')
+makedepends=('java-environment=8' 'apache-ant')
 options=(!strip staticlibs)
 install="arduino.install"
 provides=('arduino')
