@@ -14,6 +14,7 @@ pkgbase = arduino-bin
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = avrdude
+	depends = java-runtime=8
 	provides = arduino
 	conflicts = arduino
 	conflicts = arduino-git

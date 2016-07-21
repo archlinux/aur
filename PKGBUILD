@@ -14,7 +14,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://arduino.cc/en/Main/Software"
 options=(!strip staticlibs)
 license=('GPL' 'LGPL')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'avrdude')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'avrdude' 'java-runtime=8')
 provides=('arduino')
 conflicts=('arduino' 'arduino-git')
 install="arduino.install"
