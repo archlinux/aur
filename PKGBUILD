@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=libmlx5
-pkgver=1.0.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand Mellanox Connect-IB InfiniBand HCA driver'
 #        Plug-in module for libibverbs.
@@ -12,7 +12,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/mlx5/${pkgname}-${pkgver}.tar.gz")
-md5sums=('fdc8f38f01a02e26f38c0965b5357d17')
+md5sums=('eecd015a2c4f2452a0a1cbc121b40712')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
