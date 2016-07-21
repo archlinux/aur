@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 
 # Set options for qmake
 _options=''
-[[ "$_clang" == 'true' ]] && _options='-spec linux-clang'
+[[ "$_clang" == 'true' ]] && _options='-spec linux-clang CONFIG+=c++11'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -58,8 +58,8 @@ build() {
 	LANG=C ./version_detail.sh
 	cd ../..
 
-	qmake   ${_options} \
-		CONFIG-=debug CONFIG+=release \
+	qmake   CONFIG-=debug CONFIG+=release \
+		${_options} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
