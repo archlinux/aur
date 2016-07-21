@@ -4,7 +4,7 @@
 
 pkgname=panda3d
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -19,6 +19,10 @@ makedepends=('python2' 'bison' 'subversion' 'cmake')
 # installed before compiletime! You don't need to change anything in the
 # pkgbuild to get support; makepanda automatically detects available
 # dependencies.
+
+# PYTHON NOTICE: Replace all instances of python2 with python to compile with 
+# python 3 support instead
+
 optdepends=(# Pretty much required
             'xorg-server: X11 support'
             'libgl: OpenGL support for X11'
@@ -47,7 +51,6 @@ optdepends=(# Pretty much required
             'libsquish: DXT support (AUR)'
             'artoolkit: library for augmented reality (AUR)'
             'opencv: alternative to ffmpeg for video texture support'
-            'fftw: Lossy animation compression in bam files (Does not work)'
             'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
             'vrpn: support for virtual reality trackers (unavailable)'
             # ARM stuff, not really applicable, stated for completeness
