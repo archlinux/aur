@@ -1,8 +1,8 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=kubernetes
-pkgver=1.2.4
-_contribver=0.6.0
+pkgver=1.3.2
+_contribver=0.7.0
 pkgrel=1
 pkgdesc="Container Cluster Manager for Docker"
 depends=('glibc' 'bash')
@@ -15,8 +15,8 @@ source=("https://github.com/GoogleCloudPlatform/kubernetes/archive/v$pkgver.tar.
 url="http://kubernetes.io/"
 license=("APACHE")
 install=kubernetes.install
-sha256sums=('20a3984f9c044f1a1da3088166b181f3c10380d3efd4bf3fbc64678fef279ced'
-            'b73b3a8ea7836104d604d7b1c5ad99293717af8c63d4ff1f2c9debf1dced706c'
+sha256sums=('331fc145aed995d55b89940dcc2b5fe0a1ffd70ff0f3bcb4cfbe35645ae9107b'
+            '1d4e651ea59ea0d2b440e290fda5e166a21847891abca2907b8a1683c2252b8d'
             'f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde')
 
 build() {
@@ -32,11 +32,7 @@ package() {
     for bin in "${binaries[@]}"; do
         install -Dm755 _output/local/bin/linux/amd64/$bin $pkgdir/usr/bin/$bin
     done
-    
-    # install the bash completion
-    install -dm 0755 $pkgdir/usr/share/bash-completion/completions/
-    install -t $pkgdir/usr/share/bash-completion/completions/ contrib/completions/bash/kubectl
-
+   
     # install manpages
     install -d $pkgdir/usr/share/man/man1/
     install -pm 644 docs/man/man1/* $pkgdir/usr/share/man/man1
