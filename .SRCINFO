@@ -1,6 +1,6 @@
 pkgbase = megasync-qt5
 	pkgdesc = Sync your files to your Mega account (qt5 version)
-	pkgver = 2.9.5
+	pkgver = 2.9.8
 	pkgrel = 1
 	url = https://mega.nz/#sync
 	arch = i686
@@ -15,12 +15,13 @@ pkgbase = megasync-qt5
 	depends = crypto++
 	depends = curl
 	depends = libuv
+	depends = libsodium
 	optdepends = nautilus-megasync: for integration with nautilus
-	provides = megasync=2.9.5
+	provides = megasync=2.9.8
 	conflicts = megatools
 	conflicts = megasync
-	source = https://mega.nz/linux/MEGAsync/Debian_8.0/megasync_2.9.5.orig.tar.gz
-	md5sums = 0035e50ac1a0fe1af2db2fdf686c8273
+	source = https://mega.nz/linux/MEGAsync/Debian_8.0/megasync_2.9.8.orig.tar.gz
+	md5sums = 2f69968f02096bec83b8967c8102e342
 
 pkgname = megasync-qt5
 
