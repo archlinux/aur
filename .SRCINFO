@@ -1,6 +1,6 @@
 pkgbase = grub2-git
 	pkgdesc = GNU GRand Unified Bootloader: the ultimate package (git snapshot)
-	pkgver = 2.02+beta3+11+gf4d35d4
+	pkgver = 2.02+beta3+16+gb524fa2
 	pkgrel = 1
 	url = http://gnu.org/software/grub/
 	arch = i686
@@ -26,7 +26,7 @@ pkgname = grub2-x86_64-efi-git
 	provides = 
 	provides = grub2-efi-x86_64
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
+	provides = grub2-modules-git=2.02+beta3+16+gb524fa2
 	conflicts = 
 	conflicts = grub2-efi-x86_64
 
@@ -35,7 +35,7 @@ pkgname = grub2-i386-pc-git
 	provides = 
 	provides = grub2-bios
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
+	provides = grub2-modules-git=2.02+beta3+16+gb524fa2
 	conflicts = 
 	conflicts = grub2-bios
 
@@ -43,7 +43,7 @@ pkgname = grub2-i386-efi-git
 	pkgdesc = GNU GRand Unified Bootloader: i386 EFI modules (git snapshot)
 	provides = grub2-efi-i386
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
+	provides = grub2-modules-git=2.02+beta3+16+gb524fa2
 	conflicts = grub2-efi-i386
 
 pkgname = grub2-i386-qemu-git

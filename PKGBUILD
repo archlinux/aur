@@ -27,7 +27,7 @@ _conf_emu=(--with-bootdir='/usr/lib')
 source=(grub::'git://git.savannah.gnu.org/grub.git#branch=master')
 sha256sums=('SKIP')
 
-pkgver=2.02+beta3+11+gf4d35d4
+pkgver=2.02+beta3+16+gb524fa2
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader: the ultimate package (git snapshot)"
 arch=(i686 x86_64)
@@ -257,6 +257,7 @@ package_grub2-common-git() {
 	make install DESTDIR="$pkgdir"
 
 	rm -rf "$pkgdir/usr/share/info"
+	rm -rf "$pkgdir/usr/lib/grub"
 }
 
 package_grub2-doc-git() {
