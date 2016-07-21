@@ -53,7 +53,6 @@ optdepends=(# Pretty much required
             'librocket: Librocket GUI support'
             'libsquish: DXT support (AUR)'
             'opencv: alternative to ffmpeg for video texture support'
-            'fftw: Lossy animation compression in bam files (Does not work)'
             'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
             'vrpn: support for virtual reality trackers (unavailable)'
             # ARM stuff, not really applicable, stated for completeness
