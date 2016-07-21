@@ -1,0 +1,45 @@
+pkgbase = dune-core
+	pkgdesc = Core modules of the DUNE framework
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.dune-project.org
+	arch = i686
+	arch = x86_64
+	groups = dune
+	license = custom
+	makedepends = cmake
+	source = http://www.dune-project.org/download/2.4.1/dune-common-2.4.1.tar.gz
+	source = http://www.dune-project.org/download/2.4.1/dune-geometry-2.4.1.tar.gz
+	source = http://www.dune-project.org/download/2.4.1/dune-localfunctions-2.4.1.tar.gz
+	source = http://www.dune-project.org/download/2.4.1/dune-grid-2.4.1.tar.gz
+	source = http://www.dune-project.org/download/2.4.1/dune-istl-2.4.1.tar.gz
+	md5sums = 4dd80f7b1a4fc9c447f83625961ea64b
+	md5sums = d8fba0d67a22f7d17642adf9e2820b2c
+	md5sums = f71510efa886369f21868f3f49451026
+	md5sums = 4281815782bc01f532c11f678f81cb78
+	md5sums = 601a7111369c6f0f269022f12ab5eb89
+
+pkgname = dune-common
+	pkgdesc = Basic classes used by all DUNE modules
+	depends = bash
+	depends = python
+
+pkgname = dune-geometry
+	pkgdesc = Reference elements with corresponding mappings and quadratures
+
+pkgname = dune-localfunctions
+	pkgdesc = Shape functions, interpolation operators on DUNE reference elemements
+	arch = any
+
+pkgname = dune-grid
+	pkgdesc = Nonconforming, hierarchically nested, multi-element-type, parallel grids
+	optdepends = blas: linear algebra implementation
+	optdepends = lapack: more linear algebra implementation
+	optdepends = ug=3.11.0: for unstructured mesh handling
+	optdepends = alberta=3.0.1: for the alberta grid implementation
+	optdepends = psurface: piecewise linear bijections between triangulated surfaces
+
+pkgname = dune-istl
+	pkgdesc = Iterative solver template library
+	arch = any
+
