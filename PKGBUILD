@@ -14,7 +14,7 @@ depends=('python' 'python-pyqt4' 'python-pycurl' 'python-urllib3' 'curl' 'libnot
 
 #source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
 source=("https://github.com/kanishka-linux/"${_pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
-md5sums=('SKIP')
+md5sums=('c90087d86900030b4f33b59473c5280a')
 _gitname=AnimeWatch-PyQt4-Stable
 
 
