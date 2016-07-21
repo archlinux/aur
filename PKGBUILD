@@ -9,17 +9,17 @@ pkgname=${_target}-gcc-stage1
 pkgver=6.1.1
 _pkgver=6
 _islver=0.16.1
-pkgrel=1
-_commit=80f78834
+pkgrel=3
+_commit=1bbd3999
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26-4" 'libmpc' 'zlib')
+depends=("${_target}-binutils>=2.26.1-1" 'libmpc' 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
 source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('405eea1379f597d9876e33636c9cb6c7'
+md5sums=('d4c4546f927b2984d66574b1b5cb817e'
          'ac1f25a0677912952718a51f5bc20f32')
 
 prepare() {
