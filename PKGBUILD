@@ -8,6 +8,8 @@ pkgdesc="Complete solution to record, convert and stream audio and video (mingw-
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
+#TODO: Needs fixed mingw-w64-netcdf package
+#'mingw-w64-netcdf' 'mingw-w64-opencore-amr' 'mingw-w64-openjpeg' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
 depends=(
 'mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-fribidi' 'mingw-w64-gnutls'
 'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-dcadec' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
@@ -27,6 +29,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
+    #TODO: Add --enable-netcdf (under --enable-libxvid) when mingw-w64-netcdf Package is fixed
     "${srcdir}"/ffmpeg-${pkgver}/configure \
       --prefix="/usr/${_arch}" \
       --enable-cross-compile \
