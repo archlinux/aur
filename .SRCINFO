@@ -1,7 +1,7 @@
 pkgbase = nted
 	pkgdesc = A free music score editor for Linux.
 	pkgver = 1.10.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml
 	arch = i686
 	arch = x86_64

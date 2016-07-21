@@ -4,7 +4,7 @@
 
 pkgname=nted
 pkgver=1.10.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
@@ -30,7 +30,7 @@ build() {
   aclocal
   automake --add-missing
   autoreconf
-  ./configure --prefix=/usr 
+  CXXFLAGS=" -std=c++11 -Wno-narrowing" ./configure --prefix=/usr 
   make
 }
 
