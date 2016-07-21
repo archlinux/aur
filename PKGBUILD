@@ -3,7 +3,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname=ocaml-re
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Pure OCaml regular expressions, with support for Perl and POSIX-style strings"
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ makedepends=('ocaml-findlib')
 url="https://github.com/ocaml/ocaml-re"
 license=('LGPL')
 options=('!strip')
-source=("https://github.com/ocaml/ocaml-re/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('53322f763a8d771a68f986c9c323cab7d3afa56873c3eefa528fb92b1b511dd3')
+source=("https://github.com/ocaml/ocaml-re/archive/${pkgver}.tar.gz")
+sha256sums=('4fe88b095bb65abc3e9b132bdd6fba7451eb3a32f1a5cd6a0f9a92faca099f47')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix /usr
   make
@@ -24,7 +24,7 @@ build() {
 
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
   mkdir -p "${OCAMLFIND_DESTDIR}"
