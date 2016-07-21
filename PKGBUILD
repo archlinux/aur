@@ -2,7 +2,7 @@
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
-pkgver=4.2.9.r1.g2a12868
+pkgver=4.2.9.r30.g04637bd
 pkgrel=1
 pkgdesc='A Python AUR helper/library. (git version)'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 options=(!emptydirs)
 provides=('pkgbuilder')
 conflicts=('pkgbuilder')
-source=("git+https://github.com/Kwpolska/${_gitname}#branch=develop")
+source=("git+https://github.com/Kwpolska/${_gitname}")
 md5sums=('SKIP')
 
 package() {

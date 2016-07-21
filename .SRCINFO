@@ -1,6 +1,6 @@
 pkgbase = pkgbuilder-git
 	pkgdesc = A Python AUR helper/library. (git version)
-	pkgver = 4.2.9.r1.g2a12868
+	pkgver = 4.2.9.r30.g04637bd
 	pkgrel = 1
 	url = https://github.com/Kwpolska/pkgbuilder
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pkgbuilder-git
 	provides = pkgbuilder
 	conflicts = pkgbuilder
 	options = !emptydirs
-	source = git+https://github.com/Kwpolska/pkgbuilder#branch=develop
+	source = git+https://github.com/Kwpolska/pkgbuilder
 	md5sums = SKIP
 
 pkgname = pkgbuilder-git
