@@ -1,5 +1,5 @@
 pkgname=kobalt
-pkgver=0.864
+pkgver=0.865
 pkgrel=1
 pkgdesc="A modern and versatile build system (for the JVM)."
 arch=('i686' 'x86_64')
@@ -8,13 +8,14 @@ license=('Apache')
 depends=('java-environment' 'bash')
 makedepends=('unzip')
 source=("https://github.com/cbeust/kobalt/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha512sums=("180ada9cb5c61ca44924fa051652c48a2b9834150be6de61e759ee11bfb3afb4c2ebb9c84d88566f4683d883d6523ffbe5016b3993f897f758a8c2be289b67ca")
+sha512sums=("bf04586918cb36bf293995a085fc059d3f1df7bbd240d0199d6b7e4f9d24cc577051a08eed547e03c1a9191a6847ec0dad121b77c93ba00b7b38d3e9604e119b")
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
   unzip ${pkgname}-${pkgver}.zip
-  sed -i -e "s@\$(dirname \$0)/../${pkgname}/wrapper/@/usr/share/java/${pkgname}/@" kobalt-${pkgver}/bin/kobaltw
-  sed -i -e "s@${pkgname}-wrapper.jar@${pkgname}-${pkgver}.jar@" kobalt-${pkgver}/bin/kobaltw
+  echo '#!/usr/bin/env sh' > kobalt-${pkgver}/bin/kobaltw
+  echo "java -jar /usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar \$*" >> kobalt-${pkgver}/bin/kobaltw
+  
 }
 package() {
   install -Dm 755 kobalt-${pkgver}/bin/kobaltw ${pkgdir}/usr/bin/kobalt

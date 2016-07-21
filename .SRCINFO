@@ -1,6 +1,6 @@
 pkgbase = kobalt
 	pkgdesc = A modern and versatile build system (for the JVM).
-	pkgver = 0.853
+	pkgver = 0.865
 	pkgrel = 1
 	url = http://beust.com/kobalt/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = kobalt
 	makedepends = unzip
 	depends = java-environment
 	depends = bash
-	noextract = kobalt-0.853.zip
-	source = https://github.com/cbeust/kobalt/releases/download/0.853/kobalt-0.853.zip
-	sha512sums = b8ece78957dbede2ac7439aca5ff8f6113fb13c1ed57c4b7a1f4535a5e45b850a3d09ac33fb0257ff3ac27796ec13b8dab237e174aaaaa4bb4ae4fbbf800b1ad
+	noextract = kobalt-0.865.zip
+	source = https://github.com/cbeust/kobalt/releases/download/0.865/kobalt-0.865.zip
+	sha512sums = bf04586918cb36bf293995a085fc059d3f1df7bbd240d0199d6b7e4f9d24cc577051a08eed547e03c1a9191a6847ec0dad121b77c93ba00b7b38d3e9604e119b
 
 pkgname = kobalt
 
