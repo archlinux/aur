@@ -11,12 +11,12 @@ pkgbase = arduino
 	arch = armv7h
 	license = GPL
 	license = LGPL
-	makedepends = jdk8-openjdk
+	makedepends = java-environment=8
 	makedepends = apache-ant
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info
-	depends = jre8-openjdk
+	depends = java-runtime=8
 	depends = avrdude
 	provides = arduino
 	conflicts = arduino-bin
