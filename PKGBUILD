@@ -19,9 +19,9 @@ depends=('python2-matrix-angular-sdk'
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
-		'sysusers-synapse.conf'
-		'deps-relax-pynacl-check.patch'
-		'deps-relax-pysaml2-check.patch')
+        'sysusers-synapse.conf'
+        'deps-relax-pynacl-check.patch'
+        'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
          'a2b653d523161a33a36e931b60a234f2'
@@ -31,8 +31,8 @@ install='synapse.install'
 
 prepare() {
 	cd "synapse"
-	git am < "$srcdir/deps-relax-pynacl-check.patch"
-	git am < "$srcdir/deps-relax-pysaml2-check.patch"
+	git apply -3 "$srcdir/deps-relax-pynacl-check.patch"
+	git apply -3 "$srcdir/deps-relax-pysaml2-check.patch"
 }
 
 build() {
@@ -57,5 +57,3 @@ package() {
 	install -Dm644 "$srcdir/sysusers-synapse.conf" \
 		"$pkgdir/usr/lib/sysusers.d/synapse.conf"
 }
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :
