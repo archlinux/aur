@@ -1,8 +1,10 @@
-# Maintainer: onefire <onefire.myself@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: onefire <onefire.myself@gmail.com>
+
 pkgname=viennacl
 _pkgname=ViennaCL
-pkgver=1.6.2
-_pkgver=1.6.x
+pkgver=1.7.1
+_pkgver=1.7.x
 pkgrel=1
 pkgdesc="The library provides high level C++ interfaces for linear algebra routines on CPUs and GPUs using CUDA, OpenCL and OpenMP."
 arch=('any')
@@ -10,24 +12,19 @@ url="http://viennacl.sourceforge.net/"
 depends=("libcl" "opencl-headers")
 optdepends=("cuda" "opencl-nvidia") 
 license=('custom')
-
-source=("http://iweb.dl.sourceforge.net/project/${pkgname}/${_pkgver}/${_pkgname}-${pkgver}.tar.gz")
-
-sha512sums=('70855a0bf28fa6f2389f7f1f7e3aa1824913124a62edd98524e6b9818804eec1e4565eab9722dc5e6ccf86b2b60a78b414d856b7c2ad02ed196c895b71e8b637')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${_pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('5e5a9c6defba48bcb6c49a04822bec3b5b0fd0805f0f28c7bdc4b81a04ef58e9c9bf89083015935703474eee75c8be80dd7c4a4d9ee51591f9dfaec9fe3d1ee2')
 
 package() {
-  cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
+	cd "${_pkgname}-${pkgver}"
 
-  mkdir -p "${pkgdir}"/usr/include
-  mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"
+	mkdir -p \
+		"${pkgdir}/usr/include" \
+		"${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cp -r "${pkgname}" "${pkgdir}"/usr/include
-  chmod -R 755 "${pkgdir}"/usr/include/"${pkgname}"/
-
-  install -m 644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"
-  
-#  install -m 644 doc/"${pkgname}".pdf "${pkgdir}"/usr/share/doc/"${pkgname}"
+	cp -r "${pkgname}" "${pkgdir}/usr/include"
+	chmod -R u=rwX,go=rX "${pkgdir}/usr/include"
+	install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 
