@@ -18,14 +18,14 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         "$pkgbase.preset"
         change-default-console-loglevel.patch
         0001-sdhci-revert.patch
-	apparmor3.tar.xz)
+        apparmor3.tar.xz)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
             '69fcb928e4958f87fb134d0f6acf98072655b5572dd3497c3a0844882f261bf8'
             'SKIP'
-            'd2bcc7af02af9ea41a78c63fb5a1c5c0e43f00c2a66dcd4684ea73877835dc3e'
-            '4e764873f03ce6e3afb7730798d8582f03e25178ee8b07a4f185f7f3300a8df4'
+            '1fc94fbe773d9aa1a132267d1bd035fbbb65b031b42087a8dd39af9a77f649eb'
+            '496ae13ff892a2bff4d5709187e11ecc6f43062ba9b6ce3c4c69a07b77cdd5ae'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
