@@ -2,7 +2,7 @@
 
 pkgname=nyaovim
 pkgver=0.0.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Neovim frontend built on Electron"
 arch=(any)
 url="https://www.npmjs.com/package/nyaovim"
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
 "$pkgname.desktop")
 sha256sums=('cd29cee59ef904da12bb3789b391cc28fac22a7936f205d07ecdea6ee53324e0'
-            '5dd8dc38f332ee035743f61cae390b50a5c5b94c6a7a448cd4afe28042d0712c')
+            '2c3472c6471e4ddedd524f36fd84b76156090d1caca1e70e65fbad5ace859b82')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {

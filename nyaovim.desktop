@@ -2,7 +2,7 @@
 Name=Nyaovim
 GenericName=Nyaovim
 Comment=Web-enhanced Extensible Neovim Frontend
-Exec=nyaovim
+Exec=nyaovim %F
 Icon=/usr/lib/node_modules/nyaovim/resources/icon/nyaovim-logo.png
 Terminal=false
 Type=Application
