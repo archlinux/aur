@@ -3,7 +3,7 @@
 
 pkgname=openlp
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -12,8 +12,8 @@ makedepends=('qt5-tools')
 depends=('python' 'python-pyqt5' 'phonon'
          'python-chardet' 'python-lxml'
          'python-beautifulsoup4' 'python-pyenchant'
-         'python-alembic' 'qt5-multimedia'
-        )
+         'python-alembic' 'qt5-multimedia' 'qt5-webkit')
+
 optdepends=('libreoffice-fresh: Display impress presentations'
             'vlc: Play multimedia'
             'mupdf: Display pdfs'
