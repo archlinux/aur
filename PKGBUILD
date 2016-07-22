@@ -4,7 +4,7 @@ pkgbase=dune-core
 pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-grid' 'dune-istl')
 
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Core modules of the DUNE framework'
 groups=('dune')
@@ -13,7 +13,8 @@ url='http://www.dune-project.org'
 arch=('i686' 'x86_64')
 license=('custom')
 
-makedepends=('cmake')
+makedepends=('cmake' 'gcc-fortran' 'openmpi' 'gmp' 'lapack' 'boost' 'superlu' 'suitesparse'
+    'parmetis' 'alberta=3.0.1' 'psurface' 'ug=3.11.0')
 
 for _module in "${pkgname[@]}"; do
     source+=("http://www.dune-project.org/download/${pkgver}/${_module}-${pkgver}.tar.gz")
@@ -66,13 +67,6 @@ package_dune-localfunctions() {
 
 package_dune-grid() {
     pkgdesc='Nonconforming, hierarchically nested, multi-element-type, parallel grids'
-    optdepends=(
-        'blas: linear algebra implementation'
-        'lapack: more linear algebra implementation'
-        'ug=3.11.0: for unstructured mesh handling'
-        'alberta=3.0.1: for the alberta grid implementation' 
-        'psurface: piecewise linear bijections between triangulated surfaces'
-    )
 
     package
 }
