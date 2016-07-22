@@ -4,7 +4,7 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Build tool executing tasks and managing metadata."
 arch=('any')
 url="http://openembedded.org"
@@ -33,11 +33,6 @@ package_bitbake() {
 
     install -d ${pkgdir}/usr/share/man/man1
     install doc/bitbake.1 ${pkgdir}/usr/share/man/man1
-    #gzip ${pkgdir}/usr/share/man/man1/bitbake.1
-
-    #install -d ${pkgdir}/usr/share/licenses/${pkgbase}
-    #install -m 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgbase}
-    #install -m 644 COPYING ${pkgdir}/usr/share/licenses/${pkgbase}
 }
 
 package_bitbake-vim() {
