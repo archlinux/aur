@@ -11,11 +11,11 @@ source=("http://www.remi-coulom.fr/Bayesian-Elo/bayeselo.tar.bz2")
 md5sums=("17ab3271dc707f5f92a2e2fbcb62b1e9")
 
 build() {
-    cd "$pkgname-$pkgver/BayesElo"
+    cd "BayesElo"
 	make
 }
 
 package() {
-    cd "$pkgname-$pkgver/BayesElo"
+    cd "BayesElo"
 	install -Dm 755 bayeselo $pkgdir/usr/bin/bayeselo
 }
