@@ -3,7 +3,7 @@
 pkgname=feedthemonkey
 _name=FeedTheMonkey
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the TinyTinyRSS reader"
 arch=('i686' 'x86_64')
 url="http://jabs.nu/feedthemonkey"
@@ -21,5 +21,5 @@ build() {
 package() {
 	cd "${_name}-$pkgver"
 	make install
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
