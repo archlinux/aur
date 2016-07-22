@@ -1,4 +1,4 @@
-pkgbase = estonta
+pkgbase = estonta-git
 	pkgdesc = A simple Bash and Yad-based appointment system.
 	pkgver = r30.4b6fbd5
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = estonta
 	source = git://github.com/coreymwamba/estonta
 	md5sums = SKIP
 
-pkgname = estonta
+pkgname = estonta-git
 
