@@ -16,20 +16,20 @@ source=("bzr+http://bazaar.leonerd.org.uk/code/pangoterm/")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-bzr}"
-  printf "r%s" "$(bzr revno)"
+    cd "$srcdir/${pkgname%-bzr}"
+    printf "r%s" "$(bzr revno)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-bzr}"
-  make PREFIX=/usr
+    cd "$srcdir/${pkgname%-bzr}"
+    make PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/${pkgname%-bzr}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bzr}/LICENSE"
-  install -Dm644 pangoterm.cfg "${pkgdir}/usr/share/${pkgname%-bzr}/pangoterm.cfg"
+    cd "$srcdir/${pkgname%-bzr}"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bzr}/LICENSE"
+    install -Dm644 pangoterm.cfg "${pkgdir}/usr/share/${pkgname%-bzr}/pangoterm.cfg"
 }
 
-# vim:set sw=2 sts=2 et:
+# vim:set sw=4 sts=4 et:
