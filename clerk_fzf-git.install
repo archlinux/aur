@@ -1,7 +1,8 @@
 #!/bin/bash
 post_install() {
 echo '
-to use clerk you need to copy /usr/share/doc/clerk/config.example to $HOME/.config/clerk/config
+Important: clerk_fzf does not work inside of tmux, because it starts its very own, independent tmux instance.
+To use clerk you need to copy /etc/clerk_fzf.conf to $HOME/.config/clerk/clerk_fzf.conf
 and edit it to your needs.
 '
 }
