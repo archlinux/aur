@@ -1,0 +1,18 @@
+pkgbase = python-pulsar-git
+	pkgdesc = Event driven concurrent framework using asyncio
+	pkgver = 1.4.0.dev20160719065823
+	pkgrel = 1
+	url = http://pythonhosted.org/pulsar/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	provides = python-pulsar
+	conflicts = python-pulsar
+	replaces = python-pulsar
+	source = python-pulsar-git::git+https://github.com/quantmind/pulsar.git
+	md5sums = SKIP
+
+pkgname = python-pulsar-git
+
