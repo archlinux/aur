@@ -3,11 +3,10 @@
 _basename=newtx
 pkgname=texlive-"$_basename"
 pkgver=1.466
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative uses of the TX fonts, with improved metrics."
 arch=('any')
 depends=('texlive-bin')
-makedepends=('unzip')
 url="http://ctan.org/pkg/$_basename"
 license=('custom: LaTeX Project Public License 1.3c')
 source=("http://mirrors.ctan.org/install/fonts/$_basename.tds.zip"
