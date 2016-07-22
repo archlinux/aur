@@ -1,0 +1,18 @@
+pkgbase = texlive-newtx
+	pkgdesc = Alternative uses of the TX fonts, with improved metrics.
+	pkgver = 1.466
+	pkgrel = 1
+	url = http://ctan.org/pkg/newtx
+	install = texlive-newtx.install
+	arch = any
+	license = custom: LaTeX Project Public License 1.3c
+	makedepends = unzip
+	depends = texlive-bin
+	noextract = newtx.tds.zip
+	source = http://mirrors.ctan.org/install/fonts/newtx.tds.zip
+	source = http://latex-project.org/lppl.txt
+	sha1sums = ded2e1077edec121a1ddae058963cdec7676a376
+	sha1sums = 47438d5b2ab351796b64b62da105432ab71369ab
+
+pkgname = texlive-newtx
+
