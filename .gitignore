@@ -1,0 +1,7 @@
+/src
+/pkg
+
+/trezord
+/trezor-crypto
+
+*.pkg.tar.xz
