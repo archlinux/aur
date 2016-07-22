@@ -5,12 +5,12 @@
 pkgname=snap-confine-apparmor
 _pkgname=snap-confine
 pkgver=1.0.38
-pkgrel=3
+pkgrel=4
 pkgdesc="Confinement system for snap applications (with apparmor)"
 arch=('i686' 'x86_64')
 url="git://github.com/snapcore/snap-confine"
 license=('GPL3')
-depends=('bash' 'libseccomp' 'libsystemd' 'apparmor' 'linux-ubuntu')
+depends=('bash' 'libseccomp' 'libsystemd' 'apparmor' 'linux-apparmor3')
 makedepends=('python-docutils' 'systemd')
 checkdepends=('indent' 'shellcheck')
 conflicts=('snap-confine')

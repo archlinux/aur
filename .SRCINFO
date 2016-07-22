@@ -1,7 +1,7 @@
 pkgbase = snap-confine-apparmor
 	pkgdesc = Confinement system for snap applications (with apparmor)
 	pkgver = 1.0.38
-	pkgrel = 3
+	pkgrel = 4
 	url = git://github.com/snapcore/snap-confine
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = snap-confine-apparmor
 	depends = libseccomp
 	depends = libsystemd
 	depends = apparmor
-	depends = linux-ubuntu
+	depends = linux-apparmor3
 	conflicts = snap-confine
 	replaces = snap-confine
 	source = https://github.com/snapcore/snap-confine/releases/download/1.0.38/snap-confine-1.0.38.tar.gz
