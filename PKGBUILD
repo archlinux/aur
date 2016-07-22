@@ -16,6 +16,7 @@ depends=('python' 'python-pyqt5' 'phonon'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant'
          'python-alembic' 'mediainfo' 'qt5-multimedia'
+         'qt5-webkit'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'vlc: play multimedia'

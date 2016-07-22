@@ -21,6 +21,7 @@ pkgbase = openlp-bzr
 	depends = python-alembic
 	depends = mediainfo
 	depends = qt5-multimedia
+	depends = qt5-webkit
 	optdepends = libreoffice-fresh: display impress presentations
 	optdepends = vlc: play multimedia
 	optdepends = mupdf: display pdfs
