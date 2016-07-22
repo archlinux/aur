@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Nessus
+Comment=Vulnerability scanner
+Icon=text-html
+Exec=xdg-open https://127.0.0.1:8834
+Categories=Network;Security;

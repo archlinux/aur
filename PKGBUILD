@@ -19,20 +19,22 @@ _gettoken() {
 
   if [[ "$token" == "" ]]; then
     echo
-    echo "\n==> ERROR: Could not get the download token"
+    echo "  -> Could not get the download token, '_retoken' might need an update"
     exit 1
   fi
 
-  echo $token
+  echo "$token"
 }
 _token=$(_gettoken)
 _pkgurl="https://downloads.nessus.org/nessus3dl.php?file=${_filename}&licence_accept=yes&t=${_token}"
 
 source=("${_filename}::${_pkgurl}"
+        nessus.desktop
         nessus.sh
         LICENSE)
 
 md5sums=('4106308f11c6b56f05932ee7bf9e71e1'
+         '388578bf980efe6e6d3f33fcc289543a'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '1db6df5a39009ace46c7ee40141ece1b')
 
@@ -52,4 +54,7 @@ package() {
 
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nessus/LICENSE"
+
+  # menu entry
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
