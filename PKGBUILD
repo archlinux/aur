@@ -1,95 +1,72 @@
-# Maintaner: Atsushi Ichiki <hitotuky at gmail dot com> 
+# Submitter: Atsushi Ichiki <hitotuky at gmail dot com>
+# Maintainer: Max Falk <gmdfalk at gmail dot com>
 
-pkgname=sonarqube
-pkgver=5.2
+_pkgname=sonarqube
+pkgname=${_pkgname}
+pkgver=5.6
 pkgrel=1
-pkgdesc="A code quality management platform."
+pkgdesc="An open source platform for continuous inspection of code quality"
+arch=("i686" "x86_64")
 url="http://www.sonarqube.org/"
-arch=('i686' 'x86_64')
 license=('LGPL3')
-depends=('java-environment-common')
-optdepends=('apache: a full featured webserver'
+
+depends=('java-runtime>=8')
+
+optdepends=('apache: a fully featured webserver'
             'mariadb: Fast SQL database server, drop-in replacement for MySQL'
             'maven: a java project management and project comprehension tool'
             'postgresql: A sophisticated object-relational DBMS')
 
-backup=('etc/sonarqube/sonar.properties' 
-        'etc/sonarqube/wrapper.conf')
+backup=("etc/${_pkgname}/sonar.properties"
+        "etc/${_pkgname}/wrapper.conf")
+
+conflicts=("${_pkgname}-lts")
+provides=("${_pkgname}")
+options=('!strip')
 
 install=${pkgname}.install
-conflicts=('sonarqube-lts')
-provides=('sonarqube')
-replaces=('sonarqube')
-options=(!strip)
+source=("https://sonarsource.bintray.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
+        "${_pkgname}.service"
+        "${_pkgname}-tmpfile.conf"
+        "${_pkgname}-user.conf")
 
-source=(https://sonarsource.bintray.com/Distribution/${pkgname}/${pkgname}-${pkgver}.zip
-        'wrapper.conf.patch'
-        'sonar.sh.patch'
-        'sonarqube.service'
-        'sonarqube.install')	
-
-md5sums=('3d0e923a11f3ce5caa272e5ce86a711a'
-	 'f9200f1722578c3e3af312c74295db9c'
-	 '0561e8954de393e963b5b9f991a080cb'
-         'd7450179d89871589e7a377fbd696258'
-         'd2b63c1fd37954bb470a7d9003aed7f4')
+sha256sums=('397c4eaf1d220cc2cef2075f709a4c50208dc91289e0234b0ae5954533f66994'
+            'acf98543b635778a690c5d1a8796bf67de725eeda1c72856bd63ea148a892223'
+            '6e024de469ebb1bc4083274412f0a5d68d5fa511c2139ce4cb1d243c51ff9535'
+            '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d')
 
 package() {
-  cd ${srcdir}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # Create directory and copy everything
-  install -d ${pkgdir}/usr/share/${pkgname}
+    # Copy everything except bin and conf to /usr/share/sonarqube.
+    install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+    cp -dr --no-preserve=ownership {bin,data,extensions,lib,temp,web} "${pkgdir}/usr/share/${_pkgname}/"
 
-  # modify the current config files for working with arch
-  msg "Patch files"
-  patch ${srcdir}/${pkgname}-${pkgver}/conf/wrapper.conf < ${srcdir}/wrapper.conf.patch
-  if [ $CARCH = 'x86_64' ]; then
-    patch ${srcdir}/${pkgname}-${pkgver}/bin/linux-x86-64/sonar.sh < ${srcdir}/sonar.sh.patch
-    #sed -i "s/ARCH/linux-x86-64/g" ${srcdir}/sonarqube.service
-  elif [ $CARCH = 'i686' ]; then
-    patch ${srcdir}/${pkgname}-${pkgver}/bin/linux-x86-32/sonar.sh < ${srcdir}/sonar.sh.patch
-    #sed - "s/ARCH/linux-x86-32/g" ${srcdir}/sonarqube.service
-  fi
+    # Install the license.
+    install -Dm644 "COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
 
-  # moving only $CARCH specific files to pkg, delete the rest
-  msg "Determine right architecture"
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/bin/
-  if [ $CARCH = 'x86_64' ]; then
-    cp -r ${srcdir}/${pkgname}-${pkgver}/bin/linux-x86-64/* ${pkgdir}/usr/share/${pkgname}/bin || return 1
-    rm -r ${srcdir}/${pkgname}-${pkgver}/bin || return 1
-  elif [ $CARCH = 'i686' ]; then
-    cp -r ${srcdir}/${pkgname}-${pkgver}/bin/linux-x86-32/* ${pkgdir}/usr/share/${pkgname}/bin || return 1
-    rm -r ${srcdir}/${pkgname}-${pkgver}/bin || return 1
-  fi
+    # Install the configuration files to /etc/sonarqube.
+    install -Dm644 "conf/sonar.properties" "${pkgdir}/etc/${_pkgname}/sonar.properties"
+    install -Dm644 "conf/wrapper.conf" "${pkgdir}/etc/${_pkgname}/wrapper.conf"
 
-  # install the additional config files to the desired destination
-  msg "Installing configuration files"
-  mkdir -p ${pkgdir}/etc/${pkgname}/
-  install ${srcdir}/${pkgname}-${pkgver}/conf/sonar.properties ${pkgdir}/etc/${pkgname}/sonar.properties
-  install ${srcdir}/${pkgname}-${pkgver}/conf/wrapper.conf ${pkgdir}/etc/${pkgname}/wrapper.conf
-  rm -r ${srcdir}/${pkgname}-${pkgver}/conf
-  ln -s /etc/${pkgname} ${pkgdir}/usr/share/${pkgname}/conf
+    # Install the systemd configuration and service files.
+    cd "${srcdir}"
+    install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm644 "${_pkgname}-user.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+    install -Dm644 "${_pkgname}-tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
-  # copy documentation
-  msg "Copy documentation"
-  mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
-  install ${srcdir}/${pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/doc/${pkgname}
-  rm ${srcdir}/${pkgname}-${pkgver}/COPYING
+    # Symbolic links because SonarQube expects a specific directory layout.
+    ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/logs"
+    ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/run"
+    ln -s "/etc/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/conf"
 
-  # delete not needed directories
-  rm -r ${srcdir}/${pkgname}-${pkgver}/logs
-  mkdir -p ${pkgdir}/var/log/${pkgname}/
-  touch ${pkgdir}/var/log/${pkgname}/wrapper.log
-  touch ${pkgdir}/var/log/${pkgname}/sonar.log
-  touch ${pkgdir}/var/log/${pkgname}/profiling.log
-  ln -s /var/log/${pkgname} ${pkgdir}/usr/share/${pkgname}/logs
-
-  # copy the source to the final directory
-  msg "Copy Source to final directory"
-  cp -a ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/share/${pkgname} || return 1
-
-  install -m755 -d ${pkgdir}/run/${pkgname}
-
-  install -Dm644 "${srcdir}/sonarqube.service" "${pkgdir}/usr/lib/systemd/system/sonarqube.service"
+    # Modify the service file in place to adjust the binary path to the CPU architecture. This is necessary because
+    # SonarQube expects a certain directory layout. The alternative would be to patch SonarQube's config files which is messy.
+    if [[ "$CARCH" == 'x86_64' ]]; then
+        sed -i 's/\$ARCH/linux-x86-64/g' "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    elif [[ "$CARCH" == 'i686' ]]; then
+        sed -i 's/\$ARCH/linux-x86-32/g' "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    fi
 }
+
 

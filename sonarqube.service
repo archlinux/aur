@@ -1,24 +1,19 @@
 [Unit]
-Description=A code quality management platform.
+Description=An open source platform for continuous inspection of code quality
+Documentation=http://www.sonarqube.org
+Wants=network.target
 After=network.target
 
 [Service]
-User=sonar
-Grup=sonar
 Type=forking
+User=sonarqube
+Group=sonarqube
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=sonar
-ExecStart=/usr/share/sonarqube/bin/sonar.sh start
-ExecStop=/usr/share/sonarqube/bin/sonar.sh stop
-PIDFile=/var/run/sonarqube/SonarQube.pid
-OOMScoreAdjust=-1000
-LimitCPU=infinity
-LimitFSIZE=infinity
-LimitDATA=infinity
-LimitCORE=0
-LimitAS=infinity
-LimitLOCKS=infinity
+SyslogIdentifier=sonarqube
+RuntimeDirectory=sonarqube
+ExecStart=/usr/share/sonarqube/bin/$ARCH/sonar.sh start
+ExecStop=/usr/share/sonarqube/bin/$ARCH/sonar.sh stop
 
 [Install]
 WantedBy=multi-user.target
