@@ -1,12 +1,16 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata.
 	pkgver = 1.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openembedded.org
 	arch = any
 	license = GPL2
-	makedepends = python2-pip
-	makedepends = gzip
+	makedepends = python2
+	makedepends = python2-progressbar
+	makedepends = python2-ply
+	makedepends = python2-pyinotify
+	makedepends = python2-beautifulsoup4
+	makedepends = python2-codegen
 	source = https://github.com/openembedded/bitbake/archive/1.30.zip
 	md5sums = bb883123767ecb0451d80d20c7e9cea7
 
@@ -17,7 +21,7 @@ pkgname = bitbake
 	depends = python2-ply
 	depends = python2-pyinotify
 	depends = python2-beautifulsoup4
-	depends = python2-pip
+	depends = python2-codegen
 
 pkgname = bitbake-vim
 
