@@ -3,7 +3,7 @@ Description=Ubiquiti UniFi Video Server
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 WorkingDirectory=/usr/lib/unifi-video
 TimeoutStartSec=300
 TimeoutStopSec=300
@@ -11,8 +11,8 @@ Restart=on-failure
 RestartSec=5
 StartLimitInterval=60s
 StartLimitBurst=3
-ExecStart=/usr/bin/unifi-video --verbose start
-ExecStop=/usr/bin/unifi-video --verbose stop
+ExecStart=/usr/bin/unifi-video --nodetach start
+ExecStop=/usr/bin/unifi-video --nodetach stop
 
 [Install]
 WantedBy=multi-user.target

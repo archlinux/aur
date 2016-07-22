@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster (fryfrog@gmail.com)
 
 pkgname=unifi-video
-pkgver=3.2.2
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
 url="https://www.ubnt.com/"
@@ -13,10 +13,10 @@ source=("http://dl.ubnt.com/firmwares/unifi-video/$pkgver/unifi-video_$pkgver~Ub
         'unifi-video.service'
         'unifi-video.sysusers'
         'unifi-video.patch')
-sha256sums=('4dba35c7d948567f098f13f5ac1faff7e4601ae99bc6477b8817a69f0dcfaeb4'
-            'f5f5244e19aba87884747cee371077bcfa9669806b9b0a8d0e176b9306c7f843'
+sha256sums=('4ffd6f899947b8a581360b6d98eb62469a9889f5ad8df74d6bdc7f2207e043ef'
+            '9df948b046347c25e7c83e4837284ef63d9f8d3f28daa20a6c36e203e3ebfdb3'
             '90fb2f826a70d3b7815cd6a2253c2af6754c17504be28ef92ee223bd02093730'
-            '26a11592d01ead22dbf2c083aae5cec320917902b516cfc595c12d158876bddb')
+            '6908be4aa55e98d358b057bb493bfcbb2e553fbe2e048de36f8cb8cce31a247c')
 
 package() {
     msg2 "Extracting unifi-video..."

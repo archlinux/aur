@@ -1,5 +1,5 @@
---- unifi-video.old	2016-04-18 14:14:21.249318503 -0700
-+++ unifi-video	2016-04-18 14:18:30.525974270 -0700
+--- unifi-video.old	2016-06-27 13:00:09.000000000 -0700
++++ unifi-video	2016-07-22 10:03:19.260992444 -0700
 @@ -42,7 +42,7 @@
  is_java7_compat() {
  	local J V
@@ -9,3 +9,19 @@
          case "$V" in
                  1.7*|1.8*) return 0
                  ;;
+@@ -267,7 +267,6 @@
+ case $ACTION in
+ 	start)
+ 		require_root
+-        ulimit -H -c 200
+         echo 0x10 > /proc/self/coredump_filter
+ 		if is_service_running "${PIDFILE}" >/dev/null; then
+ 			log_verbose "${NAME} is already running..."
+@@ -284,7 +283,6 @@
+ 		;;
+ 	stop)
+ 		require_root
+-        ulimit -H -c 200
+         echo 0x10 > /proc/self/coredump_filter
+ 		rc=0
+ 		pid=$(is_service_running ${PIDFILE}) || rc=$?
