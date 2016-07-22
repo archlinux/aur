@@ -2,15 +2,15 @@
 # Thu May  5 11:17:51 UTC 2016
 pkgbase = ruby-build
 	pkgdesc = Compile and install Ruby
-	pkgver = 20160426
+	pkgver = 20160602
 	pkgrel = 1
-	url = ruby-build-v20160426.tar.gz::https://github.com/rbenv/ruby-build
+	url = ruby-build-v20160602.tar.gz::https://github.com/rbenv/ruby-build
 	arch = any
 	license = MIT
 	depends = bash
 	optdepends = git: install ruby from git
-	source = ruby-build-v20160426.tar.gz::https://github.com/rbenv/ruby-build/archive/v20160426.tar.gz
-	sha1sums = 8a4e149dbe3f866e460c57258d7bcc5ddc65043f
+	source = ruby-build-v20160602.tar.gz::https://github.com/rbenv/ruby-build/archive/v20160602.tar.gz
+	sha256sums = 4a3d702a9b86876be38c832ba65bce9da451fa9ca8dbee2022e55e72dc3cdd62
 
 pkgname = ruby-build
 
