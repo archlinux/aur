@@ -2,7 +2,7 @@
 
 pkgname=black-screen
 pkgver=0.2.8
-pkgrel=3
+pkgrel=4
 pkgdesc='A terminal emulator for the 21st century.'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
@@ -38,17 +38,21 @@ build() {
     # Tell node-pre-gyp to build module from source code.
     export npm_config_build_from_source=true
     # Install all dependencies, and store cache to ~/.electron-gyp.
-    HOME=~/.electron-gyp npm install
+    HOME=~/.electron-gyp npm install --production
 
+    # We should use system installed typescript here, but it's not up-to-date
+    npm install typescript
     npm run compile
-    npm prune --production
+    npm uninstall typescript
 }
 
 package() {
     cd ${pkgname}-${pkgver}
 
-    install -d "${pkgdir}"/usr/lib/${pkgname}
-    cp -r * "${pkgdir}"/usr/lib/${pkgname}
+    _appdir=/usr/lib/${pkgname}
+
+    install -d "${pkgdir}"${_appdir}
+    cp -r * "${pkgdir}"${_appdir}
 
     install -D -m755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
     install -D -m644 "${srcdir}"/${pkgname}.desktop \
@@ -56,4 +60,27 @@ package() {
 
     install -d "${pkgdir}"/usr/share/licenses/${pkgname}
     ln -s ../../../lib/${pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}
+
+    # Clean up
+    rm -r "${pkgdir}"${_appdir}/{housekeeping,src}
+    find "${pkgdir}"${_appdir} \
+        -name "package.json" \
+            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_app_dir}|" \
+                -i {} \; \
+        -or -name ".*" -prune -exec rm -r '{}' \; \
+        -or -name "*.mk" -exec rm '{}' \; \
+        -or -name "binding.gyp" -exec rm '{}' \; \
+        -or -path "*/pty.js/src" -prune -exec rm -r '{}' \; \
+        -or -path "*/promise/src" -prune -exec rm -r '{}' \; \
+        -or -name "*.yml" -exec rm '{}' \; \
+        -or -name "binding.Makefile" -exec rm '{}' \; \
+        -or -name "config.gypi" -exec rm '{}' \; \
+        -or -name "deps" -prune -exec rm -r '{}' \; \
+        -or -name "doc" -prune -exec rm -r '{}' \; \
+        -or -name "Makefile" -exec rm '{}' \; \
+        -or -name "obj.target" -prune -exec rm -r '{}' \; \
+        -or -name "test" -prune -exec rm -r '{}' \; \
+        -or -name "wscript" -prune -exec rm -r '{}' \;
+    cd "${pkgdir}"${_appdir}/node_modules
+    rm -r loose-envify/cli.js nan/tools rimraf/bin.js
 }
