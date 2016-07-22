@@ -2,7 +2,7 @@
 
 pkgname="xxhash"
 _pkgname="xxHash"
-_pkgver="0.5.0"
+_pkgver="0.6.1"
 pkgver="v${_pkgver}"
 pkgrel="1"
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('lib32-glibc' 'glibc')
 changelog="ChangeLog"
 source=("https://github.com/Cyan4973/xxHash/archive/${pkgver}.tar.gz")
-sha1sums=('ccd51c862a6cab4bd772a0a8e99a0fd36d19229a')
+sha1sums=('1fe8ad0c18112e74cb7011ac75ba511408c2c5fc')
 
 build() {
     cd "${srcdir}/${_pkgname}-${_pkgver}/"
