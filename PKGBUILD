@@ -1,21 +1,25 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=miraclecast
 _name=miraclecast
-pkgver=185.a92df37
+pkgver=201.3f2266e
 pkgrel=1
 #epoch=
 pkgdesc="MiracleCast provides software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Contribute on https://github.com/albfan/aur-miraclecast"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/albfan/miraclecast"
 license=('GPL')
 #groups=()
-depends=("systemd-kdbus" "kdbus") #kdbus-git provides kdbus
+depends=("systemd>=221")
 #makedepends=()
-#optdepends=()
+#optdepends=("systemd-kdbus" "kdbus") #kdbus-git provides kdbus
 provides=("miraclecast")
 #conflicts=()
-source=("$_name::git+https://github.com/albfan/miraclecast.git#branch=master")
-md5sums=('SKIP') #generate with 'makepkg -g'
+backup=(etc/dbus-1/system.d/org.freedesktop.miracle.conf)
+source=("$_name::git+https://github.com/albfan/miraclecast.git#branch=master"
+        org.freedesktop.miracle.conf)
+# generate with 'makepkg -g'
+md5sums=('SKIP'
+         '43a45ea562bc1647b23533fdbc3915a9')
 
 build() {
   cd "$srcdir/$_name"
@@ -32,6 +36,7 @@ check() {
 package() {
   cd "$srcdir/$_name"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 "$srcdir/../org.freedesktop.miracle.conf" "$pkgdir/etc/dbus-1/system.d/org.freedesktop.miracle.conf"
 }
 
 pkgver() {
