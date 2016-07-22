@@ -4,7 +4,7 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Build tool executing tasks and managing metadata."
 url="http://openembedded.org"
 makedepends=('python2-pip' 'gzip')
@@ -14,7 +14,8 @@ source=("https://github.com/openembedded/${pkgbase}/archive/${pkgver}.zip")
 md5sums=('bb883123767ecb0451d80d20c7e9cea7')
 
 prepare() {
-    pip2 install codegen
+    echo "It is necessary root access to install codegen python package via pip2"
+    sudo pip2 install codegen
 }
 
 check() {
