@@ -3,23 +3,23 @@
 _basename=newtx
 pkgname=texlive-"$_basename"
 pkgver=1.466
-pkgrel=3
+pkgrel=2
 pkgdesc="Alternative uses of the TX fonts, with improved metrics."
 arch=('any')
 depends=('texlive-bin')
 url="http://ctan.org/pkg/$_basename"
 license=('custom: LaTeX Project Public License 1.3c')
-source=("http://mirrors.ctan.org/fonts/$_basename.zip"
+source=("http://mirrors.ctan.org/install/fonts/$_basename.tds.zip"
 	# LaTeX Project Public License
 	"lppl.txt::http://latex-project.org/lppl/lppl-1-3c.txt")
-noextract=("$_basename.zip")
+noextract=("$_basename.tds.zip")
 install=$pkgname.install
-sha1sums=('983fd8e0b5c17064af3ec42ba47dc80fc24d33bf'
+sha1sums=('ded2e1077edec121a1ddae058963cdec7676a376'
           '47438d5b2ab351796b64b62da105432ab71369ab')
 
 package() {
   mkdir -p "$pkgdir"/usr/share/texmf/
-  unzip "$srcdir/$_basename".zip -d "$pkgdir"/usr/share/texmf/
+  unzip "$srcdir/$_basename".tds.zip -d "$pkgdir"/usr/share/texmf/
   find "$pkgdir" -type f -exec chmod 644 {} \;
   find "$pkgdir" -type d -exec chmod 755 {} \;
   install -Dm644 "$srcdir"/lppl.txt \
