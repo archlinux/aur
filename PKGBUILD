@@ -1,4 +1,5 @@
-# Maintainer: Ben Reedy <breed808 *AT* breed808 *DOT* com>
+# Maintainer: Taegil Bae <esrevinu@gmail.com>
+# Contributor: Ben Reedy <breed808 *AT* breed808 *DOT* com>
 # Contributor: xylosper <darklin20@gmail.com>
 # Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
@@ -6,7 +7,7 @@ _pkgbase=bomi
 
 pkgname=$_pkgbase-git
 pkgver=0.9.11.r18.gadb6dac
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv (git version)"
 arch=('i686' 'x86_64')
 url="http://bomi-player.github.io"
@@ -24,8 +25,10 @@ optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'libbdplus: BD+ decryption for Blu-ray support')
 provides=('bomi')
 conflicts=('cmplayer' 'bomi')
-source=(git+https://github.com/xylosper/${_pkgbase}.git)
-md5sums=('SKIP')
+source=(git+https://github.com/xylosper/${_pkgbase}.git
+        compilation_fix.patch)
+md5sums=('SKIP'
+         '840256c37ac5daa72bc017d48ffa4b1d')
 #options=(debug !strip)
 
 pkgver() {
@@ -33,9 +36,15 @@ pkgver() {
     echo $(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g' | cut -c2-)
 }
 
+prepare() {
+    cd "$srcdir/$_pkgbase"
+    patch -p1 -i ${srcdir}/compilation_fix.patch
+
+    ./configure --prefix=/usr
+}
+
 build() {
     cd "$srcdir/$_pkgbase"
-    ./configure --prefix=/usr
     make
 }
 
