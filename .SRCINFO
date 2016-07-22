@@ -1,0 +1,19 @@
+pkgbase = python-etcd-git
+	pkgdesc = A python client for Etcd
+	pkgver = r263.f9edc6f
+	pkgrel = 1
+	url = https://github.com/jplana/python-etcd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dnspython3
+	depends = python-urllib3
+	provides = python-etcd
+	conflicts = python-etcd
+	replaces = python-etcd
+	source = python-etcd-git::git+https://github.com/jplana/python-etcd.git
+	md5sums = SKIP
+
+pkgname = python-etcd-git
+
