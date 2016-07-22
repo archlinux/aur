@@ -4,7 +4,7 @@
 pkgbase=transwhat
 pkgname=('python-transwhat' 'python2-transwhat')
 pkgver=0.2
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="A gateway between the XMPP and the WhatsApp IM networks"
 arch=('any')
@@ -26,7 +26,7 @@ package_python-transwhat() {
 
 package_python2-transwhat() {
   pkgdesc='A gateway between the XMPP and the WhatsApp IM networks - Python 2'
-  depends=('python2' 'python2-protobuf' 'python2-pillow' 'python2-dateutil' 'python2-yowsup>=2' 'python2-e4u' "python-transwhat=${pkgver}")
+  depends=('python2' 'python2-protobuf' 'python2-pillow' 'python2-dateutil' 'python2-yowsup>=2' 'python2-e4u' "python-transwhat=${epoch}:${pkgver}-${pkgrel}")
 
   cd "${srcdir}/transwhat-${pkgver}"
   python2 setup.py install --prefix=/usr --root=$pkgdir --optimize=1
