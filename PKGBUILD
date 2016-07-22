@@ -9,12 +9,12 @@ _cracklib=default
 _ldap=default
 
 pkgname=xtheme
-pkgver=7.3.5
+pkgver=7.4.3
 pkgrel=1
 pkgdesc="A fork of the atheme IRC services"
 arch=("i686" "x86_64")
 url="http://www.xtheme.org/Xtheme/"
-license='MIT'
+license=('MIT')
 depends=('bash')
 conflicts=('libmowgli' 'atheme')
 optdepends=(
@@ -33,7 +33,7 @@ source=(
 	"system.service"
 )
 md5sums=(
-	"f896153d6fbcc2100bfe73ac07ec4305"
+	"c66f23d2d99e20fa7fecdd5a9234e692"
 	"SKIP"
 )
 
@@ -42,7 +42,6 @@ build() {
 	
 	_configure="./configure --prefix=/usr --enable-fhs-paths"
 	_configure+=" --sysconfdir=/etc/xtheme --localstatedir=/var"
-	_configure+=" --with-libmowgli=no"
 	
 	[[ $_large_network = yes ]] && _configure+=" --enable-large-net"
 	[[ $_contrib = yes ]]       && _configure+=" --enable-contrib"
