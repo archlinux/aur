@@ -4,7 +4,7 @@ pkgdesc="ROS - MAVROS -- MAVLink extendable communication node for ROS with prox
 url='http://wiki.ros.org/mavros'
 
 pkgname='ros-indigo-mavros'
-pkgver='0.17.3'
+pkgver='0.17.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
