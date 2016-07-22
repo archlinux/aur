@@ -1,13 +1,13 @@
 # Maintainer: Fabio Zanini <fabio.zanini _at_ fastmail.fm>
 pkgname='python-scikit-bio'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package providing data structures, algorithms, and educational resources for bioinformatics"
 arch=('x86_64')
 url="https://github.com/biocore/scikit-bio"
 license=('BSD')
 groups=()
-depends=('python' 'python-future' 'python-six' 'python-contextlib2' 'python-bz2file' 'python-requests' 'python-cachecontrol')
+depends=('python' 'python-future' 'python-decorator' 'python-six' 'python-contextlib2' 'python-natsort' 'python-bz2file' 'python-lockfile' 'python-pandas' 'python-scipy' 'python-numpy' 'python-matplotlib' 'python-requests' 'python-cachecontrol')
 makedepends=('python-setuptools')
 conflicts=()
 replaces=()
