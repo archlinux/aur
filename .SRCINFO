@@ -1,0 +1,13 @@
+pkgbase = mercurial-cli-templates-hg
+	pkgdesc = Three new templates for Mercurial
+	pkgver = r13.66e2a34005b4
+	pkgrel = 1
+	url = https://bitbucket.org/sjl/mercurial-cli-templates/
+	arch = any
+	license = unknown
+	depends = mercurial
+	source = hg+https://bitbucket.org/sjl/mercurial-cli-templates
+	sha512sums = SKIP
+
+pkgname = mercurial-cli-templates-hg
+
