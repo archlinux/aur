@@ -4,14 +4,14 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-docs
-pkgver=18.3
+pkgver=19.0
 pkgrel=1
 pkgdesc='HTML and PDF documentation for Erlang'
 arch=('any')
 url='http://www.erlang.org/doc/'
 license=('custom')
 source=("http://www.erlang.org/download/otp_doc_html_${pkgver}.tar.gz")
-sha256sums=('8fd6980fd05367735779a487df107ace7c53733f52fbe56de7ca7844a355676f')
+sha256sums=('b6f7c4e964673333f6c3eea8530dd988b41339b8912ae293f6f1b429489159ff')
 
 package() {
   install -d "$pkgdir/usr/share/doc/erlang"
