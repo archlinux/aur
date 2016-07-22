@@ -1,0 +1,9 @@
+post_install() {
+  getent group pyca > /dev/null || groupadd -r pyca > /dev/null
+  getent passwd pyca > /dev/null || useradd -r -g pyca -d /dev/null pyca -m > /dev/null
+	chown -R pyca:pyca /var/lib/pyca/recordings
+}
+
+post_remove() {
+  userdel pyca
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Python Capture Agent for Opencast Matterhorn
+After=network.target
+
+[Service]
+User=pyca
+ExecStart=/usr/bin/pyca
+
+[Install]
+WantedBy=multi-user.target
