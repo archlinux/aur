@@ -9,7 +9,7 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.8.4.sh0.37.3.t2.3.1
+pkgver=1.8.0.aa1.6.2.db0.8.9.fu0.11.1.la0.8.5.lg0.92.1.li1.18.3.ll0.5.1.lp2.3.1.lu0.37.3.t2.3.1
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -55,10 +55,17 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          'ae16bb627ec10bde20c7093d4be18131')
 
 pkgver() {
+  _about_arch_ver="$(sed -n "s/\"version\": //p" $srcdir/about-arch/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _dark_bint_syntax_ver="$(sed -n "s/\"version\": //p" $srcdir/dark-bint-syntax/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _fusion_ui_ver="$(sed -n "s/\"version\": //p" $srcdir/fusion-ui/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
   _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _language_gfm2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-gfm2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _language_ini_desktop_ver="$(sed -n "s/\"version\": //p" $srcdir/language-ini-desktop/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _language_liquid_ver="$(sed -n "s/\"version\": //p" $srcdir/language-liquid/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _language_patch2_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
   _language_unix_shell_ver="$(sed -n "s/\"version\": //p" $srcdir/language-unix-shell/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
   _terminal_fusion_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  printf "${_atomver}.arch${_language_archlinux_ver}.sh${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
+  printf "${_atomver}.aa${_about_arch_ver}.db${_dark_bint_syntax_ver}.fu${_fusion_ui_ver}.la${_language_archlinux_ver}.lg${_language_gfm2_ver}.li${_language_ini_desktop_ver}.ll${_language_liquid_ver}.lp${_language_patch2_ver}.lu${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
 }
 
 prepare() {
