@@ -1,6 +1,6 @@
-srcdir := <SRCDIR>/fsharp-4.0.1.5/src/fsharp/
+srcdir := <SRCDIR>/fsharp-4.0.1.8/src/fsharp/
 
-include <SRCDIR>/fsharp-4.0.1.5/config.make
+include <SRCDIR>/fsharp-4.0.1.8/config.make
 
 # Make the proto using the bootstrap, then make the final compiler using the proto
 # We call MAKE sequentially because we don't want build-final to explicitly depend on build-proto,

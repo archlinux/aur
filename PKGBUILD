@@ -3,7 +3,7 @@
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=fsharp
-pkgver=4.0.1.5
+pkgver=4.0.1.8
 pkgrel=1
 pkgdesc="The Open Edition of the F# compiler, core library and tools"
 arch=('any')
@@ -12,8 +12,8 @@ license=('Apache')
 depends=('mono>=4.0.3.20')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fsharp/$pkgname/archive/$pkgver.tar.gz"
 "Makefile")
-md5sums=('5974b6df0aa6df01f153afadcbdc6061'
-         '72399b0b526807ff847d7d090344a36c')
+md5sums=('f4a4f8b2969157dfab821419c48f7e47'
+         'b287165bbe0ebc4d876e4ee8aba3c081')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
