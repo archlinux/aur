@@ -42,6 +42,7 @@ pkgname = linux-lts-apparmor3
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-apparmor3
 	backup = etc/mkinitcpio.d/linux-lts-apparmor3.preset
 
 pkgname = linux-lts-apparmor3-headers
