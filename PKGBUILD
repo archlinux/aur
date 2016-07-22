@@ -19,10 +19,15 @@ build() {
     true
 }
 
+prepare(){
+    cd "$pkgname"
+    # Build needs to be done here to make pkgver() working
+    python setup.py build >&2
+}
+
 pkgver() {
     cd "$pkgname"
-    # Build needs to be done here to get right version
-    python setup.py build >/dev/stderr
+    # No, git hackery didn't work here.
     cat pulsar.egg-info/PKG-INFO |grep "^Version:" | awk '{print $2}'
 }
 
