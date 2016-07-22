@@ -2,7 +2,7 @@
 
 pkgname=mlite
 pkgver=0.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('i686' 'x86_64')
 url="http://github.com/nemomobile/mlite"
@@ -11,6 +11,14 @@ depends=('qt5-base' 'dconf')
 makedepends=('git' 'qt5-tools')
 source=("git+https://git.merproject.org/mer-core/mlite.git#tag=$pkgver")
 sha256sums=('SKIP')
+
+prepare() {
+  cd mlite
+  sed -i -e 's|/usr/libexec|/usr/lib|' \
+      tools/mliteremoteaction/mliteremoteaction.pro \
+      tools/mliteremoteaction/main.cpp \
+      src/mremoteaction.cpp
+}
 
 build() {
   cd mlite
