@@ -3,7 +3,7 @@
 _basename=newtx
 pkgname=texlive-"$_basename"
 pkgver=1.466
-pkgrel=2
+pkgrel=4
 pkgdesc="Alternative uses of the TX fonts, with improved metrics."
 arch=('any')
 depends=('texlive-bin')
