@@ -4,7 +4,7 @@ pkgdesc="ROS - mavros_msgs defines messages for MAVROS."
 url='http://wiki.ros.org/mavros_msgs'
 
 pkgname='ros-indigo-mavros-msgs'
-pkgver='0.17.3'
+pkgver='0.17.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
