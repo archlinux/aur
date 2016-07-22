@@ -1,0 +1,16 @@
+pkgbase = python-codegen
+	pkgdesc = Extension to ast that allow ast -> python code generation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/andreif/codegen
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python3
+	source = https://github.com/andreif/codegen/archive/1.0.tar.gz
+	md5sums = 3700a064df8c1d3915bfe2944ece9d33
+
+pkgname = python-codegen
+
+pkgname = python2-codegen
+
