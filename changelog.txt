@@ -1,3 +1,15 @@
+Version 2.3.5 - 22 Jul 2016
+- Change ffnet metadata colletion to allow for chars with (' - ') in them.
+- Fix for SIYE when author puts story URL in bio.
+- Allow old goto/post chapter URLs in base_xenforoforum.
+- Remove Django from app.yaml--old version going away. (Webservice only)
+- Add n_anthaver and r_anthaver modes to custom_columns_settings for averaging
+  metadata for anthologies before setting in integer and float calibre custom
+  columns. (Plugin only)
+- Include 'prefix' tags in forumtags in base_xenforoforum.
+- Save addheaders when setting cookiejar.  For ffn referer.
+- Update translations. (Plugin only)
+
 Version 2.3.4 - 23 Jun 2016
 - Fix for previously failedtoload img tags causing lookup sleeps.
 - Fix for older harrypotterfanfictioncom stories lacking reviewjs.js.
@@ -7,13 +19,3 @@ Version 2.3.4 - 23 Jun 2016
 - Different detect StoryDoesNotExist string for ficwad.com.
 - Allow old showpost.php chapter URLs in base_xenforoforum.
 - Update (& Fix) Translations.
-
-Version 2.3.3 - 23 May 2016
-- Fix for adapter_ashwindersycophanthexcom login.
-- Add merged tags to anthology epubs. (plugin only)
-- Fix for ProceedQuestion got an unexpected keyword argument
-  'log_viewer_unique_name' (plugin only)
-- Remove defaults.ini sections for removed sites.
-- Make 'Go back to fix errors?' dialog scroll error list for smaller dialog
-  size. (plugin only)
-- Update Translations. (plugin only)
