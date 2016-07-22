@@ -4,7 +4,7 @@ pkgver="4.4.0_31.50"
 _pkgbasever=${pkgver%.*}
 _pkgbasever=${_pkgbasever/_/-}
 _kind=generic
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -40,7 +40,7 @@ package_linux-ubuntu-bin() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   install=linux-ubuntu-bin.install
-  provides=(linux-ubuntu)
+  provides=(linux-ubuntu linux-apparmor3)
 
   for x in linux-image-*.deb; do
     ar p "$x" data.tar.bz2 | tar -xjf - -C "$pkgdir/" --transform='s,^./lib,usr/lib,'
