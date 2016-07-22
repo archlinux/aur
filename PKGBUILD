@@ -15,8 +15,7 @@ install=${pkgname}.install
 
 _gettoken() {
   token=$(curl -s https://www.tenable.com/products/nessus/select-your-operating-system#tos | \
-
-  sed -nr "s/${_retoken}/\1/p")
+          sed -nr "s/${_retoken}/\1/p")
 
   if [[ "$token" == "" ]]; then
     echo
