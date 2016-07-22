@@ -12,7 +12,6 @@ depends=('libvterm-bzr')
 makedepends=('bzr' 'libvterm-bzr')
 provides=("${pkgname%-bzr}")
 conflicts=("${pkgname%-bzr}")
-install=('pangoterm.install')
 source=("bzr+http://bazaar.leonerd.org.uk/code/pangoterm/")
 sha256sums=('SKIP')
 
