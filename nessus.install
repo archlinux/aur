@@ -1,11 +1,69 @@
+NESSUS_NAME="Nessus"
+NESSUS_PRODUCT="nessus"
+NESSUS_PREFIX="/opt/nessus"
+NESSUS_SERVICE_NAME="nessusd"
+NESSUS_SERVICE_BIN="${NESSUS_PREFIX}/sbin/nessus-service"
+NESSUSD_BIN="${NESSUS_PREFIX}/sbin/nessusd"
+
+pre_install() {
+  if [[ -f /usr/lib/systemd/system/${NESSUS_SERVICE_NAME}.service ]]; then
+    systemctl stop ${NESSUS_SERVICE_NAME}.service
+  fi
+
+  # Because we did not used to shut down on uninstall, we might have some random nessusd's running on the system (see NES-3585)
+  # We therefore need to do a killall before we install a new nessusd
+
+  # Look at all the proc entries and kill all nessus-service and nessusd processes with the correct path
+  for dir in /proc/[0-9]*; do
+    full_exe_path=$(readlink ${dir}/exe)
+    pid=$(basename ${dir})
+    if [[ "$full_exe_path" == "$NESSUS_SERVICE_BIN"* || "$full_exe_path" == "$NESSUSD_BIN"* ]]; then
+      kill $pid
+    fi
+  done
+}
+
 post_install() {
-    echo "See https://wiki.archlinux.org/index.php/Nessus and the nessus man pages for documentation."
-    ldconfig
+  if [ "$NESSUS_PRODUCT" != "agent" ]; then
+    echo "Unpacking $NESSUS_NAME Core Components..."
+    ${NESSUS_PREFIX}/sbin/nessuscli install ${NESSUS_PREFIX}/var/nessus/plugins-core.tar.gz
+  fi
+
+  test -f ${NESSUS_PREFIX}/etc/nessus/nessusd.conf || ${NESSUS_PREFIX}/sbin/nessusd -g
+
+  test -f ${NESSUS_PREFIX}/etc/nessus/nessus-fetch.rc && {
+    echo "Fetching the newest plugins from nessus.org..."
+    rm -f ${NESSUS_PREFIX}/lib/nessus/plugins/MD5
+    ${NESSUS_PREFIX}/sbin/nessuscli update --plugins-only
+    ${NESSUS_PREFIX}/sbin/nessusd -R
+  }
+
+  if [ "$NESSUS_PRODUCT" = "agent" ]; then
+    echo " - First, link this agent to the Nessus Manager with the '$NESSUS_PREFIX/sbin/nessuscli agent' command."
+    echo "   Type '$NESSUS_PREFIX/sbin/nessuscli agent help' for more info."
+    echo " - You can start $NESSUS_NAME by typing systemctl start $NESSUS_SERVICE_NAME"
+  else
+    echo
+    echo " - You can start $NESSUS_NAME by typing systemctl start $NESSUS_SERVICE_NAME"
+    echo " - Then go to https://"$(hostname)":8834/ to configure your scanner"
+    echo
+  fi
+
+  echo " - See https://wiki.archlinux.org/index.php/Nessus for documentation."
+  echo
+  ldconfig
 }
 
 pre_remove() {
-    if [ -f /opt/nessus/var/nessus/nessusd.pid ]; then
-        echo "Shutting down the Nessus server."
-        kill $(cat /opt/nessus/var/nessus/nessusd.pid) >/dev/null 2>&1
-    fi
+  if [[ -f /usr/lib/systemd/system/${NESSUS_SERVICE_NAME}.service ]]; then
+    systemctl stop ${NESSUS_SERVICE_NAME}.service
+  fi
 }
+
+post_remove() {
+  test -f ${NESSUS_PREFIX}/sbin/nessusd || { \
+    rm -f ${NESSUS_PREFIX}/var/nessus/plugins-code.db
+    rm -f ${NESSUS_PREFIX}/var/nessus/plugins-desc.db
+  }
+}
+
