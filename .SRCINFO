@@ -9,7 +9,7 @@ pkgbase = texlive-newtx
 	depends = texlive-bin
 	noextract = newtx.tds.zip
 	source = http://mirrors.ctan.org/install/fonts/newtx.tds.zip
-	source = http://latex-project.org/lppl.txt
+	source = lppl.txt::http://latex-project.org/lppl/lppl-1-3c.txt
 	sha1sums = ded2e1077edec121a1ddae058963cdec7676a376
 	sha1sums = 47438d5b2ab351796b64b62da105432ab71369ab
 

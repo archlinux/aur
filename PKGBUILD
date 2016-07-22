@@ -11,7 +11,7 @@ url="http://ctan.org/pkg/$_basename"
 license=('custom: LaTeX Project Public License 1.3c')
 source=("http://mirrors.ctan.org/install/fonts/$_basename.tds.zip"
 	# LaTeX Project Public License
-	"http://latex-project.org/lppl.txt")
+	"lppl.txt::http://latex-project.org/lppl/lppl-1-3c.txt")
 noextract=("$_basename.tds.zip")
 install=$pkgname.install
 sha1sums=('ded2e1077edec121a1ddae058963cdec7676a376'
