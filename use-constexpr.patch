@@ -1,0 +1,26 @@
+From eda9059db67d7da605b252ded8a627a7bf406116 Mon Sep 17 00:00:00 2001
+From: Alain Kalker <a.c.kalker@gmail.com>
+Date: Fri, 22 Jul 2016 15:38:15 +0200
+Subject: [PATCH] Use constexpr
+
+Fixes compile error on GCC 6.1 and above.
+---
+ libfluxus/src/Noise.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libfluxus/src/Noise.h b/libfluxus/src/Noise.h
+index 56dde7a..3eb447a 100644
+--- a/libfluxus/src/Noise.h
++++ b/libfluxus/src/Noise.h
+@@ -19,7 +19,7 @@ class Noise
+ 		static const int PERLIN_ZWRAPB = 8;
+ 		static const int PERLIN_ZWRAP = 1 << PERLIN_ZWRAPB;
+ 		static const int PERLIN_SIZE = PERLIN_YWRAP * PERLIN_ZWRAP;
+-		static const float PERLIN_MIN_AMPLITUDE = 0.001f;
++		static constexpr float PERLIN_MIN_AMPLITUDE = 0.001f;
+ 
+ 		static bool inited;
+ 		static float perlin[4096];
+-- 
+2.9.0
+

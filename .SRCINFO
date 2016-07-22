@@ -1,7 +1,7 @@
 pkgbase = fluxus-git
 	pkgdesc = A 3D game engine for livecoding worlds into existence
 	pkgver = v0.17rc5.r224.gd06cb52
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pawfal.org/fluxus/
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = fluxus-git
 	provides = fluxus
 	conflicts = fluxus
 	source = git://git.savannah.nongnu.org/fluxus.git
+	source = use-constexpr.patch
 	md5sums = SKIP
+	md5sums = a92ca1ff4275308cdb43f17cd775b65c
 
 pkgname = fluxus-git
 

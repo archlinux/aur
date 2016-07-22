@@ -2,7 +2,7 @@
 _pkgname=fluxus
 pkgname=${_pkgname}-git
 pkgver=v0.17rc5.r224.gd06cb52
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D game engine for livecoding worlds into existence"
 arch=('i686' 'x86_64')
 url="http://www.pawfal.org/fluxus/"
@@ -11,8 +11,10 @@ depends=('ode' 'fftw' 'liblo' 'glew' 'jack' 'freeglut' 'openal' 'racket')
 makedepends=('git' 'scons')
 provides=('fluxus')
 conflicts=('fluxus')
-source=(git://git.savannah.nongnu.org/fluxus.git)
-md5sums=('SKIP')
+source=(git://git.savannah.nongnu.org/fluxus.git
+        use-constexpr.patch)
+md5sums=('SKIP'
+         'a92ca1ff4275308cdb43f17cd775b65c')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -24,6 +26,9 @@ prepare() {
 
   # Fix boot script path
   sed -i -e 's,/usr/local,/usr,' src/Interpreter.cpp
+
+  # Fix compile error on GCC 6.1 and above
+  patch -p1 -i "${srcdir}/use-constexpr.patch"
 }
 
 build() {
