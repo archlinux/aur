@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=5.12j
+pkgver=6.00
 pkgrel=1
 epoch=1
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -12,8 +12,8 @@ groups=('jlink')
 depends=('glibc')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
-md5sums_i686=('2323cb15657d10a054988520de71a815')
-md5sums_x86_64=('1d1fb53706f1083467bc5d42f3d560fe')
+md5sums_i686=('94997e0fa2e09a859adb6325d62a6005')
+md5sums_x86_64=('3423d4df69d02423054f5e41bebf294a')
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
 conflicts=("j-link-software-and-documentation")
@@ -41,13 +41,15 @@ package(){
     cd ${srcdir}/JLink
 
     # Bulk copy everything
-    cp --preserve=mode -r J* Doc Samples README.txt "${pkgdir}/opt/SEGGER/JLink"
+    cp --preserve=mode -r J* Doc Samples README.txt GDBServer x86 "${pkgdir}/opt/SEGGER/JLink"
 
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 99-jlink.rules "${pkgdir}/etc/udev/rules.d/"
     install -Dm755 libjlinkarm.so.*.* "${pkgdir}/usr/lib/"
+    install -Dm755 libjlinkarm_x86.so.*.* "${pkgdir}/usr/lib/"
     ln -s "/usr/lib/libjlinkarm.so.*.*" "${pkgdir}/usr/lib/libjlinkarm.so.${pkgver:0:1}"
+    ln -s "/usr/lib/libjlinkarm_x86.so.*.*" "${pkgdir}/usr/lib/libjlinkarm_x86.so.${pkgver:0:1}"
 
     for f in J*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
