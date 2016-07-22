@@ -11,7 +11,8 @@ url="https://github.com/tgalal/${pkgbase}"
 arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=('python-setuptools'
-             'python2-setuptools')
+             'python2-setuptools'
+             'git')
 source=("git://github.com/tgalal/${pkgbase}#commit=e4a9c4de0eae27223200579c58d1f8f6d20637e2")
 sha512sums=('SKIP')
 
