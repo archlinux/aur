@@ -4,17 +4,17 @@ pkgbase=python-codegen
 _pkgbase=codegen
 pkgname=('python-codegen' 'python2-codegen')
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Extension to ast that allow ast -> python code generation."
 arch=('any')
 url="http://github.com/andreif/codegen"
 license=('BSD')
-makedepends=('python2' 'python3')
+makedepends=('python2-setuptools' 'python-setuptools')
 source=(https://github.com/andreif/${_pkgbase}/archive/${pkgver}.tar.gz)
 md5sums=('3700a064df8c1d3915bfe2944ece9d33')
 
 package_python-codegen() {
-    depends=('python3')
+    depends=('python-setuptools')
 
     cd ${srcdir}/${_pkgbase}-${pkgver}
     python3 setup.py install --root ${pkgdir} --prefix=/usr
@@ -23,7 +23,7 @@ package_python-codegen() {
 }
 
 package_python2-codegen() {
-    depends=('python2')
+    depends=('python2-setuptools')
 
     cd ${srcdir}/${_pkgbase}-${pkgver}
     python2 setup.py install --root ${pkgdir} --prefix=/usr
