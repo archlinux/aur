@@ -1,7 +1,7 @@
 pkgbase = pyca
 	pkgdesc = Python Capture Agent for Opencast Matterhorn
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lkiesow/pyCA
 	install = pyca.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pyca
 	source = pyca.service
 	source = pyca
 	md5sums = 4ea407a0d55cd86117c29a9e1249c70b
-	md5sums = 1639eda1d5446e8b1ae57e62a549d8b8
+	md5sums = 234a749da650e5fcd89a49b358c0d5ec
 	md5sums = 77664b1ea9ceaba7c091c285737f402e
 	md5sums = e29e06fbdba00a201f816db88be5c7bf
 
