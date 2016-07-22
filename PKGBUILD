@@ -39,7 +39,7 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'unity-monodevelop-beta.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
 sha256sums=('dc0002f8f7b3f519bcc21af2e931d15a8b30214c0688ff8c5eee475640055d23'
-            'aca6e932a624acd98f634428af0b33a36587b6c41887969477db944975d4d8b4'
+            '1145d6ea536582dd4fc281283617ec6e351acd7be6e02f704d47d595fba37934'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
             '6769b7ad1c1a1b088f1e96934d909fffef95d6a6c757420699f0a6705ef70a51')
