@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.2.0.r88.gfe1cc85
+pkgver=0.2.0.r112.g5394c48
 pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	msg2 "Building rustup"
 	cd "$srcdir/$pkgname"
-	cargo build --release --bin rustup-init
+	cargo build --release --features no-self-update --bin rustup-init
 
 	msg2 "Running rustup-init"
 	mkdir -p "$srcdir/tmp/.cargo"
