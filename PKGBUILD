@@ -2,7 +2,7 @@
 
 pkgname=dune-alugrid
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Unstructured simplicial and cube DUNE grids'
 groups=('dune')
@@ -11,7 +11,8 @@ arch=('i686' 'x86_64')
 url='https://gitlab.dune-project.org/extensions/dune-alugrid'
 license=('GPL2')
 
-makedepends=('git' 'dune-common=2.4.1' 'dune-grid=2.4.1')
+makedepends=('git' 'cmake' 'dune-common=2.4.1' 'dune-grid=2.4.1' 'dune-geometry=2.4.1' 'openmpi'
+    'zlib' 'metis' 'parmetis')
 
 source=("${pkgname}-${pkgver}::git+https://gitlab.dune-project.org/extensions/${pkgname}.git#tag=v2.4.0")
 
@@ -27,5 +28,5 @@ build() {
 package() {
     dunecontrol --use-cmake make install DESTDIR="${pkgdir}"
 
-    rmdir "${pkgdir}/usr/bin"
+    find "${pkgdir}" -type d -empty -delete
 }
