@@ -2,7 +2,7 @@
 
 pkgname=min
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A smarter, faster web browser'
 arch=('any')
 url='https://minbrowser.github.io/min'
@@ -27,10 +27,29 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
 
-    install -d "${pkgdir}"/usr/lib/${pkgname}
-    cp -r * "${pkgdir}"/usr/lib/${pkgname}
+    _appdir=/usr/lib/${pkgname}
+
+    install -d "${pkgdir}"${_appdir}
+    cp -r * "${pkgdir}"${_appdir}
 
     install -D -m 755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
     install -D -m644 "${srcdir}"/${pkgname}.desktop \
             "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+
+    # Clean up
+    find "${pkgdir}"${_appdir} \
+        -name "package.json" \
+            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_app_dir}|" \
+                -i {} \; \
+        -or -name "bin" -prune -exec rm -r '{}' \; \
+        -or -name ".*" -prune -exec rm -r '{}' \; \
+        -or -name "*.yml" -exec rm '{}' \; \
+        -or -name "doc" -prune -exec rm -r '{}' \; \
+        -or -name "Makefile" -exec rm '{}' \; \
+        -or -name "scripts" -prune -exec rm -r '{}' \; \
+        -or -name "test" -prune -exec rm -r '{}' \; \
+        -or -name "tests" -prune -exec rm -r '{}' \;
+    cd "${pkgdir}"${_appdir}/node_modules
+    rm -r rimraf/bin.js strip-json-comments/cli.js \
+        nlp_compromise/cmd.js strip-indent/cli.js
 }
