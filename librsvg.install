@@ -1,5 +1,9 @@
 post_install() {
     gdk-pixbuf-query-loaders --update-cache
+	echo "************"	
+	echo "librsvg was installed."
+	echo "You can now remove librsvg-stable."
+	echo "************"
 }
 
 post_upgrade() {
