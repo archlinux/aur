@@ -10,8 +10,8 @@ depends=('python2' 'python2-requests' 'python2-psutil' 'python2-docopt' 'python2
 makedepends=('python2-setuptools') 
 license=('LGPL')
 arch=('any')
-source=("https://pypi.python.org/packages/source/c/cozy-management/cozy_management-${pkgver}.tar.gz")
-sha256sums=('d3123eec58d605ffd02cf5e1807760f719e9b6c5ab1c4801580a3f938961d081')
+source=("https://pypi.python.org/packages/2b/97/ed61c71fe40f626143c0b2e34e9c1dc60d91116fd8bae94cd9579daf52d0/cozy_management-0.0.21.tar.gz")
+sha256sums=('ad0c6aaff8a1f563d825c9c56b5919f6c7d18bcac015ca40cc9977f363c82f4f')
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
