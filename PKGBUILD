@@ -1,4 +1,4 @@
-# Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
+# Maintainer: rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # modelio-bin
 # Contributing: https://github.com/rafaelsoaresbr/pkgbuild
 # Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
@@ -6,11 +6,11 @@
 pkgname=modelio-bin
 
 # Version
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 #epoch=
 _ver=3.5
-_timestamp=201604202300
+_timestamp=201607121907
 
 # Generic
 pkgdesc="The opensource modeling environment"
@@ -37,16 +37,16 @@ optdepends=('atk' 'gtk2' 'cairo')
 changelog=changelog
 
 # Sources
-source=("modelio.desktop")
+source=("modelio.desktop" "changelog")
 source_i686=("https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-${_timestamp}-linux.gtk.x86.tar.gz/download")
 source_x86_64=("https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-${_timestamp}-linux.gtk.x86_64.tar.gz/download")
 #noextract=()
 #validpgpkeys=()
 
 # Integrity
-md5sums=('SKIP')
-md5sums_i686=('7d3a83b17cd7ad2624ec85bed430f7cf')
-md5sums_x86_64=('698a8c10d764b8dafad4aac0e9204d69')
+md5sums=('SKIP' 'SKIP')
+md5sums_i686=('cca87cbd999d0b60be24f9e7e2bf90b1')
+md5sums_x86_64=('f3401e8ac4ac63773106eeceac830f77')
 #sha1sums=()
 #sha256sums=()
 
