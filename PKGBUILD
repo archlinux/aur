@@ -1,0 +1,42 @@
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_plug=surfaceblur
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=r0.1.gf8fac49
+pkgrel=1
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+arch=('i686' 'x86_64')
+url='https://github.com/MoePus/VapourSynth-surfaceBlur'
+license=('GPL')
+depends=('vapoursynth')
+makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
+source=("${_plug}::git+https://github.com/MoePus/VapourSynth-surfaceBlur.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${_plug}"
+  echo "$(git describe --long --tags | tr - .)"
+}
+
+prepare() {
+  cd "${_plug}"
+  
+  echo "" > config.h
+
+  echo "all:
+	  g++ -c -std=gnu++11 -fPIC -Wextra -Wno-unused-parameter ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o VSPlugin.o VSPlugin.cpp
+	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so VSPlugin.o" > Makefile
+}
+
+build() {
+  cd "${_plug}"
+  make
+}
+
+package(){
+  cd "${_plug}"
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm644 readme.md  "${pkgdir}/usr/share/doc/vapoursynth/plugins/readme.md"
+}
