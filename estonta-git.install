@@ -1,5 +1,5 @@
 #!/bin/bash
 post_install() {
-echo "Before using lerta or aldonos, copy /etc/estonta.conf to $HOME/.config/ and edit it."
+echo "Before using lerta or aldonos, copy /etc/estonta.conf to ~/.config/ and edit it."
 } 
 #post_install
