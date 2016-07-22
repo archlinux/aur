@@ -3,7 +3,7 @@
 pkgbase=python-natsort
 pkgname=('python-natsort' 'python2-natsort')
 _pyname=natsort
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Sort lists naturally.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6662a32abb9fd79c899189ab3b29cf04')
+md5sums=('e82b8f60b07c6906c2983c40790c6f46')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
