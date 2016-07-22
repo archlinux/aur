@@ -14,14 +14,16 @@ replaces=("python-pulsar")
 source=("python-pulsar-git::git+https://github.com/quantmind/pulsar.git")
 md5sums=("SKIP")
 
-pkgver() {
-    cd "$pkgname"
-    cat pulsar.egg-info/PKG-INFO |grep "^Version:" | awk '{print $2}'
-}
 
 build() {
+    true
+}
+
+pkgver() {
     cd "$pkgname"
-    python setup.py build
+    # Build needs to be done here to get right version
+    python setup.py build >/dev/stderr
+    cat pulsar.egg-info/PKG-INFO |grep "^Version:" | awk '{print $2}'
 }
 
 package() {
