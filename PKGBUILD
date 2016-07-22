@@ -31,7 +31,8 @@ build() {
 
    cd build
 
-   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON .. 
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON \
+      -DENABLE_PETSC=FALSE .. 
 
    make
 }
