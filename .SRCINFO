@@ -1,7 +1,7 @@
 pkgbase = feedthemonkey
 	pkgdesc = Desktop client for the TinyTinyRSS reader
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jabs.nu/feedthemonkey
 	arch = i686
 	arch = x86_64
