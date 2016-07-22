@@ -1,15 +1,15 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
  
 pkgname=skypeforlinux-bin
-pkgver=1.1.0.21
-pkgrel=2
+pkgver=1.2.0.1
+pkgrel=1
 pkgdesc="Skype for Linux WebRTC Alpha"
 arch=('x86_64')
 url="http://www.skype.com"
 license=('custom')
 depends=('gtk2' 'libxss' 'gconf' 'alsa-lib' 'libxtst' 'libgnome-keyring' 'nss')
 source=("https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${pkgver}_amd64.deb")
-sha256sums=('bf983023c4cea6d18709d7eb26b08cd25b32331e75525923d80e7fad6559eaa3')
+sha256sums=('605359ff60bd45c47d825b77a00f0983b8f1ff99a7158147ab91c54d9b7095ee')
  
 package() {
   cd "${srcdir}"
