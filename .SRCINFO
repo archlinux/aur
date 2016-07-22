@@ -1,7 +1,7 @@
 pkgbase = python-pydot
 	pkgdesc = Python interface to Graphviz’s Dot language
-	pkgver = 1.0.32
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/erocarrera/pydot
 	arch = any
 	license = MIT
@@ -11,10 +11,8 @@ pkgbase = python-pydot
 	depends = graphviz
 	provides = python-dot
 	conflicts = python-dot
-	source = https://pypi.python.org/packages/source/p/pydot2/pydot2-1.0.32.tar.gz
-	source = readme.patch
-	md5sums = 1b0c18323e7ac14495f79c2362c6ac07
-	md5sums = a6c9ad9cc7c6ed180038dc361d12017d
+	source = https://files.pythonhosted.org/packages/source/p/pydot/pydot-1.2.2.tar.gz
+	md5sums = fad67d9798dbb33bb3dca3e6d4c47665
 
 pkgname = python-pydot
 
