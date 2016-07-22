@@ -22,7 +22,8 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  
+
+  # Comment if you use a AVX processor capable
   echo "" > config.h
 
   echo "all:
