@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.00
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
@@ -41,15 +41,15 @@ package(){
     cd ${srcdir}/JLink
 
     # Bulk copy everything
-    cp --preserve=mode -r J* Doc Samples README.txt GDBServer x86 "${pkgdir}/opt/SEGGER/JLink"
+    cp --preserve=mode -r J* Doc Samples README.txt GDBServer x86 lib* "${pkgdir}/opt/SEGGER/JLink"
 
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 99-jlink.rules "${pkgdir}/etc/udev/rules.d/"
-    install -Dm755 libjlinkarm.so.*.* "${pkgdir}/usr/lib/"
-    install -Dm755 libjlinkarm_x86.so.*.* "${pkgdir}/usr/lib/"
-    ln -s "/usr/lib/libjlinkarm.so.*.*" "${pkgdir}/usr/lib/libjlinkarm.so.${pkgver:0:1}"
-    ln -s "/usr/lib/libjlinkarm_x86.so.*.*" "${pkgdir}/usr/lib/libjlinkarm_x86.so.${pkgver:0:1}"
+    #install -Dm755 libjlinkarm.so.*.* "${pkgdir}/usr/lib/"
+    #install -Dm755 libjlinkarm_x86.so.*.* "${pkgdir}/usr/lib/"
+    #ln -s "/usr/lib/libjlinkarm.so.*.*" "${pkgdir}/usr/lib/libjlinkarm.so.${pkgver:0:1}"
+    #ln -s "/usr/lib/libjlinkarm_x86.so.*.*" "${pkgdir}/usr/lib/libjlinkarm_x86.so.${pkgver:0:1}"
 
     for f in J*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
@@ -60,5 +60,5 @@ package(){
     done
 
     # nrfjprog hardcoded libjlinkarm.so* to be in /opt/SEGGER/JLink (will be fixed in later versions)
-    ln -s "/usr/lib/libjlinkarm.so.${pkgver:0:1}" "${pkgdir}/opt/SEGGER/JLink/libjlinkarm.so.${pkgver:0:1}"
+    #ln -s "/usr/lib/libjlinkarm.so.${pkgver:0:1}" "${pkgdir}/opt/SEGGER/JLink/libjlinkarm.so.${pkgver:0:1}"
 }
