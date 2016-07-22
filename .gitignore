@@ -21,6 +21,7 @@ atom/
 Shadow
 */vscode
 */*/vscode
+*.txt
 node_modules
 browser-plus*
 language-rpm-spec
