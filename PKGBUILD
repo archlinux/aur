@@ -2,8 +2,8 @@
 # github.com/mmlb/pangoterm-bzr
 
 pkgname=pangoterm-bzr
-pkgver=r587
-pkgrel=4
+pkgver=r594
+pkgrel=1
 pkgdesc='A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/pangoterm'
