@@ -1,8 +1,8 @@
 pkgname=pycharm-community-eap
-_buildver=143.24
-_pkgver=5.0.0
+_buildver=162.1236.15
+_pkgver=2016.2
 pkgver=$_pkgver.$_buildver
-pkgrel=2
+pkgrel=1
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.'
 arch=(any)
 options=('!strip')
@@ -34,7 +34,7 @@ build() {
 package() {
 	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/$pkgname"
-	cp -R "$srcdir/pycharm-community-$_buildver/"* "$pkgdir/opt/$pkgname"
+	cp -R "$srcdir/pycharm-community-$_pkgver/"* "$pkgdir/opt/$pkgname"
 	
 	local vmoptfile=pycharm64
 	if [[ $CARCH = 'i686' ]]; then
