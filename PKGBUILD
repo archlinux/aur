@@ -20,7 +20,7 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2g"
+_OPENSSL_VERSION="1.0.2h"
 ################
 
 _pkgname="ovmf"
@@ -43,12 +43,10 @@ provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
 install="${_pkgname}.install"
 
 source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
-        "gcc-6.0.patch")
+        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 sha1sums=('SKIP'
-          '36af23887402a5ea4ebef91df8e61654906f58f2'
-          'e90e571e5ee2456bbd4c6a90696d0f440d6a0f69')
+          '577585f5f5d299c44dd3c993d3c0ac7a219e4949')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
@@ -129,10 +127,6 @@ _prepare_openssl_udk_dir() {
 }
 
 prepare() {
-
-  # Fixes build when using gcc-6.0+
-  patch -Np0 -i gcc-6.0.patch
-	
 	_bail_out
 	
 	_setup_env_vars
