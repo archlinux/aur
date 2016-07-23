@@ -2,9 +2,9 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 
 pkgname=apt
-pkgver=1.2.14
+pkgver=1.3~pre2
 pkgrel=1
-pkgdesc="commandline package manager"
+pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/apt"
 license=('GPL2')
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('f8b45b71dbb0f2cb5bf9169980d07dadf30aad37394d8d54b157a3d692739471')
+sha256sums=('41a2fbdee63db834255324e2f3a49484953d6d27d305625a70f8d7c9a54fafa9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
