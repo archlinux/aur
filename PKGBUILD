@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.45.1.35.gb0dce76
+pkgver=2.19.45.1.36.gb280487
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -20,9 +20,8 @@ optdepends=('imagemagick: building HTML documentation'
             'rsync: installing HTML documentation')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
-source=(git://git.sv.gnu.org/lilypond.git audio-item.patch)
-md5sums=('SKIP'
-         '9795811b1d588296e1b483ec107389ea')
+source=(git://git.sv.gnu.org/lilypond.git)
+md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
@@ -43,7 +42,6 @@ prepare() {
   sed -i 's|GUILE_LDFLAGS=.*|GUILE_LDFLAGS="`pkg-config --libs guile`"|' configure.ac
   
   rm -rf python/out/
-  patch -p1 < "$srcdir"/audio-item.patch
 }
 
 build() {
