@@ -8,7 +8,7 @@
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
 # nut-multimedia-git xavs flite-fpic libmfx-git blackmagic-decklink-sdk
-# nvidia-sdk libebur128
+# nvidia-sdk libebur128 libopenmpt-svn
 
 # AUR optional dependency
 # -----------------------
@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.81032.gdf9cc7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
