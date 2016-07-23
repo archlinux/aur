@@ -3,7 +3,7 @@
 
 pkgname=offlineimap-git
 _pkgname=offlineimap
-pkgver=7.0.0.rc2.0.g703ac77
+pkgver=7.0.0.3.g436e825
 pkgrel=1
 pkgdesc="A powerful IMAP/Maildir synchronization tool"
 url="http://offlineimap.org/"
@@ -13,7 +13,7 @@ depends=('python2' 'python2-six')
 makedepends=('git' 'asciidoc')
 conflicts=('offlineimap')
 provides=('offlineimap')
-source=('git://github.com/OfflineIMAP/offlineimap.git')
+source=('git+git://github.com/OfflineIMAP/offlineimap.git#branch=next')
 md5sums=('SKIP')
 
 pkgver() {
