@@ -1,0 +1,20 @@
+diff -crB package.pristine/libs/core/texturing_old/shadowmap_old.cpp package.new/libs/core/texturing_old/shadowmap_old.cpp
+*** package.pristine/libs/core/texturing_old/shadowmap_old.cpp	2012-08-24 14:26:50.000000000 +0200
+--- package.new/libs/core/texturing_old/shadowmap_old.cpp	2016-07-12 22:53:04.498989000 +0200
+***************
+*** 176,182 ****
+  	{
+  		std::ifstream file( m_strName.c_str(), std::ios::in | std::ios::binary );
+  
+! 		if ( file != NULL )
+  		{
+  			// Save a file type and version marker
+  			TqPchar origHeader = tokenCast(ZFILE_HEADER);
+--- 176,182 ----
+  	{
+  		std::ifstream file( m_strName.c_str(), std::ios::in | std::ios::binary );
+  
+!         if ( file )
+  		{
+  			// Save a file type and version marker
+  			TqPchar origHeader = tokenCast(ZFILE_HEADER);
