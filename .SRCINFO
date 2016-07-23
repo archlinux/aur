@@ -1,0 +1,23 @@
+pkgbase = whizard
+	pkgdesc = A program system designed for the efficient calculation of multi-particle scattering cross sections and simulated event samples.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://whizard.hepforge.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = texlive-bin
+	makedepends = texlive-pictures
+	makedepends = ghostscript
+	depends = ocaml
+	depends = gcc-fortran
+	depends = pythia
+	depends = lhapdf
+	depends = fastjet
+	depends = looptools
+	depends = hepmc
+	source = http://www.hepforge.org/archive/whizard/whizard-2.3.0.tar.gz
+	sha256sums = b0053195f22025df801e94cc6c1343ab6986a30e11b84f3f46f92400e4bcc82f
+
+pkgname = whizard
+
