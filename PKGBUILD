@@ -2,17 +2,17 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+21659.ff2347e1df02
+pkgver=4.1.0+22167.6c94c7bd55e7
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-# Some of these may be optional, e.g. arpack, lapack, qhull, cblas but if they
+# Some of these may be optional, e.g. arpack, lapack, qhull but if they
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 
 	 'qscintilla' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
-	 'suitesparse' 'java-environment' 'cblas') 
+	 'suitesparse' 'java-environment') 
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core'
 	     'icoutils')
@@ -20,15 +20,11 @@ optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
 provides=("octave=4.1.0")
-install=octave.install
-source=('java-slackware.patch')
-md5sums=('cb5a497834876e68ad28160751afe4c1')
 options=('!emptydirs' '!makeflags')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
 
 pkgver() {
-  cd "$srcdir"
   if [ -d ${_hgrepo} ]; then
       cd ${_hgrepo}
       hg pull -u
@@ -39,29 +35,33 @@ pkgver() {
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
   echo ${_appver}$(hg identify -n).$(hg identify -i)
 }
-  
+
 build() {
-  cd "$srcdir"
-  [[ -d "$srcdir"/${_hgrepo}-build ]] && rm -rf $srcdir/${_hgrepo}-build
-  cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-build
- 
-  cd "$srcdir"/${_hgrepo}-build
-   ./bootstrap --bootstrap-sync 
+  [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
+  cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-local
+  cd "$srcdir"/${_hgrepo}-local
+  ./bootstrap --bootstrap-sync
+  mkdir build
+  cd build
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
   
-  MOC=moc-qt4 UIC=uic-qt4 ./configure \
-    --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
-    --with-umfpack --enable-java \
+  MOC=moc-qt4 UIC=uic-qt4 ../configure \
+    --prefix=/usr --libexecdir=/usr/lib --enable-shared --enable-jit \
+    --with-umfpack --enable-java --with-hdf5 \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
     --with-java-includedir=/usr/lib/jvm/`archlinux-java get`/include \
     --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} 
   make
 }
+check() {
+  cd "$srcdir"/${_hgrepo}-local/build
+  make check
+}
 
 package() {
-  cd "$srcdir"/${_hgrepo}-build
+  cd "$srcdir"/${_hgrepo}-local/build
   make DESTDIR=${pkgdir} install
   # add octave library path to ld.so.conf.d
   install -d "${pkgdir}/etc/ld.so.conf.d"
