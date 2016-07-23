@@ -1,0 +1,11 @@
+--- Lib/test/test_pyexpat.py	2013-10-29 16:04:38.000000000 +0100
++++ Lib/test/test_pyexpat.py	2016-07-18 15:53:08.772375096 +0200
+@@ -576,7 +576,7 @@
+             parser.Parse(xml, True)
+             self.fail()
+         except expat.ExpatError as e:
+-            self.assertEquals(str(e), 'XML declaration not well-formed: line 1, column 14')
++            self.assertTrue(str(e).startswith('XML declaration not well-formed: line 1, column '))
+ 
+ def test_main():
+     run_unittest(SetAttributeTest,

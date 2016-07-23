@@ -4,7 +4,7 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=8
+pkgrel=9
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
@@ -21,6 +21,7 @@ source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
         python-2.6-db-4.8.patch
         python-2.6-dbm.patch
         python-2.6-distutils.patch
+        python-2.6-expat-2.2.patch
         python-2.6-internal-expat.patch
         python-2.6-mhlib-nlinks.patch
         python-2.6-pyexpat-segfault.patch
@@ -35,6 +36,7 @@ sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
             '2a4b9d85c6b616e5df30d42d0890865f2c2103e8d7d5d7d77c092f1f7aff1458'
             '43fd72dda5d85d8aeda1de100073ee472463fd5c8af55162598f7acec1d65323'
             '68804810b351403e16c09e24053221dda123d3163f24f3feb4fb2dab595e774e'
+            '1c1731c1a703844fad3de52b4378e2158c532442c67cfea3f8d6eecf7b7ce54f'
             'c99c8305180083e40aff789e3a3c74ed375037fdc7bd02876270b09274033069'
             'fd2a30acdd05e172ff3c0db2cce3371c184d67a1d9bd04a1582a5e6bc8fb80e6'
             '2aea683887955e59c6cff227a0d63aee3991571b7207a97d5985ba9ebd69e983'
@@ -75,6 +77,9 @@ prepare() {
 
   # http://bugs.python.org/issue13007
   patch -Np1 -i ${srcdir}/python-2.6-whichdb-gdbm-1.9.patch
+
+  # http://bugs.python.org/issue27369
+  patch -Np0 -i ${srcdir}/python-2.6-expat-2.2.patch
 
   # Ensure that we are using the system copy of various libraries
   # (expat, zlib and libffi), rather than copies shipped in the tarball
