@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily btrfs-sxbackup run on %I
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1d
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

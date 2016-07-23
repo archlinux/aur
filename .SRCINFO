@@ -1,15 +1,27 @@
-pkgbase = python-btrfs-sxbackup
-	pkgdesc = Btrfs snapshot backup utility
-	pkgver = 0.5.8
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/btrfs-sxbackup
+pkgbase = btrfs-sxbackup
+	pkgdesc = Incremental btrfs snapshot backups with push/pull support via SSH
+	pkgver = 0.6.9
+	pkgrel = 1
+	url = https://github.com/masc3d/btrfs-sxbackup
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = bash
+	depends = python
 	depends = btrfs-progs
 	depends = python-setuptools
-	source = http://pypi.python.org/packages/source/b/btrfs-sxbackup/btrfs-sxbackup-0.5.8.tar.gz
-	md5sums = 22688774801bbc651e4440aa23b17607
+	optdepends = openssh: for remote push/pull
+	optdepends = lzop: compression support
+	optdepends = pv: progress indication
+	optdepends = s-nail: email notifications
+	provides = btrfs-sxbackup
+	conflicts = python-btrfs-sxbackup
+	source = https://github.com/masc3d/btrfs-sxbackup/archive/0.6.9.tar.gz
+	source = btrfs-sxbackup@.service
+	source = btrfs-sxbackup@.timer
+	md5sums = c581ec61e2dbccf4c9a1b63c677a573f
+	md5sums = c95336614c6ea4844fd6272868260f96
+	md5sums = 3eba800dc92659189b6f4c58e456f9aa
 
-pkgname = python-btrfs-sxbackup
+pkgname = btrfs-sxbackup
 

@@ -1,0 +1,7 @@
+[Unit]
+Description=btrfs-sxbackup run on %f
+
+[Service]
+Nice=19
+IOSchedulingClass=idle
+ExecStart=/usr/bin/btrfs-sxbackup run %f
