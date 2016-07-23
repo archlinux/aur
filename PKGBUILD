@@ -1,7 +1,7 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
@@ -9,10 +9,10 @@ url='https://bitbucket.org/multicoreware/x265'
 license=('GPL')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
-makedepends=('mingw-w64-gcc' 'yasm' 'mingw-w64-cmake' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-cmake' 'yasm')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz"
         mingw.patch)
-md5sums=('f34a1c4c660ff07511365cb0983cf164'
+md5sums=('a4f16c0f054f002d6d8c9c6f7fb03026'
          'd1f6263ad2f345673a8b0ece73f68338')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,8 +26,7 @@ build() {
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
     unset LDFLAGS CPPFLAGS
-    ${_arch}-cmake -G "Unix Makefiles" \
-       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+    ${_arch}-cmake \
        -DLIB_INSTALL_DIR="lib" \
        -DENABLE_SHARED='TRUE' \
        -DENABLE_CLI='FALSE' \
