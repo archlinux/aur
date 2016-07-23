@@ -19,6 +19,7 @@ md5sums=('cb6e13a06d6bbd7d383efb9bbf0867ce')
 
 build() {
   cd "$srcdir/postsrsd-$pkgver"
+  [[ -d build ]] && rm -rf build
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DGENERATE_SRS_SECRET=OFF -DCONFIG_DIR=/etc/postsrsd
