@@ -3,7 +3,7 @@
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@gmail.com>
 
 pkgname=apache-spark-git
-pkgver=2.1.0.SNAPSHOT.20160718.17034
+pkgver=2.1.0.SNAPSHOT.20160723.17084
 pkgrel=1
 pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
