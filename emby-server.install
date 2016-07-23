@@ -1,54 +1,31 @@
-#! /bin/bash
-
 post_install() {
-  getent group emby >/dev/null || groupadd emby
-  getent passwd emby >/dev/null || useradd -c 'Emby Server' -g emby -d /var/lib/emby-server -r -M emby -s /bin/false
-  if [ ! -d /var/lib/emby-server ]; then
-    mkdir /var/lib/emby-server;
-    chown -R emby:emby /var/lib/emby-server
-  fi
-  if [ ! $? -eq 0 ]
-    then
-    echo "WARNING COULDN'T CREATE EMBY USERID, MAKE SURE I HAVE PERMISSON TO DO THAT!"
-      exit 1
-  fi
-  
-  systemctl --system daemon-reload
-  echo "Fixing file permissions...Please be patient."
-  cat <<EOF
+  getent group emby > /dev/null 2>&1 || groupadd -g 422 emby
+  getent passwd emby > /dev/null 2>&1 || useradd -c 'Emby Media Server' -u 422 -g emby -d /var/lib/emby -s /usr/bin/nologin emby
+  passwd -l emby > /dev/null
 
-Emby Server is a home media server built using other popular open-source technologies.
+  if [[ -d '/var/lib/emby-server' ]]; then
 
-If you would like to report a bug, please post to the forums at www.emby.media/community.
+cat <<EOF
 
-Emby uses the system's mono, ffmpeg, and ffprobe binaries. If any of those binaries are in a non-standard location, please create a custom environment file using /etc/conf.d/emby-server as a template. You will then need to edit the systemd service file to point to the custom environment file.
+New installations store the emby database inside '/var/lib/emby' (previously
+'/var/lib/emby-server'). Existing installations are left untouched.
 
-For more information on how to customize systemd files, please refer to https://wiki.archlinux.org/index.php/Systemd#Editing_provided_unit_files
+You can play safe and keep your existing setup, or you can adopt the new home
+and move your database using the emby-migrate-database script. Make sure to run
+pacdiff afterwards to merge the configuration changes.
 
-To start the server, run systemctl start emby-server.service.
+  sudo emby-migrate-database /var/lib/emby-server /var/lib/emby
 
-Enjoy the show!
+The script can also be used for more advanced database migration.
+Try "emby-migrate-database --help" for additional information.
 
 EOF
+
+  fi
 }
 
 post_upgrade() {
-  getent group emby >/dev/null || groupadd emby
-  getent passwd emby >/dev/null || useradd -c 'Emby Server' -g emby -b /var/lib/emby-server -r -M emby -s /bin/false
-  if [ ! -d /var/lib/emby-server ]; then
-    mkdir /var/lib/emby-server
-    chown -R emby:emby /var/lib/emby-server
-    echo "The old installation will be in /var/lib/mediabrowser-server."
-  fi
-  systemctl --system daemon-reload
+  post_install
 }
 
-post_remove() {
-  cat <<EOF
-  To remove the MediaBrowser Server database, please delete
-  /var/lib/emby-server.
-  
-  Also, you should probably remove the emby user and
-  and group from your system.
-EOF
-}
+# vim: ts=2 sw=2 et:

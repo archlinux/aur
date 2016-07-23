@@ -1,5 +1,5 @@
 [Unit]
-Description=Media Browser Server is a home media server built using other popular open source technologies.
+Description=Emby brings together your videos, music, photos, and live television.
 
 [Service]
 EnvironmentFile=/etc/conf.d/emby-server
@@ -7,7 +7,7 @@ WorkingDirectory=/usr/lib/emby-server
 ExecStart=/usr/bin/emby-server
 User=emby
 Group=emby
-Restart=on-failure
+Restart=always
 
 [Unit]
 After=network.target
