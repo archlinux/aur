@@ -2,15 +2,15 @@
 
 pkgname=php-yaml-beta
 _extname=yaml
-pkgver=2.0.0RC7
-pkgrel=2
+pkgver=2.0.0RC8
+pkgrel=1
 pkgdesc="Support for YAML 1.1 serialization using the LibYAML library, beta version (PHP7 compatible)."
 arch=("i686" "x86_64")
 url="http://bd808.com/pecl-file_formats-yaml/"
 license=('MIT')
 depends=('php' 'libyaml')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('d49acf2b7843258957a16df0d7ced56c0e1fc3eaa54f54289e4012edc002814c')
+sha256sums=('44cab15d57b2fb8fa916ff9291059a34b0c3fa99298c2b08a5082f334613753a')
 backup=("etc/php/conf.d/$_extname.ini")
 replaces=('php-yaml')
 provides=('php-yaml')
