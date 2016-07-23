@@ -1,3 +1,8 @@
+2016-07-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 0.8.5.r1458.6dbcd64-1:
+	use steinberg-vst36 AUR package instead of including VST3 SDK in sources
+	Fix compilations error relating to lround function
+
 2015-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.3.3.r958.0741c59-2:
