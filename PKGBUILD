@@ -3,7 +3,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.0.3
+pkgver=2.0.4.1
 pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
@@ -24,9 +24,9 @@ source=(
   godot.desktop
   icon.png
 )
-md5sums=('7206db8cfb320f379b1e1bcd41eadb31'
-         'dca7c5c5682bdc8cc83386034e0d7d07'
-         'f756e85756a9cbc06a328414abf74585')
+sha256sums=('a634f8d1d02baa394dea8e86b4791744a707f891058db57807c2704b64f6d1d8'
+            'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
+            'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
