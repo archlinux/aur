@@ -4,7 +4,7 @@
 _ipset='ipsetpy'
 pkgname="python-${_ipset}"
 pkgver='0.0.1a2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python ipset bindings and helper'
 arch=('any')
 url="https://github.com/sanyi/${_ipset}"
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "${_ipset}-v${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
+  python setup.py install -O1 --skip-build --root="${pkgdir}"
   mkdir -p "${pkgdir}/usr/share/doc/${_ipset}"
   mv "${pkgdir}/usr/README.md" "${pkgdir}/usr/share/doc/${_ipset}/README.md"
   mv "${pkgdir}/usr/LICENSE" "${pkgdir}/usr/share/doc/${_ipset}/LICENSE"
