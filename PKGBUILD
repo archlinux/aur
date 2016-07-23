@@ -2,15 +2,15 @@
 pkgbase=python-piexif
 _pyname=piexif
 pkgname=('python-piexif' 'python2-piexif')
-makedepends=('python' 'python2')
-pkgver=1.0.3
+makedepends=('python' 'python2' 'python2-setuptools' 'python-setuptools')
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Python library to read and write EXIF data from TIFF and JPG files"
 arch=('any')
 url="https://pypi.python.org/pypi/piexif#downloads"
 license=('BSD')
-source=("https://pypi.python.org/packages/source/p/$_pyname/$_pyname-$pkgver.zip")
-sha512sums=('e011936bc9a339d60cdc21cf740b725745a434b782a380caf6896f101b1d41cc04f24135cb745406f042e070601773b0f4adbeb66f5aa757a514b86ddaf576b6')
+source=("https://pypi.python.org/packages/81/4c/f1a0fc870527920e9deb70d8b4814e4a183f9fece096934751f387785f2d/piexif-${pkgver}.zip")
+sha512sums=('862d4048c67b603098c474ffca014e8513acb163ede177aca83250940e7540caa47ff428d7de9ad3efdef433c7ba1e1e3011389e9a950e473dafef90ff7214a4')
 
 package_python-piexif() {
   depends=('python')
