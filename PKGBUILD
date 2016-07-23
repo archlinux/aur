@@ -2,10 +2,10 @@
 
 pkgname=python2-s2sphere
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the S2 Geometry Library"
 url="http://s2sphere.readthedocs.io"
-depends=('python2' )
+depends=('python2' 'python2-future')
 makedepends=('python2-distribute' )
 license=('MIT')
 arch=('any')
