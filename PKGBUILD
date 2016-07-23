@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
@@ -13,16 +13,13 @@ conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multiru
 replaces=('multirust' 'multirust-git')
 install='post.install'
 
-source=(
-	#"git+https://github.com/rust-lang-nursery/rustup.rs.git#tag=${pkgver}"
-	"git+https://github.com/rust-lang-nursery/rustup.rs.git#commit=7d7fed264d9cedf431a44974454e27eedc8182cd" # commit hasn't been tagged yet
-)
+source=("git+https://github.com/rust-lang-nursery/rustup.rs.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
 	msg2 "Building rustup"
 	cd "$srcdir/$pkgname.rs"
-	cargo build --release --bin rustup-init
+	cargo build --release --features no-self-update --bin rustup-init
 
 	msg2 "Running rustup-init"
 	mkdir -p "$srcdir/tmp/.cargo"
