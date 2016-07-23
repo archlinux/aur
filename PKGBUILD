@@ -11,7 +11,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/meera/Meera.ttf"
         "https://gitlab.com/smc/meera/raw/master/65-0-smc-meera.conf")
-md5sums=('e217ad37fa43c073368e66419e16ef1a'
+md5sums=('532503fb6627775e216f6a7fcee33297'
          '4c02bd80a4d2b9fcfd47ef7685357359')
 install=ttf-malayalam-fonts.install
 
