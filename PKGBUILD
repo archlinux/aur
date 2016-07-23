@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.2.0.r112.g5394c48
+pkgver=0.4.0.r2.g7f311dd
 pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
