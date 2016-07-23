@@ -2,7 +2,7 @@
 # Wed Dec 30 01:18:52 UTC 2015
 pkgbase = plat-icon-theme
 	pkgdesc = Plat is a flat icon theme. It is based on Ursa Icon Theme and Masalla Icon Theme and comes with Flat UI colors.
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/MichaelTiebesl/Plat
 	arch = any
