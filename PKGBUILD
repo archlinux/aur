@@ -1,16 +1,16 @@
 # Maintainer: Étienne Deparis <etienne [at] depar.is>
 
 pkgname=galileo
-pkgver=0.4.4
-pkgrel=2
-_bitbucket_folder=benallard-galileo-8a506618011a
+pkgver=0.5
+pkgrel=1
+_bitbucket_folder=benallard-galileo-1b2fc31c42a1
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server'
 license=('LGPL3')
 url='https://bitbucket.org/benallard/galileo'
 depends=('python2-pyusb-beta' 'python2-requests')
 makedepends=('python2-setuptools')
 source=("https://bitbucket.org/benallard/${pkgname}/get/${pkgver}.tar.gz")
-sha256sums=('46da01db6cb6ba990f00f2152581db91480f4ce91550d38fffe0449d16a7bfb3')
+sha256sums=('ef2c72a7b6d45ed99a804f5a0f170083e07d1ca7559434a110866c5d33e50d7d')
 arch=('any')
 options=(!emptydirs)
 
