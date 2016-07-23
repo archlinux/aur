@@ -3,7 +3,7 @@
 _pkgname=LoopTools
 pkgname=looptools
 pkgver=2.13
-pkgrel=6
+pkgrel=7
 pkgdesc="package for evaluation of scalar and tensor one-loop integrals"
 arch=("i686" "x86_64")
 url="http://www.feynarts.de/looptools"
@@ -17,6 +17,10 @@ build() {
   cd "${_pkgname}-$pkgver"
   ./configure --prefix=/usr
   sed -i 's/LIBDIR = $(PREFIX)\/lib$(LIBDIRSUFFIX)/LIBDIR = $(PREFIX)\/lib/' makefile
+  flags=( "FFLAGS" "CFLAGS" "CXXFLAGS" )
+  for f in "${flags[@]}"; do
+    sed -i "s/$f =/$f = -fPIC/" makefile
+  done
   make
 }
 
