@@ -1,0 +1,17 @@
+pkgbase = photos
+	pkgdesc = C++ Interface to PHOTOS
+	pkgver = 3.61
+	pkgrel = 1
+	url = http://photospp.web.cern.ch/photospp
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = pythia
+	makedepends = tauola++
+	depends = gcc-fortran
+	depends = hepmc
+	source = http://photospp.web.cern.ch/photospp/resources/PHOTOS.3.61/PHOTOS.3.61.tar.gz
+	sha256sums = 8f9ae59d40e6ec077f5de69b21324745ff3a73e71f3ea22a539782029e0445f4
+
+pkgname = photos
+
