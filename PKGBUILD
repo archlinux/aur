@@ -1,6 +1,6 @@
 # Maintainer: David Barnett <zyphrus@outlook.com>
 pkgname='whiley'
-pkgver='0.3.36'
+pkgver='0.3.40'
 pkgrel='1'
 pkgdesc='Whiley Development Kit. A programming language particularly suited to safety-critical systems'
 arch=("any")
@@ -9,7 +9,7 @@ license=('custom')
 depends=('java-environment-jdk')
 provides=('whiley')
 source=("http://whiley.org/download/wdk/wdk-src-v${pkgver}.tgz")
-sha256sums=('743b749527492c6427a690becaa65b2b633e25b06243a09c522c1d673b177593')
+sha256sums=('f2fd28773a05ced31624baee3fcb3d27e5353c1ceb3e6288962aefebc5a05da7')
 
 build() {
   cd "${srcdir}"
