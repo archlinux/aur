@@ -5,7 +5,7 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbwm
-pkgver=1.46
+pkgver=1.47
 pkgrel=1
 pkgdesc="minimalist X11 window manager, based on evilwm"
 arch=('x86_64' 'x86')
@@ -24,4 +24,4 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('f540b11909cf6c702326f1eb171c5bfd')
+md5sums=('d6671b5d2d8637358e005dfc506e2928')
