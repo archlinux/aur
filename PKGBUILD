@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=51.0.2704.106
+pkgver=52.0.2743.82
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -36,10 +36,10 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         chromium-widevine.patch
         PNGImageDecoder.patch)
-sha256sums=('fb97a6a3119ec2c8cc4ad9a0bd6c4d306516769039a2633633f7d0c770012cfd'
+sha256sums=('a7de6015df9cf685d68efd1e070ae9c706c723cd9395d079a7d43672a2c37eb4'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -69,7 +69,7 @@ prepare() {
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
-  patch -Np1
+    patch -Np1
 
   # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
   patch -p1 -i "$srcdir"/PNGImageDecoder.patch
@@ -81,6 +81,7 @@ prepare() {
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
