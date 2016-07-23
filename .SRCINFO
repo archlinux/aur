@@ -3,23 +3,17 @@ pkgbase = projectx-cvs
 	pkgver = 0.91.0.10.r20110331
 	pkgrel = 1
 	url = http://sourceforge.net/projects/project-x
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = cvs
 	makedepends = java-environment
-	makedepends = apache-ant
 	depends = java-environment
-	depends = glibc
 	depends = bash
 	provides = projectx
 	conflicts = projectx
-	noextract = pjxgcc.tar.bz2
 	options = !makeflags
 	source = projectx
-	source = http://sourceforge.net/p/project-x/patches/_discuss/thread/9f638374/33d2/attachment/pjxgcc.tar.bz2
 	md5sums = d2c2582e21fae4a7c99ce26589800eab
-	md5sums = bb3e5d77a9ccc7a3fc86f9243d82c624
 
 pkgname = projectx-cvs
 
