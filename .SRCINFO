@@ -1,7 +1,7 @@
 pkgbase = projectx-cvs
 	pkgdesc = DVB demux tool for repairing and analyzing different stream types
 	pkgver = 0.91.0.10.r20110331
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/project-x
 	arch = any
 	license = GPL
