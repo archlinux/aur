@@ -10,7 +10,8 @@ GNU General Public License for Malayalam Language."
 arch=(any)
 url="http://smc.org.in/fonts/"
 depends=(ttf-malayalam-font-anjalioldlipi ttf-malayalam-font-chilanka ttf-malayalam-font-dyuthi 
-ttf-malayalam-font-keraleeyam ttf-malayalam-font-meera ttf-malayalam-font-rachana ttf-malayalam-font-raghumalayalamsans ttf-malayalam-font-suruma )
+ttf-malayalam-font-keraleeyam ttf-malayalam-font-meera ttf-malayalam-font-rachana ttf-malayalam-font-raghumalayalamsans 
+ttf-malayalam-font-suruma  ttf-malayalam-font-manjari)
 
 package(){
 return 0
