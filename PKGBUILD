@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mate-terminal
 pkgname="${_pkgbase}-${_ver}-gtk3"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="The MATE Terminal Emulator"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ makedepends=('docbook2x' 'yelp-tools' 'vte3' 'mate-desktop-1.15-gtk3')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f396f1a0fe3449ed380900b8a66a7cc77e61880a')
+sha1sums=('8e2a0b01743082fd4c7fe4fa5aaa2b91e9379c93')
 
 prepare() {
     cd "${srcdir}"
