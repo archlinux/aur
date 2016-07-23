@@ -1,8 +1,8 @@
 # Maintainer: Ainola
-# Contributors: Pio, carstene1ns
+# Contributors: Pio, carstene1ns, MCMic
 
 pkgname=mrrescue
-pkgver=1.02d
+pkgver=1.02e
 pkgrel=1
 pkgdesc="An arcade styled 2d action game centered around evacuating civilians from burning buildings."
 arch=('any')
@@ -10,8 +10,8 @@ url="http://tangramgames.dk/games/mrrescue/"
 license=('CCPL:by-sa' 'zlib')
 depends=('love')
 makedepends=('gendesk')
-source=("https://github.com/SimonLarsen/mrrescue/releases/download/v$pkgver/$pkgname-$pkgver.love")
-md5sums=('a83b1ac56e6e546b3c3a003a87f8c994')
+source=("https://github.com/SimonLarsen/mrrescue/releases/download/$pkgver/$pkgname$pkgver.love")
+md5sums=('08f236a0f296f70fafa67be2ef20e254')
 
 prepare() {
 	cd $srcdir
@@ -23,7 +23,7 @@ prepare() {
 
 package() {
 	# Copy game and license
-	install -Dm0644 "$pkgname-$pkgver.love" "$pkgdir"/usr/share/$pkgname/$pkgname-$pkgver.love
+	install -Dm0644 "$pkgname$pkgver.love" "$pkgdir"/usr/share/$pkgname/$pkgname-$pkgver.love
 	install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	# Copy desktop file, icon and run script
 	install -Dm0644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
