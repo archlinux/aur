@@ -5,7 +5,7 @@
 
 pkgname=natron-bin
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Video compositing software similar to Nuke and Adobe After Effects'
 url='http://natron.fr/'
@@ -34,7 +34,7 @@ package() {
 	cp -R "${srcdir}/Natron-${pkgver}-Linux-x86_${_source_arch}bit" "${pkgdir}/usr/share/natron"
 
 	install -d "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/usr/share/natron/Natron" "${pkgdir}/usr/bin/natron"
+	ln -s "/usr/share/natron/Natron" "${pkgdir}/usr/bin/natron"
     install -D "${pkgdir}/usr/share/natron/Resources/pixmaps/natronIcon256_linux.png" "${pkgdir}/usr/share/pixmaps/natronIcon256_linux.png"
     install -D "${pkgdir}/usr/share/natron/Resources/pixmaps/natronProjectIcon_linux.png" "${pkgdir}/usr/share/pixmaps/natronProjectIcon_linux.png"
     install -Dm644 "${srcdir}/natron.desktop" "${pkgdir}/usr/share/applications/natron.desktop"
