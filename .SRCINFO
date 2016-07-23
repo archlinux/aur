@@ -1,0 +1,14 @@
+pkgbase = accuraterip-checksum
+	pkgdesc = A C99 commandline program to compute the AccurateRip checksum of singletrack WAV files.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/leo-bogert/accuraterip-checksum
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libsndfile
+	source = https://github.com/leo-bogert/accuraterip-checksum/archive/version1.4.tar.gz
+	md5sums = a5a1ac13ed4f16266f972918e21bd095
+
+pkgname = accuraterip-checksum
+
