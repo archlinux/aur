@@ -6,6 +6,7 @@ pkgbase = postsrsd
 	install = postsrsd.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	makedepends = cmake
 	makedepends = help2man
