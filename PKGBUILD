@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.74.443.g24ff24d
+pkgver=2.74.717.g0b1bdc2
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -22,10 +22,11 @@ pkgver() {
 
 prepare() {
     # cleanup
-    [[ -e "$HOME/.etlegacy/legacy" ]] && cd $HOME/.etlegacy/legacy && rm -f *.so && rm -f *.dat
     cd "$srcdir/$_gitname"
-    rm -rf CMakeFiles include legacy glsl
-    rm -f etl etlded *.so *.a *.cmake CMakeCache.txt install_manifest.txt
+    git clean -df
+    git clean -dfX
+
+    git submodule update --init --recursive
 }
 
 build() {
