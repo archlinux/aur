@@ -1,0 +1,12 @@
+diff -ruN RepetierHost.orig/SetBaudrate.cpp RepetierHost/SetBaudrate.cpp
+--- RepetierHost.orig/SetBaudrate.cpp	2016-06-27 16:40:57.000000000 +0200
++++ RepetierHost/SetBaudrate.cpp	2016-07-23 23:33:02.218866756 +0200
+@@ -68,7 +68,7 @@
+     exit(-2);
+   }
+   cerr << "actual baud: " << ios.c_ispeed << endl;
+-  if(abs(baud - ios.c_ispeed) * 100 / baud >= 5) {
++  if(abs(baud - (int) ios.c_ispeed) * 100 / baud >= 5) {
+     cerr << "error: couldn't set desired baud rate " << baud << " got " << ios.c_ispeed << endl;
+     exit(-2);
+   }
