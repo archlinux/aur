@@ -1,7 +1,4 @@
-# Maintainer: Idares <idares at seznam dot cz>
-# Contributor: Enrico Morelli <morelli@cerm.unifi.it>
-# Contributor: Vadym Abramchuk <abramm@gmail.com>
-# Contributor: karol_007 <karol.blazewicz@gmail.com>
+# Maintainer: andrew.boren <andrew.boren@gmail.com>
 
 pkgname=zabbix-agent
 pkgver=2.2.14
