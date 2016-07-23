@@ -11,10 +11,10 @@ _language_gfm2_ver=0.92.1
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=1
+_pkgrel=0
 _pkgver=1.9.0
 pkgver="${_pkgver}.${_pkgrel}.m${_language_gfm2_ver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
