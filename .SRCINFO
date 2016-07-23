@@ -1,12 +1,16 @@
 pkgbase = cernlib
 	pkgdesc = A large collection of general purpose libraries and modules maintained and offered in both source and object code form on the CERN central computers.
 	pkgver = 2006_35
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cernlib.web.cern.ch/cernlib
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = rpmextract
+	depends = openmotif
+	depends = gcc-fortran
+	depends = lapack
+	depends = libxp
 	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/cernlib-2006-35.fc14.x86_64.rpm
 	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/cernlib-static-2006-35.fc14.x86_64.rpm
 	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/cernlib-utils-2006-35.fc14.x86_64.rpm

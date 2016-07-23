@@ -6,7 +6,7 @@
 
 pkgname=cernlib
 pkgver=2006_35
-pkgrel=1
+pkgrel=2
 _pkgver=2006-35
 _atlasver=3.8.4-1
 _atlascppver=0.6.2-1
@@ -14,8 +14,8 @@ pkgdesc="A large collection of general purpose libraries and modules maintained 
 arch=('x86_64' 'i686')
 url="http://cernlib.web.cern.ch/cernlib"
 license=('GPL')
-depend=(openmotif gcc-fortran lapack lesstif libxp)
 makedepends=(rpmextract)
+depends=(openmotif gcc-fortran lapack libxp)
 if [ "${CARCH}" = "x86_64" ]; then
     _rpmarch='x86_64'
     URLROOT=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages
