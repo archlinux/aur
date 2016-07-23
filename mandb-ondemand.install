@@ -1,9 +1,9 @@
 post_install() {
-	if [ ! -f /var/cache/man/index.db ]; then
-		echo "it's recommended to create an initial"
-		echo "database running as root:"
-		echo "\"/usr/bin/mandb --quiet\""
-	else
-		true
-	fi
+	systemctl start mandb-ondemand.path
+	systemctl start mandb-ondemand-purge.path
+}
+
+pre_remove() {
+	systemctl stop mandb-ondemand.path
+	systemctl stop mandb-ondemand-purge.path
 }
