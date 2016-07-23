@@ -5,8 +5,8 @@
 
 _gemname=sass-rails
 pkgname=ruby-$_gemname
-pkgver=5.0.5
-pkgrel=2
+pkgver=5.0.6
+pkgrel=1
 pkgdesc='Sass adapter for the Rails asset pipeline.'
 arch=(any)
 url='https://github.com/rails/sass-rails'
@@ -15,7 +15,7 @@ depends=(ruby ruby-railties ruby-sass ruby-sprockets-rails ruby-sprockets ruby-t
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5f3616e23401dabe319137088650653044c108a9')
+sha1sums=('63cf7722ffed78aa5569ce6c10810533166626af')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
