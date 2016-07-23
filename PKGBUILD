@@ -1,13 +1,13 @@
 # Maintainer: Martin Tournoij <martin@arp242.net>
 
 pkgname=pqiv
-pkgver=2.5.1
+pkgver=2.6
 pkgrel=1
 pkgdesc="Modern rewrite of Quick Image Viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/phillipberndt/pqiv/"
 license=('GPL3')
-depends=('gtk2')  # Also works with GTK3...
+depends=('gtk3')  # Also works with GTK2...
 optdepends=(
 'libspectre: PS/EPS support'
 'poppler: PDF support'
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=
 source=($pkgname-$pkgver.tar.gz::https://github.com/phillipberndt/pqiv/archive/$pkgver.tar.gz)
-sha256sums=('de027c5ebab80a19066e3a891edf76c58ba1622e45227db380349eec214898bc')
+sha256sums=('f0c0d803724cdde2ccac1dc8d7e8928bdc633e758914a67320734a6961ee099c')
 
 build() {
 	cd $pkgname-$pkgver
