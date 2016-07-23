@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
 arch=('x86_64' 'i686')
-url="https://github.com/gauteh/astroid"
+url="https://github.com/astroidmail/astroid"
 license=('GPL')
 groups=()
 depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass' 'libpeas' 'gobject-introspection')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(astroid::git+https://github.com/gauteh/astroid.git)
+source=(astroid::git+https://github.com/astroidmail/astroid.git)
 noextract=()
 md5sums=('SKIP')
 
