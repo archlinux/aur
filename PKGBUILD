@@ -1,10 +1,11 @@
-# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Maintainer: Jakub "Kubuxu" Sztandera <kubuxu@protonmail.ch>
+# Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: kpcyrd <git@rxv.cc>
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.3dev.r0.g50a7df6
+pkgver=0.4.3rc1.r0.g566c08e
 pkgrel=1
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
