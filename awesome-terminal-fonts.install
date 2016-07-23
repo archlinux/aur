@@ -2,7 +2,10 @@ post_install() {
   echo -n "Updating font cache... "
   fc-cache usr/share/fonts/awesome-fonts-fonts
   echo "done."
-  ln -s /etc/fonts/conf.avail/10-symbols.conf /etc/fonts/conf.d/10-symbols.conf
+  if [ ! -f /etc/fonts/conf.d/10-symbols.conf ]
+  then
+    ln -s /etc/fonts/conf.avail/10-symbols.conf /etc/fonts/conf.d/10-symbols.conf
+  fi
 }
 
 post_upgrade() {
