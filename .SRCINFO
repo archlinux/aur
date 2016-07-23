@@ -1,16 +1,16 @@
 pkgbase = rsbot
 	pkgdesc = The world's most popular RuneScape® bot since 2006
-	pkgver = 7031
+	pkgver = 7032
 	pkgrel = 1
 	url = http://www.powerbot.org/
 	arch = any
 	license = custom
 	depends = java-runtime
-	noextract = RSBot-7031.jar
-	source = http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-7031.jar
+	noextract = RSBot-7032.jar
+	source = http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-7032.jar
 	source = icon.png
 	source = rsbot.desktop
-	md5sums = d0fa011854671a4336e5c27682d1ca0c
+	md5sums = 9c924dcecd04265b6448cf3126f3406b
 	md5sums = 8cb7793ff1e3ab3057bb9e1218d71a87
 	md5sums = 7a78455bf7f06bdac59b8699eeab362d
 
