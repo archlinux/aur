@@ -5,7 +5,7 @@ _module="${_name}"
 
 pkgname=("python2-${_module}")
 pkgver="0.1.28"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Improve genre metadata of audio files based on tags from various music sites."
 arch=("any")
 depends=("python2")
@@ -19,7 +19,7 @@ sha256sums=('40f926abce8935e68a25fbcf9bb94311a95c0a5610bc56370b8397d52a38301e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
