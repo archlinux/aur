@@ -1,13 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20160527
+pkgver=20160619
 pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq'
          'icu'
          'libbitcoin'
          'libbitcoin-client'
@@ -54,7 +53,7 @@ build() {
     --with-bash-completiondir=/usr/share/bash-completion/completions \
     --with-gnu-ld \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
