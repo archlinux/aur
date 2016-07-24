@@ -1,5 +1,5 @@
-From c63d34d666ef9dcf2024207e736f47a8791da486 Mon Sep 17 00:00:00 2001
-From: Christoph Reiter <creiter@src.gnome.org>
+From 154b79f7447b1fecf73ba837192263acbe3b5837 Mon Sep 17 00:00:00 2001
+From: Shyouzou Sugitani <shy@users.sourceforge.jp>
 Date: Mon, 6 Jun 2016 12:26:44 +0200
 Subject: [PATCH] Add a foreign type for cairo_region_t.
 
@@ -8,23 +8,28 @@ Based on the patch at
 
 * Rebased on master
 * Fixes the cairo_region_from_arg signature
+* Add check for pycairo region support (only in pycairo master)
 * Add some tests
+
+Co-Authored-By: Martin Pitt <martin.pitt@ubuntu.com>
+Co-Authored-By: Christoph Reiter <creiter@src.gnome.org>
 
 https://bugzilla.gnome.org/show_bug.cgi?id=667959
 ---
- gi/pygi-foreign-cairo.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++++
+ gi/pygi-foreign-cairo.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++++
  tests/test_cairo.py     | 28 +++++++++++++++++++++++++--
- 2 files changed, 76 insertions(+), 2 deletions(-)
+ 2 files changed, 77 insertions(+), 2 deletions(-)
 
 diff --git a/gi/pygi-foreign-cairo.c b/gi/pygi-foreign-cairo.c
-index 8e76529..ff29ee1 100644
+index 8e76529..3ad3a99 100644
 --- a/gi/pygi-foreign-cairo.c
 +++ b/gi/pygi-foreign-cairo.c
-@@ -367,6 +367,48 @@ cairo_pattern_from_gvalue (const GValue *value)
+@@ -367,6 +367,49 @@ cairo_pattern_from_gvalue (const GValue *value)
      return PycairoPattern_FromPattern (pattern, NULL);
  }
  
-+#if PY_VERSION_HEX >= 0x03000000
++#if PY_VERSION_HEX >= 0x03000000 && defined(PycairoRegion_Type)
++
 +static PyObject *
 +cairo_region_to_arg (PyObject        *value,
 +                     GIInterfaceInfo *interface_info,
@@ -69,11 +74,11 @@ index 8e76529..ff29ee1 100644
  
  static PyMethodDef _gi_cairo_functions[] = { {0,} };
  PYGLIB_MODULE_START(_gi_cairo, "_gi_cairo")
-@@ -406,6 +448,14 @@ PYGLIB_MODULE_START(_gi_cairo, "_gi_cairo")
+@@ -406,6 +449,14 @@ PYGLIB_MODULE_START(_gi_cairo, "_gi_cairo")
                                    cairo_font_options_from_arg,
                                    cairo_font_options_release);
  
-+#if PY_VERSION_HEX >= 0x03000000
++#if PY_VERSION_HEX >= 0x03000000 && defined(PycairoRegion_Type)
 +    pygi_register_foreign_struct ("cairo",
 +                                  "Region",
 +                                  cairo_region_to_arg,
