@@ -1,3 +1,6 @@
+2016-07-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.2.5-2:
+    Updated source archive to solve a false-positive (see https://github.com/JustArchi/ArchiSteamFarm/issues/127#issuecomment-234313478)
 2016-07-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.2.5-1:
     Fixed ASF crash related to being unable to execute WMI queries on machines previously affected by HackIgnoreMachineID.
