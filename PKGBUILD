@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.11.2
-pkgrel=2
+pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
