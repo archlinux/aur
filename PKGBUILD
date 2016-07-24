@@ -1,7 +1,7 @@
 # Maintainer: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
-pkgver=3.2.01
+pkgver=3.2.02
 pkgrel=1
 epoch=0
 pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
