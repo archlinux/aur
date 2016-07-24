@@ -2,7 +2,7 @@
 # Maintainer: Daniele Bartolini <qonegbyvav.nn [4G] tznvy [Q0G] pbz>
 
 pkgname=pepper
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("https://github.com/taylor001/crown/releases/download/v$pkgver/$pkgname-
         "pepper.sh"
         "pepper.desktop"
         )
-md5sums=('7cf50ab466008b2953a6db30c988f3b8'
+md5sums=('b4b9b43fe0f42835863b37588b419da4'
          '8fca300dce4e3858e34e7a2d550a3728'
          '7424db2a97c159d516cfa813be148966')
 
