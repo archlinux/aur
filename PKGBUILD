@@ -28,10 +28,10 @@ md5sums=('c581ec61e2dbccf4c9a1b63c677a573f'
          '3eba800dc92659189b6f4c58e456f9aa')
 
 package() {
-  install -D ${pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${pkgname}@.service
-  install -D ${pkgname}@.timer ${pkgdir}/usr/lib/systemd/system/${pkgname}@.timer
+  install -m0644 -D ${pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${pkgname}@.service
+  install -m0644 -D ${pkgname}@.timer ${pkgdir}/usr/lib/systemd/system/${pkgname}@.timer
 
   cd $srcdir/btrfs-sxbackup-$pkgver
   python setup.py install --prefix=/usr --root=$pkgdir
-  install -D etc/btrfs-sxbackup.conf $pkgdir/etc/btrfs-sxbackup.conf
+  install -m0644 -D etc/btrfs-sxbackup.conf $pkgdir/etc/btrfs-sxbackup.conf
 }
