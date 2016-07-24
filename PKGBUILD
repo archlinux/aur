@@ -12,7 +12,7 @@ conflicts=('man-db-systemd')
 replaces=('man-db-systemd')
 install=${pkgname}.install
 source=(https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('c6ced9e78bc96dc2c802a070a1c57c0cb7d45aaf1cd5737fc4185f4baf51e075')
+sha256sums=('cf8286bf22eddfa349033554d6cf89e4c920f24fd5fc4748808b98c045c183ef')
 
 package() {
 	cd ${pkgname}-${pkgver}
