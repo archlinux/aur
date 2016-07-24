@@ -43,7 +43,7 @@ build() {
     --localstatedir=/var/lib/libbitcoin-consensus \
     --with-gnu-ld \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
