@@ -4,7 +4,7 @@ pkgbase='python-krpc'
 _pyname='krpc'
 pkgname=('python-krpc' 'python2-krpc')
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Client library for kRPC, a Remote Procedure Call server for Kerbal Space Program"
 url="https://github.com/krpc/krpc"
 license=("LGPL3")
@@ -14,13 +14,13 @@ source=('https://pypi.python.org/packages/5a/32/384b36e6d983a0af26878b2f7e7292b2
 md5sums=('389cc10b519ecbf4a86a74c0da0bf7dd')
 
 package_python-krpc() {
-  depends=('python')
+  depends=('python' 'python-protobuf')
   cd "$srcdir/$_pyname-$pkgver"
   python setup.py install -O1 --root=$pkgdir
 }
 
 package_python2-krpc() {
-  depends=('python2')
+  depends=('python2' 'python2-protobuf')
   cd "$srcdir/$_pyname-$pkgver"
   python2 setup.py install -O1 --root=$pkgdir
 }
