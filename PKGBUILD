@@ -1,15 +1,15 @@
 # Maintainer: Anthony25 <anthony.ruhier @ gmail.com>
 
 pkgname=ksmtuned-git
-pkgver=14.48f3d5b
-pkgrel=2
+pkgver=15.fef066f
+pkgrel=1
 pkgdesc='While the ksm service is only able to start and stop the KSM kernel thread, ksmtuned controls and tunes KSM according to the used memory of running qemu KVM instances.'
 arch=('any')
 license=('GPLv2')
 url='https://git.centos.org/summary/rpms!qemu-kvm'
 provides=('ksmtuned')
 conflict=('ksmtuned')
-source=('git://github.com/Anthony25/ksmtuned.git')
+source=('git://github.com/Anthony25/ksmtuned.git#branch=archlinux')
 md5sums=('SKIP')
 backup=('etc/default/ksm' 'etc/ksmtuned.conf')
 
