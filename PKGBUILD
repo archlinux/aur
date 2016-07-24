@@ -2,14 +2,14 @@
 
 pkgname=caprine
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Facebook Messenger app'
 arch=('any')
 url='https://github.com/sindresorhus/caprine'
 license=('MIT')
 depends=('electron')
 makedepends=('npm')
-source=("https://github.com/sindresorhus/caprine/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sindresorhus/caprine/archive/${pkgver}.tar.gz"
         'caprine.desktop'
         'caprine.sh')
 sha256sums=('37c6a1609dca3460def6379581c73559881ceac1f00d38a82efdd151877a83f4'
