@@ -1,4 +1,5 @@
 # Maintainer: Pedro Silva <psilva@pedrosilva.pt>
+# Contributor: Martin -nexus- Mlynář <nexus+arch@smoula.net>
 
 pkgname=btrfs-sxbackup
 pkgver=0.6.9
