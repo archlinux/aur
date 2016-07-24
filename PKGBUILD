@@ -3,7 +3,7 @@
 
 pkgname=btrfs-sxbackup
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Incremental btrfs snapshot backups with push/pull support via SSH"
 arch=('i686' 'x86_64')
 url="https://github.com/masc3d/btrfs-sxbackup"
