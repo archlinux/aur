@@ -5,20 +5,20 @@
 # Contributor: Farhan Yousaf <farhany at xaviya dot com>
 
 pkgname=netatalk
-pkgver=3.1.8
+pkgver=3.1.9
 pkgrel=1
 pkgdesc='Open-source implementation of the Apple Filing Protocol'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://netatalk.sourceforge.net'
 license=('GPL')
-depends=('avahi>=0.6' 'libldap' 'libgcrypt>=1.2.3' 'libevent' 'python2' 'dbus-glib' 'python2-dbus')
+depends=('avahi>=0.6' 'libldap' 'libgcrypt>=1.2.3' 'libevent' 'python2' 'dbus-glib' 'python2-dbus' 'pam')
 replaces=('netatalk-git' 'netatalk2')
 backup=('etc/afp.conf'
 	'etc/extmap.conf')
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
 	python2.patch)
-md5sums=('9cab934ca32b8979f389da52d44c69c2'
+md5sums=('d1d385ae6c3dc45eef4c923472f8fa5f'
 	'97bc0467dd8a866d9f0835d6440e3c19')
 
 prepare() {
