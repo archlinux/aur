@@ -2,14 +2,15 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=gmines.app
 _pkgname=GMines 
-pkgrel=1
+pkgrel=2
 pkgver=0.2
-pkgdesc="A clone of the well-known minesweeper game. "
+pkgdesc="A clone of the well-known minesweeper game."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gap/gmines/index.html"
 license=('GPL')
 groups=('gnustep')
-depends=('gnustep-base'
+depends=('gnustep-back'
+         'gnustep-base'
          'gnustep-gui')
 makedepends=('gcc-objc'
              'gnustep-make')
