@@ -2,16 +2,16 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
 url="https://github.com/nvie/pip-tools"
 license=('BSD')
 depends=('python-click' 'python-first' 'python-pip' 'python-six')
-source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://pypi.python.org/packages/ec/1a/3dce962d5d58f2874ee64110e45986ac5a73d2023dcf32804038ffd87637/${pkgname}-${pkgver}.tar.gz"
         LICENSE.txt)
-md5sums=('f1771bee558b5abd8b206fdeb1e51d69'
+md5sums=('2f3be43fd4f96ed5b03ddd093d8e4f04'
          'b542fe20de254615b3ab48020bc73441')
 
 package() {
