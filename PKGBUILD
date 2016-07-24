@@ -1,13 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20160528
+pkgver=20160724
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq'
          'icu'
          'libbitcoin'
          'libbitcoin-blockchain'
@@ -79,7 +78,7 @@ build() {
     --with-bash-completiondir=/usr/share/bash-completion/completions \
     --with-gnu-ld \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
