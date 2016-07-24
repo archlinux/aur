@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-linux-desktopfiles'
-pkgver='0.10'
+pkgver='0.11'
 pkgrel='1'
 pkgdesc="Perl module for parsing the Linux .desktop files."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl>=5.14.0')
 makedepends=()
 url='https://metacpan.org/release/Linux-DesktopFiles'
 source=("http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-${pkgver}.tar.gz")
-md5sums=('41af5e7f1d2fc124fe3d930d29131f12')
-sha512sums=('a6054673ae25eb422761ed5c4b617e927b185aefd0548c98f9b8dcedda07987ad8a55a193ab4faa71bf6729b9fbd8e844dd9dd37e152e9fdf3c5cc934d2faaf7')
+md5sums=('05ad2c27b232869dfbc74b084a875d06')
+sha512sums=('c32a755de572d1746e63adc48eb0bffceb9c507c9e11d7608303445d01edb5fabebad6db9a02fd3f7ea49e80b405e2ab5e8c5997cd52d46212bf4143ad71b24c')
 _distdir="Linux-DesktopFiles-${pkgver}"
 
 build() {
