@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-requestpolicy-continued
+	pkgdesc = Be in control of which cross-site requests are allowed. Improve the privacy of your browsing by not letting other sites know your browsing habits. Secure yourself from Cross-Site Request Forgery (CSRF) and other attacks.
+	pkgver = 1.0.beta12.2
+	pkgrel = 1
+	url = https://mozilla.github.io/requestpolicy-continued/
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = firefox
+	noextract = firefox-extension-requestpolicy-continued.xpi
+	source = firefox-extension-requestpolicy-continued.xpi::https://addons.mozilla.org/firefox/downloads/latest/requestpolicy-continued/addon-683612-latest.xpi
+	sha1sums = SKIP
+
+pkgname = firefox-extension-requestpolicy-continued
+
