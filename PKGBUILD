@@ -30,6 +30,6 @@ package() {
   install -D -m 755 ksmctl $pkgdir/usr/bin/ksmctl
   install -D -m 755 ksmtuned $pkgdir/usr/bin/ksmtuned
 
-  install -D -m 644 ksm.service $pkgdir/usr/lib/systemd/systemd/ksm.service
-  install -D -m 644 ksmtuned.service $pkgdir/usr/lib/systemd/systemd/ksmtuned.service
+  install -D -m 644 ksm.service $pkgdir/usr/lib/systemd/system/ksm.service
+  install -D -m 644 ksmtuned.service $pkgdir/usr/lib/systemd/system/ksmtuned.service
 }
