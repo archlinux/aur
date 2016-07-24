@@ -2,7 +2,7 @@
 
 _gitname=la-capitaine-icon-theme
 _pkgname=La-Capitaine
-pkgname=('la-capitaine-icon-theme')
+pkgname=('la-capitaine-icon-theme-git')
 pkgver=r35.5a3c661
 pkgrel=1
 pkgdesc="An icon pack designed to integrate with most desktop environments"
