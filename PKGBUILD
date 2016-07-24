@@ -2,7 +2,7 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-_pkgver=0.98.1
+_pkgver=0.99
 pkgver="$_pkgver"BETA
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
@@ -14,20 +14,13 @@ depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
 makedepends=('zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
-source=(https://github.com/pwsafe/pwsafe/releases/download/$pkgver/pwsafe-$pkgver-src.tgz{,.sig}
-	0001-Fixed-broken-Linux-Makefile-based-build.patch)
-
-install='passwordsafe.install'
+source=(https://github.com/pwsafe/pwsafe/releases/download/$pkgver/pwsafe-$pkgver-src.tgz{,.sig})
 validpgpkeys=('A703C1328EABC7B201753BA3919464515CCF8BB3')  #Rony Shapiro
-sha1sums=('505f0d24376ae0dc886958869ea8e2f2e14d85ca'
-          'SKIP'
-          '8dcb2d5b9d7f8eb58d7f6b54b23e2a4eaa2b981c')
+sha1sums=('3b736247712c5054e511b8946e7b93eb31eaf287'
+          'SKIP')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
-	# https://github.com/pwsafe/pwsafe/issues/79
-	# git format-patch -1 eea4ef6
-	patch -p1 -i ../0001-Fixed-broken-Linux-Makefile-based-build.patch
 }
 
 build() {
