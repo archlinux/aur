@@ -1,4 +1,4 @@
-# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
+# Maintainer: Lukas Tobler <luk4s.tobler@gmail.com>
 
 pkgname=i3lock-lixxia-git
 pkgver=7b59bd
