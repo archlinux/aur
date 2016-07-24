@@ -3,7 +3,7 @@
 pkgname=black-screen
 pkgver=0.2.8
 pkgrel=4
-pkgdesc='A terminal emulator for the 21st century.'
+pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
 license=('MIT')
