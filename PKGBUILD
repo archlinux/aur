@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=emoncms
-pkgver=9.4
+pkgver=9.7.2
 pkgrel=1
 pkgdesc="an open-source web application for processing, logging and visualising energy, temperature and other environmental data"
 url="https://emoncms.org"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('php' 'mariadb' 'php-apache' 'php-mcrypt')
 install=${pkgname}.install
 source=("https://github.com/emoncms/emoncms/archive/${pkgver}.tar.gz" "apache.example.conf")
-md5sums=('15fd82752dc05044bb69d8f9f127bf6b'
+md5sums=('89df205c7880b04ccb6f85cfc4fbdd16'
          '4172492bf03807dd44d4fcc0c8cdaa0c')
 
 options=(!strip emptydirs)
