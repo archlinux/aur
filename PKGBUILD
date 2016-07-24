@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=feed_parser-git
-pkgver=0.1.0.r41.f9a390a
+pkgver=0.1.0.r45.e346a45
 pkgrel=1
 pkgdesc="Parse RSS and Atom feeds in C++"
 arch=('i686' 'x86_64')
