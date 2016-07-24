@@ -28,7 +28,7 @@ pkgbase = caja-1.15-gtk3
 	provides = caja-gtk3
 	conflicts = caja
 	conflicts = caja-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/caja-1.15.1.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.15/caja-1.15.2.tar.xz
 	sha1sums = d47c82f39448027fd5767c3c6dccadfb819f378a
 
 pkgname = caja-1.15-gtk3
