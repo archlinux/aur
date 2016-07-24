@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain-git
-pkgver=20160525
+pkgver=20160723
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ build() {
     --with-gnu-ld \
     --without-tests \
     --without-tools
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
