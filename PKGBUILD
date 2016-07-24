@@ -4,20 +4,20 @@ pkgname=tibia
 pkgver=1096
 pkgrel=1
 pkgdesc="A fast-paced free massively multiplayer online role-playing game."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.tibia.com"
 license=('custom')
-depends=('lib32-glu' 'lib32-mesa')
+depends_i686=('glu' 'mesa')
+depends_x86_64=('lib32-glu' 'lib32-mesa')
 makedepends=('gendesk' 'python-html2text')
 provides=('tibia')
 install=${pkgname}.install
 
 source=("http://static.tibia.com/download/tibia${pkgver}.tgz"
-	'http://www.tibia.com/support/agreement.php' 'tibia.install')
+	'http://www.tibia.com/support/agreement.php')
 
 sha256sums=('11bec465da38ae8e6d4d773c54142fa38b6f99207b3a9ce118917e31b32a6488'
-	'fb192d96b893d012c0ecbf216885846c2826bdb72ae7824879959d3b01564f34'
-	'b4fad80c71133c3209e435d904024261e3a331faaa6a9fcb8cbe99f1ede0c454')
+	'fb192d96b893d012c0ecbf216885846c2826bdb72ae7824879959d3b01564f34')
 
 prepare() {
   gendesk -f -n
