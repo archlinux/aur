@@ -9,7 +9,7 @@ url='https://github.com/shockone/black-screen'
 license=('MIT')
 depends=('electron')
 makedepends=('npm')
-source=("https://github.com/shockone/black-screen/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shockone/black-screen/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.sh')
 sha256sums=('2705ca0464f0f20c837b0f2431ab9ba93bf67becb9d400dd7460a73024e2c81c'
