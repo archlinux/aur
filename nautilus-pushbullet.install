@@ -2,11 +2,13 @@
 
 post_install() {
 	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo
+    echo "Updating Icon-Cache"
+	gtk-update-icon-cache -q -t -f usr/share/icons/Humanity
 }
 
 post_upgrade() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	gtk-update-icon-cache -q -t -f usr/share/icons/Humanity
 }
 
 post_remove() {
