@@ -31,7 +31,7 @@ package() {
   install -m0644 -D ${pkgname}@.service ${pkgdir}/usr/lib/systemd/system/${pkgname}@.service
   install -m0644 -D ${pkgname}@.timer ${pkgdir}/usr/lib/systemd/system/${pkgname}@.timer
 
-  cd $srcdir/btrfs-sxbackup-$pkgver
+  cd $srcdir/${pkgname}-$pkgver
   python setup.py install --prefix=/usr --root=$pkgdir
   install -m0644 -D etc/btrfs-sxbackup.conf $pkgdir/etc/btrfs-sxbackup.conf
 }
