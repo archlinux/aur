@@ -1,0 +1,15 @@
+pkgbase = ksmtuned-git
+	pkgdesc = While the ksm service is only able to start and stop the KSM kernel thread, ksmtuned controls and tunes KSM according to the used memory of running qemu KVM instances.
+	pkgver = 14.48f3d5b
+	pkgrel = 1
+	url = https://git.centos.org/summary/rpms!qemu-kvm
+	arch = any
+	license = GPLv2
+	provides = ksmtuned
+	backup = etc/default/ksm
+	backup = etc/ksmtuned.conf
+	source = git://github.com/Anthony25/ksmtuned.git
+	md5sums = SKIP
+
+pkgname = ksmtuned-git
+
