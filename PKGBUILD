@@ -2,7 +2,7 @@
 
 pkgname=ksmtuned-git
 pkgver=14.48f3d5b
-pkgrel=1
+pkgrel=2
 pkgdesc='While the ksm service is only able to start and stop the KSM kernel thread, ksmtuned controls and tunes KSM according to the used memory of running qemu KVM instances.'
 arch=('any')
 license=('GPLv2')
