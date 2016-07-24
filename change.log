@@ -1,6 +1,9 @@
 Game Changelog
 http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
+0.95.4.20160724-1
+* new upstream version
+
 0.95.2.20160614-3
 * new upstream version
 * move unzip to makedepends
