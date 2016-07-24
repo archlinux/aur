@@ -11,16 +11,16 @@ url="https://mozilla.github.io/${_plugin_name}/"
 makedepends=('unzip' )
 depends=("firefox")
 license=('GPL2')
-source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi" )
+source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi" )
 sha1sums=('SKIP') # skip check because this changes rapidly
-noextract=("${pkgname}-${pkgver}.xpi")
+noextract=("${pkgname}.xpi")
 
 pkgver(){
-    unzip -p ${pkgname}-${pkgver}.xpi package.json | grep -m1 version | awk -F: '{ print $2 }' | sed 's/[", ]//g'
+    unzip -p ${pkgname}.xpi package.json | grep -m1 version | awk -F: '{ print $2 }' | sed 's/[", ]//g'
 }
 
 package(){
-    srcxpi="${srcdir}/${pkgname}-${pkgver}.xpi"
+    srcxpi="${srcdir}/${pkgname}.xpi"
     emid=$(unzip -p "$srcxpi" install.rdf | sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}')
     
     
