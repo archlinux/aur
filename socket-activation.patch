@@ -15,9 +15,9 @@ index 06a579f..58016fb 100755
 --- a/bin/www
 +++ b/bin/www
 @@ -13,5 +13,5 @@ app.set 'port', process.env.PORT
-
+ 
  console.log "Environment: #{app.get('env')}"
-
+ 
 -server = app.listen app.get('port'), ->
 +server = app.listen require('systemd-socket')() || app.get('port'), ->
  	console.log "Listening on port #{server.address().port}"
@@ -34,5 +34,5 @@ index 7506238..43a19b5 100644
 +    "systemd-socket": "^0.0.0"
    }
  }
---
+-- 
 2.9.0

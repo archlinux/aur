@@ -11,10 +11,10 @@ optdepends=()
 source=("$_npmname".{service,socket}
         'binary.patch'
         'socket-activation.patch')
-md5sums=('8e09674dfcf9ba971f2a436bb2c55e1a'
-         '7e5a337a2598b938d605d8c49f8984ea'
-         'ad657d580e728305638c1285dd47d77c'
-         'e9346c6ee335dff8fc4e28ac6843d2af')
+md5sums=('e91569a2035064f52e321653ba26172e'
+         '0de7e38748a53ec8d96c2dd645e8bb2e'
+         '8b8cd5d387347f3632a80827b161bd76'
+         '8f4df9f6102f3078bebe89213320492a')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
