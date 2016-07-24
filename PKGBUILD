@@ -1,15 +1,15 @@
 # Maintainer: Jon Eyolfson <jon@eyolfson.com>
 pkgname=emacs-evil
 _emacs_pkgname=evil
-pkgver=1.2.8
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="An extensible vi layer for Emacs"
-url="http://gitorious.org/evil/pages/Home"
+url="https://www.emacswiki.org/emacs/Evil"
 arch=('any')
 license=('GPLv2')
 depends=('emacs' 'emacs-undo-tree')
 source=("https://bitbucket.org/lyro/evil/get/${pkgver}.tar.gz")
-sha256sums=('98cd73042ad75059c42ac1674a12a6afacd9531541f34bf1843d4baaef462879')
+sha256sums=('cb9641195b825067c0109ac74f1cb183e652383f269dfe4b2147d27e867ddb74')
 
 build() {
   cd "${srcdir}/lyro-evil-"*
