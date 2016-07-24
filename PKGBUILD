@@ -3,7 +3,7 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-network-git
-pkgver=20160528
+pkgver=20160723
 pkgrel=1
 pkgdesc="Bitcoin P2P Network Library"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ build() {
     --localstatedir=/var/lib/libbitcoin-network \
     --without-tests \
     --with-gnu-ld
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
