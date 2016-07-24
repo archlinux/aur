@@ -1,7 +1,7 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=gitbucket
-pkgver=3.14
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="The easily installable Github clone written with Scala"
 url="https://github.com/gitbucket/gitbucket"
@@ -11,7 +11,7 @@ depends=( "java-runtime"  )
 makedepends=( )
 source=( "$pkgname-$pkgver.war::https://github.com/gitbucket/gitbucket/releases/download/$pkgver/gitbucket.war"
          "$pkgname.service" )
-sha1sums=('a431d1c5ebf6fec6e9642f091e1b9ac1dd51eba4'
+sha1sums=('cf1f4b4dd7c4116624f3afb309e789ea38555efb'
           'c93c600608d7922f67f4a3036a944fefc48bf9e0')
 
 package() {
