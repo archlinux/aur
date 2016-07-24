@@ -1,7 +1,7 @@
 pkgbase = pushbullet-indicator
 	pkgdesc = An indicator for working with PushBullet.
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = pushbullet-indicator
 	depends = python-jinja
 	depends = python-pillow
 	depends = python-requests
+	depends = python-ws4py
 	depends = pushbullet-commons
 	provides = pushbullet-indicator
 	source = https://launchpad.net/~atareao/+archive/ubuntu/pushbullet/+files/pushbullet-indicator_0.6.3-0extras16.04.0.tar.xz

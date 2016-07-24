@@ -5,12 +5,12 @@
 #
 pkgname="pushbullet-indicator"
 pkgver="0.6.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An indicator for working with PushBullet."
 arch=('i686' 'x86_64')
 url="https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/"
 license=('GPL3')
-depends=('libappindicator-gtk3' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-pillow' 'python-requests' 'pushbullet-commons')
+depends=('libappindicator-gtk3' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-pillow' 'python-requests' 'python-ws4py' 'pushbullet-commons')
 makedepends=('python2-distutils-extra' 'python2-polib')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/pushbullet/+files/${pkgname}_${pkgver}-0extras16.04.0.tar.xz")
