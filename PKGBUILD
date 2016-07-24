@@ -1,13 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20160527
+pkgver=20160723
 pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq'
          'icu'
          'libbitcoin'
          'libbitcoin-protocol'
@@ -49,7 +48,7 @@ build() {
     --with-gnu-ld \
     --without-examples \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
