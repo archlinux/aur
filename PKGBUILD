@@ -2,8 +2,8 @@
 
 pkgname=mandb-ondemand
 pkgver=2.03
-pkgrel=2
-pkgdesc="Makes any pacman updates to manpage index database much faster."
+pkgrel=3
+pkgdesc="Makes any pacman updates to the manpage index database much faster."
 arch=('any')
 url="http://github.com/graysky2/mandb-ondemand"
 license=('MIT')
