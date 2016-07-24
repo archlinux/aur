@@ -2,7 +2,7 @@
 
 pkgname=black-screen
 pkgver=0.2.8
-pkgrel=4
+pkgrel=5
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
@@ -65,7 +65,7 @@ package() {
     rm -r "${pkgdir}"${_appdir}/{housekeeping,src}
     find "${pkgdir}"${_appdir} \
         -name "package.json" \
-            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_app_dir}|" \
+            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_appdir}|" \
                 -i {} \; \
         -or -name ".*" -prune -exec rm -r '{}' \; \
         -or -name "*.mk" -exec rm '{}' \; \
