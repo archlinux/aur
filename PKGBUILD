@@ -3,7 +3,7 @@
 pkgname=pokemon-go-map-dev-git
 _gitname=PokemonGo-Map
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Live visualization of all the pokemon in your area... and more! (dev branch)'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
@@ -21,4 +21,8 @@ package() {
   cd "${srcdir}/$_gitname/"
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -a * "${pkgdir}/opt/${pkgname}"
+
+  # workaround for issue #1348
+  mkdir "${pkgdir}/opt/${pkgname}/config"
+  chmod 777 "${pkgdir}/opt/${pkgname}/config"
 }
