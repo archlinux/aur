@@ -25,7 +25,7 @@ package() {
   make build
 
   install -D -m 644 ksm $pkgdir/etc/default/ksm
-  install -D -m 644 ksmtuned.conf $pkgdir/etc/default/ksm
+  install -D -m 644 ksmtuned.conf $pkgdir/etc/ksmtuned.conf
 
   install -D -m 755 ksmctl $pkgdir/usr/bin/ksmctl
   install -D -m 755 ksmtuned $pkgdir/usr/bin/ksmtuned
