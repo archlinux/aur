@@ -2,13 +2,13 @@
 
 pkgname=xcursor-neutralplus
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Nice mod of the Neutral X11 cursor theme'
-url='http://www.kde-look.org/content/show.php/show.php?content=48837'
+url='https://www.kde-look.org/p/999928/'
 arch=('any')
 license=('PerlArtistic')
-source=("http://www.kde-look.org/CONTENT/content-files/48837-Neutral_Plus_1.2.tar.bz2")
-sha1sums=('abddb75314374a65b6066fdddae23699768fe771')
+source=("https://dl.opendesktop.org/api/files/download/id/1460735271/48837-Neutral_Plus_${pkgver}.tar.bz2")
+md5sums=('eb697c68167f05387dc3ee8d8cee084d')
 
 package()
 {
