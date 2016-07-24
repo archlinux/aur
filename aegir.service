@@ -1,7 +1,7 @@
 [Unit]
 Description=Aegir queue daemon
-Wants=mysqld.service php-fpm.service
-After=mysqld.service php-fpm.service
+Wants=mysqld.service php56-fpm.service
+After=mysqld.service php56-fpm.service
 
 [Service]
 Type=simple
