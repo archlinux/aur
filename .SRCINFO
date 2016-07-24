@@ -1,0 +1,14 @@
+pkgbase = phpredisadmin
+	pkgdesc = phpRedisAdmin is a simple web interface to manage Redis databases
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/erikdubbelboer/phpRedisAdmin
+	arch = any
+	license = GPL
+	source = https://github.com/erikdubbelboer/phpRedisAdmin/archive/v1.6.0.tar.gz
+	source = https://github.com/nrk/predis/archive/v1.1.1.zip
+	md5sums = 325833e444d814dc2b2b3418cd954467
+	md5sums = 8755fd28c226c5ac2b73c09b0dce70de
+
+pkgname = phpredisadmin
+
