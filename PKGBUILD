@@ -1,8 +1,8 @@
 # Maintainer: Chipster Julien <julien dot chipster @ archlinux dot fr>
 
 pkgname=gincamalarm
-pkgver=0.0.5
-pkgrel=5
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -81,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('e955d70b8aabd54c84e53753298c0e38b4ad108e7fe5a9ba13292cdf3826ef8713381f7459d29884a39693a1ff227a02af5fa3dc4f9d85e6aa0a17004ade814c')
+sha512sums=('139263e37bc0d3157ab66099e813ce29a49e30a60e3e41b264e72ab16187ce89d5ac7f8ede8c56806f6b2e8f3893fae3b165d636ae768a73e6d69b178c67cb57')
