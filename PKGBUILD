@@ -3,7 +3,7 @@
 
 pkgname=pepper
 pkgver=0.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/taylor001/crown"
@@ -19,7 +19,7 @@ source=("https://github.com/taylor001/crown/releases/download/v$pkgver/$pkgname-
         "pepper.sh"
         "pepper.desktop"
         )
-md5sums=('b4b9b43fe0f42835863b37588b419da4'
+md5sums=('3e009f5c146005973bcf33730361a016'
          '8fca300dce4e3858e34e7a2d550a3728'
          '7424db2a97c159d516cfa813be148966')
 
@@ -31,11 +31,11 @@ package() {
     install -D -m644 pepper.desktop "${pkgdir}/usr/share/applications/pepper.desktop"
     install -D -m644 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -D -m644 $pkgname/tools/ui/icons/16x16/pepper.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/24x24/pepper.png "${pkgdir}/usr/share/icons/hicolor/24x24/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/32x32/pepper.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/64x64/pepper.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/128x128/pepper.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/256x256/pepper.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pepper.png"
-    install -D -m644 $pkgname/tools/ui/icons/pepper.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pepper.svg"
+    install -D -m644 $pkgname/tools/icons/16x16/pepper.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/24x24/pepper.png "${pkgdir}/usr/share/icons/hicolor/24x24/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/32x32/pepper.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/64x64/pepper.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/128x128/pepper.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/256x256/pepper.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pepper.png"
+    install -D -m644 $pkgname/tools/icons/pepper.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pepper.svg"
 }
