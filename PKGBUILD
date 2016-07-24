@@ -25,10 +25,10 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
 
-    _app_dir=/usr/lib/${pkgname}
+    _appdir=/usr/lib/${pkgname}
 
-    install -d "${pkgdir}"${_app_dir}
-    cp -r * "${pkgdir}"${_app_dir}
+    install -d "${pkgdir}"${_appdir}
+    cp -r * "${pkgdir}"${_appdir}
 
     install -D -m755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
     install -D -m644 "${srcdir}"/${pkgname}.desktop \
@@ -39,5 +39,5 @@ package() {
 
     # Clean up
     find "${pkgdir}" -name "package.json" \
-        -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_app_dir}|" -i {} \;
+        -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_appdir}|" -i {} \;
 }
