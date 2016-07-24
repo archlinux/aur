@@ -9,8 +9,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # 
 pkgname=chromium-vaapi
-pkgver=51.0.2704.106
-pkgrel=2
+pkgver=52.0.2743.82
+pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by 
 your GPU."
@@ -39,12 +39,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine.patch
         PNGImageDecoder.patch
         chromium_vaapi.patch)
-sha256sums=('fb97a6a3119ec2c8cc4ad9a0bd6c4d306516769039a2633633f7d0c770012cfd'
+sha256sums=('a7de6015df9cf685d68efd1e070ae9c706c723cd9395d079a7d43672a2c37eb4'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
-            '2258e5ab6ea5e06cee9d3740cf5c62ee04c41e300f6d27561c2788f78b1c70ab')
+            'a84baad70b205dc051ac42fcd14df0c5e069195ec326c3fd21e246bfdf052d24')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
