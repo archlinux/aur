@@ -10,7 +10,7 @@ license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('git' 'gulp' 'npm')
 options=(!emptydirs)
-source=("https://github.com/princejwesley/Mancy/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/princejwesley/Mancy/archive/v${pkgver}.tar.gz"
         'mancy.desktop'
         'mancy.sh')
 sha256sums=('94c2a9596b801222716fe82eb7942bf73fb9768b5b08848550719885d69c44af'

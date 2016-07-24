@@ -1,4 +1,4 @@
 /mancy-*.pkg.tar.*
 /pkg/
 /src/
-/v*.tar.gz
+/*.tar.gz
