@@ -3,7 +3,7 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-git
-pkgver=20160527
+pkgver=20160723
 pkgrel=1
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ build() {
     --with-gnu-ld \
     --without-examples \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
