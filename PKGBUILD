@@ -3,7 +3,7 @@
 pkgname=pokemon-go-map
 pkgver=2.0
 pkgrel=1
-pkgdesc='Live visualization of all the pokemon in your area... and more!'
+pkgdesc='Live visualization of all the pokemon in your area... and more! (stable releases)'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
 license=('GNU GPLv3+')
