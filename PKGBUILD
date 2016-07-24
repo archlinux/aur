@@ -4,7 +4,7 @@
 _pkgname=exmplayer
 pkgname=$_pkgname-git
 pkgver=5.0.1.r2.g1ccb1ac
-pkgrel=1
+pkgrel=2
 pkgdesc="MPlayer GUI front-end with 3D/2D video playback support and with audio converter, media cutter and audio extractor tools"
 arch=('i686' 'x86_64')
 url='http://exmplayer.sourceforge.net/'
@@ -21,6 +21,12 @@ md5sums=('SKIP')
 pkgver() {
   cd $pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  #sed -i 's|this->setWindowFlags(!Qt::WindowStaysOnTopHint);|this->setWindowFlags(Qt::Window);|' src/playerwindow.cpp
+  sed -i 's|this->setWindowFlags(!Qt::WindowStaysOnTopHint);|this->setWindowFlags(0);|' src/playerwindow.cpp
 }
 
 build() {
