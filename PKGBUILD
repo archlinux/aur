@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=nextcloud
-pkgver=9.0.52
+pkgver=9.0.53
 pkgrel=1
 pkgdesc="A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
 url="https://nextcloud.com"
@@ -27,7 +27,7 @@ source=("apache.example.conf"
   "https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
   "set-nc-perms.sh")
 md5sums=('bc2b02b0562b7a58e660e33acd4202bc'
-         '08f0fc5b85b491e99069da8a86fc9fe8'
+         'efdb2a94be19009e61f5bfb04dcc49b1'
          'SKIP'
          '0c996a76cf39b2bccde8d74ac062895e')
 
