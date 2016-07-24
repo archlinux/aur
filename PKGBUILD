@@ -2,12 +2,12 @@
 
 pkgname=upm
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Password Manager"
 arch=('any')
 url="http://upm.sourceforge.net/"
 license=('GPL2')
-depends=('java-runtime')
+depends=('bash' 'java-environment')
 source=("http://downloads.sourceforge.net/project/upm/upm-${pkgver}/upm-${pkgver}.tar.gz")
 sha256sums=('44b321b3e026f1bddfa91937c47c5079d3739843062e69a4cd5868190fcae526')
 
