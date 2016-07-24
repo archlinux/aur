@@ -2,9 +2,9 @@
 
 pkgname=pokemon-go-map-git
 _gitname=PokemonGo-Map
-pkgver=r496.071e545
+pkgver=1
 pkgrel=1
-pkgdesc='Live visualization of all the pokemon in your area... and more!'
+pkgdesc='Live visualization of all the pokemon in your area... and more! (master branch)'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
 license=('GNU GPLv3+')
