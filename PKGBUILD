@@ -3,12 +3,12 @@
 
 pkgname="nautilus-pushbullet"
 pkgver="0.5.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension for Nautilus to send files with pushbullet"
 arch=('any')
 url="https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/"
 license=('GPL3')
-depends=('python2' 'pushbullet-commons')
+depends=('humanity-icon-theme' 'python2' 'pushbullet-commons')
 makedepends=('python2-distutils-extra')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/pushbullet/+files/${pkgname}_${pkgver}-0extras16.04.4.tar.xz")

@@ -1,12 +1,13 @@
 pkgbase = nautilus-pushbullet
 	pkgdesc = An extension for Nautilus to send files with pushbullet
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/
 	install = nautilus-pushbullet.install
 	arch = any
 	license = GPL3
 	makedepends = python2-distutils-extra
+	depends = humanity-icon-theme
 	depends = python2
 	depends = pushbullet-commons
 	provides = nautilus-pushbullet
