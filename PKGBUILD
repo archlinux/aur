@@ -3,16 +3,14 @@
 pkgname=pokemon-go-map-dev-git
 _gitname=PokemonGo-Map
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Live visualization of all the pokemon in your area... and more! (dev branch)'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
 license=('GNU GPLv3+')
-depends=( 'python2' 'python2-protobuf-to-dict' 'python2-peewee' 'python2-s2sphere' 'python2-flask-cors' 'python2-flask' 'python2-geopy' 'python2-protobuf' 'python2-requests' 'python2-gpsoauth' 'python2-werkzeug')
+depends=( 'python2' 'python2-flask-compress' 'python2-protobuf-to-dict' 'python2-peewee' 'python2-s2sphere' 'python2-flask-cors' 'python2-flask' 'python2-geopy' 'python2-protobuf' 'python2-requests' 'python2-gpsoauth' 'python2-werkzeug')
 source=("git://github.com/AHAAAAAAA/${_gitname}#branch=develop")
 sha256sums=('SKIP')
-
-#PKGEXT='.pkg.tar'
 
 pkgver() {
   cd "${srcdir}/$_gitname/"
