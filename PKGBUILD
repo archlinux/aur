@@ -3,6 +3,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
 # Contributor: misc <tastky@gmail.com>
+# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 
 pkgbase=linux-git
 _srcname=linux
