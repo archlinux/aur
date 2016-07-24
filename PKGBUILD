@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=snowmix
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic audio and video feed mixer"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://snowmix.sourceforge.net"
@@ -10,10 +10,8 @@ groups=()
 makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'awk')
 depends=('openbsd-netcat' 'cairo' 'pango' 'gst-libav' 'sdl' 'freeglut' 'libpng'
          'tcl' 'bwidget' 'glu')
-source=("https://downloads.sourceforge.net/sourceforge/snowmix/Snowmix-$pkgver.tar.gz"
-        "snowmix.sh")
-sha256sums=('0f39911243741f9c64a1994c7a0523db41e2e6e24efacd634d0d1f33c9c3e7bd'
-            'fce726356bb10aafa30aff1beebb8750159e45c356091330eb3566866a78383c')
+source=("https://downloads.sourceforge.net/sourceforge/snowmix/Snowmix-$pkgver.tar.gz")
+sha256sums=('0f39911243741f9c64a1994c7a0523db41e2e6e24efacd634d0d1f33c9c3e7bd')
 
 build() {
   cd "Snowmix-$pkgver"
@@ -28,6 +26,8 @@ build() {
               --enable-snowmixglu --enable-snowmixglut --enable-snowmixgui
   export SNOWMIX="/usr/lib/Snowmix-$pkgver"
   make
+  echo "test -f /usr/bin/snowmix &&" \
+        "export SNOWMIX=/usr/lib/Snowmix-${pkgver}" > snowmix_env.sh
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
   export SNOWMIX="/usr/lib/Snowmix-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm755 "$srcdir"/snowmix.sh \
+  install -Dm755 snowmix_env.sh \
     "${pkgdir}"/etc/profile.d/snowmix.sh
 
   rm -r "$pkgdir/usr/lib/Snowmix-$pkgver/test"
