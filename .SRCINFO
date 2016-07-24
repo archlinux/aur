@@ -1,13 +1,13 @@
 pkgbase = origin-client-bin
 	pkgdesc = The client tools for the Origin platform that powers OpenShift
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/openshift/origin
 	arch = i686
 	arch = x86_64
 	license = Apache
-	source = https://github.com/openshift/origin/releases/download/v1.2.0/openshift-origin-client-tools-v1.2.0-2e62fab-linux-64bit.tar.gz
-	sha256sums = 62d309592b27e42a84102a950d92a8c1b6b61ea488f7c2f3433bf38f64cea68b
+	source = https://github.com/openshift/origin/releases/download/v1.2.1/openshift-origin-client-tools-v1.2.1-5e723f6-linux-64bit.tar.gz
+	sha256sums = 50af8fc25295cebaf7a77d4cfe41ef19adc9d3bbecf57719ff4bdd9bb173b5d9
 
 pkgname = origin-client-bin
 
