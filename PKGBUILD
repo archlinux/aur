@@ -4,7 +4,7 @@
 _pkgname=edyuk
 pkgname=$_pkgname-svn
 pkgver=r1053 
-pkgrel=2
+pkgrel=3
 pkgdesc="Fully-featured Qt4 IDE"
 arch=('i686' 'x86_64')
 url="http://www.edyuk.org"
@@ -14,23 +14,25 @@ makedepends=('subversion')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
-source=($pkgname::svn+http://edyuk.svn.sf.net/svnroot/edyuk/trunk
-        installpri.patch)
-md5sums=('SKIP'
-         '66ce655bc8ad981f724150b06aea9ae4')
+source=($pkgname::svn+http://edyuk.svn.sf.net/svnroot/edyuk/trunk)
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
+
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
-build() {
+prepare() {
   cd $pkgname
 
-  # Fix path to Qt mkspecs directory
-  # Fix directory for icons on KDE4
-  patch -Np0 -i ../installpri.patch
+  sed -i 's|return m_handle ? m_handle->document() : false|return m_handle ? m_handle->document() != 0 : false|' \
+                3rdparty/qcodeedit2/lib/document/qdocumentline.cpp
+}
+
+build() {
+  cd $pkgname
 
   qmake-qt4
   make
@@ -57,7 +59,6 @@ package() {
   # it causes firefox and thunderbird (with kparts plugin) to crash when launched
   rm -r "$pkgdir/usr/share/mime/"
 
-  # Cannot install in a directory path that contains a symlink (/usr/share/icons/default.kde4)
-  mv "$pkgdir/usr/share/icons/"{default.kde4,oxygen}
+  #mv "$pkgdir/usr/share/icons/"{default.kde,oxygen}
 }
 
