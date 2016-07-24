@@ -9,7 +9,7 @@ url='https://minbrowser.github.io/min'
 license=('Apache')
 depends=('electron')
 makedepends=('nodejs-grunt-cli' 'npm')
-source=("https://github.com/minbrowser/min/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/v${pkgver}.tar.gz"
         'min.desktop'
         'min.sh')
 sha256sums=('1f63664518f8535e1472f5d1fdd81d0a8426b752075433e1ecf3a28e43954057'

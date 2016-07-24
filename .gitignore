@@ -1,4 +1,4 @@
 /min-*-any.pkg.tar.*
 /pkg/
 /src/
-/v*.tar.gz
+/*.tar.gz
