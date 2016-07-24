@@ -1,7 +1,7 @@
 # Maintainer: Dick Choi <fluke8259@gmail.com>
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 pkgname=boostnote
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Opensource note app for developer"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 
 noextract=()
 
-md5sums=('78ad3fa01f3c5b2488e276e258c51c6e')
+md5sums=('4a1e0aa9e7f772a7051efc209edd7750')
 
 validpgpkeys=()
 
