@@ -1,8 +1,8 @@
 # Maintainer: graysky <graysky AT archlinux DOT org>
 
 pkgname=mandb-ondemand
-pkgver=2.03
-pkgrel=3
+pkgver=2.04
+pkgrel=1
 pkgdesc="Makes any pacman updates to the manpage index database much faster."
 arch=('any')
 url="http://github.com/graysky2/mandb-ondemand"
