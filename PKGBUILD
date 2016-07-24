@@ -8,7 +8,7 @@ pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
 license=('custom:The Clarified Artistic License')
-depends=('libnautilus-extension' 'megasync')
+depends=('libnautilus-extension' 'megasync>=2.9.8' 'qt4')
 provides=("${pkgname}")
 
 source=("https://mega.nz/linux/MEGAsync/Debian_8.0/${pkgname}_${pkgver}.orig.tar.gz")

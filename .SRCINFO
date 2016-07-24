@@ -8,7 +8,8 @@ pkgbase = nautilus-megasync
 	arch = x86_64
 	license = custom:The Clarified Artistic License
 	depends = libnautilus-extension
-	depends = megasync
+	depends = megasync>=2.9.8
+	depends = qt4
 	provides = nautilus-megasync
 	source = https://mega.nz/linux/MEGAsync/Debian_8.0/nautilus-megasync_2.9.2.orig.tar.gz
 	sha256sums = e90a200cdae91554f5829a36a104062806552af4d7cb78fa20d0cb8f76828d0d
