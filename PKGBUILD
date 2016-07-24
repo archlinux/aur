@@ -2,7 +2,7 @@
 
 pkgname=min
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A smarter, faster web browser'
 arch=('any')
 url='https://minbrowser.github.io/min'
@@ -39,7 +39,7 @@ package() {
     # Clean up
     find "${pkgdir}"${_appdir} \
         -name "package.json" \
-            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_app_dir}|" \
+            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_appdir}|" \
                 -i {} \; \
         -or -name "bin" -prune -exec rm -r '{}' \; \
         -or -name ".*" -prune -exec rm -r '{}' \; \
