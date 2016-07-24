@@ -2,13 +2,13 @@
 pkgdesc="Soletta project is a framework for making IoT devices."
 arch=('i686' 'x86_64')
 url="http://github.com/solettaproject/soletta"
-license=('custom:BSD3')
+license=('Apache')
 depends=('python>=3.4' 'python-jsonschema' 'icu' 'curl' 'systemd' 'pcre' 'libmicrohttpd>=0.9.43')
 makedepends=('git' 'python>=3.4' 'python-jsonschema')
 optdepends=('gtk3' 'mosquitto')
 pkgname=soletta
 pkgver=1
-pkgrel=1
+pkgrel=2
 checkdepends=()
 conflicts=('soletta-git')
 source=("https://github.com/solettaproject/soletta/archive/v$pkgver.tar.gz"
