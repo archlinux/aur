@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=estonta-git
 _pkgname=estonta
-pkgver=r30.4b6fbd5
+pkgver=r31.fd64411
 pkgrel=1
 pkgbase=estonta-git
 pkgdesc="A simple Bash and Yad-based appointment system."
