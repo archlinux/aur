@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-protocol-git
-pkgver=20160528
+pkgver=20160724
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Query Protocol"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ build() {
     --without-examples \
     --without-tests \
     --with-gnu-ld
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
