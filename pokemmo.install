@@ -1,0 +1,8 @@
+post_install(){
+   echo "To play, you will need to place a PokeMon Fire Red (US) ROM, and optionally"
+   echo "a Heart Gold or Soul Silver ROM, in ~/.pokemmo/roms"
+   echo ""
+   echo "This software is not open-source. You must agree to the terms of service before"
+   echo "using this software. The terms of service and licensing information may be"
+   echo "here: http://pokemmo.eu/tos/"
+}
