@@ -3,7 +3,7 @@
 
 pkgname=keepass-wine
 pkgver=2.34
-pkgrel=1
+pkgrel=2
 pkgdesc='A easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices.'
 arch=('any')
 url='http://keepass.info/'
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver.zip"
         'KeePass.ico')
 
 sha256sums=('52dd5a8526cc935b0e240d5ab6402b0b4a3f5f09ad1a6919875878d7f36c697f'
-            '666911c06fbe3a8670b5cd841ced50e6c8a7724938280c0ce7ac92262d9406b6'
+            'd8ebd5e67544eb001cd071cbb1de2d088d979b7fbcda90de98e76c761f5640c3'
             'a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f'
             '1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140'
             '3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194'
