@@ -1,0 +1,12 @@
+pkgbase = ttyecho-git
+	pkgdesc = Send commands or data to other terminals.
+	pkgver = r2.beb3ecc
+	pkgrel = 1
+	url = https://github.com/osospeed/ttyecho.git
+	arch = any
+	makedepends = git
+	source = ttyecho-git::git+https://github.com/osospeed/ttyecho.git
+	sha1sums = SKIP
+
+pkgname = ttyecho-git
+
