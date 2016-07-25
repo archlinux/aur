@@ -38,7 +38,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.94.r124967
+pkgver=25.1.r125076
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -66,7 +66,8 @@ pkgver() {
   cd "$srcdir/$pkgname"
   printf "%s.r%s" \
     "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
+    #sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
+    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.\?[0-9]\+\?\).\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
