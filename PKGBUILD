@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 url="http://www.mediatek.com/en/products/connectivity/wifi/consumer-electronics/pcie/rt3562/"
 license=('GPL')
 depends=('linux-aufs_friendly')
-makedepends=('linux-aufs-friendly-headers')
+makedepends=('linux-aufs_friendly-headers')
 install=$_pkgname.install
 source=($_pkgname-$pkgver.tar.gz::https://github.com/mtorromeo/rt3562sta-linux/archive/r${_patchrel}.tar.gz)
 
@@ -30,7 +30,7 @@ build() {
 package() {
 	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
 	depends=("linux-aufs_friendly >=$_kernver" "linux-aufs_friendly <${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
-	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver--aufs_friendly/version)
+	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-aufs_friendly/version)
 	msg "Kernel = $KERNEL_VERSION"
 
 	cd "$srcdir"/rt3562sta-linux-r$_patchrel
