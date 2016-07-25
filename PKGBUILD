@@ -3,20 +3,21 @@
 # Contributor: Fabio Volpe
 
 pkgbase='python-pymunk'
+_libname=${pkgbase/python-/}
 pkgname=('python-pymunk' 'python2-pymunk')
-pkgver=4.0.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A wrapper around the 2d physics library Chipmunk"
 arch=('any')
 url='http://www.pymunk.org/en/latest/'
 license=('MIT')
-makedepends=('python' 'python2')
-source=("http://pymunk.googlecode.com/files/pymunk-$pkgver.zip")
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.zip")
 
 prepare() {
 	cd "$srcdir"/pymunk-$pkgver
-	rm pymunk/*.{so,dll,dylib}
-	sed '/print poly.radius/d' -i pymunk/pygame_util.py
+	sed -r "/^\s*(cmdclass|ext_modules) =/d" -i setup.py
+	sed -r "s#^    libfn = .*#    libfn = '/usr/lib/libchipmunk.so'#" -i pymunk/_libload.py
 
 	cd ..
 	cp -r pymunk-$pkgver pymunk-$pkgver-py2
@@ -50,11 +51,8 @@ package_python2-pymunk() {
 
 	cd "$srcdir"/pymunk-$pkgver-py2
 	python2 setup.py install -O1 --skip-build --root="$pkgdir"
-	_site_packages=$(python2 -sSc 'import site; print site.getsitepackages()[0]')
-	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk64.so
-	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk.so
 
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
-sha256sums=('7102b1a63d4eeb9eb459d4733663bc0af4ea59f664e3fac2228c704ec6768937')
+sha256sums=('4708eb37846162c33d86f6c148c8b5c68d7cd7841be3ba792585ee10350a69ab')
