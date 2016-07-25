@@ -4,7 +4,7 @@
 
 ## arg 1:  the new package version
 pre_install() {
-  msg2 "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
+  echo "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
   read -p "Please enter your serial number: " SERIALNUMBER
   read -p "Please enter your product id: " PRODUCTID
   echo ""
@@ -48,7 +48,20 @@ post_install() {
 
 ## arg 1:  the old package version
 #pre_remove() {
-	# do something here
+  rm /usr/lib/libadlmPIT.so.11
+  rm /usr/lib/libadlmutil.so.11
+
+  rm /usr/autodesk/maya2016/bin/License.env
+
+  rm /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
+
+  rm /usr/autodesk/maya2016/lib/libssl.so.10
+  rm /usr/autodesk/maya2016/lib/libcrypto.so.10
+
+  rm /usr/autodesk/maya2016/lib/libjpeg.so.62
+  rm/usr/autodesk/maya2016/lib/libtiff.so.3
+
+  rm -rf /usr/autodesk/maya2016/plugin-backups
 #}
 
 ## arg 1:  the old package version
