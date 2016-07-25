@@ -3,7 +3,7 @@
 set -u
 _pkgnameu='InterCon-NetTool'
 pkgname="${_pkgnameu,,}"
-pkgver='1.8.55'
+pkgver='1.8.56'
 pkgrel='1'
 pkgdesc='Administer SEH USB and parallel Print Servers'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _verwatch=("${url}services/downloads/download-printserver-extern/ps03a.html" 'In
 _srcdir="${_pkgnameu}-${pkgver}"
 options=('!strip')
 source=("${url}/fileadmin/user/downloads/tools/${_srcdir}.zip" 'intercon-nettool.desktop')
-sha256sums=('cca62a130d52452b21d620c744a3c899edcee1e8c7575ec6e9dff47547a6bab3'
+sha256sums=('91ed174fd28576738a1480f855e8ab53ea6bf17c38a3a440583ea3bbcb3930d6'
             '81149b190dd2373a6f8c8897ebd8593d76ddd92044eed79caf86249d4720e551')
 
 prepare() {
