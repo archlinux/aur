@@ -1,7 +1,7 @@
 #Maintainer: Ayrton Araujo <root@ayr-ton.net>
 
 pkgname=franz
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.'
 arch=('i686' 'x86_64')
