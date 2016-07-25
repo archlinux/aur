@@ -2,7 +2,7 @@
 # Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=labplot-kf5
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A free software data analysis and visualization application, for two and three-dimensional graphical presentation of data sets and functions."
 arch=('i686' 'x86_64')
@@ -11,14 +11,11 @@ license=('GPL')
 depends=('kdebase-runtime' 'gsl')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools')
 source=("http://download.kde.org/stable/labplot/${pkgver}/labplot-${pkgver}-kf5.tar.xz" "labplot-kf5.install")
-md5sums=('1985522cbd731f66b38f8fcc0cd96b20'
+md5sums=('5a53598be32371f927a9b939626303d8'
          '7dd4a598d34b8e21411dec1247752d99')
 install='labplot-kf5.install'
 
 prepare() {
-  ( cd "${srcdir}/labplot-${pkgver}-kf5"
-  sed -i 's/isnan/std::isnan/g' `grep "isnan" -rl`
-  sed -i 's/<math\.h>/<cmath>/g' `grep "math.h" -rl` )
   mkdir -p build
 }
 
