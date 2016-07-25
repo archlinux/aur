@@ -1,7 +1,8 @@
-# Maintainer: David Mougey <imapiekindaguy at gmail dot com>
+# Maintainer: Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=python-update_checker-git
-pkgver=0.11.r21.g4e69589
+pkgver=0.12.r25.g60a94a1
 pkgrel=1
 pkgdesc="A python module that will check for package updates."
 arch=('any')
