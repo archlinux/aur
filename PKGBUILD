@@ -1,7 +1,7 @@
 # Maintainer: Martin Mancuska <martin@borg.sk>
 
 _pkgname=qpdfwalker
-pkgname=$_pkgname
+pkgname=qpdfwalker-git
 pkgver=dev1
 pkgrel=1
 pkgdesc="Tool for browsing hierarchy of low level objects in a PDF file."
