@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gnatutil"
 license=('GPL V3.0 without any Runtime Exception')
 
-depends=('gcc-ada')
-makedepends=('gcc-ada')
+depends=('gcc-ada' 'prepare_gnat_util')
+makedepends=('gcc-ada' 'gprbuild')
 
 
 source=('gnat_util-gpl-2016-src.tar.gz::http://mirrors.cdn.adacore.com/art/57399637c7a447658e0affa6')
