@@ -6,3 +6,11 @@ post_install(){
    echo "using this software. The terms of service and licensing information may be"
    echo "here: http://pokemmo.eu/tos/"
 }
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "You may remove leftover config and data files from '~/.pokemmo'."
+}
