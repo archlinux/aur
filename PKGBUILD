@@ -34,6 +34,24 @@ validpgpkeys=('D95044283EE948D911E8B606A4F762DC58C6F98E')
 prepare() {
   # Extract icons
   icotool -x KeePass.ico
+
+  # Install dotnet
+  export WINEPREFIX=$(pwd)/wine
+  export WINEARCH=win32
+  export WINEDLLOVERRIDES="mscoree,mshtml="
+  winetricks -q dotnet20 dotnet40
+
+  # Set PathExt
+  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+  valuename="PATHEXT"
+  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
+  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+
+  # Set Path
+  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+  valuename="PATH"
+  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
+  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
 }
 
 package() {
@@ -59,21 +77,7 @@ package() {
   # Needed for postinst with xdg-utils
   install -Dm644 keepass.xml "$pkgdir"/usr/share/mime/packages/keepass.xml
 
-  # Install dotnet
-  export WINEPREFIX="$pkgdir"/usr/share/keepass/wine
-  export WINEARCH=win32
-  export WINEDLLOVERRIDES="mscoree,mshtml="
-  winetricks -q dotnet20 dotnet40
+  # Insttall wine prefix
+  cp -r wine "$pkgdir"/usr/share/keepass/wine
 
-  # Set PathExt
-  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
-  valuename="PATHEXT"
-  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
-  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
-
-  # Set Path
-  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
-  valuename="PATH"
-  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
-  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
 }
