@@ -10,8 +10,8 @@ _parrepo=https://repo.parabola.nu/libre/os
  
 pkgname=iceweasel-bin
 pkgver=${_debver}.deb${_debrel}.par${_parrel}
-pkgrel=1
-pkgdesc="A libre version of Debian Iceweasel (Parabola GNU/Linux-libre bin version)"
+pkgrel=3
+pkgdesc="Web Browser based on Mozilla Firefox, with Debian patches (Parabola GNU/Linux-libre bin version)"
 arch=('i686' 'x86_64')
 url="https://wiki.parabola.nu/iceweasel"
 license=(MPL GPL LGPL)
