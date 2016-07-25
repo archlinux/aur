@@ -3,6 +3,7 @@ pkgbase = maya
 	pkgver = 2016_SP5
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
+	install = maya.install
 	arch = x86_64
 	license = custom: unlimited
 	makedepends = rpmextract

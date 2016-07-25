@@ -1,0 +1,59 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	msg2 "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
+  read -p "Please enter your serial number: " SERIALNUMBER
+  read -p "Please enter your product id: " PRODUCTID
+  echo ""
+
+  mkdir /usr/tmp
+  chmod 777 /usr/tmp
+
+  cp /opt/Autodesk/Adlm/R11/lib64/libadlmPIT.so.11 /usr/lib/libadlmPIT.so.11
+  cp /opt/Autodesk/Adlm/R11/lib64/libadlmutil.so.11 /usr/lib/libadlmutil.so.11
+
+  echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2016/bin/License.env
+
+  /usr/autodesk/maya2016/bin/adlmreg -i S $PRODUCTID $PRODUCTID 2016.0.0.F $SERIALNUMBER /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
+
+  /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
+
+  ln -s /usr/lib/libssl.so /usr/autodesk/maya2016/lib/libssl.so.10
+  ln -s /usr/lib/libcrypto.so /usr/autodesk/maya2016/lib/libcrypto.so.10
+
+  ln -s /usr/lib/libjpeg.so /usr/autodesk/maya2016/lib/libjpeg.so.62
+  ln -s /usr/lib/libtiff.so /usr/autodesk/maya2016/lib/libtiff.so.3
+
+  mkdir /usr/autodesk/maya2016/plugin-backups
+  mv /usr/autodesk/maya2016/plug-ins/bifrost /usr/autodesk/maya2016/plugin-backups/
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
