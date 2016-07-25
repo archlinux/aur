@@ -1,12 +1,11 @@
 pkgbase = messengerfordesktop
 	pkgdesc = Beautiful desktop client for Facebook Messenger.
-	pkgver = 1.4.8
+	pkgver = 1.5.0_beta.1
 	pkgrel = 1
 	url = http://messengerfordesktop.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = gulp
 	makedepends = npm
 	depends = libxtst
@@ -20,9 +19,9 @@ pkgbase = messengerfordesktop
 	conflicts = messengerfordesktop-git
 	conflicts = messengerfordesktop-bin
 	options = !strip
-	source = https://github.com/Aluxian/Facebook-Messenger-Desktop/archive/v1.4.8.tar.gz
+	source = https://github.com/Aluxian/Facebook-Messenger-Desktop/archive/v1.5.0-beta.1.tar.gz
 	source = start.sh
-	md5sums = 15606a5bf64cb52fde0b3d057591c5fe
+	md5sums = c5840f31c39aa5108b9aaf438a916831
 	md5sums = 31abbecf99328b1b77ee1bdb1e2d981f
 
 pkgname = messengerfordesktop
