@@ -5,8 +5,13 @@ pkgbase = maya
 	url = http://www.autodesk.com/products/maya/overview
 	arch = x86_64
 	license = custom: unlimited
-	makedepends = rpmextract alien_package_converter debhelper cpio
-	depends = libpng12 tcsh libxp openssl libjpeg libtiff
+	makedepends = rpmextract
+	depends = libpng12
+	depends = tcsh
+	depends = libxp
+	depends = openssl
+	depends = libjpeg
+	depends = libtiff
 	source = http://download.autodesk.com/us/support/files/maya_2016_service_pack_5/Autodesk_Maya_2016_SP5_EN_Linux_64bit.tgz
 	md5sums = 5b88676c1c3239ea26b9de656340e974
 
