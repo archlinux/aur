@@ -1,43 +1,45 @@
-# Maintainer: jus <jus@bitgrid.net>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: jus <jus@bitgrid.net>
 # Contributor: jfperini <@jfperini>
 
-pkgname=vocal-git
-_gitname=vocal
-pkgver=2.0
+_pkgname=vocal
+pkgname=$_pkgname-git
+pkgver=2.0.5beta.r16.gc1578ed
 pkgrel=1
-pkgdesc="Vocal. The podcast client for the modern free desktop."
+pkgdesc='Podcast Client for the Modern Desktop'
 arch=('i686' 'x86_64')
-url="http://www.vocalproject.net"
-license=('GPLv3')
-depends=('libnotify' 'libunity' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite3' 'clutter-gtk' 'icu' 'webkit2gtk')
+url='http://www.vocalproject.net'
+license=('GPL3')
+depends=('libnotify' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite' 'clutter-gtk' 'clutter-gst' 'webkit2gtk')
 makedepends=('git' 'vala' 'cmake')
-install="$pkgname.install"
 source=('git://github.com/vocalapp/vocal.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_gitname}
-  echo $(git describe --tags | sed 's+v++g'|sed 's+-+.+g').$(git rev-list --count HEAD)
+  cd $_pkgname
+
+  git describe --long --tags | sed 's/$v//;s/-beta/beta/;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+
+  [[ -d build ]] || mkdir -p build
+
+  # use newer version of webkit2gtk
+  sed -i 's/webkit2gtk-3.0/webkit2gtk-4.0/g' CMakeLists.txt
 }
 
 build() {
-  cd ${srcdir}/${_gitname}
+  cd $_pkgname/build/
 
-  # fix dependency until it is not fixed upstream
-  sed -i 's/webkit2gtk-3.0/webkit2gtk-4.0/g' CMakeLists.txt
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
 
+  make
 }
 
 package() {
-  cd ${srcdir}/${_gitname}/build
+  cd $_pkgname/build
+
   make DESTDIR="$pkgdir" install
 }
-
-# vim: ts=2 sw=2 et:
