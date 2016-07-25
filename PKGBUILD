@@ -4,7 +4,7 @@
 
 _gitname=akonadi
 pkgname=$_gitname-git
-pkgver=r10502.56b7131
+pkgver=r10508.26d0626
 pkgrel=1
 pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data. builds with PostgreSQL backend"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-base' 'shared-mime-info' 'libxslt' 'postgresql' 'kdesignerplugin')
 makedepends=('git' 'extra-cmake-modules' 'postgresql')
 optdepends=('mariadb: MariaDB backend')
 conflicts=("$_gitname")
-provides=("$_gitname")
+provides=("$_gitname" 'akonadi-client')
 source=("git+https://github.com/KDE/$_gitname")
 install=$pkgname.install
 sha256sums=("SKIP")
