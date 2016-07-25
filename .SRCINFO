@@ -1,6 +1,6 @@
 pkgbase = razer-drivers-dkms
 	pkgdesc = Linux kernel drivers to support various Razer Chroma devices.
-	pkgver = 0.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/openrazer/razer-drivers
 	arch = x86_64

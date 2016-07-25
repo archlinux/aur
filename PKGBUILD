@@ -4,7 +4,7 @@
 # TODO: Checkout version
 
 pkgname=razer-drivers-dkms
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/openrazer/razer-drivers'
