@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenNebula Web Interface
+Description=OpenNebula econe Server
 After=network.target local-fs.target remote-fs.target opennebula.service
 Requires=opennebula.service
 
@@ -12,8 +12,8 @@ ExecStartPre=/usr/bin/mkdir -p /var/run/one
 ExecStartPre=/usr/bin/mkdir -p /var/lock/one
 ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/run/one
 ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/lock/one
-ExecStart=/usr/bin/sunstone-server start
-ExecStop=/usr/bin/sunstone-server stop
+ExecStart=/usr/bin/oneflow-server start
+ExecStop=/usr/bin/oneflow-server stop
 
 [Install]
 WantedBy=multi-user.target
