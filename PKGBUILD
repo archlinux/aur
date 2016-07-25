@@ -2,12 +2,12 @@
 pkgname=gocryptfs
 pkgver=1.0
 _tag=v1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypted overlay filesystem written in Go."
 arch=('i686' 'x86_64')
 url="https://github.com/rfjakob/gocryptfs"
 license=('MIT')
-depends=('gcc-libs>=5.3.0-3 openssl')
+depends=('gcc-libs' 'openssl')
 makedepends=('git' 'go')
 source=("git+https://github.com/rfjakob/gocryptfs.git#tag=$_tag"
         "gocryptfs.1")
