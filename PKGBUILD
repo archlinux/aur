@@ -1,26 +1,31 @@
-# $Id: PKGBUILD 171381 2016-04-19 06:54:58Z tpowa $
+# $Id: PKGBUILD 178168 2016-06-08 05:41:00Z tpowa $
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Bob Fanger < bfanger(at)gmail >
 # Contributor: Filip <fila pruda com>, Det < nimetonmaili(at)gmail >
 
 pkgname=r8168-aufs
 _pkgname=r8168
-pkgver=8.041.00
-pkgrel=9
-pkgdesc="A kernel module for Realtek 8168 network cards(-aufs_friendly kernel)"
+pkgver=8.042
+pkgrel=2
+pkgdesc="A kernel module for Realtek 8168 network cards"
 url="http://www.realtek.com.tw"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'linux-aufs_friendly')
 makedepends=('linux-aufs_friendly-headers')
 install=$_pkgname.install
-source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$pkgname-$pkgver.tar.gz
+source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$_pkgname-$pkgver.tar.gz
         linux-4.5.patch)
-sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5'
+sha256sums=('9dd8ae22115bcbef98c15b0b1e2160300cce3129ef7e0485d7e577188ba3fcc2'
             'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e')
 
+prepare() {
+	cd "$_pkgname-$pkgver"
+	patch -p1 -i ../linux-4.5.patch
+}
+
 build() {
-	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
+	_kernver=$(pacman -Q linux | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
 	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-aufs_friendly/version)
 
 	cd "$_pkgname-$pkgver"
@@ -35,7 +40,7 @@ build() {
 
 package() {
 	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
-	depends=("linux-aufs_friendly>=$_kernver" "linux-aufs_friendly<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
+	depends=("linux>=$_kernver" "linux<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
 	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-aufs_friendly/version)
 	msg "Kernel = $KERNEL_VERSION"
 
