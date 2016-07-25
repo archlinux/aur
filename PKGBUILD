@@ -4,7 +4,7 @@
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-agent
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ backup=('etc/zabbix/zabbix_agent.conf'
         'etc/zabbix/zabbix_agentd.conf'
 		)
 install="zabbix-agent.install"
-source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/sourceforge/zabbix/zabbix-$pkgver.tar.gz"
         "zabbix-agent.install"
 		"zabbix-agentd.service"
 		"zabbix-agentd.tmpfiles"
@@ -51,11 +51,11 @@ package() {
 	install -D -m 0644 $srcdir/zabbix-agentd.tmpfiles $pkgdir/usr/lib/tmpfiles.d/zabbix-agentd.conf
 }
 
-md5sums=('7c45d37000e67d75042695344c9937e0'
+md5sums=('a164b27ef80221429fc9a39eab0b7b9c'
          '519372592b66392255bfbf24e9469748'
          'd7ef5c8a7a6352dabecb9105da63fc84'
          '9ce692356b4ac0a71595ce55fe3b44c1')
-sha1sums=('91a1c65b59584b5114f5c1287b24a28e7bf56699'
+sha1sums=('6ef79266e10f561801d4bf4895557c720cb5feb6'
           'dcd2331be84f7b795087c8427f5c92837f2cf4ff'
           'acfe6a783cad8f28e7f23a65189af9a7d22bb540'
           '8926befcb944732fd59a34c89b569d3fbef1ca9d')
