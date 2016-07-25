@@ -1,7 +1,7 @@
 # Maintainer: Augusto Borges <aborges@iflysib.unlp.edu.ar>
 pkgname=morpheus-modeling
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="It's a modeling and simulation environment for the study of multiscale and multicellular systems."
 arch=('i686' 'x86_64')
 url="https://imc.zih.tu-dresden.de/wiki/morpheus"
@@ -23,6 +23,12 @@ build() {
   if ! test -e "build"; then
     mkdir "build";
   fi
+  sed -e '3s/# //' CMakeLists.txt > temporal.txt
+  mv temporal.txt CMakeLists.txt
+  cd "morpheus/core"
+  sed -e '3s/# //' CMakeLists.txt > temporal.txt
+  mv temporal.txt CMakeLists.txt
+  cd "../.."
   cd "build"
   cmake ..
 }

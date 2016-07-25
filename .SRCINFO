@@ -1,7 +1,7 @@
 pkgbase = morpheus-modeling
 	pkgdesc = It's a modeling and simulation environment for the study of multiscale and multicellular systems.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imc.zih.tu-dresden.de/wiki/morpheus
 	arch = i686
 	arch = x86_64
