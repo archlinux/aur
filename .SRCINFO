@@ -1,13 +1,24 @@
 pkgbase = dune-core
 	pkgdesc = Core modules of the DUNE framework
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dune-project.org
 	arch = i686
 	arch = x86_64
 	groups = dune
 	license = custom
 	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = openmpi
+	makedepends = gmp
+	makedepends = lapack
+	makedepends = boost
+	makedepends = superlu
+	makedepends = suitesparse
+	makedepends = parmetis
+	makedepends = alberta=3.0.1
+	makedepends = psurface
+	makedepends = ug=3.11.0
 	source = http://www.dune-project.org/download/2.4.1/dune-common-2.4.1.tar.gz
 	source = http://www.dune-project.org/download/2.4.1/dune-geometry-2.4.1.tar.gz
 	source = http://www.dune-project.org/download/2.4.1/dune-localfunctions-2.4.1.tar.gz
@@ -33,11 +44,6 @@ pkgname = dune-localfunctions
 
 pkgname = dune-grid
 	pkgdesc = Nonconforming, hierarchically nested, multi-element-type, parallel grids
-	optdepends = blas: linear algebra implementation
-	optdepends = lapack: more linear algebra implementation
-	optdepends = ug=3.11.0: for unstructured mesh handling
-	optdepends = alberta=3.0.1: for the alberta grid implementation
-	optdepends = psurface: piecewise linear bijections between triangulated surfaces
 
 pkgname = dune-istl
 	pkgdesc = Iterative solver template library
