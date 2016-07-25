@@ -1,6 +1,6 @@
 pkgbase = stagit
 	pkgdesc = static git page generator
-	pkgver = 0.3.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = http://git.2f30.org/stagit
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = stagit
 	license = MIT
 	makedepends = git
 	depends = libgit2
-	source = http://dl.2f30.org/releases/stagit-0.3.1.tar.gz
-	sha1sums = 630ac6e84be64e2089ffce9be6321d0b523cca68
+	source = http://dl.2f30.org/releases/stagit-0.4.tar.gz
+	sha1sums = 71bb0275b09b2ddcd7a83e9366849931fa06484c
 
 pkgname = stagit
 
