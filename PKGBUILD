@@ -2,7 +2,7 @@
 
 pkgname=tor-browser-hardened
 pkgver=6.5a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (Hardened)'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64')
@@ -25,11 +25,11 @@ source+=("${pkgname}.desktop"
 "${pkgname}.png"
 "${pkgname}.sh")
 
-sha256sums=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
-'17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-'53b8802862bc81c9f701670256dc35a1424de903106d7ece3cc985ccc5f05214')
+sha256sums=('145dd2eb75f9823edad5627c35371eb90a1d3d6c7df00d88262697cda11036d3'
+            '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
+            '53b8802862bc81c9f701670256dc35a1424de903106d7ece3cc985ccc5f05214')
 sha256sums_x86_64=('15e41f5886a7adb3621ef48b165ee32152a6bc13dc80ab9b0dda15e8bc29d817'
-'SKIP')
+                   'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}-hardened_ALL.tar.xz")
 

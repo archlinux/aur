@@ -1,7 +1,7 @@
 pkgbase = tor-browser-hardened
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor (Hardened)
 	pkgver = 6.5a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	install = tor-browser-hardened.install
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = tor-browser-hardened
 	source = tor-browser-hardened.sh
 	validpgpkeys = 8738A680B84B3031A630F2DB416F061063FEE659
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
-	sha256sums = 3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7
+	sha256sums = 145dd2eb75f9823edad5627c35371eb90a1d3d6c7df00d88262697cda11036d3
 	sha256sums = 17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b
 	sha256sums = 53b8802862bc81c9f701670256dc35a1424de903106d7ece3cc985ccc5f05214
 	source_x86_64 = https://dist.torproject.org/torbrowser/6.5a1-hardened/tor-browser-linux64-6.5a1-hardened_ALL.tar.xz
