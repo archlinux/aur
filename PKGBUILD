@@ -1,7 +1,7 @@
 pkgname=argon2-git
 _gitname="phc-winner-argon2"
 pkgdesc="The password hash Argon2, winner of PHC"
-pkgver=20151206.r108.gf4e7584
+pkgver=20160406.r24.g8e82f90
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("argon2")
