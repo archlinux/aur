@@ -1,4 +1,5 @@
-# Maintainer: David Mougey <imapiekindaguy at gmail dot com>
+# Maintainer: Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=python-praw-git
 pkgver=4.0.0b11.r1580.g074bbe1
