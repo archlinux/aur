@@ -11,12 +11,11 @@ license=('GPL')
 depends=('wine' 'desktop-file-utils' 'xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache')
 provides=('keepass')
 conflicts=('keepass')
-makedepends=('icoutils')
+makedepends=('icoutils' 'winetricks')
 optdepends=('xdotool: if you want to use auto-type'
             'xsel: clipboard operations')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver.zip"
-        "http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/dotnetfx.exe"
         'keepass'
         'keepass.1'
         'keepass.desktop'
@@ -24,7 +23,6 @@ source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver.zip"
         'KeePass.ico')
 
 sha256sums=('52dd5a8526cc935b0e240d5ab6402b0b4a3f5f09ad1a6919875878d7f36c697f'
-            '46693d9b74d12454d117cc61ff2e9481cabb100b4d74eb5367d3cf88b89a0e71'
             '666911c06fbe3a8670b5cd841ced50e6c8a7724938280c0ce7ac92262d9406b6'
             'a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f'
             '1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140'
@@ -61,4 +59,22 @@ package() {
 
   # Needed for postinst with xdg-utils
   install -Dm644 keepass.xml "$pkgdir"/usr/share/mime/packages/keepass.xml
+
+  # Install dotnet
+  export WINEPREFIX="$pkgdir"/usr/share/keepass/wine
+  export WINEARCH=win32
+  export WINEDLLOVERRIDES="mscoree,mshtml="
+  winetricks -q dotnet20 dotnet40
+
+  # Set PathExt
+  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+  valuename="PATHEXT"
+  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
+  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
+
+  # Set Path
+  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
+  valuename="PATH"
+  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
+  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
 }
