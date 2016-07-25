@@ -1,3 +1,7 @@
+Git commits 71cb09c->722f9bf
+	* Fix some problems with wired steam controller
+	* Fix some issues with sc-gyro-plot.py
+
 Git commits dc9f278->71cb09c
 	* Dependencies added to setup.py (enum34 apparently)
 
