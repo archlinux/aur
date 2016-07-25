@@ -17,6 +17,7 @@ pkgbase = virt-manager-qt
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
 	depends = x11-ssh-askpass
+	depends = libvncserver
 	conflicts = virt-manager-qt4
 	replaces = virt-manager-qt4
 	source = git+https://github.com/F1ash/qt-virt-manager.git#tag=0.34.50
