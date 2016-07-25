@@ -1,0 +1,16 @@
+pkgbase = qpdfwalker-git
+	pkgdesc = Tool for browsing hierarchy of low level objects in a PDF file.
+	pkgver = dev1
+	pkgrel = 1
+	url = https://github.com/mato7d5/qpdfwalker
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = poppler
+	depends = qt5-base
+	source = git+https://github.com/mato7d5/qpdfwalker.git
+	sha256sums = SKIP
+
+pkgname = qpdfwalker-git
+
