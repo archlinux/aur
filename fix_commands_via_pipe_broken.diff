@@ -1,0 +1,30 @@
+From 5f2c8a15228f58f1f7ac772b738fcc1b98b761d1 Mon Sep 17 00:00:00 2001
+From: Johan Hedberg <johan.hedberg@intel.com>
+Date: Sun, 24 Jul 2016 16:18:37 +0300
+Subject: client: Don't attach stdin in connect_handler()
+
+connect_handler() gets called when we're connected to D-Bus but before
+introspection of the remote service (org.bluez) is complete. The
+client_ready() callback otoh waits until the introspection is complete
+and is already also taking care of attaching input.
+---
+ client/main.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/client/main.c b/client/main.c
+index 32341ad..056331f 100644
+--- a/client/main.c
++++ b/client/main.c
+@@ -120,9 +120,6 @@ static void connect_handler(DBusConnection *connection, void *user_data)
+ 	printf("\r");
+ 	rl_on_new_line();
+ 	rl_redisplay();
+-
+-	if (!input)
+-		input = setup_standard_input();
+ }
+ 
+ static void disconnect_handler(DBusConnection *connection, void *user_data)
+-- 
+cgit v0.12
+

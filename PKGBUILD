@@ -7,16 +7,23 @@
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
 pkgver=5.41
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-glib2' 'lib32-libical' 'lib32-readline' 'lib32-systemd')
-source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign})
+source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign}
+        "fix_commands_via_pipe_broken.diff")
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
 sha256sums=('df7dc4462494dad4e60a2943240d584f6e760235dca64f5f10eba46dbab7f5f0'
-            'SKIP')
+            'SKIP'
+            '807d84588df5ea49338c6adb5605d091855fb234b47476dc6a0eb3f2f7ca3f72')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
+
+prepare() {
+  cd "${pkgbase#lib32-}-${pkgver}"
+  patch -Np1 -i ../fix_commands_via_pipe_broken.diff
+}
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
