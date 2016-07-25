@@ -1,5 +1,5 @@
 post_upgrade() {
-  mandb -q
+  #mandb -q # now done by Pacman hooks
   systemctl daemon-reload
   # The Win client doesn't change much so we don't need them to upgrade.
   #rm -f '/var/urbackup/'{UrBackupUpdate.exe,UrBackupUpdate.sig,server_token.key}

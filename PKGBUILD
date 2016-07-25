@@ -14,7 +14,7 @@
 # Build-n-install: makepkg -scCf
 # For running systems, watch htop and upgrade when your urbackup server processes are idle
 # sudo systemctl stop urbackup-server.service
-# makepkg -i
+# sudo pacman -U ...  (makepkg -i doesn't work with git packages)
 # sudo systemctl start urbackup-server.service
 
 # Build-n-observe: makepkg -sCf
@@ -45,7 +45,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=1.4.14.r0.gaf82731
+pkgver=2.0.31.r32.gb0dd8fd
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
@@ -72,7 +72,7 @@ else
 fi
 
 _fn_getversion() {
-  set > z
+  #set > z
   export _urverdone='x'
   declare -gA _urversion
   local _branch="$(git branch)"
@@ -98,12 +98,11 @@ _fn_getversion() {
     fi
   done < <(curl -s "http://buildserver.urbackup.org/urbackup_build_version_${_branch}.json")
   _urversion['server.full_rev']="${_urversion[server.full]} Rev. $(git rev-parse HEAD)"
-  unset _key _val _build _line _branch
 }
 
 pkgver() {
   set -u
-  cd "${srcdir}/${_srcdir}"
+  cd "${_srcdir}"
   local _gitver="$(git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
   # The BUILDID is not supplied so is always zero
   local _filever="$(sed -n -e 's:^.*\[\([0-9\.]\+\)BUILDID.*$:\1:p' 'configure.ac_server')"
@@ -120,12 +119,12 @@ pkgver() {
 
 prepare() {
   set -u
-  cd "${srcdir}/${_srcdir}"
+  cd "${_srcdir}"
   git reset --hard
 
   _fn_getversion
   # Some patches
-  sed -i -e 's:$PREFIX/sbin/:$PREFIX/bin/:g' start_urbackup_{client,server}
+  # sed -i -e 's:$PREFIX/sbin/:$PREFIX/bin/:g' start_urbackup_{client,server}
   sed -i -e 's:/sbin/btrfs:/usr/bin/btrfs:g' 'snapshot_helper/main.cpp'
   sed -i -e 's:/usr/sbin/:/usr/bin/:g' 'urbackupserver/doc/admin_guide.tex' 'urbackup-server.service'
   sed -i -e 's,L"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\nL"/urbackup"\n#endif\n,g' 'urbackupserver/server_settings.cpp' # Irksome bug!
@@ -187,7 +186,7 @@ prepare() {
 
 build() {
   set -u
-  cd "${srcdir}/${_srcdir}"
+  cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   make -s -j "${_nproc}"
   make -s -j "${_nproc}" dist
@@ -196,7 +195,7 @@ build() {
 
 package() {
   set -u
-  cd "${srcdir}/${_srcdir}"
+  cd "${_srcdir}"
 
   make -s DESTDIR="${pkgdir}" install
 
@@ -206,20 +205,22 @@ package() {
     install -Dm644 "docs/start_urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
     install -Dm644 "docs/urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
   else
+    # Correct some file mode bits, thanks cfstras (from urbackup2)
+    chmod a+x "${pkgdir}/usr/share/urbackup/www/"{css,fonts,js,images,}
+
     local _serverkey
     for _serverkey in 'server_ident.key' 'server_ident.priv' 'server_ident.pub'; do
       install -Dpm644 "${srcdir}/../${_serverkey}" "${pkgdir}/var/urbackup/${_serverkey}" || :
     done
 
     # special btrfs support
-    install -dm755 "${pkgdir}/etc/urbackup"
-    echo '/urbackup' > "${pkgdir}/etc/urbackup/backupfolder"
-    chmod 644 "${pkgdir}/etc/urbackup/backupfolder"
+    install -Dpm644 <(echo '/urbackup') "${pkgdir}/etc/urbackup/backupfolder"
 
     install -Dpm644 'urbackup-server.service' -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dpm644 'urbackup-server-firewalld.xml' -t "${pkgdir}/usr/lib/firewalld/services/"
-    install -Dpm644 'logrotate_urbackup_srv' "${pkgdir}/etc/logrotate.d/urbackup_srv"
-    install -Dpm644 docs/{start_urbackup_server,urbackup_srv}.1 -t "${pkgdir}/usr/share/man/man1/"
+    install -Dpm644 'logrotate_urbackupsrv' "${pkgdir}/etc/logrotate.d/urbackupsrv"
+    install -Dpm644 'docs/urbackupsrv.1' -t "${pkgdir}/usr/share/man/man1/"
+    install -Dpm644 'defaults_server' -t "${pkgdir}/etc/default/urbackupsrv/"
   fi
 
   set +u
