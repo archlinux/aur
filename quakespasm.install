@@ -4,6 +4,17 @@ post_install() {
 		:: pak0.pak to play the shareware episode and/or
 		:: additionally pak1.pak for the whole game.
 		:: Put them into <YOUR_HOME_DIR>/.quakespasm/id1/
+		
+		:: There is desktop file for Mission Pack 1 (hipnotic)
+		:: Mission Pack 2 (rogue)
+		:: and for Abyss of Pandemonium (impel)
+		:: You need to copy paks for each extension in
+		:: <YOUR_HOME_DIR>/.quakespasm/hiptonic (for Mission pack 1)
+		:: <YOUR_HOME_DIR>/.quakespasm/rogue (for Mission pack 2)
+		:: <YOUR_HOME_DIR>/.quakespasm/impel (for Abyss of Pandemonium)
+		
+		:: The last one can be grabbed for free from : 
+		:: https://www.quaddicted.com/reviews/aopfm_v2.html
 	EOF
 }
 

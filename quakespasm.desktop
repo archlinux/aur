@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quake
+Icon=quakespasm
+Exec=quakespasm
+Categories=Game;Shooter;
+Comment=Quake (quakespasm engine)
+Terminal=false
+StartupNotify=true
