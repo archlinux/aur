@@ -27,7 +27,7 @@
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=7
+pkgrel=8
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
@@ -35,7 +35,7 @@ arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.7' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.8' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -92,7 +92,8 @@ source=(
     grsec_arch.patch
     4.6-arch-get_user_pages-page_cache_release.patch
     dkms.conf
-    makesh-dont-check-gcc-version.patch)
+    makesh-dont-check-gcc-version.patch
+    4.7-arch-cpu_has_pge.patch)
 
 md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -118,7 +119,8 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 '8941e91fc58cb44ce21ab9bda135754e'
 	 '11b7c2e0dc4794801005d66b0e7608a3'
 	 '23d569abfdd7de433d76e003e4b3ccf9'
-	 '10829e3b992b3e80a6e78c8e27748703')
+	 '10829e3b992b3e80a6e78c8e27748703'
+	 'fa8cb4422218e251fe2eb7d31a4b0c61')
 
 
 build() {
@@ -307,6 +309,7 @@ package() {
       patch -Np1 -i ../grsec_arch.patch
       patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
+      patch -Np1 -i ../4.7-arch-cpu_has_pge.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x

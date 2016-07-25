@@ -1,0 +1,53 @@
+diff -uNr 16.7/common/lib/modules/fglrx/build_mod/firegl_public.c 16.7b/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- 16.7/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-18 19:47:41.000000000 +0100
++++ 16.7b/common/lib/modules/fglrx/build_mod/firegl_public.c	2016-07-25 21:36:39.061216384 +0200
+@@ -4518,7 +4518,7 @@
+     write_cr0(cr0);
+     wbinvd();
+ 
+-    if (cpu_has_pge)
++    if (boot_cpu_has(X86_FEATURE_PGE))
+     {
+         cr4 = READ_CR4();
+         WRITE_CR4(cr4 & ~X86_CR4_PGE);
+@@ -4532,7 +4532,7 @@
+     wbinvd();
+     __flush_tlb();
+     write_cr0(cr0 & 0xbfffffff);
+-    if (cpu_has_pge)
++    if (boot_cpu_has(X86_FEATURE_PGE))
+     {
+         WRITE_CR4(cr4);
+     }
+@@ -4559,7 +4559,7 @@
+     write_cr0(cr0);
+     wbinvd();
+ 
+-    if (cpu_has_pge)
++    if (boot_cpu_has(X86_FEATURE_PGE))
+     {
+         cr4 = READ_CR4();
+         WRITE_CR4(cr4 & ~X86_CR4_PGE);
+@@ -4572,7 +4572,7 @@
+     wbinvd();
+     __flush_tlb();
+     write_cr0(cr0 & 0xbfffffff);
+-    if (cpu_has_pge)
++    if (boot_cpu_has(X86_FEATURE_PGE))
+     {
+         WRITE_CR4(cr4);
+     }
+diff -uNr 16.7/common/lib/modules/fglrx/build_mod/firegl_public.h 16.7b/common/lib/modules/fglrx/build_mod/firegl_public.h
+--- 16.7/common/lib/modules/fglrx/build_mod/firegl_public.h	2015-12-18 19:47:41.000000000 +0100
++++ 16.7b/common/lib/modules/fglrx/build_mod/firegl_public.h	2016-07-25 21:37:04.751276300 +0200
+@@ -650,8 +650,8 @@
+ #define cpu_has_pat  test_bit(X86_FEATURE_PAT, (void *) &boot_cpu_data.x86_capability)
+ #endif
+ 
+-#ifndef cpu_has_pge
+-#define cpu_has_pge test_bit(X86_FEATURE_PGE, &boot_cpu_data.x86_capability)
++#ifndef boot_cpu_has(X86_FEATURE_PGE)
++#define boot_cpu_has(X86_FEATURE_PGE) test_bit(X86_FEATURE_PGE, &boot_cpu_data.x86_capability)
+ #endif
+ 
+ /* 2.6.29 defines pgprot_writecombine as a macro which resolves to a
