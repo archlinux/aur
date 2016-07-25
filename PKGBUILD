@@ -1,14 +1,14 @@
 # Maintainer: Andrea Fagiani <andfagiani_at_gmail_dot_com>
 
 pkgname=eclim
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Brings Eclipse functionality to Vim"
 url="http://eclim.org/"
 license=('GPL3')
 arch=(i686 x86_64)
 depends=('vim' 'eclipse')
-makedepends=('apache-ant' 'python2-sphinx')
+makedepends=('apache-ant' 'python2-sphinx' 'groovy')
 optdepends=('eclipse-pdt: Eclipse PHP Development Tools support'
             'eclipse-cdt: Eclipse C/C++ Plugin support'
             'eclipse-dltk-core: Eclipse Dynamic Languagues Toolkit support'
@@ -16,8 +16,8 @@ optdepends=('eclipse-pdt: Eclipse PHP Development Tools support'
             'eclipse-wtp: Eclipse Web Developer Tools support')
 conflicts=('eclim-git')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}_$pkgver.tar.gz")
-md5sums=('c1c09cff1e84216ea6666e9c3e051621')
+source=("https://github.com/ervandew/eclim/releases/download/$pkgver/${pkgname}_$pkgver.tar.gz")
+md5sums=('74557a1d0c2fb22ec7ae46e7ad200e49')
 
 prepare() {
   cd $srcdir/${pkgname}_$pkgver
@@ -45,9 +45,11 @@ build() {
 
   cd ../..
 
-  ant -Declipse.home=/usr/lib/eclipse \
+  ant -lib /usr/share/groovy/lib \
+      -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=/usr/share/vim/vimfiles \
       build
+
 }
 
 package() {
@@ -56,11 +58,13 @@ package() {
   mkdir -p $pkgdir/usr/lib/eclipse
   mkdir -p $pkgdir/usr/share/vim/vimfiles
 
-  ant -Declipse.home=/usr/lib/eclipse \
+  ant -lib /usr/share/groovy/lib \
+      -Declipse.home=/usr/lib/eclipse \
       -Dvim.files=$pkgdir/usr/share/vim/vimfiles \
       docs vimdocs
 
-  ant -Declipse.home=$pkgdir/usr/lib/eclipse \
+  ant -lib /usr/share/groovy/lib \
+      -Declipse.home=$pkgdir/usr/lib/eclipse \
       -Dvim.files=$pkgdir/usr/share/vim/vimfiles \
       deploy
 
