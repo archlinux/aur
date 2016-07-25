@@ -8,7 +8,7 @@ pkgdesc="A python package that allows for simple access to reddit's API"
 arch=('any')
 url="https://github.com/praw-dev/praw"
 license=('GPL3')
-depends=('python-decorator' 'python-six' 'python-requests' 'python-update_checker-git')
+depends=('python-decorator' 'python-six' 'python-requests' 'python-update_checker-git' 'python-prawcore-git')
 makedepends=('git' 'python-setuptools')
 provides=('python-praw')
 conflicts=('python-praw')
@@ -19,6 +19,11 @@ pkgver() {
     cd "${pkgname}"
     printf "%s.r%s.g%s" "$(grep __version__ praw/const.py | head -1 | cut -d"'" -f2)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+   cd "${pkgname}"
+   sed -i -e 's/update_checker ==0.11/update_checker/' setup.py
 }
 
 package() {
