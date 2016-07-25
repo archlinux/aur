@@ -1,14 +1,14 @@
 # Maintainer: h8red  h8red at yandex dot ru
 pkgname=kcollectd
 pkgver=0.9
-pkgrel=2.2
+pkgrel=2.3
 pkgdesc="Kcollectd is a small applications that allows to view rrd datacollections that have been created by collectd."
 arch=('i686' 'x86_64')
 url="http://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html"
 license=('LGPL')
 groups=()
 depends=('kdelibs' 'collectd' 'boost-libs' 'rrdtool')
-makedepends=('gcc' 'cmake' 'automoc4')
+makedepends=('gcc' 'cmake' 'automoc4' 'boost')
 provides=()
 conflicts=()
 replaces=()
