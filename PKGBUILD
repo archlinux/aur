@@ -1,7 +1,7 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=mantid
-pkgver=3.6.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Data analysis toolkit for neutron based instrument data"
 url="http://www.mantidproject.org/"
