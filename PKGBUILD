@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libwebp
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="WebP library (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-giflib)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz")
-sha256sums=('5cd3bb7b623aff1f4e70bd611dc8dbabbf7688fd5eb225b32e02e09e37dfb274')
+sha256sums=('6ad66c6fcd60a023de20b6856b03da8c7d347269d76b1fd9c3287e8b5e8813df')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
