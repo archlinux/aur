@@ -1,7 +1,7 @@
 # Maintainer: David Mougey <imapiekindaguy at gmail dot com>
 
 pkgname=python-praw-git
-pkgver=3.1.0.r1126.g0ae0d9d
+pkgver=4.0.0b11.r1580.g074bbe1
 pkgrel=1
 pkgdesc="A python package that allows for simple access to reddit's API"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s.g%s" "$(grep __version__ praw/__init__.py | head -1 | cut -d"'" -f2)" \
+    printf "%s.r%s.g%s" "$(grep __version__ praw/const.py | head -1 | cut -d"'" -f2)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
