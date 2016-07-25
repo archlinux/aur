@@ -4,7 +4,7 @@
 pkgname="pokemmo"
 pkgver=1.1
 pkgrel=1
-pkgdesc="An MMO based on the Pokémon Universe"
+pkgdesc="MMO based on the Pokémon Universe"
 arch=('any')
 url="http://pokemmo.eu"
 license=('custom')
