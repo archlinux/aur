@@ -9,7 +9,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2015.12.09
+pkgver=2016.07.21
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,11 +17,10 @@ pkgdesc='A voice chat application similar to TeamSpeak'
 url='http://wiki.mumble.info'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf'
-         'libpulse' 'opus' 'libxkbcommon-x11' 'xdg-utils' 'speech-dispatcher')
-makedepends=('boost' 'qt5-tools' 'mesa' 'git')
+         'libpulse' 'opus' 'xdg-utils' 'speech-dispatcher')
+makedepends=('boost' 'mesa' 'qt5-tools' 'git')
 conflicts=('mumble')
 provides=('mumble')
-install=mumble.install
 source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git'
         'git://github.com/mumble-voip/fx11.git' 'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/sbcelt.git' 'https://git.xiph.org/speex.git')
@@ -71,7 +70,6 @@ package() {
   ln -s libmumble.so.$_pkgver $pkgdir/usr/lib/mumble/libmumble.so.1
   ln -s libmumble.so.$_pkgver $pkgdir/usr/lib/mumble/libmumble.so.${_pkgver:0:3}
   install -m755 -D ./release/plugins/liblink.so $pkgdir/usr/lib/mumble/liblink.so
-  install -m755 -D ./release/plugins/libmanual.so $pkgdir/usr/lib/mumble/libmanual.so
   install -m755 -D ./release/libcelt* $pkgdir/usr/lib/mumble/
 
   # other stuff
