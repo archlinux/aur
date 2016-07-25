@@ -1,26 +1,31 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=libnexus
-pkgver=4.3.1
-pkgrel=3
+pkgver=4.4.2
+pkgrel=1
 pkgdesc="libnexus provides functionality for loading/saving the nexus file format for scientific data"
 url="http://www.nexusformat.org/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('hdf5-cpp-fortran')
 optdepends=('hdf4: hdf4 file format support')
-source=("http://download.nexusformat.org/kits/${pkgver}/nexus-${pkgver}.tar.gz")
-sha1sums=('ed75a442acad8bc14745df42822286fb735ed526')
+source=("$pkgname::git://github.com/nexusformat/code.git#tag=v${pkgver}")
+sha1sums=('SKIP')
 
 build() {
-  cd "${srcdir}/nexus-${pkgver}"
-  ./configure --prefix="${pkgdir}/usr"
+  mkdir -p "${srcdir}/build"
+  cd "${srcdir}/build"
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DENABLE_CXX=ON \
+    "${srcdir}/libnexus"
   make
 }
 
 package() {
-  cd "${srcdir}/nexus-${pkgver}"
-  make install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
