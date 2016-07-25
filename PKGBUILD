@@ -41,7 +41,6 @@ package() {
   install -dm755 "$pkgdir"/usr/share/keepass/XSL
 
   install -Dm755 keepass "$pkgdir"/usr/bin/keepass
-  install -Dm755 dotnetfx.exe "$pkgdir"/usr/share/keepass/dotnetfx.exe
   install -Dm755 KeePass.exe "$pkgdir"/usr/share/keepass/KeePass.exe
   install -Dm755 KeePass.exe.config "$pkgdir"/usr/share/keepass/KeePass.exe.config
   install -m644 XSL/* "$pkgdir"/usr/share/keepass/XSL
