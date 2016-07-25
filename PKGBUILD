@@ -15,7 +15,7 @@ md5sums=('c71eefdf21107896c2343dbfcbfb83ae')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
-   sed -i -e 's/praw==3.4.0/praw==3.5.0/' setup.py
+   sed -i -e 's/praw==3.5.0/praw/' setup.py
 }
 package() {
    cd "$srcdir/$pkgname-$pkgver"
