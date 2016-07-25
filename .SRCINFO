@@ -1,0 +1,16 @@
+pkgbase = parity-puzzle-git
+	pkgdesc = Make all tiles equal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/rhoit/batti
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = sed
+	optdepends = figlet
+	source = git+https://github.com/rhoit/parity.git
+	md5sums = SKIP
+
+pkgname = parity-puzzle-git
+
