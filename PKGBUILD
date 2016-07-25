@@ -64,5 +64,5 @@ package() {
 
 }
 
-md5sums=('36f31c284be0e0e71d65dbd8e673d39d'
+md5sums=('5f6b4aeb0eca20bd7422891e6ec8be4d'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
