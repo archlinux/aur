@@ -6,7 +6,7 @@ url='https://github.com/F1ash/qt-virt-manager'
 makedepends=('cmake')
 arch=('i686' 'x86_64')
 license=('GPL2')
-pkgrel=1
+pkgrel=2
 pkgver=0.34.50
 source=("git+https://github.com/F1ash/qt-virt-manager.git#tag=$pkgver")
 depends+=('qt5-base' 'qt5-svg' 'qtermwidget-git' 'spice-protocol' 'spice-glib' 'libvirt' 'scrub' 'qt5-multimedia' 'hicolor-icon-theme' 'x11-ssh-askpass' 'libvncserver')
