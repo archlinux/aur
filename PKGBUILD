@@ -4,7 +4,7 @@
 
 _gemname=opennebula
 pkgname="ruby-${_gemname}"
-pkgver=5.0.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='OpenNebula Client API'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('ruby' 'ruby-nokogiri' 'ruby-json')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('5a7309693467b38453e19011497bfc7fffb4935ae8ebd8441694a1c28a6218d9')
+sha256sums=('f4fc8d941a769e26bbfd7bb8d87c3705a8133eb4c436d0ee2a318e55e0bc6230')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
