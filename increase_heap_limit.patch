@@ -1,0 +1,38 @@
+diff -aur node/deps/v8/src/heap/heap.cc node2/deps/v8/src/heap/heap.cc
+--- node/deps/v8/src/heap/heap.cc	2016-07-24 20:19:15.323849010 -0700
++++ node2/deps/v8/src/heap/heap.cc	2016-07-24 20:22:57.708357949 -0700
+@@ -79,11 +79,11 @@
+       reserved_semispace_size_(8 * (kPointerSize / 4) * MB),
+       max_semi_space_size_(8 * (kPointerSize / 4) * MB),
+       initial_semispace_size_(Page::kPageSize),
+-      max_old_generation_size_(700ul * (kPointerSize / 4) * MB),
++      max_old_generation_size_(8 * 700ul * (kPointerSize / 4) * MB),
+       initial_old_generation_size_(max_old_generation_size_ /
+                                    kInitalOldGenerationLimitFactor),
+       old_generation_size_configured_(false),
+-      max_executable_size_(256ul * (kPointerSize / 4) * MB),
++      max_executable_size_(8 * 256ul * (kPointerSize / 4) * MB),
+       // Variables set based on semispace_size_ and old_generation_size_ in
+       // ConfigureHeap.
+       // Will be 4 * reserved_semispace_size_ to ensure that young
+diff -aur node/deps/v8/src/heap/heap.h node2/deps/v8/src/heap/heap.h
+--- node/deps/v8/src/heap/heap.h	2016-07-24 20:19:15.427178209 -0700
++++ node2/deps/v8/src/heap/heap.h	2016-07-24 20:22:59.668280744 -0700
+@@ -499,7 +499,7 @@
+   static const int kMaxOldSpaceSizeMediumMemoryDevice =
+       256 * kPointerMultiplier;
+   static const int kMaxOldSpaceSizeHighMemoryDevice = 512 * kPointerMultiplier;
+-  static const int kMaxOldSpaceSizeHugeMemoryDevice = 700 * kPointerMultiplier;
++  static const int kMaxOldSpaceSizeHugeMemoryDevice = 8 * 700 * kPointerMultiplier;
+ 
+   // The executable size has to be a multiple of Page::kPageSize.
+   // Sizes are in MB.
+@@ -509,7 +509,7 @@
+   static const int kMaxExecutableSizeHighMemoryDevice =
+       256 * kPointerMultiplier;
+   static const int kMaxExecutableSizeHugeMemoryDevice =
+-      256 * kPointerMultiplier;
++     8 * 256 * kPointerMultiplier;
+ 
+   static const int kTraceRingBufferSize = 512;
+   static const int kStacktraceBufferSize = 512;
