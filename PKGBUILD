@@ -3,8 +3,8 @@
 # Contributor: Jesus Jerez <jerezmoreno@gmail.com>
 
 pkgname=eclipse-emf-runtime
-pkgver=2.11.1
-_pkgbuild=R201508060404
+pkgver=2.12.0
+_pkgbuild=R201605260356
 pkgrel=1
 pkgdesc="EMF and XSD runtime only for the Eclipse platform"
 url="http://www.eclipse.org/modeling/emf/"
@@ -17,8 +17,8 @@ provides=('eclipse-emf')
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
 source=("$_mirror/modeling/emf/emf/downloads/drops/${pkgver}/${_pkgbuild}/emf-runtime-${pkgver}.zip"
         "$_mirror/modeling/emf/emf/downloads/drops/${pkgver}/${_pkgbuild}/xsd-runtime-${pkgver}.zip")
-md5sums=('7f106f3489bfdab51067e3a7fa17cc7c'
-         '64d4d0baa850c623d0fc23b77675b9ef')
+md5sums=('fccaa15ebfc51357ae1d2fffe3574efc'
+         'fce2cc0cd2281d5765e29bf236b5e0be')
 
 package() {
   _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
