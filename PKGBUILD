@@ -19,6 +19,11 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/OpenCoarrays-${pkgver}/build"
+  ctest
+}
+
 package() {
   cd "${srcdir}/OpenCoarrays-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
