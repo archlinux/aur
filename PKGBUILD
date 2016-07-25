@@ -5,7 +5,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -91,7 +91,7 @@ source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname
         'chown_fix.patch'
         'set_locations.patch'
         'fix_kvm_emulator.patch')
-sha512sums=('335dc802f4e24e33177854466ca1dc76e08f784dd6ca2748989870cfed3581eb208c1091a1ecbfd962fe7b4461fde62a4ba89fdfd62a928790e27a834f9b4475'
+sha512sums=('95d61476538e32b75c3ac870c4ba19e4f352a90e1d6e76355efab4f4679291ba2fcd223ec39f9b3cbd29bc5c5c7a5388c1c402c5c84b22f81729ff240b6d34b6'
             'bd8ed1a94dbb57f8fa65803688cefe7e628bc019e7fbac4a8a19f8a68ea4d656d7e834f879fb2f9acd2dee8933b2bebf046b40c94a44c6ccbefc11406a032b64'
             '8024c51db09d2bfcb1ea90a6f893903d7fd021a912d338132cf95eb685261cb67c803798c9ff0669aff371e1abec54291c39cbebf84c695ac7553acb90a6d94f'
             '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677'
