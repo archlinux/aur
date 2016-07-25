@@ -1,0 +1,16 @@
+pkgbase = emacs-helm
+	pkgdesc = Incremental completion and selection narrowing framework for Emacs
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://github.com/emacs-helm/helm
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-helm
+	conflicts = emacs-helm
+	source = https://github.com/emacs-helm/helm/archive/v1.9.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = emacs-helm
+
