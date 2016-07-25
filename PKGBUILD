@@ -18,6 +18,7 @@ md5sums=('c94966de2552faf6e023c3a2d5c59f17')
 prepare() {
     :
 }
+
 build() {
 	cd ${pkgname}-r${pkgver}
 	cmake -DCMAKE_INSTALL_PREFIX=/usr .
