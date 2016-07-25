@@ -2,7 +2,7 @@
 #Maintainer: Rémy EVEN <evenremy@gmail.com>, snoopy33
 pkgname=littre2
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The great french dictionary of Émile Littré (Qt)"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/dictionnaire-le-littre/"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  install -D ../${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -D ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -d "$srcdir/Littre-source-$pkgver"/bin/ ${pkgdir}/opt/${pkgname}/
   install -D "$srcdir/Littre-source-$pkgver"/"ui/Girls I do adore....png" ${pkgdir}/usr/share/pixmaps/littre.png
   install -D "$srcdir/Littre-source-$pkgver"/bin/* ${pkgdir}/opt/${pkgname}/
