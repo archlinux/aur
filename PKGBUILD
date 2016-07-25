@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
-pkgver=20160719
+pkgver=0.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -10,20 +10,21 @@ groups=('decred')
 url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
-source=(git+https://github.com/decred/dcrd
-        git+https://github.com/decred/dcrticketbuyer
-        git+https://github.com/decred/dcrwallet)
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-
-pkgver() {
-  date +%Y%m%d
-}
+source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
+        dcrticketbuyer-$pkgver.tar.gz::https://codeload.github.com/decred/dcrticketbuyer/tar.gz/v$pkgver
+        dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
+sha256sums=('d514d2df9775825286901fa7611592caa6cec551cfc0a764f94f5a48d2ba346b'
+            '7aab22b69db014b499ea8e5c896080fe4edb6d2065d6a667b7c1ff33a0a7422a'
+            'babf5485678e4eb74c8ca94d74fdaf518105c16c382c7fe2244c50fe406c6f37')
 
 prepare() {
   export GOPATH="$srcdir"
-  git clone "$srcdir/dcrd" "$GOPATH/src/github.com/decred/dcrd"
-  git clone "$srcdir/dcrwallet" "$GOPATH/src/github.com/decred/dcrwallet"
-  git clone "$srcdir/dcrticketbuyer" \
+  mkdir -p "$GOPATH/src/github.com/decred"
+  cp -dpr --no-preserve=ownership "$srcdir/dcrd-$pkgver" \
+    "$GOPATH/src/github.com/decred/dcrd"
+  cp -dpr --no-preserve=ownership "$srcdir/dcrwallet-$pkgver" \
+    "$GOPATH/src/github.com/decred/dcrwallet"
+  cp -dpr --no-preserve=ownership "$srcdir/dcrticketbuyer-$pkgver" \
     "$GOPATH/src/github.com/decred/dcrticketbuyer"
 }
 
