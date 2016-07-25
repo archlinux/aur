@@ -25,7 +25,7 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
-pkgrel=14
+pkgrel=15
 # 1 or 2 at present
 _piver=""
 
@@ -94,9 +94,18 @@ _device_configure_flags=""
 
 #Sanity check
 __pkgconfigpath="${_sysroot}/usr/lib/pkgconfig"
+__eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
+__glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
 if [[ ! -d ${__pkgconfigpath} ]]; then
   echo "You have to set a valid sysroot to proceed with the build"
+  exit 1
+fi
+
+# Delete this is you know what you are doing
+# and want to build against Mesa
+if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
+  echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
   exit 1
 fi
 
@@ -254,7 +263,7 @@ fi
   local _libspkgdir="${_libsdir}/topkg"
   local _libspkgbuild="${_libsdir}/PKGBUILD"
   local _pkgprofiled=${_libspkgdir}/etc/profile.d
-  local _profiledfn=qpi${_piver}.sh
+  local _profiledfn=qpi.sh
   rm -Rf ${_libspkgdir}
   mkdir -p ${_libspkgdir}
 
