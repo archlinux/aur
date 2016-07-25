@@ -18,6 +18,8 @@ pkgbase = vocal-git
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = webkit2gtk
+	provides = vocal=2.0.5beta.r16.gc1578ed
+	conflicts = vocal
 	source = git://github.com/vocalapp/vocal.git
 	md5sums = SKIP
 

@@ -12,6 +12,8 @@ url='http://www.vocalproject.net'
 license=('GPL3')
 depends=('libnotify' 'libxml2' 'granite' 'gtk3' 'gstreamer' 'sqlite' 'clutter-gtk' 'clutter-gst' 'webkit2gtk')
 makedepends=('git' 'vala' 'cmake')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=('git://github.com/vocalapp/vocal.git')
 md5sums=('SKIP')
 
