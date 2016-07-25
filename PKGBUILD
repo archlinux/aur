@@ -18,6 +18,7 @@
 _sysroot=/mnt/pi
 
 # Options
+_float=false
 _shadow_build=false
 _release=true
 _skip_web_engine=false
@@ -133,6 +134,10 @@ if $_build_from_head; then
   _device_configure_flags="$_device_configure_flags -skip qt3d -skip qtsystems -skip qttools -skip qtwebkit"
 fi
 
+if $_float; then
+  _device_configure_flags="$_device_configure_flags -qreal float"
+fi
+
 build() {
   # Qt tries to do the right thing and stores these, breaking cross compilation
   unset LDFLAGS
@@ -199,7 +204,6 @@ fi
   ${_srcdir}/configure \
     -no-icu \
     -v \
-    -qreal float \
     $_build_type \
     -silent \
     -confirm-license \
