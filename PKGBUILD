@@ -7,7 +7,7 @@ set -u
 _gitname='SICOM'
 _pkgname='rlib'
 pkgname="lib${_pkgname}" # libr seems a bit short
-pkgver='2.0.11'
+pkgver='2.0.12'
 # 2.0.10 won't compile
 pkgrel='1'
 pkgdesc='Advanced reporting engine that generates professional reports in PDF, HTML, CSV, and text formats from a simple XML definition language.'
@@ -28,12 +28,12 @@ _giturl="https://github.com/${_gitname}/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 #source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz") # <=1.3.7
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz")
-sha256sums=('febab24447f4f83686e8f08ef5e2ea1f0fe380a7b3b1c9d106437715e105de02')
+sha256sums=('6fe02d2cb578876e24f72742765c9ac5202805399bb740ac91eccafd9979f906')
 
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
-  export CPPFLAGS="${CPPFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter"
+  export CPPFLAGS="${CPPFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter -Wno-unused-result"
   if [ -f 'autogen.sh' ]; then
     # Postgres wants a config file. Perl won't compile. Python configure claims no but is really yes. db2pdf doesn't work.
     # Configure gives us a Python.h error that needs to be fixed.
