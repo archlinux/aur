@@ -3,17 +3,15 @@
 # you don't need (and this header).
 
 ## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
-
-## arg 1:  the new package version
-post_install() {
-	msg2 "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
+pre_install() {
+  msg2 "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
   read -p "Please enter your serial number: " SERIALNUMBER
   read -p "Please enter your product id: " PRODUCTID
   echo ""
+}
 
+## arg 1:  the new package version
+post_install() {
   mkdir /usr/tmp
   chmod 777 /usr/tmp
 
