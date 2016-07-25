@@ -3,7 +3,7 @@
 # Contributor: Jonathan Arnold <jarnold@buddydog.org>
 
 pkgname=p4
-pkgver=2016.1.1387479
+pkgver=2016.1.1411799
 pkgrel=1
 pkgdesc="Perforce command line client"
 depends=('glibc')
@@ -13,11 +13,11 @@ license=('custom:p4')
 source=(http://www.perforce.com/downloads/perforce/r${pkgver:2:4}/bin.linux26${CARCH/i6/x}/${pkgname}
         LICENSE)
 [ "$CARCH" = "i686" ] && \
-sha256sums=('f94e03155cf0e42f3db5a9a64769cec8e7e9d37866f21cb40bec220132823441'
+sha256sums=('d9c7d3f66bebb2e71100bad94e700ce9e34ee473283943afd5af28349cc0d12b'
          'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
 
 [ "$CARCH" = "x86_64" ] && \
-sha256sums=('cee1d58f8cc930f6d24a4420ea451c7aceaf90d3c33642e28ec1bbfd2cc40450'
+sha256sums=('17f814d005cf1063d754d50485fbd2818526a8fdc8264149a85245ae10b0669e'
          'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
 
 build() {
