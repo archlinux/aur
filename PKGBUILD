@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip") 
 noextract=()
-md5sums=('2180cd4fb02df31b2da6764f2c3e36b5')
+md5sums=('32be7089f9417d9ac533845387086216')
 validpgpkeys=()
 
 prepare() {
