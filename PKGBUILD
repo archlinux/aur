@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-06-20-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-07-25-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -22,20 +22,19 @@ source=(
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch" "pod2man_release.patch"
+    "swift-sphinx2.patch"
 )
-sha256sums=('c6955802307395f97abebf7a1e206999394e940900ebb6ec602f085722140f2d'
-            'e7b6118869ab5c58730fc88c7971cdbfd908b2ab6754d16a0d9ea27c52fa7a6f'
-            'dbeb97a9b2543b921aadf23930005f30fe727e3e73c1df48177c8d5df19f9b1b'
-            'bb60bbbee0609453c0f5b21fdfc902b10c20f3d13d4921baa283403c34e0d642'
-            'fd58632c893e1f493f88664d4bcb08029edf39024b15bfdb17a22ed5e4230d58'
-            '793c2355dfce50a02d888ae40095ecdb29b12c66e02a9fb225226ba7f6fef812'
-            'd35ab5a671f21d7179c56ae07ce0e8e96d030445a0cc8ec65457a850e1ebd57e'
-            'beb32972e5f5f53b1d6069b46e10146932792ac6275f26308660624173d8324b'
-            '16a593b8bf918e379338c51d6856316c384ed401def2284008a7a28de173dbc9'
-            '9c3a782da48bd2bcac4ca104c05445a083a85c256c94fe784075f5fc9432feb0'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
-            'f09977247fa2fcfa306b491523146c8772b38fa007cc1530f4169413fe7c7f3a')
+sha256sums=('da5eaed93b55208b1d193d7c13e42dd129b0ae5b830dafeaf78fd3da6295fc30'
+            'cd13998a5d409aaf180d3c24dc450033861e1291c91f7b8fc813514bd389c3f1'
+            'e8ae6d124a55432c3d92d0ecb88437144a47cfae5c4ab9c0d675d4d1d74b895f'
+            'c493a54382f07f1c4b7add54509eabaa1ca122391d30250fb6ca54bb7a2a1a04'
+            'ef165398b5855867172b540aa0846acae3387ddf52ed432bda673ad88c222eff'
+            '9125f0487cb7f704d710144080f8de0ce075e92559264eb9fa4f804606398401'
+            '5e9122510f9777130824c621546018530d6173312deaa67ba095412e199541ee'
+            '91288d41c582c424431368c66f2aea5de9d782c7eada1039eb74c39ef1468e25'
+            '4ecb7b831cae598c8a88c74c1bc760dec2ced02bf4f8f1124006d31dbb45b731'
+            'a3c678f517b8fb6610624f75ba700ef0adfde2e25bd3cd5cdefd03419ac9a266'
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
     # Use python2 where appropriate
@@ -63,12 +62,6 @@ prepare() {
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
-
-    # Recent versions of pod2man require an argument to --release.  If no
-    # argument is provided, it will treat the next option as its argument,
-    # thereby breaking all subsequent arguments.  So let's put something
-    # useful there instead :)
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/pod2man_release.patch" )
 }
 
 build() {
