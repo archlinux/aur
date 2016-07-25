@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdocs
-pkgver=20160623
+pkgver=20160725
 pkgrel=1
 pkgdesc="Documentation for Decred"
 arch=('any')
@@ -10,17 +10,17 @@ optdepends=('darkhttpd: serve static webpages')
 groups=('decred')
 url="https://docs.decred.org"
 license=('ISC')
-source=($pkgname-$pkgver::git+https://github.com/decred/dcrdocs)
+source=(git+https://github.com/decred/dcrdocs)
 sha256sums=('SKIP')
 install=dcrdocs.install
 
 pkgver() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   msg2 'Building...'
   virtualenv .
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/dcrdocs"
