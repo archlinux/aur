@@ -2,10 +2,10 @@
 # Recovery by Ivo(sh) Musil <ivoshm@gmail.com>
 pkgname=zssh
 pkgver=1.5c
-pkgrel=9
+pkgrel=10
 pkgdesc="SSH and Telnet client with ZMODEM file transfer capability"
 arch=("i686" "x86_64")
-license="GPL"
+license=("GPL")
 url="http://zssh.sourceforge.net/"
 depends=("readline")
 source=(http://vorboss.dl.sourceforge.net/project/zssh/zssh/1.5/$pkgname-$pkgver.tgz \
