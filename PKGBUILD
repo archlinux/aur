@@ -18,10 +18,10 @@
 _sysroot=/mnt/pi
 
 # Options
-_float=false
+_float=true
 _shadow_build=false
 _release=true
-_skip_web_engine=false
+_skip_web_engine=true
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
