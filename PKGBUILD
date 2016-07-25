@@ -8,7 +8,7 @@ pkgname=kdebase-workspace-consolekit
 _pkgname=kde-workspace
 pkgver=4.11.22
 _kdever=15.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kdebase-workspace with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -78,7 +78,7 @@ build() {
 	mkdir build
 	cd build
 
-	export CXXFLAGS="$CXXFLAGS -Wno-cpp -Wno-dev"
+	export CXXFLAGS="$CXXFLAGS -Wno-cpp -Wno-dev -fpermissive"
 
 	cmake ../${_pkgname}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -112,4 +112,7 @@ package() {
 	install -D -m644 "${srcdir}"/kdm.service \
 		"${pkgdir}"/usr/lib/systemd/system/kdm.service
 	install -Dm644 "${srcdir}"/kdm.logrotate "${pkgdir}"/etc/logrotate.d/kdm
+
+	# fix conflict with oxygen-icons package
+	rm "${pkgdir}"/usr/share/icons/oxygen/*/mimetypes/fonts-package.png
 }
