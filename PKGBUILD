@@ -1,4 +1,4 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: George C. Privon <accounts5 at privon dot com>
 
 _pyname=emcee
 pkgname=python-$_pyname
