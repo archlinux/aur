@@ -1,6 +1,6 @@
 pkgbase = messengerfordesktop-git
 	pkgdesc = Beautiful desktop client for Facebook Messenger. Git version.
-	pkgver = 1.5.0.beta.0.r0.g225a528
+	pkgver = 1.5.0.beta.1.r0.g810e70d
 	pkgrel = 1
 	url = http://messengerfordesktop.com/
 	arch = i686
