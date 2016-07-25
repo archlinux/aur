@@ -35,7 +35,7 @@ _parabolarepo=https://repo.parabola.nu/other/iceweasel
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
-pkgrel=2
+pkgrel=3
 pkgdesc="Web Browser based on Mozilla Firefox, with Debian patches and Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
