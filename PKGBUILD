@@ -1,12 +1,12 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Davor Balder <dbalder@ozemail.com.au>
 # Contributor: Jiyunatori <tori_LEAVETHISOUT_@0xc29.net>
 # Contributor: mdev
 # adopted by domanov <domanov_LEAVETHISOUT_@__gmail__com>
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=8.3.4
-pkgrel=1
+pkgver=8.3.5
+pkgrel=0
 pkgdesc="Emacs Org Mode"
 arch=('any')
 url="http://orgmode.org/"
@@ -14,7 +14,7 @@ depends=('emacs')
 license=('GPL')
 install=emacs-org-mode.install
 source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
-sha256sums=('e86d9ce32b26ee31c954c9a6210422c65ecbe89129003d426a7fa4b1a8864603')
+sha256sums=('43df6c0fee7a554e1c2ebb1a9ec0be0bbe89ab5b8e0a193c3c3d707ed190341f')
 
 build() {
   cd "$_srcname-$pkgver"
