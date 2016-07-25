@@ -3,7 +3,7 @@
 
 pkgname=tenshi
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="http://dev.inversepath.com/trac/tenshi"
 arch=(any)
@@ -16,7 +16,7 @@ source=("http://dev.inversepath.com/tenshi/$pkgname-$pkgver.tar.gz"
         'conf.diff')
 backup=(etc/tenshi/tenshi.conf)
 md5sums=('3eb858893e29f0f6e7fb9f58f653a5b1'
-         'd8a70806f3a2a498d9d8ef2ecb171ad8'
+         '29bd3646a619768666b704b2ed2e6e72'
          '8c8a582c6a8c61d4ff596ed3af8ab593'
          '451250b1955b14691ca1c7124d1991f2')
 
