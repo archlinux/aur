@@ -18,6 +18,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   sed -i -e 's/praw==3.5.0/praw/' setup.py
+}
+
 package() {
    cd "$srcdir/rtv"
    python setup.py install --root="$pkgdir/" --optimize=1
