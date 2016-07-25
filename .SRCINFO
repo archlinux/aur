@@ -1,13 +1,13 @@
 pkgbase = python-emcee
 	pkgdesc = Kick ass affine-invariant ensemble MCMC sampling
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://dan.iel.fm/emcee
 	arch = any
 	license = BSD
 	depends = python-numpy
-	source = https://pypi.python.org/packages/source/e/emcee/emcee-2.1.0.tar.gz
-	md5sums = c6b6fad05c824d40671d4a4fc58dfff7
+	source = https://github.com/dfm/emcee/archive/v2.2.1.tar.gz
+	md5sums = 5958687736cf6296a9c632e46337ac5e
 
 pkgname = python-emcee
 
