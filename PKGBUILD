@@ -15,10 +15,10 @@ _url=https://ftp.mozilla.org/pub/firefox/releases
 
 pkgname=iceweasel-i18n-it
 pkgver=47.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="$_language language pack for Iceweasel"
 arch=('any')
-url="https://wiki.debian.org/it/Iceweasel"
+url="https://wiki.parabola.nu/Iceweasel"
 license=('MPL' 'GPL')
 #depends=("iceweasel>=$pkgver")
 makedepends=('unzip' 'zip')
