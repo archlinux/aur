@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -32,13 +32,14 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz" "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
+
   ## Fix .desktop file for KDE
-  if [ -f "/usr/bin/dolphin" ]; then
+  if [ "$DESKTOP_SESSION" = "kde" ]; then
     msg2 "Installing desktop file for KDE..."
     install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
     cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
     desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
-    --dir="$pkgdir/usr/share/applications/" --add-category=";Qt;KDE"\
+    --dir="$pkgdir/usr/share/applications/" \
     --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
   else
   msg2 "Installing desktop file..."
