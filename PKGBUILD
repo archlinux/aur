@@ -1,6 +1,6 @@
 # Contributor: fl4ppie at gmail dot com
 # Contributor: bender02 at gmx dot com
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Davor Balder <dbalder@ozemail.com.au>
 
 pkgname=emacs-planner
 pkgver=3.42
