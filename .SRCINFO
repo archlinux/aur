@@ -1,7 +1,7 @@
 pkgbase = nodejs5
 	pkgdesc = Evented I/O for V8 javascript
-	pkgver = 5.11.0
-	pkgrel = 4
+	pkgver = 5.12.0
+	pkgrel = 1
 	url = http://nodejs.org/
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = nodejs5
 	optdepends = npm: nodejs package manager
 	provides = nodejs
 	conflicts = nodejs
-	source = http://nodejs.org/dist/v5.11.0/node-v5.11.0.tar.gz
-	sha256sums = ef41b01a9e49de5a5d160071166f911d0bc9ff6a0bd0e88ea4863df572d95e91
+	source = http://nodejs.org/dist/v5.12.0/node-v5.12.0.tar.gz
+	sha256sums = 250c12a561d7319e71e142ee92ab682494c7823d81ce24703c80eb52bdf9ba42
 
 pkgname = nodejs5
 

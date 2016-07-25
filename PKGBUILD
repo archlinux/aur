@@ -1,17 +1,16 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: farwayer <farwayer@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: James Campos <james.r.campos@gmail.com>
 # Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Dongsheng Cai <dongsheng at moodle dot com>
 # Contributor: Masutu Subric <masutu.arch at googlemail dot com>
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
-# Contributor: farwayer <farwayer@gmail.com>
 
 pkgname=nodejs5
-pkgver=5.11.0
-pkgrel=4
+pkgver=5.12.0
+pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -22,7 +21,7 @@ depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser') # 'v8')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz")
-sha256sums=('ef41b01a9e49de5a5d160071166f911d0bc9ff6a0bd0e88ea4863df572d95e91')
+sha256sums=('250c12a561d7319e71e142ee92ab682494c7823d81ce24703c80eb52bdf9ba42')
 
 prepare() {
   cd node-v$pkgver
