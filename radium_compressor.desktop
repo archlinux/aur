@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Radium_compressor
+Comment=A standalone jack audio compressor
+Exec=radium_compressor
+Icon=radium_compressor
+Categories=AudioVideo;Audio;
+Terminal=false
+Type=Application

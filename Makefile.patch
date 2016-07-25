@@ -1,0 +1,40 @@
+--- Makefile	2013-01-26 12:55:27.000000000 +0100
++++ Makefile.new	2013-04-02 05:21:32.793326231 +0200
+@@ -1,7 +1,9 @@
+-PREFIX ?= /usr/local
++PREFIX ?= /usr
+ bindir ?= $(PREFIX)/bin
+ libdir ?= $(PREFIX)/lib
+ 
++UIC = uic-qt4 
++MOC = moc-qt4
+ 
+ # These two commands are used by me, since most of the source files are stored in the Radium tree.
+ # You would normally just run "make" to compile the program.
+@@ -9,8 +11,7 @@
+ # make copy_files && make all && ./radium_compressor 
+ # make copy_files && rm -f benchmark && make benchmark && ./benchmark && ./benchmark && ./benchmark
+ 
+-
+-CPP = g++ -DDEBUG -O3 -Wall -msse -mfpmath=sse -DUSE_QT_REQTYPE -DUSE_QT4 -g -I. -ffast-math -IQt
++CPP = g++ $(CXXFLAGS) -DDEBUG -O3 -Wall -msse -mfpmath=sse -DUSE_QT_REQTYPE -DUSE_QT4 -I. -ffast-math -IQt 
+ 
+ #FAUST = /home/kjetil/faudiostream/compiler/faust -vec
+ FAUST = faust -vec
+@@ -19,14 +20,14 @@
+ RADIUM_PATH = /home/kjetil/radium-qt4
+ 
+ all: audio/system_compressor.cpp
+-	cd Qt && ./create_source_from_ui.sh `../find_moc_and_uic_paths.sh uic` `../find_moc_and_uic_paths.sh moc` compressor_widget
++	cd Qt && ./create_source_from_ui.sh $(UIC) $(MOC) compressor_widget
+ 	$(CPP) Qt/Qt_SliderPainter.cpp `pkg-config --cflags Qt3Support` -c
+ 	$(CPP) main.cpp Qt_SliderPainter.o -Iaudio/faudiostream/architecture/ `pkg-config --libs --cflags Qt3Support` -ljack -o radium_compressor
+ 
+ 
+ install:
+ 	install -d $(DESTDIR)$(bindir)
+-	cp radium_compressor $(DESTDIR)$(bindir)/
++	install -m755 radium_compressor $(DESTDIR)$(bindir)/
+ 
+ 
+ uninstall:
