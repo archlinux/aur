@@ -1,5 +1,5 @@
 pkgbase = pokemmo
-	pkgdesc = An MMO based on the Pokémon Universe
+	pkgdesc = An MMO based on the Pokemon Universe
 	pkgver = 1.1
 	pkgrel = 1
 	url = http://pokemmo.eu
