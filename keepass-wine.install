@@ -5,6 +5,7 @@ post_remove() {
 
 post_install() {
   post_remove
+  mono --aot -O=all usr/share/keepass/KeePass.exe &> /dev/null
   mkdir -p usr/share/keepass/Plugins
 }
 

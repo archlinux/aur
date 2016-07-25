@@ -3,7 +3,7 @@
 
 pkgname=keepass-wine
 pkgver=2.34
-pkgrel=2
+pkgrel=1
 pkgdesc='A easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices.'
 arch=('any')
 url='http://keepass.info/'
@@ -11,11 +11,12 @@ license=('GPL')
 depends=('wine' 'desktop-file-utils' 'xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache')
 provides=('keepass')
 conflicts=('keepass')
-makedepends=('icoutils' 'winetricks')
+makedepends=('icoutils')
 optdepends=('xdotool: if you want to use auto-type'
             'xsel: clipboard operations')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver.zip"
+        "http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/dotnetfx.exe"
         'keepass'
         'keepass.1'
         'keepass.desktop'
@@ -23,7 +24,8 @@ source=("http://downloads.sourceforge.net/keepass/KeePass-$pkgver.zip"
         'KeePass.ico')
 
 sha256sums=('52dd5a8526cc935b0e240d5ab6402b0b4a3f5f09ad1a6919875878d7f36c697f'
-            'd8ebd5e67544eb001cd071cbb1de2d088d979b7fbcda90de98e76c761f5640c3'
+            '46693d9b74d12454d117cc61ff2e9481cabb100b4d74eb5367d3cf88b89a0e71'
+            '666911c06fbe3a8670b5cd841ced50e6c8a7724938280c0ce7ac92262d9406b6'
             'a5fff678466443c0c8256c4771128c86103da47b6a2c49351d9941191b65dd6f'
             '1d5420e8babce5f4bbb3c68bdffe3bc0d3c3be25ad689138cd02fa14edd89140'
             '3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194'
@@ -34,24 +36,6 @@ validpgpkeys=('D95044283EE948D911E8B606A4F762DC58C6F98E')
 prepare() {
   # Extract icons
   icotool -x KeePass.ico
-
-  # Install dotnet
-  export WINEPREFIX=$(pwd)/wine
-  export WINEARCH=win32
-  export WINEDLLOVERRIDES="mscoree,mshtml="
-  winetricks -q dotnet20 dotnet40
-
-  # Set PathExt
-  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
-  valuename="PATHEXT"
-  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATHEXT" {print $3 ";."}')"
-  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
-
-  # Set Path
-  keyname="HKLM\System\CurrentControlSet\Control\Session Manager\Environment"
-  valuename="PATH"
-  value="$(wine reg query "$keyname" -v "$valuename" | sed 's|\r||g' | awk  '$1 == "PATH" {print $3}')$(echo $(for i in $(echo $PATH | sed 's|:|\n|g') ; do echo -n \;$(winepath -w $i) ; done 2>/dev/null))"
-  wine reg add "$keyname" /f /v "$valuename" /t REG_SZ /d "$value"
 }
 
 package() {
@@ -59,6 +43,7 @@ package() {
   install -dm755 "$pkgdir"/usr/share/keepass/XSL
 
   install -Dm755 keepass "$pkgdir"/usr/bin/keepass
+  install -Dm755 dotnetfx.exe "$pkgdir"/usr/share/keepass/dotnetfx.exe
   install -Dm755 KeePass.exe "$pkgdir"/usr/share/keepass/KeePass.exe
   install -Dm755 KeePass.exe.config "$pkgdir"/usr/share/keepass/KeePass.exe.config
   install -m644 XSL/* "$pkgdir"/usr/share/keepass/XSL
@@ -76,8 +61,4 @@ package() {
 
   # Needed for postinst with xdg-utils
   install -Dm644 keepass.xml "$pkgdir"/usr/share/mime/packages/keepass.xml
-
-  # Insttall wine prefix
-  cp -r wine "$pkgdir"/usr/share/keepass/wine
-
 }
