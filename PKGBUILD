@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
+optdepends=('mesa-demos: glxinfo for "fully optimized graphics capabilities"') # without glxinfo, Mathematica outputs a warning to the terminal on startup
 source=("local://Mathematica_${pkgver}_LINUX.sh")
 md5sums=('ea1f13a88279e6fc2ed1edc80e7a1612')
 install='mathematica.install'
