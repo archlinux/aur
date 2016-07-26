@@ -2,13 +2,13 @@
 # Based on kipi-plugins-svn PKGBUILD
 
 pkgname=kipi-plugins-git
-pkgver=r11423.19e32a9
+pkgver=r11713.23fa948
 pkgrel=1
 pkgdesc='A collection of plugins extending the KDE graphics and image applications as digiKam'
 license=('GPL' 'LGPL' 'FDL')
 arch=('i686' 'x86_64')
 url="http://www.kipi-plugins.org/"
-depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git')
+depends=('libkipi-git' 'libkdcraw-git')
 makedepends=('git' 'extra-cmake-modules-git' 'kcalcore' 'libkgeomap-git' 'libksane-git' 'libmediawiki-git' \
              'libkvkontakte-git' 'threadweaver' 'karchive' 'kqoauth-git' 'kdoctools')
 optdepends=('hugin: for expoblending plugin'
