@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,7 +81,7 @@ PX_CFLAGS=""
+ PX_HAVE_ICONV=0
+ PX_HAVE_RECODE=0
+ 
+-dnl AM_ICONV_LINK
++AM_ICONV_LINK
+ 
+ if test "$am_cv_func_iconv" != "yes" ; then
+ 	AC_ARG_WITH(recode, [  --with-recode=DIR        Path to recode library (/usr)])
