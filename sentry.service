@@ -6,3 +6,7 @@ Requires=sentry-web.service sentry-celery.service sentry-cron.service
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/bin/true
+
+[Install]
+WantedBy=multi-user.target
+
