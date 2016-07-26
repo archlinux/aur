@@ -1,6 +1,6 @@
 # Maintainer: Matthias Blankertz <matthias at blankertz dot org>
 pkgname=msc-generator
-pkgver=5.1.0
+pkgver=5.3.1
 pkgrel=1
 epoch=
 pkgdesc="Draws MSCs from textual descriptions"
@@ -17,15 +17,15 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=msc-generator.install
+install=
 changelog=
 
-source=("http://sourceforge.net/projects/msc-generator/files/msc-generator/v5.1/msc-generator-5.1.tar.gz")
+source=("http://sourceforge.net/projects/msc-generator/files/msc-generator/v5.3/msc-generator-v$pkgver.tar.gz")
 noextract=()
-sha256sums=('e908a325c822bfc6284dfba64cb26a1d580c6382c9c4932d8bfc8de35f726ecf')
+sha256sums=('9257ddd5e2806ae8eb8127166ac7351bc629d66d8e1e15b5f66b6bfb32fe780a')
 
 build() {
-	cd "$srcdir/$pkgname-5.1"
+	cd "$srcdir/$pkgname-v$pkgver"
 
 	# Remove links
 	rm compile depcomp doc/texinfo.tex doc/mdate-sh install-sh missing
@@ -40,11 +40,11 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-5.1"
+	cd "$srcdir/$pkgname-v$pkgver"
 	make check
 }
 
 package() {
-	cd "$srcdir/$pkgname-5.1"
+	cd "$srcdir/$pkgname-v$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
