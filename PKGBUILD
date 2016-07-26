@@ -2,7 +2,7 @@
 
 pkgname=molotov
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
@@ -33,6 +33,6 @@ package() {
 
   install -D -m644 Molotov.png $pkgdir/usr/share/icons/default/128x128/Molotov.png
   install -D -m644 Molotov.desktop $pkgdir/usr/share/applications/Molotov.desktop
-  install -D -m755 Molotov-$pkgver.AppImage $pkgdir/usr/lib/Molotov-$pkgver.AppImage
+  install -D -m755 Molotov-$pkgver.AppImage $pkgdir/opt/appimages/Molotov-$pkgver.AppImage
   install -D -m755 molotov $pkgdir/usr/bin/molotov
 }
