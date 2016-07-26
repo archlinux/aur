@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/stevecancode/chess_toolkit"
 license=('Apache')
 depends=('glibc')
-makedepends=('gcc' 'make' 'autoconf' 'automake' 'texinfo' 'help2man' 'bison' 'flex' 'git' 'glibc' 'check')
+makedepends=('patch' 'gcc' 'make' 'autoconf' 'automake' 'texinfo' 'help2man' 'bison' 'flex' 'git' 'glibc' 'check')
 _gitroot="https://github.com/stevecancode/chess_toolkit.git"
 _gitname="chess_toolkit"
 
@@ -19,6 +19,7 @@ build() {
 		git clone $_gitroot
 		cd $_gitname
 	fi
+    patch lib/ct_game_tags.c < ../../ct_game_tags.patch
 	./configure --prefix=/usr || return 1
 	make clean || return 1
 	make -j3 || return 1

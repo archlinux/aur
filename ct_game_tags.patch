@@ -1,0 +1,15 @@
+--- ct_game_tags.c.prev	2016-07-26 23:35:58.583198811 +0300
++++ ct_game_tags.c	2016-07-26 23:31:13.366532862 +0300
+@@ -26,10 +26,10 @@
+ 
+ enum
+ {
+-  NUMBER_OF_TAGS = 10                /* The PGN Seven Tag Roster, White and Black ELOs, and ECO */
++  NUMBER_OF_TAGS = 12                /* The PGN Seven Tag Roster, White and Black ELOs, and ECO */
+ };
+ 
+-static const char *valid_keys[] = {"Event", "Site", "Date", "Round", "White", "Black", "Result", "WhiteElo", "BlackElo", "ECO"};
++static const char *valid_keys[] = {"Event", "Site", "Date", "Round", "White", "Black", "Result", "WhiteElo", "BlackElo", "ECO", "WhiteFideId", "BlackFideId"};
+ 
+ typedef struct CtGameTagsStruct
+ {
