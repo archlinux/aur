@@ -1,0 +1,14 @@
+pkgbase = python-cec
+	pkgdesc = libcec bindings for Python
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/trainman419/python-cec
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = libcec
+	source = https://github.com/trainman419/python-cec/archive/0.2.5.tar.gz
+
+pkgname = python-cec
+
