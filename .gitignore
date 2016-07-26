@@ -1,0 +1,5 @@
+*.bak
+*.tar.xz
+*.deb*
+pkg/
+src/
