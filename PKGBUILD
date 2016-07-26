@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mednafen-ngp-git
-pkgver=722.0213ef4
+pkgver=726.8c5197a
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen NGP, itself a fork of Neopop (Neo Geo Pocket/Color)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
