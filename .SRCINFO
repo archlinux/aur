@@ -1,0 +1,21 @@
+pkgbase = spectrum3d
+	pkgdesc = An audio spectrum analyser in 3D for Linux
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://spectrum3d.sourceforge.net/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = automake
+	depends = gtk3
+	depends = gstreamer0.10
+	depends = sdl
+	depends = alsa-lib
+	optdepends = gstreamer0.10-bad-plugins
+	optdepends = gstreamer0.10-ugly-plugins
+	optdepends = jack
+	source = https://downloads.sourceforge.net/sourceforge/spectrum3d/2.5.0/spectrum3d-2.5.0.tar.gz
+	sha512sums = 428fb8e51ef01f7287e00d75ac6ff19ea1088d36ac77e38b6a0f5c4c9144b91a317ea4f0e549d197ecda79737e3183e573b331afe55383afcf3b93303bc96274
+
+pkgname = spectrum3d
+
