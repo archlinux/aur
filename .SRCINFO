@@ -1,0 +1,14 @@
+pkgbase = vkcpp
+	pkgdesc = Header that provides a C++ wrapper for vulkan library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nvpro-pipeline/vkcpp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	depends = vulkan-headers
+
+pkgname = vkcpp
+
