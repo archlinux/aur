@@ -1,0 +1,5 @@
+# Update version number
+updpkgsums
+# Remove downloaded tarball
+makepkg --printsrcinfo > .SRCINFO
+# Commit and push
