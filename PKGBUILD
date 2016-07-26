@@ -2,7 +2,7 @@
 pkgname=googleplaydownloader
 _svnrev=72
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical software to download APKs from the Google Play store."
 arch=(any)
 url="https://codingteam.net/project/$pkgname"
@@ -14,6 +14,8 @@ depends=('python2'
          'wxpython'
          'python2-ndg-httpsclient')
 optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
+makedepends=('subversion'
+             'python2-setuptools')
 source=("$pkgname-$pkgver::svn+http://svn.codingteam.net/$pkgname#revision=$_svnrev")
 sha256sums=('SKIP')
 

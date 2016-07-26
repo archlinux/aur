@@ -1,10 +1,12 @@
 pkgbase = googleplaydownloader
 	pkgdesc = A graphical software to download APKs from the Google Play store.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codingteam.net/project/googleplaydownloader
 	arch = any
 	license = AGPL
+	makedepends = subversion
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-configparser
 	depends = python2-protobuf
