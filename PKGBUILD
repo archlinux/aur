@@ -1,5 +1,5 @@
 pkgname=mingw-w64-glew
-pkgver=1.13.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="GLEW, The OpenGL Extension Wrangler Library (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/glew/glew-${pkgver}.tgz")
-md5sums=('7cbada3166d2aadfc4169c4283701066')
+md5sums=('2a2cd7c98f13854d2fcddae0d2b20411')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 #Config file to use included in ${srcdir}/glew-${pkgver}/config
@@ -33,10 +33,11 @@ build() {
             RANLIB="${_arch}-ranlib" \
             STRIP="${_arch}-strip" \
             LD="${_arch}-gcc" \
+            LDFLAGS.GL="-lopengl32 -lgdi32 -luser32 -lkernel32 -lmingw32 -lmsvcrt" \
             GLEW_DEST="${pkgdir}/usr/${_arch}" \
             CFLAGS.EXTRA="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
             all
-    done
+  done
 }
 
 package() {
@@ -45,6 +46,7 @@ package() {
     make    SYSTEM=${_config} \
             GLEW_DEST="${pkgdir}/usr/${_arch}" \
             install
+    sed -i "s|${pkgdir}||g" "${pkgdir}"/usr/${_arch}/lib/pkgconfig/glew.pc
   done
 }
 
