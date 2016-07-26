@@ -14,7 +14,7 @@ noextract=('$pkgname-$pkgver.deb')
 md5sums=('SKIP')
 
 package() {
- dpkg-deb -x goterminal-0.0.1.deb .
+ dpkg-deb -x goterminal-0.0.5.deb .
  mv $srcdir/usr $pkgdir/usr
  find $pkgdir/usr -type d -exec chmod 755 {} \;
  mv $srcdir/opt $pkgdir/opt
