@@ -2,7 +2,7 @@
 pkgname=(pasystray pasystray-gtk2)
 _pkgname=pasystray
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
 url="https://github.com/christophgysin/pasystray"
@@ -11,7 +11,7 @@ groups=('multimedia')
 conflicts=('pasystray')
 depends=('libpulse' 'libnotify' 'avahi' 'libx11' 'gnome-icon-theme'
     'gtk-update-icon-cache')
-makedepends=('pkg-config' )
+makedepends=('pkg-config' 'gtk2' 'gtk3')
 optdepends=(
     'pulseaudio: To control a local pulseaudio instance'
     'paman: Launch PulseAudio manager from tray icon'
