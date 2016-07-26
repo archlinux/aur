@@ -4,7 +4,7 @@
 
 pkgname=i3blocks
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
 group=('i3')
@@ -21,7 +21,7 @@ sha256sums=('c64720057e22cc7cac5e8fcd58fd37e75be3a7d5a3cb8995841a7f18d30c0536')
 
 build () {
   cd "$pkgname-$pkgver"
-  make VERSION="$pkgver"
+  make VERSION="$pkgver" PREFIX=/usr
 }
 
 package () {
