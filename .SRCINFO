@@ -8,7 +8,7 @@ pkgbase = git-makepkg-template-git
 	makedepends = git
 	depends = pacman>=4.1.2
 	depends = git
-	provides = git-makepkg-template
+	provides = git-makepkg-template=r0
 	conflicts = git-makepkg-template
 	source = git-makepkg-template::git+https://github.com/dffischer/git-makepkg-template
 	md5sums = SKIP
