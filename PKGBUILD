@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dwb-belllabs-git
-pkgver=20150517.r10.gd77e740
+pkgver=20150517.r25.gd20c709
 pkgrel=1
 epoch=
 pkgdesc="A fork of the original Documenter's Workbench Release 3.3."
@@ -30,6 +30,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  ./configure
   make -f dwb.mk
 }
 
