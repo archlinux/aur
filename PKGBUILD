@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Gario <alessandro@icerbero.com>
 pkgname=cerbero-profiler
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout."
 arch=('x86_64')
@@ -21,7 +21,7 @@ noextract=('libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'libpng12-0_1.2.50-1u
 # 3. https://store.cerbero.io/profiler/download
 #
 
-sha1sums=('ae1faf895aadf0812d46410e01a86918a3c2fceb' '651c686d24b7310361a739b63228bc312d0e5553' '0fd57a753a5e46659492187f804d6981158d8a00')
+sha1sums=('c4517aac16d56aeca6a64e9bff06bf5496875ef3' '651c686d24b7310361a739b63228bc312d0e5553' '0fd57a753a5e46659492187f804d6981158d8a00')
 
 prepare() {
 	# we have to manually extract our two external dependencies since
