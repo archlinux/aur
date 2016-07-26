@@ -1,9 +1,9 @@
 # Maintainer: rho <rho.rhoit@gmail.com>
 
 pkgname=parity-puzzle-git
-pkgver=1.0
+pkgver=0.99.r6.g1341d8e
 pkgrel=1
-pkgdesc="Make all tiles equal"
+pkgdesc="A bash implementation of parity puzzle game"
 arch=('any')
 url="https://github.com/rhoit/parity"
 license=('MIT')

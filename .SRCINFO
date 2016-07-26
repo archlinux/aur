@@ -1,6 +1,6 @@
 pkgbase = parity-puzzle-git
-	pkgdesc = Make all tiles equal
-	pkgver = 1.0
+	pkgdesc = A bash implementation of parity puzzle game
+	pkgver = 0.99.r6.g1341d8e
 	pkgrel = 1
 	url = https://github.com/rhoit/parity
 	arch = any
