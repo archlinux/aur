@@ -1,8 +1,9 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
+pkgbase=radeon-profile
 pkgver=20160527
-pkgrel=2
+pkgrel=3
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
@@ -18,17 +19,21 @@ optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'xf86-video-ati: radeon open source driver')
 provides=('radeon-profile')
 replaces=('radeon-profile')
-source=('git+https://github.com/marazmista/radeon-profile.git')
+source=("https://github.com/marazmista/radeon-profile/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
  
 build() {
+
+tar xvf $pkgver.tar.gz
+
 mkdir -p build
 cd build
 
-lrelease ../radeon-profile/radeon-profile/radeon-profile.pro
-cp ../radeon-profile/radeon-profile/*.qm .
 
-qmake-qt5 "../radeon-profile/radeon-profile/"
+lrelease ../$pkgbase-$pkgver/radeon-profile/radeon-profile.pro
+cp ../$pkgbase-$pkgver/radeon-profile/*.qm .
+
+qmake-qt5 ../$pkgbase-$pkgver/radeon-profile
 make
 }
  
@@ -39,8 +44,8 @@ make prefix="${pkgdir}" install
 install -Dm644 "$srcdir/build/radeon-profile" "$pkgdir/usr/bin/radeon-profile"
 chmod +x "$pkgdir/usr/bin/radeon-profile"
 
-install -Dm644 "$srcdir/radeon-profile/radeon-profile/extra/radeon-profile.png" "$pkgdir/usr/share/pixmaps/radeon-profile.png"
-install -Dm644 "$srcdir/radeon-profile/radeon-profile/extra/radeon-profile.desktop" "$pkgdir/usr/share/applications/radeon-profile.desktop"
+install -Dm644 "$srcdir/$pkgbase-$pkgver/radeon-profile/extra/radeon-profile.png" "$pkgdir/usr/share/pixmaps/radeon-profile.png"
+install -Dm644 "$srcdir/$pkgbase-$pkgver/radeon-profile/extra/radeon-profile.desktop" "$pkgdir/usr/share/applications/radeon-profile.desktop"
 
 for translation in *.qm
 do
