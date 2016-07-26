@@ -2,13 +2,12 @@
 
 _pkgname=opentoonz
 _version=git
-
+pkgver=1.0.3.635
 pkgname=${_pkgname}-${_version}
-# todo, extract from ./toonz/sources/toonz/main.cpp, applicationFullName
-pkgver=1.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="2D Animation software."
 arch=('i686' 'x86_64')
+
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('BSD')
 groups=()
@@ -34,6 +33,23 @@ md5sums=(
 'SKIP'
 ) #autofill using updpkgsums
 
+pkgver() {
+  # Uses: opentoonz_version.git_commit_count
+  cd $_pkgname
+  # extract:
+  #
+  #     const char *applicationFullName = "OpenToonz 1.0.3";
+  ver=$(cat toonz/sources/toonz/main.cpp | \
+        grep -e "const char \*applicationFullName.*OpenToon" | \
+        cut -d'"' -f 2 | \
+        cut -d' ' -f 2)
+
+  git_count=$(git rev-list --all --count)
+
+  echo $ver.$git_count
+}
+
+
 build() {
   # make libtiff
   cd $_pkgname/thirdparty/tiff-4.0.3
@@ -45,9 +61,8 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_INSTALL_PREFIX:PATH=/opt/opentoonz
 
-  # Currently only single threaded builds working
   cd $_pkgname-build
-  make $MAKEFLAGS -j 1
+  make $MAKEFLAGS
 }
 
 package() {
