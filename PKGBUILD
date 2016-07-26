@@ -9,7 +9,7 @@ makedepends=('dpkg')
 url="http://rungoterminal.com"
 license=('APSL 2.0')
 options=(!strip)
-source=('$pkgname-$pkgver.deb::http://products.sophiware.com/download/goterminal/linux-debian')
+source=('goterminal-0.0.5.deb::http://products.sophiware.com/download/goterminal/linux-debian')
 noextract=('$pkgname-$pkgver.deb')
 md5sums=('SKIP')
 
