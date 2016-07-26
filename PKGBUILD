@@ -3,7 +3,7 @@
 _srcver="1.3.1-6"
 pkgname=libfpx
 pkgver="${_srcver//-/.}"
-pkgrel=3
+pkgrel=4
 pkgdesc="FlashPIX OpenSource Toolkit"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/download/delegates/"
@@ -22,9 +22,9 @@ build() {
 	CXX="g++-5" \
 	CXXCPP="g++-5 -E" \
 	./configure \
-                --prefix=/usr \
-                --enable-static=no \
-                --enable-shared=yes
+	        --prefix=/usr \
+	        --enable-static=no \
+	        --enable-shared=yes
 	
 	make
 }
@@ -37,9 +37,9 @@ package() {
 	cp --force flashpix.h LICENSE
 	
 	# Erase characters denoting comments
-	sed -i '1s/^.\{,2\}//' LICENSE
+	sed -i '1s/^.\{,2\}//'    LICENSE
 	sed -i '2,79s/^.\{,1\}//' LICENSE
-	sed -i '80s/^.\{,2\}//' LICENSE
+	sed -i '80s/^.\{,2\}//'   LICENSE
 	
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
