@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-exwm-git
-pkgver=r209.915ecc8
+pkgver=r211.e6bf1b4
 pkgrel=1
 pkgdesc="Windowmanager in written in elisp"
 arch=('any')
