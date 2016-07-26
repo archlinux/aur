@@ -1,4 +1,4 @@
-From 98839f02b90416cba7e44d1d6861740cc191d923 Mon Sep 17 00:00:00 2001
+From 7127627b0976b7f606da74dff8665418d6d9bb07 Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 7 Apr 2014 21:54:46 -0400
 Subject: [PATCH 3/3] Do not install kauth manpages when kauth is disabled

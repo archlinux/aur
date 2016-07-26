@@ -1,4 +1,4 @@
-From 33bc4729b83e87751df18e350166e76352cd033f Mon Sep 17 00:00:00 2001
+From ade83876fe44df64598080cd270cd4bba9637c97 Mon Sep 17 00:00:00 2001
 From: Ben Kaduk <kaduk@mit.edu>
 Date: Thu, 8 Nov 2012 18:40:57 -0500
 Subject: [PATCH 2/3] Add configure option to not install kauth
