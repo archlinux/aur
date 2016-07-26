@@ -2,7 +2,7 @@
 
 pkgbase=libopenmpt
 pkgname=(libopenmpt openmpt123 openmpt123-minimal)
-_pkgver=0.2.6401-beta17
+_pkgver=0.2.6664-beta19
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.'
@@ -10,19 +10,20 @@ arch=('i686' 'x86_64')
 url='http://lib.openmpt.org/'
 license=('BSD')
 depends=('zlib' 'gcc-libs' 'libvorbis' 'mpg123')
-makedepends=('sdl2' 'portaudio' 'libsndfile' 'flac' 'help2man')
+makedepends=('sdl2' 'portaudio' 'libsndfile' 'flac' 'help2man' 'libpulse')
 source=("http://lib.openmpt.org/files/$pkgname/src/$pkgname-${_pkgver}.tar.gz")
-sha256sums=('e76d9e447f1ad3741f48797386e753538882919bd3194d139d4fa97469e2e8ca')
+sha256sums=('294272b9ec224899ac476fe791a304fa3a3ddcbc523418b93dfa5a1e0ade316b')
 
 build() {
   cd $pkgbase-${_pkgver%-*}
 
-  make CONFIG=gcc STATIC_LIB=0 NO_SDL=1 TEST=0 #VERBOSE=2
+  make PREFIX=/usr CONFIG=gcc STATIC_LIB=0 NO_SDL=1 TEST=0 #VERBOSE=2
 
   # additional, minimal openmpt123 version
   cp bin/openmpt123.norpath bin/openmpt123_full
   rm openmpt123/openmpt123.o bin/openmpt123{,.norpath}
-  make CONFIG=gcc STATIC_LIB=0 NO_SDL=1 NO_PORTAUDIO=1 NO_FLAC=1 NO_SNDFILE=1 TEST=0 #VERBOSE=2
+  make PREFIX=/usr CONFIG=gcc STATIC_LIB=0 NO_SDL=1 \
+    NO_PORTAUDIO=1 NO_FLAC=1 NO_SNDFILE=1 NO_PULSEAUDIO=1 TEST=0 #VERBOSE=2
   cp bin/openmpt123.norpath bin/openmpt123_minimal
 }
 
@@ -37,7 +38,7 @@ package_libopenmpt() {
 
 package_openmpt123() {
   pkgdesc='A cross-platform command-line or terminal based module file player.'
-  depends=("libopenmpt=$pkgver" 'sdl2' 'portaudio' 'libsndfile' 'flac')
+  depends=("libopenmpt=$pkgver" 'sdl2' 'portaudio' 'libsndfile' 'flac' 'libpulse')
 
   cd $pkgbase-${_pkgver%-*}/bin
   install -Dm755 openmpt123_full "$pkgdir"/usr/bin/openmpt123
