@@ -3,8 +3,8 @@
 
 pkgname=python-partd
 _pkgname=partd
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc="Appendable key-value storage"
 arch=('any')
 url="http://github.com/mrocklin/partd/"
@@ -12,8 +12,8 @@ license=('BSD')
 depends=('python' 'python-locket')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=(https://pypi.python.org/packages/source/p/partd/partd-$pkgver.tar.gz)
-sha256sums=('0b8a2f313d07548ab5fbca89fae27d63ce81709ee544609b9e515d9c604ca910')
+source=(https://pypi.python.org/packages/81/0b/e69d4e325a7b2d0cd5b6a7ff8f9c620c78c21d0f20d95718ff0caad71435/partd-$pkgver.tar.gz)
+sha256sums=('7dce2e5e95c48d8da1b0ea05efcfff1150731e3f4081aecf9d5e8337a30ad24e')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
