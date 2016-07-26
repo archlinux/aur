@@ -1,7 +1,7 @@
 # Maintainer: rho <rho.rhoit@gmail.com>
 
 pkgname=parity-puzzle-git
-pkgver=0.99.r6.g1341d8e
+pkgver=0.99
 pkgrel=1
 pkgdesc="A bash implementation of parity puzzle game"
 arch=('any')
