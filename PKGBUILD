@@ -4,7 +4,7 @@
 pkgname=python-partd
 _pkgname=partd
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Appendable key-value storage"
 arch=('any')
 url="http://github.com/mrocklin/partd/"
