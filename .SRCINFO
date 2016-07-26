@@ -1,0 +1,17 @@
+pkgbase = xdg-autostart-git
+	pkgdesc = Autostart programs according to the XDG specification
+	pkgver = r3.03a7df544540
+	pkgrel = 1
+	url = https://bitbucket.org/fabriceT/xdg-autostart/overview
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = vala
+	provides = xdg-autostart
+	conflicts = xdg-autostart
+	source = hg+https://bitbucket.org/fabriceT/xdg-autostart
+	md5sums = SKIP
+
+pkgname = xdg-autostart-git
+
