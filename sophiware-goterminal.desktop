@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=Go Terminal
+Comment=Elegant and efficient Linux terminal
+Keywords=shell;prompt;command;commandline;cmd;
+TryExec=goterminal
+Exec=goterminal
+Icon=/opt/goterminal/icon.ico
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;
+StartupNotify=true
+X-GNOME-SingleWindow=false
+
+Actions=New
+X-Ubuntu-Gettext-Domain=sophiware-goterminal
+
+[Desktop Action New]
+Name=Run Go Terminal
+Exec=goterminal
+OnlyShowIn=Unity
