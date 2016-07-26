@@ -6,7 +6,7 @@
 
 pkgname=policycoreutils
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
@@ -18,7 +18,6 @@ optdepends=('hicolor-icon-theme: needed for graphical tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-install=policycoreutils.install
 source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('329382cfe9fa977678abf541dcd8fe3847cf0c83b24654c8f7322343907078a1')
 
