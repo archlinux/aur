@@ -3,7 +3,7 @@
 pkgname=animewatch-pyqt4
 _pkgname=AnimeWatch
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt4"
 arch=(any)
 conflicts=('animewatch-pyqt5')
@@ -14,7 +14,7 @@ depends=('python' 'python-pyqt4' 'python-pycurl' 'python-urllib3' 'curl' 'libnot
 
 #source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
 source=("https://github.com/kanishka-linux/"${_pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
-md5sums=('c90087d86900030b4f33b59473c5280a')
+md5sums=('a65fbd0f49519e36ad3758f5686c4096')
 _gitname=AnimeWatch-PyQt4-Stable
 
 
