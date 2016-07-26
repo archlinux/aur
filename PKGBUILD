@@ -1,7 +1,7 @@
 # Maintainer: Valerio Pizzi (pival81) <pival81@yahoo.com>
 
 pkgname=goterminal
-pkgver=0.0.1
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Elegant and efficient Linux terminal"
 arch=("x86_64" "i386")
@@ -9,8 +9,8 @@ makedepends=('dpkg')
 url="http://rungoterminal.com"
 license=('APSL 2.0')
 options=(!strip)
-source=('goterminal-0.0.1.deb::http://products.sophiware.com/download/goterminal/linux-debian')
-noextract=('goterminal-0.0.1.deb')
+source=('$pkgname-$pkgver.deb::http://products.sophiware.com/download/goterminal/linux-debian')
+noextract=('$pkgname-$pkgver.deb')
 md5sums=('SKIP')
 
 package() {
