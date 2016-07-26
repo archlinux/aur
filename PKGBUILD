@@ -1,28 +1,16 @@
 # Maintainer: James An <james@jamesan.ca>
 
-_pkgname=provision
-pkgname=aegir-${_pkgname/_/-}
+pkgname=aegir-provision
+_pkgname=${pkgname##*-}
 pkgver=7.x_3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=('drush>=7')
-
-pkgver() {
-    drush rl --default-major=7 --fields=version --field-labels=0 $_pkgname | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' '
-}
-
-prepare() {
-    drush dl --default-major=7 $_pkgname --yes --destination="$srcdir" &>/dev/null
-
-    cd $_pkgname
-    rm -r debian
-    rm LICENSE.txt
-    rm upgrade.sh.txt
-    rm release.sh
-}
+source=("https://ftp.drupal.org/files/projects/$_pkgname-${pkgver//_/-}.tar.gz")
+md5sums=(25d5b4898e50d57bc0868b25c34d36c6)
 
 package() {
     cd $_pkgname
