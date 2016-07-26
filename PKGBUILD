@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.6.18.1
+pkgver=1.6.18.2
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,20 +16,15 @@ provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        dkms.conf
-        0001-Linux-4.6-rm-PAGE_CACHE_-and-page_cache_-get-release.patch)
-sha256sums=('503b22ebb57af6af5aec87801ace54209b21f34f0d19843b16c336b66efd48ad'
-            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf'
-            'e8c1b1ddb49c198d19a29f2b80294084bede252a34768a26da441cbb6173f350')
+        dkms.conf)
+sha256sums=('1e0749b33a20700651ec61436a25ad8d047ffc189a2d024614e7aeedaef57483'
+            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
 
-  # Patch required to build against Linux 4.6
-  patch -p1 < ${srcdir}/0001-Linux-4.6-rm-PAGE_CACHE_-and-page_cache_-get-release.patch
-
   # Only needed when changes to configure were made
-  ./regen.sh -q
+  # ./regen.sh -q
 }
 
 build() {
