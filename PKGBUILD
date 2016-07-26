@@ -5,7 +5,6 @@ pkgver=0.0.5
 pkgrel=2
 pkgdesc="Elegant and efficient Linux terminal"
 arch=("x86_64" "i386")
-makedepends=('dpkg')
 url="http://rungoterminal.com"
 license=('APSL 2.0')
 options=(!strip)
