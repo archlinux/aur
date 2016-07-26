@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.13.2.r137.gc4ebc9d
-pkgrel=1
+pkgver=3.13.2.r206.g4d766fb
+pkgrel=2
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -32,11 +32,13 @@ replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
 provides=('claws' 'claws-mail')
 source=('claws-mail::git://git.claws-mail.org/claws.git'
+	'http://ticho.kacian.sk/~ticho/cm-wizard-fix.diff'
 	'http://www.eworm.de/download/linux/claws-timestamp.patch'
 	'http://www.eworm.de/download/linux/claws-git-version.patch')
 sha256sums=('SKIP'
+            'd989cc8a1983decbe0a7bd5a382fb653e05c36af7cae06a930fc75d8dad39998'
             'bbf29f10602a74d73f1a30d791ae49c3b1d5abf20c48db0f4c81b0dca7bc0078'
-	    'd377a7a6278b84152cbb8095461223829c3a21e2ca2f35aa8862c058540b61d5')
+            'd377a7a6278b84152cbb8095461223829c3a21e2ca2f35aa8862c058540b61d5')
 
 pkgver() {
 	cd claws-mail/
@@ -56,12 +58,16 @@ pkgver() {
 prepare() {
 	cd claws-mail/
 
+	# fix wizard with new configuration versioning
+	patch -Np1 < "${srcdir}/cm-wizard-fix.diff"
+	git update-index --assume-unchanged src/wizard.c
+
 	# show timestamp in about dialog
-	patch -Np1 < ${srcdir}/claws-timestamp.patch
+	patch -Np1 < "${srcdir}/claws-timestamp.patch"
 	git update-index --assume-unchanged src/gtk/about.c
 
 	# change length of git commit hash
-	patch -Np1 < ${srcdir}/claws-git-version.patch
+	patch -Np1 < "${srcdir}/claws-git-version.patch"
 	git update-index --assume-unchanged configure.ac
 
 	# fixes for python2
@@ -111,7 +117,7 @@ package() {
 	# all executables and .conf files ; only top directory
 	cd tools
 	for FILE in $(find -maxdepth 1 -type f -and -perm /111 -or -name '*.conf'); do
-		install -D -m0755 ${FILE} ${pkgdir}/usr/lib/claws-mail/tools/${FILE}
+		install -D -m0755 ${FILE} "${pkgdir}"/usr/lib/claws-mail/tools/${FILE}
 	done
 }
 
