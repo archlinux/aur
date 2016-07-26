@@ -3,7 +3,7 @@
 
 _gitname=path-and-address
 
-pkgver=1.0.0
+pkgver=2.0.1
 pkgname=python-$_gitname
 pkgrel=1
 pkgdesc="Functions for server CLI applications used by humans."
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/joeyespo/$_gitname/archive/v${pkgver}.tar.gz")
-md5sums=('74c53ac1c056c62755d1d5833311ef35')
+md5sums=('bddf6c075c6a28c1c2ad9d8ab089ee30')
 
 package() {
   cd "$srcdir/$_gitname-$pkgver"
