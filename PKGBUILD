@@ -2,7 +2,7 @@
 
 pkgname=quakespasm
 pkgver=0.92.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with Mission pack desktop files."
 arch=('i686' 'x86_64')
 url="http://quakespasm.sourceforge.net"
@@ -40,5 +40,3 @@ package() {
   install -Dm644 $srcdir/$pkgname-mp2.desktop $pkgdir/usr/share/applications/$pkgname-mp2.desktop
   install -Dm644 $srcdir/$pkgname-impel.desktop $pkgdir/usr/share/applications/$pkgname-impel.desktop
 }
-
-
