@@ -1,15 +1,15 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.4
-pkgrel=2
+pkgver=7.x_3.6
+pkgrel=1
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=(
-    "$pkgname-provision"
-    "$pkgname-hostmaster"
+    "$pkgname-provision=$pkgver"
+    "$pkgname-hostmaster=$pkgver"
     'cron'
     'nginx'
     'php56-fpm'
@@ -45,13 +45,6 @@ md5sums=('c744355aae0ae7c5dd1ecadbbc312216'
          '472dae0f2bd35c58815ec9649eea5861'
          '0b53c23730e511946859d4e3c7fff982'
          '0dab31966eada66adb159355ed814a54')
-
-#~ pkgver() {
-    #~ echo \
-      #~ $(drush rl --fields=version --field-labels=0 provision | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
-      #~ $(drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
-      #~ | tr ' ' $'\n' | sort -ur | head -n1
-#~ }
 
 package() {
     msg2 'Adding config files'
