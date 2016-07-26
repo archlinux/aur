@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 _pythonmod=vcrpy
 pkgname=python2-vcr
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Automatically mock your HTTP interactions to simplify and speed up testing"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python2' 'python2-yaml' 'python2-wrapt' 'python2-six>=1.5' 'python2-co
 makedepends=('python2-setuptools')
 #checkdepends=('python2-pytest-localserver')
 source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
-md5sums=('3e88b570089a65df3217eebb35ae5a86')
+md5sums=('757886606fd658d02cdf91773e7599fa')
 
 build() {
   cd ${srcdir}/${_pythonmod}-$pkgver
