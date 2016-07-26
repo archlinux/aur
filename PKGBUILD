@@ -17,9 +17,14 @@ sha256sums=('0b8a2f313d07548ab5fbca89fae27d63ce81709ee544609b9e515d9c604ca910')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
+  export PYTHONPATH=build/lib
   py.test
 }
 
+build(){
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
