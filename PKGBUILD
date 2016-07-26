@@ -1,6 +1,6 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-git
-pkgver=0.6.5
+pkgver=r774.3175946
 pkgrel=1
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
@@ -19,6 +19,10 @@ makedepends=('git' 'npm' 'wine')
 source=("git+https://github.com/Soundnode/soundnode-app.git")
 sha256sums=("SKIP")
 
+pkgver() {
+	cd soundnode-app
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd soundnode-app
