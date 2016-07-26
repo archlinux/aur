@@ -2,13 +2,14 @@
 
 pkgname=molotov
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
 license=('unknown')
 depends=('fuse')
 makedepends=('p7zip')
+options=('!strip')
 
 source=("http://desktop-auto-upgrade.molotov.tv/linux/Molotov-${pkgver}.AppImage.tar.gz"
         'molotov')
@@ -27,12 +28,15 @@ build() {
 }
 
 package() {
+  cd $srcdir
+
   install -d -m755 $pkgdir/usr/share/{applications,icons/default/128x128}
   install -d -m755 $pkgdir/opt/appimages
+  # TODO find a decent license
   #install -d -m755 $pkgdir/usr/share/licenses/$pkgname
 
   install -D -m644 Molotov.png $pkgdir/usr/share/icons/default/128x128/Molotov.png
   install -D -m644 Molotov.desktop $pkgdir/usr/share/applications/Molotov.desktop
-  install -D -m755 Molotov-$pkgver.AppImage $pkgdir/opt/appimages/Molotov-$pkgver.AppImage
   install -D -m755 molotov $pkgdir/usr/bin/molotov
+  install -D -m755 Molotov-$pkgver.AppImage $pkgdir/opt/appimages/Molotov-$pkgver.AppImage
 }
