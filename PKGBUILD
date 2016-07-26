@@ -2,7 +2,7 @@
 
 pkgname='ivideon-client'
 pkgver='6.2.1'
-pkgrel='402'
+pkgrel='405'
 pkgdesc='Ivideon Client'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-script' 'qt5-svg' 'qt5-multimedia' 'openssl' 'wget' 'vl
 makedepends=('libarchive')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}.${pkgrel}_amd64.deb"
 	"${pkgname}.desktop")
-sha256sums=('1861a9a680eb485349b53167d4a006f757fa3023674703d61279d5e1d3c87830'
+sha256sums=('a0903cbc867021ae4893a4a9e16e1ac6c0af3ceb5e17c90df32638ec6e1af925'
             '2baf7178b17057d0e638d19c1c3feb17e8eb65ea32106d477f9d53e24937020b')
 install='ivideon.install'
 
