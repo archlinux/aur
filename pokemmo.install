@@ -1,10 +1,18 @@
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+
 post_install(){
-   echo "To play, you will need to place a PokeMon Fire Red (US) ROM, and optionally"
-   echo "a Heart Gold or Soul Silver ROM, in ~/.pokemmo/roms"
+   msg_blue "To play, you will need to place a PokeMon Fire Red ROM, and optionally"
+   msg_blue "a Heart Gold or Soul Silver ROM, in ~/.pokemmo/roms"
    echo ""
-   echo "This software is not open-source. You must agree to the terms of service before"
-   echo "using this software. The terms of service and licensing information may be"
-   echo "here: http://pokemmo.eu/tos/"
+   msg_blue "This software is not open-source. You must agree to the terms of service before"
+   msg_blue "using this software. The terms of service and licensing information may be"
+   msg_blue "here: http://pokemmo.eu/tos/"
 }
 
 post_upgrade() {
@@ -12,5 +20,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo "You may remove leftover config and data files from '~/.pokemmo'."
+  msg_blue "You may remove leftover config and data files from '~/.pokemmo'."
 }
