@@ -45,8 +45,8 @@ source_x86_64=("https://sourceforge.net/projects/modeliouml/files/${pkgver}/mode
 
 # Integrity
 md5sums=('SKIP' 'SKIP')
-md5sums_i686=('cca87cbd999d0b60be24f9e7e2bf90b1')
-md5sums_x86_64=('f3401e8ac4ac63773106eeceac830f77')
+md5sums_i686=('7d3a83b17cd7ad2624ec85bed430f7cf')
+md5sums_x86_64=('86839aadbe8df43fbcd8eb0ce44e97cc')
 #sha1sums=()
 #sha256sums=()
 
