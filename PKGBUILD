@@ -1,15 +1,16 @@
 pkgname=digikam-git
-pkgver=r34249.a1ca3ed
+pkgver=r34736.5e3ac31
 pkgrel=1
 pkgdesc='Digital photo management application for KDE'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-depends=('libkipi-git' 'libkexiv2-git' 'libkdcraw-git' 'libkface-git' 'libkgeomap-git' \
+depends=('libkipi-git' 'libkdcraw-git' 'libkface-git' 'libkgeomap-git' \
 	 'libpgf' 'knotifyconfig' 'kfilemetadata' 'libgphoto2' 'liblqr' 'lensfun' \
 	 'qt5-multimedia' 'akonadi-contact' 'libksane-git')
 makedepends=('git' 'extra-cmake-modules-git' 'eigen' 'doxygen' 'boost' 'mariadb' 'kdoctools')
-optdepends=('kipi-plugins: more tools and plugins')
+optdepends=('kipi-plugins: more tools and plugins'
+	    'kqoauth: OAuth authentication for imgur')
 conflicts=('digikam')
 provides=('digikam')
 install=digikam-git.install
