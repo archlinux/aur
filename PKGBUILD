@@ -16,7 +16,7 @@
 #
 #
 pkgname="spl-utils-linux-lts"
-pkgver=0.6.5.7_4.4.15_1
+pkgver=0.6.5.7_4.4.15_2
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
