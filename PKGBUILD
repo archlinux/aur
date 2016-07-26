@@ -19,7 +19,7 @@ build() {
 		git clone $_gitroot
 		cd $_gitname
 	fi
-    patch lib/ct_game_tags.c < ../../ct_game_tags.patch
+    patch -p1 < ../../ct.patch
 	./configure --prefix=/usr || return 1
 	make clean || return 1
 	make -j3 || return 1

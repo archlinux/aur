@@ -1,0 +1,28 @@
+diff -Naur chess_toolkit/lib/chess_toolkit/ct_game_tags.h chess_toolkit_/lib/chess_toolkit/ct_game_tags.h
+--- chess_toolkit/lib/chess_toolkit/ct_game_tags.h	2016-07-26 23:59:40.323195228 +0300
++++ chess_toolkit_/lib/chess_toolkit/ct_game_tags.h	2016-07-27 00:05:19.856527707 +0300
+@@ -22,7 +22,7 @@
+ 
+ enum
+ {
+-  GAME_TAGS_KEY_MAX_LENGTH = 9,
++  GAME_TAGS_KEY_MAX_LENGTH = 12,
+   GAME_TAGS_VALUE_MAX_LENGTH = 256        /* includes null termination */
+ };
+ 
+diff -Naur chess_toolkit/lib/ct_game_tags.c chess_toolkit_/lib/ct_game_tags.c
+--- chess_toolkit/lib/ct_game_tags.c	2016-07-26 23:59:40.326528563 +0300
++++ chess_toolkit_/lib/ct_game_tags.c	2016-07-27 00:04:41.766527803 +0300
+@@ -26,10 +26,10 @@
+ 
+ enum
+ {
+-  NUMBER_OF_TAGS = 10                /* The PGN Seven Tag Roster, White and Black ELOs, and ECO */
++  NUMBER_OF_TAGS = 12                /* The PGN Seven Tag Roster, White and Black ELOs, and ECO */
+ };
+ 
+-static const char *valid_keys[] = {"Event", "Site", "Date", "Round", "White", "Black", "Result", "WhiteElo", "BlackElo", "ECO"};
++static const char *valid_keys[] = {"Event", "Site", "Date", "Round", "White", "Black", "Result", "WhiteElo", "BlackElo", "ECO", "WhiteFideId", "BlackFideId"};
+ 
+ typedef struct CtGameTagsStruct
+ {
