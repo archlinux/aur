@@ -1,6 +1,6 @@
 pkgbase = arm-none-eabi-gcc60-linaro
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
-	pkgver = 6.1_2016.06
+	pkgver = 6.1_2016.07
 	pkgrel = 1
 	url = https://releases.linaro.org/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = arm-none-eabi-gcc60-linaro
 	options = !strip
 	options = zipman
 	options = docs
-	source = http://snapshots.linaro.org/components/toolchain/gcc-linaro/6.1-2016.06/gcc-linaro-snapshot-6.1-2016.06.tar.xz
+	source = http://snapshots.linaro.org/components/toolchain/gcc-linaro/6.1-2016.07/gcc-linaro-snapshot-6.1-2016.07.tar.xz
 	source = 0200-gcc-no-exceptions.patch
 	source = 0300-gcc-multilib2.patch
 	source = 1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch

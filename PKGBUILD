@@ -3,13 +3,13 @@
 
 pkgname=arm-none-eabi-gcc60-linaro
 _relver=snapshot-6.1
-_relshortdate=16.06
+_relshortdate=16.07
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=6.1_2016.06
-_pkgver=6.1-2016.06
+pkgver=6.1_2016.07
+_pkgver=6.1-2016.07
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
