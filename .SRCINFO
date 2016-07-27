@@ -14,6 +14,7 @@ pkgbase = beets-git
 	depends = python2-yaml
 	depends = python2-enum34
 	depends = python2-jellyfish
+	depends = python2-six
 	optdepends = python2-pyacoustid: acoustic fingerprinting
 	optdepends = python2-flask: web interface
 	optdepends = python2-gobject: BPD audio player plugin
