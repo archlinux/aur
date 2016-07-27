@@ -2,8 +2,8 @@
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.4
-pkgver=4.4.14
-pkgrel=1
+pkgver=4.4.15
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,17 +19,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch'
+        'ecryptfs.patch'
         'override_for_missing_acs_capabilities.patch'
         'i915_317.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '63b67f25867d6f0c9e8721d0d4c39c902622d0351055808ada340909ed566509'
+            '69fcb928e4958f87fb134d0f6acf98072655b5572dd3497c3a0844882f261bf8'
             'SKIP'
             'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
             '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'a2e240ab338f02ebde278131cf5810e9aa3846a8238e3d26dc235eace05ab4e7'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
             'b5a8eebbe75e1801b35d2f5197eba6f57123c224e09e97a7eb526f1fa58ac918')
 validpgpkeys=(
@@ -47,6 +49,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # https://bugs.archlinux.org/task/50126 - broken ecryptfs
+  patch -p1 -i "${srcdir}/ecryptfs.patch"
   
   # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
   # fixes #47778 sdhci broken on some boards
