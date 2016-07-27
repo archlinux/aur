@@ -1,6 +1,6 @@
 pkgbase = adwm
 	pkgdesc = Advanced dynamic window manager for X
-	pkgver = 0.6.2
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = http://github.com/bbidulock/adwm
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = adwm
 	optdepends = xde-menu: for xde-menu root menu default bindings
 	optdepends = xde-session: for xde-logout and xde-xlock default bindings
 	options = !libtool
-	source = https://github.com/bbidulock/adwm/releases/download/0.6.2/adwm-0.6.2.tar.xz
-	md5sums = fdfaa96fcb57a976cb56ee542341b934
+	source = https://github.com/bbidulock/adwm/releases/download/0.6.4/adwm-0.6.4.tar.xz
+	md5sums = 845e63e2313e3eb241014b17c67579d9
 
 pkgname = adwm
 
