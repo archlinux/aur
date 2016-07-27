@@ -1,0 +1,14 @@
+pkgbase = vmg
+	pkgdesc = Handy virtual magnifying glass tool
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://magnifier.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = lib32-gtk2
+	source = http://sourceforge.net/projects/magnifier/files/magnifier%20for%20Linux/3.5/magnifier-linux-3.5.tar.bz2
+	md5sums = 8302710ad565f1f1de63cf307703f6f5
+
+pkgname = vmg
+
