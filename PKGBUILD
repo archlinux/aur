@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.6
 pkgver=4.6.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -61,8 +61,12 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=1
 _ckpatchname="patch-4.6-ck${_ckpatchversion}"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8"
+_gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
+_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8'
+_bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch'
+_bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch'
+_bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
+_bfqp4='0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -75,10 +79,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
-"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch"
-"${_bfqpath}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch"
-"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
-"${_bfqpath}/0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch")
+"$_bfqpath/$_bfqp1"
+"$_bfqpath/$_bfqp2"
+"$_bfqpath/$_bfqp3"
+"$_bfqpath/$_bfqp4")
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
             '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
@@ -120,9 +124,10 @@ prepare() {
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
 	
 	msg "Patching source with BFQ patches"
-	for p in $(ls ${srcdir}/000{1,2,3}-block*.patch); do
-		patch -Np1 -i "$p"
-	done
+	patch -Np1 -i "$srcdir/$_bfqp1"
+	patch -Np1 -i "$srcdir/$_bfqp2"
+	patch -Np1 -i "$srcdir/$_bfqp3"
+	patch -Np1 -i "$srcdir/$_bfqp4"
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
