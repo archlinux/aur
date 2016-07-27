@@ -1,0 +1,38 @@
+pkgbase = vulkan-radeon-git
+	pkgdesc = Radeon's Vulkan mesa driver
+	pkgver = 83453.6db201a
+	pkgrel = 1
+	url = http://www.mesa3d.org
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = libdrm
+	makedepends = dri2proto
+	makedepends = glproto
+	makedepends = libxxf86vm
+	makedepends = libxdamage
+	makedepends = expat>=2.0.1
+	makedepends = libxmu
+	makedepends = llvm-svn
+	makedepends = talloc
+	makedepends = wayland
+	makedepends = pkgconfig
+	makedepends = imake
+	makedepends = xorg-server-devel
+	makedepends = python2-mako
+	makedepends = python
+	makedepends = git
+	depends = vulkan-icd-loader
+	depends = libgcrypt
+	depends = wayland
+	depends = libxcb
+	depends = llvm-libs-svn
+	source = radv::git+https://github.com/airlied/mesa.git#branch=semi-interesting
+	source = LICENSE
+	source = remove-libpthread-stubs.patch
+	sha256sums = SKIP
+	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
+	sha256sums = 75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f
+
+pkgname = vulkan-radeon-git
+
