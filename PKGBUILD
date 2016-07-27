@@ -2,19 +2,22 @@
 # Contributor: Blake Imsland <blake@retroco.de>
 
 pkgname=uchardet
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.6
+pkgrel=1
 pkgdesc='Encoding detector library ported from Mozilla'
 arch=('i686' 'x86_64')
-url='https://github.com/BYVoid/uchardet'
+url='https://www.freedesktop.org/wiki/Software/uchardet'
 license=('MPL')
 makedepends=('cmake')
 depends=('gcc-libs')
-source=("https://github.com/BYVoid/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://www.freedesktop.org/software/${pkgname}/releases/${pkgname}-${pkgver}.tar.xz")
 
 build() {
 	cd ${pkgname}-${pkgver}
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_BUILD_TYPE=Release
 	make
 }
 
@@ -23,6 +26,6 @@ package() {
 	make DESTDIR="${pkgdir}/" install
 }
 
-sha256sums=('7c5569c8ee1a129959347f5340655897e6a8f81ec3344de0012a243f868eabd1')
-sha384sums=('c8b4af6cfad7231969aa27622a14374ad1f6d68d1d3210d4c563a0727e4ca5dff47a027a48a91fc71d2adcd8c6c4d2ec')
-sha512sums=('e32ff3e7baa9804199e3ca240ce590fed3fcb539fe4d780c4ec205fa5cbd45415e2c8c8db51d97965f9f9bbaad1f34613d5ed2849aafd9bbc3dda850c0be20ac')
+sha256sums=('8351328cdfbcb2432e63938721dd781eb8c11ebc56e3a89d0f84576b96002c61')
+sha384sums=('4e70d71644094d51fc764fd91233b729178e51faf44d31598008e63e1284077da1cdc282299f41b77c932f756ad64b39')
+sha512sums=('eceeadae060bf277e298d709856609dde32921271140dc1fb0a33c7b6e1381033fc2960d616ebbd82c92815936864d2c0743b1b5ea1b7d4a200df87df80d6de5')
