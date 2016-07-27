@@ -12,6 +12,8 @@ pkgbase = arm-none-eabi-gcc60-linaro
 	makedepends = bison
 	depends = arm-none-eabi-binutils>=2.26-1
 	depends = gmp
+	depends = cloog-git
+	depends = arm-none-eabi-newlib
 	depends = mpfr
 	depends = libmpc
 	provides = arm-none-eabi-gcc

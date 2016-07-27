@@ -16,7 +16,7 @@ arch=(i686 x86_64)
 url="https://releases.linaro.org/"
 license=('GPL' 'LGPL')
 groups=('arm-none-eabi-toolchain')
-depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'mpfr' 'libmpc')
+depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'cloog-git' 'arm-none-eabi-newlib' 'mpfr' 'libmpc')
 makedepends=('flex' 'bison')
 provides=('arm-none-eabi-gcc')
 conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
@@ -54,17 +54,18 @@ cd ${srcdir}/${_basedir}
                --with-gnu-ld \
                --with-system-zlib \
                --disable-nls \
+	       --disable-isl-version-check \
                --disable-shared \
-               --disable-threads \
+               --enable-threads \
+	       --enable-lto \
                --disable-libssp \
                --disable-libstdcxx-pch \
 	       --disable-libstdc__-v3 \
-               --disable-libmudflap \
-               --disable-libgomp \
                --enable-silent-rules 
   make
 }
-
+#               --disable-libmudflap \
+#               --disable-libgomp \
 package() {
   cd ${srcdir}/${_basedir}/build
   make -j1 DESTDIR=${pkgdir} install
