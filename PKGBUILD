@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php?content=29024"
 license=('GPL')
 depends=('kdelibs4support'
-         'libkcddb-frameworks-git'
+         'libkcddb-git'
          'cdparanoia'
          'taglib')
 makedepends=('kdoctools'
@@ -45,7 +45,7 @@ install=$pkgname.install
 
 pkgver() {
   cd "$srcdir/soundkonverter"
-  ( 
+  (
     set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's|\([^-]*-g\)|r\1|;s|-|.|g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
