@@ -1,7 +1,7 @@
 pkgbase = keepass-wine
 	pkgdesc = A easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices. (Wine version)
 	pkgver = 2.34
-	pkgrel = 4
+	pkgrel = 5
 	url = http://keepass.info/
 	arch = any
 	license = GPL

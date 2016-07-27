@@ -3,7 +3,7 @@
 
 pkgname=keepass-wine
 pkgver=2.34
-pkgrel=4
+pkgrel=5
 pkgdesc='A easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices. (Wine version)'
 arch=('any')
 url='http://keepass.info/'
