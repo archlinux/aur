@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
 _majver='9'
-pkgver="${_majver}.1.1"
+pkgver="${_majver}.2"
 pkgrel=1
 pkgdesc="The Award-Winning All-in-One Java Profiler"
 arch=(any)
@@ -10,8 +10,8 @@ license=('custom')
 depends=('java-environment')
 source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop")
-sha256sums=(46756992b5f004a0d5043b9dd74c1813cb0cf7752371492c4a41d1d1bf8bb1b0
-            be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a)
+sha256sums=('ce393543e21a0b6501d9dd105740a3b48e73e954a4ca4d8cff2c02c1c1ba3a6b'
+            'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a')
 
 package() {
     optdir="/opt/${pkgname}"
@@ -19,7 +19,7 @@ package() {
     extracted="${srcdir}/jprofiler${_majver}"
     install -dm755 "$target"
     install -dm755 "${pkgdir}/usr/bin"
-    cp -dpr --no-preserve=ownership "${extracted}/." -d "$target"
+    cp -dpr --no-preserve=ownership "${extracted}/." "$target"
     ln -s "${optdir}/bin/jprofiler" "${pkgdir}/usr/bin/${pkgname}"
 
     install -dm755 "${pkgdir}/etc"
