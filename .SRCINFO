@@ -1,7 +1,7 @@
 pkgbase = git-annex-remote-rclone
 	pkgdesc = A git-annex special remote using rclone
 	pkgver = v0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DanielDent/git-annex-remote-rclone
 	arch = any
 	license = GPL3
