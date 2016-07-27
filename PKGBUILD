@@ -2,7 +2,7 @@
 
 pkgname=watchman-git
 _gitname=watchman
-pkgver=r717.a75b2b8
+pkgver=r982.2565188
 pkgrel=1
 pkgdesc='Watches files and records, or triggers actions, when they change.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://facebook.github.io/watchman/'
 license=('Apache')
 depends=('pcre')
 makedepends=('git')
-conflicts=()
+conflicts=('watchman')
 options=('!libtool' 'staticlibs')
 provides=()
 source=("${_gitname}::git+https://github.com/facebook/watchman.git")
