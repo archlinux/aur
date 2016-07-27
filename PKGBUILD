@@ -1,9 +1,9 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=0.10rc1
-_pypkgver=0.10.0rc1
-pkgrel=3
+pkgver=0.10rc2
+_pypkgver=0.10.0rc2
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
@@ -27,7 +27,7 @@ source=(
 )
 md5sums=('SKIP'
          '2888336abcbb122a49cb5817ac98f36c'
-         '89cd23ce562229b3b2b6301aee18fced')
+         '9cde58e7639dadbca34e501234619ef3')
 
 prepare() {
     cd "$_pkgname"
@@ -57,7 +57,7 @@ build() {
         -DWRAP_JAVA:BOOL=OFF \
         ..
 
-    make all dist
+    make all PythonVirtualEnv dist
 }
 
 package() {
