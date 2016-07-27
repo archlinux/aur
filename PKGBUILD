@@ -1,8 +1,9 @@
-# Maintainer: Lev Lybin <aur@devtrue.net>
+# Maintainer: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
+# Contributor: Lev Lybin <aur@devtrue.net>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32 SHELL build in Arch x86_64, "0" to disable
-_SHELL_IA32_ARCH_X64="1"
+_SHELL_IA32_ARCH_X64="0"
 
 ###############
 _TIANO_DIR_="edk2"
@@ -26,7 +27,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=19443.e2f5c49
+pkgver=19533.39dbc4d
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
