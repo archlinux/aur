@@ -1,7 +1,7 @@
 pkgbase = vmg-svn
 	pkgdesc = Handy virtual magnifying glass tool SVN version
 	pkgver = 3.7
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	arch = i686
 	license = GPL2
@@ -12,7 +12,9 @@ pkgbase = vmg-svn
 	provides = vmg
 	conflicts = vmg
 	source = svn+http://svn.code.sf.net/p/magnifier/code/trunk
+	source = vmg.desktop
 	md5sums = SKIP
+	md5sums = e831d6b702672283d3c64202454c6f32
 
 pkgname = vmg-svn
 

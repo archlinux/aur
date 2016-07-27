@@ -2,17 +2,19 @@
 
 pkgname=vmg-svn
 pkgver=3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Handy virtual magnifying glass tool SVN version"
 arch=('x86_64' 'i686')
 url=""
 license=('GPL2')
 depends=('gdk-pixbuf2')
-source=(svn+http://svn.code.sf.net/p/magnifier/code/trunk)
+source=('svn+http://svn.code.sf.net/p/magnifier/code/trunk'
+	'vmg.desktop')
 makedepends=('subversion' 'lazarus' 'fpc')
 provides=('vmg')
 conflicts=('vmg')
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'e831d6b702672283d3c64202454c6f32')
 
 build() {
   cd "$srcdir/trunk"
@@ -39,6 +41,9 @@ fpc -S2cgi -O1 -gl -vewnhi -l -Fu/usr/lib/lazarus/lcl/units/$ARCH-$OS/ -Fu/usr/l
 }
 
 package() {
+cd "$srcdir"
+mkdir -p $pkgdir/usr/share/applications
+cp ./vmg.desktop $pkgdir/usr/share/applications
 cd "$srcdir/trunk"
 DESTDIR="$pkgdir"
 
