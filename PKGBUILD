@@ -5,7 +5,7 @@
 _pkgname=powerlevel9k
 pkgname=zsh-theme-${_pkgname}
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
@@ -19,7 +19,7 @@ optdepends=('oh-my-zsh-git: oh-my-zsh integration'
   'awesome-terminal-fonts: icon package'
   'acpi: battery monitoring'
   'git: status of repository'
-  'mercurial status of repository')
+  'mercurial: status of repository')
  
 source=("https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz")
 sha512sums=('169727f6be8eaf9b04499f40738597ae6652bd5adf23b4110f9a169022e2171abab6e288a1293d28f72ebe3e63428b3c99458b8ebbd5b19d27dc87799f644a75')
