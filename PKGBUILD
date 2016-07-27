@@ -53,5 +53,6 @@ package() {
 
   # install theme
   cp -r . "${pkgdir}/usr/share/themes/Greybird/"
-  cp "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/README" "${pkgdir}/usr/share/doc/${pkgname}/"
+  mv "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/README" "${pkgdir}/usr/share/doc/${pkgname}/"
+  rm "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/Gemfile"
 }
