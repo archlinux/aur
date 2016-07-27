@@ -8,14 +8,14 @@
 
 pkgname=arduino
 pkgver=1.6.9
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'avrdude')
-makedepends=('java-environment=8' 'apache-ant')
+makedepends=('java-environment=8' 'apache-ant' 'unzip')
 provides=('arduino')
 conflicts=('arduino-bin' 'arduino-git')
 install="arduino.install"
