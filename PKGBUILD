@@ -2,7 +2,7 @@
 
 pkgname=stikked-git
 _gitname='Stikked'
-pkgver=0.8.5.74.gbef6333
+pkgver=0.10.0.r34.ge068019
 pkgrel=1
 pkgdesc="An advanced and beautiful pastebin written in PHP"
 arch=('any')
@@ -19,7 +19,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
