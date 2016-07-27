@@ -26,7 +26,7 @@ package() {
     install -D -m755 TextSuggest.py "$pkgdir/usr/bin/textsuggest"
     install -D -m644 languages.py -t "$pkgdir/usr/lib/python3.5/site-packages/"
     install -D -m644 fonts.py -t "$pkgdir/usr/lib/python3.5/site-packages/"
-    install -D -m644 textsuggest.1 -t "$pkgdir/usr/share/man/man1/"
+    install -D -m644 docs/textsuggest.1 -t "$pkgdir/usr/share/man/man1/"
     install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
