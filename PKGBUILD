@@ -1,6 +1,6 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
-pkgname=xlnt
+pkgname=xlnt-git
 pkgver=v0.9.0.r182.g6707736
 pkgrel=1
 pkgdesc="user-friendly xlsx library for C++14"
