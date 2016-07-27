@@ -2,13 +2,13 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=0.0.r722.g9457348
+pkgver=0.0.r750.ga0cdd5a
 pkgrel=1
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
 license=('GPL3')
-depends=('libutil-linux' 'gnutls' 'libidn' 'libpsl' 'gpgme')
+depends=('libutil-linux' 'gnutls' 'libidn' 'libpsl' 'gpgme' 'nghttp2')
 optdepends=("ca-certificates: HTTPS Downloads")
 makedepends=('git' 'rsync')
 provides=('wget2')
@@ -21,7 +21,7 @@ build() {
   cd $_gitname
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
-  ./autogen.sh
+  ./bootstrap
   ./configure --prefix=/usr --sysconfdir=/etc
 }
 
