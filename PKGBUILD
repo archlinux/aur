@@ -13,7 +13,7 @@ pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-open
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=92
+_jdk_update=102
 _jdk_build=14
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
@@ -33,6 +33,7 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
+        build_with_gcc6.patch
         004_add-fontconfig.patch
         005_enable-infinality.patch)
 
@@ -69,8 +70,10 @@ prepare() {
     ln -s ../${subrepo}-${_repo_ver} ${subrepo}
   done
 
-  cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
+  patch -p1 < ../build_with_gcc6.patch
+
   # Apply infinality patches
+  cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
   patch -p1 < "${srcdir}/004_add-fontconfig.patch"
   patch -p1 < "${srcdir}/005_enable-infinality.patch"
 }
@@ -82,9 +85,6 @@ build() {
   unset _JAVA_OPTIONS
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
-  export CXXFLAGS="${CXXFLAGS} -std=gnu++98"
-  export CFLAGS="${CFLAGS} -std=gnu++98"
-  export CPPFLAGS="${CPPFLAGS} -std=gnu++98"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
