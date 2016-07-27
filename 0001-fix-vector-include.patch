@@ -1,0 +1,36 @@
+Index: src/DuelMatch.h
+===================================================================
+--- src/DuelMatch.h	(revision 1678)
++++ src/DuelMatch.h	(working copy)
+@@ -21,6 +21,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <vector>
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/shared_ptr.hpp>
+ 
+Index: src/server/MatchMaker.h
+===================================================================
+--- src/server/MatchMaker.h	(revision 1678)
++++ src/server/MatchMaker.h	(working copy)
+@@ -23,6 +23,7 @@
+ #include "raknet/NetworkTypes.h"
+ #include <map>
+ #include <functional>
++#include <vector>
+ #include "Global.h"
+ 
+ class NetworkPlayer;
+Index: src/state/LobbyStates.h
+===================================================================
+--- src/state/LobbyStates.h	(revision 1678)
++++ src/state/LobbyStates.h	(working copy)
+@@ -1,6 +1,7 @@
+ #ifndef LOBBYSTATES_H_INCLUDED
+ #define LOBBYSTATES_H_INCLUDED
+ 
++#include <vector>
+ #include <boost/shared_ptr.hpp>
+ #include "NetworkMessage.h"
+ #include "PlayerIdentity.h"
