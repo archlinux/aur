@@ -4,8 +4,8 @@
 
 pkgname=snapd-confinement
 _pkgname=snapd
-pkgver=2.0.10
-pkgrel=3
+pkgver=2.11
+pkgrel=1
 pkgdesc="Service and tools for management of snap packages (with confinement enabled)."
 arch=('i686' 'x86_64')
 url="https://github.com/snapcore/snapd"
@@ -20,19 +20,29 @@ install=snapd.install
 source=("git+https://github.com/snapcore/$_pkgname.git#tag=$pkgver"
         'snapd.sh'
         'snapd.apparmor.service'
-        'fix_test.patch'
+	'skip-apparmor-test.patch'
         'disable-devmode-enforcing.patch')
 md5sums=('SKIP'
          '1d841a1d09ba86945551dfc5c5658b2e'
          'f53ccd2070be9165c0790ea6684c5999'
-         '7fd19e053051825b189914cedb95c3e7'
-         '48be5347e87d12f2b200e46d11da3a7a')
+         '408da812941606e2512fd5d7eb009bd6'
+         '77fb21c8992dcb887173e84d3910a807')
 
 _gourl=github.com/snapcore/snapd
 
 prepare() {
   cd "$_pkgname"
-  patch -Np1 -i "$srcdir/fix_test.patch"
+
+  # daemon: always mock release info in tests
+  git cherry-pick -n 2840c2a37ef5adf50d93461920f3e2140617bd54
+
+  # osutil: support both "nobody" and "nogroup" for grpnam tests
+  git cherry-pick -n de99c096641e22dc57de3a581a3459ab65c9cf4d
+
+  # lp:1604346
+  patch -Np1 -i "$srcdir/skip-apparmor-test.patch"
+
+  # Don't force devmode for Arch Linux, Parabola and Manjaro
   patch -Np1 -i "$srcdir/disable-devmode-enforcing.patch"
 
   # Use $srcdir/go as our GOPATH
@@ -60,7 +70,7 @@ check() {
   export GOPATH="$srcdir/go"
   cd "$GOPATH/src/${_gourl}"
   # FIXME apparmor tests doesn't works
-  #./run-checks --unit
+  ./run-checks --unit
   ./run-checks --static
 }
 

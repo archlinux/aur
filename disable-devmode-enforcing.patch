@@ -14,10 +14,10 @@
 +		fallthrough
  	case "ubuntu":
  		return false
- 
+ 	case "elementary":
 --- a/release/release_test.go
 +++ b/release/release_test.go
-@@ -107,14 +107,16 @@ func (s *ReleaseTestSuite) TestForceDevMode(c *C) {
+@@ -129,14 +129,16 @@ func (s *ReleaseTestSuite) TestForceDevMode(c *C) {
  		devmode   bool
  	}{
  		// Please keep this list sorted
