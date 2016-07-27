@@ -14,8 +14,10 @@ pkgbase = arduino-bin
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = avrdude
+	depends = java-runtime=8
 	provides = arduino
 	conflicts = arduino
+	conflicts = arduino-git
 	options = !strip
 	options = staticlibs
 	source_i686 = https://downloads.arduino.cc/arduino-1.6.10-linux32.tar.xz
