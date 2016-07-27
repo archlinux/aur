@@ -6,7 +6,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.6
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.6.4
+pkgver=4.6.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -14,8 +14,9 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqversion=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-${_bfqversion}"
+_bfqversion=v8
+_bfqversion_old=v7r11
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqversion}"
 _BLDpatch="BLD-4.6.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -27,25 +28,27 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.5.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.5.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-4.6.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-for-4.6.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-for.patch"
+        "${_bfqpath}/0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqversion}-for-4.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         "0001-linux-4.6-rtlwifi-fix-atomic.patch"
         )
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
-            '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
+            '1857e05fd79baffc04dd075be81257d0a43351c244b7f360b48408a28ecfde2d'
+            '595887ea141ee7373460d325368f362ca87695259b9bca3499f12ef76322172b'
             'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
+            '411e6f7aacc24d869f8b697e514bcbe1bb8ac676a73710269d4f8b516ce0b971'
             'f7c6dead74777b8b3f2c229556265e01205a8ac5e49f92273169511842bf69be'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 
@@ -97,7 +100,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   msg "Patching source with BFQ patches"
-  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
+  for p in $(ls ${srcdir}/000{1,2,3,4}-block*BFQ*.patch); do
       patch -Np1 -i "$p"
   done
 
