@@ -3,14 +3,18 @@
 _model="9022cdw"
 pkgname="brother-dcp-$_model"
 pkgver="1.1.3"
-pkgrel=1
+pkgrel=2
 _revision=0
 pkgdesc="LPR and CUPS driver for the Brother DCP-9022CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-dcp-${_model}.install"
-depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
+if [[ "$CARCH" == "x86_64" ]] ; then
+    depends=('tcsh' 'deb2targz' 'perl' 'a2ps' 'lib32-glibc')
+elif [[ "$CARCH" == "i686" ]] ; then
+    depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
+fi
 source=("http://download.brother.com/welcome/dlf101612/dcp${_model}lpr-${pkgver}-${_revision}.i386.deb"
 	"http://download.brother.com/welcome/dlf101613/dcp9022cdwcupswrapper-1.1.3-0.i386.deb")
 sha256sums=('8db48cda7e8f38f6a9fe0279f67e6d286a300f41e7982d1be275113542ec5027'
