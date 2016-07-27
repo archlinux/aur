@@ -6,7 +6,7 @@ pkgver=1.3.11.r31.ga0ff517
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
-url="http://beets.radbox.org/"
+url="http://beets.io/"
 license=('MIT')
 depends=('python2-munkres' 'mutagen'
          'python2-setuptools' 'python2-unidecode'
@@ -19,7 +19,7 @@ optdepends=('python2-pyacoustid: acoustic fingerprinting'
             'python2-pylast: lastgenre plugin')
 provides=('beets')
 conflicts=('beets')
-source=('git://github.com/sampsyo/beets.git')
+source=('git://github.com/beetbox/beets.git')
 md5sums=('SKIP')
 
 pkgver() {
