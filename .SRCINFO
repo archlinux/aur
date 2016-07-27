@@ -1,0 +1,18 @@
+pkgbase = zurl
+	pkgdesc = Zurl is an HTTP and WebSocket client daemon with a ZeroMQ interface
+	pkgver = 1.5.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/fanout/zurl
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = qt5-base
+	makedepends = zeromq
+	depends = qt5-base
+	depends = zeromq
+	source = https://dl.bintray.com/fanout/source/zurl-1.5.1.tar.bz2
+	md5sums = 037c545c0ee5fbccbcb7e8464958b679
+
+pkgname = zurl
+
