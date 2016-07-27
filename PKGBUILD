@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/mholt/caddy"
 license=('Apache')
 install='caddy.install'
-conflicts=('caddy')
+conflicts=('caddy' 'caddy-full-bin' 'caddy-all-features')
 provides=('caddy')
 makedepends=('go' 'curl' 'jq')
 
