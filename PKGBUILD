@@ -4,7 +4,7 @@
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=nomachine
-pkgver=5.1.40
+pkgver=5.1.42
 pkgrel_i686=1
 pkgrel_x86_64=1
 pkgrel_armv6h=2
@@ -18,10 +18,10 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
 depends=('bash')
-sha512sums_x86_64=('c8b89e9922d997b00ee9f5ea8f6e67518e342b41dfd06aa30ad3bb09a13b31dc39b22f5269e4d602d44da686818b7a76610bf12a122cdd5bafe1179931b9d44e')
-sha512sums_i686=('b41a4b69e054e0cbb5cccb3947b7c06aea4802fbff6012823d9bc27c1bc4587f77a85e6f3a0e62257de6448ac2ff6b7d7c80aac77536bc329545c94a15930073')
-sha512sums_armv6h=('f6469ecd767903f464a2f0e263f3ad276bd5122c980c8dccdc68c6de1d6aad905e591920585b7a70bde7cb1f3d005dc65cf6d09203d9235cba4483a5561255ea')
-sha512sums_armv7h=('041a715d2f411eee90150623dfba45ec3751cbd200b17ab09bc7de0dce254838d6024997443b80eba855fc5282a6ea85988772b31c8f1a070aabb82577f3b31b')
+sha512sums_x86_64=('d3a7de13f1087f1afea4941bb65fb716119987e2f413028a46c947498f0ccc232075bc0b8d040f15c9616c62691b876e1781e18584da83263b525addc77c0a8a')
+sha512sums_i686=('9c1b4b3bb0e7219a1e96048aae775cff76f63e7ef2129f73b27520f326653d353fd06d1f8ed214f48891cd087723e4b8b9f6820341c866d814d1dc5375fc3ccf')
+sha512sums_armv6h=('4ebb9408783731a858733032753854a83152597e8077dbc526c66333d09ae17529750c08278636d181fbf36530cf1beb7975f7710fe6bfce667d4fd2df7e010a')
+sha512sums_armv7h=('7bf001d4846ebc5d2602c41ff93caf55f9e4f5b6ac986204648601bc0281e1141a3b569b166f504d4c431959d23a13abd1568406ab6581a9f428814e16be5284')
 source_x86_64=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
 source_i686=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
 source_armv6h=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_armv6h}_armv6hl.tar.gz")
