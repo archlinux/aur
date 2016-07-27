@@ -9,8 +9,8 @@ url='https://github.com/KeithDHedger/GtkSu'
 license=('GPL')
 depends=('qt5-base')
 makedepends=('git')
-conflicts=('qgmailnotifier')
-provides=("qgmailnotifier")
+conflicts=('')
+provides=("")
 source=("$pkgname::git+https://github.com/KeithDHedger/GtkSu.git#branch=master")
 md5sums=('SKIP')
 
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
    cd $pkgname
-   ./configure --enable-qt5
+   ./configure --enable-qt5 --prefix=/usr
    make || return 1
 }
 
