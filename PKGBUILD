@@ -17,8 +17,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'libappindicator-gtk3: Unity indicator applet support'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
-            'libnotify: Notification support'
-            'libdbus: MPRIS/Screensaver Pause/Gnome mediakeys support')
+            'libnotify: Notification support')
 makedepends=('git' 'automake' 'autoconf' 'intltool' 'appstream-glib')
 provides=("$_pkgname")
 conflicts=("$_pkgname-bzr" "$_pkgname")
