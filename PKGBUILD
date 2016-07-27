@@ -7,7 +7,7 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=arduino-bin
-pkgver=1.6.9
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
