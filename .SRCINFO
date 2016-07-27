@@ -7,8 +7,8 @@ pkgbase = gtksu-git
 	license = GPL
 	makedepends = git
 	depends = qt5-base
-	provides = qgmailnotifier
-	conflicts = qgmailnotifier
+	provides = gksu
+	conflicts = gksu
 	source = gtksu-git::git+https://github.com/KeithDHedger/GtkSu.git#branch=master
 	md5sums = SKIP
 
