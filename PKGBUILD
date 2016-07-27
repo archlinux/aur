@@ -5,7 +5,7 @@
 
 pkgname=pithos
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="https://pithos.github.io/"
@@ -17,8 +17,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'libappindicator-gtk3: Unity indicator applet support'
             'python-pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
-            'libnotify: Notification support'
-            'python-dbus: MPRIS/Screensaver Pause/Gnome mediakeys support')
+            'libnotify: Notification support')
 makedepends=('intltool')
 source=("https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz")
 sha256sums=('46ab6f09aa2d0ae5a7d76b4cebb532e098a055657b25a9484d77e86e86e99860')
