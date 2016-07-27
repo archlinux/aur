@@ -1,20 +1,18 @@
 pkgbase = python-aiohttp
 	pkgdesc = http client/server for asyncio
-	pkgver = 0.22.1
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/aiohttp
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = python-pip
-	depends = python>=3.4.1
+	depends = python>=3.5
 	depends = python-chardet
-	noextract = aiohttp-0.22.1-cp35-cp35m-manylinux1_i686.whl
-	noextract = aiohttp-0.22.1-cp35-cp35m-manylinux1_x86_64.whl
-	source_i686 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-0.22.1-cp35-cp35m-manylinux1_i686.whl
-	md5sums_i686 = 0c34e293ffb2621748cc4eb9e9a6ebb1
-	source_x86_64 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-0.22.1-cp35-cp35m-manylinux1_x86_64.whl
-	md5sums_x86_64 = a03fd8f590a201b5b4026e8b5157dbf2
+	depends = python-multidict
+	noextract = aiohttp-0.22.3-cp35-cp35m-manylinux1_i686.whl
+	noextract = aiohttp-0.22.3-cp35-cp35m-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-0.22.3.tar.gz
+	md5sums = 8c75aa7aad0c428a0dbed1380e9c0807
 
 pkgname = python-aiohttp
 
