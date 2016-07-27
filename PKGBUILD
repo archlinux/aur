@@ -1,7 +1,7 @@
 # Maintainer: Stavros Polymenis <sp@orbitalfox.com>
 pkgname=portal
 pkgver=0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
 arch=(any)
 url="https://github.com/orbifx/portal"
