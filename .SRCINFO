@@ -1,13 +1,14 @@
 pkgbase = r-cran-curl
 	pkgdesc = enhanced download abilities for R
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/curl/index.html
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
 	depends = r
-	source = http://cran.r-project.org/src/contrib/curl_1.0.tar.gz
-	md5sums = 93d34926d6071e1fba7e728b482f0dd9
+	source = http://cran.r-project.org/src/contrib/curl_1.1.tar.gz
+	md5sums = 35e362fd6505e0e42ff54e340ecffe2d
 
 pkgname = r-cran-curl
 
