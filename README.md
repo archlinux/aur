@@ -31,16 +31,17 @@ mkdir -p /etc/ssl/caddy && chown -R www-data:www-data /etc/ssl/caddy
 The caddy binary is now installed to `/usr/local/bin` instead `/usr/bin`.
 
 *Important*: `import`s are now relative to your `Caddyfile`! The following example illustrates nested imports:
-	```ini
-	# Caddyfile
-	import config/some.site
-	import config/default
-	...
 
-	# config/some.site
-	import default
-	...
-	```
+```ini
+# Caddyfile
+import config/some.site
+import config/default
+...
+
+# config/some.site
+import default
+...
+```
 
 Have fun with the latest caddy release!
 
