@@ -1,0 +1,22 @@
+pkgbase = pinocchio
+	pkgdesc = Dynamic computations using Spatial Algebra
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://stack-of-tasks.github.io/pinocchio/
+	arch = i686
+	arch = x86_64
+	license = LGPL3 or any later version
+	makedepends = cmake
+	makedepends = gcc5
+	depends = eigen
+	depends = boost-libs
+	depends = python2-numpy
+	optdepends = eigenpy
+	optdepends = metapod-git
+	optdepends = urdfdom
+	optdepends = lua51
+	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v1.1.2/pinocchio-1.1.2.tar.gz
+	md5sums = b78e6405bafa72210e3e865e658017c7
+
+pkgname = pinocchio
+
