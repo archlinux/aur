@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
 license=('Apache')
 install='caddy.install'
-conflicts=('caddy' 'caddy-git')
+conflicts=('caddy-all-features' 'caddy-git' 'caddy-full-bin')
 
 source_i686=("https://github.com/mholt/caddy/releases/download/v$pkgver/caddy_linux_386.tar.gz")
 sha256sums_i686=('25b173dc2f47bd22c48efb6831c713f3100c9d70a04d69f81bc3dc236abc7624')
