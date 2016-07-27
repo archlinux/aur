@@ -4,20 +4,22 @@
  
 pkgname=nvidia-bfq-340xx
 pkgver=340.96
-_extramodules=extramodules-4.5-bfq
-pkgrel=4
+_extramodules=extramodules-4.6-bfq
+pkgrel=5
 _pkgdesc="NVIDIA 340xx drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfq>=4.5' 'linux-bfq<4.6' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-bfq-headers>=4.5' 'linux-bfq-headers<4.6')
+depends=('linux-bfq>=4.6' 'linux-bfq<4.7' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-bfq-headers>=4.6' 'linux-bfq-headers<4.7')
 conflicts=('nvidia-bfq' 'nvidia-bfq-304xx')
 license=('custom')
 install=nvidia-bfq-340xx.install
 options=(!strip)
-source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+source=('linux-4.6.patch')
+source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums=('1f2baa65fd351ae7a2fc3dfd71ffcbfe')
 md5sums_i686=('cb64b165b638671bcdc75bcf297b8d90')
 md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 
@@ -27,6 +29,8 @@ md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
+    # patches here
+    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 }
 
 build() {
