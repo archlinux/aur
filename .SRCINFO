@@ -1,6 +1,6 @@
 pkgbase = arduino-bin
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.10
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://arduino.cc/en/Main/Software
 	install = arduino.install
@@ -20,13 +20,13 @@ pkgbase = arduino-bin
 	conflicts = arduino-git
 	options = !strip
 	options = staticlibs
-	source_i686 = https://downloads.arduino.cc/arduino-1.6.10-linux32.tar.xz
+	source_i686 = https://downloads.arduino.cc/arduino-1.6.9-linux32.tar.xz
 	sha256sums_i686 = b164905f281ad34ca4ca0d58b2b4c0d67d8125dbcd43ad73d536effd02ef8e56
-	source_x86_64 = https://downloads.arduino.cc/arduino-1.6.10-linux64.tar.xz
+	source_x86_64 = https://downloads.arduino.cc/arduino-1.6.9-linux64.tar.xz
 	sha256sums_x86_64 = 8da3920fe9e168bcf3fe31fef9e1f8454ba5366e7f2e297cf264485e59e8a1a0
-	source_armv6h = https://downloads.arduino.cc/arduino-1.6.10-linuxarm.tar.xz
+	source_armv6h = https://downloads.arduino.cc/arduino-1.6.9-linuxarm.tar.xz
 	sha256sums_armv6h = 6a960d8a2e9559fa7496ee7341be81e7ec91e769beeb63a5de8d1f740996e53a
-	source_armv7h = https://downloads.arduino.cc/arduino-1.6.10-linuxarm.tar.xz
+	source_armv7h = https://downloads.arduino.cc/arduino-1.6.9-linuxarm.tar.xz
 	sha256sums_armv7h = 6a960d8a2e9559fa7496ee7341be81e7ec91e769beeb63a5de8d1f740996e53a
 
 pkgname = arduino-bin
