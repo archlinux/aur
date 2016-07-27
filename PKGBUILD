@@ -17,7 +17,7 @@ options=(!emptydirs !libtool)
 install=$pkgname.install
 source=("https://pypi.io/packages/source/c/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-md5sums=('af7bbeb371cca29a9d58b45aa086e58b')
+md5sums=('bbb29f83c2d2df26d80556d9194f476e')
 
 build() {
   cd "$srcdir"/caffeine-ng-${pkgver}
