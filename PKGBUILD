@@ -28,6 +28,5 @@ build() {
 
 package() {
   cd $pkgname
-  mkdir -p $pkgdir/usr/{bin,}
-  make INSTALL_ROOT="${pkgdir}/usr" install
+  make DESTDIR="$pkgdir" install
 }
