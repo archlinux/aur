@@ -8,6 +8,7 @@ pkgbase = engrampa-1.15-gtk3
 	groups = mate-extra
 	license = GPL
 	makedepends = caja-1.15-gtk3
+	makedepends = intltool>=0.50.1
 	makedepends = yelp-tools
 	depends = bzip2
 	depends = desktop-file-utils
