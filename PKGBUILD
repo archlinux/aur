@@ -2,7 +2,7 @@
 
 pkgbase=python-pytest-flake8
 pkgname=('python-pytest-flake8' 'python2-pytest-flake8')
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='pytest plugin to check FLAKE8 requirements'
 arch=('any')
