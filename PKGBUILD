@@ -1,7 +1,7 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
-pkgname=xlnt-git
-pkgver=20151104
+pkgname=xlnt
+pkgver=v0.9.0.r182.g6707736
 pkgrel=1
 pkgdesc="user-friendly xlsx library for C++14"
 url="https://github.com/tfussell/xlnt"
@@ -26,18 +26,23 @@ prepare() {
 build() {
 	cd "${srcdir}/xlnt"
 	cd build
-	cmake -D SHARED=1 -D CMAKE_INSTALL_PREFIX:PATH=/usr ../cmake
+	rm -f CMakeCache.txt
+	cmake -D SHARED=1 -D CMAKE_INSTALL_PREFIX:PATH=/usr -D DEBUG=1 -D TESTS=1 ../
 	make
 }
 
 check() {
 	cd "${srcdir}/xlnt"
 	cd build
-	cmake -D SHARED=1 -D CMAKE_INSTALL_PREFIX:PATH=/usr -D BUILD_TESTS=1 -D AUTORUN_TESTS=1  ../cmake
-	make
+	./bin/xlnt.test
 }
 
 package() {
 	cd "${srcdir}/xlnt/build"
 	make DESTDIR="${pkgdir}" install
+}
+
+pkgver() {
+	cd "${srcdir}/xlnt"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
