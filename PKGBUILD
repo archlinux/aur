@@ -13,8 +13,8 @@ license=("GPL")
 makedepends=("zip")
 optdepends=("plymouth: For the plymouth theme to work"
         "lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
-        "shimmer-wallpapers: Wallpapers not included in the main package"
-        "xfce-theme-albatross: Official theming, git or stable versions"
+        "shimmer-wallpapers: Wallpapers not included in the main package, or git version"
+        "xfce-theme-albatross: Official theming, git or stable version"
         "xfce-theme-bluebird: Official theming, git or stable version"
         "xfce-theme-greybird: Official theming, git or stable version"
 	"elementary-xfce-icons: For matching icon theme, or the git version")
