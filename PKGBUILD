@@ -13,7 +13,7 @@ optdepends=('efibootmgr: to add a new EFI boot entry'
 	'grub: to add MemTest86 entry in GRUB2 menu')
 backup=(etc/$pkgname/$pkgname.conf)
 install=$pkgname.install
-source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_pkgbasename-iso.tar.gz"
+source=("$_pkgbasename-$pkgver.iso.tar.gz::https://www.memtest86.com/downloads/$_pkgbasename-iso.tar.gz"
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"grub.conf"
