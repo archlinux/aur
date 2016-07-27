@@ -10,7 +10,6 @@ pkgbase = dontpanic-git
 	depends = python-bottle
 	depends = python-requests
 	depends = python-beautifulsoup4
-	depends = python-libtorrent-rasterbar>=1.0.8
 	depends = sqlite
 	optdepends = python-cherrypy: for server mode
 	provides = dontpanic
