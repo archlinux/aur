@@ -11,7 +11,7 @@ _language_gfm2_ver=0.92.1
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=0
+_pkgrel=1
 _pkgver=1.9.0
 pkgver="${_pkgver}.${_pkgrel}.m${_language_gfm2_ver}"
 pkgrel=1
