@@ -2,7 +2,7 @@
 
 _npmname=jpm
 pkgname=nodejs-$_npmname # All lowercase
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Jetpack Mechanic utilities for creating, testing, running and packaging Mozilla Jetpack Addons'
 arch=(any)
@@ -11,7 +11,7 @@ license=('custom:MPL2')
 depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('f22757682ec36b2e8022c7f948c0d35c236a8a74436b9ef675882e78705f32de')
+sha256sums=('f2ab2ede956f9ff766a0b4ccb595f1dcc1dedba4978152c93f319172e39d29d5')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
