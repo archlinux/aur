@@ -1,6 +1,6 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
- 
+
 pkgname=onedrive
 pkgver=1.1
 pkgrel=3
@@ -14,7 +14,7 @@ backup=('etc/onedrive.conf')
 install=$pkgname.install
 source=("https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
 sha256sums=('c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d')
- 
+
 prepare() {
   sed -i 's|/usr/local|/usr|g' $pkgname-$pkgver/onedrive.service
 }
@@ -22,12 +22,11 @@ prepare() {
 build() {
   make -C $pkgname-$pkgver
 }
- 
+
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm755 onedrive "$pkgdir/usr/bin/onedrive"
-  install -Dm644 onedrive.conf "$pkgdir/etc/onedrive.conf"
-  install -Dm644 onedrive.service "$pkgdir/usr/lib/systemd/user/onedrive.service"
+  install -Dm755 onedrive -t "$pkgdir/usr/bin/"
+  install -Dm644 onedrive.conf -t "$pkgdir/etc/"
+  install -Dm644 onedrive.service -t "$pkgdir/usr/lib/systemd/user/"
 }
- 
