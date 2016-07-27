@@ -26,6 +26,8 @@ The upstream systemd service sets `HOME` for `www-data` to `/etc/ssl/caddy`, hen
 mkdir -p /etc/ssl/caddy
 ```
 
+The caddy binary is now installed to `/usr/local/bin` instead `/usr/bin`.
+
 Have fun with the latest caddy release!
 
 If you've any questions, please create an issue in the [github repo](https://github.com/klingtnet/caddy-AUR).

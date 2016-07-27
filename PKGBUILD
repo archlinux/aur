@@ -35,7 +35,7 @@ package() {
 --> User www-data is required for caddy 0.9+!
 --> Create user: useradd --system --shell /usr/bin/nologin www-data
 DOC
-  install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/bin/caddy"
+  install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/local/bin/caddy"
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
   install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/${_realname}/service.txt"
   install -Dm644 "${srcdir}/LICENSES.txt" "${pkgdir}/usr/share/licenses/${_realname}/LICENSE"
