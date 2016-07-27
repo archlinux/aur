@@ -47,7 +47,7 @@ url="https://caddyserver.com"
 license=('Apache')
 install='caddy.install'
 provides=('caddy')
-conflicts=('caddy' 'caddy-git')
+conflicts=('caddy' 'caddy-git' 'caddy-full-bin')
 
 printf -v _features '%s,' "${_features[@]}"
 _features=${_features%,}
