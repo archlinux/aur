@@ -1,6 +1,8 @@
 post_install() {
+  getent passwd portal &>/dev/null || useradd postfix >/dev/null
   portal-postconf -d $(hostname)
   portal-doveconf
+  true
 }
 
 post_upgrade() {
@@ -8,5 +10,7 @@ post_upgrade() {
 }
 
 post_remove() {
+  getent passwd portal &>/dev/null && userdel  portal >/dev/null
+  getent group  portal &>/dev/null && groupdel portal >/dev/null
   post_install
 }
