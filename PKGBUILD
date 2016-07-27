@@ -29,5 +29,6 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-  ln -s /usr/bin/gtksu /usr/bin/gksu
+  cd $pkgdir/usr/bin
+  ln -s gtksu gksu
 }
