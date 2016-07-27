@@ -2,7 +2,7 @@
 
 pkgname=vmg-svn
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Handy virtual magnifying glass tool SVN version"
 arch=('x86_64' 'i686')
 url=""

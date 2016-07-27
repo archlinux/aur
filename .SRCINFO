@@ -1,6 +1,7 @@
 pkgbase = vmg-svn
+	pkgdesc = Handy virtual magnifying glass tool SVN version
 	pkgver = 3.7
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = GPL2
