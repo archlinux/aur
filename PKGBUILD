@@ -5,18 +5,19 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.0.95
-pkgrel=1
+pkgver=25.1
+_pkgver=25.1-rc1
+pkgrel=0.1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'zlib')
+depends=('gtk3' 'gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
 install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
-source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-sha384sums=('6d495bea229faa8858b26a3a0d7a4e5d0cd1b15414edf8db47e28f305d1f1d36f548fdd887cd41318883c72881f7e735'
+source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
+sha384sums=('ca6195de29d80ee0007782d88766424067b14d3b5310524fbf9a1d442962a7f656a09f5d455e19326e06bea841cfdd18'
             'SKIP')
 validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
