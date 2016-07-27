@@ -2,7 +2,7 @@
 
 pkgname=eigenpy
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/eigenpy"
@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make install
+    make DESTDIR="$pkgdir/" install
 }
