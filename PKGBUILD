@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=162.1236.1
+pkgver=162.1531.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -19,7 +19,7 @@ optdepends=(
   'java-runtime: native JRE (Please edit PKGBUILD to remove the bundled one)'
   'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
-  'lldb: native debugger [experimental] (You may want to edit PKGBUILD to remove the bundled one)'
+  'lldb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
@@ -30,7 +30,7 @@ optdepends=(
   'doxygen: Code documentation generation'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('9c6be971496ed6f2efa5adeb3baf11d73950ec108a049bb989b5986c8f01a1d1165e044f1ce61900b7822a6045f1711e46fecc49c12d01d1bd62fcc4ae8c3241')
+sha512sums=('1cf1f007917181983ba7e523ba0641c94872f2cc74a62c0b7f4939eef01ea805d78b25443d7de5c2a82019672038f5307dd8186990a22d54b58202a2e1d8a585')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
