@@ -30,6 +30,10 @@ source_x86_64=("caddy.tar.gz::${_url_prefix}&arch=amd64")
 source_armv6h=("caddy.tar.gz::${_url_prefix}&arch=arm")
 
 package() {
+  getent passwd 'www-data' &> /dev/null || echo <<DOC
+--> User www-data is required for caddy 0.9+!
+--> Create user: useradd --system --shell /usr/bin/nologin www-data
+DOC
   install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/bin/caddy"
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
   install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/${_realname}/service.txt"
