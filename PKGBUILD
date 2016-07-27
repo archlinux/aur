@@ -2,16 +2,21 @@
 
 pkgname=vmg
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Handy virtual magnifying glass tool"
 arch=('i686' 'x86_64')
 url="http://magnifier.sourceforge.net/"
 license=('GPL2')
 depends=('lib32-gtk2')
-source=("http://sourceforge.net/projects/magnifier/files/magnifier%20for%20Linux/3.5/magnifier-linux-3.5.tar.bz2")
-md5sums=('8302710ad565f1f1de63cf307703f6f5')
+conflicts=('vmg-svn')
+source=("http://sourceforge.net/projects/magnifier/files/magnifier%20for%20Linux/3.5/magnifier-linux-3.5.tar.bz2"
+	"vmg.desktop")
+md5sums=('8302710ad565f1f1de63cf307703f6f5'
+         'e831d6b702672283d3c64202454c6f32')
 
 package() {
+	mkdir -p $pkgdir/usr/share/applications
+	cp ./vmg.desktop $pkgdir/usr/share/applications/
 	cd "magnifier-linux-3.5"
 	mkdir -p $pkgdir/usr/share/magnifier
 	cp ./topleft.bmp $pkgdir/usr/share/magnifier/

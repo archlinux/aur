@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Virtual Magnifying Glass
+Comment=Magnifies the screen
+Exec=vmg
+Type=Application
+Categories=Utilities;
