@@ -1,6 +1,6 @@
 pkgbase = arduino-git
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.9.r53.g6521a7a
+	pkgver = 1.6.10.r0.g3db7ec2
 	pkgrel = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
@@ -12,6 +12,7 @@ pkgbase = arduino-git
 	license = LGPL
 	makedepends = java-environment=8
 	makedepends = apache-ant
+	makedepends = unzip
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info

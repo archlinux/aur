@@ -2,14 +2,14 @@
 # Co-Maintainer: Christopher Loen <christopherloen at gmail dot com>
 
 pkgname=arduino-git
-pkgver=1.6.9.r53.g6521a7a
+pkgver=1.6.10.r0.g3db7ec2
 pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'avrdude')
-makedepends=('java-environment=8' 'apache-ant')
+makedepends=('java-environment=8' 'apache-ant' 'unzip')
 options=(!strip staticlibs)
 install="arduino.install"
 provides=('arduino')
