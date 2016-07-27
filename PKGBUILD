@@ -15,7 +15,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
 license=('Apache')
 provides=('caddy')
-conflicts=('caddy' 'caddy-git')
+conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 md5sums_i686=('57fd8fb82792e4b9b2aca2e5c5d20e6d')
 md5sums_x86_64=('57fd8fb82792e4b9b2aca2e5c5d20e6d')
 
