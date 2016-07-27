@@ -1,0 +1,69 @@
+#!/bin/bash
+
+mkdiskimg () {
+    # Prepare image file
+    cp /usr/lib/syslinux/bios/gptmbr.bin $1
+    truncate -s 32M $1
+    sgdisk -n 1:0:0 $1
+    sgdisk -t 1:ef00 $1
+    sgdisk -A 1:set:2 $1
+    loopdev="$(losetup --show -f $1)"
+    partprobe $loopdev
+    mkfs.fat -n SEDUTILPBA "${loopdev}p1"
+    syslinux -i "${loopdev}p1"
+    
+    # Mount image and copy files
+    mount "${loopdev}p1" mnt
+    mkdir -p mnt/EFI/BOOT
+    cp /boot/$2 mnt/vmlinuz-linux
+    cp /boot/$3 mnt/linuxpba.img
+    cp /usr/lib/linuxpba/syslinux.cfg mnt/syslinux.cfg
+    if [[ -e /boot/intel-ucode.img ]]
+    then
+        cp /boot/intel-ucode.img mnt/intel-ucode.img
+    else
+        sed -i 's/\/intel-ucode.img,//' mnt/syslinux.cfg
+    fi
+    cp mnt/syslinux.cfg mnt/EFI/BOOT/syslinux.cfg
+    cp /usr/lib/syslinux/efi64/syslinux.efi mnt/EFI/BOOT/BOOTX64.EFI
+    cp /usr/lib/syslinux/efi64/ldlinux.e64 mnt/EFI/BOOT
+    
+    # Unmount image
+    umount mnt
+    losetup -d "$loopdev"
+}
+
+
+if [[ ! -e /usr/bin/extlinux ]]
+then
+    echo "syslinux is not installed: nothing to do."
+    exit 1
+fi
+
+mklinuxpba-initramfs
+
+kernel_release="$(uname -r)"
+
+case "${kernel_release##*-}" in
+    "ARCH")
+        kernel_image="vmlinuz-linux"
+    ;;
+    "lts")
+        kernel_image="vmlinuz-linux-lts"
+    ;;
+    *)
+        echo "The currenly running kernel is not supported."
+        exit 1
+    ;;
+esac
+
+mkdir -p "/tmp/linuxpbatemp/mnt"
+pushd "/tmp/linuxpbatemp"
+
+mkdiskimg linuxpba.diskimg $kernel_image linuxpba.img
+mkdiskimg linuxpba-fallback.diskimg $kernel_image linuxpba-fallback.img
+
+mv linuxpba.diskimg linuxpba-fallback.diskimg /boot
+cd /tmp
+rmdir -p linuxpbatemp/mnt
+popd

@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -13,9 +13,9 @@ optdepends=('syslinux: to create a bootable PBA disk image'
 backup=('etc/linuxpba/linuxpba.conf')
 install=sedutil.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${pkgname}/archive/${pkgver}.tar.gz"
-        'extlinux.conf'
+        'syslinux.cfg'
         'mklinuxpba-initramfs'
-        'mklinuxpba-bios'
+        'mklinuxpba-diskimg'
         'linuxpba-arch'
         'linuxpba.conf.etc'
         'linuxpba.conf.lib'
@@ -24,9 +24,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'getpasswd.c'
         'includes.patch')
 sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
-            '5ab7ef67fea0f4e370d8f0a4da87636a1df18e0edb0152d08f906f38280cc0e8'
+            '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
             '77c725e4eee095dbede512d2bca13b8f2c139a67b9b87a11d98be94e6df0e1d7'
-            'c599c6066f23aa403cd7c4c43b9b9900079cdbb7bc0b97c79e70a2383864646f'
+            'cbef4e615d75bb241a7dbea97c1b8b7105cac8cac2206c592f58bcda6f8957ed'
             '6aa4a9cb90da2d1b0f5eae6a9b487d6b7504d40b44ac62ec70edeef15ed40ee3'
             '6bf64faa4e413bac489e83518daf6963760cc4474ea2b848d0192402214c0efb'
             'a110e6d6da0fd658412d8c79f7f2cbc58a9b0067c34c34c94c8f623801eecc78'
@@ -59,7 +59,7 @@ package() {
     install -Dm644 "linux/PSIDRevert_LINUX.txt" "${pkgdir}/usr/share/doc/${pkgname}/PSIDRevert.txt"
     install -Dm755 "LinuxPBA/dist/Release_$CARCH/GNU-Linux/linuxpba" "${pkgdir}/usr/bin/linuxpba"
     install -Dm755 "${srcdir}/mklinuxpba-initramfs" "${pkgdir}/usr/bin/mklinuxpba-initramfs"
-    install -Dm755 "${srcdir}/mklinuxpba-bios" "${pkgdir}/usr/bin/mklinuxpba-bios"
+    install -Dm755 "${srcdir}/mklinuxpba-diskimg" "${pkgdir}/usr/bin/mklinuxpba-diskimg"
     install -Dm755 "${srcdir}/linuxpba-arch" "${pkgdir}/usr/bin/linuxpba-arch"
     install -Dm755 "${srcdir}/getpasswd" "${pkgdir}/usr/bin/getpasswd"
 
@@ -67,5 +67,5 @@ package() {
     install -Dm644 "${srcdir}/linuxpba.install" "${pkgdir}/usr/lib/initcpio/install/linuxpba"
     install -Dm644 "${srcdir}/linuxpba.conf.etc" "${pkgdir}/etc/linuxpba/linuxpba.conf"
     install -Dm644 "${srcdir}/linuxpba.conf.lib" "${pkgdir}/usr/lib/linuxpba/linuxpba.conf"
-    install -Dm644 "${srcdir}/extlinux.conf" "${pkgdir}/usr/lib/linuxpba/extlinux.conf"
+    install -Dm644 "${srcdir}/syslinux.cfg" "${pkgdir}/usr/lib/linuxpba/syslinux.cfg"
 }
