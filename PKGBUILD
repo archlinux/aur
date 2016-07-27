@@ -51,8 +51,8 @@ _use_current=
 pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
-_srcname=linux-4.5
-pkgver=4.5.7
+_srcname=linux-4.6
+pkgver=4.6.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -60,17 +60,19 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-${_bfqrel}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.5.0-${_bfqrel}"
+_bfqver=v8
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.6.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.5.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.5.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.6.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.6.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
+        "${_bfqpath}/0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for-4.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
@@ -81,8 +83,8 @@ prepare() {
 
     ### Add upstream patch
         msg "Add upstream patch"
-        patch -Np1 -i "${srcdir}/patch-${pkgver}"
-        
+        patch -Np1 -i "${srcdir}/patch-${pkgver}" 
+         
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -91,7 +93,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3}-block*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-bl*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -435,18 +437,19 @@ package_linux-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('cb0d5f30baff37dfea40fbc1119a1482182f95858c883e019ee3f81055c8efbdb9dba7dfc02ebcc4216db38f03ece58688e69efc0fce1dade359af30bd5426de'
+sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
             'SKIP'
-            '948fb18128eacf421ae92fc466bc395b4a0fd7bb514afb52b910f0f860dbc56cb6318ae604082892d93e293cc9987cf61177b1280c79474533f0d0f7113682f5'
+            '09b7d4d3e0086cf3b36935ee31e72fe13bc85fdb6a407d8a952bf24e24f846af10d7f8634afa412caf00cbf3f3a03aaed51010e4234e275642ae140a318cc8e2'
             'SKIP'
-            'f15460f31c3401356c29459ff880be4c14f468a568c7cf75af162219ace9ddef79499cc6817289c019915bc5af7dd680485def1a4fe4786856dd47390e7f661e'
-            '11adc1e6cd3dae38c632f7a3c8c203a9cd13b504e315360caa41bc28677b60e6744890fffe32b42d09251b0a66e89f3c961feb6fb78ad27d10b71ab22cfde6ce'
-            '85a0bce1a709c595028c98364f154768835d3bb98395625c9a83eff91e3b4e7ff9f600d672d1eb91bd54eedd4a8239c6dba27bc3758b2e22dd69dc2addd29ed0'
+            '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
+            '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
+            '88bd912a41e8a880f693820362fed0e514441f2963a4c78d59c1a9f6c8522caf3d28afb8ed658e7de2d3d3e7d92ae112bda317a3800710005a643127cb5711c5'
+            '255a2a6ab4c57ecae998b51ee003649bc7717a25b7040b00e15aad3bb129d51d58e36afa36b04fd6146b8532a7a771441f949daae0a7b9a93d7fa1557df04b12'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'fb65329d32e83fe8fb41c28701fed548ff99beb90c6d3725b320150413a62bab0b4f1f52b96b9bd46658390fc558d6c147362d30e735eb9ca5b51e34b0ab9fad'
-            '23ae9235c2e830de4426ed93cca3ad235dde6a2871e1dfd49fbcce502d3f13332fc805193167c8eee2fc33ef89eafd8c6b12c087665a43f700eb4cc306cb44d4')
+            'c213c658d585534191c4803c39eb40339574514b043c4dbfe1cc20a4f9a17c0748d2d3e2d161e5cf8038b1e657b24f632ad0acea1b2078c8db377940a4f28659'
+            '8b3fa6d850349c0340d051fdbc8415c5b8fa09b94e458e55cdbc4277e3d747d97cf916e1982f9f1807537aa91aac5a62d6503812c59c0d2223aa3064677a5be0')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
