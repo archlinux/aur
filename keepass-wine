@@ -1,8 +1,9 @@
 #!/bin/sh
 
-export WINEPREFIX="$HOME/.keepass/wine"
+export WINEPREFIX="$HOME/.keepass-wine"
 export WINEARCH=win32
-export WINEDEBUG=-all
+export WINEDEBUG=-fixme
+export WINEDLLOVERRIDES="mscoree,mshtml="
 
 function setpath(){
     # PathExt
@@ -21,9 +22,9 @@ function setpath(){
 if [ ! -d "$WINEPREFIX" ] ; then
     mkdir -p `dirname $WINEPREFIX`
     # Install dotnetfx
-    wine "/usr/share/keepass/dotnetfx.exe" /c:"install.exe /q"
+    wine "/usr/share/keepass-wine/dotnetfx.exe" /c:"install.exe /q"
     setpath
 fi
 
 # Start Keepass
-wine "/usr/share/keepass/KeePass.exe" "`winepath -w "$@"`"
+wine "/usr/share/keepass-wine/KeePass.exe" "`winepath -w "$@"`"
