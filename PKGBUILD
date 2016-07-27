@@ -3,8 +3,8 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=3.18.0.r651
-pkgrel=1
+pkgver=3.18.0.r653
+pkgrel=2
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
 url="https://github.com/shimmerproject/Greybird"
@@ -48,6 +48,10 @@ package() {
   # clean up
   rm -rf {.git,.gitignore,Greybird.emerald,LICENSE.{CC,GPL},README,xfwm4_compact,xfce4_ally,xfce-notify-4.0_bright}
 
+  # install README into docdir
+  install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}/"
+
   # install theme
-  cp -r . "$pkgdir/usr/share/themes/Greybird/"
+  cp -r . "${pkgdir}/usr/share/themes/Greybird/"
+  cp "${pkgdir}/usr/share/themes/Greybird/gtk-3.0/README" "${pkgdir}/usr/share/doc/${pkgname}/"
 }
