@@ -1,0 +1,9 @@
+[Unit]
+Description=Pushpin
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pushpin
+
+[Install]
+WantedBy=multi-user.target

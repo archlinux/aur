@@ -1,0 +1,21 @@
+pkgbase = pushpin
+	pkgdesc = Reverse proxy for realitme web services
+	pkgver = 1.11.0
+	pkgrel = 2
+	url = https://github.com/fanout/pushpin
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = qt5-base
+	makedepends = zeromq
+	depends = qt5-base
+	depends = zeromq
+	depends = zurl
+	depends = mongrel2
+	source = https://dl.bintray.com/fanout/source/pushpin-1.11.0.tar.bz2
+	source = pushpin.service
+	md5sums = 9a6b9d374406f094842471f0a4587baa
+	md5sums = 3c2d447f5769e37067e627832da0051a
+
+pkgname = pushpin
+
