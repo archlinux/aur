@@ -16,7 +16,7 @@ license=('GPL')
 depends=('dconf' 'dbus' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 
          'libsecret' 'libsm' 'libspectre' 'mate-desktop-1.15-gtk3' 'mathjax' 
          'poppler-glib' 'webkitgtk' 'zlib')
-makedepends=('caja-1.15-gtk3' 'djvulibre' 'gobject-introspection' 'libgxps'
+makedepends=('caja-1.15-gtk3' 'djvulibre' 'gtk-doc>=1.13' 'intltool>=0.50.1' 'gobject-introspection' 'libgxps'
              'texlive-bin' 'yelp-tools' 'webkit2gtk')
 optdepends=('caja: Document Properties extension'
             'djvulibre: DjVu support'

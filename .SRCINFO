@@ -9,6 +9,8 @@ pkgbase = atril-1.15-gtk3
 	license = GPL
 	makedepends = caja-1.15-gtk3
 	makedepends = djvulibre
+	makedepends = gtk-doc>=1.13
+	makedepends = intltool>=0.50.1
 	makedepends = gobject-introspection
 	makedepends = libgxps
 	makedepends = texlive-bin
