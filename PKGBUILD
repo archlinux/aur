@@ -15,7 +15,7 @@ depends=('python2-munkres' 'mutagen'
 makedepends=('git')
 optdepends=('python2-pyacoustid: acoustic fingerprinting'
             'python2-flask: web interface'
-            'gstreamer0.10-python: BPD audio player plugin'
+            'python2-gobject: BPD audio player plugin'
             'python2-pylast: lastgenre plugin')
 provides=('beets')
 conflicts=('beets')
