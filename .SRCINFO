@@ -15,5 +15,5 @@ pkgbase = mono-addins-git
 	source = git://github.com/mono/mono-addins.git
 	md5sums = SKIP
 
-pkgname = mono-addins
+pkgname = mono-addins-git
 
