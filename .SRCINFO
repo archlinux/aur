@@ -8,6 +8,7 @@ pkgbase = mate-terminal-1.15-gtk3
 	groups = mate-extra
 	license = GPL
 	makedepends = docbook2x
+	makedepends = intltool>=0.50.1
 	makedepends = yelp-tools
 	makedepends = vte3
 	makedepends = mate-desktop-1.15-gtk3
