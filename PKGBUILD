@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 pkgname=osx-arc-white-git
 _pkgname=OSX-Arc-White
-pkgver=de6b43e
+pkgver=212d022
 pkgrel=1
 pkgdesc="OSX-Arc-White Theme for Cinnamon, GNOME, Unity, Xfce and GTK+"
 arch=(any)
