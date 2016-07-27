@@ -11,7 +11,7 @@ pkgbase = git-makepkg-template-git
 	provides = git-makepkg-template=r0
 	conflicts = git-makepkg-template
 	source = git-makepkg-template::git+https://github.com/dffischer/git-makepkg-template
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = git-makepkg-template-git
 
