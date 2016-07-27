@@ -2,8 +2,8 @@
 
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
-pkgver=45.2.0esr
-pkgrel=2
+pkgver=45.3.0esr
+pkgrel=1
 pkgdesc="Chinese Simplified For Firefox ESR"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#esr"
@@ -17,7 +17,7 @@ optdepends=('ffmpeg: additional video and audio decoders'
 makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 install=$pkgname.install
-_baseurl="http://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
+_baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
 _filename="firefox-$pkgver"
 _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
