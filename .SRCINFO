@@ -1,0 +1,16 @@
+pkgbase = gtksu-git
+	pkgdesc = A Qt5-based replacement for gksu
+	pkgver = 0.0.r98.9372747
+	pkgrel = 1
+	url = https://github.com/KeithDHedger/GtkSu
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = qgmailnotifier
+	conflicts = qgmailnotifier
+	source = gtksu-git::git+https://github.com/KeithDHedger/GtkSu.git#branch=master
+	md5sums = SKIP
+
+pkgname = gtksu-git
+
