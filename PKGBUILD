@@ -8,7 +8,7 @@ arch=(any)
 url=https://git.framasoft.org/Thuban/$_pkgname
 license=(GPL3)
 
-depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'sqlite')
+depends=('python-bottle' 'python-requests' 'python-beautifulsoup4' 'sqlite' 'libtorrent-rasterbar')
 optdepends=('python-cherrypy: for server mode')
 makedepends=('git')
 
