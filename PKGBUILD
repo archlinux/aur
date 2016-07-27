@@ -8,19 +8,20 @@
 
 _pkgbasename=gnutls
 pkgname=${_pkgbasename}28
-pkgver=3.3.23
+pkgver=3.3.24
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (legacy version)"
 arch=('i686' 'x86_64')
 license=('GPL3' 'LGPL2.1')
 url="http://gnutls.org/"
 depends=('zlib' 'nettle' 'p11-kit' 'libtasn1' 'libidn')
+makedepends=('net-tools')
 provides=('libgnutls28')
 conflicts=('libgnutls28')
 # Upstream
-#_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3"
+_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3"
 # Mirror: Sweden
-_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
+#_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
 # Mirror: Denmark
 #_mirror="http://mirrors.dotsrc.org/gcrypt/gnutls/v3.3"
 # Mirror: Hungary
@@ -31,7 +32,7 @@ source=(
     "${_downloadUrl}.sig"
 )
 sha256sums=(
-    'f53453857e369d66d665c40389201c0b9dacb7ccda560fd21b20b798687a4239'
+    '5b65fe2a91c8dfa32bedc78acffcb152e5426cd3349e2afc43cccc9bdaf18aa5'
     'SKIP'
 )
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
