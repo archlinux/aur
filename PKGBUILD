@@ -1,8 +1,8 @@
 # Maintainer: Martin Mancuska <martin@borg.sk>
 
 _pkgname=qpdfwalker
-pkgname=qpdfwalker-git
-pkgver=dev1
+pkgname=qpdfwalker
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Tool for browsing hierarchy of low level objects in a PDF file."
 arch=('i686' 'x86_64')
@@ -13,8 +13,14 @@ makedepends=('git')
 source=("git+https://github.com/mato7d5/$_pkgname.git")
 sha256sums=("SKIP")
 
+pkgver() {
+    cd ${srcdir}/${_pkgname}
+    git describe --long | sed 's/-.*//'
+}
+
 build() {
   cd "$srcdir/$_pkgname"
+  git checkout tags/0.1.0
   qmake-qt5 qpdfwalker.pro
   make
 }
