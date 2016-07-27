@@ -15,6 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'glib2' 'libmatekbd-1.15-gtk3' 'libnotify' 'libxss'
          'mate-desktop-1.15-gtk3' 'mate-menus-1.15-gtk3' 'mate-session-manager-1.15-gtk3')
+makedepends=('intltool>=0.50.1')
 optdepends=('mate-power-manager: Add power management support.'
             'mate-screensaver-hacks: Additional screensavers.'
             'rss-glx: Really slick screensavers.')

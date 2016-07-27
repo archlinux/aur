@@ -7,6 +7,7 @@ pkgbase = mate-screensaver-1.15-gtk3
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
+	makedepends = intltool>=0.50.1
 	depends = dbus-glib
 	depends = glib2
 	depends = libmatekbd-1.15-gtk3
