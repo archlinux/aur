@@ -1,4 +1,5 @@
-pkgname=mono-addins
+pkgname=mono-addins-git
+_pkgname=mono-addins
 pkgver=1.3
 pkgrel=1
 pkgdesc="Generic framework for creating extensible applications, and for creating libraries which extend those applications."
@@ -13,13 +14,13 @@ source=(git://github.com/mono/mono-addins.git)
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}"/${pkgname}
+  cd "${srcdir}"/${_pkgname}
 
   ./autogen.sh --prefix=/usr --enable-gui
   make
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}
+  cd "${srcdir}"/${_pkgname}
   make DESTDIR="${pkgdir}" install
 }
