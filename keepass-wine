@@ -2,7 +2,7 @@
 
 export WINEPREFIX="$HOME/.keepass-wine"
 export WINEARCH=win32
-export WINEDEBUG=-fixme
+export WINEDEBUG=fixme-all
 
 function setpath(){
     # PathExt
