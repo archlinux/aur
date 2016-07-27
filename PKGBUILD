@@ -4,15 +4,14 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
-url="http://pithos.github.io/"
+url="https://pithos.github.io/"
 license=('GPL3')
-depends=('python>=3.5' 'gtk3' 'python-gobject'
-         'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-base'
-         'python-setuptools' 'python-cairo')
+depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo'
+         'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-base')
 optdepends=('libkeybinder3: for media keys plugin'
             'gst-plugins-ugly: MP3 playback support'
             'libappindicator-gtk3: Unity indicator applet support'
@@ -20,10 +19,17 @@ optdepends=('libkeybinder3: for media keys plugin'
             'python-pylast: Last.fm scrobbling support'
             'libnotify: Notification support'
             'python-dbus: MPRIS/Screensaver Pause/Gnome mediakeys support')
-source=("https://github.com/pithos/pithos/archive/${pkgver}.tar.gz")
-sha256sums=('560cc42410981c4578505bf67635c75d11b63fe8ff5d4d73e154e016e7fe5465')
+makedepends=('intltool')
+source=("https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz")
+sha256sums=('46ab6f09aa2d0ae5a7d76b4cebb532e098a055657b25a9484d77e86e86e99860')
+
+build() {
+  cd "$srcdir/${pkgname}-$pkgver"
+  ./configure --prefix=/usr
+  make
+}
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
-  python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}/"
+  DESTDIR="$pkgdir" make install
 }
