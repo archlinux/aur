@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=jetbrains-toolbox
-pkgver=1.0.1569
-pkgrel=2
+pkgver=1.0.1653
+pkgrel=1
 pkgdesc="Manage all your JetBrains Projects and Tools"
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -12,7 +12,7 @@ depends=('fuse')
 optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('fb100513049e68abe9ed04b1bd127f9662fd84999b2931e2bd80ea34cfaca53b14c72c1bb4042d5b037ed4c6ad7083f1c85771a1b5f50c4641b000947f1c5e3a')
+sha512sums=('69cdf800481dbfacbf0065426fc649e6a108657ababa766499a76cb2fc52ea16b040629e57d1b71b4673dec95505c350b2e113d418442a77094199ad0cfbe4af')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/${pkgname}
