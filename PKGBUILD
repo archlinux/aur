@@ -2,7 +2,6 @@
 pkgname=zurl
 pkgver=1.5.1
 pkgrel=1
-epoch=1
 pkgdesc="Zurl is an HTTP and WebSocket client daemon with a ZeroMQ interface"
 arch=('x86_64' 'i686')
 url="https://github.com/fanout/zurl"
