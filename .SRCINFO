@@ -1,13 +1,13 @@
 pkgbase = lilypond-devel-docs
 	pkgdesc = Offline documentation for lilypond
-	pkgver = 2.19.45
+	pkgver = 2.19.46
 	pkgrel = 1
 	url = http://lilypond.org
 	arch = any
 	license = GPL
 	options = !strip
-	source = http://lilypond.org/downloads/binaries/documentation/lilypond-2.19.45-1.documentation.tar.bz2
-	sha256sums = eb5dcb626f6d958e71eaac7463f5290f10b7ec4725f2019f9269691ef9835480
+	source = http://lilypond.org/downloads/binaries/documentation/lilypond-2.19.46-1.documentation.tar.bz2
+	sha256sums = b78ffd58860746e95ed4df31c9dcb004458c69655664b528a8a7da8f3709aace
 
 pkgname = lilypond-devel-docs
 
