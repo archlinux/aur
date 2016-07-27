@@ -2,7 +2,7 @@
 
 pkgname=git-annex-remote-rclone
 pkgver=v0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A git-annex special remote using rclone'
 arch=('any')
 url='https://github.com/DanielDent/git-annex-remote-rclone'
@@ -13,5 +13,5 @@ sha512sums=('63c4cd86cbde224c2555fc34ff9762904baf6bf927988db2deb68b6915ef6e82bf8
 
 package() {
     cd "${pkgname}-${pkgver#v}"
-    install -m 644 -D "$pkgname" "${pkgdir}/usr/bin/${pkgname}" 
+    install -m 755 -D "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
 }
