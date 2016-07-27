@@ -30,7 +30,7 @@ source_x86_64=("caddy.tar.gz::${_url_prefix}&arch=amd64")
 source_armv6h=("caddy.tar.gz::${_url_prefix}&arch=arm")
 
 package() {
-  echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/README.md"
+  echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
   getent passwd 'www-data' &> /dev/null || echo <<DOC
 --> User www-data is required for caddy 0.9+!
 --> Create user: useradd --system --shell /usr/bin/nologin www-data
