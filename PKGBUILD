@@ -51,9 +51,9 @@ _use_current=
 pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
-_srcname=linux-4.4.15
-_pkgver=4.4.15
-_rtpatchver=rt23
+_srcname=linux-4.6
+_pkgver=4.6.4
+_rtpatchver=rt8
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -62,32 +62,33 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqrel}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.4.0-${_bfqrel}/"
+_bfqver=v8
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.6.0-${_bfqver}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.4/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.4.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.4.0.patch"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.6.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.6.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
+        "${_bfqpath}/0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for-4.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        '0004-sdhci-revert.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
         
 prepare() {
     cd ${_srcname}
 
     ### Add upstream patch
-        #msg "Add upstream patch"
-        #patch -Np1 -i "${srcdir}/patch-${_pkgver}"
+        msg "Add upstream patch"
+        patch -Np1 -i "${srcdir}/patch-${_pkgver}"
     
     ### Add rt patch
         msg "Add rt patch"
@@ -96,13 +97,7 @@ prepare() {
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"    
-        
-    ### Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-    # fixes #47778 sdhci broken on some boards
-    # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-        msg "Fixes #47778 sdhci broken on some boards"
-        patch -Rp1 -i "${srcdir}/0004-sdhci-revert.patch"        
+        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"          
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -112,7 +107,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3}-block*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-bl*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -456,19 +451,21 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('f5c2ecb327b2c23bf92cf524e7b9dc644fc312fc1f2e38ba5267dfb922c7ce84d67264cd77788e54af191f0b8409c50ae224f6d70d726d5e64f300ec0935541f'
+sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
             'SKIP'
-            'f347be4186869184826be9c413bd90ab2078132b0fb4bca3ac286635eaa7eedafb36511a186f116fc72571d6fb232511b212cd10425e37d61aeefe78e695124a'
+            '8288af19d5e81e891049a6450224ce0707dc729dadab4802af93ce57e2fb6d400b64dde601ece482ec4db72176837eaa52bbca7ebd7e53191253ff05a7d4fe91'
             'SKIP'
-            'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
-            '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
-            '9defbcaca7ec7c849c67f1907be32c75638300d012e41d540f3d35ce13aff8561dfb68f31389096ab1c3d5b64631e682352458046af1e8af5abe085a1f59d9a1'
+            'b0b460f1e6176704dcaa56f948a71d8a3af320b72e4d0e55302d34ffe9af81cb8a73797b30e7a0b87f506076dbbc781ab24fcda66e4e3f494c82df3434dd4879'
+            'SKIP'
+            '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
+            '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
+            '88bd912a41e8a880f693820362fed0e514441f2963a4c78d59c1a9f6c8522caf3d28afb8ed658e7de2d3d3e7d92ae112bda317a3800710005a643127cb5711c5'
+            '255a2a6ab4c57ecae998b51ee003649bc7717a25b7040b00e15aad3bb129d51d58e36afa36b04fd6146b8532a7a771441f949daae0a7b9a93d7fa1557df04b12'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '14d530c8d727e5253474b3d46a7e30933bcc0aa9a6cf597ab6557c12779e2ce627d49258a3623f48421b48cd1a29012f7e3ff984387488c101d94d98fe0aae9d'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '756a5c5ec2db9153d0f749c4f358501d78743ab6f7538c7c127aad0a6a0bd21364f15315689f4ccd8c7b559e4cebefdfb8bb55ee90aabe3d0bd5a3d5f00703c7'
-            '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
-            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
+            'e24ffa4aaf145239bc0035e1853598cfd6b231c1a10373b840220a1799402f30cb39ecf71d56b4a76ddc9d953710dbe297e85f2686bba52da8d5d63816c10e0e'
+            '2b461dc737582ddd77f7c9b15ff567d0d26d4d7f30e9511bfff5f884a57861b4d75e56ddb6cb37175fb7ef5f2a9cf333fb91bc696d0feb1ba011653194080457'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
             
 validpgpkeys=(
