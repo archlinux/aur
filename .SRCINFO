@@ -1,14 +1,14 @@
 pkgbase = lapack-manpages
 	pkgdesc = LAPACK and BLAS manual pages
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://netlib.org/lapack
 	arch = any
 	license = BSD
 	makedepends = doxygen
 	options = !strip
-	source = http://www.netlib.org/lapack/lapack-3.6.0.tgz
-	sha256sums = a9a0082c918fe14e377bbd570057616768dca76cbdc713457d8199aaa233ffc3
+	source = http://www.netlib.org/lapack/lapack-3.6.1.tgz
+	sha256sums = 888a50d787a9d828074db581c80b2d22bdb91435a673b1bf6cd6eb51aa50d1de
 
 pkgname = lapack-manpages
 

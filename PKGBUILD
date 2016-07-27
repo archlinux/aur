@@ -4,7 +4,7 @@
 
 _pkgname=lapack
 pkgname=$_pkgname-manpages
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='LAPACK and BLAS manual pages'
 arch=('any')
@@ -13,7 +13,7 @@ license=('BSD')
 makedepends=('doxygen')
 options=('!strip')
 source=("http://www.netlib.org/$_pkgname/$_pkgname-$pkgver.tgz")
-sha256sums=('a9a0082c918fe14e377bbd570057616768dca76cbdc713457d8199aaa233ffc3')
+sha256sums=('888a50d787a9d828074db581c80b2d22bdb91435a673b1bf6cd6eb51aa50d1de')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
