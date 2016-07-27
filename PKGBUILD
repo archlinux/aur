@@ -7,8 +7,8 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=arduino
-pkgver=1.6.10
-pkgrel=1
+pkgver=1.6.9
+pkgrel=4
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
