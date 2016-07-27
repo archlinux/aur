@@ -17,16 +17,30 @@ Run the following command to create the system user and group for www-data:
 useradd --system --shell /usr/bin/nologin www-data
 ```
 
+*Important*: check the permissions of the *web root* and *caddy configuration* and `chown -R www-data:www-data` them if necessary.
+
 TLS assets are now stored in `$HOME/.caddy`, where `$HOME` is the run users home directory.
 Caddy will make the migration for you, so don't worry.
 You can override the default path by setting the `$CADDYPATH` variable.
 The upstream systemd service sets `HOME` for `www-data` to `/etc/ssl/caddy`, hence make sure that the directory exists:
 
 ```sh
-mkdir -p /etc/ssl/caddy
+mkdir -p /etc/ssl/caddy && chown -R www-data:www-data /etc/ssl/caddy
 ```
 
 The caddy binary is now installed to `/usr/local/bin` instead `/usr/bin`.
+
+*Important*: `import`s are now relative to your `Caddyfile`! The following example illustrates nested imports:
+	```ini
+	# Caddyfile
+	import config/some.site
+	import config/default
+	...
+
+	# config/some.site
+	import default
+	...
+	```
 
 Have fun with the latest caddy release!
 
