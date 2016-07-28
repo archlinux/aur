@@ -1,7 +1,7 @@
 # Maintainer: zml <zml@aoeu.xyz>
 pkgname=base16-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r635.f78f49a
-pkgrel=1
+pkgver=r636.18f7a7e
+pkgrel=2
 pkgdesc="A color scheme and template for color schemes"
 arch=('any')
 url="http://chriskempson.github.io/base16"
@@ -13,10 +13,12 @@ options=('!strip')
 source=('base16::git+https://github.com/chriskempson/base16-builder.git'
         'base16-template-for'
         'base16-list-schemes'
+        'fix-vim.patch'
         'base16.default')
 sha256sums=('SKIP'
             'c1008db7487d261306db1cd20ba6258a1862b899fefaf7e6fd623ca58f31b4ad'
             'ebfd99c08bb03ce3029d3b792ffbee63b861300ab1aafb07e0a80ca380df0607'
+            '24b31a714d8142cf575318b430fc643e6d8665ebc2597d825b17ca4baa69b81d'
             '54d9c2b1043a6b408fa5ef22aad435eb0178f773f8d616aebf2795bd87bb11b6')
 
 pkgver() {
@@ -27,6 +29,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
     [ ! -e "./index" ] || rm index
+
+    patch -p1 < ../fix-vim.patch
 }
 
 build() {
