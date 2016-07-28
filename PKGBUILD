@@ -2,7 +2,7 @@
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.6
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,9 +25,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-linux-4.6-rtlwifi-fix-atomic.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch'
         "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/8e9ecc9caee1ae1d18c2cc4572729ef355091b6e/drivers/input/joystick/xpad.c")
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
@@ -39,9 +40,10 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
-            '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
-            '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
-            'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
+            '1857e05fd79baffc04dd075be81257d0a43351c244b7f360b48408a28ecfde2d'
+            '595887ea141ee7373460d325368f362ca87695259b9bca3499f12ef76322172b'
+            'd90d5525e3b4fefbd218e04b09c2234700226ecd8a350e8d88a3145c02b82c18'
+            '411e6f7aacc24d869f8b697e514bcbe1bb8ac676a73710269d4f8b516ce0b971'
             'a1d3a169196c07de2a2ab6bee89e1def9e09e1d06da4cd4dfa03fefc972928e1')
 
 validpgpkeys=(
@@ -70,9 +72,10 @@ prepare() {
   patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   # add BFQ
-  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch"
-  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch"
+  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch"
+  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch"
   patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+  patch -p1 -i "${srcdir}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch"
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
@@ -276,7 +279,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
