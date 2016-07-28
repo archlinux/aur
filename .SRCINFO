@@ -1,6 +1,6 @@
 pkgbase = hopper
 	pkgdesc = Hopper disassembler
-	pkgver = 2.8.10
+	pkgver = 3.11.17
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
