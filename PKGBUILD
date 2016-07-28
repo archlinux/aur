@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.4-gnu
-_pkgver=4.4.14-gnu
+_pkgver=4.4.15-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -60,7 +60,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '275b2db09b6f4ee918f53268a64a9dcf7647f1b9a3e2ba71a3178c76aceacad7'
+            '54e296db4a120d966e24e3759ffd3218215eb8250eaf82531c1e64281dc39f1c'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
