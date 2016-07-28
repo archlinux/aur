@@ -2,7 +2,7 @@
 
 pkgname=black-screen
 pkgver=0.2.8
-pkgrel=5
+pkgrel=6
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
@@ -41,7 +41,7 @@ build() {
     HOME=~/.electron-gyp npm install --production
 
     # We should use system installed typescript here, but it's not up-to-date
-    npm install typescript
+    npm install typescript@next
     npm run compile
     npm uninstall typescript
 }
