@@ -1,14 +1,14 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=yotta
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for managing reusable components for C/C++ by mbed"
 url="http://yottadocs.mbed.com/"
 depends=('python'
          'python-pip'
          'python-semantic-version'
          'python-requests'
-         'python-github'
+         'python-pygithub'
          'python-colorama'
          'python-hgapi'
          'python-jinja'
