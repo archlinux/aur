@@ -3,7 +3,7 @@
 # Contributor: John Schoenick <john@pointysoftware.net>
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-git
-pkgver=r1430.258591e
+pkgver=r1525.f7be481
 pkgrel=1
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,14 +15,12 @@ options=('staticlibs' '!strip')
 conflicts=('google-breakpad-svn')
 
 prepare() {
-  msg2 "Source download is performed in pkgver. See https://bugs.archlinux.org/task/42433"
+  mkdir "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
+  /opt/depot_tools/fetch breakpad > /dev/null
 }
 
 pkgver() {
-  mkdir "$srcdir/${pkgname}"
-  cd "$srcdir/${pkgname}"
-  /opt/depot-tools-git/fetch breakpad > /dev/null
-
   cd "$srcdir/${pkgname}/src"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
