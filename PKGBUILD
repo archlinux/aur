@@ -66,7 +66,7 @@ _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch'
 _bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch'
 _bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-_bfqp4='0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch'
+_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8-for-4.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
