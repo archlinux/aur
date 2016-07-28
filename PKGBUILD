@@ -9,7 +9,7 @@ _version=5.5.0
 _build=b5
 _buildtag=20160927
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -32,21 +32,31 @@ optdepends=('ffmpeg: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
-source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
-        'EULA'
-        'unity-editor-beta'
-        'monodevelop-unity-beta'
-        'unity-monodevelop-beta.png')
+#source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
+        #'EULA'
+        #'unity-editor-beta'
+        #'monodevelop-unity-beta'
+        #'unity-monodevelop-beta.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha256sums=('a470afa86364333cac9d70e6d54f47d4cff66aa95829e883039d319c55a8dfef'
-            '5d5a712f4fb33fe085902899be7230243459892b9792ae50d00cc4ee429ed307'
-            'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
-            '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
-            '6769b7ad1c1a1b088f1e96934d909fffef95d6a6c757420699f0a6705ef70a51')
+#sha256sums=('dc0002f8f7b3f519bcc21af2e931d15a8b30214c0688ff8c5eee475640055d23'
+            #'1145d6ea536582dd4fc281283617ec6e351acd7be6e02f704d47d595fba37934'
+            #'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
+            #'336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
+            #'6769b7ad1c1a1b088f1e96934d909fffef95d6a6c757420699f0a6705ef70a51')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 prepare() {
+  echo "************************************************************"
+  echo "***                                                      ***"
+  echo "***         RIGHT NOW THE STABLE RELEASE IS NEWER!       ***"
+  echo "***                                                      ***"
+  echo "***     Edit this if you *really* want an old beta =]    ***"
+  echo "***         otherwise go and install unity-editor        ***"
+  echo "************************************************************"
+  return 1
+
+
   if [ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]; then
     warning "It seems that you have less than 10GB left. If you are using
      an AUR-Helper or building on a small partition (like /tmp), you might
