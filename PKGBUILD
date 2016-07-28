@@ -2,7 +2,7 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=numix-themes-archblue-git
-pkgver=2.6.0.r5.51713dc
+pkgver=2.6.1.r8.c65721b
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
