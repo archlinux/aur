@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-asyncssh
-pkgver=1.5.3
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Asynchronous SSHv2 client and server library"
 arch=(any)
@@ -21,4 +21,4 @@ package() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('7f51085aba5932ef786d7041b3c8b78256b9d281df41d79ba07c14778011b0d9')
+sha256sums=('b480750698e5a8a530cdde1db02a4e5a4d95e13af4ff8f74fc1033be6c7d4bd2')
