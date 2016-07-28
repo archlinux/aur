@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=27.0.0_alpha1
+pkgver=27.0.0_alpha2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gst-plugins-good: h.264 support')
 conflicts=('palemoon' 'palemoon-bin')
 source=(#git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver" #pm-proper
-        git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha1"
+        git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2"
         mozconfig.in)
 md5sums=('SKIP'
          'ff85a559cb8104a18e77cb84247f6687')

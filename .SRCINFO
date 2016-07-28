@@ -1,6 +1,6 @@
 pkgbase = palemoon-beta
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.0.0_alpha1
+	pkgver = 27.0.0_alpha2
 	pkgrel = 1
 	url = http://www.palemoon.org/
 	arch = i686
@@ -42,7 +42,7 @@ pkgbase = palemoon-beta
 	optdepends = gst-plugins-good: h.264 support
 	conflicts = palemoon
 	conflicts = palemoon-bin
-	source = git+https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha1
+	source = git+https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = ff85a559cb8104a18e77cb84247f6687
