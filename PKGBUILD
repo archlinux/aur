@@ -1,5 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
+
 pkgname=sardi-icons
 pkgver=6.2
 pkgrel=6
