@@ -1,0 +1,16 @@
+pkgbase = bsdconv-git
+	pkgdesc = BSD licensed charset/encoding converter library with more functionalities than libiconv
+	pkgver = 11.4.r4.g9d91889
+	pkgrel = 1
+	url = https://github.com/buganini/bsdconv
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = bsdconv
+	conflicts = bsdconv
+	source = bsdconv::git+https://github.com/buganini/bsdconv
+	md5sums = SKIP
+
+pkgname = bsdconv-git
+
