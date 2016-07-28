@@ -13,25 +13,17 @@ mk_add_options MOZ_CO_PROJECT=browser
 mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
 
 # disable junk
-ac_add_options --disable-b2g-bt
-ac_add_options --disable-b2g-camera
-ac_add_options --disable-b2g-ril
 ac_add_options --disable-accessibility
 ac_add_options --disable-codesighs
-ac_add_options --disable-crashreporter
 ac_add_options --disable-gamepad
 ac_add_options --disable-installer
 ac_add_options --disable-logging
-ac_add_options --disable-mobile-optimize
-ac_add_options --disable-metro
-ac_add_options --disable-maintenance-service
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-parental-controls
 ac_add_options --disable-safe-browsing
 ac_add_options --disable-updater
 ac_add_options --disable-webrtc
 ac_add_options --disable-websms-backend
-ac_add_options --disable-windows-mobile-components
 ac_add_options --disable-valgrind
 
 # disable tests, debug
@@ -51,7 +43,6 @@ ac_add_options --enable-jemalloc-lib
 
 # use system libs
 ac_add_options --x-libraries=/usr/lib
-ac_add_options --with-system-nspr
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
