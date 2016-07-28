@@ -6,13 +6,16 @@ arch=('x86_64')
 url="http://www.autodesk.com/products/maya/overview"
 license=('custom: unlimited')
 depends=('libpng12' 'tcsh' 'libxp' 'openssl' 'libjpeg' 'libtiff')
-makedepends=('rpmextract')
+makedepends=('rpmextract' 'gcc')
 conflicts=()
 install=maya.install
-source=(http://download.autodesk.com/us/support/files/maya_2016_service_pack_5/Autodesk_Maya_2016_SP5_EN_Linux_64bit.tgz)
+source=('http://download.autodesk.com/us/support/files/maya_2016_service_pack_5/Autodesk_Maya_2016_SP5_EN_Linux_64bit.tgz')
 md5sums=('5b88676c1c3239ea26b9de656340e974')
 
 package() {
+
+  install "$pkgdir"/opt/Autodesk/MayaSetup
+  rsync -av --exclude='*.rpm' ./ "$pkgdir"/opt/Autodesk/MayaSetup
 
   cd "$pkgdir"
 
@@ -22,6 +25,10 @@ package() {
       msg2 $i
       rpmextract.sh $i
   done
+
+  mv "$pkgdir"/usr/local/bin/maya "$pkgdir"/usr/local/bin/oriMaya
+
+  cp "$srcdir"/maya_start.sh  "$pkgdir"/usr/local/bin/maya
 
 }
 

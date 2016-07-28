@@ -3,12 +3,12 @@
 # you don't need (and this header).
 
 ## arg 1:  the new package version
-pre_install() {
-  echo "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
-  read -p "Please enter your serial number: " SERIALNUMBER
-  read -p "Please enter your product id: " PRODUCTID
-  echo ""
-}
+#pre_install() {
+  #echo "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
+  #read -p "Please enter your serial number: " SERIALNUMBER
+  #read -p "Please enter your product id: " PRODUCTID
+  #echo ""
+#}
 
 ## arg 1:  the new package version
 post_install() {
@@ -20,7 +20,7 @@ post_install() {
 
   echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2016/bin/License.env
 
-  /usr/autodesk/maya2016/bin/adlmreg -i S $PRODUCTID $PRODUCTID 2016.0.0.F $SERIALNUMBER /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
+  #/usr/autodesk/maya2016/bin/adlmreg -i S $PRODUCTID $PRODUCTID 2016.0.0.F $SERIALNUMBER /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
 
   /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
 
@@ -32,6 +32,54 @@ post_install() {
 
   mkdir /usr/autodesk/maya2016/plugin-backups
   mv /usr/autodesk/maya2016/plug-ins/bifrost /usr/autodesk/maya2016/plugin-backups/
+
+  read -r -d '' POSTINSTALLMGG << EOF
+######################################
+## Run this commands once after install
+######################################
+#export MAYA_LOCATION=/usr/autodesk/maya2016/
+#export LD_LIBRARY_PATH=/opt/Autodesk/Adlm/R11/lib64/
+
+#nano mayainstall.c
+
+##add the following in nano, save and close
+#int main (void) {return 0;}
+
+#gcc mayainstall.c
+
+#if [ -f "/usr/bin/rpm" ] && sudo mv /usr/bin/rpm /usr/bin/rpm_backup
+
+#gcc mayainstall.c
+#sudo cp a.out /usr/bin/rpm
+
+#chmod +x /opt/Autodesk/MayaSetup/setup
+#sudo /opt/Autodesk/MayaSetup/setup
+
+##Then, follow the GUI, Accept, put your Serial Number and the 657G1 thing
+
+#sudo rm /usr/bin/rpm
+#if [ -f "/usr/bin/rpm_backup" ] && sudo mv /usr/bin/rpm_backup /usr/bin/rpm
+
+## Run once as sudo to activate the licence
+
+#sudo maya
+
+##If didn’t activate so go to https://registeronce.autodesk.com and when it asks you for request file, get from /tmp/MAYA2016en_USLongCode.xml while maya activation screen is open. You will get a file named Long_Response_Code.xml which will allow you to activate.
+
+## Close maya and run the following
+## Since Maya was ran once with sudo, reset the owner of the maya folder to user
+#sudo chown -R "$USER":"$USER" ~/maya
+
+## Close the file and you are almost done
+## Maya uses the windows key to move around, so disable the Unity hints so that they don't pop up
+##Install compizconfig-settings-manager
+##Disable Shortcut Hints Overlay
+##Uninstall it when you are done
+
+EOF
+
+   echo "$POSTINSTALLMGG"
+
 }
 
 ## arg 1:  the new package version
@@ -47,7 +95,7 @@ post_install() {
 #}
 
 ## arg 1:  the old package version
-#pre_remove() {
+pre_remove() {
   rm /usr/lib/libadlmPIT.so.11
   rm /usr/lib/libadlmutil.so.11
 
@@ -59,10 +107,10 @@ post_install() {
   rm /usr/autodesk/maya2016/lib/libcrypto.so.10
 
   rm /usr/autodesk/maya2016/lib/libjpeg.so.62
-  rm/usr/autodesk/maya2016/lib/libtiff.so.3
+  rm /usr/autodesk/maya2016/lib/libtiff.so.3
 
   rm -rf /usr/autodesk/maya2016/plugin-backups
-#}
+}
 
 ## arg 1:  the old package version
 #post_remove() {
