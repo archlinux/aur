@@ -3,7 +3,7 @@
 _pkgbase=gtk-xfce-engine
 pkgname=lib32-$_pkgbase
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce Gtk+-2.0 engine (32-bit)"
 arch=('x86_64')
 url="http://www.xfce.org/"
@@ -15,6 +15,7 @@ sha256sums=('4a92910205881f707f2cc8d3c9b00a95feb58eb9084d932c841f3ed027f7063d')
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "$srcdir/$_pkgbase-$pkgver"
 
