@@ -7,7 +7,6 @@ pkgdesc="Hopper disassembler"
 arch=('x86_64' 'i686')
 
 package() {
-	echo "______________________________________"
 	wget ${pkgUrl}
 	tar xvf *.xz -C ${pkgdir}
 }
