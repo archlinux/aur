@@ -10,7 +10,7 @@
 
 pkgname=nodejs-bigger-heap
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript: patched for 8Gb max heap size'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -21,9 +21,14 @@ optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
 source=("git+https://github.com/nodejs/node.git#tag=v$pkgver"
-        "increase_heap_limit.patch")
+        "increase_heap_limit-4x.patch"
+        "increase_heap_limit-8x.patch")
 sha256sums=('SKIP'
+            '60e99aa0750b1a46a66cfa5cb14b993007bcfcf0c7531780e52a715887f69982'
             'c0c9408173df4ad0586bd3b564815c464cb08c07365a49e311ab6ae578c91bb4')
+            
+[[ "$CARCH" = "i686" ]] && _patch="increase_heap_limit-4x.patch"
+[[ "$CARCH" = "x86_64" ]] && _patch="increase_heap_limit-8x.patch"
 
 prepare() {
   cd node
@@ -37,7 +42,7 @@ prepare() {
     -e 's_^\(.*\)python\( \+-c \+.*\)$_\1python2\2_'\
     -e "s_'python'_'python2'_" -i {} \;
   find test/ -type f -exec sed 's_python _python2 _' -i {} \;
-  patch -p1 < ../increase_heap_limit.patch
+  patch -p1 < "../${_patch}"
 }
 
 build() {
