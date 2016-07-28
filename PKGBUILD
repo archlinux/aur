@@ -4,7 +4,7 @@ _pkgbase=atomicwrites
 pkgbase=python-${_pkgbase}
 pkgname=("python-${_pkgbase}" "python2-${_pkgbase}")
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atomic file writes on POSIX"
 arch=('any')
 url="https://github.com/untitaker/python-atomicwrites"
@@ -53,7 +53,7 @@ package_python2-atomicwrites() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}-py2"
 
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
