@@ -1,7 +1,7 @@
 pkgbase = infinity-background
 	pkgdesc = Fedora 8 Infinity background for Gnome. Changes color based upon the time of day
 	pkgver = 0.0.5
-	pkgrel = 9
+	pkgrel = 10
 	url = http://fedoraproject.org/wiki/Artwork/F8Themes/Infinity
 	arch = any
 	license = GPL
