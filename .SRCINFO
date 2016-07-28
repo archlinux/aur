@@ -12,7 +12,7 @@ pkgbase = accel-ppp-ipoe-dkms
 	conflicts = accel-ppp-vlanmon-dkms-git
 	source = http://sourceforge.net/projects/accel-ppp/files/accel-ppp-1.11.0.tar.bz2
 	source = dkms.conf
-	md5sums = 31f8408691b67e1504e31b6773d2d9d1
+	md5sums = 2a840be652604795a1cbba8d2c6cb7fe
 	md5sums = e760913b2eef629cbad23925b5645367
 
 pkgname = accel-ppp-ipoe-dkms
