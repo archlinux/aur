@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Nightcode
+Comment=A handy tool for your Clojure adventures
+Type=Application
+Icon=nightcode
+Exec=nightcode
+Categories=Utility;TextEditor;Development
+Terminal=false
+MimeType=text/plain;
