@@ -1,0 +1,15 @@
+pkgbase = 2048-puzzle-bash-git
+	pkgdesc = A bash implementation of 2048 puzzle game
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/rhoit/2048
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	optdepends = figlet
+	source = git+https://github.com/rhoit/2048.git
+	md5sums = SKIP
+
+pkgname = 2048-puzzle-bash-git
+
