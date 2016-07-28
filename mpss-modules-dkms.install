@@ -1,0 +1,41 @@
+_my_pkgname=mpss-modules-dkms
+_my_kmod=${_my_pkgname%-*}
+
+# version (without -$pkgrel): ${1%%-*}
+
+# arg 1:  the new package version
+post_install() {
+  local newver=${1%%-*}
+  dkms add --force -m $_my_kmod -v $newver
+  cat << EOF
+==> To build and install your modules run: dkms install -m $_my_kmod -v $newver
+==> To do this automatically at startup run: systemctl enable dkms.service
+==> To do this automatically while building a new kernel add 'dkms' hook to
+    the HOOKS variable in /etc/mkinitcpio.conf
+EOF
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  local oldver=${1%%-*}
+  # Remove modules using dkms
+  [ -n "$oldver" ] && dkms remove -m $_my_kmod -v $oldver --all &>/dev/null || true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  local curver=${2%%-*}
+  # $2 might be unset due to a bug. See, https://bugs.archlinux.org/task/32278
+  # Query current version using pacman as fallback
+  [ -n "$curver" ] || curver=$(pacman -Q $_my_pkgname | cut -d' ' -f2)
+  pre_remove "$curver"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install "$1"
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

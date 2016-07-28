@@ -1,0 +1,18 @@
+pkgbase = mpss
+	pkgver = 3.7.1
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = dkms.conf
+	source = blacklist-mic-host.conf
+	sha256sums = a76162c169073060ee3a966e95342f29b3e342c956d29169c10a6dd97e342fa5
+	sha256sums = 42dda3527ed2496b851c0fad6a841f660a0c086ecf742bb4f132308b9e38d913
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-modules.git#branch=ModuleAndKernelUpdates
+	sha256sums_x86_64 = SKIP
+
+pkgname = mpss-modules-dkms
+	pkgdesc = Intel® Manycore Platform Software Stack; mic Kernel module
+	install = mpss-modules-dkms.install
+
