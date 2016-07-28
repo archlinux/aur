@@ -1,8 +1,8 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-beta-bin
-pkgver=2.11.2
-pkgrel=4
+pkgver=2.11.3
+pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -14,10 +14,10 @@ conflicts=('airvpn' 'airvpn-bin')
 install=airvpn.install
 source_i686=("airvpn_linux_x86_debian_${pkgver}_experimental.deb"::"https://airvpn.org/repository/experimental/airvpn_linux_x86_debian.deb")
 source_x86_64=("airvpn_linux_x64_debian_${pkgver}_experimental.deb"::"https://airvpn.org/repository/experimental/airvpn_linux_x64_debian.deb")
-md5sums_i686=('fed219e7a1718bb56fb4c4a924ce299f')
-md5sums_x86_64=('3eb8941a297abb587313dd0ec89d5b42')
-sha256sums_i686=('3662d9bfb8a1b775aa8b8ae55e08ae6594c204419441e8078b64253f24fa4150')
-sha256sums_x86_64=('9a8934d2148372b5e168ced85d8cc983c260d1a75484929d9d7696784f6a2cab')
+md5sums_i686=('f8e1867f621b6f1d517b52b9572be871')
+md5sums_x86_64=('27fc546b1f6f7d34e3784d212cec8bf2')
+sha256sums_i686=('330a6294a3ea98314e4ccdc5072a2118469d994b20a219f17e88eade7efdc4da')
+sha256sums_x86_64=('f8047ef7d035e296deb88cdbe24140aa7cad191a3097dc0361c1dd992447ec47')
 
 package() {
   msg2 "Extracting the data.tar.gz..."
