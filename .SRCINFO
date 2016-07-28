@@ -1,14 +1,13 @@
 pkgbase = metacity-git
 	pkgdesc = Legacy GNOME window manager
-	pkgver = 3.14.1.r2.g246dc66
+	pkgver = 3.20.1.r24.g906dfec
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Metacity
-	install = metacity.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gnome-common
+	makedepends = autoconf-archive
 	makedepends = intltool
 	makedepends = yelp-tools
 	depends = dconf
