@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=61559.3748bbf
+pkgver=65157.66552ca
 pkgrel=1
 pkgdesc="Development version of Blender"
 arch=('i686' 'x86_64')
@@ -23,13 +23,10 @@ source=('git://git.blender.org/blender.git' \
         'blender-addons.git::git://git.blender.org/blender-addons.git' \
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git' \
         'blender-translations.git::git://git.blender.org/blender-translations.git' \
-        'scons.git::git://git.blender.org/scons.git' \
+        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
         blender.desktop)
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
          'e9c26e370839fd902eb76c98fe3b9589')
-# NOTE: add submodules to the noextract
-noextract=('blender-addons.git' 'blender-addons-contrib.git'
-           'blender-translations.git' 'scons.git')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
