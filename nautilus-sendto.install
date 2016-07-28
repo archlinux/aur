@@ -1,5 +1,0 @@
-post_upgrade() {
-  if (( $(vercmp $2 3.7.92) < 0 )); then
-    glib-compile-schemas usr/share/glib-2.0/schemas
-  fi
-}
