@@ -1,0 +1,39 @@
+#conf_file="/etc/e4rat-lite.conf"
+#sample_path="/usr/share/e4rat-lite/conf"
+
+translate_msgs() {
+	if [ "${1}" == "pt" ]; then
+		msg_mandb="Atualizando índices, por favor aguarde..."
+		msg_usefull_1="\nÚtil:\n"
+		msg_usefull_2="${conf_file}"
+		msg_usefull_3="Arquivo de configuração.\n"
+		msg_usefull_4="Se você está usando o systemd, desabilite o"
+		msg_usefull_5="systemd-readahead-collect e o systemd-readahead-replay."
+		msg_usefull_6="A implementação do readahead conflita com o e4rat.\n"
+	else
+		msg_mandb="Updating indexes, please wait..."
+		msg_usefull_1="\nUsefull:\n"
+		msg_usefull_2="${conf_file}"
+		msg_usefull_3="Configuration file\n"
+		msg_usefull_4="If are you using systemd, disable the"
+		msg_usefull_5="systemd-readahead-collect and systemd-readahead-replay."
+		msg_usefull_6="readahead implementation conflicts with e4rat.\n"
+	fi
+}
+
+post_install(){
+	echo "$msg_mandb"
+	mandb --quiet /usr/share/man/pt_BR	
+	mandb --quiet /usr/share/man/en_US
+	echo -e "$msg_usefull_1"
+	echo    "$msg_usefull_2"
+	echo -e "$msg_usefull_3"
+	echo    "$msg_usefull_4"
+	echo    "$msg_usefull_5"
+	echo -e "$msg_usefull_6"
+}
+post_upgrade(){
+	post_install
+}
+
+translate_msgs "${LANG%%_*}"

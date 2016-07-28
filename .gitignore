@@ -1,0 +1,7 @@
+# source files
+*.pkg.tar.xz
+pkg/**
+src/**
+build.sh
+test.sh
+e4rat-lite/**
