@@ -4,7 +4,7 @@ _pkgname=pinocchio
 _pkgver=1.1.2
 pkgname=${_pkgname}-git
 pkgver=${_pkgver}.r1010.50f3e32
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
@@ -13,7 +13,7 @@ depends=('eigenpy')
 optdepends=('metapod-git' 'urdfdom' 'lua51')
 makedepends=('cmake' 'gcc5' 'git')
 conflicts=('pinocchio')
-source=("$_pkgname"::"https://github.com/stack-of-tasks/$_pkgname.git")
+source=("$_pkgname"::"git://github.com/stack-of-tasks/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,12 +24,13 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     git checkout devel
-    git submodule update
+    git submodule update --init
 }
 
 build() {
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS=-std=c++03 -DBUILD_UNIT_TESTS=OFF .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib \
+        -DCMAKE_CXX_FLAGS=-std=c++03 -DBUILD_UNIT_TESTS=OFF .
     make
 }
 
