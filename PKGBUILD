@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.6-gnu
-_pkgver=4.6.3-gnu
+_pkgver=4.6.4-gnu
 _grsecver=3.1
-_timestamp=201607070721
+_timestamp=201607192040
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -62,9 +62,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '5a6abaddb87c6dd655c3c894bcdfb91e776b36b84c290d446667e5d08121f85a'
+            '5a6aaafa95408a406d36c13f38fcba90d352328dd8bbab2d0e893c79a216df33'
             'SKIP'
-            '098214f8585976389c7011b9ab6e8b386793f0b567abb61fe5d0449415f20f0a'
+            'c6dc35cf01b5fbc38af92332760f76ae6ffd217908bd642b82dd6490925d49e3'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -73,7 +73,7 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
             '4567aba6c4eb0a8e2769f9f7ec655cdf96ee9b408db9df30aa924f1cee3460d7'
-            'd42ecb2c081cf908fa3e5b4cfe2ee43e01c950d71d10bda0cf425807a5e4ad51'
+            '991d1a9544121465082a51fdeb0a243bc7ddd23e12aa56f0721f690f92aabfb2'
             'b2596b03ede5fefd101d184a87bd5233034cebedf5a864276ced5cae926e3ea5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
