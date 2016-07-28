@@ -9,8 +9,10 @@ depends=('libpng12' 'tcsh' 'libxp' 'openssl' 'libjpeg' 'libtiff')
 makedepends=('rpmextract' 'gcc')
 conflicts=()
 install=maya.install
-source=('http://download.autodesk.com/us/support/files/maya_2016_service_pack_5/Autodesk_Maya_2016_SP5_EN_Linux_64bit.tgz')
-md5sums=('5b88676c1c3239ea26b9de656340e974')
+source=('http://download.autodesk.com/us/support/files/maya_2016_service_pack_5/Autodesk_Maya_2016_SP5_EN_Linux_64bit.tgz'
+        'maya_start.sh::https://aur.archlinux.org/maya.git')
+md5sums=('5b88676c1c3239ea26b9de656340e974'
+         '9ba05fd94f32ae0a4462851063316d4e')
 
 package() {
 
