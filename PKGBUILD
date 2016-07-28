@@ -2,8 +2,8 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 
 pkgname=syncthing-git
-pkgver=0.11.8.r13.g983d7ec
-pkgrel=2
+pkgver=0.14.3.r0.ga022b0c
+pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
 license=('MPLv2')
@@ -16,15 +16,15 @@ sha256sums=('SKIP')
 install=${pkgname}.install
 _name=syncthing
 
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "${srcdir}"
   mkdir -p "src/github.com/syncthing"
   mv "${pkgname}-${pkgver}" "src/github.com/syncthing/${_name}"
+}
+
+pkgver() {
+	cd "${srcdir}/src/github.com/syncthing/${_name}"
+	git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
