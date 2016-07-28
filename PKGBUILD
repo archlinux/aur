@@ -6,8 +6,8 @@
 
 pkgname=asymptote-git
 epoch=1
-pkgver=2.39r18.gff41f20
-pkgrel=2
+pkgver=2.39r19.gd76f675
+pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
