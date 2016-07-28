@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('sardi-icons')
 options=(!strip !emptydirs)
 install='sardi-icons.install'
-source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.zip")
+source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
