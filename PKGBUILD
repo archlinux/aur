@@ -1,11 +1,11 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer at gmail dot com>
 pkgname=qdriverstation
-_pkgver=16.06.1
-pkgver=16.06.1
+_pkgver=16.07
+pkgver=16.07
 pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
-url="https://github.com/wint-3794/qdriverstation"
+url="https://github.com/FRC-Utilities/QDriverStation"
 license=('MIT')
 groups=()
 depends=('sdl2' 'qt5-declarative')
@@ -15,9 +15,9 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=("https://github.com/WinT-3794/QDriverStation/archive/v${_pkgver}.tar.gz")
+source=("https://github.com/FRC-Utilities/QDriverStation/archive/v${_pkgver}.tar.gz")
 noextract=()
-md5sums=('760f07e5b435f560a1b791465c9a3090')
+md5sums=('ef868c86be6b73133ee9c7cdef1ff424')
 
 extractdir="QDriverStation-${_pkgver}"
 
