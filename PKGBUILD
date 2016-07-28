@@ -55,7 +55,7 @@ _srcname=linux-4.6
 _pkgver=4.6.4
 _rtpatchver=rt8
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -76,7 +76,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.6.0.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.6.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-blkck-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for-4.patch"
+        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for-4.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
@@ -107,7 +107,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4}-bl*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-block*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -316,7 +316,7 @@ package_linux-rt-bfq-headers() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
 	for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-		media net pcmcia scsi sound trace uapi video xen; do
+		media net pcmcia scsi soc sound trace uapi video xen; do
 	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 	done
 
@@ -404,6 +404,12 @@ package_linux-rt-bfq-headers() {
 		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
+	
+	# add objtool for external module building and enabled VALIDATION_STACK option
+        if [ -f tools/objtool/objtool ];  then
+        mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+        cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+        fi
 
 	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
 	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
