@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=odt2tex
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert odt files to tex"
 url="https://www.chronowerks.de"
 arch=('x86_64' 'i686')
@@ -18,5 +18,5 @@ build() {
  
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/usr/bin/${pkgname}" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
