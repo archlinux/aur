@@ -4,8 +4,8 @@
 # Contributor: J. Santiago Hirschfeld <jsantiagoh@yahoo.com.ar>
 
 pkgname=qalculate-gtk-nognome
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="GTK+ frontend for libqalculate, without gnome dependencies"
 arch=('i686' 'x86_64')
 url="http://qalculate.github.io/"
@@ -15,7 +15,7 @@ makedepends=('perl-xml-parser' 'rarian' 'intltool')
 replaces=('qalculate-gtk')
 provides=('qalculate-gtk')
 _nick=('qalculate-gtk')
-source=(http://downloads.sourceforge.net/sourceforge/qalculate/${_nick}-${pkgver}.tar.gz)
+source=("${_nick}-${pkgver}.tar.gz::https://github.com/Qalculate/${_nick}/releases/download/v${pkgver}/${_nick}-${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${_nick}-${pkgver}"
@@ -28,5 +28,5 @@ package() {
   make DESTDIR="${pkgdir}" install || return 1
 }
 
-md5sums=('73a5139a89bc1c31e059870010dabc2f')
-sha1sums=('ddc87ce66607790e46a5691e0d441270b3151be7')
+md5sums=('585a7c6343aafc0958bfdc8653d6b8a2')
+sha1sums=('7ca4ad42b0a869f954f9bc1e6090ca577a0c36cf')
