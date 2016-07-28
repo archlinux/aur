@@ -1,0 +1,18 @@
+pkgbase = tempered-git
+	pkgdesc = Library and utilities to read data from some HID TEMPer USB temperature and humidity sensors
+	pkgver = r100.e77ee06
+	pkgrel = 1
+	url = https://github.com/edorfaus/TEMPered
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = hidapi
+	depends = hidapi
+	provides = tempered
+	source = tempered-git::git+https://github.com/edorfaus/TEMPered
+	md5sums = SKIP
+
+pkgname = tempered-git
+
