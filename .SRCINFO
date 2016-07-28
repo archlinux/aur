@@ -9,15 +9,12 @@ pkgbase = pinocchio-git
 	makedepends = cmake
 	makedepends = gcc5
 	makedepends = git
-	depends = eigen
-	depends = boost-libs
-	depends = python2-numpy
-	optdepends = eigenpy
+	depends = eigenpi
 	optdepends = metapod-git
 	optdepends = urdfdom
 	optdepends = lua51
 	conflicts = pinocchio
-	source = pinocchio-git::https://github.com/stack-of-tasks/pinocchio-git.git
+	source = pinocchio-git::https://github.com/stack-of-tasks/pinocchio.git
 	md5sums = SKIP
 
 pkgname = pinocchio-git

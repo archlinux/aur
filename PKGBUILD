@@ -8,11 +8,11 @@ pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
 license=('LGPL3 or any later version')
-depends=('eigen' 'boost-libs' 'python2-numpy')
-optdepends=('eigenpy' 'metapod-git' 'urdfdom' 'lua51')
+depends=('eigenpi')
+optdepends=('metapod-git' 'urdfdom' 'lua51')
 makedepends=('cmake' 'gcc5' 'git')
 conflicts=('pinocchio')
-source=("$pkgname"::"https://github.com/stack-of-tasks/$pkgname.git")
+source=("$pkgname"::"https://github.com/stack-of-tasks/${pkgname/-/.}")
 md5sums=('SKIP')
 
 pkgver() {
