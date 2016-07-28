@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.3.1
-pkgrel=4
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='A smarter, faster web browser'
 arch=('any')
 url='https://minbrowser.github.io/min'
@@ -12,7 +12,7 @@ makedepends=('nodejs-grunt-cli' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/v${pkgver}.tar.gz"
         'min.desktop'
         'min.sh')
-sha256sums=('1f63664518f8535e1472f5d1fdd81d0a8426b752075433e1ecf3a28e43954057'
+sha256sums=('c8eebc28282429eaf74854864f8d8fdf21ae17687fc1c87378016f2a86214b9c'
             'ceda16e70597b535018965e56ac4f2da0f40c6fa648b7477400b255365b07d27'
             '5b7451246eeada602ce0c6bf8635ef8a4918ab76ba652a562c4f8b114f5e3f24')
 
@@ -50,6 +50,5 @@ package() {
         -or -name "test" -prune -exec rm -r '{}' \; \
         -or -name "tests" -prune -exec rm -r '{}' \;
     cd "${pkgdir}"${_appdir}/node_modules
-    rm -r rimraf/bin.js strip-json-comments/cli.js \
-        nlp_compromise/cmd.js strip-indent/cli.js
+    rm nlp_compromise/cmd.js
 }
