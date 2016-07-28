@@ -1,7 +1,7 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
 	pkgver = 26.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.palemoon.org/
 	arch = i686
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = palemoon
 	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.3.3_Release
 	source = mozconfig.in
 	md5sums = SKIP
-	md5sums = ff85a559cb8104a18e77cb84247f6687
+	md5sums = f678e46b4607052eada69385ae34254f
 
 pkgname = palemoon
 
