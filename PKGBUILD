@@ -5,7 +5,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=4.90.92.r13350.cede3bb
+pkgver=4.90.92.r13476.aa23e36
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ depends=('ktexteditor'
          'libkomparediff2'
          'hicolor-icon-theme'
          'llvm'
-         )
+         'kde-cli-tools'
+	 )
 optdepends=('kompare-git: difference checking'
             'subversion: Subversion plugin')
 makedepends=('cmake'
