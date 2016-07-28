@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
 pkgname=sardi-icons
-pkgver=6.2
-pkgrel=6
+pkgver=7.1
+pkgrel=0
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots > 18 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('sardi-icons')
 options=(!strip !emptydirs)
 install='sardi-icons.install'
-source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
+source=("http://downloads.sourceforge.net/project/sardi/${pkgname}-${pkgver}-${pkgrel}.zip")
 sha256sums=('SKIP')
 
 package() {
