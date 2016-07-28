@@ -32,7 +32,7 @@ package()
   do
     cp -r $subdir/src/sgpp "$pkgdir"/usr/include
   done
-  install -m644 */src/*.hpp "$pkgdir"/usr/include/sgpp
+  install -m644 */src/*.hpp "$pkgdir"/usr/include
   find "$pkgdir"/usr/include/sgpp -name "*.cpp"|xargs rm
   find "$pkgdir"/usr/include/sgpp -name "*.lint"|xargs rm
   find "$pkgdir"/usr/include/sgpp -name "*.os"|xargs rm
