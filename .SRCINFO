@@ -1,0 +1,17 @@
+pkgbase = bug5-git
+	pkgdesc = A Big5/GBK <-> UTF-8 translating layer in terminal
+	pkgver = 1.18.r2.g3509bde
+	pkgrel = 1
+	url = https://github.com/buganini/bug5
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bsdconv
+	provides = bug5
+	conflicts = bug5
+	source = bug5::git+https://github.com/buganini/bug5
+	md5sums = SKIP
+
+pkgname = bug5-git
+
