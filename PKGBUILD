@@ -4,14 +4,14 @@
 
 pkgname=notification-daemon-git
 _pkgname=notification-daemon
-pkgver=3.17.2.r28.gbf3594e
+pkgver=3.20.0.r1.g34af3da
 pkgrel=1
 pkgdesc="Notification daemon for the desktop notifications framework"
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org/"
 depends=(gtk3 libcanberra)
-makedepends=(git autoconf-archive intltool)
+makedepends=(git autoconf-archive intltool python)
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=(git://git.gnome.org/notification-daemon)
@@ -37,5 +37,5 @@ check() {
 
 package() {
     cd $_pkgname
-    make DESTDIR=${pkgdir} install
+    make DESTDIR="$pkgdir" install
 }
