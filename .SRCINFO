@@ -11,7 +11,7 @@ pkgbase = ovito
 	depends = ffmpeg2.8
 	depends = mpfr
 	conflicts = ovito-git
-	source = http://www.ovito.org/download/2.6.2/ovito-2.6.2-x86_64.tar.gz
+	source = http://www.ovito.org/download/2.7.0/ovito-2.7.0-x86_64.tar.gz
 	md5sums = 6ABF21EC650F5298BCA20B2EBA09645D 
 	md5sums = F8F5685F0D7E13A9F0AF96308FA16499 
 
