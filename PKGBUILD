@@ -1,15 +1,16 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 _pkgname=glportal
 pkgname=${_pkgname}-git
-pkgver=61cb299
+pkgver=0.1.pre.393.g32cd473
 pkgrel=1
 epoch=1
 pkgdesc="OpenGL puzzle game inspired by portal."
 arch=('i686' 'x86_64')
 url="http://glportal.de/"
 license=('custom')
-depends=('assimp' 'sdl2_mixer' 'tinyxml2' 'libepoxy')
+depends=('assimp' 'sdl2_mixer' 'tinyxml2' 'libepoxy' 'bullet')
 makedepends=('git' 'cmake' 'unittestpp')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -37,7 +38,6 @@ build() {
   [[ -d build ]] || mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make all tests
 }
 
 # Disabled as recommended by developer
@@ -51,5 +51,5 @@ package() {
   cd $srcdir/$_pkgname/build
   
   make install DESTDIR=$pkgdir
-  install -Dm644 "../LICENCE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
+  install -Dm644 $srcdir/$_pkgname/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
