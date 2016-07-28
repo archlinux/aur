@@ -1,7 +1,7 @@
 pkgbase = cov-analysis
 	pkgdesc = Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD
-	pkgver = 8.5.0
-	pkgrel = 2
+	pkgver = 8.5.0.1
+	pkgrel = 1
 	url = https://scan.coverity.com/download
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = cov-analysis
 	depends = java-environment
 	source = cov-analysis.sh
 	md5sums = d168d266857cdf0bb3908d7a047dfcf3
-	source_i686 = file://cov-analysis-linux-8.5.0.tar.gz
-	md5sums_i686 = ad0635d592e5e9fbc25dd58c91f8ad06
-	source_x86_64 = file://cov-analysis-linux64-8.5.0.tar.gz
-	md5sums_x86_64 = cba10aaa7719727e552d3eb70084dca9
+	source_i686 = file://cov-analysis-linux-8.5.0.1.tar.gz
+	md5sums_i686 = 1b2f74fab77ddd1ecb5a7e20fa515404
+	source_x86_64 = file://cov-analysis-linux64-8.5.0.1.tar.gz
+	md5sums_x86_64 = e85b1359348a5f66fea09cae0c10659d
 
 pkgname = cov-analysis
 
