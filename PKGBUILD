@@ -8,15 +8,15 @@ pkgdesc="A scientific visualization and analysis software for atomistic simulati
 url="http://www.ovito.org"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('python' 'qt5-svg' 'ffmpeg2.8' 'mpfr')
+depends=('python' 'qt5-svg' 'ffmpeg2.8')
 conflicts=('ovito-git')
 md5sums=('')
 source=("http://www.ovito.org/download/$pkgver/$pkgname-$pkgver-$CARCH.tar.gz")
 
 if [[ $CARCH = i686 ]];then
-  md5sums[0]='6ABF21EC650F5298BCA20B2EBA09645D'
+  md5sums[0]='6abf21ec650f5298bca20b2eba09645d'
 else
-  md5sums[0]='F8F5685F0D7E13A9F0AF96308FA16499'
+  md5sums[0]='f8f5685f0d7e13a9f0af96308fa16499'
 fi
 
 package() {
