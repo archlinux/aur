@@ -21,8 +21,8 @@ _clang_completer=y
 _clang_completer_system_libclang=n
 
 pkgname=vim-youcompleteme-core-git
-pkgver=r1821.c4a410b
-pkgrel=3
+pkgver=r1833.9968a43
+pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
 url='http://valloric.github.com/YouCompleteMe/'
@@ -33,10 +33,8 @@ makedepends=('git' 'cmake')
 provides=('vim-youcompleteme-git')
 conflicts=('vim-youcompleteme-git')
 source=('git+https://github.com/Valloric/YouCompleteMe.git'
-        'git+https://github.com/Valloric/ycmd'
-        'boost-python3.patch'::'https://github.com/Valloric/ycmd/pull/537.patch')
-sha256sums=('SKIP' 'SKIP'
-            'bb42d14ef0ca04618c6f3a30e9a754388a0231f00e798509b803638974e656e5')
+        'git+https://github.com/Valloric/ycmd')
+sha256sums=('SKIP' 'SKIP')
 install="${pkgname}.install"
 
 pkgver() {
@@ -97,10 +95,11 @@ fi
 
 prepare() {
 	cd "${srcdir}/YouCompleteMe"
+	git reset --hard
+	git -C 'third_party/ycmd' reset --hard
 	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
 	git submodule update --init 'third_party/ycmd'
 	cd 'third_party/ycmd'
-	git reset --hard
 
 	if [ "${_search_system_completers}" == 'y' ]; then
 		patch -p1 -i "${srcdir}/system_completers.patch"
@@ -113,10 +112,6 @@ prepare() {
 	if [ "${_clang_completer}" == 'y' -a "${_clang_completer_system_libclang}" != 'y' ]; then
 		mkdir -p "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
 		cp "${srcdir}/${clang_filename}" "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
-	fi
-
-	if [ "${_use_python2}" != 'y' -a "${_use_system_boost}" == 'y' ]; then
-		patch -i "${srcdir}/boost-python3.patch" -p1
 	fi
 }
 
