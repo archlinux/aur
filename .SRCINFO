@@ -1,7 +1,7 @@
 pkgbase = caja-extensions-common-1.15-gtk3
 	pkgdesc = MATE extensions for Caja (GTK3 version)
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
