@@ -1,0 +1,27 @@
+pkgbase = gnome-applets-git
+	pkgdesc = Small applications for the GNOME Panel (git version)
+	pkgver = 3.20.0.r9.gea315cd
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeApplets
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = intltool
+	makedepends = yelp-tools
+	makedepends = gnome-settings-daemon
+	depends = gnome-panel
+	depends = libgtop
+	depends = libtracker-sparql
+	depends = gucharmap
+	depends = python-gobject
+	depends = cpupower
+	depends = upower
+	provides = gnome-applets
+	conflicts = gnome-applets
+	source = git://git.gnome.org/gnome-applets
+	sha256sums = SKIP
+
+pkgname = gnome-applets-git
+
