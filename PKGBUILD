@@ -4,7 +4,7 @@ _pkgname=pinocchio
 _pkgver=1.1.2
 pkgname=${_pkgname}-git
 pkgver=${_pkgver}.r1010.50f3e32
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_FLAGS=-std=c++03 -DBUILD_UNIT_TESTS=OFF .
     make
 }
@@ -37,4 +37,6 @@ build() {
 package() {
     cd "$_pkgname"
     make DESTDIR="$pkgdir/" install
+    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
+    rmdir $pkgdir/usr/lib64
 }
