@@ -1,5 +1,4 @@
-#conf_file="/etc/e4rat-lite.conf"
-#sample_path="/usr/share/e4rat-lite/conf"
+conf_file="/etc/e4rat-lite.conf"
 
 translate_msgs() {
 	if [ "${1}" == "pt" ]; then

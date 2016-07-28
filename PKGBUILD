@@ -20,7 +20,7 @@ source=("git://github.com/ShyPixie/$_gitname.git"
         "$pkgname.install")
 
 md5sums=('SKIP'
-         'bac5749143b7b2b04c5386e88c9336f8')
+         'e0deb0fc92359da3a1970bbab467ffdf')
          
 install=$pkgname.install
 backup=('etc/e4rat-lite.conf')

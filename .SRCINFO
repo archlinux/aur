@@ -25,7 +25,7 @@ pkgbase = e4rat-lite-git
 	source = git://github.com/ShyPixie/e4rat-lite.git
 	source = e4rat-lite-git.install
 	md5sums = SKIP
-	md5sums = bac5749143b7b2b04c5386e88c9336f8
+	md5sums = e0deb0fc92359da3a1970bbab467ffdf
 
 pkgname = e4rat-lite-git
 
