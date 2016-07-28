@@ -1,49 +1,37 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-flashback-git
-_gitname=gnome-flashback
-pkgver=3.17.2.r57.gc375d0f
+_pkgname=gnome-flashback
+pkgver=3.20.1.r39.ga130f67
 pkgrel=1
+pkgdesc="GNOME Flashback session (git version)"
 arch=('i686' 'x86_64')
-license=('GPL')
-pkgdesc="GNOME Flashback session (development version)"
 url="https://wiki.gnome.org/Projects/GnomeFlashback"
-# Note: Dependencies from gnome-panel onwards are flashback session dependencies and are not required for building the flashback module
-depends=('gnome-desktop' 'libcanberra' 'libpulse' 'upower' 'gnome-panel' 'gnome-screensaver' 'gnome-session' 'gnome-settings-daemon' 'metacity' 'nautilus' 'notification-daemon' 'polkit-gnome')
-optdepends=('compiz: required for the GNOME Flashback (Compiz) session')
-makedepends=('git' 'gnome-common' 'intltool')
-provides=('gnome-flashback')
-conflicts=('gnome-flashback')
-install=$_gitname.install
-source=(git://git.gnome.org/gnome-flashback
-        session-components.patch)
-sha256sums=('SKIP'
-            '046121b5fbb185c4736a62b909e74985f52c0f0ff4b8a17c5a26d84576bfa4c0')
+license=('GPL')
+depends=('gnome-bluetooth' 'gnome-panel' 'gnome-session' 'gnome-settings-daemon' 'gnome-themes-standard' 'libibus' 'metacity' 'nautilus')
+makedepends=('git' 'autoconf-archive' 'intltool' 'python2')
+optdepends=('gnome-backgrounds: Default background'
+            'gnome-control-center: System settings'
+            'gnome-screensaver: Lock screen'
+            'network-manager-applet: Network management')
+conflicts=($_pkgname)
+provides=($_pkgname)
+source=(git://git.gnome.org/$_pkgname)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $_pkgname
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-
-  # Add extra components to the Flashback sessions
-  patch -Np1 -i "$srcdir/session-components.patch"
-}
-
 build() {
-  cd "$srcdir/$_gitname"
-
-  # Disable Werror
-  export CFLAGS="-Wno-error"
-
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/"$_gitname"
+  cd $_pkgname
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$_pkgname \
+               --disable-schemas-compile --disable-Werror
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
-
