@@ -1,0 +1,16 @@
+pkgbase = acc-git
+	pkgdesc = Action Code Script (ACS) compiler from ZDoom
+	pkgver = 1.54.r131.gafbec00
+	pkgrel = 1
+	url = https://github.com/rheit/acc
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = acc
+	conflicts = acc
+	source = acc::git+https://github.com/rheit/acc
+	md5sums = SKIP
+
+pkgname = acc-git
+
