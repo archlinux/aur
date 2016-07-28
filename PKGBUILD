@@ -4,7 +4,7 @@
 
 pkgname=waf
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
 arch=('any')
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/doc/$pkgname" building-waf.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" building-waf.md
 
   cd "$pkgname-$pkgver"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
