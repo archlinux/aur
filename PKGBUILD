@@ -9,8 +9,8 @@ pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib'
-         'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
+depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib' 'sqlite'
+         'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
 makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell' 'gcc5')
 optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
