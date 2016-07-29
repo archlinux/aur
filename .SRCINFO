@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-gtk
 	pkgdesc = A backend implementation for xdg-desktop-portal that is using GTK+ and various pieces of GNOME infrastructure.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = http://flatpak.org
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = xdg-desktop-portal-gtk
 	license = LGPL2
 	depends = xdg-desktop-portal
 	depends = gtk3
-	source = https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/0.1/xdg-desktop-portal-gtk-0.1.tar.xz
-	md5sums = c6659f5dac1750e22271af6f210d7ae1
+	source = https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/0.2/xdg-desktop-portal-gtk-0.2.tar.xz
+	sha256sums = 88dc63058426f4299dcf82d8dec36738c09e1852298d53eb09320fda9fd65006
 
 pkgname = xdg-desktop-portal-gtk
 
