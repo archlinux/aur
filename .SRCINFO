@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-vlanmon-dkms-git
 	pkgdesc = Accel-ppp vlan_mon kernel module sources
-	pkgver = r1350.d682a0a
-	pkgrel = 2
+	pkgver = r1376.810d234
+	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = accel-ppp-vlanmon-dkms-git
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = cad83c31b06eaf122d1ce4bc495f0fe6
+	md5sums = ecb9e73f9243d773949cab8f2de36fc9
 
 pkgname = accel-ppp-vlanmon-dkms-git
 
