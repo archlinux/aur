@@ -11,7 +11,7 @@ _pkgname='imagemagick'
 pkgbase="${_pkgname}-git"
 _srcdir="${pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-doc")
-pkgver=7.0.0.0.r10657.g6da00b2
+pkgver=7.0.2.6.r11121.gdf24175
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('i686' 'x86_64')
@@ -134,6 +134,6 @@ package_imagemagick-git-doc() {
   #! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
   ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
   #! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  #! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
 }
 set +u
