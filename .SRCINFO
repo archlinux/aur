@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-ipoe-dkms-git
 	pkgdesc = Accel-ppp ipoe kernel module sources
-	pkgver = r1350.d682a0a
-	pkgrel = 2
+	pkgver = r1376.810d234
+	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = accel-ppp-ipoe-dkms-git
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = 62ed71ee1ee1c812d3cda24b72392dcd
+	md5sums = f363b0f073f88de2a537dd1de0faab8b
 
 pkgname = accel-ppp-ipoe-dkms-git
 
