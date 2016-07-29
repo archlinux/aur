@@ -8,8 +8,8 @@ url="http://www.heart-machine.com/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('gtk2')
-depends_x86_64=('lib32-glib2')
-depends_i686=('glib2')
+depends_x86_64=('lib32-glu' 'lib32-libcurl-compat' 'alsa-lib' 'lib32-gtk2' 'lib32-openal')
+depends_i686=('glu' 'libcurl-compat' 'lib32-alsa-lib' 'gtk2' 'openal')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
 sha256sums=('6f7b7d70ae5fe28c9e45f9f0e6e8d084477bc6803eae7db323b21a7ae50f8636'
@@ -23,8 +23,6 @@ PKGEXT='.pkg.tar'
 
 prepare(){
     cd "$srcdir/data/noarch"
-    [ $CARCH == "x86" ]    && rm -r "game/HyperLightDrifter.x86_64"
-    [ $CARCH == "x86_64" ] && rm -r "game/HyperLightDrifter.x86"
     # The launcher expects the user to be in the game dir
     echo -e "#!/bin/sh\ncd /opt/${pkgname}\n./start.sh" > "${srcdir}/${pkgname}"
 }
