@@ -9,6 +9,8 @@ arch=('any')
 pkgrel=1
 license=('BSD')
 
+depends=(urdfdom)
+
 ros_makedepends=(ros-jade-catkin ros-jade-roscpp)
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
