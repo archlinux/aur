@@ -6,7 +6,7 @@
 pkgbase=mesa-nosystemd
 pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
 pkgver=12.0.1
-pkgrel=2
+pkgrel=5
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
@@ -17,13 +17,15 @@ source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig
         LICENSE
         remove-libpthread-stubs.patch
         0001-st-mesa-fix-reference-counting-bug-in-st_vdpau.patch
-        0002-vl-dri3-fix-a-memory-leak-from-front-buffer.patch)
+        0002-vl-dri3-fix-a-memory-leak-from-front-buffer.patch
+        0001-Mesa-dev-st_glsl_to_tgsi-overlord-fix.patch)
 sha256sums=('bab24fb79f78c876073527f515ed871fc9c81d816f66c8a0b051d8d653896389'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
             'd82c329e89754266eb1538df29b94d33692a66e3b6882b2cee78f4d5aab4a39c'
             'ccc8ea7f4e38f2dc26fd29150929e943aac5bc9b56bd3eddec882c6ccd1d64a5'
-            'f6c17257e96182ce51b85ef75cef4f6c205b00dfbf8fc1089cd77c4a3eda6981')
+            'f6c17257e96182ce51b85ef75cef4f6c205b00dfbf8fc1089cd77c4a3eda6981'
+            'c1b650d2b3512d5f8f463f1974a28ed6b88e7e1936c5cfe1034ab97696d1de14')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 
 prepare() {
@@ -35,6 +37,8 @@ prepare() {
   # fix memory leaks - merged upstream
   patch -Np1 -i ../0001-st-mesa-fix-reference-counting-bug-in-st_vdpau.patch
   patch -Np1 -i ../0002-vl-dri3-fix-a-memory-leak-from-front-buffer.patch
+  # fix rendering in overlord series games
+  patch -Np1 -i ../0001-Mesa-dev-st_glsl_to_tgsi-overlord-fix.patch
 
   autoreconf -fiv
 }
@@ -146,12 +150,9 @@ package_mesa-nosystemd() {
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-nosystemd: for accelerated video playback'
               'libva-mesa-driver-nosystemd: for accelerated video playback')
-  provides=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
-  conflicts=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-             'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
-  replaces=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
-            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+  provides=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+  conflicts=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+  replaces=('ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
 
   install -m755 -d ${pkgdir}/etc
   cp -rv ${srcdir}/fakeinstall/etc/drirc ${pkgdir}/etc
@@ -186,8 +187,8 @@ package_mesa-nosystemd() {
 package_mesa-libgl-nosystemd() {
   pkgdesc="Mesa 3-D graphics library"
   depends=('mesa-nosystemd')
-  provides=('libgl' 'mesa-libgl')
-  conflicts=('mesa-libgl')
+  provides=('libgl' 'libgles' 'libegl' 'mesa-libgl')
+  conflicts=('libgl' 'libgles' 'libegl' 'mesa-libgl')
   replaces=('libgl' 'mesa-libgl')
  
   # See FS#26284
