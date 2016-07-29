@@ -1,0 +1,15 @@
+pkgbase = bdf-ctrld-git
+    pkgdesc = A fixed-width bitmap font forked from Dina and Proggy Tiny
+    pkgver = r30.50e77e2
+    pkgrel = 1
+    url = https://github.com/bjin/ctrld-font
+    install = bdf-ctrld-git.install
+    arch = any
+    makedepends = git
+    depends = xorg-font-utils
+    provides = bdf-ctrld-git
+    conflicts = bdf-ctrld-git
+    source = bdf-ctrld::git+https://github.com/bjin/ctrld-font
+    md5sums = SKIP
+
+pkgname = bdf-ctrld-git
