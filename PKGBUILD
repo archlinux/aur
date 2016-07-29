@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gnome-mpv
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool')
 optdepends=('youtube-dl: Video integration to YouTube and other video sites.')
 conflicts=('gnome-mpv-git')
 source=("https://github.com/gnome-mpv/gnome-mpv/releases/download/v${pkgver}/gnome-mpv-${pkgver}.tar.xz")
-sha256sums=('c0363c2ea997562388a928bf8d1cd6a5bc3bfc3bd4576ad1ee6fcee10cedef1a')
+sha256sums=('92d967bbbbfabdfa3ab1f19be625f684959513890b2035ca6102292392fbf183')
 
 build() {
     cd "${pkgname}-${pkgver}"
