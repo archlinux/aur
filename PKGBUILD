@@ -11,7 +11,7 @@ _language_gfm2_ver=0.92.1
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.10.0.dev.m0.92.1.r1.3a4e251
+pkgver=1.10.0.dev.m0.92.1.r1.e249b26
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
 arch=('x86_64' 'i686')
@@ -96,4 +96,7 @@ package() {
   install -Dm644 "$srcdir/${_pkgname}-${_version}.desktop" "$pkgdir/usr/share/applications/${_pkgname}-${_version}.desktop"
   install -Dm644 "resources/app-icons/dev/png/1024.png" "$pkgdir/usr/share/pixmaps/${_pkgname}-${_version}.png"
 	install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  find "${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules" \
+    -name "package.json" -exec sed -i -e "s|$srcdir/atom|/usr/share/${_pkgname}-${_version}/resources/app|g" '{}' +
 }
