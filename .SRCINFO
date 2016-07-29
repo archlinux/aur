@@ -8,7 +8,6 @@ pkgbase = accel-ppp-vlanmon-dkms-git
 	license = GPL
 	depends = dkms
 	depends = lua51
-	conflicts = accel-ppp-ipoe-dkms
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
 	source = dkms.conf
 	md5sums = SKIP
