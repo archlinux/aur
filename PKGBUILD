@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
-pkgver=20160725.527a251
+pkgver=20160728.84d55c1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -35,9 +35,11 @@ makedepends=(
 )
 source=(
   "$_gitname::git://github.com/xbmc/xbmc.git"
+  '10160.patch'
 )
 sha256sums=(
   'SKIP'
+  '947119637577abb77fdac6173fea05b0a4524928d344e3b3f0ed328e51b3e596'
 )
 
 _prefix='/usr'
@@ -49,6 +51,8 @@ pkgver() {
 
 prepare() {
   cd ${_gitname}
+
+  patch -p1 -i "$srcdir/10160.patch"
 
   find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
