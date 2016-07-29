@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.40
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ package(){
 
     # Create links where needed
     ln -s /opt/SEGGER/SystemView/Doc/License_SystemView.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s /opt/SEGGER/SystemView/SystemViewer "${pkgdir}/usr/bin"
+    ln -s /opt/SEGGER/SystemView/SystemView "${pkgdir}/usr/bin"
 
     for f in Doc/*; do
         ln -s /opt/SEGGER/SystemView/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
