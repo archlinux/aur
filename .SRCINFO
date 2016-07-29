@@ -1,0 +1,17 @@
+pkgbase = perl-net-stomp-client
+	pkgdesc = Object oriented client interface to interact with servers supporting STOMP
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-STOMP-Client/
+	arch = any
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-no-worries
+	depends = perl-params-validate
+	optdepends = perl-io-socket-ssl: allows using STOMP over SSL
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LC/LCONS/Net-STOMP-Client-2.2.tar.gz
+	md5sums = 2fffb1ea33b997d0127ea989e6e1e9c4
+
+pkgname = perl-net-stomp-client
+
