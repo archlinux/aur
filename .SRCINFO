@@ -1,0 +1,21 @@
+pkgbase = edk2-linux-toolchain
+	pkgdesc = minimal EDKII including the makeefi tool for easily building UEFI apps and drivers
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/M1cha/edk2-linux-toolchain
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	provides = makeefi
+	conflicts = makeefi
+	options = !strip
+	source = edk2-linux-toolchain::git+https://github.com/M1cha/edk2-linux-toolchain#branch=master
+	source = edk2::git+https://github.com/M1cha/edk2#branch=edk2-linux-toolchain
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = edk2-linux-toolchain
+
