@@ -1,18 +1,69 @@
 pkgbase = mpss
+	pkgdesc = Intel® Manycore Platform Software Stack
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss
 	arch = x86_64
-	license = GPL2
+	license = LGPL2.1
+	makedepends = asciidoc
 	depends = dkms
+	depends = python
 	source = dkms.conf
 	source = blacklist-mic-host.conf
+	source = micmgmt.setup.py
 	sha256sums = a76162c169073060ee3a966e95342f29b3e342c956d29169c10a6dd97e342fa5
 	sha256sums = 42dda3527ed2496b851c0fad6a841f660a0c086ecf742bb4f132308b9e38d913
+	sha256sums = 191d6fd54157ad5a9465947c73b4332a83fc4411be5d9738d0594a2b7ddb7273
 	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-modules.git#branch=ModuleAndKernelUpdates
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-gen-symver-map.git
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-libscif.git
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-daemon.git
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-micmgmt.git
+	source_x86_64 = git+https://github.com/marcelhuberfoo/mpss-metadata.git
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
 pkgname = mpss-modules-dkms
-	pkgdesc = Intel® Manycore Platform Software Stack; mic Kernel module
+	pkgdesc = mic Kernel module of Intel® Manycore Platform Software Stack
 	install = mpss-modules-dkms.install
+	groups = mpss
+	depends = dkms
+
+pkgname = mpss-gen-symver-map
+	pkgdesc = gen-symver-map utility of Intel® Manycore Platform Software Stack
+	groups = mpss
+	depends = python
+
+pkgname = mpss-libscif
+	pkgdesc = libscif library of Intel® Manycore Platform Software Stack
+	groups = mpss
+	depends = mpss-modules-dkms
+	depends = mpss-gen-symver-map
+
+pkgname = mpss-micmgmt-miclib
+	pkgdesc = micmgmt library of Intel® Manycore Platform Software Stack
+	groups = mpss
+	depends = mpss-libscif
+
+pkgname = mpss-micmgmt-tools
+	pkgdesc = micmgmt tools of Intel® Manycore Platform Software Stack
+	groups = mpss
+	depends = mpss-micmgmt-miclib
+
+pkgname = mpss-micmgmt-python
+	pkgdesc = miclib python wrapper of Intel® Manycore Platform Software Stack
+	arch = any
+	groups = mpss
+	depends = mpss-micmgmt-miclib
+	depends = python
+
+pkgname = mpss-daemon
+	pkgdesc = mpssd and micctrl of Intel® Manycore Platform Software Stack
+	groups = mpss
+	depends = mpss-libscif
+	depends = mpss-gen-symver-map
 
