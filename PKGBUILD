@@ -20,7 +20,6 @@ pkgver() {
 package() {
     cd "$srcdir/${_pkgname%-git}"
     install -dm755 "$pkgdir/usr/src"
-    install -dm755 "$pkgdir/usr/lib/modules-load.d"
     cd drivers
     cp -r vlan_mon "$pkgdir/usr/src/accel-ppp-vlanmon-$pkgver"
     # Copy dkms.conf
