@@ -1,7 +1,7 @@
 pkgbase = purple-events
 	pkgdesc = libpurple events handling plugin and library
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.99.1
+	pkgrel = 1
 	url = https://github.com/sardemff7/purple-events
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = purple-events
 	makedepends = perl-xml-parser
 	makedepends = intltool
 	depends = glib2
-	depends = libpurple>=2.6.0
-	options = !libtool
-	source = https://github.com/downloads/sardemff7/purple-events/purple-events-0.2.tar.xz
-	md5sums = 5cabec53fc7cedeefb59c44f00b08d40
+	depends = libpurple
+	source = http://download.tuxfamily.org/purpleevents/purple-events/purple-events-0.99.1.tar.xz
+	md5sums = c0471d39c013d39becd00f29e4732f24
 
 pkgname = purple-events
 

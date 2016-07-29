@@ -1,29 +1,24 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: atomicbeef <teddyg522@gmail.com>
+# Contributor: Justin Dray <justin@dray.be>
 # Contributor:  Elder Marco <eldermarco at gmail dot com>
 
 pkgname=purple-events
-pkgver=0.2
-pkgrel=3
+pkgver=0.99.1
+pkgrel=1
 pkgdesc="libpurple events handling plugin and library"
 license=('GPL3')
 url="https://github.com/sardemff7/purple-events"
-source=("https://github.com/downloads/sardemff7/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("http://download.tuxfamily.org/purpleevents/purple-events/purple-events-0.99.1.tar.xz")
 makedepends=('perl-xml-parser' 'intltool')
-options=(!libtool)
-depends=('glib2' 'libpurple>=2.6.0')
+depends=('glib2' 'libpurple')
 arch=('i686' 'x86_64')
-md5sums=('5cabec53fc7cedeefb59c44f00b08d40')
+md5sums=('c0471d39c013d39becd00f29e4732f24')
 
 build () {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	./configure --prefix=/usr
 	make
-}
-
-check () {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make check
 }
 
 package () {
