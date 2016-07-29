@@ -1,0 +1,17 @@
+pkgbase = perl-no-worries
+	pkgdesc = Functions to perform frequently used programming tasks
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/No-Worries/
+	arch = any
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-http-date
+	depends = perl-params-validate
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LC/LCONS/No-Worries-1.2.tar.gz
+	md5sums = 4a1d275a61f65c43eb5f47502a5e923b
+
+pkgname = perl-no-worries
+
