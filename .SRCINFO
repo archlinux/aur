@@ -1,6 +1,6 @@
 pkgbase = gtk-youtube-viewer
 	pkgdesc = A Gtk2 application for searching and streaming videos from YouTube.
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = gtk-youtube-viewer
 	optdepends = vlc: for playing videos with VLC
 	optdepends = smplayer: for playing videos with SMPlayer
 	optdepends = mpv: for playing videos with MPV (recommended)
+	optdepends = gnome-icon-theme: for icons in menus
 	provides = youtube-viewer
 	conflicts = youtube-viewer
 	source = git://github.com/trizen/youtube-viewer.git
