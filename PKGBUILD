@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 271484 2016-07-12 06:00:49Z tpowa $
+# $Id: PKGBUILD 272545 2016-07-28 08:27:39Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.4
+pkgver=4.6.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,18 +20,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch')
+        'change-default-console-loglevel.patch')
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
             '88a62ee2670e292c8a36d266c440b08a2d3bba744908ca27f4f52d999486d255'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,10 +50,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix rtlwifi atomic
-  # https://bugs.archlinux.org/task/49401
-  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
