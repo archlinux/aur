@@ -1,0 +1,10 @@
+diff -aur package.pristine/install.ml package.new/install.ml
+--- package.pristine/install.ml	2016-07-29 13:58:45.960287314 +0200
++++ package.new/install.ml	2016-07-29 13:58:55.756885106 +0200
+@@ -7,5 +7,5 @@
+   [ oasis_lib "ppx_custom_printf"
+   ; oasis_lib "ppx_format_lifter"
+   ; file "META" ~section:"lib"
+-  ; oasis_exe "ppx" ~dest:"../lib/ppx_custom_printf/ppx"
++  ; oasis_exe "ppx" ~dest:"../lib/ocaml/ppx_custom_printf/ppx"
+   ]
