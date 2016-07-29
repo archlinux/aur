@@ -7,7 +7,7 @@ _version=git
 # Module Versions
 _about_url="https://github.com/fusion809/about"
 _about_arch_ver=1.6.2
-_language_gfm2_ver=0.92.1
+_language_gfm2_ver=0.92.2
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
