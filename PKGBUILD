@@ -2,7 +2,7 @@
 
 pkgname=pokemon-go-map-dev-git
 _gitname=PokemonGo-Map
-pkgver=r579.2e6c870
+pkgver=1
 pkgrel=1
 pkgdesc='Live visualization of all the pokemon in your area... and more! (dev branch)'
 arch=('any')
@@ -19,14 +19,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/$_gitname/"
-  npm install
+  #npm install
 }
 
 package() {  
-  mkdir -p "${pkgdir}/opt/${pkgname}"
+  mkdir -p "${pkgdir}/opt"
   cp -a "${srcdir}/$_gitname/" "${pkgdir}/opt/${pkgname}"
-
-  # workaround for issue #1348
-  mkdir -p "${pkgdir}/opt/${pkgname}/config"
-  chmod -R 777 "${pkgdir}/opt/${pkgname}/config"
+  rm -rf "${pkgdir}/opt/${pkgname}/.git"
+  rm -rf "${pkgdir}/opt/${pkgname}/.github"
 }
