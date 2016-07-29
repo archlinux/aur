@@ -9,6 +9,7 @@ url='http://www.oyranos.org/kolormanager'
 license=('BSD')
 depends=('synnefo-git'
          'kconfigwidgets'
+         'kdesignerplugin'
          )
 makedepends=('extra-cmake-modules'
              'git'
