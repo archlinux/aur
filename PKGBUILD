@@ -1,21 +1,20 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname="wxbase"
-pkgver=3.0.2
-pkgrel=3
-pkgdesc="wxWidgets base libraries for no X install (3.0 branch stable version)" 
+pkgver=3.1.0
+pkgrel=4
+pkgdesc="wxWidgets base libraries for no X install (3.x branch stable version)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
 license=('custom:wxWindows')
 makedepends=('git')
-provides=('wxbase=3.0.2')
+provides=('wxbase=3.1.0')
 conflicts=('wxgtk' 'wxwidgets' 'wxbase')
-source=("git+git://github.com/wxWidgets/wxWidgets.git")
+source=("git+git://github.com/wxWidgets/wxWidgets.git#tag=v3.1.0")
 md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/wxWidgets"
-  git checkout tags/WX_3_0_2
   ./configure \
  	  --prefix=/usr \
 	  --libdir=/usr/lib \
