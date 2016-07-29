@@ -1,5 +1,5 @@
 pkgbase = imagemagick-fftw
-	pkgver = 6.9.5.2
+	pkgver = 6.9.5.3
 	pkgrel = 1
 	url = http://www.imagemagick.org/
 	arch = i686
@@ -23,12 +23,14 @@ pkgbase = imagemagick-fftw
 	makedepends = subversion
 	makedepends = glu
 	makedepends = fftw
-	source = http://www.imagemagick.org/download/ImageMagick-6.9.5-2.tar.xz
-	source = http://www.imagemagick.org/download/ImageMagick-6.9.5-2.tar.xz.asc
+	source = http://www.imagemagick.org/download/ImageMagick-6.9.5-3.tar.xz
+	source = http://www.imagemagick.org/download/ImageMagick-6.9.5-3.tar.xz.asc
 	source = perlmagick.rpath.patch
-	sha1sums = 6926ab0b42a7c3e0359c7809cfaab475cde46319
+	source = CVE-2016-6491.patch::http://git.imagemagick.org/repos/ImageMagick/commit/5cb6c1ac.diff
+	sha1sums = 38e70c0e0e3d8d419a0f05dd10d75fc5cf0c00b2
 	sha1sums = SKIP
 	sha1sums = e143cf9d530fabf3b58023899b5cc544ba93daec
+	sha1sums = 4d7800b26bea97cf1c018405f20c5ea11ef678d4
 
 pkgname = imagemagick-fftw
 	pkgdesc = An image viewing/manipulation program
@@ -50,7 +52,7 @@ pkgname = imagemagick-fftw
 	optdepends = libxml2: for XML support
 	optdepends = libpng: for PNG support
 	optdepends = libwebp: for WEBP support
-	provides = imagemagick=6.9.5.2
+	provides = imagemagick=6.9.5.3
 	conflicts = imagemagick
 	options = !docs
 	options = libtool
