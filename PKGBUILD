@@ -1,8 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=0.10rc2
-_pypkgver=0.10.0rc2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
@@ -73,7 +72,7 @@ package() {
     make DESTDIR="$pkgdir/" install
 
     pip install --root="$pkgdir/" --ignore-installed \
-        "$_builddir/Wrapping/Python/dist/$_pkgname-$_pypkgver"*"-linux_$CARCH.whl"
+        "$_builddir/Wrapping/Python/dist/$_pkgname-$pkgver"*"-linux_$CARCH.whl"
 
     install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
     install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
