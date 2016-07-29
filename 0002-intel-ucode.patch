@@ -1,0 +1,54 @@
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 5a78513..39bd854 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -136,10 +136,12 @@ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+-    sed "s/^/$submenu_indentation/" << EOF
+-	echo	'$(echo "$message" | grub_quote)'
+-	initrd	${rel_dirname}/${initrd}
+-EOF
++    printf '	%s\n' "echo	'$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
++    printf '	%s ' 'initrd' | sed "s/^/$submenu_indentation/"
++    for i in ${initrd}; do
++	printf ' %s/%s' "${rel_dirname}" "${i}"
++    done
++    printf '\n'
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
+ }
+@@ -189,6 +191,11 @@ while [ "x$list" != "x" ] ; do
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
+   initrd=
++  for i in intel-ucode.img; do
++    if test -e "${dirname}/${i}" ; then
++      initrd+=" ${i}"
++    fi
++  done
+   for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+ 	   "initrd-${version}" "initramfs-${version}.img" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+@@ -198,7 +205,7 @@ while [ "x$list" != "x" ] ; do
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
+     if test -e "${dirname}/${i}" ; then
+-      initrd="$i"
++      initrd+=" $i"
+       break
+     fi
+   done
+@@ -217,7 +224,7 @@ while [ "x$list" != "x" ] ; do
+   fi
+ 
+   if test -n "${initrd}" ; then
+-    gettext_printf "Found initrd image: %s\n" "${dirname}/${initrd}" >&2
++    gettext_printf "Found initrd image(s) in %s:%s\n" "${dirname}" "${initrd}" >&2
+   elif test -z "${initramfs}" ; then
+     # "UUID=" and "ZFS=" magic is parsed by initrd or initramfs.  Since there's
+     # no initrd or builtin initramfs, it can't work here.
+-- 
+2.7.1
+
