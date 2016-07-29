@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-07-25-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-07-28-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -24,16 +24,16 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch"
 )
-sha256sums=('da5eaed93b55208b1d193d7c13e42dd129b0ae5b830dafeaf78fd3da6295fc30'
-            'cd13998a5d409aaf180d3c24dc450033861e1291c91f7b8fc813514bd389c3f1'
-            'e8ae6d124a55432c3d92d0ecb88437144a47cfae5c4ab9c0d675d4d1d74b895f'
-            'c493a54382f07f1c4b7add54509eabaa1ca122391d30250fb6ca54bb7a2a1a04'
-            'ef165398b5855867172b540aa0846acae3387ddf52ed432bda673ad88c222eff'
-            '9125f0487cb7f704d710144080f8de0ce075e92559264eb9fa4f804606398401'
-            '5e9122510f9777130824c621546018530d6173312deaa67ba095412e199541ee'
-            '91288d41c582c424431368c66f2aea5de9d782c7eada1039eb74c39ef1468e25'
-            '4ecb7b831cae598c8a88c74c1bc760dec2ced02bf4f8f1124006d31dbb45b731'
-            'a3c678f517b8fb6610624f75ba700ef0adfde2e25bd3cd5cdefd03419ac9a266'
+sha256sums=('f1ee703c07cd72b54207fbabb507993cdd60ab03a3236c1dcd07a023da16e454'
+            'fbd343f0176b00083973733b8fff53f4602c964c363665e8764e5d6f02940a4e'
+            '3180ab7f23941b8125d987c13f4d522e0eaeaafc477d5075ca33f6ad77014d2f'
+            'd060d03546cc29fb5ed1a9b7ab5ce5562138d5d0b3b761d10aae778057c180c5'
+            '891db5182b756850cd59d5d389f8a2224743c57aa919fe9a63a97900286be74e'
+            '4b2015335b08b002805a2522a837162ea98636fa240751636720de0bf76a70f3'
+            '4bfded301585591f035808d150c3744200962f4a3c942db65b1f09a4afeb4066'
+            '1bf8db6445cc822b2727ca03c659dd4f878fe6be11c8ed64dbcdb59ed96dfc1c'
+            '40b5baebc8df8f05770a59835b6f76a96025fa2b8b358751ab8ed94887bb9f7e'
+            'ced70166f22b4dad324504de1abeb93490de99fc370edacd3ec96cd5437be306'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
@@ -69,6 +69,7 @@ build() {
 
     export SWIFT_SOURCE_ROOT="$srcdir"
     export LDFLAGS='-ldl -lpthread'
+    export PATH="$PATH:/usr/bin/core_perl"
     utils/build-script -R \
         --lldb --llbuild --swiftpm --xctest --foundation \
         -j "$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
