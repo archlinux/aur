@@ -2,8 +2,8 @@
 
 pkgname="qt5-python27-git"
 _qtver=5.7.0
-pkgver=3.1
-pkgrel=2
+pkgver=3.1+96.gbe06218.dirty
+pkgrel=1
 arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
 license=("LGPL")
