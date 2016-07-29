@@ -1,5 +1,6 @@
 # Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 # Contributor:  jyantis <yantis@yantis.net>
+# Contributor: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
 
 _pkgname=powerlevel9k
 pkgname=zsh-theme-${_pkgname}-git
