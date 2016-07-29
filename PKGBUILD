@@ -6,7 +6,7 @@ pkgver=6.0.0.beta.2.r107.g742e0b0
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations'
 arch=('i686' 'x86_64')
-url="http://www.scilab.org/"
+url="https://www.scilab.org/"
 license=('custom:CeCILL' 'BSD')
 makedepends=('apache-ant' 'git' 'ocaml' 'java-environment>=8' 'gcc-fortran')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
