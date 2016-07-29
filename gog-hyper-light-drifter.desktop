@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hyper Light Drifter
+Comment=Explore a beautiful, vast and ruined world riddled with unknown dangers and lost technologies.
+Exec=gog-hyper-light-drifter
+Icon=gog-hyper-light-drifter
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
