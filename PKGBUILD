@@ -19,12 +19,14 @@ pkgver() {
 
 build() {
   cd "${srcdir}/$_gitname/"
-  #npm install
+  npm install
+  npm run-script build
 }
 
 package() {  
   mkdir -p "${pkgdir}/opt"
   cp -a "${srcdir}/$_gitname/" "${pkgdir}/opt/${pkgname}"
   rm -rf "${pkgdir}/opt/${pkgname}/.git"
+  rm -rf "${pkgdir}/opt/${pkgname}/node_modules"
   rm -rf "${pkgdir}/opt/${pkgname}/.github"
 }
