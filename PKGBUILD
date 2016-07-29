@@ -1,12 +1,12 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=glc-lib
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenGL Library Class"
 arch=('i686' 'x86_64')
 url="http://www.glc-lib.net/"
 license=('LGPL')
-depends=('libglapi' 'qt4')
+depends=('libgl' 'qt4')
 source=("git://github.com/laumaya/GLC_lib.git#tag=Version_2_5_0"
         "glu.patch"
         "zlib.patch")
