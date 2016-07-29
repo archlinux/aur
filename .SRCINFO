@@ -1,0 +1,17 @@
+pkgbase = perl-messaging-message
+	pkgdesc = Set of Perl modules useful to deal with messages
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Messaging-Message/
+	arch = any
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-no-worries
+	depends = perl-params-validate
+	depends = perl-json
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LC/LCONS/Messaging-Message-1.5.tar.gz
+	md5sums = 575616dc84421e6ffc7ae8ecc8e28d1d
+
+pkgname = perl-messaging-message
+
