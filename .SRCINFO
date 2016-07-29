@@ -1,0 +1,18 @@
+pkgbase = vndc-git
+	pkgdesc = vndc - VNDC is Not a Direct Clone (of VNDS ;P)
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/chaoskagami/vndc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl2_mixer
+	depends = sdl2_image
+	depends = sdl2_ttf
+	provides = vndc
+	conflicts = vndc
+	source = git+https://github.com/chaoskagami/vndc.git
+	md5sums = SKIP
+
+pkgname = vndc-git
+
