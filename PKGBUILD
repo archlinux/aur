@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ivy-git
-pkgver=r270.e607dc6
+pkgver=r279.8c30a21
 pkgrel=1
 epoch=
 pkgdesc="An APL-like calculator."
@@ -39,8 +39,8 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm755 bin/ivy "$pkgdir/usr/bin/ivy"
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
   sed '7,285!d' $srcdir/src/${_gourl}/doc.go > README
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
