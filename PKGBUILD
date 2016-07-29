@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
 license=('GPL')
 depends=('dkms' 'lua51')
-conflicts=('accel-ppp-ipoe-dkms-git' 'accel-ppp-vlanmon-dkms-git')
 source=(http://sourceforge.net/projects/$_pkgname/files/$_pkgname-$pkgver.tar.bz2
         dkms.conf)
 
