@@ -15,7 +15,6 @@ source=(http://sourceforge.net/projects/$_pkgname/files/$_pkgname-$pkgver.tar.bz
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
     install -dm755 "$pkgdir/usr/src"
-    install -dm755 "$pkgdir/usr/lib/modules-load.d"
     cd drivers
     cp -r vlan_mon "$pkgdir/usr/src/accel-ppp-vlanmon-$pkgver"
     # Copy dkms.conf
