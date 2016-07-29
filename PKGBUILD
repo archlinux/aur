@@ -52,10 +52,10 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.6
-_pkgver=4.6.4
-_rtpatchver=rt8
+_pkgver=4.6.5
+_rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -81,7 +81,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
         
 prepare() {
@@ -93,12 +92,7 @@ prepare() {
     
     ### Add rt patch
         msg "Add rt patch"
-        patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch" 
-        
-   ### fix rtlwifi atomic
-     # https://bugs.archlinux.org/task/49401
-       msg "0001-linux-4.6-rtlwifi-fix-atomic.patch"
-       patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"    
+        patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch"   
         
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -465,9 +459,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
             'SKIP'
-            '8288af19d5e81e891049a6450224ce0707dc729dadab4802af93ce57e2fb6d400b64dde601ece482ec4db72176837eaa52bbca7ebd7e53191253ff05a7d4fe91'
+            '09b7d4d3e0086cf3b36935ee31e72fe13bc85fdb6a407d8a952bf24e24f846af10d7f8634afa412caf00cbf3f3a03aaed51010e4234e275642ae140a318cc8e2'
             'SKIP'
-            'b0b460f1e6176704dcaa56f948a71d8a3af320b72e4d0e55302d34ffe9af81cb8a73797b30e7a0b87f506076dbbc781ab24fcda66e4e3f494c82df3434dd4879'
+            '0ecf1b4888063018eacc92074a252c057a1b7ca4fb68efdb3737ef7e20b8f2eada4de98f98ad9a4001c3b041b7c3cc513d801ef4fb50ba2e7bb55f7b29b5d93c'
             'SKIP'
             '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
             '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
@@ -478,7 +472,6 @@ sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             'e24ffa4aaf145239bc0035e1853598cfd6b231c1a10373b840220a1799402f30cb39ecf71d56b4a76ddc9d953710dbe297e85f2686bba52da8d5d63816c10e0e'
             '2b461dc737582ddd77f7c9b15ff567d0d26d4d7f30e9511bfff5f884a57861b4d75e56ddb6cb37175fb7ef5f2a9cf333fb91bc696d0feb1ba011653194080457'
-            'dba709890b8f2f0d70e761ea27488801442647d6753bfd69364a7b343a74e78aff1d69209926460d23237c1d23806f720dd02b069cea68e5f3e12e4fbb2721fb'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
             
 validpgpkeys=(
