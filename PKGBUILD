@@ -1,18 +1,20 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=opentracker
-pkgver=20160718
+pkgver=2015.12.11
 pkgrel=1
 pkgdesc="A free and open torrent tracker"
 arch=('x86_64' 'i686' 'armv7h' 'armv7l' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
 license=('GPL')
 depends=('git' 'cvs')
+makedepends=('git' 'cvs')
+source=('git://erdgeist.org/opentracker')
 provides=(opentracker)
-conflicts=(opentracker)
+md5sums=('SKIP')
 
 pkgver() {
-#  cd "$srcdir/opentracker"
+  cd "$srcdir/opentracker"
   git log -n 1 --pretty=format:"%cd" --date=short | sed "s/-/./g"
 }
 
@@ -21,7 +23,6 @@ build() {
 	cd libowfat
 	make
 	cd ..
-	git clone git://erdgeist.org/opentracker
 	cd opentracker
 	make
 
