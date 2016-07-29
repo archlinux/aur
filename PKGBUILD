@@ -1,24 +1,27 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_bench
-pkgver=113.24.00
+pkgver=113.33.03
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
 pkgdesc="Syntax extension for writing in-line benchmarks in ocaml code"
 url="https://github.com/janestreet/ppx_bench"
 depends=('ocaml' 'ocaml-ppx_core' 'ocaml-ppx_driver' 'ocaml-ppx_inline_test' 'ocaml-ppx_tools')
-makedepends=('ocaml-findlib' 'opam')
+makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch")
-options=('!strip')
-md5sums=('0261dc8c523961c952cbaa5128be1297'
-         '7f0a951f1ac87385272ea7a6dd58762a')
+        "libdir.patch"
+        "exedir.patch")
+options=('!strip' '!emptydirs')
+md5sums=('e6cf0f4fe55b2444bb14cbff1e9a69be'
+         '7f0a951f1ac87385272ea7a6dd58762a'
+         'd3549dc039a67011e9adba993f0fc877')
 
 prepare() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
 
   patch -Np1 < "${srcdir}/libdir.patch"
+  patch -Np1 < "${srcdir}/exedir.patch"
 }
 
 build() {
