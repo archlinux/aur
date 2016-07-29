@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.9.0.r807.gaa2cacd
+pkgver=0.9.0.r1540.g5c44302
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -22,7 +22,7 @@ source=("git+https://github.com/tensorflow/tensorflow"
         "fix_cuda_compilation.patch")
 md5sums=('SKIP'
          'SKIP'
-         '5b4f7478069709602cc978a322f0edf1')
+         'b3f77794887fdbc02e280dbe2142d4ab')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
