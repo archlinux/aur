@@ -11,20 +11,20 @@
 #
 
 pkgname=codelite
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind' 'libmariadbclient' 'lldb')
+depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind' 'libmariadbclient' 'clang' 'lldb')
 makedepends=('pkgconfig' 'cmake')
 optdepends=('graphviz: callgraph visualization')
 
 source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
 	http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
 
-md5sums=('e1ae35b6e6b63e774a75fe7d02892055'
+md5sums=('77f24e8c39160222ec23f7794a1fc64b'
          '093485fcae62073ca8d0ba6ff3a5cb69')
 
 #if [[ "$CARCH" == 'i686' ]]; then
@@ -50,9 +50,9 @@ build() {
 
     mkdir -p build
     cd build
-    # ArchLinux: CL 9.1.0 still needs to be built without LLDB because of error: Option 'aarch64-reserve-x18' registered more than once
-    #cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
-    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+    # ArchLinux: CL 9.1.0 needs to be built without LLDB (clang-3.7) because of error: Option 'aarch64-reserve-x18' registered more than once
+    #cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=0 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib ..
     make
 }
 
