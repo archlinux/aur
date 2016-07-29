@@ -1,0 +1,26 @@
+pkgbase = mate-netbook-1.15-gtk3
+	pkgdesc = Library with common API for various MATE modules
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = mate-common
+	depends = gtk3
+	depends = libfakekey
+	depends = libwnck3
+	depends = libunique3
+	depends = mate-panel-1.15-gtk3
+	provides = mate-netbook
+	provides = mate-netbook-gtk3
+	conflicts = mate-netbook
+	conflicts = mate-netbook-gtk3
+	source = http://pub.mate-desktop.org/releases/1.15/mate-netbook-1.15.1.tar.xz
+	sha1sums = 699de846c9e7f4fe435691e73ca27ecd55f192ec
+
+pkgname = mate-netbook-1.15-gtk3
+	pkgdesc = Library with common API for various MATE modules (GTK3 version)
+	groups = mate
+
