@@ -1,0 +1,16 @@
+pkgbase = purple-libnotify-plus
+	pkgdesc = Event dispatching for purple-events through libnotify
+	pkgver = 2.99.1
+	pkgrel = 1
+	url = https://github.com/sardemff7/purple-libnotify-plus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = purple-events
+	depends = libnotify
+	depends = libpurple
+	source = https://download.tuxfamily.org/purpleevents/purple-libnotify-plus/purple-libnotify-plus-2.99.1.tar.xz
+	md5sums = bbcd43045010abc3ff2bb01da7115551
+
+pkgname = purple-libnotify-plus
+
