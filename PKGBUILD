@@ -2,8 +2,8 @@
 # Contributor: scarecrow <gorillaki at gmail dot com>
 
 pkgname=scid_vs_pc
-pkgver=4.16
-pkgrel=4
+pkgver=4.16.1
+pkgrel=1
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
@@ -15,21 +15,18 @@ source=("scid_vs_pc-"$pkgver".tgz::http://sourceforge.net/projects/scidvspc/file
         scid
         $pkgname.desktop
         $pkgname.install
-        scidlet
-	configure.patch)
-md5sums=('8e9df3fbf69f77545eadd4ec0284290a'
+        scidlet)
+md5sums=('b1866fd387a3b66a7a7d6ebd4aa35c05'
          '48f02834420046d1ebd2de22f07ba87c'
          '1df155b3ff86a505dc51a29fa7bfc172'
          'c9ba274c986122ca4c1cd202431b64ce'
-         'e91cd976d8f183999a24b4d44ae34fe1'
-         '6a5e11cf4b21c6d0b698bea0b99e00bb')
+         'e91cd976d8f183999a24b4d44ae34fe1')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
 
     # Fix for tcl 8.6
     sed -i 's/8.5/8.6/g' ./configure
-    patch -p0  < $srcdir/configure.patch
     ./configure BINDIR=/usr/bin/ SHAREDIR=/usr/share/scid/ TCL_VERSION="8.6" OPTIMIZE="-O2 -funroll-loops"
 }
 
