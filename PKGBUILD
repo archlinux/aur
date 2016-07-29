@@ -70,11 +70,14 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/scilab/scilab"
+  cd "${srcdir}/${_pkgname}/${_pkgname}"
+
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "$srcdir/scilab/scilab/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 "$srcdir/scilab/scilab/COPYING-FR" "$pkgdir/usr/share/licenses/${pkgname}/COPYING-FR"
-  install -Dm644 "$srcdir/scilab/scilab/COPYING-BSD" "$pkgdir/usr/share/licenses/${pkgname}/COPYING-BSD"
+
+  install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/COPYING" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}/COPYING-BSD" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-BSD"
 }
 
 # vim:set ts=2 sw=2 et:
