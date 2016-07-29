@@ -1,18 +1,18 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-variantslib
-pkgver=113.24.00
+pkgver=113.33.03
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
 pkgdesc="OCaml variants as first class values"
 url="https://github.com/janestreet/variantslib"
-depends=('ocaml' 'camlp4' 'ocaml-type_conv')
-makedepends=('ocaml-findlib' 'opam')
+depends=('ocaml')
+makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
         "libdir.patch")
 options=('!strip')
-md5sums=('b2ddfa4c6064b0f41e4e0ca6318a0f54'
+md5sums=('f8e9d6362f6dd0ba92ee706e584d4790'
          '7f0a951f1ac87385272ea7a6dd58762a')
 
 prepare() {
