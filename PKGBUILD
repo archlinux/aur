@@ -11,7 +11,7 @@ url="https://github.com/haecker-felix/gradio"
 license=('GPL3')
 depends=('desktop-file-utils' 'gstreamer' 'json-glib' 'libgee' 
 'libsoup')
-conflicts=('gradio-git')
+conflicts=("gradio-git")
 noextract=("$pkgname_$pkgver*.deb")
 source_x86_64=("https://github.com/haecker-felix/gradio/releases/download/v4.0.0/${_pkgname}_${pkgver}.r105-0.ubuntu16.04.1_amd64.deb")
 source_i686=("https://github.com/haecker-felix/gradio/releases/download/v4.0.0/${_pkgname}_${pkgver}.r105-0.ubuntu16.04.1_i386.deb")
