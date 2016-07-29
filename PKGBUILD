@@ -1,24 +1,27 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_let
-pkgver=113.24.00
+pkgver=113.33.03
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
 pkgdesc="Monadic let-bindings"
 url="https://github.com/janestreet/ppx_let"
 depends=('ocaml' 'ocaml-ppx_core' 'ocaml-ppx_driver')
-makedepends=('ocaml-findlib' 'opam')
+makedepends=('ocaml-findlib' 'ocaml-js-build-tools' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
-        "libdir.patch")
-options=('!strip')
-md5sums=('15ae6163e390ba09c55158b96c00a67f'
-         '7f0a951f1ac87385272ea7a6dd58762a')
+        "libdir.patch"
+        "exedir.patch")
+options=('!strip' '!emptydirs')
+md5sums=('6906bf23335538f03936eca782436f21'
+         '7f0a951f1ac87385272ea7a6dd58762a'
+         '0e0b17e7c99b39f130cd27db3c52f995')
 
 prepare() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
 
   patch -Np1 < "${srcdir}/libdir.patch"
+  patch -Np1 < "${srcdir}/exedir.patch"
 }
 
 build() {
