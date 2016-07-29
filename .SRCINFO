@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.7.2
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = http://www.mcs.anl.gov/petsc/petsc-as
 	install = petsc.install
@@ -24,11 +24,11 @@ pkgbase = petsc
 	optdepends = mumps: support for the mumps sparse solver
 	optdepends = fftw: support for the fftw fast Fourier transform
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.7.2.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.7.3.tar.gz
 	source = test_optdepends.sh
-	md5sums = 50da49867ce7a49e7a0c1b37f4ec7b34
+	md5sums = 1273fab24faaf6de077ffa8fdfb6f7f4
 	md5sums = e60925d1f552303198106bf98eb2bfa5
-	sha256sums = 36681dd0df97e0d5cd182d902e89f527eb8f441f05271159dac5340acb4cf0ec
+	sha256sums = 35657f5b9b8b89c6c1e0a1f5b91b94ef65ec00f7942960dd6f7a4cc79742cd1b
 	sha256sums = adff0a432735f6cf4ec2edcb7345ba0d90963bef962b8d9742fa5e9735c0e455
 
 pkgname = petsc
