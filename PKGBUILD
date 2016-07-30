@@ -2,7 +2,7 @@
 
 _dver=212
 pkgname=firefox-extension-mozilla-archive-format
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Opens and saves all the Web sites in a single file. It supports MHTML (MHT) and archives MAF based on ZIP archive system."
 url='https://addons.mozilla.org/firefox/addon/mozilla-archive-format/'
@@ -11,7 +11,7 @@ makedepends=('unzip')
 license=('MPL2')
 arch=('any')
 source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
-sha256sums=('a4d4cbb5f092849cf6fbc8e8187a6bc1ad6b7b6c4923199c916ddd4948ba7e66')
+sha256sums=('123224d86d0630e3facc8ab6ae60d513a48f7288cae47a489753fabf944c057e')
 noextract=(addon-${_dver}-latest.xpi)
 
 pkgver() {
