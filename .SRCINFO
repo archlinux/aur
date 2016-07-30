@@ -1,6 +1,6 @@
 pkgbase = linux-ice
 	pkgdesc = The Linux-ice kernel and modules
-	pkgver = 4.6.4
+	pkgver = 4.6.5
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -15,28 +15,26 @@ pkgbase = linux-ice
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.6.4.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.6.4.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.6.5.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.6.5.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
 	source = linux.install
 	source = change-default-console-loglevel.patch
-	source = 0001-linux-4.6-rtlwifi-fix-atomic.patch
 	source = swap.patch
 	source = http://tuxonice.nigelcunningham.com.au/downloads/all/tuxonice-for-linux-head-4.6.0-rc4-2016-04-21.patch.bz2
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866
 	sha256sums = SKIP
-	sha256sums = f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47
+	sha256sums = 857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c
 	sha256sums = SKIP
 	sha256sums = 02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68
 	sha256sums = d59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98
 	sha256sums = 1bbd658827333ebc3e295e5fde12be98ff42c0724115ad996cb2c74e3bb2e2b1
 	sha256sums = 1e24b0e49d3c2670cace445de9be43e96d11e01183aa15c1c192e4e1b18dcccd
 
@@ -48,23 +46,23 @@ pkgname = linux-ice
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-ice=4.6.4
-	provides = linux=4.6.4
+	provides = kernel26-ice=4.6.5
+	provides = linux=4.6.5
 	conflicts = kernel26-ice
 	replaces = kernel26-ice
 	backup = etc/mkinitcpio.d/linux-ice.preset
 
 pkgname = linux-ice-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ice kernel
-	provides = kernel26-ice-headers=4.6.4
-	provides = linux-headers=4.6.4
+	provides = kernel26-ice-headers=4.6.5
+	provides = linux-headers=4.6.5
 	conflicts = kernel26-ice-headers
 	replaces = kernel26-ice-headers
 
 pkgname = linux-ice-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ice kernel
-	provides = kernel26-ice-docs=4.6.4
-	provides = linux-docs=4.6.4
+	provides = kernel26-ice-docs=4.6.5
+	provides = linux-docs=4.6.5
 	conflicts = kernel26-ice-docs
 	replaces = kernel26-ice-docs
 

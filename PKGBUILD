@@ -5,7 +5,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.4
+pkgver=4.6.5
 pkgrel=1
 _toipatch=tuxonice-for-linux-head-4.6.0-rc4-2016-04-21.patch
 arch=('i686' 'x86_64')
@@ -23,21 +23,19 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'linux.install'
         'change-default-console-loglevel.patch'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
-	'swap.patch'
+        'swap.patch'
         "http://tuxonice.nigelcunningham.com.au/downloads/all/${_toipatch}.bz2"
 )
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '8c270194a0ab5deea628880f42443dff0932d445f1aa6aec6a295924a18b7643'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '1bbd658827333ebc3e295e5fde12be98ff42c0724115ad996cb2c74e3bb2e2b1'
             '1e24b0e49d3c2670cace445de9be43e96d11e01183aa15c1c192e4e1b18dcccd')
 validpgpkeys=(
@@ -64,10 +62,6 @@ prepare() {
   # tuxonice patch
   patch -p1 -i "${srcdir}/${_toipatch}" || true
   patch -p1 -i "${srcdir}/swap.patch"
-
-  # fix rtlwifi atomic
-  # https://bugs.archlinux.org/task/49401
-  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
