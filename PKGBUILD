@@ -2,7 +2,7 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane
-pkgver=1.5.12
+pkgver=1.5.13
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('unzip')
 depends=('java-environment' 'desktop-file-utils')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip
         freeplane.desktop freeplane.run)
-md5sums=('40b18600d2053cc8d730b5e832357262'
+md5sums=('d25cc0e88b621976b1bc82f1423245d7'
          '85d40893aef0b71f9ffdf2dec4fbb0f0'
          'f1505d5b6872e2dffe8ef2e82d065551')
 install=freeplane.install
