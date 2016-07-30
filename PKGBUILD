@@ -2,8 +2,8 @@
 
 _basename=libwacom
 pkgname="lib32-$_basename"
-pkgver=0.18
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc="Library to identify Wacom tablets and their features (32-bit)"
 arch=('x86_64')
 url="http://sourceforge.net/apps/mediawiki/linuxwacom/index.php?title=Libwacom"
