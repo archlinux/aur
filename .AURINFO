@@ -1,0 +1,16 @@
+pkgbase = gadmin-rsync
+	pkgdesc = An easy to use GTK+ frontend for the rsync backup client and server.
+	pkgver = 0.1.9
+	pkgrel = 3
+	url = http://dalalven.dtdns.net/linux/gadmintools-webpage/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = rsync
+	depends = openssh
+	optdepends = gksu: for running from menu
+	source = http://dalalven.dtdns.net/linux/gadmin-rsync/gadmin-rsync-0.1.9.tar.gz
+	options = !emptydirs
+
+pkgname = gadmin-rsync
