@@ -1,7 +1,7 @@
 # Maintainer:  Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=domjudge
-pkgver=5.0.0
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="programming contest jury system"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install='domjudge.install'
 
 source=(http://www.domjudge.org/releases/domjudge-$pkgver.tar.gz
         domjudge-judgehostd.service jsoncpp.patch)
-md5sums=('0a1b8b3556494eeccb359635a180d68a'
+md5sums=('a200a53f86596a8e89c76bbc014c1e66'
          '93cd5b10fc2636b664f2c17b4f34436f'
          '69e8aef0a5f9394fd0a4f42785d0732e')
 
