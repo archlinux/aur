@@ -2,25 +2,32 @@
 
 pkgname=pokemon-go-map-git
 _gitname=PokemonGo-Map
-pkgver=r496.071e545
+pkgver=1
 pkgrel=1
 pkgdesc='Live visualization of all the pokemon in your area... and more!'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
 license=('GNU GPLv3+')
-depends=( 'python2' 'python2-protobuf-to-dict' 'python2-peewee' 'python2-s2sphere' 'python2-flask-cors' 'python2-flask' 'python2-geopy' 'python2-protobuf' 'python2-requests' 'python2-gpsoauth' 'python2-werkzeug')
-source=("git://github.com/AHAAAAAAA/${_gitname}")
+depends=( 'nodejs-grunt-cli' 'python2' 'npm' 'python2-configargparse' 'python2-flask-compress' 'python2-protobuf-to-dict' 'python2-peewee' 'python2-s2sphere' 'python2-flask-cors' 'python2-flask' 'python2-geopy' 'python2-protobuf' 'python2-requests' 'python2-gpsoauth' 'python2-werkzeug')
+source=("git://github.com/AHAAAAAAA/${_gitname}#branch=develop")
 sha256sums=('SKIP')
-
-#PKGEXT='.pkg.tar'
 
 pkgver() {
   cd "${srcdir}/$_gitname/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
   cd "${srcdir}/$_gitname/"
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -a * "${pkgdir}/opt/${pkgname}"
+  npm install
+  npm run-script build
 }
+
+package() {  
+  mkdir -p "${pkgdir}/opt"
+  cp -a "${srcdir}/$_gitname/" "${pkgdir}/opt/${pkgname}"
+  rm -rf "${pkgdir}/opt/${pkgname}/.git"
+  rm -rf "${pkgdir}/opt/${pkgname}/node_modules"
+  rm -rf "${pkgdir}/opt/${pkgname}/.github"
+}
+
