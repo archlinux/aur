@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.6
+_basekernel=4.7
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.5
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -13,13 +13,13 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b' 'SKIP'
-            '09b7d4d3e0086cf3b36935ee31e72fe13bc85fdb6a407d8a952bf24e24f846af10d7f8634afa412caf00cbf3f3a03aaed51010e4234e275642ae140a318cc8e2' 'SKIP'
+sha512sums=('e8c02583e17e4fc4214fef694825fcb78c898266f1624deb1cdf56ab5c5fdfa669c5221122a7cf0d502ed6f921ff3797634acd9d294d29e98e3faa8a21920185' 'SKIP'
+#            '09b7d4d3e0086cf3b36935ee31e72fe13bc85fdb6a407d8a952bf24e24f846af10d7f8634afa412caf00cbf3f3a03aaed51010e4234e275642ae140a318cc8e2' 'SKIP'
             'f897caa9efb34a2bce4cb2ffdaca48267cf8775a62eaf807395d486e1adfa2e25f64abe0278f7f37d23a8a52764a0017d01952f598500ffe372423a9d8239385'
             '443889c6659c9b46c07a112207e35ec1bfb3fcbe480e2fecaa3953f0c7945209ddff8dbac5df642e014ab6416c4f5f46eb1f0a28927ec852ef1a9e39e4806d2f'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
@@ -37,7 +37,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
