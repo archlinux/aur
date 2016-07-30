@@ -18,7 +18,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/mtorromeo/rt3562sta-linux/a
 
 build() {
 	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
-	KERNEL_RELEASE=$(cat /usr/lib/modules/extramodules-$_kernver-ARCH/version)
+	KERNEL_RELEASE=$(cat /usr/lib/modules/extramodules-$_kernver-aufs_friendly/version)
 
 	cd "$srcdir"/rt3562sta-linux-r$_patchrel
 
