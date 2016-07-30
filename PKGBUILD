@@ -2,13 +2,13 @@
 
 pkgname=gajim-plugin-omemo-git
 _pkgname=gajim-omemo
-pkgver=0.5.1.r12.g8220821
+pkgver=0.5.1.r93.g735ff65
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://github.com/omemo/${_pkgname}"
 license=('GPL')
-depends=("gajim" "python2-axolotl-git")
+depends=("gajim" "python2-cryptography" "python2-axolotl-git")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo')
 source=("git://github.com/omemo/gajim-omemo")
