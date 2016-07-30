@@ -3,7 +3,7 @@
 _basename=libinput
 pkgname="lib32-$_basename"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="library that handles input devices for display servers and other applications that need to directly deal with input devices. (32-bit)"
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/libinput/"
@@ -32,7 +32,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure --prefix=/usr --disable-static \
+  ./configure --prefix=/usr --disable-static --disable-tests \
     --build=i686-pc-linux-gnu --libdir=/usr/lib32 
   make
 }
