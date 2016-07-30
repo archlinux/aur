@@ -1,5 +1,5 @@
 pkgbase = mate-netbook-1.15-gtk3
-	pkgdesc = Library with common API for various MATE modules
+	pkgdesc = Mate netbook utilities
 	pkgver = 1.15.1
 	pkgrel = 1
 	url = http://mate-desktop.org
@@ -21,6 +21,6 @@ pkgbase = mate-netbook-1.15-gtk3
 	sha1sums = 699de846c9e7f4fe435691e73ca27ecd55f192ec
 
 pkgname = mate-netbook-1.15-gtk3
-	pkgdesc = Library with common API for various MATE modules (GTK3 version)
+	pkgdesc = Mate netbook utilities (GTK3 version)
 	groups = mate
 
