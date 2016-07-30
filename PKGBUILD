@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=1.23.2
+pkgver=1.24
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ license=('GPL2')
 depends=('python2-pyqt4' 'python2-numpy')
 optdepends=('python2-pyfits: for reading files in FITS format'
 #            'python2-emf: for EMF export' - http://pyemf.sourceforge.net/ - package missing
-	    'python2-dbus: for dbus interface'
+            'python2-dbus: for dbus interface'
 #            'python2-pyminuit2: for numerical function minimization' - http://code.google.com/p/pyminuit/ - package missing
             'python2-astropy: for VO table import')
 install='veusz.install'
 source=("http://download.gna.org/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('4a687e98e87f95c4646602b285a11e85'
+md5sums=('44e491b2accec1857d1e2336f52187ad'
          '3823fe5961f3975a4dff2967aadaa14f')
 
 build() {
