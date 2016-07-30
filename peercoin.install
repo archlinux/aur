@@ -1,6 +1,6 @@
 post_install() {
     update-desktop-database -q
-    
+    systemctl daemon-reload
     ln -s /usr/bin/peercoind /usr/bin/ppcoind
 
     echo ""

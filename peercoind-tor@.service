@@ -9,7 +9,7 @@ Group=users
 Type=simple
 Restart=on-failure
 RestartSec=15
-ExecStart=/usr/bin/ppcoind -proxy=127.0.0.1:9050
+ExecStart=/usr/bin/peercoind -proxy=127.0.0.1:9050
 ## security
 PrivateTmp=true
 PrivateDevices=true

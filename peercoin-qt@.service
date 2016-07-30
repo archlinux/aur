@@ -8,9 +8,10 @@ User=%i
 Group=users
 Type=simple
 Restart=on-failure
+RestartSec=15
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=%h/.Xauthority
-ExecStart=/usr/bin/ppcoin-qt
+ExecStart=/usr/bin/peercoin-qt
 ## security
 PrivateTmp=true
 PrivateDevices=true
