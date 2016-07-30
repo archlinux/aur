@@ -3,7 +3,7 @@
 
 _dver=8051
 pkgname=firefox-extension-unmht
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="view MHT (MHTML) web archive format files, and save complete web pages, including text and graphics, into a single MHT file"
 url='https://addons.mozilla.org/firefox/addon/unmht/'
@@ -12,7 +12,7 @@ makedepends=('unzip')
 license=('MPL2')
 arch=('any')
 source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
-sha256sums=('f47f77e04e9938560c50e4684557ebe4c9355b6cacea430ce91d8d16f88e85b3')
+sha256sums=('e3b5b401abf122d1de2cd531e350f6d38c5f9fd5b371a1303a944baac7883b66')
 noextract=(addon-${_dver}-latest.xpi)
 
 pkgver() {
