@@ -1,16 +1,14 @@
 pkgbase = haskell-apply-refact
 	pkgdesc = Perform refactorings specified by the refact library
-	pkgver = 0.2.0.0
+	pkgver = 0.3.0.0
 	pkgrel = 1
-	epoch = 0
 	url = https://hackage.haskell.org/package/apply-refact
-	install = haskell-apply-refact.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc=7.10.3
-	depends = haskell-refact
-	depends = haskell-ghc-exactprint
+	depends = ghc=8.0.1
+	depends = haskell-refact>=0.2
+	depends = haskell-ghc-exactprint>=0.5.2
 	depends = haskell-syb
 	depends = haskell-mtl
 	depends = haskell-transformers-base
@@ -18,9 +16,8 @@ pkgbase = haskell-apply-refact
 	depends = haskell-filemanip
 	depends = haskell-unix-compat
 	depends = haskell-optparse-applicative
-	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/apply-refact/0.2.0.0/apply-refact-0.2.0.0.tar.gz
-	sha256sums = f74abeae9f6ad6e3ab5b00b108e99c4351ff26f691f5a0c1d3662b2b18648d5c
+	source = http://hackage.haskell.org/packages/archive/apply-refact/0.3.0.0/apply-refact-0.3.0.0.tar.gz
+	sha256sums = 0d2a8845ed554c4a6742a3d0a130dac3f16d0d710b65b20dfeb8e773409ed70f
 
 pkgname = haskell-apply-refact
 

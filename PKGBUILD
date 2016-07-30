@@ -2,18 +2,15 @@
 
 _hkgname=apply-refact
 pkgname=haskell-apply-refact
-pkgver=0.2.0.0
+pkgver=0.3.0.0
 pkgrel=1
-epoch=0
 pkgdesc="Perform refactorings specified by the refact library"
 arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
 license=("custom:BSD3")
-depends=("ghc=7.10.3" "haskell-refact" "haskell-ghc-exactprint" "haskell-syb" "haskell-mtl" "haskell-transformers-base" "haskell-temporary" "haskell-filemanip" "haskell-unix-compat" "haskell-optparse-applicative")
-options=('staticlibs')
-install="${pkgname}.install"
+depends=("ghc=8.0.1" "haskell-refact>=0.2" "haskell-ghc-exactprint>=0.5.2" "haskell-syb" "haskell-mtl" "haskell-transformers-base" "haskell-temporary" "haskell-filemanip" "haskell-unix-compat" "haskell-optparse-applicative")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('f74abeae9f6ad6e3ab5b00b108e99c4351ff26f691f5a0c1d3662b2b18648d5c')
+sha256sums=('0d2a8845ed554c4a6742a3d0a130dac3f16d0d710b65b20dfeb8e773409ed70f')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
@@ -25,14 +22,15 @@ build() {
     runhaskell Setup haddock --hoogle --html
     runhaskell Setup register --gen-script
     runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
     sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
 
-    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/${pkgname}/register.sh"
-    install    -m744 unregister.sh "${pkgdir}/usr/share/haskell/${pkgname}/unregister.sh"
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     install -d -m755 "${pkgdir}/usr/share/doc/ghc/html/libraries"
     ln -s "/usr/share/doc/${pkgname}/html" "${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}"
     runhaskell Setup copy --destdir="${pkgdir}"
