@@ -1,7 +1,7 @@
 pkgbase = darkplaces-xonotic
 	pkgdesc = An advanced Quake 1 game engine (Xonotic branch)
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icculus.org/twilight/darkplaces/
 	install = darkplaces-xonotic.install
 	arch = i686
