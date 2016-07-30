@@ -10,7 +10,7 @@ depends=('dosbox')
 makedepends=('unrar')
 options=(emptydirs)
 install='arena.install'
-source=(http://cms.elderscrolls.com/sites/default/files/tes/extras/Arena106Setup.zip
+source=(http://static.elderscrolls.com/elderscrolls.com/assets/files/tes/extras/Arena106Setup.zip
         license arena-launcher.pl ARENA.BAT SOUND.CFG
         arena.conf)
 md5sums=('b55b3ddcce98c1905a723781dbe1df7c'
