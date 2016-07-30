@@ -1,9 +1,9 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=whatmp3
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A small Python script that accepts a list of directories containing FLAC files as arguments and converts them to MP3 with the specified options. It can optionally create a torrent file."
-url="http://logik.li/projects/whatmp3/"
+url="https://github.com/RecursiveForest/whatmp3"
 arch=('any')
 license=('MIT')
 depends=('python' 'mktorrent' 'flac')
