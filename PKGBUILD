@@ -1,13 +1,14 @@
 #Maintainer: Onishin <onishin at onishin dot org>
+#And redfish
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.9.4
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6')
+depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind')
 makedepends=('git' 'cmake' 'boost')
 
 
@@ -15,40 +16,60 @@ pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon
 provides=('bitmonerod' 'simplewallet' 'simpleminer')
 conflicts=('bitmonerod' 'simplewallet' 'simpleminer')
 source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
-        "bitmonerod@.service"
+        "bitmonerod.service"
+        "bitmonerod.conf"
 )
 	
 md5sums=('SKIP'
-         '4e5089fbbf7fd7c2300a4086862e3911')
+         '9e8e52d5379c534e9cde86e5d6c39592'
+         'eb04582e2007f8e450322c1794ed30ba')
+
+backup=('etc/bitmonerod.conf')
+install=bitmonero.install
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${_gitname}"
 	cd "$srcdir/$_gitname"
 
-	# and make        
-	make release
+	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=Release "
+	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
+	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
+
+	mkdir -p build && cd build
+	cmake $CMAKE_FLAGS ..
+	make
+}
+
+check() {
+	cd "$srcdir/$_gitname"
+	cd build
+
+	# Temporarily disable some a tests:
+	#  * coretests takes too long (~25000s)
+	#  * libwallet_api_tests fail (Issue #895)
+	CTEST_ARGS+="-E 'coretests|libwallet_api_tests'"
+	echo ">>> NOTE: some tests excluded: $CTESTS_ARGS"
+
+	make ARGS="$CTEST_ARGS" test
 }
 
 
 package() {
 
-	# install bitmonerod daemon
-	install -D -m755 "$srcdir/$_gitname/build/release/bin/bitmonerod" "$pkgdir/usr/bin/bitmonerod"
+	install -D -m755 "$srcdir/$_gitname/build/bin/bitmonerod" "$pkgdir/usr/bin/bitmonerod"
+	install -D -m755 "$srcdir/$_gitname/build/bin/simplewallet" "$pkgdir/usr/bin/simplewallet"
+	install -D -m755 "$srcdir/$_gitname/build/bin/simpleminer" "$pkgdir/usr/bin/simpleminer"
+	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_import" "$pkgdir/usr/bin/bitmonero-import"
+	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_export" "$pkgdir/usr/bin/bitmonero-export"
+	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_dump" "$pkgdir/usr/bin/bitmonero-dump"
+	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_converter" "$pkgdir/usr/bin/bitmonero-converter"
+	install -D -m755 "$srcdir/$_gitname/build/bin/cn_deserialize" "$pkgdir/usr/bin/bitmonero-deserialize"
 
-	# install simplewallet
-        install -D -m755 "$srcdir/$_gitname/build/release/bin/simplewallet" "$pkgdir/usr/bin/simplewallet"
-
-        # install simpleminer
-        install -D -m755 "$srcdir/$_gitname/build/release/bin/simpleminer" "$pkgdir/usr/bin/simpleminer"
-
-        # install unit-file for service bitmonerod
-        install -Dm644 $srcdir/bitmonerod@.service "${pkgdir}/usr/lib/systemd/system/bitmonerod@.service"
-	
-        # install license when pull request accepted
-	#install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 $srcdir/bitmonerod.service "${pkgdir}/usr/lib/systemd/system/bitmonerod.service"
+	install -Dm644 "$srcdir/bitmonerod.conf" "$pkgdir/etc/bitmonerod.conf"
+	install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
