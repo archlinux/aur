@@ -2,7 +2,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!avidemux-git.install
 !add_settings_pluginui_message_error.patch
 !fix_nvenc_check.patch
 !fix_verbose.patch

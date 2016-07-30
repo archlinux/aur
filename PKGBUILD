@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.11.160203.dd4a5e0
+pkgver=2.6.12.160730.680adad
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ prepare() {
   patch -p1 -i "${srcdir}/fix_verbose.patch"
 
   # http://avidemux.org/smif/index.php/topic,16451.0.html
-  patch --binary -p1 -i "${srcdir}/fix_nvenc_check.patch"
+  #patch --binary -p1 -i "${srcdir}/fix_nvenc_check.patch"
 
   # add SETTINGS to MESSAGE(FATAL_ERROR in avidemux_plugins/CMakeLists.txt
   patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
@@ -82,7 +82,8 @@ build() {
   cmake ../avidemux/avidemux_core \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFAKEROOT="${srcdir}/fakeroot"
+    -DFAKEROOT="${srcdir}/fakeroot" \
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
   make -j1
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -104,7 +105,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
-    -DFAKEROOT="${srcdir}/fakeroot"
+    -DFAKEROOT="${srcdir}/fakeroot" \
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -124,7 +126,9 @@ build() {
   cd "${srcdir}/build_cli"
   cmake ../avidemux/avidemux/cli \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFAKEROOT="${srcdir}/fakeroot" \
+    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -134,8 +138,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
+    -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
   make
+  make DESTDIR="${srcdir}/fakeroot" install
 
   msg2 "Build Settings"
   cd "${srcdir}/build_core_plugins_settings"
@@ -143,8 +149,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
+    -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
   make
+  make DESTDIR="${srcdir}/fakeroot" install
 }
 
 package_avidemux-core-git() {
@@ -178,12 +186,8 @@ package_avidemux-core-git() {
   make -C build_core_plugins DESTDIR="${pkgdir}" install
   make -C build_core_plugins_settings DESTDIR="${pkgdir}" install
 
-  if [ -f fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so ]; then
-    install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so"
-  fi
-  if [ -f fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so ]; then
-    install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so"
-  fi
+  install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so"
+  install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so"
 }
 
 package_avidemux-qt-git() {
@@ -196,7 +200,6 @@ package_avidemux-qt-git() {
            )
   provides=('avidemux-qt')
   conflicts=('avidemux-qt4' 'avidemux-qt5' 'avidemux-qt')
-  install=avidemux-git.install
 
   make -C build_qt DESTDIR="${pkgdir}" install
   make -C build_qt_plugins DESTDIR="${pkgdir}" install
