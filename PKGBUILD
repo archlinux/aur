@@ -3,9 +3,9 @@
 # Contributor: iztok pizorn <pizorn___AT___gmail___DOT___com>
 # Contributor: olivier medoc <o_medoc___AT___yahoo___DOT___fr>
 pkgname=atlas-lapack
-pkgver=3.10.2
-_lapackver=3.6.0
-pkgrel=3
+pkgver=3.10.3
+_lapackver=3.6.1
+pkgrel=1
 pkgdesc="Complete LAPACK and BLAS implementation using optimised ATLAS routines"
 url="http://math-atlas.sourceforge.net/"
 depends=('gcc-libs')
@@ -16,42 +16,51 @@ provides=("blas" "lapack=$_lapackver" 'cblas' 'atlas-lapack-base')
 license=('custom:blas' 'custom:lapack' 'custom:atlas')
 options=(!makeflags)
 install=$pkgname.install
-source=(http://www.netlib.org/lapack/lapack-$_lapackver.tgz http://downloads.sourceforge.net/math-atlas/atlas${pkgver}.tar.bz2 blas-license.txt atlas-license.txt makefile.shared.mt makefile.shared.st)
+source=(http://www.netlib.org/lapack/lapack-$_lapackver.tgz
+        http://downloads.sourceforge.net/math-atlas/atlas${pkgver}.tar.bz2
+        blas-license.txt atlas-license.txt
+        makefile.shared.mt makefile.shared.st)
 noextract=(lapack-$_lapackver.tgz atlas$pkgver.tar.bz2)
-md5sums=('f2f6c67134e851fe189bb3ca1fbb5101'
-         'a4e21f343dec8f22e7415e339f09f6da'
+md5sums=('421b2cb72e15f237e144428f9c460ee0'
+         'd6ce4f16c2ad301837cfb3dade2f7cef'
          '38b6acb8ed5691d25863319d30a8b365'
          '4903eb06072dfbf94710691ccb6660bf'
-         '2532ea5fdd412414a438b65b49451574'
-         '24dfa225d311585d79dcf2560a9682b5')
+         'e293bf3b62b7cc02cb5dcf54f9f40053'
+         '5153cb945e8f386e4d98d4b0fe791776')
 
 build() {
-   cd "$srcdir"
-   tar -xjf atlas$pkgver.tar.bz2
-
-   NCPU=`grep "^processor" /proc/cpuinfo | wc -l`
-   #USE_ARCH_DEFAULTS="yes"
    msg 'Before building this package, as root you must set the CPU(s)'
    msg 'governor(s) to "performance".'
    msg 'See: https://wiki.archlinux.org/index.php/CPU_frequency_scaling'
 
+   cd "$srcdir"
+   tar -xjf atlas$pkgver.tar.bz2
+
+   unset MAKE
+   CORE=`cat /proc/cpuinfo | grep "cpu MHz" | head -n 1 | sed "s/.*: \([0-9.]*\).*/\1/"`
+   NCPU=`grep "^processor" /proc/cpuinfo | wc -l`
    if [ "$CARCH" = "x86_64" ]; then
       ARCHITECTURE_BUILD_OPTS="-b 64" # for x86_64
    else
       ARCHITECTURE_BUILD_OPTS="-b 32" # for i686
    fi
 
-   mkdir -p "$srcdir/ATLAS/build"
-   cd "$srcdir/ATLAS/build"
+   cd "$srcdir"/ATLAS
+   rm -rf build
+   mkdir -p build
+   cd build
 
-   msg 'Build ATLAS'
-   unset MAKE
-   cd "$srcdir/ATLAS/build"
-   rm -rf *
+   msg 'Configuring ATLAS'
+
    ../configure --prefix=/usr/ $ARCHITECTURE_BUILD_OPTS -Fa alg -fPIC \
+      --shared -D c -DPentiumCPS=$CORE \
       --with-netlib-lapack-tarfile="$srcdir/lapack-$_lapackver.tgz"
+
+   msg 'Building ATLAS'
+
    make build
-   msg 'Build shared libraries'
+
+   msg 'Building shared libraries'
    cd lib
    if [ 1 -lt $NCPU ]; then
       cp "$srcdir/makefile.shared.mt" makefile
@@ -62,19 +71,22 @@ build() {
 }
 
 check() {
-
    cd "$srcdir/ATLAS/build"
-
-   msg 'Check...'
    unset MAKE
+
+   msg 'Checking ATLAS'
+
    make check
    make ptcheck
    make time
 }
 
 package() {
-
    cd "$srcdir/ATLAS/build"
+   unset MAKE
+
+   msg 'Packaging ATLAS'
+
    make DESTDIR="$pkgdir/usr" install
    cp -d lib/*.so* "$pkgdir/usr/lib"
    [ -e lib/libptlapack.a ] && cp lib/libptlapack.a "$pkgdir/usr/lib"

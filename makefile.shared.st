@@ -1,7 +1,6 @@
 include Make.inc
 
-all: libatlas.so libf77blas.so libcblas.so libblas.so liblapack.so.3.4.1
-
+all: libatlas.so libf77blas.so libcblas.so libblas.so liblapack.so.3.6.1
 
 libatlas.so: libatlas.a
 	ld $(LDFLAGS) -shared -soname $@ -o $@ --whole-archive libatlas.a \
@@ -18,9 +17,9 @@ libcblas.so : libcblas.a libatlas.so libblas.so
 libblas.so: libf77blas.so
 	ln -s $< $@
 
-liblapack.so.3.4.1 : liblapack.a libcblas.so libblas.so
+liblapack.so.3.6.1 : liblapack.a libcblas.so libblas.so
 	ld $(LDFLAGS) -shared -soname liblapack.so.3 -o $@ --whole-archive \
-	   liblapack.a --no-whole-archive $(F77SYSLIB) -L. -lcblas -lblas -lgcc_s
+	   liblapack.a --no-whole-archive $(F77SYSLIB) -L. -lcblas -lblas
 
-liblapack.so.3: liblapack.so.3.4.1
+liblapack.so.3: liblapack.so.3.6.1
 	ln -s $< $@
