@@ -1,0 +1,17 @@
+pkgbase = jupyter_contrib_core
+	pkgdesc = Common utilities for jupyter-contrib projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jupyter-contrib/jupyter_contrib_core
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	depends = jupyter
+	depends = jupyter-notebook
+	depends = python-tornado
+	source = https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_core/jupyter_contrib_core-0.1.0-py2.py3-none-any.whl
+	md5sums = a0763c40a906e0a74fc95c3d25941c70
+
+pkgname = jupyter_contrib_core
+
