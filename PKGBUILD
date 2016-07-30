@@ -1,14 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kolourpaint-git
-pkgver=r2058.2d4c4a1
+pkgver=r2065.aec17dd
 pkgrel=1
 pkgdesc="Paint Program. (GIT version)"
 url='http://kde.org/applications/graphics/kolourpaint'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdelibs4support'
-         'qimageblitz-svn'
          'libksane'
          'hicolor-icon-theme'
          )
