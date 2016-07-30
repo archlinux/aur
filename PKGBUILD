@@ -1,11 +1,11 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-pkgname=('python-outproc')
-pkgver=0.14
-pkgrel=1
+pkgname='python-outproc'
+pkgver='0.14'
+pkgrel='1'
 pkgdesc="Pluggable Output Processor is an engine to wrap any executabe and capture its output through a pluggable module to colorize it and/or (re)format"
 arch=('any')
-url="http://zaufi.github.io/pluggable-output-processor.html"
+url='http://zaufi.github.io/pluggable-output-processor.html'
 license=('GPLv3')
 depends=('python'
          'python-termcolor')
