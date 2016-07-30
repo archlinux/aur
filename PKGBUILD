@@ -1,7 +1,7 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=radamsa
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="General purpose mutation based fuzzer"
 url="https://github.com/aoh/radamsa"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('owl-lisp')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/aoh/radamsa/archive/v${pkgver}.tar.gz)
-sha512sums=('986823886ea6954facf35b1cde58917a3ca70928c6bb1aa9693abd6b5f8e728c4c3f8268df244886b238b45839d7219df718a4a5bff49008ae0d787737f6538a')
+sha512sums=('3fd4c9877bc16e527a78fe5fd19c9f51064a2799cc616e5528ebade667daea79f40245f54a4e841d512c18e4847c14805e617f9729fdd2a8d3689a5c3f0068f4')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -19,12 +19,16 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  make OL=/usr/bin/ol
+  make \
+    USR_BIN_OL=/usr/bin/ol \
+    CFLAGS="${CFLAGS}" \
+    OWL="/usr/bin/ovm /var/lib/owl-lisp/fasl/init.fasl"
 }
 
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
