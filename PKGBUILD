@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python2-ffnet
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Feed-forward neural network solution for python"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python2')
 options=('!emptydirs')
 source=("https://pypi.python.org/packages/source/f/ffnet/ffnet-${pkgver}.tar.gz")
-md5sums=('ebffdc0c69a7b7fb8f61807aee3fab1d')
+md5sums=('0bfa31d75124467e552895f85a1fe2bb')
 
 prepare() {
   cd "$srcdir"
