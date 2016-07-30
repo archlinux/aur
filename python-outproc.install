@@ -1,0 +1,23 @@
+post_install() {
+cat << EOF
+
+To enable selected module run:
+
+  ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
+
+For example:
+
+  ln -s /usr/bin/outproc /usr/lib/outproc/bin/cmake
+  ln -s /usr/bin/outproc /usr/lib/outproc/bin/make
+  ln -s /usr/bin/outproc /usr/lib/outproc/bin/mount
+  ln -s /usr/bin/outproc /usr/lib/outproc/bin/diff
+
+
+End add /usr/lib/outproc/bin before /usr/bin. Add following to /etc/profile :
+
+if [ -d /usr/lib/outproc/bin ]; then
+    export PATH="/usr/lib/outproc/bin:$PATH"
+fi
+
+EOF
+}

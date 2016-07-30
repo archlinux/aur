@@ -12,13 +12,13 @@ depends=('python'
 source=("https://github.com/zaufi/pluggable-output-processor/archive/version-${pkgver}.tar.gz")
 md5sums=('426ad29cecffb83a9423bfc8ddb0bfea')
 
-prepare(){
-  mkdir -p "${pkgdir}/usr/lib/outproc/bin"
-}
-
 package(){
+  install=python-outproc.install
+
   cd "${srcdir}/pluggable-output-processor-version-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
+
+  mkdir -p "${pkgdir}/usr/lib/outproc/bin"
 }
 
 # vim: ts=2 sw=2 et
