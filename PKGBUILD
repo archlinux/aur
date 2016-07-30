@@ -18,11 +18,15 @@ conflicts=('bitmonerod' 'simplewallet' 'simpleminer')
 source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
         "bitmonerod.service"
         "bitmonerod.conf"
+        "bitmonero.install"  
 )
 	
 md5sums=('SKIP'
-         '9e8e52d5379c534e9cde86e5d6c39592'
-         'eb04582e2007f8e450322c1794ed30ba')
+         '1e711e4c154b68eca106717aaad9e483' 
+         '97847c7d0410e71d5aa8d9f858ef7a0b' 
+         'b0c41800e4a8a6a2fa4c297380743b63')
+
+
 
 backup=('etc/bitmonerod.conf')
 install=bitmonero.install
