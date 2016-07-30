@@ -2,7 +2,7 @@
 
 _basename=gst-plugins-ugly
 pkgname="lib32-$_basename"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (32-bit)"
 arch=('x86_64')
