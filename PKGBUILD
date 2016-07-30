@@ -2,12 +2,13 @@
 
 pkgname=flac2all
 pkgver=2.75
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
 url="https://github.com/ZivaVatra/flac2all"
 license=('GPL2')
 conflicts=('flac2all-svn')
+replaces=('flac2all-svn')
 depends=('flac' 'python2' 'opus-tools')
 optdepends=('lame: for mp3 support'
 'vorbis-tools: for ogg support')
