@@ -2,7 +2,7 @@
 
 _pkgname=breeze-icons
 pkgname="${_pkgname}-git"
-pkgver=5.23.0.r9.g512dcdb
+pkgver=5.24.0.r33.gde7cf98
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${_pkgname}::git://anongit.kde.org/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver(){
-    cd ${srcdir}/${_pkgname}
+    cd ${_pkgname}
     git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
@@ -37,6 +37,5 @@ build() {
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
 }
