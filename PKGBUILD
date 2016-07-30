@@ -1,8 +1,8 @@
 # Maintainer: Marc Cousin <cousinmarc@gmail.com>
 pkgname=mkvtoolnix-git
-pkgver=r8519.4969ee8
-pkgrel=2
-pkgdesc="Git version of mkvtoolnix (to get the latest mkvtoolnix-gui"
+pkgver=r9866.b6e2814
+pkgrel=1
+pkgdesc="Git version of mkvtoolnix (to get the latest mkvtoolnix-gui)"
 arch=(x86 x86_64)
 url="https://www.bunkus.org/videotools/mkvtoolnix"
 license=('GPL')
@@ -12,7 +12,7 @@ makedepends=('libmatroska' 'flac' 'libvorbis' 'file' 'wxgtk'
              'boost-libs' 'lzo' 'xdg-utils' 'boost' 'ruby' 'git')
 
 provides=('mkvtoolnix')
-conflicts=('mkvtoolnix-cli mkvtoolnix-gui')
+conflicts=('mkvtoolnix-cli' 'mkvtoolnix-gui')
 replaces=('mkvtoolnix')
 source=('git://github.com/mbunkus/mkvtoolnix.git')
 noextract=()
