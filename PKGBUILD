@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v2.9.6.0.0.g4cbce04
+pkgver=v2.9.8.0.10.g4977c8e
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,9 @@ license=('custom:MEGA')
 source=('megasync::git+https://github.com/meganz/MEGAsync.git'
         'mega.svg'
         )
-conflicts=('megasync' 'megatools')
+conflicts=('megasync'
+           'megatools'
+           )
 provides=('megasync')
 depends=('qt5-base'
          'c-ares'
@@ -28,7 +30,6 @@ makedepends=('git'
 sha1sums=('SKIP'
           'f0ce3c0c3297cbb07f211a6ff2a0237823e0c9cd'
           )
-install=megasync-git.install
 
 pkgver() {
   cd megasync
