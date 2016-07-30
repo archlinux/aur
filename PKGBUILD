@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=daggerfall
 pkgver=1.07.213
-pkgrel=12
+pkgrel=13
 pkgdesc="The Elder Scrolls II: Daggerfall"
 arch=('any')
 url="http://www.elderscrolls.com/daggerfall/"
@@ -10,7 +10,7 @@ depends=("dosbox")
 makedepends=("python" "unzip" "bsdiff")
 options=(emptydirs)
 install="dagger.install"
-source=(http://cms.elderscrolls.com/sites/default/files/tes/extras/DFInstall.zip
+source=(http://static.elderscrolls.com/elderscrolls.com/assets/files/tes/extras/DFInstall.zip
         http://www.uesp.net/dagger/files/addquest.zip
         http://www.uesp.net/dagger/files/fixsa175.zip
         http://download.narechk.net/dos32a-912-bin.zip
@@ -22,7 +22,7 @@ md5sums=('3cdd09a5696c2b94c58b85488be7cba2'
          'e5647c7acba32973eb6b2fba621ae536'
          'f37ae16b8eab499edb6b0de0099827ca'
          '2923e8e848462a4a05aa6b5473cd82b5'
-         '0e54a1e6032573d6b6ca60637dc43202'
+         'daeef3539a047ab6d6bdc05252edbd47'
          'dd4b858a32c6e80aaa025c57496958fe'
          'eae2f2244cc23bc1f266438ca4d9b2ce'
          'bd94604036a62217617fd28092c9d956'

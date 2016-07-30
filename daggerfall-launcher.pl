@@ -726,7 +726,7 @@ sub get_archived_saves
 			if ( ! exists $saves{$slot}{$name} ) {
 				$saves{$slot}{$name} = [];
 			}
-			push($saves{$slot}{$name}, $date);
+			push(@{$saves{$slot}{$name}}, $date);
 		}
 	}
 	return %saves;
@@ -1724,7 +1724,7 @@ if ($opt_list_archived_saves) {
 	} else {
 		foreach my $slot (sort keys %saves) {
 			print "Archived saves from slot $slot\n\n";
-			foreach my $name (sort keys $saves{$slot}) {
+			foreach my $name (sort keys @{$saves{$slot}}) {
 			print " saves named $name\n\n";
 				foreach my $date (sort @{$saves{$slot}{$name}}) {
 					$date =~ s/_/./;
