@@ -1,6 +1,6 @@
 pkgname=python34
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.4.5
+pkgrel=1
 _pybasever=3.4
 _pymajver=3
 pkgdesc="Major release 3.4 of the Python high-level programming language"
@@ -12,7 +12,7 @@ makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrappe
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('a797d3820155ec6cb654a652b9acfb11792d4e7d568eef1f9199009e042b6ba2')
+sha256sums=('ee64b1c8a47461009abf25252332d29a4e587cb4f0c1c96aa793a3732e9d898a')
 # Maintainer: Raphael Michel <mail@raphaelmichel.de>
 # Based on python33 script from: Rodolphe Breard <packages@what.tf> 
 # and Christopher Arndt <chris@chrisarndt.de>
