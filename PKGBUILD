@@ -57,7 +57,6 @@ check() {
 	make ARGS="$CTEST_ARGS" test
 }
 
-
 package() {
 
 	install -D -m755 "$srcdir/$_gitname/build/bin/bitmonerod" "$pkgdir/usr/bin/bitmonerod"
