@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-ladspa-bin
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Linux Studio Plugins: LADSPA format"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-i586.tar.gz")
 source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-x86_64.tar.gz")
-sha1sums_i686=('61084b9f59fbf55e49f29e0ed085ae7e410452ff')
-sha1sums_x86_64=('9ecdab67e3706b1a65bac7e32d7a95ed2199973e')
+sha1sums_i686=('c26d96c8f0ef3ac907c5af08f00161b2d812fc29')
+sha1sums_x86_64=('b7b0cdc8a3dc9e47a017dc38ebd2c9d2db4662c0')
 
 package() {
 	cd $srcdir
