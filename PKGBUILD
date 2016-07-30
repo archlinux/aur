@@ -2,10 +2,10 @@
 # Contributor: Roland Singer <roland [at] manjaro [dot] org>
 # Contributor: TheBenj <thebenj88 [at] gmail [dot] com>
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
-# Maintainer: Erik Fleischer <erik@erlenweg.de>
+# Maintainer: Erik Fleischer <erik [at] erlenweg [dot] de>
 
 pkgname=crossover
-pkgver=15.1.0
+pkgver=15.2.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('c26a9291471f3032b47a9138c9ab8311e27511ed8a7c54de6129ee014c75f4d4')
+sha256sums=('2e4596848601ff420a4a09eda6dc998e032e279e15c002c488933c6d9d814620')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
