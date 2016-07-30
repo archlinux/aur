@@ -29,7 +29,5 @@ package() {
 
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26')
 
-md5sums=('c8e5e9b2412f6a1a7733ec95ca13df29'
-         'SKIP')
 md5sums=('d88e892b54b160209c8183ebe2574490'
          'SKIP')
