@@ -1,0 +1,12 @@
+pkgbase = ovpngen
+	pkgdesc = Generate an OpenVPN Connect private tunnel profile in the unified format.
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://github.com/graysky2/ovpn-writer
+	arch = any
+	license = MIT
+	source = https://github.com/graysky2/ovpngen/archive/v1.20.tar.gz
+	sha256sums = d4f2f7399542f74aec1787b72a29394d4313edf1177cfa08b649e5ac37c15f90
+
+pkgname = ovpngen
+
