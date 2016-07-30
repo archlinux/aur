@@ -3,7 +3,7 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 arch=('x86_64')
 license=(LGPL)
@@ -35,6 +35,7 @@ build() {
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --build=i686-pc-linux-gnu --libdir=/usr/lib32 \
+    --disable-qt --disable-teletextdec --disable-x265 \
     --disable-static --enable-experimental --disable-gtk-doc \
     --with-package-name="GStreamer Bad Plugins (Arch Linux)" \
     --with-package-origin="http://www.archlinux.org/" \
