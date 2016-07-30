@@ -2,7 +2,7 @@
 
 _basename=gst-libav
 pkgname="lib32-$_basename"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Gstreamer libav Plugin (32-bit)"
 arch=('x86_64')
