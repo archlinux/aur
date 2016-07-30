@@ -6,7 +6,7 @@
 pkgname=minimetro
 _pkgname=MiniMetro
 pkgver=gamma12
-pkgrel=1
+pkgrel=2
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -16,13 +16,11 @@ makedepends=('imagemagick')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 install=desktop.install
 source=("hib://${_pkgname}-${pkgver}-linux.tar.gz"
-        "minimetro.desktop"
-        "minimetro.svg"
-        "minimetro.png::https://humblebundle-a.akamaihd.net/misc/files/hashed/45825dc5e82cc4626cbae2302de7a182df5d357d.png")
+        "${pkgname}.desktop"
+        "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('61f1aa0108aa595f284d459f2a146353'
          '0fe19f989f9606a825b67b9b379c9d6c'
-         '6e7915bc03ced67cffb81174f260a742'
-         '8e9b34b4e784d4aa306e29cf46194ff8')
+         '8412b1e4cc11be455af993d921a68ced')
 
 prepare() {
   case $CARCH in
@@ -35,7 +33,7 @@ prepare() {
 package() {
   # First, install the game itself.
   destdir="$pkgdir/opt/$pkgname"
-  install -dm 755 "$destdir"
+  install -dm 755 "$destdir" "$pkgdir"/usr/{bin,share/applications}
   cp -r ${_pkgname}{_,.}* "$destdir"
 
   # Make the log file writable by the 'games' group. This is needed to run.
@@ -45,13 +43,13 @@ package() {
   chown :games "$log"
 
   # Now, care for supplementary files.
-  install -dm 755 "$pkgdir"/usr/{bin,share/{applications,icons/hicolor/{scalable,256x256,64x64}/apps}} "$destdir"
+  for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
+    size=${size}x${size}
+    install -d "$pkgdir/usr/share/icons/hicolor/$size/apps"
+    convert $pkgname.png -resize $size "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
+  done
 
   echo "#!/opt/$pkgname/${_pkgname}.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
   chmod +x "$pkgdir"/usr/bin/$pkgname
-
   cp ${pkgname}.desktop "$pkgdir"/usr/share/applications
-  cp ${pkgname}.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps
-  convert ${pkgname}.svg "$pkgdir"/usr/share/icons/hicolor/256x256/apps/minimetro.png
-  convert ${pkgname}.png -resize 64x64 "$pkgdir"/usr/share/icons/hicolor/64x64/apps/minimetro.png
 }
