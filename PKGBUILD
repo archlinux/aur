@@ -4,7 +4,7 @@
 # Contributor: tocer <tocer.deng@gmail.com>
 
 pkgname=python2-xlutils
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Utilities for working with Excel files"
 arch=('any')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('python2-xlrd' 'python2-xlwt')
 makedepends=('python2-setuptools')
 optdepends=('python2-errorhandler: needed for ErrorFilter support')
-source=("http://pypi.python.org/packages/source/x/xlutils/xlutils-${pkgver}.tar.gz")
-md5sums=('6247ccda7d8f864b815525e94da30977')
+source=("https://github.com/python-excel/xlutils/archive/${pkgver}.tar.gz")
+md5sums=('6e696e3ad63bd1ebb1a7e9694723936b')
 
 build() {
   cd "$srcdir"/xlutils-$pkgver
