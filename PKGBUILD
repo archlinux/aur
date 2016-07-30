@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=ppcoin
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Peercoin wallet client."
 makedepends=('boost' 'miniupnpc' 'openssl' 'qt4')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
@@ -29,13 +29,13 @@ build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
 
 	## make qt gui
-	qmake-qt4 USE_QRCODE=1 USE_UPNP=1 USE_SSL=0 \
+	qmake-qt4 USE_QRCODE=1 USE_UPNP=1 USE_SSL=1 \
 	    QMAKE_CFLAGS="${CFLAGS}"\
     	QMAKE_CXXFLAGS="${CXXFLAGS} -pie"
 	make
 
 	## make ppcoind
-  	make -f makefile.unix USE_UPNP=1 USE_SSL=0 -e PIE=1 -C src
+  	make -f makefile.unix USE_UPNP=1 USE_SSL=1 -e PIE=1 -C src
 }
 
 check() {
