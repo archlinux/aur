@@ -34,7 +34,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long | sed "s|v1.6.0-beta0|1.11.0.dev.m${_language_gfm2_ver}.r1.|g" | sed 's/-[0-9]*-//g' | sed 's/g//g'
+  _basever=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g' | sed 's/-/./g')
+  git describe --long | sed "s|v1.6.0-beta0|${_basever}.m${_language_gfm2_ver}.r1.|g" | sed 's/-[0-9]*-//g' | sed 's/g//g'
 }
 
 prepare() {
