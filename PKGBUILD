@@ -2,8 +2,8 @@
 
 _basename=libinput
 pkgname="lib32-$_basename"
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="library that handles input devices for display servers and other applications that need to directly deal with input devices. (32-bit)"
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/libinput/"
