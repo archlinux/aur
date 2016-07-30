@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-plasma-theme-git
-pkgver=20160615
+pkgver=20160617
 pkgrel=1
 pkgdesc="Papirus plasma theme for KDE (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
