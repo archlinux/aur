@@ -2,7 +2,7 @@
 
 _name=teeworlds-ddnet
 pkgname=${_name}-git
-pkgver=10.0.1.r6578.939f213
+pkgver=10.2.1.r6728.3b4381c
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -14,10 +14,12 @@ optdepends=('teeworlds-ddnet-skins: more skins for your tee'
             'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
 provides=('teeworlds')
 conflicts=('teeworlds')
-source=("$pkgname::git+https://github.com/ddnet/ddnet")
+source=("$pkgname::git+https://github.com/ddnet/ddnet"
+        '0001-updated-build-files-for-bam-0.5.patch')
 source_i686=("https://ddnet.tw/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("https://ddnet.tw/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'caf0f0c06ff54672e12829b1cbedd5f6')
 md5sums_i686=('566354c3b4510b032af7d891381ee711')
 md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
@@ -39,7 +41,11 @@ prepare() {
       # run DDNet Server with all votes, maps etc. -- no score/ranking, though
     gendesk -f -n --pkgname "${_name}_srv" --pkgdesc "DDNet Server" --terminal=true \
         --exec='sh -c "cd /usr/share/teeworlds/data && teeworlds-ddnet_srv"' \
-        --name 'DDNet Server' --categories 'Game;ArcadeGame'     
+        --name 'DDNet Server' --categories 'Game;ArcadeGame'
+
+      # Fixes https://github.com/ddnet/ddnet/issues/506
+    cd $pkgname
+    patch -p1 -i "$srcdir/0001-updated-build-files-for-bam-0.5.patch"
 }
 
 build() {
