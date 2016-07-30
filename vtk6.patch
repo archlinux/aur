@@ -1,0 +1,47 @@
+diff -urN mayavi-4.4.4/mayavi/scripts/mayavi2.py mayavi-4.4.4-vtk6/mayavi/scripts/mayavi2.py
+--- mayavi-4.4.4/mayavi/scripts/mayavi2.py	2016-02-29 07:49:20.000000000 +0100
++++ mayavi-4.4.4-vtk6/mayavi/scripts/mayavi2.py	2016-07-30 21:23:58.565217168 +0200
+@@ -21,6 +21,8 @@
+ import logging
+ from os.path import splitext, exists, join, abspath
+ 
++sys.path.insert(1, "/opt/vtk6/lib/python2.7/site-packages")
++
+ # Local imports.
+ from mayavi.__version__ import __version__
+ from mayavi.scripts.util import get_data_dir
+diff -urN mayavi-4.4.4/setup.py mayavi-4.4.4-vtk6/setup.py
+--- mayavi-4.4.4/setup.py	2016-02-29 07:49:20.000000000 +0100
++++ mayavi-4.4.4-vtk6/setup.py	2016-07-30 21:23:33.185353652 +0200
+@@ -77,6 +77,7 @@
+ from distutils import log
+ from setuptools.command import develop, install_scripts
+ 
++sys.path.insert(1, "/opt/vtk6/lib/python2.7/site-packages")
+ 
+ info = {}
+ fname = join('mayavi', '__init__.py')
+diff -urN mayavi-4.4.4/tvtk/setup.py mayavi-4.4.4-vtk6/tvtk/setup.py
+--- mayavi-4.4.4/tvtk/setup.py	2016-02-29 07:49:20.000000000 +0100
++++ mayavi-4.4.4-vtk6/tvtk/setup.py	2016-07-30 21:23:33.185353652 +0200
+@@ -6,6 +6,7 @@
+ 
+ import os, sys
+ 
++sys.path.insert(1, "/opt/vtk6/lib/python2.7/site-packages")
+ 
+ def configuration(parent_package=None, top_path=None):
+     from os.path import join
+diff -urN mayavi-4.4.4/tvtk/tools/tvtk_doc.py mayavi-4.4.4-vtk6/tvtk/tools/tvtk_doc.py
+--- mayavi-4.4.4/tvtk/tools/tvtk_doc.py	2016-02-29 07:49:20.000000000 +0100
++++ mayavi-4.4.4-vtk6/tvtk/tools/tvtk_doc.py	2016-07-30 21:24:31.208374707 +0200
+@@ -16,6 +16,9 @@
+ # Copyright (c) 2008-2015,  Enthought, Inc.
+ # License: BSD Style.
+ 
++import sys
++sys.path.insert(1, "/opt/vtk6/lib/python2.7/site-packages")
++
+ # Standard library imports.
+ import vtk
+ import types

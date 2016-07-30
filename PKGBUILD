@@ -2,39 +2,59 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=mayavi
-pkgver=4.4.2
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="A 3-dimensional visualizer of scientific data"
 arch=('i686' 'x86_64')
 url="https://github.com/enthought/mayavi"
 license=('BSD')
-depends=('ipython2' 'vtk' 'python2-envisage' 'python2-pyqt4')
-makedepends=('python2-setuptools' 'python2-sphinx' 'python2-twisted' 'xorg-server-xvfb')
+depends=('ipython2' 'vtk6' 'python2-envisage' 'wxpython2.8')
+makedepends=('python2-setuptools' 'python2-sphinx' 'python2-twisted' 'xorg-server-xvfb'
+             'hdf5' 'jsoncpp' 'gdal' 'unixodbc')
 replaces=('python2-mayavi')
 provides=('python2-mayavi')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enthought/mayavi/archive/${pkgver}.tar.gz"
-        "mayavi.sh" "mayavi.csh")
-md5sums=('2ac30719b2754d13cb20236654554ac4'
-         '6d36bbfb69010e313292cfee4982487f'
-         '91eb92abc506a00c29afcb37c9600914')
+        "mayavi.sh" "mayavi.csh" "vtk6.patch")
+md5sums=('31a95371bdec9affd97b178b311afb9c'
+         '3e998f4f3cb1d9bc3353fbb933984458'
+         'd68e29e3c805ad2e0a5e82b1744b1f0a'
+         '1b91b3aaf31a44ddc5e770f4fb1e3c5f')
 
 prepare() {
   cd "$srcdir"/mayavi-$pkgver
 
+  # patch to force VTK6
+  patch -p1 < ../vtk6.patch
+
   # force selection of wxpython 2.8
   sed -e "s/wxversion.ensureMinimal('2.8')/wxversion.select('2.8')/g" -i $(find . -name '*.py')
 
-  # Use python2-sphinx provided sphinx-build2
-  sed -i -e 's/sphinx-build/sphinx-build2/' docs/Makefile*
+  # fix wrong-file-end-of-line-encoding
+  for file in *.txt examples/mayavi/data/room_vis.wrl examples/tvtk/dscene.py \
+    examples/mayavi/interactive/wx_mayavi_embed*.py ; do
+    sed "s|\r||g" $file > $file.new && \
+    touch -r $file $file.new && \
+    mv $file.new $file
+  done
 
-  # Fix distutils compatibility
-  sed -i -e 's/distutils.Version/distutils.version/' mayavi/modules/text.py
-  sed -i -e 's/distutils.Version/distutils.version/' tvtk/tools/mlab.py
+  # file-not-utf8
+  for file in *.txt docs/*.txt; do
+    iconv -f ISO-8859-1 -t UTF-8 -o $file.new $file && \
+    touch -r $file $file.new && \
+    mv $file.new $file
+  done
+
+  # remove exec permission
+  find examples -type f -exec chmod 0644 {} ";"
+  chmod 0644 mayavi/tests/data/cellsnd.ascii.inp
 
   # set path so autodoc can find just built modules
-  echo "sys.path.append('$srcdir/enthought-mayavi-${_githubtag}/build/lib.linux-$CARCH-2.7/')" >> docs/source/mayavi/conf.py
+  echo "sys.path.append('$srcdir/mayavi-$pkgver/build/lib.linux-$CARCH-2.7/')" >> docs/source/mayavi/conf.py
+
+  # Use python2-sphinx provided sphinx-build2
+  sed -i -e 's/sphinx-build/sphinx-build2/' docs/Makefile*
 
   # fix python->python2
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
@@ -45,6 +65,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/mayavi-$pkgver
+
   rm -rf build
   mkdir build
   mkdir -p build/lib.linux-$CARCH-2.7/{tvtk/plugins/scene,mayavi/preferences,mayavi/core}
@@ -55,15 +76,13 @@ build() {
   ln -s "$srcdir"/enthought-mayavi-${_githubtag}/tvtk/plugins/scene/preferences.ini \
     build/lib.linux-$CARCH-2.7/tvtk/plugins/scene/preferences.ini
 
-  # force using Qt during build
-  export ETS_TOOLKIT=qt4
-
   # now this is ugly, but docs do not build without X. We setup X according to:
   # http://docs.enthought.com/mayavi/mayavi/tips.html#rendering-using-the-virtual-framebuffer
   export DISPLAY=:69
   Xvfb $DISPLAY &
 
   # build!
+  export ETS_TOOLKIT="wx"
   python2 setup.py build
 
   # have to kill the server to proceed, and do other cleanup
@@ -76,15 +95,23 @@ build() {
 package() {
   cd "$srcdir"/mayavi-$pkgver
 
-  python2 setup.py install --root="$pkgdir"/ --optimize=1
+  python2 setup.py install --skip-build --root="$pkgdir"/ --optimize=1
 
-  cp -r docs/build/* "${pkgdir}"/usr/lib/python2.7/site-packages
+  # remove useless files
+  rm -f "${pkgdir}"/usr/lib/python2.7/site-packages/tvtk/setup.py*
+  find "${pkgdir}" -name \.buildinfo -type f -print | xargs rm -f -
 
-  # switch to PyQt by default, fix FS#41791
+  # non-executable-script
+  chmod +x "${pkgdir}"/usr/lib/python2.7/site-packages/mayavi/tests/runtests.py
+
+  # install manpage
+  mkdir -p "${pkgdir}"/usr/share/man/man1
+  cp -p docs/mayavi2.man "${pkgdir}"/usr/share/man/man1/mayavi2.1
+
+  # switch to Wx, as PyQT no longer works, FS#41791 no longer fixed :(
   install -d "${pkgdir}"/etc/profile.d
   install -Dm644 "${srcdir}"/mayavi.sh "${pkgdir}"/etc/profile.d/mayavi.sh
   install -Dm644 "${srcdir}"/mayavi.csh "${pkgdir}"/etc/profile.d/mayavi.csh
 
   install -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-

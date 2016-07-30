@@ -1,1 +1,1 @@
-export ETS_TOOLKIT="qt4"
+export ETS_TOOLKIT="wx"
