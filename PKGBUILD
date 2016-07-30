@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-gtk-theme-git
-pkgver=20160606
+pkgver=20160615
 pkgrel=1
 pkgdesc="Papirus GTK theme for KDE (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
