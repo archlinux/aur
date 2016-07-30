@@ -3,7 +3,7 @@
 _basename=libevdev
 pkgname="lib32-$_basename"
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper library for evdev devices (32-bit)"
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/libevdev/"
@@ -12,7 +12,7 @@ depends=('glibc' "$_basename")
 makedepends=('python2' 'lib32-check' 'valgrind' 'doxygen')
 #checkdepends=('kmod')
 source=(http://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig})
-sha256sums=('17630821a57e6e3f02e01ade836f24068df9bd530067091152b0d468c3a86f40'
+sha256sums=('5ee2163656a61f5703cb5c08a05c9471ffb7b640bfbe2c55194ea50d908f629b'
             'SKIP')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
