@@ -2,7 +2,7 @@
 
 _basename=libevdev
 pkgname="lib32-$_basename"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Wrapper library for evdev devices (32-bit)"
 arch=('x86_64')
