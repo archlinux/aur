@@ -1,9 +1,9 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python2-visvis
-pkgver=1.9
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A pure Python library for visualization of 1D to 4D data in an object oriented way"
-url="http://code.google.com/p/visvis/"
+url="https://github.com/almarklein/visvis"
 arch=('any')
 license=('BSD')
 depends=('python2-numpy' 'python2-opengl')
@@ -13,8 +13,8 @@ optdepends=('python2-pyqt4: for Qt4 backend'
             'python2-wxpython: for WxWidgets backend'
             'pygtk: for GTK backend'
             'pyfltk: for FLTK backend')
-source=(http://visvis.googlecode.com/files/visvis-$pkgver.zip license)
-md5sums=('6b90244c3dd52514f48a57da2cf11a31'
+source=("https://github.com/almarklein/visvis/archive/v${pkgver}.tar.gz" "license")
+md5sums=('8441970e546dbb11bc522c89fc828df9'
          '2dd246a9746e31c0ab2a512bbc114baf')
 
 build() {
