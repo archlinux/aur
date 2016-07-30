@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=fbx-conv-git
-pkgver=r173.6dd9f6a
+pkgver=r187.2be464f
 pkgrel=1
 pkgdesc="Command line utility using the FBX SDK to convert FBX/Collada/Obj files to a custom text/binary format for static, keyframed and skinned meshes."
 arch=('i686' 'x86_64')
