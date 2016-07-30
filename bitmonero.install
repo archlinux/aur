@@ -9,6 +9,17 @@ post_install() {
 }
 
 post_upgrade() {
+
+    #Need for upgrade for user old version not execute post_install
+    getent passwd bitmonero &>/dev/null || {
+        echo -n ">>> Creating bitmonero user... "
+        useradd --system --user-group -m --home /var/lib/bitmonero bitmonero
+        echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+    mkdir -p /var/log/bitmonero && chown bitmonero:bitmonero /var/log/bitmonero
+
+
     echo ">>> NOTICE: Package changed location of bitmonero data dir."
     echo ">>> Please move your bitmonero data dir to new location "
     echo ">>> before starting daemon systemd service:"
