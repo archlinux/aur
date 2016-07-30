@@ -3,16 +3,16 @@
 # Developer: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicro
-pkgver=2.21
-pkgrel=3
+pkgver=2.22
+pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
-url="https://launchpad.net/~ryochan7"
+url="https://github.com/AntiMicro/antimicro"
 license=('GPL3')
 depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
-source=("http://ppa.launchpad.net/ryochan7/${pkgname}/ubuntu/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-md5sums=('5c78c37a8f854e24f6f9521569f8a1c9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('165a0dbe5931783f0d2c035a87b8e6a1')
 
 build() {
   cd ${pkgname}-${pkgver}
