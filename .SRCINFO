@@ -1,6 +1,6 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
-	pkgver = 2.4.0.r10323.d3c6603
+	pkgver = 2.4.0.r10355.966e24b
 	pkgrel = 1
 	url = http://amule.org/
 	arch = i686
@@ -13,8 +13,6 @@ pkgbase = amule-git
 	depends = libupnp
 	depends = wxgtk2.8
 	conflicts = amule
-	backup = usr/share/webapps/amps/index.php
-	backup = usr/share/webapps/amps/style.css
 	source = git+https://github.com/amule-project/amule.git
 	source = http://svgicons.o7a.net/unofficial/amule.png
 	source = https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
