@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-bomi-skin-git
-pkgver=20160606
+pkgver=20160615
 pkgrel=1
 pkgdesc="Papirus theme for Bomi (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
