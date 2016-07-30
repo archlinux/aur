@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=D2VWitch
+GenericName=Indexes MPEG (1, 2) streams and writes D2V files
+Comment=Indexes MPEG (1, 2) streams and writes D2V files
+Type=Application
+Exec=d2vwitch
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;
