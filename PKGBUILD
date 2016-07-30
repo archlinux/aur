@@ -6,7 +6,7 @@
 # Contributor: Darwin Bautista <djclue917@gmail.com>
 
 pkgname=soundkonverter-frameworks-git
-pkgver=v2.1.90.r25.gdf74e99
+pkgver=v2.2.2.r32.g81287bc
 pkgrel=1
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ optdepends=('cdrkit: cdda2wav backend'
             'vorbis-tools: vorbis tools backend'
             'wavpack: wavpack backend'
             'sox: sox plugin (change sample rate, various effects)')
-source=("soundkonverter::git+https://github.com/valeth/soundkonverter#branch=frameworks")
+source=("soundkonverter::git+https://github.com/isoft-linux/soundkonverter")
 provides=("soundkonverter" "soundkonverter-frameworks")
 conflicts=("soundkonverter" "soundkonverter-frameworks")
 sha512sums=('SKIP')
