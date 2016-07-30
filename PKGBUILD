@@ -22,7 +22,12 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   git submodule init
   git submodule update
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPSMOVEAPI_LIB_DEST=lib .
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DPSMOVEAPI_LIB_DEST=lib \
+    -DPSMOVE_BUILD_EXAMPLES=OFF \
+    -DPSMOVE_BUILD_OPENGL_EXAMPLES=OFF \
+    -DPSMOVE_BUILD_TESTS=OFF
 }
 
 build() {
