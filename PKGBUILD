@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.14.21.r11423.b4dd268
+pkgver=1.14.21.r11671.23fb2b7
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -56,10 +56,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF \
-    -DWITH_KF5=ON \
     -DQT_PLUGINS_DIR=lib/qt/plugins \
+    -DBUILD_TESTING=OFF \
     -DBUILD_MARBLE_EXAMPLES=ON \
     -DBUILD_MARBLE_TOOLS=ON \
     -DBUILD_MARBLE_TESTS=OFF \
