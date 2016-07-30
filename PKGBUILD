@@ -3,8 +3,8 @@
 pkgname=owl-lisp
 pkgver=0.1.12
 pkgrel=1
-pkgdesc="Simple purely functional lisp"
-url="https://github.com/aoh/owl-lisp"
+pkgdesc='Simple purely functional lisp'
+url='https://github.com/aoh/owl-lisp'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('glibc')
@@ -19,6 +19,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
+  install -Dm 644 fasl/* -t "${pkgdir}/var/lib/${pkgname}/fasl"
   install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
