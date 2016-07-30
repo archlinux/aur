@@ -1,12 +1,12 @@
 pkgbase = stout-bin
 	pkgdesc = A reliable static website deploy tool
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/EagerIO/Stout
 	arch = any
 	license = MIT
-	source = https://github.com/EagerIO/Stout/releases/download/v1.2.2/stout-linux
-	md5sums = 7ab003835b2780c79b67403b9d193b41
+	source = https://github.com/EagerIO/Stout/releases/download/v1.2.3/stout-linux
+	md5sums = a22a5e5bb6adcffc4d2380ed0d365f15
 
 pkgname = stout-bin
 
