@@ -2,7 +2,7 @@
 
 pkgname=pokemon-go-map
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Live visualization of all the pokemon in your area... and more! (stable releases)'
 arch=('any')
 url='https://jz6.github.io/PoGoMap/'
@@ -13,7 +13,8 @@ md5sums=('fbba2ca161fadf68186f0fde5f671833')
 
 build() {
   cd "${srcdir}/PokemonGo-Map-${pkgver}"
-  #npm install
+  npm install
+  grunt build
   #npm run-script build
 }
 
