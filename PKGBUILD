@@ -9,6 +9,7 @@ url='https://www.kde.org/applications/system/yakuake'
 license=('GPL')
 depends=('knewstuff'
          'konsole'
+         'kwayland'
          'hicolor-icon-theme'
          )
 makedepends=('extra-cmake-modules'
@@ -19,7 +20,6 @@ conflicts=('yakuake')
 provides=('yakuake')
 source=('git://anongit.kde.org/yakuake.git')
 sha1sums=('SKIP')
-install=yakuake-git.install
 
 pkgver() {
   cd yakuake
