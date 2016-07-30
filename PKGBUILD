@@ -3,7 +3,7 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 arch=('x86_64')
 license=(LGPL)
@@ -19,7 +19,7 @@ makedepends=('lib32-schroedinger' 'lib32-libexif' 'lib32-libdvdread' 'lib32-libv
              'vulkan-headers' 'vulkan-icd-loader')
 options=(!emptydirs)
 source=(${url}/src/$_basename/$_basename-$pkgver.tar.xz)
-sha256sums=('0bbd58f363734fc0c4a620b2d6fb01d427fdafdbda7b90b4e15d03b751ca40f5')
+sha256sums=('d7995317530c8773ec088f94d9320909d41da61996b801ebacce9a56af493f97')
 
 prepare() {
   cd $_basename-$pkgver
