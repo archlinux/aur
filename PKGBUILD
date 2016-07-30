@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-k3b-theme-git
-pkgver=20160606
+pkgver=20160615
 pkgrel=1
 pkgdesc="Papirus theme for K3B (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
