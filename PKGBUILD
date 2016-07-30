@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-wallpapers-git
-pkgver=20160606
+pkgver=20160615
 pkgrel=1
 pkgdesc="Papirus Wallpapers Suite (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
