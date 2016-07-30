@@ -3,7 +3,7 @@
 
 _dver=261959
 pkgname=firefox-extension-bloody-vikings
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Simplifies the use of temporary e-mail addresses in order to protect your real address from spam"
 url="https://addons.mozilla.org/firefox/addon/bloody-vikings/"
@@ -12,7 +12,7 @@ makedepends=('unzip')
 license=('MPL2')
 arch=('any')
 source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
-sha256sums=('ef8a1b1d7a10e9e933ca730d73df6f75c0d93956f289cb4d5576052f9ab92bc1')
+sha256sums=('adcecf25aec2a214cd2c1122afd77ffbd00acd74d7564fa59b9aabeb26c13f67')
 noextract=(addon-${_dver}-latest.xpi)
 
 pkgver() {
