@@ -1,7 +1,8 @@
-#Maintainer: Martin Lukes <martin.meridius@gmail.com>
+# Maintainer: Martin Lukes <martin.meridius@gmail.com>
+
 _appname=smartgit
 pkgname=${_appname}_preview
-pkgver=7.2_preview_11
+pkgver=8_preview_14
 pkgrel=1
 pkgdesc="Git client with Hg and SVN support. Preview version."
 arch=("any")
@@ -21,27 +22,27 @@ _pkgver=${pkgver//_/-}
 source=(https://www.syntevo.com/static/smart/download/${_appname}/${_appname}-linux-${_pkgver}.tar.gz
         smartgit.desktop)
 install="smartgit_preview.install"
-sha1sums=('00faa832465b6d4103ff38b989b3f1217b2a32f0'
+sha1sums=('16d3f4df62c6c1514620d534705250d3d61ad3c2'
           'bafa47c0b43ad89aaa3b34a078771b3cd12bd1f3')
 
 package() {
     cd "$srcdir"
 
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_appname}"/licenses/*
-    mkdir -p "${pkgdir}"/opt
-    mv "${_appname}" ${pkgdir}/opt/${pkgname} || return 1
+    install -d ${pkgdir}/usr/share/licenses/${pkgname}
+    install -m644 -t ${pkgdir}/usr/share/licenses/${pkgname} ${_appname}/licenses/*
+    mkdir -p ${pkgdir}/opt
+    mv ${_appname} ${pkgdir}/opt/${pkgname} || return 1
 
-    install -D -m644 smartgit.desktop "${pkgdir}"/usr/share/applications/${_appname}.desktop
+    install -D -m644 smartgit.desktop ${pkgdir}/usr/share/applications/${_appname}.desktop
 
     # link icon files
-    mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,48x48,64x64,128x128,256x256}/apps
-    cd ${pkgdir}/usr/share/icons/hicolor
-    ln -s /opt/${pkgname}/bin/smartgit-32.png 32x32/apps/${_appname}.png
-    ln -s /opt/${pkgname}/bin/smartgit-48.png 48x48/apps/${_appname}.png
-    ln -s /opt/${pkgname}/bin/smartgit-64.png 64x64/apps/${_appname}.png
-    ln -s /opt/${pkgname}/bin/smartgit-128.png 128x128/apps/${_appname}.png
-    ln -s /opt/${pkgname}/bin/smartgit-256.png 256x256/apps/${_appname}.png
+    local sizes=(32 48 64 128 256)
+    local dest=
+    for size in "${sizes[@]}"; do
+        dest=${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps
+        mkdir -p $dest
+        ln -s /opt/${pkgname}/bin/smartgit-${size}.png ${dest}/${_appname}.png
+    done
 
     # create link in /usr/bin
     cd ${pkgdir}
