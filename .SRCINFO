@@ -1,6 +1,6 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher is freeware launcher of Minecraft.
-	pkgver = 1.761
+	pkgver = 1.731
 	pkgrel = 1
 	url = http://vk.com/tlauncher
 	install = tlauncher.install
