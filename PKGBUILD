@@ -18,7 +18,8 @@ provides=('d2vwitch')
 conflicts=('d2vwitch')
 source=('d2vwitch::git+https://github.com/dubhater/D2VWitch.git'
         'd2vwitch.desktop')
-sha1sums=('SKIP')
+sha1sums=('SKIP'
+          '146fa44a5e8bba029592d63cbd55b1a4d4184578')
 
 pkgver() {
   cd d2vwitch
