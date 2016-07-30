@@ -22,7 +22,7 @@ source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
 )
 	
 md5sums=('SKIP'
-         '1e711e4c154b68eca106717aaad9e483' 
+         '9e8e52d5379c534e9cde86e5d6c39592' 
          'eb04582e2007f8e450322c1794ed30ba' 
          '513a3ff4be5cb6f3faf13ffcb680b941')
 
