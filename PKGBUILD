@@ -1,11 +1,11 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-pkgname=python-suds
-pkgver=1.3.2
-pkgrel=1
+pkgname='python-suds'
+pkgver='1.3.2'
+pkgrel='1'
 pkgdesc="A lightweight SOAP python client (suds-py3) - suds for python3"
 arch=('any')
-url="https://github.com/cackharot/suds-py3"
+url='https://github.com/cackharot/suds-py3'
 license=('LGPL')
 depends=('python')
 makedepends=('python-setuptools')
