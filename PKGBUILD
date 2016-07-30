@@ -7,7 +7,7 @@
 pkgname=libircclient-pc
 _pkgname=libircclient
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Small but powerful library, which implements client-server IRC protocol, with pkg-config support'
 arch=('i686' 'x86_64')
 url='http://www.ulduzsoft.com/libircclient/'
@@ -15,10 +15,10 @@ license=('GPL')
 depends=('glibc')
 makedepends=('python2-sphinx' 'python2-rst2pdf') 
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
-        "https://gist.githubusercontent.com/LastAvenger/af72b0fe71ed80dfb4fa87d74805abe0/raw/9dbb264f47d5e8662f942e7863d111b9ed1cd920/libircclient.pc"
+        "https://gist.githubusercontent.com/LastAvenger/af72b0fe71ed80dfb4fa87d74805abe0/raw/bc4193535c1fac4f6793c0adade8ad96368e051a/libircclient.pc"
        )
 md5sums=('a1b4fd5491a36b8aedf65a6845755800'
-         'a70bcacc524b904cbb7b644c7f385a72'
+         'ba7704bee34d891d7b0cdad3c2973fa9'
         )
 conflicts=('libircclient')
 
