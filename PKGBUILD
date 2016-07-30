@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.17.99.48513.g1a34d89
+pkgver=1.18.0beta1.49353.g4352747
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
          'libgl' 'libinput' 'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind'
-         'openjpeg' 'poppler' 'wayland')
+         'mesa' 'openjpeg' 'poppler' 'wayland')
 makedepends=('git' 'python2')
 optdepends=('geoclue: For elocation'
             'gst-plugins-base: Video and thumbnail codecs'
