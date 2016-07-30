@@ -11,7 +11,7 @@ url="http://gnome-look.org/content/show.php?content=154296"
 license=('GPL3')
 depends=('gtk-engine-unico' 'gtk-engine-murrine')
 options=('!strip')
-source=("http://gnome-look.org/CONTENT/content-files/154296-FlatStudio-1.03.tar.gz")
+source=("https://dl.opendesktop.org/api/files/download/id/1460761605/154296-FlatStudio-1.03.tar.gz")
 md5sums=('4a22cba22de2086b108bf8119473453f')
 
 prepare() {
