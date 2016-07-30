@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <chris@chrisarndt.de>
 
 pkgname=restview
-pkgver=2.4.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A viewer for ReStructuredText documents that renders them on the fly."
 arch=(any)
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('python-docutils' 'python-pygments' 'python-readme')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=(http://pypi.python.org/packages/source/r/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('52eed1a9ce2bc31d6b4269c8c4ba8c5c1cf7c989b465e9a62bfa6357fc0da965')
+source=("https://github.com/mgedmin/restview/archive/${pkgver}.tar.gz")
+sha256sums=('797104c9b1732363afb1e944d8ee5ef27352a5d134c40aa50ff81a64f3029b0e')
 
 
 package() {
