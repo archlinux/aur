@@ -1,4 +1,4 @@
-# Maintainer: Élie Bouttier <elie+aur@bouttier.eu.org>
+# Maintainer: Élie Bouttier <elie+aur@bouttier.eu>
 pkgname=mvim-git
 pkgver=v0.1.0.r0.gee15d51
 pkgrel=1
