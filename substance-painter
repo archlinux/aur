@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#export QT_SCALE_FACTOR=0.75
+
+#exec primusrun /opt/Allegorithmic/Substance_Painter_2/Substance\ Painter\ 2 "$@"
+exec /opt/Allegorithmic/Substance_Painter_2/Substance\ Painter\ 2 "$@"
+
