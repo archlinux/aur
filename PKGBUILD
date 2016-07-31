@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('cdparanoia'
          'kdelibs4support'
          'libkcddb-git'
-         'libkcompactdisc-frameworks-git'
+         'libkcompactdisc-git'
          )
 makedepends=('extra-cmake-modules'
              'kdoctools'
