@@ -18,7 +18,10 @@ sha256sums=('987b9a5b35e5f6bef36830184bd0ab2f200a7d7525216320a379ed1a1ef24b0f')
 
 prepare() {
     mv $srcdir/$pkgname-$_gitcommit $srcdir/$pkgname
-    mkdir -p build  
+    if [[ -d build ]]; then
+        rm -Rf build
+    fi
+    mkdir -p build
 }
 
 build() {
@@ -30,10 +33,7 @@ build() {
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
-    
-    cd ../$pkgname
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
+    install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 } 
 
