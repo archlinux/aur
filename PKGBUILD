@@ -5,7 +5,7 @@ pkgver=v0.1.3.0.r56.g6f73639
 pkgrel=1
 pkgdesc="A pre-alpha Jupyter lab environment notebook server extension."
 url="http://jupyter.org"
-depends=('python')
+depends=('python' 'jupyter>=4.1.0-5')
 makedepends=('python3' 'npm' )
 license=('BSD')
 conflicts=('jupyterlab')
