@@ -2,7 +2,7 @@
 
 _plug=vsrawsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.9634f88
+pkgver=0.3.3.17.g9052cb0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("git+https://github.com/myrsloik/${_plug}.git")
+source=("git+https://github.com/walisser/${_plug}.git")
 sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -27,8 +27,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
