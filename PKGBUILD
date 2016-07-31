@@ -3,7 +3,7 @@
 pkgname=kaudiocreator-git
 pkgver=1.3.r835.d8c20a8
 pkgrel=1
-pkgdesc="a program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
+pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/multimedia/kaudiocreator'
 license=('GPL')
@@ -12,7 +12,7 @@ depends=('kdelibs4support'
          'kcmutils'
          'libdiscid'
          'libkcddb-git'
-         'libkcompactdisc-frameworks-git'
+         'libkcompactdisc-git'
          'taglib'
          'hicolor-icon-theme'
          )
