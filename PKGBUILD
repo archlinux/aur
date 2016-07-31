@@ -3,11 +3,12 @@
 pkgname=mariadb-connector-odbc-bin
 _pkgname=mariadb-connector-odbc
 provides=('mariadb-connector-odbc')
+conflicts=('mariadb-connector-odbc')
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
-url="https://github.com/Erroneous1/sqlpp11-connector-odbc"
+url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
 license=('LGPL')
 depends=('unixodbc' 'libmariadbclient' 'glibc')
 
