@@ -2,13 +2,13 @@
 
 _pkgname=evince
 pkgname=evince-lcdfilter
-pkgver=3.20.0
-pkgrel=2
+pkgver=3.20.1
+pkgrel=0
 pkgdesc="Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(gtk3 libgxps libspectre gsfonts poppler-glib djvulibre t1lib dconf
+depends=(gtk3 libgxps libspectre gsfonts poppler-glib-lcdfilter djvulibre t1lib dconf
          libsecret gsettings-desktop-schemas gnome-desktop libarchive
          gst-plugins-base-libs)
 makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
@@ -21,7 +21,7 @@ groups=(gnome)
 options=('!emptydirs')
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         evince-poppler-subpixel.patch)
-sha256sums=('cf8358a453686c2a7f85d245f83fe918c0ce02eb6532339f3e02e31249a5a280'
+sha256sums=('fc7ac23036939c24f02e9fed6dd6e28a85b4b00b60fa4b591b86443251d20055'
             'SKIP')
 
 build() {
