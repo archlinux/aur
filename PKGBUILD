@@ -4,8 +4,8 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="https://pithos.github.io/"
@@ -20,7 +20,7 @@ optdepends=('libkeybinder3: for media keys plugin'
             'libnotify: Notification support')
 makedepends=('intltool')
 source=("https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz")
-sha256sums=('46ab6f09aa2d0ae5a7d76b4cebb532e098a055657b25a9484d77e86e86e99860')
+sha256sums=('51dc6095162df3ee095a34d3a9ab20aeb4c99fe017a48ae648a5dd55d21c2c17')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
