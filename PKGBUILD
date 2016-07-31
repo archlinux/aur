@@ -4,7 +4,7 @@ pkgbase="lib32-wxwidgets-light"
 pkgname=('lib32-wxbase-light' 'lib32-wxgtk-light' 'lib32-wxcommon-light')
 pkgver=3.0.2
 pkgrel=5
-pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!) (32 bits)"
+pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
 license=('custom:wxWindows')
@@ -114,7 +114,7 @@ package_lib32-wxbase-light() {
 }
 
 package_lib32-wxgtk-light() {
-  pkgdesc="wxWidgets GTK2 Toolkit (GNOME/GStreamer free!) (32 bits)"
+  pkgdesc="wxWidgets GTK2 and GTK3 Toolkit (GNOME/GStreamer free!) (32 bits)"
   depends=('lib32-wxbase-light'
            'lib32-gtk2'
            'lib32-gtk3'
