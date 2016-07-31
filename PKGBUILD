@@ -6,7 +6,7 @@ _ver=1.15
 _pkgbase=mate-netbook
 pkgname="${_pkgbase}-${_ver}-gtk3"
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mate netbook utilities"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ depends=('gtk3' 'libfakekey' 'libwnck3' 'libunique3' 'mate-panel-1.15-gtk3')
 makedepends=('mate-common')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('699de846c9e7f4fe435691e73ca27ecd55f192ec')
+install=mate-netbook.install
 
 prepare() {
     cd "${srcdir}"

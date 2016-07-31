@@ -1,8 +1,9 @@
 pkgbase = mate-netbook-1.15-gtk3
 	pkgdesc = Mate netbook utilities
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
+	install = mate-netbook.install
 	arch = i686
 	arch = x86_64
 	license = GPL

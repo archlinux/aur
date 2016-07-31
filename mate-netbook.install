@@ -1,0 +1,16 @@
+post_install() {
+    cp mate-maximus-autostart.desktop /etc/xdg/autostart/
+	chmod +x /usr/etc/xdg/autostart/mate-maximus-autostart.desktop
+    chmod +x /etc/xdg/autostart/mate-maximus-autostart.desktop
+}
+
+post_upgrade(){
+    cp -r mate-maximus-autostart.desktop /etc/xdg/autostart/
+    chmod +x /usr/etc/xdg/autostart/mate-maximus-autostart.desktop
+    chmod +x /etc/xdg/autostart/mate-maximus-autostart.desktop
+}
+
+post_remove(){
+    rm /etc/xdg/autostart/mate-maximus-autostart.desktop
+}
+
