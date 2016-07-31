@@ -1,0 +1,19 @@
+pkgbase = dasher
+	pkgdesc = Information-efficient text-entry interface, driven by natural continuous pointing gestures
+	pkgver = 5.0.0.alpha+24+gb0a3e18
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	depends = speech-dispatcher
+	depends = gtk3
+	options = !emptydirs
+	source = git://git.gnome.org/dasher#commit=b0a3e1807a6a294064ea7073b67fec3ce4c62b1d
+	sha256sums = SKIP
+
+pkgname = dasher
+
