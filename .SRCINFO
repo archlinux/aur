@@ -1,0 +1,28 @@
+pkgbase = notion-neg-git
+	pkgdesc = NotionWM fork with compton, dzen2, rofi, xft fonts support different default cfg
+	pkgver = 3612
+	pkgrel = 1
+	url = https://github.com/neg-serg/notion
+	arch = i686
+	arch = x86_64
+	license = custom:LGPL
+	makedepends = git
+	makedepends = libxrandr
+	makedepends = rofi
+	makedepends = dzen2-xft-xpm-xinerama-git
+	depends = glib2
+	depends = gettext
+	depends = lua
+	depends = libxext
+	depends = libsm
+	optdepends = libxrandr: xrandr support
+	optdepends = compton: X11 compositing support
+	provides = libtu
+	provides = libextl
+	provides = notion
+	conflicts = notion
+	source = notion::git://github.com/neg-serg/notion
+	md5sums = SKIP
+
+pkgname = notion-neg-git
+
