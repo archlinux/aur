@@ -1,6 +1,6 @@
 pkgbase = json-stroller-git
 	pkgdesc = A ncurse tool for viewing json formatted data
-	pkgver = v1.0.b2
+	pkgver = v1.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
