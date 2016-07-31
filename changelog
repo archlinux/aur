@@ -1,4 +1,13 @@
 2016-07-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.3.1-1:
+    It's now possible to use CustomGamePlayedWhileIdle and GamesPlayedWhileIdle at the same time, to play specific appIDs while showing custom status in Steam Network. Please note that the order of display is not guaranteed in this case.
+    Added new CustomGamePlayedWhileFarming bot config property, which is possible thanks to above change. Visit Configuration for more info.
+    Added support for --path command-line argument. Visit wiki for more info.
+    Greatly improved efficiency of handling multiple 2FA confirmations by adapting newly introduced multi-confirm method introduced by Valve. Thanks to that, ASF can send just one request for accepting all confirmations, instead of accepting them one-by-one.
+    Slightly improved internal cd-key validator to be case-insensitive and more precise.
+    Slightly improved network throughput on Windows machines.
+    Major portion of code improvements, optimizations and bugfixes.
+2016-07-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.2.5-2:
     Updated source archive to solve a false-positive (see https://github.com/JustArchi/ArchiSteamFarm/issues/127#issuecomment-234313478)
 2016-07-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
