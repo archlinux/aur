@@ -5,7 +5,7 @@
 pkgdesc='Homegear home automation software'
 _gitname=('homegear')
 pkgname=('homegear-git')
-pkgver=0.6.1245.6150f26
+pkgver=0.6.1292.8e85ee6
 pkgrel=1
 arch=('any')
 license=('GPL')
@@ -18,7 +18,7 @@ source=("git+https://github.com/Homegear/homegear"
 	'homegear.service'
         'homegear.logrotate')
 md5sums=('SKIP'
-         'e208eff7459ed6ac965c9f3ed64a4619'
+         'c19023c922ebb82157ac4d5624f321ab'
          '57e41d66f3f80d9e8e3caa665dd5e788')
 
 pkgver() {
