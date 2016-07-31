@@ -3,7 +3,7 @@
 
 pkgname=carla
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -22,15 +22,23 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 install=${pkgname}.install
-source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2")
-sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51')
+source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2"
+        "gcc6.patch")
+sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51'
+            '8d76bc717f10f8bca22391a31d76ab97f46cf6bf586154d472c532863a562c71f79811ff6432e8923e30807b263f2135531216da04e53ae45b355dc339b03c21')
+
+prepare() {
+  cp gcc6.patch Carla-${pkgver}
+  cd "Carla-${pkgver}"
+  patch -Np1 -i ${srcdir}/gcc6.patch
+}
 
 build() {
-  cd "${srcdir}/Carla-${pkgver}"
+  cd "Carla-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/Carla-${pkgver}"
+  cd "Carla-${pkgver}"
   make DESTDIR="${pkgdir}/" PREFIX=/usr install
 }
