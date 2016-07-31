@@ -1,0 +1,24 @@
+--- VkCppGenerator.cpp	2016-07-31 13:09:52.620040550 -0400
++++ VkCppGenerator_new.cpp	2016-07-31 13:08:47.986473756 -0400
+@@ -2916,9 +2916,10 @@
+   try {
+     tinyxml2::XMLDocument doc;
+ 
+-    std::string filename = (argc == 1) ? VK_SPEC : argv[1];
++    std::string filename = (argc > 1) ? argv[1] : VK_SPEC;
++    std::string vk_cpp = (argc > 2) ? argv[2] : VK_CPP;
+     std::cout << "Loading vk.xml from " << filename << std::endl;
+-    std::cout << "Writing vk_cpp.hpp to " << VK_CPP << std::endl;
++    std::cout << "Writing vk_cpp.hpp to " << vk_cpp << std::endl;
+ 
+     tinyxml2::XMLError error = doc.LoadFile(filename.c_str());
+     if (error != tinyxml2::XML_SUCCESS)
+@@ -2973,7 +2974,7 @@
+     std::map<std::string, std::string> defaultValues;
+     createDefaults(vkData, defaultValues);
+ 
+-    std::ofstream ofs(VK_CPP);
++    std::ofstream ofs(vk_cpp);
+     ofs << nvidiaLicenseHeader << std::endl
+       << vkData.vulkanLicenseHeader << std::endl
+       << std::endl
