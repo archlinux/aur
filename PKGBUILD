@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 135424 2015-06-15 15:29:00Z spupykin $
-# Maintainer: Ido Rosen <ido@kernel.org>
+# Maintainer: Guillaume Horel <thrasibule@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -14,7 +14,7 @@
 #
 
 pkgname=ejabberd-git
-pkgver=16.06.49.gc5d9d35
+pkgver=16.06.85.g4a49dfe
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
@@ -94,8 +94,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'f97c8a96160f30e0aecc9526c12e6606'
-         '527d7e8616332320007f2c1616bc8270'
-         'a3ebb00982d290284c1176c176a59b48')
+         '2253e277a6b3fae5124219c0aafa1089'
+         'be2fa3c15c92a9c2b9b6b7a3957d5c3a')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -135,18 +135,17 @@ package() {
   cd "$srcdir/${pkgname%%-git}-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  install -Dm04750 deps/p1_pam/priv/bin/epam $pkgdir/usr/lib/${pkgname%%-git}-$pkgver/priv/bin/epam
-  install -d "$pkgdir/var/lib/${pkgname%%-git}"
+  install -Dm04750 deps/p1_pam/priv/bin/epam "$pkgdir/usr/lib/${pkgname%%-git}-${pkgver%.*}/priv/bin/epam"
   install -D -m0644 "$srcdir/${pkgname%%-git}.logrotate" "$pkgdir/etc/logrotate.d/${pkgname%%-git}"
   chmod ug+r "$pkgdir/etc/${pkgname%%-git}/"*
   chmod a+rx "$pkgdir/usr/bin/ejabberdctl" \
-    "$pkgdir/usr/lib/${pkgname%%-git}-$(echo -n $pkgver | cut -d. -f1-3)/priv/bin/captcha.sh"
+    "$pkgdir/usr/lib/${pkgname%%-git}-${pkgver%.*}/priv/bin/captcha.sh"
   rm -rf "$pkgdir/var/lock"
   install -Dm0644 $srcdir/ejabberd.service $pkgdir/usr/lib/systemd/system/ejabberd.service
   install -Dm644 $srcdir/sysuser.conf "$pkgdir"/usr/lib/sysusers.d/ejabberd.conf
+  install -Dm0644 $srcdir/$pkgname/tools/ejabberdctl.bc "${pkgdir}/$(pkg-config --variable=completionsdir bash-completion)/ejabberdctl"
 
   # workaround
-  ln -s mod_configure.beam $pkgdir/usr/lib/ejabberd-$pkgver/ebin/configure.beam
   rm -f $pkgdir/usr/bin/{elixir,iex,mix}
 
   # permissions
@@ -155,7 +154,7 @@ package() {
     $pkgdir/etc/ejabberd/ejabberd.yml \
     $pkgdir/etc/ejabberd/ejabberdctl.cfg \
     $pkgdir/etc/ejabberd \
-    $pkgdir/usr/lib/ejabberd-$pkgver/priv/bin/epam
+    $pkgdir/usr/lib/ejabberd-${pkgver%.*}/priv/bin/epam
 }
 
 # vim:set ts=2 sw=2 et:

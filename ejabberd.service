@@ -1,15 +1,24 @@
 [Unit]
 Description=A distributed, fault-tolerant Jabber/XMPP server
-After=network.target
+After=epmd.service network.target
+Requires=epmd.service
 
 [Service]
 Type=forking
 User=jabber
-Environment=HOME=/var/lib/ejabberd
+Group=jabber
 LimitNOFILE=16000
 RestartSec=5
 ExecStart=/usr/bin/ejabberdctl start
 ExecStop=/usr/bin/ejabberdctl stop
+ExecReload=/usr/bin/ejabberdctl reload_config
+Restart=on-failure
+CapabilityBoundingSet=CAP_DAC_OVERRIDE
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
 
 [Install]
 WantedBy=multi-user.target
