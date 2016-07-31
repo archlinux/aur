@@ -3,13 +3,13 @@
 _pkgname=pythonqt
 pkgname=${_pkgname}-qt5
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic Python binding for the Qt framework to embed Python code into C++ Qt applications. Qt5 lib.'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
 license=('LGPL2.1')
 
-depends=('python' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit')
+depends=('python' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-declarative')
 makedepends=('git' 'qt5-tools' 'dos2unix')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" 'qt5-python27-git')

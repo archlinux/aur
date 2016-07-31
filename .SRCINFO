@@ -1,7 +1,7 @@
 pkgbase = pythonqt-qt5
 	pkgdesc = A dynamic Python binding for the Qt framework to embed Python code into C++ Qt applications. Qt5 lib.
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pythonqt.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = pythonqt-qt5
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-webkit
+	depends = qt5-declarative
 	provides = pythonqt=3.1
 	conflicts = pythonqt
 	conflicts = qt5-python27-git
