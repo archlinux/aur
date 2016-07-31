@@ -8,7 +8,7 @@ pkgdesc='Library for generating identicons, port of Sigil with enhancements'
 license=('BSD')
 arch=('any')
 url='https://pypi.python.org/pypi/pydenticon/'
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/pydenticon/pydenticon-${pkgver}.tar.gz")
 md5sums=('5786b139933f0c6dcc6ae6c6e6d58de9')
 
