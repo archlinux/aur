@@ -37,16 +37,19 @@ sha256sums=('SKIP'
 validpgpkeys=()
 
 _gitname=${pkgname}
+# last known working commit-ish
+_githash=c1d004ed1f12a4113102fafd0c633001b8e4254c
 
 pkgver() {
     cd $_gitname
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags $_githash | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd $_gitname
 
+    git checkout $_githash
     git submodule update --init
     patch -p1 -i "${srcdir}/arch-linux.patch"
 }
