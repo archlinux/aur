@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('php' 'make')
 install="${pkgname}.install"
 source=("https://gitlab.com/davical-project/awl/repository/archive.tar.bz2?ref=master")
-sha256sums=('fdb2757b8e6641beba27e8d58102479305d7c78f1559df63256bcac0b715a0dd')
+sha256sums=('SKIP')
 
 prepare() {
       cd "${srcdir}"
