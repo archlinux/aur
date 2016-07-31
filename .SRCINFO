@@ -1,6 +1,6 @@
 pkgbase = rep-gtk
 	pkgdesc = Binding of the GTK and GDK libraries for the librep Lisp environment
-	pkgver = 0.90.8.2
+	pkgver = 0.90.8.3
 	pkgrel = 1
 	url = http://sawfish.wikia.com/wiki/Rep-GTK
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = rep-gtk
 	depends = librep
 	depends = gtk2
 	options = !libtool
-	source = http://download.tuxfamily.org/librep/rep-gtk/rep-gtk_0.90.8.2.tar.xz
-	sha1sums = 46769dfca8924e24f64ef200d6059aba49d35f5b
+	source = http://download.tuxfamily.org/librep/rep-gtk/rep-gtk_0.90.8.3.tar.xz
+	sha256sums = a96575db45794eefd0564172967a38ef2d7fec3ae2644c478e9f7d54b99ff341
 
 pkgname = rep-gtk
 

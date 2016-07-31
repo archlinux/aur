@@ -3,7 +3,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=rep-gtk
-pkgver=0.90.8.2
+pkgver=0.90.8.3
 pkgrel=1
 pkgdesc="Binding of the GTK and GDK libraries for the librep Lisp environment"
 arch=('i686' 'x86_64')
@@ -11,11 +11,12 @@ url="http://sawfish.wikia.com/wiki/Rep-GTK"
 license=('GPL')
 depends=('librep' 'gtk2')
 source=(http://download.tuxfamily.org/librep/rep-gtk/${pkgname}_${pkgver}.tar.xz)
-sha1sums=('46769dfca8924e24f64ef200d6059aba49d35f5b')
+sha256sums=('a96575db45794eefd0564172967a38ef2d7fec3ae2644c478e9f7d54b99ff341')
 options=('!libtool')
 
 build() {
   cd "${srcdir}/${pkgname}_${pkgver}"
+  ./autogen.sh 
   ./configure --prefix=/usr
   make
 }
