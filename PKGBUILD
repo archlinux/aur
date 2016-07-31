@@ -4,20 +4,20 @@
 
 pkgname=morris
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of the board game Nine Men's Morris"
 arch=('i686' 'x86_64')
-url="http://www.nine-mens-morris.net/index.html"
+url="http://nine-mens-morris.net/"
 license=('GPL3')
-depends=('boost-libs' 'gconf' 'gtk2')
-makedepends=('boost')
+depends=('gtk2' 'gconf' 'boost-libs')
+makedepends=('intltool' 'boost')
 source=("http://www.nine-mens-morris.net/data/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('3baa1684810f3f1990a8af10b48a96f8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "s_glib/gthread.h_glib.h_" src/gtk_appgui.cc
-  ./configure --prefix=/usr --sysconfdir=/etc
+
+  ./configure --prefix=/usr --with-gconf-schema-file-dir=/usr/share/gconf/schemas
   make
 }
 
@@ -26,7 +26,6 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  # Install documentation
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 AUTHORS README "${pkgdir}/usr/share/doc/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m644 "AUTHORS" "README" "${pkgdir}/usr/share/doc/${pkgname}"
 }
