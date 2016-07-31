@@ -13,7 +13,7 @@ source=(${pkgname}-${pkgver}.zip::"https://live.albiononline.com/clients/${pkgve
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('6926c3587406b4c40d00552b7a6c892f'
-         'd11512482c1442e5c3d41a5ec67788aa')
+         '14b5dfae0a7b3b0dc5e2f2975aa4892c')
 
 package() {
   mkdir -p "${pkgdir}/opt"
