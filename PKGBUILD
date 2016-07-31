@@ -12,7 +12,7 @@ license=('Public Domain')
 pkgdesc="Hydraulic and hidrologic modelation engine for wastewater drainage systems."
 provides=(swmm5)
 conflicts=(swmm5)
-source=("git://github.com/lothar-mar/swmm5.git#branch=testing")
+source=("git://github.com/lothar-mar/swmm5.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
