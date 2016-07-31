@@ -1,0 +1,19 @@
+post_install(){
+  echo ":: To use the ODBC connector, add an entry like the following into"
+  echo "   /etc/odbcinst.ini"
+  echo ""
+  echo "[MariaDB]"
+  echo "Description = ODBC Driver for MariaDB"
+  echo "Driver      = /usr/lib/libmaodbc.so"
+  echo "FileUsage   = 1"
+  echo ""
+  echo "Then add an entry in /etc/odbc.ini like:"
+  echo ""
+  echo "[MariaDBTest]"
+  echo "Driver      = MariaDB"
+  echo "Database    = test"
+  echo "Socket      = /run/mysqld/mysqld.sock"
+  echo "#Server      = 127.0.0.1"
+  echo "#Port        = 3306"
+}
+
