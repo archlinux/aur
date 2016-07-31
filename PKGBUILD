@@ -7,9 +7,8 @@ pkgrel=1
 pkgdesc="A light Firefox edition"
 url="http://sourceforge.net/projects/lightfirefox"
 license=('MPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'libxt' 'mime-types' 'nss' 'shared-mime-info')
+depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'libxt' 'mime-types' 'nss' 'shared-mime-info' 'gtk-update-icon-cache')
 provides=("${pkgname}=${_pkgver}")
-install=${pkgname}.install
 arch=('i686' 'x86_64')
 source_x86_64=("${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm::https://sourceforge.net/projects/${pkgname}/files/${_pkgver}/201607300609_gcc/${pkgname/firefox}-${pkgver}.linux-x86_64.rpm/download")
 md5sums_x86_64=('c9b31a93f952f2aa569029257e78041c')
