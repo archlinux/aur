@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = vulkan-headers
+
+[Action]
+Description = Updating vkcpp header to correspond to current vulkan header version
+When = PostTransaction
+Exec = cd /usr/include && /usr/bin/VkCppGenerator /usr/share/vulkan/vk.xml

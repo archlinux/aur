@@ -9,6 +9,8 @@ pkgbase = vkcpp
 	makedepends = cmake
 	makedepends = gcc
 	depends = vulkan-headers
+	source = vkcpp.hook
+	md5sums = a1dda15a0770c44b9fceba65e90f82e6
 
 pkgname = vkcpp
 
