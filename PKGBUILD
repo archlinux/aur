@@ -11,7 +11,7 @@ depends=(util-linux)
 install=${pkgname}.install
 
 source=(
-  ftp://gnu.mirrorcatalogs.com/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz
+  ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz
 )
 
 md5sums=(
