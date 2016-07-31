@@ -14,7 +14,7 @@ options=('!emptydirs')
 install=gradio.install
 source=("https://github.com/haecker-felix/${_gitname}/archive/v${pkgver}.zip")
 md5sums=('7c50e0dc0ec944d0a7893d8a7df1c41a')
-conflicts=('gradio-git')
+conflicts=('gradio-git' 'gradio-bin')
 provides=("gradio=$pkgver")
 
 build() {

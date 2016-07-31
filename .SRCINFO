@@ -21,6 +21,7 @@ pkgbase = gradio
 	depends = libsoup
 	provides = gradio=4.0.1
 	conflicts = gradio-git
+	conflicts = gradio-bin
 	options = !emptydirs
 	source = https://github.com/haecker-felix/gradio/archive/v4.0.1.zip
 	md5sums = 7c50e0dc0ec944d0a7893d8a7df1c41a
