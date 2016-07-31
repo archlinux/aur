@@ -16,9 +16,8 @@ depends=('amule-daemon'
 makedepends=('extra-cmake-modules'
              'python'
              )
-source=("http://kde-apps.org/CONTENT/content-files/150270-${pkgname}-${pkgver}.tar.bz2")
+source=("https://dl.opendesktop.org/api/files/download/id/1466632134/150270-${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('215a25efec9c487f4d14f338f251ba4e9b15f10c')
-install=kamule.install
 
 prepare() {
   mkdir -p build
