@@ -1,79 +1,23 @@
-diff -uprNEBZ --suppress-blank-empty a/build/python.prf b/build/python.prf
---- a/build/python.prf	2016-06-09 06:10:35.000000000 -0500
-+++ b/build/python.prf	2016-06-15 21:40:09.654136049 -0500
-@@ -36,6 +36,9 @@ macx {
+diff -uprNEBZ --suppress-blank-empty b/build/python.prf c/build/python.prf
+--- b/build/python.prf	2016-06-09 06:10:52.000000000 -0500
++++ c/build/python.prf	2016-07-31 03:43:21.315097681 -0500
+@@ -36,6 +36,7 @@ macx {
    # on linux, python-config is used to autodetect Python.
    # make sure that you have installed a matching python-dev package.
    
 -  unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
 -  unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes)
 +  # There's a symbolic link, so we don't need to specify a Python version
-+  # unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
-+  # unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes)
 +  unix:LIBS += $$system(python-config --libs)
 +  unix:QMAKE_CXXFLAGS += $$system(python-config --includes)
  }
-diff -uprNEBZ --suppress-blank-empty a/build/PythonQt.prf b/build/PythonQt.prf
---- a/build/PythonQt.prf	2007-11-15 06:40:56.000000000 -0600
-+++ b/build/PythonQt.prf	2016-06-15 21:40:09.657469387 -0500
-@@ -12,4 +12,8 @@ CONFIG(debug, debug|release) {
- }
- 
- win32::LIBS += $$PWD/../lib/PythonQt$${DEBUG_EXT}.lib
--unix::LIBS += -L$$PWD/../lib -lPythonQt$${DEBUG_EXT}
-+
-+# We're doing an out-of-source build
-+# so we need to fix the path
-+# unix::LIBS += -L$$PWD/../lib -lPythonQt$${DEBUG_EXT}
-+unix::LIBS += -L$$PWD/../../build/lib -lPythonQt$${DEBUG_EXT}
-\ No newline at end of file
-diff -uprNEBZ --suppress-blank-empty a/build/PythonQt_QtAll.prf b/build/PythonQt_QtAll.prf
---- a/build/PythonQt_QtAll.prf	2009-04-09 01:58:43.000000000 -0500
-+++ b/build/PythonQt_QtAll.prf	2016-06-15 21:40:09.657469387 -0500
-@@ -1,6 +1,9 @@
- # profile for non-mevis users to link to PythonQt_QtAll
- 
--INCLUDEPATH += $$PWD/../extensions/PythonQt_QtAll
-+# We're doing an out-of-source build
-+# so we need to fix the path
-+# INCLUDEPATH += $$PWD/../extensions/PythonQt_QtAll
-+INCLUDEPATH += $$PWD/../../build/extensions/PythonQt_QtAll
- 
- # check if debug or release
- CONFIG(debug, debug|release) {
-@@ -10,4 +13,8 @@ CONFIG(debug, debug|release) {
- }
- 
- win32::LIBS += $$PWD/../lib/PythonQt_QtAll$${DEBUG_EXT}.lib
--unix::LIBS += -L$$PWD/../lib -lPythonQt_QtAll$${DEBUG_EXT}
-+
-+# We're doing an out-of-source build
-+# so we need to fix the path
-+# unix::LIBS += -L$$PWD/../lib -lPythonQt_QtAll$${DEBUG_EXT}
-+unix::LIBS += -L$$PWD/../../build/lib -lPythonQt_QtAll$${DEBUG_EXT}
-\ No newline at end of file
-diff -uprNEBZ --suppress-blank-empty a/PythonQt.pro b/PythonQt.pro
---- a/PythonQt.pro	2009-04-09 04:32:07.000000000 -0500
-+++ b/PythonQt.pro	2016-06-15 21:40:09.657469387 -0500
-@@ -1,4 +1,7 @@
+diff -uprNEBZ --suppress-blank-empty b/PythonQt.pro c/PythonQt.pro
+--- b/PythonQt.pro	2009-04-09 04:32:52.000000000 -0500
++++ c/PythonQt.pro	2016-07-31 04:41:39.727080062 -0500
+@@ -1,4 +1,5 @@
  TEMPLATE = subdirs
- 
+
  CONFIG += ordered
 -SUBDIRS = generator src extensions tests examples
-+
 +# Do not build tests nor examples
-+# SUBDIRS = generator src extensions tests examples
 +SUBDIRS = generator src extensions
-\ No newline at end of file
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQtConversion.cpp b/src/PythonQtConversion.cpp
---- a/src/PythonQtConversion.cpp	2016-06-02 07:30:53.000000000 -0500
-+++ b/src/PythonQtConversion.cpp	2016-06-15 21:41:55.117267231 -0500
-@@ -1504,7 +1504,7 @@ QByteArray PythonQtConv::getCPPTypeName(
- bool PythonQtConv::isStringType(PyTypeObject* type)
- {
- #ifdef PY3K
--  return type == &PyUnicode_Type
-+  return type == &PyUnicode_Type;
- #else
-   return type == &PyUnicode_Type || type == &PyString_Type;
- #endif
