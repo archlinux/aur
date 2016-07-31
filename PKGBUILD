@@ -16,11 +16,11 @@
 #
 #
 pkgname="zfs-utils-linux-lts"
-pkgver=0.6.5.7_4.4.15_2
+pkgver=0.6.5.7_4.4.16_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-linux-lts" "linux-lts=4.4.15")
-makedepends=("linux-lts-headers=4.4.15")
+depends=("spl-linux-lts" "linux-lts=4.4.16")
+makedepends=("linux-lts-headers=4.4.16")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.7.tar.gz"
