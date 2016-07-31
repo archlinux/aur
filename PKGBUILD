@@ -8,23 +8,13 @@ pkgdesc="xmradio is a tiny Internet Xia Mi Radio client for Linux, which support
 arch=('i686' 'x86_64')
 url="https://github.com/timxx/xmradio"
 license=('GPL3')
-depends=('dbus' 'vlc')
+depends=('dbus' 'vlc' 'gobject-introspection-runtime' 'curl' 'libxml2' 'gtk3' 'glib2' 'zlib' 'sqlite' 'libnotify' 'dbus-glib' 'libdbusmenu-glib' 'gstreamer' 'libpeas')
 makedepends=('cmake'
+             'gobject-introspection'
              'gcc'
              'gettext'
              'intltool'
-             'pkg-config'
-             'zlib'
-             'sqlite'
-             'libnotify'
-             'glib2'
-             'curl'
-             'libxml2'
-             'gtk3'
-             'dbus-glib'
-             'libdbusmenu-glib'
-             'gstreamer'
-             'libpeas')
+             'pkg-config')
 source=("git+https://github.com/timxx/xmradio.git")
 install="${pkgname}.install"
 
