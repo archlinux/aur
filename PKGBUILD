@@ -1,26 +1,25 @@
-# Maintainer: Matt Harrison <matt@mistbyte.com>
-# This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/casperjs
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=casperjs
-pkgver=1.0.4
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="a browser navigation scripting & testing utility written in Javascript on top of PhantomJS."
 arch=('any')
 url="http://casperjs.org/"
 license=('MIT')
-depends=('python' 'phantomjs-1.8')
+depends=('python' 'phantomjs')
 optdepends=('ruby')
 makedepends=()
 conflicts=()
 provides=()
-source=("https://github.com/n1k0/${pkgname}/tarball/${pkgver}")
-sha256sums=('bc51012f68bb8bb8fea3acbfd7fff8e8541ae43c4d25744d505457042919a915')
+source=("https://github.com/casperjs/casperjs/archive/${pkgver}.tar.gz")
+sha256sums=('3e9c385a2e3124a44728b24d3b4cad05a48e2b3827e9350bdfe11c9a6d4a4298')
 
 
 package() {
-  install -d "$pkgdir/opt/"
-  cp -dpr --no-preserve=ownership "$srcdir/n1k0-casperjs-e3a77d0" "$pkgdir/opt/$pkgname"
-  install -d "$pkgdir/usr/bin"
-  ln -sf /opt/$pkgname/bin/$pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm644 "$srcdir/n1k0-casperjs-e3a77d0/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir/opt"
+  cp -a "$srcdir/casperjs-$pkgver" "$pkgdir/opt/$pkgname"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf /opt/$pkgname/bin/casperjs $pkgdir/usr/bin/casperjs
+  install -Dm644 "$srcdir/casperjs-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
