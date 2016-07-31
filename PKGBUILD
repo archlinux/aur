@@ -10,7 +10,7 @@ url="https://github.com/meganz/megasync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 conflicts=('megatools')
 depends=('curl' 'c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'qt5-base' 'libuv')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("git+https://github.com/meganz/MEGAsync.git#commit=aee1443420234446534ddbd3513ee1d480f5533c")
 md5sums=('SKIP')
