@@ -1,0 +1,14 @@
+pkgbase = gcompmgr
+	pkgdesc = Graphical front end for xcompmgr
+	pkgver = 0.21
+	pkgrel = 9
+	url = http://sourceforge.net/projects/gcompmgr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtkmm
+	source = http://sourceforge.net/projects/gcompmgr/files/gcompmgr/gcompmgr-0.21/gcompmgr-0.21.tar.gz
+	sha256sums = 50b68e830248657a1123526b53191de024475b96679361bcff6f404c26548fa3
+
+pkgname = gcompmgr
+
