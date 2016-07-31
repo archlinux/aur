@@ -16,7 +16,7 @@ depends=('python2-matrix-angular-sdk'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
          'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr')
-makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
+makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'sysusers-synapse.conf'
