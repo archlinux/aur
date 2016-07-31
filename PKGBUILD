@@ -13,6 +13,7 @@ depends=('vapoursynth'
          'libavcodec.so'
          'gcc-libs'
          'qt5-base'
+         'xdg-utils'
          )
 makedepends=('git')
 provides=('d2vwitch')
