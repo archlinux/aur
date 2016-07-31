@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kmag-frameworks-git
-pkgver=r459.e410d65
+pkgver=1.0.r463.b270d75
 pkgrel=1
 pkgdesc="A screen magnifier. KF5 Frameworks branch. (GIT version)"
 url='http://kde.org/applications/utilities/kmag'
@@ -16,7 +16,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kmag
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _ver="$(cat version.h | grep -m1 KMAG_VERSION | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
