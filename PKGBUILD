@@ -2,9 +2,9 @@
 pkgname=tomate-alarm-plugin
 pkgver=0.6.0
 pkgrel=1
-pkgdesc="Tomate plugin that shows screen notifications"
+pkgdesc="Tomate plugin that plays a alrm when timer ends"
 arch=('any')
-url="https://github.com/eliostvs/tomate-notify-plugin"
+url="https://github.com/eliostvs/tomate-alarm-plugin"
 license=('GPL')
 depends=('gtk3'
          'python'
