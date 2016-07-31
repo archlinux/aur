@@ -1,4 +1,6 @@
 post_install() {
-    echo "WARNING: you must enable access to /dev/input with 'gpasswd -a username input' for thie program to work"
+	echo
+    echo "WARNING: you must enable access to /dev/input with 'gpasswd -a username input' for this program to work"
+	echo
     echo "Find your mouse ID with 'ls /dev/input/by-id' and run 'mousetrap -t (time in seconds) -d (your mouse ID)'"
 }
