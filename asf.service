@@ -8,7 +8,7 @@ User=asf
 Group=asf
 ExecStart=/usr/bin/asf --server
 ProtectSystem=true
-ReadWriteDirectories=/opt/asf
+ReadWritePaths=/opt/asf
 
 [Install]
 WantedBy=multi-user.target
