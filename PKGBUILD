@@ -3,7 +3,7 @@
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=1296
+pkgver=2401
 pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ md5sums=('SKIP'
 	'9d61d13f5f9674c101359bac2f6f590d')
 
 pkgver() {
-	  cd "${startdir}/${_pkgname}"
+	  cd "${SRCDEST}/${_pkgname}"
 	  svnversion | tr -d [A-z]
 }
 
