@@ -10,6 +10,7 @@ pkgbase = google-chrome
 	depends = desktop-file-utils
 	depends = flac
 	depends = gconf
+	depends = gnome-themes-standard
 	depends = gtk2
 	depends = harfbuzz
 	depends = harfbuzz-icu
