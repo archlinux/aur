@@ -22,7 +22,9 @@ url="http://www.ejabberd.im/"
 license=("GPL")
 depends=('expat' 'openssl' 'zlib' 'erlang-nox' 'pam' 'iproute2' 'erlang-unixodbc'
 	 'libyaml' 'sqlite')
-makedepends=('git' 'rebar' 'hevea' 'texlive-bin' 'texlive-core' 'texlive-latexextra')
+makedepends=('git' 'rebar')
+provides=('ejabberd')
+conflicts=('ejabberd')
 backup=('etc/ejabberd/ejabberd.yml'
 	'etc/ejabberd/ejabberdctl.cfg'
 	'etc/logrotate.d/ejabberd')
