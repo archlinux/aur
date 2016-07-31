@@ -2,24 +2,22 @@
 
 _pkgname=antimicro
 pkgname=${_pkgname}-qt4
-pkgver=2.21
-pkgrel=2
+pkgver=2.22
+pkgrel=1
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons (QT4 version)"
 arch=('i686' 'x86_64')
-url="https://github.com/Ryochan7/antimicro"
+url="https://github.com/AntiMicro/antimicro"
 license=('GPL3')
 depends=('libxtst' 'qt4' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'itstool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-#source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${_pkgname}/archive/${pkgver}.tar.gz")
-source=("http://pkgs.fedoraproject.org/lookaside/pkgs/${_pkgname}/${_pkgname}-${pkgver}.tar.gz/2064888967031e847c255efef941b45e/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('2064888967031e847c255efef941b45e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('165a0dbe5931783f0d2c035a87b8e6a1')
 
 
 build() {
-   #cd ${_pkgname}-${pkgver}
-   cd ${_pkgname}-*/
+   cd ${_pkgname}-${pkgver}
 
    mkdir -p build && cd build
    QT_SELECT=4 cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SDL_2=ON \
@@ -28,8 +26,7 @@ build() {
 }
 
 package() {
-   #cd ${_pkgname}-${pkgver}/build
-   cd ${_pkgname}-*/build/
+   cd ${_pkgname}-${pkgver}/build
 
    make DESTDIR="${pkgdir}" install
 }
