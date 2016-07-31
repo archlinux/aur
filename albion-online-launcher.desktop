@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Albion Online Launcher
-Comment=The first true cross-platform Sandbox MMO
-Exec=/opt/albion-online-launcher-bin/Albion-Online
+Comment=The first true cross-platform Sandbox MMO -- game launcher
+Exec=albion-online-launcher
 Icon=/opt/albion-online-launcher-bin/AlbionOnline.xpm
 Terminal=false

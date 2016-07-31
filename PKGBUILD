@@ -2,7 +2,7 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=20160730075025
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(${pkgname}-${pkgver}.zip::"https://live.albiononline.com/clients/${pkgve
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('6926c3587406b4c40d00552b7a6c892f'
-         '57322ced02ac9c5e38110e42f4c20143')
+         'd11512482c1442e5c3d41a5ec67788aa')
 
 package() {
   mkdir -p "${pkgdir}/opt"
