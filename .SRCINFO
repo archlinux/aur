@@ -20,6 +20,8 @@ pkgbase = gradio-git
 	depends = libgee
 	depends = libsoup
 	provides = gradio=2.3
+	conflicts = gradio
+	conflicts = gradio-bin
 	options = !emptydirs
 	source = git://github.com/haecker-felix/gradio.git
 	md5sums = SKIP
