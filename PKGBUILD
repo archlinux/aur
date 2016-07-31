@@ -1,7 +1,7 @@
 # Maintainer: Florian Dejonckheere <florian at floriandejonckheere dot be>
 
 pkgname=lightfirefox
-pkgver=47.0
+pkgver=48.0
 _pkgver=${pkgver%%.*}
 pkgrel=1
 pkgdesc="A light Firefox edition"
@@ -11,11 +11,11 @@ depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'libxt' 'mime
 provides=("${pkgname}=${_pkgver}")
 install=${pkgname}.install
 arch=('i686' 'x86_64')
-source_x86_64=("${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm::http://sourceforge.net/projects/${pkgname}/files/${_pkgver}/201606060706_gcc/${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm/download")
-md5sums_x86_64=('6ccd5a704e583111230efe5d73b15b7c')
+source_x86_64=("${pkgname/firefox}-${pkgver}.en-US.linux-x86_64.rpm::https://sourceforge.net/projects/${pkgname}/files/${_pkgver}/201607300609_gcc/${pkgname/firefox}-${pkgver}.linux-x86_64.rpm/download")
+md5sums_x86_64=('c9b31a93f952f2aa569029257e78041c')
 
-source_i686=("${pkgname/firefox}-${pkgver}.en-US.linux-i686.rpm::http://sourceforge.net/projects/${pkgname}/files/${_pkgver}/201606060709_gcc32/${pkgname/firefox}-${pkgver}.en-US.linux-i686.rpm/download")
-md5sums_i686=('368b8af71d0791cb65ab12592e857eb2')
+source_i686=("${pkgname/firefox}-${pkgver}.en-US.linux-i686.rpm::https://sourceforge.net/projects/${pkgname}/files/${_pkgver}/201607300634_gcc32/${pkgname/firefox}-${pkgver}.linux-i686.rpm/download")
+md5sums_i686=('d5f9299f4773e26ffa493f38fd0cc205')
 
 # Source file and execute 'checksum' for both checksums
 checksum()
