@@ -1,7 +1,7 @@
 # Maintainer: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=0.77
+pkgver=0.78
 pkgrel=1
 pkgdesc="Web frontend to MPD"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('apache'
 'nginx'
 'php-jsonreader-git: Low Memory Mode')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.zip)
-md5sums=('8823940fd4d8dfb21a19e5fa3d64f21b')
+md5sums=('7d2345ca840915dbeb87bd2144540719')
 
 build () {
 
