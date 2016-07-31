@@ -2,7 +2,7 @@
 
 pkgname=vkcpp
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Header that provides a C++ wrapper for vulkan library"
 arch=('i686' 'x86_64')
 url='https://github.com/nvpro-pipeline/vkcpp'
@@ -50,4 +50,4 @@ package() {
     ${pkgdir}/usr/bin/VkCppGenerator /usr/share/vulkan/vk.xml ${pkgdir}/usr/include/vulkan/vk_cpp.hpp
 }
 md5sums=('100ac1d5a513c1ec220f973b7e7a91c6'
-         '70bfdaf07cd0abfeac2992581c18e5ff')
+         '69edf13e9bfa58a70776e22fb05a1ca3')

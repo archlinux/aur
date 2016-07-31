@@ -1,19 +1,33 @@
---- VkCppGenerator.cpp	2016-07-31 13:09:52.620040550 -0400
-+++ VkCppGenerator_new.cpp	2016-07-31 13:08:47.986473756 -0400
-@@ -2916,9 +2916,10 @@
+--- VkCppGenerator.cpp	2016-07-31 14:17:50.265517768 -0400
++++ VkCppGenerator_new.cpp	2016-07-31 14:19:13.919192204 -0400
+@@ -2060,7 +2060,7 @@
+       }
+     }
+   }
+-  
++
+   if ((commandData.returnType == "Result") || !commandData.successCodes.empty())
+   {
+     ofs << indentation << "  return createResultValue( result, ";
+@@ -2916,9 +2916,15 @@
    try {
      tinyxml2::XMLDocument doc;
  
 -    std::string filename = (argc == 1) ? VK_SPEC : argv[1];
-+    std::string filename = (argc > 1) ? argv[1] : VK_SPEC;
-+    std::string vk_cpp = (argc > 2) ? argv[2] : VK_CPP;
++    if(argc != 3){
++        std::cout<<"Usage: VkCppGenerator <input xml> <output header> \n";
++        return -1;
++    }
++
++    std::string filename = argv[1];
++    std::string vk_cpp = argv[2];
      std::cout << "Loading vk.xml from " << filename << std::endl;
 -    std::cout << "Writing vk_cpp.hpp to " << VK_CPP << std::endl;
 +    std::cout << "Writing vk_cpp.hpp to " << vk_cpp << std::endl;
  
      tinyxml2::XMLError error = doc.LoadFile(filename.c_str());
      if (error != tinyxml2::XML_SUCCESS)
-@@ -2973,7 +2974,7 @@
+@@ -2973,7 +2979,7 @@
      std::map<std::string, std::string> defaultValues;
      createDefaults(vkData, defaultValues);
  
