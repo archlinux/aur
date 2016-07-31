@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=pillarsofeternity-gog
-pkgver=2.11.0.15
+pkgver=2.13.0.17
 pkgrel=1
 pkgdesc="A modern RPG in the style of classics like Baldur's Gate"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("${pkgname}.desktop"
 # bsdtar doesn't seem to like this .sh
 noextract=("gog_pillars_of_eternity_${pkgver}.sh")
 sha256sums=("6751ac84acaf2603183ecaa8c5f64c164f0b33aac08426135a898461ce12a655"
-            "327f479b916e4bd91a8a5b904ee7205570bca1227b75e93db550ee48e4bd25a7")
+            "c5912f294c05474b753779ecc54cf8bfacad4d32f68658b446594ea8db2cf8d8")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
@@ -40,8 +40,6 @@ package() {
     install -m755 -d "$pkgdir/opt/$pkgname/docs"
     install -m644 -t "$pkgdir/opt/$pkgname/docs" "$srcdir/pe/docs/End User License Agreement.txt"
     install -m644 -t "$pkgdir/opt/$pkgname/docs" "$srcdir/pe/docs/pe-game-manual.pdf"
-    install -m644 -t "$pkgdir/opt/$pkgname/docs" "$srcdir/pe/game/Docs/OFL.TXT"
-    install -m644 -t "$pkgdir/opt/$pkgname/docs" "$srcdir/pe/game/Docs/readme.txt"
 
     # Icon
     install -m644 -t "$pkgdir/opt/$pkgname/" "$srcdir/pe/game/PillarsOfEternity.png"
@@ -57,7 +55,6 @@ package() {
     # License
     install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
     ln -s "/opt/$pkgname/docs/End User License Agreement.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA"
-    ln -s "/opt/$pkgname/docs/OFL.TXT" "$pkgdir/usr/share/licenses/$pkgname/OFL"
 
     # Icon
     install -m755 -d "$pkgdir/usr/share/pixmaps/"
