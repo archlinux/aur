@@ -1,0 +1,25 @@
+pkgbase = chatzilla
+	pkgdesc = Clean, easy to use and highly extensible Internet Relay Chat (IRC) client, built on the Mozilla platform
+	pkgver = 0.9.92
+	pkgrel = 1
+	url = http://chatzilla.hacksrus.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = python2
+	makedepends = unzip
+	depends = firefox
+	source = chatzilla-0.9.92.tar.gz::http://hg.mozilla.org/chatzilla/archive/CHATZILLA_0_9_92_RELEASE.tar.gz
+	source = http://chatzilla.rdmsoft.com/xulrunner/patch/xrmakeM.diff.txt
+	source = version.patch
+	source = chatzilla.sh
+	source = chatzilla.desktop
+	sha256sums = aa61fd08f587bae6b9410216f2995ec4785f2a114630344a7204240d6fe89ec7
+	sha256sums = f56421321bad60513a6b2855119fd8ee0cee65525b8463c265d810b16bf5c229
+	sha256sums = 43d3299ccf6f59d0123fc57d0affc8014d46650869c6edc251cd5cb54093ffa1
+	sha256sums = 0cf6529326def9bbff73b04f9abd45193c41ca3c8b44dd922739c3f969701a59
+	sha256sums = 548e758a5334ea9e920fd8b21d29c0e4acd63bdd5f3c3b6eb6e5f5a79644f9cb
+
+pkgname = chatzilla
+

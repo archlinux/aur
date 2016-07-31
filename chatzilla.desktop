@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ChatZilla
+Comment=Clean, easy to use and highly extensible Internet Relay Chat (IRC) client
+Exec=chatzilla %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=chatzilla
+Categories=Network;InstantMessaging;
+StartupNotify=true

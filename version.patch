@@ -1,0 +1,12 @@
+diff -Naur chatzilla-CHATZILLA_0_9_92_RELEASE.orig/xpi/resources/application.ini chatzilla-CHATZILLA_0_9_92_RELEASE/xpi/resources/application.ini
+--- chatzilla-CHATZILLA_0_9_92_RELEASE.orig/xpi/resources/application.ini	2016-07-31 19:19:41.720447000 +0200
++++ chatzilla-CHATZILLA_0_9_92_RELEASE/xpi/resources/application.ini	2016-07-31 19:25:03.709837681 +0200
+@@ -6,7 +6,7 @@
+ 
+ [Gecko]
+ MinVersion=17.0
+-MaxVersion=25.*
++MaxVersion=*
+ 
+ [XRE]
+ EnableExtensionManager=Truly, yes.
