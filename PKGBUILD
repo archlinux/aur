@@ -1,4 +1,4 @@
-# Maintainer: FadeMind <fademin@gmail.com>
+# Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Ramon Buldó <ramon@manjaro.org>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Contributor: Yegorius <yegorius@domic.us>
