@@ -3,8 +3,8 @@
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
 pkgname=i3blocks-git
 _pkgname=i3blocks
-pkgver=1.4.r21.g017395f
-pkgrel=2
+pkgver=1.4.r25.gde1d46a
+pkgrel=1
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
 url="https://github.com/vivien/$_pkgname"
@@ -19,14 +19,8 @@ optdepends=('acpi: For example battery script'
             'openvpn: For openvpn contrib script')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/vivien/$_pkgname" "colors.patch")
-sha256sums=('SKIP'
-            '11aed157515cfa77e1cec693effd7300107d3b7aa8a1b0beacf7b395bf9d46fa')
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  patch -Np1 <../colors.patch
-}
+source=("git+https://github.com/vivien/$_pkgname")
+sha256sums=('SKIP')
 
 pkgver () {
   cd "$srcdir/$_pkgname"
