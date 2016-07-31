@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Albion Live Server
+Comment=The first true cross-platform Sandbox MMO -- live server
+Exec=albion-online-live
+Icon=/opt/albion-online-launcher-bin/AlbionOnline.xpm
+Terminal=false
