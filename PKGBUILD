@@ -8,7 +8,7 @@ pkgdesc='Macaroon library for Python'
 license=('Apache')
 arch=('any')
 url='https://pypi.python.org/pypi/pymacaroons-pynacl/'
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
 source=("git://github.com/matrix-org/pymacaroons#tag=v$pkgver")
 md5sums=('SKIP')
 
