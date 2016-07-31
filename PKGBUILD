@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcompactdisc-frameworks-git
-pkgver=5.0.0.r321.8f89fbe
+pkgver=5.25.0.r328.c0f4fb1
 pkgrel=1
 pkgdesc="library for interfacing with CDs. KF5 Frameworks branch. (GIT version)"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libkcompactdisc
-  _ver="$(cat CMakeLists.txt | grep -m1 libkcompactdisc | cut -d ' ' -f3 | tr -d ')')"
+  _ver="$(cat CMakeLists.txt | grep -m1 KF5_VERSION | sed 's|KF5|KF|' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -36,7 +36,7 @@ build() {
   cmake ../libkcompactdisc \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
