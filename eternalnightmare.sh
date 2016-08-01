@@ -1,2 +1,3 @@
 #!/bin/sh
-python2 /usr/share/eternalnightmare/randomizer.py $@
+cd /usr/share/eternalnightmare/
+python2 randomizer.py $@

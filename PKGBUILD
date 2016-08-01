@@ -1,6 +1,6 @@
 pkgname=eternalnightmare
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrono Trigger randomizer"
 arch=(any)
 url="https://github.com/abyssonym/eternalnightmare"
@@ -26,4 +26,4 @@ package() {
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
 md5sums=('c62cac3e860e6a884139d5be939a287a'
-         '09a5882ff282397e2657312d2a27f3b5')
+         'ed3cf3d1b1e771fcf6462cb48ae1b607')
