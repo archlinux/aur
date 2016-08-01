@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tealdeer-git
 _name=tealdeer
-pkgver=r78.db423da
+pkgver=r86.9779707
 pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
