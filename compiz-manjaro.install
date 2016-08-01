@@ -4,10 +4,3 @@ post_install() {
      echo "***  and back in, Compiz will autostart  ***"
      echo ""
 }
-
-pre_upgrade() {
-    if [ -f /usr/share/gconf/schemas/compiz.schemas ]; then
-	    echo "  -> Uninstalling GConf schemas... "
-   	    gconfpkg --uninstall compiz
-    fi
-}

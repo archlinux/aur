@@ -1,9 +1,7 @@
 [org.gnome.desktop.wm.preferences]
 button-layout=":minimize,maximize,close"
-titlebar-uses-system-font=true
-
-[org.gnome.metacity]
 theme="compiz-xfce-greybird"
+titlebar-uses-system-font=true
 
 [org.mate.session.required-components]
 windowmanager="compiz"

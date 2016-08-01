@@ -26,9 +26,9 @@ main_window() {
 
 while [ $? = 0 ]; do
 if [ "$selection" == "Compiz GWD default" ]; then
-  gsettings set org.gnome.metacity theme ""
+  gsettings set org.gnome.desktop.wm.preferences theme ""
 elif [ "$selection" != "" ]; then
-  gsettings set org.gnome.metacity theme "$selection"
+  gsettings set org.gnome.desktop.wm.preferences theme "$selection"
 fi
 main_window
 done

@@ -4,15 +4,15 @@
 
 _name=compiz
 pkgname=compiz-manjaro
-_series=0.9.12
-pkgver=${_series}.2
-pkgrel=6
+_series=0.9.13
+pkgver=${_series}.0
+pkgrel=1
 _greybirdver=1.6.2
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${_name}"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf' 'zenity')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'glu' 'libsm' 'dconf' 'zenity')
 makedepends=('cmake' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
@@ -25,12 +25,6 @@ provides=("${_name}=${pkgver}")
 source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
-        "xfce4-notifyd-nofade.patch"
-        "c++11.patch"
-        "switcher-background.patch"
-        "cmake3.patch"
-        "cube-texture.patch"
-        "marco-in-mate.patch"
         "trailfocus-fix.patch"
         "${pkgname}-defaults.patch"
         "${pkgname}.gschema.override"
@@ -41,19 +35,13 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "compiz-xfce-uninstall-helper"
         "compiz-xfce-uninstall-helper.desktop"
         "greybird-${_greybirdver}.tar.gz::https://github.com/shimmerproject/Greybird/archive/v${_greybirdver}.tar.gz")
-sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
+sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '273aa79cb0887922e3a73fbbe97596495cee19ca6f4bd716c6c7057f323d8198'
-            'eb8b432050d1eed9cb1d5f33d2645f81e2bdce2bf55d5cc779986bb751373a45'
-            'e3125ed3a7e87a7d4bdaa23f1b6f654a02d0b050ad7a694ce9165fff2c6ff310'
-            'e5016fd62f9c9659d887eeafd556c18350615cd6d185c8ffa08825465890c5e0'
-            '81780f8c56f5b27b09394ae9ed59d10ae50c58f9ade445e9f85d7c2a00445f7e'
-            '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
-            'cdc9eeaa213dbde3bceb2d0a73171ed319929b6a5146ff55fcd4f17df7b25d13'
-            '443f85eae424e8aa993f786f3f90dcf92a5454f728f574a5311bb4747ac54288'
-            '04c7d417602c144313e808d5e1bde198ee677412c97d7405cf6092e8794f95b7'
+            '4615d380f9b310877d9c86279be0cf30271bb67640fc90a979ba5fb07019f828'
+            '149213e0b29e34744b6e8e51cdaccc4011fd29c5f9475c59aa7482f3fe4a68af'
+            'aca18e14854a466262f876bf7463d786c88453820abc89027608d732bb79a542'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
             'bc4643f94e0eca255e7e97968f928da11c33fb27944c1ca4f9c61ea3dafc7f42'
             'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
@@ -81,24 +69,6 @@ prepare() {
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
 
-  # Ensure xfce4 notifications are not 'double faded'
-  patch -p1 -i "${srcdir}/xfce4-notifyd-nofade.patch"
-
-  # Use C++11 (pre-requisite for switcher-background.patch)
-  patch -p1 -i "${srcdir}/c++11.patch"
-
-  # Allow user to change switcher background colour (fixes blank background for Emerald)
-  patch -p1 -i "${srcdir}/switcher-background.patch"
-
-  # Get rid of the cmake policy warning messages
-  patch -p1 -i "${srcdir}/cmake3.patch"
-
-  # Fix off-center cube cap pictures
-  patch -p1 -i "${srcdir}/cube-texture.patch"
-  
-  # Use the Marco gsettings in MATE session (commits 3997+4002)
-  patch -p1 -i "${srcdir}/marco-in-mate.patch"
-
   # Fix ambiguous function call in trailfocus plugin
   patch -p1 -i "${srcdir}/trailfocus-fix.patch"
   
@@ -123,12 +93,9 @@ build() {
     -DBUILD_GTK=On \
     -DBUILD_METACITY=On \
     -DBUILD_KDE4=Off \
-    -DUSE_GCONF=Off \
-    -DUSE_GSETTINGS=On \
     -DCOMPIZ_BUILD_TESTING=Off \
     -DCOMPIZ_WERROR=Off \
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp" \
-    -DCOMPIZ_DISABLE_PLUGIN_DBUS=On
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,expo,grid,regex,animation,ccp"
   
   make
 }
@@ -152,9 +119,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/" 
     install -m644 generated/glib-2.0/schemas/*.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/" 
   fi 
-
-  # Remove GConf schemas
-  rm -rv "${pkgdir}/usr/share/gconf/"
   
   ## Manjaro stuff
   # Add Manjaro dconf/gsettings schema override file
