@@ -3,6 +3,7 @@ Description=Universal Media Server
 After=syslog.target network.target rpcbind.service
 
 [Service]
+#Environment="UMS_MAX_MEMORY=1280M"
 User=%i
 Group=users
 WorkingDirectory=/opt/ums/
