@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=16.07.15
-tag="16e2bc7af636f9ef15286264595279ea7ed9d47b"
+pkgver=16.08.0
+tag="4a5e66ae05f107e7b5a6c1e00eee8107cca3a8a1"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64' 'armv7l')
@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl')
 makedepends=('qt5-tools')
 source=("http://downloads.sourceforge.net/project/${pkgname}/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('fc4c32753289b766ce5a67a93ce408355ea5923bb8860c7549592570ef321b37')
+sha256sums=('')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
