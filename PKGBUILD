@@ -17,9 +17,21 @@ pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind' 'libmariadbclient' 'clang' 'lldb')
-makedepends=('pkgconfig' 'cmake')
-optdepends=('graphviz: callgraph visualization')
+makedepends=('pkgconfig' 'cmake' 'clang')
+depends=('wxgtk' 'webkitgtk2'
+          'libedit' 'libssh'
+          'libmariadbclient'
+          'ncurses'
+          'xterm' 'curl'
+          'python2'
+          'clang' 'lldb'
+        )
+optdepends=('graphviz: callgraph visualization'
+             'clang: compiler'
+             'gcc: compiler'
+             'gdb: debugger'
+             'valgrind: debugger'
+            )
 
 source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
 	http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
