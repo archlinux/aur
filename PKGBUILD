@@ -12,7 +12,7 @@ depends=(\
   'qt5-quickcontrols')
 
 source=('https://github.com/mavlink/qgroundcontrol/releases/download/v'${pkgver}'/qgroundcontrol.tar.bz2')
-md5sums=('10ce90dd55c31ac769ba62278053c3e9')
+md5sums=('af527e02a59d71722046facf1693f95e')
 
 package() {
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
