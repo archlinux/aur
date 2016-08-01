@@ -1,0 +1,43 @@
+pkgbase = conky-lua-archers
+	pkgdesc = A free, light-weight system monitor for X with lua enabled for Arch based distros
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://github.com/brndnmtthws/conky
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	makedepends = cmake
+	makedepends = docbook2x
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = perl-xml-libxml
+	depends = alsa-lib
+	depends = cairo
+	depends = curl
+	depends = glib2
+	depends = imlib2
+	depends = librsvg
+	depends = libxdamage
+	depends = libxft
+	depends = libxinerama
+	depends = libxml2
+	depends = libxnvctrl
+	depends = lua51
+	depends = tolua++
+	depends = wireless_tools
+	provides = conky=1.10.4_pre
+	conflicts = conky
+	conflicts = conky-lua
+	conflicts = conky-lua-arch
+	conflicts = conky-lua-nv
+	conflicts = conky-lua-archers-git
+	replaces = torsmo
+	replaces = conky
+	options = !strip
+	options = debug
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.4.tar.gz
+	sha1sums = f2da0e3b8e6ff8ebc42b35f710f822e228616993
+
+pkgname = conky-lua-archers
+
