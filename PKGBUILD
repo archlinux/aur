@@ -6,7 +6,7 @@ _name=compiz
 pkgname=compiz-manjaro
 _series=0.9.13
 pkgver=${_series}.0
-pkgrel=1
+pkgrel=2
 _greybirdver=1.6.2
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             '149213e0b29e34744b6e8e51cdaccc4011fd29c5f9475c59aa7482f3fe4a68af'
             'aca18e14854a466262f876bf7463d786c88453820abc89027608d732bb79a542'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
-            'bc4643f94e0eca255e7e97968f928da11c33fb27944c1ca4f9c61ea3dafc7f42'
+            '3e46a0b50a16d9fd6fd4f9d28f6082fc76f39dff8a82a79af312126a6bcf7cc2'
             'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
             '5c471a34a1d79a45e8c4a924f0f58d71199328e45c80472fe32ecaac76c987ee'
             '02eec20f75eb1f9571a2cf92013fc3c78d13c155a8ede0467cc10b83cdeba43c'

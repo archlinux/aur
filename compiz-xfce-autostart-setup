@@ -4,9 +4,9 @@ xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -a -s compiz
 
 ## Automatic GWD decoration matching for default Manjaro Xfce themes
 if [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Menda" ]; then
-	gsettings set org.gnome.metacity theme "Menda"
+	gsettings set org.gnome.desktop.wm.preferences theme "Menda"
 elif [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Vertex-Maia-Square" ]; then
-	gsettings set org.gnome.metacity theme "Vertex-Maia-Square"
+	gsettings set org.gnome.desktop.wm.preferences theme "Vertex-Maia-Square"
 fi
 
 mkdir -p ~/.local/bin
