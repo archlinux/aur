@@ -1,6 +1,6 @@
 pkgbase = pqr
 	pkgdesc = a pretty quick version of R
-	pkgver = 20150914
+	pkgver = 20160624
 	pkgrel = 1
 	url = http://www.pqr-project.org/
 	install = pqr.install
@@ -31,12 +31,12 @@ pkgbase = pqr
 	optdepends = texlive-bin: latex sty files
 	options = !makeflags
 	options = !emptydirs
-	source = http://www.pqr-project.org/pqR-2015-09-14.tar.gz
+	source = http://www.pqr-project.org/pqR-2016-06-24.tar.gz
 	source = pqr.desktop
 	source = pqr.png
-	md5sums = 5f1f65f3c71f2f27c33c2901417bcbfe
-	md5sums = 543264e50f64a1c5bdf1465e3961b188
-	md5sums = 8a535cb19598efcf31a5e757b6d74217
+	sha1sums = 0e8c694412bb73fce4dbe28873a5f9ac8b1ebebd
+	sha1sums = cdc48b06aaeeea8850b5b12583950581726bef02
+	sha1sums = fd2c3e142d2c9fd11f95a89c8ab5d3e980db29dd
 
 pkgname = pqr
 
