@@ -8,8 +8,8 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=pure-ftpd
-pkgver=1.0.42
-pkgrel=3
+pkgver=1.0.43
+pkgrel=1
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -24,11 +24,11 @@ source=("http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}
 	'welcome.msg'
 	'pure-ftpd.install' )
 
-md5sums=('4022f38939f6a112b18c1a43dee552c1'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP')
+md5sums=('685498474a47340e9a3eae1518cf83c8'
+         '9091eb6510c8e1e3e23fbdd85099d926'
+         '37a45c88a0f038de37b4a87c6c447534'
+         '7e91835f7e7975bd0536648fc99e5a22'
+         'ff95d5cb24ee8a4e26e9f56699dc4457')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
