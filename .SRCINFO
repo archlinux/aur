@@ -1,6 +1,6 @@
 pkgbase = i3blocks-gaps-git
 	pkgdesc = Define blocks for your i3bar status line
-	pkgver = 1.4.r25.g4cfdf93
+	pkgver = 1.4.r31.ge14ccbd
 	pkgrel = 1
 	url = https://github.com/Airblader/i3blocks-gaps
 	arch = i686
