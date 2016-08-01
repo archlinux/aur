@@ -1,26 +1,28 @@
-# Maintainer: mareex <marcus [dot] behrendt [dot] 86 [at] gmail [dot] com>
+# Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
+# Contributor: mareex <marcus [dot] behrendt [dot] 86 [at] gmail [dot] com>
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.25.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="SUMO is an open source, highly portable, microscopic and continuous road traffic simulation package designed to handle large road networks"
 arch=('i686' 'x86_64')
 url="http://${pkgbase}-sim.org"
 license=('GPL')
-depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl')
+depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl' 'proj' 'gdal')
 makedepends=('make' 'gcc' 'help2man')
-source=("http://prdownloads.sourceforge.net/sumo/sumo-src-${pkgver}.tar.gz?download"
-        "http://prdownloads.sourceforge.net/sumo/sumo-doc-${pkgver}.tar.gz?download"
+source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-src-${pkgver}.tar.gz?download"
+        "${pkgbase}-doc-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${pkgbase}/${pkgbase}-doc-${pkgver}.tar.gz?download"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"
         "${pkgbase}.install")
-sha256sums=('b959eb9aa705e6029764756225185c2602101180fa2f51233976385ff05bf88e'
-            '6c21cd8faf9665400ec3e09c4eb384f4985e84bb9b7b4801d83b33b974ea30ef'
+
+sha256sums=('4494190bd6570646df7a020befe25bc66355377273d922753685737c0d38bfdf'
+            '2fd50a818a49b047b3b147d40610e93a2f5c5a5ea234c8b232ab68c14fb4ece5'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f'
             'eeb0e9f85d72f06937462ceac90cc7f5bb55b56022472c476c137ee95b9fa56b')
-             
+
 prepare() {
     cd ${srcdir}/${pkgbase}-${pkgver}
     # replace python with python2 in shebangs
@@ -31,7 +33,7 @@ prepare() {
     for f in $(find . -iname \*.py)
     do
         if [ -z "$(grep -l '^#!/.*python' "$f")" ]; then
-			sed -i "1i #!/bin/env python2" $f
+            sed -i "1i #!/bin/env python2" $f
         fi
     done
 
@@ -50,12 +52,13 @@ build() {
 }
 
 package_sumo() {
-backup=("etc/profile.d/sumo.sh")
-optdepends=('java-runtime-common: for executing Jar files like TraCI4J'
-	    'python2: for executing various python scripts in $SUMO_HOME/tools'
-            'perl: for executing various perl scripts in $SUMO_HOME/tools')
-install=${pkgbase}.install
-    
+    backup=("etc/profile.d/sumo.sh")
+    optdepends=('java-runtime-common: for executing Jar files like TraCI4J'
+                'python2: for executing various python scripts in $SUMO_HOME/tools'
+                'perl: for executing various perl scripts in $SUMO_HOME/tools')
+
+    install=${pkgbase}.install
+
     mkdir -p ${pkgdir}/etc/profile.d/
     mkdir -p ${pkgdir}/usr/bin
     mkdir -p ${pkgdir}/usr/lib/${pkgbase}/data
@@ -64,7 +67,7 @@ install=${pkgbase}.install
     mkdir -p ${pkgdir}/usr/share/doc/${pkgbase}
     mkdir -p ${pkgdir}/usr/share/man/man1
     mkdir -p ${pkgdir}/usr/share/pixmaps
-    
+
     install -m0755 ${srcdir}/${pkgbase}.sh ${pkgdir}/etc/profile.d/
 
     install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/activitygen ${pkgdir}/usr/bin/
@@ -104,7 +107,7 @@ install=${pkgbase}.install
     done
     for l in $(find . -type l)
     do
-	ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/data/$l
+        ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/data/$l
     done
 ########### TOOLS
     cd ${srcdir}/${pkgbase}-${pkgver}/tools
@@ -118,7 +121,7 @@ install=${pkgbase}.install
     done
     for l in $(find . -type l)
     do
-	ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/tools/$l
+        ln -s $(readlink $l) ${pkgdir}/usr/lib/${pkgbase}/tools/$l
     done
 
     # make all scripts executable
@@ -141,7 +144,7 @@ install=${pkgbase}.install
     done
     for l in $(find . -type l)
     do
-	ln -s $(readlink $l) ${pkgdir}/usr/share/man/man1/$l
+        ln -s $(readlink $l) ${pkgdir}/usr/share/man/man1/$l
     done
 }
 
@@ -158,7 +161,7 @@ package_sumo-doc() {
     done
     for l in $(find . -type l)
     do
-	ln -s $(readlink $l) ${pkgdir}/usr/share/doc/${pkgbase}/$l
+        ln -s $(readlink $l) ${pkgdir}/usr/share/doc/${pkgbase}/$l
     done
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/AUTHORS ${pkgdir}/usr/share/doc/${pkgbase}
     install -m0644 ${srcdir}/${pkgbase}-${pkgver}/ChangeLog ${pkgdir}/usr/share/doc/${pkgbase}
