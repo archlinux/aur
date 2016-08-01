@@ -1,28 +1,26 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=squaw
-pkgver=2.7
+pkgver=3.0
 pkgrel=1
-pkgdesc='Simplistic Qt-based user agent for the Web'
+pkgdesc='Simplistic quiet user agent for the Web'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
-depends=('qt5-webkit')
-arch=('i686' 'x86_64' 'armv7h')
-source=("${url}/${pkgname}-${pkgver}.cpp")
-sha1sums=('bf58cabd733a4751a8d037815de55575f8cab172')
+depends=('webkit2gtk')
+arch=('i686' 'x86_64')
+source=("${url}/${pkgname}-${pkgver}.c")
+sha1sums=('1fe435c7fd8534ec18e718ace8d8ced0003580c8')
 
 build() {
 	cd "${srcdir}"
-	moc-qt5 -o squaw.moc squaw-${pkgver}.cpp
-	c++ -lQt5WebKitWidgets -lQt5PrintSupport -lQt5Widgets -lQt5WebKit -lQt5Gui -lQt5Network -lQt5Core \
-		-I/usr/include/qt -fPIC \
-		${CPPFLAGS} ${CXXFLAGS} ${LDFLAGS} \
-		-o ${pkgname} ${pkgname}-${pkgver}.cpp
+	cc $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0) \
+		${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
+		-o ${pkgname} ${pkgname}-${pkgver}.c
 }
 
 package() {
 	cd "${srcdir}"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	head -n 15 "${pkgname}-${pkgver}.cpp" > "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	head -n 15 "${pkgname}-${pkgver}.c" > "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
