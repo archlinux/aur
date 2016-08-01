@@ -2,7 +2,7 @@
 _ver=1.15
 _pkgbase=mate-meta
 pkgname="${_pkgbase}-${_ver}-gtk3"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=2
 pkgdesc="Meta package for MATE. This installs all MATE 1.15 gtk3 packages - through dependencies"
 arch=(any)
