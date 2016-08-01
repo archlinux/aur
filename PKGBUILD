@@ -2,7 +2,7 @@
 pkgname="brother-hll2360d"
 pkgver="3.2.0_1"
 pkgrel="1"
-pkgdesc="Brother HL-L2360D CUPS driver"
+pkgdesc="Brother LPR and CUPS driver for HL-L2360DN, HL-L2360DW, HL-L2365DW"
 url="http://www.brother.com"
 license=('GPL')
 arch=('i686' 'x86_64')
