@@ -1,0 +1,21 @@
+pkgbase = rocksdb-lite
+	pkgdesc = Embedded key-value store for fast storage (lite version)
+	pkgver = 4.9
+	pkgrel = 1
+	url = http://rocksdb.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python2
+	depends = gperftools
+	depends = zlib
+	depends = bzip2
+	depends = lz4
+	depends = snappy
+	depends = gcc-libs
+	conflicts = rocksdb
+	source = https://github.com/facebook/rocksdb/archive/rocksdb-4.9.zip
+	sha256sums = 31beaca347531440e816293c244f03d32154040f6d5beddf8045d06829053f36
+
+pkgname = rocksdb-lite
+
