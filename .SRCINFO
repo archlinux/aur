@@ -1,11 +1,13 @@
 pkgbase = backintime-git
 	pkgver = 1.1.12.r246.g684211d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://backintime.le-web.org
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python
+	makedepends = openssh
+	makedepends = python-dbus
+	makedepends = python-keyring
 	source = backintime::git://github.com/bit-team/backintime.git
 	md5sums = SKIP
 

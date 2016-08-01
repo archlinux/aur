@@ -3,11 +3,11 @@
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
 pkgver=1.1.12.r246.g684211d
-pkgrel=1
+pkgrel=2
 url="http://backintime.le-web.org"
 license=('GPL')
 arch=('any')
-makedepends=('git' 'python')
+makedepends=('git' 'openssh' 'python-dbus' 'python-keyring')
 source=($_pkgname::git://github.com/bit-team/backintime.git)
 md5sums=('SKIP')
 # https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
@@ -32,10 +32,10 @@ build() {
   make
 }
 
-check() {
-  cd $_pkgname/common
-  make test
-}
+#check() {
+#  cd $_pkgname/common
+#  make test
+#}
 
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
