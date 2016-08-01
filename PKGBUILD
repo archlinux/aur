@@ -8,8 +8,8 @@ _language_patch2_url="${_fusurl}/language-patch2"
 _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
-_atomver=1.8.0
-pkgver=1.8.0.aa1.6.2.db0.8.9.fu0.11.1.la0.8.5.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.4.t2.3.1
+_atomver=1.9.0
+pkgver=1.9.0.aa1.6.2.db0.8.9.fu0.11.1.la0.8.5.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.5.t2.3.1
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -37,7 +37,7 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
-md5sums=('158c18d35d071403db18bdd85fa2e738'
+md5sums=('d187a599731e55646773663b846438dc'
          'SKIP'
          'SKIP'
          'SKIP'
