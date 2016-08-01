@@ -1,4 +1,4 @@
-# Maintainer:   Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com> 
+# Maintainer:   Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
