@@ -3,13 +3,13 @@
 
 pkgname=pangoterm-bzr
 pkgver=r594
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.'
 arch=('i686' 'x86_64')
 url='http://www.leonerd.org.uk/code/pangoterm'
 license=('MIT')
-depends=('libvterm-bzr')
-makedepends=('bzr' 'libvterm-bzr')
+depends=('libvterm-bzr' 'gtk2')
+makedepends=('bzr' 'libvterm-bzr' 'gtk2')
 provides=("${pkgname%-bzr}")
 conflicts=("${pkgname%-bzr}")
 install=pangoterm.install
