@@ -1,6 +1,6 @@
 # Maintainer: Conor Anderson <conor[dot]anderson[at]utoronto.ca>
 pkgname=pqr
-_pkgver="2015-09-14"
+_pkgver="2016-06-24"
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="a pretty quick version of R"
@@ -17,9 +17,9 @@ install=$pkgname.install
 source=("http://www.pqr-project.org/pqR-${_pkgver}.tar.gz"
 	'pqr.desktop'
 	'pqr.png')
-md5sums=('5f1f65f3c71f2f27c33c2901417bcbfe'
-         '543264e50f64a1c5bdf1465e3961b188'
-         '8a535cb19598efcf31a5e757b6d74217')
+sha1sums=('0e8c694412bb73fce4dbe28873a5f9ac8b1ebebd'
+         'cdc48b06aaeeea8850b5b12583950581726bef02'
+         'fd2c3e142d2c9fd11f95a89c8ab5d3e980db29dd')
 
 build() {
   cd "pqR-${_pkgver}"
