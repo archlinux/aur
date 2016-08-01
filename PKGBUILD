@@ -2,7 +2,7 @@
 _basename=siunitx
 pkgname=texlive-"$_basename"
 # Use "grep ProvidesExplPackage -r src/" to find the version.
-pkgver=2.6p
+pkgver=2.6q
 pkgrel=1
 pkgdesc="Typeset chemical formulae/equations and Risk and Safety phrases in LaTeX."
 arch=('any')
@@ -10,17 +10,16 @@ depends=('texlive-bin')
 conflicts=('texlive-science')
 # url="http://www.ctan.org/tex-archive/macros/latex/contrib/"$_basename"/"
 # source=("http://mirrors.ctan.org/install/macros/latex/contrib/${_basename}.tds.zip")
-url="https://github.com/josephwright/$_basename"
-source=("${url}/archive/stable.zip")
+source=("https://github.com/josephwright/$_basename/archive/v$pkgver.zip")
 license=('LPPL')
 install="$pkgname".install
 
 package() {
-  cd -- "${srcdir}/${_basename}-stable"
+  cd -- "${srcdir}/${_basename}-${pkgver}"
   tex "${_basename}.dtx"
   _dstdir="${pkgdir}/usr/share/texmf/tex/latex/${_basename}"
   install -dm755 -- "$_dstdir"
   install -m644 -t "$_dstdir" *.cfg *.sty
 }
 
-sha1sums=('bed5b28e4624bbf35173be50f0a584a53785a9fb')
+sha1sums=('e5a9f70b9e139b57205d070952e5a033a808aac5')
