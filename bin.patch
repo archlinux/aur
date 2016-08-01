@@ -1,27 +1,27 @@
-diff -au0r neo4j-enterprise-3.0.3-orig/bin/neo4j-admin neo4j-enterprise-3.0.3-mod/bin/neo4j-admin
---- neo4j-enterprise-3.0.3-orig/bin/neo4j-admin	2016-06-10 00:01:59.000000000 -0300
-+++ neo4j-enterprise-3.0.3-mod/bin/neo4j-admin	2016-06-20 04:25:42.457008289 -0300
+diff -au0r neo4j-enterprise-3.0.4-orig/bin/neo4j-admin neo4j-enterprise-3.0.4-mod/bin/neo4j-admin
+--- neo4j-enterprise-3.0.4-orig/bin/neo4j-admin	2016-07-27 21:45:50.000000000 -0300
++++ neo4j-enterprise-3.0.4-mod/bin/neo4j-admin	2016-08-01 11:18:02.391447290 -0300
 @@ -21,0 +22,3 @@
 +NEO4J_CONF=/etc/neo4j
 +NEO4J_HOME=/usr/share/neo4j
 +
-diff -au0r neo4j-enterprise-3.0.3-orig/bin/neo4j-backup neo4j-enterprise-3.0.3-mod/bin/neo4j-backup
---- neo4j-enterprise-3.0.3-orig/bin/neo4j-backup	2016-06-10 00:01:59.000000000 -0300
-+++ neo4j-enterprise-3.0.3-mod/bin/neo4j-backup	2016-06-20 04:26:37.678591438 -0300
+diff -au0r neo4j-enterprise-3.0.4-orig/bin/neo4j-backup neo4j-enterprise-3.0.4-mod/bin/neo4j-backup
+--- neo4j-enterprise-3.0.4-orig/bin/neo4j-backup	2016-07-27 21:45:50.000000000 -0300
++++ neo4j-enterprise-3.0.4-mod/bin/neo4j-backup	2016-08-01 11:18:02.391447290 -0300
 @@ -23,0 +24,3 @@
 +NEO4J_CONF=/etc/neo4j
 +NEO4J_HOME=/usr/share/neo4j
 +
-diff -au0r neo4j-enterprise-3.0.3-orig/bin/neo4j-import neo4j-enterprise-3.0.3-mod/bin/neo4j-import
---- neo4j-enterprise-3.0.3-orig/bin/neo4j-import	2016-06-10 00:01:59.000000000 -0300
-+++ neo4j-enterprise-3.0.3-mod/bin/neo4j-import	2016-06-20 04:26:55.321403623 -0300
+diff -au0r neo4j-enterprise-3.0.4-orig/bin/neo4j-import neo4j-enterprise-3.0.4-mod/bin/neo4j-import
+--- neo4j-enterprise-3.0.4-orig/bin/neo4j-import	2016-07-27 21:45:50.000000000 -0300
++++ neo4j-enterprise-3.0.4-mod/bin/neo4j-import	2016-08-01 11:18:02.391447290 -0300
 @@ -23,0 +24,3 @@
 +NEO4J_CONF=/etc/neo4j
 +NEO4J_HOME=/usr/share/neo4j
 +
-diff -au0r neo4j-enterprise-3.0.3-orig/bin/neo4j-shell neo4j-enterprise-3.0.3-mod/bin/neo4j-shell
---- neo4j-enterprise-3.0.3-orig/bin/neo4j-shell	2016-06-10 00:01:59.000000000 -0300
-+++ neo4j-enterprise-3.0.3-mod/bin/neo4j-shell	2016-06-20 04:27:12.557577906 -0300
+diff -au0r neo4j-enterprise-3.0.4-orig/bin/neo4j-shell neo4j-enterprise-3.0.4-mod/bin/neo4j-shell
+--- neo4j-enterprise-3.0.4-orig/bin/neo4j-shell	2016-07-27 21:45:50.000000000 -0300
++++ neo4j-enterprise-3.0.4-mod/bin/neo4j-shell	2016-08-01 11:18:02.391447290 -0300
 @@ -23,0 +24,3 @@
 +NEO4J_CONF=/etc/neo4j
 +NEO4J_HOME=/usr/share/neo4j

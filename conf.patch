@@ -1,6 +1,6 @@
-diff -au0r neo4j-enterprise-3.0.3-orig/conf/neo4j.conf neo4j-enterprise-3.0.3-mod/conf/neo4j.conf
---- neo4j-enterprise-3.0.3-orig/conf/neo4j.conf	2016-06-10 00:01:59.000000000 -0300
-+++ neo4j-enterprise-3.0.3-mod/conf/neo4j.conf	2016-06-20 04:30:06.086762377 -0300
+diff -au0r neo4j-enterprise-3.0.4-orig/conf/neo4j.conf neo4j-enterprise-3.0.4-mod/conf/neo4j.conf
+--- neo4j-enterprise-3.0.4-orig/conf/neo4j.conf	2016-07-27 21:45:50.000000000 -0300
++++ neo4j-enterprise-3.0.4-mod/conf/neo4j.conf	2016-08-01 11:18:06.038114065 -0300
 @@ -9,3 +9,6 @@
 -#dbms.directories.data=data
 -#dbms.directories.plugins=plugins
