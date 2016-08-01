@@ -10,58 +10,37 @@
 # https://github.com/michaellass/AUR
 
 pkgname=multipath-tools
-pkgver=0.5.0
-pkgrel=4
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Multipath tools for Linux (including kpartx)'
 arch=('i686' 'x86_64')
 url="http://christophe.varoqui.free.fr/"
 license=('GPL2')
-depends=('libaio' 'device-mapper')
+depends=('libaio' 'device-mapper' 'liburcu')
+makedepends=('git')
 conflicts=('multipath-tools-git')
-backup=('etc/multipath.conf')
 install=multipath-tools.install
-options=(!emptydirs)
-source=(http://christophe.varoqui.free.fr/multipath-tools/$pkgname-$pkgver.tar.bz2
-	blacklist-cciss-devices.patch)
-sha256sums=('f13cf1eb84e94e83b2019e68f7965526903c13e94246db43965d181668a0a6f9'
-            '415f90ea44e79a8d453eebdbca5fead6ac16f4ebcc3238f31a05b8014c2e8f0f')
+source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-  cd  "${srcdir}/${pkgname}-${pkgver}"
+  cd  "${srcdir}/${pkgname}"
 
-  # Blacklist cciss devices as they are not fully supported
-  patch -p1 < "${srcdir}/blacklist-cciss-devices.patch"
-
-  # Fix some paths that are hardcoded
-  sed -i 's|/etc/udev/rules.d|/usr/lib/udev|g' kpartx/Makefile
-  sed -i 's|${prefix}/lib/udev|${prefix}/usr/lib/udev|g' Makefile.inc
-  sed -i 's|/sbin|/usr/bin|g' Makefile.inc multipathd/multipathd.service
-
-  # Not sure why this is in here. Would the Before= line hurt anyone?
-  sed -i '/Before/d' multipathd/multipathd.service
-
-  # systemd-daemon is a compat lib that is not included in Arch's systemd package since v229
-  sed -i 's/lsystemd-daemon/lsystemd/g' libmultipath/Makefile multipathd/Makefile
+  # Fix bindir in Makefile
+  sed -i 's|$(exec_prefix)/sbin|$(exec_prefix)/bin|g' Makefile.inc
 }
 
 build() {
-  cd  "${srcdir}/${pkgname}-${pkgver}"
+  cd  "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
-  make LIB="/usr/lib" \
+  make \
        DESTDIR="${pkgdir}" \
+       exec_prefix="/usr" \
+       LIB="/usr/lib" \
        install
-
-  # Install sample and default config
-  install -dm755 "${pkgdir}/usr/share/multipath/examples"
-  install -m644 multipath.conf* "${pkgdir}/usr/share/multipath/examples"
-  install -Dm644 multipath.conf.defaults "${pkgdir}/etc/multipath.conf"
-
-  # Fix library symlinks. libmpathpersist.so is broken and libmultipath.so is completely missing
-  ln -sf "/usr/lib/libmpathpersist.so.0" "${pkgdir}/usr/lib/libmpathpersist.so"
-  ln -s "/usr/lib/libmultipath.so.0" "${pkgdir}/usr/lib/libmultipath.so"
 }
