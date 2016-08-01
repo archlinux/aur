@@ -1,5 +1,5 @@
 pkgname='swisseph'
-pkgver='2.02.01'
+pkgver='2.05.01'
 pkgrel='1'
 pkgdesc='High precision Swiss Ephemeris developed by Astrodienst.'
 arch=('i686' 'x86_64')
@@ -9,7 +9,6 @@ depends=()
 makedepends=()
 optdepends=()
 source=("http://www.astro.com/ftp/swisseph/swe_unix_src_${pkgver}.tar.gz")
-md5sums=('62ec933bbe7dde6a96d0b363ca1e18e3')
 
 build() {
     cd "$srcdir/src/"
@@ -18,11 +17,15 @@ build() {
 
 package() {
     cd "$srcdir/src/"
-    install -d -m 755 "$pkgdir/usr/share/swisseph/"
+    install -d -m 755 "$pkgdir/usr/lib"
     install -d -m 755 "$pkgdir/usr/bin"
+    install -d -m 755 "$pkgdir/usr/include/swisseph"
 
-    install -m 755 "$srcdir/src/libswe.a" "$srcdir/src/libswe.so" "$pkgdir/usr/share/swisseph/"
+    install -m 755 "$srcdir/src/libswe.a" "$srcdir/src/libswe.so" "$pkgdir/usr/lib"
     install -m 755 "$srcdir/src/swetest"  "$srcdir/src/swemini" "$pkgdir/usr/bin/"
+
+    cp *.h "${pkgdir}/usr/include/swisseph"
+    rm "${pkgdir}/usr/include/swisseph/swedll.h"
 }
 
-md5sums=('e0bca95f36cd7502716d19fd3e979b14')
+sha256sums=('fb7aeb708cb728ab0564528f43b8983775df7c508abfa50533b3207fc6edb53b')
