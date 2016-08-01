@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=45.2.0
+pkgver=45.3.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
@@ -25,15 +25,15 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
         mozilla-1245076-1.patch
         no-libnotify.patch
-        harfbuzz-1.1.3.patch.gz)
-sha256sums=('1a729774034231c919dc5a556e17d3342792d5347c755d8d0a4f67a07374804b'
-            'ee8f508442147ad5afcd9c9e60d50d22659ad8c246d35ce8c97aa4463be3a9bc'
+        harfbuzz-1.1.3-fixed.patch.gz)
+sha256sums=('922233c65c0aabd05371974c289495119c28d72fc7f8b06a22b58c5f70f8b8f7'
+            '21ef71942681206c650862215543f35fd0ceaed362d93d6f9c30f7a24fb204b4'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '6e7cba25c52b246da183b8309e7b56208bd991d1a7adb40063c5702a6f3722ea'
             'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7'
-            '3a61b517aedd54b25d2cfc96455cac0ec92033697f735885ecacbbf4b75f38a8')
+            '899c19ee98b0eab3d98383d70220ab26c912eeec8b04c8dd37f05d0ab389e574')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -56,7 +56,7 @@ prepare() {
   patch -Np1 -i ../no-libnotify.patch
 
   # Harfbuzz patch to v1.1.3
-  patch -Np1 -i ../harfbuzz-1.1.3.patch
+  patch -Np1 -i ../harfbuzz-1.1.3-fixed.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
