@@ -1,24 +1,24 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=autochown
-pkgver=2016
+pkgver=2016.8
 pkgrel=1
 pkgdesc='Monitor multiple directories using glob patterns and automatically adjust file ownership and permissions.'
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h armv6l armv7h armv7l armv8h armv8l)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/autochown"
 makedepends=(cmake rabbit_tree)
 backup=(etc/autochownd.conf)
 source=(
-  http://xyne.archlinux.ca/projects/autochown/src/autochown-2016.tar.xz
-  http://xyne.archlinux.ca/projects/autochown/src/autochown-2016.tar.xz.sig
+  http://xyne.archlinux.ca/projects/autochown/src/autochown-2016.8.tar.xz
+  http://xyne.archlinux.ca/projects/autochown/src/autochown-2016.8.tar.xz.sig
 )
 sha512sums=(
-  bc13f3b582bf594abeff88608b395d7c7049102c04bd98bd1a6365fcd29b578ce2cf121156157d22059df144d60fa0232406a8684b8e6360adb396076db3fd68
-  145f1a21a98c37adc08565a1318749ca1e54c5cb84a9192b616b53938604c77a79f5aba170007dac450588bcf6309d129c63a9546f82c4c0af17c1933c008fe8
+  6483cca5dd96b5c9868c5020609c71a89771394bd7d2eb02de4431024b74c129fdfc6e2a529baf9ca7f380936be1351f1c9498d3c18f4bfc029d8275cb0d9afc
+  46d953004d39f6c97e0cf573db56286d382eb5e7c0db7e6a6d88894e00544c0c70e7ea22c84b767e550e74fc208960a36ad949cbbec552a5aa6d56701da4cfcb
 )
 md5sums=(
-  fd3aec154e6f4d47eceace405f2a2403
-  eb71bbd9838bf7d054656bb6f3217e05
+  131347e74757b3fbcfd71fa51ab4bad1
+  b9e6bc20fea1e7e9a057b1da56b114ba
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
