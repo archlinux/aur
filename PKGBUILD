@@ -3,13 +3,13 @@ pkgver=0.11.0
 pkgrel=4
 pkgdesc="LD_PRELOAD hack with helper scripts to make gtk and qt-only programs use KDE file dialogs."
 arch=('i686' 'x86_64')
-url="http://www.kde-apps.org/content/show.php?content=36077"
+url="https://www.kde-look.org/content/show.php/?content=36077"
 license=('GPL')
 depends=('kdelibs')
 makedepends=('pkgconfig' 'automoc4' 'cmake' 'gettext' 'gtk2>=2.6' 'gtk3>=3.0')
 install=kgtk.install
-source=(http://kde-apps.org/CONTENT/content-files/36077-KGtk-${pkgver}.tar.bz2)
-md5sums=('e5abf37b9f15b301d213ffb881144ddb')
+source=(https://dl.opendesktop.org/api/files/download/id/1460972667/36077-KGtk-${pkgver}.tar.bz2)
+sha1sums=('365d3a0b181a533ae100ae8ac0aeb9be45cb4b0c')
 
 build() {
   cd "${srcdir}/KGtk-${pkgver}"
