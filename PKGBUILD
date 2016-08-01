@@ -4,7 +4,7 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # djmelik
-pkgver=3.0
+pkgver=r170.9c88de6
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -35,7 +35,7 @@ package() {
   mkdir -p ${pkgdir}/usr/bin/wpgtk/src/gui
   mkdir -p ${pkgdir}/usr/bin/wpgtk/src/data
   install -D -m755 ./py/* ${pkgdir}/usr/bin/wpgtk/py
-  install -D -m755 ./src/* ${pkgdir}/usr/bin/wpgtk/src
+  install -D -m755 ./src/wpg.py ${pkgdir}/usr/bin/wpgtk/src
   install -D -m755 ./src/gui/* ${pkgdir}/usr/bin/wpgtk/src/gui/
   install -D -m755 ./src/data/* ${pkgdir}/usr/bin/wpgtk/src/data/
   install -D -m775 ./wpcscript ${pkgdir}/usr/bin/wpcscript
