@@ -1,13 +1,13 @@
 pkgbase = zerodb-server
 	pkgdesc = An end-to-end encrypted database protocol server
-	pkgver = 0.1.25
+	pkgver = 0.2.0a1
 	pkgrel = 1
 	url = http://www.zerodb.io/
 	arch = any
 	license = AGPL
 	depends = python-click
-	source = https://pypi.python.org/packages/d4/a2/353be56544fef86e95d03c609e5d3b232379baa983b7f54cf297583883fe/zerodb-server-0.1.25.tar.gz
-	md5sums = 487f9387cfe62990f6b988d3e5559176
+	source = https://pypi.python.org/packages/9e/76/b2729990f4117d907c33ca254317cf7c8015ff79adce3d19c002fe64993a/zerodb-server-0.2.0a1.tar.gz
+	md5sums = e5c607a1ebc3851c3c0623b0319d7f7e
 
 pkgname = zerodb-server
 
