@@ -16,8 +16,9 @@ url="https://caddyserver.com"
 license=('Apache')
 provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
-md5sums_i686=('57fd8fb82792e4b9b2aca2e5c5d20e6d')
-md5sums_x86_64=('57fd8fb82792e4b9b2aca2e5c5d20e6d')
+md5sums_i686=('SKIP')
+md5sums_x86_64=('SKIP')
+md5sums_armv6h=('SKIP')
 
 # expand the feature array
 printf -v _features '%s,' "${_features[@]}"
