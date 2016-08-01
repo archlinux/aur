@@ -1,6 +1,6 @@
 pkgbase = backintime-git
-	pkgver = 1.1.12.r246.g684211d
-	pkgrel = 2
+	pkgver = 1.1.12.r248.g4c5402c
+	pkgrel = 1
 	url = http://backintime.le-web.org
 	arch = any
 	license = GPL
@@ -8,6 +8,9 @@ pkgbase = backintime-git
 	makedepends = openssh
 	makedepends = python-dbus
 	makedepends = python-keyring
+	makedepends = rsync
+	makedepends = systemd
+	makedepends = xorg-xdpyinfo
 	source = backintime::git://github.com/bit-team/backintime.git
 	md5sums = SKIP
 
