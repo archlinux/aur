@@ -1,5 +1,7 @@
+# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+
 pkgname=lombok-eclipse
-pkgver=1.16.8
+pkgver=1.16.10
 pkgrel=1
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
@@ -13,13 +15,15 @@ noextract=("lombok.jar")
 options=(!makeflags)
 
 build() {
-	cd "$srcdir"
-	java -jar lombok.jar publicApi
+    cd "${srcdir}"
+    java -jar lombok.jar publicApi
 }
 package() {
-	mkdir -p "$pkgdir"/usr/lib/eclipse
-	cp "$srcdir"/lombok.jar "$pkgdir"/usr/lib/eclipse
-	cp "$srcdir"/lombok-api.jar "$pkgdir"/usr/lib/eclipse
+    mkdir -p "${pkgdir}"/usr/lib/eclipse
+    cp "$srcdir"/lombok.jar "${pkgdir}"/usr/lib/eclipse
+    cp "$srcdir"/lombok-api.jar "${pkgdir}"/usr/lib/eclipse
 }
 
-sha256sums=('fe32b29b7b33eb2b19866cbc5345c59c9984a6036cc396856a04c0d09f99ea68')
+sha256sums=('7e9079406585c67fe25f607c34b17fbed48da0a9bceb15c09a558444cefcef0e')
+
+# vim:set ts=2 sw=2 et:
