@@ -4,7 +4,7 @@
 pkgname=freeplane-git
 _NEXT_VERSION=1.5.x
 pkgver=1.5.x.0ffeb12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="https://github.com/freeplane/freeplane.git"
@@ -17,7 +17,6 @@ source=('git://github.com/freeplane/freeplane.git' 'freeplane.desktop' 'freeplan
 md5sums=('SKIP'
          '85d40893aef0b71f9ffdf2dec4fbb0f0'
          'd72e3d0471338520f75a2fcf3ce536a7')
-install=freeplane.install
 
 pkgver() {
 	cd "${pkgname%-*}"
