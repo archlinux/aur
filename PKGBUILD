@@ -1,6 +1,7 @@
 # Submitter: L.G. Sarmiento <lgsarmientop-ala-unal.edu.co>
 pkgname=fityk-git
-pkgver=20140531
+_pkgname=fityk
+pkgver=r1641.3967c7e
 pkgrel=1
 pkgdesc="A program for nonlinear fitting of analytical functions to data."
 url="http://fityk.nieto.pl/"
@@ -12,16 +13,21 @@ optdepends=('gnuplot: can be used with the CLI')
 provides=("fityk")
 options=('!libtool')
 install="fityk.install"
-md5sums=()
+source=($_pkgname::git+https://github.com/wojdyr/fityk.git
+       "fityk.install")
+md5sums=('SKIP'
+         '0f2c2b78511036ea623a9568509bc987')
 
-_gitroot="http://github.com/wojdyr/fityk.git"
+#_gitroot="http://github.com/wojdyr/fityk.git"
+
+pkgver() {
+  cd ${srcdir}/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  [ -d ${srcdir}/${pkgname} ] || mkdir ${srcdir}/${pkgname}
-  #thanks to masutu and in general the team from the fityk AUR package
-  #This nowadays is almost identical to that one.
-  cd ${srcdir}/${pkgname}
-  git clone --depth 1 $_gitroot .
+
+  cd ${srcdir}/$_pkgname
 
   #it doesn't build with sphinx for python3
   sed -i 's#sphinx-build#sphinx-build2#' doc/Makefile
@@ -33,6 +39,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${_pkgname}
   make DESTDIR=${pkgdir} install
 }
