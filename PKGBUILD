@@ -34,7 +34,7 @@ package() {
   mkdir -p ${pkgdir}/usr/bin/wpgtk/py
   mkdir -p ${pkgdir}/usr/bin/wpgtk/src
   install -D -m755 ./py/* ${pkgdir}/usr/bin/wpgtk/py
-  install -D -m755 ./src/* ${pkgdir}/usr/bin/wpgtk/src
+  install -d -m755 ./src/ ${pkgdir}/usr/bin/wpgtk/src
   install -D -m775 ./wpcscript ${pkgdir}/usr/bin/wpcscript
   install -D -m775 ./wpg ${pkgdir}/usr/bin/wpg
   install -D -m755 ./functions ${pkgdir}/usr/bin/wpgtk/functions
