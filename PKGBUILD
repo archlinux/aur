@@ -5,7 +5,7 @@
 _ver=3.20
 _pkgbase=mate-themes
 pkgname="${_pkgbase}-${_ver}-gtk3"
-pkgver=${_ver}.8
+pkgver=${_ver}.10
 pkgrel=1
 pkgdesc="Default themes for the MATE desktop"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ depends=('gtk-engines' 'gtk-engine-murrine' 'gtk-update-icon-cache'
 makedepends=('mate-common' 'icon-naming-utils')
 groups=('mate' 'mate-gtk3')
 source=("http://pub.mate-desktop.org/releases/themes/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('b135248110ddca8083f66d8d206aa51ef01d9421')
+sha1sums=('d44f484987c269820662a037f763c248a5d24356')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
