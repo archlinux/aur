@@ -1,7 +1,7 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
@@ -21,10 +21,6 @@ build() {
   echo 'INSTALL_SHARE_DIR:=/usr/share/openmsx' >> build/custom.mk
   echo 'INSTALL_BINARY_DIR:=/usr/bin' >> build/custom.mk
 
-  # https://github.com/openMSX/openMSX/commit/9429a1cd06c08676ca9072e51d07be0259b8e76e
-  sed -i '4 a #include <iterator>' src/RTScheduler.cc
-  sed -i '8 a #include <iterator>' src/video/ZMBVEncoder.cc
-
   # Compiling
   ./configure
   make
@@ -40,4 +36,4 @@ package() {
   install -m 644 "${pkgdir}/usr/share/doc/openmsx/cbios.txt" "${pkgdir}/usr/share/licenses/openmsx/"
 }
 
-md5sums=('a167b0923a354b5826b51751811ae580')
+md5sums=('995ad158a3796bf576d6ce7722c87d82')
