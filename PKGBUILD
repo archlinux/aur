@@ -1,9 +1,10 @@
 # Maintainer  : Yiannis A Ginis <drxspace[at]gmail[dot]com>
 # Contributor : Spyros Stathopoulos <foucault.online[at]gmail[dot]com>
+
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -46,7 +47,7 @@ prepare() {
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	cmake \
-		-D CMAKE_BUILD_TYPE=Release \
+		-D CMAKE_BUILD_TYPE=MinSizeRel \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D MAINTAINER_MODE=ON \
 		-D BUILD_BUILTIN_CONFIG=ON \
@@ -54,12 +55,16 @@ build() {
 		-D BUILD_ARGB=ON \
 		-D BUILD_CURL=ON \
 		-D BUILD_I18N=ON \
+		-D BUILD_IBM=OFF \
 		-D BUILD_IMLIB2=ON \
 		-D BUILD_IOSTATS=ON \
 		-D BUILD_IPV6=ON \
 		-D BUILD_LUA_CAIRO=ON \
 		-D BUILD_LUA_IMLIB2=ON \
 		-D BUILD_LUA_RSVG=ON \
+		-D BUILD_MOC=OFF \
+		-D BUILD_MPD=OFF \
+		-D BUILD_NVIDIA=OFF \
 		-D BUILD_OLD_CONFIG=ON \
 		-D BUILD_PULSEAUDIO=ON \
 		-D BUILD_WLAN=ON \
