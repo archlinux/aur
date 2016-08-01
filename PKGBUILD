@@ -4,8 +4,8 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.7
-pkgrel=2
+pkgver=4.7.1
+pkgrel=1
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums"
 arch=('any')
 url="http://filebot.sourceforge.net/"
@@ -14,12 +14,15 @@ license=('GPL')
 depends=('java-runtime>=8' 'fontconfig' 'chromaprint')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/FileBot_$pkgver/FileBot_$pkgver-portable.zip
         $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
-md5sums=('5bccdb98a0052f628aed38f857122656'
-         '5fca1c27a1fa021eaee96666994990e4'
+md5sums=('46fa31668f971d373bc39b66bdd8a4bf'
+         '04cbf9bfeb65877e87e26c3300b81498'
          '04f46be047049448dba3f0de29fe192d'
          'f37edd0bba7570904d28ab1681c7a7f3')
 #noextract=(FileBot_$pkgver.jar)
-optdepends=('libzen: Support for additional subtitle search engines (Sublight)' 'libmediainfo: Episode naming / Sublight usage' 'java-p7zip-binding: Extract archives')
+optdepends=('libzen: Support for additional subtitle search engines (Sublight)'
+	    'libmediainfo: Episode naming / Sublight usage'
+	    'java-p7zip-binding: Extract archives'
+	    'gvfs: gvfs backends')
 
 build() {
   /bin/true
