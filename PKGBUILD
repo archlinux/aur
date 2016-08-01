@@ -9,7 +9,7 @@ url="https://github.com/astroidmail/astroid"
 license=('GPL')
 groups=()
 depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass' 'libpeas' 'gobject-introspection')
-makedepends=('scons' 'git' 'pkg-config')
+makedepends=('scons' 'git' 'pkg-config' 'python-gobject')
 checkdepends=('notmuch-runtime')
 optdepends=('gvim: default editor'
             'emacs: can be used as editor')
