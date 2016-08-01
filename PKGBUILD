@@ -14,7 +14,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=47.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -33,7 +33,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'upower: Battery API' )
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=6838f0c032f8
+_patchrev=bf541a540a74
 options=('!emptydirs'  'strip' )
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -46,6 +46,9 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
 	$_patchurl/mozilla-kde.patch
 	$_patchurl/mozilla-language.patch
 	$_patchurl/mozilla-nongnome-proxies.patch
+        $_patchurl/MozillaFirefox/firefox-appdata.xml
+        $_patchurl/MozillaFirefox/firefox-mimeinfo.xml
+        $_patchurl/MozillaFirefox/firefox.1
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
@@ -191,6 +194,12 @@ package() {
 
   install -Dm644 "$srcdir/firefox.desktop" "$pkgdir/usr/share/applications/firefox.desktop"
 
+  install -Dm644 "$srcdir/firefox-appdata.xml" \
+          "$pkgdir/usr/share/applications/firefox.appdata.xml"
+  install -Dm644 "$srcdir/firefox.1" "$pkgdir/usr/share/man/man1/firefox.1"
+  install -Dm644 "$srcdir/firefox-mimeinfo.xml" \
+          "pkgdir/usr/share/mime/packages/firefox.xml"
+  
   # Use system-provided dictionaries
   rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
@@ -213,6 +222,9 @@ md5sums=('aba4b673b10e3fdcee80f88300829613'
          'f9278c5e917f6d4faa9dadb555fec7f1'
          '903307f923a459189a5a6062ff9df38c'
          '0c684360f1df4536512d51873c1d243d'
+         '4747b754ad02ba4d6f042a811a403709'
+         '16d99b1dec429f421b77a9d112bbe6cc'
+         'a72b999b6cce4aebcc8e70d319527b74'
          'ca230419b22e31220f1278ef639db0dd'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
