@@ -1,0 +1,53 @@
+diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
+--- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2016-02-25 10:51:32.000000000 +0330
++++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth	2016-08-01 19:43:23.329247234 +0430
+@@ -1,8 +1,8 @@
+ [Plymouth Theme]
+-Name=Ubuntu GNOME Logo
+-Description=A theme that features an animated Ubuntu GNOME logo.
++Name=GNOME Logo
++Description=A theme that features an animated GNOME logo.
+ ModuleName=script
+ 
+ [script]
+-ImageDir=/usr/share/plymouth/themes/ubuntu-gnome-logo
+-ScriptFile=/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
++ImageDir=/usr/share/plymouth/themes/gnome-logo
++ScriptFile=/usr/share/plymouth/themes/gnome-logo/gnome-logo.script
+diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
+--- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2015-10-06 12:52:18.000000000 +0330
++++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script	2016-08-01 19:43:43.862581227 +0430
+@@ -1,4 +1,4 @@
+-#  ubuntu-gnome-logo.script - boot splash plugin
++#  gnome-logo.script - boot splash plugin
+ # 
+ #  Copyright (C) 2013 Canonical Ltd.
+ # 
+@@ -215,7 +215,7 @@
+ }
+ 
+ #Load the sprites
+-logo = centered_sprite("ubuntu_gnome_logo.png");
++logo = centered_sprite("gnome_logo.png");
+ spinner = centered_sprite("spinner.png");
+ draw_bg ();
+ 
+diff -aur ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in
+--- ubuntu-gnome-default-settings-16.10.1.pristine/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2016-07-05 12:43:34.000000000 +0430
++++ ubuntu-gnome-default-settings-16.10.1.new/usr/share/plymouth/themes/ubuntu-gnome-text/ubuntu-gnome-text.plymouth.in	2016-08-01 19:48:08.755923151 +0430
+@@ -1,10 +1,10 @@
+ [Plymouth Theme]
+-Name=Ubuntu GNOME Text
+-Description=Text mode theme based on ubuntu-gnome-logo theme
+-ModuleName=ubuntu-text
++Name=GNOME Text
++Description=Text mode theme based on gnome-logo theme
++ModuleName=gnome-text
+ 
+-[ubuntu-text]
+-title=Ubuntu GNOME VERSION
++[gnome-text]
++title=GNOME VERSION
+ black=0x2d3335
+ white=0xffffff
+ brown=0x0087ed
