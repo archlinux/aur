@@ -2,8 +2,8 @@
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.4
-pkgver=4.4.15
-pkgrel=2
+pkgver=4.4.16
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'i915_317.patch')
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '69fcb928e4958f87fb134d0f6acf98072655b5572dd3497c3a0844882f261bf8'
+            '7181b6cb3a1611dab9179f57846a3f03bf2705aa3e4cddd9fbd0398bde50d5f9'
             'SKIP'
             'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
             '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
