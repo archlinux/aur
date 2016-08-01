@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn-dev
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -18,8 +18,6 @@ sha256sums=('d318fb24aeefda24ad9057dd2955028972928172ed0b4683a10b20f0990e8180'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'dd15ff9d020d6779c51bff560c8571b462cc7ca3f4d2a92b8103056be4b2e0fd'
-            '7f71b0bf5b2765cfc3c285c60036d4efdca0ba86756b58f228a53ed299600c28'
-            'edf29947a752df34eec006adc1cddbf1b73f9757e3752400dffea25d651b80b9'
             'SKIP'
             'SKIP'
             'b346249c40d4eab7cf5a2b682b10f574d5f8ad6cf2b62604f15261a246b5f5a1')
@@ -31,8 +29,6 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 			  "restart.conf"
 			  "vpn.sh"
 			  "pia.8.gz"
-			  "hook.install"
-			  "hook.remove"
 			  "git://github.com/flamusdiu/python-pia.git#branch=dev"
 			  "git://github.com/masterkorp/openvpn-update-resolv-conf.git"
 			  "update-resolv-conf.patch")
@@ -71,8 +67,6 @@ prepare() {
 package() {
   cd "${srcdir}"
 
-  install -D -m 644 hook.install "${pkgdir}/usr/share/libalpm/hooks/pia-install.hook"
-  install -D -m 644 hook.remove "${pkgdir}/usr/share/libalpm/hooks/pia-remove.hook"
   install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d/restart.conf"
   install -D -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
