@@ -2,7 +2,7 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.1.8.r15.g45f54e6
+pkgver=1.1.12.r246.g684211d
 pkgrel=1
 url="http://backintime.le-web.org"
 license=('GPL')
@@ -32,6 +32,11 @@ build() {
   make
 }
 
+check() {
+  cd $_pkgname/common
+  make test
+}
+
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
   depends=('rsync' 'cron' 'openssh' 'python-dbus' 'python-keyring')
@@ -46,13 +51,13 @@ package_backintime-cli-git() {
 }
 
 package_backintime-git() {
-  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. QT4 GUI version."
-  #depends=('backintime-cli' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt4' 'xorg-xdpyinfo')
-  depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt4' 'xorg-xdpyinfo')
+  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. QT5 GUI version."
+  #depends=('backintime-cli'    'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
+  depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   optdepends=('meld: diff tool' 'kompare: diff tool'
               'python-secretstorage: store passwords')
   provides=($_pkgname)
-  conflicts=($_pkgname $_pkgname-gnome $_pkgname-gtk $_pkgname-kde4 $_pkgname-qt4)
+  conflicts=($_pkgname $_pkgname-gnome $_pkgname-gtk $_pkgname-kde4 $_pkgname-qt4 $_pkgname-qt5)
 
   cd $_pkgname/qt4
   make DESTDIR="$pkgdir" install 
