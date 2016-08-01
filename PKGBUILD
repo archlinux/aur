@@ -1,9 +1,9 @@
 # Maintainer: Harvey <harv|at|gmx.de>
-# Contributors: Dan Serban, Dany Martineau, Jordi De Groof, RTFreedman, Ciobi (himself!)
+# Contributors: Dan Serban, Dany Martineau, Jordi De Groof, RTFreedman
 
 pkgname="mp3diags-unstable"
-pkgver="1.3.03"
-pkgrel=2
+pkgver="1.3.04"
+pkgrel=1
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
@@ -12,10 +12,9 @@ depends=("boost-libs" "qt4")
 makedepends=("boost")
 optdepends=('mp3gain: MP3 normalization support')
 source=("http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP3Diags-unstable-${pkgver}.tar.gz")
-sha1sums=('9afee373045bf13dbded4eb2cd1b7edce90cb7dd')
+sha1sums=('f5de6a781e5b5625b010486ad5fbf90515d13b13')
 
 build() {
-	patch -p 1 < ../patch.diff
 	cd "${srcdir}/MP3Diags-unstable-${pkgver}"
 	./AdjustMt.sh
 	qmake-qt4
