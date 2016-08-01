@@ -5,7 +5,7 @@
 pkgname=plymouth-theme-gnome-logo
 _srcname=ubuntu-gnome-default-settings
 pkgver=16.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME plymouth theme based on Ubuntu-gnome plymouth theme."
 arch=('any')
 url="http://packages.ubuntu.com/yakkety/plymouth-theme-ubuntu-gnome-logo"
@@ -14,12 +14,10 @@ depends=('plymouth')
 install='plymouth-theme-gnome-logo.install'
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/u/${_srcname}/${_srcname}_${pkgver}.tar.xz"
 		'gnome_logo.png'
-		'gnome.patch'
-		'plymouth-theme-gnome-logo.install')
+		'gnome.patch')
 md5sums=('0b39e1accc0bcf2ede4e9ca42e00b860'
          '91f82e0f9baa432f621574425193047e'
-         'fe3398ef0a9f9eb0de25a6e664523bd4'
-         '5484ae036222105f87fefca1068fcc88')
+         'fe3398ef0a9f9eb0de25a6e664523bd4')
 
 prepare() {
 	cd $srcdir/${_srcname}-${pkgver}
