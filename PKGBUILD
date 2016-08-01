@@ -88,7 +88,7 @@ package() {
 		rm "$pkgdir/usr/bin/apm"
 	fi
 
-	ln -sf "${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
+	ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
 	if [[ -f "$pkgdir/usr/share/applications/${_pkgname}.desktop" ]]; then
   	rm "$pkgdir/usr/share/applications/${_pkgname}.desktop"
