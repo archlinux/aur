@@ -5,10 +5,10 @@ pkgver=20061030
 pkgrel=1
 pkgdesc="Czech hunspell/myspell dictionary"
 arch=('any')
-url="http://ooo.mirror.dkm.cz/pub/openoffice/contrib/dictionaries/"
+url="http://extensions.services.openoffice.org/en/project/czech-dictionary-pack-ceske-slovniky-cs-cz"
 license=('GPL2' 'custom')
 depends=('hunspell')
-source=(${url}cs_CZ-pack.zip)
+source=(http://download.services.openoffice.org/contrib/dictionaries/cs_CZ-pack.zip )
 md5sums=('a778a2a0df6abf505fd8b20a503414e0')
 
 build()
