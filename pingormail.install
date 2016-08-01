@@ -1,0 +1,38 @@
+post_install() {
+    pkgname=pingormail
+
+    # Fixing membership
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+
+    # Reload systemctl
+    systemctl daemon-reload
+
+    echo "Adding pingormail in systemctl:"
+    echo "  systemctl enable pingormail.timer"
+    echo "  systemctl start pingormail.timer"
+
+    true
+}
+
+post_upgrade() {
+    # Reload systemctl
+    systemctl daemon-reload
+
+    #echo "You should restart pingormail.timer"
+    #echo "  systemctl restart pingormail.timer"
+
+    true
+}
+
+pre_remove() {
+    pkgname=pingormail
+    # Remove symlink in systemd
+    systemctl disable "$pkgname".timer
+    # Stop server
+    systemctl stop "$pkgname".timer
+    # Reload systemctl
+    systemctl daemon-reload
+
+    true
+}
