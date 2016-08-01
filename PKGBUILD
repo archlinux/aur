@@ -15,7 +15,7 @@ makedepends=('clang' 'mono' 'dos2unix' 'cmake')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealEngine')
 source=(
-  "git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
+  "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
   '0001-ignore-return-value-error.patch'
 )
