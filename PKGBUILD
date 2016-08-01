@@ -8,6 +8,7 @@ arch=(i686 x86_64)
 url='http://rocksdb.org'
 license=(BSD)
 depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
+conflicts=(rocksdb)
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/rocksdb-$pkgver.zip)
 sha256sums=('31beaca347531440e816293c244f03d32154040f6d5beddf8045d06829053f36')
@@ -33,6 +34,8 @@ check() {
 
 package() {
   cd rocksdb-rocksdb-$pkgver
+  install -d "$pkgdir"/usr/include
+  cp -r include/rocksdb "$pkgdir"/usr/include
   install -m755 -D librocksdb.so "$pkgdir"/usr/lib/librocksdb_lite.so
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
