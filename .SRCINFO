@@ -1,0 +1,28 @@
+pkgbase = mate-hud
+	pkgdesc = Unity like HUD for Mate
+	pkgver = 16.10.0
+	pkgrel = 1
+	url = https://bitbucket.org/ubuntu-mate/mate-hud.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = appmenu-qt
+	depends = libkeybinder3
+	depends = mate-desktop
+	depends = python
+	depends = python-dbus
+	depends = python-psutil
+	depends = python-setproctitle
+	depends = python-xlib
+	depends = rofi
+	depends = unity-gtk-module
+	provides = mate-hud
+	provides = mate-hud
+	conflicts = mate-hud
+	conflicts = mate-hud
+	source = https://bitbucket.org/ubuntu-mate/mate-hud/get/16.10.0.tar.gz
+	sha1sums = 42e774916f021b411c8c39240118c8fb11f8b3a4
+
+pkgname = mate-hud
+	groups = mate-extra
+
