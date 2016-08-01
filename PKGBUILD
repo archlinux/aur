@@ -5,14 +5,14 @@
 
 pkgname=smali-git
 _gitname=smali
-pkgver=2.0.7.1385.0c7e7b7
+pkgver=2.1.3.1603.a5d8281
 pkgrel=1
 pkgdesc="An assembler/disassembler for Android's dex format"
 url="https://github.com/JesusFreke/smali"
 arch=('any')
 license=('BSD')
-depends=('java-runtime' 'bash')
-makedepends=('git' 'java-environment' 'gradle')
+depends=('java-runtime>=8' 'bash')
+makedepends=('git' 'java-environment>=8' 'gradle')
 provides=('smali')
 conflicts=('smali')
 source=(${pkgname}::git+https://github.com/JesusFreke/${_gitname})
