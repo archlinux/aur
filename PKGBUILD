@@ -1,6 +1,6 @@
 # Maintainer: Hannes Graeuler <hgraeule @ uos dot de>
 pkgname=pngquant
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="command-line utility to quantize PNGs down to 8-bit paletted PNGs"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://pngquant.org/"
 license=('BSD')
 depends=('libpng' 'zlib')
 source=("https://pngquant.org/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('79e0b2f08260fb3f0fc131c1ac17e26d9e207b36fbd3734f980957457b8492a7')
+sha256sums=('6b9aa72083035ed29a56001e02e25f2ab009670ac80e91694cb3f6c4b3603d81')
 
 build() {
     cd "$srcdir/pngquant-$pkgver"
