@@ -32,11 +32,12 @@ package() {
   echo '#!/bin/bash' > ./wpg
   echo "/usr/bin/wpgtk/src/wpg.py" >> ./wpg
   mkdir -p ${pkgdir}/usr/bin/wpgtk/py
-  mkdir -p ${pkgdir}/usr/bin/wpgtk/src
+  mkdir -p ${pkgdir}/usr/bin/wpgtk/src/gui
+  mkdir -p ${pkgdir}/usr/bin/wpgtk/src/data
   install -D -m755 ./py/* ${pkgdir}/usr/bin/wpgtk/py
   install -D -m755 ./src/* ${pkgdir}/usr/bin/wpgtk/src
-  install -D -m755 ./src/gui/* ${pkgdir}/usr/bin/wpgtk/src
-  install -D -m755 ./src/data/* ${pkgdir}/usr/bin/wpgtk/src
+  install -D -m755 ./src/gui/* ${pkgdir}/usr/bin/wpgtk/src/gui/
+  install -D -m755 ./src/data/* ${pkgdir}/usr/bin/wpgtk/src/data/
   install -D -m775 ./wpcscript ${pkgdir}/usr/bin/wpcscript
   install -D -m775 ./wpg ${pkgdir}/usr/bin/wpg
   install -D -m755 ./functions ${pkgdir}/usr/bin/wpgtk/functions
