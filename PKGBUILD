@@ -12,7 +12,7 @@ pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD them
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${_name}"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'glu' 'libsm' 'dconf' 'zenity')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity' 'glu' 'libsm' 'dconf' 'zenity')
 makedepends=('cmake' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
