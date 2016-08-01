@@ -2,7 +2,7 @@
 
 pkgname=libdap
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library which contains an implementation of DAP 2.0 and 3.1"
 arch=('i686' 'x86_64')
 url="http://www.opendap.org/download/libdap"
