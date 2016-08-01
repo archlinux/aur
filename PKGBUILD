@@ -1,6 +1,6 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx-catapult
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
@@ -25,10 +25,6 @@ build() {
   echo 'INSTALL_SHARE_DIR:=/usr/share/openmsx-catapult' >> build/custom.mk
   echo 'INSTALL_BINARY_DIR:=/usr/bin' >> build/custom.mk
 
-  # Required by version 0.10.0 of catapult
-#  sed -i 's@wx-config@wx-config-2.8@g' build/main.mk
-#  sed -i 's@wx-config@wx-config-2.8@g' build/probe.mk
- 
   # Compiling
   make
 }
@@ -46,5 +42,4 @@ package() {
   "${pkgdir}/usr/share/applications/openMSX-Catapult.desktop"
 }
 
-md5sums=('f112f679923f13a2e548a647b593c763')
-md5sums=('ea11f459a2d40ad7977a10e783421af5')
+md5sums=('5ca81291b03e38883f38d965b8745eb8')
