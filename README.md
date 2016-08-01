@@ -5,7 +5,7 @@ Take a look at [caddyserver.com](https://caddyserver.com/) for more details.
 
 ## Migration from 0.8.3 and Previous Versions
 
-Since 0.9, the new [upstream systemd service file](https://github.com/mholt/caddy/blob/master/dist/init/linux-systemd/caddy.service) is bundled with the package.
+Since 0.9, the [upstream systemd service file](https://github.com/mholt/caddy/blob/master/dist/init/linux-systemd/caddy.service) that comes bundled with the package uses, amongst other changes, `www-data` as user and group by default.
 Some of caddy's default paths, e.g. the certificate directories path, have changed.
 The [release notes for 0.9](https://caddyserver.com/blog/caddy-0_9-released) are explaining everything in detail.
 
