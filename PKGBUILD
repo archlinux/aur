@@ -3,7 +3,7 @@
 
 pkgname=freeplane
 pkgver=1.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="http://freeplane.sourceforge.net"
@@ -15,7 +15,6 @@ source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-$
 md5sums=('d25cc0e88b621976b1bc82f1423245d7'
          '85d40893aef0b71f9ffdf2dec4fbb0f0'
          'f1505d5b6872e2dffe8ef2e82d065551')
-install=freeplane.install
 
 package() {
   # Create required directories
