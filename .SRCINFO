@@ -1,6 +1,6 @@
 pkgbase = dump1090-fa-git
 	pkgdesc = FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices.
-	pkgver = 1.15.r196.gb1acfcf
+	pkgver = 1.15.r233.gca3c497
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mutability/dump1090
@@ -12,6 +12,7 @@ pkgbase = dump1090-fa-git
 	license = BSD
 	makedepends = git
 	depends = rtl-sdr
+	depends = lighttpd
 	provides = dump1090
 	provides = dump1090-fa
 	conflicts = dump1090
@@ -19,8 +20,10 @@ pkgbase = dump1090-fa-git
 	conflicts = dump1090_mr-git
 	source = dump1090::git+git://github.com/mutability/dump1090
 	source = dump1090.service
+	source = lighttpd.conf
 	md5sums = SKIP
-	md5sums = ff76b23c833f50b37f2a15fe26b38d7a
+	md5sums = 57cf0db8676e09ceb46d0b2fa05aa391
+	md5sums = e01a5f1b57d5d553bf595f9c0f83ceb9
 
 pkgname = dump1090-fa-git
 

@@ -3,21 +3,23 @@
 
 pkgname=dump1090-fa-git
 _gitname=dump1090
-pkgver=1.15.r196.gb1acfcf
+pkgver=1.15.r233.gca3c497
 pkgrel=1
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump1090, a simple Mode S decoder for RTLSDR devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/mutability/dump1090"
 license=('BSD')
-depends=('rtl-sdr')
+depends=('rtl-sdr' 'lighttpd')
 conflicts=('dump1090' 'dump1090-git' 'dump1090_mr-git')
 provides=('dump1090' 'dump1090-fa')
 makedepends=('git')
 source=('dump1090::git+git://github.com/mutability/dump1090'
-	'dump1090.service')
+	'dump1090.service'
+	'lighttpd.conf')
 md5sums=('SKIP'
-         'ff76b23c833f50b37f2a15fe26b38d7a')
+         '57cf0db8676e09ceb46d0b2fa05aa391'
+         'e01a5f1b57d5d553bf595f9c0f83ceb9')
 install='dump1090-fa.install'
  
 pkgver() {
@@ -40,7 +42,7 @@ package() {
   install -D -m755 "${srcdir}/${_gitname}/view1090" "${pkgdir}/usr/bin/view1090"
   install -D -m755 "${srcdir}/${_gitname}/faup1090" "${pkgdir}/usr/lib/piaware/helpers/faup1090"
   install -d -m755 "${pkgdir}/usr/share/dump1090/html"
-  install -D -m775 dump1090.service "${pkgdir}/usr/lib/systemd/system/dump1090.service"
-  chmod -x "${pkgdir}/usr/lib/systemd/system/dump1090.service"
+  install -D -m644 dump1090.service "${pkgdir}/usr/lib/systemd/system/dump1090.service"
   cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/dump1090/html"
+  install -D -m644 "${srcdir}"/lighttpd.conf "${pkgdir}/usr/share/dump1090/lighttpd.conf"
 }
