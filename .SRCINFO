@@ -1,7 +1,7 @@
 pkgbase = ted-motif
 	pkgdesc = Lightweight RTF text processor - Motif version
 	pkgver = 2.23
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nllgg.nl/Ted
 	arch = any
 	license = GPL

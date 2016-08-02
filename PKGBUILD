@@ -1,7 +1,7 @@
 # Maintainer: Megameneer (Dennis Holierhoek) <dennis.hh@hotmail.com>
 pkgname=ted-motif
 pkgver=2.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight RTF text processor - Motif version"
 arch=('any')
 url=http://nllgg.nl/Ted
@@ -65,8 +65,6 @@ md5sums=(
 prepare() {
 	cd Ted-2.23
 	patch < ../../Makefile.diff
-	cd appFrame
-	patch < ../../../appFontConfig.c.diff
 }
 
 build() {
