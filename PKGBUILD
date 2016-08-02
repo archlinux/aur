@@ -2,7 +2,7 @@
 # Maintainer: L.G. Sarmiento <lgsarmientop-ala-unal.edu.co>
 pkgname=artha
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='A free cross-platform English thesaurus based on WordNet'
 arch=('i686' 'x86_64')
 url="http://artha.sourceforge.net/wiki/index.php/Home"
@@ -10,7 +10,6 @@ license=('GPL')
 depends=('wordnet' 'gtk2' 'dbus-glib')
 optdepends=('enchant: spell checking support'
   'libnotify: notification support'
-  'galago-daemon: notification support'
   'aspell-en: to show suggestion with aspell in English')
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2")
