@@ -1,0 +1,19 @@
+pkgbase = gpa-git
+	pkgdesc = A graphical user interface for the GnuPG
+	pkgver = 0.9.9.r6.g774dbff
+	pkgrel = 1
+	url = https://www.gnupg.org/related_software/gpa/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gpgme
+	depends = gtk2
+	depends = desktop-file-utils
+	provides = gpa
+	conflicts = gpa
+	source = gpa-git::git://git.gnupg.org/gpa.git#branch=master
+	md5sums = SKIP
+
+pkgname = gpa-git
+
