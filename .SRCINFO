@@ -1,6 +1,6 @@
 pkgbase = freeipa
 	pkgdesc = The Identity, Policy and Audit system
-	pkgver = 4.2.3
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://www.freeipa.org/
 	arch = i686
@@ -18,13 +18,12 @@ pkgbase = freeipa
 	makedepends = python2
 	makedepends = python2-ldap
 	makedepends = python2-setuptools
-	makedepends = python2-krbv
 	makedepends = python2-nss
-	makedepends = python2-cryptography
+	makedepends = python2-cryptography>=0.9
 	makedepends = python2-netaddr
-	makedepends = python2-kerberos>=1.1
-	makedepends = sssd>=1.13.1
+	makedepends = python2-gssapi>=1.1.2
 	makedepends = python2-memcached
+	makedepends = sssd>=1.14.0
 	makedepends = python2-lxml
 	makedepends = python2-pyasn1>=0.0.9a
 	makedepends = python2-qrcode
@@ -32,21 +31,28 @@ pkgbase = freeipa
 	makedepends = systemd
 	makedepends = libunistring
 	makedepends = python2-yubico>=1.2.3
-	source = http://freeipa.org/downloads/src/freeipa-4.2.3.tar.gz
-	source = sss-auth-setup.py
-	source = archlinux.patch
-	sha256sums = 7b0e5cb834c6ca36bfe464ec4c6a226e44ce1948edd74b7c4344f43e75d9a133
-	sha256sums = 012a11cdc42e0eb072eec3dd988fa910964f355ec2ae6b67ead373ad69e84e3e
-	sha256sums = 3e237f89fe2d806cdc2e4694233d0e01e01996aa41036dd520b99cb6dae71eed
+	makedepends = python2-six
+	makedepends = ding-libs>=0.5.0
+	makedepends = python2-dbus
+	makedepends = python2-netifaces
+	source = http://freeipa.org/downloads/src/freeipa-4.4.0.tar.gz
+	source = 0001-platform-add-Arch-Linux-platform.patch
+	source = 0002-dogtag-vault-do-not-import-pki-in-makeapi.patch
+	source = 0003-client-install-do-not-assume-etc-krb5.conf.d-exists.patch
+	sha256sums = 5d846bbeb5bfe9121bd8e472385552a9ded5868d2d44e94cbe0ad9191a439b49
+	sha256sums = de0de8d251fd93254518228d4aa82a01ec1bdce7741289a41de9ec694176ebe7
+	sha256sums = 7cebbb95f71abe30f9f206129968341553ff688a4ce3c0bbf3ddb8219b2a799e
+	sha256sums = 5bb4e6ed7aa6d28ad1e8db93fb0f0a85c366bd6be3b2346891346de6ba33baee
 
-pkgname = freeipa-python
+pkgname = python2-ipalib
 	pkgdesc = Python libraries used by IPA
-	depends = python2-kerberos>=1.1
+	arch = any
+	depends = freeipa-common=4.4.0-1
+	depends = python2-gssapi>=1.1.2
 	depends = gnupg
-	depends = iproute2
 	depends = keyutils
 	depends = python2-nss>=0.16
-	depends = python2-cryptography
+	depends = python2-cryptography>=0.9
 	depends = python2-lxml
 	depends = python2-netaddr
 	depends = sssd
@@ -54,36 +60,63 @@ pkgname = freeipa-python
 	depends = python2-pyasn1
 	depends = python2-dateutil
 	depends = python2-yubico>=1.2.3
-	depends = wget
 	depends = python2-dbus
 	depends = python2-setuptools
+	depends = python2-six
+	depends = python2-ldap>=2.4.15
+	depends = python2-dnspython>=1.11.1
+	depends = python2-netifaces>=0.10.4
+	depends = python2-pyusb
+	provides = python2-ipapython=4.4.0-1
+	provides = python2-ipaplatform=4.4.0-1
+	conflicts = freeipa-python
+	replaces = freeipa-python
+
+pkgname = python2-ipaclient
+	pkgdesc = Python libraries used by IPA client
+	arch = any
+	depends = freeipa-client-common=4.4.0-1
+	depends = freeipa-common=4.4.0-1
+	depends = python2-ipalib=4.4.0-1
+	depends = python2-dnspython>=1.11.1
+
+pkgname = freeipa-common
+	pkgdesc = Common files used by IPA
+	arch = any
+	conflicts = freeipa-python
+	replaces = freeipa-python
+
+pkgname = freeipa-client-common
+	pkgdesc = Common files used by IPA client
+	arch = any
 
 pkgname = freeipa-client
 	pkgdesc = IPA authentication for use on clients
 	install = freeipa-client.install
-	depends = freeipa-python=4.2.3-1
+	depends = freeipa-client-common=4.4.0-1
+	depends = freeipa-common=4.4.0-1
+	depends = python2-ipaclient=4.4.0-1
 	depends = python2-ldap
 	depends = cyrus-sasl-gssapi
 	depends = ntp
 	depends = krb5
+	depends = authconfig
 	depends = pam-krb5
 	depends = curl>=7.21.7
 	depends = xmlrpc-c>=1.27.4
-	depends = sssd>=1.13.1
+	depends = sssd>=1.14.0
 	depends = certmonger>=0.78
 	depends = nss
 	depends = bind-tools
 	depends = oddjob
-	depends = python2-krbv
-	depends = python2-dnspython>=1.11.1
+	depends = python2-gssapi>=1.1.2
 	depends = autofs
 	depends = nfsidmap
 	depends = nfs-utils
 
 pkgname = freeipa-admintools
 	pkgdesc = IPA administrative tools
-	depends = freeipa-python=4.2.3-1
-	depends = freeipa-client=4.2.3-1
-	depends = python2-krbv
+	arch = any
+	depends = python2-ipaclient=4.4.0-1
 	depends = python2-ldap
 

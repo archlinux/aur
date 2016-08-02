@@ -20,8 +20,8 @@ post_upgrade() {
         fi
     fi
 
-    if [ ! -f '/etc/ipa/nssdb/cert8.db' -a $restore -ge 2 ]; then
-        python2 -c 'from ipapython.certdb import create_ipa_nssdb; create_ipa_nssdb()' >/dev/null 2>&1
+    if [ $restore -ge 2 ]; then
+        python2 -c 'from ipapython.certdb import update_ipa_nssdb; update_ipa_nssdb()' >/var/log/ipaupgrade.log 2>&1
     fi
 
     # Has the client been configured?
