@@ -8,7 +8,7 @@ pkgdesc="Collection of applications used for file and Internet browsing"
 arch=(i686 x86_64)
 url='https://www.kde.org/'
 license=(LGPL)
-makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities-frameworks knewstuff python khtml kded tidyhtml kdesignerplugin)
+makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities knewstuff python khtml kded tidyhtml kdesignerplugin)
 source=('git://anongit.kde.org/kde-baseapps')
 md5sums=('SKIP')
 
@@ -61,7 +61,7 @@ package_kdialog-git() {
 
 package_kfind-git() {
 	pkgdesc='Find Files/Folders'
-	depends=(libkonq-frameworks-git)
+	depends=(libkonq-git)
         conflicts=(kdebase-kfind kfind kfind-frameworks-git)
         provides=(kfind)
 	url="http://kde.org/applications/utilities/kfind/"
@@ -71,7 +71,7 @@ package_kfind-git() {
 
 package_keditbookmarks-git() {
         pkgdesc='Bookmark organizer and editor'
-        depends=(libkonq-frameworks-git)
+        depends=(libkonq-git)
         conflicts=(kdebase-keditbookmarks keditbookmarks keditbookmarks-frameworks-git)
         provides=(keditbookmarks)
         url="http://www.kde.org/"
