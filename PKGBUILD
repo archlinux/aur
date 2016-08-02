@@ -16,7 +16,7 @@ license=('proprietary')
 depends=('libx11' 'libxcb' 'zlib' 'qt4' 'opencv2')
 
 source=("https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_${pkgver}-11ubuntu16.04_amd64.deb")
-md5sums=('2883fbcf495d9657a9fa8c9c64595b1b')
+md5sums=('44b2956232541e6a72b97a410cf7b8d6')
 
 package() {
         cd $pkgdir
