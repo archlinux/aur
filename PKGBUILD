@@ -16,7 +16,7 @@ sha512sums=('56a2a19e81f32bd39d8e2e85b4e2ed8a37e8963725fb5f41619c6f1760aea22af9c
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --use-system-libraries --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+	NOKOGIRI_USE_SYSTEM_LIBRARIES=1 gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 	rm -rf "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ports"
 	rm -rf "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext"
