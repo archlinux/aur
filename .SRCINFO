@@ -5,9 +5,10 @@ pkgbase = isl15
 	url = http://isl.gforge.inria.fr/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	depends = gmp
-	provides = isl
+	provides = isl=0.15
 	conflicts = isl-git
 	conflicts = isl
 	options = !libtool
