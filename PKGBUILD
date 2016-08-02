@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=python2-pynliner
-pkgver=0.5.2
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Python CSS-to-inline-styles conversion tool for HTML using BeautifulSoup and cssutils."
 arch=(any)
@@ -14,10 +14,9 @@ license=(MIT)
 depends=(python2 python2-beautifulsoup4 python2-cssutils)
 makedepends=(python2-setuptools)
 source=("https://pypi.python.org/packages/source/p/pynliner/pynliner-${pkgver}.tar.gz")
-md5sums=(5a0b85aa5448c8f8d14fb58e5ab1c3c1)
+md5sums=(968bf2eee2331c1d52a23232c281d344)
 
 package () {
-    
     cd "${srcdir}/pynliner-${pkgver}"
     python2 setup.py install --root="${pkgdir}/" --optimize=1
 
