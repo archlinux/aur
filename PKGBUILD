@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=timedoctorpro
-pkgver=1.4.74.11
+pkgver=1.4.75.11
 pkgrel=1
 arch=('x86_64')
 pkgdesc="App to track work time from timedoctor.com"
@@ -15,7 +15,7 @@ license=('proprietary')
 #maybe also depends=('libxss')
 depends=('libx11' 'libxcb' 'zlib' 'qt4' 'opencv2')
 
-source=('https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_1.4.74-11ubuntu16.04_amd64.deb')
+source=("https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_${pkgver}-11ubuntu16.04_amd64.deb")
 md5sums=('2883fbcf495d9657a9fa8c9c64595b1b')
 
 package() {
