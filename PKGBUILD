@@ -14,7 +14,8 @@ pkgname=${_pkgname}-editor-${_version}
 _pkgrel=0
 _pkgver=1.10.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
-pkgrel=2
+_ver=$_pkgver-beta${_pkgrel}
+pkgrel=3
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -98,4 +99,9 @@ package() {
 	install -Dm644 $srcdir/${_pkgname}-${_version}.desktop "$pkgdir/usr/share/applications/${_pkgname}-${_version}.desktop"
 	install -Dm644 resources/app-icons/${_version}/png/1024.png "$pkgdir/usr/share/pixmaps/${_pkgname}-${_version}.png"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+
+  find ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules \
+    -name "package.json" -exec sed -i -e "s|$srcdir/atom-$_ver/apm/node_modules/atom-package-manager|/usr/share/atom-beta/resources/app/apm|g" '{}' +
+  find ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm \
+    -name "package.json" -exec sed -i -e "s|$srcdir/atom-$_ver/apm|/usr/share/atom-beta/resources/app/apm|g" '{}' +
 }
