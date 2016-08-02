@@ -3,11 +3,13 @@
 _pkgname=elegance-orange
 pkgname=gnome-shell-theme-${_pkgname}-git
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc="A static orange shell theme based on Elegance Colors"
 arch=(any)
 url="https://github.com/NOSDuco/elegance-orange"
 license=('GPLv3')
+depends=('gnome-shell')
+optdepends=('gnome-tweak-tool: user interface to theme selection and other GNOME Shell options')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
