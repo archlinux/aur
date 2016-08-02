@@ -1,0 +1,14 @@
+pkgbase = cdbcli
+	pkgdesc = The interactive shell for CouchDB
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kevinjqiu/cdbcli
+	arch = any
+	license = Apache 2.0
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/d2/9c/85cbf6be1c7d330a48847ec44b4f84794d150c493c6bb0d7270e172a40dd/cdbcli-0.2.1.tar.gz
+	md5sums = e8517838b2098205dbd2c07b313eebaa
+
+pkgname = cdbcli
+
