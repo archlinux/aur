@@ -13,8 +13,8 @@ makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=('mblaze')
-conflicts=('mblaze' 'santoku' 'santoku-git')
-replaces=()
+conflicts=('mblaze' 'santoku')
+replaces=('santoku-git')
 backup=()
 options=()
 changelog=
@@ -47,7 +47,7 @@ package() {
   install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
   install -m644 filter.example $pkgdir/usr/share/doc/${pkgname%-*}/filter.example
   install -m644 mlesskey.example $pkgdir/usr/share/doc/${pkgname%-*}/mlesskey.example
-  install -m644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
   for i in contrib/*; do
     install -Dm644 $i $pkgdir/usr/share/doc/${pkgname%-*}/$i 
   done
