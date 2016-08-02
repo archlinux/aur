@@ -1,25 +1,25 @@
 # Maintainer: L.G. Sarmiento (Pico) <Luis.Sarmientop-ala-nuclear.lu.se>
 pkgname=gitlist-git
 _pkgname=gitlist
-pkgver=3dd25f3
+pkgver=r572.c9235a5
 pkgrel=1
 pkgdesc="An elegant and modern git repository viewer."
 arch=('any')
 url="http://gitlist.org/"
 license=('BSD')
-
 depends=('git' 'php')
 optdepends=('apache: Web server to run GitList'
             'lighttpd: Web server to run GitList'
             'nginx: Lightweight Web server to run GitList')
-provides=('gitlist')
-conflicts=('gitlist')
-_gitroot="https://github.com/klaussilveira/gitlist.git"
 
-build() {
-  [ -d ${srcdir}/${_pkgname} ] || mkdir -p ${srcdir}/${_pkgname}
-  cd ${srcdir}/${_pkgname}
-  git clone --depth 1 $_gitroot .
+provides=('gitlist')
+
+source=($_pkgname::git+https://github.com/klaussilveira/gitlist.git)
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
