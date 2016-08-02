@@ -1,0 +1,18 @@
+pkgbase = mulet-nightly-bin
+	pkgdesc = A customized version of Firefox designed for testing B2G OS
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.mozilla.org/Mulet
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = curl
+	depends = gtk2
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+
+pkgname = mulet-nightly-bin
+
