@@ -3,8 +3,8 @@
 
 pkgname=pyqt-doc
 pkgver=5.7
-pkgrel=2
-pkgdesc='PyQt5 Documentation'
+pkgrel=3
+pkgdesc='PyQt5 Documentation.'
 arch=('any')
 url='http://www.riverbankcomputing.com/software/pyqt/intro'
 license=('GPL')
