@@ -1,0 +1,61 @@
+From c9ca01f953491a2e23f8d093df2bb8fbf9f5b2ac Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 29 Jul 2016 23:44:25 +0200
+Subject: have invalid inline removed
+
+---
+ apps/mpssinfo/helper.c | 6 +++---
+ apps/mpssinfo/helper.h | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git mpss-micmgmt/apps/mpssinfo/helper.c mpss-micmgmt/apps/mpssinfo/helper.c
+index 8f77110..74f15cf 100644
+--- mpss-micmgmt/apps/mpssinfo/helper.c
++++ mpss-micmgmt/apps/mpssinfo/helper.c
+@@ -41,7 +41,7 @@
+ 
+ char *progname = NULL;
+ #ifdef __linux__
+-inline void error_msg_start(char *format, ...)
++void error_msg_start(char *format, ...)
+ {
+     va_list args;
+ 
+@@ -51,7 +51,7 @@ inline void error_msg_start(char *format, ...)
+     va_end(args);
+ }
+ 
+-inline void error_msg_cont(char *format, ...)
++void error_msg_cont(char *format, ...)
+ {
+     va_list args;
+ 
+@@ -60,7 +60,7 @@ inline void error_msg_cont(char *format, ...)
+     va_end(args);
+ }
+ 
+-inline void log_msg_start(char *format, ...)
++void log_msg_start(char *format, ...)
+ {
+     va_list args;
+ 
+diff --git mpss-micmgmt/apps/mpssinfo/helper.h mpss-micmgmt/apps/mpssinfo/helper.h
+index 6576777..155a942 100755
+--- mpss-micmgmt/apps/mpssinfo/helper.h
++++ mpss-micmgmt/apps/mpssinfo/helper.h
+@@ -41,9 +41,9 @@
+ 
+ extern char *progname;
+ #ifdef __linux__
+-inline void error_msg_start(char *, ...);
+-inline void error_msg_cont(char *, ...);
+-inline void log_msg_start(char *, ...);
++void error_msg_start(char *, ...);
++void error_msg_cont(char *, ...);
++void log_msg_start(char *, ...);
+ #else
+ #ifdef WINDOWS
+ //inline methods with var_args is not allowed in windows
+-- 
+2.9.2
+

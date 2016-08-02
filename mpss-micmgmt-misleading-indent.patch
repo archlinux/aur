@@ -1,0 +1,62 @@
+From 15649e7b4c2e0a5f0945cd48217354b2d6ed350a Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 29 Jul 2016 22:42:18 +0200
+Subject: have misleading indent corrected
+
+---
+ miclib/src/miclib.cpp | 29 ++++++++++++++---------------
+ 1 file changed, 14 insertions(+), 15 deletions(-)
+
+diff --git mpss-micmgmt/miclib/src/miclib.cpp mpss-micmgmt/miclib/src/miclib.cpp
+index 41ad0cf..9414b90 100644
+--- mpss-micmgmt/miclib/src/miclib.cpp
++++ mpss-micmgmt/miclib/src/miclib.cpp
+@@ -167,16 +167,15 @@ int mic_get_device_at_index(struct mic_devices_list *d, int index, int *device)
+ 
+ const char *mic_get_device_name(struct mic_device *mdh)
+ {
+-    ASSERT(mdh != NULL);
+-    try {
+-			return mdh->get_device_name();
+-		} catch (mic_exception const &e) {
+-			e.get_mic_errno();
+-			return (const char *)NULL;
+-		}
+-		catch (...) {
+-			return (const char *)NULL;
+-		}
++	ASSERT(mdh != NULL);
++	try {
++		return mdh->get_device_name();
++	} catch (mic_exception const &e) {
++		e.get_mic_errno();
++		return (const char *) NULL;
++	} catch (...) {
++		return (const char *) NULL;
++	}
+ }
+ 
+ int mic_open_device(struct mic_device **device, uint32_t device_num)
+@@ -966,14 +965,14 @@ int mic_get_processor_steppingid(struct mic_processor_info *processor,
+ int mic_get_processor_stepping(struct mic_processor_info *processor,
+                                char *stepping, size_t *size)
+ {
+-    ASSERT((processor != NULL) && (size != NULL));
+-    if ((stepping != NULL) && (*size > 0)) {
++	ASSERT((processor != NULL) && (size != NULL));
++	if ((stepping != NULL) && (*size > 0)) {
+ 		strncpy(stepping, processor->stepping, *size);
+-		stepping[*size-1] = '\0';
++		stepping[*size - 1] = '\0';
+ 	}
+ 
+-    if (*size < strlen(processor->stepping) + 1)
+-        *size = strlen(processor->stepping) + 1;
++	if (*size < strlen(processor->stepping) + 1)
++		*size = strlen(processor->stepping) + 1;
+ 
+ 	return E_MIC_SUCCESS;
+ }
+-- 
+2.9.2
+

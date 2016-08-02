@@ -1,0 +1,18 @@
+[Unit]
+Description=Intel(R) MPSS control service
+After=nfs-server.service
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/bash -c '. /etc/mpss/mpss.common; mic_check'
+ExecStartPre=/usr/bin/bash -c '. /etc/mpss/mpss.common; mic_load_modules'
+ExecStart=/usr/bin/mpssd --pidfile /var/run/mpssd.pid
+ExecStartPost=/usr/bin/micctrl -w
+ExecStartPost=/usr/bin/micctrl -s
+ExecStopPost=/usr/bin/micctrl -w
+#ExecStopPost=/usr/bin/bash -c '. /etc/mpss/mpss.common; mic_unload_modules'
+TimeoutSec=300
+KillSignal=SIGQUIT
+
+[Install]
+WantedBy=multi-user.target

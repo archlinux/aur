@@ -1,0 +1,50 @@
+From 527441f9101ed9ff35346ab49a7ea12b27008ed9 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 29 Jul 2016 23:58:04 +0200
+Subject: invalid inline removed
+
+---
+ apps/mpssflash/helper.c | 4 ++--
+ apps/mpssflash/helper.h | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git mpss-micmgmt/apps/mpssflash/helper.c mpss-micmgmt/apps/mpssflash/helper.c
+index 82cfc31..dfc5246 100644
+--- mpss-micmgmt/apps/mpssflash/helper.c
++++ mpss-micmgmt/apps/mpssflash/helper.c
+@@ -1719,7 +1719,7 @@ free_scanned:
+     return ret;
+ }
+ 
+-inline void error_msg_start(char *
++void error_msg_start(char *
+                             format,
+                             ...)
+ {
+@@ -1746,7 +1746,7 @@ inline void error_msg_start(char *
+     va_end(args);
+ }
+ 
+-inline void error_msg_cont(char *
++void error_msg_cont(char *
+                            format,
+                            ...)
+ {
+diff --git mpss-micmgmt/apps/mpssflash/helper.h mpss-micmgmt/apps/mpssflash/helper.h
+index f317d4c..734b5f1 100644
+--- mpss-micmgmt/apps/mpssflash/helper.h
++++ mpss-micmgmt/apps/mpssflash/helper.h
+@@ -106,8 +106,8 @@ int read_flash_device_maint_mode(struct mic_device *, void **, size_t *);
+ 
+ int check_smc_bootloader_image(char*, int);
+ 
+-inline void error_msg_start(char *, ...);
+-inline void error_msg_cont(char *, ...);
++void error_msg_start(char *, ...);
++void error_msg_cont(char *, ...);
+ 
+ #define MAINT_MODE_POLL_INTERVAL      (1)       /* seconds */
+ #define READY_MODE_POLL_INTERVAL      (1)       /* seconds */
+-- 
+2.9.2
+

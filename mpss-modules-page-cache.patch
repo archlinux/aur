@@ -1,0 +1,114 @@
+From 4eaa693c59dfad494e1e560cd1bd6d6ef1e2b9e5 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Thu, 4 Aug 2016 13:34:10 +0200
+Subject: use newer functions for pages
+
+---
+ host/tools_support.c  | 9 +++++++++
+ host/vhost/mic_blk.c  | 8 ++++++++
+ micscif/micscif_api.c | 8 ++++++++
+ micscif/micscif_rma.c | 4 ++++
+ 4 files changed, 29 insertions(+)
+
+diff --git host/tools_support.c host/tools_support.c
+index d9b213d..832caf6 100644
+--- mpss-modules/host/tools_support.c
++++ mpss-modules/host/tools_support.c
+@@ -64,7 +64,11 @@ mic_unpin_user_pages(struct page **pages, uint32_t nf_pages)
+ 		for (j = 0; j < nf_pages; j++) {
+ 			if (pages[j]) {
+ 				SetPageDirty(pages[j]);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++				put_page(pages[j]);
++#else
+ 				page_cache_release(pages[j]);
++#endif
+ 			}
+ 		}
+ 		kfree(pages);
+@@ -89,8 +93,13 @@ mic_pin_user_pages (void *data, struct page **pages, uint32_t len, int32_t *nf_p
+
+ 	// pin the user pages; use semaphores on linux for doing the same
+ 	down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++	*nf_pages = (int32_t)get_user_pages_remote(current, current->mm,
++			  (uint64_t)data, nr_pages, PROT_WRITE, 1, pages, NULL);
++#else
+ 	*nf_pages = (int32_t)get_user_pages(current, current->mm, (uint64_t)data,
+ 			  nr_pages, PROT_WRITE, 1, pages, NULL);
++#endif
+ 	up_read(&current->mm->mmap_sem);
+
+ 	// compare if the no of final pages is equal to no of requested pages
+diff --git host/vhost/mic_blk.c host/vhost/mic_blk.c
+index 12bc880..47a0924 100644
+--- mpss-modules/host/vhost/mic_blk.c
++++ mpss-modules/host/vhost/mic_blk.c
+@@ -153,12 +153,20 @@ static void handle_io_work(struct work_struct *work)
+ 	  for (iov = vbio->iov; iov < &vbio->iov[vbio->nvecs]; iov++) {
+ 		iov->iov_base = mic_addr_in_host(aper_va, iov->iov_base);
+ 	  }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++		ret = vfs_writev(vbio->file, vbio->iov, vbio->nvecs, &pos, 0);
++#else
+ 		ret = vfs_writev(vbio->file, vbio->iov, vbio->nvecs, &pos);
++#endif
+ 	} else {
+ 	  for (iov = vbio->iov; iov < &vbio->iov[vbio->nvecs]; iov++) {
+ 		iov->iov_base = mic_addr_in_host(aper_va, iov->iov_base);
+ 	  }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++		ret = vfs_readv(vbio->file, vbio->iov, vbio->nvecs, &pos, 0);
++#else
+ 		ret = vfs_readv(vbio->file, vbio->iov, vbio->nvecs, &pos);
++#endif
+ 	}
+ 	status = (ret < 0) ? VIRTIO_BLK_S_IOERR : VIRTIO_BLK_S_OK;
+ 	if (vbio->head != -1) {
+diff --git micscif/micscif_api.c micscif/micscif_api.c
+index 03d6d92..a61454c 100644
+--- mpss-modules/micscif/micscif_api.c
++++ mpss-modules/micscif/micscif_api.c
+@@ -1981,7 +1981,11 @@ retry:
+ 			}
+ 		}
+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++		pinned_pages->nr_pages = get_user_pages_remote(
++#else
+ 		pinned_pages->nr_pages = get_user_pages(
++#endif
+ 				current,
+ 				mm,
+ 				(uint64_t)addr,
+@@ -2007,7 +2011,11 @@ retry:
+ 				/* Roll back any pinned pages */
+ 				for (i = 0; i < pinned_pages->nr_pages; i++) {
+ 					if (pinned_pages->pages[i])
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++						put_page(pinned_pages->pages[i]);
++#else
+ 						page_cache_release(pinned_pages->pages[i]);
++#endif
+ 				}
+ 				prot &= ~SCIF_PROT_WRITE;
+ 				try_upgrade = false;
+diff --git micscif/micscif_rma.c micscif/micscif_rma.c
+index 520d7bb..3e41407 100644
+--- mpss-modules/micscif/micscif_rma.c
++++ mpss-modules/micscif/micscif_rma.c
+@@ -413,7 +413,11 @@ int micscif_destroy_pinned_pages(struct scif_pinned_pages *pinned_pages)
+ 				BUG_ON(!page_count(pinned_pages->pages[j]));
+ 				BUG_ON(atomic_long_sub_return(1, &ms_info.rma_pin_cnt) < 0);
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++				put_page(pinned_pages->pages[j]);
++#else
+ 				page_cache_release(pinned_pages->pages[j]);
++#endif
+ 			}
+ 		}
+ 	}
+--
+2.9.2
+

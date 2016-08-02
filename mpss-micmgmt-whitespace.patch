@@ -1,0 +1,33 @@
+From d45edaf5b754f6ee3d3e37e715370d68506d6c96 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 29 Jul 2016 23:55:55 +0200
+Subject: spaces converted to tabs
+
+---
+ apps/mpssflash/micflash.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git mpss-micmgmt/apps/mpssflash/micflash.c mpss-micmgmt/apps/mpssflash/micflash.c
+index a92993c..a293c9b 100644
+--- mpss-micmgmt/apps/mpssflash/micflash.c
++++ mpss-micmgmt/apps/mpssflash/micflash.c
+@@ -1999,11 +1999,11 @@ static void common_options_help(void)
+ static int do_help_cmd(build_cmd_func *build_func, setup_cmd_func *setup_func,
+                        done_cmd_func *done_func, init_cmd_func *init_func)
+ {
+-    ARG_USED(build_func);
+-    ARG_USED(setup_func);
+-    ARG_USED(done_func);
+-    ARG_USED(init_func);
+-    
++	ARG_USED(build_func);
++	ARG_USED(setup_func);
++	ARG_USED(done_func);
++	ARG_USED(init_func);
++
+ 	printf("%s\n\n", MIC_COPYRIGHT);
+ 
+     if (nodowngrade || silent || device_arg || noreboot || image_path ||
+-- 
+2.9.2
+

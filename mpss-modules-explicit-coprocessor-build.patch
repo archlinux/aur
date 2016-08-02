@@ -1,0 +1,25 @@
+From 32193ddb4ad05c60e469e178a277220c1693b30b Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Thu, 4 Aug 2016 13:17:30 +0200
+Subject: explicitly set coprocessor build
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git Makefile Makefile
+index 29faca8..42dd454 100644
+--- mpss-modules/Makefile
++++ mpss-modules/Makefile
+@@ -59,7 +59,7 @@ kmodincludedir = $(realpath $(KERNEL_SRC))/include/modules
+
+ # If building the host's driver for a MIC co-processor card, which card
+ # $(ARCH) it should support
+-export MIC_CARD_ARCH
++export MIC_CARD_ARCH := k1om
+
+ .PHONY: all install modules
+ .PHONY: modules_install conf_install dev_install kdev_install
+--
+2.9.2
+

@@ -1,0 +1,134 @@
+From bcc90e8a54015a3bcc0ebd87d02e5b5e5ab55b41 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Thu, 4 Aug 2016 11:09:04 +0200
+Subject: extend network setup minimally for arch linux
+
+---
+ libmpssconfig/micenv.c     |  7 +++++++
+ libmpssconfig/mpssconfig.h |  2 ++
+ micctrl/network.c          | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 45 insertions(+)
+
+diff --git libmpssconfig/micenv.c libmpssconfig/micenv.c
+index b162ebc..fae9d3e 100644
+--- mpss-daemon/libmpssconfig/micenv.c
++++ mpss-daemon/libmpssconfig/micenv.c
+@@ -106,6 +106,8 @@ mpssenv_set_distrib(struct mpss_env *menv, char *dist)
+ 			menv->dist = DISTRIB_SUSE;
+ 		else if (!strcasecmp(dist, "ubuntu"))
+ 			menv->dist = DISTRIB_UBUNTU;
++		else if (!strcasecmp(dist, "arch"))
++			menv->dist = DISTRIB_ARCH;
+ 		else
+ 			return (SETENV_FUNC_DIST << 16) | SETENV_CMDLINE_DIST;
+ 	} else if ((dist = getenv("MPSS_DIST")) != NULL) {
+@@ -117,6 +119,8 @@ mpssenv_set_distrib(struct mpss_env *menv, char *dist)
+ 			menv->dist = DISTRIB_SUSE;
+ 		else if (!strcasecmp(dist, "ubuntu"))
+ 			menv->dist = DISTRIB_UBUNTU;
++		else if (!strcasecmp(dist, "arch"))
++			menv->dist = DISTRIB_ARCH;
+ 		else
+ 			return (SETENV_FUNC_DIST << 16) | SETENV_ENV_DIST;
+ 	} else {
+@@ -126,6 +130,8 @@ mpssenv_set_distrib(struct mpss_env *menv, char *dist)
+ 			menv->dist = DISTRIB_SUSE;
+ 		else if ((stat(UBUNTU_NETWORK_DIR, &sbuf) == 0) && S_ISDIR(sbuf.st_mode))
+ 			menv->dist = DISTRIB_UBUNTU;
++		else if ((stat(ARCH_NETWORK_DIR, &sbuf) == 0) && S_ISDIR(sbuf.st_mode))
++			menv->dist = DISTRIB_ARCH;
+ 		else
+ 			return (SETENV_FUNC_DIST << 16) | SETENV_PROBE_DIST;
+ 	}
+@@ -133,6 +139,7 @@ mpssenv_set_distrib(struct mpss_env *menv, char *dist)
+ 	switch(menv->dist) {
+ 	case DISTRIB_REDHAT:
+ 	case DISTRIB_SUSE:
++	case DISTRIB_ARCH:
+ 		menv->lockfile = LSB_LOCK_FILENAME;
+ 		break;
+ 	case DISTRIB_UBUNTU:
+diff --git libmpssconfig/mpssconfig.h libmpssconfig/mpssconfig.h
+index cf25280..7c6ecdf 100644
+--- mpss-daemon/libmpssconfig/mpssconfig.h
++++ mpss-daemon/libmpssconfig/mpssconfig.h
+@@ -218,6 +218,7 @@ int mpss_sync_cookie(unsigned long *cookie, uid_t uid);
+ #define REDHAT_NETWORK_DIR "/etc/sysconfig/network-scripts"
+ #define SUSE_NETWORK_DIR "/etc/sysconfig/network"
+ #define UBUNTU_NETWORK_DIR "/etc/network"
++#define ARCH_NETWORK_DIR "/etc/netctl"
+
+ /**
+  * Mic family
+@@ -239,6 +240,7 @@ struct mpss_env {
+ #define DISTRIB_REDHAT	1
+ #define DISTRIB_SUSE	2
+ #define DISTRIB_UBUNTU	3
++#define DISTRIB_ARCH	4
+ 	char	*home;
+ 	char	*confdir;
+ 	char	*destdir;
+diff --git micctrl/network.c micctrl/network.c
+index 4b71e0e..3c182d2 100644
+--- mpss-daemon/micctrl/network.c
++++ mpss-daemon/micctrl/network.c
+@@ -101,6 +101,8 @@ void ubuntu_host_addif(char *name, char *ip, char *netbits, char *mtu, char *mac
+ void ubuntu_unattach_hostbridge(char *name, char *bridge);
+ void ubuntu_remove_bridges(void);
+
++void arch_host_addif(char *name, char *ip, char *netbits, char *mtu, char *mac);
++
+ struct netinfo {
+ 	char *netdir;
+ 	char *defnetdir;
+@@ -141,6 +143,14 @@ struct netinfo {
+ 		ubuntu_br_remove,
+ 		ubuntu_attach_hostbridge,
+ 		ubuntu_host_addif,
++		ubuntu_remove_bridges},
++	  {ARCH_NETWORK_DIR,
++		ARCH_NETWORK_DIR,
++		"/usr/bin/brctl",
++		ubuntu_net_remove,
++		ubuntu_br_remove,
++		ubuntu_attach_hostbridge,
++		arch_host_addif,
+ 		ubuntu_remove_bridges}
+ 	};
+
+@@ -2571,6 +2581,32 @@ ubuntu_host_addif(char *name, char *ip, char *netbits, char *mtu, char *mac)
+ }
+
+ void
++arch_host_addif(char *name, char *ip, char *netbits, char *mtu, char *mac)
++{
++	char filename[PATH_MAX];
++	FILE *fp;
++
++	snprintf(filename, PATH_MAX, "%s/static-%s", ni[mpssenv.dist].netdir, name);
++	if ((fp = fopen(filename, "a")) == NULL) {
++		display(PERROR, "%s: Error opening %s: %s\n", name, filename, strerror(errno));
++		return;
++	}
++
++	fprintf(fp, "Description='static connection to %s'\n", name);
++	fprintf(fp, "Interface=%s\n", name);
++	fprintf(fp, "Connection=ethernet\n");
++	fprintf(fp, "IP=static\n");
++	fprintf(fp, "Address=('%s/%s')\n", ip, netbits);
++	fprintf(fp, "# netctl-ifplugd settings\n");
++	fprintf(fp, "ExcludeAuto=no\n");
++	fprintf(fp, "ForceConnect=yes\n");
++	fclose(fp);
++	display(PFS, "%s: Created %s\n", name, filename);
++
++	do_ifup(name, name, FALSE);
++}
++
++void
+ common_host_addif(char *name, char *ip, char *netbits, char *mtu, char *mac)
+ {
+ 	char filename[PATH_MAX];
+--
+2.9.2
+

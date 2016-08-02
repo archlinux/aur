@@ -1,0 +1,59 @@
+From cd8220070bc8f01f8fea1233245e9de49985c056 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Thu, 4 Aug 2016 13:30:04 +0200
+Subject: initialice rc var, fix indents
+
+---
+ host/linux.c      |  2 +-
+ host/pm_pcstate.c | 16 ++++++++--------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git host/linux.c host/linux.c
+index 90bab0a..986afd6 100644
+--- mpss-modules/host/linux.c
++++ mpss-modules/host/linux.c
+@@ -174,7 +174,7 @@ mic_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ static int
+ mic_fasync(int fd, struct file *filp, int on)
+ {
+-	int rc;
++	int rc=0;
+
+ 	if ((rc = fasync_helper(fd, filp, on, &mic_data.dd_fasync)) < 0) {
+ 		return rc;
+diff --git host/pm_pcstate.c host/pm_pcstate.c
+index c28e08e..26be455 100644
+--- mpss-modules/host/pm_pcstate.c
++++ mpss-modules/host/pm_pcstate.c
+@@ -45,20 +45,20 @@
+ //few helper functions
+ int pm_reg_read(mic_ctx_t *mic_ctx, uint32_t regoffset) {
+ 	uint32_t regval = 0;
+-if (mic_ctx->bi_family == FAMILY_ABR)
+-	regval = DBOX_READ(mic_ctx->mmio.va, regoffset);
+-else if (mic_ctx->bi_family == FAMILY_KNC)
+-	regval = SBOX_READ(mic_ctx->mmio.va, regoffset);
++	if (mic_ctx->bi_family == FAMILY_ABR)
++		regval = DBOX_READ(mic_ctx->mmio.va, regoffset);
++	else if (mic_ctx->bi_family == FAMILY_KNC)
++		regval = SBOX_READ(mic_ctx->mmio.va, regoffset);
+
+ 	return regval;
+ }
+
+ int pm_reg_write(uint32_t value, mic_ctx_t *mic_ctx, uint32_t regoffset) {
+ 	int err = 0;
+-if (mic_ctx->bi_family == FAMILY_ABR)
+-	DBOX_WRITE(value, mic_ctx->mmio.va, regoffset);
+-else if (mic_ctx->bi_family == FAMILY_KNC)
+-	SBOX_WRITE(value, mic_ctx->mmio.va, regoffset);
++	if (mic_ctx->bi_family == FAMILY_ABR)
++		DBOX_WRITE(value, mic_ctx->mmio.va, regoffset);
++	else if (mic_ctx->bi_family == FAMILY_KNC)
++		SBOX_WRITE(value, mic_ctx->mmio.va, regoffset);
+
+ 	return err;
+ }
+--
+2.9.2
+

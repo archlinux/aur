@@ -1,0 +1,85 @@
+From fce5af28b47bc6b8bbedf06bbf29a1c293f3220f Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 29 Jul 2016 09:29:51 +0200
+Subject: work with python3.x and python2.x
+
+---
+ gen-symver-map | 33 ++++++++++++++++++++-------------
+ 1 file changed, 20 insertions(+), 13 deletions(-)
+
+diff --git mpss-gen-symver-map/gen-symver-map mpss-gen-symver-map/gen-symver-map
+index 6dfa395..e33a46f 100755
+--- mpss-gen-symver-map/gen-symver-map
++++ mpss-gen-symver-map/gen-symver-map
+@@ -7,12 +7,19 @@
+ #
+ # See example.c for a demonstration of the various macros.
+ 
+-import sys, re, ConfigParser
++from __future__ import print_function
++import sys, re
++try:
++    # python 3.x
++    import configparser
++except ImportError:
++    # python 2.x
++    import ConfigParser as configparser
+ from subprocess import Popen, PIPE
+ 
+ def parsecfg(fn):
+     global VERNAME, VERDEPS
+-    c = ConfigParser.RawConfigParser()
++    c = configparser.RawConfigParser()
+     c.read(fn)
+ 
+     VERNAME, = c.sections()  # there may be only one
+@@ -63,27 +70,27 @@ def symmap(symtab):
+                 assert version in vermap  # must be in VERDEPS
+                 vermap[version].append(sym)
+         except AssertionError:
+-            print >>sys.stderr, 'CURRENT SYMBOL:', sym
+-            print >>sys.stderr, 'VERSIONS:', o + d + c
++            print('CURRENT SYMBOL:', sym, file=sys.stderr)
++            print('VERSIONS:', o + d + c, file=sys.stderr)
+             raise
+     return vermap
+ 
+ def printmap(f, vermap, fns):
+     def tag(version):
+         return '%s_%s' % (VERNAME, version)
+-    print >>f, '/* Version script generated from %s */' % fns
++    print('/* Version script generated from %s */' % fns, file=f)
+     for i, (version, deps) in enumerate(VERDEPS):
+-        print >>f
+-        print >>f, '%s {' % tag(version)
++        print(file=f)
++        print('%s {' % tag(version), file=f)
+         if vermap[version]:
+-            print >>f, 'global:'
++            print('global:', file=f)
+         for symbol in sorted(vermap[version]):
+-            print >>f, '\t%s;' % symbol
++            print('\t%s;' % symbol, file=f)
+         if i == 0:
+-            print >>f, 'local:'
+-            print >>f, '\t*;'
++            print('local:', file=f)
++            print('\t*;', file=f)
+         deps = [tag(d) for d in deps]
+-        print >>f, '}%s;' % (' ' + ' '.join(deps) if deps else '')
++        print('}%s;' % (' ' + ' '.join(deps) if deps else ''), file=f)
+ 
+ def main(argv):
+     i = argv.index('--')
+@@ -97,7 +104,7 @@ def main(argv):
+     # parse each file on the command line
+     symtab = {}
+     for fn in argv:
+-        p = Popen(cmd + ['-DGENMAP_PARSING_PASS', '-E', fn], stdout=PIPE)
++        p = Popen(cmd + ['-DGENMAP_PARSING_PASS', '-E', fn], stdout=PIPE, universal_newlines=True)
+         findsyms(symtab, p.communicate()[0])
+ 
+     # compute the version map and apply sanity checks
+-- 
+2.9.2
+

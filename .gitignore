@@ -1,0 +1,5 @@
+/*.tar
+/mpss-*/
+/src/
+*.tar.xz
+/pkg/

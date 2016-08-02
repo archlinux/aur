@@ -1,0 +1,25 @@
+From 63017cfe17809e328f35dd58866bb69a2a008919 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Thu, 4 Aug 2016 11:10:21 +0200
+Subject: reduced modules list to the ones working
+
+---
+ mpssd/mpss.common | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git mpssd/mpss.common mpssd/mpss.common
+index b0d131e..6a37778 100755
+--- mpss-daemon/mpssd/mpss.common
++++ mpss-daemon/mpssd/mpss.common
+@@ -44,7 +44,7 @@ sysfs="/sys/class/mic"
+ # - after unloading we check whether each module is really unloaded
+ # - not always udev loads required modules after MPSS package installation
+ knc_modules_v3="mic"
+-knc_modules_v4="mic_x100_dma scif_bus vop_bus mic_bus cosm_bus mic_host scif vop mic_cosm"
++knc_modules_v4="mic mic_x100_dma vop_bus cosm_bus vop"
+
+ knl_modules_v4="mic_x200_dma scif_bus vop_bus cosm_bus scif vop mic_cosm mic_x200"
+
+--
+2.9.2
+
