@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=timedoctorpro
-pkgver=1.4.75.11
+pkgver=1.4.75
 pkgrel=1
 arch=('x86_64')
 pkgdesc="App to track work time from timedoctor.com"
