@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}/man"
-    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible"
+    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible" man
 }
 
 package() {
