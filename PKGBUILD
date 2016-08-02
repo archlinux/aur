@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sawfish-git
-pkgver=1.11.91.18.g633fc49
+pkgver=1.11.91.19.g9a84ba1
 pkgrel=1
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
