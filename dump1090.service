@@ -13,4 +13,5 @@ RuntimeDirectory=dump1090
 ExecStart=/usr/bin/dump1090 --quiet --net --gain -10 --write-json /var/run/dump1090
 
 [Install]
+Alias=dump1090-fa.service
 WantedBy=multi-user.target
