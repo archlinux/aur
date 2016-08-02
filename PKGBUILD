@@ -14,5 +14,5 @@ sha1sums=('a1b9834b5d241debcfa330cf3eababe35faa8dbf')
 package() {
   install -dm755 "$pkgdir"/usr/{bin,share}
   cp -r Linux_for_Tegra "$pkgdir"/usr/share/$pkgname
-  ln -s /usr/share/$pkgname/bootloader/{mkbootimg,nvflash} "$pkgdir"/usr/bin/
+  ln -s /usr/share/$pkgname/bootloader/nvflash "$pkgdir"/usr/bin/
 }
