@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=python2-polymode-git
-pkgver=r27.890a1ef
+pkgver=r30.0641848
 pkgrel=1
 pkgdesc="A python library for the modal analysis of microstructured optical fibers"
 arch=('i686' 'x86_64')
