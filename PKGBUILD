@@ -2,7 +2,7 @@
 
 pkgname='cpy'
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for [c]at with automatic syntax highlighting"
 arch=('any')
 url="https://github.com/rumpelsepp/c.py"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}/man"
-    make man
+    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible" man
 }
 
 package() {
