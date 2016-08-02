@@ -2,7 +2,7 @@
 
 pkgname='snap'
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A btrfs snapshot manager"
 arch=('any')
 url="https://github.com/rumpelsepp/snap"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}/man"
-    make man
+    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible"
 }
 
 package() {
