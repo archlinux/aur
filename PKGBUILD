@@ -1,27 +1,35 @@
 # Maintainer: L.G. Sarmiento <lgsarmientop-ala-unal.edu.co>
 pkgname=daemonize-git
-pkgver=20150110
+_pkgname=daemonize
+pkgver=r77.6b10308
 pkgrel=1
 pkgdesc="Command-line utility for running any arbitrary program as a Unix daemon"
 url="http://software.clapper.org/daemonize/"
 arch=('i686' 'x86_64')
+makedepends=('git')
 depends=('glibc')
 license=('BSD')
 provides=("daemonize")
+
+source=($_pkgname::git+https://github.com/bmc/daemonize.git)
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/$_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  [ -d ${srcdir}/${pkgname} ] || mkdir ${srcdir}/${pkgname}
 
-  cd ${srcdir}/${pkgname}
-  git clone --depth 1 http://github.com/bmc/daemonize.git .
-
+  cd ${srcdir}/${_pkgname}
   ./configure --prefix=/usr
-  make -j1 || return 1
+  make || return 1
 
 }
 
 package() {
 #install package
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${_pkgname}
   make DESTDIR=$pkgdir install
 
   # move things to /usr/bin instead of /usr/sbin
@@ -31,5 +39,5 @@ package() {
   rmdir ${pkgdir}/usr/sbin
   
   #install licence
-  install -Dm644 ${srcdir}/${pkgname}/LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENCE
+  install -Dm644 ${srcdir}/${_pkgname}/LICENSE.md ${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE
 }
