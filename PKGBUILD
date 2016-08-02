@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=black-screen
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shockone/black-screen/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.sh')
-sha256sums=('c8c858e1c3a80b97d90df5ee7660ef95e744b11b7ef150b605bd61e4b8ab5b3f'
+sha256sums=('08386ed979a525adba4fe771008f494b074dd309d8251a9f472da4639cdfc1d0'
             'c5b6a18675d1bcf9cb5bffec9041c815e5402c246c663d534f1c1266c1e536f0'
             'f6a02cff74584d14f6574e2e5b4301b0ebeacc2793c998ec0be76b6d546c115e')
 
