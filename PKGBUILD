@@ -1,7 +1,7 @@
 # Maintainer: Chris Trotman <chris+aur@trotman.io>
 
 pkgname=terraform
-pkgver=0.6.16
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
@@ -32,7 +32,6 @@ build() {
 package() {
   cd "${srcdir}/bin"
   install -Dm755 terraform "${pkgdir}/usr/bin/terraform"
-  install -Dm755 terraform-* "${pkgdir}/usr/bin"
 
   cd "${srcdir}/src/${_gourl}/${pkgname}"
   # Zsh completion
