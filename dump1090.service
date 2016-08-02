@@ -1,7 +1,7 @@
 [Unit]
 Description=RtlSdr mode S decoder
 Wants=network-online.target
-After=syslog.target network-online.target
+After=syslog.target network-online.target lighttpd.service
 
 [Service]
 Restart=always
