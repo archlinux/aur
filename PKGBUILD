@@ -2,8 +2,8 @@
 
 _target=aarch64-linux-gnu
 pkgname=$_target-gcc-stage2
-pkgver=5.3.0
-_islver=0.15
+pkgver=6.1.1
+_islver=0.17.1
 pkgrel=1
 #_snapshot=5-20150616
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
