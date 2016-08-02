@@ -1,7 +1,7 @@
 pkgbase = cdbcli
 	pkgdesc = The interactive shell for CouchDB
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevinjqiu/cdbcli
 	arch = any
 	license = Apache 2.0

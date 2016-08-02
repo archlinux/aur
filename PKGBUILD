@@ -1,7 +1,7 @@
 # Maintainer: Kevin J. Qiu <kevin@idempotent.ca>
 pkgname=cdbcli
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The interactive shell for CouchDB"
 arch=('any')
 url="https://github.com/kevinjqiu/cdbcli"
