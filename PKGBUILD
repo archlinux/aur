@@ -8,7 +8,7 @@ pkgdesc="Collection of applications used for file and Internet browsing"
 arch=(i686 x86_64)
 url='https://www.kde.org/'
 license=(LGPL)
-makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities knewstuff python khtml kded tidyhtml kdesignerplugin)
+makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities knewstuff python khtml kded tidy kdesignerplugin)
 source=('git://anongit.kde.org/kde-baseapps')
 md5sums=('SKIP')
 
@@ -26,7 +26,7 @@ build() {
   cmake ../kde-baseapps \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
@@ -89,7 +89,7 @@ package_libkonq-git() {
 
 package_konq-plugins-git() {
         pkgdesc='Extra plugins for Konqueror'
-        depends=(kdelibs4support khtml tidyhtml)
+        depends=(kdelibs4support khtml tidy)
         conflicts=(kdebase-konq-plugins konq-plugins konq-plugins-frameworks-git)
         provides=(konq-plugins)
         cd build/konq-plugins
