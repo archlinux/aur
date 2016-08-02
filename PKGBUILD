@@ -36,5 +36,6 @@ build() {
 package() {
         cd "${srcdir}/${_pkgname}"
 	make install
+	# NOTE: THIS STEP IS NOT NECESSARY for irssi 0.8.18+! irssi now contains a native SASL implementation.
 	install -Dm0644 "${srcdir}"/cap_sasl.pl "${pkgdir}"/usr/share/irssi/scripts/cap_sasl.pl
 }
