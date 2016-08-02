@@ -1,8 +1,13 @@
 post_install() {
+	useradd -M piaware
 	systemctl enable piaware
 }
 
 pre_remove() {
 	systemctl stop piaware
 	systemctl disable piaware
+}
+
+post_upgrade() {
+	post_install
 }

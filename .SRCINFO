@@ -1,7 +1,7 @@
 pkgbase = piaware-git
 	pkgdesc = Client-side package and programs for forwarding ADS-B data to FlightAware
 	pkgver = 3.0.2.r0.g1fd4d7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightaware/piaware
 	install = piaware-git.install
 	arch = i686
@@ -23,8 +23,11 @@ pkgbase = piaware-git
 	depends = python
 	depends = tcllauncher
 	optdepends = mlat-client: M-LAT support
+	backup = etc/piaware.conf
 	source = piaware::git+git://github.com/flightaware/piaware
+	source = piaware.conf
 	md5sums = SKIP
+	md5sums = 9fcbaadb1d08e755c3c1e7e577f0ac32
 
 pkgname = piaware-git
 

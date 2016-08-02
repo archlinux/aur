@@ -4,7 +4,7 @@
 pkgname=piaware-git
 _gitname=piaware
 pkgver=3.0.2.r0.g1fd4d7f
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
 
@@ -16,9 +16,12 @@ depends=('dump1090-fa-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls' 'python' 'tcllaunche
 makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
 optdepends=('mlat-client: M-LAT support')
 
-source=('piaware::git+git://github.com/flightaware/piaware')
-md5sums=('SKIP')
+source=('piaware::git+git://github.com/flightaware/piaware'
+        'piaware.conf')
+md5sums=('SKIP'
+         '9fcbaadb1d08e755c3c1e7e577f0ac32')
 install=piaware-git.install
+backup=('etc/piaware.conf')
 
 _gitname=piaware
 
@@ -34,6 +37,9 @@ package() {
   make install DESTDIR=${pkgdir} SYSTEMD=/usr/lib/systemd/system
   rm ${pkgdir}/usr/bin/tcllauncher
 
+  install -dm750 ${pkgdir}/etc/sudoers.d/
+  install -Dm644 etc/piaware.sudoers ${pkgdir}/etc/sudoers.d/01piaware
+  install -Dm644 ${srcdir}/piaware.conf ${pkgdir}/etc/piaware.conf
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
