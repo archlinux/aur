@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.7.2
+pkgver=5.7.3
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
@@ -14,9 +14,10 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e6ae4db5111f8d7752946d1c4976377d885de198509499dd832860fd9bdec923'
+sha256sums=('3fb63e37f313302508e8c4afd7034b596c0f476f6a4a6feff2a099cbba9470e6'
             'SKIP')
 validpgpkeys=('13C16D03EDE728514473AA73A506E6D4DD4D5088'  # Jonathan Riddell
+              '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
               'D07BD8662C56CB291B316EB2F5675605C74E02CF') # David Edmundson
 
 prepare() {
