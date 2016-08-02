@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 _pkgname=wiring
 pkgname=python-$_pkgname
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Architectural foundation for Python applications"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('python-six'
      		 'python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/w/wiring/wiring-$pkgver.tar.gz")
-md5sums=('0cd3b1d583e4226c610e845a7b61c0d7')
+source=("https://github.com/msiedlarek/wiring/archive/v$pkgver.tar.gz")
+md5sums=('6d64bbbadb8b05927caa669a023e9153')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
