@@ -12,7 +12,7 @@ license=('MIT')
 depends=('php')
 #optdepends=('php-mysql: for MySQL database support')
 source=("https://github.com/InvoicePlane/InvoicePlane/archive/v${pkgver}.tar.gz")
-sha512sums=('16a056a0a26f0d3d4937b4a5591d9528a1633d7a95d37e02a096b09691d15ba49e252b5ceea17630551643cba014fa55397706eb2866b52b70cf6c722da14180')
+sha512sums=('572a99f9c1932eb4fb21802f5941c9fd67bb821ea1b8afc9635236a99463e25ce7094883959af8b718ae4cd26e464c718763e428d1c62bda7da38215747de83c')
 
 package() {
     install -d "${pkgdir}/usr/share/webapps"
