@@ -3,13 +3,15 @@
 pkgname=top-c
 _pkgname=topc
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package for Easily Writing Parallel Applications for both Distributed and Shared Memory Architectures"
 url="http://www.ccs.neu.edu/home/gene/topc.html"
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=(ftp://ftp.ccs.neu.edu/pub/people/gene/$_pkgname/$_pkgname.tar.gz)
+
+source=(http://www.ccs.neu.edu/home/gene/top-c/topc.tar.gz)
 md5sums=('d92435bcd977265d18bd1845758645ee')
+
 build() {
   cd $srcdir/$_pkgname-$pkgver
   ./configure --prefix=/usr
