@@ -2,7 +2,7 @@
 # Maintainer: Adria Arrufat <adria.arrufat@protonmail.ch>
 
 pkgname=haskell-hmatrix
-pkgver=0.17.0.1
+pkgver=0.17.0.2
 pkgrel=1
 pkgdesc="Linear systems, matrix decompositions, and other numerical computations based on BLAS and LAPACK"
 url="http://hackage.haskell.org/package/hmatrix"
@@ -14,7 +14,7 @@ depends=("ghc" "haskell-random" "haskell-split" "haskell-storable-complex" "hask
 options=('strip' 'staticlibs')
 install="${pkgname}.install"
 source=("http://hackage.haskell.org/packages/archive/hmatrix/${pkgver}/hmatrix-${pkgver}.tar.gz")
-md5sums=('a4d356f6cdc5d7b03fc1c280fe5bfb66')
+md5sums=('2edadb107f9188f9eaf1796b36a9d882')
 
 build() {
   cd ${srcdir}/hmatrix-${pkgver}
