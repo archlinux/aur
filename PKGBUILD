@@ -2,8 +2,8 @@
 
 pkgname=trisquel-gtk-theme
 pkgver=7.0_8
-pkgrel=2
-pkgdesc="A GTK2/3, metacity and xfwm4 theme for Trisquel"
+pkgrel=3
+pkgdesc="A GTK2/3, metacity and xfwm4 theme for Trisquel."
 url="http://trisquel.info"
 arch=('any')
 license=('GPL')
