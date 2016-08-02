@@ -2,7 +2,7 @@
 
 pkgname='pynote'
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage notes on the commandline"
 arch=('any')
 url="https://github.com/rumpelsepp/pynote"
