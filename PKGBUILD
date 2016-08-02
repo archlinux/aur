@@ -12,8 +12,16 @@ url="http://www.singular.uni-kl.de/"
 license=(GPL)
 depends=(flint cddlib) # polymake
 makedepends=(doxygen)
-source=("http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/src/$_majver/${pkgname%4}-${pkgver//_/}.tar.gz") 
-md5sums=('003ffe73776235313899f16c2258b510')
+source=("http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/src/$_majver/${pkgname%4}-${pkgver//_/}.tar.gz"
+        singular-gcc6.patch::"https://github.com/Singular/Sources/commit/6828dc2a.patch") 
+md5sums=('003ffe73776235313899f16c2258b510'
+         '4c17b76076c1851feea14b4fd48e1398')
+
+prepare() {
+  cd ${pkgname%4}-${pkgver//_/}
+# Fix build with GCC 6
+  patch -p1 -i ../singular-gcc6.patch
+}
 
 build() {
   cd ${pkgname%4}-${pkgver//_/}
