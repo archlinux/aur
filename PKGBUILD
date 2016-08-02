@@ -3,7 +3,7 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=2.1.5.r3.g34c0b3c
+pkgver=3.0.2.r0.g1fd4d7f
 pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
@@ -31,7 +31,7 @@ package() {
 
   install -D /usr/bin/tcllauncher ${pkgdir}/usr/bin/tcllauncher
   cd "${srcdir}/${_gitname}"
-  make install DESTDIR=${pkgdir} SYSTEMD=usr/lib/systemd/system
+  make install DESTDIR=${pkgdir} SYSTEMD=/usr/lib/systemd/system
   rm ${pkgdir}/usr/bin/tcllauncher
 
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
