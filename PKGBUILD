@@ -47,7 +47,7 @@ build() {
     HOME=~/.electron-gyp npm install --production
 
     # We should use system installed typescript here, but it's not up-to-date
-    npm install typescript@next
+    npm install typescript@2.1.0-dev.20160728
     npm run compile
     npm uninstall typescript
 }
