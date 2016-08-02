@@ -1,7 +1,7 @@
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
 _npmname=redis-commander
 pkgname=nodejs-redis-commander
-pkgver=0.3.2
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Redis web-based management tool written in node.js"
 arch=('any')
@@ -17,5 +17,5 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-sha1sums=('186e3dcdc736c782dc2d7daa5ebe90a784a17001')
+sha1sums=('1fe45fad89385df8dc7bf2503168e5a00118a049')
 # vim:set ts=2 sw=2 et:
