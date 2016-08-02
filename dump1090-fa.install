@@ -6,6 +6,7 @@ post_install() {
 
     echo "Internal webserver has been permanently disabled in dump1090"
     echo "To enable lighttpd, copy /usr/share/dump1090/lighttpd.conf to /etc/lighttpd/lighttpd.conf"
+    echo "Then run `systemctl enable lighttpd && systemctl start lighttpd`"
 }
 
 pre_remove() {
