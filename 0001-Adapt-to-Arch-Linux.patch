@@ -1,0 +1,288 @@
+From f18cee1f17886ef4d54ea44e4ecc34f45df6abb6 Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jcholast@redhat.com>
+Date: Thu, 28 Jul 2016 11:04:36 +0200
+Subject: [PATCH] Adapt to Arch Linux
+
+---
+ Makefile.am              |  2 +-
+ authinfo.py              | 51 +++++++++++-------------------------------------
+ man/en/Makefile.am       |  2 +-
+ man/en/authconfig.8      |  8 ++++----
+ man/en/postlogin-ac.5    |  1 -
+ man/en/system-auth-ac.5  | 20 +++----------------
+ man/en/system-login-ac.5 |  1 +
+ 7 files changed, 21 insertions(+), 64 deletions(-)
+ delete mode 100644 man/en/postlogin-ac.5
+ create mode 100644 man/en/system-login-ac.5
+
+diff --git a/Makefile.am b/Makefile.am
+index 0bc08a8..ca066eb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -51,7 +51,7 @@ install-data-local: authconfig.desktop
+ 	touch $(DESTDIR)/$(pamdir)/password-auth-ac
+ 	touch $(DESTDIR)/$(pamdir)/fingerprint-auth-ac
+ 	touch $(DESTDIR)/$(pamdir)/smartcard-auth-ac
+-	touch $(DESTDIR)/$(pamdir)/postlogin-ac
++	touch $(DESTDIR)/$(pamdir)/system-login-ac
+ 	mkdir -p $(DESTDIR)/$(datadir)/applications
+ 	desktop-file-install \
+ 		--dir=$(DESTDIR)/$(datadir)/applications \
+diff --git a/authinfo.py b/authinfo.py
+index 4e05a95..0a875a4 100644
+--- a/authinfo.py
++++ b/authinfo.py
+@@ -60,8 +60,8 @@ SYSCONFDIR = "/etc"
+ AUTH_PAM_SERVICE = "system-auth"
+ AUTH_PAM_SERVICE_AC = "system-auth-ac"
+ 
+-POSTLOGIN_PAM_SERVICE = "postlogin"
+-POSTLOGIN_PAM_SERVICE_AC = "postlogin-ac"
++POSTLOGIN_PAM_SERVICE = "system-login"
++POSTLOGIN_PAM_SERVICE_AC = "system-login-ac"
+ 
+ PASSWORD_AUTH_PAM_SERVICE = "password-auth"
+ PASSWORD_AUTH_PAM_SERVICE_AC = "password-auth-ac"
+@@ -75,7 +75,7 @@ SMARTCARD_AUTH_PAM_SERVICE_AC = "smartcard-auth-ac"
+ SSSD_AUTHCONFIG_DOMAIN = "default"
+ 
+ if "lib64" in str(globals()["acutil"]):
+-	LIBDIR = "/lib64"
++	LIBDIR = "/lib"
+ else:
+ 	LIBDIR = "/lib"	
+ 
+@@ -1055,9 +1055,6 @@ class SafeFile:
+ 		self.file.flush()
+ 		os.fsync(self.file.fileno())
+ 		os.rename(self.file.name, self.filename)
+-		if self.missing:
+-			call(["/usr/sbin/restorecon", self.filename],
+-				stderr=os.open('/dev/null', os.O_WRONLY))
+ 
+ 	def close(self):
+ 		# we may have renamed the temp file, need to catch OSError
+@@ -1147,13 +1144,6 @@ class FileBackup:
+ 		if rv and os.path.isfile(backuppath):
+ 			rv = self.safeCopy(backuppath, self.origPath)
+ 
+-		try:
+-			if rv:
+-				call(["/usr/sbin/restorecon", self.origPath],
+-					stderr=os.open('/dev/null', os.O_WRONLY))
+-		except (IOError, OSError):
+-			pass
+-
+ 		return rv
+ 
+ def readCache():
+@@ -1224,8 +1214,8 @@ class CacheBackup(FileBackup):
+ # indexes for the configs
+ (CFG_HESIOD, CFG_YP, CFG_LDAP, CFG_NSSLDAP, CFG_PAMLDAP, CFG_NSLCD, CFG_OPENLDAP, CFG_KRB5,
+ 	CFG_KRB, CFG_PAM_PKCS11, CFG_SMB, CFG_NSSWITCH, CFG_CACHE,
+-	CFG_PAM, CFG_POSTLOGIN_PAM, CFG_PASSWORD_PAM, CFG_FINGERPRINT_PAM, CFG_SMARTCARD_PAM, CFG_AUTHCONFIG, CFG_NETWORK, CFG_LIBUSER, CFG_PWQUALITY,
+-	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 30))
++	CFG_PAM, CFG_POSTLOGIN_PAM, CFG_AUTHCONFIG, CFG_NETWORK, CFG_LIBUSER, CFG_PWQUALITY,
++	CFG_LOGIN_DEFS, CFG_SSSD, CFG_SHADOW, CFG_PASSWD, CFG_GSHADOW, CFG_GROUP, CFG_DCONF, CFG_DCONF_LOCKS) = list(range(0, 27))
+ all_configs = [
+ 	FileBackup("hesiod.conf", SYSCONFDIR+"/hesiod.conf"),
+ 	FileBackup("yp.conf", SYSCONFDIR+"/yp.conf"),
+@@ -1241,12 +1231,9 @@ all_configs = [
+ 	FileBackup("nsswitch.conf", SYSCONFDIR+"/nsswitch.conf"),
+ 	CacheBackup("cacheenabled.conf", ""),
+ 	FileBackup("system-auth-ac", SYSCONFDIR+"/pam.d/"+AUTH_PAM_SERVICE_AC),
+-	FileBackup("postlogin-ac", SYSCONFDIR+"/pam.d/"+POSTLOGIN_PAM_SERVICE_AC),
+-	FileBackup("password-auth-ac", SYSCONFDIR+"/pam.d/"+PASSWORD_AUTH_PAM_SERVICE_AC),
+-	FileBackup("fingerprint-auth-ac", SYSCONFDIR+"/pam.d/"+FINGERPRINT_AUTH_PAM_SERVICE_AC),
+-	FileBackup("smartcard-auth-ac", SYSCONFDIR+"/pam.d/"+SMARTCARD_AUTH_PAM_SERVICE_AC),
+-	FileBackup("authconfig", SYSCONFDIR+"/sysconfig/authconfig"),
+-	FileBackup("network", SYSCONFDIR+"/sysconfig/network"),
++	FileBackup("system-login-ac", SYSCONFDIR+"/pam.d/"+POSTLOGIN_PAM_SERVICE_AC),
++	FileBackup("authconfig", SYSCONFDIR+"/conf.d/authconfig"),
++	FileBackup("nisdomainname", SYSCONFDIR+"/nisdomainname"),
+ 	FileBackup("libuser.conf", SYSCONFDIR+"/libuser.conf"),
+ 	FileBackup("pwquality.conf", SYSCONFDIR+"/security/pwquality.conf"),
+ 	FileBackup("login.defs", SYSCONFDIR+"/login.defs"),
+@@ -2436,7 +2423,7 @@ class AuthInfo:
+ 		except IOError:
+ 			return False
+ 
+-		tmp = shv.getValue("NISDOMAIN")
++		tmp = shv.getValue("NISDOMAINNAME")
+ 		if tmp:
+ 			self.nisLocalDomain = tmp
+ 
+@@ -3881,8 +3868,7 @@ class AuthInfo:
+ 				pass
+ 
+ 	def checkPAMLinked(self):
+-		for dest in [AUTH_PAM_SERVICE, POSTLOGIN_PAM_SERVICE, PASSWORD_AUTH_PAM_SERVICE,
+-                                FINGERPRINT_AUTH_PAM_SERVICE, SMARTCARD_AUTH_PAM_SERVICE]:
++		for dest in [AUTH_PAM_SERVICE, POSTLOGIN_PAM_SERVICE]:
+ 			dest = SYSCONFDIR + "/pam.d/" + dest
+ 			f = os.path.isfile(dest)
+ 			l = os.path.islink(dest)
+@@ -3967,9 +3953,6 @@ class AuthInfo:
+ 		self.module_missing = {}
+ 		self.writePAMService(STANDARD, CFG_PAM, AUTH_PAM_SERVICE_AC, AUTH_PAM_SERVICE)
+ 		self.writePAMService(POSTLOGIN, CFG_POSTLOGIN_PAM, POSTLOGIN_PAM_SERVICE_AC, POSTLOGIN_PAM_SERVICE)
+-		self.writePAMService(PASSWORD_ONLY, CFG_PASSWORD_PAM, PASSWORD_AUTH_PAM_SERVICE_AC, PASSWORD_AUTH_PAM_SERVICE)
+-		self.writePAMService(FINGERPRINT, CFG_FINGERPRINT_PAM, FINGERPRINT_AUTH_PAM_SERVICE_AC, FINGERPRINT_AUTH_PAM_SERVICE)
+-		self.writePAMService(SMARTCARD, CFG_SMARTCARD_PAM, SMARTCARD_AUTH_PAM_SERVICE_AC, SMARTCARD_AUTH_PAM_SERVICE)
+ 		return True
+ 
+ 	def writeSysconfig(self):
+@@ -4024,7 +4007,7 @@ class AuthInfo:
+ 		except IOError:
+ 			return False
+ 
+-		shv.setValue("NISDOMAIN", self.nisDomain)
++		shv.setValue("NISDOMAINNAME", self.nisDomain)
+ 
+ 		shv.write(0o644)
+ 		shv.close()
+@@ -4364,7 +4347,6 @@ class AuthInfo:
+ 			if not nostart:
+ 				os.system("/bin/domainname " + self.nisDomain)
+ 			try:
+-				os.system("[[ $(getsebool allow_ypbind) == *off* ]] && setsebool -P allow_ypbind 1")
+ 				os.stat(PATH_RPCBIND)
+ 				Service.enable("rpcbind")
+ 				if not nostart:
+@@ -4383,7 +4365,6 @@ class AuthInfo:
+ 			if not nostart:
+ 				os.system("/bin/domainname \"(none)\"")
+ 			try:
+-				os.system("[[ $(getsebool allow_ypbind) == *on* ]] && setsebool -P allow_ypbind 0")
+ 				os.stat(PATH_YPBIND)
+ 				if not nostart:
+ 					try:
+@@ -4400,16 +4381,6 @@ class AuthInfo:
+ 			not self.implicitSSSD,
+ 			PATH_NSLCD,
+ 			"nslcd", nostart)
+-		if self.enableLDAP:
+-			try:
+-				os.system("[[ $(getsebool authlogin_nsswitch_use_ldap) == *off* ]] && setsebool -P authlogin_nsswitch_use_ldap 1")
+-			except OSError:
+-				pass
+-		else:
+-			try:
+-				os.system("[[ $(getsebool authlogin_nsswitch_use_ldap) == *on* ]] && setsebool -P authlogin_nsswitch_use_ldap 0")
+-			except OSError:
+-				pass
+ 		return True
+ 
+ 	def toggleWinbindService(self, nostart):
+diff --git a/man/en/Makefile.am b/man/en/Makefile.am
+index f8139af..5445e78 100644
+--- a/man/en/Makefile.am
++++ b/man/en/Makefile.am
+@@ -1,4 +1,4 @@
+ man8_MANS = authconfig.8 authconfig-tui.8 authconfig-gtk.8 system-config-authentication.8 \
+  cacertdir_rehash.8
+-man5_MANS = system-auth-ac.5 fingerprint-auth-ac.5 password-auth-ac.5 smartcard-auth-ac.5 postlogin-ac.5
++man5_MANS = system-auth-ac.5 fingerprint-auth-ac.5 password-auth-ac.5 smartcard-auth-ac.5 system-login-ac.5
+ EXTRA_DIST = $(man8_MANS) $(man5_MANS)
+diff --git a/man/en/authconfig.8 b/man/en/authconfig.8
+index 45e6f2b..d38a731 100644
+--- a/man/en/authconfig.8
++++ b/man/en/authconfig.8
+@@ -11,7 +11,7 @@ authconfig, authconfig-tui \- an interface for configuring system authentication
+ .in -7
+ .SH DESCRIPTION
+ \fBauthconfig\fR provides a simple method of configuring
+-/etc/sysconfig/network to handle NIS, as well as /etc/passwd and
++/etc/nisdomainname to handle NIS, as well as /etc/passwd and
+ /etc/shadow, the files used for shadow password support.  Basic LDAP,
+ Kerberos 5, and Winbind client configuration is also provided.
+ 
+@@ -70,7 +70,7 @@ Kerberos (\fB--enablekrb5\fR) for authentication.
+ 
+ In case \fISSSD\fR does not support some feature of the legacy services that are
+ required for the site configuration, the use of the legacy services can be forced
+-by setting FORCELEGACY=yes in \fB/etc/sysconfig/authconfig\fP.
++by setting FORCELEGACY=yes in \fB/etc/conf.d/authconfig\fP.
+ 
+ The list of options mentioned here in the manual page is not exhaustive, please
+ refer to \fBauthconfig --help\fR for the complete list of the options.
+@@ -129,7 +129,7 @@ return the same codes as \fBauthconfig\fR.
+ .PD 0
+ .TP
+ .TP
+-.FN /etc/sysconfig/authconfig
++.FN /etc/conf.d/authconfig
+ Used to track whether or not particular authentication mechanisms are enabled.
+ Currently includes variables named USESHADOW, USEMD5, USEKERBEROS, USELDAPAUTH,
+ USESMBAUTH, USEWINBIND, USEWINBINDAUTH, USEHESIOD, USENIS, USELDAP, and others.
+@@ -142,7 +142,7 @@ Used for shadow password support.
+ .FN /etc/yp.conf
+ Configuration file for NIS support.
+ .TP
+-.FN /etc/sysconfig/network
++.FN /etc/nisdomainname
+ Another configuration file for NIS support.
+ .TP
+ .FN /etc/ldap.conf
+diff --git a/man/en/postlogin-ac.5 b/man/en/postlogin-ac.5
+deleted file mode 100644
+index 3550f54..0000000
+--- a/man/en/postlogin-ac.5
++++ /dev/null
+@@ -1 +0,0 @@
+-.so man5/system-auth-ac.5
+diff --git a/man/en/system-auth-ac.5 b/man/en/system-auth-ac.5
+index 8c55e19..c1b7aaf 100644
+--- a/man/en/system-auth-ac.5
++++ b/man/en/system-auth-ac.5
+@@ -1,8 +1,7 @@
+ .TH SYSTEM-AUTH-AC 5 "2010 March 31" "Red Hat, Inc."
+ .SH NAME
+ 
+-system-auth-ac, password-auth-ac, smartcard-auth-ac,
+-fingerprint-auth-ac, postlogin-ac \- Common configuration files for
++system-auth-ac, system-login-ac \- Common configuration files for
+ PAMified services written by authconfig(8)
+ 
+ .SH SYNOPSIS
+@@ -29,23 +28,10 @@ and writes the configuration to this file. The symlink is not changed on
+ subsequent configuration changes even if it points elsewhere. This allows
+ system administrators to override the configuration written by authconfig.
+ 
+-The authconfig now writes the authentication modules also into additional PAM
+-configuration files \fB/etc/pam.d/password-auth-ac\fR,
+-\fB/etc/pam.d/smartcard-auth-ac\fR, and \fB/etc/pam.d/fingerprint-auth-ac\fR.
+-These configuration files contain only modules which perform
+-authentication with the respective kinds of authentication tokens.
+-For example \fB/etc/pam.d/smartcard-auth[-ac]\fR will not contain
+-\fBpam_unix\fR and \fBpam_ldap\fR modules and \fB/etc/pam.d/password-auth[-ac]\fR
+-will not contain \fBpam_pkcs11\fR and \fBpam_fprintd\fR modules.
+-
+-The file \fB/etc/pam.d/postlogin-ac\fR contains common services
++The file \fB/etc/pam.d/system-login-ac\fR contains common services
+ to be invoked after login. An example can be a module that encrypts an
+ user's filesystem or user's keyring and is decrypted by his password.
+ 
+-The PAM configuration files of services which are accessed by remote
+-connections such as sshd or ftpd now include the \fB/etc/pam.d/password-auth\fR
+-configuration file instead of \fB/etc/pam.d/system-auth\fR.
+-
+ 
+ .SH EXAMPLE
+ Configure system to use pam_tally2 for configuration of maximum number of
+@@ -78,4 +64,4 @@ session         include         system-auth-ac
+ None known.
+ 
+ .SH "SEE ALSO"
+-authconfig(8), authconfig-gtk(8), pam(8), system-auth(5)
++authconfig(8), authconfig-gtk(8), pam(8)
+diff --git a/man/en/system-login-ac.5 b/man/en/system-login-ac.5
+new file mode 100644
+index 0000000..3550f54
+--- /dev/null
++++ b/man/en/system-login-ac.5
+@@ -0,0 +1 @@
++.so man5/system-auth-ac.5
+-- 
+2.7.4
+
