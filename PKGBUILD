@@ -1,14 +1,14 @@
 # Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="ghostwriter is a cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(i686 x86_64)
 url="https://github.com/wereturtle/ghostwriter"
 license=('GPL3')
-source=('ghostwriter.tar.gz::https://github.com/wereturtle/ghostwriter/archive/v1.3.1.tar.gz')
-sha256sums=('fc6905db86c3285d6e634d779c024a8988457fa453d93be759d446af0c7ed560')
+source=("ghostwriter-${pkgver}.tar.gz::https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
+sha256sums=('a1294359e48028095b045893cf4f5bcc9af5de28cd20c804cc878d906ccd351d')
 conflicts=('ghostwriter-git')
 provides=('ghostwriter-git')
 makedepends=('qtchooser')
