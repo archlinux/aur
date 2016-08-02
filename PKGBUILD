@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=django-crispy-forms
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Django DRY forms."
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python2)
 makedepends=(python2-distribute)
 source=("http://pypi.python.org/packages/source/d/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=(b4bc5932405039839e6a99ecf95d30d7)
+md5sums=(cf9537e0d2e5150644f45ea966b106dc)
 
 package () {
 
