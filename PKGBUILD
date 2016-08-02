@@ -1,14 +1,14 @@
 # Maintainer: graysky <graysky AT archlinux DOT org>
 
 pkgname=ovpngen
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
-pkgdesc="Generate an OpenVPN Connect private tunnel profile in the unified format."
+pkgdesc="Generate an OpenVPN client rofile in the unified format."
 arch=('any')
 url="http://github.com/graysky2/ovpngen"
 license=('MIT')
 source=(https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('e936f333ec86dbd474daf917b044f6447ccb252824e13424d965050d70ee0224')
+sha256sums=('fc542f4cb2f6bd735e0f116858ac0a00bd92df20b278874fd0c9fc6ba2b21b10')
 
 package() {
 	cd ${pkgname}-${pkgver}
