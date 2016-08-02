@@ -22,6 +22,7 @@ package() {
   curl -LO https://pypi.python.org/packages/d2/9c/85cbf6be1c7d330a48847ec44b4f84794d150c493c6bb0d7270e172a40dd/cdbcli-0.2.1.tar.gz
   tar -xzvf cdbcli-0.2.1.tar.gz
   cd "$srcdir/$pkgname-$pkgver"
+  pip install -r requirements.txt
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
