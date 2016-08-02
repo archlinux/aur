@@ -2,24 +2,19 @@
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=3.11.5
+pkgver=4.0
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
 license=('custom' 'custom:bounce' 'APACHE')
 depends=('java-runtime' 'hicolor-icon-theme')
-source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz
-        charles-arch.patch
-        charles.desktop)
+source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz)
 install=charles.install
-md5sums=('6b266ed5f66052c47db77e2dc7170f68'
-         '8ddaffe8d0ff4255a66a954bc445d436'
-         '3f788e0263cb50a545855199c8c60b1e')
+md5sums=('925074ff46ea3dba4b32871254e8beb1')
 
 build() {
   cd "$srcdir/$pkgname"
-  patch -Np1 -i ${srcdir}/charles-arch.patch
 }
 
 package() {
@@ -42,8 +37,8 @@ package() {
     ${pkgdir}/usr/share/icons/hicolor/scalable/apps/charles.svg
   install -D -m644 ${srcdir}/${pkgname}/doc/licenses/bounce-license.txt \
     ${pkgdir}/usr/share/licenses/${pkgname}/bounce-license.txt
-  install -D -m644 ${srcdir}/charles.desktop \
-    ${pkgdir}/usr/share/applications/charles.desktop
+  install -D -m644 ${srcdir}/${pkgname}/etc/charles-proxy.desktop \
+    ${pkgdir}/usr/share/applications/charles-proxy.desktop
 }
 
 # vim:set ts=2 sw=2 et:
