@@ -1,4 +1,4 @@
-# Contributor: Andrea Scarpino <andrea@archlinux.org|
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=python2-spectacle
 pkgver=0.30
