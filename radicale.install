@@ -1,16 +1,19 @@
 post_install() {
-  getent group radicale &>/dev/null || groupadd radicale >/dev/null
-  getent passwd radicale &>/dev/null || useradd -r -s /usr/bin/false \
-    -g radicale -G radicale,http -d /etc/radicale/ radicale >/dev/null
-  chown -R radicale:radicale /etc/radicale/
+	getent group radicale &>/dev/null || groupadd -r radicale >/dev/null
+	getent passwd radicale &>/dev/null || useradd -r -s /usr/bin/false \
+		-g radicale -G radicale,http -d /var/lib/radicale/ radicale >/dev/null
+
+	install -d -m 755 -o radicale -g radicale /var/lib/radicale/
+
+	chown -R root:radicale /etc/radicale/
 }
  
 post_update() {
-  chown -R radicale:radicale /etc/radicale/
+	chown -R root:radicale /etc/radicale/
 }
  
 pre_remove() {
-  getent passwd radicale &>/dev/null && userdel radicale >/dev/null
-  getent group radicale &>/dev/null && groupdel radicale >/dev/null
-  true
+	getent passwd radicale &>/dev/null && userdel radicale >/dev/null
+	getent group radicale &>/dev/null && groupdel radicale >/dev/null
+	true
 }
