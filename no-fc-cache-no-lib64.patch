@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 64d437d..c8c8b49 100755
+index bf38ca6..82e49b7 100755
 --- a/configure
 +++ b/configure
-@@ -19608,7 +19608,7 @@ _ACEOF
+@@ -19796,7 +19796,7 @@ _ACEOF
  	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
      esac
      case $ac_im_usrlibdir in
@@ -11,7 +11,7 @@ index 64d437d..c8c8b49 100755
  	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
      esac
    fi
-@@ -24579,7 +24579,7 @@ fi
+@@ -24773,7 +24773,7 @@ fi
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -21,10 +21,10 @@ index 64d437d..c8c8b49 100755
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
 diff --git a/configure.ac b/configure.ac
-index b5403d2..0f1a37d 100755
+index 0d0a6de..3c26154 100755
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2917,12 +2917,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2952,12 +2952,7 @@ if test x"$enable_lame" != "xno" ; then
  
  fi
  
@@ -38,7 +38,7 @@ index b5403d2..0f1a37d 100755
  
  if test x"$is_amigaos4" = "xyes"; then
    if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4542,7 +4537,7 @@ case "$host_os" in
+@@ -4620,7 +4615,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -48,10 +48,10 @@ index b5403d2..0f1a37d 100755
      else
        VICEDIR="$PREFIX/lib/vice"
 diff --git a/configure.proto b/configure.proto
-index b5403d2..0f1a37d 100755
+index 0d0a6de..3c26154 100755
 --- a/configure.proto
 +++ b/configure.proto
-@@ -2917,12 +2917,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2952,12 +2952,7 @@ if test x"$enable_lame" != "xno" ; then
  
  fi
  
@@ -65,7 +65,7 @@ index b5403d2..0f1a37d 100755
  
  if test x"$is_amigaos4" = "xyes"; then
    if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
-@@ -4542,7 +4537,7 @@ case "$host_os" in
+@@ -4620,7 +4615,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
