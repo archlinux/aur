@@ -1,0 +1,51 @@
+# Maintainer: James An <james@jamesan.ca>
+
+pkgname=platformsh-cli-git
+_pkgname=${pkgname%-git}
+pkgver=3.3.5.r0.g63a69c1
+pkgrel=1
+pkgdesc="The unified tool for managing your Platform.sh services from the command line."
+arch=('any')
+url="https://github.com/jamesan/$_pkgname"
+license=('GPL')
+depends=('git' 'php')
+optdepends=('drush' 'composer')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname"::"git+https://github.com/${_pkgname%-cli}/$_pkgname.git#branch=master")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare() {
+  cd "$_pkgname"
+
+  composer install
+}
+
+build() {
+  cd "$_pkgname"
+
+  php -d phar.readonly=Off /usr/bin/php-box build
+}
+
+check() {
+  cd "$_pkgname"
+
+  php -d phar.readonly=Off /usr/bin/php-box verify platform.phar
+}
+
+package() {
+  cd "$_pkgname"
+
+  install -Dm755 platform.phar "$pkgdir/usr/share/webapps/platform/platform.phar"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/share/webapps/platform/platform.phar "$pkgdir/usr/bin/platform"
+}
