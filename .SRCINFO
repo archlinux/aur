@@ -1,0 +1,14 @@
+pkgbase = libdime
+	pkgdesc = A DXF (Data eXchange Format) file format support library
+	pkgver = r187
+	pkgrel = 1
+	url = https://bitbucket.org/Coin3D/dime
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = doxygen
+	source = https://bitbucket.org/Coin3D/dime/get/7cd55bc6a6d0.tar.gz
+	sha256sums = 23abc644771914accb47bd144ff6e533a7e6d6b6b44b588bd9ec827b236efbda
+
+pkgname = libdime
+
