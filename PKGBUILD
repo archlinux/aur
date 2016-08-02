@@ -6,7 +6,7 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://wiki.freedesktop.org/www/Software/xdg-utils/"
@@ -36,6 +36,9 @@ validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle
 
 prepare() {
 	cd $_pkgname-$pkgver
+	# fix wrong hardcoded chromium binary name - FS#50184
+	sed -i "s:chromium-browser:chromium:" scripts/xdg-open.in
+
 	# fix KDE support, FS#48668
 	patch -Np1 -i $srcdir/support_for_KDE_Frameworks_5.6.diff
 
