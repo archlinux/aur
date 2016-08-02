@@ -17,7 +17,7 @@ install=pynote.install
 
 build() {
     cd "${srcdir}/${pkgname}/man"
-    make man
+    make ASCIIDOC_MAN_FLAGS=" -d manpage -b manpage -a reproducible" man
 }
 
 package() {
