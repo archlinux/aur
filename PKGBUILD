@@ -11,7 +11,7 @@ url='https://keybase.io'
 pkgver=1.0.16_20160802173443+d99d9c7
 pkgrel=1
 arch=('i686' 'x86_64')
-depends=(fuse gconf)
+depends=(fuse gconf lsof)
 # keybase-release is a deprecated AUR package
 conflicts=(keybase keybase-release keybase-git)
 source_i686=(
