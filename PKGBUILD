@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=52.0.2743.82
+pkgver=52.0.2743.85
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -21,7 +21,8 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
+         #'libvpx'
+         'perl' 'perl-file-basedir' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -36,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium.desktop
         chromium-widevine.patch
         PNGImageDecoder.patch)
-sha256sums=('a7de6015df9cf685d68efd1e070ae9c706c723cd9395d079a7d43672a2c37eb4'
+sha256sums=('b70e3e77d8d80fbe2303c889d557864f576709ebb543f402b77bad6d6c74edc3'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
@@ -144,7 +145,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=1
+    -Duse_system_libvpx=0
     -Duse_system_libxml=0
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
