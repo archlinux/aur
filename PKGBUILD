@@ -1,6 +1,6 @@
 # Maintainer: Justin Ethier <justin.ethier@gmail.com>
 pkgname=cyclone-scheme
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="An R7RS Scheme-to-C compiler using Cheney on the M.T.A with native threads"
 arch=('i686' 'x86_64')
