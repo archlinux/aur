@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
 license=('GPL')
 depends=('gpgme' 'gtk2' 'compface' 'gtkspell')
-makedepends=('compface' 'gtkspell')
 options=('libtool')
 conflicts=('sylpheed' 'sylpheed-beta')
 provides=('sylpheed')
