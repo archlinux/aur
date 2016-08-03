@@ -4,7 +4,7 @@
 
 pkgdesc="Standalone systemd libs (including -compat)"
 pkgname=( 'libsystemd-standalone' 'libsystemd-udev' )
-pkgver=230
+pkgver=231
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -65,4 +65,4 @@ package_libsystemd-udev() {
 	install -Dm644 "systemd-$pkgver/src/libudev/libudev.h" "$pkgdir/usr/include/libudev.h"
 }
 
-sha1sums=('2196493295e96527e0c1ee960e3d17e1d2165e9f')
+sha1sums=('47768103290d2023c3452bc36bc77f7b1fd798ea')
