@@ -1,7 +1,7 @@
 pkgbase = xar
 	pkgdesc = eXtensible ARchive format
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mackyle.github.io/xar/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = xar
 	depends = bzip2
 	options = !libtool
 	source = https://github.com/downloads/mackyle/xar/xar-1.6.1.tar.gz
+	source = xar-ext2-bug-workaround.patch
 	md5sums = a624535d6a1e8fdf420b36a6b334047b
+	md5sums = 4d4c52b9fbd8861e1322257a1b365f01
 
 pkgname = xar
 
