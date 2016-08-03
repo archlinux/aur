@@ -1,8 +1,8 @@
 # Maintainer: Peter Spiess-Knafl <dev@spiessknafl.at>
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 pkgname=libjson-rpc-cpp
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 url="https://github.com/cinemast/libjson-rpc-cpp"
@@ -12,12 +12,11 @@ makedepends=('cmake')
 #checkdepends=('libcatch-cpp-headers')
 install=libjson-rpc-cpp.install
 changelog=ChangeLog
-source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.6.0.tar.gz' 'gcc5.patch')
-sha256sums=('98baf15e51514339be54c01296f0a51820d2d4f17f8c9d586f1747be1df3290b' 'e5e8431bc478235eaad90fb94e723627cc2e0e5b015772fc97b0fae6ef9eeafc')
+source=('https://github.com/cinemast/libjson-rpc-cpp/archive/v0.7.0.tar.gz')
+sha256sums=('669c2259909f11a8c196923a910f9a16a8225ecc14e6c30e2bcb712bab9097eb')
 
 prepare() {
  cd "${srcdir}"/${pkgname}-${pkgver}
- patch -Np1 -i ../gcc5.patch
 }
 
 build() {
@@ -25,15 +24,9 @@ build() {
   mkdir -p $pkgname-$pkgver/build
   cd $pkgname-$pkgver/build
   msg2 "Invoking cmake"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_STATIC_LIBS=TRUE ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_STATIC_LIBS=TRUE -DCOMPILE_TESTS=FALSE  -DCOMPILE_EXAMPLES=FALSE ..
   msg2 "Building the framework"
   make
-}
-
-check() {
-  cd $pkgname-$pkgver/build
-  msg2 "Running unit tests"
-  make test
 }
 
 package() {
