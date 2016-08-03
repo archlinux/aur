@@ -1,12 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-class
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Role to provide simple serialisation/deserialisation of objects to/from JSON"
 arch=('any')
 depends=('perl6' 'perl6-json-marshal' 'perl6-json-unmarshal')
-checkdepends=('perl')
+checkdepends=('perl' 'perl6-json-fast')
 makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/jonathanstowe/JSON-Class"
@@ -25,7 +25,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
@@ -44,5 +44,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
