@@ -2,19 +2,23 @@
 
 pkgname=lxsession-git
 pkgver=0.5.2.r997.20160417
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Lightweight X11 session manager for LXDE'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
 license=('GPL2')
 groups=('lxde-git')
-depends=('polkit' 'dbus-glib' 'libunique' 'libkeybinder2')
+depends=('polkit' 'dbus-glib' 'libunique' 'libkeybinder2'
+	'libappindicator-gtk2'
+	'libnotify'
+)
 makedepends=('pkgconfig' 'intltool' 'docbook-xml' 'docbook-xsl' 'vala')
 provides=('lxsession' 'lxsession-edit' 'lxpolkit' 'lxde-settings-daemon' 'lxsession-lite')
 conflicts=('lxsession' 'lxsession-edit' 'lxpolkit' 'lxde-settings-daemon' 'lxsession-lite')
 source=(
-	$pkgname::git+http://git.lxde.org/git/lxde/lxsession.git
+	$pkgname::git+https://github.com/lxde/lxsession.git
+#	$pkgname::git+http://git.lxde.org/git/lxde/lxsession.git
 #	$pkgname::git+git://git.lxde.org/git/lxde/lxsession.git
 	lxclipboard-startup.desktop
 )
