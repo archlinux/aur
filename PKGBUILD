@@ -1,12 +1,14 @@
 # Maintainer: Dominik Fischer <d dot f dot fischer at web dot de>
-pkgname=git-makepkg-template-git
+pkgname=git-makepkg-templates-git
 pkgver=r0
 pkgrel=1
-pkgdesc="makepkg-template for git source packages"
+pkgdesc="makepkg-templates for git source packages"
 arch=('any')
-url="https://github.com/dffischer/git-makepkg-template"
+url="https://github.com/dffischer/git-makepkg-templates"
 license=('GPL')
 depends=('pacman>=4.1.2' 'git')
+replaces=('git-makepkg-template')
+conflicts=('git-makepkg-template')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
