@@ -24,8 +24,8 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
 		'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'a2b653d523161a33a36e931b60a234f2'
-         'd59b40fc800995f14fedc234ea8031e7')
+         'cd0dfc4733756743f4c3b9b2cd2abdee'
+         'fe48abc55d72e4db7d2ed1b449036bab')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 provides=('matrix-synapse')
