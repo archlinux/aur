@@ -19,8 +19,7 @@ depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
          'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
          'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
          'rtmpdump')
-optdepends=('dcadec: DTS Coherent Acoustics support'
-            'vid.stab: Video stabilization library'
+optdepends=('vid.stab: Video stabilization library'
             'libfdk-aac: AAC-HE support'
             'libiec61883: FireWire DV/HDV support'
             'libavc1394: FireWire DV/HDV support'
@@ -74,7 +73,6 @@ build() {
     --enable-librtmp \
     --disable-ffplay \
     --enable-runtime-cpudetect #\
-    #--enable-libdcadec \
     #--enable-libiec61883
     #--enable-libsoxr \
     #--enable-libvidstab \
