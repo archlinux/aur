@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-plugin-ampache-git
 	pkgdesc = Rhythmbox plugin to stream music from Ampache
-	pkgver = 7415a69
+	pkgver = 0d233e3 
 	pkgrel = 1
 	url = https://github.com/lotan/rhythmbox-ampache
 	install = rhythmbox-plugin-ampache-git.install
