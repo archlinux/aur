@@ -1,8 +1,8 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=xpybar
-pkgver=1.15
-pkgrel=2
+pkgver=1.16
+pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
 url="https://github.com/maandree/xpybar"
@@ -26,7 +26,7 @@ optdepends=("linux: most of the monitors require Linux's procfs or sysfs"
 makedepends=(make coreutils sed zip auto-auto-complete texinfo)
 install=xpybar.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(b4b687c5eb97357a93529cb4976b2aad352a73e7fc2367c29f2291ecaeaac43e)
+sha256sums=(d9bbe99d75eafbd8f1c42f01b0a9c24e48e363433aedc2338daba651f1ff8d1b)
 
 
 build() {
