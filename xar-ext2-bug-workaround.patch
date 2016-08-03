@@ -1,0 +1,14 @@
+--- a/lib/ext2.h
++++ b/lib/ext2.h
+@@ -36,6 +36,11 @@
+ 
+ #ifndef _XAR_EXT2_H_
+ #define _XAR_EXT2_H_
++
++#ifndef EXT2_ECOMPR_FL
++#define EXT2_ECOMPR_FL EXT4_ENCRYPT_FL
++#endif
++
+ #define XAR_ATTR_FORK "attribute"
+ int xar_ext2attr_archive(xar_t x, xar_file_t f, const char* file, const char *buffer, size_t len);
+ int xar_ext2attr_extract(xar_t x, xar_file_t f, const char* file, char *buffer, size_t len);
