@@ -52,7 +52,7 @@ package_libsystemd-standalone() {
 }
 
 package_libsystemd-udev() {
-	_libudev_version='1.6.4'
+	_libudev_version='1.6.5'
 	install='libsystemd.install'
 	provides=( 'libudev.so' 'libudev' )
 
