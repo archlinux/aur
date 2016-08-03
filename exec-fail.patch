@@ -1,0 +1,33 @@
+From fc3582a8f88c524eb9f615ab9c0f56bae7f76f52 Mon Sep 17 00:00:00 2001
+From: Oliver Jowett <oliver@mutability.co.uk>
+Date: Tue, 2 Aug 2016 20:24:30 +0100
+Subject: [PATCH] If an exec fails, kill ourselves quickly.
+
+If we let tcl do a normal exit it will interfere with any inherited
+FDs e.g. TLS sockets.
+
+Fixes #33
+---
+ package/fa_sudo.tcl | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/package/fa_sudo.tcl b/package/fa_sudo.tcl
+index be2297b..3b77676 100644
+--- a/package/fa_sudo.tcl
++++ b/package/fa_sudo.tcl
+@@ -353,8 +353,13 @@ namespace eval ::fa_sudo {
+ 
+ 		# if we got here, we are the child but we failed to exec, so
+ 		# bail out.
+-		catch {puts stderr "$::errorInfo"}
+-		exit 42
++		catch {
++			puts stderr "$::errorInfo"
++			flush stderr
++		}
++
++		# kill ourselves to avoid corrupting any channels that we inherited
++		kill KILL [id process]
+ 	}
+ 
+ 	proc _parse_exec_pipeline {_options args} {

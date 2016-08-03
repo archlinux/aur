@@ -1,5 +1,8 @@
 post_install() {
-	useradd -M piaware
+	getent passwd piaware || groupadd piaware
+	getent passwd piaware || useradd -r -d /usr/share/piaware -M -g piaware piaware
+	chown piaware:root /var/cache/piaware
+        chown root:piaware /etc/piaware.conf
 	systemctl enable piaware
 }
 

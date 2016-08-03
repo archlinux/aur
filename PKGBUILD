@@ -3,8 +3,8 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=3.0.2.r0.g1fd4d7f
-pkgrel=2
+pkgver=3.0.3.r0.g29700f5
+pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
 
@@ -17,9 +17,11 @@ makedepends=('git' 'autoconf' 'tcl' 'python' 'tcllauncher')
 optdepends=('mlat-client: M-LAT support')
 
 source=('piaware::git+git://github.com/flightaware/piaware'
-        'piaware.conf')
+        'piaware.conf'
+        'exec-fail.patch')
 md5sums=('SKIP'
-         '9fcbaadb1d08e755c3c1e7e577f0ac32')
+         'fc8d49cd7b2ba136a097501647ed105b'
+         'aa847e9b8a2cd4e9e427a94e21f9aee9')
 install=piaware-git.install
 backup=('etc/piaware.conf')
 
@@ -30,6 +32,11 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  patch -Np1 < ../exec-fail.patch
+}
+
 package() {
 
   install -D /usr/bin/tcllauncher ${pkgdir}/usr/bin/tcllauncher
@@ -37,9 +44,10 @@ package() {
   make install DESTDIR=${pkgdir} SYSTEMD=/usr/lib/systemd/system
   rm ${pkgdir}/usr/bin/tcllauncher
 
+  install -dm755 ${pkgdir}/var/cache/piaware
   install -dm750 ${pkgdir}/etc/sudoers.d/
   install -Dm644 etc/piaware.sudoers ${pkgdir}/etc/sudoers.d/01piaware
-  install -Dm644 ${srcdir}/piaware.conf ${pkgdir}/etc/piaware.conf
+  install -Dm640 ${srcdir}/piaware.conf ${pkgdir}/etc/piaware.conf
   chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
