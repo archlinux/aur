@@ -1,19 +1,18 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=python2-socks
 _pkgname=PySocks
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
-pkgdesc="Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork PySocks replaces socksipy)"
+pkgdesc="SOCKS4, SOCKS5 or HTTP proxy (Anorov fork PySocks replaces socksipy)"
 arch=('any')
 license=('BSD')
-url="http://socksipy.sourceforge.net/"
+url="https://github.com/Anorov/PySocks"
 depends=('python2')
 provides=('socksipy' 'python2-socksipy-branch')
 conflicts=('socksipy' 'python2-socksipy-branch')
 replaces=('python2-socksipy-branch')
-source=("https://pypi.python.org/packages/source/P/PySocks/PySocks-$pkgver.tar.gz")
-md5sums=('c825c7c52b2c79dde73cac8d04bd25cb')
+source=("https://github.com/Anorov/PySocks/archive/$pkgver.tar.gz")
+md5sums=('1d85fc1a5391711c04a16ff31fad1e8f')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
