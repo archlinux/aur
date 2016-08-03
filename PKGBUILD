@@ -2,7 +2,7 @@
 
 pkgname=fdk-aac-enc
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='AAC encoder frontend for FDK-AAC library'
 arch=(x86_64 i686)
 url='http://sourceforge.net/projects/opencore-amr/'
@@ -12,6 +12,8 @@ source=("http://downloads.sourceforge.net/opencore-amr/fdk-aac-$pkgver.tar.gz")
 
 build()
 {
+    export CXXFLAGS="${CXXFLAGS} -std=gnu++98"
+    export CPPFLAGS="${CPPFLAGS} -std=gnu++98"
     cd "$srcdir/fdk-aac-$pkgver"
     ./configure --enable-example
     make
