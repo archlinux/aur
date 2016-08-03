@@ -3,6 +3,7 @@ pkgbase = yaourt-dev-null-git
 	pkgver = 1.8.1.r26.ga945c4d
 	pkgrel = 1
 	url = http://www.archlinux.fr/yaourt-en/
+	install = yaourt-dev-null-git.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -17,9 +18,7 @@ pkgbase = yaourt-dev-null-git
 	conflicts = yaourt-git
 	backup = etc/yaourtrc
 	source = git+https://github.com/archlinuxfr/yaourt.git
-	source = pkgbuild.sh.in.patch
 	md5sums = SKIP
-	md5sums = 206182b156087ed8d2f18c5cae6b4ad4
 
 pkgname = yaourt-dev-null-git
 
