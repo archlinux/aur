@@ -23,7 +23,7 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta3
-pkgrel=1
+pkgrel=2
 epoch=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -61,7 +61,6 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
         '0002-intel-ucode.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
-        '60_memtest86+'
         'grub.default'
         'grub.cfg')
 
@@ -70,10 +69,9 @@ md5sums=('SKIP'
          '728b7439ac733a7c0d56049adec364c7'
          'SKIP'
          '9589ec46a04f9bb4d5da987340a4a324'
-         'e582a1ca6b06444e891f3b46af13d563'
-         '945527e0de8d384166a4cf23439ae9ee'
+         'ff3b8524983ce02fc48fce38f96b1a82'
+         'ba9d27c44b677bf329e5b96933bdbde8'
          'e506ae4a9f9f7d1b765febfa84e10d48'
-         'be55eabc102f2c60b38ed35c203686d6'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')  #Paul Hardy
@@ -319,9 +317,6 @@ _package_grub-common_and_bios() {
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.module || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/*.image || true
 	rm -f "${pkgdir}/usr/lib/grub/i386-pc"/{kernel.exec,gdb_grub,gmodule.pl} || true
-
-	msg "Install extra /etc/grub.d/ files"
-	install -D -m0755 "${srcdir}/60_memtest86+" "${pkgdir}/etc/grub.d/60_memtest86+"
 
 	msg "Install /etc/default/grub (used by grub-mkconfig)"
 	install -D -m0644 "${srcdir}/grub.default" "${pkgdir}/etc/default/grub"

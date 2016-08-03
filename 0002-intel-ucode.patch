@@ -1,9 +1,13 @@
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 5a78513..39bd854 100644
+index de9044c..f5d3e78 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -136,10 +136,12 @@ EOF
-   if test -n "${initrd}" ; then
+@@ -133,13 +133,15 @@ linux_entry ()
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+ EOF
+-  if test -n "${initrd}" ; then
++  if test -n "${initrd}" -o -n "${initrd_extra}" ; then
      # TRANSLATORS: ramdisk isn't identifier. Should be translated.
      message="$(gettext_printf "Loading initial ramdisk ...")"
 -    sed "s/^/$submenu_indentation/" << EOF
@@ -12,43 +16,37 @@ index 5a78513..39bd854 100644
 -EOF
 +    printf '	%s\n' "echo	'$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
 +    printf '	%s ' 'initrd' | sed "s/^/$submenu_indentation/"
-+    for i in ${initrd}; do
++    for i in ${initrd_extra} ${initrd}; do
 +	printf ' %s/%s' "${rel_dirname}" "${i}"
 +    done
 +    printf '\n'
    fi
    sed "s/^/$submenu_indentation/" << EOF
  }
-@@ -189,6 +191,11 @@ while [ "x$list" != "x" ] ; do
-   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
- 
-   initrd=
-+  for i in intel-ucode.img; do
-+    if test -e "${dirname}/${i}" ; then
-+      initrd+=" ${i}"
-+    fi
-+  done
-   for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
- 	   "initrd-${version}" "initramfs-${version}.img" \
- 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
-@@ -198,7 +205,7 @@ while [ "x$list" != "x" ] ; do
- 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
- 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
-     if test -e "${dirname}/${i}" ; then
--      initrd="$i"
-+      initrd+=" $i"
+@@ -202,6 +204,12 @@ while [ "x$list" != "x" ] ; do
        break
      fi
    done
-@@ -217,7 +224,7 @@ while [ "x$list" != "x" ] ; do
++  initrd_extra=
++  for i in intel-ucode.img; do
++    if test -e "${dirname}/${i}" ; then
++      initrd_extra+=" ${i}"
++    fi
++  done
+ 
+   config=
+   for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
+@@ -216,8 +224,8 @@ while [ "x$list" != "x" ] ; do
+       initramfs=`grep CONFIG_INITRAMFS_SOURCE= "${config}" | cut -f2 -d= | tr -d \"`
    fi
  
-   if test -n "${initrd}" ; then
+-  if test -n "${initrd}" ; then
 -    gettext_printf "Found initrd image: %s\n" "${dirname}/${initrd}" >&2
-+    gettext_printf "Found initrd image(s) in %s:%s\n" "${dirname}" "${initrd}" >&2
++  if test -n "${initrd}" -o -n "${initrd_extra}" ; then
++    gettext_printf "Found initrd image(s) in %s:%s\n" "${dirname}" "${initrd_extra} ${initrd}" >&2
    elif test -z "${initramfs}" ; then
      # "UUID=" and "ZFS=" magic is parsed by initrd or initramfs.  Since there's
      # no initrd or builtin initramfs, it can't work here.
 -- 
-2.7.1
+2.9.2
 
