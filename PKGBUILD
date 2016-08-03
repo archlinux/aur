@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-jslint
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='The JavaScript Code Quality Tool'
 arch=('any')
@@ -22,5 +22,7 @@ package() {
   ln -s ../../../lib/node_modules/jslint/LICENSE \
      "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
+  find "${pkgdir}" -name "package.json" \
+       -exec sed -e "s|${pkgdir}||" -i {} \; \
+       -exec sed -e "s|${srcdir}|/|" -i '{}' \;
 }
