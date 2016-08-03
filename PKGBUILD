@@ -3,12 +3,12 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=0.6.0.r28.g4066b2b
+pkgver=0.6.0.r31.g5e1478b
 pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 depends=('argtable' 'curl' 'jsoncpp' 'libmicrohttpd')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 checkdepends=('boost')
 url="https://github.com/cinemast/libjson-rpc-cpp"
 license=('MIT')
