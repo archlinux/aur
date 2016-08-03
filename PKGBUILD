@@ -4,12 +4,12 @@
 _pkgname="updf"
 pkgname="${_pkgname}-bzr"
 pkgver=17
-pkgrel=7
+pkgrel=8
 pkgdesc='A tool to write and paint to an existing pdf file. uPdf can insert pages of another pdf, insert new pages, remove and extract pages, rotate pages, paste an image in the existing pdf, and much more.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/updf/'
 license=('GPL3')
-depends=('gtk3' 'python2' 'python2-cairo' 'python2-numpy' 'python2-polib' 'poppler-glib' 'libappindicator-gtk3')
+depends=('gtk3' 'python2' 'python2-cairo' 'python2-numpy' 'python2-polib' 'python2-rsvg' 'poppler-glib' 'libappindicator-gtk3')
 makedepends=('bzr' 'python2-distutils-extra')
 install="${pkgname}.install"
 provides=("${_pkgname}")
@@ -22,11 +22,16 @@ pkgver() {
 }
 
 build() {
+    cd "${srcdir}/${_pkgname}"
     # Fix Bug #1180103
     # https://bugs.launchpad.net/updf/+bug/1180103/comments/2
-    cd "${srcdir}/${_pkgname}"
     sed -i '238d' ./src/updf.py    # toolbar.set_property("toolbar_style",'icons')
     sed -i '354d' ./src/updf.py    # toolbar2.set_property("toolbar_style",'icons')
+
+    # Fix Bug line 35
+    sed -i "33i\    elif __file__.startswith('/usr/sbin'):\n" ./bin/updf
+    sed -i "34i\	    sys.path.insert(1, '/usr/share/updf')\n" ./bin/updf
+    sed -i "35,36d" ./bin/updf
 
     export PYTHON="/usr/bin/python2"
     python2 setup.py build
@@ -53,3 +58,5 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     install -m755 updf ${pkgdir}/usr/bin
 }
+
+# vim:set ts=4 sw=2 ft=sh et:
