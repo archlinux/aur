@@ -14,8 +14,10 @@ pkgbase = python-backports.ssl
 
 pkgname = python-backports.ssl
 	depends = python
+	depends = python-pyopenssl
 
 pkgname = python2-backports.ssl
 	depends = python2
 	depends = python2-backports
+	depends = python2-pyopenssl
 

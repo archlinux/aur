@@ -29,14 +29,14 @@ build() {
 }
 
 package_python-backports.ssl() {
-  depends=('python')
+  depends=('python' 'python-pyopenssl')
 
   cd $_pkgname-$pkgver
   python3 setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-backports.ssl() {
-  depends=('python2' 'python2-backports')
+  depends=('python2' 'python2-backports' 'python2-pyopenssl')
 
   cd $_pkgname-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
