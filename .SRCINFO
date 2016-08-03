@@ -1,0 +1,17 @@
+pkgbase = vim-notes
+	pkgdesc = Easy note taking in Vim
+	pkgver = 0.33.4
+	pkgrel = 1
+	url = http:/www.vim.org/scripts/script.php?script_id=3375
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = python
+	depends = vim-misc-xolox
+	conflicts = vim-notes-git
+	source = vim-notes-0.33.4.zip::http://www.vim.org/scripts/download_script.php?src_id=23710
+	sha256sums = 872971b6376483acd77dec3fa850f69b3a2ef1186714db33fc5c97f3064cadf4
+
+pkgname = vim-notes
+
