@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-libreoffice-theme
-_commit=536bba5
-pkgver=20160601
+_commit=6c96276
+pkgver=20160803
 pkgrel=1
 pkgdesc="Papirus theme for LibreOffice"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
