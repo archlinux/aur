@@ -4,7 +4,7 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=h2o
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('c53d11589c8c76491cf3a940b649d0a9cb27c36eb276963811ac1bc16cd2bf2c'
+sha256sums=('e9600aa8e99b2592bc4695ad482aba0546ac80c6c4cbbe294d0747563ddb64c5'
             '8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
