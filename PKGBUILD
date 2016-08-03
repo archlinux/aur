@@ -3,13 +3,13 @@
 _pkgname=qlipper
 pkgname=$_pkgname-git
 pkgver=2.0.2.31.gdae06f3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform clipboard history applet'
 arch=('i686' 'x86_64')
 url='https://github.com/pvanek/qlipper'
 license=('GPL2')
 depends=('qt5-base' 'gtk-update-icon-cache')
-makedepends=('cmake' 'qt5-tools')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/pvanek/qlipper.git')
