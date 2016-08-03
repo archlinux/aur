@@ -1,6 +1,6 @@
 diff -Naur a/metadata/core.xml.in b/metadata/core.xml.in
 --- a/metadata/core.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/metadata/core.xml.in	2016-08-01 23:38:46.288603212 +1000
++++ b/metadata/core.xml.in	2016-08-03 15:58:02.119855486 +1000
 @@ -215,7 +215,7 @@
  			<option name="window_menu_button" type="button">
  			<_short>Window Menu</_short>
@@ -29,7 +29,7 @@ diff -Naur a/metadata/core.xml.in b/metadata/core.xml.in
  			</option>
 diff -Naur a/plugins/composite/composite.xml.in b/plugins/composite/composite.xml.in
 --- a/plugins/composite/composite.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/plugins/composite/composite.xml.in	2016-08-01 23:46:14.894372779 +1000
++++ b/plugins/composite/composite.xml.in	2016-08-03 15:58:02.119855486 +1000
 @@ -24,7 +24,7 @@
  	    <option name="unredirect_fullscreen_windows" type="bool">
  		<_short>Unredirect Fullscreen Windows</_short>
@@ -41,7 +41,7 @@ diff -Naur a/plugins/composite/composite.xml.in b/plugins/composite/composite.xm
  		<_short>Unredirect Match</_short>
 diff -Naur a/plugins/expo/expo.xml.in b/plugins/expo/expo.xml.in
 --- a/plugins/expo/expo.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/plugins/expo/expo.xml.in	2016-08-02 01:51:06.822360083 +1000
++++ b/plugins/expo/expo.xml.in	2016-08-03 16:02:18.653546597 +1000
 @@ -26,7 +26,7 @@
  		<option name="expo_key" type="key">
  		    <_short>Expo Key</_short>
@@ -81,15 +81,15 @@ diff -Naur a/plugins/expo/expo.xml.in b/plugins/expo/expo.xml.in
 -			    <red>0xfbfb</red>
 -			    <green>0x8b8b</green>
 -			    <blue>0x0</blue>
-+			    <red>0x5f5f</red>
-+			    <green>0x8080</green>
-+			    <blue>0x4444</blue>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
  			    <alpha>0xffff</alpha>
  			</default>
  		    </option>
 diff -Naur a/plugins/grid/grid.xml.in b/plugins/grid/grid.xml.in
 --- a/plugins/grid/grid.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/plugins/grid/grid.xml.in	2016-08-01 23:52:57.166278657 +1000
++++ b/plugins/grid/grid.xml.in	2016-08-03 16:06:15.480336146 +1000
 @@ -566,16 +566,16 @@
  		<option name="animation_duration" type="int">
  			<_short>Preview Animation Duration</_short>
@@ -105,9 +105,9 @@ diff -Naur a/plugins/grid/grid.xml.in b/plugins/grid/grid.xml.in
 -			    <red>0xfbfb</red>
 -			    <green>0x8b8b</green>
 -			    <blue>0x0</blue>
-+			    <red>0x8c8c</red>
-+			    <green>0xbcbc</green>
-+			    <blue>0x6565</blue>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
  			    <alpha>0x9f9f</alpha>
  			</default>
  		</option>
@@ -118,15 +118,15 @@ diff -Naur a/plugins/grid/grid.xml.in b/plugins/grid/grid.xml.in
 -			    <red>0xfbfb</red>
 -			    <green>0x8b8b</green>
 -			    <blue>0x0</blue>
-+			    <red>0x8c8c</red>
-+			    <green>0xbcbc</green>
-+			    <blue>0x6565</blue>
++			    <red>0x1616</red>
++			    <green>0xa0a0</green>
++			    <blue>0x8585</blue>
  			    <alpha>0x4f4f</alpha>
  			</default>
  		</option>
 diff -Naur a/plugins/place/place.xml.in b/plugins/place/place.xml.in
 --- a/plugins/place/place.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/plugins/place/place.xml.in	2016-08-02 00:15:31.803962135 +1000
++++ b/plugins/place/place.xml.in	2016-08-03 15:58:02.123188823 +1000
 @@ -84,21 +84,33 @@
  			<_short>Positioned windows</_short>
  			<_long>Windows that should be positioned by default</_long>
@@ -163,7 +163,7 @@ diff -Naur a/plugins/place/place.xml.in b/plugins/place/place.xml.in
  		<subgroup>
 diff -Naur a/plugins/resize/resize.xml.in b/plugins/resize/resize.xml.in
 --- a/plugins/resize/resize.xml.in	2016-07-01 21:39:57.000000000 +1000
-+++ b/plugins/resize/resize.xml.in	2016-08-02 01:18:15.838169153 +1000
++++ b/plugins/resize/resize.xml.in	2016-08-03 16:06:14.100335645 +1000
 @@ -17,7 +17,7 @@
  		<option name="initiate_button" type="button">
  		    <_short>Initiate Window Resize</_short>
@@ -189,22 +189,24 @@ diff -Naur a/plugins/resize/resize.xml.in b/plugins/resize/resize.xml.in
 -		    <red>0xfbfb</red>
 -		    <green>0x8b8b</green>
 -		    <blue>0x0</blue>
-+		    <red>0x5f5f</red>
-+		    <green>0x8080</green>
-+		    <blue>0x4444</blue>
++		    <red>0x1616</red>
++		    <green>0xa0a0</green>
++		    <blue>0x8585</blue>
  		    <alpha>0x9f9f</alpha>
  		</default>
  	    </option>
-@@ -72,9 +72,9 @@
+@@ -72,10 +72,10 @@
  		<_short>Fill Color</_short>
  		<_long>Fill color used for rectangle resize mode</_long>
  		<default>
 -		    <red>0xfbfb</red>
 -		    <green>0x8b8b</green>
 -		    <blue>0x0</blue>
-+		    <red>0x3939</red>
-+		    <green>0x4c4c</green>
-+		    <blue>0x2929</blue>
- 		    <alpha>0x1919</alpha>
+-		    <alpha>0x1919</alpha>
++		    <red>0x1616</red>
++		    <green>0xa0a0</green>
++		    <blue>0x8585</blue>
++		    <alpha>0x4f4f</alpha>
  		</default>
  	    </option>
+ 	    <subgroup>
