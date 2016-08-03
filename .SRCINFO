@@ -1,4 +1,4 @@
-pkgbase = python2-nss
+pkgbase = python-nss
 	pkgdesc = Python 2 bindings for NSS and NSPR
 	pkgver = 1.0.0beta1
 	pkgrel = 1
@@ -8,13 +8,13 @@ pkgbase = python2-nss
 	license = MPL
 	license = GPL
 	license = LGPL
-	makedepends = python2-setuptools
-	depends = python2
+	makedepends = python-setuptools
+	depends = python
 	depends = nspr
 	depends = nss
 	options = !emptydirs
 	source = ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss/releases/PYNSS_RELEASE_1_0_0beta1/src/python-nss-1.0.0beta1.tar.bz2
 	sha512sums = acf3e119a2ceac7a939101ee45dede84c93f02f509f39d25a0f0c37ff2bd4628c6c4501175fbb188fa32e6899504a14ee0a54c885850d28373e7c467254277c0
 
-pkgname = python2-nss
+pkgname = python-nss
 
