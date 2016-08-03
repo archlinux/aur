@@ -5,7 +5,7 @@
 
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=moeditor-bin
-pkgver=0.0.1_alpha
+pkgver=0.1.0_beta
 pkgrel=1
 epoch=
 pkgdesc="All-purpose markdown editor based on Electrum"
@@ -24,13 +24,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Moeditor/Moeditor/releases/download/v0.0.1-alpha/Moeditor-0.0.1-linux-x64.7z")
+# first one changes the _ to -, second one removes the -beta entirely.
+source=("https://github.com/Moeditor/Moeditor/releases/download/v${pkgver//_/-}/moeditor_${pkgver//_beta/}-1_amd64.deb")
 noextract=()
-md5sums=('fe7e9970563f8bfd3e358f5893bdb41a')
-sha512sums=('696c91e7dbba2311ba3944cf93c4a3763d6d9a4fb0d5dd74b7fd4733964c272f338398ce00dcf2dcfe73cc906b1be9a914359ac4a4c1547e016912888efd4afe')
+md5sums=('8bb8ca46d63d61ada501a24a951a1c29')
+sha512sums=('bf691d4a089271b677b1873046675954cd843d00288de0b6926039ab481341141e0d63e3b198c7f60587740b3718d030d8822b4630c0dea1aab0b5f6861fee38')
 validpgpkeys=()
 
 package() {
-  mkdir -p "$pkgdir/usr"
-	cp -r "$srcdir/usr/" "$pkgdir/"
+  bsdtar xf data.tar.xz
+  mv usr "$pkgdir"
 }
