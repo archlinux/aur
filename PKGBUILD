@@ -5,7 +5,7 @@
 pkgbase=linux-t460s         # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.3
+pkgver=4.6.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,19 +21,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
-'t460s_hibernate.patch')
+'x86-hibernate-Use-hlt_play_dead-when-resuming-from-hibernation.patch'
+'x86-power-64-Fix-kernel-text-mapping-corruption-during-image-restoration-was-Re-ktime_get_ts64-splat-during-resume_v5.patch')
+#'nonboot-cpu.patch'
+#'t460s_hibernate.patch')
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '036f83f8a3475d9e7e0b8edc188f9a4f495abc3b187ed87748cdbc063c0c419f'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
-            'cbd0f6c59d7b152e36f69b5ac96f56e659aa13be8491205bdb933255de62463f')
+            '9bc79ac0c9856cee18046bc5af587dc947b772621819c2ec6606b0c6e78f817f'
+            '59ea6bf168d377d5a6a1df9b6def8e6d5c940c80dbc308a5334804bb3fb35fc3')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,16 +54,15 @@ prepare() {
 
   # fix T460s hibernation bug
   # https://patchwork.kernel.org/patch/9158227/
-  patch --verbose -p1 -i "${srcdir}/t460s_hibernate.patch"
+  #patch --verbose -p1 -i "${srcdir}/t460s_hibernate.patch"
+  #patch --verbose -p1 -i "${srcdir}/nonboot-cpu.patch"
+  patch --verbose -p1 -i "${srcdir}/x86-hibernate-Use-hlt_play_dead-when-resuming-from-hibernation.patch"
+  patch --verbose -p1 -i "${srcdir}/x86-power-64-Fix-kernel-text-mapping-corruption-during-image-restoration-was-Re-ktime_get_ts64-splat-during-resume_v5.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix rtlwifi atomic
-  # https://bugs.archlinux.org/task/49401
-  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
