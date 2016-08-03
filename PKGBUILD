@@ -24,4 +24,5 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 	python2 setup.py install --root="$pkgdir" --optimize=1
+	rm -r "$pkgdir/usr/bin"
 }
