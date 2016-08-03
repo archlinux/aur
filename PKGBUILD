@@ -4,13 +4,13 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=josm-latest
-pkgver=8433
+pkgver=10710
 pkgrel=1
 pkgdesc="Nightly build of an editor for OpenStreetMap written in Java."
 arch=('any')
 url="http://josm.openstreetmap.de/"
 license=('GPL')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 makedepends=('unzip')
 provides=('josm')
 conflicts=('josm')
@@ -24,7 +24,7 @@ md5sums=('SKIP'
          'SKIP'
          '0068111faa29d1026e7808ba320e8a3c'
          '97fe42c35e8a90fef9621de2ce027052'
-         'a0c7d3add20a2ed0f673fb9cfacab776')
+         'bb7c9a6a06d6633aa091d80d3da96744')
 noextract=('josm-latest.jar')
 
 pkgver() {
