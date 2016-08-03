@@ -2,10 +2,10 @@
 
 pkgname=mysticmine-git
 pkgver=2fc0a5e
-pkgrel=1
+pkgrel=2
 pkgdesc="A one-button multiplayer mining cart game"
 arch=('any')
-url="http://quadropolis.us/node/4182"
+url="http://www.mysticmine.com"
 license=('MIT')
 depends=('python2' 'python2-pygame' 'pyrex' 'python2-numpy')
 makedepends=('git')
