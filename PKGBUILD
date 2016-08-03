@@ -29,8 +29,8 @@ build() {
     sed -i '354d' ./src/updf.py    # toolbar2.set_property("toolbar_style",'icons')
 
     # Fix Bug line 35
-    sed -i "33i\    elif __file__.startswith('/usr/sbin'):\n" ./bin/updf
-    sed -i "34i\	    sys.path.insert(1, '/usr/share/updf')\n" ./bin/updf
+    sed -i "33i\        elif __file__.startswith('/usr/sbin'):\n" ./bin/updf
+    sed -i "34i\	        sys.path.insert(1, '/usr/share/updf')\n" ./bin/updf
     sed -i "35,36d" ./bin/updf
 
     export PYTHON="/usr/bin/python2"
