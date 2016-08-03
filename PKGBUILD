@@ -16,7 +16,7 @@
 
 set -u
 pkgname='bios-lenovo-thinkserver-ts140'
-pkgver='20160607.C3A'
+pkgver='20160728.C8A'
 pkgrel='1'
 pkgdesc='BIOS update for Lenovo ThinkServer ts140 ts440' # ts240 ts540 The website claims less models than the enclosed readme
 arch=('i686' 'x86_64')
@@ -35,12 +35,12 @@ license=('custom')
 
 depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'linux' 'linux-headers')
 install="${pkgname}.install"
-source=('https://download.lenovo.com/pccbbs/thinkservers/bios_ts140-240-440-540_fbktc3a_linux_x86.txt')
-source_i686=('https://download.lenovo.com/pccbbs/thinkservers/bios_ts140-240-440-540_fbktc3a_linux_x86.tgz')
-source_x86_64=('https://download.lenovo.com/pccbbs/thinkservers/bios_ts140-240-440-540_fbktc3a_linux_x64.tgz')
-sha256sums=('f3310233c0390a6a2b049e19da3aea08cf1c17723e64dee6a74299b89a92b3d2')
-sha256sums_i686=('d34fb025609735e9e167968ca58f3a8b23e64199e14db31e5683fa9889f6e64a')
-sha256sums_x86_64=('c2914a025f3b936af1c2dd7d3ba14c333ec4fd007225d1ed2f36705079c57158')
+source=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktc8a_linux_x86.txt')
+source_i686=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktc8a_linux_x86.tgz')
+source_x86_64=('https://download.lenovo.com/pccbbs/thinkservers/bios_me_ts140-240-440-540_fbktc8a_linux_x64.tgz')
+sha256sums=('c2e65066ef07ceeff675375ca86983f074a198d3fdac831e2a65446cd363497c')
+sha256sums_i686=('6ee486675ef96c5dc3c7a5f60b0d7b1829c53c4b1479f81b73a6b18bf62c86c7')
+sha256sums_x86_64=('9d419d2b12c0170d742c7e75bc628ca46072d66da2e739121929fe4e6aa3eb82')
 
 declare -gA _srcdir; _srcdir=(['i686']='BIOSLinux32' ['x86_64']='BIOSLinux64')
 declare -gA _exe; _exe=(['i686']='afulnx_26_32' ['x86_64']='afulnx_26_64')
