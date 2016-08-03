@@ -6,7 +6,7 @@
 pkgname=python-nss
 pkgver=1.0.0beta1
 pkgrel=1
-pkgdesc="Python 2 bindings for NSS and NSPR"
+pkgdesc="Python 3 bindings for NSS and NSPR"
 arch=(i686 x86_64)
 url="ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss"
 license=(MPL GPL LGPL)
