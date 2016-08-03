@@ -2,13 +2,12 @@
 
 pkgname=php-ds
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Data structures for PHP 7.'
 url='https://github.com/php-ds/extension'
 license=('MIT')
 arch=('any')
 depends=('php')
-makedepends=('git' 'php')
 conflicts=('php-ds-git')
 backup=('etc/php/conf.d/ds.ini')
 source=(https://pecl.php.net/get/ds-$pkgver.tgz
