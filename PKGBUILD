@@ -8,7 +8,7 @@
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless2.8
 pkgver=2.8.7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -30,8 +30,8 @@ makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' "ffmpeg=${pkgver}")
-conflicts=('ffmpeg')
-replaces=('ffmpeg')
+conflicts=('ffmpeg2.8')
+replaces=('ffmpeg2.8')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5')
 
@@ -40,6 +40,11 @@ build() {
 
   ./configure \
     --prefix='/usr' \
+    --incdir='/usr/include/ffmpeg2.8' \
+    --libdir='/usr/lib/ffmpeg2.8' \
+    --shlibdir='/usr/lib/ffmpeg2.8' \
+    --docdir='/usr/share/doc/ffmpeg2.8' \
+    --datadir='/usr/share/ffmpeg2.8' \
     --disable-debug \
     --disable-static \
     --disable-stripping \
@@ -83,10 +88,20 @@ build() {
     #--enable-nonfree
 
   make
-  make doc/ff{mpeg,play,server}.1
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install install-man
+  make DESTDIR="${pkgdir}" install
+
+  # add version suffix to binaries so we dont conflict
+  mv -v "${pkgdir}"/usr/bin/ffmpeg "${pkgdir}"/usr/bin/ffmpeg-2.8
+  mv -v "${pkgdir}"/usr/bin/ffprobe "${pkgdir}"/usr/bin/ffprobe-2.8
+  mv -v "${pkgdir}"/usr/bin/ffserver "${pkgdir}"/usr/bin/ffserver-2.8
+
+  # not sure how to install versioned man pages, remove for now
+  rm -rfv "${pkgdir}"/usr/share/man
+
+  install -dm 755 "${pkgdir}"/etc/ld.so.conf.d
+  echo -e '/usr/lib/\n/usr/lib/ffmpeg2.8/' > "${pkgdir}"/etc/ld.so.conf.d/ffmpeg2.8.conf
 }
