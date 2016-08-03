@@ -2,7 +2,7 @@
 
 pkgname=xonsh-git
 _gitname=xonsh
-pkgver=0.4.2.r24.g69243a1
+pkgver=0.4.4.r217.g8155802
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://github.com/scopatz/xonsh"
@@ -25,5 +25,7 @@ package() {
   cd "$srcdir/$_gitname"
   python setup.py install --root=$pkgdir
   install -D -m644 license "$pkgdir/usr/share/licenses/$_gitname/license"
+  site_packages=$(python -c "import site; print(site.__file__.rsplit('/', 2)[-2])")
+  install -D -m644 xonsh/parser_table.py "$pkgdir/usr/lib/$site_packages/site-packages/xonsh"
 }
 
