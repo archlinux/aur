@@ -4,21 +4,24 @@
 
 pkgname=nam
 pkgver=1.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Tcl/TK based animation tool for viewing network simulation traces and real world packet traces"
 url="http://www.isi.edu/nsnam/nam/"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'otcl' 'sh')
+depends=('otcl')
 makedepends=('tclcl')
 source=(http://downloads.sourceforge.net/sourceforge/nsnam/nam-1/"${pkgver}"/nam-src-"${pkgver}".tar.gz
-        nam-1.15-tcl86.patch)
+        nam-1.15-tcl86.patch
+        nam-1.15-gcc61.patch)
 sha256sums=('12ed547b3a5f8903890889d40cfea4d9bd66bb9ba6be99a0c753a9763cad8882'
-            '2766040c6c367a03efa43e81cbe178150fad6f4ee0b2b6d0b87292cb7c0bfe0b')
+            '2766040c6c367a03efa43e81cbe178150fad6f4ee0b2b6d0b87292cb7c0bfe0b'
+            'b0ce4fb0b1fa6fe91ed26fd5daabede4521362f781364edcea4d7bff7d64472c')
 
 prepare() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
   patch -uNp1 -i ../nam-1.15-tcl86.patch
+  patch -uNp1 -i ../nam-1.15-gcc61.patch
 }
 
 build() {
