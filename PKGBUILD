@@ -5,9 +5,9 @@ _channel=developer
 
 _release_year=2016
 _release_month=08
-_release_day=01
-_release_time=00-40-02
-_release_version=49.0a2
+_release_day=02
+_release_time=00-40-03
+_release_version=50.0a2
 
 pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
@@ -35,6 +35,6 @@ package() {
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-md5sums=('e0340ca1eaafc2ade2ea490f3da9c966'
+md5sums=('b1df4ebf55b5108da34df8e21da2fec9'
          '5979b30b19cd645012ce518321fb16f1'
          '32618013911bf84445afce815e3875b1')
