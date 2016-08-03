@@ -1,0 +1,25 @@
+pkgbase = yaourt-dev-null-git
+	pkgdesc = A pacman wrapper with extended features and AUR support. Patched to redirect (successfully) makepkg output to /dev/null
+	pkgver = 1.8.1.r26.ga945c4d
+	pkgrel = 1
+	url = http://www.archlinux.fr/yaourt-en/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = package-query-git
+	depends = pacman>=4.1
+	optdepends = aurvote: vote for your favorite AUR packages
+	optdepends = customizepkg: automatically modify PKGBUILD during install/upgrade
+	optdepends = rsync: retrieve PKGBUILD from official repositories
+	provides = yaourt
+	provides = yaourt-git
+	conflicts = yaourt
+	conflicts = yaourt-git
+	backup = etc/yaourtrc
+	source = git+https://github.com/archlinuxfr/yaourt.git
+	source = pkgbuild.sh.in.patch
+	md5sums = SKIP
+	md5sums = 206182b156087ed8d2f18c5cae6b4ad4
+
+pkgname = yaourt-dev-null-git
+

@@ -1,0 +1,4 @@
+post_install() {
+  echo -e '\t ==> Remember to move /etc/yaourtrc.pacsave to /etc/yaourtrc again if you had yaourtrc changes before'
+}
+# vim:set ts=2 sw=2 et:

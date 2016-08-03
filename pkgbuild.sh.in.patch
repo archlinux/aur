@@ -1,0 +1,27 @@
+--- pkgbuild.sh.in.original	2013-11-18 22:27:41.556986839 -0200
++++ pkgbuild.sh.in	2013-11-18 22:30:45.446994794 -0200
+@@ -207,7 +207,7 @@
+ 		fi
+ 		if (( SYSUPGRADE )) && (( DEVEL )) && (( ! FORCE )); then
+ 			if ((YPKGVER_FUNC)); then
+-				SRCDEST="$YSRCDEST" makepkg "${MAKEPKG_ARG[@]}" -o -p ./PKGBUILD
++				SRCDEST="$YSRCDEST" makepkg "${MAKEPKG_ARG[@]}" -o -p ./PKGBUILD > /dev/null
+ 				# re-read PKGBUILD to update version
+ 				read_pkgbuild || return 1
+ 				eval $PKGBUILD_VARS
+@@ -241,13 +241,13 @@
+ 		warning $(gettext 'Building package as root is dangerous.\n Please run yaourt as a non-privileged user.')
+ 		sleep 2
+ 	fi
+-	SRCDEST="$YSRCDEST" PKGDEST="$YPKGDEST" makepkg "${MAKEPKG_ARG[@]}" -s -f -p ./PKGBUILD
++	SRCDEST="$YSRCDEST" PKGDEST="$YPKGDEST" makepkg "${MAKEPKG_ARG[@]}" -s -f -p ./PKGBUILD > /dev/null
+ 
+ 	if (( $? )); then
+ 		error $(_gettext 'Makepkg was unable to build %s.' "$pkgbase")
+ 		return 1
+ 	fi
+-	(( EXPORT && EXPORTSRC )) && [[ $SRCPKGDEST ]] && SRCDEST="$YSRCDEST" makepkg --allsource -p ./PKGBUILD
++	(( EXPORT && EXPORTSRC )) && [[ $SRCPKGDEST ]] && SRCDEST="$YSRCDEST" makepkg --allsource -p ./PKGBUILD > /dev/null
+ 	return 0
+ }
+ 
