@@ -5,13 +5,13 @@ pkgver=0.2.0
 pkgrel=3
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
-url="https://github.com/Ippytraxx/gnome-twitch"
+url="https://github.com/vinszent/gnome-twitch"
 license=('GPL3')
 makedepends=('git' 'meson')
 depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'clutter-gst' 'clutter-gtk' 'webkit2gtk')
 conflicts=('gnome-twitch-git')
 install=gnome-twitch.install
-source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz"
+source=("https://github.com/vinszent/gnome-twitch/archive/v${pkgver}.tar.gz"
         "0001-Update-css-to-gtk-3.20.patch"
         "0002-Adapt-gettext-call-to-new-meson-syntax.patch")
 md5sums=('984b6120aec2f4d121cce3ccb50e367a'
