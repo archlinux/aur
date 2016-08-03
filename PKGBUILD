@@ -3,7 +3,7 @@
 
 pkgname=qwt-qt5
 _pkgname=qwt
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="Qt Widgets for Technical Applications (Qt5 version)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('qt5-base' 'qt5-svg' 'qt5-tools')
 license=("custom:$_pkgname")
 source=("http://downloads.sourceforge.net/${_pkgname}/$_pkgname-$pkgver.tar.bz2" \
         "qwtconfig-archlinux.pri")
-sha1sums=('6af82b6ee4132f779d1c8c2db872f01463b0d61c'
-          '238fb9b58249833f6b5522777c56d32399b6854c')
+sha1sums=('90ec21bc42f7fae270482e1a0df3bc79cb10e5c7'
+          '955f3702c5e8a847c545adf46745aade53626555')
 provides=('qwt')
 conflicts=('qwt')
 
