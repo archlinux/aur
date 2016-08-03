@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-libxdiff
+  pkgdesc = The LibXDiff library implements basic and yet complete functionalities to create file differences/patches
+  pkgver = 0.23
+  pkgrel = 1
+  url = http://www.xmailserver.org/xdiff-lib.html
+  arch = any
+  license = GPL
+  makedepends = mingw-w64-gcc
+  depends = mingw-w64-crt
+  options = !strip
+  options = !buildflags
+  options = staticlibs
+  source = http://www.xmailserver.org/libxdiff-0.23.tar.gz
+  md5sums = 8970281543130411d8a1b1f004a8418b
+
+pkgname = mingw-w64-libxdiff
