@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-dotted-zero-open-g-hooky-i
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -14,7 +14,7 @@ install=${pkgname}.install
 # source=("https://github.com/be5invis/Iosevka/archive/master.tar.gz")
 source=("https://github.com/be5invis/Iosevka/archive/v${pkgver}.tar.gz")
 # md5sums=('SKIP')
-md5sums=('e302f7256fb49fcbae9a37f1f4285901')
+md5sums=('d9fd36a63120dd874662ddbaff7746bd')
 
 build() {
   # cd "Iosevka-master"
