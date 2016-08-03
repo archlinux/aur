@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL3')
 provides=('python2-pafy')
 depends=('python2')
-conflicts=('python-pafy')
+conflicts=('python2-pafy')
 
 source=("$_pkgname::git+https://github.com/mps-youtube/pafy.git#branch=0.3.x")
 md5sums=('SKIP')
