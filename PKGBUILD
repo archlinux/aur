@@ -72,6 +72,7 @@ build() {
     --enable-shared \
     --enable-version3 \
     --enable-librtmp \
+    --disable-ffplay \
     --enable-runtime-cpudetect #\
     #--enable-libdcadec \
     #--enable-libiec61883
