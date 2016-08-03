@@ -40,13 +40,16 @@ package() {
 	install -d -m 755 "$pkgdir/usr/share/themes/"Greybird{,-compact/xfwm4,-a11y/xfwm4,-bright/xfce-notify-4.0}
 
 	# install compact theme
-	install -m 644 "$srcdir/Greybird-$pkgver/xfwm4-compact/"* "$pkgdir/usr/share/themes/Greybird-compact/xfwm4/"
+	install -m 644 "$srcdir/Greybird-$pkgver/xfwm4-compact/"* \
+	"$pkgdir/usr/share/themes/Greybird-compact/xfwm4/"
 
 	# install accessivility theme
-	install -m 644 "$srcdir/Greybird-$pkgver/xfwm4-a11y/"* "$pkgdir/usr/share/themes/Greybird-a11y/xfwm4/"
+	install -m 644 "$srcdir/Greybird-$pkgver/xfwm4-a11y/"* \
+	"$pkgdir/usr/share/themes/Greybird-a11y/xfwm4/"
 
 	# install xfce-notify bright
-	install -m 644 "$srcdir/Greybird-$pkgver/xfce-notify-4.0_bright/"* "$pkgdir/usr/share/themes/Greybird-bright/xfce-notify-4.0/"
+	install -m 644 "$srcdir/Greybird-$pkgver/xfce-notify-4.0_bright/"* \
+	"$pkgdir/usr/share/themes/Greybird-bright/xfce-notify-4.0/"
 
 	# clean up
 	rm -rf {.git,.gitignore,Greybird.emerald,LICENSE.{CC,GPL},README,xfwm4_compact,xfce4_ally,xfce-notify-4.0_bright}
