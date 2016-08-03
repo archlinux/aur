@@ -1,6 +1,6 @@
 # Maintainer: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 pkgname=git-town
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A git extension for generic high-level git workflow support"
 url="https://github.com/Originate/git-town"
