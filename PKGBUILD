@@ -16,3 +16,4 @@ package() {
 
   install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha1sums=('9adbb502722a3a26ae8550b4eb2c17fe424ffada')
