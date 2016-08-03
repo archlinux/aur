@@ -3,7 +3,7 @@
 pkgname=bridge-constructor
 pkgver=2.6
 _buildver=1390863101
-pkgrel=1
+pkgrel=2
 pkgdesc="Become an appraised bridge engineer and architect in Bridge Constructor"
 url="http://www.bridgeconstructor.com/"
 arch=('any')

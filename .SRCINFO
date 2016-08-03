@@ -1,10 +1,11 @@
 pkgbase = bridge-constructor
 	pkgdesc = Become an appraised bridge engineer and architect in Bridge Constructor
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bridgeconstructor.com/
 	arch = any
 	license = custom
+	depends = lib32-alsa-plugins
 	source = hib://bridgeconstructor_linux_1390863101.zip
 	source = launcher.sh
 	source = bridge-constructor.desktop
