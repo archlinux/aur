@@ -9,7 +9,7 @@ license=('BSD')
 url="https://github.com/reverse-shell/routersploit"
 depends=('readline' 'python2-requests' 'python2-paramiko' 'python2-beautifulsoup4' 'python2-pysnmp')
 conflicts=("${pkgname}-git")
-source=("https://github.com/reverse-shell/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}_v${pkgver}.tar.gz"::"https://github.com/reverse-shell/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('c842716ee367ac76f5ba6b48b5a4aafb')
 
 build() {
