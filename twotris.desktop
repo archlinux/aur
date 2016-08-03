@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=TwoTriangles
+Exec=twotris
+Icon=twotris.svg
+Terminal=false

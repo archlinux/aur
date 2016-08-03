@@ -1,0 +1,25 @@
+pkgbase = twotris-git
+	pkgdesc = Edit fragment shaders and view changes in realtime
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/fabioarnold/TwoTriangles
+	install = twotris.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = pkg-config
+	makedepends = scons
+	depends = gtk3
+	depends = glew
+	depends = sdl2
+	provides = twotris
+	conflicts = twotris
+	source = git+https://github.com/fabioarnold/TwoTriangles.git
+	source = twotris.desktop
+	source = twotris.svg
+	sha256sums = SKIP
+	sha256sums = 0cae987cc78944940676f157e4edd002e07bf1391ca27d8ecdeea82729eb61a5
+	sha256sums = 5887528710fe01ebc498965fe6f6d76b490eafaebab4dfafca2d2d2c8ac56934
+
+pkgname = twotris-git
+
