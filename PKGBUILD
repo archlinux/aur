@@ -2,7 +2,7 @@
 
 pkgname=nautilus-nutstore
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64 i686)
 url='https://jianguoyun.com/'
@@ -12,7 +12,6 @@ optdepends=('nutstore: Nutstore client (system-wide)'
             'gtk2: per-user Nutstore depend'
             'java-runtime: per-user Nutstore depend'
             'python2-notify: per-user Nutstore depend')
-install='nautilus-nutstore.install'
 source=("https://jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz")
 
 build()
