@@ -2,7 +2,9 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgbase=freeipa
-pkgname=(python2-ipalib
+pkgname=(python-ipalib
+         python-ipaclient
+         python2-ipalib
          python2-ipaclient
          freeipa-common
          freeipa-client-common
@@ -23,6 +25,7 @@ makedepends=('nspr'
              'curl>7.21.7'
              'xmlrpc-c>=1.27.4'
              'popt'
+             'python'
              'python2'
              'python2-ldap'
              'python2-setuptools'
@@ -85,6 +88,11 @@ build() {
 
     make client-install DESTDIR="$PWD"/_install
 
+    (cd ipalib && make PYTHON=/usr/bin/python3 IPA_VERSION_IS_GIT_SNAPSHOT=no DESTDIR=../_install install)
+    (cd ipapython && make PYTHON=/usr/bin/python3 IPA_VERSION_IS_GIT_SNAPSHOT=no DESTDIR=../_install install)
+    (cd ipaplatform && /usr/bin/python3 setup.py install --root ../_install)
+    (cd ipaclient && /usr/bin/python3 setup.py install --root ../_install)
+
     # Switch shebang of /usr/bin/ipa
     # XXX: ipa cli is not stable enough for enabling py3 support, keep it in py2
     # in any case
@@ -97,6 +105,74 @@ build() {
     mkdir -p _install/var/lib/ipa-client/sysrestore
     mkdir -p _install/etc/bash_completion.d
     install -pm 644 contrib/completion/ipa.bash_completion _install/etc/bash_completion.d/ipa
+}
+
+package_python-ipalib() {
+    pkgdesc='Python libraries used by IPA'
+    arch=('any')
+    depends=("freeipa-common=$pkgver-$pkgrel"
+             'python-gssapi>=1.1.2'
+             'gnupg'
+             'keyutils'
+             'python-nss>=0.16'
+             'python-cryptography>=0.9'
+             'python-lxml'
+             'python-netaddr'
+             'sssd'
+             'python-qrcode>=5.0.0'
+             'python-pyasn1'
+             'python-dateutil'
+             'python-yubico>=1.2.3'
+             'python-dbus'
+             'python-setuptools'
+             'python-six'
+             'python-pyldap>=2.4.15'
+             'python-dnspython>=1.11.1'
+             'python-netifaces>=0.10.4'
+             'python-pyusb')
+    provides=("python-ipapython=$pkgver-$pkgrel"
+              "python-ipaplatform=$pkgver-$pkgrel")
+
+    cd "${pkgbase}-${pkgver}"
+
+    install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README \
+                                                        Contributors.txt
+
+    local _file
+    for _file in _install/usr/lib/python3.*/site-packages/ipapython \
+                 _install/usr/lib/python3.*/site-packages/ipalib \
+                 _install/usr/lib/python3.*/site-packages/ipaplatform \
+                 _install/usr/lib/python3.*/site-packages/ipapython-*.egg-info \
+                 _install/usr/lib/python3.*/site-packages/ipalib-*.egg-info \
+                 _install/usr/lib/python3.*/site-packages/ipaplatform-*.egg-info
+    do
+        _file="${_file#_install/}"
+        mkdir -p "$pkgdir"/"${_file%/*}"
+        mv _install/"$_file" "$pkgdir"/"$_file"
+    done
+}
+
+package_python-ipaclient() {
+    pkgdesc='Python libraries used by IPA client'
+    arch=('any')
+    depends=("freeipa-client-common=$pkgver-$pkgrel"
+             "freeipa-common=$pkgver-$pkgrel"
+             "python-ipalib=$pkgver-$pkgrel"
+             'python-dnspython>=1.11.1')
+
+    cd "${pkgbase}-${pkgver}"
+
+    install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README \
+                                                        Contributors.txt
+
+    local _file
+    for _file in _install/usr/lib/python3.*/site-packages/ipaclient \
+                 _install/usr/lib/python3.*/site-packages/ipaclient-*.egg-info
+    do
+        _file="${_file#_install/}"
+        mkdir -p "$pkgdir"/"${_file%/*}"
+        mv _install/"$_file" "$pkgdir"/"$_file"
+    done
 }
 
 package_python2-ipalib() {
