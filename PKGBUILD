@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc="Averia Serif Libre fonts, typeface a bit gentle from Averia Serif"
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
+source=('http://www.1001freefonts.com/d/5521/averia_serif_libre.zip')
 install=$pkgname.install
 
 package() {
