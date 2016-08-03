@@ -1,4 +1,6 @@
 arch=('x86_64')
-pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay')
+pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay' 'dolphin-emu-qt-git-netplay')
 
 check_git $packagedir/dolphin-emu-git/dolphin-emu
+
+# vim: ts=2 sw=2 et:

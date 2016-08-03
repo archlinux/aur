@@ -4,9 +4,9 @@
 
 pkgbase=dolphin-emu-git-netplay
 pkgname=('dolphin-emu-git-netplay' 'dolphin-emu-cli-git-netplay')
-pkgver=4.0.2.r7840.ce493b8
+pkgver=5.0.r321.be9416c
 pkgrel=1
-pkgdesc='A GameCube / Wii / Triforce emulator, v4.0-7840 for Super Smash Bros Netplay'
+pkgdesc='A GameCube / Wii / Triforce emulator, v5.0-321 for Super Smash Bros Netplay'
 arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
@@ -15,33 +15,34 @@ depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
 makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
-source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=ce493b8')
+source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=be9416c')
 sha256sums=('SKIP')
 
 pkgver() {
   cd dolphin-emu
 
-  echo "4.0.2.r$(git rev-list --count 4.0..HEAD).$(git rev-parse --short HEAD)"
+  git describe | sed 's/-/.r/; s/-g/./'
 }
 
-build() {
-  sed -i -e 's/2000, nullptr, nullptr, 0, 0/2000, nullptr, nullptr, 0, 0, 2/g' dolphin-emu/Source/Core/Core/NetPlayServer.cpp
-
+prepare() {
   cd dolphin-emu
 
   if [[ -d build ]]; then
     rm -rf build
   fi
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd dolphin-emu/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_C_FLAGS='-fno-pie' \
     -DCMAKE_CXX_FLAGS='-fno-pie' \
     -DENABLE_LTO='TRUE' \
     -DENABLE_QT2='TRUE' \
-    -DENABLE_SDL='TRUE' \
-    -DUSE_SHARED_ENET='TRUE'
+    -DUSE_SHARED_ENET='TRUE' \
+    -DDISTRIBUTOR='aur.archlinux.org'
   make
 }
 
@@ -53,6 +54,8 @@ package_dolphin-emu-git-netplay() {
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/bin/dolphin-emu-{nogui,qt2}
+
+  install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 }
 
 package_dolphin-emu-cli-git-netplay() {
@@ -63,3 +66,14 @@ package_dolphin-emu-cli-git-netplay() {
   install -dm 755 "${pkgdir}"/usr/bin
   install -m 755 Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
 }
+
+package_dolphin-emu-qt-git-netplay() {
+  depends=('dolphin-emu-git-netplay' 'qt5-base')
+
+  cd dolphin-emu/build
+
+  install -dm 755 "${pkgdir}"/usr/bin
+  install -m 755 Binaries/dolphin-emu-qt2 "${pkgdir}"/usr/bin/
+}
+
+# vim: ts=2 sw=2 et:
