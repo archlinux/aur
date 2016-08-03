@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-physfs-hg
+  pkgdesc = A library to provide abstract access to various archives (mingw-w64)
+  pkgver = 1301
+  pkgrel = 1
+  url = http://icculus.org/physfs/
+  arch = any
+  license = ZLIB
+  makedepends = mingw-w64-gcc
+  makedepends = mingw-w64-cmake
+  makedepends = mercurial
+  depends = mingw-w64-zlib
+  provides = mingw-w64-physfs
+  conflicts = mingw-w64-physfs
+  replaces = mingw-w64-physfs
+  options = !strip
+  options = !buildflags
+  options = !makeflags
+
+pkgname = mingw-w64-physfs-hg
