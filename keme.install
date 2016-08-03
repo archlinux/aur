@@ -1,0 +1,27 @@
+#Mantainer: Carlos Rivera (Comanshark) <comanshark at openmailbox dot org>
+#Autor: Jose Manuel Diez Botella (dibosa) <dibosa at users dot sourceforge dot net>
+post_install() {
+	echo "==> The program settings must be changed in Utilidades -> Preferencias <=="
+}
+
+pre_upgrade() {
+	echo "==> Preparing Update/Unistall of KEME-Contabilidad <=="
+	rm "/usr/share/pixmaps/keme.xpm"
+	rm "/usr/share/pixmaps/factur.xpm"
+	rm "/usr/share/applications/KEME-Contabilidad.desktop"
+	rm "/usr/share/applications/KEME-Factur.desktop"
+	echo "==> Removing KEME-Contabilidad"	
+	rm "/usr/bin/keme5"	
+	echo "==> Removing KEME-factur"
+	rm "/usr/bin/factur"
+	echo "==> Done!! <=="
+}
+
+post_upgrade() {
+	echo "==> Deleting data from previous version"
+	rm -R /home/*/.keme
+}
+
+post_remove() {
+	post_upgrade
+}

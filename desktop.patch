@@ -1,0 +1,11 @@
+--- KEME-Contabilidad.desktop	2015-01-05 14:12:04.000000000 -0600
++++ correcto.desktop	2016-08-03 16:58:47.160000000 -0600
+@@ -4,7 +4,7 @@
+ Comment[es]=Aplicación contable
+ Comment=Aplicación contable
+ Encoding=UTF-8
+-Exec='kemepro'
++Exec='keme5'
+ GenericName[es]=KEME-Contabilidad
+ GenericName=KEME-Contabilidad
+ Icon=keme
