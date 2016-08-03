@@ -18,17 +18,18 @@ prepare() {
   unset LDFLAGS
   cd "$_basename"
   ./autogen.sh
+  sed -i 's/\/\/ These are the methods we.re going to conditionally include\./#undef pthread_atfork/' src/maybe_threads.cc
 }
 
 build() {
   cd "$_basename"
   unset LDFLAGS
-  export CXXFLAGS="-Wno-narrowing"
+  export CXXFLAGS="${CXXFLAGS} -Wno-narrowing"
 
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}
     cd build-${_arch}
-    ${_arch}-configure --enable-frame-pointers
+    ${_arch}-configure --enable-frame-pointers --enable-minimal
     cp src/config.h ../src/config.h
     make
     cd ..
