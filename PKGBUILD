@@ -3,21 +3,17 @@
 pkgname='blink'
 _reponame='blink-qt'
 pkgver='2.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
 license=('GPL3' 'FreeBSD')
-depends=('cython2'
-         'icu'
+depends=('icu'
          'libvncserver'
          'python2-application'
-         'python2-cjson'
-         'python2-eventlib'
          'python2-gmpy2'
          'python2-gnutls'
-         'python2-pyqt4'
-         'python2-sip'
+         'python2-pyqt'
          'python2-sipsimple'
          'python2-zope-interface')
 
