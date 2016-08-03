@@ -1,5 +1,5 @@
 pkgbase = python-nss
-	pkgdesc = Python 2 bindings for NSS and NSPR
+	pkgdesc = Python 3 bindings for NSS and NSPR
 	pkgver = 1.0.0beta1
 	pkgrel = 1
 	url = ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss
