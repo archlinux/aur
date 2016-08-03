@@ -83,7 +83,10 @@ build() {
   cd "${srcdir}/jdk8u-${_repo_ver}"
 
   unset JAVA_HOME
+  # _JAVA_OPTIONS breaks installed Java version check
   unset _JAVA_OPTIONS
+  # https://bugs.archlinux.org/task/44164
+  unset CLASSPATH
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
 
