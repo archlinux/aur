@@ -1,12 +1,12 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-irc-client
-pkgver=2.001002
+pkgver=3.004001
 pkgrel=1
 pkgdesc="Extendable Internet Relay Chat client"
 arch=('any')
-depends=('perl6' 'perl6-data-dump')
-checkdepends=('perl')
+depends=('perl6')
+checkdepends=('perl' 'perl6-test-meta' 'perl6-test-notice' 'perl6-test-when')
 makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/zoffixznet/perl6-IRC-Client"
@@ -28,7 +28,9 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 Changes *.md -t "$pkgdir/usr/share/doc/$pkgname"
+  cp -dpr --no-preserve=ownership docs examples historical-archive \
+    "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Installing...'
   install -dm 755 "$pkgdir/usr/share/perl6/vendor"
@@ -44,6 +46,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
