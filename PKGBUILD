@@ -1,6 +1,6 @@
 # Maintainer: Anthony Vitacco <anthony@littlegno.me>
 pkgname=rhythmbox-plugin-ampache-git
-pkgver=7415a69
+pkgver=0d233e3
 pkgrel=1
 pkgdesc=" Rhythmbox plugin to stream music from Ampache"
 arch=('any')
