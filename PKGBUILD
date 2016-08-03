@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-slab
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-font-utils')
 install=${pkgname}.install
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/05.iosevka-term-slab-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('f454fc5fbf7d485570f8305149c65a9b67f25ed7cc619665962f5e3d780e89ad'
+sha256sums=('52ea65cbd05626ee5b6838085dc790a6843a9d31d561c21aabc2cc879b7ab6a1'
             'fcd6a66c181b0bbfd497406ba9eb58c3fae6546e26118868bec48a529a05657f')
 
 package() {
