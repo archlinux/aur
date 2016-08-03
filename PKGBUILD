@@ -3,11 +3,11 @@
 # Contributor:	flan_suse
 
 pkgname=xfce-theme-greybird
-pkgver=1.6.2
-pkgrel=4
-pkgdesc="A grey and blue Xfce theme, used by default in Xubuntu 12.04"
+pkgver=3.18.0
+pkgrel=1
+pkgdesc="A grey and blue Xfce theme."
 arch=('any')
-url="http://shimmerproject.org/projects/greybird/"
+url="https://github.com/shimmerproject/Greybird"
 license=('CCPL:by-sa-3.0' 'GPL')
 groups=('xfce-themes-shimmer-collection')
 conflicts=("$pkgname-git")
@@ -18,18 +18,8 @@ optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
 	    'lightdm-unity-greeter: required for the LightDM Unity theme'
 	    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
 	    'lib32-gtk-engine-murrine: required for multilib')
-_github="https://github.com"
-source=("$pkgname-$pkgver.tar.gz"::"$_github/shimmerproject/Greybird/archive/v$pkgver.tar.gz"
-	"GTK3.20-patch.tar.gz"::"$_github/Poultryphile/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('473a38b379381311b68dcc579005c0d5bbfbabefe1de7107d897c68b81e6b460'
-	    'cac9e935b7b5bb216c45fb4df2ddd75d4d8353185189fa763ddaa91025768139')
-
-build() {
-	cd "$srcdir"
-	
-	patch -p0 -Nus -i "$pkgname-$pkgver/$pkgname-$pkgver-GTK3.20.patch" \
-	> /dev/null || echo "1" > /dev/null
-}
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
+sha256sums=('85a2d6bb73c32fb1caba2e5881dcf604af5b394bb8818058df874398e6dfe96f')
 
 package() {
 	cd "$srcdir"
