@@ -9,7 +9,7 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=9
+pkgrel=10
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
@@ -26,7 +26,7 @@ source=("http://launchpad.net/${pkgname}/trunk/0.13/+download/${pkgname}-${pkgve
 		"http://www.strits.dk/files/PluginMovieIMDB.py")
 sha256sums=('60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242'
             'f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af'
-            '7184164f5902878350e319caf977079d1ac15babe754a0b5da91f6125dce6348')
+            'c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -56,3 +56,4 @@ package() {
     rm ${pkgdir}/usr/bin/griffith
     ln -s /usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
 }
+# vim:set ts=4 sw=2 ft=sh et:
