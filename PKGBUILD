@@ -2,8 +2,8 @@
 
 pkgname="libreoffice-fresh-kalahari"
 pkgver=0.4.6
-pkgrel=2
-_lover=5.1
+pkgrel=3
+_lover=5.2
 pkgdesc="Kalahari icon themes for libreoffice-fresh-rpm"
 arch=('any')
 url="https://github.com/FadeMind/${pkgname}"
@@ -24,6 +24,6 @@ sha256sums=('7ded91512511ed104ac9562894fbdc8b33a6b3bd230759045de1eee0fe4f598d'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
 
 package() {
-  install -Dm644 -t "${pkgdir}/opt/libreoffice${_lover}/share/config/"  ${srcdir}/*.zip
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"   ${srcdir}/LICENSE
+    install -Dm644 -t "${pkgdir}/opt/libreoffice${_lover}/share/config/"  ${srcdir}/*.zip
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"   ${srcdir}/LICENSE
 }
