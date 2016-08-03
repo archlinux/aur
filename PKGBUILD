@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.16.1-r1
+_pkgver=0.17.0-rc1
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -15,7 +15,8 @@ depends=('python2-matrix-angular-sdk'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr')
+         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr'
+         'python2-psutil')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
@@ -24,8 +25,8 @@ source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'a2b653d523161a33a36e931b60a234f2'
-         '80e8116e3f39889b16fb748b6cba83e8')
+         'cd0dfc4733756743f4c3b9b2cd2abdee'
+         'fe48abc55d72e4db7d2ed1b449036bab')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
