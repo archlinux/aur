@@ -1,21 +1,22 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # The documentation fails to build right now
 
 pkgname=python2-nss
-pkgver=0.16.0
+pkgver=1.0.0beta1
 pkgrel=1
 pkgdesc="Python 2 bindings for NSS and NSPR"
 arch=(i686 x86_64)
 url="ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss"
 license=(MPL GPL LGPL)
 depends=(python2 nspr nss)
-#makedepends=(python2-distribute python2-docutils epydoc)
-makedepends=(python2-distribute)
+#makedepends=(python2-setuptools python2-docutils epydoc)
+makedepends=(python2-setuptools)
 options=(!emptydirs)
 # Official mirror isn't working. We'll use Fedora's mirror
 source=("ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss/releases/PYNSS_RELEASE_${pkgver//./_}/src/python-nss-${pkgver}.tar.bz2")
-sha512sums=('3ff7d29f10942f4d36be8e223b518e046b5502f15029aa684b925cbd131bbc2041f7860abd50ec1344479b6e5594735cc9b7fcd801d7c4d1025f68e11a57cc3f')
+sha512sums=('acf3e119a2ceac7a939101ee45dede84c93f02f509f39d25a0f0c37ff2bd4628c6c4501175fbb188fa32e6899504a14ee0a54c885850d28373e7c467254277c0')
 
 build() {
   cd "python-nss-${pkgver}"
