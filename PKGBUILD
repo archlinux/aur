@@ -1,5 +1,5 @@
 pkgname=ttf-averia-serif-libre
-pkgver=1.0
+pkgver=1.001
 pkgrel=1
 pkgdesc="Averia Serif Libre fonts, typeface a bit gentle from Averia Serif"
 url="http://iotic.com/averia/"
