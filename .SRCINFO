@@ -1,15 +1,14 @@
 pkgbase = nxt
 	pkgdesc = The Nxt Reference Software Client for use with the Nxt Cryptocurrency.
-	pkgver = 1.5.12
+	pkgver = 1.9.2
 	pkgrel = 1
-	url = http://nxt.org
+	url = https://nxt.org
 	arch = any
 	license = MIT/GPL
 	makedepends = unzip
 	depends = jre8-openjdk
-	optdepends = flashplugin: for add to clipboard support
-	source = https://bitbucket.org/JeanLucPicard/nxt/downloads/nxt-client-1.5.12.zip
-	sha256sums = ac42f30dde2f84c624a78791befb44ed0f11dc8e456742388d410537914266f9
+	source = https://bitbucket.org/JeanLucPicard/nxt/downloads/nxt-client-1.9.2.zip
+	sha256sums = 4fe0520e5b4d0fe244dc9d8ab7943c1a107a7e4227ce4ae9f3236ae1dcc1a8ab
 
 pkgname = nxt
 
