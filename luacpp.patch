@@ -1,0 +1,32 @@
+diff -crB a/luaconf.h b/luaconf.h
+*** a/luaconf.h	2012-08-18 13:49:21.807416507 -0300
+--- b/luaconf.h	2012-08-18 13:51:41.487416022 -0300
+***************
+*** 154,167 ****
+--- 154,179 ----
+  #if defined(LUA_BUILD_AS_DLL)
+  
+  #if defined(LUA_CORE) || defined(LUA_LIB)
++ #ifdef __cplusplus
++ #define LUA_API extern "C" __declspec(dllexport)
++ #else
+  #define LUA_API __declspec(dllexport)
++ #endif
++ #else
++ #ifdef __cplusplus
++ #define LUA_API extern "C" __declspec(dllimport)
+  #else
+  #define LUA_API __declspec(dllimport)
+  #endif
++ #endif
+  
+  #else
+  
++ #ifdef __cplusplus
++ #define LUA_API		extern "C"
++ #else
+  #define LUA_API		extern
++ #endif
+  
+  #endif
+  
