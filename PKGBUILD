@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-test-meta
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Test a distribution's META file"
 arch=('any')
@@ -25,7 +25,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
@@ -44,5 +44,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
