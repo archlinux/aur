@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 pkgname=git-lfs
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An open source Git extension for versioning large files"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('go' 'ruby-ronn')
 depends=('git')
 install=${pkgname}.install
 source=("https://github.com/github/$pkgname/archive/v$pkgver.tar.gz")
-sha1sums=('dd74f42662c1eabf14315cb2e8738b19034931f4')
+sha1sums=('a8d3280a88377660f481260146d9de2a0ebf0111')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -20,12 +20,12 @@ prepare() {
   mkdir -p "$srcdir"/src/github.com/github/
   ln -s "$srcdir"/$pkgname-$pkgver "$srcdir"/src/github.com/github/$pkgname
 
-  GO15VENDOREXPERIMENT=0 GOPATH="$srcdir" go get -v -d
+  GOPATH="$srcdir" go get -v -d
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  GO15VENDOREXPERIMENT=0 GOPATH="$srcdir" go run script/*.go -cmd build
+  GOPATH="$srcdir" go run script/*.go -cmd build
 
   # build man pages
   ronn docs/man/*.ronn
