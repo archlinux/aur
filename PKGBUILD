@@ -20,8 +20,8 @@ source=(
     "eula.html"
 )
 md5sums=('225983ba7ac3f981e258044bc08a03b5'
-         '765148843d302e15d80ddd0041efc957'
-         'fcac914c0044d1e5831ce46b88c37ec5'
+         'cf2a1746a0cafe11793af0801c78afeb'
+         '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
 
 package() {

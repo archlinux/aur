@@ -1,7 +1,10 @@
 [Desktop Entry]
 Name=GitKraken
+Comment=Unleash your repo
 Exec="gitkraken"
-Icon=gitkraken.png
+Icon=gitkraken
 Terminal=false
 Type=Application
-Categories=Utility;Network;Development
+StartupNotify=true
+Categories=GNOME;GTK;Development;Documentation;
+MimeType=text/plain;
