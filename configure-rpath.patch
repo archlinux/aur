@@ -1,5 +1,5 @@
---- configure.ac	2014-01-17 21:16:36.000000000 +0100
-+++ /tmp/configure.ac.patched	2014-11-07 14:04:25.882803929 +0100
+--- a/src/configure.ac	2014-01-17 21:16:36.000000000 +0100
++++ b/src/configure.ac	2014-11-07 14:04:25.882803929 +0100
 @@ -32,8 +32,8 @@
  	[specify directory containing the bamtools library (http://github.com/pezmaster31/bamtools)]))
  
