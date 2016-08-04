@@ -1,50 +1,36 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
+# Contributor: Mikhail Ovchinnikov <gatraun at gmail dot com>
 pkgname=gpx-git
-pkgver=r43.3570fc9
+pkgver=2.2.1.r196.d903700
 pkgrel=1
-pkgdesc="Gcode to x3g conversion post processor"
-arch=('x86' 'x86_64')
-url="https://github.com/whpthomas/GPX"
+pkgdesc="A post processing utility for converting gcode to x3g"
+arch=('i686' 'x86_64')
+url="https://github.com/markwal/GPX"
 license=('GPL')
 makedepends=('git')
-provides=('gpx')
-conflicts=('gpx')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 
-_gitroot=https://github.com/whpthomas/GPX
-_gitname=GPX
+source=("${pkgname%-git}::git+${url}.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+# Git, tags available
+	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  make 
+	cd "$srcdir/${pkgname%-git}"
+    mkdir build
+    cd build
+	../configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  make PREFIX="$pkgdir/usr" install
+	cd "$srcdir/${pkgname%-git}/build"
+	make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
