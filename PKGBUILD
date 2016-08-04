@@ -3,7 +3,7 @@
 # Upstream: https://github.com/bitpay/copay
 
 pkgname=copay
-pkgver=1.12.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/Cop
                "https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip.sig"
               )
 
-md5sums_x86_64=('d5397330f0002608f63b1c0e4b7cfd4c'
+md5sums_x86_64=('45905a77cee6b5eccf03e463d4555106'
                 'SKIP')
 
 # gpg --recv-keys 9D17E656BB3B6163AE9D71725CD600A61112CFA1
@@ -39,6 +39,9 @@ package() {
     # Remove arch suffix 
     mv copay-linux/* .
     rmdir copay-linux
+
+    # Fix file permissions
+    find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a+r
 
     # Symlink in to the default PATH
     mkdir -p ${pkgdir}/usr/bin
