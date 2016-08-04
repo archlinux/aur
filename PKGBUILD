@@ -1,4 +1,4 @@
-# Maintainer: Carlos Silva <r3pek@r3pek.org>
+# Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=cartaodecidadao-reorganized
 pkgver=1.61.0
@@ -17,8 +17,8 @@ source=("${pkgname}.desktop"
 source_x86_64=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu.amd64.deb")
 source_i686=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu.i386.deb")
 
-md5sums=('e868340d6e07dd66ccfed4ce8e1c4203'
-         '606efaa093687f2ed1dcc9baba200270')
+md5sums=('fd160c6faae95250db8260262821cc14'
+         '7bf75547b5765803ce1ea27c01f0ba68')
 md5sums_i686=('115be572c30ccc35028bf878c4300b9e')
 md5sums_x86_64=('630442660ffc7419a6d8c82a40c1f8cc')
 

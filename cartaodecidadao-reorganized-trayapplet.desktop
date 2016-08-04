@@ -2,7 +2,7 @@
 Comment=
 Exec=/usr/bin/pteidtrayapplet
 GenericName=Cartão de Cidadão - Área de Notificação
-Icon=cartaodecidadao
+Icon=cartaodecidadao-reorganized
 MimeType=
 Name=Cartão de Cidadão - Área de Notificação
 Comment=Iniciar o Middleware do Cartão de Cidadão na Área de Notificação

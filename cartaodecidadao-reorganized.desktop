@@ -2,7 +2,7 @@
 Comment=
 Exec=/usr/bin/pteidgui
 GenericName=Cartão de Cidadão
-Icon=cartaodecidadao
+Icon=cartaodecidadao-reorganized
 MimeType=
 Name=Cartão de Cidadão
 Comment=Middleware do Cartão de Cidadão
