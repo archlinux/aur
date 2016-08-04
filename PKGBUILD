@@ -43,7 +43,7 @@ build() {
 
 package_python2-numpy() {
   depends=('lapack' 'python2' 'cblas')
-  optdepends=('python2-nose: testsuite' 'atlas-lapack: for improved performance of some linear algebra operations')
+  optdepends=('python2-nose: testsuite')
 
   _pyver=2.7
 
@@ -62,7 +62,7 @@ package_python2-numpy() {
 
 package_python-numpy() {
   depends=('lapack' 'python' 'cblas')
-  optdepends=('python-nose: testsuite' 'atlas-lapack: for improved performance of some linear algebra operations')
+  optdepends=('python-nose: testsuite')
   provides=("python3-numpy=${pkgver}")
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
