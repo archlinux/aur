@@ -3,7 +3,7 @@ _ipn=hgettext
 _bpn=haskell-${_ipn}
 pkgname=${_bpn}
 pkgver=0.1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="bindings to libintl.h (gettext, bindtextdomain)"
 arch=(x86_64)
 url="https://github.com/vasylp/hgettext"
@@ -33,14 +33,19 @@ build() {
   sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
-_ghcver_set() {
-  local _i
-  _ghcver=`pacman -Q ghc | cut -f2 -d\  | cut -f1 -d-`
-  depends[0]="ghc=$_ghcver"
+_update_deps() {
+    _ver=`pacman -Q $1 | cut -f2 -d\  | cut -f1 -d-`
+    for i in `seq 0 $(expr ${#depends[@]} - 1)`; do
+        if [ ${depends[$i]} == $1 ]; then
+            depends[$i]="$1=${_ver}"
+        fi
+    done
 }
 
 package() {
-  _ghcver_set
+  _update_deps ghc
+  _update_deps haskell-src-exts
+
   cd "$srcdir/${_ipn}-${pkgver}"
 
   install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"

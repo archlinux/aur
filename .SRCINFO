@@ -1,7 +1,7 @@
 pkgbase = haskell-hgettext
 	pkgdesc = bindings to libintl.h (gettext, bindtextdomain)
 	pkgver = 0.1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vasylp/hgettext
 	arch = x86_64
 	license = custom:BSD3
