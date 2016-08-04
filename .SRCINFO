@@ -1,6 +1,6 @@
 pkgbase = google-chrome
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
-	pkgver = 52.0.2743.82
+	pkgver = 52.0.2743.116
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome.install
@@ -31,10 +31,10 @@ pkgbase = google-chrome
 	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-stable_52.0.2743.82_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	source = google-chrome-stable_52.0.2743.116_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	source = https://www.google.com/chrome/browser/privacy/eula_text.html
 	source = google-chrome-stable.sh
-	md5sums = becebaab5b3f67b6b0e5a691f6b9e92d
+	md5sums = 2b8c6e8b4bb3077b925edce50a0fa151
 	md5sums = SKIP
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
 
