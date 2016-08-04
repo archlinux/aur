@@ -4,7 +4,7 @@
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.5.8
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('GPL3')
 pkgdesc="Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface."
@@ -15,19 +15,25 @@ conflicts=(pacmanager-bin)
 source=("git+https://github.com/perseo22/pacmanager.git"
        "0001-xfreerdp-new-interface.patch"
        "0002-xfreerdp-new-interface.patch"
-       "0003-xfreerdp-new-interface.patch")
+       "0003-xfreerdp-new-interface.patch"
+       "bugfix_ctrl-tab_in_last-focused_mode.patch")
 md5sums=('SKIP'
          'd7350164daad682396c3278d6c40bb9d'
          'cc4b26825efcf1d6c2aeea2b92531c40'
-         'ac48e3d9ee6b0694a42c123498b06c64')
+         'ac48e3d9ee6b0694a42c123498b06c64'
+         '731a8fb19105f0e0b05446ff8cabd311')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
-	# Apply patches for new FreeRDP interface
+
+	# Apply patches for new FreeRDP interface (thanks to hador / https://github.com/hador/pacmanager )
 	patch -Np1 -i $srcdir/0001-xfreerdp-new-interface.patch
 	patch -Np1 -i $srcdir/0002-xfreerdp-new-interface.patch
 	# The third patch is done by me
 	patch -Np1 -i $srcdir/0003-xfreerdp-new-interface.patch
+
+	# Patch to fix ctrl-tab in last-focused mode (thanks to merikz / https://github.com/merikz/pacmanager/commit/ec861a8ba1f35070ea70496dd9d18976cfa6cca3 )
+	patch -Np1 -i $srcdir/bugfix_ctrl-tab_in_last-focused_mode.patch
 }
 
 build() {
