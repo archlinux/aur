@@ -3,16 +3,16 @@
 
 pkgbase=pyhn
 pkgname=('pyhn' 'pyhn2')
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Hacker News command line client"
 arch=('any')
-url="http://pypi.python.org/pypi/pyhn/"
+url="https://pypi.python.org/pypi/pyhn/"
 license=('AGPL3')
 makedepends=('python-urwid' 'python-beautifulsoup4' 'python-isit')
 makedepends+=('python2-urwid' 'python2-beautifulsoup4' 'python2-isit')
-source=(http://pypi.python.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz)
-md5sums=('2c4cd60c17a0a5e3933470d2dfda77ad')
+source=(https://pypi.io/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz)
+md5sums=('219c9a64d118af10770d4218d7d5af7a')
 
 
 package_pyhn() {
