@@ -7,8 +7,8 @@
 pkgname=libircclient-openssl-ipv6
 _pkgname=libircclient
 pkgver=1.8
-pkgrel=1
-pkgdesc='Small but powerful library, which implements client-server IRC protocol'
+pkgrel=2
+pkgdesc='Small but powerful library, which implements client-server IRC protocol, with openSSL and ipv6 support'
 arch=('i686' 'x86_64')
 url='http://www.ulduzsoft.com/libircclient/'
 license=('GPL')
