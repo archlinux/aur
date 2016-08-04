@@ -10,7 +10,7 @@ url="http://www.ullrich-online.cc/fingerprint/"
 license=('GPL')
 depends=('libfprint' 'libfakekey' 'polkit-qt4' 'qca')
 optdepends=('libusb: for libbsapi')
-source=("http://ullrich-online.cc/nview/Appliance/fingerprint/download/${pkgname}-${pkgver}.tar.gz")
+source=("http://www.ullrich-online.cc/fingerprint/download/${pkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
 md5sums=('699fbdb53d652cabd3c5fdd91078da58')
 
