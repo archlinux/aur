@@ -21,7 +21,7 @@ backup=('etc/qotd.conf')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-    _ver="$(git describe --tags | sed 's/-/_/g')"
+    local _ver="$(git describe --tags | sed 's/-/_/g')"
     printf '%s.%s' "${_ver:1}" "$(git describe --always)"
 }
 
