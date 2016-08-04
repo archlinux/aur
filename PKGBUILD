@@ -2,9 +2,9 @@
 
 pkgname=cuberite
 pkgver=1.9.4
-_build=501
-_build_arm=472
-pkgrel=3
+_build=534
+_build_arm=502
+pkgrel=4
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://cuberite.org/"
@@ -26,11 +26,11 @@ source_armv7h=("Cuberite.b${_build}_armhf.tar.gz"::"https://builds.cuberite.org/
 md5sums=('262b66be8e102bbd171c2b3057f6634c'
          '312b38afb20c4fb38c260fd6ef8cf138'
          '286800e1783006675d0fec31f566c328'
-         'c3cebfdaf3c29ca759975dc2923d7ff0'
-         'c77fae02ab00804b05195940751be143')
-md5sums_i686=('c15e6bfabfa63a02be4086526747edc4')
-md5sums_x86_64=('4ae501f84c2f1a701c83fa177ad5e2e8')
-md5sums_armv7h=('52f9ecbbebea7797133445764d663bfc')
+         'f72ae1914637f80347b104b1b1099526'
+         '0284000d033f6e78d8c04aef16003cc3')
+md5sums_i686=('af8d6d37ea497f61cf41a1c084392c8b')
+md5sums_x86_64=('8d3fb030d41932dd24bd8114ada94612')
+md5sums_armv7h=('faa7d77db966b175701ae0b46e40effd')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
