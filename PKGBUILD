@@ -3,17 +3,17 @@
 
 pkgname=python-vint
 _pkgname=vim-vint
-pkgver=0.3.6
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="VimL Linter"
 arch=('any')
 makedepends=('python-setuptools')
-depends=('python-ansicolor=0.2.4')
-url="https://pypi.python.org/pypi/Mercurial"
+depends=('python-yaml' 'python-ansicolor=0.2.4' 'python-chardet')
+url="https://github.com/Kuniwak/vint/"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('3b2d95c180bfab51aa690aa7ecd2c23f')
+source=(https://pypi.python.org/packages/8c/a4/e59fe09db6fe124d039bda3a23c03dd8dc98f9911eea48858b60180c69f8/vim-vint-0.3.9.tar.gz)
+md5sums=('7547c5d87d04b2ed2ae9e9a3e9cf9b41')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
