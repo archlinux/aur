@@ -44,13 +44,8 @@ EOF
   chown -R root.root "/var/lib/fingerprint-gui"
   find "/var/lib/fingerprint-gui" -type d -exec chmod 755 {} \;
   find "/var/lib/fingerprint-gui" -type f -exec chmod 600 {} \;
-  # icon update
-  update-desktop-database -q
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
 
 post_remove() {
   getent group plugdev &> /dev/null && groupdel plugdev > /dev/null
-  update-desktop-database -q
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
