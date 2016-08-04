@@ -1,44 +1,44 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=biboumi
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'c-ares' 'botan')
-makedepends=('cmake')
+depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql-git')
+makedepends=('cmake' 'pandoc')
 backup=("etc/$pkgname/$pkgname.cfg")
-source=("http://git.louiz.org/biboumi/snapshot/$pkgname-$pkgver.tar.xz")
-md5sums=('5aa6f0497abc1a707203314330fbff86')
+install="$pkgname.install"
+source=("http://git.louiz.org/biboumi/snapshot/$pkgname-$pkgver.tar.xz"
+        'sysuser.conf')
+md5sums=('7d37de4fe582ca59d0632d5fa89b367b'
+         '07c92af3248861ce94d361e98cfb7f5c')
 
 prepare() {
-  mkdir -p "$srcdir/build"
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir/build"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "../$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver/build"
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSERVICE_USER=biboumi \
+    -DSERVICE_GROUP=jabber
   make biboumi
 }
 
-check() {
-  cd "$srcdir/build"
-  make test_suite/fast
-  ./test_suite
-}
-
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 unit/biboumi.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 doc/biboumi.1.md "$pkgdir/usr/share/doc/$pkgname/$pkgname.md"
-  install -Dm644 conf/biboumi.cfg "$pkgdir/etc/$pkgname/$pkgname.cfg"
+  install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$pkgname/$pkgname.rst"
 
-  # TODO: generate the manpage.
-  #install -Dm644 doc/biboumi.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+  cd "$srcdir"
+  install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }

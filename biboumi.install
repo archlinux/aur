@@ -1,0 +1,13 @@
+post_install() {
+    systemd-sysusers biboumi.conf
+    install -dm750 -o biboumi -g jabber var/lib/biboumi
+    install -dm750 -o biboumi -g jabber var/log/biboumi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    systemd-sysusers biboumi.conf
+}
