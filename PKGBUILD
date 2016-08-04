@@ -2,7 +2,7 @@
 
 pkgname=python-tdl
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Pythonic CFFI port of libtcod."
 arch=('any')
 url="https://pypi.python.org/pypi/tdl"
@@ -14,4 +14,6 @@ md5sums=('b5b1bf0fd665587b3c20dc44aa5a3741')
 package() {
 	cd "${pkgname}-v.$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+
+    install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/python-tdl/LICENSE.txt
 }
