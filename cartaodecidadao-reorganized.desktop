@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment=
+Exec=/usr/bin/pteidgui
+GenericName=Cartão de Cidadão
+Icon=cartaodecidadao
+MimeType=
+Name=Cartão de Cidadão
+Comment=Middleware do Cartão de Cidadão
+Path=.
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Qt;KDE;Office;
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

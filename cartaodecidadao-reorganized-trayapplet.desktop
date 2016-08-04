@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment=
+Exec=/usr/bin/pteidtrayapplet
+GenericName=Cartão de Cidadão - Área de Notificação
+Icon=cartaodecidadao
+MimeType=
+Name=Cartão de Cidadão - Área de Notificação
+Comment=Iniciar o Middleware do Cartão de Cidadão na Área de Notificação
+Path=.
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Qt;KDE;Office;
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
