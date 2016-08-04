@@ -13,12 +13,10 @@ source=("https://pypi.python.org/packages/9f/a7/d93290b30ba78446f0d6b7ef4cdb4836
 md5sums=('0cf32c9ef9f644935124c188534e4654')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
 }
 
 package() {
     depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
