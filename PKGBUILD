@@ -9,14 +9,16 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
-source=("https://pypi.python.org/packages/9f/a7/d93290b30ba78446f0d6b7ef4cdb48360fd45ad79c1c778341d170cc9767/dirlog-${pkgver}-py2-none-any.whl")
-md5sums=('0cf32c9ef9f644935124c188534e4654')
+source=("https://pypi.python.org/packages/cd/b2/5d7414203b14311a61838b4372714d6b3b1724e86587be8f6f0b074f0402/dirlog-${pkgver}.tar.gz")
+md5sums=('c4220c94134ba626a2722e8afe7730a1')
 
 build() {
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
 }
 
 package() {
     depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
