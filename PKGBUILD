@@ -3,7 +3,7 @@
 pkgname=cartaodecidadao-reorganized
 pkgver=1.61.0
 pkgrel=1
-pkgdesc="Portuguese Citizen Card Application"
+pkgdesc='Middleware do Cartão de Cidadão'
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
 license=('custom')
