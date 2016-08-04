@@ -9,8 +9,8 @@ _full_name=${_name}-${_channel}
 pkgname=${_full_name}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://nightly.mozilla.org/"
-_version='50.0a1'
-pkgver=50.0a1.20160607
+_version='51.0a1'
+pkgver=51.0a1.20160804
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -46,6 +46,7 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG re
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
   curl -OR "${_url}/${SRC_VER}"
+  msg "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
 
@@ -53,7 +54,7 @@ package() {
   OPT_PATH="/opt/${_full_name}"
 
   # Loop (Firefox Hello) and GetPocket (Pocket proprietary service) extensions.
-  # Uncomment this line if you want to remove them.
+  # Uncomment this line if you want to remove them, or use pacman NoExtract option.
   #rm -rf ${_name}/browser/features/{loop@mozilla.org.xpi,firefox@getpocket.com.xpi}
 
   # Install the package files
