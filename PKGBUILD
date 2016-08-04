@@ -12,7 +12,7 @@ url="https://github.com/perseo22/pacmanager"
 depends=('gconf-perl' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-gnome2-vte' 'perl-expect' 'perl-crypt-rijndael' 'perl-gtk2-ex-simple-list' 'perl-io-stty' 'perl-io-tty' 'perl-net-arp' 'perl-yaml' 'perl-crypt-cbc' 'perl-gtk2-unique' 'perl-socket6' 'uuid')
 makedepends=('git')
 conflicts=(pacmanager-bin)
-source=("git://github.com/perseo22/pacmanager.git"
+source=("git+https://github.com/perseo22/pacmanager.git"
        "0001-xfreerdp-new-interface.patch"
        "0002-xfreerdp-new-interface.patch")
 md5sums=('SKIP'
