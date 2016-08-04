@@ -4,7 +4,7 @@
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.5.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc="Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface."
@@ -14,16 +14,20 @@ makedepends=('git')
 conflicts=(pacmanager-bin)
 source=("git+https://github.com/perseo22/pacmanager.git"
        "0001-xfreerdp-new-interface.patch"
-       "0002-xfreerdp-new-interface.patch")
+       "0002-xfreerdp-new-interface.patch"
+       "0003-xfreerdp-new-interface.patch")
 md5sums=('SKIP'
          'd7350164daad682396c3278d6c40bb9d'
-         'cc4b26825efcf1d6c2aeea2b92531c40')
+         'cc4b26825efcf1d6c2aeea2b92531c40'
+         'ac48e3d9ee6b0694a42c123498b06c64')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
 	# Apply patches for new FreeRDP interface
 	patch -Np1 -i $srcdir/0001-xfreerdp-new-interface.patch
 	patch -Np1 -i $srcdir/0002-xfreerdp-new-interface.patch
+	# The third patch is done by me
+	patch -Np1 -i $srcdir/0003-xfreerdp-new-interface.patch
 }
 
 build() {
