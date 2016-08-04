@@ -6,7 +6,7 @@
 #   gpg --recv-keys 090B11993D9AEBB5
 
 pkgname=guix
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686')
@@ -32,8 +32,8 @@ optdepends=(
 source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 install="${pkgname}.install"
-sha1sums=('36be27ea1f1314d508bd80c84cadf7eafe974093'
-          '915ffda358412018a413ae07054ed19f725e3797')
+sha1sums=('bd12d65a46c8eef3b490efea6ac953b995d524eb'
+          'a9080412df96832d22e57a1bcc76e3016f93f0b0')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
 build() {

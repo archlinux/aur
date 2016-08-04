@@ -1,6 +1,3 @@
-infodir=usr/share/info
-file=guix.info
-
 post_install() {
   echo "Guix 0.8.3 already provides a systemd service file in its release,"
   echo "so the one included in AUR package is now removed. Please use the"
@@ -14,17 +11,6 @@ post_install() {
   echo
   echo "If you have /etc/systemd/system/guix.service.d, please also remember"
   echo "to review its content and rename it to guix-daemon.service.d."
-  [[ -x usr/bin/install-info ]] || return 0
-  install-info "$infodir/$file.gz" "$infodir/dir" 2> /dev/null
-}
-
-post_upgrade() {
-  post_install "$1"
-}
-
-pre_remove() {
-  [[ -x usr/bin/install-info ]] || return 0
-  install-info --delete "$infodir/$file.gz" "$infodir/dir" 2> /dev/null
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
