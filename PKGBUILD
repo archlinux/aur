@@ -3,7 +3,7 @@
 
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
-pkgver=4.5.5.7
+pkgver=4.5.5.8
 pkgrel=1
 arch=('any')
 license=('GPL3')
