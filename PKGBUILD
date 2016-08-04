@@ -12,7 +12,7 @@
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=52.0.2743.85
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         #'libvpx'
-         'perl' 'perl-file-basedir' 'desktop-file-utils'
+         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
          'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -145,7 +144,7 @@ build() {
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
-    -Duse_system_libvpx=0
+    -Duse_system_libvpx=1
     -Duse_system_libxml=0
     -Duse_system_snappy=1
     -Duse_system_xdg_utils=1
