@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=shadowrunhongkong-gog
-pkgver=2.6.0.8
+pkgver=2.8.0.10
 pkgrel=1
 pkgdesc="Harebrained Schemes' third Shadowrun cRPG"
 arch=("i686" "x86_64")
@@ -13,9 +13,9 @@ depends_i686=("gcc-libs" "glibc" "glu" "libx11" "libxau" "libxcb" "libxcursor" "
 depends_x86_64+=("lib32-bzip2" "lib32-expat" "lib32-fontconfig" "lib32-freetype2" "lib32-gcc-libs" "lib32-glib2" "lib32-glibc" "lib32-harfbuzz" "lib32-libffi" "lib32-libice" "lib32-libpng" "lib32-libsm" "lib32-libx11" "lib32-libxau" "lib32-libxcb" "lib32-libxdmcp" "lib32-libxext" "lib32-libxrender" "lib32-openssl" "lib32-pcre" "lib32-qt4" "lib32-util-linux" "lib32-zlib")
 depends_i686+=("bzip2" "expat" "fontconfig" "freetype2" "gcc-libs" "glib2" "glibc" "harfbuzz" "libffi" "libice" "libpng" "libsm" "libx11" "libxau" "libxcb" "libxdmcp" "libxext" "libxrender" "openssl" "pcre" "qt4" "util-linux" "zlib")
 source=("${pkgname}.desktop"
-        "gog_shadowrun_hong_kong_${pkgver}.sh::file://gog_shadowrun_hong_kong_${pkgver}.sh")
+        "gog_shadowrun_hong_kong_extended_edition_${pkgver}.sh::file://gog_shadowrun_hong_kong_extended_edition_${pkgver}.sh")
 sha256sums=("d03de9036e08b1fc74b74e01cc4ec6a716649b730140a361e8a19d3b5b433f18"
-            "1ba520167c9202cf8a430eba6ad348c370b72a08bbe9b5120f155a2ad6e2afdf")
+            "26b3ce9b398bef76602ef9dc74e0b522d9bc310a6ee923984dde4d39cf9b0ff3")
 
 # Disable compression of the package
 PKGEXT='.pkg.tar'
