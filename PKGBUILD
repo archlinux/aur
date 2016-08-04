@@ -18,7 +18,7 @@ optdepends=("lua: Lua interpreter" "perl: Perl interpreter" "python: Python 3 in
 makedepends=("git" "lua" "python" "python2" "ruby")
 provides=("gvim" "xxd" "vim-runtime")
 conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
-           "vim-minimal" "vim" "vim-python3" "gvim" "gvim-python3")
+           "vim-minimal" "vim" "vim-python3" "gvim" "gvim-python3" "gvim-git")
 source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
 sha256sums=('fac86e6ddb8b312e1959635561cb39056cea09b6e32d750b35d8ceae2a4ecd2d'
