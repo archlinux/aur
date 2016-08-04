@@ -1,7 +1,8 @@
 # Maintainer: atomicbeef <teddyg522@gmail.com>
+
 pkgname=python-libtcod-cffi
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python CFFI port of libtcod."
 arch=('any')
 url="https://pypi.python.org/pypi/libtcod-cffi"
@@ -17,6 +18,8 @@ prepare() {
 }
 
 package() {
-	cd "libtcod-cffi-$pkgver"
+    cd "libtcod-cffi-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+
+    install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
