@@ -3,7 +3,7 @@
 
 pkgname=sardi-icons
 pkgver=7.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots = 17 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
