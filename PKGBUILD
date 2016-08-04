@@ -1,9 +1,8 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
-# Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=grim-fandango
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Grim Fandango Remastered - GOG version"
 arch=('i686' 'x86_64')
 url="http://grimremastered.com/"
@@ -18,8 +17,8 @@ source=(${pkgname}.desktop
 md5sums=('8ef119e66bbdb8017aa045eef9736054'
          'b84aeccef5eb8dfc3679cdee874f218c')
         
-_gamepkg=gog_grim_fandango_remastered_${pkgver}.tar.gz
-
+_gamepkg=gog_grim_fandango_remastered_2.3.0.7.sh
+_skipbytes=1005115
 build() {
   msg "You need a full copy of this game in order to install it"
   msg "Searching for ${_gamepkg} in dir: \"$startdir\""
@@ -32,7 +31,9 @@ build() {
     fi
   fi
   msg "Found game package, unpacking..."
-  tar xf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
+  mkdir "${srcdir}/extract"
+  tail -c +$_skipbytes "${pkgpath}/${_gamepkg}" > clean.zip
+  unzip clean.zip -d "${srcdir}/extract"
 }
 
 package() {
@@ -41,7 +42,7 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/bin"
 
-  cd "${srcdir}/Grim Fandango Remastered/"
+  cd "${srcdir}/extract/data/noarch"
   mv * "${pkgdir}/opt/${pkgname}/"
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -m644 "${pkgdir}/opt/${pkgname}/docs/End User License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
