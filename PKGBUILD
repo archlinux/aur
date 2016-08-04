@@ -12,7 +12,6 @@ source=("http://deadsoftware.ru/files/kalterfive/${pkgname}.ttf.gz")
 sha256sums=('ccf315c5ffeac3efee3fbc9e066595a05e4f79aa0742831598a4ab7c28641d25')
 
 package() {
-	install -d "$pkgdir/usr/share/fonts/TTF"
-	install -m644 "$srcdir/"*.ttf "$pkgdir/usr/share/fonts/TTF"
+	install -Dm644 "$srcdir/${pkgname}.ttf" "$pkgdir/usr/share/fonts/TTF"
 }
 
