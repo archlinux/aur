@@ -4,7 +4,7 @@
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.5.8
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('GPL3')
 pkgdesc="Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface."
@@ -16,12 +16,14 @@ source=("git+https://github.com/perseo22/pacmanager.git"
        "0001-xfreerdp-new-interface.patch"
        "0002-xfreerdp-new-interface.patch"
        "0003-xfreerdp-new-interface.patch"
-       "bugfix_ctrl-tab_in_last-focused_mode.patch")
+       "bugfix_ctrl-tab_in_last-focused_mode.patch"
+       "fix_xfreerdp_embed_window.patch")
 md5sums=('SKIP'
          'd7350164daad682396c3278d6c40bb9d'
          'cc4b26825efcf1d6c2aeea2b92531c40'
          'ac48e3d9ee6b0694a42c123498b06c64'
-         '731a8fb19105f0e0b05446ff8cabd311')
+         '731a8fb19105f0e0b05446ff8cabd311'
+         '13fb87584b3fe9cf9f61565a9d570441')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}
@@ -34,6 +36,9 @@ prepare() {
 
 	# Patch to fix ctrl-tab in last-focused mode (thanks to merikz / https://github.com/merikz/pacmanager/commit/ec861a8ba1f35070ea70496dd9d18976cfa6cca3 )
 	patch -Np1 -i $srcdir/bugfix_ctrl-tab_in_last-focused_mode.patch
+
+	# Ugly fix to fix xfreerdp embed window
+	patch -Np1 -i $srcdir/fix_xfreerdp_embed_window.patch
 }
 
 build() {
