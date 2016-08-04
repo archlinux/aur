@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libclut
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="C library for manipulating colour lookup tables"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(glibc make coreutils gcc 'texinfo>=4.11')
 install=$pkgname.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(c8658b52272f6225ce842bfc880929be1728d0f83b003d5650108167942e8d4c)
+sha256sums=(548e930e1d8ba0efce198284eaa42107c6ddf4bc35b96a13e417fdca2fccb136)
 
 
 build() {
