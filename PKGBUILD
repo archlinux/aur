@@ -1,7 +1,7 @@
 # Maintainer: Kisuke <kisuke at kisuke dot cz>
 
 pkgname=trolcommander
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Lightweight, cross-platform file manager written in Java'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('trolcommander')
 depends=('java-runtime>=8')
 source=("https://github.com/trol73/mucommander/releases/download/v${pkgver}/${pkgname}_${pkgver}_all.deb")
-sha256sums=('28dd033def40c4f6b0a6cbfce4a5207f20764a6d1839b7e8eb59c2e513c610f4')
+sha256sums=('43901c1df4756a05533f9278330bbe77f4041a97f34c47327b811ad8a0fc90ad')
 
 package() {
 	# Install
