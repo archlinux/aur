@@ -1,6 +1,6 @@
 pkgbase = pacpak
 	pkgdesc = Create Flatpak apps from pacman packages
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://pelzflorian.de/git/pacpak/
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = pacpak
 	depends = flatpak
 	depends = fakeroot
 	depends = fakechroot
-	depends = sudo
-	source = https://pelzflorian.de/pacpak-0.1.tar.gz
-	sha512sums = 174774b8ea8b15b341218abca9616da321b67916f90d1983418d52c8dbfd0999266c614b648fa391edcc17320c4c7870d36ffe2e0008ee535f3e0dc5226cdd5a
+	source = https://pelzflorian.de/pacpak-0.2.tar.gz
+	sha512sums = 9daa9009fdc418b0de3d128db1b513a982d40bfddb305fd39774290439f6fb77bfcb2d38d55be79707de0ff3984d60ae502ac66e9379f1cda5d08d4ecdccbf47
 
 pkgname = pacpak
 

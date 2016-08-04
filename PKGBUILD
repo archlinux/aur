@@ -1,18 +1,18 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=pacpak
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Create Flatpak apps from pacman packages"
 arch=('any')
 url="https://pelzflorian.de/git/pacpak/"
 license=('GPL3')
-depends=('flatpak' 'fakeroot' 'fakechroot' 'sudo')
+depends=('flatpak' 'fakeroot' 'fakechroot')
 source=("https://pelzflorian.de/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('174774b8ea8b15b341218abca9616da321b67916f90d1983418d52c8dbfd0999266c614b648fa391edcc17320c4c7870d36ffe2e0008ee535f3e0dc5226cdd5a')
+sha512sums=('6776aa516d339c867d90e3310adba24dab0edd3eda6f2347134fc9e36ec2ceacdf3b47e7e1562dd1668b2720e69fc01c6af6093bb8e686a30c6de92a5728ca0a')
 
 build() {
   cd "$pkgname"-"$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
