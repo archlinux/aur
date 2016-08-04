@@ -1,8 +1,8 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 _pkgname=qotd
-pkgname=$_pkgname-git
-pkgver=0.7.2.372400e
+pkgname="$_pkgname-git"
+pkgver=0.9.3_2_gf8e1446.f8e1446
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'gcc' 'ghostscript' 'gzip')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=()
+options=('!zipman')
 install="$pkgname.install"
 source=("git+https://gitlab.com/ammongit/$_pkgname.git")
 sha256sums=('SKIP')
@@ -33,7 +33,7 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 	make ROOT="$pkgdir" SYSTEMD=1 install
-	install -D -m644 "doc/$_pkgname.pdf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.pdf"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
+# vim: set ft=sh noet:
