@@ -4,8 +4,8 @@
 
 pkgname=webstorm
 _pkgname=WebStorm
-pkgver=2016.2
-_pkgver=162.1121.31
+pkgver=2016.2.1
+_pkgver=162.1447.27
 pkgrel=1
 pkgdesc="JavaScript IDE and HTML editor."
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
         jetbrains-webstorm.desktop)
-sha512sums=('fe9067d3b2b9ef5468ae821f9a6c5e56442e022bfa6c75966ee46aae80074a1ac9ab914714bc0b42b80aabdaba36f5a037921e3d29f010a23c33d2b386e0c379'
+sha512sums=('a0be49ae0a2a61ea2986652e3d7b2a25a6b863bad36f27337691fe1f01df91daa29b7defa63bad08c850c4e55ecf8c4bb61e59a1ee7f1d7d5adea3ad04a82aa9'
             'd963f93c39ae9e3525064d3974ba096074c815ac8d5e7084ec41fb5c07ec46e341a9adafd01356061e84d50431e815cfbffe8c5f7effd087e84380bd6317215f')
 
 package() {
