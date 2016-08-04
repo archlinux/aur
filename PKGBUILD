@@ -1,8 +1,8 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 
 pkgname=libpsl
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
@@ -13,7 +13,7 @@ source=("https://github.com/rockdaboot/libpsl/releases/download/${pkgname}-${pkg
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/python$/python2/g' src/make_dafsa.py
+  sed -i 's/python$/python2/g' src/psl-make-dafsa
 }
 
 build() {
@@ -37,4 +37,4 @@ package() {
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('fd99a6d7cc629faba1cb0633eaf73898')
+md5sums=('ace83b37a37d94fa2dd543ccda80138b')
