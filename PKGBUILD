@@ -3,7 +3,7 @@
 pkgname=tunnelbear
 pkgver=1.0
 pkgrel=1
-pkgdesc="TunnelBear OpenVPN configuration for Linux"
+pkgdesc="TunnelBear configuration for Linux"
 arch=('i684' 'x86_64')
 url="https://tunnelbear.com"
 depends=('openvpn')
