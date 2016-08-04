@@ -2,8 +2,8 @@
 # build for raspberry pi
 
 pkgname=hyperion-rpi-bin
-pkgver=20160614.b8f7642.V1030
-pkgrel=2
+pkgver=20160725.d3713a8.V1032
+pkgrel=1
 pkgdesc="An opensource 'AmbiLight' implementation (build for raspberry pi) (binary)"
 
 arch=('any')
@@ -27,7 +27,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '8ba700d59aec256fe510091042cf7fa61daed95f3ea7c0ab2a4a4d650e26873d'
+  '27663af04ba2c094748db043b6ff0cce36fb24db39521018caf0869cf6474ebe'
   '85f28018f946ca13b6de640c45e011cd9fe56114d474cb990d4d1ff91ae1cd60'
 )
 
