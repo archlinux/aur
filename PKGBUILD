@@ -11,7 +11,7 @@ depends=('libdnet' 'libnet' 'libpcap')
 source=(http://packetfactory.openwall.net/firewalk/dist/firewalk.tar.gz  firewalk-gcc3.4.patch)
 url="http://packetfactory.openwall.net/projects/firewalk/"
 md5sums=('02412f13218ea052427bbf038a88a026' 'd94be823c96efbaeee8f75941cfdd3b7')
-license="BSD"
+license=("BSD")
 
 
 build() {
