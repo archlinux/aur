@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname="$_pkgname"
-pkgver=0.7.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
 arch=('any')
@@ -20,18 +20,18 @@ sha256sums=('SKIP')
 backup=('etc/qotd.conf')
 
 build() {
-    cd "$srcdir/$_pkgname-v$pkgver"*
+	cd "$srcdir/$_pkgname-v$pkgver"*
 
 	# Compile sources
 	make release
 }
 
 package() {
-    cd "$srcdir/$_pkgname-v$pkgver"*
+	cd "$srcdir/$_pkgname-v$pkgver"*
 
 	# Install files
 	make ROOT="$pkgdir" SYSTEMD=1 install
-	install -D -m644 "doc/$_pkgname.pdf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.pdf"
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
+# vim: set ft=sh noet:
