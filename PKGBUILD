@@ -8,8 +8,8 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.6.r1.g8a08e06
-pkgrel=2
+pkgver=0.9.6.r23.g8e6b153
+pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
@@ -26,17 +26,11 @@ optdepends=('hunspell-en: for English dictionary support'
             'python-regex: recommended for plugins')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}"::"git+${url}"
-        "0001-Set-environment-variable-for-Sigil-dictionaries.patch")
-sha256sums=('SKIP'
-            '8a1d6085c1ba2c2a919581096af20d0851a6a7a70c4c001a3d30881a511e52c6')
+source=("${pkgname%-git}"::"git+${url}")
+sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
-
-    # Upstream would prefer we *manually* set this env var when using the
-    # build option "-DINSTALL_BUNDLED_DICTS=0"
-    patch -p1 < ../0001-Set-environment-variable-for-Sigil-dictionaries.patch
 
     if [[ "${_localepurge}" != "" ]]; then
         for trans in src/Resource_Files/ts/*; do
