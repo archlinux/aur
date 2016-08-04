@@ -1,0 +1,16 @@
+pkgbase = rhea
+	pkgdesc = A constraint solver based on Cassowary
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/Nocte-/rhea
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = boost
+	makedepends = cmake>=2.8.3
+	depends = gcc-libs
+	source = https://github.com/Nocte-/rhea/archive/0.2.4.tar.gz
+	md5sums = 22e97deb84eb5b8e85288974218f9a4a
+
+pkgname = rhea
+
