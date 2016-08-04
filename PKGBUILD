@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.6
-_pkgver=4.6.4
-_rtpatchver=rt8
+_pkgver=4.6.5
+_rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,21 +28,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
-            '663e11a98b4bde339223b58e4f1bf9b3c6cd8588aa63946a542a2c7385a54cd5'
+            '4beaffb551407909af91db4c7e6e66d1401432de5410f5fa542d1d5d6c918a57'
             'SKIP'
             '1b6af3386f3e2c31e847200d343a43679e2d39d4c69ed4c4eb931440587b6d52'
             '63db5e7975054a40875c051eb1b1bc3fd2234e398d65c5cace9f64ef8c66bfd8'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -72,11 +70,6 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   msg "change-default-console-loglevel.patch"
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix rtlwifi atomic
-  # https://bugs.archlinux.org/task/49401
-  msg "0001-linux-4.6-rtlwifi-fix-atomic.patch"
-  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
   # Stops X from hanging on certain NVIDIA cards
