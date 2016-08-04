@@ -1,0 +1,11 @@
+--- mozjs-45.0.2/python/mozbuild/mozbuild/backend/recursivemake.py.orig	2016-08-04 09:44:05.439784749 +0800
++++ mozjs-45.0.2/python/mozbuild/mozbuild/backend/recursivemake.py	2016-08-04 09:44:19.226451018 +0800
+@@ -1306,7 +1306,7 @@
+             for f in files:
+                 if not isinstance(f, ObjDirPath):
+                     dest = mozpath.join(reltarget, path, mozpath.basename(f))
+-                    install_manifest.add_symlink(f.full_path, dest)
++                    install_manifest.add_copy(f.full_path, dest)
+                 else:
+                     backend_file.write('%s_FILES += %s\n' % (
+                         target_var, self._pretty_path(f, backend_file)))
