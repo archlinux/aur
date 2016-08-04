@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname='anything-sync-daemon'
-pkgver=5.80
+pkgver=5.82
 pkgrel=1
 pkgdesc='Offload anything to RAM (tmpfs) for speed and wear reduction.'
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('monitorix-sync-daemon' 'user-profile-sync-daemon' 'goanysync' 'goany
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
 backup=('etc/asd.conf')
 install=asd.install
-sha256sums=('6cf9dc62f86fcbf113c97899e6ebac2ce7f12214993016371d7e74b4b34f62ed')
+sha256sums=('02a482d95ab19d5234b34790b2ce56ea68a27ae2ba799bde75e4318d7d1472c4')
 
 build() {
   cd "$pkgname-$pkgver"
