@@ -12,3 +12,17 @@ pkgbase = perl-archive-zip-crc32
 
 pkgname = perl-archive-zip-crc32
 
+pkgbase = perl-archive-zip-crc32
+	pkgdesc = Provides a Debian manpage for crc32 command line from perl-archive-zip
+	pkgver = 1.58
+	pkgrel = 1
+	url = https://packages.debian.org/sid/libarchive-zip-perl
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-archive-zip
+	source = http://httpredir.debian.org/debian/pool/main/liba/libarchive-zip-perl/libarchive-zip-perl_1.58-1.debian.tar.xz
+	sha256sums = 4303c67c7a4c4b7649775d814b6d199309cee59322f3323d6f44895f0f101a67
+
+pkgname = perl-archive-zip-crc32
+
