@@ -19,9 +19,10 @@ sha256sums=('788f9f74e605cf33be21f2f3a7c96e6691efd5e09a081d18dc222a78d080b917'
             '177f2b9c4cf1570719557f9278183cfa40fbe6d6d9879c5cea0c4b73268b3e3b')
 
 package() {
-  install -Dm644 ${srcdir}/etcd.conf.yml.sample ${pkgdir}/etc/etcd/etcd.conf.yml
-  install -Dm644 ${srcdir}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
-  cd "${srcdir}/${_pkgname}-v${pkgver}-linux-amd64"
+  cd ${srcdir}
+  install -Dm644 etcd.conf.yml.sample ${pkgdir}/etc/etcd/etcd.conf.yml
+  install -Dm644 etcd.service ${pkgdir}/usr/lib/systemd/system/etcd.service
+  cd "${_pkgname}-v${pkgver}-linux-amd64"
   install -Dm755 etcd ${pkgdir}/usr/bin/etcd
   install -Dm755 etcdctl ${pkgdir}/usr/bin/etcdctl
 }
