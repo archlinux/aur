@@ -1,28 +1,34 @@
-# Maintainer:
+# Maintainer: Jan de Groot <jgc@archlinux.org>
 # Contributor: Kritoke <kritoke@gamebox.net>
 
 pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=7
+pkgrel=8
 pkgdesc="A library for playing SID music files."
 arch=('i686' 'x86_64')
 url="http://critical.ch/distfiles/"
 license=('GPL')
-source=(http://critical.ch/distfiles/${pkgname}-${pkgver}.tgz libsidplay-1.36.59-gcc43.patch)
-md5sums=('37c51ba4bd57164b1b0bb7b43b9adece' 'c24d7bca2639f4fee03c40c7dcaadfee')
+depends=('gcc-libs')
+source=(http://critical.ch/distfiles/${pkgname}-${pkgver}.tgz
+        libsidplay-1.36.59-gcc43.patch
+        g++-6_build.patch)
+sha256sums=('3da9b38d4eb5bf9e936b9604ba92da0594ef38047d50cf806a8e11c400008024'
+            '68476bfee9a378b045c81eb0f6d9aee7341610fe6b22047d67ce859a7a3b5053'
+            '6612b8c684bfd80d88431d3aa7f5a3fc911528f25f67ab530f78a7592cc11e23')
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  patch -Np1 -i $srcdir/libsidplay-1.36.59-gcc43.patch
+  cd ${pkgname}-${pkgver}
+  patch -Np1 -i ../libsidplay-1.36.59-gcc43.patch
+  patch -Np1 -i ../g++-6_build.patch
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install || return 1
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
