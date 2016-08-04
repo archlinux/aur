@@ -2,16 +2,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15035
+pkgver=r15039
 pkgrel=1
-pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
+pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('aspell' 'gtkspell' 'gtkmm' 'libexif' 'gc' 'poppler-glib' 'potrace'
-	 'libxslt' 'gsl' 'imagemagick' 'desktop-file-utils' 'python2'
+depends=('aspell' 'gc' 'poppler-glib' 'libxslt' 'gsl' 'imagemagick'
+	 'desktop-file-utils' 'gdl>=3.8.0.25' 'gtkmm3' 'python2' 'potrace'
 	 'popt' 'dbus-glib' 'libcdr' 'libvisio' 'python2' 'gdk-pixbuf2'
-	 'hicolor-icon-theme')
+	 'hicolor-icon-theme' 'libexif' )
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool')
+options=('!libtool' '!makeflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 _bzrmod="inkscape"
@@ -43,25 +43,26 @@ prepare() {
 }
 
 build() {
+LANG=C
   cd "$srcdir/$_bzrmod"
   [[ -d ../build ]] || mkdir ../build
   export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
   ./autogen.sh
-  sed -i 's|python -c|python2 -c|g' configure
+  sed -i 's|python -c|python2 -c|g' configure 
   cd ../build
-  ../$_bzrmod/configure LIBS='-lpangoft2-1.0 -lfontconfig' \
+  ../inkscape/configure LIBS='-lpangoft2-1.0 -lfontconfig' \
     --prefix=/usr \
     --without-gnome-vfs \
     --enable-lcms \
     --enable-poppler-cairo \
-    --disable-gtk3-experimental \
+    --enable-gtk3-experimental \
     --enable-dbusapi \
     --enable-visio \
     --enable-wpg \
     --disable-rpath \
     --enable-binreloc \
     --disable-dependency-tracking
-   make 
+  make 
 }
 
 package() {
