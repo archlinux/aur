@@ -22,7 +22,6 @@ pkgbase = mate-meta-1.15-gtk3
 	depends = mate-icon-theme-faenza-1.15-gtk3
 	depends = mate-media-1.15-gtk3
 	depends = mate-menus-1.15-gtk3
-	depends = mate-meta-1.15-gtk3
 	depends = mate-notification-daemon-1.15-gtk3
 	depends = mate-panel-1.15-gtk3
 	depends = mate-polkit-1.15-gtk3
