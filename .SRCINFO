@@ -1,7 +1,7 @@
 pkgbase = pharo
 	pkgdesc = a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk
 	pkgver = 5.0.759
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pharo-project.org/
 	arch = i686
 	arch = x86_64

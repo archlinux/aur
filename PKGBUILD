@@ -1,9 +1,9 @@
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
-# Contributor: Daniel Milde <daniel@milde.cz>
 
 pkgname=pharo
 pkgver=5.0.759
-pkgrel=1
+pkgrel=2
 pkgdesc="a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk"
 arch=(i686 x86_64)
 url="http://www.pharo-project.org/"
@@ -14,11 +14,11 @@ else
 	depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'nas' 'dbus-core' 'libxml2')
 fi
 
-imageversion=${pkgver//./}
-vmversion=480
+_imageversion=${pkgver//./}
+_vmversion=480
 
-source=(http://files.pharo.org/vm/pharo-spur32/linux/${vmversion}.zip \
-	http://files.pharo.org/image/50/${imageversion}.zip\
+source=(http://files.pharo.org/vm/pharo-spur32/linux/${_vmversion}.zip \
+	http://files.pharo.org/image/50/${_imageversion}.zip\
 	http://files.pharo.org/media/logo/icon-512x512.png\
 	http://files.pharo.org/sources/PharoV50.sources.zip\
 	$pkgname.sh
@@ -33,15 +33,15 @@ sha256sums=('f960f54c3a20fb11bab534da36c8401f6487075ac134d6033e9d3831e79379d6'
 
 package() {
 	cd $srcdir
-	unzip $vmversion.zip -d bin
+	unzip ${_vmversion}.zip -d bin
 
 	mkdir -p $pkgdir/opt/pharo/shared
 	mkdir -p $pkgdir/usr/bin
 
 	cp -R bin $pkgdir/opt/pharo
 	install $pkgname.sh $pkgdir/opt/pharo/pharo
-	install Pharo-${imageversion}.changes $pkgdir/opt/pharo/shared/Pharo5.0.changes
-	install Pharo-${imageversion}.image $pkgdir/opt/pharo/shared/Pharo5.0.image
+	install Pharo-${_imageversion}.changes $pkgdir/opt/pharo/shared/Pharo5.0.changes
+	install Pharo-${_imageversion}.image $pkgdir/opt/pharo/shared/Pharo5.0.image
 	install PharoV50.sources $pkgdir/opt/pharo/shared/PharoV50.sources
 
 	ln -s /opt/pharo/pharo $pkgdir/usr/bin/pharo
