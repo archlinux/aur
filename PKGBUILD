@@ -1,14 +1,14 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgbase=python-zerodb
 pkgname=("python-zerodb" "python2-zerodb")
-pkgver=0.98.0
+pkgver=0.99.0a2
 pkgrel=1
 pkgdesc="An end-to-end encrypted database protocol client"
 url="http://www.zerodb.io/"
 arch=('any')
 license=('AGPL')
-source=("https://pypi.python.org/packages/60/e2/cd05dd40a790c97e1b373d38ea14cc4f25ada45e8d77d3581a0fb831df3a/zerodb-0.98.0.tar.gz")
-md5sums=('3a7da730682c754d9b8d6aaff43d88cb')
+source=("https://pypi.python.org/packages/68/07/cd072e706023074be152e7dd75a642ce5be29e67191a5c18e5da8b65d8ba/zerodb-0.99.0a2.tar.gz")
+md5sums=('49834f86e2828cba7e56c253034321ce')
 
 package_python-zerodb() {
     depends=('python', 'python-setuptools' 'python-transaction')
