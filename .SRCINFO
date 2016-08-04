@@ -1,0 +1,14 @@
+pkgbase = python-fastentrypoints
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ninjaaron/fast-entry_points
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/26/8d/11d68ebaa9b4b8b9fd58a6d33b0e5b111fc872534edefd1abd162b6753cc/fastentrypoints-0.2.tar.gz
+	md5sums = 60ba08caebd032a2a4ceee05b725f343
+
+pkgname = python-fastentrypoints
+	depends = python
+
