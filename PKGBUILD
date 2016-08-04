@@ -18,6 +18,8 @@ md5sums=('8ef119e66bbdb8017aa045eef9736054'
          'b84aeccef5eb8dfc3679cdee874f218c')
         
 _gamepkg=gog_grim_fandango_remastered_2.3.0.7.sh
+# The sh file is a mojosetup wrapper around a zip archive.
+# Skip the useless bits so we can extract it without errors.
 _skipbytes=1005115
 build() {
   msg "You need a full copy of this game in order to install it"
