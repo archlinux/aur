@@ -1,18 +1,21 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
 url=http://www.libressl.org
-license=('bsd' 'custom:Openssl')
+license=('isc' 'custom:Openssl')
 depends=('glibc' 'ca-certificates')
 provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
 source=("http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
 	"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
-sha256sums=('121922b13169cd47a85e3e77f0bc129f8d04247193b42491cb1fab9074e80477'
+sha256sums=('5f87d778e5d62822d60e38fa9621c1c5648fc559d198ba314bd9d89cbf67d9e3'
             'SKIP')
+## To automatically validate the gpg key during build, add 'keyserver_options auto_key_retrieve' line to your local build account ~/.gnupg/gpg.conf
+## Alternatively, fetch the key manually before running makepkg: 'gpg --keyserver pgp.mit.edu --receive-key A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5'
+## Note that building package should not be run as root. Run the build on standard account or run the build inside chroot or systemd-nspawn container.
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
 
 build() {
