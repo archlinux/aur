@@ -16,13 +16,13 @@ source=("$url/archive/$_gitcommit.tar.gz")
 sha256sums=('3de5e77c07b8c41ef1ddd41431b114e9c6a1dad269699b5bfc914129986498b6')
 
 prepare() {
-  mv $srcdir/artwork-maia-gtk-$_gitcommit $srcdir/maia
-  mkdir -p build
+  mv $srcdir/artwork-maia-gtk-$_gitcommit $srcdir/${_pkgname}
+  mkdir -p $srcdir/${_pkgname}/build
 }
 
 build() {
-  cd build
-  cmake ../maia \
+  cd $srcdir/${_pkgname}/build
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd build
+  cd $srcdir/${_pkgname}/build
   make DESTDIR="${pkgdir}" install
 }
