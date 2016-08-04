@@ -28,7 +28,7 @@ pkgbase = minecraft-server
 	md5sums = b786935d6517d46fe0944377daba32b8
 	md5sums = fef6fadd0739ae03ff71ba61025be207
 	md5sums = afb84ad0316af0aca421b36eaa2bbd90
-	md5sums = 2cf2e3fe515be7c76da02256ab14abd4
-	md5sums = af6cd97b9b8d42f4fee75ed0bd0aa04a
+	md5sums = 025712e71efa4e21f625bddff28a2f15
+	md5sums = 1d7efd1c778c7866dcfe9628df847e58
 
 pkgname = minecraft-server

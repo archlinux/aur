@@ -22,13 +22,16 @@ declare -r game="minecraft"
 
 # System parameters for the control script
 [[ ! -z "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
-[[ ! -z "${IDLE_SESSION_NAME}" ]] && declare -r IDLE_SESSION_NAME=${IDLE_SESSION_NAME} || IDLE_SESSION_NAME="idle_server"
+[[ ! -z "${IDLE_SESSION_NAME}" ]] && declare -r IDLE_SESSION_NAME=${IDLE_SESSION_NAME} || IDLE_SESSION_NAME="${SESSION_NAME}_idle_server"
 [[ ! -z "${GAME_PORT}" ]]         && declare -r GAME_PORT=${GAME_PORT}       || GAME_PORT="25565"
 [[ ! -z "${CHECK_PLAYER_TIME}" ]] && declare -r CHECK_PLAYER_TIME=${CHECK_PLAYER_TIME} || CHECK_PLAYER_TIME="30"
 [[ ! -z "${IDLE_IF_TIME}" ]]      && declare -r IDLE_IF_TIME=${IDLE_IF_TIME} || IDLE_IF_TIME="1200"
 
+# Additional configuration options which only few may need to alter
+[[ ! -z "${GAME_COMMAND_DUMP}" ]] && declare -r GAME_COMMAND_DUMP=${GAME_COMMAND_DUMP} || GAME_COMMAND_DUMP="/tmp/${myname}_${SESSION_NAME}_command_dump.txt"
+
 # Variables passed over the command line will always override the one from a config file
-source /etc/conf.d/${game} || echo "Could not source /etc/conf.d/${game}"
+source /etc/conf.d/${game} 2>/dev/null || >&2 echo "Could not source /etc/conf.d/${game}"
 
 # Preserve the content of IDLE_SERVER without making it readonly
 [[ ! -z ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
@@ -66,8 +69,8 @@ game_command() {
 		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
 		sleep ${sleep_time:-0.3}
 		${SUDO_CMD} screen -S "${SESSION_NAME}" -X log off
-		${SUDO_CMD} cat "/tmp/${myname}_screen_command_dump.txt"
-		${SUDO_CMD} rm "/tmp/${myname}_screen_command_dump.txt"
+		${SUDO_CMD} cat "${GAME_COMMAND_DUMP}"
+		${SUDO_CMD} rm "${GAME_COMMAND_DUMP}"
 	fi
 }
 
@@ -160,7 +163,7 @@ server_start() {
 	else
 		echo -en "Starting server..."
 		${SUDO_CMD} screen -dmS "${SESSION_NAME}" /bin/bash -c "cd '${SERVER_ROOT}'; ${SERVER_START_CMD}"
-		${SUDO_CMD} screen -S "${SESSION_NAME}" -X logfile "/tmp/${myname}_screen_command_dump.txt"
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X logfile "${GAME_COMMAND_DUMP}"
 		echo -e "\e[39;1m done\e[0m"
 	fi
 

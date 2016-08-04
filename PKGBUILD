@@ -26,8 +26,8 @@ md5sums=('41c4e081defd80b09cb0391c894c2f3c'
          'b786935d6517d46fe0944377daba32b8'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
-         '2cf2e3fe515be7c76da02256ab14abd4'
-         'af6cd97b9b8d42f4fee75ed0bd0aa04a')
+         '025712e71efa4e21f625bddff28a2f15'
+         '1d7efd1c778c7866dcfe9628df847e58')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
