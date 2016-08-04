@@ -5,6 +5,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc='Compatibility between systemd and ZFS roots'
 license=('GPL3')
+url='https://github.com/dasJ/sd-zfs'
 conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
 source=("https://github.com/dasJ/sd-zfs/archive/v${pkgver}.tar.gz")
