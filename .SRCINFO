@@ -1,5 +1,5 @@
 pkgbase = tunnelbear
-	pkgdesc = TunnelBear OpenVPN configuration for Linux
+	pkgdesc = TunnelBear configuration for Linux
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://tunnelbear.com
