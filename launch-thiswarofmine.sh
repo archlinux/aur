@@ -22,10 +22,16 @@ make_user_dir() {
 
 launch_game() {
     cd "$user_dir"
-    ./"This War of Mine"
+    ./KosovoLinux
 }
 
-if [ ! -f "$user_dir/This War of Mine" ]
+if [ ! -d "$user_dir/Mods" ]
+then
+    echo "Updating user directory to v2 file layout"
+    mv "$user_dir" "${user_dir}_v1"
+fi
+
+if [ ! -e "$user_dir/KosovoLinux" ]
 then
     make_user_dir
 fi
