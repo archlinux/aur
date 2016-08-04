@@ -2,7 +2,7 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=3.7.5.r1280
+pkgver=3.7.5.r2485
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
@@ -13,8 +13,13 @@ makedepends=('git')
 conflicts=('fs2_open')
 provides=('fs2_open')
 install=fs2_open-git.install
-source=("${pkgname}::git+https://github.com/scp-fs2open/fs2open.github.com.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/scp-fs2open/fs2open.github.com.git"
+"cotire::git+https://github.com/sakra/cotire.git"
+"cmake-modules::git+https://github.com/asarium/cmake-modules.git")
+
+sha256sums=('SKIP'
+'SKIP'
+'SKIP')
 
 version=3.7.5
 
@@ -28,21 +33,27 @@ build()
 {
 	cd "$srcdir/$pkgname"
 
-	# Add --enable-debug to make a debug build.  These are NOT meant for general play;
-	#  only make a debug build if generating logs/bugreports.  This is true even for
-	#  these GIT builds, if you're using a mod that requires them.
-	LDFLAGS="-l:liblua.so.5.1 $LDFLAGS" CXXFLAGS="-I/usr/include/lua5.1 $CXXFLAGS" ./autogen.sh --enable-speech
+	git submodule init
+	git config submodule.cotire $srcmodule/cotire
+	git submodule update
+	git submodule init
+	git config submodule.cmake-modules $srcmodule/cmake-modules
+	git submodule update
+
+	mkdir build
+	cd build
+	cmake ../
 	make
 }
 
 package () {
-	cd "$srcdir/$pkgname/code"
+	cd "$srcdir/$pkgname/build/bin"
 	binary=`find fs2_open*`
-	cd ..
+	cd ../..
 	rev=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
 	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -D -m755 code/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev:10:5}"
+	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev:10:5}"
 	msg "The output binary will be called '${binary}_${rev:10:5}'"
 }
 
