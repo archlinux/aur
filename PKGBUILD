@@ -23,7 +23,7 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta3
-pkgrel=2
+pkgrel=3
 epoch=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -61,6 +61,7 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
         '0002-intel-ucode.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
+        '0005-10_linux-fix-grouping-of-tests.patch'
         'grub.default'
         'grub.cfg')
 
@@ -72,6 +73,7 @@ md5sums=('SKIP'
          'ff3b8524983ce02fc48fce38f96b1a82'
          'ba9d27c44b677bf329e5b96933bdbde8'
          'e506ae4a9f9f7d1b765febfa84e10d48'
+         'f1999315bbd25b4b9359919ce9b36144'
          'a03ffd56324520393bf574cefccb893d'
          'c8b9511586d57d6f2524ae7898397a46')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')  #Paul Hardy
@@ -84,8 +86,10 @@ _pkgver() {
 prepare() {
 	cd "${srcdir}/grub-${_pkgver}/"
 
+	msg "Patch to fix CVE-2015-8370"
 	# CVE-2015-8370
-	patch -Np1 -i ../0001-Fix-security-issue-when-reading-username-and-passwor.patch
+	patch -Np1 -i "${srcdir}/0001-Fix-security-issue-when-reading-username-and-passwor.patch"
+	echo
 
 	msg "Patch to load Intel microcode"
 	patch -Np1 -i "${srcdir}/0002-intel-ucode.patch"
@@ -98,6 +102,10 @@ prepare() {
 	msg "Patch to enable GRUB_COLOR_* variables in grub-mkconfig"
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
+	echo
+
+	msg "Patch to fix grouping of tests for GRUB_DEVICE"
+	patch -Np1 -i "${srcdir}/0005-10_linux-fix-grouping-of-tests.patch"
 	echo
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
