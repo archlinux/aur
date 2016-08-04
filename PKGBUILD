@@ -1,7 +1,7 @@
 pkgbase=('python-dirlog')
 pkgname=('python-dirlog')
 _module='dirlog'
-pkgver='0.2.3'
+pkgver='0.2.4'
 pkgrel=1
 pkgdesc="keep a log of directories you visit to get back fast"
 url="https://github.com/ninjaaron/dirlog"
@@ -9,8 +9,8 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
-source=("https://pypi.python.org/packages/91/30/3badfe5ffb9df91724ae05b497f2f347d0ef742a1293103295dee1d0ab9f/dirlog-${pkgver}.tar.gz")
-md5sums=('f0adea190157f85b8aa0e8f57749105a')
+source=("https://pypi.python.org/packages/13/b7/3788f77ade8353947971faf3baf414a519f7b12f83dd59ca46219b5dc77c/dirlog-${pkgver}.tar.gz")
+md5sums=('f17fec93271677c7e187cfdd5c826507')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
