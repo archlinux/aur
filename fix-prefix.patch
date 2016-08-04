@@ -8,8 +8,8 @@ index b54dc08..e8b3f34 100644
  
 -#define ETCPREFIX "/usr/local"
 -#define VARPREFIX "/usr/local"
-+#define ETCPREFIX "/"
-+#define VARPREFIX "/"
++#define ETCPREFIX ""
++#define VARPREFIX ""
  
  #ifdef _LARGE_FILES
  # define _LARGEFILE64_SOURCE
