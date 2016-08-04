@@ -1,6 +1,6 @@
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.4.0'
+pkgver='1.4.1'
 pkgrel='1'
 pkgdesc="(R)?ex Deployment & Configuration Management"
 arch=('any')
@@ -9,10 +9,10 @@ options=('!emptydirs')
 depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep' 'perl-devel-caller' 'perl-padwalker')
 makedepends=()
 url='http://www.rexify.org/'
-source=('http://search.cpan.org/CPAN/authors/id/F/FE/FERKI/Rex-1.4.0.tar.gz')
-md5sums=('46b888f022144354adff15d986c1e20b')
-sha256sums=('b4f930044ea907aae67c18f347a33b55cd3da4efe5f5a5869db3c891d6c4e125')
-_distdir="Rex-1.4.0"
+source=('https://cpan.metacpan.org/authors/id/J/JF/JFRIED/Rex-1.4.1.tar.gz')
+md5sums=('eb979192874904fc0e63555db80c7dca')
+sha256sums=('6898add0c9ad8b30b1ea5f70730a53cf899e4fe7228e1f8d5006d6694cfe8eb2')
+_distdir="Rex-1.4.1"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
