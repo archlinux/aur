@@ -10,16 +10,17 @@
 #########################
 
 _use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option , '_use_clang' need set to 1
+_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option, '_use_clang' is need set to 1
 _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
+_debug_mode=0          # Build in debug mode
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=53.0.2783.2
+pkgver=53.0.2785.8
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -45,7 +46,7 @@ depends=('desktop-file-utils'
          #'opus'
          #'protobuf'
          #'libevent'
-         'libvpx'
+         'libvpx.so'
          'ffmpeg'
          )
 makedepends=('libexif'
@@ -81,7 +82,6 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r11.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r0.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-linker-warnings-r0.patch'
         # Misc Patches
         'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
@@ -96,9 +96,8 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
           '7f835fba97fe94109e72d3be49ec28a89e30713f'
           '3a1c57ae49a31e8eff64b32c4196433ea240e4ea'
-          '39caf5a74fe2dd1832c803b9e6fab5d21e3cbe36'
           # Misc Patches
-          '80122f1da3df77309fdee7dad4bf6370d9b6f350'
+          '7b61f4d256fd5039652a334e18f02529405245b5'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
           '3032c9aeb68d80d8ef3cb8029be0d06ee402fa7f'
@@ -109,6 +108,16 @@ install=chromium-dev.install
 ################################################
 ## -- Don't touch anything below this line -- ##
 ################################################
+
+# Build Debug mode?
+if [ "${_debug_mode}" = "1" ]; then
+  _debug_flag="-g"
+  _strip=0
+#  options+=('debug')
+elif [ "${_debug_mode}" = "0" ]; then
+  _strip=1
+fi
+
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # NOTE: These are for Arch Linux use ONLY. For your own distribution, please
@@ -222,13 +231,13 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/catapult/tracing/third_party/d3'
            'third_party/catapult/tracing/third_party/gl-matrix'
            'third_party/catapult/tracing/third_party/jszip'
+           'third_party/catapult/tracing/third_party/mannwhitneyu'
            'third_party/cld_2'
            'third_party/cros_system_api'
            'third_party/cython/python_flags.py'
            'third_party/devscripts'
            'third_party/dom_distiller_js'
            'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js'
-           'third_party/ffmpeg' # http://crbug.com/588423
            'third_party/fips181'
            'third_party/flot'
            'third_party/google_input_tools'
@@ -259,7 +268,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/mesa'
            'third_party/modp_b64'
            'third_party/mt19937ar'
-           'third_party/openh264' # http://crbug.com/588423 (?)
+           'third_party/openh264'
            'third_party/openmax_dl'
            'third_party/opus'
            'third_party/ots'
@@ -297,6 +306,10 @@ _necesary=('base/third_party/dmg_fp'
            'v8/src/third_party/valgrind'
            )
 
+if [ "${_debug_mode}" = "1" ]; then
+  _necesary+=('native_client/src/third_party/valgrind')
+fi
+
 # Set build flags
 # NOTE
 # -Denable_sql_database=0                    | http://crbug.com/22208
@@ -327,7 +340,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Dlinux_link_libpci=1'
         '-Dlinux_link_libspeechd=1'
         "-Dlinux_link_pulseaudio=${_use_pulseaudio}"
-        '-Dlinux_strip_binary=1'
+        "-Dlinux_strip_binary=${_strip}"
         '-Dlinux_use_bundled_binutils=0'
         '-Dlinux_use_bundled_gold=0'
         '-Dlinux_use_gold_flags=0'
@@ -335,7 +348,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Dno_strict_aliasing=1'
         '-Dproprietary_codecs=1'
         '-Dpython_ver=2.7'
-        '-Dremove_webcore_debug_symbols=1'
+        "-Dremove_webcore_debug_symbols=${_strip}"
         "-Dtarget_arch=${_target_arch}"
         '-Dusb_ids_path=/usr/share/hwdata/usb.ids'
         "-Duse_gconf=${_use_gnome}"
@@ -348,7 +361,7 @@ _flags=("-Dclang=${_use_clang}"
         '-Dwerror='
         )
 
-# Set pnacl flags
+# Set pnacl flags (depending of the $CARCH)
 if [ "${_build_pnacl}" = "0" ]; then
   _flags+=('-Ddisable_nacl=1'
            '-Ddisable_pnacl=1'
@@ -443,7 +456,6 @@ prepare() {
   # Patch sources from Gentoo
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r2.patch"
   patch -p0 -i "${srcdir}/chromium-system-jinja-r11.patch"
-  patch -p0 -i "${srcdir}/chromium-linker-warnings-r0.patch"
 
   # Misc Patches:
   patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
@@ -484,6 +496,12 @@ prepare() {
   find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
 
   touch chrome/test/data/webui/i18n_process_css_test.html
+
+  # Changing bundle libraries to system ones
+  python2 build/linux/unbundle/replace_gyp_files.py ${_use_system[@]}
+
+  # update libaddressinput strings
+  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 }
 
 build() {
@@ -536,23 +554,17 @@ build() {
     fi
   fi
 
-  # Changing bundle libraries to system ones
-  python2 build/linux/unbundle/replace_gyp_files.py ${_use_system[@]}
-
-  # update libaddressinput strings
-  python2 third_party/libaddressinput/chromium/tools/update-strings.py
-
   # CFLAGS are passed through -Drelease_extra_cflags=
   export -n CFLAGS CXXFLAGS
 
   msg2 "Starting building Chromium..."
   # Configure the builder
-  python2 build/gyp_chromium --depth=. -Drelease_extra_cflags="$CFLAGS" ${_flags[@]} ${_use_system[@]}
+  python2 build/gyp_chromium --depth=. -Drelease_extra_cflags="$CFLAGS $_debug_flag" ${_flags[@]} ${_use_system[@]}
 
   # Build mksnapshot and pax-mark it.
   if [ "${_use_pax}" = "1" ]; then
-    ninja -C out/Release -v "mksnapshot"
-    paxctl -cm "out/Release/mksnapshot"
+    ninja -C out/Release -v mksnapshot
+    paxctl -cm out/Release/mksnapshot
   fi
 
   # Build all with ninja
@@ -570,6 +582,11 @@ package() {
   install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
+
+  if [ "${_debug_mode}" = "1" ]; then
+    # Build with debug needs a tons of space. remove this save that space
+    rm -fr "chromium-launcher-${_launcher_ver}/third_party"
+  fi
 
   # Install binaries
   install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
@@ -626,7 +643,7 @@ package() {
   install -Dm644 chromium-dev.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 
-  # install gnome stuff if is detected
+  # install gnome stuff if detect it
   if [ "${_use_gnome}" = "1" ]; then
     install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/default-app.template" "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
     sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
@@ -635,10 +652,12 @@ package() {
         -i "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
   fi
 
-  # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
-  if [ "${_build_pnacl}" = "1" ]; then
-    strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"nacl_helper{,_bootstrap,_nonsfi}
+  if [ "${_debug_mode}" = "0" ]; then
+    # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
+    if [ "${_build_pnacl}" = "1" ]; then
+      strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"nacl_helper{,_bootstrap,_nonsfi}
+    fi
+    strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"{chromium-dev,chrome-sandbox,chromedriver}
+    strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdmadapter,clearkeycdm}.so
   fi
-  strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"{chromium-dev,chrome-sandbox,chromedriver}
-  strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdmadapter,clearkeycdm}.so
 }
