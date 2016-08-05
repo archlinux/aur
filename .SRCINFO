@@ -1,0 +1,21 @@
+pkgbase = wowmatrix
+	pkgdesc = WowMatrix is a 100% FREE WoW AddOn Installer and Updater
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.wowmatrix.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = wowmatrix
+	conflicts = wowmatrix
+	source = wowmatrix.desktop
+	source = wowmatrix.png
+	md5sums = cd53cc6f306dbd734dcb76ac064c96c1
+	md5sums = 8575a4076ceb1ab6c1808272505f36ae
+	source_i686 = http://swupdate.wowmatrix.com/linux/wowmatrix32.tar.gz
+	md5sums_i686 = SKIP
+	source_x86_64 = http://swupdate.wowmatrix.com/linux/wowmatrix.tar.gz
+	md5sums_x86_64 = SKIP
+
+pkgname = wowmatrix
+

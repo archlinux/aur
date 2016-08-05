@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WowMatrix
+GenericName=WoW AddOn Installer and Updater
+Comment=Download, install and update your favorite World of Warcraft AddOns with just a few simple clicks.
+Exec=/usr/bin/wowmatrix
+Icon=wowmatrix
+Terminal=false
+Categories=Game;
