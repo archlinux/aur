@@ -3,7 +3,7 @@
 pkgname='autodl-irssi-community'
 _pkgname='autodl-irssi'
 pkgver=1.62
-pkgrel=1
+pkgrel=2
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-irssi'
@@ -32,7 +32,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/$_pkgname"
 
   # copy over all the IRC/tracker files
-  cp -r "AutodlIrssi" "$pkgdir/usr/share/$_pkgname/"A
+  cp -r "AutodlIrssi" "$pkgdir/usr/share/$_pkgname/"
   chmod 755 "$pkgdir/usr/share/$_pkgname/AutodlIrssi"
   chmod 755 "$pkgdir/usr/share/$_pkgname/AutodlIrssi/trackers"
 	
