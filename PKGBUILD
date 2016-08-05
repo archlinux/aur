@@ -19,6 +19,7 @@ conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 md5sums_armv6h=('SKIP')
+md5sums_aarch64=('SKIP')
 
 # expand the feature array
 printf -v _features '%s,' "${_features[@]}"
@@ -29,6 +30,7 @@ _url_prefix="https://caddyserver.com/download/build?os=linux&features=${_feature
 source_i686=("caddy.tar.gz::${_url_prefix}&arch=386")
 source_x86_64=("caddy.tar.gz::${_url_prefix}&arch=amd64")
 source_armv6h=("caddy.tar.gz::${_url_prefix}&arch=arm")
+source_aarch64=("caddy.tar.gz::${_url_prefix}&arch=arm64")
 
 package() {
   echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
