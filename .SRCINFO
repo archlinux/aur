@@ -1,0 +1,19 @@
+pkgbase = pgoapi-git
+	pkgdesc = Pokemon Go API lib
+	pkgver = r154.dffe149
+	pkgrel = 1
+	url = https://github.com/tejado/pgoapi
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-requests
+	depends = python2-protobuf
+	depends = python2-gpsoauth
+	depends = python2-geopy
+	depends = python2-s2sphere
+	source = git://github.com/tejado/pgoapi.git
+	md5sums = SKIP
+
+pkgname = pgoapi-git
+
