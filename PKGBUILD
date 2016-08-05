@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=lib32-libvpx
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=2
 pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('BSD')
 depends=('lib32-gcc-libs' 'libvpx')
 makedepends=('git' 'yasm')
 provides=('libvpx.so')
-source=("https://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-${pkgver}.tar.bz2")
-sha256sums=('306d67908625675f8e188d37a81fbfafdf5068b09d9aa52702b6fbe601c76797')
+source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
+sha256sums=('e2fc00c9f60c76f91a1cde16a2356e33a45b76a5a5a1370df65fd57052a4994a')
 
 build() {
   cd libvpx-${pkgver}
@@ -25,12 +25,16 @@ build() {
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --target='x86-linux-gcc' \
-    --enable-vp{8,9} \
-    --enable-postproc \
     --enable-runtime-cpu-detect \
     --enable-shared \
     --enable-pic \
-    --disable-install-{bins,docs,srcs}
+    --disable-install-{bins,docs,srcs} \
+    --enable-vp8 \
+    --enable-postproc \
+    --enable-vp9 \
+    --enable-vp9-highbitdepth \
+    --enable-experimental \
+    --enable-spatial-svc
   make
 }
 
