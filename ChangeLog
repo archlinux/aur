@@ -1,3 +1,8 @@
+2016-08-01  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.6.5_gnu-1
+	* Disabled CONFIG_INTEL_MEI_TXE [10]
+
 2016-05-09  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.5.3_gnu-1
@@ -95,3 +100,4 @@
 [7] https://labs.parabola.nu/issues/857
 [8] https://labs.parabola.nu/issues/858
 [9] https://labs.parabola.nu/issues/1000
+[10] https://labs.parabola.nu/issues/1062

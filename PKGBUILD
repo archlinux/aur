@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.6-gnu
-_pkgver=4.6.4-gnu
+_pkgver=4.6.5-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -58,7 +58,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '5a6aaafa95408a406d36c13f38fcba90d352328dd8bbab2d0e893c79a216df33'
+            '76e18176f1c86f94be3a3c97e966cff1991df279246fd95d0d22ebe0eb8c9851'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -66,8 +66,8 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '61e60b3a914744d85b030aa1c5f923308fcb9c05ac244d01b8b25820de9cdac0'
-            '7959e923a90555432db595b9da677668839bd37ef4f2c920d22eb7ab9013e63e'
+            '533030c1b4d48efa8bb9cd95b27724d42b1b7f187a0e3d2334ad5bc561452a54'
+            'c0d32b0654f018f5460909cc6b58ed64394eecb7b9786a675552a1d6bd65612c'
             '7a286c6d42c2b7cbf778428e215a61fd13958d6a89349a7f508a76b738d4bace'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -270,7 +270,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
