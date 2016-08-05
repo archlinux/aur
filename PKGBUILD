@@ -37,13 +37,6 @@ prepare() {
 
 build() {
 	cd $srcdir/TwoTriangles
-	cd lib/imgui
-	sh build_staticlib.sh
-	cd ../stb
-	sh build_staticlib.sh
-	cd ../nativefiledialog/src
-	scons debug=0
-	cd ../../..
 	sh build.sh release
 }
 
