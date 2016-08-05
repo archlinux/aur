@@ -3,23 +3,23 @@
 # Contributor: Shalygin Konstantin (kostya@opentech.ru)
 
 pkgname=horst
-pkgver=4.2
+pkgver=5.0
 pkgrel=1
 pkgdesc='A small, lightweight IEEE802.11 wireless LAN analyzer with a text interface'
 arch=(i686 x86_64)
 url='http://br1.einfach.org/tech/horst'
 depends=(ncurses iw)
 license=(GPL)
-source=(http://br1.einfach.org/horst_dl/horst-$pkgver.tar.gz)
-sha256sums=('eab46330998a4c6d5abc9bfdad739b62b57c65049ac6f160e58ee3edd3260057')
+source=($pkgname-$pkgver::"https://github.com/br101/horst/archive/version-$pkgver.tar.gz")
+sha256sums=('ea19cc0565b0bc8e001d11d4480030ef8ade67f85b2ddd28f6eb9233cb1e5c5b')
 
 build() {
-  cd horst-$pkgver
+  cd horst-version-$pkgver
   make
 }
 
 package() {
-  cd horst-$pkgver
+  cd horst-version-$pkgver
 
   install -Dm755 horst "$pkgdir/usr/bin/horst"
   install -Dm644 horst.1 "$pkgdir/usr/share/man/man1/horst.1"
