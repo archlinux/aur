@@ -1,10 +1,10 @@
 # Maintainer: Eric Renfro <psi-jack@linux-help.org>
 pkgname=clamsmtp
 pkgver="1.10"
-pkgrel=3
+pkgrel=4
 pkgdesc="SMTP filter that allows you to check for viruses using the ClamAV anti-virus software."
 url="http://thewalter.net/stef/software/clamsmtp/"
-license="GPL"
+license=('GPL')
 depends=('clamav')
 source=(http://thewalter.net/stef/software/clamsmtp/$pkgname-$pkgver.tar.gz clamsmtp.confd clamsmtp.service)
 backup=(etc/clamav/clamsmtpd.conf)

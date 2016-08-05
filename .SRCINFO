@@ -1,7 +1,7 @@
 pkgbase = clamsmtp
 	pkgdesc = SMTP filter that allows you to check for viruses using the ClamAV anti-virus software.
 	pkgver = 1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://thewalter.net/stef/software/clamsmtp/
 	install = clamsmtp.install
 	arch = i686
