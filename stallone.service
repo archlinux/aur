@@ -1,0 +1,9 @@
+[Unit]
+Description=Stallone NAT-PMP Server
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/stallone --daemonize
+
+[Install]
+WantedBy=multi-user.target
