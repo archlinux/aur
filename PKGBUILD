@@ -1,7 +1,7 @@
 # Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=pget
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Parallel file download client"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Code-Hex/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f9f0a6931674afe15646a05c2ba341b0c5e42d999e8abbe5f43b1009e91ef515')
+sha256sums=('665f79845c3bdc9bc97736da81946f11e46be82663e2712bba7fea8186095096')
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/Code-Hex/"
