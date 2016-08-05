@@ -1,5 +1,5 @@
 pkgname=osvr-rendermanager-git
-pkgver=v00_06_43.r306.ga9bf800
+pkgver=v00_06_43.r341.g4e3a868
 pkgrel=1
 pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
