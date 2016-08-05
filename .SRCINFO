@@ -1,0 +1,14 @@
+pkgbase = deluge-plugins-autoremoveplus
+	pkgdesc = AutoRemovePlus is a plugin for Deluge that you can use to automatically remove torrents
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/omaralvarez/deluge-autoremoveplus
+	arch = any
+	license = GPL3
+	depends = deluge
+	noextract = AutoRemovePlus-0.5.1-py2.7.egg
+	source = https://github.com/omaralvarez/deluge-autoremoveplus/releases/download/v0.5.1/AutoRemovePlus-0.5.1-py2.7.egg
+	md5sums = 4efb70b58d1d244b89bbbfcb617edc6e
+
+pkgname = deluge-plugins-autoremoveplus
+
