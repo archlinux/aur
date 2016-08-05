@@ -6,7 +6,7 @@
 
 _pkgname=libmatio
 pkgname=libmatio-git
-pkgver=v1.5.8.7.ge387271
+pkgver=1.5.8.7.ge387271
 pkgrel=1
 pkgdesc='C library with a fortran 90/95 module interface for reading/writing MATLAB MAT-files'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}")
 
 pkgver () {
   cd "${_pkgname}"
-  git describe --tags | sed 's/-/./g'
+  git describe --tags | sed 's/^v//' | sed 's/-/./g'
 }
 
 build() {
