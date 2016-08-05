@@ -15,7 +15,7 @@ depends=(
     'python2-flask'
     'python2-flask-babel'
     'python2-flask-login'
-    'python2-flask-markdown'
+    #'python2-flask-markdown'
     'python2-flask-principal'
     'python2-netaddr'
     'python2-numpy'

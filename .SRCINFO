@@ -13,7 +13,6 @@ pkgbase = octoprint
 	depends = python2-flask
 	depends = python2-flask-babel
 	depends = python2-flask-login
-	depends = python2-flask-markdown
 	depends = python2-flask-principal
 	depends = python2-netaddr
 	depends = python2-numpy
