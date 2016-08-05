@@ -1,3 +1,4 @@
 src/
 *.zip
 pkg/
+*.pkg.tar.xz
