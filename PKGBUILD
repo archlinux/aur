@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=cruiser
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('atlas-maps')
 replaces=('atlas-maps' 'atlas-maps-bin' 'atlas-maps-beta-bin')
 source=("http://www.talent.gr/public/cruiser/cruiser-${pkgver}.zip"
         "cruiser.sh")
-md5sums=('eb749b9792b2eadc6fb6afa928ee7f35'
+md5sums=('3ede733d0f07ec7674a68678af1d671c'
          '6c23697fc0421c752227dd1e1f29245f')
 
 build () {
