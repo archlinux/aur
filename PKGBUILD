@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=taskopen
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Script for taking notes and open urls with taskwarrior"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl' 'perl-json' 'task>=2.4.0')
 makedepends=('git' 'make')
 source=("https://github.com/ValiValpas/taskopen/archive/v${pkgver}.tar.gz")
-sha256sums=("3c33f599b6508223d89155f15f367f2e71215420347823a427704204ffaaca22")
+sha256sums=("30a69aa4eb99b8672dc7cec7a3ee509d34799849a8a1697abf007a2b61903c66")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
