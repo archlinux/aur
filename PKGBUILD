@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.4-gnu
-_pkgver=4.4.15-gnu
+_pkgver=4.4.16-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -47,6 +47,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'ecryptfs.patch'
         '0001-sdhci-revert.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
@@ -65,7 +66,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '54e296db4a120d966e24e3759ffd3218215eb8250eaf82531c1e64281dc39f1c'
+            '618dc2d7fec411675084b836d57aa36233df34e3554e7aab224f9aa34f5e30c0'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -75,16 +76,17 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '9982e56579830fe38454118b16800d244c704738d13cfdbc3c2d4d9b30092273'
-            '1d022b5cfd6af4b6c5390a2ec8e2510c8e14981dac90e461029bec5d79fe157f'
+            '7cbda7707e8edfd28658da3ef3f58f5b6314a483d45757a7b2375d1c0450eaa1'
+            '1aa649f7e8001391effb6edc65c8d47bf189301f8cc35fc23515141d8cbca14c'
             '9da41cd276c7508b0d67dba84502ea1c43381952764273d2319393fe3cbab3ff'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'a2e240ab338f02ebde278131cf5810e9aa3846a8238e3d26dc235eace05ab4e7'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '3a89d1887024190c8fec6d7896c5a9f3097625ccfcb8dbd7c16cfa1a95d0132e'
+            'f61c9dfc33a326c533d4f8f52d236f47c8da9da0600a6c9f67f8e33c88e5dcd0'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -148,6 +150,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # https://bugs.archlinux.org/task/50126 - broken ecryptfs
+  patch -p1 -i "${srcdir}/ecryptfs.patch"
 
   # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
   # fixes #47778 sdhci broken on some boards
