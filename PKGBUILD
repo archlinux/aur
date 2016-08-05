@@ -2,10 +2,10 @@
 
 pkgname=vkcpp
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Header that provides a C++ wrapper for vulkan library"
 arch=('i686' 'x86_64')
-url='https://github.com/nvpro-pipeline/vkcpp'
+url='https://github.com/KhronosGroup/Vulkan-Hpp'
 license=('custom')
 depends=('vulkan-headers')
 makedepends=('cmake' 'gcc')
@@ -13,7 +13,7 @@ source=('vkcpp.hook'
         'VkCppGenerator.patch')
 
 _gitname='vkcpp'
-_gitroot='https://github.com/nvpro-pipeline/vkcpp.git'
+_gitroot='https://github.com/KhronosGroup/Vulkan-Hpp.git'
 
 build() {
     cd ${srcdir}
@@ -37,17 +37,17 @@ build() {
 }
 
 package() {
-    msg "copying the vk_cpp build hook"
+    msg "copying the vulkan build hook"
     mkdir -p ${pkgdir}/etc/pacman.d/hooks/
     cp ${srcdir}/vkcpp.hook ${pkgdir}/etc/pacman.d/hooks/
 
-    msg "copying VkCppGenerator"
+    msg "copying VulkanHppGenerator"
     mkdir -p ${pkgdir}/usr/bin/
-    cp ${srcdir}/$_gitname/VkCppGenerator ${pkgdir}/usr/bin/
+    cp ${srcdir}/$_gitname/VulkanHppGenerator ${pkgdir}/usr/bin/
 
-    msg "generating vk_cpp header"
+    msg "generating vulkan header"
     mkdir -p ${pkgdir}/usr/include/vulkan/
-    ${pkgdir}/usr/bin/VkCppGenerator /usr/share/vulkan/vk.xml ${pkgdir}/usr/include/vulkan/vk_cpp.hpp
+    ${pkgdir}/usr/bin/VulkanHppGenerator /usr/share/vulkan/vk.xml ${pkgdir}/usr/include/vulkan/vulkan.hpp
 }
-md5sums=('100ac1d5a513c1ec220f973b7e7a91c6'
-         '69edf13e9bfa58a70776e22fb05a1ca3')
+md5sums=('30ddd45911e0e526cfa72c312b373113'
+         '4d7818eaedc6a980fdf32f35c8b58dc0')

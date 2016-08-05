@@ -1,8 +1,8 @@
 pkgbase = vkcpp
 	pkgdesc = Header that provides a C++ wrapper for vulkan library
 	pkgver = 1.0
-	pkgrel = 4
-	url = https://github.com/nvpro-pipeline/vkcpp
+	pkgrel = 5
+	url = https://github.com/KhronosGroup/Vulkan-Hpp
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,8 +11,8 @@ pkgbase = vkcpp
 	depends = vulkan-headers
 	source = vkcpp.hook
 	source = VkCppGenerator.patch
-	md5sums = 100ac1d5a513c1ec220f973b7e7a91c6
-	md5sums = 69edf13e9bfa58a70776e22fb05a1ca3
+	md5sums = 30ddd45911e0e526cfa72c312b373113
+	md5sums = 4d7818eaedc6a980fdf32f35c8b58dc0
 
 pkgname = vkcpp
 
