@@ -29,6 +29,9 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --enable-shared --with-hdf5
   make
+
+  cd documentation
+  find . -name "*.texi" -exec makeinfo {} \;
 }
 
 package() {
