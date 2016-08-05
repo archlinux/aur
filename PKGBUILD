@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=fsharp
-pkgver=4.0.1.9
+pkgver=4.0.1.10
 pkgrel=1
 pkgdesc="The Open Edition of the F# compiler, core library and tools"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://fsharp.org/"
 license=('Apache')
 depends=('mono>=4.0.3.20')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fsharp/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('a6272ebbe9f4389e28b71a9d3feb56ed')
+md5sums=('0800e5073b32a561715bbfac2ca7ef76')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
