@@ -1,0 +1,4 @@
+# For OVR
+KERNEL=="hidraw*", ATTR{idVendor}=="1532", ATTR{idProduct}=="0b00", MODE="0666"
+KERNEL=="hidraw*", ATTR{idVendor}=="0572", ATTR{idProduct}=="1806", MODE="0666"
+
