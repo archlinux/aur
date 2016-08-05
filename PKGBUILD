@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.6-gnu
-_pkgver=4.6.2-gnu
+_pkgver=4.6.5-gnu
 _rtbasever=4.6
-_rtpatchver=rt5
+_rtpatchver=rt9
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -61,9 +61,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
+            '76e18176f1c86f94be3a3c97e966cff1991df279246fd95d0d22ebe0eb8c9851'
             'SKIP'
-            '0f1318c689a5544c8fd41b3aa4393679602c4f0c8ed832d235014d3238343a8a'
+            '4beaffb551407909af91db4c7e6e66d1401432de5410f5fa542d1d5d6c918a57'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,8 +71,8 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '544dea4e10a0a3dc59f8733bf8fca01815edba1e85949fd00a45f037a1553a1b'
-            'af06eef8b2bbe4b3e5403f88977f0a984d69568e4b0602fc4d8e1794566c3db6'
+            'f82fc9e36dccff9bc761f3d4801ca78c8da08d269acdabc62b0c5c7b01356886'
+            '55aa06cb017dbbeb13b1da1bb124c479aadfa60b40957f25579a1a84db94f791'
             '166d6bd39b9b2e9ebd5e58c0c07b189f6961776b73862c5d8de7bfecaf53dd28'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -282,7 +282,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
