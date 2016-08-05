@@ -1,20 +1,24 @@
 pkgbase=('python-dirlog')
 pkgname=('python-dirlog')
 _module='dirlog'
-pkgver='0.2.8'
+pkgver='0.2.9'
 pkgrel=1
 pkgdesc="keep a log of directories you visit to get back fast"
 url="https://github.com/ninjaaron/dirlog"
 depends=('python')
-makedepends=('python-pip')
+makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
-source=("https://pypi.python.org/packages/40/2f/c45b30ea45aa1b000e71b159fa06b9bfc50996f3d5971322ad18993bf078/dirlog-0.2.8-py3-none-any.whl")
-md5sums=('113d03a0c4b95239ae067c0268f070d2')
+source=("https://pypi.python.org/packages/b0/f6/8a64b94ce79589f54f0449e6c1f4ddb975482e3e04ddf22af2764b8d5fb9/dirlog-${pkgver}-py3-none-any.whl")
+md5sums=('6e9b55375549ddd5376906d55709df1e')
+
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
+}
 
 package() {
     depends+=()
-    cd "${srcdir}"
-    pip3 install --upgrade --root="${pkgdir}" "dirlog-0.2.8-py3-none-any.whl"
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-
