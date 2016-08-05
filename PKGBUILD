@@ -8,12 +8,18 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='https://github.com/VFR-maniac/VapourSynth-FFT3DFilter'
 license=('GPL')
-depends=('vapoursynth' 'fftw')
+depends=('vapoursynth'
+         'fftw'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/VFR-maniac/VapourSynth-FFT3DFilter.git")
-sha1sums=('SKIP')
+source=("${_plug}::git+https://github.com/VFR-maniac/VapourSynth-FFT3DFilter.git"
+        '3.patch'
+        )
+sha1sums=('SKIP'
+          'f73fd4fbadac6fc0f4a346750af66ce59caeac75'
+          )
 
 pkgver() {
   cd "${_plug}"
@@ -23,18 +29,21 @@ pkgver() {
 
 prepare() {
   rm -fr "${_plug}/VapourSynth.h"
+
+  cd "${_plug}"
+  patch -p1 -i "${srcdir}/3.patch"
 }
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --prefix=/usr \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
+  make -C "${_plug}" DESTDIR="${pkgdir}" install
 #   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }

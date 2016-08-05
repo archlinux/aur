@@ -1,0 +1,153 @@
+From f3eb5e8b85642af733df950424d9f2abe17dc8b1 Mon Sep 17 00:00:00 2001
+From: l33tmeatwad <l33tmeatwad@live.com>
+Date: Thu, 7 Apr 2016 14:42:08 -0400
+Subject: [PATCH 1/5] Fixes setting values properly based on the OS
+
+Previous version resets all the values after setting them for windows or darwin (OSX).
+---
+ configure | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 6082bf6..e4fc50a 100755
+--- a/configure
++++ b/configure
+@@ -163,19 +163,20 @@ else
+ fi
+ case "$TARGET_OS" in
+     *mingw*|*cygwin*)
+-        SYS="WIN32"
+         SOSUFFIX="dll"
+         SONAME="$BASENAME.$SOSUFFIX"
+         SOFLAGS="-Wl,--enable-auto-image-base -Wl,--export-all-symbols"
+         ;;
+     *darwin*)
+-        SYS="MACOSX"
+         SOSUFFIX="dylib"
+         SONAME="lib$BASENAME.$REV.$SOSUFFIX"
+         SONAME_LN="lib$BASENAME.$SOSUFFIX"
+         SOFLAGS="-dynamiclib -Wl,-single_module -Wl,-read_only_relocs,suppress -install_name ${DESTDIR}${libdir}/${SONAME}"
++        CXXFLAGS="$CXXFLAGS -fPIC"
++        LDFLAGS="-fPIC $LDFLAGS"
++        DEPLIBS="libfftw3f_threads $DEPLIBS libm"
+         ;;
+-    *)
++	*linux*)
+         SOSUFFIX="so"
+         SONAME="lib$BASENAME.$SOSUFFIX.$REV"
+         SONAME_LN="lib$BASENAME.$SOSUFFIX"
+@@ -183,7 +184,9 @@ case "$TARGET_OS" in
+         CXXFLAGS="$CXXFLAGS -fPIC"
+         LDFLAGS="-fPIC $LDFLAGS"
+         DEPLIBS="libfftw3f_threads $DEPLIBS libm"
+-        ;;
++		;;
++	*)
++		error_exit "target is unsupported system"
+ esac
+ 
+ # -- add extra --------------------------------------------------------------------------------
+
+From a8aea65cd734ac76d44ee103f02f6db99217e949 Mon Sep 17 00:00:00 2001
+From: l33tmeatwad <l33tmeatwad@live.com>
+Date: Thu, 7 Apr 2016 14:54:22 -0400
+Subject: [PATCH 2/5] Need cmath for sqrt
+
+---
+ fft3dfilter_c.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fft3dfilter_c.cpp b/fft3dfilter_c.cpp
+index 211a8fd..f224ecb 100644
+--- a/fft3dfilter_c.cpp
++++ b/fft3dfilter_c.cpp
+@@ -22,7 +22,7 @@
+  *****************************************************************************/
+ 
+ #include <algorithm>
+-
++#include <cmath>
+ #include <fftw3.h>
+ 
+ // since v1.7 we use outpitch instead of outwidth
+
+From 701479c0202b19681cc73715f57e1fb7acd999c7 Mon Sep 17 00:00:00 2001
+From: l33tmeatwad <l33tmeatwad@live.com>
+Date: Thu, 7 Apr 2016 15:06:45 -0400
+Subject: [PATCH 3/5] Needs cmath & stdlib.h, changed constexpr to const
+
+Needed cmth and stdlib.h (on OSX to compile) and sqrt was causing ft2 and ft3 to error since it cannot be used in constexpr in C++11.
+---
+ FFT3DFilter.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/FFT3DFilter.cpp b/FFT3DFilter.cpp
+index c0bd179..a0c11e8 100644
+--- a/FFT3DFilter.cpp
++++ b/FFT3DFilter.cpp
+@@ -83,7 +83,8 @@
+ 
+ #include <cstring>
+ #include <algorithm>
+-
++#include <cmath>
++#include <stdlib.h>
+ #include "FFT3DFilter.h"
+ #include "info.h"
+ 
+@@ -197,8 +198,8 @@ static void SigmasToPattern( float sigma, float sigma2, float sigma3, float sigm
+ {
+     /* it is not fast, but called only in constructor */
+     float sigmacur;
+-    constexpr float ft2 = sqrt( 0.5f ) / 2; /* frequency for sigma2 */
+-    constexpr float ft3 = sqrt( 0.5f ) / 4; /* frequency for sigma3 */
++    const float ft2 = sqrt( 0.5f ) / 2; /* frequency for sigma2 */
++    const float ft3 = sqrt( 0.5f ) / 4; /* frequency for sigma3 */
+     for( int h = 0; h < bh; h++ )
+     {
+         for( int w = 0; w < outwidth; w++ )
+
+From 602b728c74f9773f47b17f31d0ef4c395b190ab9 Mon Sep 17 00:00:00 2001
+From: l33tmeatwad <l33tmeatwad@live.com>
+Date: Thu, 7 Apr 2016 16:29:33 -0400
+Subject: [PATCH 4/5] Remove previous revisions
+
+---
+ GNUmakefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 8525dc4..0fddd08 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -31,6 +31,7 @@ install: all
+ ifneq ($(IMPLIB),)
+ 	install -m 644 $(IMPLIB) $(DESTDIR)$(libdir)
+ else
++	$(RM) $(libdir)/lib$(BASENAME).*.*
+ 	install -m 644 $(SONAME) $(DESTDIR)$(libdir)/$(SONAME)
+ 	$(if $(SONAME), ln -f -s $(libdir)/$(SONAME) $(DESTDIR)$(vsplugindir)/$(SONAME_LN))
+ endif
+
+From 1926beb9449daa71d5557b1150cf81699b052022 Mon Sep 17 00:00:00 2001
+From: l33tmeatwad <l33tmeatwad@live.com>
+Date: Thu, 7 Apr 2016 16:33:11 -0400
+Subject: [PATCH 5/5] Update GNUmakefile
+
+---
+ GNUmakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 0fddd08..e621844 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -31,7 +31,7 @@ install: all
+ ifneq ($(IMPLIB),)
+ 	install -m 644 $(IMPLIB) $(DESTDIR)$(libdir)
+ else
+-	$(RM) $(libdir)/lib$(BASENAME).*.*
++	$(RM) $(DESTDIR)$(libdir)/lib$(BASENAME).*
+ 	install -m 644 $(SONAME) $(DESTDIR)$(libdir)/$(SONAME)
+ 	$(if $(SONAME), ln -f -s $(libdir)/$(SONAME) $(DESTDIR)$(vsplugindir)/$(SONAME_LN))
+ endif
