@@ -3,7 +3,7 @@
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
 pkgname=feedreader
-pkgver=1.4.3
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'
 arch=('i686' 'x86_64')
@@ -14,18 +14,16 @@ makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
-source=('https://launchpad.net/feedreader/'${pkgver%.*}'/'${pkgver}'/+download/FeedReader-'${pkgver}'.tar.gz')
-sha256sums=('e43ceb9eb866c2e8e16d460b6914e6450b2c97fe62f0730a2ec67a3c7d7f0a3c')
+source=('https://github.com/jangernert/FeedReader/archive/v'${pkgver}'.tar.gz')
+sha256sums=('0e3921b795c9a96e92ac575cb21746775660e27bcd8546930904b901d649356f')
 
-
-##Build without Libunity (-DWITH_LIBUNITY=OFF)
 build() {
   cd "${srcdir}"
   if [[ -d "${srcdir}/build" ]]; then
     rm -rf "${srcdir}/build"
   fi
   mkdir "${srcdir}/build" && cd "${srcdir}/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DWITH_LIBUNITY=OFF ..
+  cmake ../FeedReader-"${pkgver}"/
   make
 }
 
