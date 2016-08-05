@@ -1,0 +1,30 @@
+pkgbase = code
+	pkgdesc = Code editing. Redefined. Visual Studio Code.
+	pkgver = 1.4.0
+	pkgrel = 0
+	url = https://code.visualstudio.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = gtk2
+	depends = libnotify
+	depends = nss
+	provides = vscode
+	provides = visualstudiocode
+	provides = visual-studio-code
+	conflicts = visual-studio-code
+	conflicts = visual-studio-code-oss
+	conflicts = visual-studio-code-git
+	replaces = visual-studio-code
+	source_i686 = https://az764295.vo.msecnd.net/stable/6276dcb0ae497766056b4c09ea75be1d76a8b679/VSCode-linux-ia32-stable.zip
+	source_i686 = code.desktop
+	md5sums_i686 = acba124c25d7ca9356824ee416e72688
+	md5sums_i686 = d21422a3633592bac7b22aa7d891d9f2
+	source_x86_64 = https://az764295.vo.msecnd.net/stable/6276dcb0ae497766056b4c09ea75be1d76a8b679/VSCode-linux-x64-stable.zip
+	source_x86_64 = code.desktop
+	md5sums_x86_64 = 86881a676f8b582886618933d5b55267
+	md5sums_x86_64 = d21422a3633592bac7b22aa7d891d9f2
+
+pkgname = code
+
