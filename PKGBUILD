@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r167.g3b31297
+pkgver=1.1.0.insider.r3197.g1a7ca5a
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -17,7 +17,7 @@ source=("git+https://github.com/Microsoft/vscode"
         'product_json.patch')
 sha1sums=('SKIP'
           'a42e461ed586ef0fd31ff911ad662135f4f602aa'
-          'cc69f5b0edaef346e9c39bd10c944730f380dbd3')
+          '8a36a8af89af183e0fa29d9141a1bb4ae9cafd5a')
 
 case "$CARCH" in
     i686)
@@ -40,9 +40,11 @@ pkgver() {
 prepare() {
     cd "${srcdir}/vscode"
 
-    local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
     patch -p1 -i "${srcdir}/product_json.patch"
-    sed "s/@commit@/${_commit}/g" -i product.json
+    local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+    local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
+    sed -e "s/@COMMIT@/${_commit}/g" -e "s/@DATE@/${_datestamp}/" \
+        -i product.json
 }
 
 build() {
