@@ -1,0 +1,13 @@
+diff --git a/webcit/webserver.c b/webcit/webserver.c
+index 116c647..ba7e341 100644
+--- a/webcit/webserver.c
++++ b/webcit/webserver.c
+@@ -274,7 +274,7 @@ int main(int argc, char **argv)
+ 	}
+ 
+ 	/* Tell libical to return an error instead of aborting if it sees badly formed iCalendar data. */
+-	icalerror_errors_are_fatal = 0;
++	icalerror_set_errors_are_fatal(0);
+ 
+ 	/* Use our own prefix on tzid's generated from system tzdata */
+ 	icaltimezone_set_tzid_prefix("/citadel.org/");

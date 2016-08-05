@@ -1,0 +1,9 @@
+[Unit]
+Description=Citadel/UX Groupware web interface over ssl
+
+[Service]
+ExecStart=/usr/citadel/webcit/webcit -d -s -p2443
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
