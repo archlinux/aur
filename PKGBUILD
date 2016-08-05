@@ -1,8 +1,8 @@
 #Maintainer: Kirill Gagarski <kirill.gagarski [at] gmail.com>
 pkgname=gi-zsh-completion
 
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Zsh completion support for gi"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi-bash-completion"
