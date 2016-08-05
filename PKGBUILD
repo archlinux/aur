@@ -4,7 +4,7 @@
 # Contributor: Thermionix <thermionix@gmail.com>
 
 pkgname=octoprint
-pkgver=1.2.10
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
     'python2-flask'
     'python2-flask-babel'
     'python2-flask-login'
+    'python2-flask-markdown'
     'python2-flask-principal'
     'python2-netaddr'
     'python2-numpy'
