@@ -1,0 +1,15 @@
+diff -uprNx '.*' vtuner.linux-driver-rel1.4.orig/vtunerc_proxyfe.c vtuner.linux-driver-rel1.4/vtunerc_proxyfe.c
+--- vtuner.linux-driver-rel1.4.orig/vtunerc_proxyfe.c	2016-08-05 11:33:24.000000000 +0200
++++ vtuner.linux-driver-rel1.4/vtunerc_proxyfe.c	2016-08-05 11:34:37.840983911 +0200
+@@ -107,9 +107,9 @@ static int dvb_proxyfe_read_ucblocks(str
+ 	return 0;
+ }
+ 
+-static int dvb_proxyfe_get_frontend(struct dvb_frontend *fe)
++static int dvb_proxyfe_get_frontend(struct dvb_frontend *fe,
++					struct dtv_frontend_properties *c)
+ {
+-	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+ 	struct dvb_proxyfe_state *state = fe->demodulator_priv;
+ 	struct vtunerc_ctx *ctx = state->ctx;
+ 	struct vtuner_message msg;
