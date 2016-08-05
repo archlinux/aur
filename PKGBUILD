@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2172.g69ba0bd
+pkgver=0.2.r2179.gdc530dc
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
