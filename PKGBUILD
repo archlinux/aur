@@ -4,8 +4,8 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.06.04
-pkgrel=2
+pkgver=6.06.06
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -36,12 +36,14 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'rootd'
 'root.xml'
 'python3.diff'
+'disable-gcc-abi-check.diff'
 'call_PyErr_Clear_if_no_such_attribute.patch')
-md5sums=('55a2f98dd4cea79c9c4e32407c2d6d17'
+md5sums=('4308449892210c8d36e36924261fea26'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
-         '1777520d65cc545b5416ee2fed0cd45c'
+         'e1f1eb398dec2a66bb790ef277b3ab91'
+         '89d3caaa1d73a623c56a42f21dfdd669'
          'f36f7bff97ed7232d8534c2ef166b2bf')
 						   
 prepare(){
@@ -53,6 +55,9 @@ prepare(){
 
         ## https://sft.its.cern.ch/jira/browse/ROOT-7640
         patch -p1 < ${srcdir}/call_PyErr_Clear_if_no_such_attribute.patch
+
+        ## disable check newly introduced in 6.06.06
+        patch -p1 < ${srcdir}/disable-gcc-abi-check.diff
 }
 
 build() {
@@ -64,7 +69,7 @@ build() {
 		sys_libs+="-Dbuiltin_${sys_lib}=ON "
 	done
 
-	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" cmake ${srcdir}/${pkgname}-${pkgver} \
+	cmake ${srcdir}/${pkgname}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Dgnuinstall=ON \
@@ -73,7 +78,7 @@ build() {
 		-Dcastor=OFF \
 		${sys_libs}
 
-	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" make
+	make
 }
 
 package() {

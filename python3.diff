@@ -1,6 +1,6 @@
-diff -rupN old/tmva/pymva/inc/TMVA/PyMethodBase.h root-6.06.00/tmva/pymva/inc/TMVA/PyMethodBase.h
---- old/tmva/pymva/inc/TMVA/PyMethodBase.h	2016-01-19 08:59:57.882987040 -0500
-+++ root-6.06.00/tmva/pymva/inc/TMVA/PyMethodBase.h	2016-01-19 09:09:55.119661503 -0500
+diff -rupN old/tmva/pymva/inc/TMVA/PyMethodBase.h root-6.06.06/tmva/pymva/inc/TMVA/PyMethodBase.h
+--- old/tmva/pymva/inc/TMVA/PyMethodBase.h	2016-07-06 18:36:49.000000000 +0200
++++ root-6.06.06/tmva/pymva/inc/TMVA/PyMethodBase.h	2016-08-05 13:56:31.839179271 +0200
 @@ -81,7 +81,7 @@ namespace TMVA {
        // default destructur
        virtual ~PyMethodBase();
@@ -10,81 +10,10 @@ diff -rupN old/tmva/pymva/inc/TMVA/PyMethodBase.h root-6.06.00/tmva/pymva/inc/TM
        static int  PyIsInitialized();
        static void PyFinalize();
        static void PySetProgramName(TString name);
-diff -rupN old/tmva/pymva/src/MethodPyAdaBoost.cxx root-6.06.00/tmva/pymva/src/MethodPyAdaBoost.cxx
---- old/tmva/pymva/src/MethodPyAdaBoost.cxx	2016-01-19 08:59:57.882987040 -0500
-+++ root-6.06.00/tmva/pymva/src/MethodPyAdaBoost.cxx	2016-01-19 09:01:32.379654939 -0500
-@@ -175,7 +175,7 @@ void  MethodPyAdaBoost::Init()
- 
-    //Import sklearn
-    // Convert the file name to a Python string.
--   PyObject *pName = PyString_FromString("sklearn.ensemble");
-+   PyObject *pName = PyBytes_FromString("sklearn.ensemble");
-    // Import the file as a Python module.
-    fModule = PyImport_Import(pName);
-    Py_DECREF(pName);
-@@ -261,7 +261,7 @@ void MethodPyAdaBoost::Train()
-    PyObject *model_data = PyObject_CallObject(fPickleDumps , model_arg);
-    std::ofstream PyData;
-    PyData.open(path.Data());
--   PyData << PyString_AsString(model_data);
-+   PyData << PyBytes_AsString(model_data);
-    PyData.close();
-    Py_DECREF(model_arg);
-    Py_DECREF(model_data);
-diff -rupN old/tmva/pymva/src/MethodPyGTB.cxx root-6.06.00/tmva/pymva/src/MethodPyGTB.cxx
---- old/tmva/pymva/src/MethodPyGTB.cxx	2016-01-19 08:59:57.882987040 -0500
-+++ root-6.06.00/tmva/pymva/src/MethodPyGTB.cxx	2016-01-19 09:02:31.089655706 -0500
-@@ -306,7 +306,7 @@ void  MethodPyGTB::Init()
- 
-    //Import sklearn
-    // Convert the file name to a Python string.
--   PyObject *pName = PyString_FromString("sklearn.ensemble");
-+   PyObject *pName = PyBytes_FromString("sklearn.ensemble");
-    // Import the file as a Python module.
-    fModule = PyImport_Import(pName);
-    Py_DECREF(pName);
-@@ -420,7 +420,7 @@ void MethodPyGTB::Train()
-    PyObject *model_data = PyObject_CallObject(fPickleDumps , model_arg);
-    std::ofstream PyData;
-    PyData.open(path.Data());
--   PyData << PyString_AsString(model_data);
-+   PyData << PyBytes_AsString(model_data);
-    PyData.close();
-    Py_DECREF(model_arg);
-    Py_DECREF(model_data);
-diff -rupN old/tmva/pymva/src/MethodPyRandomForest.cxx root-6.06.00/tmva/pymva/src/MethodPyRandomForest.cxx
---- old/tmva/pymva/src/MethodPyRandomForest.cxx	2016-01-19 08:59:57.882987040 -0500
-+++ root-6.06.00/tmva/pymva/src/MethodPyRandomForest.cxx	2016-01-19 09:03:58.979656854 -0500
-@@ -279,7 +279,7 @@ void  MethodPyRandomForest::Init()
- 
-    //Import sklearn
-    // Convert the file name to a Python string.
--   PyObject *pName = PyString_FromString("sklearn.ensemble");
-+   PyObject *pName = PyBytes_FromString("sklearn.ensemble");
-    // Import the file as a Python module.
-    fModule = PyImport_Import(pName);
-    Py_DECREF(pName);
-@@ -390,7 +390,7 @@ void MethodPyRandomForest::Train()
-    PyObject *model_data = PyObject_CallObject(fPickleDumps , model_arg);
-    std::ofstream PyData;
-    PyData.open(path.Data());
--   PyData << PyString_AsString(model_data);
-+   PyData << PyBytes_AsString(model_data);
-    PyData.close();
-    Py_DECREF(model_arg);
-    Py_DECREF(model_data);
-diff -rupN old/tmva/pymva/src/PyMethodBase.cxx root-6.06.00/tmva/pymva/src/PyMethodBase.cxx
---- old/tmva/pymva/src/PyMethodBase.cxx	2016-01-19 08:59:57.882987040 -0500
-+++ root-6.06.00/tmva/pymva/src/PyMethodBase.cxx	2016-01-19 09:18:48.549668467 -0500
-@@ -20,6 +20,7 @@
- #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
- #include <numpy/arrayobject.h>
- 
-+#include <string>
- 
- using namespace TMVA;
- 
-@@ -82,7 +83,7 @@ PyObject *PyMethodBase::Eval(TString cod
+diff -rupN old/tmva/pymva/src/PyMethodBase.cxx root-6.06.06/tmva/pymva/src/PyMethodBase.cxx
+--- old/tmva/pymva/src/PyMethodBase.cxx	2016-07-06 18:36:49.000000000 +0200
++++ root-6.06.06/tmva/pymva/src/PyMethodBase.cxx	2016-08-05 14:07:21.225701275 +0200
+@@ -82,7 +82,7 @@ PyObject *PyMethodBase::Eval(TString cod
  }
  
  //_______________________________________________________________________
@@ -93,25 +22,7 @@ diff -rupN old/tmva/pymva/src/PyMethodBase.cxx root-6.06.00/tmva/pymva/src/PyMet
  {
     TMVA::MsgLogger Log;
     if (!PyIsInitialized()) {
-@@ -91,7 +92,7 @@ void PyMethodBase::PyInitialize()
-       import_array();
-    }
-    //preparing objects for eval
--   PyObject *bName = PyString_FromString("__builtin__");
-+   PyObject *bName = PyBytes_FromString("__builtin__");
-    // Import the file as a Python module.
-    fModuleBuiltin = PyImport_Import(bName);
-    if (!fModuleBuiltin) {
-@@ -104,7 +105,7 @@ void PyMethodBase::PyInitialize()
-    Py_DECREF(bName);
-    Py_DECREF(mDict);
-    //preparing objects for pickle
--   PyObject *pName = PyString_FromString("pickle");
-+   PyObject *pName = PyBytes_FromString("pickle");
-    // Import the file as a Python module.
-    fModulePickle = PyImport_Import(pName);
-    if (!fModulePickle) {
-@@ -118,7 +119,7 @@ void PyMethodBase::PyInitialize()
+@@ -149,7 +149,7 @@ void PyMethodBase::PyInitialize()
     Py_DECREF(pName);
     Py_DECREF(pDict);
  
@@ -120,17 +31,3 @@ diff -rupN old/tmva/pymva/src/PyMethodBase.cxx root-6.06.00/tmva/pymva/src/PyMet
  }
  
  //_______________________________________________________________________
-@@ -133,7 +134,12 @@ void PyMethodBase::PyFinalize()
- }
- void PyMethodBase::PySetProgramName(TString name)
- {
--   Py_SetProgramName(const_cast<char *>(name.Data()));
-+	std::string s = name.Data();
-+	std::wstring ws(s.size(), L' ');
-+	ws.resize(std::mbstowcs(&ws[0], s.c_str(), s.size()));
-+
-+   //Py_SetProgramName(const_cast<wchar_t *>(name.Data()));
-+   Py_SetProgramName(const_cast<wchar_t *>(ws.data()));
- }
- //_______________________________________________________________________
- TString PyMethodBase::Py_GetProgramName()
