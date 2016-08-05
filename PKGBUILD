@@ -14,13 +14,13 @@
 #
 
 pkgname=ejabberd-git
-pkgver=16.06.85.g4a49dfe
+pkgver=16.08.1.g9a5f075
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
 url="http://www.ejabberd.im/"
 license=("GPL")
-depends=('expat' 'openssl' 'zlib' 'erlang-nox' 'pam' 'iproute2' 'erlang-unixodbc'
+depends=('expat' 'elixir' 'openssl' 'zlib' 'erlang-nox' 'pam' 'iproute2' 'erlang-unixodbc'
 	 'libyaml' 'sqlite')
 makedepends=('git' 'rebar')
 provides=('ejabberd')
@@ -32,7 +32,6 @@ install=${pkgname%%-git}.install
 options=(emptydirs)
 source=("${pkgname}::git+https://github.com/processone/ejabberd#branch=master"
 	"cache_tab::git+https://github.com/processone/cache_tab"
-	"elixir::git+https://github.com/elixir-lang/elixir"
 	"eredis::git+https://github.com/wooga/eredis"
 	"esip::git+https://github.com/processone/esip"
 	"ezlib::git+https://github.com/processone/ezlib"
@@ -63,9 +62,9 @@ source=("${pkgname}::git+https://github.com/processone/ejabberd#branch=master"
 	"stun::git+https://github.com/processone/stun"
 	"${pkgname%%-git}.logrotate"
 	"ejabberd.service"
-	"sysuser.conf")
+	"sysuser.conf"
+	"rebar.config.patch")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -97,7 +96,8 @@ md5sums=('SKIP'
          'SKIP'
          'f97c8a96160f30e0aecc9526c12e6606'
          '2253e277a6b3fae5124219c0aafa1089'
-         'be2fa3c15c92a9c2b9b6b7a3957d5c3a')
+         'be2fa3c15c92a9c2b9b6b7a3957d5c3a'
+         '7cb3e95debcdac90b3ebcec950835706')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -109,14 +109,15 @@ prepare() {
   cd "$srcdir/${pkgname}"
 
   mkdir -p "$srcdir/${pkgname}/deps"
-  for i in elixir eredis esip goldrush jiffy lager meck p1_oauth2 cache_tab \
-	iconv ezlib fast_tls fast_xml fast_yaml hamcrest luerl p1_mysql \
+  for i in eredis esip goldrush jiffy lager meck p1_oauth2 cache_tab \
+	iconv ezlib fast_tls fast_xml fast_yaml hamcrest luerl moka p1_mysql \
 	p1_pam p1_pgsql p1_utils p1_xmlrpc protobuffs rebar_elixir_plugin \
-	riakc riak_pb sqlite3 stringprep stun; do
+	riakc riak_pb sqlite3 samerlib stringprep stun; do
     rm -rf "$srcdir/${pkgname}/deps/$i"
     mv $srcdir/$i "$srcdir/${pkgname}/deps"
   done
-
+  rm -rf "$srcdir/${pkgname}/deps/elixir"
+  patch -p1 < ../rebar.config.patch
   #sed -i "s|git describe --tags 2>/dev/null|echo $pkgver|" configure.ac
 }
 

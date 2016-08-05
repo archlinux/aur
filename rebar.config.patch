@@ -1,0 +1,23 @@
+diff --git a/rebar.config b/rebar.config
+index 693f4f5..c78de5a 100644
+--- a/rebar.config
++++ b/rebar.config
+@@ -37,9 +37,6 @@
+                                               "13f9bfb9b27d216e8e033b0e0a9a29097ed923dd"}}},  % for riak_pb-2.1.0.7
+         {if_var_true, riak, {protobuffs, ".*", {git, "https://github.com/basho/erlang_protobuffs",
+                                                 "6e7fc924506e2dc166a6170e580ce1d95ebbd5bd"}}},  % for riak_pb-2.1.0.7 with correct meck dependency
+-        %% Elixir support, needed to run tests
+-        {if_var_true, elixir, {elixir, ".*", {git, "https://github.com/elixir-lang/elixir",
+-                                              {tag, {if_version_above, "17", "v1.2.6", "v1.1.1"}}}}},
+         %% TODO: When modules are fully migrated to new structure and mix, we will not need anymore rebar_elixir_plugin
+         {if_var_true, elixir, {rebar_elixir_plugin, ".*",
+                                {git, "https://github.com/processone/rebar_elixir_plugin", "0.1.0"}}},
+@@ -88,7 +85,7 @@
+            {if_var_true, elixir, rebar_exunit}]}.
+ 
+ {if_var_true, elixir,
+-              {lib_dirs, ["deps/elixir/lib"]}}.
++              {lib_dirs, ["/usr/lib/elixir/lib"]}}.
+ {if_var_true, elixir,
+               {src_dirs, ["include"]}}.
+ 

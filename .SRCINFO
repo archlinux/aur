@@ -1,6 +1,6 @@
 pkgbase = ejabberd-git
 	pkgdesc = Jabber server written in Erlang
-	pkgver = 16.06.85.g4a49dfe
+	pkgver = 16.08.1.g9a5f075
 	pkgrel = 1
 	url = http://www.ejabberd.im/
 	install = ejabberd.install
@@ -10,6 +10,7 @@ pkgbase = ejabberd-git
 	makedepends = git
 	makedepends = rebar
 	depends = expat
+	depends = elixir
 	depends = openssl
 	depends = zlib
 	depends = erlang-nox
@@ -26,7 +27,6 @@ pkgbase = ejabberd-git
 	backup = etc/logrotate.d/ejabberd
 	source = ejabberd-git::git+https://github.com/processone/ejabberd#branch=master
 	source = cache_tab::git+https://github.com/processone/cache_tab
-	source = elixir::git+https://github.com/elixir-lang/elixir
 	source = eredis::git+https://github.com/wooga/eredis
 	source = esip::git+https://github.com/processone/esip
 	source = ezlib::git+https://github.com/processone/ezlib
@@ -58,7 +58,7 @@ pkgbase = ejabberd-git
 	source = ejabberd.logrotate
 	source = ejabberd.service
 	source = sysuser.conf
-	md5sums = SKIP
+	source = rebar.config.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -92,6 +92,7 @@ pkgbase = ejabberd-git
 	md5sums = f97c8a96160f30e0aecc9526c12e6606
 	md5sums = 2253e277a6b3fae5124219c0aafa1089
 	md5sums = be2fa3c15c92a9c2b9b6b7a3957d5c3a
+	md5sums = 7cb3e95debcdac90b3ebcec950835706
 
 pkgname = ejabberd-git
 
