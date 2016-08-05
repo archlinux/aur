@@ -6,7 +6,7 @@
 
 pkgname=findutils-selinux
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -17,7 +17,6 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url="http://www.gnu.org/software/findutils"
 source=(ftp://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.gz)
-install=findutils.install
 sha1sums=('f18e8aaee3f3d4173a1f598001003be8706d28b0')
 #validpgpkeys=('A15B725964A95EE5') # James Youngman <james@youngman.org>
 build() {
