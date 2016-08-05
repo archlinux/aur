@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -22,16 +22,16 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
-        iproute2-fhs.patch)
-sha1sums=('f6271aaf9b24b9c465622bea8a29a883034d8d49'
+         '0001-make-iproute2-fhs-compliant.patch')
+sha1sums=('04ad96e2eb21893a987f10b9c8f6cb2945bce56b'
           'SKIP'
-          '2dc6d8f1a2495a0d51eaa303dcc78ecc0c477935')
+          '1d048b8e798af6e0f7dc16576dd5531be3bbbd70')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/iproute2-fhs.patch"
+  patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
 
   # do not treat warnings as errors
   sed -i 's/-Werror//' Makefile
