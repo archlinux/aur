@@ -6,9 +6,9 @@ pkgver=v2.2.g85692a1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=173748"
+url='http://forum.doom9.org/showthread.php?t=173748'
 license=('GPL')
-depends=('vapoursynth'
+depends=('libavcodec.so'
          )
 makedepends=('git'
              )
