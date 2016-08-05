@@ -1,0 +1,37 @@
+From: Tyler Hicks <tyhicks <at> canonical.com>
+Subject: [PATCH] eCryptfs: Fix directory open regression in linux-stable
+Newsgroups: gmane.comp.file-systems.ecryptfs.general, gmane.linux.kernel.stable
+Date: 2016-06-29 03:39:41 GMT (14 hours and 12 minutes ago)
+
+Cherry-picking mainline commit 2f36db71009304b3f0b95afacd8eba1f9f046b87
+introduces a regression in eCryptfs when mainline commit
+6a480a7842545ec520a91730209ec0bae41694c1 (4.6+) is not present. The
+regression causes all attempts at opening directory files to fail with
+EMEDIUMTYPE when the lower filesystem's file_operations for directory
+files do not implement mmap.
+
+This is a simple fix that allows the check for the lower file's mmap
+implementation to be ignored if the lower file is a directory.
+
+Signed-off-by: Tyler Hicks <tyhicks <at> canonical.com>
+Tested-by: Tyler Hicks <tyhicks <at> canonical.com> # 4.4.y, 3.18.y
+Cc: <stable <at> vger.kernel.org> # 4.5-
+---
+ fs/ecryptfs/kthread.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/ecryptfs/kthread.c b/fs/ecryptfs/kthread.c
+index e818f5a..b9faeab 100644
+--- a/fs/ecryptfs/kthread.c	2016-06-30 23:32:07.029678000 +0200
++++ b/fs/ecryptfs/kthread.c	2016-06-30 23:34:13.022284475 +0200
+@@ -171,7 +171,7 @@ int ecryptfs_privileged_open(struct file
+ 		goto out;
+ 	}
+ have_file:
+-	if ((*lower_file)->f_op->mmap == NULL) {
++	if ((*lower_file)->f_op->mmap == NULL && !d_is_dir(lower_dentry)) {
+ 		fput(*lower_file);
+ 		*lower_file = NULL;
+ 		rc = -EMEDIUMTYPE;
+-- 
+2.7.4
