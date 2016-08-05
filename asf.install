@@ -18,16 +18,13 @@ post_upgrade() {
       usermod -s /bin/false -c "ArchiSteamFarm daemon" -d /var/lib/asf -g asf asf &> /dev/null
     fi
     if [ "$(vercmp $2 2.1.3.1-2)" -lt 0 ] && [ -d /opt/asf/config ]; then
-      mv /opt/asf/config/* /var/lib/asf/
-      rm -rf /opt/asf/config/
+      mv /opt/asf/config/ /var/lib/asf/
       mv /opt/asf/log.txt /var/lib/asf/
-
-      mv /var/lib/asf/ASF.json.pacsave /var/lib/asf/ASF.json
 
       chown -R asf: /var/lib/asf
 
       echo "# ASF config folder has been moved to /var/lib/asf"
-      echo "# Consider this change when using /usr/bin/asf (e.g. 'asf --path /var/lib/asf')"
+      echo "# Consider this change when using /usr/bin/asf (e.g. 'asf --path=/var/lib/asf')"
     fi
 }
 

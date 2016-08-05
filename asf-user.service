@@ -4,7 +4,7 @@ Documentation=https://github.com/JustArchi/ArchiSteamFarm/wiki
 Wants=network.target
 
 [Service]
-ExecStart=/usr/bin/asf --server --path %h/.config/asf
+ExecStart=/usr/bin/asf --server --path=%h/.config/asf
 
 [Install]
 WantedBy=default.target

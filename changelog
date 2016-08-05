@@ -1,4 +1,6 @@
 2016-08-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.3.1-3:
+    package & services : fix various bugs pertaining to --path
   * 2.1.3.1-2:
     package: config folder moved to /var/lib/asf
     service: rename ReadWriteDirectories to ReadWritePaths
