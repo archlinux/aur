@@ -1,0 +1,18 @@
+pkgbase = systemdjournal2gelf
+	pkgdesc = Export entries from systemds' journal and send them to a graylog server using gelf
+	pkgver = 0.r33.33fb757
+	pkgrel = 1
+	url = https://github.com/parse-nl/systemdjournal2gelf
+	arch = any
+	license = React
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/parse-nl/systemdjournal2gelf.git
+	source = systemdjournal2gelf.conf
+	source = systemdjournal2gelf.service
+	md5sums = SKIP
+	md5sums = b1d36faab737f215df43167a0fc9d3ff
+	md5sums = bad7f3eb935eb50f00e2b63be3b3c6a3
+
+pkgname = systemdjournal2gelf
+

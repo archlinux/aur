@@ -1,0 +1,11 @@
+[Unit]
+Description=Export entries from systemds' journal and send them to a graylog server using gelf
+
+[Service]
+EnvironmentFile=/etc/systemdjournal2gelf.conf
+ExecStart=/usr/bin/systemdjournal2gelf $JOURNAL_GELF_REMOTE_TARGET --follow
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
