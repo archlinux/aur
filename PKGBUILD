@@ -1,13 +1,13 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Louis Tim Larsen <louis(a)louis.dk>
 # vercheck-pkgbuild: auto
 # vercheck-ubuntu: name=${pkgname}, repo=utopic
 
 pkgname=ubuntu-wallpapers
 _ubuntu_rel=0ubuntu1
-pkgver=15.04.1
+pkgver=16.04.1
 pkgrel=1
-pkgdesc="The default wallpapers for Ubuntu (from 9.10 Karmic Koala to 14.10 Utopic Unicorn)"
+pkgdesc="The default wallpapers for Ubuntu (from 9.10 to 16.04)"
 arch=(any)
 url="https://launchpad.net/ubuntu-wallpapers"
 license=(GPL)
@@ -16,8 +16,8 @@ makedepends=(libxslt python2-distutils-extra)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}-${_ubuntu_rel}.debian.tar.xz")
-sha512sums=('0e878a823ff6b758294b8e4522b076e0f18d62c820fc6cbe3a96624a4b60fe23da2a918ad278afbad83380bc14457dc30fbeb2837a563f473ea5e5b382894c7d'
-            '0d0c90f70850dffb59a96c6297936d7faaa12cff448ddd43d05cf4a3959e6bed6e1e37d94be9700dd88adb7cf63761047d1c4fb6ae54d270477cd7dd5b43378b')
+sha512sums=('0e21dc860d824d0fe89202391cb5109a5e57e10708f0a13c8fa953a5b11e4c83db0ccf1e6dd1d5fc93dcb385ec0a792e059ef221d47d411050dd9b6973bf67bd'
+            'cfb11b4e86e54d3e98def23985f096af4662ca286d6423bf73350f3678d361c45ab82c77683881eb31371be33037918f65ae9b5e763afae3342ed55bba454d65')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
