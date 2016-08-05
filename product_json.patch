@@ -1,7 +1,7 @@
 diff -rupN a/product.json b/product.json
---- a/product.json	2016-03-07 19:00:33.090653030 -0800
-+++ b/product.json	2016-03-07 19:06:18.877223136 -0800
-@@ -1,10 +1,24 @@
+--- a/product.json	2016-08-04 16:50:25.682928390 -0700
++++ b/product.json	2016-08-04 16:53:41.000000000 -0700
+@@ -1,6 +1,6 @@
  {
  	"nameShort": "Code - OSS",
 -	"nameLong": "Code - OSS",
@@ -9,11 +9,14 @@ diff -rupN a/product.json b/product.json
  	"applicationName": "code-oss",
  	"dataFolderName": ".vscode-oss",
  	"win32MutexName": "vscodeoss",
- 	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
+@@ -11,5 +11,19 @@
+ 	"win32AppId": "{{E34003BB-9E10-4501-8C11-BE3FAA83F23F}",
+ 	"win32AppUserModelId": "Microsoft.CodeOSS",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
 -	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new"
 -}
 \ No newline at end of file
++	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
 +	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048",
 +	"quality": "stable",
 +	"extensionsGallery": {
@@ -21,12 +24,11 @@ diff -rupN a/product.json b/product.json
 +		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
 +		"itemUrl": "https://marketplace.visualstudio.com/items"
 +	},
-+	"documentationUrl": "https://go.microsoft.com/fwlink/?LinkID=533484#vscode",
-+	"releaseNotesUrl": "https://go.microsoft.com/fwlink/?LinkID=533483#vscode",
-+	"twitterUrl": "https://go.microsoft.com/fwlink/?LinkID=533687",
-+	"requestFeatureUrl": "https://go.microsoft.com/fwlink/?LinkID=533482",
-+	"reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
-+	"privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
++	"documentationUrl": "http://go.microsoft.com/fwlink/?LinkID=533484#vscode",
++	"releaseNotesUrl": "http://go.microsoft.com/fwlink/?LinkID=533483#vscode",
++	"twitterUrl": "http://go.microsoft.com/fwlink/?LinkID=533687",
++	"requestFeatureUrl": "http://go.microsoft.com/fwlink/?LinkID=533482",
++	"privacyStatementUrl": "http://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
 +	"commit": "@COMMIT@",
 +	"date": "@DATE@"
 +}
