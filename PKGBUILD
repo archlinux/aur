@@ -1,5 +1,5 @@
 pkgname=premake-git
-pkgver=5.0.alpha2.r656.g780cd5f
+pkgver=5.0.alpha2.r710.g5d09255
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
 arch=(i686 x86_64)
