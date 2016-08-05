@@ -1,0 +1,24 @@
+pkgbase = devhelp-gtk2
+	pkgdesc = API documentation browser for GNOME (gtk2 version)
+	pkgver = 2.32.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Devhelp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = libunique
+	depends = libwnck
+	depends = webkitgtk2
+	depends = hicolor-icon-theme
+	depends = gconf
+	provides = devhelp
+	conflicts = devhelp
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.acc.umu.se/pub/GNOME/sources/devhelp/2.32/devhelp-2.32.0.tar.bz2
+	sha256sums = 61b342cbaf27379be9baa5df1f34c9464916601ec4378fa7e1c76fcc686553e4
+
+pkgname = devhelp-gtk2
+
