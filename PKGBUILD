@@ -53,14 +53,14 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.6
 pkgver=4.6.5
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8
+_bfqver=v8r1
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.6.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
@@ -72,7 +72,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.6.0.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.6.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for-4.patch"
+        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-${_bfqver}-for.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
@@ -391,10 +391,11 @@ package_linux-bfq-headers() {
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
 	
+	# add objtool for external module building and enabled VALIDATION_STACK option
 	if [ -f tools/objtool/objtool ];  then
-      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
-      fi
+        mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+        cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+        fi
 
 	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
 	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
@@ -449,7 +450,7 @@ sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154
             '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
             '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
             '88bd912a41e8a880f693820362fed0e514441f2963a4c78d59c1a9f6c8522caf3d28afb8ed658e7de2d3d3e7d92ae112bda317a3800710005a643127cb5711c5'
-            '255a2a6ab4c57ecae998b51ee003649bc7717a25b7040b00e15aad3bb129d51d58e36afa36b04fd6146b8532a7a771441f949daae0a7b9a93d7fa1557df04b12'
+            '4a1fa3299f47d6c03ccb14b52bc7f34d79471c78d487280ecf12b787c5bedccc0027b3f2a80514abda0e34d727785b08c0ff83253a65920c2afc434cca3c49ac'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
