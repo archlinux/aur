@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -38,8 +38,8 @@ source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkM
         NetworkManager.conf 
         networkmanager.rc
         )
-sha256sums=('41d8082e027f58bb5fa4181f93742606ab99c659794a18e2823eff22df0eecd9'
-            '452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103'
+sha256sums=('19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa'
+            '67f112c1ac8ee3726eb229f5cd783de19f09cc252af49e157343d82b324b923f'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
