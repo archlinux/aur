@@ -1,0 +1,35 @@
+diff -ru a/lib/warmux/net/download.cpp b/lib/warmux/net/download.cpp
+--- a/lib/warmux/net/download.cpp	2016-08-05 11:57:19.524227773 +0300
++++ b/lib/warmux/net/download.cpp	2016-08-05 12:01:13.534472330 +0300
+@@ -47,24 +47,24 @@
+ #endif
+ 
+   curl = curl_easy_init();
+-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, download_callback);
++  curl_easy_setopt((CURL*)curl, CURLOPT_WRITEFUNCTION, download_callback);
+   curl_error_buf = new char[CURL_ERROR_SIZE];
+-  curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, curl_error_buf);
+-  curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
++  curl_easy_setopt((CURL*)curl, CURLOPT_ERRORBUFFER, curl_error_buf);
++  curl_easy_setopt((CURL*)curl, CURLOPT_FOLLOWLOCATION, 1);
+ }
+ 
+ Downloader::~Downloader()
+ {
+-  curl_easy_cleanup(curl);
++  curl_easy_cleanup((CURL*)curl);
+   curl_global_cleanup();
+   delete[] curl_error_buf;
+ }
+ 
+ bool Downloader::Get(const char* url, FILE* file)
+ {
+-  curl_easy_setopt(curl, CURLOPT_FILE, file);
+-  curl_easy_setopt(curl, CURLOPT_URL, url);
+-  CURLcode r = curl_easy_perform(curl);
++  curl_easy_setopt((CURL*)curl, CURLOPT_FILE, file);
++  curl_easy_setopt((CURL*)curl, CURLOPT_URL, url);
++  CURLcode r = curl_easy_perform((CURL*)curl);
+   fflush(file);
+ 
+   if (r == CURLE_OK)
