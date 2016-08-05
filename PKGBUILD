@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=5.0.9
+pkgver=5.0.11
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -27,7 +27,6 @@ depends=("perl"
          "perl-yaml-libyaml"
          "perl-mail-imapclient"
          "perl-template-toolkit"
-         "perl-crypt-eksblowfish"
          "perl-lwp-protocol-https"
          "perl-bytes-random-secure")
 optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
@@ -37,9 +36,9 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
 md5sums=("9305e7a2dd41a19a10c0d9ab376965fd"
-         "89981317e0d22ed400c500fa5ff69069")
+         "424a6a9c735d13f74d0ff12f54d638a8")
 sha1sums=("d88cdb1d905aebe146cc83bcf31dec9dcff62c30"
-          "a105322abe5c13cc477f7059ac0741ef2a449f77")
+          "28ead316548563aeeb600750240814972f07114a")
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}-cron.service"
