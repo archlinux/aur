@@ -2,7 +2,7 @@
 
 pkgname=code
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Code editing. Redefined. Visual Studio Code."
 arch=('i686' 'x86_64')
 url="https://code.visualstudio.com/"
@@ -29,13 +29,17 @@ package() {
 	fi
 
 	# Creating directories
-	install -dm755 "$pkgdir"/{,usr/{bin,share/{pixmaps,applications,$pkgname,licenses/$pkgname}}}
+	install -dm755 "$pkgdir"/{,usr/{bin,share/{pixmaps,applications,licenses/$pkgname}}}
+
+	# Read Write for all users and groups, that repairs problems with icon extension
+	install -dm777 "$pkgdir"/usr/share/$pkgname
 
 	# Installing launcher
 	install -m644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/
 
 	# Copying all files
 	cp -a "$srcdir"/$_pkg/* "$pkgdir"/usr/share/$pkgname/
+	chmod -R 777 "$pkgdir"/usr/share/$pkgname/
 
  	# Installing icons
 	install -m644 "$srcdir"/$_pkg/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/$pkgname.png

@@ -1,7 +1,7 @@
 pkgbase = code
 	pkgdesc = Code editing. Redefined. Visual Studio Code.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	arch = i686
 	arch = x86_64
