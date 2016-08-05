@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=natpmp
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NAT-PMP server"
 arch=(i686 x86_64)
 url="https://savannah.nongnu.org/projects/natpmp/"
@@ -10,7 +10,7 @@ depends=(iptables)
 source=("https://download.savannah.gnu.org/releases/natpmp/natpmp-$pkgver.tar.gz"
         "natpmp.service")
 sha256sums=('ba862f71572a9e6255b495569031c224cfeaf8fce91c5c6005ed25874ffcb42c'
-            'e336e1ebceddf355f39d1ae3a89f17413522463106af687b6c321e35451906de')
+            '3bf83ece8507f6aaabec7edf6be2d6751124598b11c23ba082389e35ece4718d')
 validpgpkeys=('14BC25105C4441E5BF288F8323A23DD000F4865D') # Adrian Friedli
 
 build() {
