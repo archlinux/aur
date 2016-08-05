@@ -2,7 +2,7 @@
 # Contributor: Michael Lass <bevan@bi-co.net>
 
 pkgname=kodi-addon-pvr-mythtv-git
-pkgver=r532.84b0b6b
+pkgver=r553.80f7c89
 pkgrel=1
 if [ -z "$API" ]; then
   error "No API Version Defined, defaulting to 16.  15 = Isengard, 16 = Jarvis, 99 = git master"
