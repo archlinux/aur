@@ -1,7 +1,7 @@
 pkgbase = mpss
 	pkgdesc = Intel® Manycore Platform Software Stack
 	pkgver = 3.7.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss
 	arch = x86_64
 	license = LGPL2.1
@@ -64,7 +64,6 @@ pkgname = mpss-libscif
 	pkgdesc = libscif library of Intel® Manycore Platform Software Stack
 	groups = mpss
 	depends = mpss-modules-dkms
-	depends = mpss-gen-symver-map
 
 pkgname = mpss-micmgmt-miclib
 	pkgdesc = micmgmt library of Intel® Manycore Platform Software Stack
@@ -89,7 +88,6 @@ pkgname = mpss-daemon
 	pkgdesc = mpssd and micctrl of Intel® Manycore Platform Software Stack
 	groups = mpss
 	depends = mpss-libscif
-	depends = mpss-gen-symver-map
 	depends = nfs-utils
 	depends = mpss-boot-files
 

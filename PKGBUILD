@@ -6,7 +6,7 @@ pkgname=(mpss-modules-dkms mpss-gen-symver-map mpss-libscif mpss-micmgmt-miclib
          mpss-boot-files mpss-flash-files)
 pkgdesc="Intel® Manycore Platform Software Stack"
 pkgver=3.7.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss"
 license=('LGPL2.1')
@@ -89,25 +89,22 @@ prepare() {
   extract_srcfiles
   msg2 "Patching files..."
   for p in $srcdir/*.patch; do
-    ( cd $srcdir && patch --forward --strip=0 --input="$p" )
+    ( cd $srcdir && patch --forward --strip=0 --input="$p" );
   done
 }
 
-## within each split package’s packaging function:
-# arch
-# backup
-# changelog
-# conflicts
-# depends
-# groups
-# install
-# license
-# optdepends
-# options
-# pkgdesc
-# provides
-# replaces
-# url
+# common build variables
+_metadata_include_dir=$(pwd)/src/mpss-metadata
+_install_root="$(pwd)/pkg/build"
+_install_bin="${_install_root}/usr/bin"
+_install_include="${_install_root}/usr/include"
+_install_lib="${_install_root}/usr/lib"
+
+ensure_pkg_install_dirs() {
+  for d in "$_install_bin" "$_install_include" "$_install_lib"; do
+    mkdir -p "$d";
+   done
+}
 
 package_mpss-modules-dkms() {
   depends=(dkms)
@@ -116,7 +113,10 @@ package_mpss-modules-dkms() {
   groups=(mpss)
   _pkgname=${pkgname%-*}
   msg2 "Starting make conf_install in ${_pkgname}..."
-  make -C $_pkgname DESTDIR="$pkgdir" sysconfdir=/etc includedir=/usr/include \
+  make -C $_pkgname \
+    DESTDIR="$pkgdir" \
+    sysconfdir=/etc \
+    includedir=/usr/include \
     conf_install dev_install
 
   # Copy dkms.conf
@@ -138,6 +138,14 @@ package_mpss-modules-dkms() {
   rm "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/*mic.*
 
   install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # install again to fixed destination for including and linking
+  ensure_pkg_install_dirs
+  make -C $_pkgname \
+    DESTDIR="$_install_root" \
+    sysconfdir=/etc \
+    includedir=/usr/include \
+    dev_install
 }
 
 package_mpss-gen-symver-map() {
@@ -147,28 +155,41 @@ package_mpss-gen-symver-map() {
   _pkgname=$pkgname
   install -D -m755 ${_pkgname}/gen-symver-map "$pkgdir/usr/bin/gen-symver-map"
   install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # install again to fixed destination for its usage
+  ensure_pkg_install_dirs
+  install -D -m755 ${_pkgname}/gen-symver-map "$_install_root/usr/bin/gen-symver-map"
 }
 
 package_mpss-libscif() {
-  depends=(mpss-modules-dkms mpss-gen-symver-map)
-  makedepends=(mpss-gen-symver-map)
+  depends=(mpss-modules-dkms)
   pkgdesc="libscif library of Intel® Manycore Platform Software Stack"
   groups=(mpss)
   _pkgname=$pkgname
-  _metadata_include_dir=$srcdir/mpss-metadata
-  _modules_include_dir=$srcdir/mpss-modules/include
-  _gem_symver_map_path=$srcdir/mpss-gen-symver-map
   msg2 "Starting make in ${_pkgname}..."
-  PATH=$PATH:$_gem_symver_map_path \
-  CFLAGS="-I$_modules_include_dir -g" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      all
+
+  # need to extend path for gen-symver-map tool
+  PATH=$PATH:$_install_bin \
+  CFLAGS="-I$_install_include -g" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    all
+
   make -C $_pkgname \
     --include-dir=$_metadata_include_dir \
     DESTDIR="$pkgdir" \
-    prefix=/usr install
+    prefix=/usr \
+    install
+
   install -D -m644 ${_pkgname}/COPYING.LIB "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # install again to fixed destination for including and linking
+  ensure_pkg_install_dirs
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$_install_root" \
+    prefix=/usr \
+    install
 }
 
 package_mpss-micmgmt-miclib() {
@@ -176,24 +197,33 @@ package_mpss-micmgmt-miclib() {
   pkgdesc="micmgmt library of Intel® Manycore Platform Software Stack"
   groups=(mpss)
   _pkgname=${pkgname%-*}
-  _metadata_include_dir=$srcdir/mpss-metadata
-  _modules_include_dir=$startdir/pkg/mpss-modules-dkms/usr/include
-  _libscif_lib_dir=$startdir/pkg/mpss-libscif/usr/lib
-  _libscif_include_dir=$srcdir/mpss-libscif
   msg2 "Starting make in ${_pkgname}..."
-  LIBPATH="-L$_libscif_lib_dir" \
-  CPPFLAGS="-I$_modules_include_dir -I$_libscif_include_dir" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      lib
-  CPPFLAGS="-I$_modules_include_dir -I$_libscif_include_dir" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      DESTDIR="$pkgdir" \
-      prefix=/usr \
-      libdir=/usr/lib \
-      install_lib
+
+  LIBPATH="-L$_install_lib" \
+  CPPFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    lib
+
+  CPPFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$pkgdir" \
+    prefix=/usr \
+    libdir=/usr/lib \
+    install_lib
+
   install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # install again to fixed destination for including and linking
+  ensure_pkg_install_dirs
+  CPPFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$_install_root" \
+    prefix=/usr \
+    libdir=/usr/lib \
+    install_lib
 }
 
 package_mpss-micmgmt-tools() {
@@ -201,29 +231,26 @@ package_mpss-micmgmt-tools() {
   pkgdesc="micmgmt tools of Intel® Manycore Platform Software Stack"
   groups=(mpss)
   _pkgname=${pkgname%-*}
-  _metadata_include_dir=$srcdir/mpss-metadata
-  _modules_include_dir=$startdir/pkg/mpss-modules-dkms/usr/include
-  _libscif_lib_dir=$startdir/pkg/mpss-libscif/usr/lib
-  _libscif_include_dir=$srcdir/mpss-libscif
-  _miclib_lib_dir=$startdir/pkg/mpss-micmgmt-miclib/usr/lib
-  _miclib_include_dir=$startdir/pkg/mpss-micmgmt-miclib/usr/include
   msg2 "Starting make in ${_pkgname}..."
-  LIBPATH="-L$_libscif_lib_dir -L$_miclib_lib_dir" \
-  LDFLAGS="-L$_libscif_lib_dir -L$_miclib_lib_dir" \
-  CFLAGS="-I$_modules_include_dir -I$_libscif_include_dir -I$_miclib_include_dir" \
-  CPPFLAGS="-I$_modules_include_dir -I$_libscif_include_dir -I$_miclib_include_dir" \
-    make -C $_pkgname -j1 \
-      --include-dir=$_metadata_include_dir \
-      all
-  CFLAGS="-I$_modules_include_dir -I$_libscif_include_dir -I$_miclib_include_dir" \
-  CPPFLAGS="-I$_modules_include_dir -I$_libscif_include_dir -I$_miclib_include_dir" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      DESTDIR="$pkgdir" \
-      prefix=/usr \
-      install
-  # already installed by mpss-micmgmt-miclib
+
+  LIBPATH="-L$_install_lib" \
+  LDFLAGS="-L$_install_lib" \
+  CFLAGS="-I$_install_include" \
+  CPPFLAGS="-I$_install_include" \
+  make -C $_pkgname -j1 \
+    --include-dir=$_metadata_include_dir \
+    all
+
+  CFLAGS="-I$_install_include" \
+  CPPFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$pkgdir" \
+    prefix=/usr \
+    install
+  # remove files already installed by mpss-micmgmt-miclib
   rm $pkgdir/usr/share/doc/micmgmt/libmicmgmt.7.html
+
   install -D -m755 $srcdir/${pkgname}/usr/bin/micsmc-gui "$pkgdir"/usr/bin/
   install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -234,15 +261,6 @@ package_mpss-micmgmt-python() {
   groups=(mpss)
   arch=('any')
   _pkgname=${pkgname%-*}
-#  _metadata_include_dir=$srcdir/mpss-metadata
-#  _site_package_dir=$(python -c 'import site; print(site.getsitepackages()[0])')
-#  msg2 "Starting make in ${_pkgname}..."
-#  make -C $_pkgname \
-#    --include-dir=$_metadata_include_dir \
-#    DESTDIR="$pkgdir" \
-#    prefix=/usr \
-#    srcdir=$_site_package_dir \
-#    install_pywrapper
   cd "$srcdir/$_pkgname/miclib_py"
   sed -e "s/@PKGVER@/${pkgver}/" \
       $srcdir/micmgmt.setup.py >setup.py
@@ -272,32 +290,33 @@ package_mpss-flash-files() {
 }
 
 package_mpss-daemon() {
-  depends=(mpss-libscif mpss-gen-symver-map nfs-utils mpss-boot-files)
+  depends=(mpss-libscif nfs-utils mpss-boot-files)
   pkgdesc="mpssd and micctrl of Intel® Manycore Platform Software Stack"
   groups=(mpss)
   _pkgname=${pkgname}
-  _metadata_include_dir=$srcdir/mpss-metadata
-  _modules_include_dir=$startdir/pkg/mpss-modules-dkms/usr/include
-  _libscif_lib_dir=$startdir/pkg/mpss-libscif/usr/lib
-  _libscif_include_dir=$srcdir/mpss-libscif
   msg2 "Starting make in ${_pkgname}..."
-  LDFLAGS="-g -L$_libscif_lib_dir" \
-  CFLAGS="-g -I$_modules_include_dir -I$_libscif_include_dir" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      all
-  LDFLAGS="-g -L$_libscif_lib_dir" \
-  CFLAGS="-g -I$_modules_include_dir -I$_libscif_include_dir" \
-    make -C $_pkgname \
-      --include-dir=$_metadata_include_dir \
-      DESTDIR="$pkgdir" \
-      prefix=/usr \
-      sbindir=/usr/bin \
-      libdir=/usr/lib \
-      install
+
+  LDFLAGS="-g -L$_install_lib" \
+  CFLAGS="-g -I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    all
+
+  LDFLAGS="-g -L$_install_lib" \
+  CFLAGS="-g -I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$pkgdir" \
+    prefix=/usr \
+    sbindir=/usr/bin \
+    libdir=/usr/lib \
+    install
+
   sed -e "s|/usr/sbin/|/usr/bin/|g" \
       -i "${pkgdir}"/etc/mpss/mpss.*
+
   rm "${pkgdir}"/etc/mpss/mpss.{redhat,ubuntu,suse,service,resume,suspend*}
+
   install -D -m644 $srcdir/mpss-daemon.service "$pkgdir/usr/lib/systemd/system/mpssd.service"
   install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
