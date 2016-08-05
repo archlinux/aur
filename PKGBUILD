@@ -13,7 +13,14 @@ makedepends=('git')
 optdepends=('ldc: faster numeric operations')
 source=("git://github.com/libmir/$_gitname.git#tag=v$pkgver")
 md5sums=('SKIP')
+options=("staticlibs")
 conflicts=('libmir-git')
+
+build() {
+	cd $_gitname
+	dub build -c static-lib
+	dub build -c dynamic-lib
+}
 
 package() {
 	mkdir -p $pkgdir/usr/include/dlang/dmd/mir
@@ -26,4 +33,8 @@ package() {
 	ln -s /usr/include/dlang/dmd/mir $pkgdir/usr/include/dlang/ldc/mir
 
 	install -Dm644 $srcdir/$_gitname/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+	# install libs
+	install -Dm644 $srcdir/$_gitname/libmir.so $pkgdir/usr/lib/libmir.so
+	install -Dm644 $srcdir/$_gitname/libmir.a $pkgdir/usr/lib/libmir.a
 }
