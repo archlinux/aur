@@ -1,0 +1,18 @@
+pkgbase = libnotifymm-gtk2
+	pkgdesc = C++ wrappers for libnotify (gtk2 version)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://www.gnome.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = mm-common
+	depends = gtkmm
+	depends = libnotify>=0.7.5
+	provides = libnotifymm
+	conflicts = libnotifymm
+	source = http://ftp.gnome.org/pub/gnome/sources/libnotifymm/0.7/libnotifymm-0.7.0.tar.xz
+	sha256sums = bfe4b4411265d5bf437408735a37b6ad8e4da772eec1e2aa18792745e6a60954
+
+pkgname = libnotifymm-gtk2
+
