@@ -1,10 +1,10 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk
-pkgver=3400
+pkgver=3491
 pkgrel=1
 _rpmver=2.0-0
-pkgdesc='Comprehensive, cross-platform HTML5 development environment'
+pkgdesc='Cross-platform mobile and IoT development environment'
 arch=('i686' 'x86_64')
 url='https://software.intel.com/en-us/intel-xdk'
 license=('custom')
@@ -17,15 +17,15 @@ md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '34d9c2b87221acf10812ab1150357dc9')
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
   _carch='i486'
-  md5sums+=('a2cefa2e0ac991bf8387b7c6d2b2ef21')
+  md5sums+=('cd2064e4c6788d38da104b8496a543a3')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
   _carch='x86_64'
-  md5sums+=('d844fdd3c1d121b135a83e0cb32532fd')
+  md5sums+=('22a29b5224cbe04a613604af3be00667')
 fi
 
 _base="xdk_web_linux${_arch:-64}"
-source+=("https://download.xdk.intel.com/${_base}_master_${pkgver}.tgz")
+source+=("https://xdk2-installers.s3.amazonaws.com/xdk/${_base}_master_${pkgver}.tgz")
 
 package() {
   cd "${srcdir}/${_base}/rpm"
