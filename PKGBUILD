@@ -1,11 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Tony Lambiris <tony@criticalstack.com>
 
-# Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=osquery-git
-pkgver=1.8.0.r4.gc1d004e
+pkgver=1.8.2.r12.g85ed298
 pkgrel=1
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
@@ -16,8 +12,8 @@ groups=()
 depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang' 'cmake'
          'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
          'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
-makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb'
-             'rocksdb-static' 'cpp-netlib' 'magic' 'unzip' 'wget')
+makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
+             'cpp-netlib' 'magic' 'unzip' 'wget')
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,14 +27,14 @@ source=("${pkgname}::git+https://github.com/facebook/osquery"
         "osqueryd.service"
         "arch-linux.patch")
 noextract=()
+validpgpkeys=()
 sha256sums=('SKIP'
             '1fa367325d4a7ad7dfef3b7b817b3c7588ad02a8d08fc11db24de66b486c6503'
-            '745e4561eb065d05826d8f96d1cd06640463a5a85f38d2581ea85d2e33fd8d24')
-validpgpkeys=()
+            '8fb9a37c2704647268e20ca6a8fd77b4866e054801cd2ab86362a2c028f03a8a')
 
 _gitname=${pkgname}
 # last known working commit-ish
-_githash=c1d004ed1f12a4113102fafd0c633001b8e4254c
+_githash=85ed298fb9b35b4e2c1d690f7b207dbe368c8735
 
 pkgver() {
     cd $_gitname
@@ -49,6 +45,7 @@ pkgver() {
 prepare() {
     cd $_gitname
 
+    git reset HEAD --hard
     git checkout $_githash
     git submodule update --init
     patch -p1 -i "${srcdir}/arch-linux.patch"
