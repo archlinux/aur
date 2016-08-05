@@ -1,0 +1,87 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index 8dd3d24..a896aaf 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -93,7 +93,7 @@ ELSE(WIN32)
+ 
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -g -std=c++11 -msse4.1")
+   if(NOT APPLE)
+-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic")
++    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -Wno-date-time")
+   else()
+     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-date-time")
+   endif()
+@@ -185,10 +185,7 @@ ENDIF(ENABLE_LLVM_BACKEND AND LLVM_FOUND)
+ 
+ ## Traverse subdirectories
+ ADD_SUBDIRECTORY (src/SeExpr)
+-ADD_SUBDIRECTORY (src/ui)
+-ADD_SUBDIRECTORY (src/tests)
++#ADD_SUBDIRECTORY (src/ui)
+ #TODO: put this back
+-ADD_SUBDIRECTORY (src/py)
+-ADD_SUBDIRECTORY (src/utils)
+-ADD_SUBDIRECTORY (src/demos)
+-ADD_SUBDIRECTORY (src/doc)
++#ADD_SUBDIRECTORY (src/py)
++#ADD_SUBDIRECTORY (src/utils)
+diff --git src/build/build-info src/build/build-info
+index de58622..6f53cf2 100755
+--- src/build/build-info
++++ src/build/build-info
+@@ -11,7 +11,6 @@ if 'MACOSX_DEPLOYMENT_TARGET' in os.environ:
+ from distutils import sysconfig as sc
+ 
+ import sipconfig
+-from PyQt4 import pyqtconfig
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+@@ -56,8 +55,7 @@ def python_site(args):
+ 
+ 
+ def pyqt4_sip(args):
+-    pkg_cfg = pyqtconfig._pkg_config
+-    return pkg_cfg['pyqt_sip_dir']
++    return os.path.join(sipconfig.Configuration().default_sip_dir, 'PyQt4')
+ 
+ 
+ def sip_inc(args):
+diff --git src/py/CMakeLists.txt src/py/CMakeLists.txt
+index 1cc5cac..eade98e 100644
+--- src/py/CMakeLists.txt
++++ src/py/CMakeLists.txt
+@@ -23,10 +23,10 @@ IF(APPLE)
+ #    endif()
+ 
+ ELSE()
+-EXECUTE_PROCESS( COMMAND python -c "import sys;print\"%s.%s\"%sys.version_info[0:2]" OUTPUT_VARIABLE PYTHON_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+-EXECUTE_PROCESS( COMMAND  which python OUTPUT_VARIABLE PYTHON_EXECUTABLE OUTPUT_STRIP_TRAILING_WHITESPACE)
++EXECUTE_PROCESS( COMMAND python2 -c "import sys;print\"%s.%s\"%sys.version_info[0:2]" OUTPUT_VARIABLE PYTHON_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
++EXECUTE_PROCESS( COMMAND  which python2 OUTPUT_VARIABLE PYTHON_EXECUTABLE OUTPUT_STRIP_TRAILING_WHITESPACE)
+ EXECUTE_PROCESS( COMMAND  bash -c "ldd `which python` | grep libpyth | awk '{print $3}'" OUTPUT_VARIABLE PYTHON_LIBRARY OUTPUT_STRIP_TRAILING_WHITESPACE)
+-EXECUTE_PROCESS( COMMAND python-config --includes OUTPUT_VARIABLE PYTHON_INCLUDE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
++EXECUTE_PROCESS( COMMAND python2-config --includes OUTPUT_VARIABLE PYTHON_INCLUDE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ #FIND_PACKAGE(PythonLibs)
+ string(REGEX REPLACE "^[-I]" "" PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}")
+ string(REGEX REPLACE "[ ]-I" " " PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}")
+diff --git src/ui/CMakeLists.txt src/ui/CMakeLists.txt
+index 67b1bc8..ea6a78f 100644
+--- src/ui/CMakeLists.txt
++++ src/ui/CMakeLists.txt
+@@ -15,8 +15,10 @@
+ 
+ # Find python includes and libs. cmake doesn't seem to handle automatically
+ 
++set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
+ find_package(PythonInterp)
+ find_package(PythonLibs)
++if(PYTHONLIBS_FOUND)
+ 
+ macro(get_build_info NAME STORAGE)
+     execute_process(
+@@ -121,3 +123,4 @@ ENDIF(WIN32)
+             DESTINATION ${CMAKE_INSTALL_PYTHON})
+ 
+ endif(QT4_FOUND)
++endif(PYTHONLIBS_FOUND)

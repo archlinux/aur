@@ -1,23 +1,20 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=seexpr-git
-pkgver=2.11.r0.ga5f02bb
+pkgver=3.0.beta.2.r2.g743f732
 pkgrel=1
 pkgdesc="An embeddable expression evaluation engine (git version)"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/seexpr.html"
 license=('custom')
-optdepends=('python2-pyqt4: required for SeExpr editor')
-makedepends=('cmake>=2.4.6' 'git')
+optdepends=('llvm>=3.8.0: LLVM backend support'
+            'python2-pyqt4: Editor support')
+makedepends=('cmake>=2.4.6' 'git' 'python2-sip')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wdas/SeExpr.git'
-        'build-info.patch'
-        'CMakeLists.txt.patch'
-        'Editor_CMakeLists.txt.patch')
+        'build.patch')
 md5sums=('SKIP'
-         'bb56b587bca21debebf86b7adb6242f1'
-         '0b04cc77edebf6d364767cad0a988ef2'
-         '69721fc7e11747cfbc7f0712b4975f79')
+         '156977932afc69ff24f85be68a7357b6')
 
 pkgver() {
   cd "$srcdir/SeExpr"
@@ -26,13 +23,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"
-  # Remove pyqtconfig module dependency
-  patch -p1 -i "$srcdir/build-info.patch"
-  # Remove demos, tests, and docs
-  patch -p1 -i "$srcdir/CMakeLists.txt.patch"
-  # Use Python2 for editor if available
-  patch -p1 -i "$srcdir/Editor_CMakeLists.txt.patch"
+  cd "$srcdir/SeExpr"
+  patch -p0 -i "../build.patch"
+  mkdir "$srcdir/SeExpr/src/SeExpr/generated"
+  touch "$srcdir/SeExpr/src/SeExpr/generated/ExprParser.tab.h"
+  touch "$srcdir/SeExpr/src/SeExpr/generated/ExprParser.cpp"
 }
 
 build() {
