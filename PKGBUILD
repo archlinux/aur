@@ -2,12 +2,12 @@
 
 pkgname=fossamail-extension-lightning
 pkgver=25.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A calendar that's fully integrated into FossaMail."
 arch=('i686' 'x86_64')
 url="http://www.fossamail.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('fossamail')
+depends=("fossamail=${pkgver}")
 source_i686=(http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.linux-i686.xpi
 			http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.linux-i686.xpi.sig)
 source_x86_64=(http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.linux-x86_64.xpi
