@@ -5,7 +5,7 @@
 
 pkgname='gdal-grass'
 pkgver='2.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='GRASS raster and vector format support for GDAL 2.1.x.'
 arch=('i686' 'x86_64')
 url='http://www.gdal.org'
@@ -17,7 +17,7 @@ md5sums=('a272099fc145db1e5e7837a96e4e6691')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure \
-    --prefix=/${pkgdir}/usr \
+    --prefix=${pkgdir}/usr \
     --with-grass=/opt/grass7 \
     --with-autoload=${pkgdir}/usr/lib/gdalplugins
   make
