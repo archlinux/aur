@@ -1,24 +1,16 @@
 pkgbase = nodejs-vinefeed
 	pkgdesc = RSS/Atom feed generator for Vine users
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.0.r11
+	pkgrel = 1
 	url = http://github.com/tremby/vinefeed
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = nodejs
 	depends = npm
-	provides = nodejs-vinefeed=0.1.0
+	provides = nodejs-vinefeed=0.1.0.r11
 	conflicts = nodejs-vinefeed
-	source = vinefeed.service
-	source = vinefeed.socket
-	source = binary.patch
-	source = socket-activation.patch
 	source = nodejs-vinefeed::git+http://github.com/tremby/vinefeed
-	md5sums = e91569a2035064f52e321653ba26172e
-	md5sums = 0de7e38748a53ec8d96c2dd645e8bb2e
-	md5sums = 8b8cd5d387347f3632a80827b161bd76
-	md5sums = 8f4df9f6102f3078bebe89213320492a
 	md5sums = SKIP
 
 pkgname = nodejs-vinefeed
