@@ -1,0 +1,24 @@
+pkgbase = neovim-gtk3-git
+	pkgdesc = GTK GUI for NeoVIM - In Development!!
+	pkgver = r7.12b2ccc
+	pkgrel = 1
+	url = https://github.com/TheAifam5/NeoVIM-GTK3
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = vte3
+	depends = neovim
+	depends = gtk3
+	depends = vte3
+	conflicts = neovim-gtk3
+	source = neovim-gtk3-git::git+https://github.com/TheAifam5/NeoVIM-GTK3.git
+	source = neovim-gtk3.desktop
+	source = neovim.png
+	md5sums = SKIP
+	md5sums = b248bdd29a34ce67a50f441bf50ee08a
+	md5sums = caa63738dfe5ff52146c3b1893cc155c
+
+pkgname = neovim-gtk3-git
+

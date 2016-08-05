@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=NeoVIM GTK3
+Comment=GTK3 GUI for NeoVIM
+GenericName=Text Editor
+Exec=/usr/bin/nvim-gtk3
+Icon=/usr/share/pixmaps/nvim-gtk3.png
+Type=Application
+StartupNotify=true
+Categories=Utility;TextEditor;Development;
+MimeType=text/plain;
+Actions=new-window;
+Keywords=vscode;
+Terminal=false
