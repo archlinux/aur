@@ -1,0 +1,18 @@
+pkgbase = kvitter-git
+	pkgdesc = Open-Source Node.js Twitter Client
+	pkgver = r63.311ed96
+	pkgrel = 1
+	url = https://github.com/Limero/Kvitter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	provides = kvitter
+	conflicts = kvitter
+	source = git+https://github.com/Limero/Kvitter.git
+	md5sums = SKIP
+
+pkgname = kvitter-git
+
