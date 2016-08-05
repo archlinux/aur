@@ -1,0 +1,15 @@
+pkgbase = ttf-belligerent-madness
+	pkgdesc = A true type font by P.D. Magnus. Brushed, Distressed, Grunge, Rough
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.fontsquirrel.com/fonts/Belligerent-Madness
+	install = ttf-belligerent-madness.install
+	arch = any
+	license = Font Monkey License v1.00
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.fontmonkey.com/font/belligerent.zip
+	md5sums = a13206e11bf45936a464176892e70da2
+
+pkgname = ttf-belligerent-madness
+
