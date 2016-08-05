@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
 pkgrel=1
-pkgver=r821.9cf48a7
+pkgver=r871.ee2681e
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -22,8 +22,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	./autogen.sh
-	./configure --prefix="/usr/" --with-gtk
+	cmake -DCMAKE_INSTALL_PREFIX="/usr/"
 	make
 } 
 
@@ -35,15 +34,10 @@ package() {
 
 	# install additional files
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" \
-		"README" \
 		"README.md" \
-		"ACKNOWLEDGMENTS" \
-		"AUTHORS" \
-		"ChangeLog" \
-		"NEWS" \
+		"ChangeLog.md" \
 		"doc/tutorial.md"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-		"COPYING" \
 		"LICENSE"
 	install -Dm644 -t "${pkgdir}/etc/modprobe.d/" \
 		etc/modprobe.d/*
