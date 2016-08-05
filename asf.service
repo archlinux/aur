@@ -7,9 +7,9 @@ After=network.target
 [Service]
 User=asf
 Group=asf
-ExecStart=/usr/bin/asf --server
+ExecStart=/usr/bin/asf --server --path /var/lib/asf
 ProtectSystem=true
-ReadWritePaths=/opt/asf
+ReadWritePaths=/var/lib/asf
 
 [Install]
 WantedBy=multi-user.target

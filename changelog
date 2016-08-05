@@ -1,3 +1,9 @@
+2016-08-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.3.1-2:
+    package: config folder moved to /var/lib/asf
+    service: rename ReadWriteDirectories to ReadWritePaths
+    service: soft dependency on network.target
+    service: add user service file
 2016-07-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.3.1-1:
     It's now possible to use CustomGamePlayedWhileIdle and GamesPlayedWhileIdle at the same time, to play specific appIDs while showing custom status in Steam Network. Please note that the order of display is not guaranteed in this case.
