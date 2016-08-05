@@ -1,0 +1,56 @@
+From d5a25d9c6f8411968f2a522ea4c86845b8fd5257 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 5 Aug 2016 14:21:29 +0200
+Subject: gcc6 compilation fixes
+
+---
+ src/include/internal/_DMA.h     | 4 ++--
+ src/include/internal/_Process.h | 1 +
+ src/mechanism/dma/dma.cpp       | 4 ++++
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git mpss-coi/src/include/internal/_DMA.h mpss-coi/src/include/internal/_DMA.h
+index 989caa9..add34cd 100755
+--- mpss-coi/src/include/internal/_DMA.h
++++ mpss-coi/src/include/internal/_DMA.h
+@@ -104,8 +104,8 @@ public:
+     }
+     COIRESULT AsyncDMAProgamming(dma_data *in_dma_op);
+ 
+-    static const uint64_t   MAXSPINSIZE = 2 * 1024 * 1024;
+-    static const double     MAXSPINTIME = 0.0005;
++    static const uint64_t   MAXSPINSIZE;
++    static const double     MAXSPINTIME;
+     //Node that gets enqueued to later on fetch related information
+     //when a DMA operation finishes
+     typedef struct
+diff --git mpss-coi/src/include/internal/_Process.h mpss-coi/src/include/internal/_Process.h
+index e496743..d9a7a3e 100755
+--- mpss-coi/src/include/internal/_Process.h
++++ mpss-coi/src/include/internal/_Process.h
+@@ -241,6 +241,7 @@ public:
+     // Reponse for function handles, sent as an array of uint64 handles.
+     // Number of handles is same size as the request message.
+     SUB_MESSAGE_TYPE(FUNCTIONHANDLES,
++                     uint64_t    dummy;
+                      uint64_t    handles[];
+                     );
+ 
+diff --git mpss-coi/src/mechanism/dma/dma.cpp mpss-coi/src/mechanism/dma/dma.cpp
+index 995c088..4b0ac3a 100755
+--- mpss-coi/src/mechanism/dma/dma.cpp
++++ mpss-coi/src/mechanism/dma/dma.cpp
+@@ -64,6 +64,10 @@
+ #include <internal/_Process.h>
+ #include <internal/_Perf.h>
+ 
++
++const uint64_t COIDMAFence::MAXSPINSIZE = 2 * 1024 * 1024;
++const double COIDMAFence::MAXSPINTIME = 0.0005;
++
+ COIDMAFence::COIDMAFence(_COIComm *comm, void *process) :
+     m_mem(NULL),
+     m_offset(0),
+-- 
+2.9.2
+

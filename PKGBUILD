@@ -1,18 +1,23 @@
 # Maintainer: Marcel Huber <`echo "moc tknup liamg tä oofrebuhlecram" | rev`>
 
 pkgbase=mpss
-pkgname=(mpss-modules-dkms mpss-gen-symver-map mpss-libscif mpss-micmgmt-miclib
-         mpss-micmgmt-tools mpss-micmgmt-python mpss-daemon
-         mpss-boot-files mpss-flash-files)
+pkgname=(
+  mpss-modules-dkms
+  mpss-gen-symver-map mpss-libscif
+  mpss-micmgmt-miclib
+  mpss-coi mpss-myo
+  mpss-micmgmt-tools mpss-micmgmt-python mpss-daemon
+  mpss-boot-files mpss-flash-files
+)
 pkgdesc="Intel® Manycore Platform Software Stack"
 pkgver=3.7.1
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss"
 license=('LGPL2.1')
 depends=(dkms python nfs-utils netctl ifplugd)
 makedepends=(asciidoc libarchive)
-source_x86_64=(
+source=(
   http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-${pkgver}-linux.tar
   http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-${pkgver}-k1om.tar
   http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-src-${pkgver}.tar
@@ -31,25 +36,27 @@ source_x86_64=(
   mpss-micmgmt-remove-inline0.patch
   mpss-micmgmt-remove-inline1.patch
   mpss-micmgmt-whitespace.patch
+  mpss-coi-gcc6-compilation.patch
 )
-sha256sums_x86_64=('3a8d070d7b82d41afa67766db8e3305621643ced1b3f8e2845bf333cdf39b83b'
-                   'd73abe69df8f36e6214194fc010877b2ee5ea47e2227acf823d88896804899aa'
-                   '4458257ded25dc7b69fa6de49e7ec066d0053ef6be54267bb283dbb4e6eb38c8'
-                   'a76162c169073060ee3a966e95342f29b3e342c956d29169c10a6dd97e342fa5'
-                   '540cfb724426aaa92fd3998cf6f1a34e491332316af88848d251409bdd596fb3'
-                   '8fe2d3b0f1374cf74ea9ef1c5ade0a6cdf891cbcd0438420c19da27feef144c7'
-                   '191d6fd54157ad5a9465947c73b4332a83fc4411be5d9738d0594a2b7ddb7273'
-                   '265d26efa3e127f4d5211bb32e65c70beb9ee6b1703a5e2c146e9aa3e4d33604'
-                   'b135e8af616fa2404777ae8c689ea97b9ffb73d18036039fd545108b9b9310fc'
-                   '2169df02b5623c43feb272f2d142472d2d42a089a370a6f33f470aa3dea50603'
-                   'b1264678b77a3ae64716e507e225fce5cfd1c77ae77d0119071c28cab74d0a97'
-                   '3690295e9e24e6a8b42323ca5b2b76f56a3a8f4bdee75b3dfc5a3f01e3f3d1bc'
-                   'ace053c75b096c2e120c73076c9a86fcbf1528518761766b9e41e975dc44ae43'
-                   '17791147eef797e4fe161bb08e989685303dbff866d01f2e37335c09e6367688'
-                   '64d26ff84029d246868f995cf9fd49b20851a671208c3fa474e0fef5216708cd'
-                   '99d0e6d58a14bfbbe96b41de8f0f4383225acaefba8e4d48c7ff86924502c545'
-                   'ac8e471ddd8ff1cba8b269434ab0efac2ece7bc68cf0044147d99e70e831ce09'
-                   '1e523015afb1919023d61648126e13baa7d577a9b64aa3445dd67e156e75e5fa')
+sha256sums=('3a8d070d7b82d41afa67766db8e3305621643ced1b3f8e2845bf333cdf39b83b'
+            'd73abe69df8f36e6214194fc010877b2ee5ea47e2227acf823d88896804899aa'
+            '4458257ded25dc7b69fa6de49e7ec066d0053ef6be54267bb283dbb4e6eb38c8'
+            'a76162c169073060ee3a966e95342f29b3e342c956d29169c10a6dd97e342fa5'
+            '540cfb724426aaa92fd3998cf6f1a34e491332316af88848d251409bdd596fb3'
+            '8fe2d3b0f1374cf74ea9ef1c5ade0a6cdf891cbcd0438420c19da27feef144c7'
+            '191d6fd54157ad5a9465947c73b4332a83fc4411be5d9738d0594a2b7ddb7273'
+            '265d26efa3e127f4d5211bb32e65c70beb9ee6b1703a5e2c146e9aa3e4d33604'
+            'b135e8af616fa2404777ae8c689ea97b9ffb73d18036039fd545108b9b9310fc'
+            '2169df02b5623c43feb272f2d142472d2d42a089a370a6f33f470aa3dea50603'
+            'b1264678b77a3ae64716e507e225fce5cfd1c77ae77d0119071c28cab74d0a97'
+            '3690295e9e24e6a8b42323ca5b2b76f56a3a8f4bdee75b3dfc5a3f01e3f3d1bc'
+            'ace053c75b096c2e120c73076c9a86fcbf1528518761766b9e41e975dc44ae43'
+            '17791147eef797e4fe161bb08e989685303dbff866d01f2e37335c09e6367688'
+            '64d26ff84029d246868f995cf9fd49b20851a671208c3fa474e0fef5216708cd'
+            '99d0e6d58a14bfbbe96b41de8f0f4383225acaefba8e4d48c7ff86924502c545'
+            'ac8e471ddd8ff1cba8b269434ab0efac2ece7bc68cf0044147d99e70e831ce09'
+            '1e523015afb1919023d61648126e13baa7d577a9b64aa3445dd67e156e75e5fa'
+            '0589259ca31ef4a66885f37a9404d4d728395e2c393d32628ac4444c7637a78f')
 
 extract_rpmfiles() {
   _extract_rpmfiles=(
@@ -75,6 +82,8 @@ extract_srcfiles() {
     "src/mpss-daemon-${pkgver}.tar.bz2|mpss-daemon"
     "src/mpss-micmgmt-${pkgver}.tar.bz2|mpss-micmgmt"
     "src/mpss-metadata-${pkgver}.tar.bz2|mpss-metadata"
+    "src/mpss-coi-${pkgver}.tar.bz2|mpss-coi"
+    "src/mpss-myo-${pkgver}.tar.bz2|mpss-myo"
   )
   for ef in "${_extract_srcfiles[@]}"; do
     _filepart="$(cut -d'|' -f1 <<<$ef)";
@@ -224,6 +233,69 @@ package_mpss-micmgmt-miclib() {
     prefix=/usr \
     libdir=/usr/lib \
     install_lib
+}
+
+package_mpss-coi() {
+  depends=(mpss-libscif)
+  pkgdesc="compiler offload infrastructure of Intel® Manycore Platform Software Stack"
+  groups=(mpss)
+  _pkgname=${pkgname}
+  msg2 "Starting make in ${_pkgname}..."
+
+  LDFLAGS="-L$_install_lib" \
+  CFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    all
+
+  LDFLAGS="-L$_install_lib" \
+  CFLAGS="-I$_install_include" \
+  make -C $_pkgname \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$pkgdir" \
+    prefix=/usr/ \
+    libdir=/usr/lib \
+    install
+
+  install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 ${_pkgname}/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
+  install -D -m644 ${_pkgname}/COPYING.LGPL "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL"
+}
+
+package_mpss-myo() {
+  depends=(mpss-libscif)
+  pkgdesc="mine yours ours of Intel® Manycore Platform Software Stack"
+  groups=(mpss)
+  _pkgname=${pkgname}
+  msg2 "Starting make in ${_pkgname}..."
+
+  LDFLAGS="-L$_install_lib" \
+  CFLAGS="-I$_install_include" \
+  make -C $_pkgname/src \
+    --include-dir=$_metadata_include_dir \
+    HOST=1 CARD=0 \
+    TARGET=libmyo-client.so \
+    DBL_TARGET=libmyodbl-client.so \
+    BUILD_AND_INSTALL_MAN_PAGES=1 \
+    all
+
+  LDFLAGS="-L$_install_lib" \
+  CFLAGS="-I$_install_include" \
+  make -C $_pkgname/src \
+    --include-dir=$_metadata_include_dir \
+    DESTDIR="$pkgdir" \
+    prefix=/usr/ \
+    libdir=/usr/lib \
+    HOST=1 CARD=0 \
+    TARGET=libmyo-client.so \
+    DBL_TARGET=libmyodbl-client.so \
+    BUILD_AND_INSTALL_MAN_PAGES=1 \
+    install
+
+  install -D -m644 ${_pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 ${_pkgname}/COPYING.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
+  install -D -m644 ${_pkgname}/COPYING.LGPL "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LGPL"
+  install -D -m644 ${_pkgname}/COPYING.LIB "$pkgdir/usr/share/licenses/$pkgname/LICENSE.LIB"
 }
 
 package_mpss-micmgmt-tools() {
