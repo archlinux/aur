@@ -1,7 +1,4 @@
-# $Id: PKGBUILD 165985 2016-03-10 18:31:18Z spupykin $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Dag Odenhall <dag.odenhall@gmail.com>
-# Contributor: Grigorios Bouzakis <grbzks@gmail.com>
+# Maintainer: Dmitrii Tcvetkov <demfloro@demfloro.ru>
 
 pkgname=aggregate
 pkgver=1.0.2
