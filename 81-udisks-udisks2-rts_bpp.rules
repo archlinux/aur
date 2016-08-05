@@ -1,0 +1,12 @@
+#
+# UDisks & UDisks2 rules for Realtek PCIE card reader (eg. RTL8411 Device 5289)
+#
+
+# UDisks & UDisks2
+DRIVERS=="rts_bpp", ENV{ID_DRIVE_FLASH_SD}="1"
+
+# UDisks
+DRIVERS=="rts_bpp", ENV{UDISKS_AUTOMOUNT_HINT}="1", ENV{UDISKS_SYSTEM_INTERNAL}="0"
+
+# UDisks2
+DRIVERS=="rts_bpp", ENV{UDISKS_AUTO}="1", ENV{UDISKS_SYSTEM}="0"

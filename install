@@ -1,0 +1,24 @@
+PKGVER="$(ls /usr/src/ | grep rts_bpp | sed 's/^.*-//')"
+
+post_install() {
+  dkms add -m "rts_bpp/${PKGVER}"
+  dkms build -m "rts_bpp/${PKGVER}"
+  dkms install -m "rts_bpp/${PKGVER}"
+  depmod -a
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  dkms remove -m "rts_bpp/${PKGVER}" --all
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_remove() {
+  depmod -a
+}
