@@ -1,0 +1,9 @@
+[Unit]
+Description=NAT-PMP Server
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/natpmp/natpmp -b -v -i eth0 -a 192.168.1.1
+
+[Install]
+WantedBy=multi-user.target
