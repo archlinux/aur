@@ -1,0 +1,8 @@
+*~
+*.swp
+\#*\#
+.\#*
+*.tar.xz
+/src/
+/pkg/
+libmatio
