@@ -1,6 +1,6 @@
 pkgbase = minimetro
 	pkgdesc = minimalistic subway layout game
-	pkgver = gamma12
+	pkgver = gamma18
 	pkgrel = 2
 	url = http://dinopoloclub.com/minimetro/
 	install = desktop.install
@@ -13,10 +13,10 @@ pkgbase = minimetro
 	depends = glu
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
-	source = hib://MiniMetro-gamma12-linux.tar.gz
+	source = hib://MiniMetro-gamma18-linux.tar.gz
 	source = minimetro.desktop
 	source = minimetro.png::http://dinopoloclub.com/press/mini_metro/images/icon.png
-	md5sums = 61f1aa0108aa595f284d459f2a146353
+	md5sums = 765bfdb52584df48784728e6476f47d7
 	md5sums = 0fe19f989f9606a825b67b9b379c9d6c
 	md5sums = 8412b1e4cc11be455af993d921a68ced
 
