@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -39,7 +39,7 @@ source=("$pkgname.service"
 md5sums=('c744355aae0ae7c5dd1ecadbbc312216'
          '5b5658cd73aa4aa4d7492620a894e8ac'
          'd43026960060bc677549baa26a24c9ee'
-         '2a640d69beeea0c03d80b75357a040fe'
+         'e1bb28d05fc072f6cf86d18716cf1f97'
          '75535f9870f06c540f513262a9b7b1ab'
          '496b1fa2533d1306318115e2b02984bd'
          '472dae0f2bd35c58815ec9649eea5861'
@@ -64,24 +64,24 @@ package() {
 
     msg2 'Creating $pkgname directory structure'
     install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush"{,/cache{,/{complete,default,download,usage}}}
-    install --directory --owner=http --group=http --mode=6775 "$pkgdir/usr/share/webapps/$pkgname"
-    install --directory --owner=http --group=http --mode=0700 "$pkgdir/usr/share/webapps/$pkgname/.ssh"{,/ctrl-sockets}
+    install --directory --owner=http --group=http --mode=6775 "$pkgdir/var/lib/$pkgname"
+    install --directory --owner=http --group=http --mode=0700 "$pkgdir/var/lib/$pkgname/.ssh"{,/ctrl-sockets}
     mkdir -p "$pkgdir/srv/http" "$pkgdir/etc/skel"
     ln -s /etc/drush "$pkgdir/srv/http/.drush"
     ln -s /etc/drush "$pkgdir/etc/skel/.drush"
-    ln -s /etc/drush "$pkgdir/usr/share/webapps/$pkgname/.drush"
-    ln -s "/usr/share/webapps/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
+    ln -s /etc/drush "$pkgdir/var/lib/$pkgname/.drush"
+    ln -s "/var/lib/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
     umask 066
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
+    mkdir -p "$pkgdir/var/lib/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
     umask 077
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"{backups,config/server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}
+    mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,config/server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}
     umask 027
-    mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"clients/admin
+    mkdir -p "$pkgdir/var/lib/$pkgname/"clients/admin
     umask 007
-      mkdir -p "$pkgdir/usr/share/webapps/$pkgname/"config/self
-    ln -s "/usr/share/webapps/$pkgname/config/server_master/nginx.conf"         "$pkgdir/usr/share/webapps/$pkgname/config/nginx.conf"
-    ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_advanced_include.conf"
-    ln -s "/usr/share/webapps/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/usr/share/webapps/$pkgname/config/includes/nginx_simple_include.conf"
+      mkdir -p "$pkgdir/var/lib/$pkgname/"config/self
+    ln -s "/var/lib/$pkgname/config/server_master/nginx.conf"         "$pkgdir/var/lib/$pkgname/config/nginx.conf"
+    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
+    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
 
-    chown -R http:http "$pkgdir/etc/drush" "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
+    chown -R http:http "$pkgdir/etc/drush" "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
 }
