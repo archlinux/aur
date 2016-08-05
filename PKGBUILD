@@ -4,13 +4,13 @@ _gitroot="https://github.com/bluezio/ipwebcam-gst.git"
 _gitname="ipwebcam-gst"
 _gitbranch="master"
 pkgname=ipwebcam-gst-git
-pkgver=r46.a179d03
+pkgver=r71.45efbb7
 pkgrel=1
 pkgdesc="Use Android smartphone as webcam and/or microphone"
 arch=('i686' 'x86_64')
 url="https://github.com/bluezio/ipwebcam-gst"
 license=('GPL')
-depends=('android-tools' 'v4l2loopback-dkms' 'mawk' 'v4l-utils' 'gstreamer' 'gst-plugins-good')
+depends=('android-tools' 'v4l2loopback-dkms' 'v4l-utils' 'gstreamer' 'gst-plugins-good')
 provides=('prepare-videochat')
 conflicts=('prepare-videochat')
 source=("${_gitname}::git+${_gitroot}#branch=${_gitbranch}")
