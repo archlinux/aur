@@ -16,7 +16,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
          'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13', 'rust')
+             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'rust')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 options=('!emptydirs' '!makeflags')
@@ -29,8 +29,8 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         vendor.js
         firefox-symbolic.svg
         no-libnotify.patch)
-sha256sums=('5ac36c3481dde80ef2e36237badef6cb8ec5fe7e3b5ac1728839477de0cc034c'
-            '859c9d9793e9d21f2b97b2bece201c777542be6dacb6dfb113f6c230b30e8d51'
+sha256sums=('f474113a1ee75a01d43e270bf438ba78b9f7f2e397a66652b43603235fa76e21'
+            '2a00f02c73d4ce61b46d7e5d559b0679f002ab35c6fdcd996f234249e841bbfc'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
