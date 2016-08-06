@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.7.4.r256.ed072e3
+pkgver=0.7.6.r309.2783e5f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ depends=('libcl'
          )
 makedepends=('git'
              'opencl-headers'
+             'clang'
              )
 conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
@@ -21,12 +22,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  _ver="$(cat KNLMeansCL/KNLMeansCL.h | grep -m1 '#define VERSION' | cut -d '"' -f2)"
-  echo "${_ver//-/.}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  chmod +x "${_plug}/configure"
+  _ver="$(cat KNLMeansCL/KNLMeansCL.h | grep -m1 '#define VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -34,11 +31,11 @@ build() {
   ./configure \
     --install=/usr/lib/vapoursynth \
     --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
+    --extra-ldflags="${LDFLAGS}" \
+    --cxx=clang++
   make
 }
 
 package(){
   make -C "${_plug}" DESTDIR="${pkgdir}" install
-  install -Dm644 "${_plug}/DOC.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/DOC.md"
 }
