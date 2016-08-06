@@ -7,8 +7,8 @@
 # Contributor: Aldo Culquicondor <alculquicondor@gmail.com>
 # Contributor: Florijan Hamzic <florijanh@gmail.com>
 pkgname='sphinx'
-pkgver=2.2.10
-pkgrel=2
+pkgver=2.2.11
+pkgrel=1
 pkgdesc='Free open-source SQL full-text search engine.'
 arch=('i686' 'x86_64')
 url='http://www.sphinxsearch.com/'
@@ -50,7 +50,7 @@ package() {
   install -Dm644 api/sphinxapi.py "${pkgdir}/usr/share/sphinx/lib/sphinxapi.py"
   install -Dm644 "${srcdir}/sphinx.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/sphinx.conf"
 }
-md5sums=('dda52b24d8348fc09e26d8a649a231d2'
+md5sums=('5cac34f3d78a9d612ca4301abfcbd666'
          '48e3e1857919d26d5104a48caffb531b'
          'faaa8310af97ff1dbdaf08612e442020'
          'fe06a8aff0520a6f75596ee43d2e5935'
