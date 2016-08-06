@@ -2,8 +2,8 @@
 
 pkgname=ovpngen
 pkgver=1.22
-pkgrel=1
-pkgdesc="Generate an OpenVPN client rofile in the unified format."
+pkgrel=2
+pkgdesc="Generate an OpenVPN client profile in the unified format."
 arch=('any')
 url="http://github.com/graysky2/ovpngen"
 license=('MIT')
