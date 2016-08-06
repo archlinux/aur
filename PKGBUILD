@@ -79,7 +79,7 @@ _arch_target=xtensa
 # OS target:
 
 # system: <os> or <kernel>-<os>
-# options: "gnu", "linux-gnu", "linux-gnueabi" or "elf"
+# options: "gnu", "linux-gnu", "linux-gnueabihf" or "elf"
 _os_target=elf
 
 #--------------------------------------------------------------------------------
@@ -108,40 +108,34 @@ fi
 
 _pkgname=gcc
 pkgname=$_target-$_pkgname
-pkgver=5.2.0
-_pkgver=5
-_islver=0.14.1
-pkgrel=1
-#_snapshot=5-20150623
+pkgver=6.1.1
+_pkgver=6
+_islver=0.16.1
+pkgrel=4
+_commit=c8454ab1
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'mips64el')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://$_pkgname.gnu.org"
-makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
+makedepends=('binutils>=2.26' 'libmpc' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(ftp://$_pkgname.gnu.org/pub/$_pkgname/releases/$_pkgname-${pkgver}/$_pkgname-${pkgver}.tar.bz2
-        #ftp://$_pkgname.gnu.org/pub/$_pkgname/snapshots/${_snapshot}/$_pkgname-${_snapshot}.tar.bz2
+source=(git://$_pkgname.gnu.org/git/$_pkgname.git#commit=${_commit}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        pr66035.patch
         $_pkgname-xtensa.patch::https://raw.githubusercontent.com/qca/open-ath9k-htc-firmware/1.3.2/local/patches/$_pkgname.patch
         mips-kfreebsd-gnu.patch)
-md5sums=('a51bcfeb3da7dd4c623e27207ed43467'
-         '118d1a379abf7606a3334c98a8411c79'
-         '5b980076cd5fcbc3aff6014f306282dd'
+md5sums=('SKIP'
+         'ac1f25a0677912952718a51f5bc20f32'
          '81372ee980289a9f6df01dad31c64a63'
          '43282cddb2080b1180f7b76d3a8a832c')
 
-if [ -n "${_snapshot}" ]; then
-  _basedir=$_pkgname-${_snapshot}
-else
-  _basedir=$_pkgname-${pkgver}
-fi
+# gcc-6.0 forces a changed triplet - need to address in pacman/devtools
+[[ $CARCH == "x86_64" ]] && CHOST=x86_64-pc-linux-gnu
 
 _libdir="usr/lib/$_pkgname/$_target/$pkgver"
 
 prepare() {
-  cd ${srcdir}/${_basedir}
+  cd ${srcdir}/${_pkgname}
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
@@ -152,13 +146,8 @@ prepare() {
   # Parabola installs x86_64 libraries /lib
   [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' $_pkgname/config/i386/t-linux64
 
-  echo ${pkgver} > $_pkgname/BASE-VER
-
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,$_pkgname}/configure
-
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66035
-  patch -p1 -i ${srcdir}/pr66035.patch
 
   # open-ath9k-htc-firmware patch on xtensa-unknown-elf
   [[ $_target == xtensa-unknown-elf ]] && patch -p1 -i ${srcdir}/$_pkgname-xtensa.patch
@@ -178,7 +167,7 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  ${srcdir}/${_basedir}/configure --prefix=/usr \
+  ${srcdir}/${_pkgname}/configure --prefix=/usr \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man \
       --with-bugurl=https://labs.parabola.nu/ \
@@ -191,18 +180,16 @@ build() {
       --enable-lto --enable-plugin --enable-install-libiberty \
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
-      --enable-checking=release \
-      --with-default-libstdcxx-abi=gcc4-compatible --disable-nls \
+      --enable-checking=release --disable-nls \
       --target=$_target
   make all-$_pkgname
 }
 
 package() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("$_target-binutils>=2.25" 'libmpc')
+  depends=("$_target-binutils>=2.26" 'libmpc')
   groups=('cross-devel')
   options=('staticlibs')
-  install=$_pkgname.install
 
   cd ${srcdir}/$_pkgname-build
 
