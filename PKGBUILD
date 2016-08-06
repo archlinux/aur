@@ -1,16 +1,16 @@
-# Maintainer: Chris Simpson <csimpson.aur at gmail dot com>
+# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbalpha-git
 pkgver=144.25ed7a6
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Final Burn Alpha (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="https://github.com/libretro/libretro-fbalpha"
+url="https://github.com/libretro/fbalpha"
 license=('custom:Non-commercial')
 makedepends=('git')
 
 _libname=fbalpha_libretro
-_gitname=libretro-fbalpha
+_gitname=fbalpha
 source=("git+https://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 sha256sums=('SKIP'
