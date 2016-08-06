@@ -1,14 +1,14 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=libmypaint-git
-pkgver=1.1.r640
+pkgver=1.3.0.beta.1.8.gf052590
 pkgrel=1
 pkgdesc="a library for making brushstrokes which is used by MyPaint and other projects, with GEGL support"
 arch=('i686' 'x86_64')
 url="http://mypaint.org/"
 license=('ISC')
 depends=('gobject-introspection' 'json-c' 'gegl')
-makedepends=('intltool' 'python')
+makedepends=('git' 'intltool' 'python')
 source=('git+https://github.com/mypaint/libmypaint.git')
 md5sums=('SKIP')
 
@@ -30,10 +30,7 @@ package() {
 pkgver() {
   cd "$srcdir/libmypaint"
 
-  ver=1.1 # use the brushlib_version in SConscript
-  count=$(git rev-list --count HEAD)
-#  commit=$(git rev-parse --short HEAD)
-  echo $ver.r$count
+  git describe --tags | sed 's/^v//g;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
