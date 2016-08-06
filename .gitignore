@@ -1,0 +1,6 @@
+pkg/
+src/
+install.sh
+METEOR@*
+*.tar.gz
+*.pkg.tar.xz
