@@ -24,7 +24,7 @@ pkgbase = python-nikola
 	makedepends = python-husl
 	makedepends = python-piexif
 	options = !emptydirs
-	source = https://pypi.io/packages/source/N/Nikola/nikola-7.7.12.tar.gz
+	source = https://pypi.io/packages/source/N/Nikola/Nikola-7.7.12.tar.gz
 	md5sums = a5116b025491500ea4a0850214920fcd
 
 pkgname = python-nikola

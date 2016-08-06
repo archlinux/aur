@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
 pkgbase=python-nikola
-_pyname=nikola
+_pyname=Nikola
 pkgname=('python-nikola' 'python-nikola-doc')
 pkgver=7.7.12
 pkgrel=1
@@ -20,7 +20,6 @@ md5sums=('a5116b025491500ea4a0850214920fcd')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
-  cp -R "${srcdir}/${_pyname}-${pkgver}" "${srcdir}/${_pyname}2-${pkgver}"
 }
 
 package_python-nikola() {
