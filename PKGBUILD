@@ -1,23 +1,23 @@
-# Maintainer: Martin Hundebøll <martin@hundeboll.net>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+
 pkgname=gotty
-pkgver=1.2
+pkgver=0.0.13
 pkgrel=1
-pkgdesc="Go TTY - The Really Simple TTY Terminal Application"
-url="http://gotty.io"
-arch=('x86_64' 'i686')
-license=('GPLv2')
-source=("https://github.com/gotty/gotty/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("78b5341e0fde2747dad05ebecf04e11d19b2a9984029418d594ae381caf0ec32")
+epoch=1
+pkgdesc='Share your terminal as a web application'
+url=https://github.com/yudai/gotty
+arch=('any')
+license=('MIT')
+makedepends=('go')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+  GOPATH="$srcdir" go get github.com/yudai/gotty
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  install -Dm755 bin/gotty "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 "$srcdir"/src/github.com/yudai/gotty/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
