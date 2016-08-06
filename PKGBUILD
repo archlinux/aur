@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-widget-styles
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Hawaii widget styles"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('extra-cmake-modules')
 conflicts=('hawaii-widget-styles-git')
 groups=('hawaii')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('4b47ba51b46aa64857c4b6d3c012b4f71750de04')
+sha1sums=('6ce4a75660cb1c03c10056570961267bd5a5ad9f')
 
 prepare() {
 	mkdir -p build
