@@ -1,13 +1,13 @@
-# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Max Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: Kaos < gianlucaatlas at gmail dot com >
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Matthew Sharpe <matt.sharpe@gmail.com>
 
 pkgname=ophcrack
-pkgver=3.6.0
-pkgrel=2
-pkgdesc="A free Windows password cracker based on rainbow tables"
+pkgver=3.6.1
+pkgrel=1
+pkgdesc="Windows password cracker based on rainbow tables"
 arch=('i686' 'x86_64')
 url="http://ophcrack.sourceforge.net"
 license=('GPL')
@@ -15,11 +15,11 @@ depends=('qt4')
 optdepends=('qwt: enable graph')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
         ophcrack.desktop)
-md5sums=('93347fac9fee385b40d4f486680dfba9'
+md5sums=('f05e41f4261c488d7da1015374b5725b'
          '664599c4fd7fd210e6c421459f60e20d')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   ./configure --prefix=/usr --enable-gui --enable-graph
 
@@ -27,10 +27,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir"/ install
+  make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir"/ophcrack.desktop "$pkgdir"/usr/share/applications/ophcrack.desktop
-  install -Dm644 src/gui/pixmaps/os.xpm "$pkgdir"/usr/share/$pkgname/pixmaps/os.xpm
+  install -Dm644 "$srcdir"/ophcrack.desktop \
+    "$pkgdir"/usr/share/applications/ophcrack.desktop
+  install -Dm644 src/gui/pixmaps/os.xpm \
+    "$pkgdir"/usr/share/$pkgname/pixmaps/os.xpm
 }
