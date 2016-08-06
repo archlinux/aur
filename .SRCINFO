@@ -1,5 +1,5 @@
 pkgbase = python-dirlog
-	pkgdesc = keep a log of directories you visit to get back fast
+	pkgdesc = keep a log of directories you visit to get back fas
 	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/ninjaaron/dirlog
