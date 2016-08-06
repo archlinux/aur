@@ -4,7 +4,7 @@
 pkgname=sogo2
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=2.3.13
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -62,7 +62,7 @@ build() {
 package() {
 
   cd "${srcdir}/SOGo-${pkgver}"
-  make install DESTDIR="${pkgdir}" GNUSTEP_SYSTEM_ADMIN_TOOLS="/usr/bin"
+  make install DESTDIR="${pkgdir}"
   install -D -m 0644 "${srcdir}"/sogo.service \
                      "${pkgdir}"/usr/lib/systemd/system/sogo.service
   install -D -m 0600 "${srcdir}"/SOGo-${pkgver}/Scripts/sogo.conf \
