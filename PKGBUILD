@@ -3,25 +3,19 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=babl-git
-pkgver=0.1.14.2.g746b5b6
+pkgver=0.1.18.1.g654aa19
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
 url="http://www.gegl.org/babl"
 license=('LGPL3')
-groups=()
 depends=('glibc')
 makedepends=('git')
 provides=("babl=${pkgver}")
 conflicts=('babl')
-replaces=()
-backup=()
 options=(!libtool)
-install=
 source=(git://git.gnome.org/babl)
 md5sums=('SKIP')
-noextract=()
-#generate with 'makepkg -g'
 
 _gitroot=GITURL
 _gitname=babl
