@@ -11,8 +11,6 @@
 # ->binutils(target system)->gcc(target system)->binutils(target system)
 # ->glibc(target system)
 
-# build from head of release branch as bug fix releases are rare
-
 #--------------------------------------------------------------------------------
 #  cross-compile table
 #--------------------------------------------------------------------------------
@@ -79,7 +77,7 @@ _arch_target=xtensa
 # OS target:
 
 # system: <os> or <kernel>-<os>
-# options: "gnu", "linux-gnu", "linux-gnueabi" or "elf"
+# options: "gnu", "linux-gnu", "linux-gnueabihf" or "elf"
 _os_target=elf
 
 #--------------------------------------------------------------------------------
@@ -108,34 +106,27 @@ fi
 
 _pkgname=binutils
 pkgname=$_target-$_pkgname
-pkgver=2.25.1
-pkgrel=1
-_commit=2bd25930
+pkgver=2.26.1
+pkgrel=2
+_commit=c29838e7
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'mips64el')
 url="http://www.gnu.org/software/$_pkgname/"
 license=('GPL')
 groups=('cross-devel')
-depends=('glibc>=2.22' 'zlib')
+depends=('glibc>=2.24' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 options=('staticlibs' '!distcc' '!ccache')
-install=$_pkgname.install
 #source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-${pkgver}.tar.bz2{,.sig})
 source=(git://sourceware.org/git/$_pkgname-gdb.git#commit=${_commit}
-        $_pkgname-e9c1bdad.patch
         $_pkgname-xtensa.patch::https://raw.githubusercontent.com/qca/open-ath9k-htc-firmware/1.3.2/local/patches/$_pkgname.patch)
 md5sums=('SKIP'
-         'eb3aceaab8ed26e06d505f82beb30f8f'
          '7077126d96e9a755a0eaddb5505efe68')
 #validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93')
 
 prepare() {
-  #cd ${srcdir}/$_pkgname-${pkgver}
-  cd ${srcdir}/$_pkgname-gdb
-
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=16992
-  patch -p1 -i ${srcdir}/$_pkgname-e9c1bdad.patch
+  cd $_pkgname-gdb
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -147,10 +138,9 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/$_pkgname-build
+  cd $_pkgname-build
 
-  #${srcdir}/$_pkgname-${pkgver}/configure --prefix=/usr \
-  ${srcdir}/$_pkgname-gdb/configure --prefix=/usr \
+  ../$_pkgname-gdb/configure --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://labs.parabola.nu/ \
     --enable-threads --with-pic \
@@ -166,7 +156,7 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/$_pkgname-build
+  cd $_pkgname-build
   
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # ignore failures in gold testsuite...
@@ -174,9 +164,11 @@ check() {
 }
 
 package() {
-  cd ${srcdir}/$_pkgname-build
+  cd $_pkgname-build
   make prefix=${pkgdir}/usr install
 
   # Remove info documents that conflict with host version
   rm -rf ${pkgdir}/usr/share/info
+  echo "INPUT ( /usr/lib/libbfd.a -liberty -lz -ldl )" > "$pkgdir"/usr/lib/libbfd.so
+  echo "INPUT ( /usr/lib/libopcodes.a -lbfd )" > "$pkgdir"/usr/lib/libopcodes.so
 }
