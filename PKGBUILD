@@ -1,6 +1,6 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.95.4.20160724
+pkgver=0.95.4.20160806
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -14,7 +14,7 @@ changelog="change.log"
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 md5sums=('3215173b6f1673d868e71f1d953ed9d2'
-         'f4ea86d56e5504e0a5a2f315710af174'
+         'df0e5a8cdd87459951a728424627dd06'
          '1b667f450341675b6b2c1750e034516c'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')
@@ -25,12 +25,12 @@ package() {
     # Variables
     ## i know this isnt a good thing and nobody wants to see this on aur, but itll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64 
-    __VNAMING="PROLinux95_42" 
+    __VNAMING="PROLinux95_45" 
     
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="http://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinux95_42.zip" ##filename
-    __DDLFMD5="6a8a52236dfebfe949818553f708d472" #md5sum
+    __DDLFN="PROLinux95_45.zip" ##filename
+    __DDLFMD5="d446e986359b2f7d803db3dc535fea4c" #md5sum
     
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then

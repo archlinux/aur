@@ -9,6 +9,9 @@ http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 * move unzip to makedepends
 * now with install
 
+0.95.4.20160806-1
+* new upstream version
+
 0.95.20160613-1
 * new version of PRO
 * added 'unzip' 'xdg-utils' 'desktop-file-utils' as dependency
