@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173752'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth')
 makedepends=('mercurial')
 provides=("vapoursynth-plugin-${_plug}"
