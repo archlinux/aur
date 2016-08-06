@@ -2,8 +2,9 @@
 
 pkgname=pcap-dnsproxy-git
 _pkgname=pcap-dnsproxy
-pkgver=20151214
+pkgver=0.4.6.0.9.gb981552
 pkgrel=1
+epoch=1
 pkgdesc="A local DNS server base on WinPcap and LibPcap."
 arch=("any")
 url="https://github.com/chengr28/Pcap_DNSProxy"
@@ -20,19 +21,18 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    git describe --tags --long | sed 's/^v//;s/release./r/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${pkgname}/Source/Scripts"
-    sh ./Linux_Build.sh
+    sh ./CMake_Build.sh
 }
 
 package() {
     cd "${srcdir}/${pkgname}/Source/Release"
 
     install -Dm777 "Pcap_DNSProxy" "${pkgdir}/usr/share/${_pkgname}/Pcap_DNSProxy"
-    install -Dm777 "KeyPairGenerator" "${pkgdir}/usr/share/${_pkgname}/KeyPairGenerator"
 
     install -Dm644 ./{*.conf,*.txt} "${pkgdir}/usr/share/${_pkgname}/"
     install -dm755 "${pkgdir}/etc/${_pkgname}/"
@@ -50,3 +50,4 @@ package() {
 
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
