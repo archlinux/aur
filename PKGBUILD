@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=libhawaii
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Hawaii libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('gdb' 'extra-cmake-modules')
 groups=('hawaii')
 options=('debug')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('9b907960582a8ea24eb595dea57f6825e74523ae')
+sha1sums=('09d3b1a3400df4cfd518527a6ce89ea814692f63')
 
 prepare() {
 	mkdir -p build
