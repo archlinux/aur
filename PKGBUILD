@@ -4,15 +4,15 @@
 # Contributor: Huulivoide
 
 pkgname=zsxd
-pkgver=1.10.2
-pkgrel=5
+pkgver=1.11.0
+pkgrel=1
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
 url="http://www.zelda-solarus.com/"
 license=('custom')
 groups=()
-depends=('solarus>=1.4.0')
+depends=('solarus>=1.5.0')
 makedepends=('zip' 'cmake')
 checkdepends=()
 optdepends=()
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/zsxd/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('5221e9741fe6a06bf12ff23ceb5021b0')
+md5sums=('15381d399daee762df4d4314c4bcec08')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
