@@ -2,7 +2,7 @@
 
 _plug=sangnom
 pkgname=vapoursynth-plugin-${_plug}-hg
-pkgver=18.c4e2a8681c27
+pkgver=19.016bf2359f57
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   echo "all:
-	  g++ -o lib${_plug}.so -std=gnu++11 -msse4.1 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) sangnom_c.cpp -shared -fPIC" > Makefile
+	  g++ -o lib${_plug}.so -std=gnu++11 -msse2 -DVS_TARGET_CPU_X86=1 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) sangnom_c.cpp -shared -fPIC" > Makefile
 }
 
 build() {
