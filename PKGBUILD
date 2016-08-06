@@ -7,7 +7,7 @@
 #
 
 pkgname=platformio
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('energia: For MSP430 based projects'
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz"
 	"setup.patch")
-sha256sums=('12f9d781db9727f2228d2151a76d1ef0e7fcb47b0d4bebccbc9e6e7bd697f157'
+sha256sums=('72b373b4e653b76df17d41e4962ae4d6e1f7f705b0c9931b0ec360cc60ee1865'
 	    '536217552b06ef562469268a8f0115a31bf052308f891a228adf94e314ce3730')
 
 prepare() {
