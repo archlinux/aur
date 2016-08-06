@@ -4,17 +4,16 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.2.1044.g1c6b85d
+pkgver=2.9.4.47.g8493711
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org"
 license=('GPL' 'LGPL')
-groups=()
 depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1' \
                  'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils' \
                  'libexif>=0.6.15' 'libart-lgpl>=2.3.19' 'dbus-glib' 'gtk-doc' \
-                 'gegl-git>=0.3.4' 'openexr>=1.6.1' 'libmypaint-git')
+                 'gegl-git>=0.3.4' 'openexr>=1.6.1' 'libmypaint-git>=1.3.0')
 makedepends=('git' 'gutenprint>=5.0.0' 'intltool>=0.40.1' \
                    'gnome-python>=2.16.2' 'poppler>=0.12.4' \
                    'alsa-lib>=1.0.0' 'libxslt')
@@ -26,13 +25,10 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 options=('!libtool' '!makeflags')
 provides=('gimp')
 conflicts=('gimp')
-replaces=()
-backup=()
 source=(git://git.gnome.org/gimp
 	linux.gpl)
 md5sums=('SKIP'
          'bb27bc214261d36484093e857f015f38')
-noextract=()
 
 _gitname=gimp
 
