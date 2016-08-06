@@ -17,8 +17,7 @@ url="http://developer.android.com/sdk/installing/studio.html"
 license=('APACHE')
 depends=('java-environment' 'python' 'gtk2')
 makedepends=('unzip')
-optdepends=('android-sdk' 'android-sdk-platform-tools' 'android-sdk-build-tools')
-provides=("android-studio=$pkgver")
+oidprovides=("android-studio=$pkgver")
 conflicts=('android-studio' 'android-studio-beta' 'android-studio-dev')
 options=('!strip')
 install=$pkgname.install
