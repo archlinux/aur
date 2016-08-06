@@ -1,0 +1,24 @@
+pkgbase = bombsquad
+	pkgdesc = An explosive arcade-style party game
+	pkgver = 1.4.96
+	pkgrel = 1
+	url = http://www.froemling.net/apps/bombsquad
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = openal
+	depends = libgl
+	depends = sdl2
+	depends = gcc
+	depends = libvorbis
+	depends = libogg
+	depends = libxau
+	source = bombsquad.sh
+	sha256sums = 850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515
+	source_x86_64 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_64bit_1.4.96.tar.gz
+	sha256sums_x86_64 = cbcd5cdfe7358622ea84dd31a6659b137a65e48609173eb0f10879b97fad70d4
+	source_i686 = http://www.files.froemling.net/bombsquad/builds/BombSquad_Linux_32bit_1.4.96.tar.gz
+	sha256sums_i686 = dc784e03b9f83d88dafacff6caf3be18968939cb57a026141b8d8b6efcd319e2
+
+pkgname = bombsquad
+
