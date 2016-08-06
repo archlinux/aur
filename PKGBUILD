@@ -2,12 +2,12 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.4.gb064905
+pkgver=r5.0.ge549759
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=172525'
-license=('GPL')
+license=('GPLv2')
 depends=('vapoursynth'
          'fftw'
          )
