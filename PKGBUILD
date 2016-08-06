@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-meta-git
-pkgver=20150409
+pkgver=20160806
 pkgrel=1
 pkgdesc="Hawaii desktop environment meta package"
 arch=('i686' 'x86_64')
