@@ -1,36 +1,48 @@
+ac_add_options --enable-official-branding
 export MOZILLA_OFFICIAL=1
+
+mk_add_options MOZ_CO_PROJECT=browser
+ac_add_options --enable-application=browser
+
+mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
+
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+
+ac_add_options --disable-tests
+ac_add_options --disable-mochitests
+ac_add_options --disable-debug
+
+ac_add_options --enable-jemalloc
+#ac_add_options --enable-jemalloc-lib #does nothing?
+ac_add_options --with-pthreads
+
+ac_add_options --enable-strip
+ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
+
+ac_add_options --x-libraries=/usr/lib
+
+# gcc6 doesn't work, explicitly use gcc5
 export CC=gcc-5
 export CXX=g++-5
+
+# Use python2
 mk_add_options PYTHON=/usr/bin/python2
-ac_add_options --enable-official-branding
-ac_add_options --with-distribution-id=Palemoon
-ac_add_options --enable-application=browser
-ac_add_options --enable-optimize="-O2"
-ac_add_options --enable-strip
+
+# use multiple job threads to speed up compilation
 mk_add_options MOZ_MAKE_FLAGS="-j4"
-mk_add_options _FORTIFY_SOURCE=0
-mk_add_options MOZ_CO_PROJECT=browser
-mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
 
 # disable junk
 ac_add_options --disable-accessibility
 ac_add_options --disable-codesighs
 ac_add_options --disable-gamepad
-ac_add_options --disable-installer
 ac_add_options --disable-logging
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-parental-controls
 ac_add_options --disable-safe-browsing
-ac_add_options --disable-updater
 ac_add_options --disable-webrtc
 ac_add_options --disable-websms-backend
 ac_add_options --disable-valgrind
-
-# disable tests, debug
-ac_add_options --disable-tests
-ac_add_options --disable-mochitests
-ac_add_options --disable-debug
-ac_add_options --disable-debug-symbols
 
 # enable useful features
 ac_add_options --enable-chrome-format=omni
@@ -38,20 +50,3 @@ ac_add_options --enable-gstreamer=1.0
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-startup-notification
 ac_add_options --enable-url-classifier
-ac_add_options --enable-jemalloc
-ac_add_options --enable-jemalloc-lib
-
-# use system libs
-ac_add_options --x-libraries=/usr/lib
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
-ac_add_options --with-system-png
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-icu
-ac_add_options --with-system-webp
-ac_add_options --enable-system-hunspell
-ac_add_options --enable-system-sqlite
-ac_add_options --enable-system-ffi
-ac_add_options --enable-system-pixman
