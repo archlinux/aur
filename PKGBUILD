@@ -14,7 +14,7 @@ _repo=astley-rm
 _branch=master
 
 source=("$_repo-$_branch.zip::https://github.com/praticamentetilde/$_repo/archive/$_branch.zip")
-sha512sums=('1af724a01878f1a5484c0a38e7990d66aac88249a13cc4ea04422d04d4d6f35fea6fb29eb0b9fbc63c7ec03672ffdd5dc92397c23f49de164a4cf5d3d0eac29a')
+sha512sums=('b5cc9f364bf8c89e477344f0d4e192f16c35510957d7470eb2e8c30b6df0568465b4807fb983f2dc5c3d7e76ccdd31e7a2c361b6af2571499457cb9c052d3421')
 
 package() {
   cd "$srcdir/$_repo-$_branch"
