@@ -1,0 +1,21 @@
+pkgbase = python-pycangjie
+	pkgdesc = This is a Python wrapper to libcangjie, the library implementing Cangjie and Quick input methods.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://cangjians.github.io/projects/pycangjie/
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = cython>=0.17
+	makedepends = autoconf
+	makedepends = automake
+	depends = libcangjie
+	depends = python>=3.2
+	replaces = pycangjie-git
+	source = https://github.com/Cangjians/pycangjie/releases/download/v1.2/cangjie-1.2.tar.xz
+	source = https://github.com/Cangjians/pycangjie/commit/361bb413203fd43bab624d98edf6f7d20ce6bfd3.patch
+	sha256sums = bc9115904f65581a11e43044c83e999e583468d1bb98c04b33ea059205e07c10
+	sha256sums = SKIP
+
+pkgname = python-pycangjie
+
