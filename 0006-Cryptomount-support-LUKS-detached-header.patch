@@ -1,0 +1,245 @@
+From b6bc9bb59d1245a8510948cc5bf51112aa005506 Mon Sep 17 00:00:00 2001
+From: John Lane <john@lane.uk.net>
+Date: Sun, 30 Nov 2014 19:47:49 +0000
+Subject: [PATCH 1/1] Cryptomount support LUKS detached header
+
+---
+ grub-core/disk/cryptodisk.c | 20 ++++++++++++++++----
+ grub-core/disk/geli.c       |  7 +++++--
+ grub-core/disk/luks.c       | 45 +++++++++++++++++++++++++++++++++++++--------
+ include/grub/cryptodisk.h   |  5 +++--
+ 4 files changed, 61 insertions(+), 16 deletions(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index cdb9950..ef832a2 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -40,6 +40,7 @@ static const struct grub_arg_option options[] =
+     /* TRANSLATORS: It's still restricted to cryptodisks only.  */
+     {"all", 'a', 0, N_("Mount all."), 0, 0},
+     {"boot", 'b', 0, N_("Mount all volumes with `boot' flag set."), 0, 0},
++    {"header", 'H', 0, N_("Read LUKS header from file"), 0, ARG_TYPE_STRING},
+     {0, 0, 0, 0, 0, 0}
+   };
+ 
+@@ -804,6 +805,7 @@ grub_util_cryptodisk_get_uuid (grub_disk_t disk)
+ 
+ static int check_boot, have_it;
+ static char *search_uuid;
++static grub_file_t hdr;
+ 
+ static void
+ cryptodisk_close (grub_cryptodisk_t dev)
+@@ -828,13 +830,13 @@ grub_cryptodisk_scan_device_real (const char *name, grub_disk_t source)
+ 
+   FOR_CRYPTODISK_DEVS (cr)
+   {
+-    dev = cr->scan (source, search_uuid, check_boot);
++    dev = cr->scan (source, search_uuid, check_boot, hdr);
+     if (grub_errno)
+       return grub_errno;
+     if (!dev)
+       continue;
+     
+-    err = cr->recover_key (source, dev);
++    err = cr->recover_key (source, dev, hdr);
+     if (err)
+     {
+       cryptodisk_close (dev);
+@@ -875,7 +877,7 @@ grub_cryptodisk_cheat_mount (const char *sourcedev, const char *cheat)
+ 
+   FOR_CRYPTODISK_DEVS (cr)
+   {
+-    dev = cr->scan (source, search_uuid, check_boot);
++    dev = cr->scan (source, search_uuid, check_boot,0);
+     if (grub_errno)
+       return grub_errno;
+     if (!dev)
+@@ -929,6 +931,16 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+   if (argc < 1 && !state[1].set && !state[2].set)
+     return grub_error (GRUB_ERR_BAD_ARGUMENT, "device name required");
+ 
++  if (state[3].set)
++    {
++      hdr = grub_file_open (state[3].arg);
++      if (!hdr)
++        return grub_errno;
++      grub_printf ("\nUsing detached header %s\n", state[3].arg);
++    }
++  else
++    hdr = NULL;
++
+   have_it = 0;
+   if (state[0].set)
+     {
+@@ -1127,7 +1139,7 @@ GRUB_MOD_INIT (cryptodisk)
+ {
+   grub_disk_dev_register (&grub_cryptodisk_dev);
+   cmd = grub_register_extcmd ("cryptomount", grub_cmd_cryptomount, 0,
+-			      N_("SOURCE|-u UUID|-a|-b"),
++			      N_("SOURCE|-u UUID|-a|-b|-H file"),
+ 			      N_("Mount a crypto device."), options);
+   grub_procfs_register ("luks_script", &luks_script);
+ }
+diff --git a/grub-core/disk/geli.c b/grub-core/disk/geli.c
+index 1727341..b7f37b6 100644
+--- a/grub-core/disk/geli.c
++++ b/grub-core/disk/geli.c
+@@ -52,6 +52,7 @@
+ #include <grub/dl.h>
+ #include <grub/err.h>
+ #include <grub/disk.h>
++#include <grub/file.h>
+ #include <grub/crypto.h>
+ #include <grub/partition.h>
+ #include <grub/i18n.h>
+@@ -239,7 +240,8 @@ grub_util_get_geli_uuid (const char *dev)
+ 
+ static grub_cryptodisk_t
+ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+-		   int boot_only)
++		   int boot_only,
++		   grub_file_t hdr __attribute__ ((unused)) )
+ {
+   grub_cryptodisk_t newdev;
+   struct grub_geli_phdr header;
+@@ -394,7 +396,8 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+ }
+ 
+ static grub_err_t
+-recover_key (grub_disk_t source, grub_cryptodisk_t dev)
++recover_key (grub_disk_t source, grub_cryptodisk_t dev,
++	     grub_file_t hdr __attribute__ ((unused)) )
+ {
+   grub_size_t keysize;
+   grub_uint8_t digest[GRUB_CRYPTO_MAX_MDLEN];
+diff --git a/grub-core/disk/luks.c b/grub-core/disk/luks.c
+index 86c50c6..66e64c0 100644
+--- a/grub-core/disk/luks.c
++++ b/grub-core/disk/luks.c
+@@ -23,6 +23,7 @@
+ #include <grub/dl.h>
+ #include <grub/err.h>
+ #include <grub/disk.h>
++#include <grub/file.h>
+ #include <grub/crypto.h>
+ #include <grub/partition.h>
+ #include <grub/i18n.h>
+@@ -66,7 +67,7 @@ gcry_err_code_t AF_merge (const gcry_md_spec_t * hash, grub_uint8_t * src,
+ 
+ static grub_cryptodisk_t
+ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+-		   int check_boot)
++		   int check_boot, grub_file_t hdr)
+ {
+   grub_cryptodisk_t newdev;
+   const char *iptr;
+@@ -86,11 +87,21 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+   int benbi_log = 0;
+   grub_err_t err;
+ 
++  err = GRUB_ERR_NONE;
++
+   if (check_boot)
+     return NULL;
+ 
+   /* Read the LUKS header.  */
+-  err = grub_disk_read (disk, 0, 0, sizeof (header), &header);
++  if (hdr)
++  {
++    grub_file_seek (hdr, 0);
++    if (grub_file_read (hdr, &header, sizeof (header)) != sizeof (header))
++        err = GRUB_ERR_READ_ERROR;
++  }
++  else
++    err = grub_disk_read (disk, 0, 0, sizeof (header), &header);
++
+   if (err)
+     {
+       if (err == GRUB_ERR_OUT_OF_RANGE)
+@@ -304,12 +315,14 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+   grub_memcpy (newdev->uuid, uuid, sizeof (newdev->uuid));
+   newdev->modname = "luks";
+   COMPILE_TIME_ASSERT (sizeof (newdev->uuid) >= sizeof (uuid));
++
+   return newdev;
+ }
+ 
+ static grub_err_t
+ luks_recover_key (grub_disk_t source,
+-		  grub_cryptodisk_t dev)
++		  grub_cryptodisk_t dev,
++	          grub_file_t hdr)
+ {
+   struct grub_luks_phdr header;
+   grub_size_t keysize;
+@@ -321,8 +334,19 @@ luks_recover_key (grub_disk_t source,
+   grub_err_t err;
+   grub_size_t max_stripes = 1;
+   char *tmp;
++  grub_uint32_t sector;
++
++  err = GRUB_ERR_NONE;
++
++  if (hdr)
++  {
++    grub_file_seek (hdr, 0);
++    if (grub_file_read (hdr, &header, sizeof (header)) != sizeof (header))
++        err = GRUB_ERR_READ_ERROR;
++  }
++  else
++    err = grub_disk_read (source, 0, 0, sizeof (header), &header);
+ 
+-  err = grub_disk_read (source, 0, 0, sizeof (header), &header);
+   if (err)
+     return err;
+ 
+@@ -391,13 +415,18 @@ luks_recover_key (grub_disk_t source,
+ 	  return grub_crypto_gcry_error (gcry_err);
+ 	}
+ 
++      sector = grub_be_to_cpu32 (header.keyblock[i].keyMaterialOffset);
+       length = (keysize * grub_be_to_cpu32 (header.keyblock[i].stripes));
+ 
+       /* Read and decrypt the key material from the disk.  */
+-      err = grub_disk_read (source,
+-			    grub_be_to_cpu32 (header.keyblock
+-					      [i].keyMaterialOffset), 0,
+-			    length, split_key);
++      if (hdr)
++        {
++	  grub_file_seek (hdr, sector * 512);
++          if (grub_file_read (hdr, split_key, length) != (grub_ssize_t)length)
++            err = GRUB_ERR_READ_ERROR;
++        }
++      else
++        err = grub_disk_read (source, sector, 0, length, split_key);
+       if (err)
+ 	{
+ 	  grub_free (split_key);
+diff --git a/include/grub/cryptodisk.h b/include/grub/cryptodisk.h
+index f2ad2a7..16dee3c 100644
+--- a/include/grub/cryptodisk.h
++++ b/include/grub/cryptodisk.h
+@@ -20,6 +20,7 @@
+ #define GRUB_CRYPTODISK_HEADER	1
+ 
+ #include <grub/disk.h>
++#include <grub/file.h>
+ #include <grub/crypto.h>
+ #include <grub/list.h>
+ #ifdef GRUB_UTIL
+@@ -106,8 +107,8 @@ struct grub_cryptodisk_dev
+   struct grub_cryptodisk_dev **prev;
+ 
+   grub_cryptodisk_t (*scan) (grub_disk_t disk, const char *check_uuid,
+-			     int boot_only);
+-  grub_err_t (*recover_key) (grub_disk_t disk, grub_cryptodisk_t dev);
++			     int boot_only, grub_file_t hdr);
++  grub_err_t (*recover_key) (grub_disk_t disk, grub_cryptodisk_t dev, grub_file_t hdr);
+ };
+ typedef struct grub_cryptodisk_dev *grub_cryptodisk_dev_t;
+ 
+-- 
+2.1.2
+

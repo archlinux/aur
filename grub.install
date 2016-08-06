@@ -1,0 +1,15 @@
+post_install() {
+  if [ -f /boot/grub/grub.cfg.pacsave ]; then
+    echo "Copying /boot/grub/grub.cfg.pacsave to /boot/grub/grub.cfg"
+    install -D -m0644 /boot/grub/grub.cfg.pacsave /boot/grub/grub.cfg
+  fi
+
+  cat << 'EOM'
+Generating grub.cfg.example config file...
+This may fail on some machines running a custom kernel.
+EOM
+
+  grub-mkconfig -o /boot/grub/grub.cfg.example 2> /dev/null
+  echo "done."
+}
+
