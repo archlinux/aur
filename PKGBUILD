@@ -2,7 +2,7 @@
 
 _pkgname="python-paypalrestsdk"
 pkgname="${_pkgname}"
-pkgver=1.11.5
+pkgver=1.11.7
 pkgrel=1
 pkgdesc="Python SDK for PayPal RESTful APIs https://developer.paypal.com"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(https://github.com/paypal/PayPal-Python-SDK/archive/v$pkgver.tar.gz)
-md5sums=('a2480aba6b0ec2715440ff637c35b0f8')
+md5sums=('5efd8beec9443440b763f53a015b9084')
 
 package(){
     cd "${srcdir}/PayPal-Python-SDK-${pkgver}"
