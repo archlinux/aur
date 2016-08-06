@@ -9,6 +9,8 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173748'
 license=('ISC')
 depends=('libavcodec.so'
+         'libavformat.so'
+         'libavutil.so'
          )
 makedepends=('git'
              )
