@@ -1,0 +1,15 @@
+pkgbase = astleyrm
+	pkgdesc = Rickroll whoever tries to desert (rm -rf) your *NIX system, even root.
+	pkgver = 1
+	pkgrel = 1
+	url = https://praticamentetilde.github.io/linux/2016/07/28/how-to-rickroll-people-launching-rm-rf-on-your-system.html
+	arch = any
+	license = custom:unlicense
+	makedepends = git
+	depends = coreutils
+	optdepends = xdg-utils: to open with xdg-open links in rickroll()
+	source = astley-rm-master.zip::https://github.com/praticamentetilde/astley-rm/archive/master.zip
+	sha512sums = 1af724a01878f1a5484c0a38e7990d66aac88249a13cc4ea04422d04d4d6f35fea6fb29eb0b9fbc63c7ec03672ffdd5dc92397c23f49de164a4cf5d3d0eac29a
+
+pkgname = astleyrm
+
