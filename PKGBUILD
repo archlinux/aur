@@ -9,7 +9,7 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(x86_64)
@@ -22,7 +22,8 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc lib32-blue
              lib32-libteam vala perl-yaml python-gobject networkmanager modemmanager)
 checkdepends=(libx11 python-dbus)
 source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz)
-sha256sums=('41d8082e027f58bb5fa4181f93742606ab99c659794a18e2823eff22df0eecd9')
+
+sha256sums=('19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa')
 
 prepare() {
   cd NetworkManager-$pkgver
