@@ -6,26 +6,21 @@ _gitname=yara
 pkgname=yara-git
 pkgver=3.4.0.1113.f502bdf
 pkgrel=1
-pkgdesc="Tool aimed at helping malware researchers to identify and classify malware samples"
-url="https://plusvic.github.io/yara/"
+pkgdesc='Tool aimed at helping malware researchers to identify and classify malware samples'
+url='https://github.com/VirusTotal/yara'
 arch=('i686' 'x86_64')
 license=('Apache')
 depends=('openssl' 'file')
 makedepends=('git' 'openssl')
 provides=('yara')
 conflicts=('yara')
-source=(${pkgname}::git+https://github.com/plusvic/${_gitname})
+source=(${pkgname}::git+https://github.com/VirusTotal/${_gitname})
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgbase}
   printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2|cut -d- -f1)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgbase}
-  sed -r 's|(-Wshorten-64-to-32)||g' -i libyara/Makefile.am
 }
 
 build() {
