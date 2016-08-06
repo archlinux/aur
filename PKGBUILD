@@ -5,7 +5,7 @@
 
 _name=sxiv
 pkgname="${_name}-git"
-pkgver=2015.01.05.g47e6cd0
+pkgver=2016.08.06
 pkgrel=1
 pkgdesc="Simple (or small or suckless) X Image Viewer"
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git log -1 --format="%cd.g%h" --date=short | sed 's/-/./g'
+  git log -1 --format="%cd" --date=short | sed 's/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${_name}"
-  # use your customisations  
+  # use your customisations if present
   [[ -f $SRCDEST/config.h ]] && cp "$SRCDEST"/config.h .
 
   # Allow custom FLAGS
