@@ -3,7 +3,7 @@
 
 _pkgname=fftw
 pkgname=lib32-${_pkgname}
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-fortran-multilib')
 options=('!libtool')
 source=("http://www.fftw.org/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('2edab8c06b24feeb3b82bbb3ebf3e7b3')
+md5sums=('6cc08a3b9c7ee06fdd5b9eb02e06f569')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
