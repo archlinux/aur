@@ -2,8 +2,8 @@
 
 _realname=reacTIVision
 pkgname=reactivision
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="A toolkit for tangible multi-touch surfaces"
 arch=('i686' 'x86_64')
 url="http://reactivision.sourceforge.net/"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libdc1394' 'sdl2')
 _srcname="${_realname}-${pkgver}-src"
 source=("http://downloads.sourceforge.net/${pkgname}/${_srcname}.zip")
-md5sums=('5480848dae6bc9e098da5f8e22b0c500')
+md5sums=('b4a062ff9486c0fb42be2b87e4629ecd')
 
 build() {
     cd "${srcdir}/${_srcname}/linux"
@@ -26,3 +26,5 @@ package() {
     install -d "${pkgdir}/usr/bin"
     mv "${pkgdir}/usr/${_realname}" "${pkgdir}/usr/bin/"
 }
+
+# vim:set ts=2 sw=2 ft=sh et:
