@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-icon-theme
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Hawaii icon theme"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('hawaii-icon-theme-git')
 replaces=('hawaii-icon-themes')
 groups=('hawaii')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('e41e11983039c408d8e49721bcdb5307731b6bfa')
+sha1sums=('a56488ef864a35248e5e6a0f1313155217a0af53')
 
 prepare() {
 	mkdir build
