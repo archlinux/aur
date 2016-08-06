@@ -6,8 +6,8 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=('x86_64')
 url='http://linux-pam.org'
@@ -17,7 +17,7 @@ makedepends=('gcc-multilib' 'lib32-flex')
 source=("http://linux-pam.org/library/Linux-PAM-${pkgver}.tar.bz2"
         'https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2'
         'pam_unix2-glibc216.patch')
-sha256sums=('342b1211c0d3b203a7df2540a5b03a428a087bd8a48c17e49ae268f992b334d9'
+sha256sums=('241aed1ef522f66ed672719ecf2205ec513fd0075ed80cda8e086a5b1a01d1bb'
             '3315747699fece4e1cc5771885d243b3e017c4c4ca1326e86228d590a840e955'
             '6644c5cff46878c65bdc77977becbeda392675702264bfcc7c610a45a9982574')
 options=('!emptydirs')
