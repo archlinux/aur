@@ -4,15 +4,15 @@
 # Contributor: Huulivoide
 
 pkgname=zsdx
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.11.0
+pkgrel=1
 epoch=
 pkgdesc="A free 2D Zelda fangame."
 arch=('any')
 url="http://www.zelda-solarus.com/"
 license=('custom')
 groups=()
-depends=('solarus>=1.2.0')
+depends=('solarus>=1.5.0')
 makedepends=('zip' 'cmake')
 checkdepends=()
 optdepends=()
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('2da8cd5954537978ea23a85b85328b02')
+md5sums=('881208797e547620fcc1031f56d6ca14')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
