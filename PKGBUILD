@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r22.0.gd41402c
+pkgver=r23.1.gd3c7020
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -25,7 +25,7 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-sangnommod-git'
+         'vapoursynth-plugin-sangnom-hg'
          'vapoursynth-plugin-scenechange'
          'vapoursynth-plugin-temporalsoften-git'
          'vapoursynth-plugin-svpflow1'
