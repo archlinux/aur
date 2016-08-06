@@ -5,11 +5,11 @@
 # echo "$(git rev-parse --abbrev-ref HEAD).$(git log -n 1 --pretty=format:%h -- drivers/input/joystick/xpad.c)" | sed 's/-/./g'
 
 _xpadsteamoscommit='brewmaster-4.1'
-_xpadsteamossha512sum='0916aff5d9e41cf0d8ce5c77ccd04fba03576b3e837e14a903be70a7c9154569970920d3a8956d75bd512194dd56ef5b3dd49cf510e4216bd72c06d1ce10908f'
+_xpadsteamossha512sum='fc8ad5dbc7789ee7ffb94fc132e92f0db9472bdea6de2844473d41e508ee1effbc77ea861ec6c03524f1a903443f24ddc45f57e84c0197e03f017e47050f67c5'
 
 _pkgbase='steamos-xpad'
 pkgname='steamos-xpad-dkms'
-pkgver='20160524'
+pkgver='20160806'
 pkgrel='1'
 pkgdesc="xpad kernel module included with Valve's SteamOS"
 arch=('any')
