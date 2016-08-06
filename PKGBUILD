@@ -5,7 +5,7 @@
 
 pkgname=darcs-sandbox
 _pkgname=darcs
-pkgver=2.10.2
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Elegant and powerful distributed revision control system. Standalone sandbox build.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('cabal-install' 'chrpath' 'ghc' 'inotify-tools')
 options=('strip')
 source=("http://darcs.net/releases/${_pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('6337d3fac04711fa2ef5813558b409c59166c5599b0c9d68c418d21cdccfb327')
+sha256sums=('54616b826bfb1d0d999d2e8050338052a82b427e888c14d57625168eff83bb3e')
 
 # PKGBUILD functions
 
