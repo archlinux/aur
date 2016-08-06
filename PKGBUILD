@@ -7,14 +7,14 @@ _srcname=linux-4.6
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
 pkgver=4.6.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqversion=v8
+_bfqversion=v8r1
 _bfqversion_old=v7r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqversion}"
 _BLDpatch="BLD-4.6.patch"
@@ -31,7 +31,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-4.6.0.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-for-4.6.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqversion}-for-4.patch"
+        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
@@ -46,8 +46,8 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '1857e05fd79baffc04dd075be81257d0a43351c244b7f360b48408a28ecfde2d'
             '595887ea141ee7373460d325368f362ca87695259b9bca3499f12ef76322172b'
-            'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
-            '411e6f7aacc24d869f8b697e514bcbe1bb8ac676a73710269d4f8b516ce0b971'
+            'd90d5525e3b4fefbd218e04b09c2234700226ecd8a350e8d88a3145c02b82c18'
+            '1810bf7b1c4cfe63fc7f5f203cf854ebb8debf201f800c288e59bf055f61e61f'
             'f7c6dead74777b8b3f2c229556265e01205a8ac5e49f92273169511842bf69be')
 
 validpgpkeys=(
