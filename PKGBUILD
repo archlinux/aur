@@ -23,6 +23,6 @@ build() {
 
 package() {
 	cd $pkgname/build
-	make install
+	install -D -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
 
