@@ -7,16 +7,19 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173748'
-license=('GPL')
+license=('ISC')
 depends=('libavcodec.so'
          )
 makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-sha1sums=('SKIP')
-options=('!makeflags')
+source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
+        'isc-license.txt'
+        )
+sha1sums=('SKIP'
+          '3aedc549f0a2c90937dbe35f2efcf03fa1be2c26'
+          )
 
 pkgver() {
   cd "${_plug}"
@@ -40,4 +43,5 @@ package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
+  install -Dm644 ${srcdir}/isc-license.txt "${pkgdir}/usr/share/licenses/${pkgname}/isc-license.txt"
 }
