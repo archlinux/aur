@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mono /opt/subtitleedit/SubtitleEdit.exe "$@"
+mono /usr/share/subtitleedit/SubtitleEdit.exe "$@"

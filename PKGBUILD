@@ -6,7 +6,7 @@ _zipname="SE${_pkgver//./}.zip"
 
 pkgname=$_pkgname-bin
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A free editor for video subtitles (running on mono)"
 arch=('i686' 'x86_64')
 url="http://www.nikse.dk/SubtitleEdit"
@@ -23,18 +23,18 @@ source=("https://github.com/SubtitleEdit/$_pkgname/releases/download/$pkgver/$_z
 sha1sums=('d769c7684dbba4e876ddaa3564887e72d474f478'
 	'6c27ad0b86ac2ef30cfe82fe4ac5d4099eea7dd1'
 	'136eebf583acdc4af8bbfc82a06ee5634bf13052'
-	'98827b12f571b1ca46ac96ef687d15480fa7390a')
+	'a11b58a468d7592a29974142f35e0f16159fdd74')
 noextract=("$_zipname")
 
 package() {
-	installDir="$pkgdir/opt/$_pkgname"
+	installDir="$pkgdir/usr/share/$_pkgname"
 	mkdir -p "$installDir"
 
 	# Application
 	bsdtar -xf "$srcdir/$_zipname" -C "$installDir"
+	touch "$installDir/.PACKAGE-MANAGER"
 	find "$installDir" -type d -exec chmod 755 {} \;
 	find "$installDir" -type f -exec chmod 644 {} \;
-	touch "$installDir/.PACKAGE-MANAGER"
 
 	# Application cleanup
 	rm "$installDir/gpl.txt"
