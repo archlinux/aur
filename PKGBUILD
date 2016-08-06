@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fontconfig
-pkgver=2.12.0
-pkgrel=2
+pkgver=2.12.1
+pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=(any)
 url="http://www.fontconfig.org/release"
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 source=("http://www.fontconfig.org/release/fontconfig-$pkgver.tar.bz2"
 "0001-fix-config-linking.all.patch"
 "0007-pkgconfig.mingw.patch")
-sha256sums=('b433e4efff1f68fdd8aac221ed1df3ff1e580ffedbada020a703fe64017d8224'
+sha256sums=('b449a3e10c47e1d1c7a6ec6e2016cca73d3bd68fbbd4f0ae5cc6b573f7d6c7f3'
             '1266d4bbd8270f013fee2401c890f0251babf50a175a69d681d3a6af5003c899'
             'af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b')
 
