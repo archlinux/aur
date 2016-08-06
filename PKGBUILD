@@ -12,11 +12,7 @@ arch=('i686' 'x86_64')
 url="http://www.nikse.dk/SubtitleEdit"
 license=('GPL3')
 depends=('mono')
-optdepends=('vlc: video support'
-	'hicolor-icon-theme: icon file hierarchy'
-	'desktop-file-utils: update desktop MIME database'
-	'shared-mime-info: update MIME database'
-	'xdg-utils: update icon cache')
+optdepends=('vlc: video support')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$_pkgname.install
