@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=krita-git
-pkgver=3.0.89r41125.8be941a
+pkgver=3.0.89r41232.6530b6d
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -39,6 +39,7 @@ provides=('krita' 'calligra-krita')
 conflicts=('krita' 'calligra-krita')
 source=('git://anongit.kde.org/krita.git')
 sha1sums=('SKIP')
+options=('!makeflags')
 
 pkgver() {
   cd krita
@@ -59,13 +60,12 @@ prepare() {
 
 build() {
   cd build
-  cmake ../krita \
+  CXXFLAGS=' -std=c++11' cmake ../krita \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-
+    -DBUILD_TESTING=OFF 
   make
 }
 
