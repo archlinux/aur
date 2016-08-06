@@ -28,9 +28,9 @@ pkgbase = zoom
 	depends = ibus
 	depends = ibus-qt
 	options = !strip
-	source_i686 = https://zoom.us/client/latest/zoom_2.0.57232.0713_i386.deb
+	source_i686 = https://zoom.us/client/2.0.57232.0713/zoom_2.0.57232.0713_i386.deb
 	md5sums_i686 = 5db442015916f528bdf5f4d22dfed90d
-	source_x86_64 = https://zoom.us/client/latest/zoom_2.0.57232.0713_amd64.deb
+	source_x86_64 = https://zoom.us/client/2.0.57232.0713/zoom_2.0.57232.0713_amd64.deb
 	md5sums_x86_64 = aaf14b8075a9500b58b74f9ff63beea0
 
 pkgname = zoom

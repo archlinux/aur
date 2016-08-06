@@ -12,8 +12,8 @@ depends=('libx11' 'libsm' 'libxi' 'nss' 'xcb-util-image' 'xcb-util-keysyms' 'lib
 	'ibus-qt')
 # The dependencies are those from the original package
 options=(!strip)
-source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
-source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
+source_i686=("https://zoom.us/client/${pkgver}/zoom_${pkgver}_i386.deb")
+source_x86_64=("https://zoom.us/client/${pkgver}/zoom_${pkgver}_amd64.deb")
 md5sums_i686=('5db442015916f528bdf5f4d22dfed90d')
 md5sums_x86_64=('aaf14b8075a9500b58b74f9ff63beea0')
 
