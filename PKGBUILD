@@ -1,7 +1,7 @@
 # Maintainer: Leonidas Arvanitis <l.arvanitis@gmail.com>
 
 _pkgname=subtitleedit
-_pkgver=3.4.12
+_pkgver=3.4.13
 _zipname="SE${_pkgver//./}.zip"
 
 pkgname=$_pkgname-bin
@@ -20,7 +20,7 @@ source=("https://github.com/SubtitleEdit/$_pkgname/releases/download/$pkgver/$_z
 	$_pkgname.desktop
 	$_pkgname.png
 	$_pkgname.sh)
-sha1sums=('b2215e3c579d62901dda0b68f534dfa9fbc26527'
+sha1sums=('d769c7684dbba4e876ddaa3564887e72d474f478'
 	'6c27ad0b86ac2ef30cfe82fe4ac5d4099eea7dd1'
 	'136eebf583acdc4af8bbfc82a06ee5634bf13052'
 	'98827b12f571b1ca46ac96ef687d15480fa7390a')
@@ -34,6 +34,7 @@ package() {
 	bsdtar -xf "$srcdir/$_zipname" -C "$installDir"
 	find "$installDir" -type d -exec chmod 755 {} \;
 	find "$installDir" -type f -exec chmod 644 {} \;
+	touch "$installDir/.PACKAGE-MANAGER"
 
 	# Application cleanup
 	rm "$installDir/gpl.txt"
