@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-redirect-from
+	pkgdesc = A simple, blog aware, static site generator.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-jekyll
+	noextract = jekyll-redirect-from-0.11.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-redirect-from-0.11.0.gem
+	sha512sums = dad7c70b0b1ced5cfbe30a17e68388a8718db896d09496331fe77d803c0a63ce3d41617f8cb98d4d92bb6186cec9e0b0f53486b2715e3ff44ba2489593b192f3
+
+pkgname = ruby-jekyll-redirect-from
+
