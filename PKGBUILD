@@ -2,18 +2,17 @@
 
 pkgname=afl-utils-git
 _gitname=afl-utils
-pkgver=1.17a.75.26a05d0
+pkgver=1.30a.191.dc4d6ac
 pkgrel=1
 pkgdesc="Utilities for automated crash sample processing/analysis, easy afl-fuzz job management and corpus optimization"
 url="https://github.com/rc0r/afl-utils"
 arch=('any')
 license=('Apache')
-depends=('afl' 'coreutils' 'python')
+depends=('afl' 'coreutils' 'python' 'rsync')
 optdepends=(
   'sqlite: database support'
   'screen: interactive/screen mode support'
   'gdb: gdb script execution support'
-  'python-twitter: afl-stat support'
 )
 makedepends=('git' 'python-setuptools')
 provides=('afl-utils')
@@ -32,7 +31,7 @@ package() {
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 docs/CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm 644 afl-stats.conf.sample "${pkgdir}/usr/share/doc/${pkgname}/afl-stats.conf.sample"
+  install -Dm 644 config/* -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
