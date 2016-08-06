@@ -21,7 +21,7 @@ source=("https://github.com/SubtitleEdit/$_pkgname/releases/download/$pkgver/$_z
 	$_pkgname.png
 	$_pkgname.sh)
 sha1sums=('b2215e3c579d62901dda0b68f534dfa9fbc26527'
-	'90ea38fe066ea5f4bc62ed61c35dbbbd9182be82'
+	'6c27ad0b86ac2ef30cfe82fe4ac5d4099eea7dd1'
 	'136eebf583acdc4af8bbfc82a06ee5634bf13052'
 	'98827b12f571b1ca46ac96ef687d15480fa7390a')
 noextract=("$_zipname")
