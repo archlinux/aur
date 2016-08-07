@@ -4,8 +4,8 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.46.1.22.g00a4850
-pkgrel=2
+pkgver=2.19.46.1.25.g8c1840c
+pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
