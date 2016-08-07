@@ -7,7 +7,7 @@ pkgbase = caja-extensions-common-1.15-gtk3
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common
+	makedepends = mate-common-1.15-gtk3
 	makedepends = caja-1.15-gtk3
 	depends = caja-1.15-gtk3
 	depends = dbus-glib
@@ -21,8 +21,8 @@ pkgbase = caja-extensions-common-1.15-gtk3
 
 pkgname = caja-extensions-common-1.15-gtk3
 	pkgdesc = Caja extensions common files (GTK3 version)
-	conflicts = caja-extensions-common-1.15-gtk3
-	conflicts = caja-extensions-common' 'caja-extensions-common-gtk3
+	conflicts = caja-extensions-common
+	conflicts = caja-extensions-common-gtk3
 
 pkgname = caja-gksu-1.15-gtk3
 	pkgdesc = Privilege granting extension for Caja using gksu (GTK3 version)
@@ -30,7 +30,6 @@ pkgname = caja-gksu-1.15-gtk3
 	depends = caja-1.15-gtk3
 	depends = caja-extensions-common-1.15-gtk3
 	depends = gksu
-	conflicts = caja-gksu-1.15-gtk3
 	conflicts = caja-gksu
 	conflicts = caja-gksu-gtk3
 
@@ -40,7 +39,6 @@ pkgname = caja-image-converter-1.15-gtk3
 	depends = caja-1.15-gtk3
 	depends = caja-extensions-common-1.15-gtk3
 	depends = imagemagick
-	conflicts = caja-image-converter-1.15-gtk3
 	conflicts = caja-image-converter
 	conflicts = caja-image-converter-gtk3
 
@@ -50,7 +48,6 @@ pkgname = caja-open-terminal-1.15-gtk3
 	depends = caja-1.15-gtk3
 	depends = caja-extensions-common-1.15-gtk3
 	depends = glib2
-	conflicts = caja-open-terminal-1.15-gtk3
 	conflicts = caja-open-terminal
 	conflicts = caja-open-terminal-gtk3
 
@@ -64,7 +61,6 @@ pkgname = caja-sendto-1.15-gtk3
 	depends = gupnp
 	optdepends = pidgin: Support for sending to instant messaging networks.
 	optdepends = gajim: Support for sending to Jabber.
-	conflicts = caja-sendto-1.15-gtk3
 	conflicts = caja-sendto
 	conflicts = caja-sendto-gtk3
 
@@ -74,7 +70,6 @@ pkgname = caja-share-1.15-gtk3
 	depends = caja-1.15-gtk3
 	depends = caja-extensions-common-1.15-gtk3
 	depends = samba
-	conflicts = caja-share-1.15-gtk3
 	conflicts = caja-share
 	conflicts = caja-share-gtk3
 
