@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=arc-dark-suite
-_commit=96d1fe7 # 7 digits
-pkgver=20160805
+_commit=1e770ad # 7 digits
+pkgver=20160807
 pkgrel=1
 pkgdesc='Arc-Dark customization for Plasma 5'
 arch=('any')
