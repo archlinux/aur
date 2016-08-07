@@ -1,6 +1,9 @@
 [Unit]
-Description=AKSUSB daemon
-Wants=winehasp.service hasplmd.service
+Description=AKSUSB winehasp daemon
+After=aksusbd.service
+Requires=aksusbd.service
+BindsTo=aksusbd.service
+PartOf=aksusbd.service
 
 [Service]
 Type=forking
@@ -12,9 +15,9 @@ PrivateNetwork=true
 ProtectSystem=full
 ProtectHome=true
 
-ExecStart=/usr/bin/aksusbd
+ExecStart=/usr/bin/winehasp
 
 [Install]
 WantedBy=multi-user.target
-Also=winehasp.service
+Also=aksusbd.service
 Also=hasplmd.service
