@@ -1,0 +1,18 @@
+pkgbase = mate-applet-lockkeys
+	pkgdesc = A MATE panel applet that shows which of the CapsLock, NumLock and ScrollLock keys are on and which are off.
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://www.zavedil.com/mate-lock-keys-applet/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = perl-xml-parser
+	makedepends = yelp-tools
+	depends = gtk2
+	depends = mate-panel
+	source = http://www.zavedil.com/wp-content/uploads/2015/01/mate-applet-lockkeys-0.2.4.tar.gz
+	md5sums = 66555216ec6d07aa2496ebc76bcbc131
+
+pkgname = mate-applet-lockkeys
+
