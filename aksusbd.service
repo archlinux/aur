@@ -5,14 +5,12 @@ After=syslog.target
 
 [Service]
 Type=forking
-ExecStart=/etc/init.d/aksusbd start
-TimeoutSec=0
 StandardOutput=tty
-RemainAfterExit=yes
+TimeoutStopSec=10s
 
-ExecReload=/etc/init.d/aksusbd restart
-
-ExecStop=/etc/init.d/aksusbd stop
+ExecStart=/usr/bin/aksusbd
+ExecStart=/usr/bin/winehasp
+ExecStart=/usr/bin/hasplmd
 
 [Install]
 WantedBy=multi-user.target
