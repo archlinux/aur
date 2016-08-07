@@ -1,0 +1,26 @@
+pkgbase = mate-disk-utility
+	pkgdesc = Disk management application for MATE.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/NiceandGently/mate-disk-utility
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = perl-xml-parser
+	makedepends = yelp-tools
+	depends = avahi
+	depends = caja
+	depends = dbus
+	depends = gtk2
+	depends = libatasmart
+	depends = libsecret
+	depends = libnotify
+	depends = libunique
+	depends = udisks
+	options = !emptydirs
+	source = mate-disk-utility-1.8.0.tar.gz::https://github.com/NiceandGently/mate-disk-utility/archive/v1.8.0.tar.gz
+	sha1sums = 4d4431957438178c1538776db90acab97696be2d
+
+pkgname = mate-disk-utility
+
