@@ -1,2 +1,0 @@
-#!/bin/bash
-cd /opt/ghetto-skype && /usr/bin/electron /opt/ghetto-skype

@@ -8,18 +8,18 @@
 # https://github.com/techwiz24/aur-ghetto-skype
 
 pkgname=ghetto-skype
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
 license=('GPLv3')
-depends=('electron')
+depends=('electron-bin')
 optdepends=('libappindicator-gtk2: Tray Icon support for certain DEs')
 makedepends=('npm')
 install=ghetto-skype.install
 source=("https://github.com/stanfieldr/ghetto-skype/archive/v${pkgver}.tar.gz")
-sha256sums=('2b41b14f3f1cd7e1e2e2d6f6305362d1382f0957705f79eadc694168626a86d9')
+sha256sums=('0b89a6cb578a798498f65f51372c252c0e6a18f82e7f9e6887e5db12ef1f555c')
 
 prepare() {
   cd "ghetto-skype-$pkgver"
@@ -39,5 +39,8 @@ package() {
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
 
-  install -Dm777 "$srcdir/../ghetto-skype" "$pkgdir/usr/bin/ghetto-skype"
+  mkdir -p "$pkgdir/usr/bin"
+  echo -e "#!/bin/bash\ncd /opt/ghetto-skype && /usr/bin/electron /opt/ghetto-skype\n" >> "$pkgdir/usr/bin/ghetto-skype"
+
+  chmod 777 "$pkgdir/usr/bin/ghetto-skype"
 }
