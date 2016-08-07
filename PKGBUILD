@@ -159,6 +159,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
   make -s -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
