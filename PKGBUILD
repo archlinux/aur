@@ -22,8 +22,7 @@ makedepends=('git')
 install="${pkgname}.install"
 optdepends=('rutorrent-autodl-irssi-community: Community autodl-irssi plugin for rutorrent.')
 provides=("${_pkgname}")
-replaces=("${_pkgname}")
-conflicts=("autodl-irssi-svn")
+replaces=("autodl-irssi-svn")
 source=("https://github.com/autodl-community/autodl-irssi/releases/download/community-v${pkgver}/${pkgname}-v${pkgver}.zip")
 md5sums=('1fd5701578f69a293547fea7f697c6e1')
 
