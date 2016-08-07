@@ -12,10 +12,10 @@
 set -u
 _pkgver='4.9'
 pkgname="gcc${_pkgver//\./}-multilib"
-pkgver="${_pkgver}.3"
+pkgver="${_pkgver}.4"
 _islver='0.12.2'
 _cloogver='0.18.1'
-pkgrel='3'
+pkgrel='1'
 #_snapshot=4.9-20150304
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
   "gcc-4.9-fix-build-with-gcc-6.patch"
 )
-sha256sums=('2332b2a5a321b57508b9031354a8503af6fdfb868b8c1748d33028d100a8b67e'
+sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
             'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9')
@@ -61,7 +61,7 @@ prepare() {
   sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
 
   # fix build with GCC 6
-  patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
+  #patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
@@ -166,7 +166,10 @@ package() {
   find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
+  case "${CARCH}" in
+  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
+  esac
+  #mv ${pkgdir}/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
