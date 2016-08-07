@@ -6,12 +6,8 @@ pkgdesc="A Python implementation of Google's Encoded Polyline Algorithm Format."
 arch=("any")
 url="https://github.com/hicsail/polyline"
 license=('MIT')
+makedepends=("python2-setuptools" "python-setuptools")
 source=("https://github.com/hicsail/polyline/archive/v$pkgver.tar.gz")
-build() {
-	cd "$srcdir/polyline-$pkgver"
-	ls -al
-	python2 setup.py build
-}
 
 package_python-polyline() {
 	depends=("python")

@@ -5,6 +5,8 @@ pkgbase = python-polyline
 	url = https://github.com/hicsail/polyline
 	arch = any
 	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	source = https://github.com/hicsail/polyline/archive/v1.3.tar.gz
 	md5sums = b153232f7b2ac11c9976c54fcc93aaf5
 
