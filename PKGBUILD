@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fftw
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.3.5
+pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (mingw-w64)"
 arch=('any')
 url="http://www.fftw.org"
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 checkdepends=('wine')
 options=(staticlibs !strip !buildflags)
 source=("$url/fftw-$pkgver.tar.gz")
-md5sums=('2edab8c06b24feeb3b82bbb3ebf3e7b3')
+md5sums=('6cc08a3b9c7ee06fdd5b9eb02e06f569')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
