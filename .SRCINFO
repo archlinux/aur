@@ -1,0 +1,15 @@
+pkgbase = ultra-rainbow-bake-sale-git
+	pkgdesc = A singleplayer, deck-building, baking game.
+	pkgver = 0.1.41
+	pkgrel = 1
+	url = https://dcecile.itch.io/ultra-rainbow-bake-sale
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = git
+	depends = love
+	source = ultra-rainbow-bake-sale-git::git+https://github.com/dcecile/ultra-rainbow-bake-sale.git
+	sha1sums = SKIP
+
+pkgname = ultra-rainbow-bake-sale-git
+
