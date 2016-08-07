@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/tkrajina/gpxpy"
 license=('Apache')
 depends=('python2' 'python2-lxml>=3.1.2')
-makedepends=('python-distribute')
+makedepends=('python2-setuptools')
 provides=()
 conflicts=("python-gpxpy")
 replaces=()
