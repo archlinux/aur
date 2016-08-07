@@ -6,13 +6,13 @@ _ver=1.15
 _pkgbase=caja-extensions
 pkgname=(caja-extensions-common-1.15-gtk3 caja-gksu-1.15-gtk3 caja-image-converter-1.15-gtk3 caja-open-terminal-1.15-gtk3 caja-sendto-1.15-gtk3 caja-share-1.15-gtk3)
 pkgver=${_ver}.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MATE extensions for Caja (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
-provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('caja-1.15-gtk3' 'dbus-glib' 'gksu' 'gtk3' 'gupnp' 'imagemagick' 'samba')
+groups=('mate-extra')
 makedepends=('mate-common' 'caja-1.15-gtk3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('f4299e99fe889038834ab9743cf6418f01a777cc')
@@ -32,6 +32,7 @@ build() {
 
 package_caja-extensions-common-1.15-gtk3() {
     pkgdesc="Caja extensions common files (GTK3 version)"
+    conflicts=("caja-extensions-common-1.15-gtk3" "caja-extensions-common' 'caja-extensions-common-gtk3")
     cd "${srcdir}/${_pkgbase}-gtk3"
     make -C po DESTDIR="${pkgdir}" install
 }
@@ -41,7 +42,6 @@ package_caja-gksu-1.15-gtk3() {
     depends=('caja-1.15-gtk3' 'caja-extensions-common-1.15-gtk3' 'gksu')
     groups=('mate-extra')
     conflicts=('caja-gksu-1.15-gtk3' 'caja-gksu' 'caja-gksu-gtk3')
-
     cd "${srcdir}/${_pkgbase}-gtk3"
     make -C gksu DESTDIR="${pkgdir}" install
 }
@@ -51,7 +51,6 @@ package_caja-image-converter-1.15-gtk3() {
     depends=('caja-1.15-gtk3' 'caja-extensions-common-1.15-gtk3' 'imagemagick')
     groups=('mate-extra')
     conflicts=('caja-image-converter-1.15-gtk3' 'caja-image-converter' 'caja-image-converter-gtk3')
-
     cd "${srcdir}/${_pkgbase}-gtk3"
     make -C image-converter DESTDIR="${pkgdir}" install
 }

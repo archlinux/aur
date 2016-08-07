@@ -1,10 +1,11 @@
 pkgbase = caja-extensions-common-1.15-gtk3
 	pkgdesc = MATE extensions for Caja (GTK3 version)
 	pkgver = 1.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
+	groups = mate-extra
 	license = GPL
 	makedepends = mate-common
 	makedepends = caja-1.15-gtk3
@@ -15,13 +16,13 @@ pkgbase = caja-extensions-common-1.15-gtk3
 	depends = gupnp
 	depends = imagemagick
 	depends = samba
-	provides = caja-extensions
-	provides = caja-extensions-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/caja-extensions-1.15.0.tar.xz
 	sha1sums = f4299e99fe889038834ab9743cf6418f01a777cc
 
 pkgname = caja-extensions-common-1.15-gtk3
 	pkgdesc = Caja extensions common files (GTK3 version)
+	conflicts = caja-extensions-common-1.15-gtk3
+	conflicts = caja-extensions-common' 'caja-extensions-common-gtk3
 
 pkgname = caja-gksu-1.15-gtk3
 	pkgdesc = Privilege granting extension for Caja using gksu (GTK3 version)
