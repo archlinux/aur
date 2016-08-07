@@ -3,7 +3,7 @@
 pkgname='autodl-irssi-community'
 _pkgname='autodl-irssi'
 pkgver=1.62
-pkgrel=3
+pkgrel=4
 pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-irssi'
@@ -23,6 +23,7 @@ install="${pkgname}.install"
 optdepends=('rutorrent-autodl-irssi-community: Community autodl-irssi plugin for rutorrent.')
 provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
+conflicts=("autodl-irssi-svn")
 source=("https://github.com/autodl-community/autodl-irssi/releases/download/community-v${pkgver}/${pkgname}-v${pkgver}.zip")
 md5sums=('1fd5701578f69a293547fea7f697c6e1')
 
