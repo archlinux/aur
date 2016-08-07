@@ -3,7 +3,7 @@
 _gitname=Plat
 _pkgname=Plat
 pkgname=('plat-icon-theme')
-pkgver=4.3
+pkgver=5.0
 pkgrel=1
 pkgdesc="Plat is a flat icon theme. It is based on Ursa Icon Theme and Masalla Icon Theme and comes with Flat UI colors."
 arch=('any')
