@@ -2,7 +2,7 @@
 # Sun Aug 7 23:38:00 UTC 2016
 pkgbase = pymonopoly-git
 	pkgdesc = Famous monopoly board game (russian variation - 'Manager'). In active development
-	pkgver = 0.299.b96daac
+	pkgver = 0.300.611c6a3
 	pkgrel = 1
 	url = https://github.com/Kycko/PyMonopoly
 	arch = any
