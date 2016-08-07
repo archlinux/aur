@@ -44,7 +44,7 @@ post_remove() {
   # also remove the compat symlinks
   rm -f boot/initramfs-linux${KERNEL_NAME}.img
   rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
-
+  
   # Run update-grub for Manjaro users
   if [ -f /usr/sbin/update-grub ] && [ -f /etc/lsb-release ] && [ "$(grep -i manjaro /etc/lsb-release)" != "" ]; then
     update-grub
