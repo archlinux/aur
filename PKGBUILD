@@ -2,13 +2,13 @@
 
 _pkgname=lxqt-qtplugin
 pkgname=$_pkgname-git
-pkgver=0.9.0
+pkgver=0.10.0.8.g411f696
 pkgrel=1
 pkgdesc="LXQt platform integration for Qt"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt-git")
+depends=("liblxqt-git" "libdbusmenu-qt5")
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")

@@ -1,6 +1,6 @@
 pkgbase = lxqt-qtplugin-git
 	pkgdesc = LXQt platform integration for Qt
-	pkgver = 0.9.0
+	pkgver = 0.10.0.8.g411f696
 	pkgrel = 1
 	url = http://lxqt.org
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = lxqt-qtplugin-git
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = liblxqt-git
+	depends = libdbusmenu-qt5
 	provides = lxqt-qtplugin
 	conflicts = lxqt-qtplugin
 	source = git+https://github.com/lxde/lxqt-qtplugin.git
