@@ -8,7 +8,7 @@ pkgbase=libindicator
 pkgname=("${pkgbase}-gtk"{2,3})
 pkgver=12.10.1
 pkgrel=6
-pkgdesc='A set of symbols and convenience functions for Ayatana indicators'
+pkgdesc='A set of symbols and convenience functions for Ayatana indicators.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libindicator'
 license=('GPL3')
@@ -56,8 +56,8 @@ build() {
 
 package_libindicator-gtk2() {
   depends=('gtk2')
-  provides=('libindicator')
-  conflicts=('libindicator')
+  provides=("${pkgbase}")
+  conflicts=("${pkgbase}")
 
   cd ${pkgbase}-gtk2
   make -j1 DESTDIR="${pkgdir}" install
@@ -66,8 +66,8 @@ package_libindicator-gtk2() {
 
 package_libindicator-gtk3() {
   depends=('gtk3')
-  provides=('libindicator3')
-  conflicts=('libindicator3')
+  provides=("${pkgbase}3")
+  conflicts=("${pkgbase}3")
 
   cd ${pkgbase}-gtk3
   make -j1 DESTDIR="${pkgdir}" install
