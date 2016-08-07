@@ -1,0 +1,18 @@
+pkgbase = gambatte-sdl-git
+	pkgdesc = A portable, open-source Game Boy Color emulator
+	pkgver = r581.f8a810b
+	pkgrel = 1
+	url = https://github.com/sinamas/gambatte
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = scons
+	depends = gcc-libs
+	depends = sdl
+	depends = zlib
+	source = git+https://github.com/sinamas/gambatte.git
+	sha256sums = SKIP
+
+pkgname = gambatte-sdl-git
+
