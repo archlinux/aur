@@ -1,0 +1,32 @@
+pkgbase = mate-color-manager
+	pkgdesc = Color management application for MATE.
+	pkgver = 1.8.1
+	pkgrel = 2
+	url = https://github.com/NiceandGently/mate-color-manager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = perl-xml-parser
+	makedepends = yelp-tools
+	depends = dbus
+	depends = desktop-file-utils
+	depends = exiv2
+	depends = gtk2
+	depends = lcms2
+	depends = libcanberra
+	depends = libcups
+	depends = libexif
+	depends = libgudev
+	depends = libnotify
+	depends = libtiff
+	depends = libunique
+	depends = mate-desktop>=1.10
+	depends = sane
+	depends = vte
+	options = !emptydirs
+	source = mate-color-manager-1.8.1.tar.gz::https://github.com/NiceandGently/mate-color-manager/archive/v1.8.1.tar.gz
+	sha1sums = 9eaadf8e809cb258042437f20efcebf4e56ca39f
+
+pkgname = mate-color-manager
+
