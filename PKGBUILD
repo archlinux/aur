@@ -27,10 +27,6 @@ pkgver() {
 prepare() {
   cd dolphin-emu
 
-  sed -i -e 's/#include <vector>/#include <vector>\n#include <curl\/curlver\.h>/' Source/Core/Common/Analytics.h
-  sed -i -e 's/#include "Common\/Flag\.h"/#include "Common\/Flag\.h"\n\n#if LIBCURL_VERSION_MAJOR >= 7 \&\& LIBCURL_VERSION_MINOR >= 50\ntypedef struct Curl_easy CURL;\n#else/' Source/Core/Common/Analytics.h
-  sed -i -e 's/typedef void CURL;/typedef void CURL;\n#endif/' Source/Core/Common/Analytics.h
-
   if [[ -d build ]]; then
     rm -rf build
   fi
