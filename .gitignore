@@ -12,3 +12,4 @@ pkg/
 *.tar.gz
 *.tar.bz2
 seednodes.fref
+IpToCountry.dat

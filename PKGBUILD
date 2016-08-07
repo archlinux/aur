@@ -5,7 +5,7 @@ _fred=#tag=build01475
 _contrib=#tag=v50
 #_wot=#tag=build0018
 #_wot=#branch=next
-_wot=#commit=3aff914
+_wot=#tag=build0019
 _keyutils=#tag=v5026
 _upnp=#tag=10007
 
@@ -14,7 +14,7 @@ pkgver=0.7.5.1475
 pkgrel=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
-url="https://downloads.freenetproject.org"
+url="https://freenetproject.org"
 license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
@@ -37,7 +37,7 @@ _deps=("http://downloads.sourceforge.net/project/sevenzip/LZMA%20SDK/4.65/lzma46
        "league-lzmajio-0.95-0-gd38bf5c.tar.gz::https://codeload.github.com/league/lzmajio/legacy.tar.gz/0.95"
        "http://downloads.sourceforge.net/project/bitcollider/jBitcollider%20%28Java%29/0.8/jBitcollider-0.8.zip"
        "https://www.spaceroots.org/software/mantissa/mantissa-7.2-src.zip"
-       "${url}/contrib/db4o-7.4-java.zip")
+       "https://downloads.freenetproject.org/contrib/db4o-7.4-java.zip")
 
 # ant will extract these
 noextract=('lzma465.tar.bz2'
@@ -55,9 +55,9 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
         "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
         "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
-        "${url}/alpha/opennet/seednodes.fref"
+        "https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
-        "${url}/contrib/jar/latest/commons-compress.jar"
+        "https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
         "https://www.bouncycastle.org/download/bcprov-jdk15on-154.jar"
         "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
