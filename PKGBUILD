@@ -17,7 +17,7 @@ arch=('i686' 'x86_64' 'armv6h')
 
 build() {
 	cd $startdir/src/$pkgname-$pkgver/
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sbindir=/usr/bin
 	sed -i 's@#define DEFAULT_CLAMAV "/var/run/clamav/clamd"@#define DEFAULT_CLAMAV "/var/lib/clamav/clamd.sock"@g' src/clamsmtpd.c
 	make
 }
