@@ -1,7 +1,7 @@
 # Maintainer: mirandir <mirandir@orange.fr>
 
 pkgname=magiccollection
-pkgver=0.8.113
+pkgver=0.8.114
 pkgrel=1
 pkgdesc="Magic Collection is a small program to manage your collection of Magic: the Gathering cards."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'python' 'python-gobject')
 url="http://mirandir.pagesperso-orange.fr/magiccollection/"
 source=(http://mirandir.pagesperso-orange.fr/files/"$pkgname"_"$pkgver".tar.xz)
-sha256sums=('4278e1751d9ff5fcd2bf0cd77831ba696fa5aa93e5e91f2bf01db36fa5eaf2be')
+sha256sums=('45d9edba1bd5cf6024b31af6c5404cf91225a73e389819392882609f1bbdb446')
 
 package() {
         cd "$srcdir"
