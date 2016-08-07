@@ -1,7 +1,7 @@
 # Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
-_installdir=/usr/share/$pkgname
 pkgname=twombit
+_installdir=/usr/share/$pkgname
 pkgrel=1
 pkgver=1.0.5
 pkgdesc="A cycle/bus accurate emulator for Sega's 8-bit game consoles (Master System, Gamegear, SG-1000)"
