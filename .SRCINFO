@@ -1,0 +1,22 @@
+pkgbase = gnome-main-menu
+	pkgdesc = A mate-panel applet similar to the traditional main-menu, but with a few additions.
+	pkgver = 1.8.0
+	pkgrel = 4
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = yelp-tools
+	depends = caja
+	depends = libunique
+	depends = mate-control-center
+	depends = mate-desktop
+	depends = mate-panel
+	depends = mate-system-monitor
+	optdepends = yelp: for reading help documents
+	source = http://pub.mate-desktop.org/releases/1.8/gnome-main-menu-1.8.0.tar.xz
+	sha1sums = 287e904506ae2796e84b556f76e3b12274c1c89f
+
+pkgname = gnome-main-menu
+
