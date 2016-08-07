@@ -8,7 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173748'
 license=('ISC')
-depends=('libavcodec.so'
+depends=('vapoursynth'
+         'libavcodec.so'
          'libavformat.so'
          'libavutil.so'
          )
