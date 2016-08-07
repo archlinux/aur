@@ -2,14 +2,14 @@
 
 _pkgname=lxqt-policykit
 pkgname=$_pkgname-git
-pkgver=0.9.0.1.g88d9a28
+pkgver=0.10.0.8.gaff2fdb
 pkgrel=1
 pkgdesc="The LXQt policykit authentication agent"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "polkit-qt5")
-makedepends=("git" "cmake")
+makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
