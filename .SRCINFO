@@ -1,0 +1,25 @@
+pkgbase = mate-accountsdialog
+	pkgdesc = An application to view and modify user accounts information for MATE.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/NiceandGently/mate-accountsdialog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mate-common
+	makedepends = perl-xml-parser
+	makedepends = yelp-tools
+	depends = accountsservice
+	depends = apg
+	depends = dbus-glib
+	depends = gtk2
+	depends = iso-codes
+	depends = mate-desktop
+	depends = mate-polkit
+	depends = libunique
+	options = !emptydirs
+	source = mate-accountsdialog-1.8.1.tar.gz::https://github.com/NiceandGently/mate-accountsdialog/archive/v1.8.1.tar.gz
+	sha1sums = acd991e284a28a0732cb8e37e5ffda01caf37155
+
+pkgname = mate-accountsdialog
+
