@@ -1,0 +1,8 @@
+post_install() {
+  echo ''
+  echo '==> To enable Refresh Wifi:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with the gnome-tweak-tool'
+  echo '==> or run "gnome-shell-extension-tool -e simplenetspeed@biji.extension"'
+  echo ''
+}
