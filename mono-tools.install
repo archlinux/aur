@@ -1,15 +1,6 @@
-post_install() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
-
-post_upgrade() {
-  post_install $1
-}
-
 post_remove() {
   rm -f  /usr/lib/monodoc/monodoc.index
   rm -rf /usr/lib/monodoc/search_index
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 # vim: ft=sh

@@ -10,7 +10,7 @@
 
 pkgname=mono-tools
 pkgver=3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
 arch=(i686 x86_64)
 license=('GPL')
