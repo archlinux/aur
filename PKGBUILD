@@ -40,10 +40,19 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   mkdir -p "$pkgdir"/usr/share/osvrcore/sample-configs
-  cp -ra "$srcdir"/osvr-openhmd/sample-configs/* "$pkgdir"/usr/share/osvrcore/sample-configs/
-  mv "$pkgdir"/usr/share/osvrcore/sample-configs/renderManager.extended.landscape.json "$pkgdir"/usr/share/osvrcore/sample-configs/openhmd-dk1-renderManager.extended.landscape.json
-  mv "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.json "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
-  sed -i 's/"renderManager.extended.landscape.json"/"openhmd-dk1-renderManager.extended.landscape.json"/g' "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
+  mkdir -p "$pkgdir"/usr/share/osvrcore/displays
+
+  cp -ra "$srcdir"/osvr-openhmd/sample-configs/ "$pkgdir"/usr/share/osvrcore/sample-configs/
+  cp "$srcdir"/osvr-openhmd/sample-configs/renderManager.extended.landscape.json "$pkgdir"/usr/share/osvrcore/sample-configs/openhmd-dk1-renderManager.extended.landscape.json
+  cp "$srcdir"/osvr-openhmd/sample-configs/osvr_server_config.json "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
+  cp "$srcdir"/osvr-openhmd/sample-configs/Oculus_Rift_DK1.json "$pkgdir"/usr/share/osvrcore/displays/Oculus_Rift_DK1_openhmd.json
+
+  #This is the osvr supplied display file. It has slightly different coefficients. So if that doesn't work, try the one from openhmd
+  sed -i 's|"Oculus_Rift_DK1.json"|"/usr/share/osvrcore/displays/Oculus_Rift_DK1.json"|g' "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
+  #sed -i 's|"Oculus_Rift_DK1.json"|"/usr/share/osvrcore/displays/Oculus_Rift_DK1_openhmd.json"|g' "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
+
+
+  sed -i 's|"renderManager.extended.landscape.json"|"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json"|g' "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
 }
 
 
