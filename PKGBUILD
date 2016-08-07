@@ -5,8 +5,8 @@
 # Contributor: Loui Chang <louipc dot ist at gmail company> (SPAMMERS!)
 
 pkgname=draftsight
-pkgver=2016SP1
-pkgrel=3
+pkgver=2016SP2
+pkgrel=1
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -32,7 +32,7 @@ depends=('desktop-file-utils'
 install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
-md5sums=('1bc8b2d4c69314f0d612a6c8e09d5acb'
+md5sums=('6197ffca0511482786b1a493df980267'
          '19b26d423cae7ec0e1e6c6d78c94915d')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
@@ -74,9 +74,6 @@ package()
   install -Dm644 Resources/dassault-systemes_draftsight-dwt.xml $pkgdir/usr/share/mime/application/dassault-systemes_draftsight-dwt.xml
 
   install -Dm644 $srcdir/draftsight.desktop $pkgdir/usr/share/applications/draftsight.desktop
-  # The provided .desktop entry is poorly written and does not disable vblank
-  # when called.
-  #install -Dm644 $srcdir/$_pkgprefix/Resources/dassault-systemes_draftsight.desktop $pkgdir/usr/share/applications/dassault-systemes_draftsight.desktop
 
   cp -pr $srcdir/$_pkgprefix/* $pkgdir/$_pkgprefix/
 }
