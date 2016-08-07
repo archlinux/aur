@@ -22,7 +22,7 @@ sha256sums=('ec579f8a0a6688af00ca74f0c8e32c0298c0b54cd92d4d49c3407d98c0dbd8a3'
             '700566ed191b52be5a8cfe9b35f9ccdf48bdfd8a7b43121d2c64d9ec55c2be6c'
             'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd'
             'e5b17862fcc959ff48098ffdca04671d0303d290494edfebad495f6e3b82ba68'
-            'ccdbcaf693ce2dc4e1a9432e17a8d3014925bfb0dc3f177a0c644e668b8b5e78')
+            '06123d1817e5627828e7416b5c349318b3e6da65cd8cb0197cbc0138cbb76908')
 makedepends=('rpmextract')
 conflicts=('ehaspd')
 install=$pkgname.install
