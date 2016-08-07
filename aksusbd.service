@@ -10,7 +10,7 @@ TimeoutStopSec=10s
 
 ExecStart=/usr/bin/aksusbd
 ExecStart=/usr/bin/winehasp
-ExecStart=/usr/bin/hasplmd
+ExecStart=/usr/bin/hasplmd -s
 
 [Install]
 WantedBy=multi-user.target
