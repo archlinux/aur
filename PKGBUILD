@@ -5,7 +5,7 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 pkgname=sky
 pkgver=2.1.6310_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -48,7 +48,7 @@ package() {
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
 	cd "${srcdir}"
-	ar x "sky_${pkgver//_/-}deb8+jessie_amd64.deb" >/dev/null
+	ar x "sky_${pkgver//_/-}debian+jessie_amd64.deb" >/dev/null
 	tar -Jxf data.tar.xz
 
 	install -dm 0755 "${srcdir}${_sky_libdir}" "${pkgdir}${_sky_libdir}"
