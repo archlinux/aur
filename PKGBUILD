@@ -1,6 +1,6 @@
 # Maintainer: Tim Cassels <cassels2025@gmail.com>
 
-pkgname=fldigi
+pkgname=t_test
 pkgver=3.23.13
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
@@ -13,7 +13,7 @@ optdepends=('hamlib: rig control through hamlib'
 	'portaudio: PortAudio support'
 	'pulseaudio: pulseaudio support'
 	'xmlrpc-c: XML-RPC control')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/project/fldigi/fldigi/fldigi-$pkgver.tar.gz)
 sha512sums=('a6deefcb0f11bd5e866cd363eff619e7aeace6a781a110aa36fb249612c5665353ecd21225b9ff15c8e7f9fdd4483a43b4f88dbcf7ff56325324eac70d164ad0')
 
 build() {
