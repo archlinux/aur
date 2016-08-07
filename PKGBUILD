@@ -26,6 +26,7 @@ sha256sums=('ec579f8a0a6688af00ca74f0c8e32c0298c0b54cd92d4d49c3407d98c0dbd8a3'
 makedepends=('rpmextract')
 conflicts=('ehaspd')
 install=$pkgname.install
+options=('!strip')
 
 prepare(){
   cd $srcdir
