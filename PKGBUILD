@@ -5,7 +5,7 @@
 
 pkgname=tramp
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="emacs extension that provides transparent remote file editing"
 arch=('any')
 url=http://www.gnu.org/software/tramp/
