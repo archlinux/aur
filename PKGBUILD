@@ -14,22 +14,18 @@ pkgver=2016.08.07
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc='A voice chat application similar to TeamSpeak (GIT version with JACK Audio patch (QT5))'
+pkgdesc='A voice chat application similar to TeamSpeak (GIT version with JACK Audio patch)'
 url='https://github.com/mumble-voip/mumble'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf' 
-        'jack' 'opus' 'libxi' 'libsndfile' 'xdg-utils')
-makedepends=('boost' 'qt5-tools' 'mesa' 'git')
-#optdepends=('portaudio: for portaudio back-end' 'g15daemon: G15 Keyboard support')
+        'jack' 'opus' 'xdg-utils' 'libxi' 'libsndfile')
+makedepends=('boost' 'mesa' 'qt5-tools' 'git')
 conflicts=('mumble')
 provides=('mumble')
-install=mumble.install
 source=("${pkgname}"::'git://github.com/mumble-voip/mumble.git'
-        'http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch'
-        'revert-tray.patch')
+        'http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch')
 sha256sums=('SKIP'
-            'ae56abc2d9b5725e7ff768b8ca29a569dc9051ef192d792372ef10f0e6c3f53d'
-            '16d84ee1326dab29944951a4274ad2e9b53d118f9203911dba25b6b3c07ba6c5')
+            'ae56abc2d9b5725e7ff768b8ca29a569dc9051ef192d792372ef10f0e6c3f53d')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -43,10 +39,6 @@ prepare() {
     git submodule update
 
     patch -Np1 < ${srcdir}/mumble-jack-support.patch
-
-    # Reverts a commit that can make mumble not restore when trying to restore from tray if it starts minimized on some WM/DE's or panels
-    # Uncomment to apply this patch if you encounter the issue
-    # patch -Np1 < ${srcdir}/revert-tray.patch
 }
 
 build() {
