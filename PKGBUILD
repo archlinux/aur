@@ -8,7 +8,7 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('custom:unRAR' 'LGPL')
@@ -56,14 +56,13 @@ package() {
 	rm -R ${pkgdir}/usr/share/{doc,man}
 
 	install -Dm644 GUI/p7zip_32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png
-	install -d ${pkgdir}/usr/share/{applications,kde4/services/ServiceMenus}
+	install -dm755 ${pkgdir}/usr/share/{applications,kde4/services/ServiceMenus}
 	cp GUI/kde4/* ${pkgdir}/usr/share/kde4/services/ServiceMenus
-	install -d ${pkgdir}/usr/share/kservices5/ServiceMenus
+	install -dm755 ${pkgdir}/usr/share/kservices5/ServiceMenus
 	cp GUI/kde4/* ${pkgdir}/usr/share/kservices5/ServiceMenus
 	cp ../7zFM.desktop ${pkgdir}/usr/share/applications
 	ln -s 7zCon.sfx ${pkgdir}/usr/lib/p7zip/7z.sfx
-	# disabled due FS#49303
-	#install -d ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
-	#cp -r GUI/help/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
+	install -dm755 ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
+	cp -r DOC/MANUAL/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
 	chmod +x ${pkgdir}/usr/bin/p7zipForFilemanager
 }

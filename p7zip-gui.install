@@ -12,5 +12,5 @@ post_upgrade() {
 
 
 post_remove() {
-	post_install
+	[[ -x usr/bin/kbuildsycoca5 ]] && kbuildsycoca5 &> /dev/null || true
 }
