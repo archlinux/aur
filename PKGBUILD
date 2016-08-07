@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=2.1.0.846.g0391467
+pkgver=2.1.0.2006.g31436cb
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('cura')
 depends=('python' 'python-pyqt5' 'python-pyserial' 'python-numpy' 'python-protobuf3' 'qt5-quickcontrols' 'libarcus-git' 'uranium-git' 'curaengine-git')
 makedepends=('git' 'cmake')
 source=('git+https://github.com/Ultimaker/Cura.git' 'site-packages-dir.patch')
-md5sums=('SKIP' '2638714c242785f94277a0a15a0ab087')
+md5sums=('SKIP' '68ddf58623d21a736d1075099667bdef')
 
 pkgver() {
   cd Cura
