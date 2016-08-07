@@ -6,7 +6,7 @@
 
 pkgname=aksusbd
 pkgver=7.40
-_pkgrel=2
+_pkgrel=1
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 pkgrel=${_pkgrel}
 pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
