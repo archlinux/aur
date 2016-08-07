@@ -2,7 +2,7 @@
 
 pkgname=freeorion
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 arch=('i686' 'x86_64')
 url="https://github.com/freeorion/freeorion/"
