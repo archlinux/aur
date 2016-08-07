@@ -9,12 +9,13 @@
 _gtk3=true
 
 # try to build with PGO
-_pgo=true
+# currently broken
+#_pgo=false
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=47.0.1
-pkgrel=2
+pkgver=48.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -28,12 +29,12 @@ if [ $_gtk3 ] ; then
 fi
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13')
+             'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13' 'rust')
 optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'upower: Battery API' )
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=bf541a540a74
+_patchrev=199d5cf40e86
 options=('!emptydirs'  'strip' )
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -46,18 +47,16 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
 	$_patchurl/mozilla-kde.patch
 	$_patchurl/mozilla-language.patch
 	$_patchurl/mozilla-nongnome-proxies.patch
-        $_patchurl/MozillaFirefox/firefox-appdata.xml
-        $_patchurl/MozillaFirefox/firefox-mimeinfo.xml
-        $_patchurl/MozillaFirefox/firefox.1
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
         rb39193.patch
         fix_mozalloc.patch
+        https://cgit.gentoo.org/proj/mozilla.git/plain/www-client/firefox/files/xpcom-components-binutils-26.patch
 )
 
 if [ $_gtk3 ] ; then
-    source+=($_patchurl/mozilla-gtk3_20.patch)
+    source+=(mozilla-gtk3_20.patch)
 fi
 
 
@@ -68,6 +67,7 @@ fi
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
+
 
 # Mozilla API keys (see https://location.services.mozilla.com/api)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -93,10 +93,6 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
   
-  # Fix mozalloc.h see mozilla Bug #1245076 
-  patch -Np1 -i "$srcdir/fix_mozalloc.patch"
-  patch -Np1 -i "$srcdir/rb39193.patch"
-
   msg "Patching for KDE"
   patch -Np1 -i "$srcdir/mozilla-nongnome-proxies.patch"
   patch -Np1 -i "$srcdir/mozilla-kde.patch"
@@ -106,7 +102,7 @@ prepare() {
   patch -Np1 -i "$srcdir/firefox-no-default-ualocale.patch"
   patch -Np1 -i "$srcdir/firefox-branded-icons.patch"
   # add globalmenu support
-  patch -Np1 -i "$srcdir/unity-menubar.patch"
+  #patch -Np1 -i "$srcdir/unity-menubar.patch"
 
   # add missing rule for pgo builds
   patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
@@ -121,10 +117,15 @@ prepare() {
       echo 'ac_add_options --enable-default-toolkit=cairo-gtk3' >>.mozconfig
           patch -Np1 -i "$srcdir"/mozilla-gtk3_20.patch
   fi
+
+  # 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
   # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
+  # Workaround for binutils/GNU ld 2.26 from NetBSD/amd64 7.99.26
+  patch -Np1 -i "$srcdir"/xpcom-components-binutils-26.patch
+  
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
   ln -sf /usr/bin/python2 "$srcdir/path/python"
@@ -148,8 +149,8 @@ build() {
   CPPFLAGS+=" -O2"
 
   # GCC 6
-  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CFLAGS+=" -fPIC -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fPIC -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
@@ -171,7 +172,7 @@ package() {
   cd $_pkgname-$pkgver
 
   [[ "$CARCH" == "i686" ]] && cp "$srcdir/kde.js" obj-i686-pc-linux-gnu/dist/bin/defaults/pref
-  [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-unknown-linux-gnu/dist/bin/defaults/pref
+  [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-pc-linux-gnu/dist/bin/defaults/pref
 
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
@@ -194,12 +195,6 @@ package() {
 
   install -Dm644 "$srcdir/firefox.desktop" "$pkgdir/usr/share/applications/firefox.desktop"
 
-  install -Dm644 "$srcdir/firefox-appdata.xml" \
-          "$pkgdir/usr/share/applications/firefox.appdata.xml"
-  install -Dm644 "$srcdir/firefox.1" "$pkgdir/usr/share/man/man1/firefox.1"
-  install -Dm644 "$srcdir/firefox-mimeinfo.xml" \
-          "pkgdir/usr/share/mime/packages/firefox.xml"
-  
   # Use system-provided dictionaries
   rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
@@ -209,25 +204,23 @@ package() {
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
-md5sums=('aba4b673b10e3fdcee80f88300829613'
-         '90a94e20dc3bb447d420225c005faa10'
+md5sums=('df52f6cfdf98e10b3f036479f38406c4'
+         '3b48232100d936b2822220d971f1e92c'
          '9b02198df96be08f2a0a323ac2e6c2a2'
          'dbf14588e85812ee769bd735823a0146'
          '0d053487907de4376d67d8f499c5502b'
          '05bb69d25fb3572c618e3adf1ee7b670'
          '6e335a517c68488941340ee1c23f97b0'
-         '121a0d61ebe994e69f4428c13a4a5549'
-         '04ff0dcb88fd94363f9936701a58925e'
-         '6c9a8cb4bcaa71e5f98648b6baee9ccd'
-         'f9278c5e917f6d4faa9dadb555fec7f1'
+         '3b3eb8c2747429887e4a03537932eac5'
+         '84c6a2bf45cfc2393821ec2f5ccd64c5'
+         '1fad9a988826d69fe712ea973e43f6da'
+         '91ee1935c2674f89d4f8f358de2f0dbc'
          '903307f923a459189a5a6062ff9df38c'
          '0c684360f1df4536512d51873c1d243d'
-         '4747b754ad02ba4d6f042a811a403709'
-         '16d99b1dec429f421b77a9d112bbe6cc'
-         'a72b999b6cce4aebcc8e70d319527b74'
-         'ca230419b22e31220f1278ef639db0dd'
+         'eb6771472c8c5f67331256c7f5a692da'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          '43550e772f110a338d5a42914ee2c3a6'
          '0c1ed789c06297659137a2ed2ef769f7'
-         'f6c4c052d5cf8b050f72e3db6677f176')
+         'a7819fec41ab24da3fc42541981605db'
+         'dd5ebfe5142855540bbd2b9164767a9b')
