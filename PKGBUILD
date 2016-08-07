@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xforms
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5pre1
+pkgrel=1
 pkgdesc="A graphical user interface toolkit for X Window Systems."
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -10,7 +10,7 @@ url='http://xforms-toolkit.org/'
 depends=('libxpm' 'libjpeg' 'libgl')
 makedepends=('texlive-plainextra')
 source=(http://download.savannah.gnu.org/releases/xforms/$pkgname-$pkgver.tar.gz)
-md5sums=('d4414c9eb3b284aa2f603a49f376ed22')
+md5sums=('a710237662e3e3350e9f4309d7dcf14d')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
