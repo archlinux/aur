@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=JOYCE
+Comment=Emulates the Amstrad PCW on Unix
+Exec=/usr/bin/xjoyce
+Icon=/usr/share/Joyce/pcw.bmp
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
