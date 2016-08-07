@@ -1,4 +1,4 @@
-# Maintainer: shellkr <revoltism+AUR$gmail.com>
+# Maintainer: bharadwaj-raju <bharadwaj.raju@keemail.me>
 
 pkgname=textsuggest-git
 _gitname=${pkgname%-git*}
@@ -30,5 +30,6 @@ package() {
     install -D -m644 docs/textsuggest.1 -t "$pkgdir/usr/share/man/man1/"
     install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	chmod -R a+r /usr/share/textsuggest
 }
 
