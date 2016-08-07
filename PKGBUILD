@@ -11,7 +11,7 @@ _upnp=#tag=10007
 
 pkgname=freenet
 pkgver=0.7.5.1475
-pkgrel=1
+pkgrel=2
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
 url="https://freenetproject.org"
