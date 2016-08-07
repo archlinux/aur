@@ -7,6 +7,7 @@ arch=("any")
 url="https://github.com/googlemaps/google-maps-services-python"
 license=('Apache')
 depends=("python2")
+makedepends=("python2-setuptools")
 source=("https://github.com/googlemaps/google-maps-services-python/archive/$pkgver.tar.gz")
 
 build() {

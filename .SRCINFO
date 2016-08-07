@@ -5,6 +5,7 @@ pkgbase = python2-googlemaps
 	url = https://github.com/googlemaps/google-maps-services-python
 	arch = any
 	license = Apache
+	makedepends = python2-setuptools
 	depends = python2
 	source = https://github.com/googlemaps/google-maps-services-python/archive/2.4.3.tar.gz
 	md5sums = 4a258d5bb240d31ac96a5d472fcd9b3d
