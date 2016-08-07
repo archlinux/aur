@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('alsa-lib' 'libpulse')
-makedepends=('mate-common')
+makedepends=('mate-common-1.15-gtk3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('925b1ccff7ced44458dfbb82550a47b939de306d')
 
