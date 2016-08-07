@@ -5,6 +5,8 @@ pkgbase = python-haversine
 	url = https://github.com/mapado/haversine
 	arch = any
 	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
 	source = https://github.com/mapado/haversine/archive/v0.4.5.tar.gz
 	md5sums = ae7c33906818008025dc22d547fbbe53
 

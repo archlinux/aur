@@ -6,6 +6,8 @@ pkgdesc="Calculate the distance (in km or in miles) between two points on Earth,
 arch=("any")
 url="https://github.com/mapado/haversine"
 license=('MIT')
+depends=("python2")
+makedepends=("python2-setuptools")
 source=("https://github.com/mapado/haversine/archive/v$pkgver.tar.gz")
 
 build() {
