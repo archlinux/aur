@@ -3,7 +3,7 @@
 pkgname=t_test
 pkgver=3.23.13
 pkgrel=1
-pkgdesc="Digital Modem Program for Amateur Radio"
+pkgdesc="This is a test fork package of FLDIGI - Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
 license=('GPL')
