@@ -1,13 +1,10 @@
 post_install() {
-  echo "Do not forget to enable and start the service as root:"
-  echo "systemctrl enable aksusbd"
-  echo "systemctrl start  aksusbd"
+  echo "Remember to run 'sudo systemctl start aksusbd' to start the service."
+  echo "To make it persist across reboots, run 'sudo systemctl enable aksusbd'."
 }
 
 post_upgrade() {
-  echo
 }
 
 post_remove() {
-  echo
 }
