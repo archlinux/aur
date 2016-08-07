@@ -2,7 +2,7 @@
 
 _pkgname=ghetto-skype
 pkgname=ghetto-skype-git
-pkgver=1.4.0.r0.g35d72e3
+pkgver=1.4.1.r0.ga341103
 pkgrel=1
 pkgdesc="Are you tired of a buggy 32 bit official Skype client? Then Ghetto Skype is for you!"
 arch=("any")
@@ -28,7 +28,7 @@ pkgver() {
 
 package() {
 	npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}"
-	rm -r "${pkgdir}/usr/etc"
+	rmdir "${pkgdir}/usr/etc"
 
 	install -Dm0644 "desktop" "${pkgdir}/usr/share/applications/ghetto-skype.desktop"
 	install -Dm0755 "sh" "${pkgdir}/usr/bin/ghetto-skype"
