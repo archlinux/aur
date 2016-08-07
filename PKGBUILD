@@ -3,12 +3,12 @@
 
 pkgname=hyperion
 pkgver=1.03.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource 'AmbiLight' implementation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('libusb' 'python' 'qt5-base')
+depends=('libusb' 'python' 'protobuf' 'qt5-base')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('avahi' 'cmake' 'git' 'qt5-serialport')
 provides=('hyperion')
@@ -18,12 +18,6 @@ backup=('etc/hyperion/hyperion.config.json')
 source=("https://github.com/tvdzwan/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('7406f5bdf323d2799fb375557603fefd1f077cda287b5aa9ff10251b22d8dd07590458515b0e01ef97fba80885aab1aa72bd8b5d26873ad8ebcc1ba53d6776ec')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}/dependencies/external"
-  # Workaround: Arch's protobuf doesn't seem compatible
-  git clone --depth 1 https://github.com/tvdzwan/protobuf.git
-}
-
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
@@ -32,6 +26,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_QT5=ON \
         -DUSE_SHARED_AVAHI_LIBS=ON \
+        -DUSE_SYSTEM_PROTO_LIBS=ON \
+        -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
         ..
   make
 }

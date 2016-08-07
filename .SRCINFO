@@ -1,7 +1,7 @@
 pkgbase = hyperion
 	pkgdesc = An opensource 'AmbiLight' implementation
 	pkgver = 1.03.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyperion-project/hyperion.ng
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = hyperion
 	makedepends = qt5-serialport
 	depends = libusb
 	depends = python
+	depends = protobuf
 	depends = qt5-base
 	optdepends = xorg-server: X11 grabbing
 	provides = hyperion
