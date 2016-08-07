@@ -1,7 +1,7 @@
 # Maintainer: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.6.r118.g3130631
+pkgver=1.9.6.r496.ge07f144
 pkgrel=1
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
@@ -43,11 +43,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make EXPERIMENTAL_PLUGINS=true
+  make
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make EXPERIMENTAL_PLUGINS=true DESTDIR="$pkgdir/" PREFIX=/usr install
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
 
