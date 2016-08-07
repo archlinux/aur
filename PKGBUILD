@@ -1,7 +1,7 @@
 # Maintainer: Luca Corbatto <luca-arch@corbatto.de>
 _pkgname=evolution-rss
 pkgname=$_pkgname-git
-pkgver=0.3.95.r32.g17c65fe
+pkgver=0.3.95.r33.g594ad1d
 pkgrel=1
 pkgdesc="RSS-Plugin for evolution"
 arch=(i686 x86_64)
