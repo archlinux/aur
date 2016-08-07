@@ -1,0 +1,38 @@
+diff -crB src_pristine/application/app.cpp src/application/app.cpp
+*** src_pristine/application/app.cpp	2012-06-21 21:09:42.000000000 +0200
+--- src/application/app.cpp	2016-08-07 14:39:17.731510036 +0200
+***************
+*** 90,96 ****
+  }
+  
+  void App::loadConfig() {
+!     if ( !config.load(App::app_dir + _CFG_FILE) ) {
+          Dialog::Warn( lang.get("cfg_load") );
+      }
+  }
+--- 90,96 ----
+  }
+  
+  void App::loadConfig() {
+!     if ( !config.load(QDir::homePath() + "/" + _CFG_FILE) ) {
+          Dialog::Warn( lang.get("cfg_load") );
+      }
+  }
+***************
+*** 112,118 ****
+          emulator.unload();
+      }
+  
+!     if (!config.save(app_dir + _CFG_FILE)) {
+          Dialog::Warn(lang.get("cfg_save"));
+      }
+  
+--- 112,118 ----
+          emulator.unload();
+      }
+  
+!     if (!config.save(QDir::homePath() + "/" + _CFG_FILE)) {
+          Dialog::Warn(lang.get("cfg_save"));
+      }
+  
+  

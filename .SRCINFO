@@ -1,0 +1,26 @@
+pkgbase = twombit
+	pkgdesc = A cycle/bus accurate emulator for Sega's 8-bit game consoles (Master System, Gamegear, SG-1000)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/twombit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = freeglut
+	depends = glu
+	depends = openal
+	depends = qt4
+	depends = sdl
+	source = https://sourceforge.net/projects/twombit/files/v%201.0.5/twombit_src.zip
+	source = nonerror_type_fix.patch
+	source = settings_path_fix.patch
+	source = twombit.desktop
+	source = twombit.png
+	sha256sums = c5fb1651176b75545445fbdec90739f0c4ef8550f628f814f240b4dda1eab624
+	sha256sums = cbcdfb10f3ca9d6b12cccf479dbf67b48f0b441600f0fa77795e7842aebc43fd
+	sha256sums = 171aa5601fbdbb28340a72e2de520b6bb7c8d021df9bdc8ad1379916d961be3f
+	sha256sums = 70202b3113b4b61ddd504a99493ca01f829a896ffac7ec686d344e0fbce535b8
+	sha256sums = 9988bbb328bc546ba21655e695049edc2112bb00f683a565aa237a0fbbf220de
+
+pkgname = twombit
+

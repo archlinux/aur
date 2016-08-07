@@ -1,0 +1,20 @@
+diff -crB src_pristine/lib/fex/blargg_common.h src/lib/fex/blargg_common.h
+*** src_pristine/lib/fex/blargg_common.h	2009-10-10 17:40:14.000000000 +0200
+--- src/lib/fex/blargg_common.h	2016-08-07 13:06:40.819713909 +0200
+***************
+*** 12,18 ****
+  typedef const char* blargg_err_t; // 0 on success, otherwise error string
+  
+  // Success; no error
+! int const blargg_ok = 0;
+  
+  // BLARGG_RESTRICT: equivalent to C99's restrict, where supported
+  #if __GNUC__ >= 3 || _MSC_VER >= 1100
+--- 12,18 ----
+  typedef const char* blargg_err_t; // 0 on success, otherwise error string
+  
+  // Success; no error
+! char* const blargg_ok = 0;
+  
+  // BLARGG_RESTRICT: equivalent to C99's restrict, where supported
+  #if __GNUC__ >= 3 || _MSC_VER >= 1100

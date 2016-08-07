@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=TwoMbit
+Comment=Emulator for Sega's 8-bit game consoles
+Exec=/usr/share/twombit/TwoMbit
+Icon=/usr/share/twombit/twombit.png
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;
