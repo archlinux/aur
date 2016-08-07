@@ -2,8 +2,7 @@
 
 _pkgbase="protobuf"
 pkgname=('protobuf3-coex' 'python2-protobuf3-coex' 'python-protobuf3-coex')
-pkgver=3.0.0_beta_3.2
-_pkgver=$(echo $pkgver | tr _ -)
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (it coexists with protobuf pkg)"
 arch=('i686' 'x86_64')
@@ -11,10 +10,10 @@ url='https://developers.google.com/protocol-buffers/'
 license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('unzip' 'python-setuptools' 'python2-setuptools')
-source=("https://github.com/google/${_pkgbase}/archive/v${_pkgver}.tar.gz")
+source=("https://github.com/google/${_pkgbase}/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd $_pkgbase-$_pkgver
+  cd $_pkgbase-$pkgver
   ./autogen.sh
   ./configure --prefix=/usr --program-prefix=protobuf3- --libdir=/usr/lib/protobuf3 --includedir=/usr/include/protobuf3
   make $MAKEFLAGS
@@ -25,7 +24,7 @@ package_protobuf3-coex() {
   provides=('protobuf-cpp')
   replaces=('protobuf-cpp')
 
-  cd $_pkgbase-$_pkgver
+  cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
@@ -34,7 +33,7 @@ package_python2-protobuf3-coex() {
   pkgdesc='Python 2 bindings for Google Protocol Buffers'
   depends=('python2' 'python2-six' "protobuf3-coex=${pkgver}")
 
-  cd $_pkgbase-$_pkgver/python
+  cd $_pkgbase-$pkgver/python
 
   python2 setup.py install --root="$pkgdir"
 
@@ -49,7 +48,7 @@ package_python-protobuf3-coex() {
   pkgdesc='Python 3 bindings for Google Protocol Buffers'
   depends=('python' 'python-six' "protobuf3-coex=${pkgver}")
 
-  cd $_pkgbase-$_pkgver/python
+  cd $_pkgbase-$pkgver/python
   python3 setup.py install --root="$pkgdir"
 
   install -d "$pkgdir"/usr/share/licenses/$pkgname
@@ -58,5 +57,4 @@ package_python-protobuf3-coex() {
   cd $pkgdir/usr/lib/python3.5/site-packages/google/protobuf3
   find . -type f -name "*.py" -exec sed -i 's/google.protobuf/google.protobuf3/g' {} + 
 }
-
-md5sums=('57268585300bcf2face611e26d97f825')
+md5sums=('d4f6ca65aadc6310b3872ee421e79fa6')
