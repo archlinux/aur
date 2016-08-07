@@ -1,14 +1,14 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=mycli
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for MySQL Database. With auto-completion and syntax highlighting.'
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}"
 license=('BSD')
 groups=()
 # these dependencies are pulled from this package's setup.py
-depends=('python' 'python-crypto' 'python-click' 'python-pygments' 'python-prompt_toolkit' 'python-pymysql' 'python-sqlparse=0.1.19' 'python-configobj')
+depends=('python' 'python-crypto' 'python-click' 'python-pygments' 'python-prompt_toolkit' 'python-pymysql' 'python-sqlparse-mycli' 'python-configobj')
 makedepends=()
 provides=()
 conflicts=()
