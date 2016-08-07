@@ -4,7 +4,7 @@
 pkgname='rutorrent-autodl-irssi-community'
 _pkgname='autodl-rutorrent-community'
 pkgver=1.62
-pkgrel=2
+pkgrel=3
 pkgdesc='Community fork of the autodl-irssi rutorrent plugin.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-rutorrent'
@@ -13,6 +13,7 @@ install='rutorrent-autodl-irssi-community.install'
 depends=('rutorrent' "autodl-irssi-community=${pkgver}")
 provides=('rutorrent-autodl-irssi')
 replaces=('rutorrent-autodl-irssi-svn')
+conflicts=('rutorrent-autodl-irssi-svn')
 source=("https://github.com/autodl-community/autodl-rutorrent/archive/community-v${pkgver}.tar.gz")
 md5sums=('e5880da80fdda8e75c5b97a140c5a6d1')
 
