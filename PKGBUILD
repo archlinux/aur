@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=367.27
-pkgrel=1
-_goodkver=4.6
-_badkver=4.7
+pkgver=367.35
+pkgrel=2
+_goodkver=4.7
+_badkver=4.8s
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -30,10 +30,13 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
 license=('custom')
 install=nvidia.install
 options=(!strip)
+source=('linux-4.7.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('f32b9ab673acce56990f2b5acdc1e77f')
-md5sums_x86_64=('cdf8a16c533382acc9f088bd8e689860')
+md5sums=('b1e6760dca837e8685fd02be15aa4f51')
+md5sums_i686=('42db6f6485c3c337c7c756380ec64b7a')
+md5sums_x86_64=('24f1fc19fe10bcc6ff264fb5034c4ccc')
+
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -46,6 +49,8 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
+  patch -Np1 -d kernel < ../linux-4.7.patch
+
 }
 
 build() {

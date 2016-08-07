@@ -1,0 +1,64 @@
+diff -u -r nvidia-367.35-orig/nvidia-drm/nvidia-drm-fb.c nvidia-367.35/nvidia-drm/nvidia-drm-fb.c
+--- nvidia-367.35-orig/nvidia-drm/nvidia-drm-fb.c	2016-07-15 18:58:50.000000000 +0200
++++ nvidia-367.35/nvidia-drm/nvidia-drm-fb.c	2016-08-06 00:38:00.550651165 +0200
+@@ -31,6 +31,7 @@
+ #include "nvidia-drm-gem.h"
+ 
+ #include <drm/drm_crtc_helper.h>
++#include <linux/version.h>
+ 
+ static void nvidia_framebuffer_destroy(struct drm_framebuffer *fb)
+ {
+@@ -114,7 +115,11 @@
+      * We don't support any planar format, pick up first buffer only.
+      */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    gem = drm_gem_object_lookup(file, cmd->handles[0]);
++#else
+     gem = drm_gem_object_lookup(dev, file, cmd->handles[0]);
++#endif
+ 
+     if (gem == NULL)
+     {
+diff -u -r nvidia-367.35-orig/nvidia-drm/nvidia-drm-gem.c nvidia-367.35/nvidia-drm/nvidia-drm-gem.c
+--- nvidia-367.35-orig/nvidia-drm/nvidia-drm-gem.c	2016-07-15 18:58:50.000000000 +0200
++++ nvidia-367.35/nvidia-drm/nvidia-drm-gem.c	2016-08-06 00:37:47.237546102 +0200
+@@ -27,6 +27,7 @@
+ #include "nvidia-drm-priv.h"
+ #include "nvidia-drm-ioctl.h"
+ #include "nvidia-drm-gem.h"
++#include <linux/version.h>
+ 
+ static struct nvidia_drm_gem_object *nvidia_drm_gem_new
+ (
+@@ -408,7 +409,11 @@
+ 
+     mutex_lock(&dev->struct_mutex);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    gem = drm_gem_object_lookup(file, handle);
++#else
+     gem = drm_gem_object_lookup(dev, file, handle);
++#endif
+ 
+     if (gem == NULL)
+     {
+diff -u -r nvidia-367.35-orig/nvidia-uvm/uvm_linux.h nvidia-367.35/nvidia-uvm/uvm_linux.h
+--- nvidia-367.35-orig/nvidia-uvm/uvm_linux.h	2016-07-15 18:58:50.000000000 +0200
++++ nvidia-367.35/nvidia-uvm/uvm_linux.h	2016-08-06 00:27:09.796678527 +0200
+@@ -554,12 +554,13 @@
+     INIT_RADIX_TREE(tree, GFP_NOWAIT);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,7,0)
+ static bool radix_tree_empty(struct radix_tree_root *tree)
+ {
+     void *dummy;
+     return radix_tree_gang_lookup(tree, &dummy, 0, 1) == 0;
+ }
+-
++#endif
+ 
+ #if !defined(NV_USLEEP_RANGE_PRESENT)
+ static void __sched usleep_range(unsigned long min, unsigned long max)
