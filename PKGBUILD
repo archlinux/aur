@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.gnome-look.org/p/999876/"
 license=('GPL')
 depends=('libxcursor')
-source=("${pkgname}-${pkgver}.tar.gz::https://www.ppload.com/api/files/download?id=1460735152")
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/download/id/1460735152/169299-numix-cursor.tar.gz")
 md5sums=('b15c1880992292b557890669bcfdb19b')
 
 
