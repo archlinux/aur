@@ -1,6 +1,6 @@
 pkgbase = dybuk-git
 	pkgdesc = Prettify the ugly Rustc messages
-	pkgver = 0.1.0
+	pkgver = r37.ef12906
 	pkgrel = 1
 	url = https://github.com/Ticki/dybuk
 	arch = i686
