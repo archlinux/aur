@@ -9,6 +9,7 @@ pkgbase = lxqt-powermanagement-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = solid
 	depends = liblxqt-git
 	depends = libxcb
 	depends = qt5-svg
