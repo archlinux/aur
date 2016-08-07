@@ -2,7 +2,7 @@
 pkgbase=uzbl-next-git
 pkgrel=1
 pkgname=("uzbl-core-next-git" "uzbl-browser-next-git" "uzbl-tabbed-next-git")
-pkgver=v0.9.0.88.g92257e2
+pkgver=v0.9.0.101.gb801f53
 arch=("any")
 url="http://www.uzbl.org"
 license=("GPL3")
