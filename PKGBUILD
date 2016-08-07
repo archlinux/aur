@@ -5,7 +5,7 @@
 # Contributor: Peter Johansson <zeronightfall at gmail dot com>
 
 pkgname=starfighter
-pkgver=1.5.1.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Side-scrolling shoot 'em up space game"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://starfighter.nongnu.org"
 license=('GPL3')
 depends=('sdl2_image' 'sdl2_mixer')
 source=(http://download.savannah.gnu.org/releases/$pkgname/${pkgver:0:3}/$pkgname-$pkgver-src.tar.gz)
-md5sums=('eb47afdb946f67fdb6dd883a00a354da')
+md5sums=('6abd08149594357c170da1d73f0099d7')
 
 build() {
   cd $pkgname-$pkgver-src
