@@ -1,12 +1,12 @@
 # Maintainer: Ebrahim Azarisooreh <ebrahim.azarisooreh@gmail.com>
 pkgname=mousetrap
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An X11 utility that hides the mouse pointer after a specified interval of time"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/eazar001/mousetrap"
 license=('MIT')
-depends=('python-evdev' 'python-xlib' 'libx11' 'libxfixes')
+depends=('python-evdev' 'python-xlib-devel' 'libx11' 'libxfixes')
 makedepends=()
 provides=('mousetrap')
 backup=()
