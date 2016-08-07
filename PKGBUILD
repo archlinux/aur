@@ -6,7 +6,7 @@ pkgver=2.2.9
 pkgdesc="Emulates the Amstrad PCW on Unix"
 arch=('i686' 'x86_64')
 url="http://www.seasip.info/Unix/Joyce/index.html"
-license=('LGPL')
+license=('GPL')
 depends=('libpng'
          'libxml2'
          'sdl')
