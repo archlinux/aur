@@ -9,15 +9,15 @@ pkgbase=libappindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp")
 pkgver=12.10.0
 pkgrel=10
-pkgdesc='Provides a means for applications to export a menu into the Unity menu bar. Falls back to generic Systray support'
+pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray.'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
-license=('LGPL')
+license=('LGPL2.1' 'LGPL3')
 makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
              'libdbusmenu-gtk2' 'libdbusmenu-gtk3' 'libindicator-gtk2'
              'libindicator-gtk3' 'mono' 'perl-xml-libxml' 'pygtk' 'vala')
 options=('!emptydirs')
-source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz"
+source=("http://launchpad.net/${pkgbase}/${pkgver%.*}/${pkgver}/+download/${pkgbase}-${pkgver}.tar.gz"
         "0001-Add-support-for-Activate-method-for-improved-Plasma-.patch")
 sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a'
             'e2930b9942b800a7a14faf4c27d59073c166e24bb1675f8604a0b5ac3fbd101f3642f7221bc8f5219231c8f021a2a8c4aa203f971ea5f2f9225be83d807cb80e')
@@ -39,12 +39,12 @@ build() {
     export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
     export CSC='/usr/bin/mcs'
 
-    cd libappindicator-${pkgver}
+    cd ${pkgbase}-${pkgver}
     ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' \
                 --disable-{gtk-doc-html,mono-test,static,tests} --with-gtk='3'
     make -j1
 
-    cd ../libappindicator-gtk2-${pkgver}
+    cd ${srcdir}/${pkgbase}-gtk2-${pkgver}
     ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' \
               --disable-{gtk-doc-html,mono-test,static,tests}
     make -j1
