@@ -3,8 +3,8 @@
 pkgname=python-xlib-devel
 _gitname=python-xlib
 pkgver=0.16
-pkgrel=1
-pkgdesc='Python 3 bindings from the Python XLib developers community'
+pkgrel=2
+pkgdesc='Python 3 xlib bindings from the Python XLib developers community'
 arch=(any)
 url="https://github.com/python-xlib/python-xlib"
 license=('LGPL2.1')

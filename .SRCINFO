@@ -1,7 +1,7 @@
 pkgbase = python-xlib-devel
-	pkgdesc = Python 3 bindings from the Python XLib developers community
+	pkgdesc = Python 3 xlib bindings from the Python XLib developers community
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-xlib/python-xlib
 	arch = any
 	license = LGPL2.1
