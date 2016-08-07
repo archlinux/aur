@@ -3,7 +3,7 @@
 
 pkgname=geotag
 pkgver=0.098
-pkgrel=3
+pkgrel=4
 pkgdesc="Geotag is an open source program that allows you match date/time information from photos with location information from a GPS unit or from a map"
 arch=('i686' 'x86_64')
 url="http://geotag.sourceforge.net/"
@@ -20,7 +20,13 @@ sha256sums=('d7f236aeb9b5140b1b904c0098526fa41bdaa2402b452b8b84b4471909827dfd'
 package() {
   cd $srcdir
 
+  # Unpack icon from JAR file
+  bsdtar -xf geotag-0.098.jar images/geotag-128.png
+
+  # Install JAR file
   install -D -m644 $pkgname-$pkgver.jar $pkgdir/usr/share/java/$pkgname/$pkgname.jar
+
+  # Install desktop file
   install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -D -m755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
   install -D -m644 $srcdir/images/$pkgname-128.png $pkgdir/usr/share/pixmaps/$pkgname.png
