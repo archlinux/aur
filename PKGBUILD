@@ -2,9 +2,9 @@
 # Upstream URL: https://github.com/gabmus/razercommander
 
 pkgname=razercommander-git
-pkgver=0.2
-pkgrel=2
-pkgdesc='A simple GTK control center for managing razer peripherals on Linux. Make sure to install https://github.com/terrycain/razer_drivers/tree/daemonV2 first.'
+pkgver=0.3
+pkgrel=3
+pkgdesc='A simple GTK control center for managing razer peripherals on Linux. Make sure to install https://github.com/terrycain/razer_drivers first.'
 arch=('x86_64')
 url='https://github.com/gabmus/razercommander'
 license=('GPLv3')
