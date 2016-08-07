@@ -1,0 +1,14 @@
+[Unit]
+Description=Read-only portal to pass, the standard password manager
+
+[Service]
+WorkingDirectory=/usr/lib/node_modules/pass-server-node
+ExecStart=/usr/bin/npm start
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pass-server-node
+Environment="LOG_LEVEL=error"
+Environment="LOG_DIR="
+
+[Install]
+WantedBy=default.target

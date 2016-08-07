@@ -1,0 +1,16 @@
+pkgbase = nodejs-pass-server-node
+	pkgdesc = Read-only portal to pass, the standard password manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cpoppema/pass-server-node
+	install = nodejs-pass-server-node.install
+	arch = any
+	license = GPL3
+	depends = npm
+	source = https://github.com/cpoppema/pass-server-node/archive/v0.3.0.tar.gz
+	source = pass-server-node.service
+	md5sums = 742c4cc62b478ab39b3942bc3801d534
+	md5sums = 4e7a1f04f5088a0db7f34508866076ae
+
+pkgname = nodejs-pass-server-node
+
