@@ -9,7 +9,7 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.9.6
-pkgver=1.9.6.aa1.6.2.db0.8.9.fu0.11.1.la0.9.0.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.6.t2.3.1.tb0.7.0
+pkgver=1.9.6.aa1.6.2.db0.8.9.fu0.11.1.la0.9.0.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.6.t2.3.1.tb0.8.0
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
