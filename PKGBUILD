@@ -20,7 +20,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/bitcoinxt/bitcoinxt
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('4be11dfcc8cc0a92a3770f20a6699b45d549c7007a7fc45952913a03743d8662'
+sha256sums=('0e9c94d77e74525499560ec290e2d504d030823610358ce9f18a539e1941fb3c'
             'SKIP'
             'SKIP'
             'SKIP'
