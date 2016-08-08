@@ -29,7 +29,7 @@ optdepends=('dcadec: DTS Coherent Acoustics support'
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' "ffmpeg=${pkgver}")
+          'libswscale.so' "ffmpeg2.8")
 conflicts=('ffmpeg2.8')
 replaces=('ffmpeg2.8')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
