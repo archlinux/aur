@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mblaze-git
-pkgver=r356.688dd61
+pkgver=r384.e2679e4
 pkgrel=1
 epoch=
 pkgdesc="Unix utilities to deal with Maildir"
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  for i in magrep maddr mcomp mdeliver mdirs mflag mhdr minc mless mlist mmime mpick mscan mseq mshow msort mthread; do
+  for i in maddr magrep mcomp mdeliver mdirs mflag mgenmid mhdr minc mless mlist mmime mpick mscan msed mseq mshow msort mthread; do
     install -Dm755 $i $pkgdir/usr/bin/$i 
     install -Dm755 man/${i}.1 $pkgdir/usr/share/man/man1/${i}.1
   done
