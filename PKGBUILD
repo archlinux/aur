@@ -2,7 +2,8 @@
 _pkgname=dontpanic
 pkgname=${_pkgname}-git
 pkgver=v1.3.r14.gd804cdd
-pkgrel=2
+pkgrel=1
+epoch=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
 arch=(any)
 url=https://git.framasoft.org/Thuban/$_pkgname
@@ -15,12 +16,9 @@ makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::git+https://git.framasoft.org/Thuban/${_pkgname}.git"
-	"${_pkgname}.install")
+source=("${_pkgname}::git+https://git.framasoft.org/Thuban/${_pkgname}.git")
 	
-sha256sums=('SKIP' 'SKIP')
-
-install="${_pkgname}.install"
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"

@@ -1,9 +1,9 @@
 pkgbase = dontpanic-git
 	pkgdesc = Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api.
 	pkgver = v1.3.r14.gd804cdd
-	pkgrel = 2
+	pkgrel = 1
+	epoch = 1
 	url = https://git.framasoft.org/Thuban/dontpanic
-	install = dontpanic.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -16,8 +16,6 @@ pkgbase = dontpanic-git
 	provides = dontpanic
 	conflicts = dontpanic
 	source = dontpanic::git+https://git.framasoft.org/Thuban/dontpanic.git
-	source = dontpanic.install
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dontpanic-git
