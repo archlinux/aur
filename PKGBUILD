@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=chef-dk
-pkgver=0.16.28
+pkgver=0.17.17
 pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
 source=("https://packages.chef.io/stable/ubuntu/12.04/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('89787cb17b7e1e0dd99b6248e63d1e7b93ca5ceaf5bce51a44312d99d6db7c3be96aafdaa29236619c7676493750ee046ad0797ca99ed80e5b357b0e1da398ff')
+sha512sums=('3362344dbea95e29d7db5918cc696996858e9ac8e3fb329388eb52a0b154c106a63ad34162579262156e72467996730e20bf0b0c1336d7590050f7bf5db979f0')
 
 package() {
   cd "$srcdir"
@@ -27,7 +27,7 @@ package() {
   mkdir -p $pkgdir/usr/bin
 
   for binary in $binaries; do
-    ln -sf /opt/chefdk/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
+    ln -s /opt/chefdk/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
   done
   chown -Rh 0:0 $pkgdir
   chmod 755 $pkgdir/opt
