@@ -1,7 +1,7 @@
 pkgbase = pam-ssh-git
 	pkgdesc = A Pluggable Authentication Module (PAM) for use with SSH.
 	pkgver = 2.1.r0.g7546abc
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pam-ssh.sourceforge.net/
 	arch = i686
 	arch = x86_64
