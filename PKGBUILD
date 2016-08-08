@@ -1,6 +1,6 @@
 # Maintainer: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-git
-pkgver=5444ad5
+pkgver=5da6b31
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
