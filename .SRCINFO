@@ -1,0 +1,16 @@
+pkgbase = gog-tis-100
+	pkgdesc = The assembly language programming game you never asked for!
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://www.zachtronics.com/tis-100/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	source = gog://gog_tis_100_2.0.0.3.sh
+	source = gog-tis-100.desktop
+	sha256sums = e89421857a83ba0ac2fba7f813f2f8d85a6555351ba2bf7905e46fe170099a7f
+	sha256sums = d2303362037e5aa3ffeb01d64b00ffb5160034d88c381e755730827566c7c9d6
+
+pkgname = gog-tis-100
+

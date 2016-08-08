@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TIS-100
+Comment=The assembly game you never asked for!
+Exec=gog-tis-100
+Icon=gog-tis-100
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
