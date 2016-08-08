@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lcms2
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (mingw-w64)"
 arch=(any)
 url="http://www.littlecms.com"
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt mingw-w64-libtiff)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz"
 "0002-need-jconfig-before-jmoreconfig.mingw.patch")
-md5sums=('06c1626f625424a811fb4b5eb070839d'
+md5sums=('87a5913f1a52464190bb655ad230539c'
          '4017f8307298d6f65e1cb5bce9684fa5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
