@@ -1,0 +1,13 @@
+pkgbase = system-san-francisco-font-git
+	pkgdesc = System San Francisco Font
+	pkgver = 1.0
+	pkgrel = 1
+	install = system-san-francisco-font-git.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git://github.com/supermarin/YosemiteSanFranciscoFont.git
+	md5sums = SKIP
+
+pkgname = system-san-francisco-font-git
+
