@@ -2,7 +2,7 @@
 
 pkgbase=wireguard
 pkgname=(wireguard-dkms wireguard-tools)
-pkgver=0.0.20160722
+pkgver=0.0.20160808
 pkgrel=1
 pkgdesc='next generation secure network tunnel'
 arch=('x86_64' 'i686')
@@ -11,12 +11,11 @@ license=('GPL')
 makedepends=('git' 'libmnl')
 source=("${pkgbase}-${pkgver}.tar.xz::https://git.zx2c4.com/WireGuard/snapshot/WireGuard-experimental-${pkgver}.tar.xz"
 	'dkms.conf')
-sha256sums=('0dcda97b6bb4e962f731a863df9b4291c1c453b01f4faba78be4aaa13a594242'
+sha256sums=('1cf6eb537432c8282b97da1c53bab015acaea07054c513a79575fe86624f3a7d'
             'f34dced05d2b1d9713da12eeef02e71db213646a4c8f6852227430bd84127433')
 
 prepare() {
 	sed -i '/^include/d' WireGuard-experimental-${pkgver}/src/Makefile
-	sed -i '/^include/s|tests||' WireGuard-experimental-${pkgver}/src/Kbuild
 }
 
 build() {
@@ -31,10 +30,11 @@ package_wireguard-dkms() {
 
 	cd WireGuard-experimental-${pkgver}/src/
 
-	install -d -m0755 "${pkgdir}"/usr/src/wireguard-${pkgver}/crypto/
+	install -d -m0755 "${pkgdir}"/usr/src/wireguard-${pkgver}/{crypto,selftest}/
 	install -D -m0644 "${srcdir}"/dkms.conf "${pkgdir}"/usr/src/wireguard-${pkgver}/dkms.conf
-	install -m0644 Kbuild Kconfig Makefile tests/moduledeps.mk *.c *.h "${pkgdir}"/usr/src/wireguard-${pkgver}/
+	install -m0644 Kbuild Kconfig Makefile *.c *.h "${pkgdir}"/usr/src/wireguard-${pkgver}/
 	install -m0644 crypto/* "${pkgdir}"/usr/src/wireguard-${pkgver}/crypto/
+	install -m0644 selftest/* "${pkgdir}"/usr/src/wireguard-${pkgver}/selftest/
 }
 
 package_wireguard-tools() {
