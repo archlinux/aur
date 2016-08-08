@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-weather-widget-git
 _pkgname=plasma5-applets-weather-widget
 _gitpkgname=plasma-applet-weather-widget
-pkgver=r131.29e86a5
+pkgver=r137.f6c04ba
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows weather information from yr.no server."
 arch=('i686' 'x86_64')
