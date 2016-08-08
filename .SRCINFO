@@ -1,0 +1,18 @@
+pkgbase = ruby-gio2
+	pkgdesc = Ruby/GIO2 is a Ruby binding of gio-2.x.
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	depends = ruby-glib2
+	depends = ruby-gobject-introspection
+	noextract = gio2-3.0.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gio2-3.0.8.gem
+	sha1sums = 0df05d9a6a20110701908276c527e7fa23437140
+
+pkgname = ruby-gio2
+
