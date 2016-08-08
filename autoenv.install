@@ -1,0 +1,11 @@
+post_install() {
+	echo "Before using autoenv, you need to add it to your .bashrc/.zshrc"
+	echo
+	echo "echo 'source /usr/share/autoenv/activate.sh' >> ~/.bashrc"
+	echo "or"
+	echo "echo 'source /usr/share/autoenv/activate.sh' >> ~/.zshrc"
+	echo
+	echo "You need to restart your shell afterwards."
+	echo
+	echo "Note: autoenv auverrides cd. If you already do this, invoke autoenv_init in your custom cd after sourcing activate.sh."
+}
