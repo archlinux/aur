@@ -1,0 +1,16 @@
+pkgbase = drush-scaffolding
+	pkgdesc = A Drush command to fetch assorted site building and development modules to enable and configure.
+	pkgver = 7.x_1.0
+	pkgrel = 1
+	url = https://www.drupal.org/project/scaffolding
+	arch = any
+	license = GPL
+	makedepends = drupal
+	depends = drush
+	provides = scaffolding=7.x_1.0
+	conflicts = scaffolding
+	source = https://ftp.drupal.org/files/projects/scaffolding-7.x-1.0.tar.gz
+	md5sums = f637f7b917888beed096914f98497aef
+
+pkgname = drush-scaffolding
+
