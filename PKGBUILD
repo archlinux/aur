@@ -4,13 +4,13 @@
 
 pkgname=localepurge
 pkgver=0.7.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to remove disk space wasted for unneeded localizations."
 arch=('any')
 url="http://packages.debian.org/source/sid/localepurge"
 license=('GPL')
 backup=('etc/locale.nopurge')
-source=("http://ftp.de.debian.org/debian/pool/main/l/localepurge/${pkgname}_${pkgver}.tar.xz"
+source=("http://httpredir.debian.org/debian/pool/main/l/localepurge/${pkgname}_${pkgver}.tar.xz"
         "${pkgname}.diff"
         "${pkgname}.8.diff"
         "${pkgname}.config.diff"
