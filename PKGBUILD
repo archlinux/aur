@@ -53,14 +53,14 @@ pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.6
 pkgver=4.6.5
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r1
+_bfqver=v8r2
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqver}"
 #_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.6.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
@@ -450,7 +450,7 @@ sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154
             '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
             '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
             '88bd912a41e8a880f693820362fed0e514441f2963a4c78d59c1a9f6c8522caf3d28afb8ed658e7de2d3d3e7d92ae112bda317a3800710005a643127cb5711c5'
-            '4a1fa3299f47d6c03ccb14b52bc7f34d79471c78d487280ecf12b787c5bedccc0027b3f2a80514abda0e34d727785b08c0ff83253a65920c2afc434cca3c49ac'
+            '36fe23932ecb08e6df0b49e6de4744cb922769afda95834ad929fdeeba3973fbc60640d5348427e6739fb11f7e85f5983cd6f7ffb9437348d4e769b4a5888878'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
