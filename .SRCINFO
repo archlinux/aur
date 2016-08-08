@@ -1,0 +1,15 @@
+pkgbase = libinput-gestures
+	pkgdesc = Actions gestures on your touchpad using libinput
+	pkgver = r543.53bd344
+	pkgrel = 1
+	url = https://github.com/bulletmark/libinput-gestures
+	install = libinput-gestures.install
+	arch = any
+	license = GPL3
+	depends = libinput
+	depends = xdotool
+	depends = python
+	source = libinput-gestures-r543.53bd344.tar.gz::https://github.com/bulletmark/libinput-gestures/archive/db6b6882d2d16022eba58a1a68cd701ccdd2047f.tar.gz
+	md5sums = bd02814350a1aae4e65e9168dbcf658b
+
+pkgname = libinput-gestures
