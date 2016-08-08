@@ -4,7 +4,7 @@
 pkgname=gogs
 _pkgname=${pkgname}
 pkgver=0.9.60
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -32,7 +32,7 @@ source=('gogs.service.patch'
 
 sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
             77589148ac4afe09bb1b3f70491fa3b1838299f02216b2a24598f0f468356b2cfbaae397cc693e93f406e1c537d5ae24bc51530d9826879d201b72b19bee376c
-            615e35b68b29d306a11874beae11e93973522970131516f67aabc90834db4297b4c2d386f1546a6d9c0e874cc77a5b3341732d701843456a47960c1e05a53ec7)
+            687824fb79a7a02b9fde047c7749af0b2d91925ca5ac0d828143ef7358e029bf0c775280e162a143ed9946eebf30624b7dddcbc3462fc08c252e280ec944dafc)
 
 _goroot="/usr/lib/go"
 
