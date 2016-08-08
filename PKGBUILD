@@ -1,20 +1,20 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Peter Mattern <pmattern@arcor.de>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=lxqt-openssh-askpass
 pkgname=$_pkgname-git
-pkgver=0.9.0
+pkgver=0.10.0.8.ga3b393f
 pkgrel=1
-pkgdesc="LXQt openssh password prompt"
-arch=("i686" "x86_64")
-url="http://lxqt.org"
-license=("GPL2")
-depends=("liblxqt-git")
-makedepends=("git" "cmake")
+pkgdesc='LXQt openssh password prompt'
+arch=('i686' 'x86_64')
+url='https://github.com/lxde/lxqt-openssh-askpass'
+license=('LGPL')
+depends=('liblxqt-git')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
 sha256sums=("SKIP")
-
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
