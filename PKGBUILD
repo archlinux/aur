@@ -4,13 +4,13 @@
 
 pkgname=funny-manpages
 pkgver=1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A set of miscellaneous humorous manpages (don't take them too seriously!)."
 arch=('any')
 url="http://debian.org/"
 license=('custom')
-source=(http://ftp.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver.orig.tar.gz
-        http://ftp.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver-5.diff.gz)
+source=(http://httpredir.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver.orig.tar.gz
+        http://httpredir.debian.org/debian/pool/main/f/$pkgname/${pkgname}_$pkgver-5.diff.gz)
 sha256sums=('5dcfcbb30a26585b53f27dc591b7e9cd485f738e603fa3fc9f074c55eabb6f91'
             'aea8369726213a8294f70c0d0b1637b2cf961d6208ad52fa97daf105e9452a53')
 
