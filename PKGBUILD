@@ -29,7 +29,7 @@ prepare() {
 	# Create build directory
 	mkdir -p "${srcdir}"/build
 	cd "${srcdir}"/build
-	cp -r ../PythonQt${pkgver}/* ./
+	cp -R ../PythonQt${pkgver}/* ./
 
 	# Fix PythonQt.pro line endings, patch complains about it
 	dos2unix PythonQt.pro
