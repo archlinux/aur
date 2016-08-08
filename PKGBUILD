@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura
-pkgver=2.1.0
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('qt5-svg' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine')
@@ -11,7 +11,7 @@ url="https://ultimaker.com/en/products/cura-software"
 license=('AGPLv3')
 arch=('i686' 'x86_64')
 source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz fix-python-dir.patch)
-sha1sums=('ac5893d13630bc85176c50c49244b6461ccb54f4'
+sha1sums=('6318bea1603bbf3e43202f0894780de433c97410'
           '439a5efb8371bbfd1266a6b6434c0584f00baaa9')
 
 install=cura.install
@@ -20,7 +20,7 @@ prepare(){
   cd Cura-${pkgver}
   patch -Np1 -i ../fix-python-dir.patch
 
-  cat > ${pkgname}.desktop <<END
+  cat > "${srcdir}/${pkgname}.desktop" <<END
 [Desktop Entry]
 Type=Application
 Name=${pkgname^}
@@ -33,12 +33,18 @@ END
 
 build(){
   cd Cura-${pkgver}
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DURANIUM_SCRIPTS_DIR=/usr/share/uranium/scripts
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DURANIUM_SCRIPTS_DIR=/usr/share/uranium/scripts
+
   make
 }
 
 package(){
-  cd Cura-${pkgver}
+  cd Cura-${pkgver}/build
   make DESTDIR="${pkgdir}" install
   
   # make sure cura can find uranium plugins:
@@ -48,10 +54,8 @@ package(){
   rm -rf "${pkgdir}/usr/lib/cura/plugins/SliceInfoPlugin"
 
   # install .desktop file
-  install -D -t ${pkgdir}/usr/share/applications ${pkgname}.desktop
+  install -D -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
 
-  # rename executable
-  #mv ${pkgdir}/usr/bin/cura_app.py ${pkgdir}/usr/bin/cura
 }
 
 
