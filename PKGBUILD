@@ -14,7 +14,7 @@ optdepends=('python2-netcdf4: NetCDF4 support'
             'python2-scipy: OPeNDAP support' 
             'python2-matplotlib: Plotting support')
             # 'python2-dask: Enable out-of-core parallel computation') # (doesn't exist in AUR)
-checkdepends=('python2-nose')
+checkdepends=('python2-pytest')
 replaces=('python2-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$srcdir/xarray-$pkgver"
-  nosetests2
+  py.test2 xarray
 }
  
 package() {
