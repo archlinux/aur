@@ -2,8 +2,8 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.12
-pkgrel=4
+pkgver=2.6.13
+pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
@@ -19,7 +19,7 @@ conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
 		"xbt.patch")
-sha1sums=('c4e38f8ffb2d82a2dfc8ebc6884e53eeaef72d9f'
+sha1sums=('6ae9476141d98d9c986018d5ee593bbb80c0942d'
 		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
 
 prepare() {
@@ -49,7 +49,4 @@ package() {
   # to the location that it was built at.
   rm -f "${pkgdir}"/usr/bin/gnucash-valgrind
 
-  # fix FS#45453
-  sed -i  's/exec gnucash-env [^[:space:]]*/exec gnucash-env guile/g' "${pkgdir}/usr/lib/gnucash/overrides/gnucash-make-guids"
-  rm "${pkgdir}/usr/lib/gnucash/overrides/guile"
 }
