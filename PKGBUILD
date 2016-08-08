@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.12.160730.680adad
+pkgver=2.6.12.160808.493c064
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -42,13 +42,11 @@ source=('avidemux::git+https://github.com/mean00/avidemux2.git'
         'fix_verbose.patch'
         'fix_nvenc_check.patch'
         'add_settings_pluginui_message_error.patch'
-        'fix_vf_hflip_plugin_name.patch'
         )
 sha1sums=('SKIP'
           '4b61f11627278578a180d4bdc3b6100544107f32'
           '19bcbe1c3aa6df8fdee2d10ecb9626b46de00175'
           '4162d53297ec9d77633723ae911c605d8fdca3f1'
-          '54ffd680b4a18a945f8a03c650abbccb48952d70'
           )
 
 pkgver() {
@@ -63,8 +61,6 @@ prepare() {
   mkdir -p build_cli{,_plugins}
 
   cd avidemux
-  # http://avidemux.org/smuf/index.php/topic,16302.msg71463.html#msg71463
-  patch -p1 -i "${srcdir}/fix_vf_hflip_plugin_name.patch"
 
   # http://avidemux.org/smif/index.php/topic,16301.0.html
   patch -p1 -i "${srcdir}/fix_verbose.patch"
@@ -105,8 +101,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -127,8 +122,7 @@ build() {
   cmake ../avidemux/avidemux/cli \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -178,7 +172,8 @@ package_avidemux-core-git() {
   optdepends=('avidemux-qt-git: a Qt GUI for Avidemux'
               'avidemux-cli-git: a CLI frontend for Avidemux'
               'wine: AVSload (Load Avisynth scripts on Avidemux)'
-              'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux')
+              'vapoursynth: vsProxy (Load Vapoursynth scripts on Avidemux'
+              )
   provides=("avidemux-core-git=${pkgver}" 'avidemux-core')
   conflicts=('avidemux-core')
 
@@ -199,7 +194,10 @@ package_avidemux-qt-git() {
            'desktop-file-utils'
            )
   provides=('avidemux-qt')
-  conflicts=('avidemux-qt4' 'avidemux-qt5' 'avidemux-qt')
+  conflicts=('avidemux-qt4'
+             'avidemux-qt5'
+             'avidemux-qt'
+             )
 
   make -C build_qt DESTDIR="${pkgdir}" install
   make -C build_qt_plugins DESTDIR="${pkgdir}" install
