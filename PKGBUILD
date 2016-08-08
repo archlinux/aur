@@ -1,7 +1,8 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-libpng
-pkgver=1.6.21
+pkgver=1.6.24
+_apngver=1.6.23
 pkgrel=1
 arch=('any')
 pkgdesc="A collection of routines used to create PNG format graphics (mingw-w64)"
@@ -11,9 +12,9 @@ license=('custom')
 url="http://www.libpng.org/pub/png/libpng.html"
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-$pkgver.tar.xz"
-        "http://downloads.sourceforge.net/project/libpng-apng/libpng16/$pkgver/libpng-$pkgver-apng.patch.gz")
-md5sums=('3bacb4728f6694a64ad9052769d6a4ce'
-         '360346394543ec0a880f61830541608f')
+        "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-$_apngver-apng.patch.gz")
+md5sums=('ffcdbd549814787fa8010c372e35ff25'
+         'bf44929a1c272f585a11baeca05af500')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -22,7 +23,7 @@ prepare() {
 
   # Add animated PNG (apng) support
   # see http://sourceforge.net/projects/libpng-apng/
-  patch -p1 -i "${srcdir}/libpng-$pkgver-apng.patch"
+  patch -p1 -i "${srcdir}/libpng-$_apngver-apng.patch"
 }
 
 build() {
