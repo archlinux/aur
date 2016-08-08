@@ -3,8 +3,8 @@
 
 pkgname=parsoid-git
 _pkgname=parsoid
-pkgver=v0.3.0.r554.g2fcc841
-pkgrel=1
+pkgver=v0.3.0.r801.g647e9a5
+pkgrel=2
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Parsoid"
@@ -36,7 +36,7 @@ build() {
 }
 package() {
     cd $srcdir/parsoid
-    cp localsettings.js.example localsettings.js    
+    cp localsettings.example.js localsettings.js    
     mkdir -p "${pkgdir}/usr/share/webapps/${_pkgname}"
     cp -R . "${pkgdir}/usr/share/webapps/${_pkgname}/"
     install -Dm644 "${srcdir}/parsoid.service" "${pkgdir}/usr/lib/systemd/system/parsoid.service"
