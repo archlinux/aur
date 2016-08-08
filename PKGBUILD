@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.17.0-rc1
+_pkgver=0.17.0
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -21,19 +21,16 @@ makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'sysusers-synapse.conf'
-        'deps-relax-pynacl-check.patch'
-        'deps-relax-pysaml2-check.patch')
+	'deps-relax-checks.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'cd0dfc4733756743f4c3b9b2cd2abdee'
-         'fe48abc55d72e4db7d2ed1b449036bab')
+         '6a088fd21cdaa4b93b1eee67a5cc0090')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
 prepare() {
 	cd "synapse"
-	git apply -3 "$srcdir/deps-relax-pynacl-check.patch"
-	git apply -3 "$srcdir/deps-relax-pysaml2-check.patch"
+	git apply -3 "$srcdir/deps-relax-checks.patch"
 }
 
 build() {

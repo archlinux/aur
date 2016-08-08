@@ -1,14 +1,18 @@
-From adbc4a9b8f09fbac4dffb810de87b54774f6fb5e Mon Sep 17 00:00:00 2001
+From 728c3a13ef41e002995033f3e82938d4c72bd297 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Thu, 11 Feb 2016 22:55:01 +0300
-Subject: [PATCH 1/2] python_dependencies.py: relax versioned dep on pynacl.
+Subject: [PATCH] python_dependencies.py: relax versioned deps on pynacl and
+ pysaml2.
 
+Revert "Pin pysaml2 version to 3.x"
+
+This reverts commit 07cf96ebf7c806ba570d167e200e54e07034f5ce.
 ---
- synapse/python_dependencies.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ synapse/python_dependencies.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 799d35d..a2d87ef 100644
+index 86e3d89..9eca07d 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -22,7 +22,7 @@ REQUIREMENTS = {
@@ -20,6 +24,15 @@ index 799d35d..a2d87ef 100644
      "service_identity>=1.0.0": ["service_identity>=1.0.0"],
      "Twisted>=15.1.0": ["twisted>=15.1.0"],
      "pyopenssl>=0.14": ["OpenSSL>=0.14"],
+@@ -34,7 +34,7 @@ REQUIREMENTS = {
+     "pydenticon": ["pydenticon"],
+     "ujson": ["ujson"],
+     "blist": ["blist"],
+-    "pysaml2>=3.0.0,<4.0.0": ["saml2>=3.0.0,<4.0.0"],
++    "pysaml2": ["saml2"],
+     "pymacaroons-pynacl": ["pymacaroons"],
+ }
+ CONDITIONAL_REQUIREMENTS = {
 -- 
 2.9.2
 
