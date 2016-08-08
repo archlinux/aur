@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname="$_pkgname"
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
 arch=('any')
