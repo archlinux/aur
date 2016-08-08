@@ -1,14 +1,12 @@
-# $Id: PKGBUILD 178059 2016-06-06 21:17:57Z arojas $
+# $Id: PKGBUILD 185286 2016-08-05 12:21:10Z andyrtr $
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
-#delete obsolete .patch file from svn
-
 pkgname=gdal-hdf4
 _pkgname=gdal
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -19,12 +17,12 @@ makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
+provides=('gdal')
+conflicts=('gdal')
 options=('!emptydirs')
 changelog=$_pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('568b43441955b306364fcf97fb47d4c1512ac6f2f5f76b2ec39a890d2418ee03')
-provides=('gdal')
-conflicts=('gdal')
+sha256sums=('87ce516ce757ad1edf1e21f007fbe232ed2e932af422e9893f40199711c41f92')
 
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
