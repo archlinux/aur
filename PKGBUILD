@@ -2,7 +2,7 @@
 # Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=gnome-mpv-git
-pkgver=0.9.r2.g0b76944
+pkgver=0.10.r3.g64144a8
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
