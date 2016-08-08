@@ -1,0 +1,17 @@
+pkgbase = ruby-cairo-gobject
+	pkgdesc = Ruby/CairoGObject is a Ruby binding of cairo-gobject.
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = ruby-cairo
+	depends = ruby-glib2
+	noextract = cairo-gobject-3.0.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cairo-gobject-3.0.8.gem
+	sha1sums = 2b5c0a4ea499f08042cac1ab62272eae9e32d33e
+
+pkgname = ruby-cairo-gobject
+
