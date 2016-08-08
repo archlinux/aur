@@ -3,15 +3,22 @@
 
 pkgname=odb
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Object-Relational Mapping compiler"
 arch=('i686' 'x86_64')
 depends=('libcutl')
 url="http://www.codesynthesis.com/products/odb/"
 options=('!libtool')
 license=('GPL')
-source=("http://www.codesynthesis.com/download/odb/2.4/odb-${pkgver}.tar.bz2")
-md5sums=('0146d0223f874a9434673682a5669638')
+source=("http://www.codesynthesis.com/download/odb/2.4/odb-${pkgver}.tar.bz2"
+	"odb_gcc6.patch")
+md5sums=('0146d0223f874a9434673682a5669638'
+         'cfa9c22d0cb8132675d9358dbb63658f')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < ../odb_gcc6.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
