@@ -2,38 +2,38 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=3.5.8
-_umsver=16.04.4
+pkgver=16.10.4
+_umsver=16.10.7
 pkgrel=1
-pkgdesc="Tweak tool for MATE, a fork of mintDesktop"
+pkgdesc="Tweak tool for MATE, a fork of MintDesktop"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-gobject' 'python-psutil')
+depends=('gtk3' 'libnotify' 'mate-applets-gtk3' 'python-configobj' 'python-gobject' 'python-psutil' 'python-setproctitle')
 makedepends=('python-distutils-extra' 'python-setuptools')
-optdepends=('gnome-main-menu: for openSUSE panel layout'
-            'mate-applet-dock: for Mutiny panel layout'
+optdepends=('mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
-            'mate-netbook: for Netbook panel layout'
+            'mate-netbook-gtk3: for Netbook panel layout'
             'plank: for Cupertino panel layout'
             'synapse: to enable launcher'
+            'tilda: to enable pull-down terminal'
             'topmenu-gtk: for Mutiny panel layout')
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz"
         "fix-mutiny-fresh.patch")
-sha256sums=('3d3f73704439378702801fc0b7f2c68fc29131e822209c20d81aa934037e38dc'
-            '7d45f72f3bd0adc1200a3feccdc7593890eb4439fc4df43fc3577cb79ce42cb9'
+sha256sums=('474a4ee963554650f963223430a7e5d7e4d08e8ef00f4a7c76dc4515a2f181fe'
+            'bf0046befe9b8704e5b9972fc86da3847b0b458b72a186f8ebf5d7b30ee591ac'
             'ac2ade84a532486c50245a176d370f0815330f13df07fd62e133afe0383db5fc')
 
 prepare() {
   cd ubuntu-mate-$pkgname-*
   sed -i 's|/usr/lib/mate-applets/topmenu-mate-panel-applet|/usr/lib/topmenu-gtk/topmenu-mate-panel-applet|' mate-tweak
-  cd ../ubuntu-mate-settings-*
+  cd ../ubuntu-mate-settings
   patch -Np1 -i ../fix-mutiny-fresh.patch
 }
 
 package() {
   cd ubuntu-mate-$pkgname-*
   python3 setup.py install --root="$pkgdir" --optimize=1
-  cp -r "$srcdir"/ubuntu-mate-settings-*/usr/share/mate-panel "$pkgdir/usr/share"
+  cp -r "$srcdir"/ubuntu-mate-settings/usr/share/mate-panel "$pkgdir/usr/share"
 }
