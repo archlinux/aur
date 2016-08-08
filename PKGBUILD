@@ -2,7 +2,7 @@
 
 pkgname=check_ipmi_sensor
 pkgver=3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='IPMI Sensor Monitoring Plugin'
 arch=('any')
 url='https://github.com/thomas-krenn/check_ipmi_sensor_v3'
@@ -12,7 +12,7 @@ optdepends=('sudo: check localhost without authentication')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thomas-krenn/check_ipmi_sensor_v3/archive/v${pkgver}.tar.gz"
 	'sudo')
 sha256sums=('d6c5fa726052262f019f5c88af217b7b069fe23d8f03a1e39a915831b345bd0d'
-            '41208e539ede1180c638be8381712fe2b7149fdc92c90fe80e335f4f7c560a9e')
+            'b23987df57d9d2d21437fda95c9714108caf7e75da43f9106cc82e4d3dde3fbc')
 
 package() {
 	cd "${srcdir}/${pkgname}_v3-${pkgver}"
