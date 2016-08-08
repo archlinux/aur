@@ -3,15 +3,19 @@
 pkgname=usbguard-git
 _pkgname=usbguard
 pkgver=0.5.10.66.gbf28a52
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libqb-git" "libsodium")
 depends=()
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
-source=("${_pkgname}::git+https://github.com/dkopecek/usbguard.git")
-sha256sums=('SKIP')
+source=(
+	"${_pkgname}::git+https://github.com/dkopecek/usbguard.git"
+	"disable_json_regression_test.patch")
+sha256sums=(
+	'SKIP'
+	'644ae1819eaf405091878bdcf78a5f71d7b344346c4e67a24525e4fb442eed4d')
 provides=("usbguard")
 
 pkgver() {
@@ -21,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	git apply ../../disable_json_regression_test.patch
+	patch -p1 <../disable_json_regression_test.patch
   ./autogen.sh
   ./configure --prefix=/usr --sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
