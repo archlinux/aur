@@ -2,7 +2,7 @@
 
 pkgname=lazyusf2-git
 pkgver=r69.ab6a646
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decoding Nintendo 64 Sound Format files using Mupen64plus"
 arch=(i686 x86_64)
 url='https://bitbucket.org/kode54/lazyusf2'
@@ -11,9 +11,11 @@ depends=(glibc zlib)
 makedepends=(git grep)
 source=(${pkgname}::git+https://bitbucket.org/kode54/lazyusf2.git
         makefile.patch
+        makefile-i686.patch
         LICENSE.CC0)
 sha256sums=('SKIP'
             '7a48693ef6e9d41d7f0fa93094603b5decad888454a1fc9bbf6de8fdf88e3995'
+            'cc7592e8f50a89725949b6e69079104ded03cdbb7173cf2da82c2f3c4cae2e4d'
             'a90051e82202a5dc51162127c6834f8434fb2ece57795317951420fe6a8f4562')
 
 pkgver() {
@@ -27,6 +29,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch Makefile "$srcdir"/makefile.patch
+  if [[ $CARCH = i686 ]]; then
+    patch Makefile "$srcdir"/makefile-i686.patch
+  fi
 }
 
 build() {
