@@ -23,7 +23,7 @@ build() {
   cmake .. \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_EXAMPLES=OFF \
+  -DBUILD_EXAMPLES=OFF 
 
   make
 }
