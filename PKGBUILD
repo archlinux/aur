@@ -4,7 +4,7 @@
 
 _pkgbasename=tcl
 pkgname=lib32-${_pkgbasename}
-pkgver=8.6.5
+pkgver=8.6.6
 pkgrel=1
 pkgdesc="The Tcl scripting language (32-bit runtime)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="http://tcl.sourceforge.net/"
 license=('custom')
 depends=('tcl' 'lib32-zlib')
 source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
-md5sums=('0e6426a4ca9401825fbc6ecf3d89a326')
+md5sums=('5193aea8107839a79df8ac709552ecb7')
 
 prepare() {
   cd tcl${pkgver}
@@ -50,5 +50,5 @@ package() {
   ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # remove buildroot traces
-  sed -i "s#${srcdir}#/usr/src#" "${pkgdir}"/usr/lib32/{tcl,tdbc1.0.4/tdbc,itcl4.0.4/itcl}Config.sh
+  sed -i "s#${srcdir}#/usr/src#" "${pkgdir}"/usr/lib32/{tcl,tdbc1.0.4/tdbc,itcl4.0.5/itcl}Config.sh
 }
