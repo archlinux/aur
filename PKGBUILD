@@ -11,7 +11,7 @@ license=('custom:MIT' 'LGPL')
 arch=('i686' 'x86_64')
 url="http://download.ag-projects.com/SipClient"
 depends=('alsa-lib' 'util-linux' 'python2-dateutil' 'cython2' 'python2-cjson'
-         'python2-dnspython' 'python2-eventlib' 'python2-msrplib' 'python2-xcaplib' 'python2-otr-git')
+         'python2-dnspython' 'python2-eventlib' 'python2-msrplib' 'python2-xcaplib' 'python2-otr-git' 'ffmpeg')
 makedepends=('subversion' 'ffmpeg2.8')
 options=('!makeflags')
 source=("http://download.ag-projects.com/SipClient/python-sipsimple-$pkgver.tar.gz")
