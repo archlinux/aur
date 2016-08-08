@@ -15,6 +15,10 @@ depends=('')
 # For some reason, stripping the massive copay binary breaks the app
 options=('!strip')
 
+source=('copay.desktop')
+
+md5sums=('e05610d1b08a2c688efccf9d687b8b92')
+
 source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip"
                "https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip.sig"
               )
@@ -46,4 +50,8 @@ package() {
     # Symlink in to the default PATH
     mkdir -p ${pkgdir}/usr/bin
     ln -s /opt/copay/Copay ${pkgdir}/usr/bin/copay
+
+    # Create desktop icon
+    install -Dm644 "$srcdir"/copay.desktop "$pkgdir/usr/share/applications/copay.desktop"
+    install -Dm644 "$srcdir"/copay-linux/icon-256.png "$pkgdir/usr/share/pixmaps/copay.png"
 }
