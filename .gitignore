@@ -1,4 +1,5 @@
-pkg/
-src/
-*.gz
-*.xz
+/pkg/
+/src/
+/*\.gz
+/*\.xz
+/renderdoc*\.log

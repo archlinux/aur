@@ -1,0 +1,67 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a53b6bb..08b285e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fstrict-aliasing")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden -fvisibility-inlines-hidden")
+ 
+     set(warning_flags
+@@ -28,8 +28,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+         -Wextra
+         -Werror
+         -Wno-unused-variable
+-        -Wno-type-limits
+         -Wno-unused-parameter
++        -Wno-unused-result
++        -Wno-type-limits
+         -Wno-missing-field-initializers
+         -Wno-unknown-pragmas
+         -Wno-reorder)
+diff --git a/renderdoc/driver/vulkan/CMakeLists.txt b/renderdoc/driver/vulkan/CMakeLists.txt
+index 8a3d7bc..56473ce 100644
+--- a/renderdoc/driver/vulkan/CMakeLists.txt
++++ b/renderdoc/driver/vulkan/CMakeLists.txt
+@@ -58,6 +58,12 @@ elseif(UNIX)
+     add_custom_target(generate-json ALL DEPENDS ${json_out})
+ endif()
+ 
++# GCC 6.1 may or may not complain about enum reference casts
++if(CMAKE_COMPILER_IS_GNUCXX)
++    set_source_files_properties(vk_common.cpp
++        PROPERTIES COMPILE_FLAGS "-Wno-strict-aliasing")
++endif()
++
+ add_library(rdoc_vulkan OBJECT ${sources})
+ target_compile_definitions(rdoc_vulkan ${definitions})
+ target_include_directories(rdoc_vulkan ${RDOC_INCLUDES})
+diff --git a/renderdoc/driver/vulkan/vk_common.cpp b/renderdoc/driver/vulkan/vk_common.cpp
+index eaf2683..9f576de 100644
+--- a/renderdoc/driver/vulkan/vk_common.cpp
++++ b/renderdoc/driver/vulkan/vk_common.cpp
+@@ -2809,7 +2809,7 @@ void Serialiser::Serialise(const char *name, VkDeviceQueueCreateInfo &el)
+   Serialise("queueCount", el.queueCount);
+   if(m_Mode == READING)
+     el.pQueuePriorities = NULL;
+-  SerialisePODArray("pQueuePriorities", (uint32_t *&)el.pQueuePriorities, el.queueCount);
++  SerialisePODArray("pQueuePriorities", (float *&)el.pQueuePriorities, el.queueCount);
+ }
+ 
+ // technically this doesn't need a serialise function as it's POD,
+diff --git a/renderdoc/driver/vulkan/vk_debug.cpp b/renderdoc/driver/vulkan/vk_debug.cpp
+index 1b39857..38c71f5 100644
+--- a/renderdoc/driver/vulkan/vk_debug.cpp
++++ b/renderdoc/driver/vulkan/vk_debug.cpp
+@@ -4391,7 +4391,7 @@ ResourceId VulkanDebugManager::RenderOverlay(ResourceId texid, TextureDisplayOve
+       ubo->Inner_Color = Vec4f(0.2f, 0.2f, 0.9f, 0.7f);
+       ubo->Border_Color = Vec4f(0.1f, 0.1f, 0.1f, 1.0f);
+       ubo->Scissor = 0;
+-      ubo->ViewRect = (Vec4f &)viewport;
++      ubo->ViewRect = Vec4f(viewport.x, viewport.y, viewport.width, viewport.height);
+ 
+       m_OutlineUBO.Unmap();
+ 
