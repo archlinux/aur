@@ -1,14 +1,14 @@
 pkgname=openvpn-update-systemd-resolved
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="OpenVPN systemd-resolved Updater"
 arch=("any")
 url="https://github.com/jonathanio/update-systemd-resolved"
 license=("GPL")
 depends=("openvpn" "bash" "iproute2" "systemd>229")
 source=("https://github.com/jonathanio/update-systemd-resolved/archive/v${pkgver}.tar.gz")
-sha256sums=("ba3471acade86b257032b7ce4190af36016355a9fffd507b65e886e3aec3d115")
-sha512sums=("b8d44792c1d1aa061ea574dd379088e75fb29d8b26897042c79ca6ac6d56c2324cc7467a12df0f52bfcd0599b3cb61beecb3d5fd88fb2b1d8d3384498a74ce1e")
+sha256sums=("c10e345108af772282292c764f163e6c954a2fec3e403f3933f0cb1f987c7317")
+sha512sums=("18d910efc568b85f78ad3cbdd8c241fc42ff7dd8bb71d39e6b66025c274260780f8d14ef20111a31f4df80365d7b12ecb063866f6f9af7695c78dbf8f2292f8d")
 
 package() {
   cd $srcdir/update-systemd-resolved-${pkgver}
