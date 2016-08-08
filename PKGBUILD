@@ -3,8 +3,8 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.9.48
-pkgrel=2
+pkgver=0.9.60
+pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
