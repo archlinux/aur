@@ -1,15 +1,15 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.2.8
-pkgrel=1
+pkgver=1.3.1
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
 url="http://rspamd.com"
 license=('BSD')
-depends=('libevent' 'glib2' 'gmime' 'lua' 'sqlite')
-makedepends=('cmake' 'pkgconfig')
+depends=('libevent' 'glib2' 'gmime' 'lua' 'sqlite' 'lua-lpeg')
+makedepends=('cmake' 'pkgconfig' 'ragel')
 
 backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/common.conf'
@@ -53,7 +53,7 @@ install=rspamd.install
 
 source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('485438d8c38ada1a6e95c9ea1298d2c899d4ec618f1dd5f539663522c506eb2b')
+sha256sums=('005bb9c8985d99ad86883769a3979e98fa387a4a00d57c3187d78c4df4fd5afe')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -69,7 +69,7 @@ build() {
 		-DWANT_SYSTEMD_UNITS=ON \
 		.
 
-	make -j$(nproc)
+	make -j1
 }
 
 package() {
