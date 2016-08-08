@@ -13,7 +13,7 @@ optdepends=('python-netcdf4: NetCDF4 support'
             'python-scipy: OPeNDAP support' 
             'python-matplotlib: Plotting support'
             'python-dask: Enable out-of-core parallel computation')
-checkdepends=('python-nose')
+checkdepends=('python-pytest')
 replaces=('python-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$srcdir/xarray-$pkgver"
-  nosetests
+  py.test xarray
 }
  
 package() {
