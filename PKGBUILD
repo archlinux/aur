@@ -2,7 +2,7 @@
 
 pkgname=liquidsoap
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
@@ -25,7 +25,6 @@ sha256sums=('f44bd012ac80e1fc13d58fde832e4e782b82b6d43d2ba7d80a3560e9992c226b'
 prepare() {
   cd $srcdir/$pkgname-$pkgver-full
   cp $srcdir/PACKAGES PACKAGES
-patch -Np1 -i "${srcdir}/ffmpeg_fixes.patch"
 }
 
 build() {
