@@ -2,17 +2,17 @@
 
 pkgname=gajim-plugin-omemo
 _pkgname=gajim-omemo
-pkgver=0.7.5
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://github.com/omemo/${_pkgname}"
 license=('GPL')
-depends=("gajim" "python2-axolotl-git")
+depends=("gajim" "python2-cryptography" "python2-axolotl-git")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://github.com/omemo/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('5a74b836c5197894ae1a26fab93f3edaa354aeb5ab068f3b82e5609678705728709a76b9fc2e3249931f37940da7e6d3b339ddba424254095fde269fb56f001d')
+sha512sums=('e9280033fbe111f5010f2e9e8fa32c5b8c0abe308000f9a043a1c5e8215c96f8be434876b1d72cc8d68aed4ddaebe9655c70f9648a2db718cba71d90434fee2e')
 
 package() {
   cd $srcdir/gajim-omemo-${pkgver}
