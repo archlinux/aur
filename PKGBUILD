@@ -1,7 +1,7 @@
 # Maintainer: Chris Zimmermann <monochromec@gmail.com>
 #
-pkgname=go-mode.el
-pkgver=1.3.1
+pkgname=emacs-go-mode.el
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Go mode for emacs"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL')
 source=(https://github.com/dominikh/go-mode.el/archive/v$pkgver.tar.gz)
 url='https://github.com/dominikh/go-mode.el'
 #
-md5sums=('211b496be7d8235b264ca17d8c9033c6')
+sha256sums=('31365aa8b220ca67e6fb24fa197e99121a6db815690df731df2f56915805935d')
 
 package() {
   cd ${startdir}/src/$pkgname-$pkgver
