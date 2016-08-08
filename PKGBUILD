@@ -2,15 +2,17 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=0.9.0.308.g3b2861c
+pkgver=0.10.0.129.g1c48664
 pkgrel=1
 pkgdesc="The LXQt desktop panel"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
+# Since https://github.com/lxde/lxqt-panel/pull/281, liblxqt-git is necessary
 depends=(
+	"liblxqt-git"
 	"kwindowsystem" "kguiaddons" "solid" "lxqt-globalkeys"
-	"menu-cache" "libxcomposite" "lxmenu-data"
+	"menu-cache" "libxcomposite" "lxmenu-data" "libdbusmenu-qt5"
 )
 optdepends=(
 	"alsa-lib: Recompile for Alsa support in volume control plugin"
@@ -22,7 +24,7 @@ makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 
 pkgver() {
