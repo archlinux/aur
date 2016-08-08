@@ -27,8 +27,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'e7f3214d3718a6f92de61e3849d358e17f526ae4c827c203a80f661d9a5a4788'
-            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
-            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
+            '50a4b78c85d932ca7ec8a0b19501320c70662ea5b2fe15c36a6f1912fd480a3c'
+            '4f0b87d58ab87edf1ebc582ed00b44902c5c3074e2811a4f6b31f81b30180b5b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
