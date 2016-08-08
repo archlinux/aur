@@ -15,7 +15,7 @@ source=("https://github.com/coreos/${_pkgname}/releases/download/v${pkgver}/${_p
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/contrib/systemd/${_pkgname}.service"
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/${_pkgname}.conf.yml.sample")
 sha256sums=('788f9f74e605cf33be21f2f3a7c96e6691efd5e09a081d18dc222a78d080b917'
-            '4975fce5c726f886b71d11edf3ad719c8522e31ac6f735d0d9cfcd4dd713a343'
+            '3add3f90586de94d658dd4fdb30b2cee7e742f1d703d8183bb790f151a827ad4'
             '177f2b9c4cf1570719557f9278183cfa40fbe6d6d9879c5cea0c4b73268b3e3b')
 
 package() {
