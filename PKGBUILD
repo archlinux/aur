@@ -9,7 +9,7 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.9.6
-pkgver=1.9.6.aa1.6.2.db0.8.9.fu0.11.1.la0.8.8.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.6.t2.3.1
+pkgver=1.9.6.aa1.6.2.db0.8.9.fu0.11.1.la0.8.9.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.6.t2.3.1.tb0.6.0
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -33,11 +33,13 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "language-unix-shell::git+${_fusurl}/language-shellscript"
 "git+${_fusurl}/mydict"
 "git+${_fusurl}/terminal-fusion"
+"git+${_fusurl}/toolbar-fusion"
 "atom"
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
 md5sums=('30930e33afdf1828bf481ff7b769d93e'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -55,43 +57,50 @@ md5sums=('30930e33afdf1828bf481ff7b769d93e'
          'ae16bb627ec10bde20c7093d4be18131')
 
 pkgver() {
-  _about_arch_ver="$(sed -n "s/\"version\": //p" $srcdir/about-arch/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _dark_bint_syntax_ver="$(sed -n "s/\"version\": //p" $srcdir/dark-bint-syntax/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _fusion_ui_ver="$(sed -n "s/\"version\": //p" $srcdir/fusion-ui/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_gfm2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-gfm2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_ini_desktop_ver="$(sed -n "s/\"version\": //p" $srcdir/language-ini-desktop/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_liquid_ver="$(sed -n "s/\"version\": //p" $srcdir/language-liquid/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_patch2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-patch2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_unix_shell_ver="$(sed -n "s/\"version\": //p" $srcdir/language-unix-shell/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _terminal_fusion_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  printf "${_atomver}.aa${_about_arch_ver}.db${_dark_bint_syntax_ver}.fu${_fusion_ui_ver}.la${_language_archlinux_ver}.lg${_language_gfm2_ver}.li${_language_ini_desktop_ver}.ll${_language_liquid_ver}.lp${_language_patch2_ver}.lu${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
+  function describe {
+    printf "$(git -C "$srcdir/$1" describe --tags `git -C "$srcdir/$1" rev-list --tags --max-count=1` | sed 's/v//g')"
+  }
+  _about_arch_ver="$(describe about-arch)"
+  _dark_bint_syntax_ver="$(describe dark-bint-syntax)"
+  _fusion_ui_ver="$(describe fusion-ui)"
+  _language_archlinux_ver="$(describe language-archlinux)"
+  _language_gfm2_ver="$(describe language-gfm2)"
+  _language_ini_desktop_ver="$(describe language-ini-desktop)"
+  _language_liquid_ver="$(describe language-liquid)"
+  _language_patch2_ver="$(describe language-patch2)"
+  _language_unix_shell_ver="$(describe language-unix-shell)"
+  _terminal_fusion_ver="$(describe terminal-fusion)"
+  _toolbar_fusion_ver="$(describe toolbar-fusion)"
+  printf "${_atomver}.aa${_about_arch_ver}.db${_dark_bint_syntax_ver}.fu${_fusion_ui_ver}.la${_language_archlinux_ver}.lg${_language_gfm2_ver}.li${_language_ini_desktop_ver}.ll${_language_liquid_ver}.lp${_language_patch2_ver}.lu${_language_unix_shell_ver}.t${_terminal_fusion_ver}.tb${_toolbar_fusion_ver}"
 }
 
 prepare() {
   cd "$srcdir/${_pkgname}-${_atomver}"
 
-  _about_arch_ver="$(sed -n "s/\"version\": //p" $srcdir/about-arch/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _dark_bint_syntax_ver="$(sed -n "s/\"version\": //p" $srcdir/dark-bint-syntax/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _fusion_ui_ver="$(sed -n "s/\"version\": //p" $srcdir/fusion-ui/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_gfm2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-gfm2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_ini_desktop_ver="$(sed -n "s/\"version\": //p" $srcdir/language-ini-desktop/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_liquid_ver="$(sed -n "s/\"version\": //p" $srcdir/language-liquid/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_patch2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-patch2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _language_unix_shell_ver="$(sed -n "s/\"version\": //p" $srcdir/language-unix-shell/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _terminal_fusion_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  function describe {
+    printf "$(git -C "$srcdir/$1" describe --tags `git -C "$srcdir/$1" rev-list --tags --max-count=1` | sed 's/v//g')"
+  }
+  _about_arch_ver="$(describe about-arch)"
+  _dark_bint_syntax_ver="$(describe dark-bint-syntax)"
+  _fusion_ui_ver="$(describe fusion-ui)"
+  _language_archlinux_ver="$(describe language-archlinux)"
+  _language_gfm2_ver="$(describe language-gfm2)"
+  _language_ini_desktop_ver="$(describe language-ini-desktop)"
+  _language_liquid_ver="$(describe language-liquid)"
+  _language_patch2_ver="$(describe language-patch2)"
+  _language_unix_shell_ver="$(describe language-unix-shell)"
+  _terminal_fusion_ver="$(describe terminal-fusion)"
+  _toolbar_fusion_ver="$(describe toolbar-fusion)"
 
   sed -i -e "/exception-reporting/d" \
          -e "/metrics/d" \
          -e "/-ui/d" \
          -e "/-syntax/d" \
          -e "/-theme/d" \
-         -e "s/0.36.8/${_electron_ver}/g" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
          -e "/\"dependencies\": {/a \
                      \"language-patch2\": \"${_language_patch2_url}\"," \
-         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",\n    \"toolbar-fusion\": \"${_toolbar_fusion_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          -e "/\"packageDependencies\": {/a \
               \"dark-bint-syntax\": \"${_dark_bint_syntax_ver}\",\n    \"fusion-ui\": \"${_fusion_ui_ver}\"," package.json
