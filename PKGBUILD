@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.6
 pkgver=4.6.5
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -62,11 +62,11 @@ options=('!strip')
 _ckpatchversion=1
 _ckpatchname="patch-4.6-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8r1'
+_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-v8r2'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.6.0.patch'
 _bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.6.0.patch'
 _bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-v8r1-for.patch'
+_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-v8r2-for.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -96,7 +96,7 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             '1857e05fd79baffc04dd075be81257d0a43351c244b7f360b48408a28ecfde2d'
             '595887ea141ee7373460d325368f362ca87695259b9bca3499f12ef76322172b'
             'd90d5525e3b4fefbd218e04b09c2234700226ecd8a350e8d88a3145c02b82c18'
-            '1810bf7b1c4cfe63fc7f5f203cf854ebb8debf201f800c288e59bf055f61e61f')
+            '61aee69b0421c984d366b40102fa930c3fca272ef5d38f44cff3710dbc5543c4')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
