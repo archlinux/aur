@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname="$_pkgname-git"
-pkgver=0.9.3_2_gf8e1446.f8e1446
+pkgver=0.9.4.9e67b89
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
