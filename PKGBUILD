@@ -11,7 +11,7 @@ set -u
 _pkgname='pcre2'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=10.21.r344
+pkgver=10.23.r554
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, 2nd version, includes pcregrep'
 arch=('i686' 'x86_64')
@@ -19,14 +19,13 @@ url='http://www.pcre.org/'
 license=('BSD')
 depends=('gcc-libs' 'readline' 'zlib' 'bzip2' 'bash')
 makedepends=('subversion' 'libtool')
-validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
-_verurl='ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/'
-_versed='pcre2-\([0-9\.]\+\)\.tar\.bz2'
-_veropt='f'
-source=("${_srcdir}::svn://vcs.exim.org/${_pkgname}/code/trunk")
-sha256sums=('SKIP')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
+#validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
+_verwatch=('ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/' 'pcre2-\([0-9\.]\+\)\.tar\.bz2' 'f')
+source=("${_srcdir}::svn://vcs.exim.org/${_pkgname}/code/trunk")
+validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
+sha256sums=('SKIP')
 
 pkgver() {
   set -u
@@ -55,14 +54,16 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j $(nproc)
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
   set +u
 }
 
 check() {
   set -u
   cd "${_srcdir}"
-  make -s -j $(nproc) check
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}" check
   set +u
 }
 
