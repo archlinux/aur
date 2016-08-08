@@ -1,0 +1,17 @@
+pkgbase = hitwh-cscore
+	pkgdesc = Scores checker for undergraduate students in HITwh
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = python
+	depends = python-prettytable
+	depends = python-beautifulsoup4
+	depends = python-requests
+	provides = cscore
+	source = cscore
+	md5sums = 3fb5a3f447ff44d7f3f5e5b90410f8ad
+
+pkgname = hitwh-cscore
+

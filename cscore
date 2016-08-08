@@ -1,0 +1,124 @@
+#!/usr/bin/python3
+import requests
+from bs4 import BeautifulSoup
+from prettytable import PrettyTable
+import sys
+from urllib.parse import urlencode
+import getpass
+
+
+class Score:
+    def __init__(self, stuid: str, pwd: str):
+        self.data = {
+            'stuid': stuid,
+            'pwd': pwd
+        }
+        self.cookie = ''
+        self.bs = None
+        self.rank_bs = None
+        self.table = None
+        self.courses = None
+        self.out = PrettyTable()
+        self.out.field_names = ['课程名', '考试类型', '学分', '实验成绩', '平时成绩', '期中成绩', '期末成绩', '总成绩',
+                                '选课人数', '最高分', '最低分', '排名']
+        self.get_cookie()
+
+    def get_cookie(self, retry_times=5):
+        if retry_times == 0:
+            print('无法获取 Cookies')
+            exit(1)
+        try:
+            req2 = requests.post('http://222.194.15.1:7777/pls/wwwbks/bks_login2.login', self.data,
+                                 allow_redirects=False)
+            self.cookie = req2.headers.get('Set-Cookie')
+        except Exception as e:
+            print(e)
+            self.get_cookie(retry_times - 1)
+
+    def __get_courses_bs(self):
+        req = requests.get('http://222.194.15.1:7777/pls/wwwbks/bkscjcx.curscopre',
+                           headers={'Cookie': self.cookie})
+        req.encoding = 'GBK'
+        if len(req.text) == 0:
+            raise Exception('无法获取成绩')
+        self.bs = BeautifulSoup(req.text, 'lxml')
+        self.table = self.bs.find_all('table')[4]
+        self.courses = self.table.find_all('tr')[1:]
+
+    def __get_score(self):
+        ret = []
+        for course in self.courses:
+            td = course.find_all('td')
+            ret.append([td[2].find('p').text, td[13].find('p').text,
+                        td[4].find('p').text, td[6].find('p').text,
+                        td[7].find('p').text, td[8].find('p').text,
+                        td[9].find('p').text, td[10].find('p').text, ])
+        return ret
+
+    def __get_rank(self):
+        rank_data = ''
+        for course in self.courses:
+            td = course.find_all('td')
+            if td[0].input is None:
+                continue
+            rank_data += '&' + urlencode({'p_pm': td[0].input.attrs['value'].encode('GBK')})
+        rank_data = rank_data[1:]
+        req2 = requests.post('http://222.194.15.1:7777/pls/wwwbks/bkscjcx.cursco',
+                             rank_data,
+                             headers={'Cookie': self.cookie})
+        req2.encoding = 'GBK'
+        if len(req2.text) == 0:
+            raise Exception('无法获取排名')
+        ret = {}
+        self.rank_bs = BeautifulSoup(req2.text, 'lxml').find_all('table')[4].find_all('tr')[1:]
+        for course_rank in self.rank_bs:
+            td = course_rank.find_all('td')
+            ret[td[1].text] = [td[3].text, td[4].text, td[5].text, td[6].text]
+        return ret
+
+    @staticmethod
+    def __append_rank(scores, ranks):
+        ret = []
+        for i in scores:
+            ret.append(i + ranks.get(i[0], ['', '', '', '']))
+        return ret
+
+    def run(self, retry_times=5):
+        if retry_times == 0:
+            print('退出')
+            exit(1)
+        try:
+            self.__get_courses_bs()
+            result = self.__append_rank(self.__get_score(), self.__get_rank())
+            for i in result:
+                self.out.add_row(i)
+            print(self.out)
+        except Exception as e:
+            print(e)
+            self.run(retry_times - 1)
+
+
+def print_usage():
+    print("""Usage:
+    {}
+    {} 学号
+    {} 学号 密码""".format(sys.argv[0], sys.argv[0], sys.argv[0]))
+    exit(1)
+
+
+if __name__ == '__main__':
+    stu_id = None
+    pwd = None
+    if len(sys.argv) == 1:
+        stu_id = input('学号：')
+        pwd = getpass.getpass('密码：')
+    elif len(sys.argv) == 2:
+        stu_id = sys.argv[1]
+        pwd = getpass.getpass('密码：')
+    elif len(sys.argv) == 3:
+        stu_id = sys.argv[1]
+        pwd = sys.argv[2]
+    else:
+        print_usage()
+        exit(1)
+    Score(stu_id, pwd).run()
