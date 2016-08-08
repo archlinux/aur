@@ -1,6 +1,6 @@
 pkgbase = mono-git
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler
-	pkgver = 3.2.3.r8387.g5d93b2a
+	pkgver = 3.2.3.r14253.gf34c022
 	pkgrel = 1
 	url = http://www.mono-project.com/
 	arch = i686
@@ -8,21 +8,24 @@ pkgbase = mono-git
 	license = GPL
 	license = LGPL2.1
 	license = MPL
-	license = custom:MITX11
+	license = BSD
+	license = custom=MITX11
+	license = custom=MSPL
 	makedepends = git
 	depends = zlib
-	depends = libgdiplus>=3.8
+	depends = libgdiplus
 	depends = sh
 	depends = python
+	depends = ca-certificates
+	depends = mono
 	provides = monodoc
-	provides = mono=3.12.0
+	provides = mono
 	conflicts = monodoc
 	conflicts = mono
 	options = !makeflags
 	source = git://github.com/mono/mono.git
 	source = mono.binfmt.d
 	md5sums = SKIP
-	md5sums = b9ef8a65fea497acf176cca16c1e2402
 
 pkgname = mono-git
 
