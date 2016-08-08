@@ -2,9 +2,9 @@
 
 pkgname=pycp
 pkgver="7.2.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="cp and mv with a progressbar"
-url="http://github.com/yannicklm/pycp"
+url="http://github.com/dmerejkowsky/pycp"
 arch=('any')
 license=('MIT')
 depends=('python')
