@@ -1,7 +1,7 @@
 # Maintainer: mwberry <null [at] example [dot] com>
 pkgname=pam-ssh-git
 pkgver=2.1.r0.g7546abc
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pluggable Authentication Module (PAM) for use with SSH."
 arch=('i686' 'x86_64')
 url="http://pam-ssh.sourceforge.net/"
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname}"
 	./bootstrap.sh
-	./configure --prefix=/usr --with-pam-dir=/usr/lib
+	./configure --prefix=/usr --with-pam-dir=/usr/lib/security
 	make
 }
 
