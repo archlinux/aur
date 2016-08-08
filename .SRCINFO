@@ -1,7 +1,7 @@
 pkgbase = pinta-git
 	pkgdesc = Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users
 	pkgver = 1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pinta-project.com
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = pinta-git
 	depends = gtk-sharp-2
 	depends = mono-addins
 	depends = yelp-tools
+	depends = intltool
 	provides = pinta
 	conflicts = pinta
 	options = !makeflags

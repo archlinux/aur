@@ -1,12 +1,12 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=pinta-git
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=('x86_64' 'i686')
 url="https://pinta-project.com"
 license=('MIT')
-depends=('mono' 'gtk-sharp-2' 'mono-addins' 'yelp-tools')
+depends=('mono' 'gtk-sharp-2' 'mono-addins' 'yelp-tools' 'intltool')
 makedepends=('git')
 provides=('pinta')
 conflicts=('pinta')
