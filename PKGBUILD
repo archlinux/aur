@@ -9,9 +9,9 @@ license=('MIT')
 depends=(fuse)
 options=(!emptydirs)
 source=("https://github.com/trapexit/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('610f8dfbd34f70c22f8f7e17849a402e')
-sha256sums=('54f04cd6f9660f82fd9b3f0e3bedfb22784fcaa82de93c866c1c05940c15fd6f')
-sha512sums=('71ba7df3205ebf71900ee8353ca12cb81c9469fbb216739c518c5b161cd2f1bf8a7331697f4191a1cc1fc678624d20d48256fefc0995d7e731738482323d8b77')
+md5sums=('665b18650376e22bc839e044e7ae6b76')
+sha256sums=('91b323ac848d373dde455a2f7bc7567b31d2def81839ae801c1d38d1ffb3ba61')
+sha512sums=('e2af096479493e804518db0bad5ef3fa2661172c914d791447367d5a2d13b519743bfe608f821fce328b07a4058b46d92149623347d7abbd3c73026e03c728b1')
 
 build() {
     cd ./"${pkgname}-${pkgver}" || exit
