@@ -4,7 +4,7 @@
 pkgname=perl-gtk2-notify
 _cpanname=Gtk2-Notify
 pkgver=0.05
-pkgrel=15
+pkgrel=16
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/perldoc?Gtk2::Notify"
@@ -23,7 +23,7 @@ prepare() {
 }
 build() {
   cd $_cpanname-$pkgver
-  perl Makefile.PL INSTALLDIRS=vendor
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 package() {
