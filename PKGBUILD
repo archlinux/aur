@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
-_pkgver=5.0.0
+_pkgver=5.1.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
@@ -14,15 +14,17 @@ url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
              'opencv' 'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'libmediawiki' 'libkvkontakte' 'kqoauth')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha1sums=('e0dec2eba9ab3a51d632b69b3dd6daf8dca64a45')
+             'knotifyconfig' 'libmediawiki' 'libkvkontakte')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-5.1-fix-build.patch)
+sha1sums=('87a843c39f45b8704ead6e6029e52fb03ee44680'
+          '5b6644c8b5534a1712f46fc84948de9a0039a601')
 
 prepare() {
   mkdir -p build
 
-# Build fails
-  sed -e '/add_subdirectory(showfoto)/d' -i $pkgname-${_pkgver}/doc-translated/digikam/CMakeLists.txt
+  cd $pkgname-$pkgver
+  # Fix build on i686
+  patch -p1 -i ../digikam-5.1-fix-build.patch
 }
 
 build() {
@@ -66,8 +68,7 @@ package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
   depends=('kio' 'libkipi')
   optdepends=('libmediawiki: MediaWiki Export plugin'
-              'libkvkontakte: VKontakte.ru Exporter plugin'
-              'kqoauth: OAuth authentication for imgur')
+              'libkvkontakte: VKontakte.ru Exporter plugin')
 
   cd build/extra
   make DESTDIR="$pkgdir" install
