@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=storcli
 _pkgname=StorCLI
 pkgver=1.19.04
-pkgrel=3
+pkgrel=4
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://www.thomas-krenn.com/en/wiki/StorCLI"
 license=('custom')
 makedepends=('rpmextract')
 install=${pkgname}.install
-conflicts=('megaraid-cli')
+#conflicts=('megaraid-cli')
 
 if [[ "${CARCH}" == 'x86_64' ]];
 then
