@@ -1,6 +1,6 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=sonic-pi-git
-pkgver=v2.9.0.r375.gea20740
+pkgver=v2.10.0.r690.g7f2e469
 pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
@@ -14,7 +14,9 @@ depends=('sed'
 	 'libffi'
 	 'lua'
 	 'qscintilla-qt5'
-	 'jack')
+	 'jack'
+    'aubio'
+    'qwt')
 makedepends=('cmake'
 	     'git'
 	     'supercollider'
@@ -33,9 +35,13 @@ md5sums=('SKIP'
          'fd330b2be9b52e9bee2fb9922141e2ca')
 
 prepare() {
+  msg2 "Hook up qwt to qmake"
+  qmake -set QMAKEFEATURES /usr/local/qwt-6.1.2/features
+  
   msg2 "Fix wrongly-named (on Arch) QT library"
-  cd $srcdir/sonic-pi/app/gui/qt
-  find . -type f -name "*" -exec sed -i 's/lqt5scintilla2/lqscintilla2-qt5/g' {} +
+  #cd $srcdir/sonic-pi/app/gui/qt
+  find $srcdir/sonic-pi/app/gui/qt -type f -name "*" -readable -exec sed -i 's/lqt5scintilla2/lqscintilla2-qt5/g' {} +
+  #find . -type f -name "*" -exec sed -i 's/+= -L\/Users\/sam\/Downloads\/tmp\/QScintilla-gpl-2.9\/Qt4Qt5/+= -lqscintilla2-qt5/g' {} +
 }
 
 build() {
@@ -49,6 +55,7 @@ build() {
   #Cleaning up object files
   cd $srcdir
   find . -type f -name "*.o" -exec rm {} +
+  rm -f $srcdir/sonic-pi/app/gui/qt/sed*
 }
 
 pkgver() {
@@ -60,7 +67,7 @@ package() {
 #Install sources to /opt/
   mkdir $pkgdir/opt/
   mkdir $pkgdir/opt/sonic-pi
-  cp -R $srcdir/sonic-pi/* $pkgdir/opt/sonic-pi/
+  cp -R $srcdir/sonic-pi/* $pkgdir/opt/sonic-pi/ > /dev/null
   ln -s -r $pkgdir/opt/sonic-pi/app/server $pkgdir/opt/sonic-pi/server
 #Add a launcher script to /usr/bin
   mkdir $pkgdir/usr
