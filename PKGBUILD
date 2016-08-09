@@ -1,13 +1,13 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-ddns
 pkgver=0.0.2
-pkgrel=2
-pkgdesc="This hook provides dynamic dns capabilities to the initramfs. It is meant for use with dropbear_initrd_encrypt and mkinitcpio-ppp for remote unlocking the luks root partition over the internet"
+pkgrel=3
+pkgdesc="This hook provides dynamic dns capabilities to the initramfs. It is meant for use with mkinitcpio-netconf or mkinitcpio-ppp for remote unlocking the luks root partition over the internet"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-ddns"
 license=('BSD')
 depends=('inadyn-mt')
-optdepends=('dropbear_initrd_encrypt: for setting a gateway using ip= parameter' 'mkinitcpio-ppp: dial to a provider to establish internet connection')
+optdepends=('mkinitcpio-netconf: early userspace network configuration' 'mkinitcpio-ppp: dial to a provider to establish internet connection')
 install=$pkgname.install
 source=('ChangeLog' "$pkgname.install" "${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
 changelog='ChangeLog'

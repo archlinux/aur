@@ -1,3 +1,5 @@
 v*.tar.gz
 mkinitcpio-ddns-*-any.pkg.tar.xz
-mkinitcpio-ddns-*.src.tar.gz
+mkinitcpio-ddns-*.tar.gz
+pkg/*
+src/*
