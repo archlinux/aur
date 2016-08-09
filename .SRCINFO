@@ -1,0 +1,16 @@
+pkgbase = ruby-gir_ffi-gtk
+	pkgdesc = GirFFI-based Ruby bindings for Gtk+ 2 and 3
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.github.com/mvz/gir_ffi-gtk
+	arch = any
+	license = LGPL2.1
+	depends = ruby
+	depends = ruby-gir_ffi
+	noextract = gir_ffi-gtk-0.10.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gir_ffi-gtk-0.10.0.gem
+	sha1sums = e8ec7592ae3e2becd3b6c487e5393bab0e0a634a
+
+pkgname = ruby-gir_ffi-gtk
+
