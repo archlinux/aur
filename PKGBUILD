@@ -2,7 +2,7 @@
 
 pkgname=rodeo
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('AGPL3')
 install=rodeo.install
 md5sums_x86_64=('fc43f21c3b3cc971cdffb242761c1b29')
 
-source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-amd64.deb")
+source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver.deb")
+# source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-amd64.deb")
 # source_i686=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-ia32.deb")
 
 build() {
