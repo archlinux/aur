@@ -7,7 +7,7 @@ pkgbase = osvr-udev
 	arch = any
 	license = custom
 	source = 83-osvr.rules
-	md5sums = ad16496aade0325f2b9270b773acc4ea
+	md5sums = efa93d15c70616a6617a5ff8013cd1cf
 
 pkgname = osvr-udev
 
