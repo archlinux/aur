@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-transparency
 	pkgdesc = The GNOME Terminal Emulator, with background transparency
 	pkgver = 3.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Terminal
 	changelog = gnome-terminal-transparency.changelog
 	arch = i686
@@ -24,8 +24,12 @@ pkgbase = gnome-terminal-transparency
 	conflicts = gnome-terminal
 	options = !emptydirs
 	source = https://download.gnome.org/sources/gnome-terminal/3.20/gnome-terminal-3.20.2.tar.xz
+	source = dnd-crash.patch
+	source = palette-color.patch
 	source = gnome-terminal-transparency.patch
 	sha256sums = f5383060730f1de70af35e917f82d5b6a14d963ad9cfd6a0e705f90011645a23
+	sha256sums = 0bb1021b01ed0cdc1b598289de707221ebea0be46cba32301c32477dfd4cb166
+	sha256sums = 1d98a84fa8ce0e93e2e3e36c6cd50d86965d3fb120d2d6a42305b402be1df573
 	sha256sums = b28361f4606f495ade3035fcabb5525d4561f2dd2458e25a7e79da8b8634c20d
 
 pkgname = gnome-terminal-transparency
