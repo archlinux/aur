@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0-PREVIEW-3
+_swiftver=3.0-PREVIEW-4
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -25,16 +25,16 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "pod2man_release.patch"
 )
-sha256sums=('01934177feebaaa66f88fbcd4153111c2156d44970c7f48321d1264df3493668'
-            '5edf9d3b04a085d7d869dbd272c0256bcdaa64f00c86d5b3ce1f3d5cf523402e'
-            '390365ec3fe248f61ce55e20e1db3a1819b44c5be52149541756c2ec87068b3a'
-            '007f31c65f95337e70b947f3a55abf0953de894d005aa0d1bddbb1d87902c13c'
-            '5ae4bc52588f7112b9845b50ea6e2c3d85b92d8c70737a5080dafe07fbb6262a'
-            '927f22164d46e61d007bf6810174a1543c2bc862d589a7b0f4814e9df45879d1'
-            '5a9eaee1b5099b01afe99b091395df539c72da9082b94a3755ffe85ec90bd042'
-            'f369ae2e56ede356102721c96c20c608e037713d487b5f67e9dd49ac63228755'
-            '92fc072127afc48c29086ecab4ee778205781b0e1adb2e0bf14e67d368a9b180'
-            'f35d27fa34b232e0ca19f0fb0247415e7c5c9351c8ca953590864f0275530ee7'
+sha256sums=('6d86fd2c2b094f8db9ff666132469fbf9f0f726630683127dfa44393053a7303'
+            '5699613c015d7e9bc6353cba6e60d3e97d4baaa76839c1e97fc22949ba5366bf'
+            '13d0b6fd9e4a46e3da119117f828ffb65a12af96f8c48b800acbe98c38331145'
+            '71823c67361663e749a6cf3350bdf5c50818630a30429453fe66c1461ef185c9'
+            '5e2992b9bf2fb4f08f83d5bef8009c52574e11074c3c0559f6c8a52570ef430c'
+            'dfcc5644bd43e0343b215db2f118cf50391ffd5dee66172dbce378f6194fb012'
+            '2dc98fdc2d00ca0d0bb25de9a1b1a041a5f3db233e4478fe4317ffeb4320ea5f'
+            '6c8a03d7288f0dab12d4a8039b2b603a7a2b091ac59a71bb3a0ec3d971f5c7f8'
+            'da3975b99986ebb9db89fa9834e0da4d8033c0bb12b056da1c4f442254536b4e'
+            'bcfea1eac475e33daa68189c74f3e73612d07006980eab10d6c341a5b57d9bc1'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'f09977247fa2fcfa306b491523146c8772b38fa007cc1530f4169413fe7c7f3a')
 
@@ -102,10 +102,10 @@ package_swift-preview() {
     install -dm755 "$pkgdir/usr/lib/swift"
 
     # Swift's components don't provide an install target :(
-    # These are based on what's included in the binary release packages
+    # These are based roughly on what's included in the binary release packages
     (
         cd swift-linux-$CARCH
-        install -m755 bin/swift bin/swift-demangle bin/swift-ide-test "$pkgdir/usr/bin"
+        install -m755 bin/swift bin/swift-{demangle,ide-test} "$pkgdir/usr/bin"
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
 
@@ -121,7 +121,7 @@ package_swift-preview() {
     )
     (
         cd swiftpm-linux-$CARCH
-        install -m755 debug/swift-build "$pkgdir/usr/bin"
+        install -m755 debug/swift-{build,test,package} "$pkgdir/usr/bin"
 
         install -dm755 "$pkgdir/usr/lib/swift/pm"
         install -m755 lib/swift/pm/libPackageDescription.so "$pkgdir/usr/lib/swift/pm"
