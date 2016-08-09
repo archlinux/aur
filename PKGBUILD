@@ -6,7 +6,7 @@
 # Contributer: Jarek Sedlacek <JarekSedlacek@gmail>
 
 pkgname=grive-git
-pkgver=412.5327016
+pkgver=421.a756414
 pkgrel=1
 pkgdesc='An open source Linux client for Google Drive with support for the new Drive REST API and partial sync'
 arch=('i686' 'x86_64')
