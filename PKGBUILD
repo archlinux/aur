@@ -3,7 +3,7 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs
-pkgver=20160607
+pkgver=20160801
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -16,13 +16,13 @@ optdepends=('tix: required by hplj10xx_gui.tcl')
 arch=('i686' 'x86_64')
 options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
-source=("http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
+source=('http://foo2zjs.rkkda.com/foo2zjs.tar.gz'
         'destdir-support-20140329-1.patch'
-	'gen-fixes-20140329-1.patch'
-	'firmware-loader-20130602-1.patch'
-	'udev-firmware-loading-ruleset-20130601-1.patch')
+        'gen-fixes-20140329-1.patch'
+        'firmware-loader-20130602-1.patch'
+        'udev-firmware-loading-ruleset-20130601-1.patch')
 
-sha256sums=('69f0b9baa94470a8936002fb0d46c37980b7654eb1e21292e22e2cbbb13ca650'
+sha256sums=('9f491d898fdedc7eeaf099d3566d695504de6e73a2219fa81d93b2e50aae0a02'
             '6fe2abe505305c627e35123ffdf80279b0e6e065b34a1967674fe56f09380f6a'
             '2a104b8f93d8cb4bd0a10156043f9cf47eddaa728f6317d235bc6d9843312f05'
             '5fe072326173d5008741ffed2e122053f821eabc0d3369ef64a2e346e4e327d1'
