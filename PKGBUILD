@@ -2,7 +2,7 @@
 
 pkgname=loop-aes
 _pkgname=loop-AES
-pkgver=v3.7h
+pkgver=v3.7i
 pkgrel=1
 pkgdesc="This package provides loadable Linux kernel module loop
 that has AES,Twofish,Blowfish,Serpent cipher built-in."
@@ -15,7 +15,7 @@ install=${pkgname}.install
 
 source=(${url}/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2)
 
-md5sums=('babef8f6d30ac13db76c8cde0d8879f5')
+md5sums=('dd465844a650ea4d4856ee26756a0235')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
