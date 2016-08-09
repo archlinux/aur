@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DefleMask
+GenericName=Chiptune Tracker
+Comment=The multi-system Chiptune Tracker
+Exec=deflemask
+Icon=deflemask
+Terminal=false
+Type=Application
+Categories=Game;
