@@ -1,0 +1,19 @@
+pkgbase = go-gtk-git
+	pkgdesc = Go bindings for GTK2
+	pkgver = 20160809
+	pkgrel = 1
+	url = https://github.com/mqu/go-notify
+	arch = x86_64
+	arch = i686
+	license = BSD
+	license = LGPL
+	makedepends = git
+	depends = go
+	depends = gtksourceview2
+	provides = go-gtk
+	conflicts = go-gtk
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-gtk-git
+
