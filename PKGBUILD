@@ -5,7 +5,7 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.5.0.130.g44afafb
+pkgver=1.5.0.r141.gb545cdf
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
@@ -22,8 +22,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --always | sed -e 's|-|.|g' -e 's|v||'
+  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
+
+
 
 build() {
   cd "${srcdir}/${_pkgname}"
