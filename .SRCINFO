@@ -1,0 +1,15 @@
+pkgbase = ruby-indentation
+	pkgdesc = A library of extensions to Ruby's Array and String classes that allow indentation manipulation of Strings and Arrays of Strings.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://samueldana.github.com/indentation/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = indentation-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/indentation-0.1.1.gem
+	sha1sums = ffa788c6d6e490b75dba1743261835a661658c78
+
+pkgname = ruby-indentation
+
