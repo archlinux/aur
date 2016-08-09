@@ -2,13 +2,14 @@
 
 pkgname=netgen-git
 pkgver=r1080.2e936ac
-pkgrel=3
+pkgrel=4
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
 depends=('python' 'boost' 'tk' 'libxmu' 'opencascade')
+options=('!buildflags')
 provides=('netgen')
 conflicts=('netgen-nogui')
 source=("${pkgname%-git}::git+http://git.code.sf.net/p/netgen-mesher/git#branch=master"
