@@ -7,7 +7,7 @@
 pkgname=firefox-unbranded
 _pkgname=firefox
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -32,7 +32,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         no-libnotify.patch)
 sha256sums=('f474113a1ee75a01d43e270bf438ba78b9f7f2e397a66652b43603235fa76e21'
 	    '84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f'
-            '9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76'
+            '8fd2261e6423d4ddd70fd7081099fd9a09700f99def79a7c21f8f56fa83e2695'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -108,5 +108,9 @@ package() {
 
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
+  ln -sf firefox-unbranded "$pkgdir/usr/lib/firefox/firefox-bin"
+  
+  # For compatibility sake
+  ln -sf firefox-unbranded "$pkgdir/usr/lib/firefox/firefox-bin"
+
 }
