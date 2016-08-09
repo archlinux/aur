@@ -1,0 +1,13 @@
+pkgbase = kcptun-bin
+	pkgdesc = an extremely simple & fast udp tunnel based on kcp protocol
+	pkgver = 20160808
+	pkgrel = 1
+	url = https://github.com/xtaci/kcptun
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/xtaci/kcptun/releases/download/v20160808/kcptun-linux-amd64-20160808.tar.gz
+	sha256sums = 934f65ca29d53d6d78dca1817cc60f1a9e76a07b50e47f22f01fcc32ed065f82
+
+pkgname = kcptun-bin
+
