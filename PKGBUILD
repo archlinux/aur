@@ -8,7 +8,7 @@
 
 # Maintainer: Ning Humbert <galaxy0419@gmail.com>
 pkgname=fastdriver-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=1345b24
+pkgver=b6c7108
 pkgrel=1
 pkgdesc="Fast-ODP (Old-Driver-Protocol) command line tool, C++ implementation"
 arch=('i686' 'x86_64')
