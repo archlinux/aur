@@ -1,4 +1,4 @@
-From ca3ee4f73521a939f28fd15183d1997e02d8267a Mon Sep 17 00:00:00 2001
+From bb2a79e89f60366ae3830ed7e7c6bbfb567ec3db Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 11:42:28 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt4/src/CMakeLists.txt b/qt4/src/CMakeLists.txt
-index 189eca2..5338b55 100644
+index 2b55e6b..8587f24 100644
 --- a/qt4/src/CMakeLists.txt
 +++ b/qt4/src/CMakeLists.txt
 @@ -6,6 +6,11 @@ include_directories(
@@ -40,7 +40,7 @@ index 189eca2..5338b55 100644
 +endif(HAVE_CAIRO)
  qt4_automoc(${poppler_qt4_SRCS})
  add_library(poppler-qt4 SHARED ${poppler_qt4_SRCS})
- set_target_properties(poppler-qt4 PROPERTIES VERSION 4.9.0 SOVERSION 4)
+ set_target_properties(poppler-qt4 PROPERTIES VERSION 4.10.0 SOVERSION 4)
  target_link_libraries(poppler-qt4 poppler ${QT4_QTCORE_LIBRARY} ${QT4_QTGUI_LIBRARY} ${QT4_QTXML_LIBRARY})
 +if (HAVE_CAIRO)
 +  target_link_libraries(poppler-qt4 ${CAIRO_LIBRARIES})
@@ -49,10 +49,10 @@ index 189eca2..5338b55 100644
  target_link_libraries(poppler-qt4 poppler ${poppler_LIBS})
  endif(MSVC)
 diff --git a/qt4/src/poppler-document.cc b/qt4/src/poppler-document.cc
-index 94f997d..6decaaf 100644
+index 93f9a0a..260c7a0 100644
 --- a/qt4/src/poppler-document.cc
 +++ b/qt4/src/poppler-document.cc
-@@ -547,6 +547,9 @@ namespace Poppler {
+@@ -698,6 +698,9 @@ namespace Poppler {
          ret << Document::SplashBackend;
  #endif
          ret << Document::ArthurBackend;
@@ -63,10 +63,10 @@ index 94f997d..6decaaf 100644
      }
  
 diff --git a/qt4/src/poppler-page.cc b/qt4/src/poppler-page.cc
-index 83bcf4a..df1d344 100644
+index 9e466da..650ad5f 100644
 --- a/qt4/src/poppler-page.cc
 +++ b/qt4/src/poppler-page.cc
-@@ -40,6 +40,7 @@
+@@ -41,6 +41,7 @@
  #include <QtGui/QPainter>
  
  #include <config.h>
@@ -74,7 +74,7 @@ index 83bcf4a..df1d344 100644
  #include <PDFDoc.h>
  #include <Catalog.h>
  #include <Form.h>
-@@ -53,6 +54,9 @@
+@@ -54,6 +55,9 @@
  #include <SplashOutputDev.h>
  #include <splash/SplashBitmap.h>
  #endif
@@ -84,7 +84,7 @@ index 83bcf4a..df1d344 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -405,6 +409,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
+@@ -406,6 +410,70 @@ QImage Page::renderToImage(double xres, double yres, int x, int y, int w, int h,
        img = tmpimg;
        break;
      }
@@ -155,7 +155,7 @@ index 83bcf4a..df1d344 100644
    }
  
    return img;
-@@ -447,6 +515,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
+@@ -448,6 +516,8 @@ bool Page::renderToPainter(QPainter* painter, double xres, double yres, int x, i
           painter->restore();
        return true;
      }
@@ -165,10 +165,10 @@ index 83bcf4a..df1d344 100644
    return false;
  }
 diff --git a/qt4/src/poppler-qt4.h b/qt4/src/poppler-qt4.h
-index c0340a4..118f8ba 100644
+index 2b518c1..2eaeafc 100644
 --- a/qt4/src/poppler-qt4.h
 +++ b/qt4/src/poppler-qt4.h
-@@ -886,7 +886,8 @@ delete it;
+@@ -887,7 +887,8 @@ delete it;
  	*/
  	enum RenderBackend {
  	    SplashBackend,   ///< Splash backend
@@ -195,5 +195,5 @@ index bba868f..8c40471 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.8.0
+2.9.2
 

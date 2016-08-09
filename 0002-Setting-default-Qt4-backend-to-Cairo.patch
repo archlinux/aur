@@ -1,4 +1,4 @@
-From 1c3e9ef4ad66c0326c32e22402694399997f61a4 Mon Sep 17 00:00:00 2001
+From ace47a614fce2654b51f7f02c3f3ed71526e90c0 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 13:17:29 +0100
 Subject: [PATCH 2/4] Setting default Qt4 backend to Cairo
@@ -8,10 +8,10 @@ Subject: [PATCH 2/4] Setting default Qt4 backend to Cairo
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/qt4/src/poppler-private.cc b/qt4/src/poppler-private.cc
-index cbf21b1..1c7f16c 100644
+index d64dca6..2697517 100644
 --- a/qt4/src/poppler-private.cc
 +++ b/qt4/src/poppler-private.cc
-@@ -236,7 +236,7 @@ namespace Debug {
+@@ -245,7 +245,7 @@ namespace Debug {
      void DocumentData::init()
      {
          m_fontInfoIterator = 0;
@@ -21,5 +21,5 @@ index cbf21b1..1c7f16c 100644
          m_hints = 0;
          m_optContentModel = 0;
 -- 
-2.8.0
+2.9.2
 
