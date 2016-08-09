@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = System programming language intended to replace C
-	pkgver = r747.2ed949a
+	pkgver = 0.0.0r747.2ed949a
 	pkgrel = 1
 	url = http://ziglang.org/
 	arch = i686

@@ -1,7 +1,7 @@
 pkgname=zig-git
 provides=(zig)
 conflicts=(zig)
-pkgver=r747.2ed949a
+pkgver=0.0.0r747.2ed949a
 pkgrel=1
 pkgdesc="System programming language intended to replace C"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$provides"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.0.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
@@ -25,7 +25,7 @@ build()
 
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
