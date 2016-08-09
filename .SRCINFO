@@ -1,0 +1,17 @@
+pkgbase = nuvola-app-youtube-git
+	pkgdesc = Integration of YouTube into your linux desktop via Nuvola Player.
+	pkgver = 1.0.0.5dbf0b5
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-youtube
+	arch = any
+	license = 2-Clause BSD-license
+	makedepends = git
+	depends = nuvolaplayer-git
+	provides = nuvola-app-youtube-git
+	conflicts = nuvola-app-youtube-git
+	options = !emptydirs
+	source = nuvola-app-youtube-git::git+https://github.com/tiliado/nuvola-app-youtube.git
+	md5sums = SKIP
+
+pkgname = nuvola-app-youtube-git
+
