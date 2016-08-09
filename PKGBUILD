@@ -37,7 +37,8 @@ build() {
       -DBUILD_TEST=OFF\
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_EXAMPLES=OFF \
-      -DBUILD_DOCS=ON
+      -DBUILD_DOCS=ON      \
+      -DBUILD_GRAPHICS=OFF
 
   make
 }
