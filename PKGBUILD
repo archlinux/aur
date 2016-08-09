@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=arc-dark-suite-git
-pkgver=20160703
+pkgver=20160807
 pkgrel=1
 pkgdesc='Arc-Dark customization for Plasma 5 (git version)'
 arch=('any')
