@@ -2,13 +2,13 @@
 
 pkgname=intel-xdk
 pkgver=3491
-pkgrel=1
+pkgrel=2
 _rpmver=2.0-0
 pkgdesc='Cross-platform mobile and IoT development environment'
 arch=('i686' 'x86_64')
 url='https://software.intel.com/en-us/intel-xdk'
 license=('custom')
-depends=('libudev0' 'libnotify')
+depends=('libudev0' 'libnotify' 'gconf')
 makedepends=('rpmextract')
 
 source=('intel-xdk' 'intel-xdk.desktop')
