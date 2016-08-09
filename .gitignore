@@ -1,2 +1,5 @@
 tinyssh-*.tar.bz2
 tinyssh-*.tar.xz
+tinyssh-*.tar.gz
+src/*
+pkg/*
