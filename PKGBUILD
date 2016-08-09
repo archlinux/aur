@@ -85,7 +85,7 @@ package_caja-share-dev() {
 }
 
 package_caja-wallpaper-dev() {
-    pkgdesc="A Caja extension to quickly set wallpaper (GTK2 version)"
+    pkgdesc="A Caja extension to quickly set wallpaper (GTK3 version)"
     depends=('caja-dev' 'caja-extensions-common-dev')
     groups=('mate-extra')
     conflicts=('caja-wallpaper-dev' 'caja-wallpaper-gtk3')

@@ -74,7 +74,7 @@ pkgname = caja-share-dev
 	conflicts = caja-share-gtk3
 
 pkgname = caja-wallpaper-dev
-	pkgdesc = A Caja extension to quickly set wallpaper (GTK2 version)
+	pkgdesc = A Caja extension to quickly set wallpaper (GTK3 version)
 	groups = mate-extra
 	depends = caja-dev
 	depends = caja-extensions-common-dev
