@@ -13,7 +13,7 @@ license=('GPL3')
 optdepends=("gtk-engine-murrine: gtk2 bindings"
 	"gtk3: gtk3 bindings")
 makedepends=('git')
-provides=('gtk-theme-iris-light')
+provides=("gtk-theme-iris-light=${pkgver}")
 conflicts=('gtk-theme-iris-light')
 changelog="CHANGELOG"
 source=(${_pkgname}::'git+https://github.com/xyl0n/iris-light.git')
@@ -26,7 +26,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+
 	install -dm755 "${pkgdir}/usr/share/themes/${_pkgname}"
-	rm -rf {.git,CREDITS,LICENSE,README,README.md}
 	cp -dpr --no-preserve=ownership . "${pkgdir}/usr/share/themes/${_pkgname}/"
+	rm -rf "${pkgdir}/usr/share/themes/${_pkgname}/"{.git,CREDITS,LICENSE,README,README.md}
 }
