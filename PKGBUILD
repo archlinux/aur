@@ -1,17 +1,18 @@
 # Maintainer  : Yiannis A Ginis <drxspace[at]gmail[dot]com>
 # Contributor : Spyros Stathopoulos <foucault.online[at]gmail[dot]com>
+# Contributor : Chris Sakalis <chrissakalis[at]gmail[dot]com>
 
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.10.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
 license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
-conflicts=('conky' 'conky-lua' 'conky-lua-arch' 'conky-lua-nv' 'conky-lua-archers-git')
 provides=('conky=1.10.4_pre')
+conflicts=('conky' 'conky-lua' 'conky-lua-arch' 'conky-lua-nv' 'conky-lua-archers-git')
 depends=(
 	'alsa-lib'
 	'cairo'
@@ -33,15 +34,19 @@ makedepends=(
 	'docbook2x'
 	'docbook-xml'
 	'docbook-xsl'
+	'man-db'
 	'perl-xml-libxml'
+	'perl-xml-sax-expat'
 )
-source=(https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('f2da0e3b8e6ff8ebc42b35f710f822e228616993')
+source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
+	'asciime.patch')
+sha1sums=('f2da0e3b8e6ff8ebc42b35f710f822e228616993'
+	  'b07407c2be11cee7bd50e046024b89cf2579c448')
 options=('!strip' 'debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	cd cmake
+	patch -p1 -i ../asciime.patch # db2x_manxml fails on non-ascii chars
 }
 
 build() {
@@ -82,7 +87,7 @@ build() {
 package() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	make DESTDIR=${pkgdir} install
-	install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -D -m644 LICENSE.GPL ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL
 	install -D -m644 LICENSE.BSD ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD
 	install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
