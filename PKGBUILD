@@ -4,7 +4,7 @@
 
 pkgname=gtk-theme-iris-dark-git
 _pkgname=iris-dark
-pkgver=106.5bc5245
+pkgver=107.3468e91
 pkgrel=1
 pkgdesc="A flat theme that uses varying shades and tones to create distinction and a modern experience."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 optdepends=("gtk-engine-murrine: gtk2 bindings"
 	"gtk3: gtk3 bindings")
 makedepends=('git')
-provides=('gtk-theme-iris-dark')
+provides=("gtk-theme-iris-dark=${pkgver}")
 conflicts=('gtk-theme-iris-dark')
 changelog="CHANGELOG"
 source=(${_pkgname}::'git+https://github.com/xyl0n/iris.git')
@@ -26,7 +26,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+
 	install -dm755 "${pkgdir}/usr/share/themes/${_pkgname}"
-	rm -rf {.git,CREDITS,LICENSE,README,README.md}
 	cp -dpr --no-preserve=ownership . "${pkgdir}/usr/share/themes/${_pkgname}/"
+	rm -rf "${pkgdir}/usr/share/themes/${_pkgname}/"{.git,CREDITS,LICENSE,README,README.md}
 }
