@@ -1,0 +1,18 @@
+pkgbase = go-notify-git
+	pkgdesc = Go bindings for the C library libnotify
+	pkgver = 20160809
+	pkgrel = 1
+	url = https://github.com/mqu/go-notify
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = go-gtk
+	depends = libnotify
+	provides = go-notify
+	conflicts = go-notify
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-notify-git
+
