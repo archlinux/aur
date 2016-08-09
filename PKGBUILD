@@ -2,7 +2,7 @@
 
 pkgname=python-pulsar
 _pkgname=pulsar
-pkgver=1.0.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Event driven concurrent framework using asyncio'
 arch=(any)
@@ -10,8 +10,8 @@ url=http://pythonhosted.org/pulsar/
 license=('BSD')
 depends=(python)
 makedepends=(python-setuptools cython)
-source=(https://pypi.python.org/packages/source/p/pulsar/${_pkgname}-${pkgver}.tar.gz)
-md5sums=(7dae2538589c574fe74ab6006c88afc7)
+source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/02/b6/3f741760b7ef692f6a03cdf476715239a9c21ee12a692c58e58a7c6c2484/${_pkgname}-${pkgver}.tar.gz")
+md5sums=(5074e8c82765b263e86211d98febd79e)
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
