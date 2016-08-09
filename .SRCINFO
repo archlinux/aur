@@ -1,13 +1,13 @@
 pkgbase = osvr-udev
 	pkgdesc = Udev rule for the OSVR HDK
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://osvr.org
 	install = osvr-udev.install
 	arch = any
 	license = custom
 	source = 83-osvr.rules
-	md5sums = c49ef6f8370285640104dfcf29965903
+	md5sums = ad16496aade0325f2b9270b773acc4ea
 
 pkgname = osvr-udev
 

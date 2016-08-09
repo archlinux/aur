@@ -1,6 +1,6 @@
 pkgname=osvr-udev
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev rule for the OSVR HDK"
 arch=('any')
 url="http://osvr.org"
@@ -12,4 +12,4 @@ package() {
   install -m755 -d "${pkgdir}/usr/lib/udev/rules.d"
   install -m644 "${srcdir}/83-osvr.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 }
-md5sums=('f00401b8ff27dafe06c41f887be39f36')
+md5sums=('ad16496aade0325f2b9270b773acc4ea')
