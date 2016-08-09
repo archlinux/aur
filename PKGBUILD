@@ -4,7 +4,7 @@
 # New Maintainer: BlindPenguin <ferdinand holzner at gmail dot com>
 #
 pkgname=cdesktopenv
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -26,7 +26,7 @@ source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver.tar.gz"
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('fe5701f80764f6053627705c8ff806ed'
+md5sums=('dc175239cbcc6e4b8e51b00be97e271c'
          '66ff27b4c6b7c5fda4e2db69f829e4aa'
          '18f9ef4643ff7ed6637907f5cbdabecf'
          '5cc80c2851ea90b94e94b0c5d92d81fb'
