@@ -4,7 +4,7 @@
 # Contributor: Max <fuzymonkey@gmail.com>
 
 pkgname=google-appengine-go
-pkgver=1.9.36
+pkgver=1.9.40
 pkgrel=1
 pkgdesc='Google App Engine SDK for Go'
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ optdepends=('mysql-python: MySQL support for Python 2'
             'python2-imaging: Image processing capabilities for Python')
 source_i686=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_386-$pkgver.zip")
 source_x86_64=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-$pkgver.zip")
-md5sums_x86_64=('d316659079bd5236a29fa350c1e60874')
-md5sums_i686=('bd8ac87ba881306d0fc3eaa85d132e02')
+sha1sums_x86_64=('ae37cf701705e6d0a2d3d5c3c1e13da7c63b5cdc')
+sha1sums_i686=('4b74b95e331e80e31d2ab946050054c4baf5eccc')
 # Get the name of the zip file
 _source=$(echo source_$CARCH)
 noextract=("$(basename ${!_source})")
@@ -40,11 +40,6 @@ build() {
     msg2 "Generating wrapper script for $f named `basename $f .py`-go"
     echo -e "#!/bin/sh\npython2 /opt/google-appengine-go/$f \$*" \
       > "$srcdir/`basename $f .py`-go"
-    if [[ $f == dev_appserver.py ]]; then
-      msg2 "Creating a wrapper script for $f named appserver"
-      echo -e "#!/bin/sh\npython2 /opt/google-appengine-go/$f \$*" \
-        > "$srcdir/appserver"
-    fi
     # Modifying script to use Python 2
 	  sed -i '0,/on/s//on2/' $f
   done
@@ -70,9 +65,9 @@ package() {
   cp -r "$pkgdir/opt/$pkgname/google" "$pkgdir/usr/lib/python2.7/site-packages/google" 
   
   install -d "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/appserver" "$pkgdir/usr/bin/appserver"
   install -Dm755 $srcdir/*-go "$pkgdir/usr/bin/"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  ln -s "/opt/$pkgname/goapp" "$pkgdir/usr/bin/goapp"
 
   msg2 'Cleaning up deprecated files...'
   rm -r "$pkgdir/opt/$pkgname/tools"
