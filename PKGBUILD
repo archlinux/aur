@@ -13,7 +13,7 @@ noextract=("albiononline-linux-full-${pkgver}.zip")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('dbb502d6302300af49dcaf04f95e5e19'
-         '10170bd465b1af2bcdc04d9200db8821')
+         '0bde53bc71f7d3f5fec295f156a34235')
 
 PKGEXT='.pkg.tar'
 
