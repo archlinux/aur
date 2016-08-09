@@ -111,6 +111,6 @@ package() {
   ln -sf firefox-unbranded "$pkgdir/usr/lib/firefox/firefox-bin"
   
   # For compatibility sake
-  ln -sf firefox-unbranded "$pkgdir/usr/lib/firefox/firefox-bin"
+  ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 
 }
