@@ -2,3 +2,6 @@ v*.tar.gz
 mkinitcpio-chkcryptoboot-*-any.pkg.tar.xz
 mkinitcpio-chkcryptoboot-*.src.tar.gz
 develop.*
+mkinitcpio-chkcryptoboot-*.tar.gz
+pkg/*
+src/*
