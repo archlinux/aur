@@ -1,0 +1,26 @@
+pkgbase = libgepub-git
+	pkgdesc = Simple library to read epub files using glib
+	pkgver = 395779e
+	pkgrel = 1
+	url = http://git.gnome.org/browse/libgepub
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	depends = webkit2gtk
+	depends = libsoup
+	depends = glib2
+	depends = libxml2
+	depends = libarchive
+	provides = libgepub
+	provides = libgepub=0.3
+	provides = libgepub=0.3
+	conflicts = libgepub
+	replaces = libgepub
+	source = git://git.gnome.org/libgepub
+	sha256sums = SKIP
+
+pkgname = libgepub-git
+
