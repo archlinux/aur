@@ -3,18 +3,9 @@
 # Maintainer: Frederic Bezies <mymaud@gmail.com>
 
 
-#_USE_GTK3=n
-
-#if [[ "$_USE_GTK3" = y ]]; then
-#    depends=('gtk3' 'gtkspell3')
-#    _gtk3="--with-gtk3"
-#else
-#    depends=('gtk2' 'gtkspell')
-#fi
-
 pkgname=pan-git
 _gitname=pan2
-pkgver=140.21.gf15cd12
+pkgver=140.r22.g04f6c89
 pkgrel=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
@@ -29,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long --tags |sed 's/PAN_0_//;s/-/./g'
+    git describe --long --tags | sed 's/PAN_0_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
