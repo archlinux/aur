@@ -31,6 +31,8 @@ pkgver() {
 build() {
     rm -rf piwigo
     /usr/bin/unzip piwigo-$pkgver.zip
+    find piwigo/ -type f -print0 | xargs -0 chmod 0640
+    find piwigo/ -type d -print0 | xargs -0 chmod 0750
 }
 
 package() {
