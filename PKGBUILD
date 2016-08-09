@@ -4,13 +4,13 @@
 
 pkgname=scilab
 pkgver=5.5.2
-pkgrel=10
+pkgrel=11
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
 license=('BSD' 'custom:CeCILL')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw'
-         'hdf5-1.8'
+         'hdf5'
          'libmatio' 'tk' 'curl'
          'java-runtime=7'
          'beanshell2' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
@@ -26,12 +26,14 @@ conflicts=('scilab-git' 'scilab-bin')
 source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-${pkgver}-batik-1.8.patch"
         "${pkgname}-${pkgver}-fop-2.0.patch"
+        "${pkgname}-${pkgver}-hdf5-1.8.10.patch::http://bugzilla.scilab.org/attachment.cgi?id=4382"
         "${pkgname}-${pkgver}-xmlgraphics-common-2.0.patch"
         "${pkgname}-${pkgver}-strict-jar.patch"
         "${pkgname}-${pkgver}-jogl.patch")
 sha256sums=('a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e'
             '4f243e32be0aa2755405e121e7a23a370276c98e00d1b016bd43df56a76782ca'
             'a8e03352cdaa5955414945e3fc8f56a035793869934345eef301cc6124b7ec95'
+            'ed8572b978ef7ad5d22b7f7346af139d771c7397cd0de2220e49621b59521bca'
             '64de4a044fb7228cae7003e6f86f6f0958ea10049f2fb24a11a07b0087e4ef36'
             'cda2635f25a56f3c423f7a88791222aae3caad53c086cedc0cfe48011936a5a8'
             '1796919522e00f6f0a38677ba1b79498822a9e75a7e7da2c31ebaa935153d92e')
@@ -50,7 +52,7 @@ prepare(){
   # Linked to https://codereview.scilab.org/#/c/18089/
   patch < "${srcdir}"/${pkgname}-${pkgver}-strict-jar.patch
   # http://bugzilla.scilab.org/show_bug.cgi?id=14539
-  # hdf5-1.8
+  patch -p1 < "${srcdir}"/${pkgname}-${pkgver}-hdf5-1.8.10.patch
 }
 
 build() {
@@ -67,9 +69,7 @@ build() {
     --with-matio \
     --with-umfpack \
     --with-fftw \
-    --with-modelica \
-    --with-hdf5-include=/opt/hdf5-1.8/include \
-    --with-hdf5-library=/opt/hdf5-1.8/lib \
+    --without-modelica \
     --with-install-help-xml \
     --enable-build-help \
     --enable-build-localization \
