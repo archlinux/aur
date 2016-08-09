@@ -44,8 +44,8 @@ package() {
     ### apache conf (optionnal)
     mkdir -p "${pkgdir}/etc/webapps/piwigo"    
     install -m644 "${srcdir}/apache.conf" "${pkgdir}/etc/webapps/piwigo/apache.conf"
-    if [ -d ${pkgdir}/etc/httpd/conf/extra/ ]
-    then
-	ln -s "${pkgdir}/etc/webapps/piwigo/apache.conf" "${pkgdir}/etc/httpd/conf/extra/piwigo.conf"
-    fi
+
+echo you should run :
+echo	ln -s "${pkgdir}/etc/webapps/piwigo/apache.conf" "${pkgdir}/etc/httpd/conf/extra/piwigo.conf"
+   
 }

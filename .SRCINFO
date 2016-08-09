@@ -12,7 +12,8 @@ pkgbase = piwigo
 	depends = php-gd
 	depends = mariadb
 	options = emptydirs
-	source = http://piwigo.org/download/dlcounter.php?code=latest
+	backup = etc/webapps/piwigo/apache.conf
+	source = apache.conf
 	source = piwigo.perm.sh
 	md5sums = SKIP
 	md5sums = SKIP
