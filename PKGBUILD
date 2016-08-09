@@ -16,7 +16,7 @@ depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
 optdepends=("cppunit: unit tests"
 	"binutils: backtrace and libiberty")
 makedepends=('cmake' 'git' 'boost')
-provides=('grive')
+provides=("grive=${pkgver}")
 conflicts=('grive')
 source=("${pkgname}"::"git+https://github.com/vitalif/grive2")
 sha256sums=('SKIP')

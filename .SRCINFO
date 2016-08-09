@@ -18,7 +18,7 @@ pkgbase = grive-git
 	depends = expat
 	optdepends = cppunit: unit tests
 	optdepends = binutils: backtrace and libiberty
-	provides = grive
+	provides = grive=421.a756414
 	conflicts = grive
 	source = grive-git::git+https://github.com/vitalif/grive2
 	sha256sums = SKIP
