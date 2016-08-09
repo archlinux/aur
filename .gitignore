@@ -1,3 +1,5 @@
 src/*
 pkg/*
 *.gz
+*.log
+*.xz
