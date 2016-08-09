@@ -1,7 +1,7 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=lumina-desktop
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 my_pkgrel=Release-p1
 pkgfullname="${pkgname%-*}-${pkgver}-${my_pkgrel}"
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD"
