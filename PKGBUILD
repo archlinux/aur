@@ -111,7 +111,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="x86_64 kernel for AMD Jaguar & Puma family CPUs only, with Interactive CPUFreq governor, BFQ i/o scheduler and tweaked config"
+  pkgdesc="64bit kernel for AMD Jaguar & Puma family CPUs only, with Interactive CPUFreq governor, BFQ i/o scheduler and tweaked config"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
