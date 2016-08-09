@@ -1,0 +1,83 @@
+pkgbase = caja-extensions-common-dev
+	pkgdesc = MATE extensions for Caja (GTK3 version)
+	pkgver = 1.15.0
+	pkgrel = 4
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = mate-common-dev
+	makedepends = caja-dev
+	depends = caja-dev
+	depends = dbus-glib
+	depends = gksu
+	depends = gtk3
+	depends = gupnp
+	depends = imagemagick
+	depends = samba
+	source = http://pub.mate-desktop.org/releases/1.15/caja-extensions-1.15.0.tar.xz
+	sha1sums = f4299e99fe889038834ab9743cf6418f01a777cc
+
+pkgname = caja-extensions-common-dev
+	pkgdesc = Caja extensions common files (GTK3 version)
+	conflicts = caja-extensions-common
+	conflicts = caja-extensions-common-gtk3
+
+pkgname = caja-gksu-dev
+	pkgdesc = Privilege granting extension for Caja using gksu (GTK3 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	depends = gksu
+	conflicts = caja-gksu
+	conflicts = caja-gksu-gtk3
+
+pkgname = caja-image-converter-dev
+	pkgdesc = A Caja extension for simple image conversions (GTK3 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	depends = imagemagick
+	conflicts = caja-image-converter
+	conflicts = caja-image-converter-gtk3
+
+pkgname = caja-open-terminal-dev
+	pkgdesc = A Caja extension for opening terminals in arbitrary local paths (GTK3 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	depends = glib2
+	conflicts = caja-open-terminal
+	conflicts = caja-open-terminal-gtk3
+
+pkgname = caja-sendto-dev
+	pkgdesc = A Caja extension for sending files (GTK3 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	depends = dbus-glib
+	depends = glib2
+	depends = gupnp
+	optdepends = pidgin: Support for sending to instant messaging networks.
+	optdepends = gajim: Support for sending to Jabber.
+	conflicts = caja-sendto
+	conflicts = caja-sendto-gtk3
+
+pkgname = caja-share-dev
+	pkgdesc = A Caja extension to quickly share a folder (GTK3 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	depends = samba
+	conflicts = caja-share
+	conflicts = caja-share-gtk3
+
+pkgname = caja-wallpaper-dev
+	pkgdesc = A Caja extension to quickly set wallpaper (GTK2 version)
+	groups = mate-extra
+	depends = caja-dev
+	depends = caja-extensions-common-dev
+	conflicts = caja-wallpaper-dev
+	conflicts = caja-wallpaper-gtk3
+
