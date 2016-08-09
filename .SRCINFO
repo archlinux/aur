@@ -1,0 +1,18 @@
+pkgbase = ruby-gir_ffi
+	pkgdesc = FFI-based GObject binding using the GObject Introspection Repository
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = http://www.github.com/mvz/ruby-gir-ffi
+	arch = any
+	license = LGPL2.1
+	depends = gobject-introspection-runtime
+	depends = ruby
+	depends = ruby-ffi-bit_masks
+	depends = ruby-indentation
+	noextract = gir_ffi-0.10.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gir_ffi-0.10.2.gem
+	sha1sums = 9a30ec50e82ecba934bc34076ccf3aea08e5906e
+
+pkgname = ruby-gir_ffi
+
