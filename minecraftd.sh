@@ -167,7 +167,7 @@ server_start() {
 		echo -e "\e[39;1m done\e[0m"
 	fi
 
-	if [[ "${IDLE_SERVER}" == "true" ]]; then
+	if [[ "${IDLE_SERVER,,}" == "true" ]]; then
 		# Check for the availability of the netcat (nc) binaries
 		if [[ -z "${NETCAT_CMD}" ]]; then
 			>&2 echo "The netcat binaries are needed for suspending an idle server."
@@ -196,7 +196,7 @@ server_start() {
 # Stop the server gracefully by saving everything prior and warning the users
 server_stop() {
 	# Quit the idle daemon
-	if [[ "${IDLE_SERVER}" == "true" ]]; then
+	if [[ "${IDLE_SERVER,,}" == "true" ]]; then
 		# Check for the availability of the netcat (nc) binaries
 		if [[ -z "${NETCAT_CMD}" ]]; then
 			>&2 echo "The netcat binaries are needed for suspending an idle server."
@@ -252,7 +252,7 @@ server_stop() {
 # Print whether the server is running and if so give some information about memory usage and threads
 server_status() {
 	# Print status information about the idle daemon
-	if [[ "${IDLE_SERVER}" == "true" ]]; then
+	if [[ "${IDLE_SERVER,,}" == "true" ]]; then
 		# Check for the availability of the netcat (nc) binaries
 		if [[ -z "${NETCAT_CMD}" ]]; then
 			>&2 echo "The netcat binaries are needed for suspending an idle server."
