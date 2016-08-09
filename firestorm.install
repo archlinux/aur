@@ -6,18 +6,3 @@ order to use Second Life: https://secondlife.com/
 Remember to log out and back in for the change to take effect.
 EOF
 }
-
-post_upgrade() {
-  cat <<EOF
-
-The Firestorm team highly recommends to delete the old configuration
-after an upgrade.  This may be accomplished by deleting \$HOME/.firestorm
-
-Remember, chat logs are saved in that directory, so make sure to backup
-any *.txt files you want to keep.
-
-There is an official mechanism to backup and restore settings for an
-upgrade, but you need to do it _before_ upgrading this package.
-See http://wiki.phoenixviewer.com/backup_settings for details.
-EOF
-}
