@@ -1,24 +1,23 @@
 # Maintainer: SaultDon <sault.don gmail>
 pkgname=whitebox
-pkgver=3.2.3
+pkgver=3.3.0
 pkgrel=1
-_pkgname="Whitebox_${pkgver//./_}"
+_pkgname="WhiteboxGAT"
 pkgdesc="A Geographic information system (GIS) and remote sensing package intended for advanced geospatial analysis and data visualization."
 arch=('any')
 url="http://www.uoguelph.ca/~hydrogeo/Whitebox/index.html"
 license=('GPL3')
 depends=('jre8-openjdk' 'bash')
 provides=("$pkgname=$pkgver")
-conflicts=("$pkgname-svn")
 install=$pkgname.install
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.zip::http://www.uoguelph.ca/~hydrogeo/Whitebox/WhiteboxGAT.zip"
 	"$pkgname.sh"
 	"$pkgname.desktop")
 noextract=($pkgname-$pkgver.zip)
-sha1sums=('15da81206c850e7b88c34fc602d5576912383d24'
+sha1sums=('8fc1103b4be88cbd69f00004100a6403a7d46e65'
           'a5864fbbc835f91b210281a6cdddea3c8572faae'
-          '293d4fe730407a8d743467580d234a8f7b3ba9b8')
+          '88138d349e4e65ed1d92e9e22c7c9172d40dcfb0')
 
 package(){
 

@@ -1,6 +1,6 @@
 pkgbase = whitebox
 	pkgdesc = A Geographic information system (GIS) and remote sensing package intended for advanced geospatial analysis and data visualization.
-	pkgver = 3.2.3
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.uoguelph.ca/~hydrogeo/Whitebox/index.html
 	install = whitebox.install
@@ -9,15 +9,14 @@ pkgbase = whitebox
 	license = GPL3
 	depends = jre8-openjdk
 	depends = bash
-	provides = whitebox=3.2.3
-	conflicts = whitebox-svn
-	noextract = whitebox-3.2.3.zip
-	source = whitebox-3.2.3.zip::http://www.uoguelph.ca/~hydrogeo/Whitebox/WhiteboxGAT.zip
+	provides = whitebox=3.3.0
+	noextract = whitebox-3.3.0.zip
+	source = whitebox-3.3.0.zip::http://www.uoguelph.ca/~hydrogeo/Whitebox/WhiteboxGAT.zip
 	source = whitebox.sh
 	source = whitebox.desktop
-	sha1sums = 15da81206c850e7b88c34fc602d5576912383d24
+	sha1sums = 8fc1103b4be88cbd69f00004100a6403a7d46e65
 	sha1sums = a5864fbbc835f91b210281a6cdddea3c8572faae
-	sha1sums = fd3f308e69ce14ff62f7365a09bcf76e02b86be9
+	sha1sums = 88138d349e4e65ed1d92e9e22c7c9172d40dcfb0
 
 pkgname = whitebox
 
