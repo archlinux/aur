@@ -1,6 +1,6 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=sonic-pi-git
-pkgver=v2.10.0.r690.g7f2e469
+pkgver=v2.10.0.r716.gdd1f41a
 pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
@@ -82,7 +82,7 @@ package() {
   mkdir $pkgdir/usr/share/pixmaps
   install -Dm644 "sonic-pi-git.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 #Install the license to /usr/share/licenses
-  mkdir $pkgdir/usr/share/licenses
-  mkdir $pkgdir/usr/share/licenses/sonic-pi-git
-  install -Dm644 "$srcdir/sonic-pi/app/gui/qt/info/LICENSE.html" "$pkgdir/usr/share/licenses/sonic-pi/LICENSE.html" 
+  #mkdir $pkgdir/usr/share/licenses
+  #mkdir $pkgdir/usr/share/licenses/sonic-pi-git
+  #install -Dm644 "$srcdir/sonic-pi/app/gui/qt/info/LICENSE.html" "$pkgdir/usr/share/licenses/sonic-pi/LICENSE.html" 
 }
