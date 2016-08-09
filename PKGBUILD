@@ -1,4 +1,5 @@
-# Maintainer: Frank Siegert <frank.siegert@googlemail.com>
+# Maintainer: Konstantin Gizdov <arch@kge.pw>
+# Contributor: Frank Siegert <frank.siegert@googlemail.com>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Sebastian Voecking <voeck@web.de>
