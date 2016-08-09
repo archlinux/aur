@@ -5,14 +5,15 @@
 _p=evince
 pkgname=evince2
 pkgver=2.32.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simply a document viewer. Gtk2 version."
 url="http://projects.gnome.org/evince/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk2' 'libspectre>=0.2.6' 'gsfonts' 'poppler-glib>=0.16.2' 'libdjvu>=3.5.22'
          'gnome-icon-theme>=2.31.0' 't1lib' 'desktop-file-utils' 'dconf' 'gconf')
-makedepends=('pkgconfig' 'intltool' 'gobject-introspection' 'gtk-doc' 'gnome-common')
+makedepends=('pkgconfig' 'intltool' 'gobject-introspection' 'gtk-doc' 'gnome-common'
+	     'gnome-doc-utils')
 provides=("$_p=$pkgver")
 options=('!libtool')
 source=("http://ftp.gnome.org/pub/gnome/sources/$_p/2.32/$_p-$pkgver.tar.bz2"
