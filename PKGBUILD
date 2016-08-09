@@ -1,14 +1,16 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=VERSION
-pkgrel=1
+pkgver=r1080.2e936ac
+pkgrel=2
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake')
-depends=('python' 'boost' 'tk' 'libxmu' 'opencascade' 'ffmpeg' 'openmpi' 'metis')
+depends=('python' 'boost' 'tk' 'libxmu' 'opencascade')
+provides=('${pkgname%-git}')
+conflicts=('netgen-nogui')
 source=("${pkgname%-git}::git+http://git.code.sf.net/p/netgen-mesher/git#branch=master")
 md5sums=('SKIP')
 
@@ -20,7 +22,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/${pkgname%-git}
   mkdir build && cd build
-  cmake -DINSTALL_DIR="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=RELEASE -DUSE_JPEG=ON -DUSE_MPEG=ON -DUSE_MPI=ON -DUSE_OCC=ON ..
+  cmake -DINSTALL_DIR="${pkgdir}/opt/netgen" -DCMAKE_BUILD_TYPE=RELEASE -DUSE_OCC=ON ..
   make
 }
 
