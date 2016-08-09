@@ -1,7 +1,7 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 pkgname=lumina-desktop-git
-pkgver=r1096.6abc2c4
+pkgver=r1638.dd32a18
 pkgrel=1
 pkgdesc="A Lightweight QT5 Desktop for FreeBSD -- git version"
 arch=('x86_64' 'i686')
@@ -13,20 +13,19 @@ makedepends=('git' 'qt5-base' 'qt5-tools')
 conflicts=("${pkgname%-*}" "lumina-de-git" "insight-fm")
 provides=("${pkgname%-*-*}" "insight-fm")
 install="${pkgname%-*}.install"
-source=(git+https://github.com/pcbsd/lumina.git)
+source=(git+https://github.com/trueos/lumina.git)
 md5sums=(SKIP)
 
 
 build(){
-    cd $srcdir/lumina/
-    $srcdir/lumina/libLumina/make-linux-distro.sh Debian
+    cd "$srcdir/lumina/"
     find $srcdir/lumina -name *.desktop -exec sed -i 's/usr\/local/usr/' {} \;
-    qmake-qt5 PREFIX="/usr" QT5LIBDIR=/usr/lib/qt
+    qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX="/usr" QT5LIBDIR=/usr/lib/qt
     make
 }
 
 package() {
-    cd $srcdir/lumina
+    cd "$srcdir/lumina"
     make INSTALL_ROOT="${pkgdir}" install
     mv "${pkgdir}"/usr/etc "${pkgdir}"/etc
 }
