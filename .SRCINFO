@@ -1,0 +1,17 @@
+pkgbase = git-series-git
+	pkgdesc = Git extension that tracks changes to a patch series over time
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = http://github.com/git-series/git-series
+	arch = any
+	license = Unknown
+	makedepends = rust
+	makedepends = cargo
+	depends = git
+	provides = git-series
+	conflicts = git-series
+	source = git+https://github.com/git-series/git-series.git
+	md5sums = SKIP
+
+pkgname = git-series-git
+
