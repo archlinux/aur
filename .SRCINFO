@@ -1,4 +1,4 @@
-pkgbase = git-series-git
+pkgbase = git-series
 	pkgdesc = Git extension that tracks changes to a patch series over time
 	pkgver = 0.8.7
 	pkgrel = 1
@@ -9,10 +9,8 @@ pkgbase = git-series-git
 	makedepends = rust
 	makedepends = cargo
 	depends = git
-	provides = git-series
-	conflicts = git-series
-	source = git+https://github.com/git-series/git-series.git
+	source = git+https://github.com/git-series/git-series.git#tag=v0.8.7
 	md5sums = SKIP
 
-pkgname = git-series-git
+pkgname = git-series
 

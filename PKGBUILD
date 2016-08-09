@@ -1,6 +1,6 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
-pkgname=git-series-git
+pkgname=git-series
 pkgver=0.8.7
 pkgrel=1
 pkgdesc="Git extension that tracks changes to a patch series over time"
@@ -10,14 +10,8 @@ license=('Unknown')
 depends=('git')
 makedepends=('rust' 'cargo')
 optdepends=()
-provides=('git-series')
-conflicts=('git-series')
-source=("git+https://github.com/git-series/git-series.git")
+source=("git+https://github.com/git-series/git-series.git#tag=v${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-  git --git-dir="$srcdir/git-series/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
-}
 
 build() {
   cd "$srcdir/git-series"
