@@ -1,4 +1,6 @@
 v*.tar.gz
 mkinitcpio-dropbear-*-any.pkg.tar.xz
-mkinitcpio-dropbear-*.src.tar.gz
+mkinitcpio-dropbear-*.tar.gz
 develop.zip
+pkg/*
+src/*
