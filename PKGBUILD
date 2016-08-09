@@ -5,7 +5,7 @@ pkgbase=linux-netbook
 _srcname=linux-4.4
 _bfq=v7r11
 pkgver=4.4.16
-pkgrel=1
+pkgrel=2
 arch=('i686')
 url="https://github.com/korrode/linux-netbook"
 license=('GPL2')
@@ -26,10 +26,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "0002-block-introduce-the-BFQ-${_bfq}-I-O-sched.patch::http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfq}/0002-block-introduce-the-BFQ-${_bfq}-I-O-sched-for-4.4.0.patch"
         "0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfq}.patch::http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfq}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfq}-for.patch"
         # Graysky's more CPU optimisations patch
-        "http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz")
+        "http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz"
+        # Interactive CPUFreq governor patches
+        "interactive_governor-linux4.4-20160501.patch")
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '7181b6cb3a1611dab9179f57846a3f03bf2705aa3e4cddd9fbd0398bde50d5f9'
-            '3e480308e381a456370c0a29e5b225319ad213988d4570c048bfe41e25ab4581'
+            'b8a40f9fbc69f848f8b3165a8882fa6a22f6e81d3564f31b95a738b6c3cb25ef'
             'e794216a8ae80182b506957e313586777a5bbb1ccf0760d904a933c511768127'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
@@ -37,7 +39,8 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
-            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791')
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
+            '09b673d3c1f9ba8ec49bf23dc15b6498c0f938958c2da77ed126d74d56ed5ba3')
 _kernelname=${pkgbase#linux}
 
 prepare() {
@@ -62,13 +65,16 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
   
-  # add BFQ scheduler
+  # add BFQ i/o scheduler
   patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfq}.patch"
   patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-${_bfq}-I-O-sched.patch"
   patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfq}.patch"
 
   # Make Atom optimisation work with newer gcc
   patch -p1 -i "${srcdir}/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
+  
+  # add Interactive CPUFreq governor
+  patch -p1 -i "${srcdir}/interactive_governor-linux4.4-20160501.patch"
 
   cat "${srcdir}/config" > ./.config
 
@@ -105,8 +111,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} i686 kernel and modules with BFQ and tweaked config, for Intel Atom CPU only"
-  [ "${pkgbase}" = "linux" ] && groups=('base')
+  pkgdesc="32bit kernel for Intel Atom CPUs only, with Interactive CPUFreq governor, BFQ i/o scheduler and tweaked config"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux-netbook-manjaro=${pkgver}")
