@@ -81,7 +81,7 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
-Exec=firefox-unbranded %u
+Exec=firefox %u
 Terminal=false
 Type=Application
 Icon=firefox-nightly
@@ -262,7 +262,7 @@ Name[vi]=Mở cửa sổ mới
 Name[xh]=Vula iwindow entsha
 Name[zh_CN]=打开新窗口
 Name[zh_TW]=開啟新視窗
-Exec=firefox-unbranded -new-window
+Exec=firefox -new-window
 
 [Desktop Action NewPrivateWindow]
 Name=New private window
@@ -349,4 +349,4 @@ Name[vi]=Cửa sổ riêng tư mới
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=firefox-unbranded -private-window
+Exec=firefox -private-window
