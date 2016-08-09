@@ -2,11 +2,11 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-gtk3'
-pkgver='0.026'
+pkgver='0.028'
 pkgrel='1'
 pkgdesc="Perl interface to the 3.x series of the gtk+ toolkit"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('LGPL')
 options=('!emptydirs')
 depends=('gtk3' 'perl-cairo-gobject>=1.000' 'perl-glib-object-introspection>=0.016')
 makedepends=()
