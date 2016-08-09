@@ -4,7 +4,7 @@
 pkgname=glpresenter
 pkgbase=glpresenter
 pkgver=0.3.3 # note: if the pkgver had been '0.99-10' then use an underscore. like '0.99_10'
-pkgrel=1
+pkgrel=2
 pkgdesc="A dual-screen OpenGL PDF presentation software"
 arch=('any')
 url="http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/"
