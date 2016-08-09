@@ -1,4 +1,6 @@
 v*.tar.gz
 mkinitcpio-utils-*-any.pkg.tar.xz
-mkinitcpio-utils-*.src.tar.gz
+mkinitcpio-utils-*.tar.gz
 develop.*
+src/*
+pkg/*
