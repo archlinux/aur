@@ -1,6 +1,6 @@
 pkgname=urho3d
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license."
 arch=('i686' 'x86_64')
 url="http://urho3d.github.io"
@@ -11,8 +11,8 @@ conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 provides=("$pkgname=$pkgver")
 source=("https://github.com/urho3d/Urho3D/archive/$pkgver.tar.gz")
-md5sums=('f8f4aadf9b47f9609bea3738edd04f33')
-sha1sums=('41d41c2fd9687a24cdcf9276592f09ebc4559ef1')
+md5sums=('b1f554809c255ca11bd5b478ccb679b1')
+sha1sums=('1f64391037421a9fdcbb7b95757834248db17442')
 install=urho3d.install
 
 build() {
