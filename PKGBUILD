@@ -24,7 +24,8 @@ makedepends=('cmake'
 optdepends=('qjackctl: for graphical jackd spawning/configuration'
 	    'jack2: better jackd if you want to use without gui'
        'sc3-plugins-git: plugins for supercollider'
-	    'pulseaudio-jack: support for jack2-pulseaudio integration')
+	    'pulseaudio-jack: support for jack2-pulseaudio integration'
+       'cadence: easy jack/pulseaudio crossover')
 source=('sonic-pi::git+https://github.com/samaaron/sonic-pi.git'
 	     'launcher.sh'
         'sonic-pi-git.png'
