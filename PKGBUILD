@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
 license=('GPL2')
 depends=('lua52' 'rsync')
-makedepends=('asciidoc' 'lua52')
+makedepends=('asciidoc' 'lua52' 'cmake')
 source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
         "CMakeLists.txt.patch"
         "FindLua.cmake.patch"
