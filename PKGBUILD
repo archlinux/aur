@@ -1,15 +1,18 @@
 # Maintainer: Dor Askayo <dor.askayo@gmail.com>
 
 pkgname=steamrun
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple script for executing programs in the Steam Runtime'
-arch=('any')
+arch=(i686 x86_64)
 url='https://github.com/doraskayo/steamrun'
 license=('MIT')
-depends=('steam')
+depends=(gcc-libs
+         libxcb
+         libgpg-error
+         steam)
 source=("https://github.com/doraskayo/steamrun/archive/${pkgver}.tar.gz")
-sha256sums=('4f71118c53d0a2d85d91218587261cfa32036a93c575c6a5a3695e5987369512')
+sha256sums=('5e5b20e34a0a4faa05ede663b071531ecd6c893e689510034049630a27e5a940')
 
 package() {
   cd "$srcdir/steamrun-$pkgver"
