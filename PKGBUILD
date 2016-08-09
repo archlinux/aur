@@ -21,14 +21,23 @@ depends=('vapoursynth-plugin-eedi2-git'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk.git")
-sha1sums=('SKIP')
+source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk.git"
+        'https://patch-diff.githubusercontent.com/raw/HomeOfVapourSynthEvolution/vsTAAmbk/pull/1.patch'
+        )
+sha1sums=('SKIP'
+          '4bc3de4848f38c39c323e47ceaba39edc3b26cc2'
+          )
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
   _ver="$(cat README.md | grep '# vsTAAmbk' | cut -d ' ' -f3)"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_plug}"
+  patch -p1 -i "${srcdir}/1.patch"
 }
 
 package() {
