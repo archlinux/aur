@@ -1,0 +1,16 @@
+pkgbase = ruby-ffi-bit_masks
+	pkgdesc = FFI plugin which adds support for bitmasked types (or flags) to FFI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/postmodern/ffi-bit_masks
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ffi
+	noextract = ffi-bit_masks-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ffi-bit_masks-0.1.1.gem
+	sha1sums = 98a448797eadea82412b546c4293a132e013bc56
+
+pkgname = ruby-ffi-bit_masks
+
