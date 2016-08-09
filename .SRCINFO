@@ -2,7 +2,7 @@
 # Wed Mar 15 17:59:59 UTC 2017
 pkgbase = urxvt-tabbedex-git
 	pkgdesc = A tabbed extension for rxvt-unicode with several enhancements
-	pkgver = 0.4.r36.g3b82917
+	pkgver = 0.4.r58.gac220eb
 	pkgrel = 1
 	url = https://github.com/mina86/urxvt-tabbedex
 	arch = any
