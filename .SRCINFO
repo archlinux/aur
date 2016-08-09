@@ -11,6 +11,7 @@ pkgbase = fastdriver-git
 	depends = crypto++
 	provides = fastdriver
 	options = !buildflags
+	options = staticlibs
 	source = git+https://github.com/lackofdream/fastdriver.git
 	md5sums = SKIP
 

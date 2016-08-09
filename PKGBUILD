@@ -14,10 +14,10 @@ pkgdesc="Fast-ODP (Old-Driver-Protocol) command line tool, C++ implementation"
 arch=('i686' 'x86_64')
 url="https://github.com/lackofdream/fastdriver"
 license=('Apache')
-depends=(crypto++)
+depends=('crypto++')
 makedepends=('git' 'cmake') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("fastdriver")
-options=("!buildflags")
+provides=('fastdriver')
+options=('!buildflags' 'staticlibs')
 source=('git+https://github.com/lackofdream/fastdriver.git')
 md5sums=('SKIP')
 
