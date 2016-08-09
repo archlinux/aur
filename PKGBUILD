@@ -1,13 +1,14 @@
-# Maintainer: Andrew Querol <andrew@querol.me>
+# Contributor: Andrew Querol <andrew@querol.me>
+# Maintainer: Rafael Fontenelle <rafaeff@gnome.org>
 
 pkgname=chrome-gnome-shell-git
-pkgver=5.1_118.ad397d6
+pkgver=6.2_7_gc2df1fe
 pkgrel=1
-pkgdesc="Native connector for extensions.gnome.org using chrome-gnome-shell"
+pkgdesc="Native connector for extensions.gnome.org"
 arch=('any')
-url="https://git.gnome.org/browse/chrome-gnome-shell"
+url="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
 license=('GPL')
-depends=('gnome-shell' 'python2')
+depends=('gnome-shell' 'python')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 replaces=('gs-chrome-connector') # Old name, renamed at request of the maintainer
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s_%s.%s" "${pkgver%_*}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags | sed -e 's/v//;s/-/_/g'
 }
 
 prepare() {
