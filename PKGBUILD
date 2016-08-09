@@ -1,42 +1,37 @@
-# Maintainer: Daniel Wallace: <danielwallace at gtmanfred dot com>
-# Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
-# Contributor: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
-
+# Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=hub-git
-_pkgname=hub
-pkgver=2.2.0.27.g64187e3
-epoch=1
-pkgver(){
-    cd $_pkgname
-    git describe --tags | sed 's/-/./g;s/^v//'
-}
+pkgver=v2.2.0.preview1.r400.g713fd93
 pkgrel=1
-pkgdesc="hub introduces git to GitHub"
-arch=('x86_64')
-url="http://hub.github.com"
-depends=('git')
-makedepends=('go')
+pkgdesc="cli interface for Github"
+url="https://hub.github.com"
+arch=('x86_64' 'i686')
 license=('MIT')
-source=($_pkgname::git://github.com/github/hub.git)
-md5sums=('SKIP')
-conflicts=('hub' 'hub-rubygem-git')
+conflicts=('hub')
 provides=('hub')
-replaces=('hub-rubygem-git')
+depends=('git')
+makedepends=('go' 'groff' 'ruby-bundler')
+source=("git+https://github.com/github/hub.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname/-git/}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "$srcdir/$_pkgname"
-    ./script/build
-    gzip --best -c man/$_pkgname.1> $_pkgname.1.gz
+  cd "$srcdir/${pkgname/-git/}"
+
+  make all man-pages
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$srcdir/${pkgname/-git/}"
 
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "etc/hub.bash_completion.sh" "$pkgdir/usr/share/bash-completion/completions/hub"
-    install -Dm644 "etc/hub.zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_hub"
-
-    install -Dm644 "man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+  install -Dm755 bin/hub "$pkgdir/usr/bin/hub"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname/-git/}/LICENSE"
+  install -Dm644 etc/hub.bash_completion.sh "$pkgdir/usr/share/bash-completion/completions/hub"
+  install -Dm644 etc/hub.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_hub"
+  for manpage in man/hub.1 man/hub-*.1; do
+    install -Dm644 $manpage "$pkgdir/usr/share/man/man1/$(basename $manpage)"
+  done
 }
-
