@@ -13,7 +13,7 @@ makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 replaces=('gs-chrome-connector') # Old name, renamed at request of the maintainer
 conflicts=($replaces)
-source=("${pkgname%-git}::git+https://git.gnome.org/browse/chrome-gnome-shell")
+source=("git+https://git.gnome.org/browse/chrome-gnome-shell")
 md5sums=('SKIP')
 
 pkgver() {
