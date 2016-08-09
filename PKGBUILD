@@ -3,7 +3,7 @@
 
 pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
-pkgver=10148
+pkgver=10157
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++) — nightly build"
 arch=('any')
@@ -20,7 +20,7 @@ source=("http://www.ultimatepp.org/downloads/upp-x11-src-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-md5sums=('9141fabb4d97a8073c399bf2c9e77c51'
+md5sums=('45179601176ae96c49b9f29444f6e387'
          'a1b57c2231b6b0fa8070941fa4accf72'
          'b214709f096e4f50d61f50988359241e'
          '204e9ece27294b4b73cb3a31f0474d8d'
