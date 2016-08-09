@@ -1,24 +1,24 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=autorevision
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="Extracts metadata about the head of a repository; useful for build scripts."
 arch=('any')
 url="https://autorevision.github.io/"
 license=('BSD')
 makedepends=('asciidoc')
-source=(https://github.com/Autorevision/autorevision/releases/download/v%2F${pkgver}/autorevision-${pkgver}.tgz)
-sha256sums=('a2e141fa73153ccaa8e7fdf7ad62d935a133c93571c4bc2c68385525447a1140')
+source=(https://github.com/Autorevision/autorevision/archive/v/${pkgver}.tar.gz)
+sha256sums=('54fb0d20ac67bc77ffc1c6bb9580da7dd401985c1c9f701b9ced370e5efce218')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver}"
+  cd "$pkgname-v-${pkgver}"
 
   make VERS=$pkgver
   fmt < COPYING.md > COPYING
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}"
+  cd "$pkgname-v-${pkgver}"
 
   make DESTDIR="${pkgdir}" prefix=/usr install
   install -dm 755 "${pkgdir}"/usr/share/licenses/autorevision
