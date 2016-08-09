@@ -1,4 +1,5 @@
-# Maintainer: Jacob Emmert-Aronson <jacob at mlaronson dot com>
+# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Contributor: Jacob Emmert-Aronson <jacob at mlaronson dot com>
 # Contributor: Rene Schoebel <schoebel.r at gmail dot com>
 # Contributor: ZekeSulastin <zekesulastin@gmail.com>
 # Contributor: Mr_Robotic_Evil <mr.robotic.evil@googlemail.com>
@@ -12,8 +13,8 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=3.7.2
-_pkgver=3_7_2 # Upstream's url/dirs ...
+pkgver=3.7.4
+_pkgver=3_7_4 # Upstream's url/dirs
 pkgrel=1
 epoch=1
 pkgdesc="An enhancement of the FreeSpace 2 engine"
@@ -29,37 +30,36 @@ source=(http://swc.fs2downloads.com/builds/fs2_open_${_pkgver}_src.tgz
         'fs2_open.desktop'
         'increase_joy_buttons_fixed.patch'
         'options')
-sha256sums=('3e266eb84a4c289e21cb08f3bde8e6e6e0d1bf97953e8cc06db1a179cc127ea2'
-            'c978c91ced574a0904a883d41c72248796e0cf50a0c5e06bc5f890d92bb244c1'
+sha256sums=('092b88ecf2ec13506a18e84be1d48cc03f65abba4b2cb5329450e9cae7cdbb25'
+            'b2032f44400f172fad769a94b9a3b5af16d46ac3901f855b7a5693870876ad24'
             'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
-            '015b57bafd327e7b549a09e0a03619fabdc7be63afe88860fbe0f4114dc81731'
+            '44b46f3aa70c515d6ea28f85703479cb53238c2dca8c005d9eca56c301d78efd'
             'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741')
 
 prepare() {
-  cd "$srcdir/${pkgname}_${_pkgver}"
+  cd "${pkgname}_${_pkgver}"
 
   # Increases hard limit of joystick buttons for better use with HOTAS etc.
   patch -p1 -i "$srcdir/increase_joy_buttons_fixed.patch"
 }
 
 build() {
-  cd "$srcdir/${pkgname}_${_pkgver}"
+  cd "${pkgname}_${_pkgver}"
 
   # Add --enable-debug to make a debug build.  These are NOT meant for
   # general play; only make a debug build if generating logs/bug-reports.
-  env LDFLAGS="-l:liblua.so.5.1 $LDFLAGS" \
-      CXXFLAGS="-I/usr/include/lua5.1 $CXXFLAGS" \
+  env LUA_CFLAGS="$(pkg-config --cflags lua51)" \
+      LUA_LIBS="$(pkg-config --libs lua51)"     \
       ./autogen.sh --enable-speech
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}_${_pkgver}"
+  cd "${pkgname}_${_pkgver}"
 
-  _pkgver=${pkgver//~rc/_RC}
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 ../fs2_open.desktop "$pkgdir/usr/share/applications/fs2_open.desktop"
   install -D -m644 ../options "$pkgdir/usr/share/$pkgname/options"
-  install -D -m755 code/fs2_open_$_pkgver "$pkgdir/opt/$pkgname/fs2_open_$_pkgver"
-  install -D -m755 "$srcdir/fs2_open" "$pkgdir/usr/bin/fs2_open"
+  install -D -m755 code/fs2_open_$pkgver "$pkgdir/opt/$pkgname/fs2_open_$pkgver"
+  install -D -m755 "../fs2_open" "$pkgdir/usr/bin/fs2_open"
 }
