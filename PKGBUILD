@@ -8,10 +8,10 @@ pkgdesc="A lightweight and cross-platform music player."
 arch=("x86_64" "i686")
 url="http://museeks.io"
 license=("MIT")
-depends=("gtk2" "cairo" "freetype2" "fontconfig" "gconf" "nss" "alsa-lib")
+depends=("gtk2" "cairo" "freetype2" "fontconfig" "gconf" "nss" "alsa-lib" "ttf-font")
 makedepends=("gendesk")
 provides=("museeks")
-conflicts=("museeks museeks-git")
+conflicts=("museeks" "museeks-git")
 md5sums=("9552e82aab69503588724fc1c1d33d40")
 
 _platform="x64"
