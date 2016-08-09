@@ -1,12 +1,12 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=scalapack
 pkgver=2.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
 license=('custom')
 depends=('glibc' 'openmpi' 'blas' 'lapack') # 'atlas-lapack' 'blacs-openmpi' )
-makedepends=('cmake')
+makedepends=('cmake' 'gcc-fortran')
 provides=('blacs')
 conflicts=()
 replaces=()
