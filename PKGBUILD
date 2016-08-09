@@ -1,6 +1,6 @@
 # Maintainer: Ebrahim Azarisooreh <ebrahim.azarisooreh@gmail.com>
 pkgname=mousetrap
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="An X11 utility that hides the mouse pointer after a specified interval of time"
 arch=('any')
@@ -13,7 +13,7 @@ backup=()
 options=()
 install=mousetrap.install
 source=("https://github.com/eazar001/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('bb92566812d8d86b2b1880c1e17e7159')
+md5sums=('c1ef1c03eb9efebb271ec2685ef24677')
 
 build() {
   cd "$pkgname-$pkgver"
