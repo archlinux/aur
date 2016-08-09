@@ -1,12 +1,12 @@
 # Maintainer: Aaron Abbott <aabmass@gmail.com>
 pkgname=hyperterm
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A terminal emulator built with JS/HTML/CSS on electron"
 arch=('any')
 url="https://hyperterm.org/"
-license=('GPL')
+license=('MIT')
 groups=()
 depends=('nodejs' 'electron')
 makedepends=('npm')
