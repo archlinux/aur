@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=symfony-installer
-pkgver=1.5.6
+pkgver=1.5.8
 pkgrel=1
 pkgdesc='The Symfony installer.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('php')
 makedepends=('php-box' 'php-composer')
 source=("https://github.com/symfony/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6cc15a8ff0f828d43251453c83b6e86dac9142e2d8e7d7f8d156cc7173623953')
+sha256sums=('72d8247530b29494f5db5877d21a65d6c42b386e507ea4089b8a660eb9637d7c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    php-box build
+    php -d phar.readonly=Off /usr/bin/php-box build
 }
 
 package() {
