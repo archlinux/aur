@@ -1,7 +1,7 @@
 pkgbase = steamrun
 	pkgdesc = A simple script for executing programs in the Steam Runtime
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/doraskayo/steamrun
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = steamrun
 	depends = libxcb
 	depends = libgpg-error
 	depends = steam
-	source = https://github.com/doraskayo/steamrun/archive/0.2.0.tar.gz
-	sha256sums = 5e5b20e34a0a4faa05ede663b071531ecd6c893e689510034049630a27e5a940
+	source = https://github.com/doraskayo/steamrun/archive/0.3.0.tar.gz
+	sha256sums = 33b7264485b2f65893f0d98c39fa5cc6cd9b50c1d28d5f00b4a1b4468ca3acc9
 
 pkgname = steamrun
+
