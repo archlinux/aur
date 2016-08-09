@@ -2,7 +2,7 @@
 
 pkgname=steamrun
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple script for executing programs in the Steam Runtime'
 arch=(i686 x86_64)
 url='https://github.com/doraskayo/steamrun'
