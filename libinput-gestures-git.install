@@ -1,0 +1,5 @@
+post_install() {
+	echo -e "\e[34;1m==>\e[39;1m NOTE: You must be a member of the input group to have permission to read the touchpad device! \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: You must logout and back in order for the daemon to automatically start. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: The only honored configuration file is located at /etc/conf.d/libinput-gestures.conf . \e[0m"
+}
