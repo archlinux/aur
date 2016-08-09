@@ -1,4 +1,4 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Mark Smith <markzzzsmith@yahoo.com.au>
 
 pkgname=vanessa-logger
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Provides a generic logging layer that may be used to log to one or more of syslog, an open file handle or a file name."
 arch=('i686' 'x86_64')
 url="http://horms.net/projects/vanessa/"
-license="GPL"
+license=('GPL')
 provides=('vanessa_logger')
 options=(!libtool)
 source=($url/download/$_name/$pkgver/$_name-$pkgver.tar.bz2)
@@ -29,3 +29,4 @@ package() {
   cd $_name-$pkgver
   make DESTDIR="$pkgdir" install
 }
+
