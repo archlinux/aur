@@ -1,4 +1,6 @@
 v*.tar.gz
 mkinitcpio-netconf-*-any.pkg.tar.xz
-mkinitcpio-netconf-*.src.tar.gz
+mkinitcpio-netconf-*.tar.gz
 develop.*
+pkg/*
+src/*
