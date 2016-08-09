@@ -1,6 +1,6 @@
 pkgbase = ipxe-netboot
 	pkgdesc = iPXE build for Arch Linux netboot
-	pkgver = r5499.dfb4c58
+	pkgver = r5564.2afd66e
 	pkgrel = 1
 	url = http://ipxe.org
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ipxe-netboot
 	makedepends = xz
 	makedepends = zlib
 	options = !strip
-	source = ipxe::git+https://github.com/brain0/ipxe#branch=ipv6_fixes
+	source = ipxe::git+https://git.ipxe.org/ipxe.git#branch=master
 	source = arch.ipxe
 	source = codesigning_thomas_archlinux.pem
 	source = codesigning_pierre_archlinux.pem

@@ -1,6 +1,6 @@
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
 pkgname=ipxe-netboot
-pkgver=r5499.dfb4c58
+pkgver=r5564.2afd66e
 pkgrel=1
 pkgdesc="iPXE build for Arch Linux netboot"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git'
              'xz'
              'zlib')
 options=(!strip)
-source=('ipxe::git+https://github.com/brain0/ipxe#branch=ipv6_fixes'
+source=('ipxe::git+https://git.ipxe.org/ipxe.git#branch=master'
         arch.ipxe
         codesigning_thomas_archlinux.pem
         codesigning_pierre_archlinux.pem
