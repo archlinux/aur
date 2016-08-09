@@ -7,14 +7,13 @@ pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
 url="https://github.com/matrix-org/synapse"
-depends=('python2-matrix-angular-sdk-git'
-         'python2-twisted>=15.1.0' 'python2-service-identity'
+depends=('python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
          'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr'
+         'python2-signedjson' 'python2-pymacaroons-pynacl'
          'python2-service-identity')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
