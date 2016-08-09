@@ -7,7 +7,7 @@
 pkgname=gdal-filegdb
 _pkgname=gdal
 _pkgver=2.1
-pkgver=2.1.r35014
+pkgver=2.1
 pkgrel=1
 pkgdesc="A translator library for vector and raster geospatial data formats (PDF, FileGDB, KMZ support)"
 arch=('i686' 'x86_64')

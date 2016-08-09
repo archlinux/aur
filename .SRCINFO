@@ -1,6 +1,6 @@
 pkgbase = gdal-filegdb
 	pkgdesc = A translator library for vector and raster geospatial data formats (PDF, FileGDB, KMZ support)
-	pkgver = 2.1.r35014
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://www.gdal.org/
 	changelog = gdal-filegdb.changelog
