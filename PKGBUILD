@@ -2,7 +2,7 @@
 pkgname=filegdb-api
 _pkgname=FileGDB_API
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ESRI File Geodatabase (FileGDB) API"
 arch=('i686' 'x86_64')
 url="http://www.esri.com/apps/products/download/#File_Geodatabase_API_1.3"
@@ -35,6 +35,9 @@ build() {
 	#Setup LD_LIBRARY_PATH
 	export LD_LIBRARY_PATH=$srcdir/${pkgname}/lib:$LD_LIBRARY_PATH
     
+    #Modify make.include to use old ABI
+    cd "$srcdir/${pkgname}/include"
+    sed -i '/-D_LARGEFILE64_SOURCE/ s/$/ -D_GLIBCXX_USE_CXX11_ABI=0/' make.include
 
     #Building all samples
 	cd "$srcdir/${pkgname}/samples"
@@ -44,8 +47,8 @@ build() {
 	cd "$srcdir/${pkgname}/samples/ProcessTopologies"
 
 	# Insert libxml2 library path to Makefile
-	sed -i '/^CXXFLAGS=/ s/$/ -I\/usr\/include\/libxml2\//' Makefile
-	make
+	#sed -i '/^CXXFLAGS=/ s/$/ -I\/usr\/include\/libxml2\//' Makefile
+	#make
 }
 
 # Uncomment check() portion if you want to perform sample tests
