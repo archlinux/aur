@@ -2,9 +2,9 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-aur
-pkgver=4.1.0
-_pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+_pkgver=4.1.1
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
 url="https://github.com/manjaro/pamac"
@@ -19,17 +19,14 @@ conflicts=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz"
-        'preferences-dialog.patch::https://github.com/manjaro/pamac/commit/5019f66b8673ac3a30f3e3174a85412ef9d72fd0.patch')
-sha256sums=('11378b4e3580242a24e2f3988b34f6310c65d19defeb69c096390964209fcf85'
-            'd6cf41683427c434a7ee8fb3b47a7bf4824f904a7d93cacc9420f831ad33cf81')
+source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
+sha256sums=('a515ffdbdbee4c8d89557eb706de201bdf5177277e72666a16a8510988970a7f')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
-  sed -i -e "s|\"4.1.0\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala 
+  sed -i -e "s|\"4.1.1\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala 
   # patches here
-  patch -Np1 -i "$srcdir/preferences-dialog.patch"
 }
 
 build() {
