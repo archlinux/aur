@@ -1,7 +1,7 @@
 pkgbase = hmtimer
 	pkgdesc = graphical shutdown timer
-	pkgver = 2.3
-	pkgrel = 3
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://sites.google.com/site/hsiumingstimer/
 	install = hmtimer.install
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = hmtimer
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
-	source = https://sourceforge.net/projects/hsiumingstimer/files/hmtimer-2.3/hmtimer-2.3-src.tar.bz2
-	md5sums = 6cd4473d41f23ee21ec1fe49bfeb85e2
+	source = https://sourceforge.net/projects/hsiumingstimer/files/hmtimer-2.3.1/hmtimer-2.3.1-src.tar.bz2
+	md5sums = 0e7d11111a590a47bfb3793a118fc6c9
 
 pkgname = hmtimer
 
