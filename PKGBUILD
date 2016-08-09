@@ -1,4 +1,5 @@
-# Maintainer: Carl Lei <xecycle@gmail.com>
+# Maintainer:  Konstantin Gizdov <arch@kge.pw>
+# Contributor: Carl Lei <xecycle@gmail.com>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Sebastian Voecking <voeck@web.de>
