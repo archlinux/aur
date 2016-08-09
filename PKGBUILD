@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
@@ -11,8 +11,8 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
 source=(libvpx-$pkgver.tar.gz::https://github.com/webmproject/libvpx/archive/v$pkgver.tar.gz
         'configure.patch')
-md5sums=('0c662bc7525afe281badb3175140d35c'
-         '1a26fa5aede3bc45c1ee0ba5002274c5')
+sha256sums=('e2fc00c9f60c76f91a1cde16a2356e33a45b76a5a5a1370df65fd57052a4994a'
+            '73ffee7c361682e6483b2209b2a55887c29c23174b994229bbe0642e09214093')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -30,20 +30,24 @@ build() {
       _targetarch="x86_64-win64-gcc"
     fi
 
-    CROSS="${_arch}-" ../configure --prefix=/usr/${_arch} \
+    CROSS="${_arch}-" ../configure \
+        --prefix=/usr/${_arch} \
         --target=${_targetarch} \
-        --enable-vp8 \
-        --enable-vp9 \
         --enable-runtime-cpu-detect \
         --enable-shared \
-        --enable-postproc \
         --enable-pic \
-        --enable-experimental --enable-spatial-svc \
         --disable-examples \
         --disable-docs \
         --disable-install-bins \
         --disable-install-docs \
-        --disable-install-srcs
+        --disable-install-srcs \
+        --enable-vp8 \
+        --enable-postproc \
+        --enable-vp9 \
+        --enable-vp9-highbitdepth \
+        --enable-experimental \
+        --enable-spatial-svc
+
     make
   done
 }
@@ -56,9 +60,11 @@ package() {
     #Move the hacked in shared libs to bin
     mkdir ${pkgdir}/usr/${_arch}/bin
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll ${pkgdir}/usr/${_arch}/bin/
-    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.3* ${pkgdir}/usr/${_arch}/bin/
+    mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.4* ${pkgdir}/usr/${_arch}/bin/
 
     ${_arch}-strip -g --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
+
+# vim: ts=2 sw=2 et:
