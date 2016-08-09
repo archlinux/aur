@@ -6,10 +6,10 @@ pkgver='0.040'
 pkgrel='1'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('LGPL')
 options=('!emptydirs')
-depends=('glib-perl>=1.32' 'glib2>=2.48.1' 'gobject-introspection' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig>=1')
-makedepends=()
+depends=('glib-perl>=1.32' 'gobject-introspection-runtime')
+makedepends=('gobject-introspection' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig>=1')
 url='https://metacpan.org/release/Glib-Object-Introspection'
 source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.040.tar.gz')
 md5sums=('df8329c498da77677d58ef337a75fa6d')
