@@ -1,7 +1,7 @@
 pkgbase = xdelta
 	pkgdesc = Binary file delta generator
 	pkgver = 1.1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://sourceforge.net/projects/xdelta/
 	arch = x86_64
 	arch = i686

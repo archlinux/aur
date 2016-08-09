@@ -1,10 +1,11 @@
-# Maintainer:  kfgz <kfgz at interia pl>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor:  kfgz <kfgz at interia pl>
 # Contributor: Allan McRae <allan at archlinux dot org>
 # Contributor: Tom Newsom <Jeepster at gmx dot co dot uk>
 
 pkgname=xdelta
 pkgver=1.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Binary file delta generator'
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/xdelta/"
