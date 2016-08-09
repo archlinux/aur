@@ -12,7 +12,7 @@ pkgdesc="Java bindings to the GNOME platform (including gtk, glib and glade)"
 arch=('i686' 'x86_64')
 url="http://java-gnome.sourceforge.net"
 license=('GPL')
-depends=('java-runtime' 'gtksourceview3' 'librsvg' 'libunique3' 'libnotify' 'enchant' 'gtkspell3')
+depends=('java-runtime' 'gtksourceview3' 'librsvg' 'libnotify' 'enchant' 'gtkspell3')
 makedepends=('java-environment' 'junit' 'python2')
 source=(
 	http://ftp.gnome.org/pub/gnome/sources/$pkgname/4.1/$pkgname-$pkgver.tar.xz
