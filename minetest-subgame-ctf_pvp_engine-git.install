@@ -1,0 +1,22 @@
+
+post_install() {
+        echo
+        echo '############################### NOTICE ! ###################################'
+	echo
+        echo ' Subgame will be installed to /usr/share/minetest/games which is the default'
+	echo ' directory for subgames. This is disabled by default though and needs a patch.'
+	echo ' You can install "minetest-usrdir_patch" which handles this for you.'
+	echo
+	echo
+}
+
+post_upgrade() {
+        echo
+        echo '############################### NOTICE ! ###################################'
+	echo
+        echo ' Subgame will be installed to /usr/share/minetest/games which is the default'
+	echo ' directory for subgames. This is disabled by default though and needs a patch.'
+	echo ' You can install "minetest-usrdir_patch" which handles this for you.'
+	echo
+        echo
+}
