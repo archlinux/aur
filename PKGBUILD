@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=162.1531.1
+pkgver=162.1628.2
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -30,7 +30,7 @@ optdepends=(
   'doxygen: Code documentation generation'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('1cf1f007917181983ba7e523ba0641c94872f2cc74a62c0b7f4939eef01ea805d78b25443d7de5c2a82019672038f5307dd8186990a22d54b58202a2e1d8a585')
+sha512sums=('94041fa8ddf7564d2d7491e1744a686c7459c5a0e7a908772467c17b8e80a2cb049bd32b7a1f8b09171269f69ddebeafe8d9cd9a8e37e53b89089b1e2dbe80c2')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
