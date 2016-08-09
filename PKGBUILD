@@ -3,25 +3,30 @@
 pkgname=matrix-synapse
 _pkgver=0.17.0
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
 url="https://github.com/matrix-org/synapse"
-depends=('python2-matrix-angular-sdk'
-         'python2-twisted>=15.1.0' 'python2-service-identity'
+depends=('python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pyopenssl' 'python2-yaml' 'python2-pyasn1' 'python2-pynacl'
          'python2-daemonize' 'python2-py-bcrypt' 'python2-frozendict'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr'
-         'python2-psutil')
+         'python2-signedjson' 'python2-pymacaroons-pynacl'
+         'python2-service-identity')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
-optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)')
+optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
+            'python2-matrix-angular-sdk: built-in web client (UNMAINTAINED)'
+            'python2-netaddr: URL previewing'
+            'python2-jinja: e-mail notifications'
+            'python2-bleach: e-mail notifications'
+            'python2-ldap3: LDAP support'
+            'python2-psutil: metrics')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'sysusers-synapse.conf'
-	'deps-relax-checks.patch')
+        'deps-relax-checks.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
          '6a088fd21cdaa4b93b1eee67a5cc0090')
