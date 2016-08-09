@@ -2,7 +2,7 @@ pkgname=toxic-newgc-static-git
 _pkgname=toxic
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
-pkgver=0.7.0.r30.ge73ac9b
+pkgver=0.7.0.r53.gcb21672
 pkgrel=1
 depends=(
 	'desktop-file-utils'
@@ -20,8 +20,11 @@ conflicts=($_pkgname)
 provides=("$_pkgname-newgc")
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://tox.chat'
-source=("${pkgname}::git+https://github.com/JFreegman/toxic.git")
-sha512sums=('SKIP')
+source=(
+	"${pkgname}::git+https://github.com/JFreegman/toxic.git"
+	"toxcore::git+https://github.com/JFreegman/toxcore.git"
+)
+sha512sums=('SKIP' 'SKIP')
 install="${pkgname}.install"
 
 pkgver() {
@@ -30,18 +33,17 @@ pkgver() {
 }
 
 build() {
-	cd $pkgname
-	git checkout new_groupchats
-
-	test -e toxcore || git clone https://github.com/JFreegman/toxcore.git
 	cd toxcore
+
 	autoreconf -if
 	./configure --disable-ntox --disable-tests --disable-shared --prefix=$PWD
 	make && make install
 	find -name *.a
 
-	cd ..
-	USER_CFLAGS=-Itoxcore/include USER_LDFLAGS=-Ltoxcore/lib make
+	cd ../$pkgname
+	git checkout new_groupchats
+
+	USER_CFLAGS=-I../toxcore/include USER_LDFLAGS=-L../toxcore/lib make PREFIX=/usr
 }
 
 package() {
