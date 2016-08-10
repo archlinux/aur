@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=3.18.20160509
+pkgver=3.20.20160705
 pkgrel=1
 pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
 source=("version::version${url#http}"
         "http://gnome-look.org/CONTENT/content-files/${url##*=}-Dark-Aurora.tar.gz")
-sha256sums=('6f34484abaf76f7175264de32610a92447408d63c06a91dfb6e5744023e8d831'
-            '5a09b1e6929fc162df8ab31b5e1a8bb12bf9475339b13624a6f49fa8c77c996e')
+sha256sums=('f5bbb7ea941d120d03237a28d07411aafc23e866b184083e37e02eda65aa3072'
+            '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
 
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "version". It is treated like http, which is done by processing
