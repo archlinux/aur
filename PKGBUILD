@@ -1,7 +1,7 @@
 # Maintainer: Martin Schrodt <martin@schrodt.org>
 pkgname=nvme-cli-git 
 _gitname=nvme-cli
-pkgver=r335.6833c68
+pkgver=r343.6136d06
 pkgrel=1
 pkgdesc="NVM-Express user space tooling for Linux"
 arch=('i686' 'x86_64')
