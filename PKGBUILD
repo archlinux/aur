@@ -5,7 +5,7 @@
 
 pkgname=cgoban3
 pkgver=3.5.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Kiseido Go and SGF client"
 url="http://gokgs.com/"
 arch=('any')
@@ -22,6 +22,7 @@ sha256sums=('fcc158cbb9cf1c7e3b70fda21ff3f58980fec2be2e7a4e3440cf529b36c928a6'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
             'f333aac0bfef3243390c5d989e5d7e674eb1d65ebd3a7bb84d391bdfd0fa869f'
             '929d48903510bd346f27522b1273be4f18bf36be23077611a3afb1d45d354c69')
+noextract=('cgoban.jar')
 
 package() {
   cd $srcdir
