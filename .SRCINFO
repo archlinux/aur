@@ -1,0 +1,53 @@
+pkgbase = linux-ath-lxd
+	pkgver = 4.6.4
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.6.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.6.4.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-linux-4.6-rtlwifi-fix-atomic.patch
+	source = 402-ath_regd_optional.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866
+	sha256sums = SKIP
+	sha256sums = f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47
+	sha256sums = SKIP
+	sha256sums = 4a399a505780d59582ac7add04147a92ade66f702edd678384f2b6c5dad6c4f2
+	sha256sums = 9bb6e6ca934a998791f872449423c9fdff3dca37b348680350074ead4bb057e6
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98
+	sha256sums = 8101a4feb102af7ada5e9eead6333b1e5ce390d052847da4a2e5c867cbb68149
+
+pkgname = linux-ath-lxd
+	pkgdesc = The Linux-ath-lxd kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-ath-lxd.preset
+
+pkgname = linux-ath-lxd-headers
+	pkgdesc = Header files and scripts for building modules for Linux-ath-lxd kernel
+
+pkgname = linux-ath-lxd-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ath-lxd kernel
+
