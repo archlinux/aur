@@ -1,0 +1,48 @@
+From d45a69d10b8e61b35820d92ee9d4ccf763f71b0f Mon Sep 17 00:00:00 2001
+From: "aur@manjaro" <aur@manjaro>
+Date: Thu, 18 Aug 2016 15:36:32 +0200
+Subject: [PATCH] fix 3rdparty javascriptcore
+
+---
+ .../javascriptcore/JavaScriptCore/runtime/Structure.h         |  2 +-
+ .../3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h    | 11 -----------
+ 2 files changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h
+index 7571efc..77d4f50 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h
+@@ -317,7 +317,7 @@ namespace JSC {
+         TransitionTable* transitionTable = new TransitionTable;
+         setTransitionTable(transitionTable);
+         if (existingTransition)
+-            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), existingTransition->m_attributesInPrevious), existingTransition, existingTransition->m_specificValueInPrevious);
++            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), (unsigned int)(existingTransition->m_attributesInPrevious)), existingTransition, existingTransition->m_specificValueInPrevious);
+     }
+ } // namespace JSC
+ 
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h
+index 42a9233..e761edb 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h
+@@ -257,17 +257,6 @@ namespace WTF {
+ 
+     using std::swap;
+ 
+-#if !COMPILER(MSVC) && !OS(QNX) && !defined(_LIBCPP_VERSION)
+-    // The Dinkumware C++ library (used by MSVC and QNX) and clang's libc++ have a swap for pairs defined.
+-
+-    // swap pairs by component, in case of pair members that specialize swap
+-    template<typename T, typename U> inline void swap(pair<T, U>& a, pair<T, U>& b)
+-    {
+-        swap(a.first, b.first);
+-        swap(a.second, b.second);
+-    }
+-#endif
+-
+     template<typename T, bool useSwap> struct Mover;
+     template<typename T> struct Mover<T, true> { static void move(T& from, T& to) { swap(from, to); } };
+     template<typename T> struct Mover<T, false> { static void move(T& from, T& to) { to = from; } };
+-- 
+2.9.2
+

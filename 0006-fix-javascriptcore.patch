@@ -1,0 +1,53 @@
+From f1e8d694005f06a203157b18cbdbccbb674776e4 Mon Sep 17 00:00:00 2001
+From: "aur@manjaro" <aur@manjaro>
+Date: Fri, 19 Aug 2016 10:05:04 +0200
+Subject: [PATCH] fix javascriptcore
+
+---
+ .../src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp    | 2 +-
+ .../src/3rdparty/javascriptcore/JavaScriptCore/wtf/unicode/UTF8.cpp     | 2 +-
+ .../src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp
+index bf49a15..7daebbb 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp
+@@ -157,7 +157,7 @@ Structure::~Structure()
+ {
+     if (m_previous) {
+         if (m_nameInPrevious)
+-            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), m_attributesInPrevious), m_specificValueInPrevious);
++            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), (unsigned int)(m_attributesInPrevious)), m_specificValueInPrevious);
+         else
+             m_previous->table.removeAnonymousSlotTransition(m_anonymousSlotsInPrevious);
+ 
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/unicode/UTF8.cpp b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/unicode/UTF8.cpp
+index 21d5856..ba819fc 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/unicode/UTF8.cpp
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/unicode/UTF8.cpp
+@@ -228,7 +228,7 @@ static bool isLegalUTF8(const unsigned char* source, int length)
+ // Magic values subtracted from a buffer value during UTF8 conversion.
+ // This table contains as many values as there might be trailing bytes
+ // in a UTF-8 sequence.
+-static const UChar32 offsetsFromUTF8[6] = { 0x00000000UL, 0x00003080UL, 0x000E2080UL, 
++static const long offsetsFromUTF8[6] = { 0x00000000UL, 0x00003080UL, 0x000E2080UL, 
+             0x03C82080UL, 0xFA082080UL, 0x82082080UL };
+ 
+ ConversionResult convertUTF8ToUTF16(
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp
+index 9cd3d12..917eac0 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp
+@@ -719,7 +719,7 @@ const char* compileRegex(const UString& patternString, RegexPattern& pattern)
+ 
+     constructor.setupOffsets();
+ 
+-    return false;
++    return nullptr;
+ };
+ 
+ 
+-- 
+2.9.2
+

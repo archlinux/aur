@@ -1,0 +1,43 @@
+From d0590658d4e1fe0126fba9c251eb8ec365e79cce Mon Sep 17 00:00:00 2001
+From: "aur@manjaro" <aur@manjaro>
+Date: Thu, 18 Aug 2016 14:06:15 +0200
+Subject: [PATCH] drop tr1 usage
+
+---
+ qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h | 4 ++--
+ qtwebkit/Source/WTF/wtf/TypeTraits.h                                 | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h
+index 7ba487f..ff998fd 100644
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h
+@@ -170,8 +170,8 @@ namespace WTF {
+ 
+     // GCC's libstdc++ 20070724 and later supports C++ TR1 type_traits in the std namespace.
+     // VC10 (VS2010) and later support C++ TR1 type_traits in the std::tr1 namespace.
+-    template<typename T> struct HasTrivialConstructor : public std::tr1::has_trivial_constructor<T> { };
+-    template<typename T> struct HasTrivialDestructor : public std::tr1::has_trivial_destructor<T> { };
++    template<typename T> struct HasTrivialConstructor : public std::is_trivially_default_constructible<T> { };
++    template<typename T> struct HasTrivialDestructor : public std::is_trivially_destructible<T> { };
+ 
+ #else
+ 
+diff --git a/qtwebkit/Source/WTF/wtf/TypeTraits.h b/qtwebkit/Source/WTF/wtf/TypeTraits.h
+index b9e46bc..b4e4db0 100644
+--- a/qtwebkit/Source/WTF/wtf/TypeTraits.h
++++ b/qtwebkit/Source/WTF/wtf/TypeTraits.h
+@@ -241,8 +241,8 @@ namespace WTF {
+ #elif (defined(__GLIBCXX__) && (__GLIBCXX__ >= 20070724) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || (defined(_MSC_VER) && (_MSC_VER >= 1600))
+     // GCC's libstdc++ 20070724 and later supports C++ TR1 type_traits in the std namespace.
+     // VC10 (VS2010) and later support C++ TR1 type_traits in the std::tr1 namespace.
+-    template<typename T> struct HasTrivialConstructor : public std::tr1::has_trivial_constructor<T> { };
+-    template<typename T> struct HasTrivialDestructor : public std::tr1::has_trivial_destructor<T> { };
++    template<typename T> struct HasTrivialConstructor : public std::is_trivially_default_constructible<T> { };
++    template<typename T> struct HasTrivialDestructor : public std::is_trivially_destructible<T> { };
+ #else
+     // For compilers that don't support detection of trivial constructors and destructors in classes, 
+     // we use a template that returns true for any POD type that IsPod can detect (see IsPod caveats above), 
+-- 
+2.9.2
+

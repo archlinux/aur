@@ -24,11 +24,11 @@ pkgname=('qt51-base'
          'qt51-x11extras'
          'qt51-xmlpatterns')
 pkgver=5.1.1
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-makedepends=('gcc46' 'libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-keysyms'
+makedepends=('libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-keysyms'
             'mesa' 'at-spi2-core' 'alsa-lib' 'gstreamer0.10-base-plugins' 'libmng'
             'libjpeg-turbo' 'cups' 'libpulse' 'hicolor-icon-theme' 'desktop-file-utils'
             'postgresql-libs' 'libmariadbclient' 'sqlite' 'unixodbc' 'libfbclient'
@@ -42,11 +42,15 @@ source=("http://download.qt-project.org/official_releases/qt/5.1/${pkgver}/singl
         'linguist-qt51.desktop'
         'qdbusviewer-qt51.desktop'
         'use-python2.patch'
-        'platform-linux-g++-4.6.patch'
         'bison3.patch'
         'CVE-2013-4549.patch'
         'libmng2.patch'
         '0001-Fix-g-5-build-see-qtwebkit-Source-JavaScriptCore-run.patch'
+        '0002-disable-v8snapshot.patch'
+        '0003-drop-tr1-usage.patch'
+        '0004-fix-3rdparty-javascriptcore.patch'
+        '0005-fix-bind-in-webkit2.patch'
+        '0006-fix-javascriptcore.patch'
         'qt51.PATH')
 md5sums=('697b7b8768ef8895e168366ab6b44760'
          'd6fd35a4858c2519385d13c04985a947'
@@ -54,11 +58,15 @@ md5sums=('697b7b8768ef8895e168366ab6b44760'
          '4ce959cbe138df8589e81537ac40f37f'
          '9019f5c97c91c9b29a50b55f3e33c40a'
          '92831f79144d5cb8121915423ba47575'
-         '72451f13cf068f0c137e81b0630c5f44'
          '6b162cd2bc104f0ae83ca039401be7bf'
          'e59ba552e12408dcc9486cdbb1f233e3'
          '478647fa057d190a7d789cf78995167b'
          '27b294a3b24eae2c001f85961133eadb'
+         'cfbc1ecacf9851d51d5a44493fc54cd4'
+         'aef7d21241f547cae1579f0e874eaa04'
+         'a1c74da7e50e864ca7027416793d683b'
+         '73ffdcd08c03a81176b989e6de39ae62'
+         'b2fe290a446fa4d41becbf4720cfe318'
          '28f4755e54ba1df5a89d60a73f6d1a9e')
 
 prepare() {
@@ -67,15 +75,13 @@ prepare() {
   sed -i "s|-O2|${CXXFLAGS}|" qtbase/mkspecs/common/{g++,gcc}-base.conf
   sed -i "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" qtbase/mkspecs/common/gcc-base-unix.conf
   sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" qtbase/mkspecs/common/gcc-base.conf
+  sed -i 's/QMAKE_CFLAGS_RELEASE       +=/QMAKE_CFLAGS_RELEASE       += -fpermissive/g' qtbase/mkspecs/common/gcc-base.conf
 
   # Use python2 for Python 2.x
   patch -p1 -i "${srcdir}"/use-python2.patch
   sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
     -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
     $(find . -name '*.py')
-  
-  # use gcc-4.6
-  patch -p0 -i "${srcdir}"/platform-linux-g++-4.6.patch
 
   # Fix build with bison 3.x
   cd qtwebkit
@@ -89,17 +95,15 @@ prepare() {
 
   cd ..
   patch -p1 -i "${srcdir}"/0001-Fix-g-5-build-see-qtwebkit-Source-JavaScriptCore-run.patch
+  patch -p1 -i "${srcdir}"/0002-disable-v8snapshot.patch
+  patch -p1 -i "${srcdir}"/0003-drop-tr1-usage.patch
+  patch -p1 -i "${srcdir}"/0004-fix-3rdparty-javascriptcore.patch
+  patch -p1 -i "${srcdir}"/0005-fix-bind-in-webkit2.patch
+  patch -p1 -i "${srcdir}"/0006-fix-javascriptcore.patch
 }
 
 build() {
   cd ${_pkgfqn}
-
-  CFLAGS=${CFLAGS//-fstack-protector-strong/-fstack-protector}
-  CXXFLAGS=${CXXFLAGS//-fstack-protector-strong/-fstack-protector}
-  echo "QMAKE_CFLAGS_RELEASE=$CFLAGS -fpermissive" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
-  echo "QMAKE_CXXFLAGS_RELEASE=$CXXFLAGS -fpermissive" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
-  echo "QMAKE_CC=gcc-4.6" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
-  echo "QMAKE_CXX=g++-4.6" >> qtbase/mkspecs/linux-g++-4.6/qmake.conf
 
   export QTDIR="${srcdir}"/${_pkgfqn}
   export LD_LIBRARY_PATH="${QTDIR}"/qtbase/lib:"${QTDIR}"/qttools/lib:"${LD_LIBRARY_PATH}"
@@ -114,7 +118,6 @@ build() {
     -no-rpath \
     -optimized-qmake \
     -dbus-linked \
-    -platform linux-g++-4.6 \
     -reduce-relocations
 
   make

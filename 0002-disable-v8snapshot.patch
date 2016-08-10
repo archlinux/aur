@@ -1,0 +1,69 @@
+From f855c6b7ea72e84ba455026b4b80ebf3a2cbff32 Mon Sep 17 00:00:00 2001
+From: "aur@manjaro" <aur@manjaro>
+Date: Thu, 18 Aug 2016 12:05:36 +0200
+Subject: [PATCH] disable v8snapshot
+
+See http://lists.busybox.net/pipermail/buildroot/2013-May/072357.html
+
+# Hi Arnout & Thomas,
+# 
+# Thanks for tips. It got me digging in the (hopefully) right direction.
+# 
+# The issue is basically that host tool "mkv8snapshot" which is part of
+# qtjsbackend is segfaulting  -
+# 
+# mkv8snapshot[29356]: segfault at 0 ip 0833e3b9 sp bf8ec040 error 4 in
+# mkv8snapshot
+# 
+# I still haven't been able to determine why this happens. But the solution
+# that works for me is to disable its usage during the Qt build as per the
+# info in this mail trail from Qt-project
+# http://comments.gmane.org/gmane.comp.lib.qt.devel/6101
+# 
+# So I added a patch as per below... and no more issues!
+# 
+# diff -urN qt-everywhere-commercial-src-5.0.2_orig//qtbase/configure
+# qt-everywhere-commercial-src-5.0.2//qtbase/configure---
+# qt-everywhere-commercial-src-5.0.2_orig//qtbase/configure   2013-05-09
+# 18:28:22.615623889 +0530
+# +++ qt-everywhere-commercial-src-5.0.2//qtbase/configure    2013-05-16
+# 18:56:21.124371988 +0530
+# @@ -471,7 +471,7 @@
+#  CFG_SKIP_MODULES=""
+#  CFG_RELEASE_QMAKE=no
+#  CFG_AUDIO_BACKEND=auto
+# -CFG_V8SNAPSHOT=auto
+# +CFG_V8SNAPSHOT=no
+#  CFG_QML_DEBUG=yes
+#  CFG_JAVASCRIPTCORE_JIT=auto
+#  CFG_PKGCONFIG=auto
+# I can't exactly figure out why this happens esp becuse it If build qt5
+# manually "by hand" using the same process (but just outside buildroot, but
+# with the same cross-toolchain) i dont see this error as the configure
+# script detects that this tool is not required (canUseV8Snapshot gets set to
+# no).
+# 
+# Any reasons why this is happening?
+# 
+# regards,
+# Carlos
+---
+ qtbase/configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qtbase/configure b/qtbase/configure
+index 140c7b4..3f8735b 100755
+--- a/qtbase/configure
++++ b/qtbase/configure
+@@ -891,7 +891,7 @@ CFG_SKIP_MODULES=""
+ CFG_COMPILE_EXAMPLES=yes
+ CFG_RELEASE_QMAKE=no
+ CFG_AUDIO_BACKEND=auto
+-CFG_V8SNAPSHOT=auto
++CFG_V8SNAPSHOT=no
+ CFG_QML_DEBUG=yes
+ CFG_JAVASCRIPTCORE_JIT=auto
+ CFG_PKGCONFIG=auto
+-- 
+2.9.2
+
