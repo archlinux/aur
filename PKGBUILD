@@ -5,17 +5,16 @@
 
 _name=sxiv
 pkgname="${_name}-git"
-pkgver=2016.08.06
+pkgver=2016.08.08
 pkgrel=1
 pkgdesc="Simple (or small or suckless) X Image Viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/muennich/${_name}"
 license=('GPL2')
-depends=('imlib2' 'libexif' 'desktop-file-utils')
+depends=('imlib2' 'libexif' 'libxft' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
-install="${_name}.install"
 source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
 
