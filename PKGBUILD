@@ -1,6 +1,6 @@
 # Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
 pkgname=cozy-desktop-gui
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 epoch=
 pkgdesc="File synchronisation client for Cozy"
@@ -21,8 +21,8 @@ changelog=
 source=("https://cozy-desktop.cozycloud.cc/debian/pool/cozy-desktop/c/cozy-desktop-gui/cozy-desktop-gui_${pkgver}_amd64.deb")
 source_i686=("https://cozy-desktop.cozycloud.cc/debian/pool/cozy-desktop/c/cozy-desktop-gui/cozy-desktop-gui_${pkgver}_i386.deb")
 noextract=()
-sha256sums=("575b8a0db6b7de7bd86f0b185a47b02ee66c17333eb908479cb1e76a2513608b")
-sha256sums_i686=("4eb3c2b1ed599d303f3c01561814ec05e2b4ce8543470ac24e7bda7542aaa6e3")
+sha256sums=("c382582cae4a7421707301ec0386f6eeda2a88a8fb72fd1ab831cd58d45648d7")
+sha256sums_i686=("1f6483588a11b76da3cc270d00ef62e1a7132348eafd30202e639efffdbd16bc")
 
 package() {
     msg "Installing cozy-desktop"
