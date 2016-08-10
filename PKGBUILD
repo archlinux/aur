@@ -1,7 +1,7 @@
 pkgname=ensime-server
 pkgver=1.0.0
 _scalaver=2.11
-pkgrel=10
+pkgrel=1
 pkgdesc="ENSIME server"
 url="https://github.com/ensime/ensime-server"
 arch=("x86_64" "i686")
