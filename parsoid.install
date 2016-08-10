@@ -22,12 +22,13 @@ _update() {
 
 post_install() {
     _update
-    echo ">> Before run Parsoid, modify /usr/share/webapps/parsoid/localsettings.js ."
+    echo ">> Before run Parsoid, modify /usr/share/webapps/parsoid/config.yaml ."
     echo ">> Reference comments in this file for help ."
 }
 
 post_upgrade() {
     _update
+    note "Parsoid now use 'config.yaml' as config file."
 }
 
 post_remove() {
