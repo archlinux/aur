@@ -15,8 +15,8 @@ conflicts=("museeks" "museeks-git")
 md5sums=("9552e82aab69503588724fc1c1d33d40")
 
 _platform="x64"
-if [ "$CARCH" = "ia32" ]; then
-  _platform="32bit"
+if [ "$CARCH" = "i686" ]; then
+  _platform="ia32"
   md5sums=("e3adb0d0819b0a46cc025990ebc3c380")
 fi
 
