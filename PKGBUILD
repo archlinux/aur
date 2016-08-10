@@ -3,17 +3,17 @@
 
 _gemname=acme-client
 pkgname=ruby-$_gemname
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Client for the ACME protocol.'
 arch=(any)
 url='http://github.com/unixcharles/acme-client'
 license=(MIT)
-depends=(ruby ruby-faraday ruby-json-jwt)
+depends=(ruby ruby-faraday)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('44ddadbc20db3c09aedf4829bdcfe77b92ed5804')
+sha1sums=('2b00a260bc53cae8ebdb5838ce49ff8619827db8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
