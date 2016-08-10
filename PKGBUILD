@@ -1,12 +1,12 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="Simply counts source lines of code"
+pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
-url='http://bytbox.net/hacks/sloc'
+url=http://git.bytbox.net/sloc/
 license=('MIT')
 depends=('go')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
