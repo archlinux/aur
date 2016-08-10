@@ -132,7 +132,8 @@
 # blmgr/Register.properties -> zblmgr/
 # pro5/BASIS.lic -> zpro5/
 
-_opt_blgmgr_user='nobody' # default: root, the license manager should not be run as root
+_opt_blmgr_user='nobody' # default: root, the license manager should not be run as root
+_opt_blmgr_group='nobody'
 _opt_pro5_sql='pro5b'    # default: pro5b for non-sql, pro5s for sql
 _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin so
                          # Pro/5 is in the path. Select a name that minimizes the number of
@@ -192,16 +193,18 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 set -u
 pkgname='basis-pro5'
 pkgver='15.01'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
-depends=('glibc' 'jdk' 'wget') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
+depends=('glibc' 'jdk' 'wget' 'gzip') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
+optdepends=('ncompress: Original compress for logs instead of gzip')
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
 install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
 #_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
 #_blmjar='BLM1600_03-11-2016_1203.jar'
-_blmjar='BLM1600_04-11-2016_1107.jar'
+#_blmjar='BLM1600_04-11-2016_1107.jar'
+_blmjar='BLM1600_08-10-2016_1012.jar'
 source=("http://public.basis.com/blm/jar/${_blmjar}")
 
 _file='@::file://@' # convince the git submission that these files aren't on the web and don't need to be supplied
@@ -212,7 +215,7 @@ for _src in '104551501.Z' '124551500.Z'; do
   source_i686+=("${_file//@/${_src}}")
 done
 
-sha256sums=('99956349c68d98e365fc3d14586db2b6ac2b573a3b9181abb55087ce6291a321')
+sha256sums=('9eec614a94cd2a1fefc321847bd0216c6a18d3386554c5c4cbf9dbb2689db8ee')
 sha256sums_i686=('505080b9283ca5037453a844ea9781f047d5bfd6bcec2bd9a7e028497fb6dfdb'
                  '55052c4bcb1628017f051b18880de686c544144adf002dc2fdd1adc30b1e2e24')
 sha256sums_x86_64=('42f1d5143249df9672069bc2d64754ccd17a573cfce756dd8caf5056e4f5abd9'
@@ -334,6 +337,15 @@ prepare() {
 
   # these will be marked immutable during install to prevent root from modifying
   chmod 444 pro5/{ext,std,graphics}/*
+
+  # Fix a few missing utility files with old names for easier upgrades.
+  ln -s '_ask.utl' 'pro5/ext/_ask.pub'
+  #ln -s '_copy.pub' 'pro5/std/_copy.utl'
+  #ln -s '_ddguess.utl' 'pro5/ext/_guess'
+  #ln -s '_msg.utl' 'pro5/ext/_msg'
+  ln -s '_unerr.utl' 'pro5/ext/_unerr.pub'
+  ln -s '_yesno.utl' 'pro5/ext/_yesno.pub'
+  #ln -s '_warn.utl' 'pro5/ext/_warn'
 
   # Branding the EXE eliminates the need for the license path in an ENV variable
   # Branding didn't work with the Basis installer. Only two files contain BLM_LICLOC.
@@ -533,7 +545,7 @@ After=network.target
 # Changing the user name here may require the following:
 # rm -rf /var/tmp/{.flexlm,lockbasis}
 [Service]
-User=${_opt_blgmgr_user}
+User=${_opt_blmgr_user}
 Type=forking
 ExecStart=${_basedir}/blmgr/BasisRunLM
 ExecStop=${_basedir}/blmgr/lmutil lmdown -vendor basis
@@ -647,7 +659,9 @@ post_upgrade() {
   #echo "Startup scripts updated or installed"
   # This prevents editing of the supplied utilites. Please make a copy.
   # chattr ensures that even root can't do it
-  chattr +i "${_basedir}/pro5"/{ext,std,graphics}/*
+  chattr -f +i "${_basedir}/pro5"/{ext,std,graphics}/*
+  # Allow dynamic licenses to self update
+  chown -R '${_opt_blmgr_user}:${_opt_blmgr_group}' '${_basefolder}/basis/blmgr'
 }
 
 post_install() {
@@ -662,13 +676,14 @@ pre_upgrade() {
   systemctl stop "${_servicefile}"
   rm -rf '/var/tmp/.flexlm'
   rm -f '/var/tmp/lockbasis' # otherwise a user change cannot work
-  if ! chattr -i "${_basedir}/pro5"/{ext,std,graphics}/*; then
+  if ! chattr -f -i "${_basedir}/pro5"/{ext,std,graphics}/*; then
     # We must do this because of bug https://bugs.archlinux.org/task/45988
     case "${_basedir}" in
-    '/usr/local/basis') chattr -i '/usr/share/basis/pro5'/{ext,std,graphics}/*;;
-    '/usr/share/basis') chattr -i '/usr/local/basis/pro5'/{ext,std,graphics}/*;;
+    '/usr/local/basis') chattr -f -i '/usr/share/basis/pro5'/{ext,std,graphics}/*;;
+    '/usr/share/basis') chattr -f -i '/usr/local/basis/pro5'/{ext,std,graphics}/*;;
     esac
   fi
+set +x
 }
 
 pre_remove() {

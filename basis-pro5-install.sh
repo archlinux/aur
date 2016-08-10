@@ -6,7 +6,9 @@ post_upgrade() {
   #echo "Startup scripts updated or installed"
   # This prevents editing of the supplied utilites. Please make a copy.
   # chattr ensures that even root can't do it
-  chattr +i "/usr/local/basis/pro5"/{ext,std,graphics}/*
+  chattr -f +i "/usr/local/basis/pro5"/{ext,std,graphics}/*
+  # Allow dynamic licenses to self update
+  chown -R 'nobody:nobody' '/usr/local/basis/blmgr'
 }
 
 post_install() {
@@ -21,13 +23,14 @@ pre_upgrade() {
   systemctl stop "basis_lmgrd.service"
   rm -rf '/var/tmp/.flexlm'
   rm -f '/var/tmp/lockbasis' # otherwise a user change cannot work
-  if ! chattr -i "/usr/local/basis/pro5"/{ext,std,graphics}/*; then
+  if ! chattr -f -i "/usr/local/basis/pro5"/{ext,std,graphics}/*; then
     # We must do this because of bug https://bugs.archlinux.org/task/45988
     case "/usr/local/basis" in
-    '/usr/local/basis') chattr -i '/usr/share/basis/pro5'/{ext,std,graphics}/*;;
-    '/usr/share/basis') chattr -i '/usr/local/basis/pro5'/{ext,std,graphics}/*;;
+    '/usr/local/basis') chattr -f -i '/usr/share/basis/pro5'/{ext,std,graphics}/*;;
+    '/usr/share/basis') chattr -f -i '/usr/local/basis/pro5'/{ext,std,graphics}/*;;
     esac
   fi
+set +x
 }
 
 pre_remove() {
