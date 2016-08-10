@@ -1,8 +1,8 @@
 # Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=r1080.2e936ac
-pkgrel=5
+pkgver=r1081.5f29387
+pkgrel=1
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://sourceforge.net/projects/netgen-mesher/
 license=('LGPL2.1')
