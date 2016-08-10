@@ -6,7 +6,7 @@
 _with_usermode=0
 
 pkgname=mock
-pkgver=1.2.18
+pkgver=1.2.19
 pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="http://fedoraproject.org/wiki/Projects/Mock"
@@ -23,7 +23,7 @@ optdepends=('createrepo_c: for mockchain command'
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
 source=("https://git.fedorahosted.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.xz")
-md5sums=('e5694e97f4a7f06dd168f970aae87dd5')
+md5sums=('1582b79ce224373d02d3d0812bcd6e7e')
 
 build() {
 	cd "$pkgname-$pkgver"
