@@ -14,8 +14,6 @@ source=(https://github.com/andreif/${_pkgbase}/archive/${pkgver}.tar.gz)
 md5sums=('3700a064df8c1d3915bfe2944ece9d33')
 
 package_python-codegen() {
-    depends=('python-setuptools')
-
     cd ${srcdir}/${_pkgbase}-${pkgver}
     python3 setup.py install --root ${pkgdir} --prefix=/usr
 
@@ -23,8 +21,6 @@ package_python-codegen() {
 }
 
 package_python2-codegen() {
-    depends=('python2-setuptools')
-
     cd ${srcdir}/${_pkgbase}-${pkgver}
     python2 setup.py install --root ${pkgdir} --prefix=/usr
 

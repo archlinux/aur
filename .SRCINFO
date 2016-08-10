@@ -11,8 +11,6 @@ pkgbase = python-codegen
 	md5sums = 3700a064df8c1d3915bfe2944ece9d33
 
 pkgname = python-codegen
-	depends = python-setuptools
 
 pkgname = python2-codegen
-	depends = python2-setuptools
 
