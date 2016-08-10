@@ -2,7 +2,7 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-extutils-makemaker-cpanfile
-pkgver=0.06
+pkgver=0.07
 pkgrel=1
 _author="I/IS/ISHIGAKI"
 _perlmod="ExtUtils-MakeMaker-CPANfile"
@@ -13,8 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=(perl-module-cpanfile)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('e527b05f809177691b3d21d3c7d6aff34a3461117eab9cd223e4d0d044a39900')
-
+sha512sums=('4a40428f27f37203fac922c802ac9f774fbba4790a5c106a6cecce444be1072c9010a9c53ac3232bdcf38a84790b6defa32696dd6ef46da1e6506b5179ac2192')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
@@ -59,5 +58,4 @@ package(){
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
 
