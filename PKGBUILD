@@ -1,8 +1,8 @@
-# Maintainer: Florian Walch <florian@fwalch.com>
+# Maintainer: Florian Walch <florian+aur@fwalch.com>
 
 pkgname=ruby-neovim
 _gemname=${pkgname#ruby-}
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Ruby client for Neovim'
 url='https://github.com/alexgenco/neovim-ruby'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('neovim' 'ruby' 'ruby-msgpack>=1.0.0')
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('62562eb34dccaed894d3bddc2a315cacdeba84f1edd03fe766d011137012f74b')
+sha256sums=('cd58aef616425b8aa4513d5689c489cbecdd22dc17830df325361c9cab9806fa')
 
 package() {
   cd "${srcdir}"
