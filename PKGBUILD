@@ -4,7 +4,7 @@
 _author=D/DO/DOMM
 _perlmod=Module-ExtractUse
 pkgname=perl-module-extractuse
-pkgver=0.33
+pkgver=0.341
 pkgrel='1'
 pkgdesc="Module::ExtractUse - Find out what modules are used"
 arch=('any')
@@ -24,10 +24,9 @@ perl-module-extractuse-grammar
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('a65e3fcd8aee997e0c0eb0a826175758f47d5873fceddcfa450ab881ad1ce59f')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
+
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
@@ -57,7 +56,7 @@ check(){
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-  
+
   # If using Makefile.PL
   if [ -r Makefile.PL ]; then
     make install
@@ -69,3 +68,4 @@ package(){
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+sha512sums=('bacabcf37bdfa0683ec661527f2e5d2c185fb7a97bac3b93bc5a24d0a01f5a3f0bca039a98e58377f12dc01173ba18afbf56b2221e3d819ceb843c32487347d7')
