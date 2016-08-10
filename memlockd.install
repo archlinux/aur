@@ -1,0 +1,9 @@
+## arg 1:  the new package version
+post_install() {
+    systemd-sysusers memlockd.conf
+}
+
+## arg 1:  the new package version
+post_remove() {
+    userdel memlockd
+}
