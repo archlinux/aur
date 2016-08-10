@@ -23,7 +23,7 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=('en.stm32cubef4.zip'
+source=('file:///en.stm32cubef4.zip'
 		'LICENSE')
 noextract=()
 sha512sums=('4d4bc1aa99f71ad0ba5100749c48cfbe4214672422ed2ddefca6ff6e1a1bcea2e985032cf18111bedc4a534db58923b242eb77e4125e4c7cda9e0d27a8ebb47b'
