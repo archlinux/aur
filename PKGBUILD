@@ -2,7 +2,7 @@
 
 pkgname=ngsolve-git
 pkgver=PKGVER
-pkgrel=PKGREL
+pkgrel=2
 pkgdesc="A general purpose Finite Element Library on top of Netgen."
 url=https://sourceforge.net/projects/ngsolve/
 license=('LGPL2.1')
