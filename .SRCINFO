@@ -1,0 +1,16 @@
+pkgbase = cobra
+	pkgdesc = Clean and expressive language for .NET and Mono
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://cobra-language.com/
+	arch = any
+	license = MIT
+	depends = mono
+	options = !strip
+	source = http://cobra-language.com/downloads/Cobra-0.9.6.tar.gz
+	source = install.patch
+	sha256sums = 9f1e496520bad124f5d827aa35d7a591c412fbb4c41633ecb00e68fbb35457fa
+	sha256sums = SKIP
+
+pkgname = cobra
+

@@ -1,0 +1,25 @@
+--- Cobra-0.9.6/Source/InstallFromWorkspace.cobra.orig	2013-12-24 20:26:09.460712423 -0500
++++ Cobra-0.9.6/Source/InstallFromWorkspace.cobra	2013-12-24 20:47:36.244101735 -0500
+@@ -168,9 +168,9 @@
+ 				.installLibrary(libName, lib['flags'], lib['files'].replace('/', .slash.toString), lib['requiresGacVerification'])
+ 		.verifyNewlyBuiltCobra
+ 		.copyFilesToInstallDirectory
+-		.verifyNewlyInstalledCobra
++		#.verifyNewlyInstalledCobra
+ 		.cleanUpWorkspace
+-		.installInPath
++		#.installInPath
+ 		.changeDirectoryInstruction
+ 		print 'Visit http://cobra-language.com/ for discussion, wiki, samples, irc and more.'
+ 		print
+@@ -736,8 +736,8 @@
+ 
+ 	def installLibrary(name as String, flags as String, files as String, requiresGacVerification)
+ 		.buildLibrary(name, flags, files as String)
+-		.installLibraryToGAC(name)
+-		.verifyGacInstallation(name, requiresGacVerification)
++		#.installLibraryToGAC(name)
++		#.verifyGacInstallation(name, requiresGacVerification)
+ 
+ 	def buildLibrary(name as String, flags as String, files as String)
+ 		"""
