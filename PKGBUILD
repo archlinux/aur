@@ -4,7 +4,7 @@ pkgname=firefox-cookie-controller
 pkgver=5.5
 pkgrel=1
 pkgdesc='Buttons for managing cookies, cookie permissions, and site cookie exceptions.'
-url='http://forums.mozillazine.org/viewtopic.php?f=48&t=2293961'
+url=https://addons.mozilla.org/en-US/firefox/addon/cookie-controller
 arch=('any')
 license=('custom:MPLv2')
 depends=('firefox')
