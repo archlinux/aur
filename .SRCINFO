@@ -47,7 +47,3 @@ pkgname = linux-ath-lxd
 
 pkgname = linux-ath-lxd-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ath-lxd kernel
-
-pkgname = linux-ath-lxd-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ath-lxd kernel
-
