@@ -14,7 +14,7 @@ depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libnotify' 'fontconfig')
 
 # This thing requires wine to build, and just to create an icon for the win32 instance.
 # Fails if it doesn't exist, so we better include it.
-makedepends=('git' 'npm' 'wine')
+makedepends=('git' 'npm' 'wine' 'nw-gyp')
 
 source=("git+https://github.com/Soundnode/soundnode-app.git")
 sha256sums=("SKIP")
