@@ -24,7 +24,7 @@ source=('broadcom-wl-dkms.conf'
 source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
 source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
-            'c59c3ccf5238fe93cc671e6fa2f6614c0bfec073dc79bfda4d14e3a5be96eac8'
+            '73438b29a1f422ed231b3857d491813c396a8be4fe34f006ce40679bba03d127'
             '32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f'
             '4ea03f102248beb8963ad00bd3e36e67519a90fa39244db065e74038c98360dd'
             '30ce1d5e8bf78aee487d0f3ac76756e1060777f70ed1a9cf95215c3a52cfbe2e')
@@ -34,10 +34,6 @@ sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c7141
 prepare() {
   sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
 
-  patch -p1 < 001-null-pointer-fix.patch
-  patch -p1 < 002-rdtscl.patch
-  patch -p1 < 003-linux47.patch
-
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
 }
 
@@ -45,6 +41,7 @@ package() {
   local dest="${pkgdir}/usr/src/${pkgname/-dkms/}-${pkgver}"
   mkdir -p "${dest}"
   cp -a src lib Makefile dkms.conf "${dest}"
+  install -D -m 0644 -t "${dest}/patches" *.patch
   chmod a-x "${dest}/lib/LICENSE.txt" # Ships with executable bits set
 
   install -D -m 0644 broadcom-wl-dkms.conf "${pkgdir}/usr/lib/modprobe.d/broadcom-wl-dkms.conf"
