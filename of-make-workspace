@@ -2,7 +2,7 @@
 
 echo -e "Initializing local workspace for openFrameworks..."
 
-WS=~/of-workspace
+WS=${1:-~/of-workspace}
 
 mkdir -p $WS
 cd $WS
@@ -12,18 +12,18 @@ cp -R /opt/openFrameworks/addons .
 OFPATH="/opt/openFrameworks/"
 
 if [ -d "${OFPATH}/projectGenerator-linux64" ]; then
-  PJ="projectGenerator-linux64"
+  PG="projectGenerator-linux64"
   PLATFORM="linux64"
 elif [ -d "${OFPATH}/projectGenerator" ]; then
-  PJ="projectGenerator"
+  PG="projectGenerator"
   PLATFORM="linux"
 fi
 
 OFWSPATH=`pwd`
 
-cp -R $OFPATH/$PJ .
+cp -R $OFPATH/$PG .
 
-touch $PJ/resources/app/settings.json
+touch $PG/resources/app/settings.json
 
 echo -e "{\n\t\"advancedMode\": false,\n\t \
 \"defaultOfPath\": \"$OFWSPATH\",\n\t \
@@ -32,7 +32,7 @@ echo -e "{\n\t\"advancedMode\": false,\n\t \
 \"showConsole\": false,\n\t \
 \"showDeveloperTools\": false, \n\t \
 \"useDictionaryNameGenerator\": true,\n\t \
-\"verboseOutput\": false\n}" > $PJ/resources/app/settings.json
+\"verboseOutput\": false\n}" > $PG/resources/app/settings.json
 
 mkdir -p apps/myApps
 
@@ -52,3 +52,5 @@ ln -s /opt/openFrameworks/LICENSE.md
 ln -s /opt/openFrameworks/other
 ln -s /opt/openFrameworks/README.md
 ln -s /opt/openFrameworks/scripts
+
+ln -s scripts/$PG/projectGenerator

@@ -2,8 +2,8 @@
 
 pkgname=openframeworks
 pkgver=0.9.3
-pkgrel=2
-pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
+pkgrel=3
+pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
 license=('MIT')
@@ -11,21 +11,22 @@ depends=('make' 'pkg-config' 'gcc' 'openal' 'python-lxml' 'glew' 'freeglut'
 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad'
 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio')
 optdepends=('qtcreator' 'xterm')
-makedepends=()
 options=(!strip)
 install=openframeworks.install
 
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
 _name="of_v${pkgver}_${_arch}_release"
 
-source=("http://openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz"
-				"rtAudio.patch"
+source=("rtAudio.patch"
 				"of-make-workspace")
 
-[[ "$CARCH" == "i686" ]] && md5sums=("5b9a6cf3e8ba372eba59a13cb403ea00") || md5sums=("95c5f436a66489ed1ca460bf593bdbe1")
+source_i686=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux_release.tar.gz")
+source_x86_64=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64_release.tar.gz")
 
-md5sums+=("31600cdc597a275295fa35cf178f83c0"
-					"594d0a3c82e0451f7b7fb353e3b658c6")
+md5sums=('31600cdc597a275295fa35cf178f83c0'
+         '924d38c4371b0d706a0f0c73accc75a0')
+md5sums_x86_64=('95c5f436a66489ed1ca460bf593bdbe1')
+md5sums_i686=('5b9a6cf3e8ba372eba59a13cb403ea00')
 
 prepare() {
 	export OF_ROOT=${srcdir}/${_name}
@@ -94,7 +95,7 @@ package() {
 
 	cp -R "${srcdir}/${_name}" "${pkgdir}/opt/openFrameworks"
 
-	install -Dm775 "${srcdir}/of-make-workspace" "${pkgdir}/usr/bin/of-make-workspace"
+	install -Dm775 "${srcdir}/of-make-workspace" "${pkgdir}/opt/openFrameworks/scripts/of-make-workspace"
 
 	msg2 "Fixing emptyExample project files permissions..."
 
