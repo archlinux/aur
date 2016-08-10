@@ -2,7 +2,7 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.3.1.r228.gafe34ee
+pkgver=1.3.1.r231.g57d90ab
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
