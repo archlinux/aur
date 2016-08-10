@@ -1,0 +1,16 @@
+pkgbase = fvextra
+	pkgdesc = Extensions to fancyvrb, including automatic line breaking and improved math mode.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/gpoore/fvextra
+	install = fvextra.install
+	arch = any
+	license = LPPL
+	depends = texlive-latexextra
+	source = https://github.com/gpoore/fvextra/archive/v1.2.tar.gz
+	source = fvextra.install
+	md5sums = 4571bc44c284f23eb40801a8d398033e
+	md5sums = a573ca786bc416e905171f49abf3ba46
+
+pkgname = fvextra
+
