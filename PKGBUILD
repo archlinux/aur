@@ -1,17 +1,19 @@
 # Maintainer: tembleking <tembleking at gmail dot com>
 pkgname='pgoapi-git'
 pkgver=r154.dffe149
-pkgrel=1
+pkgrel=2
 pkgdesc="Pokemon Go API lib"
 arch=("any")
 url="https://github.com/tejado/pgoapi"
 license=('MIT')
 depends=("python2"
+         "python2-pip"
          "python2-requests"
-         "python2-protobuf"
+         "python2-protobuf3"
          "python2-gpsoauth"
          "python2-geopy"
-         "python2-s2sphere")
+         "python2-s2sphere"
+         "python2-crypto")
 makedepends=("git")
 source=("git://github.com/tejado/pgoapi.git")
 md5sums=('SKIP')
