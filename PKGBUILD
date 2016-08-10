@@ -5,8 +5,8 @@
 # Maintainer: Marco Pompili <marcs.pompili@gmail.com>
 
 pkgname=v8
-pkgver=5.1.281.12
-pkgrel=2
+pkgver=5.4.374.1
+pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
 url="https://code.google.com/p/v8/"
@@ -61,11 +61,11 @@ prepare() {
 build() {
   cd v8
 
-  build/gyp_v8 -Dv8_enable_i18n_support=1 \
-  -Duse_system_icu=1 -Dconsole=readline \
-  -Dcomponent=shared_library -Dv8_target_arch=$V8_ARCH -Dwerror= -f ninja \
-  -Dlinux_use_bundled_gold=0
-
+  export GYP_GENERATORS=ninja
+  msg2 "Running gyp..."
+  gypfiles/gyp_v8
+  
+  msg2 "Start building..."
   ninja -C out/Release all # or target 'v8 d8' if you do not need tests
 }
 
@@ -83,8 +83,8 @@ package() {
   install -Dm755 out/Release/d8 $pkgdir/usr/lib/v8/d8
   install -Dm644 out/Release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
   install -Dm644 out/Release/snapshot_blob.bin $pkgdir/usr/lib/v8/snapshot_blob.bin
-  install -Dm755 out/Release/lib/libv8.so $pkgdir/usr/lib/v8/libv8.so
-  ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
+  #install -Dm755 out/Release/lib/libv8.so $pkgdir/usr/lib/v8/libv8.so
+  #ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
   install -Dm755 $srcdir/d8 $pkgdir/usr/bin/d8
 
 
@@ -92,6 +92,9 @@ package() {
   # But doing it here will break all users. Ideally if they use provided pkgconfig file.
   install -d $pkgdir/usr/include
   install -Dm644 include/*.h $pkgdir/usr/include
+
+  install -d $pkgdir/usr/share/v8
+  install -Dm644 $srcdir/v8/out/Release/obj/src/*.a $pkgdir/usr/share/v8
 
   install -d $pkgdir/usr/lib/pkgconfig
   install -m644 $srcdir/v8.pc $pkgdir/usr/lib/pkgconfig
