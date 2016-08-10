@@ -3,7 +3,7 @@
 
 pkgname=tracktion-7
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Commercial Proprietary Music Production Software"
 arch=('x86_64')
 url="http://www.tracktion.com/"
@@ -17,6 +17,7 @@ optdepends=(
 )
 source=(https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/TracktionInstall_7_Linux_64Bit_latest.deb)
 md5sums=('7edc03f27015187413816469688a1f4f')
+install=tracktion7.install
 
 package() {
     tar -x --lzma -f data.tar.lzma -C "${pkgdir}"

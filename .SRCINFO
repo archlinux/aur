@@ -1,8 +1,9 @@
 pkgbase = tracktion-7
 	pkgdesc = Commercial Proprietary Music Production Software
 	pkgver = 7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tracktion.com/
+	install = tracktion7.install
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
