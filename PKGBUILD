@@ -2,10 +2,10 @@
 
 pkgname=dcrdocs
 pkgver=20160725
-pkgrel=1
+pkgrel=2
 pkgdesc="Documentation for Decred"
 arch=('any')
-makedepends=('git' 'python-virtualenv')
+makedepends=('git' 'python')
 optdepends=('darkhttpd: serve static webpages')
 groups=('decred')
 url="https://docs.decred.org"
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$pkgname"
 
   msg2 'Building...'
-  virtualenv .
+  pyvenv .
   bin/pip \
     --isolated \
     --no-cache-dir \
