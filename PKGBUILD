@@ -2,7 +2,7 @@
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
-pkgver=1.23.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info'
 'qt5-svg' 'qt5-script')
 source=("${url}downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('48ab569c393ca549888a3cd13411fd6cb7d9da7e35198c37c7194132b6fd117d')
+sha256sums=('8466db2bcb1cd41062a9b864a4eb73d242f033ce84b8edab086fec9435076920')
 install=$pkgname.install
 
 prepare() {
