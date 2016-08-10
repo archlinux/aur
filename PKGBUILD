@@ -24,7 +24,7 @@ md5sums=('6168004bc99a604b09e0752f9bd2e419'
          '42ec6846a96efdf6524d7905b3f03393'
          '48126ad1674d4679c2a645dfb9d5a2c2'
          '95ebd431433b87d88c7a48cf0a32be7d'
-         '9601ee082f7fc0fc543e51e3b7b297fa'
+         '72dd31cbc8371abb6893ff59c0ad319e'
          '4cf459a79a8148cb1a3aeb0802c02d87')
 
 build() {
