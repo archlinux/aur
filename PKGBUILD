@@ -3,7 +3,7 @@
 pkgname=firefox-ublock-origin
 pkgver=1.8.4
 pkgrel=1
-pkgdesc='An efficient blocker add-on for your browser. Fast, potent, and lean.'
+pkgdesc='An efficient blocker add-on for various browsers. Fast, potent, and lean.'
 url=https://github.com/gorhill/uBlock
 arch=('any')
 license=('GPL3')
