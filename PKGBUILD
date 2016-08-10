@@ -2,14 +2,14 @@
 # Maintainer: Zdenek Obst <zdenek dot obst at gmail dot com>
 
 pkgname=wildfly-devel
-pkgver=10.0.0.Final
+pkgver=10.1.0.CR1
 pkgrel=1
 
 pkgdesc='Wildfly Application Server'
 arch=('any')
 url='http://www.wildfly.org/'
 license=('LGPL')
-depends=('java-runtime>=7')
+depends=('java-runtime>=8')
 conficts=('wildfly')
 
 _pkgloc=opt
