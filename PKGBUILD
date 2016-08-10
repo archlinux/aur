@@ -2,7 +2,7 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-gtk')
 install=wireshark-gtk2.install
 source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
-sha1sums=('9805d62b4fb108cc1e755d8c47f8c1e21eee8b73')
+sha1sums=('ab77c632d8babf731bf0ecac0876fe3ff2923d04')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
