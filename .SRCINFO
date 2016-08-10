@@ -1,0 +1,19 @@
+pkgbase = gtk-3-fortran-git
+	pkgdesc = A binding of the GTK+ 3.x libraries for Fortran 95/2003
+	pkgver = r536.6173c1f
+	pkgrel = 1
+	url = https://github.com/jerryd/gtk-fortran/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = gtk3
+	provides = gtk-3-fortran
+	conflicts = gtk-3-fortran
+	source = git+https://github.com/jerryd/gtk-fortran.git#branch=gtk3
+	sha256sums = SKIP
+
+pkgname = gtk-3-fortran-git
+
