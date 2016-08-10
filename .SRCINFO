@@ -1,0 +1,15 @@
+pkgbase = python2-iminuit
+	pkgdesc = python interface for MINUIT, a physics analysis tool for function minimization.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/iminuit/iminuit
+	arch = any
+	license = GPL
+	depends = python2
+	depends = cython2
+	options = !emptydirs
+	source = https://github.com/iminuit/iminuit/archive/v1.2.tar.gz
+	md5sums = 7510f7295e5ec8b27003294fa5ec6846
+
+pkgname = python2-iminuit
+
