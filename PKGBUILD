@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kirigami
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(LGPL)
 depends=(qt5-declarative)
 makedepends=(extra-cmake-modules)
 source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
-md5sums=('c2f3f114ba0c7291a842238295e0ed49')
+md5sums=('2388b5d1a87e6eb0d3d452945dcf7e9b')
 
 prepare() {
   mkdir -p build
