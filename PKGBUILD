@@ -18,7 +18,7 @@ source=("http://files.gokgs.com/javaBin/cgoban.jar"
         'cgoban3.desktop'
         'cgoban3-edit.desktop')
 sha256sums=('fcc158cbb9cf1c7e3b70fda21ff3f58980fec2be2e7a4e3440cf529b36c928a6'
-            '117e5499b05496eb8814a41081aa4792832aa3c841e03dd1edb7a3a936bec7bc'
+            'f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
             'f333aac0bfef3243390c5d989e5d7e674eb1d65ebd3a7bb84d391bdfd0fa869f'
             '929d48903510bd346f27522b1273be4f18bf36be23077611a3afb1d45d354c69')
