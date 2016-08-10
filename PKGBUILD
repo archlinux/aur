@@ -7,11 +7,12 @@
 
 pkgname=guix
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
 license=('GPL')
+options=('!strip')
 makedepends=(
   'bash-completion'
   'emacs'    # Please remove this if you are not going to use guix in emacs
@@ -23,7 +24,8 @@ depends=(
   'sqlite>=3.6.19'
   'bzip2'
   'gnutls'
-  'libgcrypt')
+  'libgcrypt'
+  'zlib')
 optdepends=(
   'bash-completion: to enable bash programmable completion'
   'emacs: to enable Emacs Interface'
@@ -63,4 +65,18 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	# Remove the unused upstart service file
 	rm -r ${pkgdir}/usr/lib/upstart
+	# The default makepkg strip option cannot be used here because binaries
+	# installed in /usr/share must not be stripped.
+	# To keep user-defined 'strip' and 'debug' options useful, we still
+	# depend on 'tidy_strip' function provided by makepkg to do the stripping
+	# work. To make the function useful, we have to temporarily remove the
+	# '!strip' option from 'options' array. However, assignments to 'options'
+	# cause mksrcinfo to insert wrong lines to .SRCINFO, so they have to be
+	# put in eval.
+	eval 'options=()'
+	cd ${pkgdir}/usr/bin
+	tidy_strip
+	cd ${pkgdir}/usr/lib
+	tidy_strip
+	eval 'options=("!strip")'
 }
