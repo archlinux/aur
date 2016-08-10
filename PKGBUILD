@@ -3,13 +3,13 @@
 
 pkgname=syncthing-bin
 _realname=syncthing
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing: binary."
 url="http://syncthing.net/"
 arch=('armv6h' 'i686' 'x86_64')
 license=('MPLv2')
-provides=('syncthing=0.14.3')
+provides=('syncthing=0.14.4')
 conflicts=('syncthing')
 install=${_realname}.install
 source=( 'syncthing.1')
@@ -18,13 +18,13 @@ sha256sums=('fb59747ca16d1b19e3cad1c147dcabea14a30a5e4177b90712e6bb837c107912')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha256sums+=('620ab8958b6bd242bc8dfb4653a7123b6cc752d76acb8ffe7a86925e7cb0b7ae')
+		sha256sums+=('dabb2fd474b40d7e47e520df7fac4ba1dee4353aac8c90f7d3958686aa39a40c')
 		;;
 	i686) _pkgarch="386"
-		sha256sums+=('c03ec03967ac98ce4899b084bf9729d5d21b30282c38b1fea3f527c9b59005e4')
+		sha256sums+=('717e6713126e8a44059aa39a0a2aef2120a62d40297780d939c2ce48c34ac6e4')
 		;;
 	x86_64) _pkgarch="amd64"
-		sha256sums+=('8e73dca01ddd866247eeaf963abffe1977793c864f2e86466bb02777b49bd6cf')
+		sha256sums+=('c124fba9901931b01ec5896ca51bd6a27d2d100cf644bd3f5e64b8b1e08c18b7')
 		;;
 esac
 
