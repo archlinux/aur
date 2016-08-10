@@ -6,7 +6,7 @@ pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
 pkgver=r5925.1e2f946
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -16,7 +16,6 @@ makedepends=('git' 'npm' 'bower' 'nodejs-grunt-cli' 'gulp')
 conflicts=('popcorntime' 'popcorn-time-ce')
 provides=('popcorntime')
 options=('!strip')
-install=popcorntime.install
 source=("git+https://github.com/popcorn-official/${_gitname}.git#branch=development"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
@@ -32,8 +31,6 @@ pkgver() {
 
 prepare() {
   cd "${_gitname}"
-
-  sed -i '/repo\/nw/d' gulpfile.js Gruntfile.js
   npm install
 }
 
@@ -66,4 +63,3 @@ package() {
   install -Dm644 "${_bpath}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
 
-# vim:set ts=2 sw=2 et:

@@ -1,9 +1,8 @@
 pkgbase = popcorntime-git
 	pkgdesc = Stream movies and TV shows from torrents
 	pkgver = r5925.1e2f946
-	pkgrel = 1
+	pkgrel = 2
 	url = https://popcorntime.sh
-	install = popcorntime.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
