@@ -14,5 +14,4 @@ post_install() {
 
 post_remove() {
   /usr/bin/getent passwd teamspeak &> /dev/null && /usr/bin/userdel teamspeak &> /dev/null
-  /usr/bin/getent group teamspeak &> /dev/null && /usr/bin/groupdel teamspeak &> /dev/null
 }
