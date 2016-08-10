@@ -4,7 +4,7 @@
 pkgname=gtk-theme-solarc-git
 _pkgname=solarc-theme
 _pkgauthor=apheleia
-pkgver=568.aa5f66d
+pkgver=573.672c951
 pkgrel=1
 pkgdesc="A flat theme with transparent elements. Based on the Arc theme: https://github.com/horst3180/arc-theme"
 arch=('any')
