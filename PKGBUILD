@@ -4,12 +4,11 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix-git
-_gitname=mcomix
-pkgver=r1447.4402517
+pkgver=r1451.cad4781
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
-url="https://github.com/benoit-pierre/mcomix"
+url="https://sourceforge.net/projects/mcomix/"
 license=('GPL')
 depends=('pygtk' 'python2-pillow' 'xdg-utils' 'python2' \
          'desktop-file-utils' 'hicolor-icon-theme' 'python2-setuptools')
@@ -21,17 +20,17 @@ optdepends=('libunrar: for rar compressed comics' \
             'mupdf: for PDF comics')
 provides=("mcomix")
 conflicts=("mcomix")
-source=('git+https://github.com/benoit-pierre/mcomix.git')
+source=("${pkgname}::git+http://git.code.sf.net/p/mcomix/git")
 sha256sums=('SKIP')
-install=${_gitname}.install
+install=${pkgname}.install
 
 pkgver() {
-    cd "${_gitname}"
+    cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
+    cd "${srcdir}/${pkgname}"
     mkdir -p ${pkgdir}/usr
     export PYTHONPATH=${pkgdir}/usr/lib/python2.7/site-packages/
     mkdir -p $PYTHONPATH
