@@ -5,9 +5,9 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.11.3
-pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
-Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy).'
+pkgrel=2
+pkgdesc='Lightweight HTTP1/2 server, mainline, Brotli , with Naxsi, Certificate
+Transparency and GeoIP (GeoIP Legacy) Support.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
@@ -32,7 +32,6 @@ source=($url/download/nginx-$pkgver.tar.gz
     #https://dl.google.com/dl/page-speed/psol/$_psolver.tar.gz
 	git+https://github.com/nbs-system/naxsi.git
     git+https://github.com/google/ngx_brotli.git
-	#git+https://github.com/sanderv32/ngx_http_auth_yubikey_module.git
 	#git+https://github.com/aperezdc/ngx-fancyindex.git
 	git+https://github.com/openresty/headers-more-nginx-module.git
 	git+https://github.com/grahamedgecombe/nginx-ct.git
@@ -56,8 +55,6 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-mail \
-    --with-mail_ssl_module \
     --with-ipv6 \
     --with-pcre-jit \
     --with-file-aio \
@@ -76,11 +73,13 @@ build() {
     --with-http_sub_module \
     --with-http_geoip_module \
     --with-stream \
+    --with-stream_ssl_module \
     --with-threads \
     --add-module=../naxsi/naxsi_src \
     --add-module=../headers-more-nginx-module \
-    --add-module=../nginx-ct \
-    --add-module=../ngx_brotli
+    --add-module=../ngx_brotli \
+    --add-module=../nginx-ct
+
 
   make
 }
