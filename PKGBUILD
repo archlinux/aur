@@ -8,7 +8,7 @@ _debug=n
 _commit=HEAD
 
 pkgname=libtorrent-pyro-git
-pkgver=20151020
+pkgver=20160804
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
@@ -42,7 +42,7 @@ build() {
     cd "$srcdir/libtorrent"
     #export CC=clang
     #export CXX=clang++
-    export CXXFLAGS+=" -fno-strict-aliasing"
+    export CXXFLAGS+=" -fno-strict-aliasing -Wno-terminate"
 
     ./configure $_debug \
         --prefix=/usr \
