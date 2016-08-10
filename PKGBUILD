@@ -2,7 +2,7 @@
 
 pkgname=quake2xp-svn
 _svnname=quake2xp
-pkgver=r783
+pkgver=r815
 pkgrel=1
 pkgdesc='Quake 2 based engine with glsl per pixel lighting effects and more'
 arch=('i686' 'x86_64')
@@ -12,12 +12,13 @@ depends=('devil-ilut-vanilla' 'openal' 'sdl' 'libvorbis')
 makedepends=('mesa' 'python2' 'unzip')
 install="$_svnname.install"
 source=("$_svnname::svn://svn.code.sf.net/p/quake2xp/code/trunk"
-	'http://downloads.sourceforge.net/quake2xp/media/baseq2/q2xp0.pkx'
-	'http://downloads.sourceforge.net/quake2xp/media/baseq2/q2xpMaps.pkx'
-	'http://downloads.sourceforge.net/quake2xp/media/baseq2/q2xpMdl.pkx'
-	'http://downloads.sourceforge.net/quake2xp/media/baseq2/q2xpMusic.pkx'
-	'http://downloads.sourceforge.net/quake2xp/media/baseq2/q2xpTex0.pkx'
+	'yandex://q2xp0.pkx'
+	'yandex://q2xpMaps.pkx'
+	'yandex://q2xpMdl.pkx'
+	'yandex://q2xpMusic.pkx'
+	'yandex://q2xpTex0.pkx'
 	'ftp://ftp.idsoftware.com/idstuff/quake2/q2-3.20-x86-full.exe')
+DLAGENTS+=("yandex::/usr/bin/echo %u - You need to download the files from https://yadi.sk/d/RP5yRSM-sx5ck/baseq2.")
 sha256sums=('SKIP'
             '1c4e5e6dc5f6a362db1abefa0b81c486e6c145ea39c7adfc412c167535f82562'
             'e3830df0da5bf95acd793ee299527fbb67ba53fe480c2a992e61d740be4c410b'
@@ -47,7 +48,7 @@ build() {
 package() {
 	cd "$srcdir/$_svnname"
 	python2 waf install --destdir="$pkgdir"
-	install -Dm444 "$srcdir/"{q2xp0,q2xpMaps,q2xpMdl,q2xpMusic,q2xpTex0}.pkx -t "$pkgdir/usr/share/quake2xp/baseq2"
+	install -Dm444 "$srcdir/"q2xp{0,Maps,Mdl,Music,Tex0}.pkx -t "$pkgdir/usr/share/quake2xp/baseq2"
 	install -Dm444 "$srcdir/baseq2/"{maps.lst,*.pak} -t "$pkgdir/usr/share/quake2xp/baseq2"
 	for p in $(ls "$srcdir/baseq2/players")
 	do
