@@ -24,10 +24,10 @@ package() {
 
   case $CARCH in
     "i686")
-      cp "$srcdir/Godot_v"$pkgver"_stable_x11.32" "$pkgdir/opt/$pkgname/godot"
+      cp "$srcdir/Godot_v"$pkgver"-stable_x11.32" "$pkgdir/opt/$pkgname/godot"
     ;;
     "x86_64")
-      cp "$srcdir/Godot_v"$pkgver"_stable_x11.64" "$pkgdir/opt/$pkgname/godot"
+      cp "$srcdir/Godot_v"$pkgver"-stable_x11.64" "$pkgdir/opt/$pkgname/godot"
     ;;
   esac
 
