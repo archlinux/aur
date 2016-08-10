@@ -3,7 +3,7 @@
 pkgname=arc-dark-suite
 _commit=1e770ad # 7 digits
 pkgver=20160807
-pkgrel=1
+pkgrel=2
 pkgdesc='Arc-Dark customization for Plasma 5'
 arch=('any')
 url='https://github.com/varlesh/Arc-Dark-KDE'
