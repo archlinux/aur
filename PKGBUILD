@@ -1,9 +1,9 @@
 # Maintainer: Isaac True <isaac.true@gmail.com>
 
 pkgname=stm32cubef4
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
-pkgdesc="Embedded software for STM32 F4 series"
+pkgdesc="Embedded software for STM32 F4 series. Please login and download en.stm32cubef4.zip from the Upstream URL."
 arch=('any')
 url="http://www.st.com/web/catalog/tools/FM147/CL1794/SC961/SS1743/LN1897/PF259243"
 license=('custom:MCD-ST Liberty SW License Agreement V2')
@@ -23,10 +23,10 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=('stm32cubef4.zip::http://www.st.com/st-web-ui/static/active/en/st_prod_software_internet/resource/technical/software/firmware/stm32cubef4.zip'
+source=('en.stm32cubef4.zip'
 		'LICENSE')
 noextract=()
-sha512sums=('ea029652d12ff0012c28bafa5ad82770f9d34bd478f078472204e613f330e98121f16ae8f818d2b9a075b80dd0ee170eeec3a62e564d68210e22474e48941d87'
+sha512sums=('4d4bc1aa99f71ad0ba5100749c48cfbe4214672422ed2ddefca6ff6e1a1bcea2e985032cf18111bedc4a534db58923b242eb77e4125e4c7cda9e0d27a8ebb47b'
             'ebb2626eee93b15f5633f8271898e2b4ed737141d9fe9fe84633a81cbe9bfccdeec5d3a7390c0bac017f1711531b6692f08047973c99c84a642771ee9edba310')
 package() {
 	install -d "$pkgdir"/opt/"$pkgname"
