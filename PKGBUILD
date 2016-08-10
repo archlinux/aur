@@ -8,7 +8,7 @@ _debug=n
 _commit=HEAD
 
 pkgname=rtorrent-pyro-git
-pkgver=20160310
+pkgver=20160810
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
@@ -56,7 +56,8 @@ prepare() {
     sed -i doc/scripts/update_commands_0.9.sed \
         -e "s:':\":g"
     sed -i ../{command_pyroscope.cc,ui_pyroscope.cc} \
-        -e "s:tr1:std:"
+        -e "s:tr1:std:" \
+        -e "s:print_download_info:print_download_info_full:"
 
     sed -i configure.ac \
         -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000907, version checks):"
@@ -66,7 +67,7 @@ prepare() {
     for i in ${srcdir}/*.patch; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
         msg "Patching $i"
-        patch -uNp1 -i "$i"
+        patch -uNlp1 -i "$i"
     done
     for i in ${srcdir}/*.{cc,h}; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
@@ -80,7 +81,7 @@ build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
     #export CXX=clang++
-    export CXXFLAGS+=" -fno-strict-aliasing"
+    export CXXFLAGS+=" -fno-strict-aliasing -Wno-terminate"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
