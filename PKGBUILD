@@ -1,7 +1,7 @@
 # Maintainer: "purplerhino" Douglas Hitchcock <clarkaddison(at)gmail(dot)com>
 
 pkgname=sococo
-pkgver=0.3.9_9510
+pkgver=0.3.9_10415
 pkgrel=1
 pkgdesc="Sococo for Linux"
 arch=('x86_64')
