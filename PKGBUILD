@@ -3,7 +3,7 @@
 pkgname=magic-wormhole-git
 _pkgname=${pkgname%-*}
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://github.com/warner/${_pkgname}"
@@ -12,6 +12,11 @@ depends=('python' 'python-click' 'python-autobahn' 'python-tqdm' 'python-hkdf' '
 makedepends=('python-setuptools')
 source=("git+${url}.git")
 md5sums=('SKIP')
+
+pkgver()
+{
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
