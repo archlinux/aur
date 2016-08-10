@@ -2,15 +2,13 @@
 
 pkgname=zoom
 pkgver=2.0.57232.0713
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('libx11' 'libsm' 'libxi' 'nss' 'xcb-util-image' 'xcb-util-keysyms' 'libxcb' 'glib2' 'libxshmfence' 'libpulse'
-	'pulseaudio-alsa' 'libxfixes' 'libxrandr' 'fontconfig' 'mesa' 'libxrender' 'libxcomposite' 'libxslt' 'gstreamer' 'ibus'
-	'ibus-qt')
-# The dependencies are those from the original package
+depends=('glib2' 'gstreamer' 'libxcb' 'xcb-util-image' 'fontconfig' 'mesa' 'libxi' 'libsm' 'libxrender'
+	'libpulse' 'libxcomposite' 'libxslt' 'sqlite' 'xcb-util-keysyms' 'qt5-webengine' 'gstreamer0.10-base' 'qt5-svg')
 options=(!strip)
 source_i686=("https://zoom.us/client/${pkgver}/zoom_${pkgver}_i386.deb")
 source_x86_64=("https://zoom.us/client/${pkgver}/zoom_${pkgver}_amd64.deb")
