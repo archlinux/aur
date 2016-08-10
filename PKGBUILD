@@ -99,7 +99,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules. What does it do? ➊  For Atheros WiFi cards used as access points (with hostapd), it enables broadcast function on all channels of 2.4Ghz and 5Ghz bands by ignoring card's EEPROM and Regulatory Domain restrictions. ➋ It includes namespaces support enabling use of LXC/LXD container virtualisation."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules. Enables broadcast function on all channels of 2.4Ghz and 5Ghz bands on Atheros WiFi cards in hostapd by ignoring card's EEPROM and Regulatory Domain restrictions. Adds namespaces support for LXD virtualisation."
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')

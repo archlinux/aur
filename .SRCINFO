@@ -36,7 +36,7 @@ pkgbase = linux-ath-lxd
 	sha256sums = 8101a4feb102af7ada5e9eead6333b1e5ce390d052847da4a2e5c867cbb68149
 
 pkgname = linux-ath-lxd
-	pkgdesc = The Linux-ath-lxd kernel and modules
+	pkgdesc = The Linux-ath-lxd kernel and modules. Enables broadcast function on all channels of 2.4Ghz and 5Ghz bands on Atheros WiFi cards in hostapd by ignoring card's EEPROM and Regulatory Domain restrictions. Adds namespaces support for LXD virtualisation.
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
