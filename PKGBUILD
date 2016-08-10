@@ -38,7 +38,7 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
-md5sums=('20563c2efe93c7fd4b1a7961e125ba42'
+md5sums=('e80c9a6598eb62748c8736cf02a091a6'
          'SKIP'
          'SKIP'
          'SKIP'
