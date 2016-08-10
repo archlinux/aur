@@ -2,7 +2,7 @@
 
 pkgname=python-gattlib
 pkgver=0.20150805
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a Python library to use the GATT Protocol for Bluetooth LE devices. It is a wrapper around the implementation used by gatttool in bluez package. It does not call other binaries to do its job :)'
 arch=(any)
 url="https://bitbucket.org/OscarAcena/pygattlib"
@@ -21,11 +21,10 @@ md5sums=(
 build() {
   cd "${srcdir}/gattlib-${pkgver}"
   patch -p1 -i ../gattlib.patch
-  python3 setup.py build
-  # make info
 }
 
 package() {
   cd "${srcdir}/gattlib-${pkgver}"
   python3 setup.py install --root "$pkgdir"
+  chmod +rx -R "$pkgdir"
 }
