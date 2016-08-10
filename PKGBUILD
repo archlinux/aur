@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-git
 pkgver=r774.3175946
-pkgrel=1
+pkgrel=2
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
 	cd soundnode-app
+	sed -i -e "s/\/usr\/share\/soundnode\/Soundnode/\/opt\/soundnode-git\/soundnode/g" fpm/soundnode.desktop
 	
 	make build
 }
@@ -34,6 +35,7 @@ package() {
 	install -dm755 "$pkgdir"/usr/bin
         install -dm755 "$pkgdir"/opt/
         install -dm755 "$pkgdir"/usr/share/applications/
+	
         install -Dm644 "$srcdir"/soundnode-app/fpm/soundnode.desktop "$pkgdir"/usr/share/applications/
 
 	if [ -d "$srcdir"/build ]; then
