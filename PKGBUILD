@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.3.551.21
+pkgver=1.3.551.27
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -17,8 +17,8 @@ optdepends=(
 )
 source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
 source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha256sums_i686=('e02efa8338caf654f3765148f65f46afc67e4d854371fb7acc76ec38842e4894')
-sha256sums_x86_64=('b7a4d557e0638de66723a7bb74a854d94437adafde37e10e3b1f4d5fa0101b4b')
+sha256sums_i686=('eadc9ffcb78446e0d4287052ea5cbe5e916027570eeed5e53462388a87eb990f')
+sha256sums_x86_64=('02f06a160f77b97367cb1dd4c21b288f95b6db3f0aeba782a2befb72fe4fcf7c')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
