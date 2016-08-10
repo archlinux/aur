@@ -9,16 +9,17 @@
 
 pkgname=coccinelle
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides spatch program used to apply semantic patches"
 arch=('i686' 'x86_64')
 url="http://coccinelle.lip6.fr/"
 license=('GPL2')
-makedepends=('camlp4' 'ocaml' 'ocaml-findlib' 'texlive-core' 'texlive-fontsextra')
+makedepends=('camlp4' 'ocaml' 'ocaml-findlib' 'texlive-core'
+             'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures')
 depends=('pcre' 'python')
 optdepends=('ocaml: OCaml scripting feature'
             'ocaml-findlib: OCaml scripting feature')
-options=(!strip)
+options=('!strip' '!makeflags')
 source=(http://coccinelle.lip6.fr/distrib/${pkgname}-${pkgver}.tgz)
 sha256sums=('5efb093b538145b7526a06946c09c7caaa715006658af2049faa8739f459743b')
 
@@ -26,7 +27,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
-  make -j1
+  make
 }
 
 package() {
