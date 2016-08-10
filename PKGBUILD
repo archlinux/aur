@@ -2,8 +2,8 @@
 
 pkgname=python-xlib-devel
 _gitname=python-xlib
-pkgver=0.16
-pkgrel=2
+pkgver=0.17
+pkgrel=1
 pkgdesc='Python 3 xlib bindings from the Python XLib developers community'
 arch=(any)
 url="https://github.com/python-xlib/python-xlib"
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('python')
 makedepends=()
 source=("https://github.com/${_gitname}/${_gitname}/archive/${pkgver}.tar.gz")
-md5sums=('5ae221cfe76289dfe2b9b191aa3b6230')
+md5sums=('b883c34ea198095cc965be19bbba63ab')
 
 
 build() {

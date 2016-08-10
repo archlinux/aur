@@ -1,13 +1,13 @@
 pkgbase = python-xlib-devel
 	pkgdesc = Python 3 xlib bindings from the Python XLib developers community
-	pkgver = 0.16
-	pkgrel = 2
+	pkgver = 0.17
+	pkgrel = 1
 	url = https://github.com/python-xlib/python-xlib
 	arch = any
 	license = LGPL2.1
 	depends = python
-	source = https://github.com/python-xlib/python-xlib/archive/0.16.tar.gz
-	md5sums = 5ae221cfe76289dfe2b9b191aa3b6230
+	source = https://github.com/python-xlib/python-xlib/archive/0.17.tar.gz
+	md5sums = b883c34ea198095cc965be19bbba63ab
 
 pkgname = python-xlib-devel
 
