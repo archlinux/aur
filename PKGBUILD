@@ -3,7 +3,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.0.1
+pkgver=2.1
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
@@ -24,7 +24,7 @@ source=(
   godot.desktop
   icon.png
 )
-sha256sums=('9dbd307879c1b60ba3d945c1cc49b0b7833c0ae1576b4ccec388e5b6cafc3b57'
+sha256sums=('0d2a6f5a3689a818cb4859e7655e64a4d603940fae1bdf16a18b980c22b0b6fe'
             'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
             'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
 
