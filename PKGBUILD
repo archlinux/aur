@@ -1,4 +1,4 @@
-# Maintainer: polyzen <polycitizen@gmail.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=vimb
 pkgver=2.11
