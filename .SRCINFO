@@ -1,7 +1,7 @@
 pkgbase = python-codegen
 	pkgdesc = Extension to ast that allow ast -> python code generation.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/andreif/codegen
 	arch = any
 	license = BSD
