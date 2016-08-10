@@ -1,14 +1,14 @@
 # Based on a PKGBUILD by Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=screenshot-tool-bzr
-pkgver=r149
+pkgver=r214
 pkgrel=1
 pkgdesc='Pantheon screenshot tool'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/screenshot-tool'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('screenshot-tool')
