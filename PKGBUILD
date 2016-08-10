@@ -32,7 +32,8 @@ sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
 prepare() {
-  sed -i -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" src/wl/sys/wl_linux.c
+  sed -i -e '/BRCM_WLAN_IFNAME/s/eth/wlan/' src/wl/sys/wl_linux.c
+  sed -i -e "/EXTRA_LDFLAGS/s|\$(src)/lib|/usr/lib/${pkgname}|" Makefile
 
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
 }
@@ -40,15 +41,15 @@ prepare() {
 package() {
   local dest="${pkgdir}/usr/src/${pkgname/-dkms/}-${pkgver}"
   mkdir -p "${dest}"
-  cp -a src lib Makefile dkms.conf "${dest}"
+  cp -a src Makefile dkms.conf "${dest}"
   install -D -m 0644 -t "${dest}/patches" *.patch
-  chmod a-x "${dest}/lib/LICENSE.txt" # Ships with executable bits set
+
+  install -D -m 0644 lib/wlc_hybrid.o_shipped "${pkgdir}/usr/lib/${pkgname}/wlc_hybrid.o_shipped"
 
   install -D -m 0644 broadcom-wl-dkms.conf "${pkgdir}/usr/lib/modprobe.d/broadcom-wl-dkms.conf"
 
   local ldir="${pkgdir}/usr/share/licenses/${pkgname}"
-  mkdir -p "${ldir}"
-  ln -rs "${dest}/lib/LICENSE.txt" "${ldir}/LICENSE.shipped"
+  install -D -m 0644 lib/LICENSE.txt "${ldir}/LICENSE.shipped"
   sed -n -e '/Copyright/,/SOFTWARE\./{s/^ \* //;p}' src/wl/sys/wl_linux.c > "${ldir}/LICENSE.module"
 }
 
