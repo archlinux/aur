@@ -4,10 +4,11 @@ pkgname=python2-$_pkgname
 pkgver=3.0.1
 pkgrel=12
 pkgdesc="An interface to the SQLite 3.x embedded relational database engine with spatialite extensions."
-arch=(any)
+arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/pyspatialite"
 license=('ZLIB' 'LIBPNG')
 depends=('python2' 'libspatialite')
+makedepends=('python2-setuptools')
 conflicts=('$pkgname<=$pkgver-4')
 replaces=('$pkgname<=$pkgver-4')
 options=(!emptydirs)
