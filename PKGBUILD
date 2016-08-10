@@ -1,7 +1,7 @@
 _npmname=sinopia
 pkgname=nodejs-$_npmname
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Private npm repository server"
 arch=("any")
 url="https://github.com/rlidwka/sinopia"
@@ -21,6 +21,8 @@ sha1sums=("36bf5209356facbf6cef18fa32274d116043ed24"
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" $_npmname-$pkgver.tgz
+
+  sed -i "10s/encodeURIComponent/function (thing) { return encodeURIComponent(thing).replace(\/^%40\/, '@') }/" "${pkgdir}/usr/lib/node_modules/sinopia/lib/up-storage.js"
 
   rmdir "$pkgdir/usr/etc"
 
