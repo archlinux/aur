@@ -3,12 +3,12 @@
 pkgname=qastools-qt5
 _pkgname=qastools
 pkgver=0.21
-pkgrel=0
+pkgrel=1
 pkgdesc="A collection of desktop applications for the Linux sound system ALSA."
 arch=(i686 x86_64)
 url="http://xwmw.org/qastools/"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'alsa-lib' 'qt5-svg')
 makedepends=('cmake' 'qt5-tools')
 provides=('qasconfig' 'qashctl' 'qasmixer')
 conflicts=('qastools' 'qasmixer' 'qashctl' 'qasconfig')
