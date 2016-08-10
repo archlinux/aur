@@ -1,11 +1,9 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
 pkgname=routeconverter
-pkgver=2.17
+pkgver=2.18.5
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
-# not sure if 64bit version works - on http://static.routeconverter.com/download/previous-releases/2.16/ there is no 64bit version any more
-#arch=(i686)
 arch=(i686 x86_64)
 url="http://www.routeconverter.de/en"
 license=('GPL')
@@ -15,16 +13,17 @@ changelog=ChangeLog
 sourcecommon=(routeconverter
         routeconverter-cli
         http://www.routeconverter.de/download/RouteConverterCmdLine.jar)
-source_i686=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux.jar)
-#source_x86_64=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux64.jar)
+source=(${sourcecommon[@]} http://www.routeconverter.de/download/RouteConverterLinux.jar)
 
 md5sumscommon=('4bc45e6a1a93656a0deb8956f71b6af8'
          'fdf570309917df1c1536b7e3c7740b33'
          'f2b6d764bfb8687705a04641207b37ae'
 )
 
-md5sums_i686=(${md5sumscommon[@]} 'a8bee928224cf37c05d034b70a8d7d8e')
-#md5sums_x86_64=(${md5sumscommon[@]} '')
+md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
+         'fdf570309917df1c1536b7e3c7740b33'
+         'fcd5ba246148aaf589c5dec2431aeb20'
+         '6179b82a7d0f53912b6fb107384fa83f')
 
 noextract=(RouteConverterCmdLine.jar
            RouteConverterLinux.jar
@@ -49,17 +48,10 @@ package()
 			${srcdir}/RouteConverterCmdLine.jar \
 			${pkgdir}/usr/lib/${pkgname}/
 
-  [ "$CARCH" == "i686" ] && \
   install -m 644 -o root -g root \
 			${srcdir}/RouteConverterLinux.jar \
 			${pkgdir}/usr/lib/${pkgname}/ || true
 
-  #[ "$CARCH" == "x86_64" ] && \
-  #install -m 644 -o root -g root \
-			#${srcdir}/RouteConverterLinux64.jar \
-			#${pkgdir}/usr/lib/${pkgname}/ || true
-
   ln -s /usr/lib/libwebkitgtk-1.0.so.0 ${pkgdir}/usr/lib/${pkgname}/libwebkit-1.0.so.2
   ln -s libwebkit-1.0.so.2 ${pkgdir}/usr/lib/${pkgname}/libwebkit-1.0.so
 }
-
