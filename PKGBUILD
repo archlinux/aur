@@ -2,17 +2,24 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=codelite-bin
 _pkgname=codelite
-pkgver=9.1.1
+pkgver=9.2.2
 pkgrel=1
 pkgdesc="Cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-depends=('clang' 'desktop-file-utils' 'wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind' 'libmariadbclient' 'lldb')
+depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh'
+				 'xterm' 'python2' 'libedit' 'ncurses'
+				 'valgrind' 'libmariadbclient' 'lldb' 'clang')
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 
 makedepends=('tar' 'xz')
-optdepends=('graphviz: callgraph visualization')
+optdepends=( 'graphviz: callgraph visualization'
+				     'clang: compiler'
+             'gcc: compiler'
+             'gdb: debugger'
+             'valgrind: debugger'
+            )
 install=codelite.install
 replaces=('codelite' 'codelite-svn')
 provides=('codelite')
