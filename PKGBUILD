@@ -10,7 +10,7 @@ license=('custom')
 
 source_x86_64=("https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-${pkgver//_/-}_amd64.deb")
 
-sha256sums_x86_64=('e9dfa546f359f781c23176b641f812160c7784a19a1baf2bb3177ef4a6c4f494')
+sha256sums_x86_64=('eec10c2b2527a0b4834092794497bbda5464a64d7922bd39cd4fde2fc749df44')
 
 package() {
     bsdtar -O -xf "sococo-${pkgver//_/-}"*.deb data.tar.gz | bsdtar -C "$pkgdir" -xJf -
