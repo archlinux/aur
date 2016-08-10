@@ -6,6 +6,7 @@ pkgbase = mock
 	install = mock.install
 	arch = any
 	license = GPL2
+	makedepends = bash-completion
 	depends = python
 	optdepends = createrepo_c: for mockchain command
 	optdepends = dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia

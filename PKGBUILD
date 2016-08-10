@@ -14,6 +14,7 @@ arch=('any')
 license=('GPL2')
 depends=('python')
 ((_with_usermode)) && depends+=('usermode')
+makedepends=('bash-completion')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
             'lvm2: for lvm_root plugin'
