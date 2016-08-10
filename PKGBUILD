@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=peruse-git
-pkgver=1.0.r3.g50191c1
+pkgver=1.1.r1.g15aa974
 pkgrel=1
 pkgdesc="A comic book viewer based on Frameworks 5, for use on multiple form factors."
 url="http://peruse.kde.org/"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
-depends=('baloo' 'kdeclarative' 'kirigami-git')
+depends=('baloo' 'kdeclarative' 'kio-extras' 'kirigami')
 makedepends=('extra-cmake-modules' 'git')
 optdepends=('okular-frameworks-git: for cbr, cb*, pdf, deja-vu, epub file support')
 provides=('peruse')
