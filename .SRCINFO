@@ -1,0 +1,14 @@
+pkgbase = mutter-push-git
+	pkgdesc = ZNC module for the Mutter IRC client
+	pkgver = r29.7f15a8a
+	pkgrel = 1
+	url = http://mutterirc.com
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = znc
+	source = git+https://bitbucket.org/jmclough/mutter-push.git
+	sha256sums = SKIP
+
+pkgname = mutter-push-git
+
