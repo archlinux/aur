@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=nvim-r
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Vim plugin to work with R"
 arch=('any')
@@ -15,13 +15,12 @@ optdepends=('vim>=7.4.1829: either vim or neovim'
 conflicts=('vim-r' 'r-vimcom')
 replaces=('vim-r')
 install='nvim-r.install'
-source=("https://github.com/jalvesaq/Nvim-R/releases/download/v${pkgver}/Nvim-R.vmb")
-sha256sums=('d9a69e297405851410441c4ebe84f8053d26bb6d5d8b01c4bcc054766e9d9e74')
+source=("https://github.com/jalvesaq/Nvim-R/archive/v${pkgver}.tar.gz")
+sha256sums=('8507a207db21f02aee96d6717229a7cc6e701ca5358a9ca6730b9af2fca4038f')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/vim/vimfiles"
-  vim -c "UseVimball ${pkgdir}/usr/share/vim/vimfiles" -c q \
-    "${srcdir}/Nvim-R.vmb"
-  rm "${pkgdir}/usr/share/vim/vimfiles/.VimballRecord"
-  rm "${pkgdir}/usr/share/vim/vimfiles/doc/tags"
+  cd "Nvim-R-${pkgver}"
+  _installpath="${pkgdir}/usr/share/vim/vimfiles"
+  mkdir -p "${_installpath}"
+  cp -r {R,doc,ftdetect,ftplugin,syntax} "${_installpath}"
 }
