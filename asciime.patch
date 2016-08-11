@@ -1,0 +1,12 @@
+diff -aur old/doc/config_settings.xml new/doc/config_settings.xml
+--- unicode/doc/config_settings.xml	2016-07-20 19:53:48.000000000 +0300
++++ ascii/doc/config_settings-new.xml	2016-08-09 10:05:46.094287298 +0300
+@@ -80,7 +80,7 @@
+         </term>
+         <listitem>A comma-separated list of strings to use as the bars of a graph output
+         to console/shell. The first list item is used for the minimum bar height and the
+-        last item is used for the maximum. Example: " ,_,▁,▂,▃,▄,▅,▆,▇,█".
++        last item is used for the maximum.
+         <para /></listitem>
+     </varlistentry>
+     <varlistentry>

@@ -1,8 +1,10 @@
-# Maintainer : Yiannis A Ginis <drxspace[at]gmail[dot]com>
+# Maintainer  : Yiannis A Ginis <drxspace[at]gmail[dot]com>
+# Contributor : Chris Sakalis <chrissakalis[at]gmail[dot]com>
+
 pkgname=conky-lua-archers-git
 _pkgname=conky
 pkgver=3145.3b4b9ab
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky/"
@@ -31,11 +33,14 @@ makedepends=(
 	'docbook2x'
 	'docbook-xml'
 	'docbook-xsl'
-	'git'
+	'man-db'
 	'perl-xml-libxml'
+	'perl-xml-sax-expat'
 )
-source=("git://github.com/brndnmtthws/${_pkgname}.git")
-sha1sums=('SKIP')
+source=("git://github.com/brndnmtthws/${_pkgname}.git"
+	'asciime.patch')
+sha1sums=('SKIP'
+	  'b07407c2be11cee7bd50e046024b89cf2579c448')
 options=('!strip' 'debug')
 
 pkgver() {
@@ -45,7 +50,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	mkdir build/
+	patch -p1 -i ../asciime.patch # db2x_manxml fails on non-ascii chars
+	mkdir -p build/ # as afaikifreedom recommented
 }
 
 build() {
@@ -59,6 +65,7 @@ build() {
 		-D BUILD_ARGB=ON \
 		-D BUILD_CURL=ON \
 		-D BUILD_I18N=ON \
+		-D BUILD_IBM=OFF \
 		-D BUILD_IMLIB2=ON \
 		-D BUILD_IOSTATS=ON \
 		-D BUILD_IPV6=ON \
@@ -86,7 +93,7 @@ package() {
 	cd "${srcdir}/${_pkgname}/build"
 	make DESTDIR=${pkgdir} install
 	cd ..
-	install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -D -m644 LICENSE.GPL ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL
 	install -D -m644 LICENSE.BSD ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD
 	install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
