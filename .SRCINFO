@@ -1,0 +1,14 @@
+pkgbase = r-brew
+	pkgdesc = templating framework for report generation
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/brew/index.html
+	arch = any
+	license = GPL2
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-brew
+
