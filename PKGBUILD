@@ -3,7 +3,7 @@
 _main_name=frcmake
 pkgname=$_main_name-git
 pkgver=46.c66f929
-pkgrel=2
+pkgrel=3
 pkgdesc="Some CMake stuff for use with the VxWorks 6.3 GCC Toolchain"
 arch=(any)
 provides=('frcmake')
