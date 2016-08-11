@@ -4,7 +4,7 @@
 
 pkgname=godot
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -37,8 +37,6 @@ build() {
         tools=yes \
         target=release_debug \
         use_llvm=yes \
-        use_sanitizer=yes \
-        use_leak_sanitizer=yes \
         builtin_zlib=yes \
         openssl=yes \
         colored=yes \
