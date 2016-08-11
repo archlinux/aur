@@ -1,0 +1,14 @@
+pkgbase = r-r6
+	pkgdesc = classes with reference semantics
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/wch/R6/
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0
+
+pkgname = r-r6
+
