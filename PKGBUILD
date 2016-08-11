@@ -11,8 +11,7 @@ pkgdesc='in-source documentation for r'
 arch=(any)
 url="https://github.com/klutometis/roxygen"
 license=('GPL')
-depends=('r>=3.0.2' 'r-stringr>=0.5' 'r-stringi' 'r-brew' 'r-digest' 'r-rcpp>=
-0.11.0' 'r-rcpp')
+depends=('r>=3.0.2' 'r-stringr>=0.5' 'r-stringi' 'r-brew' 'r-digest' 'r-rcpp>=0.11.0')
 makedepends=('curl' 'grep' 'python-html2text')
 
 pkgver() {
