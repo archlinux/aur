@@ -55,6 +55,9 @@ package() {
 
   # Install the program.
   make DESTDIR="${pkgdir}" install
+
+  # Cruft we don't want.
+  rm "${pkgdir}"/etc/mime.types{,.dist}
 }
 
 # vim: ft=sh ts=2 sw=2 et
