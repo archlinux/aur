@@ -1,0 +1,14 @@
+pkgbase = r-withr
+	pkgdesc = run code with temporarily modified global state
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://github.com/jimhester/withr
+	arch = any
+	license = GPL
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+
+pkgname = r-withr
+
