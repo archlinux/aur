@@ -1,0 +1,20 @@
+pkgbase = telegram-history-dump-git
+	pkgdesc = Backup Telegram chat logs using telegram-cli
+	pkgver = r92.5a37d9a
+	pkgrel = 1
+	url = https://github.com/tvdstaaij/telegram-history-dump
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = telegram-cli-git
+	depends = ruby
+	provides = telegram-history-dump
+	source = git+https://github.com/tvdstaaij/telegram-history-dump.git
+	source = telegram-history-dump.sh
+	source = telegram-history-dump.patch
+	sha512sums = SKIP
+	sha512sums = 6e7001e1d65038ae93d993e61c369ab69989d33ab841eaf33b377c138f2bcddc129435889231b1b310d3b1b17eed269b072ca783a5715750932bec902f905aa6
+	sha512sums = f06044b1da5a3c2e5d51f4161b923bc0e95cb896b0ab93bd898d14771d3c1caf5b5c66bf915ac6ae38a85397d52841e4067959dd5e6023df2a20e8c6675492e2
+
+pkgname = telegram-history-dump-git
+

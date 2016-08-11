@@ -1,0 +1,26 @@
+diff --git a/config.yaml b/config.yaml
+index 2edbea3..d95caa1 100644
+--- a/config.yaml
++++ b/config.yaml
+@@ -56,7 +56,7 @@
+   # Target directory for the backup files
+   # If this is a relative path it will be relative to the script's directory
+   # Absolute path starts with '/' or '~'
+-  backup_dir: './output'
++  backup_dir: '~/telegram-history-dump/output'
+ 
+   # Maximum number of messages to backup for each target (0 means unlimited)
+   backlog_limit: 0
+diff --git a/telegram-history-dump.rb b/telegram-history-dump.rb
+index cfb2fc2..a6c6077 100755
+--- a/telegram-history-dump.rb
++++ b/telegram-history-dump.rb
+@@ -226,7 +226,7 @@ end
+ 
+ $config = YAML.load_file(
+   cli_opts.cfgfile ||
+-  File.expand_path('../config.yaml', __FILE__)
++  File.expand_path('~/telegram-history-dump/config.yaml', __FILE__)
+ )
+ $log = Logger.new(STDOUT)
+ 
