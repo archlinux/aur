@@ -1,11 +1,15 @@
-# Contributor: Patrick Bartels <pckbls@gmail.com>
+# $Id: PKGBUILD 183309 2016-07-19 18:14:46Z alucryd $
+# Maintainer: Christian Hesse <mail@eworm.de>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Eivind Uggedal <eivind@uggedal.com>
 
 pkgname=mpv-sndio
 _basepkg=mpv
-_commit=f1778d1f
-pkgver=41859.gf1778d1f
+epoch=1
+pkgver=0.18.1
 pkgrel=1
-pkgdesc='Video player based on MPlayer/mplayer2 (with sndio support)'
+_waf_version=1.8.12
+pkgdesc='a free, open source, and cross-platform media player (with sndio support)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io'
@@ -13,50 +17,44 @@ depends=(
   'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
-  'libguess' 'libxrandr' 'jack' 'smbclient' 'rubberband'
+  'libxrandr' 'jack' 'smbclient' 'rubberband'
   'sndio'
 )
 makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper')
 optdepends=('youtube-dl: for video-sharing websites playback')
-conflicts=("mpv")
-provides=("mpv")
+conflicts=('mpv')
+provides=('mpv')
 options=('!emptydirs' '!buildflags')
-install=mpv.install
-source=("git://github.com/mpv-player/mpv.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $_basepkg
-
-  echo "$(git rev-list --count HEAD).g${_commit}"
-}
+source=("$_basepkg-$pkgver.tar.gz::https://github.com/mpv-player/$_basepkg/archive/v$pkgver.tar.gz"
+  "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
+sha256sums=('e413d57fec4ad43b9f9b848f38d13fb921313fc9a4a64bf1e906c8d0f7a46329'
+  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 
 prepare() {
-  cd $_basepkg
+  cd ${_basepkg}-${pkgver}
 
-  ./bootstrap.py
+  install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
 
 build() {
-  cd $_basepkg
+  cd ${_basepkg}-${pkgver}
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
-    --enable-zsh-comp \
-    --enable-libmpv-shared \
     --enable-cdda \
+    --enable-encoding \
+    --enable-libmpv-shared \
+    --enable-zsh-comp \
     --enable-sndio
 
   ./waf build
 }
 
 package() {
-  cd $_basepkg
+  cd ${_basepkg}-${pkgver}
+
   ./waf install --destdir="$pkgdir"
 
-  install -d "$pkgdir"/usr/share/doc/mpv/examples
-  install -m644 etc/{input,example}.conf \
-    "$pkgdir"/usr/share/doc/mpv/examples
   install -m644 DOCS/{encoding.rst,tech-overview.txt} \
     "$pkgdir"/usr/share/doc/mpv
 }
