@@ -58,6 +58,7 @@ else
   pkgname="${pkgname}-debug"
 fi
 
+_toolchain_name=armv7-rpi2-linux-gnueabihf
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 _packaginguser=$(whoami)
@@ -227,7 +228,7 @@ fi
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
-    -device-option CROSS_COMPILE=/opt/arm-sirspuddarch-linux-gnueabihf/bin/arm-sirspuddarch-linux-gnueabihf- \
+    -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
     ${_device_configure_flags} || exit 1
 
   make || exit 1
