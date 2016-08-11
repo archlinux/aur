@@ -16,10 +16,12 @@ conflicts=('nvidia-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 license=('custom')
 install=nvidia-340xx-ck.install
 options=(!strip)
+source=('linux-4.6.patch')
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums_i686=('c40e2778cd1ab036a76e1896fe2f77c4aa7baa215dbbdb11a2f4c5f05e1a478e')
-sha256sums_x86_64=('280f9db2aea52cab42e141f0393604c7a6d43e7f65d3e60c2319c2674ecc14c4')
+md5sums=('1f2baa65fd351ae7a2fc3dfd71ffcbfe')
+md5sums_i686=('cb64b165b638671bcdc75bcf297b8d90')
+md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -27,6 +29,8 @@ sha256sums_x86_64=('280f9db2aea52cab42e141f0393604c7a6d43e7f65d3e60c2319c2674ecc
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
+		patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+		cp -a kernel kernel-dkms
 }
 
 build() {
