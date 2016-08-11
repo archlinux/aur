@@ -2,7 +2,7 @@
 
 pkgname=ratpoison-jcs-git
 _pkgname="${pkgname%%-*}"
-pkgver=1.4.8
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="hacks atop the official ratpoison"
 conflicts=('ratpoison')
