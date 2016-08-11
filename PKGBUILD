@@ -1,18 +1,18 @@
 # $Id: PKGBUILD 68685 2012-03-31 16:54:07Z arodseth $
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 # Contributor: Thomas Weißschuh <thomas_weissschuh lavabit.com>
 
 pkgname=mosh
-pkgver=1.2.5
-pkgrel=3
+pkgver=1.2.6
+pkgrel=1
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='http://mosh.mit.edu/'
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
 source=("http://$pkgname.mit.edu/$pkgname-$pkgver.tar.gz")
-sha256sums=('1af809e5d747c333a852fbf7acdbf4d354dc4bbc2839e3afe5cf798190074be3')
+sha256sums=('7e82b7fbfcc698c70f5843bb960dadb8e7bd7ac1d4d2151c9d979372ea850e85')
 options=('!emptydirs')
 
 build() {
@@ -29,4 +29,5 @@ package() {
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
 
+# getver: raw.githubusercontent.com/mobile-shell/mosh/master/ChangeLog
 # vim:set ts=2 sw=2 et:
