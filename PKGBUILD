@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=dell-ulnm
 pkgver=3.0_038H3
-pkgrel=2
+pkgrel=3
 pkgdesc="Dell UPS Local Node Manager"
 url="http://www.dell.com/"
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=(
 package() {
 	cd "$srcdir"
 	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	install -Dm644 "copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	rm "copyright"
 	mkdir -p "$pkgdir/usr/local/Dell/UPSLocalNodeManager"
