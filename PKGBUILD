@@ -6,16 +6,16 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=13
+pkgrel=14
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
-_extramodules="extramodules-4.6-ck"
+_extramodules="extramodules-4.7-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('i686' 'x86_64')
 url='http://www.broadcom.com/support/802.11/linux_sta.php'
 license=('custom')
-depends=('linux-ck>=4.6' 'linux-ck<4.7')
-makedepends=('linux-ck-headers>=4.6' 'linux-ck-headers<4.7')
+depends=('linux-ck>=4.7' 'linux-ck<4.8')
+makedepends=('linux-ck-headers>=4.7' 'linux-ck-headers<4.8')
 conflicts=('broadcom-wl-ck-atom' 'broadcom-wl-ck-barcelona' 'broadcom-wl-ck-bulldozer' 'broadcom-wl-ck-corex' 'broadcom-wl-ck-core2' 'broadcom-wl-ck-haswell' 'broadcom-wl-ck-broadwell' 'broadcom-wl-ck-skylake' 'broadcom-wl-ck-ivybridge' 'broadcom-wl-ck-kx' 'broadcom-wl-ck-k10' 'broadcom-wl-ck-nehalem' 'broadcom-wl-ck-p4' 'broadcom-wl-ck-piledriver' 'broadcom-wl-ck-pentm' 'broadcom-wl-ck-sandybridge' 'broadcom-wl-ck-silvermont')
 #replaces=()
 #groups=('ck-generic')
