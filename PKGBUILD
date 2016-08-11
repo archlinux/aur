@@ -4,7 +4,7 @@
 
 pkgname=godot
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -52,6 +52,6 @@ package() {
     
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
-  install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvmss "${pkgdir}"/usr/bin/godot
+  install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvm "${pkgdir}"/usr/bin/godot
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
