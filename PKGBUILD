@@ -1,4 +1,4 @@
-pkgname="nodejs-vinefeed"
+pkgname="nodejs-vinefeed-git"
 pkgver=0.1.0.r11
 pkgrel=2
 pkgdesc="RSS/Atom feed generator for Vine users"
