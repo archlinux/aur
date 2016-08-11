@@ -1,0 +1,14 @@
+pkgbase = r-formatr
+	pkgdesc = format r code automatically
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://yihui.name/formatR
+	arch = any
+	license = GPL
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+
+pkgname = r-formatr
+
