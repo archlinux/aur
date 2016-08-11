@@ -6,45 +6,21 @@ pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc and lllc)"
 arch=('i686' 'x86_64')
 depends=(
-  'argtable'
   'boost'
   'boost-libs'
-  'curl'
   'crypto++'
-  'gmp'
   'jsoncpp'
-  'leveldb'
-  'libedit'
-  'libjson-rpc-cpp-git'
-  'libmicrohttpd'
-  'miniupnpc'
-  'ncurses'
-  'libcl'
-  'opencl-headers'
-  'openssl'
-  'python2'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-quick1'
-  'qt5-quickcontrols'
-  'qt5-webengine'
-  'qt5-webkit'
-  'qt5-graphicaleffects'
-  'readline'
-  'snappy'
-  'llvm'
-  'scons'
-  'gperftools'
+  'glibc'
 )
 makedepends=(
   'autoconf'
   'automake'
   'cmake'
   'gcc'
+  'gcc-libs'
   'libtool'
   'yasm'
   'git'
-  'clang'
 )
 groups=('ethereum')
 url="https://github.com/ethereum/solidity"
