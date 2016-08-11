@@ -21,7 +21,6 @@ optdepends=("gtk-theme-arc-git: A flat theme with transparent elements for GTK 3
             "kvantum-tools-qt5-svn: Kvantum config tools build against Qt5")
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
-install=INSTALL
 
 pkgver(){
     cd ${pkgname}
