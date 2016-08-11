@@ -1,0 +1,15 @@
+pkgbase = ultravnc-viewer-securevnc-plugin
+	pkgdesc = A plugin that provides simple, effective and securely encrypted VNC sessions for UltraVNC
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://adamwalling.com/SecureVNC/
+	arch = any
+	license = LGPL
+	depends = ultravnc-viewer>=1.0.9
+	source = http://adamwalling.com/SecureVNC/SecureVNCPlugin.dsm
+	source = http://adamwalling.com/SecureVNC/SecureVNCPlugin64.dsm
+	sha256sums = fba301f819f4adf6439ce99d7114ab80614c14564cd859450916752399b56f91
+	sha256sums = 0c1553ef40308c454fe7c93eff4948be5b9fde7bdafccc37761ceeb616a268d0
+
+pkgname = ultravnc-viewer-securevnc-plugin
+
