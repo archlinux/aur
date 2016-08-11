@@ -48,7 +48,10 @@ prepare() {
 }
 
 build() {
+  # We assume that libtool check on 64-bit Windows DLL is broken
+  # in mingw-w64 Linux cross compiler. So, force it to pass all checks
   export lt_cv_deplibs_check_method='pass_all'
+
   cd "$srcdir/${_pkgname}-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
