@@ -2,18 +2,18 @@
 
 pkgname=lynis-git
 _pkgname=lynis
-pkgver=2.1.0.407.dfe5e80
+pkgver=2.3.2.1414.ed4dd3b
 pkgrel=1
 pkgdesc='Security and system auditing tool to harden Unix/Linux systems'
 url='http://cisofy.com/lynis/'
 license=('GPL3')
 arch=('any')
 backup=('etc/lynis/default.prf')
-depends=('sh')
-optdepends=(
-  'net-tools: networking tests'
-  'bash-completion: completion for bash'
-)
+depends=('sh' 'awk')
+optdepends=('net-tools: networking tests'
+            'bind-tools: nameserver tests'
+            'iptables: firewall tests'
+            'bash-completion: completion for bash')
 makedepends=('git')
 provides=('lynis')
 conflicts=('lynis')
@@ -22,7 +22,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -33,31 +34,28 @@ prepare() {
 package() {
   cd ${pkgname}
 
-  # profile
-  install -Dm 644 default.prf "${pkgdir}/etc/${_pkgname}/default.prf"
-
   # binary
   install -Dm 755 lynis "${pkgdir}/usr/bin/${_pkgname}"
 
+  # profile
+  install -Dm 644 default.prf "${pkgdir}/etc/${_pkgname}/default.prf"
+
   # plugins, include, db
   install -d "${pkgdir}/usr/share/${_pkgname}"
-  cp -a db include plugins "${pkgdir}/usr/share/${_pkgname}"
+  cp -ra db include plugins "${pkgdir}/usr/share/${_pkgname}"
 
   # doc files
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README INSTALL CHANGELOG FAQ
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 README "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # manpage
-  install -Dm 644 ${_pkgname}.8 "${pkgdir}/usr/share/man/man8/${_pkgname}.8"
+  install -Dm 644 README INSTALL CHANGELOG.md FAQ \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 ${_pkgname}.8 -t "${pkgdir}/usr/share/man/man8"
 
   # completion
-  install -Dm 644 extras/bash_completion.d/${_pkgname} "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm 644 extras/bash_completion.d/${_pkgname} \
+    -t "${pkgdir}/usr/share/bash-completion/completions"
 
   # systemd
-  install -d "${pkgdir}/usr/lib/systemd/system/"
-  install -m 644 extras/systemd/{lynis.service,lynis.timer} "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm 644 extras/systemd/{lynis.service,lynis.timer} \
+    -t "${pkgdir}/usr/lib/systemd/system"
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
