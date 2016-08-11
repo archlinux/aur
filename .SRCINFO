@@ -1,0 +1,14 @@
+pkgbase = r-digest
+	pkgdesc = create compact hash digests of r objects
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = http://dirk.eddelbuettel.com/code/digest.html
+	arch = any
+	license = GPL2
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=2.4.1
+
+pkgname = r-digest
+
