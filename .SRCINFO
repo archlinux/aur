@@ -1,0 +1,23 @@
+pkgbase = ratpoison-jcs-git
+	pkgdesc = hacks atop the official ratpoison
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/jcs/ratpoison
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxinerama
+	depends = readline
+	depends = bash
+	depends = perl
+	depends = libxtst
+	depends = libxft
+	depends = texinfo
+	conflicts = ratpoison
+	source = ratpoison::git://github.com/jcs/ratpoison.git#branch=master
+	source = ratpoison.desktop
+	md5sums = SKIP
+	md5sums = 29c3cb9be59758e39d8471391231a74a
+
+pkgname = ratpoison-jcs-git
+
