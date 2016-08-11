@@ -2,7 +2,7 @@
 
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=neomutt.20160611.r0.g32378e1
+pkgver=neomutt.20160808.r9.g6946736
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
@@ -57,8 +57,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Cruft we don't want.
-  rm "${pkgdir}"/usr/bin/{flea,muttbug}
-  rm "${pkgdir}"/usr/share/man/man1/{flea,muttbug}.1
   rm "${pkgdir}"/etc/mime.types{,.dist}
 }
 
