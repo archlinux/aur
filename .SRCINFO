@@ -1,0 +1,14 @@
+pkgbase = r-yaml
+	pkgdesc = methods to convert r data to yaml and back
+	pkgver = 2.1.13
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/yaml/index.html
+	arch = any
+	license = BSD
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-yaml
+
