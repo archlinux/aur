@@ -1,0 +1,15 @@
+pkgbase = r-evaluate
+	pkgdesc = parsing and evaluation tools that provide more details than the default
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/hadley/evaluate
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+	depends = r-stringr>=0.6.2
+
+pkgname = r-evaluate
+
