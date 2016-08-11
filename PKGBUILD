@@ -1,21 +1,21 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
-pkgver=1.10.0.dev.r547.ge5b632e
-pkgrel=3
+pkgver=1.11.0.dev.r98.g2f90cbe
+pkgrel=1
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
 
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools')
+depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'sundials' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools' 'gnuplot')
 
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 
 provides=('openmodelica')
-conflicts=('openmodelica' 'openmodelica-svn')
+conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
 
-source=("omedit.patch") 
-md5sums=('79376887eb1c754893b2e1cf01720145')
+#source=("omedit.patch") 
+#md5sums=('79376887eb1c754893b2e1cf01720145')
 
 prepare() {
     # clone all submodules
@@ -42,6 +42,7 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     autoconf
+    export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
     ./configure --prefix=/usr/ --without-omc --with-omniORB  --with-cppruntime --with-lapack='-llapack -lblas'
     make
 }

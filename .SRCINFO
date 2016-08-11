@@ -1,7 +1,7 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.10.0.dev.r547.ge5b632e
-	pkgrel = 3
+	pkgver = 1.11.0.dev.r98.g2f90cbe
+	pkgrel = 1
 	url = https://openmodelica.org
 	arch = i686
 	arch = x86_64
@@ -37,11 +37,11 @@ pkgbase = openmodelica-git
 	depends = qt5-webkit
 	depends = qt5-svg
 	depends = qt5-tools
+	depends = gnuplot
 	provides = openmodelica
 	conflicts = openmodelica
 	conflicts = openmodelica-svn
-	source = omedit.patch
-	md5sums = 79376887eb1c754893b2e1cf01720145
+	conflicts = openmodelica-dev
 
 pkgname = openmodelica-git
 
