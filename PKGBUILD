@@ -20,7 +20,7 @@ makedepends=('rsync' 'git' 'python2-pytz' 'python2-numpy' 'python2-pyqt4' 'pytho
              'python-tornado' 'python2-tornado' 'gtk3' 'wxpython' 'python-pyqt5' 'python2-pyqt5'
              'libxkbcommon-x11' 'python-pillow' 'python2-pillow' 'python-setuptools'
              'python2-setuptools' 'python-cycler' 'python2-cycler' 'python2-functools32')
-source=("git://github.com/matplotlib/matplotlib" setup.cfg)
+source=("git+git://github.com/matplotlib/matplotlib.git#branch=master" setup.cfg)
 md5sums=('SKIP'
          '5fa7d3c374ec049e3ed592ddff0111be')
 
@@ -132,5 +132,3 @@ package_python-matplotlib-git() {
    install -dm755 "${pkgdir}"/usr/share/licenses/python-matplotlib
    install -m 644 doc/users/license.rst "${pkgdir}"/usr/share/licenses/python-matplotlib
 }
-md5sums=('SKIP'
-         '5fa7d3c374ec049e3ed592ddff0111be')
