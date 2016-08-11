@@ -15,7 +15,7 @@ depends=('r>=3.0.2')
 makedepends=('curl' 'grep' 'python-html2text')
 
 pkgver() {
-    curl "$_cran" 2>/dev/null|html2text|grep -oP '(?<=Version:).*'|grep -o '[0-9\.]*'
+    curl "$_cran" 2>/dev/null|html2text|grep -oP '(?<=Version:).*'|tr '-' '.'|grep -o '[0-9\.]*'
 }
 
 build() {
