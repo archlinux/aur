@@ -1,0 +1,7 @@
+arch=('any')
+pkgname=('libretro-shaders-cg-git' 'libretro-shaders-glsl-git' 'libretro-shaders-slang-git')
+builddeps=('retroarch-git')
+
+check_git $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
