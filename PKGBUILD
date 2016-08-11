@@ -14,7 +14,7 @@ source=("version::version${url#http}"
 sha256sums=('6f34484abaf76f7175264de32610a92447408d63c06a91dfb6e5744023e8d831'
             '5a09b1e6929fc162df8ab31b5e1a8bb12bf9475339b13624a6f49fa8c77c996e')
 
-# The following is very convoluted script because of makepkg's DLAGENTS escaping logic.
+# The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "version". It is treated like http, which is done by processing
 # the input url %u with sed, replacing the protocol back to http. Everything downloaded is then not
 # immediatley saved to the output file name %o, but first piped through sed, which finds the
