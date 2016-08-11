@@ -1,0 +1,15 @@
+pkgbase = r-memoise
+	pkgdesc = memoisation of functions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hadley/memoise
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+	depends = r-digest>=0.6.3
+
+pkgname = r-memoise
+
