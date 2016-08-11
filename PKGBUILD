@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15039
+pkgver=r15051
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
 url="https://launchpad.net/inkscape"
@@ -17,7 +17,7 @@ optdepends=('python2-numpy: some extensions'
             'uniconvertor: reading/writing to some proprietary formats'
  	    'gtkspell3: for spelling'
 	    'ruby: for simplepath extension')
-makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
+makedepends=('cmake' 'boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!makeflags')
@@ -25,47 +25,40 @@ source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/
 md5sums=('SKIP')
 _bzrmod="inkscape"
 
+
 pkgver() {
   cd $srcdir/$_bzrmod
   printf "r%s" "$(bzr revno)"
 }
 
-prepare() {
-  cd "$srcdir/$_bzrmod"
-  #fix for inkscape to use python2 with the python 3 package installed.
-  sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
-  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
-  sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
-  sed -i 's|"python"|"python2"|g' src/main.cpp
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
-  sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
-}
+# prepare() {
+#  cd "$srcdir/$_bzrmod"
+#   # fix for inkscape to use python2 with the python 3 package installed.
+#   sed -i '1s|/usr/bin/python\>|/usr/bin/python2|' cxxtest/*.py
+#   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
+#   sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
+#   sed -i 's|python -c |python2 -c|g' share/extensions/uniconv*.py
+#   sed -i 's|"python"|"python2"|g' src/main.cpp
+#   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
+#   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
+# }
 
 build() {
-LANG=C
   cd "$srcdir/$_bzrmod"
-  [[ -d ../build ]] || mkdir ../build
-  export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
-  ./autogen.sh
-  sed -i 's|python -c|python2 -c|g' configure 
-  cd ../build
-  ../inkscape/configure LIBS='-lpangoft2-1.0 -lfontconfig' \
-    --prefix=/usr \
-    --without-gnome-vfs \
-    --enable-lcms \
-    --enable-poppler-cairo \
-    --enable-gtk3-experimental \
-    --enable-dbusapi \
-    --enable-visio \
-    --enable-wpg \
-    --disable-rpath \
-    --enable-binreloc \
-    --disable-dependency-tracking
+  
+  [[ -d build ]] || mkdir build
+  cd build
+#  export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC"
+#  export LIBS='-lpangoft2-1.0 -lfontconfig'
+
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DWITH_DBUS=OFF
+  
   make 
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/$_bzrmod"/build
   make DESTDIR=$pkgdir install
 }
