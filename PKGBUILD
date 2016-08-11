@@ -7,7 +7,7 @@
 
 pkgname=nitrogen-git
 _gitname=nitrogen
-pkgver=r250.2109c85
+pkgver=r260.34df913
 pkgrel=1
 epoch=1
 pkgdesc="Background browser and setter for X windows - git version"
@@ -24,16 +24,12 @@ source=("${_gitname}::git+https://github.com/l3ib/nitrogen.git"
 md5sums=('SKIP'
          'a4b70efdc49a17b5a5632d6c2deb8566')
 
-
-install='nitrogen-git.install'
-
 options=(!emptydirs)
 
 pkgver() {
   cd "$srcdir/${_gitname}/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 build() {
   cd "$srcdir/${_gitname}/"
