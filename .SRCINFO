@@ -9,8 +9,9 @@ pkgbase = chessx
 	makedepends = qt5-tools
 	depends = qt5-multimedia
 	depends = qt5-svg
+	optdepends = stockfish: For a chess engine
 	conflicts = chessx-svn
-	source = http://sourceforge.net/projects/chessx/files/chessx/1.4.0/chessx-1.4.0.tgz
+	source = https://sourceforge.net/projects/chessx/files/chessx/1.4.0/chessx-1.4.0.tgz
 	sha256sums = e4287235904810a0a1b2cdec3dc33fbc30aa0657c7b7343bd2130bd9626220f4
 
 pkgname = chessx
