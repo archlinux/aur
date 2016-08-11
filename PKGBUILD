@@ -1,13 +1,15 @@
 # Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.0.77
-pkgrel=2
+pkgrel=4
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('i686' 'x86_64')
 url="http://www.validcertificadora.com.br/SafeSignLinux"
 license=('custom:copyright')
 depends=('pcsclite' 'gdbm183' 'wxgtk2.8' 'xdg-utils')
-depends_x86_64=('gcc-libs-multilib')
+optdepends=('ccid: generic USB Chip/Smart card interface devices driver',
+            'acsccid: ACS CCID PC/SC driver',
+            'scmccid: binary driver for the SCM Smart Card Readers')
 makedepends=('deb2targz')
 source_i686=("http://www.validcertificadora.com.br/upload/downloads/linux32bits/${pkgname}_${pkgver}-Ubuntu_i386.deb")
 source_x86_64=("http://www.validcertificadora.com.br/upload/downloads/linux64bits/${pkgname}_${pkgver}-Ubuntu_amd64.deb")
