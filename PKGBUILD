@@ -9,9 +9,7 @@ url="https://github.com/aresch/rencode"
 license=('GPL3')
 conflicts=('xpra-winswitch<=0.17.4' 'xpra-winswitch-svn<=13296')
 depends=('python2')
-makedepends=()
-checkdepends=()
-optdepends=()
+makedepends=('cython2')
 source=("https://github.com/aresch/rencode/archive/v$pkgver.tar.gz")
 md5sums=('3bdbec5c50d845e5367ba53c5b85d1a4')
 
