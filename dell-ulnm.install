@@ -1,0 +1,5 @@
+post_install() {
+	echo "To start Dell ULNM, run 'systemctl start dell-ulnm'"
+	echo "Then, navigate to http://localhost:4679"
+	echo "The default user and password is admin/admin"
+}

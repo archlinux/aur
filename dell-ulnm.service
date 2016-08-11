@@ -1,0 +1,11 @@
+[Unit]
+Description=Dell UPS Local Node Manager
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/Dell/UPSLocalNodeManager/mc2 -start
+
+[Install]
+WantedBy=multi-user.target
