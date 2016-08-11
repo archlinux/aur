@@ -1,10 +1,11 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=dell-ulnm
 pkgver=3.0_038H3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dell UPS Local Node Manager"
 url="http://www.dell.com/"
 arch=('x86_64')
+depends=('libusb-compat' 'js17')
 license=('custom')
 install="$pkgname.install"
 source=(
@@ -12,7 +13,7 @@ source=(
 	"$pkgname.service"
 )
 sha256sums=(
-	'6415ca77fb5f555d91747fbfa043e8f685ceae2d30e635aecd9054dc98719bd9'
+	'6e2c906b589142b96a49a487bead9e117561ffa52c80e5b93b95f21d442b863d'
 	'9a49ff3f5a883329413774c0db9cad2daaa822a006341e8cf7df1b2ac1444640'
 )
 
