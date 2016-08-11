@@ -1,0 +1,14 @@
+pkgbase = r-git2r
+	pkgdesc = provides access to git repositories
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/ropensci/git2r
+	arch = any
+	license = GPL2
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+
+pkgname = r-git2r
+
