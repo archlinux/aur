@@ -24,11 +24,11 @@ sha256sums=('f5bbb7ea941d120d03237a28d07411aafc23e866b184083e37e02eda65aa3072'
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
     | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ %u\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ grep\ -Po\ -m1\ '(?<=Gnome\ )[[:digit:].]+(?=\ Theme)'\ >\ %o"
+)\ |\ xmllint\ --html\ --xpath\ 'normalize-space(//span[@class=\"value\"][1]/text())'\ -\ 2>/dev/null\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
-  tr '\n' '.' < version
+  cat version
   while read -rd $'\0'
   do
     if [[ "$REPLY" -gt "$max" ]]
@@ -36,7 +36,7 @@ pkgver() {
       max="$REPLY"
     fi
   done < <(find */ -type f -exec stat --printf="%Y\0" '{}' +)
-  date -d "@$max" +%Y%m%d
+  date -d "@$max" +.%Y%m%d
 }
 
 package() {
