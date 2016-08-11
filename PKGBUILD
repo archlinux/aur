@@ -1,8 +1,8 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=persian-fonts
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -22,5 +22,5 @@ depends=('ttf-borna'
          'ttf-persian-hm-ftx'
          'ttf-iranian-sans'
          'ttf-iranian-serif'
+         'ttf-yas'
 )
-
