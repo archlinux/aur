@@ -1,6 +1,6 @@
 pkgname=openvpn-update-systemd-resolved
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN systemd-resolved Updater"
 arch=("any")
 url="https://github.com/jonathanio/update-systemd-resolved"
@@ -13,7 +13,7 @@ sha512sums=("2e3d4ec91dd18e34c199d1a6b639846ea8773b08a08e8a7ca1546de86192cd9cc69
 
 package() {
   cd $srcdir/update-systemd-resolved-${pkgver}
-  install -D -m655 update-systemd-resolved "${pkgdir}/etc/openvpn/update-systemd-resolved"
+  install -D -m755 update-systemd-resolved "${pkgdir}/etc/openvpn/update-systemd-resolved"
 }
 
 # vim:set ts=2 sw=2 et:
