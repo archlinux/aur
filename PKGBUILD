@@ -32,12 +32,10 @@ sha1sums=('cfe94a15a2404db85858a81ff8de27c8ff3e235e'
           '6599adf3797d7bfb4534bc910372c431fc0efced'
           '4c3b7b302044bd45decec78f7f7d4ece15d9f3f7')
 
-_architectures="i686-w64-mingw32"
-_targetarch64=x86_64-w64-mingw32
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-build() {
+prepare() {
   cd "$srcdir/${_pkgname}-$pkgver"
-
   patch -p1 -i ../0001-nl_langinfo.mingw32.patch
   patch -p1 -i ../197416.all.patch
   patch -p1 -i ../217602.all.patch
@@ -47,18 +45,22 @@ build() {
   patch -p1 -i ../367153-manpage.all.patch
   patch -p1 -i ../get-w32-console-maxcols.mingw32.patch
   patch -p1 -i ../no-uid-stuff-on.mingw32.patch
+}
 
+build() {
+  export lt_cv_deplibs_check_method='pass_all'
+  cd "$srcdir/${_pkgname}-$pkgver"
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}/build-${_arch}"
-    cd "${srcdir}/build-${_arch}"
-    ../${_pkgname}-${pkgver}/configure --host=${_arch} --prefix=/usr/${_arch}
+    mkdir -p build-${_arch} && pushd build-${_arch}
+	${_arch}-configure --enable-shared --enable-static 
     make
+	popd
   done
 }
 
 package () {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/build-${_arch}"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
     make install DESTDIR="${pkgdir}"
     rm -rf "${pkgdir}/usr/${_arch}/share/man"
     ${_arch}-strip -x -g "${pkgdir}/usr/${_arch}/bin/"*.dll
