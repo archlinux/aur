@@ -5,8 +5,8 @@
 # http://code.qt.io/cgit/qt-labs/qbs.git/
 
 pkgname=qpi-toolchain
-pkgver=5.3.0
-pkgrel=3
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="cross-tool-ng compiled gcc 5.3 hf toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
@@ -15,7 +15,7 @@ makedepends=("git")
 _toolchainreponame=crosstool-ng-toolchains
 _toolchainname=arm-sirspuddarch-linux-gnueabihf
 url="https://github.com/sirspudd/${_toolchainreponame}"
-source=("git://github.com/sirspudd/${_toolchainreponame}.git")
+source=("git+https://github.com/sirspudd/${_toolchainreponame}.git#tag=6.1")
 sha256sums=("SKIP")
 options=('!strip')
 
