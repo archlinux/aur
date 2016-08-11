@@ -3,7 +3,7 @@
 
 pkgname=progit2-git
 pkgver=2.0.0.r611.g024a3a0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package to build the latest version of the progit2 book and read it when offline"
 arch=('any')
 
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     # Gem dependencies can be installed per user and not systemwide in
     # /home/<your username>/.gem/ruby/<ruby version>/, but we won't be able to
@@ -58,7 +58,7 @@ prepare() {
 package() {
     # When entering here, we are in the src directory, go in the cloned progit2
     # directory.
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     bundle exec rake book:build
 
