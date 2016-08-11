@@ -1,6 +1,6 @@
 # Maintainer: SaultDon <sault.don gmail>
-_pkgname=pyspatialite
-pkgname=python2-$_pkgname
+pkgname=python2-pyspatialite
+_pkgname=${pkgname/python2-/}
 pkgver=3.0.1
 pkgrel=12
 pkgdesc="An interface to the SQLite 3.x embedded relational database engine with spatialite extensions."
@@ -9,8 +9,6 @@ url="https://pypi.python.org/pypi/pyspatialite"
 license=('ZLIB' 'LIBPNG')
 depends=('python2' 'libspatialite')
 makedepends=('python2-setuptools')
-conflicts=('$pkgname<=$pkgver-4')
-replaces=('$pkgname<=$pkgver-4')
 options=(!emptydirs)
 changelog=$pkgname.changelog
 source=(https://pypi.python.org/packages/source/p/pyspatialite/$_pkgname-$pkgver-alpha-0.tar.gz
