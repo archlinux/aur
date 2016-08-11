@@ -1,0 +1,14 @@
+pkgbase = r-openssl
+	pkgdesc = toolkit for encryption, signatures and certificates based on openssl
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/jeroenooms/openssl#readme
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-openssl
+
