@@ -1,0 +1,14 @@
+pkgbase = r-praise
+	pkgdesc = praise users
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gaborcsardi/praise
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-praise
+
