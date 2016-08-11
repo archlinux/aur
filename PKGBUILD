@@ -2,11 +2,11 @@
 
 pkgname=spidermonkey-git
 _gitname=gecko-dev
-pkgver=51.0a1.45e888f
+pkgver=51.0a1.r45e888f
 pkgrel=1
 pkgdesc="Mozilla's JavaScript engine used in Firefox"
 arch=('i686' 'x86_64')
-url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
+url='https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey'
 license=('MPL')
 depends=('zlib')
 makedepends=('git' 'clang' 'autoconf2.13' 'python2')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf '%s.%s' $(python python/mozbuild/mozbuild/milestone.py --topsrcdir .) $(git rev-parse --short HEAD)
+  printf '%s.r%s' $(python2 python/mozbuild/mozbuild/milestone.py --topsrcdir .) $(git rev-parse --short HEAD)
 }
 
 build() {
@@ -33,6 +33,7 @@ build() {
 package() {
   cd "$_gitname/js/src/build_OPT.OBJ"
   make DESTDIR="$pkgdir" install
+  # Resolve symlinks so they don't point to $srcdir
   for l in $(find "$pkgdir/usr/include/" -type l); do
     cp --remove-destination $(readlink $l) $l
   done

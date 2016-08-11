@@ -1,6 +1,6 @@
 pkgbase = spidermonkey-git
 	pkgdesc = Mozilla's JavaScript engine used in Firefox
-	pkgver = 51.0a1.45e888f
+	pkgver = 51.0a1.r45e888f
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 	arch = i686
