@@ -15,11 +15,11 @@ source=("https://github.com/mbr/flask-bootstrap/archive/$pkgver.tar.gz")
 md5sums=('f46d7e27798bd9678ba8d155a8491bb2')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/flask-bootstrap-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/flask-bootstrap-$pkgver
     python2 setup.py install --root="$pkgdir"
 }
