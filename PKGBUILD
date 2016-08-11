@@ -24,7 +24,7 @@ sha256sums=('6f34484abaf76f7175264de32610a92447408d63c06a91dfb6e5744023e8d831'
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
     | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ %u\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ grep\ -Po\ '(?<=GTK\ )[[:digit:].]+(?=\ Theme)'\ >\ %o"
+)\ |\ grep\ -Po\ -m1\ '(?<=GTK\ )[[:digit:].]+(?=\ Theme)'\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
