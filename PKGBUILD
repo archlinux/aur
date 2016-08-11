@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=talking-clock
 pkgname=talking-clock-git
-pkgver=3
+pkgver=v15.0.r5.3b6827e
 pkgrel=1
 pkgdesc="Highly configurable clock written in bash with soundpack and voice options."
 arch=('any')
@@ -27,10 +27,10 @@ md5sums=("SKIP")
 
 pkgver()
 {
-  cd "$_pkgname"
-  git shortlog | head -n 1 | tr -Cd "[:digit:]"
-}
- 
+  cd "${_pkgname}"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+} 
+
 package()
  {
   cd "$_pkgname"
