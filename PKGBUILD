@@ -21,9 +21,13 @@ build() {
 
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH
 
-	install -D -m0755 ${srcdir}/${pkgname}/pixel_kb_backlight.ko ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH/
-	install -D -m0755 ${srcdir}/${pkgname}/chromeos_keyboard_bl.ko ${pkgdir}/usr/lib/modules/extramodules-4.6-ARCH/
+  kernel_release=`uname -r`
+  kernel_major_minor=${kernel_release%.*}
+
+	mkdir -p ${pkgdir}/usr/lib/modules/extramodules-${kernel_major_minor}-ARCH
+
+	install -D -m0755 ${srcdir}/${pkgname}/pixel_kb_backlight.ko ${pkgdir}/usr/lib/modules/extramodules-${kernel_major_minor}-ARCH/
+	install -D -m0755 ${srcdir}/${pkgname}/chromeos_keyboard_bl.ko ${pkgdir}/usr/lib/modules/extramodules-${kernel_major_minor}-ARCH/
 }
 
