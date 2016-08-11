@@ -1,0 +1,14 @@
+pkgbase = r-curl
+	pkgdesc = a modern and flexible web client for r
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/jeroenooms/curl#readme
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.0
+
+pkgname = r-curl
+
