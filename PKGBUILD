@@ -2,8 +2,8 @@
 
 pkgbase=notepadqq-src
 pkgname=notepadqq
-pkgver=0.51.0
-pkgrel=2
+pkgver=0.52.0
+pkgrel=1
 pkgdesc='Notepad++-like editor for Linux'
 arch=('i686' 'x86_64')
 url='http://notepadqq.altervista.org/wp/'
