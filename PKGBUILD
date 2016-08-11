@@ -5,34 +5,38 @@
 
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
-_pkgver=5.0.0
-pkgver=${_pkgver//-/_}
+_pkgver=5.1.0
+pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
-depends=('liblqr' 'libkipi' 'lensfun' 'opencv'
-'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
-optdepends=('kipi-plugins: more tools and plugins')
-makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost' 'grantlee-qt5'
-             'libgpod' 'hugin' 'opencv' 'doxygen' 'lensfun' 'imagemagick' 'eigen' 'libusb' 'kio' 'kdoctools' 'marble'
-             'kfilemetadata' 'qt5-multimedia' 'kdesignerplugin' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'kdelibs4support' 'qt5-xmlpatterns' 'kqoauth')
-source=("http://download.kde.org/stable/${_pkgname}/${_pkgname}-${_pkgver}.tar.xz")
-sha1sums=('e0dec2eba9ab3a51d632b69b3dd6daf8dca64a45')
+depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'knotifyconfig' 'libksane'
+         'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
+optdepends=('kipi-plugins: export to various online services'
+            'hugin: panorama tool')
+makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv'
+             'boost' 'opencv' 'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble'
+             'kdesignerplugin' 'kfilemetadata' 'qt5-multimedia' 'threadweaver'
+             'kcalcore' 'knotifyconfig')
+source=("http://download.kde.org/stable/${_pkgname}/${_pkgname}-${_pkgver}.tar.xz"
+        'digikam-5.1-fix-build.patch')
+sha1sums=('87a843c39f45b8704ead6e6029e52fb03ee44680'
+          '5b6644c8b5534a1712f46fc84948de9a0039a601')
 
 prepare() {
   mkdir -p build
 
-# Build fails
-  sed -e '/add_subdirectory(showfoto)/d' -i $_pkgname-${_pkgver}/doc-translated/digikam/CMakeLists.txt
+  cd "${_pkgname}-${_pkgver}"
+  # Fix build on i686
+  patch -p1 -i ../digikam-5.1-fix-build.patch
 }
 
 build() {
   cd build
 
-  cmake ../${_pkgname}-${_pkgver} \
+  cmake "../${_pkgname}-${_pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
@@ -48,11 +52,11 @@ build() {
 package() {
   cd build/core
   make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc/digikam
+  cd "$srcdir/build/doc/${_pkgname}"
   make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc-translated/digikam
+  cd "$srcdir/build/doc-translated/${_pkgname}"
   make DESTDIR="$pkgdir" install
-  cd $srcdir/build/po
+  cd "$srcdir/build/po"
   make DESTDIR="$pkgdir" install
 
 # Provided by kipi-plugins
