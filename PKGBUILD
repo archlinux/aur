@@ -2,7 +2,7 @@
 
 pkgname=chessx
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chess Database and PGN viewer"
 arch=(i686 x86_64)
 url=http://chessx.sourceforge.net
