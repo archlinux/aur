@@ -1,0 +1,14 @@
+pkgbase = r-jsonlite
+	pkgdesc = a robust, high performance json parser and generator for r
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://arxiv.org/abs/1403.2805, https://www.opencpu.org/posts/jsonlite-a-smarter-json-encoder
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-jsonlite
+
