@@ -3,7 +3,7 @@
 
 pkgname=progit2-git
 pkgver=2.0.0.r611.g024a3a0
-pkgrel=2
+pkgrel=3
 pkgdesc="A package to build the latest version of the progit2 book and read it when offline"
 arch=('any')
 
@@ -14,6 +14,7 @@ makedepends=(
   'git'
   'ruby-bundler'
   'ruby'
+  'python2'
 )
 
 install=${pkgname}.install
