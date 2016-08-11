@@ -1,5 +1,8 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
+# Co-maintainer: Dan Beste <dan.ray.beste+aur@gmail.com>
+
 pkgname=dybuk-git
+_pkgname=dybuk
 pkgver=r37.ef12906
 pkgrel=1
 pkgdesc="Prettify the ugly Rustc messages"
@@ -13,23 +16,24 @@ conflicts=(dybuk)
 source=('git://github.com/Ticki/dybuk.git')
 md5sums=('SKIP')
 
-
 pkgver() {
-    cd "$srcdir/dybuk"
-    printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"  \
-        "$(git rev-parse --short HEAD)"
+	cd "${srcdir}"/"${_pkgname}"
+	printf "r%s.%s"						\
+		"$(git rev-list --count HEAD)"	\
+		"$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/dybuk"
+	cd "${srcdir}"/"${_pkgname}"
 	cargo build --release
 }
 
 package() {
-	cd "$srcdir/dybuk"
-	install -m755 -D target/release/dybuk "$pkgdir/usr/bin/dybuk"
-	install -D -m644 "LICENSE" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}"/"${_pkgname}"
+	install		\
+		-m755	\
+		-D target/release/dybuk "${pkgdir}"/usr/bin/"${_pkgname}"
+	install		\
+		-m644	\
+		-D "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
