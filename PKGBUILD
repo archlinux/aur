@@ -6,7 +6,7 @@ pkgdesc="A markdown parser for docutils"
 url="https://github.com/rtfd/recommonmark"
 arch=(any)
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-commonmark' 'python2-commonmark')
 source=("https://pypi.python.org/packages/source/r/recommonmark/recommonmark-${pkgver}.tar.gz")
 md5sums=('f8e9d96ab19922652c4e35d73155967e')
 
