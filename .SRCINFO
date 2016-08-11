@@ -1,0 +1,14 @@
+pkgbase = r-mime
+	pkgdesc = map filenames to mime types
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/yihui/mime
+	arch = any
+	license = GPL
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-mime
+
