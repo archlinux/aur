@@ -4,7 +4,7 @@
 pkgbase=gregorio
 pkgname=$pkgbase
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
 arch=("i686" "x86_64")
@@ -23,7 +23,7 @@ prepare() {
   msg "Configuring..."
   cd "$srcdir/$pkgbase/"
   autoreconf -f -i
-  ./configure --prefix=/usr || return 1
+  ./configure --prefix=/usr/local || return 1
 }
 
 build() {
@@ -38,5 +38,5 @@ package() {
   make -j DESTDIR="$pkgdir/" install || return 1
   msg "Installing fonts and TeX files..."
   cd "$srcdir/$pkgbase/"
-  ./install-gtex.sh dir:$pkgdir/usr/share/texmf-dist || return 1
+  ./install-gtex.sh dir:$pkgdir/usr/share/texmf || return 1
 }
