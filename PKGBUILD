@@ -1,13 +1,13 @@
 # Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=neomutt
-pkgver=20160723
+pkgver=20160808
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=("https://github.com/neomutt/neomutt/archive/neomutt-$pkgver.tar.gz")
-md5sums=('d5c89106aab62bbefceb929ccd1cb798')
+md5sums=('c873560e1464ccaa4824458975738c4f')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
 optdepends=('urlview: for url menu')
@@ -51,8 +51,6 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # Cruft we don't want.
-  rm "${pkgdir}"/usr/bin/{flea,muttbug}
-  rm "${pkgdir}"/usr/share/man/man1/{flea,muttbug}.1
   rm "${pkgdir}"/etc/mime.types{,.dist}
 }
 
