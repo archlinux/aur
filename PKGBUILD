@@ -3,8 +3,8 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=3.1.4
-pkgrel=2
+pkgver=3.1.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -82,7 +82,7 @@ package() {
 
 }
 
-sha256sums=('3fd4fa3b078886866c57df03c22558b0329adeac12aef3e93ff022b951f6089c'
+sha256sums=('71506327661e99146d79bf6167ce2c1ac0fe7fab657519ab43b5ac594c6b1ce9'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
