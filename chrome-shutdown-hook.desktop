@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Chrome Shotdown Hook
-Comment=Gently shutdown Chrome on logout from Gnome Shell
+Comment=Gently shutdown Chrome/Chromium on logout from Gnome Shell
 Exec=/usr/bin/chrome-shutdown-hook
 Icon=view-restore-symbolic
 Terminal=false
