@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+22221.fddc5604d1fa
+pkgver=4.1.0+22267.b80fddf2a9a0
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -21,9 +21,11 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 provides=("octave=4.1.0")
 options=('!emptydirs' '!makeflags')
+source=(git://git.sv.gnu.org/gnulib)
+md5sums=('SKIP')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
-
+LANG=C
 pkgver() {
   if [ -d ${_hgrepo} ]; then
       cd ${_hgrepo}
@@ -33,21 +35,21 @@ pkgver() {
   fi > /dev/null 2>&1
   cd "$srcdir/$_hgrepo"
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
-  echo ${_appver}$(hg identify -n).$(hg identify -i)
+  printf "%s%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|cut -c4-)" "$(hg log|head -1|cut -d: -f3)"
 }
 
 build() {
   [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
   cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
-  ./bootstrap --bootstrap-sync
+  ./bootstrap --gnulib-srcdir=$srcdir/gnulib
   mkdir build
   cd build
   [[ $CARCH == "x86_64" ]] && _arch=amd64
   [[ $CARCH == "i686" ]] && _arch=i386
   export LD_PRELOAD=/usr/lib/libGL.so
   
-  MOC=moc-qt4 UIC=uic-qt4 ../configure \
+  ../configure \
     --prefix=/usr --libexecdir=/usr/lib --enable-shared --enable-jit \
     --with-umfpack --enable-java --with-hdf5 \
     --with-java-homedir=/usr/lib/jvm/`archlinux-java get` \
