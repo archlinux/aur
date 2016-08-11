@@ -6,7 +6,7 @@ pkgdesc="RSS/Atom feed generator for Vine users"
 arch=(any)
 url="http://github.com/tremby/vinefeed"
 license=('GPL')
-depends=('nodejs' 'npm')
+depends=('nodejs' 'npm' 'coffee-script')
 optdepends=()
 
 makedepends+=('git')

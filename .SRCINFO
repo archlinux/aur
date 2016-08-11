@@ -8,6 +8,7 @@ pkgbase = nodejs-vinefeed
 	makedepends = git
 	depends = nodejs
 	depends = npm
+	depends = coffee-script
 	provides = nodejs-vinefeed=0.1.0.r11
 	conflicts = nodejs-vinefeed
 	source = nodejs-vinefeed::git+http://github.com/tremby/vinefeed
