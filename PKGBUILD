@@ -1,15 +1,15 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=squaw
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='Simplistic quiet user agent for the Web'
 url='http://fenua.org/gaetan/src/'
-license=('ISC')
-depends=('webkit2gtk')
 arch=('i686' 'x86_64')
+license=('ISC')
+depends=('webkit2gtk-unstable')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('1fe435c7fd8534ec18e718ace8d8ced0003580c8')
+sha1sums=('17117bf572aeb8802417af3ae80a70740f6d26aa')
 
 build() {
 	cd "${srcdir}"
