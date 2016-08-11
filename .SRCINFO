@@ -1,0 +1,22 @@
+pkgbase = r-devtools
+	pkgdesc = tools to make developing r packages easier
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/hadley/devtools
+	arch = any
+	license = GPL
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+	depends = r-httr>=0.4
+	depends = r-memoise>=1.0.0
+	depends = r-whisker
+	depends = r-digest
+	depends = r-rstudioapi>=0.2.0
+	depends = r-jsonlite
+	depends = r-git2r>=0.11.0
+	depends = r-withr
+
+pkgname = r-devtools
+
