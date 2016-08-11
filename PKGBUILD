@@ -1,7 +1,7 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
 pkgver=1.10.0.dev.r547.ge5b632e
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -29,7 +29,7 @@ prepare() {
     git submodule sync
     git submodule update --init --recursive
     cd "$srcdir"
-    patch -p1 < ${srcdir}/omedit.patch
+    #patch -p1 < ${srcdir}/omedit.patch
     cd "$srcdir/$pkgname"
 }
 
