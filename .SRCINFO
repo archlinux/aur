@@ -1,0 +1,14 @@
+pkgbase = r-stringi
+	pkgdesc = character string processing facilities
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
+	arch = any
+	license = custom
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=2.13.1
+
+pkgname = r-stringi
+
