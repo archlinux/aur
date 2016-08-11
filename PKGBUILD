@@ -13,7 +13,7 @@ license=("GPL")
 makedepends=("git")
 
 _toolchainreponame=crosstool-ng-toolchains
-_toolchainname=arm-sirspuddarch-linux-gnueabihf
+_toolchainname=armv7-rpi2-linux-gnueabihf
 url="https://github.com/sirspudd/${_toolchainreponame}"
 source=("git+https://github.com/sirspudd/${_toolchainreponame}.git#tag=6.1")
 sha256sums=("SKIP")
