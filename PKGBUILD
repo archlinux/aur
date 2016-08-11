@@ -16,7 +16,7 @@ install=ocp.install
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  sed -i "4592c2.95.[2-9]|2.95.[2-9][-.]*|3.[0-9]|3.[0-9].[0-9]|3.[0-9]|3.[0-9].[0-9]-*|4.*|5.*)" configure
+  sed -i "4592c2.95.[2-9]|2.95.[2-9][-.]*|3.[0-9]|3.[0-9].[0-9]|3.[0-9]|3.[0-9].[0-9]-*|4.*|5.*|6.*)" configure
   ./configure --prefix=/usr --sysconfdir=/etc
   make -j1 DESTDIR=$pkgdir
 }
