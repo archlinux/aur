@@ -1,31 +1,44 @@
-# Maintainer: flu
-
-_name="yank"
-pkgname="$_name-git"
-pkgver=0.4.0.1.gd8db62a
+# Contributor: flu
+# Maintainer: aksr <aksr at t-com dot me>
+pkgname=yank-git
+pkgver=0.7.0.r2.g2e78c28
 pkgrel=1
-pkgdesc="Yank (copy) terminal output to clipboard"
+epoch=
+pkgdesc="Yank terminal output to clipboard"
 arch=('i686' 'x86_64')
 url="https://github.com/mptre/yank"
-license=("MIT")
-depends=("xsel")
-makedepends=("git")
-provides=("$_name")
-conflicts=("$_name")
-source=(git+$url)
-sha512sums=(SKIP)
+license=('MIT')
+categories=()
+groups=()
+depends=('xsel')
+makedepends=('git')
+optdepends=()
+checkdepends=()
+provides=()
+conflicts=('yank')
+replaces=()
+backup=()
+options=()
+changelog=
+install=
+source=("$pkgname::git+https://github.com/mptre/yank.git")
+noextract=()
+md5sums=('SKIP')
 
 pkgver() {
-  cd   "$srcdir/$_name"
-  git describe --tags | sed 's/^v//; s/-/./g'
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd  "$srcdir/$_name"
+  cd "$srcdir/$pkgname"
   make
 }
 
 package() {
-  cd  "$srcdir/$_name"
-  PREFIX="$pkgdir"/usr make install
+  cd "$srcdir/$pkgname"
+  make PREFIX="$pkgdir/"/usr install
+  install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
+
