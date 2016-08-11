@@ -1,0 +1,16 @@
+pkgbase = r-stringr
+	pkgdesc = simple, consistent wrappers for common string operations
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/stringr/index.html
+	arch = any
+	license = GPL2
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=2.14
+	depends = r-stringi>=0.4.1
+	depends = r-magrittr
+
+pkgname = r-stringr
+
