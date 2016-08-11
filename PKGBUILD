@@ -4,7 +4,7 @@
 pkgbase=python-matplotlib-git
 pkgname=('python2-matplotlib-git' 'python-matplotlib-git')
 
-pkgver=1
+pkgver=r18741.9f0d770
 pkgrel=1
 pkgdesc="A python plotting library for making publication quality plots, master git branch"
 arch=('i686' 'x86_64')
