@@ -1,0 +1,14 @@
+pkgbase = r-rstudioapi
+	pkgdesc = safely access the rstudio api
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rstudioapi/index.html
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r
+
+pkgname = r-rstudioapi
+
