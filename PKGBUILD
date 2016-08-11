@@ -1,7 +1,7 @@
 # Contributor: Patrick Bartels <pckbls@gmail.com>
 
 pkgname="sndio"
-pkgver="1.0.0"
+pkgver="1.1.0"
 pkgrel="1"
 pkgdesc="Small audio and MIDI framework part of the OpenBSD project"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -13,7 +13,7 @@ backup=("etc/conf.d/sndiod")
 source=("http://www.sndio.org/${pkgname}-${pkgver}.tar.gz"
         "sndiod.conf"
 		"sndiod.service")
-md5sums=('5fd713e0496b994639159169a54cd562'
+md5sums=('d3483b963c9e4b9c47eca67a4a842ae3'
          'e319eee0a3ccb4d60dd24b7ed1ea34b3'
          '3767e4066491b2ade46b37179285fd80')
 build() {
