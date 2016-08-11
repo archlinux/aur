@@ -1,0 +1,19 @@
+pkgbase = r-httr
+	pkgdesc = tools for working with urls and http
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/hadley/httr
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.0
+	depends = r-jsonlite
+	depends = r-mime
+	depends = r-curl>=0.9.1
+	depends = r-openssl>=0.8
+	depends = r-r6
+
+pkgname = r-httr
+
