@@ -87,10 +87,12 @@ and increasingly more options are being moved to Sentry's YAML-based configs:
     sudo -u sentry mkdir /etc/sentry/temp
     sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry/temp
 
-    # Optionally edit the old configuration:
+    # Optionally edit the old configurations:
     sudo vimdiff /etc/sentry/sentry.conf.py /etc/sentry/temp/sentry.conf.py
+    sudo vimdiff /etc/sentry/config.yml /etc/sentry/temp/config.yml
 
-    # Move Sentry's YAML configuration to the config root:
+    # ...or move Sentry's YAML configuration to the config root:
+    sudo -u sentry mv /etc/sentry/temp/sentry.conf.py /etc/sentry/
     sudo -u sentry mv /etc/sentry/temp/config.yml /etc/sentry/
 
     # Delete the temporary config directory:
@@ -107,11 +109,17 @@ and increasingly more options are being moved to Sentry's YAML-based configs:
 
 4) Start Sentry:
 
-    sudo systemctl start sentry sentry-celery
+    sudo systemctl start sentry
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
     sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run web
+
+You may need to run the following services if Sentry's web service fails
+during manual testing:
+
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run worker
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run cron
 
 EXTRAS
 

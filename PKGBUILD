@@ -3,8 +3,8 @@
 
 pkgbase=sentry
 pkgname=('sentry' 'sentry-dsym')
-pkgver=8.6.0
-pkgrel=3
+pkgver=8.7.0
+pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -29,7 +29,7 @@ source=(
     "sentry.target"
 )
 sha256sums=(
-    46f4b2425652aec10dc596bdae8439efd177f2a153a416daa1c23a9438ab02bb # sentry.install
+    64b046edb8c6ddb9098c2a444d65f66b49a3bfeb6058e09186ad183dcc91bb0c # sentry.install
     d60b097721ec4acbc5b1232a0f29ef9d21d60228d17db655848a8e2a5c9a5281 # sentry-celery.service
     d22b9bde7c39d9d0f031ba1b01c955c9dbe4ffe3f3f083875fe557f75f0050f7 # sentry-cron.service
     3c471417a279ac6605d3bb82b7377eaab0e24efe9cf582a11eef0d9e4c89428e # sentry.service
