@@ -1,0 +1,20 @@
+pkgbase = r-roxygen2
+	pkgdesc = in-source documentation for r
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/klutometis/roxygen
+	arch = any
+	license = GPL
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=3.0.2
+	depends = r-stringr>=0.5
+	depends = r-stringi
+	depends = r-brew
+	depends = r-digest
+	depends = r-rcpp>= 0.11.0
+	depends = r-rcpp
+
+pkgname = r-roxygen2
+
