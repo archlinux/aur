@@ -1,0 +1,15 @@
+pkgbase = r-markdown
+	pkgdesc = markdown rendering for r
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = https://github.com/rstudio/markdown
+	arch = any
+	license = GPL2
+	makedepends = curl
+	makedepends = grep
+	makedepends = python-html2text
+	depends = r>=2.11.1
+	depends = r-mime>=0.3
+
+pkgname = r-markdown
+
