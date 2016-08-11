@@ -1,6 +1,6 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 pkgname=mojo-loader
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Mojo Loader"
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=()
 source=("https://embeddedmicro.com/media/wysiwyg/mojo-loader/$pkgname-$pkgver-linux64.tgz"
         "mojo-loader.desktop"
         "run-mojo-loader.sh")
-sha512sums=("e26988ad81fcf6831d99e3e0d07d872bfe90a9eb223b0e37ec64412ba5fd6a0266c37f1b64a83cef3f81f312df1bc6fb4a624b483090447c4095bd07b5fea880"
+sha512sums=("6a8fb27fe4243c45be58de4397193d08729a540e11c5150aec39cda4211b8e18f44da10b97d23756627a2d57c3ce1e8d64a5677000a226b161894cf546c4c67e"
             "f578a3bbcf35924b3cbd529f7f0f8a99db1ae6247e2394cb3b1c12758733f6c85e79625cac645cfa0604b2af914636b4147944764cc2140663d22db1c0241cec"
             "7f715b90e1b6057bb1c5df68f3ce8660f3000f7277139e482bd09b67dc3e18391f09be522aefd1c467057735d9dfdaf03e54c54e63d7b52b43eba22540fd1db8")
 
