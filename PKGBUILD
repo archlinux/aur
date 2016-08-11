@@ -1,6 +1,6 @@
 pkgname=brlcad
-pkgver=7.24.2
-pkgrel=2
+pkgver=7.26.0
+pkgrel=0
 pkgdesc='An extensive 3D solid modeling system.'
 url='http://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
@@ -9,10 +9,10 @@ depends=('libgl' 'libxft' 'libxi')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=('build.patch' "http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('SKIP' 'f2169af59d402de7b51f64e66604fc396aaaa60b28c262545501ea3eb5175487')
+sha256sums=('SKIP' 'e02621f15743a3e41d4264d05204f8d776e611aaca58204489f0b3484e635577')
 
 
-_pkgprefix='/opt/brlcad'
+_pkgprefix="/opt/${pkgname}"
 
 
 prepare() {
@@ -25,9 +25,9 @@ build() {
     cd "${srcdir}/build"
     cmake -Wno-dev "${srcdir}/${pkgname}-${pkgver}" "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
         -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF -DBRLCAD_ENABLE_STRICT=OFF \
-        -DCMAKE_BUILD_TYPE=Release -DBRLCAD_FLAGS_DEBUG=OFF -DBRLCAD_ENABLE_OPENGL=ON \
-        -DBRLCAD_BUNDLED_LIBS=BUNDLED -DBRLCAD_PNG=OFF -DBRLCAD_ZLIB=OFF -DBRLCAD_ENABLE_RTSERVER=OFF \
-        -DBRLCAD_ENABLE_QT=OFF
+        -DCMAKE_BUILD_TYPE=Release -DBRLCAD_FLAGS_DEBUG=OFF -DBRLCAD_BUILD_STATIC_LIBS=OFF \
+        -DBRLCAD_ENABLE_OPENGL=ON -DBRLCAD_BUNDLED_LIBS=BUNDLED -DBRLCAD_FREETYPE=OFF \
+        -DBRLCAD_PNG=OFF -DBRLCAD_REGEX=OFF -DBRLCAD_ZLIB=OFF -DBRLCAD_ENABLE_QT=OFF
     make
 }
 
