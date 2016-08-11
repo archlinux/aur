@@ -1,0 +1,9 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+
+    cat << EOF
+==> The progit2 book has been installed to /usr/share/doc/progit2/
+EOF
+
+}
