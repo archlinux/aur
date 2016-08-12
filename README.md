@@ -44,6 +44,7 @@ You should probably copy them to your path (/usr/local/bin).
 
 config.sh
 - Sample configuration file. You can copy or edit it to your liking.
+- All commands that require a configuration file (config.sh), can specify . instead.
 
 0.read.config.sh
 - Shared dependency used by many scripts.
@@ -65,7 +66,7 @@ config.sh
 - Usage: 4.stop.cluster.sh
 
 5.delete.cluster.sh
-- Delete a cluster and all it's data.
+- Delete a cluster and all its data.
 - Usage: 5.delete.cluster.sh config.sh
 
 
