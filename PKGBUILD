@@ -2,7 +2,7 @@
 # Contributor: Giancarlo Bianchi <giancarlobianchi76@gmail.com>
 
 pkgname=realtimeconfigquickscan-git
-pkgver=r18.9d53250
+pkgver=r20.95fed14
 pkgrel=1
 pkgdesc="Linux configuration checker for systems to be used for real-time audio"
 arch=('any')
