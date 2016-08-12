@@ -1,5 +1,5 @@
 pkgname=('gsignond-extension-pantheon-bzr')
-builddeps=('libgsignon-glib' 'gsignond')
+builddeps=('gsignond')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
