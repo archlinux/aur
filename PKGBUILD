@@ -4,7 +4,7 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server','-common'})
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('karchive' 'qt5-multimedia' 'qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('d224543869039acaaaf7e3116332013acd81230f10efa80017d5af512281f7c9')
+sha256sums=('aa0bd6f552a08989a444203eae58fc5fb298a848fc67906f5f517955a7132607')
 
 _cmakeargs+=('-Wno-dev')
 
@@ -31,12 +31,12 @@ build() {
 package_drawpile() {
 	pkgdesc+=' (meta package)'
 	arch=('any')
-	depends=('drawpile-client' 'drawpile-server')
+	depends=("${pkgbase}-client" "${pkgbase}-server")
 }
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
-	depends=('drawpile-common' 'karchive' 'qt5-multimedia')
+	depends=("${pkgbase}-common" 'karchive' 'qt5-multimedia')
 	optdepends=('kdnssd: automatic service discovery (such as printers)'
 		'giflib: GIF support'
 		'miniupnpc: UPnP support'
@@ -49,7 +49,7 @@ package_drawpile-client() {
 
 package_drawpile-server() {
 	pkgdesc+=' (server)'
-	depends=('drawpile-common' 'karchive')
+	depends=("${pkgbase}-common" 'karchive')
 	optdepends=('libmicrohttpd: web-admin feature'
 		'libsystemd: systemd and logging support')
 	cd "${pkgbase}-${pkgver}"
@@ -67,8 +67,8 @@ package_drawpile-common() {
 
 	DESTDIR="${pkgdir}" ninja -C 'build' install
 	rm -rfv "${pkgdir}/usr/bin"
-	install -Dm644 "desktop/${pkgbase}.svg" \
+	install -Dvm644 "desktop/${pkgbase}.svg" \
 		"${pkgdir}/usr/share/pixmaps/${pkgbase}.svg"
-	install -Dm644 "desktop/${pkgbase}.desktop" \
+	install -Dvm644 "desktop/${pkgbase}.desktop" \
 		"${pkgdir}/usr/share/applications/${pkgbase}.desktop"
 }

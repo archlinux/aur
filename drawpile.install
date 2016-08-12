@@ -14,7 +14,7 @@ _update() {
 
 post_install() {
 	_update
-	note "If installing optional dependencies afterwards you may have to recompile this package."
+	note "If installing optional dependencies afterwards you may have to recompile these packages."
 }
 
 post_upgrade() {
