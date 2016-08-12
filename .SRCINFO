@@ -1,7 +1,7 @@
 pkgbase = fb-folly
 	pkgdesc = An open-source C++ library developed and used at Facebook.
 	pkgver = 2016.07.26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/facebook/folly
 	arch = x86_64
 	license = Apache
@@ -13,6 +13,8 @@ pkgbase = fb-folly
 	depends = google-glog
 	depends = libevent
 	depends = boost
+	provides = folly
+	conflicts = folly
 	source = https://github.com/facebook/folly/archive/2016.07.26.tar.gz
 	source = fiber.patch
 	source = https://googletest.googlecode.com/files/gtest-1.7.0.zip

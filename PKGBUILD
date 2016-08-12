@@ -1,13 +1,15 @@
 # Maintainer: Jitang Zheng <jitang.zheng@gmail.com>
 pkgname=fb-folly
 pkgver=2016.07.26
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source C++ library developed and used at Facebook."
 arch=(x86_64)
 url="https://github.com/facebook/folly"
 license=('Apache')
 depends=('snappy' 'jemalloc' 'double-conversion' 'gflags' 'google-glog' 'libevent' 'boost')
 makedepends=('python2')
+conflicts=('folly')
+provides=('folly')
 source=("https://github.com/facebook/folly/archive/${pkgver}.tar.gz"
 'fiber.patch'
 'https://googletest.googlecode.com/files/gtest-1.7.0.zip'
