@@ -45,7 +45,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.0.31.r32.gb0dd8fd
+pkgver=2.0.32.r2.g85303a6
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
@@ -57,10 +57,24 @@ provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 _verwatch=("${url}/download.html" '//hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
-source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' 'urbackup-client.service')
+_scripts=('btrfs_create_filesystem_snapshot'
+  'btrfs_remove_filesystem_snapshot'
+  'dattobd_create_filesystem_snapshot'
+  'dattobd_remove_filesystem_snapshot'
+  'lvm_create_filesystem_snapshot'
+  'lvm_remove_filesystem_snapshot')
+source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' "${_scripts[@]}"  'defaults_client')
+source+=('https://www.cryptopp.com/cryptopp563.zip')
 sha256sums=('SKIP'
             'SKIP'
-            'e4c40d10909417cd04898388bab41aa6434375b62944183f132e606ed71f70b2')
+            '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
+            '334d9eb67a642d96e04874fd27c1b57d578c35b4cdc768d50db7ac2436f0927c'
+            '869e6244efbf6e370938e2e5c94a16c0130f583815ddbd34802578656989048b'
+            '23d6bdad352d33fe41acd50e0114f986cd4324c2c65ca16cea365cb99d90addd'
+            'd5b462879e7c80139688c9d20ce1b1fe553386df9459def5e1d093d3a13d71fb'
+            '0ffb3bbbf5faf939564681d24786767a4706132f2f081b7a870ecc718a8e9413'
+            'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
+            '9390670a14170dd0f48a6b6b06f74269ef4b056d4718a1a329f6f6069dc957c9')
 _srcdir='urbackup_backend'
 if [ "${_opt_BuildClient}" -ne 0 ]; then
   unset install
@@ -154,7 +168,13 @@ prepare() {
          -e 's:^git reset:#&:g' \
          -e "# Version updates are now done here in PKGBUILD" \
          -e 's:^python3 :#&:g' \
+         -e "# Instruct wget to resume our complete download" \
+         -e 's:^\s\+wget :&--continue :g' \
     'build_server.Arch.sh' 'build_client.Arch.sh'
+
+  # Dymanic downloads in configure are bad!
+  #ln -s "${srcdir}/cryptopp563.zip" 'cryptoplugin/cryptopp563.zip'
+  cp -p "${srcdir}/cryptopp563.zip" 'cryptoplugin/cryptopp563.zip'
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
     ln -sf '../urbackup_frontend_wx' 'client'
@@ -200,10 +220,15 @@ package() {
   make -s DESTDIR="${pkgdir}" install
 
   if [ "${_opt_BuildClient}" -ne 0 ]; then
-    install -Dm644 "${srcdir}/urbackup-client.service" -t "${pkgdir}/usr/lib/systemd/system/"
-    sed -i -e 's:/usr/sbin/:/usr/bin/:g' "${pkgdir}/usr/lib/systemd/system/urbackup-client.service"
-    install -Dm644 "docs/start_urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
-    install -Dm644 "docs/urbackup_client.1" -t "${pkgdir}/usr/share/man/man1/"
+    # urbackup2 client uses a different service name. Changing the server name is not cool.
+    install -Dpm644 'urbackupclientbackend-debian.service' "${pkgdir}/usr/lib/systemd/system/urbackup-client.service"
+    # urbackup2 client changed the service name.
+    ln -s 'urbackup-client.service' "${pkgdir}/usr/lib/systemd/system/urbackupclientbackend.service"
+    sed -i -e 's:/usr/local/sbin/:/usr/bin/:g' "${pkgdir}/usr/lib/systemd/system/urbackup-client.service"
+    install -Dpm644 "docs/urbackupclientbackend.1" -t "${pkgdir}/usr/share/man/man1/"
+    cd "${srcdir}"
+    install -Dpm644 'defaults_client' "${pkgdir}/etc/default/urbackupclient"
+    install -Dpm700 "${_scripts[@]}" -t "${pkgdir}/usr/share/urbackup/"
   else
     # Correct some file mode bits, thanks cfstras (from urbackup2)
     chmod a+x "${pkgdir}/usr/share/urbackup/www/"{css,fonts,js,images,}
