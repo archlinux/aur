@@ -60,14 +60,14 @@ package() {
     mv ${pkgdir}${_basedir}/lib64/* ${pkgdir}${_basedir}/lib
     rmdir ${pkgdir}${_basedir}/lib64
   fi
-  for _file in $(find ${pkgdir}${_basedir}/lib/cmake/cppnetlib -type f -name "*.cmake");
-  do
-    sed -i -e "s|${pkgdir}${_basedir}/lib64|${_basedir}/lib|g" $_file
-    sed -i -e "s|${pkgdir}${_basedir}|${_basedir}|g" $_file
-  done
+  #for _file in $(find ${pkgdir}${_basedir}/lib/cmake/cppnetlib -type f -name "*.cmake");
+  #do
+  #  sed -i -e "s|${pkgdir}${_basedir}/lib64|${_basedir}/lib|g" $_file
+  #  sed -i -e "s|${pkgdir}${_basedir}|${_basedir}|g" $_file
+  #done
 
   #Install license
-  install -d ${pkgdir}/usr/share/licenses/$pkgname
+  install -d ${pkgdir}/usr/share/licenses/cpp-netlib
   cd "$srcdir/cpp-netlib"
-  install -Dm644 LICENSE_1_0.txt ${pkgdir}/usr/share/licenses/$pkgname/LICENSE_1_0.txt
+  install -Dm644 LICENSE_1_0.txt ${pkgdir}/usr/share/licenses/cpp-netlib/LICENSE_1_0.txt
 }
