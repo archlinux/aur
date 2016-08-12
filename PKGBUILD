@@ -1,7 +1,7 @@
 # Maintainer: corbie
 pkgname=twitch-curses
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based twitch.tv browser / livestreamer frontend"
 arch=('any')
 url="https://gitlab.com/corbie/twitch-curses"
