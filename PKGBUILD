@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20160528.8acbeed
+pkgver=20160810.cccd4cd
 pkgrel=1
 pkgdesc='Divelog program'
 url='http://subsurface-divelog.org/'
@@ -36,6 +36,7 @@ build() {
 	cmake \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DMARBLE_INCLUDE_DIR=/usr/include/subsurface \
 		-DMARBLE_LIBRARIES=/usr/lib/libssrfmarblewidget.so \
 		..
 	make
