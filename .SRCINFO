@@ -1,0 +1,25 @@
+pkgbase = cpp-netlib-git
+	pkgdesc = The C++ Network Library Project -- cross-platform, standards compliant networking library.
+	pkgver = 0.12.0.final.r51.g77dc2a2
+	pkgrel = 1
+	url = https://github.com/cpp-netlib/cpp-netlib
+	arch = i686
+	arch = x86_64
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	makedepends = doxygen
+	makedepends = gtest
+	makedepends = gmock
+	depends = openssl
+	depends = boost
+	depends = boost-libs
+	provides = cpp-netlib
+	conflicts = cpp-netlib
+	replaces = cpp-netlib
+	source = git+https://github.com/cpp-netlib/cpp-netlib.git
+	md5sums = SKIP
+
+pkgname = cpp-netlib-git
+
