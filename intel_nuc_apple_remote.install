@@ -1,15 +1,5 @@
 post_install() {
-	echo ""
-	echo "--------------------"
-	echo "Note:"
-	echo "  Be sure that:"
-	echo "    - lircd.service is disabled,"
-	echo "    - You enable & start the make-ir-freaking-work.service,"
-	echo "    - You are running kodi as service (kodi.service)."
-	echo ""
-	echo "  If this doesn't work for you, the IR codes in:"
-	echo "    /etc/rc_keymaps/apple_remote_sab are probably not"
-	echo "    working for you."
+    grep -q -F '*\t*\t\t\t appleremote' /etc/rc_maps.cfg || echo -e '*\t*\t\t\t appleremote' >> /etc/rc_maps.cfg
 }
 
 post_upgrade() {
@@ -17,4 +7,5 @@ post_upgrade() {
 }
 
 post_remove() {
+    sed -i '/*\t*\t\t\t appleremote/d' /etc/rc_maps.cfg
 }
