@@ -9,12 +9,12 @@ arch=('any')
 license=('GPL3')
 depends=('firefox')
 conflicts=('firefox-extension-vimfx')
-source=("https://addons.mozilla.org/firefox/downloads/file/466439/vimfx-$pkgver-fx.xpi")
-noextract=("${source##*/}")
-sha256sums=('af44d4a6ca6e0ae6d5fd33b9ff29c4aaaf71271f20073b7ddc44fbab4e1168c0')
+source=("VimFx-$pkgver.xpi::https://github.com/akhodakivskiy/VimFx/releases/download/v$pkgver/VimFx.xpi")
+noextract=("${source%%::*}")
+sha256sums=('08810129d749f943f8df735c336f48c6d74336b537a78b14f57d2c6b22ae0506')
 
 package() {
-  install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/VimFx@akhodakivskiy.github.com.xpi
+  install -Dm755 ${source%%::*} "$pkgdir"/usr/lib/firefox/browser/extensions/VimFx-unlisted@akhodakivskiy.github.com.xpi
 }
 
 # vim:set ts=2 sw=2 et:
