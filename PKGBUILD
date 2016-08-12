@@ -1,4 +1,4 @@
-# Contributer: Donald Carr<sirspudd@gmail.com>
+# Maintainer: Donald Carr<sirspudd at gmail dot com>
 
 #set -x
 
@@ -18,10 +18,8 @@ fi
 
 pkgname=qml-box2d
 pkgver=2.3.2
-pkgrel=1
-pkgdesc='QML Box2D bindings'
-#arch=('x86_64')
-#bullshit but I am primarily crosscompiling
+pkgrel=2
+pkgdesc='Box2D QML bindings'
 arch=('any')
 url='https://github.com/qml-box2d/qml-box2d/blob/master/README'
 license=('GPL')
