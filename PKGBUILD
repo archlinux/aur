@@ -1,4 +1,4 @@
-# Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
+# Maintainer: luken <luken[at]luken-tech.pl[dot]com>
 
 pkgname=brother-hll2340dw
 pkgver=3.2.0_1
