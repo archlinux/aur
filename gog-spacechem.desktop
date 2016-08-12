@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Spacechem
+Comment=A puzzle game where you build elaborate chemical factories.
+Exec=gog-spacechem
+Icon=gog-spacechem
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;

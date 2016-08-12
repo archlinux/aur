@@ -1,0 +1,7 @@
+diff -aur data/noarch/game/spacechem-launcher.sh data/noarch/game/spacechem-launcher.sh
+--- data/noarch/game/spacechem-launcher.sh	2016-08-11 21:03:28.074938768 -0500
++++ data/noarch/game/spacechem-launcher.sh	2016-08-12 09:33:12.472200622 -0500
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-MONO_CFG_DIR=etc MONO_PATH=monolib ./mono SpaceChem.exe
++LD_LIBRARY_PATH=/usr/bin:/usr/lib32:$PWD MONO_CFG_DIR=etc MONO_PATH=monolib ./mono SpaceChem.exe
