@@ -5,7 +5,7 @@
 
 pkgname=gerrit
 pkgver=2.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based code review tool built on top of the Git version control system"
 arch=(any)
 url="https://www.gerritcodereview.com/"
