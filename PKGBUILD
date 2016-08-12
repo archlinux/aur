@@ -4,14 +4,14 @@
  
 pkgname=nvidia-bfq-340xx
 pkgver=340.96
-_extramodules=extramodules-4.6-bfq
-pkgrel=5
+_extramodules=extramodules-4.7-bfq
+pkgrel=6
 _pkgdesc="NVIDIA 340xx drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfq>=4.6' 'linux-bfq<4.7' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-bfq-headers>=4.6' 'linux-bfq-headers<4.7')
+depends=('linux-bfq>=4.7' 'linux-bfq<4.8' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-bfq-headers>=4.7' 'linux-bfq-headers<4.8')
 conflicts=('nvidia-bfq' 'nvidia-bfq-304xx')
 license=('custom')
 install=nvidia-bfq-340xx.install
@@ -29,9 +29,10 @@ md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-    # patches here
-    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+		patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+		cp -a kernel kernel-dkms
 }
+
 
 build() {
 	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
