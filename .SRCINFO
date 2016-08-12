@@ -1,6 +1,6 @@
 pkgbase = animewatch-pyqt5
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt5-WebEngine
-	pkgver = 3.0.0.r14.7bc9fd9
+	pkgver = 3.0.0.r15.9ed2ca3
 	pkgrel = 1
 	url = https://github.com/kanishka-linux/AnimeWatch
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = animewatch-pyqt5
 	depends = curl
 	depends = libnotify
 	depends = python-dbus
+	depends = libtorrent-rasterbar
 	depends = python-beautifulsoup4
 	depends = python-psutil
 	depends = python-pillow
