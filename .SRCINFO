@@ -1,6 +1,6 @@
 pkgbase = python-slycot-git
 	pkgdesc = Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations.
-	pkgver = 137.9bec0d2
+	pkgver = 140.234447c
 	pkgrel = 1
 	url = http://github.com/jgoppert/Slycot
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = python-slycot-git
 	license = GPL2
 	makedepends = git
 	makedepends = gcc-fortran
-	depends = python-numpy
+	depends = python-numpy-openblas
 	provides = python-slycot
 	conflicts = python-slycot
 	source = git+https://github.com/jgoppert/Slycot.git

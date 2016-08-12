@@ -3,13 +3,13 @@
 
 pkgname=python-slycot-git
 _gitname=Slycot
-pkgver=137.9bec0d2
+pkgver=140.234447c
 pkgrel=1
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
 url="http://github.com/jgoppert/Slycot"
 license=('GPL2')
-depends=('python-numpy')
+depends=('python-numpy-openblas')
 makedepends=('git' 'gcc-fortran')
 optdepends=()
 provides=('python-slycot')
