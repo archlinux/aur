@@ -12,7 +12,6 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
          'python2-dbus' 'python2-gobject' 'python2-xdg' 'python2-yaml'
          'xdg-user-dirs')
 makedepends=('python2-setuptools')
-install='lutris.install'
 source=("https://lutris.net/releases/lutris_${pkgver}.tar.xz")
 sha256sums=('06ab74bcaa6bef125201a9ff8d8c500ceffc860689f591415f52d8d28f21ddfd')
 
