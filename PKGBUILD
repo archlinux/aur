@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calculator
-pkgver=0.1.0.1
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-calculator'
@@ -11,14 +11,11 @@ groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'vala')
-install='pantheon-calculator.install'
-#source=("https://launchpad.net/pantheon-calculator/freya/${pkgver}/+download/pantheon-calculator-${pkgver}.tgz")
-#sha256sums=('510235d87284eaa211089970601c71d1cc4aa2aadaa6304a163a2db8d9e1fcd0')
-source=("bzr+lp:pantheon-calculator#revision=140")
-sha256sums=('SKIP')
+source=("https://launchpad.net/pantheon-calculator/0.4-loki/${pkgver}/+download/pantheon-calculator-${pkgver}.tar.xz")
+sha256sums=('7278300642872e296eb558e656ee4a838f10ca3664cbec7d63e689a8b96e0625')
 
 prepare() {
-  cd pantheon-calculator
+  cd pantheon-calculator-${pkgver}
 
   if [[ -d build ]]; then
     rm -rf build
@@ -27,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd pantheon-calculator/build
+  cd pantheon-calculator-${pkgver}/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -36,7 +33,7 @@ build() {
 }
 
 package() {
-  cd pantheon-calculator/build
+  cd pantheon-calculator-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }
