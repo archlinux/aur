@@ -1,9 +1,9 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
-pkgdesc='Pantheon Shell plug for Switchboard'
+pkgdesc='Desktop plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-desktop'
 license=('GPL3')
@@ -12,8 +12,8 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'libgee'
          'plank'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
-source=("https://launchpad.net/switchboard-plug-pantheon-shell/freya/${pkgver}/+download/switchboard-plug-pantheon-shell-${pkgver}.tar.xz")
-sha256sums=('2b4aa4b9bfc83d002c9f171368494ddad0be9506b13e9513092655402cec6ff5')
+source=("https://launchpad.net/switchboard-plug-pantheon-shell/loki/${pkgver}/+download/switchboard-plug-pantheon-shell-${pkgver}.tar.xz")
+sha256sums=('a8963f14efacc720c3b91e14f22259e0bce84731a7c595f1643b8f471b4ff38e')
 
 prepare() {
   cd switchboard-plug-pantheon-shell-${pkgver}
