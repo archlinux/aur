@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=devpkgcheck
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Tool that builds and tests pkgbuilds with vcs sources from the AUR"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('namcap')
 backup=('etc/devpkgcheck.conf')
 source=("https://gitlab.com/silentboatman/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('519d71ceeb64238c3044ec7bdcf4db597cc87aa97d64161dc14915a7a9ec03b6')
+sha256sums=('8d519626b8165bc19fa95ccf898b046aea1bef3e8b339c27a5e7491fe9008453')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"*
