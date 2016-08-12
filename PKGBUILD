@@ -38,12 +38,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver/$pkgname"
+  cd "folly-$pkgver/folly"
 #  CFLAGS=-fpermissive make check
 #  make check
 }
 
 package() {
-  cd "$pkgname-$pkgver/$pkgname"
+  cd "folly-$pkgver/folly"
   make DESTDIR="$pkgdir/" install
 }
