@@ -14,7 +14,6 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
 makedepends=('git' 'python2-setuptools')
 provides=('lutris')
 conflicts=('lutris')
-install='lutris.install'
 source=('git+https://github.com/lutris/lutris.git')
 sha256sums=('SKIP')
 
