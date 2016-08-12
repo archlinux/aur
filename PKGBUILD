@@ -1,4 +1,4 @@
-# Contributer: Donald Carr <sirspudd@gmail.com>
+# Maintainer: Donald Carr <sirspudd@gmail.com>
 
 set -e
 
@@ -7,12 +7,9 @@ pkgname="quint"
 pkgver=0.0.1
 pkgrel=3
 provides=("pi-launcher")
-conflicts=("pi-launcher")
-replaces=("pi-launcher")
-pkgdesc="Andrew Baldwins live coding demo for the Raspberry Pi"
+pkgdesc="Live coding demo for the Raspberry Pi"
 arch=("any")
-url="http://www.qt.io"
-license=("LGPL3" "GPL3")
+url="https://github.com/sirspudd/quint"
 makedepends=("qt-sdk-raspberry-pi${_pi_ver}")
 depends=("qt-sdk-raspberry-pi${_pi_ver}-target-libs")
 source=("git://github.com/sirspudd/${pkgname}.git")
