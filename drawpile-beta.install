@@ -1,0 +1,26 @@
+# Colored makepkg-like functions
+note() {
+	printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+
+_update() {
+	update-desktop-database -q
+}
+
+post_install() {
+	_update
+	note "If installing optional dependencies afterwards you may have to recompile these packages."
+}
+
+post_upgrade() {
+	_update
+}
+
+post_remove() {
+	_update
+}
