@@ -54,12 +54,12 @@ pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcon
 _srcname=linux-4.6
 _ckpatchname="patch-4.6-ck1"
 pkgver=4.6.6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
-optdepends=("nvidia-think: nvidia drivers"
+optdepends=("nvidia-dkms: nvidia drivers for custom kernels"
             "bbswitch-think: optimus support"
             "linux-think-firmware: BRCM bluetooth firmware")
 options=("!strip")
