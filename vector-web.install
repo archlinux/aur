@@ -1,0 +1,21 @@
+_config_instructions() {
+  cat <<EOF
+
+    Clients will recieve the optional configuration file
+    /etc/webapps/vector-web/config.json if present.
+
+    A sample configuration is available at
+    /etc/webapps/vector-web/config.sample.json
+
+EOF
+}
+
+post_install() {
+  if [ ! -e /etc/webapps/vector-web/config.json ]; then
+          _config_instructions
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
