@@ -12,6 +12,10 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
          'python-dbus' 'python-gobject' 'python-xdg' 'python-yaml'
          'xdg-user-dirs')
 makedepends=('git' 'python-setuptools')
+optdepends=(
+  'python-evdev: Detecting connected joypads.'
+  'python-pyinotify: Enhanced Steam integration.'
+  )
 provides=('lutris')
 conflicts=('lutris')
 source=('git+https://github.com/lutris/lutris.git')
