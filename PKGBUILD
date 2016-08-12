@@ -3,10 +3,10 @@
 # Contributor: $pooky Hunter <spookyh+arch@gmail.org>
 
 pkgname=rc-local
-pkgver=1.1
-pkgrel=2
+pkgver=2
+pkgrel=1
 pkgdesc='Support for legacy rc.local scripts'
-url="https://aur.archlinux.org/packages/${pkgname}"
+url="https://aur.archlinux.org/packages/${pkgname}/"
 arch=('any')
 license=('LGPL2.1')
 install="${pkgname}.install"
