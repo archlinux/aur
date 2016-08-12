@@ -13,7 +13,7 @@ license=('GPL')
 source=("chrome-shutdown-hook.desktop"
         "chrome-shutdown-hook.py")
 md5sums=('e9e039b29bf1c7a027ef6b3a2946b6a9'
-         '5e6f900651799632327ebd1cc74b15b5')
+         '6bc8f9293b6311241e0fe9523de788cc')
 
 package() {
   cd "${srcdir}"

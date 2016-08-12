@@ -14,11 +14,11 @@ import gnome.ui
 import gtk
 
 def chrome_clean_shutdown(*args):
-    subprocess.call("/usr/bin/pkill -15 chrome", shell=True)
+    subprocess.call("/usr/bin/pkill -15 -P 1 chrome", shell=True)
     return True
 
 def chromium_clean_shutdown(*args):
-    subprocess.call("/usr/bin/pkill -15 chromium", shell=True)
+    subprocess.call("/usr/bin/pkill -15 -P 1 chromium", shell=True)
     return True
 
 def main():
