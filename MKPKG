@@ -1,5 +1,5 @@
 pkgname=('noise-player-bzr')
-builddeps=('granite-bzr' 'libgsignon-glib')
+builddeps=('granite-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
