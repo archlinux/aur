@@ -6,7 +6,7 @@ pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
 }
-pkgrel=3
+pkgrel=4
 pkgdesc="A dynamic window manager for X"
 url="https://git.uleenucks.de/builds/"
 arch=('i686' 'x86_64')

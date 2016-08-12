@@ -1,7 +1,7 @@
 pkgbase = dwm-uleenucks-git
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.1.5.g56a31dc
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://git.uleenucks.de/builds/
 	install = dwm.install
