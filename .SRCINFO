@@ -1,6 +1,6 @@
 pkgbase = doublecmd-qt-svn
 	pkgdesc = Twin-panel (commander-style) file manager (QT)
-	pkgver = r6754
+	pkgver = r7033
 	pkgrel = 1
 	url = http://doublecmd.sourceforge.net/
 	install = doublecmd-svn.install

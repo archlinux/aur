@@ -5,7 +5,7 @@
 
 _pkgname="doublecmd"
 pkgname=("${_pkgname}-qt-svn")
-pkgver=r6754
+pkgver=r7033
 pkgrel=1
 pkgdesc="Twin-panel (commander-style) file manager (QT)"
 url="http://doublecmd.sourceforge.net/"
@@ -27,10 +27,8 @@ source=(
     "$_svnmod::svn+http://svn.code.sf.net/p/doublecmd/code/trunk"
     "http://www.herecura.be/files/lazarus-20140321-2.tar.gz"
 )
-sha256sums=(
-    'SKIP'
-    '16560ad7403ffbee1800384768828e1fad924d03068c6248b68a78c393fc4e20'
-)
+sha256sums=('SKIP'
+            '16560ad7403ffbee1800384768828e1fad924d03068c6248b68a78c393fc4e20')
 
 
 pkgver() {
