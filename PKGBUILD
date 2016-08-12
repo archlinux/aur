@@ -2,7 +2,7 @@ pkgname=freepass-git
 _pkgname=freepass
 pkgdesc="The free password manager for power users."
 pkgrel=1
-pkgver=0.0.0.70
+pkgver=0.0.0.78
 arch=('i686' 'x86_64')
 conflicts=('freepass')
 provides=('freepass')
@@ -12,7 +12,6 @@ depends=('libsodium')
 makedepends=('rust' 'cargo' 'git' 'python-pytoml')
 optdepends=()
 source=('git+https://github.com/myfreeweb/freepass.git')
-# source=('git+https://github.com/myfreeweb/freepass.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,8 +21,7 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	git submodule init
-	git submodule update libsodium rusterpassword
+	git submodule update --init libsodium rusterpassword
 	cd "cli"
 	cargo update
 	cargo build --release
@@ -31,7 +29,5 @@ build() {
 
 package() {
 	cd "$_pkgname/cli"
-	export PATH="$PATH:$pkgdir/usr/bin"
-	cargo install --root "$pkgdir/usr"
-	rm "$pkgdir/usr/.crates.toml"
+	install -D -m755 "target/release/freepass" "$pkgdir/usr/bin/freepass"
 }
