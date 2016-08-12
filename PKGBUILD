@@ -4,29 +4,33 @@
  
 pkgname=nvidia-bfq
 pkgver=367.35
-_extramodules=extramodules-4.6-bfq
-pkgrel=1
+_extramodules=extramodules-4.7-bfq
+pkgrel=2
 _pkgdesc="NVIDIA drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfq>=4.6' 'linux-bfq<4.7' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-bfq-headers>=4.6' 'linux-bfq-headers<4.7')
+depends=('linux-bfq>=4.7' 'linux-bfq<4.8' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-bfq-headers>=4.7' 'linux-bfq-headers<4.8')
 conflicts=('nvidia-bfq-304xx' 'nvidia-bfq-340xx')
 license=('custom')
 install=nvidia-bfq.install
 options=(!strip)
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('42db6f6485c3c337c7c756380ec64b7a')
-md5sums_x86_64=('24f1fc19fe10bcc6ff264fb5034c4ccc')
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+"0001-linux-4.7-i686.patch")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+"0001-linux-4.7-x86_64.patch")
+sha256sums_i686=('38cb22fa85ef74ea960d3e5d644838cd961984ffc32bb0d052414cc7fa32e315'
+                 'ca820f1cb77b377ca92f0298873ba04819fa9d33215392870ce159b39e639b37')
+sha256sums_x86_64=('8a6c554e9315e31e09d73fd60223ee4fbbe5507cd04c2e041c868a2080439354'
+                   '786dc522c4fe626acb30fac262bc7c2bc6580fd086d9985aa169399db4c6dfc1')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-    # patches here
+		patch -Np1 -d kernel < ../0001-linux-4.7-${CARCH}.patch
 }
    
 build() {
