@@ -1,0 +1,5 @@
+post_install() {
+printf "Refer to doas(1) and doas.conf(5) manual page\n \
+for configuration instruction.\n"
+}
+
