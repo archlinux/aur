@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-display
-pkgver=0.1.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Display plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('cairo' 'clutter' 'clutter-gtk' 'glib2' 'glibc' 'gnome-desktop' 'gtk3'
          'libgee'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
-source=("https://launchpad.net/switchboard-plug-display/0.x/${pkgver}/+download/switchboard-plug-display-${pkgver}.tar.xz")
-sha256sums=('6d8e234358c31d881699f9d98dbffe5685765547bc5ff7699141c0b7e08bc559')
+source=("https://launchpad.net/switchboard-plug-display/loki/${pkgver}/+download/switchboard-plug-display-${pkgver}.tar.xz")
+sha256sums=('838ee7635cf7da4ef117d79f51eb7058b0cbeba61ea0cab7ec092df8a9410522')
 
 prepare() {
   cd switchboard-plug-display-${pkgver}
