@@ -9,7 +9,7 @@
 
 pkgname=google-appengine-python-php
 _pkgname=google_appengine
-pkgver=1.9.38
+pkgver=1.9.40
 pkgrel=1
 arch=(any)
 pkgdesc="Google App Engine SDK for Python & PHP"
@@ -41,7 +41,7 @@ optdepends=(
 options=(!strip)
 install=install
 source=(https://storage.googleapis.com/appengine-sdks/featured/${_pkgname}_${pkgver}.zip)
-sha1sums=('666f8de01dcfa1ab91b36744f2888946ca61d9b7')
+sha1sums=('f88b532ae7e23ab88290e939882a61140cb2a82a')
 noextract=(${_pkgname}_${pkgver}.zip)
 
 prepare() {
