@@ -9,16 +9,19 @@ arch=(i686 x86_64)
 url='http://www.dreamsourcelab.com/'
 license=(GPL3)
 # Upstream added VCS dependency to libsigrokdecode :/
-depends=(boost-libs qt5-base libsigrok4dsl-git libsigrokdecode4dsl-git)
+depends=(boost-libs qt5-base fftw libsigrok4dsl-git libsigrokdecode4dsl-git)
 makedepends=(boost cmake)
-source=(git://github.com/DreamSourceLab/DSView#branch=develop
-        udev.rules)
-sha1sums=('SKIP'
-          '50f23061fcd03e0aafdefb3b676f1846c036c856')
+source=(git://github.com/DreamSourceLab/DSView#branch=develop)
+sha1sums=('SKIP')
 
 pkgver() {
   cd DSView
   git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd DSView/DSView
+  sed 's|/usr/local/|/usr/|' -i DSView.desktop
 }
 
 build() {
@@ -33,6 +36,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 icons/logo_color.png "$pkgdir/usr/share/pixmaps/dsview.png"
-  install -Dm644 "$srcdir/udev.rules" "$pkgdir/usr/lib/udev/rules.d/20-dsview.rules"
+  #install -Dm644 icons/logo_color.png "$pkgdir/usr/share/pixmaps/dsview.png"
+  install -Dm644 "$pkgdir/etc/udev/rules.d/DreamSourceLab.rules" "$pkgdir/usr/lib/udev/rules.d/DreamSourceLab.rules"
+  rm "$pkgdir/etc/udev/rules.d/DreamSourceLab.rules"
 }
