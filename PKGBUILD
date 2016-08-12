@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.5.r35.gb861272
+pkgver=0.6.1.r5.gc3be5ff
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
@@ -20,9 +20,8 @@ optdepends=('python-gobject: GTK frontend'
             'python-cairo:   GTK frontend'
 			'python-pillow:  thumbnail images for GUI frontends'
 			'python-pyqt5:   Qt frontend'
-            'python-urwid:   ncurses frontend')
-            # inotifyx package is python2 only.
-			# 'python-inotifyx: instant media recognition')
+            'python-urwid:   ncurses frontend'
+			'python-pyinotify: instant media recognition')
 
 source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
        	"${pkgname%-git}-curses.desktop"
