@@ -109,7 +109,7 @@ def print_usage():
 if __name__ == '__main__':
     stu_id = None
     pwd = None
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 1 and len(sys.argv[1]) == 9:
         stu_id = input('学号：')
         pwd = getpass.getpass('密码：')
     elif len(sys.argv) == 2:
