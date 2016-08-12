@@ -17,8 +17,19 @@ CONFIG_FILE="$1"
 # unmount any volumes that may have been mounted from within openshift.local.volumes, thus preventing the next step.
 # delete the folder containing all configuration, persistent data and temporary volumes shared among the host and the cluster.
 
-_stop_and_delete_containers()
-{
+_setup() {
+    oc login -u system:admin
+    oc project default
+    tempfile=$(mktemp)
+    oc status | grep svc/docker-registry > $tempfile
+    line=$(oc status | grep svc/docker-registry)
+    registryAddress=$(sed -e 's/svc\/docker-registry - //g' $tempfile)
+    echo $registryAddress
+    rm $tempfile
+}
+
+
+_stop_and_delete_containers() {
     containerRows=$(docker ps -a --format "{{.ID}};{{.Image}}" | grep openshift)
     mapfile -t containers <<< "$containerRows"
     if [ -z "$containerRows" ]; then return; fi
@@ -31,45 +42,27 @@ _stop_and_delete_containers()
 }
 
 __delete_images() {
-    imageRows=$1
-    mapfile -t images <<< "$imageRows"
-    if [ -z "$imageRows" ]; then return; fi
-    for i in "${images[@]}"; do
+    for i in "$@"; do
         IFS=';' read -ra image <<< "$i"
         docker rmi "${image[0]}"
-        echo "Deleted image ${image[1]}"
+        echo "Deleted image ${image[1]}:${image[2]}"
     done
 }
 
 _delete_images() {
 
-    oc login -u system:admin
-    oc project default
-    tempfile=$(mktemp)
-    oc status | grep svc/docker-registry > $tempfile
-    line=$(oc status | grep svc/docker-registry)
-    registryAddress=$(sed -e 's/svc\/docker-registry - //g' $tempfile)
-    echo $registryAddress
-    rm $tempfile
+    imageRows=$(docker images --format "{{.ID}};{{.Repository}};{{.Tag}}" | grep $registryAddress)
+    __delete_images $imageRows
 
-    imageRows=$(docker images --format "{{.ID}};{{.Repository}}" | grep $registryAddress)
-    __delete_images
-
-    imageRows=$(docker images --format "{{.ID}};{{.Repository}}" | grep openshift)
-    __delete_images
+    imageRows=$(docker images --format "{{.ID}};{{.Repository}};{{.Tag}}" | grep openshift | grep $VERSION)
+    __delete_images $imageRows
 
 }
 
-_unmount_volumes()
-{
-    pods_path="${ORIGIN_HOME}/openshift.local.volumes/pods"
-    pods=$(ls $pods_path 2>/dev/null)
-    if [ -z "$pods" ]; then return; fi
-    for pod in "${pods[@]}"; do
-        postfix=$(ls $pods_path/$pod/volumes/kubernetes.io~secret)
-        mount_point=$pods_path/$pod/volumes/kubernetes.io~secret/$postfix
-        umount $mount_point
-    done
+_unmount_volumes() {
+
+    umount ${ORIGIN_HOME}/openshift.local.volumes/pods/*/volumes/kubernetes.io~secret/*/
+
 }
 
 main() {
@@ -89,6 +82,8 @@ main() {
     read_config
 
     OLD_IFS=$IFS
+
+    _setup
 
     _stop_and_delete_containers
 
