@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -20,11 +20,13 @@ conflicts=('compiz-core')
 source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
-        "trailfocus-fix.patch")
+        "trailfocus-fix.patch"
+        "fix-expo-offset.patch")
 sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce')
+            '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
+            'ac5bfcc43589e4d9a3eaeb2e10b63502dedefe6ba24c705d6761805e913d5ff8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -33,17 +35,20 @@ prepare() {
   sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
   # Set focus prevention level to off which means that new windows will always get focus
-  patch -Np1 -i "${srcdir}/focus-prevention-disable.patch"
+  patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
 
   # Use Python 2
   find -type f \( -name 'CMakeLists.txt' -or -name '*.cmake' \) -exec sed -e 's/COMMAND python/COMMAND python2/g' -i {} \;
   find compizconfig/ccsm -type f -exec sed -e 's|^#!.*python|#!/usr/bin/env python2|g' -i {} \;
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
-  patch -Np1 -i "${srcdir}/gtk-extents.patch"
+  patch -p1 -i "${srcdir}/gtk-extents.patch"
 
   # Fix ambiguous function call in trailfocus plugin
-  patch -Np1 -i "${srcdir}/trailfocus-fix.patch"
+  patch -p1 -i "${srcdir}/trailfocus-fix.patch"
+
+  # Fix expo offset
+  patch -p1 -i "${srcdir}/fix-expo-offset.patch"
 }
 
 build() {

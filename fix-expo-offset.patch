@@ -1,0 +1,18 @@
+diff -Naur a/plugins/expo/expo.xml.in b/plugins/expo/expo.xml.in
+--- a/plugins/expo/expo.xml.in	2016-07-01 21:39:57.000000000 +1000
++++ b/plugins/expo/expo.xml.in	2016-08-02 05:50:13.400627875 +1000
+@@ -142,12 +142,12 @@
+ 		<option name="x_offset" type="int">
+ 		    <_short>X Offset</_short>
+ 		    <_long>Horizontal offset (in pixels).</_long>
+-		    <default>64</default>
++		    <default>0</default>
+ 		</option>
+ 		<option name="y_offset" type="int">
+ 		    <_short>Y Offset</_short>
+ 		    <_long>Vertical offset (in pixels).</_long>
+-		    <default>24</default>
++		    <default>0</default>
+ 		</option>
+ 		<option name="y_bottom_offset" type="int">
+ 		    <_short>Y Bottom Offset</_short>
