@@ -2,7 +2,7 @@
 
 pkgname=freelib
 _pkgname=freeLib
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Home library with librusec/flibusta support"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=()
 depends_x86_64=('lib32-gstreamer0.10-base' 'lib32-libxcomposite' 'lib32-libxrender' 'lib32-libxslt' 'lib32-libpulse')
 depends_i686=('gstreamer0.10-base' 'libxcomposite' 'libxrender' 'libxslt' 'libpulse')
 sha1sums=('fe6f56d29dea9a973bf90fec7f0f44fb7b2d8287'
-          '28c5b8fbd6565efc21f5ec938bd7424cda9e017a')
+          '7816f2afcef4d7fd77af2a1c92ecc3e27e63cf40')
  
 package() {
 	# coping files
