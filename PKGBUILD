@@ -1,12 +1,12 @@
 pkgname=dwm-uleenucks-git
 _pkgname=dwm
 pkgdesc="dwm with uleenucks personalisations"
-pkgver=6.1
+pkgver=6.1.5.g56a31dc
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="https://git.uleenucks.de/builds/"
 arch=('i686' 'x86_64')
@@ -17,12 +17,20 @@ makedepends=('git')
 install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
+replaces=('dwm')
 epoch=1
 source=("$_pkgname::git+http://git.suckless.org/dwm"
-        config.def.h
+        config.def.h.x200s
+        config.def.h.work
+        compile.sh
         dwm-6.1-center.diff)
 
-. md5sums
+md5sums=('SKIP'
+         '53acc5aead54700e3709e0d33fe5d252'
+         'ac89a24396a42dee2922c06d31388c5e'
+         '2fb39fa984c6676363051d0bafc74dc6'
+         '5f6f840c692f43f7e349bb87e895ff26')
+
 prepare() {
   if [[ -f $SRCDEST/config.def.h ]]; then
     ln -sf $SRCDEST/config.def.h $srcdir/dwm/config.h

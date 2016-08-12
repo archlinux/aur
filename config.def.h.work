@@ -7,12 +7,6 @@ static const char *fonts[] = {
     "WenQuanYi Micro Hei:size=10.5",
 };
 static const char font[]            = "-*-proggyoptis-*-*-*-*-11-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#002b36";
-static const char normbgcolor[]     = "#002b36";
-static const char normfgcolor[]     = "#839496";
-static const char selbordercolor[]  = "#0066ff";
-static const char selbgcolor[]      = "#073642";
-static const char selfgcolor[]      = "#cb4b16";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -22,40 +16,52 @@ static const Bool showsystray       = True;     /* False means no systray */
 static const int nmaster            = 2;        /* number of clients in master area */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
+static const char normbordercolor[] = "#080808";
+static const char normbgcolor[]     = "#080808";
+static const char normfgcolor[]     = "#ffffff";
+static const char selbordercolor[]  = "#c6c6c6";
+static const char selbgcolor[]      = "#c6c6c6";
+static const char selfgcolor[]      = "#dc322f";
+static const char *colors[SchemeLast][3] = {
+	/*                fg           bg           border */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel] =  { selfgcolor,  selbgcolor,  selbordercolor },
+};
 
 /* tagging */
 static const char *tags[] = { "1/main", "2/web", "3/stuff", "4/office" };
 
 static const Rule rules[] = {
-	/* class             instance          title                        tags mask     iscentered   isfloating   monitor */
+	/* class             instance    title                        tags mask     iscentered   isfloating   monitor */
 	/* monitor 0 */
-	{ "Wine",               NULL,           NULL,                        1 << 1,       True,        True,         0 },
-	{ "Remmina",            NULL,           NULL,                        1 << 1,       True,        True,         0 },
-	{ "calibre-gui",        NULL,           NULL,                        1 << 1,       True,        True,         0 },
-	{ "VirtualBox",         NULL,           NULL,                        1 << 1,       True,        True,         0 },
-	{ "Chromium",           NULL,           NULL,                        1 << 1,       False,       False,        0 },
-	{ "google-chrome-beta", NULL,           NULL,                        1 << 1,       False,       False,        0 },
-	{ NULL,                 "Browser",      NULL,                        1 << 1,       True,        True,         0 },
-	{ NULL,                 "dwb",          NULL,                        1 << 1,       False,       False,        0 },
-	{ "Firefox",            NULL,           NULL,                        1 << 1,       False,       False,        0 },
-	{ "KeePass2",           NULL,           "Auto-Type Entry Selection", 1 << 1,       True,        True,         0 },
-	{ "Gajim",              NULL,           NULL,                        1 << 2,       True,        True,         0 },
-	{ "KeePass2",           NULL,           NULL,                        1 << 2,       True,        True,         0 },
-	{ "Corebird",           NULL,           NULL,                        1 << 2,       True,        True,         0 },
-	{ "Spotify",            NULL,           NULL,                        1 << 2,       True,        True,         0 },
-	{ NULL,                 "libreoffice",  NULL,                        1 << 3,       False,       False,        0 },
-	{ NULL,                 "Eclipse",      NULL,                        1 << 3,       False,       False,        0 },
-	{ "Gimp",               NULL,           NULL,                        1 << 3,       False,       True,         0 },
-	{ "PacketTracer6",      NULL,           NULL,                        1 << 3,       True,        True,         0 },
-	{ "feh",                NULL,           NULL,                        0,            True,        True,        -1 },
-	{ "Sxiv",               NULL,           NULL,                        0,            True,        True,        -1 },
-	{ "mpv",                NULL,           NULL,                        0,            True,        True,        -1 },
-	{ "Wine",               NULL,           NULL,                        0,            True,        True,        -1 },
-	{ "XFontSel",           NULL,           NULL,                        0,            True,        True,        -1 },
-	{ NULL,                 "xterm",        NULL,                        0,            True,        True,        -1 },
-	{ "Zathura",            NULL,           NULL,                        0,            True,        True,        -1 },
-	{ NULL,                 NULL,           "Save file",                 0,            True,        True,        -1 },
-	{ NULL,                 NULL,           "Wicd Network Manager",      0,            True,        True,        -1 },
+	{ "Wine",               NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "Remmina",            NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "calibre-gui",        NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "PacketTracer6",      NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "VirtualBox",         NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	/* monitor 1 */
+	{ "chromium",           NULL,       NULL,                        1 << 1,       False,       False,        1 },
+	{ "google-chrome-beta", NULL,       NULL,                        1 << 1,       False,       False,        1 },
+	{ NULL,                 "Browser",  NULL,                        1 << 1,       True,        True,         1 },
+	{ NULL,                 "dwb",      NULL,                        1 << 1,       False,       False,        1 },
+	{ "Firefox",            NULL,       NULL,                        1 << 1,       False,       False,        1 },
+	{ "KeePass2",           NULL,       "Auto-Type Entry Selection", 1 << 1,       True,        True,         1 },
+	{ "Gajim",              NULL,       NULL,                        1 << 2,       True,        True,         1 },
+	{ "KeePass2",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
+	{ "Corebird",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
+	{ "Spotify",            NULL,       NULL,                        1 << 2,       True,        True,         1 },
+	{ "LibreOffice",        NULL,       NULL,                        1 << 0,       False,       False,        1 },
+	/* everywhere */
+	{ "Gimp",               NULL,       NULL,                        1 << 2,       False,       True,        -1 },
+	{ "feh",                NULL,       NULL,                        0,            True,        True,        -1 },
+	{ "Sxiv",               NULL,       NULL,                        0,            True,        True,        -1 },
+	{ "mpv",                NULL,       NULL,                        0,            True,        True,        -1 },
+	{ "Wine",               NULL,       NULL,                        0,            True,        True,        -1 },
+	{ "XFontSel",           NULL,       NULL,                        0,            True,        True,        -1 },
+	{ NULL,                 "xterm",    NULL,                        0,            True,        True,        -1 },
+	{ "Zathura",            NULL,       NULL,                        0,            True,        True,        -1 },
+	{ NULL,                 NULL,       "Save file",                 0,            True,        True,        -1 },
+	{ NULL,                 NULL,       "Wicd Network Manager",      0,            True,        True,        -1 },
 };
 
 /* layout(s) */
