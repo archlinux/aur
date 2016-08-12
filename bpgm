@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir -p ~/.bpgm
+
+pushd ~/.bpgm
+  exec /usr/bin/java -jar '/usr/share/java/blossoms-pokemon-go-manager/BlossomsPogoManager.jar' "$@"
+popd
