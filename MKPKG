@@ -1,5 +1,5 @@
 pkgname=('gsignond-plugin-oauth-git')
-builddeps=('libgsignon-glib' 'gsignond')
+builddeps=('gsignond')
 
 check_git $packagedir/$pkgname/${pkgname%-*}
 
