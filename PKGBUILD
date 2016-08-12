@@ -1,15 +1,17 @@
 # Maintainer: Boohbah <boohbah at gmail.com>
 # Contributor: Christian Hesse <mail at eworm.de>
 # Contributor: figue <ffigue at gmail.com>
+# Contributor: vinibali <vinibali1 at gmail.com>
 
 pkgname=f2fs-tools-git
 _gitname=f2fs-tools
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="Tools for Flash-Friendly File System (F2FS)"
+pkgdesc="Tools for Flash-Friendly File System (F2FS) (git version)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/f2fs-tools/"
 license=('GPL')
+depends=('libselinux')
 makedepends=('git')
 provides=('f2fs-tools')
 conflicts=('f2fs-tools')
