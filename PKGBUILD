@@ -9,9 +9,9 @@ arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
-         'python2-dbus' 'python2-gobject' 'python2-xdg' 'python2-yaml'
+         'python-dbus' 'python-gobject' 'python-xdg' 'python-yaml'
          'xdg-user-dirs')
-makedepends=('git' 'python2-setuptools')
+makedepends=('git' 'python-setuptools')
 provides=('lutris')
 conflicts=('lutris')
 source=('git+https://github.com/lutris/lutris.git')
@@ -26,7 +26,7 @@ pkgver() {
 package() {
   cd lutris
 
-  python2 setup.py install --root="${pkgdir}" --optimize='1'
+  python setup.py install --root="${pkgdir}" --optimize='1'
 }
 
 # vim: ts=2 sw=2 et:
