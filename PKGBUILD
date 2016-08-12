@@ -1,7 +1,7 @@
 # Maintainer: Jitang Zheng <jitang.zheng@gmail.com>
 pkgname=fb-folly
 pkgver=2016.07.26
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source C++ library developed and used at Facebook."
 arch=(x86_64)
 url="https://github.com/facebook/folly"
