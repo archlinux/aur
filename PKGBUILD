@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=asix-module
-pkgver=4.17.3
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="A kernel module for the ASIX USB 2.0 low power AX88772B/AX88772A/AX88760/AX88772/AX88178 ethernet controllers"
 url="http://www.asix.com.tw"
@@ -11,8 +11,14 @@ arch=('i686' 'x86_64')
 depends=('glibc' 'linux')
 makedepends=('linux-headers')
 _filename=AX88772C_772B_772A_760_772_178_LINUX_DRIVER_v${pkgver}_Source
-source=(http://www.asix.com.tw/FrootAttach/driver/$_filename.tar.gz)
+source=(http://www.asix.com.tw/FrootAttach/driver/$_filename.tar.bz2
+        linux-4.7.patch)
 install=$pkgname.install
+
+prepare() {
+	cd "$srcdir"/$_filename
+	patch -p1 -i ../linux-4.7.patch
+}
 
 build() {
 	_kernver=$(pacman -Q linux | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
@@ -34,4 +40,5 @@ package() {
 	sed -i "s|extramodules-.*-ARCH|extramodules-$_kernver-ARCH|" "$startdir/$pkgname.install"
 }
 
-sha256sums=('2c3d4481e830222f35738bcd89a6b7c590625150af51bc937d14b1eadefcf49e')
+sha256sums=('3aab9309e031ff66240701bcb4d68adfcdb91d84db8888defb783825cabfaf18'
+            'c61fd6d00d78280df68be911f459662cd8b58b764b82d2ef4534b99dffa6e05e')
