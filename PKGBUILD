@@ -3,8 +3,8 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard'
@@ -27,8 +27,8 @@ optdepends=('switchboard-plug-about: About plug'
             'switchboard-plug-security-privacy: Security & Privacy plug')
 provides=('libswitchboard-2.0.so')
 install='switchboard.install'
-source=("https://launchpad.net/switchboard/${pkgver%.*.*}.x/${pkgver}/+download/switchboard-${pkgver}.tgz")
-sha256sums=('a67ca60e002459e8e3d65b6c57440e86ebd0eb33a863561808b748901d46b4e8')
+source=("https://launchpad.net/switchboard/2.x/${pkgver}/+download/switchboard-${pkgver}.tar.xz")
+sha256sums=('823221f858c5de85189ddadd8a0f3af87d62cc90a9c678074eaa149e868323b7')
 
 prepare() {
   cd switchboard-${pkgver}
