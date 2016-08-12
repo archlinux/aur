@@ -1,6 +1,6 @@
 pkgbase = wire-desktop
 	pkgdesc = Modern, private messenger. Based on Electron.
-	pkgver = 2.9.2646
+	pkgver = 2.9.2647
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = wire-desktop
 	makedepends = nodejs-grunt-cli
 	makedepends = gendesk
 	provides = wire-desktop
-	source = https://github.com/wireapp/wire-desktop/archive/release/2.9.2646.tar.gz
-	sha256sums = 58ed1e2bb86a73e1552818f92aa21f66f5e6236b7992d8cdccae5e714e424cff
+	source = https://github.com/wireapp/wire-desktop/archive/release/2.9.2647.tar.gz
+	sha256sums = 7c4f62f1861431abf2a6811df7072df329a37fc3997d8de30b5ec3c66922bc15
 
 pkgname = wire-desktop
 
