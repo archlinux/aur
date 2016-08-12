@@ -1,7 +1,7 @@
 # Maintainer: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
-pkgver=r128.e1eb11b
+pkgver=r133.7b6b996
 pkgrel=1
 pkgdesc="GNU Radio block for RTSA-like spectrum visualization using OpenCL and OpenGL acceleration"
 arch=('any')
@@ -10,20 +10,13 @@ license=(unknown)
 depends=('gnuradio' 'boost' 'swig' 'glfw' 'opencl-headers' 'freetype2')
 makedepends=('cmake')
 provides=('gr-fosphor')
-source=('git://git.osmocom.org/gr-fosphor'
-        '0001-add-subpath-for-freetype.patch')
-sha1sums=('SKIP'
-          '2567e84a022a456655e10f0560365b38abef19c4')
+source=('git://git.osmocom.org/gr-fosphor')
+sha1sums=('SKIP')
 _gitname=gr-fosphor
 
 pkgver() {
   cd $_gitname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $_gitname
-  patch -p1 -i $srcdir/0001-add-subpath-for-freetype.patch
 }
 
 build() {
