@@ -3,15 +3,22 @@
 pkgname=python-ewmh
 _gitname=pyewmh
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of EWMH (Extended Window Manager Hints)"
 arch=('i686' 'x86_64')
 url="https://github.com/parkouss/pyewmh/"
 license=('LGPL')
 depends=('python-xlib')
 makedepends=('git')
-source=("https://github.com/parkouss/$_gitname/archive/v$pkgver.tar.gz")
-md5sums=('a839d66b8b71518d920524fc99f61eba')
+source=("https://github.com/parkouss/$_gitname/archive/v$pkgver.tar.gz"
+        "setup.patch")
+md5sums=('a839d66b8b71518d920524fc99f61eba'
+         '6c8afac33733204fed4b9cd8ebe763ef')
+
+prepare() {
+  cd "$srcdir"
+  patch pyewmh-0.1.4/setup.py setup.patch
+}
 
 package() {
   cd "$srcdir"/$_gitname-$pkgver
