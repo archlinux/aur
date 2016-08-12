@@ -1,0 +1,28 @@
+pkgbase = nghttp2-git
+	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library
+	pkgver = 1.13.0.r43.g8df2c35
+	pkgrel = 1
+	url = https://github.com/nghttp2/nghttp2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = openssl
+	depends = libev
+	depends = zlib
+	depends = libxml2
+	depends = jansson
+	depends = jemalloc
+	depends = boost
+	depends = boost-libs
+	provides = nghttp2
+	conflicts = nghttp2
+	replaces = nghttp2
+	backup = etc/nghttpx/nghttpx.conf
+	backup = etc/logrotate.d/nghttpx
+	source = git+https://github.com/nghttp2/nghttp2.git
+	md5sums = SKIP
+
+pkgname = nghttp2-git
+
