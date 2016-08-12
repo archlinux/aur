@@ -5,7 +5,7 @@ pkgver=1.7.40.r2000.49083ff
 pkgrel=1
 pkgdesc="A pure C++ SVN-client for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
-url='http://www.kdevelop.org'
+url='http://projects.kde.org/kdesvn'
 license=('GPL')
 depends=('kbookmarks' 'kconfig' 'kconfigwidgets' 'kcoreaddons'
          'kdbusaddons' 'kdoctools' 'ki18n' 'kiconthemes' 'kitemviews'
