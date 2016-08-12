@@ -1,4 +1,4 @@
-# Contributer: Donald Carr<sirspudd@gmail.com>
+# Maintainer: Donald Carr<sirspudd at gmail dot com>
 
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
