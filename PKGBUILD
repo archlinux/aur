@@ -18,8 +18,10 @@ package() {
   cd Super-Ultra-Flat-Numix-Remix
 
   install -dm 755 "${pkgdir}"/usr/share/icons
+  cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Arc "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Arch-Blue "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Majestic "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix-Orange "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Super-Ultra-Flat-Numix-Remix "${pkgdir}"/usr/share/icons/
+
 }
