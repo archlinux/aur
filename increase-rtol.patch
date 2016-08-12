@@ -1,0 +1,37 @@
+diff -ru sage-7.3.orig/src/sage/coding/code_bounds.py sage-7.3/src/sage/coding/code_bounds.py
+--- sage-7.3.orig/src/sage/coding/code_bounds.py        2016-08-05 20:26:10.033204091 +0200
++++ sage-7.3/src/sage/coding/code_bounds.py     2016-08-05 20:32:27.276579565 +0200
+@@ -554,7 +554,7 @@
+     if q < 2:   # Here we check that q is actually at least 2
+         raise ValueError("The value q must be an integer greater than 1")
+ 
+-    eps  = 4.5e-16 # find_root has about this as the default xtol
++    eps  = 4.5e-15 # find_root has about this as the default xtol
+     ymax = 1 - 1/q
+     if x <= eps:
+         return 0
+diff -ru sage-7.3.orig/src/sage/numerical/optimize.py sage-7.3/src/sage/numerical/optimize.py
+--- sage-7.3.orig/src/sage/numerical/optimize.py        2016-08-05 20:26:10.816536625 +0200
++++ sage-7.3/src/sage/numerical/optimize.py     2016-08-05 20:32:21.449907130 +0200
+@@ -15,7 +15,7 @@
+ from sage.rings.real_double import RDF
+ 
+ 
+-def find_root(f, a, b, xtol=10e-13, rtol=4.5e-16, maxiter=100, full_output=False):
++def find_root(f, a, b, xtol=10e-13, rtol=4.5e-15, maxiter=100, full_output=False):
+     """
+     Numerically find a root of ``f`` on the closed interval `[a,b]`
+     (or `[b,a]`) if possible, where ``f`` is a function in the one variable.
+diff -ru sage-7.3.orig/src/sage/symbolic/expression.pyx sage-7.3/src/sage/symbolic/expression.pyx
+--- sage-7.3.orig/src/sage/symbolic/expression.pyx      2016-08-05 20:26:11.333202767 +0200
++++ sage-7.3/src/sage/symbolic/expression.pyx   2016-08-05 20:32:14.236566826 +0200
+@@ -10884,7 +10884,7 @@
+             ret = ret[0]
+         return ret
+ 
+-    def find_root(self, a, b, var=None, xtol=10e-13, rtol=4.5e-16, maxiter=100, full_output=False):
++    def find_root(self, a, b, var=None, xtol=10e-13, rtol=4.5e-15, maxiter=100, full_output=False):
+         """
+         Numerically find a root of self on the closed interval [a,b] (or
+         [b,a]) if possible, where self is a function in the one variable.
+
