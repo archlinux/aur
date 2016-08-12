@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrok4dsl-git
-pkgver=0.95.r8.gaad5257
+pkgver=0.95.r40.g7665ade
 pkgrel=1
 pkgdesc='A library which provides the basic API for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
