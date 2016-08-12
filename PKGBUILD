@@ -2,11 +2,11 @@
 
 _pkgname=lxqt-l10n
 pkgname=$_pkgname-git
-pkgver=0.10.95.4.g06ed8db
+pkgver=0.10.95.23.g7ea85f6
 pkgrel=1
-pkgdesc="Translations of all components maintained by the LXQt project"
+pkgdesc='Translations of all components maintained by the LXQt project'
 arch=('any')
-url='https://github.com/lxde/translations'
+url='https://github.com/lxde/lxqt-l10n'
 license=('LGPL')
 makedepends=('git' 'cmake' 'liblxqt-git' 'qt5-tools')
 provides=("$_pkgname")
@@ -15,7 +15,7 @@ conflicts=("$_pkgname" "compton-conf"{,-git} "libfm-qt"{,-git} "liblxqt"{,-git} 
           "lxqt-notificationd"{,-git} "lxqt-openssh-askpass"{,-git} "lxqt-panel"{,-git}
           "lxqt-policykit"{,-git} "lxqt-powermanagement"{,-git} "lxqt-runner"{,-git}
           "lxqt-session"{,-git} "lxqt-sudo"{,-git} "obconf-qt"{,-git} "pcmanfm-qt"{,-git} "qterminal"{,-git})
-source=("$_pkgname::git+https://github.com/lxde/translations.git")
+source=("$_pkgname::git+https://github.com/lxde/lxqt-l10n.git")
 sha256sums=("SKIP")
 
 pkgver() {
