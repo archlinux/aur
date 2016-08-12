@@ -4,14 +4,13 @@ After=aksusbd.service
 Requires=aksusbd.service
 BindsTo=aksusbd.service
 PartOf=aksusbd.service
+JoinsNamespaceOf=aksusbd.service
 
 [Service]
 Type=forking
 StandardOutput=tty
 TimeoutStopSec=10s
 
-PrivateTmp=true
-PrivateNetwork=true
 ProtectSystem=full
 ProtectHome=true
 

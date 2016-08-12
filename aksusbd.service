@@ -7,8 +7,6 @@ Type=forking
 StandardOutput=tty
 TimeoutStopSec=10s
 
-PrivateTmp=true
-PrivateNetwork=true
 ProtectSystem=full
 ProtectHome=true
 

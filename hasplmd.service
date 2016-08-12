@@ -4,14 +4,13 @@ After=aksusbd.service winehasp.service
 Requires=aksusbd.service winehasp.service
 BindsTo=aksusbd.service winehasp.service
 PartOf=aksusbd.service winehasp.service
+JoinsNamespaceOf=aksusbd.service
 
 [Service]
 Type=forking
 StandardOutput=tty
 TimeoutStopSec=10s
 
-PrivateTmp=true
-PrivateNetwork=true
 ProtectSystem=full
 ProtectHome=true
 

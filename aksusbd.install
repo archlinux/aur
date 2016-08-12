@@ -3,3 +3,7 @@ post_install() {
   echo "To make it persist across reboots, run 'sudo systemctl enable aksusbd'."
 }
 
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl try-restart aksusbd winehasp hasplmd
+}

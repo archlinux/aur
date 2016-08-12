@@ -8,7 +8,7 @@ pkgname=aksusbd
 pkgver=7.40
 _pkgrel=1
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
-pkgrel=${_pkgrel}
+pkgrel=2 # ${_pkgrel}
 pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://safenet.gemalto.com/"
@@ -20,13 +20,13 @@ source=("ftp://ftp.cis-app.com/pub/hasp/Sentinel_HASP/Runtime_(Drivers)/${pkgver
         "LICENSE"
         "udev-rules.patch"
         "${pkgname}.install")
-sha256sums=('ec579f8a0a6688af00ca74f0c8e32c0298c0b54cd92d4d49c3407d98c0dbd8a3'
-            '33c9ed6db9fd1881ad93060074adcd29af6ac79ec4a9a6bf3e29080fd53223a5'
-            '574bdf1726d0ff34376a9b574b794f533865931a2d9cf0606c638fcf7206f96b'
-            'ca21170ab441cade3e0b0730770e633808cf2a57c693515970b2d5a767cff816'
+sha256sums=('10c2c8264892d6c87ea80ff74583f53d69411d5fc1e2c085c21425d1b2ffd5ed'
+            '5551253cf3f048f3c1418c8f3e7378651a47807201de98f3e759fa81b38a859f'
+            'd4558107c7c9cf94f4b1e95ca5036e5cb43e59c5bc9ac35e2fbb70a194dc091a'
+            'e3be521db63423519161eb50c5561601fcfeb3341320e4d077b968d0a30d541a'
             'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd'
             'e5b17862fcc959ff48098ffdca04671d0303d290494edfebad495f6e3b82ba68'
-            '06123d1817e5627828e7416b5c349318b3e6da65cd8cb0197cbc0138cbb76908')
+            '8d5a12de57caf36af433f7c2890969b1a9fbd3ae5ce9d20d5706a5f67125ebd9')
 makedepends=('rpmextract')
 conflicts=('ehaspd')
 install=$pkgname.install
