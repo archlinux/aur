@@ -4,9 +4,9 @@
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='QML box2d application for displaying artwork'
-arch=('x86_64' 'i686')
+arch=('any')
 url='https://github.com/sirspudd/artriculate'
 license=('GPL3')
 depends=('qt5-declarative' 'qml-box2d')
