@@ -16,7 +16,7 @@ license=('Apache')
 depends=(python python-prettytable python-beautifulsoup4 python-requests python-lxml)
 provides=("cscore")
 source=('cscore')
-md5sums=('f231daab7215419c0bf74cdce7452c21')
+md5sums=('e228b7be4b06bfe72f3da47b4178208e')
 
 package() {
 	mkdir -p $pkgdir/usr/bin
