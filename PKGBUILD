@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-sharing'
 license=('GPL3')
 groups=('pantheon')
-depends=('glib2' 'glibc' 'gtk3' 'libgee'
+depends=('glib2' 'glibc' 'gnome-user-share' 'gtk3' 'libgee'
+         'wingpanel-indicator-bluetooth'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-sharing/loki/${pkgver}/+download/switchboard-plug-sharing-${pkgver}.tar.xz")
