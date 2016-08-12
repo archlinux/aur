@@ -1,7 +1,7 @@
 # batteryinfo PKGBUILD
 # Maintainer: Joe Glancy <@c0d3st0rm>
 pkgname=batteryinfo
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple battery status and information tool for Linux systems."
 arch=('i686' 'x86_64')
