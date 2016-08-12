@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-gtk
 	pkgdesc = GTK remote control for the Transmission BitTorrent client
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/transmission-remote-gtk/transmission-remote-gtk
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = transmission-remote-gtk
 	depends = desktop-file-utils
 	depends = gtk3
 	depends = json-glib
-	source = https://github.com/transmission-remote-gtk/transmission-remote-gtk/releases/download/1.3.0/transmission-remote-gtk-1.3.0.tar.xz
-	sha256sums = 6fe30b4561681458500e61cc6db10c3b4b3771f69e2f6a74dbb7a20b03a3cbe6
+	source = https://github.com/transmission-remote-gtk/transmission-remote-gtk/releases/download/1.3.1/transmission-remote-gtk-1.3.1.tar.xz
+	sha256sums = 1b29c573b1e205e3e7c2433dc4a48f9574278d97e033845d19bbffa1d7f75345
 
 pkgname = transmission-remote-gtk
 
