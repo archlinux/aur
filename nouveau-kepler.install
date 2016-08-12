@@ -1,0 +1,24 @@
+post_install() {
+    wat
+}
+
+post_upgrade() {
+    wat
+}
+
+function wat() {
+  echo "removing linux provided nouveau.ko.gz and running depmod -A"
+  kernel="$(uname -r)"
+
+  if [ -f "/usr/lib/modules/${kernel}/kernel/drivers/gpu/drm/nouveau/nouveau.ko.gz" ]; then
+    rm "/usr/lib/modules/${kernel}/kernel/drivers/gpu/drm/nouveau/nouveau.ko.gz"
+  fi
+
+  depmod -A
+
+  echo "you can now reboot and use the new nouveau.ko"
+}
+
+post_remove() {
+  echo "you now have no nouveau.ko at all, reinstall your kernel to get default back."
+}

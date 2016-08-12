@@ -1,0 +1,18 @@
+pkgbase = nouveau-kepler
+	pkgdesc = nouveau from karolherbst repo with kepler reclocking patches
+	pkgver = 20160731
+	pkgrel = 1
+	url = https://github.com/karolherbst/nouveau
+	install = nouveau-kepler.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = make
+	makedepends = linux-headers>=4.7
+	depends = linux>=4.7
+	provides = nouveau
+	source = git+https://github.com/karolherbst/nouveau.git#branch=stable_reclocking_kepler_v5
+	md5sums = SKIP
+
+pkgname = nouveau-kepler
+
