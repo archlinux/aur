@@ -1,6 +1,6 @@
 pkgbase = lxqt-runner-git
 	pkgdesc = The LXQt application launcher
-	pkgver = 0.9.0.4.g8777c55
+	pkgver = 0.10.0.16.g935b7c5
 	pkgrel = 1
 	url = http://lxqt.org
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = lxqt-runner-git
 	depends = lxqt-globalkeys-git
 	depends = menu-cache
 	depends = qt5-script
+	depends = muparser
 	provides = lxqt-runner
 	conflicts = lxqt-runner
 	source = git+https://github.com/lxde/lxqt-runner.git
