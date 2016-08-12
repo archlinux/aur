@@ -1,7 +1,6 @@
 pkgname=('switchboard-plug-online-accounts-bzr')
-builddeps=('libgsignon-glib' 'gsignond' 'gsignond-plugin-oauth-git'
-           'gsignond-plugin-sasl-git' 'gsignond-extension-pantheon-bzr'
-           'granite-bzr' 'switchboard-bzr')
+builddeps=('gsignond' 'gsignond-plugin-oauth-git' 'gsignond-plugin-sasl-git'
+           'gsignond-extension-pantheon-bzr' 'granite-bzr' 'switchboard-bzr')
 
 check_bzr $packagedir/$pkgname/${pkgname%-*}
 
