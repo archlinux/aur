@@ -4,7 +4,7 @@
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='QML box2d application for displaying artwork'
 arch=('x86_64' 'i686')
 url='https://github.com/sirspudd/artriculate'
@@ -20,6 +20,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/"$pkgname"
+  local repo_src=${srcdir}/${pkgname}
+  local systemd_deploy_path=${pkgdir}/usr/lib/systemd/system
+  mkdir -p $systemd_deploy_path
+  cp ${repo_src}/resources/*.service ${systemd_deploy_path}
+
+  cd ${repo_src}
   INSTALL_ROOT="$pkgdir" make install
 }
