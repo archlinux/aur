@@ -4,10 +4,9 @@
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
 
 pkgname=gerrit
-pkgver=2.12.2
+pkgver=2.12.3
 pkgrel=1
-#epoch=
-pkgdesc="A web-based code review tool built on top of the git version control system"
+pkgdesc="A web-based code review tool built on top of the Git version control system"
 arch=(any)
 url="https://www.gerritcodereview.com/"
 license=('Apache')
@@ -26,7 +25,7 @@ source=(http://gerrit-releases.storage.googleapis.com/gerrit-$pkgver.war
         gerrit.conf
         gerrit.systemd)
 noextract=(gerrit.war)
-sha256sums=('ff28bd84a078534b4fd1bf2e3e8b38cde5437c28e25c1e0a33dbcdf2182bbff7'
+sha256sums=('7aad19f1842a2cf89a87e69e4d7d9347f3ae192e89d0df0d1f91a9993280db3b'
             '35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598'
             'be1d205c6a0f3b24aad3c385f8188c64bfa3a9799ecf8ce5e089149af991a645')
 package() {
