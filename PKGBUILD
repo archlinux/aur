@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.95.r40.g7665ade
+pkgver=0.96.r2.gec31ceb
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 # Upstream added VCS dependency to libsigrokdecode :/
 depends=(boost-libs qt5-base fftw libsigrok4dsl-git libsigrokdecode4dsl-git)
 makedepends=(boost cmake)
-source=(git://github.com/DreamSourceLab/DSView#branch=develop)
+source=(git://github.com/DreamSourceLab/DSView) #branch=develop
 sha1sums=('SKIP')
 
 pkgver() {
@@ -35,8 +35,5 @@ package() {
   cd DSView/DSView
 
   make DESTDIR="$pkgdir" install
-
   #install -Dm644 icons/logo_color.png "$pkgdir/usr/share/pixmaps/dsview.png"
-  install -Dm644 "$pkgdir/etc/udev/rules.d/DreamSourceLab.rules" "$pkgdir/usr/lib/udev/rules.d/DreamSourceLab.rules"
-  rm "$pkgdir/etc/udev/rules.d/DreamSourceLab.rules"
 }
