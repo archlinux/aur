@@ -2,16 +2,15 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgbase=heavything-bin
-pkgname=('rwasa-bin' 'webslap-bin' 'hnwatch-bin'
-         'dhtool-bin' 'sshtalk-bin')
-pkgver=1.16
+pkgname=('rwasa-bin' 'webslap-bin' 'hnwatch-bin' 'dhtool-bin' 'sshtalk-bin')
+pkgver=1.17
 pkgrel=1
 pkgdesc='A General purpose x64 Asm library for 2ton products'
 arch=('x86_64')
 url='https://2ton.com.au/HeavyThing'
 license=('GPL3')
 source=("$url-$pkgver.tar.gz")
-sha256sums=('6e8ac0ac97e28e5a9c88b7884214100c04c829b0edc7326ea916dad48c932c9c')
+sha256sums=('8432034b21ffac9b4fd6955a17de532668d60dc73e617bb19d561c9e428931a1')
 
 package_rwasa-bin () {
   pkgdesc='a full featured web server that eclipses nginx'
