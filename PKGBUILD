@@ -3,8 +3,9 @@
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
+conflicts=('pi-launcher')
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
 url='https://github.com/sirspudd/artriculate'
