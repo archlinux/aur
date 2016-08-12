@@ -1,0 +1,15 @@
+pkgbase = mstch
+	pkgdesc = mstch is a complete implementation of {{mustache}} templates using modern C++
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/no1msd/mstch
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	depends = boost
+	source = https://github.com/no1msd/mstch/archive/1.0.2.tar.gz
+	md5sums = 306e7fead7480884f698ab47a6082e18
+
+pkgname = mstch
+
