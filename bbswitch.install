@@ -1,6 +1,6 @@
 # -*- sh -*-
 post_install() {
-  EXTRAMODULES='extramodules-4.6-think'
+  EXTRAMODULES='extramodules-4.7-think'
   depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 

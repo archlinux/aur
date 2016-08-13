@@ -3,10 +3,10 @@
 
 pkgname=bbswitch-think
 _pkgname=bbswitch
-_kernel=4.6
+_kernel=4.7
 pkgver=0.8
 _extramodules=extramodules-$_kernel-think # Don't forget to update bbswitch.install
-pkgrel=27
+pkgrel=28
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 #url=('http://github.com/Bumblebee-Project/bbswitch')
