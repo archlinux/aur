@@ -1,0 +1,13 @@
+[Unit]
+Description=Rocket.Chat server
+
+[Service]
+ExecStart=/usr/bin/rocketchat-server.sh
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=rocketchat
+User=rocketchat
+Group=rocketchat
+
+[Install]
+WantedBy=multi-user.target

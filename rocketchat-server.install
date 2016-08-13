@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# vim:set ts=4 sw=4 et:
+
+username="rocketchat"
+
+post_install() {
+    systemd-sysusers "${username}.conf"
+    chown -R "${username}:${username}" /etc/${username} /usr/share/${username}-server
+}
+
+
+post_upgrade(){
+    getent passwd "${username}" >/dev/null 2>&1 || systemd-sysusers "${username}.conf"
+}
