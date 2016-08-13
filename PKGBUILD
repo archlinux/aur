@@ -25,11 +25,12 @@ pkgname=('roccat-tools-common'
          'roccat-tools-ryosmkfx'
          'roccat-tools-ryostkl'
          'roccat-tools-savu'
+         'roccat-tools-suora'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -260,6 +261,16 @@ package_roccat-tools-tyon() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-tyon.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-tyon.rules
+}
+
+package_roccat-tools-suora() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Suora devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/suora"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-suora.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-suora.rules
 }
 
 package_roccat-tools-nyth() {
