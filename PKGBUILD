@@ -8,7 +8,7 @@ pkgbase=linux-cik               # Build stock -ARCH kernel
 _srcname=linux-4.7
 pkgver=4.7
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -89,7 +89,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="${pkgbase/linux/Linux} kernel and modules for amdgpu support on hawaii cards."
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
