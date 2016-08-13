@@ -1,0 +1,18 @@
+pkgbase = jws-git
+	pkgdesc = A wallpaper setter for minimalist window managers
+	pkgver = 1.0.1.r0.8507615
+	pkgrel = 1
+	url = https://github.com/JasonWaataja/JWS
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glib2
+	depends = feh
+	depends = gettext
+	provides = jws-git
+	conflicts = jws-git
+	source = jws-git::git+https://github.com/JasonWaataja/JWS.git
+	md5sums = SKIP
+
+pkgname = jws-git
+
