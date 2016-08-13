@@ -1,0 +1,16 @@
+pkgbase = hget-git
+	pkgdesc = Rocket fast, interruptable, resumable download accelerator written in Golang
+	pkgver = r30.03213a9
+	pkgrel = 1
+	url = https://github.com/huydx/hget
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = hget
+	source = git+https://github.com/huydx/hget.git
+	md5sums = SKIP
+
+pkgname = hget-git
+
