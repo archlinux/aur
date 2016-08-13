@@ -1,4 +1,4 @@
-pkgbase = gvfs
+pkgbase = gvfs-nosystemd
 	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version
 	pkgver = 1.28.3
 	pkgrel = 2
@@ -58,6 +58,7 @@ pkgname = gvfs-smb-nosystemd
 	depends = gvfs-nosystemd=1.28.3
 	depends = smbclient
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-afc-nosystemd
@@ -66,6 +67,7 @@ pkgname = gvfs-afc-nosystemd
 	depends = libimobiledevice
 	depends = usbmuxd
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-gphoto2-nosystemd
@@ -73,6 +75,7 @@ pkgname = gvfs-gphoto2-nosystemd
 	depends = gvfs-nosystemd=1.28.3
 	depends = libgphoto2
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-goa-nosystemd
@@ -80,6 +83,7 @@ pkgname = gvfs-goa-nosystemd
 	depends = gvfs-nosystemd=1.28.3
 	depends = gnome-online-accounts
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-mtp-nosystemd
@@ -87,6 +91,7 @@ pkgname = gvfs-mtp-nosystemd
 	depends = gvfs-nosystemd=1.28.3
 	depends = libmtp
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-nfs-nosystemd
@@ -95,6 +100,7 @@ pkgname = gvfs-nfs-nosystemd
 	depends = gvfs-nosystemd=1.28.3
 	depends = libnfs
 	provides = 
+	conflicts = 
 	replaces = 
 
 pkgname = gvfs-google-nosystemd
@@ -102,5 +108,6 @@ pkgname = gvfs-google-nosystemd
 	depends = gvfs-goa-nosystemd=1.28.3
 	depends = libgdata
 	provides = 
+	conflicts = 
 	replaces = 
 
