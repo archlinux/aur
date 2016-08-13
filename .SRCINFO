@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-squashfs-git
+	pkgdesc = SquashFS root support for mkinitcpio (local and remote image locations supported)
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/RegalisTechnologies/mkinitcpio-squashfs
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pv
+	depends = wget
+	depends = mkinitcpio
+	depends = findutils
+	optdepends = mkinitcpio-nfs-utils: downloading SquashFS images from remote locations
+	conflicts = mkinitcpio-squashfs
+	source = git+https://github.com/RegalisTechnologies/mkinitcpio-squashfs.git
+	md5sums = SKIP
+
+pkgname = mkinitcpio-squashfs-git
+
