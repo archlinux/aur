@@ -10,24 +10,6 @@ diff --git a/drivers/gpu/drm/i915/intel_fifo_underrun.c b/drivers/gpu/drm/i915/i
  	}
  }
  
-@@ -167,7 +167,7 @@
- 
- 		if (old &&
- 		    I915_READ(GEN7_ERR_INT) & ERR_INT_FIFO_UNDERRUN(pipe)) {
--			DRM_ERROR("uncleared fifo underrun on pipe %c\n",
-+			DRM_DEBUG("uncleared fifo underrun on pipe %c\n",
- 				  pipe_name(pipe));
- 		}
- 	}
-@@ -221,7 +221,7 @@
- 
- 		if (old && I915_READ(SERR_INT) &
- 		    SERR_INT_TRANS_FIFO_UNDERRUN(pch_transcoder)) {
--			DRM_ERROR("uncleared pch fifo underrun on pch transcoder %c\n",
-+			DRM_DEBUG("uncleared pch fifo underrun on pch transcoder %c\n",
- 				  transcoder_name(pch_transcoder));
- 		}
- 	}
 @@ -358,7 +358,7 @@
  		return;
  
@@ -37,11 +19,3 @@ diff --git a/drivers/gpu/drm/i915/intel_fifo_underrun.c b/drivers/gpu/drm/i915/i
  			  pipe_name(pipe));
  }
  
-@@ -376,6 +376,6 @@
- {
- 	if (intel_set_pch_fifo_underrun_reporting(dev_priv, pch_transcoder,
- 						  false))
--		DRM_ERROR("PCH transcoder %c FIFO underrun\n",
-+		DRM_DEBUG("PCH transcoder %c FIFO underrun\n",
- 			  transcoder_name(pch_transcoder));
- }

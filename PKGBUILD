@@ -51,11 +51,11 @@ _BFQ_enable_=y
 
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
-_srcname=linux-4.6
-_ckpatchname="patch-4.6-ck1"
-pkgver=4.6.6
-pkgrel=2
-arch=('i686' 'x86_64')
+_srcname=linux-4.7
+_ckpatchname="patch-4.7-ck1"
+pkgver=4.7
+pkgrel=1
+arch=('x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -65,10 +65,10 @@ optdepends=("nvidia-dkms: nvidia drivers for custom kernels"
 options=("!strip")
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # ck1 patchset
-        "http://ck.kolivas.org/patches/4.0/4.6/4.6-ck1/${_ckpatchname}.xz"
+        "http://ck.kolivas.org/patches/4.0/4.7/4.7-ck1/${_ckpatchname}.xz"
         "001-change_default_console_loglevel.patch"
         "002-i915_vga_arbiter-4.6.2.patch"
         "003-acs_override-4.6.2.patch"
@@ -85,21 +85,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # Standard config files for mkinitcpio ramdisk
         "linux.preset")
 
-md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
-         '84f23eb772635b1348d3ea7c5bd67930'
-         '69281829b5135f1a34ccd393159c74e9'
+md5sums=('5276563eb1f39a048e4a8a887408c031'
+         '7395fd0edc5ff3330cf6e712a49a4b3a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          'b65081ff1ace9b352f80b23093e79397'
          'c30fe04a9ba0a7c652cecac9320bbb4c'
          '4675e1fe4bd326a50f168c5674bab13c'
-         '64c87cfec450389cc158ba0cf6fe7a1e'
+         '101b1e8f8c06061657b57ac1fc79f622'
          'c96372203aec1ebc0fd8404bdddcc0b8'
          '8b7ca23aa660578023a0a244ae235888'
          'b3b845477eb2e62e745803685bde9057'
          '7e50b0145ed002319a8fb651b72f7cd0'
          'a873c975acf24c3ef0225b9fcd3f3e1e'
-         '0a080294f3fb3efed4099bd821fe2441'
-         'eb14dcfd80c00852ef81ded6e826826a')
+         'bfe67a882b17d7575c608981885d3529'
+         'dbf36c338e3b80a3ff62d7c2767de42e')
 
 #validpgpkeys=('79BE3E4300411886' 
 #'38DBBDC86092693E') 
@@ -110,8 +109,8 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # Add upstream patch
-  msg "Patching upstream"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #msg "Patching upstream"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # Add latest fixes from stable queue, if needed
   # 
