@@ -2,7 +2,7 @@
 
 pkgname=python2-django-localflavor
 _pkgname=django-localflavor
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Country-specific Django helpers'
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD)
 depends=(python2-django)
 makedepends=(python2-setuptools)
 source=(https://github.com/django/${_pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('cadfc8601fc3e48e236a21d9de5b8c7aa5f1a647aa72bec214ce3dc68d0a221a')
+sha256sums=('5b3768ea9cd824d6329e1292f0f216b9bdeb4df7e72b26856707df654072e263')
 
 build() {
   cd ${_pkgname}-${pkgver}
