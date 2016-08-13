@@ -1,52 +1,61 @@
-# $Id: PKGBUILD 250481 2015-11-09 22:26:39Z heftig $
+# $Id: PKGBUILD 273603 2016-08-11 12:06:39Z heftig $
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=gvfs-nosystemd
-_pkgbase=gvfs
-pkgname=$pkgbase
-pkgver=1.28.2
+pkgbase=gvfs
+_pkgbase=gvfs-nosystemd
+pkgname=(gvfs-nosystemd gvfs-{smb,afc,gphoto2,goa,mtp,nfs,google}-nosystemd)
+pkgdesc="Virtual filesystem implementation for GIO, nosystemd version"
+url="https://wiki.gnome.org/Projects/gvfs"
+pkgver=1.28.3
 pkgrel=1
 arch=(i686 x86_64)
 license=(LGPL)
-makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 libimobiledevice
-             libsoup smbclient udisks2 libsecret docbook-xsl gtk3 libmtp gnome-online-accounts
-             libbluray libgudev libnfs libgdata)
-url="http://www.gnome.org"
+depends=(avahi dconf fuse libarchive libcdio-paranoia libsoup udisks2 libsecret
+         libbluray libgudev gcr psmisc)
+makedepends=(dbus intltool libgphoto2 libimobiledevice smbclient docbook-xsl
+             gtk3 libmtp gnome-online-accounts libnfs libgdata git gtk-doc python)
 groups=(gnome)
-conflicts=($_pkgbase)
-provides=($_pkgbase=$pkgver)
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('bc6af45cff7e7e8d33c3a4be1d27e479f10f80105a6f2d1fae75c5c0d40636d9')
+_commit=70d801fc64cdee5f2ce85f405d43411433195aae
+source=("git://git.gnome.org/gvfs#commit=$_commit"
+        gvfsd.hook)
+sha256sums=('SKIP'
+            '478b9cf7b4c242959fc640dbf0cd4935f16c59b81f5828a3af102d608d7a9d72')
 
 prepare() {
-  cd "$_pkgbase-$pkgver"
+  cd $pkgbase
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+pkgver() {
+  cd $pkgbase
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd "$_pkgbase-$pkgver"
+  cd $pkgbase
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/gvfs \
       --with-bash-completion-dir=/usr/share/bash-completion/completions \
       --disable-systemd
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package_gvfs-nosystemd() {
-  pkgdesc="Userspace virtual filesystem implemented as a pluggable module for gio"
-  depends=(avahi dconf fuse libarchive libcdio-paranoia libsoup udisks2 libsecret libbluray libgudev gcr)
-  replaces=(gvfs-{obexftp,afp})
-  optdepends=('gvfs-afc: AFC (mobile devices) support'
-              'gvfs-smb: SMB/CIFS (Windows client) support'
-              'gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support'
-              'gvfs-mtp: MTP device support'
-              'gvfs-goa: gnome-online-accounts (e.g. OwnCloud) support'
-              'gvfs-nfs: NFS support'
-              'gvfs-google: Google Drive support'
+  replaces=(gvfs gvfs-{obexftp,afp})
+  provides=(gvfs)
+  conflicts=(gvfs)
+  optdepends=('gvfs-afc-nosystemd: AFC (mobile devices) support'
+              'gvfs-smb-nosystemd: SMB/CIFS (Windows client) support'
+              'gvfs-gphoto2-nosystemd: gphoto2 (PTP camera/MTP media player) support'
+              'gvfs-mtp-nosystemd: MTP device support'
+              'gvfs-goa-nosystemd: gnome-online-accounts (e.g. OwnCloud) support'
+              'gvfs-nfs-nosystemd: NFS support'
+              'gvfs-google-nosystemd: Google Drive support'
               'gtk3: Recent files support')
-  install=gvfs.install
 
-  cd "$_pkgbase-$pkgver"
+  cd $pkgbase
   sed -e 's/^am__append_4/#am__append_4/' \
       -e 's/^am__append_5/#am__append_5/' \
       -e 's/^am__append_6/#am__append_6/' \
@@ -54,9 +63,112 @@ package_gvfs-nosystemd() {
       -i monitor/Makefile
   make DESTDIR="$pkgdir" install
 
+  install -Dm644 ../gvfsd.hook "$pkgdir/usr/share/libalpm/hooks/gvfsd.hook"
+
   cd "$pkgdir"
-  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,google}
-  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp,google}.mount
+  rm usr/lib/gvfs/gvfsd-{smb,smb-browse,afc,gphoto2,mtp,nfs,google}
+  rm usr/share/gvfs/mounts/{smb,smb-browse,afc,gphoto2,mtp,nfs,google}.mount
   rm usr/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
   rm usr/share/GConf/gsettings/gvfs-smb.convert
+}
+
+package_gvfs-smb-nosystemd() {
+  pkgdesc+=" (SMB/CIFS backend; Windows client)"
+  depends=("${_pkgbase}=$pkgver" smbclient)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd $pkgbase/daemon
+  install -m755 -d "$pkgdir/usr/lib/gvfs"
+  install -m755 -d "$pkgdir/usr/share/gvfs/mounts"
+
+  install -m755 .libs/gvfsd-smb{,-browse} "$pkgdir/usr/lib/gvfs/"
+  install -m644 smb{,-browse}.mount "$pkgdir/usr/share/gvfs/mounts/"
+
+  install -Dm644 org.gnome.system.smb.gschema.xml \
+    "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml"
+  install -Dm644 gvfs-smb.convert \
+    "$pkgdir/usr/share/GConf/gsettings/gvfs-smb.convert"
+}
+
+package_gvfs-afc-nosystemd() {
+  pkgdesc+=" (AFC backend; Apple mobile devices)"
+  depends=("${_pkgbase}=$pkgver" libimobiledevice usbmuxd)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd $pkgbase/daemon
+  install -D .libs/gvfsd-afc "$pkgdir/usr/lib/gvfs/gvfsd-afc"
+  install -Dm644 afc.mount "$pkgdir/usr/share/gvfs/mounts/afc.mount"
+
+  cd "$srcdir/$pkgbase/monitor/afc"
+  make DESTDIR="$pkgdir" install
+}
+
+package_gvfs-gphoto2-nosystemd() {
+  pkgdesc+=" (gphoto2 backend; PTP camera, MTP media player)"
+  depends=("${_pkgbase}=$pkgver" libgphoto2)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd $pkgbase/daemon
+  install -D .libs/gvfsd-gphoto2 "$pkgdir/usr/lib/gvfs/gvfsd-gphoto2"
+  install -Dm644 gphoto2.mount "$pkgdir/usr/share/gvfs/mounts/gphoto2.mount"
+
+  cd "$srcdir/$pkgbase/monitor/gphoto2"
+  make DESTDIR="$pkgdir" install
+}
+
+package_gvfs-mtp-nosystemd() {
+  pkgdesc+=" (MTP backend; Android, media player)"
+  depends=("${_pkgbase}=$pkgver" libmtp)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd $pkgbase/daemon
+  install -D .libs/gvfsd-mtp "$pkgdir/usr/lib/gvfs/gvfsd-mtp"
+  install -Dm644 mtp.mount "$pkgdir/usr/share/gvfs/mounts/mtp.mount"
+
+  cd "$srcdir/$pkgbase/monitor/mtp"
+  make DESTDIR="$pkgdir" install
+}
+
+package_gvfs-goa-nosystemd() {
+  pkgdesc+=" (Gnome Online Accounts backend; cloud storage)"
+  depends=("${_pkgbase}=$pkgver" gnome-online-accounts)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd "$srcdir/$pkgbase/monitor/goa"
+  make DESTDIR="$pkgdir" install
+}
+
+package_gvfs-nfs-nosystemd() {
+  pkgdesc+=" (NFS backend)"
+  depends=("${_pkgbase}=$pkgver" libnfs)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+  install=gvfs-nfs.install
+
+  cd $pkgbase/daemon
+  install -D .libs/gvfsd-nfs "$pkgdir/usr/lib/gvfs/gvfsd-nfs"
+  install -Dm644 nfs.mount "$pkgdir/usr/share/gvfs/mounts/nfs.mount"
+}
+
+package_gvfs-google-nosystemd() {
+  pkgdesc+=" (Google Drive backend)"
+  depends=("gvfs-goa-nosystemd=$pkgver" libgdata)
+  _pkgname=${FUNCNAME[0]/#package_/}
+  replaces=(${_pkgname/%-nosystemd/})
+  provides=($replaces)
+
+  cd $pkgbase/daemon
+  install -D .libs/gvfsd-google "$pkgdir/usr/lib/gvfs/gvfsd-google"
+  install -Dm644 google.mount "$pkgdir/usr/share/gvfs/mounts/google.mount"
 }
