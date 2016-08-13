@@ -1,0 +1,23 @@
+--- glib-2.0.pc.in.orig	2015-03-23 04:22:18.000000000 +0100
++++ glib-2.0.pc.in	2016-08-12 21:31:44.654422794 +0200
+@@ -10,7 +10,8 @@
+ Name: GLib
+ Description: C Utility Library
+ Version: @VERSION@
+-Requires.private: @PCRE_REQUIRES@
++Requires: @INTL_REQUIRES@
++Requires.private: @PCRE_REQUIRES@ @INTL_REQUIRES@
+ Libs: -L${libdir} -lglib-2.0 @INTLLIBS@
+ Libs.private: @G_THREAD_LIBS@ @G_LIBS_EXTRA@ @PCRE_LIBS@ @INTLLIBS@ @ICONV_LIBS@ @CARBON_LIBS@ @COCOA_LIBS@
+ Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include @GLIB_EXTRA_CFLAGS@
+--- configure.ac.orig	2016-05-10 11:05:39.000000000 +0200
++++ configure.ac	2016-08-12 21:39:53.980926453 +0200
+@@ -472,6 +472,8 @@
+ fi
+ 
+ LIBS="$INTLLIBS $LIBS"
++INTL_REQUIRES=intl
++AC_SUBST(INTL_REQUIRES)
+ 
+ GETTEXT_PACKAGE=glib20
+ AC_SUBST(GETTEXT_PACKAGE)

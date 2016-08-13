@@ -3,7 +3,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.48.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
@@ -17,14 +17,16 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.t
 "0004-glib-prefer-constructors-over-DllMain.patch"
 "0027-no_sys_if_nametoindex.patch"
 "0028-inode_directory.patch"
-"revert-warn-glib-compile-schemas.patch")
+"revert-warn-glib-compile-schemas.patch"
+"use-pkgconfig-file-for-intl.patch")
 sha256sums=('74411bff489cb2a3527bac743a51018841a56a4d896cc1e0d0d54f8166a14612'
             'ef81e82e15fb3a71bad770be17fe4fea3f4d9cdee238d6caa39807eeea5da3e3'
             '1b24cc928f69f73599f83269a7b3eb7bf7efbe114109251e6765053a1e1f4cd6'
             '7b099af0c562f397458542482d6d1debe437f220762aa2ed94b2e6c4d43dd8a6'
             '5cb481295ff86c2802030984d8b2bf6a3b1dcd5e5fe7b0be68b22d9116305837'
             'f7f06a90156fe0a308412512c359072922f7f0d19dd4bed30d863db18e48940b'
-            '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97')
+            '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97'
+            '1991eaa0471ff8d0b3dd3bccccd560ca6cc8c0995c6145b9bc93d5e90755e3f4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,6 +38,7 @@ prepare() {
   patch -Np1 -i ../"0027-no_sys_if_nametoindex.patch"
   patch -Np1 -i ../"0028-inode_directory.patch"
   patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
+  patch -p0  -i ../use-pkgconfig-file-for-intl.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
