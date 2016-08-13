@@ -2,7 +2,7 @@
 pkgname=puush-qt
 pkgdesc="GUI frontend for puush which will create a system tray icon."
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/jplsek/puush-qt"
 license=('BSD')
