@@ -2,13 +2,13 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.1.3
-_gitrev=380
-_gitver=a2959899
+pkgver=1.1.4
+_gitrev=393
+_gitver=12c41f9f
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-_webclientver=6ec8fed # Set in CMakeModules/WebClientVariables.cmake
-_webclientbuild=149
-_webclientversionnr=2.6.9
+_webclientver=d44b692 # Set in CMakeModules/WebClientVariables.cmake
+_webclientbuild=150
+_webclientversionnr=2.7.5
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/${_webclientbuild}/plex-web-client-pmp-${_webclientversionnr}-${_webclientver}.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('48acb0f0ae909d381706b2b1ff472b50715a5150d5a4a81c8d3fc176234b7c53'
-            '9213d353eb15a665b37fcd2e32578a8b28deeb452b6068cd4a4e720776de0352'
+sha256sums=('e4b6da25a775a75189c10173a5db188bcd258ad88570ff35a5df802ae3c48c79'
+            '702399cd6119e84b8e3f51d23babf6467d61e71e18f53fe3f4a9d1679350649d'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
 # NOTE:
