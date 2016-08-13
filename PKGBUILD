@@ -28,5 +28,5 @@ package() {
     mkdir -p $pkgdir/usr/share/slic3rServer
     mkdir -p $pkgdir/usr/bin/
     cp bin/slic3rServer $pkgdir/usr/share/slic3rServer/
-    ln -s $pkgdir/usr/share/slic3rServer/slic3rServer $pkgdir/usr/bin/slic3rServer
+    ln -s /usr/share/slic3rServer/slic3rServer $pkgdir/usr/bin/slic3rServer
 }
