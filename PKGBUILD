@@ -3,7 +3,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=sawfish
-pkgver=1.11.91
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="http://sawfish.wikia.com/wiki/Main_Page"
 license=('GPL')
 depends=('libsm' 'rep-gtk' 'hicolor-icon-theme')
 source=(http://download.tuxfamily.org/${pkgname}/${pkgname}_${pkgver}.tar.xz arch_poweroff_defaults.patch)
-sha1sums=('348f948aa1e6f83f943338666968a22fe15e1a67'
-          '73dbf5f93c0124c11f0254267d662f86be1f2767')
+sha256sums=('44c90e5ecd383d7ff821b3ab09b3a0087776812172dd7902572534c4dfe7eafc'
+            '34092f761f89fa3db90841e3fd270f42c06f769c53ed524deccdf48f204f611e')
 options=('!libtool')
 
 build() {
