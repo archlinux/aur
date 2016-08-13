@@ -2,10 +2,10 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=51.0.2702.0.r385562
+pkgver=54.0.2829.0.r411883
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Snapshot builds)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://build.chromium.org"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
@@ -20,11 +20,14 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'google-chrome-dev: for Pepper Flash plugin [AUR]')
 provides=('chromium')
 install=$pkgname.install
-source=("$pkgname.sh"
+_build=$(curl -s "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE")
+source=("chrome-linux-r$_build.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/$_build/chrome-linux.zip"
+        "$pkgname.sh"
         "$pkgname.desktop"
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
-md5sums=('52c593f49e39413dc6a421235590d77f'
+md5sums=('SKIP'
+         '52c593f49e39413dc6a421235590d77f'
          '1f7c85955a1b845105b3464186d82b97'
          '6cd41f6e08eee03c6553603fb0b6ecd7'
          '227eac16d1e737bed42742840b950d41'
@@ -35,13 +38,6 @@ md5sums=('52c593f49e39413dc6a421235590d77f'
          '811f5de21b882cdb49618de549e017ca'
          'c6cf982d5ebece0b9cd64f065acd384a'
          'db90dcb101891a7285d25f2fbceca752')
-
-[[ $CARCH = x86_64 ]] && _64="_x64"
-_build=$(curl -s "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux$_64/LAST_CHANGE")
-source_i686=("chrome-linux-r$_build.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/$_build/chrome-linux.zip")
-source_x86_64=("chrome-linux-r$_build.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/$_build/chrome-linux.zip")
-md5sums_i686=('SKIP')
-md5sums_x86_64=('SKIP')
 
 pkgver() {
   echo $(chrome-linux/chrome --version | cut -d " " -f2).r$_build
