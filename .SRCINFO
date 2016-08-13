@@ -1,0 +1,24 @@
+pkgbase = ruby-review
+	pkgdesc = Re:VIEW: a easy-to-use digital publishing system
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://github.com/kmuto/review
+	arch = any
+	groups = pacgem
+	license = LGPL
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	depends = ruby-rubyzip>=0
+	optdepends = texlive-most: Re:VIEW use LaTeX as a backend, for generating PDF files.
+	optdepends = ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)
+	optdepends = ruby-test-unit: An xUnit family unit testing framework for Ruby. (Development dependency)
+	optdepends = ruby-pygments.rb: pygments wrapper for ruby (Development dependency)
+	optdepends = ruby-rubocop: Automatic Ruby code style checking tool. (Development dependency)
+	noextract = review-2.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/review-2.0.0.gem
+	sha256sums = ffe77b8c906f951e9a233afa92c96a2687635a22dcf73c66cd6008d5463c1940
+
+pkgname = ruby-review
+
