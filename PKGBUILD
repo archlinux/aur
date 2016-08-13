@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=caja
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.3
+pkgver=${_ver}.4
 pkgrel=1
 pkgdesc="File manager for the MATE desktop"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ optdepends=('gstreamer: automatic media playback when mouseover'
             'gvfs-smb: To connect to Samba/Windows shares')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('df54b9862433583a4ddeaf5213aa448b4dee994d')
+sha1sums=('630001c353af6947f91d43b50cf33cc924a42126')
 
 prepare() {
     cd "${srcdir}"
