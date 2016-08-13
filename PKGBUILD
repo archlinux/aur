@@ -3,7 +3,7 @@
 # Contributor: Andrej Gelenberg <andrej.gelenberg at udo dot edu>
 pkgname=libnfc
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="libre NFC SDK and Programmers API"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/libnfc/"
@@ -35,6 +35,7 @@ package()
 {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
+  install -D -m644 ../libnfc.conf.sample "$pkgdir"/etc/nfc/libnfc.conf.sample
   install -D -m644 ../contrib/udev/42-pn53x.rules "$pkgdir"/usr/lib/udev/rules.d/42-pn53x.rules
   install -D -m644 ../contrib/linux/blacklist-libnfc.conf "$pkgdir"/etc/modprobe.d/blacklist-libnfc.conf
 }
