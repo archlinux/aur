@@ -1,9 +1,9 @@
-diff -crBN gettext-0.18.3.1.orig/gettext-runtime/intl/bindtextdom.c gettext-0.18.3.1/gettext-runtime/intl/bindtextdom.c
-*** gettext-0.18.3.1.orig/gettext-runtime/intl/bindtextdom.c	2012-12-10 02:59:06.000000000 +0100
---- gettext-0.18.3.1/gettext-runtime/intl/bindtextdom.c	2014-01-08 21:50:51.057941500 +0100
+diff -crBN gettext-0.19.8.1/gettext-runtime/intl/bindtextdom.c{.orig,}
+*** gettext-0.19.8.1/gettext-runtime/intl/bindtextdom.c.orig   2016-03-20 08:37:53.000000000 +0100
+--- gettext-0.19.8.1/gettext-runtime/intl/bindtextdom.c        2016-08-12 19:01:05.714025915 +0200
 ***************
-*** 22,27 ****
---- 22,28 ----
+*** 21,26 ****
+--- 21,27 ----
   #include <stddef.h>
   #include <stdlib.h>
   #include <string.h>
@@ -12,8 +12,8 @@ diff -crBN gettext-0.18.3.1.orig/gettext-runtime/intl/bindtextdom.c gettext-0.18
   #include "gettextP.h"
   #ifdef _LIBC
 ***************
-*** 66,71 ****
---- 67,78 ----
+*** 65,70 ****
+--- 66,77 ----
   # define BIND_TEXTDOMAIN_CODESET libintl_bind_textdomain_codeset
   #endif
   
@@ -27,28 +27,57 @@ diff -crBN gettext-0.18.3.1.orig/gettext-runtime/intl/bindtextdom.c gettext-0.18
      to be used for the DOMAINNAME message catalog.
      If *DIRNAMEP or *CODESETP is NULL, the corresponding attribute is not
 ***************
-*** 318,325 ****
---- 325,347 ----
+*** 317,350 ****
   char *
   BINDTEXTDOMAIN (const char *domainname, const char *dirname)
   {
-+ /*
-    set_binding_values (domainname, &dirname, NULL);
-    return (char *) dirname;
-+ */
-+   if (!access (dirname, R_OK)) {
-+ 	  set_binding_values (domainname, &dirname, NULL);
-+ 	  return (char *) dirname;
-+   } else {
-+ 	  char *locale_dirname, *installdir = strdup (dirname), *s;
-+ 	  if ((s = strrchr (installdir, '/'))) *s = '\0';
-+ 	  if ((s = strrchr (installdir, '/'))) *s = '\0';
-+ 	  locale_dirname = relocatex (installdir, dirname);
-+ 	  set_binding_values (domainname, (const char **) &locale_dirname, NULL);
-+ 	  if (installdir)
-+ 	  	free (installdir);
-+ 	  return (char *) locale_dirname;
-+   }	  
+! #ifdef __EMX__
+!   const char *saved_dirname = dirname;
+!   char dirname_with_drive[_MAX_PATH];
+! 
+!   /* Resolve UNIXROOT into dirname if it is not resolved by os2compat.[ch]. */
+!   if (dirname && (dirname[0] == '/' || dirname[0] == '\\' ))
+!     {
+!       const char *unixroot = getenv ("UNIXROOT");
+!       size_t len = strlen (dirname) + 1;
+! 
+!       if (unixroot
+!           && unixroot[0] != '\0'
+!           && unixroot[1] == ':'
+!           && unixroot[2] == '\0'
+!           && 2 + len <= _MAX_PATH)
+!         {
+!           memcpy (dirname_with_drive, unixroot, 2);
+!           memcpy (dirname_with_drive + 2, dirname, len);
+! 
+!           dirname = dirname_with_drive;
+!         }
+!     }
+! #endif
+!   set_binding_values (domainname, &dirname, NULL);
+! #ifdef __EMX__
+!   dirname = saved_dirname;
+! #endif
+!   return (char *) dirname;
+  }
+  
+  /* Specify the character encoding in which the messages from the
+--- 324,341 ----
+  char *
+  BINDTEXTDOMAIN (const char *domainname, const char *dirname)
+  {
+!   if (!access (dirname, R_OK)) {
+!     set_binding_values (domainname, &dirname, NULL);
+!     return (char *) dirname;
+!   } else {
+!     char *locale_dirname, *installdir = strdup (dirname), *s;
+!     if ((s = strrchr (installdir, '/'))) *s = '\0';
+!     if ((s = strrchr (installdir, '/'))) *s = '\0';
+!     locale_dirname = relocatex (installdir, dirname);
+!     set_binding_values (domainname, (const char **) &locale_dirname, NULL);
+!     if (installdir) free (installdir);
+!     return (char *) locale_dirname;
+!   }
   }
   
   /* Specify the character encoding in which the messages from the
