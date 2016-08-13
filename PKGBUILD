@@ -4,7 +4,7 @@
 
 _gemname=slop
 pkgname=ruby-$_gemname
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Simple Lightweight Option Parsing'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('6cadcc224a8ad249755904ec6e591e867dcd2a695f50a4571bb5744e29bf24cc')
+sha256sums=('7f74a4c3bedde075cd24316f88983b97bd9516898873b4867d5817af355d2b51')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
