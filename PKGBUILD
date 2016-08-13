@@ -2,7 +2,7 @@
 
 pkgname=airzoshi
 pkgver=2.23.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('custom')
 pkgdesc="The Adobe Air based ebooks reader"
@@ -13,7 +13,7 @@ md5sums=('287b293d3e92606a34f2183881738ada'
          '4023c26c759217e984f99ae8581f3893')
 noextract=("AirZoshi.air")
 install=airzoshi.install
-depends=(adobe-air-sdk desktop-file-utils)
+depends=(adobe-air-sdk desktop-file-utils ttf-hanazono)
 makedepends=(unzip)
 
 build () {
