@@ -3,8 +3,8 @@
 
 pkgname=inkscape-bzr
 pkgver=r15056
-pkgrel=1
-pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format, built with experimental gtk3 enabled"
+pkgrel=2
+pkgdesc="An Open Source vector graphics editor, using SVG file format, from bzr trunk"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -19,7 +19,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('cmake' 'boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool' '!makeflags')
+options=('!libtool' '!buildflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
 _bzrmod="inkscape"
@@ -41,7 +41,7 @@ build() {
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DWITH_DBUS=OFF
+	-DWITH_DBUS=ON
   make 
 }
 
