@@ -1,7 +1,7 @@
 pkgbase = sprout-git
 	pkgdesc = C++11/14 constexpr based Containers, Algorithms, Random numbers, Parsing, Ray tracing, Synthesizer, and others.
-	pkgver = 20141113
-	pkgrel = 2
+	pkgver = r1.5407db4
+	pkgrel = 1
 	url = http://github.com/bolero-MURAKAMI/Sprout
 	arch = i686
 	arch = x86_64

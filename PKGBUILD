@@ -1,11 +1,11 @@
 pkgname=sprout-git
 pkgdesc="C++11/14 constexpr based Containers, Algorithms, Random numbers, Parsing, Ray tracing, Synthesizer, and others."
-pkgver=20141113
+pkgver=r1.5407db4
 pkgver() {
-    cd "${pkgname}"
-    git describe --tags | sed 's/-/.g/'
+  cd "${srcdir}/${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=1
 license=('custom:boost')
 arch=('i686' 'x86_64')
 url="http://github.com/bolero-MURAKAMI/Sprout"
