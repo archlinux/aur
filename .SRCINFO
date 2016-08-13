@@ -16,6 +16,7 @@ pkgbase = ohrrpgce
 	depends = libxpm
 	depends = libxrandr
 	depends = ncurses
+	depends = xterm
 	optdepends = timidity-freepats: midi music support
 	source = svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/callipygous
 	md5sums = SKIP
