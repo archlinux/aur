@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::$_baseurl/Visual_Paradigm_CE_Linux64_Insta
 	'visual-paradigm.png'
 	'LICENSE.txt'
 	'x-visual-paradigm.xml')
-sha256sums=('4d32350f6a993966d4548da214e6814faa11581a05663942ccf44293540a5785'
+sha256sums=('82a4f6a0c6fda6d6881a793ad8e7dfe3a0341211e3ede2f8cdf141d924823609'
 	'61b4974588ec66e6d037aee0870cea97cf735586e5ea8e8e7b13091fe57c58ae'
 	'c2cf0bd2fdc2879b2ae4814e1be5b6cbd7e5aa4c1247f5d4bc8e677eb6a94952'
 	'c861d708eb446f94abbebb4028a2f15f7bc6840aa5df1ee81f7301aac0fd00a9'
