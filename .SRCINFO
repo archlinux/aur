@@ -1,7 +1,7 @@
 pkgbase = inkscape-bzr
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from bzr trunk
 	pkgver = r15056
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/inkscape
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = inkscape-bzr
 	makedepends = bzr
 	makedepends = gettext
 	makedepends = pango
-	makedepends = python
 	makedepends = fontconfig
 	depends = aspell
 	depends = gc
@@ -23,7 +22,6 @@ pkgbase = inkscape-bzr
 	depends = imagemagick
 	depends = gdl>=3.8.0.25
 	depends = gtkmm3
-	depends = python2
 	depends = potrace
 	depends = libcdr
 	depends = libvisio
@@ -37,6 +35,7 @@ pkgbase = inkscape-bzr
 	conflicts = inkscape
 	options = !libtool
 	options = !buildflags
+	options = !makeflags
 	source = inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/
 	md5sums = SKIP
 
