@@ -2,7 +2,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev-en
-pkgver=6.0a5
+pkgver=6.5a2
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -23,9 +23,9 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(${pkgname}.desktop
          ${pkgname}.png
          ${pkgname}.sh)
-sha256sums_i686=('4879580a30343eb7759992c0b9c6fdc382af46c94ee207d51b4f2fca6fca86ee'
+sha256sums_i686=('7bfabc8589684a81396c4b00b098b63e9464ac8a821da23f3a9f6da08ae67bb7'
                  'SKIP')
-sha256sums_x86_64=('e018a3e1598e623c5bc5a5491bd29c21c87ff2e28476c43e6be3145852686331'
+sha256sums_x86_64=('e1727f9ede436e5260e15d3b5196053e5f4e21419958da67cafd38b7ff40aed4'
                    'SKIP')
 sha512sums+=('5127d8ce8b5ad873b7ca7bbff5f4dfcee152f75f1bfbe0e9539c11fdbbc36357fcb1fdec621e379c705fe9f2b4a0303deb36e09bea309919c2c463da05aa17cf'
              '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'
@@ -56,7 +56,7 @@ package() {
     ${pkgdir}/usr/share/pixmaps/${pkgname}.png
   install -Dm 0755 ${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 
-  if [ '$CARCH' == 'i686' ] ; then
+  if [ "$CARCH" == "i686" ]; then
     install -Dm 0644 tor-browser-linux32-${pkgver}_${_language}.tar.xz \
       ${pkgdir}/opt/${pkgname}/tor-browser-linux32-${pkgver}_${_language}.tar.xz
   else
