@@ -1,14 +1,14 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 pkgname=texlive-acrotex
 pkgver=2016.07.31
-pkgrel=1
+pkgrel=2
 license=('GPL')
 depends=('texlive-core')
 pkgdesc="A LaTeX bundle for webpages, pdf forms and includin JavaSript into LaTeX"
 url="http://www.ctan.org/tex-archive/macros/latex/contrib/acrotex"
 arch=('any')
 install=texlive-acrotex.install
-source=("http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip")
+source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip")
 md5sums=('baf7de6ba36c82e6de4b2375668e84c4')
 sha1sums=('e4bce330857a047c1957cc7b9f502b50d05b2698')
 sha256sums=('c2925120ddd96edfdb19919867c1d5d95d2c3727d9bf3f873586dafa005db05c')
