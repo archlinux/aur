@@ -1,0 +1,26 @@
+post_install() {
+    do_install ${1}
+}
+
+pre_upgrade() {
+    do_remove ${2}
+}
+
+post_upgrade() {
+    do_install ${1}
+}
+
+pre_remove() {
+    do_remove ${1}
+}
+
+# -----------------------------------------------------------------------------------
+
+do_install() {
+    echo dkms install hid-apple-patched/${1%%-*}
+}
+
+do_remove() {
+    echo dkms remove hid_apple-patched/${1%%-*} --all
+}
+
