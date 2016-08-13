@@ -7,7 +7,7 @@ _pkgbase=gstreamer0.10-good
 pkgname=('lib32-gstreamer0.10-good' 'lib32-gstreamer0.10-good-plugins')
 _pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 license=('LGPL')
 depends=('gstreamer0.10-good' 'gstreamer0.10-good-plugins' "lib32-gstreamer0.10-base")
@@ -70,7 +70,6 @@ rm -rf "${pkgdir}/usr/share/"
 package_lib32-gstreamer0.10-good-plugins() {
 depends=("gstreamer0.10-good" 'libavc1394' 'libiec61883' 'aalib' 'lib32-libshout' 'lib32-libdv' 'lib32-flac' 'lib32-gconf' 'lib32-wavpack' 'lib32-taglib' 'lib32-libsoup' 'lib32-v4l-utils' 'lib32-libcaca' 'lib32-libpng' 'lib32-libjpeg-turbo' 'lib32-jack' 'lib32-libpulse' 'lib32-cairo' 'lib32-gdk-pixbuf2')
 pkgdesc="GStreamer Multimedia Framework Good Plugins (gst-plugins-good, lib32)"
-install=lib32-gstreamer0.10-good-plugins.install
 conflicts=("lib32-gstreamer0.10-good-plugins")
 replaces=("lib32-gstreamer0.10-good-plugins")
 
