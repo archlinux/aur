@@ -1,7 +1,7 @@
 pkgbase = wacom-utility-git
 	pkgdesc = Graphical tablet configuration utility
-	pkgver = 20150614
-	pkgrel = 2
+	pkgver = r20.d9735e0
+	pkgrel = 1
 	url = http://github.com/lubosz/wacom-utility.git
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = wacom-utility-git
 	depends = gksu
 	conflicts = wacom-utility
 	replaces = wacom-utility
+	source = wacom-utility-git::git+http://github.com/lubosz/wacom-utility.git
 	source = wacom-utility.desktop
+	md5sums = SKIP
 	md5sums = 1d44b3571fd5e48b80b2dec5209fcf47
 
 pkgname = wacom-utility-git
