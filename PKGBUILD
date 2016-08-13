@@ -1,8 +1,8 @@
 # Contributor: orumin <dev@orum.in>
 
 pkgname=myfleetgirls
-pkgver=1
-pkgrel=3
+pkgver=1.5.7
+pkgrel=1
 pkgdesc="Game client for 'KanColle'"
 arch=('any')
 url="http://myfleet.moe"
