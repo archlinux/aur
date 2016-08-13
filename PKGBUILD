@@ -1,6 +1,6 @@
 # Maintainer: Tom Ingleby <tom@ewsting.org>
 pkgname='mraa'
-pkgver=0.7.3
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 makedepends=('git' 'cmake' 'swig')
@@ -15,8 +15,8 @@ md5sums=('SKIP')
 build() {
   mkdir -p mraa/build
   cd mraa/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILDSWIGNODE=off ../
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DINSTALLTOOLS=on-DBUILDSWIGNODE=off ../
+  make -j
 }
 
 package() {
