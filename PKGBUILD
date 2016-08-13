@@ -2,7 +2,7 @@
 
 _pkgname=jpexs-decompiler
 pkgname=$_pkgname-git
-pkgver=8.0.1.r232.g9b831b2
+pkgver=9.0.0.r0.geb6bfbc
 epoch=1
 pkgrel=1
 pkgdesc="Opensource flash SWF decompiler and editor"
