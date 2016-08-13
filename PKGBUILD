@@ -7,8 +7,8 @@
 
 pkgname=gnash-git
 _gitname=gnash
-pkgver=0.8.11.r22358.g9229f6f
-pkgrel=2
+pkgver=0.8.11.r22377.g2b3bded
+pkgrel=1
 pkgdesc="The GNU SWF Player based on GameSWF - git development version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gnash/"
@@ -49,9 +49,6 @@ build() {
 
   patch -Np1 -i "${srcdir}/jemalloc_gnash.patch"
   sed -i 's#${JEMALLOC_CONFIG} --cxxflags#${JEMALLOC_CONFIG} --cflags#g' configure
-
-  # https://savannah.gnu.org/bugs/?46148
-  patch -Np1 -i "${srcdir}/build_on_new_boost.patch"
 
   ./configure \
     --prefix=/usr \
