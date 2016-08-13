@@ -13,6 +13,6 @@ md5sums=('10fc7a84cbe8ee2d6764f8b477ca93f2'
 package() {
 	cd $srcdir
 	mkdir -p $pkgdir/usr/bin
-	install -v -m755 dctl "$pkgdir/usr/bin/dctl"
+	install -m755 dctl "$pkgdir/usr/bin/dctl"
 	install -m755 daskpass "$pkgdir/usr/bin/daskpass"
 }
