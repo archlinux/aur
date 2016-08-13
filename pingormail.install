@@ -8,9 +8,9 @@ post_install() {
     # Reload systemctl
     systemctl daemon-reload
 
-    echo "Adding pingormail in systemctl:"
-    echo "  systemctl enable pingormail.timer"
-    echo "  systemctl start pingormail.timer"
+    echo "Adding pingormail in systemctl if you want always use it:"
+    echo "  systemctl enable pingormail"
+    echo "  systemctl start pingormail"
 
     true
 }
@@ -19,18 +19,15 @@ post_upgrade() {
     # Reload systemctl
     systemctl daemon-reload
 
-    #echo "You should restart pingormail.timer"
-    #echo "  systemctl restart pingormail.timer"
-
     true
 }
 
 pre_remove() {
     pkgname=pingormail
     # Remove symlink in systemd
-    systemctl disable "$pkgname".timer
+    systemctl disable "$pkgname"
     # Stop server
-    systemctl stop "$pkgname".timer
+    systemctl stop "$pkgname"
     # Reload systemctl
     systemctl daemon-reload
 

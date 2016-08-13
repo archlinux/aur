@@ -2,7 +2,7 @@
 
 pkgname=pingormail
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ping address. If no result, it send an email"
 arch=('any')
 url="https://github.com/Chipsterjulien/pingormail"
@@ -72,13 +72,9 @@ package() {
     install -Dm644 systemd/"$pkgname".service \
         "$pkgdir"/usr/lib/systemd/system/"$pkgname".service || return 1
 
-    # pingormail.timer
-    install -Dm644 systemd/"$pkgname".timer \
-        "$pkgdir"/usr/lib/systemd/system/"$pkgname".timer || return 1
-
     # pingormail binary
     install -m755 -o root -g root -D "$srcdir"/$pkgname-$pkgver/$pkgname-$pkgver \
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('ddc5c7a15297cfb0f2c34d68e014a1f7cf4f2bb1bad0717222d3b588d364c9dbc6d88369df82e3eb0d7266c5b7ba011d6dd8841fa8a23d34104f55226e3ac38c')
+sha512sums=('108504ed4fc3325823c215c254b58a672dde861fb8015743277f16b9da66b6db976cc61f28cdf5c4332ad93a0eca65c8668e0086173b3cdf0da039d8dad32c15')
