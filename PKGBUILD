@@ -1,5 +1,3 @@
-# Maintainer: Foppe HEMMINGA <foppe@hemminga.net>
-# Contributer: Julien Girardin <jugirardin@gmail.com>
 
 pkgname=piwigo
 pkgver=2.8.2
@@ -14,26 +12,19 @@ backup=("etc/webapps/piwigo/apache.conf")
 install=piwigo.install
 options=(emptydirs)
 
-source=('apache.conf'
+source=('http::http://piwigo.org/download/dlcounter.php?code=latest'
+	'apache.conf'
 	'piwigo.perm.sh')
-md5sums=('SKIP' 'SKIP')
+md5sums=('0772c52bf56bf9424cf67402b8fed6db'
+         '5d1da01ee31fa1ad7a2b7e11766ec1f7'
+         'a855fa62a5ae3595f3361ae42c3cdf2f')
 
-prepare() {
-    # I don't find a way to overide DLAGENTS from makepkg.conf to use wget and option to set the filename according to http header, so I get the package here ... Ugly  ...
-    
-    /usr/bin/wget -N --content-disposition http://piwigo.org/download/dlcounter.php?code=latest	
-}
 
 pkgver() {
-    ls piwigo-*.zip |sed -e s/piwigo-// |sed -e s/.zip//
+    curl -Is https://github.com/Piwigo/Piwigo/releases/latest | awk -F'/' '/^Location/ {print $NF}' |  sed 's/[^[:print:]]//'
 }
 
-build() {
-    rm -rf piwigo
-    /usr/bin/unzip piwigo-$pkgver.zip
-    find piwigo/ -type f -print0 | xargs -0 chmod 0640
-    find piwigo/ -type d -print0 | xargs -0 chmod 0750
-}
+
 
 package() {
     ### install piwigo
@@ -41,6 +32,8 @@ package() {
     cp -a piwigo "${pkgdir}/usr/share/webapps/."
 
     ### default perm
+    find "${pkgdir}/usr/share/webapps/piwigo/" -type f -print0 | xargs -0 chmod 0640
+    find "${pkgdir}/usr/share/webapps/piwigo/" -type d -print0 | xargs -0 chmod 0750
     install -D -m755 "${srcdir}/piwigo.perm.sh" "${pkgdir}/usr/bin/set-piwigo-perm"
 
     ### apache conf (optionnal)
