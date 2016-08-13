@@ -2,7 +2,7 @@
 
 pkgname='vimiv'
 pkgrel=1
-pkgver=0.6
+pkgver=0.6.1
 pkgdesc="An image viewer with vim-like keybindings"
 arch=('any')
 url="https://github.com/karlch/vimiv"
@@ -14,7 +14,7 @@ optdepends=('imagemagick: for the optimization of images'
 conflicts=('vimiv')
 backup=('etc/vimiv/vimivrc' 'etc/vimiv/keys.conf')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4431e9e1a2ba59c3394c666ee5689bef4e32a82b639816b8c8d519fbb1413bb5')
+sha256sums=('53e2e8d8204ed334968aa053fab0e131b788ff8eb84988ca979b197f7317af9f')
 
 package() {
     cd ${pkgname}-${pkgver}
