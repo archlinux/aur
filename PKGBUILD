@@ -2,7 +2,7 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=mafft
-pkgver=7.273
+pkgver=7.304
 pkgrel=1
 pkgdesc="Multiple alignment program for amino acid or nucleotide sequences"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://mafft.cbrc.jp/alignment/software"
 license=('custom')
 depends=('ruby')
 source=($url/$pkgname-$pkgver-with-extensions-src.tgz)
-md5sums=('991f07ac108cccb7ce019178fb9f4502')
+md5sums=('2e9d282f5ba0bc2c08ba73af45369a07')
 
 build() {
   cd $pkgname-$pkgver-with-extensions/core
