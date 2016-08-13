@@ -1,8 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Patrick Eigensatz <patrick.eigensatz@gmail.com>
 
 pkgname=qjournalctl
@@ -14,17 +9,17 @@ url="https://github.com/pentix/qjournalctl/"
 license=('GPL')
 depends=('qt5-base')
 makedepends=('gcc-libs-multilib')
-source=('https://github.com/pentix/qjournalctl/archive/v0.2.tar.gz')
+source=("$url/archive/v$pkgver.tar.gz")
 md5sums=('debd87fb60d50c4bd01bec99cff80a40')
 sha256sums=('ba29cbde9df05538fc4c81f649e40d3754a3d852ab6c064b78898d0f5cafaa7a')
 
 build() {
-	cd qjournalctl-0.2
+	cd "$pkgname-$pkgver"
 	sh autogen.sh
-	make -j9
+	make
 }
 
 package() {
-	mkdir -p $pkgdir/usr/bin/
-	cp qjournalctl-0.2/qjournalctl $pkgdir/usr/bin/
+	mkdir -p "$pkgdir/usr/bin/"
+	install -m755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/"
 }
