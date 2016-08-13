@@ -4,8 +4,8 @@ pkgrel=1
 pkgdesc="nouveau from karolherbst repo with kepler reclocking patches"
 arch=('i686' 'x86_64')
 url="https://github.com/karolherbst/nouveau"
-depends=('linux>=4.7')
-makedepends=('git' 'make' 'linux-headers>=4.7')
+depends=('linux>=4.7' 'linux<=4.8')
+makedepends=('git' 'make' 'linux-headers>=4.7' 'linux-headers<=4.8')
 provides=('nouveau')
 source=("git+https://github.com/karolherbst/nouveau.git#branch=stable_reclocking_kepler_v5")
 md5sums=('SKIP')
