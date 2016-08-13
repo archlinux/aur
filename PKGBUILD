@@ -2,7 +2,7 @@
 
 pkgname=usbguard-git
 _pkgname=usbguard
-pkgver=0.5.11.r0.gd78d1c5
+pkgver=0.5.11.r6.g3b0d81a
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
@@ -17,6 +17,7 @@ sha256sums=(
 	'SKIP'
 	'644ae1819eaf405091878bdcf78a5f71d7b344346c4e67a24525e4fb442eed4d')
 provides=("usbguard")
+conflicts=("usbguard")
 backup=(
 	"etc/usbguard/usbguard-daemon.conf"
 	"etc/usbguard/rules.conf")
