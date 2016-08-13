@@ -4,12 +4,12 @@
 
 pkgname=ocrodjvu
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files."
 arch=('i686' 'x86_64')
 url='http://jwilk.net/software/ocrodjvu'
 license=('GPL2')
-depends=('python2' 'python2-lxml' 'python-djvulibre')
+depends=('python2' 'python2-lxml' 'python2-djvulibre')
 optdepends=('python2-html5lib: HTML parser; required for the ``--html5`` option'
             'python2-pyicu: required for the ``--word-segmentation=uax29`` option'
             'cuneiform: OCR system' 
