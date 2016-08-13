@@ -1,0 +1,13 @@
+pkgbase = dctl
+	pkgdesc = A dmenu wrapper for basic systemctl commands
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = dmenu
+	source = dctl
+	source = daskpass
+	md5sums = 10fc7a84cbe8ee2d6764f8b477ca93f2
+	md5sums = a207fd7e4f2402027ef53aa464d8b9ac
+
+pkgname = dctl
+
