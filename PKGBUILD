@@ -1,6 +1,6 @@
 pkgname=zxfer
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="transfer ZFS filesystems, snapshots, properties, files and directories"
 arch=('any')
 url="https://github.com/allanjude/zxfer"
