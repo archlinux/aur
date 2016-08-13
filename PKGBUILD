@@ -1,8 +1,8 @@
 # Maintainer: Patryk Jaworski <regalis@regalis.com.pl>
 
 pkgname=mkinitcpio-squashfs-git
-pkgver=0.1
-pkgrel=2
+pkgver=0.2.r1.1faca52
+pkgrel=1
 pkgdesc="SquashFS root support for mkinitcpio (local and remote image locations supported)"
 arch=("any")
 url="https://github.com/RegalisTechnologies/mkinitcpio-squashfs"
