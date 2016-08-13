@@ -1,8 +1,8 @@
 pkgbase = perl-x11-guitest
 	pkgdesc = Provides GUI testing/interaction routines.
 	pkgver = 0.28
-	pkgrel = 2
-	url = http://search.cpan.org/dist/X11-GUITest
+	pkgrel = 3
+	url = https://metacpan.org/release/X11-GUITest
 	arch = i686
 	arch = x86_64
 	license = PerlArtistic

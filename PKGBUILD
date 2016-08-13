@@ -1,16 +1,16 @@
 # Contributor: orumin <dev@orum.in>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-x11-guitest'
 pkgver='0.28'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Provides GUI testing/interaction routines."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0' 'libx11>=1.6.2' 'libxtst>=1.2.2')
 makedepends=()
-url='http://search.cpan.org/dist/X11-GUITest'
+url='https://metacpan.org/release/X11-GUITest'
 source=('http://search.cpan.org/CPAN/authors/id/C/CT/CTRONDLP/X11-GUITest-0.28.tar.gz')
 md5sums=('6987e834dbf25734d3aec0014ab89bf6')
 sha512sums=('51c719d1448719897893ba55f6f388fb0e58b335a801680ed926f0c72f4d305570256605139f08c113f4675f136ef4a53fb8fd6b5ad69992c9e688ca22ee7e9f')
