@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com> 
 
 pkgname=rtags-git
-pkgver=r6139.026884d
+pkgver=r6395.c7c6a69
 pkgrel=1
 pkgdesc="RTags is a client/server application that indexes C/C++ code."
 arch=('i686' 'x86_64')
@@ -35,7 +35,8 @@ build() {
     cd rtags
     cmake . \
 	  -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_INSTALL_PREFIX=/usr
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+          -DRTAGS_NO_BUILD_CLANG=1
     make
 }
 
