@@ -5,7 +5,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ md5sums=('eb05ece124d93d057211643b7ebdb145')
 
 build() {
 cd ${_pkgname}-$pkgver
+BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
 
 ./configure --prefix=/usr \
   --sysconfdir=/etc \
