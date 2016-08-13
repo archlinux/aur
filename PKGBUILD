@@ -3,12 +3,12 @@
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
 pkgver=1.3.0.5.g45c39b8
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron application for WeChat"
 arch=('any')
 url="https://github.com/geeeeeeeeek/wechat-electron/"
 license=('MIT')
-depends=('electron-bin' 'xdg-utils')
+depends=('electron' 'xdg-utils')
 makedepends=('git' 'npm' 'sed' 'gcc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
