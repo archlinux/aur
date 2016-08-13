@@ -4,41 +4,25 @@
 # then please put 'unknown'.
 
 # Maintainer: Patrick Eigensatz <patrick.eigensatz@gmail.com>
+
 pkgname=qjournalctl
 pkgver=0.2
 pkgrel=1
-epoch=
 pkgdesc="Qt-based graphical user interface for systemd's journalctl command"
 arch=('i686' 'x86_64')
 url="https://github.com/pentix/qjournalctl/"
 license=('GPL')
-groups=()
 depends=('qt5-base')
 makedepends=('gcc-libs-multilib')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 source=('https://github.com/pentix/qjournalctl/archive/v0.2.tar.gz')
-noextract=()
 md5sums=('debd87fb60d50c4bd01bec99cff80a40')
 sha256sums=('ba29cbde9df05538fc4c81f649e40d3754a3d852ab6c064b78898d0f5cafaa7a')
-validpgpkeys=()
-
-#prepare() {
-#}
 
 build() {
 	cd qjournalctl-0.2
-	./autogen.sh
+	sh autogen.sh
 	make -j9
 }
-
-#check() {
-#}
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
