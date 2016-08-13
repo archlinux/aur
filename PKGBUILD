@@ -2,7 +2,7 @@
 
 pkgname=hets-server
 pkgver=0.99_1464691151
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
 
@@ -13,7 +13,7 @@ depends=('ghc>=6.8.2' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 'hets-lib' 'ncurses'
 optdepends=('isabelle')
 provides=('hets-server')
 conflicts=('hets-server')
-sha1sums=('9bbfda621844a93933625f76c975c6f1b286418d')
+sha1sums=('cb447a84a97c3c44d903be8df46ef4cec8bfd511')
 
 source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/$pkgname/${pkgname}-${pkgver}.tar.gz")
 package() {
