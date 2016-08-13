@@ -20,6 +20,5 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin/"
-	install -m755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/"
+	install -Dm755 "$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin/"
 }
