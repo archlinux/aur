@@ -12,6 +12,7 @@ package() {
     cd "$srcdir/zxfer-${pkgver}"
 
     mkdir -p "$pkgdir/usr/share/man/man8/"
+    gzip -9 zxfer.8
 
     install -D -m755 "zxfer" "$pkgdir/usr/bin/zxfer"
     install -D -m644 "zxfer.8.gz" "$pkgdir/usr/share/man/man8/zxfer.8.gz"
