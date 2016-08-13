@@ -4,7 +4,7 @@
 pkgname=chromium-snapshot-bin
 pkgver=54.0.2829.0.r411883
 pkgrel=1
-pkgdesc="The open-source project behind Google Chrome (Snapshot builds)"
+pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
 url="https://build.chromium.org"
 license=('BSD')
