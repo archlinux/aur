@@ -1,16 +1,16 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libopenmpt-svn
-pkgver=0.2.r6635
+pkgver=0.2.r6870
 pkgrel=1
 pkgdesc="Library to decode tracked music files (modules) into a raw PCM audio stream and CLI player"
 arch=('i686' 'x86_64')
 url="https://lib.openmpt.org/libopenmpt/"
 license=('BSD')
 depends=('zlib' 'libogg' 'libvorbis' 'mpg123' 'pulseaudio' 'sdl' 'portaudio' 'flac' 'libsndfile')
-makedepends=('svn' 'doxygen' 'help2man')
+makedepends=('subversion' 'doxygen' 'help2man')
 provides=('openmpt123' 'openmpt123-svn' 'openmpt123-minimal' 'libopenmpt' 'libopenmpt.so')
-conflicts=('openmpt123' 'openmpt123-svn' 'openmpt123-minimal' 'libopenmpt' 'libopenmpt.so')
+conflicts=('openmpt123' 'openmpt123-svn' 'openmpt123-minimal' 'libopenmpt')
 source=("$pkgname"::'svn+https://source.openmpt.org/svn/openmpt/trunk/OpenMPT/')
 sha256sums=('SKIP')
 
@@ -19,8 +19,9 @@ pkgver() {
 	
 	# Subversion
 	
-	printf "%s.%s" \
-	    "$(grep "OPENMPT123_VERSION_STRING" ./openmpt123/openmpt123_config.hpp | sed -r 's/[^0-9\.]*//g;s/.{3}//')" \
+	printf "%s.%s.%s" \
+	    "$(grep 'OPENMPT_API_VERSION_MAJOR [0-9]*' ./libopenmpt/libopenmpt_version.h | sed 's/[^0-9]*//')" \
+	    "$(grep 'OPENMPT_API_VERSION_MINOR [0-9]*' ./libopenmpt/libopenmpt_version.h | sed 's/[^0-9]*//')" \
 	    "$(printf "r%s" "$(svnversion | tr -d 'A-z')")"
 }
 
