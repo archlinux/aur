@@ -4,8 +4,8 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook       # Build kernel with a different name
-_srcname=linux-4.6
-pkgver=4.6.4
+_srcname=linux-4.7
+pkgver=4.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,8 +14,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -23,21 +23,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'apple-gmux.patch'
         'macbook-suspend.patch'
         'intel-pstate-backport.patch'
-        'change-default-console-loglevel.patch'
-        '0001-linux-4.6-rtlwifi-fix-atomic.patch')
+        'change-default-console-loglevel.patch')
 
-sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
+sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            'f500a3b841c41420914938d681e258c712fbbd7ebec5fe70f0abc071a1738e47'
-            'SKIP'
-            '5b31f30dc031aa964e7a45a476d479a9f72044729148bb6dd855e958c0fad3b6'
-            '4ffdc4f4e1cccc73312a32c2a700c9197723901f242a11d69f15f1abf582d7ce'
-            'eeb4a578e4ec4babc279084b224e44f85dd7b654f970df14c01e2372d07decb3'
+            'e9b7f502b5e27fc4154f0b98f3870f2988b58414df948a61a82502d84bc68a72'
+            '0004f61a57696a41a1bca1a4a2e6abb03b6ae1b2e67ce73055ae062764660f2f'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
-            'dc0b1eed205118261f3894750cab4ed5a13c8d5e8132c623890efd11976e9326'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
+            'c9873d1703881f35d25e553d2359a7e846916fab0e981579e1afdf6b034f3a0e'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -49,7 +45,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -59,13 +55,9 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # fix rtlwifi atomic
-  # https://bugs.archlinux.org/task/49401
-  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
-
-  patch -p1 -i "${srcdir}/apple-gmux.patch"
-  patch -p1 -i "${srcdir}/macbook-suspend.patch"
-  patch -p1 -i "${srcdir}/intel-pstate-backport.patch"
+  patch -p1 -F3 -i "${srcdir}/apple-gmux.patch"
+  patch -p1 -F3 -i "${srcdir}/macbook-suspend.patch"
+  patch -p1 -F3 -i "${srcdir}/intel-pstate-backport.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -180,7 +172,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
