@@ -1,39 +1,26 @@
-pkgbase = gvfs-nosystemd
-	pkgver = 1.28.2
-	pkgrel = 1
-	url = http://www.gnome.org
+pkgbase = gvfs
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version
+	pkgver = 1.28.3
+	pkgrel = 2
+	url = https://wiki.gnome.org/Projects/gvfs
 	arch = i686
 	arch = x86_64
 	groups = gnome
 	license = LGPL
-	makedepends = avahi
 	makedepends = dbus
-	makedepends = fuse
 	makedepends = intltool
-	makedepends = libarchive
-	makedepends = libcdio-paranoia
 	makedepends = libgphoto2
 	makedepends = libimobiledevice
-	makedepends = libsoup
 	makedepends = smbclient
-	makedepends = udisks2
-	makedepends = libsecret
 	makedepends = docbook-xsl
 	makedepends = gtk3
 	makedepends = libmtp
 	makedepends = gnome-online-accounts
-	makedepends = libbluray
-	makedepends = libgudev
 	makedepends = libnfs
 	makedepends = libgdata
-	provides = gvfs=1.28.2
-	conflicts = gvfs
-	source = http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28/gvfs-1.28.2.tar.xz
-	sha256sums = bc6af45cff7e7e8d33c3a4be1d27e479f10f80105a6f2d1fae75c5c0d40636d9
-
-pkgname = gvfs-nosystemd
-	pkgdesc = Userspace virtual filesystem implemented as a pluggable module for gio
-	install = gvfs.install
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = python
 	depends = avahi
 	depends = dconf
 	depends = fuse
@@ -45,14 +32,75 @@ pkgname = gvfs-nosystemd
 	depends = libbluray
 	depends = libgudev
 	depends = gcr
-	optdepends = gvfs-afc: AFC (mobile devices) support
-	optdepends = gvfs-smb: SMB/CIFS (Windows client) support
-	optdepends = gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support
-	optdepends = gvfs-mtp: MTP device support
-	optdepends = gvfs-goa: gnome-online-accounts (e.g. OwnCloud) support
-	optdepends = gvfs-nfs: NFS support
-	optdepends = gvfs-google: Google Drive support
+	depends = psmisc
+	source = git://git.gnome.org/gvfs#commit=70d801fc64cdee5f2ce85f405d43411433195aae
+	source = gvfsd.hook
+	sha256sums = SKIP
+	sha256sums = 478b9cf7b4c242959fc640dbf0cd4935f16c59b81f5828a3af102d608d7a9d72
+
+pkgname = gvfs-nosystemd
+	optdepends = gvfs-afc-nosystemd: AFC (mobile devices) support
+	optdepends = gvfs-smb-nosystemd: SMB/CIFS (Windows client) support
+	optdepends = gvfs-gphoto2-nosystemd: gphoto2 (PTP camera/MTP media player) support
+	optdepends = gvfs-mtp-nosystemd: MTP device support
+	optdepends = gvfs-goa-nosystemd: gnome-online-accounts (e.g. OwnCloud) support
+	optdepends = gvfs-nfs-nosystemd: NFS support
+	optdepends = gvfs-google-nosystemd: Google Drive support
 	optdepends = gtk3: Recent files support
+	provides = gvfs
+	conflicts = gvfs
+	replaces = gvfs
 	replaces = gvfs-obexftp
 	replaces = gvfs-afp
+
+pkgname = gvfs-smb-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (SMB/CIFS backend; Windows client)
+	depends = gvfs-nosystemd=1.28.3
+	depends = smbclient
+	provides = 
+	replaces = 
+
+pkgname = gvfs-afc-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (AFC backend; Apple mobile devices)
+	depends = gvfs-nosystemd=1.28.3
+	depends = libimobiledevice
+	depends = usbmuxd
+	provides = 
+	replaces = 
+
+pkgname = gvfs-gphoto2-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (gphoto2 backend; PTP camera, MTP media player)
+	depends = gvfs-nosystemd=1.28.3
+	depends = libgphoto2
+	provides = 
+	replaces = 
+
+pkgname = gvfs-goa-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (Gnome Online Accounts backend; cloud storage)
+	depends = gvfs-nosystemd=1.28.3
+	depends = gnome-online-accounts
+	provides = 
+	replaces = 
+
+pkgname = gvfs-mtp-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (MTP backend; Android, media player)
+	depends = gvfs-nosystemd=1.28.3
+	depends = libmtp
+	provides = 
+	replaces = 
+
+pkgname = gvfs-nfs-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (NFS backend)
+	install = gvfs-nfs.install
+	depends = gvfs-nosystemd=1.28.3
+	depends = libnfs
+	provides = 
+	replaces = 
+
+pkgname = gvfs-google-nosystemd
+	pkgdesc = Virtual filesystem implementation for GIO, nosystemd version (Google Drive backend)
+	depends = gvfs-goa-nosystemd=1.28.3
+	depends = libgdata
+	provides = 
+	replaces = 
 
