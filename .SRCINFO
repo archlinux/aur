@@ -1,6 +1,6 @@
 pkgbase = lmms-qt5-git
 	pkgdesc = The Linux MultiMedia Studio (Qt5 Version).
-	pkgver = 1.1.90.r357.g0187071
+	pkgver = 1.1.90.r361.g8b96172
 	pkgrel = 1
 	url = http://lmms.io
 	arch = i686
