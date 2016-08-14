@@ -1,0 +1,9 @@
+*.pkg.tar
+*.src.tar.gz
+pkg/
+src/
+*.sw[op]
+*.pkg.tar.xz
+atlassian-bitbucket*.tar.gz
+atlassian-bitbucket-*/
+*.part

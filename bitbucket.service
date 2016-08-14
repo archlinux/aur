@@ -1,0 +1,15 @@
+[Unit]
+Description=Bitbucket Server by Atlassian
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/atlassian-bitbucket/bin/start-bitbucket.sh
+ExecStop=/opt/atlassian-bitbucket/bin/stop-bitbucket.sh
+PIDFile=/opt/atlassian-bitbucket/work/catalina.pid
+KillSignal=SIGINT
+LimitNOFILE=8196
+
+[Install]
+WantedBy=multi-user.target
+
