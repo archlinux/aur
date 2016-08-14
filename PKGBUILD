@@ -21,7 +21,7 @@ package_python-ruffus() {
 package_python2-ruffus() {
   depends=('python2')
   cd "$srcdir/ruffus-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
