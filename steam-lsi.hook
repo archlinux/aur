@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = steam
+
+[Action]
+Description = Moving the steam binary to /usr/lib/steam/steam ...
+When = PostTransaction
+Exec = /usr/lib/steam/move-steam-lsi.sh
