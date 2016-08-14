@@ -31,8 +31,6 @@ package() {
   cd "$_pkgname"
   make PREFIX="/usr" DESTDIR="$pkgdir" install
   
-  mkdir -p "$pkgdir/etc/nffm/"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -Dm644 color.conf "$pkgdir/etc/nffm/color.conf"
-  install -Dm644 extension.conf "$pkgdir/etc/nffm/extension.conf"
+  install -Dm644 {color,extension}.conf -t "$pkgdir/etc/nffm/"
 }
