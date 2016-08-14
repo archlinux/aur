@@ -1,6 +1,6 @@
 pkgname=nibl
-pkgver=0.4
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Command line interface to the NIBL XDCC package search"
 arch=('any')
 license=('GPL')
