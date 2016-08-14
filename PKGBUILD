@@ -1,6 +1,6 @@
 # Maintainer:  <skrylar@UFO>
 pkgname=ingen-git
-pkgver=3345880
+pkgver=81f0798
 pkgrel=1
 epoch=
 pkgdesc="A modular plugin host for Jack and LV2."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://drobilla.net/software/ingen/"
 license=('GPL')
 groups=()
-depends=('lv2>=1.11.0' 'glibmm>=2.14.0' 'lilv>=0.21.5' 'suil>=0.2.0' 'raul' 'ganv' 'python2')
+depends=('lv2>=1.11.0' 'glibmm>=2.14.0' 'lilv>=0.21.5' 'suil>=0.2.0' 'raul-git' 'ganv-git' 'python2')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+http://git.drobilla.net/${pkgname}.git")
+source=("${pkgname}::git+http://git.drobilla.net/cgit.cgi/ingen.git/")
 md5sums=('SKIP')
 noextract=()
 
@@ -41,7 +41,7 @@ build() {
 package() {
   cd "$srcdir/"${pkgname}
   ./waf install --destdir="$pkgdir/"
-  mv "$pkgdir/"usr/lib64 "$pkgdir/"usr/lib
+  #mv "$pkgdir/"usr/lib64 "$pkgdir/"usr/lib
 }
 
 # vim:set ts=2 sw=2 et:
