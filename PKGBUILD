@@ -13,7 +13,7 @@ source=(
     "https://sourceforge.net/projects/checkstyle/files/checkstyle/${pkgver}/${pkgname}-${pkgver}-bin.tar.gz/download"
     'checkstyle')
 md5sums=('dd3456e70fb91f7d77fb4666e89969e0'
-         '8326c63991962d738fa9c55d0dd8d64d')
+         '2059277aee1e877eab1d127a0110d1c3')
 
 function package() {
     local destdir="${pkgdir}/opt/${pkgname}"
