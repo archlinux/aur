@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=('python2-debianbts' 'python-debianbts')
 _pkgname=python-debianbts
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Python interface to Debians Bug Tracking System"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('python-pysimplesoap' 'python2-pysimplesoap')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz)
-sha256sums=('61781b5aa708c27b0bbbec5a72ff71c6770a453ce64ffae9d23c815031956231')
+sha256sums=('9dda03ffa01479c2b98b8d9dcde15cb6bdfdaa7cbedc0114ecb553ce5a4ef459')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
