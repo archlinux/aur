@@ -1,0 +1,31 @@
+pkgbase = hyperion-rpi
+	pkgdesc = An opensource 'AmbiLight' implementation (build for raspberry pi)
+	pkgver = 1.03.2
+	pkgrel = 1
+	url = https://github.com/hyperion-project/hyperion.ng
+	install = hyperion-rbp.install
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = unzip
+	makedepends = cmake
+	makedepends = qt5-serialport
+	makedepends = avahi
+	makedepends = protobuf
+	depends = qt5-base
+	depends = libusb
+	depends = python
+	depends = icu
+	optdepends = xorg-server: X11 grabbing
+	provides = hyperion
+	conflicts = hyperion
+	backup = etc/hyperion/hyperion.config.json
+	source = https://github.com/tvdzwan/hyperion/archive/1.03.2.tar.gz
+	source = rpi_ws281x::https://github.com/hyperion-project/rpi_ws281x/archive/48d5e1af37fab4970f374d9d98e46bf5ebefa794.zip
+	sha512sums = 7406f5bdf323d2799fb375557603fefd1f077cda287b5aa9ff10251b22d8dd07590458515b0e01ef97fba80885aab1aa72bd8b5d26873ad8ebcc1ba53d6776ec
+	sha512sums = 6cc3a41dbb27b7eac6d329606e154c0d53ee686a286a975188a40381dbdbd8e3879abe6a61e69f9c12e176e0895f993568bba558099db440b4fcc7dcb2e03a88
+
+pkgname = hyperion-rpi
+
