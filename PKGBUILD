@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=12.1.0_devel.83426.d2b4b16
+pkgver=12.1.0_devel.83858.5c1ccd8
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -23,14 +23,21 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
         'LICENSE'
-        'disable-pthread-stubs-on-linux.patch')
-md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         'a1435715781d62ce096295c5ce656d5c')
+        'disable-pthread-stubs-on-linux.patch'
+        '0001-st-mesa-candidate-fix-for-sRGB-blit-errors.patch')
+sha512sums=('SKIP'
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            '1a8ffbc194a8264ae08cad7b886ec87cd331047f35272fdcb11901ddb0c6f64e2cd69af946e01254c9df8fe881ad1e42162202e1bc38db97aaf294313fb0f9ce'
+            '4c10f379c4ce905f33282e9dcbbe235fc62064d6f89ef44acc839a8c909eed5278679d41be6441f179dc6b17336ca6c8fffe2dcc85de5fc89db3787f5bb76561')
 
 prepare() {
-    cd ${srcdir}/mesa
-    patch -Np1 -i ../disable-pthread-stubs-on-linux.patch
+    cd "${srcdir}"/mesa
+    # pthread-stubs is useless on linux
+    patch -Np1 -i "${srcdir}"/disable-pthread-stubs-on-linux.patch
+    
+    # https://bugs.freedesktop.org/show_bug.cgi?id=97285
+    patch -Np1 -i "${srcdir}"/0001-st-mesa-candidate-fix-for-sRGB-blit-errors.patch
+    
 }         
          
 pkgver() {
@@ -39,7 +46,7 @@ pkgver() {
 }
 
 _mesaver() {
-    path="${srcdir}/mesa/VERSION"
+    path="${srcdir}"/mesa/VERSION
     [ -f $path ] && cat "$path"
 }
 
@@ -114,8 +121,8 @@ build () {
   make
   
   # fake installation
-  mkdir -p "${srcdir}/fakeinstall"
-  make DESTDIR="${srcdir}/fakeinstall" install
+  mkdir -p "${srcdir}"/fakeinstall
+  make DESTDIR="${srcdir}"/fakeinstall install
 }
 
 package_opencl-mesa-git () {
@@ -126,15 +133,15 @@ package_opencl-mesa-git () {
   replaces=('opencl-mesa')
   conflicts=('opencl-mesa')
 
-  install -v -m755 -d "${pkgdir}/etc"
-  mv -v "${srcdir}/fakeinstall/etc/OpenCL" "${pkgdir}/etc/"
+  install -v -m755 -d "${pkgdir}"/etc
+  mv -v "${srcdir}"/fakeinstall/etc/OpenCL "${pkgdir}"/etc/
  
-  install -v -m755 -d "${pkgdir}/usr/lib/gallium-pipe"
-  mv -v "${srcdir}"/fakeinstall/usr/lib/lib*OpenCL* "${pkgdir}/usr/lib/"
-  mv -v "${srcdir}"/fakeinstall/usr/lib/gallium-pipe/pipe_{r600,radeonsi}.so "${pkgdir}/usr/lib/gallium-pipe/"
+  install -v -m755 -d "${pkgdir}"/usr/lib/gallium-pipe
+  mv -v "${srcdir}"/fakeinstall/usr/lib/lib*OpenCL* "${pkgdir}"/usr/lib/
+  mv -v "${srcdir}"/fakeinstall/usr/lib/gallium-pipe/pipe_{r600,radeonsi}.so "${pkgdir}"/usr/lib/gallium-pipe/
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/opencl-mesa-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/opencl-mesa-git/
 }
 
 package_mesa-vulkan-intel-git() {
@@ -148,14 +155,14 @@ package_mesa-vulkan-intel-git() {
 #  install -m755 -d ${pkgdir}/etc
 #  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
 
-  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib,share/{vulkan,licenses}}
+  install -m755 -d "${pkgdir}"/usr/{include/vulkan,lib,share/{vulkan,licenses}}
   
-  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib
-  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
-  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/ ${pkgdir}/usr/share/
+  mv -v "${srcdir}"/fakeinstall/usr/lib/libvulkan_intel.so "${pkgdir}"/usr/lib
+  mv -v "${srcdir}"/fakeinstall/usr/include/vulkan/vulkan_intel.h "${pkgdir}"/usr/include/vulkan
+  mv -v "${srcdir}"/fakeinstall/usr/share/vulkan/ "${pkgdir}"/usr/share/
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/mesa-vulkan-intel-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/mesa-vulkan-intel-git/
 }
 
 package_libva-mesa-driver-git() {
@@ -164,11 +171,11 @@ package_libva-mesa-driver-git() {
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
-  install -m755 -d "${pkgdir}/usr/lib"
-  mv -v "${srcdir}/fakeinstall/usr/lib/dri" "${pkgdir}/usr/lib/"
+  install -m755 -d "${pkgdir}"/usr/lib
+  mv -v "${srcdir}"/fakeinstall/usr/lib/dri "${pkgdir}"/usr/lib/
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/libva-mesa-driver-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/libva-mesa-driver-git/
 }
 
 
@@ -179,11 +186,11 @@ package_mesa-vdpau-git() {
   replaces=('mesa-vdpau')
   conflicts=('mesa-vdpau')
 
-  install -v -m755 -d "${pkgdir}/usr/lib"
-  mv -v "${srcdir}/fakeinstall/usr/lib/vdpau" "${pkgdir}/usr/lib/"
+  install -v -m755 -d "${pkgdir}"/usr/lib
+  mv -v "${srcdir}"/fakeinstall/usr/lib/vdpau "${pkgdir}"/usr/lib/
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/mesa-vdpau-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/mesa-vdpau-git/
 }
 
 package_mesa-git () {
@@ -197,31 +204,31 @@ package_mesa-git () {
   replaces=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
   conflicts=('mesa' 'mesa-r300-r600-radeonsi-git' 'mesa-dri')
 
-  install -m755 -d "${pkgdir}/etc"
-  mv -v "${srcdir}/fakeinstall/etc/drirc" "${pkgdir}/etc/"
+  install -m755 -d "${pkgdir}"/etc
+  mv -v "${srcdir}"/fakeinstall/etc/drirc "${pkgdir}"/etc/
 
-  install -m755 -d "${pkgdir}/usr/lib/xorg/modules/dri"
+  install -m755 -d "${pkgdir}"/usr/lib/xorg/modules/dri
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
-  mv -v "${srcdir}"/fakeinstall/usr/lib/xorg/modules/dri/* "${pkgdir}/usr/lib/xorg/modules/dri/"
+  mv -v "${srcdir}"/fakeinstall/usr/lib/xorg/modules/dri/* "${pkgdir}"/usr/lib/xorg/modules/dri/
 
-  mv -v "${srcdir}"/fakeinstall/usr/lib/bellagio "${pkgdir}/usr/lib/"
-  mv -v "${srcdir}"/fakeinstall/usr/lib/d3d "${pkgdir}/usr/lib/"
-  mv -v "${srcdir}"/fakeinstall/usr/lib/*.so* "${pkgdir}/usr/lib/"
+  mv -v "${srcdir}"/fakeinstall/usr/lib/bellagio "${pkgdir}"/usr/lib/
+  mv -v "${srcdir}"/fakeinstall/usr/lib/d3d "${pkgdir}"/usr/lib/
+  mv -v "${srcdir}"/fakeinstall/usr/lib/*.so* "${pkgdir}"/usr/lib/
 
-  mv -v "${srcdir}/fakeinstall/usr/include" "${pkgdir}/usr/"
+  mv -v "${srcdir}"/fakeinstall/usr/include "${pkgdir}"/usr/
   # remove vulkan headers as they are provided by vulkan-headers package
-  rm -rf ${pkgdir}/usr/include/vulkan
+  rm -rf "${pkgdir}"/usr/include/vulkan
 
-  mv -v "${srcdir}/fakeinstall/usr/lib/pkgconfig" "${pkgdir}/usr/lib/"
+  mv -v "${srcdir}"/fakeinstall/usr/lib/pkgconfig "${pkgdir}"/usr/lib/
  
-  install -m755 -d "${pkgdir}/usr/lib/mesa"
+  install -m755 -d "${pkgdir}"/usr/lib/mesa
   # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
-  mv -v "${pkgdir}"/usr/lib/libGL.so*    "${pkgdir}/usr/lib/mesa/"
-  mv -v "${pkgdir}"/usr/lib/libEGL.so*   "${pkgdir}/usr/lib/mesa/"
-  mv -v "${pkgdir}"/usr/lib/libGLES*.so* "${pkgdir}/usr/lib/mesa/"
+  mv -v "${pkgdir}"/usr/lib/libGL.so*    "${pkgdir}"/usr/lib/mesa/
+  mv -v "${pkgdir}"/usr/lib/libEGL.so*   "${pkgdir}"/usr/lib/mesa/
+  mv -v "${pkgdir}"/usr/lib/libGLES*.so* "${pkgdir}"/usr/lib/mesa/
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/mesa-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/mesa-git/
 }
 
 package_mesa-libgl-git () {
@@ -232,25 +239,25 @@ package_mesa-libgl-git () {
   conflicts=('mesa-libgl')
 
   # See FS#26284
-  install -m755 -d "${pkgdir}/usr/lib/xorg/modules/extensions"
-  ln -s libglx.xorg "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so"
+  install -m755 -d "${pkgdir}"/usr/lib/xorg/modules/extensions
+  ln -s libglx.xorg "${pkgdir}"/usr/lib/xorg/modules/extensions/libglx.so
 
-  ln -s /usr/lib/mesa/libGL.so.1.2.0 "${pkgdir}/usr/lib/libGL.so.1.2.0"
-  ln -s libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so.1"
-  ln -s libGL.so.1.2.0               "${pkgdir}/usr/lib/libGL.so"
+  ln -s /usr/lib/mesa/libGL.so.1.2.0 "${pkgdir}"/usr/lib/libGL.so.1.2.0
+  ln -s libGL.so.1.2.0               "${pkgdir}"/usr/lib/libGL.so.1
+  ln -s libGL.so.1.2.0               "${pkgdir}"/usr/lib/libGL.so
 
-  ln -s /usr/lib/mesa/libEGL.so.1.0.0 "${pkgdir}/usr/lib/libEGL.so.1.0.0"
-  ln -s libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so.1"
-  ln -s libEGL.so.1.0.0               "${pkgdir}/usr/lib/libEGL.so"
+  ln -s /usr/lib/mesa/libEGL.so.1.0.0 "${pkgdir}"/usr/lib/libEGL.so.1.0.0
+  ln -s libEGL.so.1.0.0               "${pkgdir}"/usr/lib/libEGL.so.1
+  ln -s libEGL.so.1.0.0               "${pkgdir}"/usr/lib/libEGL.so
 
-  ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 "${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0"
-  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
-  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}/usr/lib/libGLESv1_CM.so"
+  ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 "${pkgdir}"/usr/lib/libGLESv1_CM.so.1.1.0
+  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}"/usr/lib/libGLESv1_CM.so.1
+  ln -s libGLESv1_CM.so.1.1.0               "${pkgdir}"/usr/lib/libGLESv1_CM.so
 
-  ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 "${pkgdir}/usr/lib/libGLESv2.so.2.0.0"
-  ln -s libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so.2"
-  ln -s libGLESv2.so.2.0.0               "${pkgdir}/usr/lib/libGLESv2.so"
+  ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 "${pkgdir}"/usr/lib/libGLESv2.so.2.0.0
+  ln -s libGLESv2.so.2.0.0               "${pkgdir}"/usr/lib/libGLESv2.so.2
+  ln -s libGLESv2.so.2.0.0               "${pkgdir}"/usr/lib/libGLESv2.so
 
-  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl-git"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl-git/"
+  install -m755 -d "${pkgdir}"/usr/share/licenses/mesa-libgl-git
+  install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/mesa-libgl-git/
 }
