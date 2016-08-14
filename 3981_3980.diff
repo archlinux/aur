@@ -1,0 +1,2567 @@
+=== modified file 'compizconfig/ccsm/ccm/Constants.py.in'
+--- a/compizconfig/ccsm/ccm/Constants.py.in	2011-02-12 17:45:47 +0000
++++ b/compizconfig/ccsm/ccm/Constants.py.in	2015-10-15 14:23:40 +0000
+@@ -23,6 +23,7 @@
+ import pygtk
+ import gtk
+ import gtk.gdk
++import os
+ 
+ # Current Screen
+ #
+@@ -66,6 +67,11 @@
+ DataDir = "@prefix@/share"
+ IconDir = DataDir+"/ccsm/icons"
+ PixmapDir = DataDir+"/ccsm/images"
++ConfigHome = os.getenv("XDG_CONFIG_HOME")
++if not ConfigHome:
++   ConfigHome = os.path.join(os.getenv("HOME"), ".config")
++ConfDir = os.path.join(ConfigHome, "compiz-1/compizconfig/")
++ConfFile = os.path.join(ConfDir, "firstrun")
+ 
+ # Version
+ #
+
+=== modified file 'compizconfig/ccsm/ccm/Settings.py'
+--- a/compizconfig/ccsm/ccm/Settings.py	2014-04-11 15:37:49 +0000
++++ b/compizconfig/ccsm/ccm/Settings.py	2015-10-15 14:23:32 +0000
+@@ -442,16 +442,10 @@
+         self.Adj = gtk.Adjustment(0, info[0], info[1], inc, inc*10)
+         self.Spin = gtk.SpinButton(self.Adj)
+         self.Spin.set_value(self.Get())
+-
+-        self.Scale = gtk.HScale(self.Adj)
+-
+-        self.Scale.set_update_policy(gtk.UPDATE_DISCONTINUOUS)
+-        self.Scale.connect("value-changed", self.Changed)
+         self.Spin.connect("value-changed", self.Changed)
+-        self.Widget = self.Scale
++        self.Widget = self.Spin
+ 
+-        self.Box.pack_start(self.Scale, True, True)
+-        self.Box.pack_start(self.Spin, False, False)
++        self.Box.pack_end(self.Spin, False, False)
+ 
+     def _Read(self):
+         self.Adj.set_value(self.Get())
+@@ -465,7 +459,6 @@
+         self.Inc = 1
+         NumberSetting._Init(self)
+         self.Spin.set_digits(0)
+-        self.Scale.set_digits(0)
+ 
+ class FloatSetting(NumberSetting):
+ 
+@@ -475,7 +468,6 @@
+         self.Inc = None
+         NumberSetting._Init(self)
+         self.Spin.set_digits(4)
+-        self.Scale.set_digits(4)
+ 
+ 
+ class ColorSetting(StockSetting):
+
+=== modified file 'compizconfig/ccsm/ccm/Widgets.py'
+--- a/compizconfig/ccsm/ccm/Widgets.py	2013-12-02 17:37:06 +0000
++++ b/compizconfig/ccsm/ccm/Widgets.py	2015-10-15 14:23:49 +0000
+@@ -1371,6 +1371,42 @@
+         self.set_transient_for (parent)
+         self.connect_after ("response", lambda *args: self.destroy ())
+ 
++# First run dialog providing a user warning.
++#
++class FirstRun (gtk.MessageDialog):
++    '''First run dialog providing a user warning.'''
++
++    def __init__(self, parent):
++        gtk.MessageDialog.__init__ (self, parent,
++                                    gtk.DIALOG_DESTROY_WITH_PARENT,
++                                    gtk.MESSAGE_WARNING,
++                                    gtk.BUTTONS_OK)
++        self.set_position (gtk.WIN_POS_CENTER)
++        title = _("CCSM is an advanced tool. Use with caution.")
++        self.set_markup("<b>%s</b>" % title)
++        message = _("This tool allows you to deeply configure Compiz's settings. Some options may be incompatible with each other. Unless used with care, it is possible to be left with an unusable desktop.")
++        self.format_secondary_markup(message)
++        check_button = gtk.CheckButton(label=_("Show this warning next time?"))
++        check_button.set_active(True)
++        self.vbox.pack_start(check_button, True, True, 2)
++        check_button.show()
++        check_button.connect("toggled", self.callback, "check button 1")
++        self.set_transient_for(parent)
++        self.set_modal(True)
++        self.show_all()
++        self.connect("response", lambda *args: self.destroy ())
++        
++    def callback(self, widget, data=None):
++        if widget.get_active() == True:
++            if os.path.isfile(ConfFile):
++                os.remove(ConfFile)
++        else:
++            if not os.path.exists(ConfDir):
++                os.mkdir(ConfDir)
++            if os.path.isdir(ConfDir):
++                f = open(ConfFile, "w")
++                f.close()
++
+ # Plugin Button
+ #
+ class PluginButton (gtk.HBox):
+@@ -1401,7 +1437,11 @@
+         button.set_tooltip_text (plugin.LongDesc)
+         button.add (box)
+ 
+-        if plugin.Name != 'core':
++        blacklist_plugins = ['core']
++        if os.getenv('XDG_CURRENT_DESKTOP') == 'Unity':
++            blacklist_plugins.append('unityshell')
++
++        if plugin.Name not in blacklist_plugins:
+             enable = gtk.CheckButton ()
+             enable.set_tooltip_text(_("Enable %s") % plugin.ShortDesc)
+             enable.set_active (plugin.Enabled)
+
+=== modified file 'compizconfig/ccsm/ccsm'
+--- a/compizconfig/ccsm/ccsm	2012-05-16 17:44:14 +0000
++++ b/compizconfig/ccsm/ccsm	2015-10-15 14:23:40 +0000
+@@ -31,6 +31,7 @@
+ pygtk.require('2.0')
+ import gtk
+ import sys
++import os
+ 
+ def try_register_dbus ():
+     '''Return instance of dbus control object on success, None on failure'''
+@@ -92,7 +93,7 @@
+ import compizconfig
+ import ccm
+ from ccm.Utils import GlobalUpdater
+-from ccm.Constants import Version
++from ccm.Constants import Version, ConfFile
+ 
+ plugin   = None
+ category = None
+@@ -124,4 +125,11 @@
+ idle = ccm.IdleSettingsParser(context, mainWin)
+ mainWin.show_all()
+ 
++# Check if we should show the first run warning dialog.
++if os.path.isfile(ConfFile):
++    pass
++else:
++    warning = ccm.FirstRun(mainWin)
++    warning.show_all()
++
+ gtk.main()
+
+=== modified file 'compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml'
+--- a/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2014-03-04 20:00:28 +0000
++++ b/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2015-10-15 14:23:22 +0000
+@@ -10,6 +10,9 @@
+ 	<key type="s" name="command-screenshot">
+ 	    <default>"gnome-screenshot"</default>
+ 	</key>
++	<key type="as" name="run-command-21">
++	    <default>["&lt;Control&gt;&lt;Alt&gt;Delete"]</default>
++	</key>
+ 	<key type="as" name="run-command-12">
+ 	    <default>["Disabled"]</default>
+ 	</key>
+@@ -46,6 +49,9 @@
+ 	<key type="as" name="run-command-1">
+ 	    <default>["Disabled"]</default>
+ 	</key>
++	<key type="s" name="command-21">
++	    <default>"/usr/bin/gnome-system-monitor -p"</default>
++	</key>
+ 	<key type="s" name="command-12">
+ 	    <default>""</default>
+ 	</key>
+
+#=== modified file 'debian/changelog'
+#--- a/debian/changelog	2015-10-02 00:31:48 +0000
+#+++ b/debian/changelog	2015-10-15 15:42:51 +0000
+#@@ -1,3 +1,9 @@
+#+compiz (1:0.9.12.2+15.10.20151012-0ubuntu1) UNRELEASED; urgency=medium
+#+
+#+  * Syncing changelog with proposed
+#+
+#+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Thu, 15 Oct 2015 16:42:12 +0100
+#+
+# compiz (1:0.9.12.2+15.10.20151002-0ubuntu1) wily; urgency=medium
+# 
+#   [ Eleni Maria Stea ]
+#
+=== removed directory 'debian/patches'
+=== removed file 'debian/patches/100_workaround_virtualbox_hang.patch'
+--- a/debian/patches/100_workaround_virtualbox_hang.patch	2014-12-09 14:47:14 +0000
++++ b/debian/patches/100_workaround_virtualbox_hang.patch	1970-01-01 00:00:00 +0000
+@@ -1,175 +0,0 @@
+-Index: compiz/plugins/opengl/include/opengl/opengl.h
+-===================================================================
+---- a/compiz.orig/plugins/opengl/include/opengl/opengl.h	2014-03-03 15:29:29.898235681 +0100
+-+++ b/compiz/plugins/opengl/include/opengl/opengl.h	2014-03-03 15:29:29.894235669 +0100
+-@@ -590,6 +590,17 @@
+- 
+- extern GLScreenPaintAttrib defaultScreenPaintAttrib;
+- 
+-+namespace compiz
+-+{
+-+namespace opengl
+-+{
+-+namespace internal
+-+{
+-+class DriverWorkaroundQuery;
+-+}
+-+}
+-+}
+-+
+- class GLScreen;
+- class GLFramebufferObject;
+- class GLScreenInterface;
+-@@ -787,6 +798,13 @@
+- 
+- 	bool glInitContext (XVisualInfo *);
+- 
+-+	/**
+-+	 * This is only meant to be used internally, here to avoid unnecessarily
+-+	 * breaking the API and ABI. Fetch any driver workarounds in place
+-+	 */
+-+	const compiz::opengl::internal::DriverWorkaroundQuery &
+-+	fetchDriverWorkarounds ();
+-+
+- 	WRAPABLE_HND (0, GLScreenInterface, bool, glPaintOutput,
+- 		      const GLScreenPaintAttrib &, const GLMatrix &,
+- 		      const CompRegion &, CompOutput *, unsigned int);
+-Index: compiz/plugins/opengl/src/privates.h
+-===================================================================
+---- a/compiz.orig/plugins/opengl/src/privates.h	2014-03-03 15:29:29.898235681 +0100
+-+++ b/compiz/plugins/opengl/src/privates.h	2014-03-03 15:29:29.894235669 +0100
+-@@ -47,6 +47,24 @@
+- 
+- extern CompOutput *targetOutput;
+- 
+-+namespace compiz
+-+{
+-+namespace opengl
+-+{
+-+namespace internal
+-+{
+-+class DriverWorkaroundQuery
+-+{
+-+    public:
+-+
+-+	virtual ~DriverWorkaroundQuery () {};
+-+
+-+	virtual bool unsafeForExternalBinds () const = 0;
+-+};
+-+}
+-+}
+-+}
+-+
+- class GLDoubleBuffer :
+-     public compiz::opengl::DoubleBuffer
+- {
+-@@ -141,6 +159,7 @@
+-     public ScreenInterface,
+-     public CompositeScreenInterface,
+-     public compiz::composite::PaintHandler,
+-+    public compiz::opengl::internal::DriverWorkaroundQuery,
+-     public OpenglOptions
+- {
+-     public:
+-@@ -232,6 +251,7 @@
+- 	std::vector<GLTexture::BindPixmapProc> bindPixmap;
+- 	bool hasCompositing;
+- 	bool commonFrontbuffer;
+-+	bool sharedMemoryTFP;
+- 	bool incorrectRefreshRate; // hack for NVIDIA specifying an incorrect
+- 				   // refresh rate, causing us to miss vblanks
+- 
+-@@ -266,6 +266,10 @@
+- 	std::vector<XToGLSync*>::size_type currentSyncNum;
+- 	XToGLSync *currentSync;
+- 	std::vector<XToGLSync*>::size_type warmupSyncs;
+-+
+-+    private:
+-+
+-+	bool unsafeForExternalBinds () const;
+- };
+- 
+- class PrivateGLWindow :
+-Index: compiz/plugins/opengl/src/screen.cpp
+-===================================================================
+---- a/compiz.orig/plugins/opengl/src/screen.cpp	2014-03-03 15:29:29.898235681 +0100
+-+++ b/compiz/plugins/opengl/src/screen.cpp	2014-03-03 15:29:29.894235669 +0100
+-@@ -67,6 +67,7 @@
+- 
+- 
+- using namespace compiz::opengl;
+-+namespace cglint = compiz::opengl::internal;
+- 
+- namespace GL {
+-     #ifdef USE_GLES
+-@@ -537,6 +538,18 @@
+- };
+- 
+- bool
+-+PrivateGLScreen::unsafeForExternalBinds () const
+-+{
+-+    return sharedMemoryTFP;
+-+}
+-+
+-+const cglint::DriverWorkaroundQuery &
+-+GLScreen::fetchDriverWorkarounds ()
+-+{
+-+    return *priv;
+-+}
+-+
+-+bool
+- GLScreen::glInitContext (XVisualInfo *visinfo)
+- {
+- #ifndef USE_GLES
+-@@ -855,6 +868,7 @@
+- 
+-     priv->commonFrontbuffer = true;
+-     priv->incorrectRefreshRate = false;
+-+    priv->sharedMemoryTFP = false;
+-     if (glRenderer != NULL && strstr (glRenderer, "on llvmpipe"))
+-     {
+- 	/*
+-@@ -875,6 +889,18 @@
+- 	priv->incorrectRefreshRate = true;
+-     }
+- 
+-+    if (glVendor != NULL && strstr (glVendor, "Humper"))
+-+    {
+-+	/*
+-+	 * VirtualBox uses XShm/XCopyArea in order to implement
+-+	 * texture_from_pixmap. Because of this, they require
+-+	 * a second X connection to track damage events and
+-+	 * changes to the pixmap, and this is incompatible with
+-+	 * taking a server grab on when querying and binding
+-+	 * externally managed pixmaps */
+-+	priv->sharedMemoryTFP = true;
+-+    }
+-+
+-     if (strstr (glExtensions, "GL_ARB_texture_non_power_of_two"))
+- 	GL::textureNonPowerOfTwo = true;
+-     GL::textureNonPowerOfTwoMipmap = GL::textureNonPowerOfTwo;
+-Index: compiz/plugins/opengl/src/texture.cpp
+-===================================================================
+---- a/compiz.orig/plugins/opengl/src/texture.cpp	2014-03-03 15:29:29.898235681 +0100
+-+++ b/compiz/plugins/opengl/src/texture.cpp	2014-03-03 15:31:45.974666737 +0100
+-@@ -41,6 +41,7 @@
+- #include "glx-tfp-bind.h"
+- 
+- namespace cgl = compiz::opengl;
+-+namespace cglint = compiz::opengl::internal;
+- 
+- #ifdef USE_GLES
+- std::map<Damage, EglTexture*> boundPixmapTex;
+-@@ -646,6 +647,12 @@
+- 				 int               depth,
+- 				 cgl::PixmapSource source)
+- {
+-+    GLScreen *gs = GLScreen::get (screen);
+-+    const cglint::DriverWorkaroundQuery &query (gs->fetchDriverWorkarounds ());
+-+
+-+    if (query.unsafeForExternalBinds () && source == cgl::ExternallyManaged)
+-+	return GLTexture::List ();
+-+
+-     GLTexture::List   rv (1);
+-     TfpTexture        *tex = NULL;
+-     unsigned int      target = 0;
+
+=== removed file 'debian/patches/ccsm_add_first_run_warning.patch'
+--- a/debian/patches/ccsm_add_first_run_warning.patch	2012-06-19 11:22:48 +0000
++++ b/debian/patches/ccsm_add_first_run_warning.patch	1970-01-01 00:00:00 +0000
+@@ -1,105 +0,0 @@
+-Description: Add a first run dialog providing a user warning.
+-Author: Andrew Starr-Bochicchio <a.starr.b@gmail.com>
+-
+-=== modified file 'ccm/Widgets.py'
+-diff -Nur -x '*.orig' -x '*~' a/compizconfig/ccsm/ccm/Constants.py.in b/compizconfig/ccsm/ccm/Constants.py.in
+---- a/a/compizconfig/ccsm/ccm/Constants.py.in	2012-02-01 13:30:19.131478000 -0500
+-+++ b/b/compizconfig/ccsm/ccm/Constants.py.in	2012-02-13 18:26:19.699626332 -0500
+-@@ -23,6 +23,7 @@
+- import pygtk
+- import gtk
+- import gtk.gdk
+-+import os
+- 
+- # Current Screen
+- #
+-@@ -66,6 +67,11 @@
+- DataDir = "@prefix@/share"
+- IconDir = DataDir+"/ccsm/icons"
+- PixmapDir = DataDir+"/ccsm/images"
+-+ConfigHome = os.getenv("XDG_CONFIG_HOME")
+-+if not ConfigHome:
+-+   ConfigHome = os.path.join(os.getenv("HOME"), ".config")
+-+ConfDir = os.path.join(ConfigHome, "compiz-1/compizconfig/")
+-+ConfFile = os.path.join(ConfDir, "firstrun")
+- 
+- # Version
+- #
+-diff -Nur -x '*.orig' -x '*~' a/compizconfig/ccsm/ccm/Widgets.py b/compizconfig/ccsm/ccm/Widgets.py
+---- a/a/compizconfig/ccsm/ccm/Widgets.py	2012-02-02 22:43:52.623481000 -0500
+-+++ b/b/compizconfig/ccsm/ccm/Widgets.py	2012-02-13 18:25:55.659409730 -0500
+-@@ -1371,6 +1371,42 @@
+-         self.set_transient_for (parent)
+-         self.connect_after ("response", lambda *args: self.destroy ())
+- 
+-+# First run dialog providing a user warning.
+-+#
+-+class FirstRun (gtk.MessageDialog):
+-+    '''First run dialog providing a user warning.'''
+-+
+-+    def __init__(self, parent):
+-+        gtk.MessageDialog.__init__ (self, parent,
+-+                                    gtk.DIALOG_DESTROY_WITH_PARENT,
+-+                                    gtk.MESSAGE_WARNING,
+-+                                    gtk.BUTTONS_OK)
+-+        self.set_position (gtk.WIN_POS_CENTER)
+-+        title = _("CCSM is an advanced tool. Use with caution.")
+-+        self.set_markup("<b>%s</b>" % title)
+-+        message = _("This tool allows you to deeply configure Compiz's settings. Some options may be incompatible with each other. Unless used with care, it is possible to be left with an unusable desktop.")
+-+        self.format_secondary_markup(message)
+-+        check_button = gtk.CheckButton(label=_("Show this warning next time?"))
+-+        check_button.set_active(True)
+-+        self.vbox.pack_start(check_button, True, True, 2)
+-+        check_button.show()
+-+        check_button.connect("toggled", self.callback, "check button 1")
+-+        self.set_transient_for(parent)
+-+        self.set_modal(True)
+-+        self.show_all()
+-+        self.connect("response", lambda *args: self.destroy ())
+-+        
+-+    def callback(self, widget, data=None):
+-+        if widget.get_active() == True:
+-+            if os.path.isfile(ConfFile):
+-+                os.remove(ConfFile)
+-+        else:
+-+            if not os.path.exists(ConfDir):
+-+                os.mkdir(ConfDir)
+-+            if os.path.isdir(ConfDir):
+-+                f = open(ConfFile, "w")
+-+                f.close()
+-+
+- # Plugin Button
+- #
+- class PluginButton (gtk.HBox):
+-diff -Nur -x '*.orig' -x '*~' a/compizconfig/ccsm/ccsm b/compizconfig/ccsm/ccsm
+---- a/a/compizconfig/ccsm/ccsm	2012-02-02 16:42:01.161305000 -0500
+-+++ b/b/compizconfig/ccsm/ccsm	2012-02-13 18:25:55.663409766 -0500
+-@@ -31,6 +31,7 @@
+- pygtk.require('2.0')
+- import gtk
+- import sys
+-+import os
+- 
+- def try_register_dbus ():
+-     '''Return instance of dbus control object on success, None on failure'''
+-@@ -92,7 +93,7 @@
+- import compizconfig
+- import ccm
+- from ccm.Utils import GlobalUpdater
+--from ccm.Constants import Version
+-+from ccm.Constants import Version, ConfFile
+- 
+- plugin   = None
+- category = None
+-@@ -124,4 +125,11 @@
+- idle = ccm.IdleSettingsParser(context, mainWin)
+- mainWin.show_all()
+- 
+-+# Check if we should show the first run warning dialog.
+-+if os.path.isfile(ConfFile):
+-+    pass
+-+else:
+-+    warning = ccm.FirstRun(mainWin)
+-+    warning.show_all()
+-+
+- gtk.main()
+
+=== removed file 'debian/patches/ccsm_disable_unity_checkbox.patch'
+--- a/debian/patches/ccsm_disable_unity_checkbox.patch	2012-06-19 11:22:48 +0000
++++ b/debian/patches/ccsm_disable_unity_checkbox.patch	1970-01-01 00:00:00 +0000
+@@ -1,20 +0,0 @@
+-Description: If in a Unity session, don't allow the user to disable Unity from main view.
+-Author: Andrew Starr-Bochicchio <a.starr.b@gmail.com>
+-
+-=== modified file 'ccm/Widgets.py'
+-diff -Nur -x '*.orig' -x '*~' a/compizconfig/ccsm/ccm/Widgets.py b/compiconfig/ccsm/ccm/Widgets.py
+---- a/a/compizconfig/ccsm/ccm/Widgets.py	2012-02-02 19:05:53.690931000 -0500
+-+++ b/b/compizconfig/ccsm/ccm/Widgets.py	2012-02-13 18:42:47.612544975 -0500
+-@@ -1401,7 +1401,11 @@
+-         button.set_tooltip_text (plugin.LongDesc)
+-         button.add (box)
+- 
+--        if plugin.Name != 'core':
+-+        blacklist_plugins = ['core']
+-+        if os.getenv('DESKTOP_SESSION') == 'ubuntu':
+-+            blacklist_plugins.append('unityshell')
+-+
+-+        if plugin.Name not in blacklist_plugins:
+-             enable = gtk.CheckButton ()
+-             enable.set_tooltip_text(_("Enable %s") % plugin.ShortDesc)
+-             enable.set_active (plugin.Enabled)
+
+=== removed file 'debian/patches/ccsm_remove_redundant_sliders.patch'
+--- a/debian/patches/ccsm_remove_redundant_sliders.patch	2014-04-11 15:37:49 +0000
++++ b/debian/patches/ccsm_remove_redundant_sliders.patch	1970-01-01 00:00:00 +0000
+@@ -1,38 +0,0 @@
+-=== modified file 'ccm/Settings.py'
+---- a/a/compizconfig/ccsm/ccm/Settings.py	2014-04-11 11:28:28.731117694 -0400
+-+++ b/b/compizconfig/ccsm/ccm/Settings.py	2014-04-11 11:29:59.443116911 -0400
+-@@ -442,16 +442,10 @@
+-         self.Adj = gtk.Adjustment(0, info[0], info[1], inc, inc*10)
+-         self.Spin = gtk.SpinButton(self.Adj)
+-         self.Spin.set_value(self.Get())
+--
+--        self.Scale = gtk.HScale(self.Adj)
+--
+--        self.Scale.set_update_policy(gtk.UPDATE_DISCONTINUOUS)
+--        self.Scale.connect("value-changed", self.Changed)
+-         self.Spin.connect("value-changed", self.Changed)
+--        self.Widget = self.Scale
+-+        self.Widget = self.Spin
+- 
+--        self.Box.pack_start(self.Scale, True, True)
+--        self.Box.pack_start(self.Spin, False, False)
+-+        self.Box.pack_end(self.Spin, False, False)
+- 
+-     def _Read(self):
+-         self.Adj.set_value(self.Get())
+-@@ -465,7 +459,6 @@
+-         self.Inc = 1
+-         NumberSetting._Init(self)
+-         self.Spin.set_digits(0)
+--        self.Scale.set_digits(0)
+- 
+- class FloatSetting(NumberSetting):
+- 
+-@@ -475,7 +468,6 @@
+-         self.Inc = None
+-         NumberSetting._Init(self)
+-         self.Spin.set_digits(4)
+--        self.Scale.set_digits(4)
+- 
+- 
+- class ColorSetting(StockSetting):
+
+=== removed file 'debian/patches/series'
+--- a/debian/patches/series	2015-04-23 20:07:35 +0000
++++ b/debian/patches/series	1970-01-01 00:00:00 +0000
+@@ -1,7 +0,0 @@
+-ubuntu_super_p.patch
+-ubuntu-config.patch
+-ccsm_remove_redundant_sliders.patch
+-ccsm_add_first_run_warning.patch
+-ccsm_disable_unity_checkbox.patch
+-unity_support_test.patch
+-100_workaround_virtualbox_hang.patch
+
+=== removed file 'debian/patches/ubuntu-config.patch'
+--- a/debian/patches/ubuntu-config.patch	2015-04-06 18:44:31 +0000
++++ b/debian/patches/ubuntu-config.patch	1970-01-01 00:00:00 +0000
+@@ -1,886 +0,0 @@
+-=== modified file 'metadata/core.xml.in'
+-Index: scale-xy-offsets/metadata/core.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/metadata/core.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/metadata/core.xml.in	2014-02-17 21:25:57.408121419 +0100
+-@@ -139,7 +139,7 @@
+- 			<option name="focus_prevention_match" type="match">
+- 			<_short>Focus Prevention Windows</_short>
+- 			<_long>Focus prevention windows</_long>
+--			<default>any</default>
+-+			<default>!(class=Polkit-gnome-authentication-agent-1)</default>
+- 			</option>
+- 		</group>
+- 		<group>
+-@@ -174,7 +174,7 @@
+- 			<option name="minimize_window_key" type="key">
+- 			<_short>Minimize Window</_short>
+- 			<_long>Minimize active window</_long>
+--			<default>&lt;Alt&gt;F9</default>
+-+			<default>&lt;Control&gt;&lt;Alt&gt;KP_0</default>
+- 			</option>
+- 			<option name="minimize_window_button" type="button">
+- 			<_short>Minimize Window</_short>
+-@@ -183,16 +183,16 @@
+- 			<option name="maximize_window_key" type="key">
+- 			<_short>Maximize Window</_short>
+- 			<_long>Maximize active window</_long>
+--			<default>&lt;Alt&gt;F10</default>
+-+			<default>&lt;Control&gt;&lt;Super&gt;Up</default>
+- 			</option>
+- 			<option name="unmaximize_window_key" type="key">
+- 			<_short>Unmaximize Window</_short>
+- 			<_long>Unmaximize active window</_long>
+--			<default>&lt;Alt&gt;F5</default>
+- 			</option>
+- 			<option name="unmaximize_or_minimize_window_key" type="key">
+- 			<_short>Unmaximize or Minimize Window</_short>
+- 			<_long>Unmaximize or minimize active window</_long>
+-+			<default>&lt;Control&gt;&lt;Super&gt;Down</default>
+- 			</option>
+- 			<option name="maximize_window_horizontally_key" type="key">
+- 			<_short>Maximize Window Horizontally</_short>
+-@@ -215,7 +215,6 @@
+- 			<option name="show_desktop_key" type="key">
+- 			<_short>Show Desktop</_short>
+- 			<_long>Hide all windows and focus desktop</_long>
+--			<default>&lt;Control&gt;&lt;Alt&gt;d</default>
+- 			</option>
+- 			<option name="show_desktop_edge" type="edge">
+- 			<_short>Show Desktop</_short>
+-@@ -225,6 +224,7 @@
+- 			<option name="toggle_window_maximized_key" type="key">
+- 			<_short>Toggle Window Maximized</_short>
+- 			<_long>Toggle active window maximized</_long>
+-+            <default>&lt;Control&gt;&lt;Alt&gt;KP_5</default>
+- 			</option>
+- 			<option name="toggle_window_maximized_button" type="button">
+- 			<_short>Toggle Window Maximized</_short>
+-@@ -249,7 +249,7 @@
+- 			<option name="hsize" type="int">
+- 			<_short>Horizontal Virtual Size</_short>
+- 			<_long>Screen size multiplier for horizontal virtual size</_long>
+--			<default>4</default>
+-+			<default>1</default>
+- 			<min>1</min>
+- 			<max>32</max>
+- 			</option>
+-Index: scale-xy-offsets/plugins/animation/animation.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/animation/animation.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/animation/animation.xml.in	2014-02-17 21:25:57.408121419 +0100
+-@@ -36,7 +36,7 @@
+- 	    <extensible/>
+- 	    <sort start="2"/>
+- 	    <default>
+--	      <value>animation:Zoom</value>
+-+	      <value>animation:Glide 2</value>
+- 	      <value>animation:Fade</value>
+- 	      <value>animation:Fade</value>
+- 	    </default>
+-@@ -48,9 +48,9 @@
+- 	    <min>50</min>
+- 	    <max>4000</max>
+- 	    <default>
+--	      <value>200</value>
+--	      <value>150</value>
+--	      <value>150</value>
+-+	      <value>120</value>
+-+	      <value>80</value>
+-+	      <value>80</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="open_matches" type="list">
+-@@ -58,8 +58,8 @@
+- 	    <_long>The windows that will be animated.</_long>
+- 	    <type>match</type>
+- 	    <default>
+--	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+--	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
+-+ 	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver)</value>
+-+ 	      <value>((type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal) &amp; !(class=\\.exe$))</value>
+- 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+- 	    </default>
+- 	  </option>
+-@@ -102,7 +102,7 @@
+- 	    <extensible/>
+- 	    <sort start="2"/>
+- 	    <default>
+--	      <value>animation:Zoom</value>
+-+	      <value>animation:Glide 2</value>
+- 	      <value>animation:Fade</value>
+- 	      <value>animation:Fade</value>
+- 	    </default>
+-@@ -114,9 +114,9 @@
+- 	    <min>50</min>
+- 	    <max>4000</max>
+- 	    <default>
+--	      <value>200</value>
+--	      <value>150</value>
+--	      <value>150</value>
+-+	      <value>120</value>
+-+	      <value>80</value>
+-+	      <value>50</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="close_matches" type="list">
+-@@ -124,8 +124,8 @@
+- 	    <_long>The windows that will be animated.</_long>
+- 	    <type>match</type>
+- 	    <default>
+--	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+--	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
+-+ 	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver) &amp; !(name=gnome-screenshot)</value>
+-+ 	      <value>((type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal) &amp; !(class=\\.exe$))</value>
+- 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+- 	    </default>
+- 	  </option>
+-@@ -168,7 +168,7 @@
+- 	    <extensible/>
+- 	    <sort start="2"/>
+- 	    <default>
+--	      <value>animation:Magic Lamp</value>
+-+	      <value>animation:Zoom</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="minimize_durations" type="list">
+-@@ -178,7 +178,7 @@
+- 	    <min>50</min>
+- 	    <max>4000</max>
+- 	    <default>
+--	      <value>300</value>
+-+	      <value>220</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="minimize_matches" type="list">
+-@@ -341,7 +341,7 @@
+- 	    <extensible/>
+- 	    <sort start="1"/>
+- 	    <default>
+--	      <value>animation:None</value>
+-+	      <value>animation:Fade</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="focus_durations" type="list">
+-@@ -351,7 +351,7 @@
+- 	    <min>50</min>
+- 	    <max>4000</max>
+- 	    <default>
+--	      <value>300</value>
+-+	      <value>150</value>
+- 	    </default>
+- 	  </option>
+- 	  <option name="focus_matches" type="list">
+-@@ -385,7 +385,7 @@
+- 	<option name="time_step" type="int">
+- 	  <_short>Animation Time Step</_short>
+- 	  <_long>The amount of time in milliseconds between each render of the animation. The higher the number, the jerkier the movements become.</_long>
+--	  <default>10</default>
+-+	  <default>16</default>
+- 	  <min>1</min>
+- 	  <max>400</max>
+- 	</option>
+-@@ -473,7 +473,7 @@
+- 	  <option name="glide2_away_position" type="float">
+- 	    <_short>Away Position</_short>
+- 	    <_long>Closeness of window to camera at the end of the animation (1.0: Close to camera, -2.0: Away from camera).</_long>
+--	    <default>-0.4</default>
+-+	    <default>-0.1</default>
+- 	    <min>-2</min>
+- 	    <max>1</max>
+- 	    <precision>0.05</precision>
+-@@ -481,7 +481,7 @@
+- 	  <option name="glide2_away_angle" type="float">
+- 	    <_short>Away Angle</_short>
+- 	    <_long>Angle of window at the end of the animation.</_long>
+--	    <default>-45</default>
+-+	    <default>0</default>
+- 	    <min>-540</min>
+- 	    <max>540</max>
+- 	    <precision>5</precision>
+-@@ -686,7 +686,7 @@
+- 	  <option name="zoom_springiness" type="float">
+- 	    <_short>Springiness</_short>
+- 	    <_long>How spring-like the Zoom animation should be.</_long>
+--	    <default>0.0</default>
+-+	    <default>0.08</default>
+- 	    <min>0</min>
+- 	    <max>1</max>
+- 	    <precision>0.01</precision>
+-Index: scale-xy-offsets/plugins/decor/decor.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/decor/decor.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/decor/decor.xml.in	2014-02-17 21:25:57.412121402 +0100
+-@@ -31,7 +31,7 @@
+- 		<option name="active_shadow_opacity" type="float">
+- 		    <_short>Shadow Opacity</_short>
+- 		    <_long>Drop shadow opacity</_long>
+--		    <default>0.5</default>
+-+		    <default>0.8</default>
+- 		    <min>0.01</min>
+- 		    <max>6.0</max>
+- 		    <precision>0.01</precision>
+-@@ -66,7 +66,7 @@
+- 		<option name="inactive_shadow_radius" type="float">
+- 		    <_short>Shadow Radius</_short>
+- 		    <_long>Drop shadow radius</_long>
+--		    <default>8.0</default>
+-+		    <default>5.0</default>
+- 		    <min>0.1</min>
+- 		    <max>13.0</max>
+- 		    <precision>0.1</precision>
+-@@ -74,7 +74,7 @@
+- 		<option name="inactive_shadow_opacity" type="float">
+- 		    <_short>Shadow Opacity</_short>
+- 		    <_long>Drop shadow opacity</_long>
+--		    <default>0.5</default>
+-+		    <default>0.4</default>
+- 		    <min>0.01</min>
+- 		    <max>6.0</max>
+- 		    <precision>0.01</precision>
+-@@ -101,7 +101,7 @@
+- 	    <option name="command" type="string">
+- 		<_short>Command</_short>
+- 		<_long>Decorator command line that is executed if no decorator is already running.</_long>
+--		<default>exec \"${COMPIZ_BIN_PATH}compiz-decorator\"</default>
+-+		<default>/usr/bin/gtk-window-decorator</default>
+- 	    </option>
+- 	    <option name="mipmap" type="bool">
+- 		<_short>Mipmap</_short>
+-Index: scale-xy-offsets/plugins/fade/fade.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/fade/fade.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/fade/fade.xml.in	2014-02-17 21:25:57.412121402 +0100
+-@@ -10,6 +10,7 @@
+- 	    </requirement>
+- 	    <relation type="after">
+- 		<plugin>decor</plugin>
+-+		<plugin>staticswitcher</plugin>
+- 	    </relation>
+- 	    <relation type="before">
+- 		<plugin>cube</plugin>
+-@@ -50,7 +51,7 @@
+- 	    <option name="window_match" type="match">
+- 		<_short>Fade windows</_short>
+- 		<_long>Windows that should be fading</_long>
+--		<default>any</default>
+-+                <default>any &amp; !(title=notify-osd)</default>
+- 	    </option>
+- 	    <option name="visual_bell" type="bell">
+- 		<_short>Visual Bell</_short>
+-Index: scale-xy-offsets/plugins/gnomecompat/gnomecompat.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/gnomecompat/gnomecompat.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/gnomecompat/gnomecompat.xml.in	2014-02-17 21:25:57.412121402 +0100
+-@@ -53,6 +53,7 @@
+- 		<option name="run_command_terminal_key" type="key">
+- 		    <_short>Open a terminal</_short>
+- 		    <_long>Open a terminal</_long>
+-+		    <default>&lt;Control&gt;&lt;Alt&gt;T</default>
+- 		</option>
+- 	    </group>
+- 	</options>
+-Index: scale-xy-offsets/plugins/resize/resize.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/resize/resize.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/resize/resize.xml.in	2014-02-17 21:25:57.412121402 +0100
+-@@ -56,15 +56,15 @@
+- 	    <option name="maximize_vertically" type="bool">
+- 	        <short>Maximize Vertically if screen edge hit</short>
+- 	        <long>Maximizes the window vertically if the top or bottom screen edge is hit while resizing</long>
+--	        <default>false</default>
+-+	        <default>true</default>
+- 	    </option>
+- 	    <option name="border_color" type="color">
+- 		<_short>Border Color</_short>
+- 		<_long>Border color used for outline and rectangle resize modes</_long>
+- 		<default>
+--		    <red>0x2f2f</red>
+--		    <green>0x2f2f</green>
+--		    <blue>0x4f4f</blue>
+-+		    <red>0xfbfb</red>
+-+		    <green>0x8b8b</green>
+-+		    <blue>0x0</blue>
+- 		    <alpha>0x9f9f</alpha>
+- 		</default>
+- 	    </option>
+-@@ -72,10 +72,10 @@
+- 		<_short>Fill Color</_short>
+- 		<_long>Fill color used for rectangle resize mode</_long>
+- 		<default>
+--		    <red>0x2f2f</red>
+--		    <green>0x2f2f</green>
+--		    <blue>0x4f4f</blue>
+--		    <alpha>0x4f4f</alpha>
+-+		    <red>0xfbfb</red>
+-+		    <green>0x8b8b</green>
+-+		    <blue>0x0</blue>
+-+		    <alpha>0x1919</alpha>
+- 		</default>
+- 	    </option>
+- 	    <subgroup>
+-Index: scale-xy-offsets/plugins/scale/scale.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/scale/scale.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/scale/scale.xml.in	2014-02-17 21:31:47.058611881 +0100
+-@@ -19,7 +19,7 @@
+- 			<option name="spacing" type="int">
+- 				<_short>Spacing</_short>
+- 				<_long>Space between windows</_long>
+--				<default>10</default>
+-+				<default>20</default>
+- 				<min>0</min>
+- 				<max>250</max>
+- 			</option>
+-@@ -36,7 +36,7 @@
+- 			<option name="speed" type="float">
+- 				<_short>Speed</_short>
+- 				<_long>Scale speed</_long>
+--				<default>1.5</default>
+-+				<default>5.0</default>
+- 				<min>0.1</min>
+- 				<max>50</max>
+- 				<precision>0.1</precision>
+-@@ -44,7 +44,7 @@
+- 			<option name="timestep" type="float">
+- 				<_short>Timestep</_short>
+- 				<_long>Scale timestep</_long>
+--				<default>1.2</default>
+-+				<default>0.1</default>
+- 				<min>0.1</min>
+- 				<max>50</max>
+- 				<precision>0.1</precision>
+-@@ -57,7 +57,7 @@
+- 			<option name="opacity" type="int">
+- 				<_short>Opacity</_short>
+- 				<_long>Amount of opacity in percent</_long>
+--				<default>75</default>
+-+				<default>100</default>
+- 				<min>0</min>
+- 				<max>100</max>
+- 			</option>
+-@@ -66,7 +66,7 @@
+- 				<_long>Overlay an icon on windows once they are scaled</_long>
+- 				<min>0</min>
+- 				<max>2</max>
+--				<default>1</default>
+-+				<default>0</default>
+- 				<desc>
+- 					<value>0</value>
+- 					<_name>None</_name>
+-@@ -107,7 +107,7 @@
+- 				<_long>Selects where windows are scaled if multiple output devices are used.</_long>
+- 				<min>0</min>
+- 				<max>1</max>
+--				<default>0</default>
+-+				<default>1</default>
+- 				<desc>
+- 					<value>0</value>
+- 					<_name>On current output device</_name>
+-@@ -123,7 +123,7 @@
+- 			<option name="key_bindings_toggle" type="bool">
+- 			    <_short>Key Bindings Toggle Scale Mode</_short>
+- 			    <_long>Key bindings toggle scale mode instead of enabling it when pressed and disabling it when released.</_long>
+--			    <default>false</default>
+-+			    <default>true</default>
+- 			</option>
+- 			<option name="button_bindings_toggle" type="bool">
+- 			    <_short>Button Bindings Toggle Scale Mode</_short>
+-@@ -133,15 +133,12 @@
+- 			<option name="initiate_edge" type="edge">
+- 				<_short>Initiate Window Picker</_short>
+- 				<_long>Layout and start transforming windows</_long>
+--				<default>
+--				<edge name="TopRight"/>
+--				</default>
+- 				<allowed edgednd="true"/>
+- 			</option>
+- 			<option name="initiate_key" type="key">
+- 				<_short>Initiate Window Picker</_short>
+- 				<_long>Layout and start transforming windows</_long>
+--				<default>&lt;Shift&gt;&lt;Alt&gt;Up</default>
+-+				<default>&lt;Super&gt;w</default>
+- 			</option>
+- 			<option name="initiate_button" type="button">
+- 				<_short>Initiate Window Picker</_short>
+-@@ -161,6 +158,7 @@
+- 			<option name="initiate_all_key" type="key">
+- 				<_short>Initiate Window Picker For All Windows</_short>
+- 				<_long>Layout and start transforming all windows</_long>
+-+				<default>&lt;Super&gt;&lt;Shift&gt;w</default>
+- 			</option>
+- 			<option name="initiate_group_edge" type="edge">
+- 				<_short>Initiate Window Picker For Window Group</_short>
+-Index: compiz/plugins/staticswitcher/staticswitcher.xml.in
+-===================================================================
+---- a/compiz.orig/plugins/staticswitcher/staticswitcher.xml.in	2014-03-04 19:11:33.195668835 +0100
+-+++ b/compiz/plugins/staticswitcher/staticswitcher.xml.in	2014-03-04 19:11:33.187668855 +0100
+-@@ -11,7 +11,6 @@
+- 	    <relation type="after">
+- 		<plugin>composite</plugin>
+- 		<plugin>opengl</plugin>
+--		<plugin>fade</plugin>
+- 		<plugin>compiztoolbox</plugin>
+- 		<plugin>decor</plugin>
+- 	    </relation>
+-@@ -140,12 +139,12 @@
+- 		<option name="auto_change_vp" type="bool">
+- 		    <_short>Auto Change Viewport</_short>
+- 		    <_long>Change to the viewport of the selected window while switching</_long>
+--		    <default>false</default>
+-+		    <default>true</default>
+- 		</option>
+- 		<option name="popup_delay" type="float">
+- 		    <_short>Popup Window Delay</_short>
+- 		    <_long>Time (in s) the popup window should be delayed before appearing</_long>
+--		    <default>0.0</default>
+-+		    <default>0.2</default>
+- 		    <min>0.0</min>
+- 		    <max>2.0</max>
+- 		    <precision>0.05</precision>
+-@@ -153,7 +152,7 @@
+- 		<option name="mouse_select" type="bool">
+- 		    <_short>Allow Mouse Selection</_short>
+- 		    <_long>Allow selection of windows from the switcher window with the mouse</_long>
+--		    <default>false</default>
+-+		    <default>true</default>
+- 		</option>
+- 	    </group>
+- 	    <group>
+-@@ -161,14 +160,14 @@
+- 		<option name="saturation" type="int">
+- 		    <_short>Saturation</_short>
+- 		    <_long>Amount of saturation in percent</_long>
+--		    <default>50</default>
+-+		    <default>100</default>
+- 		    <min>0</min>
+- 		    <max>100</max>
+- 		</option>
+- 		<option name="brightness" type="int">
+- 		    <_short>Brightness</_short>
+- 		    <_long>Amount of brightness in percent</_long>
+--		    <default>50</default>
+-+		    <default>100</default>
+- 		    <min>0</min>
+- 		    <max>100</max>
+- 		</option>
+-@@ -192,7 +191,7 @@
+- 		<option name="mipmap" type="bool">
+- 		    <_short>Mipmap</_short>
+- 		    <_long>Generate mipmaps when possible for higher quality scaling</_long>
+--		    <default>true</default>
+-+		    <default>false</default>
+- 		</option>
+- 		<option name="row_align" type="int">
+- 		    <_short>Row Alignment</_short>
+-@@ -221,7 +220,7 @@
+- 		    <option name="bring_to_front" type="bool">
+- 			<_short>Bring To Front</_short>
+- 			<_long>Bring selected window to front</_long>
+--			<default>true</default>
+-+			<default>false</default>
+- 		    </option>
+- 		    <_short>Selected Window Highlight</_short>
+- 		    <option name="highlight_mode" type="int">
+-@@ -229,7 +228,7 @@
+- 			<_long>Mode for highlighting the currently selected window</_long>
+- 			<min>0</min>
+- 			<max>2</max>
+--			<default>1</default>
+-+			<default>0</default>
+- 			<desc>
+- 			    <value>0</value>
+- 			    <_name>None</_name>
+-Index: scale-xy-offsets/plugins/vpswitch/vpswitch.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/vpswitch/vpswitch.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/vpswitch/vpswitch.xml.in	2014-02-17 21:25:57.412121402 +0100
+-@@ -95,13 +95,11 @@
+- 				<option name="next_button" type="button">
+- 					<_short>Move Next</_short>
+- 					<_long>Move to the next viewport</_long>
+--					<default>Button5</default>
+- 					<internal/>
+- 				</option>
+- 				<option name="prev_button" type="button">
+- 					<_short>Move Prev</_short>
+- 					<_long>Move to the previous viewport</_long>
+--					<default>Button4</default>
+- 					<internal/>
+- 				</option>
+- 				<option name="initiate_button" type="button">
+-Index: scale-xy-offsets/plugins/wall/wall.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/wall/wall.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/wall/wall.xml.in	2014-02-17 21:25:57.416121383 +0100
+-@@ -30,12 +30,12 @@
+- 				<option name="miniscreen" type="bool">
+- 					<_short>Show Live Viewport Previews</_short>
+- 					<_long>Show live viewport previews in switcher window</_long>
+--					<default>false</default>
+-+					<default>true</default>
+- 				</option>
+- 				<option name="preview_timeout" type="float">
+- 					<_short>Switch Target Preview Visibility Time</_short>
+- 					<_long>Duration (in s) the switch target preview should remain visible after switching ends.</_long>
+--					<default>0.4</default>
+-+					<default>0.2</default>
+- 					<min>0.0</min>
+- 					<max>2.0</max>
+- 					<precision>0.05</precision>
+-@@ -43,7 +43,7 @@
+- 				<option name="preview_scale" type="int">
+- 					<_short>Preview Scale</_short>
+- 					<_long>Size of the preview in %</_long>
+--					<default>100</default>
+-+					<default>130</default>
+- 					<min>0</min>
+- 					<max>400</max>
+- 				</option>
+-@@ -57,7 +57,7 @@
+- 				<option name="border_width" type="int">
+- 					<_short>Border Width</_short>
+- 					<_long>Width of the border between the previews</_long>
+--					<default>10</default>
+-+					<default>7</default>
+- 					<min>0</min>
+- 					<max>30</max>
+- 				</option>
+-@@ -65,10 +65,10 @@
+- 					<_short>Outline Color</_short>
+- 					<_long>Outline color of the switcher window.</_long>
+- 					<default>
+--						<red>0x3333</red>
+--						<green>0x3333</green>
+--						<blue>0x3333</blue>
+--						<alpha>0xd998</alpha>
+-+						<red>0xffff</red>
+-+						<green>0xffff</green>
+-+						<blue>0xffff</blue>
+-+						<alpha>0x3232</alpha>
+- 						</default>
+- 				</option>
+- 				<subgroup>
+-@@ -78,30 +78,30 @@
+- 						<_short>Base Color</_short>
+- 						<_long>First color for the background gradient of the switcher window.</_long>
+- 						<default>
+--							<red>0xcccc</red>
+--							<green>0xcccc</green>
+--							<blue>0xe665</blue>
+--							<alpha>0xd998</alpha>
+-+							<red>0x0000</red>
+-+							<green>0x0000</green>
+-+							<blue>0x0000</blue>
+-+							<alpha>0x6464</alpha>
+- 						</default>
+- 					</option>
+- 					<option name="background_gradient_highlight_color" type="color">
+- 						<_short>Highlight Color</_short>
+- 						<_long>Second color for the background gradient of the switcher window.</_long>
+- 						<default>
+--							<red>0xf332</red>
+--							<green>0xf332</green>
+--							<blue>0xffff</blue>
+--							<alpha>0xd998</alpha>
+-+							<red>0x0000</red>
+-+							<green>0x0000</green>
+-+							<blue>0x0000</blue>
+-+							<alpha>0x6464</alpha>
+- 						</default>
+- 					</option>
+- 					<option name="background_gradient_shadow_color" type="color">
+- 						<_short>Shadow Color</_short>
+- 						<_long>Third color for the background gradient of the switcher window.</_long>
+- 						<default>
+--							<red>0xf332</red>
+--							<green>0xf332</green>
+--							<blue>0xffff</blue>
+--							<alpha>0xd998</alpha>
+-+							<red>0x0000</red>
+-+							<green>0x0000</green>
+-+							<blue>0x0000</blue>
+-+							<alpha>0x6464</alpha>
+- 						</default>
+- 					</option>
+- 				</subgroup>
+-@@ -112,20 +112,20 @@
+- 						<_short>Base Color</_short>
+- 						<_long>First color for the thumb gradient of the switcher window.</_long>
+- 						<default>
+--							<red>0x3333</red>
+--							<green>0x3333</green>
+--							<blue>0x3333</blue>
+--							<alpha>0x5999</alpha>
+-+							<red>0x5555</red>
+-+							<green>0x5555</green>
+-+							<blue>0x5555</blue>
+-+							<alpha>0x3232</alpha>
+- 						</default>
+- 					</option>
+- 					<option name="thumb_gradient_highlight_color" type="color">
+- 						<_short>Highlight Color</_short>
+- 						<_long>Second color for the thumb gradient of the switcher window.</_long>
+- 						<default>
+--							<red>0x3fff</red>
+--							<green>0x3fff</green>
+--							<blue>0x3fff</blue>
+--							<alpha>0x3fff</alpha>
+-+							<red>0x5555</red>
+-+							<green>0x5555</green>
+-+							<blue>0x5555</blue>
+-+							<alpha>0x3232</alpha>
+- 						</default>
+- 					</option>
+- 				</subgroup>
+-@@ -139,7 +139,7 @@
+- 							<red>0xffff</red>
+- 							<green>0xffff</green>
+- 							<blue>0xffff</blue>
+--							<alpha>0xf332</alpha>
+-+							<alpha>0xffff</alpha>
+- 						</default>
+- 					</option>
+- 					<option name="thumb_highlight_gradient_shadow_color" type="color">
+-@@ -149,7 +149,7 @@
+- 							<red>0xdfff</red>
+- 							<green>0xdfff</green>
+- 							<blue>0xdfff</blue>
+--							<alpha>0xa665</alpha>
+-+							<alpha>0xffff</alpha>
+- 						</default>
+- 					</option>
+- 				</subgroup>
+-@@ -201,7 +201,7 @@
+- 				<option name="auto_switch_vp_and_window" type="bool">
+- 					<_short>Auto Switch Vp And Window</_short>
+- 					<_long>Auto switch the viewport and move window when Alt-Tab to window that is more than half contained in another viewport</_long>
+--					<default>true</default>
+-+					<default>false</default>
+- 				</option>
+- 			</group>
+- 			<group>
+-@@ -356,7 +356,7 @@
+- 				<option name="edgeflip_move" type="bool">
+- 					<_short>Edge Flip Move</_short>
+- 					<_long>Flip viewport when moving a window to a screen edge</_long>
+--					<default>true</default>
+-+					<default>false</default>
+- 				</option>
+- 				<option name="edgeflip_dnd" type="bool">
+- 					<_short>Edge Flip DnD</_short>
+-Index: scale-xy-offsets/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp
+-===================================================================
+---- a/scale-xy-offsets.orig/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2014-02-17 21:25:57.416121383 +0100
+-@@ -46,7 +46,7 @@
+- 
+- namespace
+- {
+--unsigned int DEFAULT_VIEWPORT_WIDTH = 4;
+-+unsigned int DEFAULT_VIEWPORT_WIDTH = 1;
+- unsigned int DEFAULT_VIEWPORT_HEIGHT = 1;
+- 
+- bool Advance (Display *d, bool r)
+-Index: scale-xy-offsets/plugins/grid/grid.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/grid/grid.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/grid/grid.xml.in	2014-02-17 21:25:57.416121383 +0100
+-@@ -68,12 +68,12 @@
+- 		<option name="put_maximize_key" type="key">
+- 		    <_short>Maximize Key</_short>
+- 		    <_long>Maximize window.</_long>
+--		    <default>&lt;Control&gt;&lt;Alt&gt;KP_0</default>
+-+		    <default>&lt;Control&gt;&lt;Super&gt;Up</default>
+- 		</option>
+- 		<option name="put_restore_key" type="key">
+- 		    <_short>Restore</_short>
+- 		    <_long>Restore window to it's original size. Note: Use the same shortcut you are using to unmaximize a window to be able to restore grid-maximized windows.</_long>
+--		    <default>&lt;Alt&gt;F5</default>
+-+		    <default>&lt;Control&gt;&lt;Super&gt;Down</default>
+- 		</option>
+- 		<option name="left_maximize" type="key">
+- 		    <_short>Left Maximize</_short>
+-Index: scale-xy-offsets/plugins/ezoom/ezoom.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/ezoom/ezoom.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/ezoom/ezoom.xml.in	2014-02-17 21:25:57.416121383 +0100
+-@@ -30,7 +30,7 @@
+- 		<option type="button" name="zoom_in_button">
+- 		    <_short>Zoom In Button</_short>
+- 		    <_long>Mouse button shortcut to invoke zooming in.</_long>
+--		    <default>&lt;Super&gt;Button4</default>
+-+		    <default></default>
+- 		</option>
+- 		<option type="key" name="zoom_in_key">
+- 		    <_short>Zoom In Key</_short>
+-@@ -39,7 +39,7 @@
+- 		<option type="button" name="zoom_out_button">
+- 		    <_short>Zoom Out Button</_short>
+- 		    <_long>Mouse button shortcut to invoke zooming out.</_long>
+--		    <default>&lt;Super&gt;Button5</default>
+-+		    <default></default>
+- 		</option>
+- 		<option type="key" name="zoom_out_key">
+- 		    <_short>Zoom Out Key</_short>
+-@@ -48,7 +48,7 @@
+- 		<option type="button" name="zoom_box_button">
+- 		    <_short>Invoke Zoom Box Button</_short>
+- 		    <_long>Define a rectangle area and zoom into it.</_long>
+--		    <default>&lt;Super&gt;Button2</default>
+-+		    <default></default>
+- 		</option>
+- 		<option name="zoom_box_outline_color" type="color">
+- 			<_short>Zoom Box Outline Color</_short>
+-@@ -162,7 +162,7 @@
+- 		    <option type="key" name="fit_to_window_key">
+- 			<_short>Fit zoomed area to window</_short>
+- 			<_long>Zooms in/out so the focused window is zoomed to the maximum while still being fully visible.</_long>
+--			<default>&lt;Super&gt;r</default>
+-+			<default></default>
+- 		    </option>
+- 		</subgroup>
+- 	    </group>
+-Index: scale-xy-offsets/plugins/expo/expo.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/expo/expo.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/expo/expo.xml.in	2014-02-17 21:25:57.416121383 +0100
+-@@ -17,6 +17,7 @@
+- 		<plugin>wobbly</plugin>
+- 		<plugin>animation</plugin>
+- 		<plugin>wallpaper</plugin>
+-+		<plugin>imgpng</plugin>
+- 	    </relation>
+- 	</deps>
+- 	<options>
+-@@ -25,7 +26,7 @@
+- 		<option name="expo_key" type="key">
+- 		    <_short>Expo Key</_short>
+- 		    <_long>Initiate or terminate Expo mode with this keyboard shortcut.</_long>
+--		    <default>&lt;Super&gt;e</default>
+-+		    <default>&lt;Super&gt;s</default>
+- 		</option>
+- 		<option name="expo_button" type="button">
+- 		    <_short>Expo Button</_short>
+-@@ -36,7 +37,6 @@
+- 		    <_short>Expo Corner/Edge</_short>
+- 		    <_long>Initiate or terminate Expo mode by moving the pointer to this corner or edge of your screen(s).</_long>
+- 		    <default>
+--			<edge name="TopLeft"/>
+- 		    </default>
+- 		</option>
+- 		<option name="double_click_time" type="int">
+-@@ -80,7 +80,7 @@
+- 		<option name="zoom_time" type="float">
+- 		    <_short>Animation Duration</_short>
+- 		    <_long>Duration of the selected animation (in seconds).</_long>
+--		    <default>0.5</default>
+-+		    <default>0.3</default>
+- 		    <min>0.1</min>
+- 		    <max>5.0</max>
+- 		    <precision>0.1</precision>
+-@@ -142,12 +142,12 @@
+- 		<option name="x_offset" type="int">
+- 		    <_short>X Offset</_short>
+- 		    <_long>Horizontal offset (in pixels).</_long>
+--		    <default>0</default>
+-+		    <default>64</default>
+- 		</option>
+- 		<option name="y_offset" type="int">
+- 		    <_short>Y Offset</_short>
+- 		    <_long>Vertical offset (in pixels).</_long>
+--		    <default>0</default>
+-+		    <default>24</default>
+- 		</option>
+- 		<option name="distance" type="float">
+- 		    <_short>Camera Distance</_short>
+-@@ -160,7 +160,7 @@
+- 		<option name="vp_distance" type="float">
+- 		    <_short>Viewport Distance</_short>
+- 		    <_long>The distance between viewports in Expo mode.</_long>
+--		    <default>0.10</default>
+-+		    <default>0.2</default>
+- 		    <min>0.0</min>
+- 		    <max>1.0</max>
+- 		    <precision>0.01</precision>
+-@@ -188,7 +188,7 @@
+- 		    <_long>How the Expo wall should be displayed, if multiple output devices are used.</_long>
+- 		    <min>0</min>
+- 		    <max>1</max>
+--		    <default>0</default>
+-+		    <default>1</default>
+- 		    <desc>
+- 			<value>0</value>
+- 			<_name>One big wall</_name>
+-@@ -203,7 +203,7 @@
+- 		    <option name="vp_brightness" type="float">
+- 			<_short>Brightness</_short>
+- 			<_long>The brightness of unfocused viewports (in percent).</_long>
+--			<default>75.0</default>
+-+			<default>40.0</default>
+- 			<min>0.0</min>
+- 			<max>100.0</max>
+- 			<precision>0.1</precision>
+-@@ -223,7 +223,7 @@
+- 			    <red>0xfbfb</red>
+- 			    <green>0x8b8b</green>
+- 			    <blue>0x0</blue>
+--			    <alpha>0x0</alpha>
+-+			    <alpha>0xffff</alpha>
+- 			</default>
+- 		    </option>
+- 		</subgroup>
+-@@ -232,7 +232,7 @@
+- 		    <option name="reflection" type="bool">
+- 			<_short>Reflection</_short>
+- 			<_long>Render a realtime reflection of the viewports on the ground.</_long>
+--			<default>true</default>
+-+			<default>false</default>
+- 		    </option>
+- 		    <option name="ground_color1" type="color">
+- 			<_short>Ground Color (near)</_short>
+-Index: scale-xy-offsets/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml
+-===================================================================
+---- a/scale-xy-offsets.orig/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/compizconfig/integration/gnome/gsettings/org.compiz.integrated.gschema.xml	2014-02-17 21:25:57.416121383 +0100
+-@@ -10,6 +10,9 @@
+- 	<key type="s" name="command-screenshot">
+- 	    <default>"gnome-screenshot"</default>
+- 	</key>
+-+	<key type="as" name="run-command-21">
+-+	    <default>["&lt;Control&gt;&lt;Alt&gt;Delete"]</default>
+-+	</key>
+- 	<key type="as" name="run-command-12">
+- 	    <default>["Disabled"]</default>
+- 	</key>
+-@@ -46,6 +49,9 @@
+- 	<key type="as" name="run-command-1">
+- 	    <default>["Disabled"]</default>
+- 	</key>
+-+	<key type="s" name="command-21">
+-+	    <default>"/usr/bin/gnome-system-monitor -p"</default>
+-+	</key>
+- 	<key type="s" name="command-12">
+- 	    <default>""</default>
+- 	</key>
+-Index: scale-xy-offsets/plugins/commands/commands.xml.in
+-===================================================================
+---- a/scale-xy-offsets.orig/plugins/commands/commands.xml.in	2014-02-17 21:25:57.420121366 +0100
+-+++ b/scale-xy-offsets/plugins/commands/commands.xml.in	2014-02-17 21:25:57.416121383 +0100
+-@@ -117,7 +117,7 @@
+- 		<option name="command20" type="string">
+- 		    <_short>Command line 20</_short>
+- 		    <_long>Command line to be executed in shell when run_command20 is invoked</_long>
+--		    <default></default>
+-+		    <default>/usr/bin/gnome-system-monitor -p</default>
+- 		</option>
+- 	    </group>
+- 	    <group>
+-@@ -205,6 +205,7 @@
+- 		<option name="run_command20_key" type="key">
+- 		    <_short>Run command 20</_short>
+- 		    <_long>A keybinding that when invoked, will run the shell command identified by command20</_long>
+-+		    <default>&lt;Control&gt;&lt;Alt&gt;Delete</default>
+- 		</option>
+- 	    </group>
+- 	    <group>
+
+=== removed file 'debian/patches/ubuntu_super_p.patch'
+--- a/debian/patches/ubuntu_super_p.patch	2013-11-22 15:11:24 +0000
++++ b/debian/patches/ubuntu_super_p.patch	1970-01-01 00:00:00 +0000
+@@ -1,30 +0,0 @@
+---- a/a/src/screen.cpp
+-+++ b/b/src/screen.cpp
+-@@ -3253,12 +3253,22 @@
+- 	     * This is so that we can detect taps on individual modifier
+- 	     * keys, and know to cancel the tap if <modifier>+k is pressed.
+- 	     */
+--	    if (!(currentState & CompAction::StateIgnoreTap))
+-+            int minCode, maxCode;
+-+            XDisplayKeycodes (screen->dpy(), &minCode, &maxCode);
+-+
+-+            if ((currentState & CompAction::StateIgnoreTap))
+-+            {
+-+                KeySym sym_p = XStringToKeysym("p");
+-+                KeyCode code_p = XKeysymToKeycode(screen->dpy(), sym_p);
+-+
+-+                for (k = minCode; k <= maxCode; k++)
+-+                    if (k != code_p)
+-+                        grabUngrabOneKey (modifiers | ignore, k, grab);
+-+            }
+-+            else
+-             {
+-- 		int minCode, maxCode;
+-- 		XDisplayKeycodes (screen->dpy(), &minCode, &maxCode);
+-- 		for (k = minCode; k <= maxCode; k++)
+-- 		    grabUngrabOneKey (modifiers | modifierForKeycode | ignore, k, grab);
+-+                for (k = minCode; k <= maxCode; k++)
+-+                    grabUngrabOneKey (modifiers | modifierForKeycode | ignore, k, grab);
+-             }
+- 	}
+- 
+
+=== removed file 'debian/patches/unity_support_test.patch'
+--- a/debian/patches/unity_support_test.patch	2012-10-09 13:05:32 +0000
++++ b/debian/patches/unity_support_test.patch	1970-01-01 00:00:00 +0000
+@@ -1,90 +0,0 @@
+-# Description: force llvmpipe in the unity profile if we are in the grey zone,
+-#              meaning: the card and drivers have opengl support, however,
+-#              it doesn't met unity requirements (opengl < 1.4, no vertex
+-#              shaders support…).
+-# Forwarded: not-needed
+-# Bug: https://launchpad.net/bugs/1039155
+-# Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
+-=== modified file 'src/plugin.cpp'
+---- a/old/src/plugin.cpp	2012-07-30 10:15:41 +0000
+-+++ b/new/src/plugin.cpp	2012-10-09 10:52:12 +0000
+-@@ -116,6 +116,60 @@
+- }
+- 
+- static bool
+-+setOpenGLPluginEnvironment ()
+-+{
+-+    /*
+-+     * Check if the hardware is adequate for Unity and if not, use LLVMpipe.
+-+     * Unfortunately the design of Mesa requires that this be done before
+-+     * libGL is loaded, which means before the opengl plugin is loaded.
+-+     */
+-+    bool toggledLLVM = false;
+-+
+-+    if (!getenv ("LIBGL_ALWAYS_SOFTWARE"))
+-+    {
+-+	const char *profile = getenv ("COMPIZ_CONFIG_PROFILE");
+-+	if (profile && !strcmp (profile, "ubuntu"))
+-+	{
+-+	    int result = system ("/usr/lib/nux/unity_support_test");
+-+	    int status = WEXITSTATUS (result);
+-+	    compLogMessage ("core", CompLogLevelInfo,
+-+		"Unity is %s",
+-+		status == 0 ?   "fully supported by your hardware." :
+-+		status == 127 ? "undetectable" :
+-+		                "not supported by your hardware. "
+-+		                "Enabling software rendering instead (slow).");
+-+	    if (status > 0 && status < 127)
+-+	    {
+-+		setenv ("LIBGL_ALWAYS_SOFTWARE", "1", 1);
+-+		toggledLLVM = true;
+-+	    }
+-+	}
+-+    }
+-+
+-+    return toggledLLVM;
+-+}
+-+
+-+static void
+-+unsetUnityshellPluginEnvironment ()
+-+{
+-+    unsetenv ("LIBGL_ALWAYS_SOFTWARE");
+-+}
+-+
+-+static void
+-+setPluginEnvironment (const char *name)
+-+{
+-+    if (!strcmp (name, "opengl"))
+-+	setOpenGLPluginEnvironment ();
+-+}
+-+
+-+static void
+-+unsetPluginEnvironment (const char *name)
+-+{
+-+    if (!strcmp (name, "unityshell"))
+-+	unsetUnityshellPluginEnvironment ();
+-+}
+-+
+-+static bool
+- dlloaderLoadPlugin (CompPlugin *p,
+- 		    const char *path,
+- 		    const char *name)
+-@@ -127,6 +181,8 @@
+-     if (cloaderLoadPlugin (p, path, name))
+- 	return true;
+- 
+-+    setPluginEnvironment (name);
+-+
+-     if (path)
+-     {
+- 	file  = path;
+-@@ -197,6 +253,8 @@
+-     if (!loaded && dlhand)
+- 	dlclose (dlhand);
+- 
+-+    unsetPluginEnvironment (name);
+-+
+-     return loaded;
+- }
+- 
+-
+
+#=== modified file 'debian/rules'
+#--- a/debian/rules	2015-07-24 12:50:47 +0000
+#+++ b/debian/rules	2015-10-15 15:33:47 +0000
+#@@ -17,25 +17,6 @@
+# 
+# CORE_ABIVERSION := $(shell sed -rn 's/^\#define[[:space:]]+CORE_ABIVERSION[[:space:]]+//p' include/core/abiversion.h )
+# 
+#-override_dh_quilt_patch:
+#-	dh_quilt_patch
+#-	if test -r debian/patches/series.$(DEB_HOST_ARCH); then \
+#-	  pc=".pc.$(DEB_HOST_ARCH)"; \
+#-	  test -d "$(CURDIR)/$$pc" || mkdir "$(CURDIR)/$$pc"; \
+#-	  cp debian/patches/series.$(DEB_HOST_ARCH) $(CURDIR)/$$pc/series; \
+#-	  cd $(CURDIR); \
+#-	  QUILT_PC="$$pc" quilt upgrade || true; \
+#-	  QUILT_PC="$$pc" QUILT_PATCHES="debian/patches/" quilt push -a || true; \
+#-	fi; \
+#-
+#-override_dh_quilt_unpatch:
+#-	if test -r debian/patches/series.$(DEB_HOST_ARCH); then \
+#-	  pc=".pc.$(DEB_HOST_ARCH)"; \
+#-	  cd $(CURDIR); \
+#-	  QUILT_PC="$$pc" QUILT_PATCHES="debian/patches/" quilt pop -a || true; \
+#-	fi; \
+#-	dh_quilt_unpatch
+#-
+# override_dh_auto_configure:
+#         # right now, xorg-gtest won't compile on arm.
+# ifeq ($(DEB_HOST_ARCH),$(findstring $(DEB_HOST_ARCH), $(gles2_architectures)))
+#@@ -93,5 +74,5 @@
+# 	#dh_auto_test
+# 
+# %:
+#-	dh $@ --parallel --with quilt,python2,migrations,translations
+#+	dh $@ --parallel --with python2,migrations,translations
+# 
+#
+=== modified file 'metadata/core.xml.in'
+--- a/metadata/core.xml.in	2015-03-18 21:06:14 +0000
++++ b/metadata/core.xml.in	2015-10-15 14:23:22 +0000
+@@ -144,7 +144,7 @@
+ 			<option name="focus_prevention_match" type="match">
+ 			<_short>Focus Prevention Windows</_short>
+ 			<_long>Focus prevention windows</_long>
+-			<default>any</default>
++			<default>!(class=Polkit-gnome-authentication-agent-1)</default>
+ 			</option>
+ 		</group>
+ 		<group>
+@@ -179,7 +179,7 @@
+ 			<option name="minimize_window_key" type="key">
+ 			<_short>Minimize Window</_short>
+ 			<_long>Minimize active window</_long>
+-			<default>&lt;Alt&gt;F9</default>
++			<default>&lt;Control&gt;&lt;Alt&gt;KP_0</default>
+ 			</option>
+ 			<option name="minimize_window_button" type="button">
+ 			<_short>Minimize Window</_short>
+@@ -188,16 +188,16 @@
+ 			<option name="maximize_window_key" type="key">
+ 			<_short>Maximize Window</_short>
+ 			<_long>Maximize active window</_long>
+-			<default>&lt;Alt&gt;F10</default>
++			<default>&lt;Control&gt;&lt;Super&gt;Up</default>
+ 			</option>
+ 			<option name="unmaximize_window_key" type="key">
+ 			<_short>Unmaximize Window</_short>
+ 			<_long>Unmaximize active window</_long>
+-			<default>&lt;Alt&gt;F5</default>
+ 			</option>
+ 			<option name="unmaximize_or_minimize_window_key" type="key">
+ 			<_short>Unmaximize or Minimize Window</_short>
+ 			<_long>Unmaximize or minimize active window</_long>
++			<default>&lt;Control&gt;&lt;Super&gt;Down</default>
+ 			</option>
+ 			<option name="maximize_window_horizontally_key" type="key">
+ 			<_short>Maximize Window Horizontally</_short>
+@@ -220,7 +220,6 @@
+ 			<option name="show_desktop_key" type="key">
+ 			<_short>Show Desktop</_short>
+ 			<_long>Hide all windows and focus desktop</_long>
+-			<default>&lt;Control&gt;&lt;Alt&gt;d</default>
+ 			</option>
+ 			<option name="show_desktop_edge" type="edge">
+ 			<_short>Show Desktop</_short>
+@@ -230,6 +229,7 @@
+ 			<option name="toggle_window_maximized_key" type="key">
+ 			<_short>Toggle Window Maximized</_short>
+ 			<_long>Toggle active window maximized</_long>
++			<default>&lt;Control&gt;&lt;Alt&gt;KP_5</default>
+ 			</option>
+ 			<option name="toggle_window_maximized_button" type="button">
+ 			<_short>Toggle Window Maximized</_short>
+@@ -254,7 +254,7 @@
+ 			<option name="hsize" type="int">
+ 			<_short>Horizontal Virtual Size</_short>
+ 			<_long>Screen size multiplier for horizontal virtual size</_long>
+-			<default>4</default>
++			<default>1</default>
+ 			<min>1</min>
+ 			<max>32</max>
+ 			</option>
+
+=== modified file 'plugins/animation/animation.xml.in'
+--- a/plugins/animation/animation.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/animation/animation.xml.in	2015-10-15 14:23:22 +0000
+@@ -36,7 +36,7 @@
+ 	    <extensible/>
+ 	    <sort start="2"/>
+ 	    <default>
+-	      <value>animation:Zoom</value>
++	      <value>animation:Glide 2</value>
+ 	      <value>animation:Fade</value>
+ 	      <value>animation:Fade</value>
+ 	    </default>
+@@ -48,9 +48,9 @@
+ 	    <min>50</min>
+ 	    <max>4000</max>
+ 	    <default>
+-	      <value>200</value>
+-	      <value>150</value>
+-	      <value>150</value>
++	      <value>120</value>
++	      <value>80</value>
++	      <value>80</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="open_matches" type="list">
+@@ -58,8 +58,8 @@
+ 	    <_long>The windows that will be animated.</_long>
+ 	    <type>match</type>
+ 	    <default>
+-	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+-	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
++ 	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver)</value>
++ 	      <value>((type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal) &amp; !(class=\\.exe$))</value>
+ 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+ 	    </default>
+ 	  </option>
+@@ -102,7 +102,7 @@
+ 	    <extensible/>
+ 	    <sort start="2"/>
+ 	    <default>
+-	      <value>animation:Zoom</value>
++	      <value>animation:Glide 2</value>
+ 	      <value>animation:Fade</value>
+ 	      <value>animation:Fade</value>
+ 	    </default>
+@@ -114,9 +114,9 @@
+ 	    <min>50</min>
+ 	    <max>4000</max>
+ 	    <default>
+-	      <value>200</value>
+-	      <value>150</value>
+-	      <value>150</value>
++	      <value>120</value>
++	      <value>80</value>
++	      <value>50</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="close_matches" type="list">
+@@ -124,8 +124,8 @@
+ 	    <_long>The windows that will be animated.</_long>
+ 	    <type>match</type>
+ 	    <default>
+-	      <value>(type=Normal | Dialog | ModalDialog | Unknown) &amp; !(name=gnome-screensaver)</value>
+-	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo)</value>
++ 	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver) &amp; !(name=gnome-screenshot)</value>
++ 	      <value>((type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal) &amp; !(class=\\.exe$))</value>
+ 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
+ 	    </default>
+ 	  </option>
+@@ -168,7 +168,7 @@
+ 	    <extensible/>
+ 	    <sort start="2"/>
+ 	    <default>
+-	      <value>animation:Magic Lamp</value>
++	      <value>animation:Zoom</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="minimize_durations" type="list">
+@@ -178,7 +178,7 @@
+ 	    <min>50</min>
+ 	    <max>4000</max>
+ 	    <default>
+-	      <value>300</value>
++	      <value>220</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="minimize_matches" type="list">
+@@ -341,7 +341,7 @@
+ 	    <extensible/>
+ 	    <sort start="1"/>
+ 	    <default>
+-	      <value>animation:None</value>
++	      <value>animation:Fade</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="focus_durations" type="list">
+@@ -351,7 +351,7 @@
+ 	    <min>50</min>
+ 	    <max>4000</max>
+ 	    <default>
+-	      <value>300</value>
++	      <value>150</value>
+ 	    </default>
+ 	  </option>
+ 	  <option name="focus_matches" type="list">
+@@ -385,7 +385,7 @@
+ 	<option name="time_step" type="int">
+ 	  <_short>Animation Time Step</_short>
+ 	  <_long>The amount of time in milliseconds between each render of the animation. The higher the number, the jerkier the movements become.</_long>
+-	  <default>10</default>
++	  <default>16</default>
+ 	  <min>1</min>
+ 	  <max>400</max>
+ 	</option>
+@@ -473,7 +473,7 @@
+ 	  <option name="glide2_away_position" type="float">
+ 	    <_short>Away Position</_short>
+ 	    <_long>Closeness of window to camera at the end of the animation (1.0: Close to camera, -2.0: Away from camera).</_long>
+-	    <default>-0.4</default>
++	    <default>-0.1</default>
+ 	    <min>-2</min>
+ 	    <max>1</max>
+ 	    <precision>0.05</precision>
+@@ -481,7 +481,7 @@
+ 	  <option name="glide2_away_angle" type="float">
+ 	    <_short>Away Angle</_short>
+ 	    <_long>Angle of window at the end of the animation.</_long>
+-	    <default>-45</default>
++	    <default>0</default>
+ 	    <min>-540</min>
+ 	    <max>540</max>
+ 	    <precision>5</precision>
+@@ -686,7 +686,7 @@
+ 	  <option name="zoom_springiness" type="float">
+ 	    <_short>Springiness</_short>
+ 	    <_long>How spring-like the Zoom animation should be.</_long>
+-	    <default>0.0</default>
++	    <default>0.08</default>
+ 	    <min>0</min>
+ 	    <max>1</max>
+ 	    <precision>0.01</precision>
+
+=== modified file 'plugins/commands/commands.xml.in'
+--- a/plugins/commands/commands.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/commands/commands.xml.in	2015-10-15 14:23:22 +0000
+@@ -117,7 +117,7 @@
+ 		<option name="command20" type="string">
+ 		    <_short>Command line 20</_short>
+ 		    <_long>Command line to be executed in shell when run_command20 is invoked</_long>
+-		    <default></default>
++		    <default>/usr/bin/gnome-system-monitor -p</default>
+ 		</option>
+ 	    </group>
+ 	    <group>
+@@ -205,6 +205,7 @@
+ 		<option name="run_command20_key" type="key">
+ 		    <_short>Run command 20</_short>
+ 		    <_long>A keybinding that when invoked, will run the shell command identified by command20</_long>
++		    <default>&lt;Control&gt;&lt;Alt&gt;Delete</default>
+ 		</option>
+ 	    </group>
+ 	    <group>
+
+=== modified file 'plugins/decor/decor.xml.in'
+--- a/plugins/decor/decor.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/decor/decor.xml.in	2015-10-15 14:23:22 +0000
+@@ -31,7 +31,7 @@
+ 		<option name="active_shadow_opacity" type="float">
+ 		    <_short>Shadow Opacity</_short>
+ 		    <_long>Drop shadow opacity</_long>
+-		    <default>0.5</default>
++		    <default>0.8</default>
+ 		    <min>0.01</min>
+ 		    <max>6.0</max>
+ 		    <precision>0.01</precision>
+@@ -66,7 +66,7 @@
+ 		<option name="inactive_shadow_radius" type="float">
+ 		    <_short>Shadow Radius</_short>
+ 		    <_long>Drop shadow radius</_long>
+-		    <default>8.0</default>
++		    <default>5.0</default>
+ 		    <min>0.1</min>
+ 		    <max>13.0</max>
+ 		    <precision>0.1</precision>
+@@ -74,7 +74,7 @@
+ 		<option name="inactive_shadow_opacity" type="float">
+ 		    <_short>Shadow Opacity</_short>
+ 		    <_long>Drop shadow opacity</_long>
+-		    <default>0.5</default>
++		    <default>0.4</default>
+ 		    <min>0.01</min>
+ 		    <max>6.0</max>
+ 		    <precision>0.01</precision>
+@@ -101,7 +101,7 @@
+ 	    <option name="command" type="string">
+ 		<_short>Command</_short>
+ 		<_long>Decorator command line that is executed if no decorator is already running.</_long>
+-		<default>exec \"${COMPIZ_BIN_PATH}compiz-decorator\"</default>
++		<default>/usr/bin/gtk-window-decorator</default>
+ 	    </option>
+ 	    <option name="mipmap" type="bool">
+ 		<_short>Mipmap</_short>
+
+=== modified file 'plugins/expo/expo.xml.in'
+--- a/plugins/expo/expo.xml.in	2013-06-26 08:19:21 +0000
++++ b/plugins/expo/expo.xml.in	2015-10-15 14:23:22 +0000
+@@ -17,6 +17,7 @@
+ 		<plugin>wobbly</plugin>
+ 		<plugin>animation</plugin>
+ 		<plugin>wallpaper</plugin>
++		<plugin>imgpng</plugin>
+ 	    </relation>
+ 	</deps>
+ 	<options>
+@@ -25,7 +26,7 @@
+ 		<option name="expo_key" type="key">
+ 		    <_short>Expo Key</_short>
+ 		    <_long>Initiate or terminate Expo mode with this keyboard shortcut.</_long>
+-		    <default>&lt;Super&gt;e</default>
++		    <default>&lt;Super&gt;s</default>
+ 		</option>
+ 		<option name="expo_button" type="button">
+ 		    <_short>Expo Button</_short>
+@@ -36,7 +37,6 @@
+ 		    <_short>Expo Corner/Edge</_short>
+ 		    <_long>Initiate or terminate Expo mode by moving the pointer to this corner or edge of your screen(s).</_long>
+ 		    <default>
+-			<edge name="TopLeft"/>
+ 		    </default>
+ 		</option>
+ 		<option name="double_click_time" type="int">
+@@ -80,7 +80,7 @@
+ 		<option name="zoom_time" type="float">
+ 		    <_short>Animation Duration</_short>
+ 		    <_long>Duration of the selected animation (in seconds).</_long>
+-		    <default>0.5</default>
++		    <default>0.3</default>
+ 		    <min>0.1</min>
+ 		    <max>5.0</max>
+ 		    <precision>0.1</precision>
+@@ -142,12 +142,12 @@
+ 		<option name="x_offset" type="int">
+ 		    <_short>X Offset</_short>
+ 		    <_long>Horizontal offset (in pixels).</_long>
+-		    <default>0</default>
++		    <default>64</default>
+ 		</option>
+ 		<option name="y_offset" type="int">
+ 		    <_short>Y Offset</_short>
+ 		    <_long>Vertical offset (in pixels).</_long>
+-		    <default>0</default>
++		    <default>24</default>
+ 		</option>
+ 		<option name="distance" type="float">
+ 		    <_short>Camera Distance</_short>
+@@ -160,7 +160,7 @@
+ 		<option name="vp_distance" type="float">
+ 		    <_short>Viewport Distance</_short>
+ 		    <_long>The distance between viewports in Expo mode.</_long>
+-		    <default>0.10</default>
++		    <default>0.2</default>
+ 		    <min>0.0</min>
+ 		    <max>1.0</max>
+ 		    <precision>0.01</precision>
+@@ -188,7 +188,7 @@
+ 		    <_long>How the Expo wall should be displayed, if multiple output devices are used.</_long>
+ 		    <min>0</min>
+ 		    <max>1</max>
+-		    <default>0</default>
++		    <default>1</default>
+ 		    <desc>
+ 			<value>0</value>
+ 			<_name>One big wall</_name>
+@@ -203,7 +203,7 @@
+ 		    <option name="vp_brightness" type="float">
+ 			<_short>Brightness</_short>
+ 			<_long>The brightness of unfocused viewports (in percent).</_long>
+-			<default>75.0</default>
++			<default>40.0</default>
+ 			<min>0.0</min>
+ 			<max>100.0</max>
+ 			<precision>0.1</precision>
+@@ -223,7 +223,7 @@
+ 			    <red>0xfbfb</red>
+ 			    <green>0x8b8b</green>
+ 			    <blue>0x0</blue>
+-			    <alpha>0x0</alpha>
++			    <alpha>0xffff</alpha>
+ 			</default>
+ 		    </option>
+ 		</subgroup>
+@@ -232,7 +232,7 @@
+ 		    <option name="reflection" type="bool">
+ 			<_short>Reflection</_short>
+ 			<_long>Render a realtime reflection of the viewports on the ground.</_long>
+-			<default>true</default>
++			<default>false</default>
+ 		    </option>
+ 		    <option name="ground_color1" type="color">
+ 			<_short>Ground Color (near)</_short>
+
+=== modified file 'plugins/ezoom/ezoom.xml.in'
+--- a/plugins/ezoom/ezoom.xml.in	2013-07-21 22:08:20 +0000
++++ b/plugins/ezoom/ezoom.xml.in	2015-10-15 14:23:22 +0000
+@@ -30,7 +30,7 @@
+ 		<option type="button" name="zoom_in_button">
+ 		    <_short>Zoom In Button</_short>
+ 		    <_long>Mouse button shortcut to invoke zooming in.</_long>
+-		    <default>&lt;Super&gt;Button4</default>
++		    <default></default>
+ 		</option>
+ 		<option type="key" name="zoom_in_key">
+ 		    <_short>Zoom In Key</_short>
+@@ -39,7 +39,7 @@
+ 		<option type="button" name="zoom_out_button">
+ 		    <_short>Zoom Out Button</_short>
+ 		    <_long>Mouse button shortcut to invoke zooming out.</_long>
+-		    <default>&lt;Super&gt;Button5</default>
++		    <default></default>
+ 		</option>
+ 		<option type="key" name="zoom_out_key">
+ 		    <_short>Zoom Out Key</_short>
+@@ -48,7 +48,7 @@
+ 		<option type="button" name="zoom_box_button">
+ 		    <_short>Invoke Zoom Box Button</_short>
+ 		    <_long>Define a rectangle area and zoom into it.</_long>
+-		    <default>&lt;Super&gt;Button2</default>
++		    <default></default>
+ 		</option>
+ 		<option name="zoom_box_outline_color" type="color">
+ 			<_short>Zoom Box Outline Color</_short>
+@@ -162,7 +162,7 @@
+ 		    <option type="key" name="fit_to_window_key">
+ 			<_short>Fit zoomed area to window</_short>
+ 			<_long>Zooms in/out so the focused window is zoomed to the maximum while still being fully visible.</_long>
+-			<default>&lt;Super&gt;r</default>
++			<default></default>
+ 		    </option>
+ 		</subgroup>
+ 	    </group>
+
+=== modified file 'plugins/fade/fade.xml.in'
+--- a/plugins/fade/fade.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/fade/fade.xml.in	2015-10-15 14:23:22 +0000
+@@ -10,6 +10,7 @@
+ 	    </requirement>
+ 	    <relation type="after">
+ 		<plugin>decor</plugin>
++		<plugin>staticswitcher</plugin>
+ 	    </relation>
+ 	    <relation type="before">
+ 		<plugin>cube</plugin>
+@@ -50,7 +51,7 @@
+ 	    <option name="window_match" type="match">
+ 		<_short>Fade windows</_short>
+ 		<_long>Windows that should be fading</_long>
+-		<default>any</default>
++                <default>any &amp; !(title=notify-osd)</default>
+ 	    </option>
+ 	    <option name="visual_bell" type="bell">
+ 		<_short>Visual Bell</_short>
+
+=== modified file 'plugins/gnomecompat/gnomecompat.xml.in'
+--- a/plugins/gnomecompat/gnomecompat.xml.in	2014-03-11 13:46:30 +0000
++++ b/plugins/gnomecompat/gnomecompat.xml.in	2015-10-15 14:23:22 +0000
+@@ -54,6 +54,7 @@
+ 		<option name="run_command_terminal_key" type="key">
+ 		    <_short>Open a terminal</_short>
+ 		    <_long>Open a terminal</_long>
++		    <default>&lt;Control&gt;&lt;Alt&gt;T</default>
+ 		</option>
+ 	    </group>
+ 	</options>
+
+=== modified file 'plugins/grid/grid.xml.in'
+--- a/plugins/grid/grid.xml.in	2013-12-04 19:21:12 +0000
++++ b/plugins/grid/grid.xml.in	2015-10-15 14:23:22 +0000
+@@ -68,12 +68,12 @@
+ 		<option name="put_maximize_key" type="key">
+ 		    <_short>Maximize Key</_short>
+ 		    <_long>Maximize window.</_long>
+-		    <default>&lt;Control&gt;&lt;Alt&gt;KP_0</default>
++		    <default>&lt;Control&gt;&lt;Super&gt;Up</default>
+ 		</option>
+ 		<option name="put_restore_key" type="key">
+ 		    <_short>Restore</_short>
+ 		    <_long>Restore window to it's original size. Note: Use the same shortcut you are using to unmaximize a window to be able to restore grid-maximized windows.</_long>
+-		    <default>&lt;Alt&gt;F5</default>
++		    <default>&lt;Control&gt;&lt;Super&gt;Down</default>
+ 		</option>
+ 		<option name="left_maximize" type="key">
+ 		    <_short>Left Maximize</_short>
+
+=== modified file 'plugins/resize/resize.xml.in'
+--- a/plugins/resize/resize.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/resize/resize.xml.in	2015-10-15 14:23:22 +0000
+@@ -56,15 +56,15 @@
+ 	    <option name="maximize_vertically" type="bool">
+ 	        <short>Maximize Vertically if screen edge hit</short>
+ 	        <long>Maximizes the window vertically if the top or bottom screen edge is hit while resizing</long>
+-	        <default>false</default>
++	        <default>true</default>
+ 	    </option>
+ 	    <option name="border_color" type="color">
+ 		<_short>Border Color</_short>
+ 		<_long>Border color used for outline and rectangle resize modes</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
++		    <red>0xfbfb</red>
++		    <green>0x8b8b</green>
++		    <blue>0x0</blue>
+ 		    <alpha>0x9f9f</alpha>
+ 		</default>
+ 	    </option>
+@@ -72,10 +72,10 @@
+ 		<_short>Fill Color</_short>
+ 		<_long>Fill color used for rectangle resize mode</_long>
+ 		<default>
+-		    <red>0x2f2f</red>
+-		    <green>0x2f2f</green>
+-		    <blue>0x4f4f</blue>
+-		    <alpha>0x4f4f</alpha>
++		    <red>0xfbfb</red>
++		    <green>0x8b8b</green>
++		    <blue>0x0</blue>
++		    <alpha>0x1919</alpha>
+ 		</default>
+ 	    </option>
+ 	    <subgroup>
+
+=== modified file 'plugins/scale/scale.xml.in'
+--- a/plugins/scale/scale.xml.in	2014-04-17 14:39:37 +0000
++++ b/plugins/scale/scale.xml.in	2015-10-15 14:23:22 +0000
+@@ -21,7 +21,7 @@
+ 			<option name="spacing" type="int">
+ 				<_short>Spacing</_short>
+ 				<_long>Space between windows</_long>
+-				<default>10</default>
++				<default>20</default>
+ 				<min>0</min>
+ 				<max>250</max>
+ 			</option>
+@@ -40,7 +40,7 @@
+ 			<option name="speed" type="float">
+ 				<_short>Speed</_short>
+ 				<_long>Scale speed</_long>
+-				<default>1.5</default>
++				<default>5.0</default>
+ 				<min>0.1</min>
+ 				<max>50</max>
+ 				<precision>0.1</precision>
+@@ -48,7 +48,7 @@
+ 			<option name="timestep" type="float">
+ 				<_short>Timestep</_short>
+ 				<_long>Scale timestep</_long>
+-				<default>1.2</default>
++				<default>0.1</default>
+ 				<min>0.1</min>
+ 				<max>50</max>
+ 				<precision>0.1</precision>
+@@ -61,7 +61,7 @@
+ 			<option name="opacity" type="int">
+ 				<_short>Opacity</_short>
+ 				<_long>Amount of opacity in percent</_long>
+-				<default>75</default>
++				<default>100</default>
+ 				<min>0</min>
+ 				<max>100</max>
+ 			</option>
+@@ -70,7 +70,7 @@
+ 				<_long>Overlay an icon on windows once they are scaled</_long>
+ 				<min>0</min>
+ 				<max>2</max>
+-				<default>1</default>
++				<default>0</default>
+ 				<desc>
+ 					<value>0</value>
+ 					<_name>None</_name>
+@@ -123,7 +123,7 @@
+ 				<_long>Selects where windows are scaled if multiple output devices are used.</_long>
+ 				<min>0</min>
+ 				<max>1</max>
+-				<default>0</default>
++				<default>1</default>
+ 				<desc>
+ 					<value>0</value>
+ 					<_name>On current output device</_name>
+@@ -139,7 +139,7 @@
+ 			<option name="key_bindings_toggle" type="bool">
+ 			    <_short>Key Bindings Toggle Scale Mode</_short>
+ 			    <_long>Key bindings toggle scale mode instead of enabling it when pressed and disabling it when released.</_long>
+-			    <default>false</default>
++			    <default>true</default>
+ 			</option>
+ 			<option name="button_bindings_toggle" type="bool">
+ 			    <_short>Button Bindings Toggle Scale Mode</_short>
+@@ -149,15 +149,12 @@
+ 			<option name="initiate_edge" type="edge">
+ 				<_short>Initiate Window Picker</_short>
+ 				<_long>Layout and start transforming windows</_long>
+-				<default>
+-				<edge name="TopRight"/>
+-				</default>
+ 				<allowed edgednd="true"/>
+ 			</option>
+ 			<option name="initiate_key" type="key">
+ 				<_short>Initiate Window Picker</_short>
+ 				<_long>Layout and start transforming windows</_long>
+-				<default>&lt;Shift&gt;&lt;Alt&gt;Up</default>
++				<default>&lt;Super&gt;w</default>
+ 			</option>
+ 			<option name="initiate_button" type="button">
+ 				<_short>Initiate Window Picker</_short>
+@@ -175,6 +172,7 @@
+ 			<option name="initiate_all_key" type="key">
+ 				<_short>Initiate Window Picker For All Windows</_short>
+ 				<_long>Layout and start transforming all windows</_long>
++				<default>&lt;Super&gt;&lt;Shift&gt;w</default>
+ 			</option>
+ 			<option name="initiate_group_edge" type="edge">
+ 				<_short>Initiate Window Picker For Window Group</_short>
+
+=== modified file 'plugins/staticswitcher/staticswitcher.xml.in'
+--- a/plugins/staticswitcher/staticswitcher.xml.in	2015-08-22 21:46:01 +0000
++++ b/plugins/staticswitcher/staticswitcher.xml.in	2015-10-15 14:23:22 +0000
+@@ -11,7 +11,6 @@
+ 	    <relation type="after">
+ 		<plugin>composite</plugin>
+ 		<plugin>opengl</plugin>
+-		<plugin>fade</plugin>
+ 		<plugin>compiztoolbox</plugin>
+ 		<plugin>decor</plugin>
+ 	    </relation>
+@@ -140,12 +139,12 @@
+ 		<option name="auto_change_vp" type="bool">
+ 		    <_short>Auto Change Viewport</_short>
+ 		    <_long>Change to the viewport of the selected window while switching</_long>
+-		    <default>false</default>
++		    <default>true</default>
+ 		</option>
+ 		<option name="popup_delay" type="float">
+ 		    <_short>Popup Window Delay</_short>
+ 		    <_long>Time (in s) the popup window should be delayed before appearing</_long>
+-		    <default>0.0</default>
++		    <default>0.2</default>
+ 		    <min>0.0</min>
+ 		    <max>2.0</max>
+ 		    <precision>0.05</precision>
+@@ -153,7 +152,7 @@
+ 		<option name="mouse_select" type="bool">
+ 		    <_short>Allow Mouse Selection</_short>
+ 		    <_long>Allow selection of windows from the switcher window with the mouse</_long>
+-		    <default>false</default>
++		    <default>true</default>
+ 		</option>
+ 	    </group>
+ 	    <group>
+@@ -161,14 +160,14 @@
+ 		<option name="saturation" type="int">
+ 		    <_short>Saturation</_short>
+ 		    <_long>Amount of saturation in percent</_long>
+-		    <default>50</default>
++		    <default>100</default>
+ 		    <min>0</min>
+ 		    <max>100</max>
+ 		</option>
+ 		<option name="brightness" type="int">
+ 		    <_short>Brightness</_short>
+ 		    <_long>Amount of brightness in percent</_long>
+-		    <default>50</default>
++		    <default>100</default>
+ 		    <min>0</min>
+ 		    <max>100</max>
+ 		</option>
+@@ -192,7 +191,7 @@
+ 		<option name="mipmap" type="bool">
+ 		    <_short>Mipmap</_short>
+ 		    <_long>Generate mipmaps when possible for higher quality scaling</_long>
+-		    <default>true</default>
++		    <default>false</default>
+ 		</option>
+ 		<option name="row_align" type="int">
+ 		    <_short>Row Alignment</_short>
+@@ -221,7 +220,7 @@
+ 		    <option name="bring_to_front" type="bool">
+ 			<_short>Bring To Front</_short>
+ 			<_long>Bring selected window to front</_long>
+-			<default>true</default>
++			<default>false</default>
+ 		    </option>
+ 		    <_short>Selected Window Highlight</_short>
+ 		    <option name="highlight_mode" type="int">
+@@ -229,7 +228,7 @@
+ 			<_long>Mode for highlighting the currently selected window</_long>
+ 			<min>0</min>
+ 			<max>2</max>
+-			<default>1</default>
++			<default>0</default>
+ 			<desc>
+ 			    <value>0</value>
+ 			    <_name>None</_name>
+
+=== modified file 'plugins/vpswitch/vpswitch.xml.in'
+--- a/plugins/vpswitch/vpswitch.xml.in	2012-10-15 10:31:51 +0000
++++ b/plugins/vpswitch/vpswitch.xml.in	2015-10-15 14:23:22 +0000
+@@ -95,13 +95,11 @@
+ 				<option name="next_button" type="button">
+ 					<_short>Move Next</_short>
+ 					<_long>Move to the next viewport</_long>
+-					<default>Button5</default>
+ 					<internal/>
+ 				</option>
+ 				<option name="prev_button" type="button">
+ 					<_short>Move Prev</_short>
+ 					<_long>Move to the previous viewport</_long>
+-					<default>Button4</default>
+ 					<internal/>
+ 				</option>
+ 				<option name="initiate_button" type="button">
+
+=== modified file 'plugins/wall/wall.xml.in'
+--- a/plugins/wall/wall.xml.in	2013-08-28 12:18:22 +0000
++++ b/plugins/wall/wall.xml.in	2015-10-15 14:23:22 +0000
+@@ -30,12 +30,12 @@
+ 				<option name="miniscreen" type="bool">
+ 					<_short>Show Live Viewport Previews</_short>
+ 					<_long>Show live viewport previews in switcher window</_long>
+-					<default>false</default>
++					<default>true</default>
+ 				</option>
+ 				<option name="preview_timeout" type="float">
+ 					<_short>Switch Target Preview Visibility Time</_short>
+ 					<_long>Duration (in s) the switch target preview should remain visible after switching ends.</_long>
+-					<default>0.4</default>
++					<default>0.2</default>
+ 					<min>0.0</min>
+ 					<max>2.0</max>
+ 					<precision>0.05</precision>
+@@ -43,7 +43,7 @@
+ 				<option name="preview_scale" type="int">
+ 					<_short>Preview Scale</_short>
+ 					<_long>Size of the preview in %</_long>
+-					<default>100</default>
++					<default>130</default>
+ 					<min>0</min>
+ 					<max>400</max>
+ 				</option>
+@@ -57,7 +57,7 @@
+ 				<option name="border_width" type="int">
+ 					<_short>Border Width</_short>
+ 					<_long>Width of the border between the previews</_long>
+-					<default>10</default>
++					<default>7</default>
+ 					<min>0</min>
+ 					<max>30</max>
+ 				</option>
+@@ -65,10 +65,10 @@
+ 					<_short>Outline Color</_short>
+ 					<_long>Outline color of the switcher window.</_long>
+ 					<default>
+-						<red>0x3333</red>
+-						<green>0x3333</green>
+-						<blue>0x3333</blue>
+-						<alpha>0xd998</alpha>
++						<red>0xffff</red>
++						<green>0xffff</green>
++						<blue>0xffff</blue>
++						<alpha>0x3232</alpha>
+ 						</default>
+ 				</option>
+ 				<subgroup>
+@@ -78,30 +78,30 @@
+ 						<_short>Base Color</_short>
+ 						<_long>First color for the background gradient of the switcher window.</_long>
+ 						<default>
+-							<red>0xcccc</red>
+-							<green>0xcccc</green>
+-							<blue>0xe665</blue>
+-							<alpha>0xd998</alpha>
++							<red>0x0000</red>
++							<green>0x0000</green>
++							<blue>0x0000</blue>
++							<alpha>0x6464</alpha>
+ 						</default>
+ 					</option>
+ 					<option name="background_gradient_highlight_color" type="color">
+ 						<_short>Highlight Color</_short>
+ 						<_long>Second color for the background gradient of the switcher window.</_long>
+ 						<default>
+-							<red>0xf332</red>
+-							<green>0xf332</green>
+-							<blue>0xffff</blue>
+-							<alpha>0xd998</alpha>
++							<red>0x0000</red>
++							<green>0x0000</green>
++							<blue>0x0000</blue>
++							<alpha>0x6464</alpha>
+ 						</default>
+ 					</option>
+ 					<option name="background_gradient_shadow_color" type="color">
+ 						<_short>Shadow Color</_short>
+ 						<_long>Third color for the background gradient of the switcher window.</_long>
+ 						<default>
+-							<red>0xf332</red>
+-							<green>0xf332</green>
+-							<blue>0xffff</blue>
+-							<alpha>0xd998</alpha>
++							<red>0x0000</red>
++							<green>0x0000</green>
++							<blue>0x0000</blue>
++							<alpha>0x6464</alpha>
+ 						</default>
+ 					</option>
+ 				</subgroup>
+@@ -112,20 +112,20 @@
+ 						<_short>Base Color</_short>
+ 						<_long>First color for the thumb gradient of the switcher window.</_long>
+ 						<default>
+-							<red>0x3333</red>
+-							<green>0x3333</green>
+-							<blue>0x3333</blue>
+-							<alpha>0x5999</alpha>
++							<red>0x5555</red>
++							<green>0x5555</green>
++							<blue>0x5555</blue>
++							<alpha>0x3232</alpha>
+ 						</default>
+ 					</option>
+ 					<option name="thumb_gradient_highlight_color" type="color">
+ 						<_short>Highlight Color</_short>
+ 						<_long>Second color for the thumb gradient of the switcher window.</_long>
+ 						<default>
+-							<red>0x3fff</red>
+-							<green>0x3fff</green>
+-							<blue>0x3fff</blue>
+-							<alpha>0x3fff</alpha>
++							<red>0x5555</red>
++							<green>0x5555</green>
++							<blue>0x5555</blue>
++							<alpha>0x3232</alpha>
+ 						</default>
+ 					</option>
+ 				</subgroup>
+@@ -139,7 +139,7 @@
+ 							<red>0xffff</red>
+ 							<green>0xffff</green>
+ 							<blue>0xffff</blue>
+-							<alpha>0xf332</alpha>
++							<alpha>0xffff</alpha>
+ 						</default>
+ 					</option>
+ 					<option name="thumb_highlight_gradient_shadow_color" type="color">
+@@ -149,7 +149,7 @@
+ 							<red>0xdfff</red>
+ 							<green>0xdfff</green>
+ 							<blue>0xdfff</blue>
+-							<alpha>0xa665</alpha>
++							<alpha>0xffff</alpha>
+ 						</default>
+ 					</option>
+ 				</subgroup>
+@@ -201,7 +201,7 @@
+ 				<option name="auto_switch_vp_and_window" type="bool">
+ 					<_short>Auto Switch Vp And Window</_short>
+ 					<_long>Auto switch the viewport and move window when Alt-Tab to window that is more than half contained in another viewport</_long>
+-					<default>true</default>
++					<default>false</default>
+ 				</option>
+ 			</group>
+ 			<group>
+@@ -356,7 +356,7 @@
+ 				<option name="edgeflip_move" type="bool">
+ 					<_short>Edge Flip Move</_short>
+ 					<_long>Flip viewport when moving a window to a screen edge</_long>
+-					<default>true</default>
++					<default>false</default>
+ 				</option>
+ 				<option name="edgeflip_dnd" type="bool">
+ 					<_short>Edge Flip DnD</_short>
+
+=== modified file 'src/plugin.cpp'
+--- a/src/plugin.cpp	2015-01-13 19:22:25 +0000
++++ b/src/plugin.cpp	2015-10-15 14:23:58 +0000
+@@ -132,6 +132,60 @@
+ }
+ 
+ static bool
++setOpenGLPluginEnvironment ()
++{
++    /*
++     * Check if the hardware is adequate for Unity and if not, use LLVMpipe.
++     * Unfortunately the design of Mesa requires that this be done before
++     * libGL is loaded, which means before the opengl plugin is loaded.
++     */
++    bool toggledLLVM = false;
++
++    if (!getenv ("LIBGL_ALWAYS_SOFTWARE"))
++    {
++	const char *profile = getenv ("COMPIZ_CONFIG_PROFILE");
++	if (profile && strcmp (profile, "ubuntu") == 0)
++	{
++	    int result = system ("/usr/lib/nux/unity_support_test");
++	    int status = WEXITSTATUS (result);
++	    compLogMessage ("core", CompLogLevelInfo,
++		"Unity is %s",
++		status == 0 ?   "fully supported by your hardware." :
++		status == 127 ? "undetectable" :
++		                "not supported by your hardware. "
++		                "Enabling software rendering instead (slow).");
++	    if (status > 0 && status < 127)
++	    {
++		setenv ("LIBGL_ALWAYS_SOFTWARE", "1", 1);
++		toggledLLVM = true;
++	    }
++	}
++    }
++
++    return toggledLLVM;
++}
++
++static void
++unsetUnityshellPluginEnvironment ()
++{
++    unsetenv ("LIBGL_ALWAYS_SOFTWARE");
++}
++
++static void
++setPluginEnvironment (const char *name)
++{
++    if (strcmp (name, "opengl") == 0)
++	setOpenGLPluginEnvironment ();
++}
++
++static void
++unsetPluginEnvironment (const char *name)
++{
++    if (strcmp (name, "unityshell") == 0)
++	unsetUnityshellPluginEnvironment ();
++}
++
++static bool
+ dlloaderLoadPlugin (CompPlugin *p,
+ 		    const char *path,
+ 		    const char *name)
+@@ -143,6 +197,8 @@
+     if (cloaderLoadPlugin (p, path, name))
+ 	return true;
+ 
++    setPluginEnvironment (name);
++
+     if (path)
+     {
+ 	file  = path;
+@@ -213,6 +269,8 @@
+     if (!loaded && dlhand)
+ 	dlclose (dlhand);
+ 
++    unsetPluginEnvironment (name);
++
+     return loaded;
+ }
+ 
+
+=== modified file 'tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp'
+--- a/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2013-02-14 05:57:39 +0000
++++ b/tests/system/xorg-gtest/tests/compiz_xorg_gtest_ewmh.cpp	2015-10-15 14:23:22 +0000
+@@ -46,7 +46,7 @@
+ 
+ namespace
+ {
+-unsigned int DEFAULT_VIEWPORT_WIDTH = 4;
++unsigned int DEFAULT_VIEWPORT_WIDTH = 1;
+ unsigned int DEFAULT_VIEWPORT_HEIGHT = 1;
+ 
+ bool Advance (Display *d, bool r)
+

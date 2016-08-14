@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -21,12 +21,12 @@ source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pk
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "trailfocus-fix.patch"
-        "fix-expo-offset.patch")
+        "3981_3980.diff")
 sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
-            'ac5bfcc43589e4d9a3eaeb2e10b63502dedefe6ba24c705d6761805e913d5ff8')
+            '36781e0eebdb6f0b4b29bb69e9aa342688e48ea0a6fb14dff60e00a3cf74815d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -47,8 +47,8 @@ prepare() {
   # Fix ambiguous function call in trailfocus plugin
   patch -p1 -i "${srcdir}/trailfocus-fix.patch"
 
-  # Fix expo offset
-  patch -p1 -i "${srcdir}/fix-expo-offset.patch"
+  # Reverse Ubuntu specific configuration patches
+  patch -Rp1 -i "${srcdir}/3981_3980.diff"
 }
 
 build() {
