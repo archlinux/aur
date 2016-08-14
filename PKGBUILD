@@ -56,8 +56,16 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
-source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
-sha256sums=($(curl -s ${_digest} | grep -A5 "${_srcname}-${_srcverregex}\.tar\.xz" | grep 'sha256' | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g'))
+source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz"
+        'imagemagick-7.0.2.8-opencl-compile-fix.patch'
+)
+sha256sums=('60a2e6811a70612217b2a66a345c6073c6e220a481ce2f5db43fccc5232eb668'
+            '82e04d016cd9154f7d6edc4a2cb6dad9b226e9cd44116bb48723da3cb2c5fe9b')
+
+prepare() {
+	cd "$_srcname"-"$_srcver"
+	patch -p1 -i ../imagemagick-7.0.2.8-opencl-compile-fix.patch
+}
 
 build() {
 	cd "$_srcname"-"$_srcver"
