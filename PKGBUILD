@@ -3,7 +3,7 @@
 
 pkgname=psftools
 pkgver=1.0.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Utilities for manipulation of console fonts in PSF format"
 arch=('i686' 'x86_64')
 url="http://www.seasip.info/Unix/PSF/"
@@ -15,7 +15,7 @@ md5sums=('159022aae93a797dbc2a01014acbd115')
 
 build() {
   cd  "$srcdir"/$pkgname-$pkgver
-  automake || true
+  export CPPFLAGS="-O2"
   ./configure \
     --prefix=/usr \
     --mandir=/usr/share/man
