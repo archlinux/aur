@@ -41,31 +41,23 @@ md5sums=('SKIP'
 
 prepare() {
   msg2 "Hook up qwt to qmake"
-  #qmake -set QMAKEFEATURES /usr/local/qwt-6.1.2/features
   qmake -set QMAKEFEATURES usr/share/qt4/mkspecs/features
   
-  #msg2 "Checkout v.2.9.0 branch as master branch is failing to run (seg-fault)"
-  #cd $srcdir/sonic-pi/
-  #git checkout tags/v2.9.0
-
   msg2 "Fix wrongly-named (on Arch) QT library"
-  #cd $srcdir/sonic-pi/app/gui/qt
   find $srcdir/sonic-pi/app/gui/qt -type f -name "*" -readable -exec sed -i 's/lqt5scintilla2/lqscintilla2-qt5/g' {} +
+  
   #Patch build-ubuntu-app script to skip ubuntu-specific (and redundant) options
+  msg2 "Patch build-ubuntu-app script for Arch Linux"
   cd $srcdir/sonic-pi/app/gui/qt
   patch < $srcdir/build-ubuntu-app.patch
   patch < $srcdir/SonicPi.patch 
-  #find . -type f -name "*" -exec sed -i 's/+= -L\/Users\/sam\/Downloads\/tmp\/QScintilla-gpl-2.9\/Qt4Qt5/+= -lqscintilla2-qt5/g' {} +
 }
 
 build() {
-#Based on instructions from INSTALL.md in upstream sources
-#Building
-  #cd $srcdir/sonic-pi
-  #cd app/server/bin
-  #./compile-extensions.rb
+  #Based on instructions from INSTALL_LINUX.md in upstream sources
   cd $srcdir/sonic-pi/app/gui/qt
   ./build-ubuntu-app
+  
   #Cleaning up object files
   cd $srcdir
   find . -type f -name "*.o" -exec rm {} +
@@ -79,24 +71,22 @@ pkgver() {
 }
 
 package() {
-#Install sources to /opt/
+  #Install sources to /opt/
   mkdir $pkgdir/opt/
   mkdir $pkgdir/opt/sonic-pi
   cp -R $srcdir/sonic-pi/* $pkgdir/opt/sonic-pi/ > /dev/null
   ln -s -r $pkgdir/opt/sonic-pi/app/server $pkgdir/opt/sonic-pi/server
-#Add a launcher script to /usr/bin
+  
+  #Add a launcher script to /usr/bin
   mkdir $pkgdir/usr
   mkdir $pkgdir/usr/bin
   install -Dm644 "$srcdir/launcher.sh" "$pkgdir/usr/bin/sonic-pi"
   chmod +x $pkgdir/usr/bin/sonic-pi
-#Add a desktop entry
+  
+  #Add a desktop entry
   mkdir $pkgdir/usr/share
   mkdir $pkgdir/usr/share/applications
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   mkdir $pkgdir/usr/share/pixmaps
   install -Dm644 "sonic-pi-git.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-#Install the license to /usr/share/licenses
-  #mkdir $pkgdir/usr/share/licenses
-  #mkdir $pkgdir/usr/share/licenses/sonic-pi-git
-  #install -Dm644 "$srcdir/sonic-pi/app/gui/qt/info/LICENSE.html" "$pkgdir/usr/share/licenses/sonic-pi/LICENSE.html" 
 }
