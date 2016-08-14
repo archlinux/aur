@@ -16,9 +16,9 @@ md5sums=('ddda3e3c36b19aac8a2bf69bf7cbedf1')
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --prefix="$pkgdir/usr/"
-    mkdir -p $pkgdir/usr/share/licenses
-    cp -r $srcdir/$pkgname-$pkgver/license $pkgdir/usr/share/licenses/idlex
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install --prefix="$pkgdir/usr/"
+
+    install -Dm644 license/* -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
 
