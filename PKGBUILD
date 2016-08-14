@@ -1,5 +1,4 @@
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
-# Contributor: Sam Stuewe <halosghost at archlinux dot info>
+# Maintainer: Juan Martínez <mratmartinez at anche.no>
 
 _gitname=minirc
 pkgname=$_gitname-git
@@ -37,7 +36,7 @@ package() {
 
   ROOT="$pkgdir" ./setup.sh --force
 
-  for i in FAQ README.md screenshot.png; do
+  for i in FAQ README.md; do
     install -Dm644 $i "$pkgdir"/usr/share/doc/$_gitname/$i
   done
 }
