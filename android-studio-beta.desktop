@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Android Studio (Beta)
+Exec=android-studio-beta %f
+Icon=android-studio-beta
+Comment=The Official Android IDE (Beta branch)
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-studio
+MimeType=application/x-extension-iml;
