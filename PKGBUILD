@@ -5,18 +5,13 @@ pkgver=0.6.r20.g3798298
 pkgrel=3798298
 pkgdesc="NetVirt is an open source network virtualization platform (NVP)."
 arch=('i686' 'x86_64')
-url=("http://netvirt.org" "https://github.com/netvirt/netvirt")
-license='GPLv3'
+url="http://netvirt.org"
+license=('GPLv3')
 depends=()
 optdepends=()
 makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
-source="${pkgname}::git+https://github.com/netvirt/netvirt.git"
+source=("${pkgname}::git+https://github.com/netvirt/netvirt.git")
 md5sums=('SKIP')
-
-pkgver() {
-  # see https://wiki.archlinux.org/index.php/VCS_package_guidelines for more details
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 pkgrel() {
   git rev-parse --short HEAD
