@@ -1,13 +1,13 @@
 #Maintainer: M0Rf30
 
 pkgname=g4l
-pkgver=0.47
+pkgver=0.51
 pkgrel=1
 pkgdesc="Ghost 4 Linux is a hard disk and partition imaging and cloning tool."
 arch=('any')
 url="http://freecode.com/projects/g4l/"
 license=('GPL')
-depends=('ddrescue' 'partimage' 'dd_rhelp' 'lzop' 'gzip' 'bzip2' 'ncurses' 'fsarchiver')
+depends=('ddrescue' 'partimage' 'dd_rhelp' 'dialog' 'lzop' 'gzip' 'bzip2' 'ncurses' 'fsarchiver')
 source=(
 #ftp://fedoragcc.dyndns.org/${pkgname}-v${pkgver}.devel.tar.gz
 http://fossies.org/linux/misc/${pkgname}-v${pkgver}.devel.tar.gz)
@@ -28,5 +28,4 @@ package() {
 }
 
 
-md5sums=('7abf0c9077f35c43c4f1f9714cd79e13')
-md5sums=('c0061e1dd5252a826cdc1e13b2138f74')
+md5sums=('c6ea9c6105cf748bba63cf6d190ad87b')
