@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="zfs-linux-git"
-pkgver=0.6.5_r345_gdfbc863_4.6.4_1
+pkgver=0.6.5_r403_ge35c5a8_4.7.0_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.6.4")
-makedepends=("linux-headers=4.6.4" "git")
+depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.7")
+makedepends=("linux-headers=4.7" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
@@ -28,7 +28,6 @@ groups=("archzfs-linux-git")
 license=("CDDL")
 install=zfs.install
 provides=("zfs")
-replaces=("zfs-git")
 
 build() {
     cd "${srcdir}/zfs"
@@ -36,8 +35,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.6.5.7 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.6.4-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.6.4-1-ARCH/build
+                --with-linux=/usr/lib/modules/4.7.0-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.7.0-1-ARCH/build
     make
 }
 
@@ -47,5 +46,5 @@ package() {
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.6.4-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.7.0-1-ARCH/Module.symvers
 }
