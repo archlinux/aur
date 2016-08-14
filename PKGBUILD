@@ -2,8 +2,8 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
-pkgver=4.9.3
-pkgrel=3
+pkgver=4.9.4
+pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -15,7 +15,7 @@ options=('!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs'
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "minorSOname.patch"
         "no-nested-deprecated-warnings.patch")
-md5sums=('6f831b4d251872736e8e9cc09746f327'
+md5sums=('87c24a4090c1577ba817ec6882602491'
          'eac80070a6324fc67ed5b3ac85551789'
          '507f0b6c95ad5ff8e436697ae093a10d')
 
