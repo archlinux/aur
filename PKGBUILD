@@ -3,7 +3,7 @@
 pkgbase=libretro-mednafen-psx-git
 pkgname=('libretro-mednafen-psx-git' 'libretro-mednafen-psx-hw-git')
 _gitname=beetle-psx-libretro
-pkgver=1238.4ad02c7
+pkgver=1275.aa0dbd3
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen PSX"
 arch=('i686' 'x86_64')
