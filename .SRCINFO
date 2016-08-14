@@ -1,12 +1,12 @@
 pkgbase = boostnote
 	pkgdesc = Opensource note app for developer
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://b00st.io/
 	arch = x86_64
 	license = GPL
-	source = https://github.com/BoostIO/boost-releases/releases/download/v0.6.1/boostnote_0.6.1_amd64.deb
-	md5sums = 4a1e0aa9e7f772a7051efc209edd7750
+	source = https://github.com/BoostIO/boost-releases/releases/download/v0.6.3/boostnote_0.6.3_amd64.deb
+	md5sums = 38fa1de3fc57215cc678adbefc5dad3d
 
 pkgname = boostnote
 
