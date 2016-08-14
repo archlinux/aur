@@ -1,0 +1,14 @@
+pkgbase = ofxstatement-be-kbc
+	pkgdesc = Belgian KBC Bank plugin for ofxstatement
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/plenaerts/ofxstatement-be-kbc
+	arch = any
+	license = GPL3
+	depends = python
+	depends = ofxstatement
+	source = https://github.com/plenaerts/ofxstatement-be-kbc/archive/v0.0.1.tar.gz
+	md5sums = 48ecacdd40c39e32b7c89faead2c5c7d
+
+pkgname = ofxstatement-be-kbc
+
