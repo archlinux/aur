@@ -27,26 +27,18 @@ package() {
     $srcdir/Gate88_$pkgver/music \
     $srcdir/Gate88_$pkgver/music/non-ingame
 
-  mkdir -p $pkgdir/usr/share/$pkgname/lib \
-    $pkgdir/usr/share/applications \
-    $pkgdir/usr/share/licenses/$pkgname \
-    $pkgdir/etc/$pkgname \
-    $pkgdir/etc/rc.d \
-    $pkgdir/usr/bin
-
+  mkdir -p $pkgdir/usr/share/$pkgname/
   cp -a $srcdir/Gate88_${pkgver}/music \
 		$srcdir/Gate88_${pkgver}/sound \
 		$srcdir/Gate88_${pkgver}/gate88 \
 		$pkgdir/usr/share/$pkgname
 
-  cp $srcdir/Gate88_${pkgver}/lib/libstdc++-libc6.2-2.so.3 \
-    $pkgdir/usr/share/$pkgname/lib
+  install -D $srcdir/Gate88_${pkgver}/lib/libstdc++-libc6.2-2.so.3 -t "$pkgdir/usr/share/$pkgname/lib"
 
-  cp $srcdir/Gate88_${pkgver}/*.conf $pkgdir/etc/$pkgname
-  cp $srcdir/Gate88_${pkgver}/license.txt \
-    $pkgdir/usr/share/licenses/$pkgname
+  install -D $srcdir/Gate88_${pkgver}/*.conf -t "$pkgdir/etc/$pkgname"
+  install -D $srcdir/Gate88_${pkgver}/license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  cp $srcdir/$pkgname.png $pkgdir/usr/share/$pkgname
-  cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications
-  cp $srcdir/$pkgname $pkgdir/usr/bin
+  install -D $srcdir/$pkgname.png -t "$pkgdir/usr/share/$pkgname"
+  install -D $srcdir/$pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -D $srcdir/$pkgname -t "$pkgdir/usr/bin/"
 }
