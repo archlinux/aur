@@ -14,9 +14,9 @@ depends=(
 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
 )
 install=$pkgname.install
-source=("git+https://github.com/Novum/vkquake"
-	vkquake-git.desktop
-	vkquake-git.png)
+source=('vkquake-git::git+https://github.com/Novum/vkquake.git'
+	'vkquake-git.desktop'
+	'vkquake-git.png')
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP')
