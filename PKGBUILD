@@ -16,11 +16,14 @@ optdepends=(
   'aegir: meta-Drupal hosting platform'
   'solr-undertow: high performance servlet container for Solr')
 # The mapping-ISOLatin1Accent.txt file is identical in all occurrences in the Solr repo across the head of all its supported branches (3-5.x)
-source=("https://raw.githubusercontent.com/apache/lucene-solr/branch_5x/solr/core/src/test-files/solr/collection1/conf/mapping-ISOLatin1Accent.txt"
+source=("https://raw.githubusercontent.com/apache/lucene-solr/master/solr/example/example-DIH/solr/solr/ "
+        "https://www.drupal.org/files/issues/2711685-support-solr6-3.patch"
+         '0293cb23527acb1e8a307539a8d68021'
+        "https://www.drupal.org/files/issues/2711685-support-solr6-${_pkgname//_/-}-4.patch"
         "http://ftp.drupal.org/files/projects/$_pkgname-${_pkgvers[0]}.tar.gz"
         "http://ftp.drupal.org/files/projects/$_pkgname-${_pkgvers[1]}.tar.gz")
-md5sums=('9f3c8a60a4f09327fad22aeff082c2b3'
-         '0293cb23527acb1e8a307539a8d68021'
+md5sums=('f33510d7ab9f75bc8dc5e49d72acea2a'
+         '479dea32043f12575838eaa6de62f248'
          '40fccb08f08b0014ff884504ddb7616c')
 noextract=("${source[@]%%::*}")
 
