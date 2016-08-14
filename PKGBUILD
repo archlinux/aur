@@ -1,6 +1,6 @@
 # Contributor: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-postgresql-libs
-pkgver=9.5.3
+pkgver=9.5.4
 pkgrel=1
 pkgdesc="Libraries for use with PostgreSQL (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(mingw-w64-gettext "mingw-w64-openssl>=1.0.0" mingw-w64-libxml2)
 options=(staticlibs !strip !buildflags)
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
 "postgresql-9.4.1-mingw-link.patch")
-sha256sums=('7385c01dc58acba8d7ac4e6ad42782bd7c0b59272862a3a3d5fe378d4503a0b4'
+sha256sums=('cf5e571164ad66028ecd7dd8819e3765470d45bcd440d258b686be7e69c76ed0'
             '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
