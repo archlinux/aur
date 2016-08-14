@@ -11,6 +11,8 @@ license=('LGPL2.1')
 depends=('gtk3' 'steam')
 makedepends=('git')
 optdepends=('steam-libs: A package for installing all required deps for the native runtime.')
+provides=('linux-steam-integration')
+conflicts=('linux-steam-integration')
 install=linux-steam-integration.install
 source=("git+https://github.com/solus-project/linux-steam-integration.git"
         "move-steam-lsi.sh"
