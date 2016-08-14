@@ -9,7 +9,7 @@
 pkgname=android-studio-beta
 pkgver=2.2.0b1
 _pkgver=2.2.0.7
-pkgrel=1
+pkgrel=2
 _build=145.3128856
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
@@ -22,12 +22,14 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-
-if [ "$CARCH" = "i686" ]; then
-  depends+=('java-environment')
-fi
 sha1sums=('bafb5d7029d2678e8274e24da1c7ce0a00f3a644'
           'b61f3bf3449f79f8b15aea93414398848e5a6614')
+validpgpkeys=('70617B1131063C47E8084DD10DDE73383977AC09') # Tad Fisher
+
+
+if [ "$CARCH" = "i686" ]; then
+    depends+=('java-environment')
+fi
 
 package() {
   cd $srcdir/android-studio

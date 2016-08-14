@@ -16,6 +16,7 @@ pkgbase = android-studio-beta
 	options = !strip
 	source = https://dl.google.com/dl/android/studio/ide-zips/2.2.0.7/android-studio-ide-145.3128856-linux.zip
 	source = android-studio-beta.desktop
+	validpgpkeys = 70617B1131063C47E8084DD10DDE73383977AC09
 	sha1sums = bafb5d7029d2678e8274e24da1c7ce0a00f3a644
 	sha1sums = b61f3bf3449f79f8b15aea93414398848e5a6614
 
