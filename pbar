@@ -37,36 +37,36 @@ usage() {
 }
 
 screenwidth() {
-	tty=$1
-	width="$(stty -F $tty size)"
+	local tty=$1
+	local width="$(stty -F $tty size)"
 	echo "${width##* }"
 }
 
 removeformat() {
-	echo "$(expr "$1" | sed -r "s/\\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g")"
+	echo "$(echo -e $1 | sed 's/\x1b\[[0-9;]*[m|K]//g')"
 }
 
 info() {
-	width=$1
-	title=$2
-	misc=$3
-	
+	local width=$1
+	local title=$2
+	local misc=$3
+
 	# Get vars for output
-	beginline=$title
-	misclen=0
+	local beginline=$title
+	local misclen=0
 	# Remove color code
 	if [[ $misc != "" ]]; then
-		misctext=$(removeformat "$misc")
+		local misctext=$(removeformat "$misc")
 		misclen=$((1+${#misctext}))
 	fi
-	beginlinetext=$(removeformat "$beginline")
+	local beginlinetext=$(removeformat "$beginline")
 	if [[ $width -lt $((${#beginlinetext}+2+$misclen-1)) ]]; then
 		# Remove color code, cut the text and print it without color code
 		beginlinetext=${beginlinetext::$((width-$misclen-4))}
 		beginline=$beginlinetext"..."
 		beginlinetext=$(removeformat "$beginline")
 	fi
-	spaces="$(($width-${#beginlinetext}-1-$misclen))"
+	local spaces="$(($width-${#beginlinetext}-1-$misclen))"
 
 	# Print output
 	printf "$beginline %${spaces}s"
@@ -74,8 +74,8 @@ info() {
 }
 
 drawsymbol() {
-	symbol=$1
-	num=$2
+	local symbol=$1
+	local num=$2
 
 	for ((n=0; n<$num; n++)); do
 		printf "$symbol"
@@ -84,21 +84,21 @@ drawsymbol() {
 
 # This method is a fork from the packer method aurbar
 progbar() {
-	width=$1
-	infinite=$2
-	done=$3
-	total=$4
+	local width=$1
+	local infinite=$2
+	local done=$3
+	local total=$4
 
 	# Get vars for output
-	barchars="$(($width-${#BEGINBAR}-${#ENDBAR}-6))"
-	hashes="$(($barchars*$done/$total))"
-	dashes="$(($barchars-$hashes))"
+	local barchars="$(($width-${#BEGINBAR}-${#ENDBAR}-6))"
+	local hashes="$(($barchars*$done/$total))"
+	local dashes="$(($barchars-$hashes))"
 
 	# Print output
 	printf " ${BEGINBAR}"
 
 	if [[ $infinite ]]; then
-		offset="$(($hashes-2))"
+		local offset="$(($hashes-2))"
 		hashes=3
 		[[ $offset -lt 0 ]] && offset=0 && hashes=2
 		drawsymbol $DASH $offset
@@ -113,28 +113,28 @@ progbar() {
 	else
 		drawsymbol $HASH $hashes
 		drawsymbol $DASH $dashes
-		perc="$(($done*100/$total))"
+		local perc="$(($done*100/$total))"
 		printf "%s%4s%%\r" ${ENDBAR} ${perc}
 	fi
 }
 
 printline() {
-	tty=$1
-	infinite=$2
-	done=$3
-	total=$4
-	title=$5
-	misc=$6
+	local tty=$1
+	local infinite=$2
+	local done=$3
+	local total=$4
+	local title=$5
+	local misc=$6
 
-	width=$(screenwidth $tty)
-	infolen="$(($width*6/10))"
+	local width=$(screenwidth $tty)
+	local infolen="$(($width*6/10))"
 	[ $width -lt 50 ] && width=50
-	progbarlen="$(($width-$infolen))"
+	local progbarlen="$(($width-$infolen))"
 
 	if [[ $total -eq 0 ]]; then
 		total=$(($progbarlen-9))
 
-		newdone="$(($done % $total))"
+		local newdone="$(($done % $total))"
 		if [[ $(($done % $((2*$total)))) -ge $total ]]; then
 			newdone="$(($total-$newdone))"
 		fi	
@@ -209,7 +209,7 @@ fi
 
 if [[ $done -eq 0 ]] && [[ $total -eq 0 ]] && [[ $infinite -eq 1 ]]; then
 	trap "exit=true" SIGINT SIGTERM
-	i=0
+	local i=0
 	while [ ! $exit ]; do
 		printline $tty "$infinite" $i 0 "$title" "$misc"
 		i="$(($i+1))"
