@@ -1,8 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=solr-undertow
-pkgver=1.6.0_BETA_1
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='Solr / SolrCloud running in high performance server'
 arch=('i686' 'x86_64' 'any')
 url="https://github.com/kohesive/$pkgname"
@@ -15,7 +15,7 @@ install="$pkgname.install"
 source=("$url/releases/download/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tgz"
         'default.conf'
         "$pkgname.service")
-md5sums=('6d48db8de5fa82a41122a59638dbb92e'
+md5sums=('33c77a0ae7661142858b5857e692eea6'
          '3f8f716ddf4daa9073f32fc3666d1004'
          '4f48f542c296933ee35cd739e2189448')
 
