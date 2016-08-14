@@ -1,20 +1,21 @@
 pkgbase = frcmake-git
 	pkgdesc = Some CMake stuff for use with the VxWorks 6.3 GCC Toolchain
 	pkgver = 46.c66f929
-	pkgrel = 3
+	pkgrel = 4
 	url = http://firstforge.wpi.edu/sf/projects/c--11_toochain
 	arch = any
 	license = GPL
 	depends = wput
 	depends = cmake
 	provides = frcmake
-	conflicts = vxworks-gcc-toolchain-bin
 	conflicts = frcmake
 	options = !strip
 	options = libtool
 	options = !zipman
 	source = git+http://bitbucket.org/frc-cpp11/frcmake
+	source = toolchain-cmake.patch
 	sha512sums = SKIP
+	sha512sums = b8c1ed21eab5af8b04f17ae8699e6c5ccdb99eff943e42e2ff2a5f3baf4b157e2426e3677f5086ff1694b713fdb945fc3e21b88cb5e5b2ed65274726433f3972
 
 pkgname = frcmake-git
 

@@ -1,0 +1,150 @@
+diff --git a/toolchain.cmake.in b/toolchain.cmake.in
+index a913671..32aa4d8 100644
+--- a/toolchain.cmake.in
++++ b/toolchain.cmake.in
+@@ -9,49 +9,40 @@ include(CMakeForceCompiler)
+ 
+ ### CONFIGURATION ###
+ 
+-set(TOOLCHAIN_PREFIX /usr/powerpc-wrs-vxworks)
+-set(TOOLCHAIN_IS_GCCDIST false)
+-set(TOOLCHAIN_C_COMPILER powerpc-wrs-vxworks-gcc)
+-set(TOOLCHAIN_CXX_COMPILER powerpc-wrs-vxworks-g++)
++set(TARGET powerpc-wrs-vxworks)
++set(TOOLCHAIN_PREFIX /usr/${TARGET})
+ 
+-set(STRIPSYMS powerpc-wrs-vxworks-stripsyms) #ignore for gccdist
+-set(MUNCH powerpc-wrs-vxworks-munch) #see README
++set(STRIPSYMS ${TARGET}-stripsyms)
++set(MUNCH ${TARGET}-munch) #see README
+ 
+ ### CONFIGURATION BELOW SHOULD NOT NEED TO BE CHANGED ###
+ 
+ set(WIND_BASE "$ENV{WIND_BASE}")
+-set(CMAKE_INSTALL_PREFIX "${TOOLCHAIN_PREFIX}")
+-set(CMAKE_FIND_ROOT_PATH "${TOOLCHAIN_PREFIX}")
+-set(VXWORKS_USE_SOFT_FLOAT false)
++set(CMAKE_INSTALL_PREFIX "/usr/${TARGET}")
++set(CMAKE_FIND_ROOT_PATH "/usr/${TARGET}")
+ 
+-CMAKE_FORCE_C_COMPILER("${TOOLCHAIN_C_COMPILER}" GNU)
+-CMAKE_FORCE_CXX_COMPILER("${TOOLCHAIN_CXX_COMPILER}" GNU)
++CMAKE_FORCE_C_COMPILER("${TARGET}-gcc" GNU)
++CMAKE_FORCE_CXX_COMPILER("${TARGET}-g++" GNU)
+ set(CMAKE_LIBRARY_PATH_FLAG -L)
+ 
+ ### TOOLCHAIN SPECIFIC CONFIGURATION ###
+-if(${TOOLCHAIN_IS_GCCDIST})
+-	### CONFIGURATION FOR GCCDIST ONLY ###
+-    set(DKM_LINK_SCRIPT "${WIND_BASE}/target/h/tool/gnu/ldscripts/link.OUT")
+-else()
+-	### CONFIGURATION FOR NON-GCCDIST TOOLCHAINS ONLY ###
+-	#locations of libraries so we can use nm to find their symbols
+-	set(VXWORKS_LIBSTDCXX "${TOOLCHAIN_PREFIX}/lib/libstdc++.a")
+-	set(VXWORKS_LIBSUPCXX "${TOOLCHAIN_PREFIX}/lib/libsupc++.a")
+-	#libgcc's location changes based on gcc, so ask compiler where it is
+-    execute_process(COMMAND "${TOOLCHAIN_C_COMPILER}" -print-libgcc-file-name OUTPUT_VARIABLE VXWORKS_LIBGCC)
+-    
+-    #the above command leaves a newline at the end of VXWORKS_LIBGCC.
+-    #This triggers a bug in cmake's link script execution which will
+-    #segfault because it sees a blank line and passes an empty string to
+-    #execvp().  For now, workaround: use regex to strip trailing newline
+-	string(REGEX REPLACE "(\r?\n)+$" "" VXWORKS_LIBGCC "${VXWORKS_LIBGCC}")
+-	
+-	#link flags for standard libraries
+-	set(VXWORKS_STDLIB_LINK " -lsupc++ -lstdc++ -lgcc")
+-	#TODO: Do we want libsupc++?
+-
+-    set(DKM_LINK_SCRIPT "${TOOLCHAIN_PREFIX}/share/ldscripts/dkm.ld")
+-endif()
++#locations of libraries so we can use nm to find their symbols
++set(VXWORKS_LIBSTDCXX "/usr/${TARGET}/lib/libstdc++.a")
++set(VXWORKS_LIBSUPCXX "/usr/${TARGET}/lib/libsupc++.a")
++#libgcc's location changes based on gcc, so ask compiler where it is
++  execute_process(COMMAND "${TARGET}-gcc" -print-libgcc-file-name OUTPUT_VARIABLE VXWORKS_LIBGCC)
++  
++  #the above command leaves a newline at the end of VXWORKS_LIBGCC.
++  #This triggers a bug in cmake's link script execution which will
++  #segfault because it sees a blank line and passes an empty string to
++  #execvp().  For now, workaround: use regex to strip trailing newline
++string(REGEX REPLACE "(\r?\n)+$" "" VXWORKS_LIBGCC "${VXWORKS_LIBGCC}")
++
++#link flags for standard libraries
++set(VXWORKS_STDLIB_LINK " -lsupc++ -lstdc++ -lgcc")
++#TODO: Do we want libsupc++?
++
++  set(DKM_LINK_SCRIPT "/usr/${TARGET}/share/ldscripts/dkm.ld")
+ ### END TOOLCHAIN SPECIFIC CONFIGURATION ###
+ 
+ ### END CONFIGURATION ###
+@@ -73,23 +64,12 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ 
+-#System Headers
+-if(${TOOLCHAIN_IS_GCCDIST})
+-	set(SYSTEM_INCLUDES "-isystem ${WIND_BASE}/target/h -isystem ${WIND_BASE}/target/h/wrn/coreip")
+-else()
+-	#modern build toolchains do not presently require additional includes
+-endif()
+-
+ #build flags
+ set(CPU PPC603)
+ set(TOOL_FAMILY gnu)
+ set(TOOL gnu)
+ set(ARCH_SPEC "-mcpu=603 -mstrict-align -mlongcall")
+ 
+-if (${VXWORKS_USE_SOFT_FLOAT})
+-	set(ARCH_SPEC "${ARCH_SPEC} -msoft_float")
+-endif()
+-
+ #Set CFLAGS, LDFLAGS
+ #Note that we use -nostdlib and then link with the standard library
+ set(VXWORKS_COMPILE_FLAGS "${ARCH_SPEC} -nostdlib -Wall ${SYSTEM_INCLUDES} -DCPU=${CPU} -DTOOL_FAMILY=${TOOL_FAMILY} -DTOOL=${TOOL} -D_WRS_KERNEL")
+@@ -105,25 +85,6 @@ set(CMAKE_C_LINK_EXECUTABLE "<CMAKE_C_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LI
+ 
+ #link rules for C++:
+ #TODO:  This will NOT work on win32!
+-if(${TOOLCHAIN_IS_GCCDIST})
+-#	Do a partial link.
+-#	- The first line compiles the partial image - NOTE: we link static libraries at this point so that all of
+-#		the symbols that are pulled into the module (and only those symbols) will be munched in the next step
+-#	- The second line "munches" the executable to generate a file (<TARGET>_ctdt.c) that contains all of the
+-#		static constructors and destructors in an array so that the kernel can call them at the appropriate times.
+-#	- The third line compiles the ctor/dtor file.
+-#	- The fourth line links the partial image together with the ctor/dtor object to create the finished executable
+-#	- The last line cleans up all these generated files (which will have to be regenerated later anyway)
+-#
+-#	NOTE: We don't link the standard library here as we'll get the kernel's copy when we get loaded in
+-	set(CMAKE_CXX_LINK_EXECUTABLE
+-		"<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> ${VXWORKS_DKM_LINK_FLAGS} <LINK_FLAGS> <OBJECTS> -o <TARGET>_PartialImage.out <LINK_LIBRARIES>"
+-		"${MUNCH} <TARGET>_ctdt.c <TARGET>_PartialImage.out"
+-		"<CMAKE_C_COMPILER> -c <TARGET>_ctdt.c -o <TARGET>_ctdt.c.o ${VXWORKS_COMPILE_FLAGS}"
+-		"<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <TARGET>_PartialImage.out <TARGET>_ctdt.c.o -o <TARGET> ${VXWORKS_DKM_LINK_FLAGS} ${VXWORKS_DKM_LINK_SCRIPT_FLAG}"
+-		"<CMAKE_COMMAND> -E remove <TARGET>_PartialImage.out <TARGET>_ctdt.c <TARGET>_ctdt.c.o"
+-	)
+-else()
+ #	Here's the crazy part...
+ #	- The first line compiles the partial image - NOTE: notice we also link the standard library at this point
+ #	- We munch the executable, which now contains the standard library as well
+@@ -138,12 +99,11 @@ else()
+ #		in what symbols are defined, inline functions, and other internals between the kernel's stdlib (which is a whole
+ #		major version old!) and the one we have.  Even if its just the headers, something might break.  The gccdist link 
+ #		command might work, but I don't recommend it.
+-	set(CMAKE_CXX_LINK_EXECUTABLE 
+-		"<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> ${VXWORKS_DKM_LINK_FLAGS} <LINK_FLAGS> <OBJECTS> -o <TARGET>_PartialImage.out <LINK_LIBRARIES> ${VXWORKS_STDLIB_LINK}"
+-		"${MUNCH} <TARGET>_ctdt.c <TARGET>_PartialImage.out"
+-		"<CMAKE_C_COMPILER> -c <TARGET>_ctdt.c -o <TARGET>_ctdt.c.o ${VXWORKS_COMPILE_FLAGS}"
+-		"<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <TARGET>_PartialImage.out <TARGET>_ctdt.c.o -o <TARGET> ${VXWORKS_DKM_LINK_FLAGS} ${VXWORKS_DKM_LINK_SCRIPT_FLAG}"
+-		"${STRIPSYMS} <TARGET> ${VXWORKS_LIBSTDCXX} ${VXWORKS_LIBSUPCXX} ${VXWORKS_LIBGCC}"
+-		"<CMAKE_COMMAND> -E remove <TARGET>_PartialImage.out <TARGET>_ctdt.c <TARGET>_ctdt.c.o"
+-	)
+-endif()
++set(CMAKE_CXX_LINK_EXECUTABLE 
++  "<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> ${VXWORKS_DKM_LINK_FLAGS} <LINK_FLAGS> <OBJECTS> -o <TARGET>_PartialImage.out <LINK_LIBRARIES> ${VXWORKS_STDLIB_LINK}"
++  "${MUNCH} <TARGET>_ctdt.c <TARGET>_PartialImage.out"
++  "<CMAKE_C_COMPILER> -c <TARGET>_ctdt.c -o <TARGET>_ctdt.c.o ${VXWORKS_COMPILE_FLAGS}"
++  "<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <TARGET>_PartialImage.out <TARGET>_ctdt.c.o -o <TARGET> ${VXWORKS_DKM_LINK_FLAGS} ${VXWORKS_DKM_LINK_SCRIPT_FLAG}"
++  "${STRIPSYMS} <TARGET> ${VXWORKS_LIBSTDCXX} ${VXWORKS_LIBSUPCXX} ${VXWORKS_LIBGCC}"
++  "<CMAKE_COMMAND> -E remove <TARGET>_PartialImage.out <TARGET>_ctdt.c <TARGET>_ctdt.c.o"
++)
