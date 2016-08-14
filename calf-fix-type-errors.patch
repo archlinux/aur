@@ -1,0 +1,69 @@
+diff --git a/src/analyzer.cpp b/src/analyzer.cpp
+index fd42188..73f9d4e 100644
+--- a/src/analyzer.cpp
++++ b/src/analyzer.cpp
+@@ -471,12 +471,12 @@ void analyzer::draw(int subindex, float *data, int points, bool fftdone) const
+                                 //pumping up actual signal an erase surrounding
+                                 // sounds
+                                 fft_outL[_iter] = 0.25f * std::max(n * 0.6f * \
+-                                    fabs(fft_outL[_iter]) - var1L , 1e-20);
++                                    fabs(fft_outL[_iter]) - var1L , 1e-20f);
+                                 if(_mode == 3 or _mode == 4) {
+                                     // do the same with R channel if needed
+                                     lastoutR = fft_outR[_iter];
+                                     fft_outR[_iter] = 0.25f * std::max(n * \
+-                                        0.6f * fabs(fft_outR[_iter]) - var1R , 1e-20);
++                                        0.6f * fabs(fft_outR[_iter]) - var1R , 1e-20f);
+                                 }
+                                 break;
+                         }
+diff --git a/src/jack_client.cpp b/src/jack_client.cpp
+index 886d51e..ceb4285 100644
+--- a/src/jack_client.cpp
++++ b/src/jack_client.cpp
+@@ -226,7 +226,7 @@ void jack_client::calculate_plugin_order(std::vector<int> &indices)
+                 map<string, int>::const_iterator p = port_to_plugin.find((*k) + cnlen + 1);
+                 if (p != port_to_plugin.end())
+                 {
+-                    run_before.insert(make_pair<int, int>(p->second, i));
++                    run_before.insert(pair<int, int>(p->second, i));
+                 }
+             }
+             jack_free(conns);
+diff --git a/src/modules_dist.cpp b/src/modules_dist.cpp
+index 4b1b7f9..b0708bf 100644
+--- a/src/modules_dist.cpp
++++ b/src/modules_dist.cpp
+@@ -794,8 +794,8 @@ uint32_t tapesimulator_audio_module::process(uint32_t offset, uint32_t numsample
+             lfo2.advance(1);
+             
+             // dot
+-            rms = std::max((double)rms, (fabs(Lo) + fabs(Ro)) / 2);
+-            input = std::max((double)input, (fabs(Lc) + fabs(Rc)) / 2);
++            rms = std::max((double)rms, (fabs(Lo) + fabs(Ro)) / 2.0);
++            input = std::max((double)input, (fabs(Lc) + fabs(Rc)) / 2.0);
+             
+             float values[] = {inL, inR, outs[0][i], outs[1][i]};
+             meters.process(values);
+diff --git a/src/modules_limit.cpp b/src/modules_limit.cpp
+index 6b7dcb6..26195fa 100644
+--- a/src/modules_limit.cpp
++++ b/src/modules_limit.cpp
+@@ -429,7 +429,7 @@ uint32_t multibandlimiter_audio_module::process(uint32_t offset, uint32_t numsam
+                 }
+                 
+                 // write multiband coefficient to buffer
+-                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
++                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0f);
+                 
+                 // step forward in multiband buffer
+                 pos = (pos + channels) % buffer_size;
+@@ -811,7 +811,7 @@ uint32_t sidechainlimiter_audio_module::process(uint32_t offset, uint32_t numsam
+                 }
+                 
+                 // write multiband coefficient to buffer
+-                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
++                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0f);
+                 
+                 // step forward in multiband buffer
+                 pos = (pos + channels) % buffer_size;

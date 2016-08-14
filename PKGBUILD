@@ -4,11 +4,11 @@
 
 _pkgname=calf
 pkgname="${_pkgname}-git"
-pkgver=0.0.60.r2353.6cbdc54
+pkgver=0.0.60.r2370.e7daf55
 pkgrel=1
 pkgdesc="LV2/JACK audio plug-ins for musicians (git version)"
 arch=('i686' 'x86_64')
-url="http://calf.sourceforge.net/"
+url="http://calf-studio-gear.org/"
 license=('GPL' 'LGPL')
 depends=('desktop-file-utils' 'fluidsynth' 'gtk-update-icon-cache' 'lash'
          'lv2')
