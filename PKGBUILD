@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=1112.5ba23b6
+pkgver=1117.739416e
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -14,6 +14,7 @@ source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
 	 ${_pkgname}.conf
 	 ${_pkgname}.service
 	 ${_pkgname}.spec
+	 requirements.txt
 )
 install=${_pkgname}.install
 options=('!strip')
@@ -23,13 +24,14 @@ replaces=(${_pkgname} openbazaard)
 package(){
   cd $srcdir/${_pkgname}
   cp ../${_pkgname}.spec .
+  cp ../requirements.txt .
 
 msg2 "Creating an optimized standalone executable"
   virtualenv2 env
   source env/bin/activate
-  pip2 install --upgrade -r requirements.txt
+  pip2 install -r requirements.txt
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
-  env/bin/pyinstaller -F ${_pkgname}.spec
+  pyinstaller -F ${_pkgname}.spec
 
 msg2 "Symlinking to allow gui to automatically call daemon"
   install -dm755 $pkgdir/opt
@@ -55,4 +57,5 @@ pkgver() {
 md5sums=('SKIP'
          'd66496060ae2a28c6f755a1fb29e3f37'
          '58f846fbc1742fea9d245b6f93f6db15'
-         '6d5c84bead900b863b864f075bac98e4')
+         'e4d7b1c3fdceca262a517dd103f59260'
+         '83df086e201c60e2793180058bd7d1e9')
