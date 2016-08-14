@@ -3,10 +3,11 @@ post_install() {
   systemd-tmpfiles --create bitbucket.conf
   chown -R bitbucket:bitbucket /opt/atlassian-bitbucket /etc/bitbucket
   chmod -R 750 /etc/bitbucket
-  echo "==> "
-  echo "==> Bitbucket has finished installing."
-  echo "==> Visit https://confluence.atlassian.com/display/BitbucketServer/Install+Bitbucket+Server+from+an+archive+file for configuration instructions."
-  echo "==> "
+  echo "If you are running bitbucket in a VM and/or are experiencing trouble with the ssh-plugin, it might be necessary to enable haveged."
+}
+
+pre_upgrade() {
+    echo "Before upgrading bitbucket, you might want to take a look at https://confluence.atlassian.com/bitbucketserver/bitbucket-server-upgrade-guide-776640551.html"
 }
 
 post_upgrade() {

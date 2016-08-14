@@ -9,6 +9,7 @@ arch=("i686" "x86_64")
 depends=("java-runtime=8"
         "git>=1.8.0"
         "perl>=5.8.8")
+optdepends=("haveged: Entropy for the ssh plugin" )
 backup=("etc/systemd/system/${_pkgname}.service.d/local.conf"
         "etc/${_pkgname}/server.xml")
 install="$pkgname.install"
