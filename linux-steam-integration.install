@@ -1,0 +1,9 @@
+post_install() {
+  echo "Moving the steam binary to /usr/lib/steam/steam ..."
+  /usr/lib/steam/move-steam-lsi.sh
+}
+
+pre_remove() {
+  echo "Moving back the steam binary from /usr/lib/steam/steam ..."
+  /usr/lib/steam/remove-steam-lsi.sh
+}
