@@ -1,6 +1,6 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura-git
-pkgver=0.0.2460.g8e7f329
+pkgver=0.0.2755.g7768547
 pkgrel=1
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends."
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ build() {
   cd $_gitname
 
   # USE_CCACHE=no to honor makepkg's ccache setting.
-  make USE_CCACHE=no
+  make CXXFLAGS='-Wno-error' USE_CCACHE=no
 }
 
 package() {
