@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=vkquake
+Comment=Port of Quake I to the Vulkan API
+Exec=/usr/games/vkquake
+Icon=/usr/share/pixmaps/vkquake-git.png
+Terminal=false
+Type=Application
+Categories=Game;
+MimeType=x-scheme-handler/steam;
