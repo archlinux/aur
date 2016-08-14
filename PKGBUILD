@@ -1,8 +1,8 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=hexchat-autoaway
-pkgver=1.0.3
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="A HexChat plugin to set away on idle"
 arch=('i686' 'x86_64')
 url="https://github.com/andreyv/hexchat-autoaway"
@@ -11,7 +11,7 @@ depends=('hexchat' 'libxss')
 makedepends=('cmake')
 conflicts=('hexchat-autoaway-git')
 source=("https://github.com/andreyv/hexchat-autoaway/archive/v${pkgver}.tar.gz")
-sha256sums=('35367a4e0d6f1c83ec36f2ae11d9274cd874aa990f69c8b8690cca4045709e80')
+sha256sums=('608ba6b934869a5fe5d7402a178e2a24101d71eda2cb9b4b19e09058023eb8dc')
 
 build() {
   cd "${pkgname}-${pkgver}"
