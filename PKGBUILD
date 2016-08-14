@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-gettext
 pkgver=0.19.8.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='GNU internationalization library (mingw-w64)'
 depends=('mingw-w64-termcap' 'mingw-w64-libunistring')
@@ -17,7 +17,8 @@ source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
         "06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
         "07-fix-asprintf-conflict.mingw.patch"
         "08-vs-compatible.patch"
-        "09-gnulib-fix-underscore-cond.patch")
+        "09-gnulib-fix-underscore-cond.patch"
+        "intl.pc")
 md5sums=('97e034cf8ce5ba73a28ff6c3c0638092'
          'SKIP'
          '6f43ea4763a0cd461f60c71197832fba'
@@ -25,7 +26,8 @@ md5sums=('97e034cf8ce5ba73a28ff6c3c0638092'
          'f69747f43f279b8a81286cfe5916b82f'
          '3ebccf730ec3377b068027eb2283afb2'
          'f5b611172ae58f1e4589a8d0c1d53414'
-         'bed0da63d251975a21ca830f2f156766')
+         'bed0da63d251975a21ca830f2f156766'
+         'b0a123ec7ad1a345d0d712dae986a543')
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # Daiki Ueno
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -76,5 +78,11 @@ package() {
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    # provide pkgconfig file for iconv library
+    install -dm755 "$pkgdir/usr/${_arch}/lib/pkgconfig"
+    install -m644 "$srcdir/intl.pc" "$pkgdir/usr/${_arch}/lib/pkgconfig"
+    sed -i "$pkgdir/usr/${_arch}/lib/pkgconfig/intl.pc" \
+      -e "s|@PREFIX[@]|/usr/${_arch}|g" \
+      -e "s|@VERSION[@]|$pkgver|g"
   done
 }
