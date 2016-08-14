@@ -1,4 +1,4 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Juan Martínez <mratmartinez at anche.no>
 
 pkgname=python-q
 pkgver=2.6
@@ -8,6 +8,7 @@ arch=('any')
 url='http://pypi.python.org/pypi/q/'
 license=('Apache')
 depends=('python')
+makedepends=('python-setuptools')
 source=("http://pypi.python.org/packages/source/q/q/q-$pkgver.tar.gz")
 md5sums=('0251ce38a2dce77917a8929d7968e035')
 
