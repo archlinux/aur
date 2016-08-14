@@ -1,41 +1,37 @@
-#Maintainer: Lubosz Sarnecki <lubosz@gmail.com> 
+#Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
+#Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
-_realname=libkeyfinder
-pkgname=$_realname-git
-pkgver=2.1.0.227.2f868b2
-pkgrel=1
+pkgname=libkeyfinder-git
 pkgdesc="Musical key detection for digital audio."
-arch=('i686' 'x86_64')
 url="http://www.ibrahimshaath.co.uk/keyfinder/"
 license=('GPL3')
-depends=('qt5-base' 'fftw' 'boost-libs') 
-makedepends=('git' 'boost')
-provides=($_realname)
-conflicts=($_realname)
+pkgver=239.0a5ec7f
+pkgrel=1
 
-_gitname=libKeyFinder
+provides=(libkeyfinder)
+conflicts=(libkeyfinder)
 
-source=("git://github.com/ibsh/libKeyFinder.git" "0001-make-prefix-usr.patch")
-sha256sums=("SKIP" '499cc00f55dbe89fe9dde5864ec0121106c00118a0b9f4a87f81fd95495e8c9b')
-  
+source=("$pkgname::git://github.com/ibsh/libKeyFinder.git")
+sha256sums=('SKIP')
+depends=('fftw')
+makedepends=('git' 'qt5-base')
+arch=('i686' 'x86_64')
+
 pkgver() {
-  cd $_gitname
-  VERSION=$(grep VERSION LibKeyFinder.pro | sed 's/VERSION = //')
-  REVISION=$(git rev-list --count master)
-  HASH=$(git rev-parse --short master)
-  echo $VERSION.$REVISION.$HASH
+  cd "$srcdir/$pkgname"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd $_gitname
-  git am ../../0001-make-prefix-usr.patch
-  qmake-qt5 PREFIX=/usr
+  cd "$srcdir/$pkgname"
+
+  qmake-qt5
   make
 }
 
 package() {
-  cd $_gitname
-  make INSTALL_ROOT="${pkgdir}" install
+  cd "$srcdir/$pkgname"
+
   mkdir -p ${pkgdir}/usr/include/keyfinder
-  cp ${srcdir}/${_gitname}/*.h ${pkgdir}/usr/include/keyfinder
+  make INSTALL_ROOT="${pkgdir}" install
 }

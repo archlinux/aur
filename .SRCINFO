@@ -1,22 +1,18 @@
 pkgbase = libkeyfinder-git
 	pkgdesc = Musical key detection for digital audio.
-	pkgver = 2.1.0.227.2f868b2
+	pkgver = 239.0a5ec7f
 	pkgrel = 1
 	url = http://www.ibrahimshaath.co.uk/keyfinder/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = boost
-	depends = qt5-base
+	makedepends = qt5-base
 	depends = fftw
-	depends = boost-libs
 	provides = libkeyfinder
 	conflicts = libkeyfinder
-	source = git://github.com/ibsh/libKeyFinder.git
-	source = 0001-make-prefix-usr.patch
+	source = libkeyfinder-git::git://github.com/ibsh/libKeyFinder.git
 	sha256sums = SKIP
-	sha256sums = 499cc00f55dbe89fe9dde5864ec0121106c00118a0b9f4a87f81fd95495e8c9b
 
 pkgname = libkeyfinder-git
 
