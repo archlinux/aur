@@ -2,17 +2,18 @@
 
 pkgname=openbazaard-standalone
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(python2)
-makedepends=(git upx ucl python2-virtualenv)
+makedepends=(python2-virtualenv ucl upx)
 source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.spec"
+	requirements.txt
 )
 install=${pkgname}.install
 options=('!strip')
@@ -25,15 +26,15 @@ _srcfolder=OpenBazaar-Server-$pkgver
 
 package(){
   cd $srcdir/${_srcfolder}
-
+  cp ../requirements.txt .
   cp ../${pkgname}.spec .
 
 msg2 "Creating an optimized standalone executable"
   virtualenv2 env
   source env/bin/activate
-  pip2 install --upgrade -r requirements.txt
+  pip2 install -r requirements.txt
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
-  env/bin/pyinstaller -F ${pkgname}.spec
+  pyinstaller -F ${pkgname}.spec
 
 msg2 "Symlinking to allow gui to automatically call daemon"
   install -dm755 $pkgdir/opt
@@ -53,4 +54,5 @@ msg2 "Install ${_pkgname} scripts"
 md5sums=('cd20444eaf5b4068422f61db5856aea4'
          '58f846fbc1742fea9d245b6f93f6db15'
          'd66496060ae2a28c6f755a1fb29e3f37'
-         '6d5c84bead900b863b864f075bac98e4')
+         'e4d7b1c3fdceca262a517dd103f59260'
+         '83df086e201c60e2793180058bd7d1e9')
