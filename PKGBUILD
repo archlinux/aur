@@ -4,7 +4,7 @@
 
 pkgname=algodoo
 pkgver=1.x.x.latest
-pkgrel=3
+pkgrel=4
 pkgdesc="A physics simulator program for education and fun (based on phun)"
 arch=(i686 x86_64)
 url=http://www.algodoo.com/
@@ -36,8 +36,8 @@ package()
 	cd src
 	make all
 	gfortran -shared -Wl,-soname=libblas.so.3gf -o libblas.so.3gf *.o
+	cd ${srcdir}
   fi
-  cd ${srcdir}
   mv Algodoo algodoo
   mkdir -p "${pkgdir}"/usr/share
   mv algodoo "${pkgdir}"/usr/share/
