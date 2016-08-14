@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrokdecode4dsl-git
-pkgver=0.96.r2.gec31ceb
+pkgver=0.96.r0.g2143be9
 pkgrel=1
 pkgdesc='A library which provides the basic sigrok protocol decoders for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
