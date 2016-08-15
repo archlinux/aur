@@ -1,0 +1,13 @@
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2016-08-15 18:24:37.171635704 -0400
++++ b/Makefile	2016-08-15 18:39:30.995016021 -0400
+@@ -21,6 +21,9 @@
+ 	@echo installing ${DESTDIR}${PREFIX}/etc/hosts.d
+ 	@mkdir -p ${DESTDIR}${PREFIX}/etc/hosts.d
+ 	@cp -R etc/hosts.d/* ${DESTDIR}${PREFIX}/etc/hosts.d
++	@echo installing ${DESTDIR}${PREFIX}/usr/share/doc/hosts-gen/README and LICENSE
++	@mkdir -p ${DESTDIR}${PREFIX}/usr/share/doc/hosts-gen
++	@cp README LICENSE ${DESTDIR}${PREFIX}/usr/share/doc/hosts-gen
+ #	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+ #	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+ #	@sed "s/VERSION/${VERSION}/g" < st.1 > ${DESTDIR}${MANPREFIX}/man1/st.1

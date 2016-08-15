@@ -1,0 +1,29 @@
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2015-04-15 03:45:46.000000000 -0400
++++ b/Makefile	2016-08-15 18:22:16.551628313 -0400
+@@ -14,10 +14,10 @@
+ 	@rm -rf hosts-gen-${VERSION}
+ 
+ install: all
+-	@echo installing script to ${DESTDIR}${PREFIX}/bin
+-	@mkdir -p ${DESTDIR}${PREFIX}/bin
+-	@cp -f bin/hosts-gen ${DESTDIR}${PREFIX}/bin
+-	@chmod 755 ${DESTDIR}${PREFIX}/bin/hosts-gen
++	@echo installing script to ${DESTDIR}${PREFIX}/usr/bin
++	@mkdir -p ${DESTDIR}${PREFIX}/usr/bin
++	@cp -f bin/hosts-gen ${DESTDIR}${PREFIX}/usr/bin
++	@chmod 755 ${DESTDIR}${PREFIX}/usr/bin/hosts-gen
+ 	@echo installing ${DESTDIR}${PREFIX}/etc/hosts.d
+ 	@mkdir -p ${DESTDIR}${PREFIX}/etc/hosts.d
+ 	@cp -R etc/hosts.d/* ${DESTDIR}${PREFIX}/etc/hosts.d
+@@ -27,8 +27,8 @@
+ #	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/st.1
+ 
+ uninstall:
+-	@echo removing script from ${DESTDIR}${PREFIX}/bin
+-	@rm -f ${DESTDIR}${PREFIX}/bin/hosts-gen
++	@echo removing script from ${DESTDIR}${PREFIX}/usr/bin
++	@rm -f ${DESTDIR}${PREFIX}/usr/bin/hosts-gen
+ 	@echo you need to manually remove the ${DESTDIR}${PREFIX}/etc/hosts.d directory
+ 
+ .PHONY: all dist install uninstall

@@ -1,0 +1,4 @@
+/hosts-gen-*.tar.bz2
+/hosts-gen-*.pkg.tar.xz
+/pkg
+/src
