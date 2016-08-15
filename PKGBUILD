@@ -9,14 +9,15 @@ _setupFilename='setup_Mein_CEWE_FOTOBUCH'
 pkgname=cewe-fotobuch
 conflicts=(cewe-fotoservice)
 pkgdesc="an offline client for creating photobooks, uploading and ordering them at cewe.de"
-md5sums=('9197c2551c471da202de3f0652eba324'
-         '422a405d520e18ef9afade2e7c24440b')
+md5sums=('3d5dfd31a981fd6d616acb7606710003'
 
 ##########################################
 # remaining code shared with cewe-fotoservice
 
-pkgver=6.1.3
-pkgrel=3
+         '422a405d520e18ef9afade2e7c24440b')
+
+pkgver=6.1.5
+pkgrel=1
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
