@@ -8,7 +8,7 @@ pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
 license=('GPL2')
-conflicts=("plex-home-theater")
+conflicts=("plex-home-theater" "openpht")
 depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
          'gcc-libs' 'glew' 'glibc' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
          'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs'
