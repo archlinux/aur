@@ -1,5 +1,5 @@
-KERNEL_VERSION=4.1.7-rt8-1-rt
-EXTRAMODULES=extramodules-4.1-rt
+KERNEL_VERSION=4.7.0-1-ARCH
+EXTRAMODULES=extramodules-4.7-ARCH
 
 
 dep_extr_mod(){
