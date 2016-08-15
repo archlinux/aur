@@ -3,15 +3,15 @@
 # Contributor: rtfreedman  (rob<d0t>til<d0t>freedman<aT>googlemail<d0t>com
 
 pkgname=steinberg-vst36
-pkgver=3.6.5
+pkgver=3.6.6
 pkgrel=1
 pkgdesc="Steinberg's VST SDK (version 3.6)"
 arch=('any')
 url="http://www.steinberg.net/en/company/developers.html"
 license=('custom')
 provides=('steinberg-vst')
-source=(http://www.steinberg.net/sdk_downloads/vstsdk365_12_11_2015_build_67.zip)
-md5sums=('ebe8f242084a742284f7e541f6f1d301')
+source=(http://www.steinberg.net/sdk_downloads/vstsdk366_27_06_2016_build_61.zip)
+md5sums=('6485724a5a07abedde6c415c5f6ac4e8')
 
 package() {
   cd "$srcdir/VST3 SDK"
