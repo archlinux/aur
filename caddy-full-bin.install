@@ -1,0 +1,20 @@
+post_install() {
+    getent passwd www-data || useradd --system --shell /usr/bin/nologin www-data
+    mkdir -p /etc/ssl/caddy && chown -R www-data:www-data /etc/ssl/caddy
+}
+
+pre_upgrade() {
+    systemctl stop caddy
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop caddy
+}
+
+post_remove() {
+    systemctl daemon-reload
+}

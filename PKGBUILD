@@ -20,6 +20,7 @@ md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 md5sums_armv6h=('SKIP')
 md5sums_aarch64=('SKIP')
+install='caddy-full-bin.install'
 
 # expand the feature array
 printf -v _features '%s,' "${_features[@]}"
@@ -34,10 +35,6 @@ source_aarch64=("caddy.tar.gz::${_url_prefix}&arch=arm64")
 
 package() {
   echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
-  getent passwd 'www-data' &> /dev/null || echo <<DOC
---> User www-data is required for caddy 0.9+!
---> Create user: useradd --system --shell /usr/bin/nologin www-data
-DOC
   install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/local/bin/caddy"
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
   install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/${_realname}/service.txt"
