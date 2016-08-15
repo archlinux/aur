@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=agrep-git
-pkgver=r25.27d72ca
+pkgver=r30.eef2041
 pkgrel=1
 epoch=
 pkgdesc="Approximate GREP for fast fuzzy string searching."
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 agrep "$pkgdir/usr/bin/agrep"
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYRIGHT"
   cd docs/
   unzip -d $pkgname agrep-and-glimpse-docs.zip
   install -Dm644 $pkgname/agrep.1 "$pkgdir/usr/share/man/man1/agrep.1"
