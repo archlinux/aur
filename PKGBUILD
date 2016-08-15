@@ -4,7 +4,7 @@
 pkgname=nginx-devel
 _pkgname=nginx
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
@@ -67,7 +67,7 @@ _add2source http_auth_pam $_http_auth_pam_url
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
 # @link http://wiki.nginx.org/HttpHeadersMoreModule
 # @link https://github.com/openresty/headers-more-nginx-module/releases
-_headers_more_ver=0.261
+_headers_more_ver=0.30
 _headers_more_url="headers_more-${_headers_more_ver}.tar.gz::https://github.com/agentzh/headers-more-nginx-module/archive/v${_headers_more_ver}.tar.gz"
 _add2source headers_more $_headers_more_url
 
@@ -156,7 +156,7 @@ sha256sums=('4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610'
             '989b76a9157b7d24788f6b56027d1883d69a744e91d517bca290a88919864b63'
             '9cc2c09405bc71f78ef26a8b6d70afcea3fccbe8125df70cb0cfc480133daba5'
             'dd0c893fcf5af90a4f3c76a5750df9c39cba486ecb93cf76624af29f809ec345'
-            '03d1f5fbecba8565f247d87a38f5e4b6440b0a56d752bdd2b29af2f1c4aea480'
+            '2aad309a9313c21c7c06ee4e71a39c99d4d829e31c8b3e7d76f8c964ea8047f5'
             '7c3fac8c506bbf8b9c381e995af3fc4e1460363ad24dbfd5ead900b68dfcf6b2'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             '001d6592200acc23f0492e1386e7acd37c2977cb967c30320994ece1d30428de'
