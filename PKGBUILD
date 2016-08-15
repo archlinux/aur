@@ -1,22 +1,20 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
-_pkgname=seadata
-pkgname=pari-${_pkgname}
-pkgver=20150112
+pkgname=pari-seadata
+pkgver=20090618
 pkgrel=1
+epoch=1
 pkgdesc='pari package needed by ellap for large primes'
 url='http://pari.math.u-bordeaux.fr/packages.html'
 license=('GPL')
 arch=('any')
-depends=('pari')
-source=("http://pari.math.u-bordeaux.fr/pub/pari/packages/${_pkgname}.tgz")
-sha1sums=('fa3deb36df0ce71a466eb0ff0d4a18d48d44e8b9')
-
+depends=('pari>=2.4.3')
+source=("http://pari.math.u-bordeaux.fr/pub/pari/packages/seadata.tgz")
+md5sums=(6e9c119ccb3c65916a48e1a8cd899558)
 conflicts=('pari-seadata-small')
 provides=('pari-seadata-small')
 
 package() {
-	cd "${pkgdir}"
-	install -d usr/share/pari
-	cp -r "${srcdir}/data/${_pkgname}" usr/share/pari
+	mkdir -p $pkgdir/usr/share/pari
+	mv data/seadata $pkgdir/usr/share/pari
 }
