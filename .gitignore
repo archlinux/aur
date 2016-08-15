@@ -1,0 +1,5 @@
+src/*
+pkg/*
+tinyssh-convert/*
+tinyssh-convert-*.tar.xz
+tinyssh-convert-*.tar.gz
