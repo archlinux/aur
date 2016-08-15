@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-power
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc='Power plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-power'
@@ -11,8 +11,8 @@ groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so')
 makedepends=('cmake' 'gnome-settings-daemon' 'vala')
-source=("https://launchpad.net/switchboard-plug-power/freya/${pkgver}/+download/switchboard-plug-power-${pkgver}.tar.xz")
-sha256sums=('8aa9638fb764305fef70791d9b942844463037790741e9a46d5c575dad721d44')
+source=("https://launchpad.net/switchboard-plug-power/loki/${pkgver}/+download/switchboard-plug-power-${pkgver}.tar.xz")
+sha256sums=('3f8309197b8362bfb9b2ae5e9f62f9f5c1cd5fa19a7655067653f00807842fbd')
 
 prepare() {
   cd switchboard-plug-power-${pkgver}
