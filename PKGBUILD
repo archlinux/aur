@@ -16,14 +16,14 @@
 
 pkgname=catalyst-hook
 pkgver=15.9
-pkgrel=11
+pkgrel=12
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.7' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.8' 'linux-headers')
 optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-daemon' 'catalyst' 'catalyst-generator' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
@@ -48,7 +48,8 @@ source=(
     crimson_i686_xg.patch
     4.4-manjaro-xstate.patch
     grsec_arch.patch
-    4.6-arch-get_user_pages-page_cache_release.patch)
+    4.6-arch-get_user_pages-page_cache_release.patch
+    4.7-arch-cpu_has_pge-v2.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
          '9126e1ef0c724f8b57d3ac0fe77efe2f'
@@ -65,7 +66,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '6cdbaf5f71d867d225721a0369413616'
 	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
 	 '8941e91fc58cb44ce21ab9bda135754e'
-	 '11b7c2e0dc4794801005d66b0e7608a3')
+	 '11b7c2e0dc4794801005d66b0e7608a3'
+	 '37eef5103a11d8136979463e7bc31091')
 
 
 build() {
@@ -91,6 +93,7 @@ package() {
       patch -Np1 -i ../4.4-manjaro-xstate.patch
       patch -Np1 -i ../grsec_arch.patch
       patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+      patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
 
     # Prepare modules source files
       _archdir=x86_64
