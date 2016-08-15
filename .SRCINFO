@@ -1,0 +1,22 @@
+pkgbase = wrs-vxworks-headers
+	pkgdesc = The VxWorks 6.3 Headers
+	pkgver = 6.3
+	pkgrel = 10
+	url = http://firstforge.wpi.edu/sf/projects/c--11_toochain
+	install = wrs-vxworks-headers.install
+	arch = any
+	license = GPL
+	license = custom=Wind River
+	makedepends = unzip
+	makedepends = dos2unix
+	noextract = updated_vxworks63gccdist.zip
+	options = !strip
+	options = libtool
+	options = !zipman
+	source = ftp://ftp.ni.com/pub/devzone/tut/updated_vxworks63gccdist.zip
+	source = LICENSE
+	sha512sums = 91e7d1705a5adc1d2b49802af3bd71535572b712e6b31fc1438fbdf6ad0553b1d8deadd93580b59e6e82d229fb3f337f1e48304a3ea126e884947bbf9cae9ff9
+	sha512sums = 02a0d5b7ac7c812977138d29da5db95aa6bce72d2a87fbc6ea0a01f839b764b94127091f46d89069b981c5e86caa3e0a0a4813455ee7928d17e7fbcc66a7c9f2
+
+pkgname = wrs-vxworks-headers
+

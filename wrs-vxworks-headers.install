@@ -1,0 +1,5 @@
+post_install() {
+	source /etc/profile.d/wind_base.sh
+}
+
+# vim:set ts=2 sw=2:
