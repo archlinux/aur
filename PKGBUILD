@@ -7,7 +7,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.8rc1.r241.gf31494b
+pkgver=4.8rc2.r0.g694d0d0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,8 +20,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
-            '73d1a3d065b7892d5a8b02f6907c0848484fef86c88c7b897281d8c75b6cee33'
+            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
+            'c9ae71747f02c0e9631dfe64a5e0f2e95579bc911e30dbf7dba06eb7f4a367d1'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
