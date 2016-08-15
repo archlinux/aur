@@ -1,0 +1,31 @@
+--- a/products/arsdk/native/config/global.config
++++ b/products/arsdk/native/config/global.config
+@@ -11,8 +11,8 @@ CONFIG_ALCHEMY_BUILD_ARSDKBUILDUTILS=y
+ # CONFIG_ALCHEMY_BUILD_JUMPINGSUMOPILOTINGNEWAPI is not set
+ # CONFIG_ALCHEMY_BUILD_JUMPINGSUMORECEIVESTREAM is not set
+ # CONFIG_ALCHEMY_BUILD_AUTOCONF_MERGE is not set
+-CONFIG_ALCHEMY_BUILD_CURL=y
+-CONFIG_ALCHEMY_BUILD_JSON=y
++# CONFIG_ALCHEMY_BUILD_CURL is not set
++# CONFIG_ALCHEMY_BUILD_JSON is not set
+ CONFIG_ALCHEMY_BUILD_LIBARCOMMANDS=y
+ CONFIG_ALCHEMY_BUILD_LIBARCONTROLLER=y
+ CONFIG_ALCHEMY_BUILD_LIBARDATATRANSFER=y
+@@ -26,5 +26,5 @@ CONFIG_ALCHEMY_BUILD_LIBARSTREAM=y
+ CONFIG_ALCHEMY_BUILD_LIBARSTREAM2=y
+ CONFIG_ALCHEMY_BUILD_LIBARUPDATER=y
+ CONFIG_ALCHEMY_BUILD_LIBARUTILS=y
+-CONFIG_ALCHEMY_BUILD_LIBRESSL=y
++# CONFIG_ALCHEMY_BUILD_LIBRESSL is not set
+-CONFIG_ALCHEMY_BUILD_UTHASH=y
++# CONFIG_ALCHEMY_BUILD_UTHASH is not set
+--- a/products/arsdk/native/config/product.mk
++++ b/products/arsdk/native/config/product.mk
+@@ -5,5 +5,5 @@ ARSDK_NATIVE_CONFIG_DIR := $(call my-dir)
+ include $(ARSDK_NATIVE_CONFIG_DIR)/../../common/config/product.mk
+ 
+ # Use our own json, ncurses version
+-prebuilt.json.override := 1
+-prebuilt.ncurses.override := 1
++prebuilt.json.override := 0
++prebuilt.ncurses.override := 0

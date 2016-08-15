@@ -1,0 +1,34 @@
+pkgbase = libarsdk3-git
+	pkgdesc = ARSDK3 C librairies to control Parrot devices
+	pkgver = r22.305521e
+	pkgrel = 1
+	url = http://developer.parrot.com/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = repo
+	makedepends = python2-virtualenv
+	depends = curl
+	depends = json-c
+	depends = avahi
+	depends = ffmpeg
+	depends = uthash
+	source = arsdk_manifests::git+https://github.com/Parrot-Developers/arsdk_manifests
+	source = 0001-arsdk_manifests-Remove-libs_and_samples.patch
+	source = 0002-Use-local-json-and-curl.patch
+	source = 0003-Fix-json-c.patch
+	source = 0004-libARController-Fix-uthash-path.patch
+	source = 0005-libARDiscovery-Fix-some-warnings.patch
+	source = local-dependencies-atom.mk
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libarsdk3-git
+

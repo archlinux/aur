@@ -1,0 +1,20 @@
+--- a/.repo/manifests/default.xml
++++ b/.repo/manifests/default.xml
+@@ -14,9 +14,6 @@
+  <!-- products  -->
+  <project name="arsdk_products" path="products/arsdk"/>
+ 
+- <!-- External -->
+- <project name="ARSDKTools" path="packages/ARSDKTools"/>
+-
+  <!-- ARSDK -->
+  <project name="ARSDKBuildUtils" path="packages/ARSDKBuildUtils"/>
+  <project name="ARSDK3" path="packages/ARSDK3"/>
+@@ -37,7 +34,4 @@
+ 
+  <project name="mavlink.git" path="packages/mavlink"/>
+ 
+- <!-- Samples -->
+- <project name="Samples" path="packages/Samples"/>
+-
+ </manifest>

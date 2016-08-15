@@ -1,0 +1,324 @@
+--- a/packages/libARController/Includes/libARController/ARCONTROLLER_Stream.h
++++ b/packages/libARController/Includes/libARController/ARCONTROLLER_Stream.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARCONTROLLER_STREAM_H_
+ #define _ARCONTROLLER_STREAM_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Thread.h>
+ #include <libARNetwork/ARNETWORK_Manager.h>
+ #include <libARController/ARCONTROLLER_Error.h>
+--- a/packages/libARController/Includes/libARController/ARCONTROLLER_Stream1.h
++++ b/packages/libARController/Includes/libARController/ARCONTROLLER_Stream1.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARCONTROLLER_STREAM1_H_
+ #define _ARCONTROLLER_STREAM1_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Thread.h>
+ #include <libARNetwork/ARNETWORK_Manager.h>
+ #include <libARController/ARCONTROLLER_Error.h>
+--- a/packages/libARController/Python/generateDeviceControllers.py
++++ b/packages/libARController/Python/generateDeviceControllers.py
+@@ -836,7 +836,7 @@ def generateDeviceControllers (ctx, SRC_DIR, INC_DIR):
+ 
+     cFile.write ('#include <stdio.h>\n')
+     cFile.write ('#include <time.h>\n')
+-    cFile.write ('#include <json/json.h>\n')
++    cFile.write ('#include <json-c/json.h>\n')
+     cFile.write ('\n')
+     
+     cFile.write ('#include <libARSAL/ARSAL_Mutex.h>\n')
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream.c
+@@ -38,7 +38,7 @@
+  
+ #include <stdlib.h>
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARSAL/ARSAL_Socket.h>
+ #include <libARStream/ARStream.h>
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream1.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream1.c
+@@ -38,7 +38,7 @@
+  
+ #include <stdlib.h>
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARSAL/ARSAL_Socket.h>
+ #include <libARStream/ARStream.h>
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream2.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream2.c
+@@ -38,7 +38,7 @@
+  
+ #include <stdlib.h>
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARSAL/ARSAL_Socket.h>
+ #include <libARSAL/ARSAL_Thread.h>
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream2.h
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream2.h
+@@ -39,7 +39,7 @@
+ #ifndef _ARCONTROLLER_STREAM2_PRIVATE_H_
+ #define _ARCONTROLLER_STREAM2_PRIVATE_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Socket.h>
+ #include <libARSAL/ARSAL_Thread.h>
+ #include <libARController/ARCONTROLLER_Error.h>
+--- a/packages/libARDiscovery/Includes/libARDiscovery/ARDISCOVERY_Device.h
++++ b/packages/libARDiscovery/Includes/libARDiscovery/ARDISCOVERY_Device.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_H_
+ #define _ARDISCOVERY_DEVICE_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/packages/libARDiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.c
++++ b/packages/libARDiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.c
+@@ -37,7 +37,7 @@
+  */
+ 
+ #include <stdlib.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+--- a/packages/libARDiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.h
++++ b/packages/libARDiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_BLE_H_
+ #define _ARDISCOVERY_DEVICE_BLE_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
++++ b/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
+@@ -37,7 +37,7 @@
+  */
+ 
+ #include <stdlib.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+--- a/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.h
++++ b/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_WIFI_H_
+ #define _ARDISCOVERY_DEVICE_WIFI_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/packages/libARMedia/Sources/ARMEDIA_VideoAtoms.c
++++ b/packages/libARMedia/Sources/ARMEDIA_VideoAtoms.c
+@@ -40,7 +40,7 @@
+ #include <libARMedia/ARMedia.h>
+ #include <libARMedia/ARMEDIA_VideoEncapsuler.h>
+ #include <libARSAL/ARSAL_Print.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ 
+ #include <string.h>
+ #include <arpa/inet.h>
+--- a/packages/libARMedia/Sources/ARMEDIA_VideoEncapsuler.c
++++ b/packages/libARMedia/Sources/ARMEDIA_VideoEncapsuler.c
+@@ -45,7 +45,7 @@
+ #include <stdbool.h>
+ #include <string.h>
+ #include <arpa/inet.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARDiscovery/ARDiscovery.h>
+ #include <libARMedia/ARMedia.h>
+ #include <libARSAL/ARSAL_Print.h>
+--- a/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
++++ b/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
+@@ -46,7 +46,7 @@
+ #include "ARUPDATER_Manager.h"
+ #include "ARUPDATER_Downloader.h"
+ #include "ARUPDATER_Utils.h"
+-#include <json/json.h>
++#include <json-c/json.h>
+ 
+ /* ***************************************
+  *
+--- a/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
++++ b/packages/libARDiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
+@@ -1189,7 +1189,7 @@ eARDISCOVERY_ERROR ARDISCOVERY_DEVICE_Wifi_ReceiveJsonCallback (uint8_t *dataRx,
+     if (error == ARDISCOVERY_OK)
+     {
+         // get ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             specificWifiParam->controllerToDevicePort = json_object_get_int(valueJsonObj);
+@@ -1197,7 +1197,7 @@ eARDISCOVERY_ERROR ARDISCOVERY_DEVICE_Wifi_ReceiveJsonCallback (uint8_t *dataRx,
+         
+         // get ARDISCOVERY_CONNECTION_JSON_STATUS_KEY
+ 
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_STATUS_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_STATUS_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             specificWifiParam->connectionStatus = json_object_get_int(valueJsonObj);
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream1.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream1.c
+@@ -503,21 +503,21 @@ eARDISCOVERY_ERROR ARCONTROLLER_Stream1_OnReceiveJson (ARCONTROLLER_Stream1_t *s
+     if (error == ARDISCOVERY_OK)
+     {
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream1Controller->fragmentSize = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream1Controller->maxNumberOfFragment = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream1Controller->maxAckInterval = json_object_get_int(valueJsonObj);
+--- a/packages/libARController/Sources/ARCONTROLLER_Stream2.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Stream2.c
+@@ -345,48 +345,48 @@ eARDISCOVERY_ERROR ARCONTROLLER_Stream2_OnReceiveJson (ARCONTROLLER_Stream2_t *s
+     if (error == ARDISCOVERY_OK)
+     {
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->serverStreamPort = json_object_get_int(valueJsonObj);
+         }
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->serverControlPort = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_PACKET_SIZE_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_PACKET_SIZE_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_PACKET_SIZE_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->maxPaquetSize = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_LATENCY_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_LATENCY_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_LATENCY_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->maxLatency = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_NETWORK_LATENCY_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_NETWORK_LATENCY_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_NETWORK_LATENCY_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->maxNetworkLatency = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_BITRATE_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_BITRATE_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_MAX_BITRATE_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             stream2Controller->maxBiterate = json_object_get_int(valueJsonObj);
+         }
+         
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_PARAMETER_SETS_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_PARAMETER_SETS_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_PARAMETER_SETS_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             int parmeterSetsLength = strlen(json_object_get_string(valueJsonObj));
+@@ -409,10 +409,12 @@ eARDISCOVERY_ERROR ARCONTROLLER_Stream2_OnReceiveJson (ARCONTROLLER_Stream2_t *s
+ uint8_t ARCONTROLLER_Stream2_JsonContainsStream2Param(json_object *jsonObj)
+ {
+     // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY
+-    json_object *serverStreamPortJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY);
++    json_object *serverStreamPortJsonObj = NULL;
++    json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_STREAM_PORT_KEY, &serverStreamPortJsonObj);
+ 
+     // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY
+-    json_object *serverControlPortJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY);
++    json_object *serverControlPortJsonObj = NULL;
++    json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM2_SERVER_CONTROL_PORT_KEY, &serverControlPortJsonObj);
+     
+     return ((serverStreamPortJsonObj != NULL) && (serverControlPortJsonObj != NULL));
+ }
+--- a/packages/libARController/Sources/ARCONTROLLER_StreamSender.c
++++ b/packages/libARController/Sources/ARCONTROLLER_StreamSender.c
+@@ -324,21 +324,21 @@ eARDISCOVERY_ERROR ARCONTROLLER_StreamSender_OnReceiveJson (ARCONTROLLER_StreamS
+     {
+ 
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_SIZE_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             streamController->fragmentSize = json_object_get_int(valueJsonObj);
+         }
+ 
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_FRAGMENT_MAXIMUM_NUMBER_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             streamController->maxNumberOfFragment = json_object_get_int(valueJsonObj);
+         }
+ 
+         // get ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_ARSTREAM_MAX_ACK_INTERVAL_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             streamController->maxAckInterval = json_object_get_int(valueJsonObj);
+--- a/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
++++ b/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
+@@ -1207,7 +1207,8 @@ eARUPDATER_ERROR ARUPDATER_Downloader_GetBlacklistedFirmwareVersionsSync(ARUPDAT
+                 device = malloc(ARUPDATER_MANAGER_DEVICE_STRING_MAX_SIZE);
+                 snprintf(device, ARUPDATER_MANAGER_DEVICE_STRING_MAX_SIZE, "%04x", productId);
+                 
+-                json_object *productJsonObj = json_object_object_get (jsonObj, device);
++                json_object *productJsonObj = NULL;
++                json_object_object_get_ex (jsonObj, device, &productJsonObj);
+                 if ((productJsonObj != NULL) && !is_error(productJsonObj))
+                 {
+                     blacklistedRemoteList = json_object_get_array(productJsonObj);

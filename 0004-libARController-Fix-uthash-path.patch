@@ -1,0 +1,77 @@
+--- a/packages/libARController/Includes/libARController/ARCONTROLLER_Dictionary.h
++++ b/packages/libARController/Includes/libARController/ARCONTROLLER_Dictionary.h
+@@ -39,8 +39,8 @@
+ #ifndef _ARCONTROLLER_DICTIONARY_H_
+ #define _ARCONTROLLER_DICTIONARY_H_
+ 
+-#include <uthash/uthash.h>
+-#include <uthash/utlist.h>
++#include <uthash.h>
++#include <utlist.h>
+ 
+ #include <libARController/ARCONTROLLER_Error.h>
+ #include <libARController/ARCONTROLLER_DICTIONARY_Key.h>
+--- a/packages/libARController/JNI/c/ARCONTROLLER_JNI_Dictionary.c
++++ b/packages/libARController/JNI/c/ARCONTROLLER_JNI_Dictionary.c
+@@ -42,8 +42,8 @@
+ #include <jni.h>
+ #include <stdlib.h>
+ 
+-#include <uthash/uthash.h>
+-#include <uthash/utlist.h>
++#include <uthash.h>
++#include <utlist.h>
+ 
+ #include <libARSAL/ARSAL_Print.h>
+ 
+--- a/packages/libARController/Python/generateDeviceControllers.py
++++ b/packages/libARController/Python/generateDeviceControllers.py
+@@ -106,7 +106,7 @@ def generateDeviceControllers (ctx, SRC_DIR, INC_DIR):
+     hfile.write ('\n')
+     hfile.write ('#include <libARSAL/ARSAL_Print.h>\n')
+     hfile.write ('#include <libARSAL/ARSAL_Mutex.h>\n')
+-    hfile.write ('#include <uthash/uthash.h>\n')
++    hfile.write ('#include <uthash.h>\n')
+     hfile.write ('\n')
+     hfile.write ('#include <libARController/ARCONTROLLER_Error.h>\n')
+     hfile.write ('#include <libARController/ARCONTROLLER_Dictionary.h>\n')
+--- a/packages/libARController/Python/generateFeatureControllers.py
++++ b/packages/libARController/Python/generateFeatureControllers.py
+@@ -97,7 +97,7 @@ def generateFeatureControllers (ctx, SRC_DIR, INC_DIR):
+     hfile.write ('#include <libARSAL/ARSAL_Print.h>\n')
+     hfile.write ('#include <libARSAL/ARSAL_Mutex.h>\n')
+     hfile.write ('#include <libARCommands/ARCommands.h>\n')
+-    hfile.write ('#include <uthash/uthash.h>\n')
++    hfile.write ('#include <uthash.h>\n')
+     hfile.write ('\n')
+     hfile.write ('#include <libARController/ARCONTROLLER_Error.h>\n')
+     hfile.write ('#include <libARController/ARCONTROLLER_Network.h>\n')
+--- a/packages/libARController/Sources/ARCONTROLLER_Dictionary.c
++++ b/packages/libARController/Sources/ARCONTROLLER_Dictionary.c
+@@ -38,8 +38,8 @@
+  
+ #include <stdlib.h>
+ 
+-#include <uthash/uthash.h>
+-#include <uthash/utlist.h>
++#include <uthash.h>
++#include <utlist.h>
+ 
+ #include <libARSAL/ARSAL_Print.h>
+ 
+--- a/packages/libARController/Sources/ARCONTROLLER_StreamQueue.c
++++ b/packages/libARController/Sources/ARCONTROLLER_StreamQueue.c
+@@ -40,8 +40,8 @@
+ #include <time.h>
+ #include <stdint.h>
+ 
+-#include <uthash/uthash.h>
+-#include <uthash/utlist.h>
++#include <uthash.h>
++#include <utlist.h>
+ 
+ #include <libARSAL/ARSAL_Print.h>
+ 
+-- 
+2.9.2
+
