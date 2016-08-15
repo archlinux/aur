@@ -1,0 +1,9 @@
+[Unit]
+Description=Bcfg2 report collector daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/bcfg2-report-collector
+
+[Install]
+WantedBy=multi-user.target
