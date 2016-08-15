@@ -2,15 +2,15 @@
 
 pkgname=f24-backgrounds
 pkgver=24.1.2
-pkgrel=1
-_rhver="${pkgver}-1.fc24"
+pkgrel=2
+_rhver="${pkgver}-1.fc25"
 pkgdesc="Fedora 24 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F24_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-md5sums=('622cb4fd466d130730e995a88230215c')
+md5sums=('95260633b8fb9fca486bda34f803d1e7')
 
 prepare()  {
     tar -xvJf ./${pkgname}-${pkgver}.tar.xz
