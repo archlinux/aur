@@ -1,0 +1,14 @@
+pkgbase = vbox-runner-git
+	pkgdesc = Allows you to start your VirtualBox virtual machines from Krunner (Alt-Space) in Plasma 5.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/alvanieto/vbox-runner
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	conflicts = kdeplasma-runners-vbox
+
+pkgname = vbox-runner-git
+
