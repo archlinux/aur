@@ -3,7 +3,7 @@
 # Submitter: fluffylime <fluffylime@gmail.com>
 
 pkgname=redsocks-git
-pkgver=0.1.r43.g2e3f648
+pkgver=0.1.r87.gda0f774
 pkgrel=1
 pkgdesc='Transparent redirector of any TCP connection to proxy using your firewall'
 arch=('i686' 'x86_64')
@@ -21,11 +21,14 @@ backup=('etc/redsocks.conf'
 source=("$pkgname"::'git+https://github.com/darkk/redsocks.git'
         'redsocks.conf'
         'redsocks.tmpfiles'
-        'redsocks.rules')
+        'redsocks.rules'
+        'redsocks')
+
 md5sums=('SKIP'
          'ed8b0090ded9de0940b1cd7539c78422'
          '9be5e8bea768b1a8fdec55a8e8af33fd'
-         '04702a7faf31d707d3df4c116bd58a6d')
+         '04702a7faf31d707d3df4c116bd58a6d'
+         '165271c067ed550e9c6da4439d29c5f7')
 
 pkgver() {
   cd "$pkgname"
@@ -42,6 +45,7 @@ build() {
 package() {
   cd "$pkgname"
 
+  install -Dm644 "$srcdir/redsocks" "$pkgdir/etc/conf.d/redsocks"
   install -Dm644 "$srcdir/redsocks.conf" "$pkgdir/etc/redsocks.conf"
   install -Dm644 "$srcdir/redsocks.rules" "$pkgdir/etc/iptables/redsocks.rules"
   install -Dm644 "$srcdir/redsocks.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/redsocks.conf"
