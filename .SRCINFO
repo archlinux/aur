@@ -1,7 +1,7 @@
 pkgbase = nibl
 	pkgdesc = Command line interface to the NIBL XDCC package search
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2ion/nibl
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = nibl
 	depends = python-terminaltables
 	depends = python-beautifulsoup4
 	depends = python-requests
+	depends = python-progressbar
 	options = !emptydirs
 	source = https://github.com/2ion/nibl/archive/master.tar.gz
 	sha256sums = SKIP
