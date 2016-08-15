@@ -2,8 +2,8 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
 pkgname=spotify
-pkgver=1.0.34.146
-_anotherpkgver=.g28f9eda2
+pkgver=1.0.36.120
+_anotherpkgver=.g536a862f
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
@@ -16,11 +16,11 @@ source=('spotify'
 md5sums=('cfef2f72647980c639201c6ab39e8534'
          'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4')
 
-source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}-19_amd64.deb")
-md5sums_x86_64=('df428370556f2300763be025359e9fb1')
+source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}-20_amd64.deb")
+md5sums_x86_64=('8c27d59e63eca56f36688cca9a7da4a5')
 
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}-2_i386.deb")
-md5sums_i686=('a956fdb0009d37eb8eda17dc835449bf')
+md5sums_i686=('1181510a78b329a5f85bba68879d3810')
 
 depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
