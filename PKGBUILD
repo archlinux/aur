@@ -1,7 +1,7 @@
 # Maintainer: Johannes Sauer <sauer@ient.rwth-aachen.de>
 pkgname=yuview-git 
 _actualPkgname=YUView
-pkgver=r365.2f9e2b4
+pkgver=r670.8b12c88
 pkgrel=1
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
@@ -38,15 +38,9 @@ package() {
 
 	#installin the binary
 	make INSTALL_ROOT="$pkgdir" install
-	cp -r "$pkgdir/usr/local/"* "$pkgdir/usr/"
-	rm -r "$pkgdir/usr/local"
 
 	#copying the libde265 library
 	mkdir -p "$pkgdir/usr/lib/"
-	cp -d "$srcdir/$_actualPkgname/libde265/libde265.so"*  "$pkgdir/usr/lib/"
+	cp -d "$srcdir/$_actualPkgname/libde265/libde265-internals.so"  "$pkgdir/usr/lib/"
 
-	mkdir -p "$pkgdir/usr/share/applications/"
-	mkdir -p "$pkgdir/usr/share/pixmaps"
-	cp "$srcdir/$_actualPkgname/other/IENT-YUView.desktop"  "$pkgdir/usr/share/applications/"
-	cp "$srcdir/$_actualPkgname/images/IENT-YUView-1024.png"  "$pkgdir/usr/share/pixmaps/IENT-YUView.png"
 }
