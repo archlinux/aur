@@ -28,7 +28,14 @@ source=('arsdk_manifests::git+https://github.com/Parrot-Developers/arsdk_manifes
         '0005-libARDiscovery-Fix-some-warnings.patch'
         'local-dependencies-atom.mk'
         'LICENSE')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '6aebabef1df8ffb5ee1d82e983b7b7b699e9f6e430cdf72ad4237e2617723572'
+            '8c8a3054658fe6fdc4820f4625f17e90dd9c17a9bb00451f4dd60c85010358eb'
+            '0b630509176de0ceb48480cde0489095fd58632abeded9e7211de706ab20c926'
+            '2a103ea898e987ee5dfdb111e2dd594ec432e9262db1ba8fdd68ba095ad01857'
+            '82268abab9af48726993b82c7c9ab9a978c13cbddd4ecc4ab4588c0f4e323cc8'
+            '1a365608863d1a3000675dd243c007a7913dd391eeb1710baf51d886e2b121b5'
+            '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
 pkgver() {
 	cd "$srcdir/arsdk_manifests"
