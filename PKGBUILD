@@ -25,11 +25,9 @@ options=('!emptydirs')
 install=$_gitname.install
 backup=('etc/gnashpluginrc')
 source=('git://git.sv.gnu.org/gnash.git'
-        'jemalloc_gnash.patch'
-        'build_on_new_boost.patch')
+        'jemalloc_gnash.patch')
 sha256sums=('SKIP'
-            '422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e'
-            '1df546e376f0a0e495f2c1a96f13e29c507dfb5f16b808696dc8c7474d833f65')
+            '422aad0cf678f8427b1601e41e6440b3526872b640b6ccd3ab93ae656a9a8c8e')
 
 pkgver() {
   cd $_gitname
