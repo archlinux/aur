@@ -3,11 +3,11 @@
 pkgname=usbguard
 _pkgname=usbguard
 pkgver=0.5.12
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
-makedepends=("git" "libqb" "libsodium")
-depends=()
+makedepends=("git" "libsodium")
+depends=("libqb-git")
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
 source=(
