@@ -1,0 +1,14 @@
+diff --git a/libstdc++-v3/src/c++11/random.cc b/libstdc++-v3/src/c++11/random.cc
+index d60a00b..57128e7 100644
+--- a/libstdc++-v3/src/c++11/random.cc
++++ b/libstdc++-v3/src/c++11/random.cc
+@@ -136,7 +136,8 @@ namespace std _GLIBCXX_VISIBILITY(default)
+ #ifdef _GLIBCXX_HAVE_UNISTD_H
+     do
+       {
+-	const int e = read(fileno(static_cast<FILE*>(_M_file)), p, n);
++	const int e = read(fileno(static_cast<FILE*>(_M_file)), static_cast<char*>(p),
++                     n);
+ 	if (e > 0)
+ 	  {
+ 	    n -= e;
