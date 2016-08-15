@@ -25,8 +25,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  mkdir -p "$pkgdir"/usr/bin
-  cp buckle "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/bucklespring
-  cp wav/* "$pkgdir"/usr/share/bucklespring
+  install -Dm755 buckle "$pkgdir"/usr/bin/buckle
+  install -Dm644 -t "$pkgdir"/usr/share/bucklespring/ wav/*
 }
