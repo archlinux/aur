@@ -1,0 +1,13 @@
+pkgbase = pari-galpol
+	pkgdesc = pari package of the GALPOL database of polynomials defining Galois extensions of the rationals
+	pkgver = 20150915
+	pkgrel = 1
+	url = http://pari.math.u-bordeaux.fr/
+	arch = any
+	license = GPL
+	depends = pari>=2.4.3
+	source = http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz
+	md5sums = c241b3b40267f640df4d45ed2d604442
+
+pkgname = pari-galpol
+
