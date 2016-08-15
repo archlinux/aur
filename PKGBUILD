@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=quine-relay
-pkgver=5029ce6
+pkgver=r122.73e4544
 pkgrel=1
-pkgdesc='Uroboros program with 100 programming languages'
+pkgdesc='Uroboros program with 100 programming languages (50 language branch)'
 arch=('x86_64' 'i686')
 url='http://github.com/mame/quine-relay'
 license=('MIT')
@@ -17,7 +17,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'yorick')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
-source=('quine-relay::git://github.com/mame/quine-relay.git#commit=5029ce6'
+source=('quine-relay::git://github.com/mame/quine-relay.git#branch=50'
         'quine-relay.sh')
 sha256sums=('SKIP'
             '2409f6ccaed7070143b365fb1e276ff73620d9651f12d5058c2291b3d093be95')
@@ -27,7 +27,7 @@ replaces=('quine-relay-git')
 pkgver() {
   cd "$pkgname"
 
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -37,8 +37,10 @@ prepare() {
 
   # lolcode is available in Arch Linux
   sed -i 's:vendor/lci-\*/::' Makefile
+
   # fpiet is available in Arch Linux
   #sed -i 's:vendor/npiet-\*/:fpiet:' Makefile
+
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
