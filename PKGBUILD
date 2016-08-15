@@ -3,7 +3,7 @@
 # based on z3-git
 pkgname=z3
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance theorem prover"
 arch=('i686' 'x86_64')
 url="https://github.com/Z3Prover/z3"
@@ -13,13 +13,16 @@ makedepends=('git' 'python2')
 optdepends=('python2: bindings for python2')
 conflicts=('z3-bin' 'z3-codeplex' 'z3-git')
 provides=('z3')
-source=("https://github.com/Z3Prover/z3/archive/z3-4.4.1.tar.gz")
-md5sums=('4336a9df24f090e711c6d42fd4e2b1fc')
+source=("https://github.com/Z3Prover/z3/archive/z3-4.4.1.tar.gz"
+        z3-static-cast.patch)
+md5sums=('4336a9df24f090e711c6d42fd4e2b1fc'
+         '07746336b6334af4191f81e2f0f93ff3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver"
   python2 scripts/mk_make.py
 
+  patch -p1 < $srcdir/$pkgname-static-cast.patch
   cd "build"
   make
 }
