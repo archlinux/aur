@@ -3,7 +3,7 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-_pkgver=4.6-gnu
+_pkgver=4.7-gnu
 
 _srcname=linux-${_pkgver%-*}
 pkgver=${_pkgver//-/_}
@@ -44,7 +44,7 @@ replaces=('linux-firmware'
           'amd-ucode')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
+sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
