@@ -1,7 +1,7 @@
 pkgbase = starbound-client-server-gog
 	pkgdesc = Starbound, an extraterrestrial sandbox adventure game (client + server, GOG-Version)
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://playstarbound.com/
 	install = starbound-client-server-gog.install
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = starbound-client-server-gog
 	source = starbound_server.service
 	md5sums = e38aaceaa3247e2674e3ff5265663525
 	md5sums = b1edfe9aec35bc36d7fc8eb010cfdb05
-	md5sums = a4da1d6f3638765fec7fa8bfebac6086
+	md5sums = 879b2f89d5a1fdc74c9ea27766cd6613
 	md5sums = 80ebdcf3780e0ca8c93feaf5ee8d4eec
 
 pkgname = starbound-client-server-gog
