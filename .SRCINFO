@@ -1,11 +1,10 @@
 pkgbase = phpctags
-	pkgdesc = An enhanced php ctags index generator
+	pkgdesc = An enhanced PHP ctags index generator
 	pkgver = 0.5.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://packagist.org/packages/techlivezheng/phpctags
 	install = phpctags.install
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = GPLv2
 	depends = php
 	provides = phpctags
