@@ -1,0 +1,20 @@
+pkgbase = kcptun-git
+	pkgdesc = An extremely simple udp tunnel based on KCP, git compile version
+	pkgver = v20160811.r9.g8ea071f
+	pkgrel = 1
+	url = https://github.com/xtaci/kcptun
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = kcptun
+	provides = kcptun-bin
+	conflicts = kcptun
+	conflicts = kcptun-bin
+	source = git+https://github.com/xtaci/kcptun.git
+	md5sums = SKIP
+
+pkgname = kcptun-git
+
