@@ -3,17 +3,17 @@
 # Contributor: Christoph Zeiler <rabyte@gmail.com>
 
 pkgname=onscripter
-pkgver=20160407
+pkgver=20160803
 pkgrel=1
 pkgdesc="A game engine compatible to NScripter, to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="http://onscripter.sourceforge.jp/onscripter.html"
 license=('GPL')
-depends=('bzip2' 'sdl_image' 'sdl_mixer' 'sdl_ttf')
+depends=('sdl_image' 'sdl_mixer' 'sdl_ttf' 'lua51' 'libvorbis' 'fontconfig')
 source=("http://onscripter.sourceforge.jp/${pkgname}-${pkgver}.tar.gz"
         'avifile.patch')
-        
-md5sums=('29679673a332e3b3f00bdd9c579b93e2'
+
+md5sums=('71c136e1bf0a54bcdefe9f9c8162c390'
          '9eec223b2bb76e8e83ef4e67de87b2ae')
 
 prepare() {
