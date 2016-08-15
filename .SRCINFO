@@ -1,0 +1,17 @@
+pkgbase = tkcon-cvs
+	pkgdesc = TkCon is an enhanced interactive console for developing in Tcl.
+	pkgver = 20160814
+	pkgrel = 1
+	url = http://tkcon.sourceforge.net
+	arch = any
+	license = BSD
+	makedepends = cvs
+	depends = tcl
+	depends = tk
+	provides = tkcon
+	conflicts = tkcon
+	source = under-patch.diff
+	md5sums = aba22675d6dc3bdc4685f334ef2e7a4d
+
+pkgname = tkcon-cvs
+
