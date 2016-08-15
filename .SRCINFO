@@ -1,0 +1,19 @@
+pkgbase = cpp-netlib-uri-git
+	pkgdesc = cpp-netlib URI
+	pkgver = 60c0da3
+	pkgrel = 1
+	url = https://github.com/cpp-netlib/uri
+	arch = i686
+	arch = x86_64
+	license = BOOST
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	provides = cpp-netlib-uri
+	conflicts = cpp-netlib-uri
+	replaces = cpp-netlib-uri
+	source = git+https://github.com/cpp-netlib/uri.git
+	md5sums = SKIP
+
+pkgname = cpp-netlib-uri-git
+
