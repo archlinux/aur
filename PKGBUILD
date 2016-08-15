@@ -3,8 +3,8 @@
 _pkgbase=atomicwrites
 pkgbase=python-${_pkgbase}
 pkgname=("python-${_pkgbase}" "python2-${_pkgbase}")
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Atomic file writes on POSIX"
 arch=('any')
 url="https://github.com/untitaker/python-atomicwrites"
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest' 'python2-pytest')
 source=(${pkgbase}-${pkgver}.tar.gz::"https://github.com/untitaker/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('e960d51184c322dc573f949175ff4d82499e5f14e863ca121360c1741dd6e244')
+sha256sums=('04e9a6c3dae3651328cb51f420f5f5992b8c7fc0008c7a66606c58df011594d0')
 
 prepare() {
   rm -rf -- "${srcdir}/${pkgbase}-${pkgver}-py2"
