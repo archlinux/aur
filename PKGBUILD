@@ -2,14 +2,14 @@
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.0.18
-pkgrel=2
-pkgdesc="The Microsoft Azure Linux Agent"
+pkgver=2.1.6
+pkgrel=1
+pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
 url="https://github.com/Azure/WALinuxAgent"
 license=('Apache')
-depends=('python2' 'openssh' 'parted' 'net-tools')
-makedepends=('python2')
+depends=('python' 'openssh' 'parted' 'net-tools')
+makedepends=('python' 'python-setuptools')
 checkdepends=()
 optdepends=()
 provides=("walinuxagent")
@@ -17,24 +17,27 @@ conflicts=("walinuxagent")
 options=()
 install=
 changelog=
-source=("https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-${pkgver}.zip")
-md5sums=('927eb9ff2e2f8001a9cbb07bc1d14780')
+source=(
+  "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.zip"
+  "setup_default_systemd.patch")
+sha256sums=(
+  'cb70ab8f55fc82c89f33b2c88e691c0b8809b187fdaa6c481ec7ae357f32c3a9'
+  'e7cb463690dd312a9e63a4efe1e869e1d3c04b59ea71001198cbcfd5c1cba351')
 
 prepare() {
-  cd "$_pkgname-$_pkgname-$pkgver"
+  #cd "$_pkgname-$pkgver"
   #find . -type f -exec \
   #  sed -i 's/\/usr\/sbin/\/usr\/bin/g' {} +
   # TODO: Replace directory /usr/sbin with /usr/bin
+  patch -p1 < setup_default_systemd.patch
 }
 
 package() {
-  cd "$_pkgname-$_pkgname-$pkgver"
-  # TODO: Use --prefix="$pkgdir/" when bug in setup.py is fixed. See https://github.com/Azure/WALinuxAgent/issues/173
-  python2 setup.py install --root="$pkgdir" --prefix="/usr" --init-system=systemd --optimize=1
+  cd "$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --prefix="/usr" --init-system=systemd --optimize=1
   mv $pkgdir/usr/sbin $pkgdir/usr/bin
   sed -i -e 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/waagent.service
-  sed -i -e '0,/env python/s/env python/env python2/' $pkgdir/usr/bin/waagent
+  #sed -i -e '0,/env python/s/env python/env python2/' $pkgdir/usr/bin/waagent
 }
 
 # vim:set ts=2 sw=2 et:
-
