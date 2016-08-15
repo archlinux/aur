@@ -2,7 +2,7 @@
 
 _pkgname=powder-player
 pkgname=${_pkgname}-bin
-pkgver=0.98
+pkgver=1.00
 pkgrel=1
 pkgdesc="Hybrid between a Torrent Client and a Player (torrent streaming)"
 arch=('x86_64')
@@ -14,7 +14,8 @@ provides=('powder-player')
 conflicts=('powder-player')
 options=('!strip')
 install=${_pkgname}.install
-source=("https://github.com/jaruba/PowderPlayer/releases/download/v$pkgver/PowderPlayer_v$pkgver.tar.gz"
+source=("http://powder.media/nightly/PowderPlayer_v$pkgver.tar.gz"
+	#"https://github.com/jaruba/PowderPlayer/releases/download/v$pkgver/PowderPlayer_v$pkgver.tar.gz"
 	powder.desktop)
 
 package() {
@@ -33,12 +34,12 @@ package() {
   cp -r PowderPlayer "${pkgdir}/opt/${_pkgname}/"
   
   # Link to program
-  ln -sr "/opt/${_pkgname}/powder" "${pkgdir}/usr/bin/powder"
-  chmod +x "${pkgdir}/opt/${_pkgname}/powder"
+  ln -sr "/opt/${_pkgname}/Powder" "${pkgdir}/usr/bin/powder"
+  chmod +x "${pkgdir}/opt/${_pkgname}/Powder"
 
   # Desktop file
   install -Dm644 powder.desktop "${pkgdir}/usr/share/applications/powder.desktop"
 }
 
-md5sums=('9f63d643ffd975aa47f01567922a2e6b'
+md5sums=('SKIP'
          '66421e98741918dad1c48038aa6db2e5')
