@@ -37,7 +37,7 @@ package() {
   # Install the application.
   install -d $pkgdir/{opt/$pkgname,usr/bin}
   cp -a bin gradle lib jre plugins $pkgdir/opt/$pkgname
-  ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/$pkgname
+  ln -s /opt/$pkgname/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
   # Add the icon and desktop file.
   install -Dm655 bin/studio.png $pkgdir/usr/share/pixmaps/$pkgname.png
