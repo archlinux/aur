@@ -4,16 +4,18 @@
 pkgname=mikidown-git
 _githubuser=ShadowKyogre
 _gitname=mikidown
-pkgver=0.3.10.r0.gbd33d84
+pkgver=0.3.11.r0.g87bdf2f
 pkgrel=1
 pkgdesc="A note taking application featuring markdown syntax"
 arch=('any')
 url="https://shadowkyogre.github.com/mikidown"
 license=('MIT')
 makedepends=('git')
-depends=('pyqt'
-         'python-markdown'
-         'python-whoosh')
+depends=(
+    'python-pyqt5'
+    'python-markdown'
+    'python-whoosh'
+)
 optdepends=('python-pygments: for code block syntax highlighting'
             'python-pyenchant: for spellchecking'
             'aspell-en: pyenchant need backend support from aspell'
@@ -32,6 +34,6 @@ pkgver() {
 
 package(){
     cd "${srcdir}/${_gitname}"
-    lrelease-qt4 mikidown.pro
+    lrelease-qt5 mikidown.pro
     python setup.py install --root="$pkgdir"
 }
