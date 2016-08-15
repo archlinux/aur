@@ -10,6 +10,7 @@ license=('GPL3')
 url='http://www.technicpack.net/'
 depends=('java-runtime' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
+# bsdtar would fail with "can't replace existing directory with non-directory"
 noextract=('TechnicLauncher.jar')
 source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
