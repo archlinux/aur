@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdocs
-pkgver=20160725
-pkgrel=2
+pkgver=20160815
+pkgrel=1
 pkgdesc="Documentation for Decred"
 arch=('any')
 makedepends=('git' 'python')
