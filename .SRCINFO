@@ -1,6 +1,6 @@
 pkgbase = jws-config-git
 	pkgdesc = A graphical configuration tool for JWS
-	pkgver = 1.0.r0.b5e18a6
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/JasonWaataja/JWS-Config
 	arch = x86_64
