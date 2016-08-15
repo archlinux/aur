@@ -1,0 +1,19 @@
+pkgbase = bucklespring-git
+	pkgdesc = Nostalgia bucklespring keyboard sound, sampled from IBM's Model-M
+	pkgver = 20160815
+	pkgrel = 1
+	url = http://github.com/zevv/bucklespring
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openal
+	depends = alure
+	depends = libxtst
+	source = git+https://github.com/zevv/bucklespring
+	source = change-default-wav-path.patch
+	sha1sums = SKIP
+	sha1sums = 3658e6878ce662cafbb56aa1497aa102da37d27e
+
+pkgname = bucklespring-git
+
