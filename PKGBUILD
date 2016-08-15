@@ -4,7 +4,7 @@ _basedir=/usr
 
 pkgname=cpp-netlib-git
 pkgver=0.12.0.final.r51.g77dc2a2
-pkgrel=1
+pkgrel=2
 pkgdesc='The C++ Network Library Project -- cross-platform, standards compliant networking library.'
 arch=('i686' 'x86_64')
 url='https://github.com/cpp-netlib/cpp-netlib'
@@ -12,8 +12,8 @@ license=(Boost)
 conflicts=(cpp-netlib)
 provides=(cpp-netlib)
 replaces=(cpp-netlib)
-depends=(openssl boost boost-libs)
-makedepends=(git cmake clang doxygen gtest gmock)
+depends=(boost-libs)
+makedepends=(git cmake clang boost openssl)
 source=(git+https://github.com/cpp-netlib/cpp-netlib.git)
 md5sums=(SKIP)
 
@@ -34,21 +34,27 @@ build() {
   mkdir cpp-netlib-build
   cd cpp-netlib-build
   cmake -DCMAKE_BUILD_TYPE=Release \
-	  -DBOOST_ROOT=$_basedir \
+	  -DBUILD_SHARED_LIBS=ON \
 	  -DCMAKE_C_COMPILER=clang \
 	  -DCMAKE_CXX_COMPILER=clang++ \
-	  -DCPP-NETLIB_BUILD_TESTS=OFF \
+	  -DCPP-NETLIB_ENABLE_HTTPS=ON \
 	  -DCPP-NETLIB_BUILD_EXAMPLES=OFF \
-	  -DBUILD_GMOCK=OFF \
+	  -DCPP-NETLIB_BUILD_TESTS=OFF \
+	  -DCPP-NETLIB_BUILD_DOCS=OFF \
 	  -DUri_BUILD_TESTS=OFF \
-	  -DCPP-NETLIB_BUILD_SHARED_LIBS=ON \
+  	  -DUri_BUILD_DOCS=OFF \
+	  -DCMAKE_CXX_FLAGS="-std=c++11 ${CMAKE_CXX_FLAGS}" \
 	  -DCMAKE_INSTALL_PREFIX=$pkgdir$_basedir ../cpp-netlib
+
   make 
+  cd deps/uri
+  make install
+
 }
 
 check() {
   cd cpp-netlib-build
-  #make check
+  make test
 }
 
 package() {
@@ -65,6 +71,7 @@ package() {
   #  sed -i -e "s|${pkgdir}${_basedir}/lib64|${_basedir}/lib|g" $_file
   #  sed -i -e "s|${pkgdir}${_basedir}|${_basedir}|g" $_file
   #done
+
 
   #Install license
   install -d ${pkgdir}/usr/share/licenses/cpp-netlib
