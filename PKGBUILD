@@ -1,19 +1,20 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: 78695CFD
-# Contributor: shivik <> PGP-Key: 761E4.6C
-# Contributor : Thomas Baechler <thomas@archlinux.org>
-
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Lawliet <yanzilme@gmail.com>
+# Contributor: Felix Yan <felixonmars@gmail.com>
+ 
 pkgname=nvidia-340xx-lqx
 pkgver=340.96
-_extramodules=extramodules-4.6-lqx
-pkgrel=3
-pkgdesc="NVIDIA drivers for linux-lqx, 340xx legacy branch"
+_extramodules=extramodules-4.7-lqx
+pkgrel=6
+_pkgdesc="NVIDIA 340xx drivers for linux-lqx."
+pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.6' 'linux-lqx<4.7' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-lqx-headers>=4.6' 'linux-lqx-headers<4.7')
+depends=('linux-lqx>=4.7' 'linux-lqx<4.8' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-lqx-headers>=4.7' 'linux-lqx-headers<4.8')
 conflicts=('nvidia-lqx' 'nvidia-304xx-lqx')
 license=('custom')
-install=${pkgname}.install
+install=nvidia-340xx-lqx.install
 options=(!strip)
 source=('linux-4.6.patch')
 source_i686+=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
@@ -28,25 +29,26 @@ md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-    # patches here
-    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+		patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+		cp -a kernel kernel-dkms
 }
 
-build() {
-    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-    cd "${_pkg}"/kernel
-    make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 
-    cd uvm
-    make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+build() {
+	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+	cd "${_pkg}/kernel"
+	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+
+	cd uvm
+	make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
 
 package() {
-    install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
-        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
-    install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
-        "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
-    gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
-    install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
-    echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-lqx.conf"
+	install -Dm644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
+		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
+	install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+	gzip -9 "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
+	install -dm755 "${pkgdir}/usr/lib/modprobe.d"
+	echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-340xx-lqx.conf"
 }
