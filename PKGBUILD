@@ -31,8 +31,8 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.6
-_minor=6
+__basekernel=4.7
+_minor=0
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -60,12 +60,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux-lqx.preset")
 
-sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
+sha512sums=('e8c02583e17e4fc4214fef694825fcb78c898266f1624deb1cdf56ab5c5fdfa669c5221122a7cf0d502ed6f921ff3797634acd9d294d29e98e3faa8a21920185'
             'SKIP'
-            '33ed2cabca6e965cbcb786346fbdfeb3b90e727e8602c46da232b7c620cc21557ba1dd61d171c7a283a457ad218b765d7ee53c3980fb80f87a2ae559935e77c6'
-            '8d4822745cdaa70040bb53fc6150bbd5d5f617d0e341819541fa2916a453fed197d413439c5ad4de18e830e7a3dec561b6d4eff1c1a96665450c13a4e3ab2506'
-            '975de950519aa81b5c48dcafe6c836620db8de0f1c57e5931b240a4c801648b57d1ed1dc0e8fdf8ded8a55bc84d5dcac5442cb2f42ff0b10ffdcafc9eaeed9b6'
-            '9d8ad44f1e418ced1ad253b40331775a953403891104ad3a11fff3192d620641063f39fc3f5823a3f4c651080a3f9ff2954edcd9cbcbb60f46243738b9bf667a'
+            '793ca71271abbb13cf1c280b85d19f138e32d83ca59e5494f839d530a2d065840e6be868be567c2aaa785550bb23d8493ede1f3a5adfee9cab60afb87b0d143d'
+            '2e15952391c80cac42ecdf2fbd4d63e5670bbeb7535053a9e8041c3c018a7a147b804f5c623d79a9c80079ab1c4a2c8c0fef920ef447a6ae81d85bb28439e984'
+            '2a1a545ae1d9fe346d18f928364ae67f6aaf3b1d12e707d22f5bda44bf65ff1c093429ba4a137f9bd17de1f723af63731678db15e97176fe2aa724d98509f045'
+            'acaa197f4d52050739b0fcc62d3cc6b048552ae3f58b988eef60aa822bf4bc753ffef1106bc9a2f3a30f1016e833c804dc14750cbfc1bd3461eddccf9a8fd0c3'
             'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
             
 validpgpkeys=(
