@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=3.2.0
+pkgver=3.3.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://mattermost.org"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'npm' 'python2' 'git' 'mercurial')
+makedepends=('go' 'npm' 'python2' 'git' 'mercurial' 'pngquant')
 backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
@@ -19,7 +19,7 @@ source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgv
         mattermost.service
         mattermost-user.conf
         mattermost.sh)
-sha256sums=('4ed77c13f4df1b62527155b05ec5d8184be5b713a71266534c6e98f77c39d93c'
+sha256sums=('63403623223db7ccf9a60b168501b23451b024832ecc0ac0fa1531fd378f42e0'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
             '7f4993798d1a2ae9a78fed5fc3fe88d44a7a669e7ffefda7fa6a36c27c6c5840')
@@ -36,11 +36,14 @@ prepare() {
     -e 's/^package: build build-client/package: build-linux build-client/' \
     -e 's/GOARCH=amd64//' \
     -e 's/^BUILD_HASH =.*/BUILD_HASH = none/'
+
+  sed -i webapp/Makefile \
+    -e '/npm install/a \	rm node_modules/pngquant-bin/vendor/pngquant\n	ln -s /usr/bin/pngquant node_modules/pngquant-bin/vendor/pngquant'
 }
 
 build() {
   cd "$srcdir"/src/github.com/mattermost/platform
-  GOPATH="$srcdir" BUILD_NUMBER="$_pkgver-$pkgrel" make package
+  GOPATH="$srcdir" BUILD_NUMBER=$_pkgver-$pkgrel make package
 }
 
 package() {
@@ -62,7 +65,7 @@ package() {
 
   sed -e 's@"Directory": ".*"@"Directory": "/var/lib/mattermost/"@g' \
       -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-      -i "$pkgdir"/etc/webapps/"$pkgname"/config.json
+      -i "$pkgdir"/etc/webapps/$pkgname/config.json
 
   mv MIT-COMPILED-LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname
   mv NOTICE.txt README.md "$pkgdir"/usr/share/doc/$pkgname
