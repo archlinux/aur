@@ -1,4 +1,5 @@
 # Maintainer: Arun <cute.tec at the google email domain which is .com>
+# Contributor: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
