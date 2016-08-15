@@ -2,20 +2,20 @@
 
 pkgname=4kvideotomp3
 pkgver=2.2.1.810
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract audio in high-quality MP3 from any video."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-videotomp3"
 license=('custom:eula')
-depends=('qt5-script' 'qt5-quickcontrols' 'portaudio' 'ffmpeg-compat' 'ffmpeg-compat-55')
+depends=('qt5-script' 'qt5-quickcontrols' 'portaudio' 'ffmpeg2.8')
 source=("${pkgname}.desktop"
         "${pkgname}.png")
 source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
 source_x86_64=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('a53e776426f30fd1d35b5d78df95f3608f25a8637a7c5f0c731ff538226c2185'
             '3aa5efcf8111c63fde7397f491d2b85ff47d50fd531f7792842d94016b814a4c')
-sha256sums_i686=('930827c6fb48aa32f4adaea00cac66a478548e2912dba5c26baa7d7675b90c97')
-sha256sums_x86_64=('f8a8e998b362e4568c45cd0c4d26465f6948c16f88a45c4b7cba17c8e5eb4c2e')
+sha256sums_i686=('ae324a40ffa399eee021d6467ddb81e3bb0ca3915106ce3e57e6f38c8d3dc3d1')
+sha256sums_x86_64=('d4676238cad42130fdf59658e09f4d6781454907319444dba96d9ba5c385e7d9')
 
 package() {
   # Install desktop file
