@@ -1,0 +1,14 @@
+[Unit]
+Description=Starbound Server
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+ExecStartPre=+/usr/bin/starbound_server init
+ExecStart=/usr/bin/starbound_server start
+ExecStop=+/usr/bin/starbound_server stop
+User=starbound
+Group=starbound
+
+[Install]
+WantedBy=multi-user.target

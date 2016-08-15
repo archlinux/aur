@@ -1,0 +1,33 @@
+#!/bin/bash
+
+install_path="/usr/share/starbound"
+config_path="$HOME/.config/starbound"
+
+tmpdir=$(mktemp -d -p /tmp starbound-${USER}-XXXXXXXX)
+
+if [[ ! -d "$config_path" ]]
+then
+  mkdir -p "$config_path"
+  cp -r "$install_path/"{storage,mods} "$config_path/"
+fi
+
+cd "$tmpdir"
+
+ln -s "$install_path/"{assets,tiled} .
+ln -s "$config_path/"{storage,mods} .
+
+mkdir linux
+cd linux
+
+# if anyone as an idea how to make this efficient please tell me (sowieso@dukun.de)
+# is there any way to make an executable aware of the symlink-path?
+for file in "$install_path"/linux/*
+do
+  cp "$file" .
+done
+
+primusrun=""
+if which primusrun &> /dev/null; then primusrun=$(which primusrun); fi
+$primusrun ./run-client.sh
+
+rm -r $tmpdir

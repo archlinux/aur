@@ -1,0 +1,37 @@
+#!/bin/bash
+
+logfile=/var/log/starbound.log
+pidfile=/run/starbound.pid
+
+function init_server {
+  echo $$ > $pidfile
+  
+  echo -e "\n[$(date)] starting starbound server" >> $logfile
+  chown starbound:starbound $logfile
+}
+
+function start_server {
+  cd /usr/share/starbound/linux
+  ./starbound_server >> "$logfile" &
+}
+
+function stop_server {
+  pid=$(cat /run/starbound.pid)
+  kill $pid
+  rm /run/starbound.pid
+  echo -e "[$(date)] stopped starbound server" >> $logfile
+}
+
+case $1 in
+  init)
+    init_server
+    ;;
+  start)
+    start_server
+    ;;
+  stop)
+    stop_server
+    ;;
+esac
+
+exit 0
