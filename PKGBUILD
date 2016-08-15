@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_srcname}${pkgver}"
+  cd "${srcdir}/hg"
   make INSTALL_ROOT="$pkgdir" install
   for _i in 16 22 32 48 64 128; do
     install -D -m 0644 utilities/${_srcname}${_i}x${_i}.png \
