@@ -10,6 +10,7 @@ license=('GPL3')
 url='http://www.technicpack.net/'
 depends=('java-runtime' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
+noextract=('TechnicLauncher.jar')
 source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
@@ -23,6 +24,7 @@ package(){
 
     # Desktop integration
     install -D -m644 "${srcdir}/technic-launcher.desktop" "${pkgdir}/usr/share/applications/technic-launcher.desktop"
+    bsdtar -xf TechnicLauncher.jar net/technicpack/launcher/resources/icon.ico
     icotool -x -o "$srcdir" "${srcdir}/net/technicpack/launcher/resources/icon.ico"
     for size in 16 32 48 64; do
         install -D -m644 "${srcdir}/icon_"?"_${size}x${size}x32.png" \
