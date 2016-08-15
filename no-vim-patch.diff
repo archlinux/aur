@@ -1,0 +1,212 @@
+diff --git a/LICENSE.md b/LICENSE.md
+index 42798d5..8f391b1 100644
+--- a/LICENSE.md
++++ b/LICENSE.md
+@@ -94,3 +94,7 @@ RenderDoc also uses several external libraries and components which include thei
+ - [cmdline](https://github.com/tanakh/cmdline)
+   distributed under the New BSD License (3 Clause).
+   Copyright 2009, Hideyuki Tanaka
++
++- [include-bin](https://github.com/Marqin/include-bin)
++  distributed under the zlib license.
++  Copyright 2016, Hubert Jarosz
+diff --git a/installer/LICENSE.rtf b/installer/LICENSE.rtf
+index 8eb2407..27d8643 100644
+Binary files a/installer/LICENSE.rtf and b/installer/LICENSE.rtf differ
+diff --git a/renderdoc/3rdparty/include-bin/LICENSE b/renderdoc/3rdparty/include-bin/LICENSE
+new file mode 100644
+index 0000000..57c464a
+--- /dev/null
++++ b/renderdoc/3rdparty/include-bin/LICENSE
+@@ -0,0 +1,17 @@
++Copyright (c) 2016 Hubert Jarosz
++
++This software is provided 'as-is', without any express or implied
++warranty. In no event will the authors be held liable for any damages
++arising from the use of this software.
++
++Permission is granted to anyone to use this software for any purpose,
++including commercial applications, and to alter it and redistribute it
++freely, subject to the following restrictions:
++
++1. The origin of this software must not be misrepresented; you must not
++   claim that you wrote the original software. If you use this software
++   in a product, an acknowledgement in the product documentation would be
++   appreciated but is not required.
++2. Altered source versions must be plainly marked as such, and must not be
++   misrepresented as being the original software.
++3. This notice may not be removed or altered from any source distribution.
+diff --git a/renderdoc/3rdparty/include-bin/README.md b/renderdoc/3rdparty/include-bin/README.md
+new file mode 100644
+index 0000000..24b0623
+--- /dev/null
++++ b/renderdoc/3rdparty/include-bin/README.md
+@@ -0,0 +1,43 @@
++# include-bin
++
++C++ program that generates C arrays from binary data.
++It's output is similar to `xxd -i`.
++
++Extra features:
++
++* uses sanitized input filename for variable names
++* output lines are shorter than 79 characters
++
++
++## Compilation
++Just compile main.cpp with your favourite C++ compiler. This code is
++compatible even with C++98 standard.
++
++`g++ -O2 ./main.cpp -o include-bin`
++
++## Usage
++
++```bash
++./include-bin [infile [outfile]]
++```
++If there is no outfile argument it will print on stdout. If there is also no
++infile argument it will read from stdin. In latter case array name will be
++"data".
++
++Example:
++```bash
++sh-3.2$ hexdump te-st.txt
++0000000 17 18 19 20 11 10 12 56 41 00 00 d0 d0 11 25 ff
++0000010 ff 00 ff 00
++0000014
++sh-3.2$ ./include-bin te-st.txt out.c
++sh-3.2$ cat out.c
++unsigned char te_st_txt[] = {
++  0x17, 0x18, 0x19, 0x20, 0x11, 0x10, 0x12, 0x56, 0x41, 0x00, 0x00, 0xd0,
++  0xd0, 0x11, 0x25, 0xff, 0xff, 0x00, 0xff, 0x00
++};
++unsigned int te_st_txt_len = 20;
++```
++
++## License
++This program is under [zlib license](https://en.wikipedia.org/wiki/Zlib_License).
+diff --git a/renderdoc/3rdparty/include-bin/main.cpp b/renderdoc/3rdparty/include-bin/main.cpp
+new file mode 100644
+index 0000000..02b3540
+--- /dev/null
++++ b/renderdoc/3rdparty/include-bin/main.cpp
+@@ -0,0 +1,96 @@
++/*
++    Copyright (c) 2016 Hubert Jarosz
++
++    This software is provided 'as-is', without any express or implied
++    warranty. In no event will the authors be held liable for any damages
++    arising from the use of this software.
++
++    Permission is granted to anyone to use this software for any purpose,
++    including commercial applications, and to alter it and redistribute it
++    freely, subject to the following restrictions:
++
++    1. The origin of this software must not be misrepresented; you must not
++       claim that you wrote the original software. If you use this software
++       in a product, an acknowledgement in the product documentation would be
++       appreciated but is not required.
++    2. Altered source versions must be plainly marked as such, and must not be
++       misrepresented as being the original software.
++    3. This notice may not be removed or altered from any source distribution.
++*/
++
++#include <iostream>
++#include <fstream>
++#include <string>
++#include <sstream>
++#include <iomanip>
++#include <algorithm>
++
++char sanitize_char( char ch ) {
++  if( ('A' <= ch && ch <= 'Z') ||
++      ('a' <= ch && ch <= 'z') ||
++      ('0' <= ch && ch <= '9') ) {
++    return ch;
++  }
++  return '_';
++}
++
++std::string sanitize( std::string s ) {
++  if( s.length() == 0 ) {
++    return "data";
++  }
++
++  std::transform( s.begin(), s.end(), s.begin(), sanitize_char );
++  if( '0' <= s[0] && s[0] <= '9' ) {
++    s = "_" + s;
++  }
++
++  return s;
++}
++
++void include_bin( std::istream& in, std::ostream& out, std::string name ) {
++  int b = 0, count = 0;
++  name = sanitize(name);
++
++  out << "unsigned char " << name << "[] = {\n  ";
++
++  while( (b = in.get()) != std::istream::traits_type::eof() ) {
++    std::stringstream stream;
++    stream << std::setfill('0') << std::setw(2) << std::hex << b;
++    if( count > 0 ) {
++      if( count%12 == 0 ) {
++        out << ",\n  ";
++      } else {
++        out << ", ";
++      }
++    }
++    out << "0x" << stream.str();
++    count++;
++  }
++
++  out << "\n};\nunsigned int " << name << "_len = " << count << ";\n";
++  out << std::flush;
++}
++
++int main( int argc, char* argv[] ) {
++
++  if( argc < 1 || argc > 3 ) {
++    std::cerr << "Usage: include-bin [infile [outfile]]" << argc << std::endl;
++    return 1;
++  }
++
++  if( argc > 1 ) {
++    std::ifstream fin( argv[1], std::ios_base::binary );
++    if( argc > 2 ) {
++      std::ofstream fout( argv[2] );
++      include_bin( fin, fout, std::string(argv[1]) );
++      fout.close();
++    } else {
++      include_bin( fin, std::cout, std::string(argv[1]) );
++    }
++    fin.close();
++  } else {
++    include_bin( std::cin, std::cout, "data" );
++  }
++
++  return 0;
++}
+diff --git a/renderdoc/CMakeLists.txt b/renderdoc/CMakeLists.txt
+index 0a9a0d6..1f8680f 100644
+--- a/renderdoc/CMakeLists.txt
++++ b/renderdoc/CMakeLists.txt
+@@ -221,6 +221,8 @@ set(data
+ set(data_objects)
+ 
+ if(UNIX)
++    add_executable(include-bin 3rdparty/include-bin/main.cpp)
++
+     foreach(res ${data})
+         set(in ${res})
+         set(working_dir ${CMAKE_CURRENT_SOURCE_DIR})
+@@ -230,7 +232,8 @@ if(UNIX)
+         add_custom_command(OUTPUT ${out_src}
+             WORKING_DIRECTORY ${working_dir}
+             COMMAND ${CMAKE_COMMAND} -E make_directory ${out_src_dir}
+-            COMMAND xxd -i ${in} ${out_src}
++            COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/include-bin ${in} ${out_src}
++            DEPENDS include-bin
+             DEPENDS ${res})
+ 
+         list(APPEND data_objects ${out_src})
