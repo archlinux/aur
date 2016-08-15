@@ -4,12 +4,12 @@
 _target=powerpc-wrs-vxworks
 pkgname=${_target}-gcc
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL')
-depends=('wrs-vxworks-headers' 'binutils-powerpc-wrs-vxworks' 'libmpc' 'elfutils')
+depends=('wrs-vxworks-headers' 'powerpc-wrs-vxworks-binutils' 'libmpc' 'elfutils')
 makedepends=('wget')
 conflicts=('gcc-powerpc-wrs-vxworks')
 provides=('gcc-powerpc-wrs-vxworks')

@@ -1,7 +1,7 @@
 pkgbase = powerpc-wrs-vxworks-gcc
 	pkgdesc = The GNU Compiler Collection (powerpc-wrs-vxworks)
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = powerpc-wrs-vxworks-gcc
 	license = LGPL
 	makedepends = wget
 	depends = wrs-vxworks-headers
-	depends = binutils-powerpc-wrs-vxworks
+	depends = powerpc-wrs-vxworks-binutils
 	depends = libmpc
 	depends = elfutils
 	provides = gcc-powerpc-wrs-vxworks
