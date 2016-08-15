@@ -1,7 +1,7 @@
 # Maintainer: Jason Waataja <jasonswaataja@gmail.com>
 pkgname=jws-config-git
 pkgver=1.0.1.r0.4300f2e
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical configuration tool for JWS"
 arch=(x86_64)
 url="https://github.com/JasonWaataja/JWS-Config"
