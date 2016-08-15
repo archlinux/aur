@@ -11,7 +11,8 @@ The [release notes for 0.9](https://caddyserver.com/blog/caddy-0_9-released) are
 
 The following instructions are only relevant if you used the caddy AUR packages before the 0.9 release.
 `www-data` is used as the new default user and group, therefore it needs to be available on the system.
-Run the following command to create the system user and group for www-data:
+The PKGBUILD's install script will create the user if it is not available.
+In case this didn't work run the following command to create the system user and group for www-data:
 
 ```sh
 useradd --system --shell /usr/bin/nologin www-data
