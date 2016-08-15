@@ -2,8 +2,8 @@
 
 pkgname=quakespasm
 pkgver=0.92.0
-pkgrel=4
-pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with Mission pack desktop files."
+pkgrel=5
+pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
 url="http://quakespasm.sourceforge.net"
 license=('GPL2')
@@ -36,7 +36,12 @@ package() {
   done
 
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm644 $srcdir/$pkgname-mp1.desktop $pkgdir/usr/share/applications/$pkgname-mp1.desktop
-  install -Dm644 $srcdir/$pkgname-mp2.desktop $pkgdir/usr/share/applications/$pkgname-mp2.desktop
-  install -Dm644 $srcdir/$pkgname-impel.desktop $pkgdir/usr/share/applications/$pkgname-impel.desktop
+#
+# Uncomment lines depending on the mission pack(s)
+# or extension you have.
+#
+# install -Dm644 $srcdir/$pkgname-mp1.desktop $pkgdir/usr/share/applications/$pkgname-mp1.desktop
+# install -Dm644 $srcdir/$pkgname-mp2.desktop $pkgdir/usr/share/applications/$pkgname-mp2.desktop
+# install -Dm644 $srcdir/$pkgname-impel.desktop $pkgdir/usr/share/applications/$pkgname-impel.desktop
+
 }

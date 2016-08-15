@@ -5,6 +5,9 @@ post_install() {
 		:: additionally pak1.pak for the whole game.
 		:: Put them into <YOUR_HOME_DIR>/.quakespasm/id1/
 		
+                :: If you have uncommented line in package(),
+		:: Here is how to install MPs and extensions.
+
 		:: There is desktop file for Mission Pack 1 (hipnotic)
 		:: Mission Pack 2 (rogue)
 		:: and for Abyss of Pandemonium (impel)
