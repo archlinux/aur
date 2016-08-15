@@ -1,0 +1,22 @@
+pkgbase = powerpc-wrs-vxworks-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files (powerpc-wrs-vxworks)
+	pkgver = 2.27
+	pkgrel = 1
+	url = http://sources.redhat.com/binutils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = binutils
+	depends = wrs-vxworks-headers
+	provides = binutils-powerpc-wrs-vxworks
+	conflicts = binutils-powerpc-wrs-vxworks
+	options = !strip
+	options = !libtool
+	options = !zipman
+	options = !buildflags
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.bz2
+	sha512sums = cf276f84935312361a2ca077e04d0b469d23a3aed979d8ba5d92ea590904ffb2c2e7ed12cc842822bfc402836be86f479660cef3791aa62f3753d8a1a6f564cb
+
+pkgname = powerpc-wrs-vxworks-binutils
+
