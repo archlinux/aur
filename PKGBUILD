@@ -3,20 +3,23 @@
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=cpuid
-pkgver=20151017
+pkgver=20160814
 pkgrel=1
 pkgdesc="Linux tool to dump x86 CPUID information about the CPU(s)"
 url="http://www.etallen.com/cpuid.html"
 license=('GPL')
 arch=('i686' 'x86_64')
+makedepends=('perl')
 depends=('glibc')
 groups=('system')
 source=("http://www.etallen.com/$pkgname/$pkgname-$pkgver.src.tar.gz")
-md5sums=('445f4674f0ca7fe10d0a24e0bd34d40d')
+md5sums=('b9d32005bedbb19f9b409dbb530f5510')
 
 
 build () {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
+  # pod2man: /usr/bin/core_perl/ is not always in path - minimize error reports by setting PATH
+  PATH=${PATH}:/usr/bin/core_perl/
   make || exit 1
 }
 
