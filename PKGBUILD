@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc       # Build kernel with a different name
-_srcname=linux-4.6
-_stable=4.6.5
-_patchver=4.6.6
+_srcname=linux-4.7
+##_stable=4.7
+_patchver=4.7.1
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
+##        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz"
+##        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign"
         
@@ -27,14 +27,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
+sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
+            '0ee74598be260186a21cde7943759dbcfdeb40ad6a42544482484a2c6b9b5a71'
             'SKIP'
-            '2778bcb6fe4a8b5943f613cf5d34b876616530949f249bbebfa134736c48d831'
-            'SKIP'
-            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
-            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
+            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
+            '3b41dde76dd69ec6e088bd19e724f3eabd30eaf43727a1948c6603242dc08cd8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -48,7 +46,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${_stable}"
+  ##patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
@@ -174,7 +172,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -255,6 +253,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
