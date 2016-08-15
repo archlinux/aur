@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler-git
-pkgver=0.3.r3.gc5fb6f0
-pkgrel=2
+pkgver=v0.3.1.r0.g9b57e9e
+pkgrel=3
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
 arch=('i686' 'x86_64')
@@ -24,11 +24,20 @@ prepare() {
   rm Cargo.lock
 }
 
+build() {
+  cd "$srcdir/$pkgname"
+  cargo build --release
+}
+
 package() {
   cd "$srcdir/$pkgname"
-  cargo install way-cooler --root "$pkgdir"
-  mkdir "$pkgdir/usr"
-  mv "$pkgdir/bin" "$pkgdir/usr"
+
+  #cargo install way-cooler --root "$pkgdir"
+  #mkdir "$pkgdir/usr"
+  #mv "$pkgdir/bin" "$pkgdir/usr"
+
+  mkdir -p "$pkgdir/usr/bin"
+  mv "target/release/way-cooler" "$pkgdir/usr/bin"
 
   mkdir -p "$pkgdir/etc/way-cooler"
   cp "$srcdir/$pkgname/config/init.lua" "$pkgdir/etc/way-cooler"
