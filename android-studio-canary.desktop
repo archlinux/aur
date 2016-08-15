@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Android Studio
-Exec=android-studio %f
-Icon=android-studio
-Comment=Develop with pleasure!
+Name=Android Studio (Canary Branch)
+Exec=android-studio-canary %f
+Icon=android-studio-canary
+Comment=The Official Android IDE (Canary branch)
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true

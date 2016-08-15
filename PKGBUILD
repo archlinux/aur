@@ -4,9 +4,9 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Contributor: Christoph Brill <egore911-at-gmail-dot-com>
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
+# Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-_pkgname=android-studio
 pkgver=2.2.0b1
 _pkgver=2.2.0.7
 pkgrel=1
@@ -15,45 +15,33 @@ pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
 license=('APACHE')
-depends=('java-environment' 'python' 'gtk2')
 makedepends=('unzip')
+depends=('freetype2' 'libxrender' 'libxtst')
+optdepends=('gtk2: GTK+ look and feel'
+            'libgl: emulator support')
 oidprovides=("android-studio=$pkgver")
-conflicts=('android-studio' 'android-studio-beta' 'android-studio-dev')
 options=('!strip')
 install=$pkgname.install
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
-        "$_pkgname.desktop")
+        "$pkgname.desktop")
 sha1sums=('bafb5d7029d2678e8274e24da1c7ce0a00f3a644'
-            'baed66cebe2b372700f436b93022a52cbff313be')
+            'afd36ebfa74768d821e5cc9d78c142c1a7236dba')
 
-if [ "$CARCH" = "x86_64" ]; then
-  depends+=('lib32-fontconfig' 'lib32-libxrender' 'lib32-mesa')
-else
-  depends+=('fontconfig' 'libxrender' 'mesa')
+if [ "$CARCH" = "i686" ]; then
+  depends+=('java-environment')
 fi
 
-prepare() {
-  cd $srcdir/$_pkgname
-
-  # extract the application icon
-  unzip -qo lib/resources.jar artwork/icon_AS_128.png
-
-  # enable anti aliasing
-  echo "-Dswing.aatext=true" >> studio.vmoptions
-  echo "-Dswing.aatext=true" >> studio64.vmoptions
-}
-
 package() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/android-studio
 
-  # application stuff
-  install -d $pkgdir/{opt/$_pkgname,usr/bin}
-  cp -a bin lib plugins $pkgdir/opt/$_pkgname
-  ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/android-studio
+  # Install the application.
+  install -d $pkgdir/{opt/$pkgname,usr/bin}
+  cp -a bin gradle lib jre plugins $pkgdir/opt/$pkgname
+  ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
-  # starter stuff
-  install -Dm655 artwork/icon_AS_128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
-  install -Dm655 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+  # Add the icon and desktop file.
+  install -Dm655 bin/studio.png $pkgdir/usr/share/pixmaps/$pkgname.png
+  install -Dm655 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
   chmod -R ugo+rX $pkgdir/opt
 }
