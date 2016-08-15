@@ -1,0 +1,18 @@
+pkgbase = bebop-stream-vlc-git
+	pkgdesc = Open Parrot Bebop video stream with VLC
+	pkgver = r1.5fd43c3
+	pkgrel = 1
+	url = http://developer.parrot.com/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libarsdk3-git
+	source = application_notes::git+https://github.com/Parrot-Developers/application_notes
+	source = 0001-Use_system_arsdk.patch
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 9e03f69ae6c41554c60d20738d0bfef391492a386d6ea04f95449e0bcd05842b
+	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
+
+pkgname = bebop-stream-vlc-git
+

@@ -1,0 +1,32 @@
+--- a/application_notes/BebopStreamVLC/Makefile
++++ b/application_notes/BebopStreamVLC/Makefile
+@@ -2,25 +2,17 @@ SRC=$(wildcard *.c)
+ OBJ=$(SRC:.c=.o)
+ 
+ # Configuration for the current AN
+-LIBS=-larsal -larnetwork -larcommands -lardiscovery -larnetworkal -ljson
++LIBS=-larsal -larnetwork -larcommands -lardiscovery -larnetworkal -ljson-c
+ OUT=BebopDroneStartStream
+ 
+ 
+ all: $(OUT)
+ 
+-$(OUT): check_env $(OBJ)
+-	@gcc -o $@ -L$(ARSDK_ROOT)/out/arsdk-native/staging/usr/lib $(OBJ) $(LIBS)
++$(OUT): $(OBJ)
++	@gcc -o $@ $(OBJ) $(LIBS)
+ 
+ %.o : %.c
+-	@gcc -o $@ -I$(ARSDK_ROOT)/out/arsdk-native/staging/usr/include $< -c
+-
+-run : $(OUT)
+-	@env LD_LIBRARY_PATH=$(ARSDK_ROOT)/out/arsdk-native/staging/usr/lib ./$(OUT)
+-
+-check_env:
+-ifndef ARSDK_ROOT
+-	$(error ARSDK_ROOT not defined. Please define it to the root folder of the SDK before calling this makefile)
+-endif
++	@gcc -o $@ $< -c
+ 
+ clean:
+ 	@rm -f $(OUT) $(OBJ)
