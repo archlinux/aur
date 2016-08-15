@@ -1,5 +1,5 @@
 pkgbase = bebop-stream-vlc-git
-	pkgdesc = Open Parrot Bebop video stream with VLC
+	pkgdesc = Open Parrot Bebop video stream with any video player
 	pkgver = r1.5fd43c3
 	pkgrel = 1
 	url = http://developer.parrot.com/
