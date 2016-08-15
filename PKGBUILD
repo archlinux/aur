@@ -51,7 +51,7 @@ package() {
 		"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 	install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
 	echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-lqx-304xx.conf"
-	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia-lqx-304xx.install"
+	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/nvidia-340xx-lqx.install"
 	gzip -9 "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
 
 	# the license file is part of nvidia-304xx-utils - the module depends on it, so we don't ship it another time.
