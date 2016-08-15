@@ -1,6 +1,6 @@
 # Maintainer: Jason Waataja <jasonswaataja@gmail.com>
 pkgname=jws-git
-pkgver=1.0.1.r0.8507615
+pkgver=1.0.2.r0.bd9445b
 pkgrel=1
 pkgdesc="A wallpaper setter for minimalist window managers"
 arch=(x86_64)
