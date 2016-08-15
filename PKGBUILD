@@ -5,12 +5,12 @@
 
 pkgname=nvidia-sdk-manjaro
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA Video Codec SDK (NVENCODE API and NVDECODE API)"
 arch=('i686' 'x86_64')
 url="https://developer.nvidia.com/nvidia-video-codec-sdk/"
 license=('custom')
-source=('https://github.com/Elrondo46/nvidia-sdk-manjaro/blob/master/Video_Codec_SDK_6.0.1.zip')
+source=('https://dl.dropboxusercontent.com/s/8v9u65hk376o08f/Video_Codec_SDK_6.0.1.zip')
 sha256sums=('SKIP')
 
 package() {
