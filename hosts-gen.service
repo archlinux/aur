@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically regenerate hosts from hosts.d
+Documentation=file:/usr/share/doc/hosts-gen/README
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hosts-gen
+
+[Install]
+WantedBy=default.target

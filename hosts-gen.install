@@ -2,8 +2,14 @@ post_install() {
 	echo 'Copying existing hosts file to 01-hosts.local'
 	cp -v etc/hosts etc/hosts.d/01-hosts.local
 	echo
-	echo 'Changes to /etc/hosts will be lost when hosts-gen is run. Put new'
-	echo 'entries in files in /etc/hosts.d.'
+	echo ' :: Changes to /etc/hosts will be lost when hosts-gen is run. Put new'
+	echo ' :: entries in files in /etc/hosts.d.'
+	echo
+	echo ' :: To automatically generate the hosts file whenever hosts.d files'
+	echo ' :: are added or changed, enable the hosts-gen.path unit:'
+	echo
+	echo '    systemctl enable hosts-gen.path'
+	echo
 }
 
 pre_remove() {
