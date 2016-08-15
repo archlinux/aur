@@ -4,19 +4,18 @@
 pkgname=foxitreader
 epoch=1
 pkgver=1.1.1.0602
-_pkgver=1.1.1.0602
 _pkgrev=205262
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('i686' 'x86_64')
 url="http://www.foxitsoftware.com/Secure_PDF_Reader/"
 license=('custom:EULA')
-makedepends=('qt-installer-framework' 'qt5-declarative' 'qt5-tools' 'p7zip')
-depends=('desktop-file-utils')
+makedepends=('qt-installer-framework' 'qt5-tools' 'p7zip')
+depends=('desktop-file-utils' 'qt5-declarative')
 source=("https://www.foxitsoftware.com/products/pdf-reader/eula.html"
         "${pkgname}.patch")
-source_i686=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${_pkgver}_Server_x86_enu_Setup.run.tar.gz")
-source_x86_64=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${_pkgver}_Server_x64_enu_Setup.run.tar.gz")
+source_i686=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${pkgver}_Server_x86_enu_Setup.run.tar.gz")
+source_x86_64=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${pkgver}_Server_x64_enu_Setup.run.tar.gz")
 sha256sums=('738fc621a727e0429b9c50580b3c166776797f925f2819037d1414dad0b95f6a'
             '2111205034f47ba57e1fa328e3f190f9f33c8680927cc9a0492ca98cff0107b3')
 sha256sums_i686=('355d5cdf82fe4b970bd90d0da94013a28d62527f4476692b8c5edf2e1c66e4c3')
