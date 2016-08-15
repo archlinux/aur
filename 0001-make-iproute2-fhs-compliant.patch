@@ -94,11 +94,8 @@ index 61e60b1..6d448de 100644
 @@ -55,6 +55,7 @@ struct exec_util {
  };
  
- extern const char *get_tc_lib(void);
-+extern const char *get_tc_datadir(void);
+ const char *get_tc_lib(void);
++const char *get_tc_datadir(void);
  
- extern struct qdisc_util *get_qdisc_kind(const char *str);
- extern struct filter_util *get_filter_kind(const char *str);
--- 
-2.9.0
-
+ struct qdisc_util *get_qdisc_kind(const char *str);
+ struct filter_util *get_filter_kind(const char *str);

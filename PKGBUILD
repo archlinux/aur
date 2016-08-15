@@ -4,7 +4,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
@@ -22,10 +22,10 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
-         '0001-make-iproute2-fhs-compliant.patch')
-sha1sums=('04ad96e2eb21893a987f10b9c8f6cb2945bce56b'
+        '0001-make-iproute2-fhs-compliant.patch')
+sha1sums=('eafdefb9ebe7c840fa4ea8ea111554e3650a3c5a'
           'SKIP'
-          '1d048b8e798af6e0f7dc16576dd5531be3bbbd70')
+          '1ed328854983b3f9df0a143aa7c77920916a13c1')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
