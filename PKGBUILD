@@ -3,7 +3,7 @@
 _pkgname=horseshoes
 pkgname=horseshoes-git
 pkgver=5
-pkgrel=6
+pkgrel=7
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
@@ -30,7 +30,7 @@ prepare()
 pkgver()
 {
   cd "$_pkgname"
-  git shortlog | head -n 1 | tr -Cd "[:digit:]"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
  
 build()
