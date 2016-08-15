@@ -20,7 +20,7 @@ source=("ftp://ftp.cis-app.com/pub/hasp/Sentinel_HASP/Runtime_(Drivers)/${pkgver
         "LICENSE"
         "udev-rules.patch"
         "${pkgname}.install")
-sha256sums=('10c2c8264892d6c87ea80ff74583f53d69411d5fc1e2c085c21425d1b2ffd5ed'
+sha256sums=('ec579f8a0a6688af00ca74f0c8e32c0298c0b54cd92d4d49c3407d98c0dbd8a3'
             '5551253cf3f048f3c1418c8f3e7378651a47807201de98f3e759fa81b38a859f'
             'd4558107c7c9cf94f4b1e95ca5036e5cb43e59c5bc9ac35e2fbb70a194dc091a'
             'e3be521db63423519161eb50c5561601fcfeb3341320e4d077b968d0a30d541a'
