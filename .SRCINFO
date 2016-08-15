@@ -1,0 +1,24 @@
+pkgbase = texstudio-qt4-hg
+	pkgdesc = Fork of the LaTeX IDE TexMaker. Gives you an environment where you can easily create and manage LaTeX documents. Built with Qt4.
+	pkgver = r6148.a19fbf1654a9
+	pkgrel = 1
+	url = http://texstudio.sourceforge.net/
+	install = texstudio-qt4-hg.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = sed
+	makedepends = mercurial
+	depends = poppler-qt4
+	depends = texlive-core
+	depends = qt4
+	optdepends = evince: pdf reader,
+	optdepends = okular: alternate pdf reader
+	provides = texstudio
+	replaces = texmakerx
+	replaces = texstudio
+	source = hg+http://hg.code.sf.net/p/texstudio/hg
+	sha256sums = SKIP
+
+pkgname = texstudio-qt4-hg
+
