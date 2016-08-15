@@ -2,7 +2,7 @@
 
 _plug=sangnom
 pkgname=vapoursynth-plugin-${_plug}-hg
-pkgver=19.016bf2359f57
+pkgver=25.580e6af65876
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
 arch=('i686' 'x86_64')
@@ -22,16 +22,18 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  echo "all:
-	  g++ -o lib${_plug}.so -std=gnu++11 -msse2 -DVS_TARGET_CPU_X86=1 ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS} $(pkg-config --cflags vapoursynth) sangnom_c.cpp -shared -fPIC" > Makefile
+  chmod +x autogen.sh
+  ./autogen.sh
 }
 
 build() {
-  make -C "${_plug}"
+  cd "${_plug}"
+  ./configure --libdir="/usr/lib/vapoursynth"
+  make
 }
 
 package(){
   cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  make DESTDIR="${pkgdir}" install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
