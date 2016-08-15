@@ -2,7 +2,7 @@
 
 pkgname=arcus
 pkgver=2.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
@@ -35,8 +35,6 @@ package() {
   mkdir -p "${pkgdir}$(dirname $SITE_PACKAGES)"
   mv "${pkgdir}/usr/lib/python3/dist-packages" "${pkgdir}${SITE_PACKAGES}"
   rm -rf "${pkgdir}/usr/lib/python3"
-  mv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib/.
-  rm -rf "${pkgdir}/usr/lib64"
 
   install -Dm644 "${srcdir}/libArcus-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
