@@ -1,7 +1,7 @@
 # maintainer: so wieso <sowieso@dukun.de>
 pkgname=starbound-client-server-gog
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Starbound, an extraterrestrial sandbox adventure game (client + server, GOG-Version)"
 url="http://playstarbound.com/"
 license=('custom')
@@ -16,7 +16,7 @@ source=("gog://gog_starbound_2.5.0.6.sh"
         
 md5sums=('e38aaceaa3247e2674e3ff5265663525'
          'b1edfe9aec35bc36d7fc8eb010cfdb05'
-         'a4da1d6f3638765fec7fa8bfebac6086'
+         '879b2f89d5a1fdc74c9ea27766cd6613'
 	 '80ebdcf3780e0ca8c93feaf5ee8d4eec')
 install=$pkgname.install
 
