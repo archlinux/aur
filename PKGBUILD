@@ -1,21 +1,21 @@
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=xyscan
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tool to extract data points from graphical plots'
 url='http://rhig.physics.yale.edu/~ullrich/software/xyscan/'
 license=('GPL')
 depends=('qt5-multimedia>=5.2.0' 'poppler-qt5')
-source=(http://rhig.physics.yale.edu/~ullrich/software/$pkgname/Distributions/4.00/$pkgname-4.00-src.tar.gz
+source=(http://rhig.physics.yale.edu/~ullrich/software/$pkgname/Distributions/4.10/$pkgname-4.10-src.tgz
 	xyscan.desktop)
-md5sums=('57000c8e4192c9185647ffb37fad6eca'
-	'2df01c952f8425d05e0d138778ca5be9')
+md5sums=('8a64dcf11690c9b88d6aa2f54af221f4'
+         '2df01c952f8425d05e0d138778ca5be9')
 install=xyscan.install
 
 prepare() {
 	cd $pkgname
-	sed -i 's:/usr/local/share/xyscan/docs:/usr/share/doc/xyscan:' xyscanWindow.cpp
+	sed -i 's:/usr/local/share/xyscan/docs:/usr/share/doc/xyscan:' src/xyscanWindow.cpp
 	sed -i 's:/usr/local:/usr:' xyscan.pro
 }
 
