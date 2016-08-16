@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 272545 2016-07-28 08:27:39Z tpowa $
+# $Id: PKGBUILD 273608 2016-08-11 18:16:05Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
-_srcname=linux-4.6
-pkgver=4.6.5
+_srcname=linux-4.7
+pkgver=4.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -14,17 +14,15 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
-            'SKIP'
-            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
+sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
             '88a62ee2670e292c8a36d266c440b08a2d3bba744908ca27f4f52d999486d255'
@@ -41,7 +39,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
