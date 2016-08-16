@@ -4,7 +4,7 @@
 _build_doc=ON
 _build_apps=ON
 pkgname=openmesh
-pkgver=5.1
+pkgver=6.2
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=('qt4: for using included applications' )
 install=openmesh.install
 source=("${pkgname}-${pkgver}.tar.bz2::http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2"
     doc-install.patch)
-md5sums=('a3b9c1908dd762a0a66fad97135fdbb4'
-         '4a85342dd2c50d016177efa7dfb0039c')
+md5sums=('6297105b2c6f74d21e1d6244fbf651ab'
+         '451950dabec420fedd596fc740aa0c8f')
 
 if [[ "${_build_doc}" == "ON" && "${_build_apps}" == "ON" ]]; then
     makedepends=('cmake' 'qt4' 'graphviz' 'doxygen')
@@ -41,7 +41,8 @@ build() {
     cmake ../OpenMesh-${pkgver} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_APPS=${_build_apps}
+        -DBUILD_APPS=${_build_apps} \
+		-DOPENMESH_PYTHON_VERSION=3.5
     make
 
     if [[ "${_build_doc}" == "ON" ]]; then
@@ -57,4 +58,5 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/licenses/openmesh/
     install -D -m644 ../OpenMesh-${pkgver}/LICENSE \
         "${pkgdir}"/usr/share/licenses/openmesh/
+	mv ${pkgdir}/usr/lib/python ${pkgdir}/usr/lib/python3.5
 }
