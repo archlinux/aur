@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ukopp
-pkgver=5.9
+pkgver=6.0
 pkgrel=1
 pkgdesc="A backup program for USB devices"
 url="http://www.kornelix.com/ukopp"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('3e3d0aa7f90d9f7b891c64b34920497d')
+sha256sums=('2dc9b740cf1323048bb33f3913ef0a8a639d5dcf2528d9a482c26b2d77b5aeb4')
 options=('!emptydirs')
 
 build() {
@@ -18,7 +18,7 @@ build() {
   sed -i 's+xdg-deskto+#xdg-deskto+' Makefile
   make LDFLAGS="-lpthread" 
 }
-package() { 
+package() {
   cd $srcdir/$pkgname-$pkgver
   install -d $pkgdir/usr/share/applications
   make DESTDIR=$pkgdir install
