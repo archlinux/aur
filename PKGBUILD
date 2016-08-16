@@ -6,7 +6,7 @@
 
 pkgname=libselinux
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -23,11 +23,13 @@ options=(!emptydirs)
 source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d"
         "0001-libselinux-only-mount-proc-if-necessary.patch"
-        "0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch")
+        "0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch"
+        "0003-libselinux-Change-the-location-of-_selinux-so.patch")
 sha256sums=('94c9e97706280bedcc288f784f67f2b9d3d6136c192b2c9f812115edba58514f'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc'
             'da3ed20d45b7656c25411bcc31109a78b64265978839bbc06b25151a7231611c'
-            '1d20ae0d6fb39dd93258388297206980cb530b04511c4b16db247e05c84804a8')
+            '1d20ae0d6fb39dd93258388297206980cb530b04511c4b16db247e05c84804a8'
+            '725ec5a452b899309626b5e75f16f068ac108f9652565c99aedc268fd1d3922d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -38,6 +40,9 @@ prepare() {
   # https://github.com/systemd/systemd/issues/3962#issuecomment-239827399
   patch -Np2 -i "../0001-libselinux-only-mount-proc-if-necessary.patch"
   patch -Np2 -i "../0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch"
+
+  # Backport commit to fix the Python wrapper with SWIG 3.0.10
+  patch -Np2 -i "../0003-libselinux-Change-the-location-of-_selinux-so.patch"
 }
 
 build() {
