@@ -6,27 +6,21 @@ pkgdesc="ALPS Core libraries for numerical simulations of condensed matter syste
 arch=(i686 x86_64)
 url="http://alpscore.org"
 license=('GPL2')
-depends=('cmake>=2.8.12' 'boost>=1.54.0' 'hdf5>=1.8')
-optdepends=('openmpi: for MPI support')
+depends=('cmake' 'boost' 'hdf5')
 provides=($pkgname=$pkgver)
-conflicts=(alpscore-git alps)
+conflicts=(alpscore-git alpscore-openmpi alpscore-openmpi-git alps)
 source=("https://github.com/ALPSCore/ALPSCore/archive/v$pkgver.tar.gz")
 md5sums=('b887c9328e2a22afa123663cf888b768')
 
 build() {
-  cd "ALPSCore-$pkgver"
+    cd "ALPSCore-$pkgver"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
-  make
-}
-
-check() {
-  cd "ALPSCore-$pkgver/build"
-  make test
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTesting=OFF -DDocumentation=OFF ..
+    make
 }
 
 package() {
-  cd "ALPSCore-$pkgver/build"
-  make DESTDIR="$pkgdir/" install
+    cd "ALPSCore-$pkgver/build"
+    make DESTDIR="$pkgdir/" install
 }
