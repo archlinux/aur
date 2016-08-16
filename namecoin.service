@@ -1,17 +1,16 @@
 [Unit]
-Description=Bitcoin Daemon
-Conflicts=bitcoin-reindex.service
+Description=Namecoin Daemon
 After=network.target
 
 [Service]
-User=bitcoin
-Group=bitcoin
-ExecStart=/usr/bin/bitcoind -daemon=0                       \
-                            -conf=/etc/bitcoin/bitcoin.conf \
-                            -datadir=/srv/bitcoin           \
-                            -pid=/run/bitcoind.pid
+User=namecoin
+Group=namecoin
+ExecStart=/usr/bin/namecoind -daemon=0 \
+                             -conf=/etc/namecoin/namecoin.conf \
+                             -datadir=/srv/namecoin \
+                             -pid=/run/namecoin.pid
 ExecReload=/usr/bin/kill -HUP $MAINPID
-ExecStop=/usr/bin/bitcoind stop
+ExecStop=/usr/bin/namecoind stop
 
 [Install]
 WantedBy=multi-user.target

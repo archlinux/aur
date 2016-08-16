@@ -2,13 +2,14 @@
 
 pkgname=namecoin-core
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://namecoin.org"
 depends=('boost'
-         'boost-libs'
-         'zeromq')
+         'libevent'
+         'zeromq'
+         'miniupnpc')
 makedepends=('autoconf'
              'automake'
              'binutils'
@@ -17,7 +18,6 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/namecoin/namecoin-core/tar.gz/v$pkgver
         namecoin.conf
@@ -83,7 +83,7 @@ package() {
 }
 
 md5sums=('887e618fa025e98e1c7d6f88facadee2'
-         '85dbcf29d1dade4df781a95c6b502220'
+         '5248a01217a58e4a91e5cf5dd4002a12'
          '2ca92d94c329bf54b8df70f22c27ba98'
-         'd4694928d3e62f9215ce641663564eee'
+         '5a5aca0d121066eff20e5431f4b89a48'
          '1f3e4182d57987e4f42962cd2da94661')
