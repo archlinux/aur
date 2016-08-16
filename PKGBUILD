@@ -1,5 +1,5 @@
 pkgname=json-stroller-git
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="A ncurse tool for viewing json formatted data"
 arch=('i686' 'x86_64')
