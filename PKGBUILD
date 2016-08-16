@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Terminal top-like monitor for icecream/icecc'
 pkgname='icetop-git'
-pkgver='0'
-pkgrel='1'
+pkgver=r25.8f2a355
+pkgrel=1
 license=('GPL2')
 arch=('x86_64' 'i686')
 depends=('icecream' 'libdill' 'libtickit-bzr')
