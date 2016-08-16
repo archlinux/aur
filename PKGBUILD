@@ -3,10 +3,10 @@
 
 pkgname=cfunge
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, small and standard conforming Befunge98 interpreter'
 arch=('x86_64' 'i686')
-url='http://rage.kuonet.org/~anmaster/cfunge/'
+url='https://sourceforge.net/projects/cfunge/'
 license=('GPL')
 makedepends=('cmake' 'ninja')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
