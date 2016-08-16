@@ -3,6 +3,7 @@
 ./after/syntax
 ./after/syntax/rust.vim
 ./autoload
+./autoload/rustfmt.vim
 ./autoload/rust.vim
 ./compiler
 ./compiler/cargo.vim
@@ -15,6 +16,8 @@
 ./ftplugin/rust.vim
 ./indent
 ./indent/rust.vim
+./LICENSE-APACHE
+./LICENSE-MIT
 ./plugin
 ./plugin/rust.vim
 ./README.md
