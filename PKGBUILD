@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.7
-pkgver=4.7
+pkgver=4.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -67,8 +67,8 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patc
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.7.0.patch"
         "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.7.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
@@ -445,6 +445,8 @@ package_linux-bfq-docs() {
 
 sha512sums=('e8c02583e17e4fc4214fef694825fcb78c898266f1624deb1cdf56ab5c5fdfa669c5221122a7cf0d502ed6f921ff3797634acd9d294d29e98e3faa8a21920185'
             'SKIP'
+            '3c5d941ac007ca4d6e1a7cc0f967d6d213ff86887c9f11f09012fe18ea20cc9e14776c7fc7475d83162376bd67d19c43fa0313da7439d8312b6a9d800ebc5bc8'
+            'SKIP'
             '0759a2f48377d38fd331f243c9d49ca63059b2388cfcd46e2f88194d5a97741d2546e044807fe983065de2dcdefdf66197fa6e2630bb6afd0cc8abc3f76c5f01'
             '53fb9471f477e02e132ad4b61fb2381c4ca3268ac43d268a5a40b2ddc6df26ccadf322cd696a80ec51073a6fb1c763a3dd4dbad516dda9cea6c7e6b1da21914c'
             '02c5d82d1129ecc5f6322161e96e4db160fbcfe0c5ce1675ae9e828edfb39033404fc66f2a74fba4a30808291a25d3d0ff761c64957f41bafa8560b50dac1fa3'
@@ -452,8 +454,8 @@ sha512sums=('e8c02583e17e4fc4214fef694825fcb78c898266f1624deb1cdf56ab5c5fdfa669c
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'ef0e5daadea68ca2220fbbf531c82ce060507844bd860a18596b519e43942162544105d66033d551cab8436a1f263aa20cca46d7f4e60abf44b661bed00d10b1'
-            '806086f249024493f98f0aac279d0172b2595c12d09d6182581c432bd69311c3174808cb85add19cdab14c3f7fa513f43e65214cfc0bb1cbd31bd4684b6fd7ed')
+            '2e341cb5f3de67077857c8e7e992c54d5aee671ccf208eee12afd7c18bea6075e37f139c79478efbeaa3bd0221508e9218b6af96a7343722cb1b8542cfebe94e'
+            'd160e978b327cadb5a0387284287d931e10b49220f7b50a84e5a18fc43cd5d2085e3ccf1da601139143dd333fb8c0ff5d856dc416c8392bac258b4406fc92363')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
