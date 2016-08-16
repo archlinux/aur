@@ -44,14 +44,17 @@ build() {
 
 package() {
 
-  cd "$srcdir/$pkgname/Quake/"
+  cd "$srcdir/$pkgname/"
+
+  # Make doc dir
+  mkdir -p $pkgdir/usr/share/doc/vkquake-git/
 
   # main binary
-  install -Dm755 vkquake "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 Quake/vkquake "$pkgdir"/usr/bin/$pkgname
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
   install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png" 
-  #install -Dm644 "$srcdir/$pkgname.1" "/usr/share/man/man1/$pkgname.1" 
-  
+  # install -Dm644 "$srcdir/$pkgname.1" "/usr/share/man/man1/$pkgname.1" 
+  install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake-git/
 }
