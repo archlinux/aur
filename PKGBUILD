@@ -6,7 +6,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'lzop')
 options=('!strip')
 source=("https://github.com/raphael/linux-samus/archive/v4.7-1.tar.gz"
         "config"
