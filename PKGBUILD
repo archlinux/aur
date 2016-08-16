@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -31,6 +31,9 @@ sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  # Reverse Ubuntu specific configuration patches
+  patch -Rp1 -i "${srcdir}/3981_3980.diff"
+
   # Fix decorator start command
   sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
 
@@ -46,9 +49,6 @@ prepare() {
 
   # Fix ambiguous function call in trailfocus plugin
   patch -p1 -i "${srcdir}/trailfocus-fix.patch"
-
-  # Reverse Ubuntu specific configuration patches
-  patch -Rp1 -i "${srcdir}/3981_3980.diff"
 }
 
 build() {
