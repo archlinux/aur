@@ -4,12 +4,12 @@ pkgname=afterstep-git
 _name=AfterStep
 _pkgname=afterstep
 pkgver=2.2.12.r20.g8de50a8
-pkgrel=2
+pkgrel=3
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
 url="http://www.afterstep.org"
 license=('GPL')
-depends=('gtk2>=2.18.6' 'libpng' 'libtiff' 'readline' 'freetype2' 'dbus-core' 'librsvg')
+depends=('gtk2>=2.18.6' 'libpng' 'libtiff' 'readline' 'freetype2' 'dbus' 'librsvg')
 makedepends=('libxt')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
