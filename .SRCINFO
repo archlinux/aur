@@ -2,12 +2,12 @@ pkgbase = batteryinfo
 	pkgdesc = A simple battery status and information tool for Linux systems.
 	pkgver = 1.2.1
 	pkgrel = 1
-	url = https://github.com/JoeGlancy/batteryinfo
+	url = https://github.com/c0d3st0rm/batteryinfo
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	source = git://github.com/JoeGlancy/batteryinfo.git
+	source = git://github.com/c0d3st0rm/batteryinfo.git
 	md5sums = SKIP
 
 pkgname = batteryinfo
