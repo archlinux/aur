@@ -2,7 +2,7 @@
 
 pkgname=bebop_mavlink_ctrl-git
 pkgver=r4.b0c6b78
-pkgrel=1
+pkgrel=2
 pkgdesc="Control the Parrot drone using xbox controller with mavlink"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -10,7 +10,7 @@ license=('custom')
 groups=()
 depends=(libarsdk3-git)
 optdepends=()
-makedepends=(git)
+makedepends=(git python2-pymavlink-git)
 provides=()
 conflicts=()
 replaces=()
@@ -27,17 +27,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/bebop_mavlink_ctrl"
-	git submodule init
-	git submodule update
-}
-
 build() {
-	cd "$srcdir/bebop_mavlink_ctrl/mavlink"
-	python -m pymavlink.tools.mavgen --lang C -o ../out/ message_definitions/v1.0/common.xml
-
 	cd "$srcdir/bebop_mavlink_ctrl"
+	mavgen.py --lang C -o out/ /usr/lib/python2.7/site-packages/pymavlink/dialects/v10/common.xml
 	make all tests
 }
 
