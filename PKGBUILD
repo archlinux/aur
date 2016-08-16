@@ -1,15 +1,16 @@
 # Maintainer: Idares <idares at seznam dot cz>
 
 pkgname=nagios
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.nagios.org"
 depends=('gd' 'freetype2' 'libtool' 'glib2')
 makedepends=('unzip')
-optdepends=('monitoring-plugins: a bundle of standard plugins')
+optdepends=('monitoring-plugins: a bundle of standard plugins'
+            'apache' 'php-apache' 'nginx' 'php' 'php-fpm' 'fcgiwrap')
 source=("http://downloads.sourceforge.net/nagios/$pkgname-$pkgver.tar.gz"
         "nagios.install"
         "nagios.service")
@@ -73,10 +74,10 @@ package() {
 
 }
 
-md5sums=('47e348d0da05893e0ce584306200d4ea'
+md5sums=('85ca007f3bd0d280f12d4b51e87808bd'
          'e11fa7de430ed858269f82e179fc87ca'
          '49e077f2d61ede589f55bfd03b597ab0')
-sha1sums=('f8d52a1e1b6f5c547ebdc245946d8fba244824ba'
+sha1sums=('872533f89bb128896ab40c8cf5d1ee1074b563f9'
           '04008cee208226e60b099550bd9ec7dc78cb1457'
           '0df0b4c6976c1562b03e261926b7c2cae6061595')
 
