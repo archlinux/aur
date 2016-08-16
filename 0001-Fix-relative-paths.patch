@@ -1,0 +1,13 @@
+--- a/libarnetworkal/Sources/Wifi/ARNETWORKAL_WifiNetwork.c
++++ b/libarnetworkal/Sources/Wifi/ARNETWORKAL_WifiNetwork.c
+@@ -56,8 +56,8 @@
+ 
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+-#include "ARNETWORKAL_Manager.h"
+-#include "Wifi/ARNETWORKAL_WifiNetwork.h"
++#include "../ARNETWORKAL_Manager.h"
++#include "../Wifi/ARNETWORKAL_WifiNetwork.h"
+ 
+ /*****************************************
+  *
