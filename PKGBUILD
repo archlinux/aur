@@ -15,7 +15,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'smalltalk' 'bf2c' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'asymptote'
-         'afnix' 'a+' 'ats2-postiats' 'cfunge')
+         'afnix' 'a+' 'ats2-postiats' 'cfunge' 'boarpig-brainfuck')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
@@ -45,7 +45,7 @@ prepare() {
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 
-  sed -i 's:beef:bf2c:' Makefile
+  sed -i 's:beef:bpf -src:' Makefile
 }
 
 package() {
