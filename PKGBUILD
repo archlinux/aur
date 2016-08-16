@@ -3,15 +3,15 @@
 # Contributor: Daniel Ehlers <danielehlers@mindeye.net>
 
 pkgname=cduce
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='XML-oriented functional language'
 url='http://www.cduce.org/'
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('ocaml>=3.10' 'ocaml-findlib>=1.0.3' 'ulex>=1.0' 'ocaml-pcre>=5.13.0' 'ocamlnet>=0.98')
+depends=('ocaml' 'ocaml-findlib' 'ulex' 'ocaml-pcre' 'ocamlnet')
 source=("http://www.cduce.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('38264f53790075c3046f9ea55984b50366e0888e80512b9cbc2ed42ff36f10b2')
+sha256sums=('28291cceaa219782f0f4cd4c9634a25bc4238e09bdb0e193b8b207ed7eb650bc')
 
 build() {
   cd "$pkgname-$pkgver"
