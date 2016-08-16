@@ -2,7 +2,7 @@
 
 pkgname=ceres-solver
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
@@ -28,7 +28,7 @@ build() {
 
   mkdir -p ./build
   cd ./build
-  cmake ${_cmakeopts[@]} ../
+  cmake ${_cmakeopts[@]} ../ -DLIB_SUFFIX=""
   make
 }
 
