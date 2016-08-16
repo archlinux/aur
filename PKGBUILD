@@ -12,7 +12,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'octave' 'parrot' 'perl' 'php' 'python' 'r' 'ruby' 'scala' 'tcl'
          'ucblogo' 'vala' 'c-intercal' 'coffee-script' 'f2c' 'gforth' 'icon'
          'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
-         'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
+         'smalltalk' 'bf2c' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'asymptote'
          'afnix' 'a+' 'ats2-postiats' 'cfunge')
@@ -44,6 +44,8 @@ prepare() {
 
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
+
+  sed -i 's:beef:bf2c:' Makefile
 }
 
 package() {
