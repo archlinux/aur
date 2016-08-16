@@ -3,6 +3,11 @@
 ## [Unreleased]
 Nothing to report...
 
+## [2.03] - 2016.08.16
+### **Fixes**
+- Corrected incorrect variable reference for application version
+- Corrected CHANGELOG
+
 ## [2.02] - 2016.08.16
 ### **Fixes**
 - Corrected incorrect variable reference for application version
@@ -34,7 +39,9 @@ Nothing to report...
 ### Fixed
 - Fix regex in select printer dialog.
 
-[Unreleased]: https://github.com/hv15/sshprint/compare/2.00...HEAD
+[Unreleased]: https://github.com/hv15/sshprint/compare/2.03...HEAD
+[2.03]: https://github.com/hv15/sshprint/compare/2.02...2.03
+[2.02]: https://github.com/hv15/sshprint/compare/2.01...2.02
 [2.01]: https://github.com/hv15/sshprint/compare/2.00...2.01
 [2.00]: https://github.com/hv15/sshprint/compare/1.6.3-beta...2.00
 [1.6.3]: https://github.com/hv15/sshprint/compare/1.6.2-beta...1.6.3-beta
