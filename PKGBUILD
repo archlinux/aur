@@ -4,8 +4,8 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=flexget
-_pkgname=FlexGet
-pkgver=2.0.48
+_pkgname=Flexget
+pkgver=2.2.20
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -52,14 +52,14 @@ makedepends=('python2-paver'
              'python2-setuptools'
              )
 
-source=("https://pypi.python.org/packages/73/3f/326847ced17dd1f3ad2e3cd2019be43ff22f1c5f19b32295f776be1eb4a8/${_pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
         )
 
 changelog=ChangeLog
 
-sha256sums=('48062be611ebcc6882d7e2e9055a6ba333c996979239e58417a45fe877636269'
+sha256sums=('3fcbc9c14935fe0bb3ee39c8751e57c86fb1089f56260af3f570896020653700'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
