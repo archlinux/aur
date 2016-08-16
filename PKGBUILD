@@ -8,7 +8,7 @@ pkgbase=linux-cik               # Build stock -ARCH kernel
 _srcname=linux-4.7
 pkgver=4.7
 pkgrel=1
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -20,14 +20,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
-        'linux.preset'
+        'linux-cik.preset'
         'change-default-console-loglevel.patch')
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             'e9b7f502b5e27fc4154f0b98f3870f2988b58414df948a61a82502d84bc68a72'
-            '613cc14874dd621c0a3ff5f91365550c6148b871d10158bce6463ed0b9efce7d'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '79f31430392ef0583aad2c9777b858a34b537d5c964fa9610192e94b0c10c9bb'
+            '1289455a84da1a93dbf35fd84e1e580c3f073314de135685614e6a3758f43410'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -89,7 +89,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="${pkgbase/linux/Linux} kernel and modules for amdgpu support on hawaii cards."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -118,7 +118,7 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux-cik.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
