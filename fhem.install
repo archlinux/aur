@@ -1,0 +1,15 @@
+pkgname='fhem'
+
+post_install() {
+  systemd-sysusers $pkgname.conf
+  systemd-tmpfiles --create $pkgname.conf
+}
+
+post_upgrade() {
+  if [[ -e /opt/fhem/fhem.cfg ]]; then
+    echo "Found config from previous version, copying /opt/fhem/fhem.cfg to /etc/fhem.cfg"
+    cp /opt/fhem/fhem.cfg /etc/fhem.cfg
+  fi
+
+  systemctl daemon-reload
+}
