@@ -2,8 +2,8 @@
 
 _pkgname=qstlink2
 pkgname="${_pkgname}-git"
-pkgver=1.2.3.r227.562460b
-pkgrel=2
+pkgver=1.3.0.r228.8e30cfa
+pkgrel=1
 pkgdesc="A ST-Link V2 (Debugger/Programmer) client graphical user interface"
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fpoussin/QStlink2"
@@ -20,11 +20,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  local ver=$(git describe --tags)
-  echo "${ver#v*}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  local ver="$(sed -e $'s/\r//' QStlink2.pro | grep ^VERSION | awk '{print $3}')"
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare(){
+prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git submodule init
