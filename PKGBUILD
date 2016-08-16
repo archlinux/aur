@@ -1,9 +1,9 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=midori-flash
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Flash for the latest version of Midori'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Midori'

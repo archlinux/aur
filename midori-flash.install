@@ -1,5 +1,6 @@
 post_install() {
   nspluginwrapper -i /usr/lib32/mozilla/plugins/libflashplayer.so
+  post_update
 }
 
 post_remove() {
