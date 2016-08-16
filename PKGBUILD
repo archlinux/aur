@@ -82,8 +82,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patch
-        #msg "Add upstream patch"
-        #patch -Np1 -i "${srcdir}/patch-${pkgver}" 
+        msg "Add upstream patch"
+        patch -Np1 -i "${srcdir}/patch-${pkgver}" 
          
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
