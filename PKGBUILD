@@ -1,20 +1,29 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
-pkgname=sshprint
-pkgver=1.6.3
+# Maintainer: Hans-Nikolai Viessmann <hv15@hw.ac.uk>
+_project=sshprint
+pkgname=$_project
+pkgver=2.01
 pkgrel=1
-_pkgrel=beta
-pkgdesc="A ZSH script to print local files on remote printers using SSH"
+pkgdesc="A Perl script to print local files on remote printers using SSH"
 arch=('any')
-url="https://github.com/hv15/sshprint"
+url="https://github.com/hv15/$_project"
 license=('MIT')
-changelog='CHANGELOG.md'
+depends=('perl>=5.22.0' 'openssh')
+conflicts=('sshprint<=1.6.3')
+options=(!emptydirs)
 install=sshprint.install
-depends=('openssh' 'zsh' 'gawk')
-source=("https://github.com/hv15/sshprint/archive/${pkgver}-${_pkgrel}.tar.gz")
-md5sums=('4435f2d92d1cd18d4d7388918535fd78')
+source=("https://github.com/hv15/${_project}/archive/${pkgver}.tar.gz")
+md5sums=('f5d27a644fa205d426a25bd65c007537')
+
+build() {
+  cd "$srcdir/${pkgname}-$pkgver"
+
+  perl Build.PL installdirs=vendor destdir="$pkgdir/"
+  perl Build
+}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}"
+  cd "$srcdir/${pkgname}-$pkgver"
+
   # place the doc
   install -d "${pkgdir}/usr/share/doc/sshprint"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/sshprint/README"
@@ -22,7 +31,8 @@ package() {
   install -Dm644 "config.examples/server_config.example" "${pkgdir}/usr/share/doc/sshprint/server_config.example"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # place the script
-  install -Dm755 "sshprint" "${pkgdir}/usr/bin/sshprint"
+  # place Perl script and module
+  perl Build install
 }
-# vim:ts=2 sw=2
+
+# vim:set ts=2 sw=2 et:
