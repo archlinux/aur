@@ -2,93 +2,52 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=v1.2.9.r14.g3f03819
+pkgver=v1.3.0.r18580.g6859b4a
 pkgrel=1
-pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
+pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=(
-  'argtable'
   'boost'
-  'boost-libs'
-  'curl'
   'crypto++'
-  'gmp'
-  'jsoncpp'
   'leveldb'
-  'libedit'
-  'libjson-rpc-cpp-git'
+  'libcl'
   'libmicrohttpd'
   'miniupnpc'
-  'ncurses'
-  'libcl'
   'opencl-headers'
-  'openssl'
-  'python2'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-quick1'
-  'qt5-quickcontrols'
-  'qt5-webengine'
-  'qt5-webkit'
-  'qt5-graphicaleffects'
-  'readline'
-  'snappy'
-  'llvm'
-  'scons'
-  'gperftools'
+  'libjson-rpc-cpp-git'
 )
 makedepends=(
   'autoconf'
   'automake'
-  'cmake'
   'gcc'
   'libtool'
-  'yasm'
+  'cmake'
   'git'
-  'clang'
 )
 groups=('ethereum')
-url="https://github.com/ethereum/webthree-umbrella"
+url="https://github.com/ethereum/cpp-ethereum"
 license=('GPL')
-source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella")
+source=("${pkgname%-git}::git+https://github.com/ethereum/cpp-ethereum")
 sha256sums=('SKIP')
 provides=(
-  'alethone'
-  'alethzero'
+  'bench'
   'eth'
   'ethkey'
   'ethminer'
-  'ethrpctest'
   'ethvm'
-  'exp'
-  'lllc'
-  'mix'
   'rlp'
-  'solc'
-  'ethereum'
 )
 conflicts=(
-  'alethone'
-  'alethzero'
-  'eth'
-  'ethkey'
-  'ethminer'
-  'ethrpctest'
-  'ethvm'
-  'exp'
-  'lllc'
-  'mix'
-  'rlp'
-  'solc'
   'ethereum'
+  'cpp-ethereum'
 )
 
-pkgver() {
-  cd ${pkgname%-git}
-  git checkout -q develop
-  git pull -q
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd ${pkgname%-git}
+#  git checkout -q develop
+#  git pull -q
+#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
   msg 'Updating...'
