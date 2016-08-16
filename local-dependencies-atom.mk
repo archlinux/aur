@@ -1,3 +1,5 @@
+LOCAL_PATH := $(call my-dir)
+
 include $(CLEAR_VARS)
 LOCAL_MODULE := json
 LOCAL_EXPORT_C_INCLUDES := $(shell pkg-config --cflags json-c)
@@ -13,3 +15,10 @@ include $(BUILD_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE := uthash
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libARSAL
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/Config/linux
+LOCAL_EXPORT_LDLIBS := -larsal
+include $(BUILD_PREBUILT)
+
