@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=quine-relay-git
-pkgver=191d5e2
+pkgver=r306.9e3cf6c
 pkgrel=1
 pkgdesc='Uroboros program with 100 programming languages (master)'
 arch=('x86_64' 'i686')
@@ -14,7 +14,8 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'iverilog' 'gnu-cobol' 'pike' 'regina-rexx-das' 'swi-prolog'
          'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
-         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem')
+         'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'asymptote'
+         'afnix' 'a+')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
@@ -27,18 +28,20 @@ replaces=('quine-relay')
 pkgver() {
   cd "${pkgname%-git}"
 
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${pkgname%-git}"
 
-  <README.md tail -22 > LICENSE
+  <README.md tail -22 >LICENSE
 
   # lolcode is available in Arch Linux
   sed -i 's:vendor/lci-\*/::' Makefile
+
   # npiet is available in Arch Linux
   #sed -i 's:vendor/npiet-\*/::' Makefile
+
   # whitespace is available in Arch Linux
   #sed -i 's:ruby vendor/whitespace.rb:wspace:' Makefile
 }
