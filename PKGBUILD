@@ -1,9 +1,8 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 # Needs a lot of improvement!
-# TODO: add md5sums when finished
 
 pkgname=vkquake-git
-pkgver=0.50.0
+pkgver=0.60.0
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
@@ -18,8 +17,8 @@ source=('vkquake-git::git+https://github.com/Novum/vkquake.git'
 	'vkquake-git.desktop'
 	'vkquake-git.png')
 md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP')
+	 'c8843622c6521b93b60ed91df51aaa6b'
+	 'c0d980f9a737d450021b9dc6a6b94a01')
 
 build() {
   
