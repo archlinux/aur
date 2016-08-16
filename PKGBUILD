@@ -34,7 +34,7 @@ build() {
   cd $_gitname
 
   # USE_CCACHE=no to honor makepkg's ccache setting.
-  make CXXFLAGS='-Wno-error' USE_CCACHE=no
+  make USE_CCACHE=no
 }
 
 package() {
