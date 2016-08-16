@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="http://alpscore.org"
 license=('GPL2')
 depends=('cmake' 'boost' 'hdf5' 'openmpi')
-provides=($pkgname=$pkgver)
+provides=("alpscore=$pkgver")
 conflicts=(alpscore-git alpscore alpscore-openmpi-git alps)
 source=("https://github.com/ALPSCore/ALPSCore/archive/v$pkgver.tar.gz")
 md5sums=('b887c9328e2a22afa123663cf888b768')

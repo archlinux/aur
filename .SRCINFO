@@ -10,7 +10,7 @@ pkgbase = alpscore-openmpi
 	depends = boost
 	depends = hdf5
 	depends = openmpi
-	provides = alpscore-openmpi=0.5.4
+	provides = alpscore=0.5.4
 	conflicts = alpscore-git
 	conflicts = alpscore
 	conflicts = alpscore-openmpi-git
