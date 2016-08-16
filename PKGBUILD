@@ -9,10 +9,10 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.2.4
+pkgver=1.2.5dev+5+g99e34d7
 pkgrel=1
 _pppver=2.4.7
-pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
+pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
@@ -20,7 +20,7 @@ depends=("libnm-glib>=${pkgver}" 'iproute2' 'polkit-consolekit' 'consolekit'
          'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml'
-             'python-gobject')
+             'python-gobject' 'git')
 optdepends=('modemmanager: for modem management service'
             'dhclient: External DHCP client'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
@@ -34,23 +34,25 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        NetworkManager.conf 
+_commit=99e34d757967efdee5945ee3467fcfc380767699
+source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
+        "git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
+        NetworkManager.conf
         networkmanager.rc
         )
-sha256sums=('19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa'
+sha256sums=('SKIP'
             '67f112c1ac8ee3726eb229f5cd783de19f09cc252af49e157343d82b324b923f'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
 
   2to3 -w libnm src tools
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
 
   ./configure \
     --prefix=/usr \
@@ -83,7 +85,7 @@ build() {
 }
 
 package() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
   make DESTDIR="${pkgdir}" install
 
   make DESTDIR="$pkgdir" -C libnm uninstall
