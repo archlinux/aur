@@ -21,7 +21,7 @@ source=('libarsal::git+https://github.com/Parrot-Developers/libARSAL'
         'libarsal-Makefile'
         'LICENSE')
 sha256sums=('SKIP'
-            '760942b4fab0c9a95675791222b8bd202c745883de268a23c143b254820c87ac'
+            '7df00fd117072a30a52cf5b000800b9a52e920560c1527c6920f6549cf8acbe1'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
 pkgver() {
