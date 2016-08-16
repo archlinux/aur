@@ -1,12 +1,12 @@
 pkgbase = bebop_mavlink_ctrl-git
 	pkgdesc = Control the Parrot drone using xbox controller with mavlink
 	pkgver = r4.b0c6b78
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.parrot.com/
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = libarsdk3-git
+	makedepends = python2-pymavlink-git
 	source = bebop_mavlink_ctrl::git+https://github.com/Parrot-Developers/bebop_mavlink_ctrl
 	source = LICENSE
 	sha256sums = SKIP
