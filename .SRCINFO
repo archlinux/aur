@@ -1,0 +1,18 @@
+pkgbase = libarsal-git
+	pkgdesc = ARSDK Software Abstraction Layer
+	pkgver = r313.0ba6cba
+	pkgrel = 1
+	url = http://developer.parrot.com/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	source = libarsal::git+https://github.com/Parrot-Developers/libARSAL
+	source = libarsal-Makefile
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 760942b4fab0c9a95675791222b8bd202c745883de268a23c143b254820c87ac
+	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
+
+pkgname = libarsal-git
+

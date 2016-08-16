@@ -1,0 +1,33 @@
+CC = gcc
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -lpthread -IConfig/linux
+LDFLAGS = -shared
+RM = rm -f
+TARGET_LIB = libarsal.so
+
+SRCS = Sources/ARSAL_Ftw.c \
+	Sources/ARSAL_MD5.c \
+	Sources/ARSAL_MD5_Manager.c \
+	Sources/ARSAL_Mutex.c \
+	Sources/ARSAL_Print.c \
+	Sources/ARSAL_Sem.c \
+	Sources/ARSAL_Socket.c \
+	Sources/ARSAL_Time.c \
+	Sources/ARSAL_Thread.c \
+	Sources/md5.c \
+	gen/Sources/ARSAL_Error.c
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${TARGET_LIB}
+
+$(TARGET_LIB): $(OBJS)
+	$(CC) ${LDFLAGS} -o $@ $^
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
