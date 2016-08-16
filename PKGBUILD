@@ -1,3 +1,5 @@
+# Maintainer: Rafael Fontenelle <rafaeff@gnome.org>
+
 _pypiname=jsmin
 pkgname=('python-jsmin' 'python2-jsmin')
 pkgbase=python-$_pypiname
@@ -7,7 +9,7 @@ pkgdesc="JavaScript minifier"
 arch=(any)
 url="https://pypi.python.org/pypi/jsmin"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/j/$_pypiname/$_pypiname-$pkgver.tar.gz)
 md5sums=('89a45a14ed76d1113f1ccd0bcc4b6f4a')
