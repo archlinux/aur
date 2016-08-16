@@ -1,0 +1,5 @@
+pkgname=('switchboard-plug-online-accounts')
+builddeps=('gsignond' 'gsignond-plugin-oauth-git' 'gsignond-plugin-sasl-git'
+           'gsignond-extension-pantheon-bzr' 'switchboard')
+
+# vim: ts=2 sw=2 et:
