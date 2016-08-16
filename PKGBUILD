@@ -2,7 +2,7 @@
 # Contributor: Robert Štětka <robert dot stetka at gmail dot com>
 pkgname=freenet-fms
 _realname=fms
-pkgver=0.3.77
+pkgver=0.3.78
 pkgrel=1
 url="http://127.0.0.1:8888/USK@0npnMrqZNKRCRoGojZV93UNHCMN-6UU3rRSAmP6jNLE,~BG-edFtdCC1cSH4O3BWdeIYa8Sw5DfyrSV-TKdO5ec,AQACAAE/fms/140/"
 pkgdesc="Freenet Messaging System"
@@ -14,10 +14,10 @@ install=fms.install
 # You have to start freenet before down installation
 # or download the package manually and place it to the
 # build directory
-source=("http://127.0.0.1:8888/?forcedownload&max-size=99999999&key=CHK@oyg6hliLoBymldIAsEb0gFmpNRN~GWVmR952cpbU3gw,2lg~dK8IiX4-z3WPQLJ8a3~xBcXbZPg0SxpMC4lWf~E,AAMC--8/${_realname}-src-${pkgver}.zip"
+source=("http://127.0.0.1:8888/?forcedownload&max-size=99999999&key=CHK@dSFfNisvTmirYwn3V64CBbJec82sS3FRzzX1mh-b1hE,Kfs0JyhWtRpY9czmj2c3XJ56J9JYcs8FA43wUczlBic,AAMC--8/${_realname}-src-${pkgver}.zip"
         'fms.install'
         'fms.service')
-sha256sums=('c97929deab12ab4002a79255f09d05712644145ea54850468d1010d580e99468'
+sha256sums=('4c1ed1b0474193443967e15ee0be357227709e072e19fbdd9ef5211f8d63835f'
             '5c7db16d80a0af8e80447c8753cc1be66a834634798ea4ff913c6586d40a8da4'
             '0d276666a39efe3ba139259ec567f04b6767f26a13f2d2bf455a2005cf61791a')
 build() {
