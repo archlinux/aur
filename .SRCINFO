@@ -21,11 +21,13 @@ pkgbase = logrotate-selinux
 	source = logrotate.conf
 	source = logrotate.timer
 	source = logrotate.service
+	source = 0001-fixed-gcc6-warning.patch
 	md5sums = 584bca013dcceeb23b06b27d6d0342fb
 	md5sums = e76526bcd6fc33c9d921e1cb1eff1ffb
 	md5sums = 94dae4d3eded2fab9ae879533d3680db
 	md5sums = 287c2ad9b074cb5478db7692f385827c
 	md5sums = 85560be5272ed68a88bb77a0a2293369
+	md5sums = 451d761df0b769be0289681a3db5f50d
 
 pkgname = logrotate-selinux
 

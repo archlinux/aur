@@ -1,0 +1,28 @@
+From 6a36c105587b07ad14fc937f3ee6e2eb402621a2 Mon Sep 17 00:00:00 2001
+From: Chris Cromer <cromerc@users.noreply.github.com>
+Date: Tue, 2 Aug 2016 19:17:04 -0400
+Subject: [PATCH 1/1] fixed gcc6 warning
+
+Closes #50
+---
+ logrotate.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/logrotate.c b/logrotate.c
+index d42656a9724b..8a88607bf105 100644
+--- a/logrotate.c
++++ b/logrotate.c
+@@ -1781,8 +1781,9 @@ int postrotateSingleLog(struct logInfo *log, int logNum, struct logState *state,
+ {
+     int hasErrors = 0;
+ 
+-    if (!state->doRotate)
++    if (!state->doRotate) {
+ 	return 0;
++    }
+ 
+ 	if (!hasErrors && log->flags & LOG_FLAG_TMPFILENAME) {
+ 		char *tmpFilename = NULL;
+-- 
+2.9.3
+

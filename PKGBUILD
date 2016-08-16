@@ -18,17 +18,20 @@ backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/archive/${pkgver}.tar.gz"
         'paths.patch'
         'logrotate.conf'
-        logrotate.{timer,service})
+        logrotate.{timer,service}
+        '0001-fixed-gcc6-warning.patch')
 md5sums=('584bca013dcceeb23b06b27d6d0342fb'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          '287c2ad9b074cb5478db7692f385827c'
-         '85560be5272ed68a88bb77a0a2293369')
+         '85560be5272ed68a88bb77a0a2293369'
+         '451d761df0b769be0289681a3db5f50d')
 
 build() {
 	cd "$srcdir/${pkgname/-selinux}-${pkgver}"
 
 	patch -p0 -i "$srcdir/paths.patch"
+	patch -p1 -i "$srcdir/0001-fixed-gcc6-warning.patch"
 
 	./autogen.sh
 	./configure \
