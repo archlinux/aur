@@ -2,7 +2,7 @@
 
 pkgname=pyobd
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An OBD-II compliant car diagnostic tool"
 arch=('any')
 url="http://www.obdtester.com/pyobd"
@@ -10,8 +10,10 @@ license=('GPL')
 depends=('wxpython' 'python2-pyserial' 'hicolor-icon-theme')
 install=pyobd.install
 source=(http://www.obdtester.com/download/${pkgname}_${pkgver}.tar.gz
+        fix-configure-dialog.patch
         pyobd.png)
 sha256sums=('f3004db4000e2bc166aae3b4342c98aa62f74f3372c5829472af0ee56c5e110c'
+            '7537ba8401e1c6dcdad8ffcbb037b9042e10cf957834f83417c60ca0fd2ae14f'
             '14d0d90dcda38c339dc8397f004923075f6d4fce37b7c8539021f4a77b3a86fd')
 
 prepare() {
@@ -22,6 +24,9 @@ prepare() {
 		-e "s#python /usr/bin/pyobd#$pkgname#" \
 		-e "s#Name=pyOBD: OBD2 Diagnostics#Name=pyOBD\nGenericName=OBD2 Diagnostics#" \
 		"pyobd.desktop"
+
+    #Fix configure dialog
+    patch -Np1 -i "$srcdir/fix-configure-dialog.patch"
 
 	#Set executable to run with python2
 	sed -i "s%#!/usr/bin/env python%#!/usr/bin/python2%" "pyobd"
