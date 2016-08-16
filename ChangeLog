@@ -1,4 +1,7 @@
-2016-06-18 FoolEcho <foolecho at gmail dot com>
+2016-08-16 FoolEcho <foolecho at gmail dot com>
+
+	* 2.2.12-6 :
+	dbus-core became dbus (convenience).
 
 	* 2.2.12-5 :
 	Porting to gcc 5 requires CFLAGS modification (thanks to Chazza). 
