@@ -67,7 +67,7 @@ prepare() {
   # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
   patch -p1 -i "$srcdir"/PNGImageDecoder.patch
 
-  # fix bad builds and the dredded "aw snap" problems
+  # fix bad builds and the dreaded "aw snap" problems
   patch -p1 -i "$srcdir"/unfuck_chromium.patch
 
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
