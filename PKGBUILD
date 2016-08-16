@@ -18,10 +18,10 @@ _aufs3="https://github.com/sfjro/aufs4-standalone"
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
-  IVYBRIDGE HASWELL BROADWELL SILVERMONT)
+  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
 _CPUSUFFIXES=( core2 k7 k8 k10 barcelona bobcat
 	       bulldozer piledriver psc atom p2 p3 pm p4
-	       nehalem sandybridge ivybridge haswell broadwell silvermont)
+	       nehalem sandybridge ivybridge haswell broadwell silvermont skylake)
 
 ### PATCH AND BUILD OPTIONS
 #
@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -456,8 +456,12 @@ package_linux-pf() {
          pkgname="${pkgbase}-silvermont"
          pkgdesc="${_pkgdesc} 6th Gen Core processors including Silvermont."
 	 ;;
+     SKYLAKE)
+       pkgname="${pkgbase}-skylake"
+       pkgdesc="${_pkgdesc} 6th Gen Core processors including Skylake."
+       ;;
      default)
-  # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
+       # Note to me: DO NOT EVER REMOVE THIS. It's for the AUR PKGBUILD parser.
          pkgname="${pkgbase}"
          pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
          ;;
