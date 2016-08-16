@@ -3,6 +3,10 @@
 ## [Unreleased]
 Nothing to report...
 
+## [2.02] - 2016.08.16
+### **Fixes**
+- Corrected incorrect variable reference for application version
+
 ## [2.01] - 2016.08.16
 ### **Fixes**
 - Forgot module in `sshprint` script
