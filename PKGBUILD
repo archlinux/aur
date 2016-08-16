@@ -27,11 +27,11 @@ fi
 
 # Source
 source=('20-nvidia.conf'
-        'linux-4.7.patch')
+        'linux-4.8.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7'
-         '0b68fdfd7b43a20e47a3ddb06004e820')
+         '575708b8db401ff82ee4a26e491cc0da')
 md5sums_i686=('7b7466e23ae6ffa97106c9749aee2628')
 md5sums_x86_64=('cbe2cee787e07f8775a3fd994c9263a9')
 [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('65b99201ca894ea9a878593fbb19f0a3')
