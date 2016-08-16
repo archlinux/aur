@@ -19,23 +19,18 @@ source=(
   'fhem.service'
   'sysusers.conf'
   'tmpfiles.conf'
+  'fix-makefile-paths.patch'
 )
 sha256sums=('179fd251edb0bc7dbd775d7d6597fcfe7df88c2f7b39c5bbecf17defaa6b9539'
             '7adaffd1036198c8f942a7cbcdc187ba59557eccdfcd19aa28ed5f578810ce14'
             '564796d24351c6c1ebeb5995551ec670170b1c451b5efa12ea77f764f1ee7202'
-            '216cbb566c38b893f7036e8e32997a3595c1cf618688be00371d9d49f715a2bd')
+            '216cbb566c38b893f7036e8e32997a3595c1cf618688be00371d9d49f715a2bd'
+            'e68b54d1a10231b625a8f23b31012b877bd3a78131423b5cbd1f0449b4a3c206')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Fix path setup in Makefile
-  sed -i 's|^RELATIVE_PATH=YES|RELATIVE_PATH=NO|' Makefile
-  sed -i 's|^BINDIR=.*|BINDIR=/usr/bin|' Makefile
-  sed -i 's|^MODDIR=.*|MODDIR=/usr/share/fhem|' Makefile
-  sed -i 's|^VARDIR=.*|VARDIR=/var/lib/fhem|' Makefile
-  sed -i 's|^MANDIR=.*|MANDIR=/usr/share/man/man1|' Makefile
-  sed -i 's|^ETCDIR=.*|ETCDIR=/etc|' Makefile
-  sed -i 's|^DEMODIR=.*|DEMODIR=/usr/share/fhem|' Makefile
+  patch -p1 -i ../fix-makefile-paths.patch
 }
 
 package() {

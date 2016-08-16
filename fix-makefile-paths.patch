@@ -1,0 +1,22 @@
++++ fhem-5.7/Makefile	2016-08-16 15:40:33.604124289 +0200
+@@ -5,13 +5,13 @@
+ DATEN=$(shell date +"%Y-%m-%d")
+ VERSN=$(VERS).$(shell svn info | grep 'Revision' | awk '{ print $$2; }')
+ 
+-RELATIVE_PATH=YES
+-BINDIR=/opt/fhem
+-MODDIR=$(BINDIR)
+-VARDIR=$(BINDIR)/log
+-MANDIR=$(BINDIR)/docs
+-ETCDIR=$(BINDIR)
+-DEMODIR=$(BINDIR)
++RELATIVE_PATH=NO
++BINDIR=/usr/bin
++MODDIR=/usr/share/fhem
++VARDIR=/var/lib/fhem
++MANDIR=/usr/share/man/man1
++ETCDIR=/etc
++DEMODIR=/usr/share/fhem
+ 
+ # Used for .deb package creation
+ RBINDIR=$(ROOT)$(BINDIR)
