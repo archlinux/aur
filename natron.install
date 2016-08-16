@@ -1,0 +1,8 @@
+post_install() {
+	update-mime-database /usr/share/mime
+	update-desktop-database /usr/share/applications
+}
+
+post_remove() {
+    post_install
+}
