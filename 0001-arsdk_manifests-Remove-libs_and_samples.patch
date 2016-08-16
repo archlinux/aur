@@ -10,18 +10,23 @@
   <!-- ARSDK -->
   <project name="ARSDKBuildUtils" path="packages/ARSDKBuildUtils"/>
   <project name="ARSDK3" path="packages/ARSDK3"/>
-@@ -28,7 +25,6 @@
+@@ -24,20 +21,12 @@
+  <project name="libARController" path="packages/libARController"/>
+  <project name="libARDataTransfer" path="packages/libARDataTransfer"/>
+  <project name="libARDiscovery" path="packages/libARDiscovery"/>
+- <project name="libARMavlink" path="packages/libARMavlink"/>
   <project name="libARMedia" path="packages/libARMedia"/>
   <project name="libARNetwork" path="packages/libARNetwork"/>
-  <project name="libARNetworkAL" path="packages/libARNetworkAL" />
+- <project name="libARNetworkAL" path="packages/libARNetworkAL" />
 - <project name="libARSAL" path="packages/libARSAL"/>
   <project name="libARStream" path="packages/libARStream" />
   <project name="libARStream2" path="packages/libARStream2" />
   <project name="libARUpdater" path="packages/libARUpdater"/>
-@@ -37,7 +33,4 @@
+  <project name="libARUtils" path="packages/libARUtils"/>
+  <project name="arsdk-xml" path="packages/arsdk-xml"/>
  
-  <project name="mavlink.git" path="packages/mavlink"/>
- 
+- <project name="mavlink.git" path="packages/mavlink"/>
+-
 - <!-- Samples -->
 - <project name="Samples" path="packages/Samples"/>
 -

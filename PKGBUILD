@@ -5,13 +5,13 @@
 
 pkgname=libarsdk3-git
 pkgver=r22.305521e
-pkgrel=2
+pkgrel=3
 pkgdesc="ARSDK3 C librairies to control Parrot devices"
 arch=(x86_64)
 url="http://developer.parrot.com/"
 license=('custom')
 groups=()
-depends=(curl json-c avahi ffmpeg uthash libarsal-git)
+depends=(curl json-c avahi ffmpeg uthash libarsal-git libarmavlink-git libarnetworkal-git)
 optdepends=()
 makedepends=(git repo python2-virtualenv)
 provides=()
@@ -30,12 +30,12 @@ source=('arsdk_manifests::git+https://github.com/Parrot-Developers/arsdk_manifes
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            'c5132126585bfce6f2b5ca2e4fa0494a2f389e2c431060041346eca4eddf8d09'
-            'ab927129737e5db58f0f86ef6df5ec1cb86bf2b20f146b8d2658b756d6e3ee19'
+            '05b9d1f6c908e9c9100b0d0c65f4f74023fc04ea96b1b4e6168fd49c7c76c653'
+            '6ebbeeff36b15dec168572004c0ccf5bf7a9fb83d08490afbdb9da8bbb3b8900'
             '0b630509176de0ceb48480cde0489095fd58632abeded9e7211de706ab20c926'
             '2a103ea898e987ee5dfdb111e2dd594ec432e9262db1ba8fdd68ba095ad01857'
             '82268abab9af48726993b82c7c9ab9a978c13cbddd4ecc4ab4588c0f4e323cc8'
-            '1d41f55e8b86dff248579bacd0f1edb49e3bb643a44fe41ade0e150ff3abb375'
+            '6577c0bae441c02a5a5c2bf23592be33a3d1a7d301f80da5968830dd01af027f'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 

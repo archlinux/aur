@@ -22,3 +22,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/Config/linux
 LOCAL_EXPORT_LDLIBS := -larsal
 include $(BUILD_PREBUILT)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := libARNetworkAL
+LOCAL_EXPORT_LDLIBS := -larnetworkal
+include $(BUILD_PREBUILT)
