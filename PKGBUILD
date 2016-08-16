@@ -16,6 +16,9 @@ package() {
   install -m644 usr/share/antergos/wallpapers/*.jpg "${pkgdir}/usr/share/antergos/wallpapers/"
   install -m644 usr/share/antergos/wallpapers/*.png "${pkgdir}/usr/share/antergos/wallpapers/"
 
+  install -d "${pkgdir}/usr/share/cinnamon-background-properties"
+  install -m644 usr/share/cinnamon-background-properties/antergos.xml "${pkgdir}/usr/share/cinnamon-background-properties/"
+  
   install -d "${pkgdir}/usr/share/gnome-background-properties"
   install -m644 usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml "${pkgdir}/usr/share/gnome-background-properties/"
 }
