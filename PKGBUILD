@@ -1,19 +1,19 @@
 # Maintainer: Raphael Simon <simon.raphael@gmail.com>
 
 pkgbase=linux-samus4
-pkgver=4.4
-pkgrel=6
+pkgver=4.7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.4-6.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.7-1.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.4-6/build/linux/
+_linuxsrc=linux-samus-4.7-1/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_linuxsrc}"
-  make bzImage modules
+  CFLAGS+=" -march=broadwell" make bzImage modules
 }
 
 _package() {
@@ -244,6 +244,7 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('21783c287c5da8b743b030ea9f89243d'
-         '7dbef418244257e5f03d400b84ec6e98'
+# vim:set ts=8 sts=2 sw=2 et:
+md5sums=('9f23cfee6736ee9e51d3c681685945cf'
+         '9e26ac7241d0f4793f5440e03a07ff90'
          '5aae464a8085b2f3adcdcaff29853d04')
