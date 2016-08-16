@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="http://www.ats-lang.org/"
 license=('GPL3')
 depends=('bash' 'gmp')
-optdepends=('gmp')
-options=('staticlibs' '!emptydirs')
+optdepends=()
+options=('staticlibs' '!emptydirs' '!makeflags')
 source=("http://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 sha256sums=('e93a7296f521eae0e7a0af9cfdda60c98a91d5eabda172b4fe2c3d5d708284e7')
 
