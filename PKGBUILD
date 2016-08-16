@@ -15,7 +15,7 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'smalltalk' 'beef' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'asymptote'
-         'afnix' 'a+')
+         'afnix' 'a+' 'ats2-postiats')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
 source=('quine-relay::git://github.com/mame/quine-relay.git'
