@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel
-pkgver=0.4
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='The Pantheon Top Panel'
 arch=('i686' 'x86_64')
@@ -10,13 +10,10 @@ license=('GPL3')
 groups=('pantheon')
 depends=('clutter' 'cogl' 'glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
          'libgala.so' 'libgranite.so')
-optdepends=('indicator-datetime: Display date and time'
-            'indicator-pantheon-session-bzr: Pantheon session indicator'
-            'indicator-power: Battery idicator')
 makedepends=('cmake' 'vala')
 provides=('libwingpanel-2.0.so')
-source=("https://launchpad.net/wingpanel/0.4.x/loki-alpha1/+download/wingpanel-${pkgver}.tar.xz")
-sha256sums=('3ba1bcb01965b037047c88e9b4308340240f37d6f1f5f98a47019d08f8e0e82b')
+source=("https://launchpad.net/wingpanel/2.x/${pkgver}/+download/wingpanel-${pkgver}.tar.xz")
+sha256sums=('e378ba458d4d1bfb8cc8c5ef3f2cf67692f2e2bfe50e1d02c73bf375c9220f7a')
 
 prepare() {
   cd wingpanel-${pkgver}
