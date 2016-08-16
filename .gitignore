@@ -1,4 +1,5 @@
-screencloud-*.src.tar.gz
-screencloud-*.pkg.tar.xz
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
