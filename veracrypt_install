@@ -33,8 +33,6 @@ build() {
 
 help () {
 cat<<HELPEOF
-  This hook allows for a veracrypt encrypted root (or e.g. home) device.
+  This hook allows for a veracrypt encrypted non root devices.
 HELPEOF
 }
-
-# vim: set ft=sh ts=4 sw=4 et:
