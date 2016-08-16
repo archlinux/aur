@@ -1,6 +1,6 @@
 # Maintainer: João Miguel <jmcf125 at openmailbox dot org>
 pkgname=apparmor-openrc
-pkgver=20160204
+pkgver=20160816
 pkgrel=1
 pkgdesc="Apparmor init script for OpenRC (from systemd-free.org - not apg's way)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('apparmor' 'openrc')
 install='apparmor.install'
 _filename='apparmor-init'
 source=("https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-apps/apparmor/files/$_filename")
-sha256sums=('a920849a089dfb604dcb260fb66dfe3db70e9eb0b04349aeca6e8ce15d9c13e9')
+sha256sums=('f1c9ef2737012475f7fe7b943533b5d9345df1814a16a5c8d1929d835482f802')
 
 pkgver() {
    date +%Y%m%d
