@@ -1,7 +1,7 @@
 pkgbase = libarsdk3-git
 	pkgdesc = ARSDK3 C librairies to control Parrot devices
 	pkgver = r22.305521e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.parrot.com/
 	arch = x86_64
 	license = custom
