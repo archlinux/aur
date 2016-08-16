@@ -18,12 +18,11 @@ optdepends=(
 conflicts=('natron-rc' 'natron-bin' 'natron-bin-dev')
 source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
 	"https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
-	"natron.install"
 	"config.pri")
 md5sums=('SKIP'
          '4ca4eca4856cae50cfa4645a090258dd'
-         '9b894defa0493bca9518a74800d23ee7'
          '09f5ac67c0ad57eb853141b38eccb0ff')
+install="natron.install"
 
 prepare() {
 	cd "$srcdir/$pkgname"
