@@ -2,7 +2,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname="vim-command-t"
-pkgver=3.0.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="an extremely fast, intuitive mechanism for opening files and buffers with a minimal number of keystrokes"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ depends=("vim" "ruby")
 install="vimdoc.install"
 
 source=("https://github.com/wincent/Command-T/archive/$pkgver.tar.gz")
-md5sums=('b654a25bce2ae97d6af09aa2716ee048')
+md5sums=('5e94c0bb1450a9f4e4a9b00423741fa8')
 
 build() {
   cd "$srcdir/command-t-$pkgver/ruby/command-t"
@@ -27,14 +27,16 @@ package() {
   cd "$srcdir/command-t-$pkgver/"
 
   local _installprefix="${pkgdir}/usr/share/vim/vimfiles"
-  install -m755 -d "${_installprefix}"/{"autoload",doc,plugin,"ruby/${_gitname}"/{vim,finder,scanner{,/file_scanner}}}
-  install -m644 -t "${_installprefix}/autoload"                        "autoload"/*.vim
+  install -m755 -d "${_installprefix}"/{autoload{,/commandt},doc,plugin,"ruby/${_gitname}"/{vim,metadata,finder,scanner{,/file_scanner}}}
+  install -m644 -t "${_installprefix}/autoload"                   "autoload"/*.vim
+  install -m644 -t "${_installprefix}/autoload/commandt"          "autoload"/commandt/*.vim
   install -m644 -t "${_installprefix}/doc"                        "doc"/*.txt
   install -m644 -t "${_installprefix}/plugin"                     "plugin"/*.vim
   install -m644 -t "${_installprefix}/ruby"                       "ruby/"*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}"           "ruby/${_gitname}"/*.{rb,so}
   install -m644 -t "${_installprefix}/ruby/${_gitname}/vim"       "ruby/${_gitname}/vim"/*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}/finder"    "ruby/${_gitname}/finder"/*.rb
+  install -m644 -t "${_installprefix}/ruby/${_gitname}/metadata"    "ruby/${_gitname}/metadata"/*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}/scanner"   "ruby/${_gitname}/scanner"/*.rb
   install -m644 -t "${_installprefix}/ruby/${_gitname}/scanner/file_scanner"  "ruby/${_gitname}/scanner/file_scanner"/*.rb
 
