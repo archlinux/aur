@@ -1,14 +1,14 @@
 pkgbase = irccloud
 	pkgdesc = Chat on IRC from anywhere, and never miss a message
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://irccloud.com
 	arch = arm
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = npm
-	depends = electron-bin
+	depends = electron
 	source = https://github.com/irccloud/irccloud-desktop/archive/v0.2.0.tar.gz
 	source = irccloud
 	source = irccloud.desktop
