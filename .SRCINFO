@@ -1,12 +1,12 @@
 pkgbase = fluxbox-style-numix
 	pkgdesc = Numix style for Fluxbox
 	pkgver = 20160816
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/corebob/fluxbox-styles-corebob
 	arch = any
 	license = GPL3
 	source = https://github.com/corebob/fluxbox-styles-corebob/releases/download/v1.1/numix.zip
-	md5sums = 227b50508708ea69425ce17f4bafe71a
+	md5sums = f863260ee3d2bf1b67d58191819e368f
 
 pkgname = fluxbox-style-numix
 
