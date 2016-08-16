@@ -1,5 +1,5 @@
 pkgname=cen64-qt-git
-pkgver=20160113
+pkgver=20160816
 pkgrel=1
 pkgdesc="A basic frontend for CEN64"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 prepare() {
     mkdir -p build
 
-    sed -i 's#include <quazip/#include <quazip5/#g' cen64-qt/src/common.cpp cen64-qt/src/emulatorhandler.cpp
+    sed -i 's#include <quazip/#include <quazip5/#g' cen64-qt/src/common.cpp cen64-qt/src/emulation/emulatorhandler.cpp
 }
 
 build() {
