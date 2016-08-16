@@ -5,14 +5,14 @@
 _model=mg5300
 pkgname=cnijfilter-${_model}
 pkgver=3.60
-pkgrel=7
+pkgrel=8
 _pkgver=3.60-1
 pkgdesc="Canon IJ Printer Driver (for ${_model} series)"
 url="http://support-au.canon.com.au/contents/AU/EN/0100392802.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('gtk2' 'popt')
-makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make' 'gcc')
+makedepends=('autoconf>=2.13' 'automake>=1.6' 'findutils' 'gawk')
 conflicts=('cnijfilter-common')
 install=cnijfilter-mg5300.install
 source=("http://gdlp01.c-wss.com/gds/8/0100003928/01/cnijfilter-source-${_pkgver}.tar.gz"
