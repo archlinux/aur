@@ -1,9 +1,11 @@
 pkgbase = record-query-git
-	pkgver = r170.d931ea2
+	pkgdesc = A tool for doing record analysis and transformation
+	pkgver = latest
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = rust
 	source = record-query-git::git+https://github.com/dflemstr/rq.git
 	md5sums = SKIP
 
