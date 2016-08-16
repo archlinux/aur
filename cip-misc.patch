@@ -1,0 +1,2673 @@
+diff --git a/COPYING b/COPYING
+index 6dea693..4e744d2 100644
+--- a/COPYING
++++ b/COPYING
+@@ -12,4 +12,4 @@ General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with this program, (in the COPYING-GPL-3 file in this
+-directory). If not, see http://www.gnu.org/licenses/ 
++directory). If not, see https://www.gnu.org/licenses/
+diff --git a/COPYING-GPL-3 b/COPYING-GPL-3
+index 4432540..4c49354 100644
+--- a/COPYING-GPL-3
++++ b/COPYING-GPL-3
+@@ -2,7 +2,7 @@
+ 		    GNU GENERAL PUBLIC LICENSE
+ 		       Version 3, 29 June 2007
+ 
+- Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
++ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+ 
+@@ -646,7 +646,7 @@ the "copyright" line and a pointer to where the full notice is found.
+     GNU General Public License for more details.
+ 
+     You should have received a copy of the GNU General Public License
+-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Also add information on how to contact you by electronic and paper mail.
+ 
+@@ -665,12 +665,12 @@ might be different; for a GUI interface, you would use an "about box".
+   You should also get your employer (if you work as a programmer) or school,
+ if any, to sign a "copyright disclaimer" for the program, if necessary.
+ For more information on this, and how to apply and follow the GNU GPL, see
+-<http://www.gnu.org/licenses/>.
++<https://www.gnu.org/licenses/>.
+ 
+   The GNU General Public License does not permit incorporating your program
+ into proprietary programs.  If your program is a subroutine library, you
+ may consider it more useful to permit linking proprietary applications with
+ the library.  If this is what you want to do, use the GNU Lesser General
+ Public License instead of this License.  But first, please read
+-<http://www.gnu.org/philosophy/why-not-lgpl.html>.
++<https://www.gnu.org/philosophy/why-not-lgpl.html>.
+ 
+diff --git a/INSTALL b/INSTALL
+index b1b9cd5..6099ed0 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -30,7 +30,7 @@ Talloc, and zlib which are each described below:
+ 	It provides all the real machinery of indexing and searching,
+ 	(including the very nice parsing of the query string).
+ 
+-	Xapian is available from http://xapian.org
++	Xapian is available from https://xapian.org
+ 
+ 	Note: Notmuch will work best with Xapian 1.0.18 (or later) or
+ 	Xapian 1.1.4 (or later). Previous versions of Xapian (whether
+@@ -58,7 +58,7 @@ Talloc, and zlib which are each described below:
+ 	made development of Notmuch much easier and much less prone to
+ 	memory leaks.
+ 
+-	Talloc is available from http://talloc.samba.org/
++	Talloc is available from https://talloc.samba.org/
+ 
+ 	zlib
+ 	----
+diff --git a/Makefile.local b/Makefile.local
+index 066ecf2..a916bd0 100644
+--- a/Makefile.local
++++ b/Makefile.local
+@@ -10,7 +10,7 @@
+ # repository), we let git append identification of the actual commit.
+ PACKAGE=notmuch
+ 
+-IS_GIT=$(shell if [ -d ${srcdir}/.git ] ; then echo yes ; else echo no; fi)
++IS_GIT=$(shell if [ -d ${srcdir}/.git -o -f ${srcdir}/.git ] ; then echo yes ; else echo no; fi)
+ 
+ ifeq ($(IS_GIT),yes)
+ DATE:=$(shell git --git-dir=${srcdir}/.git log --date=short -1 --pretty=format:%cd)
+@@ -35,7 +35,7 @@ DEB_TAG=debian/$(UPSTREAM_TAG)-1
+ 
+ RELEASE_HOST=notmuchmail.org
+ RELEASE_DIR=/srv/notmuchmail.org/www/releases
+-RELEASE_URL=http://notmuchmail.org/releases
++RELEASE_URL=https://notmuchmail.org/releases
+ TAR_FILE=$(PACKAGE)-$(VERSION).tar.gz
+ DEB_TAR_FILE=$(PACKAGE)_$(VERSION).orig.tar.gz
+ SHA1_FILE=$(TAR_FILE).sha1
+@@ -191,7 +191,7 @@ release-message:
+ 	@echo "the Xapian library to provide fast, full-text search with a convenient"
+ 	@echo "search syntax."
+ 	@echo ""
+-	@echo "For more about notmuch, see http://notmuchmail.org"
++	@echo "For more about notmuch, see https://notmuchmail.org"
+ 
+ # This is a chain of dependencies rather than a simple list simply to
+ # avoid the messages getting interleaved in the case of a parallel
+@@ -281,6 +281,7 @@ notmuch_client_srcs =		\
+ 	notmuch-dump.c		\
+ 	notmuch-insert.c	\
+ 	notmuch-new.c		\
++	notmuch-reindex.c       \
+ 	notmuch-reply.c		\
+ 	notmuch-restore.c	\
+ 	notmuch-search.c	\
+@@ -293,7 +294,6 @@ notmuch_client_srcs =		\
+ 	sprinter-text.c		\
+ 	query-string.c		\
+ 	mime-node.c		\
+-	crypto.c		\
+ 	tag-util.c
+ 
+ notmuch_client_modules = $(notmuch_client_srcs:.c=.o)
+diff --git a/NEWS b/NEWS
+index 3db6aba..ab661d4 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,11 @@
++Notmuch 0.23 (UNRELEASED)
++=========================
++
++Ruby Bindings
++-------------
++
++Add support for `notmuch_database_get_all_tags`
++
+ Notmuch 0.22.1 (2016-07-19)
+ ===========================
+ 
+@@ -2384,7 +2392,7 @@ Ruby bindings are now much more complete
+ 
+ Python bindings have been updated and extended
+ 
+-  (docs online at http://packages.python.org/notmuch/)
++  (docs online at https://notmuch.readthedocs.io/)
+ 
+   New bindings:
+ 
+diff --git a/README b/README
+index d92fcfd..0aa9a08 100644
+--- a/README
++++ b/README
+@@ -58,7 +58,7 @@ Contacting users and developers
+ -------------------------------
+ The website for Notmuch is:
+ 
+-	http://notmuchmail.org
++	https://notmuchmail.org
+ 
+ The mailing list address for the notmuch community is:
+ 
+diff --git a/README.rst b/README.rst
+index 7417ddc..7ff3198 100644
+--- a/README.rst
++++ b/README.rst
+@@ -1,11 +1,11 @@
+-If you're reading this on http://github.com/notmuch/notmuch, this is a
++If you're reading this on https://github.com/notmuch/notmuch, this is a
+ read-only mirror of the notmuch project.
+ 
+-For more information about the project, see http://notmuchmail.org.
++For more information about the project, see https://notmuchmail.org.
+ 
+ Please don't send us pull requests on github. If you have a feature
+ branch that you want us to look at, use ``git send-email`` to send it
+ to notmuch@notmuchmail.org.
+ 
+ For more information about contributing to the project, see
+-http://notmuchmail.org/contributing/.
++https://notmuchmail.org/contributing/.
+diff --git a/bindings/go/README b/bindings/go/README
+index 18a54b6..1825ae0 100644
+--- a/bindings/go/README
++++ b/bindings/go/README
+@@ -13,4 +13,4 @@ todo
+ 
+  - improve notmuch-addrlookup regexp
+ 
+-[1] http://notmuchmail.org/
+\ No newline at end of file
++[1] https://notmuchmail.org/
+diff --git a/bindings/go/src/notmuch/notmuch.go b/bindings/go/src/notmuch/notmuch.go
+index 0fff1ab..4d8c2ce 100644
+--- a/bindings/go/src/notmuch/notmuch.go
++++ b/bindings/go/src/notmuch/notmuch.go
+@@ -351,7 +351,7 @@ func (self *Database) GetAllTags() *Tags {
+  * completely in the future, but it's likely to be a specialized
+  * version of the general Xapian query syntax:
+  *
+- * http://xapian.org/docs/queryparser.html
++ * https://xapian.org/docs/queryparser.html
+  *
+  * As a special case, passing either a length-zero string, (that is ""),
+  * or a string consisting of a single asterisk (that is "*"), will
+diff --git a/bindings/python/README b/bindings/python/README
+index b20ae07..fe7a218 100644
+--- a/bindings/python/README
++++ b/bindings/python/README
+@@ -2,7 +2,7 @@ notmuch -- The python interface to notmuch
+ ==========================================
+ 
+ This module makes the functionality of the notmuch library
+-(`http://notmuchmail.org`_) available to python. Successful import of
++(`https://notmuchmail.org`_) available to python. Successful import of
+ this modul depends on a libnotmuch.so|dll being available on the
+ user's system.
+ 
+@@ -10,7 +10,7 @@ If you have downloaded the full source tarball, you can create the
+ documentation with sphinx installed, go to the docs directory and
+ "make html". A static version of the documentation is available at:
+ 
+-  https://notmuch.readthedocs.org/projects/notmuch-python/
++  https://notmuch.readthedocs.io/projects/notmuch-python/
+ 
+ To build the python bindings, do
+ 
+diff --git a/bindings/python/docs/COPYING b/bindings/python/docs/COPYING
+index 94a9ed0..2a00065 100644
+--- a/bindings/python/docs/COPYING
++++ b/bindings/python/docs/COPYING
+@@ -645,7 +645,7 @@ the "copyright" line and a pointer to where the full notice is found.
+     GNU General Public License for more details.
+ 
+     You should have received a copy of the GNU General Public License
+-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Also add information on how to contact you by electronic and paper mail.
+ 
+@@ -664,11 +664,11 @@ might be different; for a GUI interface, you would use an "about box".
+   You should also get your employer (if you work as a programmer) or school,
+ if any, to sign a "copyright disclaimer" for the program, if necessary.
+ For more information on this, and how to apply and follow the GNU GPL, see
+-<http://www.gnu.org/licenses/>.
++<https://www.gnu.org/licenses/>.
+ 
+   The GNU General Public License does not permit incorporating your program
+ into proprietary programs.  If your program is a subroutine library, you
+ may consider it more useful to permit linking proprietary applications with
+ the library.  If this is what you want to do, use the GNU Lesser General
+ Public License instead of this License.  But first, please read
+-<http://www.gnu.org/philosophy/why-not-lgpl.html>.
++<https://www.gnu.org/philosophy/why-not-lgpl.html>.
+diff --git a/bindings/python/docs/source/index.rst b/bindings/python/docs/source/index.rst
+index 1cece5f..bef7e60 100644
+--- a/bindings/python/docs/source/index.rst
++++ b/bindings/python/docs/source/index.rst
+@@ -4,7 +4,7 @@ Welcome to :mod:`notmuch`'s documentation
+ .. currentmodule:: notmuch
+ 
+ The :mod:`notmuch` module provides an interface to the `notmuch
+-<http://notmuchmail.org>`_ functionality, directly interfacing to a
++<https://notmuchmail.org>`_ functionality, directly interfacing to a
+ shared notmuch library.  Within :mod:`notmuch`, the classes
+ :class:`Database`, :class:`Query` provide most of the core
+ functionality, returning :class:`Threads`, :class:`Messages` and
+diff --git a/bindings/python/notmuch/__init__.py b/bindings/python/notmuch/__init__.py
+index 29416a5..5c19532 100644
+--- a/bindings/python/notmuch/__init__.py
++++ b/bindings/python/notmuch/__init__.py
+@@ -47,13 +47,14 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010-2011 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+ from .database import Database
+ from .directory import Directory
+ from .filenames import Filenames
++from .indexopts import Indexopts
+ from .message import Message
+ from .messages import Messages
+ from .query import Query
+diff --git a/bindings/python/notmuch/compat.py b/bindings/python/notmuch/compat.py
+index daa268c..c931329 100644
+--- a/bindings/python/notmuch/compat.py
++++ b/bindings/python/notmuch/compat.py
+@@ -16,7 +16,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ Copyright 2012 Justus Winter <4winter@informatik.uni-hamburg.de>
+diff --git a/bindings/python/notmuch/database.py b/bindings/python/notmuch/database.py
+index f304533..a13b9bb 100644
+--- a/bindings/python/notmuch/database.py
++++ b/bindings/python/notmuch/database.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+@@ -29,6 +29,7 @@ from .globals import (
+     NotmuchDirectoryP,
+     NotmuchMessageP,
+     NotmuchTagsP,
++    NotmuchIndexoptsP,
+ )
+ from .errors import (
+     STATUS,
+@@ -383,12 +384,13 @@ class Database(object):
+         # return the Directory, init it with the absolute path
+         return Directory(abs_dirpath, dir_p, self)
+ 
+-    _add_message = nmlib.notmuch_database_add_message
+-    _add_message.argtypes = [NotmuchDatabaseP, c_char_p,
+-                             POINTER(NotmuchMessageP)]
+-    _add_message.restype = c_uint
+-
+-    def add_message(self, filename, sync_maildir_flags=False):
++    _add_message_with_indexopts = nmlib.notmuch_database_add_message_with_indexopts
++    _add_message_with_indexopts.argtypes = [NotmuchDatabaseP, c_char_p,
++                                            NotmuchIndexoptsP,
++                                            POINTER(NotmuchMessageP)]
++    _add_message_with_indexopts.restype = c_uint
++        
++    def add_message(self, filename, sync_maildir_flags=False, indexopts=None):
+         """Adds a new message to the database
+ 
+         :param filename: should be a path relative to the path of the
+@@ -409,6 +411,9 @@ class Database(object):
+             API. You might want to look into the underlying method
+             :meth:`Message.maildir_flags_to_tags`.
+ 
++        :param indexopts: a nomtuch.Indexopts object indicating custom
++            options desired for indexing.
++
+         :returns: On success, we return
+ 
+            1) a :class:`Message` object that can be used for things
+@@ -436,10 +441,15 @@ class Database(object):
+               :attr:`STATUS`.READ_ONLY_DATABASE
+                       Database was opened in read-only mode so no message can
+                       be added.
++
+         """
+         self._assert_db_is_initialized()
+         msg_p = NotmuchMessageP()
+-        status = self._add_message(self._db, _str(filename), byref(msg_p))
++
++        io = None
++        if indexopts is not None:
++            io = indexopts._indexopts
++        status = self._add_message_with_indexopts(self._db, _str(filename), io, byref(msg_p))
+ 
+         if not status in [STATUS.SUCCESS, STATUS.DUPLICATE_MESSAGE_ID]:
+             raise NotmuchError(status)
+diff --git a/bindings/python/notmuch/directory.py b/bindings/python/notmuch/directory.py
+index 3b0a525..7f86b1a 100644
+--- a/bindings/python/notmuch/directory.py
++++ b/bindings/python/notmuch/directory.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/errors.py b/bindings/python/notmuch/errors.py
+index abca51d..b7684ef 100644
+--- a/bindings/python/notmuch/errors.py
++++ b/bindings/python/notmuch/errors.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/filenames.py b/bindings/python/notmuch/filenames.py
+index f8f383e..29f4fdf 100644
+--- a/bindings/python/notmuch/filenames.py
++++ b/bindings/python/notmuch/filenames.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/globals.py b/bindings/python/notmuch/globals.py
+index 6872a29..71426c8 100644
+--- a/bindings/python/notmuch/globals.py
++++ b/bindings/python/notmuch/globals.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+@@ -88,3 +88,8 @@ NotmuchDirectoryP = POINTER(NotmuchDirectoryS)
+ class NotmuchFilenamesS(Structure):
+     pass
+ NotmuchFilenamesP = POINTER(NotmuchFilenamesS)
++
++
++class NotmuchIndexoptsS(Structure):
++    pass
++NotmuchIndexoptsP = POINTER(NotmuchIndexoptsS)
+diff --git a/bindings/python/notmuch/indexopts.py b/bindings/python/notmuch/indexopts.py
+new file mode 100644
+index 0000000..b0d4603
+--- /dev/null
++++ b/bindings/python/notmuch/indexopts.py
+@@ -0,0 +1,97 @@
++"""
++This file is part of notmuch.
++
++Notmuch is free software: you can redistribute it and/or modify it
++under the terms of the GNU General Public License as published by the
++Free Software Foundation, either version 3 of the License, or (at your
++option) any later version.
++
++Notmuch is distributed in the hope that it will be useful, but WITHOUT
++ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++for more details.
++
++You should have received a copy of the GNU General Public License
++along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++
++Copyright 2015 Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++"""
++from ctypes import c_char_p, c_bool, c_int
++from .globals import (
++    nmlib,
++    NotmuchIndexoptsP,
++)
++from .errors import (
++    STATUS,
++    NullPointerError,
++    NotInitializedError,
++)
++
++
++class Indexopts(object):
++    """Represents available options for notmuch indexing.
++    """
++
++    # create
++    _create = nmlib.notmuch_indexopts_create
++    _create.argtypes = []
++    _create.restype = NotmuchIndexoptsP
++
++    def __init__(self, try_decrypt=False, gpg_path=None):
++        """
++        :param try_decrypt: True if notmuch should try to decrypt messages
++             while indexing, and index the cleartext.
++
++        :param gpg_path: the name or path to the preferred GnuPG binary.
++        """
++        self._indexopts = Indexopts._create()
++        self.gpg_path = gpg_path
++        self.try_decrypt = try_decrypt
++
++    # try_decrypt
++    _get_try_decrypt = nmlib.notmuch_indexopts_get_try_decrypt
++    _get_try_decrypt.argtypes = [NotmuchIndexoptsP]
++    _get_try_decrypt.restype = bool
++
++    _set_try_decrypt = nmlib.notmuch_indexopts_set_try_decrypt
++    _set_try_decrypt.argtypes = [NotmuchIndexoptsP, c_bool]
++    _set_try_decrypt.restype = c_int
++
++    @property
++    def try_decrypt(self):
++        return Indexopts._get_try_decrypt(self._indexopts)
++
++    @try_decrypt.setter
++    def try_decrypt(self, try_decrypt):
++        status = Indexopts._set_try_decrypt(self._indexopts, try_decrypt)
++        if status != STATUS.SUCCESS:
++            raise NotmuchError(status)
++
++    # gpg_path
++    _get_gpg_path = nmlib.notmuch_indexopts_get_gpg_path
++    _get_gpg_path.argtypes = [NotmuchIndexoptsP]
++    _get_gpg_path.restype = c_char_p
++
++    _set_gpg_path = nmlib.notmuch_indexopts_set_gpg_path
++    _set_gpg_path.argtypes = [NotmuchIndexoptsP, c_char_p]
++    _set_gpg_path.restype = c_int
++
++    @property
++    def gpg_path(self):
++        return Indexopts._get_gpg_path(self._indexopts)
++
++    @gpg_path.setter
++    def gpg_path(self, gpg_path):
++        status = Indexopts._set_gpg_path(self._indexopts, gpg_path)
++        if status != STATUS.SUCCESS:
++            raise NotmuchError(status)
++    
++
++    _destroy = nmlib.notmuch_indexopts_destroy
++    _destroy.argtypes = [NotmuchIndexoptsP]
++    _destroy.restype = None
++
++    def __del__(self):
++        """Close and free the indexopts"""
++        if self._indexopts:
++            self._destroy(self._indexopts)
+diff --git a/bindings/python/notmuch/message.py b/bindings/python/notmuch/message.py
+index d1c1b58..bf80900 100644
+--- a/bindings/python/notmuch/message.py
++++ b/bindings/python/notmuch/message.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+                Jesse Rosenthal <jrosenthal@jhu.edu>
+diff --git a/bindings/python/notmuch/messages.py b/bindings/python/notmuch/messages.py
+index 76100ff..e17f150 100644
+--- a/bindings/python/notmuch/messages.py
++++ b/bindings/python/notmuch/messages.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+                Jesse Rosenthal <jrosenthal@jhu.edu>
+diff --git a/bindings/python/notmuch/query.py b/bindings/python/notmuch/query.py
+index 4327007..a0f4f64 100644
+--- a/bindings/python/notmuch/query.py
++++ b/bindings/python/notmuch/query.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/tag.py b/bindings/python/notmuch/tag.py
+index 1d52345..3b4a56a 100644
+--- a/bindings/python/notmuch/tag.py
++++ b/bindings/python/notmuch/tag.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/thread.py b/bindings/python/notmuch/thread.py
+index 0454dbd..cc151f7 100644
+--- a/bindings/python/notmuch/thread.py
++++ b/bindings/python/notmuch/thread.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/notmuch/threads.py b/bindings/python/notmuch/threads.py
+index a550523..86f1f2c 100644
+--- a/bindings/python/notmuch/threads.py
++++ b/bindings/python/notmuch/threads.py
+@@ -12,7 +12,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+diff --git a/bindings/python/setup.py b/bindings/python/setup.py
+index f4c338e..d986f0c 100644
+--- a/bindings/python/setup.py
++++ b/bindings/python/setup.py
+@@ -14,7 +14,7 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ for more details.
+ 
+ You should have received a copy of the GNU General Public License
+-along with notmuch.  If not, see <http://www.gnu.org/licenses/>.
++along with notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ Copyright 2010 Sebastian Spaeth <Sebastian@SSpaeth.de>
+ """
+@@ -34,21 +34,21 @@ setup(name='notmuch',
+       description='Python binding of the notmuch mail search and indexing library.',
+       author='Sebastian Spaeth',
+       author_email='Sebastian@SSpaeth.de',
+-      url='http://notmuchmail.org/',
+-      download_url='http://notmuchmail.org/releases/notmuch-%s.tar.gz' % __VERSION__,
++      url='https://notmuchmail.org/',
++      download_url='https://notmuchmail.org/releases/notmuch-%s.tar.gz' % __VERSION__,
+       packages=['notmuch'],
+       keywords=['library', 'email'],
+       long_description='''Overview
+ ========
+ 
+ The notmuch module provides an interface to the `notmuch
+-<http://notmuchmail.org>`_ functionality, directly interfacing with a
++<https://notmuchmail.org>`_ functionality, directly interfacing with a
+ shared notmuch library. Notmuch provides a maildatabase that allows
+ for extremely quick searching and filtering of your email according to
+ various criteria.
+ 
+ The documentation for the latest notmuch release can be `viewed
+-online <http://notmuch.readthedocs.org/>`_.
++online <https://notmuch.readthedocs.io/>`_.
+ 
+ Requirements
+ ------------
+@@ -66,5 +66,5 @@ python >= 2.5. It will not work on earlier python versions.
+                    'Topic :: Software Development :: Libraries'
+                    ],
+       platforms='',
+-      license='http://www.gnu.org/licenses/gpl-3.0.txt',
++      license='https://www.gnu.org/licenses/gpl-3.0.txt',
+      )
+diff --git a/bindings/ruby/database.c b/bindings/ruby/database.c
+index c03d701..12e6bab 100644
+--- a/bindings/ruby/database.c
++++ b/bindings/ruby/database.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+@@ -375,6 +375,30 @@ notmuch_rb_database_find_message_by_filename (VALUE self, VALUE pathv)
+ }
+ 
+ /*
++ * call-seq: DB.get_all_tags() => TAGS
++ *
++ * Returns a list of all tags found in the database.
++ */
++VALUE
++notmuch_rb_database_get_all_tags (VALUE self)
++{
++    notmuch_database_t *db;
++    notmuch_tags_t *tags;
++
++    Data_Get_Notmuch_Database (self, db);
++
++    tags = notmuch_database_get_all_tags (db);
++    if (!tags) {
++	const char *msg = notmuch_database_status_string (db);
++	if (!msg)
++	    msg = "Unknown notmuch error";
++
++	rb_raise (notmuch_rb_eBaseError, "%s", msg);
++    }
++    return Data_Wrap_Struct (notmuch_rb_cTags, NULL, NULL, tags);
++}
++
++/*
+  * call-seq: DB.query(query) => QUERY
+  *
+  * Retrieve a query object for the query string 'query'
+diff --git a/bindings/ruby/defs.h b/bindings/ruby/defs.h
+index f4901a0..48544ca 100644
+--- a/bindings/ruby/defs.h
++++ b/bindings/ruby/defs.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+@@ -178,6 +178,9 @@ VALUE
+ notmuch_rb_database_find_message_by_filename (VALUE self, VALUE pathv);
+ 
+ VALUE
++notmuch_rb_database_get_all_tags (VALUE self);
++
++VALUE
+ notmuch_rb_database_query_create (VALUE self, VALUE qstrv);
+ 
+ /* directory.c */
+diff --git a/bindings/ruby/directory.c b/bindings/ruby/directory.c
+index 303523c..0f37b39 100644
+--- a/bindings/ruby/directory.c
++++ b/bindings/ruby/directory.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/filenames.c b/bindings/ruby/filenames.c
+index e278590..656c58e 100644
+--- a/bindings/ruby/filenames.c
++++ b/bindings/ruby/filenames.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/init.c b/bindings/ruby/init.c
+index ab3f22d..5556b43 100644
+--- a/bindings/ruby/init.c
++++ b/bindings/ruby/init.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+@@ -229,6 +229,7 @@ Init_notmuch (void)
+ 		      notmuch_rb_database_find_message, 1); /* in database.c */
+     rb_define_method (notmuch_rb_cDatabase, "find_message_by_filename",
+ 		      notmuch_rb_database_find_message_by_filename, 1); /* in database.c */
++    rb_define_method (notmuch_rb_cDatabase, "all_tags", notmuch_rb_database_get_all_tags, 0); /* in database.c */
+     rb_define_method (notmuch_rb_cDatabase, "query", notmuch_rb_database_query_create, 1); /* in database.c */
+ 
+     /*
+diff --git a/bindings/ruby/message.c b/bindings/ruby/message.c
+index 4ff6097..c55cf6e 100644
+--- a/bindings/ruby/message.c
++++ b/bindings/ruby/message.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/messages.c b/bindings/ruby/messages.c
+index 443a30c..a337fee 100644
+--- a/bindings/ruby/messages.c
++++ b/bindings/ruby/messages.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/query.c b/bindings/ruby/query.c
+index 8cbc73f..ce66926 100644
+--- a/bindings/ruby/query.c
++++ b/bindings/ruby/query.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/status.c b/bindings/ruby/status.c
+index b11fb9f..a0f8863 100644
+--- a/bindings/ruby/status.c
++++ b/bindings/ruby/status.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/tags.c b/bindings/ruby/tags.c
+index e8226ad..db8b4cf 100644
+--- a/bindings/ruby/tags.c
++++ b/bindings/ruby/tags.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/thread.c b/bindings/ruby/thread.c
+index 56616d9..9b29598 100644
+--- a/bindings/ruby/thread.c
++++ b/bindings/ruby/thread.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/bindings/ruby/threads.c b/bindings/ruby/threads.c
+index 3e1fbf5..ed403a8 100644
+--- a/bindings/ruby/threads.c
++++ b/bindings/ruby/threads.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ali Polatel <alip@exherbo.org>
+  */
+diff --git a/compat/compat.h b/compat/compat.h
+index 634d505..88bc4df 100644
+--- a/compat/compat.h
++++ b/compat/compat.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/compat/function-attributes.h b/compat/function-attributes.h
+index 8450a17..1945b5b 100644
+--- a/compat/function-attributes.h
++++ b/compat/function-attributes.h
+@@ -14,7 +14,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  */
+ 
+ #ifndef FUNCTION_ATTRIBUTES_H
+diff --git a/completion/README b/completion/README
+index e200c18..89805c7 100644
+--- a/completion/README
++++ b/completion/README
+@@ -9,7 +9,7 @@ notmuch-completion.bash
+   bash-completion package [1] version 2.0, which depends on bash
+   version 3.2 or later.
+ 
+-  [1] http://bash-completion.alioth.debian.org/
++  [1] https://github.com/scop/bash-completion
+ 
+ notmuch-completion.zsh
+ 
+diff --git a/completion/notmuch-completion.bash b/completion/notmuch-completion.bash
+index cc58392..a6a5a60 100644
+--- a/completion/notmuch-completion.bash
++++ b/completion/notmuch-completion.bash
+@@ -3,7 +3,7 @@
+ # Copyright © 2013 Jani Nikula
+ #
+ # Based on the bash-completion package:
+-# http://bash-completion.alioth.debian.org/
++# https://github.com/scop/bash-completion
+ #
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -16,7 +16,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ #
+ # Author: Jani Nikula <jani@nikula.org>
+ #
+@@ -224,7 +224,7 @@ _notmuch_insert()
+     ! $split &&
+     case "${cur}" in
+ 	--*)
+-	    local options="--create-folder --folder= --keep --no-hooks ${_notmuch_shared_options}"
++	    local options="--create-folder --folder= --keep --no-hooks --try-decrypt ${_notmuch_shared_options}"
+ 	    compopt -o nospace
+ 	    COMPREPLY=( $(compgen -W "$options" -- ${cur}) )
+ 	    return
+@@ -247,7 +247,7 @@ _notmuch_new()
+ 
+     case "${cur}" in
+ 	-*)
+-	    local options="--no-hooks --quiet ${_notmuch_shared_options}"
++	    local options="--no-hooks --try-decrypt --quiet ${_notmuch_shared_options}"
+ 	    compopt -o nospace
+ 	    COMPREPLY=( $(compgen -W "${options}" -- ${cur}) )
+ 	    ;;
+diff --git a/configure b/configure
+index 4fc31cc..ae0a027 100755
+--- a/configure
++++ b/configure
+@@ -1,5 +1,7 @@
+ #! /bin/sh
+ 
++set -u
++
+ # Test whether this shell is capable of parameter substring processing.
+ ( option='a/b'; : ${option#*/} ) 2>/dev/null || {
+     echo "
+@@ -70,6 +72,7 @@ WITH_EMACS=1
+ WITH_BASH=1
+ WITH_RUBY=1
+ WITH_ZSH=1
++WITH_RETRY_LOCK=1
+ 
+ usage ()
+ {
+@@ -138,6 +141,7 @@ Some features can be disabled (--with-feature=no is equivalent to
+ 	--without-emacs			Do not install lisp file
+ 	--without-ruby			Do not install ruby bindings
+ 	--without-zsh-completion	Do not install zsh completions files
++	--without-retry-lock		Do not use blocking xapian opens, even if available
+ 
+ Additional options are accepted for compatibility with other
+ configure-script calling conventions, but don't do anything yet:
+@@ -209,6 +213,14 @@ for option; do
+ 	fi
+     elif [ "${option}" = '--without-ruby' ] ; then
+ 	WITH_RUBY=0
++    elif [ "${option%%=*}" = '--with-retry-lock' ]; then
++	if [ "${option#*=}" = 'no' ]; then
++	    WITH_RETRY_LOCK=0
++	else
++	    WITH_RETRY_LOCK=1
++	fi
++    elif [ "${option}" = '--without-retry-lock' ] ; then
++	WITH_RETRY_LOCK=0
+     elif [ "${option%%=*}" = '--with-zsh-completion' ]; then
+ 	if [ "${option#*=}" = 'no' ]; then
+ 	    WITH_ZSH=0
+@@ -250,7 +262,7 @@ if [ -z "$LIBDIR" ] ; then
+     libdir_expanded="${PREFIX}/lib"
+ else
+     # very non-general variable expansion
+-    libdir_expanded=`echo "$LIBDIR" | sed "s|\\${prefix}|${PREFIX}|g; s|\\$prefix/|${PREFIX}/|; s|//*|/|g"`
++    libdir_expanded=$(echo "$LIBDIR" | sed "s|\\${prefix}|${PREFIX}|g; s|\\$prefix/|${PREFIX}/|; s|//*|/|g")
+ fi
+ 
+ cat <<EOF
+@@ -356,23 +368,58 @@ if [ ${have_xapian} = "0" ]; then
+     errors=$((errors + 1))
+ fi
+ 
+-# Compaction is only supported on Xapian > 1.2.6
+ have_xapian_compact=0
++have_xapian_field_processor=0
+ if [ ${have_xapian} = "1" ]; then
+     printf "Checking for Xapian compaction support... "
+-    case "${xapian_version}" in
+-	0.*|1.[01].*|1.2.[0-5])
+-	    printf "No (only available with Xapian > 1.2.6).\n" ;;
+-	[1-9]*.[0-9]*.[0-9]*)
+-	    have_xapian_compact=1
+-	    printf "Yes.\n" ;;
+-	*)
+-	    printf "Unknown version.\n" ;;
+-    esac
+-fi
++    cat>_compact.cc<<EOF
++#include <xapian.h>
++class TestCompactor : public Xapian::Compactor { };
++EOF
++    if ${CXX} ${CXXFLAGS_for_sh} ${xapian_cxxflags} -c _compact.cc -o _compact.o > /dev/null 2>&1
++    then
++	have_xapian_compact=1
++	printf "Yes.\n"
++    else
++	printf "No.\n"
++    fi
++
++    rm -f _compact.o _compact.cc
++
++    printf "Checking for Xapian FieldProcessor API... "
++    cat>_field_processor.cc<<EOF
++#include <xapian.h>
++class TitleFieldProcessor : public Xapian::FieldProcessor { };
++EOF
++    if ${CXX} ${CXXFLAGS_for_sh} ${xapian_cxxflags} -c _field_processor.cc -o _field_processor.o > /dev/null 2>&1
++    then
++	have_xapian_field_processor=1
++	printf "Yes.\n"
++    else
++	printf "No. (optional)\n"
++    fi
++
++    rm -f _field_processor.o _field_processor.cc
++
++    default_xapian_backend=""
++    # DB_RETRY_LOCK is only supported on Xapian > 1.3.2
++    have_xapian_db_retry_lock=0
++    if [ $WITH_RETRY_LOCK = "1" ]; then
++	printf "Checking for Xapian lock retry support... "
++	cat>_retry.cc<<EOF
++#include <xapian.h>
++int flag = Xapian::DB_RETRY_LOCK;
++EOF
++	if ${CXX} ${CXXFLAGS_for_sh} ${xapian_cxxflags} -c _retry.cc -o _retry.o > /dev/null 2>&1
++	then
++	    have_xapian_db_retry_lock=1
++	    printf "Yes.\n"
++	else
++	    printf "No. (optional)\n"
++	fi
++	rm -f _retry.o _retry.cc
++    fi
+ 
+-default_xapian_backend=""
+-if [ ${have_xapian} = "1" ]; then
+     printf "Testing default Xapian backend... "
+     cat >_default_backend.cc <<EOF
+ #include <xapian.h>
+@@ -380,16 +427,17 @@ int main(int argc, char** argv) {
+    Xapian::WritableDatabase db("test.db",Xapian::DB_CREATE_OR_OPEN);
+ }
+ EOF
+-    ${CXX} ${CXXLAGS} ${xapian_cxxflags} _default_backend.cc -o _default_backend ${xapian_ldflags}
++    ${CXX} ${CXXFLAGS_for_sh} ${xapian_cxxflags} _default_backend.cc -o _default_backend ${xapian_ldflags}
+     ./_default_backend
+     if [ -f test.db/iamglass ]; then
+ 	default_xapian_backend=glass
+     else
+ 	default_xapian_backend=chert
+     fi
+-    printf "${default_xapian_backend}\n";
++    printf "%s\n" "${default_xapian_backend}";
+     rm -rf test.db _default_backend _default_backend.cc
+ fi
++
+ # we need to have a version >= 2.6.5 to avoid a crypto bug. We need
+ # 2.6.7 for permissive "From " header handling.
+ GMIME_MINVER=2.6.7
+@@ -413,8 +461,9 @@ have_glib=0
+ if pkg-config --exists 'glib-2.0 >= 2.22'; then
+     printf "Yes.\n"
+     have_glib=1
+-    glib_cflags=$(pkg-config --cflags glib-2.0)
+-    glib_ldflags=$(pkg-config --libs glib-2.0)
++    # these are included in gmime cflags and ldflags
++    # glib_cflags=$(pkg-config --cflags glib-2.0)
++    # glib_ldflags=$(pkg-config --libs glib-2.0)
+ else
+     printf "No.\n"
+     errors=$((errors + 1))
+@@ -461,7 +510,7 @@ for name in ${PYTHON} python python2 python3; do
+     if command -v $name > /dev/null; then
+ 	have_python=1
+ 	python=$name
+-	printf "Yes ($name).\n"
++	printf "Yes (%s).\n" "$name"
+ 	break
+     fi
+ done
+@@ -479,6 +528,7 @@ if pkg-config --exists valgrind; then
+ else
+     printf "No (but that's fine).\n"
+     have_valgrind=0
++    valgrind_cflags=
+ fi
+ 
+ printf "Checking for bash-completion (>= 1.90)... "
+@@ -489,12 +539,12 @@ else
+     WITH_BASH=0
+ fi
+ 
+-if [ -z "${EMACSLISPDIR}" ]; then
+-    EMACSLISPDIR='$(prefix)/share/emacs/site-lisp'
++if [ -z "${EMACSLISPDIR-}" ]; then
++    EMACSLISPDIR="\$(prefix)/share/emacs/site-lisp"
+ fi
+ 
+-if [ -z "${EMACSETCDIR}" ]; then
+-    EMACSETCDIR='$(prefix)/share/emacs/site-lisp'
++if [ -z "${EMACSETCDIR-}" ]; then
++    EMACSETCDIR="\$(prefix)/share/emacs/site-lisp"
+ fi
+ 
+ printf "Checking if emacs is available... "
+@@ -542,7 +592,7 @@ fi
+ libdir_in_ldconfig=0
+ 
+ printf "Checking which platform we are on... "
+-uname=`uname`
++uname=$(uname)
+ if [ $uname = "Darwin" ] ; then
+     printf "Mac OS X.\n"
+     platform=MACOSX
+@@ -560,11 +610,11 @@ elif [ $uname = "OpenBSD" ] ; then
+     platform=OPENBSD
+     linker_resolves_library_dependencies=0
+ elif [ $uname = "Linux" ] || [ $uname = "GNU" ] ; then
+-    printf "$uname\n"
++    printf "%s\n" "$uname"
+     platform="$uname"
+     linker_resolves_library_dependencies=1
+ 
+-    printf "Checking for $libdir_expanded in ldconfig... "
++    printf "Checking for %s in ldconfig... " "$libdir_expanded"
+     ldconfig_paths=$(/sbin/ldconfig -N -X -v 2>/dev/null | sed -n -e 's,^\(/.*\):\( (.*)\)\?$,\1,p')
+     # Separate ldconfig_paths only on newline (not on any potential
+     # embedded space characters in any filenames). Note, we use a
+@@ -621,7 +671,7 @@ EOF
+     fi
+     if [ $have_xapian -eq 0 ]; then
+ 	echo "	Xapian library (including development files such as headers)"
+-	echo "	http://xapian.org/"
++	echo "	https://xapian.org/"
+     fi
+     if [ $have_zlib -eq 0 ]; then
+ 	echo "	zlib library (>= version 1.2.5.2, including development files such as headers)"
+@@ -641,7 +691,7 @@ EOF
+     fi
+     if [ $have_talloc -eq 0 ]; then
+ 	echo "	The talloc library (including development files such as headers)"
+-	echo "	http://talloc.samba.org/"
++	echo "	https://talloc.samba.org/"
+ 	echo
+     fi
+     cat <<EOF
+@@ -815,7 +865,7 @@ for flag in -Wall -Wextra -Wwrite-strings; do
+ 	WARN_CXXFLAGS="${WARN_CXXFLAGS}${WARN_CXXFLAGS:+ }${flag}"
+     fi
+ done
+-printf "\n\t${WARN_CXXFLAGS}\n"
++printf "\n\t%s\n" "${WARN_CXXFLAGS}"
+ 
+ WARN_CFLAGS="${WARN_CXXFLAGS}"
+ printf "Checking for available C compiler warning flags... "
+@@ -825,7 +875,7 @@ for flag in -Wmissing-declarations; do
+ 	WARN_CFLAGS="${WARN_CFLAGS}${WARN_CFLAGS:+ }${flag}"
+     fi
+ done
+-printf "\n\t${WARN_CFLAGS}\n"
++printf "\n\t%s\n" "${WARN_CFLAGS}"
+ 
+ rm -f minimal minimal.c _libversion.c _libversion _libversion.sh
+ 
+@@ -997,6 +1047,12 @@ HAVE_D_TYPE = ${have_d_type}
+ # Whether the Xapian version in use supports compaction
+ HAVE_XAPIAN_COMPACT = ${have_xapian_compact}
+ 
++# Whether the Xapian version in use supports field processors
++HAVE_XAPIAN_FIELD_PROCESSOR = ${have_xapian_field_processor}
++
++# Whether the Xapian version in use supports DB_RETRY_LOCK
++HAVE_XAPIAN_DB_RETRY_LOCK = ${have_xapian_db_retry_lock}
++
+ # Whether the getpwuid_r function is standards-compliant
+ # (if not, then notmuch will #define _POSIX_PTHREAD_SEMANTICS
+ # to enable the standards-compliant version -- needed for Solaris)
+@@ -1059,33 +1115,25 @@ WITH_BASH = ${WITH_BASH}
+ WITH_ZSH = ${WITH_ZSH}
+ 
+ # Combined flags for compiling and linking against all of the above
+-CONFIGURE_CFLAGS = -DHAVE_GETLINE=\$(HAVE_GETLINE) \$(GMIME_CFLAGS)      \\
+-		   -DHAVE_CANONICALIZE_FILE_NAME=\$(HAVE_CANONICALIZE_FILE_NAME) \\
+-		   \$(ZLIB_CFLAGS)					 \\
+-		   \$(TALLOC_CFLAGS) -DHAVE_VALGRIND=\$(HAVE_VALGRIND)   \\
+-		   \$(VALGRIND_CFLAGS)                                   \\
+-		   -DHAVE_STRCASESTR=\$(HAVE_STRCASESTR)                 \\
+-		   -DHAVE_STRSEP=\$(HAVE_STRSEP)                         \\
+-		   -DHAVE_TIMEGM=\$(HAVE_TIMEGM)                         \\
+-		   -DHAVE_D_TYPE=\$(HAVE_D_TYPE)                         \\
+-		   -DSTD_GETPWUID=\$(STD_GETPWUID)                       \\
+-		   -DSTD_ASCTIME=\$(STD_ASCTIME)                         \\
+-		   -DHAVE_XAPIAN_COMPACT=\$(HAVE_XAPIAN_COMPACT)	 \\
+-		   -DUTIL_BYTE_ORDER=\$(UTIL_BYTE_ORDER)
+-
+-CONFIGURE_CXXFLAGS = -DHAVE_GETLINE=\$(HAVE_GETLINE) \$(GMIME_CFLAGS)    \\
+-		     -DHAVE_CANONICALIZE_FILE_NAME=\$(HAVE_CANONICALIZE_FILE_NAME) \\
+-		     \$(ZLIB_CFLAGS)					 \\
+-		     \$(TALLOC_CFLAGS) -DHAVE_VALGRIND=\$(HAVE_VALGRIND) \\
+-		     \$(VALGRIND_CFLAGS) \$(XAPIAN_CXXFLAGS)             \\
+-		     -DHAVE_STRCASESTR=\$(HAVE_STRCASESTR)               \\
+-		     -DHAVE_STRSEP=\$(HAVE_STRSEP)                       \\
+-		     -DHAVE_TIMEGM=\$(HAVE_TIMEGM)                       \\
+-		     -DHAVE_D_TYPE=\$(HAVE_D_TYPE)                       \\
+-		     -DSTD_GETPWUID=\$(STD_GETPWUID)                     \\
+-		     -DSTD_ASCTIME=\$(STD_ASCTIME)                       \\
+-		     -DHAVE_XAPIAN_COMPACT=\$(HAVE_XAPIAN_COMPACT)       \\
+-		     -DUTIL_BYTE_ORDER=\$(UTIL_BYTE_ORDER)
++COMMON_CONFIGURE_CFLAGS = \\
++	\$(GMIME_CFLAGS) \$(TALLOC_CFLAGS) \$(ZLIB_CFLAGS)	\\
++	-DHAVE_VALGRIND=\$(HAVE_VALGRIND) \$(VALGRIND_CFLAGS)	\\
++	-DHAVE_GETLINE=\$(HAVE_GETLINE)				\\
++	-DHAVE_CANONICALIZE_FILE_NAME=\$(HAVE_CANONICALIZE_FILE_NAME) \\
++	-DHAVE_STRCASESTR=\$(HAVE_STRCASESTR)			\\
++	-DHAVE_STRSEP=\$(HAVE_STRSEP)				\\
++	-DHAVE_TIMEGM=\$(HAVE_TIMEGM)				\\
++	-DHAVE_D_TYPE=\$(HAVE_D_TYPE)				\\
++	-DSTD_GETPWUID=\$(STD_GETPWUID)				\\
++	-DSTD_ASCTIME=\$(STD_ASCTIME)				\\
++	-DHAVE_XAPIAN_COMPACT=\$(HAVE_XAPIAN_COMPACT)		\\
++	-DHAVE_XAPIAN_FIELD_PROCESSOR=\$(HAVE_XAPIAN_FIELD_PROCESSOR) \\
++	-DHAVE_XAPIAN_DB_RETRY_LOCK=\$(HAVE_XAPIAN_DB_RETRY_LOCK) \\
++	-DUTIL_BYTE_ORDER=\$(UTIL_BYTE_ORDER)
++
++CONFIGURE_CFLAGS = \$(COMMON_CONFIGURE_CFLAGS)
++
++CONFIGURE_CXXFLAGS = \$(COMMON_CONFIGURE_CFLAGS) \$(XAPIAN_CXXFLAGS)
+ 
+ CONFIGURE_LDFLAGS =  \$(GMIME_LDFLAGS) \$(TALLOC_LDFLAGS) \$(ZLIB_LDFLAGS) \$(XAPIAN_LDFLAGS)
+ EOF
+@@ -1098,6 +1146,12 @@ cat > sh.config <<EOF
+ # Whether the Xapian version in use supports compaction
+ NOTMUCH_HAVE_XAPIAN_COMPACT=${have_xapian_compact}
+ 
++# Whether the Xapian version in use supports field processors
++NOTMUCH_HAVE_XAPIAN_FIELD_PROCESSOR=${have_xapian_field_processor}
++
++# Whether the Xapian version in use supports lock retry
++NOTMUCH_HAVE_XAPIAN_DB_RETRY_LOCK=${have_xapian_db_retry_lock}
++
+ # Which backend will Xapian use by default?
+ NOTMUCH_DEFAULT_XAPIAN_BACKEND=${default_xapian_backend}
+ 
+diff --git a/contrib/notmuch-mutt/README b/contrib/notmuch-mutt/README
+index 9c3379e..26996c4 100644
+--- a/contrib/notmuch-mutt/README
++++ b/contrib/notmuch-mutt/README
+@@ -24,8 +24,8 @@ for a --output=symlinks flag to notmuch.
+ 
+ 
+ [1]: http://www.mutt.org/
+-[2]: http://notmuchmail.org/
+-[3]: http://upsilon.cc/~zack/blog/posts/2011/01/how_to_use_Notmuch_with_Mutt/
++[2]: https://notmuchmail.org/
++[3]: https://upsilon.cc/~zack/blog/posts/2011/01/how_to_use_Notmuch_with_Mutt/
+ 
+ 
+ Requirements
+@@ -57,5 +57,5 @@ notmuch-mutt is copyright (C) 2011-2012 Stefano Zacchiroli <zack@upsilon.cc>.
+ 
+ notmuch-mutt is released under the terms of the GNU General Public License
+ (GPL), version 3 or above. A copy of the license is available online at
+-<http://www.gnu.org/licenses/>.
++<https://www.gnu.org/licenses/>.
+ 
+diff --git a/contrib/notmuch-mutt/notmuch-mutt b/contrib/notmuch-mutt/notmuch-mutt
+index 97fb2d8..0e46a8c 100755
+--- a/contrib/notmuch-mutt/notmuch-mutt
++++ b/contrib/notmuch-mutt/notmuch-mutt
+@@ -91,7 +91,7 @@ sub get_message_id() {
+ 	$mid = $1;
+     } else {  # Message-ID header not found, synthesize a message id
+ 	      # based on SHA1, as notmuch would do.  See:
+-	      # http://git.notmuchmail.org/git/notmuch/blob/HEAD:/lib/sha1.c
++	      # https://git.notmuchmail.org/git/notmuch/blob/HEAD:/lib/sha1.c
+ 	my $sha = Digest::SHA->new(1);
+ 	$sha->add($_) foreach(@headers);
+ 	$sha->addfile(\*STDIN);
+diff --git a/contrib/notmuch-vim/plugin/notmuch.vim b/contrib/notmuch-vim/plugin/notmuch.vim
+index 8f27fb9..eaa984b 100644
+--- a/contrib/notmuch-vim/plugin/notmuch.vim
++++ b/contrib/notmuch-vim/plugin/notmuch.vim
+@@ -15,7 +15,7 @@
+ " General Public License for more details.
+ "
+ " You should have received a copy of the GNU General Public License
+-" along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++" along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ "
+ " Authors: Bart Trojanowski <bart@jukie.net>
+ " Contributors: Felipe Contreras <felipe.contreras@gmail.com>,
+@@ -1198,7 +1198,7 @@ function! s:NM_shell_escape(word)
+ endfunction
+ 
+ " this function was taken from git.vim, then fixed up
+-" http://github.com/motemen/git-vim
++" https://github.com/motemen/git-vim
+ function! s:NM_shell_split(cmd)
+         let l:split_cmd = []
+         let cmd = a:cmd
+diff --git a/crypto.c b/crypto.c
+deleted file mode 100644
+index 3dabc97..0000000
+--- a/crypto.c
++++ /dev/null
+@@ -1,134 +0,0 @@
+-/* notmuch - Not much of an email program, (just index and search)
+- *
+- * Copyright © 2012 Jameson Rollins
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
+- *
+- * Authors: Jameson Rollins <jrollins@finestructure.net>
+- */
+-
+-#include "notmuch-client.h"
+-
+-/* Create a GPG context (GMime 2.6) */
+-static notmuch_crypto_context_t *
+-create_gpg_context (notmuch_crypto_t *crypto)
+-{
+-    notmuch_crypto_context_t *gpgctx;
+-
+-    if (crypto->gpgctx)
+-	return crypto->gpgctx;
+-
+-    /* TODO: GMimePasswordRequestFunc */
+-    gpgctx = g_mime_gpg_context_new (NULL, crypto->gpgpath ? crypto->gpgpath : "gpg");
+-    if (! gpgctx) {
+-	fprintf (stderr, "Failed to construct gpg context.\n");
+-	return NULL;
+-    }
+-    crypto->gpgctx = gpgctx;
+-
+-    g_mime_gpg_context_set_use_agent ((GMimeGpgContext *) gpgctx, TRUE);
+-    g_mime_gpg_context_set_always_trust ((GMimeGpgContext *) gpgctx, FALSE);
+-
+-    return gpgctx;
+-}
+-
+-/* Create a PKCS7 context (GMime 2.6) */
+-static notmuch_crypto_context_t *
+-create_pkcs7_context (notmuch_crypto_t *crypto)
+-{
+-    notmuch_crypto_context_t *pkcs7ctx;
+-
+-    if (crypto->pkcs7ctx)
+-	return crypto->pkcs7ctx;
+-
+-    /* TODO: GMimePasswordRequestFunc */
+-    pkcs7ctx = g_mime_pkcs7_context_new (NULL);
+-    if (! pkcs7ctx) {
+-	fprintf (stderr, "Failed to construct pkcs7 context.\n");
+-	return NULL;
+-    }
+-    crypto->pkcs7ctx = pkcs7ctx;
+-
+-    g_mime_pkcs7_context_set_always_trust ((GMimePkcs7Context *) pkcs7ctx,
+-					   FALSE);
+-
+-    return pkcs7ctx;
+-}
+-static const struct {
+-    const char *protocol;
+-    notmuch_crypto_context_t *(*get_context) (notmuch_crypto_t *crypto);
+-} protocols[] = {
+-    {
+-	.protocol = "application/pgp-signature",
+-	.get_context = create_gpg_context,
+-    },
+-    {
+-	.protocol = "application/pgp-encrypted",
+-	.get_context = create_gpg_context,
+-    },
+-    {
+-	.protocol = "application/pkcs7-signature",
+-	.get_context = create_pkcs7_context,
+-    },
+-    {
+-	.protocol = "application/x-pkcs7-signature",
+-	.get_context = create_pkcs7_context,
+-    },
+-};
+-
+-/* for the specified protocol return the context pointer (initializing
+- * if needed) */
+-notmuch_crypto_context_t *
+-notmuch_crypto_get_context (notmuch_crypto_t *crypto, const char *protocol)
+-{
+-    notmuch_crypto_context_t *cryptoctx = NULL;
+-    size_t i;
+-
+-    if (! protocol) {
+-	fprintf (stderr, "Cryptographic protocol is empty.\n");
+-	return cryptoctx;
+-    }
+-
+-    /* As per RFC 1847 section 2.1: "the [protocol] value token is
+-     * comprised of the type and sub-type tokens of the Content-Type".
+-     * As per RFC 1521 section 2: "Content-Type values, subtypes, and
+-     * parameter names as defined in this document are
+-     * case-insensitive."  Thus, we use strcasecmp for the protocol.
+-     */
+-    for (i = 0; i < ARRAY_SIZE (protocols); i++) {
+-	if (strcasecmp (protocol, protocols[i].protocol) == 0)
+-	    return protocols[i].get_context (crypto);
+-    }
+-
+-    fprintf (stderr, "Unknown or unsupported cryptographic protocol %s.\n",
+-	     protocol);
+-
+-    return NULL;
+-}
+-
+-int
+-notmuch_crypto_cleanup (notmuch_crypto_t *crypto)
+-{
+-    if (crypto->gpgctx) {
+-	g_object_unref (crypto->gpgctx);
+-	crypto->gpgctx = NULL;
+-    }
+-
+-    if (crypto->pkcs7ctx) {
+-	g_object_unref (crypto->pkcs7ctx);
+-	crypto->pkcs7ctx = NULL;
+-    }
+-
+-    return 0;
+-}
+diff --git a/debian/changelog b/debian/changelog
+index 916100d..bac4fcb 100644
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,9 @@
++notmuch (0.22.1-2) unstable; urgency=medium
++
++  * Add explicit build-depends on gnupg, for the test suite.
++
++ -- David Bremner <bremner@debian.org>  Tue, 19 Jul 2016 08:50:13 -0300
++
+ notmuch (0.22.1-1) unstable; urgency=medium
+ 
+   * Correct the definition of `LIBNOTMUCH_CHECK_VERSION`.
+diff --git a/debian/control b/debian/control
+index a46e391..4027a79 100644
+--- a/debian/control
++++ b/debian/control
+@@ -24,11 +24,12 @@ Build-Depends:
+  gdb [!s390x !ia64 !armel !ppc64el !mips !mipsel !mips64el],
+  dtach (>= 0.8),
+  gpgsm <!nocheck>,
++ gnupg <!nocheck>,
+  bash-completion (>=1.9.0~)
+ Standards-Version: 3.9.6
+-Homepage: http://notmuchmail.org/
++Homepage: https://notmuchmail.org/
+ Vcs-Git: git://notmuchmail.org/git/notmuch
+-Vcs-Browser: http://git.notmuchmail.org/git/notmuch
++Vcs-Browser: https://git.notmuchmail.org/git/notmuch
+ 
+ Package: notmuch
+ Architecture: any
+diff --git a/debugger.c b/debugger.c
+index e8b9378..0fa0fb6 100644
+--- a/debugger.c
++++ b/debugger.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Chris Wilson <chris@chris-wilson.co.uk>
+  */
+diff --git a/devel/man-to-mdwn.pl b/devel/man-to-mdwn.pl
+index ea284d0..a3c4069 100755
+--- a/devel/man-to-mdwn.pl
++++ b/devel/man-to-mdwn.pl
+@@ -66,7 +66,7 @@ while (my ($k, $v) = each %fhash)
+ 
+     my @lines;
+     open I, '-|', qw/env -i/, "PATH=$ENV{PATH}",
+-	qw/TERM=vt100 LANG=en_US.utf8 LC_ALL=en_US.utf8/,
++	qw/TERM=vt100 LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8/,
+ 	qw/GROFF_NO_SGR=1 MAN_KEEP_FORMATTING=1 MANWIDTH=80/,
+ 	qw/man/, $v or die "$!";
+     binmode I, ':utf8';
+@@ -200,6 +200,6 @@ foreach (sort srt values %fhash)
+ print <<'EOF';
+ 
+ The manual pages are licensed under
+-[the GNU General Public License](http://www.gnu.org/licenses/gpl.txt),
++[the GNU General Public License](https://www.gnu.org/licenses/gpl.txt),
+ either version 3.0 or at your option any later version.
+ EOF
+diff --git a/devel/nmbug/doc/man5/notmuch-report.json.5.rst b/devel/nmbug/doc/man5/notmuch-report.json.5.rst
+index 4b5f84a..1207a4a 100644
+--- a/devel/nmbug/doc/man5/notmuch-report.json.5.rst
++++ b/devel/nmbug/doc/man5/notmuch-report.json.5.rst
+@@ -92,7 +92,7 @@ EXAMPLE
+   {
+     "meta": {
+       "title": "Notmuch Patches",
+-      "blurb": "For more information see <a href=\"http://notmuchmail.org/nmbug\">nmbug</a>",
++      "blurb": "For more information see <a href=\"https://notmuchmail.org/nmbug\">nmbug</a>",
+       "header": "<html><head></head><body><h1>{title}</h1><p>{blurb}</p><h2>Views</h2>",
+       "footer": "<hr><p>Generated: {datetime}</p></html>",
+       "message-url": "http://mid.gmane.org/{message-id}"
+diff --git a/devel/nmbug/nmbug b/devel/nmbug/nmbug
+index 0787b2b..1dd5f14 100755
+--- a/devel/nmbug/nmbug
++++ b/devel/nmbug/nmbug
+@@ -14,7 +14,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ 
+ """
+ Manage notmuch tags with Git
+@@ -80,7 +80,7 @@ except AttributeError:  # Python < 3.2
+ 
+         See PEP 343 for details on context managers [1].
+ 
+-        [1]: http://legacy.python.org/dev/peps/pep-0343/
++        [1]: https://www.python.org/dev/peps/pep-0343/
+         """
+         def __init__(self, **kwargs):
+             self.name = _tempfile.mkdtemp(**kwargs)
+@@ -119,9 +119,9 @@ def _xapian_quote(string):
+     Xapian uses double-quotes for quoting strings.  You can escape
+     internal quotes by repeating them [1,2,3].
+ 
+-    [1]: http://trac.xapian.org/ticket/128#comment:2
+-    [2]: http://trac.xapian.org/ticket/128#comment:17
+-    [3]: http://trac.xapian.org/changeset/13823/svn
++    [1]: https://trac.xapian.org/ticket/128#comment:2
++    [2]: https://trac.xapian.org/ticket/128#comment:17
++    [3]: https://trac.xapian.org/changeset/13823/svn
+     """
+     return '"{0}"'.format(string.replace('"', '""'))
+ 
+diff --git a/devel/nmbug/notmuch-report b/devel/nmbug/notmuch-report
+index 87390c1..a9c2a6e 100755
+--- a/devel/nmbug/notmuch-report
++++ b/devel/nmbug/notmuch-report
+@@ -17,7 +17,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ 
+ """Generate text and/or HTML for one or more notmuch searches.
+ 
+diff --git a/devel/nmbug/notmuch-report.json b/devel/nmbug/notmuch-report.json
+index 48b6f19..c5b35b1 100644
+--- a/devel/nmbug/notmuch-report.json
++++ b/devel/nmbug/notmuch-report.json
+@@ -1,7 +1,7 @@
+ {
+     "meta": {
+         "title": "Notmuch Patches",
+-        "blurb": "For more information see <a href=\"http://notmuchmail.org/nmbug\">nmbug</a>"
++        "blurb": "For more information see <a href=\"https://notmuchmail.org/nmbug\">nmbug</a>"
+     },
+ 
+     "views": [
+diff --git a/devel/try-emacs-mua b/devel/try-emacs-mua
+index b0a62c2..041f621 100755
+--- a/devel/try-emacs-mua
++++ b/devel/try-emacs-mua
+@@ -7,7 +7,7 @@
+ ;;
+ ;; Authors: Tomi Ollila <tomi.ollila@iki.fi>
+ ;;
+-;; http://www.emacswiki.org/emacs/EmacsScripts was a useful starting point...
++;; https://www.emacswiki.org/emacs/EmacsScripts was a useful starting point...
+ ;;
+ ;; Licence: GPLv3+
+ ;;
+diff --git a/doc/conf.py b/doc/conf.py
+index 8b93296..8455a51 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -94,6 +94,10 @@ man_pages = [
+         u'incorporate new mail into the notmuch database',
+         [u'Carl Worth and many others'], 1),
+ 
++('man1/notmuch-reindex','notmuch-reindex',
++        u're-index matching messages',
++        [u'Carl Worth and many others'], 1),
++
+ ('man1/notmuch-reply','notmuch-reply',
+         u'constructs a reply template for a set of messages',
+         [u'Carl Worth and many others'], 1),
+@@ -162,6 +166,9 @@ texinfo_documents = [
+ ('man1/notmuch-new','notmuch-new',u'notmuch Documentation',
+       u'Carl Worth and many others', 'notmuch-new',
+       'incorporate new mail into the notmuch database','Miscellaneous'),
++('man1/notmuch-reindex','notmuch-reindex',u'notmuch Documentation',
++      u'Carl Worth and many others', 'notmuch-reindex',
++      're-index matching messages','Miscellaneous'),
+ ('man1/notmuch-reply','notmuch-reply',u'notmuch Documentation',
+       u'Carl Worth and many others', 'notmuch-reply',
+       'constructs a reply template for a set of messages','Miscellaneous'),
+diff --git a/doc/doxygen.cfg b/doc/doxygen.cfg
+index c033f34..2ca15d4 100644
+--- a/doc/doxygen.cfg
++++ b/doc/doxygen.cfg
+@@ -177,7 +177,7 @@ FORMULA_FONTSIZE       = 10
+ FORMULA_TRANSPARENT    = YES
+ USE_MATHJAX            = NO
+ MATHJAX_FORMAT         = HTML-CSS
+-MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
++MATHJAX_RELPATH        = https://cdn.mathjax.org/mathjax/latest
+ MATHJAX_EXTENSIONS     =
+ MATHJAX_CODEFILE       =
+ SEARCHENGINE           = YES
+diff --git a/doc/index.rst b/doc/index.rst
+index 3f0e6e6..aa6c9f4 100644
+--- a/doc/index.rst
++++ b/doc/index.rst
+@@ -14,9 +14,11 @@ Contents:
+    man1/notmuch-count
+    man1/notmuch-dump
+    notmuch-emacs
++   man1/notmuch-emacs-mua
+    man5/notmuch-hooks
+    man1/notmuch-insert
+    man1/notmuch-new
++   man1/notmuch-reindex
+    man1/notmuch-reply
+    man1/notmuch-restore
+    man1/notmuch-search
+diff --git a/doc/man1/notmuch-config.rst b/doc/man1/notmuch-config.rst
+index 40c1272..5a517eb 100644
+--- a/doc/man1/notmuch-config.rst
++++ b/doc/man1/notmuch-config.rst
+@@ -132,6 +132,17 @@ The available configuration items are described below.
+     
+         Default: ``gpg``.
+ 
++    **built_with.<name>**
++
++	Compile time feature <name>. Current possibilities include
++	"compact" (see **notmuch-compact(1)**)
++	and "field_processor" (see **notmuch-search-terms(7)**).
++
++    **query.<name>**
++
++        Expansion for named query called <name>. See
++        **notmuch-search-terms(7)** for more information about named
++        queries.
+ 
+ ENVIRONMENT
+ ===========
+diff --git a/doc/man1/notmuch-dump.rst b/doc/man1/notmuch-dump.rst
+index a37c337..751850b 100644
+--- a/doc/man1/notmuch-dump.rst
++++ b/doc/man1/notmuch-dump.rst
+@@ -71,6 +71,39 @@ Supported options for **dump** include
+             characters. Note also that tags with spaces will not be
+             correctly restored with this format.
+ 
++    ``--include=(config|properties|tags)``
++
++    Control what kind of metadata is included in the output.
++
++      **config**
++
++	Output configuration data stored in the database. Each line
++	starts with "#@ ", followed by a space seperated key-value
++	pair.  Both key and value are hex encoded if needed.
++
++      **properties**
++
++	Output per-message (key,value) metadata.  Each line starts
++	with "#= ", followed by a message id, and a space seperated
++	list of key=value pairs.  pair.  Ids, keys and values are hex
++	encoded if needed.
++
++      **tags**
++
++	Output per-message boolean metadata, namely tags. See *format* above
++	for description of the output.
++
++      The default is to include all available types of data.  The
++      option can be specified multiple times to select some subset. As
++      of version 2 of the dump format, there is a header line of the
++      following form
++
++      |
++      |  #notmuch-dump <*format*>:<*version*> <*included*>
++
++      where <*included*> is a comma separated list of the above
++      options.
++
+     ``--output=``\ <filename>
+         Write output to given file instead of stdout.
+ 
+diff --git a/doc/man1/notmuch-insert.rst b/doc/man1/notmuch-insert.rst
+index 2c9c0d0..9c76b30 100644
+--- a/doc/man1/notmuch-insert.rst
++++ b/doc/man1/notmuch-insert.rst
+@@ -50,6 +50,17 @@ Supported options for **insert** include
+     ``--no-hooks``
+         Prevent hooks from being run.
+ 
++    ``--try-decrypt``
++
++        If the message is encrypted, try to decrypt the message while
++        indexing.  If decryption is successful, index the cleartext
++        itself.  The message is stored to disk in its original form
++        (ciphertext).  Be aware that the index is likely sufficient to
++        reconstruct the cleartext of the message itself, so please
++        ensure that the notmuch message index is adequately
++        protected. DO NOT USE THIS FLAG without considering the
++        security of your index.
++
+ EXIT STATUS
+ ===========
+ 
+diff --git a/doc/man1/notmuch-new.rst b/doc/man1/notmuch-new.rst
+index 787ed78..cf08021 100644
+--- a/doc/man1/notmuch-new.rst
++++ b/doc/man1/notmuch-new.rst
+@@ -43,6 +43,16 @@ Supported options for **new** include
+     ``--quiet``
+         Do not print progress or results.
+ 
++    ``--try-decrypt``
++
++        For each message, if it is encrypted, try to decrypt it while
++        indexing.  If decryption is successful, index the cleartext
++        itself.  Be aware that the index is likely sufficient to
++        reconstruct the cleartext of the message itself, so please
++        ensure that the notmuch message index is adequately
++        protected. DO NOT USE THIS FLAG without considering the
++        security of your index.
++
+ SEE ALSO
+ ========
+ 
+diff --git a/doc/man1/notmuch-reindex.rst b/doc/man1/notmuch-reindex.rst
+new file mode 100644
+index 0000000..7ccc947
+--- /dev/null
++++ b/doc/man1/notmuch-reindex.rst
+@@ -0,0 +1,41 @@
++===========
++notmuch-reindex
++===========
++
++SYNOPSIS
++========
++
++**notmuch** **reindex** [*option* ...] <*search-term*> ...
++
++DESCRIPTION
++===========
++
++Re-index all messages matching the search terms.
++
++See **notmuch-search-terms(7)** for details of the supported syntax for
++<*search-term*\ >.
++
++The **reindex** command searches for all messages matching the
++supplied search terms, and re-creates the full-text index on these
++messages using the supplied options.
++
++Supported options for **reindex** include
++
++    ``--try-decrypt``
++
++        For each message, if it is encrypted, try to decrypt it while
++        indexing.  If decryption is successful, index the cleartext
++        itself.  Be aware that the index is likely sufficient to
++        reconstruct the cleartext of the message itself, so please
++        ensure that the notmuch message index is adequately
++        protected. DO NOT USE THIS FLAG without considering the
++        security of your index.
++
++SEE ALSO
++========
++
++**notmuch(1)**, **notmuch-config(1)**, **notmuch-count(1)**,
++**notmuch-dump(1)**, **notmuch-hooks(5)**, **notmuch-insert(1)**,
++**notmuch-new(1)**,
++**notmuch-reply(1)**, **notmuch-restore(1)**, **notmuch-search(1)**,
++**notmuch-search-terms(7)**, **notmuch-show(1)**, **notmuch-tag(1)**
+diff --git a/doc/man1/notmuch-restore.rst b/doc/man1/notmuch-restore.rst
+index 362e262..a0c1b3c 100644
+--- a/doc/man1/notmuch-restore.rst
++++ b/doc/man1/notmuch-restore.rst
+@@ -50,6 +50,31 @@ Supported options for **restore** include
+             format, this heuristic, based the fact that batch-tag format
+             contains no parentheses, should be accurate.
+ 
++    ``--include=(config|properties|tags)``
++
++      Control what kind of metadata is restored.
++
++	**config**
++
++	  Restore configuration data to the database. Each configuration line starts
++	  with "#@ ", followed by a space seperated key-value pair.
++	  Both key and value are hex encoded if needed.
++
++	**properties**
++
++	  Output per-message (key,value) metadata.  Each line starts
++	  with "#= ", followed by a message id, and a space seperated
++	  list of key=value pairs.  pair.  Ids, keys and values are
++	  hex encoded if needed.
++
++	**tags**
++
++	  Output per-message metadata, namely tags. See *format* above
++	  for more details.
++
++      The default is to restore all available types of data.  The
++      option can be specified multiple times to select some subset.
++
+     ``--input=``\ <filename>
+         Read input from given file instead of stdin.
+ 
+diff --git a/doc/man1/notmuch.rst b/doc/man1/notmuch.rst
+index 3acfbdb..e6a14f6 100644
+--- a/doc/man1/notmuch.rst
++++ b/doc/man1/notmuch.rst
+@@ -29,7 +29,7 @@ While the command-line program ``notmuch`` provides powerful
+ functionality, it does not provide the most convenient interface for
+ that functionality. More sophisticated interfaces are expected to be
+ built on top of either the command-line interface, or more likely, on
+-top of the notmuch library interface. See http://notmuchmail.org for
++top of the notmuch library interface. See https://notmuchmail.org for
+ more about alternate interfaces to notmuch. The emacs-based interface to
+ notmuch (available under **emacs/** in the Notmuch source distribution)
+ is probably the most widely used at this time.
+@@ -140,11 +140,12 @@ SEE ALSO
+ 
+ **notmuch-config(1)**, **notmuch-count(1)**, **notmuch-dump(1)**,
+ **notmuch-hooks(5)**, **notmuch-insert(1)**, **notmuch-new(1)**,
++**notmuch-reindex(1)**,
+ **notmuch-reply(1)**, **notmuch-restore(1)**, **notmuch-search(1)**,
+ **notmuch-search-terms(7)**, **notmuch-show(1)**, **notmuch-tag(1)**,
+ **notmuch-address(1)**
+ 
+-The notmuch website: **http://notmuchmail.org**
++The notmuch website: **https://notmuchmail.org**
+ 
+ CONTACT
+ =======
+diff --git a/doc/man7/notmuch-search-terms.rst b/doc/man7/notmuch-search-terms.rst
+index 2fbc16d..e5ea899 100644
+--- a/doc/man7/notmuch-search-terms.rst
++++ b/doc/man7/notmuch-search-terms.rst
+@@ -9,6 +9,8 @@ SYNOPSIS
+ 
+ **notmuch** **dump** [--format=(batch-tag|sup)] [--] [--output=<*file*>] [--] [<*search-term*> ...]
+ 
++**notmuch** **reindex** [option ...] <*search-term*> ...
++
+ **notmuch** **search** [option ...] <*search-term*> ...
+ 
+ **notmuch** **show** [option ...] <*search-term*> ...
+@@ -56,6 +58,8 @@ indicate user-supplied values):
+ 
+ -  lastmod:<initial-revision>..<final-revision>
+ 
++-  query:<name>
++
+ The **from:** prefix is used to match the name or address of the sender
+ of an email message.
+ 
+@@ -132,6 +136,11 @@ were added/removed or filenames changed).  This is usually used in
+ conjunction with the **--uuid** argument to **notmuch search**
+ to find messages that have changed since an earlier query.
+ 
++The **query:** prefix allows queries to refer to previously saved
++queries added with **notmuch-config(1)**. Named queries are only
++available if notmuch is built with **Xapian Field Processors** (see
++below).
++
+ Operators
+ ---------
+ 
+@@ -208,15 +217,11 @@ Boolean and Probabilistic Prefixes
+ Xapian (and hence notmuch) prefixes are either **boolean**, supporting
+ exact matches like "tag:inbox"  or **probabilistic**, supporting a more flexible **term** based searching. The prefixes currently supported by notmuch are as follows.
+ 
+-+------------------+-----------------------+
+-|Boolean           |Probabilistic          |
+-+------------------+-----------------------+
+-| **tag:** **id:** | **from:** **to:**     |
+-|**thread:**       |**subject:**           |
+-|**folder:**       |**attachment:**        |
+-|**path:**         |**mimetype:**          |
+-|                  |                       |
+-+------------------+-----------------------+
++
++Boolean
++   **tag:**, **id:**, **thread:**, **folder:**, **path:**
++Probabilistic
++   **from:**, **to:**, **subject:**, **attachment:**, **mimetype:**
+ 
+ Terms and phrases
+ -----------------
+@@ -281,9 +286,10 @@ matches from the beginning of January to the end of February.
+ date:<expr>..! can be used as a shorthand for date:<expr>..<expr>. The
+ expansion takes place before interpretation, and thus, for example,
+ date:monday..! matches from the beginning of Monday until the end of
+-Monday. (Note that entering date:<expr> without "..", for example
+-date:yesterday, won't work, as it's not interpreted as a range
+-expression at all. Again, use date:yesterday..!)
++Monday.
++With **Xapian Field Processor** support (see below), non-range
++date queries such as date:yesterday will work, but otherwise
++will give unexpected results; if in doubt use date:yesterday..!
+ 
+ Currently, we do not support spaces in range expressions. You can
+ replace the spaces with '\_', or (in most cases) '-', or (in some cases)
+@@ -370,10 +376,27 @@ Time zones
+ 
+ Some time zone codes, e.g. UTC, EET.
+ 
++XAPIAN FIELD PROCESSORS
++=======================
++
++Certain optional features of the notmuch query processor rely on the
++presence of the Xapian field processor API. You can determine if your
++notmuch was built against a sufficiently recent version of Xapian by running
++
++::
++
++  % notmuch config get built_with.field_processor
++
++Currently the following features require field processor support:
++
++- non-range date queries, e.g. "date:today"
++- named queries e.g. "query:my_special_query"
++
+ SEE ALSO
+ ========
+ 
+ **notmuch(1)**, **notmuch-config(1)**, **notmuch-count(1)**,
+ **notmuch-dump(1)**, **notmuch-hooks(5)**, **notmuch-insert(1)**,
+-**notmuch-new(1)**, **notmuch-reply(1)**, **notmuch-restore(1)**,
+-**notmuch-search(1)**, **notmuch-show(1)**, **notmuch-tag(1)**
++**notmuch-new(1)**, **notmuch-reindex(1)**, **notmuch-reply(1)**,
++**notmuch-restore(1)**, **notmuch-search(1)**, **notmuch-show(1)**,
++**notmuch-tag(1)**
+diff --git a/doc/notmuch-emacs.rst b/doc/notmuch-emacs.rst
+index 6f2f61e..d68542d 100644
+--- a/doc/notmuch-emacs.rst
++++ b/doc/notmuch-emacs.rst
+@@ -42,11 +42,8 @@ a mouse or by positioning the cursor and pressing ``<return>``
+ |
+ | All tags: **[show]**
+ |
+-|	 Type a search query and hit RET to view matching threads.
+-|		Edit saved searches with the ``edit`` button.
+-| Hit RET or click on a saved search or tag name to view matching threads.
+-|     ``=`` to refresh this screen. ``s`` to search messages. ``q`` to quit.
+-|		    **Customize** this page.
++|	 Hit \`?' for context-sensitive help in any Notmuch screen.
++|		      Customize Notmuch or this page.
+ 
+ You can change the overall appearance of the notmuch-hello screen by
+ customizing the variable :index:`notmuch-hello-sections`.
+diff --git a/emacs/coolj.el b/emacs/coolj.el
+index 7755060..350d537 100644
+--- a/emacs/coolj.el
++++ b/emacs/coolj.el
+@@ -21,7 +21,7 @@
+ ;; GNU General Public License for more details.
+ 
+ ;; You should have received a copy of the GNU General Public License
+-;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
++;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ ;;; Commentary:
+ 
+diff --git a/emacs/make-deps.el b/emacs/make-deps.el
+index 24c1a45..5b6db69 100644
+--- a/emacs/make-deps.el
++++ b/emacs/make-deps.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Austin Clements <aclements@csail.mit.edu>
+ 
+diff --git a/emacs/notmuch-address.el b/emacs/notmuch-address.el
+index aafbe5f..d372fba 100644
+--- a/emacs/notmuch-address.el
++++ b/emacs/notmuch-address.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Edmondson <dme@dme.org>
+ 
+@@ -249,6 +249,25 @@ called when harvesting finishes."
+ 
+ ;;
+ 
++(defun notmuch-address-from-minibuffer (prompt)
++  (if (not notmuch-address-command)
++      (read-string prompt)
++    (let ((rmap (copy-keymap minibuffer-local-map))
++	  (omap minibuffer-local-map))
++      ;; Configure TAB to start completion when executing read-string.
++      ;; "Original" minibuffer keymap is restored just before calling
++      ;; notmuch-address-expand-name as it may also use minibuffer-local-map
++      ;; (completing-read probably does not but if something else is used there).
++      (define-key rmap (kbd "TAB") (lambda ()
++				     (interactive)
++				     (let ((enable-recursive-minibuffers t)
++					   (minibuffer-local-map omap))
++				       (notmuch-address-expand-name))))
++      (let ((minibuffer-local-map rmap))
++	(read-string prompt)))))
++
++;;
++
+ (provide 'notmuch-address)
+ 
+ ;;; notmuch-address.el ends here
+diff --git a/emacs/notmuch-company.el b/emacs/notmuch-company.el
+index b881d6d..0619c7e 100644
+--- a/emacs/notmuch-company.el
++++ b/emacs/notmuch-company.el
+@@ -16,7 +16,7 @@
+ ;; GNU General Public License for more details.
+ 
+ ;; You should have received a copy of the GNU General Public License
+-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
++;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ ;;; Commentary:
+ 
+diff --git a/emacs/notmuch-crypto.el b/emacs/notmuch-crypto.el
+index 004463c..e376aa8 100644
+--- a/emacs/notmuch-crypto.el
++++ b/emacs/notmuch-crypto.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Jameson Rollins <jrollins@finestructure.net>
+ 
+diff --git a/emacs/notmuch-hello.el b/emacs/notmuch-hello.el
+index 9495c1a..75ccf57 100644
+--- a/emacs/notmuch-hello.el
++++ b/emacs/notmuch-hello.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Edmondson <dme@dme.org>
+ 
+@@ -265,7 +265,7 @@ International Bureau of Weights and Measures."
+   :group 'notmuch-hello
+   :group 'notmuch-hooks)
+ 
+-(defvar notmuch-hello-url "http://notmuchmail.org"
++(defvar notmuch-hello-url "https://notmuchmail.org"
+   "The `notmuch' web site.")
+ 
+ (defvar notmuch-hello-custom-section-options
+diff --git a/emacs/notmuch-jump.el b/emacs/notmuch-jump.el
+index fd770f1..963253c 100644
+--- a/emacs/notmuch-jump.el
++++ b/emacs/notmuch-jump.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Austin Clements <aclements@csail.mit.edu>
+ ;;          David Edmondson <dme@dme.org>
+diff --git a/emacs/notmuch-lib.el b/emacs/notmuch-lib.el
+index f05ded6..2f015b0 100644
+--- a/emacs/notmuch-lib.el
++++ b/emacs/notmuch-lib.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Carl Worth <cworth@cworth.org>
+ 
+@@ -790,9 +790,15 @@ You may need to restart Emacs or upgrade your notmuch package."))
+ 		    (insert-file-contents err-file)
+ 		    (unless (eobp)
+ 		      (buffer-string)))))
++	   (command-string
++	    (mapconcat (lambda (arg)
++			 (shell-quote-argument
++			  (cond ((stringp arg) arg)
++				((symbolp arg) (symbol-name arg))
++				(t "*UNKNOWN ARGUMENT*"))))
++		       command " "))
+ 	   (extra
+-	    (concat
+-	     "command: " (mapconcat #'shell-quote-argument command " ") "\n"
++	    (concat "command: " command-string "\n"
+ 	     (if (integerp exit-status)
+ 		 (format "exit status: %s\n" exit-status)
+ 	       (format "exit signal: %s\n" exit-status))
+diff --git a/emacs/notmuch-message.el b/emacs/notmuch-message.el
+index d437b85..21c6549 100644
+--- a/emacs/notmuch-message.el
++++ b/emacs/notmuch-message.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Jesse Rosenthal <jrosenthal@jhu.edu>
+ 
+@@ -25,6 +25,8 @@
+ (require 'notmuch-tag)
+ (require 'notmuch-mua)
+ 
++(declare-function notmuch-show-get-message-id "notmuch-show" (&optional bare))
++
+ (defcustom notmuch-message-replied-tags '("+replied")
+   "List of tag changes to apply to a message when it has been replied to.
+ 
+@@ -38,6 +40,49 @@ the \"inbox\" and \"todo\" tags, you would set:
+   :type '(repeat string)
+   :group 'notmuch-send)
+ 
++(defcustom notmuch-message-draft-tags '("+draft")
++  "List of tags changes to apply to a draft message when it is saved in the database.
++
++Tags starting with \"+\" (or not starting with either \"+\" or
++\"-\") in the list will be added, and tags starting with \"-\"
++will be removed from the message being stored.
++
++For example, if you wanted to give the message a \"draft\" tag
++but not the (normally added by default) \"inbox\" tag, you would
++set:
++    (\"+draft\" \"-inbox\")"
++  :type '(repeat string)
++  :group 'notmuch-send)
++
++(defcustom notmuch-message-draft-folder "drafts"
++  "Folder to save draft messages in.
++
++This should be specified relative to the root of the notmuch
++database. It will be created if necessary."
++  :type 'string
++  :group 'notmuch-send)
++
++(defcustom notmuch-message-quoted-tags '("secure")
++  "Mml tags to quote.
++
++This should be a list of mml tags to quote before saving. It is
++recommended that the list includes \"secure\".
++
++If you include \"part\" then attachments will not be saved with
++the draft -- if not then they will be saved with the draft. The
++former means the attachments may not still exist when you resume
++the message, the latter means that the attachments as they were
++when you postponed will be sent with the resumed message.
++
++Note you may get strange results if you change this between
++postponing and resuming a message."
++  :type '(repeat string)
++  :group 'notmuch-send)
++
++(defvar notmuch-message-draft-id nil
++  "Message-id of the most recent saved draft of this message")
++(make-variable-buffer-local 'notmuch-message-draft-id)
++
+ (defun notmuch-message-mark-replied ()
+   ;; get the in-reply-to header and parse it for the message id.
+   (let ((rep (mail-header-parse-addresses (message-field-value "In-Reply-To"))))
+@@ -45,7 +90,152 @@ the \"inbox\" and \"todo\" tags, you would set:
+       (notmuch-tag (notmuch-id-to-query (car (car rep)))
+ 	       (notmuch-tag-change-list notmuch-message-replied-tags)))))
+ 
++(defun notmuch-message-mark-draft-deleted ()
++  "Tag the last saved draft deleted.
++
++Used when a new version is saved, or the message is sent."
++  (when notmuch-message-draft-id
++    (notmuch-tag notmuch-message-draft-id '("+deleted"))))
++
++(defun notmuch-message-quote-some-mml ()
++  "Quote the mml tags in `notmuch-message-quoted-tags`."
++  ;; This is copied from mml-quote-region but only quotes the
++  ;; specified tags.
++  (when notmuch-message-quoted-tags
++    (save-excursion
++      (let ((re (concat "<#!*/?\\("
++			(mapconcat 'identity notmuch-message-quoted-tags "\\|")
++			"\\)")))
++	(message-goto-body)
++	(while (re-search-forward re nil t)
++	  ;; Insert ! after the #.
++	  (goto-char (+ (match-beginning 0) 2))
++	  (insert "!"))))))
++
++(defun notmuch-message-unquote-some-mml ()
++  "Unquote the mml tags in `notmuch-message-quoted-tags`."
++  (when notmuch-message-quoted-tags
++    (save-excursion
++      (let ((re (concat "<#!+/?\\("
++			(mapconcat 'identity notmuch-message-quoted-tags "\\|")
++			"\\)")))
++	(message-goto-body)
++	(while (re-search-forward re nil t)
++	  ;; Remove one ! from after the #.
++	  (goto-char (+ (match-beginning 0) 2))
++	  (delete-char 1))))))
++
++(defun notmuch-message-save-draft ()
++  "Save the current draft message in the notmuch database.
++
++This saves the current message in the database with tags
++`notmuch-message-draft-tags` (in addition to any default tags
++applied to newly inserted messages)."
++  (interactive)
++
++  ;; This is based on message-do-fcc but modified for our needs.
++  (let ((case-fold-search t)
++	(buf (current-buffer))
++	(mml-externalize-attachments nil)
++	;; We generate a message id now as we will need it later. Note
++	;; message-make-message-id gives the id inside a "<" ">" pair,
++	;; but notmuch doesn't want that form, so remove them.
++	(id (concat "draft-" (substring (message-make-message-id) 1 -1))))
++    (with-current-buffer (get-buffer-create " *message temp*")
++      (erase-buffer)
++      (insert-buffer-substring buf)
++      ;; We insert a Date header and a Message-ID header, the former
++      ;; so that it is easier to search for the message, and the
++      ;; latter so we have a way of accessing the saved message (for
++      ;; example to delete it at a later time). We check that the
++      ;; user has these in `message-deletable-headers` (the default)
++      ;; as otherwise they are doing something strange and we
++      ;; shouldn't interfere. Note, since we are doing this in a new
++      ;; buffer we don't change the version in the compose buffer.
++      (if (member 'Message-ID message-deletable-headers)
++	  (progn
++	    (message-remove-header "Message-ID")
++	    (message-add-header (concat "Message-ID: <" id ">")))
++	(message "You have customized emacs so Message-ID is not a deletable header, so not changing it")
++	(setq id nil))
++      (if (member 'Date message-deletable-headers)
++	  (progn
++	    (message-remove-header "Date")
++	    (message-add-header (concat "Date: " (message-make-date))))
++	(message "You have customized emacs so Date is not a deletable header, so not changing it"))
++      (notmuch-message-quote-some-mml)
++      ;; Back to following message-do-fcc
++      (message-encode-message-body)
++      (save-restriction
++	(message-narrow-to-headers)
++	(let ((mail-parse-charset message-default-charset)
++	      (rfc2047-header-encoding-alist
++	       (cons '("Newsgroups" . default)
++		     rfc2047-header-encoding-alist)))
++	  (mail-encode-encoded-word-buffer)))
++      (goto-char (point-min))
++      (when (re-search-forward
++	     (concat "^" (regexp-quote mail-header-separator) "$")
++	     nil t)
++	(replace-match "" t t ))
++
++      (apply 'notmuch-call-notmuch-process :stdin-string (buffer-string)
++	     "insert" "--create-folder"
++	     (concat "--folder=" notmuch-message-draft-folder)
++	     notmuch-message-draft-tags))
++    ;; We are now back in the original compose buffer. Note the
++    ;; function notmuch-call-notmuch-process signals an error on
++    ;; failure, so to get to this point it must have succeeded. Note
++    ;; notmuch-message-draft-id is still the id of the previous draft,
++    ;; so it is safe to mark it deleted.
++    (notmuch-message-mark-draft-deleted)
++    (setq notmuch-message-draft-id (concat "id:" id))
++    (set-buffer-modified-p nil)))
++
++(defun notmuch-message-postpone ()
++  "Save the draft message in the notmuch database and exit buffer."
++  (interactive)
++  (notmuch-message-save-draft)
++  (kill-buffer))
++
++(defun notmuch-message-resume (id)
++  "Resume editing of message with id ID."
++  (let* ((tags (process-lines notmuch-command "search" "--output=tags"
++			      "--exclude=false" id))
++	 (draft (equal tags (notmuch-update-tags tags notmuch-message-draft-tags))))
++    (when (or draft
++	      (yes-or-no-p "Message does not appear to be a draft: really resume? "))
++      (switch-to-buffer (get-buffer-create (concat "*notmuch-draft-" id "*")))
++      (setq buffer-read-only nil)
++      (erase-buffer)
++      (let ((coding-system-for-read 'no-conversion))
++	(call-process notmuch-command nil t nil "show" "--format=raw" id))
++      (mime-to-mml)
++      (goto-char (point-min))
++      (when (re-search-forward "^$" nil t)
++	(replace-match mail-header-separator t t))
++      ;; Remove our added Date and Message-ID headers (unless the user has
++      ;; explicitly customized emacs to tell us not to).
++      (save-restriction
++	(message-narrow-to-headers)
++	(when (member 'Message-ID message-deletable-headers)
++	  (message-remove-header "Message-ID"))
++	(when (member 'Date message-deletable-headers)
++	  (message-remove-header "Date")))
++      ;; If the message does not appear to be a draft, the postpone
++      ;; code probably didn't write it, so it should not be unquoted.
++      (when draft
++	(notmuch-message-unquote-some-mml))
++      (notmuch-message-mode)
++      (set-buffer-modified-p nil)
++      ;; If the resumed message was a draft then set the draft
++      ;; message-id so that we can delete the current saved draft if the
++      ;; message is resaved or sent.
++      (setq notmuch-message-draft-id (when draft id)))))
++
++
+ (add-hook 'message-send-hook 'notmuch-message-mark-replied)
++(add-hook 'message-send-hook 'notmuch-message-mark-draft-deleted)
+ 
+ (provide 'notmuch-message)
+ 
+diff --git a/emacs/notmuch-mua.el b/emacs/notmuch-mua.el
+index 399e138..876cf14 100644
+--- a/emacs/notmuch-mua.el
++++ b/emacs/notmuch-mua.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Edmondson <dme@dme.org>
+ 
+@@ -33,6 +33,8 @@
+ (declare-function notmuch-show-insert-body "notmuch-show" (msg body depth))
+ (declare-function notmuch-fcc-header-setup "notmuch-maildir-fcc" ())
+ (declare-function notmuch-fcc-handler "notmuch-maildir-fcc" (destdir))
++(declare-function notmuch-message-postpone "notmuch-message" ())
++(declare-function notmuch-message-save-draft "notmuch-message" ())
+ 
+ ;;
+ 
+@@ -142,7 +144,7 @@ mutiple parts get a header."
+   (let ((notmuch-version (if (string= notmuch-emacs-version "unknown")
+ 			     (notmuch-cli-version)
+ 			   notmuch-emacs-version)))
+-    (concat "Notmuch/" notmuch-version " (http://notmuchmail.org)")))
++    (concat "Notmuch/" notmuch-version " (https://notmuchmail.org)")))
+ 
+ (defun notmuch-mua-user-agent-emacs ()
+   "Generate a `User-Agent:' string suitable for notmuch."
+@@ -283,6 +285,8 @@ mutiple parts get a header."
+ 
+ (define-key notmuch-message-mode-map (kbd "C-c C-c") #'notmuch-mua-send-and-exit)
+ (define-key notmuch-message-mode-map (kbd "C-c C-s") #'notmuch-mua-send)
++(define-key notmuch-message-mode-map (kbd "C-c C-p") #'notmuch-message-postpone)
++(define-key notmuch-message-mode-map (kbd "C-x C-s") #'notmuch-message-save-draft)
+ 
+ (defun notmuch-mua-pop-to-buffer (name switch-function)
+   "Pop to buffer NAME, and warn if it already exists and is
+@@ -334,7 +338,7 @@ modified. This function is notmuch addaptation of
+ 	  ;; C-h f compose-mail says that headers should be specified as
+ 	  ;; (string . value); however all the rest of message expects
+ 	  ;; headers to be symbols, not strings (eg message-header-format-alist).
+-	  ;; http://lists.gnu.org/archive/html/emacs-devel/2011-01/msg00337.html
++	  ;; https://lists.gnu.org/archive/html/emacs-devel/2011-01/msg00337.html
+ 	  ;; We need to convert any string input, eg from rmail-start-mail.
+ 	  (dolist (h other-headers other-headers)
+ 	    (if (stringp (car h)) (setcar h (intern (capitalize (car h))))))))
+diff --git a/emacs/notmuch-parser.el b/emacs/notmuch-parser.el
+index 620ca89..bb0379c 100644
+--- a/emacs/notmuch-parser.el
++++ b/emacs/notmuch-parser.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Austin Clements <aclements@csail.mit.edu>
+ 
+diff --git a/emacs/notmuch-print.el b/emacs/notmuch-print.el
+index 480a0cf..bca759f 100644
+--- a/emacs/notmuch-print.el
++++ b/emacs/notmuch-print.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Edmondson <dme@dme.org>
+ 
+diff --git a/emacs/notmuch-query.el b/emacs/notmuch-query.el
+index 8587d88..436ad16 100644
+--- a/emacs/notmuch-query.el
++++ b/emacs/notmuch-query.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Bremner <david@tethera.net>
+ 
+diff --git a/emacs/notmuch-show.el b/emacs/notmuch-show.el
+index 5d9b7b4..016e31b 100644
+--- a/emacs/notmuch-show.el
++++ b/emacs/notmuch-show.el
+@@ -16,7 +16,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Carl Worth <cworth@cworth.org>
+ ;;          David Edmondson <dme@dme.org>
+@@ -38,6 +38,7 @@
+ (require 'notmuch-mua)
+ (require 'notmuch-crypto)
+ (require 'notmuch-print)
++(require 'notmuch-message)
+ 
+ (declare-function notmuch-call-notmuch-process "notmuch" (&rest args))
+ (declare-function notmuch-search-next-thread "notmuch" nil)
+@@ -182,9 +183,9 @@ each attachment handler is logged in buffers with names beginning
+ 
+ (defcustom notmuch-show-stash-mlarchive-link-alist
+   '(("Gmane" . "http://mid.gmane.org/")
+-    ("MARC" . "http://marc.info/?i=")
+-    ("Mail Archive, The" . "http://mid.mail-archive.com/")
+-    ("LKML" . "http://lkml.kernel.org/r/")
++    ("MARC" . "https://marc.info/?i=")
++    ("Mail Archive, The" . "https://mid.mail-archive.com/")
++    ("LKML" . "https://lkml.kernel.org/r/")
+     ;; FIXME: can these services be searched by `Message-Id' ?
+     ;; ("MarkMail" . "http://markmail.org/")
+     ;; ("Nabble" . "http://nabble.com/")
+@@ -1418,12 +1419,14 @@ reset based on the original query."
+     (define-key map (kbd "TAB") 'notmuch-show-next-button)
+     (define-key map "f" 'notmuch-show-forward-message)
+     (define-key map "F" 'notmuch-show-forward-open-messages)
++    (define-key map "b" 'notmuch-show-resend-message)
+     (define-key map "l" 'notmuch-show-filter-thread)
+     (define-key map "r" 'notmuch-show-reply-sender)
+     (define-key map "R" 'notmuch-show-reply)
+     (define-key map "|" 'notmuch-show-pipe-message)
+     (define-key map "w" 'notmuch-show-save-attachments)
+     (define-key map "V" 'notmuch-show-view-raw-message)
++    (define-key map "e" 'notmuch-show-resume-message)
+     (define-key map "c" 'notmuch-show-stash-map)
+     (define-key map "h" 'notmuch-show-toggle-visibility-headers)
+     (define-key map "*" 'notmuch-show-tag-all)
+@@ -1700,12 +1703,23 @@ user decision and we should not override it."
+ 	(notmuch-show-mark-read)
+ 	(notmuch-show-set-prop :seen t)))
+ 
++(defvar notmuch-show--seen-has-errored nil)
++(make-variable-buffer-local 'notmuch-show--seen-has-errored)
++
+ (defun notmuch-show-command-hook ()
+   (when (eq major-mode 'notmuch-show-mode)
+     ;; We need to redisplay to get window-start and window-end correct.
+     (redisplay)
+     (save-excursion
+-      (funcall notmuch-show-mark-read-function (window-start) (window-end)))))
++      (condition-case err
++	  (funcall notmuch-show-mark-read-function (window-start) (window-end))
++	((debug error)
++	 (unless notmuch-show--seen-has-errored
++	   (setq notmuch-show--seen-has-errored 't)
++	   (setq header-line-format
++		 (concat header-line-format
++			 (propertize "  [some mark read tag changes may have failed]"
++				     'face font-lock-warning-face)))))))))
+ 
+ (defun notmuch-show-filter-thread (query)
+   "Filter or LIMIT the current thread based on a new query string.
+@@ -1855,6 +1869,14 @@ any effects from previous calls to
+       (error "No open messages to forward."))
+     (notmuch-mua-new-forward-messages open-messages prompt-for-sender)))
+ 
++(defun notmuch-show-resend-message (addresses)
++  "Resend the current message."
++  (interactive (list (notmuch-address-from-minibuffer "Resend to: ")))
++  (when (y-or-n-p (concat "Confirm resend to " addresses " "))
++    (notmuch-show-view-raw-message)
++    (message-resend addresses)
++    (notmuch-bury-or-kill-this-buffer)))
++
+ (defun notmuch-show-next-message (&optional pop-at-end)
+   "Show the next message.
+ 
+@@ -1946,6 +1968,13 @@ to show, nil otherwise."
+     (setq buffer-read-only t)
+     (view-buffer buf 'kill-buffer-if-not-modified)))
+ 
++(defun notmuch-show-resume-message ()
++  "Resume EDITING the current draft message."
++  (interactive)
++  (let ((id (notmuch-show-get-message-id)))
++    (when id
++      (notmuch-message-resume id))))
++
+ (put 'notmuch-show-pipe-message 'notmuch-doc
+      "Pipe the contents of the current message to a command.")
+ (put 'notmuch-show-pipe-message 'notmuch-prefix-doc
+diff --git a/emacs/notmuch-tag.el b/emacs/notmuch-tag.el
+index 98064a3..a3f0c52 100644
+--- a/emacs/notmuch-tag.el
++++ b/emacs/notmuch-tag.el
+@@ -16,7 +16,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Carl Worth <cworth@cworth.org>
+ ;;          Damien Cassou <damien.cassou@gmail.com>
+diff --git a/emacs/notmuch-tree.el b/emacs/notmuch-tree.el
+index 4f9ca2d..15fa4c7 100644
+--- a/emacs/notmuch-tree.el
++++ b/emacs/notmuch-tree.el
+@@ -17,7 +17,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: David Edmondson <dme@dme.org>
+ ;;          Mark Walters <markwalters1009@gmail.com>
+@@ -254,13 +254,14 @@ FUNC."
+     (define-key map (kbd "M-TAB") (notmuch-tree-to-message-pane #'notmuch-show-previous-button))
+     (define-key map (kbd "<backtab>")  (notmuch-tree-to-message-pane #'notmuch-show-previous-button))
+     (define-key map (kbd "TAB") (notmuch-tree-to-message-pane #'notmuch-show-next-button))
+-    (define-key map "e" (notmuch-tree-to-message-pane #'notmuch-tree-button-activate))
++    (define-key map "g" (notmuch-tree-to-message-pane #'notmuch-tree-button-activate))
+ 
+     ;; bindings from show (or elsewhere) but we close the message pane first.
+     (define-key map "f" (notmuch-tree-close-message-pane-and #'notmuch-show-forward-message))
+     (define-key map "r" (notmuch-tree-close-message-pane-and #'notmuch-show-reply-sender))
+     (define-key map "R" (notmuch-tree-close-message-pane-and #'notmuch-show-reply))
+     (define-key map "V" (notmuch-tree-close-message-pane-and #'notmuch-show-view-raw-message))
++    (define-key map "e" (notmuch-tree-close-message-pane-and #'notmuch-show-resume-message))
+ 
+     ;; The main tree view bindings
+     (define-key map (kbd "RET") 'notmuch-tree-show-message)
+diff --git a/emacs/notmuch-version.el.tmpl b/emacs/notmuch-version.el.tmpl
+index 88cc01c..abf52f1 100644
+--- a/emacs/notmuch-version.el.tmpl
++++ b/emacs/notmuch-version.el.tmpl
+@@ -16,7 +16,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ ;;; Code:
+ 
+diff --git a/emacs/notmuch-wash.el b/emacs/notmuch-wash.el
+index 065af16..57e6dfa 100644
+--- a/emacs/notmuch-wash.el
++++ b/emacs/notmuch-wash.el
+@@ -16,7 +16,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Carl Worth <cworth@cworth.org>
+ ;;          David Edmondson <dme@dme.org>
+diff --git a/emacs/notmuch.el b/emacs/notmuch.el
+index a8a4c8e..8acdef3 100644
+--- a/emacs/notmuch.el
++++ b/emacs/notmuch.el
+@@ -15,7 +15,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Carl Worth <cworth@cworth.org>
+ ;; Homepage: https://notmuchmail.org/
+@@ -26,7 +26,7 @@
+ ;;
+ ;; You will first need to have the notmuch program installed and have a
+ ;; notmuch database built in order to use this. See
+-;; http://notmuchmail.org for details.
++;; https://notmuchmail.org for details.
+ ;;
+ ;; To install this software, copy it to a directory that is on the
+ ;; `load-path' variable within emacs (a good candidate is
+@@ -48,7 +48,7 @@
+ ;;
+ ;; Have fun, and let us know if you have any comment, questions, or
+ ;; kudos: Notmuch list <notmuch@notmuchmail.org> (subscription is not
+-;; required, but is available from http://notmuchmail.org).
++;; required, but is available from https://notmuchmail.org).
+ 
+ ;;; Code:
+ 

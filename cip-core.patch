@@ -1,0 +1,5890 @@
+diff --git a/hooks.c b/hooks.c
+index 662629a..7348d32 100644
+--- a/hooks.c
++++ b/hooks.c
+@@ -15,7 +15,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+diff --git a/lib/Makefile.local b/lib/Makefile.local
+index 3a07090..56a5f5a 100644
+--- a/lib/Makefile.local
++++ b/lib/Makefile.local
+@@ -39,6 +39,9 @@ libnotmuch_c_srcs =		\
+ 	$(dir)/message-file.c	\
+ 	$(dir)/messages.c	\
+ 	$(dir)/sha1.c		\
++	$(dir)/built-with.c	\
++	$(dir)/string-map.c    \
++	$(dir)/indexopts.c	\
+ 	$(dir)/tags.c
+ 
+ libnotmuch_cxx_srcs =		\
+@@ -47,7 +50,10 @@ libnotmuch_cxx_srcs =		\
+ 	$(dir)/directory.cc	\
+ 	$(dir)/index.cc		\
+ 	$(dir)/message.cc	\
++	$(dir)/message-property.cc \
+ 	$(dir)/query.cc		\
++	$(dir)/query-fp.cc      \
++	$(dir)/config.cc	\
+ 	$(dir)/thread.cc
+ 
+ libnotmuch_modules := $(libnotmuch_c_srcs:.c=.o) $(libnotmuch_cxx_srcs:.cc=.o)
+diff --git a/lib/built-with.c b/lib/built-with.c
+new file mode 100644
+index 0000000..2f1f0b5
+--- /dev/null
++++ b/lib/built-with.c
+@@ -0,0 +1,36 @@
++/* notmuch - Not much of an email program, (just index and search)
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#include "notmuch.h"
++#include "notmuch-private.h"
++
++notmuch_bool_t
++notmuch_built_with (const char *name)
++{
++    if (STRNCMP_LITERAL (name, "compact") == 0) {
++	return HAVE_XAPIAN_COMPACT;
++    } else if (STRNCMP_LITERAL (name, "field_processor") == 0) {
++	return HAVE_XAPIAN_FIELD_PROCESSOR;
++    } else if (STRNCMP_LITERAL (name, "retry_lock") == 0) {
++	return HAVE_XAPIAN_DB_RETRY_LOCK;
++    } else {
++	return FALSE;
++    }
++}
+diff --git a/lib/config.cc b/lib/config.cc
+new file mode 100644
+index 0000000..0703b9b
+--- /dev/null
++++ b/lib/config.cc
+@@ -0,0 +1,193 @@
++/* config.cc - API for database metadata
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#include "notmuch.h"
++#include "notmuch-private.h"
++#include "database-private.h"
++
++static const std::string CONFIG_PREFIX = "C";
++
++struct _notmuch_config_list {
++    notmuch_database_t *notmuch;
++    Xapian::TermIterator iterator;
++    char *current_key;
++    char *current_val;
++};
++
++static int
++_notmuch_config_list_destroy (notmuch_config_list_t *list)
++{
++    /* invoke destructor w/o deallocating memory */
++    list->iterator.~TermIterator();
++    return 0;
++}
++
++notmuch_status_t
++notmuch_database_set_config (notmuch_database_t *notmuch,
++			     const char *key,
++			     const char *value)
++{
++    notmuch_status_t status;
++    Xapian::WritableDatabase *db;
++
++    status = _notmuch_database_ensure_writable (notmuch);
++    if (status)
++	return status;
++
++    try {
++	db = static_cast <Xapian::WritableDatabase *> (notmuch->xapian_db);
++	db->set_metadata (CONFIG_PREFIX + key, value);
++    } catch (const Xapian::Error &error) {
++	status = NOTMUCH_STATUS_XAPIAN_EXCEPTION;
++	notmuch->exception_reported = TRUE;
++	_notmuch_database_log (notmuch, "Error: A Xapian exception occurred setting metadata: %s\n",
++			       error.get_msg().c_str());
++    }
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++static notmuch_status_t
++_metadata_value (notmuch_database_t *notmuch,
++		 const char *key,
++		 std::string &value)
++{
++    notmuch_status_t status = NOTMUCH_STATUS_SUCCESS;
++
++    try {
++	value = notmuch->xapian_db->get_metadata (CONFIG_PREFIX + key);
++    } catch (const Xapian::Error &error) {
++	status = NOTMUCH_STATUS_XAPIAN_EXCEPTION;
++	notmuch->exception_reported = TRUE;
++	_notmuch_database_log (notmuch, "Error: A Xapian exception occurred getting metadata: %s\n",
++			       error.get_msg().c_str());
++    }
++    return status;
++}
++
++notmuch_status_t
++notmuch_database_get_config (notmuch_database_t *notmuch,
++			     const char *key,
++			     char **value)
++{
++    std::string strval;
++    notmuch_status_t status;
++
++    if (! value)
++	return NOTMUCH_STATUS_NULL_POINTER;
++
++    status = _metadata_value (notmuch, key, strval);
++    if (status)
++	return status;
++
++    *value = strdup (strval.c_str ());
++
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++notmuch_status_t
++notmuch_database_get_config_list (notmuch_database_t *notmuch,
++				  const char *prefix,
++				  notmuch_config_list_t **out)
++{
++    notmuch_config_list_t *list = NULL;
++    notmuch_status_t status = NOTMUCH_STATUS_SUCCESS;
++
++    list = talloc (notmuch, notmuch_config_list_t);
++    if (! list) {
++	status = NOTMUCH_STATUS_OUT_OF_MEMORY;
++	goto DONE;
++    }
++
++    talloc_set_destructor (list, _notmuch_config_list_destroy);
++    list->notmuch = notmuch;
++    list->current_key = NULL;
++    list->current_val = NULL;
++
++    try {
++
++	new(&(list->iterator)) Xapian::TermIterator (notmuch->xapian_db->metadata_keys_begin
++						     (CONFIG_PREFIX + (prefix ? prefix : "")));
++
++    } catch (const Xapian::Error &error) {
++	_notmuch_database_log (notmuch, "A Xapian exception occurred getting metadata iterator: %s.\n",
++			       error.get_msg().c_str());
++	notmuch->exception_reported = TRUE;
++	status = NOTMUCH_STATUS_XAPIAN_EXCEPTION;
++    }
++
++    *out = list;
++
++  DONE:
++    if (status && list)
++	talloc_free (list);
++
++    return status;
++}
++
++notmuch_bool_t
++notmuch_config_list_valid (notmuch_config_list_t *metadata)
++{
++    if (metadata->iterator == metadata->notmuch->xapian_db->metadata_keys_end ())
++	return FALSE;
++
++    return TRUE;
++}
++
++const char *
++notmuch_config_list_key (notmuch_config_list_t *list)
++{
++    if (list->current_key)
++	talloc_free (list->current_key);
++
++    list->current_key = talloc_strdup (list, (*list->iterator).c_str () + CONFIG_PREFIX.length ());
++
++    return list->current_key;
++}
++
++const char *
++notmuch_config_list_value (notmuch_config_list_t *list)
++{
++    std::string strval;
++    notmuch_status_t status;
++    const char *key = notmuch_config_list_key (list);
++
++    /* TODO: better error reporting?? */
++    status = _metadata_value (list->notmuch, key, strval);
++    if (status)
++	return NULL;
++
++    if (list->current_val)
++	talloc_free (list->current_val);
++
++    list->current_val = talloc_strdup (list, strval.c_str ());
++    return list->current_val;
++}
++
++void
++notmuch_config_list_move_to_next (notmuch_config_list_t *list)
++{
++    list->iterator++;
++}
++
++void
++notmuch_config_list_destroy (notmuch_config_list_t *list)
++{
++    talloc_free (list);
++}
+diff --git a/lib/database-private.h b/lib/database-private.h
+index 3fb10f7..ca71a92 100644
+--- a/lib/database-private.h
++++ b/lib/database-private.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -144,6 +144,13 @@ operator&=(_notmuch_features &a, _notmuch_features b)
+     return a;
+ }
+ 
++#define NOTMUCH_QUERY_PARSER_FLAGS (Xapian::QueryParser::FLAG_BOOLEAN | \
++				    Xapian::QueryParser::FLAG_PHRASE | \
++				    Xapian::QueryParser::FLAG_LOVEHATE | \
++				    Xapian::QueryParser::FLAG_BOOLEAN_ANY_CASE | \
++				    Xapian::QueryParser::FLAG_WILDCARD | \
++				    Xapian::QueryParser::FLAG_PURE_NOT)
++
+ struct _notmuch_database {
+     notmuch_bool_t exception_reported;
+ 
+@@ -176,6 +183,10 @@ struct _notmuch_database {
+     Xapian::TermGenerator *term_gen;
+     Xapian::ValueRangeProcessor *value_range_processor;
+     Xapian::ValueRangeProcessor *date_range_processor;
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++    Xapian::FieldProcessor *date_field_processor;
++    Xapian::FieldProcessor *query_field_processor;
++#endif
+     Xapian::ValueRangeProcessor *last_mod_range_processor;
+ };
+ 
+diff --git a/lib/database.cc b/lib/database.cc
+index c8c5e26..92507b8 100644
+--- a/lib/database.cc
++++ b/lib/database.cc
+@@ -13,13 +13,14 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+ 
+ #include "database-private.h"
+ #include "parse-time-vrp.h"
++#include "query-fp.h"
+ #include "string-util.h"
+ 
+ #include <iostream>
+@@ -48,6 +49,12 @@ typedef struct {
+ #define STRINGIFY(s) _SUB_STRINGIFY(s)
+ #define _SUB_STRINGIFY(s) #s
+ 
++#if HAVE_XAPIAN_DB_RETRY_LOCK
++#define DB_ACTION (Xapian::DB_CREATE_OR_OPEN | Xapian::DB_RETRY_LOCK)
++#else
++#define DB_ACTION Xapian::DB_CREATE_OR_OPEN
++#endif
++
+ /* Here's the current schema for our database (for NOTMUCH_DATABASE_VERSION):
+  *
+  * We currently have three different types of documents (mail, ghost,
+@@ -90,6 +97,9 @@ typedef struct {
+  *		        STRING is the name of a file within that
+  *		        directory for this mail message.
+  *
++ *      has:       Has a property with key=value
++ *                 FIXME: if no = is present, should match on any value
++ *
+  *    A mail document also has four values:
+  *
+  *	TIMESTAMP:	The time_t value corresponding to the message's
+@@ -184,6 +194,14 @@ typedef struct {
+  *			generated is 1 and the value will be
+  *			incremented for each thread ID.
+  *
++ *	C*		metadata keys starting with C indicate
++ *			configuration data. It can be managed with the
++ *			n_database_*config* API.  There is a convention
++ *			of hierarchical keys separated by '.' (e.g.
++ *			query.notmuch stores the value for the named
++ *			query 'notmuch'), but it is not enforced by the
++ *			API.
++ *
+  * Obsolete metadata
+  * -----------------
+  *
+@@ -216,7 +234,7 @@ typedef struct {
+ 
+ /* With these prefix values we follow the conventions published here:
+  *
+- * http://xapian.org/docs/omega/termprefixes.html
++ * https://xapian.org/docs/omega/termprefixes.html
+  *
+  * as much as makes sense. Note that I took some liberty in matching
+  * the reserved prefix values to notmuch concepts, (for example, 'G'
+@@ -236,6 +254,7 @@ static prefix_t BOOLEAN_PREFIX_INTERNAL[] = {
+     { "directory",		"XDIRECTORY" },
+     { "file-direntry",		"XFDIRENTRY" },
+     { "directory-direntry",	"XDDIRENTRY" },
++    { "property",               "XPROPERTY"  },
+ };
+ 
+ static prefix_t BOOLEAN_PREFIX_EXTERNAL[] = {
+@@ -244,6 +263,7 @@ static prefix_t BOOLEAN_PREFIX_EXTERNAL[] = {
+     { "is",			"K" },
+     { "id",			"Q" },
+     { "path",			"P" },
++    { "has",			"XPROPERTY" },
+     /*
+      * Without the ":", since this is a multi-letter prefix, Xapian
+      * will add a colon itself if the first letter of the path is
+@@ -349,6 +369,12 @@ notmuch_status_to_string (notmuch_status_t status)
+ 	return "Operation requires a database upgrade";
+     case NOTMUCH_STATUS_PATH_ERROR:
+ 	return "Path supplied is illegal for this function";
++    case NOTMUCH_STATUS_MALFORMED_CRYPTO_PROTOCOL:
++	return "Crypto protocol missing, malformed, or unintelligible";
++    case NOTMUCH_STATUS_FAILED_CRYPTO_CONTEXT_CREATION:
++	return "Crypto engine initialization failure";
++    case NOTMUCH_STATUS_UNKNOWN_CRYPTO_PROTOCOL:
++	return "Unknown crypto protocol";
+     default:
+     case NOTMUCH_STATUS_LAST_STATUS:
+ 	return "Unknown error status value";
+@@ -930,7 +956,7 @@ notmuch_database_open_verbose (const char *path,
+ 
+ 	if (mode == NOTMUCH_DATABASE_MODE_READ_WRITE) {
+ 	    notmuch->xapian_db = new Xapian::WritableDatabase (xapian_path,
+-							       Xapian::DB_CREATE_OR_OPEN);
++							       DB_ACTION);
+ 	} else {
+ 	    notmuch->xapian_db = new Xapian::Database (xapian_path);
+ 	}
+@@ -1000,6 +1026,14 @@ notmuch_database_open_verbose (const char *path,
+ 	notmuch->term_gen->set_stemmer (Xapian::Stem ("english"));
+ 	notmuch->value_range_processor = new Xapian::NumberValueRangeProcessor (NOTMUCH_VALUE_TIMESTAMP);
+ 	notmuch->date_range_processor = new ParseTimeValueRangeProcessor (NOTMUCH_VALUE_TIMESTAMP);
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++	/* This currently relies on the query parser to pass anything
++	 * with a .. to the range processor */
++	notmuch->date_field_processor = new DateFieldProcessor();
++	notmuch->query_parser->add_boolean_prefix("date", notmuch->date_field_processor);
++	notmuch->query_field_processor = new QueryFieldProcessor (*notmuch->query_parser, notmuch);
++	notmuch->query_parser->add_boolean_prefix("query", notmuch->query_field_processor);
++#endif
+ 	notmuch->last_mod_range_processor = new Xapian::NumberValueRangeProcessor (NOTMUCH_VALUE_LAST_MOD, "lastmod:");
+ 
+ 	notmuch->query_parser->set_default_op (Xapian::Query::OP_AND);
+@@ -1090,6 +1124,13 @@ notmuch_database_close (notmuch_database_t *notmuch)
+     delete notmuch->last_mod_range_processor;
+     notmuch->last_mod_range_processor = NULL;
+ 
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++    delete notmuch->date_field_processor;
++    notmuch->date_field_processor = NULL;
++    delete notmuch->query_field_processor;
++    notmuch->query_field_processor = NULL;
++#endif
++
+     return status;
+ }
+ 
+@@ -2168,8 +2209,8 @@ _notmuch_database_link_message_to_parents (notmuch_database_t *notmuch,
+      * References header, if available.  If not, fall back to the
+      * first message ID in the In-Reply-To header. */
+     if (last_ref_message_id) {
+-        _notmuch_message_add_term (message, "replyto",
+-                                   last_ref_message_id);
++	_notmuch_message_add_term (message, "replyto",
++				   last_ref_message_id);
+     } else if (in_reply_to_message_id) {
+ 	_notmuch_message_add_term (message, "replyto",
+ 			     in_reply_to_message_id);
+@@ -2278,15 +2319,15 @@ _consume_metadata_thread_id (void *ctx, notmuch_database_t *notmuch,
+     if (stored_id.empty ()) {
+ 	return NULL;
+     } else {
+-        Xapian::WritableDatabase *db;
++	Xapian::WritableDatabase *db;
+ 
+ 	db = static_cast <Xapian::WritableDatabase *> (notmuch->xapian_db);
+ 
+ 	/* Clear the metadata for this message ID. We don't need it
+ 	 * anymore. */
+-        db->set_metadata (metadata_key, "");
++	db->set_metadata (metadata_key, "");
+ 
+-        return talloc_strdup (ctx, stored_id.c_str ());
++	return talloc_strdup (ctx, stored_id.c_str ());
+     }
+ }
+ 
+@@ -2376,9 +2417,10 @@ _notmuch_database_link_message (notmuch_database_t *notmuch,
+ }
+ 
+ notmuch_status_t
+-notmuch_database_add_message (notmuch_database_t *notmuch,
+-			      const char *filename,
+-			      notmuch_message_t **message_ret)
++notmuch_database_add_message_with_indexopts (notmuch_database_t *notmuch,
++					     const char *filename,
++					     notmuch_indexopts_t *indexopts,
++					     notmuch_message_t **message_ret)
+ {
+     notmuch_message_file_t *message_file;
+     notmuch_message_t *message = NULL;
+@@ -2497,7 +2539,7 @@ notmuch_database_add_message (notmuch_database_t *notmuch,
+ 	    date = _notmuch_message_file_get_header (message_file, "date");
+ 	    _notmuch_message_set_header_values (message, date, from, subject);
+ 
+-	    ret = _notmuch_message_index_file (message, message_file);
++	    ret = _notmuch_message_index_file (message, indexopts, message_file);
+ 	    if (ret)
+ 		goto DONE;
+ 	} else {
+@@ -2534,6 +2576,18 @@ notmuch_database_add_message (notmuch_database_t *notmuch,
+     return ret;
+ }
+ 
++
++notmuch_status_t
++notmuch_database_add_message (notmuch_database_t *notmuch,
++			      const char *filename,
++			      notmuch_message_t **message_ret)
++{
++    return notmuch_database_add_message_with_indexopts (notmuch, filename,
++							NULL,
++							message_ret);
++    
++}
++
+ notmuch_status_t
+ notmuch_database_remove_message (notmuch_database_t *notmuch,
+ 				 const char *filename)
+diff --git a/lib/directory.cc b/lib/directory.cc
+index 78637b3..a19f777 100644
+--- a/lib/directory.cc
++++ b/lib/directory.cc
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/lib/filenames.c b/lib/filenames.c
+index 4f7c0d8..63e737d 100644
+--- a/lib/filenames.c
++++ b/lib/filenames.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/lib/gen-version-script.sh b/lib/gen-version-script.sh
+index 8477001..5621f2a 100644
+--- a/lib/gen-version-script.sh
++++ b/lib/gen-version-script.sh
+@@ -2,7 +2,7 @@ set -eu
+ 
+ # we go through a bit of work to get the unmangled names of the
+ # typeinfo symbols because of
+-# http://sourceware.org/bugzilla/show_bug.cgi?id=10326
++# https://sourceware.org/bugzilla/show_bug.cgi?id=10326
+ 
+ if [ $# -lt 2 ]; then
+     echo Usage: $0 header obj1 obj2 obj3
+@@ -17,7 +17,7 @@ nm  $* | awk '$1 ~ "^[0-9a-fA-F][0-9a-fA-F]*$" && $3 ~ "Xapian.*Error" {print $3
+ while read sym; do
+     demangled=$(c++filt $sym)
+     case $demangled in
+-	typeinfo*) 
++	typeinfo*)
+ 	    printf "\t$sym;\n"
+ 	    ;;
+ 	*)
+diff --git a/lib/index.cc b/lib/index.cc
+index f166aef..a579c42 100644
+--- a/lib/index.cc
++++ b/lib/index.cc
+@@ -12,7 +12,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -144,7 +144,7 @@ filter_filter (GMimeFilter *gmime_filter, char *inbuf, size_t inlen, size_t pres
+ 	{9,  ' ',  ' ',  10, 0},
+ 	{10, '\n', '\n', 11, 10},
+ 	{11, 'M',  'M',  12, 0},
+-	{12, ' ',  '`',  12, 11}  
++	{12, ' ',  '`',  12, 11}
+     };
+     int next;
+ 
+@@ -300,9 +300,14 @@ _index_address_list (notmuch_message_t *message,
+     }
+ }
+ 
++static void
++_index_encrypted_mime_part (notmuch_message_t *message, notmuch_indexopts_t *indexopts,
++			    GMimeContentType *content_type, GMimeMultipartEncrypted *part);
++
+ /* Callback to generate terms for each mime part of a message. */
+ static void
+ _index_mime_part (notmuch_message_t *message,
++		  notmuch_indexopts_t *indexopts,
+ 		  GMimeObject *part)
+ {
+     GMimeStream *stream, *filter;
+@@ -333,27 +338,28 @@ _index_mime_part (notmuch_message_t *message,
+ 	GMimeMultipart *multipart = GMIME_MULTIPART (part);
+ 	int i;
+ 
+-	if (GMIME_IS_MULTIPART_SIGNED (multipart))
+-	  _notmuch_message_add_term (message, "tag", "signed");
+-
+-	if (GMIME_IS_MULTIPART_ENCRYPTED (multipart))
+-	  _notmuch_message_add_term (message, "tag", "encrypted");
+-
+-	for (i = 0; i < g_mime_multipart_get_count (multipart); i++) {
+-	    if (GMIME_IS_MULTIPART_SIGNED (multipart)) {
+-		/* Don't index the signature. */
+-		if (i == 1)
+-		    continue;
+-		if (i > 1)
+-		    _notmuch_database_log (_notmuch_message_database (message),
+-					  "Warning: Unexpected extra parts of multipart/signed. Indexing anyway.\n");
+-	    }
+-	    if (GMIME_IS_MULTIPART_ENCRYPTED (multipart)) {
+-		/* Don't index encrypted parts. */
+-		continue;
+-	    }
++	if (GMIME_IS_MULTIPART_SIGNED (multipart)) {
++	    _notmuch_message_add_term (message, "tag", "signed");
++	    /* FIXME: should we try to validate the signature? */
++	    
++	    /* FIXME: is it always just the first part that is signed in
++	     all multipart/signed messages?*/
+ 	    _index_mime_part (message,
+-			      g_mime_multipart_get_part (multipart, i));
++			      indexopts,
++			      g_mime_multipart_get_part (multipart, 0));
++	    
++	    if (g_mime_multipart_get_count (multipart) > 2)
++		_notmuch_database_log (_notmuch_message_database (message),
++				       "Warning: Unexpected extra parts of multipart/signed. Indexing anyway.\n");
++	} else if (GMIME_IS_MULTIPART_ENCRYPTED (multipart)) {
++	    _notmuch_message_add_term (message, "tag", "encrypted");
++	    _index_encrypted_mime_part(message, indexopts, content_type, GMIME_MULTIPART_ENCRYPTED (part));
++	} else {
++	    for (i = 0; i < g_mime_multipart_get_count (multipart); i++) {
++		_index_mime_part (message,
++				  indexopts,
++				  g_mime_multipart_get_part (multipart, i));
++	    }
+ 	}
+ 	return;
+     }
+@@ -363,7 +369,7 @@ _index_mime_part (notmuch_message_t *message,
+ 
+ 	mime_message = g_mime_message_part_get_message (GMIME_MESSAGE_PART (part));
+ 
+-	_index_mime_part (message, g_mime_message_get_mime_part (mime_message));
++	_index_mime_part (message, indexopts, g_mime_message_get_mime_part (mime_message));
+ 
+ 	return;
+     }
+@@ -433,8 +439,69 @@ _index_mime_part (notmuch_message_t *message,
+     }
+ }
+ 
++/* descend (if desired) into the cleartext part of an encrypted MIME
++ * part while indexing. */
++static void
++_index_encrypted_mime_part (notmuch_message_t *message,
++			    notmuch_indexopts_t *indexopts,
++			    GMimeContentType *content_type,
++			    GMimeMultipartEncrypted *encrypted_data)
++{
++    notmuch_status_t status;
++    GMimeCryptoContext* crypto_ctx = NULL;
++    const char *protocol = NULL;
++    GError *err = NULL;
++    notmuch_database_t * notmuch = NULL;
++    GMimeObject *clear = NULL;
++
++    if (!indexopts || !notmuch_indexopts_get_try_decrypt (indexopts))
++	return;
++
++    protocol = g_mime_content_type_get_parameter (content_type, "protocol");
++    notmuch = _notmuch_message_database (message);
++    
++    status = _notmuch_crypto_get_gmime_ctx_for_protocol (&(indexopts->crypto),
++							 protocol, &crypto_ctx);
++    if (status) {
++	_notmuch_database_log (notmuch, "Warning: setup failed for decrypting "
++			       "during indexing. (%d)\n", status);
++	status = notmuch_message_add_property (message, "index-decryption", "failure");
++	if (status)
++	    _notmuch_database_log (notmuch, "failed to add index-decryption "
++				   "property (%d)\n", status);
++	return;
++    }
++
++    /* we don't need the GMimeDecryptResult, because we're not looking
++     * at validating signatures, and we don't care about indexing who
++     * the message was ostensibly encrypted to.
++     */
++    clear = g_mime_multipart_encrypted_decrypt(encrypted_data, crypto_ctx,
++					       NULL, &err);
++    if (err) {
++	_notmuch_database_log (notmuch, "Failed to decrypt during indexing. (%d:%d) [%s]\n",
++			       err->domain, err->code, err->message);
++	g_error_free(err);
++	/* Indicate that we failed to decrypt during indexing */
++	status = notmuch_message_add_property (message, "index-decryption", "failure");
++	if (status)
++	    _notmuch_database_log (notmuch, "failed to add index-decryption "
++				   "property (%d)\n", status);
++	return;
++    }
++    _index_mime_part (message, indexopts, clear);
++    g_object_unref (clear);
++    
++    status = notmuch_message_add_property (message, "index-decryption", "success");
++    if (status)
++	_notmuch_database_log (notmuch, "failed to add index-decryption "
++			       "property (%d)\n", status);
++
++}
++
+ notmuch_status_t
+ _notmuch_message_index_file (notmuch_message_t *message,
++			     notmuch_indexopts_t *indexopts,
+ 			     notmuch_message_file_t *message_file)
+ {
+     GMimeMessage *mime_message;
+@@ -464,7 +531,7 @@ _notmuch_message_index_file (notmuch_message_t *message,
+     subject = g_mime_message_get_subject (mime_message);
+     _notmuch_message_gen_terms (message, "subject", subject);
+ 
+-    _index_mime_part (message, g_mime_message_get_mime_part (mime_message));
++    _index_mime_part (message, indexopts, g_mime_message_get_mime_part (mime_message));
+ 
+     return NOTMUCH_STATUS_SUCCESS;
+ }
+diff --git a/lib/indexopts.c b/lib/indexopts.c
+new file mode 100644
+index 0000000..da36e2b
+--- /dev/null
++++ b/lib/indexopts.c
+@@ -0,0 +1,72 @@
++/* indexopts.c - options for indexing messages
++ *
++ * Copyright © 2015 Daniel Kahn Gillmor
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ * Author: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++ */
++
++#include "notmuch-private.h"
++
++notmuch_indexopts_t *
++notmuch_indexopts_create ()
++{
++    notmuch_indexopts_t *ret;
++    
++    ret = talloc_zero (NULL, notmuch_indexopts_t);
++
++    return ret;
++}
++
++notmuch_status_t
++notmuch_indexopts_set_try_decrypt (notmuch_indexopts_t *indexopts,
++				   notmuch_bool_t try_decrypt)
++{
++    if (!indexopts)
++	return NOTMUCH_STATUS_NULL_POINTER;
++    indexopts->crypto.decrypt = try_decrypt;
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++notmuch_bool_t
++notmuch_indexopts_get_try_decrypt (const notmuch_indexopts_t *indexopts)
++{
++    if (!indexopts)
++	return FALSE;
++    return indexopts->crypto.decrypt;
++}
++
++notmuch_status_t
++notmuch_indexopts_set_gpg_path (notmuch_indexopts_t *indexopts,
++				const char *gpg_path)
++{
++    if (!indexopts)
++	return NOTMUCH_STATUS_NULL_POINTER;
++    return _notmuch_crypto_set_gpg_path (&(indexopts->crypto), gpg_path);
++}
++
++const char*
++notmuch_indexopts_get_gpg_path (const notmuch_indexopts_t *indexopts)
++{
++    if (!indexopts)
++	return NULL;
++    return _notmuch_crypto_get_gpg_path (&(indexopts->crypto));
++}
++
++void
++notmuch_indexopts_destroy (notmuch_indexopts_t *indexopts)
++{
++    talloc_free (indexopts);
++}
+diff --git a/lib/message-file.c b/lib/message-file.c
+index ee30520..db18b16 100644
+--- a/lib/message-file.c
++++ b/lib/message-file.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/lib/message-private.h b/lib/message-private.h
+new file mode 100644
+index 0000000..7419925
+--- /dev/null
++++ b/lib/message-private.h
+@@ -0,0 +1,16 @@
++#ifndef MESSAGE_PRIVATE_H
++#define MESSAGE_PRIVATE_H
++
++notmuch_string_map_t *
++_notmuch_message_property_map (notmuch_message_t *message);
++
++notmuch_bool_t
++_notmuch_message_frozen (notmuch_message_t *message);
++
++void
++_notmuch_message_remove_terms (notmuch_message_t *message, const char *prefix);
++
++void
++_notmuch_message_invalidate_metadata (notmuch_message_t *message,  const char *prefix_name);
++
++#endif
+diff --git a/lib/message-property.cc b/lib/message-property.cc
+new file mode 100644
+index 0000000..338f3fb
+--- /dev/null
++++ b/lib/message-property.cc
+@@ -0,0 +1,151 @@
++/* message-property.cc - Properties are like tags, but (key,value) pairs.
++ * keys are allowed to repeat.
++ *
++ * This file is part of notmuch.
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#include "notmuch-private.h"
++#include "database-private.h"
++#include "message-private.h"
++
++notmuch_status_t
++notmuch_message_get_property (notmuch_message_t *message, const char *key, const char **value)
++{
++    if (! value)
++	return NOTMUCH_STATUS_NULL_POINTER;
++
++    *value = _notmuch_string_map_get (_notmuch_message_property_map (message), key);
++
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++static notmuch_status_t
++_notmuch_message_modify_property (notmuch_message_t *message, const char *key, const char *value,
++				  notmuch_bool_t delete_it)
++{
++    notmuch_private_status_t private_status;
++    notmuch_status_t status;
++    char *term = NULL;
++
++    status = _notmuch_database_ensure_writable (_notmuch_message_database (message));
++    if (status)
++	return status;
++
++    if (key == NULL)
++	return NOTMUCH_STATUS_NULL_POINTER;
++
++    if (index (key, '='))
++	return NOTMUCH_STATUS_ILLEGAL_ARGUMENT;
++
++    if (value == NULL)
++    {
++	if (!delete_it)
++	    return NOTMUCH_STATUS_NULL_POINTER;
++
++	term = talloc_asprintf (message, "%s%s=", _find_prefix ("property"), key);
++	_notmuch_message_remove_terms (message, term);
++    }
++    else
++    {
++	term = talloc_asprintf (message, "%s=%s", key, value);
++
++	if (delete_it)
++	    private_status = _notmuch_message_remove_term (message, "property", term);
++	else
++	    private_status = _notmuch_message_add_term (message, "property", term);
++
++	if (private_status)
++	    return COERCE_STATUS (private_status,
++				  "Unhandled error modifying message property");
++    }
++
++    if (! _notmuch_message_frozen (message))
++	_notmuch_message_sync (message);
++
++    if (term)
++	talloc_free (term);
++
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++notmuch_status_t
++notmuch_message_add_property (notmuch_message_t *message, const char *key, const char *value)
++{
++    return _notmuch_message_modify_property (message, key, value, FALSE);
++}
++
++notmuch_status_t
++notmuch_message_remove_property (notmuch_message_t *message, const char *key, const char *value)
++{
++    return _notmuch_message_modify_property (message, key, value, TRUE);
++}
++
++notmuch_status_t
++notmuch_message_remove_all_properties (notmuch_message_t *message)
++{
++    notmuch_status_t status;
++    status = _notmuch_database_ensure_writable (_notmuch_message_database (message));
++    if (status)
++	return status;
++
++    _notmuch_message_invalidate_metadata (message, "property");
++    /* XXX better error reporting ? */
++    _notmuch_message_remove_terms (message, _find_prefix ("property"));
++
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++notmuch_message_properties_t *
++notmuch_message_get_properties (notmuch_message_t *message, const char *key, notmuch_bool_t exact)
++{
++    notmuch_string_map_t *map;
++    map = _notmuch_message_property_map (message);
++    return _notmuch_string_map_iterator_create (map, key, exact);
++}
++
++notmuch_bool_t
++notmuch_message_properties_valid (notmuch_message_properties_t *properties)
++{
++    return _notmuch_string_map_iterator_valid (properties);
++}
++
++void
++notmuch_message_properties_move_to_next (notmuch_message_properties_t *properties)
++{
++    return _notmuch_string_map_iterator_move_to_next (properties);
++}
++
++const char *
++notmuch_message_properties_key (notmuch_message_properties_t *properties)
++{
++    return _notmuch_string_map_iterator_key (properties);
++}
++
++const char *
++notmuch_message_properties_value (notmuch_message_properties_t *properties)
++{
++    return _notmuch_string_map_iterator_value (properties);
++}
++
++void
++notmuch_message_properties_destroy (notmuch_message_properties_t *properties)
++{
++    _notmuch_string_map_iterator_destroy (properties);
++}
+diff --git a/lib/message.cc b/lib/message.cc
+index 6839305..ab807b7 100644
+--- a/lib/message.cc
++++ b/lib/message.cc
+@@ -13,13 +13,14 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+ 
+ #include "notmuch-private.h"
+ #include "database-private.h"
++#include "message-private.h"
+ 
+ #include <stdint.h>
+ 
+@@ -37,6 +38,8 @@ struct visible _notmuch_message {
+     notmuch_string_list_t *filename_list;
+     char *author;
+     notmuch_message_file_t *message_file;
++    notmuch_string_list_t *property_term_list;
++    notmuch_string_map_t *property_map;
+     notmuch_message_list_t *replies;
+     unsigned long flags;
+     /* For flags that are initialized on-demand, lazy_flags indicates
+@@ -116,6 +119,8 @@ _notmuch_message_create_for_document (const void *talloc_owner,
+     message->filename_list = NULL;
+     message->message_file = NULL;
+     message->author = NULL;
++    message->property_term_list = NULL;
++    message->property_map = NULL;
+ 
+     message->replies = _notmuch_message_list_create (message);
+     if (unlikely (message->replies == NULL)) {
+@@ -314,6 +319,7 @@ _notmuch_message_ensure_metadata (notmuch_message_t *message)
+ 	*id_prefix = _find_prefix ("id"),
+ 	*type_prefix = _find_prefix ("type"),
+ 	*filename_prefix = _find_prefix ("file-direntry"),
++	*property_prefix = _find_prefix ("property"),
+ 	*replyto_prefix = _find_prefix ("replyto");
+ 
+     /* We do this all in a single pass because Xapian decompresses the
+@@ -369,18 +375,28 @@ _notmuch_message_ensure_metadata (notmuch_message_t *message)
+ 	    _notmuch_database_get_terms_with_prefix (message, i, end,
+ 						     filename_prefix);
+ 
++
++    /* Get property terms. Mimic the setup with filenames above */
++    assert (strcmp (filename_prefix, property_prefix) < 0);
++    if (!message->property_map && !message->property_term_list)
++	message->property_term_list =
++	    _notmuch_database_get_terms_with_prefix (message, i, end,
++						     property_prefix);
++
+     /* Get reply to */
+-    assert (strcmp (filename_prefix, replyto_prefix) < 0);
++    assert (strcmp (property_prefix, replyto_prefix) < 0);
+     if (!message->in_reply_to)
+ 	message->in_reply_to =
+ 	    _notmuch_message_get_term (message, i, end, replyto_prefix);
++
++
+     /* It's perfectly valid for a message to have no In-Reply-To
+      * header. For these cases, we return an empty string. */
+     if (!message->in_reply_to)
+ 	message->in_reply_to = talloc_strdup (message, "");
+ }
+ 
+-static void
++void
+ _notmuch_message_invalidate_metadata (notmuch_message_t *message,
+ 				      const char *prefix_name)
+ {
+@@ -405,6 +421,18 @@ _notmuch_message_invalidate_metadata (notmuch_message_t *message,
+ 	message->filename_term_list = message->filename_list = NULL;
+     }
+ 
++    if (strcmp ("property", prefix_name) == 0) {
++
++	if (message->property_term_list)
++	    talloc_free (message->property_term_list);
++	message->property_term_list = NULL;
++
++	if (message->property_map)
++	    talloc_unlink (message, message->property_map);
++
++	message->property_map = NULL;
++    }
++
+     if (strcmp ("replyto", prefix_name) == 0) {
+ 	talloc_free (message->in_reply_to);
+ 	message->in_reply_to = NULL;
+@@ -525,11 +553,13 @@ notmuch_message_get_replies (notmuch_message_t *message)
+     return _notmuch_messages_create (message->replies);
+ }
+ 
+-static void
++void
+ _notmuch_message_remove_terms (notmuch_message_t *message, const char *prefix)
+ {
+     Xapian::TermIterator i;
+-    size_t prefix_len = strlen (prefix);
++    size_t prefix_len = 0;
++
++    prefix_len = strlen (prefix);
+ 
+     while (1) {
+ 	i = message->doc.termlist_begin ();
+@@ -1444,7 +1474,7 @@ notmuch_message_maildir_flags_to_tags (notmuch_message_t *message)
+ 
+     for (i = 0; i < ARRAY_SIZE(flag2tag); i++) {
+ 	if ((strchr (combined_flags, flag2tag[i].flag) != NULL)
+-	    ^ 
++	    ^
+ 	    flag2tag[i].inverse)
+ 	{
+ 	    status = notmuch_message_add_tag (message, flag2tag[i].tag);
+@@ -1772,3 +1802,154 @@ _notmuch_message_database (notmuch_message_t *message)
+ {
+     return message->notmuch;
+ }
++
++void
++_notmuch_message_ensure_property_map (notmuch_message_t *message)
++{
++    notmuch_string_node_t *node;
++
++    if (message->property_map)
++	return;
++
++    if (!message->property_term_list)
++	_notmuch_message_ensure_metadata (message);
++
++    message->property_map = _notmuch_string_map_create (message);
++
++    for (node = message->property_term_list->head; node; node = node->next) {
++	const char *key;
++	char *value;
++
++	value = index(node->string, '=');
++	if (!value)
++	    INTERNAL_ERROR ("malformed property term");
++
++	*value = '\0';
++	value++;
++	key = node->string;
++
++	_notmuch_string_map_append (message->property_map, key, value);
++
++    }
++
++    talloc_free (message->property_term_list);
++    message->property_term_list = NULL;
++}
++
++notmuch_string_map_t *
++_notmuch_message_property_map (notmuch_message_t *message)
++{
++    _notmuch_message_ensure_property_map (message);
++
++    return message->property_map;
++}
++
++notmuch_bool_t
++_notmuch_message_frozen (notmuch_message_t *message)
++{
++    return message->frozen;
++}
++
++notmuch_status_t
++notmuch_message_reindex (notmuch_message_t *message,
++			 notmuch_indexopts_t *indexopts)
++{
++    notmuch_database_t *notmuch = NULL;
++    notmuch_status_t ret = NOTMUCH_STATUS_SUCCESS, status;
++    notmuch_tags_t *tags = NULL;
++    notmuch_message_properties_t *properties = NULL;
++    notmuch_filenames_t *filenames, *orig_filenames = NULL;
++    const char *filename = NULL, *tag = NULL, *propkey = NULL;
++    notmuch_message_t *newmsg = NULL;
++    notmuch_bool_t readded = FALSE, skip;
++    const char *autotags[] = {
++		    "attachment",
++		    "encrypted",
++		    "signed" };
++    const char *autoproperties[] = { "index-decryption" };
++
++    if (message == NULL)
++	return NOTMUCH_STATUS_NULL_POINTER;
++    
++    notmuch = _notmuch_message_database (message);
++
++    /* cache tags, properties, and filenames */
++    tags = notmuch_message_get_tags (message);
++    properties = notmuch_message_get_properties (message, "", FALSE);
++    filenames = notmuch_message_get_filenames (message);
++    orig_filenames = notmuch_message_get_filenames (message);
++    
++    /* walk through filenames, removing them until the message is gone */
++    for ( ; notmuch_filenames_valid (filenames);
++	  notmuch_filenames_move_to_next (filenames)) {
++	filename = notmuch_filenames_get (filenames);
++
++	ret = notmuch_database_remove_message (notmuch, filename);
++	if (ret != NOTMUCH_STATUS_SUCCESS &&
++	    ret != NOTMUCH_STATUS_DUPLICATE_MESSAGE_ID)
++	    return ret;
++    }
++    if (ret != NOTMUCH_STATUS_SUCCESS)
++	return ret;
++    
++    /* re-add the filenames with the associated indexopts */
++    for (; notmuch_filenames_valid (orig_filenames);
++	 notmuch_filenames_move_to_next (orig_filenames)) {
++	filename = notmuch_filenames_get (orig_filenames);
++
++	status = notmuch_database_add_message_with_indexopts(notmuch,
++							     filename,
++							     indexopts,
++							     readded ? NULL : &newmsg);
++	if (status == NOTMUCH_STATUS_SUCCESS ||
++	    status == NOTMUCH_STATUS_DUPLICATE_MESSAGE_ID) {
++	    if (!readded) {
++		/* re-add tags */
++		for (; notmuch_tags_valid (tags);
++		     notmuch_tags_move_to_next (tags)) {
++		    tag = notmuch_tags_get (tags);
++		    skip = FALSE;
++		    
++		    for (size_t i = 0; i < ARRAY_SIZE (autotags); i++)
++			if (strcmp (tag, autotags[i]) == 0)
++			    skip = TRUE;
++		    
++		    if (!skip) {
++			status = notmuch_message_add_tag (newmsg, tag);
++			if (status != NOTMUCH_STATUS_SUCCESS)
++			    ret = status;
++		    }
++		}
++		/* re-add properties */
++		for (; notmuch_message_properties_valid (properties);
++		     notmuch_message_properties_move_to_next (properties)) {
++		    propkey = notmuch_message_properties_key (properties);
++		    skip = FALSE;
++
++		    for (size_t i = 0; i < ARRAY_SIZE (autoproperties); i++)
++			if (strcmp (propkey, autoproperties[i]) == 0)
++			    skip = TRUE;
++
++		    if (!skip) {
++			status = notmuch_message_add_property (newmsg, propkey,
++							       notmuch_message_properties_value (properties));
++			if (status != NOTMUCH_STATUS_SUCCESS)
++			    ret = status;
++		    }
++		}
++		readded = TRUE;
++	    }
++	} else {
++	    /* if we failed to add this filename, go ahead and try the
++	     * next one as though it were first, but report the
++	     * error... */
++	    ret = status;
++	}
++    }
++    if (newmsg)
++	notmuch_message_destroy (newmsg);
++	    		
++    /* should we also destroy the incoming message object?  at the
++     * moment, we leave that to the caller */
++    return ret;
++}
+diff --git a/lib/messages.c b/lib/messages.c
+index 0eee569..b5363bb 100644
+--- a/lib/messages.c
++++ b/lib/messages.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/lib/notmuch-private.h b/lib/notmuch-private.h
+index 9280797..01b65ba 100644
+--- a/lib/notmuch-private.h
++++ b/lib/notmuch-private.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -51,6 +51,7 @@ NOTMUCH_BEGIN_DECLS
+ #include "xutil.h"
+ #include "error_util.h"
+ #include "string-util.h"
++#include "crypto.h"
+ 
+ #pragma GCC visibility push(hidden)
+ 
+@@ -158,8 +159,8 @@ typedef enum _notmuch_private_status {
+     ((private_status >= (notmuch_private_status_t) NOTMUCH_STATUS_LAST_STATUS)\
+      ?									\
+      _internal_error (format " (%s).\n",				\
+-                      ##__VA_ARGS__,					\
+-                      __location__),					\
++		      ##__VA_ARGS__,					\
++		      __location__),					\
+      (notmuch_status_t) NOTMUCH_PRIVATE_STATUS_SUCCESS			\
+      :									\
+      (notmuch_status_t) private_status)
+@@ -430,6 +431,7 @@ _notmuch_message_file_get_header (notmuch_message_file_t *message,
+ 
+ notmuch_status_t
+ _notmuch_message_index_file (notmuch_message_t *message,
++			     notmuch_indexopts_t *indexopts,
+ 			     notmuch_message_file_t *message_file);
+ 
+ /* messages.c */
+@@ -477,11 +479,11 @@ _notmuch_mset_messages_move_to_next (notmuch_messages_t *messages);
+ 
+ notmuch_bool_t
+ _notmuch_doc_id_set_contains (notmuch_doc_id_set_t *doc_ids,
+-                              unsigned int doc_id);
++			      unsigned int doc_id);
+ 
+ void
+ _notmuch_doc_id_set_remove (notmuch_doc_id_set_t *doc_ids,
+-                            unsigned int doc_id);
++			    unsigned int doc_id);
+ 
+ /* querying xapian documents by type (e.g. "mail" or "ghost"): */
+ notmuch_status_t
+@@ -537,6 +539,39 @@ _notmuch_string_list_append (notmuch_string_list_t *list,
+ void
+ _notmuch_string_list_sort (notmuch_string_list_t *list);
+ 
++/* string-map.c */
++typedef struct _notmuch_string_map  notmuch_string_map_t;
++typedef struct _notmuch_string_map_iterator notmuch_string_map_iterator_t;
++notmuch_string_map_t *
++_notmuch_string_map_create (const void *ctx);
++
++void
++_notmuch_string_map_append (notmuch_string_map_t *map,
++			    const char *key,
++			    const char *value);
++
++const char *
++_notmuch_string_map_get (notmuch_string_map_t *map, const char *key);
++
++notmuch_string_map_iterator_t *
++_notmuch_string_map_iterator_create (notmuch_string_map_t *map, const char *key,
++				     notmuch_bool_t exact);
++
++notmuch_bool_t
++_notmuch_string_map_iterator_valid (notmuch_string_map_iterator_t *iter);
++
++void
++_notmuch_string_map_iterator_move_to_next (notmuch_string_map_iterator_t *iter);
++
++const char *
++_notmuch_string_map_iterator_key (notmuch_string_map_iterator_t *iterator);
++
++const char *
++_notmuch_string_map_iterator_value (notmuch_string_map_iterator_t *iterator);
++
++void
++_notmuch_string_map_iterator_destroy (notmuch_string_map_iterator_t *iterator);
++
+ /* tags.c */
+ 
+ notmuch_tags_t *
+@@ -561,6 +596,12 @@ _notmuch_thread_create (void *ctx,
+ 			notmuch_exclude_t omit_exclude,
+ 			notmuch_sort_t sort);
+ 
++/* indexopts.c */
++
++typedef struct _notmuch_indexopts {
++    _notmuch_crypto_t crypto;
++} notmuch_indexopts_t;
++
+ NOTMUCH_END_DECLS
+ 
+ #ifdef __cplusplus
+diff --git a/lib/notmuch.h b/lib/notmuch.h
+index 24944f0..9076a9b 100644
+--- a/lib/notmuch.h
++++ b/lib/notmuch.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -180,6 +180,28 @@ typedef enum _notmuch_status {
+      */
+     NOTMUCH_STATUS_PATH_ERROR,
+     /**
++     * One of the arguments violates the preconditions for the
++     * function, in a way not covered by a more specific argument.
++     */
++    NOTMUCH_STATUS_ILLEGAL_ARGUMENT,
++    /**
++     * A MIME object claimed to have cryptographic protection which
++     * notmuch tried to handle, but the protocol was not specified in
++     * an intelligible way.
++     */
++    NOTMUCH_STATUS_MALFORMED_CRYPTO_PROTOCOL,
++    /**
++     * Notmuch attempted to do crypto processing, but could not
++     * initialize the engine needed to do so.
++     */
++    NOTMUCH_STATUS_FAILED_CRYPTO_CONTEXT_CREATION,
++    /**
++     * A MIME object claimed to have cryptographic protection, and
++     * notmuch attempted to process it, but the specific protocol was
++     * something that notmuch doesn't know how to handle.
++     */
++    NOTMUCH_STATUS_UNKNOWN_CRYPTO_PROTOCOL,
++    /**
+      * Not an actual status value. Just a way to find out how many
+      * valid status values there are.
+      */
+@@ -206,6 +228,8 @@ typedef struct _notmuch_message notmuch_message_t;
+ typedef struct _notmuch_tags notmuch_tags_t;
+ typedef struct _notmuch_directory notmuch_directory_t;
+ typedef struct _notmuch_filenames notmuch_filenames_t;
++typedef struct _notmuch_config_list notmuch_config_list_t;
++typedef struct _notmuch_indexopts notmuch_indexopts_t;
+ #endif /* __DOXYGEN__ */
+ 
+ /**
+@@ -581,6 +605,20 @@ notmuch_status_t
+ notmuch_database_add_message (notmuch_database_t *database,
+ 			      const char *filename,
+ 			      notmuch_message_t **message);
++/**
++ * Add a new message to the given notmuch database or associate an
++ * additional filename with an existing message using specified
++ * options.
++ *
++ * This does the same thing as notmuch_database_add_message except
++ * that it passes a pre-configured set of indexing options to indicate
++ * how the specific message should be indexed.
++ */
++notmuch_status_t
++notmuch_database_add_message_with_indexopts (notmuch_database_t *database,
++					     const char *filename,
++					     notmuch_indexopts_t *indexopts,
++					     notmuch_message_t **message);
+ 
+ /**
+  * Remove a message filename from the given notmuch database. If the
+@@ -694,7 +732,7 @@ notmuch_database_get_all_tags (notmuch_database_t *db);
+  * completely in the future, but it's likely to be a specialized
+  * version of the general Xapian query syntax:
+  *
+- * http://xapian.org/docs/queryparser.html
++ * https://xapian.org/docs/queryparser.html
+  *
+  * As a special case, passing either a length-zero string, (that is ""),
+  * or a string consisting of a single asterisk (that is "*"), will
+@@ -1356,6 +1394,20 @@ notmuch_filenames_t *
+ notmuch_message_get_filenames (notmuch_message_t *message);
+ 
+ /**
++ * Re-index the e-mail corresponding to 'message' using the supplied index options
++ *
++ * Returns the status of the re-index operation.  (see the return
++ * codes documented in notmuch_database_add_message)
++ *
++ * After reindexing, the user should discard the message object passed
++ * in here by calling notmuch_message_destroy, since it refers to the
++ * original message, not to the reindexed message.
++ */
++notmuch_status_t
++notmuch_message_reindex (notmuch_message_t *message,
++			 notmuch_indexopts_t *indexopts);
++
++/**
+  * Message flags.
+  */
+ typedef enum _notmuch_message_flag {
+@@ -1653,6 +1705,166 @@ void
+ notmuch_message_destroy (notmuch_message_t *message);
+ 
+ /**
++ * @name Message Properties
++ *
++ * This interface provides the ability to attach arbitrary (key,value)
++ * string pairs to a message, to remove such pairs, and to iterate
++ * over them.  The caller should take some care as to what keys they
++ * add or delete values for, as other subsystems or extensions may
++ * depend on these properties.
++ *
++ */
++/**@{*/
++/**
++ * Retrieve the value for a single property key
++ *
++ * *value* is set to a string owned by the message or NULL if there is
++ * no such key. In the case of multiple values for the given key, the
++ * first one is retrieved.
++ *
++ * @returns
++ * - NOTMUCH_STATUS_NULL_POINTER: *value* may not be NULL.
++ * - NOTMUCH_STATUS_SUCCESS: No error occured.
++
++ */
++notmuch_status_t
++notmuch_message_get_property (notmuch_message_t *message, const char *key, const char **value);
++
++/**
++ * Add a (key,value) pair to a message
++ *
++ * @returns
++ * - NOTMUCH_STATUS_ILLEGAL_ARGUMENT: *key* may not contain an '=' character.
++ * - NOTMUCH_STATUS_NULL_POINTER: Neither *key* nor *value* may be NULL.
++ * - NOTMUCH_STATUS_SUCCESS: No error occured.
++ */
++notmuch_status_t
++notmuch_message_add_property (notmuch_message_t *message, const char *key, const char *value);
++
++/**
++ * Remove a (key,value) pair from a message.
++ *
++ * It is not an error to remove a non-existant (key,value) pair.  If
++ * *value* is NULL, remove all properties with the given key.
++ *
++ * @returns
++ * - NOTMUCH_STATUS_ILLEGAL_ARGUMENT: *key* may not contain an '=' character.
++ * - NOTMUCH_STATUS_NULL_POINTER: *key* may not be NULL.
++ * - NOTMUCH_STATUS_SUCCESS: No error occured.
++ */
++notmuch_status_t
++notmuch_message_remove_property (notmuch_message_t *message, const char *key, const char *value);
++
++/**
++ * Remove all (key,value) pairs from the given message.
++ *
++ * @returns
++ * - NOTMUCH_STATUS_READ_ONLY_DATABASE: Database was opened in
++ *   read-only mode so message cannot be modified.
++ * - NOTMUCH_STATUS_SUCCESS: No error occured.
++ *
++ */
++notmuch_status_t
++notmuch_message_remove_all_properties (notmuch_message_t *message);
++
++/**
++ * Opaque message property iterator
++ */
++typedef struct _notmuch_string_map_iterator notmuch_message_properties_t;
++
++/**
++ * Get the properties for *message*, returning a
++ * notmuch_message_properties_t object which can be used to iterate
++ * over all properties.
++ *
++ * The notmuch_message_properties_t object is owned by the message and
++ * as such, will only be valid for as long as the message is valid,
++ * (which is until the query from which it derived is destroyed).
++ *
++ * @param[in] message  The message to examine
++ * @param[in] key      key or key prefix
++ * @param[in] exact    if TRUE, require exact match with key. Otherwise
++ *		       treat as prefix.
++ *
++ * Typical usage might be:
++ *
++ *     notmuch_message_properties_t *list;
++ *
++ *     for (list = notmuch_message_get_properties (message, "testkey1", TRUE);
++ *          notmuch_message_properties_valid (list); notmuch_message_properties_move_to_next (list)) {
++ *        printf("%s\n", notmuch_message_properties_value(list));
++ *     }
++ *
++ *     notmuch_message_properties_destroy (list);
++ *
++ * Note that there's no explicit destructor needed for the
++ * notmuch_message_properties_t object. (For consistency, we do
++ * provide a notmuch_message_properities_destroy function, but there's
++ * no good reason to call it if the message is about to be destroyed).
++ */
++notmuch_message_properties_t *
++notmuch_message_get_properties (notmuch_message_t *message, const char *key, notmuch_bool_t exact);
++
++/**
++ * Is the given *properties* iterator pointing at a valid (key,value)
++ * pair.
++ *
++ * When this function returns TRUE,
++ * notmuch_message_properties_{key,value} will return a valid string,
++ * and notmuch_message_properties_move_to_next will do what it
++ * says. Whereas when this function returns FALSE, calling any of
++ * these functions results in undefined behaviour.
++ *
++ * See the documentation of notmuch_message_properties_get for example
++ * code showing how to iterate over a notmuch_message_properties_t
++ * object.
++ */
++notmuch_bool_t
++notmuch_message_properties_valid (notmuch_message_properties_t *properties);
++
++/**
++ * Move the *properties* iterator to the next (key,value) pair
++ *
++ * If *properties* is already pointing at the last pair then the iterator
++ * will be moved to a point just beyond that last pair, (where
++ * notmuch_message_properties_valid will return FALSE).
++ *
++ * See the documentation of notmuch_message_get_properties for example
++ * code showing how to iterate over a notmuch_message_properties_t object.
++ */
++void
++notmuch_message_properties_move_to_next (notmuch_message_properties_t *properties);
++
++/**
++ * Return the key from the current (key,value) pair.
++ *
++ * this could be useful if iterating for a prefix
++ */
++const char *
++notmuch_message_properties_key (notmuch_message_properties_t *properties);
++
++/**
++ * Return the key from the current (key,value) pair.
++ *
++ * This could be useful if iterating for a prefix.
++ */
++const char *
++notmuch_message_properties_value (notmuch_message_properties_t *properties);
++
++
++/**
++ * Destroy a notmuch_message_properties_t object.
++ *
++ * It's not strictly necessary to call this function. All memory from
++ * the notmuch_message_properties_t object will be reclaimed when the
++ * containing message object is destroyed.
++ */
++void
++notmuch_message_properties_destroy (notmuch_message_properties_t *properties);
++
++/**@}*/
++
++/**
+  * Is the given 'tags' iterator pointing at a valid tag.
+  *
+  * When this function returns TRUE, notmuch_tags_get will return a
+@@ -1840,6 +2052,136 @@ notmuch_filenames_move_to_next (notmuch_filenames_t *filenames);
+ void
+ notmuch_filenames_destroy (notmuch_filenames_t *filenames);
+ 
++
++/**
++ * set config 'key' to 'value'
++ *
++ */
++notmuch_status_t
++notmuch_database_set_config (notmuch_database_t *db, const char *key, const char *value);
++
++/**
++ * retrieve config item 'key', assign to  'value'
++ *
++ * keys which have not been previously set with n_d_set_config will
++ * return an empty string.
++ *
++ * return value is allocated by malloc and should be freed by the
++ * caller.
++ */
++notmuch_status_t
++notmuch_database_get_config (notmuch_database_t *db, const char *key, char **value);
++
++/**
++ * Create an iterator for all config items with keys matching a given prefix
++ */
++notmuch_status_t
++notmuch_database_get_config_list (notmuch_database_t *db, const char *prefix, notmuch_config_list_t **out);
++
++/**
++ * Is 'config_list' iterator valid (i.e. _key, _value, _move_to_next can be called).
++ */
++notmuch_bool_t
++notmuch_config_list_valid (notmuch_config_list_t *config_list);
++
++/**
++ * return key for current config pair
++ *
++ * return value is owned by the iterator, and will be destroyed by the
++ * next call to notmuch_config_list_key or notmuch_config_list_destroy.
++ */
++const char *
++notmuch_config_list_key (notmuch_config_list_t *config_list);
++
++/**
++ * return 'value' for current config pair
++ *
++ * return value is owned by the iterator, and will be destroyed by the
++ * next call to notmuch_config_list_value or notmuch config_list_destroy
++ */
++const char *
++notmuch_config_list_value (notmuch_config_list_t *config_list);
++
++
++/**
++ * move 'config_list' iterator to the next pair
++ */
++void
++notmuch_config_list_move_to_next (notmuch_config_list_t *config_list);
++
++/**
++ * free any resources held by 'config_list'
++ */
++void
++notmuch_config_list_destroy (notmuch_config_list_t *config_list);
++
++/**
++ * interrogate the library for compile time features
++ */
++notmuch_bool_t
++notmuch_built_with (const char *name);
++
++/**
++ * Create a notmuch_indexopts_t object.
++ *
++ * This object describes options on how indexing can happen when a
++ * message is added to the index.
++ */
++notmuch_indexopts_t *
++notmuch_indexopts_create ();
++
++/**
++ * Specify whether to decrypt encrypted parts while indexing.
++ *
++ * Be aware that the index is likely sufficient to reconstruct the
++ * cleartext of the message itself, so please ensure that the notmuch
++ * message index is adequately protected. DO NOT SET THIS FLAG TO TRUE
++ * without considering the security of your index.
++ */
++notmuch_status_t
++notmuch_indexopts_set_try_decrypt (notmuch_indexopts_t *indexopts,
++				   notmuch_bool_t try_decrypt);
++
++/**
++ * Return whether to decrypt encrypted parts while indexing.
++ * see notmuch_indexopts_set_try_decrypt.
++ */
++notmuch_bool_t
++notmuch_indexopts_get_try_decrypt (const notmuch_indexopts_t *indexopts);
++
++/**
++ * Specify the name (or name and path) of the gpg executable, in case
++ * GnuPG needs to be used during indexing.  The default should usually
++ * be fine.
++ *
++ * Passing NULL to this will reset it to the default.
++ *
++ * Return value:
++ *
++ * NOTMUCH_STATUS_SUCCESS: the path was accepted and will be used.
++ *
++ * NOTMUCH_STATUS_FILE_ERROR: the path given either wasn't found or
++ *      wasn't executable.
++ */
++notmuch_status_t
++notmuch_indexopts_set_gpg_path (notmuch_indexopts_t *indexopts,
++				const char *gpg_path);
++
++/**
++ * Return the name (possibly including path) of the gpg executable to
++ * be used in case GnuPG needs to be used during indexing.
++ *
++ * see notmuch_indexopts_set_gpg_path
++ */
++const char*
++notmuch_indexopts_get_gpg_path (const notmuch_indexopts_t *indexopts);
++
++/**
++ * Destroy a notmuch_indexopts_t object.
++ */
++void
++notmuch_indexopts_destroy (notmuch_indexopts_t *options);
++
+ /* @} */
+ 
+ NOTMUCH_END_DECLS
+diff --git a/lib/parse-time-vrp.cc b/lib/parse-time-vrp.cc
+index 03804cf..dd69149 100644
+--- a/lib/parse-time-vrp.cc
++++ b/lib/parse-time-vrp.cc
+@@ -15,7 +15,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+@@ -64,3 +64,24 @@ ParseTimeValueRangeProcessor::operator() (std::string &begin, std::string &end)
+ 
+     return valno;
+ }
++
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++/* XXX TODO: is throwing an exception the right thing to do here? */
++Xapian::Query DateFieldProcessor::operator()(const std::string & str) {
++    time_t from, to, now;
++
++    /* Use the same 'now' for begin and end. */
++    if (time (&now) == (time_t) -1)
++	throw Xapian::QueryParserError("Unable to get current time");
++
++    if (parse_time_string (str.c_str (), &from, &now, PARSE_TIME_ROUND_DOWN))
++	throw Xapian::QueryParserError ("Didn't understand date specification '" + str + "'");
++
++    if (parse_time_string (str.c_str (), &to, &now, PARSE_TIME_ROUND_UP_INCLUSIVE))
++	throw Xapian::QueryParserError ("Didn't understand date specification '" + str + "'");
++
++    return Xapian::Query(Xapian::Query::OP_AND,
++			 Xapian::Query(Xapian::Query::OP_VALUE_GE, 0, Xapian::sortable_serialise ((double) from)),
++			 Xapian::Query(Xapian::Query::OP_VALUE_LE, 0, Xapian::sortable_serialise ((double) to)));
++}
++#endif
+diff --git a/lib/parse-time-vrp.h b/lib/parse-time-vrp.h
+index 094c4f8..c024dba 100644
+--- a/lib/parse-time-vrp.h
++++ b/lib/parse-time-vrp.h
+@@ -15,7 +15,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+@@ -37,4 +37,9 @@ public:
+     Xapian::valueno operator() (std::string &begin, std::string &end);
+ };
+ 
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++class DateFieldProcessor : public Xapian::FieldProcessor {
++    Xapian::Query operator()(const std::string & str);
++};
++#endif
+ #endif /* NOTMUCH_PARSE_TIME_VRP_H */
+diff --git a/lib/query-fp.cc b/lib/query-fp.cc
+new file mode 100644
+index 0000000..c39f591
+--- /dev/null
++++ b/lib/query-fp.cc
+@@ -0,0 +1,43 @@
++/* query-fp.cc - "query:" field processor glue
++ *
++ * This file is part of notmuch.
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#include "database-private.h"
++#include "query-fp.h"
++#include <iostream>
++
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++
++Xapian::Query
++QueryFieldProcessor::operator() (const std::string & name)
++{
++    std::string key = "query." + name;
++    char *expansion;
++    notmuch_status_t status;
++
++    status = notmuch_database_get_config (notmuch, key.c_str (), &expansion);
++    if (status) {
++	throw Xapian::QueryParserError ("error looking up key" + name);
++    }
++
++    return parser.parse_query (expansion, NOTMUCH_QUERY_PARSER_FLAGS);
++}
++#endif
+diff --git a/lib/query-fp.h b/lib/query-fp.h
+new file mode 100644
+index 0000000..d6e4b31
+--- /dev/null
++++ b/lib/query-fp.h
+@@ -0,0 +1,42 @@
++/* query-fp.h - query field processor glue
++ *
++ * This file is part of notmuch.
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#ifndef NOTMUCH_QUERY_FP_H
++#define NOTMUCH_QUERY_FP_H
++
++#include <xapian.h>
++#include "notmuch.h"
++
++#if HAVE_XAPIAN_FIELD_PROCESSOR
++class QueryFieldProcessor : public Xapian::FieldProcessor {
++ protected:
++    Xapian::QueryParser &parser;
++    notmuch_database_t *notmuch;
++
++ public:
++    QueryFieldProcessor (Xapian::QueryParser &parser_, notmuch_database_t *notmuch_)
++	: parser(parser_), notmuch(notmuch_) { };
++
++    Xapian::Query operator()(const std::string & str);
++};
++#endif
++#endif /* NOTMUCH_QUERY_FP_H */
+diff --git a/lib/query.cc b/lib/query.cc
+index 77a7926..7eb73a1 100644
+--- a/lib/query.cc
++++ b/lib/query.cc
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -220,12 +220,6 @@ _notmuch_query_search_documents (notmuch_query_t *query,
+ 	Xapian::Query string_query, final_query, exclude_query;
+ 	Xapian::MSet mset;
+ 	Xapian::MSetIterator iterator;
+-	unsigned int flags = (Xapian::QueryParser::FLAG_BOOLEAN |
+-			      Xapian::QueryParser::FLAG_PHRASE |
+-			      Xapian::QueryParser::FLAG_LOVEHATE |
+-			      Xapian::QueryParser::FLAG_BOOLEAN_ANY_CASE |
+-			      Xapian::QueryParser::FLAG_WILDCARD |
+-			      Xapian::QueryParser::FLAG_PURE_NOT);
+ 
+ 	if (strcmp (query_string, "") == 0 ||
+ 	    strcmp (query_string, "*") == 0)
+@@ -233,7 +227,7 @@ _notmuch_query_search_documents (notmuch_query_t *query,
+ 	    final_query = mail_query;
+ 	} else {
+ 	    string_query = notmuch->query_parser->
+-		parse_query (query_string, flags);
++		parse_query (query_string, NOTMUCH_QUERY_PARSER_FLAGS);
+ 	    final_query = Xapian::Query (Xapian::Query::OP_AND,
+ 					 mail_query, string_query);
+ 	}
+@@ -282,7 +276,7 @@ _notmuch_query_search_documents (notmuch_query_t *query,
+ 	case NOTMUCH_SORT_MESSAGE_ID:
+ 	    enquire.set_sort_by_value (NOTMUCH_VALUE_MESSAGE_ID, FALSE);
+ 	    break;
+-        case NOTMUCH_SORT_UNSORTED:
++	case NOTMUCH_SORT_UNSORTED:
+ 	    break;
+ 	}
+ 
+@@ -418,7 +412,7 @@ _notmuch_doc_id_set_contains (notmuch_doc_id_set_t *doc_ids,
+ 
+ void
+ _notmuch_doc_id_set_remove (notmuch_doc_id_set_t *doc_ids,
+-                            unsigned int doc_id)
++			    unsigned int doc_id)
+ {
+     if (doc_id < doc_ids->bound)
+ 	doc_ids->bitmap[DOCIDSET_WORD(doc_id)] &= ~(1 << DOCIDSET_BIT(doc_id));
+@@ -579,12 +573,6 @@ _notmuch_query_count_documents (notmuch_query_t *query, const char *type, unsign
+ 						   type));
+ 	Xapian::Query string_query, final_query, exclude_query;
+ 	Xapian::MSet mset;
+-	unsigned int flags = (Xapian::QueryParser::FLAG_BOOLEAN |
+-			      Xapian::QueryParser::FLAG_PHRASE |
+-			      Xapian::QueryParser::FLAG_LOVEHATE |
+-			      Xapian::QueryParser::FLAG_BOOLEAN_ANY_CASE |
+-			      Xapian::QueryParser::FLAG_WILDCARD |
+-			      Xapian::QueryParser::FLAG_PURE_NOT);
+ 
+ 	if (strcmp (query_string, "") == 0 ||
+ 	    strcmp (query_string, "*") == 0)
+@@ -592,7 +580,7 @@ _notmuch_query_count_documents (notmuch_query_t *query, const char *type, unsign
+ 	    final_query = mail_query;
+ 	} else {
+ 	    string_query = notmuch->query_parser->
+-		parse_query (query_string, flags);
++		parse_query (query_string, NOTMUCH_QUERY_PARSER_FLAGS);
+ 	    final_query = Xapian::Query (Xapian::Query::OP_AND,
+ 					 mail_query, string_query);
+ 	}
+diff --git a/lib/sha1.c b/lib/sha1.c
+index 94060d5..b7dea1c 100644
+--- a/lib/sha1.c
++++ b/lib/sha1.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -112,4 +112,3 @@ _notmuch_sha1_of_file (const char *filename)
+ 
+     return result;
+ }
+-
+diff --git a/lib/string-list.c b/lib/string-list.c
+index da72746..43ebe49 100644
+--- a/lib/string-list.c
++++ b/lib/string-list.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  *         Austin Clements <aclements@csail.mit.edu>
+diff --git a/lib/string-map.c b/lib/string-map.c
+new file mode 100644
+index 0000000..591ff6d
+--- /dev/null
++++ b/lib/string-map.c
+@@ -0,0 +1,225 @@
++/* string-map.c - associative arrays of strings
++ *
++ *
++ * Copyright © 2016 David Bremner
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ * Author: David Bremner <david@tethera.net>
++ */
++
++#include "notmuch-private.h"
++
++/* Create a new notmuch_string_map_t object, with 'ctx' as its
++ * talloc owner.
++ *
++ * This function can return NULL in case of out-of-memory.
++ */
++
++typedef struct _notmuch_string_pair_t {
++    char *key;
++    char *value;
++} notmuch_string_pair_t;
++
++struct _notmuch_string_map {
++    notmuch_bool_t sorted;
++    size_t length;
++    notmuch_string_pair_t *pairs;
++};
++
++struct _notmuch_string_map_iterator {
++    notmuch_string_pair_t *current;
++    notmuch_bool_t exact;
++    const char *key;
++};
++
++notmuch_string_map_t *
++_notmuch_string_map_create (const void *ctx)
++{
++    notmuch_string_map_t *map;
++
++    map = talloc (ctx, notmuch_string_map_t);
++    if (unlikely (map == NULL))
++	return NULL;
++
++    map->length = 0;
++    map->pairs = NULL;
++    map->sorted = TRUE;
++
++    return map;
++}
++
++void
++_notmuch_string_map_append (notmuch_string_map_t *map,
++			    const char *key,
++			    const char *value)
++{
++
++    map->length++;
++    map->sorted = FALSE;
++
++    if (map->pairs)
++	map->pairs = talloc_realloc (map, map->pairs, notmuch_string_pair_t, map->length + 1);
++    else
++	map->pairs = talloc_array (map, notmuch_string_pair_t, map->length + 1);
++
++    map->pairs[map->length - 1].key = talloc_strdup (map, key);
++    map->pairs[map->length - 1].value = talloc_strdup (map, value);
++
++    /* Add sentinel */
++    map->pairs[map->length].key = NULL;
++    map->pairs[map->length].value = NULL;
++
++}
++
++static int
++cmppair (const void *pa, const void *pb)
++{
++    notmuch_string_pair_t *a = (notmuch_string_pair_t *) pa;
++    notmuch_string_pair_t *b = (notmuch_string_pair_t *) pb;
++
++    return strcmp (a->key, b->key);
++}
++
++static void
++_notmuch_string_map_sort (notmuch_string_map_t *map)
++{
++    if (map->length == 0)
++	return;
++
++    if (map->sorted)
++	return;
++
++    qsort (map->pairs, map->length, sizeof (notmuch_string_pair_t), cmppair);
++
++    map->sorted = TRUE;
++}
++
++static notmuch_bool_t
++string_cmp (const char *a, const char *b, notmuch_bool_t exact)
++{
++    if (exact)
++	return (strcmp (a, b));
++    else
++	return (strncmp (a, b, strlen (a)));
++}
++
++static notmuch_string_pair_t *
++bsearch_first (notmuch_string_pair_t *array, size_t len, const char *key, notmuch_bool_t exact)
++{
++    size_t first = 0;
++    size_t last = len - 1;
++    size_t mid;
++
++    if (len <= 0)
++	return NULL;
++
++    while (last > first) {
++	mid = (first + last) / 2;
++	int sign = string_cmp (key, array[mid].key, exact);
++
++	if (sign <= 0)
++	    last = mid;
++	else
++	    first = mid + 1;
++    }
++
++
++    if (string_cmp (key, array[first].key, exact) == 0)
++	return array + first;
++    else
++	return NULL;
++
++}
++
++const char *
++_notmuch_string_map_get (notmuch_string_map_t *map, const char *key)
++{
++    notmuch_string_pair_t *pair;
++
++    /* this means that calling append invalidates iterators */
++    _notmuch_string_map_sort (map);
++
++    pair = bsearch_first (map->pairs, map->length, key, TRUE);
++    if (! pair)
++	return NULL;
++
++    return pair->value;
++}
++
++notmuch_string_map_iterator_t *
++_notmuch_string_map_iterator_create (notmuch_string_map_t *map, const char *key,
++				     notmuch_bool_t exact)
++{
++    notmuch_string_map_iterator_t *iter;
++
++    _notmuch_string_map_sort (map);
++
++    iter = talloc (map, notmuch_string_map_iterator_t);
++    if (unlikely (iter == NULL))
++	return NULL;
++
++    iter->key = talloc_strdup (iter, key);
++    iter->exact = exact;
++    iter->current = bsearch_first (map->pairs, map->length, key, exact);
++    return iter;
++}
++
++notmuch_bool_t
++_notmuch_string_map_iterator_valid (notmuch_string_map_iterator_t *iterator)
++{
++    if (iterator->current == NULL)
++	return FALSE;
++
++    /* sentinel */
++    if (iterator->current->key == NULL)
++	return FALSE;
++
++    return (0 == string_cmp (iterator->key, iterator->current->key, iterator->exact));
++
++}
++
++void
++_notmuch_string_map_iterator_move_to_next (notmuch_string_map_iterator_t *iterator)
++{
++
++    if (! _notmuch_string_map_iterator_valid (iterator))
++	return;
++
++    (iterator->current)++;
++}
++
++const char *
++_notmuch_string_map_iterator_key (notmuch_string_map_iterator_t *iterator)
++{
++    if (! _notmuch_string_map_iterator_valid (iterator))
++	return NULL;
++
++    return iterator->current->key;
++}
++
++const char *
++_notmuch_string_map_iterator_value (notmuch_string_map_iterator_t *iterator)
++{
++    if (! _notmuch_string_map_iterator_valid (iterator))
++	return NULL;
++
++    return iterator->current->value;
++}
++
++void
++_notmuch_string_map_iterator_destroy (notmuch_string_map_iterator_t *iterator)
++{
++    talloc_free (iterator);
++}
+diff --git a/lib/tags.c b/lib/tags.c
+index b7e5602..c7d3f66 100644
+--- a/lib/tags.c
++++ b/lib/tags.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/lib/thread.cc b/lib/thread.cc
+index 0c937d7..84ee529 100644
+--- a/lib/thread.cc
++++ b/lib/thread.cc
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/mime-node.c b/mime-node.c
+index e96e663..717a122 100644
+--- a/mime-node.c
++++ b/mime-node.c
+@@ -14,7 +14,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Authors: Carl Worth <cworth@cworth.org>
+  *          Keith Packard <keithp@keithp.com>
+@@ -33,7 +33,7 @@ typedef struct mime_node_context {
+     GMimeMessage *mime_message;
+ 
+     /* Context provided by the caller. */
+-    notmuch_crypto_t *crypto;
++    _notmuch_crypto_t *crypto;
+ } mime_node_context_t;
+ 
+ static int
+@@ -56,7 +56,7 @@ _mime_node_context_free (mime_node_context_t *res)
+ 
+ notmuch_status_t
+ mime_node_open (const void *ctx, notmuch_message_t *message,
+-		notmuch_crypto_t *crypto, mime_node_t **root_out)
++		_notmuch_crypto_t *crypto, mime_node_t **root_out)
+ {
+     const char *filename = notmuch_message_get_filename (message);
+     mime_node_context_t *mctx;
+@@ -151,7 +151,7 @@ set_signature_list_destructor (mime_node_t *node)
+ /* Verify a signed mime node (GMime 2.6) */
+ static void
+ node_verify (mime_node_t *node, GMimeObject *part,
+-	     notmuch_crypto_context_t *cryptoctx)
++	     GMimeCryptoContext *cryptoctx)
+ {
+     GError *err = NULL;
+ 
+@@ -172,7 +172,7 @@ node_verify (mime_node_t *node, GMimeObject *part,
+ /* Decrypt and optionally verify an encrypted mime node (GMime 2.6) */
+ static void
+ node_decrypt_and_verify (mime_node_t *node, GMimeObject *part,
+-			 notmuch_crypto_context_t *cryptoctx)
++			 GMimeCryptoContext *cryptoctx)
+ {
+     GError *err = NULL;
+     GMimeDecryptResult *decrypt_result = NULL;
+@@ -207,7 +207,7 @@ static mime_node_t *
+ _mime_node_create (mime_node_t *parent, GMimeObject *part)
+ {
+     mime_node_t *node = talloc_zero (parent, mime_node_t);
+-    notmuch_crypto_context_t *cryptoctx = NULL;
++    GMimeCryptoContext *cryptoctx = NULL;
+ 
+     /* Set basic node properties */
+     node->part = part;
+@@ -244,7 +244,12 @@ _mime_node_create (mime_node_t *parent, GMimeObject *part)
+ 	|| (GMIME_IS_MULTIPART_SIGNED (part) && node->ctx->crypto->verify)) {
+ 	GMimeContentType *content_type = g_mime_object_get_content_type (part);
+ 	const char *protocol = g_mime_content_type_get_parameter (content_type, "protocol");
+-	cryptoctx = notmuch_crypto_get_context (node->ctx->crypto, protocol);
++	notmuch_status_t status;
++	status = _notmuch_crypto_get_gmime_ctx_for_protocol (node->ctx->crypto,
++							     protocol, &cryptoctx);
++	if (status) /* this is a warning, not an error */
++	    fprintf (stderr, "Warning: %s (%s).\n", notmuch_status_to_string (status),
++		     protocol ? protocol : "(NULL)");
+     }
+ 
+     /* Handle PGP/MIME parts */
+diff --git a/notmuch-client.h b/notmuch-client.h
+index b3d0b66..a32ef7a 100644
+--- a/notmuch-client.h
++++ b/notmuch-client.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -30,10 +30,6 @@
+ 
+ #include <gmime/gmime.h>
+ 
+-typedef GMimeCryptoContext notmuch_crypto_context_t;
+-/* This is automatically included only since gmime 2.6.10 */
+-#include <gmime/gmime-pkcs7-context.h>
+-
+ #include "notmuch.h"
+ 
+ /* This is separate from notmuch-private.h because we're trying to
+@@ -53,6 +49,7 @@ typedef GMimeCryptoContext notmuch_crypto_context_t;
+ #include <ctype.h>
+ 
+ #include "talloc-extra.h"
++#include "crypto.h"
+ 
+ #define unused(x) x __attribute__ ((unused))
+ 
+@@ -70,21 +67,13 @@ typedef struct notmuch_show_format {
+ 			      const struct notmuch_show_params *params);
+ } notmuch_show_format_t;
+ 
+-typedef struct notmuch_crypto {
+-    notmuch_crypto_context_t* gpgctx;
+-    notmuch_crypto_context_t* pkcs7ctx;
+-    notmuch_bool_t verify;
+-    notmuch_bool_t decrypt;
+-    const char *gpgpath;
+-} notmuch_crypto_t;
+-
+ typedef struct notmuch_show_params {
+     notmuch_bool_t entire_thread;
+     notmuch_bool_t omit_excluded;
+     notmuch_bool_t output_body;
+     notmuch_bool_t raw;
+     int part;
+-    notmuch_crypto_t crypto;
++    _notmuch_crypto_t crypto;
+     notmuch_bool_t include_html;
+ } notmuch_show_params_t;
+ 
+@@ -167,12 +156,6 @@ typedef struct _notmuch_config notmuch_config_t;
+ void
+ notmuch_exit_if_unsupported_format (void);
+ 
+-notmuch_crypto_context_t *
+-notmuch_crypto_get_context (notmuch_crypto_t *crypto, const char *protocol);
+-
+-int
+-notmuch_crypto_cleanup (notmuch_crypto_t *crypto);
+-
+ int
+ notmuch_count_command (notmuch_config_t *config, int argc, char *argv[]);
+ 
+@@ -186,6 +169,9 @@ int
+ notmuch_insert_command (notmuch_config_t *config, int argc, char *argv[]);
+ 
+ int
++notmuch_reindex_command (notmuch_config_t *config, int argc, char *argv[]);
++
++int
+ notmuch_reply_command (notmuch_config_t *config, int argc, char *argv[]);
+ 
+ int
+@@ -423,7 +409,7 @@ struct mime_node {
+  */
+ notmuch_status_t
+ mime_node_open (const void *ctx, notmuch_message_t *message,
+-		notmuch_crypto_t *crypto, mime_node_t **node_out);
++		_notmuch_crypto_t *crypto, mime_node_t **node_out);
+ 
+ /* Return a new MIME node for the requested child part of parent.
+  * parent will be used as the talloc context for the returned child
+@@ -446,11 +432,22 @@ typedef enum dump_formats {
+     DUMP_FORMAT_SUP
+ } dump_format_t;
+ 
++typedef enum dump_includes {
++    DUMP_INCLUDE_TAGS = 1,
++    DUMP_INCLUDE_CONFIG = 2,
++    DUMP_INCLUDE_PROPERTIES = 4
++} dump_include_t;
++
++#define DUMP_INCLUDE_DEFAULT (DUMP_INCLUDE_TAGS | DUMP_INCLUDE_CONFIG | DUMP_INCLUDE_PROPERTIES)
++
++#define NOTMUCH_DUMP_VERSION 2
++
+ int
+ notmuch_database_dump (notmuch_database_t *notmuch,
+ 		       const char *output_file_name,
+ 		       const char *query_str,
+ 		       dump_format_t output_format,
++		       dump_include_t include,
+ 		       notmuch_bool_t gzip_output);
+ 
+ /* If status is non-zero (i.e. error) print appropriate
+diff --git a/notmuch-compact.c b/notmuch-compact.c
+index 9373721..855545d 100644
+--- a/notmuch-compact.c
++++ b/notmuch-compact.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Ben Gamari <bgamari.foss@gmail.com>
+  */
+diff --git a/notmuch-config.c b/notmuch-config.c
+index d252bb2..9e4601a 100644
+--- a/notmuch-config.c
++++ b/notmuch-config.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -27,7 +27,7 @@
+ static const char toplevel_config_comment[] =
+     " .notmuch-config - Configuration file for the notmuch mail system\n"
+     "\n"
+-    " For more information about notmuch, see http://notmuchmail.org";
++    " For more information about notmuch, see https://notmuchmail.org";
+ 
+ static const char database_config_comment[] =
+     " Database configuration\n"
+@@ -417,9 +417,8 @@ notmuch_config_open (void *ctx,
+ 	g_error_free (error);
+     }
+ 
+-    if (notmuch_config_get_crypto_gpg_path (config) == NULL) {
+-	notmuch_config_set_crypto_gpg_path (config, "gpg");
+-    }
++    if (notmuch_config_get_crypto_gpg_path (config) == NULL)
++	notmuch_config_set_crypto_gpg_path (config, _notmuch_crypto_get_gpg_path (NULL));
+     
+     /* Whenever we know of configuration sections that don't appear in
+      * the configuration file, we add some comments to help the user
+@@ -750,6 +749,30 @@ _item_split (char *item, char **group, char **key)
+     return 0;
+ }
+ 
++#define BUILT_WITH_PREFIX "built_with."
++#define QUERY_PREFIX "query."
++
++static int
++_print_db_config(notmuch_config_t *config, const char *name)
++{
++    notmuch_database_t *notmuch;
++    char *val;
++
++    if (notmuch_database_open (notmuch_config_get_database_path (config),
++			       NOTMUCH_DATABASE_MODE_READ_ONLY, &notmuch))
++	return EXIT_FAILURE;
++
++    /* XXX Handle UUID mismatch? */
++
++    if (print_status_database ("notmuch config", notmuch,
++			       notmuch_database_get_config (notmuch, name, &val)))
++	return EXIT_FAILURE;
++
++     puts (val);
++
++    return EXIT_SUCCESS;
++}
++
+ static int
+ notmuch_config_command_get (notmuch_config_t *config, char *item)
+ {
+@@ -773,6 +796,11 @@ notmuch_config_command_get (notmuch_config_t *config, char *item)
+ 	tags = notmuch_config_get_new_tags (config, &length);
+ 	for (i = 0; i < length; i++)
+ 	    printf ("%s\n", tags[i]);
++    } else if (STRNCMP_LITERAL (item, BUILT_WITH_PREFIX) == 0) {
++	printf ("%s\n",
++		notmuch_built_with (item + strlen (BUILT_WITH_PREFIX)) ? "true" : "false");
++    } else if (STRNCMP_LITERAL (item, QUERY_PREFIX) == 0) {
++	return _print_db_config (config, item);
+     } else {
+ 	char **value;
+ 	size_t i, length;
+@@ -800,10 +828,52 @@ notmuch_config_command_get (notmuch_config_t *config, char *item)
+ }
+ 
+ static int
++_set_db_config(notmuch_config_t *config, const char *key, int argc, char **argv)
++{
++    notmuch_database_t *notmuch;
++    const char *val = "";
++
++    if (argc > 1) {
++	/* XXX handle lists? */
++	fprintf (stderr, "notmuch config set: at most one value expected for %s\n", key);
++	return EXIT_FAILURE;
++    }
++
++    if (argc > 0) {
++	val = argv[0];
++    }
++
++    if (notmuch_database_open (notmuch_config_get_database_path (config),
++			       NOTMUCH_DATABASE_MODE_READ_WRITE, &notmuch))
++	return EXIT_FAILURE;
++
++    /* XXX Handle UUID mismatch? */
++
++    if (print_status_database ("notmuch config", notmuch,
++			       notmuch_database_set_config (notmuch, key, val)))
++	return EXIT_FAILURE;
++
++    if (print_status_database ("notmuch config", notmuch,
++			       notmuch_database_close (notmuch)))
++	return EXIT_FAILURE;
++
++    return EXIT_SUCCESS;
++}
++
++static int
+ notmuch_config_command_set (notmuch_config_t *config, char *item, int argc, char *argv[])
+ {
+     char *group, *key;
+ 
++    if (STRNCMP_LITERAL (item, BUILT_WITH_PREFIX) == 0) {
++	fprintf (stderr, "Error: read only option: %s\n", item);
++	return 1;
++    }
++
++    if (STRNCMP_LITERAL (item, QUERY_PREFIX) == 0) {
++	return _set_db_config (config, item, argc, argv);
++    }
++
+     if (_item_split (item, &group, &key))
+ 	return 1;
+ 
+@@ -830,6 +900,46 @@ notmuch_config_command_set (notmuch_config_t *config, char *item, int argc, char
+     return notmuch_config_save (config);
+ }
+ 
++static
++void
++_notmuch_config_list_built_with ()
++{
++    printf("%scompact=%s\n",
++	   BUILT_WITH_PREFIX,
++	   notmuch_built_with ("compact") ? "true" : "false");
++    printf("%sfield_processor=%s\n",
++	   BUILT_WITH_PREFIX,
++	   notmuch_built_with ("field_processor") ? "true" : "false");
++    printf("%sretry_lock=%s\n",
++	   BUILT_WITH_PREFIX,
++	   notmuch_built_with ("retry_lock") ? "true" : "false");
++}
++
++static int
++_list_db_config (notmuch_config_t *config)
++{
++    notmuch_database_t *notmuch;
++    notmuch_config_list_t *list;
++
++    if (notmuch_database_open (notmuch_config_get_database_path (config),
++			       NOTMUCH_DATABASE_MODE_READ_ONLY, &notmuch))
++	return EXIT_FAILURE;
++
++    /* XXX Handle UUID mismatch? */
++
++
++    if (print_status_database ("notmuch config", notmuch,
++			       notmuch_database_get_config_list (notmuch, "", &list)))
++	return EXIT_FAILURE;
++
++    for (; notmuch_config_list_valid (list); notmuch_config_list_move_to_next (list)) {
++	printf("%s=%s\n", notmuch_config_list_key (list), notmuch_config_list_value(list));
++    }
++    notmuch_config_list_destroy (list);
++
++   return EXIT_SUCCESS;
++}
++
+ static int
+ notmuch_config_command_list (notmuch_config_t *config)
+ {
+@@ -865,7 +975,8 @@ notmuch_config_command_list (notmuch_config_t *config)
+ 
+     g_strfreev (groups);
+ 
+-    return 0;
++    _notmuch_config_list_built_with ();
++    return _list_db_config (config);
+ }
+ 
+ int
+diff --git a/notmuch-count.c b/notmuch-count.c
+index 0b6e6f5..35a2aa7 100644
+--- a/notmuch-count.c
++++ b/notmuch-count.c
+@@ -14,7 +14,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Keith Packard <keithp@keithp.com>
+  */
+diff --git a/notmuch-dump.c b/notmuch-dump.c
+index 829781f..ec82660 100644
+--- a/notmuch-dump.c
++++ b/notmuch-dump.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -23,15 +23,209 @@
+ #include "string-util.h"
+ #include <zlib.h>
+ 
++static int
++database_dump_config (notmuch_database_t *notmuch, gzFile output)
++{
++    notmuch_config_list_t *list;
++    int ret = EXIT_FAILURE;
++    char *buffer = NULL;
++    size_t buffer_size = 0;
++
++    if (print_status_database ("notmuch dump", notmuch,
++			       notmuch_database_get_config_list (notmuch, NULL, &list)))
++	goto DONE;
++
++    for (; notmuch_config_list_valid (list); notmuch_config_list_move_to_next (list)) {
++	if (hex_encode (notmuch, notmuch_config_list_key (list),
++			&buffer, &buffer_size) != HEX_SUCCESS) {
++	    fprintf (stderr, "Error: failed to hex-encode config key %s\n",
++		     notmuch_config_list_key (list));
++	    goto DONE;
++	}
++	gzprintf (output, "#@ %s", buffer);
++
++	if (hex_encode (notmuch, notmuch_config_list_value (list),
++			&buffer, &buffer_size) != HEX_SUCCESS) {
++	    fprintf (stderr, "Error: failed to hex-encode config value %s\n",
++		     notmuch_config_list_value (list) );
++	    goto DONE;
++	}
++
++	gzprintf (output, " %s\n", buffer);
++    }
++
++    ret = EXIT_SUCCESS;
++
++ DONE:
++    if (list)
++	notmuch_config_list_destroy (list);
++
++    if (buffer)
++	talloc_free (buffer);
++
++    return ret;
++}
++
++static void
++print_dump_header (gzFile output, int output_format, int include)
++{
++    const char *sep = "";
++
++    gzprintf (output, "#notmuch-dump %s:%d ",
++	      (output_format == DUMP_FORMAT_SUP) ? "sup" : "batch-tag",
++	      NOTMUCH_DUMP_VERSION);
++
++    if (include & DUMP_INCLUDE_CONFIG) {
++	gzputs (output, "config");
++	sep = ",";
++    }
++    if (include & DUMP_INCLUDE_PROPERTIES) {
++	gzprintf (output, "%sproperties",sep);
++	sep = ",";
++    }
++    if (include & DUMP_INCLUDE_TAGS) {
++	gzprintf (output, "%sproperties",sep);
++    }
++    gzputs (output, "\n");
++}
++
++static int
++dump_properties_message (void *ctx,
++			 notmuch_message_t *message,
++			 gzFile output,
++			 char **buffer_p, size_t *size_p)
++{
++    const char *message_id;
++    notmuch_message_properties_t *list;
++    notmuch_bool_t first = TRUE;
++
++    message_id = notmuch_message_get_message_id (message);
++
++    if (strchr (message_id, '\n')) {
++	fprintf (stderr, "Warning: skipping message id containing line break: \"%s\"\n", message_id);
++	return 0;
++    }
++
++   for (list = notmuch_message_get_properties (message, "", FALSE);
++	notmuch_message_properties_valid (list); notmuch_message_properties_move_to_next (list)) {
++       const char *key, *val;
++
++       if (first) {
++	   if (hex_encode (ctx, message_id, buffer_p, size_p) != HEX_SUCCESS) {
++	       fprintf (stderr, "Error: failed to hex-encode message-id %s\n", message_id);
++	       return 1;
++	   }
++	   gzprintf (output, "#= %s", *buffer_p);
++	   first = FALSE;
++       }
++
++       key = notmuch_message_properties_key (list);
++       val = notmuch_message_properties_value (list);
++
++       if (hex_encode (ctx, key, buffer_p, size_p) != HEX_SUCCESS) {
++	   fprintf (stderr, "Error: failed to hex-encode key %s\n", key);
++	   return 1;
++       }
++       gzprintf (output, " %s", *buffer_p);
++
++       if (hex_encode (ctx, val, buffer_p, size_p) != HEX_SUCCESS) {
++	   fprintf (stderr, "Error: failed to hex-encode value %s\n", val);
++	   return 1;
++       }
++       gzprintf (output, "=%s", *buffer_p);
++}
++   notmuch_message_properties_destroy (list);
++
++   if (!first)
++       gzprintf (output, "\n", *buffer_p);
++
++    return 0;
++}
++
++static int
++dump_tags_message (void *ctx,
++		   notmuch_message_t *message, int output_format,
++		   gzFile output,
++		   char **buffer_p, size_t *size_p)
++{
++    int first = 1;
++    const char *message_id;
++
++    message_id = notmuch_message_get_message_id (message);
++
++    if (output_format == DUMP_FORMAT_BATCH_TAG &&
++	strchr (message_id, '\n')) {
++	/* This will produce a line break in the output, which
++	 * would be difficult to handle in tools.  However, it's
++	 * also impossible to produce an email containing a line
++	 * break in a message ID because of unfolding, so we can
++	 * safely disallow it. */
++	fprintf (stderr, "Warning: skipping message id containing line break: \"%s\"\n", message_id);
++	return EXIT_SUCCESS;
++    }
++
++    if (output_format == DUMP_FORMAT_SUP) {
++	gzprintf (output, "%s (", message_id);
++    }
++
++    for (notmuch_tags_t *tags = notmuch_message_get_tags (message);
++	 notmuch_tags_valid (tags);
++	 notmuch_tags_move_to_next (tags)) {
++	const char *tag_str = notmuch_tags_get (tags);
++
++	if (! first)
++	    gzputs (output, " ");
++
++	first = 0;
++
++	if (output_format == DUMP_FORMAT_SUP) {
++	    gzputs (output, tag_str);
++	} else {
++	    if (hex_encode (ctx, tag_str,
++			    buffer_p, size_p) != HEX_SUCCESS) {
++		fprintf (stderr, "Error: failed to hex-encode tag %s\n",
++			 tag_str);
++		return EXIT_FAILURE;
++	    }
++	    gzprintf (output, "+%s", *buffer_p);
++	}
++    }
++
++    if (output_format == DUMP_FORMAT_SUP) {
++	gzputs (output, ")\n");
++    } else {
++	if (make_boolean_term (ctx, "id", message_id,
++			       buffer_p, size_p)) {
++	    fprintf (stderr, "Error quoting message id %s: %s\n",
++		     message_id, strerror (errno));
++	    return EXIT_FAILURE;
++	}
++	gzprintf (output, " -- %s\n", *buffer_p);
++    }
++    return EXIT_SUCCESS;
++}
+ 
+ static int
+ database_dump_file (notmuch_database_t *notmuch, gzFile output,
+-		    const char *query_str, int output_format)
++		    const char *query_str, int output_format, int include)
+ {
+     notmuch_query_t *query;
+     notmuch_messages_t *messages;
+     notmuch_message_t *message;
+-    notmuch_tags_t *tags;
++    notmuch_status_t status;
++    char *buffer = NULL;
++    size_t buffer_size = 0;
++
++    print_dump_header (output, output_format, include);
++
++    if (include & DUMP_INCLUDE_CONFIG) {
++	if (print_status_database ("notmuch dump", notmuch,
++				   database_dump_config(notmuch,output)))
++	    return EXIT_FAILURE;
++    }
++
++    if (! (include & (DUMP_INCLUDE_TAGS | DUMP_INCLUDE_PROPERTIES)))
++	return EXIT_SUCCESS;
+ 
+     if (! query_str)
+ 	query_str = "";
+@@ -46,10 +240,6 @@ database_dump_file (notmuch_database_t *notmuch, gzFile output,
+      */
+     notmuch_query_set_sort (query, NOTMUCH_SORT_UNSORTED);
+ 
+-    char *buffer = NULL;
+-    size_t buffer_size = 0;
+-    notmuch_status_t status;
+-
+     status = notmuch_query_search_messages_st (query, &messages);
+     if (print_status_query ("notmuch dump", query, status))
+ 	return EXIT_FAILURE;
+@@ -57,62 +247,17 @@ database_dump_file (notmuch_database_t *notmuch, gzFile output,
+     for (;
+ 	 notmuch_messages_valid (messages);
+ 	 notmuch_messages_move_to_next (messages)) {
+-	int first = 1;
+-	const char *message_id;
+ 
+ 	message = notmuch_messages_get (messages);
+-	message_id = notmuch_message_get_message_id (message);
+-
+-	if (output_format == DUMP_FORMAT_BATCH_TAG &&
+-	    strchr (message_id, '\n')) {
+-	    /* This will produce a line break in the output, which
+-	     * would be difficult to handle in tools.  However, it's
+-	     * also impossible to produce an email containing a line
+-	     * break in a message ID because of unfolding, so we can
+-	     * safely disallow it. */
+-	    fprintf (stderr, "Warning: skipping message id containing line break: \"%s\"\n", message_id);
+-	    notmuch_message_destroy (message);
+-	    continue;
+-	}
+ 
+-	if (output_format == DUMP_FORMAT_SUP) {
+-	    gzprintf (output, "%s (", message_id);
+-	}
+-
+-	for (tags = notmuch_message_get_tags (message);
+-	     notmuch_tags_valid (tags);
+-	     notmuch_tags_move_to_next (tags)) {
+-	    const char *tag_str = notmuch_tags_get (tags);
+-
+-	    if (! first)
+-		gzputs (output, " ");
+-
+-	    first = 0;
+-
+-	    if (output_format == DUMP_FORMAT_SUP) {
+-		gzputs (output, tag_str);
+-	    } else {
+-		if (hex_encode (notmuch, tag_str,
+-				&buffer, &buffer_size) != HEX_SUCCESS) {
+-		    fprintf (stderr, "Error: failed to hex-encode tag %s\n",
+-			     tag_str);
+-		    return EXIT_FAILURE;
+-		}
+-		gzprintf (output, "+%s", buffer);
+-	    }
+-	}
++	if (dump_tags_message (notmuch, message, output_format, output,
++			       &buffer, &buffer_size))
++	    return EXIT_FAILURE;
+ 
+-	if (output_format == DUMP_FORMAT_SUP) {
+-	    gzputs (output, ")\n");
+-	} else {
+-	    if (make_boolean_term (notmuch, "id", message_id,
+-				   &buffer, &buffer_size)) {
+-		    fprintf (stderr, "Error quoting message id %s: %s\n",
+-			     message_id, strerror (errno));
+-		    return EXIT_FAILURE;
+-	    }
+-	    gzprintf (output, " -- %s\n", buffer);
+-	}
++	if ((include & DUMP_INCLUDE_PROPERTIES) &&
++	    dump_properties_message (notmuch, message, output,
++				     &buffer, &buffer_size))
++	    return EXIT_FAILURE;
+ 
+ 	notmuch_message_destroy (message);
+     }
+@@ -130,6 +275,7 @@ notmuch_database_dump (notmuch_database_t *notmuch,
+ 		       const char *output_file_name,
+ 		       const char *query_str,
+ 		       dump_format_t output_format,
++		       dump_include_t include,
+ 		       notmuch_bool_t gzip_output)
+ {
+     gzFile output = NULL;
+@@ -164,7 +310,7 @@ notmuch_database_dump (notmuch_database_t *notmuch,
+ 	goto DONE;
+     }
+ 
+-    ret = database_dump_file (notmuch, output, query_str, output_format);
++    ret = database_dump_file (notmuch, output, query_str, output_format, include);
+     if (ret) goto DONE;
+ 
+     ret = gzflush (output, Z_FINISH);
+@@ -226,6 +372,7 @@ notmuch_dump_command (notmuch_config_t *config, int argc, char *argv[])
+     int opt_index;
+ 
+     int output_format = DUMP_FORMAT_BATCH_TAG;
++    int include = 0;
+     notmuch_bool_t gzip_output = 0;
+ 
+     notmuch_opt_desc_t options[] = {
+@@ -233,6 +380,10 @@ notmuch_dump_command (notmuch_config_t *config, int argc, char *argv[])
+ 	  (notmuch_keyword_t []){ { "sup", DUMP_FORMAT_SUP },
+ 				  { "batch-tag", DUMP_FORMAT_BATCH_TAG },
+ 				  { 0, 0 } } },
++	{ NOTMUCH_OPT_KEYWORD_FLAGS, &include, "include", 'I',
++	  (notmuch_keyword_t []){ { "config", DUMP_INCLUDE_CONFIG },
++				  { "properties", DUMP_INCLUDE_PROPERTIES },
++				  { "tags", DUMP_INCLUDE_TAGS} } },
+ 	{ NOTMUCH_OPT_STRING, &output_file_name, "output", 'o', 0  },
+ 	{ NOTMUCH_OPT_BOOLEAN, &gzip_output, "gzip", 'z', 0 },
+ 	{ NOTMUCH_OPT_INHERIT, (void *) &notmuch_shared_options, NULL, 0, 0 },
+@@ -245,6 +396,9 @@ notmuch_dump_command (notmuch_config_t *config, int argc, char *argv[])
+ 
+     notmuch_process_shared_options (argv[0]);
+ 
++    if (include == 0)
++	include = DUMP_INCLUDE_CONFIG | DUMP_INCLUDE_TAGS | DUMP_INCLUDE_PROPERTIES;
++
+     if (opt_index < argc) {
+ 	query_str = query_string_from_args (notmuch, argc - opt_index, argv + opt_index);
+ 	if (query_str == NULL) {
+@@ -254,7 +408,7 @@ notmuch_dump_command (notmuch_config_t *config, int argc, char *argv[])
+     }
+ 
+     ret = notmuch_database_dump (notmuch, output_file_name, query_str,
+-				 output_format, gzip_output);
++				 output_format, include, gzip_output);
+ 
+     notmuch_database_destroy (notmuch);
+ 
+diff --git a/notmuch-emacs-mua b/notmuch-emacs-mua
+index 4404cd7..f9d8371 100755
+--- a/notmuch-emacs-mua
++++ b/notmuch-emacs-mua
+@@ -15,7 +15,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ #
+ # Authors: Jani Nikula <jani@nikula.org>
+ #
+@@ -39,8 +39,10 @@ USE_EMACSCLIENT=
+ AUTO_DAEMON=
+ CREATE_FRAME=
+ 
++escape -v pwd "$PWD"
++
+ # The crux of it all: construct an elisp progn and eval it.
+-ELISP="(prog1 'done (require 'notmuch) (notmuch-mua-new-mail)"
++ELISP="(prog1 'done (require 'notmuch) (cd \"$pwd\") (notmuch-mua-new-mail)"
+ 
+ # Short options compatible with mutt(1).
+ while getopts :s:c:b:i:h opt; do
+@@ -95,7 +97,7 @@ while getopts :s:c:b:i:h opt; do
+ 	    ELISP="${ELISP} (message-goto-bcc) (insert \"${OPTARG}, \")"
+ 	    ;;
+ 	--body|i)
+-	    ELISP="${ELISP} (message-goto-body) (cd \"${PWD}\") (insert-file \"${OPTARG}\")"
++	    ELISP="${ELISP} (message-goto-body) (insert-file \"${OPTARG}\")"
+ 	    ;;
+ 	--print)
+ 	    PRINT_ONLY=1
+@@ -132,7 +134,7 @@ done
+ 
+ # Kill the terminal/frame if we're creating one.
+ if [ -z "$USE_EMACSCLIENT" -o -n "$CREATE_FRAME" -o -n "$NO_WINDOW" ]; then
+-    ELISP="${ELISP} (setq message-exit-actions (list #'save-buffers-kill-terminal))"
++    ELISP="${ELISP} (message-add-action #'save-buffers-kill-terminal 'exit)"
+ fi
+ 
+ # End progn.
+diff --git a/notmuch-insert.c b/notmuch-insert.c
+index 5205c17..eec0eb5 100644
+--- a/notmuch-insert.c
++++ b/notmuch-insert.c
+@@ -16,7 +16,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Peter Wang <novalazy@gmail.com>
+  */
+@@ -378,12 +378,13 @@ FAIL:
+  */
+ static notmuch_status_t
+ add_file (notmuch_database_t *notmuch, const char *path, tag_op_list_t *tag_ops,
+-	  notmuch_bool_t synchronize_flags, notmuch_bool_t keep)
++	  notmuch_bool_t synchronize_flags, notmuch_bool_t keep,
++	  notmuch_indexopts_t *indexopts)
+ {
+     notmuch_message_t *message;
+     notmuch_status_t status;
+ 
+-    status = notmuch_database_add_message (notmuch, path, &message);
++    status = notmuch_database_add_message_with_indexopts (notmuch, path, indexopts, &message);
+     if (status == NOTMUCH_STATUS_SUCCESS) {
+ 	status = tag_op_list_apply (message, tag_ops, 0);
+ 	if (status) {
+@@ -455,17 +456,20 @@ notmuch_insert_command (notmuch_config_t *config, int argc, char *argv[])
+     notmuch_bool_t create_folder = FALSE;
+     notmuch_bool_t keep = FALSE;
+     notmuch_bool_t no_hooks = FALSE;
++    notmuch_bool_t try_decrypt = FALSE;
+     notmuch_bool_t synchronize_flags;
+     const char *maildir;
+     char *newpath;
+     int opt_index;
+     unsigned int i;
++    notmuch_indexopts_t *indexopts;
+ 
+     notmuch_opt_desc_t options[] = {
+ 	{ NOTMUCH_OPT_STRING, &folder, "folder", 0, 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN, &create_folder, "create-folder", 0, 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN, &keep, "keep", 0, 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN,  &no_hooks, "no-hooks", 'n', 0 },
++	{ NOTMUCH_OPT_BOOLEAN,  &try_decrypt, "try-decrypt", 0, 0 },
+ 	{ NOTMUCH_OPT_INHERIT, (void *) &notmuch_shared_options, NULL, 0, 0 },
+ 	{ NOTMUCH_OPT_END, 0, 0, 0, 0 }
+     };
+@@ -545,8 +549,29 @@ notmuch_insert_command (notmuch_config_t *config, int argc, char *argv[])
+ 	return EXIT_FAILURE;
+     }
+ 
++    indexopts = notmuch_indexopts_create ();
++    if (!indexopts) {
++	fprintf (stderr, "Error: could not create index options.\n");
++	return EXIT_FAILURE;
++    }
++    status = notmuch_indexopts_set_try_decrypt (indexopts, try_decrypt);
++    if (status != NOTMUCH_STATUS_SUCCESS) {
++	fprintf (stderr, "Error: Failed to set try_decrypt to %s. (%s)\n",
++		 try_decrypt ? "True" : "False", notmuch_status_to_string (status));
++	notmuch_indexopts_destroy (indexopts);
++	return EXIT_FAILURE;
++    }
++    if (try_decrypt) {
++	const char* gpg_path = notmuch_config_get_crypto_gpg_path (config);
++	status = notmuch_indexopts_set_gpg_path (indexopts, gpg_path);
++	if (status)
++	    fprintf (stderr, "Warning: failed to set database gpg_path to '%s' (%s)\n",
++		     gpg_path ? gpg_path : "(NULL)",
++		     notmuch_status_to_string (status));
++    }
++
+     /* Index the message. */
+-    status = add_file (notmuch, newpath, tag_ops, synchronize_flags, keep);
++    status = add_file (notmuch, newpath, tag_ops, synchronize_flags, keep, indexopts);
+ 
+     /* Commit changes. */
+     close_status = notmuch_database_destroy (notmuch);
+@@ -577,5 +602,6 @@ notmuch_insert_command (notmuch_config_t *config, int argc, char *argv[])
+ 	notmuch_run_hook (db_path, "post-insert");
+     }
+ 
++    notmuch_indexopts_destroy (indexopts);
+     return status ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+diff --git a/notmuch-new.c b/notmuch-new.c
+index 04cb5ca..e495557 100644
+--- a/notmuch-new.c
++++ b/notmuch-new.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -49,6 +49,7 @@ typedef struct {
+     size_t new_tags_length;
+     const char **new_ignore;
+     size_t new_ignore_length;
++    notmuch_indexopts_t *indexopts;
+ 
+     int total_files;
+     int processed_files;
+@@ -260,7 +261,8 @@ add_file (notmuch_database_t *notmuch, const char *filename,
+     if (status)
+ 	goto DONE;
+ 
+-    status = notmuch_database_add_message (notmuch, filename, &message);
++    status = notmuch_database_add_message_with_indexopts (notmuch, filename,
++							  state->indexopts, &message);
+     switch (status) {
+     /* Success. */
+     case NOTMUCH_STATUS_SUCCESS:
+@@ -351,7 +353,6 @@ add_files (notmuch_database_t *notmuch,
+ 	   const char *path,
+ 	   add_files_state_t *state)
+ {
+-    DIR *dir = NULL;
+     struct dirent *entry = NULL;
+     char *next = NULL;
+     time_t fs_mtime, db_mtime;
+@@ -655,8 +656,6 @@ add_files (notmuch_database_t *notmuch,
+   DONE:
+     if (next)
+ 	talloc_free (next);
+-    if (dir)
+-	closedir (dir);
+     if (fs_entries) {
+ 	for (i = 0; i < num_fs_entries; i++)
+ 	    free (fs_entries[i]);
+@@ -933,6 +932,7 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+     add_files_state_t add_files_state = {
+ 	.verbosity = VERBOSITY_NORMAL,
+ 	.debug = FALSE,
++	.indexopts = NULL,
+ 	.output_is_a_tty = isatty (fileno (stdout)),
+     };
+     struct timeval tv_start;
+@@ -946,6 +946,7 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+     unsigned int i;
+     notmuch_bool_t timer_is_active = FALSE;
+     notmuch_bool_t no_hooks = FALSE;
++    notmuch_bool_t try_decrypt = FALSE;
+     notmuch_bool_t quiet = FALSE, verbose = FALSE;
+     notmuch_status_t status;
+ 
+@@ -954,6 +955,7 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+ 	{ NOTMUCH_OPT_BOOLEAN,  &verbose, "verbose", 'v', 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN,  &add_files_state.debug, "debug", 'd', 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN,  &no_hooks, "no-hooks", 'n', 0 },
++	{ NOTMUCH_OPT_BOOLEAN,  &try_decrypt, "try-decrypt", 0, 0 },
+ 	{ NOTMUCH_OPT_INHERIT, (void *) &notmuch_shared_options, NULL, 0, 0 },
+ 	{ 0, 0, 0, 0, 0 }
+     };
+@@ -1045,7 +1047,7 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+ 	    }
+ 
+ 	    if (notmuch_database_dump (notmuch, backup_name, "",
+-				       DUMP_FORMAT_BATCH_TAG, TRUE)) {
++				       DUMP_FORMAT_BATCH_TAG, DUMP_INCLUDE_DEFAULT, TRUE)) {
+ 		fprintf (stderr, "Backup failed. Aborting upgrade.");
+ 		return EXIT_FAILURE;
+ 	    }
+@@ -1071,6 +1073,28 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+     if (notmuch == NULL)
+ 	return EXIT_FAILURE;
+ 
++    add_files_state.indexopts = notmuch_indexopts_create ();
++    if (!add_files_state.indexopts) {
++	fprintf (stderr, "Error: could not create index options.\n");
++	return EXIT_FAILURE;
++    }
++    status = notmuch_indexopts_set_try_decrypt (add_files_state.indexopts, try_decrypt);
++    if (status != NOTMUCH_STATUS_SUCCESS) {
++	fprintf (stderr, "Error: Failed to set try_decrypt to %s. (%s)\n",
++		 try_decrypt ? "True" : "False", notmuch_status_to_string (status));
++	notmuch_indexopts_destroy (add_files_state.indexopts);
++	return EXIT_FAILURE;
++    }
++    if (try_decrypt) {
++	const char* gpg_path = notmuch_config_get_crypto_gpg_path (config);
++	status = notmuch_indexopts_set_gpg_path (add_files_state.indexopts, gpg_path);
++	if (status)
++	    fprintf (stderr, "Warning: failed to set database gpg_path to '%s' (%s)\n",
++		     gpg_path ? gpg_path : "(NULL)",
++		     notmuch_status_to_string (status));
++    }
++
++    
+     /* Set up our handler for SIGINT. We do this after having
+      * potentially done a database upgrade we this interrupt handler
+      * won't support. */
+@@ -1154,5 +1178,6 @@ notmuch_new_command (notmuch_config_t *config, int argc, char *argv[])
+     if (!no_hooks && !ret && !interrupted)
+ 	ret = notmuch_run_hook (db_path, "post-new");
+ 
++    notmuch_indexopts_destroy (add_files_state.indexopts);
+     return ret || interrupted ? EXIT_FAILURE : EXIT_SUCCESS;
+ }
+diff --git a/notmuch-reindex.c b/notmuch-reindex.c
+new file mode 100644
+index 0000000..6fc88c5
+--- /dev/null
++++ b/notmuch-reindex.c
+@@ -0,0 +1,152 @@
++/* notmuch - Not much of an email program, (just index and search)
++ *
++ * Copyright © 2016 Daniel Kahn Gillmor
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ * Author: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++ */
++
++#include "notmuch-client.h"
++#include "string-util.h"
++
++static volatile sig_atomic_t interrupted;
++
++static void
++handle_sigint (unused (int sig))
++{
++    static char msg[] = "Stopping...         \n";
++
++    /* This write is "opportunistic", so it's okay to ignore the
++     * result.  It is not required for correctness, and if it does
++     * fail or produce a short write, we want to get out of the signal
++     * handler as quickly as possible, not retry it. */
++    IGNORE_RESULT (write (2, msg, sizeof (msg) - 1));
++    interrupted = 1;
++}
++
++/* reindex all messages matching 'query_string' using the passed-in indexopts
++ */
++static int
++reindex_query (notmuch_database_t *notmuch, const char *query_string,
++	       notmuch_indexopts_t *indexopts)
++{
++    notmuch_query_t *query;
++    notmuch_messages_t *messages;
++    notmuch_message_t *message;
++    notmuch_status_t status;
++
++    int ret = NOTMUCH_STATUS_SUCCESS;
++
++    query = notmuch_query_create (notmuch, query_string);
++    if (query == NULL) {
++	fprintf (stderr, "Out of memory.\n");
++	return 1;
++    }
++
++    /* reindexing is not interested in any special sort order */
++    notmuch_query_set_sort (query, NOTMUCH_SORT_UNSORTED);
++
++    status = notmuch_query_search_messages_st (query, &messages);
++    if (print_status_query ("notmuch reindex", query, status))
++	return status;
++
++    for (;
++	 notmuch_messages_valid (messages) && ! interrupted;
++	 notmuch_messages_move_to_next (messages)) {
++	message = notmuch_messages_get (messages);
++
++	notmuch_message_reindex(message, indexopts);
++	notmuch_message_destroy (message);
++	if (ret != NOTMUCH_STATUS_SUCCESS)
++	    break;
++    }
++
++    notmuch_query_destroy (query);
++
++    return ret || interrupted;
++}
++
++int
++notmuch_reindex_command (notmuch_config_t *config, int argc, char *argv[])
++{
++    char *query_string = NULL;
++    notmuch_database_t *notmuch;
++    struct sigaction action;
++    notmuch_bool_t try_decrypt = FALSE;
++    int opt_index;
++    int ret;
++    notmuch_status_t status;
++    notmuch_indexopts_t *indexopts = NULL;
++
++    /* Set up our handler for SIGINT */
++    memset (&action, 0, sizeof (struct sigaction));
++    action.sa_handler = handle_sigint;
++    sigemptyset (&action.sa_mask);
++    action.sa_flags = SA_RESTART;
++    sigaction (SIGINT, &action, NULL);
++
++    notmuch_opt_desc_t options[] = {
++	{ NOTMUCH_OPT_BOOLEAN, &try_decrypt, "try-decrypt", 0, 0 },
++	{ NOTMUCH_OPT_INHERIT, (void *) &notmuch_shared_options, NULL, 0, 0 },
++	{ 0, 0, 0, 0, 0 }
++    };
++
++    opt_index = parse_arguments (argc, argv, options, 1);
++    if (opt_index < 0)
++	return EXIT_FAILURE;
++
++    notmuch_process_shared_options (argv[0]);
++
++    if (notmuch_database_open (notmuch_config_get_database_path (config),
++			       NOTMUCH_DATABASE_MODE_READ_WRITE, &notmuch))
++	return EXIT_FAILURE;
++
++    notmuch_exit_if_unmatched_db_uuid (notmuch);
++
++    indexopts = notmuch_indexopts_create();
++    if (!indexopts)
++	return EXIT_FAILURE;
++
++    status = notmuch_indexopts_set_try_decrypt (indexopts, try_decrypt);
++    if (status)
++	fprintf (stderr, "Warning: failed to set --try-decrypt to %d (%s)\n",
++		 try_decrypt, notmuch_status_to_string (status));
++
++    if (try_decrypt) {
++	const char* gpg_path = notmuch_config_get_crypto_gpg_path (config);
++	status = notmuch_indexopts_set_gpg_path (indexopts, gpg_path);
++	if (status)
++	    fprintf (stderr, "Warning: failed to set gpg_path for reindexing to '%s' (%s)\n",
++		     gpg_path ? gpg_path : "(NULL)",
++		     notmuch_status_to_string (status));
++    }
++
++    query_string = query_string_from_args (config, argc-opt_index, argv+opt_index);
++    if (query_string == NULL) {
++	fprintf (stderr, "Out of memory\n");
++	return EXIT_FAILURE;
++    }
++
++    if (*query_string == '\0') {
++	fprintf (stderr, "Error: notmuch reindex requires at least one search term.\n");
++	return EXIT_FAILURE;
++    }
++    
++    ret = reindex_query (notmuch, query_string, indexopts);
++
++    notmuch_database_destroy (notmuch);
++
++    return ret || interrupted ? EXIT_FAILURE : EXIT_SUCCESS;
++}
+diff --git a/notmuch-reply.c b/notmuch-reply.c
+index 3c6d685..d0b4a0d 100644
+--- a/notmuch-reply.c
++++ b/notmuch-reply.c
+@@ -14,7 +14,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Authors: Carl Worth <cworth@cworth.org>
+  *	    Keith Packard <keithp@keithp.com>
+@@ -324,7 +324,7 @@ add_recipients_from_message (GMimeMessage *reply,
+     unsigned int n = 0;
+ 
+     /* Some mailing lists munge the Reply-To header despite it being A Bad
+-     * Thing, see http://www.unicom.com/pw/reply-to-harmful.html
++     * Thing, see http://marc.merlins.org/netrants/reply-to-harmful.html
+      *
+      * The munging is easy to detect, because it results in a
+      * redundant reply-to header, (with an address that already exists
+@@ -664,7 +664,7 @@ notmuch_reply_format_sprinter(void *ctx,
+ 	return 1;
+ 
+     if (count != 1) {
+-	fprintf (stderr, "Error: search term did not match precisely one message.\n");
++	fprintf (stderr, "Error: search term did not match precisely one message (matched %d messages).\n", count);
+ 	return 1;
+     }
+ 
+@@ -790,13 +790,15 @@ notmuch_reply_command (notmuch_config_t *config, int argc, char *argv[])
+ 	.crypto = {
+ 	    .verify = FALSE,
+ 	    .decrypt = FALSE,
+-	    .gpgpath = NULL
++	    .gpg_path = NULL
+ 	}
+     };
+     int format = FORMAT_DEFAULT;
+     int reply_all = TRUE;
+     struct sprinter *sp = NULL;
+-
++    notmuch_status_t status;
++    const char *gpg_path = NULL;
++    
+     notmuch_opt_desc_t options[] = {
+ 	{ NOTMUCH_OPT_KEYWORD, &format, "format", 'f',
+ 	  (notmuch_keyword_t []){ { "default", FORMAT_DEFAULT },
+@@ -845,7 +847,12 @@ notmuch_reply_command (notmuch_config_t *config, int argc, char *argv[])
+ 	return EXIT_FAILURE;
+     }
+ 
+-    params.crypto.gpgpath = notmuch_config_get_crypto_gpg_path (config);
++    gpg_path = notmuch_config_get_crypto_gpg_path (config);
++    status = _notmuch_crypto_set_gpg_path (&(params.crypto), gpg_path);
++    if (status != NOTMUCH_STATUS_SUCCESS) {
++	fprintf (stderr, "Error: could not set gpg_path to '%s'.\n", gpg_path);
++	return EXIT_FAILURE;
++    }
+ 
+     if (notmuch_database_open (notmuch_config_get_database_path (config),
+ 			       NOTMUCH_DATABASE_MODE_READ_ONLY, &notmuch))
+@@ -862,7 +869,7 @@ notmuch_reply_command (notmuch_config_t *config, int argc, char *argv[])
+     if (reply_format_func (config, config, query, &params, reply_all, sp) != 0)
+ 	return EXIT_FAILURE;
+ 
+-    notmuch_crypto_cleanup (&params.crypto);
++    _notmuch_crypto_cleanup (&params.crypto);
+     notmuch_query_destroy (query);
+     notmuch_database_destroy (notmuch);
+ 
+diff --git a/notmuch-restore.c b/notmuch-restore.c
+index 9abc64f..d2ada61 100644
+--- a/notmuch-restore.c
++++ b/notmuch-restore.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -24,6 +24,105 @@
+ #include "string-util.h"
+ #include "zlib-extra.h"
+ 
++static int
++process_config_line (notmuch_database_t *notmuch, const char* line)
++{
++    const char *key_p, *val_p;
++    char *key, *val;
++    size_t key_len,val_len;
++    const char *delim = " \t\n";
++    int ret = EXIT_FAILURE;
++
++    void *local = talloc_new(NULL);
++
++    key_p = strtok_len_c (line, delim, &key_len);
++    val_p = strtok_len_c (key_p+key_len, delim, &val_len);
++
++    key = talloc_strndup (local, key_p, key_len);
++    val = talloc_strndup (local, val_p, val_len);
++    if (hex_decode_inplace (key) != HEX_SUCCESS ||
++	hex_decode_inplace (val) != HEX_SUCCESS ) {
++	fprintf (stderr, "hex decoding failure on line %s\n", line);
++	goto DONE;
++    }
++
++    if (print_status_database ("notmuch restore", notmuch,
++			       notmuch_database_set_config (notmuch, key, val)))
++	goto DONE;
++
++    ret = EXIT_SUCCESS;
++
++ DONE:
++    talloc_free (local);
++    return ret;
++}
++
++static int
++process_properties_line (notmuch_database_t *notmuch, const char* line)
++
++{
++    const char *id_p, *tok;
++    size_t id_len = 0, tok_len = 0;
++    char *id;
++
++    notmuch_message_t *message = NULL;
++    const char *delim = " \t\n";
++    int ret = EXIT_FAILURE;
++
++    void *local = talloc_new(NULL);
++
++    id_p = strtok_len_c (line, delim, &id_len);
++    id = talloc_strndup (local, id_p, id_len);
++    if (hex_decode_inplace (id) != HEX_SUCCESS) {
++	fprintf (stderr, "hex decoding failure on line %s\n", line);
++	goto DONE;
++    }
++
++    if (print_status_database ("notmuch restore", notmuch,
++			       notmuch_database_find_message (notmuch, id, &message)))
++	goto DONE;
++
++    if (print_status_database ("notmuch restore", notmuch,
++			       notmuch_message_remove_all_properties (message)))
++	goto DONE;
++
++    tok = id_p + id_len;
++
++    while ((tok = strtok_len_c (tok + tok_len, delim, &tok_len)) != NULL) {
++	char *key, *value;
++	size_t off = strcspn (tok, "=");
++	if (off > tok_len) {
++	    fprintf (stderr, "unparsable token %s\n", tok);
++	    goto DONE;
++	}
++
++	key = talloc_strndup (local, tok, off);
++	value = talloc_strndup (local, tok+off+1, tok_len - off - 1);
++
++	if (hex_decode_inplace (key) != HEX_SUCCESS) {
++	    fprintf (stderr, "hex decoding failure on key %s\n", key);
++	    goto DONE;
++	}
++
++	if (hex_decode_inplace (value) != HEX_SUCCESS) {
++	    fprintf (stderr, "hex decoding failure on value %s\n", value);
++	    goto DONE;
++	}
++
++	if (print_status_database ("notmuch restore", notmuch,
++				   notmuch_message_add_property (message, key, value)))
++	goto DONE;
++
++    }
++
++    ret = EXIT_SUCCESS;
++
++ DONE:
++    talloc_free (local);
++    return ret;
++}
++
++
+ static regex_t regex;
+ 
+ /* Non-zero return indicates an error in retrieving the message,
+@@ -137,6 +236,7 @@ notmuch_restore_command (notmuch_config_t *config, int argc, char *argv[])
+ 
+     int ret = 0;
+     int opt_index;
++    int include = 0;
+     int input_format = DUMP_FORMAT_AUTO;
+ 
+     if (notmuch_database_open (notmuch_config_get_database_path (config),
+@@ -152,6 +252,11 @@ notmuch_restore_command (notmuch_config_t *config, int argc, char *argv[])
+ 				  { "batch-tag", DUMP_FORMAT_BATCH_TAG },
+ 				  { "sup", DUMP_FORMAT_SUP },
+ 				  { 0, 0 } } },
++	{ NOTMUCH_OPT_KEYWORD_FLAGS, &include, "include", 'I',
++	  (notmuch_keyword_t []){ { "config", DUMP_INCLUDE_CONFIG },
++				  { "properties", DUMP_INCLUDE_PROPERTIES },
++				  { "tags", DUMP_INCLUDE_TAGS} } },
++
+ 	{ NOTMUCH_OPT_STRING, &input_file_name, "input", 'i', 0 },
+ 	{ NOTMUCH_OPT_BOOLEAN,  &accumulate, "accumulate", 'a', 0 },
+ 	{ NOTMUCH_OPT_INHERIT, (void *) &notmuch_shared_options, NULL, 0, 0 },
+@@ -167,6 +272,10 @@ notmuch_restore_command (notmuch_config_t *config, int argc, char *argv[])
+     notmuch_process_shared_options (argv[0]);
+     notmuch_exit_if_unmatched_db_uuid (notmuch);
+ 
++    if (include == 0) {
++	include = DUMP_INCLUDE_CONFIG | DUMP_INCLUDE_PROPERTIES | DUMP_INCLUDE_TAGS;
++    }
++
+     name_for_error = input_file_name ? input_file_name : "stdin";
+ 
+     if (! accumulate)
+@@ -225,11 +334,28 @@ notmuch_restore_command (notmuch_config_t *config, int argc, char *argv[])
+ 	    ret = EXIT_FAILURE;
+ 	    goto DONE;
+ 	}
++
++	if ((include & DUMP_INCLUDE_CONFIG) && line_len >= 2 && line[0] == '#' && line[1] == '@') {
++	    ret = process_config_line(notmuch, line+2);
++	    if (ret)
++		goto DONE;
++	}
++	if ((include & DUMP_INCLUDE_PROPERTIES) && line_len >= 2 && line[0] == '#' && line[1] == '=') {
++	    ret = process_properties_line(notmuch, line+2);
++	    if (ret)
++		goto DONE;
++	}
++
+     } while ((line_len == 0) ||
+ 	     (line[0] == '#') ||
+ 	     /* the cast is safe because we checked about for line_len < 0 */
+ 	     (strspn (line, " \t\n") == (unsigned)line_len));
+ 
++    if (! ((include & DUMP_INCLUDE_TAGS) || (include & DUMP_INCLUDE_PROPERTIES))) {
++	ret = EXIT_SUCCESS;
++	goto DONE;
++    }
++
+     char *p;
+     for (p = line; (input_format == DUMP_FORMAT_AUTO) && *p; p++) {
+ 	if (*p == '(')
+@@ -252,6 +378,13 @@ notmuch_restore_command (notmuch_config_t *config, int argc, char *argv[])
+ 	    talloc_free (line_ctx);
+ 
+ 	line_ctx = talloc_new (config);
++
++	if ((include & DUMP_INCLUDE_PROPERTIES) && line_len >= 2 && line[0] == '#' && line[1] == '=') {
++	    ret = process_properties_line(notmuch, line+2);
++	    if (ret)
++		goto DONE;
++	}
++
+ 	if (input_format == DUMP_FORMAT_SUP) {
+ 	    ret = parse_sup_line (line_ctx, line, &query_string, tag_ops);
+ 	} else {
+diff --git a/notmuch-search.c b/notmuch-search.c
+index 6d08c25..8c65d5a 100644
+--- a/notmuch-search.c
++++ b/notmuch-search.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/notmuch-setup.c b/notmuch-setup.c
+index 9aaf928..9a66810 100644
+--- a/notmuch-setup.c
++++ b/notmuch-setup.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/notmuch-show.c b/notmuch-show.c
+index 87e52bb..60411d0 100644
+--- a/notmuch-show.c
++++ b/notmuch-show.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+@@ -904,7 +904,7 @@ do_show_single (void *ctx,
+ 	return 1;
+ 
+     if (count != 1) {
+-	fprintf (stderr, "Error: search term did not match precisely one message.\n");
++	fprintf (stderr, "Error: search term did not match precisely one message (matched %d messages).\n", count);
+ 	return 1;
+     }
+ 
+@@ -1006,13 +1006,15 @@ notmuch_show_command (notmuch_config_t *config, int argc, char *argv[])
+ 	.crypto = {
+ 	    .verify = FALSE,
+ 	    .decrypt = FALSE,
+-	    .gpgpath = NULL
++	    .gpg_path = NULL
+ 	},
+ 	.include_html = FALSE
+     };
+     int format_sel = NOTMUCH_FORMAT_NOT_SPECIFIED;
+     int exclude = EXCLUDE_TRUE;
+     int entire_thread = ENTIRE_THREAD_DEFAULT;
++    notmuch_status_t status;
++    const char *gpg_path = NULL;
+ 
+     notmuch_opt_desc_t options[] = {
+ 	{ NOTMUCH_OPT_KEYWORD, &format_sel, "format", 'f',
+@@ -1130,7 +1132,13 @@ notmuch_show_command (notmuch_config_t *config, int argc, char *argv[])
+ 	return EXIT_FAILURE;
+     }
+ 
+-    params.crypto.gpgpath = notmuch_config_get_crypto_gpg_path (config);
++
++    gpg_path = notmuch_config_get_crypto_gpg_path (config);
++    status = _notmuch_crypto_set_gpg_path (&(params.crypto), gpg_path);
++    if (status != NOTMUCH_STATUS_SUCCESS) {
++	fprintf (stderr, "Error: could not set gpg_path to '%s'.\n", gpg_path);
++	return EXIT_FAILURE;
++    }
+ 
+     if (notmuch_database_open (notmuch_config_get_database_path (config),
+ 			       NOTMUCH_DATABASE_MODE_READ_ONLY, &notmuch))
+@@ -1171,7 +1179,7 @@ notmuch_show_command (notmuch_config_t *config, int argc, char *argv[])
+ 	ret = do_show (config, query, format, sprinter, &params);
+     }
+ 
+-    notmuch_crypto_cleanup (&params.crypto);
++    _notmuch_crypto_cleanup (&params.crypto);
+     notmuch_query_destroy (query);
+     notmuch_database_destroy (notmuch);
+ 
+diff --git a/notmuch-tag.c b/notmuch-tag.c
+index 0d15328..18d78dd 100644
+--- a/notmuch-tag.c
++++ b/notmuch-tag.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/notmuch-time.c b/notmuch-time.c
+index e250c3d..2734b36 100644
+--- a/notmuch-time.c
++++ b/notmuch-time.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/notmuch.c b/notmuch.c
+index ce6c575..5aadea5 100644
+--- a/notmuch.c
++++ b/notmuch.c
+@@ -14,7 +14,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Authors: Carl Worth <cworth@cworth.org>
+  *	    Keith Packard <keithp@keithp.com>
+@@ -123,6 +123,8 @@ static command_t commands[] = {
+       "Restore the tags from the given dump file (see 'dump')." },
+     { "compact", notmuch_compact_command, FALSE,
+       "Compact the notmuch database." },
++    { "reindex", notmuch_reindex_command, FALSE,
++      "Re-index all messages matching the search terms." },
+     { "config", notmuch_config_command, FALSE,
+       "Get or set settings in the notmuch configuration file." },
+     { "help", notmuch_help_command, TRUE, /* create but don't save config */
+@@ -354,7 +356,7 @@ notmuch_command (notmuch_config_t *config,
+ 	    "You can also use \"notmuch show\" with any of the thread IDs resulting\n"
+ 	    "from a search. Finally, you may want to explore using a more sophisticated\n"
+ 	    "interface to notmuch such as the emacs interface implemented in notmuch.el\n"
+-	    "or any other interface described at http://notmuchmail.org\n\n"
++	    "or any other interface described at https://notmuchmail.org\n\n"
+ 	    "And don't forget to run \"notmuch new\" whenever new mail arrives.\n\n"
+ 	    "Have fun, and may your inbox never have much mail.\n\n",
+ 	    notmuch_config_get_user_name (config),
+diff --git a/packaging/fedora/notmuch.spec b/packaging/fedora/notmuch.spec
+index 79994c9..5146edd 100644
+--- a/packaging/fedora/notmuch.spec
++++ b/packaging/fedora/notmuch.spec
+@@ -21,9 +21,9 @@ Summary:        Thread-based email index, search and tagging
+ 
+ Group:          Applications/Internet
+ License:        GPLv3+
+-URL:            http://notmuchmail.org/
++URL:            https://notmuchmail.org/
+ 
+-Source0:        http://notmuchmail.org/releases/notmuch-%{version}.tar.gz
++Source0:        https://notmuchmail.org/releases/notmuch-%{version}.tar.gz
+ 
+ BuildRequires:  xapian-core-devel gmime-devel libtalloc-devel
+ BuildRequires:  zlib-devel emacs-el emacs-nox python ruby ruby-devel perl
+diff --git a/parse-time-string/parse-time-string.c b/parse-time-string/parse-time-string.c
+index 1cef47d..48ec5b0 100644
+--- a/parse-time-string/parse-time-string.c
++++ b/parse-time-string/parse-time-string.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+diff --git a/parse-time-string/parse-time-string.h b/parse-time-string/parse-time-string.h
+index bfa4ee3..2063bca 100644
+--- a/parse-time-string/parse-time-string.h
++++ b/parse-time-string/parse-time-string.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+diff --git a/performance-test/Makefile.local b/performance-test/Makefile.local
+index 3469aa3..9dc260e 100644
+--- a/performance-test/Makefile.local
++++ b/performance-test/Makefile.local
+@@ -10,7 +10,7 @@ MEMORY_TEST_SCRIPT := ${dir}/notmuch-memory-test
+ CORPUS_NAME := notmuch-email-corpus-$(PERFTEST_VERSION).tar.xz
+ TXZFILE := ${dir}/download/${CORPUS_NAME}
+ SIGFILE := ${TXZFILE}.asc
+-DEFAULT_URL :=  http://notmuchmail.org/releases/${CORPUS_NAME}
++DEFAULT_URL :=  https://notmuchmail.org/releases/${CORPUS_NAME}
+ 
+ perf-test: time-test memory-test
+ 
+@@ -32,7 +32,7 @@ setup-perf-test: $(TXZFILE)
+ $(TXZFILE):
+ 	@printf "\nPlease download ${TXZFILE} using:\n\n"
+ 	@printf "\t%% make download-corpus\n\n"
+-	@echo or see http://notmuchmail.org/corpus for download locations
++	@echo or see https://notmuchmail.org/corpus for download locations
+ 	@echo
+ 	@false
+ 
+diff --git a/performance-test/README b/performance-test/README
+index 996724c..fbc6102 100644
+--- a/performance-test/README
++++ b/performance-test/README
+@@ -37,7 +37,7 @@ To fetch the actual corpus it should work to run
+ 
+ In case that fails or is too slow, check
+ 
+-   http://notmuchmail.org/corpus
++   https://notmuchmail.org/corpus
+ 
+ for a list of mirrors.
+ 
+diff --git a/performance-test/notmuch-memory-test b/performance-test/notmuch-memory-test
+index 3cf28c7..047aac7 100755
+--- a/performance-test/notmuch-memory-test
++++ b/performance-test/notmuch-memory-test
+@@ -3,6 +3,7 @@
+ # Run tests
+ #
+ # Copyright (c) 2005 Junio C Hamano
++# Copyright (c) 2010 Notmuch Developers
+ #
+ # Adapted from a Makefile to a shell script by Carl Worth (2010)
+ 
+@@ -14,7 +15,7 @@ if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
+     exit 1
+ fi
+ 
+-cd $(dirname "$0")
++cd "$(dirname "$0")"
+ 
+ for test in M*.sh; do
+     ./"$test" "$@"
+diff --git a/performance-test/notmuch-time-test b/performance-test/notmuch-time-test
+index 7113efb..4dd21fe 100755
+--- a/performance-test/notmuch-time-test
++++ b/performance-test/notmuch-time-test
+@@ -3,6 +3,7 @@
+ # Run tests
+ #
+ # Copyright (c) 2005 Junio C Hamano
++# Copyright (c) 2010 Notmuch Developers
+ #
+ # Adapted from a Makefile to a shell script by Carl Worth (2010)
+ 
+@@ -14,7 +15,7 @@ if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
+     exit 1
+ fi
+ 
+-cd $(dirname "$0")
++cd "$(dirname "$0")"
+ 
+ for test in T*.sh; do
+     ./"$test" "$@"
+diff --git a/query-string.c b/query-string.c
+index 6536512..cc8b27d 100644
+--- a/query-string.c
++++ b/query-string.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/sprinter-sexp.c b/sprinter-sexp.c
+index 0aa51e8..08783e1 100644
+--- a/sprinter-sexp.c
++++ b/sprinter-sexp.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Peter Feigl <peter.feigl@gmx.at>
+  */
+diff --git a/test/Makefile.local b/test/Makefile.local
+index 022f2cf..91b3693 100644
+--- a/test/Makefile.local
++++ b/test/Makefile.local
+@@ -19,7 +19,7 @@ $(dir)/hex-xcode: $(dir)/hex-xcode.o command-line-arguments.o util/libutil.a
+ 	$(call quiet,CC) $^ -o $@ $(LDFLAGS) $(TALLOC_LDFLAGS)
+ 
+ random_corpus_deps =  $(dir)/random-corpus.o  $(dir)/database-test.o \
+-			notmuch-config.o command-line-arguments.o \
++			notmuch-config.o status.o command-line-arguments.o \
+ 			lib/libnotmuch.a util/libutil.a \
+ 			parse-time-string/libparse-time-string.a
+ 
+diff --git a/test/README b/test/README
+index bd9ab54..b4489da 100644
+--- a/test/README
++++ b/test/README
+@@ -23,7 +23,7 @@ that you know if you break anything.
+   - emacs(1)
+   - emacsclient(1)
+   - gdb(1)
+-  - gpg(1)
++  - gpg(1) or gpg2(1)
+   - python(1)
+ 
+ If your system lacks these tools or have older, non-upgreable versions
+@@ -145,13 +145,9 @@ Tddd-testname.sh where 'ddd' is three digits and 'testname' the "bare"
+ name of your test. Tests will be run in order the 'ddd' part determines.
+ 
+ The test script should start with the standard "#!/usr/bin/env bash"
+-with copyright notices, and an assignment to variable 'test_description',
+-like this:
++and an assignment to variable 'test_description', like this:
+ 
+ 	#!/usr/bin/env bash
+-	#
+-	# Copyright (c) 2005 Junio C Hamano
+-	#
+ 
+ 	test_description='xxx test (option --frotz)
+ 
+diff --git a/test/T030-config.sh b/test/T030-config.sh
+index f404908..9eb9294 100755
+--- a/test/T030-config.sh
++++ b/test/T030-config.sh
+@@ -43,10 +43,10 @@ notmuch config set foo.nonexistent
+ test_expect_equal "$(notmuch config get foo.nonexistent)" ""
+ 
+ test_begin_subtest "List all items"
+-notmuch config set database.path "/canonical/path"
+-output=$(notmuch config list)
+-test_expect_equal "$output" "\
+-database.path=/canonical/path
++notmuch config list 2>&1 | notmuch_config_sanitize > OUTPUT
++cat <<EOF > EXPECTED
++Error opening database at MAIL_DIR/.notmuch: No such file or directory
++database.path=MAIL_DIR
+ user.name=Notmuch Test Suite
+ user.primary_email=test_suite@notmuchmail.org
+ user.other_email=test_suite_other@notmuchmail.org;test_suite@otherdomain.org
+@@ -54,9 +54,14 @@ new.tags=unread;inbox;
+ new.ignore=
+ search.exclude_tags=
+ maildir.synchronize_flags=true
+-crypto.gpg_path=gpg
++crypto.gpg_path=$GPG
+ foo.string=this is another string value
+-foo.list=this;is another;list value;"
++foo.list=this;is another;list value;
++built_with.compact=something
++built_with.field_processor=something
++built_with.retry_lock=something
++EOF
++test_expect_equal_file EXPECTED OUTPUT
+ 
+ test_begin_subtest "Top level --config=FILE option"
+ cp "${NOTMUCH_CONFIG}" alt-config
+diff --git a/test/T040-setup.sh b/test/T040-setup.sh
+index cf0c00b..afc7bc0 100755
+--- a/test/T040-setup.sh
++++ b/test/T040-setup.sh
+@@ -19,7 +19,7 @@ another.suite@example.com
+ foo bar
+ baz
+ EOF
+-output=$(notmuch --config=new-notmuch-config config list)
++output=$(notmuch --config=new-notmuch-config config list | notmuch_built_with_sanitize)
+ test_expect_equal "$output" "\
+ database.path=/path/to/maildir
+ user.name=Test Suite
+@@ -29,6 +29,9 @@ new.tags=foo;bar;
+ new.ignore=
+ search.exclude_tags=baz;
+ maildir.synchronize_flags=true
+-crypto.gpg_path=gpg"
++crypto.gpg_path=$GPG
++built_with.compact=something
++built_with.field_processor=something
++built_with.retry_lock=something"
+ 
+ test_done
+diff --git a/test/T070-insert.sh b/test/T070-insert.sh
+index e7ec6a6..557f9d5 100755
+--- a/test/T070-insert.sh
++++ b/test/T070-insert.sh
+@@ -192,14 +192,14 @@ for code in OUT_OF_MEMORY XAPIAN_EXCEPTION FILE_NOT_EMAIL \
+ gen_insert_msg
+ cat <<EOF > index-file-$code.gdb
+ set breakpoint pending on
+-break notmuch_database_add_message
++break notmuch_database_add_message_with_indexopts
+ commands
+ return NOTMUCH_STATUS_$code
+ continue
+ end
+ run
+ EOF
+-test_begin_subtest "error exit when add_message returns $code"
++test_begin_subtest "error exit when add_message_with_indexopts returns $code"
+ gdb --batch-silent --return-child-result -x index-file-$code.gdb \
+     --args notmuch insert  < $gen_msg_filename
+ test_expect_equal $? 1
+diff --git a/test/T150-tagging.sh b/test/T150-tagging.sh
+index a451ffa..61d1311 100755
+--- a/test/T150-tagging.sh
++++ b/test/T150-tagging.sh
+@@ -188,7 +188,7 @@ cat <<EOF > EXPECTED
+ +%22%27%22%27%22%22%27%27 +inbox +tag4 +tag5 +unread -- id:msg-002@notmuch-test-suite
+ EOF
+ 
+-notmuch dump --format=batch-tag | sort > OUTPUT
++NOTMUCH_DUMP_TAGS > OUTPUT
+ notmuch restore --format=batch-tag < BACKUP
+ test_expect_equal_file EXPECTED OUTPUT
+ 
+@@ -209,7 +209,7 @@ cat <<EOF > EXPECTED
+ +%21@%23%20%24%25%5e%26%2a%29-_=+%5b%7b%5c%20%7c%3b%3a%27%20%22,.%3c%60%7e +inbox +tag5 +unread -- id:msg-001@notmuch-test-suite
+ EOF
+ 
+-notmuch dump --format=batch-tag | sort > OUTPUT
++NOTMUCH_DUMP_TAGS > OUTPUT
+ notmuch restore --format=batch-tag < BACKUP
+ test_expect_equal_file EXPECTED OUTPUT
+ 
+@@ -235,7 +235,7 @@ cat <<EOF > EXPECTED
+ +%2a@%7d%cf%b5%f4%85%80%adO3%da%a7 +=%e0%ac%95%c8%b3+%ef%aa%95%c8%a64w%c7%9d%c9%a2%cf%b3%d6%82%24B%c4%a9%c5%a1UX%ee%99%b0%27E7%ca%a4%d0%8b%5d +A%e1%a0%bc%de%8b%d5%b2V%d9%9b%f3%b5%a2%a3M%d8%a1u@%f0%a0%ac%948%7e%f0%ab%86%af%27 +L%df%85%ef%a1%a5m@%d3%96%c2%ab%d4%9f%ca%b8%f3%b3%a2%bf%c7%b1_u%d7%b4%c7%b1 +P%c4%98%2f +R +inbox +tag5 +unread +%7e%d1%8b%25%ec%a0%ae%d1%a0M%3b%e3%b6%b7%e9%a4%87%3c%db%9a%cc%a8%e1%96%9d +%c4%bf7%c7%ab9H%c4%99k%ea%91%bd%c3%8ck%e2%b3%8dk%c5%952V%e4%99%b2%d9%b3%e4%8b%bda%5b%24%c7%9b +%da%88=f%cc%b9I%ce%af%7b%c9%97%e3%b9%8bH%cb%92X%d2%8c6 +%dc%9crh%d2%86B%e5%97%a2%22t%ed%99%82d -- id:msg-001@notmuch-test-suite
+ EOF
+ 
+-notmuch dump --format=batch-tag | sort > OUTPUT
++NOTMUCH_DUMP_TAGS > OUTPUT
+ notmuch restore --format=batch-tag < BACKUP
+ test_expect_equal_file EXPECTED OUTPUT
+ 
+@@ -260,7 +260,7 @@ cat <<EOF > EXPECTED
+ +foo%3a%3abar%25 +found%3a%3ait +inbox +tag5 +unread +winner -- id:msg-001@notmuch-test-suite
+ EOF
+ 
+-notmuch dump --format=batch-tag | sort > OUTPUT
++NOTMUCH_DUMP_TAGS > OUTPUT
+ notmuch restore --format=batch-tag < BACKUP
+ test_expect_equal_file EXPECTED OUTPUT
+ 
+diff --git a/test/T210-raw.sh b/test/T210-raw.sh
+index dfea2d1..832a4ad 100755
+--- a/test/T210-raw.sh
++++ b/test/T210-raw.sh
+@@ -8,7 +8,7 @@ add_message
+ 
+ test_begin_subtest "Attempt to show multiple raw messages"
+ output=$(notmuch show --format=raw "*" 2>&1)
+-test_expect_equal "$output" "Error: search term did not match precisely one message."
++test_expect_equal "$output" "Error: search term did not match precisely one message (matched 2 messages)."
+ 
+ test_begin_subtest "Show a raw message"
+ output=$(notmuch show --format=raw id:msg-001@notmuch-test-suite | notmuch_date_sanitize)
+diff --git a/test/T240-dump-restore.sh b/test/T240-dump-restore.sh
+index 97e9e7f..faa1036 100755
+--- a/test/T240-dump-restore.sh
++++ b/test/T240-dump-restore.sh
+@@ -97,7 +97,7 @@ test_expect_equal_file dump.expected dump.actual
+ # Note, we assume all messages from cworth have a message-id
+ # containing cworth.org
+ 
+-grep 'cworth[.]org' dump.expected > dump-cworth.expected
++{ head -1 dump.expected ; grep 'cworth[.]org' dump.expected; } > dump-cworth.expected
+ 
+ test_begin_subtest "dump -- from:cworth"
+ notmuch dump -- from:cworth > dump-dash-cworth.actual
+@@ -118,16 +118,16 @@ notmuch search --output=messages from:cworth | sed s/^id:// |\
+ test_expect_equal_file OUTPUT EXPECTED
+ 
+ test_begin_subtest "format=batch-tag, dump sanity check."
+-notmuch dump --format=sup from:cworth | cut -f1 -d' ' | \
++NOTMUCH_DUMP_TAGS --format=sup from:cworth | cut -f1 -d' ' | \
+     sort > EXPECTED.$test_count
+-notmuch dump --format=batch-tag from:cworth | sed 's/^.*-- id://' | \
++NOTMUCH_DUMP_TAGS --format=batch-tag from:cworth | sed 's/^.*-- id://' | \
+     sort > OUTPUT.$test_count
+ test_expect_equal_file EXPECTED.$test_count OUTPUT.$test_count
+ 
+ test_begin_subtest "format=batch-tag, missing newline"
+ printf "+a_tag_without_newline -- id:20091117232137.GA7669@griffis1.net" > IN
+ notmuch restore --accumulate < IN
+-notmuch dump id:20091117232137.GA7669@griffis1.net > OUT
++NOTMUCH_DUMP_TAGS id:20091117232137.GA7669@griffis1.net > OUT
+ cat <<EOF > EXPECTED
+ +a_tag_without_newline +inbox +unread -- id:20091117232137.GA7669@griffis1.net
+ EOF
+@@ -156,7 +156,7 @@ cat <<EOF >EXPECTED.$test_count
+ + -- id:20091117232137.GA7669@griffis1.net
+ EOF
+ notmuch restore --format=batch-tag < EXPECTED.$test_count
+-notmuch dump --format=batch-tag id:20091117232137.GA7669@griffis1.net > OUTPUT.$test_count
++NOTMUCH_DUMP_TAGS --format=batch-tag id:20091117232137.GA7669@griffis1.net > OUTPUT.$test_count
+ test_expect_equal_file EXPECTED.$test_count OUTPUT.$test_count
+ 
+ tag1='comic_swear=$&^%$^%\\//-+$^%$'
+@@ -219,9 +219,9 @@ notmuch dump --format=batch-tag > OUTPUT.$test_count
+ test_expect_equal_file EXPECTED.$test_count OUTPUT.$test_count
+ 
+ test_begin_subtest 'format=batch-tag, checking encoded output'
+-notmuch dump --format=batch-tag -- from:cworth |\
++NOTMUCH_DUMP_TAGS --format=batch-tag -- from:cworth |\
+ 	 awk "{ print \"+$enc1 +$enc2 +$enc3 -- \" \$5 }" > EXPECTED.$test_count
+-notmuch dump --format=batch-tag -- from:cworth  > OUTPUT.$test_count
++NOTMUCH_DUMP_TAGS --format=batch-tag -- from:cworth  > OUTPUT.$test_count
+ test_expect_equal_file EXPECTED.$test_count OUTPUT.$test_count
+ 
+ test_begin_subtest 'restoring sane tags'
+diff --git a/test/T310-emacs.sh b/test/T310-emacs.sh
+index daa0256..65c1728 100755
+--- a/test/T310-emacs.sh
++++ b/test/T310-emacs.sh
+@@ -760,8 +760,8 @@ bought
+ inbox,stashtest
+ ${gen_msg_filename}
+ http://mid.gmane.org/bought
+-http://marc.info/?i=bought
+-http://mid.mail-archive.com/bought
++https://marc.info/?i=bought
++https://mid.mail-archive.com/bought
+ EOF
+ test_expect_equal_file OUTPUT EXPECTED
+ 
+diff --git a/test/T350-crypto.sh b/test/T350-crypto.sh
+index 3656cce..50cc526 100755
+--- a/test/T350-crypto.sh
++++ b/test/T350-crypto.sh
+@@ -7,26 +7,11 @@
+ test_description='PGP/MIME signature verification and decryption'
+ . ./test-lib.sh || exit 1
+ 
+-add_gnupg_home ()
+-{
+-    local output
+-    [ -d ${GNUPGHOME} ] && return
+-    mkdir -m 0700 "$GNUPGHOME"
+-    gpg --no-tty --import <$TEST_DIRECTORY/gnupg-secret-key.asc >"$GNUPGHOME"/import.log 2>&1
+-    test_debug "cat $GNUPGHOME/import.log"
+-    if (gpg --quick-random --version >/dev/null 2>&1) ; then
+-	echo quick-random >> "$GNUPGHOME"/gpg.conf
+-    elif (gpg --debug-quick-random --version >/dev/null 2>&1) ; then
+-	echo debug-quick-random >> "$GNUPGHOME"/gpg.conf
+-    fi
+-    echo no-emit-version >> "$GNUPGHOME"/gpg.conf
+-}
+-
+ ##################################################
+ 
+ add_gnupg_home
+ # get key fingerprint
+-FINGERPRINT=$(gpg --no-tty --list-secret-keys --with-colons --fingerprint | grep '^fpr:' | cut -d: -f10)
++FINGERPRINT=$($GPG --no-tty --list-secret-keys --with-colons --fingerprint | grep '^fpr:' | cut -d: -f10)
+ 
+ test_expect_success 'emacs delivery of signed message' \
+ 'emacs_fcc_message \
+@@ -67,8 +52,8 @@ test_expect_equal_json \
+ 
+ test_begin_subtest "signature verification with full owner trust"
+ # give the key full owner trust
+-echo "${FINGERPRINT}:6:" | gpg --no-tty --import-ownertrust >>"$GNUPGHOME"/trust.log 2>&1
+-gpg --no-tty --check-trustdb >>"$GNUPGHOME"/trust.log 2>&1
++echo "${FINGERPRINT}:6:" | $GPG --no-tty --import-ownertrust >>"$GNUPGHOME"/trust.log 2>&1
++$GPG --no-tty --check-trustdb >>"$GNUPGHOME"/trust.log 2>&1
+ output=$(notmuch show --format=json --verify subject:"test signed message 001" \
+     | notmuch_json_show_sanitize \
+     | sed -e 's|"created": [1234567890]*|"created": 946728000|')
+@@ -325,8 +310,8 @@ Notmuch Test Suite key revocation (automated) $(date '+%F_%T%z')
+ y
+ 
+ " \
+-    | gpg --no-tty --quiet --command-fd 0 --armor --gen-revoke "0x${FINGERPRINT}!" 2>/dev/null \
+-    | gpg --no-tty --quiet --import
++    | $GPG --no-tty --quiet --command-fd 0 --armor --gen-revoke "0x${FINGERPRINT}!" 2>/dev/null \
++    | $GPG --no-tty --quiet --import
+ output=$(notmuch show --format=json --verify subject:"test signed message 001" \
+     | notmuch_json_show_sanitize \
+     | sed -e 's|"created": [1234567890]*|"created": 946728000|')
+diff --git a/test/T357-index-decryption.sh b/test/T357-index-decryption.sh
+new file mode 100755
+index 0000000..9510c57
+--- /dev/null
++++ b/test/T357-index-decryption.sh
+@@ -0,0 +1,116 @@
++#!/usr/bin/env bash
++
++# TODO: test index-decryption-failed
++
++test_description='indexing decrypted mail'
++. ./test-lib.sh || exit 1
++
++##################################################
++
++add_gnupg_home
++# get key fingerprint
++FINGERPRINT=$($GPG --no-tty --list-secret-keys --with-colons --fingerprint | grep '^fpr:' | cut -d: -f10)
++
++# create a test encrypted message
++test_expect_success 'emacs delivery of encrypted message' \
++'emacs_fcc_message \
++    "test encrypted message for cleartext index 001" \
++    "This is a test encrypted message with a wumpus.\n" \
++    "(mml-secure-message-encrypt)"'
++
++test_begin_subtest "search for unindexed cleartext"
++output=$(notmuch search wumpus)
++expected=''
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# create a test encrypted message that is indexed in the clear
++test_expect_success 'emacs delivery of encrypted message' \
++'emacs_fcc_message --try-decrypt \
++    "test encrypted message for cleartext index 002" \
++    "This is a test encrypted message with a wumpus.\n" \
++    "(mml-secure-message-encrypt)"'
++
++test_begin_subtest "emacs delivery of encrypted message, indexed cleartext"
++output=$(notmuch search wumpus)
++expected='thread:0000000000000002   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 002 (encrypted inbox)'
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# and the same search, but by property ($expected is untouched):
++test_begin_subtest "emacs search by property for one message"
++output=$(notmuch search has:index-decryption=success)
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# add a tag to all messages to ensure that it stays after reindexing
++test_expect_success 'tagging all messages' \
++                    'notmuch tag +blarney "encrypted message"'
++test_begin_subtest "verify that tags have not changed"
++output=$(notmuch search tag:blarney)
++expected='thread:0000000000000001   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 001 (blarney encrypted inbox)
++thread:0000000000000002   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 002 (blarney encrypted inbox)'
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# see if first message shows up after reindexing with --try-decrypt
++test_expect_success 'reindex old messages' \
++                    'notmuch reindex --try-decrypt tag:encrypted and not has:index-decryption=success'
++test_begin_subtest "reindexed encrypted message, including cleartext"
++output=$(notmuch search wumpus)
++expected='thread:0000000000000002   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 002 (blarney encrypted inbox)
++thread:0000000000000003   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 001 (blarney encrypted inbox)'
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# and the same search, but by property ($expected is untouched):
++test_begin_subtest "emacs search by property for both messages"
++output=$(notmuch search has:index-decryption=success)
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++
++# try to remove cleartext indexing
++test_expect_success 'reindex without cleartext' \
++                    'notmuch reindex tag:encrypted and has:index-decryption=success'
++test_begin_subtest "reindexed encrypted messages, without cleartext"
++output=$(notmuch search wumpus)
++expected=''
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# and the same search, but by property ($expected is untouched):
++test_begin_subtest "emacs search by property with both messages unindexed"
++output=$(notmuch search has:index-decryption=success)
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++# ensure that the tags remain even when we are dropping the cleartext.
++test_begin_subtest "verify that tags remain without cleartext"
++output=$(notmuch search tag:blarney)
++expected='thread:0000000000000004   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 002 (blarney encrypted inbox)
++thread:0000000000000005   2000-01-01 [1/1] Notmuch Test Suite; test encrypted message for cleartext index 001 (blarney encrypted inbox)'
++test_expect_equal \
++    "$output" \
++    "$expected"
++
++
++# TODO: test removal of a message from the message store between
++# indexing and reindexing.
++
++# TODO: insert the same message into the message store twice, index,
++# remove one of them from the message store, and then reindex.
++# reindexing should return a failure but the message should still be
++# present? -- or what should the semantics be if you ask to reindex a
++# message whose underlying files have been renamed or moved or
++# removed?
++
++test_done
+diff --git a/test/T360-symbol-hiding.sh b/test/T360-symbol-hiding.sh
+index 3f18ec1..b3dbb1b 100755
+--- a/test/T360-symbol-hiding.sh
++++ b/test/T360-symbol-hiding.sh
+@@ -5,7 +5,7 @@
+ 
+ # This test tests whether hiding Xapian::Error symbols in libnotmuch
+ # also hides them for other users of libxapian. This is motivated by
+-# the discussion in http://gcc.gnu.org/wiki/Visibility'
++# the discussion in https://gcc.gnu.org/wiki/Visibility'
+ 
+ test_description='exception symbol hiding'
+ 
+@@ -13,9 +13,8 @@ test_description='exception symbol hiding'
+ 
+ test_begin_subtest 'running test' run_test
+ mkdir -p ${PWD}/fakedb/.notmuch
+-( LD_LIBRARY_PATH="$TEST_DIRECTORY/../lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
+-		 $TEST_DIRECTORY/symbol-test ${PWD}/fakedb ${PWD}/nonexistent \
+-		 2>&1 | notmuch_dir_sanitize | sed -e "s,\`,\',g" -e "s,${NOTMUCH_DEFAULT_XAPIAN_BACKEND},backend,g") > OUTPUT
++$TEST_DIRECTORY/symbol-test ${PWD}/fakedb ${PWD}/nonexistent 2>&1 \
++	| notmuch_dir_sanitize | sed -e "s,\`,\',g" -e "s,${NOTMUCH_DEFAULT_XAPIAN_BACKEND},backend,g" > OUTPUT
+ 
+ cat <<EOF > EXPECTED
+ A Xapian exception occurred opening database: Couldn't stat 'CWD/fakedb/.notmuch/xapian'
+diff --git a/test/T395-ruby.sh b/test/T395-ruby.sh
+index d5cade8..20e0691 100755
+--- a/test/T395-ruby.sh
++++ b/test/T395-ruby.sh
+@@ -83,4 +83,20 @@ EOF
+ notmuch count --output=threads tag:inbox > EXPECTED
+ test_expect_equal_file OUTPUT EXPECTED
+ 
++test_begin_subtest "get all tags"
++test_ruby <<"EOF"
++require 'notmuch'
++$maildir = ENV['MAIL_DIR']
++if not $maildir then
++  abort('environment variable MAIL_DIR must be set')
++end
++@db = Notmuch::Database.new($maildir)
++@t = @db.all_tags()
++for tag in @t do
++   print tag,"\n"
++end
++EOF
++notmuch search --output=tags '*' > EXPECTED
++test_expect_equal_file OUTPUT EXPECTED
++
+ test_done
+diff --git a/test/T500-search-date.sh b/test/T500-search-date.sh
+index f5cea42..198a2e6 100755
+--- a/test/T500-search-date.sh
++++ b/test/T500-search-date.sh
+@@ -12,6 +12,12 @@ test_begin_subtest "Absolute date range with 'same' operator"
+ output=$(notmuch search date:2010-12-16..! | notmuch_search_sanitize)
+ test_expect_equal "$output" "thread:XXX   2010-12-16 [1/1] Olivier Berger; Essai accentué (inbox unread)"
+ 
++if [ "${NOTMUCH_HAVE_XAPIAN_FIELD_PROCESSOR}" = "1" ]; then
++    test_begin_subtest "Absolute date field"
++    output=$(notmuch search date:2010-12-16 | notmuch_search_sanitize)
++    test_expect_equal "$output" "thread:XXX   2010-12-16 [1/1] Olivier Berger; Essai accentué (inbox unread)"
++fi
++
+ test_begin_subtest "Absolute time range with TZ"
+ notmuch search date:18-Nov-2009_02:19:26-0800..2009-11-18_04:49:52-06:00 | notmuch_search_sanitize > OUTPUT
+ cat <<EOF >EXPECTED
+diff --git a/test/T590-libconfig.sh b/test/T590-libconfig.sh
+new file mode 100755
+index 0000000..e8c078d
+--- /dev/null
++++ b/test/T590-libconfig.sh
+@@ -0,0 +1,135 @@
++#!/usr/bin/env bash
++test_description="library config API"
++
++. ./test-lib.sh || exit 1
++
++add_email_corpus
++
++cat <<EOF > c_head
++#include <string.h>
++#include <stdlib.h>
++#include <notmuch-test.h>
++
++int main (int argc, char** argv)
++{
++   notmuch_database_t *db;
++   char *val;
++   notmuch_status_t stat;
++
++   EXPECT0(notmuch_database_open (argv[1], NOTMUCH_DATABASE_MODE_READ_WRITE, &db));
++
++EOF
++
++cat <<EOF > c_tail
++   EXPECT0(notmuch_database_destroy(db));
++}
++EOF
++
++test_begin_subtest "notmuch_database_{set,get}_config"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   EXPECT0(notmuch_database_set_config (db, "testkey1", "testvalue1"));
++   EXPECT0(notmuch_database_set_config (db, "testkey2", "testvalue2"));
++   EXPECT0(notmuch_database_get_config (db, "testkey1", &val));
++   printf("testkey1 = %s\n", val);
++   EXPECT0(notmuch_database_get_config (db, "testkey2", &val));
++   printf("testkey2 = %s\n", val);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++testkey1 = testvalue1
++testkey2 = testvalue2
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++
++test_begin_subtest "notmuch_database_get_config_list: empty list"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   notmuch_config_list_t *list;
++   EXPECT0(notmuch_database_get_config_list (db, "nonexistent", &list));
++   printf("valid = %d\n", notmuch_config_list_valid (list));
++   notmuch_config_list_destroy (list);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++valid = 0
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++
++test_begin_subtest "notmuch_database_get_config_list: all pairs"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   notmuch_config_list_t *list;
++   EXPECT0(notmuch_database_set_config (db, "zzzafter", "afterval"));
++   EXPECT0(notmuch_database_set_config (db, "aaabefore", "beforeval"));
++   EXPECT0(notmuch_database_get_config_list (db, "", &list));
++   for (; notmuch_config_list_valid (list); notmuch_config_list_move_to_next (list)) {
++      printf("%s %s\n", notmuch_config_list_key (list), notmuch_config_list_value(list));
++   }
++   notmuch_config_list_destroy (list);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++aaabefore beforeval
++testkey1 testvalue1
++testkey2 testvalue2
++zzzafter afterval
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_database_get_config_list: one prefix"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   notmuch_config_list_t *list;
++   EXPECT0(notmuch_database_get_config_list (db, "testkey", &list));
++   for (; notmuch_config_list_valid (list); notmuch_config_list_move_to_next (list)) {
++      printf("%s %s\n", notmuch_config_list_key (list), notmuch_config_list_value(list));
++   }
++   notmuch_config_list_destroy (list);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++testkey1 testvalue1
++testkey2 testvalue2
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "dump config"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++    EXPECT0(notmuch_database_set_config (db, "key with spaces", "value, with, spaces!"));
++}
++EOF
++notmuch dump --include=config >OUTPUT
++cat <<'EOF' >EXPECTED
++#notmuch-dump batch-tag:2 config
++#@ aaabefore beforeval
++#@ key%20with%20spaces value,%20with,%20spaces%21
++#@ testkey1 testvalue1
++#@ testkey2 testvalue2
++#@ zzzafter afterval
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "restore config"
++notmuch dump --include=config >EXPECTED
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++    EXPECT0(notmuch_database_set_config (db, "testkey1", "mutatedvalue"));
++}
++EOF
++notmuch restore --include=config <EXPECTED
++notmuch dump --include=config >OUTPUT
++test_expect_equal_file EXPECTED OUTPUT
++
++test_done
+diff --git a/test/T600-named-queries.sh b/test/T600-named-queries.sh
+new file mode 100755
+index 0000000..f0ae24f
+--- /dev/null
++++ b/test/T600-named-queries.sh
+@@ -0,0 +1,70 @@
++#!/usr/bin/env bash
++test_description='named queries'
++. ./test-lib.sh || exit 1
++
++QUERYSTR="date:2009-11-18..2009-11-18 and tag:unread"
++
++test_expect_code 1 "error adding named query before initializing DB" \
++		 "notmuch config set query.test \"$QUERYSTR\""
++
++add_email_corpus
++
++test_expect_success "adding named query" \
++		    "notmuch config set query.test \"$QUERYSTR\""
++
++QUERYSTR2="query:test and subject:Maildir"
++test_expect_success "adding nested named query" \
++		    "notmuch config set query.test2 \"$QUERYSTR2\""
++
++test_begin_subtest "retrieve named query"
++output=$(notmuch config get query.test)
++test_expect_equal "$QUERYSTR" "$output"
++
++test_begin_subtest "List all queries"
++notmuch config list | grep ^query | notmuch_config_sanitize > OUTPUT
++cat <<EOF > EXPECTED
++query.test=date:2009-11-18..2009-11-18 and tag:unread
++query.test2=query:test and subject:Maildir
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "dump named queries"
++notmuch dump | grep '^#@' > OUTPUT
++cat<<EOF > QUERIES.BEFORE
++#@ query.test date%3a2009-11-18..2009-11-18%20and%20tag%3aunread
++#@ query.test2 query%3atest%20and%20subject%3aMaildir
++EOF
++test_expect_equal_file QUERIES.BEFORE OUTPUT
++
++test_begin_subtest "delete named queries"
++notmuch dump > BEFORE
++notmuch config set query.test
++notmuch dump | grep '^#@' > OUTPUT
++cat<<EOF > EXPECTED
++#@ query.test2 query%3atest%20and%20subject%3aMaildir
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "restore named queries"
++notmuch restore < BEFORE
++notmuch dump | grep '^#@' > OUTPUT
++test_expect_equal_file QUERIES.BEFORE OUTPUT
++
++if [ $NOTMUCH_HAVE_XAPIAN_FIELD_PROCESSOR -eq 1 ]; then
++    test_begin_subtest "search named query"
++    notmuch search query:test > OUTPUT
++    notmuch search $QUERYSTR > EXPECTED
++    test_expect_equal_file EXPECTED OUTPUT
++
++    test_begin_subtest "search named query with other terms"
++    notmuch search query:test and subject:Maildir > OUTPUT
++    notmuch search $QUERYSTR and subject:Maildir > EXPECTED
++    test_expect_equal_file EXPECTED OUTPUT
++
++    test_begin_subtest "search nested named query"
++    notmuch search query:test2 > OUTPUT
++    notmuch search $QUERYSTR2 > EXPECTED
++    test_expect_equal_file EXPECTED OUTPUT
++fi
++
++test_done
+diff --git a/test/T610-message-property.sh b/test/T610-message-property.sh
+new file mode 100755
+index 0000000..8952eb7
+--- /dev/null
++++ b/test/T610-message-property.sh
+@@ -0,0 +1,240 @@
++#!/usr/bin/env bash
++test_description="message property API"
++
++. ./test-lib.sh || exit 1
++
++add_email_corpus
++
++cat <<EOF > c_head
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <talloc.h>
++#include <notmuch-test.h>
++
++void print_properties (notmuch_message_t *message, const char *prefix, notmuch_bool_t exact) {
++    notmuch_message_properties_t *list;
++    for (list = notmuch_message_get_properties (message, prefix, exact);
++         notmuch_message_properties_valid (list); notmuch_message_properties_move_to_next (list)) {
++       printf("%s\n", notmuch_message_properties_value(list));
++    }
++    notmuch_message_properties_destroy (list);
++}
++
++int main (int argc, char** argv)
++{
++   notmuch_database_t *db;
++   notmuch_message_t *message = NULL;
++   const char *val;
++   notmuch_status_t stat;
++
++   EXPECT0(notmuch_database_open (argv[1], NOTMUCH_DATABASE_MODE_READ_WRITE, &db));
++   EXPECT0(notmuch_database_find_message(db, "4EFC743A.3060609@april.org", &message));
++   if (message == NULL) {
++	fprintf (stderr, "unable to find message");
++	exit (1);
++   }
++EOF
++
++cat <<EOF > c_tail
++   EXPECT0(notmuch_database_destroy(db));
++}
++EOF
++
++test_begin_subtest "notmuch_message_{add,get,remove}_property"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   EXPECT0(notmuch_message_add_property (message, "testkey1", "testvalue1"));
++   EXPECT0(notmuch_message_get_property (message, "testkey1", &val));
++   printf("testkey1[1] = %s\n", val);
++   EXPECT0(notmuch_message_add_property (message, "testkey2", "this value has spaces and = sign"));
++   EXPECT0(notmuch_message_get_property (message, "testkey1", &val));
++   printf("testkey1[2] = %s\n", val);
++   EXPECT0(notmuch_message_get_property (message, "testkey1", &val));
++
++   EXPECT0(notmuch_message_get_property (message, "testkey2", &val));
++   printf("testkey2 = %s\n", val);
++
++   /* Add second value for key */
++   EXPECT0(notmuch_message_add_property (message, "testkey2", "zztestvalue3"));
++   EXPECT0(notmuch_message_get_property (message, "testkey2", &val));
++   printf("testkey2 = %s\n", val);
++
++   /* remove first value for key */
++   EXPECT0(notmuch_message_remove_property (message, "testkey2", "this value has spaces and = sign"));
++   EXPECT0(notmuch_message_get_property (message, "testkey2", &val));
++   printf("testkey2 = %s\n", val);
++
++   /* remove non-existant value for key */
++   EXPECT0(notmuch_message_remove_property (message, "testkey2", "this value has spaces and = sign"));
++   EXPECT0(notmuch_message_get_property (message, "testkey2", &val));
++   printf("testkey2 = %s\n", val);
++
++   /* remove only value for key */
++   EXPECT0(notmuch_message_remove_property (message, "testkey2", "zztestvalue3"));
++   EXPECT0(notmuch_message_get_property (message, "testkey2", &val));
++   printf("testkey2 = %s\n", val == NULL ? "NULL" : val);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++testkey1[1] = testvalue1
++testkey1[2] = testvalue1
++testkey2 = this value has spaces and = sign
++testkey2 = this value has spaces and = sign
++testkey2 = zztestvalue3
++testkey2 = zztestvalue3
++testkey2 = NULL
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_remove_all_properties"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_remove_all_properties (message));
++print_properties (message, "", FALSE);
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_get_properties: empty list"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++   notmuch_message_properties_t *list;
++   list = notmuch_message_get_properties (message, "nonexistent", TRUE);
++   printf("valid = %d\n", notmuch_message_properties_valid (list));
++   notmuch_message_properties_destroy (list);
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++valid = 0
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_properties: one value"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++print_properties (message, "testkey1", TRUE);
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++testvalue1
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_properties: multiple values"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_add_property (message, "testkey1", "bob"));
++EXPECT0(notmuch_message_add_property (message, "testkey1", "testvalue2"));
++EXPECT0(notmuch_message_add_property (message, "testkey1", "alice"));
++print_properties (message, "testkey1", TRUE);
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++alice
++bob
++testvalue1
++testvalue2
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_properties: prefix"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_add_property (message, "testkey3", "bob3"));
++EXPECT0(notmuch_message_add_property (message, "testkey3", "testvalue3"));
++EXPECT0(notmuch_message_add_property (message, "testkey3", "alice3"));
++print_properties (message, "testkey", FALSE);
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++alice
++bob
++testvalue1
++testvalue2
++alice3
++bob3
++testvalue3
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "notmuch_message_properties: modify during iteration"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++{
++    const char *keys[1000] = {NULL};
++    const char *vals[1000] = {NULL};
++    notmuch_message_properties_t *properties;
++    int i;
++
++    for (properties = notmuch_message_get_properties (message, "", FALSE), i=0;
++	 notmuch_message_properties_valid (properties);
++	 notmuch_message_properties_move_to_next (properties), i++)
++    {
++	const char *key, *value;
++
++	keys[i]=talloc_strdup(message,
++		    notmuch_message_properties_key (properties));
++        vals[i]=talloc_strdup(message,
++		    notmuch_message_properties_value (properties));
++
++	EXPECT0(notmuch_message_remove_property (message, keys[i], vals[i]));
++    }
++
++    print_properties (message, "", FALSE);
++
++    for (i = 0; keys[i] && vals[i]; i++) {
++        EXPECT0(notmuch_message_add_property (message, keys[i], vals[i]));
++    }
++}
++EOF
++cat <<'EOF' >EXPECTED
++== stdout ==
++== stderr ==
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_begin_subtest "dump message properties"
++cat <<EOF > PROPERTIES
++#= 4EFC743A.3060609@april.org fancy%20key%20with%20%c3%a1cc%c3%a8nts=import%20value%20with%20= testkey1=alice testkey1=bob testkey1=testvalue1 testkey1=testvalue2 testkey3=alice3 testkey3=bob3 testkey3=testvalue3
++EOF
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_add_property (message, "fancy key with áccènts", "import value with ="));
++EOF
++notmuch dump | grep '^#=' > OUTPUT
++test_expect_equal_file PROPERTIES OUTPUT
++
++
++test_begin_subtest "restore missing message property (single line)"
++notmuch dump | grep '^#=' > BEFORE1
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_remove_property (message, "testkey1", "bob"));
++EOF
++notmuch restore < BEFORE1
++notmuch dump | grep '^#=' > OUTPUT
++test_expect_equal_file PROPERTIES OUTPUT
++
++
++test_begin_subtest "restore missing message property (full dump)"
++notmuch dump > BEFORE2
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_remove_property (message, "testkey1", "bob"));
++EOF
++notmuch restore < BEFORE2
++notmuch dump | grep '^#=' > OUTPUT
++test_expect_equal_file PROPERTIES OUTPUT
++
++test_begin_subtest "restore clear extra message property"
++cat c_head - c_tail <<'EOF' | test_C ${MAIL_DIR}
++EXPECT0(notmuch_message_add_property (message, "testkey1", "charles"));
++EOF
++notmuch restore < BEFORE2
++notmuch dump | grep '^#=' > OUTPUT
++test_expect_equal_file PROPERTIES OUTPUT
++
++test_done
+diff --git a/test/T620-lock.sh b/test/T620-lock.sh
+new file mode 100755
+index 0000000..f46475e
+--- /dev/null
++++ b/test/T620-lock.sh
+@@ -0,0 +1,75 @@
++#!/usr/bin/env bash
++test_description="locking"
++. ./test-lib.sh || exit 1
++
++if [ "${NOTMUCH_HAVE_XAPIAN_DB_RETRY_LOCK}" = "0" ]; then
++    test_subtest_missing_external_prereq_["lock retry support"]=t
++fi
++
++add_email_corpus
++
++test_begin_subtest "blocking open"
++test_C ${MAIL_DIR} <<'EOF'
++#include <unistd.h>
++#include <stdlib.h>
++#include <sys/wait.h>
++#include <notmuch-test.h>
++
++void
++taggit (notmuch_database_t *db, const char *tag)
++{
++    notmuch_message_t *message;
++
++    EXPECT0 (notmuch_database_find_message (db, "4EFC743A.3060609@april.org", &message));
++    if (message == NULL) {
++	fprintf (stderr, "unable to find message");
++	exit (1);
++    }
++
++    EXPECT0 (notmuch_message_add_tag (message, tag));
++    notmuch_message_destroy (message);
++}
++
++int
++main (int argc, char **argv)
++{
++    pid_t child;
++    const char *path = argv[1];
++
++    child = fork ();
++    if (child == -1) {
++	fprintf (stderr, "fork failed\n");
++	exit (1);
++    }
++
++    if (child == 0) {
++	notmuch_database_t *db2;
++
++	sleep (1);
++	EXPECT0 (notmuch_database_open (path, NOTMUCH_DATABASE_MODE_READ_WRITE, &db2));
++	taggit (db2, "child");
++	EXPECT0 (notmuch_database_close (db2));
++    } else {
++	notmuch_database_t *db;
++
++	EXPECT0 (notmuch_database_open (path, NOTMUCH_DATABASE_MODE_READ_WRITE, &db));
++	taggit (db, "parent");
++	sleep (2);
++	EXPECT0 (notmuch_database_close (db));
++	wait (NULL);
++    }
++}
++
++EOF
++notmuch search --output=tags id:4EFC743A.3060609@april.org >> OUTPUT
++cat <<'EOF' >EXPECTED
++== stdout ==
++== stderr ==
++child
++inbox
++parent
++unread
++EOF
++test_expect_equal_file EXPECTED OUTPUT
++
++test_done
+diff --git a/test/database-test.c b/test/database-test.c
+index b8c3a67..42f6655 100644
+--- a/test/database-test.c
++++ b/test/database-test.c
+@@ -15,7 +15,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: David Bremner <david@tethera.net>
+  */
+diff --git a/test/notmuch-test b/test/notmuch-test
+index b843712..e7d3151 100755
+--- a/test/notmuch-test
++++ b/test/notmuch-test
+@@ -3,6 +3,7 @@
+ # Run tests
+ #
+ # Copyright (c) 2005 Junio C Hamano
++# Copyright (c) 2010 Notmuch Developers
+ #
+ # Adapted from a Makefile to a shell script by Carl Worth (2010)
+ 
+@@ -14,16 +15,16 @@ if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
+     exit 1
+ fi
+ 
+-cd $(dirname "$0")
++cd "$(dirname "$0")"
+ 
+-TESTS=${NOTMUCH_TESTS:-`echo T[0-9][0-9][0-9]-*.sh`}
++TESTS=${NOTMUCH_TESTS:-T[0-9][0-9][0-9]-*.sh}
+ 
+ # Clean up any results from a previous run
+-rm -r test-results >/dev/null 2>/dev/null
++rm -rf test-results
+ 
+-# test for timeout utility
++# Test for timeout utility
+ if command -v timeout >/dev/null; then
+-    TEST_TIMEOUT_CMD="timeout 2m "
++    TEST_TIMEOUT_CMD="timeout 2m"
+     echo "INFO: using 2 minute timeout for tests"
+ else
+     TEST_TIMEOUT_CMD=""
+diff --git a/test/notmuch-test.h b/test/notmuch-test.h
+new file mode 100644
+index 0000000..d39febb
+--- /dev/null
++++ b/test/notmuch-test.h
+@@ -0,0 +1,16 @@
++#ifndef _NOTMUCH_TEST_H
++#define _NOTMUCH_TEST_H
++#include <stdio.h>
++#include <notmuch.h>
++
++inline static void
++expect0(int line, notmuch_status_t ret)
++{
++   if (ret) {
++	fprintf (stderr, "line %d: %s\n", line, ret);
++	exit (1);
++   }
++}
++
++#define EXPECT0(v)  expect0(__LINE__, v);
++#endif
+diff --git a/test/parse-time.c b/test/parse-time.c
+index 901a4dd..694761c 100644
+--- a/test/parse-time.c
++++ b/test/parse-time.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+diff --git a/test/random-corpus.c b/test/random-corpus.c
+index d74271d..aca694a 100644
+--- a/test/random-corpus.c
++++ b/test/random-corpus.c
+@@ -19,7 +19,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: David Bremner <david@tethera.net>
+  */
+diff --git a/test/smtp-dummy.c b/test/smtp-dummy.c
+index bb13668..a629927 100644
+--- a/test/smtp-dummy.c
++++ b/test/smtp-dummy.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Authors: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/test/test-databases/Makefile.local b/test/test-databases/Makefile.local
+index ff333a1..dcc8863 100644
+--- a/test/test-databases/Makefile.local
++++ b/test/test-databases/Makefile.local
+@@ -1,6 +1,6 @@
+ # -*- makefile -*-
+ 
+-TEST_DATABASE_MIRROR=http://notmuchmail.org/releases/test-databases
++TEST_DATABASE_MIRROR=https://notmuchmail.org/releases/test-databases
+ 
+ dir := test/test-databases
+ 
+diff --git a/test/test-lib-common.sh b/test/test-lib-common.sh
+index 4e17b78..03ef1d2 100644
+--- a/test/test-lib-common.sh
++++ b/test/test-lib-common.sh
+@@ -1,5 +1,6 @@
+ #
+ # Copyright (c) 2005 Junio C Hamano
++# Copyright (c) 2010 Notmuch Developers
+ #
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -12,11 +13,17 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ 
+ # This file contains common code to be used by both the regular
+ # (correctness) tests and the performance tests.
+ 
++# test-lib.sh defines die() which echoes to nonstandard fd where
++# output was redirected earlier in that file. If test-lib.sh is not
++# loaded, neither this redirection nor die() function were defined.
++#
++type die >/dev/null 2>&1 || die () { echo "$@" >&2; exit 1; }
++
+ find_notmuch_path ()
+ {
+     dir="$1"
+@@ -51,6 +58,11 @@ restore_database () {
+ TEST_DIRECTORY=$(pwd -P)
+ notmuch_path=`find_notmuch_path "$TEST_DIRECTORY"`
+ 
++# Prepend $TEST_DIRECTORY/../lib to LD_LIBRARY_PATH, to make tests work
++# on systems where ../notmuch depends on LD_LIBRARY_PATH.
++LD_LIBRARY_PATH=${TEST_DIRECTORY%/*}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
++export LD_LIBRARY_PATH
++
+ # configure output
+ . $notmuch_path/sh.config || exit 1
+ 
+diff --git a/test/test-lib.el b/test/test-lib.el
+index 596a705..496626f 100644
+--- a/test/test-lib.el
++++ b/test/test-lib.el
+@@ -16,7 +16,7 @@
+ ;; General Public License for more details.
+ ;;
+ ;; You should have received a copy of the GNU General Public License
+-;; along with Notmuch.  If not, see <http://www.gnu.org/licenses/>.
++;; along with Notmuch.  If not, see <https://www.gnu.org/licenses/>.
+ ;;
+ ;; Authors: Dmitry Kurochkin <dmitry.kurochkin@gmail.com>
+ 
+diff --git a/test/test-lib.sh b/test/test-lib.sh
+index ac04b15..cb12ed9 100644
+--- a/test/test-lib.sh
++++ b/test/test-lib.sh
+@@ -1,5 +1,6 @@
+ #
+ # Copyright (c) 2005 Junio C Hamano
++# Copyright (c) 2010 Notmuch Developers
+ #
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -12,7 +13,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see http://www.gnu.org/licenses/ .
++# along with this program.  If not, see https://www.gnu.org/licenses/ .
+ 
+ if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
+     echo "Error: The notmuch test suite requires a bash version >= 4.0"
+@@ -85,6 +86,28 @@ unset GREP_OPTIONS
+ # For emacsclient
+ unset ALTERNATE_EDITOR
+ 
++# choose the preferred GnuPG binary:
++if command -v gpg2 > /dev/null; then
++    GPG=gpg2
++else
++    GPG=gpg
++fi
++
++add_gnupg_home ()
++{
++    local output
++    [ -d ${GNUPGHOME} ] && return
++    mkdir -m 0700 "$GNUPGHOME"
++    $GPG --no-tty --import <$TEST_DIRECTORY/gnupg-secret-key.asc >"$GNUPGHOME"/import.log 2>&1
++    test_debug "cat $GNUPGHOME/import.log"
++    if ($GPG --quick-random --version >/dev/null 2>&1) ; then
++	echo quick-random >> "$GNUPGHOME"/gpg.conf
++    elif ($GPG --debug-quick-random --version >/dev/null 2>&1) ; then
++	echo debug-quick-random >> "$GNUPGHOME"/gpg.conf
++    fi
++    echo no-emit-version >> "$GNUPGHOME"/gpg.conf
++}
++
+ # Convenience
+ #
+ # A regexp to match 5 and 40 hexdigits
+@@ -222,15 +245,15 @@ test_fixed=0
+ test_broken=0
+ test_success=0
+ 
+-_die_common () {
++_exit_common () {
+ 	code=$?
+ 	trap - EXIT
+ 	set +ex
+ 	rm -rf "$TEST_TMPDIR"
+ }
+ 
+-die () {
+-	_die_common
++trap_exit () {
++	_exit_common
+ 	if test -n "$GIT_EXIT_OK"
+ 	then
+ 		exit $code
+@@ -244,17 +267,27 @@ die () {
+ 	fi
+ }
+ 
+-die_signal () {
+-	_die_common
++trap_signal () {
++	_exit_common
+ 	echo >&6 "FATAL: $0: interrupted by signal" $((code - 128))
+ 	exit $code
+ }
+ 
++die () {
++	_exit_common
++	exec >&6
++	say_color error '%-6s' FATAL
++	echo " $*"
++	echo
++	echo "Unexpected exit while executing $0."
++	exit 1
++}
++
+ GIT_EXIT_OK=
+ # Note: TEST_TMPDIR *NOT* exported!
+ TEST_TMPDIR=$(mktemp -d "${TMPDIR:-/tmp}/notmuch-test-$$.XXXXXX")
+-trap 'die' EXIT
+-trap 'die_signal' HUP INT TERM
++trap 'trap_exit' EXIT
++trap 'trap_signal' HUP INT TERM
+ 
+ test_decode_color () {
+ 	sed	-e 's/.\[1m/<WHITE>/g' \
+@@ -507,8 +540,17 @@ emacs_deliver_message ()
+ # Accepts arbitrary extra emacs/elisp functions to modify the message
+ # before sending, which is useful to doing things like attaching files
+ # to the message and encrypting/signing.
++#
++# If any GNU-style long-arguments (like --quiet or --try-decrypt) are
++# at the head of the argument list, they are sent directly to "notmuch
++# new" after message delivery
+ emacs_fcc_message ()
+ {
++    local nmn_args=''
++    while [[ "$1" =~ ^-- ]]; do
++        nmn_args="$nmn_args $1"
++        shift
++    done
+     local subject="$1"
+     local body="$2"
+     shift 2
+@@ -527,7 +569,7 @@ emacs_fcc_message ()
+ 	   (insert \"${body}\")
+ 	   $@
+ 	   (notmuch-mua-send-and-exit))" || return 1
+-    notmuch new >/dev/null
++    notmuch new $nmn_args >/dev/null
+ }
+ 
+ # Generate a corpus of email and add it to the database.
+@@ -543,7 +585,7 @@ add_email_corpus ()
+ 	cp -a $TEST_DIRECTORY/corpus.mail ${MAIL_DIR}
+     else
+ 	cp -a $TEST_DIRECTORY/corpus ${MAIL_DIR}
+-	notmuch new >/dev/null
++	notmuch new >/dev/null || die "'notmuch new' failed while adding email corpus"
+ 	cp -a ${MAIL_DIR} $TEST_DIRECTORY/corpus.mail
+     fi
+ }
+@@ -673,6 +715,12 @@ NOTMUCH_NEW ()
+     notmuch new "${@}" | grep -v -E -e '^Processed [0-9]*( total)? file|Found [0-9]* total file'
+ }
+ 
++NOTMUCH_DUMP_TAGS ()
++{
++    # this relies on the default format being batch-tag, otherwise some tests will break
++    notmuch dump --include=tags "${@}" | sed '/^#/d' | sort
++}
++
+ notmuch_search_sanitize ()
+ {
+     perl -pe 's/("?thread"?: ?)("?)................("?)/\1\2XXX\3/'
+@@ -733,6 +781,17 @@ notmuch_uuid_sanitize ()
+ {
+     sed 's/[0-9a-f]\{8\}-[0-9a-f]\{4\}-[0-9a-f]\{4\}-[0-9a-f]\{4\}-[0-9a-f]\{12\}/UUID/g'
+ }
++
++notmuch_built_with_sanitize ()
++{
++    sed 's/^built_with[.]\(.*\)=.*$/built_with.\1=something/'
++}
++
++notmuch_config_sanitize ()
++{
++    notmuch_dir_sanitize | notmuch_built_with_sanitize
++}
++
+ # End of notmuch helper functions
+ 
+ # Use test_set_prereq to tell that a particular prerequisite is available.
+@@ -1144,6 +1203,7 @@ test_emacs () {
+ 				$load_emacs_tests \
+ 				--eval '(setq server-name \"$server_name\")' \
+ 				--eval '(server-start)' \
++				--eval '(setq epg-gpg-program \"$GPG\")' \
+ 				--eval '(orphan-watchdog $$)'" || return
+ 		EMACS_SERVER="$server_name"
+ 		# wait until the emacs server is up
+@@ -1164,15 +1224,13 @@ test_emacs () {
+ }
+ 
+ test_python() {
+-	export LD_LIBRARY_PATH=$TEST_DIRECTORY/../lib
+-	export PYTHONPATH=$TEST_DIRECTORY/../bindings/python
+-
+-	(echo "import sys; _orig_stdout=sys.stdout; sys.stdout=open('OUTPUT', 'w')"; cat) \
+-		| $NOTMUCH_PYTHON -
++    # Note: if there is need to print debug information from python program,
++    # use stdout = os.fdopen(6, 'w') or stderr = os.fdopen(7, 'w')
++    PYTHONPATH="$TEST_DIRECTORY/../bindings/python${PYTHONPATH:+:$PYTHONPATH}" \
++	$NOTMUCH_PYTHON -B - > OUTPUT
+ }
+ 
+ test_ruby() {
+-    export LD_LIBRARY_PATH=$TEST_DIRECTORY/../lib
+     MAIL_DIR=$MAIL_DIR ruby -I $TEST_DIRECTORY/../bindings/ruby> OUTPUT
+ }
+ 
+@@ -1180,8 +1238,7 @@ test_C () {
+     exec_file="test${test_count}"
+     test_file="${exec_file}.c"
+     cat > ${test_file}
+-    export LD_LIBRARY_PATH=${TEST_DIRECTORY}/../lib
+-    ${TEST_CC} ${TEST_CFLAGS} -I${TEST_DIRECTORY}/../lib -o ${exec_file} ${test_file} -L${TEST_DIRECTORY}/../lib/ -lnotmuch -ltalloc
++    ${TEST_CC} ${TEST_CFLAGS} -I${TEST_DIRECTORY} -I${TEST_DIRECTORY}/../lib -o ${exec_file} ${test_file} -L${TEST_DIRECTORY}/../lib/ -lnotmuch -ltalloc
+     echo "== stdout ==" > OUTPUT.stdout
+     echo "== stderr ==" > OUTPUT.stderr
+     ./${exec_file} "$@" 1>>OUTPUT.stdout 2>>OUTPUT.stderr
+@@ -1343,7 +1400,7 @@ test_declare_external_prereq dtach
+ test_declare_external_prereq emacs
+ test_declare_external_prereq ${TEST_EMACSCLIENT}
+ test_declare_external_prereq gdb
+-test_declare_external_prereq gpg
++test_declare_external_prereq gpg2 || test_declare_external_prereq gpg
+ test_declare_external_prereq openssl
+ test_declare_external_prereq gpgsm
+ test_declare_external_prereq ${NOTMUCH_PYTHON}
+diff --git a/util/Makefile.local b/util/Makefile.local
+index 905f237..7590618 100644
+--- a/util/Makefile.local
++++ b/util/Makefile.local
+@@ -5,7 +5,7 @@ extra_cflags += -I$(srcdir)/$(dir)
+ 
+ libutil_c_srcs := $(dir)/xutil.c $(dir)/error_util.c $(dir)/hex-escape.c \
+ 		  $(dir)/string-util.c $(dir)/talloc-extra.c $(dir)/zlib-extra.c \
+-		$(dir)/util.c
++		$(dir)/util.c $(dir)/search-path.c $(dir)/crypto.c
+ 
+ libutil_modules := $(libutil_c_srcs:.c=.o)
+ 
+diff --git a/util/crypto.c b/util/crypto.c
+new file mode 100644
+index 0000000..9766c2c
+--- /dev/null
++++ b/util/crypto.c
+@@ -0,0 +1,179 @@
++/* notmuch - Not much of an email program, (just index and search)
++ *
++ * Copyright © 2012 Jameson Rollins
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
++ *
++ * Authors: Jameson Rollins <jrollins@finestructure.net>
++ *          Daniel Kahn Gillmor <dkg@fifthhorseman.net>
++ */
++
++#include "notmuch.h"
++#include "crypto.h"
++#include "search-path.h"
++#include <string.h>
++#include <talloc.h>
++
++#define ARRAY_SIZE(arr) (sizeof (arr) / sizeof (arr[0]))
++
++/* Create or pass on a GPG context (GMime 2.6) */
++static notmuch_status_t
++get_gpg_context (_notmuch_crypto_t *crypto, GMimeCryptoContext **ctx)
++{
++    if (ctx == NULL || crypto == NULL)
++	return NOTMUCH_STATUS_NULL_POINTER;
++
++    if (crypto->gpgctx) {
++	*ctx = crypto->gpgctx;
++	return NOTMUCH_STATUS_SUCCESS;
++    }
++
++    /* TODO: GMimePasswordRequestFunc */
++    crypto->gpgctx = g_mime_gpg_context_new (NULL, _notmuch_crypto_get_gpg_path (crypto));
++    if (! crypto->gpgctx) {
++	return NOTMUCH_STATUS_FAILED_CRYPTO_CONTEXT_CREATION;
++    }
++
++    g_mime_gpg_context_set_use_agent ((GMimeGpgContext *) crypto->gpgctx, TRUE);
++    g_mime_gpg_context_set_always_trust ((GMimeGpgContext *) crypto->gpgctx, FALSE);
++
++    *ctx = crypto->gpgctx;
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++/* Create or pass on a PKCS7 context (GMime 2.6) */
++static notmuch_status_t
++get_pkcs7_context (_notmuch_crypto_t *crypto, GMimeCryptoContext **ctx)
++{
++    if (ctx == NULL || crypto == NULL)
++	return NOTMUCH_STATUS_NULL_POINTER;
++
++    if (crypto->pkcs7ctx) {
++	*ctx = crypto->pkcs7ctx;
++	return NOTMUCH_STATUS_SUCCESS;
++    }
++
++    /* TODO: GMimePasswordRequestFunc */
++    crypto->pkcs7ctx = g_mime_pkcs7_context_new (NULL);
++    if (! crypto->pkcs7ctx) {
++	return NOTMUCH_STATUS_FAILED_CRYPTO_CONTEXT_CREATION;
++    }
++
++    g_mime_pkcs7_context_set_always_trust ((GMimePkcs7Context *) crypto->pkcs7ctx,
++					   FALSE);
++
++    *ctx = crypto->pkcs7ctx;
++    return NOTMUCH_STATUS_SUCCESS;
++}
++static const struct {
++    const char *protocol;
++    notmuch_status_t (*get_context)(_notmuch_crypto_t *crypto, GMimeCryptoContext **ctx);
++} protocols[] = {
++    {
++	.protocol = "application/pgp-signature",
++	.get_context = get_gpg_context,
++    },
++    {
++	.protocol = "application/pgp-encrypted",
++	.get_context = get_gpg_context,
++    },
++    {
++	.protocol = "application/pkcs7-signature",
++	.get_context = get_pkcs7_context,
++    },
++    {
++	.protocol = "application/x-pkcs7-signature",
++	.get_context = get_pkcs7_context,
++    },
++};
++
++/* for the specified protocol return the context pointer (initializing
++ * if needed) */
++notmuch_status_t
++_notmuch_crypto_get_gmime_ctx_for_protocol (_notmuch_crypto_t *crypto,
++					    const char *protocol,
++					    GMimeCryptoContext **ctx)
++{
++    if (! protocol)
++	return NOTMUCH_STATUS_MALFORMED_CRYPTO_PROTOCOL;
++
++    /* As per RFC 1847 section 2.1: "the [protocol] value token is
++     * comprised of the type and sub-type tokens of the Content-Type".
++     * As per RFC 1521 section 2: "Content-Type values, subtypes, and
++     * parameter names as defined in this document are
++     * case-insensitive."  Thus, we use strcasecmp for the protocol.
++     */
++    for (size_t i = 0; i < ARRAY_SIZE (protocols); i++) {
++	if (strcasecmp (protocol, protocols[i].protocol) == 0)
++	    return protocols[i].get_context (crypto, ctx);
++    }
++
++    return NOTMUCH_STATUS_UNKNOWN_CRYPTO_PROTOCOL;
++}
++
++const char *
++_notmuch_crypto_get_gpg_path (const _notmuch_crypto_t *crypto)
++{
++    if (crypto && crypto->gpg_path)
++	return crypto->gpg_path;
++
++    if (test_for_executable ("gpg2")) return "gpg2";
++    if (test_for_executable ("gpg")) return "gpg";
++    return NULL;
++}
++
++notmuch_status_t
++_notmuch_crypto_set_gpg_path (_notmuch_crypto_t *crypto, const char *gpg_path)
++{
++    /* return success if this matches what is already configured */
++    if ((! gpg_path && ! crypto->gpg_path) ||
++	(gpg_path && crypto->gpg_path && 0 == strcmp (gpg_path, crypto->gpg_path)))
++	return NOTMUCH_STATUS_SUCCESS;
++
++    if (! gpg_path && ! test_for_executable (gpg_path))
++	return NOTMUCH_STATUS_FILE_ERROR;
++
++    /* clear any existing gpgctx, since things are changing */
++    if (crypto->gpgctx) {
++	g_object_unref (crypto->gpgctx);
++	crypto->gpgctx = NULL;
++    }
++
++    if (crypto->gpg_path) {
++	talloc_free (crypto->gpg_path);
++	crypto->gpg_path = NULL;
++    }
++
++    if (gpg_path)
++	crypto->gpg_path = talloc_strdup (NULL, gpg_path);
++
++    return NOTMUCH_STATUS_SUCCESS;
++}
++
++void
++_notmuch_crypto_cleanup (_notmuch_crypto_t *crypto)
++{
++    if (crypto->gpgctx) {
++	g_object_unref (crypto->gpgctx);
++	crypto->gpgctx = NULL;
++    }
++
++    if (crypto->pkcs7ctx) {
++	g_object_unref (crypto->pkcs7ctx);
++	crypto->pkcs7ctx = NULL;
++    }
++
++    talloc_free (crypto->gpg_path);
++    crypto->gpg_path = NULL;
++}
+diff --git a/util/crypto.h b/util/crypto.h
+new file mode 100644
+index 0000000..70fc8ef
+--- /dev/null
++++ b/util/crypto.h
+@@ -0,0 +1,33 @@
++#ifndef _CRYPTO_H
++#define _CRYPTO_H
++
++#include "notmuch.h"
++#include <gmime/gmime.h>
++/* This is automatically included only since gmime 2.6.10 */
++#include <gmime/gmime-pkcs7-context.h>
++
++typedef struct _notmuch_crypto {
++    GMimeCryptoContext* gpgctx;
++    GMimeCryptoContext* pkcs7ctx;
++    notmuch_bool_t verify;
++    notmuch_bool_t decrypt;
++    char *gpg_path;
++} _notmuch_crypto_t;
++
++
++notmuch_status_t
++_notmuch_crypto_get_gmime_ctx_for_protocol (_notmuch_crypto_t *crypto,
++					    const char *protocol,
++					    GMimeCryptoContext **ctx);
++
++notmuch_status_t
++_notmuch_crypto_set_gpg_path (_notmuch_crypto_t *crypto, const char *gpg_path);
++
++const char *
++_notmuch_crypto_get_gpg_path (const _notmuch_crypto_t *crypto);
++
++void
++_notmuch_crypto_cleanup (_notmuch_crypto_t *crypto);
++
++
++#endif
+diff --git a/util/error_util.c b/util/error_util.c
+index d6e60fc..778bbd5 100644
+--- a/util/error_util.c
++++ b/util/error_util.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/util/error_util.h b/util/error_util.h
+index 17c8727..4bb338a 100644
+--- a/util/error_util.h
++++ b/util/error_util.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/util/hex-escape.c b/util/hex-escape.c
+index b4a2a02..8883ff9 100644
+--- a/util/hex-escape.c
++++ b/util/hex-escape.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: David Bremner <david@tethera.net>
+  */
+diff --git a/util/search-path.c b/util/search-path.c
+new file mode 100644
+index 0000000..9da21cb
+--- /dev/null
++++ b/util/search-path.c
+@@ -0,0 +1,50 @@
++#include "search-path.h"
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++
++
++notmuch_bool_t
++test_for_executable (const char *exename)
++{
++    char *path = NULL, *save = NULL, *tok;
++    notmuch_bool_t ret = FALSE;
++
++    if (strchr (exename, '/')) {
++	if (0 == access (exename, X_OK))
++	    return TRUE;
++	else
++	    return FALSE;
++    }
++
++    path = getenv ("PATH");
++    if (path)
++	path = strdup (path);
++    else {
++	size_t n = confstr (_CS_PATH, NULL, 0);
++	path = (char *) malloc (n);
++	if (! path)
++	    return FALSE;
++	confstr (_CS_PATH, path, n);
++    }
++
++    tok = strtok_r (path, ":", &save);
++    while (tok) {
++	int dir_fd = open (tok, O_DIRECTORY | O_RDONLY);
++	if (dir_fd != -1) {
++	    int access = faccessat (dir_fd, exename, X_OK, 0);
++	    close (dir_fd);
++	    if (access == 0) {
++		ret = TRUE;
++		break;
++	    }
++	}
++	tok = strtok_r (NULL, ":", &save);
++    }
++    if (path)
++	free (path);
++    return ret;
++}
+diff --git a/util/search-path.h b/util/search-path.h
+new file mode 100644
+index 0000000..14c4d14
+--- /dev/null
++++ b/util/search-path.h
+@@ -0,0 +1,24 @@
++#ifndef _SEARCH_PATH_H
++#define _SEARCH_PATH_H
++
++#include "notmuch.h"
++
++/* can an executable be found with the given name?
++ *
++ * Return TRUE only if we can find something to execute with the
++ * associated name.
++ *
++ * if the name has a '/' in it, we look for it directly with
++ * access(exename, X_OK).
++ *
++ * otherwise, we look for it in $PATH (or in confstr(_CS_PATH), if
++ * $PATH is unset).
++ *
++ * This should match the logic for execvp (as well as matching user
++ * expectations, hopefully).
++ */
++
++notmuch_bool_t
++test_for_executable (const char *exename);
++
++#endif
+diff --git a/util/string-util.c b/util/string-util.c
+index 92af937..1812530 100644
+--- a/util/string-util.c
++++ b/util/string-util.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Jani Nikula <jani@nikula.org>
+  */
+diff --git a/util/xutil.c b/util/xutil.c
+index ac496da..f211eaa 100644
+--- a/util/xutil.c
++++ b/util/xutil.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/util/xutil.h b/util/xutil.h
+index b84e0e2..4829f33 100644
+--- a/util/xutil.h
++++ b/util/xutil.h
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: Carl Worth <cworth@cworth.org>
+  */
+diff --git a/util/zlib-extra.c b/util/zlib-extra.c
+index 2e70445..2b2cd8f 100644
+--- a/util/zlib-extra.c
++++ b/util/zlib-extra.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see http://www.gnu.org/licenses/ .
++ * along with this program.  If not, see https://www.gnu.org/licenses/ .
+  *
+  * Author: David Bremner <david@tethera.net>
+  */

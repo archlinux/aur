@@ -1,0 +1,64 @@
+pkgbase = notmuch-cip
+	pkgver = 0.22.1
+	pkgrel = 2
+	url = http://notmuchmail.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = emacs
+	makedepends = gnupg
+	makedepends = ruby
+	makedepends = pkgconfig
+	makedepends = xapian-core
+	makedepends = gmime
+	makedepends = talloc
+	options = !distcc
+	options = !makeflags
+	source = http://notmuchmail.org/releases/notmuch-0.22.1.tar.gz
+	source = cip-misc.patch
+	source = cip-core.patch
+	md5sums = 5093abaca53f3690f091022eb9a75d8a
+	md5sums = db8738d27f066c7b5490fe5b1ba2806c
+	md5sums = c5f1300491aa1a6ac61605d2d5cc164b
+
+pkgname = notmuch-cip
+	pkgdesc = Notmuch is not much of an email program, with the cleartext index properties patch
+	install = notmuch.install
+	depends = notmuch-runtime
+	optdepends = emacs: for using the emacs interface
+	optdepends = vim: for using the vim interface
+	optdepends = python2: for using the python2 bindings
+	optdepends = ruby: for using the ruby bindings
+	optdepends = gnupg: for email encryption
+	provides = notmuch
+	conflicts = notmuch
+
+pkgname = notmuch-cip-vim
+	pkgdesc = Vim plugins for notmuch, with the cleartext index properties patch
+	install = notmuch-vim.install
+	depends = notmuch-runtime
+	provides = notmuch-vim
+	conflicts = notmuch-vim
+
+pkgname = notmuch-cip-mutt
+	pkgdesc = The mail indexer, with the cleartext index properties patch
+	depends = notmuch-runtime
+	depends = perl-mailtools
+	depends = perl-mail-box
+	depends = perl-term-readline-gnu
+	depends = perl-string-shellquote
+	depends = perl-file-which
+	provides = notmuch-mutt
+	conflicts = notmuch-mutt
+
+pkgname = notmuch-cip-runtime
+	pkgdesc = Runtime for notmuch and notmuch-mutt, with the cleartext index properties patch
+	depends = xapian-core
+	depends = gmime
+	depends = talloc
+	provides = notmuch-runtime
+	conflicts = notmuch-runtime
+
