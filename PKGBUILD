@@ -10,9 +10,8 @@ url='http://www.cduce.org/'
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('ocaml>=3.10' 'ocaml-findlib>=1.0.3' 'ulex>=1.0' 'ocaml-pcre>=5.13.0' 'ocamlnet>=0.98')
-optdepends=('pxp: XML parser support' 'ocurl: external URLs support')
 source=("http://www.cduce.org/download/$pkgname-$pkgver.tar.gz")
-md5sums=('5506326db28419b3f578ff225417448f')
+sha256sums=('38264f53790075c3046f9ea55984b50366e0888e80512b9cbc2ed42ff36f10b2')
 
 build() {
   cd "$pkgname-$pkgver"
