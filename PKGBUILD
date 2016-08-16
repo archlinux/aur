@@ -22,7 +22,7 @@ build() {
     cd hivex/
     unset PREFIX
     unset PERL_MM_OPT
-    ./autogen.sh \
+    BUILDDIR= ./autogen.sh \
     --bindir=/usr/bin \
     --libdir=/usr/lib \
     --prefix=/usr \
