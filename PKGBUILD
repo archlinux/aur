@@ -3,7 +3,7 @@
 pkgname=hivex-git
 pkgver=1.3.13.r3.gcb6cc65
 pkgrel=1
-pkgdesc="System for extracting the contents of Windows Registry."
+pkgdesc="System for extracting the contents of Windows Registry - git checkout"
 conflicts=('hivex')
 provides=('hivex')
 arch=("i686" "x86_64")
