@@ -11,8 +11,8 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=52.0.2743.85
-pkgrel=2
+pkgver=52.0.2743.116
+pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('i686' 'x86_64')
@@ -35,12 +35,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
-        PNGImageDecoder.patch)
-sha256sums=('b70e3e77d8d80fbe2303c889d557864f576709ebb543f402b77bad6d6c74edc3'
+        PNGImageDecoder.patch
+        unfuck_chromium.patch)
+sha256sums=('a194ae1edb041024b3d4b6ba438f32fefdb6f1ecb24a96c50248a486b237a101'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd')
+            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
+            'c7bb8220d22300278e372767f12e301342f6989b5a7439f0d39a591ac69148c4')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -49,15 +51,6 @@ sha256sums=('b70e3e77d8d80fbe2303c889d557864f576709ebb543f402b77bad6d6c74edc3'
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
-
-# We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
-# instructions on how to build the toolchain from source don't work that well
-# (at least not from within the Chromium 39 source tree).
-# https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
-_build_nacl=0
-if [[ $CARCH == i686 ]]; then
-  _build_nacl=0
-fi
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -74,6 +67,9 @@ prepare() {
   # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
   patch -p1 -i "$srcdir"/PNGImageDecoder.patch
 
+  # fix bad builds and the dredded "aw snap" problems
+  patch -p1 -i "$srcdir"/unfuck_chromium.patch
+
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
   # ---
@@ -87,13 +83,6 @@ prepare() {
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
-
-  # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
-  if (( $_build_nacl )); then
-    python2 build/download_nacl_toolchains.py \
-      --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator \
-      sync --extract
-  fi
 }
 
 build() {
@@ -157,14 +146,9 @@ build() {
     -Denable_hangout_services_extension=1
     -Denable_widevine=1
     -Ddisable_fatal_linker_warnings=1
-    -Ddisable_glibc=1)
-
-  if (( ! $_build_nacl )); then
-    _chromium_conf+=(
-      -Ddisable_nacl=1
-      -Ddisable_pnacl=1
-    )
-  fi
+    -Ddisable_glibc=1
+    -Ddisable_nacl=1
+    -Ddisable_pnacl=1)
 
   build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
   build/gyp_chromium --depth=. "${_chromium_conf[@]}"
@@ -195,12 +179,6 @@ package() {
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
     "$pkgdir/usr/lib/chromium/chromedriver"
   strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libwidevinecdmadapter.so"
-
-  if (( $_build_nacl )); then
-    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
-      "$pkgdir/usr/lib/chromium/"
-    strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
-  fi
 
   cp -a out/Release/locales "$pkgdir/usr/lib/chromium/"
 
