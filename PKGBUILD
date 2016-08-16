@@ -1,25 +1,50 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Contributor: DavidK <david_king@softhome.net>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Roberto Alsina <ralsina@kde.org>
 
-pkgname=a+
-pkgver=4.22
-pkgrel=2
-pkgdesc='A+ compiler'
-arch=('x86_64')
-url='http://www.aplusdev.org/'
-license=('GPL')
-source=("http://http.us.debian.org/debian/pool/main/a/aplus-fsf/aplus-fsf_$pkgver.1-8_amd64.deb")
-sha256sums=('279f65f4528ccd5dee41e11f28e6f3b3349e5f333422475fb731f8116f14fe78')
+pkgname=afnix
+pkgver=2.4.0
+pkgrel=1
+pkgdesc='Multi-threaded functional programming language'
+arch=('x86_64' 'i686')
+url='https://webcache.googleusercontent.com/search?q=cache:1Mgj4gG84PAJ:www.afnix.org/&num=1&strip=1&vwsrc=0'
+license=('custom')
+depends=('ncurses' 'gcc-libs')
+makedepends=('setconf')
+source=("http://ftp.twaren.net/BSD/FreeBSD/ports/distfiles/afnix-src-2.4.0.tgz")
+sha256sums=('59885a5c1b4a211ff38313c22c45c7953711e1267beaa20c244287ad9de28b3c')
 
 prepare() {
-  ar xv aplus-fsf_$pkgver.*.deb && bsdtar jxf data.tar.xz
+  cd "$pkgname-src-$pkgver"
+
+  # afnix can only believe that GCC has reached version 4
+  sed 's/4.*) ccvers=4/6.*) ccvers=6/g' -i cnf/bin/afnix-vcomp
+  setconf cnf/bin/afnix-vcomp result=gcc
+  cp cnf/mak/afnix-gcc-4.mak cnf/mak/afnix-gcc.mak
+  setconf cnf/mak/afnix-gcc.mak AFXCPPVERS=6
+
+  # Just use the $USER env variable
+  sed 's/(getpwuid_r (uid, &pwbuf, buf, 1024, NULL) != 0)/(1)/g' -i src/lib/plt/shl/csys.cxx
+
+  # Compiler flags. The compilation process does not respect CXXFLAGS
+  setconf cnf/mak/afnix-gcc.mak STDCCFLAGS="-std=c++03 -w"
+}
+	  
+build() {
+  cd "$pkgname-src-$pkgver"
+
+  ./cnf/bin/afnix-setup -o --prefix="$pkgdir/usr"
+  make status all
 }
 
 package() {
-  install -Dm755 usr/bin/a+ "$pkgdir/usr/bin/a+"
-  install -d "$pkgdir/usr/lib"
-  cp -r usr/lib/aplus-fsf "$pkgdir/usr/lib"
-  install -Dm644 "usr/share/man/man1/$pkgname.1.gz" \
-    "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+  cd "$pkgname-src-$pkgver"
+
+  make install
+  install -d "$pkgdir"/usr/share/emacs/site-lisp
+  install etc/*.el -t "$pkgdir"/usr/share/emacs/site-lisp
+  install -D doc/xml/eul/eul.xml "$pkgdir"/usr/share/licenses/afnix/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
