@@ -1,0 +1,26 @@
+pkgbase = arsdk3-samples-git
+	pkgdesc = ARSDK3 samples to control Parrot devices
+	pkgver = r128.fc07c87
+	pkgrel = 1
+	url = http://developer.parrot.com/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libarsdk3-git
+	optdepends = mplayer: video playback
+	optdepends = xterm: video playback log
+	source = arsdk-samples::git+https://github.com/Parrot-Developers/Samples
+	source = BebopDroneDecodeStream-Makefile
+	source = BebopDroneReceiveStream-Makefile
+	source = BebopPilotingNewAPI-Makefile
+	source = JSPilotingNewAPI-Makefile
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = f0a72bb2e28c0fa32c6d751ff2f1985b23dac479d1e14a1faadba23eda2323d8
+	sha256sums = ead92b4bb2d96e3b9e33d78a91b1255782edbb2cf324a6d3e3672213ce0a44c0
+	sha256sums = acd467945f35f5c40f83adfa1359cdc6d9a7f61cff3ac7b6b0e9f10f6a12bb8e
+	sha256sums = a908d8fd83f08a1b9b4c330227559d8aa1ac9d938a73ffc8d58ef67b55cff445
+	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
+
+pkgname = arsdk3-samples-git
+
