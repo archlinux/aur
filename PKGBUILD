@@ -10,7 +10,7 @@ url='http://fhem.de'
 license=('GPL')
 depends=('perl' 'perl-io-socket-ssl' 'perl-json' 'perl-libwww' 'perl-xml-simple' 'perl-xml-libxml')
 optdepends=('perl-device-serialport: Communication through serial port'
-            'perl-net-telnte: Telnet support'
+            'perl-net-telnet: Telnet support'
             'perl-net-snmp: SNMP support')
 backup=('etc/fhem.cfg')
 install="${pkgname}.install"
