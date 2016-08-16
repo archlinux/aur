@@ -3,7 +3,7 @@
 # Contributor: igordcard <igordcard@gmail.com>
 # Contributor: Pascal E. <archlinux at hardfalcon dot net>
 pkgname="acsccid"
-pkgver="1.1.1"
+pkgver="1.1.3"
 pkgrel=1
 pkgdesc="a PC/SC driver for Linux/Mac OS X and it supports ACS CCID smart card readers. This library provides a PC/SC IFD handler implementation and communicates with the readers through the PC/SC Lite resource manager (pcscd)."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('pcsclite>=1.8.3' 'libusb-compat>=0.1.4')
 makedepends=('pcsclite>=1.8.3' 'libusb-compat>=0.1.4' 'flex' 'pkg-config')
 source=("https://downloads.sourceforge.net/acsccid/acsccid-${pkgver}.tar.bz2")
-sha256sums=('9dce72cd25a1d2229fb8eb539ca3eca02d6b222aefb3d14e8b58a6deaebc6913')
+sha256sums=('9ec8dea8ff6c6d480d107e1ceece4a286d75d738565c9b9c6d60224bee221903')
 
 build()
 {
