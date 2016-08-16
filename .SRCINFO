@@ -1,7 +1,7 @@
 pkgbase = palemoon-beta
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
 	pkgver = 27.0.0_alpha2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.palemoon.org/
 	arch = i686
 	arch = x86_64
@@ -17,23 +17,13 @@ pkgbase = palemoon-beta
 	makedepends = gstreamer
 	makedepends = gst-plugins-base
 	makedepends = libpulse
-	makedepends = hunspell
 	makedepends = gcc5
 	depends = gtk2
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = libxt
 	depends = mime-types
-	depends = nss
 	depends = alsa-lib
-	depends = icu
-	depends = nspr
-	depends = libjpeg-turbo
-	depends = zlib
-	depends = bzip2
-	depends = libpng
-	depends = libevent
-	depends = libvpx
 	depends = startup-notification
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = hunspell: spell checker and morphological analyzer
@@ -45,7 +35,7 @@ pkgbase = palemoon-beta
 	source = git+https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2
 	source = mozconfig.in
 	md5sums = SKIP
-	md5sums = ff85a559cb8104a18e77cb84247f6687
+	md5sums = 21a65e2c3583b5c7877f6c19a2fa23a4
 
 pkgname = palemoon-beta
 

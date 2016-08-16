@@ -4,14 +4,15 @@
 # Contributor: American_Jesus
 pkgname=palemoon-beta
 pkgver=27.0.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu'
-         'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell' 'gcc5')
+depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib'
+         'startup-notification')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer'
+             'gst-plugins-base' 'libpulse' 'gcc5')
 optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
@@ -22,7 +23,7 @@ source=(#git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver" #pm
         git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2"
         mozconfig.in)
 md5sums=('SKIP'
-         'ff85a559cb8104a18e77cb84247f6687')
+         '21a65e2c3583b5c7877f6c19a2fa23a4')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
@@ -31,7 +32,7 @@ prepare() {
   chmod -R +x build/autoconf/* python/*
   find . -name '*.sh' -exec chmod +x {} \;
 }
-  
+
 build() {
   cd Tycho
 
