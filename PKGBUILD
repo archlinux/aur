@@ -3,7 +3,7 @@
 _basename=graphene
 pkgname="lib32-$_basename"
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A thin layer of graphic data types (32-bit)"
 url="https://github.com/ebassi/graphene"
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   ./configure --prefix=/usr --disable-gtk-doc \
-    --build=i686-pc-linux-gnu --libdir=/usr/lib32 
+    --build=i686-pc-linux-gnu --libdir=/usr/lib32  --disable-tests
   make
 }
 
