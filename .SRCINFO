@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mg5300
-	pkgdesc = Canon IJ Printer Driver (for MG5300 series)
+	pkgdesc = Canon IJ Printer Driver (for mg5300 series)
 	pkgver = 3.60
-	pkgrel = 6
+	pkgrel = 7
 	url = http://support-au.canon.com.au/contents/AU/EN/0100392802.html
 	install = cnijfilter-mg5300.install
 	arch = i686
@@ -12,31 +12,19 @@ pkgbase = cnijfilter-mg5300
 	makedepends = tar
 	makedepends = make
 	makedepends = gcc
-	depends = libcups
-	depends = cups
+	depends = gtk2
 	depends = popt
-	depends = ghostscript
-	depends = gsfonts
-	depends = atk>=1.9.0
-	depends = gtk2>=2.8.0
-	depends = pango>=1.12.3
-	depends = libpng
-	depends = libtiff
-	depends = cairo>=1.0.2
-	depends = libxml2>=2.6.24
-	depends = fontconfig>=2.3.0
-	depends = libxinerama
 	conflicts = cnijfilter-common
 	source = http://gdlp01.c-wss.com/gds/8/0100003928/01/cnijfilter-source-3.60-1.tar.gz
 	source = build-fixes.patch
 	source = cups.patch
 	source = id.po.patch
 	source = libpng.patch
-	md5sums = 70e412331a21f4b573b4e901c89cee18
-	md5sums = 5f4b3523f6542f0a90886e7e6264f19a
-	md5sums = d5c3dda759bd8809cd5359872f9ba645
-	md5sums = e228560529d46e1f03617ba7bc9aa657
-	md5sums = 3bca06ca61b0c9ffd0c292ed6985375f
+	sha256sums = 7e4f91a0aebfa32d75da046a20bab992bd6032bb2069cf0091e77d8119a489de
+	sha256sums = ffd5c8cf926d6956cd8eec7e36c27fd080ea4f6dfd9e324f4890902584080617
+	sha256sums = 0b0cad3fad763a35d06550eda1c9de9b7592d4b29b2acb4a927efcad77fbb76c
+	sha256sums = b535f0cf501ec4023a3166f85d230d9c0da24e3cdaa5ba3ba435669cb14cbd4c
+	sha256sums = f1723e8e6a84942bd9fcfefef3efb20a40384ffb449101eccecf02aac929399c
 
 pkgname = cnijfilter-mg5300
 
