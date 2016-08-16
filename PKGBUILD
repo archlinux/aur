@@ -1,40 +1,29 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
-pkgname=beef
-pkgver=1.0.1
+pkgname=a+
+pkgver=4.22
 pkgrel=1
-pkgdesc='Flexible interpreter for the Brainfuck programming language'
-arch=('x86_64' 'i686')
-url='http://kiyuko.org/software/beef'
+pkgdesc='A+ compiler'
+arch=('x86_64')
+url='http://www.aplusdev.org/'
 license=('GPL')
-depends=('cattle')
-makedepends=('addinclude')
-source=("$pkgname-$pkgver.tgz::http://kiyuko.org/software/$pkgname/releases/$pkgver/source")
-sha256sums=('112472c832c623a6d8a90e12cd9f5fb55d93658d0bd181273c7149b11c4f5df8')
+source=("http://http.us.debian.org/debian/pool/main/a/aplus-fsf/aplus-fsf_$pkgver.1-8_amd64.deb")
+sha256sums=('279f65f4528ccd5dee41e11f28e6f3b3349e5f333422475fb731f8116f14fe78')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-
-  addinclude -t src/main.c stdio
-  addinclude -t src/io.c stdio
-  echo '#!/bin/sh' > beef.sh
-  echo 'TERM=kterm /usr/bin/beef.elf "$@"' >> beef.sh
-}
-
-build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
+  ar xv aplus-fsf_$pkgver.*.deb && bsdtar jxf data.tar.xz
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make install DESTDIR="$pkgdir"
-  mv "$pkgdir/usr/bin/beef" "$pkgdir/usr/bin/beef.elf"
-  install -Dm755 beef.sh "$pkgdir/usr/bin/beef"
+  install -Dm755 usr/bin/a+ "$pkgdir/usr/bin/a+"
+  install -d "$pkgdir/usr/lib"
+  for libfile in usr/lib/aplus-fsf/*.*; do
+    install -Dm644 "$libfile" "$pkgdir/usr/lib/"
+  done
+  install -d "$pkgdir/usr/lib/"
+  cp -r usr/lib/aplus-fsf "$pkgdir/usr/lib"
+  install -Dm644 "usr/share/man/man1/$pkgname.1.gz" \
+    "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
 }
 
-# getver: kiyuko.org/software/beef/releases
 # vim:set ts=2 sw=2 et:
