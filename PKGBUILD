@@ -52,7 +52,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.7
-pkgver=4.7
+pkgver=4.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -69,8 +69,8 @@ _bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
 _bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r2-for.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-#"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-#"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
@@ -85,8 +85,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "$_bfqpath/$_bfqp4")
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '824cb32b52956d4bc0ebae5030e3cbd201a37a067655b6907831f9883423a396'
-            'ff364c328a1a83a5f486fcc07883c5b4ad888458e0fbda3a6d60f610e3917ff7'
+            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
+            'SKIP'
+            '049fd48a4cf1d26ec243d861f23f9e5113bf37816ea1a985008164198929989e'
+            'cf843f5f58d826206d6311a680f38554eddc5ff81b8f308b3e7da1419b962a5b'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'e8d70729a7a58bac904d9a7a52ae4d46feec671afa307e6814895d74daf5ffbc'
@@ -104,7 +106,7 @@ prepare() {
 	cd "${_srcname}"
 
 	# add upstream patch
-	#patch -p1 -i "${srcdir}/patch-${pkgver}"
+	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
