@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -fPIC -Wall -Wextra -O2 -g -lpthread -IConfig/linux -IIncludes
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -lpthread -DHAVE_CONFIG_H -IConfig/linux -IIncludes
 LDFLAGS = -shared
 RM = rm -f
 TARGET_LIB = libarsal.so
