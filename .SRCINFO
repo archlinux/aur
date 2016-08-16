@@ -1,0 +1,16 @@
+pkgbase = pcc-libs-git
+	pkgdesc = Libraries for the Portable C Compiler
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://pcc.ludd.ltu.se/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = pcc-libs
+	conflicts = pcc-libs
+	source = git://github.com/mutoso/pcc-libs
+	md5sums = SKIP
+
+pkgname = pcc-libs-git
+
