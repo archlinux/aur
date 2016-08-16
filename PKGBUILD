@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Iooss <alexandre.iooss@gmail.com>
 
 # Everything works except libARController because of uthash
-# The Parrot's uthash seems to be patched a lot, if you know what to do, please help
+# The uthash in community is too old and create a segfault
 
 pkgname=libarsdk3-git
 pkgver=r22.305521e
