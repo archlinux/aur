@@ -2,7 +2,7 @@
 
 pkgname=a+
 pkgver=4.22
-pkgrel=1
+pkgrel=2
 pkgdesc='A+ compiler'
 arch=('x86_64')
 url='http://www.aplusdev.org/'
@@ -17,10 +17,6 @@ prepare() {
 package() {
   install -Dm755 usr/bin/a+ "$pkgdir/usr/bin/a+"
   install -d "$pkgdir/usr/lib"
-  for libfile in usr/lib/aplus-fsf/*.*; do
-    install -Dm644 "$libfile" "$pkgdir/usr/lib/"
-  done
-  install -d "$pkgdir/usr/lib/"
   cp -r usr/lib/aplus-fsf "$pkgdir/usr/lib"
   install -Dm644 "usr/share/man/man1/$pkgname.1.gz" \
     "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
