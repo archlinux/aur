@@ -1,7 +1,7 @@
 # Maintainer: Aaron Brodersen <aaron at abrodersen dot com>
 pkgname=dotnet-cli
 pkgver="1.0.0_preview2_003121"
-pkgrel=3
+pkgrel=4
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -29,7 +29,7 @@ source=(
   'gcc6-github-pull-5304.patch'
   'unused-attr-coreclr.patch'
   'unused-attr-corefx.patch'
-  'readdir-corefx.patch')
+  'glibc-readdir-corefx.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('b49ba545fe632dfd5426669ca3300009a5ffd1ccf3c1cf82303dcf44044db33d'
             '98f9475ea42e5d55ad9402424e342a6c0ea7351f3fb5805a602132969b44b774'
@@ -37,7 +37,7 @@ sha256sums=('b49ba545fe632dfd5426669ca3300009a5ffd1ccf3c1cf82303dcf44044db33d'
             '0905f9f8e6e33a7a6e5f4acf9ec54ec3796400dce28f0d71c1d1d8bcd9b7e068'
             '8a33c449312f90660d431177f7ee0a36894b75749f79ecf8995c64d82197af90'
             '9ecdd0ca615b988b67cc4c6a9f5035fb3fb70b16d9281d07c17a28a784a6d4ab'
-            'dcd3b066f8efec6a4fc5cf6c927c2a352e06dddb7725c3037044271d773474ca')
+            '210cc1c802f2fd284ebfa6bbf7f7997c616adb5959725b25028a2ca63a568f51')
 
 prepare() {
   cd "${srcdir}/${_coreclr}"
@@ -46,7 +46,7 @@ prepare() {
 
   cd "${srcdir}/${_corefx}"
   patch -p1 < "${srcdir}/unused-attr-corefx.patch"
-  patch -p1 < "${srcdir}/readdir-corefx.patch"
+  patch -p1 < "${srcdir}/glibc-readdir-corefx.patch"
 }
 
 build() {
