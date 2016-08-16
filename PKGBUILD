@@ -1,7 +1,7 @@
 # Contributor: Ethan Zonca <e@ethanzonca.com>
 pkgname=python-pyenet-git
-provides="pyenet"
-conflicts="pyenet"
+provides=('pyenet')
+conflicts=('pyenet')
 pkgdesc="pyenet is a python wrapper for the ENet library"
 url="http://code.google.com/p/pyenet"
 pkgver=24
