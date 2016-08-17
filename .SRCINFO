@@ -1,6 +1,6 @@
 pkgbase = mdesign
 	pkgdesc = Aerofoil design software based on Panel2D with considerable enhancements.
-	pkgver = 1.2
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://sourceforge.net/projects/mdesign/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = mdesign
 	license = GPL2
 	depends = fltk
 	optdepends = gifsicle: viewing iteration data
-	source = http://sourceforge.net/projects/mdesign/files/MDesign-1.2.tar.gz
-	sha1sums = 649ebce0bd7f475c7b678ab1cac20a67292d82de
+	source = http://sourceforge.net/projects/mdesign/files/MDesign-1.2.2.tar.gz
+	sha1sums = a798a02e935ba11ded804f9adf3a1daf100e7f93
 
 pkgname = mdesign
 
