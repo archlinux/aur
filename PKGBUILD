@@ -2,24 +2,24 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-markad
-pkgver=0.1.4_37_gc55f43f
+pkgver=0.1.4_40_g74e2a8c
 epoch=1
-_gitver=c55f43f413dff8740f99d684e8879835d4409920
+_gitver=74e2a8c5382fa8bfacd12274899112724a1e0d51
 _vdrapi=2.2.0
-pkgrel=10
+pkgrel=1
 pkgdesc="automatic advertisement detection"
 url="http://projects.vdr-developer.org/projects/plg-markad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('ffmpeg2.8' "vdr-api=${_vdrapi}")
+depends=('ffmpeg' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-markad.git#commit=$_gitver"
-        "markad-newmakefile-vdr-1.7.36.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32670"
+        "vdr-markad-fixes.diff"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
-         '5dd5c090a59066adca01ac487a9faeae'
+         'b34797cc15aac8cd75828d265283f728'
          'c0d6383c9c9b8ee6c34af19179676bf3')
 
 pkgver() {
@@ -29,17 +29,17 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  cp "$srcdir/markad/plugin/Makefile" plugin/Makefile
+  patch -p1 -i "$srcdir/vdr-markad-fixes.diff"
 }
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" make
+  make
 }
 
 package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
   #Move the logofiles to the right place and add a symlink to workaround patching.
   mkdir -p "$pkgdir/usr/share"
