@@ -1,7 +1,7 @@
 # Maintainer: jbreams@gmail.com
 pkgname=gonepass-git
-pkgver=r27.38d00f3
-pkgrel=2
+pkgver=r37.22ea069
+pkgrel=1
 pkgdesc="GTK+ 1Password reader"
 arch=('x86_64')
 url="https://github.com/jbreams/gonepass"
@@ -9,8 +9,7 @@ license=('Apache2')
 groups=()
 depends=(
   'openssl'
-  'jansson'
-  'gtk3'
+  'gtkmm3'
 )
 makedepends=(
   'git'
