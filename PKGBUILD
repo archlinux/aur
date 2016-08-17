@@ -3,7 +3,7 @@
 
 pkgname=js45
 pkgver=45.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/45"
@@ -62,6 +62,8 @@ package() {
 
   mv "$pkgdir"/usr/bin/js{,45}
   mv "$pkgdir"/usr/bin/js{,45}-config
+
+  install -Dm644 mozglue/build/libmozglue.a "$pkgdir"/usr/lib/libmozglue.a
 }
 
 # vim:set ts=2 sw=2 et:
