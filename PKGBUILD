@@ -22,7 +22,7 @@ prepare(){
       -i *
 
   echo "all:
-	  g++ -c -std=gnu++11 -I. -fPIC ${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth) -o vcmod.o vcmod.cpp
+	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o vcmod.o vcmod.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vcmod.o" > Makefile
 }
 
