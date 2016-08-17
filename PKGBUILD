@@ -3,14 +3,13 @@
 # Contributor: James An <james@jamesan.ca>
 # Contributor: ugaciaka <ugaciaka@gmail.com>
 
-
 _realname=SimpleLabeler
 _pkgpath=opt/lightscribeApplications
 _pkgname=lightscribe-labeler
 
 pkgname=bin32-lightscribe-labeler
 pkgver=1.18.15.1
-pkgrel=4
+pkgrel=5
 pkgdesc="LightScribe Simple Labeler"
 arch=('x86_64')
 url="http://www.pawtec.com/lightscribe"
@@ -20,13 +19,14 @@ provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
 options=('!strip')
 #source=(http://download.lightscribe.com/ls/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop)
-source=(http://www.pawtec.com/lightscribe_files/Linux/LSL/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop)
+source=(http://www.pawtec.com/lightscribe_files/Linux/LSL/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop libstdc++.so.5::https://dl.dropboxusercontent.com/u/29095940/oss/libstdc%2B%2B.so.5 SimpleLabeler)
 md5sums=('bf5eb9aa41e3b5f4d0c879591464c1db'
-         '02f2e57ec1773d906f8b15e6f1f95eae')
+         '02f2e57ec1773d906f8b15e6f1f95eae'
+         'ca9f92eb5fcb3598fabc2cc6c7125054'
+         'a130417033d647e2803f5ff9909cbba9')
 
 build() {
   cd $srcdir/$_pkgpath
-
   chmod -x $_realname/qt.conf
 }
 
@@ -47,5 +47,6 @@ package() {
     
     msg2 "  -> Installing license           ..."
     install -Dm644 $_pkgpath/lightscribeLicense.rtf $pkgdir/usr/share/licenses/$_pkgname/license.rtf
+    install -Dm644 $srcdir/libstdc++.so.5 $pkgdir/opt/lightscribeApplications/SimpleLabeler/libstdc++.so.5
+    install -Dm755 $srcdir/SimpleLabeler $pkgdir/usr/bin/lightscribe-labeler
 }
-
