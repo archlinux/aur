@@ -1,9 +1,9 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=hydra-git
-pkgver=8.3.214.f50e14a
+pkgver=8.4.241.6444712
 pkgrel=1
-pkgdesc='A very fast network logon cracker which support many different services'
+pkgdesc='Very fast network logon cracker which support many different services'
 url='http://www.thc.org/thc-hydra/'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -35,4 +35,4 @@ package() {
   install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
