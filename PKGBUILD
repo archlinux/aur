@@ -13,8 +13,8 @@ depends=('sdl2')
 groups=('games')
 
 source=("hib://ShovelKnight_${pkgver}.tar.gz" "${pkgname}.desktop" "icon.png")
-sha512sums=('3b0724761c4f27d3b11068298e3c4c2c0e06290934d0c56e6e8d9a54259adb926eeae2eca736816d2da5faa9b9bf07f793df51bbd4f70f7f1961b2d18e71a6db'	
-            'a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc'
+sha512sums=('3b0724761c4f27d3b11068298e3c4c2c0e06290934d0c56e6e8d9a54259adb926eeae2eca736816d2da5faa9b9bf07f793df51bbd4f70f7f1961b2d18e71a6db'
+            '483b8db99aeb36050131cf3c947737cb1df2ab4d4ee4d89e07650b07782df4c12186dc547af03b03c4f2e1b826564d17d49ae92b7934dccc48a5705aa1ce73bb'
             '43cabb8ce4213e866977b9b292458e3bc031ce134144ca05d9855ffe4d3583e1a36f68ddf4efcc2881af74e569ee8c68ae56d5a83ef5e1fea65ab2bc705af455')
 
 # You need to download the Humble Bundle installer file manually or with hib-dlagent.
