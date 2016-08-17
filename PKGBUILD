@@ -6,10 +6,10 @@
 _with_usermode=0
 
 pkgname=mock
-pkgver=1.2.19
+pkgver=1.2.20
 pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
-url="http://fedoraproject.org/wiki/Projects/Mock"
+url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
 depends=('python')
@@ -22,8 +22,12 @@ optdepends=('createrepo_c: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
-source=("https://git.fedorahosted.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.xz")
-md5sums=('1582b79ce224373d02d3d0812bcd6e7e')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+md5sums=('e4d5b7424fd9c14fbe3b150367357a86')
+
+prepare() {
+	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
+}
 
 build() {
 	cd "$pkgname-$pkgver"

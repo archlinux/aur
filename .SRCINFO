@@ -1,8 +1,8 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 1.2.19
+	pkgver = 1.2.20
 	pkgrel = 1
-	url = http://fedoraproject.org/wiki/Projects/Mock
+	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
 	license = GPL2
@@ -14,8 +14,8 @@ pkgbase = mock
 	optdepends = pigz: for parallel compression of chroot cache
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/site-defaults.cfg
-	source = https://git.fedorahosted.org/cgit/mock.git/snapshot/mock-1.2.19.tar.xz
-	md5sums = 1582b79ce224373d02d3d0812bcd6e7e
+	source = https://github.com/rpm-software-management/mock/archive/mock-1.2.20.tar.gz
+	md5sums = e4d5b7424fd9c14fbe3b150367357a86
 
 pkgname = mock
 
