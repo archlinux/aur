@@ -1,24 +1,24 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pacserve
-pkgver=2015.11
+pkgver=2016
 pkgrel=1
 pkgdesc='Easily share Pacman packages between computers. A replacement for PkgD.'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/pacserve"
-depends=(python3-threaded_servers pyalpm)
-backup=(etc/pacserve/pacserve.service.conf etc/pacserve/pacserve-ports.conf)
+depends=(pyalpm python3-threaded_servers)
+backup=(etc/pacserve/pacserve-ports.conf etc/pacserve/pacserve.service.conf)
 source=(
-  http://xyne.archlinux.ca/projects/pacserve/src/pacserve-2015.11.tar.xz
-  http://xyne.archlinux.ca/projects/pacserve/src/pacserve-2015.11.tar.xz.sig
+  http://xyne.archlinux.ca/projects/pacserve/src/pacserve-2016.tar.xz
+  http://xyne.archlinux.ca/projects/pacserve/src/pacserve-2016.tar.xz.sig
 )
 sha512sums=(
-  13072dc9e712dfa8314a7e1d352f841d4f3a652da2eb1d41aa9ea47fc1d2459dd7c577e31ed124a9c1819d31972d518db85208dd62941f9d290c75979c70848c
-  de09b579c5b6d058c61492d9198567e128370b384da7e8b48ad836c20253abc5fd2c0a3253d8dbae68905cc6040629b8d01bbf801d897b03784d1f60fb8f198b
+  780693734ef09fd79699f9f982a864a414e100e2a20d86477c2206225835605334b563721ada347dca3eed11d86eadf6c48c23294d6cb95f992b9be131319258
+  b9673ee164522f65f2da7aad2e87fed7b4d2b1bb9852d639f79a5c34c896899319d380f0233fa1d70df55150994d4ed11c83f94a009c002fb46b3af17ebc2645
 )
 md5sums=(
-  5bf2b4f3800358099fbd69b011679574
-  642a912b4c8a8a41679cafc07955a38d
+  210fd1f1008a8f0cc2c501ef0ba9f9f0
+  448d071a157c7f75670afeafb6d88da4
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
