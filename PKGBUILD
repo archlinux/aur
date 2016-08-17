@@ -2,7 +2,7 @@
 # Contributor: Friedrich Weber <fred@reichbier.de>
 pkgname=czmq
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
@@ -16,7 +16,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./autogen.sh
   ./configure --prefix=/usr
-  make $MAKEFLAGS
+  make CFLAGS=-Wno-error CPPFLAGS=-Wno-error $MAKEFLAGS
 }
 
 check() {
