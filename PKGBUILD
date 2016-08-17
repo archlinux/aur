@@ -1,5 +1,7 @@
 # Maintainer: Adolfo silerio
 # Maintainer: Duvan Felipe Suarez <duvanera@gmail.com>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
+
 pkgname=oranchelo-icon-theme
 pkgver=0.7
 pkgrel=1
