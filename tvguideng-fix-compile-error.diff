@@ -1,0 +1,39 @@
+diff -ruN vdr-plugin-tvguideng-0.3.0.orig/definitions.h vdr-plugin-tvguideng-0.3.0/definitions.h
+--- vdr-plugin-tvguideng-0.3.0.orig/definitions.h	2016-03-13 16:08:13.000000000 +0100
++++ vdr-plugin-tvguideng-0.3.0/definitions.h	2016-08-15 11:06:22.135609087 +0200
+@@ -234,7 +234,7 @@
+ };
+ 
+ enum class eDetailedHeaderST {
+-    title = eScraperHeaderST::count,
++    title = (int)eScraperHeaderST::count,
+     shorttext,
+     start,
+     stop,
+@@ -249,7 +249,7 @@
+ };
+ 
+ enum class eDetailedHeaderIT {
+-    daynumeric = eScraperHeaderIT::count,
++    daynumeric = (int)eScraperHeaderIT::count,
+     month,
+     year,
+     running,
+@@ -375,7 +375,7 @@
+ };
+ 
+ enum class eDetailedEpgST {
+-    title = eScraperST::count,
++    title = (int)eScraperST::count,
+     shorttext,
+     description,
+     start,
+@@ -393,7 +393,7 @@
+ };
+ 
+ enum class eDetailedEpgIT {
+-    daynumeric = eScraperIT::count,
++    daynumeric = (int)eScraperIT::count,
+     month,
+     year,
+     running,
