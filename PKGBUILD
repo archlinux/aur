@@ -10,7 +10,7 @@ url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('git' 'scons' 'pulseaudio')                                                                                                                                                       
-depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
+depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa' 'clang')
 optdepends=()
 conflicts=("godot")
 provides=("godot")
@@ -47,7 +47,7 @@ build() {
 
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
-    scons platform=x11 target=release_debug
+    scons platform=x11 target=release_debug CXX=clang++
 }
 
 package() {
