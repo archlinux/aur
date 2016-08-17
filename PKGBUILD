@@ -4,7 +4,7 @@
 pkgname=vdr-rssreader
 pkgver=2.2.1
 _vdrapi=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a simple OSD menu based user interface for reading user-defined RSS streams"
 url="http://www.saunalahti.fi/rahrenbe/vdr/rssreader/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -18,7 +18,8 @@ md5sums=('f77f5031ab32e25de18b6babec5eea2f')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  make GITTAG=''
+
+  make CXXFLAGS="$CXXFLAGS -std=gnu++98 -fPIC" GITTAG=''
 }
 
 
