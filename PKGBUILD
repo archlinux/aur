@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=48.596.68ab8ad
+pkgver=59.742.82b072f
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -21,10 +21,12 @@ optdepends=(
   'fpc: Free Pascal utilities support'
   'java-environment: java utilities support'
   #'libcaca: image compare support'
+  'llvm: LLVM bitcode files support'
   'fontforge: bitmap font utilities support'
   'gettext: GNU internationalization utilities support'
   'ghc: haskell utilities support'
   'gnupg: GNU privacy guard support'
+  'mono: mono support'
   'mono-tools: mono utilities support'
   'poppler: PDF utilities support'
   'sqlite: SQLite support'
@@ -38,10 +40,9 @@ optdepends=(
   'xz: XZ and LZMA utilities support'
 )
 makedepends=('git')
-# TODO: readd fpc
 checkdepends=(
-  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'colord' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg'
-  'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz')
+  'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg'
+  'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz' 'llvm' 'colord' 'fpc')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::git+https://anonscm.debian.org/git/reproducible/diffoscope.git)
@@ -64,7 +65,9 @@ build() {
 
 check() {
   cd ${pkgname}
-  PYTHONPATH=".:${PYTHONPATH}" py.test
+  # TODO: readd fpc
+  # TODO: colord test fails with lcms2 >= 2.8
+  PYTHONPATH=".:${PYTHONPATH}" py.test -k 'not test_icc and not test_ppu'
 }
 
 package() {
