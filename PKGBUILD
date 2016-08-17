@@ -31,9 +31,9 @@ package() {
 	cp -r  "Greybird-$pkgver/" "$pkgdir/usr/share/themes/Greybird/"
 	rm -rf "$pkgdir/usr/share/themes/Greybird/.gitignore"
 	
-	ln -s "/usr/share/themes/Greybird/xfwm4-compact" \
-	      "$pkgdir/usr/share/themes/Greybird Compact/xfwm4"
+	ln -s  "/usr/share/themes/Greybird/xfwm4-compact" \
+	       "$pkgdir/usr/share/themes/Greybird Compact/xfwm4"
 	      
-	ln -s "/usr/share/themes/Greybird/xfwm4-a11y" \
-	      "$pkgdir/usr/share/themes/Greybird a11y/xfwm4"
+	ln -s  "/usr/share/themes/Greybird/xfwm4-a11y" \
+	       "$pkgdir/usr/share/themes/Greybird a11y/xfwm4"
 }
