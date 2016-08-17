@@ -2,7 +2,7 @@
 
 pkgbase='python-sphinxcontrib-autoprogram'
 pkgname=('python-sphinxcontrib-autoprogram'
-	     'python2-sphinxcontrib-autoprogram')
+	       'python2-sphinxcontrib-autoprogram')
 pkgver='0.1.2'
 pkgrel='1'
 pkgdesc="This contrib extension provides an automated way to document CLI programs"
