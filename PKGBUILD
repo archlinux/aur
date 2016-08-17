@@ -4,7 +4,7 @@
 _pkgname=producer
 pkgname=${_pkgname}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Producer is a command-line quality-assurance tool to validate, and then release, your PHP library package."
 arch=("any")
 url="http://getproducer.org/"
@@ -23,5 +23,5 @@ package() {
   install -d -m 755 "${pkgdir}/opt/"
   mv "${srcdir}/producer.producer-${pkgver}" "${pkgdir}/opt/${_pkgname}"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }

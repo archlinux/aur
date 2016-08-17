@@ -1,7 +1,7 @@
 pkgbase = producer
 	pkgdesc = Producer is a command-line quality-assurance tool to validate, and then release, your PHP library package.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getproducer.org/
 	arch = any
 	license = MIT
