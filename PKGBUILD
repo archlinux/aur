@@ -2,8 +2,9 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-restfulapi
-pkgver=0.2.5.0
-pkgrel=3
+epoch=1
+pkgver=0.2.6.1
+pkgrel=1
 _vdrapi=2.2.0
 pkgdesc="Restful-API Control for VDR"
 url="https://github.com/yavdr/vdr-plugin-restfulapi"
@@ -17,7 +18,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/restfulapi/API.html'
         'var/lib/vdr/plugins/restfulapi/osd.css'
         'var/lib/vdr/plugins/restfulapi/osd.js')
-md5sums=('2517e864c4a4d9ce67e3821412947495'
+md5sums=('24ab1a9ad42769ac8d1734c4199ebee9'
          '7b482249828a58f1f6ce2cd4a577f773')
 
 prepare() {
