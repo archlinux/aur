@@ -26,16 +26,16 @@
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-firepro
-pkgver=15.302.2001
+pkgver=15.302.2301
 pkgrel=1
 # _betano=1.0
-_amdver=15.302
+# _amdver=15.302
 pkgdesc="AMD/ATI drivers for FirePro/GL/MV brand cards. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.7' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.8' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -68,7 +68,7 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-    http://www2.ati.com/drivers/firepro/15.302.2001-linux-retail_end_user.zip
+    http://www2.ati.com/drivers/firepro/15.302.2301-linux-retail_end_user.zip
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
@@ -92,9 +92,10 @@ source=(
     grsec_arch.patch
     4.6-arch-get_user_pages-page_cache_release.patch
     dkms.conf
-    makesh-dont-check-gcc-version.patch)
+    makesh-dont-check-gcc-version.patch
+    4.7-arch-cpu_has_pge-v2.patch)
 
-md5sums=('09465fd40f60c609c3e56dbbe342a46e'
+md5sums=('211a7e52d032bc60806012a13407ba87'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
@@ -118,7 +119,8 @@ md5sums=('09465fd40f60c609c3e56dbbe342a46e'
 	 '8941e91fc58cb44ce21ab9bda135754e'
 	 '11b7c2e0dc4794801005d66b0e7608a3'
 	 '23d569abfdd7de433d76e003e4b3ccf9'
-	 '10829e3b992b3e80a6e78c8e27748703')
+	 '10829e3b992b3e80a6e78c8e27748703'
+	 '37eef5103a11d8136979463e7bc31091')
 
 
 build() {
@@ -307,6 +309,7 @@ package() {
       patch -Np1 -i ../grsec_arch.patch
       patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
+      patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
