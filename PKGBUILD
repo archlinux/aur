@@ -5,7 +5,7 @@
 
 pkgname=python-djvulibre
 pkgver=0.8
-pkgrel=2
+pkgrel=5
 pkgdesc="A set of Python bindings for the DjVuLibre library"
 arch=('i686' 'x86_64')
 url="http://jwilk.net/software/python-djvulibre"
