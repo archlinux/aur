@@ -7,18 +7,19 @@
 
 pkgname=soundkonverter-frameworks-git
 pkgver=v2.2.2.r32.g81287bc
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php?content=29024"
 license=('GPL')
 depends=('kdelibs4support'
-         'libkcddb-git'
-         'cdparanoia'
-         'taglib')
+        'libkcddb-git'
+        'taglib'
+	'hicolor-icon-theme')
 makedepends=('kdoctools'
-             'extra-cmake-modules'
-             'cmake')
+            'extra-cmake-modules'
+            'cmake'
+            'kdesignerplugin')
 optdepends=('cdrkit: cdda2wav backend'
             'faac: faac backend'
             'faad2: faad backend'
@@ -41,15 +42,14 @@ source=("soundkonverter::git+https://github.com/isoft-linux/soundkonverter")
 provides=("soundkonverter" "soundkonverter-frameworks")
 conflicts=("soundkonverter" "soundkonverter-frameworks")
 sha512sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
-  cd "$srcdir/soundkonverter"
-  (
+    cd "$srcdir/soundkonverter"
+    (
     set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's|\([^-]*-g\)|r\1|;s|-|.|g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
@@ -68,11 +68,11 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
-  make
+    make
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir" install
+    cd "$srcdir/build"
+    make DESTDIR="$pkgdir" install
 }
 
