@@ -10,7 +10,7 @@ depends=('gcc-libs' 'gtk2' 'libice')
 
 source_i686=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
              "http://downloads.saleae.com/Logic%20Guide.pdf"
-             "http://kde-look.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+             "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
              "saleae-logic.desktop")
 md5sums_i686=('22d3aafe4da94a7ccd29dc98e14bd786'
               '836db7ec757b1e6453602ed4831d4765'
@@ -19,7 +19,7 @@ md5sums_i686=('22d3aafe4da94a7ccd29dc98e14bd786'
 
 source_x86_64=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-bit).zip"
                "http://downloads.saleae.com/Logic%20Guide.pdf"
-               "http://kde-look.org/CONTENT/content-files/133473-SaleaeLogic.svg"
+               "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
                "saleae-logic.desktop")
 md5sums_x86_64=('480ec9577ca031c615483b4f63bb2d1b'
                 '836db7ec757b1e6453602ed4831d4765'
