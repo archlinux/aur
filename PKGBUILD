@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v4.5.3.r13.613f607
+pkgver=v4.6.0.r1.bcc2c7c
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
