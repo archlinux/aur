@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcddb-git
-pkgver=v16.07.90.19.gd1b7836
+pkgver=16.08.0.r671.d1b7836
 pkgrel=1
 pkgdesc="KDE CDDB library. (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libkcddb
-  echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat CMakeLists.txt | grep -m1 PROJECT_VERSION | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
