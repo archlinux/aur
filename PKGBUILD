@@ -2,9 +2,9 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.106.g3eb92c7
-pkgrel=2
-pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
+pkgver=1.3.1.0.g54cd0c3
+pkgrel=1
+pkgdesc='An easy to use screenshot sharing tool. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
 license=('GPL2')
