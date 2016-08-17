@@ -2,7 +2,7 @@
 # Previous Contributors: kainlite <kainlite@gmail.com>
 
 pkgname=libcouchbase
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="The C library provides fast access to documents in the latest Couchbase Server"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
     "https://github.com/couchbase/libcouchbase/archive/${pkgver}.tar.gz"
     "fix_cbc_name_clash.patch"
 )
-sha1sums=('610fc5ec01ec6652d751e95623ed314b2378bb31'
+sha1sums=('a839bc6bfecb71d853572125aaed6369082ad859'
           'abee74d11d177a10ee3b3075d50b0e587def2ccb')
 
 build() {
