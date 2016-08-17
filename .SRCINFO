@@ -1,0 +1,17 @@
+pkgbase = solr6-war
+	pkgdesc = Popular, blazing fast open source enterprise search platform from the Apache Lucene project
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = http://lucene.apache.org/solr
+	arch = any
+	license = Apache
+	makedepends = apache-ant
+	makedepends = apache-ivy
+	depends = java-environment>=8
+	provides = solr=6.1.0
+	provides = solr6=6.1.0
+	source = https://archive.apache.org/dist/lucene/solr/6.1.0/solr-6.1.0.tgz
+	md5sums = 84bb447fb4f3a46cff3015368a8fec2e
+
+pkgname = solr6-war
+
