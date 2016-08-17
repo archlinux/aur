@@ -7,7 +7,7 @@
 pkgbase=python-djvulibre
 pkgname=(python-djvulibre python2-djvulibre)
 pkgver=0.8
-pkgrel=4
+pkgrel=3
 pkgdesc="A set of Python bindings for the DjVuLibre library"
 arch=('i686' 'x86_64')
 url="http://jwilk.net/software/python-djvulibre"
@@ -47,5 +47,5 @@ package_python2-djvulibre() {
   depends=('python2' 'cython2')
   pkgdesc+=" 2"
   cd "${srcdir}/python2-djvulibre-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}"
 }
