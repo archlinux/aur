@@ -1,6 +1,6 @@
 pkgbase = indiprop-git
 	pkgdesc = provides a generic user interface for browsing device properties published by an INDI compliant server
-	pkgver = 20130411
+	pkgver = 20160818
 	pkgrel = 1
 	url = https://code.google.com/p/indiprop/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = indiprop-git
 	makedepends = gcc
 	makedepends = git
 	depends = qt4
-	source = git+https://code.google.com/p/indiprop/
+	source = git+https://github.com/aaronevers/indiprop
 	sha1sums = SKIP
 
 pkgname = indiprop-git
