@@ -1,0 +1,1862 @@
+diff -ruN DropboxServiceMenu-0.16.1/Changelog ServiceMenus4KDE5-0.0.1/Changelog
+--- DropboxServiceMenu-0.16.1/Changelog	2012-01-29 10:12:29.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/Changelog	2015-12-03 18:32:33.000000000 +0100
+@@ -1,3 +1,13 @@
++ServiceMenus4KDE5
++
++0.0.1
++- Change install path for KDE5
++- Update dropbox.py
++- Modify dropbox_menu.sh to fit KDE5 path, add funtion get_uid, modify function revisions
++- Modify get_dropbox_folder.sh for new config.db path
++
++ServiceMenus
++
+ 0.16.1
+ - Danish translation updated thanks to Ole Holm Frandsen
+ 
+diff -ruN DropboxServiceMenu-0.16.1/deinstall.sh ServiceMenus4KDE5-0.0.1/deinstall.sh
+--- DropboxServiceMenu-0.16.1/deinstall.sh	2010-06-13 09:54:40.000000000 +0200
++++ ServiceMenus4KDE5-0.0.1/deinstall.sh	2015-12-03 18:19:18.000000000 +0100
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-cd "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/"
++cd "$HOME/.local/share/kservices5/ServiceMenus/"
+ rm dropbox_all.desktop dropbox_files.desktop dropbox_directories.desktop
+ rm -r dropbox-scripts
+ 
+diff -ruN DropboxServiceMenu-0.16.1/dropbox_all.desktop ServiceMenus4KDE5-0.0.1/dropbox_all.desktop
+--- DropboxServiceMenu-0.16.1/dropbox_all.desktop	2012-01-29 10:10:25.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/dropbox_all.desktop	2015-12-02 15:03:22.000000000 +0100
+@@ -23,21 +23,21 @@
+ Name[zh_TW]=移到 Public 資料夾並貼上 URL 到 Klipper 剪貼簿
+ Name[hu]=Áthelyezés a Publikus könyvtárba és másold be az URL-t a Vágólapra(Klipper)
+ Name[nl]=Verplaatsen naar Publieke map, en URL kopiëren naar Klipper
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh move "%f" nl
+ Icon=go-jump
+ 
+ [Desktop Action copyAndGetPublicURL]
+@@ -56,21 +56,21 @@
+ Name[zh_TW]=複製到 Public 資料夾並貼上 URL 到 Klipper 剪貼簿
+ Name[hu]=Másold a Publikus könyvtárba és másold be az URL-t a Vágólapra(Klipper)
+ Name[nl]=Kopiëren naar Publieke map, en URL kopiëren naar Klipper
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh copy "%f" nl
+ Icon=edit-copy
+ 
+ [Desktop Action generatePublicURL]
+@@ -89,21 +89,21 @@
+ Name[zh_TW]=產生公開的 URL...
+ # Name[hu]=
+ Name[nl]=Publieke URL genereren
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh klipperurl "%f" nl
+ Icon=download
+ 
+ [Desktop Action sendPublicURLmail]
+@@ -123,21 +123,21 @@
+ Name[zh_TW]=由 email 發送公開的 URL
+ Name[hu]=Publikus URL küldése emaillel
+ Name[nl]=Publieke URL verzenden via e-mail
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh mailurl "%f" nl
+ Icon=mail-send
+ 
+ [Desktop Action sendPublicURLgmail]
+@@ -156,19 +156,19 @@
+ Name[zh_TW]=由 GMail 發送公開的 URL
+ Name[hu]=Publikus URL küldése GMail-lel...
+ Name[nl]=Publieke URL via GMail verzenden
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh gmailurl "%f" nl
+ Icon=mail-send
+\ No newline at end of file
+diff -ruN DropboxServiceMenu-0.16.1/dropbox_directories.desktop ServiceMenus4KDE5-0.0.1/dropbox_directories.desktop
+--- DropboxServiceMenu-0.16.1/dropbox_directories.desktop	2012-01-26 17:36:05.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/dropbox_directories.desktop	2015-12-02 15:03:59.000000000 +0100
+@@ -23,21 +23,21 @@
+ # Name[pt]=
+ Name[hu]=Könyvtár titkosítása...
+ Name[nl]=Oplijsting van de mapinhoud versleutelen...
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh encrypt "%f" nl
+ Icon=document-encrypt
+ 
+ [Desktop Action shareFolder]
+@@ -56,19 +56,19 @@
+ Name[zh_TW]=分享此資料夾...
+ Name[hu]=Könyvtár megosztása...
+ Name[nl]=Deze map delen...
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh share "%f" nl
+ Icon=folder-remote
+\ No newline at end of file
+diff -ruN DropboxServiceMenu-0.16.1/dropbox_files.desktop ServiceMenus4KDE5-0.0.1/dropbox_files.desktop
+--- DropboxServiceMenu-0.16.1/dropbox_files.desktop	2012-01-26 17:36:05.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/dropbox_files.desktop	2015-12-02 15:04:37.000000000 +0100
+@@ -23,19 +23,19 @@
+ Name[zh_TW]=檢視較早版本...
+ Name[hu]=Korábbi verziók megtekintése....
+ Name[nl]=Vorige versies bekijken
+-Exec=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f"
+-Exec[de]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" de
+-Exec[pl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" pl
+-Exec[cs]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" cs
+-Exec[tr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" tr
+-Exec[ru]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" ru
+-Exec[lt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" lt
+-Exec[es]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" es
+-Exec[it]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" it
+-Exec[fr]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" fr
+-Exec[da]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" da
+-Exec[pt]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" pt
+-Exec[zh_TW]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" zh_TW
+-Exec[hu]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" hu
+-Exec[nl]=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" nl
++Exec=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f"
++Exec[de]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" de
++Exec[pl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" pl
++Exec[cs]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" cs
++Exec[tr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" tr
++Exec[ru]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" ru
++Exec[lt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" lt
++Exec[es]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" es
++Exec[it]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" it
++Exec[fr]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" fr
++Exec[da]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" da
++Exec[pt]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" pt
++Exec[zh_TW]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" zh_TW
++Exec[hu]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" hu
++Exec[nl]=$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/dropbox_menu.sh revisions "%f" nl
+ Icon=chronometer
+\ No newline at end of file
+diff -ruN DropboxServiceMenu-0.16.1/dropbox-scripts/dropbox_menu.sh ServiceMenus4KDE5-0.0.1/dropbox-scripts/dropbox_menu.sh
+--- DropboxServiceMenu-0.16.1/dropbox-scripts/dropbox_menu.sh	2012-01-26 17:36:05.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/dropbox-scripts/dropbox_menu.sh	2015-12-02 14:56:03.000000000 +0100
+@@ -21,7 +21,7 @@
+ #     Fifth Floor, Boston, MA 02110-1301  USA
+ SCRIPTS_PATH=`which dropbox_menu.sh`
+ SCRIPTS_PATH=`echo "$SCRIPTS_PATH" | sed "s|"${SCRIPTS_PATH##*/}"||g"`
+-SCRIPTS_PATH="`kde4-config --localprefix`share/kde4/services/ServiceMenus/dropbox-scripts/"
++SCRIPTS_PATH="$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/"
+ . ${SCRIPTS_PATH}dropbox_menu_translations.sh
+ 
+ fileurl="$2"
+@@ -88,13 +88,19 @@
+ }
+ 
+ revisions() {
++    get_uid
+     if [ "$is_in_dropbox" != "" ]; then
+-	xdg-open https://www.dropbox.com/revisions/"$relative_path"
++	xdg-open https://www.dropbox.com/revisions/"$relative_path"?_subject_uid="$my_uid"
+     else
+ 	$python ${SCRIPTS_PATH}dropbox-notify.py --icon dialog-error -t $error_timeout Dropbox "$revisions_error"
+     fi
+ }
+ 
++get_uid() {
++    testurl=`$python ${SCRIPTS_PATH}dropbox.py puburl "$dropbox_path"/Public/index.html`
++    my_uid=`set - $(IFS="/"; echo $testurl); echo $4`
++}
++
+ klipper_url() {
+     if [ "$is_in_public" != "" ]; then
+ 	if [ -d "$fileurl" ]; then
+diff -ruN DropboxServiceMenu-0.16.1/dropbox-scripts/dropbox.py ServiceMenus4KDE5-0.0.1/dropbox-scripts/dropbox.py
+--- DropboxServiceMenu-0.16.1/dropbox-scripts/dropbox.py	2010-05-12 14:53:26.000000000 +0200
++++ ServiceMenus4KDE5-0.0.1/dropbox-scripts/dropbox.py	2015-12-02 09:49:50.000000000 +0100
+@@ -1,52 +1,126 @@
+ #!/usr/bin/python
+ #
+-# Copyright 2008 Evenflow, Inc.
++# Copyright (c) Dropbox, Inc.
+ #
+-# dropbox.py
++# dropbox
+ # Dropbox frontend script
++# This file is part of nautilus-dropbox 2015.10.28.
+ #
+-# dropbox.py is free software: you can redistribute it and/or modify
++# nautilus-dropbox is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+-# dropbox.py is distributed in the hope that it will be useful,
++# nautilus-dropbox is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with dropbox.py.  If not, see <http://www.gnu.org/licenses/>.
++# along with nautilus-dropbox.  If not, see <http://www.gnu.org/licenses/>.
+ #
+-
+ from __future__ import with_statement
+ 
+-import sys
++import errno
++import locale
+ import optparse
+-import socket
+ import os
+-import time
+ import platform
++import shutil
++import socket
++import StringIO
++import subprocess
++import sys
+ import tarfile
++import tempfile
+ import threading
+-import urllib
+-import subprocess
+-import fcntl
+-import errno
+-import locale
+-from contextlib import closing
++import thread
++import time
++import traceback
++import urllib2
++
++try:
++    import gpgme
++except ImportError:
++    gpgme = None
++
++from contextlib import closing, contextmanager
++from posixpath import curdir, sep, pardir, join, abspath, commonprefix
+ 
+ INFO = u"Dropbox is the easiest way to share and store your files online. Want to learn more? Head to"
+-LINK = u"http://www.getdropbox.com/"
++LINK = u"https://www.dropbox.com/"
+ WARNING = u"In order to use Dropbox, you must download the proprietary daemon."
++GPG_WARNING = u"Note: python-gpgme is not installed, we will not be able to verify binary signatures."
++ERROR_CONNECTING = u"Trouble connecting to Dropbox servers. Maybe your internet connection is down, or you need to set your http_proxy environment variable."
++ERROR_SIGNATURE = u"Downloaded binary does not match Dropbox signature, aborting install."
++
++DOWNLOAD_LOCATION_FMT = "https://www.dropbox.com/download?plat=%s"
++SIGNATURE_LOCATION_FMT = "https://www.dropbox.com/download?plat=%s&signature=1"
+ 
+ DOWNLOADING = u"Downloading Dropbox... %d%%"
+ UNPACKING = u"Unpacking Dropbox... %d%%"
+ 
+ PARENT_DIR = os.path.expanduser("~")
+ DROPBOXD_PATH = "%s/.dropbox-dist/dropboxd" % PARENT_DIR
++DESKTOP_FILE = u"/usr/share/applications/dropbox.desktop"
+ 
+ enc = locale.getpreferredencoding()
++
++# Available from https://linux.dropbox.com/fedora/rpm-public-key.asc
++DROPBOX_PUBLIC_KEY = """
++-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: SKS 1.1.0
++
++mQENBEt0ibEBCACv4hZRPqwtpU6z8+BB5YZU1a3yjEvg2W68+a6hEwxtCa2U++4dzQ+7EqaU
++q5ybQnwtbDdpFpsOi9x31J+PCpufPUfIG694/0rlEpmzl2GWzY8NqfdBFGGm/SPSSwvKbeNc
++FMRLu5neo7W9kwvfMbGjHmvUbzBUVpCVKD0OEEf1q/Ii0Qcekx9CMoLvWq7ZwNHEbNnij7ec
++nvwNlE2MxNsOSJj+hwZGK+tM19kuYGSKw4b5mR8IyThlgiSLIfpSBh1n2KX+TDdk9GR+57TY
++vlRu6nTPu98P05IlrrCP+KF0hYZYOaMvQs9Rmc09tc/eoQlN0kkaBWw9Rv/dvLVc0aUXABEB
++AAG0MURyb3Bib3ggQXV0b21hdGljIFNpZ25pbmcgS2V5IDxsaW51eEBkcm9wYm94LmNvbT6J
++ATYEEwECACAFAkt0ibECGwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAAKCRD8kYszUESRLi/z
++B/wMscEa15rS+0mIpsORknD7kawKwyda+LHdtZc0hD/73QGFINR2P23UTol/R4nyAFEuYNsF
++0C4IAD6y4pL49eZ72IktPrr4H27Q9eXhNZfJhD7BvQMBx75L0F5gSQwuC7GdYNlwSlCD0AAh
++Qbi70VBwzeIgITBkMQcJIhLvllYo/AKD7Gv9huy4RLaIoSeofp+2Q0zUHNPl/7zymOqu+5Ox
++e1ltuJT/kd/8hU+N5WNxJTSaOK0sF1/wWFM6rWd6XQUP03VyNosAevX5tBo++iD1WY2/lFVU
++JkvAvge2WFk3c6tAwZT/tKxspFy4M/tNbDKeyvr685XKJw9ei6GcOGHD
++=5rWG
++-----END PGP PUBLIC KEY BLOCK-----
++"""
++
++# Futures
++
++def methodcaller(name, *args, **kwargs):
++    def caller(obj):
++        return getattr(obj, name)(*args, **kwargs)
++    return caller
++
++def relpath(path, start=curdir):
++    """Return a relative version of a path"""
++
++    if not path:
++        raise ValueError("no path specified")
++
++    if type(start) is unicode:
++        start_list = unicode_abspath(start).split(sep)
++    else:
++        start_list = abspath(start).split(sep)
++
++    if type(path) is unicode:
++        path_list = unicode_abspath(path).split(sep)
++    else:
++        path_list = abspath(path).split(sep)
++
++    # Work out how much of the filepath is shared by start and path.
++    i = len(commonprefix([start_list, path_list]))
++
++    rel_list = [pardir] * (len(start_list)-i) + path_list[i:]
++    if not rel_list:
++        return curdir
++    return join(*rel_list)
++
++# End Futures
++
++
+ def console_print(st=u"", f=sys.stdout, linebreak=True):
+     global enc
+     assert type(st) is unicode
+@@ -68,7 +142,7 @@
+             return False
+         else:
+             console_print(u"Sorry, I didn't understand that. Please type yes or no.")
+-    
++
+ def plat():
+     if sys.platform.lower().startswith('linux'):
+         arch = platform.machine()
+@@ -100,62 +174,98 @@
+ def unicode_abspath(path):
+     global enc
+     assert type(path) is unicode
+-    # shouldn't pass unicode to this craphead, it appends with os.getcwd() which is always a str 
++    # shouldn't pass unicode to this craphead, it appends with os.getcwd() which is always a str
+     return os.path.abspath(path.encode(sys.getfilesystemencoding())).decode(sys.getfilesystemencoding())
+ 
+-# This sets a custom User-Agent
+-class DropboxURLopener(urllib.FancyURLopener):
+-    version = "DropboxLinuxDownloader/0.6.1"
+-urllib._urlopener = DropboxURLopener()
+-
+-class DownloadState(object):
+-    def __init__(self):
+-        try:
+-            self.file = urllib.urlopen("http://www.getdropbox.com/download?plat=%s" % plat())
+-        except IOError:
+-            FatalVisibleError("Trouble connecting to Dropbox servers. Maybe your internet connection is down, or you need to set your http_proxy environment variable.")
+-            
+-        fcntl.fcntl(self.file, fcntl.F_SETFL, os.O_NONBLOCK)
+-        
+-        self.size = int(self.file.info()['content-length'])
+-        self.progress = 0
++@contextmanager
++def gpgme_context(keys):
++    gpg_conf_contents = ''
++    _gpghome = tempfile.mkdtemp(prefix='tmp.gpghome')
+ 
+-        self.local_path = "%s/dropbox.tar.gz" % PARENT_DIR
+-        self.local_file = open(self.local_path, 'wb')
++    try:
++        os.environ['GNUPGHOME'] = _gpghome
++        fp = open(os.path.join(_gpghome, 'gpg.conf'), 'wb')
++        fp.write(gpg_conf_contents)
++        fp.close()
++        ctx = gpgme.Context()
++
++        loaded = []
++        for key_file in keys:
++            result = ctx.import_(key_file)
++            key = ctx.get_key(result.imports[0][0])
++            loaded.append(key)
++
++        ctx.signers = loaded
++
++        yield ctx
++    finally:
++        del os.environ['GNUPGHOME']
++        shutil.rmtree(_gpghome, ignore_errors=True)
++
++class SignatureVerifyError(Exception):
++    pass
++
++def verify_signature(key_file, sig_file, plain_file):
++    with gpgme_context([key_file]) as ctx:
++        sigs = ctx.verify(sig_file, plain_file, None)
++        return sigs[0].status == None
++
++def download_file_chunk(url, buf):
++    opener = urllib2.build_opener()
++    opener.addheaders = [('User-Agent', "DropboxLinuxDownloader/2015.10.28")]
++    sock = opener.open(url)
++
++    size = int(sock.info()['content-length'])
++    bufsize = max(size / 200, 4096)
++    progress = 0
+ 
+-    def copy_data(self):
++    with closing(sock) as f:
++        yield (0, True)
+         while True:
+             try:
+-                chunk = os.read(self.file.fileno(), 4096)
+-                self.progress += len(chunk)
+-                self.local_file.write(chunk)
+-                yield True
+-                if self.progress == self.size:
++                chunk = f.read(bufsize)
++                progress += len(chunk)
++                buf.write(chunk)
++                yield (float(progress)/size, True)
++                if progress == size:
+                     break
+             except OSError, e:
+                 if hasattr(e, 'errno') and e.errno == errno.EAGAIN:
+                     # nothing left to read
+-                    yield False
++                    yield (float(progress)/size, False)
+                 else:
+                     raise
+ 
+-        self.file.close()
++class DownloadState(object):
++    def __init__(self):
++        self.local_file = StringIO.StringIO()
++
++    def copy_data(self):
++        return download_file_chunk(DOWNLOAD_LOCATION_FMT % plat(), self.local_file)
+ 
+     def unpack(self):
+-        self.local_file.close()
+-        archive = tarfile.open(self.local_path, 'r:gz')
++        # download signature
++        signature = StringIO.StringIO()
++        for _ in download_file_chunk(SIGNATURE_LOCATION_FMT % plat(), signature):
++            pass
++        signature.seek(0)
++        self.local_file.seek(0)
++
++        if gpgme:
++            if not verify_signature(StringIO.StringIO(DROPBOX_PUBLIC_KEY), signature, self.local_file):
++                raise SignatureVerifyError()
++
++        self.local_file.seek(0)
++        archive = tarfile.open(fileobj=self.local_file, mode='r:gz')
+         total_members = len(archive.getmembers())
+         for i, member in enumerate(archive.getmembers()):
+             archive.extract(member, PARENT_DIR)
+             yield member.name, i, total_members
+         archive.close()
+-        os.remove(self.local_path)
+ 
+     def cancel(self):
+         if not self.local_file.closed:
+             self.local_file.close()
+-        if os.path.exists(self.local_path):
+-            os.remove(self.local_path)
+ 
+ def load_serialized_images():
+     global box_logo_pixbuf, window_icon
+@@ -174,6 +284,8 @@
+         import pango
+         import webbrowser
+ 
++        gtk.gdk.threads_init()
++
+         load_serialized_images()
+ 
+         global FatalVisibleError
+@@ -188,17 +300,51 @@
+             gtk.main_quit()
+             sys.exit(-1)
+ 
+-        def gtk_flush_events():
+-            while gtk.events_pending():
+-                gtk.main_iteration()
++        class GeneratorTask(object):
++            def __init__(self, generator, loop_callback, on_done=None, on_exception=None):
++                self.generator = generator
++                self.loop_callback = loop_callback
++                self.on_done = on_done
++                self.on_exception = on_exception
++
++            def _run(self, *args, **kwargs):
++                self._stopped = False
++                try:
++                    for ret in self.generator(*args, **kwargs):
++                        if ret is None:
++                            ret = ()
++                        if not isinstance(ret, tuple):
++                            ret = (ret,)
++                        gobject.idle_add(self.loop_callback, *ret)
++
++                        if self._stopped:
++                            thread.exit()
++                except Exception, ex:
++                    print ex
++                    if self.on_exception is not None:
++                        gobject.idle_add(self.on_exception, ex)
++                else:
++                    if self.on_done is not None:
++                        gobject.idle_add(self.on_done)
++
++            def start(self, *args, **kwargs):
++                t = threading.Thread(target=self._run, args=args, kwargs=kwargs)
++                t.setDaemon(True)
++                t.start()
++
++            def stop(self):
++                self._stopped = True
+ 
+         class DownloadDialog(gtk.Dialog):
+             def handle_delete_event(self, wid, ev, data=None):
+                 self.handle_cancel(wid)
+ 
++            def handle_dont_show_toggle(self, button, data=None):
++                reroll_autostart(not button.get_active())
++
+             def handle_cancel(self, button):
+-                if self.watch:
+-                    gobject.source_remove(self.watch)
++                if self.task:
++                    self.task.stop()
+                 if self.download:
+                     self.download.cancel()
+                 gtk.main_quit()
+@@ -208,47 +354,51 @@
+                 # begin download
+                 self.ok.hide()
+                 self.download = DownloadState()
+-                self.one_chunk = self.download.copy_data()
+-                self.watch = gobject.io_add_watch(self.download.file,
+-                                                  gobject.IO_IN | 
+-                                                  gobject.IO_PRI |
+-                                                  gobject.IO_ERR |
+-                                                  gobject.IO_HUP,
+-                                                  self.handle_data_waiting)
++
+                 self.label.hide()
++                if self.dont_show_again_align is not None:
++                    self.dont_show_again_align.hide()
+                 self.progress.show()
+ 
+-            def update_progress(self, text, fraction):
+-                self.progress.set_text(text % int(fraction*100))
+-                self.progress.set_fraction(fraction)
+-                gtk_flush_events()
++                def download_progress(progress, status):
++                    if not status:
++                        self.task.stop()
++                    self.update_progress(DOWNLOADING, progress)
+ 
+-            def handle_data_waiting(self, fd, condition):
+-                if condition == gobject.IO_HUP:
+-                    FatalVisibleError("Connection to server unexpectedly closed.")
+-                elif condition == gobject.IO_ERR:
+-                    FatalVisibleError("Unexpected error occurred with download.")
+-                try:
+-                    while self.one_chunk.next():
+-                        self.update_progress(DOWNLOADING, float(self.download.progress)/self.download.size)
+-                except StopIteration:
++                def finished():
+                     self.update_progress(DOWNLOADING, 1.0)
+                     self.unpack_dropbox()
+-                    return False
+-                else:
+-                    self.update_progress(DOWNLOADING, float(self.download.progress)/self.download.size)
+-                    return True
++
++                def error(ex):
++                    FatalVisibleError(ERROR_CONNECTING)
++
++                self.update_progress(DOWNLOADING, 0)
++                self.task = GeneratorTask(self.download.copy_data,
++                                          download_progress,
++                                          finished, error).start()
++
++            def update_progress(self, text, fraction):
++                self.progress.set_text(text % int(fraction*100))
++                self.progress.set_fraction(fraction)
+ 
+             def unpack_dropbox(self):
+-                one_member = self.download.unpack()
+-                try:
+-                    while True:
+-                        name, i, total = one_member.next()
+-                        self.update_progress(UNPACKING, float(i)/total)
+-                except StopIteration:
++                def unpack_progress(name, i, total):
++                    self.update_progress(UNPACKING, float(i)/total)
++
++                def finished():
+                     self.update_progress(UNPACKING, 1.0)
+                     gtk.main_quit()
+ 
++                def error(ex):
++                    if isinstance(ex, SignatureVerifyError):
++                        FatalVisibleError(ERROR_SIGNATURE)
++                    else:
++                        FatalVisibleError(ERROR_CONNECTING)
++
++                self.task = GeneratorTask(self.download.unpack,
++                                          unpack_progress,
++                                          finished, error).start()
++
+             def mouse_down(self, widget, event):
+                 if self.hovering:
+                     self.clicked_link = True
+@@ -277,10 +427,10 @@
+                                                      title = "Dropbox Installation")
+ 
+                 self.download = None
+-                self.watch = None
+                 self.hovering = False
+                 self.clicked_link = False
+                 self.user_cancelled = False
++                self.task = None
+ 
+                 self.ok = ok = gtk.Button(stock=gtk.STOCK_OK)
+                 ok.connect('clicked', self.handle_ok)
+@@ -303,7 +453,8 @@
+                 self.progress.set_property('width-request', 300)
+ 
+                 self.label = gtk.Label()
+-                self.label.set_markup('%s <span foreground="#000099" underline="single" weight="bold">%s</span>\n\n%s' % (INFO, LINK, WARNING))
++                GPG_WARNING_MSG = (u"\n\n" + GPG_WARNING) if not gpgme else u""
++                self.label.set_markup('%s <span foreground="#000099" underline="single" weight="bold">%s</span>\n\n%s%s' % (INFO, LINK, WARNING, GPG_WARNING_MSG))
+                 self.label.set_line_wrap(True)
+                 self.label.set_property('width-request', 300)
+                 self.label.show()
+@@ -313,6 +464,7 @@
+                 self.label_box.connect("button-release-event", self.mouse_up)
+                 self.label_box.connect("button-press-event", self.mouse_down)
+                 self.label_box.connect("motion-notify-event", self.label_motion)
++
+                 self.label_box.show()
+                 def on_realize(widget):
+                     self.label_box.add_events(gtk.gdk.POINTER_MOTION_MASK)
+@@ -326,7 +478,31 @@
+                 self.hbox.show()
+ 
+                 self.vbox.add(self.hbox)
+-                self.set_resizable(False)
++
++                self.dont_show_again_align = None
++
++                try:
++                    if can_reroll_autostart():
++                        dont_show_again = gtk.CheckButton("_Don't show this again")
++                        dont_show_again.connect('toggled', self.handle_dont_show_toggle)
++                        dont_show_again.show()
++
++                        self.dont_show_again_align = gtk.Alignment(xalign=1.0, yalign=0.0, xscale=0.0, yscale=0.0)
++                        self.dont_show_again_align.add(dont_show_again)
++                        self.dont_show_again_align.show()
++
++                        hbox = gtk.HBox()
++                        hbox.set_property('border-width', 10)
++                        hbox.pack_start(self.dont_show_again_align, True, True)
++                        hbox.show()
++
++                        self.vbox.add(hbox)
++
++                    self.set_resizable(False)
++                except:
++                    traceback.print_exc()
++
++                self.ok.grab_focus()
+ 
+         dialog = DownloadDialog()
+         dialog.show()
+@@ -366,42 +542,71 @@
+             write(save)
+             flush()
+         console_print(u"%s %s\n" % (INFO, LINK))
++        GPG_WARNING_MSG = (u"\n%s" % GPG_WARNING) if not gpgme else u""
+ 
+-        if not yes_no_question(WARNING):
++        if not yes_no_question("%s%s" % (WARNING, GPG_WARNING_MSG)):
+             return
+ 
+         download = DownloadState()
+-        one_chunk = download.copy_data()
+ 
+-        try:    
+-            while True:
+-                one_chunk.next()
+-                setprogress(DOWNLOADING, float(download.progress)/download.size)
+-        except StopIteration:
++        try:
++            for progress, status in download.copy_data():
++                if not status:
++                    break
++                setprogress(DOWNLOADING, progress)
++        except Exception:
++            FatalVisibleError(ERROR_CONNECTING)
++        else:
+             setprogress(DOWNLOADING, 1.0)
+             console_print()
+             write(save)
+ 
+-        one_member = download.unpack()
+-
+         try:
+-            while True:
+-                name, i, total = one_member.next()
++            for name, i, total in download.unpack():
+                 setprogress(UNPACKING, float(i)/total)
+-        except StopIteration:
++        except SignatureVerifyError:
++            FatalVisibleError(ERROR_SIGNATURE)
++        except Exception:
++            FatalVisibleError(ERROR_CONNECTING)
++        else:
+             setprogress(UNPACKING, 1.0)
+ 
+         console_print()
+ 
++class CommandTicker(threading.Thread):
++    def __init__(self):
++        threading.Thread.__init__(self)
++        self.stop_event = threading.Event()
++
++    def stop(self):
++        self.stop_event.set()
++
++    def run(self):
++        ticks = ['[.  ]', '[.. ]', '[...]', '[ ..]', '[  .]', '[   ]']
++        i = 0
++        first = True
++        while True:
++            self.stop_event.wait(0.25)
++            if self.stop_event.isSet(): break
++            if i == len(ticks):
++                first = False
++                i = 0
++            if not first:
++                sys.stderr.write("\r%s\r" % ticks[i])
++                sys.stderr.flush()
++            i += 1
++        sys.stderr.flush()
++
++
+ class DropboxCommand(object):
+     class CouldntConnectError(Exception): pass
+     class BadConnectionError(Exception): pass
+     class EOFError(Exception): pass
+     class CommandError(Exception): pass
+ 
+-    def __init__(self):
++    def __init__(self, timeout=5):
+         self.s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+-        self.s.settimeout(3)
++        self.s.settimeout(timeout)
+         try:
+             self.s.connect(os.path.expanduser(u'~/.dropbox/command_socket'))
+         except socket.error, e:
+@@ -431,10 +636,23 @@
+                                              [v])) + u"\n").encode('utf8')
+                           for k,v in args.iteritems())
+         self.f.write(u"done\n".encode('utf8'))
+-                
++
+         self.f.flush()
+ 
+-        ok = self.__readline() == u"ok"
++        # Start a ticker
++        ticker_thread = CommandTicker()
++        ticker_thread.start()
++
++        # This is the potentially long-running call.
++        try:
++            ok = self.__readline() == u"ok"
++        except KeyboardInterrupt:
++            raise DropboxCommand.BadConnectionError("Keyboard interruption detected")
++        finally:
++            # Tell the ticker to stop.
++            ticker_thread.stop()
++            ticker_thread.join()
++
+         if ok:
+             toret = {}
+             for i in range(21):
+@@ -444,7 +662,7 @@
+                 line = self.__readline()
+                 if line == u"done":
+                     break
+-                        
++
+                 argval = line.split(u"\t")
+                 toret[argval[0]] = argval[1:]
+ 
+@@ -458,9 +676,9 @@
+                 line = self.__readline()
+                 if line == u"done":
+                     break
+-                        
++
+                 problems.append(line)
+-                    
++
+             raise DropboxCommand.CommandError(u"\n".join(problems))
+ 
+     # this is the hotness, auto marshalling
+@@ -474,21 +692,33 @@
+             return __spec_command
+ 
+ commands = {}
++aliases = {}
+ 
+ def command(meth):
+-    global commands
++    global commands, aliases
+     assert meth.__doc__, "All commands need properly formatted docstrings (even %r!!)" % meth
+     if hasattr(meth, 'im_func'): # bound method, if we ever have one
+         meth = meth.im_func
+     commands[meth.func_name] = meth
++    meth_aliases = [unicode(alias) for alias in aliases.iterkeys() if aliases[alias].func_name == meth.func_name]
++    if meth_aliases:
++        meth.__doc__ += u"\nAliases: %s" % ",".join(meth_aliases)
+     return meth
+ 
++def alias(name):
++    def decorator(meth):
++        global commands, aliases
++        assert name not in commands, "This alias is the name of a command."
++        aliases[name] = meth
++        return meth
++    return decorator
++
+ def requires_dropbox_running(meth):
+     def newmeth(*n, **kw):
+         if is_dropbox_running():
+             return meth(*n, **kw)
+         else:
+-            console_print(u"Dropbox isn't running!")            
++            console_print(u"Dropbox isn't running!")
+     newmeth.func_name = meth.func_name
+     newmeth.__doc__ = meth.__doc__
+     return newmeth
+@@ -500,7 +730,7 @@
+         # we don't reap the child because we're gonna die anyway, let init do it
+         a = subprocess.Popen([db_path], preexec_fn=os.setsid, cwd=os.path.expanduser("~"),
+                              stderr=sys.stderr, stdout=f, close_fds=True)
+-        
++
+         # in seconds
+         interval = 0.5
+         wait_for = 60
+@@ -509,13 +739,89 @@
+                 return True
+             # back off from connect for a while
+             time.sleep(interval)
+-                
++
+         return False
+     else:
+         return False
+ 
++# Extracted and modified from os.cmd.Cmd
++def columnize(list, display_list=None, display_width=None):
++    if not list:
++        console_print(u"<empty>")
++        return
++
++    non_unicode = [i for i in range(len(list)) if not (isinstance(list[i], unicode))]
++    if non_unicode:
++        raise TypeError, ("list[i] not a string for i in %s" %
++                          ", ".join(map(unicode, non_unicode)))
++
++    if not display_width:
++        d = os.popen('stty size', 'r').read().split()
++        if d:
++            display_width = int(d[1])
++        else:
++            for item in list:
++                console_print(item)
++            return
++
++    if not display_list:
++        display_list = list
++
++    size = len(list)
++    if size == 1:
++        console_print(display_list[0])
++        return
++
++    for nrows in range(1, len(list)):
++        ncols = (size+nrows-1) // nrows
++        colwidths = []
++        totwidth = -2
++        for col in range(ncols):
++            colwidth = 0
++            for row in range(nrows):
++                i = row + nrows*col
++                if i >= size:
++                    break
++                x = list[i]
++                colwidth = max(colwidth, len(x))
++            colwidths.append(colwidth)
++            totwidth += colwidth + 2
++            if totwidth > display_width:
++                break
++        if totwidth <= display_width:
++            break
++    else:
++        nrows = len(list)
++        ncols = 1
++        colwidths = [0]
++    lines = []
++    for row in range(nrows):
++        texts = []
++        display_texts = []
++        for col in range(ncols):
++            i = row + nrows*col
++            if i >= size:
++                x = ""
++                y = ""
++            else:
++                x = list[i]
++                y = display_list[i]
++            texts.append(x)
++            display_texts.append(y)
++        while texts and not texts[-1]:
++            del texts[-1]
++        original_texts = texts[:]
++        for col in range(len(texts)):
++            texts[col] = texts[col].ljust(colwidths[col])
++            texts[col] = texts[col].replace(original_texts[col], display_texts[col])
++        line = u"  ".join(texts)
++        lines.append(line)
++    for line in lines:
++        console_print(line)
++
+ @command
+ @requires_dropbox_running
++@alias('stat')
+ def filestatus(args):
+     u"""get current sync status of one or more files
+ dropbox filestatus [-l] [-a] [FILE]...
+@@ -526,17 +832,19 @@
+   -l --list  prints out information in a format similar to ls. works best when your console supports color :)
+   -a --all   do not ignore entries starting with .
+ """
++    global enc
++
+     oparser = optparse.OptionParser()
+     oparser.add_option("-l", "--list", action="store_true", dest="list")
+     oparser.add_option("-a", "--all", action="store_true", dest="all")
+     (options, args) = oparser.parse_args(args)
+ 
+-    # first check if dropbox is already running
+     try:
+         with closing(DropboxCommand()) as dc:
+             if options.list:
+-                # TODO: ls style columns
++                # Listing.
+ 
++                # Separate directories from files.
+                 if len(args) == 0:
+                     dirs, nondirs = [u"."], []
+                 else:
+@@ -544,95 +852,128 @@
+ 
+                     for a in args:
+                         try:
+-                            (dirs if os.path.isdir(a) else nondirs).\
+-                                append(a.decode(sys.getfilesystemencoding()))
++                            (dirs if os.path.isdir(a) else nondirs).append(a.decode(enc))
+                         except UnicodeDecodeError:
+-                            pass
++                            continue
+ 
+                     if len(dirs) == 0 and len(nondirs) == 0:
++                        #TODO: why?
+                         exit(1)
+ 
+-                def lowerkey(st):
+-                    return st.lower()
+-
+-                dirs.sort(key=lowerkey)
+-                nondirs.sort(key=lowerkey)
+-
+-                def printstatus(fp):
+-                    if not os.path.exists(fp):
+-                        console_print(u"%s (File doesn't exist!)" % os.path.basename(fp))
+-                        return
++                dirs.sort(key=methodcaller('lower'))
++                nondirs.sort(key=methodcaller('lower'))
+ 
++                # Gets a string representation for a path.
++                def path_to_string(file_path):
++                    if not os.path.exists(file_path):
++                        path = u"%s (File doesn't exist!)" % os.path.basename(file_path)
++                        return (path, path)
+                     try:
+-                        status = dc.icon_overlay_file_status(path=fp).get(u'status', [None])[0]
++                        status = dc.icon_overlay_file_status(path=file_path).get(u'status', [None])[0]
+                     except DropboxCommand.CommandError, e:
+-                        console_print(u"%s (%s)" % (os.path.basename(fp), e))
+-                        return
++                        path =  u"%s (%s)" % (os.path.basename(file_path), e)
++                        return (path, path)
+ 
+-                    if not sys.stdout.isatty():
+-                        console_print(os.path.basename(fp))
+-                        return
++                    env_term = os.environ.get('TERM','')
++                    supports_color = (sys.stderr.isatty() and (
++                                        env_term.startswith('vt') or
++                                        env_term.startswith('linux') or
++                                        'xterm' in env_term or
++                                        'color' in env_term
++                                        )
++                                     )
++
++                    # TODO: Test when you don't support color.
++                    if not supports_color:
++                        path = os.path.basename(file_path)
++                        return (path, path)
+ 
+                     if status == u"up to date":
+-                        INIT, CLEANUP = "\x1b[32m", "\x1b[0m"
++                        init, cleanup = "\x1b[32;1m", "\x1b[0m"
+                     elif status == u"syncing":
+-                        INIT, CLEANUP = "\x1b[36m", "\x1b[0m"
++                        init, cleanup = "\x1b[36;1m", "\x1b[0m"
+                     elif status == u"unsyncable":
+-                        INIT, CLEANUP = "\x1b[41m", "\x1b[0m"
++                        init, cleanup = "\x1b[41;1m", "\x1b[0m"
++                    elif status == u"selsync":
++                        init, cleanup = "\x1b[37;1m", "\x1b[0m"
+                     else:
+-                        INIT, CLEANUP = '', ''
++                        init, cleanup = '', ''
+ 
+-                    console_print(u"%s%s%s" % (INIT, os.path.basename(fp), CLEANUP))
++                    path = os.path.basename(file_path)
++                    return (path, u"%s%s%s" % (init, path, cleanup))
+ 
+-                def printdir(name):
+-                    for subname in sorted(os.listdir(name), key=lowerkey):
++                # Prints a directory.
++                def print_directory(name):
++                    clean_paths = []
++                    formatted_paths = []
++                    for subname in sorted(os.listdir(name), key=methodcaller('lower')):
+                         if type(subname) != unicode:
+                             continue
+-                        
++
+                         if not options.all and subname[0] == u'.':
+                             continue
+ 
+                         try:
+-                            printstatus(unicode_abspath(os.path.join(name, subname)))
++                            clean, formatted = path_to_string(unicode_abspath(os.path.join(name, subname)))
++                            clean_paths.append(clean)
++                            formatted_paths.append(formatted)
+                         except (UnicodeEncodeError, UnicodeDecodeError), e:
+                             continue
++
++                    columnize(clean_paths, formatted_paths)
++
+                 try:
+                     if len(dirs) == 1 and len(nondirs) == 0:
+-                        printdir(dirs[0])
++                        print_directory(dirs[0])
+                     else:
++                        nondir_formatted_paths = []
++                        nondir_clean_paths = []
+                         for name in nondirs:
+                             try:
+-                                printstatus(unicode_abspath(name))
++                                clean, formatted = path_to_string(unicode_abspath(name))
++                                nondir_clean_paths.append(clean)
++                                nondir_formatted_paths.append(formatted)
+                             except (UnicodeEncodeError, UnicodeDecodeError), e:
+                                 continue
+ 
++                        if nondir_clean_paths:
++                            columnize(nondir_clean_paths, nondir_formatted_paths)
++
+                         if len(nondirs) == 0:
+                             console_print(dirs[0] + u":")
+-                            printdir(dirs[0])
++                            print_directory(dirs[0])
+                             dirs = dirs[1:]
+ 
+                         for name in dirs:
+                             console_print()
+                             console_print(name + u":")
+-                            printdir(name)
++                            print_directory(name)
++
+                 except DropboxCommand.EOFError:
+                     console_print(u"Dropbox daemon stopped.")
+                 except DropboxCommand.BadConnectionError, e:
+                     console_print(u"Dropbox isn't responding!")
+             else:
+                 if len(args) == 0:
+-                    args = [name for name in os.listdir(u".") if type(name) == unicode]
++                    args = [name for name in sorted(os.listdir(u"."), key=methodcaller('lower')) if type(name) == unicode]
++                if len(args) == 0:
++                    # Bail early if there's nothing to list to avoid crashing on indent below
++                    console_print(u"<empty>")
++                    return
+                 indent = max(len(st)+1 for st in args)
+                 for file in args:
++
+                     try:
+-                        fp = unicode_abspath(file.decode(sys.getfilesystemencoding()))
++                        if type(file) is not unicode:
++                            file = file.decode(enc)
++                        fp = unicode_abspath(file)
+                     except (UnicodeEncodeError, UnicodeDecodeError), e:
+                         continue
+                     if not os.path.exists(fp):
+                         console_print(u"%-*s %s" % \
+                                           (indent, file+':', "File doesn't exist"))
+                         continue
+-                        
++
+                     try:
+                         status = dc.icon_overlay_file_status(path=fp).get(u'status', [u'unknown'])[0]
+                         console_print(u"%-*s %s" % (indent, file+':', status))
+@@ -654,10 +995,10 @@
+ @command
+ @requires_dropbox_running
+ def puburl(args):
+-    u"""get public url of a file in your dropbox
++    u"""get public url of a file in your dropbox's public folder
+ dropbox puburl FILE
+ 
+-Prints out a public url for FILE.
++Prints out a public url for FILE (which must be in your public folder).
+ """
+     if len(args) != 1:
+         console_print(puburl.__doc__,linebreak=False)
+@@ -670,7 +1011,154 @@
+             except DropboxCommand.CommandError, e:
+                 console_print(u"Couldn't get public url: " + str(e))
+             except DropboxCommand.BadConnectionError, e:
+-                console_print(u"Dropbox isn't responding!")        
++                console_print(u"Dropbox isn't responding!")
++            except DropboxCommand.EOFError:
++                console_print(u"Dropbox daemon stopped.")
++    except DropboxCommand.CouldntConnectError, e:
++        console_print(u"Dropbox isn't running!")
++
++@command
++@requires_dropbox_running
++def sharelink(args):
++    u"""get a shared link for a file in your dropbox
++dropbox sharelink FILE
++
++Prints out a shared link for FILE.
++"""
++    if len(args) != 1:
++        console_print(sharelink.__doc__, linebreak=False)
++        return
++
++    try:
++        with closing(DropboxCommand()) as dc:
++            try:
++                path = unicode_abspath(args[0].decode(sys.getfilesystemencoding()))
++                link = dc.get_shared_link(path=path).get('link', [u'No link'])[0]
++                console_print(link)
++            except DropboxCommand.CommandError, e:
++                console_print(u"Couldn't get shared link: " + str(e))
++            except DropboxCommand.BadConnectionError, e:
++                console_print(u"Dropbox isn't responding!")
++            except DropboxCommand.EOFError:
++                console_print(u"Dropbox daemon stopped.")
++    except DropboxCommand.CouldntConnectError, e:
++        console_print(u"Dropbox isn't running!")
++
++@command
++@requires_dropbox_running
++def proxy(args):
++    u"""set proxy settings for Dropbox
++dropbox proxy MODE [TYPE] [HOST] [PORT] [USERNAME] [PASSWORD]
++
++Set proxy settings for Dropbox.
++
++MODE - one of "none", "auto", "manual"
++TYPE - one of "http", "socks4", "socks5" (only valid with "manual" mode)
++HOST - proxy hostname (only valid with "manual" mode)
++PORT - proxy port (only valid with "manual" mode)
++USERNAME - (optional) proxy username (only valid with "manual" mode)
++PASSWORD - (optional) proxy password (only valid with "manual" mode)
++"""
++    mode = None
++    type_ = None
++    if len(args) >= 1:
++        mode = args[0].decode(sys.getfilesystemencoding()).lower()
++    if len(args) >= 2:
++        type_ = args[1].decode(sys.getfilesystemencoding()).lower()
++
++    if (len(args) == 0 or
++        mode not in [u'none', u'auto', u'manual'] or
++        (mode == 'manual' and len(args) not in (4, 6)) or
++        (mode != 'manual' and len(args) != 1) or
++        (mode == 'manual' and type_ not in [u'http', u'socks4', u'socks5'])):
++        # Print help
++        console_print(proxy.__doc__, linebreak=False)
++        return
++
++    ARGS = ['mode', 'type', 'host', 'port', 'username', 'password']
++
++    # Load the args into a dictionary
++    kwargs = dict(zip(ARGS, [a.decode(sys.getfilesystemencoding()) for a in args]))
++
++    # Re-set these two because they were coerced to lower case
++    kwargs['mode'] = mode
++    if type_:
++        kwargs['type'] = type_
++
++    try:
++        with closing(DropboxCommand()) as dc:
++            try:
++                dc.set_proxy_settings(**kwargs)
++                console_print(u'set')
++            except DropboxCommand.CommandError, e:
++                console_print(u"Couldn't set proxy: " + str(e))
++            except DropboxCommand.BadConnectionError, e:
++                console_print(u"Dropbox isn't responding!")
++            except DropboxCommand.EOFError:
++                console_print(u"Dropbox daemon stopped.")
++    except DropboxCommand.CouldntConnectError, e:
++        console_print(u"Dropbox isn't running!")
++
++@command
++@requires_dropbox_running
++def throttle(args):
++    u"""set bandwidth limits for Dropbox
++dropbox throttle DOWNLOAD UPLOAD
++
++Set bandwidth limits for file sync.
++
++DOWNLOAD - either "unlimited" or a manual limit in KB/s
++UPLOAD - one of "unlimited", "auto", or a manual limit in KB/s
++"""
++    if len(args) != 2:
++        console_print(throttle.__doc__, linebreak=False)
++        return
++
++    downlimit = args[0].decode(sys.getfilesystemencoding()).lower()
++    uplimit = args[1].decode(sys.getfilesystemencoding()).lower()
++
++    download_limit = None
++    download_mode = None
++    if downlimit == u'unlimited':
++        download_mode = downlimit
++    else:
++        try:
++            download_limit = int(downlimit)
++            download_mode = u'manual'
++        except ValueError:
++            console_print(throttle.__doc__, linebreak=False)
++            return
++
++    upload_limit = None
++    upload_mode = None
++    if uplimit in [u'unlimited', u'auto']:
++        upload_mode = uplimit
++    else:
++        try:
++            upload_limit = int(uplimit)
++            upload_mode = u'manual'
++        except ValueError:
++            console_print(throttle.__doc__, linebreak=False)
++            return
++
++    kwargs = {
++        u'download_mode': download_mode,
++        u'upload_mode': upload_mode,
++    }
++    if download_limit:
++        kwargs[u'download_limit'] = unicode(download_limit)
++    if upload_limit:
++        kwargs[u'upload_limit'] = unicode(upload_limit)
++
++    try:
++        with closing(DropboxCommand()) as dc:
++            try:
++                dc.set_bandwidth_limits(**kwargs)
++                console_print(u'set')
++            except DropboxCommand.CommandError, e:
++                console_print(u"Couldn't set bandwidth limits: " + str(e))
++            except DropboxCommand.BadConnectionError, e:
++                console_print(u"Dropbox isn't responding!")
+             except DropboxCommand.EOFError:
+                 console_print(u"Dropbox daemon stopped.")
+     except DropboxCommand.CouldntConnectError, e:
+@@ -693,7 +1181,7 @@
+             try:
+                 lines = dc.get_dropbox_status()[u'status']
+                 if len(lines) == 0:
+-                    console_print(u'Idle')                    
++                    console_print(u'Idle')
+                 else:
+                     for line in lines:
+                         console_print(line)
+@@ -709,6 +1197,15 @@
+         console_print(u"Dropbox isn't running!")
+ 
+ @command
++def running(argv):
++    u"""return whether dropbox is running
++dropbox running
++
++Returns 1 if running 0 if not running.
++"""
++    return int(is_dropbox_running())
++
++@command
+ @requires_dropbox_running
+ def stop(args):
+     u"""stop dropboxd
+@@ -721,17 +1218,164 @@
+             try:
+                 dc.tray_action_hard_exit()
+             except DropboxCommand.BadConnectionError, e:
+-                console_print(u"Dropbox isn't responding!")        
++                console_print(u"Dropbox isn't responding!")
++            except DropboxCommand.EOFError:
++                console_print(u"Dropbox daemon stopped.")
++    except DropboxCommand.CouldntConnectError, e:
++        console_print(u"Dropbox isn't running!")
++
++#returns true if link is necessary
++def grab_link_url_if_necessary():
++    try:
++        with closing(DropboxCommand()) as dc:
++            try:
++                link_url = dc.needs_link().get(u"link_url", None)
++                if link_url is not None:
++                    console_print(u"To link this computer to a dropbox account, visit the following url:\n%s" % link_url[0])
++                    return True
++                else:
++                    return False
++            except DropboxCommand.CommandError, e:
++                pass
++            except DropboxCommand.BadConnectionError, e:
++                console_print(u"Dropbox isn't responding!")
+             except DropboxCommand.EOFError:
+                 console_print(u"Dropbox daemon stopped.")
+     except DropboxCommand.CouldntConnectError, e:
+         console_print(u"Dropbox isn't running!")
+ 
+ @command
++@requires_dropbox_running
++def lansync(argv):
++    u"""enables or disables LAN sync
++dropbox lansync [y/n]
++
++options:
++  y  dropbox will use LAN sync (default)
++  n  dropbox will not use LAN sync
++"""
++    if len(argv) != 1:
++        console_print(lansync.__doc__, linebreak=False)
++        return
++
++    s = argv[0].lower()
++    if s.startswith('y') or s.startswith('-y'):
++        should_lansync = True
++    elif s.startswith('n') or s.startswith('-n'):
++        should_lansync = False
++    else:
++        should_lansync = None
++
++    if should_lansync is None:
++        console_print(lansync.__doc__,linebreak=False)
++    else:
++        with closing(DropboxCommand()) as dc:
++            dc.set_lan_sync(lansync='enabled' if should_lansync else 'disabled')
++
++
++@command
++@requires_dropbox_running
++def exclude(args):
++    u"""ignores/excludes a directory from syncing
++dropbox exclude [list]
++dropbox exclude add [DIRECTORY] [DIRECTORY] ...
++dropbox exclude remove [DIRECTORY] [DIRECTORY] ...
++
++"list" prints a list of directories currently excluded from syncing.
++"add" adds one or more directories to the exclusion list, then resynchronizes Dropbox.
++"remove" removes one or more directories from the exclusion list, then resynchronizes Dropbox.
++With no arguments, executes "list".
++Any specified path must be within Dropbox.
++"""
++    if len(args) == 0:
++        try:
++            with closing(DropboxCommand()) as dc:
++                try:
++                    lines = [relpath(path) for path in dc.get_ignore_set()[u'ignore_set']]
++                    lines.sort()
++                    if len(lines) == 0:
++                        console_print(u'No directories are being ignored.')
++                    else:
++                        console_print(u'Excluded: ')
++                        for line in lines:
++                            console_print(unicode(line))
++                except KeyError:
++                    console_print(u"Couldn't get ignore set: daemon isn't responding")
++                except DropboxCommand.CommandError, e:
++                    if e.args[0].startswith(u"No command exists by that name"):
++                        console_print(u"This version of the client does not support this command.")
++                    else:
++                        console_print(u"Couldn't get ignore set: " + str(e))
++                except DropboxCommand.BadConnectionError, e:
++                    console_print(u"Dropbox isn't responding!")
++                except DropboxCommand.EOFError:
++                    console_print(u"Dropbox daemon stopped.")
++        except DropboxCommand.CouldntConnectError, e:
++            console_print(u"Dropbox isn't running!")
++    elif len(args) == 1 and args[0] == u"list":
++        exclude([])
++    elif len(args) >= 2:
++        sub_command = args[0]
++        paths = args[1:]
++        absolute_paths = [unicode_abspath(path.decode(sys.getfilesystemencoding())) for path in paths]
++        if sub_command == u"add":
++            try:
++                with closing(DropboxCommand(timeout=None)) as dc:
++                    try:
++                        result = dc.ignore_set_add(paths=absolute_paths)
++                        if result[u"ignored"]:
++                            console_print(u"Excluded: ")
++                            lines = [relpath(path) for path in result[u"ignored"]]
++                            for line in lines:
++                                console_print(unicode(line))
++                    except KeyError:
++                        console_print(u"Couldn't add ignore path: daemon isn't responding")
++                    except DropboxCommand.CommandError, e:
++                        if e.args[0].startswith(u"No command exists by that name"):
++                            console_print(u"This version of the client does not support this command.")
++                        else:
++                            console_print(u"Couldn't get ignore set: " + str(e))
++                    except DropboxCommand.BadConnectionError, e:
++                        console_print(u"Dropbox isn't responding! [%s]" % e)
++                    except DropboxCommand.EOFError:
++                        console_print(u"Dropbox daemon stopped.")
++            except DropboxCommand.CouldntConnectError, e:
++                console_print(u"Dropbox isn't running!")
++        elif sub_command == u"remove":
++            try:
++                with closing(DropboxCommand(timeout=None)) as dc:
++                    try:
++                        result = dc.ignore_set_remove(paths=absolute_paths)
++                        if result[u"removed"]:
++                            console_print(u"No longer excluded: ")
++                            lines = [relpath(path) for path in result[u"removed"]]
++                            for line in lines:
++                                console_print(unicode(line))
++                    except KeyError:
++                        console_print(u"Couldn't remove ignore path: daemon isn't responding")
++                    except DropboxCommand.CommandError, e:
++                        if e.args[0].startswith(u"No command exists by that name"):
++                            console_print(u"This version of the client does not support this command.")
++                        else:
++                            console_print(u"Couldn't get ignore set: " + str(e))
++                    except DropboxCommand.BadConnectionError, e:
++                        console_print(u"Dropbox isn't responding! [%s]" % e)
++                    except DropboxCommand.EOFError:
++                        console_print(u"Dropbox daemon stopped.")
++            except DropboxCommand.CouldntConnectError, e:
++                console_print(u"Dropbox isn't running!")
++        else:
++            console_print(exclude.__doc__, linebreak=False)
++            return
++    else:
++        console_print(exclude.__doc__, linebreak=False)
++        return
++
++@command
+ def start(argv):
+     u"""start dropboxd
+ dropbox start [-i]
+-    
++
+ Starts the dropbox daemon, dropboxd. If dropboxd is already running, this will do nothing.
+ 
+ options:
+@@ -739,10 +1383,11 @@
+ """
+ 
+     should_install = "-i" in argv or "--install" in argv
+-    
++
+     # first check if dropbox is already running
+     if is_dropbox_running():
+-        console_print(u"Dropbox is already running!")
++        if not grab_link_url_if_necessary():
++            console_print(u"Dropbox is already running!")
+         return
+ 
+     console_print(u"Starting Dropbox...", linebreak=False)
+@@ -751,22 +1396,75 @@
+         if not should_install:
+             console_print()
+             console_print(u"The Dropbox daemon is not installed!")
+-            console_print(u"Run with -i to install the daemon")
++            console_print(u"Run \"dropbox start -i\" to install the daemon")
+             return
+ 
+         # install dropbox!!!
+         try:
+             download()
+         except:
+-            pass
++            traceback.print_exc()
+         else:
+             if GUI_AVAILABLE:
+                 start_dropbox()
++                console_print(u"Done!")
+             else:
+-                console_print(u"Dropbox has been downloaded successfully.")
+-                console_print(u"In order to link to an account for the first time, a graphical environment is required.")
+-                console_print(u"Try running 'dropbox start' from X windows")
+-    console_print(u"Done!")
++                if start_dropbox():
++                    if not grab_link_url_if_necessary():
++                        console_print(u"Done!")
++    else:
++        if not grab_link_url_if_necessary():
++            console_print(u"Done!")
++
++
++def can_reroll_autostart():
++    return u".config" in os.listdir(os.path.expanduser(u'~'))
++
++def reroll_autostart(should_autostart):
++    home_dir = os.path.expanduser(u'~')
++    contents = os.listdir(home_dir)
++
++    # UBUNTU
++    if u".config" in contents:
++        autostart_dir = os.path.join(home_dir, u".config", u"autostart")
++        autostart_link = os.path.join(autostart_dir, u"dropbox.desktop")
++        if should_autostart:
++            if os.path.exists(DESKTOP_FILE):
++                if not os.path.exists(autostart_dir):
++                    os.makedirs(autostart_dir)
++                shutil.copyfile(DESKTOP_FILE, autostart_link)
++        elif os.path.exists(autostart_link):
++            os.remove(autostart_link)
++
++
++
++@command
++def autostart(argv):
++    u"""automatically start dropbox at login
++dropbox autostart [y/n]
++
++options:
++  n  dropbox will not start automatically at login
++  y  dropbox will start automatically at login (default)
++
++Note: May only work on current Ubuntu distributions.
++"""
++    if len(argv) != 1:
++        console_print(''.join(autostart.__doc__.split('\n', 1)[1:]).decode('ascii'))
++        return
++
++    s = argv[0].lower()
++    if s.startswith('y') or s.startswith('-y'):
++        should_autostart = True
++    elif s.startswith('n') or s.startswith('-n'):
++        should_autostart = False
++    else:
++        should_autostart = None
++
++    if should_autostart is None:
++        console_print(autostart.__doc__,linebreak=False)
++    else:
++        reroll_autostart(should_autostart)
+ 
+ @command
+ def help(argv):
+@@ -781,11 +1479,16 @@
+         if command == argv[0]:
+             console_print(commands[command].__doc__.split('\n', 1)[1].decode('ascii'))
+             return
++    for alias in aliases:
++        if alias == argv[0]:
++            console_print(aliases[alias].__doc__.split('\n', 1)[1].decode('ascii'))
++            return
+     console_print(u"unknown command '%s'" % argv[0], f=sys.stderr)
+ 
+ def usage(argv):
+     console_print(u"Dropbox command-line interface\n")
+     console_print(u"commands:\n")
++    console_print(u"Note: use dropbox help <command> to view usage for a specific command.\n")
+     out = []
+     for command in commands:
+         out.append((command, commands[command].__doc__.splitlines()[0]))
+@@ -802,12 +1505,13 @@
+     # separate the argv list at that point
+     cut = None
+     for i in range(len(argv)):
+-        if argv[i] in commands:
++        if argv[i] in commands or argv[i] in aliases:
+             cut = i
+             break
+-    
++
+     if cut == None:
+         usage(argv)
++        os._exit(0)
+         return
+ 
+     # lol no options for now
+@@ -815,7 +1519,19 @@
+     globaloptionparser.parse_args(argv[0:i])
+ 
+     # now dispatch and run
+-    return commands[argv[i]](argv[i+1:])
++    result = None
++    if argv[i] in commands:
++        result = commands[argv[i]](argv[i+1:])
++    elif argv[i] in aliases:
++        result = aliases[argv[i]](argv[i+1:])
++
++    # flush, in case output is rerouted to a file.
++    console_flush()
++
++    # done
++    return result
+ 
+ if __name__ == "__main__":
+-    main(sys.argv)
++    ret = main(sys.argv)
++    if ret is not None:
++        sys.exit(ret)
+diff -ruN DropboxServiceMenu-0.16.1/dropbox-scripts/get_dropbox_folder.sh ServiceMenus4KDE5-0.0.1/dropbox-scripts/get_dropbox_folder.sh
+--- DropboxServiceMenu-0.16.1/dropbox-scripts/get_dropbox_folder.sh	2012-01-26 16:40:23.000000000 +0100
++++ ServiceMenus4KDE5-0.0.1/dropbox-scripts/get_dropbox_folder.sh	2015-11-27 14:05:03.000000000 +0100
+@@ -60,9 +60,9 @@
+     fatal "Please install sqlite3"
+   fi
+   # which database have we got?
+-  if [ -f "$HOME/.dropbox/config.db" ]
++  if [ -f "$HOME/.dropbox/instance1/config.db" ]
+   then
+-    local DBFILE="$HOME/.dropbox/config.db"
++    local DBFILE="$HOME/.dropbox/instance1/config.db"
+     local DBVER=$( "$SQLITE3" "$DBFILE" 'SELECT value FROM config WHERE key="config_schema_version"' )
+   elif [ -f "$HOME/.dropbox/dropbox.db" ]
+   then
+diff -ruN DropboxServiceMenu-0.16.1/install-it.sh ServiceMenus4KDE5-0.0.1/install-it.sh
+--- DropboxServiceMenu-0.16.1/install-it.sh	2010-06-13 09:52:53.000000000 +0200
++++ ServiceMenus4KDE5-0.0.1/install-it.sh	2015-12-03 18:17:44.000000000 +0100
+@@ -1,12 +1,8 @@
+ #!/bin/bash
+-sed 's/#SCRIPTS_PATH/SCRIPTS_PATH/g' -i dropbox-scripts/dropbox_menu.sh
+-sed 's|=dropbox_menu.sh|=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh|g' -i dropbox_all.desktop
+-sed 's|=dropbox_menu.sh|=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh|g' -i dropbox_files.desktop
+-sed 's|=dropbox_menu.sh|=`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/dropbox_menu.sh|g' -i dropbox_directories.desktop
+-mkdir -p "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts"
+-install -m 644 dropbox_all.desktop "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/"
+-install -m 644 dropbox_files.desktop "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/"
+-install -m 644 dropbox_directories.desktop "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/"
+-install -m 755 dropbox-scripts/* "`kde4-config --localprefix`/share/kde4/services/ServiceMenus/dropbox-scripts/"
++mkdir -p "$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts"
++install -m 644 dropbox_all.desktop "$HOME/.local/share/kservices5/ServiceMenus/"
++install -m 644 dropbox_files.desktop "$HOME/.local/share/kservices5/ServiceMenus/"
++install -m 644 dropbox_directories.desktop "$HOME/.local/share/kservices5/ServiceMenus/"
++install -m 755 dropbox-scripts/* "$HOME/.local/share/kservices5/ServiceMenus/dropbox-scripts/"
+ 
+ 
