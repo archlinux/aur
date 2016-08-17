@@ -1,0 +1,7 @@
+*~
+\#*\#
+.\#*
+/pkg/
+/src/
+/Trilinos
+*.tar.xz
