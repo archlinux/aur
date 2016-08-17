@@ -5,7 +5,7 @@ pkgbase = producer
 	url = http://getproducer.org/
 	arch = any
 	license = MIT
-	depends = php
+	depends = php>=5.6.0
 	depends = composer
 	depends = phpdocumentor2
 	source = https://github.com/producerphp/producer.producer/archive/2.1.0.tar.gz
