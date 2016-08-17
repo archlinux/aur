@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Cubic SDR
-Comment=Cross platform SDR receiver
-Exec=cubicsdr
-Icon=cubicsdr-git
-Terminal=false
-Type=Application
-Categories=AudioVideo;
-
