@@ -3,21 +3,16 @@
 
 pkgname=mstflint
 pkgver=4.4.0
-pkgrel=1
+_pkgver_subver=1.12
+_pkgver_commit=gd1edd58
+pkgrel=2
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('bash' 'zlib' 'libibmad')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "c++11Compatibility.patch")
-md5sums=('8846152be0581c76396e60e94e953c59'
-         '140ded3004a700f0d59a9ecfea89ed0b')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i ${srcdir}/c++11Compatibility.patch
-}
+source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
+md5sums=('092797cdafa14e8b60b8498b14100202')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
