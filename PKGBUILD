@@ -3,20 +3,14 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=vdr-epg-daemon
 pkgname=('epgd' 'mariadb-epglv')
-pkgver=0.5.32
-pkgrel=2
+pkgver=1.1.11
+pkgrel=1
 url='http://projects.vdr-developer.org/projects/vdr-epg-daemon'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('curl' 'git' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
 source=("https://projects.vdr-developer.org/git/vdr-epg-daemon.git/snapshot/$pkgbase-$pkgver.tar.bz2")
-md5sums=('c6369c844ec93422a7f0e22be949e527')
-
-prepare() {
-  cd "$srcdir/$pkgbase-$pkgver"/epglv
-  sed -i '/CPP_FLAGS_32/d' Makefile
-  sed -i '/CPP_FLAGS_64/d' Makefile
-}
+md5sums=('dbd9892d9f99f7a855d3d95e15bd65b5')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -27,9 +21,9 @@ package_epgd() {
   pkgdesc='write epg data to a mysql database'
   depends=('curl' 'imlib2' 'jansson' 'libarchive' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
   cd "$srcdir/$pkgbase-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make PREFIX=/usr INIT_SYSTEM=none DESTDIR="$pkgdir" install
   install -Dm644 contrib/epgd.service "$pkgdir/usr/lib/systemd/system/epgd.service"
-  rm "$pkgdir/mysqlepglv.so"
+  rm "$pkgdir/usr/lib/mysql/plugin/mysqlepglv.so"
   cd $pkgdir
   backup=($(find etc -type f))
 }
