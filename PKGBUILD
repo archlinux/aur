@@ -5,12 +5,12 @@ _pkgname=search_api_solr
 pkgver=20160708
 _pkgvers=(7.x-1.11
           8.x-1.0-alpha5)
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration files to enable Drupal 7.x or 8.x to use Solr 3.x, 4.x, or 5.x as its search provider"
 arch=('any')
 url="http://drupal.org/project/$_pkgname"
 license=('GPL')
-depends=('solr>=3' 'solr<=5')
+depends=('solr>=3')
 optdepends=(
   'drupal: Solr client for these configuration files'
   'aegir: meta-Drupal hosting platform'
