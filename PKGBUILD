@@ -25,7 +25,7 @@ makedepends=('git'
              )
 conflicts=('kaudiocreator')
 provides=('kaudiocreator')
-source=('git://anongit.kde.org/kaudiocreator.git#branch=kf5'
+source=('git://anongit.kde.org/kaudiocreator.git'
         'CMakeLists.txt.diff'
         )
 sha1sums=('SKIP'
@@ -54,6 +54,7 @@ build() {
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
+
   make
 }
 
