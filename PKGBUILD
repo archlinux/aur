@@ -1,6 +1,6 @@
-# Maintainer: Sándor Nagy <sanya868[at]gmail[dot]com>
+# Maintainer: Sandor Nagy <sandor.nagy[at]kdemail[dot]net>
 pkgname=rcssserver
-pkgver=15.2.2
+pkgver=15.3.0
 pkgrel=1
 pkgdesc="The RoboCup Soccer Simulator Server"
 arch=('x86_64' 'i686')
@@ -8,18 +8,18 @@ url="https://sourceforge.net/apps/mediawiki/sserver/index.php?title=Main_Page"
 license=('LGPL')
 groups=('rcss')
 depends=('boost-libs')
-makedepends=('boost>=1.32' 'bison27')
+makedepends=('boost>=1.32' 'bison' 'gcc5')
 optdepends=(
 	'rcssmonitor:	RCSS Monitor'
-	'librcss:	basic library to develop the RCSS client and tools')
+	'librcsc:	basic library to develop the RCSS client and tools')
 replaces=('rcssbase')
 options=('buildflags' 'makeflags')
 source=(http://downloads.sourceforge.net/sourceforge/sserver/$pkgname-$pkgver.tar.gz)
-sha512sums=('7deb17a1645fd5ec398d0d709fc626ad9b7546ee2480dc89ec9df4c9f0d5ef2d5a46758305df0f349751555c8d337081c3ba1ebe005a745b9242de6156d89f34')
+md5sums=('ada5f3ad42780e748b4896f3d9d508fb')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
+	CXX=g++-5 ./configure --prefix=/usr
 	make
 }
 
