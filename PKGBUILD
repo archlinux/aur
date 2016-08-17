@@ -15,7 +15,8 @@ depends=('algol68g' 'bash' 'boo' 'chicken' 'clisp' 'clojure' 'fpc' 'gawk' 'gcc'
          'smalltalk' 'jasmin' 'gcc-objc' 'gcc-ada' 'scilab' 'lci-git'
          'spl' 'maxima' 'slang' 'fpiet' 'neko' 'nickle' 'pari' 'bsd-games'
          'ratfor' 'gambas3-script' 'mlton' 'thue' 'mono-basic' 'zoem' 'asymptote'
-         'afnix' 'a+' 'ats2-postiats' 'cfunge' 'boarpig-brainfuck')
+         'afnix' 'a+' 'ats2-postiats' 'cfunge' 'boarpig-brainfuck' 'cduce'
+         'chef-dk')
 makedepends=('setconf')
 optdepends=('advancecomp: For generating langs.png'
             'optipng: For generating langs.png')
