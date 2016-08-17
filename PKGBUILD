@@ -3,7 +3,7 @@
 
 # In order to verify the PGP signature of the source archive, you may need to
 # use this command to download the needed public key:
-#   gpg --recv-keys 090B11993D9AEBB5
+#   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
 pkgver=0.11.0
