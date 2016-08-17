@@ -1,13 +1,13 @@
 # Maintainer: Kyle Brooks <brookskd@gmail.com>
 pkgname=openmvg-git
 pkgver=1.0.r0.g944254c
-pkgrel=3
+pkgrel=4
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
 url='http://imagine.enpc.fr/~moulonp/openMVG/'
 license=('MPL')
 depends=('libpng' 'libjpeg' 'libtiff' 'libxrandr' 'libxxf86vm' 'libxi' 'graphviz' 'libgl' 'ceres-solver' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-osi' 'coin-or-lemon')
-makedepends=('git' 'cmake' 'doxygen')
+makedepends=('git' 'cmake' 'doxygen' 'eigen')
 _gitname='openMVG'
 source=("git+https://github.com/openMVG/${_gitname}.git"
         'git+https://github.com/elmindreda/glfw.git'
@@ -41,7 +41,7 @@ build() {
   cd "${srcdir}"
   mkdir -p openmvg_build
   cd openmvg_build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DOpenMVG_BUILD_SHARED=ON -DOpenMVG_BUILD_EXAMPLES=ON -DOpenMVG_BUILD_DOC=ON -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON -DOpenMVG_USE_OPENMP=ON -DFLANN_INCLUDE_DIR_HINTS=/usr/include -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin -DLEMON_INCLUDE_DIR_HINTS=/usr/include ../openMVG/src/
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DOpenMVG_BUILD_SHARED=ON -DOpenMVG_BUILD_EXAMPLES=ON -DOpenMVG_BUILD_DOC=ON -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON -DOpenMVG_USE_OPENMP=ON -DFLANN_INCLUDE_DIR_HINTS=/usr/include -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin -DLEMON_INCLUDE_DIR_HINTS=/usr/include -DCERES_DIR_HINTS=/usr/share/Ceres -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 ../openMVG/src/
   make
 }
 
