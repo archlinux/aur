@@ -47,14 +47,12 @@ prepare() {
 
 build() {
   cd build
-
   cmake ../kaudiocreator \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
-
   make
 }
 
