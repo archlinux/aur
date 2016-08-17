@@ -1,7 +1,7 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 36
+	pkgrel = 37
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-total-hd234k
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.7
+	depends = linux<4.8
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
@@ -87,6 +87,7 @@ pkgbase = catalyst-total-hd234k
 	source = dkms.conf
 	source = makesh-dont-check-gcc-version.patch
 	source = makesh-src_file.patch
+	source = 4.7-cpu_has_pge-hd234k.patch
 	md5sums = c07fd1332abe4c742a9a0d0e0d0a90de
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -119,6 +120,7 @@ pkgbase = catalyst-total-hd234k
 	md5sums = 23d569abfdd7de433d76e003e4b3ccf9
 	md5sums = 10829e3b992b3e80a6e78c8e27748703
 	md5sums = 6cdc15206cc61e3de456416a9011db07
+	md5sums = 1e56499f8589d81a1a5eba98bad9912c
 
 pkgname = catalyst-total-hd234k
 

@@ -1,0 +1,71 @@
+diff -uNr 16.8/common/lib/modules/fglrx/build_mod/firegl_public.c 16.8b/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- 16.8/common/lib/modules/fglrx/build_mod/firegl_public.c	2013-01-15 22:33:27.000000000 +0100
++++ 16.8b/common/lib/modules/fglrx/build_mod/firegl_public.c	2016-08-17 19:25:56.443130600 +0200
+@@ -3904,8 +3904,11 @@
+     cr0 = read_cr0() | 0x40000000;
+     write_cr0(cr0);
+     wbinvd();
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    if (boot_cpu_has(X86_FEATURE_PGE))
++#else
+     if (cpu_has_pge)
++#endif
+     {
+         cr4 = read_cr4();
+         write_cr4(cr4 & ~X86_CR4_PGE);
+@@ -3919,7 +3922,11 @@
+     wbinvd();
+     __flush_tlb();
+     write_cr0(cr0 & 0xbfffffff);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    if (boot_cpu_has(X86_FEATURE_PGE))
++#else
+     if (cpu_has_pge)
++#endif
+     {
+         write_cr4(cr4);
+     }
+@@ -3946,7 +3953,11 @@
+     write_cr0(cr0);
+     wbinvd();
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    if (boot_cpu_has(X86_FEATURE_PGE))
++#else
+     if (cpu_has_pge)
++#endif
+     {
+         cr4 = read_cr4();
+         write_cr4(cr4 & ~X86_CR4_PGE);
+@@ -3959,7 +3970,11 @@
+     wbinvd();
+     __flush_tlb();
+     write_cr0(cr0 & 0xbfffffff);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++    if (boot_cpu_has(X86_FEATURE_PGE))
++#else
+     if (cpu_has_pge)
++#endif
+     {
+         write_cr4(cr4);
+     }
+diff -uNr 16.8/common/lib/modules/fglrx/build_mod/firegl_public.h 16.8b/common/lib/modules/fglrx/build_mod/firegl_public.h
+--- 16.8/common/lib/modules/fglrx/build_mod/firegl_public.h	2013-01-15 22:33:27.000000000 +0100
++++ 16.8b/common/lib/modules/fglrx/build_mod/firegl_public.h	2016-08-17 19:27:34.056235451 +0200
+@@ -590,9 +590,15 @@
+ #define cpu_has_pat  test_bit(X86_FEATURE_PAT, (void *) &boot_cpu_data.x86_capability)
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0)
++#ifndef boot_cpu_has(X86_FEATURE_PGE)
++#define boot_cpu_has(X86_FEATURE_PGE) test_bit(X86_FEATURE_PGE, &boot_cpu_data.x86_capability)
++#endif
++#else
+ #ifndef cpu_has_pge
+ #define cpu_has_pge test_bit(X86_FEATURE_PGE, &boot_cpu_data.x86_capability)
+ #endif
++#endif
+ 
+ /* 2.6.29 defines pgprot_writecombine as a macro which resolves to a
+  * GPL-only function with the same name. So we always use our own

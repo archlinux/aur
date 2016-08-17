@@ -27,13 +27,13 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=36
+pkgrel=37
 pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.7' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.8' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -97,7 +97,9 @@ source=(
     
     dkms.conf
     makesh-dont-check-gcc-version.patch
-    makesh-src_file.patch)
+    makesh-src_file.patch
+    
+    4.7-cpu_has_pge-hd234k.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -135,7 +137,9 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 
 	 '23d569abfdd7de433d76e003e4b3ccf9'
 	 '10829e3b992b3e80a6e78c8e27748703'
-	 '6cdc15206cc61e3de456416a9011db07')
+	 '6cdc15206cc61e3de456416a9011db07'
+	 
+	 '1e56499f8589d81a1a5eba98bad9912c')
 
 
 build() {
@@ -316,6 +320,7 @@ package() {
       patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
       patch -Np1 -i ../makesh-src_file.patch
+      patch -Np1 -i ../4.7-cpu_has_pge-hd234k.patch
 
 
     # Prepare modules source files
