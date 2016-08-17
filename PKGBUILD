@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname='vdr-skindesigner'
-pkgver=0.8.7
+pkgver=1.2.1
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="Highly customizable native true color skin for the Video Disc Recorder"
@@ -21,7 +21,7 @@ source=("http://projects.vdr-developer.org/git/vdr-plugin-skindesigner.git/snaps
 install="$pkgname.install"
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 options=('!emptydirs')
-md5sums=('42760f24b8cee52e8555a2145919b472'
+md5sums=('c9974fc19932d0988fbba8cb845db9ac'
          'bab4227c649d778e4b05483535afda0b'
          'ebc6537bf0d3e604c59884ec408f7e9c')
 
@@ -53,4 +53,3 @@ package() {
 
   chown -R 666:666 "$pkgdir/var/lib/vdr"
 }
-
