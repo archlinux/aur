@@ -8,7 +8,6 @@ url='https://github.com/pwndbg/pwndbg'
 arch=('any')
 license=('MIT')
 depends=('python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-ptrace' 'python-pyelftools' 'python-six')
-depends=('python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-pyelftools' 'python-six')
 makedepends=('git')
 provides=('pwndbg')
 conflicts=('pwndbg')
