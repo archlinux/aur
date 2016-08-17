@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcddb-git
-pkgver=v16.07.80.32.g628da84
+pkgver=v16.07.90.19.gd1b7836
 pkgrel=1
 pkgdesc="KDE CDDB library. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ conflicts=('libkcddb'
            'libkcddb-frameworks-git'
            )
 provides=('libkcddb')
-source=('git://anongit.kde.org/libkcddb#branch=kf5')
+source=('git://anongit.kde.org/libkcddb')
 sha1sums=('SKIP')
 
 pkgver() {
