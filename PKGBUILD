@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-file-presence
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Check that a file / directory exists and is readable"
+pkgdesc="Check permissions of potentially nonexistent files"
 arch=('any')
 depends=('perl6')
 checkdepends=('perl')
