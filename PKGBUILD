@@ -5,7 +5,7 @@ pkgname=vdr-xmltv2vdr
 pkgver=0.1.1_71_gb48e0be
 _gitver=b48e0bec3c87531c872da028d4fb87c65f3e050e
 _vdrapi=2.2.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Add epg info from epg sources into vdr"
 url="http://projects.vdr-developer.org/projects/plg-xmltv2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ source=("git://projects.vdr-developer.org/vdr-plugin-xmltv2vdr.git#commit=$_gitv
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/epgsources/epgdata2xmltv")
 md5sums=('SKIP'
-         '0642898237a478d4c74bceb568c50050'
+         'fb3530d150408159dc969bed1d18f93e'
          'e295ea355768bd373f64eb4b0f760840')
 
 pkgver() {
