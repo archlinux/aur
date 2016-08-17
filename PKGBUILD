@@ -13,7 +13,7 @@ makedepends=(
 )
 
 source=(
-	"thyme::git://github.com/sourcegraph/thyme#branch=${BRANCH:-master}"
+	"thyme-git::git://github.com/sourcegraph/thyme#branch=${BRANCH:-master}"
 )
 
 md5sums=(
