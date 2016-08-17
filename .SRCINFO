@@ -1,0 +1,18 @@
+pkgbase = ack-git
+	pkgdesc = The Amsterdam Compiler Kit
+	pkgver = 6.0pre5.r9.gd0bfee1
+	pkgrel = 1
+	url = http://tack.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = flex
+	makedepends = bison
+	makedepends = ed
+	depends = glibc
+	source = git://github.com/davidgiven/ack
+	md5sums = SKIP
+
+pkgname = ack-git
+
