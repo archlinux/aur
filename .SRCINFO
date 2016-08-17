@@ -1,0 +1,12 @@
+pkgbase = with-git
+	pkgdesc = Command prefixing for continuous workflow using a single tool.
+	pkgver = r20.900a47f
+	pkgrel = 1
+	url = https://github.com/mchav/with
+	arch = any
+	license = Apache
+	makedepends = git
+	source = git://github.com/mchav/with.git
+	md5sums = SKIP
+
+pkgname = with-git
