@@ -1,4 +1,4 @@
-# Maintainer: Fabio Arnold <fabio at fabioarnold dot de>
+# Maintainer: donfabio <fabio at fabioarnold dot de>
 
 # This package is based on the gog-shovel-knight package from Nascher.
 
