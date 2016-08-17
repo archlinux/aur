@@ -6,7 +6,7 @@ pkgver=0.6.1rc1_63_g4fa4f66
 epoch=1
 _gitver=4fa4f6616a17fe38344d28bd186a493d89ef3b85
 _vdrapi=2.2.0
-pkgrel=3
+pkgrel=8
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-softhddevice"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -16,11 +16,11 @@ optdepends=('nvidia: Required for VDPAU decoding')
 makedepends=('git' 'glm' 'glu' 'patchutils')
 _plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-softhddevice.git#commit=$_gitver"
-        "https://github.com/louisbraun/softhddevice-openglosd/compare/48fbfa9f...bf608ab5.diff"
+        "https://github.com/louisbraun/softhddevice-openglosd/compare/48fbfa9f...3ed09d43.diff"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
-         '7c5687e815d9e1763b7111112b59d8ec'
+         '242140449340814374442b4a92df2f33'
          'f6ef6cb0bf17c5a28f858e5306776d27')
 
 pkgver() {
@@ -39,8 +39,8 @@ prepare() {
 
   # Enable this to compile with debug logging
   #sed -i 's/# -DDEBUG/-DDEBUG/g' Makefile
-  
-  filterdiff -x '*.po' "$srcdir/48fbfa9f...bf608ab5.diff" | patch -p1
+
+  filterdiff -x '*.po' "$srcdir/48fbfa9f...3ed09d43.diff" | patch -p1
 }
 
 build() {
@@ -50,7 +50,7 @@ build() {
 
 package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make DESTDIR="${pkgdir}" install
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" make DESTDIR="${pkgdir}" install
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 }
