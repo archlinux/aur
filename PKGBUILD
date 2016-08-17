@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-plex
-pkgver=0.3.0
+pkgver=0.4.0
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="Plex plugin for Linux VDR"
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/git/vdr-plugin-$_plugname.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('2cb360fab56634afc18a3b97b064772e'
+md5sums=('1ae7e4e2cd5229377e8885607f0ed412'
          '6cae9281ef39d6c64569580fbffefe11')
 
 build() {
