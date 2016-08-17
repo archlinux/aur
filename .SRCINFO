@@ -1,7 +1,7 @@
 pkgbase = pybitmessage
 	pkgdesc = Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/Bitmessage/PyBitmessage 
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = pybitmessage
 	conflicts = pybitmessage-git
 	source = PyBitmessage-0.4.4.tar.gz::https://github.com/Bitmessage/PyBitmessage/archive/v0.4.4.tar.gz
 	source = pybitmessage.sh
-	sha256sums = 2fe2b1ad4d7426c8777fb429129b7a07c717ea5f00cc3041a03ac19fd3259b3a
+	sha256sums = 3bee5ca3fe42a95a0bf1f9f7285904e18ae56b0189048968a5257676f25adc08
 	sha256sums = dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b
 
 pkgname = pybitmessage

@@ -1,12 +1,12 @@
 # Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
 # Maintainer: Bob Mottram (4096 bits) <bob@robotics.uk.to>
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-# Maintainer: ungenannter <ungenannter@openmailbox.org>
+# Maintainer: klexx <klexx@mailbox.bz>
 
 pkgname=pybitmessage
 _realname=PyBitmessage
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
 depends=('openssl' 'python2' 'python2-pyqt4' 'qt4' 'sqlite')
@@ -16,9 +16,9 @@ url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Bitmessage/$_realname/archive/v$pkgver.tar.gz
         pybitmessage.sh)
-md5sums=('e2e344e2241f14b70bca80ffa5b251a2'
+md5sums=('5efe6237c6dea02d5ab48ea1bcc962b2'
          '0dfcad65e76e7403ae17ceeb6764d2b8')
-sha256sums=('2fe2b1ad4d7426c8777fb429129b7a07c717ea5f00cc3041a03ac19fd3259b3a'
+sha256sums=('3bee5ca3fe42a95a0bf1f9f7285904e18ae56b0189048968a5257676f25adc08'
             'dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b')
 provides=('pybitmessage')
 conflicts=('pybitmessage-git')
