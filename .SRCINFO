@@ -1,0 +1,15 @@
+pkgbase = producer
+	pkgdesc = Producer is a command-line quality-assurance tool to validate, and then release, your PHP library package.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://getproducer.org/
+	arch = any
+	license = MIT
+	depends = php
+	depends = composer
+	depends = phpdocumentor2
+	source = https://github.com/producerphp/producer.producer/archive/2.1.0.tar.gz
+	sha512sums = bd7da5283cb32ff5971b872d829a992be2fa0f305a0f3ab31a48b4d76a38bd57ff8821281a6d2993759eb3672055380d15f8b2bf1e1ba8eb1bdbdef5e82797eb
+
+pkgname = producer
+
