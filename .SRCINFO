@@ -12,7 +12,6 @@ pkgbase = texlive-localmanager-git
 	depends = perl-term-shellui
 	depends = perl-term-readline-gnu
 	depends = perl-list-moreutils
-	depends = perl-http-message
 	provides = texlive-localmanager=0.4.6
 	conflicts = texlive-localmanager
 	source = texlive-localmanager::git://projects.archlinux.org/users/remy/texlive-localmanager.git
