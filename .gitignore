@@ -1,5 +1,6 @@
 src/*
 pkg/*
+npm/*
 *.tgz
 *.tar.bz2
 *.tar.gz

@@ -3,15 +3,15 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=npm2
-pkgver=2.14.13
+pkgver=2.15.10
 pkgrel=1
 pkgdesc='A package manager for javascript'
 arch=('any')
 url='https://www.npmjs.com/'
 license=('custom:Artistic')
 depends=('nodejs')
-provides=('nodejs-node-gyp' "npm=${pkgver}")
-conflicts=('npm')
+provides=('nodejs-node-gyp' "npm=${pkgver}" 'semver')
+conflicts=('npm' 'semver')
 makedepends=('git' 'procps-ng')
 optdepends=('python2: for node-gyp')
 options=('!emptydirs')
