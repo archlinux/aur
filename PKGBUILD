@@ -2,9 +2,9 @@
 # Contributor: Naman Bharadwaj <namanbharadwaj@gmail.com>
 
 pkgname=lean-bin
-pkgver=0.2.0.20160412023438
-_gitcommit=4eee26eaee55b8e2cb6731c0499d520daf91d38c
-pkgrel=3
+pkgver=0.2.0.20160710023446
+_gitcommit=cc70845332e63a1f1be21dc1f96d17269fc85909
+pkgrel=1
 pkgdesc="Lean Theorem Prover"
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
@@ -14,8 +14,8 @@ optdepends=('emacs: emacs mode')
 conflicts=('lean-git')
 source_x86_64=("https://launchpad.net/~leanprover/+archive/ubuntu/lean/+files/lean_${pkgver}.git${_gitcommit}~15.10_amd64.deb")
 source_i386=("https://launchpad.net/~leanprover/+archive/ubuntu/lean/+files/lean_${pkgver}.git${_gitcommit}~15.10_i386.deb")
-sha1sums_x86_64=('8cdea07428cd632234894e99ba43c1e33174b385')
-sha1sums_i386=('6929fadb6e2e791521cade3a476975851031e2ce')
+sha1sums_x86_64=('dfa04a4f1a7463b33d67a59c30dd03d1f4a1c1f8')
+sha1sums_i386=('04528f7911f28fe40de43bf4fc436eb14c9cb29f')
 
 package() {
   mkdir -p "$pkgname-$pkgver"
