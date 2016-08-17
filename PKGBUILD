@@ -1,7 +1,7 @@
 # Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname=debian-keyring
-pkgver=2016.01.20
+pkgver=2016.08.10
 pkgrel=1
 pkgdesc="GnuPG keys of the Ubuntu archive"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gnupg')
 
 source=("http://ftp.de.debian.org/debian/pool/main/d/debian-keyring/${pkgname}_${pkgver}_all.deb")
-sha256sums=('12f0661a4d7a99157f21010c3eea3677bad1d1c553a30cc4160cdcc974121f3b')
+sha256sums=('1966bb5bf598d049a36352ef75acf5778ea4ca9357155e9399cee3c1b401feb6')
 
 package() {
   bsdtar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
