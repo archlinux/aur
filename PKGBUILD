@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
-pkgver=0.3.24
+pkgver=1.1.4
 _vdrapi=2.2.0
 pkgrel=1
 pkgdesc="Used to retrieve EPG data into the VDR"
@@ -13,8 +13,14 @@ depends=('jansson' 'libmariadbclient' 'libutil-linux' 'python' "vdr-api=${_vdrap
 makedepends=('imlib2' 'libxslt')
 _plugname=${pkgname//vdr-/}
 source=("https://projects.vdr-developer.org/git/vdr-plugin-epg2vdr.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2")
-backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP')
+backup=("etc/vdr/conf.avail/50-$_plugname.conf"
+        'var/lib/vdr/plugins/epg2vdr/epg.dat')
+md5sums=('bd2a4a5342f5917429555c96be97dee6')
+
+prepare() {
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
+  sed -i 's/setBinintValue/setBigintValue/g' update.c
+}
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
@@ -27,4 +33,6 @@ package() {
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
   echo "[$_plugname]" > "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+
+  chown -R 666:666 "$pkgdir/var/lib/vdr"
 }
