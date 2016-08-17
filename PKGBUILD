@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ provides=(roger)
 conflicts=(roger)
 install=roger-router.install
 source=(http://www.tabos.org/downloads/$pkgname-$pkgver.tar.xz)
-sha1sums=('5165f7c938ffe4bcfb381381cbadc25320836bd1')
+sha1sums=('b0de17edcf32ac686e941b06fd8e83f5999b8b85')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
