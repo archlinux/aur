@@ -4,7 +4,7 @@
 pkgname=vdr-vompserver
 pkgver=0.4.1
 _vdrapi=2.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Server side of VOMP"
 url="http://www.loggytronic.com/vomp.php"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
-  make
+  make CXXFLAGS="$CXXFLAGS -std=gnu++98 -fPIC"
 }
 
 package() {
