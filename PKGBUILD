@@ -1,17 +1,17 @@
-# Maintainer: Sandor Nagy <sanya868 at gmail dot com>
+# Maintainer: Sandor Nagy <sandor.nagy at kdemail dot net>
 # Contributor: Humberto F. da Luz Jr. <hfluz at uel dot br>
 # Contributor: Zhuo Peng <zhuo dot peng at vanemy dot org>
 pkgname=archiva
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Apache Archiva™ is an extensible repository management software that helps taking care of your own personal or enterprise-wide build artifact repository"
 arch=("any")
 url="http://archiva.apache.org/"
 license=("Apache")
-depends=("java-runtime")
+depends=("java-runtime>=7")
 source=("http://www.us.apache.org/dist/archiva/$pkgver/binaries/apache-archiva-$pkgver-bin.tar.gz"
         "archiva.service")
-md5sums=('03485b14a303cefb4537b641b8143778'
+md5sums=('ff4a83007ac10fe4add308d22dfbc3d6'
          'd741d8899541001f6ab062b2772428e4')
 
 package() {
