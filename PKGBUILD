@@ -2,9 +2,9 @@
 
 pkgname=solr-conf-drupal
 _pkgname=search_api_solr
-pkgver=20151208
-_pkgvers=(7.x-1.9
-          8.x-1.0-alpha1)
+pkgver=20160708
+_pkgvers=(7.x-1.11
+          8.x-1.0-alpha5)
 pkgrel=1
 pkgdesc="Configuration files to enable Drupal 7.x or 8.x to use Solr 3.x, 4.x, or 5.x as its search provider"
 arch=('any')
@@ -16,15 +16,14 @@ optdepends=(
   'aegir: meta-Drupal hosting platform'
   'solr-undertow: high performance servlet container for Solr')
 # The mapping-ISOLatin1Accent.txt file is identical in all occurrences in the Solr repo across the head of all its supported branches (3-5.x)
-source=("https://raw.githubusercontent.com/apache/lucene-solr/master/solr/example/example-DIH/solr/solr/ "
-        "https://www.drupal.org/files/issues/2711685-support-solr6-3.patch"
-         '0293cb23527acb1e8a307539a8d68021'
+source=("https://raw.githubusercontent.com/apache/lucene-solr/master/solr/example/example-DIH/solr/solr/mapping-ISOLatin1Accent.txt"
         "https://www.drupal.org/files/issues/2711685-support-solr6-${_pkgname//_/-}-4.patch"
         "http://ftp.drupal.org/files/projects/$_pkgname-${_pkgvers[0]}.tar.gz"
         "http://ftp.drupal.org/files/projects/$_pkgname-${_pkgvers[1]}.tar.gz")
-md5sums=('f33510d7ab9f75bc8dc5e49d72acea2a'
+md5sums=('9f3c8a60a4f09327fad22aeff082c2b3'
          '479dea32043f12575838eaa6de62f248'
-         '40fccb08f08b0014ff884504ddb7616c')
+         'a8b60845919774521861bdfbe7883a11'
+         '1a2636b8050903114b66ce300c99b50d')
 noextract=("${source[@]%%::*}")
 
 prepare() {
@@ -33,6 +32,7 @@ prepare() {
     ver_drupal="${_pkgver%%-*}"
     install -dm755 "$ver_drupal"
     tar --extract --file="$_pkgname-$_pkgver.tar.gz" --strip-components=1 --directory="$ver_drupal" --overwrite
+    [ "$ver_drupal" = "8.x" ] || patch --strip=1 --directory=$ver_drupal < "2711685-support-solr6-${_pkgname//_/-}-4.patch"
   done
 }
 
