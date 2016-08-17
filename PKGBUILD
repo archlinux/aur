@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r6.0.g1638e47
+pkgver=r8.2.gb250224
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('i686' 'x86_64')
@@ -17,10 +17,11 @@ makedepends=('git')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
 source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
-        'vsedit.desktop')
+        'vsedit.desktop'
+        )
 sha1sums=('SKIP'
-          '33df6813bdcceb3e11a094576515812f9df7eff6')
-install=vapoursynth-editor-git.install
+          '4948bf4a899effacb601278e753eaa82f434b8de'
+          )
 
 pkgver() {
   cd vapoursynth-editor
