@@ -1,26 +1,26 @@
 # Maintainer: Kasei Wang <cnsdwpc at gmail.com>
 _pkgname=kcptun
 pkgname=$_pkgname-bin
-pkgver=20160811
+pkgver=20160816
 pkgrel=1
 pkgdesc="An extremely simple udp tunnel based on KCP"
 arch=("i686" "x86_64")
 url="https://github.com/xtaci/kcptun"
 license=("MIT")
 depends=()
-provides=()
+provides=("kcptun")
 replaces=()
-conflicts=()
+conflicts=("kcptun")
 
 if [ "$CARCH" = "i686" ]; then
   _arch="386"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  md5sums=('623c9d5ed4ace14dba17401e51bd3c79')
+  md5sums=('3607c29a17133342864691725e1d9fd2')
 fi
 if [ "$CARCH" = "x86_64" ]; then
   _arch="amd64"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  md5sums=('976250b8e44c696bd5c0a66a9c274067')
+  md5sums=('e37cdc281d7546886a4babf9ddf0ee44')
 fi
 
 package() {
