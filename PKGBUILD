@@ -4,10 +4,10 @@
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
-pkgver=0.6.1_24_g7b17f77
+pkgver=0.6.1.r24.g7b17f77
 _gitver=7b17f7725cd3bd97dd3921d96575c50a86e3fac2
 _vdrapi=2.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc="implementation of the VTP (Video Transfer Protocol)"
 url="http://projects.vdr-developer.org/projects/show/plg-streamdev"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -48,7 +48,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  make
+  make -j1
 }
 
 package_vdr-streamdev-client() {
