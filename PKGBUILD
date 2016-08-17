@@ -2,10 +2,10 @@
 
 _name=firefox
 _channel=aurora
-_milestone=49.0a2
+_milestone=50.0a2
 _lang=zh-tw
 pkgname="${_name}-${_channel}-${_lang}"
-pkgver=49.0a2.20160711004013
+pkgver=50.0a2.20160801085519
 pkgrel=1
 pkgdesc="Chinese Traditional For Firefox Developer (Aurora-l10n)"
 url="http://www.mozilla.org/zh-TW/${_name}/${_channel}/"
