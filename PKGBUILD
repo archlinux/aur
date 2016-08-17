@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkcompactdisc-git
-pkgver=5.25.0.r328.c0f4fb1
+pkgver=16.08.0.r333.60135da
 pkgrel=1
 pkgdesc="library for interfacing with CDs. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,12 +19,12 @@ makedepends=('extra-cmake-modules'
              )
 conflicts=('libkcompactdisc')
 provides=('libkcompactdisc')
-source=('git://anongit.kde.org/libkcompactdisc.git#branch=frameworks')
+source=('git://anongit.kde.org/libkcompactdisc.git')
 sha1sums=('SKIP')
 
 pkgver() {
   cd libkcompactdisc
-  _ver="$(cat CMakeLists.txt | grep -m1 KF5_VERSION | sed 's|KF5|KF|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m1 PROJECT_VERSION | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
