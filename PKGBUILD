@@ -27,7 +27,7 @@ prepare(){
 
   echo "all:
 	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o vcfreq.o vcfreq.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -L $(pkg-config --libs fftw3) -o lib${_plug}.so vcfreq.o" > Makefile
+	  g++ -shared $(pkg-config --libs fftw3) -fPIC ${LDFLAGS} -o lib${_plug}.so vcfreq.o" > Makefile
 }
 
 build() {
