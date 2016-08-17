@@ -17,11 +17,6 @@ provides=('oranchelo-icon-theme')
 source=('git+https://github.com/Madh93/oranchelo-icon-theme.git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd $srcdir/$_pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
 package() {
 
   install -d -m 755 "$pkgdir"/usr/share/icons/Oranchelo
