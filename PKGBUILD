@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-nvenc-manjaro
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib' 'cuda' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so')
+         'v4l-utils' 'xvidcore' 'zlib' 'cuda' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'vid.stab' 'libvorbis' 'libvorbisenc.so' 'libvpx' 'libx264' 'x265')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'nvidia-sdk-manjaro' 'mhwd-nvidia')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
