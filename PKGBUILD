@@ -1,28 +1,24 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: François Lebigre <francois.lebigre@gmail.com>
-# Contributor: Daniel Ehlers <danielehlers@mindeye.net>
-
+ 
 pkgname=cduce
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='XML-oriented functional language'
+pkgdesc='CDuce compiler'
+arch=('x86_64')
 url='http://www.cduce.org/'
-arch=('x86_64' 'i686')
 license=('MIT')
-depends=('ocaml' 'ocaml-findlib' 'ulex' 'ocaml-pcre' 'ocamlnet')
-source=("http://www.cduce.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('28291cceaa219782f0f4cd4c9634a25bc4238e09bdb0e193b8b207ed7eb650bc')
+depends=('libcurl-gnutls' 'pcre')
+source=("http://http.us.debian.org/debian/pool/main/c/cduce/cduce_$pkgver-1_amd64.deb")
+sha256sums=('9715d1ebafcf3b4aa869044cdf85f6ed5e93cdb97c6a0504024c9c9d39fd2864')
 
-build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make
+prepare() {
+  ar xv cduce_$pkgver*.deb && bsdtar jxf data.tar.xz
 }
 
 package() {
-  make BINDIR="$pkgdir/usr/bin" MANDIR="$pkgdir/usr/man" DOCDIR="$pkgdir/usr/doc/cduce" CGI_DIR="$pkgdir/var/www/cgi-bin" HTML_DIR="$pkgdir/var/www/html" SESSION_DIR="$pkgdir/tmp/cduce_sessions" -C "$pkgname-$pkgver" install
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -r usr var "$pkgdir/"
+  ln -s /usr/lib/libpcre.so "$pkgdir/usr/lib/libpcre.so.3"
 }
 
 # vim:set ts=2 sw=2 et:
+
