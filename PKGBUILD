@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1520.62a980d
+pkgver=1533.40365fa
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="https://usfirst.collab.net/sf/projects/wpilib/"
 license=('custom=FRC-BSD')
 groups=('frc-2016')
 depends=('arm-frc-linux-gnueabi-gcc' 'gazebo')
-makedepends=('git' 'java-environment=8' 'doxygen')
+makedepends=('git' 'java-environment=8' 'doxygen' 'unzip')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
 source=("git+git://github.com/wpilibsuite/allwpilib")
 sha512sums=('SKIP')
@@ -56,4 +56,3 @@ package() {
 
   install -Dm644 ../../license.txt $pkgdir/usr/share/licenses/arm-frc-linux-gnueabi-wpilib/LICENSE
 }
-# vim:set ts=2 sw=2 et:
