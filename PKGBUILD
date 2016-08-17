@@ -10,7 +10,7 @@ pkgbase=boost
 pkgname=('boost-libs' 'boost')
 pkgver=1.61.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -56,7 +56,9 @@ build() {
       link=shared,static \
       toolset=gcc \
       python=2.7 \
-      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" linkflags="${LDFLAGS}" \
+      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
+      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+      linkflags="${LDFLAGS}" \
       --layout=system \
       --prefix="${_stagedir}" \
       ${JOBS} \
@@ -67,8 +69,7 @@ package_boost() {
    pkgdesc='Free peer-reviewed portable C++ source libraries - development headers'
    depends=("boost-libs=${pkgver}")
    optdepends=('python: for python bindings'
-               'python2: for python2 bindings'
-               'boost-build: to use boost jam for building your project.')
+               'python2: for python2 bindings')
    options=('staticlibs')
 
    install -dm755 "${pkgdir}"/usr
