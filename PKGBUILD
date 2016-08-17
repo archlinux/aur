@@ -2,22 +2,23 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r585.272c0e4
+pkgver=r667.5406de3
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
-url="http://biboumi.louiz.org/"
+url="https://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql-git')
 makedepends=('git' 'cmake' 'pandoc')
-provides=("$_pkgname=1.99")
-conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.cfg")
 install="$_pkgname.install"
-source=("$_pkgname::git://git.louiz.org/biboumi"
+source=("$_pkgname::git+https://git.louiz.org/biboumi.git"
         'sysuser.conf')
 md5sums=('SKIP'
          '07c92af3248861ce94d361e98cfb7f5c')
+
+provides=("$_pkgname=3.99")
+conflicts=("$_pkgname")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -43,10 +44,10 @@ package() {
   cd "$srcdir/$_pkgname/build"
   make DESTDIR="$pkgdir/" install
 
-  cd ..
+  cd "$srcdir/$_pkgname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.rst"
 
   cd "$srcdir"
-  install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/biboumi.conf"
+  install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
 }
