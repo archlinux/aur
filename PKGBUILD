@@ -41,9 +41,9 @@ build() {
   done
 
   if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-    read -s -n1 -p "Do you want to use your factorio credentials to download the game ? (y/N)" ; echo
+    read -p "Do you want to use your factorio credentials to download the game ? (Y/n)"
 
-    if [[ $REPLY == y ]]; then
+    if [[ $REPLY != n ]]; then
       _download && pkgpath=$srcdir || true
     fi
   fi
@@ -93,11 +93,38 @@ _download() {
 
     if [[ -n $login && -n $password ]]; then
       msg "Logging in..."
+      local csrf_token=$(
+        curl --silent --fail \
+             --cookie-jar "$cookie" \
+             https://www.factorio.com/login \
+        | grep -Po '(?<=name="csrf_token" type="hidden" value=")[^"]+'
+      )
 
-      if curl -D - -o /dev/null -s -f -c "$cookie" https://www.factorio.com/login -d username-or-email="$login" -d password="$password" | grep -q '^Location: /'; then
+      if [[ -z "$csrf_token" ]]; then
+        error "Could not find the CSRF token. This script might be broken."
+        break
+      fi
+
+      local output=$(
+        curl --dump-header - \
+             --silent --fail \
+             --cookie-jar "$cookie" \
+             --cookie "$cookie" \
+             https://www.factorio.com/login \
+             --data-urlencode username_or_email="$login" \
+             --data-urlencode password="$password" \
+             --data-urlencode csrf_token="$csrf_token" \
+      )
+
+      if echo "$output" | grep -q '^Location: '; then
         msg2 "Logged in"
         msg "Downloading ${_gamepkg} from $_url ..."
-        curl -f -b "$cookie" -L -o "${file}.part" "$_url" || rm -f "${file}.part"
+
+        curl --fail --location \
+             --cookie "$cookie" \
+             --output "${file}.part" \
+             "$_url" \
+        || rm -f "${file}.part"
 
         if [[ -f "${file}.part" ]]; then
           ret=0
@@ -109,8 +136,9 @@ _download() {
         break
       else
         error "Login failed"
-        read -s -n1 -p "Try again? (y/N)" ; echo
-        [[ $REPLY != y ]] && break
+        #echou "$output"
+        read -p "Try again? (Y/n)"
+        [[ $REPLY == n ]] && break
       fi
     else
       break
