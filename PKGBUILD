@@ -1,7 +1,7 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=audiolinux
-pkgver=1.7
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="AudioLinux audiophile linux configuration files, scripts and shortcuts"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'logitechmediaserver-git: Streaming audio server'
             'sox-dsd-git: SoX Resampler library dsd branch')
 source=('http://www.tophifi.it/ftp/packages/audiolinux.tar.gz')
-sha256sums=('05e2755cd40e7dd73182864f0f78fc6b1ac1f35230d1a17613a0d2e11f22fabb')
+sha256sums=('4d392484b83d36a2316cbd76a42c5264731bc08cbee82ea12a20e4dcfdde0cbb')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
