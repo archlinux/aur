@@ -1,20 +1,30 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-pkgname=python-sphinxcontrib-fulltoc
+pkgbase='python-sphinxcontrib-fulltoc'
+pkgname=('python-sphinxcontrib-fulltoc'
+         'python2-sphinxcontrib-fulltoc')
+pkgver='1.1'
+pkgrel='1'
 pkgdesc="Include a full table of contents in your Sphinx HTML sidebar"
-pkgver=1.1
-pkgrel=1
+arch=('any')
 url="https://pypi.python.org/pypi/sphinxcontrib-fulltoc"
 license=('GPL')
-arch=('any')
-depends=('python' 
-	 'python-sphinx')
-source="https://pypi.python.org/packages/source/s/sphinxcontrib-fulltoc/sphinxcontrib-fulltoc-1.1.tar.gz"
+source=("https://pypi.python.org/packages/source/s/sphinxcontrib-fulltoc/sphinxcontrib-fulltoc-${pkgver}.tar.gz")
 md5sums=('eaebcd42fee9ead0d4c7916c1d6d43fd')
 
-package(){
-	tar -zxvf sphinxcontrib-fulltoc-${pkgver}.tar.gz
-	cd sphinxcontrib-fulltoc-${pkgver}
-	python setup.py install --root="${pkgdir}" --optimize=1
+package_python-sphinxcontrib-fulltoc(){
+  depends=('python' 
+           'python-sphinx')
+  cd sphinxcontrib-fulltoc-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
+package_python2-sphinxcontrib-fulltoc(){
+  depends=('python2' 
+           'python2-sphinx')
+  cd sphinxcontrib-fulltoc-${pkgver}
+  PYTHONPATH=/usr/lib/python2.7/site-packages
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}
+
+# vim: ts=2 sw=2 et
