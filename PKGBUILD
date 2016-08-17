@@ -3,7 +3,7 @@
 pkgname=debian-keyring
 pkgver=2016.08.10
 pkgrel=1
-pkgdesc="GnuPG keys of the Ubuntu archive"
+pkgdesc="GnuPG keys for Debian (non-archive)"
 arch=('any')
 url='http://keyring.debian.org/'
 license=('GPL')
