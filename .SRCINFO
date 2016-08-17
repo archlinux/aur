@@ -17,6 +17,7 @@ pkgbase = texlive-localmanager-git
 	conflicts = texlive-localmanager
 	source = texlive-localmanager::git://projects.archlinux.org/users/remy/texlive-localmanager.git
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = texlive-localmanager-git
 
