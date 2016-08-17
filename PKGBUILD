@@ -3,14 +3,14 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-pcre-git
-pkgver=r5651.669eee5
+pkgver=r5652.82501d5
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
 url="http://purelang.bitbucket.org/"
 depends=('llvm35-libs' 'gmp' 'mpfr' 'pcre' 'readline')
-makedepends=('mercurial' 'llvm35')
+makedepends=('git' 'llvm35')
 optdepends=("clang35: needed for inlining C/C++ code"
 	    "pure-docs-git: online documentation"
             "w3m: access to help in interactive mode"
