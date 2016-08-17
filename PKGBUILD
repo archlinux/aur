@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=audiocd-kio-git
-pkgver=16.07.0.r813.fb22214
+pkgver=16.07.0.r815.ad922e0
 pkgrel=1
 pkgdesc="Kioslave for accessing audio CDs. (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('kdemultimedia-audiocd-kio'
            'audiocd-kio'
            )
 provides=('audiocd-kio')
-source=('git://anongit.kde.org/audiocd-kio.git#branch=kf5')
+source=('git://anongit.kde.org/audiocd-kio.git')
 sha1sums=('SKIP')
 
 pkgver() {
