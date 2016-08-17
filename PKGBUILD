@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=owl-lisp
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Simple purely functional lisp'
 url='https://github.com/aoh/owl-lisp'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('glibc')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/aoh/owl-lisp/archive/v${pkgver}.tar.gz)
-sha512sums=('8663dbc4b5e60d2e1e63d810d128b3000a23c9afdf8ecd8d7daf021cc48176ac03aced6420d23744f930d64ea0b19a512690d23d80052ccb6389630a25f42400')
+sha512sums=('141543d8c5c8e3bca504fdeb533b2bc10e455f72bf24bb454c24d146a991f92b0b0777eef32cf12f9ddf50ee05a1ad143c80ea075f7f25946acb6eb61bc010c0')
 
 build() {
   cd ${pkgname}-${pkgver}
