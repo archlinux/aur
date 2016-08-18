@@ -1,4 +1,4 @@
-# Contributer: Donald Carr <sirspudd@gmail.com>
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 # set -x
 
@@ -15,42 +15,78 @@
 # I use NFS to develop against my sysroot personally: sudo mount qpi2.local:/ /mnt/pi
 
 # NB: Mandatory edit: set this variable to point to your raspberry pi's sysroot
-_sysroot=/mnt/pi
+
+# Arch: build dependencies for the target device documented in PKGBUILD.libs
+# Fedora: systemd-devel mesa-*-devel wayland*-devel fontconfig-devel libinput-devel freetype-devel qt5-qtdeclarative-devel
+
+# Sanity
+_building=true
+if [[ -z ${startdir} ]]; then _building=false; fi
 
 # Options
+_sysroot=/mnt/pi
+_piver=""
+_use_mesa=false
 _float=true
 _shadow_build=false
 _release=true
 _skip_web_engine=true
 _static_build=false
 _build_from_head=false
+
+# Sanity check options
+
+if $_building; then
+  if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
+  if [[ -z "${_piver}" ]]; then
+    echo "You have to set a pi version (_piver) to build"
+    exit 1
+  fi
+
+  if [[ ! -d ${__sanitycheckpath} ]]; then
+    echo "You have to set a valid sysroot to proceed with the build"
+    exit 1
+  fi
+fi
+
+# vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
+_toolchain_name=armv7-rpi2-linux-gnueabihf
+_pkgvermajmin="5.7"
+_pkgverpatch=".0"
+# -{alpha/beta/rc}
+_dev_suffix=""
+pkgver="${_pkgvermajmin}${_pkgverpatch}"
+$_build_from_head && pkgver=6.6.6
+_pkgver=${pkgver}${_dev_suffix}
+_release_type="development_releases"
+_mkspec="linux-rpi${_piver}-g++"
+_device_configure_flags=""
+_profiled_gpu_fn=qpi-proprietary.sh
+
+__sanitycheckpath="${_sysroot}/etc"
+__eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
+__glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
+
+if [[ "${_piver}" = "3" ]]; then
+    _toolchain_name=aarch64-rpi3-linux-gnueabi
+    _use_mesa=true
+    _float=false
+fi
+
+if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
+if [[ -f testing ]]; then _skip_web_engine=true; fi
+
+if $_skip_web_engine; then _device_configure_flags="$_device_configure_flags -skip qtwebengine"; fi
+if $_static_build; then _device_configure_flags="$_device_configure_flags -static"; fi
+if $_float; then _device_configure_flags="$_device_configure_flags -qreal float"; fi
+
+# PKGBUILD vars
 
 pkgrel=15
-# 1 or 2 at present
-_piver=""
-
-if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
-  _piver=$LOCAL_PI_VER
-fi
-
-if [[ -f testing ]]; then
-    _skip_web_engine=true
-fi
-
-_pkgvermajmin="5.7"
-pkgver="${_pkgvermajmin}.0"
-
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
-if $_static_build; then
-  pkgname="${pkgname}-static"
-fi
-
-if $_build_from_head; then
-  pkgver=6.6.6
-fi
-
+$_static_build && pkgname="${pkgname}-static"
 if $_release; then
   _build_type="-release"
 else
@@ -58,33 +94,22 @@ else
   pkgname="${pkgname}-debug"
 fi
 
-_toolchain_name=armv7-rpi2-linux-gnueabihf
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-_packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
-_mkspec="linux-rpi${_piver}-g++"
-_release_type="development_releases"
-
-# -{alpha/beta/rc}
-_pkgver=${pkgver}
-
-if [[ "${pkgver}" = "${_pkgver}" ]]; then
-  _release_type="official_releases"
-fi
-
+_packaginguser=$(whoami)
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
 _qt_package_name_prefix="qt-everywhere-opensource-src"
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 
-pkgdesc="Qt SDK for the Raspberry Pi 1/2"
+pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
-source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
+_provider=http://qt.mirror.constant.com/
+#_provider=https://download.qt.io
+source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
 
 sha256sums=("SKIP" "04ca3b5cc26dfd7118052e33012e3ec5c27cecce202e00227f2c18b86523e650")
 
@@ -92,26 +117,16 @@ options=('!strip')
 install=qpi.install
 rm $install
 touch $install
-_device_configure_flags=""
 
-#Sanity check
-__pkgconfigpath="${_sysroot}/usr/lib/pkgconfig"
-__eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
-__glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
-
-if [[ ! -d ${__pkgconfigpath} ]]; then
-  echo "You have to set a valid sysroot to proceed with the build"
-  exit 1
+if ${_use_mesa}; then
+  _profiled_gpu_fn=qpi-mesa.sh
+  _device_configure_flags="$_device_configure_flags -gbm -kms"
+else
+  if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
+    echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
+    exit 1
+  fi
 fi
-
-# Delete this is you know what you are doing
-# and want to build against Mesa
-if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
-  echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
-  exit 1
-fi
-
-#end sanity check
 
 # callbacks
 finish() {
@@ -122,22 +137,6 @@ finish() {
     fi
 }
 trap finish EXIT
-
-if $_static_build || $_skip_web_engine || [[ ${_piver} = "1" ]] || [[ ${_piver} = "3" ]]; then
-  _device_configure_flags="$_device_configure_flags -skip qtwebengine"
-fi
-
-if $_static_build; then
-  _device_configure_flags="$_device_configure_flags -static"
-fi
-
-if $_build_from_head; then
-  _device_configure_flags="$_device_configure_flags -skip qt3d -skip qtsystems -skip qttools -skip qtwebkit"
-fi
-
-if $_float; then
-  _device_configure_flags="$_device_configure_flags -qreal float"
-fi
 
 build() {
   # Qt tries to do the right thing and stores these, breaking cross compilation
@@ -158,6 +157,51 @@ build() {
   local _locationdir="${_srcdir}/qtlocation"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
+  # skipping on principle: qtscript xcb
+
+  # Too bleeding big
+  # -developer-build \
+  # -separate-debug-info \
+
+  # Chromium requires python2 to be the system python on your build host
+  # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
+
+
+  # Just because you can enable something doesnt mean you should
+  # Prepare for breakage in all your Qt derived projects
+  #-qtnamespace "Pi${_piver}" \
+  local _configure_line="${_srcdir}/configure \
+                 -confirm-license \
+                 -opensource \
+                 -v \
+                 \
+                 $_build_type \
+                 -silent \
+                 -qtlibinfix "Pi${_piver}" \
+                 -reduce-exports \
+                 -reduce-relocations \
+                 -pch \
+                 -ltcg \
+                 -opengl es2 \
+                 -egl \
+                 -journald \
+                 \
+                 -hostprefix ${_installprefix} \
+                 -prefix ${_installprefix} \
+                 \
+                 -make libs \
+                 \
+                 -no-icu \
+                 -no-compile-examples \
+                 -no-xcb \
+                 \
+                 -skip qtscript \
+                 \
+                 -sysroot ${_sysroot} \
+                 -device ${_mkspec} \
+                 -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
+                 ${_device_configure_flags}"
+
 if $_build_from_head; then
   _srcdir="${_local_qt5_repo}"
 fi
@@ -171,15 +215,6 @@ fi
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
-
-  # skipping on principle: qtscript xcb
-
-  # Too bleeding big
-  # -developer-build \
-  # -separate-debug-info \
-
-  # Chromium requires python2 to be the system python on your build host
-  # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
 
   # build qtwebengine with our mkspec
   local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
@@ -199,43 +234,12 @@ fi
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # Just because you can enable something doesnt mean you should
-  # Prepare for breakage in all your Qt derived projects
-  #-qtnamespace "Pi${_piver}" \
-  ${_srcdir}/configure \
-    -no-icu \
-    -v \
-    $_build_type \
-    -silent \
-    -confirm-license \
-    -opensource \
-    -qtlibinfix "Pi${_piver}" \
-    -reduce-exports \
-    -reduce-relocations \
-    -pch \
-    -ltcg \
-    -no-compile-examples \
-    -hostprefix ${_installprefix} \
-    -prefix ${_installprefix} \
-    -opengl es2 \
-    -egl \
-    -journald \
-    \
-    -make libs \
-    -no-xcb \
-    \
-    -skip qtscript \
-    \
-    -sysroot ${_sysroot} \
-    -device ${_mkspec} \
-    -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
-    ${_device_configure_flags} || exit 1
-
+  echo ${_configure_line} > configure_line
+  ${_configure_line} || exit 1
   make || exit 1
 }
 
-create_install_script()
-{
+create_install_script() {
   local _install_script_location="${startdir}/${install}"
 
   echo _piver="${_piver}" > ${_install_script_location}
@@ -283,6 +287,7 @@ fi
   if ! ${_static_build}; then
     mkdir -p ${_pkgprofiled}
     cp -L ${startdir}/${_profiledfn} ${_pkgprofiled} || exit 1
+    cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled} || exit 1
     sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
   fi
 
