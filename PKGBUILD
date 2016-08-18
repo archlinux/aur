@@ -2,7 +2,6 @@
 # Contributor: Alex Szczuczko <alex at szc dot ca>
 
 pkgname=papersplease
-_pkgname=papers-please
 pkgver=1.1.65
 pkgrel=6
 pkgdesc="Assume the role of an immigration inspector for the communist state of Arstotzka"
@@ -15,8 +14,8 @@ depends_i386=('libgl')
 options=(!strip)
 source=("$pkgname.desktop"
         "launch-$pkgname.sh"
-        "${pkgname}.png"
-        "${_pkgname}_${pkgver}_i386.tar.gz::hib://${_pkgname}_${pkgver}_i386.tar.gz")
+        "$pkgname.png"
+        "papers-please_${pkgver}_i386.tar.gz::hib://papers-please_${pkgver}_i386.tar.gz")
 sha256sums=('478b736281d4d397bcff3972a548dc85bddae49342d561adefa25186310cd5ec'
             'e199745f2158fd04fd70ce463aa57452be3a5d8c9c390970e2cadbe7d2122dd4'
             'e8aaf890dbfa6363f0197892ca2abd5ac4a45918787a8524cf8c99d785000823'
