@@ -32,8 +32,8 @@ source=("http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12.1.tar.gz"
 )
 sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
-            '04bd841050f34133fe04417bf83bef40f955ab1354e78eb8b4dd32eff75fd3a2'
-            '220644f0f9963f3d867cda40484f6fc33a73de309a973b28b815835ae07285ec'
+            'b11d154a18eebfba9d89f786fd73ad866625839c5ae89f18b92641df6f13fabb'
+            '6d90e02daf619f5df90515f88a12d9e0f2ec58e2378e58812beef02957118e41'
             'efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691'
             'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-trunk.install
