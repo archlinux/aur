@@ -29,8 +29,8 @@ package()
   mkdir -p $pkgdir/etc
   mkdir -p $pkgdir/etc/systemd/system
  
-  install -Dm755 $pkgname.conf "$pkgdir/etc/$pkgname.conf"
-  install -Dm755 $pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
+  install -Dm644 $pkgname.conf "$pkgdir/etc/$pkgname.conf"
+  install -Dm644 $pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
 
   cd "$pkgname"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
