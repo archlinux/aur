@@ -1,0 +1,14 @@
+pkgbase = flint1
+	pkgdesc = Fast Library for Number Theory 1.x series
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.flintlib.org/
+	arch = x86_64
+	license = GPL
+	source = http://www.flintlib.org/flint-1.6.tgz
+	source = flint1-1.6.patch
+	md5sums = 72ae4b64e1e7acb03847e8e565bbe432
+	md5sums = b91de4a92585c44c30c28974e5acca32
+
+pkgname = flint1
+

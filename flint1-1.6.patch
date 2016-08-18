@@ -1,0 +1,49 @@
+diff --git a/flint_env b/flint_env
+index 1edd5a4..95a0a9f 100644
+--- a/flint_env
++++ b/flint_env
+@@ -27,25 +27,25 @@ export FLINT_LIB
+ 
+ if [ -z "$FLINT_GMP_INCLUDE_DIR" ]
+ then
+-	FLINT_GMP_INCLUDE_DIR="/home/wbhart/mpir-2.1.1"
++	FLINT_GMP_INCLUDE_DIR="/usr/include/"
+ fi
+ export FLINT_GMP_INCLUDE_DIR
+ 
+ if [ -z "$FLINT_MPFR_INCLUDE_DIR" ]
+ then
+-        FLINT_MPFR_INCLUDE_DIR="/home/wbhart/mpfr-3.0.0/"
++        FLINT_MPFR_INCLUDE_DIR="/usr/include"
+ fi
+ export FLINT_GMP_INCLUDE_DIR
+ 
+ if [ -z "$FLINT_GMP_LIB_DIR" ]
+ then
+-    FLINT_GMP_LIB_DIR="/home/wbhart/mpir-2.1.1/.libs"
++    FLINT_GMP_LIB_DIR="/usr/lib"
+ fi
+ export FLINT_GMP_LIB_DIR
+ 
+ if [ -z "$FLINT_MPFR_LIB_DIR" ]
+ then
+-    FLINT_MPFR_LIB_DIR="/home/wbhart/mpfr-3.0.0/.libs"
++    FLINT_MPFR_LIB_DIR="/usr/lib"
+ fi
+ export FLINT_GMP_LIB_DIR
+ 
+@@ -63,12 +63,12 @@ export LD_LIBRARY_PATH
+ 
+ if [ -z "$FLINT_NTL_INCLUDE_DIR" ]
+ then
+-        FLINT_NTL_INCLUDE_DIR="/usr/local/sage/sage-4.5.3/local/include"
++        FLINT_NTL_INCLUDE_DIR="/usr/include"
+ fi
+ export FLINT_NTL_INCLUDE_DIR
+ 
+ if [ -z "$FLINT_NTL_LIB_DIR" ]
+ then
+-        FLINT_NTL_LIB_DIR="/usr/local/sage/sage-4.5.3/local/lib"
++        FLINT_NTL_LIB_DIR="/usr/lib"
+ fi
+ export FLINT_NTL_LIB_DIR
