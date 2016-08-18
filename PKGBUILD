@@ -1,3 +1,5 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+
 _pypiname=mergedict
 pkgname=('python-mergedict' 'python2-mergedict')
 pkgbase=python-$_pypiname
@@ -7,7 +9,7 @@ pkgdesc="A Python dict with a merge() method"
 arch=(any)
 url="https://pypi.python.org/pypi/mergedict"
 license=('MIT')
-makedepends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/m/$_pypiname/$_pypiname-$pkgver.tar.gz)
 md5sums=('0a52ba99f7e56f5c88670ecfe422c5f7')
