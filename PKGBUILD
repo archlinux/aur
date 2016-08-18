@@ -4,7 +4,7 @@
 # Contributor: Andreas Radke <andyrtr at archlinux dot org>
 
 pkgname=lib32-libgcrypt15
-pkgver=1.5.4
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='General purpose cryptographic library based on the code from GnuPG (32-bit)'
 arch=('x86_64')
@@ -12,14 +12,11 @@ url='http://www.gnupg.org'
 license=('LGPL')
 depends=('lib32-libgpg-error')
 makedepends=('gcc-multilib' 'libtool-multilib')
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
-		"debian_security_patches.patch")
-sha512sums=('fe7e1d07eb10ee4ea8054bc955c35dc4b2109db645a08a6fa7757bf1e77a612e03c0838f9766086f04270b3621f34ccae0d6333f117cff204ccad9018c8a7908'
-            'a5fe96bc83f830580391f3be92681f92057ca173407435f1800b3f05b8bfb6f87939dd573a0bf1d27afaf78f2e1fb3625b4c45ea5e9b1fddde0286ef4f3c69a6')
+source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2")
+sha512sums=('2c16912de66bc83adfbf8f43a2a9f57e1afcc866b1774ec11a670e2a793a7c5f2029d134c0bda681c9cb95f7dcc166133782c124e520b7fbe246ec10a9e1c06a')
 
 prepare() {
   cd libgcrypt-${pkgver}
-  patch -Np1 -i "${srcdir}"/debian_security_patches.patch
   sed 's:path="amd64":path="i586 i386":' -i mpi/config.links
 }
 
@@ -38,6 +35,11 @@ build() {
     --disable-padlock-support \
     --disable-static
   make
+}
+
+check() {
+  cd libgcrypt-${pkgver}
+  make check
 }
 
 package() {
