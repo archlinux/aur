@@ -15,8 +15,7 @@ url='http://www.metasploit.com/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'git')
-optdepends=('java-runtime: msfgui support'
-            'ruby-pg: database support')
+optdepends=('ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
 options=('!strip' '!emptydirs')
@@ -55,8 +54,8 @@ package() {
     chmod 755 ${_msffile}
   done
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm 644 external/zsh/_* -t "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 LICENSE COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/usr/share/doc"
   mv "${pkgdir}/opt/${pkgname}/documentation" "${pkgdir}/usr/share/doc/${pkgname}"
   rm "${pkgdir}/usr/bin/msfupdate"
