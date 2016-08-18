@@ -7,10 +7,10 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.12.5.38540.d3a13f4
+pkgver=4.12.20.39219.667c356
 pkgrel=1
 epoch=1
-pkgdesc='An advanced open-source platform for developing, testing, and using exploit code'
+pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 url='http://www.metasploit.com/'
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -19,7 +19,7 @@ optdepends=('java-runtime: msfgui support'
             'ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
-options=('!strip')
+options=('!strip' '!emptydirs')
 source=(${pkgname}::git+https://github.com/rapid7/metasploit-framework.git)
 sha512sums=('SKIP')
 
@@ -34,6 +34,7 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   bundle config build.nokogiri --use-system-libraries
+  sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
 }
 
 build() {
@@ -56,6 +57,9 @@ package() {
 
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -d "${pkgdir}/usr/share/doc"
+  mv "${pkgdir}/opt/${pkgname}/documentation" "${pkgdir}/usr/share/doc/${pkgname}"
+  rm "${pkgdir}/usr/bin/msfupdate"
 }
 
 # vim: ts=2 sw=2 et:
