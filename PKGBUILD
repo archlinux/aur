@@ -3,13 +3,13 @@
 # Contributor: Sandy Carter <bwrsandman /at/ gmail.com>
 
 pkgname=guake-git
-pkgver=0.7.2.30.g77ec69c
+pkgver=0.8.5.28.g4c52842
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Guake/guake"
 license=('GPL')
-depends=('python2' 'pygtk' 'vte' 'python2-notify' 'python2-dbus' 'python2-xdg' 'python2-keybinder2' 'pkgconfig' 'gtk2' 'glib2')
+depends=('python2' 'pygtk' 'python2-dbus' 'python2-gconf' 'python2-keybinder2' 'python2-notify' 'vte' 'python2-xdg' 'libutempter' 'pkgconfig' 'gtk2' 'glib2')
 makedepends=('git' 'intltool' 'gnome-common')
 conflicts=('guake')
 provides=('guake')
