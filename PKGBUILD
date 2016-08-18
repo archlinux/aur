@@ -1,14 +1,15 @@
 pkgname=mingw-w64-aspell
 pkgver=0.60.6.1
 _pkgmajorver=0.60
-pkgrel=1
+pkgrel=2
 pkgdesc="A spell checker designed to eventually replace Ispell (mingw-w64)"
 arch=(any)
 url="http://aspell.net/"
 license=("LGPL")
-makedepends=(mingw-w64-gcc)
+makedepends=(mingw-w64-gcc mingw-w64-pdcurses-win32a)
 depends=(mingw-w64-gettext)
 options=(!strip !buildflags staticlibs)
+optdepends=(mingw-w64-pdcurses-win32a)
 source=("ftp://ftp.gnu.org/gnu/aspell/aspell-${pkgver}.tar.gz"
 "0001-use-namespace.mingw.patch"
 "0002-printf.mingw.patch"
@@ -60,8 +61,7 @@ build() {
 			--libdir=/usr/${_arch}/lib \
 			--includedir=/usr/${_arch}/include \
 			--enable-shared \
-			--enable-static \
-      --disable-curses
+			--enable-static
     make
     popd
   done
@@ -72,10 +72,8 @@ package() {
     cd "${srcdir}/build-${_arch}"
     make -j1 DESTDIR="$pkgdir" install
     ln -s "/usr/${_arch}/lib/aspell-$_pkgmajorver" "${pkgdir}/usr/${_arch}/lib/aspell"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -o -name '*.exe' | xargs ${_arch}-strip --strip-unneeded
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
-    rm "$pkgdir/usr/${_arch}/bin/"{aspell-import,precat,preunzip,prezip,run-with-aspell}
+    rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
 }
