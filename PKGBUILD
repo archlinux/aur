@@ -1,7 +1,7 @@
 pkgbase=mingw-w64-harfbuzz
 pkgname=(mingw-w64-harfbuzz mingw-w64-harfbuzz-icu)
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -43,7 +43,7 @@ package_mingw-w64-harfbuzz() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz-${pkgver}/build-${_arch}"
 		make DESTDIR="${pkgdir}" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     
