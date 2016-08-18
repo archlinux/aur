@@ -2,14 +2,16 @@
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=runc-git
-pkgver=v0.0.5.r560.gc6a791b
+pkgver=v0.0.5.r785.g6df383c
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
-makedepends=('godep' 'go')
+makedepends=('git' 'godep' 'go')
 arch=('x86_64' 'i686')
 source=("git+https://github.com/opencontainers/runc.git")
 url="http://runc.io/"
+provides=('runc')
+conflicts=('runc')
 license=("APACHE")
 sha256sums=('SKIP')
 

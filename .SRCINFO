@@ -1,14 +1,17 @@
 pkgbase = runc-git
 	pkgdesc = Container CLI tools
-	pkgver = v0.0.5.r560.gc6a791b
+	pkgver = v0.0.5.r785.g6df383c
 	pkgrel = 1
 	url = http://runc.io/
 	arch = x86_64
 	arch = i686
 	license = APACHE
+	makedepends = git
 	makedepends = godep
 	makedepends = go
 	depends = glibc
+	provides = runc
+	conflicts = runc
 	source = git+https://github.com/opencontainers/runc.git
 	sha256sums = SKIP
 
