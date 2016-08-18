@@ -1,0 +1,14 @@
+pkgbase = ig2atom-git
+	pkgdesc = Convert Instagram feed to atom
+	pkgver = r14.d87652a
+	pkgrel = 1
+	url = https://github.com/ids1024/ig2atom
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git://github.com/ids1024/ig2atom.git
+	md5sums = SKIP
+
+pkgname = ig2atom-git
+
