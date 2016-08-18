@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=gitfs
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Version controlled file system"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-atomiclong' 'python-fusepy' 'python-pygit2>=0.24.0')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::https://github.com/PressLabs/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('70615eddbaa1ca3a7fb92fcf11b437cca29c40132eb0836559840e554e66b14b')
+sha256sums=('d8dcfb176c0672cb72f0fc3718ccfd76420979be92668f440a81579b2438adc0')
 
 package() {
   cd $pkgname-$pkgver
