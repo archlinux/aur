@@ -8,6 +8,8 @@ pkgbase = papersplease
 	license = custom:commercial
 	depends = hicolor-icon-theme
 	depends = lib32-libgl
+	optdepends = lib32-alsa-lib: alsa sound support
+	optdepends = lib32-libpulse: pulseaudio sound support
 	options = !strip
 	source = papersplease.desktop
 	source = launch-papersplease.sh
@@ -18,6 +20,8 @@ pkgbase = papersplease
 	sha256sums = e8aaf890dbfa6363f0197892ca2abd5ac4a45918787a8524cf8c99d785000823
 	sha256sums = 50562ad2b01cb7558147cd05de4dc37c02deb2e66fc5d3bff77994785f9551d7
 	depends_i686 = libgl
+	optdepends_i686 = alsa-lib: alsa sound support
+	optdepends_i686 = libpulse: pulseaudio sound support
 
 pkgname = papersplease
 

@@ -11,6 +11,10 @@ license=('custom:commercial')
 depends=('hicolor-icon-theme')
 depends_x86_64=('lib32-libgl')
 depends_i686=('libgl')
+optdepends_x86_64=('lib32-alsa-lib: alsa sound support'
+                   'lib32-libpulse: pulseaudio sound support')
+optdepends_i686=('alsa-lib: alsa sound support'
+                 'libpulse: pulseaudio sound support')
 options=(!strip)
 source=("$pkgname.desktop"
         "launch-$pkgname.sh"
