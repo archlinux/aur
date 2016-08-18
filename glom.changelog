@@ -1,3 +1,6 @@
+2016-08-18 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+    * glom-1.30.4-2 boost 1.61 rebuild
+
 2016-04-30 Jaroslav Lichtblau <svetlemodry@archlinux.org>
     * glom-1.30.3-2 pacman hooks rebuild
 
