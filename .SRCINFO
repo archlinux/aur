@@ -6,8 +6,8 @@ pkgbase = aegir
 	install = aegir.install
 	arch = any
 	license = GPL
-	depends = aegir-provision=>7.x_3.7
-	depends = aegir-hostmaster=>7.x_3.7
+	depends = aegir-provision=7.x_3.7
+	depends = aegir-hostmaster=7.x_3.7
 	depends = cron
 	depends = nginx
 	depends = php-fpm
@@ -34,7 +34,7 @@ pkgbase = aegir
 	md5sums = d43026960060bc677549baa26a24c9ee
 	md5sums = e1bb28d05fc072f6cf86d18716cf1f97
 	md5sums = 75535f9870f06c540f513262a9b7b1ab
-	md5sums = 496b1fa2533d1306318115e2b02984bd
+	md5sums = 0c24b1bcf407429dd874c4979e949d1b
 	md5sums = f9ae0c781a7ccefc63329daaf81fca36
 	md5sums = 0b53c23730e511946859d4e3c7fff982
 	md5sums = 0dab31966eada66adb159355ed814a54
