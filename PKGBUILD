@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=leatherman
-pkgver=0.7.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('boost' 'cmake')
 checkdepends=('ruby')
 source=($pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/leatherman/archive/$pkgver.tar.gz)
-md5sums=('361e850d380cbbf84a4af018b8c5c3ed')
+md5sums=('b84db18cd051eb84f8e96ac66bcd2a35')
 
 prepare() {
   cd $pkgname-$pkgver
