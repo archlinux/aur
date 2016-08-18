@@ -10,9 +10,9 @@ url="https://github.com/papajoker/sys-journald"
 _src="http://test.webstratege.fr/"
 license=('GPL2')
 depends=('gcc-libs' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libnotify' 'systemd')
-#makedepends=('p7zip')
+makedepends=('p7zip')
 conflicts=('sys-journald-bin')
-#noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
+noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
 options=('!strip')
 source=("${_src}${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage"
     "${_pkgname}.desktop")
@@ -21,8 +21,7 @@ md5sums=('e877d4ecc478c519f17db965ae4fc01e' 'ea952c0a0b172fca4a35eea90b58e700' )
 prepare() {
     cd "${srcdir}"
     mkdir -p "${srcdir}/opt/${_pkgname}"
-    rm -r usr/bin
-    #7z x -y "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage" usr/share/icons
+    7z x -y "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage" usr/share/icons
     install -v -Dm755 "${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage" "opt/${_pkgname}/${_pkgname}.AppImage"
     mv "${_pkgname}.desktop" "${srcdir}/opt/${_pkgname}/${_pkgname}.desktop"
 }
