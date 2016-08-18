@@ -6,7 +6,7 @@ pkgver=0.6.2
 pkgrel=1
 pkgdesc="A utility for parallelizing execution in bash or zsh"
 arch=('i686' 'x86_64')
-url="https://gitorious.org/prll"
+url="https://github.com/exzombie/prll"
 license=('GPL')
 
 source=(http://downloads.sourceforge.net/sourceforge/prll/$pkgname-$pkgver.tar.bz2)
