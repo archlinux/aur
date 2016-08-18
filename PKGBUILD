@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flatcc-git
-pkgver=20160420
+pkgver=20160818
 pkgrel=1
 pkgdesc="FlatBuffers Compiler and Library in C for C"
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'git' 'ninja')
+makedepends=('cmake' 'git' 'make')
 url="https://github.com/dvidelabs/flatcc"
 license=('Apache')
 options=('staticlibs')
@@ -23,7 +23,14 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  ./scripts/build.sh
+  mkdir -p build/install && cd build/install
+  cmake \
+    ../.. \
+    -DBUILD_SHARED_LIBS=on \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DFLATCC_INSTALL=on
+  make
 }
 
 package() {
@@ -36,9 +43,5 @@ package() {
   install -Dm 644 *.md doc/* -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 
   msg2 'Installing...'
-  find bin -mindepth 1 -maxdepth 1 -type f -exec \
-    install -Dm 755 -t "$pkgdir/usr/bin" '{}' +
-  find lib -mindepth 1 -maxdepth 1 -type f -exec \
-    install -Dm 644 -t "$pkgdir/usr/lib" '{}' +
-  cp -dpr --no-preserve=ownership include "$pkgdir/usr"
+  make DESTDIR="$pkgdir" install -C build/install/
 }
