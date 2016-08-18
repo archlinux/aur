@@ -1,6 +1,6 @@
 pkgname=mingw-w64-fontconfig
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=(any)
 url="http://www.fontconfig.org/release"
@@ -40,9 +40,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/fontconfig-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.def' | xargs rm
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/"{etc,share}
   done
 }
