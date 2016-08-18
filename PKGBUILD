@@ -1,8 +1,8 @@
 # Maintainer: Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
 
 pkgname=nana
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
 url="http://nanapro.org/en-us/"
@@ -10,16 +10,13 @@ license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
 makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xproto")
 source=("http://downloads.sourceforge.net/project/nanapro/Nana/Nana 1.x/${pkgname} ${pkgver}.zip"
-        fix_cmake_alsa.patch
         fix_memcpy.patch)
-sha256sums=('9d3eea56cf330e7064bb193bc53d102f34b14a3a6dc415585f011f6638ec395d'
-            'c0fd8c44b51d663e5191dd859e033fbd2ec096df9f0c0b68c868e3a88b14bda4'
+sha256sums=('7af5f4922d21ccfa9157a489f7f69594d13d32792300b22141bae0f97ce91ab0'
             '98c5401396583534682c21b8b2762a1cbbcbecd997804a5b11aabe1094ac4b44')
 
 prepare() {
     cd ${srcdir}/${pkgname}
 
-    patch -Np1 < ../fix_cmake_alsa.patch
     patch -Np1 < ../fix_memcpy.patch
 }
 
