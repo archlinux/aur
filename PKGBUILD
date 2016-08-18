@@ -2,7 +2,7 @@
 
 pkgname=sys-journald-bin
 _pkgname=sys-journald
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="view journald logs with electron AppImage."
 arch=('x86_64')
@@ -16,7 +16,7 @@ noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
 options=('!strip')
 source=("${_src}${_pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage"
     "${_pkgname}.desktop")
-md5sums=('e877d4ecc478c519f17db965ae4fc01e' 'ea952c0a0b172fca4a35eea90b58e700' )
+md5sums=('78f015e845e7c773b2ae266d9fc5ff33' 'ea952c0a0b172fca4a35eea90b58e700' )
 
 prepare() {
     cd "${srcdir}"
