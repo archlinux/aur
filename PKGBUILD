@@ -4,26 +4,24 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.14.21.r11671.23fb2b7
+pkgver=1.14.21.r11770.b52b6e3
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/marble'
 license=('GPL')
-makedepends=('cmake'
-             'git'
+makedepends=('git'
              'gpsd'
              'quazip-qt5'
              'shapelib'
-             'qextserialport'
              'libwlocate'
              'phonon-qt5'
              'extra-cmake-modules'
-             'qt5-webkit'
              'krunner'
              'python'
              'qt5-webkit'
              'qt5-tools'
+             'qt5-serialport'
              'kparts'
              'knewstuff'
              'opencv'
@@ -47,7 +45,6 @@ prepare() {
       -e '/Quick/d' \
       -e '/touch/d' \
       -i marble/src/apps/CMakeLists.txt
-
 }
 
 build() {
@@ -88,7 +85,7 @@ package_marble-git() {
            )
   optdepends=('gpsd: position information via gpsd'
               'shapelib: reading and displaying .shp files'
-              'qextserialport: reading from serial port in APRS plugin'
+              'qt5-serialport: reading from serial port in APRS plugin'
               'libwlocate: Position information based on neighboring WLAN networks'
               'krunner: Krunner plugin for marble'
               )
@@ -107,11 +104,12 @@ package_marble-git() {
   make -C build DESTDIR="${pkgdir}" install
 
   # provided by libastro
-  rm -r "${pkgdir}/usr/include/astro"
-  rm "${pkgdir}/usr/lib/"libastro.*
+  rm -fr "${pkgdir}/usr/include/astro"
+  rm -fr "${pkgdir}/usr/lib/"libastro.*
+  rm -fr "${pkgdir}/usr/lib/cmake/Astro"
 
   # provided by marble-data
-  rm -r "${pkgdir}/usr/share/"{icons,mime,marble/data}
+  rm -fr "${pkgdir}/usr/share/"{icons,mime,marble}
 }
 
 package_marble-data-git() {
