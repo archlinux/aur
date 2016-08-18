@@ -29,61 +29,22 @@ PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
 package() {
-    cd "$srcdir/papers-please/"
+    cd "$srcdir"
 
-    #
-    # Create /opt/$pkgname directory
-    #
+    # bin
+    install -Dm755 launch-papersplease.sh "$pkgdir/usr/bin/$pkgname"
 
-    # Binaries
-    install -m755 -d "$pkgdir/opt/$pkgname/"
-    install -m755 -t "$pkgdir/opt/$pkgname/" "PapersPlease" "lime.ndll" "regexp.dso" "std.dso" "zlib.dso"
+    # license
+    install -Dm644 papers-please/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm papers-please/LICENSE
 
-    # Launcher
-    install -m755 -t "$pkgdir/opt/$pkgname/" "$srcdir/launch-$pkgname.sh"
+    # icon
+    install -Dm644 "$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
 
-    # Text/config files
-    install -m644 -t "$pkgdir/opt/$pkgname/" "boot.xml" "LICENSE" "manifest" "README"
+    # .desktop
+    install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
-    # i18n
-    install -m755 -d "$pkgdir/opt/$pkgname/loc/"
-    find "loc/" -type f -name '*.zip' -print0 | \
-        xargs -0 install -m644 -t "$pkgdir/opt/$pkgname/loc/"
-
-    # Assets
-    install -m755 -d "$pkgdir/opt/$pkgname/assets/"
-    find "assets/" -maxdepth 1 -type f -print0 | \
-        xargs -0 install -m644 -t "$pkgdir/opt/$pkgname/assets/"
-
-    # Music
-    install -m755 -d "$pkgdir/opt/$pkgname/assets/music/"
-    find "assets/music/" -maxdepth 1 -type f -print0 | \
-        xargs -0 install -m644 -t "$pkgdir/opt/$pkgname/assets/music/"
-
-    # Sound
-    install -m755 -d "$pkgdir/opt/$pkgname/assets/sound/"
-    find "assets/sound/" -type f -name "*.wav" -print0 | \
-        xargs -0 install -m644 -t "$pkgdir/opt/$pkgname/assets/sound/"
-
-
-    #
-    # System integration
-    #
-
-    # /bin
-    install -m755 -d "$pkgdir/usr/bin/"
-    ln -s "/opt/$pkgname/launch-$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-
-    # License
-    install -m755 -d "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Icon
-    #install -Dm644 $pkgname.png "$pkgdir/usr/share/icons/128x128/apps/$pkgname.png"
-    install -m755 -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-    install -m644  "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-
-    # .desktop File
-    install -m755 -d "$pkgdir/usr/share/applications/"
-    install -m644 -t "$pkgdir/usr/share/applications/" "$srcdir/$pkgname.desktop"
+    # rest
+    install -dm755 "${pkgdir}/opt/"
+    cp -r papers-please "${pkgdir}/opt/${pkgname}/"
 }
