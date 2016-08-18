@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=sys-journald
+Comment=view journald logs with electron app
+Comment[fr]=logs de journald
+Exec=/usr/bin/sys-journald
+Terminal=false
+Type=Application
+Icon=sys-journald
+Categories=Utility;
