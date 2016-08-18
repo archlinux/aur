@@ -34,8 +34,7 @@ prepare() {
 build() {
   cd zimg
   ./configure \
-    --prefix=/usr \
-    --disable-static
+    --prefix=/usr
   make
 }
 
