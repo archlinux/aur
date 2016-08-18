@@ -1,8 +1,8 @@
-# Maintainer: Benjamin James <benjamin-james@utulsa.edu>
+# Maintainer: Benjamin James <bjames@openmailbox.org>
 
 pkgname=clx-git
 _clname=clx
-pkgver=r178.0a3bea0
+pkgver=r248.9b210e8
 pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An X11 client for Common Lisp"
@@ -14,7 +14,7 @@ depends=('xorg-server' 'sbcl')
 makedepends=('git' 'texinfo')
 install=clx.install
 source=(${pkgname}::git+https://github.com/sharplispers/clx.git
-        README.licensing)        
+        README.licensing)
 md5sums=('SKIP'
          'SKIP')
 
@@ -35,6 +35,8 @@ package() {
 
     install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}
     install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} *.lisp
+    install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}/extensions
+    install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname}/extensions extensions/*.lisp
     install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} ${_clname}.asd
     install -d        ${pkgdir}/usr/share/common-lisp/source/${_clname}/debug
     install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname}/debug debug/*.lisp
