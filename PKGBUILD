@@ -1,28 +1,57 @@
 # Maintainer: Eugen Kuksa <eugenk@cs.uni-bremen.de>
 
 pkgname=hets-server
-pkgver=0.99_1464691151
-pkgrel=2
+pkgver=0.99_1471209385
+pkgrel=1
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
 
 url="http://hets.eu"
 arch=('i686' 'x86_64')
 license=('custom:hets-license')
-depends=('ghc>=6.8.2' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 'hets-lib' 'ncurses' 'pellet' 'cairo' 'glib2' 'gettext' 'fontconfig' 'libglade')
-optdepends=('isabelle')
+depends=('hets-commons' 'hets-lib' 'tcl' 'tk' 'ncurses' 'cairo' 'glib2' 'gettext' 'fontconfig' 'libglade')
+optdepends=('spass' 'eprover' 'darwin' 'pellet' 'isabelle')
+makedepends=('ghc>=7.8.4')
 provides=('hets-server')
-conflicts=('hets-server')
-sha1sums=('cb447a84a97c3c44d903be8df46ef4cec8bfd511')
+conflicts=('hets-server-bin')
+_commit='9c020bf240dace07c6defccb1c8a42328ec454e0'
+source=("${pkgname}::git+https://github.com/spechub/Hets.git#commit=${_commit}")
+sha256sums=('SKIP')
 
-source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/$pkgname/${pkgname}-${pkgver}.tar.gz")
+_executable_name='hets-server'
+
+build() {
+  cd $srcdir/$pkgname
+  make hets_server.bin
+}
+
 package() {
-  cd ${srcdir}
+  cd $srcdir/$pkgname
+  make install-hets_server PREFIX="$pkgdir/usr"
 
-  mkdir -p ${pkgdir}/opt/${pkgname}/
-  mkdir -p ${pkgdir}/usr/bin/
+  # Patch the header of the wrapper script to include the (only working) locale,
+  # to use a shell that is certainly installed and to set the correct basedir.
+	local wrapper_script="bin/$_executable_name"
+  pushd "$pkgdir/usr" > /dev/null
+    # Remove useless files that were added by the makefile's sed invocation
+    rm -f "share/man/man1/hets.1e"
+    rm -f "share/man/man1/hets.1-e"
 
-  mv ${srcdir}/${pkgname}-${pkgver}/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    echo "#!/bin/bash"                  > "$wrapper_script.tmp"
+    echo ""                            >> "$wrapper_script.tmp"
+    echo "export LANG=en_US.UTF-8"     >> "$wrapper_script.tmp"
+    echo "export LANGUAGE=en_US.UTF-8" >> "$wrapper_script.tmp"
+    echo "export LC_ALL=en_US.UTF-8"   >> "$wrapper_script.tmp"
+    echo ""                            >> "$wrapper_script.tmp"
+    echo "BASEDIR=\"/usr\""            >> "$wrapper_script.tmp"
+    echo "PROG=\"$_executable_name\""  >> "$wrapper_script.tmp"
 
-  cp -r ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/opt/${pkgname}/
+    # replace the script header with the above one
+		sed -ie "/\/bin\/ksh93/,/PROG=/ d" "$wrapper_script"
+		cat "$wrapper_script" >> "$wrapper_script.tmp"
+		cat "$wrapper_script.tmp" > "$wrapper_script"
+    rm -f "${wrapper_script}.tmp"
+    rm -f "${wrapper_script}e"
+    rm -f "${wrapper_script}-e"
+  popd > /dev/null
 }
