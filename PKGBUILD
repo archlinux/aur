@@ -9,7 +9,7 @@
 
 pkgname=('marionnet-trunk')
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Educational software. It is a virtual network laboratory: it allows
 users to define, configure and run complex computer networks without any need
 for physical setup. Trunk version (with UML kernel Debian Wheezy)."
@@ -25,18 +25,25 @@ fi
 conflicts=('marionnet')
 source=("http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12.1.tar.gz"
         'http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz'
-        "https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-trunk.tar.gz"
-        "https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-trunk.tar.gz"
+        'http://bazaar.launchpad.net/~marionnet-drivers/ocamlbricks/trunk/tarball/433'
+        'http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/tarball/475'
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/Makefile-trunk.patch"
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/marionnet_from_scratch-Downloader"
 )
 sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
-            '646b6de59a555b2e41960708cf4edfed571d88369d850a50e23bf4a4b17ed329'
-            '610c806e595be4d56ff6cded02e8d8a3091fe211487073c02ddb5132c3b4ffb6'
+            '04bd841050f34133fe04417bf83bef40f955ab1354e78eb8b4dd32eff75fd3a2'
+            '220644f0f9963f3d867cda40484f6fc33a73de309a973b28b815835ae07285ec'
             'efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691'
             'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-trunk.install
+
+prepare () {
+    tar -xvzf 433
+    tar -xvzf 475
+    mv '~marionnet-drivers/ocamlbricks/trunk' ocamlbricks
+    mv '~marionnet-drivers/marionnet' marionnet
+}
 
 # ################
 # MAKEDEPENDS : CREATED DURING COMPILATION but not keep
