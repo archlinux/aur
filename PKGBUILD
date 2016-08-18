@@ -6,16 +6,22 @@
 
 pkgname=qpi-toolchain
 pkgver=6.1.0
-pkgrel=1
-pkgdesc="cross-tool-ng compiled gcc 5.3 hf toolchain for the pi"
+pkgrel=2
+pkgdesc="cross-tool-ng compiled GCC toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
 makedepends=("git")
 
 _toolchainreponame=crosstool-ng-toolchains
+
+# toolchains
+
+# aarch64-rpi3-linux-gnueabi
+# armv7-rpi2-linux-gnueabihf
+
 _toolchainname=armv7-rpi2-linux-gnueabihf
 url="https://github.com/sirspudd/${_toolchainreponame}"
-source=("git+https://github.com/sirspudd/${_toolchainreponame}.git#tag=6.1")
+source=("git+https://github.com/sirspudd/${_toolchainreponame}.git#tag=GCC-${pkgver}-${_toolchainname}")
 sha256sums=("SKIP")
 options=('!strip')
 
