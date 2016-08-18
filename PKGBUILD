@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-django-rest-framework' 'python2-django-rest-framework')
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="Awesome web-browsable Web APIs"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/tomchristie/django-rest-framework"
 license=('MIT')
 options=(!emptydirs)
 source=("https://github.com/tomchristie/django-rest-framework/archive/${pkgver}.tar.gz")
-sha256sums=('e74f575cfe6b3d17a3a36c4dde0db60ad7cb9093774aa0296f87363153864a15')
+sha256sums=('2915a4483c0df12b7e812610b52d0101bacf575908ecd9bd285c5ffd7c839d68')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-rest-framework() {
