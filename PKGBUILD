@@ -2,7 +2,7 @@
 
 pkgname=ruby-neovim
 _gemname=${pkgname#ruby-}
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Ruby client for Neovim'
 url='https://github.com/alexgenco/neovim-ruby'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('neovim' 'ruby' 'ruby-msgpack>=1.0.0')
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('cd58aef616425b8aa4513d5689c489cbecdd22dc17830df325361c9cab9806fa')
+sha256sums=('3cb8954ebef236ee835c985be772a5a15ff31565f57afdf064eea5cfecd298b2')
 
 package() {
   cd "${srcdir}"
