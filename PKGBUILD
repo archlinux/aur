@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-beta
-pkgver=53.0.2785.57
+pkgver=53.0.2785.70
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
         'google-chrome-beta.sh')
-md5sums=('575436c61eb7492b40ac8c9a3b165c1d'
+md5sums=('0f213d423fb63467b56176f0b422d5fe'
          'SKIP'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
