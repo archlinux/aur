@@ -1,7 +1,7 @@
 # Maintainer: gborzi <gborzi@ieee.org>
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh
-pkgver=2.13.0
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('gmsh-docs: docs for gmsh'
             'python: for onelab.py')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-md5sums=('4a7476a5dc2426fdaf300b599b819c69'
+md5sums=('94bdf9fc03a842690ad5f251dc965fd9'
          'e63dc24ba025741fc1a82633b475e4a8'
          '9ee4b5bf27956de5aa412bbc939660d3')
 
