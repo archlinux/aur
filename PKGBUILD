@@ -9,7 +9,7 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
 depends=('hawkey' 'libcomps' 'librepo' 'rpm-org'
          'python' 'python-iniparse' 'python-pygpgme')
-makedepends=('cmake' 'python-sphinx')
+makedepends=('bash-completion' 'cmake' 'python-sphinx')
 checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")

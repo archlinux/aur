@@ -7,6 +7,7 @@ pkgbase = dnf
 	license = GPL2
 	license = GPL
 	checkdepends = python-nose
+	makedepends = bash-completion
 	makedepends = cmake
 	makedepends = python-sphinx
 	depends = hawkey
