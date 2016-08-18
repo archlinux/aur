@@ -2,8 +2,8 @@
 # Contributor: Martin -nexus- Mlynář <nexus+arch@smoula.net>
 
 pkgname=btrfs-sxbackup
-pkgver=0.6.9
-pkgrel=2
+pkgver=0.6.10
+pkgrel=1
 pkgdesc="Incremental btrfs snapshot backups with push/pull support via SSH"
 arch=('i686' 'x86_64')
 url="https://github.com/masc3d/btrfs-sxbackup"
@@ -23,7 +23,7 @@ conflicts=('python-btrfs-sxbackup')
 source=(https://github.com/masc3d/btrfs-sxbackup/archive/${pkgver}.tar.gz
         ${pkgname}@.service
         ${pkgname}@.timer)
-md5sums=('c581ec61e2dbccf4c9a1b63c677a573f'
+md5sums=('b908c693af1c44f44451411dfab4808e'
          'c95336614c6ea4844fd6272868260f96'
          '3eba800dc92659189b6f4c58e456f9aa')
 
