@@ -3,27 +3,27 @@
 pkgname=wmcdplay
 pkgdesc="A CD player WindowMaker dock app"
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
-url="http://windowmaker.org/dockapps/?name=$pkgname"
+url="http://www.dockapps.net/wmcdplay"
 license=('GPL')
 depends=('libxpm')
 makedepends=('imake')
-source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$pkgname-$pkgver.tar.gz")
-md5sums=('SKIP')
+source=("http://www.dockapps.net/download/${pkgname}-${pkgver}.tar.gz")
+md5sums=('57c034302114e161a0f1b4038b2e7e51')
+
 prepare() {
-  cd "${srcdir}"/dockapps-c39c8d6
+  cd dockapps
   autoreconf -iv
 }
 
 build() {
-  cd "${srcdir}"/dockapps-c39c8d6
+  cd dockapps
   ./configure --prefix=/usr --bindir=/usr/bin --mandir=/usr/share/man
   make V=0
 }
 
 package() {
-  cd "${srcdir}"/dockapps-c39c8d6
+  cd dockapps
   make DESTDIR="$pkgdir" install
 }
-
