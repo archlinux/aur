@@ -3,7 +3,7 @@
 
 pkgname=js45
 pkgver=45.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/45"
@@ -40,7 +40,7 @@ build() {
 
   cd mozjs-$pkgver/js/src
   ./configure --prefix=/usr --with-system-nspr --enable-system-ffi \
-     --enable-readline --enable-threadsafe --with-system-icu
+     --enable-readline --with-system-icu
   make
 }
 
