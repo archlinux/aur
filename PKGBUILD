@@ -2,7 +2,7 @@
 
 pkgname=cin-bin
 pkgver=5.1
-pkgrel=20160619
+pkgrel=20160730
 pkgdesc="Cinelerra ($pkgver) ($pkgrel)"
 arch=('x86_64')
 url="http://www.cinelerra-cv.org/five"
@@ -13,7 +13,7 @@ makedepends=('yasm' 'nasm' 'cmake'
 'libxml2' 'perl-xml-libxml' 'perl-xml-parser' 'python2')
 conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
 source=(https://www.cinelerra-cv.org/five/pkgs/arch/cin-$pkgver-$pkgrel-x86_64.pkg.tar.xz)
-md5sums=('29821dfb8238d254968c30e06b5356f9')
+md5sums=('d1a3579417a72b309a52dad55eecd26d')
 
 package() {
 tar xJvf ${srcdir}/cin-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
