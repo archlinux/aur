@@ -2,7 +2,7 @@
 
 pkgname=mrdux-git
 pkgver=0.2.r0.g07f409d
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop environment focused on productivity, speed and aesthetics"
 url="https://gitlab.com/mrduX/mrduX"
 license=('GPL3')
@@ -22,13 +22,14 @@ depends=(
    # Fonts used throughout the graphical environment
    'ttf-envy-code-r' 'ttf-hack' 'ttf-google-fonts-git' 'ttf-webhostinghub-glyphs'
    # Theme resources (custom cursor, icon set and GTK theme)
-   'xcursor-pixelfun' 'paper-icon-theme-git' 'adapta-gtk-theme'
+   'paper-icon-theme-git' 'adapta-gtk-theme'
    # Python dependencies for the mXinstall tool
-   'python' 'python-yaml' 'python-click'
+   'python-setuptools' 'python-yaml' 'python-click'
 )
 optdepends=(
    'xorg-xbacklight: Adjust screen backlight with M-<Up> and M-<Down>'
    'redshift-adjust: Adjust screen temperature with M-<Left> and M-<Right>'
+   'xcursor-pixelfun: Minimalistic cursor theme with a piece of old-school'
    'shutter: Take a screenshot with M-<Print>'
    'netmenu: Switch netctl active network profile with M-S-n'
    'wavemon: Show wireless network monitor scratchpad with M1-C-<Home>'
@@ -41,6 +42,7 @@ optdepends=(
 
 source=('mrduX::git+http://gitlab.com/mrduX/mrduX')
 md5sums=('SKIP')
+provides=('mrduX' 'mXinstall')
 
 pkgver() {
    cd mrduX
