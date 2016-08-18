@@ -3,7 +3,7 @@
 pkgname=trytond
 pkgver=4.0.3
 _pkgdir=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
 url="http://www.tryton.org/"
@@ -20,11 +20,14 @@ makedepends=('python2-distribute')
 backup=('etc/trytond.conf')
 install="trytond.install"
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
+        "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'trytond.conf'
         'trytond.service')
 md5sums=('36c30a7a76742783fee41b1ef5cd87ef'
+         'SKIP'
          'db21177e78e6983d85feb14436f5a7ba'
          'c3318e663c17194d71f6ef4ded16b293')
+validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
 
 build() {
   cd $srcdir/$pkgname-$pkgver
