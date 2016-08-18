@@ -2,4 +2,5 @@ pkg/
 src/
 *.asc
 *.gz
+*.tar
 *.xz

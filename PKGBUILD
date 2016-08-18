@@ -1,12 +1,12 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-libdbus
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="DBus library (mingw-w64)"
 depends=(mingw-w64-expat)
 makedepends=(mingw-w64-configure docbook-xsl)
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !emptydirs)
 conflicts=(mingw-w64-dbus)
 provides=(mingw-w64-dbus)
 replaces=(mingw-w64-dbus)
@@ -47,9 +47,8 @@ package() {
 	for _arch in ${_architectures}; do
 		cd "${srcdir}/dbus-${pkgver}/build-${_arch}"
 		make DESTDIR="${pkgdir}" install
-		find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \;
+		find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip {} \;
 		find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
 		find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs ${_arch}-strip -g
-		rm -rf "${pkgdir}/usr/${_arch}/"{etc,var,libexec,share}
 	done
 }
