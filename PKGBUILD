@@ -2,25 +2,47 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=screencloud
-pkgver=1.3.0
-pkgrel=3
-_pkgrealrel=1
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Easy to use screenshot sharing application."
 arch=('i686' 'x86_64')
-url="http://screencloud.net"
+url="https://github.com/olav-st/screencloud"
 license=('GPL2')
-depends=('qt5-base' 'quazip-qt5' 'pythonqt-qt5' 'python2' 'qt5-x11extras')
-optdepends=('python2-crypto: required for SFTP support')
-options=('strip' 'docs' 'libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!optipng' '!upx' '!debug')
+depends=('qt5-base' 'quazip-qt5' 'pythonqt-qt5' 'python' 'qt5-x11extras')
+optdepends=('python-crypto: required for SFTP support')
+options=('strip' 'docs' 'libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!optipng' '!upx' '!debug' '!emptydirs')
 install=screencloud.install
 conflicts=('screencloud-git')
-source_x86_64=(${pkgname}-${pkgver}-${_pkgrealrel}-64.pkg.tar.xz::http://download.opensuse.org/repositories/home:/olav-st/Arch_Extra/x86_64/${pkgname}-${pkgver}-${_pkgrealrel}-x86_64.pkg.tar.xz)
-# Skips validation because package updated, but version not changed. See the comments.
-sha256sums_x86_64=('SKIP')
-source_i686=(${pkgname}-${pkgver}-${_pkgrealrel}-32.pkg.tar.xz::http://download.opensuse.org/repositories/home:/olav-st/Arch_Extra/i686/${pkgname}-${pkgver}-${_pkgrealrel}-i686.pkg.tar.xz)
-# Skips validation because package updated, but version not changed. See the comments.
-sha256sums_i686=('SKIP')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/olav-st/${pkgname}/archive/v1.3.1.tar.gz)
+sha256sums=('c23d8efb955ea861920c548f7fd3255726e86409d7a2022952225c765cc3da52')
+
+prepare() {
+    # Create build directory
+    mkdir -p "${srcdir}/${pkgname}-${pkgver}"/build
+}
+
+build() {
+    # Needed for the self-compiled version
+    local _consumer_key='ef5d77317892721a0acebbbc8157272b055da8074'
+    local _consumer_secret='2d745141473f640b566aba29147fd672'
+
+    cd "${srcdir}/${pkgname}-${pkgver}"/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_BINDIR=/usr/bin \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_VERBOSE_MAKEFILE=OFF \
+        -DCONSUMER_KEY_SCREENCLOUD="${_consumer_key}" \
+        -DCONSUMER_SECRET_SCREENCLOUD="${_consumer_secret}" \
+        -DQT_USE_QT5=ON \
+        -DPYTHON_USE_PYTHON3=ON \
+        -DCMAKE_BUILD_TYPE=Release ..
+    make
+}
 
 package() {
-    cp -R "$srcdir/usr" "$pkgdir"
+    # Installing package
+    cd "${srcdir}/${pkgname}-${pkgver}"/build
+
+    # Install files
+    make DESTDIR="${pkgdir}" install
 }
