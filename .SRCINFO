@@ -1,0 +1,26 @@
+pkgbase = poi
+	pkgdesc = Scalable KanColle browser and tool
+	pkgver = 7.0.0.beta.5.0.g08bb147
+	pkgrel = 1
+	url = https://github.com/poooi/poi/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = coreutils
+	makedepends = findutils
+	makedepends = sed
+	makedepends = imagemagick
+	depends = electron
+	depends = sh
+	provides = poi
+	conflicts = poi
+	source = git+https://github.com/poooi/poi.git#tag=v7.0.0-beta.5
+	source = poi.desktop
+	source = poi.sh
+	sha1sums = SKIP
+	sha1sums = 0578634a64fbb2de2fd35555471a761231a3dc94
+	sha1sums = 321cecdb8f68fb087dfcaa1233ae5ce784095029
+
+pkgname = poi
+
