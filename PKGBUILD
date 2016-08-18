@@ -8,7 +8,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/lachesis/scallion"
 license=('MIT')
 makedepends=('git' 'mono')
-depends=('mono' 'opencl-nvidia')
+depends=('mono')
+optdepends=(
+  'opencl-nvidia: OpenCL support for NVIDIA'
+  'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa'
+)
 source=('scallion.sh')
 sha256sums=('1090325b7cd46c5b90ac0c9c841ca6ccf15141fd3c7b2f409ebecf0db1d39dff')
 
