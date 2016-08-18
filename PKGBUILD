@@ -10,7 +10,7 @@ url="http://papersplea.se"
 license=('custom:commercial')
 depends=('hicolor-icon-theme')
 depends_x86_64=('lib32-libgl')
-depends_i386=('libgl')
+depends_i686=('libgl')
 options=(!strip)
 source=("$pkgname.desktop"
         "launch-$pkgname.sh"
