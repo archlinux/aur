@@ -1,8 +1,8 @@
 # Maintainer: Miloš Polakovič (milos@mailbox.org)
 
 pkgname=mrdux-git
-pkgver=0.2.r0.g07f409d
-pkgrel=2
+pkgver=0.2.r1.g0038559
+pkgrel=1
 pkgdesc="A desktop environment focused on productivity, speed and aesthetics"
 url="https://gitlab.com/mrduX/mrduX"
 license=('GPL3')
@@ -10,25 +10,21 @@ license=('GPL3')
 arch=('any')
 makedepends=(sh 'git')
 depends=(
-   # X Window System and related tools
    'xorg-server' 'xorg-xinit' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xrandr'
-   'xscreensaver' 'xf86-video-vesa'
+   'xf86-video-vesa' 'alsa-utils' 'sl'
    # Window manager (xmonad) and status bar (xmobar)
    'xmonad' 'xmonad-contrib' 'xmobar-alsa'
    # Application launchers and terminal emulators
    'dmenu' 'gmrun' 'xterm' 'rxvt-unicode'
-   # Command-line utilities
-   'alsa-utils' 'sl'
    # Fonts used throughout the graphical environment
-   'ttf-envy-code-r' 'ttf-hack' 'ttf-google-fonts-git' 'ttf-webhostinghub-glyphs'
-   # Theme resources (custom cursor, icon set and GTK theme)
-   'paper-icon-theme-git' 'adapta-gtk-theme'
+   'ttf-envy-code-r' 'ttf-hack' 'ttf-webhostinghub-glyphs'
    # Python dependencies for the mXinstall tool
    'python-setuptools' 'python-yaml' 'python-click'
 )
 optdepends=(
    'xorg-xbacklight: Adjust screen backlight with M-<Up> and M-<Down>'
    'redshift-adjust: Adjust screen temperature with M-<Left> and M-<Right>'
+   'xscreensaver: Lock the screen with M-S-l (also provides a screensaver)'
    'xcursor-pixelfun: Minimalistic cursor theme with a piece of old-school'
    'shutter: Take a screenshot with M-<Print>'
    'netmenu: Switch netctl active network profile with M-S-n'
@@ -38,6 +34,9 @@ optdepends=(
    'terminology: Start a fancy EFL-based terminal emulator with M-S-M1-<Return>'
    'feh: Set desktop wallpaper on the command-line with "feh --bg-fill <file>"'
    'arandr: Edit screen layouts with <XF86Video>'
+   'paper-icon-theme-git: mrduX default icon theme'
+   'adapta-gtk-theme: mrduX default gtk theme'
+   'ttf-google-fonts-git: ~300MB of font goodness'
 )
 
 source=('mrduX::git+http://gitlab.com/mrduX/mrduX')
