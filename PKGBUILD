@@ -2,7 +2,7 @@
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
 pkgname=macaulay2
-pkgver=12992.639ac3c
+pkgver=14130.4947cfd
 pkgrel=1
 pkgdesc="Software system for algebraic geometry and commutative algebra"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.math.uiuc.edu/Macaulay2/"
 license=('GPL')
 depends=('gcc-fortran' 'gdbm' 'gmp' 'readline' 'lapack' 'scscp' 'gc'
          'singular-factory' 'frobby' 'glpk' 'cddlib' 'gfan' 'gtest')
-makedepends=('git' 'unzip' 'emacs')
+makedepends=('git' 'unzip' 'emacs' 'texinfo')
 source=('git+https://github.com/Macaulay2/M2')
 
 pkgver() {
@@ -20,8 +20,13 @@ pkgver() {
 
 build() {
   cd "$srcdir"/M2/M2
-  sed -i -e '/lgfortran/d' configure.ac
-  sed -i -e 's/if 1/if 0/' Macaulay2/e/x-factor.cpp
+
+  # Things that are always built include mpir, mpfr and flint
+  # Not included is factory (compiled against a different enough flint)
+  # We need to either stop using shared factory or start using shared flint
+  # Choose shared flint because only mpir and mpfr have good reasons listed
+  sed -i -e '/BUILD_ALWAYS="flint/d' configure.ac
+  sed -i -e 's/then BUILD_flint=yes/then BUILD_flint=no/' configure.ac
   sed -i -e 's/IgnoreExampleErrors ?= false/IgnoreExampleErrors ?= true/' Macaulay2/packages/Makefile.in
 
   # Some provided examples will make M2 crash if the -q option is used.
@@ -29,20 +34,17 @@ build() {
   sed -i -e 's/" -q"/""/' Macaulay2/m2/html.m2
   sed -i -e 's/ -q//' Macaulay2/packages/Macaulay2Doc/test/Makefile.test.in
 
-  # Make it find factory.
+  # Needed for the mpir step
+  [[ "$CARCH" == "i686" ]] && export ABI=32
+  # Make it find factory
   export CPPFLAGS+=" -I/usr/include/singular"
   autoreconf
 
   make
-  # This builds mpir, mpfr and ntl no matter what.
-  # Not sure why it crashes with the newest pari.
-  ./configure LIBS="-lgmp" --prefix=/usr \
+  ./configure LIBS="-lcblas" --prefix=/usr \
     --libexecdir='${prefix}'/lib/Macaulay2 \
     --enable-shared --enable-download \
-    --enable-frobby --enable-pari \
-    --enable-build-libraries=pari \
-    --disable-gfan
-    #--with-unbuilt-programs=gfan
+    --enable-frobby --enable-pari --disable-gfan
 
   make -j1
 }
@@ -55,6 +57,5 @@ package() {
   mv info info-mac
   mkdir info
   mv info-mac info/Macaulay2
-  #rm -rf "$pkgdir/usr/lib/Macaulay2/*Linux*/lib"
 }
 md5sums=('SKIP')

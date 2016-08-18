@@ -1,6 +1,6 @@
 pkgbase = macaulay2
 	pkgdesc = Software system for algebraic geometry and commutative algebra
-	pkgver = 12992.639ac3c
+	pkgver = 14130.4947cfd
 	pkgrel = 1
 	url = http://www.math.uiuc.edu/Macaulay2/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = macaulay2
 	makedepends = git
 	makedepends = unzip
 	makedepends = emacs
+	makedepends = texinfo
 	depends = gcc-fortran
 	depends = gdbm
 	depends = gmp
