@@ -1,0 +1,431 @@
+#
+# PtokaX settings file
+#
+
+#
+# Boolean settings
+#
+
+# Anti MoGlo description
+#AntiMoGlo	=	1
+# Hub autostart. Non-gui version starting automatically!
+#AutoStart	=	0
+# Redirect all connecting users
+#RedirectAll	=	0
+# Redirect users when hub is full
+#RedirectWhenHubFull	=	1
+# Automatically register hub to hublist
+#AutoRegister	=	1
+# Hub for registered users only
+#RegOnly	=	0
+# Redirect non-registered users when hub is for registered users only
+#RegOnlyRedir	=	0
+# Redirect user when his share is outside share limits
+#ShareLimitRedir	=	1
+# Redirect user when his slot count is outside slot limits
+#SlotsLimitRedir	=	1
+# Redirect user when his hub/slot ratio not meet hub/slot ratio limit
+#HubSlotRatioRedir	=	1
+# Redirect user when his hub count is above maximal hubs limit
+#MaxHubsLimitRedir	=	1
+# Add user connection mode(s) to MyINFO command
+#ModeToMyINFO	=	1
+# Add user connection mode(s) to description
+#ModeToDescription	=	0
+# Remove user description from MyINFO command
+#StripDescription	=	0
+# Remove user client tag from MyINFO command
+#StripTag	=	1
+# Remove user connection from MyINFO command
+#StripConnection	=	0
+# Remove user email from MyINFO command
+#StripEmail	=	0
+# Register hub bot on hub
+#RegBot	=	1
+# Use hub bot nick instead of Hub-Security
+#UseBotNickAsHubSec	=	1
+# Register Opchat bot on hub
+#RegOpChat	=	1
+# Redirect user when he is temporary banned
+#TempBanRedir	=	1
+# Redirect user when he is permanently banned
+#PermBanRedir	=	1
+# Enable Lua scripting interface
+#EnableScripting	=	1
+# Don't disconnect slow clients, who are not able to receive all data from hub, when it is possible
+#KeepSlowUsers	=	1
+# Automatically check for new PtokaX releases on startup. Only in gui version!
+#CheckNewReleases	=	1
+# Enable tray icon. Only in gui version!
+#EnableTrayIcon	=	1
+# Start minimized. Only in gui version!
+#StartMinimized	=	0
+# Filter kick messages from chat
+#FilterKickMessages	=	1
+# When kick messages filtering from chat is enabled, then always send kick messages to hub Operators
+#SendKickMessagesToOps	=	1
+# Send status messages to Operators
+#SendStatusMessages	=	1
+# Send status messages as private messages to Operators
+#SendStatusMessagesAsPm	=	0
+# Enable text files
+#EnableTextFiles	=	1
+# Send text files as private messages
+#SendTextFilesAsPm	=	0
+# Stop script on script error
+#StopScriptOnError	=	0
+# Send MOTD as private message
+#MOTDAsPm	=	0
+# Report deflood actions to Operators
+#DefloodReport	=	0
+# Reply to hub commands in private message
+#ReplyToHubCommandsAsPm	=	0
+# Disable MOTD
+#DisableMOTD	=	0
+# Block hublist pingers from hub checking
+#DontAllowPingers	=	0
+# Report hublist pingers to Operators
+#ReportPingers	=	0
+# Report when someone sent 3 times bad password for registered user
+#Report3xBadPass	=	1
+# Advanced password protection
+#AdvancedPassProtection	=	1
+# Listen only on single IP address for every TCP/IP
+#BindOnlySingleIp	=	0
+# Resolve hostname to IP address(es)
+#ResolveToIp	=	1
+# Redir user when his nick length is outside nick length limits
+#NickLimitRedir	=	1
+# Send IP address in ban message
+#BanMessageShowIp	=	1
+# Send range in ban message
+#BanMessageShowRange	=	1
+# Send nick in ban message
+#BanMessageShowNick	=	1
+# Send reason in ban message
+#BanMessageShowReason	=	1
+# Send who created ban in ban message
+#BanMessageShowBy	=	1
+# Report suspicious tag to Operators
+#ReportSuspiciousTag	=	1
+# Save script errors to log
+#LogScriptErrors	=	0
+# Disallow clients sending buggy $Supports command
+#NoQuackSupports	=	0
+# Store registered users passwords as hashes
+#HashPasswords	=	0
+
+#
+# Integer settings
+#
+
+# Maximal users limit. Maximum 32767
+#MaxUsers	=	500
+# Minimal share limit. Maximum 9999
+#MinShareLimit	=	0
+# Minimal share units. 0 = B, 1 = kB, 2 = MB, 3 = GB, 4 = TB
+#MinShareUnits	=	0
+# Maximal share limit. Maximum 9999
+#MaxShareLimit	=	0
+# Maximal share units. 0 = B, 1 = kB, 2 = MB, 3 = GB, 4 = TB
+#MaxShareUnits	=	0
+# Minimal slots limit
+#MinSlotsLimit	=	0
+# Maximal slots limit. Maximum 999
+#MaxSlotsLimit	=	0
+# Hubs for hub/slot ratio. Maximum 999
+#HubSlotRatioHubs	=	0
+# Slots for hub/slot ratio. Maximum 999
+#HubSlotRatioSlots	=	0
+# Maximal hubs limit. Maximum 999
+#MaxHubsLimit	=	0
+# No client tag option. 0 = accept, 1 = reject, 2 = redirect
+#NoTagOption	=	0
+# Send original MyINFO to... 0 = to all users, 1 = to allowed profiles, 2 = don't send
+#FullMyINFOOption	=	1
+# Maximal chat length limit. Maximum 32767
+#MaxChatLen	=	300
+# Maximal chat lines limit. Maximum 999
+#MaxChatLines	=	5
+# Maximal private message length limit. Maximum 32767
+#MaxPmLen	=	512
+# Maximal private message lines limit. Maximum 999
+#MaxPmLines	=	25
+# Default temporary ban time. Must be higher than 0! Maximum 32767
+#DefaultTempBanTime	=	20
+# Maximal passive search replys limit. Maximum 32767
+#MaxPassiveSr	=	100
+# Time before new MyINFO from user is accepted for broadcast. Maximum 999
+#MyINFODelay	=	30
+# Main chat deflood messages count. Must be higher than 0! Maximum 999
+#MainChatMessages	=	20
+# Main chat deflood time. Must be higher than 0! Maximum 999
+#MainChatTime	=	20
+# Main chat deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MainChatAction	=	2
+# Same main chat deflood messages count. Must be higher than 1! Maximum 999
+#SameMainChatMessages	=	5
+# Same main chat deflood time. Must be higher than 0! Maximum 999
+#SameMainChatTime	=	60
+# Same main chat deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SameMainChatAction	=	2
+# Same multiline main chat deflood messages count. Must be higher than 1! Maximum 999
+#SameMultiMainChatMessages	=	2
+# Same multiline main chat deflood lines. Minimum 2, maximum 999
+#SameMultiMainChatLines	=	2
+# Same multiline main chat deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SameMultiMainChatAction	=	3
+# Private message deflood messages count. Must be higher than 0! Maximum 999
+#PmMessages	=	10
+# Private message deflood time. Must be higher than 0! Maximum 999
+#PmTime	=	10
+# Private message deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#PmAction	=	2
+# Same private message deflood messages count. Must be higher than 1! Maximum 999
+#SamePmMessages	=	5
+# Same private message deflood time. Must be higher than 0! Maximum 999
+#SamePmTime	=	60
+# Same private message deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SamePmAction	=	2
+# Same multiline private message deflood messages count. Must be higher than 1! Maximum 999
+#SameMultiPmMessages	=	2
+# Same multiline private message deflood lines. Minimum 2, maximum 999
+#SameMultiPmLines	=	2
+# Same multiline private message action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SameMultiPmAction	=	3
+# Search deflood messages count. Must be higher than 0! Maximum 999
+#SearchMessages	=	2
+# Search deflood time. Must be higher than 0! Maximum 999
+#SearchTime	=	10
+# Search deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SearchAction	=	1
+# Same search deflood messages count. Must be higher than 1! Maximum 999
+SameSearchMessages	=	0
+# Same search deflood time. Must be higher than 0! Maximum 999
+#SameSearchTime	=	60
+# Same search deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SameSearchAction	=	1
+# MyINFO deflood messages count. Must be higher than 0! Maximum 999
+#MyINFOMessages	=	6
+# MyINFO deflood time. Must be higher than 0! Maximum 999
+#MyINFOTime	=	60
+# MyINFO deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MyINFOAction	=	2
+# GetNickList deflood messages count. Must be higher than 0! Maximum 999
+#GetNickListMessages	=	1
+# GetNickList deflood time. Must be higher than 0! Maximum 999
+#GetNickListTime	=	120
+# GetNickList deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#GetNickListAction	=	3
+# New connections to hub deflood connections count. Must be higher than 0! Maximum 999
+#NewConnectionsCount	=	10
+# New connection to hub deflood time. Must be higher than 0! Maximum 999
+#NewConnectionsTime	=	60
+# Deflood warnings count. ust be higher than 0! Maximum 999
+#DefloodWarningCount	=	6
+# Deflood warnings action. 0 = disconnect user, 1 = kick user, 2 = temporary ban user, 3 = permanently ban user
+#DefloodWarningAction	=	2
+# Deflood tempban time. Must be higher than 0!
+#DefloodTempBanTime	=	240
+# Global main chat messages count. Must be higher than 0! Maximum 999
+#GlobalMainChatMessages	=	20
+# Global main chat time. Must be higher than 0! Maximum 999
+#GlobalMainChatTime	=	10
+# Global main chat time for lock chat or send to Operators with IP action is taken . Must be higher than 0! Maximum 999
+#GlobalMainChatTimeOut	=	10
+# Global main chat action. 0 = deflood disabled, 1 = lock chat, 2 = send to Operators with IP address
+#GlobalMainChatAction	=	2
+# Minimal search length
+#MinSearchLen	=	1
+# Maximal search length. Maximum 999
+#MaxSearchLen	=	96
+# Minimal nick length. Maximum 64
+#MinNickLen	=	2
+# Max nick length. Maximum 64
+#MaxNickLen	=	64
+# Brute force password protection ban type. 0 = disabled, 1 = permanent ban, 2 = temporary ban
+#BruteForcePassProtectBanType	=	1
+# Brute force password protection temporary ban time. Must be higher than 0!
+#BruteForcePassProtectTempBanTime	=	24
+# Maximal private messages count to same user per minute. Maximum 999
+#MaxPmCountToUser	=	100
+# Maximal simultaneous user logins. Must be higher than 0! Maximum 999
+#MaxSimultaneousLogins	=	25
+# Secondary main chat deflood messages count. Must be higher than 0! Maximum 999
+#MainChatMessages2	=	120
+# Secondary main chat deflood time. Must be higher than 0! Maximum 999
+#MainChatTime2	=	600
+# Secondary main chat deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MainChatAction2	=	3
+# Secondary private message deflood messages count. Must be higher than 0! Maximum 999
+#PmMessages2	=	60
+# Secondary private message deflood time. Must be higher than 0! Maximum 999
+#PmTime2	=	300
+# Secondary private message deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#PmAction2	=	3
+# Secondary search deflood messages count. Must be higher than 0! Maximum 999
+#SearchMessages2	=	31
+# Secondary search deflood time. Must be higher than 0! Maximum 999
+#SearchTime2	=	300
+# Secondary search deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SearchAction2	=	3
+# Secondary MyINFO deflood messages count. Must be higher than 0! Maximum 999
+#MyINFOMessages2	=	30
+# Secondary MyINFO deflood time. Must be higher than 0! Maximum 999
+#MyINFOTime2	=	900
+# Secondary MyINFO deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MyINFOAction2	=	3
+# Maximal MyINFO length. Minimum 64, maximum 512
+#MaxMyINFOLen	=	256
+# ConnectToMe deflood count. Must be higher than 0! Maximum 9999
+#CTMMessages	=	500
+# ConnectToMe deflood time. Must be higher than 0! Maximum 9999
+#CTMTime	=	60
+# ConnectToMe deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#CTMAction	=	1
+# Secondary ConnectToMe deflood count. Must be higher than 0! Maximum 9999
+#CTMMessages2	=	5000
+# Secondary ConnectToMe deflood time. Must be higher than 0! Maximum 9999
+#CTMTime2	=	600
+# Secondary ConnectToMe deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#CTMAction2	=	0
+# RevConnectToMe deflood count. Must be higher than 0! Maximum 9999
+#RCTMMessages	=	250
+# RevConnectToMe deflood time. Must be higher than 0! Maximum 9999
+#RCTMTime	=	60
+# RevConnectToMe deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#RCTMAction	=	1
+# Secondary RevConnectToMe deflood count. Must be higher than 0! Maximum 9999
+#RCTMMessages2	=	2500
+# Secondary RevConnectToMe deflood time. Must be higher than 0! Maximum 9999
+#RCTMTime2	=	600
+# Secondary RevConnectToMe deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#RCTMAction2	=	3
+# Maximal ConnectToMe length. Must be higher than 0! Maximum 512
+#MaxCTMLen	=	128
+# Maximal RevConnectToMe length. Must be higher than 0! Maximum 512
+#MaxRCTMLen	=	160
+# SR deflood count. Must be higher than 0! Maximum 32767
+#SRMessages	=	1000
+# SR deflood time. Must be higher than 0! Maximum 9999
+#SRTime	=	60
+# SR deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SRAction	=	1
+# Secondary SR deflood count. Must be higher than 0! Maximum 32767
+#SRMessages2	=	10000
+# Secondary SR deflood time. Must be higher than 0! Maximum 9999
+#SRTime2	=	600
+# Secondary SR deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#SRAction2	=	0
+# Maximal SR length. Must be higher than 0! Maximum 8192
+#MaxSRLen	=	1024
+# Maximal received data deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MaxDownAction	=	4
+# Maximal received data deflood kB. Must be higher than 0! Maximum 9999
+#MaxDownKb	=	128
+# Maximal received data deflood time. Must be higher than 0! Maximum 9999
+#MaxDownTime	=	60
+# Secondary maximal received data deflood action. 0 = deflood disabled, 1 = ignore message, 2 = warn user, 3 = disconnect user, 4 = kick user, 5 = temporary ban user, 6 = permanently ban user
+#MaxDownAction2	=	5
+# Secondary maximal received data deflood kB. Must be higher than 0! Maximum 9999
+#MaxDownKb2	=	256
+# Secondary maximal received data deflood time. Must be higher than 0! Maximum 9999
+#MaxDownTime2	=	300
+# Chat messages interval messages. Must be higher than 0! Maximum 999
+#ChatIntervalMessages	=	5
+# Chat messages interval time. Must be higher than 0! Maximum 999
+#ChatIntervalTime	=	10
+# Private messages interval messages. Must be higher than 0! Maximum 999
+#PMIntervalMessages	=	5
+# Private messages interval time. Must be higher than 0! Maximum 999
+#PMIntervalTime	=	10
+# Search interval count. Must be higher than 0! Maximum 999
+#SearchIntervalMessages	=	5
+# Search interval time. Must be higher than 0! Maximum 999
+#SearchIntervalTime	=	60
+# Maxial connections from same IP address. Must be higher than 0! Maximum 256
+#MaxConnSameIP	=	5
+# Minimum reconnect time in seconds. Must be higher than 0! Maximum 256
+#MinReConnTime	=	10
+#MaxUsersPeak	=	0
+
+#
+# String settings
+#
+
+# Hub name. Minimal length 1, maximal length 256. $ and | is not allowed
+#HubName	=	<Enter hub name here>
+# Admin nick. Minimal length 1. Maximal length 64. $, | and space is not allowed
+#AdminNick	=	Admin
+# Hub address. Minimal length 1. Maximal length 256. $ and | is not allowed
+#HubAddress	=	<Enter hub address here>
+# TCP ports. Minimal length 1. Maximal length 64
+TCPPorts	=	1209;1411
+# UDP port. Minimal length 1. Maximal length 5
+#UDPPort	=	0
+# Hub description. Maximal length 256. $ and | is not allowed
+#HubDescription	=	
+# Main redirect address. Maximal length 256. | is not allowed
+#RedirectAddress	=	PtokaX-Alpha.CzDC.org:6891
+# Hublist register servers. Maximal length 1024
+#RegisterServers	=	reg.hublist.org;serv.hubs-list.com;hublist.cz;hublist.dreamland-net.eu;allhublista.myip.hu;publichublist-nl.no-ip.org;reg.hublist.dk;hublist.te-home.net;dc.gwhublist.com
+# Registered users only message. Minimal length 1. Maximal length 256. | is not allowed
+#RegOnlyMessage	=	Sorry, this hub is only for registered users.
+# Registered users only redirect address. Maximal length 256. | is not allowed
+#RegOnlyRedirAddress	=	
+# Hub topic. Maximal length 256. $ and | is not allowed
+#HubTopic	=	
+# Share limit message. Use %[min] for minimal share size and %[max] for maximal share size. Minimal length 1. Maximal length 256. | is not allowed
+#ShareLimitMessage	=	Your share is outside the limits. Min share is %[min], max share is %[max].
+# Share limit redirect address. Maximal length 256. | is not allowed
+#ShareLimitRedirAddress	=	
+# Slot limit message. Use %[min] for minimal slots and %[max] for maximal slots. Minimal length 1. Maximal length 256. | is not allowed
+#SlotsLimitMessage	=	Your slots count is outside the limits. Min slots limit is %[min], max slots limit is %[max].
+# Slot limit redirect address. Maximal length 256. | is not allowed
+#SlotsLimitRedirAddress	=	
+# Hub/slot ratio limit message. Use %[hubs] for hubs and %[slots] for slots. Minimal length 1. Maximal length 256. | is not allowed
+#HubSlotRatioMessage	=	Your hubs/slots ratio outside the limit. Maximum allowed ratio is %[hubs]/%[slots].
+# Hub/slot ratio limit redirect address. Maximal length 256. | is not allowed
+#HubSlotRatioRedirAddress	=	
+# Max hubs limit message. Use %[hubs] for maximal hubs. Minimal length 1. Maximal length 256. | is not allowed
+#MaxHubsLimitMessage	=	Your hubs count is higher than allowed %[hubs] hubs.
+# Max hubs limit redirect address. Maximal length 256. | is not allowed
+#MaxHubsLimitRedirAddress	=	
+# No tag rule message. Minimal length 1. Maximal length 256. | is not allowed
+#NoTagMessage	=	Your client don't send description tag, or your client is not supported here.
+# No tag rule redirect address. Maximal length 256. | is not allowed
+#NoTagRedirAddress	=	
+# Hub bot nick. Minimal length 1. Maximal length 64. $, | and space is not allowed
+#BotNick	=	PtokaX
+# Hub bot description. Maximal length 64. $ and | is not allowed
+#BotDescription	=	
+# Hub bot email. Maximal length 64. $ and | is not allowed
+#BotEmail	=	
+# OpChat bot nick. Minimal length 1. Maximal length 64. $, | and space is not allowed
+#OpChatNick	=	OpChat
+# OpChat bot description. Maximal length 64. $ and | is not allowed
+#OpChatDescription	=	
+# OpChat bot email. Maximal length 64. $ and | is not allowed
+#OpChatEmail	=	
+# Temporary ban redirect address. Maximal length 256. | is not allowed
+#TempBanRedirAddress	=	
+# Perm ban redirect address. Maximal length 256. | is not allowed
+#PermBanRedirAddress	=	
+# Chat commands prefixes. Minimal length 1. Maximal length 5. | and space is not allowed
+#ChatCommandsPrefixes	=	!+-/*
+# Hub owner email. Maximal length 64. $ and | is not allowed
+#HubOwnerEmail	=	
+# Nick limit message. Use %[min] for minimal length and %[max] for maximal length. Minimal length 1. Maximal length 256. | is not allowed
+#NickLimitMessage	=	Your nick length is outside the limit. Allowed min is %[min] and max %[max].
+# Nick limit redirect address. Maximal length 256. | is not allowed
+#NickLimitRedirAddress	=	
+# Additional message to ban message. Maximal length 256. | is not allowed
+#MessageToAddToBanMessage	=	
+# Language
+#Language	=	
+# IP address for TCP/IP version 4. Maximal length 15
+#IPv4Address	=	
+# IP address for TCP/IP version 6. Maximal length 39
+#IPv6Address	=	
+# Character encoding for non-unicode texts
+#Encoding	=	cp1252

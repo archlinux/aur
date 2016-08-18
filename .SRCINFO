@@ -1,7 +1,7 @@
 pkgbase = ptokax
 	pkgdesc = PtokaX Direct Connect Hub is a multi-platform server application for Neo-Modus Direct Connect Peer-To-Peer sharing network.
 	pkgver = 0.5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.PtokaX.org
 	install = install
 	arch = x86_64
@@ -11,13 +11,17 @@ pkgbase = ptokax
 	depends = lua
 	depends = tinyxml
 	depends = zlib
-	optdepends = percona-server
+	optdepends = postgresql-libs
+	optdepends = sqlite
+	optdepends = mariadb
 	source = http://www.PtokaX.org/files/0.5.2.1-nix-src.tgz
 	source = service
 	source = tmpfiles.d
+	source = Settings.pxt
 	md5sums = 3f8364d3d36f6f67652cc14c855004e7
-	md5sums = b2aeae9082972813df7223ea068efb48
+	md5sums = fa9ba9566428af9603297aea1343ced2
 	md5sums = 6a20c3ddfb3c625cca55f7480e609e1e
+	md5sums = 25b7201edc7c31fd6b14a0d61ee0e1cc
 
 pkgname = ptokax
 
