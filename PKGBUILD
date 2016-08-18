@@ -3,7 +3,7 @@
 
 pkgname=papersplease
 pkgver=1.1.65
-pkgrel=6
+pkgrel=7
 pkgdesc="Assume the role of an immigration inspector for the communist state of Arstotzka"
 arch=('i686' 'x86_64')
 url="http://papersplea.se"

@@ -1,7 +1,7 @@
 pkgbase = papersplease
 	pkgdesc = Assume the role of an immigration inspector for the communist state of Arstotzka
 	pkgver = 1.1.65
-	pkgrel = 6
+	pkgrel = 7
 	url = http://papersplea.se
 	arch = i686
 	arch = x86_64
