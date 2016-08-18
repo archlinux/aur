@@ -1,15 +1,15 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.6
-pkgrel=3
+pkgver=7.x_3.7
+pkgrel=1
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=(
-    "$pkgname-provision=$pkgver"
-    "$pkgname-hostmaster=$pkgver"
+    "$pkgname-provision=>$pkgver"
+    "$pkgname-hostmaster=>$pkgver"
     'cron'
     'nginx'
     'php-fpm'
@@ -41,7 +41,7 @@ md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
          'd43026960060bc677549baa26a24c9ee'
          'e1bb28d05fc072f6cf86d18716cf1f97'
          '75535f9870f06c540f513262a9b7b1ab'
-         '496b1fa2533d1306318115e2b02984bd'
+         '0c24b1bcf407429dd874c4979e949d1b'
          'f9ae0c781a7ccefc63329daaf81fca36'
          '0b53c23730e511946859d4e3c7fff982'
          '0dab31966eada66adb159355ed814a54')
