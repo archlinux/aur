@@ -3,7 +3,7 @@
 _basename=gst-libav
 pkgname="lib32-$_basename"
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Gstreamer libav Plugin (32-bit)"
 arch=('x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ makedepends=('python')
 options=(!emptydirs)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
 source=(${url}/src/$_basename/$_basename-$pkgver.tar.xz)
-sha256sums=('44a49108c3531b5ac4f346a2247cd7fbafb0e8ab394394cb6d75a70300b38933')
+sha256sums=('b5f3c7a27b39b5f5c2f0bfd546b0c655020faf6b38d27b64b346c43e5ebf687a')
 
 prepare() {
   cd $_basename-$pkgver
