@@ -1,7 +1,7 @@
 #base on aur/nginx-mainline-libressl
 
 _pkgname="nginx"
-_user="html"
+_user="baka"
 _group="users"
 _doc_root="/usr/share/${_pkgname}/http"
 _sysconf_path="etc"
@@ -18,7 +18,7 @@ _mod3=nginx-ct
 _mod3ver=1.2.0
 
 pkgname=nginx-mainline-mod4679
-pkgver=1.11.0
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="lightweight HTTP server, statically linked against OpenSSL(Cloudflare's patch),with ngx_http_google_filter_module,nginx-ct."
 arch=('i686' 'x86_64')
