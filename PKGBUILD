@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lcms2
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Small-footprint color management engine, version 2 (mingw-w64)"
 arch=(any)
 url="http://www.littlecms.com"
@@ -35,9 +35,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
