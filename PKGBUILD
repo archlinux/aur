@@ -21,11 +21,9 @@ backup=('etc/trytond.conf')
 install="trytond.install"
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         'trytond.conf'
-        'trytond.install'
         'trytond.service')
 md5sums=('36c30a7a76742783fee41b1ef5cd87ef'
          'db21177e78e6983d85feb14436f5a7ba'
-         'bc93f99ec68feea9f3e3e11e2cb2b735'
          'c3318e663c17194d71f6ef4ded16b293')
 
 build() {
