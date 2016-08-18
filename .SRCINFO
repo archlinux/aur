@@ -17,6 +17,7 @@ pkgbase = texstudio-qt4
 	provides = texstudio
 	replaces = texmakerx
 	replaces = texstudio
+	replaces = texstudio-qt4-hg
 	source = hg+http://hg.code.sf.net/p/texstudio/hg
 	sha256sums = SKIP
 
