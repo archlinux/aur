@@ -3,7 +3,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.48.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
@@ -67,12 +67,11 @@ package() {
     make DESTDIR="$pkgdir" install
     make -C "$srcdir/glib-$pkgver/build-${_arch}-static" DESTDIR="$pkgdir/static" install
     mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.def' | xargs rm
+		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
 		rm "$pkgdir/usr/${_arch}/bin/"{glib-{gettextize,mkenums},gdbus-codegen}
 		rm -r "$pkgdir/usr/${_arch}/lib/charset.alias"
 		rm -r "$pkgdir/static"
-		rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
