@@ -2,7 +2,7 @@
 # Contributor: Oscar Pereira <oscar a erroneousthoughts org>
 
 pkgname=kpcli
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Command line browser of KeePassX database files (*.kdb)"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('perl-crypt-pwsafe3: import Password Safe v3 files'
 url='http://sourceforge.net/projects/kpcli/'
 source=("http://downloads.sourceforge.net/project/kpcli/kpcli-$pkgver.pl"
         "http://downloads.sourceforge.net/project/kpcli/README")
-sha256sums=('947b7b0485215f72e14bb8936c847abb583253c597f58234650922270259049c'
+sha256sums=('f1f07704a30d0eae126717d5dae0d24ccced43c316454e4a7b868fe0a239a21a'
             '30e0e44651bf0dcb08a53c974450acae82857b462dab1b02a5911217a6b936a1')
 
 package() {
