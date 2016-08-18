@@ -3,12 +3,12 @@
 
 pkgname=charles
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
 license=('custom' 'custom:bounce' 'APACHE')
-depends=('java-runtime' 'hicolor-icon-theme')
+depends=('java-runtime>=8' 'hicolor-icon-theme')
 source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz)
 install=charles.install
 md5sums=('925074ff46ea3dba4b32871254e8beb1')
