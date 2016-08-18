@@ -1,14 +1,15 @@
 # Maintainer: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
 url="https://www.free-decompiler.com/flash/"
 license=('GPL3')
 depends=('java-runtime=8')
 conflicts=('jpexs-decompiler-git')
-source=(https://www.free-decompiler.com/flash/download/${pkgname}_${pkgver}.zip
+source=(# https://www.free-decompiler.com/flash/download/${pkgname}_${pkgver}.zip
+	https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version${pkgver}/${pkgname}_${pkgver}.zip
         $pkgname
         $pkgname.desktop
         $pkgname.png)
