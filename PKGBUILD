@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=bcfg2-git
-pkgver=1.4.0pre2.r45.ga25d871
-pkgrel=2
+pkgver=1.4.0pre2.r80.g337580f
+pkgrel=1
 pkgdesc="Configuration management tool"
 url="http://bcfg2.org"
 license=('BSD')
@@ -15,6 +15,7 @@ optdepends=(
   'mod_wsgi2: Web interface'
   'python2-django17: Web interface'
   'python2-south: Web interface'
+  'python2-pygments: Web interface diff highlighting'
   'sqlite: Web interface sqlite backend'
   'python2-pysqlite: Web interface sqlite backend'
   'mariadb: Web interface mariadb backend'
