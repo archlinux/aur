@@ -10,8 +10,7 @@ url='https://www.metasploit.com/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'git')
-optdepends=('java-runtime: msfgui support'
-            'ruby-pg: database support')
+optdepends=('ruby-pg: database support')
 options=('!strip' '!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rapid7/metasploit-framework/archive/${pkgver}.tar.gz)
 sha512sums=('e120c95968bf9eaa45f9bd053bd9cfd049b60c2b0e1f137b5e1769155c9895f135da531643cdd0493be8eba06b7a4d5c6d67592624ff3a1f19ae329622e9ea3f')
@@ -40,8 +39,8 @@ package() {
     chmod 755 ${_msffile}
   done
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm 644 external/zsh/_* -t "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 LICENSE COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/usr/share/doc"
   mv "${pkgdir}/opt/${pkgname}/documentation" "${pkgdir}/usr/share/doc/${pkgname}"
   rm "${pkgdir}/usr/bin/msfupdate"
