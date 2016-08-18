@@ -5,14 +5,14 @@
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=solarus
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An open-source Zelda-like 2D game engine used by the games zsxd and zsdx."
 arch=('i686' 'x86_64')
 url="http://www.solarus-engine.org/"
 license=('GPL')
 groups=()
-depends=('luajit' 'sdl2_image' 'sdl2_ttf' 'physfs' 'openal' 'libvorbis' 'libmodplug')
+depends=('luajit' 'sdl2_image' 'sdl2_ttf' 'physfs' 'openal' 'libvorbis' 'libmodplug' 'qt5-tools' 'qt5-base')
 makedepends=('cmake' 'zip')
 checkdepends=()
 optdepends=('zsxd' 'zsdx' 'zelda-roth-se')
