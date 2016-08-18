@@ -3,12 +3,11 @@
 WORK=25
 PAUSE=5
 INTERACTIVE=true
-CLEARLINE="\r"
 MUTE=false
 
 show_help() {
 	cat <<-END
-		usage: potato [-i] [-m] [-w m] [-b m] [-h]
+		usage: potato [-s] [-m] [-w m] [-b m] [-h]
 		    -s: simple output. Intended for use in scripts
 		        When enabled, potato outputs one line for each minute, and doesn't print the bell character
 		        (ascii 007)
@@ -24,7 +23,6 @@ while getopts :sw:b:m opt; do
 	case "$opt" in
 	s)
 		INTERACTIVE=false
-		CLEARLINE=""
 	;;
 	m)
 		MUTE=true
@@ -42,11 +40,11 @@ while getopts :sw:b:m opt; do
 	esac
 done
 
-time_left="%im left of %s"
+time_left="%im left of %s "
 
 if $INTERACTIVE; then
 	time_left="\r$time_left"
-else 
+else
 	time_left="$time_left\n"
 fi
 
