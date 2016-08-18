@@ -3,7 +3,7 @@
 
 pkgname=screencloud
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 _pkgrealrel=1
 pkgdesc="Easy to use screenshot sharing application."
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ depends=('qt5-base' 'quazip-qt5' 'pythonqt-qt5' 'python' 'qt5-x11extras')
 optdepends=('python-crypto: required for SFTP support')
 options=('strip' 'docs' 'libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!optipng' '!upx' '!debug')
 install=screencloud.install
+conflicts=('screencloud-git')
 source_x86_64=(${pkgname}-${pkgver}-${_pkgrealrel}-64.pkg.tar.xz::http://download.opensuse.org/repositories/home:/olav-st/Arch_Extra/x86_64/${pkgname}-${pkgver}-${_pkgrealrel}-x86_64.pkg.tar.xz)
 # Skips validation because package updated, but version not changed. See the comments.
 sha256sums_x86_64=('SKIP')
