@@ -1,0 +1,14 @@
+pkgbase = ascd
+	pkgdesc = A CD play that can be docked with Afterstep and Window Maker
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = http://www.dockapps.net/ascd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.dockapps.net/download/ascd-0.13.2+lib-src.tgz
+	md5sums = SKIP
+
+pkgname = ascd
+
