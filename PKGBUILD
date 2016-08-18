@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=2.0.2.55.g825bc98
+pkgver=2.2.0.g8fdcad0
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
