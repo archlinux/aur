@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.7
-##_stable=4.7
-_patchver=4.7.1
+_stable=4.7.1
+_patchver=4.7.2
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-##        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz"
-##        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign"
         
@@ -29,10 +29,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '0ee74598be260186a21cde7943759dbcfdeb40ad6a42544482484a2c6b9b5a71'
+            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
             'SKIP'
-            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
-            '3b41dde76dd69ec6e088bd19e724f3eabd30eaf43727a1948c6603242dc08cd8'
+            '718328688cc728cf04cd6ee1b304d9aa0e99e269a09f5892cbd03074e38bd80a'
+            'SKIP'
+            '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
+            '7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -46,7 +48,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  ##patch -p1 -i "${srcdir}/patch-${_stable}"
+  patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
