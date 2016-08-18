@@ -7,7 +7,7 @@
 # Contributor: Joshua Ellis <josh@jpellis.me>
 
 pkgname=mathematica
-pkgver=10.4.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('proprietary')
 depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
 optdepends=('mesa-demos: glxinfo for "fully optimized graphics capabilities"') # without glxinfo, Mathematica outputs a warning to the terminal on startup
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('ea1f13a88279e6fc2ed1edc80e7a1612')
+md5sums=('7addaeaeea255d8eaf1cd45be2924361')
 install='mathematica.install'
 options=('!strip')
 
@@ -65,11 +65,11 @@ package() {
 
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
 
-    desktopFile='wolfram-mathematica.desktop'
+    desktopFile='wolfram-mathematica11.desktop'
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
     sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
-    echo -e '\t\tCategories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/$desktopFile
+    echo -e 'Categories=Science;Math;NumericalAnalysis;DataVisualization;' >> ${pkgdir}/usr/share/applications/$desktopFile
     
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
@@ -78,17 +78,16 @@ package() {
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     cd ${pkgdir}/opt/Mathematica/SystemFiles/FrontEnd/SystemResources/X
     for i in "32" "64" "128"; do
-        cp App.Mathematica.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematica.png
-        cp App.Player.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematicaplayer.png
+        cp App.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematica.png
         cp vnd.wolfram.cdf.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-vnd.wolfram.cdf.png
 
         cp vnd.wolfram.nb.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-mathematica.png
         cp vnd.wolfram.player.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-mathematicaplayer.png
         cp vnd.wolfram.cdf.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-vnd.wolfram.cdf.png
 
-        cp vnd.wolfram.nb.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-mathematica.png
-        cp vnd.wolfram.player.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-mathematicaplayer.png
-        cp vnd.wolfram.cdf.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-vnd.wolfram.cdf.png
+        #cp vnd.wolfram.nb.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-mathematica.png
+        #cp vnd.wolfram.player.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-mathematicaplayer.png
+        #cp vnd.wolfram.cdf.${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/gnome-mime-application-vnd.wolfram.cdf.png
     done
 
     echo "Copying manpages..."
