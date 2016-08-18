@@ -1,7 +1,8 @@
-# New maintainer: mxtm <max@mxtm.me>
+# New maintainer: alicewww <aliceweigt@gmail.com>
 # Many, many thanks to former maintainer and author of original PKGBUILD, ronnie
+#and many thanks to the previous maintainer mxtm
 pkgname=mullvad
-pkgver=58
+pkgver=60
 pkgrel=1
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
@@ -10,7 +11,7 @@ license=('unknown')
 depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'obfsproxy' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
 makedepends=()
 conflicts=()
-replaces=()
+replaces=(mullvad-new)
 backup=()
 install=
 
@@ -18,8 +19,8 @@ source=('https://mullvad.net/static/download/mullvad-'${pkgver}'.tar.gz'
 		'update-resolv-conf'
 )
 
-sha256sums=('f96a13c19766930d8be049b7d5c1b87ae1248699d4380dcd41be6705b172f5f1'
-			'6597e59d556efa3fcec73e8b0ea1c8fbee927cef9a283dadfe0f11149e34ede2'
+sha256sums=('978d24b288c1e6e770651a8e63a4d8f686c6f327da952b7021dbe87967ed317c'
+			'7227dfd75d03ba90c1e45cda41e5ba5a938729b622ced4a708932b22c189efa1'
 )
 
 prepare() {
