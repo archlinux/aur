@@ -2,9 +2,9 @@
 
 pkgname=kulic
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="2d shooting game"
-url=('http://hippo.nipax.cz/download.cz.php?id=59')
+url='http://hippo.nipax.cz/download.cz.php?id=59'
 arch=('i686' 'x86_64')
 license=('GPL-2')
 depends=('allegro4' 'libjpeg')
