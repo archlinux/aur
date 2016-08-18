@@ -25,24 +25,27 @@ fi
 conflicts=('marionnet')
 source=("http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12.1.tar.gz"
         'http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz'
-        'http://bazaar.launchpad.net/~marionnet-drivers/ocamlbricks/trunk/tarball/433'
-        'http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/tarball/475'
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/Makefile-trunk.patch"
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/marionnet_from_scratch-Downloader"
 )
 sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
-            'b11d154a18eebfba9d89f786fd73ad866625839c5ae89f18b92641df6f13fabb'
-            '6d90e02daf619f5df90515f88a12d9e0f2ec58e2378e58812beef02957118e41'
             'efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691'
             'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-trunk.install
 
 prepare () {
+    # Not in sources, because tar file 433 and 475 (gzip format) have not always same sha256.
+    # Probably, they compressed by launchpad for every download.
+    wget 'http://bazaar.launchpad.net/~marionnet-drivers/ocamlbricks/trunk/tarball/433'
+    wget 'http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/tarball/475'
     tar -xvzf 433
     tar -xvzf 475
     mv '~marionnet-drivers/ocamlbricks/trunk' ocamlbricks
-    mv '~marionnet-drivers/marionnet' marionnet
+    mv '~marionnet-drivers/marionnet/trunk' marionnet
+    rmdir '~marionnet-drivers/ocamlbricks'
+    rmdir '~marionnet-drivers/marionnet'
+    rmdir '~marionnet-drivers'
 }
 
 # ################
