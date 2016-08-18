@@ -6,17 +6,18 @@
 pkgbase=nvidia-pae
 pkgname=(nvidia-pae nvidia-pae-dkms)
 pkgver=367.35
-_extramodules=extramodules-4.6-pae
+_extramodules=extramodules-4.7-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.6' 'linux-pae-headers<4.7')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.7' 'linux-pae-headers<4.8')
 license=('custom')
 options=('!strip')
 # See nvidia-utils
-source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-md5sums=('42db6f6485c3c337c7c756380ec64b7a')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run" 0001-linux-4.7-i686.patch)
+md5sums=('42db6f6485c3c337c7c756380ec64b7a'
+         '0ceb49f5c537ae60743fdf7177eb996e')
 
 _pkg="NVIDIA-Linux-x86-${pkgver}"
 
@@ -24,6 +25,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
+    patch -Np1 -d kernel < ../0001-linux-4.7-i686.patch
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
@@ -48,7 +50,7 @@ build() {
 
 package_nvidia-pae() {
     pkgdesc="NVIDIA drivers for linux"
-    depends=('linux-pae>=4.6' 'linux-pae<4.7' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-pae>=4.7' 'linux-pae<4.8' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
@@ -57,11 +59,6 @@ package_nvidia-pae() {
          "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-drm.ko" \
          "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-drm.ko"
-
-    if [[ "$CARCH" = "x86_64" ]]; then
-        install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
-            "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
-    fi
 
     gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
