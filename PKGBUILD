@@ -4,7 +4,7 @@
 
 pkgname=bash-git-prompt-git
 _pkgname=bash-git-prompt
-pkgver=2.3.5.r406.2d9ec22
+pkgver=2.5.1.r484.33c19b2
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish (git version)"
 arch=('any')
@@ -31,21 +31,30 @@ pkgver() {
 package() {
   cd ${srcdir}/${_pkgname}
 
-  install -Dm644 gitprompt.fish ${pkgdir}/usr/lib/bash-git-prompt/gitprompt.fish
+  install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -Dm644 README.md ${pkgdir}/usr/lib/bash-git-prompt/README.md
   install -Dm755 git-prompt-help.sh ${pkgdir}/usr/lib/bash-git-prompt/git-prompt-help.sh
+  install -Dm644 gitprompt.fish ${pkgdir}/usr/lib/bash-git-prompt/gitprompt.fish
   install -Dm755 gitprompt.sh ${pkgdir}/usr/lib/bash-git-prompt/gitprompt.sh
   install -Dm755 gitstatus.sh ${pkgdir}/usr/lib/bash-git-prompt/gitstatus.sh
-  install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
   install -Dm644 prompt-colors.sh ${pkgdir}/usr/lib/bash-git-prompt/prompt-colors.sh
-  install -Dm644 README.md ${pkgdir}/usr/lib/bash-git-prompt/README.md
 
   cd themes
-  install -Dm644 Custom.bgptemplate ${pkgdir}/usr/lib/${_pkgname}/themes/Custom.bgptemplate
-  install -Dm644 Default.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default.bgptheme
-  install -Dm644 ${srcdir}/Default_Arch.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default_Arch.bgptheme
-  install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Default_NoExitState.bgptheme
-  install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Single_line.bgptheme
-  install -Dm644 Single_line_openSUSE.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Single_line_openSUSE.bgptheme
-  install -Dm644 Solarized.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Solarized.bgptheme
-  install -Dm644 Solarized_NoExitState.bgptheme ${pkgdir}/usr/lib/${_pkgname}/themes/Solarized_NoExitState.bgptheme
+  install -Dm644 Chmike.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Chmike.bgptheme
+  install -Dm644 Crunch.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Crunch.bgptheme
+  install -Dm644 Custom.bgptemplate ${pkgdir}/usr/lib/${pkgname}/themes/Custom.bgptemplate
+  install -Dm644 Default.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default.bgptheme
+  install -Dm644 ${srcdir}/Default_Arch.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_Arch.bgptheme
+  install -Dm644 Default_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Default_NoExitState.bgptheme
+  install -Dm644 Evermeet.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet.bgptheme
+  install -Dm644 Evermeet_Lowres.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Evermeet_Lowres.bgptheme
+  install -Dm644 Single_line.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line.bgptheme
+  install -Dm644 Single_line_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_NoExitState.bgptheme
+  install -Dm644 Single_line_Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Single_line_Solarized.bgptheme
+  install -Dm644 Solarized.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized.bgptheme
+  install -Dm644 Solarized_Extravagant.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_Extravagant.bgptheme
+  install -Dm644 Solarized_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_NoExitState.bgptheme
+  install -Dm644 Solarized_UserHost.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/Solarized_UserHost.bgptheme
+  install -Dm644 TruncatedPwd_WindowTitle.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/TruncatedPwd_WindowTitle.bgptheme
+  install -Dm644 TruncatedPwd_WindowTitle_NoExitState.bgptheme ${pkgdir}/usr/lib/${pkgname}/themes/TruncatedPwd_WindowTitle_NoExtraState.bgptheme
 }
