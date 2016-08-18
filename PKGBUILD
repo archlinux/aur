@@ -2,7 +2,7 @@
 
 pkgname=adapta-gtk-theme-deb
 _gtk_version='3.21.4'
-_git_version='git20160726'
+_git_version='git20160816'
 _git_patch_release=''
 _package_version="${_gtk_version}+${_git_version}${_git_patch_release}-0"
 pkgver="${_gtk_version}.${_git_version}"
@@ -17,7 +17,7 @@ conflicts=('adapta-gtk-theme')
 makedepends=()
 optdepends=()
 source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb")
-md5sums=('e5f8dab8cf3d41fd8b86be0dc95a3b4d')
+md5sums=('4dc12cbe7b2d1e4cfce62e8ecbdde430')
 
 package() {
     bsdtar -Oxf $srcdir/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb --include data.tar.xz  | tar -C $pkgdir -Jxf -
