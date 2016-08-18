@@ -1,13 +1,14 @@
 pkgname=mingw-w64-hunspell
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Spell checker and morphological analyzer library (mingw-w64)"
 arch=(any)
 url="http://hunspell.github.io/"
 license=("GPL" "LGPL" "MPL")
-makedepends=(mingw-w64-configure)
+makedepends=(mingw-w64-configure mingw-w64-readline)
 depends=(mingw-w64-gettext)
-options=(!strip !buildflags staticlibs !debug)
+optdepends=(mingw-w64-readline)
+options=(!strip !buildflags staticlibs !debug !emptydirs)
 source=("https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz"
 "hunspell-1.3.2-canonicalhost.patch")
 md5sums=('423cff69e68c87ac11e4aa8462951954'
@@ -28,8 +29,7 @@ build() {
     ${_arch}-configure \
       --disable-rpath \
       --enable-threads=win32 \
-      --without-ui \
-      --without-readline
+      --without-ui
 		# temporarily copy hunvisapi.h to work around build process
 		# where the file is not spotted.
 		cp ${srcdir}/hunspell-${pkgver}/build-${_arch}/src/hunspell/hunvisapi.h \
@@ -43,12 +43,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/hunspell-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     ln -s "/usr/${_arch}/lib/libhunspell-${pkgver%.*}.a" "$pkgdir/usr/${_arch}/lib/libhunspell.a"
     ln -s "/usr/${_arch}/lib/libhunspell-${pkgver%.*}.dll.a" "$pkgdir/usr/${_arch}/lib/libhunspell.dll.a"
-    rm -r "$pkgdir/usr/${_arch}/share"
-    rm "$pkgdir/usr/${_arch}/bin/"{affixcompress,ispellaff2myspell,makealias,wordforms,wordlist2hunspell}
   done
 }
