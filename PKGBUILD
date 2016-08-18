@@ -47,8 +47,7 @@ build() {
   cd vapoursynth
   ./configure \
     --prefix=/usr \
-    --enable-imwri \
-    --disable-static
+    --enable-imwri
   make
   make -C doc html man
 }
