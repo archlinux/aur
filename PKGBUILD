@@ -4,7 +4,7 @@
 _realname=icu
 pkgname=mingw-w64-${_realname}
 pkgver=57.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="International Components for Unicode library (mingw-w64)"
 url="http://www.icu-project.org/"
@@ -70,7 +70,6 @@ build() {
       --with-data-packaging=library \
       --disable-rpath \
       --enable-release \
-      --disable-tools \
       --disable-tests \
       --disable-samples
     make -j1
@@ -84,10 +83,9 @@ package() {
     cd "$srcdir/icu/source/build-${_arch}"
     make install DESTDIR="$pkgdir"
     mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
     ln -s "/usr/${_arch}/bin/icu-config" "$pkgdir/usr/bin/${_arch}-icu-config"
   done
 }
