@@ -1,7 +1,7 @@
 pkgname=mingw-w64-aspell
 pkgver=0.60.6.1
 _pkgmajorver=0.60
-pkgrel=2
+pkgrel=3
 pkgdesc="A spell checker designed to eventually replace Ispell (mingw-w64)"
 arch=(any)
 url="http://aspell.net/"
@@ -72,7 +72,8 @@ package() {
     cd "${srcdir}/build-${_arch}"
     make -j1 DESTDIR="$pkgdir" install
     ln -s "/usr/${_arch}/lib/aspell-$_pkgmajorver" "${pkgdir}/usr/${_arch}/lib/aspell"
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -o -name '*.exe' | xargs ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
