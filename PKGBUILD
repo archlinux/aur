@@ -2,23 +2,25 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('tcl' 'hwloc' 'curl' 'libunwind')
+depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'libxml2' 'geoip')
 makedepends=('flex')
 
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
     trafficserver.tmpfiles
-    trafficserver.service.in.patch)
+    trafficserver.service.in.patch
+    trafficserver.lib_perl_Makefile.in.patch)
 
-md5sums=('b9292920a5b683d506446e373f2dd504'
+md5sums=('481ae0af77f575166bbe6f335e27d250'
          '44b617f732eb1944a916f36cc393ab7b'
-         '74ba08091f580f8984eee8db0f7e4d27')
+         '1a72eaf2dc694a5a60d949c9f3130e80'
+         '257988017b81baa7706de7cf8d897f5b')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
@@ -37,6 +39,7 @@ backup=(
     'etc/trafficserver/storage.config'
     'etc/trafficserver/volume.config'
     'etc/trafficserver/icp.config'
+    'etc/trafficserver/metrics.config'
     'etc/trafficserver/remap.config'
     'etc/trafficserver/ssl_multicert.config'
     'etc/trafficserver/cache.config'
@@ -67,7 +70,6 @@ backup=(
     'etc/trafficserver/body_factory/default/connect#hangup'
     'etc/trafficserver/body_factory/default/request#invalid_content_length'
     'etc/trafficserver/body_factory/default/congestion#retryAfter'
-    'etc/trafficserver/body_factory/default/access#redirect_url'
     'etc/trafficserver/plugin.config'
     'etc/trafficserver/stats.config.xml'
     'etc/trafficserver/log_hosts.config'
@@ -76,6 +78,7 @@ backup=(
 prepare() {
     cd "${srcdir}"/"${pkgname}-${pkgver}"
     patch -Np0 -u -i ../trafficserver.service.in.patch
+    patch -Np0 -u -i ../trafficserver.lib_perl_Makefile.in.patch
 }
 
 build() {
