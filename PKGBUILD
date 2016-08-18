@@ -4,8 +4,8 @@
 
 _pkgname=avidemux
 pkgname=avidemux-2.6
-pkgver=2.6.12
-pkgrel=3
+pkgver=2.6.13
+pkgrel=0
 pkgdesc="A graphical tool to edit video (filter/re-encode/split)"
 arch=(i686 x86_64)
 url=http://fixounet.free.fr/avidemux/
@@ -16,29 +16,13 @@ optdepends=(libvorbis sdl alsa-lib libxv)
 conflicts=('avidemux' 'avidemux-cli' 'avidemux-gtk' 'avidemux-qt' 'avidemux-git')
 provides=($pkgname=$pkgver)
 options=('!makeflags')
-source=('https://dl.dropboxusercontent.com/u/26513012/'$_pkgname'_'$pkgver'.tar.gz'
-        'avidemux-2.6.12-gcc6.patch'
-        'avidemux-2.6.12-narrowing.patch'
-        'avidemux-2.6.12-qt.patch'
-        'avidemux-2.6.12-glibc.patch')
-sha512sums=('ca5a03eae6bb583d20499da68400645cc7b66c27255fc77f18ffe311d3d27eaaf3ca813aff25a54934d76fe5d10d9fb48b2ad30d662377764f3ec1b620d5a824'
-            '9912bc0c7978f7ec673c39389483b15947f36c9de374ed712602809fffc973c11f77873a9029ab1d767ff9d6f83986860debf8b8d38bd790ad0448a38a497cef'
-            'e60915887645a61e5aacabe32a7bf8bd455c136e3f4bbeae42b159a4039ade9bf9e37759db4ff34f184f12a3292671bf8490fbd98d0fbb25acfbf0b5e3079228'
-            '99f44822d6ada63cccd7e799a5c6edf403273e535dd8a6e005909f4286e6d399a26fc45d790ce00f68a5e11fdba6470e13db99468ecbcff71aa6cc96815dbe7c'
-            '188e3e37b30adf4cb6318fc749bade661fec09bc13377a703eed7ded76e4a473404c3781bdf95bf9217861bea9253be8ea5abfa62a9d1c458b8b2e1b4846b299')
-
-prepare() {
-  cd $srcdir/"$_pkgname"_"$pkgver"
-  patch -p1 -i "${srcdir}/avidemux-2.6.12-gcc6.patch"
-  patch -p1 -i "${srcdir}/avidemux-2.6.12-narrowing.patch"
-  patch -p1 -i "${srcdir}/avidemux-2.6.12-qt.patch"
-  patch -p1 -i "${srcdir}/avidemux-2.6.12-glibc.patch"
-}
+source=('https://dl.dropboxusercontent.com/u/26513012/'$_pkgname'_'$pkgver'.tar.gz')
+sha512sums=('2c63b57200c2162e3f2ca8729034a25680e7bffc6dc031bda666b704c529e2b5745b7509a0b89bb28e8c1894ccd82f0b812d5a6336fd054d1d01f93b5125687e')
 
 build() {
     cd $srcdir/"$_pkgname"_"$pkgver"
     sed -i -e 's/-j 2/-j 1/g' bootStrap.bash
-    bash bootStrap.bash   --without-gtk --enable-qt5
+    bash bootStrap.bash   --without-gtk
     sed -i -e 's/avidemux2_gtk/avidemux3_qt5/g' "$_pkgname"2.desktop
     sed -i -e 's/avidemux2/avidemux/g' "$_pkgname"2.desktop
 }
