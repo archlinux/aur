@@ -8,7 +8,7 @@ _features=('filemanager' 'git' 'hugo' 'ipfilter' 'jwt' 'locale' 'mailout' 'minif
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
