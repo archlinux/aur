@@ -127,12 +127,12 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
 	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.3'	
 	'zarafa-sysusers.conf')
-md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP')
+md5sums=('0790d8314fa4aef9788e5020be832535'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         '90eefac8740a8e30a5ccca221c1af426')
 
 prepare() {
   cd ${srcdir}/zcp-${pkgver}
