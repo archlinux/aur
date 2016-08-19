@@ -1,20 +1,20 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('smime')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
-pkgver=1.0
-pkgrel=85
+groups=('zarafa'
+	'kopano'
+	'zarafa-webapp-plugins')
+pkgver=1.0.31
+pkgrel=1
 pkgdesc='Smime plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/fedora-21/x86_64/zarafa-webapp-plugins-smime-1.0-31.1.noarch.rpm"
 	"compress-static")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
-depends=('zarafa-webapp'
-	 'php<7'
-	 'php-fpm<7')
-md5sums=('93b58ed53c43564914a16788c37529e5'
+depends=('zarafa-webapp')
+md5sums=('SKIP'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
