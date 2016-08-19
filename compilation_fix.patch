@@ -1,15 +1,3 @@
-diff --git a/src/bomi/bomi.pro b/src/bomi/bomi.pro
-index 1b4c24e..f39c307 100644
---- a/src/bomi/bomi.pro
-+++ b/src/bomi/bomi.pro
-@@ -1,6 +1,6 @@
- TEMPLATE = app
- CONFIG += link_pkgconfig debug_and_release precompile_header \
--	c++11 object_parallel_to_source
-+	c++14 object_parallel_to_source
- macx:CONFIG -= app_bundle
- 
- QT = core gui network quick widgets sql xml svg
 diff --git a/src/bomi/dialog/encoderdialog.cpp b/src/bomi/dialog/encoderdialog.cpp
 index 970bf7a..19b4962 100644
 --- a/src/bomi/dialog/encoderdialog.cpp
