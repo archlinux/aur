@@ -1,0 +1,19 @@
+--- qtbase-opensource-src-5.6.0/mkspecs/features/qt_module.prf.orig	2016-04-09 13:13:38.374286031 +0200
++++ qtbase-opensource-src-5.6.0/mkspecs/features/qt_module.prf	2016-04-09 13:24:04.292077922 +0200
+@@ -265,6 +265,16 @@
+         pclib_replace.replace = $$QMAKE_PKGCONFIG_LIBDIR
+     pclib_replace.CONFIG = path
+     QMAKE_PKGCONFIG_INSTALL_REPLACE += pclib_replace
++
++    pclib_replace2.CONFIG = path
++    pclib_replace2.match = " /lib"
++    pclib_replace2.replace = "-l"
++    QMAKE_PKGCONFIG_INSTALL_REPLACE += pclib_replace2
++
++    pclib_replace3.CONFIG = path
++    pclib_replace3.match = "\.dll\.a"
++    pclib_replace3.replace = ""
++    QMAKE_PKGCONFIG_INSTALL_REPLACE += pclib_replace3
+ }
+ !lib_bundle:unix {
+     CONFIG += create_libtool

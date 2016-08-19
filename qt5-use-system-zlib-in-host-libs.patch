@@ -1,0 +1,11 @@
+--- src/tools/bootstrap/bootstrap.pro.orig	2016-06-14 17:01:24.972134372 +0200
++++ src/tools/bootstrap/bootstrap.pro	2016-05-25 17:46:17.000000000 +0200
+@@ -132,7 +132,7 @@
+         ../../corelib/io/qstandardpaths_win.cpp
+ }
+ 
+-contains(QT_CONFIG, zlib)|cross_compile {
++contains(QT_CONFIG, zlib) {
+     include(../../3rdparty/zlib.pri)
+ } else {
+     CONFIG += no_core_dep
