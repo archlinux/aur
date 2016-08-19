@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libffi
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable foreign function interface library (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-crt)
@@ -8,10 +8,17 @@ makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 license=(MIT)
 url="http://sourceware.org/libffi"
-source=("ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz")
-sha1sums=('280c265b789e041c02e5c97815793dfc283fb1e6')
+source=("ftp://sourceware.org/pub/libffi/libffi-${pkgver}.tar.gz"
+"fix_return_size.patch")
+sha1sums=('280c265b789e041c02e5c97815793dfc283fb1e6'
+          '812beef0a2dc35a834acbeb2fb4bdc04d7abfda0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/libffi-${pkgver}"
+  patch -p2 -i ../fix_return_size.patch
+}
 
 build() {
   cd "${srcdir}/libffi-${pkgver}"
@@ -30,10 +37,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libffi-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    rm -rf "$pkgdir/usr/${_arch}/share"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
+    rm "$pkgdir/usr/${_arch}/share/info/dir"
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
 
