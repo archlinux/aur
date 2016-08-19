@@ -2,7 +2,7 @@
 
 pkgname=pingormail
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Ping or connect to address. If no result, it send an email"
 arch=('any')
 url="https://github.com/Chipsterjulien/pingormail"
@@ -81,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('955ee2633f63a804e76f24855dc517d24b8e08d11ef0960eb6104c6f74b7cc684a7c7df1147e7c153f7f26a24db07474ae883751c93e5e221ab604800ca384a7')
+sha512sums=('e8def5d1b14f1c2b597975c8bc3e99e5723bb64531fd0c4cefb5a048072e1225a9a725f8e6ae6c6740bc67ea2ef5f61bb9ba5b934c5fbc30199e789f84959fe6')
