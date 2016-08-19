@@ -1,10 +1,11 @@
 pkgbase = gitter
 	pkgdesc = Where developers come to talk
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitter.im
 	install = gitter.install
 	arch = x86_64
+	arch = i686
 	license = unknown
 	makedepends = tar
 	makedepends = binutils
@@ -12,11 +13,16 @@ pkgbase = gitter
 	depends = desktop-file-utils
 	depends = gconf
 	noextract = gitter_3.1.0_amd64.deb
+	noextract = gitter_3.1.0_i386.deb
 	options = !strip
-	source = https://update.gitter.im/linux64/gitter_3.1.0_amd64.deb
-	source = gitter.sh
-	md5sums = dcd92ad435c126c89b28089aec25fe94
-	md5sums = 4ee1a1a85d4fd6fbaf0a16ffefd7d84d
+	source_x86_64 = https://update.gitter.im/linux64/gitter_3.1.0_amd64.deb
+	source_x86_64 = gitter_x86_64.sh
+	sha256sums_x86_64 = dcdba2d424aefe0503a3c4e54f02102a0b336a054e13057cfd78fd7428122f08
+	sha256sums_x86_64 = f791f6685771517b2e7ab03513fc49f625cb9feab4949b607b444e303f31fab5
+	source_i686 = https://update.gitter.im/linux32/gitter_3.1.0_i386.deb
+	source_i686 = gitter_i686.sh
+	sha256sums_i686 = b87a6e2f09dee19ed65e7912dbc956fac096740ccdea36aaa528ca3a30f0e8d5
+	sha256sums_i686 = c29fbff9e3ad766c49407cb29aa5ba7131f4de9f48c71928ffcf8b3bcd2a2cde
 
 pkgname = gitter
 
