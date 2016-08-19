@@ -1,0 +1,15 @@
+pkgbase = rcs-fast-export-git
+	pkgdesc = RCS fast export git master
+	pkgver = r74.c8a2bd6
+	pkgrel = 1
+	url = https://github.com/Oblomov/rcs-fast-export
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = ruby
+	depends = git
+	source = rcs-fast-export-git::git+https://github.com/Oblomov/rcs-fast-export.git
+	md5sums = SKIP
+
+pkgname = rcs-fast-export-git
+
