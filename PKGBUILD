@@ -1,7 +1,7 @@
 # Maintainer: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
-pkgver=3.2.03
+pkgver=3.2.04
 pkgrel=1
 epoch=0
 pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip") 
 noextract=()
-md5sums=('b797d8b4f6b3fbc4c8f1f63c3f6a7cf8')
+md5sums=('1a9358e7730b9e24ca98b4a1f44518c5')
 validpgpkeys=()
 
 prepare() {
@@ -40,14 +40,14 @@ build() {
 package() {
 	# Install the main app
 	install -dm755 "$pkgdir/opt/"
-  	cp -r $pkgname $pkgdir/opt
+  cp -r $pkgname $pkgdir/opt
 	
 	# desktop file
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -Dm644 "$pkgname/logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	# Create a symlink to /usr/bin
-  	install -d "$pkgdir/usr/bin/"
-  	ln -sf /opt/${pkgname}/Cryptocat "$pkgdir/usr/bin/$pkgname"
-  	chmod 755 "${pkgdir}/opt/${pkgname}/Cryptocat"
+  install -d "$pkgdir/usr/bin/"
+  ln -sf /opt/${pkgname}/Cryptocat "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "${pkgdir}/opt/${pkgname}/Cryptocat"
 }
