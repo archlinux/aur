@@ -1,12 +1,14 @@
 pkgbase = razer_blade_14_2016_acpi_dsdt-git
 	pkgdesc = DSDT Fix for the Razer Blade 14 2016
-	pkgver = 3.3c708e8
+	pkgver = 4.52f5864
 	pkgrel = 1
 	url = https://github.com/m4ng0squ4sh/razer_blade_14_2016_acpi_dsdt
 	arch = x86_64
 	arch = i686
 	license = GPLv2
-	makedepends = git cpio iasl
+	makedepends = git
+	makedepends = cpio
+	makedepends = iasl
 	source = git+https://github.com/m4ng0squ4sh/razer_blade_14_2016_acpi_dsdt.git
 	md5sums = SKIP
 
