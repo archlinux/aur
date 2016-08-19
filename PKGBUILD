@@ -16,7 +16,7 @@ backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
 	 'z-push')
-md5sums=('SKIP'
+md5sums=('fb979c4b2ef7779d0175eb73f8f86764'
          'd737d82dfab24adc516c001238a4119f'
          'de837fc5ad2e8f2d70df5037f2a0a107')
 
