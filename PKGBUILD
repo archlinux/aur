@@ -21,4 +21,3 @@ package() {
     # Avoid conflict with the python3 version
     mv "${pkgdir}/usr/bin/tldextract" "${pkgdir}/usr/bin/py2-tldextract"
 }
-
