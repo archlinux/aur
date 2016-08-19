@@ -1,7 +1,7 @@
 # Maintainter: Marc Zuo <zealotzuo@gmail.com>
 pkgname=ibus-grc-beta-code-git
 pkgver=0.1.r0.ga7c1347
-pkgrel=2
+pkgrel=3
 pkgdesc="A m17n keymap file for polytonic Greek using beta code"
 arch=('any')
 url="https://github.com/marczuo/grc-beta-code"
