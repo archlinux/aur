@@ -1,36 +1,38 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('spellchecker')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
-pkgver=1.0
-pkgrel=86
+groups=('zarafa'
+	'kopano'
+	'zarafa-webapp-plugins')
+pkgver=1.0.22.32
+pkgrel=1
 pkgdesc='Spellchecker plugin for Zarafa Webapp'
 arch=('any')
-source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-1.0-21.1.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-de-at-1.0-5.1.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-de-ch-1.0-4.1.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-de-de-1.0-4.1.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-en-1.0-3.2.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-es-1.0-3.1.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-fr-1.0-1.2.noarch.rpm"
-	"https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-spell-nl-1.0-21.3.noarch.rpm"
+source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-1.0.22-32.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-de-at-1.0.6-8.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-de-ch-1.0.6-7.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-de-de-1.0.7-7.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-en-1.0.8-6.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-en-gb-1.0.4-10.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-es-1.0.6-8.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-fr-1.0.8-6.1.noarch.rpm"
+	"https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-spell-nl-1.0.13-31.1.noarch.rpm"
 	"compress-static"
 	"zarafa-webapp-spellchecker.ini")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
-	 'php<7'
-	 'php-fpm<7'
 	 'php-enchant<7')
-md5sums=('c6da926fed446a8b80abe68e7cfcbcba'
-         '0851cee43fb59dafe3795a0380cf37ff'
-         'aa83cf83017d2cacd5725dc966f3a366'
-         '1c224c7e234a211ad3e1d475bdd5954b'
-         '12dd2207f6afc1c353cf4b5add2ffcf5'
-         '7f471b216bca3ae09ea1ad71983f5d23'
-         '68336fdd31147a2727d15b6cf93a6bb8'
-         '3d9fb645869b7a8d2360fd8354c5abaf'
+md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP'	 
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
          'd737d82dfab24adc516c001238a4119f'
          'f93ad13e69cf5bf9be0b53473cc0d196')
 
