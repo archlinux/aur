@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-polish-dictionary
 	pkgdesc = Polish dictionary for WPS Office
 	pkgver = 20160202
-	pkgrel = 1
+	pkgrel = 4
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
