@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon-git
-pkgver=20160725
+pkgver=20160819
 pkgrel=1
 pkgdesc="A secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -26,21 +26,21 @@ build() {
 
   msg2 'Building...'
   autoreconf --force --install --verbose
-  LIBS="-lz" ./configure \
+  ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/bin \
     --sysconfdir=/etc \
     --with-contrib="no" \
     --enable-ipv6
-  make
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make
 }
 
 package() {
   cd "${pkgname%-git}"
 
   msg2 'Installing...'
-  make DESTDIR="$pkgdir" install
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make DESTDIR="$pkgdir" install
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
