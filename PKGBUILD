@@ -24,15 +24,15 @@ backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
 	 'php-enchant<7')
-md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP'	 
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
+md5sums=('da7eca3e1330fefd22c1882bd50de393'
+         '24878f219d479c157fa02af040c625ab'
+         '3a5bba08cf90b784530fa6f8c5331e3c'
+         'fb788feda67a9655c55700af94b8f54f'
+         '5d8c02122e3402aed5e613d60b2c9699'
+         '1c31c9e76d6c3431fc94f61730b01d13'
+         '29df0def35519bf181a6c9c3586a91a6'
+         'add63e3baf4803cb80177defb7187fcb'
+         'b47bff874d2642651204dae035a2a218'
          'd737d82dfab24adc516c001238a4119f'
          'f93ad13e69cf5bf9be0b53473cc0d196')
 
