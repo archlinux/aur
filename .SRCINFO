@@ -1,0 +1,16 @@
+pkgbase = moefmcmd
+	pkgdesc = moe.fm bash script client
+	pkgver = 20160819
+	pkgrel = 1
+	url = https://github.com/mike2718/moefmcmd.git
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = mpg123
+	depends = curl
+	depends = jq
+	source = moefmcmd::git+https://github.com/mike2718/moefmcmd.git
+	md5sums = SKIP
+
+pkgname = moefmcmd
+
