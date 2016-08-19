@@ -28,12 +28,12 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201607
-_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
+_mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.17.2313.102
+pkgver=2.18.2548.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
@@ -61,7 +61,7 @@ fi
 
 
 pkgver() {
-  . "${srcdir}/${pkgbase}/src/mozc_version_template.txt"
+  . "${srcdir}/${pkgbase}/src/data/version/mozc_version_template.txt"
   printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
 }
 
