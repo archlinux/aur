@@ -1,0 +1,21 @@
+pkgbase = sslsniff
+	pkgdesc = A tool for automated MITM attacks on SSL connections
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.thoughtcrime.org/software/sslsniff/
+	arch = any
+	license = GPL3
+	depends = log4cpp
+	depends = asio
+	depends = boost
+	depends = boost-libs
+	depends = openssl
+	provides = sslsniff
+	conflicts = sslsniff
+	source = git://github.com/moxie0/sslsniff.git
+	source = fix_asio.patch
+	sha512sums = SKIP
+	sha512sums = 580280a8b4110bd194f84a817060da5281c33783e2925583617cfa7847fd276457f6a3ebd5a918f5a0682d3f9e362f0c801cb9f1b73f850e3b52e98b66e1f2ed
+
+pkgname = sslsniff
+

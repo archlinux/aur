@@ -1,0 +1,113 @@
+diff --git a/Makefile.am b/Makefile.am
+index 27b2ce5..a32c17f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,6 +4,6 @@ bin_PROGRAMS = sslsniff
+ 
+ sslsniff_SOURCES = Bridge.hpp SSLConnectionManager.cpp FingerprintManager.hpp FirefoxAddonUpdater.hpp FirefoxUpdater.hpp HTTPSBridge.hpp Logger.hpp RawBridge.hpp SessionCache.hpp SSLBridge.hpp SSLConnectionManager.hpp sslsniff.hpp UpdateManager.hpp certificate/AuthorityCertificateManager.hpp certificate/Certificate.hpp certificate/CertificateManager.hpp certificate/TargetedCertificateManager.hpp http/HttpBridge.hpp http/HttpConnectionManager.hpp http/HttpHeaders.hpp http/OCSPDenier.hpp util/Destination.cpp util/Destination.hpp util/Util.hpp FirefoxUpdater.cpp Logger.cpp SessionCache.cpp SSLBridge.cpp HTTPSBridge.cpp sslsniff.cpp FingerprintManager.cpp certificate/AuthorityCertificateManager.cpp certificate/TargetedCertificateManager.cpp certificate/CertificateManager.cpp http/HttpBridge.cpp http/HttpConnectionManager.cpp http/HttpHeaders.cpp UpdateManager.cpp http/OCSPDenier.cpp FirefoxAddonUpdater.cpp
+ 
+-sslsniff_LDFLAGS = -lssl -lboost_filesystem -lpthread -lboost_thread -llog4cpp
++sslsniff_LDFLAGS = -lssl -lcrypto -lboost_filesystem -lboost_system -lpthread -lboost_thread -llog4cpp
+ 
+ EXTRA_DIST = certs/wildcard IPSCACLASEA1.crt leafcert.pem updates/Darwin_Universal-gcc3.xml updates/Linux_x86-gcc3.xml updates/WINNT_x86-msvc.xml
+diff --git a/SSLConnectionManager.cpp b/SSLConnectionManager.cpp
+index d7221cf..246070c 100644
+--- a/SSLConnectionManager.cpp
++++ b/SSLConnectionManager.cpp
+@@ -44,7 +44,7 @@ SSLConnectionManager::SSLConnectionManager(io_service &io_service,
+ }
+ 
+ void SSLConnectionManager::acceptIncomingConnection() {
+-  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor.io_service()));
++  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor.get_io_service()));
+ 
+   acceptor.async_accept(*socket, boost::bind(&SSLConnectionManager::handleClientConnection,
+ 					     this, socket, placeholders::error));
+@@ -76,7 +76,7 @@ void SSLConnectionManager::shuttleConnection(boost::shared_ptr<ip::tcp::socket>
+ 					     ip::tcp::endpoint &destination)
+ 
+ {
+-  Bridge::ptr bridge = RawBridge::create(clientSocket, destination, acceptor.io_service());
++  Bridge::ptr bridge = RawBridge::create(clientSocket, destination, acceptor.get_io_service());
+   bridge->shuttle();
+ }
+ 
+@@ -95,13 +95,13 @@ void SSLConnectionManager::interceptUpdate(boost::shared_ptr<ip::tcp::socket> cl
+   } catch (SSLConnectionError &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorstr = errorStream.str();    
++    Logger::logError(errorstr);
+   } catch (FirefoxUpdateException &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorstr = errorStream.str();    
++    Logger::logError(errorstr);
+   }
+ }
+ 
+@@ -120,13 +120,13 @@ void SSLConnectionManager::interceptAddon(boost::shared_ptr<ip::tcp::socket> cli
+   } catch (SSLConnectionError &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorstr = errorStream.str();    
++    Logger::logError(errorstr);
+   } catch (FirefoxUpdateException &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorstr = errorStream.str();    
++    Logger::logError(errorstr);
+   }
+ }
+ 
+@@ -134,7 +134,7 @@ void SSLConnectionManager::interceptSSL(boost::shared_ptr<ip::tcp::socket> clien
+ 					ip::tcp::endpoint &destination,
+ 					bool wildcardOK)
+ {
+-  ip::tcp::socket serverSocket(acceptor.io_service());
++  ip::tcp::socket serverSocket(acceptor.get_io_service());
+   boost::system::error_code error;
+   serverSocket.connect(destination, error);
+ 
+@@ -151,9 +151,9 @@ void SSLConnectionManager::interceptSSL(boost::shared_ptr<ip::tcp::socket> clien
+     } catch (SSLConnectionError &error) {
+       std::stringstream errorStream;
+       errorStream << "Got exception: " << error.what();
+-      std::string error = errorStream.str();
++      std::string errorstr = errorStream.str();
+ 
+-      Logger::logError(error);
++      Logger::logError(errorstr);
+     }
+   }
+ }
+diff --git a/http/HttpConnectionManager.cpp b/http/HttpConnectionManager.cpp
+index 0ae72ae..9b1066c 100644
+--- a/http/HttpConnectionManager.cpp
++++ b/http/HttpConnectionManager.cpp
+@@ -53,7 +53,7 @@ HttpConnectionManager::HttpConnectionManager(io_service& io_service, int port,
+ }
+ 
+ void HttpConnectionManager::acceptIncomingConnection() {
+-  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor_.io_service()));
++  boost::shared_ptr<ip::tcp::socket> socket(new ip::tcp::socket(acceptor_.get_io_service()));
+ 
+   acceptor_.async_accept(*socket, boost::bind(&HttpConnectionManager::handleClientConnection,
+ 					      this, socket, placeholders::error));
+@@ -63,7 +63,7 @@ void HttpConnectionManager::acceptIncomingConnection() {
+ void HttpConnectionManager::bridgeHttpRequest(boost::shared_ptr<ip::tcp::socket> socket,
+ 					      ip::tcp::endpoint destination)
+ {
+-  Bridge::ptr bridge = HttpBridge::create(socket, acceptor_.io_service(), 
++  Bridge::ptr bridge = HttpBridge::create(socket, acceptor_.get_io_service(), 
+ 					  FingerprintManager::getInstance());
+   
+   bridge->getServerSocket().
