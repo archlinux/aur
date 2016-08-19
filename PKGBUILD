@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-aurorae-theme
-_commit=4345d8d # 7 digits
-pkgver=20160620
+_commit=7947d99 # 7 digits
+pkgver=20160813
 pkgrel=1
 pkgdesc="Papirus decorations for Kwin"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
