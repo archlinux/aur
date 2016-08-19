@@ -33,6 +33,11 @@ LOCAL_EXPORT_LDLIBS := -larmavlink
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := libARMedia
+LOCAL_EXPORT_LDLIBS := -larmedia
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := libARNetworkAL
 LOCAL_EXPORT_LDLIBS := -larnetworkal
 include $(BUILD_PREBUILT)
@@ -45,4 +50,9 @@ include $(BUILD_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libARStream2
 LOCAL_EXPORT_LDLIBS := -larstream2
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libARStream
+LOCAL_EXPORT_LDLIBS := -larstream
 include $(BUILD_PREBUILT)

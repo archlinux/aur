@@ -1,6 +1,6 @@
 --- a/.repo/manifests/default.xml
 +++ b/.repo/manifests/default.xml
-@@ -14,30 +14,16 @@
+@@ -14,30 +14,14 @@
   <!-- products  -->
   <project name="arsdk_products" path="products/arsdk"/>
  
@@ -15,11 +15,11 @@
   <project name="libARDataTransfer" path="packages/libARDataTransfer"/>
 - <project name="libARDiscovery" path="packages/libARDiscovery"/>
 - <project name="libARMavlink" path="packages/libARMavlink"/>
-  <project name="libARMedia" path="packages/libARMedia"/>
+- <project name="libARMedia" path="packages/libARMedia"/>
 - <project name="libARNetwork" path="packages/libARNetwork"/>
 - <project name="libARNetworkAL" path="packages/libARNetworkAL" />
 - <project name="libARSAL" path="packages/libARSAL"/>
-  <project name="libARStream" path="packages/libARStream" />
+- <project name="libARStream" path="packages/libARStream" />
 - <project name="libARStream2" path="packages/libARStream2" />
   <project name="libARUpdater" path="packages/libARUpdater"/>
   <project name="libARUtils" path="packages/libARUtils"/>

@@ -2,7 +2,7 @@
 
 pkgname=libarsdk3-git
 pkgver=r22.305521e
-pkgrel=4
+pkgrel=5
 pkgdesc="ARSDK3 C librairies to control Parrot devices"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -13,6 +13,7 @@ depends=(curl
          uthash
          libardiscovery-git
          libarmavlink-git
+         libarmedia-git
          libarnetworkal-git
          libarnetwork-git
          libarsal-git
@@ -30,19 +31,17 @@ source=('arsdk_manifests::git+https://github.com/Parrot-Developers/arsdk_manifes
         '0002-products-Remove-libs_and_samples.patch'
         '0003-libARController-Fix-json-c.patch'
         '0004-libARController-Fix-uthash-path.patch'
-        '0005-libARMedia-Fix-json-c.patch'
-        '0006-libARUpdater-Fix-json-c.patch'
+        '0005-libARUpdater-Fix-json-c.patch'
         'local-dependencies-atom.mk'
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            '568dbff69a1de277fa4783755094398fde06dcc3a1f30305a7a65817a6e02a61'
-            '0790aa37fca6cffa53e99b1ca9ad2cdcd44819ec0893767de48ef5087b33136c'
+            'd5171cbf0c7385e608423a7ac426dbf017442a4625c5315cd3d7a75223354aad'
+            'be3a8dda1aaff595656cd41c4c54dd939457217f05746f2d518bde6332216d8b'
             'be1bf8b1b8a4105d30a494b03cda6679d44ea207516bae03d9e5913882dd203f'
             '8c18e3bb918323b0445935649d60f95c6f2759173e881c5ea0d9dc51c07e3fdf'
-            '8e362c058ccf2023fb5df8dbe1307411e3d6221c093af5cc095b37d39b3801aa'
             '69cbcc090ec8356adbd57461ef58c3b1fe18699647779232673315bce5663c72'
-            'fa1f78bb07ddf17a1afe21995070added4d58bbabed156135dcb7af675ec528f'
+            '177305249ca17839bd590a287c7a4cb1abec721a95b85dc5505801f05becf877'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
@@ -69,8 +68,7 @@ prepare() {
 	patch -p1 -i "$srcdir/0002-products-Remove-libs_and_samples.patch"
 	patch -p1 -i "$srcdir/0003-libARController-Fix-json-c.patch"
 	patch -p1 -i "$srcdir/0004-libARController-Fix-uthash-path.patch"
-	patch -p1 -i "$srcdir/0005-libARMedia-Fix-json-c.patch"
-	patch -p1 -i "$srcdir/0006-libARUpdater-Fix-json-c.patch"
+	patch -p1 -i "$srcdir/0005-libARUpdater-Fix-json-c.patch"
 
 	# Add build settings to use archlinux libs
 	mkdir -p "$srcdir/packages/ArchlinuxLibs/Config/linux"
