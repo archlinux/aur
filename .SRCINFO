@@ -18,12 +18,14 @@ pkgbase = rt5592sta_linux_patched-dkms
 	source = extra.patch
 	source = 4.9_preperation.patch
 	source = dkms.conf
+	source = pci_word_fix_4.7.patch
 	sha1sums = 955b29d74fd66576b86dd1feee107f73b4605e3e
 	sha1sums = d938f53945eb5e6c88eb58a942c451c61122cec1
 	sha1sums = 7a11b444f9861463bdfbbafe95c7443d9e1767aa
 	sha1sums = 3574c691fb771459471fcd2297b10003ccbea875
 	sha1sums = 20420077e9e008c5b88305e420dd8969ffd41807
 	sha1sums = 44a0dad0043e3482dec70d490325e651e333c72f
+	sha1sums = 569f650a745944213578cbdc88fd12ffb57641c6
 	depends_i686 = glibc
 	depends_x86_64 = lib32-glibc
 

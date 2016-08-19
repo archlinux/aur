@@ -30,13 +30,15 @@ source=("http://dlcdnet.asus.com/pub/ASUS/wireless/PCE-N53/${_zippkgname}.zip"
 	'extra.patch'
 	'4.9_preperation.patch'
 	'dkms.conf'
+  'pci_word_fix_4.7.patch'
 )
 sha1sums=('955b29d74fd66576b86dd1feee107f73b4605e3e'
           'd938f53945eb5e6c88eb58a942c451c61122cec1'
           '7a11b444f9861463bdfbbafe95c7443d9e1767aa'
           '3574c691fb771459471fcd2297b10003ccbea875'
-	  '20420077e9e008c5b88305e420dd8969ffd41807'
-	  '44a0dad0043e3482dec70d490325e651e333c72f')
+          '20420077e9e008c5b88305e420dd8969ffd41807'
+          '44a0dad0043e3482dec70d490325e651e333c72f'
+          '569f650a745944213578cbdc88fd12ffb57641c6')
 
 build() {
    cd "${srcdir}/Linux"
@@ -49,6 +51,7 @@ build() {
    patch -p1 -i "${srcdir}/rt5592sta_fix_64bit_3.8.patch"
    patch -p1 -i "${srcdir}/extra.patch"
    patch -p1 -i "${srcdir}/4.9_preperation.patch"
+   patch -p1 -i "${srcdir}/pci_word_fix_4.7.patch"
 }
 
 package() {
