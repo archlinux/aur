@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 _plugin_name=tab_tree
-_plugin_version=1.4.6
+_plugin_version=1.4.8
 
 pkgname=firefox-extension-tab-tree
 pkgver=${_plugin_version}
