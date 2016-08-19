@@ -8,7 +8,7 @@ pkgname=lib32-libpgm
 pkgver=5.2.122
 pkgrel=2
 pkgdesc='An implementation of the PGM reliable multicast protocol'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://code.google.com/p/openpgm'
 license=('LGPL2.1')
 depends=('lib32-glibc' 'libpgm')
@@ -30,7 +30,8 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   ./configure \
-    --prefix='/usr' --libdir='/usr/lib32'
+    --prefix='/usr' \
+    --libdir='/usr/lib32'
   make
 }
 
