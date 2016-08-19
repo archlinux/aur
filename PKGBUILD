@@ -1,22 +1,22 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('mdm')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
-pkgver=1.0
-pkgrel=87
+groups=('zarafa'
+	'kopano'
+	'zarafa-webapp-plugins')
+pkgver=1.1.0.49
+pkgrel=1
 pkgdesc='Mdm plugin for Zarafa Webapp'
 arch=('any')
-source=("https://download.zarafa.com/community/final/WebApp/plugins/MDM%201.0/fedora-22/zarafa-webapp-plugins-mdm-1.0.1453470163.f6c94a8-34.2.noarch.rpm"
+source=("https://download.zarafa.com/community/beta/WebApp/plugins/MDM/1.1/beta1/fedora-22/zarafa-webapp-plugins-mdm-1.1.0-49.1.noarch.rpm"
 	"compress-static"
 	"zarafa-webapp-mdm.ini")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp'
-	 'z-push'
-	 'php<7'
-	 'php-fpm<7')
-md5sums=('87c70369dbda5974c8c4aa6589f71f15'
+	 'z-push')
+md5sums=('SKIP'
          'd737d82dfab24adc516c001238a4119f'
          'de837fc5ad2e8f2d70df5037f2a0a107')
 
