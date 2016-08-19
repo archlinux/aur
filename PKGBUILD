@@ -17,7 +17,8 @@ depends=(curl
          libarnetworkal-git
          libarnetwork-git
          libarsal-git
-         libarstream2-git)
+         libarstream2-git
+         libarstream-git)
 optdepends=()
 makedepends=(git repo python2-virtualenv)
 provides=()
