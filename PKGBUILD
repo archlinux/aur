@@ -1,19 +1,23 @@
-# $Id$
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Felix Schindler <aur at schindlerfamily dot de>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Imanol Celaya <ornitorrincos@archlinux-es.org>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Dan Vratil <progdan@progdansoft.com>
 # Contributor: thotypous <matiasΘarchlinux-br·org>
 # Contributor: delor <bartekpiech gmail com>
 
-pkgname=qtcreator
-pkgver=4.0.3
-_pkgver=v4.0.3
+pkgname=qtcreator41
+_pkgname=qtcreator
+pkgver=4.1
+_pkgver=4.1
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
 url='http://qt-project.org'
 license=('LGPL')
+provides=("${_pkgname}=$pkgver")
+replaces=($_pkgname)
+conflicts=($_pkgname)
 depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-webkit')
 makedepends=('git' 'mesa' 'clang')
 options=('docs')
@@ -27,7 +31,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'bzr: bazaar support'
             'clang: Clang code model'
             'valgrind: analyze support')
-source=("git://code.qt.io/qt-creator/qt-creator.git#tag=${_pkgver}"
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=${_pkgver}"
         "git://code.qt.io/qt-labs/qbs.git"
         'qtcreator.desktop')
 md5sums=('SKIP'
