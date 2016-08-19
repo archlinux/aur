@@ -29,7 +29,6 @@ build() {
     automake --add-missing
     ./configure
     make
-    g++ -ggdb -g -O2 -lpthread -lboost_thread -llog4cpp  -o sslsniff SSLConnectionManager.o Destination.o FirefoxUpdater.o Logger.o SessionCache.o SSLBridge.o HTTPSBridge.o sslsniff.o FingerprintManager.o AuthorityCertificateManager.o TargetedCertificateManager.o CertificateManager.o HttpBridge.o HttpConnectionManager.o HttpHeaders.o UpdateManager.o OCSPDenier.o FirefoxAddonUpdater.o -lssl -lboost_filesystem -lboost_system -lcrypto
 }
 
 package() {
