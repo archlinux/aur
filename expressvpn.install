@@ -1,4 +1,5 @@
 post_install() {
+  gen_key
   /usr/bin/printf "----------------------------------------------\n"
   /usr/bin/printf " Start the expressvpn daemon with\n"
   /usr/bin/printf "     # systemctl start expressvpnd.service\n"
@@ -14,12 +15,16 @@ post_install() {
   /usr/bin/printf "----------------------------------------------\n"
 }
 
-post_upgrade() {
+gen_key() {
   /usr/bin/expressvpnd --workdir "/var/lib/expressvpn/" generate-client-ca > /dev/null 2>&1
   /usr/bin/expressvpnd --workdir "/var/lib/expressvpn/" generate-client-certs > /dev/null 2>&1
   /usr/bin/chmod 644 "/var/lib/expressvpn/certs/client.key" > /dev/null 2>&1
   /usr/bin/rm -f /var/lib/expressvpn/certs/client.req > /dev/null 2>&1
   /usr/bin/rm -f /var/lib/expressvpn/certs/clientca.srl > /dev/null 2>&1
+}
+
+post_upgrade() {
+  gen_key
   /usr/bin/printf "------------------------------------------------\n"
   /usr/bin/printf " You may need to restart the expressvpn daemon:\n"
   /usr/bin/printf "     # systemctl daemon-reload\n"

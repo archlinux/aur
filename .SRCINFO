@@ -1,7 +1,7 @@
 pkgbase = expressvpn
 	pkgdesc = Proprietary VPN client for Linux
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://expressvpn.com
 	install = expressvpn.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = expressvpn
 	license = custom
 	depends = net-tools
 	source = expressvpnd.service
-	source = license-20160711.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source
+	source = license-20160819.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source
 	validpgpkeys = 1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38
 	sha512sums = 95fa06939cd318962d11076443c0f3fe46f73509fcd09ad39513a8f3ea6d010c9c9607ec38506f1503efde70519a2aa9aed3d201b7c3b37c4324c68fc91a2073
 	sha512sums = SKIP

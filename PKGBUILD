@@ -3,7 +3,7 @@
 
 pkgname=expressvpn
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
 url="https://expressvpn.com"
