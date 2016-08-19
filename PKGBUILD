@@ -1,5 +1,5 @@
 pkgname=litecoin-bin
-pkgver=0.10.2.2
+pkgver=0.10.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
@@ -8,10 +8,10 @@ pkgdesc="Peer-to-peer digital currency, official binary release (includes liteco
 
 if [ ${CARCH} == 'x86_64' ]; then
   _bits=64
-  sha256sums=(136779e717603002f0a3f0da4f48f38274a286171cff10dd68da067ed82c8b26)
+  sha256sums=(2d98c30ab2ab1c1846fe59f162c297485a81f94e87ae43d60582c6559a3d4e60)
 else
   _bits=32
-  sha256sums=(eecffd46d3115013b7007d59762eaf819d4ac905ad53edffe164c20d779dfc40)
+  sha256sums=(af9740393a35103ca3e5256bae082975894fa12f0d416438f73d2b8f1372aed2)
 fi
 source=(https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-linux$_bits.tar.gz)
 
