@@ -1,0 +1,15 @@
+pkgbase = wmtv
+	pkgdesc = dockable video4linux TV player dockapp
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://www.dockapps.net/wmtv
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = libxxf86vm
+	source = http://www.dockapps.net/download/wmtv-0.6.6.tar.gz
+	md5sums = c21417cbdec0c44fbe5d0e17e3cee657
+
+pkgname = wmtv
+
