@@ -1,0 +1,15 @@
+pkgbase = wmget
+	pkgdesc = dockapp that performs long downloads in background
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://www.dockapps.net/wmget
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = curl
+	source = http://www.dockapps.net/download/wmget-0.6.1.tar.gz
+	md5sums = f184287754e7bd6d235136c4e986e26d
+
+pkgname = wmget
+
