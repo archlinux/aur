@@ -1,0 +1,16 @@
+pkgbase = ibus-grc-beta-code-git
+	pkgdesc = A m17n keymap file for polytonic Greek using beta code
+	pkgver = 0.1.r0.ga7c1347
+	pkgrel = 1
+	url = https://github.com/marczuo/grc-beta-code
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = ibus-m17n
+	provides = ibus-grc-beta-code
+	conflicts = ibus-grc-beta-code
+	source = git+https://github.com/marczuo/grc-beta-code
+	sha256sums = SKIP
+
+pkgname = ibus-grc-beta-code-git
+
