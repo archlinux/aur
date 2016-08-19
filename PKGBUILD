@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd grc-beta-code
-  install -D grc-beta-code.mim "$pkgdir/usr/share/m17n/grc-beta-code.mim"
+  install -Dm 644 grc-beta-code.mim "$pkgdir/usr/share/m17n/grc-beta-code.mim"
   install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
