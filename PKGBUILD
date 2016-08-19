@@ -1,5 +1,5 @@
 pkgname=go-ethereum
-pkgver=1.4.10
+pkgver=1.4.11
 pkgrel=1
 pkgdesc="Ethereum Go Client (CLI) - compiled from source"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ethereum/$pkgname/tar.gz/v$pkgver
         git+https://github.com/ethereum/go-ethereum.wiki)
-sha256sums=('971f487f4a432cb9d95618cf87bb2d00a9acc3d9c11d152ea3110e7ab2253d87'
+sha256sums=('aca1b7f25b567008b68821208e252e8c38fc8de003db0c6487d9575f9c96306a'
             'SKIP')
 options=('!emptydirs')
 
@@ -40,7 +40,6 @@ package() {
     "$pkgdir/usr/share/doc/go-ethereum/wiki"
 
   msg2 'Installing...'
-  rm build/bin/utils
   for _bin in build/bin/*; do
     install -Dm 755 "$_bin" "$pkgdir/usr/bin/"`basename $_bin`
   done
