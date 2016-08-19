@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libunistring
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulating Unicode strings and C strings. (mingw-w64)"
 arch=(any)
 url="http://www.gnu.org/software/libunistring/"
@@ -29,8 +29,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libunistring-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
 }
