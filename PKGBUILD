@@ -21,7 +21,7 @@ makedepends=('git')
 install="install"
 source=("postfixadmin-${_postfixadminver}.tar.gz::http://downloads.sourceforge.net/postfixadmin/postfixadmin-${_postfixadminver}.tar.gz"
 	"zarafa-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/com-pietma-${pkgname}.git#tag=v${pkgver}")
-md5sums=('SKIP'
+md5sums=('d9a0e19bdb3241411cac8446d511fdb4'
          'SKIP')
 
 package_zarafa-postfixadmin() {
