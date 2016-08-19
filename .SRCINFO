@@ -1,0 +1,31 @@
+pkgbase = epiphany-unstable
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine (unstable version)
+	pkgver = 3.21.90
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Web
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xml
+	makedepends = startup-notification
+	makedepends = gobject-introspection
+	depends = libsoup
+	depends = libnotify
+	depends = gsettings-desktop-schemas
+	depends = webkit2gtk-unstable>=2.13.1
+	depends = nss
+	depends = iso-codes
+	depends = dconf
+	depends = gcr
+	depends = gnome-desktop
+	depends = libwnck3
+	depends = gnome-themes-standard
+	provides = epiphany
+	conflicts = epiphany
+	source = http://ftp.gnome.org/pub/GNOME/sources/epiphany/3.21/epiphany-3.21.90.tar.xz
+	md5sums = 1a487a215db94f5f9f055e9fdc972519
+
+pkgname = epiphany-unstable
+
