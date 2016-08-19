@@ -1,15 +1,15 @@
 pkgbase = wmcalc
 	pkgdesc = Dockapp that performs all the functions (and eventually more) of a simple four function calculator
-	pkgver = 0.3
-	pkgrel = 4
-	url = http://web.archive.org/web/20121025065535/http://dockapps.windowmaker.org/file.php/id/130
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://www.dockapps.net/wmcalc
 	arch = i686
 	arch = x86_64
 	groups = x11
 	license = GPL
 	depends = libxpm
-	source = wmcalc-0.3.tar.gz
-	md5sums = 23ecf19e956d19ef9dddb810989666c5
+	source = http://www.dockapps.net/download/wmcalc-0.6.tar.gz
+	md5sums = 0d84c4e1cdb8742c5abf03a34ea03540
 
 pkgname = wmcalc
 
