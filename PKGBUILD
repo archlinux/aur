@@ -1,6 +1,8 @@
-# Maintainer: Edvinas Valatka <edacval@gmail.com>
+# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: Edvinas Valatka <edacval@gmail.com>
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
+pkgbase=seafile
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
 pkgver=6.0.0
 pkgrel=1
