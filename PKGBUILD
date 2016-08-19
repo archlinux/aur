@@ -1,69 +1,74 @@
-# Maintainer: MartiMcFly <martimcfly@autorisation.de>
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _postfixadminver=2.93
 
-pkgname=('zarafa-postfixadmin'
-	 'zarafa-postfixadmin-worker')
-groups=('zarafa')
-pkgver=0.18
-pkgrel=82
+pkgname='zarafa-postfixadmin'
+replaces=('zarafa-postfixadmin-worker')
+groups=('zarafa'
+	'kopano')
+pkgver=0.20
+pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
 license=('GPL')
 url="https://git.pietma.com/pietma/com-pietma-${pkgname}"
-depends=('php'
+depends=('bash'
+	 'php'
 	 'php-imap'
 	 'mysql'
 	 'zarafa-server')
+makedepends=('git')
+install="install"
 source=("postfixadmin-${_postfixadminver}.tar.gz::http://downloads.sourceforge.net/postfixadmin/postfixadmin-${_postfixadminver}.tar.gz"
 	"zarafa-postfixadmin-${pkgver}::git+https://git.pietma.com/pietma/com-pietma-${pkgname}.git#tag=v${pkgver}")
-md5sums=('d9a0e19bdb3241411cac8446d511fdb4'
+md5sums=('SKIP'
          'SKIP')
 
 package_zarafa-postfixadmin() {
-    install="${pkgname}.install"
-    backup=("etc/webapps/${pkgname}/config.local.php")
-
     # POSTFIXADMIN
     ###
-    _destdir=${pkgdir}/usr/share/webapps/${pkgname}
+    _destdir_webapp=${pkgdir}/usr/share/webapps/${pkgname}
     _destdir_etc=${pkgdir}/etc/webapps/${pkgname}
     _destdir_doc=${pkgdir}/usr/share/doc/${pkgname}
-    _destdir_lib=${pkgdir}/var/lib/${pkgname}
+    _destdir_var=${pkgdir}/var/lib/${pkgname}
+    _destdir_usr=${pkgdir}/usr/share/${pkgname}
+    _destdir_systemd=${pkgdir}/usr/lib/systemd/system
+    
 
-    install -dm755 ${_destdir}
+    install -dm755 ${_destdir_webapp}
     install -dm755 ${_destdir_etc}
     install -dm755 ${_destdir_doc}
-    install -dm755 ${_destdir_lib}
+    install -dm755 ${_destdir_var}
 
     # usr
     cd ${srcdir}/postfixadmin-${_postfixadminver}
-    cp -r * ${_destdir}
-    rm -R ${_destdir}/templates_c
+    cp -r * ${_destdir_webapp}
+    rm -R ${_destdir_webapp}/templates_c
 
     # var
     # template cache needs to be writeable
-    mkdir ${_destdir_lib}/templates_c
-    ln -s /var/lib/${pkgname}/templates_c ${_destdir}/templates_c
+    mkdir ${_destdir_var}/templates_c
+    ln -s /var/lib/${pkgname}/templates_c ${_destdir_webapp}/templates_c
 
     # docs
-    mv ${_destdir}/{*.TXT,tests,ADDITIONS,DOCUMENTS,VIRTUAL_VACATION} ${_destdir_doc}
-    rm -rf ${_destdir}/debian
+    mv ${_destdir_webapp}/{*.TXT,tests,ADDITIONS,DOCUMENTS,VIRTUAL_VACATION} ${_destdir_doc}
+    rm -rf ${_destdir_webapp}/debian
 
     # etc
-    cp ${_destdir}/config.inc.php ${_destdir_etc}/config.example.php
+    cp ${_destdir_webapp}/config.inc.php ${_destdir_etc}/config.example.php
+
 
     # ZARAFA-POSTFIXADMIN
     ###
-    cd ${srcdir}/zarafa-postfixadmin-${pkgver}/postfixadmin
-    cp etc/config.local.php ${_destdir}
+    cd ${srcdir}/zarafa-postfixadmin-${pkgver}
+    cp etc/config.local.php ${_destdir_webapp}
     
     # etc
     cp etc/nginx-location.conf ${_destdir_etc}
     cp etc/config.default.php ${_destdir_etc}/config.local.php
     
     # docs
-    cp doc/* ${_destdir_doc}
+    cp -r doc/* ${_destdir_doc}
 
     ## php
     mkdir -p ${pkgdir}/etc/php/conf.d
@@ -72,23 +77,14 @@ package_zarafa-postfixadmin() {
     ## php-fpm
     mkdir -p ${pkgdir}/etc/php/fpm.d
     cp etc/php-fpm.conf ${pkgdir}/etc/php/fpm.d/${pkgname}.conf
-}
 
-package_zarafa-postfixadmin-worker() {
+
     # ZARAFA-POSTFIXADMIN-WORKER
     ###
-    _destdir=${pkgdir}/usr/share/${pkgname}
-    _destdir_systemd=${pkgdir}/usr/lib/systemd/system
-    _destdir_lib=${pkgdir}/var/lib/${pkgname}
-
-    install -dm755 ${_destdir}
+    install -dm755 ${_destdir_usr}
     install -dm755 ${_destdir_systemd}
-    install -dm755 ${_destdir_lib}
 
     # usr
-    cd ${srcdir}/zarafa-postfixadmin-${pkgver}/worker
-    cp -r * ${_destdir}
-    rm -rf ${_destdir}/systemd
-    
-    cp systemd/* ${_destdir_systemd}
+    mv usr/zarafa-postfixadmin.service ${_destdir_systemd}
+    mv usr/* ${_destdir_usr}
 }
