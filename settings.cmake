@@ -1,11 +1,14 @@
 set (CMAKE_BUILD_TYPE Release CACHE STRING "" FORCE)
 set (CMAKE_C_FLAGS "-pthread -pipe -fstack-protector-strong -O2 -march=native -mtune=native" CACHE STRING "" FORCE)
-set (CMAKE_CXX_FLAGS "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -pipe -fstack-protector-strong -O2 -march=native" CACHE STRING "" FORCE)
-set (CMAKE_SHARED_LINKER_FLAGS "-pthread -Wl,--no-undefined" CACHE STRING "" FORCE)
+set (CMAKE_CXX_FLAGS "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -pipe -fstack-protector-strong -O2 -march=native -mtune=native" CACHE STRING "" FORCE)
+set (CMAKE_EXE_LINKER_FLAGS "-pthread -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,--no-undefined" CACHE STRING "" FORCE)
+set (CMAKE_MODULE_LINKER_FLAGS "-pthread -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,--no-undefined" CACHE STRING "" FORCE)
+set (CMAKE_SHARED_LINKER_FLAGS "-pthread -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,--no-undefined" CACHE STRING "" FORCE)
 set (BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)  # this option is currently incompatible
 set (CMAKE_INSTALL_PREFIX /usr CACHE PATH "" FORCE)
 set (CMAKE_INSTALL_SYSCONFDIR /etc CACHE PATH "" FORCE)
 set (CMAKE_INSTALL_DATAROOTDIR /usr/share CACHE PATH "" FORCE)
+set (LLVM_ENABLE_CXX1Y ON CACHE BOOL "" FORCE)
 set (LLVM_ENABLE_THREADS ON CACHE BOOL "" FORCE)  # try to workaround pthread issue
 set (asimage ON CACHE BOOL "" FORCE)
 set (builtin_afterimage OFF CACHE BOOL "" FORCE)

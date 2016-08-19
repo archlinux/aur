@@ -6,34 +6,33 @@
 
 pkgname=root
 pkgver=6.06.06
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
-'desktop-file-utils'
 'fftw'
 'ftgl'
-'gcc-fortran'
 'glew'
 'graphviz'
 'gsl'
-'gtk-update-icon-cache'
+'hicolor-icon-theme'
 'intel-tbb'
 'libafterimage'
 'libiodbc'
 'libmysqlclient'
 'postgresql-libs'
 'python'
-'shared-mime-info'
 'sqlite'
 'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
 'unixodbc'
 'xmlrpc-c'
 )
-install='root.install'
+optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
+            'tcsh: Legacy CSH support'
+)
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'call_PyErr_Clear_if_no_such_attribute.patch'
@@ -45,20 +44,20 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'settings.cmake')
 md5sums=('4308449892210c8d36e36924261fea26'
          'f36f7bff97ed7232d8534c2ef166b2bf'
-         '89d3caaa1d73a623c56a42f21dfdd669'
-         'e1f1eb398dec2a66bb790ef277b3ab91'
+         '5a4a67f59d553cf86d5b09fdfb204352'
+         '464eae7414433aa684cf9017204267cb'
          '0e883ad44f99da9bc7c23bc102800b62'
          'e2cf69b204192b5889ceb5b4dedc66f7'
-         'efd06bfa230cc2194b38e0c8939e72af'
-         '0dad3217a5d6a2106e14024e839008eb')
+         'f973e17f573f0f313395d34d2e82eeb6'
+         '168175a1685c408ffd02020520b1074e')
 sha256sums=('0a7d702a130a260c72cb6ea754359eaee49a8c4531b31f23de0bfcafe3ce466b'
             '437ed0fb2c46d5ca8e37cc689f87dfe12429f6a243d4e5cf2d395a177de7e90f'
-            'd9fea8991d42a78cd694f9798615274e96a185cbbd6608b4b80c76d5e43982a6'
-            '51dbcf86d9973e7b7204fc20ff0c3c3aacea01ee126e14e2fb3c9f33825cc558'
+            'e03fff4accf7cee4e7329b305f1e0df7bf804dbced08d52566af789bc77ea0b0'
+            'd566bc44f0df1915ac81c41b8ef7eff0d9fec8728533b00b9e654a2a4eff9af1'
             '71ed39f7e5a605a6a02e3d0ba79c997b8e7f02551898c27112eb78f07d9d8244'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
-            '6a4ef7b32710d414ee47d16310b77b95e4cf1d3550209cf8a41d38a945d05e5f'
-            '066bed78a24003cdb06c97af34356e29ffb20626f76975267e7e17f36a125be4')
+            '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
+            '077c7651f51c56ba02c0aa61bb4aa99fdc11c30e5e565072b652eb028f387814')
 prepare(){
     ## https://sft.its.cern.ch/jira/browse/ROOT-6924
     cd ${pkgname}-${pkgver}
@@ -108,4 +107,3 @@ package() {
 
     rm -rf ${pkgdir}/etc/root/daemons
 }
-
