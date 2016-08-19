@@ -1,4 +1,4 @@
-# Maintainter: Marc Zuo <zealotzuo@gmail.com>
+# Maintainter: Marc Zuo <zealotzuo at gmail dot com>
 pkgname=ibus-grc-beta-code-git
 pkgver=0.1.r0.ga7c1347
 pkgrel=3
