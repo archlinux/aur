@@ -14,7 +14,7 @@ source=("https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp')
-md5sums=('SKIP'
+md5sums=('93b58ed53c43564914a16788c37529e5'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
