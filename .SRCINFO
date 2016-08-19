@@ -3,7 +3,6 @@ pkgbase = bomi-git
 	pkgver = 0.9.11.r25.g90f18ff
 	pkgrel = 1
 	url = http://bomi-player.github.io
-	install = bomi.install
 	arch = i686
 	arch = x86_64
 	license = GPL

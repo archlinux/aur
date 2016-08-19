@@ -12,7 +12,7 @@ pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv (git versio
 arch=('i686' 'x86_64')
 url="http://bomi-player.github.io"
 license=('GPL')
-install=$_pkgbase.install
+#install=$_pkgbase.install
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg'
          'libdvdread' 'libdvdnav' 'libcdio-paranoia' 'libcdio' 'smbclient'
          'alsa-lib' 'libpulse' 'jack' 'libchardet' 'libbluray'
