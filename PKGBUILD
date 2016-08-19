@@ -1,3 +1,5 @@
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+
 pkgname=python2-tldextract
 pkgver=2.0.1
 pkgrel=1
