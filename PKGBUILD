@@ -3,7 +3,7 @@
 pkgname=hets-lib
 _libname=hets
 pkgver=20141215.ecafeec
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Basic libraries and other examples for Hets"
 url="https://github.com/spechub/Hets-lib"
@@ -17,12 +17,12 @@ source=("${pkgname}::git+https://github.com/spechub/Hets-lib.git#commit=${_commi
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir/$pkgname"
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 package() {
-  install -d ${pkgdir}/opt/${pkgname}
-  cp -R ${srcdir}/${pkgname}/* ${pkgdir}/opt/${pkgname}
+  install -d "$pkgdir/usr/lib/hets/$pkgname"
+  cp -R "$srcdir/$pkgname" "$pkgdir/usr/lib/hets/"
 }
 # vim:syntax=sh
