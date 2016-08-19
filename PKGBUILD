@@ -1,7 +1,7 @@
 pkgname=mingw-w64-libwebp
 pkgver=0.5.1
-pkgrel=1
-pkgdesc="WebP library (mingw-w64)"
+pkgrel=2
+pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
 license=("BSD")
@@ -31,9 +31,9 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/libwebp-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip  {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    #rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
