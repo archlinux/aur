@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgcrypt
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
 url="http://www.gnupg.org"
@@ -43,11 +43,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/libgcrypt-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install -j1 
-    rm -r "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    rm "$pkgdir"/usr/${_arch}/lib/*.def
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
 }
 
