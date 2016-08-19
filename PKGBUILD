@@ -3,10 +3,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# Includes dynamic and static versions; if only one version is requried, just
+# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
+
 _qt_module=qtcanvas3d
 pkgname="mingw-w64-qt5-canvas3d"
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A JavaScript 3D rendering API for Qt Quick (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
@@ -18,18 +21,25 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
 md5sums=('1974a0025f96a2cc08948fbdb422805f')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+[[ $NO_STATIC_LIBS ]] || \
+  makedepends+=('mingw-w64-qt5-base-static') \
+  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
+  _configurations+=('CONFIG+=static')
+[[ $NO_SHARED_LIBS ]] || \
+  _configurations+=('CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
 
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-
-    ${_arch}-qmake-qt5 ../${_qt_module}.pro
-    make
-
-    popd
+    for _config in "${_configurations[@]}"; do
+      msg2 "Building ${_config##*=} version for ${_arch}"
+      mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      make
+      popd
+    done
   done
 }
 
@@ -37,18 +47,24 @@ package() {
   cd "${srcdir}/${_pkgfqn}"
 
   for _arch in ${_architectures}; do
-    pushd build-${_arch}
+    for _config in "${_configurations[@]}"; do
+      pushd build-${_arch}-${_config##*=}
 
-    # install manually to get the import lib, too
-    install -Dm755 qml/QtCanvas3D/*.dll -t "${pkgdir}/usr/${_arch}/bin"
-    install -Dm644 qml/QtCanvas3D/*.dll.a -t "${pkgdir}/usr/${_arch}/lib"
-
-    ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
-    ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.dll.a
-
-    popd
+      make INSTALL_ROOT="$pkgdir" install
+      # ensure to get the import lib, too
+      [[ "${_config##*=}" == 'shared'  ]] &&
+        install -Dm755 qml/QtCanvas3D/*.dll -t "${pkgdir}/usr/${_arch}/bin" &&
+	      install -Dm644 qml/QtCanvas3D/*.dll.a -t "${pkgdir}/usr/${_arch}/lib"
+      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+      [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
+        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
+        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
+      find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+      [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
+        find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
+      popd
+    done
   done
-
-  # .prl files aren't interesting for us
-  find "${pkgdir}" -name "*.prl" -delete
 }
