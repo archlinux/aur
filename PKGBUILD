@@ -4,13 +4,13 @@
 # Contributor: Jesse Young <jesse.young@gmail.com>
 
 pkgname=namcap-git
-pkgver=3.2.1.35.g228172a
+pkgver=3.2.7.10.g2090aa7
 pkgrel=1
 pkgdesc="A Pacman package analyzer (git)"
 arch=('any')
 url="http://projects.archlinux.org/namcap.git/"
 license=('GPL')
-depends=('python' 'pyalpm-git' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
+depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
 makedepends=('git' 'python-distribute')
 provides=('namcap')
 conflicts=('namcap')
