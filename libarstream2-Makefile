@@ -1,0 +1,31 @@
+CC = gcc
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -IIncludes -DHAVE_CONFIG_H
+LDFLAGS = -shared
+RM = rm -f
+TARGET_LIB = libarstream2.so
+
+SRCS = gen/Sources/arstream2_error.c \
+	src/arstream2_h264_filter.c \
+	src/arstream2_h264_parser.c \
+	src/arstream2_h264_sei.c \
+	src/arstream2_h264_writer.c \
+	src/arstream2_rtp_receiver.c \
+	src/arstream2_rtp_sender.c \
+	src/arstream2_stream_recorder.c \
+	src/arstream2_stream_receiver.c
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${TARGET_LIB}
+
+$(TARGET_LIB): $(OBJS)
+	$(CC) ${LDFLAGS} -o $@ $^
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
