@@ -1,6 +1,6 @@
 pkgname=mingw-w64-xerces-c
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A validating XML parser written in a portable subset of C++ (mingw-w64)"
 arch=(any)
 url="http://xerces.apache.org/xerces-c/"
@@ -37,7 +37,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/xerces-c-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
