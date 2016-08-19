@@ -1,9 +1,10 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 pkgname=sabre-zarafa
-groups=('zarafa')
+groups=('zarafa'
+	'kopano')
 pkgver=0.23
-pkgrel=95
+pkgrel=77
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
@@ -82,6 +83,6 @@ package() {
     rm /tmp/composer.ini
     
     # perform settings
-    # => replace carddav_root_uri
-    sed -i -e "s/\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)/\1\/carddav\3/" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
+    sed -i -e "s|\(CARDDAV_ROOT_URI', '\)\(.*\)\('.*$\)|\1/carddav\3|" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php
+    sed -i -e "s|\(ZARAFA_SERVER', '\)\(.*\)\('.*$\)|\1file:///var/run/zarafad/server.sock\3|" ${pkgdir}/etc/webapps/${pkgname}/config.example.inc.php    
 }

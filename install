@@ -1,6 +1,23 @@
+#!/bin/bash
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+
 post_install() {
-  cp -n /etc/webapps/sabre-zarafa/config.example.inc.php /etc/webapps/sabre-zarafa/config.inc.php
-  chown -R http:http /var/log/sabre-zarafa
-  chown -R http:http /var/lib/sabre-zarafa
+    cp -n /etc/webapps/sabre-zarafa/config.example.inc.php /etc/webapps/sabre-zarafa/config.inc.php
+    
+    installdir http:http 0700 0600 /var/log/sabre-zarafa
+    installdir http:http 0700 0600 /var/lib/sabre-zarafa
 }
 
