@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon
-pkgver=2.1.0.r563.g41e032c
-pkgrel=3
+pkgver=2.1.0.r627.g082d9dd
+pkgrel=1
 epoch=1
 pkgdesc="A secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -10,10 +10,10 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp'
+         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp' 'libnatpmp'
          'pjproject-savoirfairelinux')
 makedepends=('git' 'boost' 'msgpack-c')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=41e032c81a9cdef457d2ead3767abbd6bcee2a16")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=082d9dd14a5b334fd6ddb2429ef1d7bbfdcca15c")
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,21 +26,21 @@ build() {
 
   msg2 'Building...'
   autoreconf --force --install --verbose
-  LIBS="-lz" ./configure \
+  ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/bin \
     --sysconfdir=/etc \
     --with-contrib="no" \
     --enable-ipv6
-  make
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make
 }
 
 package() {
   cd "${pkgname}"
 
   msg2 'Installing...'
-  make DESTDIR="$pkgdir" install
+  DISABLE_CONTRIB_DOWNLOADS="TRUE" make DESTDIR="$pkgdir" install
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
