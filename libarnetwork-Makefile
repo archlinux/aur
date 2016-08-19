@@ -1,0 +1,29 @@
+CC = gcc
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -IIncludes -DHAVE_CONFIG_H
+LDFLAGS = -shared
+RM = rm -f
+TARGET_LIB = libarnetwork.so
+
+SRCS = Sources/ARNETWORK_IOBuffer.c \
+	Sources/ARNETWORK_IOBufferParam.c \
+	Sources/ARNETWORK_Manager.c \
+	Sources/ARNETWORK_Receiver.c \
+	Sources/ARNETWORK_RingBuffer.c \
+	Sources/ARNETWORK_Sender.c \
+	gen/Sources/ARNETWORK_Error.c
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${TARGET_LIB}
+
+$(TARGET_LIB): $(OBJS)
+	$(CC) ${LDFLAGS} -o $@ $^
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
