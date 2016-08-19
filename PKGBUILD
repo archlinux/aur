@@ -1,7 +1,7 @@
 # Maintainer: Eugen Kuksa <eugenk@cs.uni-bremen.de>
 
 pkgname=hets-desktop
-pkgver=0.99_1471209385
+pkgver=0.99_1471594578
 pkgrel=1
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
@@ -14,7 +14,7 @@ optdepends=('spass' 'eprover' 'darwin' 'pellet' 'isabelle')
 makedepends=('ghc>=7.8.4')
 provides=('hets-dekstop')
 conflicts=('hets-dekstop-bin')
-_commit='9c020bf240dace07c6defccb1c8a42328ec454e0'
+_commit='b259e3b3e05433b2018f45d5781000fa3af7cbdc'
 source=("${pkgname}::git+https://github.com/spechub/Hets.git#commit=${_commit}")
 sha256sums=('SKIP')
 
