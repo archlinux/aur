@@ -3,7 +3,7 @@
 
 pkgname=razer_blade_14_2016_acpi_dsdt-git
 _pkgname=razer_blade_14_2016_acpi_dsdt
-pkgver=4.52f5864
+pkgver=5.e3fd915
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/m4ng0squ4sh/razer_blade_14_2016_acpi_dsdt'
