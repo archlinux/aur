@@ -1,13 +1,13 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=16.07.20
+pkgver=16.08.19
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://zaps166.sourceforge.net/?app=QMPlay2'
 license=('LGPL')
-depends=('qt5-base' 'xdg-utils' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'jemalloc')
+depends=('qt5-base' 'xdg-utils' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp')
 optdepends=('pulseaudio: PulseAudio support'
             'youtube-dl: Better YouTube support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
@@ -28,7 +28,7 @@ build()
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
 
 	# Comment below line if you don't want to use 'jemalloc' and remove it from 'depends' list
-	USE_JEMALLOC='-DUSE_JEMALLOC=ON'
+	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
 	cd $srcdir
 	mkdir -p QMPlay2-build
