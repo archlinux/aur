@@ -11,7 +11,7 @@ depends=('git')
 makedepends=('rust' 'cargo')
 optdepends=()
 source=("https://github.com/git-series/git-series/archive/${pkgver}.tar.gz")
-md5sums=('SKIP')
+sha256sums=('d70c9a2105c69fdd6059c04285ddb74b3b10852d9729dd8a14681b9bf36790be')
 
 build() {
   cd "$srcdir/git-series-${pkgver}"

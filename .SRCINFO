@@ -10,7 +10,7 @@ pkgbase = git-series
 	makedepends = cargo
 	depends = git
 	source = https://github.com/git-series/git-series/archive/0.8.10.tar.gz
-	md5sums = SKIP
+	sha256sums = d70c9a2105c69fdd6059c04285ddb74b3b10852d9729dd8a14681b9bf36790be
 
 pkgname = git-series
 
