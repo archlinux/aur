@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libjpeg-turbo
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
@@ -44,9 +44,9 @@ package() {
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
     ln -s /usr/include/jpegint.h "$pkgdir/usr/${_arch}/include/jpegint.h"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    rm -r "$pkgdir/usr/${_arch}/doc"
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/doc"
   done
 }
