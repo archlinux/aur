@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=memlockd
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Memlockd is a daemon that locks files into memory. It is meant to increase the chances of recovery from paging issues."
 arch=('any')
 url="https://doc.coker.com.au/projects/memlockd/"
@@ -34,6 +34,7 @@ package() {
         install -d -m 644 $pkgdir/etc/memlockd.d
         install -D -m 755 memlockd $pkgdir/usr/bin/memlockd
         install -D -m 644 memlockd.8 $pkgdir/usr/share/man/man8/memlockd.8
+        install -d -m 644 $pkgdir/usr/lib/memlockd
         install -D -m 644 memlockd.service $pkgdir/usr/lib/systemd/system/memlockd.service
         install -D -m 644 $srcdir/memlockd-sysusers.conf $pkgdir/usr/lib/sysusers.d/memlockd.conf
 }
