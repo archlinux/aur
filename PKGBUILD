@@ -2,7 +2,7 @@
 
 pkgbase=python-case
 pkgname=('python-case' 'python2-case')
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python unittest Utilities"
 arch=('any')
