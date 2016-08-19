@@ -1,6 +1,10 @@
 Game Changelog
 http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
+0.95.6KARP.20160809
+* support for KARP edition
+* let "HOOKS" update desktop file-database
+
 0.95.4.20160724-1
 * new upstream version
 
