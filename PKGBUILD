@@ -9,7 +9,7 @@
 pkgname=libarmavlink-git
 pkgver=r65.c462be4
 pkgrel=1
-pkgdesc="ARSDK3 MAVLink"
+pkgdesc="ARSDK MAVLink file manager"
 arch=(x86_64)
 url="http://developer.parrot.com/"
 license=('custom')

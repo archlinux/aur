@@ -1,5 +1,5 @@
 pkgbase = libarmavlink-git
-	pkgdesc = ARSDK3 MAVLink
+	pkgdesc = ARSDK MAVLink file manager
 	pkgver = r65.c462be4
 	pkgrel = 1
 	url = http://developer.parrot.com/
