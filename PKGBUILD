@@ -1,26 +1,26 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-series
-pkgver=0.8.7
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Git extension that tracks changes to a patch series over time"
 arch=('i686' 'x86_64')
 url="http://github.com/git-series/git-series"
-license=('Unknown')
+license=('MIT')
 depends=('git')
 makedepends=('rust' 'cargo')
 optdepends=()
-source=("git+https://github.com/git-series/git-series.git#tag=v${pkgver}")
+source=("https://github.com/git-series/git-series/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/git-series"
+  cd "$srcdir/git-series-${pkgver}"
   export CARGO_HOME="$srcdir"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/git-series"
+  cd "$srcdir/git-series-${pkgver}"
   install -m755 -D "target/release/git-series" "$pkgdir/usr/bin/git-series"
   install -D "git-series.1" "$pkgdir/usr/man/man1/git-series.1"
 }
