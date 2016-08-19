@@ -1,0 +1,22 @@
+pkgbase = lib32-gitter
+	pkgdesc = Where developers come to talk
+	pkgver = 3.1.0
+	pkgrel = 0
+	url = https://gitter.im
+	install = gitter.install
+	arch = i686
+	license = unknown
+	makedepends = tar
+	makedepends = binutils
+	depends = libsystemd
+	depends = desktop-file-utils
+	depends = gconf
+	noextract = gitter_3.1.0_i386.deb
+	options = !strip
+	source = https://update.gitter.im/linux32/gitter_3.1.0_i386.deb
+	source = gitter.sh
+	md5sums = 84218f2b1850026f0ce9440ab74efd90
+	md5sums = c64f66a8e47439c42b00da135665c9ee
+
+pkgname = lib32-gitter
+
