@@ -2,7 +2,7 @@
 
 pkgname=pingormail
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Ping or connect to address. If no result, it send an email"
 arch=('any')
 url="https://github.com/Chipsterjulien/pingormail"
