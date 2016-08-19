@@ -15,7 +15,7 @@ source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
 depends=('zarafa-webapp>=2.1.2-2')
-md5sums=('SKIP'
+md5sums=('373bbc351c5a00cc1349ced727fbc25a'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
