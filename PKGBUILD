@@ -1,7 +1,7 @@
-# Maintainer: Ma Jiehong <majiehong.com/pages/contact.html>
+# Maintainer: Ma Jiehong <email@majiehong.com>
 pkgname=ttf-cwtex-q-fonts
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of five Chinese truetype fonts derived from cwTeX"
 arch=('i686' 'x86_64')
 url="https://github.com/l10n-tw/cwtex-q-fonts"

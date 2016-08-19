@@ -1,8 +1,8 @@
 post_install() {
   echo -n "==> Rebuilding font cache... "
-  fc-cache -f &> /dev/null
-  mkfontscale /usr/share/fonts/TTF
-  mkfontdir /usr/share/fonts/TTF
+  fc-cache -f /usr/share/fonts/cwttf &> /dev/null
+  mkfontscale /usr/share/fonts/cwttf
+  mkfontdir /usr/share/fonts/cwttf
   echo "done"
 }
 
