@@ -1,9 +1,13 @@
 # Maintainer: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Jan Kašpar <jan.kaspar at gmail dot com>
-pkgname=xrootd
+pkgname=xrootd-abi0
+_pkgname=xrootd
 pkgver=4.4.0
 pkgrel=1
 pkgdesc="A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
+provides=('xrootd'
+          'xrootd-abi0')
+conflicts=('xrootd')
 arch=('i686' 'x86_64')
 url="http://xrootd.org/"
 license=('LGPL3')
@@ -28,7 +32,7 @@ build()
 	mkdir "build"
 	cd "build"
 
-	cmake "$srcdir/xrootd-$pkgver" -D_GLIBCXX_USE_CXX11_ABI=0 -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
+	cmake "$srcdir/$_pkgname-$pkgver" -D_GLIBCXX_USE_CXX11_ABI=0 -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
 	make ${MAKEFLAGS} || return 2
 }
 
