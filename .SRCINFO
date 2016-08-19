@@ -1,0 +1,15 @@
+pkgbase = wmnotify
+	pkgdesc = dockapp email notification program for POP3 and IMAP4 servers
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.hugovil.com/projet.php?proj=wmnotify&lang=en_US
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = libsndfile
+	source = http://www.hugovil.com/repository/wmnotify/wmnotify-1.0.1.tar.gz
+	md5sums = fc6a6d981ac75180a8113a3af60e498f
+
+pkgname = wmnotify
+
