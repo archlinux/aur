@@ -1,0 +1,25 @@
+CC = gcc
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -IIncludes -DHAVE_CONFIG_H -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+LDFLAGS = -shared
+RM = rm -f
+TARGET_LIB = libarmedia.so
+
+SRCS = gen/Sources/ARMEDIA_Error.c \
+	Sources/ARMEDIA_VideoEncapsuler.c \
+	Sources/ARMEDIA_VideoAtoms.c
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${TARGET_LIB}
+
+$(TARGET_LIB): $(OBJS)
+	$(CC) ${LDFLAGS} -o $@ $^
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
