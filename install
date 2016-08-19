@@ -1,53 +1,133 @@
+#!/bin/bash
+
+function setconf() {
+    # 1: field / 2: value / 3: file
+    sed -i "s|^#*\s*\($1\).*|\1 = $2|" $3
+}
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+    
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+function installbasics() {
+    # create tempdirs and users from /usr/lib/*.d
+    systemctl restart systemd-sysusers
+    systemd-tmpfiles --create
+
+    installdir zarafa:zarafa 0700 0600 /var/log/zarafa
+    installdir zarafa:zarafa 0700 0600 /var/lib/zarafa
+    installdir zarafa:zarafa 0700 0600 /var/lib/zarafa/search
+    installdir zarafa:zarafa 0700 0600 /var/lib/zarafa/presence
+    
+    # due to a bug/exception it's impossible to execute phps mapi modul without browsable dir
+    installdir zarafa:zarafa 0755 0600 /etc/zarafa
+  
+    # fix missing python symlink for presence
+    if [[ ! -e "/usr/bin/python" ]];
+    then
+	ln -s /usr/bin/python2 /usr/bin/python
+    fi    
+}
+
 post_install() {
+    installbasics
+
+    # CONFIG
+    # => defaults
+    for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
+	install --backup=simple --suffix .pacsave -o zarafa -g zarafa -m 0600  ${cfg} /etc/zarafa
+    done
   
-  # => create user
-  getent group zarafa &>/dev/null || groupadd -r zarafa
-  getent passwd zarafa &>/dev/null || useradd -r -c 'Zarafa Groupware Suite' -g zarafa -d /dev/null -s /bin/false zarafa
-  passwd -l zarafa &>/dev/null
+    # => server.cfg
+    _mysql_password="$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16)"
+    setconf "mysql_password" "${_mysql_password}" "/etc/zarafa/server.cfg"
+
+    # => ical.cfg
+    if [[ -e "/etc/localtime" ]];
+    then
+	setconf "server_timezone" "$(readlink -f /etc/localtime | sed  's|/usr/share/zoneinfo/||' | tr '_' ' ')" "/etc/zarafa/ical.cfg"
+    fi
   
+    # => presence.cfg
+    _presence_password="$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16)"
+    setconf "server_secret_key" "${_presence_password}" "/etc/zarafa/presence.cfg"
 
-  if [ ! -d "/var/lib/mysql" ]
-  then
-   # => create database
-   mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-   systemctl start mysqld
 
-   # => prepare database
-   mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa; GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa'; SET GLOBAL max_allowed_packet=16777216;"
+    # INFORM
+    cat <<EOF
+
+
+Zarafa-Server installation
+
+1.) Initialize MySQL:
+
+  $ mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  $ systemctl start mysqld
+  $ mysql_secure_installation  
+
+2.) Create/Install Zarafa database:
+
+  $ mysql -u root -p
+
+  mysql> CREATE DATABASE IF NOT EXISTS zarafa;
+  mysql> GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';
+
+3.) Create SSL-Keys/ -Certificates
+ 
+  $ /usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh
   
-  else
-   # => show instructions
-   echo ">>> MySQL user zarafa, with unrestricted access to a "zarafa" database, must exist"
-   echo "    > CREATE DATABASE IF NOT EXISTS zarafa;"
-   echo "    > GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa';"
-   echo ">>> Run /usr/bin/mysql_secure_installation"
-   echo 
-   echo ">>> Ensure the GLOBAL MySQL variable, max_allowed_packet, is >= 16MB, or is SESSION writable"
-   echo "    > SET GLOBAL max_allowed_packet=16777216;"
-   echo
-   echo ">>> Log files located at /var/log/zarafa"
+4.) Optimize Mysql and Zarafa for installed system
 
-  fi
+  $ /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh
+  
+5.) Start Zarafa-Server and create tables
 
-  # => set permission (PWD)
-  chown zarafa:zarafa -R /var/log/zarafa
-  chown zarafa:zarafa -R /var/lib/zarafa
+  $ systemctl start zarafa-server
 
-  # => copy example configs to their active locations
-  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
-    cp -n ${cfg} /etc/zarafa
-  done
+6.)  Read More
 
-  /usr/share/doc/zarafa/install-ssl.sh
-  return0
+   https://wiki.archlinux.org/index.php/MySQL
+   https://pietma.com/run-and-access-zarafa/
+   https://pietma.com/optimize-zarafa-and-mysql-mariadb/
+
+   
+EOF
+ 
+    return 0
 }
 
 post_upgrade() {
-  return 0
+    local newPackageVersion="$1"
+    local oldPackageVersion="$2"
+
+    case "$oldPackageVersion" in
+	7.2.1*)
+    	    installbasics
+
+            # CONFIG
+	    # => defaults
+    	    for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
+		install --backup=simple -o zarafa -g zarafa -m 0600 ${cfg}.pacnew /etc/zarafa
+	    done
+
+	    echo "Please check /etc/zarafa for new configuration values!"
+	    ;;
+	*)
+	    ;;	
+    esac
+    
+    return 0
 }
 
 pre_remove() {
-  userdel zarafa &> /dev/null
-  groupdel zarafa &> /dev/null
-  return 0
+    return 0
 }
