@@ -71,15 +71,15 @@ _ibus_mozc="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
-_utdicver=20160627
+_mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
+_utdicver=20160815
 _zipcoderel=201607
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2313.102.20160627
+pkgver=2.18.2548.102.20160815
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -95,8 +95,8 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          '0b0b3f8530dda8e2b9e31a6b93813d2623f4de9d'
-          '24938f24d6ab0f41063b3a0da627e7117df5d59d'
+          'e8b55639229f0db31ff9791d4bbc499623c320da'
+          'fbb3392c67c25b20c0d4eaabf9fdf994338191e1'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '0679ed0cdda02fcf43dc7562e6de54228adfc8cb'
           'f50936e8f21f5c727d3ebd73583ee0fd900bc7d0'
@@ -121,7 +121,7 @@ fi
 
 
 mozcver() {
-  . "${srcdir}/mozc/src/mozc_version_template.txt"
+  . "${srcdir}/mozc/src/data/version/mozc_version_template.txt"
   printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
 }
 
