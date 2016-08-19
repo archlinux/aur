@@ -1,4 +1,4 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 # Contributor: Archist archist@die-optimisten.net
 
 # according to https://wiki.archlinux.org/index.php/Web_application_package_guidelines
@@ -9,27 +9,28 @@ pkgname=('zarafa-webapp'
 	 'zarafa-webapp-files'
 	 'zarafa-webapp-folderwidgets'
 	 'zarafa-webapp-gmaps'
-	 'zarafa-webapp-oauthlib'
 	 'zarafa-webapp-pimfolder'
-	 'zarafa-webapp-quickitems'
 	 'zarafa-webapp-titlecounter'
 	 'zarafa-webapp-webappmanual'
-	 'zarafa-webapp-webodf'
 	 'zarafa-webapp-xmpp'
          'zarafa-webapp-zdeveloper')
-groups=('zarafa')
-pkgver=2.1.2
-_pkgrel=2.1.2
-pkgrel=87
+groups=('zarafa'
+	'kopano'
+	'zarafa-webapp-plugins')
+pkgver=2.2.0.414
+_pkgrel=2.2.0
+pkgrel=1
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
 license=('AGPL3')
 depends=('php<7'
+	 'nginx'
 	 'php-fpm<7')
 makedepends=('apache-ant'
-	     'gettext')
-source=("webapp-${pkgver}.tar.gz::http://download.zarafa.com/community/final/WebApp/${_pkgrel}/sourcecode/webapp-${pkgver}.tar.gz"
+	     'gettext'
+	     'libxml2')
+source=("webapp-${pkgver}.tar.gz::https://download.zarafa.com/community/final/WebApp/${_pkgrel}/sourcecode/webapp-${pkgver}.tar.gz"
 	"nginx-location.conf"
 	"nginx-ssl.example.conf"
 	"php-fpm.example.conf"
@@ -37,20 +38,20 @@ source=("webapp-${pkgver}.tar.gz::http://download.zarafa.com/community/final/Web
 	"zarafa-webapp.ini"
 	"zarafa-webapp.install"
 	"compress-static")
-md5sums=('231a0ceb064c9c213de6dcdd2b7ae732'
+md5sums=('SKIP'
          'fa930c1df0c132dd9edbbe7004452851'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
          '7adcf5e023718421a5e8e07e5e9a2480'
          'cc8143c1fa12911a17578c1e775225fe'
-         'daedd4114b213e9279806ee720eeb1ef'
-         'bf62e8e0d7d5be45762f93b8340bf673'
+         'SKIP'
+         'SKIP'
          'd737d82dfab24adc516c001238a4119f')
 
 build() {
     # create translations, compress javascript-files
     cd ${srcdir}/zarafa-webapp-${pkgver}
-    ant deploy
-    ant deploy-plugins
+    
+    make antdeploy
 }
 
 package_zarafa-webapp() {
@@ -82,18 +83,18 @@ package_zarafa-webapp() {
 
     mkdir -p ${pkgdir}/etc/webapps/${pkgname}
     
-    ## config mains
-    cp config.php.dist ${pkgdir}/etc/webapps/${pkgname}/config.php
-    cp debug.php.dist ${pkgdir}/etc/webapps/${pkgname}/debug.php
-    ln -s /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/config.php    
-
     ## config examples
     cp ${srcdir}/php-fpm.example.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp ${srcdir}/nginx-ssl.example.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/${pkgname}/
     cp zarafa-webapp.conf ${pkgdir}/etc/webapps/${pkgname}/apache.example.conf
-    cp ${pkgdir}/etc/webapps/${pkgname}/config.php ${pkgdir}/etc/webapps/${pkgname}/config.example.php
-    cp ${pkgdir}/etc/webapps/${pkgname}/debug.php ${pkgdir}/etc/webapps/${pkgname}/debug.example.php
+    
+    ## config mains
+    cp config.php.dist ${pkgdir}/etc/webapps/${pkgname}/config.example.php
+    cp debug.php.dist ${pkgdir}/etc/webapps/${pkgname}/debug.example.php
+    sed -i -e 's|\(\"DEBUG_LOADER\", \).*$|\1LOAD_DEBUG);|' ${pkgdir}/etc/webapps/${pkgname}/debug.example.php    
+
+    ln -s /etc/webapps/${pkgname}/config.php ${pkgdir}/usr/share/webapps/${pkgname}/config.php    
 
     ## php 
     mkdir -p ${pkgdir}/etc/php/conf.d
@@ -116,6 +117,8 @@ package_plugin() {
 
     # plugin
     depends=('zarafa-webapp')
+    groups=('zarafa'
+	    'zarafa-webapp-plugins')
     
     mkdir -p ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${pluginname}/
     cp -R * ${pkgdir}/usr/share/webapps/zarafa-webapp/plugins/${pluginname}/
@@ -166,15 +169,7 @@ package_zarafa-webapp-gmaps() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
-package_zarafa-webapp-oauthlib() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
 package_zarafa-webapp-pimfolder() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-quickitems() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
@@ -183,10 +178,6 @@ package_zarafa-webapp-titlecounter() {
 }
 
 package_zarafa-webapp-webappmanual() {
-    package_plugin ${pkgname//zarafa-webapp-/}
-}
-
-package_zarafa-webapp-webodf() {
     package_plugin ${pkgname//zarafa-webapp-/}
 }
 
