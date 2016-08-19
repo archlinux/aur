@@ -1,0 +1,14 @@
+pkgbase = wmshutdown
+	pkgdesc = a dockapp for shutting down your machine
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.dockapps.net/wmshutdown
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.dockapps.net/download/wmshutdown-1.4.tar.gz
+	md5sums = a0297f89e100464ed54d2f41a7af69a2
+
+pkgname = wmshutdown
+
