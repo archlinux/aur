@@ -5,15 +5,17 @@
 
 pkgname=lib32-libgcrypt15
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose cryptographic library based on the code from GnuPG (32-bit)'
 arch=('x86_64')
 url='http://www.gnupg.org'
 license=('LGPL')
 depends=('lib32-libgpg-error')
 makedepends=('gcc-multilib' 'libtool-multilib')
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2")
-sha512sums=('2c16912de66bc83adfbf8f43a2a9f57e1afcc866b1774ec11a670e2a793a7c5f2029d134c0bda681c9cb95f7dcc166133782c124e520b7fbe246ec10a9e1c06a')
+source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar."{gz,gz.sig})
+sha512sums=('8fced63f1bb2f3b60d456df168479ebe77acf2a8963f5dc831a25e839e0930148e21568117e54a63c69cc40650026b1ad12cb50a71d2b8665cfde226041f490d'
+            'SKIP')
+validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
 prepare() {
   cd libgcrypt-${pkgver}
@@ -44,7 +46,6 @@ check() {
 
 package() {
   cd libgcrypt-${pkgver}
-
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,lib32/libgcrypt.so,share}
 }
