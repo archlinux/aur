@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgcrypt
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
 url="http://www.gnupg.org"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-configure transfig ghostscript)
 options=(staticlibs !buildflags !strip)
 source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
 "libgcrypt-use-correct-def-file.patch")
-md5sums=('ec7b21dd2134af4b3aece5e5dfd3a700'
+md5sums=('c869e542cc13a1c28d8055487bf7f5c4'
          '531e089caca74b5daf130b7173c2a5c5')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
