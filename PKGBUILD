@@ -1,12 +1,12 @@
 # Contributor: bubla <matej.tyc@gmail.com>
 pkgname=mingw-w64-libtiff
 pkgver=4.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=(any)
 url="http://www.remotesensing.org/libtiff"
 license=("custom")
-depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz)
+depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz libtiff)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
@@ -34,9 +34,9 @@ package() {
     make DESTDIR="${pkgdir}" install
     cp "${srcdir}/tiff-${pkgver}/libtiff/"{tiffiop,tif_dir}.h "${pkgdir}/usr/${_arch}/include/"
 		cp libtiff/tif_config.h "${pkgdir}/usr/${_arch}/include/"
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    #rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
