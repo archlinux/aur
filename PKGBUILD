@@ -1,22 +1,25 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 pkgname=zarafa-libical
 pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 _libicalver=0.44
-pkgrel=86
+pkgrel=66
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
-arch=('any')
+arch=('armv7h'
+      'armv6h'
+      'x86_64'
+      'i686')
 url="http://www.vmime.org/"
 license=('GPL')
 depends=('glibc')
 makedepends=('')
 provides=("libical=${_libicalver}")
-source=("http://download.zarafa.com/community/final/7.1/7.1.7-42779/sourcecode/libical-${_libicalver}.tar.gz"
-	"http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-byday-loop.diff"
-	"http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-configure-undef-fatal-errors.diff"
-	"http://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-event-outside-timezone-def.diff"
+source=("https://download.zarafa.com/community/final/7.1/7.1.7-42779/sourcecode/libical-${_libicalver}.tar.gz"
+	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-byday-loop.diff"
+	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-configure-undef-fatal-errors.diff"
+	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-event-outside-timezone-def.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-nth-recur-overflow.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-win32-add-generated-files.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-win32-fix-compile-errors.diff")
