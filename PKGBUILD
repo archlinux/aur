@@ -2,13 +2,13 @@
 # Upstream URL: https://github.com/gabmus/razercommander
 
 pkgname=razercommander-git
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=4
 pkgdesc='A simple GTK control center for managing razer peripherals on Linux. Make sure to install https://github.com/terrycain/razer_drivers first.'
 arch=('x86_64')
 url='https://github.com/gabmus/razercommander'
 license=('GPLv3')
-depends=('gtk3>=3.16','gksu','python')
+depends=('gtk3>=3.20','python')
 makedepends=('git')
 source=("razercommander::git+git://github.com/gabmus/razercommander")
 md5sums=('SKIP')
