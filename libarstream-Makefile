@@ -1,0 +1,29 @@
+CC = gcc
+CFLAGS = -fPIC -Wall -Wextra -O2 -g -IIncludes -DHAVE_CONFIG_H
+LDFLAGS = -shared
+RM = rm -f
+TARGET_LIB = libarstream.so
+
+SRCS = Sources/ARSTREAM_Buffers.c \
+	Sources/ARSTREAM_NetworkHeaders.c \
+	Sources/ARSTREAM_Reader.c \
+	Sources/ARSTREAM_Reader2.c \
+	Sources/ARSTREAM_Sender.c \
+	Sources/ARSTREAM_Sender2.c \
+	gen/Sources/ARSTREAM_Error.c
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${TARGET_LIB}
+
+$(TARGET_LIB): $(OBJS)
+	$(CC) ${LDFLAGS} -o $@ $^
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d)
