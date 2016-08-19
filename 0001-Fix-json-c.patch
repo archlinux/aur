@@ -1,0 +1,75 @@
+--- a/libardiscovery/Includes/libARDiscovery/ARDISCOVERY_Device.h
++++ b/libardiscovery/Includes/libARDiscovery/ARDISCOVERY_Device.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_H_
+ #define _ARDISCOVERY_DEVICE_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/libardiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.c
++++ b/libardiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.c
+@@ -37,7 +37,7 @@
+  */
+ 
+ #include <stdlib.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+--- a/libardiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.h
++++ b/libardiscovery/Sources/BLE/ARDISCOVERY_DEVICE_Ble.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_BLE_H_
+ #define _ARDISCOVERY_DEVICE_BLE_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
++++ b/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
+@@ -37,7 +37,7 @@
+  */
+ 
+ #include <stdlib.h>
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARSAL/ARSAL_Print.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+--- a/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.h
++++ b/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.h
+@@ -38,7 +38,7 @@
+ #ifndef _ARDISCOVERY_DEVICE_WIFI_H_
+ #define _ARDISCOVERY_DEVICE_WIFI_H_
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ #include <libARNetworkAL/ARNETWORKAL_Manager.h>
+ #include <libARNetworkAL/ARNETWORKAL_Error.h>
+ #include <libARNetwork/ARNETWORK_IOBufferParam.h>
+--- a/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
++++ b/libardiscovery/Sources/Wifi/ARDISCOVERY_DEVICE_Wifi.c
+@@ -1189,7 +1189,7 @@ eARDISCOVERY_ERROR ARDISCOVERY_DEVICE_Wifi_ReceiveJsonCallback (uint8_t *dataRx,
+     if (error == ARDISCOVERY_OK)
+     {
+         // get ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_C2DPORT_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             specificWifiParam->controllerToDevicePort = json_object_get_int(valueJsonObj);
+@@ -1197,7 +1197,7 @@ eARDISCOVERY_ERROR ARDISCOVERY_DEVICE_Wifi_ReceiveJsonCallback (uint8_t *dataRx,
+         
+         // get ARDISCOVERY_CONNECTION_JSON_STATUS_KEY
+ 
+-        valueJsonObj = json_object_object_get (jsonObj, ARDISCOVERY_CONNECTION_JSON_STATUS_KEY);
++        json_object_object_get_ex (jsonObj, ARDISCOVERY_CONNECTION_JSON_STATUS_KEY, &valueJsonObj);
+         if (valueJsonObj != NULL)
+         {
+             specificWifiParam->connectionStatus = json_object_get_int(valueJsonObj);

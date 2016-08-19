@@ -1,0 +1,26 @@
+pkgbase = libardiscovery-git
+	pkgdesc = ARSDK Discovery and Connection Management Layer
+	pkgver = r423.cb4f019
+	pkgrel = 1
+	url = http://developer.parrot.com/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libarsal-git
+	depends = libarnetworkal-git
+	depends = libarnetwork-git
+	depends = json-c
+	depends = avahi
+	source = libardiscovery::git+https://github.com/Parrot-Developers/libARDiscovery
+	source = libardiscovery-Makefile
+	source = 0001-Fix-json-c.patch
+	source = Config-linux-config.h
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 0904602bdd8ae1d6b1a5923f2c16512dbdb90acddef0c35b7726831bad533c1c
+	sha256sums = 74300421b1799e0a32dc62eeded41b56a756b9c4ba95ad42402373e9ea9c3c44
+	sha256sums = 5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7
+	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
+
+pkgname = libardiscovery-git
+
