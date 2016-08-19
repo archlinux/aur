@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.0.0.85
+pkgver=4.0.0.90
 pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
@@ -22,9 +22,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.svp-team.com/files/svp4-linux-64.tbz2")
+source=("https://cdn.rawgit.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp-$pkgver.tbz2")
+# I am rehosting the binaries
+# taken from
+# http://www.svp-team.com/files/svp4-linux-64.tbz2
+# at https://gist.github.com/phiresky/1e2cbd30bed4e5978771af232d11afd1
+# so they are correctly versioned and old versions still exist
 noextract=()
-sha1sums=('44cff6681c5be0625c7fa42aa2c70ca8ceb97d0b')
+sha1sums=('8f37727fd041ecf57fbe604e6eadd3489d9f2861')
 validpgpkeys=()
 
 prepare() {
