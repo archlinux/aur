@@ -1,15 +1,15 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=n1
-pkgver=0.4.47
+pkgver=0.4.49
 pkgrel=1
 pkgdesc="A new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended."
 arch=('x86_64')
 url="https://nylas.com/N1/"
 license=('MIT')
 depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib')
-source=(N1-${pkgver}.deb::https://edgehill.s3-us-west-2.amazonaws.com/${pkgver}-3a2a94c/linux-deb/x64/N1.deb)
+source=(N1-${pkgver}.deb::https://edgehill.s3-us-west-2.amazonaws.com/${pkgver}-c9c04b7/linux-deb/x64/N1.deb)
 install=${pkgname}.install
-md5sums=('d1c3529df4eb850428fd9c1c2993b7fa')
+md5sums=('fd67573182b164136fd6c7bc932c908e')
 package() {
     msg2 "Extracting data.tar.gz..."
     bsdtar -xf data.tar.gz -C "${pkgdir}/"
