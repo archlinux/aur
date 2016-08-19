@@ -1,4 +1,5 @@
-# Maintainer: Niels Martignène <niels.martignene@gmail.com>
+# Maintainer: Hannes Eichblatt <aur@hanneseichblatt.de>
+# Contributor: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: Oscar Pereira <oscar a erroneousthoughts org>
 
 pkgname=kpcli
