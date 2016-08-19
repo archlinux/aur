@@ -1,0 +1,14 @@
+pkgbase = wmpager
+	pkgdesc = simple desktop pager dockapp
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.dockapps.net/wmpager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.dockapps.net/download/wmpager-1.2.tar.gz
+	md5sums = 402f6678bc29d5c355e9bc79a28faf59
+
+pkgname = wmpager
+
