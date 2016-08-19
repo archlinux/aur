@@ -18,5 +18,7 @@ build() {
 package() {
     cd "${srcdir}/tldextract-${pkgver}"
     python2 setup.py install --root=${pkgdir} --optimize=1 --skip-build
+    # Avoid conflict with the python3 version
+    mv "${pkgdir}/usr/bin/tldextract" "${pkgdir}/usr/bin/py2-tldextract"
 }
 
