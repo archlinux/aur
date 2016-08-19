@@ -7,11 +7,11 @@ _bldtype=Release
 #_bldtype=Debug
 
 _uimmozcrev=321.3ea28b1
-_mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
+_mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.17.2313.102
+pkgver=2.18.2548.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ sha1sums=('SKIP'
 
 
 pkgver() {
-  . "${srcdir}/${_pkgname}/src/mozc_version_template.txt"
+  . "${srcdir}/mozc/src/data/version/mozc_version_template.txt"
   printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
 }
 
