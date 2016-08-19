@@ -3,16 +3,14 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 ##### Configuration Options
-# Specify GPU compute capability Tesla (1.x) or Fermi (2.x) or Kepler (3.x)
-#_GPU_TARGET=Tesla
-#_GPU_TARGET=Fermi
-_GPU_TARGET=Kepler
+# Set to latest CUDA target
+_GPU_TARGET=sm50
 ##### End
 
 pkgname=magma-atlas
-pkgver=1.7.0
+pkgver=2.0.2
 pkgrel=1
-pkgdesc="A dense linear algebra library, similar to LAPACK, for doing caluclations on GPUs and GPUs simultaneously (built against CUDA and atlas-lapack)"
+pkgdesc="A dense linear algebra library, similar to LAPACK, for doing caluclations on GPUs and CPUs simultaneously (built against CUDA and atlas-lapack)"
 arch=("i686" "x86_64")
 url="http://icl.cs.utk.edu/magma/"
 provides=(magma)
@@ -20,8 +18,8 @@ conflicts=('magma')
 license=(custom)
 depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack")
 options=('staticlibs')
-sha1sums=('8f0ad5e981f2bf57c2e012f90993d4b8a5cd5eac')
-source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}-b.tar.gz")
+sha256sums=('930e0420692695f9bbdb7b89af93f0969e1adc3888df89f26800ba6bc3347f70')
+source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
 	cd ${srcdir}/magma-${pkgver}
