@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-termcap
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 arch=(any)
 pkgdesc="Terminal feature database (mingw-w64)"
 depends=(mingw-w64-crt)
@@ -39,11 +39,11 @@ package() {
     cd "$srcdir/termcap-$pkgver/build-${_arch}"
     # make install has no support for destdir
     make install prefix="${pkgdir}/usr/${_arch}" exec_prefix="${pkgdir}/usr/${_arch}" oldincludedir=
-    rm -r "$pkgdir"/usr/${_arch}/info/
+    #rm -r "$pkgdir"/usr/${_arch}/info/
     mkdir -p "${pkgdir}"/usr/${_arch}/{bin,lib}
     install -m 0755 libtermcap-0.dll "${pkgdir}/usr/${_arch}/bin"
     install -m 0644 libtermcap.dll.a "${pkgdir}/usr/${_arch}/lib"
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip --strip-debug "$pkgdir"/usr/${_arch}/lib/*.a
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
 }
