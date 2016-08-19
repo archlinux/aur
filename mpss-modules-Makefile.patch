@@ -1,0 +1,36 @@
+From 58202e4cbdce40e3bf7352b64e293d3f0d4f853b Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcelhuberfoo@gmail.com>
+Date: Fri, 19 Aug 2016 09:27:06 +0200
+Subject: replace KERNEL_VERSION with KERNELRELEASE
+
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git mpss-modules/Makefile mpss-modules/Makefile
+index 42dd454..9c13aa3 100644
+--- mpss-modules/Makefile
++++ mpss-modules/Makefile
+@@ -42,8 +42,8 @@ export MPSS_BUILDNO := $(MPSS_BUILDNO)
+ export MPSS_BUILTBY := $(shell echo "`whoami`@`uname -n`")
+ export MPSS_BUILTON := $(shell date +'%F %T %z')
+ 
+-KERNEL_VERSION := $(shell uname -r)
+-KERNEL_SRC = /lib/modules/$(KERNEL_VERSION)/build
++KERNELRELEASE := $(shell uname -r)
++KERNEL_SRC = /lib/modules/$(KERNELRELEASE)/build
+ 
+ INSTALL = install
+ INSTALL_d = $(INSTALL) -d
+@@ -54,7 +54,7 @@ prefix = /usr/local
+ sysconfdir = $(prefix)/etc
+ includedir = $(prefix)/include
+ 
+-kmodinstalldir = /lib/modules/$(KERNEL_VERSION)
++kmodinstalldir = /lib/modules/$(KERNELRELEASE)
+ kmodincludedir = $(realpath $(KERNEL_SRC))/include/modules
+ 
+ # If building the host's driver for a MIC co-processor card, which card
+-- 
+2.9.3
+

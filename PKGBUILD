@@ -11,7 +11,7 @@ pkgname=(
 )
 pkgdesc="Intel® Manycore Platform Software Stack"
 pkgver=3.7.1
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss"
 license=('LGPL2.1')
@@ -31,6 +31,7 @@ source=(
   mpss-modules-init-indent.patch
   mpss-modules-rcu-lockup.patch
   mpss-modules-page-cache.patch
+  mpss-modules-Makefile.patch
   mpss-gen-symver-map-python3-compat.patch
   mpss-micmgmt-misleading-indent.patch
   mpss-micmgmt-remove-inline0.patch
@@ -51,6 +52,7 @@ sha256sums=('3a8d070d7b82d41afa67766db8e3305621643ced1b3f8e2845bf333cdf39b83b'
             'b1264678b77a3ae64716e507e225fce5cfd1c77ae77d0119071c28cab74d0a97'
             '3690295e9e24e6a8b42323ca5b2b76f56a3a8f4bdee75b3dfc5a3f01e3f3d1bc'
             'ace053c75b096c2e120c73076c9a86fcbf1528518761766b9e41e975dc44ae43'
+            '565d86b880c0dbdd6c0a37383264175f0e3f74db45efa7dac166191ac129e44c'
             '17791147eef797e4fe161bb08e989685303dbff866d01f2e37335c09e6367688'
             '64d26ff84029d246868f995cf9fd49b20851a671208c3fa474e0fef5216708cd'
             '99d0e6d58a14bfbbe96b41de8f0f4383225acaefba8e4d48c7ff86924502c545'
