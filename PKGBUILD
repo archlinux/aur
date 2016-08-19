@@ -14,14 +14,14 @@ source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$pkg
 md5sums=('SKIP')
 
 build() {
-  cd dockapps-*
+  cd dockapps*
   autoreconf -fvi
   ./configure --prefix=/usr/ --without-examples --without-font
   make
 }
 
 package() {
-  cd dockapps-*
+  cd dockapps*
   make DESTDIR="$pkgdir/" install
   ln -s libdockapp/dockapp.h "$pkgdir/usr/include/dockapp.h"
 }
