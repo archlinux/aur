@@ -1,0 +1,10 @@
+[Unit]
+Description=odrive agent
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/odriveagent
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
