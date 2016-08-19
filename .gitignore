@@ -1,2 +1,4 @@
 lighthouse
 src
+*.pkg*
+pkg
