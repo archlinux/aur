@@ -2,14 +2,14 @@
 
 pkgname=hets-desktop
 pkgver=0.99_1471594578
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
 
 url="http://hets.eu"
 arch=('i686' 'x86_64')
 license=('custom:hets-license')
-depends=('hets-commons' 'hets-lib' 'tcl' 'tk' 'ncurses' 'cairo' 'glib2' 'gettext' 'fontconfig' 'libglade')
+depends=('hets-commons' 'hets-lib' 'tcl' 'tk' 'ncurses' 'cairo' 'glib2' 'gettext' 'fontconfig' 'libglade' 'udrawgraph')
 optdepends=('spass' 'eprover' 'darwin' 'pellet' 'isabelle')
 makedepends=('ghc>=7.8.4')
 provides=('hets-dekstop')
