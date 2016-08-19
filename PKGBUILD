@@ -1,20 +1,20 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('desktopnotifications')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
-pkgver=1.0
-pkgrel=86
+groups=('zarafa'
+	'kopano'
+        'zarafa-webapp-plugins')
+pkgver=1.0.31.28
+pkgrel=1
 pkgdesc='Desktopnotifications plugin for Zarafa Webapp'
 arch=('any')
-source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-desktopnotifications-1.0-13.1.noarch.rpm"
+source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-desktopnotifications-1.0.31-28.1.noarch.rpm"
 	"compress-static")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
-depends=('zarafa-webapp'
-	 'php<7'
-	 'php-fpm<7')
-md5sums=('f894c00b7807d9eb6381d4076b98dfc2'
+depends=('zarafa-webapp')
+md5sums=('SKIP'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
