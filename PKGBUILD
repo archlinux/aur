@@ -1,32 +1,27 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-
 pkgname=wmifs
-pkgdesc="A network monitor for all network devices that shows the transmission ratio"
-pkgver=1.3b1
+pkgver=1.8
 pkgrel=1
 arch=(i686 x86_64)
-url="http://web.cs.mun.ca/~gstarkes/wmaker/dockapps/net.html"
+pkgdesc="A network monitor for all network devices that shows the transmission ratio"
+url="http://www.dockapps.net/$pkgname"
 license=('GPL')
 depends=('libxpm')
-source=("http://web.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmifs-1.3b1.tar.gz"
-	"wmifs.patch"
-	"wmifs.1")
-md5sums=('4a6ec0141792debac2803e0697fa1dd6'
-         'd7583278ebea71bc8798337268e56ea3'
-         'a4a2e3977d451946f1fee93a70f6a17f')
+source=("http://www.dockapps.net/download/$pkgname-$pkgver.tar.gz")
+md5sums=('5d74a93c7d1561ecb3949a1eae8f4fbd')
 
 prepare() {
-  cd "${srcdir}"
-  patch -Np1 -b -z .orig -i wmifs.patch
+  cd dockapps-*
+  autoreconf -fiv
 }
 
 build() {
-  cd "${srcdir}/wmifs.app/wmifs"
-  make
+  cd dockapps-*
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make V=0
 }
 
 package() {
-  cd "${srcdir}/wmifs.app/wmifs"
-  make prefix=/usr DESTDIR="${pkgdir}" install
-  install -Dm0644 ../../wmifs.1 "${pkgdir}/usr/share/man/man1/wmifs.1"
+  cd dockapps-*
+  make DESTDIR="$pkgdir" install
 }
