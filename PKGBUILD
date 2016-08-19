@@ -1,12 +1,12 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-series-git
-pkgver=0.8.7
+pkgver=0.8.10.r0.g6249cb2
 pkgrel=1
 pkgdesc="Git extension that tracks changes to a patch series over time"
 arch=('i686' 'x86_64')
 url="http://github.com/git-series/git-series"
-license=('Unknown')
+license=('MIT')
 depends=('git')
 makedepends=('rust' 'cargo')
 optdepends=()

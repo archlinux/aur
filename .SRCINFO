@@ -1,11 +1,11 @@
 pkgbase = git-series-git
 	pkgdesc = Git extension that tracks changes to a patch series over time
-	pkgver = 0.8.7
+	pkgver = 0.8.10.r0.g6249cb2
 	pkgrel = 1
 	url = http://github.com/git-series/git-series
 	arch = i686
 	arch = x86_64
-	license = Unknown
+	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	depends = git
