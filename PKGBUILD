@@ -3,19 +3,17 @@
 
 pkgname=wmsmixer
 pkgver=0.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="a hack to wmmixer which makes some changes to the display"
 arch=('i686' 'x86_64')
-#url="http://dockapps.windowmaker.org/file.php/id/63"
-url="http://web.archive.org/web/20121021072220/http://dockapps.windowmaker.org/file.php/id/63"
+url="http://www.dockapps.net/wmsmixer"
 license=('GPL')
 depends=('libxpm')
 makedepends=('imake')
-#source=("http://dockapps.windowmaker.org/download.php/id/268/${pkgname}-${pkgver}.tar.gz"
-#	"wmsmixer.patch")
-source=("${pkgname}-${pkgver}.tar.gz"
+source=("http://www.dockapps.net/download/${pkgname}-${pkgver}.tar.gz"
 	"wmsmixer.patch")
-md5sums=('02ba412c97c7cc3365690fe74c99f145')
+md5sums=('41d64b4a79756ded25ddb614d574114b'
+         'ebaa6d3394ec845d2c8a2c41cb295d56')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -27,5 +25,3 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-md5sums=('02ba412c97c7cc3365690fe74c99f145'
-         'ebaa6d3394ec845d2c8a2c41cb295d56')
