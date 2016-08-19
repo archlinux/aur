@@ -1,0 +1,15 @@
+pkgbase = openkeeper-cli
+	pkgdesc = Netkeeper for Linux Desktop.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Eventide/openkeeper-cli
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = openssl
+	depends = rp-pppoe
+	source = https://github.com/RainMark/openkeeper-cli/archive/v2.0.tar.gz
+	md5sums = 9757e154d95207e1cc7a6b6833525752
+
+pkgname = openkeeper-cli
+
