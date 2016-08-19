@@ -1,20 +1,20 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('delayeddelivery')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
-pkgver=1.0
-pkgrel=86
+groups=('zarafa'
+	'kopano'
+        'zarafa-webapp-plugins')
+pkgver=1.0.22.70
+pkgrel=1
 pkgdesc='Delayeddelivery plugin for Zarafa Webapp'
 arch=('any')
-source=("https://download.zarafa.com/community/final/WebApp/2.1.2/fedora-22/zarafa-webapp-plugins-delayeddelivery-1.0-56.1.noarch.rpm"
+source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-delayeddelivery-1.0.22-70.1.noarch.rpm"
 	"compress-static")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
-depends=('zarafa-webapp'
-	 'php<7'
-	 'php-fpm<7')
-md5sums=('538d405022102d8d00a899200a6a3369'
+depends=('zarafa-webapp')
+md5sums=('SKIP'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
