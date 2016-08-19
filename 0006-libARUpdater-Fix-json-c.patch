@@ -1,0 +1,23 @@
+--- a/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
++++ b/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
+@@ -46,7 +46,7 @@
+ #include "ARUPDATER_Manager.h"
+ #include "ARUPDATER_Downloader.h"
+ #include "ARUPDATER_Utils.h"
+-#include <json/json.h>
++#include <json-c/json.h>
+ 
+ /* ***************************************
+  *
+--- a/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
++++ b/packages/libARUpdater/Sources/ARUPDATER_Downloader.c
+@@ -1207,7 +1207,8 @@ eARUPDATER_ERROR ARUPDATER_Downloader_GetBlacklistedFirmwareVersionsSync(ARUPDAT
+                 device = malloc(ARUPDATER_MANAGER_DEVICE_STRING_MAX_SIZE);
+                 snprintf(device, ARUPDATER_MANAGER_DEVICE_STRING_MAX_SIZE, "%04x", productId);
+                 
+-                json_object *productJsonObj = json_object_object_get (jsonObj, device);
++                json_object *productJsonObj = NULL;
++                json_object_object_get_ex (jsonObj, device, &productJsonObj);
+                 if ((productJsonObj != NULL) && !is_error(productJsonObj))
+                 {
+                     blacklistedRemoteList = json_object_get_array(productJsonObj);

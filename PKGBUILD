@@ -1,17 +1,22 @@
 # Maintainer: Alexandre Iooss <alexandre.iooss@gmail.com>
 
-# Everything works except libARController because of uthash
-# The uthash in community is too old and create a segfault
-
 pkgname=libarsdk3-git
 pkgver=r22.305521e
-pkgrel=3
+pkgrel=4
 pkgdesc="ARSDK3 C librairies to control Parrot devices"
 arch=(x86_64)
 url="http://developer.parrot.com/"
 license=('custom')
 groups=()
-depends=(curl json-c avahi ffmpeg uthash libarsal-git libarmavlink-git libarnetworkal-git)
+depends=(curl
+         ffmpeg
+         uthash
+         libardiscovery-git
+         libarmavlink-git
+         libarnetworkal-git
+         libarnetwork-git
+         libarsal-git
+         libarstream2-git)
 optdepends=()
 makedepends=(git repo python2-virtualenv)
 provides=()
@@ -22,20 +27,22 @@ options=()
 install=
 source=('arsdk_manifests::git+https://github.com/Parrot-Developers/arsdk_manifests'
         '0001-arsdk_manifests-Remove-libs_and_samples.patch'
-        '0002-Use-local-json-and-curl.patch'
-        '0003-Fix-json-c.patch'
+        '0002-products-Remove-libs_and_samples.patch'
+        '0003-libARController-Fix-json-c.patch'
         '0004-libARController-Fix-uthash-path.patch'
-        '0005-libARDiscovery-Fix-some-warnings.patch'
+        '0005-libARMedia-Fix-json-c.patch'
+        '0006-libARUpdater-Fix-json-c.patch'
         'local-dependencies-atom.mk'
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            '05b9d1f6c908e9c9100b0d0c65f4f74023fc04ea96b1b4e6168fd49c7c76c653'
-            '6ebbeeff36b15dec168572004c0ccf5bf7a9fb83d08490afbdb9da8bbb3b8900'
-            '0b630509176de0ceb48480cde0489095fd58632abeded9e7211de706ab20c926'
-            '2a103ea898e987ee5dfdb111e2dd594ec432e9262db1ba8fdd68ba095ad01857'
-            '82268abab9af48726993b82c7c9ab9a978c13cbddd4ecc4ab4588c0f4e323cc8'
-            '6577c0bae441c02a5a5c2bf23592be33a3d1a7d301f80da5968830dd01af027f'
+            '568dbff69a1de277fa4783755094398fde06dcc3a1f30305a7a65817a6e02a61'
+            '0790aa37fca6cffa53e99b1ca9ad2cdcd44819ec0893767de48ef5087b33136c'
+            'be1bf8b1b8a4105d30a494b03cda6679d44ea207516bae03d9e5913882dd203f'
+            '8c18e3bb918323b0445935649d60f95c6f2759173e881c5ea0d9dc51c07e3fdf'
+            '8e362c058ccf2023fb5df8dbe1307411e3d6221c093af5cc095b37d39b3801aa'
+            '69cbcc090ec8356adbd57461ef58c3b1fe18699647779232673315bce5663c72'
+            'fa1f78bb07ddf17a1afe21995070added4d58bbabed156135dcb7af675ec528f'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
@@ -59,10 +66,11 @@ prepare() {
 	repo sync
 
 	# Patch files
-	patch -p1 -i "$srcdir/0002-Use-local-json-and-curl.patch"
-	patch -p1 -i "$srcdir/0003-Fix-json-c.patch"
+	patch -p1 -i "$srcdir/0002-products-Remove-libs_and_samples.patch"
+	patch -p1 -i "$srcdir/0003-libARController-Fix-json-c.patch"
 	patch -p1 -i "$srcdir/0004-libARController-Fix-uthash-path.patch"
-	patch -p1 -i "$srcdir/0005-libARDiscovery-Fix-some-warnings.patch"
+	patch -p1 -i "$srcdir/0005-libARMedia-Fix-json-c.patch"
+	patch -p1 -i "$srcdir/0006-libARUpdater-Fix-json-c.patch"
 
 	# Add build settings to use archlinux libs
 	mkdir -p "$srcdir/packages/ArchlinuxLibs/Config/linux"
