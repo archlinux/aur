@@ -1,0 +1,15 @@
+pkgbase = wmckgmail
+	pkgdesc = dockapp that checks mail in a gmail mailbox
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.dockapps.net/wmckgmail
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	optdepends = wget: to collect mail
+	source = http://www.dockapps.net/download/wmckgmail-1.1.tar.gz
+	md5sums = 320616f0c4c936c60fa23e18125ea6ae
+
+pkgname = wmckgmail
+
