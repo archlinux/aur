@@ -3,12 +3,12 @@
 pkgname=mingw-w64-openssl
 _ver=1.0.2h
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=(any)
 depends=(mingw-w64-zlib)
 makedepends=(mingw-w64-gcc perl)
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !emptydirs)
 license=("custom:BSD")
 url="http://www.openssl.org"
 source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
@@ -62,8 +62,8 @@ package() {
     cd "${srcdir}/build-${_arch}"
     make -j1 INSTALL_PREFIX="${pkgdir}" install
     install -m644 ms/applink.c "${pkgdir}/usr/${_arch}/include/openssl/"
-    rm -rf "$pkgdir/usr/${_arch}/"{bin/c_rehash,ssl,share}
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    #rm -rf "$pkgdir/usr/${_arch}/"{bin/c_rehash,ssl,share}
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
   done
