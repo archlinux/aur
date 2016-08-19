@@ -1,7 +1,8 @@
+
 # Contributor: JulioJu  < juanes  0890  at google mail dot com >
 # Maintainer : JulioJu  < juanes  0890  at google mail dot com >
 
-# Inspirated from :
+# Inspirated from :
 # http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/view/head:/useful-scripts/marionnet_from_scratch
 # Copyright (C) 2010 2011 2012 2013  Jean-Vincent Loddo Copyright (C) 2010
 # 2011 2012 2013  Université Paris 13 
@@ -25,35 +26,25 @@ fi
 conflicts=('marionnet')
 source=("http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12.1.tar.gz"
         'http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz'
+        "https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-trunk.tar.gz"
+        "https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-trunk.tar.gz"
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/Makefile-trunk.patch"
         "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/marionnet_from_scratch-Downloader"
 )
 sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
+            'efa4989a38e5a2504589e3f2f0a3e19f7b80e6262931c51c2d0ed9f1df71d882'
+            'a37920491b8a621f84cd8f876c121736db6ee303aec916e1bf878df96d87bc15'
             'efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691'
             'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-trunk.install
 
-prepare () {
-    # Not in sources, because tar file 433 and 475 (gzip format) have not always same sha256.
-    # Probably, they compressed by launchpad for every download.
-    wget 'http://bazaar.launchpad.net/~marionnet-drivers/ocamlbricks/trunk/tarball/433'
-    wget 'http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/tarball/475'
-    tar -xvzf 433
-    tar -xvzf 475
-    mv '~marionnet-drivers/ocamlbricks/trunk' ocamlbricks
-    mv '~marionnet-drivers/marionnet/trunk' marionnet
-    rmdir '~marionnet-drivers/ocamlbricks'
-    rmdir '~marionnet-drivers/marionnet'
-    rmdir '~marionnet-drivers'
-}
-
 # ################
-# MAKEDEPENDS : CREATED DURING COMPILATION but not keep
+# MAKEDEPENDS : CREATED DURING COMPILATION but not keep
 # pkgname=ocaml
 # pkgver=3.12.1
-# Do not use older package (see :
-# https://bugs.launchpad.net/marionnet/+bug/1580349 )
+# Do not use older package (see :
+# https://bugs.launchpad.net/marionnet/+bug/1580349 )
 # pkgdesc="A functional language with OO extensions"
 # license=('LGPL2.1' 'custom: QPL-1.0')
 # url="http://caml.inria.fr/"
@@ -71,6 +62,16 @@ prepare () {
 # conflicts=('ocamlbricks_trunk')
 # url="https://launchpad.net/ocamlbricks/"
 # license=('GPL')
+
+prepare () {
+    MARIONNET_DIR="${srcdir}/marionnet"
+    OCAMLBRICK_DIR="${srcdir}/ocamlbricks"
+    rm -f Makefile
+    wget 'http://bazaar.launchpad.net/~marionnet-drivers/ocamlbricks/trunk/download/433/makefile-20100403081515-2ppvwcnk394cby5w-1/Makefile'
+    mv Makefile ${OCAMLBRICK_DIR}
+    wget 'http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/download/475/makefile-20100403171831-9konc1imlakbopj2-1/Makefile'
+    mv Makefile ${MARIONNET_DIR}
+}
 
 build () {
     OUR_MIRROR="https://www.marionnet.org/download/marionnet_from_scratch/mirror/"
