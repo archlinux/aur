@@ -1,13 +1,13 @@
 pkgname=mingw-w64-libxslt
 pkgver=1.1.29
-pkgrel=1
+pkgrel=2
 pkgdesc="XML stylesheet transformation library (mingw-w64)"
 arch=(any)
 url="http://xmlsoft.org/XSLT"
 license=(custom)
 depends=(mingw-w64-crt mingw-w64-libxml2 mingw-w64-libgcrypt)
 makedepends=(mingw-w64-configure)
-options=(!strip staticlibs !buildflags)
+options=(!strip staticlibs !buildflags !emptydirs)
 source=("http://xmlsoft.org/sources/libxslt-${pkgver}.tar.gz"
 "libxslt-1.1.26-w64.patch"
 "libxslt-1.1.28-win32-shared.patch"
@@ -46,10 +46,10 @@ package() {
 	for _arch in ${_architectures}; do
 		cd "$srcdir/libxslt-${pkgver}/build-${_arch}"
 		make DESTDIR="$pkgdir" install
-		rm -r "$pkgdir"/usr/${_arch}/share
-		find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtl1 ${_arch}-strip -g
+		#rm -r "$pkgdir"/usr/${_arch}/share
+		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
 	done
 }
 
