@@ -7,10 +7,10 @@
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-pkgver=2.2.0b1
-_pkgver=2.2.0.7
+pkgver=2.2.0b2
+_pkgver=2.2.0.8
 pkgrel=1
-_build=145.3128856
+_build=145.3200535
 pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
@@ -21,11 +21,10 @@ optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 oidprovides=("android-studio=$pkgver")
 options=('!strip')
-install=$pkgname.install
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha1sums=('bafb5d7029d2678e8274e24da1c7ce0a00f3a644'
-            'afd36ebfa74768d821e5cc9d78c142c1a7236dba')
+sha1sums=('7064f43efde8b0f4fe12b9ed20eb05de87c24d41'
+            '4d7153ef796a332d5318e64b59ab5b5c92c5dca9')
 
 if [ "$CARCH" = "i686" ]; then
   depends+=('java-environment')
