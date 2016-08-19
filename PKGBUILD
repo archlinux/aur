@@ -7,7 +7,7 @@ pkgdesc="Qt-based image browser"
 arch=('i686' 'x86_64')
 url="http://cade.datamax.bg/qvv/"
 license=('GPL2')
-depends=('qt5-base' 'libxkbcommon-x11')
+depends=('qt5-base')
 source=($pkgname-$pkgver.tar.gz::https://github.com/cade-vs/$pkgname/archive/$pkgver.tar.gz)
 
 build() {
