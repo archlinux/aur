@@ -5,8 +5,9 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root-extra
+_pkgname=root
 pkgver=6.06.06
-pkgrel=2
+pkgrel=3
 provides=('root')
 conflicts=('root')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled.'
@@ -15,14 +16,12 @@ url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
-'desktop-file-utils'
 'fftw'
 'ftgl'
-'gcc-fortran'
 'glew'
 'graphviz'
 'gsl'
-'gtk-update-icon-cache'
+'hicolor-icon-theme'
 'intel-tbb'
 'libafterimage'
 'libiodbc'
@@ -30,14 +29,15 @@ depends=('cfitsio'
 'postgresql-libs'
 'pythia'
 'python'
-'shared-mime-info'
 'sqlite'
 'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
 'unixodbc'
 'xmlrpc-c'
-'xrootd'
+'xrootd-abi0'
 )
-install='root.install'
+optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
+            'tcsh: Legacy CSH support'
+)
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'call_PyErr_Clear_if_no_such_attribute.patch'
@@ -54,7 +54,7 @@ md5sums=('4308449892210c8d36e36924261fea26'
          '0e883ad44f99da9bc7c23bc102800b62'
          'e2cf69b204192b5889ceb5b4dedc66f7'
          'efd06bfa230cc2194b38e0c8939e72af'
-         'd939e6d149f5b4f76827053ca4e4a359')
+         '0e3bd6aa31884086e8c20b53a7315f13')
 sha256sums=('0a7d702a130a260c72cb6ea754359eaee49a8c4531b31f23de0bfcafe3ce466b'
             '437ed0fb2c46d5ca8e37cc689f87dfe12429f6a243d4e5cf2d395a177de7e90f'
             'd9fea8991d42a78cd694f9798615274e96a185cbbd6608b4b80c76d5e43982a6'
@@ -62,10 +62,10 @@ sha256sums=('0a7d702a130a260c72cb6ea754359eaee49a8c4531b31f23de0bfcafe3ce466b'
             '71ed39f7e5a605a6a02e3d0ba79c997b8e7f02551898c27112eb78f07d9d8244'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
             '6a4ef7b32710d414ee47d16310b77b95e4cf1d3550209cf8a41d38a945d05e5f'
-            '2c7c1071edf95ec24c13aca3e08582d495437a0d12f22fc13fa1d1ca11402159')
+            '71971b4a130aaef91ac0a3a155f791c79934ee6149dfc95550cfcc1f719054b2')
 prepare(){
     ## https://sft.its.cern.ch/jira/browse/ROOT-6924
-    cd ${pkgname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
 
     patch -p1 < ${srcdir}/python3.diff
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
@@ -81,7 +81,7 @@ build() {
     [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
     cd ${srcdir}/build
 
-    cmake -C ${srcdir}/settings.cmake ${srcdir}/${pkgname}-${pkgver}
+    cmake -C ${srcdir}/settings.cmake ${srcdir}/${_pkgname}-${pkgver}
 
     make ${MAKEFLAGS}
 }
@@ -98,12 +98,12 @@ package() {
     install -D -m644 ${srcdir}/root.xml \
         ${pkgdir}/usr/share/mime/packages/root.xml
 
-    install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in \
+    install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in \
         ${pkgdir}/usr/share/applications/root-system-bin.desktop
     # replace @prefix@ with /usr for the desktop
     sed -e 's_@prefix@_/usr_' -i ${pkgdir}/usr/share/applications/root-system-bin.desktop
 
-    install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
+    install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
         ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
 
     # use a file that pacman can track instead of adding directly to ld.so.conf
