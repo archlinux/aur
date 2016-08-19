@@ -1,0 +1,14 @@
+pkgbase = wmkeys
+	pkgdesc = WindowMaker dock app for switching X keymaps
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.dockapps.net/wmkeys
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.dockapps.net/download/wmkeys-0.1.tar.gz
+	md5sums = 5ccde04da98c7f41f0f7873a5617b5ee
+
+pkgname = wmkeys
+
