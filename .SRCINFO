@@ -1,6 +1,6 @@
 pkgbase = lighthouse-git
 	pkgdesc = A simple scriptable popup dialog to run on X
-	pkgver = r173.a9b41fa
+	pkgver = r269.069b07b
 	pkgrel = 1
 	url = https://github.com/emgram769/lighthouse
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = lighthouse-git
 	depends = libx11
 	depends = libxcb
 	depends = cairo
+	depends = gtk3
 	optdepends = python2: for the included cmd.py
 	provides = lighthouse
 	conflicts = lighthouse
