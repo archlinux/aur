@@ -1,10 +1,9 @@
 pkgbase = btrfs-sxbackup
 	pkgdesc = Incremental btrfs snapshot backups with push/pull support via SSH
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/masc3d/btrfs-sxbackup
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	depends = bash
 	depends = python
