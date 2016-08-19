@@ -4,10 +4,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# Only includes static versions because this module seems to enforce
+# being built as static library.
+
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(mingw-w64-qt5-base)
@@ -18,21 +21,20 @@ license=("custom, FDL, GPL3, LGPL")
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        "qt5-activeqt-fix-compilation.patch"
         "qtactiveqt-fix-build.patch"
         "qtactiveqt-win64.patch")
 md5sums=('e48d79becdad54a2ac67c36d98654f5b'
-         '86c63b9808b0c8c7a8c2203bee73c42b'
          '7a7ba436452aa56613b3fbb15684e094'
          '1264d0274586aec14f96a978b416b048')
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+[[ $NO_STATIC_LIBS ]] || \
+  makedepends+=('mingw-w64-qt5-base-static') \
+  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
+  _configurations+=('CONFIG+=static')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-  # Fix linker error:
-  # qaxserverbase.cpp:1769: undefined reference to `qt_sendSpontaneousEvent(QObject*, QEvent*)'
-  patch -p0 -i ../qt5-activeqt-fix-compilation.patch
-
   # Don't try to build stuff which requires windows.h with the native Linux gcc
   patch -p1 -i ../qtactiveqt-fix-build.patch
 
@@ -43,25 +45,43 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
+
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-qmake-qt5 ../${_qt_module}.pro
-    make
-    popd
+    for _config in "${_configurations[@]}"; do
+      msg2 "Building ${_config##*=} version for ${_arch}"
+      mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      make
+      popd
+    done
   done
 }
 
 package() {
   cd "${srcdir}/${_pkgfqn}"
+
   for _arch in ${_architectures}; do
-    pushd build-${_arch}
-    make INSTALL_ROOT="$pkgdir" install
-    # The .dll's are installed in both bindir and libdir
-    # One copy of the .dll's is sufficient
-    rm -f "${pkgdir}/usr/${_arch}/lib/"*.dll
-    find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" -o -name '*.prl' | xargs -rtl1 rm
-    find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
-    popd
+    for _config in "${_configurations[@]}"; do
+      pushd build-${_arch}-${_config##*=}
+
+      make INSTALL_ROOT="$pkgdir" install
+      find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+      [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
+        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
+        find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
+      find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+      [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
+        find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
+      find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
+      popd
+    done
+  done
+
+  # Make sure the executables don't conflict with their mingw-qt4 counterpart
+  for _arch in ${_architectures}; do
+    for exe_file in "${pkgdir}/usr/${_arch}/bin/"*.exe; do
+      [[ -f $exe_file ]] && mv "${exe_file}" "${exe_file%.exe}-qt5.exe"
+    done
   done
 }
