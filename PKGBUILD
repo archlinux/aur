@@ -36,10 +36,10 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/${_pkgrel
 	"php-fpm.example.conf"
 	"z-push-admin"
 	"z-push-top")
-md5sums=('SKIP'
+md5sums=('5f8333a6bce182b801a37aed1fa6256a'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
-         'SKIP'
+         'cfb472eac560284d935927720e6a2311'
          'b61c194ee4e3e3bf8bfa6a72e6f38019'
          '9637d4164f85cb3fb9a886654645a46c'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
