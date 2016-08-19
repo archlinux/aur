@@ -2,38 +2,24 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 
 _pkgbase=icedtea-web
-pkgname=icedtea-web-jre32
-conflicts=('icedtea-web')
+pkgbase=icedtea-web-jre32
+pkgname=('icedtea-web-jre32' 'icedtea-web-doc-jre32')
 pkgver=1.6.2
-pkgrel=1
-pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start (uses 32-bit JRE)'
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://icedtea.classpath.org/wiki/IcedTea-Web'
 license=('GPL2')
-depends=('bin32-jre' 'java-runtime-openjdk' 'desktop-file-utils')
 makedepends=('java-environment-openjdk' 'zip' 'libxtst' 'npapi-sdk' 'rhino' 'junit' 'bin32-jdk'
              'firefox' 'epiphany')
-optdepends=('rhino: for using proxy auto config files'
-            'icedtea-web-doc: Documentation'
-           )
-provides=('java-web-start')
-replaces=('icedtea-web-java7')
-install=install_${pkgname}.sh
-
+optdepends=('rhino: for using proxy auto config files')
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
-noextract=(${_pkgbase}-${pkgver}.tar.gz)
-source=(
-  http://icedtea.classpath.org/download/source/${_pkgbase}-${pkgver}.tar.gz
-  fix-package-info.patch
-)
-sha256sums=('ce67034096d6b960e2b6cfb5c41a7bd6b30eb2ec7f13bf3ecdb477ff6ce69300'
-            '3da531a0b2ba99152fe9410591ade01b6ea63a926cc36f3fa0ab39955708940c')
+noextract=("${_pkgbase}-${pkgver}.tar.gz")
+source=(http://icedtea.classpath.org/download/source/${_pkgbase}-${pkgver}.tar.gz)
+sha256sums=('ce67034096d6b960e2b6cfb5c41a7bd6b30eb2ec7f13bf3ecdb477ff6ce69300')
 
 prepare() {
   cd "${srcdir}"
   LANG=en_US.UTF-8 bsdtar -x -f "${srcdir}"/${_pkgbase}-${pkgver}.tar.gz
-
-  patch "${srcdir}/${_pkgbase}-${pkgver}/netx/net/sourceforge/jnlp/security/package-info.java" fix-package-info.patch
 }
 
 build() {
@@ -58,7 +44,14 @@ build() {
 #}
 
 
-package() {
+package_icedtea-web-jre32() {
+
+  pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start'
+  depends=('java-runtime-openjdk' 'desktop-file-utils')
+  provides=('java-web-start')
+  replaces=('icedtea-web-java7')
+  conflicts=('icedtea-web')
+
   cd "${srcdir}"/${_pkgbase}-${pkgver}
   # possible make target (see bottom of Makefile.am: install-exec-local install-data-local
   make DESTDIR="${pkgdir}" install-exec-local install-data-local
@@ -81,4 +74,18 @@ package() {
   # link the mozilla-plugin - test it here http://www.java.com/en/download/help/testvm.xml
   install -m 755 -d "${pkgdir}"/usr/lib/mozilla/plugins/
   ln -sf /usr/share/${_pkgbase}/lib/IcedTeaPlugin.so "${pkgdir}"/usr/lib/mozilla/plugins/
+}
+
+package_icedtea-web-doc-jre32() {
+
+  pkgdesc='icedtea-web browser plugin + Java WebStart - documentation files'
+  replaces=('icedtea-web-java7-doc')
+  conflicts=('icedtea-web-doc')
+
+  cd "${srcdir}"/${_pkgbase}-${pkgver}
+  make DESTDIR="${pkgdir}" install-data-local
+  # remove javaws about and man page
+  rm -rf "${pkgdir}"/usr/lib
+  rm -rf "${pkgdir}"/usr/share/man
+  rm -rf "${pkgdir}"/usr/share/icedtea-web # conflicting and unneeded file it seems
 }
