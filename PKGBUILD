@@ -2,8 +2,8 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.12.1
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -20,8 +20,8 @@ source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}.tgz"
   "https://github.com/docker/docker/archive/v${pkgver}.tar.gz"
   "docker.sysusers")
-md5sums=('01a10b144c643810e6c97ebc597119a1'
-         '7990440b022e93f3e7036bcfd12970f2'
+md5sums=('6249d7b0be08762f9de506fff32aba9f'
+         '7af7b4c25d414aa19bc7382bd85c25f7'
          '8cf9900ebada61f352a03465a088da34')
 
 build() {
