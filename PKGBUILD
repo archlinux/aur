@@ -1,7 +1,7 @@
 # Maintainter: Marc Zuo <zealotzuo@gmail.com>
 pkgname=ibus-grc-beta-code-git
 pkgver=0.1.r0.ga7c1347
-pkgrel=1
+pkgrel=2
 pkgdesc="A m17n keymap file for polytonic Greek using beta code"
 arch=('any')
 url="https://github.com/marczuo/grc-beta-code"
@@ -24,7 +24,8 @@ build() {
 
 package() {
   cd grc-beta-code
-  cp -v grc-beta-code.mim /usr/share/m17n/grc-beta-code.mim
+  install -D grc-beta-code.mim "$pkgdir/usr/share/m17n/grc-beta-code.mim"
+  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim:set ft=PKGBUILD ts=2 sw=2 et:
