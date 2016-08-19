@@ -1,0 +1,15 @@
+pkgbase = wmmenu
+	pkgdesc = A dockapp providing a popup menu of icons
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.dockapps.net/wmmenu
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = gdk-pixbuf2
+	depends = libdockapp
+	source = http://www.dockapps.net/download/wmmenu-1.3.tar.gz
+	md5sums = c312bba9d1b7701fa50e250988f05933
+
+pkgname = wmmenu
+
