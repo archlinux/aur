@@ -1,10 +1,12 @@
-# Maintainer: MartiMcFly martimcfly@autorisation.de
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 
 _pkgname=('passwd')
 pkgname=("zarafa-webapp-${_pkgname}")
-groups=('zarafa')
+groups=('zarafa'
+	'kopano'
+	'zarafa-webapp-plugins')
 pkgver=1.2
-pkgrel=88
+pkgrel=71
 pkgdesc='Passwd plugin for Zarafa Webapp'
 arch=('any')
 url='https://github.com/silentsakky/zarafa-webapp-passwd'
@@ -12,9 +14,7 @@ source=("https://github.com/silentsakky/zarafa-webapp-passwd/raw/master/builds/p
 	"compress-static")
 backup=("etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php")
 license=('AGPL3')
-depends=('zarafa-webapp'
-	 'php<7'
-	 'php-fpm<7')
+depends=('zarafa-webapp')
 md5sums=('65153d48c97fd60df9e37f0cff2b52c1'
          'd737d82dfab24adc516c001238a4119f')
 
