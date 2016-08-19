@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgpg-error
 pkgver=1.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
 url="http://www.gnupg.org"
@@ -43,9 +43,9 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libgpg-error-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -r "$pkgdir/usr/${_arch}/share"
+    rm "$pkgdir/usr/${_arch}/share/info/dir"
   done
 }
