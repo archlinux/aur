@@ -1,0 +1,20 @@
+pkgbase = xrootd
+	pkgdesc = A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds.
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://xrootd.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = make
+	makedepends = cmake
+	depends = bash
+	depends = fuse
+	depends = krb5
+	depends = libxml2
+	depends = python2
+	source = http://xrootd.org/download/v4.4.0/xrootd-4.4.0.tar.gz
+	sha256sums = f066e7488390c0bc50938d23f6582fb154466204209ca92681f0aa06340e77c8
+
+pkgname = xrootd
+
