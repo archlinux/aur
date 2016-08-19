@@ -1,0 +1,31 @@
+--- a/libardiscovery/Sources/ARDISCOVERY_Connection.c
++++ b/libardiscovery/Sources/ARDISCOVERY_Connection.c
+@@ -866,7 +866,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending (ARDISCOVERY_Connecti
+             else
+             {
+                 if ((readSize == 0 || readSize == -1) &&
+-                    (errno == EAGAIN || errno == EWOULDBLOCK))
++                    (errno == EAGAIN))
+                 {
+                     ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "No more data to read");
+                     // Nothing to do here, it just means that we had a size which is a multiple of ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE
+@@ -902,7 +902,7 @@ static eARDISCOVERY_ERROR ARDISCOVERY_Connection_RxPending (ARDISCOVERY_Connecti
+                     else
+                     {
+                         if ((readSize == 0 || readSize == -1) &&
+-                            (errno == EAGAIN || errno == EWOULDBLOCK))
++                            (errno == EAGAIN))
+                         {
+                             ARSAL_PRINT(ARSAL_PRINT_DEBUG, ARDISCOVERY_CONNECTION_TAG, "No more data to read");
+                             // Nothing to do here, it just means that we had a size which is a multiple of ARDISCOVERY_CONNECTION_RX_BUFFER_SIZE
+--- a/libardiscovery/Sources/ARDISCOVERY_Connection.h
++++ b/libardiscovery/Sources/ARDISCOVERY_Connection.h
+@@ -40,7 +40,7 @@
+ typedef struct ARDISCOVERY_Connection_ComData_t
+ {
+     uint8_t *buffer; /**< data buffer */
+-    int32_t size; /**< size of the data */
++    uint32_t size; /**< size of the data */
+     int32_t capacity; /**< size allocated of the data buffer */
+ } ARDISCOVERY_Connection_ComData_t;
+ 
