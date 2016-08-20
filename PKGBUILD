@@ -32,8 +32,8 @@ build()
 	mkdir "build"
 	cd "build"
 
-	cmake "$srcdir/$_pkgname-$pkgver" -D_GLIBCXX_USE_CXX11_ABI=0 -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
-	make ${MAKEFLAGS} || return 2
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0 ${CXXFLAGS}" cmake "$srcdir/$_pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0 ${CXXFLAGS}" make ${MAKEFLAGS} || return 2
 }
 
 package()
