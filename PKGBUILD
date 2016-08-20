@@ -43,7 +43,7 @@ if $_building; then
     exit 1
   fi
 
-  if [[ ! -d ${__sanitycheckpath} ]]; then
+  if [[ ! -d "${_sysroot}/etc" ]]; then
     echo "You have to set a valid sysroot to proceed with the build"
     exit 1
   fi
@@ -64,7 +64,6 @@ _mkspec="linux-rpi${_piver}-g++"
 _device_configure_flags=""
 _profiled_gpu_fn=qpi-proprietary.sh
 
-__sanitycheckpath="${_sysroot}/etc"
 __eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
 __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
