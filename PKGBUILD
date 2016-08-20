@@ -4,7 +4,7 @@
 # ALERTA: Estos perfiles son inestbles y pueden fallar.
 
 pkgname=firejail-extras
-pkgver=1.1
+pkgver=0.9.40
 pkgrel=1
 pkgdesc="Extra profiles for firejail"
 arch=('any')
