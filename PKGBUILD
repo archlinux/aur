@@ -2,7 +2,7 @@
 
 pkgname=('python-fasteners')
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A python package that provides useful locks."
 arch=('any')
 url="https://github.com/harlowja/fasteners"
@@ -20,5 +20,5 @@ package_python-fasteners() {
   depends=('python-six' 'python-monotonic')
 
   cd "$srcdir/fasteners-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --optimize=1 --root=${pkgdir}
 }
