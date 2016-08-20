@@ -8,12 +8,12 @@ pkgver=6.0.0
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url="https://github.com/haiwen/seafile/"
+url="https://github.com/haiwen/seafile"
 license=('GPL3')
 makedepends=("vala" "intltool"
              "python2" "sqlite" "fuse"
              "ccnet>=${pkgver}" "libevhtp-seafile=1.2.9")
-source=("seafile-server-${pkgver}.tar.gz::https://github.com/haiwen/seafile/archive/v${pkgver}-server.tar.gz"
+source=("seafile-server-${pkgver}.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seafile-admin_virtualenv.patch"
         "seafile-server@.service"
         "seahub-preupgrade"
