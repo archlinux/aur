@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-extensions-git
 _pkgname=${pkgname%-git}
 
-pkgver=r19.93bac9f
+pkgver=r20.852c996
 pkgrel=1
 pkgdesc="Extensions which allows to enable and disable extensions via a menu in the status area in the main menu panel."
 arch=('any')
