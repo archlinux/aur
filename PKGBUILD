@@ -1,13 +1,14 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=wimlib
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A library and program to extract, create, and modify WIM files"
 arch=("i686" "x86_64")
 url="https://wimlib.net"
 license=("custom")
-depends=("openssl" "fuse" "libxml2" "ntfs-3g" "attr")
+depends=("openssl" "fuse" "libxml2" "ntfs-3g")
+checkdepends=("attr")
 optdepends=("cdrkit: for making ISO image of Windows PE"
 	"mtools: for making disk image of Windows PE"
 	"syslinux: for making disk image of Windows PE"
@@ -36,4 +37,4 @@ package() {
 	done
 }
 
-sha256sums=('067cf78e6083a585d7dffd8ded059ba9584c3d530afcddf40b7219bc9adfd94f')
+sha256sums=('989b1b02f246c480dec10469374f4235d15a3d5e5ae054452405305af5007f55')
