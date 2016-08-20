@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173703'
 license=('LGPL3.0')
 depends=('vapoursynth-plugin-knlmeanscl'
-         'vapoursynth-plugin-flt-git'
          'vapoursynth-plugin-tcanny-git'
          'vapoursynth-plugin-fmtconv'
          )
