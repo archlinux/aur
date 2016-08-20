@@ -2,6 +2,21 @@
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 # Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 
+######################################################################
+# CAVEAT LECTOR
+######################################################################
+#
+# Make sure you have enough RAM to build this package.
+# It consumes about 6GB RAM for me when building, even if I
+# keep the src dir on the disk instead of a tmpfs!
+#
+# Keeping the srcdir and using ccache option for faster compilation
+# the next time would be a good choice.
+#
+# "makepkg -i" is your friend.
+#
+######################################################################
+
 pkgname=trilinos-git
 _pkgname=Trilinos
 pkgver=r71307.22496b4
