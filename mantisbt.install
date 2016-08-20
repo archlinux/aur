@@ -1,0 +1,17 @@
+pre_upgrade() {
+  cd /usr/share/webapps/mantisbt
+
+  cp mantis_offline.php.sample mantis_offline.php
+}
+
+post_upgrade() {
+  cd /usr/share/webapps/mantisbt
+
+  rm mantis_offline.php
+}
+
+post_remove() {
+  rm -rf /usr/share/webapps/mantisbt
+}
+
+# vim: ts=2 sw=2 et:
