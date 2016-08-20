@@ -13,7 +13,7 @@ provides=(tyrian opentyrian)
 conflicts=(opentyrian)
 replaces=(opentyrian-svn)
 install=opentyrian.install
-source=(opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian
+source=("opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian#branch=default"
         http://www.camanis.net/opentyrian/tyrian21.zip)
 md5sums=('SKIP'
          '2a3b206a6de25ed4b771af073f8ca904')
