@@ -5,7 +5,7 @@
 # Contributor: mefistofeles
 
 pkgname=mathics-git
-pkgver=1.0.dev.2097.g7d3fdfa
+pkgver=1.0.dev.2104.g6cc2005
 pkgrel=1
 arch=('any')
 pkgdesc='General-purpose online computer algebra system featuring Mathematica-compatible syntax and functions'
@@ -39,5 +39,7 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  python2 setup.py install --root=${pkgdir}
+  export PYTHONPATH="$pkgdir"/usr/lib/python2.7/site-packages/
+  install -d $PYTHONPATH
+  python2 setup.py install --root=${pkgdir} --optimize=1
 }
