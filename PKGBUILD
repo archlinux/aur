@@ -1,23 +1,26 @@
-# Original submitter: Tetsumaki <http://goo.gl/YMBdA>
-# Maintainer: rws <elisp dot vim at google mail> (@xd1le on twitter)
+# Maintainer: William Gathoye <william at gathoye dot be>
+# Contributor: Tetsumaki <http://goo.gl/YMBdA>
+# Contributor: rws <elisp dot vim at google mail> (@xd1le on twitter)
 
 pkgname=sfnt2woff
-pkgver=latest
-pkgrel=1
-pkgdesc="Convert/Unconvert TrueType/OpenType fonts to WOFF format"
-arch=('i686' 'x86_64')
-url="http://people.mozilla.org/~jkew/woff/"
-license=('custom')
-source=("http://people.mozilla.org/~jkew/woff/woff-code-latest.zip")
-sha1sums=('59879f1bdeeafce7fc9d4b51406e80d7a4cd0293')
+pkgver=20091003
+pkgrel=2
+pkgdesc="Tools to convert existing TrueType/OpenType fonts to WOFF and inversely (sfnt2woff and woff2sfnt)"
+arch=('i686' 'x86_64' 'armv6h')
 
-build() {
-	cd "${srcdir}"
-	make
+url="https://people.mozilla.org/~jkew/woff/"
+license=('MPL' 'GPL' 'LGPL')
+
+# http://superuser.com/a/429625/456258
+# Source from https://people.mozilla.org/~jkew/woff/
+source=("https://people.mozilla.org/~jkew/woff/woff-code-latest.zip")
+sha512sums=('3a2d5c0f495f8dda2b311d80b6a1e4ad5b98fd098cc5573e92e5e7193d0f0746f8e3e90f7b1dddbaad8c336a68874a32c028ac650c067cfb2cce2f540411e2f9')
+
+build () {
+    make
 }
 
 package() {
-	cd "${srcdir}"
-	install -Dm755 "sfnt2woff" "${pkgdir}/usr/bin/sfnt2woff"
-	install -Dm755 "woff2sfnt" "${pkgdir}/usr/bin/woff2sfnt"
+    install -D sfnt2woff "$pkgdir/usr/bin/sfnt2woff"
+    install -D woff2sfnt "$pkgdir/usr/bin/woff2sfn"
 }
