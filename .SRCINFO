@@ -22,6 +22,7 @@ pkgbase = cin-bin
 	depends = alsa-lib
 	depends = inkscape
 	depends = dvdauthor
+	depends = libvpx
 	conflicts = cinelerra-cv
 	conflicts = cinelerra-heroine
 	conflicts = cin
