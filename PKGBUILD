@@ -1,14 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreen-git
-pkgver=r624.75465c7
+pkgver=r735.f04d6d3
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/kscreen'
-license=(LGPL)
-depends=(kxmlgui libkscreen-git kdeclarative)
-makedepends=(extra-cmake-modules git python)
+license=('LGPL')
+depends=('kxmlgui' 'libkscreen-git' 'qt5-graphicaleffects' 'hicolor-icon-theme')
+makedepends=('extra-cmake-modules' 'git' 'python')
 provides=(kscreen)
 conflicts=(kscreen)
 install=$pkgname.install

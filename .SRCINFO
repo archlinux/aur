@@ -1,6 +1,6 @@
 pkgbase = kscreen-git
 	pkgdesc = KDE screen management software
-	pkgver = r624.75465c7
+	pkgver = r735.f04d6d3
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/workspace/kscreen
 	install = kscreen-git.install
@@ -13,7 +13,8 @@ pkgbase = kscreen-git
 	makedepends = python
 	depends = kxmlgui
 	depends = libkscreen-git
-	depends = kdeclarative
+	depends = qt5-graphicaleffects
+	depends = hicolor-icon-theme
 	provides = kscreen
 	conflicts = kscreen
 	source = git://anongit.kde.org/kscreen.git
