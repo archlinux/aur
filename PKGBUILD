@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.7.6.r309.2783e5f
+pkgver=0.7.6.r310.b125aec
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ depends=('libcl'
          )
 makedepends=('git'
              'opencl-headers'
-             'clang'
              )
 conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
@@ -31,8 +30,7 @@ build() {
   ./configure \
     --install=/usr/lib/vapoursynth \
     --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}" \
-    --cxx=clang++
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
