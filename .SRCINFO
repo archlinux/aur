@@ -1,7 +1,7 @@
 pkgbase = uftp
 	pkgdesc = UFTP is an encrypted multicast file transfer program, designed to securely, reliably, and efficiently transfer files to multiple receivers simultaneously.
 	pkgver = 4.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://uftp-multicast.sourceforge.net/
 	arch = i686
 	arch = x86_64
