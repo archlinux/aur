@@ -1,0 +1,12 @@
+pkgbase = ater-xfwm-theme
+	pkgdesc = A technical looking dark XFWM theme
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://www.xfce-look.org/p/1016671/
+	arch = any
+	depends = xfwm4
+	source = Ater.tar.bz2::https://docs.google.com/uc?id=0B0i2xTgiZwFdb1l4eHd6QjZtR28&export=download
+	sha256sums = e72d88eaa97de639b8b1067b1b39d6032b32a69c0812a7d6d68245ef875a2bd8
+
+pkgname = ater-xfwm-theme
+
