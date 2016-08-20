@@ -14,7 +14,7 @@ pkgbase = python2-netcdf4
 	depends = curl
 	depends = zlib
 	optdepends = python-netcdf4: python 3 version
-	source = https://github.com/Unidata/netcdf4-python/archive/v1.2.4rel.tar.gz
+	source = python2-netcdf4-1.2.4.tar.gz::https://github.com/Unidata/netcdf4-python/archive/v1.2.4rel.tar.gz
 	md5sums = b79eb6c7daa7d9c5ed28df130915eb0b
 
 pkgname = python2-netcdf4

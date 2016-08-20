@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2-numpy' 'netcdf' 'hdf5' 'curl' 'zlib')
 makedepends=('python2-setuptools' 'cython2')
 optdepends=('python-netcdf4: python 3 version')
-source=(https://github.com/Unidata/netcdf4-python/archive/v${pkgver}rel.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Unidata/netcdf4-python/archive/v${pkgver}rel.tar.gz")
 md5sums=('b79eb6c7daa7d9c5ed28df130915eb0b')
 
 build() {
