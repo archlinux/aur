@@ -8,7 +8,7 @@
 
 pkgname=lib32-libpng12
 pkgver=1.2.56
-pkgrel=1
+pkgrel=3
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
 url='http://www.libpng.org/pub/png/libpng.html'
