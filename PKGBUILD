@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.cinelerra-cv.org/five"
 license=('GPL')
 depends=('xorg-server' 'xorg-server-utils' 'libpng' 'libxv' 'libva'
-'libxft' 'freetype2' 'alsa-lib' 'inkscape' 'dvdauthor')
+'libxft' 'freetype2' 'alsa-lib' 'inkscape' 'dvdauthor' 'libvpx')
 makedepends=('yasm' 'nasm' 'cmake'
 'libxml2' 'perl-xml-libxml' 'perl-xml-parser' 'python2')
 conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
@@ -16,6 +16,7 @@ source=(https://www.cinelerra-cv.org/five/pkgs/arch/cin-$pkgver-$pkgrel-x86_64.p
 md5sums=('d1a3579417a72b309a52dad55eecd26d')
 
 package() {
+ln -s usr/lib/libvpx.so.4 usr/lib/libvpx.so.3
 tar xJvf ${srcdir}/cin-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
 }
 
