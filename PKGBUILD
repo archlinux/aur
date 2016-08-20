@@ -17,6 +17,10 @@ makedepends=('git'
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
 sha1sums=('346f6355d94b1ea0a7506fe4f9bb0f020c5c7aa8')
 
+prepare() {
+  sed 's|c++11|gnu++11|g' -i "KNLMeansCL-${pkgver}/configure"
+}
+
 build() {
   cd "KNLMeansCL-${pkgver}"
   ./configure \
