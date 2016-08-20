@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.7
-_zenpatch=zen-4.7.1-0f94ec4c463c32cd1ed424a184972dd32553955d.diff
-pkgver=4.7.1
+_zenpatch=zen-4.7.2-3bc2dfc4bccf23e17f0988c3f03af91a2a18a2a0.diff
+pkgver=4.7.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -26,9 +26,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
+            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
             'SKIP'
-            '9bb5948a141e07e8ada37d69e16eeee4df1b587898c190fdf86a78845d80a1d3'
+            '4573c5f857ae868841b8083d642e96af38e1a35f0e806f6fac69945be7430458'
             'SKIP'
             'd5c614e6dabb7d81ffdfb81ed9a21abb2863252ed5bd6dec50d5a3d1084e3268'
             'ecc46479458bfae10382c64881f29f9493b3ec1148be8aa8e35defc29e4b13ba'
