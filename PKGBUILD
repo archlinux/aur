@@ -1,14 +1,14 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=libkscreen-git
-pkgver=r565.f57dc93
+pkgver=r1261.90d8ee2
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/workspace/libkscreen'
 license=(LGPL)
 depends=(qt5-x11extras libxrandr)
-makedepends=(extra-cmake-modules-git git)
+makedepends=(extra-cmake-modules git)
 provides=(libkscreen)
 conflicts=(libkscreen)
 source=('git://anongit.kde.org/libkscreen.git')
