@@ -1,0 +1,18 @@
+pkgbase = python2-commando-git
+	pkgdesc = A simple wrapper for argparse that allows commands and arguments to be defined declaratively using decorators.
+	pkgver = r30.78dc9f2
+	pkgrel = 1
+	url = https://github.com/hyde/commando
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2
+	provides = python2-commando
+	conflicts = python2-commando
+	options = !emptydirs
+	source = python2-commando::git+https://github.com/hyde/commando
+	md5sums = SKIP
+
+pkgname = python2-commando-git
+
