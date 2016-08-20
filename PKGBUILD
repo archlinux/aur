@@ -1,13 +1,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=gstreamer-screenrecording-git
-pkgver=r34.a050b7a
+pkgver=r45.a9972fb
 pkgrel=1
 pkgdesc="Record screen or window  with VAAPI(intel I420 or NV12), OMX(radeon NV12), software (x264enc I420 or NV12) to mkv file, with or without sound."
 arch=('any')
 url="https://github.com/pontostroy/gstreamer-screenrecording"
 license=('GPL')
 depends=("kdebase-kdialog") # remove what you don't need?
-optdepends=("gst-omx: For radeon VCE" "libomxil-bellagio: For radeon VCE" "gst-vaapi: For Intel Quick Sync" "x264: For software encoding")
+optdepends=("gst-omx: For radeon VCE" "libomxil-bellagio: For radeon VCE" "gstreamer-vaapi: For Intel Quick Sync" "x264: For software encoding")
 makedepends=('git')
 provides=("gstreamer-screenrecording")
 conflicts=("gstreamer-screenrecording")
