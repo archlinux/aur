@@ -6,13 +6,13 @@
 
 pkgname=lib32-libpgm
 pkgver=5.2.122
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the PGM reliable multicast protocol'
 arch=('x86_64')
 url='http://code.google.com/p/openpgm'
 license=('LGPL2.1')
 depends=('lib32-glibc' 'libpgm')
-makedepends=('python2')
+makedepends=('gcc-multilib' 'python2')
 options=('!strip')
 source=("http://openpgm.googlecode.com/files/libpgm-$pkgver.tar.gz")
 sha256sums=('6b895f550b95284dcde7189b01e04a9a1c1f94579af31b1eebd32c2207a1ba2c')
