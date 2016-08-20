@@ -1,0 +1,22 @@
+post_install() {
+  echo "Program installed on /opt/crark-7z"
+  echo "Please, read the README"
+  ln -s /opt/crark-7z/english.def /opt/crark-7z/password.def
+  ln -s /opt/crark-7z/crark-7z /usr/bin/crark-7z
+  ln -s /opt/crark-7z/crark-7z-ocl /usr/bin/crark-7z-ocl
+  ln -s /opt/crark-7z/crark-cuda /usr/bin/crark-7z-cuda
+}
+
+pre_remove() {
+  rm /opt/crark-7z/password.def
+  rm /usr/bin/crark-7z
+  rm /usr/bin/crark-7z-ocl
+  rm /usr/bin/crark-7z-cuda
+}
+
+post_upgrade() {
+  pre_remove
+  post_install
+}
+
+
