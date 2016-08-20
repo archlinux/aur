@@ -2,13 +2,13 @@
 
 pkgname=ginn
 pkgver=r93
-pkgrel=2
+pkgrel=3
 pkgdesc="Gesture Injector: No-GEIS, No-Toolkits."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ginn/"
 license=('GPL3')
 depends=('bamf' 'geis')
-makedepends=('')
+makedepends=('bzr')
 source=(bzr+https://launchpad.net/ginn/)
 sha256sums=('SKIP')
 pkgver() {
