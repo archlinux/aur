@@ -23,7 +23,7 @@
 #
 # The version of our code.
 #
-VERSION=$(shell git describe --abbrev=4 --dirty --always --long)
+VERSION=2.8
 
 #
 # Install locations

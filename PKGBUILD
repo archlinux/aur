@@ -1,6 +1,6 @@
 pkgname=lumail2
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Console-based mail-client with integrated Lua scripting support"
 arch=('i686' 'x86_64')
 url="https://lumail.org"
