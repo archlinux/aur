@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Binary Ninja Demo
+Exec=/usr/bin/binaryninja-demo
+Icon=binaryninja
+Type=Application
+Categories=Development;Debugger;Profiling;
