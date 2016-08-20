@@ -1,7 +1,7 @@
 # Maintainer: Eric Waller <ewwaller@gmail.com>
 
 pkgname=wunderground
-pkgver=1.0
+pkgver=20160820
 pkgrel=1
 pkgdesc='CLI weather from Weather Underground'
 arch=('any')
