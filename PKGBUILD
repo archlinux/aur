@@ -2,17 +2,17 @@
 # Contributor: Jente Hidskes <hjdskes@gmail.com>
 
 pkgname=gcolor3
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A simple color selection dialog in GTK3"
 arch=('i686' 'x86_64')
-url="http://unia.github.io/gcolor3/"
+url="http://unia.github.io/projects/gcolor3/"
 license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme')
 makedepends=('intltool' 'gnome-common')
 conflicts=('gcolor3-git')
 source=(https://github.com/Unia/gcolor3/archive/v$pkgver.tar.gz)
-sha256sums=('b7f65c0a44eb52622bf59bd04c15f01e05414167d86c3862863c0f91da60dab9')
+sha256sums=('a3f67108ef7524b424b774b4b68332e45371703f61d659ce7ca1da47c7fb5590')
 
 build() {
     cd "$srcdir"/$pkgname-$pkgver
