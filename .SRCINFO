@@ -1,7 +1,7 @@
 pkgbase = mutt-slang
 	pkgdesc = Small but very powerful text-based mail client - slang version
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mutt.org/
 	arch = i686
 	arch = x86_64

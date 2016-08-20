@@ -8,7 +8,7 @@
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Small but very powerful text-based mail client - slang version'
 url='http://www.mutt.org/'
 provides=('mutt')
@@ -32,6 +32,7 @@ build() {
 		--enable-imap \
 		--enable-smtp \
 		--enable-hcache \
+		--enable-sidebar \
 		--with-slang=/usr \
 		--with-regex \
 		--with-gss=/usr \
