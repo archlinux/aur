@@ -11,7 +11,6 @@ url="http://www.fltk.org"
 license=('LGPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs' 'lib32-glu' 'lib32-libjpeg-turbo' 'lib32-libpng' 'lib32-libxcursor' 'lib32-libxinerama' 'lib32-libxft')
 makedepends=('gcc-multilib')
-install=${pkgname}.install
 source=("http://fltk.org/pub/${pkgname#lib32-}/${pkgver}/${pkgname#lib32-}-${pkgver}-source.tar.gz"
         "tigervnc.patch" "fltk-config-dynlibs.patch")
 sha512sums=('277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559eed4ecd5215ac26d53a1091ada003e17f1553194cebaa97dd854809dd2885d'
@@ -27,11 +26,21 @@ prepare() {
 }
 
 build() {
-  export LDFLAGS+=' -m32'
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgname#lib32-}-${pkgver}"
-  ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32/fltk --enable-threads --enable-xft --enable-shared CC='gcc -m32' CXX='g++ -m32'
+  ./configure \
+    --build=i686-pc-linux-gnu \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --libexecdir=/usr/lib32/fltk \
+    --enable-threads \
+    --enable-xft \
+    --enable-shared
   make
 }
 
