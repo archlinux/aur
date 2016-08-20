@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=libcoopgamma
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Cooperative gamma library"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/maandree/libcoopgamma"
 license=('GPL3')
 depends=(coopgammad)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(6ddba2419c717557283bcf60b5ab834475cf60fea442cf54f7bbc806d6ef6fbf)
+sha256sums=(8f55b895a9605887e3c5b65b68d5b069aadb026e84344824cb82258782c1f304)
 
 
 build() {
