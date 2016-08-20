@@ -1,0 +1,22 @@
+pkgbase = lumail2
+	pkgdesc = Console-based mail-client with integrated Lua scripting support
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://lumail.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = lua
+	depends = gmime
+	depends = file
+	depends = ncurses
+	depends = pcre
+	provides = lumail2
+	source = https://github.com/lumail/lumail2/archive/release-2.8.tar.gz
+	source = Makefile.replace
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lumail2
+
