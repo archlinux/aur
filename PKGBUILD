@@ -1,17 +1,17 @@
 # Maintainer: Chris Cromer <chris@cromer.cl>
 
 pkgname=ygopro-bin
-pkgver=1.033.7
-pkgrel=2
-_pkgrel=2
+pkgver=1.033.A
+pkgrel=1
+_pkgrel=1
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/cromerc/ygopro'
 license=('GPL2')
-depends=('openal' 'openssl' 'freetype2' 'libevent' 'lua52' 'libcurl-compat' 'libcurl-gnutls')
+depends=('openal' 'openssl' 'freetype2' 'libevent' 'lua52' 'libcurl-compat' 'libcurl-gnutls' 'sfml')
 backup=(opt/ygopro/system.conf)
 source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz")
-sha256sums=('003226eccdfbfe4855c17b303eb2fc8ac84d8dffe1fefd36110c941744e846de')
+sha256sums=('9d8a07bcf7f1219ee50386984c8ee8405319bbd55c055964f806cffef0aa5326')
 options=('!strip' 'emptydirs')
 install=${pkgname}.install
 
@@ -29,4 +29,6 @@ package() {
 	mkdir -pv "$pkgdir/usr/lib"
 	cd "$pkgdir/usr/lib"
 	ln -s liblua5.2.so liblua5.2.so.0
+	ln -s libsfml-audio.so.2.4 libsfml-audio.so.2.3
+	ln -s libsfml-system.so.2.4 libsfml-system.so.2.3
 }
