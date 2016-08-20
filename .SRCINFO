@@ -1,0 +1,37 @@
+pkgbase = librevault-git
+	pkgdesc = File synchronization designed with privacy in mind
+	pkgver = 0.1.18.5.r0.86a6aef
+	pkgrel = 1
+	url = https://librevault.com/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-websockets
+	depends = protobuf3>=3.0.0-1
+	provides = librevault
+	conflicts = librevault
+	source = librevault::git+https://github.com/Librevault/librevault.git
+	source = common::git+https://github.com/Librevault/librevault-common.git
+	source = dir_monitor::git+https://github.com/Librevault/dir_monitor.git
+	source = spdlog::git+https://github.com/Librevault/spdlog.git
+	source = docopt::git+https://github.com/Librevault/docopt.cpp.git
+	source = rabin::git+https://github.com/Librevault/rabin.git
+	source = libnatpmp::git+https://github.com/Librevault/libnatpmp.git
+	source = websocketpp::git+https://github.com/Librevault/websocketpp
+	source = dht::git+https://github.com/Librevault/dht.git
+	source = miniupnp::git+https://github.com/Librevault/miniupnp.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = librevault-git
+
