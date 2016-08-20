@@ -4,8 +4,8 @@
 
 _pkgname=pyusb
 pkgname=python2-pyusb
-pkgver=0.4.3
-pkgrel=7
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A native Python module written in C which provides USB access."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/pyusb/"
@@ -14,8 +14,8 @@ depends=('python2' 'libusb-compat')
 makedepends=('python2-distribute')
 conflicts=($_pkgname=$pkgver)
 provides=($_pkgname)
-source=("http://downloads.sourceforge.net/project/${_pkgname}/PyUSB%200.x/$pkgver/${_pkgname}-$pkgver.tar.gz")
-md5sums=('a1a43bc6407caccbc22073c56439aa06')
+source=("https://github.com/walac/pyusb/archive/${pkgver}.tar.gz")
+sha256sums=('52106ce23ccc3b804335952aa48f7d5ce94f7ec27b44bb2d523eac92b97ace63')
 
 build() {
   cd $_pkgname-$pkgver

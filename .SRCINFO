@@ -1,7 +1,7 @@
 pkgbase = python2-pyusb
 	pkgdesc = A native Python module written in C which provides USB access.
-	pkgver = 0.4.3
-	pkgrel = 7
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://sourceforge.net/projects/pyusb/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = python2-pyusb
 	depends = python2
 	depends = libusb-compat
 	provides = pyusb
-	conflicts = pyusb=0.4.3
-	source = http://downloads.sourceforge.net/project/pyusb/PyUSB%200.x/0.4.3/pyusb-0.4.3.tar.gz
-	md5sums = a1a43bc6407caccbc22073c56439aa06
+	conflicts = pyusb=1.0.0
+	source = https://github.com/walac/pyusb/archive/1.0.0.tar.gz
+	sha256sums = 52106ce23ccc3b804335952aa48f7d5ce94f7ec27b44bb2d523eac92b97ace63
 
 pkgname = python2-pyusb
 
