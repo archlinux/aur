@@ -1,6 +1,6 @@
 pkgbase = samhain
 	pkgdesc = file integrity / intrusion detection system
-	pkgver = 4.1.4
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = http://www.la-samhna.de/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = samhain
 	source = PKGBUILD
 	validpgpkeys = CB6E213A349B8DF9E96B622AC3F4FFCF3EAE8697
 	validpgpkeys = EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C
-	sha512sums = 72e75e7a34705fa61d48c82e4c0ab1ac523c9bd5480c9335e305230e04d7c6295094ef616d9fca05b091d99659982d130812be36e9676ede68d743a4a1c46013
+	sha512sums = d71517890ca24eaf27053760b35bd06e566b18b14b7439f81067ff1ec6f1fcad0a7f4eb2d6d1fd2f30f198b3ce6638a1a2fda462b5a13bf6e532606cbf765ad1
 	sha512sums = SKIP
 	sha512sums = SKIP
 
