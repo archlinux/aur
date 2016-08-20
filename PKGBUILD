@@ -4,17 +4,17 @@
 
 pkgname=steam-libs
 pkgver=1.0.0.52
-pkgrel=3
+pkgrel=4
 pkgdesc='Collection of libraries to launch Steam without its runtime environment'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam#Using_native_runtime'
 license=('None')
 depends=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
          'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig' 'lib32-freetype2'
-         'lib32-gconf' 'lib32-gdk-pixbuf2' 'lib32-glib2' 'lib32-glu'
-         'lib32-gtk2' 'lib32-libcaca' 'lib32-libcanberra' 'lib32-libcups'
-         'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-libdbus'
-         'lib32-libdrm' 'lib32-libglew1.10' 'lib32-libice' 'lib32-libjpeg6'
+         'lib32-gconf' 'lib32-gdk-pixbuf2' 'lib32-glew1.10' 'lib32-glib2'
+         'lib32-glu' 'lib32-gtk2' 'lib32-libcaca' 'lib32-libcanberra'
+         'lib32-libcups' 'lib32-libcurl-compat' 'lib32-libcurl-gnutls'
+         'lib32-libdbus' 'lib32-libdrm' 'lib32-libice' 'lib32-libjpeg6'
          'lib32-libnm-glib' 'lib32-libpng12' 'lib32-libpulse' 'lib32-libsm'
          'lib32-libtheora' 'lib32-libtiff4' 'lib32-libudev0' 'lib32-libusb'
          'lib32-libvorbis' 'lib32-libxcomposite' 'lib32-libxcursor'
