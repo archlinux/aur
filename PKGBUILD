@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=shopify-themekit-bin
-pkgver=0.3.5
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A cross-platform tool for building Shopify Themes"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ conflicts=('shopify-themekit')
 
 source_i686=("shopify-themekit-v${pkgver}-i686.zip::https://github.com/Shopify/themekit/releases/download/${pkgver}/linux-386.zip")
 source_x86_64=("shopify-themekit-v${pkgver}-x86_64.zip::https://github.com/Shopify/themekit/releases/download/${pkgver}/linux-amd64.zip")
-md5sums_i686=('8eb7ce88880ebcf304150e4bc3586c94')
-md5sums_x86_64=('f40ed3f64e6e76fd3fb81e293703b6a9')
+md5sums_i686=('270820b9377f7515e69f83b7920b8ec7')
+md5sums_x86_64=('9ba2f7541afe45bf4ca6ce47d744ee4f')
 
 package() {
   local subdir
