@@ -44,7 +44,7 @@ _NUMAdisable=y
 _BFQ_enable_=y
 
 # Disable alternative CPU scheduler by Con Kolivas
-#_BFS_disable_=y
+_BFS_disable_=y
 
 
 ### Do no edit below this line unless you know what you're doing
@@ -53,8 +53,8 @@ pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
 _srcname=linux-4.7
 _ckpatchname="patch-4.7-ck1"
-pkgver=4.7
-pkgrel=1
+pkgver=4.7.1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
@@ -65,7 +65,7 @@ optdepends=("nvidia-dkms: nvidia drivers for custom kernels"
 options=("!strip")
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # ck1 patchset
         "http://ck.kolivas.org/patches/4.0/4.7/4.7-ck1/${_ckpatchname}.xz"
@@ -86,6 +86,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "linux.preset")
 
 md5sums=('5276563eb1f39a048e4a8a887408c031'
+         'b87c3627d4c3e3043f46c6422dfd83b0'
          '7395fd0edc5ff3330cf6e712a49a4b3a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          'b65081ff1ace9b352f80b23093e79397'
@@ -97,7 +98,7 @@ md5sums=('5276563eb1f39a048e4a8a887408c031'
          'b3b845477eb2e62e745803685bde9057'
          '7e50b0145ed002319a8fb651b72f7cd0'
          'a873c975acf24c3ef0225b9fcd3f3e1e'
-         'bfe67a882b17d7575c608981885d3529'
+         '4b07f78eaadb6d3c18bf6dcb5ee4fd33'
          'dbf36c338e3b80a3ff62d7c2767de42e')
 
 #validpgpkeys=('79BE3E4300411886' 
@@ -109,14 +110,14 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # Add upstream patch
-  #msg "Patching upstream"
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  msg "Patching upstream"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # Add latest fixes from stable queue, if needed
   # 
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
+  # Set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   msg "Patching default console loglevel"
