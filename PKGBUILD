@@ -18,8 +18,8 @@ build() {
 
 package() {
   depends=('python-pyjwt' 'python-requests' 'python-colorama' 'python-passlib'
-           'python-boto' 'python-yaml' 'patch' 'python-fasteners' 'python-six'
-           'python-bottle')
+           'python-boto' 'python-yaml' 'python-patch' 'python-fasteners'
+           'python-six' 'python-bottle')
 
   cd "$srcdir/conan-$pkgver"
   python setup.py install --optimize=1 --root=${pkgdir}
