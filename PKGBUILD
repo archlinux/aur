@@ -2,11 +2,11 @@
 
 _plug=fluxsmooth
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.4.g8f81346
+pkgver=v2.0.ga971d68
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="https://github.com/dubhater/vapoursynth-${_plug}"
+url='http://forum.doom9.org/showthread.php?t=173795'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
@@ -31,7 +31,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --libdir=/usr/lib/vapoursynth
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
