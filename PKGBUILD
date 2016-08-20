@@ -1,6 +1,6 @@
 # Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=anatine-bin
-pkgver=0.3.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Pristine Twitter app"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "Icon-${pkgver}.png::https://raw.githubusercontent.com/sindresorhus/anatine/${pkgver}/static/Icon.png"
   "anatine.desktop")
 noextract=("Anatine-linux-v${pkgver}.zip")
-sha256sums=('84c3eb694906da1e2eb88967a5775f2f4fd3e1a61ce6d97b49918f3a6ecab2d3'
+sha256sums=('abad2170b7f1b5d6c42c2cda4642a533bacd93ecb4793c9fb95d887ec598d7fc'
             '477e4c34a15c59926568ab3b2adb7521442ebaeacb7efe729ffb81973e31a834'
             '15db1c3feb6045a62df7de8a75107ec6ae7568bbbd486245af5165e84ba3bf1b')
 
