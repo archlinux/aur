@@ -2,7 +2,7 @@
 
 pkgname=acpi_call-dkms
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A linux kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('any')
 url='http://github.com/mkottman/acpi_call'
@@ -13,7 +13,6 @@ optdepends=('linux-headers: needed if using archlinux default kernel'
 	    'linux-lts-headers: needed if using the archlinux lts kernel')
 provides=('acpi_call')
 conflicts=('acpi_call')
-install=acpi_call.install
 source=("acpi_call-v${pkgver}.tar.gz::http://github.com/mkottman/acpi_call/archive/v${pkgver}.tar.gz")
 sha256sums=('d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0')
 
