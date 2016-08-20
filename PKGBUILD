@@ -5,7 +5,7 @@ _pkgbase=gstreamer0.10-bad
 pkgbase=lib32-$_pkgbase
 pkgname=('lib32-gstreamer0.10-bad' 'lib32-gstreamer0.10-bad-plugins')
 pkgver=0.10.23
-pkgrel=13
+pkgrel=14
 arch=('x86_64')
 license=('LGPL' 'GPL')
 pkgdesc="GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad) (32 bit)"
@@ -15,18 +15,19 @@ makedepends=('gcc-multilib' 'lib32-libvdpau' 'lib32-libass' 'lib32-libcdaudio' '
 url="http://gstreamer.freedesktop.org/"
 options=(!libtool !emptydirs)
 source=("git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-bad#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125"
-fix-libmodplug-include.patch
-drop-vpx-compat-defs.patch
-disable-assrender-test.patch
-disable-camerabin-test.patch
-faad2-version-check.patch)
-
+	"fix-libmodplug-include.patch"
+	"drop-vpx-compat-defs.patch"
+	"disable-assrender-test.patch"
+	"disable-camerabin-test.patch"
+	"faad2-version-check.patch"
+	"wildmidi-0.4.patch")
 md5sums=('SKIP'
          '447c12a784b13aac9e47e48741d26a67'
          '476a02484af2e9bdc1cb4a703b531cec'
          '025438e630b571bfa90171e36d4240e5'
          '2e17f524b0db1469cfa36703bf459153'
-         'dfa7e5723542d0fabebf509cb321535b')
+         'dfa7e5723542d0fabebf509cb321535b'
+         '41db4f6e8c62e431bc2f5deb41dad16f')
 
 prepare() {
 cd gst-plugins-bad
@@ -36,6 +37,7 @@ patch -Np1 -i ../drop-vpx-compat-defs.patch
 patch -Np1 -i ../disable-assrender-test.patch
 patch -Np1 -i ../disable-camerabin-test.patch
 patch -Np1 -i ../faad2-version-check.patch
+patch -Np1 -i ../wildmidi-0.4.patch
 }
 
 build() {
