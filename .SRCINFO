@@ -1,14 +1,14 @@
 pkgbase = scopa
 	pkgdesc = The italian card game Scopa
-	pkgver = 1.0.0b1
-	pkgrel = 2
-	url = http://www.nongnu.org/scopa/
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://scopa.nongnu.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt5-webengine
-	source = http://download.savannah.gnu.org/releases/scopa/scopa-1.0.0b1.tar.gz
-	md5sums = 0a473ecbe287d4f78551c9cdce897fab
+	source = http://download.savannah.gnu.org/releases/scopa/scopa-1.0.0.tar.gz
+	md5sums = ba7876404e099654fc45cbf7dfe8c275
 
 pkgname = scopa
 
