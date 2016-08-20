@@ -2,12 +2,12 @@
 
 pkgname=nyaovim
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim frontend built on Electron"
 arch=(any)
 url="https://www.npmjs.com/package/nyaovim"
 license=("MIT")
-depends=('nodejs' 'libnotify')
+depends=('nodejs' 'libnotify' 'neovim')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
 "$pkgname.desktop")
