@@ -1,6 +1,6 @@
 pkgbase = python-django-rest-framework
 	pkgdesc = Awesome web-browsable Web APIs
-	pkgver = 3.4.4
+	pkgver = 3.4.5
 	pkgrel = 1
 	url = https://github.com/tomchristie/django-rest-framework
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-rest-framework
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/tomchristie/django-rest-framework/archive/3.4.4.tar.gz
-	sha256sums = 2915a4483c0df12b7e812610b52d0101bacf575908ecd9bd285c5ffd7c839d68
+	source = https://github.com/tomchristie/django-rest-framework/archive/3.4.5.tar.gz
+	sha256sums = 6b85e81e8d4659e76973c90ac78a4bc428e42a7a6fd4e96f60960b1d511f347f
 
 pkgname = python-django-rest-framework
 	depends = python-django
