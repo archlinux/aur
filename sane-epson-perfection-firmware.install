@@ -1,0 +1,13 @@
+post_install() {
+  echo "Warning! Firmware binaries are NOT tested for Epson Perfection 1670/2480/2580/3490!"
+  echo "Tested binaries: Epson Perfection 3590 - 2016-08-20 NicoHood"
+  echo "Please report any information if the binary works. Use at your own risk!"
+  echo ""
+  echo "Add the desired firmware binary to /etc/sane.d/snapscan.conf"
+  echo "Epson Perfection 1670: 'firmware /usr/share/sane/snapscan/esfw30.bin'"
+  echo "Epson Perfection 2480: 'firmware /usr/share/sane/snapscan/esfw41.bin'"
+  echo "Epson Perfection 2580: 'firmware /usr/share/sane/snapscan/esfw41.bin'"
+  echo "Epson Perfection 3490: 'firmware /usr/share/sane/snapscan/esfw52.bin'"
+  echo "Epson Perfection 3950: 'firmware /usr/share/sane/snapscan/esfw52.bin'"
+  echo "Also check https://wiki.archlinux.org/index.php/SANE/Scanner-specific_problems#Epson"
+}
