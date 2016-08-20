@@ -4,7 +4,7 @@
 
 pkgname=pywb
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python WayBack for web archive replay and url-rewriting HTTP/S web proxy"
 arch=('any')
 url="https://pypi.python.org/pypi/pywb"
@@ -21,11 +21,18 @@ build() {
 }
 
 #check() {
-#    cd "${srcdir}/surt-${pkgver}"
+#    cd "${srcdir}/pywb-${pkgver}"
 #    python2 setup.py test
 #}
 
 package() {
     cd "${srcdir}/pywb-${pkgver}"
     python2 setup.py install --root=${pkgdir} --skip-build
+    # Something performs automatic validation of the contents of this file, and thinks that brotlipy isn't installed.
+    # In actual fact it is, just not with that package name. As far as I can tell, pywb runs just fine regardless.
+    sed -i 's/^brotlipy/#brotlipy/' "${pkgdir}/usr/lib/python2.7/site-packages/pywb-${pkgver}-py2.7.egg-info/requires.txt"
+    # Remove unnecessary empty folders
+    rm -r "${pkgdir}/usr/sample_archive"
+    # Remove non-namespaced tests that aren't necessary for the functioning of the package
+    rm -r "${pkgdir}/usr/lib/python2.7/site-packages/tests"
 }
