@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kguiaddons
-pkgver=5.24.0
+pkgver=5.25.0
 pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtGui (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kguiaddons"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kguiaddons-${pkgver}.tar.xz")
-md5sums=('1dfd4dc13b50bb030112a9fe9ce4ec4a')
+md5sums=('bfba32b6ee6f1288fef0d7156bf81961')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -35,6 +35,5 @@ package() {
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
