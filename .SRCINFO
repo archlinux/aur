@@ -1,19 +1,21 @@
 pkgbase = fizmo
 	pkgdesc = A Z-Machine interpreter supporting unicode, sound, blorbfile and more.
-	pkgver = 0.7.10
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://christoph-ender.de/fizmo/
+	url = https://fizmo.spellbreaker.org/
 	arch = i686
 	arch = x86_64
 	groups = inform
 	license = BSD
+	depends = ncurses
+	depends = freetype2
 	depends = libxml2
 	depends = libsndfile
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = sdl2
-	source = https://christoph-ender.de/fizmo/source/fizmo-0.7.10.tar.gz
-	sha256sums = 0e3561492ece58ff60eba768f3b2cfa943ba111736b0f63b775e3face590462b
+	source = https://fizmo.spellbreaker.org/source/fizmo-0.8.0.tar.gz
+	sha256sums = 2aeeee5cf6d5e0ce16d9c1c205a4a671315e68944c71d5ac49ab326415fc1a96
 
 pkgname = fizmo
 
