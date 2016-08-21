@@ -1,0 +1,15 @@
+pkgbase = bunnysay-git
+	pkgdesc = Fullwidth bunny signs for terminal and Twitter/webforms
+	pkgver = v1.0.r1.3c98d2b
+	pkgrel = 1
+	url = https://github.com/co60ca/stella
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/co60ca/bunnysay.git
+	md5sums = SKIP
+
+pkgname = bunnysay-git
+
