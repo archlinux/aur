@@ -5,13 +5,10 @@ pkgver=16.08.10.g9bb0c70
 pkgrel=1
 pkgdesc="A diary using git as its backend"
 arch=('any')
-url='http://www.uninformativ.de/projects/?q=gitary'
+url='https://www.uninformativ.de/projects/gitary/'
 license=('custom:PIZZA-WARE')
 makedepends=('git')
 depends=('git')
-optdepends=(
-  'vim: A reasonable editor, syntax files are provided'
-)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(git://github.com/vain/gitary.git)
