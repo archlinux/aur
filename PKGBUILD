@@ -1,8 +1,8 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=gpsprune_bin
-pkgver=18.4
-pkgrel=2
+pkgver=18.5
+pkgrel=1
 pkgdesc="a java application for viewing, editing and converting coordinate data from GPS systems"
 arch=('any')
 url="http://sourceforge.net/projects/prune-gps/"
@@ -17,10 +17,10 @@ noextract=("${pkgname%%_bin}_${pkgver}.jar")
 replaces=('prune_bin')
 
 package() {
-cd $srcdir
-install -D -m644 ./gpsprune_${pkgver}.jar $pkgdir/usr/share/java/gpsprune/gpsprune_${pkgver}.jar
-echo -e "#"'!'"/bin/bash\njava -jar /usr/share/java/gpsprune/gpsprune_${pkgver}.jar \"\$@\"" >./gpsprune
-install -D -m755 ./gpsprune $pkgdir/usr/bin/gpsprune
-install -D -m644 $srcdir/prunelogo.png $pkgdir/usr/share/pixmaps/gpsprune.png
-install -D -m644 $srcdir/gpsprune.desktop $pkgdir/usr/share/applications/gpsprune.desktop
+  cd $srcdir
+  install -D -m644 ./gpsprune_${pkgver}.jar $pkgdir/usr/share/java/gpsprune/gpsprune_${pkgver}.jar
+  echo -e "#"'!'"/bin/bash\njava -jar /usr/share/java/gpsprune/gpsprune_${pkgver}.jar \"\$@\"" >./gpsprune
+  install -D -m755 ./gpsprune $pkgdir/usr/bin/gpsprune
+  install -D -m644 $srcdir/prunelogo.png $pkgdir/usr/share/pixmaps/gpsprune.png
+  install -D -m644 $srcdir/gpsprune.desktop $pkgdir/usr/share/applications/gpsprune.desktop
 }
