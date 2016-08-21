@@ -16,13 +16,13 @@ sha512sums=('4e0fe2abe85d1c95b41cb3abe1f6333dc3a9eb69dba106a674a78d74a4d5b9c5a19
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgname#lib32-}-${pkgver}"
-  ./configure --prefix=/usr --libdir=/usr/lib32
+  ./configure --build=i686-pc-linux-gnu --prefix=/usr --libdir=/usr/lib32
   make
 }
 
