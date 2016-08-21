@@ -3,7 +3,7 @@
 pkgname=usbguard
 _pkgname=usbguard
 pkgver=0.5.14
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libsodium")
@@ -25,10 +25,14 @@ backup=(
 	"etc/usbguard/usbguard-daemon.conf"
 	"etc/usbguard/rules.conf")
 
-build() {
+prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p1 <../disable_json_regression_test.patch
 	rm -f ./usbguard-daemon.conf
+}
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
 	--with-bundled-json \
