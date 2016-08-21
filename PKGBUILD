@@ -6,7 +6,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 
 arch=('any')
@@ -41,7 +41,7 @@ checkdepends=(
 source=("https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
 
 validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E')
-md5sums=('5c2cd2dac45dfa6123d067e32a89e89a'
+md5sums=('e86658823b51296dbe6ebff5f58988c9'
          'SKIP')
 
 prepare() {
