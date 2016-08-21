@@ -2,8 +2,8 @@
 # Contributor: James An <james@jamesan.ca>
 _perlmod=XML-XSH2
 pkgname=xsh
-pkgver=2.1.19
-pkgrel=2
+pkgver=2.1.25
+pkgrel=1
 pkgdesc="XSH - XML editing shell"
 arch=("any")
 url="http://xsh.sourceforge.net/"
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(http://search.cpan.org/CPAN/authors/id/C/CH/CHOROBA/$_perlmod-$pkgver.tar.gz)
-md5sums=('7bd2469adddec35d4a43f80976035f0a')
+md5sums=('98d4d1124f59c854a873ceb594cd816d')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
