@@ -1,0 +1,17 @@
+pkgbase = lf-git
+	pkgdesc = lf is a terminal file manager written in Go
+	pkgver = r27.19561f6
+	pkgrel = 1
+	url = https://github.com/gokcehan/lf
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = go>=1.6
+	provides = lf
+	conflicts = lf
+	source = lf::git+https://github.com/gokcehan/lf.git
+	sha256sums = SKIP
+
+pkgname = lf-git
+
