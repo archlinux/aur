@@ -2,7 +2,7 @@
 
 pkgname=owncloud-daily
 pkgver=20160530
-pkgrel=1
+pkgrel=2
 pkgdesc="ownCloud server dialy build, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
 arch=('any')
