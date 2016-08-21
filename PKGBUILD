@@ -1,8 +1,8 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=gpsprune
-pkgver=18.4
-pkgrel=2
+pkgver=18.5
+pkgrel=1
 pkgdesc="a java application for viewing, editing and converting coordinate data from GPS systems"
 arch=('any')
 url="http://sourceforge.net/projects/prune-gps/"
@@ -11,25 +11,24 @@ depends=('java-runtime')
 makedepends=('java-environment' 'java3d')
 optdepends=('povray' 'perl-image-exiftool' 'gpsbabel' 'gnuplot')
 source=("http://activityworkshop.net/software/${pkgname%%_bin}/${pkgname%%_bin}_${pkgver}_source.tar.bz2" "http://activityworkshop.net/software/gpsprune/prunelogo.png" "${pkgname%%_bin}.desktop")
-md5sums=('af45c2ea826cf44e6f75205df24d866d'
+md5sums=('0d1c41539a197f0fa583a79e3e3407ac'
          '0dce06ef7eec27ecff78eb0a83c0b123'
          '000b0d3ba573fedf4eaf92ac6c1829dd')
 noextract=("${pkgname%%_bin}_${pkgver}.jar")
 conflicts=('gpsprune_bin' 'prune_dev_bin')
 
-
 build() {
-cd ${srcdir}/${pkgname%%_bin}_${pkgver}
-sed -i '/javac/s%compile%compile -cp "/opt/java/jre/lib/ext/*"%' build.sh
-chmod +x ./build.sh
-./build.sh
+  cd ${srcdir}/${pkgname%%_bin}_${pkgver}
+  sed -i '/javac/s%compile%compile -cp "/opt/java/jre/lib/ext/*"%' build.sh
+  chmod +x ./build.sh
+  ./build.sh
 }
 
 package() {
-cd ${srcdir}/${pkgname%%_bin}_${pkgver}
-install -D -m644 dist/gpsprune_${pkgver}.jar $pkgdir/usr/share/java/gpsprune/gpsprune_${pkgver}.jar
-echo -e "#"'!'"/bin/bash\njava -jar /usr/share/java/gpsprune/gpsprune_${pkgver}.jar \"\$@\"" >./gpsprune
-install -D -m755 ./gpsprune $pkgdir/usr/bin/gpsprune
-install -D -m644 $srcdir/prunelogo.png $pkgdir/usr/share/pixmaps/gpsprune.png
-install -D -m644 $srcdir/gpsprune.desktop $pkgdir/usr/share/applications/gpsprune.desktop
+  cd ${srcdir}/${pkgname%%_bin}_${pkgver}
+  install -D -m644 dist/gpsprune_${pkgver}.jar $pkgdir/usr/share/java/gpsprune/gpsprune_${pkgver}.jar
+  echo -e "#"'!'"/bin/bash\njava -jar /usr/share/java/gpsprune/gpsprune_${pkgver}.jar \"\$@\"" >./gpsprune
+  install -D -m755 ./gpsprune $pkgdir/usr/bin/gpsprune
+  install -D -m644 $srcdir/prunelogo.png $pkgdir/usr/share/pixmaps/gpsprune.png
+  install -D -m644 $srcdir/gpsprune.desktop $pkgdir/usr/share/applications/gpsprune.desktop
 }
