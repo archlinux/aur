@@ -2,6 +2,7 @@ pkgbase = hotpatch
 	pkgdesc = Hot patching executables on Linux using .so file injection.
 	pkgver = 0.2
 	pkgrel = 1
+	url = https://github.com/vikasnkumar/hotpatch
 	arch = any
 	license = New BSD
 	makedepends = cmake
