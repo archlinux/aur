@@ -44,6 +44,7 @@ build() {
 		--enable-sacdiso \
 		--enable-dvdaiso \
 		--disable-sidplay \
+		--disable-wildmidi \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system
 
 	# Quick fix for missing glib-2.0 include.
