@@ -15,7 +15,7 @@ makedepends=('cmake' 'vala')
 source=("https://launchpad.net/pantheon-greeter/loki/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
         'lightdm-pantheon-greeter-paths.patch')
 sha256sums=('6a0aeb22cceeedef3426d5670b9dae4e2b6794fcdc0c5f5b8bff3aa00f067351'
-            '0a18b2918a799d43c5da656049d2fbf37d0837e68ee52ff1fc25d8caf03bd6d2')
+            '2f9dcb41971221f824a314dd935e8b37506e7eb47f58112031f08f1e35283fb1')
 
 prepare() {
   cd pantheon-greeter-${pkgver}
