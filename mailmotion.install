@@ -2,13 +2,16 @@ post_install() {
     pkgname=mailmotion
 
     # Fixing membership
-    chown root: /var/log/$pkgname
-    chown -R root: /etc/$pkgname
+    chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
 
     true
 }
 
 post_upgrade() {
+	chown http: /var/log/$pkgname
+    chown -R http: /etc/$pkgname
+    
 	true
 }
 
