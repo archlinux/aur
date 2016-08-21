@@ -17,9 +17,9 @@ sha512sums=('9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgname#lib32-}-${pkgver}"
@@ -33,6 +33,6 @@ package() {
   cd "${pkgname#lib32-}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
-  mkdir -p "${pkgdir}/usr/share/licenses"
-  ln -s ${pkgname#lib32-} "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+  install -Dm0644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
