@@ -1,0 +1,15 @@
+pkgbase = lichify-git
+	pkgdesc = A simple daemon to notify about new lichess.org games
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/marmistrz/lichify
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python-notify2
+	depends = python-requests
+	source = git+https://github.com/marmistrz/lichify.git
+	sha1sums = SKIP
+
+pkgname = lichify-git
+
