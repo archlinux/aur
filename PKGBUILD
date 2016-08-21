@@ -1,8 +1,9 @@
 # Maintainer: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
+# Contributor: RemiliaForever <remilia AT koumakan DOT cc>
 
 pkgname=mingw-w64-glfw
-pkgver=3.1.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A free, open source, portable framework for OpenGL application development (mingw-w64)"
 arch=('any')
@@ -12,7 +13,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/glfw/glfw/releases/download/${pkgver}/glfw-${pkgver}.zip)
-md5sums=('8023327bfe979b3fe735e449e2f54842')
+md5sums=('824c99eea073bdd6d2fec76b538f79af')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -48,7 +49,6 @@ package() {
                 mv "${pkgdir}/usr/${_arch}/lib/"*.dll "${pkgdir}/usr/${_arch}/bin/"
                 ${_arch}-strip -x -g "${pkgdir}/usr/${_arch}/bin/"*.dll
                 ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
-                mv "${pkgdir}/usr/${_arch}/lib/glfw3dll.a" "${pkgdir}/usr/${_arch}/lib/libglfw3.dll.a"
 
                 cd "${srcdir}/build-${_arch}-static"
                 make DESTDIR="${pkgdir}" install
