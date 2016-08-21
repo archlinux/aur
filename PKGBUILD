@@ -2,8 +2,8 @@
 _npmname=js-beautify
 _npmver=1.6.3
 pkgname=js-beautify # All lowercase
-pkgver=$_npmver
-pkgrel=1
+pkgver=1.6.3
+pkgrel=2
 pkgdesc="Beautify JavaScript/JSON (jsbeautifier.org)"
 arch=(any)
 license=('MIT')
