@@ -3,8 +3,8 @@
 pkgname=lf-git
 _pkgname=lf
 pkgver=r27.19561f6
-pkgrel=1
-license=('GPL2')
+pkgrel=2
+license=('MIT')
 pkgdesc='lf is a terminal file manager written in Go'
 makedepends=("git" "go>=1.6")
 arch=("i686" "x86_64")
