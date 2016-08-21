@@ -1,0 +1,28 @@
+diff -aur pkg.pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW pkg.new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW
+--- pkg.pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-20 21:56:06.302059556 -0400
++++ pkg.new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-20 21:59:18.332061342 -0400
+@@ -43,15 +43,7 @@
+ $width=-1;
+ $height=-1;
+ 
+-#my $basedir = Cwd::realpath ($0);
+-my $basedir = `readlink $0`;
+-if ( $basedir eq '' ){
+-    $basedir = `realpath $0`;
+-}
+-chomp($basedir);
+-
+-$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+-
++my $basedir = "/usr/share/brother/printers/HLL2380DW"
+ 
+ %units = ( pt   => \&pt2dot, 
+ 	   mm   => \&mm2dot, 
+@@ -85,6 +77,7 @@
+ 
+ 
+ $PRINTER =~ s/^\/opt\/.*\/Printers\///g;
++$PRINTER =~ s/^\/usr\/share\/.*\/Printers\///g;
+ $PRINTER =~ s/\/cupswrapper//g;
+ $PRINTER =~ s/\///g;
+ 

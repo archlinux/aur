@@ -1,0 +1,19 @@
+pkgbase = brother-hll2380dw
+	pkgdesc = Brother LPR and CUPS driver for HL-L2380DW
+	pkgver = 3.2.0_1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = lib32-glibc
+	source = brother-hll2380dw.patch
+	source = http://download.brother.com/welcome/dlf101770/hll2380dwcupswrapper-3.2.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101769/hll2380dwlpr-3.2.0-1.i386.rpm
+	md5sums = ecd2aa8403e50a739f20c76fc9032495
+	md5sums = 3fe2c6b93ec0acc7886beaa314212fca
+	md5sums = 1cf4aa246d05da5e8d3bc280d000695e
+
+pkgname = brother-hll2380dw
+
