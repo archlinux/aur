@@ -27,23 +27,24 @@ prepare() {
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgbase#lib32-}-${pkgver}"
   ./configure \
-              --prefix=/usr \
-              --mandir=/usr/share/man \
-              --sysconfdir=/etc \
-              --localstatedir=/var \
-              --libdir=/usr/lib32 \
-              --libexecdir=/usr/lib32 \
-              --enable-sixaxis \
-              --enable-experimental \
-              --enable-library # this is deprecated
+    --build=i686-pc-linux-gnu \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libdir=/usr/lib32 \
+    --libexecdir=/usr/lib32 \
+    --enable-sixaxis \
+    --enable-experimental \
+    --enable-library # this is deprecated
   make
 }
 
@@ -54,17 +55,17 @@ check() {
 
 package_lib32-bluez() {
   pkgdesc="Daemons for the bluetooth protocol stack (32-bit)"
-  depends=(lib32-{libical,dbus,glib2} 'bluez')
+  depends=(lib32-{libical,dbus,glib2})
 
   cd "${pkgbase#lib32-}-${pkgver}"
   make DESTDIR=${pkgdir} \
-       install-libexecPROGRAMS \
-       install-dbussessionbusDATA \
-       install-systemdsystemunitDATA \
-       install-systemduserunitDATA \
-       install-dbussystembusDATA \
-       install-dbusDATA \
-       install-man8
+    install-libexecPROGRAMS \
+    install-dbussessionbusDATA \
+    install-systemdsystemunitDATA \
+    install-systemduserunitDATA \
+    install-dbussystembusDATA \
+    install-dbusDATA \
+    install-man8
 
   # Remove conflicting files.
   rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin}}
@@ -77,9 +78,9 @@ package_lib32-bluez-libs() {
 
   cd ${pkgbase#lib32-}-${pkgver}
   make DESTDIR=${pkgdir} \
-       install-includeHEADERS \
-       install-libLTLIBRARIES \
-       install-pkgconfigDATA
+    install-includeHEADERS \
+    install-libLTLIBRARIES \
+    install-pkgconfigDATA
 
   # Remove conflicting files.
   rm -rf "${pkgdir}/usr/include"
@@ -99,5 +100,5 @@ package_lib32-bluez-plugins() {
 
   cd ${pkgbase#lib32-}-${pkgver}
   make DESTDIR=${pkgdir} \
-       install-pluginLTLIBRARIES
+    install-pluginLTLIBRARIES
 }
