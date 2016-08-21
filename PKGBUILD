@@ -2,11 +2,11 @@
 
 _plug=finesharp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5
+pkgver=r8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=166524"
+url='http://forum.doom9.org/showthread.php?t=166524'
 license=('GPL')
 depends=('vapoursynth')
 provides=("vapoursynth-plugin-${_plug}")
@@ -14,6 +14,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 makedepend=('git')
 source=("${_plug}::git+https://gist.github.com/8676fd350d4b5b223ab9.git")
 sha1sums=('SKIP')
+
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
