@@ -1,10 +1,11 @@
 pkgbase = libmatemixer-dev
 	pkgdesc = Mixer library for MATE Desktop (GTK3 version)
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
+	groups = mate
 	license = LGPL
 	makedepends = mate-common-dev
 	depends = alsa-lib
