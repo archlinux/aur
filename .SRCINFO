@@ -1,0 +1,20 @@
+pkgbase = openfx-io
+	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/MrKepzie/openfx-io/tree/Natron-2.1.2
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = expat
+	makedepends = boost
+	depends = seexpr1
+	depends = openimageio
+	depends = ffmpeg
+	source = openfx-io::git://github.com/MrKepzie/openfx-io.git#tag=Natron-2.1.2
+	source = GCC6.patch
+	md5sums = SKIP
+	md5sums = 8da02f30c37861eaaac9245ff4cb005b
+
+pkgname = openfx-io
+
