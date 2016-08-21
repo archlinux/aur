@@ -1,7 +1,7 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme-laptop
 pkgver=3.20.20160821
-pkgrel=1
+pkgrel=2
 pkgdesc="Laptop variation of Flat-Plat, a Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contain chrome skin extension."
 arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
@@ -11,7 +11,7 @@ optdepends=()
 provides=('flatplat-theme-laptop')
 replaces=()
 source=("https://github.com/nana-4/Flat-Plat/releases/download/v${pkgver}/Flat-Plat-laptop-${pkgver}.tar.gz")
-sha256sums=('2d9d5b061215eef0486f1df4c3ce0c79d2c89590f8c222b084fe3dcd68f2b1cc')
+sha256sums=('cf3641fc7135e76d3530fb15df8c6d013bdac4024f965ea9f6b79fa141970df2')
 
 package() {
   cd "Flat-Plat-laptop"
