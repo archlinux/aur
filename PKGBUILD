@@ -1,22 +1,21 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lightdm-pantheon-greeter
-pkgver=2.0.2
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-greeter'
 license=('GPL')
 depends=('atk' 'cairo' 'clutter' 'clutter-gtk' 'cogl' 'gdk-pixbuf2' 'glib2'
-         'glibc' 'gtk3' 'libgee' 'libgl' 'libindicator-gtk3' 'libx11' 'lightdm'
+         'glibc' 'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm'
          'pango'
          'libgranite.so')
 makedepends=('cmake' 'vala')
-install='lightdm-pantheon-greeter.install'
-source=("lightdm-pantheon-greeter-${pkgver}.tgz::https://launchpad.net/pantheon-greeter/freya/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
+source=("https://launchpad.net/pantheon-greeter/loki/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
         'lightdm-pantheon-greeter-paths.patch')
-sha256sums=('41c51a424828ad2d454e6def8259c42f62f868a7b55302fc585c5ce6f5fc70cd'
-            '8246073b9a242d8b2a097845af8aa8b33f8c0ba4c6815342b51a1f9c13b1afa8')
+sha256sums=('6a0aeb22cceeedef3426d5670b9dae4e2b6794fcdc0c5f5b8bff3aa00f067351'
+            '0a18b2918a799d43c5da656049d2fbf37d0837e68ee52ff1fc25d8caf03bd6d2')
 
 prepare() {
   cd pantheon-greeter-${pkgver}
