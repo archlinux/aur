@@ -1,6 +1,6 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=systemtap-git
-pkgver=2.3.1539.g00b943a
+pkgver=3.0.213.gcc72c6a
 pkgrel=1
 pkgdesc="SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
@@ -11,7 +11,7 @@ makedepends=('git')
 optdepends=('sqlite3' 'linux-fedora: for debug enabled kernel' 'linux-lily-debug: for debug enabled kernel')
 provides=(systemtap=2.3)
 conflicts=(systemtap)
-_gitroot=git://github.com/fche/systemtap.git
+_gitroot=git://sourceware.org/git/systemtap.git
 _gitname=systemtap
 source=("git+$_gitroot")
 md5sums=(SKIP)
