@@ -42,6 +42,7 @@ build() {
 	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=Release "
 	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
+	CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
 
 	mkdir -p build && cd build
 	cmake $CMAKE_FLAGS ..
