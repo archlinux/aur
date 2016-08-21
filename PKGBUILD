@@ -56,8 +56,7 @@ check() {
 	# Temporarily disable some a tests:
 	#  * coretests takes too long (~25000s)
 	#  * libwallet_api_tests fail (Issue #895)
-	#  * unit_tests: fail on i686 and x86_64 (Issue #975)
-	CTEST_ARGS+="-E 'coretests|libwallet_api_tests|unit_tests'"
+	CTEST_ARGS+="-E 'coretests|libwallet_api_tests'"
 	echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
 	make ARGS="$CTEST_ARGS" test
