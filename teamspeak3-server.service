@@ -7,7 +7,7 @@ Type=simple
 User=teamspeak
 Group=teamspeak
 WorkingDirectory=/var/lib/teamspeak3-server
-Environment='LD_LIBRARY_PATH="/usr/lib/mariadb/:$LD_LIBRARY_PATH"'
+Environment='LD_LIBRARY_PATH="/usr/lib/:/usr/lib/mariadb/:$LD_LIBRARY_PATH"'
 ExecStart=/usr/bin/ts3server inifile=/etc/teamspeak3-server.ini
 
 [Install]
