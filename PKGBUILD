@@ -2,9 +2,9 @@
 
 pkgname=adobe-flashplugin
 pkgdesc="Adobe Pepper Flash plugin"
-pkgver=22.0.0.192
+pkgver=22.0.0.209
 pkgrel=1
-_rel=20160616.1
+_rel=20160712.1
 arch=('x86_64' 'i686')
 url="https://launchpad.net/ubuntu/+source/adobe-flashplugin"
 license=('custom')
@@ -13,7 +13,7 @@ optdepends=('freshplayerplugin: Firefox support')
 conflicts=('chromium-pepper-flash' 'flashplugin')
 provides=('pepper-flash')
 source=("https://launchpad.net/ubuntu/+archive/partner/+files/adobe-flashplugin_${_rel}.orig.tar.gz")
-sha256sums=('56fca7a80832295a1f542bda27c79bfc1bfc6106cc36e05684e6b86b38dbcd16')
+sha256sums=('164329378ebc112bbaf684643dad1d8ba77dd6f18170cba90770accc66cc7478')
 
 package() {
 	# create required directories

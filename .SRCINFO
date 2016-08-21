@@ -1,6 +1,6 @@
 pkgbase = adobe-flashplugin
 	pkgdesc = Adobe Pepper Flash plugin
-	pkgver = 22.0.0.192
+	pkgver = 22.0.0.209
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/adobe-flashplugin
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = adobe-flashplugin
 	provides = pepper-flash
 	conflicts = chromium-pepper-flash
 	conflicts = flashplugin
-	source = https://launchpad.net/ubuntu/+archive/partner/+files/adobe-flashplugin_20160616.1.orig.tar.gz
-	sha256sums = 56fca7a80832295a1f542bda27c79bfc1bfc6106cc36e05684e6b86b38dbcd16
+	source = https://launchpad.net/ubuntu/+archive/partner/+files/adobe-flashplugin_20160712.1.orig.tar.gz
+	sha256sums = 164329378ebc112bbaf684643dad1d8ba77dd6f18170cba90770accc66cc7478
 
 pkgname = adobe-flashplugin
 
