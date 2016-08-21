@@ -1,6 +1,6 @@
 pkgname=mingw-w64-pcre
 pkgver=8.39
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that implements Perl 5-style regular expressions (mingw-w64)"
 arch=(any)
 url="http://www.pcre.org/"
