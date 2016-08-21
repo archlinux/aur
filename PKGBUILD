@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl2-ime-support
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) [with IME support] (32-bit support)"
 arch=('x86_64')
 url="http://www.libsdl.org"
@@ -13,9 +13,10 @@ conflicts=('lib32-sdl2')
 install="$pkgname.install"
 makedepends=('gcc-multilib' 'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse'
              'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxrandr'
-             'lib32-fcitx')
+             'lib32-fcitx' 'libibus')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
+            'fcitx: fcitx input support'
             'lib32-fcitx: fcitx input support'
             'ibus: IBus input support')
 source=("git+https://github.com/timxx/SDL-fcitx#branch=release-$pkgver")
