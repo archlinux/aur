@@ -1,5 +1,4 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
-# Contributor: PyroPeter <com.googlemail@abi1789>
 
 pkgname=c-pluff
 pkgver=0.1.4
