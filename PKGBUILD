@@ -1,13 +1,13 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Rust toolchain installer"
 arch=('i686' 'x86_64')
 url="https://github.com/rust-lang-nursery/rustup.rs"
 license=('MIT' 'Apache')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly')
 conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multirust-git')
 replaces=('multirust' 'multirust-git')
