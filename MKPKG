@@ -1,0 +1,4 @@
+pkgname=('wingpanel-indicator-ayatana')
+builddeps=('libindicator-gtk3' 'gala-bzr' 'wingpanel')
+
+# vim: ts=2 sw=2 et:
