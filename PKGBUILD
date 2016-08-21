@@ -1,16 +1,15 @@
 # Maintainer: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=insomnia
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Beautiful HTTP Requests"
 arch=('i686' 'x86_64')
 url="http://insomnia.rest/"
 options=('!strip' '!upx')
-#depends=('nss' 'libxtst' 'gcc-libs-multilib' 'alsa-lib' 'gconf' 'gtk2')
 
 source=("https://s3.amazonaws.com/builds-insomnia-rest/linux/insomnia-${pkgver}.deb")
-md5sums=('f44afb46b3a27d4e6d797729ed9f66c0')
+md5sums=('e2117f8aa673eecdf5b11b0aed81be74')
 
 package() {
     cd "${srcdir}"
