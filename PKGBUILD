@@ -18,19 +18,22 @@ sha512sums=('a324e96556db23011cf86a3ef082851a608c1ef6dd3841cd3231c2e9ef20085cadc
 validpgpkeys=('5558F9399CD7836850553C6EC28E7847ED70F82D') # Martin Mares <mj@ucw.cz>
 
 build() {
-  export LDFLAGS+=' -m32'
+  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   cd "${pkgname#lib32-}-${pkgver}"
-  make CC="gcc -m32" OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 lib/libpci.a
+  make OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 lib/libpci.a
   cp lib/libpci.a "${srcdir}/"
   make clean
-  make CC="gcc -m32" OPT="${CFLAGS}" ZLIB=no SHARED=yes PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 all
+  make OPT="${CFLAGS}" ZLIB=no SHARED=yes PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 all
 }
 
 package() {
   cd "${pkgname#lib32-}-${pkgver}"
-  make CC="gcc -m32" SHARED=yes PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 DESTDIR="${pkgdir}" install install-lib
+  make SHARED=yes PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 DESTDIR="${pkgdir}" install install-lib
   install -m644 "${srcdir}/libpci.a" "${pkgdir}/usr/lib32/"
   rm -rf "${pkgdir}/usr/"{bin,share,include}
 }
