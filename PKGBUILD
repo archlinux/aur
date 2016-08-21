@@ -5,7 +5,7 @@
 
 pkgname=lib32-avahi
 pkgver=0.6.32
-pkgrel=1
+pkgrel=2
 _commit=4f334990f692ce08ab4ea2eece695f1592f535b2
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
 arch=('x86_64')
@@ -23,9 +23,9 @@ sha256sums=('SKIP')
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
@@ -35,6 +35,7 @@ build() {
   NOCONFIGURE=1 ./autogen.sh
 
   ./configure \
+    --build=i686-pc-linux-gnu \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
