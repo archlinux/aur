@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kimageformats
-pkgver=5.24.0
+pkgver=5.25.0
 pkgrel=1
 arch=(any)
 pkgdesc="Image format plugins for Qt5 (mingw-w64)"
@@ -11,7 +11,7 @@ optdepends=("mingw-w64-karchive: plugin for Krita and OpenRaster images")
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kimageformats"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kimageformats-${pkgver}.tar.xz")
-md5sums=('e5a0b82a04e5fa2593b6c14c45494fd6')
+md5sums=('610989615ba775f55bf07f1b5f5b3bf9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -34,8 +34,6 @@ package() {
 	for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip -g {} \;
-    rm -rf "$pkgdir/usr/${_arch}/share"
+    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip -g --strip-unneeded {} \;
   done
 }
