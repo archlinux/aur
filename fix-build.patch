@@ -1,0 +1,34 @@
+diff -Naur z88dk.old/build.sh z88dk/build.sh
+--- z88dk.old/build.sh	2013-11-20 04:00:16.000000000 +0100
++++ z88dk/build.sh	2016-08-21 15:37:40.462354542 +0200
+@@ -32,7 +32,7 @@
+    INSTALL="ginstall"
+ fi
+ 
+-$MAKE -e
++$MAKE
+ $MAKE -C `pwd`/libsrc
+ $MAKE -C `pwd`/libsrc install
+ 
+diff -Naur z88dk.old/Makefile z88dk/Makefile
+--- z88dk.old/Makefile	2015-02-05 17:11:42.000000000 +0100
++++ z88dk/Makefile	2016-08-21 15:39:13.704352445 +0200
+@@ -73,12 +73,12 @@
+ 	cd libsrc ; $(MAKE) install
+ 
+ install-libs:
+-	mkdir -p $(prefix)/lib/z88dk/lib/config
+-	cp -R lib/config/* $(prefix)/lib/z88dk/lib/config/
+-	find $(prefix)/lib/z88dk/lib/config -type f | xargs chmod 644
+-	mkdir -p $(prefix)/lib/z88dk/lib/clibs
+-	cp -R lib/clibs/* $(prefix)/lib/z88dk/lib/clibs/
+-	find $(prefix)/lib/z88dk/lib/clibs -type f | xargs chmod 644
++	mkdir -p $(DESTDIR)/$(prefix)/lib/z88dk/lib/config
++	cp -R lib/config/* $(DESTDIR)/$(prefix)/lib/z88dk/lib/config/
++	find $(DESTDIR)/$(prefix)/lib/z88dk/lib/config -type f | xargs chmod 644
++	mkdir -p $(DESTDIR)/$(prefix)/lib/z88dk/lib/clibs
++	cp -R lib/clibs/* $(DESTDIR)/$(prefix)/lib/z88dk/lib/clibs/
++	find $(DESTDIR)/$(prefix)/lib/z88dk/lib/clibs -type f | xargs chmod 644
+ 
+ install:
+ 	mkdir -p -m 755 $(DESTDIR)/$(prefix)/bin $(DESTDIR)/$(prefix_share)/z88dk
