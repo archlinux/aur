@@ -3,40 +3,34 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
-pkgver=1.1.0.32.gbf166be
-_gitver=bf166be4a21c0a86f6852c4695dcdb06863f4e93
+pkgver=1.1.0.55.g9027ea1
+_gitver=9027ea1737b966386916da27207e8bf92f24cfe0
 _vdrapi=2.2.0
-pkgrel=11
+pkgrel=1
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('dbus-glib' 'git' 'glu' 'libextractor' 'libxrandr' 'mesa' "vdr-api=${_vdrapi}" 'xine-lib')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/$_plugname.git#commit=$_gitver"
-        'xineliboutput-vdr2.1.6compat.diff'
-        'xineliboutput_renamed_iDoubleTapTimeoutMs_in_libcec.diff'
-        'xineliboutput-vdr2.1.10compat.diff'
+source=("git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
+        'xineliboutput_fix_vdrversion_check.diff'
         "50-$_plugname.conf")
 md5sums=('SKIP'
-         '14ef92cd38503a2f426669aa43b0aeb4'
-         'd9e14cb60e536109716ebc886f54880b'
-         'de80424deabba49e3f40c2f92f640765'
+         'd1f1c591b9f927fd0b86e7ff19c09951'
          'a9a3cd09b950d2024b21a1c6e0620506')
 
 pkgver() {
-  cd "${srcdir}/${_plugname}"
+  cd "${srcdir}/git"
   git describe --tags | sed "s/$_plugname.//g;s/_/./g;s/-/./g"
 }
 
 prepare() {
-  cd "${srcdir}/${_plugname}"
-  patch -p1 -i "$srcdir/xineliboutput-vdr2.1.6compat.diff"
-  patch -p1 -i "$srcdir/xineliboutput_renamed_iDoubleTapTimeoutMs_in_libcec.diff"
-  patch -p1 -i "$srcdir/xineliboutput-vdr2.1.10compat.diff"
+  cd "${srcdir}/git"
+  patch -p1 -i "$srcdir/xineliboutput_fix_vdrversion_check.diff"
 }
 
 build() {
-  cd "${srcdir}/${_plugname}"
+  cd "${srcdir}/git"
   ./configure --disable-libcec
   make
 }
@@ -48,7 +42,7 @@ package_vdr-xineliboutput() {
               'xorg-server: Required for software decoding')
   backup=("etc/vdr/conf.avail/50-$_plugname.conf"
           "var/lib/vdr/plugins/$_plugname/allowed_hosts.conf")
-  cd "${srcdir}/${_plugname}"
+  cd "${srcdir}/git"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install
@@ -66,7 +60,7 @@ package_xineliboutput-frontends() {
   depends=('dbus-glib' 'libxrandr' 'mesa' 'xine-lib' 'xineliboutput-xineplug')
   optdepends=('nvidia: Required for VDPAU decoding'
               'xorg-server: Required for software decoding')
-  cd "${srcdir}/${_plugname}"
+  cd "${srcdir}/git"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install
@@ -76,7 +70,7 @@ package_xineliboutput-frontends() {
 package_xineliboutput-xineplug() {
   pkgdesc="Neccessary xine plugins for xineliboutput-frontends and vdr-xineliboutput"
   depends=('xine-lib')
-  cd "${srcdir}/${_plugname}"
+  cd "${srcdir}/git"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make DESTDIR="$pkgdir" install

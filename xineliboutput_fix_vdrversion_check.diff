@@ -1,0 +1,24 @@
+diff -upr a/device.c b/device.c
+--- a/device.c	2016-08-20 11:41:20.856830323 +0200
++++ b/device.c	2016-08-20 11:46:48.853501033 +0200
+@@ -1457,7 +1457,7 @@ void cXinelibDevice::SetVideoDisplayForm
+ #endif
+ }
+ 
+-#if VDRVERSNUM < 20301
++#if VDRVERSNUM < 20200
+ eVideoSystem cXinelibDevice::GetVideoSystem(void)
+ {
+   TRACEF("cXinelibDevice::GetVideoSystem");
+diff -upr a/device.h b/device.h
+--- a/device.h	2016-08-20 11:41:20.856830323 +0200
++++ b/device.h	2016-08-20 11:46:52.500167744 +0200
+@@ -123,7 +123,7 @@ class cXinelibDevice : public cDevice
+   public:
+     virtual void SetVideoDisplayFormat(eVideoDisplayFormat VideoDisplayFormat);
+     virtual void SetVideoFormat(bool VideoFormat16_9);
+-#if VDRVERSNUM < 20301
++#if VDRVERSNUM < 20200
+     virtual eVideoSystem GetVideoSystem(void);
+ #endif
+ 
