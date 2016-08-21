@@ -2,7 +2,7 @@
 
 pkgname=usbguard-git
 _pkgname=usbguard
-pkgver=0.5.12.r2.g137829b
+pkgver=0.5.14.r0.g9e2f0e2
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
@@ -27,9 +27,13 @@ pkgver() {
   git describe --long | sed 's/^usbguard-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${_pkgname}"
 	patch -p1 <../disable_json_regression_test.patch
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
