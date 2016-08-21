@@ -43,6 +43,7 @@ pkgname = python-acme-git
 	depends = python-six
 	depends = python-werkzeug
 	depends = python-mock
+	optdepends = python-dnspython: local validation of dns-01 challenges
 	provides = python-acme=0.8.1.r25.gaa4a263
 	conflicts = python-acme
 
@@ -58,5 +59,6 @@ pkgname = python2-acme-git
 	depends = python2-six
 	depends = python2-werkzeug
 	depends = python2-mock
+	optdepends = python2-dnspython: local validation of dns-01 challenges
 	provides = python2-acme=0.8.1.r25.gaa4a263
 	conflicts = python2-acme
