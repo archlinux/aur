@@ -1,5 +1,6 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-# Co-Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Maintainer: Tomas Schertel <tschertel at gmail dot com>
+# Contributor: NicoHood <aur {at} nicohood {dot} de>
+# Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 # Contributor: PyroPeter <googlemail.com@abi1789>
@@ -7,8 +8,8 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=arduino
-pkgver=1.6.10
-pkgrel=2
+pkgver=1.6.11
+pkgrel=1
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,7 +22,7 @@ provides=('arduino')
 conflicts=('arduino-bin' 'arduino-git')
 install="arduino.install"
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz")
-sha512sums=('b8b96acd0db280256de796de744b96a84a6c97922aaf8d5cdfe9a35304f1eb2310cf0c06d70a4a6a37042e2d9e78c13bcba8c1b4010e3577e0073145d5fa3b0a')
+sha512sums=('f18f173c95aea1b60aa4e7ef98e0dc1a44595571d522569b53842fe8c110e92da82902c25aea6b1affe4e3dfe0098ce0c173cf73c42b2237ce353a5a70932f68')
 
 build() {
 	cd "Arduino-${pkgver}/build"
