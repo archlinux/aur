@@ -1,8 +1,8 @@
 # Maintainer: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=remarkable
-pkgver=1.75
-pkgrel=2
+pkgver=1.87
+pkgrel=1
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('i686' 'x86_64')
 url="http://remarkableapp.github.io"
@@ -20,7 +20,7 @@ options=('!emptydirs' '!strip')
 install="${pkgname}.install"
 source=("${pkgname}_${pkgver}_all.deb::http://remarkableapp.github.io/files/${pkgname}_${pkgver}_all.deb"
         "${pkgname}.install")
-md5sums=('b594bffade610c5c33f8afc504a446bb'
+md5sums=('b14b7bf5b4d4cbf2acb9559220bba982'
          '4230de2876e8789bcd5a7cdc84b2a30b')
 
 package() {
@@ -42,7 +42,7 @@ package() {
          -o "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 
     msg2 "Fixing module include path..."
-    sed -i "s/import undobuffer/from remarkable import undobuffer/" \
+    sed -i "s/import styles/from remarkable import styles/" \
            "${pkgdir}/${_python_site}/remarkable/RemarkableWindow.py"
 
     msg2 "Removing unnecessities..."
