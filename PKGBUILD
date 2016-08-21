@@ -1,9 +1,9 @@
 # Maintainer: Arnau Sanchez <pyarnau@gmail.com>
 _npmname=js-beautify
-_npmver=1.5.10
+_npmver=1.6.3
 pkgname=js-beautify # All lowercase
-pkgver=1.5.10
-pkgrel=2
+pkgver=$_npmver
+pkgrel=1
 pkgdesc="Beautify JavaScript/JSON (jsbeautifier.org)"
 arch=(any)
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(4d95371702699344a516ca26bf59f0a27bb75719)
+md5sums=(b26cc97c822f7add0247444e08fb95f4)
 
 package() {
   cd $srcdir
