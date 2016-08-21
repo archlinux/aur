@@ -2,7 +2,7 @@
 
 pkgname=minimserver
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Audio Server"
 arch=('x86_64')
 url="http://www.minimserver.com"
@@ -17,6 +17,7 @@ package() {
   cd ${srcdir}
   
   mkdir -p ${pkgdir}/opt/minimserver/icons
+  mkdir -p -m 777 ${pkgdir}/opt/minimserver/tmp/
   bsdtar xf data.tar.gz -C "${pkgdir}/opt/minimserver"
   rm -rf ${pkgdir}/opt/minimserver/libext
   rm -rf ${pkgdir}/opt/minimserver/libsys
