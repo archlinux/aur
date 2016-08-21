@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-system-preferences
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Hawaii system preferences"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ conflicts=('hawaii-system-preferences-git')
 groups=('hawaii')
 options=('debug')
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('bb00d2b3110b9ff3af1c80312b41634c857048bb')
+sha1sums=('eda40c22ce884b0c36b8bba9c270b2b2da529945')
 
 prepare() {
 	mkdir -p build
