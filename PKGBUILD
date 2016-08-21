@@ -2,8 +2,8 @@
 # Contributor: picard <picard at fr32k dot de>
 
 pkgname=twonky
-pkgver=8.2.1
-_pkgver=8.2.1
+pkgver=8.3.0
+_pkgver=8.3
 pkgrel=1
 pkgdesc="A DLNA-compliant UPnP AV server software from PacketVideo."
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ source_i686=("twonky-i686-${_pkgver}.zip::http://www.twonkyforum.com/downloads/$
 source_x86_64=("twonky-x86_64-${_pkgver}.zip::http://www.twonkyforum.com/downloads/${_pkgver}/twonky-x86-64-glibc-2.9-${_pkgver}.zip")
 md5sums=('4c89bcaef67cc11f02dca29aea10de1e'
          '0c06f9de4f2510186dc50e548bb1e760')
-md5sums_i686=('f5d183475f7907b053518247bc064f5c')
-md5sums_x86_64=('b5554853ca791fb4daa66343f59d011c')
+md5sums_i686=('dc7a3670ed5410266b8b7db7884d5b90')
+md5sums_x86_64=('8b44636a71dd8b923e5e05d1c245663f')
 
 package() {
     # twonky base install
