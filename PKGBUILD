@@ -7,7 +7,7 @@ pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-S
 arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
-depends=('gtk3>=3.20')
+depends=('gtk3>=3.20','gtk-engine-murrine', 'gnome-themes-standard')
 optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme-git')
