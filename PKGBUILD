@@ -1,11 +1,11 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=libretro-mgba-git
-pkgver=r2918.b8b7ec0
+pkgver=r3805.ef4e678
 pkgrel=1
 pkgdesc='A Nintendo Gameboy Advance Emulator - Libretro Core'
 arch=('i686' 'x86_64')
-url="https://endrift.com/mgba/"
+url="https://mgba.io/"
 license=('custom:MPL2')
 makedepends=('git' 'cmake')
 conflicts=('libretro-mgba')
@@ -38,4 +38,6 @@ package() {
   install -Dm644 "$srcdir"/build/mgba_libretro.so "$pkgdir"/usr/lib/libretro/mgba_libretro.so
   install -Dm644 "$srcdir"/mgba_libretro.info "$pkgdir"/usr/lib/libretro/mgba_libretro.info
   install -Dm644 "$srcdir"/mgba/LICENSE "$pkgdir"/usr/share/licenses/libretro-mgba/LICENSE
+  mkdir -p "$pkgdir"/usr/lib/retro-1.0/plugins
+  ln -s /usr/lib/libretro/mgba_libretro.so "$pkgdir"/usr/lib/retro-1.0/plugins/libretro-game-boy-advance.so
 }
