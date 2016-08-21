@@ -10,14 +10,21 @@ pkgbase = conan
 	sha512sums = ee27e0e01b4186ecd7e9e2bdf45f433f4313df9a5ddcc98f0d607442eaa96225e44fee12c3b58576b153bc32095d759bc76833eb6a45c263fa703862f69ee95e
 
 pkgname = conan
-	depends = python-pyjwt
-	depends = python-requests
-	depends = python-colorama
-	depends = python-passlib
-	depends = python-boto
-	depends = python-yaml
-	depends = python-patch
-	depends = python-fasteners
-	depends = python-six
-	depends = python-bottle
+	depends = python-pyjwt>=1.4.0
+	depends = python-pyjwt<1.5.0
+	depends = python-requests>=2.7.0
+	depends = python-requests<2.11.0
+	depends = python-colorama>=0.3.3
+	depends = python-colorama<0.4.0
+	depends = python-passlib>=1.6.5
+	depends = python-passlib<1.7.0
+	depends = python-boto>=2.38.0
+	depends = python-boto<2.43.0
+	depends = python-yaml>=3.11
+	depends = python-yaml<3.12.0
+	depends = python-patch=1.16
+	depends = python-fasteners>=0.14.1
+	depends = python-six>=1.10.0
+	depends = python-bottle>=0.12.8
+	depends = python-bottle<0.13
 
