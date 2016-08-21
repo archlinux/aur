@@ -1,0 +1,10 @@
+
+post_install() {
+    echo "=== SDL2 with IME support ==="
+    echo "To enable advanced input methods in SDL2 applications, set the"
+    echo "environment variable SDL_IM_MODULE either to 'fcitx' or 'ibus'"
+}
+
+post_upgrade() {
+    post_install
+}
