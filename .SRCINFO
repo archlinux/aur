@@ -1,12 +1,14 @@
 pkgbase = leagueoflegends
 	pkgdesc = A competitive online game set in an imaginative world (Riot Games)
-	pkgver = 20141509
+	pkgver = 2016_05_13
 	pkgrel = 1
+	epoch = 2
 	url = https://leagueoflegends.com
 	install = leagueoflegends.install
 	arch = any
 	makedepends = gendesk
 	makedepends = icoutils
+	makedepends = imagemagick
 	depends = winetricks
 	depends = alsa-lib
 	depends = libldap
@@ -22,10 +24,10 @@ pkgbase = leagueoflegends
 	optdepends = libpulse
 	optdepends = lib32-alsa-plugins
 	optdepends = lib32-libpulse
-	source = https://riotgamespatcher-a.akamaihd.net/ShellInstaller/EUW/LeagueofLegends_EUW_Installer_9_15_2014.exe
+	source = https://riotgamespatcher-a.akamaihd.net/ShellInstaller/EUW/LeagueofLegends_EUW_Installer_2016_05_13.exe
 	source = leagueoflegends
-	sha1sums = c18abec07aea597e0b7b9453018da05f40a1a382
-	sha1sums = 32623d56c2a9e364fc5f682e37259c25f5f88b24
+	sha1sums = d2ca75180300e02c845102fff5bdaafcadf0664d
+	sha1sums = e0420006939187ae08fce7de826c5944d9e2facb
 
 pkgname = leagueoflegends
 
