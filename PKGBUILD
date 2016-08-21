@@ -2,7 +2,7 @@
 
 pkgname=mailmotion
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Send email when motion create picture"
 arch=('any')
 url="https://github.com/Chipsterjulien/mailmotion"
@@ -35,7 +35,7 @@ build() {
     echo "Install natsort"
     go get bitbucket.org/zombiezen/cardcpx/natsort
     echo "Install email"
-    go get github.com/scorredoira/email
+    go get github.com/jordan-wright/email
 
     cd "$_builddir"
 
@@ -62,4 +62,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('cd25be339e91909013e04c4755316c3c210b71e9c0ce598682b7f41510b760075cce7e820eab87ec810314b5ea853a45009a9df246623dd8e03c4f2112be0509')
+sha512sums=('75e72bffc5b28bcfe23fd5a8ee25cd7996049e2872eabf4e29ec6757b5184ca1c35f785a657990c0d5421737a28489c39c5119acea9b853c8871f920a316904b')
