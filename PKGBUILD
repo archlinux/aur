@@ -1,11 +1,11 @@
 # Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
 pkgname=intlfonts
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Free X11 fonts for all characters that Emacs 20 can handle"
 arch=('any')
 url="http://directory.fsf.org/wiki/Intlfonts"
-license="GPL"
+license=("GPL")
 depends=('xorg-font-utils')
 install=intlfonts.install
 source=(ftp://ftp.gnu.org/pub/gnu/intlfonts/$pkgname-$pkgver.tar.gz)
