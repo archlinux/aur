@@ -1,0 +1,19 @@
+post_install() {
+printf "Before starting maynard, create a ~/.config/weston.ini with the following content.\n"
+cat <<-EOF
+[core]
+modules=shell-helper.so,xwayland.so
+backend=drm-backend.so
+
+[shell]
+client=/usr/lib/maynard/maynard
+focus-animation=dim-layer
+animation=zoom
+EOF
+printf "After creating initial configuration, launch maynard\nsession using /usr/bin/maynard or /usr/bin/weston-launch\n"
+printf "Maynard is just a shell for weston(1). Configurations are mostly\n\
+done via weston.ini(5)."
+printf "For more information, read weston.ini(5) manual page.\n"
+printf "Maynard is still experimental. Crashes are to be expected.\nReport bugs to https://github.com/raspberrypi/maynard\n"
+}
+

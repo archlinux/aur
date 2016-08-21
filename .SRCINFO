@@ -1,0 +1,17 @@
+pkgbase = maynard-git
+	pkgdesc = Lightweight desktop environment based on Weston compositor for use with Wayland
+	pkgver = r121.a191e5c
+	pkgrel = 1
+	url = https://github.com/raspberrypi/maynard
+	install = maynard.install
+	arch = x86_64
+	arch = i686
+	license = custom:MIT
+	license = GPL
+	makedepends = git
+	depends = weston
+	source = maynard-git::git+https://github.com/raspberrypi/maynard.git
+	sha256sums = SKIP
+
+pkgname = maynard-git
+
