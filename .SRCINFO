@@ -1,0 +1,15 @@
+pkgbase = hotpatch
+	pkgdesc = Hot patching executables on Linux using .so file injection.
+	pkgver = 0.2
+	pkgrel = 1
+	arch = any
+	license = New BSD
+	makedepends = cmake
+	makedepends = make
+	depends = cmake
+	depends = make
+	source = hotpatch-0.2::git+https://github.com/vikasnkumar/hotpatch.git
+	md5sums = SKIP
+
+pkgname = hotpatch
+
