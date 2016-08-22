@@ -2,7 +2,7 @@
 
 pkgname=libardiscovery-git
 pkgver=r423.cb4f019
-pkgrel=2
+pkgrel=3
 pkgdesc="ARSDK Discovery and Connection Management Layer"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -24,7 +24,7 @@ source=('libardiscovery::git+https://github.com/Parrot-Developers/libARDiscovery
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            '0904602bdd8ae1d6b1a5923f2c16512dbdb90acddef0c35b7726831bad533c1c'
+            '3c17c6844194cacd47df419cba8c4526285c61526353323a854d865988d97037'
             '74300421b1799e0a32dc62eeded41b56a756b9c4ba95ad42402373e9ea9c3c44'
             '3f06925dc6c5ab160f4d021cf570591dec1ea7616439a3c59f0b058d8c45b0a9'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
