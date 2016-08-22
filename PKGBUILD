@@ -1,13 +1,13 @@
 # Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=wsjtx-svn
-pkgver=r5613
+pkgver=r7034
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 arch=(i686 x86_64)
 url="http://physics.princeton.edu/pulsar/k1jt/wsjtx.html"
 license=("GPL-3")
-depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat fftw gcc-fortran hamlib kvasd-bin)
+depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat fftw gcc-fortran hamlib)
 makedepends=('cmake' 'subversion' 'asciidoc')
 provides=("wsjtx")
 conflicts=("wsjtx")
@@ -17,6 +17,11 @@ md5sums=("SKIP")
 pkgver() {
 	cd "$srcdir/${pkgname%-svn}"
 	printf "r%s" "$(svnversion | tr -d 'A-z')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-svn}"
+	sed -ri 's/^find_package \(hamlib 3 REQUIRED\)/set \(hamlib_LIBRARIES hamlib\)/' CMakeLists.txt
 }
 
 build() {
