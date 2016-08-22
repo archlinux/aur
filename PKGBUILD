@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 pkgname=gandi.cli
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Gandi command line interface"
 arch=('any')
 url="http://cli.gandi.net"
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py nosetests
+  python setup.py test
 }
 
 package() {
