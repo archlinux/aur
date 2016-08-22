@@ -1,7 +1,7 @@
 pkgbase = libarstream-git
 	pkgdesc = ARSDK Streaming Library
 	pkgver = r287.ddf0b48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.parrot.com/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = libarstream-git
 	source = Config-linux-config.h
 	source = LICENSE
 	sha256sums = SKIP
-	sha256sums = cdcc0806dee71590025ebf05d99666dfa98ab69b38bcd59b045a91f3b16d1cdb
+	sha256sums = 5134688008cc290a31221df63e38f360482cda4d22d246742c957293bda3d65f
 	sha256sums = 5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7
 	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
 
