@@ -1,3 +1,10 @@
+2016-08-15 Giancarlo Razzolini <grazzolini@gmail.com>
+	* 0.0.3:
+	- Created a new function to use the tinyssh-convert tool to convert already existing OpenSSH ED25519 keys to the tinyssh format.
+	- It will continue to create the tinyssh keys if openssh isn't installed and it has no keys available.
+	- This will only happen if openssh is installed and has run at least once and if there are no keys already created under /etc/tinyssh/sshkeydir.
+	- This is only valid for ED25519 keys, since the tinyssh-convert tool can only convert those.
+
 2015-08-11 Giancarlo Razzolini <grazzolini@gmail.com>
 
 	* 0.0.2 :

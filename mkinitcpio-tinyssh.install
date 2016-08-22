@@ -7,7 +7,14 @@ post_install() {
     cat<<INSTALLEOF
     Insert your SSH public key into "/etc/tinyssh/root_key", e.g. using
     "cat ~/.ssh/id_ed25519.pub > /etc/tinyssh/root_key".
-    
+
+    If you want to use the same host keys as your OpenSSH installation
+    (only ed25519 for now), install tinyssh-convert or tinyssh-convert-git
+    BEFORE rebuilding your initramfs. Or, if you already have keys generated,
+    remove either the /etc/tinyssh/sshkeydir, or the ed25519 public and secret
+    keys from that dir, in order to use OpenSSH keys. This hook will not overwrite
+    existing keys either OpenSSH's converted or tinysshd-makekey created.
+
     Afterwards add the "tinyssh" hook after any networking hook (netconf/ppp)
     and before any hook provided with the mkinitcpio-utils package in the
     "HOOKS" array in "/etc/mkinitcpio.conf". Finally rebuild the initramsfs
