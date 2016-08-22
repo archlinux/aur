@@ -1,9 +1,9 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=upwork
-pkgver=4.1.347.0
+pkgver=4.1.351.0
 _rawver=${pkgver//./_}
-_hashver="rjk4flov9nu4se21"
+_hashver="a7qf2qa9wn508n52"
 pkgrel=1
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ install=upwork.install
 # how to get links Standart, Beta, Alpha: grep updates.getVersionToDownload ~/.Upwork/Upwork/Logs/* | tail -n 1 | grep -o 'http://[a-zA-Z/.0-9_]*.deb'
 source_x86_64=(upwork_amd64_${pkgver}.deb::http://updates.team.odesk.com/binaries/v${_rawver}_${_hashver}/upwork_amd64.deb)
 source_i686=(upwork_i386_${pkgver}.deb::http://updates.team.odesk.com/binaries/v${_rawver}_${_hashver}/upwork_i386.deb)
-md5sums_i686=('7a3d5e63955e11e0dbaf1754fe7946be')
-md5sums_x86_64=('a3f8c77968fa2737c2abc9e17a7e8955')
+md5sums_i686=('c5a878647632d25f257917fd7258f558')
+md5sums_x86_64=('3a62f040cad70b67ea13e3de381e1cd8')
 
 prepare() {
     cd "${srcdir}"
