@@ -1,9 +1,8 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=glib2-patched-thumbnailer
 pkgname=glib2-patched-thumbnailer
-pkgver=2.48.1
+pkgver=2.48.2
 _patchver=d0edf118e1c27700300038c1d82b3ff775c0216b
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
@@ -13,8 +12,8 @@ provides=(glib2)
 conflicts=(glib2)
 makedepends=('pkg-config' 'python2' 'libxslt' 'docbook-xml' 'pcre' 'libffi' 'libelf')
 depends=('pcre' 'libffi' 'tumbler')
-optdepends=('python2: for gdbus-codegen and gtester-report'
-            'elfutils: gresource inspection tool')
+optdepends=('python: for gdbus-codegen and gtester-report'
+            'libelf: gresource inspection tool')
 options=('!docs' '!emptydirs')
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver:0:4}/glib-$pkgver.tar.xz
@@ -22,7 +21,7 @@ source=(http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver:0:4}/glib-$pkgver.t
         gio-querymodules.hook
         revert-warn-glib-compile-schemas.patch
         https://gist.githubusercontent.com/ahodesuka/49c1d0eea4b64f24c4c7/raw/$_patchver/glib-thumbnailer.patch)
-sha256sums=('74411bff489cb2a3527bac743a51018841a56a4d896cc1e0d0d54f8166a14612'
+sha256sums=('f25e751589cb1a58826eac24fbd4186cda4518af772806b666a3f91f66e6d3f4'
             'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
             '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6'
             '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97'
@@ -36,7 +35,7 @@ prepare() {
 
 build() {
   cd glib-$pkgver
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --libdir=/usr/lib \
+  ./configure --prefix=/usr --libdir=/usr/lib \
       --sysconfdir=/etc \
       --with-pcre=system \
       --disable-fam
@@ -45,6 +44,7 @@ build() {
 
 check() {
   cd glib-$pkgver
+  # Takes an effing long time
   #make -k check || :
 }
 
@@ -52,9 +52,7 @@ package() {
   cd glib-$pkgver
   make completiondir=/usr/share/bash-completion/completions DESTDIR="$pkgdir" install
 
-  for _i in "$pkgdir/usr/share/bash-completion/completions/"*; do
-      chmod -x "$_i"
-  done
+  chmod -x "$pkgdir"/usr/share/bash-completion/completions/*
 
   # Our gdb does not ship the required python modules, so remove it
   rm -rf "$pkgdir/usr/share/gdb/"
