@@ -3,8 +3,8 @@
 _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
-_gitauthor=deviantfero # djmelik
-pkgver=3.0
+_gitauthor=deviantfero # deviantfero
+pkgver=r180.6a29b8d
 pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -17,6 +17,13 @@ makedepends=('git')
 optdepends=()
 conflicts=("${_gitname}" 'nitrogen')
 provides=("${_gitname}")
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  (
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 package() {
   cd "${srcdir}/${_gitname}"
@@ -41,5 +48,3 @@ package() {
   echo
   sleep 3
 }
-
-# vim:set et sw=2 sts=2 tw=80:
