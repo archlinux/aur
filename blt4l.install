@@ -1,0 +1,7 @@
+post_install() {
+  echo "Your installation of blt4l is not yet done!
+You'll need to set launch options in Steam for Payday 2:
+LD_PRELOAD=\"\$LD_PRELOAD /usr/lib/blt4l/libblt_loader.so\" %command%
+And install the base Lua code, instructions here:
+https://github.com/blt4linux/blt4l"
+}
