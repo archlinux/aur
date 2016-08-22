@@ -1,5 +1,5 @@
 pkgbase = connman-nmcompat
-	pkgdesc = Connman network manager with NetworkManager compatibility for all NM aware applications
+	pkgdesc = Connman network manager with NetworkManager compatibility for all NetworkManager aware applications
 	pkgver = 1.33
 	pkgrel = 1
 	url = https://01.org/connman
