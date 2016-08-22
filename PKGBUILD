@@ -1,7 +1,7 @@
 # Maintainer: Cody P Schafer <aur@codyps.com>
 pkgname=librevault-git
 pkgver=0.1.18.5.r0.86a6aef
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronization designed with privacy in mind"
 arch=(x86_64 i686)
 url="https://librevault.com/"
