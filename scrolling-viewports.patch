@@ -1,0 +1,312 @@
+diff -Naur xfce4-panel-4.12.0-orig/plugins/pager/Makefile.in xfce4-panel-4.12.0/plugins/pager/Makefile.in
+--- xfce4-panel-4.12.0-orig/plugins/pager/Makefile.in	2015-02-28 17:21:58.000000000 +0100
++++ xfce4-panel-4.12.0/plugins/pager/Makefile.in	2015-03-01 18:45:28.644450872 +0100
+@@ -870,8 +870,8 @@
+ 
+ @INTLTOOL_DESKTOP_RULE@
+ 
+-@MAINTAINER_MODE_TRUE@pager-dialog_ui.h: pager-dialog.glade
+-@MAINTAINER_MODE_TRUE@	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=pager_dialog_ui $< >$@
++pager-dialog_ui.h: pager-dialog.glade
++	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=pager_dialog_ui $< >$@
+ 
+ # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
+ 
+diff -Naur xfce4-panel-4.12.0-orig/plugins/pager/pager.c xfce4-panel-4.12.0/plugins/pager/pager.c
+--- xfce4-panel-4.12.0-orig/plugins/pager/pager.c	2015-02-26 21:32:17.000000000 +0100
++++ xfce4-panel-4.12.0/plugins/pager/pager.c	2015-03-01 19:21:03.250359762 +0100
+@@ -86,6 +86,7 @@
+ 
+   /* settings */
+   guint          scrolling : 1;
++  guint          invert_scrolling : 1;
+   guint          wrap_workspaces : 1;
+   guint          miniature_view : 1;
+   gint           rows;
+@@ -96,6 +97,7 @@
+ {
+   PROP_0,
+   PROP_WORKSPACE_SCROLLING,
++  PROP_INVERT_WORKSPACE_SCROLLING,
+   PROP_WRAP_WORKSPACES,
+   PROP_MINIATURE_VIEW,
+   PROP_ROWS
+@@ -146,6 +148,13 @@
+                                                          EXO_PARAM_READWRITE));
+ 
+   g_object_class_install_property (gobject_class,
++                                   PROP_INVERT_WORKSPACE_SCROLLING,
++                                   g_param_spec_boolean ("workspace-invert-scrolling",
++                                                         NULL, NULL,
++                                                         TRUE,
++                                                         EXO_PARAM_READWRITE));
++
++  g_object_class_install_property (gobject_class,
+                                    PROP_MINIATURE_VIEW,
+                                    g_param_spec_boolean ("miniature-view",
+                                                          NULL, NULL,
+@@ -167,6 +176,7 @@
+ {
+   plugin->wnck_screen = NULL;
+   plugin->scrolling = TRUE;
++  plugin->invert_scrolling = FALSE;
+   plugin->wrap_workspaces = FALSE;
+   plugin->miniature_view = TRUE;
+   plugin->rows = 1;
+@@ -190,6 +200,10 @@
+       g_value_set_boolean (value, plugin->scrolling);
+       break;
+ 
++    case PROP_INVERT_WORKSPACE_SCROLLING:
++      g_value_set_boolean (value, plugin->invert_scrolling);
++      break;
++
+     case PROP_WRAP_WORKSPACES:
+       g_value_set_boolean (value, plugin->wrap_workspaces);
+       break;
+@@ -226,6 +240,10 @@
+       plugin->scrolling = g_value_get_boolean (value);
+       break;
+ 
++    case PROP_INVERT_WORKSPACE_SCROLLING:
++      plugin->invert_scrolling = g_value_get_boolean (value);
++      break;
++
+     case PROP_WRAP_WORKSPACES:
+       plugin->wrap_workspaces = g_value_get_boolean (value);
+       break;
+@@ -277,31 +295,96 @@
+   active_ws = wnck_screen_get_active_workspace (plugin->wnck_screen);
+   active_n = wnck_workspace_get_number (active_ws);
+ 
+-  if (event->direction == GDK_SCROLL_UP
+-      || event->direction == GDK_SCROLL_LEFT)
+-    active_n--;
+-  else
+-    active_n++;
+-
+   n_workspaces = wnck_screen_get_workspace_count (plugin->wnck_screen) - 1;
+ 
+-  if (plugin->wrap_workspaces == TRUE)
+-  {
+-    /* wrap around */
+-    if (active_n < 0)
+-      active_n = n_workspaces;
+-    else if (active_n > n_workspaces)
+-      active_n = 0;
+-  }
+-  else if (active_n < 0 || active_n > n_workspaces )
+-  {
+-    /* we do not need to do anything */
+-    return TRUE;
+-  }
++  if (n_workspaces == 0)
++  {
++    /* do we have only one workspace or are we in viewport mode (compiz) */
++    if (wnck_workspace_is_virtual (active_ws))
++    {
++      /* viewport mode */
++      int viewport_x;
++      int viewport_y;
++      int screen_width, screen_height;
++      int workspace_width, workspace_height;
++      int scroll_direction;
++
++      /* total workspacesize, e.g. 5120x1024 (5120=4x1280) */
++      workspace_width  = wnck_workspace_get_width  (active_ws);
++      workspace_height = wnck_workspace_get_height (active_ws);
++      /* current screensize, e.g. 1280x1024 */
++      screen_width  = wnck_screen_get_width  (plugin->wnck_screen);
++      screen_height = wnck_screen_get_height (plugin->wnck_screen);
++      /* current viewportcoordinates, e.g. 0,0 or 1280,0 */
++      viewport_x = wnck_workspace_get_viewport_x (active_ws);
++      viewport_y = wnck_workspace_get_viewport_y (active_ws);
++
++      switch (event->direction)
++      {
++        case GDK_SCROLL_UP:
++        case GDK_SCROLL_LEFT:
++          scroll_direction = (plugin->invert_scrolling ? +1 : -1);
++          break;
++        case GDK_SCROLL_DOWN:
++        case GDK_SCROLL_RIGHT:
++          scroll_direction = (plugin->invert_scrolling ? -1 : +1);
++            break;
++        default:
++            break;
++      }
++      /* viewportscroll is only in x-direction */
++      viewport_x = viewport_x + (scroll_direction * screen_width);
++
++      if (plugin->wrap_workspaces == TRUE)
++      {
++        /* wrap if needed */
++        if (viewport_x > workspace_width)
++            viewport_x = 0;
++        if (viewport_x < 0)
++            viewport_x = workspace_width - screen_width;
++      }
++      else if (viewport_x < 0 || viewport_x > workspace_width)
++      {
++        /* we do not need to do anything */
++        return TRUE;
++      }
+ 
+-  new_ws = wnck_screen_get_workspace (plugin->wnck_screen, active_n);
+-  if (new_ws != NULL && active_ws != new_ws)
+-    wnck_workspace_activate (new_ws, event->time);
++      wnck_screen_move_viewport (plugin->wnck_screen,
++                                   viewport_x, viewport_y);
++    }
++    else
++    {
++      /* only one workspace, no need to do anything */
++      return TRUE;
++    }
++  }
++  else
++  {
++    /* real workspaces */
++    if (event->direction == GDK_SCROLL_UP
++        || event->direction == GDK_SCROLL_LEFT)
++      active_n = active_n + (plugin->invert_scrolling ? +1 : -1);
++    else
++      active_n = active_n + (plugin->invert_scrolling ? -1 : +1);
++
++    if (plugin->wrap_workspaces == TRUE)
++    {
++      /* wrap around */
++      if (active_n < 0)
++        active_n = n_workspaces;
++      else if (active_n > n_workspaces)
++        active_n = 0;
++    }
++    else if (active_n < 0 || active_n > n_workspaces )
++    {
++      /* we do not need to do anything */
++      return TRUE;
++    }
++
++    new_ws = wnck_screen_get_workspace (plugin->wnck_screen, active_n);
++    if (new_ws != NULL && active_ws != new_ws)
++      wnck_workspace_activate (new_ws, event->time);
++  }
+ 
+   return TRUE;
+ }
+@@ -385,6 +468,7 @@
+   const PanelProperty  properties[] =
+   {
+     { "workspace-scrolling", G_TYPE_BOOLEAN },
++    { "workspace-invert-scrolling", G_TYPE_BOOLEAN },
+     { "wrap-workspaces", G_TYPE_BOOLEAN },
+     { "miniature-view", G_TYPE_BOOLEAN },
+     { "rows", G_TYPE_UINT },
+@@ -409,11 +493,10 @@
+ 
+   g_signal_connect (G_OBJECT (plugin), "screen-changed",
+       G_CALLBACK (pager_plugin_screen_changed), NULL);
++
+   pager_plugin_screen_changed (GTK_WIDGET (plugin), NULL);
+ }
+ 
+-
+-
+ static void
+ pager_plugin_free_data (XfcePanelPlugin *panel_plugin)
+ {
+@@ -531,11 +614,20 @@
+ 
+ 
+ static void
++cb_enable_workspace_invert_scrolling (GtkWidget *widget, GtkWidget *invert)
++{
++  gtk_widget_set_sensitive (invert, gtk_toggle_button_get_active GTK_TOGGLE_BUTTON (widget));
++}
++
++
++
++static void
+ pager_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+ {
+   PagerPlugin *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
+   GtkBuilder  *builder;
+   GObject     *dialog, *object;
++  GtkWidget   *scroll_option;
+ 
+   panel_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
+ 
+@@ -563,6 +655,18 @@
+   exo_mutual_binding_new (G_OBJECT (plugin), "workspace-scrolling",
+                           G_OBJECT (object), "active");
+ 
++  scroll_option = GTK_WIDGET(gtk_builder_get_object(builder, "workspace-invert-scrolling"));
++  gtk_widget_set_sensitive (GTK_WIDGET (scroll_option),
++      gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (object)));
++
++  g_signal_connect (object, "toggled",
++      G_CALLBACK (cb_enable_workspace_invert_scrolling), scroll_option);
++
++  object = gtk_builder_get_object (builder, "workspace-invert-scrolling");
++  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
++  exo_mutual_binding_new (G_OBJECT (plugin), "workspace-invert-scrolling",
++                          G_OBJECT (object), "active");
++
+   object = gtk_builder_get_object (builder, "miniature-view");
+   panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
+   exo_mutual_binding_new (G_OBJECT (plugin), "miniature-view",
+diff -Naur xfce4-panel-4.12.0-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.12.0/plugins/pager/pager-dialog.glade
+--- xfce4-panel-4.12.0-orig/plugins/pager/pager-dialog.glade	2014-04-24 22:16:37.000000000 +0200
++++ xfce4-panel-4.12.0/plugins/pager/pager-dialog.glade	2015-03-01 18:45:28.644450872 +0100
+@@ -135,13 +135,45 @@
+                     <property name="left_padding">18</property>
+                     <property name="right_padding">6</property>
+                     <child>
+-                      <object class="GtkCheckButton" id="workspace-scrolling">
+-                        <property name="label" translatable="yes">Switch workspaces using the mouse _wheel</property>
++                      <object class="GtkVBox" id="vbox1">
+                         <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="receives_default">False</property>
+-                        <property name="use_underline">True</property>
+-                        <property name="draw_indicator">True</property>
++                        <property name="orientation">vertical</property>
++                        <property name="spacing">6</property>
++                        <child>
++                          <object class="GtkCheckButton" id="workspace-scrolling">
++                            <property name="label" translatable="yes">Switch workspaces using the mouse _wheel</property>
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <property name="receives_default">False</property>
++                            <property name="use_underline">True</property>
++                            <property name="draw_indicator">True</property>
++                          </object>
++                          <packing>
++                            <property name="position">0</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkAlignment" id="alignment4">
++                            <property name="visible">True</property>
++                            <property name="left_padding">12</property>
++                            <child>
++                              <object class="GtkCheckButton" id="workspace-invert-scrolling">
++                                <property name="label" translatable="yes">_Invert mouse wheel workspace switching direction</property>
++                                <property name="visible">True</property>
++                                <property name="sensitive">True</property>
++                                <property name="can_focus">True</property>
++                                <property name="receives_default">False</property>
++                                <property name="use_underline">True</property>
++                                <property name="draw_indicator">True</property>
++                              </object>
++                            </child>
++                          </object>
++                          <packing>
++                            <property name="expand">False</property>
++                            <property name="fill">False</property>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
+                       </object>
+                     </child>
+                   </object>
