@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libcanberra'
              'libgnome-keyring' 'libnotify' 'libunique3' 'mate-desktop-dev' 'upower')
-makedepends=('docbook2x' 'docbook-xml' 'mate-common' 'mate-panel-dev' 'xmlto' 'yelp-tools'
+makedepends=('docbook2x' 'docbook-xml' 'mate-common-dev' 'mate-panel-dev' 'xmlto' 'yelp-tools'
              'gtk3' 'libunique3' 'mate-desktop-dev')
 optdepends=('mate-panel: Set brightness and inhibit power management from the panel'
             'yelp: for reading MATE help documents')
