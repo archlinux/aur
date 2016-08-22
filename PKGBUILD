@@ -1,10 +1,10 @@
 # Maintainer: Miloš Polakovič (milos@mailbox.org)
 
 pkgname=mrdux-git
-pkgver=0.2.r1.g0038559
+pkgver=0.3.r0.g57356da
 pkgrel=1
 pkgdesc="A desktop environment focused on productivity, speed and aesthetics"
-url="https://gitlab.com/mrduX/mrduX"
+url="https://gitlab.com/mpolakovic/mrduX"
 license=('GPL3')
 
 arch=('any')
@@ -22,11 +22,12 @@ depends=(
    'python-setuptools' 'python-yaml' 'python-click'
 )
 optdepends=(
-   'xorg-xbacklight: Adjust screen backlight with M-<Up> and M-<Down>'
+   'light: Adjust screen backlight with M-<Up> and M-<Down>'
    'redshift-adjust: Adjust screen temperature with M-<Left> and M-<Right>'
    'xscreensaver: Lock the screen with M-S-l (also provides a screensaver)'
    'xcursor-pixelfun: Minimalistic cursor theme with a piece of old-school'
    'shutter: Take a screenshot with M-<Print>'
+   'pulseaudio-ctl: Control sound volume with dedicated keys'
    'netmenu: Switch netctl active network profile with M-S-n'
    'wavemon: Show wireless network monitor scratchpad with M1-C-<Home>'
    'htop: Show interactive process viewer scratchpad with M1-C-<Delete>'
@@ -39,7 +40,8 @@ optdepends=(
    'ttf-google-fonts-git: ~300MB of font goodness'
 )
 
-source=('mrduX::git+http://gitlab.com/mrduX/mrduX')
+source=('mrduX::git+http://gitlab.com/mpolakovic/mrduX')
+install='mrduX.install'
 md5sums=('SKIP')
 provides=('mrduX' 'mXinstall')
 

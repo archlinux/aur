@@ -1,0 +1,12 @@
+post_install() {
+  tput setaf 2  # set text foreground color to green
+  tput smso; echo "mrduX $1 installed in /usr/share/mrduX"; tput rmso
+  echo "- pay close attention to the list of optional dependecies"
+  echo "- to actually install/update mrduX, run 'mXinstall'"
+  echo "- to start mrduX (after installation), run 'startx'"
+  tput setaf 7  # set text foreground color back to white
+}
+
+post_upgrade() {
+  post_install $1
+}
