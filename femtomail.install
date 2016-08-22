@@ -1,0 +1,20 @@
+MAILBOX_PATH=/var/lib/femtomail
+
+post_install() {
+	# Create user and group
+    getent group femtomail &> /dev/null || groupadd --system femtomail 1>/dev/null
+    getent passwd femtomail &> /dev/null || useradd --system -d "$MAILBOX_PATH" -g femtomail -s /bin/false femtomail 1>/dev/null
+
+	# Create and set ownership of mailbox directory, if it doesn't exist
+	mkdir -p /var/lib/femtomail/new
+	chmod 770 /var/lib/femtomail /var/lib/femtomail/new
+	chown -R femtomail:femtomail /var/lib/femtomail
+
+	# Bestow setuid/setgid capabilities upon the femtomail binary
+	setcap cap_setuid,cap_setgid=ep /sbin/femtomail
+
+    echo "Email will be delivered to the Maildir located at:"
+    echo "    $MAILBOX_PATH"
+    echo "To access the Maildir as an unprivileged user, add yourself to the femtomail group:"
+    echo "    sudo usermod -aG femtomail $SUDO_USER"
+}
