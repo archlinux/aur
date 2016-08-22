@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 pkgname=gandi.cli
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="Gandi command line interface"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=('python3' 'python-yaml' 'python-click>=3.1' 'python-requests' 'python-ipy' 'openssl' 'openssh' 'git')
 optdepends=('docker: gandi docker support')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-coverage' 'python-tox' 'python-mock' 'python-httpretty')
+checkdepends=('python-nose' 'python-coverage' 'python-tox' 'python-mock')
 makedepends=('python-docutils')
 provides=()
 conflicts=()
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/Gandi/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c9d743713df2e08c97ec21e5a78fe4b57b7bd1eaf06ef9abd269ff11d46c87a2')
+sha256sums=('5427bbeebcacf271ef81b72351f672882ec5f8499db785793be9f5e321ab2f14')
 
 build() {
   # Building the manpage
