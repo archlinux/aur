@@ -7,45 +7,39 @@ arch=('x86_64' 'i686')
 url="https://github.com/raspberrypi/maynard"
 license=('custom:MIT' 'GPL')
 provides=("maynard")
-depends=("weston")
-makedepends=('git')
+depends=("weston" "gnome-desktop")
+makedepends=("git" "intltool")
 install=maynard.install
-source=("${pkgname%-VCS}::git+https://github.com/raspberrypi/maynard.git")
-sha256sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
+source=("${pkgname%-git}::git+https://github.com/raspberrypi/maynard.git"
+	"01-maynard.patch")
+sha256sums=('SKIP'
+	'07fb68ed8dcebca0ec9272ac0707b622a5c599e12ab0360947d031a572fff35c')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 
-# The examples below are not absolute and need to be adapted to each repo. The
-# primary goal is to generate version numbers that will increase according to
-# pacman's version comparisons with later commits to the repo. The format
-# VERSION='VER_NUM.rREV_NUM.HASH', or a relevant subset in case VER_NUM or HASH
-# are not available, is recommended.
-
-# Git, tags available
-	#printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	patch -p1 < "$srcdir/01-maynard.patch"
+}
+
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
 	./configure --prefix=/usr --libexecdir=/usr/lib/maynard --sysconfdir=/etc --bindir=/usr/bin --libdir=/usr/lib
 	make
 }
 
 check() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 }

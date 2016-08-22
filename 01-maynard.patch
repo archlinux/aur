@@ -1,0 +1,16 @@
+Index: b/maynard.in
+===================================================================
+--- a/maynard.in
++++ b/maynard.in
+@@ -1,9 +1,9 @@
+ #! /bin/sh
+ 
+ PREFIX=@prefix@
+-LIBEXECDIR=$PREFIX/libexec
++LIBEXECDIR=@libexecdir@
+ ABS_BUILDDIR=@abs_builddir@
+-DEFAULT_BACKGROUND=/usr/share/wallpapers/Hanami/contents/images/3872x2592.jpg
++DEFAULT_BACKGROUND=/usr/share/weston/background.png
+ 
+ md5() {
+     cat "$1" 2> /dev/null | md5sum

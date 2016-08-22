@@ -9,9 +9,14 @@ pkgbase = maynard-git
 	license = custom:MIT
 	license = GPL
 	makedepends = git
+	makedepends = intltool
 	depends = weston
-	source = maynard-git::git+https://github.com/raspberrypi/maynard.git
+	depends = gnome-desktop
+	provides = maynard
+	source = maynard::git+https://github.com/raspberrypi/maynard.git
+	source = 01-maynard.patch
 	sha256sums = SKIP
+	sha256sums = 07fb68ed8dcebca0ec9272ac0707b622a5c599e12ab0360947d031a572fff35c
 
 pkgname = maynard-git
 
