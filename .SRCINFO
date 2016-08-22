@@ -1,0 +1,27 @@
+pkgbase = blucat
+	pkgdesc = The netcat for Bluetooth!
+	pkgver = 0.91
+	pkgrel = 1
+	url = http://blucat.sourceforge.net/blucat/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = java-environment-common
+	depends = java-runtime
+	depends = bluez
+	depends = bluez-utils
+	depends = bluez-libs
+	depends = java-commons-io
+	provides = blucat
+	noextract = bluecove-2.1.1-SNAPSHOT.jar
+	source = git://github.com/ieee8023/blucat
+	source = http://snapshot.bluecove.org/distribution/download/2.1.1-SNAPSHOT/2.1.1-SNAPSHOT.63/bluecove-2.1.1-SNAPSHOT.jar
+	source = blucat.sh
+	source = build.xml
+	sha512sums = SKIP
+	sha512sums = cae92c40082e1c5268fc9893dfef2ffffe99ce3fc02fcba4578bfcd9b923ff26437555c6244d25fd6cf58fff78e1ca308505fb0fbb5c18bf4a0db1ddf8b737c8
+	sha512sums = b58eb2595f66ebb97a99e97f4fc5115ee7649b75771adea42e8bc3a5de011c7c18017c70cbd84225533e59384443eefb46b006f600300a95fa00e9b35e17d7f2
+	sha512sums = 7c663dc39e3f76f9f8bc16b5a7135aae8c1d5b4d59eaf84012848b2c64b3534ecd5ff82936420a28002e71a5396fc72b7d101e07df2a1a1da76b5b9ce292b5f5
+
+pkgname = blucat
+

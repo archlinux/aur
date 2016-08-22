@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="jar" name="blucat">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="blucat.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/bluecove-2.1.1-SNAPSHOT.jar"/>
+        <pathelement location="/usr/share/java/commons-io/commons-io.jar"/>
+    </path>
+    
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="blucat.classpath"/>
+        </javac>
+    </target>
+
+    <target description="Build the blucat jar file" name="jar" depends="build">
+		<mkdir dir="build"></mkdir>
+        <jar jarfile="build/blucat.jar" basedir="bin"/>
+    </target>
+	
+
+
+</project>
