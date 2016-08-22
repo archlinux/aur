@@ -1,7 +1,7 @@
 pkgbase = libarnetwork-git
 	pkgdesc = ARSDK Network Control Library
 	pkgver = r312.ae81092
-	pkgrel = 1
+	pkgrel = 2
 	url = http://developer.parrot.com/
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = libarnetwork-git
 	source = Config-linux-config.h
 	source = LICENSE
 	sha256sums = SKIP
-	sha256sums = 7d1648f492bfb71108d661df62a52d39512f75218565d037d7f63fd0e6ccd898
+	sha256sums = 091f47636619a3d17318cd947823bc8e3b579c1c1cf043aac70c45969ceedbe9
 	sha256sums = 5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7
 	sha256sums = 1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb
 
