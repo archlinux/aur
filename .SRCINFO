@@ -1,7 +1,7 @@
 pkgbase = otca-git
 	pkgdesc = otca is a script supporting you in quickly setting up a simple public-key infrastructure.
 	pkgver = 1.r2.1dd2522
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kbabioch/otca/
 	arch = any
 	license = GPL3

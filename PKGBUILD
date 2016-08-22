@@ -2,7 +2,7 @@
 
 pkgname=otca-git
 pkgver=1.r2.1dd2522
-pkgrel=1
+pkgrel=2
 pkgdesc="otca is a script supporting you in quickly setting up a simple public-key infrastructure."
 arch=('any')
 url="https://github.com/kbabioch/otca/"
@@ -12,7 +12,6 @@ makedepends=('git')
 provides=('otca')
 conflicts=('otca')
 backup=('etc/otca/otca.cnf')
-install=
 source=('git+https://github.com/kbabioch/otca.git')
 sha256sums=('SKIP')
 
