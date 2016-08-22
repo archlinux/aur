@@ -8,7 +8,7 @@
 
 pkgname=libarmavlink-git
 pkgver=r65.c462be4
-pkgrel=1
+pkgrel=2
 pkgdesc="ARSDK MAVLink file manager"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -28,7 +28,7 @@ source=('libarmavlink::git+https://github.com/Parrot-Developers/libARMavlink'
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            '8f95de4f9051e78f62c39d805ea49f94770a3f42b54266386f5a70d2eea8ebb8'
+            '890ca6aed8ab5c1e8da1791d446f565d634f49549d432f92e5afdf9726c75599'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
