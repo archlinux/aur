@@ -4,7 +4,7 @@
 
 _gitname='libsigrokdecode'
 pkgname="${_gitname}-git"
-pkgver=0.2.0.r506.ge4bafb8
+pkgver=0.2.0.r613.gd66d47e
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -19,11 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  (
-    set -o pipefail
-    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/${_gitname}.//" ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long | sed 's/^libsigrokdecode-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -40,5 +36,3 @@ package() {
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
-
-# vim:set et sw=2 sts=2 tw=80:
