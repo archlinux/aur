@@ -1,4 +1,7 @@
 *.pkg.tar.xz
+chromium*.tar.xz
 src/
+build/
+pkg/
 *.log
 build/
