@@ -3,7 +3,7 @@
 pkgname=super-ultra-flat-numix-remix-icons-git
 pkgver=4.7
 pkgrel=0
-pkgdesc="super-ultra-flat-numix-remix-git is an icon theme build upon 4 different icon sets - check github for more info"
+pkgdesc="super-ultra-flat-numix-remix-git is an icon theme build upon 5 different icon sets - check github for more info"
 arch=('any')
 url="https://github.com/erikdubois/Super-Ultra-Flat-Numix-Remix"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
