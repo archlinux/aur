@@ -1,0 +1,16 @@
+pkgbase = z-dir-jump-git
+	pkgdesc = jump around - Tracks your most used directories, based on 'frecency'.
+	pkgver = 20160822
+	pkgrel = 1
+	url = https://github.com/rupa/z
+	install = z-dir-jump-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = z-dir-jump
+	conflicts = z-dir-jump
+	source = z-dir-jump-git::git://github.com/rupa/z.git
+	md5sums = SKIP
+
+pkgname = z-dir-jump-git
+

@@ -1,0 +1,7 @@
+post_install () {
+  echo "Add 'source /usr/share/z/z.sh' in your .bashrc or .zshrc"
+}
+
+post_remove() {
+  echo "remove 'source /usr/share/z/z.sh' from your .bashrc or .zshrc"
+}
