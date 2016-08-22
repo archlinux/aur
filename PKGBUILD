@@ -42,4 +42,6 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	install -Dm644 LICENSE.GPL "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.GPL"
 }
