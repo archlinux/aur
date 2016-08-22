@@ -1,6 +1,6 @@
 # Maintainer: lf <aur@lfcode.ca>
 pkgname=servoblaster-git
-pkgver=VERSION
+pkgver=r73.96014c8-1
 pkgrel=1
 pkgdesc="A servo control program for the Raspberry Pi"
 arch=('armv6h' 'armv7h') # does not currently include armv8; not clear whether
