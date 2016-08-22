@@ -6,6 +6,10 @@
 
 # PKGBUILD based on abs/extra/eog
 
+# NOTE
+# v3.14.4 is the latest version which has the ability to turn of menu bars.
+# Later versions needs source code patching because of the GTK header bar.
+
 _pkgname=eog
 _pkgver=3.14.4 # if you need another version, just modify this string
 pkgname=$_pkgname-frameless
