@@ -1,0 +1,11 @@
+[Unit]
+Description=The Bear Hibernation Daemon
+Documentation=file:///usr/share/doc/beard/README
+Requires=syslog-ng.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/beard
+ExecStart=/usr/bin/beard
+
+[Install]
+WantedBy=multi-user.target

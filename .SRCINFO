@@ -1,0 +1,19 @@
+pkgbase = beard
+	pkgdesc = A simple hibernation daemon
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ahills/beard
+	arch = any
+	license = custom:unlicense
+	depends = pm-utils
+	depends = coreutils
+	depends = util-linux
+	depends = syslog-ng
+	backup = etc/conf.d/beard
+	source = beard-0.2.tar.gz::https://github.com/ahills/beard/archive/v0.2.tar.gz
+	source = beard.service
+	md5sums = 5af92e22e27d497db2ccee823140bb84
+	md5sums = 72a17538035df4c120c8b6fed112d78e
+
+pkgname = beard
+
