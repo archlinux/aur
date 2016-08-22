@@ -1,6 +1,5 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-# Co-Maintainer: Tomas Schertel <tschertel at gmail dot com>
-# Co-Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Contributor: Tomas Schertel <tschertel at gmail dot com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
