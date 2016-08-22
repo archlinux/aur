@@ -32,5 +32,8 @@ build() {
 package() {
     cd $srcdir/$pkgname-release-$pkgver/build
     make DESTDIR=$pkgdir install
+    # fix the path of the man page. Urgh.
+    install -D ${pkgdir}/usr/man/lsyncd.1 ${pkgdir}/usr/share/man/man1/lsyncd.1
+    rm -rf ${pkgdir}/usr/man
     install -D ${srcdir}/lsyncd.service ${pkgdir}/usr/lib/systemd/system/lsyncd.service
 }
