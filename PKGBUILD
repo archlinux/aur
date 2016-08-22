@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 273865 2016-08-17 07:12:21Z tpowa $
+# $Id: PKGBUILD 272545 2016-07-28 08:27:39Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
-_srcname=linux-4.7
-pkgver=4.7.1
+_srcname=linux-4.6
+pkgver=4.6.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,12 +22,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
+            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
-            'bc321a5e0e76bcb4a21523bcfdfcf3780254e456c5a01a104b0d98bbde060f12'
+            '88a62ee2670e292c8a36d266c440b08a2d3bba744908ca27f4f52d999486d255'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
