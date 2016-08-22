@@ -293,7 +293,11 @@ fi
   fi
 
   cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
-  cp ${_bindir}/qtbase/config.summary ${_libspkgdir}/${_installprefix}
+
+  local _summary_file="${_bindir}/qtbase/config.summary"
+  if [[ -f ${_summary_file} ]]; then
+    cp ${_summary_file} ${_libspkgdir}/${_installprefix}
+  fi
 
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
