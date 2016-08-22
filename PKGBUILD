@@ -93,6 +93,7 @@ if $_debug; then
   pkgname="${pkgname}-debug"
 else
   _build_type="-release"
+  _device_configure_flags="$_device_configure_flags -reduce-exports -ltcg"
 fi
 
 _libspkgname="${pkgname}-target-libs"
@@ -213,9 +214,7 @@ fi
                  $_build_type \
                  -silent \
                  -qtlibinfix "Pi${_piver}" \
-                 -reduce-exports \
                  -pch \
-                 -ltcg \
                  -opengl es2 \
                  -egl \
                  -journald \
