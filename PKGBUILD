@@ -1,8 +1,8 @@
 # Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
 
 pkgname=fossamail-extension-lightning
-pkgver=25.2.2
-pkgrel=2
+pkgver=25.2.3
+pkgrel=1
 pkgdesc="A calendar that's fully integrated into FossaMail."
 arch=('i686' 'x86_64')
 url="http://www.fossamail.org/"
@@ -13,9 +13,9 @@ source_i686=(http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.
 source_x86_64=(http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.linux-x86_64.xpi
 			http://relmirror.fossamail.org/${pkgver}/lightning-${pkgver}.en-US.linux-x86_64.xpi.sig)
 noextract=("lightning-$pkgver.en-US.linux-$CARCH.xpi")
-sha512sums_i686=('4f5e951fe5e27cb12562b8ed78f0cf410a29b2377aff55dcf4b6ec47b46dcedcc302727f2a4471b352abedfc9787621ccf99493ff0075c2e331bbaa73e1dd6c4'
+sha512sums_i686=('e21ce89aa5fd54103a166f71c14de0483a3c8a0b8ee827a3a44dadc5eedc92da5f3b65675f0323f9a1762b8a3185bec0a567dfdbbb2f190eb2876c4dd626c49c'
 				'SKIP')
-sha512sums_x86_64=('81bb8d6fba6459e634902f5d70661e911492f4ad6a5740931834f57805b3acbb12bb7e00ecc4559b37c8646d8d605250ead1bf074a6ea5ef2bd7b77b19bedb62'
+sha512sums_x86_64=('635ed4bfbd28edeaf589cf6af4d59f330fa85ae9deb276ad5acbfa8d867c09c502f8aae774ee673655643c90056f7e82fa051024e6eeb0b9af35f9c8f6843a89'
 				'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC')
 
