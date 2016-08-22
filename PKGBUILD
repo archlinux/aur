@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'libcanberra' 'libgtop' 'libice' 'libsm' 'libxt'
          'mate-desktop-dev' 'startup-notification' 'zenity')
-makedepends=('mate-common' 'yelp-tools')
+makedepends=('mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
