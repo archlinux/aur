@@ -8,8 +8,11 @@ pkgbase = librevault-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = boost
 	depends = qt5-websockets
 	depends = protobuf3>=3.0.0-1
+	depends = boost-libs
+	depends = crypto++
 	provides = librevault
 	conflicts = librevault
 	source = librevault::git+https://github.com/Librevault/librevault.git
