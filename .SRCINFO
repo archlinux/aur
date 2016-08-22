@@ -9,6 +9,8 @@ pkgbase = fossamail-i18n
 	license = MPL
 	license = GPL
 	license = LGPL
+	depends = fossamail>=25.2
+	depends = fossamail<25.3
 	noextract = fossamail-i18n-25.2-ar.xpi
 	noextract = fossamail-i18n-25.2-ast.xpi
 	noextract = fossamail-i18n-25.2-be.xpi
