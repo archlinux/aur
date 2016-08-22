@@ -1,5 +1,6 @@
-# Maintainer: Tomas Schertel <tschertel at gmail dot com>
-# Contributor: NicoHood <aur {at} nicohood {dot} de>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Co-Maintainer: Tomas Schertel <tschertel at gmail dot com>
+# Co-Maintainer: NicoHood <aur {at} nicohood {dot} de>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
@@ -9,7 +10,7 @@
 
 pkgname=arduino
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
