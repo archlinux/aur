@@ -11,8 +11,10 @@ optdepends=('python2-discid: CD-Lookup feature'
 makedepends=('git')
 provides=('picard')
 conflicts=('picard' 'picard-qt' 'picard-bzr')
-source=('git://github.com/metabrainz/picard.git')
-md5sums=('SKIP')
+source=('git://github.com/metabrainz/picard.git'
+        'https://github.com/metabrainz/picard/pull/479.diff')
+md5sums=('SKIP'
+         '1fc310a838add363df67adcf41623f4c')
 
 pkgver(){
     cd "$srcdir/picard"
@@ -24,6 +26,11 @@ check() {
     python2 setup.py build_ext -i
     python2 setup.py test
     rm picard/util/astrcmp.so
+}
+
+prepare() {
+    cd "$srcdir/picard"
+    patch -u -p1 -i "$srcdir/479.diff" || continue
 }
 
 package() {
