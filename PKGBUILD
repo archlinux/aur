@@ -2,14 +2,14 @@
 
 pkgname=('jsql-injection')
 pkgver=0.77
-pkgrel=1
-pkgdesc="jSQL Injection is a lightweight application used to find database information from a distant server."
+pkgrel=2
+pkgdesc="Lightweight application used to find database information from a distant server."
 arch=(any)
 license=('GPL2')
 url="https://github.com/ron190/jsql-injection/"
 depends=('jre')
 noextract=('jsql-injection-v0.77.jar')
-source=("https://github.com/ron190/jsql-injection/releases/download/v$pkgver/jsql-injection-v$pkgver.jar")
+source=("${url}releases/download/v$pkgver/jsql-injection-v${pkgver}.jar")
 sha256sums=('SKIP')
 
 package() {
