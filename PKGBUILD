@@ -18,7 +18,6 @@ conflicts=('z-dir-jump')
 replaces=()
 backup=()
 options=()
-install="$pkgname.install"
 changelog=
 source=("$pkgname::git://github.com/rupa/z.git")
 md5sums=('SKIP')

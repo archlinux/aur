@@ -3,7 +3,6 @@ pkgbase = z-dir-jump-git
 	pkgver = 20160822
 	pkgrel = 1
 	url = https://github.com/rupa/z
-	install = z-dir-jump-git.install
 	arch = any
 	license = unknown
 	makedepends = git
