@@ -3,7 +3,7 @@
 pkgname=imgd-git
 _pkgname=imgd
 _pkgauthor=jarun
-pkgver=98.f3ca741
+pkgver=104.71c443f
 pkgrel=1
 pkgdesc="Resize or rotate JPEG and PNG images."
 arch=('any')
@@ -13,6 +13,7 @@ depends=('python3' 'python-pillow')
 makedepends=('git')
 source=(${_pkgname}::"git+https://github.com/${_pkgauthor}/${_pkgname}.git")
 sha256sums=('SKIP')
+conflicts=('imgd')
 provides=('imgd')
 
 pkgver() {
