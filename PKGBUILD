@@ -18,8 +18,6 @@ license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8')
 makedepends=('java-environment=8' 'apache-ant' 'unzip')
 options=(!strip staticlibs)
-provides=('arduino')
-conflicts=('arduino-bin' 'arduino-git')
 install="arduino.install"
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz")
 sha512sums=('f18f173c95aea1b60aa4e7ef98e0dc1a44595571d522569b53842fe8c110e92da82902c25aea6b1affe4e3dfe0098ce0c173cf73c42b2237ce353a5a70932f68')
