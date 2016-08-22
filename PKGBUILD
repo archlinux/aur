@@ -2,7 +2,7 @@
 # Contributor: Gustavo Dutra <mechamo@gustavodutra.com>
 pkgname=vimperator
 license=("MIT")
-pkgver=3.10.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Make firefox look and behave like Vim"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('firefox>=26')
 _extensionId="vimperator@mozdev.org"
 _fileName=vimperator-$pkgver.xpi
 source=(https://github.com/vimperator/vimperator-labs/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.xpi)
-md5sums=('91e815936ee8550840f07bfc0d1ed056')
+md5sums=('796f1744256782c85632a77932bca8f5')
 conflicts=('vimperator-hg' 'vimperator-git')
 
 package() {
