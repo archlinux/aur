@@ -1,0 +1,27 @@
+diff --git a/src/decoder/plugins/FfmpegDecoderPlugin.cxx b/src/decoder/plugins/FfmpegDecoderPlugin.cxx
+index 8926ec9..59a6111 100644
+--- a/src/decoder/plugins/FfmpegDecoderPlugin.cxx
++++ b/src/decoder/plugins/FfmpegDecoderPlugin.cxx
+@@ -528,20 +528,22 @@ FfmpegDecode(Decoder &decoder, InputStream &input,
+ 		return;
+ 	}
+ 
+ #if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(57, 5, 0)
+ 	AVCodecContext *codec_context = avcodec_alloc_context3(codec);
+ 	if (codec_context == nullptr) {
+ 		LogError(ffmpeg_domain, "avcodec_alloc_context3() failed");
+ 		return;
+ 	}
+ 
++	avcodec_parameters_to_context(codec_context, &codec_params);
++
+ 	AtScopeExit(&codec_context) {
+ 		avcodec_free_context(&codec_context);
+ 	};
+ #endif
+ 
+ 	const SampleFormat sample_format =
+ 		ffmpeg_sample_format(GetSampleFormat(codec_params));
+ 	if (sample_format == SampleFormat::UNDEFINED) {
+ 		// (error message already done by ffmpeg_sample_format())
+ 		return;
