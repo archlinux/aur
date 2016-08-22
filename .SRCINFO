@@ -37,7 +37,6 @@ pkgbase = mate-meta-dev
 	depends = mozo-dev
 	depends = pluma-dev
 	depends = python-caja-dev
-	depends = mate-themes-3.20-gtk3
 	depends = caja-extensions-common-dev
 
 pkgname = mate-meta-dev
