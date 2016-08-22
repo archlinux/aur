@@ -1,7 +1,7 @@
 pkgbase = mopidy-spotmop
 	pkgdesc = A Mopidy Web client that utilizes the Spotify and EchoNest frameworks.
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaedb/spotmop
 	arch = any
 	license = APACHE
@@ -10,6 +10,7 @@ pkgbase = mopidy-spotmop
 	depends = python2
 	depends = mopidy>=0.19
 	depends = mopidy-spotify
+	depends = python2-configobj
 	source = https://github.com/jaedb/spotmop/archive/2.8.tar.gz
 	md5sums = cbb31a387216f0e53d3ca2d50f4d3631
 
