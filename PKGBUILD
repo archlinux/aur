@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
-depends=('python2' 'wxpython2.8' 'ddrescue' 'parted' 'lshw')
+depends=('python2' 'wxpython2.8' 'ddrescue' 'parted' 'lshw' 'python2-beautifulsoup4')
 license=('GPL3')
 source=(#"https://launchpad.net/ddrescue-gui/1.x/${pkgver}/+download/${pkgname}_${pkgver}otherdistro-0ubuntu1%7Eppa1.tar.gz")
 https://launchpad.net/ddrescue-gui/1.x/1.6.1/+download/ddrescue-gui_1.6.1%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz)
