@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A servo control program for the Raspberry Pi"
 arch=('armv6h' 'armv7h') # does not currently include armv8; not clear whether
                          # servoblaster supports it
-url="https://github.com/richardghirst/PiBits/ServoBlaster"
+url="https://github.com/richardghirst/PiBits/tree/master/ServoBlaster"
 license=('GPL')
 groups=()
 depends=()
