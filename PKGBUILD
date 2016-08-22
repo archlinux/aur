@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT org>
 
 pkgname=mandb-ondemand
-pkgver=2.04
+pkgver=2.05
 pkgrel=1
 pkgdesc="Makes any pacman updates to the manpage index database much faster."
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('man-db-systemd')
 replaces=('man-db-systemd')
 install=${pkgname}.install
 source=(https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('cf8286bf22eddfa349033554d6cf89e4c920f24fd5fc4748808b98c045c183ef')
+sha256sums=('f33359bc907a8f9f984ad20df76646532f7b7b1854958cdeb3ede7e6552b6606')
 
 package() {
 	cd ${pkgname}-${pkgver}
