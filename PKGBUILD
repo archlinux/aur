@@ -1,5 +1,5 @@
 # Maintainer: Matthew Monaco <cx monaco dgbaley27>
-#                  Ivan <vantu5z@mail.ru>
+#             Ivan           <vantu5z@mail.ru>
 
 # http://kernel.opensuse.org/cgit/kernel-source/
 # http://kernel.opensuse.org/cgit/kernel-source/commit/patches.drivers?id=940e57e2c66093f6fee481ab4224dd4294e3793f
@@ -13,7 +13,7 @@ _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -28,7 +28,7 @@ source=(
 	0003-patch_for_kernel_4.patch
 )
 
-sha256sums=('abedb4c168930c0edafe7ca97d565e9cc6bde2ccd26c9ab285a6e377fa3bcb1a'
+sha256sums=('447b4adaadab3e64a2e45fc0df1d67a657e295af97f8585b5828bce9f287e7bd'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
             '6e9f87025e2b178dc8cf9052fbe014f67d97b6b5ceb98e1a9fd15f12650fb437')
 
@@ -38,7 +38,7 @@ build() {
 
 	msg2 "Getting source from $_gitroot"
 	git archive --remote="$_gitroot" "$_gitcommit" drivers/input/mouse | tar -x
-	
+
 	cd "drivers/input/mouse"
 
 	msg2 "Performing Integrity Check"
