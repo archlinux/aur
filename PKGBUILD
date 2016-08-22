@@ -1,6 +1,6 @@
 # Maintainer: Volker Schatz <arch@my-name-without-hyphen.com>
 pkgname="pinentry-tty"
-pkgver=0.9.1
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Passphrase entry on the command line for GnuPG and others"
 depends=('libcap>=2.16')
@@ -9,15 +9,16 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://gnupg.org/related_software/pinentry/"
 source=("ftp://ftp.gnupg.org/gcrypt/pinentry/pinentry-$pkgver.tar.bz2")
-md5sums=('d224d031130aedb44b05164cb04ed88b')
+md5sums=('9510b2de013e818dab619e468298703a')
 
 build() {
     cd $srcdir/pinentry-$pkgver 
     ./configure --prefix=/usr \
                 --enable-pinentry-tty \
                 --disable-pinentry-curses \
+                --disable-pinentry-gtk3 \
                 --disable-pinentry-gtk2 \
-                --disable-pinentry-qt4 \
+                --disable-pinentry-qt \
                 --disable-fallback-curses
     make 
 } 
