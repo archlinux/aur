@@ -4,13 +4,13 @@
 
 pkgname=fortune-mod-matrix
 pkgver=20150730
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortune cookies: The Matrix trilogy"
 arch=('any')
 license=('custom')
 depends=('fortune-mod')
 groups=('fortune-mods')
-source="fortunes.txt"
+source=('fortunes.txt')
 url="https://en.wikiquote.org/wiki/The_Matrix_%28franchise%29"
 md5sums=('3ff9ab5a2362b72d3f14768b5a36b06c')
 
