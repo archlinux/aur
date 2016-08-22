@@ -3,7 +3,7 @@
 _pkgname=demlo
 pkgname=$_pkgname
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.org/$_pkgname/"
@@ -45,6 +45,9 @@ package() {
 
 	cd "src/$_gourl"
 	for i in scripts/*; do
+		install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
+	done
+	for i in actions/*; do
 		install -Dm644 "$i" "$pkgdir/usr/share/$_pkgname/$i"
 	done
 }
