@@ -2,7 +2,7 @@
 
 pkgname=libarnetworkal-git
 pkgver=r192.baf3f07
-pkgrel=1
+pkgrel=2
 pkgdesc="ARSDK Network Control Library"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -24,7 +24,7 @@ source=('libarnetworkal::git+https://github.com/Parrot-Developers/libARNetworkAL
         'LICENSE')
 sha256sums=('SKIP'
             '8599e6ff21ab7a02df5bf64d1f59edbc3a889f05aa3728b2d67b3666db68b599'
-            'be6de0daa5867ece552f9cb35c7a9c721f4f84851741b79d151d980f361a13e9'
+            'ac4c27c3db48b755e9f6a458502fc1fac2714122fdfb1d8a911614afa4e1f4ff'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
