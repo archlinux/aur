@@ -26,7 +26,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.5.38
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -44,7 +44,7 @@ md5sums=('72302e26f153687e2ca922909f927443'
          'SKIP'
          '7b61f3f94afbe598256fba61663f2822'
          'dec2cbaad64e3abf4f0ec70e1de4e8e9'
-         'c8c7ce56789ba4ce3255da68a6bb1228'
+         '08feceba0885152543b7184afbd1faae'
          '26a26f832e760f7db048185818404796'
          'aac9e1468ddebc732e40c555d4e9a378'
          '4e13de0606d14bbceeebf6fe818358c8')
