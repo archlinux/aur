@@ -1,0 +1,10 @@
+[Unit]
+Description=A daemon to control servos attached to a Raspberry Pi
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/default/servod
+ExecStart=/usr/bin/servod $SERVOD_ARGS
+
+[Install]
+WantedBy=multi-user.target

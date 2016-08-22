@@ -1,0 +1,1 @@
+SERVOD_ARGS="--idle-timeout=2000"
