@@ -13,7 +13,7 @@ install=maynard.install
 source=("${pkgname%-git}::git+https://github.com/raspberrypi/maynard.git"
 	"01-maynard.patch")
 sha256sums=('SKIP'
-	'07fb68ed8dcebca0ec9272ac0707b622a5c599e12ab0360947d031a572fff35c')
+	'939a16eb6b50343059f7bb0afa89eff9831ae67ea561101620e7dab009883f60')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

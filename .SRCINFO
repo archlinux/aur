@@ -17,7 +17,7 @@ pkgbase = maynard-git
 	source = maynard::git+https://github.com/raspberrypi/maynard.git
 	source = 01-maynard.patch
 	sha256sums = SKIP
-	sha256sums = 07fb68ed8dcebca0ec9272ac0707b622a5c599e12ab0360947d031a572fff35c
+	sha256sums = 939a16eb6b50343059f7bb0afa89eff9831ae67ea561101620e7dab009883f60
 
 pkgname = maynard-git
 

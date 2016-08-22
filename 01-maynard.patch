@@ -2,15 +2,30 @@ Index: b/maynard.in
 ===================================================================
 --- a/maynard.in
 +++ b/maynard.in
-@@ -1,9 +1,9 @@
+@@ -1,25 +1,12 @@
  #! /bin/sh
  
  PREFIX=@prefix@
 -LIBEXECDIR=$PREFIX/libexec
-+LIBEXECDIR=@libexecdir@
- ABS_BUILDDIR=@abs_builddir@
+-ABS_BUILDDIR=@abs_builddir@
 -DEFAULT_BACKGROUND=/usr/share/wallpapers/Hanami/contents/images/3872x2592.jpg
 +DEFAULT_BACKGROUND=/usr/share/weston/background.png
  
  md5() {
      cat "$1" 2> /dev/null | md5sum
+ }
+ 
+-check_install() {
+-    local_maynard="$ABS_BUILDDIR/shell/maynard"
+-    installed_maynard="$LIBEXECDIR/maynard"
+-    if [ ! -e "$local_maynard" -o \
+-         ! -e "$installed_maynard" -o \
+-         "`md5 \"$local_maynard\"`" != "`md5 \"$installed_maynard\"`" ]; then
+-        echo "It looks like you forgot to run 'make install'." >&2
+-        exit 1
+-    fi
+-}
+-
+ mkdir ~/.config > /dev/null 2>&1
+ 
+ if [ -z "${MAYNARD_BACKGROUND+_}" -a \
