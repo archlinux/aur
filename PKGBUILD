@@ -2,7 +2,7 @@
 
 pkgname=libarmedia-git
 pkgver=r185.ecf0999
-pkgrel=1
+pkgrel=2
 pkgdesc="ARSDK Video encapsulation"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -23,7 +23,7 @@ source=('libarmedia::git+https://github.com/Parrot-Developers/libARMedia'
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            '9e73fa9fc95bb9b914020c8e0d32eebd2bf71abb04fbd040d384d737b880d990'
+            '48c7d1de6ba25df56be94814ccdfd2a3f1542f151327461395fbc79d1f3f971c'
             '42aed9b67dadfde3eeb27d20d88fc9865eca6d66cef5fa3697cfcfeaa980ebd6'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
