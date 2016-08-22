@@ -1,4 +1,4 @@
-pkgbase = mate-themes-3.20-gtk3
+pkgbase = mate-themes-dev
 	pkgdesc = Default themes for the MATE desktop
 	pkgver = 3.20.10
 	pkgrel = 1
@@ -7,13 +7,13 @@ pkgbase = mate-themes-3.20-gtk3
 	groups = mate
 	groups = mate-gtk3
 	license = GPL
-	makedepends = mate-common
+	makedepends = mate-common-dev
 	makedepends = icon-naming-utils
 	depends = gtk-engines
 	depends = gtk-engine-murrine
 	depends = gtk-update-icon-cache
 	depends = librsvg
-	depends = mate-icon-theme
+	depends = mate-icon-theme-dev
 	provides = mate-themes
 	provides = mate-themes-gtk3
 	conflicts = mate-themes
@@ -21,5 +21,5 @@ pkgbase = mate-themes-3.20-gtk3
 	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-3.20.10.tar.xz
 	sha1sums = d44f484987c269820662a037f763c248a5d24356
 
-pkgname = mate-themes-3.20-gtk3
+pkgname = mate-themes-dev
 
