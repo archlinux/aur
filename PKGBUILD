@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'desktop-file-utils' 'dconf' 'glib2' 'gtk-update-icon-cache'
          'libunique3' 'mod_dnssd')
-makedepends=('caja-dev' 'libcanberra' 'libnotify' 'mate-common' 'yelp-tools' 'libunique3')
+makedepends=('caja-dev' 'libcanberra' 'libnotify' 'mate-common-dev' 'yelp-tools' 'libunique3')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
