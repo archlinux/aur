@@ -1,7 +1,7 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=weboob
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites."
 arch=('any')
 url="http://weboob.org/"
@@ -19,7 +19,6 @@ optdepends=('gnupg: check for repository authenticity'
             'python2-pillow: PIL replacement'
             'python2-termcolor: color formatting'
             'python2-nose: test suite')
-install="$pkgname.install"
 source=("http://symlink.me/attachments/download/324/$pkgname-$pkgver.tar.gz")
 md5sums=('d0e0c8560c6f7eb79c309912ee1e2d13')
 
