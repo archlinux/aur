@@ -1,6 +1,6 @@
 pkgbase = ddrescue-gui
 	pkgdesc = A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://launchpad.net/ddrescue-gui
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ddrescue-gui
 	depends = parted
 	depends = lshw
 	provides = ddrescue-gui
-	source = https://launchpad.net/ddrescue-gui/1.x/1.5/+download/ddrescue-gui_1.5otherdistro-0ubuntu1%7Eppa1.tar.gz
-	md5sums = dafaedde55c0f6deb454f1bc46401405
+	source = https://launchpad.net/ddrescue-gui/1.x/1.6.1/+download/ddrescue-gui_1.6.1%7Eotherdistro-0ubuntu1%7Eppa1.tar.gz
+	md5sums = 61b14975e5648a8b76332e655b1ea00e
 
 pkgname = ddrescue-gui
 
