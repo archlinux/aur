@@ -5,7 +5,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.5
+pkgver=4.6.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
+            '31dff12d449b160957a22d633abc215c69c5c2e1de9fe637f01b1a98b03f47e9'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
             '88a62ee2670e292c8a36d266c440b08a2d3bba744908ca27f4f52d999486d255'
