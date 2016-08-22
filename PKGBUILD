@@ -29,7 +29,7 @@ _piver=""
 _use_mesa=false
 _float=true
 _shadow_build=false
-_release=true
+_debug=false
 _skip_web_engine=true
 _static_build=false
 _build_from_head=false
@@ -88,11 +88,11 @@ pkgrel=15
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 $_static_build && pkgname="${pkgname}-static"
-if $_release; then
-  _build_type="-release"
-else
+if $_debug; then
   _build_type="-debug"
   pkgname="${pkgname}-debug"
+else
+  _build_type="-release"
 fi
 
 _libspkgname="${pkgname}-target-libs"
