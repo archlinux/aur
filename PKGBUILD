@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=blender-git
-pkgver=65157.66552ca
+pkgver=65433.0dec3d6
 pkgrel=1
 pkgdesc="Development version of Blender"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=('git://git.blender.org/blender.git' \
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
         blender.desktop)
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-         'e9c26e370839fd902eb76c98fe3b9589')
+         '47e5bbe93fc221066882947211ff7812')
 
 # determine whether we can precompile CUDA kernels
 _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
