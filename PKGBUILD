@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-apparmor3
 _srcname=linux-4.4
-pkgver=4.4.16
+pkgver=4.4.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '7181b6cb3a1611dab9179f57846a3f03bf2705aa3e4cddd9fbd0398bde50d5f9'
+            '61b34a8ab4ba778c50a6fb04471cb34192e179db68440d81b12694e45dea00fc'
             'SKIP'
             '1fc94fbe773d9aa1a132267d1bd035fbbb65b031b42087a8dd39af9a77f649eb'
             '496ae13ff892a2bff4d5709187e11ecc6f43062ba9b6ce3c4c69a07b77cdd5ae'
