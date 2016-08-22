@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com?>
-pkgname=pcb-rnd
-_pkgname=pcb-rnd
+pkgname=pcb-rnd-svn
+_pkgname=pcb-rnd-svn
 pkgver=r2689
 pkgrel=1
 pkgdesc="Fork of Geda-PCB with embedded scripting and other improvements."
