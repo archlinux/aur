@@ -9,9 +9,9 @@ license=('BSD')
 makedepends=('curl' 'mlton')
 depends=('libmysqlclient' 'postgresql-client' 'sqlite3' 'openssl' 'uthash')
 source=("http://www.impredicative.com/ur/$pkgname-$pkgver.tgz"
-		"use-system-uthash.patch")
+	"use-system-uthash.patch")
 md5sums=('25e7baf698a27ff93910d3752275afe6'
-		 '23f6f18b7bdbb7ff7c1497734513737e')
+	 '23f6f18b7bdbb7ff7c1497734513737e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
