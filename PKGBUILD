@@ -18,7 +18,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
-pkgver=17.0a2
+pkgver=17.0b1
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ groups=('kodi-devel')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'lame'  'libaacs' 'libass'
-  'libbluray' 'libcdio' 'libcrossguid-git' 'kodi-devel-libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
+  'libbluray' 'libcdio' 'libcrossguid-git' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libsamplerate' 'libssh'
   'libva' 'libvdpau' 'libxrandr' 'libxslt' 'nasm' 'python2-pillow'
   'python2-simplejson' 'rtmpdump' 'sdl2' 'shairplay' 'smbclient' 'swig' 'taglib'
@@ -37,7 +37,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/${pkgver}-${_codename}.tar.gz")
-sha256sums=('271c08e25a6946c35293127a51241de459956d71c190635c057fcbfafc87fc33')
+sha256sums=('67f123ab0a06083381cdcb9db1b02802b937fc0a97e9eb01f7b71d23072b76d7')
 
 _prefix='/usr'
 
@@ -98,7 +98,7 @@ package_kodi-devel() {
   install="${pkgname}.install"
 
   depends=(
-    'bluez-libs' 'libcrossguid-git' 'curl' 'dcadec-git' 'glew' 'hicolor-icon-theme' 'lame'
+    'bluez-libs' 'libcrossguid-git' 'curl' 'glew' 'hicolor-icon-theme' 'lame'
     'libaacs' 'libass' 'libbluray' 'libcdio' 'libmariadbclient' 'libmicrohttpd' 'libmodplug'
     'libmpeg2' 'libpulse' 'libsamplerate' 'libssh' 'libva' 'libvdpau'
     'libxrandr' 'libxslt' 'python2-pillow' 'python2-simplejson'
