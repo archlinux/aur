@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-git
 pkgver=r774.3175946
-pkgrel=2
+pkgrel=3
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -14,7 +14,7 @@ depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libnotify' 'fontconfig')
 
 # This thing requires wine to build, and just to create an icon for the win32 instance.
 # Fails if it doesn't exist, so we better include it.
-makedepends=('git' 'npm' 'wine' 'nw-gyp')
+makedepends=('git' 'npm' 'wine' 'wine-mono' 'wine_gecko' 'nw-gyp')
 
 source=("git+https://github.com/Soundnode/soundnode-app.git")
 sha256sums=("SKIP")
