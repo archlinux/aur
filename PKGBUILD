@@ -2,7 +2,7 @@
 
 pkgname=arsdk3-samples-git
 pkgver=r128.fc07c87
-pkgrel=1
+pkgrel=2
 pkgdesc="ARSDK3 samples to control Parrot devices"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -25,10 +25,10 @@ source=('arsdk-samples::git+https://github.com/Parrot-Developers/Samples'
         'JSPilotingNewAPI-Makefile'
         'LICENSE')
 sha256sums=('SKIP'
-            'f0a72bb2e28c0fa32c6d751ff2f1985b23dac479d1e14a1faadba23eda2323d8'
-            'ead92b4bb2d96e3b9e33d78a91b1255782edbb2cf324a6d3e3672213ce0a44c0'
-            'acd467945f35f5c40f83adfa1359cdc6d9a7f61cff3ac7b6b0e9f10f6a12bb8e'
-            'a908d8fd83f08a1b9b4c330227559d8aa1ac9d938a73ffc8d58ef67b55cff445'
+            '6e84ed30453752775e5895987e430d7fa2a2d2c166b75d58e2cf70637b2f750d'
+            '248e18fd51b1e6f847dfee2804ee765ec59a8356d922af49f6689af2b1847303'
+            '18f44c156c25d4a3477f20c51264a326e2b0c20de270b2db8b448dd422ef0af7'
+            '444e5c3c497615b6198c0c879d87c6629fc373ee5d1828d9f9545a0bf5eb476d'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
 pkgver() {
