@@ -10,8 +10,7 @@ pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG edi
 arch=('i686' 'x86_64')
 url="http://www.texmacs.org/"
 license=('GPL')
-depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'shared-mime-info'
-         'desktop-file-utils' 'qt4' 'libiconv')
+depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'qt4' 'libiconv')
 # do not remove texlive-core dependency, as it is needed!
 optdepends=('transfig: convert images using fig2ps'
             'gawk: conversion of some files'
