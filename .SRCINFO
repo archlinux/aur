@@ -1,6 +1,6 @@
 pkgbase = qt5-qpa-rpi-plugin
-	pkgdesc = Qt5 eglfs plugin built against Broadcom's GL libs.
-	pkgver = 5.4.0
+	pkgdesc = Qt5 eglfs Broadcom device integration for the Raspberry Pi
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = http://qt.io
 	arch = armv6h
@@ -11,9 +11,9 @@ pkgbase = qt5-qpa-rpi-plugin
 	license = custom
 	depends = qt5-base
 	depends = mtdev
-	conflicts = qt5-qpa-rpi-plugin-git
-	source = https://github.com/greenisland/qt5-qpa-rpi-plugin/archive/v5.4.0.tar.gz
-	md5sums = b8a58bc5c438c11d105ece4b297d4cfc
+	noextract = qtbase-opensource-src-5.7.0.tar.xz
+	source = http://download.qt-project.org/official_releases/qt/5.7/5.7.0/submodules/qtbase-opensource-src-5.7.0.tar.xz
+	md5sums = 184f9460b40752d71b15b827260580c2
 
 pkgname = qt5-qpa-rpi-plugin
 
