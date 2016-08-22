@@ -4,8 +4,8 @@
 # Man file, patches and autoreconf are from ebuild and rpm
 
 pkgname=libptp2
-pkgver=1.1.10
-pkgrel=5
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Library to communicate with PTP devices like cameras or MP3 players"
 arch=('i686' 'x86_64')
 url="http://libptp.sourceforge.net/"
@@ -14,7 +14,7 @@ depends=('libusb')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/libptp/$pkgname-$pkgver.tar.gz
         ptpcam.1.man)
-md5sums=('5a0e2965d1077c316d6ae6a8cef96238'
+md5sums=('c96bfae78414afb83b61ddbfc7e2cb75'
          'ecdd0fb2c06bdc141a60494b3ecb888e')
 
 prepare() {

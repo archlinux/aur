@@ -1,16 +1,16 @@
 pkgbase = libptp2
 	pkgdesc = Library to communicate with PTP devices like cameras or MP3 players
-	pkgver = 1.1.10
-	pkgrel = 5
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://libptp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libusb
 	options = !libtool
-	source = http://downloads.sourceforge.net/sourceforge/libptp/libptp2-1.1.10.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/libptp/libptp2-1.2.0.tar.gz
 	source = ptpcam.1.man
-	md5sums = 5a0e2965d1077c316d6ae6a8cef96238
+	md5sums = c96bfae78414afb83b61ddbfc7e2cb75
 	md5sums = ecdd0fb2c06bdc141a60494b3ecb888e
 
 pkgname = libptp2
