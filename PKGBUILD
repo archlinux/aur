@@ -6,9 +6,13 @@
 
 # PKGBUILD based on abs/extra/eog
 
-# NOTE
+# NOTE 1
 # v3.14.4 is the latest version which has the ability to turn of menu bars.
 # Later versions needs source code patching because of the GTK header bar.
+
+# NOTE 2
+# Run 'eog.bin' from terminal to access the menu to configure Eye of GNOME
+# The plugin can be used for other GTK3 apps too if you want.
 
 _pkgname=eog
 _pkgver=3.14.4 # if you need another version, just modify this string
