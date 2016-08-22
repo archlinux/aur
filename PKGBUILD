@@ -13,7 +13,6 @@ provides=('picard')
 conflicts=('picard' 'picard-qt' 'picard-bzr')
 source=('git://github.com/metabrainz/picard.git')
 md5sums=('SKIP')
-install='picard-git.install'
 
 pkgver(){
     cd "$srcdir/picard"
