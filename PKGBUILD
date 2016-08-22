@@ -29,4 +29,5 @@ package() {
 	cd "${srcdir}/PiBits/ServoBlaster/user"
 	install -Dm 0755 servod "${pkgdir}/usr/bin/servod"
 	install -Dm 0644 "${srcdir}/servod.service" "${pkgdir}/usr/lib/systemd/system/servod.service"
+	install -Dm 0644 "${srcdir}/servod_default" "${pkgdir}/etc/default/servod"
 }
