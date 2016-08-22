@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=2.0.2_unstable.r22.gca235a5
-pkgrel=2
+pkgver=2.1.0_unstable.r0.g34e4ef5
+pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://github.com/alireza-amirsamimi/persepolis"
 license=('GPL3')
-depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5')
+depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'qt5-svg')
 makedepends=('git')
 optdepends=('firefox-flashgot: for integrating with firefox')
 provides=("${pkgname}" "persepolis")
