@@ -33,6 +33,7 @@ _release=true
 _skip_web_engine=true
 _static_build=false
 _build_from_head=false
+_patching=true
 
 # Sanity check options
 
@@ -76,9 +77,10 @@ fi
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 if [[ -f testing ]]; then _skip_web_engine=true; fi
 
-if $_skip_web_engine; then _device_configure_flags="$_device_configure_flags -skip qtwebengine"; fi
-if $_static_build; then _device_configure_flags="$_device_configure_flags -static"; fi
-if $_float; then _device_configure_flags="$_device_configure_flags -qreal float"; fi
+$_build_from_head && _patching=false && _shadow_build=true
+$_skip_web_engine && _device_configure_flags="$_device_configure_flags -skip qtwebengine"
+$_static_build && _device_configure_flags="$_device_configure_flags -static"
+$_float && _device_configure_flags="$_device_configure_flags -qreal float"
 
 # PKGBUILD vars
 
@@ -108,9 +110,11 @@ depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 _provider=http://qt.mirror.constant.com/
 #_provider=https://download.qt.io
-source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
 
-sha256sums=("SKIP" "04ca3b5cc26dfd7118052e33012e3ec5c27cecce202e00227f2c18b86523e650")
+if ! $_build_from_head; then
+  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
+  sha256sums=("SKIP" "04ca3b5cc26dfd7118052e33012e3ec5c27cecce202e00227f2c18b86523e650")
+fi
 
 options=('!strip')
 install=qpi.install
@@ -156,6 +160,39 @@ build() {
   local _locationdir="${_srcdir}/qtlocation"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
+  if $_shadow_build; then
+    _bindir="${_srcdir}-build"
+    rm -Rf ${_bindir}
+    mkdir -p ${_bindir}
+  fi
+
+  if $_build_from_head; then
+     if [[ -z $_local_qt5_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
+    _srcdir=$_local_qt5_repo
+  fi
+
+  cd ${_srcdir}
+
+if $_patching; then
+  # Get our mkspec
+  rm -Rf $_mkspec_dir
+  cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
+
+  # build qtwebengine with our mkspec
+  local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
+  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
+
+  # hard coded off, so we have to hard code it on
+  local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
+  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
+  _device_configure_flags="$_device_configure_flags -reduce-relocations"
+
+  # Work around our embarresing propensity to stomp on your own tailored build configuration
+  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+fi
+
+  cd ${_bindir}
+
   # skipping on principle: qtscript xcb
 
   # Too bleeding big
@@ -164,7 +201,6 @@ build() {
 
   # Chromium requires python2 to be the system python on your build host
   # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
-
 
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
@@ -178,7 +214,6 @@ build() {
                  -silent \
                  -qtlibinfix "Pi${_piver}" \
                  -reduce-exports \
-                 -reduce-relocations \
                  -pch \
                  -ltcg \
                  -opengl es2 \
@@ -200,39 +235,6 @@ build() {
                  -device ${_mkspec} \
                  -device-option CROSS_COMPILE=/opt/${_toolchain_name}/bin/${_toolchain_name}- \
                  ${_device_configure_flags}"
-
-if $_build_from_head; then
-  _srcdir="${_local_qt5_repo}"
-fi
-
-if $_shadow_build; then
-  _bindir="${_srcdir}-build"
-fi
-
-  cd ${_srcdir}
-
-  # Get our mkspec
-  rm -Rf $_mkspec_dir
-  cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
-
-  # build qtwebengine with our mkspec
-  local _webenginefileoverride="${_srcdir}/qtwebengine/tools/qmake/mkspecs/features/functions.prf"
-  sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
-
-  # hard coded off, so we have to hard code it on
-  local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
-  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
-
-  # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
-
-  if $_shadow_build; then
-    rm -Rf ${_bindir}
-  fi
-
-  mkdir -p ${_bindir}
-  cd ${_bindir}
-
   echo ${_configure_line} > configure_line
   ${_configure_line} || exit 1
   make || exit 1
