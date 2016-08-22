@@ -1,7 +1,7 @@
 ## arg 1:  the new package version
 post_install() {
 	systemd-sysusers couchpotato.conf
-	chown -R couchpotato: /avar/lib/couchpotato
+	chown -R couchpotato: /var/lib/couchpotato
 }
 ## arg 1:  the new package version
 ## arg 2:  the old package version
