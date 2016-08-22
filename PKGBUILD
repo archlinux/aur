@@ -10,7 +10,7 @@
 PKGEXT=.pkg.tar
 
 pkgname=hon
-pkgver=3.7.10
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/HoNClient-${pkgve
 noextract=("HoNClient-${pkgver}.sh")
 md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
-         '7bff09d29b0aca60c93c5604189c47eb')
+         'e7e689acb05de2d924a2f0829fe0cc59')
 
 package() {
     ## Thx to messo8080 for reminding us about the /tmp dir,
