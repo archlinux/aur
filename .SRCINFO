@@ -12,6 +12,7 @@ pkgbase = maynard-git
 	makedepends = intltool
 	depends = weston
 	depends = gnome-desktop
+	depends = gnome-menus
 	provides = maynard
 	source = maynard::git+https://github.com/raspberrypi/maynard.git
 	source = 01-maynard.patch
