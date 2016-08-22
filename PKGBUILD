@@ -5,7 +5,7 @@
 
 pkgbase=linux-macbook       # Build kernel with a different name
 _srcname=linux-4.7
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -27,14 +27,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
+            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
             'SKIP'
             'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
             '3b41dde76dd69ec6e088bd19e724f3eabd30eaf43727a1948c6603242dc08cd8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
-            '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
-            'c9873d1703881f35d25e553d2359a7e846916fab0e981579e1afdf6b034f3a0e'
+            '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
+            '7094cbcfd657dbc1c17721d4f248f9f98511d803bc4be6d66637388801afdebc'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
