@@ -6,7 +6,7 @@
 
 pkgname=libarstream2-git
 pkgver=r156.bcd93a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Parrot Streaming Library"
 arch=(x86_64)
 url="http://developer.parrot.com/"
@@ -26,7 +26,7 @@ source=('libarstream2::git+https://github.com/Parrot-Developers/libARStream2'
         'Config-linux-config.h'
         'LICENSE')
 sha256sums=('SKIP'
-            'b48204d27c7cb89c18e062d2d953639fc1d090f48ff2deb5edf75ed94f138eb8'
+            'c1554a5e0b68e1d5b9e08434b509b78215fb89d2aa64ced5fc53f2680982df3c'
             '5956b54ef47ad26df51991a4aa7002abdcb524a51b455d040f55b4d11a4f44a7'
             '1771e95329e9cb2bed04e023e330af3d558d0f13c0c1c5de0581f2880f149deb')
 
