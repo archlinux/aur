@@ -184,9 +184,9 @@
  
  	return 0;
  }
-@@ -1495,6 +1632,9 @@
+@@ -1492,6 +1497,9 @@
  		     priv->capabilities, priv->ext_cap, priv->ext_cap_0c,
- 		     priv->board_id, priv->firmware_id);
+ 		     priv->ext_cap_10, priv->board_id, priv->firmware_id);
  
 +	if (synaptics_init_led(psmouse) < 0)
 +		goto init_fail;
