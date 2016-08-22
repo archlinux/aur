@@ -2,7 +2,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.20
-pkgrel=6
+pkgrel=7
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'f
 makedepends=('boost' 'doxygen')
 conflicts=('mpd')
 provides=('mpd=0.20')
-source=('git://git.musicpd.org/manisiutkin/mpd.git#commit=b0fd563b7fa238d3faaabcf2a09a9ca67d204931'
+source=('git://git.musicpd.org/manisiutkin/mpd.git#commit=c9d51633a1f720d1d1ffa1748bf8cd257d1e1560'
         'tmpfiles.d'
         'conf')
 sha1sums=('SKIP'
