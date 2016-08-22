@@ -28,5 +28,5 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dp z.sh "$pkgdir/usr/share/z/z.sh"
   mkdir -p "$pkgdir/etc/profile.d/"
-  echo ". /usr/share/z/z.sh" > "$pkgdir/etc/profile.d/z-jump-dir.sh"
+  echo ". /usr/share/z/z.sh" > "$pkgdir/etc/profile.d/z-dir-jump.sh"
 }
