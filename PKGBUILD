@@ -1,14 +1,14 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 pkgname=cronic
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=1
 pkgdesc="Cronic is a shell script to help control the most annoying feature of cron: unwanted emailed output."
 url="http://habilis.net/cronic/"
 depends=('bash')
 license=('CC0')
 arch=('any')
 source=(http://habilis.net/cronic/cronic)
-md5sums=('a488e6c2c76d8d00eb5576a164be4cf3')
+sha256sums=('25d9772e142ebdcaa72433431e26d855ae82b085709faf0d2169b3bda867aeac')
 
 package() {
     cd "$srcdir"
