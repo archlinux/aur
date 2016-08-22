@@ -4,7 +4,7 @@
 
 _ver=3.20
 _pkgbase=mate-themes
-pkgname="${_pkgbase}-dev"
+pkgname="${_pkgbase}-3.20-gtk3"
 pkgver=${_ver}.10
 pkgrel=1
 pkgdesc="Default themes for the MATE desktop"
