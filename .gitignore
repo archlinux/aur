@@ -1,4 +1,6 @@
-*.pkg.tar.xz
+*.pkg.tar.*
+connman-*.tar.xz
 src/
 build/
+pkg/
 *.log
