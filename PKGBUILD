@@ -1,8 +1,8 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r3212.811d654
+pkgver=r3807.34db16b
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir"/mgba -DCMAKE_INSTALL_PREFIX=/usr
+  cmake "$srcdir"/mgba -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
