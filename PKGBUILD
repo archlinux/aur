@@ -10,7 +10,7 @@ license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
 makedepends=('expat' 'boost')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node')
-conflicts=('natron-rc' 'natron-bin' 'natron-bin-dev')
+conflicts=('natron-rc' 'natron-bin' 'natron-bin-dev' 'natron-portable')
 source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
 	"https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
 	"config.pri")
