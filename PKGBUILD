@@ -2,7 +2,7 @@
 
 _plug=awarpsharp2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.3.ge215425
+pkgver=v2.1.gbcd42fd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -22,19 +22,19 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-
   ./autogen.sh
 }
 
 build() {
   cd "${_plug}"
-  ./configure --prefix=/usr \
-              --libdir=/usr/lib/vapoursynth
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.rst"
+  install -Dm644 readme.rst "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
