@@ -3,7 +3,7 @@
 
 pkgname=go-for-it
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A stylish to-do list with built-in productivity timer.'
 arch=('i686' 'x86_64')
 url='https://github.com/mank319/Go-For-It'
@@ -34,6 +34,8 @@ package() {
   cd ${srcdir}/build
 
   make DESTDIR="${pkgdir}" install
+  
+  install -Dm644 "${srcdir}/data/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
 # vim: ts=2 sw=2 et:
