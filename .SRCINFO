@@ -1,7 +1,7 @@
 pkgbase = arduino
 	pkgdesc = Arduino prototyping platform SDK
 	pkgver = 1.6.11
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
@@ -18,13 +18,12 @@ pkgbase = arduino
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = java-runtime=8
-	provides = arduino
-	conflicts = arduino-bin
-	conflicts = arduino-git
 	options = !strip
 	options = staticlibs
 	source = https://github.com/arduino/Arduino/archive/1.6.11.tar.gz
+	source = arduino.sh
 	sha512sums = f18f173c95aea1b60aa4e7ef98e0dc1a44595571d522569b53842fe8c110e92da82902c25aea6b1affe4e3dfe0098ce0c173cf73c42b2237ce353a5a70932f68
+	sha512sums = 6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28
 
 pkgname = arduino
 
