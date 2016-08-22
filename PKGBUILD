@@ -5,7 +5,7 @@
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
 pkgver=2.3.18
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
@@ -20,6 +20,7 @@ depends=(
   'perl-text-template'
   'perl-universal-require'
   'perl-xml-treepp>=0.26'
+  'perl-data-structure-util'
 )
 makedepends=(
   'perl-http-proxy'
