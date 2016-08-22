@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=hub-git
-pkgver=v2.2.0.preview1.r400.g713fd93
+pkgver=v2.2.0.preview1.r496.g7a917ba
 pkgrel=1
 pkgdesc="cli interface for Github"
 url="https://hub.github.com"
@@ -31,7 +31,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname/-git/}/LICENSE"
   install -Dm644 etc/hub.bash_completion.sh "$pkgdir/usr/share/bash-completion/completions/hub"
   install -Dm644 etc/hub.zsh_completion "$pkgdir/usr/share/zsh/site-functions/_hub"
-  for manpage in man/hub.1 man/hub-*.1; do
+  for manpage in share/man/man1/hub.1 share/man/man1/hub-*.1; do
     install -Dm644 $manpage "$pkgdir/usr/share/man/man1/$(basename $manpage)"
   done
 }
