@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'fontconfig' 'glib2' 'gtk3' 'gtk-update-icon-cache'
-         'libcanberra-pulse' 'libmatekbd-dev' 'libmatemixer' 'libnotify'
+         'libcanberra-pulse' 'libmatekbd-dev' 'libmatemixer-dev' 'libnotify'
          'libxt' 'mate-desktop-dev' 'nss' 'polkit')
 makedepends=('mate-common-dev' 'gtk3' 'libmatekbd-dev' 'mate-desktop-dev')
 groups=('mate')
