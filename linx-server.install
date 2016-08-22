@@ -1,0 +1,15 @@
+pre_install() {
+  # create user and group
+  /usr/bin/getent group linx &> /dev/null || /usr/bin/groupadd -r linx &> /dev/null
+  /usr/bin/getent passwd linx &> /dev/null || /usr/bin/useradd -r -g linx -s /usr/bin/nologin linx &> /dev/null
+}
+
+post_install() {
+  # chown directories
+  /usr/bin/chown -R linx:linx /usr/share/webapps/linx-server
+}
+
+post_remove() {
+  # remove user and group
+  /usr/bin/getent passwd linx &> /dev/null && /usr/bin/userdel linx &> /dev/null
+}
