@@ -7,7 +7,7 @@
 
 pkgname=libiec61850
 pkgver=0.9.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="libIEC61850 provides a server and client library for IEC 61850"
 arch=('x86_64' 'i686')
 url="http://libiec61850.com/"
@@ -17,7 +17,7 @@ sha256sums=('85132b12f65282ea14ede46b90b9ee0f68566bb08564d04e3cf157e16df09bb0')
 
 build() {
 	cd $pkgname-$pkgver
-	cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/ CMakeLists.txt
+	cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ CMakeLists.txt
 	make -j
 }
 
