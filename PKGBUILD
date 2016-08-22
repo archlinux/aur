@@ -13,7 +13,7 @@ conflicts=('lib32-sdl2')
 install="$pkgname.install"
 makedepends=('gcc-multilib' 'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse'
              'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxrandr'
-             'lib32-fcitx' 'libibus')
+             'fcitx' 'lib32-fcitx' 'libibus')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'fcitx: fcitx input support'
