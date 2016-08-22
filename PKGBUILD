@@ -1,13 +1,13 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=7498.5135575
+pkgver=7911.ab53ca5
 pkgrel=1
 pkgdesc="Jagged Alliance 2 Stracciatella project with a goal of improving JA2"
 arch=('i686' 'x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
-depends=('sdl' 'gcc-libs')
-makedepends=('git')
+depends=('boost-libs' 'sdl')
+makedepends=('git' 'cmake' 'boost')
 source=('git+https://github.com/ja2-stracciatella/ja2-stracciatella.git')
 md5sums=('SKIP')
 
@@ -19,16 +19,16 @@ pkgver() {
 build() {
   cd "$srcdir/ja2-stracciatella"
 
-  ./configure --prefix="/usr"
+  cmake "../ja2-stracciatella" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DEXTRA_DATA_DIR=/usr/share/ja2
   make
 }
 
 package() {
   cd "$srcdir/ja2-stracciatella"
 
-  # change the dirs for installation
-  sed -i "s|/usr|$pkgdir/usr|" Makefile.config
-  make install
+  make DESTDIR="$pkgdir" install
 
   install -d -m755 "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 README.md "$pkgdir/usr/share/licenses/$pkgname"
