@@ -1,0 +1,19 @@
+pkgbase = cpp-dependencies-git
+	pkgdesc = Tool to check C++ #include dependencies (dependency graphs created in .dot format)
+	pkgver = r35.9b83893
+	pkgrel = 1
+	url = https://github.com/tomtom-international/cpp-dependencies
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	depends = boost
+	optdepends = graphviz: Render output graphs
+	provides = cpp-dependencies
+	conflicts = cpp-dependencies
+	source = git+https://github.com/tomtom-international/cpp-dependencies.git
+	md5sums = SKIP
+
+pkgname = cpp-dependencies-git
+
