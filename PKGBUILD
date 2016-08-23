@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd "${_pkgname}-${pkgver}-Source"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  CXXFLAGS=-Wno-error=terminate cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 
   cd src/gui
