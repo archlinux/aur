@@ -1,7 +1,7 @@
 pkgbase = mhwd-addon-amdgpu-hwe
 	pkgdesc = Enables some extras for AMDGPU-open stack, like OpenCL, VAAPI & VDPAU
 	pkgver = 20160822BETA
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = custom
 	depends = mhwd-db
@@ -10,7 +10,7 @@ pkgbase = mhwd-addon-amdgpu-hwe
 	source = MHWDCONFIG
 	source = amdgpu-hwe.ids
 	md5sums = 94eefebebefb54c088be9995592aa16d
-	md5sums = c8f02780574259b9053bf4cc737b5bf8
+	md5sums = 475a1e63fd1bff0f203c159b6825ef3d
 
 pkgname = mhwd-addon-amdgpu-hwe
 

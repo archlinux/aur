@@ -1,7 +1,7 @@
 # Maintainer: Fabian(Tids) <plusfabi[AT+thegooglemailadress]>
 pkgname=mhwd-addon-amdgpu-hwe
 pkgver=20160822BETA
-pkgrel=2
+pkgrel=3
 pkgdesc="Enables some extras for AMDGPU-open stack, like OpenCL, VAAPI & VDPAU"
 arch=('any')
 url=""
@@ -9,7 +9,7 @@ license=('custom')
 depends=('mhwd-db' 'linux47' 'grub')
 source=('MHWDCONFIG' 'amdgpu-hwe.ids')
 md5sums=('94eefebebefb54c088be9995592aa16d'
-         'c8f02780574259b9053bf4cc737b5bf8')
+         '475a1e63fd1bff0f203c159b6825ef3d')
 
 
 package() {
