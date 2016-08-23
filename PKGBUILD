@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=py3status
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="An extensible i3status replacement/wrapper written in python"
 url="http://www.ultrabug.fr/tag/py3status/"
@@ -11,7 +11,7 @@ license=('custom: Simplified BSD')
 depends=('python' 'python-setuptools')
 optdepends=('i3status: for some of the functionality')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/ultrabug/py3status/archive/$pkgver.tar.gz")
-sha256sums=('ad2e8f0c2164453f4fdf1eb3ef88491d31f78ea056eb3b15a461793852bf9e6d')
+sha256sums=('f2c0e9c3ecb0bd1c40e952b16255c97bba184de14629b74c0203feb873a3df21')
 
 package() {
   cd $pkgname-$pkgver
