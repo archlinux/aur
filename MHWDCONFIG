@@ -1,0 +1,78 @@
+# mhwd Driver Config
+
+
+NAME="video-amdgpu-hwe"
+INFO="X.org amdgpu video driver. Standard open source driver for AMD graphic cards with OpenGL, VAAPI and VDPAU support"
+VERSION="2016.08.22.1"
+FREEDRIVER="true"
+PRIORITY="2"
+
+CLASSIDS="0300 0380"
+VENDORIDS="1002"
+DEVICEIDS=">/var/lib/mhwd/ids/pci/amdgpu-hwe.ids"
+
+# Conflicts
+MHWDCONFLICTS="video-amdgpu video-catalyst video-vesa"
+
+# Dependencies
+DEPENDS="xf86-video-amdgpu libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
+DEPENDS_64="lib32-libva-vdpau-driver lib32-mesa-vdpau"
+
+XORGFILE="/etc/X11/mhwd.d/amdgpu.conf"
+GRUBFILE="/etc/default/grub"
+MODULESFILE="/etc/modules-load.d/mhwd-amdgpu.conf"
+MODULESBLACKLIST="/etc/modprobe.d/mhwd-amdgpu.conf"
+
+post_install()
+{
+	MHWD_HEADING "${XORGFILE}"
+	MHWD_ADD_DEVICE_SECTION_FOR_EACH_BUSID "amdgpu" "${XORGFILE}" 1002
+	MHWD_ADD_DRI "${XORGFILE}"
+	MHWD_ADD_COMPOSITING "${XORGFILE}"
+	MHWD_ADD_BACKSPACE "${XORGFILE}"
+
+	# Enable next generation of DRI
+	sed -i "s/\tOption      \"DRI\"    \"true\"/\tOption      \"DRI3\"    \"1\"\n\tOption      \"DRI\"     \"3\"/g"  "${XORGFILE}"
+
+	MHWD_HEADING "${MODULESFILE}"
+	echo "amdgpu" >> "${MODULESFILE}"
+
+	MHWD_HEADING "${MODULESBLACKLIST}"
+	echo "blacklist radeon" >> "${MODULESBLACKLIST}"
+
+	# Unload modules if X is not running
+	if [ ! "$(pgrep X)" ];	then
+		rmmod -f radeon
+	fi
+
+	modprobe amdgpu
+
+	mhwd-gpu --setgl mesa --setxorg "${XORGFILE}"
+	
+	# Add experimental "SI" support to grub
+	sed -i "s/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"amdgpu.exp_hw_support=1 /g" "${GRUBFILE}"
+	update-grub
+}
+
+
+post_remove()
+{
+	if [ -e "${XORGFILE}" ]; then
+		rm "${XORGFILE}"
+	fi
+	if [ -e "${MODULESFILE}" ]; then
+		rm "${MODULESFILE}"
+	fi
+	if [ -e "${MODULESBLACKLIST}" ]; then
+		rm "${MODULESBLACKLIST}"
+	fi
+
+	mhwd-gpu --check
+	
+	## make sure we remove this line again
+	sed -i "s/amdgpu.exp_hw_support=1 //g" "${GRUBFILE}"
+	sed -i "s/ amdgpu.exp_hw_support=1//g" "${GRUBFILE}"
+	sed -i "s/amdgpu.exp_hw_support=1//g" "${GRUBFILE}"
+	update-grub
+}
+ 
