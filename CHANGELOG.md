@@ -3,6 +3,19 @@
 ## [Unreleased]
 Nothing to report...
 
+## [2.04] - 2016.08.23
+### **Fixes**
+- Added more checks to sshprint commandline arguments
+- Some light refactoring
+
+### **Updated**
+- Expanded the documentation in POD - we now have
+  sane man pages
+
+### **Still Todo**
+- Add more verbosity printouts
+- Do further refactoring
+
 ## [2.03] - 2016.08.16
 ### **Fixes**
 - Corrected incorrect variable reference for application version
@@ -39,7 +52,8 @@ Nothing to report...
 ### Fixed
 - Fix regex in select printer dialog.
 
-[Unreleased]: https://github.com/hv15/sshprint/compare/2.03...HEAD
+[Unreleased]: https://github.com/hv15/sshprint/compare/2.04...HEAD
+[2.04]: https://github.com/hv15/sshprint/compare/2.03...2.04
 [2.03]: https://github.com/hv15/sshprint/compare/2.02...2.03
 [2.02]: https://github.com/hv15/sshprint/compare/2.01...2.02
 [2.01]: https://github.com/hv15/sshprint/compare/2.00...2.01
