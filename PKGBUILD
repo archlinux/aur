@@ -1,8 +1,10 @@
-#Maintainer: Unknown
+#Maintainer: M0Rf30
+#Contributor: kurych
+#Contributor: redfish
 
 pkgname=i2pd
 _pkgname=i2pd
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -65,7 +67,6 @@ package(){
   chmod -R o= $pkgdir/${_home_dest}
 }
 
-
-md5sums=('c09db4182ae4ee56233a6ba37f81a3bf'
+md5sums=('ccd3249c33596bfbb205e834823724fb'
          '13c910900be4df3e0da11fc893f59a6f'
          'acda29e5b46a0c9fade734a6a467b381')
