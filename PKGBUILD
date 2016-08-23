@@ -2,8 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=torsocks-git
-pkgver=2.1.0
-epoch=1
+pkgver=2.2.0.rc1.4.g34b1f1c
 pkgrel=1
 pkgdesc='Torsocks allows you to use most socks-friendly applications in a safe way with Tor.'
 url='https://gitweb.torproject.org/torsocks.git'

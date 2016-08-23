@@ -1,8 +1,7 @@
 pkgbase = torsocks-git
 	pkgdesc = Torsocks allows you to use most socks-friendly applications in a safe way with Tor.
-	pkgver = 2.1.0
+	pkgver = 2.2.0.rc1.4.g34b1f1c
 	pkgrel = 1
-	epoch = 1
 	url = https://gitweb.torproject.org/torsocks.git
 	install = torsocks.install
 	arch = i686
