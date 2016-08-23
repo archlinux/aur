@@ -3,13 +3,12 @@
 pkgname=firenzina
 pkgver=2.4.3
 pkgrel=1
-pkgdesc="Firenzina $pkgver xTreme is a free, open-source UCI chess engine, a derivative of Fire 2.2 xTreme"
+pkgdesc="Free, open-source UCI chess engine, a derivative of Fire 2.2 xTreme"
 arch=('i686' 'x86_64')
 url="https://firenzina.wikispaces.com/"
 license=('GPL')
+depends=('glibc')
 conflicts=("$pkgname-git")
-provides=("$pkgname=$pkgver")
-options=(!emptydirs)
 source=("https://firenzina.wikispaces.com/file/view/Firenzina_2-4-3_sources.zip/533596960/Firenzina_2-4-3_sources.zip"
 	"makefile.patch")
 
