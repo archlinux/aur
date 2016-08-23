@@ -1,8 +1,10 @@
 #Maintainer: Unknown
+#Contributor: kurych
+#Contributor: redfish
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2.7.0.r7.g3b80de1
+pkgver=2.9.0.r42.ge163730
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -34,8 +36,8 @@ package(){
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
   install -Dm0644 $srcdir/i2pd/docs/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
-  install -Dm0644 $srcdir/i2pd/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
-  install -Dm0644 $srcdir/i2pd/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
+  install -Dm0644 $srcdir/i2pd/docs/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
+  install -Dm0644 $srcdir/i2pd/docs/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
   install -d -m0750 $pkgdir/${_home_dest}
   ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
