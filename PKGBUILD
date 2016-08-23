@@ -3,7 +3,7 @@
 # Contributor: Klaus Denker <kldenker@unix-ag.uni-kl.de>
 pkgname=glpresenter
 pkgbase=glpresenter
-pkgver=0.3.3 # note: if the pkgver had been '0.99-10' then use an underscore. like '0.99_10'
+pkgver=0.3.4 # note: if the pkgver had been '0.99-10' then use an underscore. like '0.99_10'
 pkgrel=2
 pkgdesc="A dual-screen OpenGL PDF presentation software"
 arch=('any')
@@ -11,18 +11,34 @@ url="http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/"
 license=('GPL')
 groups=()
 provides=()
+makedepends=('git')
 depends=('qt4' 'poppler-qt4' 'glu')
-source=(http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/download/source/gl_presenter-$pkgver.tar.bz2)
-md5sums=('738065023c500584346d1351a02c6f90')
+#source=(http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/download/source/gl_presenter-$pkgver.tar.bz2)
+#md5sums=('738065023c500584346d1351a02c6f90')
+_gitroot="https://github.com/KLAU542/gl-presenter.git"
+_gitname="gl-presenter"
 
-build() {
-  cd $srcdir/gl_presenter-$pkgver
+build()
+{
+  cd ${srcdir}/
+  msg "Connecting to the GIT server...."
+  if [[ -d ${srcdir}/${_gitname} ]] ; then
+    cd ${_gitname}
+    git pull origin            
+    msg "The local files are updated..."
+  else								        
+    git clone ${_gitroot}
+    cd ${_gitname}
+  fi									        
+  msg "GIT checkout done."						
+  msg "Starting make for: ${pkgname}" 
   qmake-qt4 -Wnone
   make
 }
 package() {
-  cd $srcdir/gl_presenter-$pkgver
+  cd $srcdir/${_gitname}
   mkdir -p $pkgdir/usr/bin
-  mv gl_presenter $pkgdir/usr/bin/.
-  ln $pkgdir/usr/bin/gl_presenter $pkgdir/usr/bin/glpresenter
+  mv gl-presenter $pkgdir/usr/bin/.
+  ln $pkgdir/usr/bin/gl-presenter $pkgdir/usr/bin/glpresenter
+  ln $pkgdir/usr/bin/gl-presenter $pkgdir/usr/bin/gl_presenter
 }
