@@ -1,6 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
+# Contributor: Jinbei Li (Petron) <i@jingbei.li>
 
 pkgname=python-tensorflow-git
 pkgver=0.10.0rc0.r778.g6d04d60
