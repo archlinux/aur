@@ -1,6 +1,6 @@
 pkgbase = arduino-git
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.10.r0.g3db7ec2
+	pkgver = 1.6.11.r3.g2e70841
 	pkgrel = 2
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
@@ -17,13 +17,15 @@ pkgbase = arduino-git
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = java-runtime=8
+	depends = avrdude
 	provides = arduino
 	conflicts = arduino
-	conflicts = arduino-bin
 	options = !strip
 	options = staticlibs
 	source = arduino-git::git+https://github.com/arduino/Arduino/#branch=master
+	source = arduino.sh
 	sha512sums = SKIP
+	sha512sums = 6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28
 
 pkgname = arduino-git
 
