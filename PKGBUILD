@@ -4,9 +4,9 @@
 
 pkgname=barry
 pkgver=0.18.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Barry is an Open Source application that provides a Desktop GUI, synchronization, backup, restore and program management for BlackBerry ™ devices."
-url=('http://www.netdirect.ca/software/packages/barry')
+url=http://www.netdirect.ca/software/packages/barry
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libusb' 'zlib' 'libglademm' 'libtar' 'libxml++' 'wxgtk' 'sdl' 'libgcal')
