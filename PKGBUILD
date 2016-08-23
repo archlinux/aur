@@ -6,7 +6,7 @@ pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
 license=('GPL3')
-conflicts=('soundnode', 'soundnode-app-bin')
+conflicts=('soundnode-git', 'soundnode-app-bin')
 provides=('soundnode')
 
 # Required, otherwise it won't run.
