@@ -1,14 +1,14 @@
 # Maintainer: Vincent <ippytraxx@installgentoo.com>
 
 pkgname=gnome-twitch-git
-pkgver=r668.d253c88
+pkgver=r669.423a8b3
 pkgrel=1
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/vinszent/gnome-twitch"
 license=('GPL3')
 makedepends=('git' 'meson')
-depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'webkit2gtk')
+depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'webkit2gtk' 'libpeas')
 install=gnome-twitch-git.install
 conflicts=('gnome-twitch')
 source=("$pkgname::git+https://github.com/vinszent/gnome-twitch.git")
