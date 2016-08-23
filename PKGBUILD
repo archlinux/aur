@@ -1,7 +1,8 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
+# Important: the versions of the packages linux and linux-header must match
 
 pkgname=riffa-git
-pkgver=2.2.0
+pkgver=2.2.1.git20160314
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='RIFFA: A Reusable Integration Framework For FPGA Accelerators'
@@ -23,6 +24,16 @@ md5sums=(
 	'd37355781ef46d1f4aa21cd169964f08'
 )
 
+pkgver() {
+	cd "${srcdir}/riffa"
+
+	# RIFFA version (extracted from Makefile)
+	_distver=`sed -n -e 's/^RELEASE_VER=\([0-9.a-z]*\)\s*$/\1/p' Makefile`
+	# Date of the last git commit
+	_gitver=`git log -n 1 --date=short | sed -n -e 's/^Date:\s*\([0-9-]*\)\s*$/\1/p' | tr -d -`
+
+	echo $_distver.git$_gitver;
+}
 
 build() {
 	cd "${srcdir}/riffa/driver/linux"
@@ -40,7 +51,6 @@ build() {
 package() {
 	# Note: Can't use the riffa provided install commands because all is hardcoded for Red Hat / Debian
 
-	# Important: If the versions of your packages linux and linux-header must match, manualy set this
 	_extramodules=extramodules-`uname -r | sed -e 's/\([[:digit:]]*\).\([[:digit:]]\).*/\1.\2/g'`-ARCH
 	sed --follow-symlinks -i -e 's/^\([[:blank:]]*EXTRAMODULES=\).*$/\1'"$_extramodules"'/g' "${srcdir}/riffa.install"
 
