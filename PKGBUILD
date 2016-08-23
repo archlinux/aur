@@ -21,7 +21,7 @@ build() {
     cd "$srcdir/astc-encoder/Source"
     sed -i -- 's/g++/clang++/g' Makefile
     make
-    clang++++ exr_to_htga.cpp $(pkg-config --cflags --libs OpenEXR) -o exr_to_htga
+    clang++ exr_to_htga.cpp $(pkg-config --cflags --libs OpenEXR) -o exr_to_htga
 }
 
 package() {
