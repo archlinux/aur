@@ -17,7 +17,6 @@ source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
 md5sums=('SKIP'
          '4ca4eca4856cae50cfa4645a090258dd'
          '09f5ac67c0ad57eb853141b38eccb0ff')
-install="natron.install"
 
 prepare() {
 	cd "$srcdir/$pkgname"
