@@ -8,7 +8,7 @@
 _pkgname=mpd
 pkgname=mpd-m4afix
 pkgver=0.19.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music'
 url='http://www.musicpd.org/'
 license=('GPL')
@@ -23,12 +23,14 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
 source=("http://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         'tmpfiles.d'
         'conf'
-        'm4a.patch')
+        'm4a.patch'
+        'wildmidi.patch')
 sha1sums=('41065043589208db1100c5a3f3c15fbd3ac87669'
           'SKIP'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           '291fd5cda9f0845834a553017327c4586bd853f6'
-          '8e97b8113eac706f974356d200e22f5da73b87dc')
+          '8e97b8113eac706f974356d200e22f5da73b87dc'
+          '6c257cff45edf9666ce13e0f0bfd791162a5bb94')
 
 backup=('etc/mpd.conf')
 install=install
@@ -39,6 +41,7 @@ prepare() {
 	ln -s /usr/lib/pkgconfig/libsystemd.pc "${srcdir}"/pkg-config/libsystemd-daemon.pc
     cd "${srcdir}/${_pkgname}-${pkgver}"
     patch -p1 < "${srcdir}/m4a.patch"
+    patch -p1 < "${srcdir}/wildmidi.patch"
 }
 
 build() {

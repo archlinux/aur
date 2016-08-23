@@ -1,0 +1,12 @@
+diff --git a/src/decoder/plugins/WildmidiDecoderPlugin.cxx b/src/decoder/plugins/WildmidiDecoderPlugin.cxx
+--- a/src/decoder/plugins/WildmidiDecoderPlugin.cxx
++++ b/src/decoder/plugins/WildmidiDecoderPlugin.cxx
+@@ -94,7 +94,7 @@
+ 
+ 	DecoderCommand cmd;
+ 	do {
+-		char buffer[4096];
++		int8_t buffer[4096];
+ 		int len;
+ 
+ 		info = WildMidi_GetInfo(wm);
