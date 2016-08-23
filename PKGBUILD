@@ -3,8 +3,8 @@
 
 _gitname=libserialport
 pkgname="${_gitname}-git"
-pkgver=r293.c37c9f3
-pkgrel=2
+pkgver=r306.0c3f38b
+pkgrel=1
 pkgdesc="A minimal, cross-platform shared library for sigrok, intended to take care of the OS-specific details when writing software that uses serial ports (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://sigrok.org/wiki/Libserialport"
@@ -17,11 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  (
-    set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,5 +34,3 @@ package() {
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
-
-# vim:set et sw=2 sts=2 tw=80:
