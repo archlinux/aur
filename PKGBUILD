@@ -2,7 +2,7 @@
 
 _plug=nnedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v7.0.gb6fe099
+pkgver=v9.0.g7871960
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
