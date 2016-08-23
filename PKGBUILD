@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk
-pkgver=3491
-pkgrel=2
+pkgver=3522
+pkgrel=1
 _rpmver=2.0-0
 pkgdesc='Cross-platform mobile and IoT development environment'
 arch=('i686' 'x86_64')
@@ -17,15 +17,15 @@ md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '34d9c2b87221acf10812ab1150357dc9')
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
   _carch='i486'
-  md5sums+=('cd2064e4c6788d38da104b8496a543a3')
+  md5sums+=('996e023278fec0ddd8d2df45dd95ce39')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
   _carch='x86_64'
-  md5sums+=('22a29b5224cbe04a613604af3be00667')
+  md5sums+=('9ad197cf10f3f6c2c347fb438e1b31a2')
 fi
 
 _base="xdk_web_linux${_arch:-64}"
-source+=("https://xdk2-installers.s3.amazonaws.com/xdk/${_base}_master_${pkgver}.tgz")
+source+=("https://appcenter.html5tools-software.intel.com/api/v3.0/redirect/updates/xdk/${_base}_master_${pkgver}.tgz")
 
 package() {
   cd "${srcdir}/${_base}/rpm"
