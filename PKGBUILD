@@ -1,7 +1,7 @@
 _npmname=foreman
-_npmver=1.4.1
+_npmver=2.0.0-1
 pkgname=nodejs-foreman # All lowercase
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Node Implementation of Foreman"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('58b61fb6d814c694ddf2fb75b0573606257b10e3')
+sha1sums=('bb54bc8f0f45ab8a07d4ce93ab54172ceacdac7f')
 
 package() {
   cd $srcdir
