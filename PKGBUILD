@@ -8,11 +8,11 @@ url="https://github.com/krallin/${srcname}"
 license=('MIT')
 
 depends=('glibc')
-makedepends=('git' 'cmake' 'gcc')
+makedepends=('git' 'cmake' 'gcc' 'vim')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=("${srcname}::git+https://github.com/krallin/${srcname}.git")
+source=("${srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
