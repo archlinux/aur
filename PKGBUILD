@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=qmlfmt-git
-pkgver=0.1.0.r7.58bf170
+pkgver=0.1.0.r12.e0f7ec7
 pkgrel=1
 pkgdesc="Command line application that formats QML files"
 arch=('i686' 'x86_64')
@@ -24,16 +24,6 @@ prepare() {
 }
 
 build() {
-  sed qmlfmt/QtCreator/QtCreator.cmake -i \
-    -e 's/http/https/' \
-    -e 's/3.3/4.0/' \
-    -e 's/3.3.0/4.0.3/g' \
-    -e 's/$<CONFIG>/RELEASE/g' \
-    -e '8aPATCH_COMMAND sed -i -e "s# QTC_REL_TOOLS_PATH##" src/libs/utils/consoleprocess_unix.cpp'
-  sed qmlfmt/QtCreator/CMakeLists.txt -i \
-    -e '14afind_package(Qt5Qml REQUIRED)' \
-    -e 's/:Concurrent/:Concurrent Qt5::Qml/'
-  sed -i '11a#include <qmljs/parser/qmljsengine_p.h>' qmlfmt/qmlfmt.cpp
   cd build
   cmake ../qmlfmt \
     -DCMAKE_BUILD_TYPE=Release \
