@@ -15,8 +15,7 @@ package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
 
 msg2 "Use python2-protobuf3-coex requirements"
-  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +   
-  find . -type f -name "*.proto" -exec sed -i 's/protoc/protobuf3-protoc/g' {} +  
+  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +     
 
   python2 setup.py install --root $pkgdir
   rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests/
