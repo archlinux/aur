@@ -11,6 +11,7 @@ license=('MIT')
 depends=('python-click' 'python-setuptools'
          'python-requests-toolbelt' 'python-atomicwrites'
          'python-click-threading' 'python-click-log')
+makedepends=('python-setuptools-scm')
 optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
               'radicale' 'python-werkzeug' 'python-pytest-xprocess'
