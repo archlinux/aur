@@ -3,16 +3,16 @@
 # TODO: There are more optional dependencies we should add: jpegoptim facedetect
 
 pkgname=fgallery
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='a modern, minimalist javascript photo gallery'
 url='https://www.thregr.org/~wavexx/software/fgallery/'
 license=('GPL')
-depends=('fbida' 'imagemagick' 'lcms' 'perl>=5.14' 'perl-json' 'perl-image-exiftool' 'zip')
+depends=('fbida' 'imagemagick' 'lcms' 'perl>=5.14' 'perl-json' 'perl-image-exiftool' 'python-pyqt4' 'zip')
 optdepends=('pngcrush' 'p7zip')
 source=("https://github.com/wavexx/fgallery/archive/fgallery-${pkgver}.tar.gz")
-sha256sums=('7cdabf21aa76e33f37902ace0d12e2a338a3a96edb37cd88b28ce7af34ef57e1')
+sha256sums=('3c9f558b97db57d66ad26885d9fb0738a771d775a40648df6afa4d212dd35750')
 
 destdir="/usr/share/fgallery"
 bindir="/usr/bin"
