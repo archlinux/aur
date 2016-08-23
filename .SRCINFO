@@ -1,6 +1,6 @@
 pkgbase = rutorrent-git
 	pkgdesc = Web frontend to rTorrent in PHP designed to resemble uTorrent
-	pkgver = r1738.6d6fa34
+	pkgver = r1787.b727523
 	pkgrel = 1
 	url = https://github.com/Novik/ruTorrent
 	install = rutorrent.install
