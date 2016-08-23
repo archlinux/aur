@@ -5,7 +5,7 @@ After=network.target org.cups.cupsd.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/gcp-cups-connector
+ExecStart=/usr/bin/gcp-cups-connector --config-filename /etc/gcp-cups-connector/gcp-cups-connector.config.json
 
 [Install]
 WantedBy=multi-user.target
