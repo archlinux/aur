@@ -1,10 +1,11 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=robomongo
-pkgver=0.9.0_rc9
-_ref='0bb566869e2a7025fa8f2b0483567ba764650926'
+pkgver=0.9.0_rc10
+_ref='53945eb0956239aca3b43cc0859296e03de829a5'
 _pkgname=$pkgname-${_ref}
-pkgrel=2
+_opensslver=1.0.1p
+pkgrel=1
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="https://robomongo.org/"
@@ -14,9 +15,11 @@ makedepends=('git' 'scons' 'cmake')
 conflicts=('robomongo-bin')
 source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
+        "ftp://ftp.openssl.org/source/old/1.0.1/openssl-${_opensslver}.tar.gz"
         'robomongo.desktop')
 sha256sums=('SKIP'
-            'c05f60bc32f112ae3f6e7b9de856b9d3ce71359f7afc2eeebab05cd83f048928'
+            '511f111a54625020f2b57642bcfefd7b4d38b437dce82e5a75525dba6d9a8454'
+            'bd5ee6803165c0fb60bbecbacacf244f1f90d2aa0d71353af610c29121e9b2f1'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
@@ -26,13 +29,20 @@ build() {
     sed -i -e 's/x86_64/i386/g' FindMongoDB.cmake mongodb/linux-release.objects
   fi
 
+  _openssldir=$srcdir/openssl-${_opensslver}
+  cd ${_openssldir}
+  ./config shared
+  make
+  mkdir lib
+  cp libssl* libcrypto* lib/
+
   _mongodir=$srcdir/robomongo-shell
   cd $srcdir
-  scons ${_shellopts} --directory=${_mongodir} --disable-warnings-as-errors mongo
+  scons mongo --directory=${_mongodir} --ssl CPPPATH=${_openssldir}/include LIBPATH=${_openssldir}/lib --disable-warnings-as-errors ${_shellopts}
 
   cd $srcdir/${_pkgname}
   mkdir -p ./target && cd ./target/
-  cmake .. -DCMAKE_PREFIX_PATH=${_mongodir} -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_PREFIX_PATH="${_mongodir};${_openssldir}" -DCMAKE_BUILD_TYPE=Release
   make
   make install
 }
