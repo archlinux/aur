@@ -1,8 +1,7 @@
 # mhwd Driver Config
 
-
 NAME="video-amdgpu-hwe"
-INFO="X.org amdgpu video driver. Standard open source driver for AMD graphic cards with OpenGL, VAAPI and VDPAU support"
+INFO="X.org amdgpu video driver. Standard open source driver for AMD graphic cards with OpenGL, VAAPI and VDPAU support."
 VERSION="2016.08.22.1"
 FREEDRIVER="true"
 PRIORITY="2"
@@ -12,7 +11,7 @@ VENDORIDS="1002"
 DEVICEIDS=">/var/lib/mhwd/ids/pci/amdgpu-hwe.ids"
 
 # Conflicts
-MHWDCONFLICTS="video-amdgpu video-catalyst video-vesa"
+MHWDCONFLICTS="video-amdgpu video-catalyst video-vesa video-ati-hwe"
 
 # Dependencies
 DEPENDS="xf86-video-amdgpu libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
@@ -22,6 +21,7 @@ XORGFILE="/etc/X11/mhwd.d/amdgpu.conf"
 GRUBFILE="/etc/default/grub"
 MODULESFILE="/etc/modules-load.d/mhwd-amdgpu.conf"
 MODULESBLACKLIST="/etc/modprobe.d/mhwd-amdgpu.conf"
+
 
 post_install()
 {

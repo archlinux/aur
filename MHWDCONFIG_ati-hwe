@@ -1,0 +1,48 @@
+# mhwd Driver Config
+
+NAME="video-ati-hwe"
+INFO="X.org ati video driver. Standard open source driver for AMD graphic cards with OpenGL, VAAPI and VDPAU support."
+VERSION="2016.08.22"
+FREEDRIVER="true"
+PRIORITY="2"
+
+CLASSIDS="0300 0380"
+VENDORIDS="1002"
+DEVICEIDS=">/var/lib/mhwd/ids/pci/ati.ids"
+
+# Conflicts
+MHWDCONFLICTS="video-amdgpu video-catalyst video-vesa video-amdgpu-hwe"
+
+# Dependencies
+DEPENDS="xf86-video-ati libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
+DEPENDS_64="lib32-libva-vdpau-driver lib32-mesa-vdpau"
+
+
+XORGFILE="/etc/X11/mhwd.d/ati.conf"
+
+
+post_install()
+{
+	MHWD_HEADING "${XORGFILE}"
+	MHWD_ADD_DEVICE_SECTION_FOR_EACH_BUSID "radeon" "${XORGFILE}" 1002
+	MHWD_ADD_DRI "${XORGFILE}"
+	MHWD_ADD_COMPOSITING "${XORGFILE}"
+	MHWD_ADD_BACKSPACE "${XORGFILE}"
+
+	# Enable next generation of DRI
+	sed -i "s/\tOption      \"DRI\"    \"true\"/\tOption      \"DRI3\"    \"1\"\n\tOption      \"DRI\"     \"3\"\n\tOption      \"AccelMethod\"     \"glamor\"/g"  "${XORGFILE}"
+	
+	mhwd-gpu --setgl mesa --setxorg "${XORGFILE}"
+}
+
+
+
+post_remove()
+{
+	if [ -e "${XORGFILE}" ]; then
+		rm "${XORGFILE}"
+	fi
+
+	mhwd-gpu --check
+}
+
