@@ -1,11 +1,13 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-git
 pkgver=r774.3175946
-pkgrel=3
+pkgrel=4
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
 license=('GPL3')
+conflicts=('soundnode', 'soundnode-app-bin')
+provides=('soundnode')
 
 # Required, otherwise it won't run.
 options=('!strip')
