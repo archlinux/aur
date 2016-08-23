@@ -9,7 +9,6 @@ pkgdesc="A menu-driven bash script for the management of removable media with ud
 arch=('any')
 url='https://github.com/jamielinux/bashmount'
 license=('GPL2')
-packager="Bill Sun <cap.sensitive@gmail.com>"
 
 optdepends=('udisks2')
 backup=(etc/bashmount.conf)
