@@ -6,7 +6,7 @@
 
 pkgname=doomrl
 pkgver=0.9.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://doom.chaosforge.org/"
@@ -22,16 +22,16 @@ case $CARCH in
   'i686')
     source=(http://doom.chaosforge.org/file_download/33/doomrl-linux-i386-0997.tar.gz
             "doomrl" "LICENSE")
-    md5sums=('f1beebc47c63a768752ea66951799f45'
-            '825cac701303cd5c61ec209e461219de'
-            'eaa0c779f98be421bf34cd0c5800642a')
+    sha256sums=('6d217d697e94f5f2ce3fe8ebbedaf03fa68a5ed1140cb889921f18d8604a389f'
+            'ba6eb69db49e079f565f155047df2637aa8c36687699c109f36ac20a4be45068'
+            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f')
     __arch='i386' ;;
   'x86_64')
     source=(http://doom.chaosforge.org/file_download/32/doomrl-linux-x64-0997.tar.gz
             "doomrl" "LICENSE")
-    md5sums=('7078b52000b91c468a0041ff667c4f81'
-            '825cac701303cd5c61ec209e461219de'
-            'eaa0c779f98be421bf34cd0c5800642a')
+    sha256sums=('d9d19e4a8794efb3c23963b3e11987ebadbb7bee7350b00ce6b64eaff501e488'
+            'ba6eb69db49e079f565f155047df2637aa8c36687699c109f36ac20a4be45068'
+            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f')
     __arch='x64' ;;
 esac
 
