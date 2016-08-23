@@ -14,7 +14,7 @@
 
 _srcname=pngcrush
 pkgname=pngcrush-bundled
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="A tool for optimizing the compression of PNG files (with bundled libpng and zlib)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ depends=('glibc')
 provides=('pngcrush')
 conflicts=('pngcrush')
 source=("https://sourceforge.net/projects/pmt/files/pngcrush/${pkgver}/pngcrush-${pkgver}.tar.xz")
-sha256sums=('25cbdb0dec7fb9f6a1bddc172a807a3123ee88144cfe955f25502329ea620821')
+sha256sums=('95bd3dccba9db4f68a8f4cf2e33c4530fe86cc5030e824b9d40cefc820a74e78')
 
 prepare() {
 	cd "$_srcname"-"$pkgver"
