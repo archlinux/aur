@@ -1,15 +1,15 @@
 # Maintainer: Guillaume Maudoux <layus DOT on @AT@ gmail DOT com>
 
 pkgname=mozart2-git
-pkgver=v2.0.0.alpha.0.4158.g06e26f5
+pkgver=v2.0.0.alpha.0.4165.g7147ed7
 pkgrel=1
 pkgdesc="The Mozart Programming System version 2"
 arch=('i686' 'x86_64')
 url="https://github.com/mozart/mozart2"
 license=('BSD')
-Depends=('boost-libs' 'tk' 'gmp' 'hicolor-icon-theme' 'xdg-utils')
+depends=('boost-libs' 'tk' 'gmp' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=('emacs: Interactive programming interface (recommended)')
-makedepends=('java-runtime-headless' 'emacs' 'gcc' 'boost' 'cmake' 'gtest' 'clang' 'llvm')
+makedepends=('java-runtime-headless' 'emacs' 'gcc' 'boost>=1.61' 'cmake' 'gtest' 'clang' 'llvm')
 provides=('mozart')
 conflicts=('mozart' 'mozart-git' 'mozart2' 'mozart2-bin')
 install="${pkgname}.install"
@@ -61,6 +61,7 @@ build() {
           -DGTEST_SRC_DIR=/usr/include/gtest/ \
           -DLLVM_BUILD_DIR=/usr/ \
           -DLLVM_SRC_DIR=/usr/ \
+          -DCMAKE_CXX_FLAGS=-Wno-strict-aliasing \
           .
 
     make #VERBOSE=1
