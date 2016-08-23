@@ -1,0 +1,25 @@
+pkgbase = python-pendulum
+	pkgdesc = Python datetimes made easy
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://pendulum.eustace.io
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	options = !emptydirs
+	source = git+https://github.com/sdispater/pendulum.git#tag=0.5.1
+	sha256sums = SKIP
+
+pkgname = python-pendulum
+	depends = python
+	depends = python-pytz
+	depends = python-tzlocal
+	depends = python-dateutil
+
+pkgname = python2-pendulum
+	depends = python2
+	depends = python2-pytz
+	depends = python2-tzlocal
+	depends = python2-dateutil
+
