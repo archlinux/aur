@@ -28,6 +28,7 @@ prepare() {
 
 	mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
 
+	# Fix for gcc6 build issues
 	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
 	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Engine/Engine.pro
 	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Tests/Tests.pro
