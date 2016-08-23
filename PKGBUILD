@@ -1,17 +1,16 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=gull-git
-pkgver=3.0.3.r1.g9a6eea8
+pkgver=3.0.4.r4.g1fa4e5a
 pkgrel=1
 pkgdesc="A strong UCI chess engine created by Vadim Demichev"
 arch=('i686' 'x86_64')
 url="https://github.com/basil00/gull"
 license=('custom')
-depends=('')
+depends=('gcc-libs-multilib')
 makedepends=('git' 'wget')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
-options=(!emptydirs)
 source=("git+https://github.com/basil00/gull.git")
 md5sums=('SKIP')
 
