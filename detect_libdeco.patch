@@ -1,0 +1,42 @@
+diff -aur emerald-0.8.12.4/configure.ac emerald-0.8.12.4.mod/configure.ac
+--- emerald-0.8.12.4/configure.ac	2016-04-04 11:46:36.000000000 -0700
++++ emerald-0.8.12.4.mod/configure.ac	2016-08-23 10:16:49.870217173 -0700
+@@ -73,14 +73,30 @@
+ LIBS="$LIBS $EMERALD_LIBS -lm -ldl"
+ AC_CHECK_FUNCS(wnck_window_has_name)
+ 
+-AC_ARG_ENABLE(decor09,
+-  [  --enable-decor09        Use libdecoration 0.9.x support],
+-  [use_decor09=$enableval], [use_decor09=no])
+-
+-AM_CONDITIONAL(DECOR_INTERFACE_VERSION, test "x$use_decor09" = "xyes")
+-if test "$use_decor09" = yes; then
+-  AC_DEFINE(DECOR_INTERFACE_VERSION, 20110504, [Build with libdecoration 0.9.x support])
+-fi
++AC_RUN_IFELSE([
++  AC_LANG_SOURCE(
++    [
++#include <stdio.h>
++#include <decoration.h>
++int main() {
++    FILE *f = fopen("decor_ver.out", "w");
++    if (!f)
++        return 1;
++    fprintf(f, "%d\n", decor_version());
++    fclose(f);
++    return 0;
++}
++    ]
++  )],
++  [
++    AC_DEFINE_UNQUOTED(DECOR_INTERFACE_VERSION, `cat decor_ver.out`, [Decorator interface version])
++    AC_MSG_NOTICE([Using decorator interface version `cat decor_ver.out`])
++  ],
++  [
++    AC_DEFINE(DECOR_INTERFACE_VERSION, 0, [Decorator interface version])
++    AC_MSG_NOTICE([Using undefined decorator interface version])
++  ]
++)
+ 
+ AC_ARG_ENABLE(mime-update,
+ [  --enable-mime-update],
