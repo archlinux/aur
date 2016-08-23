@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('python-django-rest-framework' 'python2-django-rest-framework')
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="Awesome web-browsable Web APIs"
 arch=(any)
