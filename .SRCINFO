@@ -1,6 +1,6 @@
 pkgbase = bin32-jre-devel
 	pkgdesc = Oracle Java 9 Runtime Environment Snapshot (32-bit)
-	pkgver = 9b131
+	pkgver = 9b132
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = bin32-jre-devel.install
@@ -40,10 +40,10 @@ pkgbase = bin32-jre-devel
 	backup = etc/java32-jre9/psfont.properties.ja
 	backup = etc/java32-jre9/psfontj2d.properties
 	backup = etc/java32-jre9/sound.properties
-	source = http://www.java.net/download/java/jdk9/archive/131/binaries/jre-9-ea+131_linux-x86_bin.tar.gz
+	source = http://www.java.net/download/java/jdk9/archive/132/binaries/jre-9-ea+132_linux-x86_bin.tar.gz
 	source = policytool32-jre9.desktop
 	source = OTN-Early-Adopter-License-Terms.txt
-	md5sums = 9a57e14043216fa942514dc23d4845a4
+	md5sums = 495c57feb8d051e9677c4ce1cf5dd3ca
 	md5sums = 643277e142823bf695b0a6327d3ef963
 	md5sums = f09947a67691a2d78d20a3885889981c
 
