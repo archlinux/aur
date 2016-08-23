@@ -2,7 +2,7 @@
 
 pkgname=netbeans-nightly
 pkgver=latest
-pkgrel=9
+pkgrel=10
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 license=('CDDL')
 arch=('any')
@@ -31,19 +31,33 @@ prepare() {
 	_file="${_zipname}.zip"
 	_md5=`grep "zip/${_file}" files.js \
 		| awk 'BEGIN {FPAT="\"[0-9a-z]+\""} {gsub(/\"/, "", $NF); print}'`
+	case ${#_md5} in
+		32)
+			_alg=md5
+			;;
+		40)
+			_alg=sha1
+			;;
+		56)
+			_alg=sha224
+			;;
+		64)
+			_alg=sha256
+			;;
+		96)
+			_alg=sha384
+			;;
+		128)
+			_alg=sha512
+			;;
+		*)
+			msg "unbale to detect hash algorithm, hash: ${_md5}"
+			return 1
+			;;
+	esac
 
 	download_file "${_webroot}/zip/${_file}"
-
-	msg "$(gettext "Validating source files with %s...")" "md5sums"
-	file="$(get_filename "${_file}")"
-	printf "%s" "    $file ... " >&2
-	local _realsum="$(openssl dgst -md5 "${_file}")"
-	if [ "${_md5}" != "${_realsum##* }" ]; then
-		printf -- "$(gettext "FAILED")\n" >&2
-		return 1
-	else
-		printf -- "$(gettext "Passed")\n" >&2
-	fi
+	verify_integrity_one "${_file}" ${_alg} "${_md5}" || return 1
 
 	cd "$srcdir"
 	ln -fs "${SRCDEST}/${_file}"
