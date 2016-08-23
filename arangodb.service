@@ -13,22 +13,22 @@
 
 [Unit]
 Description=ArangoDB
-After=syslog.target network.target
+After=sysinit.target sockets.target timers.target paths.target slices.target network.target syslog.target
 
 [Service]
 PrivateTmp=yes
 Type=forking
 User=arangodb
 Group=arangodb
-PIDFile=/var/run/arangodb/arangod.pid
+PIDFile=/var/run/arangodb3/arangod.pid
 # Run ExecStartPre with root-permissions
 PermissionsStartOnly=true
 # ExecStartPre run sequentially
-ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/log/arangodb
-ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/lib/arangodb
+ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/log/arangodb3
+ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/lib/arangodb3
 RuntimeDirectory=arangodb
 RuntimeDirectoryMode=0755
-ExecStart=/usr/bin/arangod -c /etc/arangodb/arangod.conf --pid-file /var/run/arangodb/arangod.pid --supervisor
+ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /var/run/arangodb3/arangod.pid --temp.path /var/tmp/arangod --supervisor
 
 
 [Install]

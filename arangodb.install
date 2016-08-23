@@ -4,41 +4,59 @@ pre_install() {
   /usr/share/arangodb -s /bin/false -c "ArangoDB Application User" \
   arangodb
 
-  install -o arangodb -g arangodb -m 755 -d /var/lib/arangodb
-  install -o arangodb -g arangodb -m 755 -d /var/lib/arangodb-apps
-  install -o arangodb -g arangodb -m 755 -d /var/log/arangodb
-  install -o arangodb -g arangodb -m 755 -d /var/run/arangodb
+  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3"
+  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3-apps"
+  install -o arangodb -g arangodb -m 755 -d "/var/log/arangodb3"
+  install -o arangodb -g arangodb -m 755 -d "/var/run/arangodb3"
 }
 
 post_install() {
 
-  chown -R arangodb:arangodb /var/lib/arangodb &> /dev/null
-  chown -R arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
-  chown -R arangodb:arangodb /var/log/arangodb &> /dev/null
+  chown -R arangodb:arangodb "/var/lib/arangodb3" &> /dev/null
+  chown -R arangodb:arangodb "/var/lib/arangodb3-apps" &> /dev/null
+  chown -R arangodb:arangodb "/var/log/arangodb3" &> /dev/null
 
   cat <<-EOF
 
   Welcome to ArangoDB.
 
-  To get started you will need to enable and start the service:
+  To get started you will need to tell systemd to reload it's unit
+  files, then enable and start the service:
 
+   sudo systemctl daemon-reload
    sudo systemctl enable arangodb.service
    sudo systemctl start arangodb.service
 
-  Then you can access the administrative interface at:
+  ArangoDB 3 ships with authentication enabled. To use it you will need
+  to start the server with 'authentication = false' in the following
+  files:
+
+    /etc/arangodb3/arangosh.conf
+    /etc/arangodb3/arangod.conf
+
+  Then set the passwords and create the users you need:
+
+    $> arangosh
+    127.0.0.1:8529@_system> require("org/arangodb/users").update("root",
+    "mypassword")
+    127.0.0.1:8529@_system> require("org/arangodb/users").save("myuser",
+    "mypassword");
+
+  Set the 'authentication = true' and then restart ArangoDB:
+
+   sudo systemctl restart arangodb.service
+
+  You can now use your username and password to access the
+  administrative interface at:
 
     http://localhost:8529
 
-    or try things out at the shell:
-
-    $> arangosh
 
   Getting help:
     http://stackoverflow.com/questions/tagged/arangodb
-    https://groups.google.com/forum/#!forum/arangodb
-    https://docs.arangodb.com/cookbook/
-    https://docs.arangodb.com/
-    #arangodb on irc.freenode.net
+    https://arangodb-community.slack.com
+    https://docs.arangodb.com/cookbook
+    https://docs.arangodb.com
 
 EOF
 }
