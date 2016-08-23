@@ -5,7 +5,7 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=batwarn
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 epoch=
 pkgdesc="Simple battery warning tool which changes X gamma on low battery"
@@ -20,27 +20,15 @@ optdepends=()
 options=()
 install=
 changelog=
-source=( "https://github.com/jefbed/batwarn/archive/batwarn-1.0.3.tar.gz" )
+source=( "https://github.com/jefbed/batwarn/archive/batwarn-$pkgver.tar.gz" )
 noextract=()
-md5sums=('9c75ef08857d1c1fcce619d24a1cfe22')
+md5sums=('2efda8823e2aa670a6b64fffad765f94')
 validpgpkeys=()
-
-#prepare() {
-#	cd "$pkgname-$pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
 
 build() {
 	cd "$pkgname-$pkgname-$pkgver"
 	make
 }
-
-# Unimplemented
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
 
 package() {
 	cd "$pkgname-$pkgname-$pkgver"
