@@ -1,13 +1,9 @@
 # Maintainer: Jordan Christiansen <xordspar0@gmail.com>
 
-# To do:
-# * If upstream adds a way to specify the location of the data files, move the
-#   package contents to /usr/bin/ and /usr/share/.
-
 pkgname=gearhead2
 _reponame=gearhead-2
 pkgver=0.630
-pkgrel=1
+pkgrel=2
 pkgdesc="A rougelike mecha role playing game, second game in the GearHead series"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
@@ -19,33 +15,30 @@ source=("https://github.com/jwvhewitt/${_reponame}/archive/v${pkgver}.tar.gz"
 		${pkgname}.desktop
 		${pkgname}.png)
 md5sums=('7c59dc2aea945ef77e97917bb85fb347'
-         'cd699f36df6275bdb6b345cb5ac8f8f1'
-         'a97a4a561783e23767e223476c0e7899'
+         '713ec01c46263b196ba5dd658248eeed'
+         '6d0e194ef934b66fefade9b5d2d5efe1'
          '19f59e008bbe3fdcf39363818d3a5cf1')
 
 build() {
 	cd "${_reponame}-${pkgver}"
 
-	fpc -dSDLMODE gharena
+	fpc -dSDLMODE gearhead2
 }
 
 package() {
-	# Install the game itself.
 	cd "${_reponame}-${pkgver}"
-	install -d "${pkgdir}/opt/${pkgname}"
-	cp -ar -t "${pkgdir}/opt/${pkgname}" Image Design GameData Series doc
-	install -Dm755 gharena "${pkgdir}/opt/${pkgname}"
+	# Install the game data.
+	install -d "${pkgdir}/usr/share/${pkgname}"
+	cp -ar -t "${pkgdir}/usr/share/${pkgname}" image design gamedata series
+	install -Dm755 gearhead2 "${pkgdir}/usr/share/${pkgname}"
+	# Install the documentation
+	install -d "${pkgdir}/usr/share/doc/${pkgname}"
+	cp -ar -t "${pkgdir}/usr/share/doc/${pkgname}" doc
 
-	# Install the command line and desktop runners.
 	cd "${srcdir}"
+	# Install the command line and desktop runners.
 	install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
 	# The .desktop file was adapted from Debian's gearhead package.
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-
-	# Install the documentation
-	install -d "${pkgdir}/usr/share/doc/${pkgname}"
-	ln -s "/opt/${pkgname}/doc/man_chara.txt" "${pkgdir}/usr/share/doc/${pkgname}/man_chara.txt"
-	ln -s "/opt/${pkgname}/doc/man_mecha.txt" "${pkgdir}/usr/share/doc/${pkgname}/man_mecha.txt"
-	ln -s "/opt/${pkgname}/doc/man_umek.txt" "${pkgdir}/usr/share/doc/${pkgname}/man_umek.txt"
+	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }

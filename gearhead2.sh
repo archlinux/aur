@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/gearhead
-./gharena
+cd /usr/share/gearhead2
+./gearhead2

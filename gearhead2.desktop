@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.1
 Type=Application
-Name=Gearhead
+Name=Gearhead 2
 GenericName=Roguelike Game
-Exec=gearhead
-Icon=/usr/share/pixmaps/gearhead.xpm
+Exec=gearhead2
+Icon=gearhead2
 Categories=Game;RolePlaying
