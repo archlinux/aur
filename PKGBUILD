@@ -26,7 +26,7 @@ provides=($_pkgname)
 options=('!emptydirs' '!buildflags')
 install=mpv.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e413d57fec4ad43b9f9b848f38d13fb921313fc9a4a64bf1e906c8d0f7a46329')
+sha256sums=('3df5811942cd1d71f48eb4720092fdafec11885bf6dd6d1d3e6413f32e5d67e2')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
