@@ -4,7 +4,7 @@
 
 pkgbase=linux-lts-userns
 _srcname=linux-4.4
-pkgver=4.4.16
+pkgver=4.4.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,23 +18,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
         change-default-console-loglevel.patch
-        0001-sdhci-revert.patch
         ubuntu-unprivileged-overlayfs.patch
         unshare-netns-after-userns-mapping.patch
-        ecryptfs.patch)
+        0001-sdhci-revert.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '7181b6cb3a1611dab9179f57846a3f03bf2705aa3e4cddd9fbd0398bde50d5f9'
+            '61b34a8ab4ba778c50a6fb04471cb34192e179db68440d81b12694e45dea00fc'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
             '9c75f46f3b52fdc5a5d4ababf18331e61201e1a8ef0d4a188289d6b15e6b138d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
             '83758b525519c49593ac711f7fbf19d415bbee5fc6f484522abc50a6658333e5'
-            'a2e240ab338f02ebde278131cf5810e9aa3846a8238e3d26dc235eace05ab4e7')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -49,9 +47,6 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # https://bugs.archlinux.org/task/50126 - broken ecryptfs
-  patch -p1 -i "${srcdir}/ecryptfs.patch"
-  
   # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
