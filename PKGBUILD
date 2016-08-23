@@ -1,8 +1,9 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
-# Contributor: Vladislav Odobesku positivcheg94@gmail.com
+# Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
+# Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=0.9.0.r1540.g5c44302
+pkgver=0.10.0rc0.r778.g6d04d60
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -22,7 +23,7 @@ source=("git+https://github.com/tensorflow/tensorflow"
         "fix_cuda_compilation.patch")
 md5sums=('SKIP'
          'SKIP'
-         'b3f77794887fdbc02e280dbe2142d4ab')
+         '3db030a479228df99419145f77571981')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
