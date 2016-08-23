@@ -3,15 +3,14 @@
 pkgname=firenzina-git
 pkgver=2.4.1.r40.17c9150
 pkgrel=1
-pkgdesc="Firenzina ${pkgver:0:5} xTreme is a free, open-source UCI chess engine, a derivative of Fire 2.2 xTreme"
+pkgdesc="A free, open-source UCI chess engine, a derivative of Fire 2.2 xTreme [git version]"
 arch=('i686' 'x86_64')
 url="https://github.com/Censor/Firenzina"
 license=('GPL')
-depends=('')
+depends=('glibc')
 makedepends=('git')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
-options=(!emptydirs)
 source=("git+https://github.com/Censor/${pkgname%-*}.git"
 	"makefile.patch")
 md5sums=('SKIP'
