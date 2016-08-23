@@ -1,0 +1,20 @@
+pkgbase = rfcat-hg
+	pkgdesc = RfCat, the swiss army knife of subGHz
+	pkgver = r429.27e14cde402f
+	pkgrel = 1
+	url = https://bitbucket.org/atlas0fd00m/rfcat
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = ipython2
+	depends = python2-pyside
+	depends = python2-pyusb
+	provides = rfcat
+	conflicts = rfcat
+	source = rfcat-hg::hg+https://bitbucket.org/atlas0fd00m/rfcat
+	source = 20-rfcat.rules
+	sha256sums = SKIP
+	sha256sums = de982a201eb1ba5b2e28f37e409e6c16299e27f49b9db1094997db45fa4b67d7
+
+pkgname = rfcat-hg
+
