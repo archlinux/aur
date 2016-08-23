@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=kdreports-git
-pkgver=1.7.50.r136.667f94b
+pkgver=1.7.50.r137.8e82e5e
 pkgrel=1
 pkgdesc="A Qt library for creating printable reports"
 arch=('i686' 'x86_64')
