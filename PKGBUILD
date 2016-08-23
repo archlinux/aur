@@ -9,6 +9,7 @@ pkgdesc='A fork of clipmenu, a simple clipboard manager using dmenu and xsel/xcl
 url='https://github.com/WammKD/keratin'
 arch=('any')
 license=('ISC')
+makedepends=('git')
 depends=('dmenu' 'xsel')
 
 source=(git+https://github.com/WammKD/keratin.git)
