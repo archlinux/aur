@@ -53,8 +53,8 @@ pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
 _srcname=linux-4.7
 _ckpatchname="patch-4.7-ck1"
-pkgver=4.7.1
-pkgrel=2
+pkgver=4.7.2
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=("GPL2")
@@ -86,7 +86,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "linux.preset")
 
 md5sums=('5276563eb1f39a048e4a8a887408c031'
-         'b87c3627d4c3e3043f46c6422dfd83b0'
+         '64e8a8969536c5d700c9e6a591d28dad'
          '7395fd0edc5ff3330cf6e712a49a4b3a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35'
          'b65081ff1ace9b352f80b23093e79397'
