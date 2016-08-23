@@ -1,0 +1,33 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+pkgname=femtolisp-git
+pkgver=r265.68c5b12
+pkgrel=1
+pkgdesc="lightweight, robust, scheme-like lisp implementation"
+arch=('i686' 'x86_64')
+url="https://github.com/JeffBezanson/femtolisp"
+depends=('glibc')
+license=('custom:BSD')
+makedepends=('git')
+source=("git+https://github.com/JeffBezanson/femtolisp")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
+
+build() {
+  cd "${pkgname%-git}"
+  make -j1 -l release
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make -j1 -l test
+}
+
+package() {
+  cd "${pkgname%-git}"
+  install -Dm755 flisp "$pkgdir"/usr/bin/flisp
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/femtolisp-git/LICENSE
+}
