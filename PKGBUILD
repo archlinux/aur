@@ -3,7 +3,7 @@
 
 pkgname=jgit
 pkgver=4.4.1.201607150455_r
-pkgrel=1
+pkgrel=2
 pkgdesc="A 100% pure java implementation of git"
 arch=('any')
 url="http://www.eclipse.org/jgit/"
@@ -12,6 +12,8 @@ depends=('java-runtime-common')
 source=("https://repo.eclipse.org/content/groups/releases//org/eclipse/${pkgname}/org.eclipse.${pkgname}.pgm/${pkgver//_/-}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh"
         "license.txt"
         "jgit")
+noextract=("org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh")
+
 md5sums=('40dca11cca5b1160545b02df2663fff8'
          'e67c5b842365a14ff39a3bd4a02842cb'
          '1c65b91ccf1c9b192ebe9a3a565d0d3c')
