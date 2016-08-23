@@ -3,17 +3,21 @@
 _pkgsrcname=txrudp
 pkgname=python2-${_pkgsrcname}
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Twisted extension implementing RUDP"
 url="https://pypi.python.org/pypi/txrudp"
 license=("MIT")
 arch=("any")
-depends=('python2' 'python2-twisted')
+depends=('python2' 'python2-twisted' 'python2-protobuf3-coex')
 source=("https://pypi.python.org/packages/source/t/${_pkgsrcname}/txrudp-$pkgver.tar.gz")
-
 
 package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
+
+msg2 "Use python2-protobuf3-coex requirements"
+  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +   
+  find . -type f -name "*.proto" -exec sed -i 's/protoc/protobuf3-protoc/g' {} +  
+
   python2 setup.py install --root $pkgdir
   rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests/
 }
