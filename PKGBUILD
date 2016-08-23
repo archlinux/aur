@@ -7,7 +7,7 @@
 pkgname=gearhead
 _reponame=gearhead-1
 pkgver=1.302
-pkgrel=2
+pkgrel=3
 pkgdesc="A rougelike mecha role playing game"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
@@ -20,7 +20,7 @@ source=("https://github.com/jwvhewitt/${_reponame}/archive/v${pkgver}.tar.gz"
 		${pkgname}.png)
 md5sums=('6699f67d4f28bc81cb23181bbba58b58'
          'cd699f36df6275bdb6b345cb5ac8f8f1'
-         'a97a4a561783e23767e223476c0e7899'
+         '93f2e09a403ed309a69569b827350e2d'
          '19f59e008bbe3fdcf39363818d3a5cf1')
 
 build() {

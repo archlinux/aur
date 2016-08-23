@@ -4,5 +4,5 @@ Type=Application
 Name=Gearhead
 GenericName=Roguelike Game
 Exec=gearhead
-Icon=/usr/share/pixmaps/gearhead.xpm
+Icon=gearhead
 Categories=Game;RolePlaying
