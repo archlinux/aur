@@ -34,7 +34,7 @@ source=(
 md5sums=('9e63bcd0ce9248eadf5c1a8e789af9ce'
          'b1780c0e01e404895e35ac277aa597c4'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
-         'e164eaad33795310c024b21764679afb'
+         'f2bc527eabb1fdba810b0393ee41edd4'
          '52c641ea0ba5477f5c1a1b857c03dda9'
          'c9b5c98497e4ddc47d0c078b5b500f93'
          '427926fddb1537f7a65d0a7274106df5')
