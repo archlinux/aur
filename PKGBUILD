@@ -2,7 +2,7 @@
 # Based-on: aur/graphite-api-git by Justin Dray <justin@dray.be>
 
 pkgname=graphite-api
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
 url="https://github.com/brutasse/graphite-api"
@@ -18,7 +18,7 @@ backup=('etc/graphite-api.yaml')
 arch=('any')
 source=("https://github.com/brutasse/${pkgname}/archive/${pkgver}.tar.gz"
         "graphite-api.service")
-sha256sums=('fd370342a510f839f1b4d3b690a0e259e61690b75a5ab00f8dcda4a1c7d644be'
+sha256sums=('801bb3142046b614956a5c7cf27da502306d27faa60a314719855d9d30282d1e'
             '08a960632c1db95ee0c46cdb0b5c8a511cf0fe7c0ffac7a0ed0adb877aa2af37')
 
 build() {
