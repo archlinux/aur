@@ -69,7 +69,7 @@ post_upgrade() {
   with the upgrade option:
 
     sudo systemctl stop arangodb.service
-    sudo arangod --upgrade
+    sudo arangod --database.auto-upgrade
     sudo systemctl start arangodb.service
 
   Take a look at the Changelog to see what is new in $1:
