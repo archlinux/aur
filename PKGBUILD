@@ -2,7 +2,7 @@
 
 pkgname=python2-pystun
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python STUN client for getting NAT type and external IP"
 arch=(any)
 url="http://github.com/jtriley/pystun"
@@ -13,6 +13,7 @@ source=(https://pypi.python.org/packages/source/p/pystun/pystun-${pkgver}.tar.gz
 package(){
   cd pystun-${pkgver}
   python2 setup.py install --root="$pkgdir"
+  rm -r "$pkgdir/usr/lib/python2.7/site-packages/tests"
 }
 
 
