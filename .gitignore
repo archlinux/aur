@@ -1,0 +1,7 @@
+pkg
+src
+readme_renderer*.tar.gz
+python-readme-renderer-*.pkg.tar.xz
+python-readme-renderer-*.src.tar.gz
+.AURINFO
+
