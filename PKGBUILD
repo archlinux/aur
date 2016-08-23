@@ -1,11 +1,13 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode
 pkgver=0.6.5
-pkgrel=4
+pkgrel=6
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
 license=('GPL3')
+conflicts=('soundnode', 'soundnode-app-bin')
+provides=('soundnode')
 
 # Required, otherwise it won't run.
 options=('!strip')
@@ -22,7 +24,7 @@ sha256sums=('2d075c4c802e34a37b0c9f71110157e754a22c978c3efa595feeb9059193154a')
 
 build() {
 	cd soundnode-app-"$pkgver"
-	sed -i -e "s/\/usr\/share\/soundnode\/Soundnode/\/opt\/soundnode\/soundnode/g" fpm/soundnode.desktop
+	sed -i -e "s/\/usr\/share\/soundnode\/Soundnode/\/opt\/soundnode\/Soundnode/g" fpm/soundnode.desktop
 	
 	make build
 }
