@@ -1,7 +1,7 @@
 pkgbase = gearhead
 	pkgdesc = A rougelike mecha role playing game
 	pkgver = 1.302
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gearheadrpg.com/
 	arch = i686
 	arch = x86_64

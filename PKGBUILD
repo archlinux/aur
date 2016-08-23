@@ -7,7 +7,7 @@
 pkgname=gearhead
 _reponame=gearhead-1
 pkgver=1.302
-pkgrel=1
+pkgrel=2
 pkgdesc="A rougelike mecha role playing game"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
@@ -41,7 +41,7 @@ package() {
 	install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
 	# The .desktop file was adapted from Debian's gearhead package.
 	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
 	# Install the documentation
 	install -d "${pkgdir}/usr/share/doc/${pkgname}"
