@@ -11,7 +11,7 @@ PKGEXT=.pkg.tar
 
 pkgname=hon
 pkgver=3.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
@@ -71,5 +71,9 @@ Continue?"
     # Set Ownership to root:games
     chown -R root:games "${pkgdir}/opt/hon"
     chmod -R g+w "${pkgdir}/opt/hon"
+
+    # remove some unwanted libraries
+    # (some info: http://forums.heroesofnewerth.com/showthread.php?546434-Crash-HoN-is-unable-to-start-with-xorg-edge-amd-(how-to-fix-also))
+    rm -f "${pkgdir}"/opt/hon/libs-x86_64/{libstdc++.so.6,libspeex.so.1,libspeexdsp.so.1,libgcrypt.so.11,libgcc_s.so.1,libfreetype.so.6,libcurl.so.4,libbz2.so.1.0}
 }
 
