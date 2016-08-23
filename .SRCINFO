@@ -1,0 +1,17 @@
+pkgbase = libmimick-git
+	pkgdesc = KISS Cross-platform C Mocking library.
+	pkgver = v0.2.0.r40.g435f41d
+	pkgrel = 1
+	url = https://github.com/Snaipe/Mimick
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	provides = libmimick
+	source = git+https://github.com/Snaipe/Mimick.git
+	md5sums = SKIP
+
+pkgname = libmimick-git
+
