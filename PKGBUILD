@@ -1,12 +1,13 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=astc-encoder-git
-pkgver=r6.437f242
+pkgver=r8.a1b3a96
 pkgrel=1
 pkgdesc="An ASTC (Adaptive Scalable Texture Compression) encoder and decoder"
 arch=('i686' 'x86_64')
 url="https://github.com/ARM-software/astc-encoder"
 license=('CUSTOM')
 depends=('openexr')
+makedepends=('clang')
 options=()
 source=("git+https://github.com/ARM-software/astc-encoder.git")
 sha256sums=('SKIP')
@@ -18,8 +19,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/astc-encoder/Source"
+    sed -i -- 's/g++/clang++/g' Makefile
     make
-    c++ exr_to_htga.cpp $(pkg-config --cflags --libs OpenEXR) -o exr_to_htga
+    clang++++ exr_to_htga.cpp $(pkg-config --cflags --libs OpenEXR) -o exr_to_htga
 }
 
 package() {
