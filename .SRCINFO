@@ -1,0 +1,21 @@
+pkgbase = python2-django-mailman3-git
+	pkgdesc = Django library to help interaction with Mailman
+	pkgver = r44.d0fa4f8
+	pkgrel = 1
+	url = https://gitlab.com/mailman/django-mailman3
+	arch = any
+	license = GPLv3
+	checkdepends = python-tox
+	makedepends = git
+	depends = python2
+	depends = python2-django
+	depends = python2-django-allauth
+	depends = python2-mailmanclient
+	depends = python2-pytz
+	depends = python2-django-gravatar
+	options = !emptydirs
+	source = git+https://gitlab.com/mailman/django-mailman3.git
+	sha256sums = SKIP
+
+pkgname = python2-django-mailman3-git
+
