@@ -1,9 +1,8 @@
 pkgbase = monodevelop-stable
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
-	pkgver = 6.0.2.70
+	pkgver = 6.0.2.73
 	pkgrel = 1
 	url = http://www.monodevelop.com
-	install = monodevelop.install
 	arch = any
 	license = GPL
 	makedepends = rsync
@@ -14,13 +13,12 @@ pkgbase = monodevelop-stable
 	depends = mono>=4.0.1
 	depends = mono-addins>=0.6.2
 	depends = gnome-sharp
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = xsp: To run ASP.NET pages directly from monodevelop
 	provides = monodevelop
 	conflicts = monodevelop
 	options = !makeflags
-	source = git://github.com/mono/monodevelop.git
+	source = git://github.com/mono/monodevelop.git#tag=monodevelop-6.0.2.73
 	md5sums = SKIP
 
 pkgname = monodevelop-stable
