@@ -1,14 +1,14 @@
 # Maintainer: Cody P Schafer <aur@codyps.com>
 pkgname=librevault-git
 pkgver=0.1.18.5.r0.86a6aef
-pkgrel=2
+pkgrel=3
 pkgdesc="File synchronization designed with privacy in mind"
 arch=(x86_64 i686)
 url="https://librevault.com/"
 license=('GPL')
 groups=()
 makedepends=('git' 'cmake' 'boost')
-depends=('qt5-websockets' 'protobuf3>=3.0.0-1' 'boost-libs' 'crypto++')
+depends=('qt5-websockets' 'qt5-svg' 'protobuf3>=3.0.0-1' 'boost-libs' 'crypto++')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
