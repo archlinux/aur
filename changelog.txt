@@ -1,3 +1,32 @@
+Version 2.3.6 - 24 Aug 2016
+- Fix for change to AO3 author links.
+- Force overall cover for Anthologies if any sub-books have covers to avoid
+  Calibre Polish issues.
+- Fix ffnet category fall back.
+- Add extra decode code for calling get_urls_from_imap() from outside calibre.
+- Fail more gracefully when anthology cover doesn't exist. Polish can remove
+  them.
+- Adding logpage_at_end INI option.
+- Fix for Publisher and Language metadata for Anthologies.
+- Fix date parsing for masseffect2.in.  Thanks PlushBeaver!
+- Tweaks to adultfanfictionorg
+- Add options for controlling Anthology book comments on the Standard Columns
+  config tab. (plugin only)
+- Add always_reload_first_chapter setting for base_xenforoforum stories with
+  index chapter.
+- Progress Bar - add extra timer loop for Win10 display.
+- New site: adult-fanfiction.org - Thanks GComyn!
+- New site: www.deepinmysoul.net/fiction - Thanks GComyn!
+- New site: fanfiction.lucifael.com - Thanks GComyn!
+- New site: harem.lucifael.com - Thanks GComyn!
+- New site: mujaji.net/repository - Thanks GComyn!
+- Make base_efiction code accept https story urls.
+- Tweaks for tthfanfic.org, including a slow down.
+- For literotica.com, throw a StoryDoesNotExist exception for 'This submission
+  is awaiting moderator's approval'
+- Tweaks for quotev.com, including a slow down.
+- Update translations.
+
 Version 2.3.5 - 22 Jul 2016
 - Change ffnet metadata colletion to allow for chars with (' - ') in them.
 - Fix for SIYE when author puts story URL in bio.
@@ -9,13 +38,3 @@ Version 2.3.5 - 22 Jul 2016
 - Include 'prefix' tags in forumtags in base_xenforoforum.
 - Save addheaders when setting cookiejar.  For ffn referer.
 - Update translations. (Plugin only)
-
-Version 2.3.4 - 23 Jun 2016
-- Fix for previously failedtoload img tags causing lookup sleeps.
-- Fix for older harrypotterfanfictioncom stories lacking reviewjs.js.
-- Change adapter_fictionmaniatv to set status Completed instead of
-  Complete (no d).
-- Update StoriesOnlineNet/FineStoriesCom login URL.
-- Different detect StoryDoesNotExist string for ficwad.com.
-- Allow old showpost.php chapter URLs in base_xenforoforum.
-- Update (& Fix) Translations.
