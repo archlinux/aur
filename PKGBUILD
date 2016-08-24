@@ -60,10 +60,7 @@ build() {
   cd v8
 
   msg2 "Running GN..."
-  tools/dev/v8gen.py x64.release -- \
-		     is_component_build=true \
-		     v8_enable_i18n_support=true
-
+  tools/dev/v8gen.py x64.release -- is_component_build=true v8_enable_i18n_support=true v8_use_system_icu=true
 
   ## Needs to resync after running GN
   msg2 "Resyncing..."
@@ -92,19 +89,18 @@ package() {
 
   install -d $pkgdir/usr/lib/v8
 
+  #install -Dm644 $srcdir/v8/out.gn/x64.release/obj/src/*.a $pkgdir/usr/lib/v8
   install -Dm755 out.gn/x64.release/d8 $pkgdir/usr/lib/v8/d8
   install -Dm644 out.gn/x64.release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
   install -Dm644 out.gn/x64.release/snapshot_blob.bin $pkgdir/usr/lib/v8/snapshot_blob.bin
   install -Dm755 out.gn/x64.release/libv8.so $pkgdir/usr/lib/v8/libv8.so
-  ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
+  ln -s v8/libv8.so $pkgdir/usr/libv8.so
   install -Dm755 $srcdir/d8 $pkgdir/usr/bin/d8
 
   # V8 has several header files and ideally if it had its own folder in /usr/include
   # But doing it here will break all users. Ideally if they use provided pkgconfig file.
   install -d $pkgdir/usr/include
   install -Dm644 include/*.h $pkgdir/usr/include
-
-  install -d $pkgdir/usr/share/v8
 
   install -d $pkgdir/usr/lib/pkgconfig
   install -m644 $srcdir/v8.pc $pkgdir/usr/lib/pkgconfig
