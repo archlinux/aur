@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1
 
 pkgname=chewing-editor-git
-pkgver=0.1.1.r26.g30b9c30
+pkgver=0.1.1.r28.ge79a521
 pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')

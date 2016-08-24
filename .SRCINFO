@@ -1,6 +1,6 @@
 pkgbase = chewing-editor-git
 	pkgdesc = Cross platform chewing user phrase editor
-	pkgver = 0.1.1.r26.g30b9c30
+	pkgver = 0.1.1.r28.ge79a521
 	pkgrel = 1
 	url = http://chewing.im
 	arch = i686
