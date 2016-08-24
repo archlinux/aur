@@ -3,7 +3,7 @@
 
 pkgname=containerd-git
 _pkgname=containerd
-pkgver=v0.2.0.r95.g3d90005
+pkgver=v0.2.3.r2.g95d78ca
 pkgrel=1
 pkgdesc='A daemon to control runC, built for performance and density'
 url='https://containerd.tools/'
