@@ -1,10 +1,10 @@
 pkgname=('python-websocket-client-git')
-srcname='websocket-client'
+_srcname='websocket-client'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Websocket client for python'
 arch=('any')
-url='https://github.com/liris/websocket-client'
+url="https://github.com/liris/${_srcname}"
 license=('GPL2')
 
 depends=('python-six')
@@ -12,11 +12,11 @@ makedepends=('git' 'python-setuptools')
 provides=('python-websocket-client')
 conflicts=('python-websocket-client')
 
-source=("${srcname}::git+https://github.com/liris/websocket-client.git")
+source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
 }
