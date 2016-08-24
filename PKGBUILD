@@ -7,7 +7,7 @@ pkgdesc="A strong UCI chess engine created by Vadim Demichev"
 arch=('i686' 'x86_64')
 url="https://github.com/basil00/gull"
 license=('custom')
-depends=('gcc-libs-multilib')
+depends=('gcc-libs')
 makedepends=('git' 'wget')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
