@@ -1,0 +1,14 @@
+pkgbase = seclists
+	pkgdesc = A collection of multiple types of lists used during security assessments.
+	pkgver = r283.8ef8694
+	pkgrel = 1
+	url = https://github.com/danielmiessler/SecLists/
+	arch = any
+	license = unknown
+	makedepends = git
+	provides = seclists-git
+	source = seclists-git::git+https://github.com/danielmiessler/SecLists.git
+	md5sums = SKIP
+
+pkgname = seclists-git
+
