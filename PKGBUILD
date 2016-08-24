@@ -3,13 +3,13 @@
 
 pkgname=plexrequests.net
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
 url="https://github.com/lokenx/plexrequests-meteor"
 license=('GPL2')
 depends=('mono')
-optdepends=('couchpotato' 'sickrage' 'sonarr')
+optdepends=('couchpotato' 'sickrage' 'sonarr' 'plex-media-server' 'plex-media-server-plexpass' 'headphones')
 install='plexrequests.net.install'
 source=("https://github.com/tidusjar/PlexRequests.Net/releases/download/v${pkgver}/PlexRequests.zip"
         "${pkgname}.service"
