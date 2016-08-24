@@ -2,7 +2,7 @@
 
 pkgname=ricin
 _pkgname=Ricin
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A dead-simple but powerful Tox client."
 url="https://ricin.im/"
@@ -18,7 +18,7 @@ depends=('gtk3'
          )
 
 source=("https://github.com/RicinApp/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3c63be7ff4677d6bbff160c8324c19080580487503078241fd575205c88cc932')
+sha256sums=('830d430fb1436e2d123e315e1e4efa4dd70d05690569233ce41c6baa6fa4f061')
 provides=('ricin')
 conflicts=('ricin')
 
