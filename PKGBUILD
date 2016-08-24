@@ -7,6 +7,7 @@ pkgver=v0.2.0.r95.g3d90005
 pkgrel=1
 pkgdesc='A daemon to control runC, built for performance and density'
 url='https://containerd.tools/'
+conflicts=('containerd')
 depends=('glibc' 'runc-git')
 makedepends=('go' 'git')
 replaces=('containerd')
