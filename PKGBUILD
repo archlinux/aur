@@ -2,7 +2,7 @@
 
 pkgname=trailbot-client
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Trailbot desktop app for managing watchers, policies, and file events.' 
 arch=('x86_64')
 url='https://github.com/trailbot/client'
@@ -13,7 +13,7 @@ makedepends=('npm' 'git' 'python2')
 source=("https://github.com/trailbot/${pkgname}/archive/v${pkgver}.tar.gz"
 		"${pkgname}.desktop")
 md5sums=('f0c089b3ea68a92c5bf5fc6201e18d56'
-		'ee6b7367c8ce8d6a6cd3e145eb89adc9')
+		'c7a3244a37bd51b07d6e269868d8507d')
 
 
 build() {

@@ -4,6 +4,6 @@ Name=Trailbot Client
 StartupNotify=true
 Exec=trailbot-client %U
 Terminal=false
-Icon=trailbot
+Icon=trailbot-client
 Type=Application
 Categories=System;Security;Monitor;
