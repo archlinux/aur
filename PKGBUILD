@@ -2,8 +2,8 @@
 
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=1.3.0.5.g45c39b8
-pkgrel=2
+pkgver=1.3.0.12.ga09d16b
+pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
 url="https://github.com/geeeeeeeeek/wechat-electron/"
@@ -43,7 +43,7 @@ EOF
 
 build() {
     cd "${_pkgname}"
-    sed -i 's/^.*"electron-prebuilt".*$//;s/^.*"electron-packager".*$//' package.json
+    sed -i 's/^.*"electron".*$//;s/^.*"electron-packager".*$//' package.json
     npm install --production
 }
 
