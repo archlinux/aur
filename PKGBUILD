@@ -1,10 +1,10 @@
 pkgname=('simple-mtpfs-git')
-srcname='simple-mtpfs'
+_srcname='simple-mtpfs'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Simple MTP fuse filesystem driver'
 arch=('i686' 'x86_64')
-url='https://github.com/phatina/simple-mtpfs'
+url="https://github.com/phatina/${_srcname}"
 license=('GPL2')
 
 depends=('libmtp' 'fuse' 'gcc-libs')
@@ -12,11 +12,11 @@ makedepends=('git')
 provides=('simple-mtpfs')
 conflicts=('simple-mtpfs')
 
-source=("${srcname}::git+https://github.com/phatina/simple-mtpfs.git")
+source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     autoreconf --install --force --warnings='all'
     ./configure --prefix='/usr'
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     make DESTDIR="${pkgdir}" install
 }
