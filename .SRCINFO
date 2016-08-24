@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-inprop-mhd-michalovce-latest
 	pkgdesc = Michalovce public transport data for the IDOS timetable browser, data provided by INPROP.
-	pkgver = 2015_12_4
-	pkgrel = 2
+	pkgver = 2016_8_17
+	pkgrel = 1
 	epoch = 0
 	url = http://www.inprop.sk/download.aspx
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = idos-timetable-data-inprop-mhd-michalovce-latest
 	depends = idos-timetable-browser
 	optdepends = idos-timetable-tariff-mhd-michalovce: For showing prices.
 	optdepends = idos-timetable-maps-mhd-michalovce: For displaying routes.
-	provides = idos-timetable-data-inprop-mhd-michalovce=2015_12_4
-	provides = idos-timetable-data=2015_12_4
-	provides = idos-timetable-data-mhd=2015_12_4
-	provides = idos-timetable-data-mhd-michalovce=2015_12_4
+	provides = idos-timetable-data-inprop-mhd-michalovce=2016_8_17
+	provides = idos-timetable-data=2016_8_17
+	provides = idos-timetable-data-mhd=2016_8_17
+	provides = idos-timetable-data-mhd-michalovce=2016_8_17
 	conflicts = idos-timetable-data-inprop-mhd-michalovce
 	conflicts = idos-timetable-data-mhd-sk-all
 	source = http://www.inprop.sk/Data/MDMiSk.exe
