@@ -18,7 +18,7 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
-md5sums_armv6h=('SKIP')
+md5sums_armv7h=('SKIP')
 md5sums_aarch64=('SKIP')
 install='caddy-full-bin.install'
 
