@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Trailbot Client
+StartupNotify=true
+Exec=trailbot-client %U
+Terminal=false
+Icon=trailbot
+Type=Application
+Categories=System;Security;Monitor;
