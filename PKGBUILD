@@ -1,10 +1,10 @@
 pkgname=('telldus-core-git')
-srcname='telldus'
+_srcname='telldus'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Driver and tools for controlling a Telldus Technologies TellStick'
 arch=('i686' 'x86_64')
-url='https://github.com/telldus/telldus'
+url="https://github.com/telldus/${_srcname}"
 license=('LGPL2')
 
 depends=('libftdi-compat' 'confuse')
@@ -13,7 +13,7 @@ provides=('telldus-core')
 conflicts=('telldus-core')
 
 source=(
-    "${srcname}::git+https://github.com/telldus/telldus.git"
+    "${_srcname}::git+${url}.git"
     'telldusd.service'
     'pthread.patch'
     'uucp.patch'
@@ -30,7 +30,7 @@ sha512sums=(
 backup=('etc/tellstick.conf')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -39,7 +39,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/pthread.patch"
     git apply "${srcdir}/uucp.patch"
@@ -47,14 +47,18 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${srcname}/telldus-core"
+    cd "${srcdir}/${_srcname}/telldus-core"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DFORCE_COMPILE_FROM_TRUNK=TRUE .
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DFORCE_COMPILE_FROM_TRUNK=TRUE \
+        -DSTATE_INSTALL_DIR='/var/lib/telldus' \
+        .
     make
 }
 
 package() {
-    cd "${srcdir}/${srcname}/telldus-core"
+    cd "${srcdir}/${_srcname}/telldus-core"
 
     make DESTDIR="${pkgdir}" install
 
