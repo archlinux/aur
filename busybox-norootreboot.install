@@ -1,0 +1,16 @@
+post_install() {
+  groupadd --system busybox
+  chmod -v +s /usr/bin/busybox
+  chown root:busybox -v /usr/bin/busybox
+  gpasswd --add root busybox
+  echo "You might want to add your user to the 'busybox' group"
+}
+
+post_remove() {
+  groupdel busybox
+}
+
+post_upgrade() {
+  chmod -v +s /usr/bin/busybox
+  chown root:busybox -v /usr/bin/busybox
+}

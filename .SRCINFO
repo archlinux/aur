@@ -1,0 +1,23 @@
+pkgbase = busybox-norootreboot
+	pkgdesc = Utilities for rescue and embedded systems
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = http://www.busybox.net
+	install = busybox-norootreboot.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = sed
+	makedepends = ncurses
+	provides = busybox
+	conflicts = busybox
+	conflicts = busybox-static
+	source = http://www.busybox.net/downloads/busybox-1.25.0.tar.bz2
+	source = https://raw.githubusercontent.com/jcjordyn130/aur-misc/master/busybox-norootreboot/halt.patch
+	md5sums = b05af9645076f75429a8683f8afcbdb3
+	md5sums = b5ab29025a588785ec7888d03e87823c
+
+pkgname = busybox-norootreboot
+
