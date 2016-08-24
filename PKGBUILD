@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.9.104.g7f82c29
+pkgver=6.0.0.alpha.9.130.ge1f3494
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=($_pkgname::'git://github.com/PowerShell/PowerShell.git'
         'build.sh')
 sha256sums=('SKIP'
             'e903a41166648f2e6113dff83b116e9ed6a5dc7d302ac24ae26811583bcb9cc2'
-            'c1c4bb82227190eb78d163eb48c422ed7738dd86d0e0e17b7a445f568540a15c')
+            '51d1be9e003e79a7c8d6ac134a1b267fc0af719839273151f8b3fcd40a284903')
 
 pkgver() {
   cd "${_pkgname}"
