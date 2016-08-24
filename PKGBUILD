@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rlcmp-git
-pkgver=1.0.0.r6.g53a0abf
+pkgver=1.1.0.r6.gab2f3b2
 pkgrel=1
 epoch=
 pkgdesc="Recursive file compare tool"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/n-t-roff/rlcmp"
 license=('BSD')
 groups=()
-depends=('libavlbst-git')
+depends=('libavlbst')
 makedepends=('git')
 optdepends=()
 checkdepends=()
@@ -30,7 +30,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr
   make INCDIR=/usr/include LIBDIR=/usr/lib 
 }
 
