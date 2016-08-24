@@ -1,10 +1,10 @@
 pkgname=('python-docker-py-git')
-srcname='docker-py'
+_srcname='docker-py'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='An API client for docker written in Python'
 arch=('any')
-url='https://github.com/docker/docker-py'
+url="https://github.com/docker/${_srcname}"
 license=('Apache')
 
 depends=(
@@ -17,11 +17,11 @@ makedepends=('git' 'python-setuptools')
 provides=('python-docker-py')
 conflicts=('python-docker-py')
 
-source=("${srcname}::git+https://github.com/docker/docker-py.git")
+source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
 }
