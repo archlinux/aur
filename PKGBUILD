@@ -3,7 +3,7 @@
 # Contributor: Tobias Veit - nIcE <m.on.key.tobi[at]gmail[dot]com>
 
 pkgname=metasploit
-pkgver=4.12.20
+pkgver=4.12.21
 pkgrel=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 url='https://www.metasploit.com/'
@@ -13,7 +13,7 @@ depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'g
 optdepends=('ruby-pg: database support')
 options=('!strip' '!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/rapid7/metasploit-framework/archive/${pkgver}.tar.gz)
-sha512sums=('e120c95968bf9eaa45f9bd053bd9cfd049b60c2b0e1f137b5e1769155c9895f135da531643cdd0493be8eba06b7a4d5c6d67592624ff3a1f19ae329622e9ea3f')
+sha512sums=('75099cb9e30285d422d2890be52251b4ec94ed069e60ab95d1ea75419328c50a1c94542e5284a950d4738e73e01af2c5373712ebefd7486a1119d535d3ee5e27')
 
 prepare() {
   cd ${pkgname}-framework-${pkgver}
