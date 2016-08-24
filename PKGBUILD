@@ -1,10 +1,10 @@
 pkgname=('heka-git')
-srcname='heka'
+_srcname='heka'
 pkgdesc='Data collection and processing made easy'
 pkgver='r1'
 pkgrel='1'
 arch=('i686' 'x86_64')
-url="https://github.com/mozilla-services/${srcname}"
+url="https://github.com/mozilla-services/${_srcname}"
 license=('MPL2')
 
 depends=('geoip')
@@ -22,7 +22,7 @@ provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git"
+    "${_srcname}::git+${url}.git"
     'heka.service'
 )
 sha512sums=(
@@ -33,7 +33,7 @@ sha512sums=(
 install='install.sh'
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -57,7 +57,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE='release' \
         -DHEKA_PATH='/usr/share/heka' \
-        "${srcdir}/${srcname}"
+        -DINCLUDE_SANDBOX='OFF' \
+        "${srcdir}/${_srcname}"
     make
 }
 
