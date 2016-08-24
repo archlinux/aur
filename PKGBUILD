@@ -1,5 +1,5 @@
 pkgname=('shotcut-git')
-srcname='shotcut'
+_srcname='shotcut'
 pkgdesc='Video editor'
 pkgver='r1'
 pkgrel='1'
@@ -29,7 +29,7 @@ provides=('shotcut')
 conflicts=('shotcut')
 
 source=(
-    "${srcname}::git+${url}.git"
+    "${_srcname}::git+${url}.git"
     'shotcut.desktop'
     'melt.patch'
 )
@@ -40,7 +40,7 @@ sha512sums=(
 )
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -49,20 +49,20 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/melt.patch"
 }
 
 build() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     qmake 'CONFIG-=c++11' PREFIX='/usr/'
     make
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     make INSTALL_ROOT="${pkgdir}" install
 
