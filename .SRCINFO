@@ -1,0 +1,16 @@
+pkgbase = latex-ocr-a-font
+	pkgdesc = Provides Type 1 fonts of the OCR-A typeface.
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/fonts/ocr-a/
+	install = latex-ocr-a-font.install
+	arch = any
+	license = custom:CTAN-NoSell
+	depends = texlive-core
+	source = http://mirrors.ctan.org/fonts/ocr-a.zip
+	source = LICENSE::http://texcatalogue.ctan.org/licenses.nosell.html
+	md5sums = 67ce5623c064cda47dbd349a351c1a4a
+	md5sums = 6511a45b4d21ddf87726c16caf8e8ef4
+
+pkgname = latex-ocr-a-font
+
