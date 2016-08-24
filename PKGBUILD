@@ -21,7 +21,7 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
             'gstreamer0.10-ffmpeg: h.264 decoding')
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#commit=7a756323e31eee935a518a28bf4254319df2ee59" # Devs haven't bothered to tag this release
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release_Linux"
         mozconfig.in)
 md5sums=('SKIP'
          '6c23b737a8ef846926d247116b69f33d')

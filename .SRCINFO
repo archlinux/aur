@@ -33,7 +33,7 @@ pkgbase = palemoon
 	optdepends = gstreamer0.10-bad-plugins: aac, vp8 and opus decoding
 	optdepends = gstreamer0.10-ugly-plugins: h.264 and mp3 decoding
 	optdepends = gstreamer0.10-ffmpeg: h.264 decoding
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#commit=7a756323e31eee935a518a28bf4254319df2ee59
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.4.0.1_Release_Linux
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = 6c23b737a8ef846926d247116b69f33d
