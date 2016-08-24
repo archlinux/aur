@@ -1,9 +1,10 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: pohl7589
 
 pkgname=php56-composer
 epoch=1
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
@@ -19,8 +20,8 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '1acc000cf23bd9d19e1590c2edeb44fb915f88d85f1798925ec989c601db0bd6'
-    '87aa5f29b3b3939adf22c905fa166cb93928a431e05d4b7167c54819011d5f71'
+    'dc80131545ed7f7b1369ae058824587f0718892f6a84bd86cfb0f28ab5e39095'
+    '9514fe689925720256dc94f7d0a4ea7a0f232f5bd76dbb08dfdd48a691ec4ee5'
     'fc5dfa06b58369c17d44eff9a595eaf8ed7dadef184da1fea06ae3562b8af24f'
 )
 

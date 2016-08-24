@@ -26,3 +26,24 @@
  <?php
  
  if (PHP_SAPI !== 'cli') {
+--- bin/compile	2016-08-24 09:10:26.184072313 +0200
++++ bin/compile	2016-08-24 09:10:27.550751053 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env php
++#!/usr/bin/env php56
+ <?php
+
+ $cwd = getcwd();
+@@ -10,9 +10,9 @@
+ }
+ // Install with the current version to force it having the right ClassLoader version
+ // Install without dev packages to clean up the included classmap from phpunit classes
+-shell_exec('php bin/composer config autoloader-suffix ComposerPhar' . $ts);
+-shell_exec('php bin/composer install -q --no-dev');
+-shell_exec('php bin/composer config autoloader-suffix --unset');
++shell_exec('php56 bin/composer config autoloader-suffix ComposerPhar' . $ts);
++shell_exec('php56 bin/composer install -q --no-dev');
++shell_exec('php56 bin/composer config autoloader-suffix --unset');
+ chdir($cwd);
+
+ require __DIR__.'/../src/bootstrap.php';
