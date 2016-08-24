@@ -2,13 +2,16 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r32.96.geca068b
+pkgver=r33.0.g466bf3b
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
 depends=('libzimg.so'
+         'libavformat.so'
+         'libavcodec.so'
+         'libavutil.so'
          'libass'
          'tesseract'
          'python'
