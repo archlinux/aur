@@ -18,9 +18,10 @@ conflicts=("arangodb-latest" "arangodb-git")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
-"arangodb.service")
+"arangodb.service" "arangodb-tmpfile.conf")
 sha256sums=('8827dc8afb35f6ce8825d6d77a25ca60369f51e68869a4bebe4e6de99402e888'
-            '168c2bd7b6673a93b7732234b47117454e18ece02f6e5bd056483d9c65b34bd0')
+            '6f4974a76720fdb6769419a3759e21c360f92b415064a13445861ceb08f48a3c'
+            '736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4')
 
 build() {
   msg2 "Symlinking 'python' to python2."
@@ -57,6 +58,8 @@ package() {
   mkdir -p $pkgdir/usr/share/man
   cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb3/js
   cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
+
+  install -Dm644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
 
   msg2 "Preparing systemd service."
   mkdir -p $pkgdir/usr/lib/systemd/system
