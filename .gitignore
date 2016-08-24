@@ -1,0 +1,6 @@
+src
+pkg
+*.pkg.*
+*.git
+
+mylg
