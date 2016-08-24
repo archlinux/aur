@@ -4,7 +4,7 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.3.5.r0.gf6d65c3
+pkgver=2.3.6.r0.g173fca8
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
@@ -26,6 +26,12 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     python2 setup.py build
+
+    if [[ -x /usr/bin/calibre-customize ]]; then
+        msg2 "Creating and installing FanFicFare calibre plugin..."
+        python2 makeplugin.py
+        calibre-customize -a FanFicFare.zip || true
+    fi
 }
 
 package() {
