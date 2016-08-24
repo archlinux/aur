@@ -3,14 +3,15 @@
 
 pkgname='nextcloud-client'
 pkgver='2.2.3'
-pkgrel='1'
-pkgdesc="Nextcloud desktop client"
+pkgrel='2'
+pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
-url="https://nextcloud.com"
+url='https://nextcloud.com/'
 license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio')
 optdepends=('python2-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
+conflicts=('owncloud-client')
 source=("${pkgname}::git+https://github.com/nextcloud/client_theming.git")
 sha256sums=('SKIP')
 backup=('etc/Nextcloud/sync-exclude.lst')
@@ -32,7 +33,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname}
-        
+
   make
   make doc-man
 }
