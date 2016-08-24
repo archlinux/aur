@@ -1,0 +1,22 @@
+pkgbase = akonadi-ews-git
+	pkgdesc = Resource agent for Microsoft Exchange using Exchange Web Services (EWS) protocol
+	pkgver = r280.53e2b80
+	pkgrel = 1
+	url = https://github.com/KrissN/akonadi-ews/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = boost
+	makedepends = kdesignerplugin
+	depends = kcalcore
+	depends = akonadi-mime
+	depends = hicolor-icon-theme
+	depends = kcontacts
+	provides = akonadi-ews
+	conflicts = akonadi-ews
+	source = git://github.com/KrissN/akonadi-ews.git
+	sha256sums = SKIP
+
+pkgname = akonadi-ews-git
+
