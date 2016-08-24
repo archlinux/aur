@@ -15,11 +15,9 @@ depends=('readline' 'icu' 'ncurses5-compat-libs')
 makedepends=('clang-tools-extra' 'python2' 'python2-virtualenv' 'ninja' 'git')
 conflicts=('v8-5.2' 'v8-3.14' 'v8-3.15' 'v8-3.20')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
-        "gyp::git+https://chromium.googlesource.com/external/gyp"
         "v8.pc"
         "d8")
 sha256sums=('SKIP'
-            'SKIP'
             '2b054309df9af9fb2e3e14527e88360b44745649b4866e592fb357ac90935f5d'
             'cfd0712ee91d30b62e761da130e194c18f2b92a7f1654fb4af49f96ae9ce3e1b')
 
@@ -34,7 +32,6 @@ prepare() {
   msg2 "Activating Python Virtual Environment"
   source venv/bin/activate > /dev/null
   msg2 "Installing dependencies in the Virtual Environment"
-  pip install gyp/ -q
   pip install colorama -q
   pip install pylint -q
   pip install lazy-object-proxy -q
@@ -65,10 +62,11 @@ build() {
   msg2 "Running GN..."
   tools/dev/v8gen.py x64.release
 
+
   ## Needs to resync after running GN
   msg2 "Resyncing..."
   gclient sync
-  
+
   msg2 "Start building..."
   ninja -C out.gn/x64.release
 }
@@ -103,7 +101,7 @@ package() {
   install -Dm644 include/*.h $pkgdir/usr/include
 
   install -d $pkgdir/usr/share/v8
-  
+
   install -d $pkgdir/usr/lib/pkgconfig
   install -m644 $srcdir/v8.pc $pkgdir/usr/lib/pkgconfig
 
