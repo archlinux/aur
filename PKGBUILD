@@ -1,10 +1,10 @@
 pkgname=('docker-compose-git')
-srcname='compose'
+_srcname='compose'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Define and run complex applications using Docker'
 arch=('any')
-url='https://github.com/docker/compose'
+url="https://github.com/docker/${_srcname}"
 license=('Apache')
 
 depends=(
@@ -24,11 +24,11 @@ makedepends=('git')
 provides=('docker-compose')
 conflicts=('docker-compose')
 
-source=("${srcname}::git+https://github.com/docker/compose.git")
+source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -37,10 +37,10 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
 
-    install -D --mode=644 LICENSE "${pkgdir}/usr/share/licenses/${srcname}/LICENSE"
+    install -D --mode=644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
     install -D --mode=644 contrib/completion/bash/docker-compose "${pkgdir}/usr/share/bash-completion/completions/docker-compose"
 }
