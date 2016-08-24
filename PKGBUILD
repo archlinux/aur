@@ -1,8 +1,8 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=molotov
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
@@ -11,17 +11,14 @@ depends=('fuse')
 makedepends=('p7zip')
 options=('!strip')
 
-source=("http://desktop-auto-upgrade.molotov.tv/linux/Molotov-${pkgver}.AppImage.tar.gz"
+source=("http://desktop-auto-upgrade.molotov.tv/linux/Molotov-${pkgver}.AppImage"
         'molotov')
-sha256sums=('df1347f0538420223a55bb933c99a0fac91071d72fedd48d19a1690db65e7757'
-            '36f92d34ebb5435dceb0d07e90c0b1a4b731799786b7051d509ba7c4e3094f31')
+sha256sums=('fb5168b7cbbedc80186e44f25fc3cf14bb2f0ed5158efd34c2156a01d06a83c2'
+            '3beccd6a28343e4c949f66c1a916c74574123d8e2b91f31bfedee917cfda6e77')
 
 build() {
   cd $srcdir
-  7z x Molotov-$pkgver.AppImage usr/share/icons/default/128x128/apps/Molotov.png
   mv usr/share/icons/default/128x128/apps/Molotov.png Molotov.png
-  7z x Molotov-$pkgver.AppImage Molotov.desktop
-  sed -i 4,11d Molotov.desktop
   sed -i "s/Exec=AppRun/Exec=molotov/" Molotov.desktop
   sed -i "s|Icon=Molotov|Icon=/usr/share/icons/default/128x128/Molotov.png|" Molotov.desktop
   echo "Categories=Video;Player;AudioVideo;" >> Molotov.desktop
