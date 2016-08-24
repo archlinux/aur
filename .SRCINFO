@@ -1,0 +1,13 @@
+pkgbase = rfbproxy
+	pkgdesc = A program for recording, playback, and video conversion of VNC sessions
+	pkgver = 1.1.1
+	pkgrel = 0
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = make
+	source = rfbproxy-1.1.1.tar.gz::https://github.com/pmdumuid/rfbproxy/archive/rfbproxy-1.1.1-pierre-03.tar.gz
+	md5sums = 702488c85ebd9c83df3715be76b389b9
+
+pkgname = rfbproxy
+
