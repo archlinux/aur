@@ -5,7 +5,7 @@ set -u
 _pyver="python2"
 _pybase='pathspec'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.3.4'
+pkgver='0.5.0'
 pkgrel='1'
 pkgdesc='Utility library for gitignore style pattern matching of file paths'
 arch=('any')
@@ -14,8 +14,8 @@ license=('custom') #MPL 2.0
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('7605ca5c26f554766afe1d177164a2275a85bb803b76eba3428f422972f66728')
+source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+sha256sums=('aa3a071054d4740b963c91a3127a5e0e1358351718bae2a3f731ec24fb0bdd1f')
 
 build() {
   set -u
