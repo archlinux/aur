@@ -27,7 +27,7 @@ build() {
         python2 setup.py build
 }
 
-package_python2-pyspatialite() {
+package() {
         cd "$srcdir/$_pkgname-$pkgver-alpha-0"
         python2 setup.py install --root="${pkgdir}" --optimize=1
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
