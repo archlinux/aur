@@ -1,5 +1,5 @@
 pkgname=qweechat
-pkgver=1.1_rc2
+pkgver=r94.f5e54d0
 pkgrel=1
 arch=('any')
 pkgdesc="QT GUI for WeeChat"
@@ -16,7 +16,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
 
-  git describe | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/release.//g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -33,5 +33,5 @@ package() {
   cd "$pkgname"
   python2 setup.py install --root="$pkgdir" -O2
   install -m 644 -D "$srcdir/qweechat.desktop" "$pkgdir/usr/share/applications/qweechat.desktop"
-  install -m 644 -D "$srcdir/$pkgname/qweechat/data/icons/weechat_icon_32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/qweechat.png"
+  install -m 644 -D "$srcdir/$pkgname/qweechat/data/icons/weechat.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/qweechat.png"
 }
