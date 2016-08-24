@@ -3,16 +3,16 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor : Trevor Turner <turn3r.tr3v0r at gmail dot com>
 
-pkgbase=virtualbox-modules-bfq
-pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
+pkgbase=virtualbox-modules-lqx
+pkgname=('virtualbox-host-modules-lqx' 'virtualbox-guest-modules-lqx')
 pkgver=5.1.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-makedepends=('linux-bfq-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
+makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.7-bfq
+_extramodules=extramodules-4.7-lqx
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -27,10 +27,10 @@ build() {
 	dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
-package_virtualbox-host-modules-bfq() {
-	pkgdesc='Host kernel modules for VirtualBox running under Linux-bfq.'
+package_virtualbox-host-modules-lqx() {
+	pkgdesc='Host kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-bfq>=4.7' 'linux-bfq<4.8')
+	depends=('linux-lqx>=4.7' 'linux-lqx<4.8')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -40,10 +40,10 @@ package_virtualbox-host-modules-bfq() {
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
 }
 
-package_virtualbox-guest-modules-bfq() {
-	pkgdesc='Guest kernel modules for VirtualBox running under Linux-bfq.'
+package_virtualbox-guest-modules-lqx() {
+	pkgdesc='Guest kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-bfq>=4.7' 'linux-bfq<4.8')
+	depends=('linux-lqx>=4.7' 'linux-lqx<4.8')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
