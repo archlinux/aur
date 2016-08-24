@@ -2,7 +2,7 @@
 
 _gopkgname=minio
 pkgname=$_gopkgname-git
-pkgver=r3058.01cbacd
+pkgver=r3269.ec4260d
 pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
 arch=('x86_64' 'i686')
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   export GOPATH="$srcdir/go"
+  mkdir -p "$GOPATH/src/github.com/minio"
+  mv "$srcdir/minio" "$GOPATH/src/github.com/minio/"
   cd "$GOPATH/src/github.com/minio/minio"
   go build
 }
