@@ -1,5 +1,5 @@
 #!/bin/bash
-# /usr/local/bin/javawrapper - the wrapper for binfmt_misc/java
+# /usr/bin/javawrapper - the wrapper for binfmt_misc/java
 
 if [ -z "$1" ]; then
 	exec 1>&2
@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
 fi
 
 CLASS=$1
-FQCLASS=`/usr/local/bin/javaclassname $1`
+FQCLASS=`/usr/bin/javaclassname $1`
 FQCLASSN=`echo $FQCLASS | sed -e 's/^.*\.\([^.]*\)$/\1/'`
 FQCLASSP=`echo $FQCLASS | sed -e 's-\.-/-g' -e 's-^[^/]*$--' -e 's-/[^/]*$--'`
 
