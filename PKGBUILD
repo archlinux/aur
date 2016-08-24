@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.17.0.r5.g27771b2
+pkgver=0.17.1rc1.r14.geb6a7cf
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -66,5 +66,3 @@ package() {
 	install -Dm644 "$srcdir/sysusers-synapse.conf" \
 		"$pkgdir/usr/lib/sysusers.d/synapse.conf"
 }
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :
