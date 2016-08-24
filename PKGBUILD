@@ -2,7 +2,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx
-pkgver=0.7.0.r0.g158f382
+pkgver=0.9.0.r0.g7769c5d
 pkgrel=1
 epoch=
 pkgdesc="Packaging tool built around the distributed, content addressed filesystem IPFS. It aims to be flexible, powerful and simple."
@@ -27,13 +27,14 @@ prepare() {
 build() {
   # Required for go get
   export GOPATH="$srcdir"
+  export GOBIN="$GOPATH/bin"
   cd "$srcdir"/src/github.com/whyrusleeping/"$pkgname"
 
   msg2 'Installing dependencies...'
-  go get -v 
+  go get -v
 
   msg2 'Building binary...'
-  go install -v 
+  go install -v
 }
 
 package() {
