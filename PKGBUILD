@@ -1,6 +1,5 @@
 pkgname=('ulogd-git')
-srcname='ulogd'
-pkgbase='ulogd-git'
+_srcname='ulogd'
 pkgdesc='Userspace logging daemon for netfilter/iptables related logging'
 pkgver='r1'
 pkgrel='1'
@@ -35,7 +34,7 @@ provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${srcname}::git+git://git.netfilter.org/ulogd2"
+    "${_srcname}::git+git://git.netfilter.org/ulogd2"
     'ulogd.service'
     'ulogd.logrotate'
     'ulogd.conf'
@@ -48,7 +47,7 @@ sha512sums=(
 )
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -57,7 +56,7 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     autoreconf --install --force --warnings='all'
     ./configure \
@@ -72,7 +71,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     make DESTDIR="${pkgdir}" install
 
