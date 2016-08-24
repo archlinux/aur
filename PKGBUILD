@@ -5,7 +5,7 @@
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.10.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -34,7 +34,6 @@ makedepends=(
 	'docbook2x'
 	'docbook-xml'
 	'docbook-xsl'
-	'man-db'
 	'perl-xml-libxml'
 	'perl-xml-sax-expat'
 )
@@ -42,7 +41,7 @@ source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
 	'asciime.patch')
 sha1sums=('f2da0e3b8e6ff8ebc42b35f710f822e228616993'
 	  'b07407c2be11cee7bd50e046024b89cf2579c448')
-options=('!strip' 'debug')
+options=('strip' '!debug')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -69,7 +68,7 @@ build() {
 		-D BUILD_LUA_RSVG=ON \
 		-D BUILD_MOC=OFF \
 		-D BUILD_MPD=OFF \
-		-D BUILD_NVIDIA=OFF \
+		-D BUILD_NVIDIA=ON \
 		-D BUILD_OLD_CONFIG=ON \
 		-D BUILD_PULSEAUDIO=ON \
 		-D BUILD_WLAN=ON \
