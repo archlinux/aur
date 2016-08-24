@@ -1,7 +1,7 @@
-# Maintainer: Maxqia <contrib@maxqia.com>
-# Great contributor: Vi0L0 <vi0l093@gmail.com>
-#                    (maintainer of main "catalyst" package(s), which this is
-#                     largely based upon)
+# Maintainer: Vi0L0 <vi0l093@gmail.com>
+#                (maintainer of main "catalyst" package(s), which this is
+#                 largely based upon)
+# Old maintainer: Maxqia <contrib@maxqia.com>
 # Old maintainer: Gerad Munsch <gmunsch@unforgivendevelopment.com>
 # Old maintainer: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
@@ -15,7 +15,7 @@ _kernver=`uname -r`
 
 pkgname=catalyst-dkms
 pkgver=15.9
-pkgrel=2
+pkgrel=3
 _amdver=15.201.1151
 pkgdesc="AMD Catalyst (proprietary GPU driver) kernel driver (DKMS version) [NOTE: Radeon HD 5xxx+ ONLY]"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ license=('custom')
 options=('staticlibs' 'libtool' '!upx' '!strip')
 depends=('dkms')
 makedepends=('gcc-libs' 'gcc>4.0.0')
-optdepends=('linux-headers<4.7: build the module against Arch kernel (requires at least one set of kernel headers)'
-            'linux-lts-headers<4.7: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
+optdepends=('linux-headers<4.8: build the module against Arch kernel (requires at least one set of kernel headers)'
+            'linux-lts-headers<4.8: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
 
 # try to ensure that this package cannot be installed concurrently with any of
 # the other 'catalyst'-series packages
@@ -35,7 +35,7 @@ conflicts=('catalyst'
            'catalyst-test'
            'catalyst-total'
            'catalyst-total-pxp')
-provides=('catalyst')
+provides=("catalyst=${pkgver}")
 
 source=(
     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
@@ -50,10 +50,11 @@ source=(
     crimson_i686_xg.patch
     4.4-manjaro-xstate.patch
     grsec_arch.patch
-    4.6-arch-get_user_pages-page_cache_release.patch)
+    4.6-arch-get_user_pages-page_cache_release.patch
+    4.7-arch-cpu_has_pge-v2.patch)
 
 sha384sums=('a5de57abfe23dd4210e220ee1f7b2b5dc2862272632b8fccfbcbf1f30285de580546910015a4918e8d80866ad8757bd4'
-            'f1ff04347eb04b56a4e0bd6a33200c5d4d72135557867634c20447d07a8aeb1da417340e7d086809fdda644ae7cd4da7'
+            '754eee837fdb46bfbb5e19c632961cf0de59f908998ad486a987829ab72d663c66e810e19ef454bf3cfa0a9cf441c19c'
             'b131483a05e5d610f8cf4a1c769f9afc73e38e21388f7d3bb26b4b2b78796c6f2b62419e2e7c8878534fd5ebf4c53f3f'
             'f3b754f5d2edb5f0950ce49dcdcf19b1d7db6618c267623d7c4b7c365f14de8726dbd780e00599cd656d431af4f7fc78'
             '0dbd2f121237e4246434770e5f53a249a2e1a05ee5dd43e3757e0d3192eb0f89a9c3ed097f67962f5e0a6bb96554710c'
@@ -64,9 +65,9 @@ sha384sums=('a5de57abfe23dd4210e220ee1f7b2b5dc2862272632b8fccfbcbf1f30285de58054
             '6d344cf6aefacb5737376f50dbdfc438a299089532052f8acee6878282261f329ffab72d897d11e9e6eefc5d3fd03067'
             'f33b4c27a45de8e5bf3c0c6cd88b8a1daafe75639e969c0137039bf4a017104b9259692e1436374ddf3524a344c228b8'
             '7f747586a8a87388f6a969846363956c159eaa583a054b59cfa55b8ff73c33c7751c1b6e30aeff3a056ce150d0593ea2'
-            'b78d8192012778fe8afe6af65c19c1cf8ee2eae161bd4302b04589fb2c532edf151461eff228abea99d6ff59676509ed')
+            'b78d8192012778fe8afe6af65c19c1cf8ee2eae161bd4302b04589fb2c532edf151461eff228abea99d6ff59676509ed'
+            '44257760262a3edcc806c5b57bf237d8ae78cf77ccf0d054ec1c06d97e7381c7f8c8a3d495de5ad46f75b85e7444f9cf')
 
-install=catalyst.install
 
 # AMD changed the way we need to download our package, we now have to pass a referer.
 url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
@@ -100,6 +101,7 @@ package() {
   patch -Np1 -i ../4.4-manjaro-xstate.patch
   patch -Np1 -i ../grsec_arch.patch
   patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+  patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
 
   cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
   cp ${srcdir}/archive_files/arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a .
@@ -108,15 +110,15 @@ package() {
 
   # install some directories
   install -dm755 "${pkgdir}/usr/lib/modprobe.d"
-  install -dm755 "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}"
+  install -dm755 "${pkgdir}/usr/src/fglrx-${pkgver}"
 
   # copy sources
-  cp -r common/lib/modules/fglrx/build_mod/* "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/"
-  cp "arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a" "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/"
+  cp -r common/lib/modules/fglrx/build_mod/* "${pkgdir}/usr/src/fglrx-${pkgver}/"
+  cp "arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a" "${pkgdir}/usr/src/fglrx-${pkgver}/"
 
   # copy dkms.conf and set version
-  cp ${srcdir}/dkms.conf "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/"
-  sed -i -e "s/@VERSION@/${pkgver}-${pkgrel}/" "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/dkms.conf"
+  cp ${srcdir}/dkms.conf "${pkgdir}/usr/src/fglrx-${pkgver}/"
+  sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
 
   # blacklist open-source radeon module from loading
   echo "blacklist radeon" >> "${pkgdir}/usr/lib/modprobe.d/catalyst.conf"
