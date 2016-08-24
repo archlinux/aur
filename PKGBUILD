@@ -8,7 +8,7 @@ pkgdesc="Losslessly convert images to PDF without unnecessarily increasing file 
 arch=('any')
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL3')
-depends=('python' 'python-pillow')
+depends=('python-pillow')
 makedepends=('git' 'python-setuptools')
 conflicts=("${pkgname%-*}" "python-${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
