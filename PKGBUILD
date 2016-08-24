@@ -1,7 +1,7 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=protector-svn
-pkgver=1.9.0.r1130
+pkgver=1.9.0.r1134
 pkgrel=1
 pkgdesc="Yet another UCI chess engine"
 arch=('x86_64')
@@ -9,7 +9,6 @@ url="https://sourceforge.net/projects/protector"
 license=('GPL')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver:0:5}")
-options=(!emptydirs)
 source=("${pkgname%-*}::svn://svn.code.sf.net/p/${pkgname%-*}/code/")
 md5sums=('SKIP')
 
