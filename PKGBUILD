@@ -6,7 +6,7 @@
 
 pkgname=arangodb
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
