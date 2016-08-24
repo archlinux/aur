@@ -1,5 +1,5 @@
 pkgname=('vimperator-git')
-srcname='vimperator'
+_srcname='vimperator'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Make Firefox look and behave like Vim'
@@ -13,7 +13,7 @@ provides=('vimperator')
 conflicts=('vimperator' 'vimperator-hg')
 
 source=(
-    "${srcname}::git+https://github.com/vimperator/vimperator-labs.git"
+    "${_srcname}::git+${url}.git"
     'no_zip.patch'
 )
 sha512sums=(
@@ -24,7 +24,7 @@ sha512sums=(
 EXTENSION_ID='vimperator@mozdev.org'
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -33,19 +33,19 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/no_zip.patch"
 }
 
 build() {
-    cd "${srcdir}/${srcname}/vimperator"
+    cd "${srcdir}/${_srcname}/vimperator"
 
     make VERSION="${pkgver}" xpi
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     local destdir="${pkgdir}/usr/lib/firefox/browser/extensions"
     install --directory --mode=755 "${destdir}"
