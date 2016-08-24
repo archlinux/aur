@@ -1,10 +1,10 @@
 pkgname=('heka')
-srcname='heka'
+_srcname='heka'
 pkgdesc='Data collection and processing made easy'
 pkgver='0.10.0'
 pkgrel='7'
 arch=('i686' 'x86_64')
-url="https://github.com/mozilla-services/${srcname}"
+url="https://github.com/mozilla-services/${_srcname}"
 license=('MPL2')
 
 depends=('geoip')
@@ -22,7 +22,7 @@ provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git#tag=v${pkgver}"
+    "${_srcname}::git+${url}.git#tag=v${pkgver}"
     'heka.service'
     'cmake.patch'
 )
@@ -35,7 +35,7 @@ sha512sums=(
 install='install.sh'
 
 prepare() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     git apply "${srcdir}/cmake.patch"
 }
@@ -56,7 +56,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE='release' \
         -DHEKA_PATH='/usr/share/heka' \
-        "${srcdir}/${srcname}"
+        "${srcdir}/${_srcname}"
     make
 }
 
