@@ -1,0 +1,14 @@
+post_install() {
+  # Create plex user
+  systemd-sysusers plexrequests.net.conf
+  chown -R plexrequestsnet:plexrequestsnet /opt/plexrequests.net
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+}
+
+post_remove() {
+  systemctl stop plexrequests.net.service
+  true
+}

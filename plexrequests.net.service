@@ -1,0 +1,15 @@
+[Unit]
+Description=PlexRequests.Net
+After=network.target
+
+[Service]
+User=plexrequestsnet
+Group=plexrequestsnet
+WorkingDirectory=/opt/plexrequests.net
+Type=simple
+ExecStart=/usr/bin/mono /opt/plexrequests.net/PlexRequests.exe -p 3579
+Restart=always
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
