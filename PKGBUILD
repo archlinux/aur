@@ -1,15 +1,15 @@
 # Maintainer: Fabian(Tids) <plusfabi[AT+thegooglemailadress]>
 pkgname=mhwd-addon-amdgpu-hwe
 pkgver=20160823BETA
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables some extras for AMDGPU-open, and radeon(ati) stack, like OpenCL, VAAPI & VDPAU"
 arch=('any')
 url="https://forum.manjaro.org/t/amdgpu-improvements-for-manjaro"
 license=('custom')
 depends=('mhwd-db' 'linux47' 'grub')
 source=('MHWDCONFIG_amdgpu-hwe' 'MHWDCONFIG_ati-hwe' 'amdgpu-hwe.ids')
-md5sums=('3b409fbf2657b0ba636b5710dcfeb755'
-         'f7811f0d90558361936259e230189c0a'
+md5sums=('698ddb6e0110c18713d25258a9247ccd'
+         'e48adfb557dbd4babdb656a7c568b681'
          '475a1e63fd1bff0f203c159b6825ef3d')
 
 

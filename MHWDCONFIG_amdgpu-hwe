@@ -11,7 +11,7 @@ VENDORIDS="1002"
 DEVICEIDS=">/var/lib/mhwd/ids/pci/amdgpu-hwe.ids"
 
 # Conflicts
-MHWDCONFLICTS="video-amdgpu video-catalyst video-vesa video-ati-hwe"
+MHWDCONFLICTS="video-amdgpu video-ati video-catalyst video-vesa video-ati-hwe"
 
 # Dependencies
 DEPENDS="xf86-video-amdgpu libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
