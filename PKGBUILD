@@ -3,13 +3,13 @@
 
 pkgname='trafficserver'
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
 depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'libxml2' 'geoip')
-makedepends=('flex')
+makedepends=('flex' 'python2-sphinx')
 
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
@@ -84,7 +84,7 @@ prepare() {
 build() {
     cd "${srcdir}"/"${pkgname}-${pkgver}"
 
-    ./configure --enable-layout=Arch
+    ./configure PYTHON=python2 SPHINXBUILD=sphinx-build2 --enable-layout=Arch
     make
 }
 
