@@ -1,0 +1,3 @@
+post_install() {
+	python2 /usr/share/bracelet-generator/uninstall_BraceletGenerator_1.2.py
+}

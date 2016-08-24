@@ -1,0 +1,20 @@
+pkgbase = bracelet-generator
+	pkgdesc = A friendship bracelet pattern designer
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://braceletgenerator.sourceforge.net/index.html
+	install = bracelet-generator.install
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = tk
+	depends = python-pillow
+	depends = gettext
+	depends = desktop-file-utils
+	optdepends = ghostscript: export pattern to .png or .jpeg,
+	optdepends = zenity: nicer file browser and color chooser
+	source = bracelet-generator-1.3.1-archlinux-src.tar.xz::https://sourceforge.net/projects/braceletgenerator/files/BraceletGenerator-1.3/bracelet-generator-1.3.1-archlinux-src.tar.xz/download
+	md5sums = 71a6e754414764bbf002050a36e0fe80
+
+pkgname = bracelet-generator
+
