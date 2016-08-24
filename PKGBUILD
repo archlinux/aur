@@ -5,8 +5,8 @@ _compile=0
 # 1=Download vlc stable git source and compile vlc fluidsynth plugin standalone.
 
 pkgname=vlc-plugin-fluidsynth
-pkgver=2.2.5
-pkgrel=1
+pkgver=2.2.4
+pkgrel=3
 _pkgrel_status=+b1
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
