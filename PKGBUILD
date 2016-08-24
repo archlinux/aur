@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libavlbst-git
-pkgver=1.0.1.r5.g5ae8503
+pkgver=1.0.1.r11.gad33847
 pkgrel=1
 epoch=
 pkgdesc="General purpose AVL binary search tree library."
@@ -12,7 +12,7 @@ depends=('')
 makedepends=('git')
 optdepends=()
 checkdepends=()
-provides=()
+provides=('libavlbst')
 conflicts=('libavlbst')
 replaces=()
 backup=()
@@ -30,7 +30,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr
   make
 }
 
