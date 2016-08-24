@@ -2,7 +2,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx-go
-pkgver=1.2.0.r1.g9d167af
+pkgver=1.3.0.r0.g3cbfcbb
 pkgrel=1
 epoch=
 pkgdesc="A tool to use with the gx package manager for packages written in go."
@@ -28,13 +28,14 @@ prepare() {
 build() {
   # Required for go get
   export GOPATH="$srcdir"
+  export GOBIN="$GOPATH/bin"
   cd "$srcdir"/src/github.com/whyrusleeping/"$pkgname"
 
   msg2 'Installing dependencies...'
-  go get -v 
+  go get -v
 
   msg2 'Building binary...'
-  go install -v 
+  go install -v
 }
 
 package() {
