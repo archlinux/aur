@@ -1,5 +1,5 @@
 pkgname=('kea-git')
-srcname='kea'
+_srcname='kea'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='DHCPv4/DHCPv6 server'
@@ -40,11 +40,11 @@ makedepends=(
 provides=('kea')
 conflicts=('kea')
 
-source=("${srcname}::git+https://github.com/isc-projects/kea.git")
+source=("${_srcname}::git+https://github.com/isc-projects/kea.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -53,7 +53,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     # /var/kea -> /var/lib/kea
     find . -path './.git' -prune -or -type f -exec sed --in-place  \
@@ -74,7 +74,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     autoreconf --install --force --warnings='all'
     ./configure \
@@ -91,7 +91,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     make DESTDIR="${pkgdir}" install
 
