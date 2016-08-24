@@ -4,9 +4,9 @@
 
 pkgname=asterisk
 pkgver=13.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/adsi.conf'
 	'etc/asterisk/agents.conf'
