@@ -1,14 +1,14 @@
 # Maintainer: Dylan Baker <dylan@pnwbakers.com>
 _name=jsonstreams
-pkgname=python-${_name}
+pkgname=python2-${_name}
 pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Python module for writing JSON as a stream"
 arch=('any')
 url="https://github.com/dcbaker/jsonstreams"
 license=('MIT')
-depends=('python')
-optdepends=('python-simplejson')
+depends=('python2')
+optdepends=('python2-simplejson')
 options=(!emptydirs)
 source=('https://pypi.python.org/packages/b6/4e/fc68910cc9b72bca0f9ee8d8cdc7d3ef55c03ab62b2dfb9338d74639f11c/jsonstreams-0.3.1.tar.gz'
         'https://pypi.python.org/packages/b6/4e/fc68910cc9b72bca0f9ee8d8cdc7d3ef55c03ab62b2dfb9338d74639f11c/jsonstreams-0.3.1.tar.gz.asc'
@@ -24,7 +24,7 @@ prepare() {
 
 package() {
   cd "$srcdir/${_name}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
