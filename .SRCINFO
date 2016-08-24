@@ -1,7 +1,7 @@
 pkgbase = firefox-gtk2
 	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = 48.0
-	pkgrel = 3
+	pkgver = 48.0.1
+	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -38,20 +38,20 @@ pkgbase = firefox-gtk2
 	depends = icu
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=48.0-3
+	provides = firefox=48.0.1-1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/48.0/source/firefox-48.0.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/48.0.1/source/firefox-48.0.1.source.tar.xz
 	source = mozconfig
 	source = firefox.desktop
 	source = firefox-install-dir.patch
 	source = vendor.js
 	source = firefox-symbolic.svg
 	source = no-libnotify.patch
-	sha256sums = f474113a1ee75a01d43e270bf438ba78b9f7f2e397a66652b43603235fa76e21
+	sha256sums = fcc08696dd40e42dc2bc2de99aed9ed9f15ac581364375b6bef2501c06ac5fe7
 	sha256sums = 5488e59d08787927337b343c74a999e62e36ba1a0715f3ecb1c314e2ff8f1961
-	sha256sums = c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826
+	sha256sums = fde2daaf082fb8ffcb107fa04ae26698b75083e34d984a7f4073b3407af9273e
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
 	sha256sums = 4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4
 	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
