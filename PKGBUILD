@@ -1,10 +1,10 @@
 pkgname=('python-dockerpty-git')
-srcname='dockerpty'
+_srcname='dockerpty'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Pseudo-tty handler for docker Python client'
 arch=('any')
-url='https://github.com/d11wtq/dockerpty'
+url="https://github.com/d11wtq/${_srcname}"
 license=('Apache')
 
 depends=('python' 'python-six')
@@ -12,11 +12,11 @@ makedepends=('git' 'python-setuptools')
 provides=('python-dockerpty')
 conflicts=('python-dockerpty')
 
-source=("${srcname}::git+https://github.com/d11wtq/dockerpty.git")
+source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     printf 'r%s.%s.%s\n' \
         "$( git rev-list --count 'HEAD' )" \
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-    cd "${srcdir}/${srcname}"
+    cd "${srcdir}/${_srcname}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
 }
