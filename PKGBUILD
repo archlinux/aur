@@ -6,7 +6,7 @@
 
 pkgname=v8
 pkgver=5.4.374.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -60,7 +60,9 @@ build() {
   cd v8
 
   msg2 "Running GN..."
-  tools/dev/v8gen.py x64.release
+  tools/dev/v8gen.py x64.release -- \
+		     is_component_build=true \
+		     v8_enable_i18n_support=true
 
 
   ## Needs to resync after running GN
@@ -93,6 +95,8 @@ package() {
   install -Dm755 out.gn/x64.release/d8 $pkgdir/usr/lib/v8/d8
   install -Dm644 out.gn/x64.release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
   install -Dm644 out.gn/x64.release/snapshot_blob.bin $pkgdir/usr/lib/v8/snapshot_blob.bin
+  install -Dm755 out.gn/x64.release/libv8.so $pkgdir/usr/lib/v8/libv8.so
+  ln -s v8/libv8.so $pkgdir/usr/lib/libv8.so
   install -Dm755 $srcdir/d8 $pkgdir/usr/bin/d8
 
   # V8 has several header files and ideally if it had its own folder in /usr/include
