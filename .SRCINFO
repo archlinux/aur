@@ -1,6 +1,6 @@
 pkgbase = qweechat
 	pkgdesc = QT GUI for WeeChat
-	pkgver = 1.1_rc2
+	pkgver = r94.f5e54d0
 	pkgrel = 1
 	url = http://weechat.org
 	arch = any
