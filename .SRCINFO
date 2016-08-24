@@ -1,6 +1,6 @@
 pkgbase = jws-git
 	pkgdesc = A wallpaper setter for minimalist window managers
-	pkgver = 1.1.0.r0.0e530da
+	pkgver = 1.2.0.r0.c8ae8c7
 	pkgrel = 1
 	url = https://github.com/JasonWaataja/JWS
 	arch = x86_64
