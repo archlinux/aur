@@ -5,9 +5,9 @@ _compile=0
 # 1=Download vlc stable git source and compile vlc fluidsynth plugin standalone.
 
 pkgname=vlc-plugin-fluidsynth
-pkgver=2.2.4
-pkgrel=3
-pkgrel_status=+b1
+pkgver=2.2.5
+pkgrel=1
+_pkgrel_status=+b1
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -16,13 +16,12 @@ depends=('vlc<3.0.0' 'fluidsynth')
 makedepends=()
 optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 conflicts=("${pkgname}-git")
-provides=("${pkgname}=${pkgver}")
 replaces=("${pkgname}-git")
 install="notes.install"
 
 if [ "${_compile}" -eq 0 ]; then
-	source_i686=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb")
-	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb")
+	source_i686=("${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_i386.deb")
+	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_amd64.deb")
 
 md5sums_i686=('8f94a60a86d0a5c79fa49f73b0402fbe')
 md5sums_x86_64=('11af57a1552d26c11ae8f207b86c5b80')
