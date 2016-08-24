@@ -1,6 +1,6 @@
 pkgname='vault'
 pkgdesc='A tool for managing secrets'
-pkgver='0.6.0'
+pkgver='0.6.1'
 pkgrel='1'
 url='https://vaultproject.io/'
 license=('MPL')
@@ -12,7 +12,7 @@ install='vault.install'
 source=("https://github.com/hashicorp/vault/archive/v${pkgver}.tar.gz"
         'vault.service'
 		'vault.hcl')
-sha512sums=('994a825bac621841a79f4c7edf05e1781d49798524a401ae3fc074f11c19d7674d94e3de5d85647a366f2b51d2ac8fc9663a98501b86fac2ef3c530e67601d33'
+sha512sums=('e1bfa5fbcc68b82a407de5ba40c44084d15c3f42bc4027783b25f97d0ef044d5d88a3650b412f2044b73cc525d115f1441a657861ad977644ca7f7a0259a18c7'
             'a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3'
             '8c064aa5dcca84822c1fa85e9d0ff520df46f794b2e9c689a9b4f81f74279387b3aebc08b3ca26cf786c2fcf1a330e765bf5a511074c24f87e5346672346ba1c')
 
