@@ -1,0 +1,16 @@
+pkgbase = camllight
+	pkgdesc = Compiler for caml light source code
+	pkgver = 0.75
+	pkgrel = 1
+	url = http://caml.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = custom:INRIA
+	makedepends = gcc
+	makedepends = sh
+	depends = sh
+	source = http://caml.inria.fr/pub/distrib/caml-light-0.75//cl75unix.tar.gz
+	md5sums = 6c236074e4487949ec22001c7a498057
+
+pkgname = camllight
+
