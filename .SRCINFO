@@ -8,6 +8,7 @@ pkgbase = airdcpp-webclient
 	license = GPL2
 	makedepends = git
 	makedepends = make
+	makedepends = cmake
 	depends = miniupnpc
 	depends = boost
 	depends = bzip2
