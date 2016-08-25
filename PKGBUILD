@@ -2,16 +2,16 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=3849.cec8e4b
+pkgver=312.07d3677
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(electron037)
+depends=(electron)
 makedepends=(git npm)
 source=(
-	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
+	"${_pkgname}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
 	"${_pkgname}.sh"
         "${_pkgname}.desktop"
 )
@@ -22,7 +22,10 @@ conflicts=('openbazaar')
 
 build(){
   cd $srcdir/${_pkgname}
-  npm install --production
+# npm install --production
+  npm install
+  npm run sass:build 
+  npm run process-index
 }
 
 package(){
@@ -47,5 +50,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '29c1b2adff85a66160fdaa0b48174c03'
+         '54bfeafbaddc20140558721a6f7a711d'
          'dbca9273e9fc18a7aa5d1c395508fe60')
