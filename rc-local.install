@@ -1,20 +1,8 @@
-_update() {
-	systemctl daemon-reload
-}
-
 post_install() {
-	_update
-	systemctl enable rc-local.service
-}
+	cat <<EOF
 
-post_upgrade() {
-	_update
-}
+==> Please activate the rc-local service to execute /etc/rc.local on boot.
+==> Run as root: systemctl enable rc-local.service
 
-pre_remove() {
-	systemctl disable rc-local.service
-}
-
-post_remove() {
-	_update
+EOF
 }

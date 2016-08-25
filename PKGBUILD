@@ -3,7 +3,7 @@
 # Contributor: $pooky Hunter <spookyh+arch@gmail.org>
 
 pkgname=rc-local
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc='Support for legacy rc.local scripts'
 url="https://aur.archlinux.org/packages/${pkgname}/"
