@@ -1,6 +1,6 @@
 # Maintainer: Aurelien Martin <aurlienmartin@gmail.com>
 
-_target=i686-elf
+_target=i586-elf
 pkgname=$_target-gcc
 pkgver=4.9.2
 pkgrel=2
@@ -9,8 +9,8 @@ _mpfrver=3.1.2
 _mpcver=1.0.2
 _islver=0.12.2
 _cloogver=0.18.1
-pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
-arch=(i686 x86_64)
+pkgdesc='The GNU Compiler Collection - cross compiler for i586-elf target'
+arch=(i586 x86_64)
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
 depends=($_target-binutils zlib)
