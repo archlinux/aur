@@ -1,6 +1,6 @@
 pkgbase = whizard
 	pkgdesc = A program system designed for the efficient calculation of multi-particle scattering cross sections and simulated event samples.
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://whizard.hepforge.org
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = whizard
 	depends = fastjet
 	depends = looptools
 	depends = hepmc
-	source = http://www.hepforge.org/archive/whizard/whizard-2.3.0.tar.gz
-	sha256sums = b0053195f22025df801e94cc6c1343ab6986a30e11b84f3f46f92400e4bcc82f
+	source = http://www.hepforge.org/archive/whizard/WHIZARD-2.3.1.tar.gz
+	sha256sums = 6c2889d6c26fe26814f6aeaa34b10bf3d2b1e9b2067df6977bec8edac8e2e7bb
 
 pkgname = whizard
 
