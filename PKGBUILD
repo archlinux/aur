@@ -5,7 +5,7 @@
 # Contributor: Alexandros Konstantinakis - Karmis <el04092@mail.ntua.gr>
 # Contributor: Jeremie Lasalle Ratelle <lasallej@iro.umontreal.ca>
 pkgname=tovid
-pkgver=0.35.3
+pkgver=0.35.2
 pkgrel=3
 pkgdesc="A suite of tools for creating video DVDs"
 depends=('mplayer' 'mjpegtools' 'ffmpeg' 'python2' 'tix' \
