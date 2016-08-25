@@ -1,12 +1,12 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=tinyssh-convert-git
 pkgver=r12.3cd028e
-pkgrel=1
+pkgrel=2
 pkgdesc="converter for ed25519 keys from OpenSSH to TinySSH format"
 arch=('x86_64' 'i686')
 url="https://github.com/ansemjo/tinyssh-convert"
 license=('MIT')
-makedepends=('autoconf' 'git')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}")
