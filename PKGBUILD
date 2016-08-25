@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.6.0.r0.gd33aeef
+pkgver=0.7.r0.gb6a282a
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -13,6 +13,7 @@ makedepends=('git')
 optdepends=(
   'autossh: For autotunnel (SSH tunnel)'\
   'compton: For compton user service'\
+  'conky: For conky user service'\
   'cpupower: For cpupower settings on linux-rt'\
   'glances: For monitoring user service (running in separate tmux environment)'\
   'gnupg: For gpg-agent as systemd user service'\
@@ -24,7 +25,6 @@ optdepends=(
   'openssh: For ssh-agent as systemd user service'\
   'rtorrent: For rtorrent user and system service'\
   'tmux: For monitoring, rtorrent and tmux user services'\
-  'update-mirrorlist: For timed pacman mirrorlist updates'\
   'weechat: For weechat in a separate tmux environment'
 )
 provides=('uenv')
