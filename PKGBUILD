@@ -29,4 +29,7 @@ package() {
     cp -r \
         "$srcdir/$pkgname/build" \
         "$pkgdir/usr"
+    cp -r \
+        "$srcdir/$pkgname/contrib/systemd/shxkd.service" \
+        "$pkgdir/usr/lib/systemd/system/shxkd.service"
 }
