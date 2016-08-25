@@ -1,7 +1,7 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-light
-pkgver=0.9.56
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 _qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Uses system libraries.'
 arch=('i686' 'x86_64')
@@ -94,7 +94,7 @@ noextract=(
 	'breakpad.tar.gz'
 	'breakpad-lss.tar.gz'
 )
-sha256sums=('69ed7364e87f8f24d6f68ddc0a5b98dfd5dae74ecc93e456cede9e65878ef404'
+sha256sums=('0aed24ba945a3bc5b047211e58a805aba9240e9738810adc2139c90d2a9064a8'
             '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
             '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
             'SKIP'
@@ -130,16 +130,11 @@ prepare() {
 	# Fix defines and paths in Telegram Desktop project file
 	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
-	sed -i 's,LIBS += /usr/local/lib/libz.a,LIBS += -lz,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
-	sed -i "s,/usr/local/tdesktop/Qt-5.6.0,$srcdir/qt,g" "$srcdir/tdesktop/Telegram/Telegram.pro"
+	sed -i 's,#xkbcommon\\,xkbcommon\\,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
 
 	(
 		echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
 		echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
-		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
-		echo 'INCLUDEPATH += "/usr/lib/gtk-2.0/include"'
-		echo 'INCLUDEPATH += "/usr/include/opus"'
-		echo 'LIBS += -lcrypto -lssl'
 	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
 }
 
@@ -161,6 +156,7 @@ build() {
 		-system-xcb \
 		-system-xkbcommon-x11 \
 		-no-opengl \
+		-no-gtkstyle \
 		-static \
 		-nomake examples \
 		-nomake tests \
