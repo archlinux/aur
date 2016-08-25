@@ -1,13 +1,13 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=openxenmanager-git
 pkgver=r227.ea4f348
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource multiplatform clone of Citrix XenCenter"
 arch=('any')
 url="https://github.com/OpenXenManager/openxenmanager"
 license=('GPL2')
 groups=()
-depends=('python2' 'rrdtool' 'gtk-vnc' 'python2-configobj' 'pygtk' 'python2-raven')
+depends=('python2' 'rrdtool' 'gtk-vnc-gtk2' 'python2-configobj' 'pygtk' 'python2-raven')
 makedepends=('git' 'python2-setuptools')
 conflicts=('openxenmanager-svn' 'python2-gtkchart-git')
 options=(!emptydirs)
