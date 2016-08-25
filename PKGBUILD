@@ -9,7 +9,7 @@ pkgrel=1
 depends=(rrdtool perl-http-daemon perl-json perl-ipc-sharelite perl-file-which)
 url=https://github.com/XavierBerger/RPi-Monitor
 source=($pkgname-$pkgver.tar.gz::https://github.com/XavierBerger/RPi-Monitor/archive/v${pkgver}.tar.gz)
-sha512sums=('1f6ecd73279405e83b53b8bafc488d46e9a78189a00fce1aacd3fb01b8ffed21154021783fbdbb0ec1f43d928d7454bb43a5f0e289511d71183e3347418cb183')
+sha512sums=('d816e39c7df25466776c6f74fb73d95bbf61173228ef1dcb226e791af6dcc278faf817d765a64ef949f11b1525b52d51195ca9be3486bbdccc95c67bbe189d6d')
 
 package() {
 	cd RPi-Monitor-${pkgver}/
