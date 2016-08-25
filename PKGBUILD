@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15071
+pkgver=r15073
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from bzr trunk"
 url="https://launchpad.net/inkscape"
@@ -21,7 +21,7 @@ provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!buildflags' '!makeflags')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
-md5sums=('SKIP')
+sha1sums=('SKIP')
 _bzrmod="inkscape"
 
 pkgver() {
@@ -34,13 +34,13 @@ prepare() {
   sed -i 's|"python"|"python2"|g' src/main.cpp
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
+  patch -Np0 < "$srcdir"/dbus+cmake.patch||true
 }
 
 build() {
   cd "$srcdir/$_bzrmod"
-  
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=RELEASE \
 	-DWITH_DBUS=OFF
   make 
 }
