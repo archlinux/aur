@@ -1,12 +1,14 @@
+# Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=python2-leveldb
 _pkgname=leveldb
 pkgver=0.193
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for leveldb database library"
 url="https://pypi.python.org/pypi/leveldb"
 arch=('any')
 license=('BSD')
 depends=('snappy' 'leveldb' 'gperftools' 'python2')
+makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/l/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('2952434f2a0ce10c44f58542cc561589')
 
