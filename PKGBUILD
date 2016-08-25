@@ -12,6 +12,7 @@ provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
 depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
+makedepends=('python2-setuptools' 'python-setuptools')
 source=(https://download.jetbrains.com/python/$pkgname-$pkgver-no-jdk.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
@@ -42,6 +43,10 @@ sha256sums=('8edb0bd61ea88ccbb1c41dcbea8a72a5501b93afa748101e8b4b494999b90455'
             'dbe4055a0e4980dba5c5104b6a9ec30a3e429e4e3ef5ef92efef2627403e7ac5')
 
 package() {
+  # compile PyDev debugger used by PyCharm to speedup debugging
+  python2 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python3 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  
   # base
   cd $srcdir
   install -dm 755 $pkgdir/opt/$pkgname
