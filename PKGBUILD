@@ -1,5 +1,5 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r209.g620517d
+pkgver=v0.1.r258.g14d8d8e
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
   cd osvr-steamvr
+  git submodule update --init --recursive
   find . -name CMakeLists.txt -exec sed -i 's/jsoncpp_lib/jsoncpp/g' {} \;
 
   mkdir -p "$srcdir/osvr-steamvr-build"
@@ -38,6 +39,7 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   rm -f "$pkgdir"/usr/bin/osvr_print_displays
+  rm -rf "$pkgdir"/usr/include/gtest/
 }
 md5sums=('SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
