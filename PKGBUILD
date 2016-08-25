@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
 
 pkgname=crackpkcs12
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A tool to audit PKCS12 files passwords"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('openssl')
 url="http://crackpkcs12.sourceforge.net"
 license=('GPL')
 source=("http://download.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6094f08b4fa9944a052f5f0a5a6c2e5d')
+md5sums=('fbb84226b13b1d4903a8aa4f29e7062f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
