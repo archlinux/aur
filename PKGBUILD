@@ -7,10 +7,10 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=2.2.0b1
-_pkgver=2.2.0.7
-pkgrel=2
-_build=145.3128856
+pkgver=2.2.0b2
+_pkgver=2.2.0.8
+pkgrel=1
+_build=145.3200535
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -22,7 +22,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha1sums=('bafb5d7029d2678e8274e24da1c7ce0a00f3a644'
+sha1sums=('7064f43efde8b0f4fe12b9ed20eb05de87c24d41'
           'b61f3bf3449f79f8b15aea93414398848e5a6614')
 validpgpkeys=('70617B1131063C47E8084DD10DDE73383977AC09') # Tad Fisher
 
