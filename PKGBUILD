@@ -7,12 +7,12 @@
 pkgname=libircclient-openssl-ipv6
 _pkgname=libircclient
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Small but powerful library, which implements client-server IRC protocol, with openSSL and ipv6 support'
 arch=('i686' 'x86_64')
 url='http://www.ulduzsoft.com/libircclient/'
 license=('GPL')
-depends=('glibc')
+depends=('glibc' 'openssl')
 makedepends=('python2-sphinx' 'python2-rst2pdf') 
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('783c48fe9153ed55a5565c818a178d67')
