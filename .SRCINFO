@@ -1,0 +1,14 @@
+pkgbase = pyenv-virtualenv-git
+	pkgdesc = Pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
+	pkgver = v1.0.0.0.ra3bc42c
+	pkgrel = 1
+	url = https://github.com/yyuu/pyenv-virtualenv
+	arch = any
+	license = MIT
+	provides = pyenv-virtualenv
+	conflicts = pyenv-virtualenv
+	source = pyenv-virtualenv-git::git+https://github.com/yyuu/pyenv-virtualenv
+	md5sums = SKIP
+
+pkgname = pyenv-virtualenv-git
+
