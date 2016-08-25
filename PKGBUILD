@@ -3,12 +3,13 @@
 pkgname=python-lolcat
 _realname=lolcat
 pkgver=0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Rainbows and unicorns (without Ruby! jay!)"
 url="https://github.com/tehmaze/lolcat"
 arch=('any')
 license=('beerware')
 depends=('python-setuptools')
+conflicts=('lolcat')
 source=("https://github.com/tehmaze/${_realname}/archive/${pkgver}.tar.gz")
 md5sums=('1688c1987087eb7bc55ad70e0fd91c25')
 
