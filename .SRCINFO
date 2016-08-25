@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-jquery-mobile
+	pkgdesc = Add Jquery Mobile to Roundcube (used by mobile plugin)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://plugins.roundcube.net/packages/melanie2/jquery_mobile
+	arch = any
+	license = GPL3
+	depends = roundcubemail
+	source = https://github.com/messagerie-melanie2/Roundcube-Plugin-JQuery-Mobile/archive/v1.0.tar.gz
+	md5sums = b655c6009351935caf373b406965e5a8
+
+pkgname = roundcubemail-plugin-jquery-mobile
+
