@@ -5,16 +5,13 @@ After=network.target
 [Service]
 Type=forking
 User=openbazaar
-WorkingDirectory=/var/lib/openbazaard/
 TimeoutSec=0
-EnvironmentFile=/etc/conf.d/openbazaard.conf
-Environment="PYTHONPATH=/var/lib/openbazaard/:/usr/lib/python2.7/site-packages/"
-ExecStart=/usr/bin/python2 /var/lib/openbazaard/openbazaard.py start $ARGS
-ExecStop=/usr/bin/python2 /var/lib/openbazaard/openbazaard.py stop
-PIDFile=/tmp/openbazaard.pid
+ExecStart=/usr/bin/openbazaard start
+ExecStop=/usr/bin/openbazaard stop
+ExecReload=/usr/bin/openbazaard restart
 
 ## Security
-InaccessibleDirectories=/home
+#InaccessibleDirectories=/home
 
 [Install]
 WantedBy=multi-user.target

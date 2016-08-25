@@ -2,81 +2,50 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=1112.5ba23b6
+pkgver=371.8811c69
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(
-	gnupg
-	python2-autobahn
-	python2-bitcointools
-	python2-bleach
-	python2-gnupg-isis
-	python2-libbitcoinclient
-	python2-miniupnpc
-	python2-protobuf3-coex
-	python2-pyelliptic
-	python2-pynacl
-	python2-pystun
-	python2-python-bitcoinlib
-	python2-requests
-	python2-service-identity
-	python2-twisted
-	python2-txaio
-	python2-txjson-rpc
-	python2-txrestapi
-	python2-txrudp
-	python2-txws
+depends=()
+makedepends=(go git)
+_user=github.com/OpenBazaar
+_repo=openbazaar-go
+source=("${_repo}::git+https://${_user}/${_repo}.git"
+		"${_pkgname}.service"
 )
-
-makedepends=(git)
-source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
-	"${_pkgname}.service"
-	"${_pkgname}.conf"
-	"${_pkgname}.sh"
-)
-install=${_pkgname}.install
-options=('!strip')
+options=('strip')
 provides=(${_pkgname})
 replaces=(${_pkgname})
-backup=("var/lib/${_pkgname}/ob.cfg"
-	"etc/conf.d/${_pkgname}.conf")
 
-package(){
+prepare(){
   cd $srcdir
+  export GOPATH="$PWD"/.gopath
+  mkdir -p "$GOPATH"/src/${_user}
+  ln -sf "$PWD"/${_repo} "$GOPATH"/src/${_user}/${_repo}
 
-msg2 "Use python2-protobuf3-coex requirements"
-  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +   
-  find . -type f -name "*.proto" -exec sed -i 's/protoc/protobuf3-protoc/g' {} +
+  cd "$GOPATH"/src/${_user}/${_repo}
+  go get -v
+}
 
-msg2 "Install systemd service"
+package() {
+  export PATH="$PATH":"$PWD"/.gopath/bin
+  cd "$GOPATH"/src/${_user}/${_repo}
+
+  go build
+  
+  msg2 "Install binary file"
+  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
+
+  msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
-
-msg2 "Install conf file"
-  install -Dm644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}.conf
-  install -dm755 $pkgdir/var/lib/
-  cp -r ${_pkgname} $pkgdir/var/lib/
-
-msg2 "Symlinking to allow gui to automatically call daemon"
-  install -dm755 $pkgdir/opt
-  ln -sr /var/lib/${_pkgname} $pkgdir/opt/OpenBazaar-Server
-  install -m777 ${_pkgname}.sh $pkgdir/var/lib/${_pkgname}/${_pkgname}
-
-msg2 "Python2 bytecode generation"
-  cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
-
-  msg2 "Remove git folder"
-  rm -rf $pkgdir/var/lib/${_pkgname}/{.git*,.eslint*,.travis*}
 }
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${_repo}
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 md5sums=('SKIP'
-         'df247302f02ad1af79e009fa75ced4bc'
-         'd66496060ae2a28c6f755a1fb29e3f37'
-         '3dccb27e5df2324880fde3f1b0972a2c')
+         '8901b5947b19402920df6df10f8d1ab6')
