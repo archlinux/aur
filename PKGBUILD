@@ -2,12 +2,13 @@
 _name=jsonstreams
 pkgname=python-${_name}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for writing JSON as a stream"
 arch=('any')
 url="https://github.com/dcbaker/jsonstreams"
 license=('MIT')
-depends=('python')
+depends=()
+makedepends=('python-setuptools')
 optdepends=('python-simplejson')
 options=(!emptydirs)
 source=('https://pypi.python.org/packages/b6/4e/fc68910cc9b72bca0f9ee8d8cdc7d3ef55c03ab62b2dfb9338d74639f11c/jsonstreams-0.3.1.tar.gz'
