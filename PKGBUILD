@@ -2,10 +2,10 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.9.130.ge1f3494
+pkgver=6.0.0.alpha.9.132.gb375807
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
 makedepends=('git' 'cmake' 'proot' 'dotnet-cli')
