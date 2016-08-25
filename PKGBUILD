@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=quickbms
-pkgver=0.7.5
+pkgver=0.7.6a
 pkgrel=1
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
@@ -13,7 +13,7 @@ provides=('quickbms')
 conflicts=('quickbms')
 # options='!emptydirs'
 source=("quickbms_${pkgver}.zip::http://aluigi.altervista.org/papers/quickbms_src.zip")
-md5sums=('30651e7dbc0e87377cefdf56e04791a4')
+md5sums=('8bd9af914e49fbe66405cf7ef2c7696d')
 
 build() {
   cd $srcdir/src
