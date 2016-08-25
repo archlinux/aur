@@ -6,7 +6,7 @@
 
 _pkgname=marble
 pkgname=$_pkgname-qt
-pkgver=15.12.2
+pkgver=16.04.3
 pkgrel=1
 pkgdesc="Desktop Globe - Qt version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,9 +16,8 @@ depends=('qt5-webkit' 'hicolor-icon-theme' 'desktop-file-utils' 'qt5-svg' 'qt5-s
 makedepends=('cmake' 'qt5-tools')
 provides=("$_pkgname" 'marble-data' 'libastro')
 conflicts=("$_pkgname" 'marble-data' 'libastro')
-install=$pkgname.install
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz")
-md5sums=('f927ac3b9cb016bd299a93d77e4b7e9d')
+md5sums=('e2e6315ba8277027f03ee2b5fe9c84a6')
 
 prepare() {
   mkdir -p build
