@@ -1,4 +1,5 @@
-# Maintainer: John Jenkins twodopeshaggy@gmail.com
+# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Contributor: John Jenkins twodopeshaggy@gmail.com
 # Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: Asa Marco <marcoasa90<at>gmail[.]com>
 # Contributor: Felix Rohrbach <fxrh@gmx.de>
