@@ -3,7 +3,7 @@
 pkgname=android-sdk-build-tools
 _ver=24.0.1
 pkgver=r$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/index.html"
@@ -14,7 +14,7 @@ depends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 _sdk=android-sdk
 
 source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
-sha1sums=('d3647db5c349247787d4e124dfb717e72b4304c7')
+sha1sums=('84f18c392919a074fcbb9b1d967984e6b2fef8b4')
 _android=android-7.0
 options=('!strip')
 
