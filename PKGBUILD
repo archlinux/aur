@@ -5,7 +5,7 @@
 # Contributor: Alexandros Konstantinakis - Karmis <el04092@mail.ntua.gr>
 # Contributor: Jeremie Lasalle Ratelle <lasallej@iro.umontreal.ca>
 pkgname=tovid
-pkgver=0.35.2
+pkgver=0.35.3
 pkgrel=2
 pkgdesc="A suite of tools for creating video DVDs"
 depends=('mplayer' 'mjpegtools' 'ffmpeg' 'python2' 'tix' \
@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver} 
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 }
