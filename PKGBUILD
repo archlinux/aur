@@ -16,7 +16,7 @@ source=(
   glassfish-web.service
 )
 md5sums=('44baeca38cf33bb655fd3dd09f7d2b78'
-         '1e903be92d42b99140fef18d24302c0f')
+         '6d90ad02652b935bb14585893e6be241')
 
 package() {
   mkdir -p $pkgdir/opt

@@ -13,7 +13,7 @@ pkgbase = glassfish-web-v4
 	source = http://download.java.net/glassfish/4.1.1/release/glassfish-4.1.1-web.zip
 	source = glassfish-web.service
 	md5sums = 44baeca38cf33bb655fd3dd09f7d2b78
-	md5sums = 1e903be92d42b99140fef18d24302c0f
+	md5sums = 6d90ad02652b935bb14585893e6be241
 
 pkgname = glassfish-web-v4
 
