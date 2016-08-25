@@ -20,7 +20,7 @@ post_remove() {
 }
 
 _chown() {
-  chown -R $usr:$usr $home $log
+  chown -R $usr:$usr $home
 }
 
 _mkuser() {
@@ -31,5 +31,4 @@ _mkuser() {
     echo "done"
   }
 }
-
 

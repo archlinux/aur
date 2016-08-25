@@ -9,6 +9,7 @@ arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=()
+install=${_pkgname}.install
 makedepends=(go git)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
