@@ -44,8 +44,8 @@ sha256sums=('8edb0bd61ea88ccbb1c41dcbea8a72a5501b93afa748101e8b4b494999b90455'
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
-  python3 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python2 $srcdir/pycharm-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python3 $srcdir/pycharm-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
   
   # base
   cd $srcdir
