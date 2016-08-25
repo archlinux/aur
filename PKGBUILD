@@ -1,7 +1,7 @@
 # Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
 pkgver=2.1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/1-0-Home.html"
@@ -13,7 +13,7 @@ md5sums=('0488f7b9cf8f99cff5b161c1911d9588')
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	patch -Np0 -i \
-		"patch1.patch"
+		"$srcdir/../patch1.patch"
 }
 
 build() {
