@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-dosbox-git
-pkgver=191.40ddb3b
+pkgver=197.1e50d76
 pkgrel=1
 pkgdesc="libretro implementation of DOSBox."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -12,9 +12,9 @@ makedepends=('git')
 _libname=dosbox_libretro
 _gitname=dosbox-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-md5sums=('SKIP'
-         'SKIP')
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
+sha256sums=('SKIP'
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
