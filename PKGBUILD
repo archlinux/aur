@@ -4,7 +4,7 @@
 
 pkgname=weather
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool which shows weather forecasts from METAR data"
 arch=('any')
 url="http://fungi.yuggoth.org/weather/"
@@ -14,6 +14,12 @@ source=(http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.gz)
 #md5sums=('a15517825595f73dc06ccd6628c4c2f6')
 # checksums seem to be changing every hour or something weird
 md5sums=('be49f38f2da59dfc4716e2370f029a65')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # remove on verions 2.1
+  sed -i 's|weather.noaa.gov/pub|tgftp.nws.noaa.gov|' {airports,overrides.conf,places,slist,stations,weather.py,weatherrc.5,zctas,zlist,zones}
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
