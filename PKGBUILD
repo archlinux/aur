@@ -2,12 +2,13 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.8.r1.g83b87bf
+pkgver=0.8.2.r6.g18fa764
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet (git version)."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
+  'geth'
   'leveldb'
   'qt5-base'
   'qt5-declarative'
@@ -25,21 +26,16 @@ makedepends=(
   'gulp'
 )
 provides=(
-  'geth'
   'mist'
   'libnode'
 )
 conflicts=(
-  'geth'
-  'geth-git'
-  'go-ethereum'
-  'go-ethereum-git'
   'mist'
   'libnode'
   'libnode-git'
 )
 optdepends=(
-  'ethereum: The cpp-ethereum commandline client.'
+  'parity: The fast, light, robust Ethereum client.'
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
@@ -70,10 +66,7 @@ build() {
   git pull
   git submodule update --init
   git apply "${srcdir}/mist-pathfix.patch"
-  npm install meteor-build-client
-  npm install gulp
   npm install
-  gulp update-nodes
   gulp mist --platform linux
 }
 
@@ -93,7 +86,6 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${_pkgname}/Mist" "${pkgdir}/usr/bin/mist"
-  ln -s "/usr/share/${_pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${_pkgname}/LICENSE"
@@ -109,5 +101,4 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/Mist"
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/libnode.so"
-  chmod 755 "${pkgdir}/usr/share/${_pkgname}/resources/node/geth/geth"
 }
