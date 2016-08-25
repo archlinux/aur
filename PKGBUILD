@@ -3,15 +3,16 @@
 pkgname=git-remote-hg-git
 pkgver=0.3.r11.g628d26c
 pkgrel=1
+epoch=1
 provides=("git-remote-hg")
 conflicts=("git-remote-hg")
 pkgdesc="Transparent bidirectional bridge between Git and Mercurial"
 arch=('any')
-url="https://github.com/fingolfin/git-remote-hg"
+url="https://github.com/felipec/git-remote-hg"
 license=('GPL2')
 depends=('git' 'mercurial')
 makedepends=('asciidoc')
-source=("git+https://github.com/fingolfin/git-remote-hg.git")
+source=("git+https://github.com/felipec/git-remote-hg.git")
 md5sums=('SKIP')
 
 pkgver() {
