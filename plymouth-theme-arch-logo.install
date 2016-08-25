@@ -1,7 +1,7 @@
 post_install() {
 	cat <<EOF 
 
-==> To activate the theme, run:
+==> To activate the theme, run as root:
 ==> plymouth-set-default-theme -R arch-logo
 
 EOF
