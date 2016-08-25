@@ -1,11 +1,11 @@
 # Maintainer: Jannik Birk <birk.jannik@gmail.com>
 
-_target=i686-elf
+_target=i586-elf
 pkgname=$_target-binutils
 pkgver=2.25
 pkgrel=1
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
-arch=(i686 x86_64)
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the i586-elf target'
+arch=(i586 x86_64)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
