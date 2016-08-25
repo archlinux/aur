@@ -1,7 +1,7 @@
 pkgbase = tovid
 	pkgdesc = A suite of tools for creating video DVDs
 	pkgver = 0.35.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tovid.wikia.com
 	arch = i686
 	arch = x86_64

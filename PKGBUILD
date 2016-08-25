@@ -6,7 +6,7 @@
 # Contributor: Jeremie Lasalle Ratelle <lasallej@iro.umontreal.ca>
 pkgname=tovid
 pkgver=0.35.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of tools for creating video DVDs"
 depends=('mplayer' 'mjpegtools' 'ffmpeg' 'python2' 'tix' \
 'imagemagick' 'dvdauthor' 'dvd+rw-tools' 'sox' 'normalize' 'bc')
