@@ -12,6 +12,9 @@ url="https://www.npmjs.com/package/elm"
 license=("BSD")
 depends=('nodejs')
 makedepends=('npm')
+optdepends=(
+        'libtinfo: required by elm repl'
+    )
 source=("http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 sha256sums=('2b42dbe46e2066a29360998c1c3c8d8521f3d28eb6ac11ee11fd41eac8c26324')
 noextract=("$_pkgname-$pkgver.tgz")
