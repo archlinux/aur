@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8.1
-_strver=0-8-1
+pkgver=0.8.2
+_strver=0-8-2
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ conflicts=(
   'libnode-git'
 )
 optdepends=(
-  'ethereum: The cpp-ethereum commandline client.'
+  'parity: The fast, light, robust Ethereum client.'
 )
 url="https://github.com/ethereum/mist"
 license=('GPL')
@@ -49,13 +49,13 @@ source_i686=(
   "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux32-$_strver.zip"
 )
 sha256sums_i686=(
-  "ac12b1ce1252c8256da489da5314985216e517a651cd4063ed79b1c960d23724"
+  "e281b2b4e9f261d8983642ea03929063d28349265294150a1940feb0792f5f14"
 )
 source_x86_64=(
   "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux64-$_strver.zip"
 )
 sha256sums_x86_64=(
-  "2a3cf6e5ddfc46df75f78c4dc7bb2e6248fac2ce84cb2708882895b9f2eda1b7"
+  "3a222dd76a3b9b8f5f768cae7e57258fc07cff138e95c9c566687b8547275fea"
 )
 
 package() {
