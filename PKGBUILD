@@ -6,7 +6,7 @@
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=51.0.2704.106
+pkgver=52.0.2743.116
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
@@ -32,12 +32,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
-        PNGImageDecoder.patch)
-sha256sums=('fb97a6a3119ec2c8cc4ad9a0bd6c4d306516769039a2633633f7d0c770012cfd'
+        PNGImageDecoder.patch
+        chromium-52.0.2743.116-unset-madv_free.patch)
+sha256sums=('a194ae1edb041024b3d4b6ba438f32fefdb6f1ecb24a96c50248a486b237a101'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
-            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd')
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
+            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
+            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -78,6 +80,10 @@ prepare() {
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+
+  # Disable MADV_FREE (if set by glibc)
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
+  patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
