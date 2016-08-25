@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.7.19
+pkgver=1.7.20
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'python')
 checkdepends=('check' 'python-flask' 'python-nose' 'python-pygpgme' 'python-pyxattr')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('31361f590626fd20cbad6742df638467')
+md5sums=('e4ef7a85806e58e66308e99cfeabce9e')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
