@@ -1,11 +1,11 @@
 pkgbase = python2-jsonstreams
 	pkgdesc = A Python module for writing JSON as a stream
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dcbaker/jsonstreams
 	arch = any
 	license = MIT
-	depends = python2
+	makedepends = python2-setuptools
 	optdepends = python2-simplejson
 	options = !emptydirs
 	source = https://pypi.python.org/packages/b6/4e/fc68910cc9b72bca0f9ee8d8cdc7d3ef55c03ab62b2dfb9338d74639f11c/jsonstreams-0.3.1.tar.gz
