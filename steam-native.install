@@ -13,7 +13,7 @@ yellow="${bold}$(tput setaf 3)"
 blue="${bold}$(tput setaf 4)"
 
 RESTART=0
-MIRROR_URL='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
+#MIRROR_URL='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
 
 _update() {
 	update-desktop-database -q
@@ -43,8 +43,8 @@ post_install() {
 		RESTART=1
 	fi
 	_update
-	[ "$(uname -m)" == 'x86_64' ] && \
-		note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${MIRROR_URL}"
+	#[ "$(uname -m)" == 'x86_64' ] && \
+	#	note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${MIRROR_URL}"
 }
 
 post_upgrade() {
@@ -55,7 +55,7 @@ post_upgrade() {
 			RESTART=1
 		fi
 	fi
-	post_install
+	post_install "$1"
 }
 
 post_remove() {
@@ -74,6 +74,6 @@ post_remove() {
 		msg_blue 'No close to tray detected'
 	fi
 	_update
-	[ "$(uname -m)" == 'x86_64' ] && \
-		note "Don't forget to remove these if you copied them separately:\n\t${MIRROR_URL}"
+	#[ "$(uname -m)" == 'x86_64' ] && \
+	#	note "Don't forget to remove these if you copied them separately:\n\t${MIRROR_URL}"
 }
