@@ -5,12 +5,12 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.8.4
+pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf)
-sha256sums=('d7cecdf7aab93bfe950e6f83ec526681b8770788c7b2a802bfe50ff97fc17a6c'
+sha256sums=('515d10439777a4816fe5b0a0fc9a4ce498a2ecfd23eba0c25dc00f3d6c805079'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
