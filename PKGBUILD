@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver} 
-  python setup.py install --root="$pkgdir"
+  python2 setup.py install --root="$pkgdir"
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 }
