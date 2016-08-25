@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Franziskus Kiefer <arch@franziskuskiefer.de>
 
 pkgbase=nss-hg
 pkgname=nss-hg
@@ -13,11 +13,8 @@ _nsprver=4.12
 depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit')
 makedepends=('perl' 'python2')
 options=('!strip' '!makeflags' 'staticlibs')
-source=("hg+https://hg.mozilla.org/projects/nss"
-        nss.pc.in nss-config.in)
-sha256sums=('SKIP'
-            'b9f1428ca2305bf30b109507ff335fa00bce5a7ce0434b50acd26ad7c47dd5bd'
-            'e44ac5095b4d88f24ec7b2e6a9f1581560bd3ad41a3d198596d67ef22f67adb9')
+source=("hg+https://hg.mozilla.org/projects/nss")
+sha256sums=('SKIP')
 
 prepare() {
   # Respect LDFLAGS
@@ -33,7 +30,6 @@ build() {
   export NSS_ENABLE_ECC=1
   export NSPR_INCLUDE_DIR="`nspr-config --includedir`"
   export NSPR_LIB_DIR="`nspr-config --libdir`"
-  export NSS_ENABLE_TLS_1_3=1
   export XCFLAGS="${CFLAGS}"
 
   [ "$CARCH" = "x86_64" ] && export USE_64=1
@@ -50,7 +46,7 @@ package() {
   NSS_VMINOR=$(grep '#define.*NSS_VMINOR' nss/lib/nss/nss.h | awk '{print $3}')
   NSS_VPATCH=$(grep '#define.*NSS_VPATCH' nss/lib/nss/nss.h | awk '{print $3}')
 
-  sed ../nss.pc.in \
+  sed nss/pkg/pkg-config/nss.pc.in \
     -e "s,%libdir%,/usr/lib,g" \
     -e "s,%prefix%,/usr,g" \
     -e "s,%exec_prefix%,/usr/bin,g" \
@@ -60,7 +56,7 @@ package() {
     > "$pkgdir/usr/lib/pkgconfig/nss.pc"
   ln -s nss.pc "$pkgdir/usr/lib/pkgconfig/mozilla-nss.pc"
 
-  sed ../nss-config.in \
+  sed nss/pkg/pkg-config/nss-config.in \
     -e "s,@libdir@,/usr/lib,g" \
     -e "s,@prefix@,/usr/bin,g" \
     -e "s,@exec_prefix@,/usr/bin,g" \
