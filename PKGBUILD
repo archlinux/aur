@@ -5,7 +5,7 @@ pkgver="1.4.0"
 pkgrel=1
 pkgdesc="A clone of the Unix SCCS tool suite."
 arch=('i686' 'x86_64')
-url="http://savannah.gnu.org/projects/cssc"
+url="http://savannah.gnu.org/projects/$pkgname"
 license=('GPL2')
 depends=('gcc-libs' 'sh')
 options=('!emptydirs')
@@ -20,6 +20,7 @@ build() {
   make
 }
 
+# Can enable this check but takes a very long time to run ..
 #check() {
 #  cd "$srcdir/$_PKGNAME-$pkgver"
 #  make check
