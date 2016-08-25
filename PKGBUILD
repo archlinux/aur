@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-git
-pkgver=v20151222.8.r5c5205e
+pkgver=v1.0.0.6.rdcc109f
 pkgrel=1
 pkgdesc='Simple Python version management'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=("pyenv")
 provides=("pyenv")
 depends=()
-source=("$pkgname::git+https://github.com/yyuu/pyenv#branch=master")
+source=("$pkgname::git+https://github.com/yyuu/pyenv")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,6 +19,9 @@ pkgver() {
 }
 
 package() {
+    cd "$pkgname"
+    git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+    cd ..
     mkdir -p "${pkgdir?}"/{opt/pyenv,usr/bin}
     cd "${srcdir?}/$pkgname" || return
     cp -a -- * "$pkgdir"/opt/pyenv
