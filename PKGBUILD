@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Maudoux <layus DOT on @AT@ gmail DOT com>
 
 pkgname=mozart2-git
-pkgver=v2.0.0.alpha.0.4165.g7147ed7
+pkgver=v2.0.0.alpha.0.4166.g224deca
 pkgrel=1
 pkgdesc="The Mozart Programming System version 2"
 arch=('i686' 'x86_64')
@@ -61,7 +61,7 @@ build() {
           -DGTEST_SRC_DIR=/usr/include/gtest/ \
           -DLLVM_BUILD_DIR=/usr/ \
           -DLLVM_SRC_DIR=/usr/ \
-          -DCMAKE_CXX_FLAGS=-Wno-strict-aliasing \
+          -DCMAKE_CXX_FLAGS=-Wno-braced-scalar-init \
           .
 
     make #VERBOSE=1
