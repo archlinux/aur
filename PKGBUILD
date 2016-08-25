@@ -34,7 +34,6 @@ prepare() {
   sed -i 's|"python"|"python2"|g' src/main.cpp
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
-  patch -Np0 < "$srcdir"/dbus+cmake.patch||true
 }
 
 build() {
