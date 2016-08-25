@@ -3,7 +3,7 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.11.7.r56.g3c75fb9
+pkgver=v1.11.7.r61.g8536892
 pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('liferea')
 conflicts=('liferea' 'liferea-unstable')
 options=('!libtool' '!emptydirs')
 source=('git+https://github.com/lwindolf/liferea.git')
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
 	cd liferea
