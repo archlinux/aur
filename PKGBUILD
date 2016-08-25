@@ -3,13 +3,13 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=multipath-tools-git
-pkgver=1389.90dd15d
+pkgver=1902.99ae0cc
 pkgrel=1
 pkgdesc="Tools to drive the Device Mapper multipathing driver (contains kpartx)"
 url="http://christophe.varoqui.free.fr/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('libaio' 'device-mapper')
+depends=('libaio' 'device-mapper' 'liburcu')
 makedepends=('git' 'setconf')
 conflicts=('multipath-tools')
 options=(!emptydirs)
