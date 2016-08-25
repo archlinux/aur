@@ -1,8 +1,8 @@
 # Maintainer: Frederic Bezies < fredbezies at gmail dot com >
 
 pkgname=quakespasm
-pkgver=0.92.0
-pkgrel=5
+pkgver=0.92.1
+pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. Stable version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
 url="http://quakespasm.sourceforge.net"
@@ -15,11 +15,11 @@ source=(https://sourceforge.net/projects/quakespasm/files/Source/$pkgname-$pkgve
         $pkgname-mp1.desktop
         $pkgname-mp2.desktop
         $pkgname-impel.desktop)
-md5sums=('d7ba2b9eaca198f32f60eeabc1f02db1'
-         '090c3c8f74dd649187bfe0ad7ac3cd76'
-         '1d86f05cbe4254402e4c00a62f680e7f'
-         'cdf7daadefaa1c44b1e3da574e5268d4'
-         '96a70a5e74d56284149cc33019a9f8ad')
+sha1sums=('ca37bbc73d96a4f34372586e2c1990ec8aac8b17'
+          '7a78889a7a6e24047b4777a8b4827e29cfc87381'
+          '2b774f68f889308ba0b8de69580a32ed11f833ec'
+          '1184a40775fc46c129828d4a9a35785542c62ee3'
+          '2c97f722fc5c9f8d8f1a9a01f55491a448a9253e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/Quake/"
@@ -45,3 +45,5 @@ package() {
 # install -Dm644 $srcdir/$pkgname-impel.desktop $pkgdir/usr/share/applications/$pkgname-impel.desktop
 
 }
+
+
