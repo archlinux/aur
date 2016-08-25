@@ -10,14 +10,14 @@
 pkgname=acpi_call-grsec
 _pkgname="${pkgname/-grsec}"
 pkgver=1.1.0
-pkgrel=3
-_extramodules=extramodules-4.6.4-grsec
+pkgrel=4
+_extramodules=extramodules-4.7.2-grsec
 pkgdesc='A linux-grsec kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('i686' 'x86_64')
 url='http://github.com/mkottman/acpi_call'
 license=('GPL')
-depends=('linux-grsec>=4.6.3' 'linux-grsec<4.7')
-makedepends=('linux-grsec-headers>=4.6.4-2' 'linux-grsec-headers<4.7')
+depends=('linux-grsec>=4.7.2' 'linux-grsec<4.8')
+makedepends=('linux-grsec-headers>=4.7.2' 'linux-grsec-headers<4.8')
 install='acpi_call-grsec.install'
 source=("${_pkgname}-$pkgver.tar.gz::http://github.com/mkottman/acpi_call/archive/v${pkgver}.tar.gz")
 sha256sums=('d0d14b42944282724fca76f57d598eed794ef97448f387d1c489d85ad813f2f0')
