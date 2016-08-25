@@ -2,7 +2,7 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.5.0
+pkgver=3.5.0.9.g3e5ac93
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player
         "gpmdp.desktop"
         "gpmdp-git.install")
 md5sums=('SKIP'
-         '3eb4676613a62f2dfb701b1b9eabebc8'
+         '8d23ff434999f7ec1e6e35d3344a1bb2'
          'e297b473f8fd1b6f26642da1d7206123')
 
 pkgver() {

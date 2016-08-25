@@ -8,4 +8,4 @@ Type=Application
 StartupNotify=true
 Categories=AudioVideo;Player;Audio;
 StartupWMClass=Google Play Music Desktop Player
-Name[en_US]=gpmdp
+Name[en_US]=Google Play Music Desktop Player
