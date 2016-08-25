@@ -7,7 +7,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.8rc2.r0.g694d0d0
+pkgver=4.8rc3.r34.g4935e04
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,8 +20,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
-            'c9ae71747f02c0e9631dfe64a5e0f2e95579bc911e30dbf7dba06eb7f4a367d1'
+            '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
+            'd9f1f1db8436841f6d9cac8e85e331f0e649f2e4484810ef969d695c89e3eaab'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
@@ -126,6 +126,9 @@ _package() {
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+
+  # add System.map
+  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
 }
 
 _package-headers() {
