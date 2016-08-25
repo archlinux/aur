@@ -1,7 +1,7 @@
 #Maintainer: Jarek Sedlacek <jareksedlacek@gmail.com
 
 pkgname=pymetar
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc="downloads the weather report for a given station ID, decodes it and the provides easy access to all the data found in the report"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package(){
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('6be3da59b26b776c0edf63635b906daf')
+md5sums=('b41403f2efdd44f684cecf3f0aa1569d')
