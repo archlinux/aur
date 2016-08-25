@@ -14,11 +14,11 @@ install="${pkgname}.install"
 source=('steam-runtime.desktop'
 	'51-steam.rules')
 
-sha256sums=('8ce140660b4c6295ff0e580a02cebafce1ed22828561304e3f99ee78b8cfdb5d'
+sha256sums=('6135682caab8f75e803d8f2e57e5645cbff3fb40f5bd2286125319e1fd3b24e3'
 	'10996aea68afc633b614404fd91143b738ce0fd929af91659f4c6dd960776c40')
 
 depends=('steam' 'networkmanager')
-depends_i686=('openal' 'gtk2' 'libgcrypt15' 'libnl' 'libpng12' 'gconf' 'nss' 'libpulse' 'libxss' 'gnutls28' 'libudev0' 'libnm-glib')
+depends_i686=('openal' 'gtk2' 'libgcrypt15' 'libnl' 'libpng12' 'gconf' 'nss' 'libpulse' 'libxss' 'gnutls28' 'libudev0')
 depends_x86_64=('lib32-openal' 'lib32-gtk2' 'lib32-libgcrypt15' 'lib32-libnl' 'lib32-libpng12' 'lib32-gconf'
 	'lib32-nss' 'lib32-libpulse' 'lib32-libxss' 'lib32-gnutls28' 'lib32-libudev0' 'lib32-libnm-glib')
 
