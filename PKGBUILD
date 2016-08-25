@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 272009 2016-07-19 18:14:23Z alucryd $
+# $Id: PKGBUILD 273528 2016-08-09 06:20:41Z alucryd $
 # Maintainer: Jan Koppe <post@jankoppe.de>
 #
 # This package is a modified version of extra/ffmpeg with --enable-decklink
@@ -9,7 +9,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-decklink
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
@@ -31,7 +31,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('a5bca50a90a37b983eaa17c483a387189175f37ca678ae7e51d43e7610b4b3b4'
+sha256sums=('62eb8d810b93c1ffc23739c0824a91eabfe5e7be81fab34ce740736a110b70f7'
             'SKIP')
 
 build() {
@@ -42,6 +42,8 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --extra-cflags="-I/usr/src/decklink-sdk" \
+    --extra-ldflags="-L/usr/src/decklink-sdk" \
     --enable-avisynth \
     --enable-avresample \
     --enable-decklink \
@@ -60,7 +62,6 @@ build() {
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
-    --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
