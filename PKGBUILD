@@ -5,7 +5,7 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.5.0.r141.gb545cdf
+pkgver=1.5.0.r149.ga80e768
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('git')
 provides=('focuswriter')
 conflicts=('focuswriter')
 source=("git://github.com/gottcode/focuswriter.git")
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 
 pkgver() {
