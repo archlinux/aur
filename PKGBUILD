@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2000-git
-pkgver=80.7a9bbf0
+pkgver=95.6f5e3a1
 
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ _libname=mame2000_libretro
 _gitname=mame2000-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info"
-	"https://raw.githubusercontent.com/libretro/mame/master/docs/mamelicense.txt")
+	"https://raw.githubusercontent.com/libretro/mame/master/docs/LICENSE")
 sha256sums=('SKIP'
 	'SKIP'
 	'SKIP')
@@ -26,12 +26,12 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  if [[ "${CARCH}" == *"arm"* ]]; then ARM="ARM=1"; fi
+  [[ "${CARCH}" == *"arm"* ]] && ARM="ARM=1"
   make -f Makefile ${ARM}
 }
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
   install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
-  install -Dm644 "mamelicense.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
