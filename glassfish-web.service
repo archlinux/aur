@@ -1,0 +1,12 @@
+[Unit]
+Description = GlassFish Server v4 - Java EE 7 Web Profile
+After = syslog.target network.target
+
+[Service]
+ExecStart = /usr/bin/java -jar /opt/glassfish4-web/glassfish/lib/client/appserver-cli.jar start-domain
+ExecStop = /usr/bin/java -jar /opt/glassfish4-web/glassfish/lib/client/appserver-cli.jar stop-domain
+ExecReload = /usr/bin/java -jar /opt/glassfish4-web/glassfish/lib/client/appserver-cli.jar restart-domain
+Type = forking
+
+[Install]
+WantedBy = multi-user.target

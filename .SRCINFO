@@ -1,0 +1,19 @@
+pkgbase = glassfish-web-v4
+	pkgdesc = Glassfish 4 - Java EE 7 Web Profile edition
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://glassfish.java.net/
+	install = glassfish-web-v4.install
+	arch = any
+	license = CDDL
+	depends = java-environment>=7
+	provides = glassfish
+	conflicts = glassfish
+	options = !strip
+	source = http://download.java.net/glassfish/4.1.1/release/glassfish-4.1.1-web.zip
+	source = glassfish-web.service
+	md5sums = 44baeca38cf33bb655fd3dd09f7d2b78
+	md5sums = 1e903be92d42b99140fef18d24302c0f
+
+pkgname = glassfish-web-v4
+

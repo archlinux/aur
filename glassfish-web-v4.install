@@ -1,0 +1,24 @@
+post_install() {
+  systemctl daemon-reload
+}
+
+pre_remove() {
+  systemctl is-enabled glassfish-web.service > /dev/null 2>&1
+  is_enabled=$?
+  systemctl status glassfish-web.service > /dev/null 2>&1
+  is_running=$?
+
+  if [ $is_enabled -eq 0 ]; then
+    systemctl disable glassfish-web.service > /dev/null 2>&1
+  fi
+
+  if [ $is_running -eq 0 ]; then
+    systemctl stop glassfish-web.service > /dev/null 2>&1
+  fi
+}
+
+post_remove() {
+  if [ -d "$pkgdir/opt/glassfish4-web" ]; then
+    /bin/echo -e "\e[1;31mNOTICE:\e[0m You may want to delete directory \e[1;31m$pkgdir/opt/glassfish4-web\e[0m"
+  fi
+}
