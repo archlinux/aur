@@ -9,8 +9,8 @@ license=('GPL2')
 
 depends=('libmtp' 'fuse' 'gcc-libs')
 makedepends=('git')
-provides=('simple-mtpfs')
-conflicts=('simple-mtpfs')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
