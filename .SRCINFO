@@ -1,7 +1,7 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A fork of nicotine, a Soulseek music-sharing client written in python. Gitversion.
-	pkgver = 037e16c
-	pkgrel = 3
+	pkgver = r1709.785bce4
+	pkgrel = 1
 	url = http://nicotine-plus.org
 	arch = i686
 	arch = x86_64
