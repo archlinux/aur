@@ -3,7 +3,7 @@
 # Contributor (Arch): Ander <anderraso@gmail.com>
 
 pkgname=gnuhealth
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A free Health and Hospital Information System"
 arch=(any)
@@ -32,7 +32,7 @@ source=(
   http://ftp.gnu.org/gnu/health/$pkgname-$pkgver.tar.gz.sig
 )
 sha512sums=(
-  6cd9f1b76472b48a658304006ae4179ad581c1524862b2853aa605e94f95246d7f4225aeed8474ebfb6672d3c2bcc869218cd29268705de6daaffe1b746801bb
+  c2bb7421187bc02f3eb6d0cd849a5df1d7eb4ae71fb2c034c27311de1c827480d9b96bdc0de6312fba1cd2a4e544dfed28e4091f431e3459039c9d49369dd9b4
   SKIP
 )
 validpgpkeys=(
