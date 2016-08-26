@@ -3,41 +3,38 @@
 # PKGBUILD copied from https://github.com/greigdp/msp430-mspds
 # Contributor: Alexei Colin <ac@alexeicolin.com>
 pkgname=mspds
-pkgver=3.05.01.01
-pkgrel=4
+pkgver=3.07.000.012
+pkgrel=1
 pkgdesc="MSP430 Debug Stack. Contains a dynamic link library as well as embedded firmware that runs on the MSP-FET430UIF or the eZ430 emulators."
 arch=('i686' 'x86_64')
-url="http://processors.wiki.ti.com/index.php/MSPDS_Open_Source_Package"
+url="http://www.ti.com/tool/mspds"
 # Licenses were found in "Manifest MSPDebugStack OS Package.pdf" from the mspds source archive.
 license=('custom:TI BSD' 'custom:IAR BSD' 'custom: TI TSPA')
 group=('msp430')
 depends=('hidapi' 'boost')
 makedepends=('unzip' 'dos2unix')
 optdepends=('mspdebug')
-noextract=('slac460n.zip')
-source=('http://www.ti.com/lit/sw/slac460n/slac460n.zip'
-        'hidapi.patch'
-        'ambiguous-ifstream.patch')
+_release='slac460r'
+_releasefile="${_release}.zip"
+noextract=("${_releasefile}")
+source=("http://www.ti.com/lit/sw/${_release}/${_releasefile}"
+        'hidapi.patch')
 
-sha256sums=('181418a33400567fa19e411f16df340a2869dd87e941e517732280004ee0fed7'
-            'e2bb2522f34e37ad91b6713c28e267e5e40591a4508ae315fcaea6c2103bb9e3'
-            '87543eb32798a8c1d922193f464f733f1e65664cb53f61ba7be6bfcfeaf6677f')
+sha256sums=('f51dd2d1032b1f9f12e4a24ea02224ac2037aa7bbff66d3fa685db5c5905ac64'
+            'aa2bdb86118a84423f3df752f48d90d2ebcb1e1bbc5293bdfd7fb1c62f765a34')
 
 prepare() {
-    unzip slac460n.zip
-    find ./MSPDebugStack_OS_Package/ -type f -exec dos2unix -q '{}' \;
+    unzip ${_releasefile}
+    find ./ -type f -exec dos2unix -q '{}' \;
     # This hidapi patch allows us to build mspds from the hidapi Archlinux package rather than the v0.7 source.
-    patch -p1 -d MSPDebugStack_OS_Package < ../hidapi.patch
-
-    # This patch fixes a compile error related to namespaces
-    patch -p1 -d MSPDebugStack_OS_Package < ../ambiguous-ifstream.patch
+    patch -p1 -d . < ../hidapi.patch
 }
 
 build() {
-    cd "$srcdir/MSPDebugStack_OS_Package"
+    cd "$srcdir"
     make
 }
 
 package() {
-    install -Dm644 "$srcdir/MSPDebugStack_OS_Package/libmsp430.so" "$pkgdir/usr/lib/libmsp430.so"
+    install -Dm644 "$srcdir/libmsp430.so" "$pkgdir/usr/lib/libmsp430.so"
 }
