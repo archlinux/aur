@@ -1,23 +1,23 @@
 # Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=systemd-bootchart-git
 pkgver=r6.dcb246b
-pkgrel=1
+pkgrel=2
 pkgdesc="Boot performance graphing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/systemd/systemd-bootchart"
 license=('LGPL2.1')
 depends=('libsystemd.so')
-makedepends=('git')
+makedepends=('git' 'intltool')
 provides=('systemd-bootchart')
 conflicts=('systemd-bootchart' 'systemd<=229')
 source=("git://github.com/systemd/systemd-bootchart")
-backup=('etc/systemd/bootchart.conf')
 md5sums=('SKIP')
+backup=('etc/systemd/bootchart.conf')
 
 pkgver() {
   cd "systemd-bootchart"
-
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

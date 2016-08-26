@@ -1,12 +1,13 @@
 pkgbase = systemd-bootchart-git
 	pkgdesc = Boot performance graphing tool
 	pkgver = r6.dcb246b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/systemd/systemd-bootchart
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
+	makedepends = intltool
 	depends = libsystemd.so
 	provides = systemd-bootchart
 	conflicts = systemd-bootchart
