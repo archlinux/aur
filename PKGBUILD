@@ -1,10 +1,10 @@
 pkgbase=linux-criu
-# $Id: PKGBUILD 273922 2016-08-18 16:21:33Z tpowa $
+# $Id: PKGBUILD 274645 2016-08-25 20:14:22Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 _srcname=linux-4.7
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,10 +23,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '838fa595436fbf9f70759aa43c1cacd83cc0adc95d166648c1625ebd50fad04e'
+            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
             'SKIP'
-            'b667afaaa9a9cb3fb5a5cd1378ca50f8c364d7254941710b583c4afacdec6653'
-            '583a56f3ebf033b8f0d5fddb87bc2778ada44b2e06d6816248b2ec4bad9fe40b'
+            '2ee8d5ae3f2aeafbe37bf821981b328b839313b1ff6eef723bbf47549e253d76'
+            '08152e71ea2c87250be4d6d983b7bcf109ae0659e1282811f9e558fef5ad6e40'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
