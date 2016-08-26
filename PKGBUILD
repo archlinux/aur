@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.9.132.gb375807
+pkgver=6.0.0.alpha.9.139.ge4f3f8f
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
@@ -44,7 +44,7 @@ build() {
 
 check() {
   cd "${_pkgname}"/src/libpsl-native
-  make test
+  LANG=en_US.UTF-8 make test
 }
 
 
