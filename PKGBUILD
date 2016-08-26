@@ -17,8 +17,6 @@ source=(
 )
 install=${_pkgname}.install
 options=('!strip')
-provides=('openbazaar')
-conflicts=('openbazaar')
 
 build(){
   cd $srcdir/${_pkgname}
@@ -27,21 +25,21 @@ build(){
   npm run build
   rm -rf {.git*,.eslint*,.travis*}
   npm prune --production
-  asar pack ../${_pkgname} ../${_pkgname}.asar
+  asar pack ../${_pkgname} ../${_pkgname}-next.asar
 }
 
 package(){
 
 msg2 "Installing Openbazaar data"
   install -dm755 $pkgdir/opt/
-  cp -r $srcdir/${_pkgname}.asar $pkgdir/opt/
+  cp -r $srcdir/${_pkgname}-next.asar $pkgdir/opt/
 
 msg2 "Installing execution script"
-  install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
+  install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}-next
 
 msg2 "Installing icons and desktop menu entry"
-  install -Dm644 $srcdir/${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
-  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
+  install -Dm644 $srcdir/${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/${_pkgname}-next.png
+  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}-next.desktop
 }
 
 pkgver() {
@@ -50,5 +48,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '978f2bc37d379c6ccd8c5942ef44612c'
-         'dbca9273e9fc18a7aa5d1c395508fe60')
+         '33bdb461a15ea719be2bf41caa9d72d5'
+         'd7394c8c503c5c930a7d3ceb005a2d3d')
