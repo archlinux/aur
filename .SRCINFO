@@ -1,0 +1,23 @@
+pkgbase = obs-qtwebkit-git
+	pkgdesc = Browser source plugin for obs-studio based on QtWebkit library.
+	pkgver = 3dd7cde
+	pkgrel = 1
+	url = https://github.com/bazukas/obs-qtwebkit
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = obs-studio
+	makedepends = qt5-base
+	makedepends = qt5-webkit
+	depends = obs-studio
+	depends = qt5-base
+	depends = qt5-webkit
+	provides = obs-qtwebkit
+	source = obs-qtwebkit-git::git+https://github.com/bazukas/obs-qtwebkit#branch=master
+	source = 000_install_path.patch
+	md5sums = SKIP
+	md5sums = c43621528052ad14fadb2fc814c030cd
+
+pkgname = obs-qtwebkit-git
+

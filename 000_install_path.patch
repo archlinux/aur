@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,7 +20,10 @@ RENDERER_SRC = src/qtwebkit-renderer.cpp
+ RENDERER_OBJ = build/qtwebkit-renderer.o
+ 
+ PLUGIN_BUILD_DIR = build/qtwebkit-browser
+-PLUGIN_INSTALL_DIR = ~/.config/obs-studio/plugins
++PLUGIN_INSTALL_DIR = /usr/share/obs/obs-plugins
++ifdef PREFIX
++PLUGIN_INSTALL_DIR := $(PREFIX)$(PLUGIN_INSTALL_DIR)
++endif
+ ifdef OBS_PLUGIN_INSTALL_OLD
+ PLUGIN_INSTALL_DIR = ~/.obs-studio/plugins
+ endif
