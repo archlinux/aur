@@ -9,8 +9,8 @@ license=('custom:BSD' 'Apache')
 
 depends=('gcc-libs')
 makedepends=('git' 'gcc-libs')
-provides=('log4cplus')
-conflicts=('log4cplus')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
