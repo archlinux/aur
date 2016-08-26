@@ -9,8 +9,8 @@ license=('GPL2')
 
 depends=('python-six')
 makedepends=('git' 'python-setuptools')
-provides=('python-websocket-client')
-conflicts=('python-websocket-client')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
