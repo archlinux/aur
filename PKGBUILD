@@ -2,14 +2,14 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=312.07d3677
+pkgver=338.88adef7
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(electron)
-makedepends=(git npm)
+makedepends=(git npm asar)
 source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/openbazaar-desktop.git"
 	"${_pkgname}.sh"
@@ -24,20 +24,20 @@ build(){
   cd $srcdir/${_pkgname}
 # npm install --production
   npm install
+  npm run babel
   npm run sass:build 
   npm run process-index
+  asar pack ../${_pkgname} ../${_pkgname}.asar
 }
 
 package(){
 
 msg2 "Installing Openbazaar data"
   install -dm755 $pkgdir/opt/
-  cp -r $srcdir/${_pkgname} $pkgdir/opt/
+  cp -r $srcdir/${_pkgname}.asar $pkgdir/opt/
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
-
-  rm -rf $pkgdir/opt/${_pkgname}/{.git*,.eslint*,.travis*}
 
 msg2 "Installing icons and desktop menu entry"
   install -Dm644 $srcdir/${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
@@ -50,5 +50,5 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '54bfeafbaddc20140558721a6f7a711d'
+         '978f2bc37d379c6ccd8c5942ef44612c'
          'dbca9273e9fc18a7aa5d1c395508fe60')

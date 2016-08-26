@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /opt/
-electron openbazaar "$@"
+electron openbazaar.asar "$@"
