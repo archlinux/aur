@@ -37,8 +37,8 @@ makedepends=(
     'docbook-xsl'
     'elinks'
 )
-provides=('kea')
-conflicts=('kea')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+https://github.com/isc-projects/kea.git#branch=v${pkgver//./_}")
 sha512sums=('SKIP')
