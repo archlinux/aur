@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
-pkgname=mailcap-fix
 _pkgname=mailcap_fix
+pkgname=mailcap-fix
 pkgver=0.1.3
 pkgrel=0
 pkgdesc="A patched mailcap module that conforms to RFC 1524"
