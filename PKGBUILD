@@ -39,5 +39,5 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 readme.md  "${pkgdir}/usr/share/doc/vapoursynth/plugins/readme.md"
+  install -Dm644 readme.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.md"
 }
