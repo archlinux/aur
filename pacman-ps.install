@@ -1,0 +1,14 @@
+post_install() {
+  CACHEDIR="/var/cache/pacman-ps"
+  mkdir -p ${CACHEDIR}/
+  pacman -Ql >> ${CACHEDIR}/files.db
+  sort -k 2,2 ${CACHEDIR}/files.db | uniq > ${CACHEDIR}/files-temp.db
+  rm ${CACHEDIR}/files.db
+  mv ${CACHEDIR}/files-temp.db ${CACHEDIR}/files.db
+  printf "Created initial database at %s/files" "${CACHEDIR}"
+}
+post_remove() {
+  if [ -d /var/cache/pacman-ps ]; then
+    rm -rf /var/cache/pacman-ps
+  fi
+}

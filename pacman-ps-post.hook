@@ -1,0 +1,12 @@
+# Hook to update /var/cache/pacman-ps/files package and file list
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = *
+
+[Action]
+Description = Update pacman-ps data
+When = PostTransaction
+Exec = /usr/bin/pacman-ps-posthook
+NeedsTargets
