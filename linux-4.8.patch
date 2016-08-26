@@ -1,7 +1,7 @@
-diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-drv.c patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-drv.c
---- NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-drv.c    2016-07-25 13:23:10.000000000 +0200
-+++ patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-drv.c    2016-08-02 17:09:53.500398878 +0200
-@@ -36,6 +36,7 @@
+diff -ur kernel/nvidia-drm/nvidia-drm-drv.c kernel-patched/nvidia-drm/nvidia-drm-drv.c
+--- kernel/nvidia-drm/nvidia-drm-drv.c	2016-08-09 02:43:19.000000000 +0300
++++ kernel-patched/nvidia-drm/nvidia-drm-drv.c	2016-08-26 20:14:29.109937200 +0300
+@@ -37,6 +37,7 @@
  #include "nvidia-drm-ioctl.h"
  
  #include <drm/drmP.h>
@@ -9,7 +9,7 @@ diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-d
  
  #include <drm/drm_crtc_helper.h>
  
-@@ -419,7 +420,7 @@
+@@ -420,7 +421,7 @@
  
  static
  void nvidia_drm_master_drop(struct drm_device *dev,
@@ -18,7 +18,7 @@ diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-d
  {
      struct nvidia_drm_device *nv_dev = dev->dev_private;
      int ret;
-@@ -452,7 +453,7 @@
+@@ -453,7 +454,7 @@
      mutex_lock(&dev->master_mutex);
  
      if (!file_priv->is_master ||
@@ -27,7 +27,7 @@ diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-d
      {
          goto done;
      }
-@@ -473,7 +474,7 @@
+@@ -474,7 +475,7 @@
       * NVKMS modeset ownership, because nvidia_drm_master_set()'s call to
       * grabOwnership() will fail.
       */
@@ -36,33 +36,22 @@ diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-d
      file_priv->is_master = 0;
  
      ret = 0;
-diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-fb.c patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-fb.c
---- NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-fb.c     2016-07-25 13:23:10.000000000 +0200
-+++ patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-fb.c     2016-07-31 05:37:57.013950532 +0200
-@@ -114,7 +114,7 @@
-      * We don't support any planar format, pick up first buffer only.
-      */
+Only in kernel-patched/nvidia-drm: nvidia-drm-drv.c.orig
+diff -ur kernel/nvidia-drm/nvidia-drm-fence.c kernel-patched/nvidia-drm/nvidia-drm-fence.c
+--- kernel/nvidia-drm/nvidia-drm-fence.c	2016-08-09 02:43:19.000000000 +0300
++++ kernel-patched/nvidia-drm/nvidia-drm-fence.c	2016-08-26 20:14:29.115451900 +0300
+@@ -325,7 +325,7 @@
+     struct nvidia_drm_gem_object *nv_gem;
+ };
  
--    gem = drm_gem_object_lookup(dev, file, cmd->handles[0]);
-+    gem = drm_gem_object_lookup(file, cmd->handles[0]);
- 
-     if (gem == NULL)
-     {
-diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-gem.c patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-gem.c
---- NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-gem.c    2016-07-25 13:23:10.000000000 +0200
-+++ patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-gem.c    2016-07-31 05:37:57.013950532 +0200
-@@ -408,7 +408,7 @@
- 
-     mutex_lock(&dev->struct_mutex);
- 
--    gem = drm_gem_object_lookup(dev, file, handle);
-+    gem = drm_gem_object_lookup(file, handle);
- 
-     if (gem == NULL)
-     {
-diff -u --recursive NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-modeset.c patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-modeset.c
---- NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-modeset.c        2016-07-25 13:23:10.000000000 +0200
-+++ patched_NVIDIA-Linux-x86_64-367.36.02/kernel/nvidia-drm/nvidia-drm-modeset.c        2016-08-02 17:14:57.895422720 +0200
+-static void nvidia_drm_gem_prime_soft_fence_event
++static void NVKMS_KAPI_CALL nvidia_drm_gem_prime_soft_fence_event
+ (
+     void *dataPtr,
+     NvU32 dataU32
+diff -ur kernel/nvidia-drm/nvidia-drm-modeset.c kernel-patched/nvidia-drm/nvidia-drm-modeset.c
+--- kernel/nvidia-drm/nvidia-drm-modeset.c	2016-08-09 02:43:19.000000000 +0300
++++ kernel-patched/nvidia-drm/nvidia-drm-modeset.c	2016-08-26 20:14:29.113947800 +0300
 @@ -675,7 +675,7 @@
          goto failed;
      }
