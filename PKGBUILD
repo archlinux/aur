@@ -17,6 +17,7 @@ conflicts=('with')
 provides=('with')
 
 function pkgver() {
+	cd 'with'
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
