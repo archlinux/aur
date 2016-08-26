@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('glibc' 'dbus>=1.2' 'libnl' 'glib2>=2.28')
 makedepends=('automake' 'autoconf>=2.60' 'libtool')
 backup=(etc/neard/main.conf)
-source=(http://git.kernel.org/cgit/network/nfc/neard.git/snapshot/$pkgname-$pkgver.tar.gz
+source=(https://git.kernel.org/cgit/network/nfc/neard.git/snapshot/$pkgname-$pkgver.tar.gz
         bindir.patch
         config.patch
         neard.service)
