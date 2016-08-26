@@ -7,12 +7,12 @@ _pkgbase=nginx-mainline
 pkgbase=${_pkgbase}-addons
 pkgname=("${pkgbase}" "${_pkgbase}-full")
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://nginx.org'
 license=('custom')
-makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8')
+makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8' 'luajit')
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate)
@@ -35,7 +35,7 @@ addons=(
   'github clojure/src/c nginx-clojure/nginx-clojure ngx_http_clojure_module.so'
   'github ndk simpl/ngx_devel_kit ndk_http_module.so'
   'github encrypted-session openresty/encrypted-session-nginx-module ngx_http_encrypted_session_module.so ${_pkgbase}-addon-ndk'
-  'github lua-http openresty/lua-nginx-module ngx_http_lua_module.so ${_pkgbase}-addon-ndk'
+  'github lua-http openresty/lua-nginx-module ngx_http_lua_module.so ${_pkgbase}-addon-ndk:luajit'
   'github nchan slact/nchan ngx_nchan_module.so'
   'git rtmp https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git#branch=dev ngx_rtmp_module.so'
 )
@@ -86,6 +86,9 @@ build() {
   for i in "${addons[@]}"; do pre_build_addon "$i"; done
 
   cd ${srcdir}/nginx-$pkgver
+  
+  export LUAJIT_INC=/usr/include/luajit-2.0
+  export LUAJIT_LIB=luajit-5.1
 
   ./configure \
     --prefix=/etc/nginx \

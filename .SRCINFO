@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-addons
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nginx.org
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = nginx-mainline-addons
 	makedepends = geoip
 	makedepends = leiningen
 	makedepends = java-environment-openjdk>=8
+	makedepends = luajit
 	source = http://nginx.org/download/nginx-1.11.3.tar.gz
 	source = service
 	source = logrotate
@@ -68,72 +69,56 @@ pkgname = nginx-mainline-addons
 pkgname = nginx-mainline-full
 	pkgdesc = Full set of addons for Nginx server
 	depends = nginx-mainline-addons
-	depends = nginx-mainline-addon-geoip=1.11.3-1
-	depends = nginx-mainline-addon-image_filter=1.11.3-1
-	depends = nginx-mainline-addon-perl=1.11.3-1
-	depends = nginx-mainline-addon-xslt_filter=1.11.3-1
-	depends = nginx-mainline-addon-stream=1.11.3-1
-	depends = nginx-mainline-addon-mail=1.11.3-1
-	depends = nginx-mainline-addon-fancyindex=1.11.3-1
-	depends = nginx-mainline-addon-brotli=1.11.3-1
-	depends = nginx-mainline-addon-headers-more=1.11.3-1
-	depends = nginx-mainline-addon-ct=1.11.3-1
-	depends = nginx-mainline-addon-auth-pam=1.11.3-1
-	depends = nginx-mainline-addon-clojure=1.11.3-1
-	depends = nginx-mainline-addon-ndk=1.11.3-1
-	depends = nginx-mainline-addon-encrypted-session=1.11.3-1
-	depends = nginx-mainline-addon-lua-http=1.11.3-1
-	depends = nginx-mainline-addon-nchan=1.11.3-1
-	depends = nginx-mainline-addon-rtmp=1.11.3-1
+	depends = nginx-mainline-addon-rtmp=1.11.3-2
 
 pkgname = nginx-mainline-addon-geoip
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-image_filter
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-perl
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-xslt_filter
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-stream
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-mail
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-fancyindex
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-brotli
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-headers-more
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-ct
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-auth-pam
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-clojure
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-ndk
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-encrypted-session
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-lua-http
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-nchan
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
 pkgname = nginx-mainline-addon-rtmp
-	depends = nginx-mainline-addons=1.11.3-1
+	depends = nginx-mainline-addons=1.11.3-2
 
