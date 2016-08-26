@@ -1,7 +1,7 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=withtool
-pkgver=1.0
+pkgver=1.1
 url="https://github.com/kalterfive/with"
 pkgrel=1
 pkgdesc="Program prefixing for continuous workflow using a single tool"
