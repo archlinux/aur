@@ -7,8 +7,10 @@ post_install() {
     It is meant to be used alongside other hooks that need early userspace networking
     such as, mkinitcpio-dropbear. There is also an optional netconf_timeout kernel
     command line argument that can be used when obtaining the ip address using dhcp, so
-    that ipconfig will not hang forever waiting for an IP addres. To use this hook
-    add the netconf hook before any other hook that need networking in
+    that ipconfig will not hang forever waiting for an IP addres. You can nest multiple ip=
+    parameters inside a single ip= parameter, separated by : to configure multiple interfaces.
+    There is no limit on the number of interfaces configured, but the kernel cmdline size.
+    To use this hook add the netconf hook before any other hook that need networking in
     "/etc/mkinitcpio.conf" and rebuild the initramfs.
 INSTALLEOF
 }
@@ -23,9 +25,13 @@ REMOVEEOF
 
 post_upgrade() {
     cat<<UPGRADEEOF
-    There is now an optiona kernel command line parameter named netconf_timeout that
+    There is now an optional kernel command line parameter named netconf_timeout that
     is used to pass the timeout option to ipconfig. This is means that when using
     ip=dhcp as a kernel command line parameter, ipconfig will not hang forever if the
     dhcp server is unavailable.
+
+    You can also now nest multiple ip= parameters inside a single ip= parameter,
+    separated by : to configure multiple interfaces. There is no limit on the number
+    of interfaces configured, but the kernel cmdline size.
 UPGRADEEOF
 }

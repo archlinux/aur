@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-netconf
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Archlinux mkinitcpio hook for configuring early userspace networking"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-netconf"
@@ -10,10 +10,11 @@ depends=('mkinitcpio-nfs-utils' 'iproute2')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
 changelog='Changelog'
-sha512sums=('d526ced87ef13d6a4c22c22810b0024ca51095a82a28c210fc202e73499ca8aa7a16d3f45c3c549996fbd4ed220afa15df178f93aaacfc4a547d9042f69fa760')
+sha512sums=('06ac202410964740785d2977f7918981276e10568260433436c51a1d540152cc28462e46dae6bfa31acd1fafa9ebe1e4f57ca90d7754a09ccaba142c8d48b228')
 
 package() {
-  install -Dm644 "$srcdir/$pkgname-$pkgver/netconf_hook"      "$pkgdir/usr/lib/initcpio/hooks/netconf"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/netconf_install"   "$pkgdir/usr/lib/initcpio/install/netconf"
+  install -Dm644 $srcdir/$pkgname-$pkgver/netconf_hook      $pkgdir/usr/lib/initcpio/hooks/netconf
+  install -Dm644 $srcdir/$pkgname-$pkgver/netconf_install   $pkgdir/usr/lib/initcpio/install/netconf
+  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE           $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 }
