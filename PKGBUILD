@@ -2,7 +2,7 @@
 pkgname=unix-runescape-client
 pkgver=4.3.5
 pkgrel=1
-pkgdesc="RuneScape client for Linux and Unix"
+pkgdesc="RuneScape client for Linux and Unix (RSU-Client,Legacy)"
 arch=(any)
 url="https://github.com/HikariKnight/rsu-client"
 license=(GPL2)
