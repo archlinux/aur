@@ -53,7 +53,7 @@ package() {
 
     install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/opt/i2p"
+    install -dm750 "$pkgdir/opt/i2p"
 
     install -Dm644 "$srcdir/router.config"        "$pkgdir/opt/i2p/router.config"
     install -Dm755 "$srcdir/i2prouter.sh"         "$pkgdir/opt/i2p/i2prouter"
