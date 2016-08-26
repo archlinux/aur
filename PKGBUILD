@@ -6,7 +6,7 @@
 
 pkgname=doomrl
 pkgver=0.9.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://doom.chaosforge.org/"
@@ -21,17 +21,19 @@ conflicts=("doomrl-lq doomrl-ogg")
 case $CARCH in
   'i686')
     source=(http://doom.chaosforge.org/file_download/33/doomrl-linux-i386-0997.tar.gz
-            "doomrl" "LICENSE")
+            "doomrl" "LICENSE" "doomrl.sh")
     sha256sums=('6d217d697e94f5f2ce3fe8ebbedaf03fa68a5ed1140cb889921f18d8604a389f'
             'ba6eb69db49e079f565f155047df2637aa8c36687699c109f36ac20a4be45068'
-            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f')
+            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f'
+            'aa33db3ae113bf7b52f0e670e5fc341b4423c3e8de1c9737584426bacdd4781f')
     __arch='i386' ;;
   'x86_64')
     source=(http://doom.chaosforge.org/file_download/32/doomrl-linux-x64-0997.tar.gz
-            "doomrl" "LICENSE")
+            "doomrl" "LICENSE" "doomrl.sh")
     sha256sums=('d9d19e4a8794efb3c23963b3e11987ebadbb7bee7350b00ce6b64eaff501e488'
             'ba6eb69db49e079f565f155047df2637aa8c36687699c109f36ac20a4be45068'
-            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f')
+            'fa626af2c45e10e5bce4d01b3e9d0451ffc96996408880b1be77f7a5956cdf9f'
+            'aa33db3ae113bf7b52f0e670e5fc341b4423c3e8de1c9737584426bacdd4781f')
     __arch='x64' ;;
 esac
 
@@ -44,13 +46,13 @@ package() {
     cp -a * "$pkgdir/usr/share/doomrl"
 
     # Copy script used to run program
-    install -D -m755 "$srcdir/doomrl" "$pkgdir/usr/bin/doomrl"
+    install -D -m755 "$srcdir/doomrl.sh" "$pkgdir/usr/bin/doomrl"
 
     # Copy the license file
     install -D -m644 "$srcdir/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # This is needed to save games and scores
-    chmod 4755 "$pkgdir/usr/share/doomrl/doomrl"
+    #chmod 4755 "$pkgdir/usr/share/doomrl/doomrl"
 }
 
