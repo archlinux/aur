@@ -1,8 +1,8 @@
-# Maintainer:  system <nymously.ano@gmail.com>
+# Maintainer:  raingloom <raingloom42@gmail.com>
 pkgname=openresty_luarocks
 _pkgname=luarocks
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deployment and management system for Openresty Luajit 2.1 modules"
 arch=('any')
 url="http://luarocks.org/"
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/opt/openresty/luajit \
     --with-lua=/opt/openresty/luajit/ \
-    --lua-suffix=jit-2.1.0-beta1 \
+    --lua-suffix=jit-2.1.0-beta2\
     --force-config \
     --lua-version=5.1 \
     --with-lua-include=/opt/openresty/luajit/include/luajit-2.1
