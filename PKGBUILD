@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.7-gnu
-_pkgver=$_pkgbasever
+_pkgver=4.7.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -30,8 +30,8 @@ makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -60,20 +60,22 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
+            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
             '13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'c84ab9caf468ae7c7efeb11958bf89c3ce6f6bdff56c5012280a8acaf7d215c5'
-            'b3194eb4d99241f8fdca7fcf3ee29f672a0f52a82570bced6abb9cca621af701'
-            'f4219b917358d04565472646fe2b3fa2d3a4f5b7af3a11a5b13481ed9169acdb'
+            'ac109d51bbfca8ccdd6a004290d03f19e36f150eee86fb33deb8de3eafe97d56'
+            '3cedd3cd7519d1eaa9eac4df781e668aa70b4b869c5344e5dc2e014ae1d6649c'
+            'b991af3f44c035a5980ddd74d17f92d2947b5df062476a3808f49b443a4e2c0f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '7ab2172888a14b731b358912e03377110e0f59a68322f587b2a40627913bbe9b'
+            'cfe0b429cf1989bfa33ca4a844630bc00d7347feb0219a81fb2731145500fd83'
             'SKIP'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
             'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
