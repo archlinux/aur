@@ -33,7 +33,7 @@ msg2 "Creating an optimized standalone executable"
   virtualenv2 env
   source env/bin/activate
   pip2 install -r requirements.txt
-  pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+  pip2 install https://github.com/pyinstaller/pyinstaller/archive/master.zip
   pyinstaller -F ${pkgname}.spec
 
 msg2 "Symlinking to allow gui to automatically call daemon"
