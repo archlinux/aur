@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=12.1.0_devel.83858.5c1ccd8
+pkgver=12.1.0_devel.84226.00c72ac
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -24,22 +24,18 @@ license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
         'LICENSE'
         'disable-pthread-stubs-on-linux.patch'
-        '0001-st-mesa-candidate-fix-for-sRGB-blit-errors.patch')
+        )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             '1a8ffbc194a8264ae08cad7b886ec87cd331047f35272fdcb11901ddb0c6f64e2cd69af946e01254c9df8fe881ad1e42162202e1bc38db97aaf294313fb0f9ce'
-            '4c10f379c4ce905f33282e9dcbbe235fc62064d6f89ef44acc839a8c909eed5278679d41be6441f179dc6b17336ca6c8fffe2dcc85de5fc89db3787f5bb76561')
+            )
 
 prepare() {
     cd "${srcdir}"/mesa
     # pthread-stubs is useless on linux
     patch -Np1 -i "${srcdir}"/disable-pthread-stubs-on-linux.patch
-    
-    # https://bugs.freedesktop.org/show_bug.cgi?id=97285
-    patch -Np1 -i "${srcdir}"/0001-st-mesa-candidate-fix-for-sRGB-blit-errors.patch
-    
-}         
-         
+}
+
 pkgver() {
     cd mesa
     echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)

@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 12.1.0_devel.83858.5c1ccd8
+	pkgver = 12.1.0_devel.84226.00c72ac
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -36,11 +36,9 @@ pkgbase = mesa-git
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master
 	source = LICENSE
 	source = disable-pthread-stubs-on-linux.patch
-	source = 0001-st-mesa-candidate-fix-for-sRGB-blit-errors.patch
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
 	sha512sums = 1a8ffbc194a8264ae08cad7b886ec87cd331047f35272fdcb11901ddb0c6f64e2cd69af946e01254c9df8fe881ad1e42162202e1bc38db97aaf294313fb0f9ce
-	sha512sums = 4c10f379c4ce905f33282e9dcbbe235fc62064d6f89ef44acc839a8c909eed5278679d41be6441f179dc6b17336ca6c8fffe2dcc85de5fc89db3787f5bb76561
 
 pkgname = opencl-mesa-git
 	pkgdesc = OpenCL support for AMD/ATI Radeon Mesa drivers
@@ -49,7 +47,7 @@ pkgname = opencl-mesa-git
 	depends = libcl
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.83858.5c1ccd8
+	depends = mesa-git=12.1.0_devel.84226.00c72ac
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=12.1.0-devel
 	conflicts = opencl-mesa
@@ -61,7 +59,7 @@ pkgname = mesa-vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
-	depends = mesa-git=12.1.0_devel.83858.5c1ccd8
+	depends = mesa-git=12.1.0_devel.84226.00c72ac
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
@@ -69,21 +67,21 @@ pkgname = mesa-vulkan-intel-git
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.83858.5c1ccd8
+	depends = mesa-git=12.1.0_devel.84226.00c72ac
 	provides = libva-mesa-driver=12.1.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.83858.5c1ccd8
+	depends = mesa-git=12.1.0_devel.84226.00c72ac
 	provides = mesa-vdpau=12.1.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=12.1.0_devel.83858.5c1ccd8
+	depends = mesa-git=12.1.0_devel.84226.00c72ac
 	provides = mesa-libgl=12.1.0-devel
 	provides = libgl=12.1.0-devel
 	conflicts = mesa-libgl
