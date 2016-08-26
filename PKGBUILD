@@ -19,6 +19,6 @@ build() {
 
 package() {
     cd "${pkgname}"
-    cp bhash_crack.sh /opt/$pkgname
-    sudo ln -s /opt/bhash_crack-git/bhash_crack.sh /usr/bin/bhash
+    cp bhash_crack.sh /opt/${pkgname}
+    sudo ln -s /opt/${pkgname}-git/bhash_crack.sh /usr/bin/bhash
 }
