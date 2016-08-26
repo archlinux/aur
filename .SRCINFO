@@ -1,7 +1,7 @@
 pkgbase = apt-dater-legacy
 	pkgdesc = Terminal-based remote package update manager, legacy version with original text based configuration
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ibh.de/apt-dater
 	arch = i686
 	arch = x86_64

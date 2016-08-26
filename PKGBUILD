@@ -1,7 +1,7 @@
 pkgname=apt-dater-legacy
 _pkgname=apt-dater
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal-based remote package update manager, legacy version with original text based configuration"
 arch=('i686' 'x86_64')
 url="https://www.ibh.de/apt-dater"
@@ -14,6 +14,7 @@ sha256sums=('1c361dd686d66473b27db4af8d241d520535c5d5a33f42a35943bf4e16c13f47')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  export CFLAGS=${CFLAGS/-O2/-O0}
   ./configure \
     --prefix=/usr \
 	--disable-rpath \
