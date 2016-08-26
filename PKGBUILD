@@ -40,7 +40,7 @@ sha256sums=('SKIP'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
-            '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
+            'b98b00bf7c811089a12a59641e9503bd89447be9d0c0b12bbc780036c7cb6f3c')
 pkgver() {
     cd "$srcdir/$_gitname"
     echo "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
