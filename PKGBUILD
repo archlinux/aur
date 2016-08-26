@@ -2,7 +2,7 @@
 # Contributor: Dmytro Bagrii <dimich.dmb@gmail.com>
 
 pkgname=neard
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Intel's Near Field Communication manager"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(http://git.kernel.org/cgit/network/nfc/neard.git/snapshot/$pkgname-$pkgv
         bindir.patch
         config.patch
         neard.service)
-md5sums=('13446cb7502b7a97447778f62620bfdf'
+md5sums=('c3d07aaefb394896656c1fdfb7ffa2b5'
          '5ab4e8d3ec2b8dd1d591483b072b07b4'
          '1e3cfed20a3dbdb7ee9d0946e1c8dc81'
          '3968d529bd6d1604f7e2ee3ce18fd3b6')
