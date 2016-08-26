@@ -22,7 +22,7 @@ install: $(PACKAGE)
 
 clean:
 	rm -f ${PKGNAME}-*-${PKGREL}-${PKGARCH}.pkg.tar.xz\
-		bitwig-eight-track-*.src.tar.gz\
-		bitwig-8-track-*.deb\
+		${PKGNAME}-*.src.tar.gz\
+		${PKGNAME}-*.deb\
 	rm -fr ./src ./pkg
 
