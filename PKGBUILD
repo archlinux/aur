@@ -15,7 +15,7 @@ build() {
     cd "${pkgname}"
     sudo mkdir /opt/$pkgname
     sudo chown -R ${USER}:users /opt/$pkgname
-    chmod -r 750 /opt/$pkgname
+    sudo chmod -r 750 /opt/$pkgname
 }
 
 package() {
