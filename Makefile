@@ -1,7 +1,7 @@
 .PHONY: clean install
 
-PKGNAME:=bitwig-eight-track
-PKGVER:=1.3.12
+PKGNAME:=bitwig-8-track
+PKGVER:=1.3.13
 PKGARCH:=x86_64
 PKGREL:=1
 PACKAGE:=${PKGNAME}-${PKGVER}-${PKGREL}-${PKGARCH}.pkg.tar.xz
