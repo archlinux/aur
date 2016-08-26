@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfgui-git
-pkgver=0.2.3.r33.g6f4a009
+pkgver=0.3.1.r0.gdd0e1ba
 pkgrel=1
 pkgdesc="SFGUI (Simple and Fast Graphical User Interface), a C++ GUI library for SFML."
 arch=('i686' 'x86_64')
@@ -42,8 +42,8 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 ./FONT.LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/FONT.LICENSE
+  install -Dm644 ./LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+  install -Dm644 ./FONT.LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/FONT.LICENSE.md
 
 }
 

@@ -1,6 +1,6 @@
 pkgbase = sfgui-git
 	pkgdesc = SFGUI (Simple and Fast Graphical User Interface), a C++ GUI library for SFML.
-	pkgver = 0.2.3.r33.g6f4a009
+	pkgver = 0.3.1.r0.gdd0e1ba
 	pkgrel = 1
 	url = http://sfgui.sfml-dev.org/
 	arch = i686
