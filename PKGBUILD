@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-audit
-_pkgbasever=4.6-gnu
-_pkgver=4.6.5-gnu
+_pkgbasever=4.7-gnu
+_pkgver=4.7.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x4
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -54,10 +54,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
-sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch'
+        '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
+sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            '76e18176f1c86f94be3a3c97e966cff1991df279246fd95d0d22ebe0eb8c9851'
+            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -65,23 +67,25 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'e704c38fb68e99ccb29904d72d91320de856d66e5408b107ddce4ed91f062392'
-            '58e6b672cc9d3f2df694b170a2a444b1ea84ed77402fcbc509047bcc4bbc74e4'
-            'e369ff29f16b92f596030f413d09371145900cbf60f830a354c60ff0047297d5'
+            '7c490770f59491aab4aca31fc2964961fd4fbebb2832499e9e3421c669a040e7'
+            'f278245e35c71aaa1f2f2ab60a82a94b06014b28cf3ff1f0905bafc5464e5bbc'
+            '1c2a6a65a6660b1a05ad1fb76debcaf77c2ba89cf1b4b57bbd305b461232694c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'f74b28e9e3b6434c1bb7803f9751a068299206953519a9e61162538f5dd8be7e'
+            'cfe0b429cf1989bfa33ca4a844630bc00d7347feb0219a81fb2731145500fd83'
             'SKIP'
-            '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
-            '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
-            '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
-            '49a4fe309e71d3e8cbf4bd98a862c7fcf13cb96d1802dafa8138bbfcf8769725'
-            '586e9f30059534dc3b0e765cb78e52ce75c1a3ea23779a7b86045fac7cba2f65'
-            '9ade3a63d0d1b4004af3733b0853a4c4d6837d933f30a462045214e2a4354a7a'
-            'bd41dd7fa8241781c150f783d55317c2d6d7dd31834619b12504d7277fe91574'
-            'f9626d188c76f387da62c6294b09f5fa4d94f5b1534ce2891bef7a99c7b40d2b')
+            '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
+            'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
+            'b0d21ae300fb667350323190a9217e7e19834f9c216627e927c01feda63341f8'
+            'de351f60a570b58cdebaaebd635323fe18dfca460603d3ed0cd5925bf0ea1f49'
+            '5b9f972315b1f885d21367cd20ccb8de16ad0fbece0aaec3e57028e07100e43e'
+            'f5350c011438f7d86078a6b3e490f067e362c84ad342dd21fd7ef1da23d5e451'
+            '9e99458cc054ab92de5845b78e9e2a4d701a5e358172baa00f927ca125e7e5d7'
+            'f5e9c9740938c632a932b40b64c13edba6d646156eb69e4e066e112d451e919a'
+            '9e23490f1539b026e58f2d5e5223cfde1e324176657856dea9565270d95e60ca'
+            'c37572b7188c07e1be371b1f759abdb1ec3c0b07658fda26233be15c2ab734c4')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -122,6 +126,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch"
+    patch -p1 -i "${srcdir}/0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
   fi
 
   # add freedo as boot logo
