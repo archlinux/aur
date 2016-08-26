@@ -1,0 +1,22 @@
+--- a/mtkbabel	2016-08-25 13:09:43.389376253 +0200
++++ b/mtkbabel	2016-08-25 13:10:21.129593109 +0200
+@@ -312,8 +312,8 @@
+ 
+ # Query firmware version (PMTK_Q_VERSION).
+ packet_send('PMTK604');
+-$ret = packet_wait('PMTK001,604,');
+-if ($ret =~ m/PMTK001,604,([0-9A-Za-z]+)\*/) {
++$ret = packet_wait('PMTK704,');
++if ($ret =~ m/PMTK704,([^\*]+)\*/) {
+     $version = $1;
+ }
+ 
+@@ -344,7 +344,7 @@
+     $model_id = $2;
+ }
+ 
+-printf "MTK Firmware: Version: $version, Release: $release, Model ID: $model_id\n";
++printf "MTK Firmware: Version: \"$version\", Release: $release, Model ID: $model_id\n";
+ if (! $opt_x) {
+     set_data_types($model_id);
+ }
