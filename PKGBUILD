@@ -9,8 +9,8 @@ license=('custom:BSD')
 
 depends=('python')
 makedepends=('git' 'python-setuptools')
-provides=('i3ipc-python')
-conflicts=('i3ipc-python')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
