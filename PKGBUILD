@@ -97,7 +97,7 @@ package() {
 
     install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/opt/i2p"
+    install -dm750 "$pkgdir/opt/i2p"
 
     cp -r pkg-temp/* "$pkgdir/opt/i2p"
     cp "$srcdir/wrapper.config" "$pkgdir/opt/i2p"
