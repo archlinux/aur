@@ -1,16 +1,12 @@
 # Maintainer: Aleksej Komarov <stylemistake@gmail.com>
 # Maintainer: MKzero <info[at]linux-web-development[dot]de>
-# Contributor: Ferenc Gergely Szilagyi <ferenc.szilagyi@rocket-internet.de>
-# Contributor: Renaud Lessard Larouche <sigmao@gmail.com>
-# Contributor: Ben Sherman <sherman@mycornerofthe.net>
-# Contributor: Nils Werner <nils.werner@gmail.com>
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 # If you find problems with the package, create an issue on Github:
 # https://github.com/stylemistake/bitwig-studio-aur
 
 pkgname='bitwig-studio'
-pkgver='1.3.12'
+pkgver='1.3.13'
 pkgrel='1'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
@@ -23,7 +19,7 @@ replaces=('bitwig-studio-demo')
 conflicts=('bitwig-studio-demo' 'bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-md5sums=('286fe932fd7f7eafe614a382297d865c')
+md5sums=('47019d722ae43847c668c5a7e3e7c8fe')
 
 package() {
   # Unpack package contents
