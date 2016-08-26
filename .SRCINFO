@@ -1,0 +1,14 @@
+pkgbase = bhash_crack-git
+	pkgdesc = Hash cracking tool written in Bash
+	pkgver = 1.6
+	pkgrel = 1
+	arch = any
+	license = SYPLicense
+	makedepends = git
+	provides = bhash_crack
+	conflicts = bhash_crack
+	source = bhash_crack-git::git+https://github.com/pPailleux/bhash_crack.git
+	sha512sums = SKIP
+
+pkgname = bhash_crack-git
+
