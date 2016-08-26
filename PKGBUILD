@@ -9,8 +9,8 @@ license=('custom:BSD')
 
 depends=('python' 'python-numpy' 'python-scipy' 'python-pillow')
 makedepends=('git' 'python-setuptools')
-provides=('imagehash')
-conflicts=('imagehash')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
