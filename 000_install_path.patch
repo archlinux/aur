@@ -1,14 +1,39 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -20,7 +20,10 @@ RENDERER_SRC = src/qtwebkit-renderer.cpp
+@@ -20,18 +20,17 @@ RENDERER_SRC = src/qtwebkit-renderer.cpp
  RENDERER_OBJ = build/qtwebkit-renderer.o
  
  PLUGIN_BUILD_DIR = build/qtwebkit-browser
 -PLUGIN_INSTALL_DIR = ~/.config/obs-studio/plugins
-+PLUGIN_INSTALL_DIR = /usr/share/obs/obs-plugins
+-ifdef OBS_PLUGIN_INSTALL_OLD
+-PLUGIN_INSTALL_DIR = ~/.obs-studio/plugins
+-endif
+ PLUGIN_DATA_DIR = data
+ 
+-ARCH = $(shell getconf LONG_BIT)
+-PLUGIN_BIN_DIR = $(PLUGIN_BUILD_DIR)/bin/$(ARCH)bit
+-ifdef OBS_PLUGIN_BUILD_OLD
+-PLUGIN_BIN_DIR = $(PLUGIN_BUILD_DIR)/bin
++PLUGIN_INSTALL_DIR = /usr/lib/obs-plugins
++PLUGIN_INSTALL_DATA_DIR = /usr/share/obs/obs-plugins/qtwebkit-browser
 +ifdef PREFIX
 +PLUGIN_INSTALL_DIR := $(PREFIX)$(PLUGIN_INSTALL_DIR)
-+endif
- ifdef OBS_PLUGIN_INSTALL_OLD
- PLUGIN_INSTALL_DIR = ~/.obs-studio/plugins
++PLUGIN_INSTALL_DATA_DIR := $(PREFIX)$(PLUGIN_INSTALL_DATA_DIR)
  endif
+ 
++PLUGIN_BIN_DIR = $(PLUGIN_BUILD_DIR)/bin
++
+ all: plugin
+ 
+ .PHONY: plugin
+@@ -43,7 +42,9 @@ plugin: $(LIB) $(RENDERER)
+ .PHONY: install
+ install:
+ 	mkdir -p $(PLUGIN_INSTALL_DIR)
+-	cp -r $(PLUGIN_BUILD_DIR) $(PLUGIN_INSTALL_DIR)
++	mkdir -p $(PLUGIN_INSTALL_DATA_DIR)
++	cp -r $(PLUGIN_BIN_DIR)/* $(PLUGIN_INSTALL_DIR)
++	cp -r $(PLUGIN_DATA_DIR)/* $(PLUGIN_INSTALL_DATA_DIR)
+ 
+ $(RENDERER): $(RENDERER_OBJ)
+ 	$(CXX) $(LDFLAGS) $^ $(LDLIBS_RENDERER) -o $@
