@@ -9,8 +9,8 @@ license=('MIT')
 
 makedepends=('git')
 optdepends=('firefox: Web browser')
-provides=('vimperator')
-conflicts=('vimperator' 'vimperator-hg')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${_srcname}::git+${url}.git"
