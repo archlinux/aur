@@ -2,7 +2,7 @@
 
 _plug=vaguedenoiser
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.1.g49ebde1
+pkgver=r2.3.gf925f1a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -22,9 +22,10 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install="${pkgdir}/usr/lib/vapoursynth" \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
