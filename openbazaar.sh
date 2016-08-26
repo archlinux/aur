@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/openbazaar
-electron037 main.js "$@"
+cd /opt/
+electron037 openbazaar.asar "$@"

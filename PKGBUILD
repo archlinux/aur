@@ -1,14 +1,14 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaar
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(electron037)
-makedepends=(npm)
+makedepends=(npm asar)
 source=(
 	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
 	"$pkgname.sh"
@@ -17,19 +17,19 @@ source=(
 install=$pkgname.install
 options=('!strip')
 provides=('openbazaar')
-conflicts=('openbazaar-git')
 _srcfolder=OpenBazaar-Client-$pkgver
 
 build(){
   cd $srcdir/${_srcfolder}
   npm install --production
+  rm -rf {.git*,.eslint*,.travis*}
+  asar pack ../${_srcfolder} ../${pkgname}.asar
 }
 
 package(){
 
 msg2 "Installing Openbazaar data"
-  install -dm755 $pkgdir/opt/
-  cp -r $srcdir/${_srcfolder} $pkgdir/opt/openbazaar
+  install -Dm755 $pkgname.asar $pkgdir/opt/$pkgname.asar
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
@@ -41,6 +41,6 @@ msg2 "Installing icons and desktop menu entry"
   install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
-md5sums=('aa159e13b64f308d7f445a266c596f38'
-         '29c1b2adff85a66160fdaa0b48174c03'
+md5sums=('aa9fdfaeb42562bde95e857ac12067c6'
+         'fef50202071cadef76388117ffc0c750'
          'dbca9273e9fc18a7aa5d1c395508fe60')
