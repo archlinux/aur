@@ -27,8 +27,9 @@ _gamepkg=factorio_alpha_${_factorio_arch}_${pkgver}.tar.gz
 build() {
   msg "You need a full copy of this game in order to install it"
 
-  local pkgpaths_tries=("$startdir" "$srcdir" "${XDG_DOWNLOAD_DIR:-$HOME/Downloads}")
-  [[ $SRCDEST != $startdir ]] && pkgpath_tries+=("$SRCDEST")
+  local pkgpaths_tries=()
+  [[ $SRCDEST != $startdir ]] && pkgpaths_tries+=("$SRCDEST")
+  pkgpaths_tries+=("$startdir" "$HOME" "${XDG_DOWNLOAD_DIR:-$HOME/Downloads}")
 
   for pkgpath_try in "${pkgpaths_tries[@]}"; do
     [[ -z "$pkgpath_try" ]] && continue
@@ -40,21 +41,14 @@ build() {
     fi
   done
 
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-    read -p "Do you want to use your factorio credentials to download the game ? (Y/n)"
+  while [[ ! -f "${pkgpath}/${_gamepkg}" ]]; do
+    error "Game package not found."
+    read -p "Please provide the path to the directory containing ${_gamepkg} or leave blank to download the game using your Factorio credentials:" pkgpath
 
-    if [[ $REPLY != n ]]; then
-      _download && pkgpath=$srcdir || true
+    if [[ -z "$pkgpath" ]]; then
+      _download && pkgpath="$SRCDEST" || true
     fi
-  fi
-
-  if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-    error "Game package not found, please type absolute path to ${_gamepkg} (/home/joe):"
-    read pkgpath
-    if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
-      error "Unable to find game package." && return 1
-    fi
-  fi
+  done
 
   msg "Found game package, unpacking..."
   tar xf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
@@ -86,7 +80,7 @@ _download() {
   while true; do
     local login
     local password
-    local file="${srcdir}/${_gamepkg}"
+    local file="${SRCDEST}/${_gamepkg}"
 
     read -p "Username or email: " login
     [[ -n $login ]] && read -sp "Password: " password ; echo
@@ -122,6 +116,7 @@ _download() {
 
         curl --fail --location \
              --cookie "$cookie" \
+             --continue-at - \
              --output "${file}.part" \
              "$_url" \
         || rm -f "${file}.part"
@@ -136,7 +131,7 @@ _download() {
         break
       else
         error "Login failed"
-        #echou "$output"
+        #echo "$output"
         read -p "Try again? (Y/n)"
         [[ $REPLY == n ]] && break
       fi
