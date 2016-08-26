@@ -25,8 +25,8 @@ depends=(
     'ladspa'
 )
 makedepends=('git')
-provides=('shotcut')
-conflicts=('shotcut')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${_srcname}::git+${url}.git"
