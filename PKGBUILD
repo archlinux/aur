@@ -1,27 +1,30 @@
 # Maintainer: M0Rf30
 
 pkgname=libpam-google-authenticator
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/google-authenticator/"
+url="https://github.com/google/google-authenticator"
 license=('Apache')
 depends=('pam')
 optdepends=('qrencode: scannable QR codes for google auth phone app')
 conflicts=('google-authenticator-libpam-git' 'google-authenticator-libpam-hg')
-source=("http://google-authenticator.googlecode.com/files/${pkgname}-${pkgver}-source.tar.bz2")
+source=("https://github.com/google/google-authenticator/archive/master.zip")
 install=${pkgname}.install
 
 build() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd $srcdir/${pkgname#libpam-}-master
+  cd libpam
+  ./bootstrap.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  install -D -m755 pam_google_authenticator.so "$pkgdir/usr/lib/security/pam_google_authenticator.so"
-  install -D -m755 google-authenticator "$pkgdir/usr/bin/google-authenticator"
+  cd $srcdir/${pkgname#libpam-}-master
+  cd libpam
+  make DESTDIR=$pkgdir install
 }
 
-md5sums=('9db0194fcae26a67dcedbcd49397e95e')
+md5sums=('SKIP')
