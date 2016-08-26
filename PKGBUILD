@@ -2,9 +2,9 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=1117.739416e
+pkgver=1121.681ce34
 pkgrel=1
-pkgdesc="Server daemon for communication between client and OpenBazaar network"
+pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest git for 1.x standalone)"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
@@ -30,7 +30,7 @@ msg2 "Creating an optimized standalone executable"
   virtualenv2 env
   source env/bin/activate
   pip2 install -r requirements.txt
-  pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+  pip2 install https://github.com/pyinstaller/pyinstaller/archive/master.zip
   pyinstaller -F ${_pkgname}.spec
 
 msg2 "Symlinking to allow gui to automatically call daemon"
