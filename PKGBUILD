@@ -43,5 +43,5 @@ prepare() {
 package() {
   cd "${_plug}"
   install -Dm644 vsTAAmbk.py "${pkgdir}${_sites_packages}/vsTAAmbk.py"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/${_plug}/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
