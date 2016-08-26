@@ -22,11 +22,12 @@ conflicts=('openbazaar')
 
 build(){
   cd $srcdir/${_pkgname}
-# npm install --production
+#  npm install --production
   npm install
   npm run babel
   npm run sass:build 
   npm run process-index
+  rm -rf {.git*,.eslint*,.travis*}
   asar pack ../${_pkgname} ../${_pkgname}.asar
 }
 
