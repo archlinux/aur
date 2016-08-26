@@ -2,7 +2,7 @@
 
 _plug=tcanny
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.7.g2ee6ee9
+pkgver=r7.0.g5e48ea1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -20,16 +20,21 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  cd "${_plug}"
+  ./autogen.sh
+}
+
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
 package(){
   cd "${_plug}"
-  make install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
