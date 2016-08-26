@@ -3,7 +3,7 @@
 _pkgname=gradio
 pkgname=gradio-bin
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK3 app for finding and listening to internet radio 
 stations."
 arch=("x86_64" "i386")
