@@ -21,8 +21,8 @@ depends=(
     'python-setuptools'
 )
 makedepends=('git')
-provides=('docker-compose')
-conflicts=('docker-compose')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
