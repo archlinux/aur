@@ -1,13 +1,14 @@
 #! /bin/bash
+# Maintainer: Rafael Cavalcanti <rc.cavalcanti at gmail dot com>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon 
-# Maintainer : Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=nicotine-plus-git
-pkgver=037e16c
-pkgrel=3
+pkgver=r1709.785bce4
+pkgrel=1
 pkgdesc="A fork of nicotine, a Soulseek music-sharing client written in python. Gitversion."
 arch=('i686' 'x86_64')
-url=("http://nicotine-plus.org")
+url="http://nicotine-plus.org"
 license=('GPL')
 depends=('pygtk' 'gtk2')
 makedepends=('git' 'python2')
@@ -22,8 +23,8 @@ sha512sums=('SKIP')
 _gitname=nicotine-plus
 
 pkgver() {
-  cd ${srcdir}/$_gitname
-  git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/$_gitname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -32,6 +33,6 @@ build() {
   python2 setup.py install --root=$srcdir/pkg
 }
 
-package(){
+package() {
   mv ${srcdir}/pkg/* ${pkgdir}  
 }
