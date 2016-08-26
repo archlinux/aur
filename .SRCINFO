@@ -1,0 +1,14 @@
+pkgbase = owncloud-app-totp
+	pkgdesc = Two factor TOTP provider for ownCloud
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ChristophWurst/twofactor_totp
+	arch = any
+	license = AGPL
+	depends = owncloud
+	options = !strip
+	source = https://github.com/ChristophWurst/twofactor_totp/releases/download/0.4.1/twofactor_totp.tar.gz
+	sha256sums = 591b2adc90dcb9aedd05b3da5540c98c3fdbb44cb8d871a1298593d93010c48c
+
+pkgname = owncloud-app-totp
+
