@@ -1,12 +1,12 @@
 pkgbase = ibus-table-zhengma
 	pkgdesc = This is a ZhengMa table engine for IBus Table.
-	pkgver = 1.4.4
-	pkgrel = 2
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = http://code.google.com/p/ibus/
 	arch = any
 	license = GPL-3
 	depends = ibus-table
-	source = git+git://github.com/heiher/ibus-table-zhengma.git#tag=1.4.4
+	source = git+git://github.com/heiher/ibus-table-zhengma.git#tag=1.4.5
 	sha256sums = SKIP
 
 pkgname = ibus-table-zhengma

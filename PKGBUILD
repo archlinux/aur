@@ -1,8 +1,8 @@
 # Maintainer: Heiher <r@hev.cc>
 
 pkgname=ibus-table-zhengma
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="This is a ZhengMa table engine for IBus Table."
 arch=("any")
 url="http://code.google.com/p/ibus/"
