@@ -1,22 +1,18 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
 pkgname=rtv
-pkgver=1.10.0
-pkgrel=1
+pkgver=1.12.0
+pkgrel=0
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
 url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv-git')
 makedepends=('git' 'python-setuptools')
-depends=('python-tornado' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw-git')
+depends=('python-beautifulsoup4' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw' 'mailcap-fix')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
-md5sums=('c71eefdf21107896c2343dbfcbfb83ae')
+md5sums=('c98d329b8d30f725834f4a447ef8ce33')
 
-build() {
-   cd "$srcdir/$pkgname-$pkgver"
-   sed -i -e 's/praw==3.5.0/praw/' setup.py
-}
 package() {
    cd "$srcdir/$pkgname-$pkgver"
    python setup.py install --root="$pkgdir/" --optimize=1
