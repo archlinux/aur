@@ -1,14 +1,14 @@
 pkgbase = insomnia
 	pkgdesc = Beautiful HTTP Requests
-	pkgver = 3.2.3
+	pkgver = 3.2.6
 	pkgrel = 1
 	url = http://insomnia.rest/
 	arch = i686
 	arch = x86_64
 	options = !strip
 	options = !upx
-	source = https://s3.amazonaws.com/builds-insomnia-rest/linux/insomnia-3.2.3.deb
-	md5sums = 0bfc0e6f6ab54d95c07aa91f0e7e7768
+	source = https://s3.amazonaws.com/builds-insomnia-rest/linux/insomnia-3.2.6.deb
+	md5sums = 9bd436a4804fe0cdaec6137e08020e87
 
 pkgname = insomnia
 
