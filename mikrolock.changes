@@ -1,3 +1,13 @@
+04.06.2015
+
+MikroLock 1.1
+
+-added Argon2 as possible key derivation function (--kdf)
+-changed wording of miniLock-ID to Lock-ID
+-GUI: added --portable command line option to save config files in the current
+   working directory instead of the user directory
+
+---
 27.08.2015
 
 MikroLock 1.0
