@@ -1,0 +1,17 @@
+pkgbase = plasma5-applets-todolist
+	pkgdesc = Extension of the kdeplasma-applets notes widget, where it's organized as a list
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Zren/plasma-applets/tree/master/todolist
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-declarative
+	source = https://github.com/Zren/plasma-applets/archive/todolist-1.tar.gz
+	source = https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-todolist/Add_CMakeLists.patch
+	md5sums = 5c4ab0a7f2d491652c712b5e963c63e2
+	md5sums = 3881942579d0e79c4e1e78ae570cbcd9
+
+pkgname = plasma5-applets-todolist
+
