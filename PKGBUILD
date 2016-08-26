@@ -5,7 +5,7 @@
 
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=aws-sdk-cpp-git
-pkgver=0.13.5.r0.g7cb4448
+pkgver=0.14.7.r0.gcfd293e
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
@@ -41,7 +41,7 @@ build() {
 
     CMAKE_FLAGS="-Wno-dev -DCMAKE_INSTALL_PREFIX=/usr \
                -DCMAKE_BUILD_TYPE=Release \
-               -DBUILD_ONLY=kinesis;firehose \
+               -DBUILD_ONLY=kinesis;firehose;sts \
                -DSTATIC_LINKING=1 -DNO_HTTP_CLIENT=1"
     cmake $CMAKE_FLAGS .
 	make -j $(nproc)
