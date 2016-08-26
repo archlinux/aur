@@ -23,10 +23,12 @@ case "$CARCH" in
 esac
 
 # Source
-source=('linux-4.8.patch')
+source=('linux-4.7.patch'
+        'linux-4.8.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums=('575708b8db401ff82ee4a26e491cc0da')
+md5sums=('4ce4db437695790a73f132651a601889'
+         '5a08e2109ebe7e597348796743337c01')
 md5sums_i686=('7b7466e23ae6ffa97106c9749aee2628')
 md5sums_x86_64=('cbe2cee787e07f8775a3fd994c9263a9')
 
@@ -59,7 +61,7 @@ prepare() {
     # Check version
     if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
       msg2 "Applying $_patch..."
-      patch -p1 -i "$_patch"
+      patch -p0 -i "$_patch"
     fi
   done
 }
