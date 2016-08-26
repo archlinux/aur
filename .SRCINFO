@@ -1,7 +1,7 @@
 pkgbase = rrun
 	pkgdesc = minimalistic command launcher in rust similar to gmrun
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buster/rrun
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rrun
 	makedepends = rust
 	makedepends = cargo
 	depends = cairo
-	depends = gcc-libs-multilib
+	depends = gcc-libs
 	depends = gtk3
 	source = https://github.com/buster/rrun/archive/0.2.1/rrun.tar.gz
 	sha256sums = 819e025f97d647f0ea93a459b37bcf7b26f776d345bf78c6973e9cccf42639da

@@ -1,13 +1,13 @@
 # Maintainer: Jan Tojnar <jtojnar@gmail.com>
 pkgname=rrun
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64')
 pkgdesc="minimalistic command launcher in rust similar to gmrun"
 url='https://github.com/buster/rrun'
 license=('GPL')
-depends=('cairo' 'gcc-libs-multilib' 'gtk3')
+depends=('cairo' 'gcc-libs' 'gtk3')
 source=("https://github.com/buster/rrun/archive/${pkgver}/${pkgname}.tar.gz")
 sha256sums=('819e025f97d647f0ea93a459b37bcf7b26f776d345bf78c6973e9cccf42639da')
 
