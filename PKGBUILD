@@ -4,9 +4,10 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook       # Build kernel with a different name
+_kernelname=-macbook
 _srcname=linux-4.7
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -29,8 +30,8 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
             'SKIP'
-            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
-            '3b41dde76dd69ec6e088bd19e724f3eabd30eaf43727a1948c6603242dc08cd8'
+            'd588b025cd5106c3d15b5b2ef89feb1f14d635af3dd2b09994dcb33bb7fdc23c'
+            'fb8fdfd81384d98ffe6dd1bfe187639c264f20f6c33834baa4c583442f03571a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
@@ -160,7 +161,8 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
-
+  depends=('linux-macbook') # added to keep kernel and headers packages matched
+  provides=("linux-macbook-headers=${pkgver}" "linux-headers=${pkgver}")
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
   cd "${srcdir}/${_srcname}"
@@ -288,6 +290,8 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
+  depends=('linux-macbook') # added to keep kernel and headers packages matched
+  provides=("linux-macbook-docs=${pkgver}" "linux-docs=${pkgver}")
 
   cd "${srcdir}/${_srcname}"
 

@@ -1,6 +1,6 @@
 pkgbase = linux-macbook
 	pkgver = 4.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = linux-macbook
 	sha256sums = SKIP
 	sha256sums = 031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d
 	sha256sums = SKIP
-	sha256sums = ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9
-	sha256sums = 3b41dde76dd69ec6e088bd19e724f3eabd30eaf43727a1948c6603242dc08cd8
+	sha256sums = d588b025cd5106c3d15b5b2ef89feb1f14d635af3dd2b09994dcb33bb7fdc23c
+	sha256sums = fb8fdfd81384d98ffe6dd1bfe187639c264f20f6c33834baa4c583442f03571a
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42
 	sha256sums = 4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971
@@ -49,7 +49,13 @@ pkgname = linux-macbook
 
 pkgname = linux-macbook-headers
 	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel (with brightness key and suspend patches)
+	depends = linux-macbook
+	provides = linux-macbook-headers=4.7.2
+	provides = linux-headers=4.7.2
 
 pkgname = linux-macbook-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel (with brightness key and suspend patches)
+	depends = linux-macbook
+	provides = linux-macbook-docs=4.7.2
+	provides = linux-docs=4.7.2
 
