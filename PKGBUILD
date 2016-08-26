@@ -9,8 +9,8 @@ license=('Apache')
 
 depends=('python' 'python-six')
 makedepends=('git' 'python-setuptools')
-provides=('python-dockerpty')
-conflicts=('python-dockerpty')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
