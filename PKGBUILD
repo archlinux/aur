@@ -9,8 +9,8 @@ license=('GPL3')
 
 depends=('python' 'python-xlib')
 makedepends=('git' 'python-setuptools')
-provides=('pyuserinput')
-conflicts=('pyuserinput')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
