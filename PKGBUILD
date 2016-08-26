@@ -14,8 +14,8 @@ optdepends=(
     'i3ipc-gjs: JavaScript language bindings'
 )
 makedepends=('libxcb' 'xcb-proto' 'gobject-introspection' 'gtk-doc')
-provides=('i3ipc-glib')
-conflicts=('i3ipc-glib')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
