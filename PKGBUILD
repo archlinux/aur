@@ -13,7 +13,9 @@ sha512sums=('SKIP')
 
 package() {
     cd "${pkgname}"
-    mkdir /opt/$pkgname
+    sudo mkdir /opt/$pkgname
+    sudo chown -R ${USER}:users /opt/$pkgname
+    chmod -r 750 /opt/$pkgname
     cp bhash_crack.sh /opt/$pkgname
     ln -n bhash_crack.sh /usr/bin/bhash
 }
