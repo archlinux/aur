@@ -34,7 +34,8 @@ build() {
     map add_file \
         /lib/udev/rules.d/60-zvol.rules \
         /lib/udev/rules.d/69-vdev.rules \
-        /lib/udev/rules.d/90-zfs.rules
+        /lib/udev/rules.d/90-zfs.rules \
+        /lib/libgcc_s.so.1
 
     map add_dir \
         /etc/zfs/zed.d
