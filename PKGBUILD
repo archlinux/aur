@@ -16,6 +16,9 @@ build() {
     sudo mkdir /opt/$pkgname
     sudo chown -R ${USER}:users /opt/$pkgname
     chmod -r 750 /opt/$pkgname
+}
+
+package() {
     cp bhash_crack.sh /opt/$pkgname
     ln -s bhash_crack.sh /usr/bin/bhash
 }
