@@ -14,7 +14,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.25.0
+pkgver=0.9.26.10
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
@@ -39,8 +39,8 @@ source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
 sha256sums=('SKIP'
             'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
-            'a76e7b6ccd8f49b51d22012887e1f0101db3bfe6aeebe1bc416b48da4e206b27'
-            'c001f045e52ab82154b21125384dbc4f1d2437376fc65c5d83987051e42b5409')
+            '72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2'
+            '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
 pkgver() {
     cd "$srcdir/$_gitname"
     echo "$(grep 'VERSION =' core/java/src/net/i2p/CoreVersion.java \
@@ -89,7 +89,7 @@ build() {
     build_jcpuid
 
     cd "$srcdir/$_gitname"
-    ant -Dworkspace.version=$(git rev-parse $_commit) preppkg-linux
+    ant -Dworkspace.version=$(git rev-parse --short $_commit) preppkg-linux
 }
 
 package() {
