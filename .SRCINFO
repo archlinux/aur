@@ -1,6 +1,6 @@
 pkgbase = octave-hg
 	pkgdesc = A high-level language, primarily intended for numerical computations.
-	pkgver = 4.1.0+22388.4e97eaf021e4
+	pkgver = 4.1.0+22391.6cbbd550aa91
 	pkgrel = 1
 	url = http://www.octave.org
 	arch = i686
