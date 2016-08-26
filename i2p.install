@@ -10,6 +10,7 @@ post_install() {
 post_upgrade() {
     systemd-tmpfiles --create i2prouter.conf
     chown -R i2p:i2p /opt/i2p
+    chmod 750 /opt/i2p
 }
 
 pre_remove() {
