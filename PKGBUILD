@@ -35,8 +35,7 @@ prepare() {
 
 build() {
     cd "$srcdir/MSPDebugStack_OS_Package"
-    # The -j flag is the number of parallel jobs to run, adjust accordningly.
-    make -j 3
+    make
 }
 
 package() {
