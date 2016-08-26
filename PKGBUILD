@@ -22,10 +22,11 @@ sha512sums=('f30b688b7f665ce342a4d792a473c23f9b22839e74425b267fd056aefddf0cde902
 package() {
   mkdir -p "${pkgdir}/etc/systemd/system/"
   mkdir -p "${pkgdir}/opt/"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   
   sed -i "s/\.\/lib/\/opt\/inetsim\/lib/" "${srcdir}/${pkgname}-${pkgver}/inetsim"
   install -D -m644 "${srcdir}/inetsim.service" \
-    "${pkgdir}/lib/systemd/system/inetsim.service"
+    "${pkgdir}/usr/lib/systemd/system/inetsim.service"
 
   cp -r "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/"
   mv "${pkgdir}/opt/${pkgname}-${pkgver}" "${pkgdir}/opt/inetsim"
