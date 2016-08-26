@@ -1,7 +1,7 @@
 pkgbase = openresty_luarocks
 	pkgdesc = Deployment and management system for Openresty Luajit 2.1 modules
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://luarocks.org/
 	arch = any
 	license = custom
