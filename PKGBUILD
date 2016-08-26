@@ -8,12 +8,8 @@ _setupFilename='setup_OnlineFotoservice'
 
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
-pkgdesc="an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners"
+pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
 md5sums=('27925ab5a8474bc234e56afe11f9c90c'
-
-##########################################
-# remaining code shared with cewe-fotobuch
-
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.1.5
