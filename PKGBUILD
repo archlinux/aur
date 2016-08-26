@@ -14,8 +14,8 @@ depends=(
     'python-websocket-client'
 )
 makedepends=('git' 'python-setuptools')
-provides=('python-docker-py')
-conflicts=('python-docker-py')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=("${_srcname}::git+${url}.git")
 sha512sums=('SKIP')
