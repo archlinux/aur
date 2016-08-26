@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=traccar
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 [[ "$CARCH" == 'x86_64' ]] && arch=64
 [[ "$CARCH" == 'i686' ]] && arch=32
@@ -13,9 +13,9 @@ license=('APACHE')
 depends=(java-runtime)
 source=("https://github.com/tananaev/traccar/releases/download/v${pkgver}/$pkgname-${_pkgver}.zip"
 	"traccar.service")
-md5sums=('a01bcaca0661327069f6be735511508d'
+md5sums=('3d2aece3a0e4c133a97df7873e96e4d9'
 	 '0c5ebc020df4d1710c555b67e87e104f')
-[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='c8b84f0d676d0194ff4fc8398281b42f'
+[[ "$CARCH" == 'x86_64' ]] && md5sums[0]='10fc65e4dea0e7b985bfa82dfc45c0b3'
  
 package() {
   cd ${srcdir}
