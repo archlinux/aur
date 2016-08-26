@@ -1,7 +1,7 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=miraclecast
 _name=miraclecast
-pkgver=220.2825270
+pkgver=221.36be37e
 pkgrel=1
 #epoch=
 pkgdesc="MiracleCast provides software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Contribute on https://github.com/albfan/aur-miraclecast"
@@ -21,8 +21,8 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$_name"
-  ./autogen.sh --prefix=/usr
-  ./configure
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc 
   make
 }
 
