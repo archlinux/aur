@@ -2,7 +2,7 @@
 # % Trigger: 1434722047 %
 # vim: ft=sh
 
-pkgdesc="Standalone systemd libs (including -compat)"
+pkgdesc="Standalone systemd libs"
 pkgname=( 'libsystemd-standalone' 'libsystemd-udev' )
 pkgver=231
 pkgrel=1
