@@ -1,6 +1,6 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=mergerfs
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Another FUSE union filesystem"
 arch=('i686' 'x86_64')
@@ -9,9 +9,7 @@ license=('MIT')
 depends=(fuse)
 options=(!emptydirs)
 source=("https://github.com/trapexit/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('665b18650376e22bc839e044e7ae6b76')
-sha256sums=('91b323ac848d373dde455a2f7bc7567b31d2def81839ae801c1d38d1ffb3ba61')
-sha512sums=('e2af096479493e804518db0bad5ef3fa2661172c914d791447367d5a2d13b519743bfe608f821fce328b07a4058b46d92149623347d7abbd3c73026e03c728b1')
+sha512sums=('8ec071a590c3bb262b038d99b532a7b582414c7af5aa26bd526870dc57aeaa5d8bc13adb9b22610e8793a3f31b85e9e163dabe3b3af925718388e2cd6d30d881')
 
 build() {
     cd ./"${pkgname}-${pkgver}" || exit
