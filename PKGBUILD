@@ -2,7 +2,7 @@
 
 pkgname=mandb-ondemand
 pkgver=2.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes any pacman updates to the manpage index database much faster."
 arch=('any')
 url="http://github.com/graysky2/mandb-ondemand"
@@ -10,7 +10,6 @@ license=('MIT')
 depends=('systemd' 'man-db')
 conflicts=('man-db-systemd')
 replaces=('man-db-systemd')
-install=${pkgname}.install
 source=(https://github.com/graysky2/${pkgname}/archive/v${pkgver}.tar.gz)
 sha256sums=('f38f4dbde4087704380d905fafb8334950e6a88600d1afbc1513c83c40f50d00')
 
