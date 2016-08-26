@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#export QT_SCALE_FACTOR=0.75
+
+#exec primusrun /opt/Allegorithmic/Substance_Designer/Substance\ Designer "$@"
+exec /opt/Allegorithmic/Substance_Designer/Substance\ Designer "$@"
+

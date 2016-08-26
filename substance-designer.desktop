@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=5.5.0.110
+Name=Substance Designer
+Exec=/usr/bin/substance-designer
+Icon=substance-designer-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Application;
+
