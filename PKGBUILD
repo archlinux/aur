@@ -3,8 +3,8 @@
 
 pkgname=torrent-file-editor-qt4-git
 _pkgname=torrent-file-editor
-pkgver=v0.2.1.r28.g8462745
-pkgrel=2
+pkgver=v0.3.0.r3.g248132e
+pkgrel=1
 pkgdesc="Qt based GUI tool designed to create and edit .torrent files. Qt4 build"
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/torrent-file-editor/'

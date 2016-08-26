@@ -1,7 +1,7 @@
 pkgbase = torrent-file-editor-qt4-git
 	pkgdesc = Qt based GUI tool designed to create and edit .torrent files. Qt4 build
-	pkgver = v0.2.1.r28.g8462745
-	pkgrel = 2
+	pkgver = v0.3.0.r3.g248132e
+	pkgrel = 1
 	url = https://sourceforge.net/projects/torrent-file-editor/
 	arch = i686
 	arch = x86_64
