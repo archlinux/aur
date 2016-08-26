@@ -3,13 +3,13 @@
 # Contributer: Arnaud
 pkgname=opentx-companion
 pkgver=2.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
 depends=('phonon' 'qt4' 'sdl')
-makedepends=('cmake' 'xsd' 'python2-pyqt4' 'bc' 'python2' 'avr-gcc' 'avr-libc' 'sed')
+makedepends=('cmake' 'xsd' 'python-pyqt4' 'bc' 'python' 'avr-gcc' 'avr-libc' 'sed')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
 source=("https://github.com/opentx/opentx/archive/$pkgver.tar.gz"
@@ -20,8 +20,6 @@ md5sums=('c5c8eb1c3ab072523826da71b6940ae0'
 )
 
 build() {
-  sed -i -e 's/env python/env python2.7/' $srcdir/opentx-$pkgver/radio/util/*.py
-  sed -i -e 's/@python/@python2.7/' $srcdir/opentx-$pkgver/radio/src/Makefile
   cd $srcdir/opentx-$pkgver/companion
   mkdir -p lbuild
   cd lbuild
