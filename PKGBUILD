@@ -24,10 +24,9 @@ build(){
   cd $srcdir/${_pkgname}
 #  npm install --production
   npm install
-  npm run babel
-  npm run sass:build 
-  npm run process-index
+  npm run build
   rm -rf {.git*,.eslint*,.travis*}
+  npm prune --production
   asar pack ../${_pkgname} ../${_pkgname}.asar
 }
 
