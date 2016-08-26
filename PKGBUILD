@@ -19,6 +19,6 @@ md5sums_x86_64=('4cec328e0d57f0d9669178488c25b100')
 md5sums_i686=('515ddee77009a029d9e64311c8826f62')
 
 package() {
-	dpkg-deb -x $srcdir/${_pkgname}_${pkgver}*.deb $pkgdir/
+	bsdtar -Oxf $srcdir/${_pkgname}_${pkgver}*.deb --include data.tar.xz  | tar -C $pkgdir -Jxf -
 }
 
