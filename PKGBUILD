@@ -1,13 +1,13 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
-pkgname=mailcap_fix
+pkgname=mailcap-fix
 pkgver=0.1.3
 pkgrel=0
 pkgdesc="A patched mailcap module that conforms to RFC 1524"
 arch=('any')
 url="https://github.com/michael-lazar/mailcap_fix"
 license=('UNLISCENSE')
-conflicts=('mailcap_fix-git')
+conflicts=('mailcap-fix-git')
 makedepends=('git' 'python-setuptools')
 depends=('python')
 source=(https://github.com/michael-lazar/mailcap_fix/archive/$pkgver.tar.gz)
