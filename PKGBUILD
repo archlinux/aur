@@ -9,8 +9,8 @@ license=('LGPL2')
 
 depends=('libftdi-compat' 'confuse')
 makedepends=('gcc' 'cmake' 'make' 'git' 'doxygen')
-provides=('telldus-core')
-conflicts=('telldus-core')
+provides=("${pkgname[0]%-git}")
+conflicts=("${pkgname[0]%-git}")
 
 source=(
     "${_srcname}::git+${url}.git"
