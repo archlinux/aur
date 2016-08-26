@@ -1,0 +1,13 @@
+--- a/glib/gmessages.c	2016-08-17 11:20:47.000000000 -0400
++++ b/glib/gmessages.c	2016-08-26 02:17:21.662120469 -0400
+@@ -973,6 +973,10 @@
+   if (!log_level)
+     return;
+ 
++  // HACK: Hide all warnings
++  if (log_level & G_LOG_LEVEL_WARNING)
++    return;
++
+   if (log_level & G_LOG_FLAG_RECURSION)
+     {
+       /* we use a stack buffer of fixed size, since we're likely

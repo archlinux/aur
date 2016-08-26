@@ -1,0 +1,34 @@
+pkgbase = glib2-quiet
+	pkgdesc = A patched version of glib2, with spammy console WARNING messages disabled
+	pkgver = 2.48.2
+	pkgrel = 1
+	url = http://www.gtk.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkg-config
+	makedepends = python
+	makedepends = pcre
+	makedepends = libffi
+	makedepends = libelf
+	depends = pcre
+	depends = libffi
+	optdepends = python: for gdbus-codegen and gtester-report
+	optdepends = libelf: gresource inspection tool
+	provides = glib2
+	conflicts = glib2
+	options = !docs
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/GNOME/sources/glib/2.48/glib-2.48.2.tar.xz
+	source = glib-compile-schemas.hook
+	source = gio-querymodules.hook
+	source = revert-warn-glib-compile-schemas.patch
+	source = gmessages-nowarn.patch
+	sha256sums = f25e751589cb1a58826eac24fbd4186cda4518af772806b666a3f91f66e6d3f4
+	sha256sums = e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3
+	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
+	sha256sums = 049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97
+	sha256sums = 3c5d812cd1e8905f89de14b0d5272e733c612a8c47bd648da97a3545a727044a
+
+pkgname = glib2-quiet
+
