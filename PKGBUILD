@@ -1,8 +1,8 @@
-# Maintainer: montag451 <montag451 at laposte dot net>
+# Maintainer: montag451 <montag451 [at] laposte (dot) net>
 
 pkgname=asn1c
 pkgver=0.9.27
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Source ASN.1 Compiler'
 arch=('i686' 'x86_64')
 url='http://lionet.info/asn1c/compiler.html'
@@ -23,6 +23,8 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}/" install
+    install -m 644 -D -t "${pkgdir}/usr/share/${pkgname}/standard-modules" skeletons/standard-modules/*
+    install -m 644 -D COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
