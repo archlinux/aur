@@ -4,12 +4,12 @@
 pkgname=geda-gaf-unstable
 _pkgname=geda-gaf
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="gEDA/gaf suite - contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project"
 arch=('i686' 'x86_64')
 url="http://www.geda-project.org/"
 license=('GPL')
-depends=('gtk2' 'guile' 'libstroke' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('gtk2' 'guile' 'libstroke')
 optdepends=('python2: for two of the commands (garchive, tragesym)'
   'gawk: for sw2asc')
 conflicts=('geda-gaf')
