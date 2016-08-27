@@ -139,7 +139,7 @@ package_diaspora-postgresql() {
   conflicts=(${conflicts[@]} 'diaspora-mysql')
   depends=(${depends[@]} 'postgresql-libs' 'postgresql')
 
-  _package postgres
+  _package postgresql
 }
 
 sha256sums=('210e1527824ee6f8c414e51ccc083e5d9101b21516f622b4ad177af780b11469'
