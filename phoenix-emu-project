@@ -3,13 +3,17 @@
 confdir=$HOME/.config/PhoenixEmuProject
 mkdir -p $confdir
 cd  $confdir
-if [ ! -s $confdir/scales ] ; then 
-     cp -ar /opt/phoenix-emu-project/scales $confdir/scales
+if [ ! -s $confdir/scalers ] ; then 
+    cp -r /opt/phoenix-emu-project/scales $confdir/scales
 fi 
 if [ ! -s $confdir/shaders ] ; then 
-     cp -ar /opt/phoenix-emu-project/shaders $confdir/shaders
+    cp -r /opt/phoenix-emu-project/shaders $confdir/shaders
 fi 
 if [ ! -s $confdir/skin ] ; then 
-     cp -ar /opt/phoenix-emu-project/skin $confdir/skin
+    cp -r /opt/phoenix-emu-project/skin $confdir/skin
 fi 
+if [[ $LANG != "ru_RU"* ]]; then
+    cp /opt/phoenix-emu-project/translation.xml.eng $confdir/translation.xml
+fi
 /opt/phoenix-emu-project/PhoenixEmuProject
+

@@ -1,20 +1,21 @@
 pkgbase = phoenix-emu-project
 	pkgdesc = An emulator of 3DO consoles. 100% compatible!
-	pkgver = 2.5
+	pkgver = 2.7
 	pkgrel = 1
 	url = http://www.arts-union.ru/node/23
-	install = phoenix-emu-project.install
 	arch = x86_64
 	license = custom
 	depends = qt5-base
 	depends = openal
 	depends = glu
-	source = http://www.arts-union.ru/sites/default/files/ph25-lin-x64.zip
+	source = http://www.arts-union.ru/sites/default/files/ph27-lin-x64.zip
 	source = phoenix-emu-project.desktop
 	source = phoenix-emu-project
-	md5sums = a311f2143af0f70cc91b701865134d02
+	source = translation.xml.eng
+	md5sums = 4ee74204154e36f0085b5720326e5c07
 	md5sums = 7f9b5652c512887d7e034cc8c07b2045
-	md5sums = 9f5ad5e6700d4082a24c53c033184207
+	md5sums = 2dda6097a84eadaee848c31fe86001bd
+	md5sums = c90865e809e28d7fd203e00d1e581fd6
 
 pkgname = phoenix-emu-project
 

@@ -1,20 +1,21 @@
 # Maintainer: Viachaslau Khalikin <vkhinegret@gmail.com>
 
 pkgname=phoenix-emu-project
-pkgver=2.5
+pkgver=2.7
 pkgrel=1
 pkgdesc="An emulator of 3DO consoles. 100% compatible!"
 url="http://www.arts-union.ru/node/23"
 license=('custom')
 arch=('x86_64')
 depends=('qt5-base' 'openal' 'glu')
-install="phoenix-emu-project.install"
-source=("http://www.arts-union.ru/sites/default/files/ph25-lin-x64.zip"
+source=("http://www.arts-union.ru/sites/default/files/ph27-lin-x64.zip"
         phoenix-emu-project.desktop
-        phoenix-emu-project)
-md5sums=('a311f2143af0f70cc91b701865134d02'
+        phoenix-emu-project
+        translation.xml.eng)
+md5sums=('4ee74204154e36f0085b5720326e5c07'
          '7f9b5652c512887d7e034cc8c07b2045'
-         '9f5ad5e6700d4082a24c53c033184207')
+         '2dda6097a84eadaee848c31fe86001bd'
+         'c90865e809e28d7fd203e00d1e581fd6')
 prepare() {
   echo
 }
@@ -31,6 +32,7 @@ package() {
   install -Dm644 shaders/* "$pkgdir/opt/phoenix-emu-project/shaders/"
   install -Dm644 skin/style.* "$pkgdir/opt/phoenix-emu-project/skin/"
   install -Dm644 skin/rc/* "$pkgdir/opt/phoenix-emu-project/skin/rc"
+  install -Dm644 translation.xml.eng "$pkgdir/opt/phoenix-emu-project/"
   # desktop icon
   install -Dm645 phoenix-emu-project.desktop "$pkgdir/usr/share/applications/phoenix-emu-project.desktop"
   install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/phoenix-emu-project-logo.png"
