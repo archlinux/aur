@@ -15,6 +15,6 @@ license="BSD"
 
 build() {
   cd $srcdir/munkres-$pkgver
-  /usr/bin/python setup.py build || return 1
+  /usr/bin/python setup.py build
   /usr/bin/python setup.py install --root=$pkgdir
 }
