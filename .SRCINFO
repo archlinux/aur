@@ -1,0 +1,18 @@
+pkgbase = ricoh-sp100-git
+	pkgdesc = CUPS driver for Ricoh Aficio SP 100 and SP 200 family printers
+	pkgver = v0.3.r22.gef4c12d
+	pkgrel = 1
+	url = https://github.com/madlynx/ricoh-sp100/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = cups
+	depends = jbigkit
+	depends = imagemagick
+	depends = ghostscript
+	optdepends = inotify-tools: asynchronous printing support
+	source = git://github.com/madlynx/ricoh-sp100
+	md5sums = SKIP
+
+pkgname = ricoh-sp100-git
+
