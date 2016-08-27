@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 
 pkgname=alienfx-lite
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A keyboard color management tool for Alienware laptops (written in Java with a C++ native library)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('java-runtime' 'jdk8-openjdk' 'libusb')
 makedepends=('cmake')
 source=("https://github.com/bchretien/AlienFxLite/archive/v${pkgver}.tar.gz")
-sha256sums=('92a8fbc428b0f5d3757d8bf199c6513ce95254423767e8389560c2553eaa9c78')
+sha256sums=('76de0380102b45111c3b964fc6e3f568259b341a58a1d8a560a0100a4da46a3f')
 
 _dir="AlienFxLite-${pkgver}"
 
