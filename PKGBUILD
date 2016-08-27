@@ -3,7 +3,7 @@
 
 pkgname=trackma-git
 pkgver=0.6.1.r5.gc3be5ff
-pkgrel=2
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -40,6 +40,12 @@ replaces=('wmal-git')
 pkgver() {
   cd ${pkgname}
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+  warning "Fixing setuptools"
+  #(temporarily) remove 'gi' from setuptools requirements.
+  sed --in-place=.orig "s/'gi'/'pygobject'/g" "${srcdir}/trackma-git/setup.py"
 }
 
 package() {
