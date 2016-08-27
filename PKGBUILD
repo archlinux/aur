@@ -3,15 +3,15 @@
 pkgname=hyperion-rpi
 _pkgname=hyperion
 pkgver=1.03.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource 'AmbiLight' implementation (build for raspberry pi)"
 arch=('arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('qt5-base' 'libusb' 'python' 'icu')
+depends=('libusb' 'protobuf' 'python' 'qt5-base' 'icu')
 optdepends=('xorg-server: X11 grabbing')
-makedepends=('unzip' 'cmake' 'qt5-serialport' 'avahi' 'protobuf')
-install="hyperion-rbp.install"
+makedepends=('cmake')
+install="hyperion-rpi.install"
 provides=('hyperion')
 conflicts=('hyperion')
 backup=('etc/hyperion/hyperion.config.json')
@@ -21,40 +21,39 @@ sha512sums=('7406f5bdf323d2799fb375557603fefd1f077cda287b5aa9ff10251b22d8dd07590
             '6cc3a41dbb27b7eac6d329606e154c0d53ee686a286a975188a40381dbdbd8e3879abe6a61e69f9c12e176e0895f993568bba558099db440b4fcc7dcb2e03a88')
 
 prepare() {
-  # Copy ws281x submodule
-  rm -rf "${srcdir}/${_pkgname}-${pkgver}/dependencies/external/rpi_ws281x"
-  cp -a ${srcdir}/rpi_ws281x "${srcdir}/${_pkgname}-${pkgver}/dependencies/external"
+    # Link ws281x submodule
+    rm -r "${srcdir}/${_pkgname}-${pkgver}/dependencies/external/rpi_ws281x"
+    ln -s "${srcdir}/rpi_ws281x-48d5e1af37fab4970f374d9d98e46bf5ebefa794" "${srcdir}/${_pkgname}-${pkgver}/dependencies/external/rpi_ws281x"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
-        -DPLATFORM=rpi-pwm \
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_QT5=ON \
-        -DUSE_SHARED_AVAHI_LIBS=ON \
-        -DUSE_SYSTEM_PROTO_LIBS=ON \
+        -DPLATFORM=rpi-pwm \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
+        -DUSE_SYSTEM_PROTO_LIBS=ON \
         ..
-  make
+    make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  pushd build
-  make install
-  popd
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd build
+    make install
+    cd ..
 
-  install -Dm 644 config/hyperion.config.json.example \
+    install -Dm 644 config/hyperion.config.json.example \
     "${pkgdir}/etc/hyperion/hyperion.config.json"
 
-  install -Dm 644 bin/service/hyperion.systemd.sh \
+    install -Dm 644 bin/service/hyperion.systemd.sh \
     "${pkgdir}/usr/lib/systemd/system/hyperiond.service"
 
-  rm -rf "${pkgdir}/usr/share/hyperion/service"
+    rm -rf "${pkgdir}/usr/share/hyperion/service"
 
-  install -Dm 644 LICENSE \
+    install -Dm 644 LICENSE \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
