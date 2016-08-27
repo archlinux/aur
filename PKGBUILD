@@ -4,21 +4,21 @@ _gtk3_min='3.18'
 _gtk3_max='3.21'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="${_gtk3_max}.4.212"
+pkgver="${_gtk3_max}.4.239"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/${_theme_name}"
 license=('GPL2' 'CCPL')
 depends=("gtk2>=${_gtk2_min}"
-         "gtk3>=${_gtk3_min}"
+         "gtk3>=${_gtk3_min}.9"
          "gtk3<=${_gtk3_max}.99"
          'gtk-engines>=2.21.0'
          'gtk-engine-murrine>=0.98.1')
-optdepends=("gnome-shell>=${_gtk3_min}: The GNOME Shell"
-            "gnome-flashback>=${_gtk3_min}: The GNOME flashback shell"
-            'budgie-desktop>=10.2.4: The Budgie desktop'
-            'cinnamon>=2.8: The Cinnamon desktop'
+optdepends=("gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
+            "gnome-flashback>=${_gtk3_min}.2: The GNOME flashback shell"
+            'budgie-desktop>=10.2.5: The Budgie desktop'
+            'cinnamon>=2.8.6: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
             'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
@@ -31,7 +31,7 @@ makedepends=('glib2>=2.48.0'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('b7b908eed72d7fd497d7dfa4b428ff7669e69c6131d9a10ef03a534960f1543b'
+sha256sums=('37e33245314eb3285631c2eac43c9c6c4bee5a6b43a4ed0946d06ad044674fb1'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 _bundle="ruby-bundle"
