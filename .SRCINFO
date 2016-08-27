@@ -1,12 +1,12 @@
 pkgbase = withtool
 	pkgdesc = Program prefixing for continuous workflow using a single tool
-	pkgver = 1.2
+	pkgver = v2.0
 	pkgrel = 1
 	url = https://github.com/kalterfive/with
 	arch = any
 	license = GPL3
 	depends = bash
-	source = with::git://github.com/kalterfive/with#tag=1.2
+	source = with::git://github.com/kalterfive/with#tag=v2.0
 	md5sums = SKIP
 
 pkgname = withtool
