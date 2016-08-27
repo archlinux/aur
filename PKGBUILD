@@ -11,17 +11,29 @@ pkgver=0.9.14.3267M
 pkgrel=1
 pkgdesc="A Sega Saturn emulator. Qt5 port (SVN version)"
 arch=('x86_64' 'i386')
-url="http://yabause.org/"
+url='http://yabause.org'
 license=('GPL')
-depends=('mini18n-git' 'openal' 'sdl2' 'freeglut' 'qt5-base' 'libxkbcommon-x11' 'libsm')
-makedepends=('subversion' 'cmake' 'glu' 'doxygen')
+depends=('mini18n-git'
+         'openal'
+         'sdl2'
+         'freeglut'
+         'qt5-base'
+         'libxkbcommon-x11'
+         'libsm'
+         )
+makedepends=('subversion'
+             'cmake'
+             'glu'
+             'doxygen'
+             )
 conflicts=('yabause-qt' 'yabause-qt5' 'yabause-gtk' 'yabause')
 provides=('yabause-qt5')
 source=("svn+https://svn.code.sf.net/p/yabause/code/trunk/yabause/"
-        'rwx.patch')
-_svnmodule="yabause"
+        'rwx.patch'
+        )
 sha1sums=('SKIP'
-          '749276456a137ab913c631b9c61d113d7b67c854')
+          '749276456a137ab913c631b9c61d113d7b67c854'
+          )
 
 pkgver() {
   cd yabause
