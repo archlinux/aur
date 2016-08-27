@@ -1,0 +1,24 @@
+pkgbase = libdrm-git-amdgpu-si
+	pkgdesc = Userspace interface to kernel DRM services, master git version
+	pkgver = 5867.dd4dff2
+	pkgrel = 1
+	url = http://dri.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	checkdepends = cairo
+	checkdepends = cunit
+	makedepends = valgrind
+	makedepends = xorg-util-macros
+	depends = glibc
+	depends = libpciaccess
+	provides = libdrm=2.4.66
+	conflicts = libdrm
+	replaces = libdrm
+	source = libdrm::git+https://github.com/yurikoles/libdrm.git#branch=amdgpu-si
+	source = COPYING
+	sha256sums = SKIP
+	sha256sums = 9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93
+
+pkgname = libdrm-git-amdgpu-si
+
