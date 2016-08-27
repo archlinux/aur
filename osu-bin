@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/lib/osu
+exec mono /usr/lib/osu/osu!.exe "$@"
