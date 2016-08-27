@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=nut-multimedia-git
-pkgver=20140619.383658f
+pkgver=20160209.640bf64
 pkgrel=1
 pkgdesc="Free multimedia container format. (Git Version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git')
 conflicts=('nut-multimedia' 'libnut-git')
 provides=('nut-multimedia' 'libnut')
-source=("git://git.ffmpeg.org/nut.git")
+source=('git://git.ffmpeg.org/nut.git')
 sha1sums=('SKIP')
 
 pkgver() {
