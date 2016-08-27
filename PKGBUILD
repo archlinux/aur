@@ -11,8 +11,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils' 'ttf-unifont')
 install=ttf.install
 source=( http://unifoundry.com/pub/unifont-$pkgver/font-builds/unifont_csur-$pkgver.ttf
 )
-md5sums=('c3a37a2a66f77f9c3c2c556056e123d2'
-'8c9a0f32d4cfdb944a8bba6744e2648e')
+md5sums=('8c11bbe5ecbc72cc9368e44ecf6b7f77')
 
 package() {
   cd $srcdir
