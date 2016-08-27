@@ -16,5 +16,9 @@ license=('BSD')
 build() {
   cd "$srcdir/munkres-$pkgver"
   /usr/bin/python setup.py build
+}
+
+package() {
+  cd "$srcdir/munkres-$pkgver"
   /usr/bin/python setup.py install --root="$pkgdir"
 }
