@@ -16,4 +16,5 @@ md5sums=('fc69a925910ed15efa405d0ae11baa29')
 package() {
 	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -Dm644 enum/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
