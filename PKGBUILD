@@ -1,4 +1,5 @@
-# Maintainer: Adrian Sampson <adrian@radbox.org>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Adrian Sampson <adrian@radbox.org>
 
 pkgname=python-munkres
 pkgver=1.0.5.4
