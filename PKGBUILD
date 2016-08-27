@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='rhythm is just a *click* away!'
 url='https://osu.ppy.sh'
 arch=('i686' 'x86_64')
-license=('MIT')
+license=('MIT' 'custom:CCPL:by-nc-4.0')
 
 depends=('mono')
 makedepends=('git' 'nuget')
@@ -34,8 +34,8 @@ prepare() {
   cd $_pkgname
 
   git submodule init
-  git config submodule.osu-resources.url "$srcdir/${_pkgname}-resources"
-  git config submodule.osu-framework.url "$srcdir/${_pkgname}-framework"
+  git config submodule.osu-resources.url "$srcdir/$_pkgname-resources"
+  git config submodule.osu-framework.url "$srcdir/$_pkgname-framework"
   git submodule update
 
   nuget restore
@@ -55,4 +55,6 @@ package() {
   install -Dm755 osu.Desktop/bin/Release/*.{exe,so,dll,dll.config} "$pkgdir"/usr/lib/$_pkgname
 
   install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $_pkgname-framework/LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-framework
+  install -Dm644 $_pkgname-resources/LICENCE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-resources.md
 }
