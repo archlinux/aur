@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://diasporafoundation.org"
 license=('AGPL3')
 depends=('ruby' 'ruby-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts')
-makedepends=('nodejs' 'postgresql-libs' 'libmariaclient')
+makedepends=('nodejs' 'postgresql-libs' 'libmariadbclient')
 conflicts=('diaspora-git' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/$pkgbase/diaspora.yml"
@@ -129,7 +129,7 @@ _package() {
 package_diaspora-mysql() {
   pkgdesc="$pkgdesc (MySQL)"
   conflicts=(${conflicts[@]} 'diaspora-postgresql')
-  depends=(${depends[@]} 'libmariaclient' 'mysql')
+  depends=(${depends[@]} 'libmariadbclient' 'mysql')
 
   _package mysql
 }
