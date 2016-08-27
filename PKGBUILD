@@ -2,7 +2,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=python2-jedihttp-git
-pkgver=r143.6ebce61
+pkgver=r144.33082a3
 pkgrel=1
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
