@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-08-25-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-08-26-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -25,17 +25,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch"
 )
-sha256sums=('846a4ec5cfb69d3350789e3ce4ebd075eef091556d6efbf6ffa8f15fd6fc0183'
-            'ed41fca3bda4b5ce7ced496bf74a18d6ce8bc4bd89b4e1b9142149fd599c713d'
-            '24dda7ef60d100dc2294ec42f58724e633a92009265ba5069e382d29b8d86039'
-            '8db73081c9a9beb44a70443554a9c0c2c0352e08be56be3b69adf62e5d490f7d'
-            'daf57b80093a3f498adabcadaa95e60be0cc9c111adb8878fa32c4bc509f4d84'
-            'c3d24afe195c363f97964543076315c334a90e4fd382df58d14c0414f901b46a'
-            '7f1e829446763881f5b0aa3db674eb9a0d536df446dbcba4683d31266e316384'
-            'e84a0fd3b7087d92a6f6fc367d6194bfdfb120096c6e8c230d1075f878e959f3'
-            '632956902327ad13dcdb8555b3558029dcde9660b63a9565e0b001b807908f53'
-            'a371f9ba77c6e4ada506065d292e0b6e2b87e109a6de5935f6be0edb84ebd8e7'
-            '011c14a8b1ee529b4830ff8749f951fe7ddac1213650abae8fe2be8638355a1d'
+sha256sums=('feec3191931758aca0c506655c8a6bf5877d3b79c94d0fd4b6c16c8194cd6c65'
+            '5fd419cf654a8045f4251cf5333b67aff766421206ef35066c0cd39aaf8d1cd7'
+            '22a0495c07871a8481c6773c769b591fb344742818b0a184a39d9426875f3b31'
+            'cd2bba47dc43ebf5a6ae43b27a2f3cbe3d4f128aae37b588085238c4428e1f4b'
+            '02bb7ad2e97ca1caa7c69ad28dfe29b4806242c8895a6f5065bf59bfc42e5025'
+            '84dcb90f44cb933e39b8770d7cfc521e34c0c7ac3e0df284a54f3e5e55574208'
+            '8bd42a524ee9aede0727039f324215b58219fa5c2d321591a82f44927f8394b4'
+            'e450176698a6d09b91503007e22dc596bea006922c244d9db177e16f0151dbd5'
+            'eaf2bd60de5d969258c63f60c673a1f1bfe373697ae2b7c0571edc5b6058c5c1'
+            'f455e6024bca2846f9a02a9d0ed3f31838d8f6baf4c07965fb6ab36d4c18cbde'
+            'a6ede1fe537e45ec43713c1bf1858f54986e36dcbee04ad7470c00b391b2511c'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
@@ -141,8 +141,6 @@ package_swift-development() {
     (
         cd libdispatch-linux-$CARCH
         make install DESTDIR="$pkgdir"
-
-        install -m644 src/libdispatch.la "$pkgdir/usr/lib/swift/linux/"
     )
 
     # License file
