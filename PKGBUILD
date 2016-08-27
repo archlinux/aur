@@ -1,7 +1,7 @@
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.0+11+g81ab4a3
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
@@ -10,12 +10,13 @@ license=('GPL2')
 depends=('mesa' 'libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango' 'libxrandr')
 makedepends=('gobject-introspection' 'git' 'gtk-doc')
 options=(!emptydirs)
-source=('git://git.gnome.org/cogl#commit=81ab4a3e')
+_commit=f38cda9046913c3627c52108467ba90e53d18c33
+source=("git://git.gnome.org/cogl#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/-/+/g'
+  git describe | sed 's/-/+/g'
 }
 
 prepare() {
