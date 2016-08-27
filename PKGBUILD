@@ -8,13 +8,13 @@ pkgdesc="munkres algorithm for the assignment problem"
 depends=('python')
 makedepends=('setuptools')
 arch=('any')
-source=(http://pypi.python.org/packages/source/m/munkres/munkres-$pkgver.tar.gz)
+source=("http://pypi.python.org/packages/source/m/munkres/munkres-$pkgver.tar.gz")
 md5sums=(cb9d114fb523428bab4742e88bc83696)
 url="http://bmc.github.com/munkres/"
 license="BSD"
 
 build() {
-  cd $srcdir/munkres-$pkgver
+  cd "$srcdir/munkres-$pkgver"
   /usr/bin/python setup.py build
-  /usr/bin/python setup.py install --root=$pkgdir
+  /usr/bin/python setup.py install --root="$pkgdir"
 }
