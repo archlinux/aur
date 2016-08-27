@@ -2,7 +2,7 @@
 # Contributor: Jesse R. Adams <jesse at techno-geeks dot org>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mdocml
-pkgver=1.13.3
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="A suite of tools compiling mdoc, the roff macro language and man manuals."
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ depends=('sqlite')
 provides=('mandoc')
 conflicts=('mandoc')
 source=("http://mdocml.bsd.lv/snapshots/$pkgname-$pkgver.tar.gz")
-md5sums=('7be80e1116a11abe2aabd6b2f04434ef')
-sha1sums=('3ccfbb492a477b84343c97de743b3dd5bd3c763b')
-sha256sums=('23ccab4800d50bf4c327979af5d4aa1a6a2dc490789cb67c4c3ac1bd40b8cad8')
+md5sums=('797d4f0e112479f8861e03a72f8b8b01')
+sha1sums=('e7fd98e898704b8e285da3a3e2c4218694c3a51d')
+sha256sums=('0a55c1addb188071d6f784599303656b8465e98ec6b2f4f264e12fb96d79e0ef')
 
 prepare() {
   # adapt configuration
