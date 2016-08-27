@@ -2,7 +2,7 @@
 
 pkgname=phoenix-emu-project
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator of 3DO consoles. 100% compatible!"
 url="http://www.arts-union.ru/node/23"
 license=('custom')
@@ -15,7 +15,7 @@ source=("http://www.arts-union.ru/sites/default/files/ph27-lin-x64.zip"
 md5sums=('4ee74204154e36f0085b5720326e5c07'
          '7f9b5652c512887d7e034cc8c07b2045'
          '2dda6097a84eadaee848c31fe86001bd'
-         'c90865e809e28d7fd203e00d1e581fd6')
+         '9077a8400eb3c4e06183b7fd9974f50f')
 prepare() {
   echo
 }

@@ -458,7 +458,7 @@
     </text>
     <text>
         <origin>Выбор платформы</origin>
-        <translation>Choice of platform</translation>
+        <translation>Platform choice</translation>
     </text>
     <text>
         <origin>3DO Interactive Multiplayer</origin>
@@ -650,7 +650,7 @@
     </text>
     <text>
         <origin>Запись</origin>
-        <translation>Запись</translation>
+        <translation>Record</translation>
     </text>
     <text>
         <origin>Запись игрового процесса</origin>
@@ -670,7 +670,7 @@
     </text>
     <text>
         <origin>Изъять %1</origin>
-        <translation>Withdraw %1</translation>
+        <translation>Eject %1</translation>
     </text>
     <text>
         <origin>Добавить %1 дамп в коллекцию</origin>
@@ -754,7 +754,7 @@
     </text>
     <text>
         <origin>Дополнить</origin>
-        <translation>To add</translation>
+        <translation>Update</translation>
     </text>
     <text>
         <origin>Переопределить</origin>
