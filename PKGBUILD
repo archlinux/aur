@@ -2,7 +2,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=openh264-git
-pkgver=1.6.r4354.30328b8
+pkgver=1.6.0.r4354.30328b8
 pkgrel=1
 pkgdesc="Open Source H.264 Codec"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd openh264
-  _ver="$(cat Makefile | grep -m1 VERSION | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat codec/api/svc/codec_ver.h | grep -m3 -e 'OPENH264_MAJOR' -e 'OPENH264_MINOR' -e 'OPENH264_REVISION' | sed 's|OPENH264|OPENHTWOSIXFOUR|g' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
