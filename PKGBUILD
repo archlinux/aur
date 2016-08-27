@@ -2,8 +2,8 @@
 
 pkgname=xfce4-multiload-ng-plugin-git
 _pkgname=multiload-ng
-pkgver=r235.23c992e
-pkgrel=2
+pkgver=r364.7c556f7
+pkgrel=3
 pkgdesc="A modern graphical system monitor, Xfce version"
 arch=('i686' 'x86_64')
 url="https://udda.github.io/multiload-ng/"
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	 ./autogen.sh
-	 ./configure --prefix=$pkgdir/usr
+	 ./configure --prefix=$pkgdir/usr --with-gtk=2.0
 	 make
 } 
 
