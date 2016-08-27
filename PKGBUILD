@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/Schnouki/spop'
 license=('GPL')
 depends=('libspotify' 'json-glib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python')
 optdepends=(
   'libao: libao audio output'
   'sox: libsox audio output'
