@@ -2,13 +2,13 @@
 pkgbase=diaspora
 pkgname=('diaspora-mysql' 'diaspora-postgresql')
 pkgver=0.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed privacy aware social network"
 arch=('i686' 'x86_64')
 url="http://diasporafoundation.org"
 license=('AGPL3')
 depends=('ruby' 'ruby-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts')
-makedepends=('nodejs' 'postgresql-libs' 'libmysqlclient')
+makedepends=('nodejs' 'postgresql-libs' 'libmariaclient')
 conflicts=('diaspora-git' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/$pkgbase/diaspora.yml"
@@ -129,7 +129,7 @@ _package() {
 package_diaspora-mysql() {
   pkgdesc="$pkgdesc (MySQL)"
   conflicts=(${conflicts[@]} 'diaspora-postgresql')
-  depends=(${depends[@]} 'libmysqlclient' 'mysql')
+  depends=(${depends[@]} 'libmariaclient' 'mysql')
 
   _package mysql
 }
