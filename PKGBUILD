@@ -6,8 +6,8 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=25.1
-_pkgver=25.1-rc1
-pkgrel=0.1
+_pkgver=25.1-rc2
+pkgrel=0.2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -17,7 +17,7 @@ install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha384sums=('ca6195de29d80ee0007782d88766424067b14d3b5310524fbf9a1d442962a7f656a09f5d455e19326e06bea841cfdd18'
+sha384sums=('9ec2a501102f30ae9f520ebcb9f7e36cf6543aac9cd0cbca12d1fb33516ec2943bfe913605ea0a254c3adfb446bf41ed'
             'SKIP')
 validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
@@ -34,7 +34,7 @@ build() {
                   --without-gconf
                   --with-sound=alsa
                   --with-x-toolkit=gtk3
-                  --with-game-user=:games
+                  --with-gameuser=:games
                   --with-modules)
   ./configure "${confopts[@]}"
   make

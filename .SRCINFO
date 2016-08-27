@@ -1,7 +1,7 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
 	pkgver = 25.1
-	pkgrel = 0.1
+	pkgrel = 0.2
 	url = http://www.gnu.org/software/emacs/emacs.html
 	install = emacs-pretest.install
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = emacs-pretest
 	depends = imagemagick
 	provides = emacs
 	conflicts = emacs
-	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.1-rc1.tar.xz
-	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.1-rc1.tar.xz.sig
-	sha384sums = ca6195de29d80ee0007782d88766424067b14d3b5310524fbf9a1d442962a7f656a09f5d455e19326e06bea841cfdd18
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.1-rc2.tar.xz
+	source = ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-25.1-rc2.tar.xz.sig
+	sha384sums = 9ec2a501102f30ae9f520ebcb9f7e36cf6543aac9cd0cbca12d1fb33516ec2943bfe913605ea0a254c3adfb446bf41ed
 	sha384sums = SKIP
 
 pkgname = emacs-pretest
