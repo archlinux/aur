@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.3.582.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -25,6 +25,13 @@ package() {
 
     # suid sanbox
     chmod 4755 "$pkgdir/opt/vivaldi-snapshot/vivaldi-sandbox"
+
+    # make /usr/bin/vivaldi-snapshot available
+    if [[ ! -e "$pkgdir/usr/bin/vivaldi-snapshot" ]]; then
+        install -dm755 "$pkgdir/usr/bin"
+        ln -s /opt/vivaldi-snapshot/vivaldi-snapshot \
+            "$pkgdir/usr/bin/vivaldi-snapshot"
+    fi
 
     # install icons
     for res in 16 22 24 32 48 64 128 256; do
