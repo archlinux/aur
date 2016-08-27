@@ -1,6 +1,5 @@
 #!/bin/bash
-export LD_LIBRARY_PATH=/usr/share/doomrl:$LD_LIBRARY_PATH
-dir=${XDG_DATA_HOME:-$HOME/.local/share}/doomrl
+dir="${XDG_DATA_HOME:-$HOME/.local/share}/doomrl"
 bin=/usr/share/doomrl
 
 if [[ ! -d "$dir" ]]; then
