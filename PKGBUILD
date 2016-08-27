@@ -2,7 +2,7 @@
 # Maintainer: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
 
 _gemname=minitest
-pkgname=ruby-$_gemname-5
+pkgname=ruby-$_gemname
 pkgver=5.9.0
 pkgrel=1
 pkgdesc='minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking'
