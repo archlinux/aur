@@ -3,7 +3,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mdocml
 pkgver=1.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of tools compiling mdoc, the roff macro language and man manuals."
 arch=('i686' 'x86_64')
 url="http://mdocml.bsd.lv/"
@@ -25,6 +25,7 @@ SBINDIR="/usr/bin"
 MANDIR="/usr/share/man"
 EXAMPLEDIR="/usr/share/mandoc/examples"
 BINM_MAN="mman"
+BINM_SOELIM="msoelim"
 BINM_APROPOS="mapropos"
 BINM_WHATIS="mwhatis"
 MANM_MAN="mandoc_man"
