@@ -2,13 +2,14 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=2.10.0.r5990.bc0a540
+pkgver=2.10.0.r5997.7d5de6f
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://k3b.sourceforge.net'
 depends=('qt5-webkit'
+         'knewstuff'
          'kfilemetadata'
          'knotifyconfig'
          'kcmutils'
