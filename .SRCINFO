@@ -1,7 +1,7 @@
 pkgbase = arduino
 	pkgdesc = Arduino prototyping platform SDK
 	pkgver = 1.6.11
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
