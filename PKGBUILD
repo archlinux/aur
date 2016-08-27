@@ -2,7 +2,7 @@
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 
 pkgname=arduino-git
-pkgver=1.6.11.r3.g2e70841
+pkgver=1.6.11.r69.ge3177a5
 pkgrel=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -39,9 +39,10 @@ package() {
 	# Copy the whole SDK
 	cp -a . "${pkgdir}/usr/share/arduino"
 
-	# Create wrapper for java8 + documentation symlink
-	install -Dm755 "${srcdir}/arduino.sh" "${pkgdir}/usr/bin/arduino"
-	ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
+    # Create wrapper for java8 + buider and documentation symlink
+    install -Dm755 "${srcdir}/arduino.sh" "${pkgdir}/usr/bin/arduino"
+    ln -s /usr/share/arduino/arduino-builder "${pkgdir}/usr/bin/arduino-builder"
+    ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
 
 	# Fix avrdude (see https://github.com/arduino/Arduino/issues/5094)
 	rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}

@@ -1,6 +1,6 @@
 pkgbase = arduino-git
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.11.r3.g2e70841
+	pkgver = 1.6.11.r69.ge3177a5
 	pkgrel = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
