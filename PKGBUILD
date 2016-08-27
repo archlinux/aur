@@ -1,7 +1,7 @@
 # Maintainer: Eugen Kuksa <eugenk@cs.uni-bremen.de>
 
 pkgname=hets-server-bin
-pkgver=0.99_1471594578
+pkgver=0.99_1472225208
 pkgrel=1
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
@@ -13,8 +13,8 @@ depends=('hets-commons' 'hets-lib' 'tcl' 'tk' 'ncurses' 'cairo' 'glib2' 'gettext
 optdepends=('spass' 'eprover' 'darwin' 'pellet' 'isabelle')
 provides=('hets-server')
 conflicts=('hets-server')
-source=('http://www.informatik.uni-bremen.de/~eugenk/aur-hets/hets-server-bin-0.99_1471594578-1.tar.gz')
-sha256sums=('4b31de9961804712e3fbcad55244d5b151ddad817524e06588615688de15dcfb')
+source=('http://www.informatik.uni-bremen.de/~eugenk/aur-hets/hets-server-bin-0.99_1472225208-1.tar.gz')
+sha256sums=('4076ed79c9868f010fb40bd5e5a5265d4830465b8810055f56f88c03bc6cc8fb')
 
 package() {
   cp -R usr $pkgdir
