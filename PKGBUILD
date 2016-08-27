@@ -1,7 +1,7 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=withtool
-pkgver=1.2
+pkgver='v2.0'
 url="https://github.com/kalterfive/with"
 pkgrel=1
 pkgdesc="Program prefixing for continuous workflow using a single tool"
@@ -13,6 +13,6 @@ md5sums=('SKIP')
 
 function package() {
 	cd 'with'
-	DEST_DIR="$pkgdir" ./install.sh
+	DESTDIR="$pkgdir" ./install.sh
 }
 
