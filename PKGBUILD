@@ -10,7 +10,7 @@ license=('GPL')
 depends=('java-runtime' 'jdk8-openjdk' 'libusb')
 makedepends=('cmake')
 source=("https://github.com/bchretien/AlienFxLite/archive/v${pkgver}.tar.gz")
-sha256sums=('76de0380102b45111c3b964fc6e3f568259b341a58a1d8a560a0100a4da46a3f')
+sha256sums=('b1fe13e9f52f85894e2de8ead3532ebbc6c345b4e17c872979988f8b24d4ff8f')
 
 _dir="AlienFxLite-${pkgver}"
 
