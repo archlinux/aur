@@ -1,4 +1,4 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Maintainer: Lukas Sabota <LTsmooth42 at gmail dot com>
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Chris Tusa <linisys@gmail.com>
@@ -6,7 +6,7 @@
 
 pkgname='yum-metadata-parser'
 pkgver='1.1.4'
-pkgrel=9
+pkgrel=10
 pkgdesc='C-based metadata parser to quickly parse xml metadata into sqlite databases.'
 arch=('i686' 'x86_64')
 license=('GPL')
