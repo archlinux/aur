@@ -1,9 +1,9 @@
 # Maintainer : Martin Wimpress <code@flexion.org>
 
-_ver=1.12
+_ver=1.14
 _pkgbase=mate-session-manager
 pkgname=(${_pkgbase}-upower)
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=(${_pkgbase}=$pkgver)
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha256sums=('2bad592d7dc0e6807f347bba1580c7c9f5d880aeedee2293d4c8947ab439e7e2')
+sha256sums=('190b9d9d2d9e76b8aa8ef84f351aab07fbea7e0772cecc11dae8c441c67b8dde')
 install=${_pkgbase}.install
 
 build() {
