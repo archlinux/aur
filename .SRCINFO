@@ -1,0 +1,16 @@
+pkgbase = xrootconsole
+	pkgdesc = display a file (or stdin) to a transparent window
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xrootconsole
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	source = http://downloads.sourceforge.net/project/xrootconsole/xrootconsole/0.6/xrootconsole-0.6.tar.gz
+	source = make.patch
+	md5sums = c3570d420eb5ae9f98385bc48c636fc4
+	md5sums = 8b122de1813ba3ca94889739c5373692
+
+pkgname = xrootconsole
+

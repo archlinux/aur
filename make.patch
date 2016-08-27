@@ -1,0 +1,41 @@
+--- a/Makefile
++++ b/Makefile
+@@ -32,10 +32,11 @@
+ #
+ ###########################################################################
+ 
++PREFIX ?= /usr/local
+ EXEC = xrootconsole
+-BINDIR = /usr/local/bin
++BINDIR = $(PREFIX)/bin
+ MANFILE = xrootconsole.1
+-MANDIR = /usr/local/share/man/man1
++MANDIR = $(PREFIX)/share/man/man1
+ 
+ VERSION = $(shell tag=$$(echo '$$Name: RELEASE-0_6 $$' | sed -e 's/\$$//g' -e 's/Name://g'); \
+         if [ $$tag ]; \
+@@ -43,13 +44,12 @@ VERSION = $(shell tag=$$(echo '$$Name: RELEASE-0_6 $$' | sed -e 's/\$$//g' -e 's
+             else echo Bleeding Edge Version; \
+         fi;)
+ 
+-CC = gcc
+-CPPFLAGS =
++CC ?= gcc
+ 
+ # for production
+-CFLAGS = -O2 -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
++CFLAGS += -O2 -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
+     -I /usr/X11R6/include
+-LDFLAGS = -s
++LDFLAGS += -s
+ 
+ # for testing
+ #CFLAGS = -g -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION) (debug build)\"" \
+@@ -76,5 +76,7 @@ realclean:
+ 	rm -f $(EXEC) *.o core *~
+ 
+ install: $(EXEC)
++	mkdir -p $(BINDIR)
+ 	cp $(EXEC) $(BINDIR)
++	mkdir -p $(MANDIR)
+ 	cp $(MANFILE) $(MANDIR)
