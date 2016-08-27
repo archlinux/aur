@@ -2,7 +2,8 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=5.6
+pkgver=5.6.1
+_pkgver=5.6
 minorver=1
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
@@ -22,7 +23,7 @@ options=()
 install=
 changelog=
 
-source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.$minorver.tar.gz
+source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
@@ -35,7 +36,7 @@ _gitname="GKSVM"
 prepare() {
 	## Module for monteverdi build
 	cd 	$srcdir/  
-	cp -ra $srcdir/GKSVM $srcdir/OTB-release-$pkgver/Modules/Remote
+	cp -ra $srcdir/GKSVM $srcdir/OTB-release-$_pkgver/Modules/Remote
 }
 
 build() {  
@@ -50,7 +51,7 @@ build() {
 
 cd $srcdir/build
 
-cmake ../OTB-release-$pkgver \
+cmake ../OTB-release-$_pkgver \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
 -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
