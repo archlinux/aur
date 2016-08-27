@@ -12,8 +12,9 @@ depends=('python2' 'pygtk')
 license=('GPL')
 conflicts=('obkey-git')
 replaces=('obkey-dev')
-source=(http://obkey.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=('fd11d473d79055af1e68f40c354d233b')
+source=(https://github.com/nsf/obkey/archive/v${pkgver}.tar.gz)
+md5sums=('41686cfe4708fe304a16163496fa05d8')
+
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
