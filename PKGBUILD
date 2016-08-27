@@ -8,7 +8,7 @@
 
 pkgname=arduino-bin
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://arduino.cc/en/Main/Software"
@@ -43,8 +43,9 @@ package() {
   # Copy the whole SDK
   cp -a . "${pkgdir}/usr/share/arduino"
 
-  # Create wrapper for java8 + documentation symlink
+  # Create wrapper for java8 + buider and documentation symlink
   install -Dm755 "${srcdir}/arduino.sh" "${pkgdir}/usr/bin/arduino"
+  ln -s /usr/share/arduino/arduino-builder "${pkgdir}/usr/bin/arduino-builder"
   ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
 
   # Fix avrdude (see https://github.com/arduino/Arduino/issues/5094)
