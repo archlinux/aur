@@ -1,4 +1,10 @@
 #!/bin/sh
-export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+if [ -d "/usr/lib/jvm/java-8-jdk" ]; then
+  export PATH=/usr/lib/jvm/java-8-jdk/jre/bin/:$PATH
+elif [ -d "/usr/lib/jvm/java-8-jre" ]; then
+  export PATH=/usr/lib/jvm/java-8-jre/jre/bin/:$PATH
+else
+  export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+fi
 cd /opt/mediathek
 java -jar MediathekView.jar $*

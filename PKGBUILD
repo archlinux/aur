@@ -4,7 +4,7 @@
 
 pkgname=mediathek
 pkgver=12
-pkgrel=2
+pkgrel=3
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=(any)
 url="http://zdfmediathk.sourceforge.net"
@@ -18,7 +18,7 @@ source=(http://downloads.sourceforge.net/zdfmediathk/MediathekView_${pkgver}.zip
         $pkgname
         $pkgname.desktop)
 md5sums=('e754dd7a1e6f77ed898288c2f270eaa4'
-         '34da57c6ca10e7fbe09eb20dce5646f9'
+         '461b97eecd40ec40e46b66eb219c92b9'
          'bad6e1fdc948ac0e41b8535509cf944d')
 
 package() {
