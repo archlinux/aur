@@ -49,6 +49,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_bzrmod"
+  cd "$srcdir/$_bzrmod/build"
   make DESTDIR=$pkgdir install
 }
