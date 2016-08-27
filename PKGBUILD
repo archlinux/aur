@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=mini18n-git
-pkgver=0.2.1.r3158.e78c886
+pkgver=0.2.1.r3231.ee28cc7
 pkgrel=1
 pkgdesc="A a small and non-intrusive translation library designed for small memory and non-GNU systems. (GIT version)"
 arch=('x86_64' 'i386')
@@ -13,7 +13,7 @@ makedepends=('git'
              )
 conficts=('mini18n')
 provides=('mini18n')
-source=("git+https://github.com/Guillaumito/yabause.git")
+source=('git+https://github.com/Guillaumito/yabause.git')
 sha1sums=('SKIP')
 
 pkgver() {
