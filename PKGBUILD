@@ -1,14 +1,19 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=openhevc-git
-pkgver=r2031.20150602.cb97e66
+pkgver=r2070.20160819.dc94771
 pkgrel=1
-pkgdesc="A open HEVC decoder (GIT Version)"
+pkgdesc="A open HEVC decoder. (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://openhevc.github.io/openHEVC/"
+url='http://openhevc.github.io/openHEVC'
 license=('LGPL2.1')
-depends=('sdl' 'sdl2')
-makedepends=('git' 'cmake' 'yasm')
+depends=('sdl'
+         'sdl2'
+         )
+makedepends=('git'
+             'cmake'
+             'yasm'
+             )
 provides=('openhevc')
 conflicts=('openhevc')
 source=('openhevc::git+https://github.com/OpenHEVC/openHEVC.git#branch=hevc_rext')
@@ -28,7 +33,8 @@ build() {
   cmake ../openhevc \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RELEASE \
-    -DCMAKE_SKIP_RPATH=ON
+    -DCMAKE_SKIP_RPATH=ON \
+    -DBUILD_SHARED_LIBS=ON
   make
 }
 
