@@ -11,7 +11,7 @@ arch=('any')
 source=("http://pypi.python.org/packages/source/m/munkres/munkres-$pkgver.tar.gz")
 md5sums=(cb9d114fb523428bab4742e88bc83696)
 url="http://bmc.github.com/munkres/"
-license="BSD"
+license=("BSD")
 
 build() {
   cd "$srcdir/munkres-$pkgver"
