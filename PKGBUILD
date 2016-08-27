@@ -2,7 +2,7 @@
 
 pkgname=php-amqp
 _extname=amqp
-pkgver=1.7.0alpha2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="PHP extension compatible with AMQP 0-9-1 message brokers"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ depends=('glibc' 'librabbitmq-c')
 makedepends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
-sha256sums=('ce61a679b2899aadfe2f57b7d03b8e8350d29071350df0b141ce85bf20f7c607')
+sha256sums=('38a92eaef1aa863404170bcd15605f7f78140eeec1ff5be6af65c5b8081e2599')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
