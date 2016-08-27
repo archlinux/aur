@@ -5,11 +5,11 @@
 # https://aur.archlinux.org/packages/atom-editor/
 #
 # For improvements/fixes to this package, please send a pull request:
-# https://github.com/techwiz24/aur-ghetto-skype
+# https://github.com/nlowe/aur-ghetto-skype
 
 pkgname=ghetto-skype
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
