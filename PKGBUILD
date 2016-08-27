@@ -1,9 +1,8 @@
-# Maintainer: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: Joao Cordeiro <jlcordeiro@gmail.com>
+# Maintainer: Limao Luo <gryffyn(at)archlinux.net>
 
 pkgname=ntfs-config
 pkgver=1.0.1
-pkgrel=13
+pkgrel=1
 pkgdesc="Enable/disable NTFS write support with a simple click"
 arch=(any)
 url=http://flomertens.free.fr/$pkgname/
@@ -14,7 +13,7 @@ optdepends=('hal: external devices'
     'gnome-mount: external devices (or any other that can handle ntfs-3g using hal as backend)'
     'device-mapper: crypt, lvm and raid devices'
     'e2fsprogs: blkid')
-source=(http://l42y.googlecode.com/files/$pkgname-$pkgver.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/l42y/$pkgname-$pkgver.tar.gz
     $pkgname.patch)
 sha256sums=('611dbcfa7aebf44ef8ad170d16952e256aec055e4f2cb334cf20a12a75bbdcb2'
     '795d9270667993a638b2c187b7b8340fd9157cbfae2ed35fcc6413d17087e8d2')
