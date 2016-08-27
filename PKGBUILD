@@ -7,9 +7,15 @@ pkgver=4.2.7.1
 pkgrel=1
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
-url='http://www.rubyonrails.org'
+url='https://rubygems.org/gems/${_gemname}/versions/${pkgver}'
 license=(MIT)
-depends=(ruby ruby-i18n ruby-json ruby-tzinfo ruby-minitest-5 ruby-thread_safe)
+depends=(ruby
+    ruby-i18n
+    ruby-json
+    ruby-minitest
+    ruby-thread_safe
+    ruby-tzinfo
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
