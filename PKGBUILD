@@ -2,31 +2,24 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 
 pkgname=apt
-pkgver=1.3~rc2
+pkgver=1.2.14
 pkgrel=1
-pkgdesc="Command-line package manager used on Debian-based systems"
+pkgdesc="commandline package manager"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/apt"
 license=('GPL2')
 depends=('gnupg' 'curl' 'xz')
 makedepends=('dpkg' 'docbook-xsl' 'po4a' 'gtest' 'dash')
-checkdepends=()
-optdepends=()
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' "apt-utils")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('96e63bd2d04bce992b81bff2d4887c05d1888fc3f9e9c85749934446755aa869')
+source=(https://github.com/Debian/apt/archive/1.2.14.tar.gz)
+sha256sums=('5809427f78a9e3081ff0afc0547a9917ea9115ce634f4479015f3a14b1eb527d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # this only copies config.{guess,sub} and displays errors
   automake --add-missing --no-force -W none 2> /dev/null || true
+  autoreconf --install || true
   _stylesheet=`ls -d /usr/share/xml/docbook/xsl-stylesheets-* | xargs basename`
   sed -i -e "s|stylesheet/nwalsh|$_stylesheet|" doc/manpage-style.xsl
   # disable debiandoc, this saves us from sgml problems
