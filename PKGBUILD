@@ -9,7 +9,7 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs-bigger-heap
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript: patched for 8Gb max heap size'
 arch=('i686' 'x86_64')
