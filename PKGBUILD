@@ -1,8 +1,8 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-demo
-pkgver=0.12.35
-pkgrel=2
+pkgver=0.13.19
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -15,8 +15,8 @@ source_i686=(factorio_demo_i386_${pkgver}.tar.gz::http://www.factorio.com/get-do
 source_x86_64=(factorio_demo_x64_${pkgver}.tar.gz::http://www.factorio.com/get-download/${pkgver}/demo/linux64)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
             '67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21')
-sha256sums_i686=('c1db1cf27b5a8c6d9e863777e4fd62dde9acb1dc1c1ddac18380cbf2d9fa5a11')
-sha256sums_x86_64=('c3fecde713b6c984723794092032f28edf5f0775375792c99ad55df8db8c90d4')
+sha256sums_i686=('6fa3c2d00df8fc665c61bfd30ba04342e613283bc1ad2287f4d64cea7d3ed1a6')
+sha256sums_x86_64=('1f9b194296eeb99f555c93d7a0efd20b3651783b117b8eb994020fa473976082')
 
 
 # no modifications needed, the executable looks for:
