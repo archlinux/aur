@@ -1,7 +1,7 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=withtool-git
-pkgver=27.6dae240
+pkgver=43.59697ae
 url="https://github.com/kalterfive/with"
 pkgrel=1
 pkgdesc="Program prefixing for continuous workflow using a single tool"
@@ -21,6 +21,6 @@ function pkgver() {
 
 function package() {
 	cd 'with'
-	DEST_DIR="$pkgdir" ./install.sh
+	DESTDIR="$pkgdir" ./install.sh
 }
 
