@@ -4,7 +4,7 @@
 
 pkgname=factorio-headless-experimental
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version (experimental branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -21,8 +21,8 @@ source=(LICENSE
 )
 
 sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
-            'c4b2b0f7aa32cc2bf1e662a811b73802ea2040ad3a7b9c973d36b6025a245e4e'
-            'd0f658296d77052b332a5f5ab940cd77b9d00deebc86eaf669d3ad86c0356aa4'
+            '7bd33509e1b1c444b77c17049c2fb01d54873d499ca46490988a4d031fd9ca81'
+            'b5370e4c54b624569850dcf0bdc3ee7ac32c6d566cd676b657b70f7252911fd4'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
             '0d0a0e7a86eb2504a38483a11e78a8a9596fae1400c5e0e33779b021e9cc43f0')
 
