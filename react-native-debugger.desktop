@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.4.0
+Name=React Native Debugger
+Comment=The standalone app for React Native Debugger, with React DevTools / Redux DevTools
+Exec=/usr/bin/react-native-debugger
+Icon=/opt/react-native-debugger/icon.png
+Terminal=false
+Categories=Development;
