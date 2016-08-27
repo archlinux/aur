@@ -1,6 +1,6 @@
 # Maintainer : Martin Wimpress <code@flexion.org>
 
-_ver=1.12
+_ver=1.14
 _pkgbase=mate-power-manager
 pkgname=(${_pkgbase}-upower)
 pkgver=${_ver}.0
@@ -18,7 +18,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.
 groups=('mate-extra')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=("${_pkgbase}")
-sha256sums=('e578ea838cb9a78b23fabf61dd11709cd4be70c240f5bb00e2f387f628a65adb')
+sha256sums=('2306f7210298dba705277b748f8e3da1481889af4cb047a3eb76f196c4ded898')
 install=${_pkgbase}.install
 
 prepare() {
