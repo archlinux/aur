@@ -1,4 +1,6 @@
-# Maintainer: Phil Schaf <flying-sheep@web.de>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Phil Schaf <flying-sheep@web.de>
+
 _name=enum34
 pkgname=python-enum34
 pkgver=0.9.21
