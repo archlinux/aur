@@ -1,7 +1,7 @@
 pkgbase = focuswriter
 	pkgdesc = A simple fullscreen word processor
-	pkgver = 1.5.7
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = http://gottcode.org/focuswriter/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = focuswriter
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = hunspell
-	source = http://gottcode.org/focuswriter/focuswriter-1.5.7-src.tar.bz2
-	sha256sums = e2ce4f2be1d76ded2de589e60e40677166e582dc8aa3657167d52deab209c92a
+	source = http://gottcode.org/focuswriter/focuswriter-1.6.0-src.tar.bz2
+	sha256sums = 174bfe2e076eba3426f24362de40c399094cd480d25353fe01537ae64dede12e
 
 pkgname = focuswriter
 
