@@ -1,13 +1,13 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.12.35
-pkgrel=2
+pkgver=0.13.19
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
-conflicts=('factorio-demo')
+conflicts=('factorio-demo' 'factorio-experimental' 'factorio-headless')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 source=(factorio.desktop
         LICENSE)
