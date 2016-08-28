@@ -8,11 +8,11 @@ pkgdesc="Program prefixing for continuous workflow using a single tool"
 arch=(any)
 license=('GPL3')
 depends=(bash)
-source=("with::git://github.com/kalterfive/with#tag=$pkgver")
+source=("withtool::git://github.com/kalterfive/with#tag=$pkgver")
 md5sums=('SKIP')
 
 function package() {
-	cd 'with'
+	cd 'withtool'
 	DESTDIR="$pkgdir" ./install.sh
 }
 

@@ -6,7 +6,7 @@ pkgbase = withtool
 	arch = any
 	license = GPL3
 	depends = bash
-	source = with::git://github.com/kalterfive/with#tag=v2.1
+	source = withtool::git://github.com/kalterfive/with#tag=v2.1
 	md5sums = SKIP
 
 pkgname = withtool
