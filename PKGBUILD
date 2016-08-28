@@ -4,7 +4,7 @@ pkgname='torch7-image-git'
 pkgver=1.0.1.0.r245.g7e9669f
 pkgrel=1
 makedepends=('cmake' 'git')
-depends=('torch7-git>=r819')
+depends=('torch7-git>=r819' 'libjpeg-turbo' 'libpng')
 conflicts=('torch7-image')
 provides=('torch7-image')
 arch=('x86_64' 'i686')
