@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='http://code.google.com/p/leetplugins/'
 license=('GPL2')
 depends=('gcc-libs')
-source=("http://${pkgname/-/}.googlecode.com/files/$_pkgname-$pkgver.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/leetplugins/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('e2868cffe65a6fc4f7325ef1fb3831e1530718c75aa28c9cbb44f4399e5059a1')
 
 build() {
