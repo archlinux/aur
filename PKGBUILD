@@ -8,7 +8,7 @@
 
 pkgname=whipper-git
 _gitname=whipper
-pkgver=0.2.3.r43.g89f3ba3
+pkgver=0.2.3.r77.g3881079
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
     'gstreamer0.10-base-plugins'    # for appsink
     'gstreamer0.10-good-plugins'    # for wav encoding
     'gstreamer0.10-python'          # for encoding
+    'python2-pycdio'                # for storing drive identification in config file
     )
 makedepends=(
     'git'
@@ -31,7 +32,6 @@ makedepends=(
 optdepends=(
     'cddb-py: for showing but not using disc info if not in MusicBrainz'
     'python2-musicbrainzngs: for metadata lookup'
-    'python2-pycdio: for storing drive identification in config file'
     'python2-setuptools: for plugin support'
 )
 provides=('morituri')
