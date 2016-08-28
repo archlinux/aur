@@ -1,13 +1,13 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=withtool-git
-pkgver='52.e28622d'
+pkgver='54.ac47be6'
 url="https://github.com/kalterfive/with"
 pkgrel=1
-pkgdesc="Program prefixing for continuous workflow using a single tool"
+pkgdesc='Program prefixing for continuous workflow using a single tool'
 arch=(any)
 license=('GPL3')
-depends=(bash)
+depends=(bash ncurses)
 source=("withtool::git://github.com/kalterfive/with")
 md5sums=('SKIP')
 
