@@ -1,4 +1,5 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Contributor: 	Jeroen Bollen <jbinero at gmail dot com>
 
 pkgname=ckbcomp
 pkgver=1.148
