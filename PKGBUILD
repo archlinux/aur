@@ -1,16 +1,17 @@
 # Maintainer: M0Rf30
 # Contributor: sirocco
+
 pkgname=italc
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Classroom management software which enables teachers to view and control computers"
 arch=('i686' 'x86_64')
 url="http://italc.sourceforge.net/"
 license=('GPL')
-depends=('qt4' 'libxtst' 'libxinerama' 'openssl' 'libjpeg-turbo' 'zlib')
-makedepends=('cmake')
+depends=('qt5-base' 'libxtst' 'pam' 'openssl' 'libjpeg-turbo' 'zlib')
+makedepends=('cmake' 'qt5-tools')
 install=$pkgname.install
-source=(http://prdownloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2
+source=("https://github.com/iTALC/italc/archive/v$pkgver.tar.gz"
 	italc.service
 	italc.desktop)
 	
@@ -33,6 +34,6 @@ package() {
   install -D ../italc.service $pkgdir/usr/lib/systemd/system/italc.service        
 }
 
-md5sums=('c472d438a8807df645111faab6945657'
+md5sums=('14b6441b4345c4e1a7b35122c8b1e12f'
          '4a00d5f3a8fe08ce614d75d5684a3b1e'
          'c01c880149184705c0a0118f97e7af5c')
