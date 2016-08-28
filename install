@@ -116,7 +116,7 @@ post_upgrade() {
             # CONFIG
 	    # => defaults
     	    for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
-		install --backup=simple -o zarafa -g zarafa -m 0600 ${cfg}.pacnew /etc/zarafa
+		install --backup=simple -o zarafa -g zarafa -m 0600 ${cfg} /etc/zarafa
 	    done
 
 	    echo "Please check /etc/zarafa for new configuration values!"
