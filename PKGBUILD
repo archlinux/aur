@@ -1,5 +1,5 @@
-# Maintener: Nissar Chababy <funilrys at outlook dot com>
-# Ex-Maintener: K0n24d <konrad AT knauber DOT net>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.0.33
 pkgrel=2
