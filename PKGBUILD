@@ -1,8 +1,8 @@
 pkgname=toxygen-git
 _pkgname=toxygen
 pkgdesc="Toxygen is cross-platform Tox client written in Python3"
-pkgrel=1
-pkgver=0.2.2.436
+pkgrel=2
+pkgver=0.2.4.478
 arch=('i686' 'x86_64')
 conflicts=("toxygen")
 provides=("toxygen")
@@ -14,7 +14,7 @@ source=('git://github.com/xveduk/toxygen.git')
 sha256sums=('SKIP')
 
 prepare(){
-	gendesk -f --pkgname "Toxygen" --pkgdesc "$pkgdesc" --exec 'python /opt/toxygen/toxygen/main.py'
+	gendesk -f --pkgname "Toxygen" --pkgdesc "$pkgdesc" --exec '/usr/bin/toxygen'
 }
 
 pkgver() {
@@ -32,5 +32,11 @@ package() {
 	cd $_pkgname
 	install -d "$pkgdir/opt/toxygen"
 	cp -r "toxygen" "$pkgdir/opt/toxygen"
-	echo ""
+
+	mkdir "$pkgdir/usr/bin"
+	cat > "$pkgdir/usr/bin/toxygen" << EOF
+#!/usr/bin/env sh
+python /opt/toxygen/toxygen/main.py \$@
+EOF
+	chmod +x "$pkgdir/usr/bin/toxygen"
 }
