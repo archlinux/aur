@@ -22,6 +22,6 @@ source=(https://github.com/yadayada/acd_cli/archive/${pkgver}.tar.gz)
 sha256sums=('f91f17243bd4faa7eb6e410de40d88155704696b9cb6243843d419d327670c61')
 
 package() {
-   cd "$_pkgname" 
+   cd "${srcdir}/${pkgname}-${pkgver}"
    python setup.py install --root="$pkgdir/" --optimize=1
 }
