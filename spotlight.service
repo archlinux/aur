@@ -1,0 +1,6 @@
+[Unit]
+Description=Spotlight
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/spotlight.sh

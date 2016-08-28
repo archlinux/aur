@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs Spotlight daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=spotlight.service
+
+[Install]
+WantedBy=default.target

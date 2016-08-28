@@ -1,0 +1,4 @@
+post_install() {
+	echo "Run 'systemctl --user enable spotlight.timer' to get a new picture on every day"
+	echo "Run 'systemctl --user start spotlight.service' to get a new picture immediately"
+}

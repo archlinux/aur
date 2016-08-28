@@ -1,0 +1,20 @@
+pkgbase = spotlight
+	pkgdesc = Displays a new background image daily
+	pkgver = 1.0
+	pkgrel = 1
+	install = spotlight.install
+	arch = any
+	license = GPL
+	depends = curl
+	depends = perl
+	depends = gnome-settings-daemon
+	depends = libsystemd
+	source = spotlight.sh
+	source = spotlight.service
+	source = spotlight.timer
+	md5sums = 4994716b97b9a3805387a99bbd560ba1
+	md5sums = 61f2ea773a24bf62185179499194fc69
+	md5sums = 5cf181a3dd50993e0dfbf1835c9d2364
+
+pkgname = spotlight
+
