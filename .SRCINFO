@@ -1,0 +1,12 @@
+pkgbase = mtn
+	pkgdesc = movie thumbnailer (mtn) -- saves thumbnails (screenshots) of movie or video files to jpeg files.
+	pkgver = 200808a
+	pkgrel = 1
+	url = http://moviethumbnail.sourceforge.net/
+	arch = any
+	license = GPL
+	source = http://downloads.sourceforge.net/project/moviethumbnail/movie%20thumbnailer%20linux%20binary/mtn-200808a-linux/mtn-200808a-linux.tgz
+	md5sums = acf9d06bf1c7a8f87ed9689110df2323
+
+pkgname = mtn
+
