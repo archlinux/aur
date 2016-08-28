@@ -2,7 +2,7 @@
 pkgname=libringclient-git
 pkgver=20160812
 pkgrel=1
-pkgdesc="Client communication library for Ring (formerly known as SFLphone)"
+pkgdesc="Client communication library for ring.cx (formerly known as SFLphone)"
 arch=("i686" "x86_64")
 url="http://ring.cx"
 license=('GPL3')
