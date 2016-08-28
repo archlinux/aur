@@ -2,8 +2,8 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+22398.5b9f2502b1dd
-pkgrel=1
+pkgver=4.1.0+22399.1442ae783e1f
+pkgrel=2
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(git://git.sv.gnu.org/gnulib)
 md5sums=('SKIP')
 _hgroot=http://hg.savannah.gnu.org/hgweb/
 _hgrepo=octave
-LANG=C
+
 pkgver() {
   if [ -d ${_hgrepo} ]; then
       cd ${_hgrepo}
@@ -35,7 +35,7 @@ pkgver() {
   fi > /dev/null 2>&1
   cd "$srcdir/$_hgrepo"
   _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
-  printf "%s%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|cut -c4-)" "$(hg log|head -1|cut -d: -f3)"
+  printf "%s%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|tr -d " ")" "$(hg log|head -1|cut -d: -f3)"
 }
 
 build() {
