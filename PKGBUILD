@@ -1,27 +1,30 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.10.8
-pkgrel=2
+pkgver=1.10.10
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
-url="http://www.freedesktop.org/Software/dbus"
+url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('eudev-base')
 # dep on shadow for install scriptlet FS#29341
-depends=('expat' 'coreutils' 'filesystem' 'shadow' "libdbus>=${pkgver}")
-makedepends=('libx11' 'xmlto' 'docbook-xsl')
+depends=('expat' 'coreutils' 'filesystem' 'shadow')
+makedepends=('libx11')
 optdepends=('libx11: dbus-launch support'
-            'dbus-openrc: dbus openrc initscript')
-provides=('dbus-core' "dbus=${pkgver}")
-conflicts=('dbus-core' 'dbus' 'dbus-eudev')
-replaces=('dbus-core' 'dbus' 'dbus-eudev')
+            'dbus-openrc: dbus openrc initscript'
+            'dbus-docs: documentation')
+provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
+conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev')
+replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev')
 install=dbus-nosystemd.install
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
 	30-dbus.sh dbus)
-md5sums=('e912e930f249454752512aa7ac864d43'
+md5sums=('495676d240eb982921b3ad1343526849'
          '6683a05bd749929ef9442816c22c3268'
          '6f116e46adcbe99326ee67e597598d29')
 
@@ -42,6 +45,9 @@ build() {
       --disable-tests \
       --disable-asserts \
       --disable-libaudit \
+      --disable-xml-docs \
+      --disable-doxygen-docs \
+      --disable-ducktype-docs \
       --disable-systemd
 
   make
@@ -50,13 +56,9 @@ build() {
 package(){
   cd dbus-$pkgver
 
-  # Disable installation of libdbus
-  sed -i -e 's/^SUBDIRS = dbus/SUBDIRS =/' Makefile
-
   make DESTDIR="$pkgdir" install
 
   rm -rf "${pkgdir}/var/run"
-  rm -rf "${pkgdir}/usr/lib/pkgconfig"
 
   install -Dm755 ../dbus "$pkgdir/etc/rc.d/dbus"
   install -Dm755 ../30-dbus.sh "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
