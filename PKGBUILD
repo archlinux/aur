@@ -13,8 +13,8 @@ source=("https://github.com/nima/python-dmidecode/archive/v$pkgver.tar.gz")
 
 package() {
   cd $srcdir/python-dmidecode-${pkgver}
+  export CFLAGS+=" -std=gnu89"
   make build
-  make dmidump
   python2 src/setup.py install --root=$pkgdir/ 
 
 }
