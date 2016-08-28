@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: M0Rf30
 
 pkgname=openbazaar
 pkgver=1.1.8
@@ -27,18 +27,19 @@ build(){
 }
 
 package(){
+  cd $srcdir
 
 msg2 "Installing Openbazaar data"
   install -Dm644 $pkgname.asar $pkgdir/opt/$pkgname.asar
 
 msg2 "Installing execution script"
-  install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
+  install -Dm755 $pkgname.sh $pkgdir/usr/bin/$pkgname
 
   rm -rf $pkgdir/opt/$pkgname/{.git*,.eslint*,.travis*}
 
 msg2 "Installing icons and desktop menu entry"
-  install -Dm644 $srcdir/${_srcfolder}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
-  install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
+  install -Dm644 ${_srcfolder}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/openbazaar.png
+  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
 md5sums=('aa9fdfaeb42562bde95e857ac12067c6'
