@@ -1,4 +1,5 @@
 # Maintainer: Anatol Pomozov
+# Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
 pkgver=4.4.r1339.gdbf3067
