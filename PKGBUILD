@@ -4,7 +4,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=python-pyacoustid
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Bindings for Chromaprint acoustic fingerprinting and the Acoustid API'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('chromaprint')
 makedepends=('python-setuptools')
 source=("pyacoustid-${pkgver}.tar.gz::https://github.com/sampsyo/pyacoustid/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/sampsyo/beets/master/LICENSE')
-sha256sums=('55137af9293b62b588986bd45a88f4cc571f4b0aaac665811edd7ba0659cf136'
+sha256sums=('acf44c0dd1811d929b180ed6c1a1631519590ea86e50643d1d3076fef0c2c990'
             '69b9fa8fe9700714fc1f002aa6bfef097e5422372979195ab48956cd48e20aaf')
 
 build() {
