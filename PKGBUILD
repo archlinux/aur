@@ -1,7 +1,7 @@
 # Maintainer: Adrian Sampson <adrian@radbox.org>
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
-pkgname=beets-git
+pkgname=beets-python3-git
 pkgver=1.3.11.r31.ga0ff517
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
