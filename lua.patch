@@ -1,0 +1,36 @@
+--- src/luahooks.c.1	2013-05-02 20:30:23.000000000 +0000
++++ src/luahooks.c	2013-08-29 05:24:54.088977360 +0000
+@@ -24,6 +24,16 @@
+ 
+ static lua_State *lua;
+ 
++static void *l_alloc (void *ud, void *ptr, size_t osize, size_t nsize)
++{
++  if (nsize == 0) {
++    free(ptr);
++    return NULL;
++  } else {
++    return realloc(ptr, nsize);
++  }
++}
++
+ static luahook_action_t
+ string_to_luahook_action (const char * s)
+ {
+@@ -144,7 +154,7 @@
+   if (opt.lua_filename == NULL)
+     return;
+ 
+-  lua = lua_open ();
++  lua = lua_newstate (l_alloc, NULL);
+   luaL_openlibs (lua);
+ 
+   /* Initialize constants. */
+@@ -460,7 +470,7 @@
+         return NULL;
+ 
+       /* Copy to the buffer. */
+-      size_t ret_l = lua_strlen(lua, -1);
++      size_t ret_l = lua_rawlen(lua, -1);
+       ret_l = (ret_l <= MAX_HOST_LENGTH) ? ret_l : MAX_HOST_LENGTH;
+       strncpy (lookup_host_result, ret, ret_l);

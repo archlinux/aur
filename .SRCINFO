@@ -1,0 +1,25 @@
+pkgbase = wget-lua
+	pkgdesc = Wget with Lua scripting
+	pkgver = 1.14
+	pkgrel = 1
+	url = http://archiveteam.org/index.php?title=Wget_with_Lua_hooks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = perl
+	depends = openssl
+	depends = libidn
+	depends = pcre
+	depends = lua
+	optdepends = ca-certificates: HTTPS Downloads
+	provides = wget-lua
+	source = http://warriorhq.archiveteam.org/downloads/wget-lua/wget-1.14.lua.LATEST.tar.bz2
+	source = lua.patch
+	source = ssl.patch
+	sha1sums = 3fdc939d7b66c5f0fa0bf00b366ec01a4b306afa
+	sha1sums = 3f9d9f483fb0435624faa8d51e7171b11b3542cb
+	sha1sums = 7e06d0272f90325c46b4ef609dce7c471342f077
+
+pkgname = wget-lua
+

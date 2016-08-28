@@ -1,0 +1,11 @@
+--- src/openssl.c.old	2016-08-27 19:05:16.656510223 -0500
++++ src/openssl.c	2016-08-27 18:54:53.263219445 -0500
+@@ -192,7 +192,7 @@
+       break;
+ #endif
+     case secure_protocol_sslv3:
+-      meth = SSLv3_client_method ();
++      meth = SSLv2_client_method ();
+       break;
+     case secure_protocol_tlsv1:
+       meth = TLSv1_client_method ();
