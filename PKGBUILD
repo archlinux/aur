@@ -1,6 +1,7 @@
-# Contributor: K0n24d <konrad AT knauber DOT net>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.0.29
+pkgver=2.0.32
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -18,7 +19,7 @@ source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${p
 	'lvm_create_filesystem_snapshot'
 	'lvm_remove_filesystem_snapshot')
 
-md5sums=('2abba0a9a1339257aa127f055c5ea65b'
+md5sums=('2be50621776afe698a55dbafe3718725'
          'fcdef7852b3d847c5c2468a619e7fba9'
          'b5f82ed45105f9929e9b98eee8b288fc'
          '5a3c106ff05e9939902272c936b653eb'
