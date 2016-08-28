@@ -1,14 +1,14 @@
 pkgbase = qjournalctl
 	pkgdesc = Qt-based graphical user interface for systemd's journalctl command
-	pkgver = 0.2
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://github.com/pentix/qjournalctl/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = qjournalctl-0.2.tar.gz::https://github.com/pentix/qjournalctl//archive/v0.2.tar.gz
-	sha256sums = ba29cbde9df05538fc4c81f649e40d3754a3d852ab6c064b78898d0f5cafaa7a
+	source = qjournalctl-0.21.tar.gz::https://github.com/pentix/qjournalctl//archive/v0.21.tar.gz
+	sha256sums = 9bedd564aa3ae6e3197ec68d61e087c471714a0ab5840467b084d7a4de900fb5
 
 pkgname = qjournalctl
 
