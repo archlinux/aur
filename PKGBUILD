@@ -11,7 +11,7 @@ depends=('devtools' 'rsync')
 conflicts=('clean_chroot_manager')
 replaces=('clean_chroot_manager')
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('bdf87aaedb2ba107bda90428a6ffc5fd8615292b6290d489d240533cd9efc0e3')
+sha256sums=('1d4b25f3be5fbf139a472953fb92b517183fd92f295338d2fccb22ea29fe7ef8')
 install=ccm.install
 
 build() {
