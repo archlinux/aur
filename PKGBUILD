@@ -2,7 +2,7 @@
 
 pkgname=jalbum
 _basedir=/usr/lib/$pkgname
-pkgver=13.3
+pkgver=13.4
 pkgrel=1
 pkgdesc="free web photo album software and photo gallery software"
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://download.jalbum.net/download/$pkgver/${pkgname/a/A}.zip"
 "$pkgname.desktop"
 "$pkgname.sh")
 
-sha256sums=('319f06204eb866ec60242aa1e69a1f3a1027c8d85b378372968ae2d7487d267c'
+sha256sums=('01e5af8abfb2ed3a0ded4f163b375b95aab7e769a5b6fa0f7a9ce2c2e36c5bce'
             '9679ab294b5c5e0ad343b8a12026073fd2f622320d636cc05facaa2ff5b15825'
             'f4aec4248de127251fc32571732e91fd860f1954c650650a965bf77759cd85fc')
 
