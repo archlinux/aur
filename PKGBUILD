@@ -2,7 +2,7 @@
 pkgname='torch7-dok-git'
 pkgver=r53.1b36900
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('torch7-git>=r819')
 conflicts=('torch7-dok')
 provides=('torch7-dok')
