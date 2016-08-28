@@ -1,10 +1,11 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 _ngx_ver=1.10.0
 _mod_name=echo
 
 pkgname=nginx-mod-${_mod_name}-git
-pkgver=0.58.r15.g4f7aa50
+pkgver=0.60
 pkgrel=3
 pkgdesc='Nginx module that brings shell-style goodiesto nginx config file'
 arch=('i686' 'x86_64')
@@ -12,9 +13,9 @@ url='https://github.com/openresty/echo-nginx-module'
 license=('custom')
 depends=("nginx=$_ngx_ver")
 makedepends=('git')
-source=(git://github.com/openresty/${_mod_name}-nginx-module.git
+source=(https://github.com/openresty/${_mod_name}-nginx-module/archive/${pkgver}.tar.gz
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
-md5sums=('SKIP'
+md5sums=('897338c2c4bc44f2d56ae06ab9820372'
          'c184c873d2798c5ba92be95ed1209c02')
 
 _ngx_flags=(
