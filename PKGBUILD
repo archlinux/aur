@@ -1,5 +1,5 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
-# Contributor: Rob Lynn <rob22uk at gmail dot com>
+# Ex-Maintainer: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
 
 pkgname=firefox-mega
