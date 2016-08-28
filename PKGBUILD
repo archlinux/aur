@@ -1,28 +1,28 @@
 # Maintainer: Monika Schrenk <moni@random-access.org>
 
 pkgname=mongochef
-pkgver=3.6.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://3t.io/mongochef/"
 license=("custom")
-depends=('java-runtime>=8')
+depends=('java-runtime-openjdk=8' 'java-openjfx')
 makedepends=('unzip')
 provides=('mongochef')
 
 source=("mongochef.desktop" "mongochef")
-source_i686=("https://cdn.3t.io/mongochef/linux/${pkgver}/mongochef-linux-x86-dist.tar.gz")
-source_x86_64=("https://cdn.3t.io/mongochef/linux/${pkgver}/mongochef-linux-x64-dist.tar.gz")
+source_i686=("https://cdn.3t.io/mongochef-core/linux/${pkgver}/mongochef-linux-x86-dist.tar.gz")
+source_x86_64=("https://cdn.3t.io/mongochef-core/linux/${pkgver}/mongochef-linux-x64-dist.tar.gz")
 
 sha256sums=('a603fd54a34f8aa59a70580fd4321db24f439ceb746545f1cf6c0216f7f8169e' 
-'3ef9e38cfd7ab9e0f6e70cebd635f96a7bbaccf255de2c6ed4f7fd5a4aab3728')
-sha256sums_i686=('47f87375fdef95a1c1e21ff2699361489a96756b513cba6055482afd29de2266')
-sha256sums_x86_64=('d676468e9e1f23806b081810fa9e4462e6ad58991173e3d7c38efd1938da228e')
+'c5a11c0eff26dfdcff7d9ddfaa11201d7d436072d2b217853e81049b99ca677c')
+sha256sums_i686=('79fc478fa895c30e62688c13c4da45e62e3f2c0d95da962e54ae411371f22f5f')
+sha256sums_x86_64=('24adc08ffd5683d7979499bde540516ea2f495287bfb70390b728014f7eedd4f')
 
 prepare() {
   unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*-dist/lib/data-man-gui-1.0-SNAPSHOT.jar "t3/dataman/icons/mc-512.png" -d "./"
-  unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*-dist/lib/data-man-mongodb-pro-${pkgver}.jar "t3/utils/gui/3T-EULA.txt" -d "./"
+  unzip -j ${srcdir}/${pkgname}-${pkgver}-linux-*-dist/lib/data-man-mongodb-core-${pkgver}.jar "t3/utils/gui/3T-EULA.txt" -d "./"
 }
 
 package() {
