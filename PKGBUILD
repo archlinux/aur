@@ -5,7 +5,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-zh-cn'
-pkgver='6.0.1'
+pkgver='6.0.4'
 _language='zh-CN'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -31,8 +31,8 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('a9b22cd8b88e5aee03bcddf58ddecc67e0e456691ba7fbb7a71537d086b71050' 'SKIP')
-sha256sums_i686=(  'fa214c486d1c1f401d7845314ec6fc04051f62f8b8fc85c1337a979e3a35d9ae' 'SKIP')
+sha256sums_x86_64=('9017a9c502efd678dc6a1351203505f515554d0b0e7be8ea02b71e2d45c6104f' 'SKIP')
+sha256sums_i686=(  '6679494eb116a7dcbcf68189ba944bb9420fb0d28556943e328c90270d0e79db' 'SKIP')
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
              '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
