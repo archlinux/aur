@@ -1,18 +1,18 @@
 # Maintainer: Sebastian Gumprich <sebastian.gumprich@38.de>
 pkgname=tuxemon-git
-pkgver=r481.52c5a67
+pkgver=r719.5309c6b
 pkgrel=1
 pkgdesc="A free, open source monster-fighting RPG."
 arch=('i686' 'x86_64')
 url="http://www.tuxemon.org"
 license=('GPL3')
 groups=('games')
-depends=('python' 'python-pygame-hg' 'python-pytmx' 'python-yapsy' 'python-netifaces' 'python-neteria')
+depends=('python' 'python-pygame' 'python-pytmx')
 makedepends=('git')
 optdepends=('libShake: rumble library for Linux.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/Tuxemon/Tuxemon.git')
+source=('git://github.com/Tuxemon/Tuxemon.git#branch=development')
 md5sums=('SKIP')
 
 _gitname=Tuxemon
