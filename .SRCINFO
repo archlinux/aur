@@ -1,7 +1,7 @@
 pkgbase = bcm20702a1-firmware
-	pkgdesc = Firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8)
+	pkgdesc = Broadcom bluetooth firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8, 0a5c:216f)
 	pkgver = 1201650
-	pkgrel = 4
+	pkgrel = 5
 	url = http://asus.com
 	arch = any
 	license = Custom

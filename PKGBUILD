@@ -4,8 +4,8 @@
 
 pkgname=bcm20702a1-firmware
 pkgver=1201650
-pkgrel=4
-pkgdesc="Firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8)"
+pkgrel=5
+pkgdesc="Broadcom bluetooth firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8, 0a5c:216f)"
 arch=('any')
 url="http://asus.com"
 license=("Custom")
@@ -20,6 +20,7 @@ build() {
   hex2hcd "$srcdir/Bluetooth/BCM_DriverOnly/64/BCM20702A1_001.002.014.1443.1469.hex" -o "${srcdir}/BCM20702A1-0b05-17cf.hcd"
   hex2hcd "$srcdir/Bluetooth/BCM_DriverOnly/64/BCM20702A1_001.002.014.1483.1647.hex" -o "${srcdir}/BCM20702A0-0a5c-21e1.hcd"
   hex2hcd "$srcdir/Bluetooth/BCM_DriverOnly/64/BCM20702A1_001.002.014.1483.1669.hex" -o "${srcdir}/BCM20702A1-0a5c-21e6.hcd"
+  hex2hcd "$srcdir/Bluetooth/BCM_DriverOnly/64/BCM20702A1_001.002.014.1443.1572.hex" -o "${srcdir}/BCM20702A1-0a5c-216f.hcd"
 }
 
 package() {
@@ -29,5 +30,6 @@ package() {
   install -m644 "${srcdir}/BCM20702A0-0a5c-21e1.hcd" "${pkgdir}/usr/lib/firmware/brcm/BCM20702A0-0a5c-21e1.hcd"
   install -m644 "${srcdir}/BCM20702A1-0a5c-21e6.hcd" "${pkgdir}/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd"
   install -m644 "${srcdir}/BCM20702A1-0a5c-21e8.hcd" "${pkgdir}/usr/lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd"
+  install -m644 "${srcdir}/BCM20702A1-0a5c-216f.hcd" "${pkgdir}/usr/lib/firmware/brcm/BCM20702A1-0a5c-216f.hcd"
 }
 
