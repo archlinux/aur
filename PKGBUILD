@@ -2,8 +2,8 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
-pkgver=2.48.1
-pkgrel=3
+pkgver=2.48.2
+pkgrel=1
 arch=(any)
 pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
@@ -19,7 +19,7 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.t
 "0028-inode_directory.patch"
 "revert-warn-glib-compile-schemas.patch"
 "use-pkgconfig-file-for-intl.patch")
-sha256sums=('74411bff489cb2a3527bac743a51018841a56a4d896cc1e0d0d54f8166a14612'
+sha256sums=('f25e751589cb1a58826eac24fbd4186cda4518af772806b666a3f91f66e6d3f4'
             'ef81e82e15fb3a71bad770be17fe4fea3f4d9cdee238d6caa39807eeea5da3e3'
             '1b24cc928f69f73599f83269a7b3eb7bf7efbe114109251e6765053a1e1f4cd6'
             '7b099af0c562f397458542482d6d1debe437f220762aa2ed94b2e6c4d43dd8a6'
