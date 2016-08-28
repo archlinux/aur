@@ -14,9 +14,12 @@ pkgbase = pyfa
 	depends = python2-urllib3
 	optdepends = python2-matplotlib: for graph plotting
 	optdepends = python2-numpy: for graph plotting
-	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.23.0/pyfa-1.23.0-yc_118.7-1.4-linux.zip
+	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.23.0/pyfa-1.23.0-yc.118.7-1.4-linux.zip
 	source = pyfa.desktop
 	source = pyfa-start.sh
+	md5sums = 04f7d0c6c4c96daf7675721d72658029
+	md5sums = 53ae38c0f4840359e08e155ba72753c5
+	md5sums = 9937192cfce7f5e16e9cf26086f1899c
 
 pkgname = pyfa
 

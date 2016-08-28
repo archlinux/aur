@@ -4,7 +4,7 @@
 pkgname=pyfa
 pkgver=1.23.0
 pkgrel=1
-everelname="yc_118.7"
+everelname="yc.118.7"
 everelver=1.4
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
@@ -29,3 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
+md5sums=('04f7d0c6c4c96daf7675721d72658029'
+         '53ae38c0f4840359e08e155ba72753c5'
+         '9937192cfce7f5e16e9cf26086f1899c')
