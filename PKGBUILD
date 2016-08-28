@@ -12,6 +12,6 @@ source=("${pkgname}::git+https://github.com/pPailleux/bhash_crack.git")
 sha512sums=('SKIP')
 
 package() {
-    install -Dm0644 ${srcdir}/${pkgname}/bhash_crack.sh ${pkgdir}/opt/${pkgname}/bhash_crack.sh
-    install -Dm0750 ${srcdir}/${pkgname}/output_sample ${pkgdir}/opt/${pkgname}/output_sample
+    install -Dm0750 ${srcdir}/${pkgname}/bhash_crack.sh ${pkgdir}/opt/${pkgname}/bhash_crack.sh
+    install -Dm0664 ${srcdir}/${pkgname}/output_sample ${pkgdir}/opt/${pkgname}/output_sample
 }
