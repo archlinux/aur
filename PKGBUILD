@@ -9,12 +9,7 @@ makedepends=('git')
 provides=('bhash_crack')
 conflicts=('bhash_crack')
 source=("${pkgname}::git+https://github.com/pPailleux/bhash_crack.git")
-sha512sums=('cfd861e3a939dff3131a9e7d55a0251da4fdec232aba1c8b24843f4181e4955dbb5494a450eb8abc07067f3a0be72b87141248e46f68baaa1342e19303cc11b1'
-            '18e9b9c60ad1acd528a13c582e4c4455259aeb0f50cef2fa18744c72a26121ea453be670e905b423e05f9a74baa5e606bb64cf31ff567098a8fb71faf3f6cf01'
-            '554831f3e55579ef3f63811f2dfe230080bf8022db2aab7f346ef0d6eb3de7fe34d0c7efd457f870a7191513d7fe22fc8164fb9d16a8c6fa19f96da793b6c782'
-            'cda2218cbed0f38c8c3ab3624d1a164f18d311430489168527340ccf544208662be58b8cc5178a6df35802be58b1817324105f20bcafc4c18de528eaa705d1e1'
-            'd3b8c3b73c45bd81ed43739b1f05cd983677f66d08e213db616e808691ce2f94c83c4776e2f9fdf5427708c8c563807579cabd2a0eee93ab253af8770e7a462e'
-            '74cc63879f1822aae591494c5277c65b1c275f6d39131be5788f158b2132d218f85d77d7a4f2156c6cd7e5581c338dbad9299b388d34c593e2ea165425420a31')
+sha512sums=('SKIP')
 
 package() {
     install -Dm0750 ${srcdir}/${pkgname}/bhash_crack.sh ${pkgdir}/opt/${pkgname}/bhash_crack.sh
