@@ -11,4 +11,3 @@ pkgbase = bhash_crack-git
 	sha512sums = SKIP
 
 pkgname = bhash_crack-git
-
