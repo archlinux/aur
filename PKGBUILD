@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 source=("pyacoustid-${pkgver}.tar.gz::https://github.com/sampsyo/pyacoustid/archive/v${pkgver}.tar.gz"
         'https://raw.github.com/sampsyo/beets/master/LICENSE')
 sha256sums=('55137af9293b62b588986bd45a88f4cc571f4b0aaac665811edd7ba0659cf136'
-            '818fc3b5adc33cf7d463cf8731eca11f0374cece3a89c83e8379c5517c096e4e')
+            '69b9fa8fe9700714fc1f002aa6bfef097e5422372979195ab48956cd48e20aaf')
 
 build() {
   cd pyacoustid-${pkgver}
