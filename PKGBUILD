@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=371.8811c69
+pkgver=386.d94a1fb
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(any)
@@ -10,15 +10,13 @@ url="http://openbazaar.org"
 license=('MIT')
 depends=()
 install=${_pkgname}.install
-makedepends=(go git)
+makedepends=(go git upx)
 _user=github.com/OpenBazaar
 _repo=openbazaar-go
 source=("${_repo}::git+https://${_user}/${_repo}.git"
 		"${_pkgname}.service"
 )
-options=('strip')
-provides=(${_pkgname})
-replaces=(${_pkgname})
+options=('strip' 'upx')
 
 prepare(){
   cd $srcdir
@@ -37,10 +35,10 @@ package() {
   go build
   
   msg2 "Install binary file"
-  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}
+  install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}-next
 
   msg2 "Install systemd service"
-  install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
+  install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}-next.service
 }
 
 pkgver() {
@@ -49,4 +47,4 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         '8901b5947b19402920df6df10f8d1ab6')
+         'ef438cefc3a16d1f6a7137869f7c9bac')
