@@ -1,6 +1,6 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=hasklock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A binary clock in ncurses written in Haskell"
 arch=('x86_64')
@@ -8,8 +8,14 @@ url="https://github.com/DestructiveReasoning/hasklock"
 license=('BSD')
 groups=()
 depends=('ncurses')
+<<<<<<< Updated upstream
+#makedepends=('git','haskell-text','haskell-hscurses')
 makedepends=('git')
-provides=()
+=======
+makedepends=('git' 'haskell-text' 'haskell-hscurses')
+#makedepends=('git')
+>>>>>>> Stashed changes
+provides=('hasklock')
 conflicts=()
 replaces=()
 backup=()
@@ -27,7 +33,7 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
+    cd "$_gitname" && git pull origin master
     msg "The local files are updated."
   else
     git clone "$_gitroot" "$_gitname"
@@ -50,7 +56,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-#  make
+  make
   install -Dm 755 Hasklock "$pkgdir/usr/bin/$_gitname"
 #make DESTDIR="${pkgdir}" install
 }
