@@ -1,8 +1,9 @@
-# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Contributor: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
 
 pkgname=firefox-mega
-pkgver=3.4.29
+pkgver=3.4.48
 pkgrel=1
 groups=("firefox-addons")
 pkgdesc="MEGA extension for Firefox; enables better support for 
@@ -26,4 +27,4 @@ package(){
 	find "${pkgdir}" -type d -exec chmod 0755 {} \;
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
-md5sums=('a786f1634d797ae8d3bddbf1541f32e7')
+md5sums=('31f485febde4f88d22f80f7fff4c143f')
