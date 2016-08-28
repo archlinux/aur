@@ -14,7 +14,9 @@ depends=('python'
          'python-beautifulsoup4'
          'python-gtkspellcheck'
          'webkitgtk'
-         'wkhtmltopdf')
+         'wkhtmltopdf'
+         'gtksourceview3'
+         )
 makedepends=('python')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
