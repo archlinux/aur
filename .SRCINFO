@@ -2,13 +2,13 @@ pkgbase = lightdm-webkit-theme-wisp
 	pkgdesc = An airy theme for the LightDM WebKit greeter
 	pkgver = 1.2
 	pkgrel = 2
-	url = https://github.com/nejsan/lightdm-webkit-theme-wisp
+	url = https://github.com/codehearts/lightdm-webkit-theme-wisp
 	install = theme.install
 	arch = any
 	license = MIT
 	depends = lightdm
 	depends = lightdm-webkit2-greeter
-	source = lightdm-webkit-theme-wisp-1.2.tar.gz::https://github.com/nejsan/lightdm-webkit-theme-wisp/archive/v1.2.tar.gz
+	source = lightdm-webkit-theme-wisp-1.2.tar.gz::https://github.com/codehearts/lightdm-webkit-theme-wisp/archive/v1.2.tar.gz
 	sha256sums = 31989b30660b44bc7750d6116d40903f9378702c3f8c858a67b79900a67139a5
 
 pkgname = lightdm-webkit-theme-wisp
