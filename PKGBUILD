@@ -3,7 +3,7 @@ pkgdesc='A powerful (and blazing fast) argument checker and function overloading
 pkgname='torch7-argcheck-git'
 pkgver=r131.3cab0ae
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('torch7-git>=r819')
 conflicts=('torch7-argcheck')
 provides=('torch7-argcheck')
