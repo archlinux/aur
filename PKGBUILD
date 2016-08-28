@@ -3,7 +3,7 @@ pkgdesc='A system utility package for Torch.'
 pkgname='torch7-sys-git'
 pkgver=1.1.0.r12.gcadd701
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('torch7-git>=r819')
 conflicts=('torch7-sys')
 provides=('torch7-sys')
