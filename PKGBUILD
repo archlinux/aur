@@ -2,13 +2,16 @@
 # Contributor: Guido <qqqqqqqqq9 at web dot de>
 # Contributor: Emmanuel Gil Peyrot <linkmauve at linkmauve dot fr>
 
-pkgname="sozi"
+pkgbase='sozi'
+pkgname=('sozi'
+         'sozi-tools_texts2paths'
+         'sozi-extras_media')
 
 pkgver=16.02
 # the build version is obtained from [here](https://github.com/senshu/Sozi/releases)
 _buildver=16.02.141048
 _pkgverpostfix="-fix344" # this is required because the pkgver cannot contain hyphen
-pkgrel=4
+pkgrel=5
 
 pkgdesc="A zooming presentation based on SVG, using JavaScript"
 url="http://sozi.baierouge.fr/"
@@ -16,17 +19,15 @@ url="http://sozi.baierouge.fr/"
 arch=('i686' 'x86_64')
 license=('custom:MPL2.0')
 
-depends=("gconf" "libnotify" "alsa-lib" "nss" "gtk2" "libxtst")
-optdepends=(
-  'inkscape: for editing the original SVG document (any SVG editor can be used)'
-)
 makedepends=('npm' 'bower' 'nodejs-grunt-cli'
   'jq' 'semver')
 
 source=("https://github.com/senshu/Sozi/archive/${pkgver}${_pkgverpostfix}.tar.gz"
-  "http://www.1001freefonts.com/d/5854/droid_sans.zip")
+  "http://www.1001freefonts.com/d/5854/droid_sans.zip"
+  "texts2paths.patch")
 sha1sums=('564a162628d6d179fd6785dec4d0e38e863b0e5d'
-  '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740')
+  '265b6cc7b7cea7bcfb74eec52bc9c0e44f039740'
+  'ebaf4c68d77391a701b3acfc21282eb78d8077fd')
 
 source_i686=('http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-linux-ia32.tar.gz'
   'buildConfig-i686.js')
@@ -57,6 +58,8 @@ prepare() {
     cp -a -l "${srcdir}/nwjs-v${_nwjsver}-linux-ia32" "cache/${_nwjsver}/linux32"
     cp "${srcdir}/buildConfig-i686.js" "buildConfig.js"
   fi
+
+  patch -p1 < "${srcdir}/texts2paths.patch"
 }
 
 bestmatch() {
@@ -166,7 +169,14 @@ build() {
   grunt --verbose
 }
 
-package() {
+package_sozi() {
+  depends=("gconf" "libnotify" "alsa-lib" "nss" "gtk2" "libxtst")
+  optdepends=(
+    'inkscape: for editing the original SVG document (any SVG editor can be used)'
+    'sozi-tools_texts2paths: for converting Text objects to Path objects'
+    'sozi-extras_media: for Inkscape audio/video extensions'
+  )
+
   if [[ $CARCH == "x86_64" ]]; then
     cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/build/Sozi/Sozi-${_buildver}-linux64/"
   else
@@ -180,13 +190,29 @@ package() {
   ln -s "/opt/sozi-${pkgver}${_pkgverpostfix}/Sozi" sozi
 
   cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/sozi/MPL2.0"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/MPL2.0"
 
   #TODO: Create a .desktop file too
 }
 
-#TODO: Create other subpackages from "tools" and "extras" folders
+package_sozi-tools_texts2paths() {
+  pkgdesc="An script for converting Text objects of a SVG to Path objects"
+  depends=("python2-lxml" "inkscape")
 
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
+  install -D -m755 tools/texts2paths/texts2paths.py "${pkgdir}/usr/bin/texts2paths.py"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/MPL2.0"
+}
+
+package_sozi-extras_media() {
+  pkgdesc="An Inkscape extension for adding audio/video elements"
+  depends=("inkscape")
+
+  cd "${srcdir}/Sozi-${pkgver}${_pkgverpostfix}/"
+  install -D -m644 extras/media/sozi_extras_media.inx "${pkgdir}/usr/share/inkscape/extensions/sozi_extras_media.inx"
+  install -D -m755 extras/media/sozi_extras_media.py "${pkgdir}/usr/share/inkscape/extensions/sozi_extras_media.py"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/MPL2.0"
+}
 
 # bower dependencies:
 source+=(

@@ -1,0 +1,20 @@
+diff -ruN sozi-org/tools/texts2paths/texts2paths.py sozi-new/tools/texts2paths/texts2paths.py
+--- sozi-org/tools/texts2paths/texts2paths.py	2016-08-28 14:04:40.190289088 +0430
++++ sozi-new/tools/texts2paths/texts2paths.py	2016-08-28 14:08:39.806966462 +0430
+@@ -7,6 +7,7 @@
+ from optparse import OptionParser
+ from lxml import etree
+ import subprocess, shutil, sys
++import os
+ 
+ if __name__ == '__main__':
+     option_parser = OptionParser()
+@@ -44,6 +45,7 @@
+     command = ["inkscape"]
+     for t in texts:
+         command += ["--verb=EditDeselect", "--select=" + t.get("id"), "--verb=ObjectToPath"]
+-    command += ["--verb=FileSave", "--verb=FileClose", output_file_name]
++    command += ["--verb=FileSave", "--verb=FileClose", 
++            "--verb=FileQuit", output_file_name]
+     
+     subprocess.call(command)
