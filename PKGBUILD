@@ -13,7 +13,7 @@ url='https://github.com/openresty/headers-more-nginx-module'
 license=('custom')
 depends=("nginx=$_ngx_ver")
 makedepends=('git')
-source=(https://github.com/openresty/headers-more-nginx-module/archive/v${pkgver}.tar.gz
+source=(https://github.com/openresty/${_mod_name}-more-nginx-module/archive/v${pkgver}.tar.gz
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
 md5sums=('256add046870dc0338e1553977c57c00'
          'c184c873d2798c5ba92be95ed1209c02')
