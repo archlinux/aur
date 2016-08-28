@@ -11,14 +11,14 @@
 
 # AUR make dependencies
 # ---------------------
-# blackmagic-decklink-sdk nvidia-sdk
+# blackmagic-decklink-sdk
 
 # AUR optional dependency
 # -----------------------
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.81300.gce2217b
+pkgver=N.81482.ga81b398
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ depends=(
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'blackmagic-decklink-sdk' 'nvidia-sdk')
+makedepends=('git' 'yasm' 'blackmagic-decklink-sdk')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
@@ -92,10 +92,9 @@ build() {
 	
 	./configure \
 	        --prefix=/usr \
-	        --extra-cflags="-I/usr/include/nvidia-sdk \
-	                        ${_cudainc} \
-	                        -I/usr/lib/jvm/$(archlinux-java get)/include \
-	                        -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
+	        --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
+	                        -I/usr/lib/jvm/$(archlinux-java get)/include/linux \
+	                        ${_cudainc}" \
 	        --extra-ldflags="${_cudalib} ${_intelsdklib}" \
 	        \
 	        --enable-rpath \
