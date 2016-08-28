@@ -1,7 +1,7 @@
 # Maintainer: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.9.beta14
-pkgrel=1
+pkgrel=2
 pkgdesc=".NET development platform based on on Roslyn workspaces."
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
