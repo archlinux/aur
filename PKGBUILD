@@ -1,4 +1,4 @@
-# Maintainer: Nissar Chababy <funilrys@outlook.com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
 
 pkgname=ckbcomp
 pkgver=1.148
