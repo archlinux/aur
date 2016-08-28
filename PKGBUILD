@@ -2,7 +2,7 @@
 
 _plug=vcfreq
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=20160216
+pkgver=20160817
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
