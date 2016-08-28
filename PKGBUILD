@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=googler
-pkgver=2.6
+pkgver=2.7
 pkgrel=0
 pkgdesc="Google Search from command line"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('googler-git')
 source=("https://github.com/jarun/googler/archive/v$pkgver.tar.gz")
-md5sums=('a9f57d28ce3cb163994bad9eff33f415')
+md5sums=('6bf2fb3afa99a87456d8744a46ed5dcf')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
