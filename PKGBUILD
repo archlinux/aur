@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
