@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python2-jellyfish
 pkgver=0.5.2
