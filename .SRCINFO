@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-redshift-git
+	pkgdesc = Redshift integration for GNOME Shell
+	pkgver = r29.8fd6a3b
+	pkgrel = 1
+	url = https://github.com/Neroth/gnome-shell-extension-weather
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gnome-common
+	makedepends = intltool
+	source = git+https://github.com/tommie-lie/gnome-shell-extension-redshift
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-redshift-git
+
