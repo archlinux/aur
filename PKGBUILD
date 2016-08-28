@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="http://natron.fr/"
 license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
-makedepends=('expat' 'boost')
+makedepends=('git' 'expat' 'boost')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node')
 conflicts=('natron-rc' 'natron-bin' 'natron-bin-dev' 'natron-portable')
 source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
