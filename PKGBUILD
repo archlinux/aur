@@ -1,7 +1,8 @@
-# Maintainer: Joel Pedraza <joel@joelpedraza.com>
+# Maintainer: Sandor Nagy <sandor-dot-nagy-at-kdemail-dot-net>
+# Contributor: Joel Pedraza <joel@joelpedraza.com>
 
-_rev=r02
-_sdkver=L
+_rev=r03
+_sdkver=4.4W
 _sdkint=20
 pkgname=android-samples-${_sdkint}
 pkgver=${_sdkver}_${_rev}
@@ -11,8 +12,8 @@ arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 options=('!strip')
-source=("http://dl.google.com/android/repository/samples-${_sdkver}_${_rev}.zip")
-sha1sums=('4afc36cf3f53051881729f733fe9bb571104c48f')
+source=("http://dl.google.com/android/repository/samples-${_sdkint}_${_rev}.zip")
+sha1sums=('8b1290b0b707827808392e8178094a68dfb51a14')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/samples/"
