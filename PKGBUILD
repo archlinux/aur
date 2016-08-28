@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=rimworld
-pkgver=0.14.1249  # see ${srcdir}/Version.txt
+pkgver=0.15.1279  # see ${srcdir}/Version.txt
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
 sha256sums=('e83c514731904722d96218e82e257467d7af32d938493bb5908cf96c7699cae6'
-            '37be72d82b2cb853b435598ff1fabda03de3a660b9e69b95a03af6548f6dc4c4')
+            'b43669fb221beda0927781b2572861ba50af08d0dcd8abf6011d27dd894f564e')
 if test "$CARCH" == i686; then
   _rimworld_arch=x86
 elif test "$CARCH" == x86_64; then
   _rimworld_arch=x86_64
 fi
-_gamepkg=RimWorldAlpha14eLinux.zip
+_gamepkg=RimWorldAlpha15Linux.zip
 _pkgpaths_tries=("$startdir"
                  "$HOME/Downloads")
 
@@ -46,7 +46,7 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" -x 'RimWorld*Linux/Mods/Core/Languages/Russian/*RimWorld/*'
+  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" -x 'RimWorld*Linux/Mods/Core/Languages/Russian/*RimWorld/*' 'RimWorld*Linux/Mods/Core/Languages/Russian/*.txt'
 }
 
 package() {
