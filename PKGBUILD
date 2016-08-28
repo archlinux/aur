@@ -14,6 +14,4 @@ sha512sums=('SKIP')
 package() {
     install -Dm0644 ${srcdir}/bhash_crack.sh ${pkgdir}/opt/${pkgname}/bhash_crack.sh
     install -Dm0750 ${srcdir}/output_sample ${pkgdir}/opt/${pkgname}/output_sample
-    # cp bhash_crack.sh /opt/${pkgname}
-    # sudo ln -s /opt/${pkgname}/bhash_crack.sh /usr/bin/bhash
 }
