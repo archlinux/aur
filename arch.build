@@ -80,7 +80,7 @@ sftp $vhost <<<'put -r . build'
 sftp $vhost <<<"mkdir $HOME/.gnupg"
 sftp $vhost <<<"put $HOME/.makepkg.conf"
 sftp $vhost <<<"put $HOME/.gnupg/pubring.kbx .gnupg/pubring.kbx"
-ssh $vhost 'cd build; makepkg --log --noconfirm --syncdeps'
+ssh $vhost 'cd build; rm -fr src pkg; makepkg --log --noconfirm --syncdeps'
 sftp $vhost <<<'get build/*.pkg.tar.xz'
 sftp $vhost <<<'get build/*.log'
 stop_vm
