@@ -13,7 +13,7 @@ depends=('vapoursynth'
          )
 #source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/${_plug}/${_plug}_src.7z")
 source=("${_plug}-${pkgver}.7z::https://dl.dropboxusercontent.com/u/73468194/vcfreq_src_x64.7z")
-sha1sums=('68ad40a5c3775b6bd848f75094524d248b736514')
+sha1sums=('93f46a5c6d6d40cd26d58c1c3d881a2926c8f55a')
 
 prepare(){
   rm -fr VSHelper.h VapourSynth.h
@@ -22,7 +22,6 @@ prepare(){
       -e 's|vshelper.h|VSHelper.h|g' \
       -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -e 's|FQSharpHelper|FQSharphelper|g' \
       -i *
 
   echo "all:
