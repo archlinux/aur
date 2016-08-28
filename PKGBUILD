@@ -1,13 +1,13 @@
 # Maintainer: oliver < a t >  first . in-berlin . de
 pkgname=ocaml-camlzip
 _pkgname=camlzip
-pkgver=1.05
+pkgver=1.06
 pkgrel=1
 pkgdesc="Provides easy access to compressed files in ZIP, GZIP and JAR format"
 arch=('i686' 'x86_64')
 license=('custom: LGPL-2.1+ with OCaml linking exception')
-source=(http://forge.ocamlcore.org/frs/download.php/1037/camlzip-1.05.tar.gz)
-md5sums=(e85c179d5dc79821e6e8d90e636599f1)
+source=(http://forge.ocamlcore.org/frs/download.php/1616/camlzip-1.05.tar.gz)
+md5sums=(0874be16d02a7165dfc31edc06636e4c)
 url="http://forge.ocamlcore.org/projects/camlzip/"
 depends=('ocaml')
 makedepends=('ocaml' 'ocaml-findlib')
