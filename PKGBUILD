@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Fernando Jiménez Solano <fjim@sdfeu.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
