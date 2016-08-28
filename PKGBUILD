@@ -1,16 +1,17 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=rundeck
-pkgver=2.6.8
+pkgver=2.6.9
 pkgrel=1
 pkgdesc="Open source automation service with a web console, command line tools and a WebAPI"
 arch=('any')
-url="http://messengerfordesktop.com/"
+url="https://github.com/rundeck/rundeck/"
 license=('APACHE')
-depends=('java-environment' 'bash')
+depends=('java-runtime')
+makedepends=('java-environment')
 source=("https://github.com/rundeck/rundeck/archive/v${pkgver}.tar.gz"
         'start.sh')
-md5sums=('7b8991d4530406f88884a2bed9df0d04'
+md5sums=('cfc2601a7f6566848b8d43745d81271f'
          '520c429435ea55c694b66dfa969f98ca')
 
 build() {
