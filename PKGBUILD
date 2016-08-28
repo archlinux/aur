@@ -1,6 +1,6 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
-pkgver=2.0.30
+pkgver=2.0.33
 pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -11,7 +11,7 @@ depends=('sqlite' 'crypto++' 'curl' 'fuse' 'zlib')
 conflicts=('urbackup-server')
 source=("https://www.urbackup.org/downloads/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
 install='urbackup.install'
-md5sums=('e6ea67a409d8e781ff0d73547a468b7e')
+md5sums=('dd48905872479b13715cbdca074ca335')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong -ansi"
 CXXFLAGS="${CFLAGS}"
