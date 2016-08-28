@@ -1,0 +1,25 @@
+pkgbase = splashkit-git
+	pkgdesc = A toolkit designed to make it easy for students to create games.
+	pkgver = r252.f1ce067
+	pkgrel = 1
+	url = http://splashkit.io/
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = sdl2_mixer
+	makedepends = sdl2_gfx
+	makedepends = sdl2_image
+	makedepends = sdl2_mixer
+	makedepends = sdl2_net
+	makedepends = sdl2_ttf
+	makedepends = sqlite
+	makedepends = libmikmod
+	makedepends = libpng
+	makedepends = smpeg2
+	makedepends = curl
+	source = git+https://github.com/jarmstrong/splashkit.git
+	md5sums = SKIP
+
+pkgname = splashkit-git
+
