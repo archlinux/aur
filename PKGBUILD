@@ -10,16 +10,9 @@ arch=(i686 x86_64)
 depends=(glibc)
 makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
-        git+https://review.coreboot.org/chrome-ec
-        git+https://review.coreboot.org/vboot
-        git+https://review.coreboot.org/blobs
-        git+https://review.coreboot.org/nvidia-cbootimage
-        git+https://review.coreboot.org/arm-trusted-firmware)
+        # vboot provides vb2_api.h needed by cbfstool
+        git+https://review.coreboot.org/vboot)
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -31,13 +24,9 @@ prepare() {
   cd coreboot
 
   git submodule init
-  git config -f .gitmodules 'submodule.3rdparty/blobs.url' "$srcdir/blobs"
-  git config -f .gitmodules 'submodule.3rdparty/chromeec.url' "$srcdir/chrome-ec"
-  git config -f .gitmodules 'submodule.util/nvidia-cbootimage.url' "$srcdir/nvidia-cbootimage"
   git config -f .gitmodules 'submodule.vboot.url' "$srcdir/vboot"
-  git config -f .gitmodules 'submodule.arm-trusted-firmware.url' "$srcdir/arm-trusted-firmware"
-  git submodule sync
-  git submodule update
+  git submodule sync -- 3rdparty/vboot
+  git submodule update -- 3rdparty/vboot
 }
 
 build() {
