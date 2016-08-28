@@ -1,7 +1,7 @@
 # mhwd Driver Config
 
 NAME="video-ati-hwe"
-INFO="X.org ati video driver. Standard open source driver for AMD graphic cards with OpenGL, VAAPI and VDPAU support."
+INFO="X.org ati video driver. Standard open source driver for AMD graphic cards with OpenCL, VAAPI and VDPAU support."
 VERSION="2016.08.22"
 FREEDRIVER="true"
 PRIORITY="2"
@@ -20,6 +20,9 @@ DEPENDS_64="lib32-libva-vdpau-driver lib32-mesa-vdpau"
 
 XORGFILE="/etc/X11/mhwd.d/ati.conf"
 
+# Additionals
+R600OPSFILE="/etc/profile.d/10-amdgfx_r600ops.sh"
+
 
 post_install()
 {
@@ -33,6 +36,10 @@ post_install()
 	sed -i "s/\tOption      \"DRI\"    \"true\"/\tOption      \"DRI3\"    \"1\"\n\tOption      \"DRI\"     \"3\"\n\tOption      \"AccelMethod\"     \"glamor\"/g"  "${XORGFILE}"
 	
 	mhwd-gpu --setgl mesa --setxorg "${XORGFILE}"
+	
+        # Set some options to (hopefully) improve R600 and RadeonSI a little
+	echo -e "# Set some options to (hopefully) improve R600 and RadeonSI a little\nexport R600_DEBUG=\"precompile llvm sisched forcedma sbcl\"" > "${R600OPSFILE}"
+	chmod 755 "${R600OPSFILE}"
 }
 
 
@@ -41,6 +48,9 @@ post_remove()
 {
 	if [ -e "${XORGFILE}" ]; then
 		rm "${XORGFILE}"
+	fi
+        if [ -e "${R600OPSFILE}" ]; then
+		rm "${R600OPSFILE}"
 	fi
 
 	mhwd-gpu --check
