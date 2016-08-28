@@ -95,10 +95,10 @@ while getopts "f:t:l:c:x:k:vhd" option ; do
         v|version)
             _version
 			exit 0 ;;
-		h|help)
+        h|help)
             _help
-			exit 0 ;;
-		?)
+            exit 0 ;;
+        ?)
             echo -e "${KO}[-]${ST} Invalid option: ${OPTARG}. See -h or -help for correct options"
             _help
             exit 2 ;;
