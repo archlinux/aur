@@ -28,5 +28,5 @@ package() {
 sha1sums=('9065a73d67c5c021ae9d0624b973ca93053ee1dc'
           '6ecd04bec1630ddd9ceb947e330b9624c3fa8d64'
           '853f64797cdd0a57e7049f594340db20bd4e1eba'
-          '6cc34d8524d2d0da74e3537f777a67f567e389e6'
+          'e0da42e63f4d1756b8a0e846864a52a57de23e39'
           '39d491e77bb573ef17d3a41dc149735c2c107b6c')
