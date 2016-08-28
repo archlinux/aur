@@ -2,15 +2,14 @@
 
 pkgname=lightdm-pantheon-greeter
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-greeter'
 license=('GPL')
-depends=('atk' 'cairo' 'clutter' 'clutter-gtk' 'cogl' 'gdk-pixbuf2' 'glib2'
-         'glibc' 'gtk3' 'libgee' 'libgl' 'libx11' 'lightdm'
-         'pango'
-         'libgranite.so')
+depends=('cairo' 'clutter' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
+         'libgee' 'libgl' 'libx11' 'lightdm'
+         'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/pantheon-greeter/loki/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
         'lightdm-pantheon-greeter-paths.patch')
