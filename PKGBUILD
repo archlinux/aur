@@ -12,9 +12,9 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=162.1628.17
+_buildver=163.3094.26
 _veryear=2016
-_verrelease=2
+_verrelease=3
 _verextra=
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
@@ -70,7 +70,7 @@ EOF
     for i in $(ls $srcdir/idea-IU-$_buildver/license/ ); do
       ln -sf "${srcdir}/idea-IU-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done 
-    ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
+    ln -s "${pkgdir}/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
 # vim:set ts=2 sw=2 et:
