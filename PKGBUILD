@@ -8,13 +8,10 @@ url="https://github.com/DestructiveReasoning/hasklock"
 license=('BSD')
 groups=()
 depends=('ncurses')
-<<<<<<< Updated upstream
 #makedepends=('git','haskell-text','haskell-hscurses')
 makedepends=('git')
-=======
 makedepends=('git' 'haskell-text' 'haskell-hscurses')
 #makedepends=('git')
->>>>>>> Stashed changes
 provides=('hasklock')
 conflicts=()
 replaces=()
