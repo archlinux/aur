@@ -1,6 +1,6 @@
 pkgbase = ttf-unifont-csur
-	pkgdesc = TrueType version of the GNU Unifont with Michael Everson's ConScript Unicode Registry (CSUR) Private Use Area (PUA) glyphs
-	pkgver = 8.0.01
+	pkgdesc = TrueType part of the GNU Unifont containing Michael Everson's ConScript Unicode Registry (CSUR) Private Use Area (PUA) glyphs
+	pkgver = 9.0.02
 	pkgrel = 1
 	url = http://unifoundry.com/unifont.html
 	install = ttf.install
@@ -9,10 +9,9 @@ pkgbase = ttf-unifont-csur
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = http://unifoundry.com/pub/unifont-8.0.01/font-builds/unifont_csur-8.0.01.ttf
-	source = http://unifoundry.com/pub/unifont-8.0.01/font-builds/unifont_upper_csur-8.0.01.ttf
-	md5sums = c3a37a2a66f77f9c3c2c556056e123d2
-	md5sums = 8c9a0f32d4cfdb944a8bba6744e2648e
+	depends = ttf-unifont
+	source = http://unifoundry.com/pub/unifont-9.0.02/font-builds/unifont_csur-9.0.02.ttf
+	md5sums = 8c11bbe5ecbc72cc9368e44ecf6b7f77
 
 pkgname = ttf-unifont-csur
 
