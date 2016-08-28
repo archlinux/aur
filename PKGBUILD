@@ -5,6 +5,8 @@ pkgrel=2
 pkgdesc="Twister core - p2p microblogging"
 arch=(i686 x86_64)
 url="http://twister.net.co/"
+#git source
+#https://github.com/miguelfreitas/twister-core/
 license=('MIT' 'BSD')
 groups=()
 depends=(openssl db boost-libs miniupnpc)
