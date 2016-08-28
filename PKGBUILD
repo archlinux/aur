@@ -4,7 +4,7 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r2798.f996254
+pkgver=r2985.c6d4949
 pkgrel=1
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('i686' 'x86_64')
@@ -33,19 +33,17 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 	./autogen.sh
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
-		--localstatedir=/var --with-transmitter --enable-sandboxed 
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
+	make DESTDIR="${pkgdir}" -j1 install
+  
+	install -Dm644 "${srcdir}"/lirc.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lirc.conf
+  install -Dm644 "${srcdir}"/lirc.logrotate "${pkgdir}"/etc/logrotate.d/lirc
 
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 "${srcdir}"/lirc.tmpfiles \
-		"${pkgdir}"/usr/lib/tmpfiles.d/lirc.conf
-	install -Dm644 "${srcdir}"/lirc.logrotate \
-		"${pkgdir}"/etc/logrotate.d/lirc
-
-	rmdir "${pkgdir}"/var/{run/lirc/,run/,}
+  rmdir "${pkgdir}"/var/{run/lirc/,run/}
 }
