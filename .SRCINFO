@@ -1,14 +1,14 @@
 pkgbase = withtool-git
 	pkgdesc = Program prefixing for continuous workflow using a single tool
-	pkgver = 43.59697ae
+	pkgver = 52.e28622d
 	pkgrel = 1
 	url = https://github.com/kalterfive/with
 	arch = any
 	license = GPL3
 	depends = bash
-	provides = with
-	conflicts = with
-	source = with::git://github.com/kalterfive/with
+	provides = withtool
+	conflicts = withtool
+	source = withtool::git://github.com/kalterfive/with
 	md5sums = SKIP
 
 pkgname = withtool-git
