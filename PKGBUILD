@@ -9,8 +9,8 @@
 
 set -u
 pkgname='hadoop'
-pkgver=2.7.2
-pkgrel=2
+pkgver=2.7.3
+pkgrel=1
 pkgdesc='Hadoop - MapReduce implementation and distributed filesystem'
 arch=('i686' 'x86_64')
 url='http://hadoop.apache.org'
@@ -67,7 +67,7 @@ source=(
 )
 _verwatch=("${source[0]}hadoop/common/" '.*href="hadoop-\([0-9\.]\+\)/.*' 'f')
 source[0]="${source[0]}hadoop/common/hadoop-${pkgver}/hadoop-${pkgver}.tar.gz"
-sha256sums=('49ad740f85d27fa39e744eb9e3b1d9442ae63d62720f0aabdae7aa9a718b03f7'
+sha256sums=('d489df3808244b906eb38f4d081ba49e50c4603db03efd5e594a1e98b09259c2'
             'b6607cb8531244d9be9241d8d4980d5695869f89fa598c8d24b35ec503df413b'
             'e584c32246fd23fe5f35b13399372419584c27a234364b12d1479f3c87e70748'
             '93cb40f76f6bb0c1924b7ef083b82d39bf32190f86c28fc6304839703cdda7b1'
@@ -76,7 +76,7 @@ sha256sums=('49ad740f85d27fa39e744eb9e3b1d9442ae63d62720f0aabdae7aa9a718b03f7'
             '047d3d6aea9eada82780eaa93a55c6259fb1b63c68bc50cc26323e066c1b7f75'
             '5e9bc41b0086dfa7b237d1a7248a7f113299687f79ba0c58ba01eaeea0e35e79'
             '37d7a252292b365782d9e7a64d6019a78d9c561acf9b5af3c246b602d3e0a8ec')
-#PKGEXT='.pkg.tar.gz' # Not worth the extra time to save 10%, not compatible with pacaur
+PKGEXT='.pkg.tar.gz' # Not worth the extra time to save 10%, not compatible with pacaur
 
 compile() {
   set -u
