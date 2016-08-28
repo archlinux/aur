@@ -26,5 +26,16 @@ expressions+=("| grep \" DEL \" ")
 expressions+=("| grep -vE \" /dev| /run| /drm | /SYSV.*$| /memfd| /\[aio\]\" ")
 # Replace first 7 occurances of spaces with tabs
 expressions+=("| sed -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' ")
-expressions+=("| cut -f 1,8 | sort | uniq | (echo "PROCESS FILENAME";cat) | column -t")
-eval "${expressions[@]}"
+expressions+=("| cut -f 1,8 | sort -u")
+OUTPUT=$(eval "${expressions[@]}")
+
+# If there's no output, don't print anything
+if [ "$OUTPUT" = "" ]; then
+	exit 0
+elif [ "${1}" = "-q" ]; then
+	printf "%s\n" "$OUTPUT" | column -t
+	exit 0
+else
+	printf "PROCESS FILENAME\n%s\n" "$OUTPUT" | column -t
+	exit 0
+fi

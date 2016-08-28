@@ -1,4 +1,4 @@
-# Hook to update /var/cache/pacman-ps/files package and file list
+# Hook to update /var/cache/pacman-ps/files.db (package and file list)
 [Trigger]
 Operation = Upgrade
 Operation = Install
