@@ -1,4 +1,4 @@
-#Maintainer: M0Rf30
+# Maintainer: M0Rf30
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
@@ -29,17 +29,17 @@ build(){
 }
 
 package(){
+  cd $srcdir
 
 msg2 "Installing Openbazaar data"
-  install -dm755 $pkgdir/opt/
-  cp -r $srcdir/${_pkgname}-next.asar $pkgdir/opt/
+  install -Dm644 ${_pkgname}-next.asar $pkgdir/opt/${_pkgname}-next.asar
 
 msg2 "Installing execution script"
-  install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}-next
+  install -Dm755 ${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}-next
 
 msg2 "Installing icons and desktop menu entry"
-  install -Dm644 $srcdir/${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/${_pkgname}-next.png
-  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}-next.desktop
+  install -Dm644 ${_pkgname}/imgs/icon.png "$pkgdir"/usr/share/pixmaps/${_pkgname}-next.png
+  install -Dm644 ${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}-next.desktop
 }
 
 pkgver() {
