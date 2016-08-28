@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=coreboot-utils-git
-pkgver=4.4.r1222.g589ef9d
+pkgver=4.4.r1339.gdbf3067
 pkgrel=1
 pkgdesc='Tools and utilities to work with Coreboot firmware'
 url='http://www.coreboot.org/'
@@ -47,6 +47,7 @@ build() {
   make -C ifdtool
   make -C nvramtool
   make -C inteltool
+  make -C intelmetool
   make -C superiotool
   make -C cbmem
   make -C romcc romcc # tests fail
@@ -56,7 +57,7 @@ build() {
 package() {
   cd coreboot/util
   install -m755 -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man8"
-  install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem romcc/romcc ectool/ectool
+  install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem romcc/romcc ectool/ectool intelmetool/intelmetool
   install -m644 -t "$pkgdir"/usr/share/man/man8 inteltool/inteltool.8
 
   install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
