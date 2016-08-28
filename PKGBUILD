@@ -1,9 +1,9 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='File name manipulation module for Torch7'
 pkgname='torch7-paths-git'
-pkgver=r39.3c0dc8f
-pkgrel=3
-makedepends=('cmake')
+pkgver=r41.68d579a
+pkgrel=1
+makedepends=('cmake' 'git')
 depends=('luajit')
 conflicts=('torch7-paths')
 provides=('torch7-paths')
