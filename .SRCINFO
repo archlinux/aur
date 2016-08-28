@@ -2,7 +2,7 @@
 # Wed Jul 13 19:34:40 UTC 2016
 pkgbase = docker-swarm
 	pkgdesc = A Docker-native clustering system
-	pkgver = 1.2.3
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/docker/swarm/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = docker-swarm
 	makedepends = go
 	makedepends = godep
 	depends = glibc
-	source = https://github.com/docker/swarm/archive/v1.2.3.tar.gz
-	sha256sums = 8049388fe137fb7fc17a4ccfde429f42099b8a8ace486ec4165cdeb6dfd930f7
+	source = https://github.com/docker/swarm/archive/v1.2.5.tar.gz
+	sha256sums = d3f20d94525ff9b338a0d31feaed6a9779801bcadf23ffc33e5ce4a3ad106beb
 
 pkgname = docker-swarm
 
