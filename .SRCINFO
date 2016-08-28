@@ -1,7 +1,7 @@
 pkgbase = wrs-vxworks-headers
 	pkgdesc = The VxWorks 6.3 Headers
 	pkgver = 6.3
-	pkgrel = 10
+	pkgrel = 11
 	url = http://firstforge.wpi.edu/sf/projects/c--11_toochain
 	install = wrs-vxworks-headers.install
 	arch = any

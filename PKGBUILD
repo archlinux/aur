@@ -3,7 +3,7 @@
 
 pkgname=wrs-vxworks-headers
 pkgver=6.3
-pkgrel=10
+pkgrel=11
 pkgdesc="The VxWorks 6.3 Headers"
 arch=(any)
 url="http://firstforge.wpi.edu/sf/projects/c--11_toochain"
@@ -20,17 +20,22 @@ install='wrs-vxworks-headers.install'
 package() {
   cd "${srcdir}"
 
+  mkdir -p ${pkgdir}/usr/powerpc-wrs-vxworks/include
+
   # Unpack headers
   unzip updated_vxworks63gccdist.zip
   mkdir -p ${pkgdir}/usr/powerpc-wrs-vxworks/{wind_base/target,share/ldscripts}
   cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/host ${pkgdir}/usr/powerpc-wrs-vxworks/wind_base
-  cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/host/resource ${pkgdir}/usr/powerpc-wrs-vxworks/wind_base
   cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/target/h/. ${pkgdir}/usr/powerpc-wrs-vxworks/sys-include
+  cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/target/h/wrn/coreip/. ${pkgdir}/usr/powerpc-wrs-vxworks/include
   cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/target/h/wrn/coreip/. ${pkgdir}/usr/powerpc-wrs-vxworks/wind_base/target/h
+
+  mkdir -p ${pkgdir}/usr/powerpc-wrs-vxworks/usr
+  ln -s ${pkgdir}/usr/powerpc-wrs-vxworks/sys-include ${pkgdir}/usr/powerpc-wrs-vxworks/usr/include
 
   # Clean up headers
   sed '/ENTRY(_start)/d' < gccdist/WindRiver/vxworks-6.3/target/h/tool/gnu/ldscripts/link.OUT > ${pkgdir}/usr/powerpc-wrs-vxworks/share/ldscripts/dkm.ld
-  chmod -R 755 ${pkgdir}/usr/powerpc-wrs-vxworks/
+  find . -type f -exec chmod 644 {} \;
   find ${pkgdir} -type f -exec dos2unix {} +
 
   # Install license
