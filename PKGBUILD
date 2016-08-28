@@ -4,7 +4,7 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=inox
+pkgname=inox-temp
 pkgver=52.0.2743.116
 pkgrel=1
 wa=51.0.2704.79

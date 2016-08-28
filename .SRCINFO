@@ -1,4 +1,4 @@
-pkgbase = inox
+pkgbase = inox-temp
 	pkgdesc = Chromium Spin-off to enhance privacy by disabling data transmission to Google
 	pkgver = 52.0.2743.116
 	pkgrel = 1
@@ -87,5 +87,5 @@ pkgbase = inox
 	sha256sums = 9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c
 	sha256sums = c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13
 
-pkgname = inox
+pkgname = inox-temp
 
