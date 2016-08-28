@@ -29,7 +29,7 @@ build(){
 package(){
 
 msg2 "Installing Openbazaar data"
-  install -Dm755 $pkgname.asar $pkgdir/opt/$pkgname.asar
+  install -Dm644 $pkgname.asar $pkgdir/opt/$pkgname.asar
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/$pkgname.sh $pkgdir/usr/bin/$pkgname
