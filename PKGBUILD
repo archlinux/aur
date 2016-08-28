@@ -2,7 +2,7 @@
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
 pkgver=20160828
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -20,6 +20,6 @@ else
 fi
 
 package(){
- install -Dm755 $srcdir/micro/micro "$pkgdir/usr/bin/micro"
- install -Dm644 $srcdir/micro/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ install -Dm755 $srcdir/micro-2de42bc/micro "$pkgdir/usr/bin/micro"
+ install -Dm644 $srcdir/micro-2de42bc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
