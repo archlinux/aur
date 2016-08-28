@@ -3,7 +3,7 @@ pkgname='torch7-threads-git'
 pkgdesc='Threads for Lua and LuaJIT. Transparent exchange of data between threads is allowed thanks to torch serialization.'
 pkgver=r90.9e31123
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('torch7-git>=r819')
 conflicts=('torch7-threads')
 provides=('torch7-threads')
