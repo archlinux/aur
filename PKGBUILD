@@ -2,7 +2,7 @@
 pkgname=ring-gnome-git
 pkgver=20160817
 pkgrel=1
-pkgdesc="The GNOME client for Ring (formerly known as SFLphone)"
+pkgdesc="The GNOME client for ring.cx (formerly known as SFLphone)"
 arch=("i686" "x86_64")
 url="http://ring.cx"
 license=('GPL3')
