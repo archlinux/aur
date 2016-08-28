@@ -2,7 +2,7 @@
 
 pkgname=wingpanel
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Top Panel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel'
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('clutter' 'cogl' 'glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
          'libgala.so' 'libgranite.so')
-makedepends=('cmake' 'vala')
+makedepends=('cmake' 'gala-bzr' 'vala')
 provides=('libwingpanel-2.0.so')
 source=("https://launchpad.net/wingpanel/2.x/${pkgver}/+download/wingpanel-${pkgver}.tar.xz")
 sha256sums=('e378ba458d4d1bfb8cc8c5ef3f2cf67692f2e2bfe50e1d02c73bf375c9220f7a')
