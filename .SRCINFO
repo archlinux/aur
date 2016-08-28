@@ -6,6 +6,7 @@ pkgbase = withtool
 	arch = any
 	license = GPL3
 	depends = bash
+	depends = ncurses
 	source = withtool::git://github.com/kalterfive/with#tag=v2.1
 	md5sums = SKIP
 
