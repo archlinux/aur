@@ -20,4 +20,6 @@ package() {
   dir="$srcdir/v2ray-v$pkgver-linux-${arch_map[$CARCH]}"
   install -Dm644 $dir/systemd/v2ray.service ${pkgdir}/usr/lib/systemd/system/v2ray.service
   install -Dm755 $dir/v2ray ${pkgdir}/usr/bin/v2ray
+  install -Dm644 $dir/vpoint_socks_vmess.json ${pkgdir}/etc/v2ray/vpoint_socks_vmess.json
+  install -Dm644 $dir/vpoint_vmess_freedom.json ${pkgdir}/etc/v2ray/vpoint_vmess_freedom.json
 }
