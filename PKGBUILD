@@ -3,7 +3,7 @@ pkgdesc='Neural networks package for Torch7'
 pkgname='torch7-cutorch-git'
 pkgver=r521.7d2a5d5
 pkgrel=1
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('torch7-git>=r819')
 conflicts=('torch7-cutorch')
 provides=('torch7-cutorch')
