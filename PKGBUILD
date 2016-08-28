@@ -1,7 +1,7 @@
 # Maintainer: Eric Pfeiffer <aur@computerfr33k.com>
 pkgname=librevault
-pkgver=0.1.18.6
-pkgrel=2
+pkgver=0.1.18.7
+pkgrel=1
 pkgdesc="File synchronization designed with privacy in mind"
 arch=(x86_64 i686)
 url="https://librevault.com/"
@@ -23,6 +23,7 @@ source=(
 )
 noextract=()
 sha256sums=('SKIP')
+_watch="none"
 
 prepare() {
 	mkdir -p ${srcdir}/${pkgname}/build && cd ${srcdir}/${pkgname}/build
