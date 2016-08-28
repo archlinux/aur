@@ -94,7 +94,7 @@ while getopts "f:t:l:c:x:k:vhd" option ; do
             set -x ;;
         v|version)
             _version
-			exit 0 ;;
+		    exit 0 ;;
         h|help)
             _help
             exit 0 ;;
@@ -105,7 +105,7 @@ while getopts "f:t:l:c:x:k:vhd" option ; do
         :)
             echo -e "${KO}[-]${ST} Option: ${OPTARG} requires an argument"
             exit 3 ;;
-	esac
+    esac
 done
 
 echo -e "${OK}[+]${ST} Launching ${algo} hash decryption."
