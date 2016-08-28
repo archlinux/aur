@@ -15,7 +15,7 @@ depends=('courier-authlib>=0.66.3' 'gamin' 'pcre' 'gdbm' 'courier-unicode>=1.3')
 conflicts=('courier-mta')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
-sha512sums=('11e821b56d0d6447ef15e3098c4b464bfae5fe25022aa8762f75d5db8573b2007ae74c1491ad49ccb036989d83629fa4b7335997410c3aea99b0aeb28d24f976')
+sha512sums=('0242ac978a7c88697403eacac6f26c12ff2015558256c3c729c86a8dedda2fcc5e1c17e89ea31623c81df6b615e77dd6980f6f5004b3bf231e06b61b15a26d6d')
 
 build() {
   cd ${srcdir}/${_srcname}-${pkgver}
