@@ -1,1 +1,0 @@
-user ALL=(ALL) NOPASSWD: ALL
