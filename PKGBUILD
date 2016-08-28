@@ -1,32 +1,40 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=hexchat-theme-manager
-pkgver=2.9.5
+pkgver=2.12.1
 pkgrel=1
-pkgdesc="A simple application to manage HexChat themes"
+pkgdesc='A simple application to manage HexChat themes'
 arch=('i686' 'x86_64')
-url='http://www.hexchat.org/'
+url='https://hexchat.github.io'
 license=('GPL')
 depends=('mono' 'hexchat')
 makedepends=('monodevelop')
-optdepends=()
-options=()
-install='htm.install'
-source=("http://dl.hexchat.net/hexchat/hexchat-$pkgver.tar.xz"
-        'htm.desktop' 'htm-mime.xml')
-sha256sums=('11dfd0fbfb88d8dbb38f631fab8a7dffbb179f7f7dafe316953ed6f513ac623d'
-            '1de36ac0a1fb72cef845e555635f221e72130c4afe7e3fe1c326cc0872f61c8d'
-            '54e4a4ed2472e2ccf34df7a2f3c8f1aca0b2b4f68687969672c9e70a1e3cbef5')
+source=("https://dl.hexchat.net/hexchat/hexchat-$pkgver.tar.xz")
+sha256sums=('5201b0c6d17dcb8c2cb79e9c39681f8e052999ba8f7b5986d5c1e7dc68fa7c6b')
 
 build() {
-  cd "$srcdir/hexchat-$pkgver/src/htm"
-  mdtool build htm-mono.csproj
+  cd "hexchat-$pkgver"
+
+  # This builds more than necessary but oh well
+  ./configure --prefix=/usr --with-theme-manager \
+    --disable-gtkfe --disable-plugin --disable-dbus --disable-nls
+  make
 }
 
 package() {
-  cd "$srcdir/hexchat-$pkgver/src/htm"
-  install -D thememan.exe "$pkgdir/usr/bin/thememan"
-  install -D "$srcdir/htm.desktop" "$pkgdir/usr/share/applications/htm.desktop"
-  install -D "$srcdir/htm-mime.xml" "$pkgdir/usr/share/mime/packages/htm.xml"
+  cd "hexchat-$pkgver"
+
+  # TODO: Fix this upstream
+
+  pushd data/misc
+  make install DESTDIR="$pkgdir"
+  popd
+
+  pushd src/htm
+  make install DESTDIR="$pkgdir"
+  popd
+
+  rm -r "$pkgdir/usr/share/appdata"
+  rm "$pkgdir/usr/share/applications/hexchat.desktop"
 }
 
