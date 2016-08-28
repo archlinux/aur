@@ -64,7 +64,7 @@ function _crack(){
 }
 
 while getopts "f:t:l:c:x:k:vhd" option ; do
-	case $option in
+    case $option in
         f|file)
             file="${OPTARG}"
             if [ -e ${file} ] ; then
