@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.4.0.r2.g7f311dd
+pkgver=0.6.3.r0.ga0e2132
 pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
@@ -13,7 +13,6 @@ conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multiru
 replaces=('multirust' 'multirust-git')
 install='post.install'
 
-rust="rust-1.9.0-$CARCH-unknown-linux-gnu"
 source=("${pkgname}::git+https://github.com/rust-lang-nursery/rustup.rs.git")
 md5sums=('SKIP')
 
