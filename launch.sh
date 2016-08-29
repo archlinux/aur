@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/share/disunity/disunity.jar $@
+java -jar /usr/share/java/disunity/disunity.jar $@
