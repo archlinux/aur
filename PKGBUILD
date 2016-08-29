@@ -6,8 +6,8 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=lastpass-pocket
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.20
+pkgrel=1
 pkgdesc="Backup and offline access for LastPass"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -18,7 +18,7 @@ source=('lastpass.desktop' 'lastpass.png')
 sha1sums=('4e8258a93d2a72c86abc916fee1faab0d34fc8a7'
           '043994fdbb2af48eadb17e2ffe48a9a1652c297b')
 sha1sums_i686=('4e09423dae6c4e7997bea41238ea3060d29aaa25')
-sha1sums_x86_64=('c8869691b2ce24441cb95c9348f013dc2b029b3d')
+sha1sums_x86_64=('893ec51711f1030ed575b895fef145982124496d')
 source_i686=("pocket_${pkgver}.tar.bz2::https://download.lastpass.com/pocket.tar.bz2")
 source_x86_64=("pocket_x64_${pkgver}.tar.bz2::https://download.lastpass.com/pocket_x64.tar.bz2")
 
