@@ -12,6 +12,7 @@ pkgdesc="tool for managing Microsoft Windows dynamic disks"
 arch=('i686' 'x86_64')
 url="https://github.com/${_gitauth}/${_gitname}"
 license=('GPL')
+makedepends=('gtk-doc' 'json-glib' 'device-mapper')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 _verwatch=("${url}/releases" "${url#*github.com}/archive/${_gitname}-\(.*\)\.tar\.gz" 'l')
@@ -23,7 +24,7 @@ sha256sums=('bc2d930f46f070d446e587f65f66b2fca4af5017439f6f821ae45bff7cb944ad'
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
-  makedepends=('git')
+  makedepends+=('git')
   provides+=("${_pkgname}=${pkgver%%.r*}")
   conflicts+=("${_pkgname}")
   _srcdir="${_pkgname}"
