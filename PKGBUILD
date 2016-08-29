@@ -1,7 +1,7 @@
 # Maintainer: Moritz Hilscher <m0r13@mapcrafter.org>
 
 pkgname=mapcrafter-git
-pkgver=v.2.2.1.r0.g551f150
+pkgver=v.2.3.1.r0.g68eb131
 pkgrel=1
 pkgdesc="A High Performance Minecraft Map Renderer"
 arch=("i686" "x86_64")

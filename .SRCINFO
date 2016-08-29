@@ -1,6 +1,6 @@
 pkgbase = mapcrafter-git
 	pkgdesc = A High Performance Minecraft Map Renderer
-	pkgver = v.2.2.1.r0.g551f150
+	pkgver = v.2.3.1.r0.g68eb131
 	pkgrel = 1
 	url = http://mapcrafter.org
 	arch = i686
