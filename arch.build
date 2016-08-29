@@ -77,7 +77,7 @@ done | ssh $vhost
 ssh $vhost 'sudo pacman --noconfirm -Syu'
 ssh $vhost 'sudo pacman --noconfirm -Su'
 sftp $vhost <<<'put -r . build'
-sftp $vhost <<<"mkdir $HOME/.gnupg"
+sftp $vhost <<<"mkdir .gnupg"
 sftp $vhost <<<"put $HOME/.makepkg.conf"
 sftp $vhost <<<"put $HOME/.gnupg/pubring.kbx .gnupg/pubring.kbx"
 ssh $vhost 'cd build; rm -fr src pkg; makepkg --log --noconfirm --syncdeps'
