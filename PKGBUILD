@@ -6,6 +6,7 @@ arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/olear/openfx-arena/tree/Natron-$pkgver"
 license=("GPL2")
+makedepends=("git")
 depends=("gcc-libs-multilib" "imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
 source=("$pkgname::git://github.com/olear/openfx-arena.git#tag=Natron-$pkgver" "GCC6.patch")
 md5sums=("SKIP" "8da02f30c37861eaaac9245ff4cb005b")

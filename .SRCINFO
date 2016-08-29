@@ -6,6 +6,7 @@ pkgbase = openfx-arena
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = gcc-libs-multilib
 	depends = imagemagick
 	depends = libcdr
