@@ -4,7 +4,7 @@
 
 pkgname=xf86-input-evdev-debounce
 _pkgname=xf86-input-evdev
-pkgver=2.9.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="X.org evdev input driver with DebounceDelay setting, it can save your mouse's broken left button from double clicking hell."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url="http://lists.x.org/archives/xorg-devel/2012-August/033343.html"
 license=('custom')
 depends=('glibc' 'systemd' 'mtdev' 'libevdev')
 makedepends=('git' 'xorg-server-devel' 'resourceproto' 'scrnsaverproto')
-provides=("$_pkgname")
+provides=("$_pkgname" 'xf86-input-driver')
 conflicts=("$_pkgname")
 # XXX When you upgrade xorg-server, you should makepkg -srcfi this package.
 #     If you are using this commented conflicts setting, you cannot upgrade xorg-server due to X-ABI-XINPUT_VERSION confliction.
