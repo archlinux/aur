@@ -2,7 +2,7 @@
 # Sat May 28 04:10:50 UTC 2016
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = 1774.f67033c
+	pkgver = 1849.d38ffc5
 	pkgrel = 1
 	url = http://valloric.github.com/YouCompleteMe/
 	install = install
@@ -26,7 +26,7 @@ pkgbase = vim-youcompleteme-git
 	depends = python2
 	depends = rust
 	depends = vim
-	noextract = clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+	depends = clang
 	source = git+https://github.com/Valloric/YouCompleteMe.git
 	source = git+https://github.com/ross/requests-futures.git
 	source = git+https://github.com/Valloric/ycmd.git
@@ -44,9 +44,6 @@ pkgbase = vim-youcompleteme-git
 	source = git+https://github.com/icsharpcode/NRefactory.git
 	source = git+https://github.com/jbevain/cecil.git
 	source = git+https://github.com/jwilm/racerd.git
-	source = http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-	source = http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz.sig
-	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -64,8 +61,6 @@ pkgbase = vim-youcompleteme-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 3120c3055ea78bbbb6848510a2af70c68538b990cb0545bac8dad01df8ff69d7
-	sha256sums = 7cc55f1a1cc3e5478581e66c79ffa5ab4d7495076e6164b52d7b1a63816751a7
 
 pkgname = vim-youcompleteme-git
 
