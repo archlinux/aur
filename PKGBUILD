@@ -3,7 +3,7 @@
 # Contributor: Étienne Deparis <etienne [at] depar [dot] is>
 
 pkgname=khal
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-urwid' "vdirsyncer>=0.5.2" "python-tzlocal>=1.0"
 optdepends=('python-setproctitle')
 checkdepends=('python-pytest' 'python-freezegun')
 source=("https://lostpackets.de/khal/downloads/khal-${pkgver}.tar.gz")
-sha256sums=('f2ff3cf58ea4de55b42e6f3cd61818be1ebaf86fabb7f7d5c11b762d07a40c46')
+sha256sums=('1ec6940a9fbd207c41428b103bac1d1555129b9b4eca2b843c544bd48ac63ee3')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
@@ -33,12 +33,11 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  if [ "$(locale -a | grep -o en_US)" == "en_US" ]
+  if [ "${LANG}" == "C" ]
   then
-    py.test
-  else
-    echo "The tests need the 'en_US' locale"
+    export LANG=$(locale -a | grep utf8 | head -n1)
   fi
+  py.test
 }
 
 package() {
