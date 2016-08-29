@@ -1,7 +1,8 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
 pkgbase=python-nikola
-_pyname=Nikola
+_pynameweb=Nikola
+_pyname=nikola
 pkgname=('python-nikola' 'python-nikola-doc')
 pkgver=7.8.0
 pkgrel=1
@@ -15,7 +16,7 @@ makedepends=('python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
              'python-blinker' 'python-natsort' 'python-setuptools'
              'python-requests' 'python-husl' 'python-piexif')
-source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/N/Nikola/${_pynameweb}-${pkgver}.tar.gz")
 md5sums=('68c20796b28473a5599e2cebccf4ccbd')
 
 build() {
