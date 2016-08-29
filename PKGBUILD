@@ -32,6 +32,9 @@ md5sums=('SKIP'
 backup=('etc/bitmonerod.conf')
 install=bitmonero.install
 
+# Uncomment for a debug build
+# options=(!strip debug)
+
 pkgver() {
 	cd "$srcdir/$_gitname"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -40,7 +43,14 @@ pkgver() {
 build() {
 	cd "$srcdir/$_gitname"
 
-	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=Release "
+	if check_option "debug" "y"
+	then
+		_buildtype="Debug"
+	else
+		_buildtype+="Release"
+	fi
+
+	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
 	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 	CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
