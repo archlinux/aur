@@ -1,15 +1,16 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jens Adam <jra@byte.cx>
+# Contributor: Arch3y <arch3y[at]archstrike[dot]org>
 
 pkgname=zmap-git
-pkgver=2.1.1.809.3d3ced4
+pkgver=2.1.1.1031.369bff3
 pkgrel=1
 pkgdesc='Fast network scanner designed for Internet-wide network surveys'
 url='https://zmap.io/'
 arch=('i686' 'x86_64')
 license=('Apache')
-depends=('gmp' 'hiredis' 'json-c' 'libpcap')
-makedepends=('git' 'byacc' 'cmake' 'gengetopt')
+depends=('gmp' 'hiredis' 'json-c' 'libpcap' 'libmongoc')
+makedepends=('git' 'byacc' 'cmake' 'gengetopt' 'pkg-config')
 provides=('zmap')
 conflicts=('zmap')
 backup=('etc/zmap/blacklist.conf' 'etc/zmap/zmap.conf')
@@ -26,18 +27,17 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  cmake -DWITH_JSON=ON -DWITH_REDIS=ON
+  cmake -DWITH_JSON=ON -DWITH_REDIS=ON -DWITH_MONGO=ON
   make
 }
 
 package() {
   cd ${pkgname}
-  install -Dm 755 src/zmap "${pkgdir}/usr/bin/zmap"
-  install -Dm 644 src/zmap.1 "${pkgdir}/usr/share/man/man1/zmap.1"
+  install -Dm 755 src/{zmap,ztee,zblacklist} -t "${pkgdir}/usr/bin"
+  install -Dm 644 src/*.1 -t "${pkgdir}/usr/share/man/man1"
   install -Dm 644 conf/* -t "${pkgdir}/etc/zmap"
-  for F in AUTHORS CHANGELOG.md INSTALL.md README.md; do
-    install -Dm 644 "${F}" "${pkgdir}/usr/share/doc/zmap/${F}"
-  done
+  install -Dm 644 AUTHORS CHANGELOG.md INSTALL.md README.md \
+    -t "${pkgdir}/usr/share/doc/zmap"
   cp -a examples "${pkgdir}/usr/share/doc/zmap"
 }
 
