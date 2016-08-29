@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-nvenc-manjaro
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.3
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
