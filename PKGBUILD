@@ -3,10 +3,8 @@
 _nanopbver=0.3.6
 
 pkgbase=grpc
-# PHP is disabled until https://github.com/grpc/grpc/issues/4337 is fixed
-#pkgname=('grpc' 'php-grpc')
-pkgname=('grpc')
-pkgver=1.0.0_pre2
+pkgname=('grpc' 'php-grpc')
+pkgver=1.0.0
 #_pkgver=release-$(echo $pkgver | tr . _)
 _pkgprefix=v
 _pkgver="$(echo "$pkgver" | tr _ -)"
@@ -21,7 +19,7 @@ source=(
     https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
 )
 noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('3a6d3f2778e979c88f01964854024736'
+md5sums=('c8fe25263b6b15a8f23b8fdc8cf0824e'
          '91457d973b48e3e71f4cbcee7761cdb1')
 
 prepare() {
@@ -45,17 +43,18 @@ build() {
   env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
 
   # PHP
-  #cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
-  #phpize
-  #LDFLAGS=-L"$srcdir/$pkgname-$_pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-$_pkgver"
-  #make $MFLAGS
+  cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
+  phpize
+  LDFLAGS=-L"$srcdir/$pkgname-$_pkgver/libs/opt" ./configure --enable-grpc="$srcdir/$pkgname-$_pkgver"
+  make $MFLAGS
 }
 
 check() {
   true
   # PHP
-  #cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
-  #make test
+  cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
+  yes n | make test # Do not send reports.
+  echo # Fix end of line.
 }
 
 _install_dir() (
@@ -75,7 +74,7 @@ package_grpc() {
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-_package_php-grpc() {
+package_php-grpc() {
   depends=("grpc=${pkgver}-${pkgrel}" 'php')
 
   cd "$srcdir/$pkgbase-$_pkgver/src/php/ext/$pkgbase"
