@@ -18,7 +18,7 @@ _verrelease=3
 _verextra=
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
@@ -70,7 +70,7 @@ EOF
     for i in $(ls $srcdir/idea-IC-$_buildver/license/ ); do
       ln -sf "${srcdir}/idea-IC-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done
-    ln -s "${pkgdir}/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
+    ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
 
 # vim:set ts=2 sw=2 et:
