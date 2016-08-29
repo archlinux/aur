@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=43.03
 _pkgver=43_03
 _dfhack_pkgrel=r1
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -38,13 +38,24 @@ options=(!strip !buildflags)
 install=${pkgname}.install
 changelog=
 source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
-        git+"https://github.com/DFgraphics/DFgraphics.git"
-        git+"https://github.com/DFHack/dfhack.git"#"tag=0.${pkgver}-${_dfhack_pkgrel}"
-        git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#"tag=0.${pkgver}"
+        git+"https://github.com/DFgraphics/Afro-Graphics.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/CLA.git"#tag=43.04-v23
+        git+"https://github.com/DFgraphics/GemSet.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Ironhand.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Jolly-Bastion.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Mayday.git"#tag=43.04
+        git+"https://github.com/DFgraphics/Obsidian.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Phoebus.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Spacefox.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Taffer.git"
+        git+"https://github.com/DFgraphics/Tergel.git"#tag=${pkgver}
+        git+"https://github.com/DFgraphics/Wanderlust.git"#tag=43.04
+        git+"https://github.com/DFHack/dfhack.git"#tag=0.${pkgver}-${_dfhack_pkgrel}
+        git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#tag=0.${pkgver}
         git+"https://github.com/mifki/df-twbt.git"
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
-        "DFAnnouncementFilter.zip"::"http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip"
+        'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
         "pylnp-terminal.patch"
         "dfhack-twbt.patch"
         "dfhack-visualizers.patch"
@@ -56,6 +67,17 @@ source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
 noextract=()
 
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -78,10 +100,12 @@ prepare() {
   git submodule init
   git submodule update
 
-  cd $srcdir/DFgraphics
-  git submodule init
-  git submodule update
-
+  rm -rf $srcdir/DFgraphics/graphics-packs
+  mkdir -p $srcdir/DFgraphics/graphics-packs
+  for pack in Afro-Graphics CLA GemSet Ironhand Jolly-Bastion Mayday Obsidian \
+    Phoebus Spacefox Taffer Tergel Wanderlust; do
+    mv $srcdir/${pack} $srcdir/DFgraphics/graphics-packs
+  done
 
   cd $srcdir/dfhack
   git submodule init
