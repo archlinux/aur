@@ -66,6 +66,9 @@ def processArgv():
     # enable title by default
     nvimOptions.append("+set title")
 
+    # enable 24-bit color
+    nvimOptions.append("+set termguicolors")
+
     return {
         'gterm': gtermOptions,
         'nvim': nvimOptions

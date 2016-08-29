@@ -1,7 +1,7 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 pkgname=neovim-gnome-terminal-wrapper
 pkgver=2
-pkgrel=8
+pkgrel=9
 pkgdesc="A wrapper for running neovim in a separate instance of gnome-terminal"
 arch=(any)
 url="http://github.com/fmoralesc/"
@@ -12,7 +12,7 @@ source=('neovim.desktop'
         'nvim-wrapper'
         'neovim.svg')
 md5sums=('c5b9b5db24db814376b6925ce0f9ad52'
-         '48f143203812fd67cdc3e79b77c7e072'
+         '76d7968bc5d03143dbddac060c6d297f'
          '2b271742492f200bcac78dbfe33caa3c')
 
 package() {
