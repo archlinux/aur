@@ -18,7 +18,7 @@ md5sums_x86_64=('7f34b5569c2b17f23d9704dca374be08')
 prepare() {
   cd "$srcdir"
 
-  ar x "$Pomello_${pkgver}.deb"
+  ar x "Pomello_${pkgver}.deb"
 }
 
 package() {
@@ -29,7 +29,7 @@ package() {
   mkdir -p "$pkgdir/opt/Pomello/lib"
   ln -nsf /usr/lib/libudev.so.1 "$pkgdir/opt/Pomello/lib/libudev.so.0"
 
-  install -D -m644 "${srcdir}/opt/Pomello/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${pkgdir}/opt/Pomello/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   ln -nsf "/opt/Pomello/Pomello" "${pkgdir}/usr/bin/pomello"
   RPM_BUILD_ROOT="$pkgdir" desktop-file-install "$pkgdir/usr/share/applications/Pomello.desktop"
