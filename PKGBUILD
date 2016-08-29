@@ -70,9 +70,9 @@ _BATCH_MODE=n
 # see, https://bugs.archlinux.org/task/31187
 
 pkgname=('linux-pf')
-true && pkgname=('linux-pf' 'linux-pf-headers')
+true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -340,7 +340,6 @@ package_linux-pf() {
  _pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3."
  pkgdesc=${_pkgdesc}
  groups=('base')
- backup=(etc/mkinitcpio.d/${pkgbase}.preset)
  depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7')
  optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
 	    'crda: to set the correct wireless channels of your country'
@@ -360,8 +359,6 @@ package_linux-pf() {
    conflicts+=(${pkgbase}-${_cpusuffix}) 
  done  
  replaces=('kernel26-pf' 'aufs3')
- backup=("etc/mkinitcpio.d/${pkgbase}.preset")
- install='linux.install'
 
  #'
   cd "${srcdir}/linux-${_basekernel}"
@@ -517,20 +514,7 @@ package_linux-pf() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
 
-  # install fallback mkinitcpio.conf file and preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # set correct depmod command for install
-  #sed \
-  #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-  #  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-  #  -i "${startdir}/linux.install"
-   sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -698,7 +682,30 @@ package_linux-pf-headers() {
   [[ -e version.h ]] || ln -s ../generated/uapi/linux/version.h
   
 }
+package_linux-pf-preset-default()
+{
+  pkgname=linux-pf-preset-default
+  provides=( "linux-pf-preset=$pkgver")
+  pkgdesc="Linux-pf default preset"
+  install=linux.install
+  depends=("linux-pf=$pkgver")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
 
+  # install fallback mkinitcpio.conf file and preset file for kernel
+  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # set correct depmod command for install
+  #sed \
+  #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+  #  -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+  #  -i "${startdir}/linux.install"
+   sed \
+    -e "1s|'linux.*'|'${pkgbase}'|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+}
 # Work around the AUR parser
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
