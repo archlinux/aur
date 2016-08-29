@@ -2,12 +2,12 @@
 
 pkgname=mackup
 pkgver=0.8.14
-pkgrel=1
+pkgrel=2
 pkgdesc="a small Python utitlity to keep your application settings in sync."
 arch=('any')
 url="https://github.com/lra/mackup"
 license=('GPL3')
-depends=('python2')
+depends=('python')
 
 makedepends=(
 			'python2'
@@ -22,5 +22,5 @@ sha256sums=('d8b7c2f2d1650b132ca31035e625ee436a7b4ff9a9948119cf3f370fc3b17d22')
 
 package() {
    cd $srcdir/${pkgname}-${pkgver}
-   python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
