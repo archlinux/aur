@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://aur.archlinux.org/packages/firejail-profiles/"
