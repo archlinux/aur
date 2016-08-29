@@ -1,10 +1,11 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=kyocera-cups
-pkgver=8.1404
-pkgrel=3
+pkgver=8.1601
+pkgrel=1
 pkgdesc='PPD drivers for Kyocera and UTAX TaskAlfa (TA) printers'
+_rid=28992
 arch=('i686' 'x86_64')
-url='http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=25595&rid=27560'
+url="http://usa.kyoceradocumentsolutions.com/americas/jsp/Kyocera/resource_details.jsp?pid=25595&rid=${_rid}"
 license=('custom')
 groups=()
 depends=('cups')
@@ -17,40 +18,37 @@ backup=()
 options=()
 install=kyocera-cups.install
 changelog=
-source=('http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/27560/0/Kyocera%20Linux%20PPD%20Ver%208.1404.tar.gz')
+source=("http://usa.kyoceradocumentsolutions.com/americas/jsp/upload/resource/${_rid}/0/Kyocera%20Linux%20PPD%20Ver%20${pkgver}.tar.gz")
 noextract=()
-sha1sums=('bb6a30802f3b945e023a3f1fcdf69e1b6f5fd92d')
+sha1sums=('ad7adba5e29464e9c3c1f052c6899d54f5afe0f4')
 
 prepare() {
-    cd "${srcdir}/Kyocera Linux PPD Ver 8.1404"
-    tar -xzf KyoceraLinuxPackages-20141229.tar.gz -C ..
-    tar -xzf TALinuxPackages-20141229.tar.gz -C ..
-}
-
-package() {
     # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
     if [ "${CARCH}" = "x86_64" ]; then
 	    _bittage='64bit'
+	    _suffix='amd64'
     else
 	    _bittage='32bit'
+	    _suffix='i386'
     fi
 
     # Set language name: Default is English
-    # Valid options are: English, French, German, Italian, Portuguese, Spanish
-    # Options are result of `ls LinuxPackages/${_bittage}/Global`
-    _language='English'
+    # Valid options are: de, en, es, fr, it, pt
+    # Options are result of `ls ${srcdir}/dist/KyoceraLinuxPackages/Global/${_bittage}`
+    _language='en'
 
-    # LICENSES.txt documents are identical, copy only one of them:
-    install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
-    install -m644 ${srcdir}/LinuxPackages/LICENSES.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.txt
+    cd "${srcdir}/dist/KyoceraLinuxPackages/Global/${_bittage}"
 
-    # Install regular and TA PPDs
-    install -dm755 ${pkgdir}/usr/share/cups/model/Kyocera
-    install -dm755 ${pkgdir}/usr/share/cups/model/UTAX_TA
-    install -m644 ${srcdir}/LinuxPackages/${_bittage}/Global/${_language}/PPDs/*.[pP][pP][dD] ${pkgdir}/usr/share/cups/model/Kyocera
-    install -m644 ${srcdir}/LinuxPackagesTA/${_bittage}/Global/${_language}/PPDs/*.[pP][pP][dD] ${pkgdir}/usr/share/cups/model/UTAX_TA
+    # No additional depends since bsdtar can handle rpms:
+    # http://unix.stackexchange.com/a/125703/79307
+    bsdtar -xf "kyodialog3.${_language}_0.5-0_${_suffix}.rpm" -C ..
+}
 
-    # kyofilter_C programs are identical for a given bittage, copy only one of them:
-    install -dm755 ${pkgdir}/usr/lib/cups/filter
-    install -m755 ${srcdir}/LinuxPackages/${_bittage}/Global/${_language}/filter/kyofilter_C ${pkgdir}/usr/lib/cups/filter
+package() {
+    # Install the package
+    cp -r "${srcdir}/dist/KyoceraLinuxPackages/Global/usr" "${pkgdir}"
+
+    # Install LICENSES
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 "${srcdir}/dist/KyoceraLinuxPackages/LICENSES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.txt"
 }

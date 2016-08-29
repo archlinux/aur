@@ -1,8 +1,6 @@
 post_install() {
   echo "Restarting CUPS server"
-
   systemctl restart org.cups.cupsd.service
-  return $?
 }
 
 post_upgrade() {
