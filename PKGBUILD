@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 
 pkgdesc="The Rust toolchain installer"
@@ -14,7 +14,7 @@ replaces=('multirust' 'multirust-git')
 install='post.install'
 
 source=("rustup-${pkgver}.tar.gz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz")
-md5sums=('6eb13c0d536f932a89b8371fd3f1b4b1')
+md5sums=('4c4d5982af51515ddccd16e6a10c405c')
 
 prepare() {
 	# instead of building directly in -$pkgver, we copy files over into a
