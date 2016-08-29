@@ -6,7 +6,7 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized patch"
 arch=('i686' 'x86_64' 'armv7h')
@@ -20,8 +20,8 @@ provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
 source=("http://hisham.hm/$_pkgname/releases/$pkgver/$_pkgname-$pkgver.tar.gz"
-        "htop-$pkgver-solarized.patch")
-sha512sums=('57991a55b69028c01549b067ec749099466df5b08a0ed9a65dd779e6d2c8ee0a5d9c330bb6c727b04a349146ad441b7115718e433d1f8232f74b28903fb351ff'
+        'htop-2.0.1-solarized.patch')
+sha512sums=('1c9bf71a36c56b301667aa6d03756fc757fbcb63e848d9581d10db3df6193cdeb00e55ceb6e2392794ac03ea034b04459a8fe550b3ac2318cd86263a74c78cda'
             'd221942ea7843e802cfbbe01f24805944d831148eefc6a7a0bab38e883970bd6598a2e76ff45286566d732df0b193ef33451956d210bd4f44752336cadc79c57')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
   sed -i 's|python|python2|' scripts/MakeHeader.py
 
   # Solarized patch: https://gist.github.com/ooesili/11292686
-  patch -p1 -N -i "../htop-$pkgver-solarized.patch"
+  patch -p1 -N -i "$srcdir/htop-2.0.1-solarized.patch"
 }
 
 build() {
