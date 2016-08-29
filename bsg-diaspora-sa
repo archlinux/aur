@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+. /etc/bsg-diaspora-sa/bsg-diaspora-sa.conf
+. ~/.config/bsg-diaspora-sa/bsg-diaspora-sa.conf
+cd /opt/bsg-diaspora-sa
+/opt/bsg-diaspora-sa/fs2_open_diaspora "$@" "$FS2OPTS" || /opt/bsg-diaspora-sa/fs2_open_diaspora "$@" "$FS2OPTS"

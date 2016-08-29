@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Battlestar Galactica
+Type=Application
+Comment=Battlestar Galactica: Shattered Armistice
+Exec=bsg-diaspora-sa
+Icon=/usr/share/pixmaps/bsg-diaspora-sa.png
+Categories=Game;

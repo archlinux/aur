@@ -1,0 +1,37 @@
+pkgbase = bsg-diaspora-sa
+	pkgdesc = Diaspora: Shattered Armistice is a single and multiplayer space fighter combat game set in the reimagined Battlestar Galactica universe.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://diaspora.hard-light.net/
+	install = bsg-diaspora-sa.install
+	arch = i686
+	arch = x86_64
+	license = CCPL
+	license = custom:fs2_open
+	depends = libjpeg
+	depends = libpng
+	depends = libtheora
+	depends = libvorbis
+	depends = lua51
+	depends = mesa
+	depends = openal
+	depends = sdl
+	depends = jansson
+	depends = wxlauncher
+	source = http://diaspora.fs2downloads.com/Diaspora_R1_Linux.tar.lzma
+	source = http://diaspora.fs2downloads.com/Diaspora_R1_Patch_1.1.tar.lzma
+	source = http://diaspora.fs2downloads.com/Diaspora_R1_Patch_1.1.1.tar.lzma
+	source = bsg-diaspora-sa
+	source = bsg-diaspora-sa.conf
+	source = bsg-diaspora-sa.desktop
+	source = bsg-diaspora-sa.png
+	md5sums = 22b55ae9bc9366ccbeb1642cd50dc3f8
+	md5sums = 423182f96a97e657da0e27b708b48abf
+	md5sums = d73890efd3e86b336d96b339e0a59a46
+	md5sums = 2c8befd5c503d7e494fb8fc87a7c1464
+	md5sums = ef9920040cf4c37419c89ca007df3022
+	md5sums = 50ae3eafa6f50add7f592e32b0c600e8
+	md5sums = 3ff26bc4a7d14af7b3b8fcb32ff0f367
+
+pkgname = bsg-diaspora-sa
+
