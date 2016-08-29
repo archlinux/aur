@@ -1,0 +1,21 @@
+pkgbase = i3lock-epita
+	pkgdesc = An improved screenlocker based upon XCB and PAM - epita's version
+	pkgver = 2.8.epita.1
+	pkgrel = 1
+	url = https://github.com/lse/i3lock
+	arch = i686
+	arch = x86_64
+	groups = i3
+	license = MIT
+	depends = xcb-util-image
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	replaces = i3lock
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = https://github.com/lse/i3lock/archive/v2.8-epita-1.tar.gz
+	md5sums = 72547270ee954607a6cc5f665aa09de9
+
+pkgname = i3lock-epita
+
