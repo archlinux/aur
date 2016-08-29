@@ -8,7 +8,7 @@ pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-depends=('fftw' 'fluidsynth' 'liblo' 'libsmf' 'linuxsampler-svn' 'mxml' 'ntk-git' 'python' 'qt4' 'zlib')
+depends=('fftw' 'fluidsynth' 'liblo' 'libsmf' 'linuxsampler' 'mxml' 'ntk-git' 'python' 'qt4' 'zlib')
 makedepends=('gtk2' 'gtk3' 'pygtk' 'python-pyliblo' 'python-pyqt4' 'python-rdflib' 'qt5-base' 'zynaddsubfx')
 optdepends=(
   'gtk2: LV2 GTK2 UI support'
@@ -21,7 +21,6 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-install=${pkgname}.install
 source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2"
         "gcc6.patch")
 sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51'
