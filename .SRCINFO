@@ -1,17 +1,17 @@
 pkgbase = launch4j
 	pkgdesc = Cross-platform Java executable wrapper
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = http://launch4j.sf.net
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = java-runtime
-	depends = glibc
+	depends = lib32-glibc
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/launch4j/launch4j-3.8-linux.tgz
-	sha256sums = e0cb0240c91b3ed6ca7bb85743fd09d6d7651cc3671a5fc17f67e57b8f7a80c6
+	source = http://downloads.sourceforge.net/launch4j/launch4j-3.9-linux.tgz
+	sha256sums = e6e9a83927585d16efcb82f41d4ae480f14eccc19ced611a59f31fffb5ca549b
 
 pkgname = launch4j
 

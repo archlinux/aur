@@ -1,7 +1,7 @@
 # Maintainer: veluria <veluria ät anche.no>
 
 pkgname="launch4j"
-pkgver="3.8"
+pkgver="3.9"
 pkgrel="1"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ depends=('java-runtime' 'glibc')
 # for 64bit
 [ "$CARCH" = "x86_64" ] && depends[1]='lib32-glibc'
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-linux.tgz")
-sha256sums=('e0cb0240c91b3ed6ca7bb85743fd09d6d7651cc3671a5fc17f67e57b8f7a80c6')
+sha256sums=('e6e9a83927585d16efcb82f41d4ae480f14eccc19ced611a59f31fffb5ca549b')
 options=('!strip' 'staticlibs')
 
 package()
