@@ -3,7 +3,7 @@
 
 pkgname=ozone
 pkgver=2.18c
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -36,10 +36,14 @@ package(){
 
     cd ${srcdir}/Ozone*
 
+    # Make permissions right
+    find . -type d | xargs chmod a+rx
+    find . -type f | xargs chmod a+r
+
     # Remove un-needed files
     find . -name ".svn" | xargs rm -rf
 
-    # Bulk copy everything except libs
+    # Bulk copy everything
     cp --preserve=mode -r Ozone Plugins Doc Config Lib "${pkgdir}/opt/SEGGER/Ozone"
 
     # Create links where needed
