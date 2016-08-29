@@ -1,15 +1,25 @@
+From 2f81e416bd5f5901ae3e226f11c558a275b930b2 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Mon, 29 Aug 2016 08:43:10 +0200
+Subject: [PATCH 3/3] Enable subpixel hinting
+
+---
+ include/freetype/config/ftoption.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 8e58403529f597e5..197e15cdc3cc1e74 100644
+index 27d388c07be2877c..2a6d778f50663f66 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -632,7 +632,7 @@ FT_BEGIN_HEADER
+@@ -676,7 +676,7 @@ FT_BEGIN_HEADER
    /*                                                                       */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2         */
 -/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
-+#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     ( 1 | 2 )
++#define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )
  
  
    /*************************************************************************/
---
-2.9.0
+-- 
+2.9.3
+
