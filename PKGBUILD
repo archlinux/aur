@@ -4,7 +4,7 @@
 
 pkgbase=python-mdtraj
 pkgname=('python2-mdtraj' 'python-mdtraj')
-pkgver=1.7
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
@@ -14,7 +14,7 @@ depends=()
 makedepends=('python2-setuptools' 'python-setuptools' 'cython2' 'cython')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
-sha1sums=('f73b00b53d91999743311b8c818c27a06ea16753')
+sha1sums=('673182eeca6578e1d0b3d419a14cca45c7981a79')
 
 prepare() {
   cd "$srcdir"
