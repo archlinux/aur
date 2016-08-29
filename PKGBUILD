@@ -11,7 +11,7 @@ url="http://www.gnupg.org/related_software/gpgme/"
 license=('LGPL')
 depends=('libgpg-error' 'gnupg>=2')
 options=('!emptydirs')
-source=(ftp://ftp.gnupg.org/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2{,.sig})
+source=(https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2{,.sig})
 md5sums=('60d730d22e8065fd5de309e8b98e304b'
          'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
