@@ -3,12 +3,12 @@ pkgdesc='Final Fantasy XI server emulator'
 url='https://github.com/DarkstarProject/darkstar'
 license=('GPL3')
 arch=('i686' 'x86_64')
-pkgver=r7405.c99e7eb
+pkgver=r11454.4bb58e1
 pkgrel=1
 install=darkstar.install
 
 depends=('luajit' 'libmariadbclient' 'zeromq')
-makedepends=('git' 'automake')
+makedepends=('git' 'automake' 'autoconf' 'pkg-config')
 
 provides=('darkstar')
 conflicts=('darkstar')
