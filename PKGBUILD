@@ -10,7 +10,7 @@
 #
 
 pkgname=poco
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="C++ class libraries for network-centric, portable applications, complete edition with debug libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ license=('custom:boost')
 depends=('libmariadbclient' 'openssl' 'unixodbc')
 makedepends=('chrpath')
 source=("http://pocoproject.org/releases/poco-${pkgver%p?}/poco-${pkgver}-all.tar.bz2")
-sha256sums=('3d08c22f13a9b12948db80043cd7befdab9864e0749afb3b15e52ad427bec387')
+sha256sums=('b2237e5e207184285433188a144acaca4a0c11cad64b0f780571fe8ddd209ae9')
 conflicts=('poco-dev')
 provides=('poco-dev')
 replaces=('poco-dev')
