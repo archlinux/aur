@@ -1,0 +1,22 @@
+pkgbase = pepper-flash
+	pkgdesc = Adobe's Pepper Flash plugin
+	pkgver = 22.0.0.209
+	pkgrel = 1
+	url = http://www.adobe.com/software/flash/about/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	optdepends = freshplayerplugin: Firefox support
+	optdepends = flashplugin: Settings utility
+	provides = chromium-pepper-flash
+	conflicts = chromium-pepper-flash
+	source = http://wwwimages.adobe.com/content/dam/acom/en/legal/licenses-terms/pdf/Flash_Player_22_0.pdf
+	sha256sums = 74d3a2dd91dbf31efd962f0cf83c09eed70fbf70726766f18089b2bf9c55e7bd
+	source_i686 = flash_player_ppapi_linux_22.0.0.209.i386.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/22.0.0.209/flash_player_ppapi_linux.i386.tar.gz
+	sha256sums_i686 = 512cac431b46fd2ed96d4e724ffa0e67eacc9eb6b2066ab92b83323b017e54f4
+	source_x86_64 = flash_player_ppapi_linux_22.0.0.209.x86_64.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/22.0.0.209/flash_player_ppapi_linux.x86_64.tar.gz
+	sha256sums_x86_64 = 644b5bd10b0adaef09468ed9ee6f1d3fc4b3801d9eeb40591930ff40493135f8
+
+pkgname = pepper-flash
+
