@@ -3,7 +3,7 @@
 
 pkgname=sloc
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
 url=http://git.bytbox.net/sloc/
@@ -24,9 +24,10 @@ build() {
 
 package() {
   cd sloc
-  install -D -m755 sloc/sloc "$pkgdir"/usr/bin/sloc
-  install -D -m755 reposloc "$pkgdir"/usr/bin/reposloc
-  install -D -m644 reposloc.1 "$pkgdir"/usr/share/man/man1/reposloc.1
+  install -Dm755 sloc/sloc "$pkgdir"/usr/bin/sloc
+  install -Dm755 reposloc "$pkgdir"/usr/bin/reposloc
+  install -Dm644 reposloc.1 "$pkgdir"/usr/share/man/man1/reposloc.1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
