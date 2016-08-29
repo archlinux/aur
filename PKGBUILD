@@ -1,3 +1,5 @@
+#Maintainer: Nissar Chababy <funilrys at outlook dot com>
+
 pkgname=disunity
 pkgver=0.5.0
 pkgrel=1
