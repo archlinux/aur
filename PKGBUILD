@@ -2,7 +2,7 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -14,7 +14,7 @@ optdepends=(
   'lapack: normal modes and matrix manipulation'
   'boost-libs: better implementation support for smart pointers and exception handling'
   'cuda: Nvidia GPU support' 
-  'hwlock: improved run-time detection of hardware capabilities'
+  'hwloc: improved run-time detection of hardware capabilities'
   'lesstif: needed for gmx view'
   'libx11: needed for gmx view'
   'libxml2: required for running test suite'
