@@ -2,7 +2,7 @@
 
 pkgname=zig
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='System programming language intended to replace C'
 arch=('x86_64' 'i686')
 url='http://ziglang.org/'
@@ -21,6 +21,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
