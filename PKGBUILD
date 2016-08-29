@@ -1,8 +1,8 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-workspace
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Applications for the Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hawaiios.org"
@@ -15,7 +15,7 @@ groups=('hawaii')
 options=('debug')
 install=$pkgname.install
 source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('094bbdbc325daedb8d747b0ffb46191836b79315')
+sha1sums=('49e4e55aac786d178e4feab153e5afe2d88a427b')
 
 prepare() {
 	mkdir -p build
