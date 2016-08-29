@@ -20,7 +20,7 @@ _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1774.f67033c
+pkgver=1849.d38ffc5
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
