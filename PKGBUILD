@@ -8,8 +8,8 @@ arch=(any)
 url="https://github.com/tomchristie/django-rest-framework"
 license=('MIT')
 options=(!emptydirs)
-source=("https://github.com/tomchristie/django-rest-framework/archive/${pkgver}.tar.gz")
-sha256sums=('6b85e81e8d4659e76973c90ac78a4bc428e42a7a6fd4e96f60960b1d511f347f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tomchristie/django-rest-framework/archive/${pkgver}.tar.gz")
+sha256sums=('71af24490799ebb64f23cda4e5c10f20153d7842fa85bc64281e9b31eb0bbdcc')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-rest-framework() {
