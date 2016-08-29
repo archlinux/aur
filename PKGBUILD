@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.7.0+603638+ga3aa051
+pkgver=4.7.2+603891+g3f5da1d
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -46,6 +46,18 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/zen-kernel"
+	
+	export CFLAGS=$CFLAGS:" -flto"
+	export CXXFLAGS=$CXXFLAGS:" -flto"
+	export LDFLAGS=$LDFLAGS:" -flto"
+	
+	./scripts/config --disable function_tracer \
+		--disable function_graph_tracer \
+		--disable stack_tracer --enable lto_menu \
+		--disable lto_disable \
+		--disable gcov \
+		--disable kallsyms_all \
+		--disable modversions
 		
 	# don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
