@@ -4,8 +4,8 @@
 # Contributor: Vojtech "kralyk" Kral
 
 pkgname=intel-opencl-sdk
-pkgver=2016
-pkgrel=5
+pkgver=2016_6.2.0.1760
+pkgrel=1
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
@@ -14,8 +14,8 @@ depends=('libcl' 'libpng12' 'opencl-headers')
 makedepends=('rpmextract')
 optdepends=('intel-opencl-runtime: OpenCL runtime for Intel Core and Xeon processors')
 install=intel-opencl-sdk.install
-source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/8522/intel_sdk_for_opencl_${pkgver}_6.0.0.1049_x64.tgz)
-sha256sums=('7878850173ca4dc97a7897bc561199f7f13987ee12d82c886b94a63fd71c1e5f')
+source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/9552/intel_sdk_for_opencl_${pkgver}_x64.tgz)
+sha256sums=('8a74db8771e0e2879bd79cc42a7508d32d7c7ec796eabab1a816183ef110c25c')
 
 package() {
   cd "${srcdir}"/intel_sdk*/
