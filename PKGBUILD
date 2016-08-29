@@ -1,8 +1,9 @@
-# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 
 _pkgname=tevent
 pkgname=lib32-${_pkgname}
-pkgver=0.9.28
+pkgver=0.9.29
 pkgrel=1
 pkgdesc="An event system based on the talloc memory management library (lib32)"
 arch=('x86_64')
@@ -12,7 +13,7 @@ license=('GPL3')
 depends=('lib32-talloc')
 makedepends=('python2')
 optdepends=('python2: for python bindings')
-md5sums=('945845817918f5cfbe0202d80a7db118')
+md5sums=('4372c1430a1ecb7ea0adddfdf21c0d55')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -21,8 +22,8 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
+  # change to use python2
   sed -i -e "s|/usr/bin/env python$|/usr/bin/env python2|" buildtools/bin/waf
-
   export PYTHON=/usr/bin/python2
   
   ./configure --prefix=/usr \
