@@ -4,8 +4,8 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=0.8.0.svn.r7065
-_pkgver=0.8.0~0+svn7065
+pkgver=0.8.0.svn.r7075
+_pkgver=0.8.0~0+svn7075
 pkgrel=1
 pkgdesc="Double Commander is a cross platform open source file manager with two panels side by side. It is inspired by Total Commander and features some new ideas."
 arch=('i686' 'x86_64')
@@ -30,11 +30,11 @@ source_i686+=(${_url}/i386/${_pkgname}-gtk_${_pkgver}_i386.deb
         ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('b0a9489a3cd50f603c9b3b838f03c3700f0b94de5b16c0ca46946fcaf8664680')
-sha256sums_i686=('e65197131ecccbcbb9e9cd650a7658e49709fd07dff21aac5a39357143cbf675'
-                 '7c76140254a43bd4f13324a9340c3a93fa103fa587668fea4a282e14f5b520a2')
-sha256sums_x86_64=('05b76ab2ce7d8083dc25a3e9d344de5142e2074123dbc04d0ef58c76a09ad7dc'
-                   'be2643b600d5922e4ed7215b7d00e9043379e71cc950f4d26fe313bfc44d4bee')
+sha256sums=('ac0a7ab8a095d2e7433d41e6593a66245621589f451c842dfd8173b02676637f')
+sha256sums_i686=('54693e9f67aacf61ee741d528145419a616bd557a265129243c5553d635c4840'
+                 '3313c3658a380e02469c916a68cf74fd779ea4aef4013f95a3accb2254ee86fc')
+sha256sums_x86_64=('8f2f7c423f5ae30c562ae0845c69ca2c8975d048f0a1d7c1113be9a9953f7b6e'
+                   '52f5b5cc9b3d578cda7bf1c10f8815f2de0db3d9bd2989d7d0af8c7eed91d27c')
 
 package() {
     msg2 "Extracting files..."
