@@ -1,9 +1,9 @@
-# Maintainer: rafaelff <rafaelff@gnome.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 _name=ldb
 pkgname=lib32-$_name
-pkgver=1.1.26
-pkgrel=2
+pkgver=1.1.27
+pkgrel=1
 pkgdesc="A schema-less, ldap like, API and database"
 arch=('i686' 'x86_64')
 url="http://ldb.samba.org/"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('lib32-talloc' 'lib32-tevent' 'lib32-tdb' 'lib32-popt' 'ldb')
 makedepends=('lib32-python2')
 optdepends=('lib32-python2: for python bindings')
-md5sums=('31780b702b638ad32aa5d9853d257839')
+md5sums=('50a194dea128d062cf4b44c59130219b')
 
 build() {
 	cd "${_name}-${pkgver}"
