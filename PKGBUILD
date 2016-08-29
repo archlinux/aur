@@ -1,5 +1,5 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='Neural networks package for Torch7'
+# Maintainer: Jingbei Li <i@jingbei.li>
+pkgdesc='A numeric optimization package for Torch.'
 pkgname='torch7-optim-git'
 pkgver=1.0.3.0.r175.g5e11b9f
 pkgrel=1
