@@ -1,6 +1,6 @@
 # Maintainer: Shadowigor <shadowigorr at gmail dot com>
 pkgname="osync"
-pkgver=v1.00.r234.b8ff024
+pkgver=v1.1.2.r9.b8ff024
 pkgrel=1
 pkgdesc="A two way filesync script"
 arch=("any")
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 pkgver()
 {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare()
