@@ -1,9 +1,10 @@
 # Maintainer: PhotonX <photon89 [at] gmail.com>.
+# Contributor: craigacgomez
 
 pkgname=xfce4-multiload-ng-plugin
 _pkgname=multiload-ng
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern graphical system monitor, Xfce version'
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
@@ -15,11 +16,11 @@ md5sums=('407ce554980fb40b2ab37cb76b6eb0c9')
 build() {
 	cd "$_pkgname-$pkgver"
 	 ./autogen.sh
-	 ./configure --prefix=$pkgdir/usr --with-gtk=2.0
+	 ./configure --prefix=/usr --with-gtk=2.0
 	 make
 } 
 
 package() {
 	cd "$_pkgname-$pkgver"
-	make install
+	make DESTDIR="$pkgdir" install
 }
