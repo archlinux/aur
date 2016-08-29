@@ -1,0 +1,20 @@
+pkgbase = pomello
+	pkgdesc = Stay Focused. Accomplish more.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = http://www.pomelloapp.com/
+	install = pomello.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = tar
+	makedepends = binutils
+	depends = libsystemd
+	options = !strip
+	source_x86_64 = http://www.pomelloapp.com/download/linux?package=deb&arch=64
+	md5sums_x86_64 = dc64163a290dd60c57c5f5a986fe316d
+	source_i686 = http://www.pomelloapp.com/download/linux?package=deb&arch=32
+	md5sums_i686 = 9dfc6074ae2b887f827a1f246ec85a2d
+
+pkgname = pomello
+
