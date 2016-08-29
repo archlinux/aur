@@ -5,7 +5,7 @@
 pkgbase=python-biopython
 pkgname=('python-biopython' 'python2-biopython')
 _pkgname=biopython
-pkgver=1.67
+pkgver=1.68
 pkgrel=1
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('python-numpy' 'python2-numpy')
 source=(http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz)
 changelog=ChangeLog
-md5sums=('542699cc310588c1997806681ee1f65e')
+md5sums=('078e915185485a5327937029b7577ddc')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
