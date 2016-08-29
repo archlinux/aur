@@ -1,5 +1,5 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='Neural networks package for Torch7'
+# Maintainer: Jingbei Li <i@jingbei.li>
+pkgdesc='An Image toolbox for Torch.'
 pkgname='torch7-image-git'
 pkgver=1.0.1.0.r245.g7e9669f
 pkgrel=1
