@@ -1,0 +1,16 @@
+pkgbase = cctz
+	pkgdesc = CCTZ timezone library
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/google/cctz
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = cctz
+	source = cctz.tar.gz::https://github.com/google/cctz/archive/v2.0.tar.gz
+	source = cctz.tar.gz.sig
+	validpgpkeys = 39472B6C17DD759D38770C6BC1221376599189E3
+	sha512sums = 039b6df6d428c3f138e6e7687e65936a1fe4239a3f82b5a97936700aee429064220931437843cf5ba610bf1de6731ad8c4df55917076bf802ea102032b4fbaa2
+	sha512sums = 4f7a3d3bb9ed39ab25678b7b1d2872f3a1f075351d2912d0a99b3dc6ebe4fe942fe69954c110a403f585c38055a6dc9631089a82eb27b7d3bf6798f79b9ad5a6
+
+pkgname = cctz
