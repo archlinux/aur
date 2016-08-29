@@ -4,9 +4,9 @@
 # Contributor: tomprogrammer <Thomas-Bahn[at]gmx[dot]net>
 
 pkgname=dkms-phc-intel
-pkgver=0.3.2.12.19
-_realver=pack-rev19
-_fileid=168
+pkgver=0.3.2.12.22
+_realver=pack-rev22
+_fileid=172
 pkgrel=1
 pkgdesc="CPU frequency driver - DKMS automatic module generation after kernel upgrade"
 url="http://www.linux-phc.org"
@@ -22,7 +22,7 @@ source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=${_fileid}
         phc-intel.{default,sh,sleep,system-sleep}
 	dkms-phc-intel.{sh,service}
         dkms.conf)
-md5sums=('a065ce55dd8ea0834de98b9601d27843'
+md5sums=('465ce200b7a0d76ab5b7692d42eb7051'
          'bc8b26dc2966cc9210c5631aceee025a'
          'd5fccf39f5796a048aae8b7a28fe5d2d'
          'fbef61e4ec39af0b580d11508b41d59e'
