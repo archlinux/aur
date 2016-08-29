@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=nzbhydra
 Group=nzbhydra
-ExecStart=/usr/bin/nzbhydra --nobrowser --daemon --config /etc/nzbhydra/settings.cfg --database /var/lib/nzbhydra/nzbhydra.db
-Type=forking
+ExecStart=/usr/bin/nzbhydra --nobrowser --config /etc/nzbhydra/settings.cfg --database /var/lib/nzbhydra/nzbhydra.db
+Type=simple
 TimeoutStopSec=20
 
 [Install]
