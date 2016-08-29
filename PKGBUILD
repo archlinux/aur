@@ -1,31 +1,34 @@
 # Maintainer:   Nascher <kevin at nascher dot org>
 # Contributor:  Menche <menche_mt at yahoo dot com>
 
+# For the src directory
+_pkgcommit=3ac3f431a26858857f6805ad33f5fe8aaa8d0765
+
 pkgname=voxelands
-pkgver=1608.00
+pkgver=1608.01
 pkgrel=1
 pkgdesc="A fork of Minetest, an Infiniminer/Minecraft inspired game"
 url="http://voxelands.com"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libxxf86vm' 'irrlicht' 'sqlite' 'libvorbis' 'openal' 'glu' 'libsm' 'hicolor-icon-theme' 'freetype2')
+depends=('libxxf86vm' 'irrlicht' 'sqlite' 'libvorbis' 'openal'
+         'glu' 'libsm' 'hicolor-icon-theme' 'freetype2')
 makedepends=('cmake' 'gettext')
 replaces=('minetest-classic')
 provides=('minetest-classic' 'voxelands')
 conflicts=('minetest-classic' 'minetest-classic-next-git' 'voxelands-next-git')
 install="${pkgname}.install"
+source=($pkgname-$pkgver.tar.gz::https://gitlab.com/${pkgname}/${pkgname}/repository/archive.tar.gz?ref=v${pkgver})
 
-source=("http://menche.us/voxelands/${pkgname}-src-${pkgver}.tar.xz")
-
-sha256sums=('5a2fc2dd1712c20a5b28d04e6acecf25fa7dc12598920821937a7da2c8fd7e56')
+sha256sums=('e42a803f8e6bc5effa9ce9356e8415de026ea9ed7c7c187e9df40051cc345a44')
 
 build() {
-	cd "${srcdir}/"
+	cd "$srcdir/${pkgname}-v${pkgver}-${_pkgcommit}"
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG	
 	make
 }
 
 package() {
-	cd "${srcdir}/"
+	cd "$srcdir/${pkgname}-v${pkgver}-${_pkgcommit}"
 	make DESTDIR="${pkgdir}" install
 }
