@@ -8,9 +8,8 @@ pkgdesc="A free to use program that lets you create and perform real-time audio 
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'glfw' 'libpng12' 'opencv' 
-'xdg-utils')
-makedepends=('alsa-lib' 'cmake' 'git' 'pulseaudio' 'jack')
+depends=('desktop-file-utils' 'glew' 'glfw' 'libpng12' 'opencv' 'xdg-utils')
+makedepends=('alsa-lib' 'cmake' 'git' 'jack' 'pulseaudio')
 optdepends=(
   'alsa-lib: ALSA support.'
   'jack: JACK support'
@@ -18,7 +17,6 @@ optdepends=(
 )
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/vovoid/vsxu.git"
         "cal3d::git+https://github.com/vovoid/cal3d.git")
 sha512sums=('SKIP'
