@@ -2,7 +2,7 @@
 
 pkgname=libvitamtp
 _pkgname=vitamtp
-pkgver=2.5.8
+pkgver=2.5.9
 pkgrel=1
 _soname=5
 pkgdesc="Library to interact with Vita's USB MTP protocol"
@@ -13,7 +13,7 @@ depends=('libusb' 'libxml2')
 conflicts=('vitamtp' 'vitamtpmod')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${_pkgname}/archive/v${pkgver}.tar.gz" "libvitamtp.install")
 options=('!libtool')
-sha256sums=('59f78e04685e02df3b902083bd1aaf7b0efb4f17ffa919829af401d23e01f4f4' 'ed499fabb566b06af81f784b87ea2021b74d3945920ab70e8cbdb1b3a88bb9db')
+sha256sums=('b03a77689fae8b6e78de4a3d2a7cbca707f7e519219dcb6da7295ddc29ff2f02' 'ed499fabb566b06af81f784b87ea2021b74d3945920ab70e8cbdb1b3a88bb9db')
 install=$pkgname.install
 
 build() {
