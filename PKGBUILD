@@ -2,10 +2,10 @@
 # Contributor: Andrew67 (.desktop file, icon, 64bit compatibility)
 
 pkgname=energia
-pkgver=0017
+pkgver=1.6.10E18
 pkgrel=2
 pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://energia.nu/"
 license=('GPL')
 depends=(java-environment java-rxtx libusb-compat gcc-libs-multilib)
@@ -15,16 +15,11 @@ provides=('energia')
 options=(!strip staticlibs)
 install='energia.install'
 source=('energia.desktop'
-        '71-ti-permissions.rules')
+        '71-ti-permissions.rules'
+        "${pkgname}-${pkgver}.tar.xz::http://energia.nu/downloads/downloadv4.php?file=energia-${pkgver}-linux64.tar.xz")
 md5sums=('a7ce061d9fc0f9530e058204e532b40b'
-         '4d16b78cdc123adeed25600803998ee9')
-if [[ $CARCH == "x86_64" ]]; then
- source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux64.tgz")
- md5sums+=('cbb348ff40c2f9d42c025eb9a6484ae2')
-elif [[ $CARCH == "i686" ]]; then
- source+=("$pkgname-$pkgver-$CARCH.tgz::http://energia.nu/downloads/downloadv3.php?file=energia-0101E$pkgver-linux.tgz")
- md5sums+=('a4c11b8478f6b142de31b28a8847e7c1')
-fi
+         '4d16b78cdc123adeed25600803998ee9'
+         'c50e1eb0dfe7c79aa93c13ba7a23aafe')
 
 # Don't compress, takes too long
 PKGEXT='.pkg.tar'
@@ -42,26 +37,29 @@ _copy_src() {
   mkdir -p "$pkgdir"{/etc/{tmpfiles.d,udev/rules.d},/opt/energia,/usr/{bin,share/{applications,pixmaps,doc}}}
 
   # --archive copies recursively, preserves permissions and links
-  cp --archive "$srcdir/$pkgname-0101E$pkgver/." "$pkgdir/opt/energia"
+  cp --archive "${srcdir}/${pkgname}-${pkgver}/." \
+               "$pkgdir/opt/energia"
 }
 
 _patch_package_for_lock_issues() {
-  for arch in '' 32 64; do
-    ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/energia/lib/librxtxSerial${arch}.so"
-  done
-  ln -sf /usr/share/java/rxtx/RXTXcomm.jar "$pkgdir/opt/energia/lib/RXTXcomm.jar"
-  install -m755 "$srcdir/71-ti-permissions.rules" "$pkgdir/etc/udev/rules.d/"
+  ln -sf /usr/lib/librxtxSerial.so \
+         "$pkgdir/opt/energia/lib/librxtxSerial.so"
+  ln -sf /usr/share/java/rxtx/RXTXcomm.jar \
+         "$pkgdir/opt/energia/lib/RXTXcomm.jar"
+  install -m755 "$srcdir/71-ti-permissions.rules" \
+                "$pkgdir/etc/udev/rules.d/"
 }
 
 _link_binary_to_bin() {
-  ln -s /opt/energia/energia "$pkgdir/usr/bin/"
+  ln -s /opt/energia/energia \
+        "$pkgdir/usr/bin/"
 }
 
 _add_menu_entry_and_icon() {
-  install -m755 "$srcdir/energia.desktop" "$pkgdir/usr/share/applications/"
-  for size in 16 24 32 48; do
-    install -m755 "$pkgdir/opt/energia/lib/energia_$size.png" "$pkgdir/usr/share/pixmaps/"
-  done
+  install -m755 "$srcdir/energia.desktop" \
+                "$pkgdir/usr/share/applications/"
+  install -m755 "$pkgdir/opt/energia/lib/arduino.png" \
+                "$pkgdir/usr/share/pixmaps/energia.png"
 }
 
 _support_fhs() {
