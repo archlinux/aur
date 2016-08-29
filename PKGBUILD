@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -231,10 +231,10 @@ build() {
 	    else
 	      msg "You kernel was not compiled with IKCONFIG_PROC."
 	      msg "Attempting to run /usr/bin/modprobed_db recall from modprobe_db..."
-	      if [ -e /usr/bin/modprobed_db ]; then
-	          sudo /usr/bin/modprobed_db recall
+	      if [ -e /usr/bin/modprobed-db ]; then
+	          sudo /usr/bin/modprobed-db recall
 	      else
-	        msg "modprobed_db not installed, running make localmodconfig instead..."
+	        msg "modprobed-db not installed, running make localmodconfig instead..."
 	        make localmodconfig
 	      fi
             fi
@@ -242,8 +242,8 @@ build() {
       elif [[ "$answer" = "l" ]]; then
           # Copied from kernel26-ck's PKGBUILD
           msg "Attempting to run /usr/bin/reload_database with sudo from modprobe_db..."
-          if [ -e /usr/bin/modprobed_db ]; then
-	      sudo /usr/bin/modprobed_db recall
+          if [ -e /usr/bin/modprobed-db ]; then
+	      sudo /usr/bin/modprobed-db recall
           fi
           msg "Running 'make localmodconfig'..."
           make localmodconfig
@@ -348,7 +348,7 @@ package_linux-pf() {
 	    'hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM'
 	    'nvidia-pf: NVIDIA drivers for linux-pf'
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
-	    'modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
+	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
  #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
  provides=(${pkgbase}=${_basekernel} 'aufs3')
  # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
@@ -532,7 +532,7 @@ package_linux-pf() {
   mkdir -p "${pkgdir}/usr"
   mv "$pkgdir/lib" "$pkgdir/usr"
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/build/${_kernver}/vmlinux"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 
 # end c/p
 
