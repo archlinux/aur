@@ -15,6 +15,7 @@ pkgbase = franz
 	depends = libnotify
 	depends = libxtst
 	depends = nss
+	depends = libxss
 	noextract = Franz-linux-x64-4.0.0
 	source = franz.sh
 	source = franz.desktop
