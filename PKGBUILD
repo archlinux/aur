@@ -4,7 +4,7 @@
 
 pkgname=ponysay-git
 _pkgname=ponysay
-pkgver=3.0.2.r2328
+pkgver=3.0.2.r2353
 pkgrel=1
 pkgdesc="Cowsay reimplementation for ponies."
 arch=("any")
