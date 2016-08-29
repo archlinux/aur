@@ -2,7 +2,8 @@
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
 pkgver=20160828
-pkgrel=2
+pkgrel=3
+_hash="da98a2e"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -12,14 +13,14 @@ conflicts=( "micro-git", "micro" )
 provides=("micro")
 
 if [[ $CARCH == 'x86_64' ]]; then
-  source=('https://github.com/zyedidia/micro/releases/download/nightly/micro-2de42bc-linux64.tar.gz')
-  sha256sums=('41d1344c8c0fc1d86eeb5c2eb5d389e035a77e292b50a47db8a0eb5755d045f5')
+  source=(https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux64.tar.gz)
+  sha256sums=('86c780778555829a956ca03332b0f09fcafb12d21a25b15e2aea9bf030a25164')
 else
-  source=('https://github.com/zyedidia/micro/releases/download/nightly/micro-2de42bc-linux32.tar.gz')
-  sha256sums=('eb1494fdcff783065e8908b8104a24103c7afb7506bd666212ea3d679b94fd26')
+  source=(https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz)
+  sha256sums=('0401d73dc1e0094a1812764bbda96fc230fcfa2d683f930d69c393183f175d95')
 fi
 
 package(){
- install -Dm755 $srcdir/micro-2de42bc/micro "$pkgdir/usr/bin/micro"
- install -Dm644 $srcdir/micro-2de42bc/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ install -Dm755 $srcdir/micro-${_hash}/micro "$pkgdir/usr/bin/micro"
+ install -Dm644 $srcdir/micro-${_hash}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
