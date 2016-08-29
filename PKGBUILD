@@ -2,7 +2,7 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=26.4.0+e449bdb
+pkgver=26.4.0+94ddf50
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
@@ -43,9 +43,12 @@ prepare() {
 build() {
   cd Pale-Moon
 
+  export CC="gcc-5"
+  export CXX="g++-5"
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
-  export CPPFLAGS="$CPPFLAGS -O2 -march=native "
+  export CPPFLAGS="$CPPFLAGS -O2 -march=native -mtune=native"
+  export LDFLAGS="$LDFLAGS -Wl,-O1,--sort-common,--as-needed,-z,relro"
   python2 mach build || echo "Next =>"
   python2 mach build
 }
