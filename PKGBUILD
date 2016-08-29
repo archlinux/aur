@@ -8,7 +8,7 @@ url="https://github.com/MrKepzie/openfx-io/tree/Natron-$pkgver"
 license=("GPL2")
 depends=("seexpr1" "openimageio" "ffmpeg") 
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
-makedepends=("expat" "boost")
+makedepends=("git" "expat" "boost")
 source=("$pkgname::git://github.com/MrKepzie/openfx-io.git#tag=Natron-$pkgver" "GCC6.patch")
 md5sums=("SKIP" "8da02f30c37861eaaac9245ff4cb005b")
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
