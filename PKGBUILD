@@ -7,7 +7,7 @@
 
 pkgname=rubymine
 _pkgname=RubyMine
-pkgver=2016.2.1
+pkgver=2016.2.2
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine.desktop
         rubymine.install)
-sha256sums=('00171c65293241265d5726d35f61b00a9869b59910a1667740cf91a5d7eaadbb'
+sha256sums=('5463f53501b6fd89934d1e6bb4c4a36ae3769c50c9ed2c64b002efbc645764b2'
             '72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
 
