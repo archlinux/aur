@@ -2,7 +2,7 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=2
+pkgrel=3
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,7 +18,7 @@ optdepends=(
   'lesstif: needed for gmx view'
   'libx11: needed for gmx view'
   'libxml2: required for running test suite'
-  'opencl-nvida: OpenCL support for Nvidia GPU'
+  'opencl-nvidia: OpenCL support for Nvidia GPU'
   'opencl-mesa: OpenCL support for AMD GPU'
   'pymol: visualization'
   'vmd: visualization'
