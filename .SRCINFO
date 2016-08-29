@@ -1,0 +1,20 @@
+pkgbase = exact-image
+	pkgdesc = Fast image manipulation programs
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://exactcode.com/opensource/exactimage/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = agg
+	source = http://dl.exactcode.de/oss/exact-image/exact-image-0.9.1.tar.bz2
+	source = exact-image-giflib.patch
+	source = exact-image-libpng.patch
+	source = exact-image-libungif.patch
+	md5sums = 864eddf488c309a02262f4e07b0fe319
+	md5sums = d8514b017113431aa2affec169a58764
+	md5sums = b64cce768b2757893700d43a8a8feaa7
+	md5sums = 34a82d7e1044f990b0a7bb433d2f7c18
+
+pkgname = exact-image
+

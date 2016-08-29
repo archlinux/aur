@@ -1,0 +1,140 @@
+--- exact-image-0.8.9/codecs/gif.cc.orig	2010-03-03 22:04:44.000000000 +0100
++++ exact-image-0.8.9/codecs/gif.cc	2014-10-20 16:45:48.021255431 +0200
+@@ -17,6 +17,12 @@
+ 
+ #include <gif_lib.h>
+ 
++#if (GIFLIB_MAJOR > 5) || (GIFLIB_MINOR >= 1)
++#define Internal_EGifCloseFile(f) EGifCloseFile(f, NULL)
++#else
++#define Internal_EGifCloseFile(f) EGifCloseFile(f)
++#endif
++
+ #include "gif.hh"
+ #include "Colorspace.hh"
+ 
+@@ -58,11 +64,11 @@
+   GifRecordType RecordType;
+   GifByteType* Extension;
+   ColorMapObject *ColorMap = NULL;
+-  int ExtCode;
++  int ExtCode, GifError;
+   
+-  if ((GifFile = DGifOpen (stream, &GIFInputFunc)) == NULL)
++  if ((GifFile = DGifOpen (stream, &GIFInputFunc, &GifError)) == NULL)
+     {
+-      PrintGifError();
++      std::cerr << "Error: " << GifErrorString(GifError) << std::endl;
+       return false;
+     }
+   
+@@ -74,7 +80,7 @@
+   /* Scan the content of the GIF file and load the image(s) in: */
+   do {
+     if (DGifGetRecordType(GifFile, &RecordType) == GIF_ERROR) {
+-      PrintGifError();
++      std::cerr << "DGifGetRecordType error: " << GifErrorString(GifFile->Error) << std::endl;
+       return false;
+     }
+     
+@@ -83,7 +89,7 @@
+     switch (RecordType) {
+     case IMAGE_DESC_RECORD_TYPE:
+       if (DGifGetImageDesc(GifFile) == GIF_ERROR) {
+-	PrintGifError();
++        std::cerr << "DGifGetImageDesc error: " << GifErrorString(GifFile->Error) << std::endl;
+ 	return false;
+       }
+       
+@@ -104,7 +110,7 @@
+ 	       j += InterlacedJumps[i]) {
+ 	    if (DGifGetLine(GifFile, &image.getRawData()[j*image.stride()+Col],
+ 			    Width) == GIF_ERROR) {
+-	      PrintGifError();
++	      std::cerr << "DGifGetLine error: " << GifErrorString(GifFile->Error) << std::endl;
+ 	      return false;
+ 	    }
+ 	  }
+@@ -113,7 +119,7 @@
+ 	for (int i = 0; i < Height; ++i) {
+ 	  if (DGifGetLine(GifFile, &image.getRawData()[Row++ * image.stride()+Col],
+ 			  Width) == GIF_ERROR) {
+-	    PrintGifError();
++	    std::cerr << "DGifGetLine error: " << GifErrorString(GifFile->Error) << std::endl;
+ 	    return false;
+ 	  }
+ 	}
+@@ -122,12 +128,12 @@
+     case EXTENSION_RECORD_TYPE:
+       /* Skip any extension blocks in file: */
+       if (DGifGetExtension(GifFile, &ExtCode, &Extension) == GIF_ERROR) {
+-	PrintGifError();
++	std::cerr << "DGifGetExtension error: " << GifErrorString(GifFile->Error) << std::endl;
+ 	return false;
+       }
+       while (Extension != NULL) {
+ 	if (DGifGetExtensionNext(GifFile, &Extension) == GIF_ERROR) {
+-	  PrintGifError();
++	  std::cerr << "DGifGetExtensionNext error: " << GifErrorString(GifFile->Error) << std::endl;
+ 	  return false;
+ 	}
+       }
+@@ -155,7 +161,7 @@
+   // convert colormap to our 16bit "TIFF"format
+   colorspace_de_palette (image, ColorMap->ColorCount, rmap, gmap, bmap);
+   
+-  EGifCloseFile(GifFile);
++  Internal_EGifCloseFile(GifFile);
+ 
+   return true;
+ }
+@@ -165,17 +171,18 @@
+ {
+   GifFileType* GifFile;
+   GifByteType* Ptr;
++  int GifError;
+   
+-  if ((GifFile = EGifOpen (stream, &GIFOutputFunc)) == NULL)
++  if ((GifFile = EGifOpen (stream, &GIFOutputFunc, &GifError)) == NULL)
+     {
+-      std::cerr << "Error preparing GIF file for writing." << std::endl;
++      std::cerr << "Error preparing GIF file for writing: " << GifErrorString(GifError) << std::endl;
+       return false;
+     }
+   
+   int ColorMapSize = 256;
+   
+   // later use our own colormap generation
+-  ColorMapObject* OutputColorMap = MakeMapObject(ColorMapSize, NULL);
++  ColorMapObject* OutputColorMap = GifMakeMapObject(ColorMapSize, NULL);
+   if (!OutputColorMap)
+     return false;
+   
+@@ -203,7 +210,7 @@
+   }
+    
+   
+-  if (QuantizeBuffer(image.w, image.h, &ColorMapSize,
++  if (GifQuantizeBuffer(image.w, image.h, &ColorMapSize,
+ 		     RedBuffer, GreenBuffer, BlueBuffer,
+ 		     OutputBuffer, OutputColorMap->Colors) == GIF_ERROR) {
+     return false;
+@@ -215,7 +222,7 @@
+   if (EGifPutScreenDesc(GifFile, image.w, image.h,
+ 			ColorMapSize, 0, OutputColorMap) == GIF_ERROR ||
+       EGifPutImageDesc(GifFile, 0, 0, image.w, image.h,
+-		       FALSE, NULL) == GIF_ERROR)
++		       false, NULL) == GIF_ERROR)
+     {
+       std::cerr << "Error writing GIF header." << std::endl;
+       return false;
+@@ -234,7 +241,7 @@
+ 
+   delete (RedBuffer); delete (GreenBuffer); delete (BlueBuffer);
+ 
+-  EGifCloseFile(GifFile);
++  Internal_EGifCloseFile(GifFile);
+   return true;
+ }
+ 
+

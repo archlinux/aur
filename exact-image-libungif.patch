@@ -1,0 +1,11 @@
+--- exact-image-0.9.1/codecs/Makefile.bak	2016-08-29 16:28:09.245839108 +0100
++++ exact-image-0.9.1/codecs/Makefile	2016-08-29 16:30:38.684037444 +0100
+@@ -19,7 +19,7 @@
+ endif
+ 
+ ifeq "$(WITHLIBUNGIF)" "1"
+-LDFLAGS += -lungif
++LDFLAGS += -lgif
+ else
+ NOT_SRCS += gif.cc
+ endif
