@@ -1,5 +1,6 @@
-#Maintainer: Onishin <onishin at onishin dot org>
-#And redfish
+# Maintainer: Onishin <onishin at onishin dot org>
+# Co-maintainer: redfish <redfish at galactica dot pw>
+
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.9.4
