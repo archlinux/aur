@@ -1,10 +1,10 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Paulius Palevicius <paulius@birzai.com>
 
 pkgname=libgnomecups
 pkgver=0.2.3
-pkgrel=13
+pkgrel=14
 pkgdesc='GNOME CUPS library'
 arch=('x86_64' 'i686')
 license=('LGPL' 'GPL')
@@ -21,7 +21,7 @@ md5sums=('dc4920c15c9f886f73ea74fbff0ae48b'
          'de094a91df09f2136f13e5380b9bfa84'
          'b9e1d6a5eda9ecb98a1fcb6f8d0e9b4d')
 
-build() {
+prepare() {
   cd "$pkgname-$pkgver"
 
   # This avoids generating huge 'IPP request failed with status 1030' lines
@@ -30,8 +30,13 @@ build() {
   # Gentoo seems to have taken over the development
   patch -Np1 -i "$srcdir/gentoo1.patch"
   patch -Np1 -i "$srcdir/gentoo2.patch"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
 
   ./configure --prefix=/usr
+  export CFLAGS="$CFLAGS -w"
   make
 }
 
