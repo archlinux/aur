@@ -2,8 +2,8 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.3
-pkgrel=0
+pkgver=13.4
+pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
 url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
@@ -19,22 +19,17 @@ options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
 source_url32="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx86-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
 source_url64="http:$(curl -L -silent 'http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
-source_i686=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh' $pkgname-x86-$pkgver.tar.gz::$source_url32)
-source_x86_64=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh' $pkgname-x64-$pkgver.tar.gz::$source_url64)
-md5sums_x86_64=('71aca6257f259996ac59729604f32978'
-                'a38c3f844a0fefe8017a25bee213b843'
-                '0e92c33b3fcc99b04269787da2984809'
-                '1f214f6f456f59afd1a3275580f4240e'
-                '59f8e50cc0e0c399d47eb7ace1df5a32'
-                'dca5a1f51449ef35f1441b900d622276'
-                '2a4dc8358d607a652b406307c92faf72')
-md5sums_i686=('71aca6257f259996ac59729604f32978'
-              'a38c3f844a0fefe8017a25bee213b843'
-              '0e92c33b3fcc99b04269787da2984809'
-              '1f214f6f456f59afd1a3275580f4240e'
-              '59f8e50cc0e0c399d47eb7ace1df5a32'
-              'dca5a1f51449ef35f1441b900d622276'
-              '23397deb4cd0ca79ba56e1d04a9d1b7f')
+source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
+source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
+source_x86_64=($pkgname-x64-$pkgver.tar.gz::$source_url64)
+md5sums=('71aca6257f259996ac59729604f32978'
+         'a38c3f844a0fefe8017a25bee213b843'
+         '0e92c33b3fcc99b04269787da2984809'
+         '1f214f6f456f59afd1a3275580f4240e'
+         '59f8e50cc0e0c399d47eb7ace1df5a32'
+         'dca5a1f51449ef35f1441b900d622276')
+md5sums_x86_64=('e3fd715e0f8cd72715a51d8593394b19')
+md5sums_i686=('486dc36b74adf0a017bddc42a01a2db3')
 install=citrix-client.install
 
 package() {
