@@ -10,7 +10,7 @@ license=('proprietary (free)')
 depends=('java-runtime')
 conflicts=('atlas-maps')
 replaces=('atlas-maps' 'atlas-maps-bin' 'atlas-maps-beta-bin')
-source=("http://www.talent.gr/public/cruiser/cruiser-${pkgver}.zip"
+source=("http://www.talent.gr/public/cruiser/cruiser-desktop-${pkgver}.zip"
         "cruiser.sh")
 md5sums=('c4a1d2d2fec5ec8b0514d7897ed8f891'
          '6c23697fc0421c752227dd1e1f29245f')
