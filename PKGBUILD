@@ -2,15 +2,16 @@
 # Contributor: speps <speps dot aur dot archlinux dot org>
 
 pkgname=rssguard
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
 url="https://github.com/martinrotter/rssguard/"
 license=('GPL3')
-depends=('qt5-base>=5.7.0' 'qt5-webengine')
+depends=('qt5-base')
 makedepends=('qt5-tools')
-optdepends=('mariadb: MySQL/MariaDB storage backend support')
+optdepends=('mariadb: MySQL/MariaDB storage backend support'
+	    'qt5-webengine: for better support browsing')
 provides=('rss-guard')
 conflicts=('rss-guard' 'rssguard-git')
 replaces=('rss-guard')
@@ -27,4 +28,4 @@ package() {
   cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir/" install
 }
-sha256sums=('bea83190671e71e261c8bd4ed0fdada10fd9357ec054f510ed4e357c7185105f')
+sha256sums=('b293bc94709dda0cabc105f3fe3e581bcd248f7cd1dcad65adbbeaeb6709ccff')
