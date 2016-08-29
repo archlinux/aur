@@ -1,29 +1,41 @@
-# Maintainer: Martchus <martchus@gmx.net>
+# Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Contributor: Nuno Araujo <nuno.araujo@russo79.com>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
+# Contributor: Jason Giangrande <jgiangrande@clarku.edu>
 
-# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of a binary repository.
-
-pkgname=python-pyusb
+_pkgname=pyusb
+pkgbase=python-pyusb
+pkgname=('python-pyusb' 'python2-pyusb')
 pkgver=1.0.0
-pkgrel=2
-pkgdesc='A pure Python module which provides USB access'
+pkgrel=3
 arch=('any')
-url="https://github.com/walac/pyusb"
+url="https://github.com/walac/${_pkgname}"
 license=('custom')
-depends=('python' 'libusb')
-makedepends=('python-distribute')
-provides=($pkgname)
-conflicts=($pkgname-git)
-source=("https://github.com/walac/pyusb/archive/${pkgver}.tar.gz")
-sha256sums=('52106ce23ccc3b804335952aa48f7d5ce94f7ec27b44bb2d523eac92b97ace63')
+makedepends=('python-distribute' 'python2-distribute')
+conflicts=($_pkgname=$pkgver)
+replaces=('python2-pyusb-beta')
+source=("https://github.com/walac/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('af5549750140d12229202e8c32f48d6f2bbcda632b43763f7cefc51f63c61d5d9c4bf816842019729c911aedca792269a2cacad08d668d7ec569038b9979e3de')
 
-build() {
-  cd $srcdir/pyusb-$pkgver
-  python setup.py build
+prepare() {
+    # Create a copy for the python2 package
+    cp -r "${_pkgname}-${pkgver}" "python2-${_pkgname}-${pkgver}"
 }
 
-package() {
-  cd $srcdir/pyusb-$pkgver
-  python setup.py install -f --root="$pkgdir"
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+package_python-pyusb() {
+    pkgdesc="USB access on python3"
+    depends=('python' 'libusb')
+
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python setup.py install --root=${pkgdir} --optimize=1
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-pyusb() {
+    pkgdesc="USB access on python2"
+    depends=('python2' 'libusb')
+
+    cd "${srcdir}/python2-${_pkgname}-${pkgver}"
+    python2 setup.py install --root=${pkgdir} --optimize=1
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
