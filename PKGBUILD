@@ -2,7 +2,7 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=4
+pkgrel=5
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -60,6 +60,7 @@ package() {
             ${pkgdir}/usr/bin/GMXRC.bash
   install -d ${pkgdir}/etc/profile.d/
   install -Dm 755 ${pkgdir}/usr/bin/GMXRC* ${pkgdir}/etc/profile.d/
+  install -Dm 755 ${pkgdir}/usr/bin/GMXRC.bash ${pkgdir}/etc/profile.d/GMXRC.sh
   rm -f ${pkgdir}/usr/bin/GMXRC*
   install -d ${pkgdir}/usr/share/bash-completion/completions
   install -Dm 755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
