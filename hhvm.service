@@ -1,0 +1,15 @@
+[Unit]
+Description=HHVM FastCGI application server
+After=syslog.target network.target
+
+[Service]
+PIDFile=/run/hhvm/server.pid
+PrivateTmp=true
+User=http
+Group=http
+ExecStart=/usr/bin/hhvm --config=/etc/hhvm/php.ini --config=/etc/hhvm/server.ini --mode=daemon -vServer.Type=fastcgi -vPidFile=/run/hhvm/server.pid
+Restart=on-failure
+RuntimeDirectory=hhvm
+
+[Install]
+WantedBy=multi-user.target

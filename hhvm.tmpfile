@@ -1,0 +1,2 @@
+d /var/run/hhvm 755 http http
+d /var/log/hhvm 755 http http
