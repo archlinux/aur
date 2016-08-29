@@ -32,9 +32,7 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
-# use system's libclang on non-x86_64 architectures
-[[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
+depends=('boost' 'boost-libs' 'ncurses5-compat-libs' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim' 'clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
 source=('git+https://github.com/Valloric/YouCompleteMe.git' #ycm
         'git+https://github.com/ross/requests-futures.git'  #ycm
@@ -56,25 +54,6 @@ source=('git+https://github.com/Valloric/YouCompleteMe.git' #ycm
         )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-if [[ "${CARCH}" == 'x86_64' ]]; then
-  # use bundled libclang on x86_64
-  source+=("${_CLANG_URL}/${_CLANG_FILENAME}"{,.sig})
-  sha256sums+=('3120c3055ea78bbbb6848510a2af70c68538b990cb0545bac8dad01df8ff69d7'
-               '7cc55f1a1cc3e5478581e66c79ffa5ab4d7495076e6164b52d7b1a63816751a7')
-  validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
-  noextract=("${_CLANG_FILENAME}")
-  _COMPLETER="USE_CLANG_COMPLETER"
-else
-  # use system's libclang on non-x86_64
-  depends+=('clang')
-
-  # YCM works best with bundled libclang, but bundled libclang is only
-  # for x86_64 machines
-  # from ycmd source: cpp/ycm/CMakeLists.txt
-  # Clang 3.3 is the last version with pre-built x86 binaries upstream.
-  # That's too old now.
-  _COMPLETER="USE_SYSTEM_LIBCLANG"
-fi
 install=install
 
 prepare() {
@@ -114,13 +93,6 @@ prepare() {
   git config submodule.NRefactory.url "$srcdir/NRefactory"
   git config submodule.cecil.url "$srcdir/cecil"
   git submodule update
-
-  if [[ "${CARCH}" == 'x86_64' ]]; then
-    msg2 'Setting up bundled libclang...'
-    mkdir -p "$srcdir/YouCompleteMe/third_party/ycmd/clang_archives"
-    cp "$srcdir/${_CLANG_FILENAME}" \
-      "$srcdir/YouCompleteMe/third_party/ycmd/clang_archives"
-  fi
 }
 
 build() {
