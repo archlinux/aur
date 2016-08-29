@@ -6,10 +6,10 @@
 # Contributor: Will Rea <sillywilly@gmail.com>
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
-pkgbase=lib32-networkmanager
-pkgname=(lib32-networkmanager lib32-libnm-glib)
+#pkgbase=lib32-networkmanager
+pkgname=lib32-networkmanager
 _pkgname=NetworkManager
-pkgver=1.2.4
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(x86_64)
@@ -17,16 +17,20 @@ license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc lib32-bluez-libs
-             "ppp=$_pppver" lib32-dbus-glib iproute2 lib32-nss lib32-polkit wpa_supplicant
-             lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp lib32-libmm-glib rp-pppoe
-             lib32-libteam vala perl-yaml python-gobject networkmanager modemmanager)
+             "ppp=$_pppver" lib32-systemd rp-pppoe vala perl-yaml python-gobject modemmanager)
+depends=(lib32-libnm-glib lib32-libmm-glib iproute2 lib32-polkit wpa_supplicant
+           lib32-libsoup  lib32-libndp lib32-libteam lib32-libgudev networkmanager)
+optdepends=('lib32-bluez: Bluetooth support')
 checkdepends=(libx11 python-dbus)
-source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz)
 
-sha256sums=('19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa')
+#source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz)
+
+_commit=93b4119a81af57c274ac58210a8776afecf2a252
+source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit")
+sha256sums=('SKIP')
 
 prepare() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
 
   2to3 -w libnm src tools
 
@@ -43,7 +47,7 @@ build() {
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   export LIBRARY_PATH="/usr/lib32:$LIBRARY_PATH"
 
-  cd $_pkgname-$pkgver
+  cd NetworkManager
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -80,40 +84,19 @@ build() {
 }
 
 check() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
   make -k check
 }
 
-package_lib32-networkmanager() {
-  depends=(lib32-libnm-glib lib32-libmm-glib iproute2 lib32-polkit wpa_supplicant
-           lib32-libsoup  lib32-libndp lib32-libteam lib32-libgudev networkmanager)
-  optdepends=('lib32-bluez: Bluetooth support')
+package() {
 
-  cd $_pkgname-$pkgver
+  cd NetworkManager
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" -C libnm uninstall
   make DESTDIR="$pkgdir" -C libnm-glib uninstall
   make DESTDIR="$pkgdir" -C libnm-util uninstall
   make DESTDIR="$pkgdir" -C vapi uninstall
 
-  # Some stuff to move is left over
-  mv "$pkgdir/usr/lib32/pkgconfig" ..
-
   rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc" "$pkgdir/var"
 }
 
-package_lib32-libnm-glib() {
-  pkgdesc="NetworkManager library"
-  depends=(lib32-libgudev lib32-nss lib32-dbus-glib lib32-util-linux)
-
-  install -d "$pkgdir/usr/lib32"
-  mv pkgconfig "$pkgdir/usr/lib32"
-
-  cd NetworkManager-$pkgver
-  make DESTDIR="$pkgdir" -C libnm install
-  make DESTDIR="$pkgdir" -C libnm-util install
-  make DESTDIR="$pkgdir" -C libnm-glib install
-  make DESTDIR="$pkgdir" -C vapi install
-
-  rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
-}

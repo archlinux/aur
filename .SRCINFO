@@ -1,6 +1,6 @@
 pkgbase = lib32-networkmanager
 	pkgdesc = Network Management daemon, 32bit libraries
-	pkgver = 1.2.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = x86_64
@@ -15,27 +15,12 @@ pkgbase = lib32-networkmanager
 	makedepends = gtk-doc
 	makedepends = lib32-bluez-libs
 	makedepends = ppp=2.4.7
-	makedepends = lib32-dbus-glib
-	makedepends = iproute2
-	makedepends = lib32-nss
-	makedepends = lib32-polkit
-	makedepends = wpa_supplicant
-	makedepends = lib32-libsoup
 	makedepends = lib32-systemd
-	makedepends = lib32-libgudev
-	makedepends = lib32-libndp
-	makedepends = lib32-libmm-glib
 	makedepends = rp-pppoe
-	makedepends = lib32-libteam
 	makedepends = vala
 	makedepends = perl-yaml
 	makedepends = python-gobject
-	makedepends = networkmanager
 	makedepends = modemmanager
-	source = https://download.gnome.org/sources/NetworkManager/1.2/NetworkManager-1.2.4.tar.xz
-	sha256sums = 19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa
-
-pkgname = lib32-networkmanager
 	depends = lib32-libnm-glib
 	depends = lib32-libmm-glib
 	depends = iproute2
@@ -47,11 +32,8 @@ pkgname = lib32-networkmanager
 	depends = lib32-libgudev
 	depends = networkmanager
 	optdepends = lib32-bluez: Bluetooth support
+	source = git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=93b4119a81af57c274ac58210a8776afecf2a252
+	sha256sums = SKIP
 
-pkgname = lib32-libnm-glib
-	pkgdesc = NetworkManager library
-	depends = lib32-libgudev
-	depends = lib32-nss
-	depends = lib32-dbus-glib
-	depends = lib32-util-linux
+pkgname = lib32-networkmanager
 
