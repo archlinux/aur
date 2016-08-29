@@ -2,7 +2,7 @@
 
 _plug=awarpsharp2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.1.gbcd42fd
+pkgver=v3.0.g769e2be
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
