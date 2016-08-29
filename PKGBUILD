@@ -1,7 +1,7 @@
 # Author: Tobias Rueetschi <tr+archlinux at brief dot li>
 
 pkgname='nsntrace'
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Perform network trace of a single process by using network namespaces."
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ install=
 changelog=
 source=(https://github.com/jonasdn/nsntrace/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('0507285701ab20df08e99aa4458c32b0')
-sha256sums=('a77bfdccebacb9f668d793792b4ab06973fdc4177c748064b54ef04c4f36c7ee')
+md5sums=('beb4fd3b4c11df70de8dc2012a770d87')
+sha256sums=('45497601e6d65e458d6d5cac52bbe4bcd303845077f7f8625666eb4e0e55ace6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
