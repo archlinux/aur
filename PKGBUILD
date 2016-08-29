@@ -3,7 +3,7 @@
 pkgname='bitmonero-git'
 _gitname='bitmonero'
 pkgver=0.9.4
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -70,7 +70,6 @@ package() {
 	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_import" "$pkgdir/usr/bin/bitmonero-import"
 	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_export" "$pkgdir/usr/bin/bitmonero-export"
 	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_dump" "$pkgdir/usr/bin/bitmonero-dump"
-	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_converter" "$pkgdir/usr/bin/bitmonero-converter"
 	install -D -m755 "$srcdir/$_gitname/build/bin/cn_deserialize" "$pkgdir/usr/bin/bitmonero-deserialize"
 
 	install -Dm644 $srcdir/bitmonerod.service "${pkgdir}/usr/lib/systemd/system/bitmonerod.service"
