@@ -86,7 +86,9 @@ package() {
     if [[ ! -d ${pkgdir}/$ICAROOT/nls/$lang ]]; then
       lang='en'
     fi
-    cp ${pkgdir}/$ICAROOT/nls/$lang/{appsrv.ini,module.ini,wfclient.ini} ${pkgdir}/$ICAROOT/config/
+    cp ${pkgdir}$ICAROOT/nls/$lang/module.ini ${pkgdir}/$ICAROOT/config/
+    cp ${pkgdir}$ICAROOT/nls/$lang/appsrv.template ${pkgdir}/$ICAROOT/config/appsrv.ini
+    cp ${pkgdir}$ICAROOT/nls/$lang/wfclient.template ${pkgdir}/$ICAROOT/config/wfclient.ini
  
     # Copy Firefox plugin into plugin directory
     mkdir -p "${pkgdir}/usr/lib/mozilla/plugins"
