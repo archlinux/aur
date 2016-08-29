@@ -8,19 +8,21 @@ pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
 url="https://github.com/martinrotter/rssguard/"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-webengine')
 makedepends=('qt5-tools')
-optdepends=('mariadb: MySQL/MariaDB storage backend support'
-	    'qt5-webengine: for better support browsing')
+optdepends=('mariadb: MySQL/MariaDB storage backend support')
+#'qt5-webengine: for better support browsing')
 provides=('rss-guard')
 conflicts=('rss-guard' 'rssguard-git')
 replaces=('rss-guard')
 source=("https://github.com/martinrotter/rssguard/archive/$pkgver.tar.gz")
 
 
+
+# if you not need WebEngine, you can remove qt5-webengine from depends and changing USE_WEBENGINE to 0
 build() {
   cd $pkgname-$pkgver
-  qmake-qt5 -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=. LRELEASE_EXECUTABLE=lrelease-qt5  QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
+  qmake-qt5 -r CONFIG+=release PREFIX=/usr INSTALL_ROOT=. USE_WEBENGINE=1 QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
