@@ -1,43 +1,28 @@
-# Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
+# Maintainer: Amr Hassan <amr.hassan at gmail dot com>
 
-### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
-
-# Remove the bundled JRE to save space - make sure you use your own,
-# either through JAVA_HOME or by setting the path to the JDK
-# in ~/.IntelliJIdea2016.1/config/idea.jdk
-_remove_bundled_jre=
-
-### Do no edit below this line unless you know what you're doing
-
-pkgname=intellij-idea-ce-eap
+pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=163.3094.26
+_buildver=162.1628.40
 _veryear=2016
-_verrelease=3
-_verextra=
+_verrelease=2
+_extraver=2
 _nojdkrelease=true
-pkgver=${_veryear}.${_verrelease}.${_buildver}
+pkgver=${_veryear}.${_verrelease}.${_extraver}
 pkgrel=1
-pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
+pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
 url="http://www.jetbrains.com/idea/"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_bundled_jre}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-no-jdk.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
-else
-  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
-fi
+source=("https://download.jetbrains.com/idea/ideaIC-${pkgver}.tar.gz")
+sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${pkgver}.tar.gz.sha256" | cut -f1 -d" "))
 
 package() {
     cd "$srcdir"
     mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -R "${srcdir}/idea-IC-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+    cp -R "${srcdir}/idea-IC-$_buildver/"* "${pkgdir}/opt/${pkgname}"
     if [[ $CARCH = 'i686' ]]; then
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
@@ -68,7 +53,7 @@ EOF
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     for i in $(ls $srcdir/idea-IC-$_buildver/license/ ); do
-      ln -sf "${srcdir}/idea-IC-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+      ln -sf "${srcdir}/idea-IC-$_buildver/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done
     ln -s "${pkgdir}/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
