@@ -1,16 +1,17 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=direvent-git
-pkgver=5.1.r127.abeaa54
+pkgver=5.1.90.r144.d744882
 pkgrel=1
 pkgdesc="Daemon that monitors events in the file system directories"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org.ua/software/direvent/"
 license=("GPL")
 depends=('glibc')
-makedepends=('git')
-source=(git://git.savannah.gnu.org/direvent.git)
-md5sums=('SKIP')
+makedepends=('git' 'rsync')
+source=(git://git.gnu.org.ua/direvent.git
+        git://git.gnu.org.ua/grecs.git)
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd direvent
@@ -19,6 +20,13 @@ pkgver() {
   r=`git rev-list --count HEAD` # get git revision
   h=`git rev-parse --short HEAD` # get sha1's short output
   printf "$v.r$r.$h"
+}
+
+prepare() {
+  cd direvent
+  git submodule init
+  git config submodule.grecs.url $srcdir/grecs
+  git submodule update
 }
 
 build() {
