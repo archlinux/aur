@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=43.03
 _pkgver=43_03
 _dfhack_pkgrel=r1
-pkgrel=3
+pkgrel=4
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -90,7 +90,7 @@ md5sums=('SKIP'
          '5cc79b5dc202d8faa02086293badfcee'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
-         '3186696644d1f33c05e3412b0c0d50f5')
+         '6a87f6069f54645847b846833ff62d5a')
 
 
 
@@ -184,7 +184,7 @@ package() {
 
   ln -s "/opt/$pkgname/python-lnp/launch.py" "$pkgdir/opt/$pkgname/PyLNP"
 
-  rsync -ap $srcdir/DFgraphics/graphics-packs/* "$pkgdir/opt/$pkgname/LNP/graphics" \
+  rsync -ap $srcdir/DFgraphics/graphics-packs/* "$pkgdir/opt/$pkgname/LNP/Graphics" \
     --exclude .git \
     --exclude .gitmodules \
     --exclude .gitignore
@@ -239,18 +239,18 @@ package() {
 
 
   test ! -z "$(which dwarftherapist)" \
-    && mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/dwarf_therapist" \
-    && ln -s "$(which dwarftherapist)" "$pkgdir/opt/$pkgname/LNP/utilities/dwarf_therapist/DwarfTherapist"
+    && mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/dwarf_therapist" \
+    && ln -s "$(which dwarftherapist)" "$pkgdir/opt/$pkgname/LNP/Utilities/dwarf_therapist/DwarfTherapist"
 
   test ! -z "$(which soundsense)" \
-    && mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/soundsense" \
+    && mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/soundsense" \
     && ln -s "$(which soundsense)" \
-  "$pkgdir/opt/$pkgname/LNP/utilities/soundsense/soundSense.sh"
+  "$pkgdir/opt/$pkgname/LNP/Utilities/soundsense/soundSense.sh"
 
-  mkdir -p "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
-  install -dm755 "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
+  mkdir -p "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
+  install -dm755 "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
   install -Dm755 "$srcdir/DFAnnouncementFilter.jar" \
-    "$pkgdir/opt/$pkgname/LNP/utilities/df_announcement_filter"
+    "$pkgdir/opt/$pkgname/LNP/Utilities/df_announcement_filter"
 
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
