@@ -76,13 +76,13 @@ for r in $repo; do
 done | ssh $vhost
 ssh $vhost 'sudo pacman --noconfirm -Syu'
 ssh $vhost 'sudo pacman --noconfirm -Su'
-sftp $vhost <<<'put -r . build'
 sftp $vhost <<<"mkdir .gnupg"
 sftp $vhost <<<"put $HOME/.makepkg.conf"
 sftp $vhost <<<"put $HOME/.gnupg/pubring.kbx .gnupg/pubring.kbx"
+sftp $vhost <<<'put -r . build'
 ssh $vhost 'sudo mv build /build' # fake chroot build for db-update
 ssh $vhost 'rm -fr /build/{src,pkg}' # fix source repo relocation
 ssh $vhost 'cd /build; makepkg --log --noconfirm --syncdeps'
-sftp $vhost <<<'get build/*.pkg.tar.xz'
-sftp $vhost <<<'get build/*.log'
+sftp $vhost <<<'get /build/*.pkg.tar.xz'
+sftp $vhost <<<'get /build/*.log'
 stop_vm
