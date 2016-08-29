@@ -13,7 +13,7 @@ source_i686=("Pomello_${pkgver}.deb::http://www.pomelloapp.com/download/linux?pa
 source_x86_64=("Pomello_${pkgver}.deb::http://www.pomelloapp.com/download/linux?package=deb&arch=64")
 options=(!strip)
 md5sums_i686=('9dfc6074ae2b887f827a1f246ec85a2d')
-md5sums_x86_64=('dc64163a290dd60c57c5f5a986fe316d')
+md5sums_x86_64=('7f34b5569c2b17f23d9704dca374be08')
 
 prepare() {
   cd "$srcdir"
