@@ -2,7 +2,7 @@
 
 pkgname=emacs-po-mode
 _pkgname=gettext
-pkgver=0.19.5
+pkgver=0.19.8.1
 pkgrel=1
 pkgdesc="Emacs po-mode for editing gettext .po files (gettext-tools)"
 url="http://www.gnu.org/software/gettext/"
@@ -11,7 +11,7 @@ arch=('any')
 depends=('gettext' 'libcroco' 'expat' 'emacs')
 install=${pkgname}.install
 source=(http://ftp.gnu.org/pub/gnu/gettext/${_pkgname}-${pkgver}.tar.xz)
-md5sums=('546a8458f50e146be12c215f83b9bac2')
+md5sums=('df3f5690eaa30fd228537b00cb7b7590')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}/gettext-tools/misc/"
