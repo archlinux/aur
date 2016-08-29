@@ -3,8 +3,8 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo2
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=2.3.13
-pkgrel=2
+pkgver=2.3.14
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -100,7 +100,7 @@ package() {
 #  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
 #}
 
-sha256sums=('eedda075bc39e6a4225b6b95afffddc483bc93c6bd80da24ad44fe248293fad1'
+sha256sums=('9bdfe9309e5eff1a273912c29e0383f6d9529a7b4532ee30809b67365d9c0ed6'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
