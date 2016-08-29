@@ -6,6 +6,7 @@ pkgbase = openfx-misc
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = libgl
 	depends = gcc-libs-multilib
 	source = openfx-misc::git://github.com/devernay/openfx-misc.git#tag=Natron-2.1.2

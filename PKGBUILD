@@ -6,6 +6,7 @@ arch=("i686" "x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
 url="https://github.com/devernay/openfx-misc/tree/Natron-$pkgver"
 license=("GPL2")
+makedepends=("git")
 depends=("libgl" "gcc-libs-multilib")
 source=("$pkgname::git://github.com/devernay/openfx-misc.git#tag=Natron-$pkgver" "GCC6.patch")
 md5sums=("SKIP" "8da02f30c37861eaaac9245ff4cb005b")
