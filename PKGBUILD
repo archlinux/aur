@@ -2,13 +2,14 @@
 
 pkgname=hawaii-workspace
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Applications for the Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://hawaiios.org"
 license=('GPL')
 depends=('qt5-tools' 'libhawaii' 'fluid' 'polkit-qt5' 'qt5-gstreamer')
-makedepends=('git' 'gdb' 'extra-cmake-modules' 'greenisland')
+# boost is needed for qt5-gstreamer, see https://bugs.archlinux.org/task/50580
+makedepends=('git' 'gdb' 'extra-cmake-modules' 'greenisland' 'boost')
 conflicts=('hawaii-workspace-git')
 groups=('hawaii')
 options=('debug')
