@@ -1,0 +1,11 @@
+--- exact-image-0.9.1/Makefile.bak	2016-08-29 21:09:17.916657455 +0100
++++ exact-image-0.9.1/Makefile	2016-08-29 21:09:27.046973386 +0100
+@@ -8,7 +8,7 @@
+ 
+ # -s silcently corrupts binaries on OS X, sigh -ReneR
+ CFLAGS = -Wall -O2
+-CXXFLAGS = -Wall -O2 -Wno-sign-compare
++CXXFLAGS = -Wall -O2 -Wno-sign-compare -std=gnu++98
+ #CFLAGS = -Wall -O0 -ggdb
+ #CXXFLAGS = -Wall -O0 -ggdb
+ 
