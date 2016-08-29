@@ -2,7 +2,7 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=3
+pkgrel=4
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -10,6 +10,7 @@ license=("LGPL")
 arch=('i686' 'x86_64')
 depends=('fftw' 'openmpi')
 makedepends=('cmake')
+conflicts=('gromacs')
 optdepends=(
   'lapack: normal modes and matrix manipulation'
   'boost-libs: better implementation support for smart pointers and exception handling'
@@ -36,9 +37,10 @@ build() {
   cmake ../${_pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
     -DREGRESSIONTEST_DOWNLOAD=ON \
-    -DGMX_MPI=ON
+    -DGMX_MPI=ON \
+    -DGMX_DEFAULT_SUFFIX=OFF \
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
@@ -50,6 +52,8 @@ check() {
 package() {
   cd build
   make DESTDIR=${pkgdir} install
+
+  # The following puts the bash completions in /etc/profile.d, so they are sourced automatically on user login
   sed -i "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC
   sed -i -e "s:\$GMXBIN/gmx-completion.bash:/usr/share/bash-completion/completions/gmx-completion.bash:g" \
          -e "s:\$GMXBIN/gmx-completion-\*.bash:/usr/share/bash-completion/completions/gmx-completion-\*.bash:g" \
@@ -58,7 +62,7 @@ package() {
   install -Dm 755 ${pkgdir}/usr/bin/GMXRC* ${pkgdir}/etc/profile.d/
   rm -f ${pkgdir}/usr/bin/GMXRC*
   install -d ${pkgdir}/usr/share/bash-completion/completions
-  install -Dm 755 ${pkgdir}/usr/bin/gmx-completion.* ${pkgdir}/usr/share/bash-completion/completions/
-  rm -f ${pkgdir}/usr/bin/completion.*
+  install -Dm 755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
+  rm -f ${pkgdir}/usr/bin/gmx-completion*
 }
 
