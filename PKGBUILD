@@ -1,7 +1,7 @@
 # Maintainer: Maciej Suminski <orson@orson.net.pl>
 
 pkgname=vcdiff-git
-pkgver=r26.baab8ca
+pkgver=r74.c2ef659
 pkgrel=1
 pkgdesc="The ultimate VCD files comparator"
 arch=('i686' 'x86_64')
