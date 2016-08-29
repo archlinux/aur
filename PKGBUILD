@@ -7,12 +7,13 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.8rc3.r34.g4935e04
+pkgver=4.8rc4.r0.g3eab887
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
+backup=('etc/mkinitcpio.d/linux-git.preset')
 options=('!strip')
 source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # the main kernel config files
@@ -21,7 +22,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
-            'd9f1f1db8436841f6d9cac8e85e331f0e649f2e4484810ef969d695c89e3eaab'
+            '753fdd2116ee4d2975a72d3e03921b77fe27b438870ac0df878b3cd13645dc4f'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
