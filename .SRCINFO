@@ -6,6 +6,7 @@ pkgbase = seexpr1
 	arch = i686
 	arch = x86_64
 	license = Apache
+	makedepends = cmake
 	makedepends = qt4
 	depends = libpng
 	depends = gcc-libs-multilib
