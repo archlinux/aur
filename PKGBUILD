@@ -2,14 +2,13 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=5
-pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
-motion for systems with hundreds to millions of particles.'
+pkgrel=6
+pkgdesc='molecular dynamics simulation suite'
 url='http://www.gromacs.org/'
-license=("LGPL")
-arch=('i686' 'x86_64')
+license=("LGPL2")
+arch=('any')
 depends=('fftw' 'openmpi')
-makedepends=('cmake')
+makedepends=('cmake>=2.8.8')
 conflicts=('gromacs')
 optdepends=(
   'lapack: normal modes and matrix manipulation'
@@ -24,7 +23,6 @@ optdepends=(
   'pymol: visualization'
   'vmd: visualization'
 )
-options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
 md5sums=('302a87450cd8ba3eb2c2c29cd6232bf1')
 
@@ -53,17 +51,20 @@ package() {
   cd build
   make DESTDIR=${pkgdir} install
 
-  # The following puts the bash completions in /etc/profile.d, so they are sourced automatically on user login
-  sed -i "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC
+  # Bash completions go in /usr/share/bash-completion/completions
   sed -i -e "s:\$GMXBIN/gmx-completion.bash:/usr/share/bash-completion/completions/gmx-completion.bash:g" \
          -e "s:\$GMXBIN/gmx-completion-\*.bash:/usr/share/bash-completion/completions/gmx-completion-\*.bash:g" \
             ${pkgdir}/usr/bin/GMXRC.bash
-  install -d ${pkgdir}/etc/profile.d/
-  install -Dm 755 ${pkgdir}/usr/bin/GMXRC* ${pkgdir}/etc/profile.d/
-  install -Dm 755 ${pkgdir}/usr/bin/GMXRC.bash ${pkgdir}/etc/profile.d/GMXRC.sh
-  rm -f ${pkgdir}/usr/bin/GMXRC*
   install -d ${pkgdir}/usr/share/bash-completion/completions
-  install -Dm 755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
+  install -Dm755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
   rm -f ${pkgdir}/usr/bin/gmx-completion*
+
+  # Environmental variables, etc are set in /etc/profile.d (must be suffixed
+  # with .sh to be automatically sourced)
+  install -Dm755 ${pkgdir}/usr/bin/GMXRC.bash ${pkgdir}/etc/profile.d/GMXRC.sh
+  install -Dm755 ${pkgdir}/usr/bin/GMXRC.csh ${pkgdir}/etc/profile.d/GMXRC.csh
+  rm -f ${pkgdir}/usr/bin/GMXRC*
+
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/gromacs/LICENSE
 }
 
