@@ -1,5 +1,5 @@
 pkgbase = linux-pf-lts
-	pkgver = 3.14.72
+	pkgver = 3.14.77
 	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
@@ -66,6 +66,11 @@ pkgbase = linux-pf-lts
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.69-70.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.70-71.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.71-72.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.72-73.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.73-74.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.74-75.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.75-76.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.76-77.xz
 	source = bfs-sched.patch
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
@@ -121,6 +126,11 @@ pkgbase = linux-pf-lts
 	sha256sums = e8def22d8032bc0b438c0ba05651cf528e800c9b9ef54a059cae35050667c622
 	sha256sums = 1cd1e1d7ac2aae18501966ae38d57cf2c8cb5cedc6666f3a14801390a197ae5b
 	sha256sums = ab73cbc933f782361f088975a41c4fead9d42cf3fcde6e30dd8685d5b2178454
+	sha256sums = 70715d8719fde3c7299e2867f810e5a75a7bfcfc28bab0f3e0715a9cac32bea1
+	sha256sums = fcea651d5310719c3926c893e4213cb3d2890b6b346210a37b016373e087db90
+	sha256sums = 3f29242be19c727b83e0b245ccc983c299024a6c48323a2d86fb428013a6607a
+	sha256sums = 989b0b046aad1b91e9b5e8a32e776d1d1f5577dc1aaf1c502295e67914b641dc
+	sha256sums = 3aa34b9d238b8df9bb0475547ae4df5771969310bd2cb9f1fe043abbbab5b320
 	sha256sums = a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833
 
 pkgname = linux-pf-lts
@@ -139,7 +149,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=3.14
-	provides = linux=3.14.72
+	provides = linux=3.14.77
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -148,6 +158,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=3.14.72
+	provides = linux-headers=3.14.77
 	conflicts = linux-pf-lts-headers
 
