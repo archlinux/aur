@@ -4,12 +4,13 @@
 
 pkgname=bcm20702a1-firmware
 pkgver=1201650
-pkgrel=5
+pkgrel=6
 pkgdesc="Broadcom bluetooth firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8, 0a5c:216f)"
 arch=('any')
 url="http://asus.com"
 license=("Custom")
 makedepends=('bluez-utils')
+conflicts=('bt-dw1560-firmware')
 source=("http://dlcdnet.asus.com/pub/ASUS/misc/BT/Bluetooth_V${pkgver}_WHQL_Win10.zip"
         "BCM20702A1-0a5c-21e8.hcd::https://s3.amazonaws.com/plugable/bin/fw-0a5c_21e8.hcd")
 sha256sums=('b8863fdb2f397c1ca7264fd4a0f457c2f9ab90350338e476128fb241720e32ad'
