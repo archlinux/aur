@@ -123,13 +123,6 @@ prepare() {
   fi
 }
 
-# investigating number of logic cores
-if [[ -f /proc/cpuinfo ]]; then
-  CPUS=$(grep -c processor /proc/cpuinfo)
-else
-  CPUS=1
-fi
-
 build() {
   # https://github.com/Valloric/ycmd/blob/master/build.py {{{
 
@@ -137,7 +130,7 @@ build() {
   mkdir -p "$srcdir/ycmd_build"
   cd "$srcdir/ycmd_build"
   cmake -G "Unix Makefiles" -D${_COMPLETER}=1 . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
-  make -j $((CPUS*2)) ycm_core
+  make ycm_core
 
   msg2 'Building OmniSharp completer...' # BuildOmniSharp()
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer"
