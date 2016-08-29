@@ -2,7 +2,7 @@
 
 _plug=sangnom
 pkgname=vapoursynth-plugin-${_plug}-hg
-pkgver=25.580e6af65876
+pkgver=36.24bf165026c6
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('vapoursynth')
 makedepends=('mercurial')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::hg+https://sl1pkn07@bitbucket.org/James1201/vapoursynth-sangnom")
+source=("${_plug}::hg+https://bitbucket.org/James1201/vapoursynth-sangnom")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -37,4 +37,5 @@ package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
