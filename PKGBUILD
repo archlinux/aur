@@ -26,6 +26,8 @@ package() {
 
   tar -C "$pkgdir" -xf data.tar.xz
 
+  mkdir -p "$pkgdir/usr/bin"
+
   mkdir -p "$pkgdir/opt/Pomello/lib"
   ln -nsf /usr/lib/libudev.so.1 "$pkgdir/opt/Pomello/lib/libudev.so.0"
 
