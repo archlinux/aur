@@ -1,5 +1,5 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=5071
+heidisqlrelease=5112
 shortpkgver=9.3
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
@@ -16,7 +16,7 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_Port
         "${pkgname}.desktop"
         "${pkgname}.sh")
 md5sums=('880bcb6ee668db0bf4daca47285bfe08'
-         '868fd3b7a0e9aa0b0c7d6ae68a10e171'
+         'af5132bce1f3546d1a56101ab851892c'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '3cdbca3164df7d3629ffc469d52e53a0')
@@ -46,13 +46,3 @@ package() {
   # Install the .desktop
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
-md5sums=('880bcb6ee668db0bf4daca47285bfe08'
-         '868fd3b7a0e9aa0b0c7d6ae68a10e171'
-         'df3673bc694beceb8ed6cfeace6b6c3f'
-         'ea4fc6959a315ef5c2bf8e22c479e22a'
-         '3cdbca3164df7d3629ffc469d52e53a0')
-md5sums=('880bcb6ee668db0bf4daca47285bfe08'
-         'c3efa0690cc264aa37d9b733072c859c'
-         'df3673bc694beceb8ed6cfeace6b6c3f'
-         'ea4fc6959a315ef5c2bf8e22c479e22a'
-         '3cdbca3164df7d3629ffc469d52e53a0')
