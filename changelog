@@ -1,3 +1,13 @@
+2016-08-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.4.5-1:
+    Added !ownsall command.
+    Improved SendOnFarmingFinished - ASF will now also initiate !loot on receiving new items (when not farming), and trades (always).
+    ASF will now !loot foil trading cards only on IsBotAccount accounts.
+    Further improved overall network stability by implementing heartbeat functions.
+    Fixed ASF not recognizing games with more than 255 card drops remaining as available for farming.
+    Fixed ASF not following smart redeeming when first account hits OnCooldown.
+    Usual code improvements, optimizations and bugfixes.
+    [ConfigGenerator] Properties are now being categorized for easier modifications.
 2016-08-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.3.9-1:
     [!] Important ForwardKeysToOtherBots enhancements [1].
