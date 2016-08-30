@@ -1,0 +1,18 @@
+pkgbase = blt4l-runtime-bin
+	pkgdesc = Mod loader for Payday 2 (Steam runtime, bin version)
+	pkgver = 1.2_r1
+	pkgrel = 1
+	url = https://github.com/blt4linux/blt4l
+	install = blt4l.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	depends = openssl
+	depends = zlib
+	source = https://github.com/blt4linux/blt4l/releases/download/1.2-r1/blt4l_1.2-r1_Ubuntu-precise-steamrt.tar.xz
+	md5sums = 3c5615ad3d370e939b40eca88c81e8e7
+	sha512sums = e4ee78051a724686d2844e80b14feecaef46d9db61216f8daa5718563280e37d905b08b0608ee019768daab547b7e4acb0626f1b752501cd0b070bad0d748d37
+
+pkgname = blt4l-runtime-bin
+
