@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -21,7 +21,6 @@ depends=(bluedevil
          plasma-desktop
          plasma-nm
          plasma-workspace-wallpapers
-	 plasma-mediacenter
 	 plasma-pa
 	 plasma-sdk
 	 kwayland-integration
