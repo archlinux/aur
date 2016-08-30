@@ -43,7 +43,7 @@ screenwidth() {
 }
 
 removeformat() {
-	echo "$(echo -e $1 | sed 's/\x1b\[[0-9;]*[m|K]//g')"
+	echo "$(echo -e "$1" | sed 's/\x1b\[[0-9;]*[m|K]//g')"
 }
 
 info() {
@@ -209,7 +209,7 @@ fi
 
 if [[ $done -eq 0 ]] && [[ $total -eq 0 ]] && [[ $infinite -eq 1 ]]; then
 	trap "exit=true" SIGINT SIGTERM
-	local i=0
+	i=0
 	while [ ! $exit ]; do
 		printline $tty "$infinite" $i 0 "$title" "$misc"
 		i="$(($i+1))"
