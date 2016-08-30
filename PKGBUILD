@@ -16,7 +16,7 @@ makedepends=('python2-distribute')
 install=${pkgname}.install
 license=('Apache 2.0')
 
-source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz
         $pkgname.install)
         
 md5sums=('68bfe1ff8765878cf7d100759d433473'
