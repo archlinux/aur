@@ -1,7 +1,7 @@
 # Maintainer: Ted Meyer <tmathmeyer@gmail.com>
 
 _pkgname=tint3
-pkgname=$_pkgname-git
+pkgname=$_pkgname
 pkgver=304
 pkgrel=1
 pkgdesc='An independant status bar for X11 (works best with bspwm)'
