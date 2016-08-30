@@ -1,4 +1,10 @@
-2013-09-02 Daniele Paolella <danielepaolella@email.it>
+2016-08-30 Daniele Paolella <daniele@promorange.com>
+
+	* 0.5.r193.584dfd8-1:
+	switch to github.com repository;
+	update PKGBUILD to comply with latest guidelines.
+
+2013-09-02 Daniele Paolella <daniele@promorange.com>
 
 	* 0.5.192.4bea986-1 :
 	default to master branch;
