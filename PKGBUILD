@@ -44,7 +44,7 @@
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.14393
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -76,7 +76,6 @@ lucon.ttf                                                   # Lucida Console
 l_10646.ttf                                                 # Lucida Sans Unicode
 marlett.ttf                                                 # Marlett
 micross.ttf                                                 # Microsoft Sans Serifc
-msgothic.ttc                                                # MS Gothic
 pala.ttf       palab.ttf      palai.ttf      palabi.ttf     # Palatino Linotype
 segoepr.ttf    segoeprb.ttf                                 # Segoe Print
 segoesc.ttf    segoescb.ttf                                 # Segoe Script
@@ -104,6 +103,7 @@ _ttf_ms_win10_japanese=(
 #########################################################################################
 # Normal         Bold          Italic        Bold+Italic    #  Full name                #
 #########################################################################################
+msgothic.ttc                                                # MS Gothic
 YuGothR.ttc   YuGothB.ttc                                   # Yu Gothic
 YuGothM.ttc                                                 # Yu Gothic Medium
 YuGothL.ttc                                                 # Yu Gothic Light
@@ -232,7 +232,6 @@ sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
             'b9ed2bf08381f8b763673504d82b27c6e029156c73cede54e551e59fe8e940da'
             '511db37f04906eb2e77a91949edb04a61ce9838e9523011621dff4971a8d5867'
             'd5894e49d5b94b3bcba9a28eb067f597815c2482fc4f5c099bde55e3eb4dabd4'
-            '762bf8b66dddc38a05a379d16b9b86c3253a2c78cbe1e81a1cc49b18838d55bb'
             '2e03ecf35b3643c33ec0d68488f24b1caebed6fe7b40706603e6ca5a4fcfb9e1'
             '66a97fa5d1afa922772377b68fc6a8c18eb11a9972a76da2aee6920c1e5b0bbf'
             'ffce42ca79bc15e453241e00a07bad6d4b1b1c1929a17a546b18602c999137e2'
@@ -279,6 +278,7 @@ sha256sums=('95766b58f7d869b0fa2cf6e6feb26c1b21cdf2631f1c5863fc9bd206d5c6e8ee'
             'a6f1978c6f6917bacb8eb98062e090cc7a7190c320f9da65b4837948b0e60544'
             '1161ce511c44eb5464a4f8144aaf3eb965a50ed66957ad7d38e497ab9d958e5a'
             'd7c38355bd52f52e043ed904f3463d476925300d1bdca9e842b28077ca3549b8'
+            '762bf8b66dddc38a05a379d16b9b86c3253a2c78cbe1e81a1cc49b18838d55bb'
             '682d663388385c3cc90d067f57eec2f4f0d59f3dd4d204eea48fd30a7ac8fc34'
             '1b97a11c7902dac0d166916b18f5e6137dbcdfec8a20bb2f73029e9209cc8d6b'
             '029f4bfe0bde936f0b2c8abb24fe7a1c2c6ee365d9f5b910404f1c0802865e13'
