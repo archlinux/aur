@@ -1,6 +1,6 @@
 pkgbase = python-gnusocial
 	pkgdesc = GNU Social API for Python 3
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://gitgud.io/dtluna/pygnusocial
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-gnusocial
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	source = https://gitgud.io/dtluna/pygnusocial/repository/archive.tar.gz?ref=v1.1.0
-	md5sums = 7738bb85b5784f8c56e4084a06bf0ded
+	source = https://gitgud.io/dtluna/pygnusocial/repository/archive.tar.gz?ref=v1.1.1
+	md5sums = 514e11d68cb61c3a2c5c9e9c57842a90
 
 pkgname = python-gnusocial
 
