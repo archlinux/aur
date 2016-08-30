@@ -1,0 +1,14 @@
+--- qtbase-opensource-src-5.4.1/configure.orig	2015-02-17 05:56:22.000000000 +0100
++++ qtbase-opensource-src-5.4.1/configure	2015-03-21 17:08:54.138635641 +0100
+@@ -3884,6 +3884,11 @@
+     # See if PKG_CONFIG is set in the mkspec:
+     PKG_CONFIG="`"$outpath/bin/qmake" -E -nocache -spec "$XQMAKESPEC" "CONFIG=" $DEV_NULL 2>&1 | sed -n -e 's,^PKG_CONFIG = \(.*\),\1,p'`"
+     [ -n "$PKG_CONFIG" ] && [ "$OPT_VERBOSE" = "yes" ] && echo "Found pkg-config from mkspec: $PKG_CONFIG"
++
++    if [ "$CFG_SHARED" = "no" ] ; then
++        PKG_CONFIG="$PKG_CONFIG --static"
++        [ "$OPT_VERBOSE" = "yes" ] && echo "Using '$PKG_CONFIG' because we're doing a static build"
++    fi
+ fi
+ if [ -z "$PKG_CONFIG" ]; then
+     PKG_CONFIG=`"$WHICH" pkg-config 2>/dev/null`

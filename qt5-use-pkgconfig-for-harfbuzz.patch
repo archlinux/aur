@@ -1,0 +1,31 @@
+--- src/3rdparty/harfbuzz_dependency.pri.orig	2016-08-12 22:07:40.467953900 +0200
++++ src/3rdparty/harfbuzz_dependency.pri	2016-08-12 22:08:06.583981900 +0200
+@@ -2,5 +2,7 @@
+     INCLUDEPATH += $$PWD/harfbuzz-ng/include
+     LIBS_PRIVATE += -L$$QT_BUILD_TREE/lib -lqtharfbuzzng$$qtPlatformTargetSuffix()
+ } else:contains(QT_CONFIG, system-harfbuzz) {
+-    LIBS_PRIVATE += -lharfbuzz
++    # can't use 'feature' link_pkgconfig here because it would add harfbuzz to LIBS rather than LIBS_PRIVATE
++    contains(QT_CONFIG, static): LIBS_PRIVATE += $$system($$PKG_CONFIG --static --libs harfbuzz)
++    else: LIBS_PRIVATE += $$system($$PKG_CONFIG --libs harfbuzz)
+ }
+
+--- config.tests/unix/harfbuzz/harfbuzz.pro.orig
++++ config.tests/unix/harfbuzz/harfbuzz.pro
+@@ -1,3 +1,4 @@
+ SOURCES = harfbuzz.cpp
+ CONFIG -= qt dylib
+-LIBS += -lharfbuzz
++contains(CONFIG, static): LIBS += $$system($$PKG_CONFIG --static --libs harfbuzz)
++else: LIBS += $$system($$PKG_CONFIG --libs harfbuzz)
+
+--- mkspecs/win32-g++/qmake.conf.orig     2016-08-11 22:48:02.000000000 +0200
++++ mkspecs/win32-g++/qmake.conf  2016-08-13 02:15:32.791706438 +0200
+@@ -97,6 +97,6 @@
+ QMAKE_LIBS              =
+ QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lz -lpcre16
+-QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng -lharfbuzz -lglib-2.0 -lintl -lwinmm
++QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng $$system($${CROSS_COMPILE}pkg-config --static --libs harfbuzz)
+ QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi
+ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
+ QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
