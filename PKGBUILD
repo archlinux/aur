@@ -2,21 +2,22 @@
 # Contributor: josephgbr <rafael.f.f1 'at' gmail 'dot' com> 
 _pkgbasename=glibmm
 pkgname=lib32-$_pkgbasename
-pkgver=2.44.0
+pkgver=2.48.1
 pkgrel=1
 pkgdesc="Glib-- (glibmm) is a C++ interface for glib (32 bit, library only)"
 arch=('x86_64')
 license=('LGPL')
 depends=('lib32-glib2' 'lib32-libsigc++' "${_pkgbasename}")
 makedepends=('pkgconfig' 'gcc-multilib')
-source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/${pkgver%.*}/${_pkgbasename}-${pkgver}.tar.xz)
+source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/${pkgver:0:4}/${_pkgbasename}-${pkgver}.tar.xz)
 options=('!libtool')
 url="http://gtkmm.sourceforge.net/"
-sha256sums=('1b0ac0425d24895507c0e0e8088a464c7ae2d289c47afa1c11f63278fc672ea8')
+sha256sums=('dc225f7d2f466479766332483ea78f82dc349d59399d30c00de50e5073157cdf')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  ./configure --prefix=/usr --libdir=/usr/lib32 CC='gcc -m32' CXX='g++ -m32'
+  ./configure --prefix=/usr --libdir=/usr/lib32 CC='gcc' CFLAGS='-m32' CXXFLAGS='-m32 -w -fpermissive' PKG_CONFIG_PATH='/usr/lib32/pkgconfig/'
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
