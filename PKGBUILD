@@ -2,20 +2,21 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sddm
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'
 license=('GPL')
 depends=('qt5-declarative')
-makedepends=('cmake' 'python-docutils' 'qt5-tools')
+makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools')
 install="${pkgname}.install"
 backup=('usr/share/sddm/scripts/Xsetup'
-        'etc/pam.d/sddm')
+        'etc/pam.d/sddm'
+        'etc/sddm.conf')
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('ecfd285a463eb6490da1333bb2e304a7')
+md5sums=('393fbed2f2e9d030e1717949867e96c8')
 
 prepare() {
   mkdir -p build
