@@ -5,7 +5,7 @@
 
 pkgname=zathura-pdf-mupdf
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="PDF support for Zathura (MuPDF backend)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -15,7 +15,7 @@ license=('zlib')
 conflicts=('zathura-pdf-poppler')
 
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo' 'desktop-file-utils')
-makedepends=('libmupdf>=1.9')
+makedepends=('libmupdf')
 
 source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz
         mupdf-1.9.patch)
