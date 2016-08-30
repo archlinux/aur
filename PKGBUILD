@@ -9,12 +9,12 @@
 
 pkgname=coccinelle
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Provides spatch program used to apply semantic patches"
 arch=('i686' 'x86_64')
 url="http://coccinelle.lip6.fr/"
 license=('GPL2')
-makedepends=('camlp4' 'ocaml' 'ocaml-findlib' 'texlive-core'
+makedepends=('camlp4' 'ocaml' 'ocaml-findlib' 'hevea' 'texlive-core'
              'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures')
 depends=('pcre' 'python')
 optdepends=('ocaml: OCaml scripting feature'
@@ -35,7 +35,7 @@ package() {
 
   make DESTDIR="$pkgdir/" MANDIR="/usr/share/man" install
   install -m755 -d "$pkgdir/usr/share/doc/$pkgname/"
-  install -m644 -D docs/manual/*.pdf "$pkgdir/usr/share/doc/$pkgname/"
+  install -m644 -D docs/manual/*.{pdf,css,gif,html} "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
