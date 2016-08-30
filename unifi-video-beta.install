@@ -1,0 +1,9 @@
+# arg 1:  the new package version
+post_install() {
+  systemd-sysusers unifi-video.conf
+  chown -R unifi-video:unifi-video /usr/lib/unifi-video/work /usr/lib/unifi-video/logs /usr/lib/unifi-video/conf /usr/lib/unifi-video/webapps
+  ln -s $( which mongod) /usr/lib/unifi-video/bin/
+  :
+}
+
+# vim:set ts=2 sw=2 et:
