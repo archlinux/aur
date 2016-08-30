@@ -7,7 +7,8 @@ pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
 license=('GPL3')
-depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 'libcups' 'qt5-location' 'kscreen')
+depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 'libcups' 
+'qt5-location' 'kscreen' 'ts-polkitagent' 'ts-bt')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
