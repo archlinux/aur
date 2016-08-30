@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.1.3
+Encoding=UTF-8
+Name=Short Circuit
+Comment=Short Circuit for EVE Online
+Exec=/usr/bin/shortcircuit
+Terminal=false
+Icon=shortcircuit
+Type=Application
+Categories=Application;Game;
