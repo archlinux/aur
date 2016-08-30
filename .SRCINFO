@@ -1,0 +1,17 @@
+pkgbase = raritan-mpc
+	pkgdesc = Standalone multiplatform client for Raritan Dominion KVM-over-IP products
+	pkgver = 7.0.3.5.62
+	pkgrel = 1
+	url = http://www.raritan.com/support/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	options = !strip
+	source = autoinstall.xml
+	source = http://cdn.raritan.com/download/kxii/v2.7.0/mpc-installer.MPC_7.0.3.5.62.jar.zip
+	md5sums = f32266bacfb02acd778c9619f7f4934e
+	md5sums = 82e169d048149182fbfc6a569fe147e1
+
+pkgname = raritan-mpc
+
