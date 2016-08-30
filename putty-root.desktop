@@ -1,11 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=PuTTY
+Name=PuTTY (as root)
 GenericName=SSH/Telnet/Serial Client
-Exec=putty %u
+TryExec=/usr/share/putty-freedesktop/su-to-putty.sh
+Exec=/usr/share/putty-freedesktop/su-to-putty.sh %u
 Terminal=false
 Icon=putty
 Type=Application
 Categories=Application;Network;Remote
 Comment=A highly configurable ssh/telnet/serial console program
-
