@@ -2,7 +2,8 @@
 
 pkgname=rtl-sdr-git
 pkgrel=1
-pkgver=20160224
+pkgver=v0.5.3.r12.ge3c03f7
+epoch=1
 pkgdesc="Tuner for DVB-T sticks based on the Realtek RTL2832U, which can be used as a cheap SDR, since the chip allows transferring the raw I/Q samples to the host."
 arch=('i686' 'x86_64')
 url="http://sdr.osmocom.org/trac/wiki/rtl-sdr"
@@ -14,7 +15,8 @@ source=('rtl-sdr::git://git.osmocom.org/rtl-sdr.git')
 sha384sums=('SKIP')
 
 pkgver() {
-    date '+%Y%m%d'
+  cd "${srcdir}/rtl-sdr"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
