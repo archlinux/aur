@@ -1,0 +1,23 @@
+pkgbase = tv-overlord-git
+	pkgdesc = Download and manage tv shows
+	pkgver = r335.d7b247f
+	pkgrel = 1
+	url = https://github.com/8cylinder/tv-overlord
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-click
+	depends = python-colorama
+	depends = python-dateutil
+	depends = python-feedparser
+	depends = python-tvdb_api-git
+	depends = python-requests
+	optdepends = deluge: torrent client
+	optdepends = transmission-cli: torrent client
+	source = tv-overlord::git://github.com/8cylinder/tv-overlord.git
+	md5sums = SKIP
+
+pkgname = tv-overlord-git
+
