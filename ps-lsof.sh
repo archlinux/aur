@@ -1,17 +1,24 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 #
 # Copyright (C) 2016  Samantha McVey <samantham@posteo.net>
-# This project and this file are licensed with the GPLv2 or greater, at your choice.
+# This file and project are licensed under the GPLv2 or greater at your choice.
+# For more information view the license included license or visit:
+# https://www.gnu.org/licenses/gpl-2.0.html
 #
 # This script will output two columns, first is the name of the program and last
-# is the name of the file that has been deleted/replaced but is still in use by the program
+# is the name of the file that has been deleted/replaced but is still in use by
+# the program.
 
-if [ "$1" = "-h" ]; then
-	echo "ps-lsof outputs a list of processes whose files contents have been deleted or been changed on disk."
-	echo "    Only files whose old version's are still loaded into memory are shown."
-	echo "    Column 1 shows the processes and Column 2 shows the associated files."
-	echo "    ps-lsof does not accept any command line arguements except -h"
+if [[ "$1" = "-h" || "$1" = "--help" ]]; then
+	printf "ps-lsof outputs a list of processes whose files contents have been "
+	printf "deleted or been changed on disk.\n    Only files whose old version's "
+	printf "are still loaded into memory are shown.\n    Column 1 shows the "
+	printf "processes and Column 2 shows the associated files.\n"
+	printf "    ps-lsof does not accept any command line arguements except -h\n"
 	exit 0
+elif [ ! "$1" = "" ]; then
+	printf "Unknown option! Try %s -h or --help to see help!\n" "${0}"
+	exit 1
 fi
 
 # Get a list of process-id's, one on each line
@@ -25,7 +32,8 @@ expressions+=("| grep \" DEL \" ")
 # Remove things that are not normal files
 expressions+=("| grep -vE \" /dev| /run| /drm | /SYSV.*$| /memfd| /\[aio\]\" ")
 # Replace first 7 occurances of spaces with tabs
-expressions+=("| sed -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' ")
+expressions+=("| sed -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' ")
+expressions+=("-e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' -e 's/  */\t/' ")
 expressions+=("| cut -f 1,8 | sort -u")
 OUTPUT=$(eval "${expressions[@]}")
 

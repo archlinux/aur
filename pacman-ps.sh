@@ -1,6 +1,7 @@
-#!/bin/env bash
+#!/usr/bin/env bash
+#
 # Copyright (C) 2016  Samantha McVey <samantham@posteo.net>
-# This file and project are licensed under the GPLv2 or greater at your choosing.
+# This file and project are licensed under the GPLv2 or greater at your choice.
 # For more information view the license included or visit:
 # https://www.gnu.org/licenses/gpl-2.0.html
 #
@@ -10,6 +11,21 @@
 # the filename with the file at $DB_FILE which is a two column file delimited
 # by spaces, the first column is the name of the package and the second is the
 # filename which belongs to the package.
+
+# Help
+if [[ "${1}" = "-h" || "${1}" = "--help" ]]; then
+	printf "pacman-ps: Shows running process names and the files they still have\n "
+	printf "  open that have been changed or removed on disk and the packages which"
+	printf " own those packages.\n"
+	printf "command line options:\n  -q  quiet: don't print header\n  -s only print"
+	printf " out packages and files changed on disk but not process names\n  -h or"
+	printf " --help: shows this help\n"
+	exit 0
+elif [[ ! "${1}" = "-s" &&  ! "${1}" = "-q" && ! "${1}" = "" ]]; then
+	printf "Unknown option! Try %s -h or --help to see help!\n" "${0}"
+	exit 1
+fi
+# Function to check if we are using a temp database and if so remove it.
 cleanuptemp() {
 	if [ "${DB_TEMP_FILE}" = "1" ]; then
 		rm "${LIST}"
@@ -32,9 +48,6 @@ else
 	echo "Make sure it is in the same folder as pacman-ps or pacman-ps.sh"
 	exit 1
 fi
-
-# -s option will only print out packages and files but not processes
-
 
 # Get the output from ps-lsof and sort it so that 'join' will be happy
 PS_LSOF_OUTPUT=$($PS_LSOF_CMD | sort -k 2,2)
@@ -59,12 +72,10 @@ else
 	pacman -Ql | sort -u -k 2,2 > "${LIST}"
 	DB_TEMP_FILE="1"
 fi
+# -s option will only print out packages and files but not processes
 if [ "${1}" = "-s" ]; then
 	$PS_LSOF_CMD | cut -d ' ' -f 2-99 | xargs -I '{}'  grep '{}' "${LIST}" | sort -u | (echo "PROCESS FILENAME"; cat) | column -t
 	exit 0
-#elif [ "${1}" = "-h" ]; then
-#	printf "-q (quiet) -s (show only packages and files) -h (shows this help)\n"
-#	exit 0
 fi
 
 OUTPUT=$(join -j 2 <(printf "%s" "${PS_LSOF_OUTPUT}") <(cut -d ' ' -f 2-99 <(printf "%s" "${PS_LSOF_OUTPUT}") | xargs -P 8 -I '{}'  grep '{}' "${LIST}" | sort -u -k 2,2) )

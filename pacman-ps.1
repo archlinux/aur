@@ -1,0 +1,61 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "PACMAN\-PS" "" "August 2016" "" "pacman-ps"
+This project\'s goal is to develop a tool for being able to get a list of the packages and files which own them that have been deleted or replaced after package upgrades\.
+.
+.br
+This will allow you do for example, on a server, know which services need to be restarted for the updates to take effect\. This is exceedingly useful information\. This functionality was inspired by the zypper ps command which does something similar\.
+.
+.SS "ps\-lsof"
+It relies of the \fBps\fR command to get a list of the PID(proccess ID\'s) of all currently running programs\. It then uses \fBlsof\fR to get a list of all files open by that process by their PID\.
+.
+.br
+The end result of this is filtered out to remove unneeded information\.
+.
+.IP "" 4
+.
+.nf
+
+PROCESS          FILENAME
+atom             /usr/share/mime/mime\.cache
+cmst             /usr/share/icons/hicolor/icon\-theme\.cache
+gvfsd\-http       /usr/lib/libsqlite3\.so\.0\.8\.6
+kactivitymanage  /usr/lib/libsqlite3\.so\.0\.8\.6
+kactivitymanage  /usr/share/mime/mime\.cache
+korgac           /usr/share/mime/mime\.cache
+kwin_x11         /usr/lib/libevdev\.so\.2\.1\.14
+.
+.fi
+.
+.IP "" 0
+.
+.SS "Integrating with package managers"
+The \fBlsof\-ps\fR command in this project works, but wouldn\'t it be nice if it integrated with our package manager and told us not just which files had been changed on disk, but also which package they were from? For Arch you can follow the instructions below for \fBpacman\-ps\fR\.
+.
+.SS "pacman\-ps"
+To use this you can run: \fBpacman\-ps\fR\. It will query pacman for a list of packages and files they own using \fBpacman \-Ql\fR\. It will then call \fBps\-lsof\fR(must be in the same folder as pacman\-ps\.sh) and output something like this:
+.
+.IP "" 4
+.
+.nf
+
+FILE                          PROCESS          PACKAGE
+/usr/lib/libsqlite3\.so\.0\.8\.6  gvfsd\-http       sqlite
+/usr/lib/libsqlite3\.so\.0\.8\.6  kactivitymanage  sqlite
+.
+.fi
+.
+.IP "" 0
+.
+.P
+All that needs to be done is to download this project and run \fBmakepkg\fR in the directory\. Then you can run \fBsudo pacman \-U pacman\-ps*\.pkg\.tar\.xz\fR to install it\.
+.
+.SS "Pacman Hook"
+Every time a package is installed, a hook for pacman will update the database of files and the packages which own them\. This is useful because if a package is removed or some of the filenames in the previous version of the package were renamed, the \fBpacman\-ps\fR command will not be able to match up the open files with the packages which own them\. The pacman hook will run \fBpacman\-posthook\fR which accepts a list of the installed packages via stdin from pacman and then queries pacman about what files those packages contain\. It then adds them to the database\.
+.
+.SS "Files"
+The database is located at \fB/var/cache/pacman\-ps/files\.db\fR\.
+.
+.SS "License"
+Copyright (C) 2016 Samantha McVey \fIsamantham@posteo\.net\fR This file and project are licensed under the GPLv2 or greater at your choice\. For more information view the license included or visit: \fIhttps://www\.gnu\.org/licenses/gpl\-2\.0\.html\fR
