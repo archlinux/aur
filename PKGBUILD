@@ -3,7 +3,7 @@
 # Contributor: josephgbr <rafael.f.f1 'at' gmail 'dot' com> 
 _pkgbasename=cairomm
 pkgname=lib32-$_pkgbasename
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="C++ bindings to Cairo vector graphics library (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-cairo' 'lib32-libsigc++' "$_pkgbasename")
 makedepends=('pkgconfig' 'gcc-multilib')
 options=('!libtool' '!emptydirs')
 source=(http://www.cairographics.org/releases/${_pkgbasename}-${pkgver}.tar.gz)
-sha256sums=('ccf677098c1e08e189add0bd146f78498109f202575491a82f1815b6bc28008d')
+sha256sums=('50435aec6fdd976934b791e808993160113ad19ca53a5634a9b64ccbe55874cc')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -27,4 +27,3 @@ package() {
   # Cleanup for a lib32 package
   rm -rf ${pkgdir}/usr/{include,lib32/cairomm*,share}
 }
-
