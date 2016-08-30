@@ -33,10 +33,13 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # When using a clean chroot,
+  # one has to choose a proper locale to run the tests
   if [ "${LANG}" == "C" ]
   then
     export LANG=$(locale -a | grep utf8 | head -n1)
   fi
+
   py.test
 }
 
