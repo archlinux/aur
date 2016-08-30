@@ -1,30 +1,27 @@
 # Maintainer: Marco Pompili <aur@emarcs.org>
 
 pkgname=oglplus
-pkgver=0.68
-pkgrel=1
+pkgver=0.68.0
+pkgrel=2
 pkgdesc="A C++ wrapper for modern OpenGL"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://oglplus.org/"
-license=('Boost')
-depends=('freeglut' 'glew')
-makedepends=('freeglut' 'glew' 'cmake')
-optdepends=('boost')
+license=('custom:boost')
+makedepends=('cmake' 'boost' 'freeglut' 'glew' 'libpng' 'sdl')
+optdepends=('boost' 'freeglut' 'glew' 'libpng' 'sdl')
 provides=('oglplus')
-source=("http://downloads.sourceforge.net/project/oglplus/oglplus-${pkgver}.x/oglplus-${pkgver}.0.tar.gz")
-md5sums=('6dcd74cb4de855ccc3e8ce06715291e6')
+source=("http://downloads.sourceforge.net/project/oglplus/oglplus-${pkgver}.x/oglplus-${pkgver}.tar.gz")
+sha256sums=('d080b5b18d5f858d2ab1feec92c599f725a2c92840aab4a9010ef4f160baa763')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}.0"
-
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure.sh --prefix /usr --no-examples --no-docs
-
   cd _build
-
-  make -j 3
+  make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}.0/_build"
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/${pkgname}-${pkgver}/_build"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE_1_0.txt" "${pkgdir}/usr/share/licenses/oglplus/LICENSE"
 }
