@@ -19,7 +19,7 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root "${pkgdir}" --optimize=1
   # License Files
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
