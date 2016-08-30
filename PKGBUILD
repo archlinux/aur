@@ -2,7 +2,7 @@
 # Contributor: codestation <codestation404@gmail.com>
 
 pkgname=libvitamtp-git
-pkgver=v2.5.7.0.gc3129db
+pkgver=v2.5.9.0.g7ab537a
 pkgrel=1
 pkgdesc="Library to interact with Vita's USB MTP protocol. (GIT version"
 arch=('i686' 'x86_64')
@@ -14,9 +14,11 @@ depends=('libusb'
 provides=('libvitamtp')
 conflicts=('libvitamtp' 'vitamtp' 'vitamtpmod')
 source=('libvitamtp::git+https://github.com/codestation/vitamtp.git#branch=testing'
-        'libvitamtp-git.sysuser')
+        'libvitamtp-git.sysuser'
+        )
 sha1sums=('SKIP'
-          '06698a33a6dec777373ab4273caf4a55bfde596c')
+          '06698a33a6dec777373ab4273caf4a55bfde596c'
+          )
 install=libvitamtp-git.install
 
 pkgver() {
