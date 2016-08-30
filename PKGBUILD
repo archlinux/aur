@@ -3,16 +3,16 @@
 
 srcname='cryptokit'
 pkgname="ocaml-${srcname}"
-pkgver='1.10'
+pkgver='1.11'
 pkgrel=1
 pkgdesc='Cryptographic primitives for OCaml'
 arch=('i686' 'x86_64')
 url="http://pauillac.inria.fr/~xleroy/software.html#cryptokit"
 license=('LGPL')
-depends=('ocaml' 'zlib') # OCaml as depend, or only makedepends?
+depends=('ocaml' 'zlib' 'zarith') # OCaml as depend, or only makedepends?
 makedepends=('ocaml' 'ocaml-findlib')
-source=(http://forge.ocamlcore.org/frs/download.php/1493/cryptokit-$pkgver.tar.gz)
-md5sums=('aa697b894f87cc19643543ad1dae6c3f')
+source=(http://forge.ocamlcore.org/frs/download.php/1618/cryptokit-$pkgver.tar.gz)
+md5sums=('931f8240ad30d9930d0f584f2921de69')
 options=('staticlibs')
 
 build() {
