@@ -4,10 +4,10 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='http://arrayfire.com'
 pkgver=3.3.2
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 makedepends=('cmake' 'doxygen' 'git')
-depends=('cblas' 'fftw' 'lapack' 'freeimage' 'glfw' 'glew')
+depends=('cblas' 'fftw' 'lapack' 'freeimage' 'gcc5')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
@@ -30,6 +30,7 @@ build() {
   mkdir build && cd build
 
   #Autodetects available backends
+  CC=/usr/bin/gcc-5\
   CFLAGS="-D__STRICT_ANSI__"\
   CXXFLAGS="-D__STRICT_ANSI__"\
   cmake .. \
