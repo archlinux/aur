@@ -6,23 +6,23 @@ pkgname=lib32-boost-libs
 pkgver=1.59.0
 _boostver=${pkgver//./_}
 pkgrel=1
-url="http://www.boost.org"
+url='http://www.boost.org'
 arch=('x86_64')
-pkgdesc="Free peer-reviewed portable C++ source libraries - Runtime (32 bit)"
+pkgdesc='Free peer-reviewed portable C++ source libraries - Runtime (32 bit)'
 license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
-source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
+source=("http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz")
 sha1sums=('5123209db194d66d69a9cfa5af8ff473d5941d97')
 
 build() {
-  export CC="gcc"
-  export CFLAGS="-m32"
-  export CXX="g++"
-  export CXXFLAGS="-m32"
-  export LDFLAGS="-m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export CC='gcc'
+  export CFLAGS='-m32'
+  export CXX='g++'
+  export CXXFLAGS='-m32'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   export _stagedir="${srcdir}/stagedir"
   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
@@ -32,7 +32,7 @@ build() {
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=
   # --with-python=/usr/bin/python2
 
-  _bindir="bin.linuxx86_64"
+  _bindir='bin.linuxx86_64'
   install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
 
   # Add an extra python version. This does not replace anything and python 2.x need to be the default.
