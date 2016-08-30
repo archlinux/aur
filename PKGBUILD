@@ -1,13 +1,13 @@
 # Maintainer: Michael Greene <mgreene@securityinnovation.com>
 
 pkgname=eluminance-git
-pkgver=0.9.r76
+pkgver=0.9.r81
 pkgrel=1
 pkgdesc="A fast photo browser, written in Python using EFL"
 arch=('any')
 url="https://github.com/DaveMDS/eluminance"
 license=('GPL')
-depends=('python-efl' 'python-xdg')
+depends=('python-efl>=1.18' 'python-xdg')
 makedepends=('git')
 provides=('eluminance')
 source=('git+https://github.com/DaveMDS/eluminance.git')
