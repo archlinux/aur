@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sanoid
-pkgver=1.4.6c
-pkgrel=3
+pkgver=1.4.7
+pkgrel=1
 pkgdesc="Sanoid is a policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
@@ -10,11 +10,11 @@ license=('GPL')
 depends=('perl' 'perl-config-inifiles')
 conflicts=('sanoid-git')
 provides=('sanoid')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/v$pkgver.tar.gz")
-sha256sums=('7f2a8c43f3096593bed215e4eec71640eacd4c04d1eb79df0bc27028c9eb32c3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/sanoid/archive/c$pkgver.tar.gz")
+sha256sums=('e877e96ccfbdccbfd34c619356b1b75f39ea181b5df3c531c7edff34e320e820')
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-c${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sanoid/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/sanoid/LICENSE"
   install -Dm644 sanoid.conf "${pkgdir}/etc/sanoid/sanoid.conf"
