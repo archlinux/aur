@@ -1,0 +1,13 @@
+pkgbase = slct
+	pkgdesc = simple logfile clustering tool
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://ristov.github.io/slct/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://ristov.github.io/slct/slct-0.05.tar.gz
+	md5sums = 0c6443502a693e06152c05473512b70d
+
+pkgname = slct
+
