@@ -1,0 +1,4 @@
+audacity/
+pkg/
+src/
+*.pkg.tar.xz
