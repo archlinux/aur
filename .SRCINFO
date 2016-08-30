@@ -1,6 +1,6 @@
 pkgbase = ts-bt
 	pkgdesc = Bluetooth Management for theShell using BlueZ
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 0
 	url = https://github.com/vicr123/ts-bt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ts-bt
 	makedepends = qtchooser
 	makedepends = git
 	depends = bluez-qt
-	source = ts-bt-1.1::git+https://github.com/vicr123/ts-bt#branch=master
+	source = ts-bt-1.2::git+https://github.com/vicr123/ts-bt#branch=master
 	md5sums = SKIP
 
 pkgname = ts-bt

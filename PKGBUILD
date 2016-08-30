@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-bt
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="Bluetooth Management for theShell using BlueZ"
 arch=("x86_64")
