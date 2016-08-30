@@ -16,7 +16,7 @@ if [[ "$1" = "-h" || "$1" = "--help" ]]; then
 	printf "processes and Column 2 shows the associated files.\n"
 	printf "    ps-lsof does not accept any command line arguements except -h\n"
 	exit 0
-elif [ ! "$1" = "" ]; then
+elif [[ ! "$1" = "" && ! "$1" = "-q" ]]; then
 	printf "Unknown option! Try %s -h or --help to see help!\n" "${0}"
 	exit 1
 fi
