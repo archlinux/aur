@@ -1,4 +1,5 @@
-# Maintainer: Joel Pedraza <joel@joelpedraza.com>
+# Maintainer: Sandor Nagy <sandor-dot-nagy-at-kdemail-dot-net>
+# Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r03
@@ -13,7 +14,7 @@ url='http://developer.android.com/sdk/index.html'
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sysimg_armv7a-${_sdkint}_${_rev}.zip")
+source=("http://dl.google.com/android/repository/sys-img/android/sysimg_armv7a-${_sdkint}_${_rev}.zip")
 sha1sums=('97cfad22b51c8475e228b207dd36dbef1c18fa38')
 
 package() {
