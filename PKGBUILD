@@ -8,12 +8,12 @@
 
 pkgname=lib32-libpng12
 pkgver=1.2.56
-pkgrel=3
+pkgrel=4
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
 url='http://www.libpng.org/pub/png/libpng.html'
 license=('custom')
-depends=('lib32-glibc' 'lib32-zlib' 'libpng12')
+depends=('lib32-glibc' 'lib32-zlib')
 makedepends=('gcc-multilib')
 source=("http://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
         "http://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
@@ -49,8 +49,7 @@ package() {
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,lib32/{libpng.{a,so},pkgconfig},share}
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s libpng12 "${pkgdir}"/usr/share/licenses/lib32-libpng12
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/lib32-libpng12/
 }
 
 # vim: ts=2 sw=2 et:
