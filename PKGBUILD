@@ -1,37 +1,38 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
 pkgname=i3blocks-gaps-git
+_pkgname=i3blocks-gaps
 pkgver=1.4.r31.ge14ccbd
 pkgrel=1
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
-url="https://github.com/Airblader/i3blocks-gaps"
+url="https://github.com/Airblader/$_pkgname"
 license=('GPL3')
 makedepends=('git' 'ruby-ronn')
 optdepends=('acpi: For example battery script'
+            'bc: For bandwidth script'
+            'lm_sensors: For temperature script'
             'sysstat: For example cpu_usage script'
             'alsa-utils: For default volume script'
             'playerctl: For mediaplayer contrib script'
             'openvpn: For openvpn contrib script')
 provides=("i3blocks")
 conflicts=("i3blocks" "i3blocks-git")
-source=("git+https://github.com/Airblader/i3blocks-gaps")
+source=("git+https://github.com/Airblader/$_pkgname")
 sha256sums=('SKIP')
 
-_gitname="i3blocks-gaps"
-
 pkgver () {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_pkgname"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build () {
-  make -C "$srcdir/$_gitname" clean
-  make -C "$srcdir/$_gitname" PREFIX=/usr
+  make -C "$srcdir/$_pkgname" clean
+  make -C "$srcdir/$_pkgname" PREFIX=/usr
 }
 
 package () {
-  make -C "$srcdir/$_gitname" DESTDIR="$pkgdir" PREFIX=/usr install
+  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib install
 }
 
 # vim: et ts=2 sw=2
