@@ -2,26 +2,26 @@
 # Contributor: kappa <kappacurve at gmail dot com>
 
 pkgname=gimp-plugin-normalmap
-_pkgname=gimp-normalmap
+_srcname=gimp-normalmap
 pkgver=1.2.3
-pkgrel=1
-pkgdesc="A Gimp plugin for converting images into RGB normal maps"
-url="http://code.google.com/p/gimp-normalmap/"
+pkgrel=2
+pkgdesc='A plugin for GIMP that aids in the authoring of tangent-space normal maps for use in per-pixel lighting applications.'
+url="https://code.google.com/archive/p/$_srcname/"
 arch=('i686' 'x86_64')
-license=("GPL")
+license=('GPL')
 depends=('gimp' 'gtkglext' 'glew')
 conflicts=('gimp-normalmap')
 replaces=('gimp-normalmap')
-source=(http://gimp-normalmap.googlecode.com/files/${_pkgname}-${pkgver}.tar.bz2)
-sha1sums=('a7b07bae2c8c62892f8a8490d73e89367930f85e')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$_srcname/$_srcname-$pkgver.tar.bz2")
+sha512sums=('08320f0da06b9c11f3a57e8d4fc680699c90f6d17f3becf5adc924577117521d9311694aeafc15161e799d117a6c16edf4fad3691468ee5c43553093fc008ae6')
 options=(!strip)
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_srcname-$pkgver"
   make LDFLAGS=-lm
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -D -m 755 ./normalmap ${pkgdir}/usr/lib/gimp/2.0/plug-ins/normalmap
+  cd "$srcdir/$_srcname-$pkgver"
+  install -D -m 755 ./normalmap $pkgdir/usr/lib/gimp/2.0/plug-ins/normalmap
 }
