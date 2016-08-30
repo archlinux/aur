@@ -2,7 +2,7 @@
 # Previous Maintainer: Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ee
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="A free universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source_i686=(http://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ee-${pkgver}-linux
 source_x86_64=(http://dbeaver.jkiss.org/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_i686=('4ec5670954511e21048a4a715f8d9619c5b1a9fa67a74c30ce4c36d7f9cb03c2')
-sha256sums_x86_64=('57e1411cbf55473dd9ca6348133614a19f558913e17b697405453fd79f6d4f26')
+sha256sums_i686=('3f83864c5b0f9d2126b0b2a43e01727eda7031f8662188283632d9aef3584064')
+sha256sums_x86_64=('32bf72955f1df1b01d9df0aaec417472e746eff6433ec6a02272f7f78d68cee8')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86.tar.gz"
            "dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
