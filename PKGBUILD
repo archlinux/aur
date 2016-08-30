@@ -16,70 +16,68 @@ makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
 sha1sums=('5123209db194d66d69a9cfa5af8ff473d5941d97')
 
-
-
 build() {
-	export CC="gcc"
-	export CFLAGS="-m32"
-	export CXX="g++"
-	export CXXFLAGS="-m32"
-	export LDFLAGS="-m32"
-	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export CC="gcc"
+  export CFLAGS="-m32"
+  export CXX="g++"
+  export CXXFLAGS="-m32"
+  export LDFLAGS="-m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-   export _stagedir="${srcdir}/stagedir"
-   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
+  export _stagedir="${srcdir}/stagedir"
+  local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
-   cd "${srcdir}/boost_${_boostver}"
+  cd "${srcdir}/boost_${_boostver}"
 
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=
-   # --with-python=/usr/bin/python2
+  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=
+  # --with-python=/usr/bin/python2
 
-	_bindir="bin.linuxx86_64"
-    install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
+  _bindir="bin.linuxx86_64"
+  install -Dm755 tools/build/src/engine/$_bindir/b2 "${_stagedir}"/bin/b2
 
-   # Add an extra python version. This does not replace anything and python 2.x need to be the default.
-   #echo "using python : 3.4 : /usr/bin/python3 : /usr/include/python3.4m : /usr/lib ;" >> project-config.jam
+  # Add an extra python version. This does not replace anything and python 2.x need to be the default.
+  #echo "using python : 3.4 : /usr/bin/python3 : /usr/include/python3.4m : /usr/lib ;" >> project-config.jam
 
-   # Support for OpenMPI
-   #echo "using mpi ;" >> project-config.jam
+  # Support for OpenMPI
+  #echo "using mpi ;" >> project-config.jam
 
-   # boostbook is needed by quickbook
-   install -d -m 755 "${_stagedir}"/share/boostbook
-   cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
+  # boostbook is needed by quickbook
+  install -d -m 755 "${_stagedir}"/share/boostbook
+  cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
 
-	# default "minimal" install: "release link=shared,static
-	# runtime-link=shared threading=single,multi"
-	# --layout=tagged will add the "-mt" suffix for multithreaded libraries
-	# and installs includes in /usr/include/boost.
-	# --layout=system no longer adds the -mt suffix for multi-threaded libs.
-	# install to ${_stagedir} in preparation for split packaging
-	"${_stagedir}"/bin/b2 \
-		variant=release \
-		debug-symbols=off \
-		threading=multi \
-		runtime-link=shared \
-		link=shared,static \
-		toolset=gcc \
-		address-model=32 \
-		--without-python \
-		--without-mpi \
+  # default "minimal" install: "release link=shared,static
+  # runtime-link=shared threading=single,multi"
+  # --layout=tagged will add the "-mt" suffix for multithreaded libraries
+  # and installs includes in /usr/include/boost.
+  # --layout=system no longer adds the -mt suffix for multi-threaded libs.
+  # install to ${_stagedir} in preparation for split packaging
+  "${_stagedir}"/bin/b2 \
+    variant=release \
+    debug-symbols=off \
+    threading=multi \
+    runtime-link=shared \
+    link=shared,static \
+    toolset=gcc \
+    address-model=32 \
+    --without-python \
+    --without-mpi \
         cflags="${CPPFLAGS} ${CFLAGS} -O3" linkflags="${LDFLAGS}" \
-		--layout=system \
-		--prefix="${_stagedir}" \
-		${JOBS} \
-		install
+    --layout=system \
+    --prefix="${_stagedir}" \
+    ${JOBS} \
+    install
 
-   #find ${_stagedir} -name \*.a -exec rm -f {} \;
+  #find ${_stagedir} -name \*.a -exec rm -f {} \;
 }
 
 package() {
-	_stagedir="${srcdir}/stagedir"
+  _stagedir="${srcdir}/stagedir"
 
-	install -d -m 755 "${pkgdir}/usr/lib32"
-	cp -a "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib32/"
-	cp -a "${_stagedir}"/lib/*.a "${pkgdir}/usr/lib32/"
+  install -d -m 755 "${pkgdir}/usr/lib32"
+  cp -a "${_stagedir}"/lib/*.so{,.*} "${pkgdir}/usr/lib32/"
+  cp -a "${_stagedir}"/lib/*.a "${pkgdir}/usr/lib32/"
 
-	install -D -m 644 "${srcdir}/boost_${_boostver}/LICENSE_1_0.txt" \
-		"${pkgdir}"/usr/share/licenses/lib32-boost-libs/LICENSE_1_0.txt
+  install -D -m 644 "${srcdir}/boost_${_boostver}/LICENSE_1_0.txt" \
+    "${pkgdir}"/usr/share/licenses/lib32-boost-libs/LICENSE_1_0.txt
 }
 
