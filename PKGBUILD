@@ -5,14 +5,12 @@ pkgname=perl-wx
 pkgver=0.9928
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=3
+pkgrel=4
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
 license=('GPL' 'PerlArtistic')
-depends=(
-wxgtk
-)
+depends=(wxgtk)
 makedepends=(
 perl-alien-wxwidgets
 perl-extutils-xspp
@@ -23,6 +21,14 @@ xorg-server-xvfb
 #Test::More             => perl
 #Test::Harness          => perl
 )
+case $CARCH in
+  i686)
+  checkdepends=(webkitgtk)
+  ;;
+  x86_64)
+  checkdepends=(webkitgtk2)
+  ;;
+esac
 provides=(
 perl-wx-aui
 perl-wx-app
