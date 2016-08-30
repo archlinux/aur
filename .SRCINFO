@@ -1,6 +1,6 @@
 pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 3.0
+	pkgver = 4.0
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = theshell
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-3.0::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-4.0::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
 pkgname = theshell
