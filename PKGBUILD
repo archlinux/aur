@@ -2,16 +2,17 @@
 
 _origname=log4cplus
 pkgname=lib32-log4cplus
-_origver=1.2.0-rc5
-pkgver=1.2.0rc5
+_origver=1.2.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A C++ logger very close to Java's log4j"
 arch=('x86_64')
 url="http://log4cplus.sourceforge.net/"
 license=('GPL')
 depends=('lib32-gcc-libs')
+makedepends=('gcc-multilib')
 source=("http://downloads.sourceforge.net/${_origname}/${_origname}-${_origver}.tar.xz")
-sha256sums=('224d149691fc75ae36875855be3f487d7de301a04d7b5bd2929ef7c35a91d256')
+sha256sums=('93aa5b26425f0b1596c5e5b3d58916988fdd83b359a02ca59878eb5c7c2ec6c2')
 
 package() {
   cd ${srcdir}/${_origname}-${_origver}
