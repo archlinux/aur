@@ -2,9 +2,9 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-aur
-pkgver=4.1.3
-_pkgver=4.1.3
-pkgrel=2
+pkgver=4.1.4
+_pkgver=4.1.4
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
 url="https://github.com/manjaro/pamac"
@@ -21,17 +21,15 @@ conflicts=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz"
-        "revert-d840b05.patch::https://github.com/manjaro/pamac/commit/d840b05e915335a300cede02dcaa3648be764fa1.patch")
-sha256sums=('8324ee4e70279e543183ae754de0d50237fbb82cbf3caac6274a6eefc18f5aba'
-            '5a5778c4ada8ddef128ce86fea17eecfb56e0d548218381e284323cac3e33644')
+source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
+sha256sums=('e4c9247156260c9b031c724cf002408580f508fa2adb64340b24e2a6c8071462')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
   sed -i -e "s|\"4.1.3\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala 
   # patches here
-  patch -Rp1 -i "$srcdir/revert-d840b05.patch"
+ # patch -Rp1 -i "$srcdir/revert-d840b05.patch"
 }
 
 build() {
