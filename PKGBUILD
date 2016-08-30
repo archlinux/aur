@@ -3,14 +3,14 @@
 pkgname=lxd-lts
 _gitpkgname=lxd
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd')
 provides=('lxd')
-depends=('lxc')
+depends=('lxc' 'squashfs-tools')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 optdepends=(
