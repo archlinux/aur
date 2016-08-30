@@ -6,18 +6,20 @@ pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 _pkgver=5.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=4
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
              'opencv' 'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
-             'kfilemetadata' 'akonadi-contact' 'qt5-multimedia' 'threadweaver' 'kcalcore'
+             'kfilemetadata' 'akonadi-contacts' 'qt5-multimedia' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-5.1-fix-build.patch)
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-5.1-fix-build.patch
+        kdebug-367675.patch::"https://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=463667c8&o=plain")
 sha1sums=('87a843c39f45b8704ead6e6029e52fb03ee44680'
-          '5b6644c8b5534a1712f46fc84948de9a0039a601')
+          '5b6644c8b5534a1712f46fc84948de9a0039a601'
+          'd669d6f248d6c7dec6728037992fdf8d4e14c1d9')
 
 prepare() {
   mkdir -p build
@@ -25,6 +27,9 @@ prepare() {
   cd $pkgname-$pkgver
   # Fix build on i686
   patch -p1 -i ../digikam-5.1-fix-build.patch
+  # Fix digikamhelperdir
+  cd core
+  patch -p1 -i "$srcdir"/kdebug-367675.patch
 }
 
 build() {
@@ -46,7 +51,7 @@ build() {
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contact'
+  depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
 	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool')
