@@ -7,8 +7,7 @@ pkgdesc="C++ port of the Typesafe Config library"
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/cpp-hocon"
 license=('APACHE')
-depends=('leatherman')
-makedepends=('boost' 'cmake')
+makedepends=('boost' 'cmake' 'leatherman')
 source=($pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz)
 md5sums=('8db77c4ba4bb44047450c19ff43b3f51')
 
