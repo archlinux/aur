@@ -2,7 +2,7 @@
 pkgname=gromacs-mpi
 _pkgname=gromacs
 pkgver=2016
-pkgrel=6
+pkgrel=7
 pkgdesc='molecular dynamics simulation suite'
 url='http://www.gromacs.org/'
 license=("LGPL2")
@@ -56,13 +56,14 @@ package() {
          -e "s:\$GMXBIN/gmx-completion-\*.bash:/usr/share/bash-completion/completions/gmx-completion-\*.bash:g" \
             ${pkgdir}/usr/bin/GMXRC.bash
   install -d ${pkgdir}/usr/share/bash-completion/completions
-  install -Dm755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
+  install -m755 ${pkgdir}/usr/bin/gmx-completion* ${pkgdir}/usr/share/bash-completion/completions/
   rm -f ${pkgdir}/usr/bin/gmx-completion*
 
   # Environmental variables, etc are set in /etc/profile.d (must be suffixed
   # with .sh to be automatically sourced)
-  install -Dm755 ${pkgdir}/usr/bin/GMXRC.bash ${pkgdir}/etc/profile.d/GMXRC.sh
-  install -Dm755 ${pkgdir}/usr/bin/GMXRC.csh ${pkgdir}/etc/profile.d/GMXRC.csh
+  install -d ${pkgdir}/etc/profile.d
+  install -m755 ${pkgdir}/usr/bin/GMXRC.bash ${pkgdir}/etc/profile.d/GMXRC.sh
+  install -m755 ${pkgdir}/usr/bin/GMXRC.csh ${pkgdir}/etc/profile.d/GMXRC.csh
   rm -f ${pkgdir}/usr/bin/GMXRC*
 
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/gromacs/LICENSE
