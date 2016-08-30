@@ -32,7 +32,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  install -Dm755 "${_base_dir}/museeks" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
+  install -Dm755 "${_base_dir}/Museeks" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
   install -Dm644 "${_base_dir}/"{content_shell.pak,icudtl.dat,libffmpeg.so,libnode.so,natives_blob.bin,snapshot_blob.bin,version,LICENSE} "${pkgdir}/usr/share/${_pkgname}/"
 
   cp -a "${_base_dir}/"{locales,resources} "${pkgdir}/usr/share/${_pkgname}/"
