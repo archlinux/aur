@@ -2,6 +2,7 @@
 
 pkgname=oglplus
 pkgver=0.68.0
+_dirver=0.68
 pkgrel=2
 pkgdesc="A C++ wrapper for modern OpenGL"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('custom:boost')
 makedepends=('cmake' 'boost' 'freeglut' 'glew' 'libpng' 'sdl')
 optdepends=('boost' 'freeglut' 'glew' 'libpng' 'sdl')
 provides=('oglplus')
-source=("http://downloads.sourceforge.net/project/oglplus/oglplus-${pkgver}.x/oglplus-${pkgver}.tar.gz")
+source=("http://downloads.sourceforge.net/project/oglplus/oglplus-${_dirver}.x/oglplus-${pkgver}.tar.gz")
 sha256sums=('d080b5b18d5f858d2ab1feec92c599f725a2c92840aab4a9010ef4f160baa763')
 
 build() {
