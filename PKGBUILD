@@ -1,9 +1,8 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=php-geoip
-pkgver=1.1.0
-pkgrel=2
-_svnrev=337409
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="GeoIP module for PHP"
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/geoip"
@@ -11,12 +10,11 @@ license=('PHP')
 depends=('php' 'geoip')
 makedepends=('subversion')
 backup=('etc/php/conf.d/geoip.ini')
-#source=(http://pecl.php.net/get/geoip-$pkgver.tgz)
-source=("$pkgname::svn+https://svn.php.net/repository/pecl/geoip/trunk#revision=$_svnrev")
-sha256sums=('SKIP')
+source=(https://pecl.php.net/get/geoip-$pkgver.tgz)
+sha256sums=('b2d05c03019d46135c249b5a7fa0dbd43ca5ee98aea8ed807bc7aa90ac8c0f06')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/geoip-$pkgver"
 
   phpize
   ./configure --prefix=/usr
@@ -24,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/geoip-$pkgver"
 
   make INSTALL_ROOT="$pkgdir" install
   echo ';extension=geoip.so' >geoip.ini
