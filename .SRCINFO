@@ -1,6 +1,6 @@
 pkgbase = pbar
 	pkgdesc = Progress bar in pacman style
-	pkgver = 20150414
+	pkgver = 20160830
 	pkgrel = 1
 	url = https://github.com/ritze/pbar
 	arch = any
