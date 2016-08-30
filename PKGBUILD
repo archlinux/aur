@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-pymysql
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Pure Python MySQL Client"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('ad1115f1366c14a107f7b45c4a5f19b534f9ee85c188dfcd585fc08d2c966b30')
+sha256sums=('0d8edc5817fa07eb34fd249b5042d0c6d972cf4e01525258d1123532e52a4f0c')
