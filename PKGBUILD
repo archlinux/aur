@@ -7,7 +7,7 @@ pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=25.1
 _pkgver=25.1-rc2
-pkgrel=0.2
+pkgrel=0.2.1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -19,7 +19,7 @@ conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
 sha384sums=('9ec2a501102f30ae9f520ebcb9f7e36cf6543aac9cd0cbca12d1fb33516ec2943bfe913605ea0a254c3adfb446bf41ed'
             'SKIP')
-validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
