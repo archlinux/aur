@@ -1,10 +1,10 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname="lsdesktopf"
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.5
+pkgrel=0
 pkgdesc="List available *.desktop files and search in their content."
 arch=(any)
-depends=(bash gawk grep)
+depends=('bash>=4.0' 'gawk' 'grep')
 makedepends=('git')
 source=("lsdesktopf::git+https://github.com/AndyCrowd/list-desktop-files.git")
 license=('GPL3')
