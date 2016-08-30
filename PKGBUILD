@@ -2,7 +2,7 @@
 # Contributor: josephgbr
 _pkgbasename=pangomm
 pkgname=lib32-$_pkgbasename
-pkgver=2.36.0
+pkgver=2.40.1
 pkgrel=1
 pkgdesc="C++ bindings for pango (32 bit, library only)"
 arch=('x86_64')
@@ -12,11 +12,12 @@ depends=('lib32-pango' 'lib32-glibmm' 'lib32-cairomm')
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/${pkgver::4}/${_pkgbasename}-${pkgver}.tar.xz)
-sha256sums=('a8d96952c708d7726bed260d693cece554f8f00e48b97cccfbf4f5690b6821f0')
+sha256sums=('9762ee2a2d5781be6797448d4dd2383ce14907159b30bc12bf6b08e7227be3af')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  ./configure --prefix=/usr --libdir=/usr/lib32 CXX='g++ -m32'
+  ./configure --prefix=/usr --libdir=/usr/lib32 CC='gcc' CFLAGS='-m32' PKG_CONFIG_PATH='/usr/lib32/pkgconfig/'
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
