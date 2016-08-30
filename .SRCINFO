@@ -1,0 +1,17 @@
+pkgbase = rust-parallel-git
+	pkgdesc = Command-line CPU load balancer written in Rust
+	pkgver = 0.1.0.r7.g6861710
+	pkgrel = 1
+	url = https://github.com/mmstick/parallel
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.11.0
+	makedepends = cargo>=0.12.0
+	makedepends = git>=1
+	conflicts = parallel
+	source = parallel::git+https://github.com/mmstick/parallel.git#branch=master
+	md5sums = SKIP
+
+pkgname = rust-parallel-git
+
