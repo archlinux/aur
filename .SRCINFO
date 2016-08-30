@@ -1,6 +1,6 @@
 pkgbase = museeks-bin
 	pkgdesc = A lightweight and cross-platform music player.
-	pkgver = 0.6.0
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = http://museeks.io
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = museeks-bin
 	provides = museeks
 	conflicts = museeks
 	conflicts = museeks-git
-	source = https://github.com/KeitIG/museeks/releases/download/0.6.0/museeks-linux-x64.zip
-	md5sums = 9552e82aab69503588724fc1c1d33d40
+	source_x86_64 = https://github.com/KeitIG/museeks/releases/download/0.6.3/museeks-linux-x64.zip
+	md5sums_x86_64 = 85b6919f4206687ab776d09edf78a754
+	source_i686 = https://github.com/KeitIG/museeks/releases/download/0.6.3/museeks-linux-ia32.zip
+	md5sums_i686 = 0665822acef36c54dfd03dc38759011f
 
 pkgname = museeks-bin
 
