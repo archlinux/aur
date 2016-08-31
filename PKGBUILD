@@ -4,7 +4,7 @@
 
 pkgname=python2-gnupg
 _pkgsrcname=python-gnupg
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="The gnupg module allows Python programs to make use of the functionality provided by the GNU Privacy Guard."
 url="https://bitbucket.org/vinay.sajip/python-gnupg"
@@ -12,7 +12,7 @@ license=("BSD")
 arch=("any")
 depends=('python2' 'gnupg')
 source=("https://bitbucket.org/vinay.sajip/${_pkgsrcname}/get/${pkgver}.tar.gz")
-md5sums=('16678c63dc07d7ef598d24a45bbf2ac5')
+md5sums=('ff3ad7f6675841c6d396c0e14604e260')
 
 build() {
   cd $srcdir/vinay.sajip-${_pkgsrcname}-????????????/
