@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.7.4
+Name=Laverna
+Comment=Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote. 
+Exec=/usr/bin/laverna
+Icon=/opt/laverna/resources/app/dist/images/icon/icon.png
+Terminal=false
+Type=Application
+Categories=Application;Utility;
