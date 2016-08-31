@@ -1,6 +1,6 @@
 pkgbase = python-pew
 	pkgdesc = Python Env Wrapper, a set of tools to manage multiple virtual environments
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/berdario/pew
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-pew
 	depends = python-pythonz-bd
 	conflicts = pew
 	replaces = pew
-	source = https://github.com/berdario/pew/archive/0.1.21.zip
-	md5sums = b7fa11e8c15ba99f81f5944b9e3bcc97
+	source = https://github.com/berdario/pew/archive/0.1.22.zip
+	md5sums = 9fc2eb241876d2d31980c5632fe30f30
 
 pkgname = python-pew
 
