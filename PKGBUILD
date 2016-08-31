@@ -85,13 +85,15 @@ package() {
   if [ "${CARCH}" = "i686" ]; then
   _arch=i386
   fi
-  install -dm755 ${pkgdir}/usr/share/atom-git
   install -dm755 ${pkgdir}/usr/bin
+  install -dm755 ${pkgdir}/usr/share/atom-git
   install -dm755 ${pkgdir}/usr/share/applications
+  install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
   install -dm755 ${pkgdir}/usr/share/pixmaps
 
   cp -r out/atom-${_ver}-${_commit}-${_arch}/* ${pkgdir}/usr/share/atom-git/
   mv ${pkgdir}/usr/share/atom-git/atom.png ${pkgdir}/usr/share/pixmaps/atom-git.png
+  mv ${pkgdir}/usr/share/atom-git/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
   install -Dm755 $srcdir/atom-git ${pkgdir}/usr/bin/atom-git
   install -Dm644 $srcdir/atom-git.desktop ${pkgdir}/usr/share/applications/atom-git.desktop
   rm ${pkgdir}/usr/share/atom-git/resources/app/atom.sh
