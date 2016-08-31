@@ -1,12 +1,12 @@
 pkgbase = razer-blackwidow-2014
 	pkgdesc = Enables M1-M5 and FN keys in Linux for the Razer BlackWidow 2014 keyboard
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skogler/razer-blackwidow-2014
 	install = razer-blackwidow-2014.install
 	arch = any
 	license = GPL2
-	depends = python-pyusb-git
+	depends = python-pyusb
 	depends = xorg-xmodmap
 	provides = razer-blackwidow-2014
 	conflicts = razer-blackwidow-macro-scripts
