@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Atom Git
-Comment=<%=Desc=%>
+Comment=Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code
 GenericName=Text Editor
 Exec=/usr/bin/atom-git %U
 Icon=atom-git.png
