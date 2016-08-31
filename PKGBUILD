@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mktxn
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Double-entry bookkeeping transaction journal parser and serializer"
 arch=('any')
