@@ -2,10 +2,11 @@
 
 pkgname=wolfssl
 pkgver=3.9.8
-pkgrel=1
-pkgdesc='wolfSSL (formerly CyaSSL) is a small, fast, portable implementation of TLS/SSL for embedded devices to the cloud.'
+pkgrel=2
+pkgdesc='A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL) '
 arch=(i686 x86_64)
 license=(GPL)
+depends=('bash')
 url='https://www.wolfssl.com/'
 source=(https://github.com/wolfSSL/wolfssl/archive/v$pkgver.tar.gz)
 sha1sums=('f196523e9ed50e5ab08d7f6b90cdad827178db2f')
