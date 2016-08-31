@@ -11,7 +11,7 @@ _attempt_fix=0
 _64=0
 
 pkgname=google-earth
-pkgver=7.1.4.1529
+pkgver=7.1.7.2600
 pkgrel=1
 pkgdesc="A 3D interface to view satellite images of Earth and other objects"
 arch=('i686' 'x86_64')
@@ -42,14 +42,14 @@ source=("google-earth-stable_${pkgver}_${_arch}.deb::https://dl.google.com/earth
         'Google-Earth-Additional-Terms-of-Service.html::https://www.google.com/help/terms_maps.html'
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html::https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html::https://www.google.com/intl/ALL/policies/privacy/index.html')
-md5sums=('b8847cb867bdb3ff892149f0fd68f036'
+md5sums=('cc02daa74d1b81daf44326a25460a88b'
          'e84f5d51ea3545c131d1794f89f6464a'
          '598d579a1c3199c77850d86ba78f7b44'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-[[ $_arch = amd64 ]] && md5sums[0]='7bbba9d4d64f2a9b38752e259d849bda'
+[[ $_arch = amd64 ]] && md5sums[0]='e6356f9bb99d9019ee0a156f9331beb8'
 
 _instdir=/opt/google/earth/free/
 
