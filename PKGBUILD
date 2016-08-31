@@ -2,13 +2,13 @@
 
 _gitname=kio-gdrive
 pkgname=$_gitname-git
-pkgver=r81.fc75343
+pkgver=r97.6b9991b
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="KIO Slave to access Google Drive"
 url="https://projects.kde.org/kio-gdrive"
 license=(GPL)
-depends=(libkgapi)
+depends=(libkgapi qtkeychain)
 makedepends=(extra-cmake-modules git kdesignerplugin)
 source=("git://anongit.kde.org/$_gitname.git")
 md5sums=('SKIP')
