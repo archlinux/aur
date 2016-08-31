@@ -1,76 +1,64 @@
-# Maintainer: Alexey D. <lq07829icatm@rambler.ru>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
-# Contributor: artoo at manjaro.org
-# Contributor: nous at archlinux.us
 
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 _pkgname=dbus
-_gentoo_uri="https://raw.githubusercontent.com/gentoo/gentoo/master/sys-apps/dbus/files"
+
 pkgname=dbus-openrc
-pkgver=1.10.8
+pkgver=1.10.10
 pkgrel=5
-pkgdesc="Freedesktop.org message bus system, no systemd."
-url="http://www.freedesktop.org/Software/dbus"
-arch=('i686' 'x86_64')
-license=('GPL' 'custom')
-groups=('eudev-base' 'openrc-base' 'openrc-desktop')
-depends=('expat' "libdbus=${pkgver}" 'shadow' 'openrc')
-makedepends=('libx11' 'xmlto' 'docbook-xsl' 'udev')
-optdepends=('libx11: dbus-launch support')
-provides=('dbus-core' "dbus=${pkgver}")
-conflicts=('dbus-core' 'dbus' 'systemd-sysvcompat')
-replaces=('dbus-openrc>20160101' 'dbus-eudev')
-install=dbus.install
-source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz" #{,.asc}
-        "dbus.initd::${_gentoo_uri}/dbus.initd-r1"
-        '30-dbus.sh')
-sha256sums=('baf3d22baa26d3bdd9edc587736cd5562196ce67996d65b82103bedbe1f0c014'
-            '4491c09942d72fd464bc1da286c4f5a237ec8debfbaba83c6fbf4a46d46fe51e'
-            'dc1ce6d38674bad7a48ad1911576f8bbb3819f1019126fb1ef7c3cfad16bb02a')
+pkgdesc="Freedesktop.org message bus system"
+url="https://wiki.freedesktop.org/www/Software/dbus/"
+arch=("i686" "x86_64")
+license=("GPL" "custom")
+provides=("libdbus" "dbus")
+depends=("libeudev" "expat")
+makedepends=("eudev" "xmlto" "docbook-xsl" "python" "yelp-tools" "doxygen" 'libx11')
+conflicts=("libdbus" "dbus")
+source=("https://dbus.freedesktop.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        "dbus.initd::${_url}/sys-apps/dbus/files/dbus.initd-r1")
+sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
+            '4491c09942d72fd464bc1da286c4f5a237ec8debfbaba83c6fbf4a46d46fe51e')
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
+            -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|' \
+            -e 's|/var/run|/run|g' \
+            -e 's|dbus.pid|dbus/pid|g' \
+            -i ${pkgdir}/etc/init.d/$1
+}
+
+prepare() {
+    cd $_pkgname-$pkgver
+#   autoreconf -fvi
+}
 
 build() {
     cd $_pkgname-$pkgver
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib/dbus-1.0 \
-        --with-dbus-user=dbus \
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+        --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
         --with-system-pid-file=/run/dbus/pid \
         --with-system-socket=/run/dbus/system_bus_socket \
         --with-console-auth-dir=/run/console/ \
-        --enable-inotify \
-        --disable-verbose-mode \
-        --disable-static \
-        --disable-tests \
-        --disable-asserts \
-        --disable-libaudit \
-        --disable-systemd
-
+        --enable-inotify --disable-static \
+        --disable-verbose-mode --disable-asserts \
+        --disable-systemd --disable-user-session
     make
 }
 
-_inst_initd(){
-	echo $1 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
-	install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
-	sed -e 's|/sbin|/usr/bin|' -e 's|/var/run|/run|g' -i ${pkgdir}/etc/init.d/$1
-}
-
-package(){
+package() {
     cd $_pkgname-$pkgver
 
-    # Disable installation of libdbus
-    sed -i -e 's/^SUBDIRS = dbus/SUBDIRS =/' Makefile
-
     make DESTDIR="$pkgdir" install
+    rm -r "$pkgdir/var/run"
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 
-    rm -rf "${pkgdir}/var/run"
-    rm -rf "${pkgdir}/usr/lib/pkgconfig"
-
-    install -Dm755 ../30-dbus.sh "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus"
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus/COPYING"
+    # Split docs
+    rm -rv "$pkgdir/usr/share/doc"
 
     _inst_initd 'dbus'
-
-    sed -e 's|dbus.pid|dbus/pid|g' -i "${pkgdir}/etc/init.d/dbus"
 }
