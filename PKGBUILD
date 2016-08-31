@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd "$_gitdir"
 
-	./compile
+	./compile -ca
 }
 
 package() {
