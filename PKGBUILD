@@ -3,7 +3,7 @@
 _pkgname=salsapipe
 pkgname=${_pkgname}-git
 pkgver=20150727.r26.6d81ace
-pkgrel=3
+pkgrel=4
 pkgdesc='Encrypted network tunneling using salsa20 from libnettle and GPG from libgpgme'
 url='https://github.com/prurigro/salsapipe'
 license=('GPL3')
@@ -27,5 +27,4 @@ package() {
   cd $_pkgname
   install -Dm755 salsamsg "$pkgdir/usr/bin/salsamsg"
   install -Dm644 salsamsg.1 "$pkgdir/usr/share/man/man1/salsamsg.1"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
