@@ -1,7 +1,7 @@
 # Maintainer: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=chrome-shutdown-hook
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Gently shutdown Chrome/Chromium on logout from Gnome Shell."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 source=("chrome-shutdown-hook.desktop"
         "chrome-shutdown-hook.py")
 md5sums=('e9e039b29bf1c7a027ef6b3a2946b6a9'
-         '34a5272e929a1f735b400f799cf1a7af')
+         '58b7aaee6f7ccdef4508f38f72b96bb1')
 
 package() {
   cd "${srcdir}"
