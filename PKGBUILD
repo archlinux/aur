@@ -1,5 +1,5 @@
 # Maintainer of the original ultimate version:
-#    juankfree <juan77.sonic at gmail dot com>
+#    juankfree <juan77.sonic@gmail.com>
 pkgname=razer-blackwidow-2014
 pkgver=0.0.5
 pkgrel=1
