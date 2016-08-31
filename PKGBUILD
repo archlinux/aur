@@ -86,18 +86,18 @@ package() {
   _arch=i386
   fi
   install -dm755 ${pkgdir}/usr/bin
-  install -dm755 ${pkgdir}/usr/share/atom-git
+  install -dm755 ${pkgdir}/usr/share/${_pkgname}-${_version}
   install -dm755 ${pkgdir}/usr/share/applications
   install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
   install -dm755 ${pkgdir}/usr/share/pixmaps
 
-  cp -r out/atom-${_ver}-${_commit}-${_arch}/* ${pkgdir}/usr/share/atom-git/
-  mv ${pkgdir}/usr/share/atom-git/atom.png ${pkgdir}/usr/share/pixmaps/atom-git.png
-  mv ${pkgdir}/usr/share/atom-git/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 $srcdir/atom-git ${pkgdir}/usr/bin/atom-git
-  install -Dm644 $srcdir/atom-git.desktop ${pkgdir}/usr/share/applications/atom-git.desktop
-  rm ${pkgdir}/usr/share/atom-git/resources/app/atom.sh
-  rm -rf ${pkgdir}/usr/share/atom-git/resources/app.asar.unpacked/resources
+  cp -r out/atom-${_ver}-${_commit}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
+  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
+  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 $srcdir/${_pkgname}-${_version} ${pkgdir}/usr/bin/${_pkgname}-${_version}
+  install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
+  rm ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh
+  rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
 
   find "$pkgdir" \
     -name "*.a" -exec rm '{}' \; \
@@ -108,5 +108,5 @@ package() {
     -or -name "man" -prune -exec rm -r '{}' \; \
     -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
     -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
-    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom/apm|/usr/share/atom-git/resources/app/apm|g" '{}' +
+    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
 }
