@@ -52,7 +52,5 @@ build() {
 package() {
 	# Installing package
 	cd "${srcdir}"/build
-
-	# Install files
 	make DESTDIR="${pkgdir}" install
 }
