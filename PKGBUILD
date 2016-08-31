@@ -5,7 +5,7 @@ pkgver=2.0.rc1.32.ge91da87
 pkgrel=1
 pkgdesc='Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei'
 url='http://troglobit.com/inadyn.html'
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('any')
 license=('GPL')
 depends=('libite' 'confuse>=3.0' 'openssl' 'ca-certificates')
 makedepends=('git')
