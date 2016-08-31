@@ -5,13 +5,13 @@ pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver='0.9.4'
 _libtexpdf_ver='0cb0c20a3ba40057e6902551300630fed7199bf6'
-pkgrel='1'
+pkgrel='2'
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/archive/v${pkgver}.tar.gz"
 	    "https://github.com/simoncozens/libtexpdf/archive/${_libtexpdf_ver}.tar.gz")
-sha512sums=('abe33136c960c15e79d018767019152a6dcd3a2b2527dc5fa10b322e0e8be0d404967390260c354b99c9c57a1139eaca879056da4c64f887d85ad9567fcec0fe'
+sha512sums=('3d041f3e014f2d55f878f535d7ffd5b271b5aa2dc5f74e68261f1f1cdbdd18d7901c77a92a7701a91f7eefae71aa550167b441ced740dc4e459d29bcd8cc9e5e'
             'da8a3d663385138fd2ba4306e190ea5294631f622cce4592198d75cd76109a31c2db24ede95e6adad98f29f952d3a1656a46b8ec9448f6146689f1b5763dd004')
 
 depends=('lua-lpeg'
