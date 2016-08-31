@@ -10,11 +10,11 @@ pkgdesc="A fork of nicotine, a Soulseek music-sharing client written in python. 
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
 license=('GPL')
-depends=('pygtk' 'gtk2')
+depends=('pygtk' 'gtk2', 'mutagen')
 makedepends=('git' 'python2')
-optdepends=('mutagen: To improve metadata'
+optdepends=('miniupnpc: To enable UPnP support'
 	    'python-sexy: To enable spell checking'
-	    'python-geoip: To enable Geographical blocker')
+	    'python-geoip: To enable geographical blocker')
 conflicts=('nicotine' 'nicotine-plus')
 replaces=('nicotine' 'nicotine-plus')
 source=(git+https://github.com/eLvErDe/nicotine-plus.git)
