@@ -1,9 +1,9 @@
-# $Id: PKGBUILD 108863 2014-04-05 16:08:43Z bpiotrowski $
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Behem0th <grantipak@gmail.com>
 _pkgbasename=libvdpau-va-gl
 pkgname=lib32-libvdpau-va-gl
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='VDPAU driver with OpenGL/VAAPI backend'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('lib32-libvdpau' 'lib32-libva' 'lib32-libgl' 'lib32-glu' 'lib32-ffmpeg')
 makedepends=('cmake' 'gcc-multilib')
 source=($url/archive/v$pkgver.tar.gz)
-md5sums=('09ceb2f75eafccc9b002d35ede0de6a5')
+md5sums=('638244652a702d0262039890904f37ce')
 
 build() {
   export CC="gcc -m32"
