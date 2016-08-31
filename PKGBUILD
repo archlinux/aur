@@ -3,7 +3,7 @@
 #makepkg --printsrcinfo > .SRCINFO
 
 pkgname=franz
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/imprecision/franz-app/releases/download/$pkgv
 sha256sums=('5d53c349bcf0452a31e3aee609eac6809f26750f4fb4da049132adc5c9a40289'
             'c63052b7ada73dbc984f55afc6d0ad937bf57ae5b0b41b560ef46937afeb81c5'
             '6e761371afadf155b8bc25e94fd7de371c16130a87338300e5800924916a7a28')
-sha256sums_i686=('b0cc5c68f74ba0250efd9186b41f9db039fc1670e9abc78704b16c1db12b12d8')
-sha256sums_x86_64=('965ff28c65fe7b5be53c6691f610ecb529ff653f355f9bc44c085bde5246dc75')
+sha256sums_i686=('a13cd3c8a5669669247f2f6ab29a806567d07919f3bc61608cbd3ac539958e71')
+sha256sums_x86_64=('0033e94196832c31b7bb0445e65b1672db46bfc59d7322df47b106f164817e17')
 [[ "$CARCH" = "i686" ]] && _path="Franz-linux-ia32-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _path="Franz-linux-x64-${pkgver}"
 noextract=(${_path})
