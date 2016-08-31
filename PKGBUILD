@@ -13,7 +13,7 @@ makedepends=('clang' 'mono' 'dos2unix' 'cmake')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealTournament')
 source=(
-  "git+ssh://github.com/EpicGames/UnrealTournament.git#tag=$pkgver"
+  "git+ssh://git@github.com/EpicGames/UnrealTournament.git#tag=$pkgver"
   'UnrealTournament.desktop'
 )
 md5sums=(
