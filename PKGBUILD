@@ -7,12 +7,12 @@ pkgver=1.9.r25.g8f34a0d
 pkgrel=1
 pkgdesc="Easy to use interface to thetvdb.com"
 arch=('any')
-url="https://github.com/8cylinder/tv-overlord"
+url="https://github.com/dbr/tvdb_api"
 license=('GPL')
 depends=('python-requests-cache')
 makedepends=('git' 'python-setuptools')
-provides=($_pkgname 'tvdb_api')
-conflicts=($_pkgname 'tvdb_api')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=($_pkgname::git://github.com/dbr/tvdb_api.git)
 md5sums=('SKIP')
 
