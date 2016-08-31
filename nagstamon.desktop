@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Nagstamon
-Comment=Nagios status monitor
-Icon=/usr/lib/python2.7/site-packages/Nagstamon/resources/nagstamon.svg
-Exec=nagstamon
-Terminal=false
-Type=Application
-Categories=Network;System;Monitor;GTK;
-StartupNotify=false
