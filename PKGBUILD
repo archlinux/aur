@@ -1,4 +1,5 @@
-# Maintainer: Malte Bublitz <malte70+aur@mcbx.de>
+# Maintainer: Élie Bouttier <elie+aur@bouttier.eu>
+# Old Maintainer: Malte Bublitz <malte70+aur@mcbx.de>
 # Old Maintainer: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: Sven Klomp <mail@klomp.eu>
 
