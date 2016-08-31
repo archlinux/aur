@@ -6,7 +6,7 @@ pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=()
-makedepends=('go>=1.5', 'make')
+makedepends=('go>=1.5' 'make')
 source=("https://github.com/barnybug/cli53/archive/$pkgver.tar.gz")
 sha256sums=('0a87de05110d9bba851ba3522a1072494256e31fa653f59331313bff21d5c160')
 
