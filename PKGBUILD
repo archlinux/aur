@@ -5,7 +5,7 @@
 _sdkver=7.0
 _apilevel='24'
 _rev='r06'
-_arch='x86_64'
+_arch='x86'
 pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
 pkgver="${_sdkver}_${_rev}"
 pkgrel=1
@@ -21,7 +21,7 @@ options=('!strip' '!upx')
 PKGEXT='.pkg.tar'
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip"
         "source.properties")
-sha1sums=('88e566de5d21665bddf3cd61d8bea8506cf65a9c'
+sha1sums=('4e76a5f5dd9b33e674a7f28a1bb8754a04f8adb7'
           '15a76e74cf65b144fe45663ac7f0a73d9d34d090')
 
 package() {
