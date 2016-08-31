@@ -1,11 +1,12 @@
-# Maintainer: Sameed Pervaiz <greenbagels@teknik.io>
+# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Contributor: Sameed Pervaiz <greenbagels@teknik.io>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=4.90.92.r13476.aa23e36
+pkgver=5.0.0.r13516.664d2fc
 pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -22,7 +23,7 @@ depends=('ktexteditor'
          'hicolor-icon-theme'
          'llvm'
          'kde-cli-tools'
-	 )
+)
 optdepends=('kompare-git: difference checking'
             'subversion: Subversion plugin')
 makedepends=('cmake'
