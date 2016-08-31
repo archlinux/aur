@@ -1,7 +1,7 @@
 # Maintainer: Ilja Kartaschoff <ik@lowenware.com>
 pkgname=webstuff
 pkgver=0.7.18
-pkgrel=8
+pkgrel=9
 pkgdesc="Lightweight C Library for web-applications development"
 arch=('any')
 url="http://www.lowenware.com/"
