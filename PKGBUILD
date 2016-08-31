@@ -3,13 +3,13 @@
 
 pkgname=mingw-w64-libdxfrw
 pkgver=0.5.12
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library to read/write DXF files in binary and ascii form (mingw-w64)"
 arch=("any")
 url="http://sourceforge.net/projects/libdxfrw/"
 license=('GPL2')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 source=("https://downloads.sourceforge.net/project/libdxfrw/libdxfrw-${pkgver}.tar.bz2")
 md5sums=('a901dddc2f6b973d2460c504cdb75d38')
@@ -27,13 +27,10 @@ prepare () {
 }
 
 build() {
-  unset LDFLAGS
   cd "$srcdir/libdxfrw-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ../configure \
-      --prefix=/usr/${_arch} \
-      --host=${_arch} --build="$CHOST"
+    ${_arch}-configure ..
     make
     popd
   done
