@@ -4,7 +4,7 @@
 # Contributor: x-demon 
 
 pkgname=nicotine-plus-git
-pkgver=r1709.785bce4
+pkgver=r1748.4a64caf
 pkgrel=1
 pkgdesc="A fork of nicotine, a Soulseek music-sharing client written in python. Gitversion."
 arch=('i686' 'x86_64')
