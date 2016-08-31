@@ -1,6 +1,6 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 pkgname=openzwave
-pkgver=1.4.1
+pkgver=1.5
 pkgrel=1
 pkgdesc="Opensource Z-Wave control"
 url="http://www.openzwave.com"
@@ -8,16 +8,16 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('libsystemd')
 makedepends=('doxygen')
-source=("http://old.openzwave.com/downloads/openzwave-${pkgver}.tar.gz")
-sha256sums=('171556c3583a66203c6a1a7453414ff126a36b5d83ec50ac9bfb227127ff705e')
+source=("https://github.com/OpenZWave/open-zwave/archive/V${pkgver}.tar.gz")
+sha256sums=('abfb4c7e7728e86ba374c2e0ef7de912594eb24a8c44935457352df844530238')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/open-zwave-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/open-zwave-${pkgver}"
   make DESTDIR=${pkgdir} PREFIX=/usr instlibdir=usr/lib/ sysconfdir=etc/${pkgname} install
 }
 
