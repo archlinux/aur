@@ -4,9 +4,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=orpie
 pkgver=1.5.2
-pkgrel=10
+pkgrel=11
 epoch=
-pkgdesc="A console-based RPN (reverse polish notation) desktop calculator."
+pkgdesc="https://github.com/pelzlpj/orpie"
 arch=('i686' 'x86_64')
 url="http://pessimization.com/software/orpie/"
 license=('GPL')
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://pessimization.com/software/orpie/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/pelzlpj/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'mlgsl_sf.patch')
 noextract=()
 md5sums=('1fd02e75549cca954cebbd13271ea7f5'
