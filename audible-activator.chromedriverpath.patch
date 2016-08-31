@@ -1,0 +1,14 @@
+Common subdirectories: audible-activator.orig/.git and audible-activator.new/.git
+diff -U3 audible-activator.orig/audible-activator.py audible-activator.new/audible-activator.py
+--- audible-activator.orig/audible-activator.py	2016-08-31 08:52:01.491052371 +0200
++++ audible-activator.new/audible-activator.py	2016-08-31 09:11:05.412730150 +0200
+@@ -51,7 +51,7 @@
+     if sys.platform == 'win32':
+         chromedriver_path = "chromedriver.exe"
+     else:
+-        chromedriver_path = "./chromedriver"
++        chromedriver_path = "chromedriver"
+ 
+     driver = webdriver.Chrome(chrome_options=opts,
+                               executable_path=chromedriver_path)
+Common subdirectories: audible-activator.orig/unused and audible-activator.new/unused
