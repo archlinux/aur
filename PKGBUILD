@@ -2,9 +2,9 @@
 # Contributor: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
-_sdkver=6.0
-_apilevel='23'
-_rev='r09'
+_sdkver=7.0
+_apilevel='24'
+_rev='r06'
 _arch='x86_64'
 pkgname="android-${_arch/x86_/x86-}-system-image-${_apilevel}"
 pkgver="${_sdkver}_${_rev}"
@@ -21,7 +21,7 @@ options=('!strip' '!upx')
 PKGEXT='.pkg.tar'
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip"
         "source.properties")
-sha1sums=('571f5078a3d337a9144e2af13bd23ca46845a979'
+sha1sums=('88e566de5d21665bddf3cd61d8bea8506cf65a9c'
           '15a76e74cf65b144fe45663ac7f0a73d9d34d090')
 
 package() {
