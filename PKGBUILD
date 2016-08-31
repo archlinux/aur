@@ -1,9 +1,9 @@
 # Maintainer: CyrIng <labs[at]cyring[dot]fr>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 pkgname=corefreq-git
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="Intel Processor Core Monitoring"
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="CoreFreq, the Processor software with a kernel module to monitor cores activity."
 arch=('x86_64')
 url='http://github.com/cyring/CoreFreq'
 license=('GPL2')
