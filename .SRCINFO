@@ -1,0 +1,16 @@
+pkgbase = suspend-hacks
+	pkgdesc = Hacks to restart services on suspend
+	pkgver = 0
+	pkgrel = 1
+	arch = any
+	license = Public Domain
+	depends = coreutils
+	depends = systemd
+	backup = etc/conf.d/suspend-hacks
+	source = suspend-hacks.sh
+	source = suspend-hacks.conf
+	md5sums = f2c3cb3dc9e474667832ecefb1064575
+	md5sums = b74ce1b49b9b1e919d5fc0b181a16ac8
+
+pkgname = suspend-hacks
+
