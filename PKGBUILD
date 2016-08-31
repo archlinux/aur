@@ -20,6 +20,6 @@ package() {
 	mkdir -p $pkgdir/{opt/$pkgname,usr/{bin,share/applications}}
 	cp -R $srcdir/* $pkgdir/opt/$pkgname
 	ln -s /opt/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname
-	mv $pkgdir/opt/$pkgname/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
 
