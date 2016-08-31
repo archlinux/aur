@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b4.r5.g48c9672
+pkgver=3.0.0b6.r2.g3b512d9
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -22,12 +22,7 @@ pkgver() {
 } 
 
 prepare() {
-  sed -i 's|"pep8"|"pycodestyle"|g' $_pkgname2/spyderlib/utils/codeanalysis.py
-  sed -i "s|'pep8'|'pycodestyle'|g" $_pkgname2/create_app.py \
-                                    $_pkgname2/setup.py \
-                                    $_pkgname2/spyderlib/plugins/editor.py \
-                                    $_pkgname2/spyderlib/utils/codeanalysis.py \
-                                    $_pkgname2/spyderlib/widgets/editor.py
+  find $_pkgname2 -type f -iname \*.py -exec sed -i -e 's|"pep8"|"pycodestyle"|g' -e "s|'pep8'|'pycodestyle'|g" '{}' \;
 
   rm -rf $_pkgname3
   cp -a $_pkgname2 $_pkgname3
@@ -45,7 +40,7 @@ package_spyder-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 2 version)"
   # Note: 'ipython2-notebook' contains QTConsole
   # Note: 'ipython2' (dependency of 'ipython2-notebook') contains Pickleshare
-  # Note: 'ipython2-notebook' nor 'jupyter' contain a Python 2 version of Nbconvert
+  # Note: 'ipython2-notebook' nor 'jupyter'/'jupyter-nbconvert' contain a Python 2 version of Nbconvert
   # 'icu'
   depends=('python2-pyqt5'
            'ipython2-notebook'
@@ -76,7 +71,7 @@ package_spyder-git() {
   cd $_pkgname2
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder.desktop file
-  install -Dm644 spyderlib/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder.svg"
+  install -Dm644 spyder/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname2/LICENSE"
   rm -f "$pkgdir/usr/bin/spyder_win_post_install.py"
 }
@@ -115,7 +110,7 @@ package_spyder3-git() {
   cd $_pkgname3
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   # Install a scalable icon for the spyder3.desktop file
-  install -Dm644 spyderlib/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder3.svg"
+  install -Dm644 spyder/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder3.svg"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname3/LICENSE"
   rm -f "$pkgdir/usr/bin/spyder_win_post_install.py"
 }

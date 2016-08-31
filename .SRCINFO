@@ -1,5 +1,5 @@
 pkgbase = spyder-git
-	pkgver = 3.0.0b4.r5.g48c9672
+	pkgver = 3.0.0b6.r2.g3b512d9
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder
 	install = spyder-git.install
