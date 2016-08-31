@@ -1,22 +1,16 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
 license=('MIT')
 makedepends=('python-setuptools')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz"
-        "conan-0.11.0.patch")
-sha512sums=('ee27e0e01b4186ecd7e9e2bdf45f433f4313df9a5ddcc98f0d607442eaa96225e44fee12c3b58576b153bc32095d759bc76833eb6a45c263fa703862f69ee95e'
-            '8ad0a4b534cfa43faea83e963f712055c17835adb62f9b304011e6696e242853578ac663a7bc5f2947cfd7505717fc9b597bc4e70adebd16306cbd139244784a')
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+sha512sums=('a8e0b857e180e042e94e8587c320f519e6739fa82ec2fedc4a9d75747db6ba463a573c3bfe4265afd253561966233dc477b1beb5425c8501e0e76736519c608f')
 
-prepare() {
-  cd "$srcdir/conan-$pkgver"
-  patch -p1 <../conan-0.11.0.patch
-}
 
 build() {
   cd "$srcdir/conan-$pkgver"
