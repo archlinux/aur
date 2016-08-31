@@ -1,9 +1,10 @@
 # Maintainer: Tom Ingleby <tom@ewsting.org>
 pkgname='mraa'
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Low Level Skeleton Library for IO Communication on GNU/Linux platforms."
 makedepends=('git' 'cmake' 'swig')
+depends=('json-c')
 optdepends=('python: for Python support')
 url="https://github.com/intel-iot-devkit/mraa"
 license=('MIT')
