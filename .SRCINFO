@@ -1,7 +1,7 @@
 pkgbase = omnisharp-roslyn
 	pkgdesc = .NET development platform based on on Roslyn workspaces.
 	pkgver = 1.9.beta14
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
