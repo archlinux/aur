@@ -3,13 +3,13 @@
 
 pkgname=falcon
 pkgver=0.9.6.8
-pkgrel=3
+pkgrel=4
 pkgdesc='a general purpose untyped language, based on a Virtual Machine executing portable pseudo codes'
 arch=('i686' 'x86_64')
 url='http://falconpl.org'
 license=('GPL2'
          'custom:FPLLv1.1')
-depends=('bison' 'gtk2' 'gd' 'curl' 'dbus-core' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'sqlite' 'libmysqlclient' 'postgresql-libs')
+depends=('bison' 'gtk2' 'gd' 'curl' 'dbus' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'sqlite' 'libmysqlclient' 'postgresql-libs')
 makedepends=('cmake')
 source=("http://falconpl.org/project_dl/_official_rel/Falcon-$pkgver.tgz"
 #        'mongodb-module.patch'
