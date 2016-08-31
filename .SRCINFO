@@ -2,7 +2,7 @@
 # Fri Dec 18 18:26:46 UTC 2015
 pkgbase = nvme-cli-git
 	pkgdesc = NVM-Express user space tooling for Linux
-	pkgver = r349.7eb44bb
+	pkgver = r358.6ab2e9e
 	pkgrel = 1
 	url = https://github.com/linux-nvme/nvme-cli
 	arch = i686
