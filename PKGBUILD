@@ -1,8 +1,9 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgbase=libxaw
 pkgname=lib32-${_pkgbase}
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="X11 Athena Widget library (32 bit)"
 arch=('x86_64')
@@ -12,7 +13,7 @@ depends=('lib32-libxmu' 'lib32-libxpm' "${_pkgbase}")
 makedepends=('xorg-util-macros' 'gcc-multilib')
 options=('!libtool')
 source=("${url}/releases/individual/lib/libXaw-${pkgver}.tar.bz2")
-sha256sums=('96fc314874fce9979556321d1d6ee00b5baf32fb333b7278853b4983bc3cdbf6')
+sha256sums=('8ef8067312571292ccc2bbe94c41109dcf022ea5a4ec71656a83d8cce9edb0cd')
 
 build() {
   export CC='gcc -m32'
