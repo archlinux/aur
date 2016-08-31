@@ -1,7 +1,7 @@
 # Maintainer: Marco Melletti <melletti.marco@gmail.com>
 pkgname=uarm-git
 pkgver=v0.5.3.r26.3600cec
-pkgrel=5
+pkgrel=6
 pkgdesc="arm7tdmi based computer emulator with debugging tools"
 arch=('any')
 url="http://mellotanica.github.io/uARM/"
@@ -24,15 +24,6 @@ pkgver() {
 
 build() {
 	cd "$_gitdir"
-
-	./configure
-
-	qmake-qt5 elf2uarm.pro
-	make
-	qmake-qt5 mkdev.pro
-	make
-	qmake-qt5 qarm.pro
-	make
 
 	./compile
 }
