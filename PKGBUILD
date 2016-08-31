@@ -10,7 +10,7 @@ pkgdesc="A fork of nicotine, a Soulseek music-sharing client written in python. 
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
 license=('GPL')
-depends=('pygtk' 'gtk2', 'mutagen')
+depends=('pygtk' 'gtk2' 'mutagen')
 makedepends=('git' 'python2')
 optdepends=('miniupnpc: To enable UPnP support'
 	    'python-sexy: To enable spell checking'
