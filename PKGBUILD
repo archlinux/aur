@@ -3,7 +3,7 @@
 _pkgname='rainbowcrack'
 pkgname="${_pkgname}-bin"
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general propose implementation of Philippe Oechslin's faster time-memory trade-off technique. It crack hashes with rainbow tables."
 url='http://project-rainbowcrack.com/'
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ makedepends=(
 )
 
 optdepends=(
+  "rainbowcrack-audible-tables: To extract the activation bytes from audible AAX/ AAX+ files."
 )
 
 provides=(
