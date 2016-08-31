@@ -1,11 +1,12 @@
-# Maintainer: Sameed Pervaiz <greenbagels@teknik.io>
+# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Contributor: Sameed Pervaiz <greenbagels@teknik.io>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=4.90.92.r23405.a0670c7
+pkgver=5.0.0.r23652.f9b262c
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -24,6 +25,7 @@ optdepends=('krunner: For enabling the KDevelop runner'
             'git: Git support'
             'cvs: Concurrent Versions System support'
             'gdb: GNU Debugger support'
+            'lldb: LLDB Debugger support'
             'qt4-doc: qt4 documentation integration'
             'qt5-doc: qt5 documentation integration'
             'cmake: build system'
