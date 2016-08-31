@@ -6,7 +6,7 @@
 # Contributor: Vitaliy Berdinskikh <skipper13@root.ua>
 
 pkgname=lib32-xmlrpc-c
-pkgver=1.43.01
+pkgver=1.43.04
 pkgrel=1
 pkgdesc='XML-RPC for C and C++'
 arch=('x86_64')
