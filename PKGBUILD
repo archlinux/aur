@@ -6,8 +6,8 @@ pkgname=(
   "${pkgbase}4"
   "${pkgbase}-common"
 )
-pkgver=0.4
-pkgrel=4
+pkgver=0.5
+pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell.'
 arch=('any' 'i686' 'x86_64')
 url="https://github.com/MartinBriza/$pkgbase"
@@ -15,7 +15,7 @@ license=('GPL' 'LGPL')
 groups=('adwaita-qt')
 makedepends=('cmake' 'qt4' 'qt5-base')
 source=("https://github.com/MartinBriza/$pkgbase/archive/$pkgver.tar.gz")
-sha256sums=('48ccf17088afb77e98fe409f4dc6fdccd035bbdbcb51f0c2f0da00ef204daba0')
+sha512sums=('3339688755b99d78dfbc9c0918f74a94c98320ec887452a474bd85e253c2927318763a1b3afa9f7d61ff2ddf1929635e84bf09b0246df29c3c3f96692467bcbf')
 
 prepare() {
   mkdir -p $pkgbase-$pkgver/build{-qt5,-qt4,-common}
@@ -61,7 +61,7 @@ build() {
 }
 
 package_adwaita-qt4() {
-  pkgdesc="${pkgdesc::-1} (Qt4 version)."
+  pkgdesc="${pkgdesc::-1} (Qt4)."
   arch=('i686' 'x86_64')
   depends=('adwaita-qt-common' 'qt4')
 
@@ -71,7 +71,7 @@ package_adwaita-qt4() {
 }
 
 package_adwaita-qt5() {
-  pkgdesc="${pkgdesc::-1} (Qt5 version)."
+  pkgdesc="${pkgdesc::-1} (Qt5)."
   arch=('i686' 'x86_64')
   depends=('adwaita-qt-common' 'qt5-base')
   optdepends=('adwaita-qt4: Qt4 version')
