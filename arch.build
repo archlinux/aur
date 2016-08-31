@@ -37,7 +37,7 @@ start_vm() {
 stop_vm() {
 	ssh $vhost 'sudo poweroff' || true
 	wait
-	rm /tmp/$vport
+	rm -f /tmp/$vport
 }
 
 trap_err() {
