@@ -3,12 +3,11 @@
 _pkgname=salsapipe
 pkgname=${_pkgname}-git
 pkgver=20150727.r26.6d81ace
-pkgrel=2
+pkgrel=3
 pkgdesc='Encrypted network tunneling using salsa20 from libnettle and GPG from libgpgme'
 url='https://github.com/prurigro/salsapipe'
 license=('GPL3')
 arch=('x86_64')
-groups=('archassault' 'archassault-networking')
 depends=('gpgme')
 makedepends=('git')
 source=("git+$url")
