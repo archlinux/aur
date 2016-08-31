@@ -1,0 +1,19 @@
+pkgbase = whatsapp-web-desktop
+	pkgdesc = WhatsApp Web for desktop
+	pkgver = 2.16.225
+	pkgrel = 1
+	url = https://web.whatsapp.com
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = nodejs-nativefier
+	provides = whatsapp-desktop
+	source = whatsapp-web-desktop.png
+	source = whatsapp-web-desktop.desktop
+	source = whatsapp-web-desktop.sh
+	sha512sums = 8e0c4742be68c7122eeb43c3b7318ceb3198f1a493798af51e27d11e92dea8f9dacf3a7ca39223da9ec017a6f476f3066cf62df7e2c3baacf72fb13d827c3706
+	sha512sums = a1c392b8a7a7045c3f955384be1eefb0ce51d781b656223ccbaffaeb939ba1fbebf4c4085fbc03f52bc24743208455cedc8f4e5b1d10e3885c150082bb585191
+	sha512sums = 7c39adb302df5fbf5a222fd2ad623d348db0c6240069215f11547e072b96e65e363db5bd93d5a25075eab97c15567e89a3825d9b73fe9425e6176032e049c8a0
+
+pkgname = whatsapp-web-desktop
+

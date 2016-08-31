@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=WhatsApp
+Comment=Desktop version of WhatsApp Web
+Exec=whatsapp-web-desktop
+StartupWMClass=whatsapp-web-desktop
+Icon=whatsapp
+Terminal=false
+Type=Application
+Categories=Network;
+X-Desktop-File-Install-Version=0.22
