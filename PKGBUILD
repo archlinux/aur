@@ -54,12 +54,13 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/deluge/deluge/ui/data/icons"
-    ln -s hicolor/scalable scalable
+    ln -sf hicolor/scalable scalable
 }
 
 build() {
     cd "$srcdir/deluge"
     python2 setup.py build
+    python2 minify_web_js.py deluge/ui/web/js/deluge-all
 }
 
 package() {
