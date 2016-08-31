@@ -1,7 +1,7 @@
 # Maintainer: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
-pkgver=3.2.06
+pkgver=3.2.07
 pkgrel=1
 epoch=0
 pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip") 
 noextract=()
-md5sums=('5162e3818f2c83478790b78786a7a5bd')
+md5sums=('3b8c6d1a852f763d12a0b5c4807cf284')
 validpgpkeys=()
 
 prepare() {
