@@ -1,0 +1,21 @@
+pkgbase = soapylms7-git
+	pkgdesc = SoapySDR LMS7002M/LimeSDR Support Module
+	pkgver = r792.4165104
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapySDR
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = soapysdr
+	depends = libusb>=1.0
+	depends = sqlite
+	provides = soapylms7
+	conflicts = soapylms7
+	source = soapylms7-git::git+https://github.com/myriadrf/LimeSuite.git
+	sha256sums = SKIP
+
+pkgname = soapylms7-git
+
