@@ -3,7 +3,7 @@ post_install() {
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
 
     # create empty game
-    [[ -f /var/lib/factorio/.factorio/saves/factorio-service-save.zip ]] || su - factorio -s /bin/sh -c 'factorio --create factorio-service-save 2>&1 >/dev/null'
+    [[ -f /var/lib/factorio/.factorio/saves/factorio-service-save.zip ]] || su - factorio -s /bin/sh -c 'factorio --create /var/lib/factorio/.factorio/saves/factorio-service-save.zip 2>&1 >/dev/null'
 }
 
 post_upgrade() {
