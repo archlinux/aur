@@ -3,7 +3,7 @@
 # Contributor: honzor 
 
 pkgname=lib32-libmodbus-dev
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (development version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(lib32-libmodbus)
 options=(!libtool staticlibs)
 _pkgfqn="libmodbus-${pkgver}"
 source=(http://libmodbus.org/releases/libmodbus-$pkgver.tar.gz)
-sha256sums=('661e14f9dc904f3f1b034464ddaa5fd4b8472f8f5d1ea10a1148af85591b7ee9')
+sha256sums=('c8c862b0e9a7ba699a49bc98f62bdffdfafd53a5716c0e162696b4bf108d3637')
 
 build() {
   cd "$srcdir/$_pkgfqn"
