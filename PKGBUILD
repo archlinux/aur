@@ -10,7 +10,7 @@ install="ardesia.install"
 depends=('gtk3' 'gsl' 'libgsf' 'desktop-file-utils')
 makedepends=('gcc' 'make' 'automake' 'autoconf' 'intltool' 'libtool' 'gtk3' 'atk' 'libx11' 'libpng' 'glib2' 'gconf' 'fontconfig' 'freetype2' 'gsl' 'libxml2' 'xdg-utils' 'libgsf')
 license=('GPL3')
-source=("https://ardesia.googlecode.com/files/ardesia-1.1.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ardesia/ardesia-1.1.tar.gz")
 md5sums=('b0abe145ce4ade50ab897ec658d2d664')
 sha1sums=('2c0603cefe7bb33909787d030df5cd60cfee009f')
 
