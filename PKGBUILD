@@ -20,8 +20,8 @@ kill_process_shortcut=x
 
 _pkgname=htop
 pkgname=htop-vim-solarized-git
-pkgver=899.7f9c82f
-pkgrel=2
+pkgver=918.6d4df3d
+pkgrel=1
 pkgdesc="Interactive process viewer with solarized and vim keybindings patch"
 arch=('i686' 'x86_64')
 url="https://github.com/hishamhm/${_pkgname}"
@@ -43,7 +43,7 @@ source=(
 sha384sums=(
     'SKIP'
     'ebc4339ff3d5d43606d9f5e398832cb9382bfa175b30e36cfbcaf6112206c33ea0d42e39246e3a73785d3f584cf88214'
-    '846c484d08b9a97ff062095c21ac074945fd8ef219a2fd27cf5ab62c96fed6e0910b59add78a82e7e83bed1c4f364767'
+    'cb75354484518f372da703a9a05a3856a527584c02b97706d25046995fa302fa55528bda1c6dc749cf6e4a25a3ed7fad'
     '353a675f5453b5b1ab503f9cbcb02e45b32bf429797f11e3cea96848fb4ad931129da7afa52b373fd6871c41657d52af'
     '3b2071d412a6a98bf5d4d3a4bc74f69b205f9464b00063aa21e9947b80df2a008bb82aff7f8168b0dfbac0647bc0cb76'
 )
