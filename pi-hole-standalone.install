@@ -1,9 +1,7 @@
 post_install() {
-  cat <<- EOF
-    ==> please read configuration instructions at /usr/share/doc/pihole/configuration
-    ==> first install/update run...
-EOF
-  cat /proc/net/if_inet6 2>&1 > /dev/null && touch /etc/pihole/.useIPv6
+  echo -e "\e[1;33m==>\e[0m please read configuration instructions at /usr/share/doc/pihole/configuration"
+  echo -e "\e[1;33m==>\e[0m first install/update run..."
+  [ -e /proc/net/if_inet6 ] && touch /etc/pihole/.useIPv6
   /usr/bin/gravity.sh > /dev/null
   systemctl daemon-reload > /dev/null
   systemctl start pi-hole-gravity.timer > /dev/null
