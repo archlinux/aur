@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.45.r3792.f489f61ea3c8
+pkgver=3.45.r3793.9e79d48c6f06
 _pkgver=3.45
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
