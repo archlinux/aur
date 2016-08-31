@@ -1,20 +1,20 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2016.07
+pkgver=2016.08.1
 pkgrel=1
 pkgdesc="High-level environment to create compilers and libraries for virtual machines (MoarVM backend)"
 arch=('any')
 url='https://github.com/perl6/nqp#readme'
 license=(PerlArtistic)
-depends=('bash' "moarvm>=$pkgver")
+depends=('bash' "moarvm>=2016.08")
 makedepends=('perl>=5.8')
 provides=('nqp-moarvm')
 replaces=('nqp-moarvm')
 conflicts=('nqp-moarvm')
 options=('!makeflags')
 source=(http://rakudo.org/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('4b1ecad82cc884d2dba90af9ca7e5ada2b2f85199936ad08c1252794bbf12b1a7861ee7f22a18797ce61d2a51724d090d31319a9061bc05984d8b33b247bf27d')
+sha512sums=('e55f8a2177b3a012f614e80c7353b1642c7248fae1637a706151a4c47682f6c5aabde81fe37bb2eb11840d9db4db2be61013f33d2fff40ed8b0eac1e215f6558')
 
 build() {
 	cd "$pkgname-$pkgver"
