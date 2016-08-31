@@ -10,9 +10,9 @@ export AR= ar
 export RM= rm
 export ARFLAGS= rs
 export RMFLAGS= -vf
-export CPPFLAGS= -DPATH_DELIM=0x2f -DASK_ABOUT_WARNINGS=false -DUNBLOCK_SIGNALS -fdollars-in-identifiers
-export CXXFLAGS= -O2
-export GCJFLAGS= -Wno-all -fsource=1.3 -O2
+export CPPFLAGS= -DPATH_DELIM=0x2f -DASK_ABOUT_WARNINGS=false -DUNBLOCK_SIGNALS -fdollars-in-identifiers -fPIC
+export CXXFLAGS= -O2 -fPIC
+export GCJFLAGS= -Wno-all -fsource=1.3 -O2 -fPIC
 export GCJHFLAGS= -force
 export LDLIBS= -lgcj
 
