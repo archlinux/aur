@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.4
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -29,7 +29,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('9542c877ebd348aa15a62cd50a08c1c9'
+md5sums=('ef5809f22af94673012811876e0268d8'
          '6508c120ec7549b374c2d4bbc340fe70'
          '791c86996377ceca23d1459ea0fd5cd6'
          'cba1675593bb43c94a35aabe8a210efa'
@@ -47,31 +47,31 @@ prepare() {
   _ssc="/tmp/sedcontrol"
 
   # modify service management
-  sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 1" && return 1 ; fi
-  sed -i "s|\$SUDO killall -s HUP dnsmasq|\$SUDO systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 2" && return 1 ; fi
-  sed -i "s|\$SUDO service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 3" && return 1 ; fi
 
   sed -n "/dnsmasqPid\=/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 4" && return 1 ; fi
   sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 5" && return 1 ; fi
-  sed -i "s|\$SUDO killall -s HUP dnsmasq|\$SUDO systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 6" && return 1 ; fi
-  sed -i "s|\$SUDO service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 7" && return 1 ; fi
 
   sed -n "/dnsmasqPid\=/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 8" && return 1 ; fi
   sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 9" && return 1 ; fi
-  sed -i "s|\$SUDO killall -s HUP dnsmasq|\$SUDO systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 10" && return 1 ; fi
-  sed -i "s|\$SUDO service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 11" && return 1 ; fi
 
 # -----------------
@@ -125,7 +125,7 @@ prepare() {
 # -----------------
 
   # adlists.default is already there
-  sed -i "s/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s/\${SUDO} cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
 
 # -----------------
