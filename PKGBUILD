@@ -8,6 +8,7 @@ arch=('any')
 license=('custom')
 
 echo "ECHO OUTSIDE!"
+echo "CAT OUTSIDE!" > /tmp/yaourtbug
 
 prepare() {
 echo "prepare"
