@@ -7,14 +7,14 @@ pkgver=0.1.8
 pkgrel=1
 pkgdesc="Python API for interacting with the vSphere Web Services SDK"
 arch=(any)
-url="http://pysphere.googlecode.com"
+url="https://github.com/argos83/pysphere"
 license=('BSD')
 depends=('python2')
-source=("http://pysphere.googlecode.com/files/${_realname}-${pkgver}.zip")
-md5sums=('c57cba33626ac4b1e3d1974923d59232')
+source=("https://github.com/argos83/pysphere/archive/master.zip")
+sha256sums=('bacea445090ef238fa56a10d1388acf2523058e93df88b40363b10741eca4325')
 
 package() {
-    cd ${srcdir}/${_realname}-${pkgver}
+    cd ${srcdir}/${_realname}-master
     python2 setup.py install --root=${pkgdir}/ --optimize=1
 }
 
