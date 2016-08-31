@@ -1,0 +1,12 @@
+pkgbase = libite
+	pkgdesc = Extends the GNU libc with some missing stuff from BSD
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/troglobit/libite
+	arch = any
+	license = custom
+	source = https://github.com/troglobit/libite/releases/download/v1.8.1/libite-1.8.1.tar.xz
+	sha256sums = 99fcdc8911a43b91949dd294d6de73a28b4e2eb3567479bf99a66638a64a2df0
+
+pkgname = libite
+
