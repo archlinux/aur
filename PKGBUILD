@@ -3,7 +3,7 @@
 
 _pkgbase=libmicrohttpd
 pkgname=lib32-${_pkgbase}
-pkgver=0.9.49
+pkgver=0.9.51
 pkgrel=2
 pkgdesc="a small C library that is supposed to make it easy to run an HTTP server as part of another application."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-gnutls' 'lib32-libgcrypt')
 optdepends=('lib32-curl')
 options=('!libtool')
 source=(ftp://ftp.gnu.org/gnu/libmicrohttpd/$_pkgbase-$pkgver.tar.gz)
-md5sums=('3209aa2ac6199b874a6325342b86edbc')
+md5sums=('452f6a4cef08f23f88915b86bde4d9d6')
 
 build() {
   cd ${_pkgbase}-${pkgver}
