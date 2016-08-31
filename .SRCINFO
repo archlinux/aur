@@ -1,7 +1,7 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://conan.io
 	arch = any
 	license = MIT
@@ -9,13 +9,13 @@ pkgbase = conan
 	source = https://github.com/conan-io/conan/archive/0.11.0.tar.gz
 	source = conan-0.11.0.patch
 	sha512sums = ee27e0e01b4186ecd7e9e2bdf45f433f4313df9a5ddcc98f0d607442eaa96225e44fee12c3b58576b153bc32095d759bc76833eb6a45c263fa703862f69ee95e
-	sha512sums = 3f3b7e6ba368988f34dfedc6f8ebef34836cb5579983ea0bec02319f47cb58d8667751ec7109650b7d15512a80988378dd2b12579f95b6ccaf9cf27fa1dd807e
+	sha512sums = 8ad0a4b534cfa43faea83e963f712055c17835adb62f9b304011e6696e242853578ac663a7bc5f2947cfd7505717fc9b597bc4e70adebd16306cbd139244784a
 
 pkgname = conan
 	depends = python-pyjwt>=1.4.0
 	depends = python-pyjwt<1.5.0
 	depends = python-requests>=2.7.0
-	depends = python-requests<2.11.0
+	depends = python-requests<2.12.0
 	depends = python-colorama>=0.3.3
 	depends = python-colorama<0.4.0
 	depends = python-passlib>=1.6.5
@@ -23,7 +23,7 @@ pkgname = conan
 	depends = python-boto>=2.38.0
 	depends = python-boto<2.43.0
 	depends = python-yaml>=3.11
-	depends = python-yaml<3.12.0
+	depends = python-yaml<3.13.0
 	depends = python-patch=1.16
 	depends = python-fasteners>=0.14.1
 	depends = python-six>=1.10.0
