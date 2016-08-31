@@ -12,7 +12,7 @@ sha256sums=('0a87de05110d9bba851ba3522a1072494256e31fa653f59331313bff21d5c160')
 
 build() {
     export GOPATH="$srcdir"
-    rm "$srcdir/src/github.com/barnybug/cli53"
+    rm -rf "$srcdir/src/github.com/barnybug/cli53"
     mkdir -p "$srcdir/src/github.com/barnybug"
     ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/src/github.com/barnybug/cli53"
     cd "$srcdir/src/github.com/barnybug/cli53"
