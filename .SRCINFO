@@ -1,0 +1,15 @@
+pkgbase = diskfile-git
+	pkgdesc = Expose a disk block device as a regular file (FUSE)
+	pkgver = r19.5cb6875
+	pkgrel = 1
+	url = https://github.com/vasi/diskfile
+	arch = i386
+	arch = x86_64
+	license = Simplified BSD
+	depends = fuse
+	provides = diskfile
+	source = git+https://github.com/vasi/diskfile.git
+	md5sums = SKIP
+
+pkgname = diskfile-git
+
