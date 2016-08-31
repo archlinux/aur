@@ -3,8 +3,8 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.4+0+gbdec218
-pkgrel=2
+pkgver=2.9.4+4+g3169602
+pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('zlib' 'readline' 'ncurses' 'xz')
 options=(!makeflags)
 makedepends=('python2' 'python' 'git')
 url="http://www.xmlsoft.org/"
-source=('git://git.gnome.org/libxml2#commit=bdec2183f34b37ee89ae1d330c6ad2bb4d76605f'
+source=('git://git.gnome.org/libxml2#commit=3169602058bd2d04913909e869c61d1540bc7fb4'
         http://www.w3.org/XML/Test/xmlts20080827.tar.gz)
 md5sums=('SKIP'
          'ae3d1ebe000a3972afa104ca7f0e1b4a')
