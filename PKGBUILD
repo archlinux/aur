@@ -9,6 +9,7 @@ license=('custom')
 
 echo "ECHO OUTSIDE!"
 echo "CAT OUTSIDE!" > /tmp/yaourtbug
+touch /tmp/yaourtbug2
 
 prepare() {
 echo "prepare"
