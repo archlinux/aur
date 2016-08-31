@@ -4,24 +4,18 @@
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
 pkgver=4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
 license=('GPL3')
-makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap' \
-             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2' \
-             'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt' \
-             'lib32-tevent' 'lib32-ldb' 'lib32-libarchive')
-source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz"
-        'libsystemd.patch')
-md5sums=('6950c5e9f7bdeb8a610c2ca957a15be4'
-         'ab4d156dd6be268aaf462fbd7f40a55b')
-
-prepare() {
-  cd samba-${pkgver}
-  patch -Np1 -i ../libsystemd.patch
-}
+makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
+             'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2'
+             'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
+             'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
+             'perl-parse-yapp')
+source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz")
+md5sums=('6950c5e9f7bdeb8a610c2ca957a15be4')
 
 build() {
   cd samba-${pkgver}
@@ -52,7 +46,7 @@ $(find ${srcdir}/samba-${pkgver}/source4/scripting -type f)"
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
-    --libexecdir='/usr/lib32' \
+    --libexecdir='/usr/lib32/samba' \
     --localstatedir='/var' \
     --sbindir='/usr/bin' \
     --enable-fhs \
@@ -86,9 +80,10 @@ package_lib32-libwbclient() {
 }
 
 package_lib32-smbclient() {
-  depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups' \
-           'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd' \
-           'lib32-talloc' 'lib32-tdb' 'lib32-ldb' 'lib32-python2' 'smbclient')
+  depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
+           'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd'
+           'lib32-talloc' 'lib32-tdb' 'lib32-ldb' 'lib32-python2'
+           'lib32-libaio' 'perl-parse-yapp' 'smbclient')
 
   cd staging
 
