@@ -3,7 +3,7 @@
 _pkgname='rainbowcrack'
 pkgname="${_pkgname}-bin"
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A general propose implementation of Philippe Oechslin's faster time-memory trade-off technique. It crack hashes with rainbow tables."
 url='http://project-rainbowcrack.com/'
 arch=('i686' 'x86_64')

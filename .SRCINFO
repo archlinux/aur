@@ -1,7 +1,7 @@
 pkgbase = rainbowcrack-bin
 	pkgdesc = A general propose implementation of Philippe Oechslin's faster time-memory trade-off technique. It crack hashes with rainbow tables.
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://project-rainbowcrack.com/
 	arch = i686
 	arch = x86_64
