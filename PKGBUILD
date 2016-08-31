@@ -1,9 +1,10 @@
-# Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Contributor: 謝致邦<Yeking@Red54.com>
-# Package Repository: https://github.com/mij-aur-packages/lubuntu-artwork
+
 
 pkgname=lubuntu-artwork
-pkgver=0.62
+pkgver=0.64
 pkgrel=1
 pkgdesc='artwork of Lubuntu'
 arch=('any')
@@ -13,7 +14,7 @@ optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('c60b38bd6f0bc3a35953901f36035b56199dd39af25631d911b16972ee80c572')
+sha256sums=('4aeb04c1b02ab036601352a4f454111b341bf5a20cdbd9bc678ed7e7ec7cb4ed')
 
 package(){
     cp -r "${srcdir}/${pkgname}-${pkgver}/src/usr" "${pkgdir}"
