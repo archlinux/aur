@@ -16,3 +16,8 @@ echo "prepare"
 build() {
 echo "build"
 }
+
+package()
+{
+echo "package"
+}
