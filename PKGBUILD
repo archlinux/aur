@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -15,11 +15,7 @@ makedepends=('git'
              'opencl-headers'
              )
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
-sha1sums=('346f6355d94b1ea0a7506fe4f9bb0f020c5c7aa8')
-
-prepare() {
-  sed 's|c++11|gnu++11|g' -i "KNLMeansCL-${pkgver}/configure"
-}
+sha1sums=('cebed3e2b42bba162854abc26a88dda11174165a')
 
 build() {
   cd "KNLMeansCL-${pkgver}"
@@ -32,5 +28,4 @@ build() {
 
 package(){
   make -C "KNLMeansCL-${pkgver}" DESTDIR="${pkgdir}" install
-  install -Dm644 "KNLMeansCL-${pkgver}/DOC.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/DOC.md"
 }
