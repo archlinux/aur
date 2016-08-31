@@ -1,7 +1,7 @@
 pkgbase = uarm-git
 	pkgdesc = arm7tdmi based computer emulator with debugging tools
 	pkgver = v0.5.3.r26.3600cec
-	pkgrel = 6
+	pkgrel = 7
 	url = http://mellotanica.github.io/uARM/
 	arch = any
 	license = GPL
