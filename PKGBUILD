@@ -2,14 +2,14 @@
 
 pkgname=reglookup
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line utility for reading and querying Windows NT registries"
 arch=('i686' 'x86_64')
 url="http://projects.sentinelchicken.org/reglookup"
 license=('GPL')
 depends=('talloc')
 makedepends=('gcc' 'scons' 'docbook2x')
-source=(http://reglookup.googlecode.com/files/$pkgname-src-$pkgver.tar.gz
+source=(http://projects.sentinelchicken.org/data/downloads/$pkgname-src-$pkgver.tar.gz
 	SConstruct.patch
 	pyregfi-distutils.py.patch)
 
