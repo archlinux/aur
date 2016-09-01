@@ -1,6 +1,6 @@
 pkgbase = zulucrypt
 	pkgdesc = A cli and gui frontend to cryptsetup
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = http://mhogomchungu.github.io/zuluCrypt
 	install = zulucrypt.install
@@ -17,8 +17,8 @@ pkgbase = zulucrypt
 	optdepends = kwalletmanager: retrieve volume keys from kde kwallet
 	conflicts = zulucrypt-git
 	options = !buildflags
-	source = https://github.com/mhogomchungu/zuluCrypt/releases/download/5.0.0/zuluCrypt-5.0.0.tar.bz2
-	md5sums = fef5576d866075ff5d1b195147c2179f
+	source = https://github.com/mhogomchungu/zuluCrypt/releases/download/5.0.1/zuluCrypt-5.0.1.tar.bz2
+	md5sums = f1b472b7d56784e5968d8ecb22b7951b
 
 pkgname = zulucrypt
 
