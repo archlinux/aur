@@ -1,0 +1,28 @@
+pkgbase = mumble-stable-minimal
+	pkgdesc = Mumble stable without Text2Speech and Overlay
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = http://mumble.info/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = mesa
+	depends = qt4
+	depends = speex
+	depends = lsb-release
+	depends = libxi
+	depends = avahi
+	depends = libsndfile
+	depends = protobuf
+	depends = libpulse
+	depends = jack
+	depends = opus
+	depends = xdg-utils
+	provides = mumble=1.2.16
+	conflicts = mumble
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.16/mumble-1.2.16.tar.gz
+	md5sums = 58e7574af80e36e0b943df0e6a44d6ce
+
+pkgname = mumble-stable-minimal
+
