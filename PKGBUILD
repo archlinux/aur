@@ -1,9 +1,9 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:  Caleb Maclennan <caleb@alerque.com>
 # Contributor: Adrián Pérez de Castro <aperez@igalia.com>
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.3_446_g21db1ae
+pkgver=0.9.4.r17.g39b6d3b
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -18,11 +18,11 @@ depends=('lua-lpeg'
          'lua-filesystem'
          'lua-utf8'
          'fontconfig'
-         'harfbuzz')
+         'harfbuzz>=1.3.0')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/-/_/g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
