@@ -1,9 +1,9 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 _pkgname=duktape
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.4.0
+pkgver=1.5.1
 _dirname=${_pkgname}-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Embeddable Javascript engine"
 arch=('any')
 url="http://duktape.org/"
@@ -11,8 +11,8 @@ license=("MIT")
 makedepends=('mingw-w64-gcc')
 depends=('mingw-w64-crt')
 options=(staticlibs !strip !buildflags)
-source=("http://duktape.org/duktape-1.4.0.tar.xz")
-sha256sums=("6be060a61e2893856be662196ba4ee9529becf352c0678e93a6709e2418dbdb8")
+source=("http://duktape.org/duktape-${pkgver}.tar.xz")
+sha256sums=("9f16d05e1185094946baa333e52fe30dee45f59446c57d84874a68a6fd6bdf86")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
