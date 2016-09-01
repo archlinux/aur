@@ -8,7 +8,6 @@ url='https://github.com/facebook/zstd'
 license=('BSD' 'GPL2')
 groups=()
 depends=('glibc')
-makedepends=('git')
 source=("https://github.com/facebook/zstd/archive/v${pkgver}.tar.gz")
 noextract=()
 sha1sums=('4865e52b308fccbf8cabf704f63cadbeccb1b6d9')
