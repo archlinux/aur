@@ -1,6 +1,6 @@
 pkgbase = vocal-git
 	pkgdesc = Podcast Client for the Modern Desktop
-	pkgver = 2.0.5beta.r16.gc1578ed
+	pkgver = 2.0.5.beta.r25.geb41af0
 	pkgrel = 1
 	url = http://www.vocalproject.net
 	arch = i686
@@ -18,9 +18,10 @@ pkgbase = vocal-git
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = webkit2gtk
-	provides = vocal=2.0.5beta.r16.gc1578ed
+	optdepends = libunity: Unity shell (make dependency)
+	provides = vocal
 	conflicts = vocal
-	source = git://github.com/vocalapp/vocal.git
+	source = vocal::git://github.com/vocalapp/vocal.git
 	md5sums = SKIP
 
 pkgname = vocal-git
