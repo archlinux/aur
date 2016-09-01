@@ -18,10 +18,10 @@ sha512sums=('effca5c2f187d8eb73838c2668a14bcf64dfd99c2e4a3f2f70fa344e9b74073e588
 
 build() {
   qmake-qt5 "$srcdir/$_pkgname.pro" \
-      PREFIX=/usr \
-      CONFIG+=LINUX_INTEGRATED \
-      DISABLE_PHONON=1 \
-      INSTALL_ROOT_PATH="$pkgdir/"
+            PREFIX=/usr \
+            CONFIG+=LINUX_INTEGRATED \
+            DISABLE_PHONON=1 \
+            INSTALL_ROOT_PATH="$pkgdir/"
   make
 }
 
