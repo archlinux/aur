@@ -3,7 +3,7 @@
 
 pkgname=x2godesktopsharing
 pkgver=3.1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="x2godesktopsharing is an X2Go add-on tool that allows a user to grant other X2go users access to the current session (shadow session support)."
 arch=('i686' 'x86_64')
 url="http://www.x2go.org/"
@@ -13,15 +13,15 @@ options=(emptydirs)
 install=$pkgname.install
 groups=('x2go' 'alts')
 options=(!strip)
-source=('sharetray.cpp.patch2'
+source=('sharetray.cpp.patch'
         "http://code.x2go.org/releases/source/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('83c1d72798534d60a2fcc2d21713cd83'
+md5sums=('2efa3a30be77489dbc22188584a93690'
          'bd48394f5a4eaa55559622f21a5e0a79')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 #  echo "CONFIG = qt x11 dll debug" >> x2godesktopsharing.pro
-  patch -p0 < ../sharetray.cpp.patch2
+  patch -Np1 -i "${srcdir}/sharetray.cpp.patch"
   qmake-qt4 x2godesktopsharing.pro
 #  cp ../Makefiledbg Makefile
   make
