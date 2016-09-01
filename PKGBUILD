@@ -14,7 +14,7 @@ md5sums=('SKIP')
 _python3ver="$(python3 --version | sed -E 's/Python ([[:digit:]].[[:digit:]]).[[:digit:]]/\1/')"
 
 package() {
-	libdestdir="$pkgdir/usr/lib/$_python3ver/jelly"
+	libdestdir="$pkgdir/usr/lib/python$_python3ver/jelly"
 	bindestdir="$pkgdir/usr/bin"
 	bindest="$bindestdir/jelly"
 
