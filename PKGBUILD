@@ -8,7 +8,7 @@ url="https://code.google.com/p/mitlm/"
 license=('MIT')
 depends=()
 makedepends=('gcc' 'gcc-fortran')
-source=("https://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/mitlm/mitlm/releases/download/v${pkgver}/mitlm_${pkgver}.tar.gz")
 md5sums=(f4b07068df48445bfc21800086a549c2)
 
 build() {
