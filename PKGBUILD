@@ -2,7 +2,7 @@
 
 _basename=cogl
 pkgname="lib32-$_basename"
-pkgver=1.22.0+11+g81ab4a3
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('GPL2')
 depends=('lib32-mesa' 'lib32-libdrm' 'lib32-libxext' 'lib32-libxdamage' 'lib32-libxcomposite' 'lib32-gdk-pixbuf2' 'lib32-pango' 'lib32-libxrandr' "$_basename")
 makedepends=('gobject-introspection' 'git' 'gtk-doc')
 options=(!emptydirs)
-source=('git://git.gnome.org/cogl#commit=81ab4a3e')
+_commit=f38cda9046913c3627c52108467ba90e53d18c33
+source=("git://git.gnome.org/cogl#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
