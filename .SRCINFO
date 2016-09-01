@@ -1,7 +1,7 @@
 pkgbase = michel-orgmode-hg
 	pkgdesc = Sync org-mode files to google-tasks (uses python)
-	pkgver = r70.0a1f22038245
-	pkgrel = 1
+	pkgver = r70+.0a1f22038245+
+	pkgrel = 4
 	url = https://bitbucket.org/edgimar/michel-orgmode
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,13 @@ pkgbase = michel-orgmode-hg
 	depends = google-api-python-client
 	depends = python-gflags
 	depends = python-dateutil
+	depends = python-oauth2client
 	provides = michel-orgmode
 	conflicts = michel-orgmode
 	source = hg+https://bitbucket.org/edgimar/michel-orgmode
+	source = bugfixes-for-python3.patch
 	sha256sums = SKIP
+	sha256sums = 893adec9f17270147b80d8e3835457114c36aad99eea462e9d72402278859926
 
 pkgname = michel-orgmode-hg
 
