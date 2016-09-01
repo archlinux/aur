@@ -2,7 +2,7 @@
 
 _basename=wildmidi
 pkgname="lib32-$_basename"
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Open Source MIDI Synthesizer (32-bit)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=('lib32-alsa-lib' 'wildmidi')
 makedepends=('cmake')
 source=(https://github.com/psi29a/wildmidi/archive/wildmidi-${pkgver}.tar.gz)
-md5sums=('243ad6d754c84c5767749058c7a919c1')
+md5sums=('478816b3c0a7634d2740faf71717415c')
 
 prepare() {
   mkdir build
