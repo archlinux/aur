@@ -2,8 +2,8 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.4.10
-pkgrel=2
+pkgver=2.5.4
+pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'postgresql-libs: for PostgreSQL support')
 backup=(etc/default/icinga2
         etc/icinga2/features-available/{api,checker,command,compatlog}.conf
-        etc/icinga2/features-available/{debuglog,gelf,graphite,icingastatus}.conf
+        etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
         etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
         etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
         etc/icinga2/{constants,icinga2,init,zones}.conf
         etc/logrotate.d/icinga2)
 install='icinga2.install'
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c2963430503c382cc4d5083b05731c0b965b5ffa960e900c0827b83789f0425e')
+sha256sums=('f22ca17cd9951598ab6a1bc27c1ef82b9f1bb49795f69066ccd4d499faa240fc')
 
 build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
