@@ -5,7 +5,7 @@
 
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=moeditor-bin
-pkgver=0.1.0_beta
+pkgver=0.2.0_beta
 pkgrel=1
 epoch=
 pkgdesc="All-purpose markdown editor based on Electrum"
@@ -27,11 +27,16 @@ changelog=
 # first one changes the _ to -, second one removes the -beta entirely.
 source=("https://github.com/Moeditor/Moeditor/releases/download/v${pkgver//_/-}/moeditor_${pkgver//_beta/}-1_amd64.deb")
 noextract=()
-md5sums=('8bb8ca46d63d61ada501a24a951a1c29')
-sha512sums=('bf691d4a089271b677b1873046675954cd843d00288de0b6926039ab481341141e0d63e3b198c7f60587740b3718d030d8822b4630c0dea1aab0b5f6861fee38')
+md5sums=('4db4405fd7516ce758e6a62aa2461d56')
+sha512sums=('ce438ed54e98493e2443c7e432800196b06a4987415b1c9ee8a395f25af62f61d0a4f897744eebdc106e6652258250524303a914d0792406e782bba27e315ce1')
 validpgpkeys=()
 
 package() {
   bsdtar xf data.tar.xz
   mv usr "$pkgdir"
+
+  # fix perms
+  chown -R root:root "$pkgdir/usr"
+  chmod 755 "$pkgdir/usr/bin/moeditor"
+  chmod -R 755 "$pkgdir/usr/share/moeditor"
 }
