@@ -5,8 +5,8 @@
 # https://www.gnu.org/licenses/gpl-2.0.html
 
 pkgname=('pacman-ps')
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 arch=('any')
 url='https://gitlab.com/samcv/ps-lsof'
 license=('GPLv2')
@@ -22,7 +22,7 @@ source=("pacman-ps.sh"
         "pacman-ps.1")
 sha1sums=('9d48ae474feeed2bf16079f3f6b713af21feffc3'
           '28be8f69c8b349a43d90de416b9d6cd8282b37af'
-          '36f5b7b3706e4e82d27a6c7b0588e9e5258e06cc'
+          '382959309e7e115049efd4714b7c336626b60dbc'
           '13403de1fc04e8642e167ddd87b567401b48b099'
           '49f62584fc204f91fa96e72a7ff21b5fa338e472'
           '4cc77b90af91e615a64ae04893fdffa7939db84c'

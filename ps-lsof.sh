@@ -26,7 +26,7 @@ expressions+=("pgrep . ")
 # Use xargs to run lsof for each process-id and pipe errors to /dev/null
 # -P means don't resolve ports, +c 0 means have no max length for filenames
 # -n means don't resolve hostnames, -w means supress errors
-expressions+=("| xargs -P 1 -I '{}' lsof -P +c 0 -n -w +p '{}' 2> /dev/null ")
+expressions+=("| xargs -P 1 -I '{}' lsof -P +c 0 -n -w +p '{}'/ 2> /dev/null ")
 # Only grep files that have been deleted
 expressions+=("| grep \" DEL \" ")
 # Remove things that are not normal files
