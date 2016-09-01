@@ -2,8 +2,8 @@
 
 pkgname=stikked-git
 _gitname='Stikked'
-pkgver=0.10.0.r34.ge068019
-pkgrel=2
+pkgver=0.10.0.r49.g1fd4d32
+pkgrel=1
 pkgdesc="An advanced and beautiful pastebin written in PHP"
 arch=('any')
 url="https://github.com/claudehohl/Stikked"
@@ -14,19 +14,12 @@ provides=('stikked')
 conflicts=('stikked')
 backup=('etc/webapps/stikked/stikked.php')
 install=$pkgname.install
-source=('git+https://github.com/claudehohl/Stikked.git'
-        'https://patch-diff.githubusercontent.com/raw/claudehohl/Stikked/pull/370.patch')
-sha1sums=('SKIP'
-          '934fd0331238b9f2c3a008069faafd6628685822')
+source=('git+https://github.com/claudehohl/Stikked.git')
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 -i "$srcdir/370.patch"
 }
 
 package() {
