@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mate-utils
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files"
 url="http://mate-desktop.org"
@@ -20,7 +20,7 @@ optdepends=('mate-panel: Look up words in dictionaries from the panel'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('20c863e3bc944cb291edb734389079a1330bc6cc')
+sha1sums=('93f68f74aeaeb149f44150b4cce328ea55836584')
 
 prepare() {
     cd "${srcdir}"
