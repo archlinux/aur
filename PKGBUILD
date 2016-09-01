@@ -3,7 +3,7 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-pkgver=v1.0.2
+pkgver=1.0.2
 _pkgver=1.0.36.120
 _another_pkgver=.g536a862f
 pkgrel=1
