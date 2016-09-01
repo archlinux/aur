@@ -2,13 +2,13 @@
 
 _pkgname='pavucontrol-qt'
 pkgname="$_pkgname-git"
-pkgver=r440.a88951b
+pkgver=r447.fc7847e
 pkgrel=1
 pkgdesc='Qt port of pavucontrol'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/pavucontrol-qt'
 license=('GPL2')
-depends=('libpulse' 'glibmm' 'qt5-base')
+depends=('libpulse' 'qt5-base')
 makedepends=('git' 'cmake' 'qt5-tools' 'liblxqt-git' 'xdg-user-dirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
