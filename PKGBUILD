@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mate-applets
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="Applets for MATE panel"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish a
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('e1464e32d9c9d0e06898e41c80812d89b0ca49db')
+sha1sums=('af544d2d7c027b0d7b7e0688f93c343853e919d2')
 
 prepare() {
     cd "${srcdir}"

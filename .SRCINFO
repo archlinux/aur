@@ -1,6 +1,6 @@
 pkgbase = mate-applets-dev
 	pkgdesc = Applets for MATE panel
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = mate-applets-dev
 	provides = mate-applets-gtk3
 	conflicts = mate-applets
 	conflicts = mate-applets-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-applets-1.15.1.tar.xz
-	sha1sums = e1464e32d9c9d0e06898e41c80812d89b0ca49db
+	source = http://pub.mate-desktop.org/releases/1.15/mate-applets-1.15.2.tar.xz
+	sha1sums = af544d2d7c027b0d7b7e0688f93c343853e919d2
 
 pkgname = mate-applets-dev
 	pkgdesc = Applets for MATE panel (GTK3 version)
