@@ -50,7 +50,7 @@ build() {
   for _arch in ${_architectures}; do
     # shared build
     mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
-    ${_arch}-configure ${_build_flags} ..
+    ${_arch}-configure ${_build_flags} --enable-monolithic ..
     make
     popd
 
