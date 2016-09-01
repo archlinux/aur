@@ -15,7 +15,7 @@ import gtk
 
 def chrome_clean_shutdown(*args):
     if subprocess.call('/usr/bin/pkill -15 -P 1 chrome', shell=True) == 1:
-        subprocess.call('/usr/bin/pkill -15 -o chrome', shell=True) // if no parent, kill the oldest process
+        subprocess.call('/usr/bin/pkill -15 -o chrome', shell=True) # if no parent, kill the oldest process
     return True
 
 
