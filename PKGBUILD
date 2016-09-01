@@ -1,7 +1,7 @@
 # Maintainer: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=chrome-shutdown-hook
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Gently shutdown Chrome/Chromium on logout from Gnome Shell."
 arch=('any')

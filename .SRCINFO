@@ -1,6 +1,6 @@
 pkgbase = chrome-shutdown-hook
 	pkgdesc = Gently shutdown Chrome/Chromium on logout from Gnome Shell.
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://www.google.com/chrome/index.html
 	arch = any
