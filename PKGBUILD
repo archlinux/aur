@@ -16,8 +16,8 @@ _python3ver="$(python3 --version | sed -E 's/Python ([[:digit:]].[[:digit:]]).[[
 package() {
 	cd "$pkgname"
 	
-	install -D -m444 jelly.py dictionary.py "$pkgdir/usr/lib/python$_python3ver/jelly"	
-	install -D -m555 jelly "$pkgdir/usr/lib/python$_python3ver/jelly"
+	install -D -m444 jelly.py dictionary.py "$pkgdir/usr/lib/python$_python3ver/jelly/"	
+	install -D -m555 jelly "$pkgdir/usr/lib/python$_python3ver/jelly/"
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "../lib/python$_python3ver/jelly/jelly" "$pkgdir/usr/bin/jelly"
