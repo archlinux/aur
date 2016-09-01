@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv
-pkgver=0.18.1384
+pkgver=0.20.384
 #hotfix=-hotfix
 pkgrel=1
 _realname=xt7-player-mpv
@@ -31,7 +31,7 @@ depends=('gambas3-gb-image>=3.6.2'
 	'gambas3-gb-signal>=3.6.2'
 	'gambas3-gb-desktop-x11>=3.6.2'
 	'gambas3-gb-args>=3.6.2'
-	'mpv>=1:0.10.0'
+	'mpv>=1:0.20.0'
 	'taglib'
 	'youtube-dl>=2015.08.28'
 	'wget')
@@ -64,5 +64,5 @@ package() {
 
 }
 
-md5sums=('5f6b4aeb0eca20bd7422891e6ec8be4d'
+md5sums=('de6d630e3265ccf9a575ea6d51b0ad6b'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
