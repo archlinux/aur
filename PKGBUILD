@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=iproute-mptcp
-pkgver=0.90
+pkgver=0.91.1
 pkgrel=1
 pkgdesc="IP Routing Utilities, with Multipath TCP support"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 source=("https://github.com/multipath-tcp/$pkgname/archive/v$pkgver.tar.gz"
         "iproute2-fhs.patch"
         "unwanted-link-help.patch")
-sha256sums=('d52af6789539eee5ab5e7a9ede2646bb0cb0bfe034ecc98a73a21317bb3ad1da'
+sha256sums=('c115591ea271b894c795d6be8840dac11d2cf71a712956dd40b1c685ad6f77f7'
             'fa569bd5be8c6c47d43e84b8836436e15cec3347326aa896bb55a8babe9cb0bd'
             '3f72492554a5417c13b2b6f6222c158319ce91c0b6c25fd651f49add493323a7')
 
