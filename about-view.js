@@ -168,7 +168,7 @@
               _this.a({
                 href: 'https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=atom-bleeding'
               }, 'PKGBUILD');
-              _this.span(' , in the ');
+              _this.span(', in the ');
               _this.a({
                 href: 'https://aur.archlinux.org/packages/atom-bleeding'
               }, 'Arch User Repository');
