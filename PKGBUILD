@@ -2,12 +2,12 @@
 
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 arch=('x86_64')
 license=(LGPL)
-url="http://gstreamer.freedesktop.org/"
+url="https://gstreamer.freedesktop.org/"
 depends=('mjpegtools' 'lib32-gst-plugins-base-libs' 'curl' 'lib32-chromaprint' 'lib32-libmms' 
          'lib32-faad2' 'lib32-faac' 'lib32-celt' 'lib32-libdca' 'lib32-soundtouch' 'lib32-spandsp'
          'lib32-libdvdnav' 'lib32-libmodplug' 'lib32-libgme' 'lib32-wayland' 'lib32-neon' 'lib32-libofa'
@@ -19,7 +19,7 @@ makedepends=('lib32-schroedinger' 'lib32-libexif' 'lib32-libdvdread' 'lib32-libv
              'vulkan-headers' 'vulkan-icd-loader')
 options=(!emptydirs)
 source=(${url}/src/$_basename/$_basename-$pkgver.tar.xz)
-sha256sums=('d7995317530c8773ec088f94d9320909d41da61996b801ebacce9a56af493f97')
+sha256sums=('7899fcb18e6a1af2888b19c90213af018a57d741c6e72ec56b133bc73ec8509b')
 
 prepare() {
   cd $_basename-$pkgver
