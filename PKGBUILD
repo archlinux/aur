@@ -13,9 +13,9 @@ optdepends=('sane: scanner backend')
 options=(!strip staticlibs)
 install="sane-epson-perfection-firmware.install"
 source=( #"https://ftp.epson.com/drivers/epson12699.exe" # 1670 - esfw30.bin (checksum differs from download below)
-		"https://ftp.epson.com/drivers/epson12204.exe" # 2480/2580/(1670) - esfw41.bin, (esfw30.bin)
+        "https://ftp.epson.com/drivers/epson12204.exe" # 2480/2580/(1670) - esfw41.bin, (esfw30.bin)
         "https://ftp.epson.com/drivers/epson13829.exe" # 3490/3590 - esfw52.bin
-		)
+        )
 # Alternative firmware sources:
 # Installation cd
 # https://wiki.ubuntuusers.de/Scanner/Epson_Perfection/
@@ -26,14 +26,14 @@ sha512sums=('ed7ebb87ecb1d5fffa516c119e71b540a2490d81604e18e721026f81f83a824b8c6
             'e4ac06cfd8f982758e690ee96f34b6e9d5f5fd6a15d70b7f60bef87d5f8afdc9ca825afed6e7aa106ee172afade0b1b1e5f2f779dd8828778ff6b380389f2a7f')
 
 prepare() {
-	# Extract all firmware binaries from .cab sources
-	for file in "${source[@]##*/}"
-	do
-		bsdtar xf "${file}" ModUsd.cab
-		cabextract ModUsd.cab -F "esfw*.bin" -L
-	done
+    # Extract all firmware binaries from .cab sources
+    for file in "${source[@]##*/}"
+    do
+        bsdtar xf "${file}" ModUsd.cab
+        cabextract ModUsd.cab -F "esfw*.bin" -L
+    done
 }
 
 package() {
-	install -Dm644 -t "${pkgdir}/usr/share/sane/snapscan/" ${srcdir}/esfw*.bin
+    install -Dm644 -t "${pkgdir}/usr/share/sane/snapscan/" ${srcdir}/esfw*.bin
 }
