@@ -19,8 +19,8 @@ pkgdesc='A bleeding-edge version of the latest Atom stable release, built with t
 arch=('i686' 'x86_64')
 url="${_atom_url}/atom"
 license=('MIT')
-conflicts=('apm-bleeding')
-provides=('apm-bleeding')
+conflicts=('apm-bleeding' 'apm' 'atom')
+provides=('apm-bleeding' 'apm' 'atom')
 depends=('electron'
          'python-pylint'
          'python2-pylint'
