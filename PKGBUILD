@@ -3,9 +3,9 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-git
-pkgver=r6445.9525226
-pkgrel=2
-pkgdesc="Electronic schematic and printed circuit board (PCB) design tools - git clone of bzr repo (faster download)"
+pkgver=r7108.4b6d283
+pkgrel=1
+pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://iut-tice.ujf-grenoble.fr/kicad/"
 license=('GPL')
@@ -15,7 +15,7 @@ optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
 provides=('kicad')
 install=kicad.install
-source=("${pkgname}"'::git+https://github.com/KiCad/kicad-source-mirror')
+source=("${pkgname}"'::git+git://git.launchpad.net/kicad')
 md5sums=('SKIP')
 
 pkgver() {
