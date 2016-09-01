@@ -3,12 +3,12 @@
 _basename=gst-plugins-bad
 pkgname="lib32-$_basename"
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (32-bit)"
 arch=('x86_64')
 license=(LGPL)
 url="https://gstreamer.freedesktop.org/"
-depends=('mjpegtools' 'lib32-gst-plugins-base-libs' 'curl' 'lib32-chromaprint' 'lib32-libmms' 
+depends=('mjpegtools' 'lib32-gst-plugins-base-libs' 'lib32-curl' 'lib32-chromaprint' 'lib32-libmms' 
          'lib32-faad2' 'lib32-faac' 'lib32-celt' 'lib32-libdca' 'lib32-soundtouch' 'lib32-spandsp'
          'lib32-libdvdnav' 'lib32-libmodplug' 'lib32-libgme' 'lib32-wayland' 'lib32-neon' 'lib32-libofa'
          'lib32-fluidsynth' 'lib32-openjpeg' 'lib32-libwebp' 'lib32-libsrtp' 'lib32-gnutls' 'lib32-wildmidi'
