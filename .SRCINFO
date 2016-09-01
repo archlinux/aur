@@ -1,5 +1,5 @@
 pkgbase = emacs-pretest
-	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version (fix1)
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version (fix2)
 	pkgver = 25.1
 	pkgrel = 0.2
 	url = http://www.gnu.org/software/emacs/emacs.html
