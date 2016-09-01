@@ -13,8 +13,8 @@ source=("${url}/pool/main/m/${_pkgname}/${_pkgname}_${pkgver}.tar.xz")
 sha256sums=('b1c704e40f980e1a213130a78bec743d723eae4076787c7a909efccdc020e77c')
 
 package() {
-  cd ${srcdir}/${_pkgname}/usr
-  cp -r * ${pkgdir}/usr
+  cd ${srcdir}/${_pkgname}/usr/mdm
+  cp -r * ${pkgdir}/usr/share/mdm
 }
 
 
