@@ -27,7 +27,6 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
-        PNGImageDecoder.patch
         chromium-52.0.2743.116-unset-madv_free.patch)
 sha256sums=('2e3c5f7b12b5b4f150b93004a718fb85778aeddc4df05bbf92b99a19a1c63dee'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
