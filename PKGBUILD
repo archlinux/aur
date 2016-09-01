@@ -8,7 +8,7 @@ url='http://pypi.python.org/pypi/Flask-Restplus/'
 license=('BSD')
 depends=('python2-flask-restful>=0.3.2' 'python2-jsonschema' 'python2-pytz' 'python2-aniso8601>=0.82')
 checkdepends=('python2-nose' 'python2-rednose' 'python2-blinker' 'python2-tzlocal' 'python2-mock')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 provides=('python2-flask-restplus=0.8.6')
 conflicts=('python2-flask-restplus')
 
