@@ -92,4 +92,3 @@ package() {
   install -Dm644 "${srcdir}/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
 }
 
-# vim:set ssw=2 sts=2 et:
