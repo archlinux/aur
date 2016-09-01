@@ -1,6 +1,6 @@
 diff -aur michel-orgmode.pristine/michel/michel.py michel-orgmode.new/michel/michel.py
 --- michel-orgmode.pristine/michel/michel.py	2016-09-01 14:35:41.509289468 +0200
-+++ michel-orgmode.new/michel/michel.py	2016-09-01 14:52:03.558181686 +0200
++++ michel-orgmode.new/michel/michel.py	2016-09-01 16:14:12.128376618 +0200
 @@ -19,12 +19,15 @@
  # Set default encoding to 'UTF-8' instead of 'ascii'
  # http://stackoverflow.com/questions/11741574/how-to-set-the-default-encoding-to-utf-8-in-python
@@ -49,3 +49,12 @@ diff -aur michel-orgmode.pristine/michel/michel.py michel-orgmode.new/michel/mic
      
      headline_regex = re.compile("^(\*+ )( *)(DONE )?")
      # DEADLINE timestmaps can have the formats described at
+@@ -541,7 +544,7 @@
+                "'%s' has been updated to contain the contents of the "
+                "list, and a backup of this file has been created "
+                "as '%s'.  Please update '%s' as desired, and re-run "
+-               "the synchronization.\n") % (list_name, path, bkup_fname, path)
++               "the synchronization.\n" % (list_name, path, bkup_fname, path))
+     
+     merged_tree, conflict_occurred = treemerge(orgfile_tree, orig_tree, gtasks_tree)
+     

@@ -3,7 +3,7 @@
 pkgname=michel-orgmode-hg
 _pkgname=michel-orgmode
 pkgver=r70+.0a1f22038245+
-pkgrel=2
+pkgrel=3
 pkgdesc="Sync org-mode files to google-tasks (uses python)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/edgimar/michel-orgmode"
@@ -17,7 +17,7 @@ source=(
 "bugfixes-for-python3.patch"
 )
 sha256sums=('SKIP'
-            '8e9fd6b485dcd67e390c4e0d189c282e734237a2d11a90a915d0609c9608bef2')
+            '664661259cbd90833c5959a0d38943ad2f6bb0b1bd24dd685ef578d7111bea09')
 
 pkgver() {
 cd "$srcdir/$_pkgname"
