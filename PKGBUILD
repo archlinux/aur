@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
 
 pkgname=lib32-libfbclient
-_pkgver=2.5.4.26856
+_pkgver=2.5.6.27020
 _buildver=0
 pkgver=${_pkgver}_${_buildver}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('lib32-glibc>=2.7' 'lib32-gcc-libs' 'lib32-icu>=50.1' 'lib32-ncurses')
 makedepends=('gcc-multilib')
 options=('!makeflags' '!libtool')
 source=(http://downloads.sourceforge.net/firebird/Firebird-$_pkgver-$_buildver.tar.bz2)
-md5sums=('7a17ec9889424b98baa29e001a054434')
+md5sums=('5514798d5dca8c3525525c61cf35283e')
 
 build() {
   cd $srcdir/Firebird-$_pkgver-$_buildver
@@ -28,7 +28,7 @@ build() {
     --without-fbsecure-db --with-fbmsg=/usr/share/firebird --without-fblog \
     --without-fbglock --without-fbplugins
 
-  make
+	make CXXFLAGS='-std=gnu++98 -flifetime-dse=1'
 }
 
 package() {
