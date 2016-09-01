@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/timbertson/termstyle'
 license=('BSD')
 depends=('python2')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 
 source=("https://github.com/timbertson/termstyle/archive/${pkgver}.tar.gz")
 sha1sums=('8bc0d84c08f1601303b3301acef3f492cd0626e8')
