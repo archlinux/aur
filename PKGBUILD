@@ -16,10 +16,8 @@ _python3ver="$(python3 --version | sed -E 's/Python ([[:digit:]].[[:digit:]]).[[
 package() {
 	cd "$pkgname"
 	
-	mkdir -p "$pkgdir/usr/lib/python$_python3ver/jelly"
-	cp jelly jelly.py dictionary.py "$pkgdir/usr/lib/python$_python3ver/jelly"	
-	chmod 444 "$pkgdir/usr/lib/python$_python3ver/jelly/"*
-	chmod +x "$pkgdir/usr/lib/python$_python3ver/jelly/jelly"
+	install -m444 jelly.py dictionary.py "$pkgdir/usr/lib/python$_python3ver/jelly"	
+	install -m555 jelly "$pkgdir/usr/lib/python$_python3ver/jelly"
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "../lib/python$_python3ver/jelly/jelly" "$pkgdir/usr/bin/jelly"
