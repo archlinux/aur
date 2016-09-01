@@ -5,7 +5,7 @@ _gitname=fofix
 pkgname=fofix-git
 pkgver=v4.0.0alpha2.r324.g0f69173
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fofix/fofix"
@@ -17,11 +17,10 @@ depends=(
   'python2-pygame'
   'python2-opengl'
   'python2-numpy'
-  'python2-imaging'
+  'python2-pillow'
   'python2-cerealizer'
   'python2-fretwork-git'
-  'pyogg'
-  'pyvorbis'
+  'python2-opengl'
   'python2-pysqlite'
   'libffi'
   'cython2'
@@ -29,7 +28,10 @@ depends=(
   'soundtouch'
   'glu'
 )
-optdepends=('pyaudio: microphone support')
+optdepends=(
+  'python2-pyaudio: microphone support'
+  'gettext: for translations'
+)
 makedepends=('git')
 install=${pkgname}.install
 source=(
