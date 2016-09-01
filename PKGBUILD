@@ -14,7 +14,7 @@
 #
 
 pkgname=ejabberd-git
-pkgver=16.08.1.g9a5f075
+pkgver=16.08.5.gb62aa3d
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
