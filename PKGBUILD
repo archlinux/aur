@@ -94,6 +94,7 @@ package() {
   install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
   rm ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh
   rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
+  ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
   find "$pkgdir" \
     -name "*.a" -exec rm '{}' \; \
