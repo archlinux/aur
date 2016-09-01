@@ -104,5 +104,5 @@ package() {
     -or -name "man" -prune -exec rm -r '{}' \; \
     -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
     -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
-    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
+    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom-${_ver}/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
 }
