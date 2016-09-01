@@ -53,6 +53,7 @@ pkgbase = xorg-server-git
 	makedepends = libxshmfence
 	makedepends = libunwind
 	makedepends = git
+	makedepends = xfont2-git
 	source = git://anongit.freedesktop.org/xorg/xserver
 	source = xvfb-run
 	source = xvfb-run.1
@@ -76,9 +77,9 @@ pkgname = xorg-server-git
 	depends = libxshmfence
 	depends = libgl
 	depends = xf86-input-driver
-	provides = X-ABI-VIDEODRV_VERSION=20.0
-	provides = X-ABI-XINPUT_VERSION=22.1
-	provides = X-ABI-EXTENSION_VERSION=9.0
+	provides = X-ABI-VIDEODRV_VERSION=23.0
+	provides = X-ABI-XINPUT_VERSION=24.1
+	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
 	provides = xorg-server
 	conflicts = nvidia-utils<=331.20
