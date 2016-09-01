@@ -29,5 +29,5 @@ build() {
 package() {
 	cd "$srcdir/lily-${pkgver}"
 	make DESTDIR="$pkgdir/" install
-    install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
