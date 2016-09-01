@@ -4,7 +4,7 @@
 
 pkgname=slock-git
 _pkgname=slock
-pkgver=20150508.754195f
+pkgver=20160831.137f007
 pkgrel=1
 pkgdesc='Simple X display locker'
 url='http://tools.suckless.org/slock'
