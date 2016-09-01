@@ -20,9 +20,9 @@ package() {
 
 	cd "$pkgname"
 	
-	install -D -m444 dictionary.py "$libdestdir"
-	install -D -m444 jelly.py "$libdestdir"
-	install -D -m555 jelly "$libdestdir"
+	install -D -m444 dictionary.py "$libdestdir/dictionary.py"
+	install -D -m444 jelly.py "$libdestdir/jelly.py"
+	install -D -m555 jelly "$libdestdir/jelly"
 
 	mkdir -p "$bindestdir"
 	ln -s "../lib/python$_python3ver/jelly/jelly" "$bindest"
