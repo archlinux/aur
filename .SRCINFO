@@ -1,6 +1,6 @@
 pkgbase = mint-x-icons
 	pkgdesc = Icon theme for Linux Mint. Based on mintified versions of Clearlooks Revamp, Elementary and Faenza.
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-x-icons
 	install = mint-x-icons.install
@@ -9,8 +9,8 @@ pkgbase = mint-x-icons
 	depends = gdk-pixbuf2
 	depends = gtk-update-icon-cache
 	options = !strip
-	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.3.8.tar.xz
-	sha256sums = 4cf82a23399ca6f3987b5bd40fcb41797cd5f70f680e722b19b929746c3be798
+	source = http://packages.linuxmint.com/pool/main/m/mint-x-icons/mint-x-icons_1.3.9.tar.xz
+	sha256sums = adbbbd81f14eb40b1df237ab3d9b4628add6e3f681f64c3982d3deb5257a0a83
 
 pkgname = mint-x-icons
 
