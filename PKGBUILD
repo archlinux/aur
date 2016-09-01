@@ -13,7 +13,7 @@ md5sums=('SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP')
-depends=('libappindicator-gtk3' 'libappindicator-gtk2' 'lib32-libappindicator-gtk3' 'lib32-libappindicator-gtk2' 'jre8-openjdk')
+depends=('jre8-openjdk')
 
 package() {
 	install -D $srcdir/PrayerApp.desktop ${pkgdir}/usr/share/applications/PrayerApp.desktop
