@@ -2,7 +2,7 @@
 
 pkgname=michel-orgmode-hg
 _pkgname=michel-orgmode
-pkgver=r70+.0a1f22038245+
+pkgver=r70.0a1f22038245
 pkgrel=4
 pkgdesc="Sync org-mode files to google-tasks (uses python)"
 arch=('i686' 'x86_64')
