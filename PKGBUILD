@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
 pkgname=firebird-superserver
-pkgver=2.5.5.26952
-pkgrel=2
+pkgver=2.5.6.27020
+pkgrel=1
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -15,7 +15,7 @@ install=firebird-superserver.install
 source=("http://downloads.sourceforge.net/firebird/Firebird-$pkgver-0.tar.bz2"
         'firebird-tmpfiles.conf'
         'firebird-systemd.service')
-md5sums=('b0b5293991fcf07347b38431c80be1d4'
+md5sums=('5514798d5dca8c3525525c61cf35283e'
          '98eff99fd8d195a45c251610d67bd473'
          'ee9068e9bfdfa01e9dc79c72d1bfcdd8')
 
