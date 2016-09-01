@@ -1,7 +1,7 @@
 # Maintainer: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
 pkgname="mitlm"
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools for efficient iterative estimation of statistical n-gram language models"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mitlm/"
