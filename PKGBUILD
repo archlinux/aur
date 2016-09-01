@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=suricata-emerging-rules
-pkgver=8361
+pkgver=8410
 pkgrel=1
 pkgdesc="Suricata rules from emergingthreatspro.com"
 arch=('any')
