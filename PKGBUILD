@@ -2,18 +2,18 @@
 
 _basename=gst-plugins-ugly
 pkgname="lib32-$_basename"
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (32-bit)"
 arch=('x86_64')
 license=('LGPL')
-url="http://gstreamer.freedesktop.org/"
+url="https://gstreamer.freedesktop.org/"
 depends=('lib32-gst-plugins-base-libs' 'lib32-libdvdread' 'lib32-lame' 'lib32-libmpeg2' 'lib32-a52dec' 'lib32-libmad' 'lib32-libsidplay'
          'lib32-libcdio' 'lib32-libx264' 'lib32-opencore-amr' 'lib32-mpg123' 'gst-plugins-ugly')
 makedepends=('python' 'x264')
 options=(!emptydirs)
 source=(${url}/src/$_basename/$_basename-$pkgver.tar.xz)
-sha256sums=('9c5b33a2a98fc1d6d6c99a1b536b1fb2de45f53cc8bf8ab85a8b8141fed1a8ac')
+sha256sums=('6fa2599fdd072d31fbaf50c34af406e2be944a010b1f4eab67a5fe32a0310693')
 
 build() {
   cd $_basename-$pkgver
