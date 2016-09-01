@@ -3,7 +3,7 @@
 
 pkgname=fofix
 pkgver=3.121
-pkgrel=8
+pkgrel=9
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
@@ -37,6 +37,7 @@ build() {
     # patchs, waiting for a new version
     sed -i 's/import Image/try:\n    from PIL import Image\nexcept ImportError:\n    import Image/' src/Video.py  # @8cdf04
     sed -i 's/dispatch.sysex_event(sysex_data)//' src/midi/MidiFileParser.py  # @19d39b3
+    sed -i 's/string = image.tostring/string = image.tobytes/' src/Texture.py  # @da2a21d
 }
 
 package() {
