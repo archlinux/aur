@@ -1,7 +1,7 @@
 pkgbase = libdigidocpp
 	pkgdesc = Library for creating DigiDoc signature files
 	pkgver = 3.12.2.1329
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.id.ee/
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = libdigidocpp
 	makedepends = opensc
 	makedepends = xxd
 	depends = xml-security-c
-	depends = minizip
 	depends = libdigidoc
 	source = https://installer.id.ee/media/ubuntu/pool/main/libd/libdigidocpp/libdigidocpp_3.12.2.1329.orig.tar.xz
 	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
