@@ -7,7 +7,7 @@ arch=('any')
 url='http://pypi.python.org/pypi/Flask-Compress/'
 license=('BSD')
 depends=('python2-flask')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 
 source=("http://pypi.python.org/packages/source/F/Flask-Compress/Flask-Compress-${pkgver}.tar.gz")
 sha1sums=('3a5e30a7ce0b927421d5afca416a27f71c6a47f0')
