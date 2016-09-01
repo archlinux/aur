@@ -2,7 +2,7 @@
 
 pkgname=hax11-git
 pkgver=r83.7214eca
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackbrary to Hook and Augment X11 protocol calls"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/hax11"
@@ -21,16 +21,27 @@ pkgver() {
 
 build() {
   cd "$srcdir/hax11"
-  make
+  if [[ $CARCH == x86_64 ]]
+  then
+    make
+  else
+    make lib32/hax11.so
+  fi
 }
 
 package() {
   # Libraries
-  for arch in 32 64
-  do
-    mkdir -p "$pkgdir/usr/lib/hax11/lib$arch"
-    install -m644 -t "$pkgdir/usr/lib/hax11/lib$arch" "$srcdir/hax11/lib$arch/hax11.so"
-  done
+  if [[ $CARCH == x86_64 ]]
+  then
+    mkdir -p "$pkgdir/usr/lib/hax11/lib"
+    install -m644 -t "$pkgdir/usr/lib/hax11/lib" "$srcdir/hax11/lib64/hax11.so"
+
+    mkdir -p "$pkgdir/usr/lib/hax11/lib32"
+    install -m644 -t "$pkgdir/usr/lib/hax11/lib32" "$srcdir/hax11/lib32/hax11.so"
+  else
+    mkdir -p "$pkgdir/usr/lib/hax11/lib"
+    install -m644 -t "$pkgdir/usr/lib/hax11/lib" "$srcdir/hax11/lib/hax11.so"
+  fi
 
   # LD_PRELOAD profile.d script
   mkdir -p "$pkgdir/etc/profile.d"
