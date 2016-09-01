@@ -3,9 +3,9 @@
 
 _gitname=fofix
 pkgname=fofix-git
-pkgver=v4.0.0alpha2.r209.gca25cd5
+pkgver=v4.0.0alpha2.r324.g0f69173
 epoch=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire (Git Version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fofix/fofix"
@@ -19,11 +19,13 @@ depends=(
   'python2-numpy'
   'python2-imaging'
   'python2-cerealizer'
+  'python2-fretwork-git'
   'pyogg'
   'pyvorbis'
   'python2-pysqlite'
   'libffi'
   'cython2'
+  'pkg-config'
   'soundtouch'
   'glu'
 )
