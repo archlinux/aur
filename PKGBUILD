@@ -14,14 +14,19 @@ md5sums=('SKIP')
 _python3ver="$(python3 --version | sed -E 's/Python ([[:digit:]].[[:digit:]]).[[:digit:]]/\1/')"
 
 package() {
+	libdestdir="$pkgdir/usr/lib/$_python3ver/jelly"
+	bindestdir="$pkgdir/usr/bin"
+	bindest="$bindestdir/jelly"
+
 	cd "$pkgname"
 	
-	install -m444 jelly.py dictionary.py "$pkgdir/usr/lib/python$_python3ver/jelly/"	
-	install -m555 jelly "$pkgdir/usr/lib/python$_python3ver/jelly/"
+	install -D -m444 dictionary.py "$libdestdir"
+	install -D -m444 jelly.py "$libdestdir"
+	install -D -m555 jelly "$libdestdir"
 
-	mkdir -p "$pkgdir/usr/bin"
-	ln -s "../lib/python$_python3ver/jelly/jelly" "$pkgdir/usr/bin/jelly"
-	chmod 555 "$pkgdir/usr/bin/jelly"
+	mkdir -p "$bindestdir"
+	ln -s "../lib/python$_python3ver/jelly/jelly" "$bindest"
+	chmod 555 "$bindest"
 }
 
 pkgver() {
