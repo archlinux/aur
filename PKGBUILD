@@ -15,7 +15,7 @@ _pkgrel=0
 _pkgver=1.11.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -69,39 +69,40 @@ build() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
 
 	export PYTHON=/usr/bin/python2
-	until ./script/build --build-dir "$srcdir/${_pkgname}-build"; do :; done
+	until ./script/build; do :; done
 }
 
 package() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
 
-	script/grunt install --build-dir "$srcdir/${_pkgname}-build" --install-dir "$pkgdir/usr"
+  _ver=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g')
 
-	if [[ -d "$pkgdir/usr/share/${_pkgname}" ]]; then
-  	mv "$pkgdir/usr/share/${_pkgname}" "$pkgdir/usr/share/${_pkgname}-${_version}"
-	fi
-
-  if [[ -f "$pkgdir/usr/bin/${_pkgname}" ]]; then
-		rm "$pkgdir/usr/bin/${_pkgname}"
+  _arch=amd64
+  if [ "${CARCH}" = "i686" ]; then
+  _arch=i386
   fi
+  install -dm755 ${pkgdir}/usr/bin
+  install -dm755 ${pkgdir}/usr/share/${_pkgname}-${_version}
+  install -dm755 ${pkgdir}/usr/share/applications
+  install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
+  install -dm755 ${pkgdir}/usr/share/pixmaps
 
-	if [[ -f "$pkgdir/usr/bin/apm" ]]; then
-		rm "$pkgdir/usr/bin/apm"
-	fi
+  cp -r out/${_pkgname}-${_version}-${_ver}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
+  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
+  mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 $srcdir/${_pkgname}-${_version} ${pkgdir}/usr/bin/${_pkgname}-${_version}
+  install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
+  rm ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh
+  rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
 
-	ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
-
-	if [[ -f "$pkgdir/usr/share/applications/${_pkgname}.desktop" ]]; then
-  	rm "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-	fi
-
-  install -Dm755 $srcdir/${_pkgname}-${_version} "$pkgdir/usr/bin/${_pkgname}-${_version}"
-	install -Dm644 $srcdir/${_pkgname}-${_version}.desktop "$pkgdir/usr/share/applications/${_pkgname}-${_version}.desktop"
-	install -Dm644 resources/app-icons/${_version}/png/1024.png "$pkgdir/usr/share/pixmaps/${_pkgname}-${_version}.png"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-
-  find ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules \
-    -name "package.json" -exec sed -i -e "s|$srcdir/atom-$_ver/apm/node_modules/atom-package-manager|/usr/share/atom-beta/resources/app/apm|g" '{}' +
-  find ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/apm \
-    -name "package.json" -exec sed -i -e "s|$srcdir/atom-$_ver/apm|/usr/share/atom-beta/resources/app/apm|g" '{}' +
+  find "$pkgdir" \
+    -name "*.a" -exec rm '{}' \; \
+    -or -name "*.bat" -exec rm '{}' \; \
+    -or -name "benchmark" -prune -exec rm -r '{}' \; \
+    -or -name "doc" -prune -exec rm -r '{}' \; \
+    -or -name "html" -prune -exec rm -r '{}' \; \
+    -or -name "man" -prune -exec rm -r '{}' \; \
+    -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
+    -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
+    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom/apm|/usr/share/${_pkgname}-${_version}/resources/app/apm|g" '{}' +
 }
