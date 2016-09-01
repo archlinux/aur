@@ -2,19 +2,19 @@
 
 pkgname=nct677x-git
 _pkgname=nct6775
-pkgver=nct6775.v1.1.46.gc90fb57
+pkgver=nct6775.v1.1.49.g7ec1235
 pkgrel=1
 pkgdesc="Nuvoton module for nct677x chips not yet supported in the kernel."
 arch=('i686' 'x86_64')
 url="https://github.com/groeck/nct6775"
 license=('GPLv2')
-depends=('linux>=4.5' 'linux<4.6')
-makedepends=('linux-headers' 'git')
+depends=('linux>=4.7' 'linux<4.8')
+makedepends=('linux-headers>=4.7' 'linux-headers<4.8' 'git')
 source=("git://github.com/groeck/nct6775.git")
 md5sums=('SKIP')
 install=readme.install
 
-_extramodules="extramodules-4.5-ARCH"
+_extramodules="extramodules-4.7-ARCH"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 pkgver() {
