@@ -1,0 +1,17 @@
+pkgbase = mattermost-desktop-bin
+	pkgdesc = Mattermost Desktop (Beta) for Linux (binary)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mattermost/desktop
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = gendesk
+	depends = gconf
+	conflicts = mattermost,
+	conflicts = mattermost-desktop
+	source = https://releases.mattermost.com/desktop/1.3.0/mattermost-desktop-1.3.0-linux-x64.tar.gz
+	sha256sums = eb349ff12a39cc5e29413c56480a0bcd7d3d991699647b364f0f8fb62499e4c2
+
+pkgname = mattermost-desktop-bin
+
