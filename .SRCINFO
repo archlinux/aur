@@ -1,7 +1,7 @@
 pkgbase = mdm-themes-html
 	pkgdesc = HTML themes for the MDM Display Manager
 	pkgver = 2.0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.linuxmint.com
 	arch = any
 	license = GPL3
