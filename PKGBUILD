@@ -1,10 +1,10 @@
 # Maintainer: Kalentia <kalentia.git@gmail.com>
 pkgname=xcursor-alkano-default
-pkgver=1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Alkano cursor - default variant"
 arch=('any')
-url="https://www.gnome-look.org/p/1099962/"
+url="https://www.gnome-look.org/p/999965/"
 source=("https://www.dropbox.com/s/blps54ojd81yh73/Alkano.tgz")
 makedepends=('tar')
 

@@ -1,8 +1,8 @@
 pkgbase = xcursor-alkano-default
 	pkgdesc = Alkano cursor - default variant
-	pkgver = 1
+	pkgver = 3.2.0
 	pkgrel = 1
-	url = https://www.gnome-look.org/p/1099962/
+	url = https://www.gnome-look.org/p/999965/
 	arch = any
 	makedepends = tar
 	source = https://www.dropbox.com/s/blps54ojd81yh73/Alkano.tgz
