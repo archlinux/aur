@@ -1,8 +1,8 @@
-# Maintainer: Mort Yao <soimort@Verlangen>
+# Maintainer: Mort Yao <soimort@mort.ninja>
 
 pkgname=fstar
 pkgver=0.9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
@@ -29,6 +29,6 @@ package() {
   cd "FStar-$pkgver"
 
   install -d -m755 $pkgdir/opt/fstar $pkgdir/usr/bin
-  cp -r bin/ doc/ examples/ lib/ $pkgdir/opt/fstar
+  cp -r bin/ doc/ examples/ lib/ contrib/ $pkgdir/opt/fstar
   ln -s /opt/fstar/bin/fstar.exe $pkgdir/usr/bin/fstar
 }
