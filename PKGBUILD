@@ -1,26 +1,26 @@
 # Maintainer: Atte Virtanen <aten.email@gmail.com>
 pkgname=vrk-mpollux-digisign-client
-pkgver=4.0.4_5355
+pkgver=4.0.8_5448
 pkgrel=1
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('i686' 'x86_64')
-url="https://eevertti.vrk.fi/Default.aspx?id=308"
+url="https://eevertti.vrk.fi/linux-versiot"
 license=('custom')
 depends=('pcsclite' 'qt4')
 
-source_i686=("Ubuntu_14.04.2_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_i386.deb::https://eevertti.vrk.fi/Default.aspx?id=0&docid=1284&action=Publish")
-source_x86_64=("Ubuntu_14.04.2_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_amd64.deb::https://eevertti.vrk.fi/Default.aspx?id=0&docid=1283&action=Publish")
+source_i686=("https://eevertti.vrk.fi/documents/2634109/2857792/Ubuntu_14.04.2_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_i386.deb")
+source_x86_64=("https://eevertti.vrk.fi/documents/2634109/2857792/Ubuntu_14.04.2_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_amd64.deb")
 
-md5sums_i686=('b0a12c12eea3c7bd8765ab98665d485a')
-md5sums_x86_64=('e5ee6f58990516b5eb56c827cdefc85f')
-sha1sums_i686=('b904ea5a7cbbbb554917244f41751850c1edf8bb')
-sha1sums_x86_64=('14bd43f577d85bee4ed34eaf2895987d279eb4f0')
-sha256sums_i686=('d9a02f05308ed03d97f40b87eac884261dff55ac9ddf237deaf960e1906b2d10')
-sha256sums_x86_64=('7b7191389e3268bfbc0f15944ab05cc94e0371cc7b253b237c2e1f7fff746d13')
-sha384sums_i686=('23b66d8e7b460a0252266638bd9a740bf3ea59f7679adcd78981fd8f26ed0f46677d30b812a39145db3cbffad21f6dd8')
-sha384sums_x86_64=('e898e2e7a577cc522e09b61f1c6f0d795090b5a0a9bc4189d9dc8139ccac931e0a2b75ce69352cfeae11fa91d532d2d3')
-sha512sums_i686=('11f4db46b18f6e9b2640f2b7c8a54df050a4c6882afe420910341350e86cc856bce67d32c5f92eaddc01e6df4ef59102e9f516d77216cf49c3abe3a3c7591fa2')
-sha512sums_x86_64=('c88399aec3690916f0b91065369fc0163b86f35c4f42f74c87c61cc5aa4386c8e408dc31fe15f26cbcb46536f7ed6f3f211643166af7e087bc1bc6d40a1ac996')
+md5sums_i686=('0e04f31d0769b1d35c9bc4647487d20c')
+md5sums_x86_64=('c1f4bd545e245ae3f09d6306cf6aa576')
+sha1sums_i686=('a64c93e7ae71212392b3c64306a14ca6779cf754')
+sha1sums_x86_64=('d04b35810601871c3b53928aa8239d898e257287')
+sha256sums_i686=('e7f0d1f8176715847e15c549ef3733cf7175ae71874aa82f55dce6f6a1f49abc')
+sha256sums_x86_64=('0523672812e2d54c43cbf476ae95ccb9df57fa50229e7e4528d1521105f0ff6e')
+sha384sums_i686=('4619ee85d379892938436368dbb80459f26201dc3ea7bd4771ee9f91dab48d0fbd3194aa264d3c4c52205bcda4a3dd15')
+sha384sums_x86_64=('3a8392189e9256a4a4ff71be8761125455b408a88a3b3a8a8e07602920008e694be793d7570754f14a3d6c4b3dc33433')
+sha512sums_i686=('c1d6599674cedb8d1ca0a218e0af929b4df9b9bdf54992438bc7be169d680b0bb021cef068eaa58c2913019907cceb5b6ad11a0b707a01d1ac47263198306abc')
+sha512sums_x86_64=('6886f6a7d10b7b93ea371f8a42e28ad6e0f3cfb38cac4433a77c086ef8b6a9a9905381ae255f6f3bed8a1ac4b18bf73928ca6b1a0129541404401ff9c81e52d2')
 
 package() {
 	tar xvfJ data.tar.xz
