@@ -1,7 +1,7 @@
 #Maintainer fanningert <thomas at fanninger dot at>
 
 pkgname=glide
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 epoch=1
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
@@ -14,7 +14,7 @@ conflicts=('glide-bin' 'glide-git')
 options=('!strip' '!emptydirs')
 
 source=("${pkgname}::https://github.com/Masterminds/glide/archive/v${pkgver}.tar.gz")
-sha512sums=(9079037fba1aac92b9490a745422339c9da39e64bc63349a56965ae8879ab2de47597ec399151b304153e37dbc49606807a77d3bf5eed15f5781bc351f56c515)
+sha512sums=(db49b66c96775610af50bbae591047475577224c1843b30de824d566d27f82f07c8380e9aea031eba68ced9c291cb5a34e7d86fff9ab4c589f8a2065cca67db1)
 
 _gourl=github.com/Masterminds
 _goroot="/usr/lib/go"
