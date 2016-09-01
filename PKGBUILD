@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mate-panel
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="The MATE Panel"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3'
 optdepends=('yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate')
-sha1sums=('58d011e2340d17e5c678725c22bfbddc96a6f7d4')
+sha1sums=('7c492ec7de2f4254b4d6e4b2d20eeff56cf3ed40')
 
 prepare() {
     cd "${srcdir}"
