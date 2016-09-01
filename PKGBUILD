@@ -1,13 +1,13 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=fstar-git
-pkgver=20160312
+pkgver=20160901
 pkgrel=1
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('z3')
+depends=('z3' 'zarith' 'ocaml-yojson')
 makedepends=('fsharp' 'ocaml>=4.02' 'ocaml-batteries' 'ocaml-findlib')
 provides=('fstar')
 conflicts=('fstar' 'fstar-bin')
@@ -34,6 +34,6 @@ package() {
   cd "$pkgname"
 
   install -d -m755 $pkgdir/opt/fstar $pkgdir/usr/bin
-  cp -r bin/ doc/ examples/ lib/ $pkgdir/opt/fstar
+  cp -r bin/ doc/ examples/ ulib/ ucontrib/ $pkgdir/opt/fstar
   ln -s /opt/fstar/bin/fstar.exe $pkgdir/usr/bin/fstar
 }
