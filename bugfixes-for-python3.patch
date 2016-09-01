@@ -1,0 +1,51 @@
+diff -aur michel-orgmode.pristine/michel/michel.py michel-orgmode.new/michel/michel.py
+--- michel-orgmode.pristine/michel/michel.py	2016-09-01 14:35:41.509289468 +0200
++++ michel-orgmode.new/michel/michel.py	2016-09-01 14:52:03.558181686 +0200
+@@ -19,12 +19,15 @@
+ # Set default encoding to 'UTF-8' instead of 'ascii'
+ # http://stackoverflow.com/questions/11741574/how-to-set-the-default-encoding-to-utf-8-in-python
+ # Bad things might happen though
+-reload(sys)
+-sys.setdefaultencoding("UTF8")
++
++# Martin Kaffanke <m.kaffanke@gmail.com>: Removing this for arch linux.
++# You will have troubles if you don't set your default encoding to utf-8 on the console.
++# reload(sys)
++#sys.setdefaultencoding("UTF8")
+ import re
+-import cPickle as pickle
+-import cStringIO
+-import diff3
++import pickle
++from io import StringIO
++from . import diff3
+ import datetime
+ import dateutil.parser
+ 
+@@ -86,7 +89,7 @@
+                 TasksTree(title, task_id, task_notes, task_status, task_due))
+         else:
+             if self.get_task_with_id(parent_id) is None:
+-                raise ValueError, "No element with suitable parent id"
++                raise ValueError ("No element with suitable parent id")
+             self.get_task_with_id(parent_id).add_subtask(title, task_id, None,
+                     task_notes, task_status, task_due)
+ 
+@@ -312,7 +315,7 @@
+                 break
+         else:
+             # no list with the given name was found
+-            print '\nERROR: No google task-list named "%s"\n' % list_name
++            print ('\nERROR: No google task-list named "%s"\n' % list_name)
+             sys.exit(2)
+ 
+     return list_id
+@@ -398,7 +401,7 @@
+ def parse_text_to_tree(text):
+     """Parses an org-mode formatted block of text and returns a tree"""
+     # create a (read-only) file object containing *text*
+-    f = cStringIO.StringIO(text)
++    f = StringIO(text)
+     
+     headline_regex = re.compile("^(\*+ )( *)(DONE )?")
+     # DEADLINE timestmaps can have the formats described at
