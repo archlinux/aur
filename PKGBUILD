@@ -26,7 +26,6 @@ package() {
 
 	mkdir -p "$bindestdir"
 	ln -s "../lib/python$_python3ver/jelly/jelly" "$bindest"
-	chmod 555 "$bindest"
 }
 
 pkgver() {
