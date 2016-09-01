@@ -1,7 +1,7 @@
 pkgbase = michel-orgmode-hg
 	pkgdesc = Sync org-mode files to google-tasks (uses python)
-	pkgver = r70.0a1f22038245
-	pkgrel = 4
+	pkgver = r70+.0a1f22038245+
+	pkgrel = 5
 	url = https://bitbucket.org/edgimar/michel-orgmode
 	arch = i686
 	arch = x86_64
