@@ -1,7 +1,7 @@
 # Maintainer: Markus Heidelberg <markus dot heidelberg at web dot de>
 
 pkgname=microchip-libraries-for-applications
-pkgver=v2016_04_27
+pkgver=v2016_08_08
 pkgrel=1
 pkgdesc="Microchip Libraries for Applications (Current)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(http://ww1.microchip.com/downloads/en/softwarelibrary/$_installer
         LICENSE)
 source_x86_64=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
 
-md5sums=('77a7ea7760621dc96fea93eb11497b41'
+md5sums=('bfb3344cc77b0a219fecfd7a8b875071'
          'a79e3095ffcc446517b27707c8a60d7b')
 md5sums_x86_64=('SKIP')
 
