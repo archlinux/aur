@@ -4,7 +4,7 @@
 pkgname=mingw-w64-wxmsw
 epoch=1
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
 url="http://wxwidgets.org"
@@ -77,8 +77,8 @@ package() {
     ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" \
        "$pkgdir/usr/bin/${_arch}-wx-config"
     
-    rm "${pkgdir}/usr/${_arch}/bin/"*.exe
-    rm "$pkgdir/usr/${_arch}/bin/wxrc-3.0"
+    # rm "${pkgdir}/usr/${_arch}/bin/"*.exe
+    # rm "$pkgdir/usr/${_arch}/bin/wxrc-3.0"
     # rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
