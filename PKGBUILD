@@ -66,8 +66,8 @@ if [[ $_attempt_fix = 1 ]]; then
 fi
 
 package() {
-  msg2 "Extracting the data.tar.lzma..."
-  bsdtar -xf data.tar.lzma -C "$pkgdir/"
+  msg2 "Extracting the data.tar.xz..."
+  bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   msg2 "Moving stuff in place..."
   # The .desktop
