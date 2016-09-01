@@ -1,0 +1,21 @@
+pkgbase = arm-linux-gnueabihf-musl
+	pkgdesc = Lightweight implementation of C standard library
+	pkgver = 1.1.15
+	pkgrel = 1
+	url = http://www.musl-libc.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = arm-linux-gnueabihf-binutils
+	makedepends = arm-linux-gnueabihf-gcc
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://www.musl-libc.org/releases/musl-1.1.15.tar.gz
+	source = https://www.musl-libc.org/releases/musl-1.1.15.tar.gz.asc
+	validpgpkeys = 836489290BB6B70F99FFDA0556BCDB593020450F
+	md5sums = 9590a9d47ee64f220b3c12f7afb864ca
+	md5sums = SKIP
+
+pkgname = arm-linux-gnueabihf-musl
+
