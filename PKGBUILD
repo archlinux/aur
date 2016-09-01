@@ -3,16 +3,16 @@
 _basename=libkate
 pkgname="lib32-$_basename"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A karaoke and text codec for embedding in ogg (32-bit)"
-url="http://libkate.googlecode.com/"
+url="https://code.google.com/archive/p/libkate/"
 license=('BSD')
 arch=('x86_64')
 depends=('lib32-libpng' 'lib32-libogg' 'lib32-python2' "$_basename")
 makedepends=('pkg-config')
 optdepends=('wxpython: for KateDJ'
             'liboggz: for KateDJ')
-source=("http://libkate.googlecode.com/files/${_basename}-${pkgver}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$_basename/$_basename-$pkgver.tar.gz")
 md5sums=('1dfdbdeb2fa5d07063cf5b8261111fca')
 
 build() {
