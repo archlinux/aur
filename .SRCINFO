@@ -1,6 +1,6 @@
 pkgbase = openblas
 	pkgdesc = An optimized BLAS library based on GotoBLAS2 1.13 BSD
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = http://www.openblas.net/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = openblas
 	conflicts = blas
 	options = !makeflags
 	options = !emptydirs
-	source = OpenBLAS-v0.2.18.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v0.2.18.tar.gz
-	md5sums = 805e7f660877d588ea7e3792cda2ee65
+	source = OpenBLAS-v0.2.19.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v0.2.19.tar.gz
+	md5sums = 28c998054fd377279741c6f0b9ea7941
 
 pkgname = openblas
 
