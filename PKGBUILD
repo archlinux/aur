@@ -17,17 +17,17 @@ sha256sums=('08c1b313cfb182f58dcf3ff843ea8fccdb0e9471e8e63d1652600bc899c0e0af'
             'e169a4a749995ef83c0939127180318e4d436bf47f039967c0c14d0de25c7a61')
 
 prepare() {
-	sed -i 's|"lily"|"include/lily"|' "$srcdir/lily-${pkgver}/src/CMakeLists.txt"
+    sed -i 's|"lily"|"include/lily"|' "${srcdir}/lily-${pkgver}/src/CMakeLists.txt"
 }
 
 build() {
-	cd "$srcdir/lily-${pkgver}"
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
-	make
+    cd "${srcdir}/lily-${pkgver}"
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+    make
 }
 
 package() {
-	cd "$srcdir/lily-${pkgver}"
-	make DESTDIR="$pkgdir/" install
-	install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/lily-${pkgver}"
+    make DESTDIR="${pkgdir}/" install
+    install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
