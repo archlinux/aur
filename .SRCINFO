@@ -1,0 +1,16 @@
+pkgbase = lazybones
+	pkgdesc = A project directory generator.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://bintray.com/pledbrook/lazybones-templates/lazybones
+	arch = any
+	license = Apache
+	depends = java-environment
+	depends = bash
+	source = https://bintray.com/pledbrook/lazybones-templates/download_file?file_path=lazybones-0.8.3.zip
+	source = lazybones.sh
+	sha512sums = 0cfd187dcca15490b3bf05c3695a2407aa8683d65c05d29f891f17860d90113f1c573bb2bbf0ec07ab09d5338e0beb64eeef19e7c89a7017704998e80c37cc97
+	sha512sums = b0361937ff0761bea8b2624809be2321a056a533c643f037815ef019be00af2a094e81cc7218b00c2244d8b98506913d452b9a53081696e914bec4ad5395b455
+
+pkgname = lazybones
+

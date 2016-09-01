@@ -1,0 +1,7 @@
+# This is the exclusion pattern for github.
+
+# Patterns for makepkg
+src
+pkg
+*.zip
+*.xz
