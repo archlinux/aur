@@ -211,20 +211,20 @@ Unity Personal and Unity Plus
     1. Use Rights. Conditioned upon your compliance with the terms and
        conditions of this Agreement and payment of all applicable
        subscription fees, Unity grants you a non-exclusive, non-transferable,
-       royalty-free license during the applicable term: (a) to install and
-       execute the executable form of the Unity Software, solely for internal
-       use by a single person to develop Your Project Content during the
-       applicable term; and (b) if you are using a version of the Unity
-       Software other than an educational version, to distribute the runtime
-       portion of the Unity Software, on a royalty-free basis, solely as
-       embedded or incorporated into Your Project Content and solely to third
-       parties to whom you license or sell Your Project Content pursuant to
-       an agreement that is no less protective of Unity and its licensors as
-       this Agreement. You may not sublicense the rights granted under clause
-       1.1(a), but you may sublicense the rights granted under 1.1(b) solely
-       to third parties to whom you license or sell Your Project Content to
-       act as distributors thereof pursuant to an agreement no less
-       protective of Unity and its licensors as this Agreement.
+       royalty-free license: (a) to install and execute the executable form
+       of the Unity Software, solely for internal use by a single person to
+       develop Your Project Content during the applicable term; and (b) if
+       you are using a version of the Unity Software other than an
+       educational version, to distribute the runtime portion of the Unity
+       Software, on a royalty-free basis, solely as embedded or incorporated
+       into Your Project Content and solely to third parties to whom you
+       license or sell Your Project Content pursuant to an agreement that is
+       no less protective of Unity and its licensors as this Agreement. You
+       may not sublicense the rights granted under clause 1.1(a), but you may
+       sublicense the rights granted under 1.1(b) solely to third parties to
+       whom you license or sell Your Project Content to act as distributors
+       thereof pursuant to an agreement no less protective of Unity and its
+       licensors as this Agreement.
 
     2. Copies of Unity Products. You may install the Unity Software on both a
        primary and a secondary computer or operating system, solely for your
@@ -367,11 +367,13 @@ Unity Personal and Unity Plus
    effect for the initial subscription period, and thereafter such seat will
    automatically renew on a month to month basis at the then-current list
    price, unless you renew the subscription for a new subscription term or
-   terminate and cancel it as described on the Site. Paid in full, perpetual
-   seats will remain in effect unless earlier terminated in accordance with
-   the Agreement. Upon termination, you must at Unity’s option either
-   promptly delete and destroy or return to Unity all copies of the Unity
-   Software in your possession or control.
+   terminate and cancel it as described on the Site. For clarity,
+   subscription based seats for Unity Pro and Unity Plus are not cancelable
+   during the applicable subscription term and are non-refundable. Paid in
+   full, perpetual seats will remain in effect unless earlier terminated in
+   accordance with the Agreement. Upon termination, you must at Unity’s
+   option either promptly delete and destroy or return to Unity all copies of
+   the Unity Software in your possession or control.
 
 6. U.S. Government Rights.
 
