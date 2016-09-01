@@ -5,11 +5,11 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor-beta
-_version=5.4.0
-_build=f1
-_buildtag=20160715
+_version=5.5.0
+_build=b1
+_buildtag=20160830
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=2
+pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -38,8 +38,8 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha256sums=('dc0002f8f7b3f519bcc21af2e931d15a8b30214c0688ff8c5eee475640055d23'
-            '1145d6ea536582dd4fc281283617ec6e351acd7be6e02f704d47d595fba37934'
+sha256sums=('4460c0dad74bf7d6cffd583b66aca521d3aefc8fe58453ee77337d2d225f1be3'
+            '5d5a712f4fb33fe085902899be7230243459892b9792ae50d00cc4ee429ed307'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
             '6769b7ad1c1a1b088f1e96934d909fffef95d6a6c757420699f0a6705ef70a51')
@@ -61,7 +61,7 @@ build() {
 }
 
 package() {
-  local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
+  local extraction_dir="${srcdir}/unity-editor-${_version}x${_build}Linux"
 
   mkdir -p "${pkgdir}/opt/"
   mv ${extraction_dir} ${pkgdir}/opt/UnityBeta
@@ -73,13 +73,16 @@ package() {
   mv "${pkgdir}/opt/UnityBeta/unity-monodevelop.desktop" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
   mv "${pkgdir}/opt/UnityBeta/unity-editor-icon.png" "${pkgdir}/opt/UnityBeta/unity-editor-beta-icon.png"
 
-  # Use the launch scripts in the .desktop files
+  # Change stuff in the .desktop files
   sed -i "/^Exec=/c\Exec=/usr/bin/unity-editor-beta" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
   sed -i "/^Exec=/c\Exec=/usr/bin/monodevelop-unity-beta" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
-
-  # Change app names
+  sed -i "/^Icon=/c\Icon=unity-editor-beta-icon" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
+  sed -i "/^Icon=/c\Icon=unity-monodevelop-beta" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
   sed -i "/^Name=/c\Name=Unity Beta" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
   sed -i "/^Name=/c\Name=MonoDevelop Beta" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
+  sed -i "/^Version=/c\Version=${_version}${_build}" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop"
+  sed -i "/^Version=/c\Version=${_version}${_build}" "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
+
 
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgdir}/opt/UnityBeta/unity-editor-beta.desktop" \
                                                        "${pkgdir}/opt/UnityBeta/unity-monodevelop-beta.desktop"
