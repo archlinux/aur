@@ -1,7 +1,7 @@
 Originally from https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff
 Thanks to Saikrishna Arcot (saiarcot895)
 
-Refactored for Chromium 52 by Samantha McVey (samcv) samantham@posteo.net
+Refactored for Chromium 53 by Samantha McVey (samcv) samantham@posteo.net
 
 Description: Enables using VA-API hardware acceleration in Linux. The patch for bpf_gpu_policy_linux.cc initially came from https://codereview.chromium.org/15955009/diff/92001/content/common/sandbox_linux/bpf_gpu_policy_linux.cc.
 
@@ -25,7 +25,7 @@ Index: dev/content/common/BUILD.gn
 @@ -11,6 +11,49 @@ if (is_mac) {
    import("//build/config/mac/mac_sdk.gni")
  }
- 
+
 +if ((is_desktop_linux || is_chromeos) && current_cpu != "arm") {
 +  action("libva_generate_stubs") {
 +    extra_header = "../../media/gpu/va_stub_header.fragment"
@@ -73,7 +73,7 @@ Index: dev/content/common/BUILD.gn
    # Targets external to content should always link to the public API.
    # In addition, targets outside of the content component (shell and tests)
 @@ -178,6 +221,15 @@ source_set("common") {
- 
+
    if (use_seccomp_bpf) {
      defines += [ "USE_SECCOMP_BPF" ]
 +    if (current_cpu != "arm" && is_desktop_linux) {
@@ -108,7 +108,7 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 @@ -34,6 +40,14 @@
  #include "sandbox/linux/syscall_broker/broker_process.h"
  #include "sandbox/linux/system_headers/linux_syscalls.h"
- 
+
 +#if !defined(__arm__)
 +#include "third_party/libva/va/va.h"
 +#include "third_party/libva/va/va_x11.h"
@@ -123,7 +123,7 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 @@ -42,6 +56,16 @@ using sandbox::syscall_broker::BrokerFil
  using sandbox::syscall_broker::BrokerProcess;
  using sandbox::SyscallSets;
- 
+
 +#if !defined(__arm__)
 +using content_common::kModuleVa;
 +using content_common::kModuleVa_x11;
@@ -135,10 +135,10 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 +#endif
 +
  namespace content {
- 
+
  namespace {
 @@ -96,7 +120,7 @@ inline bool UseLibV4L2() {
- 
+
  bool IsAcceleratedVaapiVideoEncodeEnabled() {
    bool accelerated_encode_enabled = false;
 -#if defined(OS_CHROMEOS)
@@ -149,7 +149,7 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 @@ -297,32 +321,72 @@ bool GpuProcessPolicy::PreSandboxHook()
        GpuBrokerProcessPolicy::Create,
        std::vector<BrokerFilePermission>());  // No extra files in whitelist.
- 
+
 +#if !defined(__arm__)
    if (IsArchitectureX86_64() || IsArchitectureI386()) {
      // Accelerated video dlopen()'s some shared objects
@@ -175,7 +175,7 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 +        LOG(WARNING) << "Failed to initialize stubs";
 +        return true;
        }
- 
+
 -      dlopen(I965DrvVideoPath, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
 -      if (I965HybridDrvVideoPath)
 -        dlopen(I965HybridDrvVideoPath, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
@@ -233,7 +233,7 @@ Index: dev/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
  #endif
 -    }
 -  }
- 
+
    return true;
  }
 Index: dev/content/content_gpu.gypi
@@ -256,12 +256,12 @@ Index: dev/content/gpu/BUILD.gn
 @@ -86,7 +86,7 @@ source_set("gpu_sources") {
      ]
    }
- 
+
 -  if (is_chromeos && current_cpu != "arm") {
 +  if ((is_desktop_linux || is_chromeos) && current_cpu != "arm") {
      configs += [ "//third_party/libva:libva_config" ]
    }
- 
+
 Index: dev/content/gpu/gpu_main.cc
 ===================================================================
 --- dev.orig/content/gpu/gpu_main.cc
@@ -269,21 +269,21 @@ Index: dev/content/gpu/gpu_main.cc
 @@ -75,7 +75,7 @@
  #include "content/common/sandbox_mac.h"
  #endif
- 
+
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_LINUX) || defined(OS_CHROMEOS)) && defined(ARCH_CPU_X86_FAMILY)
  #include "media/gpu/vaapi_wrapper.h"
  #endif
- 
+
 @@ -252,7 +252,7 @@ int GpuMain(const MainFunctionParams& pa
    GetGpuInfoFromCommandLine(gpu_info, command_line);
    gpu_info.in_process_gpu = false;
- 
+
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_LINUX) || defined(OS_CHROMEOS)) && defined(ARCH_CPU_X86_FAMILY)
    media::VaapiWrapper::PreSandboxInitialization();
  #endif
- 
+
 Index: dev/content/public/common/content_switches.cc
 ===================================================================
 --- dev.orig/content/public/common/content_switches.cc
@@ -293,7 +293,7 @@ Index: dev/content/public/common/content_switches.cc
  // Disables panel fitting (used for mirror mode).
  const char kDisablePanelFitting[]           = "disable-panel-fitting";
 +#endif
- 
+
 +#if defined(OS_CHROMEOS) || defined(OS_LINUX)
  // Disables VA-API accelerated video encode.
  const char kDisableVaapiAcceleratedVideoEncode[] =
@@ -303,19 +303,19 @@ Index: dev/content/public/common/content_switches.h
 --- dev.orig/content/public/common/content_switches.h
 +++ dev/content/public/common/content_switches.h
 @@ -278,6 +278,8 @@ CONTENT_EXPORT extern const char kEnable
- 
+
  #if defined(OS_CHROMEOS)
  CONTENT_EXPORT extern const char kDisablePanelFitting[];
 +#endif
 +#if defined(OS_CHROMEOS) || defined(OS_LINUX)
  CONTENT_EXPORT extern const char kDisableVaapiAcceleratedVideoEncode[];
  #endif
- 
+
 Index: dev/gpu/config/software_rendering_list_json.cc
 ===================================================================
---- dev.orig/gpu/config/software_rendering_list_json.cc
-+++ dev/gpu/config/software_rendering_list_json.cc
-@@ -488,17 +488,6 @@
+--- chromium-53.0.2785.89.orig/gpu/config/software_rendering_list_json.cc       2016-08-31 18:48:24.238521645 -0700
++++ chromium-53.0.2785.89/gpu/config/software_rendering_list_json.cc    2016-08-31 18:49:35.114701867 -0700
+@@ -431,17 +431,6 @@
        ]
      },
      {
@@ -330,9 +330,9 @@ Index: dev/gpu/config/software_rendering_list_json.cc
 -      ]
 -    },
 -    {
-       "id": 49,
-       "description": "NVidia GeForce GT 650M can cause the system to hang with flash 3D",
-       "cr_bugs": [140175],
+       "id": 50,
+       "description": "Disable VMware software renderer on older Mesa",
+       "cr_bugs": [145531, 332596, 571899],
 
 Index: dev/media/BUILD.gn
 ===================================================================
@@ -341,7 +341,7 @@ Index: dev/media/BUILD.gn
 @@ -339,7 +339,7 @@ component("media") {
      allow_circular_includes_from = [ "//media/base/android" ]
    }
- 
+
 -  if (current_cpu != "arm" && is_chromeos) {
 +  if (current_cpu != "arm" && (is_chromeos || is_desktop_linux)) {
      sources += [
@@ -350,12 +350,12 @@ Index: dev/media/BUILD.gn
 @@ -629,7 +629,7 @@ test("media_unittests") {
      }
    }
- 
+
 -  if (current_cpu != "arm" && is_chromeos) {
 +  if (current_cpu != "arm" && (is_chromeos || is_desktop_linux)) {
      sources += [ "filters/h264_bitstream_buffer_unittest.cc" ]
    }
- 
+
 Index: dev/media/gpu/BUILD.gn
 ===================================================================
 --- dev.orig/media/gpu/BUILD.gn
@@ -363,16 +363,16 @@ Index: dev/media/gpu/BUILD.gn
 @@ -12,7 +12,7 @@ if (is_mac) {
    import("//build/config/mac/mac_sdk.gni")
  }
- 
+
 -if (is_chromeos && current_cpu != "arm") {
 +if ((is_desktop_linux || is_chromeos) && current_cpu != "arm") {
    action("libva_generate_stubs") {
      extra_header = "va_stub_header.fragment"
- 
+
 @@ -229,7 +229,7 @@ component("gpu") {
      }
    }
- 
+
 -  if (is_chromeos) {
 +  if (is_linux) {
      sources += [
@@ -389,8 +389,8 @@ Index: dev/media/gpu/BUILD.gn
          "tegra_v4l2_device.h",
 Index: dev/media/gpu/gpu_video_decode_accelerator_factory_impl.cc
 ===================================================================
---- dev.orig/media/gpu/gpu_video_decode_accelerator_factory_impl.cc
-+++ dev/media/gpu/gpu_video_decode_accelerator_factory_impl.cc
+--- chromium-53.0.2785.89.orig/media/gpu/gpu_video_decode_accelerator_factory_impl.cc   2016-08-31 18:48:24.060521193 -0700
++++ chromium-53.0.2785.89/media/gpu/gpu_video_decode_accelerator_factory_impl.cc        2016-08-31 18:59:50.063286203 -0700
 @@ -14,7 +14,7 @@
  #include "media/gpu/dxva_video_decode_accelerator_win.h"
  #elif defined(OS_MACOSX)
@@ -406,10 +406,10 @@ Index: dev/media/gpu/gpu_video_decode_accelerator_factory_impl.cc
        DXVAVideoDecodeAccelerator::GetSupportedProfiles();
 -#elif defined(OS_CHROMEOS)
 +#elif defined(OS_CHROMEOS) || defined(OS_LINUX)
-   media::VideoDecodeAccelerator::SupportedProfiles vda_profiles;
+   VideoDecodeAccelerator::SupportedProfiles vda_profiles;
  #if defined(USE_V4L2_CODEC)
    vda_profiles = V4L2VideoDecodeAccelerator::GetSupportedProfiles();
-@@ -130,7 +130,7 @@
+@@ -131,7 +131,7 @@
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateV4L2VDA,
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateV4L2SVDA,
  #endif
@@ -418,32 +418,35 @@ Index: dev/media/gpu/gpu_video_decode_accelerator_factory_impl.cc
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateVaapiVDA,
  #endif
  #if defined(OS_MACOSX)
-@@ -194,10 +194,11 @@
+@@ -199,11 +199,12 @@
  }
  #endif
- 
+
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_LINUX) || defined(OS_CHROMEOS)) && defined(ARCH_CPU_X86_FAMILY)
- std::unique_ptr<media::VideoDecodeAccelerator>
+ std::unique_ptr<VideoDecodeAccelerator>
  GpuVideoDecodeAcceleratorFactoryImpl::CreateVaapiVDA(
+     const gpu::GpuDriverBugWorkarounds& workarounds,
      const gpu::GpuPreferences& gpu_preferences) const {
-+  VLOG(1) << "Creating new VAAPI video decode accelerator.";
-   std::unique_ptr<media::VideoDecodeAccelerator> decoder;
++    VLOG(1) << "Creating new VAAPI video decode accelerator.";
+   std::unique_ptr<VideoDecodeAccelerator> decoder;
    decoder.reset(new VaapiVideoDecodeAccelerator(make_context_current_cb_,
                                                  bind_image_cb_));
+
 Index: dev/media/gpu/gpu_video_decode_accelerator_factory_impl.h
 ===================================================================
---- dev.orig/media/gpu/gpu_video_decode_accelerator_factory_impl.h
-+++ dev/media/gpu/gpu_video_decode_accelerator_factory_impl.h
-@@ -99,7 +99,7 @@
-   std::unique_ptr<media::VideoDecodeAccelerator> CreateV4L2SVDA(
+--- chromium-53.0.2785.89.orig/media/gpu/gpu_video_decode_accelerator_factory_impl.h    2016-08-31 18:48:24.063521201 -0700
++++ chromium-53.0.2785.89/media/gpu/gpu_video_decode_accelerator_factory_impl.h 2016-08-31 19:02:07.025642051 -0700
+@@ -101,7 +101,7 @@
+       const gpu::GpuDriverBugWorkarounds& workarounds,
        const gpu::GpuPreferences& gpu_preferences) const;
  #endif
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_LINUX) || defined(OS_CHROMEOS)) && defined(ARCH_CPU_X86_FAMILY)
-   std::unique_ptr<media::VideoDecodeAccelerator> CreateVaapiVDA(
+   std::unique_ptr<VideoDecodeAccelerator> CreateVaapiVDA(
+       const gpu::GpuDriverBugWorkarounds& workarounds,
        const gpu::GpuPreferences& gpu_preferences) const;
- #endif
+
 Index: dev/media/gpu/ipc/service/BUILD.gn
 ===================================================================
 --- dev.orig/media/gpu/ipc/service/BUILD.gn
@@ -451,12 +454,12 @@ Index: dev/media/gpu/ipc/service/BUILD.gn
 @@ -37,7 +37,7 @@ source_set("service") {
      "//third_party/mesa:mesa_headers",
    ]
- 
+
 -  if (is_chromeos && current_cpu != "arm") {
 +  if ((is_desktop_linux || is_chromeos) && current_cpu != "arm") {
      configs += [ "//third_party/libva:libva_config" ]
    }
- 
+
 Index: dev/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
 ===================================================================
 --- dev.orig/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
@@ -464,7 +467,7 @@ Index: dev/media/gpu/ipc/service/gpu_video_decode_accelerator.cc
 @@ -58,7 +58,7 @@ static bool MakeDecoderContextCurrent(
    return true;
  }
- 
+
 -#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
 +#if ((defined(OS_LINUX) || defined(OS_CHROMEOS)) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
  static bool BindImage(const base::WeakPtr<gpu::GpuCommandBufferStub>& stub,
@@ -484,7 +487,7 @@ Index: dev/media/gpu/va_stub_header.fragment
 --- dev.orig/media/gpu/va_stub_header.fragment
 +++ dev/media/gpu/va_stub_header.fragment
 @@ -5,8 +5,9 @@ extern "C" {
- 
+
  #include "third_party/libva/va/drm/va_drm.h"
  #include "third_party/libva/va/va.h"
 -#if defined(USE_X11)
@@ -492,43 +495,43 @@ Index: dev/media/gpu/va_stub_header.fragment
 +#if defined(USE_OZONE)
 +#include "third_party/libva/va/wayland/va_wayland.h"
  #endif
- 
+
  }
 Index: dev/media/gpu/vaapi_video_decode_accelerator.cc
 ===================================================================
---- dev.orig/media/gpu/vaapi_video_decode_accelerator.cc
-+++ dev/media/gpu/vaapi_video_decode_accelerator.cc
-@@ -342,17 +342,17 @@
- 
+--- chromium-53.0.2785.89.orig/media/gpu/vaapi_video_decode_accelerator.cc        2016-08-31 18:48:24.066521208 -0700
++++ chromium-53.0.2785.89/media/gpu/vaapi_video_decode_accelerator.cc     2016-08-31 19:59:15.012094847 -0700
+@@ -354,17 +354,17 @@
+
    base::AutoLock auto_lock(lock_);
    DCHECK_EQ(state_, kUninitialized);
 -  DVLOG(2) << "Initializing VAVDA, profile: " << profile;
 +  VLOG(1) << "Initializing VAVDA, profile: " << profile;
- 
+
  #if defined(USE_X11)
-   if (gfx::GetGLImplementation() != gfx::kGLImplementationDesktopGL) {
+   if (gl::GetGLImplementation() != gl::kGLImplementationDesktopGL) {
 -    DVLOG(1) << "HW video decode acceleration not available without "
 +    VLOG(1) << "HW video decode acceleration not available without "
                  "DesktopGL (GLX).";
      return false;
    }
  #elif defined(USE_OZONE)
-   if (gfx::GetGLImplementation() != gfx::kGLImplementationEGLGLES2) {
+   if (gl::GetGLImplementation() != gl::kGLImplementationEGLGLES2) {
 -    DVLOG(1) << "HW video decode acceleration not available without "
 +    VLOG(1) << "HW video decode acceleration not available without "
               << "EGLGLES2.";
      return false;
    }
-@@ -362,7 +362,7 @@
+@@ -374,7 +374,7 @@
        VaapiWrapper::kDecode, profile, base::Bind(&ReportToUMA, VAAPI_ERROR));
- 
+
    if (!vaapi_wrapper_.get()) {
 -    DVLOG(1) << "Failed initializing VAAPI for profile " << profile;
 +    VLOG(1) << "Failed initializing VAAPI for profile " << profile;
      return false;
    }
- 
-@@ -379,7 +379,7 @@
+
+@@ -389,7 +389,7 @@
      vp9_accelerator_.reset(new VaapiVP9Accelerator(this, vaapi_wrapper_.get()));
      decoder_.reset(new VP9Decoder(vp9_accelerator_.get()));
    } else {
@@ -536,6 +539,7 @@ Index: dev/media/gpu/vaapi_video_decode_accelerator.cc
 +    VLOG(1) << "Unsupported profile " << profile;
      return false;
    }
+
 
 Index: dev/media/gpu/vaapi_wrapper.cc
 ===================================================================
@@ -549,7 +553,7 @@ Index: dev/media/gpu/vaapi_wrapper.cc
 +    VLOG(1) << "Unsupported va_profile: " << va_profile;
      return nullptr;
    }
- 
+
 @@ -342,15 +342,17 @@ VaapiWrapper::GetSupportedProfileInfosFo
  bool VaapiWrapper::VaInitialize(const base::Closure& report_error_to_uma_cb) {
    static bool vaapi_functions_initialized = PostSandboxInitialization();
@@ -574,7 +578,7 @@ Index: dev/media/gpu/vaapi_wrapper.cc
        DVLOG(1) << kErrorMsg;
      return false;
 @@ -416,7 +418,7 @@ bool VaapiWrapper::IsEntrypointSupported
- 
+
    if (std::find(supported_entrypoints.begin(), supported_entrypoints.end(),
                  entrypoint) == supported_entrypoints.end()) {
 -    DVLOG(1) << "Unsupported entrypoint";
@@ -618,7 +622,7 @@ Index: dev/media/media.gyp
 @@ -2264,7 +2264,7 @@
        ],
      }],
- 
+
 -    ['chromeos==1 and target_arch != "arm"', {
 +    ['(desktop_linux==1 or chromeos==1) and target_arch != "arm"', {
        'targets': [

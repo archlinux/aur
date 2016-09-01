@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # 
 pkgname=chromium-vaapi
-pkgver=52.0.2743.116
+pkgver=53.0.2785.89
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by 
@@ -37,16 +37,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
-        PNGImageDecoder.patch
         chromium-52.0.2743.116-unset-madv_free.patch
         chromium_vaapi.patch)
-sha256sums=('a194ae1edb041024b3d4b6ba438f32fefdb6f1ecb24a96c50248a486b237a101'
+sha256sums=('2e3c5f7b12b5b4f150b93004a718fb85778aeddc4df05bbf92b99a19a1c63dee'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            'a84baad70b205dc051ac42fcd14df0c5e069195ec326c3fd21e246bfdf052d24')
+            '97c7878af098b0411a24efc7ca34d3a207ddb81d0fdd2479d164d8eab80c61a0')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -77,8 +75,7 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
-  patch -p1 -i "$srcdir"/PNGImageDecoder.patch
+  # Patch to enable VA-API
   patch -p1 -i "$srcdir"/chromium_vaapi.patch
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
