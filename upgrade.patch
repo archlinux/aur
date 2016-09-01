@@ -1,0 +1,12 @@
+--- usr/lib/node_modules/atom-package-manager/lib/upgrade.js	2016-07-06 09:48:55.583624369 +1000
++++ /usr/lib/node_modules/atom-package-manager/lib/upgrade.js	2016-07-06 09:57:51.524481607 +1000
+@@ -288,7 +285,8 @@
+           if (_this.installedAtomVersion) {
+             return _this.upgradePackages(options, callback);
+           } else {
+-            return callback('Could not determine current Atom version installed');
++            _this.installedAtomVersion = '1.10.0';
++            return _this.upgradePackages(options, callback);
+           }
+         };
+       })(this));

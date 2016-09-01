@@ -1,0 +1,10 @@
+--- a/lib/tag-generator.coffee
++++ b/lib/tag-generator.coffee
+@@ -56,7 +56,7 @@ class TagGenerator
+   generate: ->
+     tags = {}
+     packageRoot = @getPackageRoot()
+-    command = path.join(packageRoot, 'vendor', "ctags-#{process.platform}")
++    command = 'ctags'
+     defaultCtagsFile = path.join(packageRoot, 'lib', 'ctags-config')
+     args = ["--options=#{defaultCtagsFile}", '--fields=+KS']

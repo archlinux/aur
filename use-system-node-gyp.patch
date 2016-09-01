@@ -1,0 +1,24 @@
+diff -Naur apm-1.12.5.orig/src/dedupe.coffee apm-1.12.5/src/dedupe.coffee
+--- apm-1.12.5.orig/src/dedupe.coffee	2016-07-21 13:46:02.000000000 +0200
++++ apm-1.12.5/src/dedupe.coffee	2016-07-26 23:56:19.503070638 +0200
+@@ -17,7 +17,7 @@
+     @atomPackagesDirectory = path.join(@atomDirectory, 'packages')
+     @atomNodeDirectory = path.join(@atomDirectory, '.node-gyp')
+     @atomNpmPath = require.resolve('npm/bin/npm-cli')
+-    @atomNodeGypPath = require.resolve('node-gyp/bin/node-gyp')
++    @atomNodeGypPath = require.resolve('npm/node_modules/node-gyp/bin/node-gyp')
+
+   parseOptions: (argv) ->
+     options = yargs(argv).wrap(100)
+diff -Naur apm-1.12.5.orig/src/install.coffee apm-1.12.5/src/install.coffee
+--- apm-1.12.5.orig/src/install.coffee	2016-07-21 13:46:02.000000000 +0200
++++ apm-1.12.5/src/install.coffee	2016-07-26 23:31:09.864127694 +0200
+@@ -26,7 +26,7 @@
+     @atomPackagesDirectory = path.join(@atomDirectory, 'packages')
+     @atomNodeDirectory = path.join(@atomDirectory, '.node-gyp')
+     @atomNpmPath = require.resolve('npm/bin/npm-cli')
+-    @atomNodeGypPath = require.resolve('node-gyp/bin/node-gyp')
++    @atomNodeGypPath = require.resolve('npm/node_modules/node-gyp/bin/node-gyp')
+
+   parseOptions: (argv) ->
+     options = yargs(argv).wrap(100)

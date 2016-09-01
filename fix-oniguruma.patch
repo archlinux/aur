@@ -1,0 +1,13 @@
+--- a/src/onig-scanner.cc
++++ b/src/onig-scanner.cc
+@@ -16,8 +16,8 @@ void OnigScanner::Init(Local<Object> target) {
+   Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(OnigScanner::New);
+   tpl->SetClassName(Nan::New<String>("OnigScanner").ToLocalChecked());
+   tpl->InstanceTemplate()->SetInternalFieldCount(1);
+-  tpl->PrototypeTemplate()->Set(Nan::New<String>("_findNextMatch").ToLocalChecked(), Nan::New<FunctionTemplate>(OnigScanner::FindNextMatch)->GetFunction());
+-  tpl->PrototypeTemplate()->Set(Nan::New<String>("_findNextMatchSync").ToLocalChecked(), Nan::New<FunctionTemplate>(OnigScanner::FindNextMatchSync)->GetFunction());
++  tpl->PrototypeTemplate()->Set(Nan::New<String>("_findNextMatch").ToLocalChecked(), Nan::New<FunctionTemplate>(OnigScanner::FindNextMatch));
++  tpl->PrototypeTemplate()->Set(Nan::New<String>("_findNextMatchSync").ToLocalChecked(), Nan::New<FunctionTemplate>(OnigScanner::FindNextMatchSync));
+
+   target->Set(Nan::New<String>("OnigScanner").ToLocalChecked(), tpl->GetFunction());
+ }

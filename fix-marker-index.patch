@@ -1,0 +1,37 @@
+--- a/src/native/marker-index-wrapper.cc
++++ b/src/native/marker-index-wrapper.cc
+@@ -18,20 +18,20 @@ public:
+     constructorTemplate->SetClassName(
+         Nan::New<String>("MarkerIndex").ToLocalChecked());
+     constructorTemplate->InstanceTemplate()->SetInternalFieldCount(1);
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("generateRandomNumber").ToLocalChecked(), Nan::New<FunctionTemplate>(GenerateRandomNumber)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("insert").ToLocalChecked(), Nan::New<FunctionTemplate>(Insert)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("setExclusive").ToLocalChecked(), Nan::New<FunctionTemplate>(SetExclusive)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("delete").ToLocalChecked(), Nan::New<FunctionTemplate>(Delete)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("splice").ToLocalChecked(), Nan::New<FunctionTemplate>(Splice)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("getStart").ToLocalChecked(), Nan::New<FunctionTemplate>(GetStart)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("getEnd").ToLocalChecked(), Nan::New<FunctionTemplate>(GetEnd)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("compare").ToLocalChecked(), Nan::New<FunctionTemplate>(Compare)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findIntersecting").ToLocalChecked(), Nan::New<FunctionTemplate>(FindIntersecting)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findContaining").ToLocalChecked(), Nan::New<FunctionTemplate>(FindContaining)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findContainedIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindContainedIn)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findStartingIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindStartingIn)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findEndingIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindEndingIn)->GetFunction());
+-    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("dump").ToLocalChecked(), Nan::New<FunctionTemplate>(Dump)->GetFunction());
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("generateRandomNumber").ToLocalChecked(), Nan::New<FunctionTemplate>(GenerateRandomNumber));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("insert").ToLocalChecked(), Nan::New<FunctionTemplate>(Insert));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("setExclusive").ToLocalChecked(), Nan::New<FunctionTemplate>(SetExclusive));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("delete").ToLocalChecked(), Nan::New<FunctionTemplate>(Delete));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("splice").ToLocalChecked(), Nan::New<FunctionTemplate>(Splice));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("getStart").ToLocalChecked(), Nan::New<FunctionTemplate>(GetStart));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("getEnd").ToLocalChecked(), Nan::New<FunctionTemplate>(GetEnd));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("compare").ToLocalChecked(), Nan::New<FunctionTemplate>(Compare));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findIntersecting").ToLocalChecked(), Nan::New<FunctionTemplate>(FindIntersecting));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findContaining").ToLocalChecked(), Nan::New<FunctionTemplate>(FindContaining));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findContainedIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindContainedIn));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findStartingIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindStartingIn));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("findEndingIn").ToLocalChecked(), Nan::New<FunctionTemplate>(FindEndingIn));
++    constructorTemplate->PrototypeTemplate()->Set(Nan::New<String>("dump").ToLocalChecked(), Nan::New<FunctionTemplate>(Dump));
+
+     // assign Number.isFinite for use from C++
+     Local<String> number_string = Nan::New("Number").ToLocalChecked();

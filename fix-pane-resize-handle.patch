@@ -1,0 +1,18 @@
+--- a/static/panes.less
++++ b/static/panes.less
+@@ -15,7 +15,6 @@ atom-pane-container {
+     min-width: 0;
+
+     & > atom-pane-resize-handle {
+-      position: absolute;
+       z-index: 3;
+     }
+   }
+@@ -39,6 +38,7 @@ atom-pane-container {
+       width: 8px;
+       height: 100%;
+       margin-left: -4px;
++      margin-right: -4px;
+       cursor: col-resize;
+       border-right: none;
+     }
