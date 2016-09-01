@@ -2,7 +2,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=4.2.0.r9.gd6babd0
+pkgver=4.3.0.r66.gf771e75
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd rr/build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 
 	make
 }
