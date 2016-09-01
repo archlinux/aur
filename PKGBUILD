@@ -8,7 +8,7 @@ url='http://pypi.python.org/pypi/Flask-Restplus/'
 license=('BSD')
 depends=('python2-flask>=0.8' 'python2-six>=1.3.0' 'python2-jsonschema' 'python2-pytz' 'python2-aniso8601>=0.82')
 checkdepends=('python2-blinker' 'python2-rednose' 'python2-nose' 'python2-mock' 'python2-tzlocal')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 
 source=("https://pypi.io/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
 sha1sums=('0b386cfffe8fbf07092bd0b02e887cae4a1c7360')
