@@ -3,7 +3,7 @@
 # Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
 
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.18.0.18.r15103.g51984dd
+pkgver=1.18.0.535.r15620.g25e4f9e
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -15,7 +15,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind' 'git')
+             'libxshmfence' 'libunwind' 'git' 'xfont2-git')
 source=(git://anongit.freedesktop.org/xorg/xserver
         xvfb-run
         xvfb-run.1)
