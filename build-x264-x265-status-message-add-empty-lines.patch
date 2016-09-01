@@ -1,0 +1,67 @@
+diff --git a/avidemux_plugins/ADM_videoEncoder/x264/CMakeLists.txt b/avidemux_plugins/ADM_videoEncoder/x264/CMakeLists.txt
+index d5ab816..2532eee 100644
+--- a/avidemux_plugins/ADM_videoEncoder/x264/CMakeLists.txt
++++ b/avidemux_plugins/ADM_videoEncoder/x264/CMakeLists.txt
+@@ -12,6 +12,7 @@ include(admCheckX264)
+ checkX264()
+ IF(USE_X264)
+   MESSAGE(STATUS "x264 plugin activated.")
++  MESSAGE("")
+   INCLUDE_DIRECTORIES(${X264_INCLUDE_DIR})
+ 
+   #-----------------------QT4 VERSION---------------------
+diff --git a/avidemux_plugins/ADM_videoEncoder/x265/CMakeLists.txt b/avidemux_plugins/ADM_videoEncoder/x265/CMakeLists.txt
+index 6ff2a8f..eddcd2f 100644
+--- a/avidemux_plugins/ADM_videoEncoder/x265/CMakeLists.txt
++++ b/avidemux_plugins/ADM_videoEncoder/x265/CMakeLists.txt
+@@ -12,6 +12,7 @@ include(admCheckX265)
+ checkX265()
+ IF(USE_X265)
+   MESSAGE(STATUS "x265 plugin activated.")
++  MESSAGE("")
+   INCLUDE_DIRECTORIES(${X265_INCLUDE_DIR})
+ 
+   #-----------------------QT4 VERSION---------------------
+@@ -44,5 +45,6 @@ IF(USE_X265)
+   endif(DO_SETTINGS)
+ ELSE(USE_X265)
+   MESSAGE(STATUS "x265 disabled.")
++  MESSAGE("")
+ ENDIF(USE_X265)
+ 
+diff --git a/cmake/admCheckX264.cmake b/cmake/admCheckX264.cmake
+index 10b7333..09a46f1 100644
+--- a/cmake/admCheckX264.cmake
++++ b/cmake/admCheckX264.cmake
+@@ -38,7 +38,6 @@ MACRO(checkX264)
+ 
+ 		SET(X264_CHECKED 1)
+ 
+-		MESSAGE("")
+ 	ENDIF (NOT X264_CHECKED)
+ 
+ 	APPEND_SUMMARY_LIST("Video Encoder" "x264" "${USE_X264}")
+diff --git a/cmake/admCheckX265.cmake b/cmake/admCheckX265.cmake
+index 06c0314..5346f4b 100644
+--- a/cmake/admCheckX265.cmake
++++ b/cmake/admCheckX265.cmake
+@@ -40,7 +40,6 @@ MACRO(checkX265)
+ 
+ 		SET(X265_CHECKED 1)
+ 
+-		MESSAGE("")
+ 	ENDIF (NOT X265_CHECKED)
+ 
+ 	APPEND_SUMMARY_LIST("Video Encoder" "x265" "${USE_X265}")
+diff --git a/cmake/ve_settings_plugin.cmake b/cmake/ve_settings_plugin.cmake
+index d6a1d58..1a0f1bd 100644
+--- a/cmake/ve_settings_plugin.cmake
++++ b/cmake/ve_settings_plugin.cmake
+@@ -11,6 +11,7 @@ MACRO(INSTALL_VIDEO_ENCODER_SETTINGS PLUGIN)
+                         ${ARGN})   
+     MESSAGE(STATUS "Will install plugin ${PLUGIN} version ${SETTINGS_VERSION}") 
+     MESSAGE(STATUS "Will install ${SETTINGS_FILES} ") 
++    MESSAGE("")
+     INSTALL(FILES ${SETTINGS_FILES} 
+                 DESTINATION "${VE_SETTINGS_DIR}/${PLUGIN}/${SETTINGS_VERSION}/"
+                 COMPONENT   settings

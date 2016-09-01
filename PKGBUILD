@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.12.160808.493c064
+pkgver=2.6.13.160901.811311c
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -42,12 +42,19 @@ source=('avidemux::git+https://github.com/mean00/avidemux2.git'
         'fix_verbose.patch'
         'fix_nvenc_check.patch'
         'add_settings_pluginui_message_error.patch'
+        'ffmpeg-parallel-build-use-processorcount.patch'
+        'opus_check.patch'
+        'build-x264-x265-status-message-add-empty-lines.patch'
         )
 sha1sums=('SKIP'
           '4b61f11627278578a180d4bdc3b6100544107f32'
           '19bcbe1c3aa6df8fdee2d10ecb9626b46de00175'
-          '4162d53297ec9d77633723ae911c605d8fdca3f1'
+          '7f249fef96f44c235c62b7d5d86a6421d87251a1'
+          '66da0d2f30e03c5b06df694a96fe82c0b47d1871'
+          '3ed60a05b2900c90dfa4f8e4d230aedfec4e2d02'
+          '15c343c81139ab84354effd60bda534082a8855b'
           )
+
 
 pkgver() {
   cd avidemux
@@ -60,6 +67,7 @@ prepare() {
   mkdir -p build_qt{,_plugins}
   mkdir -p build_cli{,_plugins}
 
+  #exit
   cd avidemux
 
   # http://avidemux.org/smif/index.php/topic,16301.0.html
@@ -70,6 +78,13 @@ prepare() {
 
   # add SETTINGS to MESSAGE(FATAL_ERROR in avidemux_plugins/CMakeLists.txt
   patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
+
+  # http://avidemux.org/smif/index.php/topic,16351.0.html
+  patch -p1 -i "${srcdir}/ffmpeg-parallel-build-use-processorcount.patch"
+
+  patch --binary -p1 -i "${srcdir}/opus_check.patch"
+
+  patch -p1 -i "${srcdir}/build-x264-x265-status-message-add-empty-lines.patch"
 }
 
 build() {
@@ -80,18 +95,16 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
-  make -j1
+  make
   make DESTDIR="${srcdir}/fakeroot" install
 
-  msg2 "Build Common Plugins"
+  msg2 "Build Core Plugins"
   cd "${srcdir}/build_core_plugins"
   cmake ../avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=COMMON \
-    -DQTSCRIPT=OFF \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -112,8 +125,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DPLUGIN_UI=QT4 \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -132,8 +144,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -143,8 +154,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
-    -DFAKEROOT="${srcdir}/fakeroot" \
-    -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+    -DFAKEROOT="${srcdir}/fakeroot"
   make
   make DESTDIR="${srcdir}/fakeroot" install
 }
@@ -219,5 +229,5 @@ package_avidemux-cli-git() {
   make -C build_cli DESTDIR="${pkgdir}" install
   make -C build_cli_plugins DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/"
+  rm -fr "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders"
 }

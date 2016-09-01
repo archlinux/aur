@@ -2,7 +2,7 @@ diff --git a/avidemux_plugins/CMakeLists.txt b/avidemux_plugins/CMakeLists.txt
 index ee7148c..eb34e95 100644
 --- a/avidemux_plugins/CMakeLists.txt
 +++ b/avidemux_plugins/CMakeLists.txt
-@@ -61,7 +61,7 @@ SET(DO_CLI    0)
+@@ -88,7 +88,7 @@ SET(DO_CLI    0)
  SET(DO_SETTINGS    0)
  
  IF (NOT PLUGIN_UI)

@@ -1,0 +1,17 @@
+diff --git a/cmake/admCheckOpus.cmake b/cmake/admCheckOpus.cmake
+index 8fd8051..a425072 100644
+--- a/cmake/admCheckOpus.cmake
++++ b/cmake/admCheckOpus.cmake
+@@ -18,6 +18,12 @@ MACRO(checkOpusDec)
+                 ELSE (OPUS)
+                   MESSAGE("${MSG_DISABLE_OPTION}")
+                 ENDIF (OPUS)
++
++		SET(OPUS_CHECKED 1)
++
++		MESSAGE("")
++
+ 	ENDIF (NOT OPUS_CHECKED)
++
+ 	APPEND_SUMMARY_LIST("Audio Decoder" "Opus" "${LIBOPUS_FOUND}")
+ ENDMACRO(checkOpusDec)
