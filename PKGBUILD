@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: BangL <contact through AUR please>
 pkgname=openra-kang
-pkgver=kang.c96e96c
+pkgver=kang.75777f1
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
