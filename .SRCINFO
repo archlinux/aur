@@ -1,7 +1,7 @@
 pkgbase = inadyn-fork-git
 	pkgdesc = Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei
 	pkgver = 2.0.rc1.32.ge91da87
-	pkgrel = 1
+	pkgrel = 2
 	url = http://troglobit.com/inadyn.html
 	arch = any
 	license = GPL

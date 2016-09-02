@@ -2,7 +2,7 @@
 pkgname=inadyn-fork-git
 _pkgname=inadyn
 pkgver=2.0.rc1.32.ge91da87
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei'
 url='http://troglobit.com/inadyn.html'
 arch=('any')
