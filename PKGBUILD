@@ -4,12 +4,12 @@
 
 pkgname=aseprite-git
 name=aseprite
-pkgver=v1.1.2.r32.g733ca44
-pkgrel=3
+pkgver=v1.1.7.r29.gf97dc79
+pkgrel=4
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
-license=('GPL')
+license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2')
 makedepends=('cmake')
 conflicts=('aseprite')
@@ -25,6 +25,12 @@ pkgver() {
 
 build() {
   cd "${name}"
+
+  less EULA.txt
+  echo "Do you accept the EULA? yes/NO"
+  read reply
+  [ "$reply" == "yes" ] || exit 1
+
   mkdir -p build && cd build
   git submodule update --init --recursive
   cmake -DUSE_SHARED_PIXMAN=ON \
