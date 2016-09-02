@@ -5,26 +5,15 @@
 
 pkgname=compiz-manager
 pkgver=0.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Compiz Fusion Starter Program"
 arch=('any')
 url="http://www.compiz.org/"
 license=('GPL')
-makedepends=('setconf')
-depends=('compiz-core>=0.6.0' 'xorg-utils')
+depends=('compiz>=0.8.0')
 conflicts=('compiz-manager-git')
-source=("https://github.com/compiz-reloaded/compiz-manager/releases/download/v${pkgver}/compiz-manager-${pkgver}.tar.xz"
-        'path.patch')
-sha256sums=('7be0744801c0c55050b5c9da997f61a8be190b2e1fb528b84dac12faf904542e'
-            'b3028dea7bb87915e924468d3a62fc71f57b737ed242dcc06af3f10367b776eb')
-
-prepare()
-{
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	patch -Np0 -i "${srcdir}/path.patch"
-	setconf compiz-manager WHITELIST '"nvidia intel ati radeon i810 fglrx"'
-}
+source=("https://github.com/compiz-reloaded/compiz-manager/releases/download/v${pkgver}/compiz-manager-${pkgver}.tar.xz")
+md5sums=('e684c3334de4d0466fae52e5d63eb199')
 
 package()
 {
