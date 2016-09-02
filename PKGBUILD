@@ -1,7 +1,7 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 
 pkgname=lychee
-pkgver=3.1.0
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
 arch=('any')
@@ -17,7 +17,7 @@ options=('!strip')
 backup=('etc/webapps/lychee/apache.example.conf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com//electerious/Lychee/archive/v$pkgver.tar.gz"
 	'apache.example.conf')
-sha256sums=('46d96ce7574176156ba0ee7937e4e1b4490e81b76a574ac6b186fdc0be8d7ac0'
+sha256sums=('501d1ebf21b868660e128882aa992449e77bc460682d038a8e5e616af502c8c8'
 	    'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
 
 prepare() {
