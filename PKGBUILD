@@ -1,14 +1,14 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop
 _pkgname=Wire
-pkgver=2.10.2652
-pkgrel=2
+pkgver=2.10.2653
+pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst' 'gcc-libs-multilib')
-makedepends=('npm' 'nodejs-grunt-cli' 'gendesk')
+makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
 source=("git://github.com/ConorIA/wire-desktop.git"
         'icon.svg')
