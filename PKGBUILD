@@ -32,7 +32,8 @@ build()
 	mkdir "build"
 	cd "build"
 
-	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0 ${CXXFLAGS}" cmake "$srcdir/$_pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0 ${CXXFLAGS}" cmake "$srcdir/$_pkgname-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR:PATH=lib -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
 	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0 ${CXXFLAGS}" make ${MAKEFLAGS} || return 2
 }
 
@@ -40,6 +41,4 @@ package()
 {
 	cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
-
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 }
