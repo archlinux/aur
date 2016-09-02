@@ -1,0 +1,6 @@
+src/
+pkg/
+*.pkg.tar.xz
+*.pkg.tar
+*.src.tar.gz
+alertmanager-*.linux-amd64.tar.gz

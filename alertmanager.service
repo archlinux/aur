@@ -1,0 +1,9 @@
+[Unit]
+Description=Alertmanager monitoring service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/alertmanager -config.file /etc/alertmanager/alertmanager.yml
+
+[Install]
+WantedBy=multi-user.target
