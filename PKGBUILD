@@ -4,20 +4,20 @@
 set -u
 _name='cpulimit'
 pkgname='limitcpu'
-pkgver='2.2'
+pkgver='2.3'
 pkgrel='1'
 pkgdesc="A simple ${_name} program that attempts to limit the CPU usage of a process, expressed in percentage."
 arch=('i686' 'x86_64')
-url="http://${pkgname}.sourceforge.net/"
+url="https://sourceforge.net/projects/${pkgname}/"
 license=("GPL")
 depends=('glibc')
-_verwatch=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/" "/projects/${pkgname}/files/${pkgname}/${_name}-\([0-9\.]\+\)\.tar\.gz/stats/timeline" 'l')
+_verwatch=("https://sourceforge.net/projects/${pkgname}/rss" "\s*<title>.*/${_name}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3f64daa5c4ab9245fa6ae5b564a2ffb3ae60677785103a207fd5f9c5c4cc29e4')
+sha256sums=('4039df867ede2966e2d86cf49e1b6c432efd6d41c615a368a80d59dfe11359a4')
 
 prepare() {
   set -u
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_name}-${pkgver}"
 
   # rename to limitcpu to not conflict
   # with cpulimit in [community]
@@ -36,14 +36,14 @@ prepare() {
 
 build() {
   set -u
-  cd "${srcdir}/${_name}-${pkgver}"
-  make # -s -j "$(nproc)"
+  cd "${_name}-${pkgver}"
+  make -s -j1
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_name}-${pkgver}"
   make PREFIX="${pkgdir}/usr" install
   set +u
 }
