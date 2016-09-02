@@ -1,6 +1,6 @@
 pkgbase = plexpy
 	pkgdesc = A Python based monitoring and tracking tool for Plex Media Server.
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/drzoidberg33/plexpy
 	install = plexpy.install
@@ -10,10 +10,10 @@ pkgbase = plexpy
 	depends = python2
 	provides = plexpy
 	conflicts = plexpy-git
-	source = plexpy-1.4.10.tar.gz::https://github.com/drzoidberg33/plexpy/archive/v1.4.10.tar.gz
+	source = plexpy-1.4.11.tar.gz::https://github.com/drzoidberg33/plexpy/archive/v1.4.11.tar.gz
 	source = plexpy.service
 	source = plexpy.install
-	sha256sums = fbb4c4aebb7fa45701331aedfe7c21222fc606cd1665161cac59c8fc1782da6d
+	sha256sums = a07eee0bd13316ed42b5bb4bc4b4a829c09dd76dec447b80956efc983ab6eff9
 	sha256sums = 58300f84762f1362ae4d81aab9bbdf48425735b886807fea847ec256082524a0
 	sha256sums = 93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160
 
