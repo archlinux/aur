@@ -1,0 +1,35 @@
+pkgbase = spotify
+	pkgdesc = A proprietary music streaming service
+	pkgver = 1.0.36.120
+	pkgrel = 1
+	url = http://www.spotify.com
+	arch = x86_64
+	arch = i686
+	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
+	depends = alsa-lib>=1.0.14
+	depends = gconf
+	depends = gtk2
+	depends = glib2
+	depends = nss
+	depends = libsystemd
+	depends = libxtst
+	depends = libx11
+	depends = libxss
+	depends = libcurl-compat
+	depends = desktop-file-utils
+	depends = rtmpdump
+	optdepends = ffmpeg0.10: Adds support for playback of local files
+	optdepends = zenity: Adds support for importing local files
+	options = !strip
+	options = !upx
+	source = spotify
+	source = spotify.protocol
+	md5sums = cfef2f72647980c639201c6ab39e8534
+	md5sums = ef25ddc5b6bf8fe1a0d64cbd79e1f7b4
+	source_x86_64 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.36.120.g536a862f-20_amd64.deb
+	md5sums_x86_64 = 8c27d59e63eca56f36688cca9a7da4a5
+	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.36.120.g536a862f-2_i386.deb
+	md5sums_i686 = 1181510a78b329a5f85bba68879d3810
+
+pkgname = spotify
+
