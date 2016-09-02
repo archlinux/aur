@@ -7,7 +7,7 @@ pkgdesc="Arch linux version of cinnamon-remove-application (enables the uninstal
 arch=('any')
 url="https://github.com/rapgenic/cinnamon-remove-application"
 license=('GPL2')
-source=("https://github.com/rapgenic/cinnamon-remove-application.git")
+source=("git+https://github.com/rapgenic/cinnamon-remove-application.git")
 md5sums=('SKIP')
 depends=('gtk3' 'pkgfile' 'pacman' 'cinnamon')
 

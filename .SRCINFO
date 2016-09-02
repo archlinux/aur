@@ -9,7 +9,7 @@ pkgbase = cinnamon-remove-application
 	depends = pkgfile
 	depends = pacman
 	depends = cinnamon
-	source = https://github.com/rapgenic/cinnamon-remove-application.git
+	source = git+https://github.com/rapgenic/cinnamon-remove-application.git
 	md5sums = SKIP
 
 pkgname = cinnamon-remove-application
