@@ -43,6 +43,6 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm644 "$srcdir/Mattermost Desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgdir/usr/lib/mattermost/resources/app/resources/appicon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$pkgdir/usr/lib/mattermost/resources/app/resources/appicon.png" "$pkgdir/usr/share/pixmaps/Mattermost Desktop.png"
 }
 
