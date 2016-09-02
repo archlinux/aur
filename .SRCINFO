@@ -1,0 +1,15 @@
+pkgbase = liberal-crime-squad-svn
+	pkgdesc = A satirical console-based political role-playing/strategy game
+	pkgver = r864
+	pkgrel = 1
+	url = https://sourceforge.net/projects/lcsgame/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = ncurses
+	source = lcsgame::svn+https://svn.code.sf.net/p/lcsgame/code/trunk
+	md5sums = SKIP
+
+pkgname = liberal-crime-squad-svn
+
