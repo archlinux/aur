@@ -2,8 +2,8 @@
 
 pkgname=azpainterb
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="Painting software"
+pkgrel=2
+pkgdesc="PixelArt/Paint/Retouch Software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/linux/azpainterb/"
 license=('GPL3')
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install-strip
-	install -m 664 README README_ja COPYING NEWS ChangeLog GPL3 BSD "${pkgdir}/usr/share/${pkgname}/"
+	install -m 644 README README_ja COPYING NEWS ChangeLog GPL3 BSD "${pkgdir}/usr/share/${pkgname}/"
 }
