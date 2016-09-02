@@ -1,7 +1,7 @@
 pkgbase = ax25-apps
 	pkgdesc = Programs for the hamradio protocol AX.25 that would be used by normal users
 	pkgver = 0.0.8_rc4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.linux-ax25.org
 	arch = i686
 	arch = x86_64
