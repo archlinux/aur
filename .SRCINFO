@@ -1,7 +1,7 @@
 pkgbase = soundfont-jeux
 	pkgdesc = Jeux organ soundfont
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://realmac.info/jeux1.htm
 	arch = any
 	license = custom:Public Domain
