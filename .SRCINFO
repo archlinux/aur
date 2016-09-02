@@ -1,0 +1,14 @@
+pkgbase = c-rbtree
+	pkgdesc = Red-Black Tree Implementation
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/c-util/c-rbtree
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	source = https://github.com/c-util/c-rbtree/archive/v1.tar.gz
+	md5sums = 8d3b6313dea65e9b00c17d178662bd53
+
+pkgname = c-rbtree
+
