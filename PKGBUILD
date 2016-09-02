@@ -3,7 +3,7 @@
 pkgname=ax25-tools
 pkgver=0.0.10_rc4
 _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="The network tools to configure hamradio interfaces and some of the hamradio specific network daemons"
 arch=('i686' 'x86_64')
 url='http://www.linux-ax25.org'
@@ -13,6 +13,13 @@ makedepends=('make')
 source=("http://www.linux-ax25.org/pub/${pkgname}/${pkgname}-${_pkgver}.tar.xz" "ax25.patch")
 sha1sums=('c0c16ae86e8f41abb65e4467b619ba06ea310aa0'
           'f3dfdfce9a795baef7f93d62d92441e81b96a83e')
+backup=('etc/ax25/ax25.profile'
+        'etc/ax25/ax25d.conf'
+        'etc/ax25/axspawn.conf'
+        'etc/ax25/nrbroadcast'
+        'etc/ax25/rip98d.conf'
+        'etc/ax25/rxecho.conf'
+        'etc/ax25/ttylinkd.conf')
 
 build() {
 	cd "$srcdir/${pkgname}-${_pkgver}"
