@@ -1,6 +1,6 @@
 pkgbase = tcharmap-git
 	pkgdesc = Overview of unicode characters and their LaTeX counterpart
-	pkgver = r18.333b132
+	pkgver = r19.0dfd0f4
 	pkgrel = 1
 	url = https://github.com/nrio0/tcharmap
 	arch = any
