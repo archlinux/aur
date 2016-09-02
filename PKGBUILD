@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+22412.2bc07741efa0
+pkgver=4.1.0+22420.e5ae26e50374
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -57,10 +57,11 @@ build() {
     --with-java-libdir={/usr/lib/jvm/`archlinux-java get`/lib/${_arch}/server,/usr/lib/jvm/`archlinux-java get`/jre/lib/${_arch}/server} 
   make
 }
-check() {
-  cd "$srcdir"/${_hgrepo}-local/build
-  make check
-}
+
+#check() {
+#  cd "$srcdir"/${_hgrepo}-local/build
+#  make check
+#}
 
 package() {
   cd "$srcdir"/${_hgrepo}-local/build
