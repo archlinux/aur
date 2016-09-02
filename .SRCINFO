@@ -31,5 +31,4 @@ pkgbase = spotify-update
 	source_i686 = http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.36.120.g536a862f-2_i386.deb
 	md5sums_i686 = 1181510a78b329a5f85bba68879d3810
 
-pkgname = spotify
-
+pkgname = spotify-update
