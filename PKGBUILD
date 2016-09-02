@@ -7,7 +7,7 @@ url="https://github.com/lubosz/OSVR-Vive-Libre"
 license=('LGPLv3+')
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'zlib' 'hidapi')
-source=("osvr-vive::git+file:///home/bmonkey/workspace/vr/OSVR-Vive-Libre")
+source=("osvr-vive::git+https://github.com/lubosz/OSVR-Vive-Libre.git")
 md5sums=('SKIP')
 
 
