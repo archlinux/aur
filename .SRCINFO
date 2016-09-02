@@ -1,4 +1,4 @@
-pkgbase = spotify
+pkgbase = spotify-update
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.0.36.120
 	pkgrel = 1
