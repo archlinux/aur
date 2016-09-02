@@ -3,7 +3,7 @@
 pkgname=ca-certificates-blacklist
 pkgver=3.26
 pkgrel=1
-pkgdesc="A set of broken CA certificates which should not be trusted"
+pkgdesc="A set of broken CAs' certificates which should not be trusted"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(any)
 license=('MPL' 'GPL')
