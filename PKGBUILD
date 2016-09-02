@@ -12,6 +12,7 @@ makedepends=('make')
 depends=('libax25')
 source=("http://www.linux-ax25.org/pub/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
 sha1sums=('afa43d8bcfd3218de27d1a2c894a74c911a99fd3')
+backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf' 'etc/ax25/ax25rtd.conf')
 
 build() {
 	cd $srcdir/${pkgname}-$_pkgver
