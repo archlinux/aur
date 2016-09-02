@@ -1,9 +1,9 @@
 pkgbase = pyexiftoolgui-git
 	pkgdesc = a python pyside graphical frontend for the excellent open source command line tool ExifTool
-	pkgver = b53a0b5
+	pkgver = 0.5.r43.17c7a0e
 	pkgrel = 1
 	url = https://github.com/hvdwolf/pyExifToolGUI
-	install = pyExifToolGUI.install
+	install = pyexiftoolgui.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -11,10 +11,10 @@ pkgbase = pyexiftoolgui-git
 	makedepends = python2
 	depends = python2-pyside
 	depends = perl-image-exiftool
-	source = git://github.com/hvdwolf/pyExifToolGUI.git
+	provides = pyexiftoolgui
+	conflicts = pyexiftoolgui
 	source = fix.patch
-	md5sums = SKIP
-	md5sums = 975bc40effce83f53cbf74edafcaac24
+	md5sums = eb148b3f802330500e82c5dc26d3b554
 
 pkgname = pyexiftoolgui-git
 
