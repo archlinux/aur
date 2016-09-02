@@ -2,10 +2,10 @@
 
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=162.1628.40
+_buildver=162.1812.17
 _veryear=2016
 _verrelease=2
-_extraver=2
+_extraver=3
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_extraver}
 pkgrel=1
