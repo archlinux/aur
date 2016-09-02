@@ -2,7 +2,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=pylote
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Software making it possible to draw on the screen of the computer, like handling various instruments of geometry."
 url="http://pascal.peter.free.fr/wiki/Logiciels/Pylote"
@@ -10,8 +10,8 @@ license=('GPL')
 arch=('any')
 depends=('pyqt')
 source=(http://pascal.peter.free.fr/wikiuploads/pylote.tar.gz $pkgname.desktop)
-md5sums=('d7a1128ab7991a465c17a40e640c4bdb'
-         '551a544d0f99fff8b4061167ba3b4dd8')
+sha256sums=('169540e9e45caa594aa055f7bbfb8f86142e40e3bc75e1eadce510bd488eb3d4'
+            '8557e071b14f22e5386715d4769aada56175fa8a266508ce42043363b30b0bd7')
 
 package() {
   cd ${srcdir}/${pkgname}
