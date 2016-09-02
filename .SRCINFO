@@ -14,6 +14,7 @@ pkgbase = openrw-git
 	depends = openal
 	depends = libsndfile
 	depends = sdl2
+	depends = boost
 	provides = openrw
 	source = openrw-git::git+https://github.com/rwengine/openrw.git
 	source = openrw.desktop
