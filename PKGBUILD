@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/rapgenic/cinnamon-remove-application"
 license=('GPL2')
 source=("https://github.com/rapgenic/cinnamon-remove-application.git")
-md5sums=('8a01cb6547f7e865532c289be5733dcc')
+md5sums=('SKIP')
 depends=('gtk3' 'pkgfile' 'pacman' 'cinnamon')
 
 package() {
