@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=systemd-bootchart-git
-pkgver=r9.31d48bc
+pkgver=r12.36a0f03
 pkgrel=1
 pkgdesc="Boot performance graphing tool"
 arch=('i686' 'x86_64')
