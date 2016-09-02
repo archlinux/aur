@@ -7,12 +7,10 @@ pkgdesc="A set of broken CA certificates which should not be trusted"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(any)
 license=('MPL' 'GPL')
-_nsprver=4.12
 depends=('ca-certificates-utils')
-makedepends=('perl' 'python2' 'xmlto' 'docbook-xsl')
-options=('!strip' '!makeflags' 'staticlibs')
+makedepends=('python2')
 source=("https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${pkgver//./_}_RTM/src/nss-${pkgver}.tar.gz"
-"certdata2pem.py")
+        "certdata2pem.py")
 
 prepare() {
     mkdir -p certs
