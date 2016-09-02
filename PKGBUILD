@@ -3,7 +3,7 @@
 pkgname=xrootd-abi0
 _pkgname=xrootd
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
 provides=('xrootd'
           'xrootd-abi0')
