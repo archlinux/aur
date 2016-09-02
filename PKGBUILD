@@ -3,7 +3,7 @@
 pkgname=ax25-apps
 pkgver=0.0.8_rc4
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Programs for the hamradio protocol AX.25 that would be used by normal users"
 arch=('i686' 'x86_64')
 url='http://www.linux-ax25.org'
