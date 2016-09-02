@@ -1,6 +1,6 @@
 pkgname=lios-git
 pkgver=7eeed0be
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux Intelligent OCR Solution is an easy to use OCR suite for tesseract and cuneiform"
 arch=(any)
 license=('GPL3')
