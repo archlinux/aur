@@ -7,7 +7,7 @@ pkgbase = osvr-cpi-git
 	arch = x86_64
 	makedepends = git
 	depends = osvr-core-git
-	depends = libqtxdg
+	depends = fswatch
 	source = osvr-cpi::git+https://github.com/ChristophHaag/OSVR-CPI.git
 	md5sums = SKIP
 

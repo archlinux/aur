@@ -7,7 +7,7 @@ url="https://github.com/OSVR/OSVR-Config"
 #license=('GPL')
 #install=osvr-cpi.install
 makedepends=('git')
-depends=('osvr-core-git' 'libqtxdg')
+depends=('osvr-core-git' 'fswatch')
 source=("osvr-cpi::git+https://github.com/ChristophHaag/OSVR-CPI.git")
 #    "Findjsoncpp.cmake")
 
