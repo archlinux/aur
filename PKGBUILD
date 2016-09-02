@@ -52,7 +52,7 @@ package() {
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "../data/icons/ase48.png" \
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "../EULA.txt" "/usr/share/licenses/$pkgname/EULA.txt"
+  install -Dm644 "../EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 }
 
 # vim:set ts=2 sw=2 et:
