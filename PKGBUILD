@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-geode
 pkgver=2.11.18
-pkgrel=2
+pkgrel=3
 pkgdesc='Xorg X11 Geode video driver'
 arch=('i686')
 url='http://www.x.org'
@@ -29,7 +29,7 @@ package() {
 	make DESTDIR="${pkgdir}/" install
 
 	install -d "${pkgdir}/etc/modules-load.d/"
-	echo "# The Xorg Geode driver requires msr module to be loaded...\nmsr" \
+	echo -e "# The Xorg Geode driver requires msr module to be loaded...\nmsr" \
 		> "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
