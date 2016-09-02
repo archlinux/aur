@@ -1,15 +1,15 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=zig
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.0
+pkgrel=1
 pkgdesc='System programming language intended to replace C'
 arch=('x86_64' 'i686')
 url='http://ziglang.org/'
 license=('MIT')
 depends=('llvm' 'clang')
 makedepends=('cmake')
-source=("git://github.com/andrewrk/zig.git#commit=ed50bd1")
+source=("git://github.com/andrewrk/zig.git#commit=f18e34c")
 md5sums=('SKIP')
 
 build() {
