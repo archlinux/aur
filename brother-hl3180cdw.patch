@@ -1,0 +1,46 @@
+--- old_opt/brother/Printers/hl3180cdw/cupswrapper/cupswrapperhl3180cdw	2016-01-25 23:58:45.000000000 -0800
++++ new_opt/brother/Printers/hl3180cdw/cupswrapper/cupswrapperhl3180cdw	2016-09-01 20:41:42.525560282 -0700
+@@ -23,8 +23,9 @@
+ device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/HL/HL-/' -e 's/FAX/FAX-/'`
+ pcfilename=`echo $printer_name | tr -d '[A-Z]'`
+ device_model="Printers"
+-tmp_filter=/var/tmp/brother_lpdwrapper_${printer_model}
++tmp_filter=wrapper
+ 
++if false; then
+ if [ -d "/usr/share/cups/model" ]; then
+   mkdir -p /usr/share/cups/model/Brother
+ else
+@@ -102,6 +103,7 @@
+ fi
+ fi
+ 
++fi
+ #
+ #	create temporary CUPS Filter
+ #
+@@ -148,7 +150,7 @@
+ PPDC=\`echo \$PPDC | sed -e 's/PPD=//'\`
+ 
+ if [ "\$PPDC" = "" ]; then
+-    PPDC="/usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd"
++    PPDC="/usr/share/cups/model/brother_${printer_model}_printer_en.ppd"
+ fi
+ 
+ 
+@@ -263,6 +265,7 @@
+ 
+ chmod 755 $tmp_filter
+ 
++if false; then
+ #
+ #	check /usr/lib/cups/filter
+ #
+@@ -351,6 +354,7 @@
+ 
+ echo lpadmin -p ${printer_name} -E -v $URI -P $ppd_file_name
+ lpadmin -p ${printer_name} -E -v $URI -P $ppd_file_name
++fi
+ 								
+ exit 0
+ 
