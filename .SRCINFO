@@ -1,14 +1,14 @@
 pkgbase = xdg-desktop-portal
 	pkgdesc = A portal frontend service for Flatpak and possibly other desktop containment frameworks.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = http://flatpak.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2
 	depends = flatpak
-	source = https://github.com/flatpak/xdg-desktop-portal/releases/download/0.2/xdg-desktop-portal-0.2.tar.xz
-	sha256sums = 4d2172da91c0af5d5ccf946d0694272ed2bff99b53073467def5d8547527b73c
+	source = https://github.com/flatpak/xdg-desktop-portal/releases/download/0.3/xdg-desktop-portal-0.3.tar.xz
+	sha256sums = 9521a6f41a5735127bf0596a3a0c9bebc2acb0ebd204787c4ebd5b0575b8bd8d
 
 pkgname = xdg-desktop-portal
 
