@@ -1,7 +1,7 @@
 # Maintainer: Lee Fenlan <lee@fenlan.uk>
 
 pkgname=fira-code-git
-pkgver=r128.d78fd52
+pkgver=r1201.92df0e8
 pkgrel=1
 pkgdesc="Fira Code font. Monospaced font with programming ligatures"
 arch=('i686' 'x86_64')
