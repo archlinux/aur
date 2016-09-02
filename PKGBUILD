@@ -53,13 +53,13 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.7
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchversion=1
+_ckpatchversion=2
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2'
@@ -76,7 +76,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'change-default-console-loglevel.patch'
 # ck1
 "http://ck.kolivas.org/patches/4.0/4.7/4.7-ck${_ckpatchversion}/${_ckpatchname}.xz"
-"http://ck.kolivas.org/patches/bfs/4.0/4.7/Pending/bfs472-fix_set_task_cpu.patch"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
@@ -92,8 +91,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'a6ccd0aed869a94c51b1f0395420015e4aa0e9489c3a5486443abcbd8f1c9bc4'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'e8d70729a7a58bac904d9a7a52ae4d46feec671afa307e6814895d74daf5ffbc'
-            '933fdea7020a6e74352b7df4782999501d2f80e330babfb209780e5ca75924ff'
+            'd5bbe3b866f1744d95e6d0cc4442748c05be48be032d0014baced73ecac82152'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
             '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
@@ -118,9 +116,8 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.472"
+	msg "Patching source with ck1 including BFS v0.480"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	patch -Np1 -i "${srcdir}/bfs472-fix_set_task_cpu.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -244,8 +241,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.472.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.472.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.480.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.480.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
