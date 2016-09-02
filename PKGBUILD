@@ -2,7 +2,7 @@
 _pkgname=nwjs
 pkgname=$_pkgname-bin
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js."
 arch=("i686" "x86_64")
 url="https://github.com/nwjs/nw.js"
@@ -17,15 +17,15 @@ replaces=("node-webkit")
 conflicts=("node-webkit" "nwjs")
 
 if [ "$CARCH" = "i686" ]; then
-  _arch="x86"
+  _arch="ia32"
 fi
 if [ "$CARCH" = "x86_64" ]; then
   _arch="x64"
 fi
 source_common="http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
-source_i686=("$source_common-x86.tar.gz")
+source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('6052a58fb73b1992100c522355ceb170')
+md5sums_i686=('2f54c19a7b180929d8bc39dd3c907607')
 md5sums_x86_64=('296045d4311ac666483d31655038854f')
 
 package() {
