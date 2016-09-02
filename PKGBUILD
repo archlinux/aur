@@ -4,7 +4,7 @@ pkgver=1.1.4
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother HL-3180CDW"
 arch=('any')
-url="https://github.com/khaledhosny/xits-math"
+url='http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hl3180cdw_us_as'
 license=('GPL version 2 for CUPS driver, custom:brother commercial license for LPR driver.')
 depends=('cups')
 arch=('i686' 'x86_64')
