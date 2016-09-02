@@ -3,7 +3,7 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.5+p61+ga6ee6fe
+pkgver=2.6.5+p67+g77e4d1b
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -21,13 +21,13 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         git://git.sv.gnu.org/freetype/freetype2-demos.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
-        0003-Enable-subpixel-hinting.patch
+        0003-Enable-infinality-subpixel-hinting.patch
         freetype2.sh)
 sha1sums=('SKIP'
           'SKIP'
-          'b5307ca1f11cb14081aef2b2439377ba99537bb3'
-          '0ccdef0066335efa41b375c44c3d783e361f188e'
-          '419d4e5b766742f08ebb2d01c2b9545eec827c81'
+          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
+          'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
+          '41d27140fd590945e22e012c9dce62de3d6f11e6'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -38,7 +38,7 @@ prepare() {
   cd freetype2
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
-  patch -Np1 -i ../0003-Enable-subpixel-hinting.patch
+  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
 
   ./autogen.sh
 
