@@ -1,4 +1,4 @@
-# Maintainer: Matt Kline <matt@bitbashing.io>
+# Maintainer: Matt Kline <matt at bitbashing dot io>
 pkgname='brother-hl3180cdw'
 pkgver=1.1.4
 pkgrel=1
