@@ -4,11 +4,11 @@
 
 pkgname=aseprite
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
-license=('GPL')
+license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
 makedepends=('cmake')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
@@ -18,6 +18,12 @@ sha256sums=('SKIP'
 
 build() {
   cd "$pkgname"
+
+  less EULA.txt
+  echo "Do you accept the EULA? yes/NO"
+  read reply
+  [ "$reply" == "yes" ] || exit 1
+
   mkdir -p build && cd build
   git submodule update --init --recursive
   cmake -DUSE_SHARED_PIXMAN=ON \
