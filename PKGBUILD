@@ -15,7 +15,7 @@ _clang=
 
 pkgname=retroshare
 pkgver=0.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -31,8 +31,8 @@ optdepends=('tor: tor hidden node support'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
-sha256sums=('')
+source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
+sha256sums=('4ffbb6c61538f80d0f667c2a155c5eac38b0722a3e8d4f1dc1487d10087cfe42')
 
 # Add missing dependencies if needed
 [[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
