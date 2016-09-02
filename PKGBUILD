@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=7.4.beta0.r0.g0a80508
+pkgver=7.4.beta3.r0.g8246a66
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -33,9 +33,8 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        anal.h env.patch paths.patch clean.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
-        disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch linbox-1.4.patch ecm-7.patch
-        increase-rtol.patch)
+        anal.h env.patch paths.patch clean.patch skip-check.patch cython-sys-path.patch optional-extensions.patch package.patch
+        disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch)
 md5sums=('SKIP'
          'a906a180d198186a39820b0a2f9a9c63'
          'd4d3c235c99b2bc92dde9f6e53935a8d'
@@ -43,13 +42,12 @@ md5sums=('SKIP'
          '6d9ae0978ce6a05a0da2cafdfb178a09'
          '6cafcb381437d4751fd55b25d5090987'
          'a1bcdd3fe620dbae60ed8b0e98b2ece7'
-         'c1494f51d93c9c7ffc17d5e015fe480d'
+         '3ab07d49c874ea9024b288d66cbcfc23'
          '9ba81f717ffd4e20b8b2f2a318307488'
          '4eb23a3c7363258bc9ba764d6e5512ba'
          '16b529194c6105c3364127bd8f1efa83'
          'cdcabd475b80afe0534a5621e972736e'
          'ef927896f2071b442b1d07d7e69f5f3a'
-         'a276f0fbbff6eade409d0569ebd728d4'
          '0c9a57d35de80c2cd418ebec912efbbb'
          '39d3fded716d2a7ae0ab03e0896b7497')
 
@@ -63,8 +61,8 @@ prepare(){
   cd sage
 
 # Arch-specific patches
-# assume all optional packages are installed
-  patch -p0 -i ../package.patch
+# compile all optional extensions
+  patch -p1 -i ../optional-extensions.patch
 # find L.h header
   sed -e 's|libLfunction|Lfunction|' -i src/sage/libs/lcalc/lcalc_sage.h
 # don't try to link against libpng 1.2
@@ -80,7 +78,7 @@ prepare(){
 # supress warning about GAP install dir
   sed -e "s|gapdir = os.path.join(SAGE_LOCAL, 'gap', 'latest')|gapdir = '/usr/lib/gap'|" -i src/sage/libs/gap/util.pyx 
 # don't list optional packages when running tests
-  patch -p0 -i ../test-optional.patch
+# patch -p0 -i ../test-optional.patch
 # set jupyter path
   patch -p0 -i ../jupyter-path.patch
 # fix timeit with Python 2.7.11
@@ -97,8 +95,6 @@ prepare(){
 #  patch -p0 -i ../fes02.patch
 # disable fes module, fails to compile
   patch -p0 -i ../disable-fes.patch
-# port to new givaro/fflas-ffpack/linbox http://trac.sagemath.org/ticket/17635
-  patch -p1 -i ../linbox-1.4.patch
 # replace is_package_installed usage http://trac.sagemath.org/ticket/20377
   patch -p1 -i ../is-package-installed.patch
 
@@ -117,6 +113,7 @@ prepare(){
 build() {
   cd sage/src
 
+  export SAGE_ROOT="$srcdir"/sage
   export SAGE_LOCAL="/usr"
   export SAGE_SRC="$PWD"
   export CC=gcc

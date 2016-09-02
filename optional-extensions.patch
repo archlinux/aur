@@ -1,0 +1,27 @@
+--- sage/src/sage_setup/optional_extension.py.orig	2016-09-02 21:28:28.584354231 +0200
++++ sage/src/sage_setup/optional_extension.py	2016-09-02 21:43:08.256305231 +0200
+@@ -21,8 +21,6 @@
+ from distutils.extension import Extension
+ from sage.misc.package import is_package_installed, list_packages
+ 
+-all_packages = list_packages(local=True)
+-
+ 
+ class CythonizeExtension(Extension):
+     """
+@@ -75,14 +73,7 @@
+     try:
+         condition = kwds.pop("condition")
+     except KeyError:
+-        pkg = kwds.pop("package")
+-        try:
+-            pkginfo = all_packages[pkg]
+-        except KeyError:
+-            # Might be an installed old-style package
+-            condition = is_package_installed(pkg)
+-        else:
+-            condition = (pkginfo["installed_version"] == pkginfo["remote_version"])
++        condition = True
+ 
+     if condition:
+         return Extension(*args, **kwds)
