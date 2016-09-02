@@ -1,12 +1,12 @@
 pkgbase = spm
 	pkgdesc = simple password manager, a fork of mneum's tpm
-	pkgver = 1.4.5
-	pkgrel = 2
+	pkgver = 1.4.6
+	pkgrel = 1
 	url = https://notabug.org/kl3/spm
 	arch = any
 	license = GPL
 	depends = gnupg
-	source = https://notabug.org/kl3/spm/archive/1.4.5.tar.gz
+	source = https://notabug.org/kl3/spm/archive/1.4.6.tar.gz
 	sha256sums = 7f2d31391697deb71b43d612199cc281f07ca5640484bb64fe94911912635d84
 
 pkgname = spm

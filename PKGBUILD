@@ -1,8 +1,8 @@
 # Maintainer: Mittens2001 <mittens2001@opmbx.org>
 
 pkgname=spm
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="simple password manager, a fork of mneum's tpm"
 arch=('any')
 url="https://notabug.org/kl3/spm"
