@@ -1,14 +1,14 @@
 pkgbase = easybackup
 	pkgdesc = Bash script for performing incremental backups of a set of directories using rsync
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/childerico/easybackup
 	arch = any
 	license = GPL
 	depends = bash
 	depends = rsync
-	source = https://github.com/childerico/easybackup/archive/v1.0.tar.gz
-	md5sums = 5ff9683d90209e6320ba0379687918de
+	source = https://github.com/childerico/easybackup/archive/v1.1.tar.gz
+	md5sums = 6fe2b36bbc15660661cf4e78ca37fd6c
 
 pkgname = easybackup
 
