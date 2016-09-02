@@ -14,6 +14,9 @@ license=('MIT')
 url="http://spotio.devinhalladay.com/"
 options=('!strip' '!upx')
 
+provides=('spotify')
+conflicts=('spotify' 'spotify-legacy' 'spotify094')
+
 source=('spotify'
 'spotify.protocol'
 'spotio.zip::https://github.com/devinhalladay/spotio/archive/master.zip')
