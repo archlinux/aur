@@ -1,0 +1,14 @@
+pkgbase = braincurses
+	pkgdesc = A version of the classic game Mastermind.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bderrly/braincurses
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = ncurses
+	source = braincurses-1.1.0.tar.gz::https://github.com/bderrly/braincurses/archive/1.1.0.tar.gz
+	md5sums = 7cdf11bbe53e813c4ef9fd495c282c74
+
+pkgname = braincurses
+
