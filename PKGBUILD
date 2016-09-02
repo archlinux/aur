@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <devriesb@gmail.com>
 
 pkgname=snapcast
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
