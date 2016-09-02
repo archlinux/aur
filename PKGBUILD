@@ -3,7 +3,7 @@
 # Contributor: Piotr Rogoża <piotr dot r dot public at gmail dot com>
 
 pkgname=pyexiftoolgui-git
-pkgver=b53a0b5
+pkgver=0.5.r43.17c7a0e
 pkgrel=1
 pkgdesc='a python pyside graphical frontend for the excellent open source command line tool ExifTool'
 arch=('any')
@@ -13,29 +13,33 @@ groups=()
 depends=(python2-pyside perl-image-exiftool)
 makedepends=(git desktop-file-utils python2)
 optdepends=()
-provides=()
-conflicts=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install='pyExifToolGUI.install'
+install="${pkgname%-git}.install"
 noextract=()
-source=('git://github.com/hvdwolf/pyExifToolGUI.git'
-fix.patch
-)
-_gitname='pyExifToolGUI'
-md5sums=('SKIP'
-         '975bc40effce83f53cbf74edafcaac24')
-pkgver() {
-  cd "$srcdir/repo"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+# source=("${pkgname%-git}::git://github.com/hvdwolf/pyExifToolGUI.git"
+# fix.patch
+# )
+source=(fix.patch)
+# md5sums=('SKIP'
+         # 'eb148b3f802330500e82c5dc26d3b554')
+md5sums=('eb148b3f802330500e82c5dc26d3b554')
+_gitrepo='git@github.com:hvdwolf/pyExifToolGUI.git'
+
 prepare() {
-  cd "$srcdir"/$_gitname
-  patch -p1 < $srcdir/fix.patch
+  # The other branch is huge > 100 MB, so we do it old school
+  git clone --single-branch $_gitrepo "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}"
+  patch -p1 -N < $srcdir/fix.patch
+}
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 package(){
-  cd "$srcdir"/$_gitname
+	cd "$srcdir/${pkgname%-git}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-
