@@ -5,9 +5,9 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.2.3
+pkgver=5.2.4
 pkgrel=1
-_file=490852
+_file=494992
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
@@ -16,7 +16,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname/-/_}-${pkgver}-an+tb+sm+fx.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('817ecd2269f434f9f83146e3ca50c2b31495cafea717385df7affe44a63a8328')
+sha256sums=('3ee6bf903f1e96a05b4db0ea0385d9ba243b388f556df9a090ab601316f06676')
 
 prepare() {
   cd "$srcdir"
