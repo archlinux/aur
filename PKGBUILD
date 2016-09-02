@@ -2,7 +2,7 @@
 pkgname=liberal-crime-squad-svn
 _reponame=lcsgame
 pkgver=r864
-pkgrel=1
+pkgrel=2
 pkgdesc="A satirical console-based political role-playing/strategy game"
 arch=(i686 x86_64)
 url="https://sourceforge.net/projects/lcsgame/"
@@ -30,6 +30,13 @@ build() {
 package() {
   cd "$srcdir/$_reponame"
   make DESTDIR="$pkgdir/" install
+
+  # Correct for bug in Makefile. Put the music where the game expects it.
+  cd "$pkgdir/usr/share/lcs/art"
+  mkdir ogg
+  mv -t ogg/ *.ogg
+  mkdir midi
+  mv -t midi/ *.mid
 }
 
 # vim:set ts=2 sw=2 et:
