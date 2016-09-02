@@ -16,9 +16,9 @@ sha512sums=('SKIP')
 depends=('lua-lpeg'
          'lua-expat'
          'lua-filesystem'
-         'lua-utf8'
          'fontconfig'
-         'harfbuzz>=1.3.0')
+         'icu'
+         'harfbuzz>=1.2.6')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
