@@ -4,7 +4,7 @@ pkgname=mattermost-desktop-bin
 pkgdesc="Mattermost chat desktop client for Linux (binary)"
 _pkgname=desktop
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('x86_64')
 url="https://github.com/mattermost/desktop"
@@ -42,7 +42,7 @@ package() {
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/Mattermost Desktop.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dm644 "$pkgdir/usr/lib/mattermost/resources/app/resources/appicon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
