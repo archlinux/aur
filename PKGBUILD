@@ -1,19 +1,19 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=bcfg2-git
-pkgver=1.4.0pre2.r80.g337580f
+pkgver=1.4.0pre2.r88.g7586aee
 pkgrel=1
 pkgdesc="Configuration management tool"
 url="http://bcfg2.org"
 license=('BSD')
 arch=('any')
 depends=('python2' 'python2-setuptools' 'python2-lxml' 'python2-lockfile'
-'python2-daemon' 'python2-pyinotify' 'python2-genshi')
+'python2-daemon' 'python2-pyinotify' 'python2-genshi' 'python2-yaml')
 optdepends=(
   'python2-cheetah: Cheetah templating plugin'
   'apache: Web interface'
   'mod_wsgi2: Web interface'
-  'python2-django17: Web interface'
+  'python2-django: Web interface'
   'python2-south: Web interface'
   'python2-pygments: Web interface diff highlighting'
   'sqlite: Web interface sqlite backend'
