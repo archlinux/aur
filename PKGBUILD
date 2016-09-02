@@ -5,7 +5,7 @@ pkgname='sile'
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver='0.9.4'
 _libtexpdf_ver='0cb0c20a3ba40057e6902551300630fed7199bf6'
-pkgrel='2'
+pkgrel='3'
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
@@ -18,7 +18,8 @@ depends=('lua-lpeg'
          'lua-expat'
          'lua-filesystem'
          'fontconfig'
-         'harfbuzz>=1.3.0')
+         'icu'
+         'harfbuzz>=1.2.6')
 
 prepare () {
 	cd "${pkgname}-${pkgver}"
