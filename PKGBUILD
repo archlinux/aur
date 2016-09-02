@@ -1,8 +1,8 @@
-# Maintainer: Giulio Girardi <felixonmars at archlinux.org>
+# Maintainer: Giulio Girardi <giulio at rapgenic.it>
 
 pkgname=soundfont-jeux
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Jeux organ soundfont"
 arch=('any')
 url="http://realmac.info/jeux1.htm"
