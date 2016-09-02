@@ -18,10 +18,8 @@ pkgbase = inadyn-fork-git
 	backup = etc/inadyn.conf
 	source = inadyn::git+https://github.com/troglobit/inadyn.git
 	source = inadyn.conf
-	source = inadyn.service
 	sha256sums = SKIP
 	sha256sums = 1add79028daf20a7f615f5b9d1e17a8850035168c0b14ecf3291d976a106cd2c
-	sha256sums = 58b92152a3133e3a9e236ec915085eef0fbbc4410bca9ac34cae08de761fc7a5
 
 pkgname = inadyn-fork-git
 

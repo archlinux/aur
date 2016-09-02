@@ -13,11 +13,9 @@ backup=('etc/inadyn.conf')
 conflicts=('inadyn-opendns' 'inadyn' 'inadyn-mt' 'inadyn-fork')
 provides=('inadyn')
 source=("${_pkgname}::git+https://github.com/troglobit/${_pkgname}.git"
-        "inadyn.conf"
-        "inadyn.service")
+        "inadyn.conf")
 sha256sums=('SKIP'
-            '1add79028daf20a7f615f5b9d1e17a8850035168c0b14ecf3291d976a106cd2c'
-            '58b92152a3133e3a9e236ec915085eef0fbbc4410bca9ac34cae08de761fc7a5')
+            '1add79028daf20a7f615f5b9d1e17a8850035168c0b14ecf3291d976a106cd2c')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -39,6 +37,5 @@ package() {
 	install -Dm600 $srcdir/${_pkgname}/examples/freedns.conf $pkgdir/usr/share/inadyn/examples/freedns.conf
 	install -Dm600 $srcdir/${_pkgname}/examples/custom.conf $pkgdir/usr/share/inadyn/examples/custom.conf
 
-	install -Dm644 ../inadyn.service $pkgdir/usr/lib/systemd/system/inadyn.service
 	install -Dm600 ../inadyn.conf $pkgdir/etc/inadyn.conf
 }
