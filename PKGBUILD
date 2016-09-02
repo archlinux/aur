@@ -4,8 +4,8 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=compiz-manager
-pkgver=0.6.0
-pkgrel=5
+pkgver=0.7.0
+pkgrel=0
 pkgdesc="Compiz Fusion Starter Program"
 arch=('any')
 url="http://www.compiz.org/"
@@ -13,11 +13,11 @@ license=('GPL')
 makedepends=('setconf')
 depends=('compiz-core>=0.6.0' 'xorg-utils')
 conflicts=('compiz-manager-git')
-source=("https://github.com/floriandejonckheere/archlinux-packages/blob/master/src/${pkgname}-${pkgver}.tar.bz2?raw=true"
+source=("https://github.com/compiz-reloaded/compiz-manager/releases/download/v${pkgver}/compiz-manager-${pkgver}.tar.xz"
         'path.patch')
 sha256sums=('7be0744801c0c55050b5c9da997f61a8be190b2e1fb528b84dac12faf904542e'
             'b3028dea7bb87915e924468d3a62fc71f57b737ed242dcc06af3f10367b776eb')
-                           
+
 prepare()
 {
 	cd "${srcdir}/${pkgname}-${pkgver}"
