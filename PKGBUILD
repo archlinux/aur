@@ -4,9 +4,9 @@
 # Contributor: x-demon 
 
 pkgname=nicotine-plus-git
-pkgver=r1748.4a64caf
-pkgrel=2
-pkgdesc="A fork of nicotine, a Soulseek music-sharing client written in python. Gitversion."
+pkgver=r1766.266804c
+pkgrel=1
+pkgdesc="A fork of Nicotine, a graphical client for the SoulSeek peer-to-peer system."
 arch=('i686' 'x86_64')
 url="http://nicotine-plus.org"
 license=('GPL')
