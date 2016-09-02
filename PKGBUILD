@@ -4,8 +4,8 @@
 # Contributor: FSSlc
 
 pkgname=texlive-dummy
-pkgver=0.0.3
-pkgrel=4
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
 arch=('any')
@@ -14,20 +14,8 @@ depends=()
 optdepends=()
 makedepends=()
 replaces=()
-conflicts=('texlive-bibtexextra' 'texlive-bin' 'texlive-core'
-'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games'
-'texlive-genericextra' 'texlive-htmlxml' 'texlive-humanities'
-'texlive-langcjk' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek'
-'texlive-latexextra' 'texlive-music' 'texlive-pictures'
-'texlive-plainextra' 'texlive-pstricks' 'texlive-publishers'
-'texlive-science')
-provides=('texlive-bibtexextra' 'texlive-bin' 'texlive-core'
-'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games'
-'texlive-genericextra' 'texlive-htmlxml' 'texlive-humanities'
-'texlive-langcjk' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek'
-'texlive-latexextra' 'texlive-music' 'texlive-pictures'
-'texlive-plainextra' 'texlive-pstricks' 'texlive-publishers'
-'texlive-science')
+conflicts=('texlive-bin' $(pacman -Sgq texlive-most texlive-lang))
+provides=('texlive-bin' $(pacman -Sgq texlive-most texlive-lang))
 
 build() {
    echo "Nothing to build"
