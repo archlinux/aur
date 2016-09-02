@@ -1,6 +1,6 @@
 pkgbase = moc-pulse
 	pkgdesc = An ncurses console audio player with support for pulseaudio
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = http://moc.daper.net/
 	arch = i686
@@ -29,14 +29,12 @@ pkgbase = moc-pulse
 	optdepends = libmodplug: for using the modplug plugin
 	provides = moc
 	conflicts = moc
-	source = http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.0.tar.bz2
-	source = http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.0.tar.bz2.sig
-	source = moc-ffmpeg3.patch
+	source = http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.1.tar.bz2
+	source = http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.1.tar.bz2.sig
 	source = pulseaudio.patch
 	validpgpkeys = 59359B80406D9E73E80599BEF3121E4F2885A7AA
-	sha1sums = a02c10075541995771dbdccb7f2d0ecd19d70b81
+	sha1sums = 9e9a9bf0260cd7d7c170e4ef957041cf2275de32
 	sha1sums = SKIP
-	sha1sums = 7d997ac25041010837d5f3ec79920b8afeec87f7
 	sha1sums = 5c6385760ba40ee8a330d28d520c44eac2cbbae1
 
 pkgname = moc-pulse

@@ -5,7 +5,7 @@
 
 pkgname='moc-pulse'
 _pkgname='moc'
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('i686' 'x86_64')
@@ -23,28 +23,27 @@ optdepends=('speex: for using the speex plugin'
 provides=('moc')
 conflicts=('moc')
 source=(http://ftp.daper.net/pub/soft/moc/stable/${_pkgname}-${pkgver}.tar.bz2{,.sig}
-        'moc-ffmpeg3.patch'
         'pulseaudio.patch')
-sha1sums=('a02c10075541995771dbdccb7f2d0ecd19d70b81'
+sha1sums=('9e9a9bf0260cd7d7c170e4ef957041cf2275de32'
           'SKIP'
-          '7d997ac25041010837d5f3ec79920b8afeec87f7'
           '5c6385760ba40ee8a330d28d520c44eac2cbbae1')
 validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-# Add pulseaudio backend
+  # Add pulseaudio backend
   patch -p1 -i ../pulseaudio.patch
-
-# Fix build with ffmpeg 3.0 (Debian)
-  patch -p1 -i ../moc-ffmpeg3.patch
 }
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  
+  msg "Re-creating ./configure script"
   aclocal
   automake --add-missing
   autoreconf
+  
+  msg "Begin configuring"
   ./configure --prefix=/usr --without-rcc \
     --with-pulse --with-oss --with-alsa --with-jack --with-aac \
     --with-mp3 --with-musepack --with-vorbis --with-flac \
@@ -59,4 +58,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-# vim:ts=4 sw=4
+# vim: ts=2 sw=2
