@@ -2,7 +2,7 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.38
+pkgver=3.39
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
@@ -19,10 +19,11 @@ optdepends=('bzr'
             'src'
             'subversion')
 source=("$url$pkgbase-$pkgver.tar.xz")
-sha256sums=('d88f74244180143bf466e130d66f1fd3841d3fc97529393669b63425bf98c371')
+sha256sums=('5353cabce41a60eaff98977a03970d5ad54181027eb2d09ef21a9131ea1b982b')
 
 prepare() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  mv "$pkgbase-\"$pkgver\"" "$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -34,7 +35,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
   make all
 
   if [ "$pkgname" == "cyreposurgeon" ]; then
@@ -48,7 +49,7 @@ build_cyreposurgeon() {
 }
 
 package_reposurgeon() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" prefix=/usr install
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
@@ -60,6 +61,6 @@ package_reposurgeon() {
 package_cyreposurgeon() {
   arch=('i686' 'x86_64')
 
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" prefix=/usr install-cyreposurgeon
 }
