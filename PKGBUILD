@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkolabxml
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc="Kolab XML Format Schema Definitions Library"
 url='http://git.kolab.org/libkolabxml/'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('xerces-c' 'boost-libs')
 makedepends=('cmake' 'boost' 'xsd' 'swig')
 source=("http://mirror.kolabsys.com/pub/releases/${pkgname}-${pkgver}.tar.gz"{,.gpg})
-md5sums=('71b1ee00ca9288e33ebcddf614b50f89'
-         '49b7b58fc894aaeea3c6e15405535761')
+md5sums=('eec4b8bf117a6e263eed9ee800ae3aa6'
+         'e501162947faf87d5457b7ff19b18b72')
 
 prepare() {
   mkdir build
