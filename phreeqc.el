@@ -453,7 +453,12 @@ with no args, if that value is non-nil."
          (infile (buffer-name))
          (outfile (concat (file-name-sans-extension infile) ".out"))
          (database phreeqc-database))
-
+    
+    ;; make sure that we start with a fresh output buffer to avoid problems
+    ;; with huge output buffers slowing down emacs
+    (if (buffer-live-p (get-buffer "*phreeqc*"))
+        (kill-buffer "*phreeqc*"))
+    
     (save-buffer)
     ;; check if a DATABASE keyword was given
     (save-excursion
