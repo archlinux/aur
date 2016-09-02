@@ -2,7 +2,7 @@
 
 pkgname=keeweb-desktop
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This webapp is a desktop password manager compatible with KeePass databases."
 arch=('x86_64')
 url="https://github.com/keeweb/keeweb"
@@ -24,7 +24,7 @@ install=${pkgname}.install
 package(){
     mkdir -p "${pkgdir}"/opt/${pkgname}
     cp --preserve=mode -r * "${pkgdir}"/opt/${pkgname}
-    rm ${pkgdir}/opt/${pkgname}/KeeWeb.linux.x64.zip
+    rm ${pkgdir}/opt/${pkgname}/KeeWeb-1.3.0.linux.x64.zip
 
     desktop-file-install -m 644 --dir "$pkgdir"/usr/share/applications/ keeweb.desktop
 
