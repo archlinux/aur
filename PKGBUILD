@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/vicr123/theshell"
 license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 'libcups' 
-'qt5-location' 'kscreen' 'ts-polkitagent' 'ts-bt')
+'qt5-location' 'kscreen' 'kdepimlibs4' 'akonadi' 'ts-polkitagent' 'ts-bt')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
