@@ -2,7 +2,7 @@
 
 pkgname=spm
 pkgver=1.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="simple password manager, a fork of mneum's tpm"
 arch=('any')
 url="https://notabug.org/kl3/spm"
