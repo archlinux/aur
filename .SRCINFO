@@ -1,14 +1,14 @@
 pkgbase = insomnia
-	pkgdesc = Beautiful HTTP Requests
-	pkgver = 3.2.6
+	pkgdesc = A simple and beautiful REST API and HTTP client
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = http://insomnia.rest/
 	arch = i686
 	arch = x86_64
 	options = !strip
 	options = !upx
-	source = https://s3.amazonaws.com/builds-insomnia-rest/linux/insomnia-3.2.6.deb
-	md5sums = 9bd436a4804fe0cdaec6137e08020e87
+	source = https://s3.amazonaws.com/builds-insomnia-rest/linux/insomnia-3.3.1.deb
+	md5sums = 7f3a2ad749048b47f3ada101bd059b62
 
 pkgname = insomnia
 
