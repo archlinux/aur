@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=0.r427.19964e4
+pkgver=0.r432.7d5b285
 pkgrel=1
 epoch=
 pkgdesc="An implementation of troff typesetting system in C programming language."
@@ -53,9 +53,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 roff $pkgdir/usr/bin/neatroff
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 ../neatroff.pdf $pkgdir/usr/share/doc/$pkgname/neatroff.pdf
-  install -Dm644 ../neatroff_make/tmac/NOTICE $pkgdir/usr/share/licenses/$pkgname/NOTICE
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 ../neatroff.pdf $pkgdir/usr/share/doc/${pkgname%-*}/neatroff.pdf
+  install -Dm644 ../neatroff_make/tmac/NOTICE $pkgdir/usr/share/licenses/${pkgname%-*}/NOTICE
   ## copy neatroff macros
   mkdir -p $pkgdir/usr/share/neatroff/tmac/
   cp -r ../neatroff_make/tmac/* $pkgdir/usr/share/neatroff/tmac/
