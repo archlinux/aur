@@ -8,7 +8,9 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (HG version)"
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/James1201/vapoursynth-replaceframes'
 license=('custom:WTFPL')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'gcc-libs'
+         )
 makedepends=('mercurial')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
