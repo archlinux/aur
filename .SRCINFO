@@ -11,11 +11,14 @@ pkgbase = libdragon-git
 	depends = mips64-elf-newlib
 	source = git://github.com/DragonMinded/libdragon.git
 	source = noconvtool.diff
+	source = inthandler.diff
 	sha256sums = SKIP
 	sha256sums = ec37b8d10ee3911979092916a6b9361e62b13a3a3cfb1736281d6baf304bfc95
+	sha256sums = 1ee0a47efcdc9aabd83f52b4b21e910362473fd79fdd810252f6f746655710a8
 
 pkgname = libdragon-git
-	pkgdesc = Open source library for Nintendo 64 development
+	pkgdesc = Open source library for Nintendo 64 game development
+	install = libdragon.install
 	arch = any
 	depends = mips64-elf-newlib
 	provides = libdragon

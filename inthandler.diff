@@ -1,0 +1,12 @@
+diff --git a/src/inthandler.S b/src/inthandler.S
+index 1e81563..3e958a8 100644
+--- a/src/inthandler.S
++++ b/src/inthandler.S
+@@ -235,7 +235,6 @@ endint:
+ 
+ 	.section .bss
+ 	.global __baseRegAddr
+-	.long __baseRegAddr
+ 
+ 	.align 8
+ 	__baseRegAddr:

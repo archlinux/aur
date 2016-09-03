@@ -8,8 +8,10 @@ arch=('i686' 'x86_64')
 license=('custom:UNLICENSE')
 makedepends=('git' 'mips64-elf-gcc-stage1')
 depends=('libpng' 'mips64-elf-newlib')
-source=("git://github.com/DragonMinded/libdragon.git" "noconvtool.diff") 
-sha256sums=('SKIP' 'ec37b8d10ee3911979092916a6b9361e62b13a3a3cfb1736281d6baf304bfc95')
+source=("git://github.com/DragonMinded/libdragon.git" "noconvtool.diff" "inthandler.diff")
+sha256sums=('SKIP'
+            'ec37b8d10ee3911979092916a6b9361e62b13a3a3cfb1736281d6baf304bfc95'
+            '1ee0a47efcdc9aabd83f52b4b21e910362473fd79fdd810252f6f746655710a8')
 
 pkgver() {
   cd libdragon
@@ -19,6 +21,7 @@ pkgver() {
 prepare(){
   cd libdragon
   patch -p1 < "${srcdir}/noconvtool.diff"
+  patch -p1 < "${srcdir}/inthandler.diff"
 }
 
 build(){
@@ -28,13 +31,13 @@ build(){
 }
 
 package_libdragon-git(){
-  pkgdesc="Open source library for Nintendo 64 development"
+  pkgdesc="Open source library for Nintendo 64 game development"
   options=('!buildflags' '!strip' '!emptydirs')
   provides=('libdragon')
   conflicts=('libdragon')
   arch=('any')
   depends=('mips64-elf-newlib')
-  install=('libdragon.install')
+  install='libdragon.install'
   
   cd libdragon
   
