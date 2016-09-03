@@ -1,10 +1,10 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=python2-pwntools
-pkgver=2.3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
-url='https://github.com/Gallopsled/pwntools/'
+url='https://pwntools.com/'
 license=('MIT' 'GPL2' 'BSD')
 makedepends=('lib32-glibc'
              'python2-setuptools')
@@ -16,19 +16,21 @@ depends=('python2>=2.7'
          'python2-pyserial'
          'python2-requests'
          'python2-psutil'
+         'python2-tox'
+         'python2-pysocks'
+         'python2-dateutil'
+         'python2-pygments'
          'ropgadget')
 conflicts=('python2-pwntools' 'python2-pwntools-git')
 options=('strip')
-source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz"
-        'remove-argparse.patch')
-sha1sums=('bb15fb7365093e1ddc7417896843e5e3868bec72'
-          '42ba67adb748fdc31a95ecb108814ca33eee5c36')
+source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
+sha1sums=('13ea6800d45738f322f58578f1dbb2c1a9886e33')
 
 _repodir="pwntools-${pkgver}"
 
 prepare() {
   cd "${srcdir}/${_repodir}"
-  patch -Np1 < "${srcdir}/remove-argparse.patch"
+  # patch -Np1 < "${srcdir}/remove-argparse.patch"
 }
 
 package() {
