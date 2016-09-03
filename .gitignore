@@ -2,4 +2,5 @@ libvos/
 pkg/
 rescached/
 src/
+*.tar
 *.xz

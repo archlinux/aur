@@ -1,33 +1,36 @@
-# Maintainer: sulhan <ms at kilabit.info>
-_pkgname=rescached
+# Maintainer: sulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=1.1.0.r0.g6be6500
+pkgver=1.2.0.r0.gbadfe94
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/shuLhan/rescached"
-license=('GPL3')
-depends=('glibc')
-makedepends=('git' 'asciidoc')
+license=('custom:BSD')
+
+depends=('gcc-libs')
 provides=('rescached')
-conflicts=('rescached')
-backup=('etc/rescached/rescached.cfg')
+conflicts=('bind' 'nsd' 'pdnsd' 'powerdns' 'unbound')
+
+makedepends=('git' 'asciidoc')
 source=(
-  "$_pkgname::git+https://github.com/shuLhan/rescached.git"
+	"$pkgname::git+https://github.com/shuLhan/rescached.git"
 	"libvos::git+https://github.com/shuLhan/libvos.git"
 )
 sha1sums=(
-  'SKIP'
-  'SKIP'
+	'SKIP'
+	'SKIP'
 )
 
+install=rescached-git.install
+backup=('etc/rescached/rescached.cfg')
+
 pkgver() {
-	cd "$srcdir/$_pkgname/src"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
+	cd "$pkgname"
 	git submodule init
 	git config submodule.libvos.url $srcdir/libvos
 	git submodule update
@@ -35,7 +38,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname/src"
+	cd "$pkgname/src"
 	echo ">>"
 	echo ">> cleaning ..."
 	echo ">>"
@@ -48,15 +51,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname/src"
-
+	cd "$pkgname/src"
 	make DESTDIR="$pkgdir/" install
-
-  install -D -m644 $srcdir/$_pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-post_install() {
-  [[ -f /etc/rescached/hosts.ads ]] && rm -f /etc/rescached/hosts.ads
-}
-
-# vim:set ts=2 sw=2:
