@@ -7,7 +7,7 @@ pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
-optdepends=(xclip)
+depends=(xclip)
 conflicts=("micro-git")
 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
