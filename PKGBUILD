@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 prepare(){
   cd $pkgname-$_release
-  sed -i 's|${prefix}/doc|${prefix}/share/doc|' Makefile.am
+  sed -i 's|${prefix}/doc|${docdir}|' Makefile.am
 }
 
 build() {
