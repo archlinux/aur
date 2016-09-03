@@ -2,6 +2,7 @@
 # Contributor: Etzos <supercodingmonkey @ gmail.com>
 # Contributer: Gordin <9ordin @t gmail dot com>
 # Contributor: Geequlim <geequlim@gmail.com>
+# Contributor: Antti Juhani Oja <antti.oja@gmail.com>
 
 pkgname=texturepacker
 pkgver=4.2.3
