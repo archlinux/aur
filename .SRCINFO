@@ -1,7 +1,7 @@
 pkgbase = openrw-git
 	pkgdesc = A re-implementation of Rockstar Games' Grand Theft Auto III
 	pkgver = r812.93f7a40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rwengine/openrw
 	arch = x86_64
 	license = GPL3

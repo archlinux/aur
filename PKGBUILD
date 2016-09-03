@@ -1,7 +1,7 @@
 # Maintainer: PureTryOut
 pkgname=openrw-git
 pkgver=r812.93f7a40
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
 arch=('x86_64')
