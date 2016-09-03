@@ -1,0 +1,13 @@
+pkgbase = pacnanny
+	pkgdesc = Yet another wrapper script for Pacman
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/brandoninvergo/pacnanny
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://github.com/brandoninvergo/pacnanny/archive/v1.3.2.tar.gz
+	md5sums = 7db8732e3609fa2dc29c5dfe76fc57c4
+
+pkgname = pacnanny
+
