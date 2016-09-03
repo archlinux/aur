@@ -38,7 +38,6 @@ prepare() {
 		-e 's/CFLAGS =/CFLAGS +=/g' \
 		-e 's/LDFLAGS =/LDFLAGS +=/g' \
 		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
-		-e 's/\(-lXft\)/\1 -lXrender/' \
 		-i config.mk
 	sed '/@tic/d' -i Makefile
 	for file in "${source[@]}"; do
