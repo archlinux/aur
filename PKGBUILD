@@ -2,13 +2,13 @@
 #Maintainer: Rémy EVEN <evenremy@gmail.com>, snoopy33
 pkgname=littre2
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The great french dictionary of Émile Littré (Qt)"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/dictionnaire-le-littre/"
 license=('GPL3')
 depends=('qt4')
-source=(http://dictionnaire-le-littre.googlecode.com/files/Littre-source-${pkgver}.tar.bz2 \
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dictionnaire-le-littre/Littre-source-2.0.tar.bz2 \
  	$pkgname.desktop)
 	
 md5sums=('c71666ae4cf6353d2bbb7e98dcca9159'
