@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatrefer-git
-pkgver=0.r2.47e4061
-pkgrel=3
+pkgver=0.r4.76d5759
+pkgrel=1
 epoch=
 pkgdesc="A small refer clone for managing bibliographic references."
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  install -Dm755 refer  $pkgdir/usr/bin/neatrefer
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm755 refer $pkgdir/usr/bin/neatrefer
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
