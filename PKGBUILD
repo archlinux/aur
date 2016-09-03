@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
-depends=('libmonero-wallet'
+depends=('libmonero-wallet-git'
 	'openssl' 'boost-libs>=1.45'  'libunwind'
 	'qt5-base' 'qt5-declarative' 'qt5-graphicaleffects'
 	'qt5-location' 'qt5-quickcontrols' 'qt5-tools' 'qt5-webchannel'
