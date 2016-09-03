@@ -93,8 +93,8 @@ package_bitmonero-git() {
 
 package_libmonero-wallet-git() {
 
-	provides=('libmonero-wallet')
-	conflicts=('libmonero-wallet')
+	provides=('libmonero-wallet' 'libmonerowallet-git')
+	conflicts=('libmonero-wallet' 'libmonerowallet-git')
 
         # NOTE: this is crucial, otherwise stripping breaks the .a archive:
         # monero-core (GUI) fails to link against it (it can't find symbols
