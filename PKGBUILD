@@ -3,7 +3,7 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.12
+pkgver=3.13
 pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
@@ -16,13 +16,18 @@ source=("${url}${_appname}-${pkgver}.zip"
 "README"
 "$_appname.sh"
 "$_appname.csh"
+"RuntimeCCSImpl.patch"
+"SocketIO.patch"
 )
 sha1sums=(
-'558f7dc86453f1f1ff6fd89ae01fd3f0ded8b327'
+'30ab3a821467578df4e1ee9d9b2bbb39ae0605e4'
 '2cff669a51b66d513824be811688aa9da553e400'
 '353bdefe07bdb6eb7f53aff20d20e83b488c1c05'
 '49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
+'716869895fc2b071c66a58f727c643f48e927569'
+'b042a9fa4c7ea6d472985b1b61d0a57ebf56708a'
 )
+
 
 prepare() {
 	cd "$srcdir"/$_appname-$pkgver
@@ -36,8 +41,9 @@ package() {
 	install -Dm755 "$_appname.sh" "$pkgdir/etc/profile.d/$_appname.sh"
 	install -Dm755 "$_appname.csh" "$pkgdir/etc/profile.d/$_appname.csh"
 
-	# Remove unnecessary files:
-	rm "README" "$_appname.sh" "$_appname.csh" "${_appname}-${pkgver}.zip"
+	# Patch memory leaks:
+	patch "$srcdir"/$_appname-$pkgver/tools/simulator/libsimulator/lib/runtime/RuntimeCCSImpl.cpp RuntimeCCSImpl.patch
+	patch "$srcdir"/$_appname-$pkgver/cocos/network/SocketIO.cpp SocketIO.patch
 
 	# Necessary libfmod symbolic link
 	mkdir -p "$pkgdir/usr/lib"
