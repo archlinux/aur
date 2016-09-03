@@ -46,6 +46,7 @@ build() {
 	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
 	CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
 	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
+	CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 	CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
 
