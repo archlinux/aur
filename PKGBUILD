@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
-pkgver=0.r78.86b4342
+pkgver=0.r79.28682e1
 pkgrel=1
 epoch=
 pkgdesc="Creates font description files for neatroff. It used to be called mktrfn."
@@ -43,8 +43,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 mkfn $pkgdir/usr/bin/neatmkfn
-  install -Dm755 gen.sh $pkgdir/usr/share/doc/$pkgname/gen.sh
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 gen.sh $pkgdir/usr/share/doc/${pkgname%-*}/gen.sh
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
   mkdir -p $pkgdir/usr/share/neatroff/font/devutf/
   cp $srcdir/$pkgname/fonts/* $pkgdir/usr/share/neatroff/font/devutf/
 }
