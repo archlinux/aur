@@ -1,0 +1,12 @@
+diff -r 9401662c4e6c pyrepl/_minimal_curses.py
+--- a/pyrepl/_minimal_curses.py Fri Dec 04 13:10:13 2015 +0000
++++ b/pyrepl/_minimal_curses.py Wed Aug 31 17:10:45 2016 +0200
+@@ -17,7 +17,7 @@
+
+
+ def _find_clib():
+-    trylibs = ['ncurses', 'curses']
++    trylibs = ['ncursesw', 'ncurses', 'curses']
+
+     for lib in trylibs:
+         path = ctypes.util.find_library(lib)

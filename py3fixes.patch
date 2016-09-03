@@ -1,0 +1,173 @@
+Various fixes for py3 and tox.
+Submitted at: https://bitbucket.org/pypy/pyrepl/issues/20/fixes-for-py3-and-tox
+
+changeset:   267:76a9e56001f9
+tag:         tip
+user:        Daniel Hahler <hg@thequod.de>
+date:        Sat Sep 03 23:12:35 2016 +0200
+summary:     readline: monkeypatch builtins.input for py3
+
+diff -r 086437c10aa1 -r 76a9e56001f9 pyrepl/readline.py
+--- a/pyrepl/readline.py	Sat Sep 03 23:04:24 2016 +0200
++++ b/pyrepl/readline.py	Sat Sep 03 23:12:35 2016 +0200
+@@ -423,9 +423,14 @@
+ 
+     else:
+         # this is not really what readline.c does.  Better than nothing I guess
+-        import __builtin__
+-        _old_raw_input = __builtin__.raw_input
+-        __builtin__.raw_input = _wrapper.raw_input
++        try:
++            import __builtin__
++            _old_raw_input = __builtin__.raw_input
++            __builtin__.raw_input = _wrapper.raw_input
++        except ImportError:
++            import builtins
++            _old_raw_input = builtins.input
++            builtins.input = _wrapper.raw_input
+ 
+ _old_raw_input = None
+ _setup()
+
+changeset:   266:086437c10aa1
+user:        Daniel Hahler <hg@thequod.de>
+date:        Sat Sep 03 23:04:24 2016 +0200
+summary:     pyrepl/unix_eventqueue.py: fix byte issues for py3
+
+diff -r 255ceeba2f03 -r 086437c10aa1 pyrepl/unix_eventqueue.py
+--- a/pyrepl/unix_eventqueue.py	Sat Sep 03 23:00:45 2016 +0200
++++ b/pyrepl/unix_eventqueue.py	Sat Sep 03 23:04:24 2016 +0200
+@@ -65,11 +65,11 @@
+ #
+ CTRL_ARROW_KEYCODE = {
+     # for xterm, gnome-terminal, xfce terminal, etc.
+-    '\033[1;5D': 'ctrl left',
+-    '\033[1;5C': 'ctrl right',
++    b'\033[1;5D': 'ctrl left',
++    b'\033[1;5C': 'ctrl right',
+     # for rxvt
+-    '\033Od': 'ctrl left',
+-    '\033Oc': 'ctrl right',
++    b'\033Od': 'ctrl left',
++    b'\033Oc': 'ctrl right',
+ }
+ 
+ def general_keycodes():
+@@ -120,6 +120,7 @@
+ 
+     def push(self, char):
+         ord_char = char if isinstance(char, int) else ord(char)
++        char = bytes(bytearray((ord_char,)))
+         self.buf.append(ord_char)
+         if char in self.k:
+             if self.k is self.ck:
+@@ -133,13 +134,13 @@
+                 self.insert(Event('key', k, self.flush_buf()))
+                 self.k = self.ck
+ 
+-        elif self.buf and self.buf[0] == 033: # 033 == escape
++        elif self.buf and self.buf[0] == 27:  # escape
+             # escape sequence not recognized by our keymap: propagate it
+             # outside so that i can be recognized as an M-... key (see also
+             # the docstring in keymap.py, in particular the line \\E.
+             trace('unrecognized escape sequence, propagating...')
+             self.k = self.ck
+-            self.insert(Event('key', '\033', '\033'))
++            self.insert(Event('key', '\033', bytearray(b'\033')))
+             for c in self.flush_buf()[1:]:
+                 self.push(chr(c))
+ 
+
+changeset:   265:255ceeba2f03
+user:        Daniel Hahler <hg@thequod.de>
+date:        Sat Sep 03 23:00:45 2016 +0200
+summary:     Use relative import for trace
+
+diff -r ea8bd2b71671 -r 255ceeba2f03 pyrepl/input.py
+--- a/pyrepl/input.py	Sat Sep 03 23:00:00 2016 +0200
++++ b/pyrepl/input.py	Sat Sep 03 23:00:45 2016 +0200
+@@ -36,7 +36,7 @@
+ import unicodedata
+ from collections import deque
+ import pprint
+-from trace import trace
++from .trace import trace
+ 
+ 
+ class InputTranslator(object):
+
+changeset:   264:ea8bd2b71671
+user:        Daniel Hahler <hg@thequod.de>
+date:        Sat Sep 03 23:00:00 2016 +0200
+summary:     tox.ini: passenv: TERM
+
+diff -r 9401662c4e6c -r ea8bd2b71671 tox.ini
+--- a/tox.ini	Fri Dec 04 13:10:13 2015 +0000
++++ b/tox.ini	Sat Sep 03 23:00:00 2016 +0200
+@@ -4,6 +4,7 @@
+ 
+ 
+ [testenv]
++passenv = TERM
+ deps=
+     pytest
+     pexpect
+
+diff -r 9401662c4e6c pyrepl/completing_reader.py
+--- a/pyrepl/completing_reader.py	Fri Dec 04 13:10:13 2015 +0000
++++ b/pyrepl/completing_reader.py	Sun Sep 04 00:43:37 2016 +0200
+@@ -65,8 +65,8 @@
+         item = "%s  "
+         padding = 2
+     maxlen = min(max(map(real_len, wordlist)), cons.width - padding)
+-    cols = cons.width / (maxlen + padding)
+-    rows = (len(wordlist) - 1)/cols + 1
++    cols = int(cons.width / (maxlen + padding))
++    rows = int((len(wordlist) - 1)/cols + 1)
+ 
+     if sort_in_column:
+         # sort_in_column=False (default)     sort_in_column=True
+
+diff -r 9401662c4e6c pyrepl/simple_interact.py
+--- a/pyrepl/simple_interact.py	Fri Dec 04 13:10:13 2015 +0000
++++ b/pyrepl/simple_interact.py	Sun Sep 04 00:43:58 2016 +0200
+@@ -42,8 +42,11 @@
+     console = code.InteractiveConsole(mainmodule.__dict__, filename='<stdin>')
+ 
+     def more_lines(unicodetext):
+-        # ooh, look at the hack:
+-        src = "#coding:utf-8\n"+unicodetext.encode('utf-8')
++        if sys.version_info < (3, ):
++            # ooh, look at the hack:
++            src = "#coding:utf-8\n"+unicodetext.encode('utf-8')
++        else:
++            src = unicodetext
+         try:
+             code = console.compile(src, '<stdin>', 'single')
+         except (OverflowError, SyntaxError, ValueError):
+
+diff -r 9401662c4e6c pyrepl/readline.py
+--- a/pyrepl/readline.py	Fri Dec 04 13:10:13 2015 +0000
++++ b/pyrepl/readline.py	Sun Sep 04 00:44:30 2016 +0200
+@@ -32,6 +32,12 @@
+ from pyrepl.historical_reader import HistoricalReader
+ from pyrepl.completing_reader import CompletingReader
+ from pyrepl.unix_console import UnixConsole, _error
++try:
++    unicode
++except NameError:
++    unicode = str
++    unichr = chr
++    basestring = bytes, str
+ 
+ 
+ ENCODING = sys.getfilesystemencoding() or 'latin1'     # XXX review
+@@ -235,7 +235,7 @@
+         self.config.completer_delims = dict.fromkeys(string)
+ 
+     def get_completer_delims(self):
+-        chars = self.config.completer_delims.keys()
++        chars = list(self.config.completer_delims.keys())
+         chars.sort()
+         return ''.join(chars)
+ 
