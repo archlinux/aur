@@ -1,12 +1,12 @@
 pkgbase = evhz-git
 	pkgdesc = Display the current mouse refresh rate
-	pkgver = r19.479040c
-	pkgrel = 2
-	url = https://github.com/ian-kelling/evhz
+	pkgver = r24.1c5e722
+	pkgrel = 3
+	url = https://gitlab.com/iankelling/evhz
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = evhz-git::git://github.com/ian-kelling/evhz
+	source = evhz-git::git+https://gitlab.com/iankelling/evhz.git
 	sha256sums = SKIP
 
 pkgname = evhz-git

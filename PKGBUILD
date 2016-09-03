@@ -1,13 +1,13 @@
 # Maintainer: hitori <hitori.gm at gmail dot com>
 pkgname=evhz-git
-pkgver=r19.479040c
-pkgrel=2
+pkgver=r24.1c5e722
+pkgrel=3
 pkgdesc="Display the current mouse refresh rate"
 arch=('any')
-url="https://github.com/ian-kelling/evhz"
+url="https://gitlab.com/iankelling/evhz"
 license=('GPL3')
 makedepends=('git')
-source=('evhz-git::git://github.com/ian-kelling/evhz')
+source=('evhz-git::git+https://gitlab.com/iankelling/evhz.git')
 sha256sums=('SKIP')
 
 pkgver() {
