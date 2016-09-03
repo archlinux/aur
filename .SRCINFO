@@ -1,0 +1,14 @@
+pkgbase = razer-driver-meta
+	pkgdesc = Meta package for razer-driver. Provides DKMS module, daemon and python library
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = https://github.com/terrycain/razer_drivers
+	arch = any
+	license = GPLv3
+	depends = razer-driver-dkms
+	depends = razer-daemon
+	depends = python-razer
+	optdepends = razercommander-git: gtk frontend for razer-drivers
+
+pkgname = razer-driver-meta
+
