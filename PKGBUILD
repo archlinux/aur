@@ -1,27 +1,45 @@
-# Maintainer: Etzos <supercodingmonkey @ gmail.com>
+# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: Etzos <supercodingmonkey @ gmail.com>
 # Contributer: Gordin <9ordin @t gmail dot com>
+# Contributor: Geequlim <geequlim@gmail.com>
 
 pkgname=texturepacker
-pkgver=3.7.1
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
-url="http://www.texturepacker.com"
-license=('custom:texturepacker')
-install='texturepacker.install'
-depends=('glib2' 'hicolor-icon-theme' 'desktop-file-utils' 'shared-mime-info')
-source=("http://www.codeandweb.com/download/texturepacker/${pkgver}/TexturePacker-${pkgver}-ubuntu64.deb")
-md5sums=('9f75c5786602dc3942fdce2e3fe7a763')
+url="https://www.codeandweb.com/$pkgname"
+license=("custom:$pkgname")
+install="$pkgname.install"
+depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee-qt5'
+         'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
+         'qt5-quickcontrols')
+source=("http://www.codeandweb.com/download/$pkgname/${pkgver}/TexturePacker-${pkgver}-ubuntu64.deb")
+md5sums=('44e3f650fef2e39c204e3787f603f3d1')
 
 build() {
-    ar -xv "TexturePacker-${pkgver}-ubuntu64.deb"
-    tar -xvf data.tar.xz
+    ar -x "TexturePacker-${pkgver}-ubuntu64.deb"
 }
 
 package() {
-    # Program
-    mv ${srcdir}/usr ${pkgdir}
-    # License
-    install -Dm644 "${pkgdir}/usr/share/texturepacker/documents/LicenseAgreement.html" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LicenseAgreement.html"
+    cd ${srcdir}/
+
+    # Extract to the $pkgdir.
+    tar xJf data.tar.xz -C "${pkgdir}/"
+
+    # Enter $pkgdir.
+    cd ${pkgdir}/usr/lib/texturepacker/
+
+    # Delete all the extra lib folders.
+    rm -rf generic/ grantlee/ iconengines/ imageformats/ platforminputcontexts/ platforms/ \
+           QtGraphicalEffects/ QtQml/ QtQuick/ QtQuick.2/ xcbglintegrations/
+
+    # Delete the useless lib files.
+    rm -rf libGrantlee* libicudata* libicui18n* libicuuc* libQt5*
+
+    # Get rid of the Qt configuration that messes up LD_LIBRARY_PATH.
+    rm -rf qt.conf
+
+    install -Dm644 "${pkgdir}/usr/share/texturepacker/documents/LicenseAgreement.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LicenseAgreement.txt"
 }

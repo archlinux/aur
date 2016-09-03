@@ -1,9 +1,13 @@
 post_install() {
-    update-mime-database usr/share/mime
-    update-desktop-database -q
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    echo "You must accept the terms of the EULA before using TexturePacker!"
-    echo "Can be found in /usr/share/licenses/texturepacker/LicenseAgreement.html"
+	update-mime-database usr/share/mime
+	update-desktop-database -q
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	printf "%s\n" \
+		"You are required to accept the terms of the TexturePacker EULA before using the" \
+		"software. The software will prompt you to accept these terms on the first" \
+		"startup." \
+		"You can read the terms of the license without starting TexturePacker at:" \
+		"    /usr/share/licenses/texturepacker/LicenseAgreement.txt"
 }
 
 post_upgrade() {
@@ -15,4 +19,3 @@ post_remove() {
     update-desktop-database -q
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
-
