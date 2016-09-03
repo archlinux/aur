@@ -1,8 +1,8 @@
 # Maintainer: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=liblomse
-pkgver=0.17
-pkgrel=4
+pkgver=0.20.0
+pkgrel=5
 pkgdesc="A music score renderization/edition library"
 arch=('i686' 'x86_64')
 url="http://www.lenmus.org/en/lomse/intro"
@@ -12,15 +12,8 @@ depends=('freetype2>=2.3.5' 'boost-libs>=1.42')
 makedepends=('cmake>=2.8' 'unittestpp' 'boost>=1.42')
 _vcsname=lomse
 
-source=("https://codeload.github.com/lenmus/lomse/tar.gz/${pkgver}"
-       CMakeLists_version.patch)
-md5sums=('60f990492a5cccffa815e2c5bf29c517'
-         '3720545fd4350dbd01f8b48958bf9ff8')
-
-prepare() {
-  cd "$srcdir/${_vcsname}-${pkgver}"
-  patch -p0 -i "$srcdir"/CMakeLists_version.patch
-}
+source=("https://codeload.github.com/lenmus/lomse/tar.gz/${pkgver}")
+md5sums=('76c8dc0ab0d3d00d76908c30e5a5c4c9')
 
 build() {
   cd "${srcdir}"
@@ -37,5 +30,5 @@ package() {
   cd "${srcdir}/build"
   DESTDIR="${pkgdir}/" make install
 
-  install -D -m644 "${srcdir}/${_vcsname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -D -m644 "${srcdir}/${_vcsname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
