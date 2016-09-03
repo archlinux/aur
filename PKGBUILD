@@ -29,7 +29,7 @@ package() {
     tar xJf data.tar.xz -C "${pkgdir}/"
 
     # Enter $pkgdir.
-    cd ${pkgdir}/usr/lib/texturepacker/
+    cd ${pkgdir}/usr/lib/$pkgname/
 
     # Delete all the extra lib folders.
     rm -rf generic/ grantlee/ iconengines/ imageformats/ platforminputcontexts/ platforms/ \
@@ -41,6 +41,6 @@ package() {
     # Get rid of the Qt configuration that messes up LD_LIBRARY_PATH.
     rm -rf qt.conf
 
-    install -Dm644 "${pkgdir}/usr/share/texturepacker/documents/LicenseAgreement.txt" \
+    install -Dm644 "${pkgdir}/usr/share/$pkgname/documents/LicenseAgreement.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LicenseAgreement.txt"
 }
