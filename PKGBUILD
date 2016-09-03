@@ -10,7 +10,7 @@ license=('GPL')
 depends=('php')
 install='pmwiki.install'
 source=("http://www.pmwiki.org/pub/${pkgname}/${pkgname}-${pkgver}.tgz")
-sha256sums=('bbb0826bb42e33e4311d08cd21f45a33cc80a779d702a3db27d89a4a5cb850d0')
+sha256sums=('29c5f069c4c0617f6d9f1c9c7963e8eadfb5738d73c7e72add017ec74ebdd037')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
