@@ -45,8 +45,12 @@ build() {
 check(){
   cd "${srcdir}/${_pkgname}"
 
-  # Needed for the tests, especially when building in clean chroot
-  [[ ${LANG} = C ]] && export LANG=en_US.UTF8
+  # When using a clean chroot,
+  # one has to choose a proper locale to run the tests
+  if [ "${LANG}" == "C" ]
+  then
+    export LANG=$(locale -a | grep utf8 | head -n1)
+  fi
 
   make test
 }
