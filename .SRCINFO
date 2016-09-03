@@ -1,7 +1,7 @@
 pkgbase = python-dynd
 	pkgdesc = Bindings for the C++ dynd array library (numpy array replacement).
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libdynd/dynd-python
 	arch = i686
 	arch = x86_64

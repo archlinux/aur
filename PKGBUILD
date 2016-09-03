@@ -4,7 +4,7 @@
 pkgbase='python-dynd'
 pkgname='python-dynd'
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bindings for the C++ dynd array library (numpy array replacement).'
 groups=('blaze-ecosystem')
 arch=('i686' 'x86_64')

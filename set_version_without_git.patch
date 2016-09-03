@@ -1,0 +1,7 @@
+154,155c154,156
+< ver = check_output(['git', 'describe', '--dirty',
+<                                '--always', '--match', 'v*']).decode('ascii').strip('\n')
+---
+> #ver = check_output(['git', 'describe', '--dirty',
+> #                               '--always', '--match', 'v*']).decode('ascii').strip('\n')
+> ver = 'v0.4.0'
