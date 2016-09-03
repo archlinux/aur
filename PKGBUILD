@@ -40,6 +40,11 @@ pkgver() {
 
 prepare() {
         cd "$srcdir/$_gitname"
+
+        # Merge fix for broken build that is not yet merged
+        git fetch https://github.com/mbg033/monero-core.git
+        git cherry-pick f2a126790a777c6dce5370921f5461f7627f8e5e
+
         patch -p1 < ../0001-pro-link-against-libunwind.patch
         patch -p1 < ../0001-pro-option-for-static-build.patch
 }
