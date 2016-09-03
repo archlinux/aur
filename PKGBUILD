@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neateqn-git
-pkgver=0.r63.86b970b
+pkgver=0.r81.7f197b3
 pkgrel=1
 epoch=
 pkgdesc="An eqn preprocessor for neatroff."
@@ -38,7 +38,7 @@ build() {
 package() {
   cd $srcdir
   install -Dm755 $pkgname/eqn $pkgdir/usr/bin/neateqn
-  install -Dm644 $pkgname/README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 neateqn.pdf $pkgdir/usr/share/doc/$pkgname/neateqn.pdf
+  install -Dm644 $pkgname/README $pkgdir/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 neateqn.pdf $pkgdir/usr/share/doc/${pkgname%-*}/neateqn.pdf
 }
 
