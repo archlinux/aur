@@ -1,0 +1,26 @@
+create_user() {
+    getent passwd monero &>/dev/null || {
+        echo -n ">>> Creating monero user... "
+        useradd --system --user-group -m --home /var/lib/monero monero
+        echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+
+    mkdir -p /var/log/monero && chown monero:monero /var/log/monero
+}
+
+post_install() {
+    create_user
+}
+
+post_upgrade() {
+    create_user
+
+    echo ">>> NOTICE: Package changed location of data dir (again! rebranding)."
+    echo ">>> Please move your monero data dir to new location "
+    echo ">>> before starting daemon systemd service:"
+    echo ">>>     sudo mv /var/lib/bitmonero /var/lib/monero/"
+    echo ">>>     sudo chown -R monero:monero  /var/lib/monero/"
+
+    echo ">>> NOTICE: Soon, this package will be renamed to 'monero-git':"
+    echo ">>> this package will be deprecated and a new package will be created."
+}

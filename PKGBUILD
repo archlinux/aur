@@ -1,11 +1,12 @@
 # Maintainer: Onishin <onishin at onishin dot org>
 # Co-maintainer: redfish <redfish at galactica dot pw>
 
+# TODO: rename package to monero-git in a few weeks
 pkgbase=('bitmonero-git')
 pkgname=('bitmonero-git' 'libmonero-wallet-git')
-_gitname='bitmonero'
+_gitname='monero'
 pkgver=0.9.4
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -16,15 +17,15 @@ makedepends=('git' 'cmake' 'boost')
 
 pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
 source=("$_gitname::git+https://github.com/monero-project/monero.git"
-        "bitmonerod.service"
-        "bitmonerod.conf"
-        "bitmonero.install"  
+        "monerod.service"
+        "monerod.conf"
+        "monero.install"
 )
 	
 md5sums=('SKIP'
-         '9e8e52d5379c534e9cde86e5d6c39592' 
-         'eb04582e2007f8e450322c1794ed30ba' 
-         '513a3ff4be5cb6f3faf13ffcb680b941')
+         '978b5dda921ad298d93eaf701094f835'
+         '7115d61857ce249a3e9ccf2c6bc4f00b'
+         '22c9f8201e5c97c9e1595de26f401d92')
 
 _builddir=build
 
@@ -73,22 +74,19 @@ package_bitmonero-git() {
 	provides=('bitmonero')
 	conflicts=('bitmonero')
 
-	backup=('etc/bitmonerod.conf')
-	install=bitmonero.install
+	backup=('etc/monerod.conf')
+	install=monero.install
 
         # Uncomment for a debug build
         # options=(!strip debug)
 
-	install -D -m755 "$srcdir/$_gitname/build/bin/bitmonerod" "$pkgdir/usr/bin/bitmonerod"
-	install -D -m755 "$srcdir/$_gitname/build/bin/simplewallet" "$pkgdir/usr/bin/simplewallet"
-	install -D -m755 "$srcdir/$_gitname/build/bin/simpleminer" "$pkgdir/usr/bin/simpleminer"
-	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_import" "$pkgdir/usr/bin/bitmonero-import"
-	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_export" "$pkgdir/usr/bin/bitmonero-export"
-	install -D -m755 "$srcdir/$_gitname/build/bin/blockchain_dump" "$pkgdir/usr/bin/bitmonero-dump"
-	install -D -m755 "$srcdir/$_gitname/build/bin/cn_deserialize" "$pkgdir/usr/bin/bitmonero-deserialize"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monerod" "$pkgdir/usr/bin/monerod"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-wallet-cli" "$pkgdir/usr/bin/monero-wallet-cli"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-import" "$pkgdir/usr/bin/monero-blockchain-import"
+	install -D -m755 "$srcdir/$_gitname/build/bin/monero-blockchain-export" "$pkgdir/usr/bin/monero-blockchain-export"
 
-	install -Dm644 $srcdir/bitmonerod.service "${pkgdir}/usr/lib/systemd/system/bitmonerod.service"
-	install -Dm644 "$srcdir/bitmonerod.conf" "$pkgdir/etc/bitmonerod.conf"
+	install -Dm644 $srcdir/monerod.service "${pkgdir}/usr/lib/systemd/system/monerod.service"
+	install -Dm644 "$srcdir/monerod.conf" "$pkgdir/etc/monerod.conf"
 	install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
