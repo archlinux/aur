@@ -19,13 +19,11 @@ pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon
 source=("$_gitname::git+https://github.com/monero-project/monero.git"
         "monerod.service"
         "monerod.conf"
-        "monero.install"
 )
 	
 md5sums=('SKIP'
          '978b5dda921ad298d93eaf701094f835'
-         '7115d61857ce249a3e9ccf2c6bc4f00b'
-         '22c9f8201e5c97c9e1595de26f401d92')
+         '7115d61857ce249a3e9ccf2c6bc4f00b')
 
 _builddir=build
 
