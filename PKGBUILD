@@ -1,6 +1,6 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 
-pkgname='monero-core'
+pkgname='monero-core-git'
 _gitname='monero-core'
 pkgver=r161.6efc368
 pkgrel=1
