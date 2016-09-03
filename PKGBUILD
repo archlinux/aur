@@ -1,8 +1,8 @@
 # Maintainer: Gaël Donval <gdonval+aur at google mail>
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 
-pkgbase='libdynd'
-pkgname=('dynd')
+pkgbase='dynd'
+pkgname='dynd'
 pkgver=0.7.2
 pkgrel=1
 pkgdesc='A dynamic array library (similar to python-numpy but written in C++).'
