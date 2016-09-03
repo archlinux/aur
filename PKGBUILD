@@ -4,14 +4,16 @@
 
 pkgname=st-git
 _pkgname=st
-pkgver=20151011.f56c58a
+pkgver=20160309.3996461
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://git.suckless.org/st/'
 arch=('i686' 'x86_64')
 license=('MIT')
+options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
+# include config.h and any patches you want to have applied here
 source=('git://git.suckless.org/st')
 sha1sums=('SKIP')
 
@@ -36,6 +38,7 @@ prepare() {
 		-e 's/CFLAGS =/CFLAGS +=/g' \
 		-e 's/LDFLAGS =/LDFLAGS +=/g' \
 		-e 's/_BSD_SOURCE/_DEFAULT_SOURCE/' \
+		-e 's/\(-lXft\)/\1 -lXrender/' \
 		-i config.mk
 	sed '/@tic/d' -i Makefile
 	for file in "${source[@]}"; do
@@ -43,10 +46,9 @@ prepare() {
 			# add config.h if present in source array
 			# Note: this supersedes the above sed to config.def.h
 			cp "$srcdir/$file" .
-			continue
-		elif [[ "$file" == *.diff ]]; then
+		elif [[ "$file" == *.diff || "$file" == *.patch ]]; then
 			# add all patches present in source array
-			patch -Np1 <"$srcdir/$file"
+			patch -Np1 <"$srcdir/$(basename ${file})"
 		fi
 	done
 }
