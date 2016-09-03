@@ -1,0 +1,18 @@
+pkgbase = razer-driver-dkms
+	pkgdesc = An entirely open source driver for managing Razer peripherals on Linux. (DKMS)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/terrycain/razer_drivers
+	install = razer-driver-dkms.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = make
+	depends = dkms
+	depends = udev
+	conflicts = razer-driver
+	source = razer-driver::git+git://github.com/terrycain/razer_drivers
+	md5sums = SKIP
+
+pkgname = razer-driver-dkms
+
