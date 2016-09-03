@@ -1,10 +1,10 @@
-# Maintainer: mar77i <mysatyre at gmail dot com>
+# Maintainer: mar77i <mar77i at mar77i dot ch>
 # Past Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
 pkgname=st-git
 _pkgname=st
-pkgver=20160309.3996461
+pkgver=0.7.1.g023225e
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='http://git.suckless.org/st/'
@@ -13,6 +13,7 @@ license=('MIT')
 options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
+epoch=1
 # include config.h and any patches you want to have applied here
 source=('git://git.suckless.org/st')
 sha1sums=('SKIP')
@@ -22,7 +23,7 @@ conflicts=("${_pkgname}")
 
 pkgver() {
 	cd "${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git describe --tags |sed 's/-/./g'
 }
 
 prepare() {
