@@ -1,0 +1,19 @@
+pkgbase = python-cytoolz
+	pkgdesc = A set of utility functions for iterators, functions, and dictionaries.
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = https://github.com/pytoolz
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = cython>=0.17
+	depends = python
+	depends = python-toolz=0.8.0
+	source = https://pypi.org/packages/source/c/cytoolz/cytoolz-0.8.0.tar.gz
+	source = cytoolz_LICENSE::https://github.com/pytoolz/cytoolz/raw/master/LICENSE.txt
+	sha256sums = 2239890c8fe2da3eba82947c6a68cfa406e5a5045911c9ab3de8113462372629
+	sha256sums = SKIP
+
+pkgname = python-cytoolz
+
