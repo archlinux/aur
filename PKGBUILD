@@ -1,14 +1,15 @@
 # Maintainer: Beini <bane at iki dot fi>
 pkgname=arm-compiler-rt-git
-pkgver=r2.0f7da7a
-pkgrel=1
+pkgver=r6.b9e0059
+pkgrel=2
 pkgdesc="Compiler-rt builtins for bare metal ARM targets"
 arch=('i686' 'x86_64')
 url="https://github.com/ReservedField/arm-compiler-rt"
 license=('custom:University of Illinois/NCSA Open Source License')
 makedepends=('git'
              'arm-none-eabi-binutils'
-             'arm-none-eabi-gcc')
+             'arm-none-eabi-gcc'
+             'arm-none-eabi-newlib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip)
