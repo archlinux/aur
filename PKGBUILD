@@ -33,7 +33,7 @@ check() {
   py.test
 
   cd "${srcdir}/${pkgbase}-${pkgver}-py2"
-  export PYTHONPATH="${srcdir}/${_pkgbase}-${pkgver}/build":${PYTHONPATH}
+  export PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}-py2/build":${PYTHONPATH}
   py.test2
 }
 
