@@ -1,4 +1,4 @@
-pkgbase = dbus
+pkgbase = dbus-x11
 	pkgdesc = Freedesktop.org message bus system
 	pkgver = 1.10.10
 	pkgrel = 3

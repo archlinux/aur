@@ -4,8 +4,8 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 
-pkgbase=dbus
 pkgname=dbus-x11
+_pkgname=dbus
 pkgver=1.10.10
 pkgrel=3
 pkgdesc="Freedesktop.org message bus system"
@@ -14,7 +14,7 @@ arch=(i686 x86_64)
 license=(GPL custom)
 depends=(libsystemd expat dbus-docs)
 makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen)
-source=(https://dbus.freedesktop.org/releases/$pkgbase/$pkgbase-$pkgver.tar.gz{,.asc}
+source=(https://dbus.freedesktop.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz{,.asc}
         0001-Drop-Install-sections-from-user-services.patch)
 sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
             'SKIP'
@@ -23,13 +23,13 @@ validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simo
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd $_pkgname-$pkgver
   patch -Np1 -i ../0001-Drop-Install-sections-from-user-services.patch
   autoreconf -fvi
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $_pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
       --with-system-pid-file=/run/dbus/pid \
@@ -44,7 +44,7 @@ build() {
 }
 
 check() {
-  cd $pkgbase-$pkgver
+  cd $_pkgname-$pkgver
   make check
 }
 
@@ -53,13 +53,13 @@ package() {
   conflicts=(libdbus)
   replaces=(libdbus)
 
-  cd $pkgbase-$pkgver
+  cd $_pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir/var/run"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 
   # Split docs
   rm -r "$pkgdir/usr/share/doc"
