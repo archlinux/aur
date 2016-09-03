@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15100
-pkgrel=1
+pkgver=r15102
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from bzr trunk"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ prepare() {
   sed -i 's|"python"|"python2"|g' src/main.cpp
   find share -type f -name "*.py" -exec \
        sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' {} \;
+  sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py 
 }
 
 build() {
