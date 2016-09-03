@@ -1,6 +1,6 @@
 pkgbase = zerobrane-studio
 	pkgdesc = A lightweight Lua-based IDE for Lua
-	pkgver = 1.30
+	pkgver = 1.40
 	pkgrel = 1
 	url = http://studio.zerobrane.com/
 	install = zerobrane-studio.install
@@ -14,10 +14,10 @@ pkgbase = zerobrane-studio
 	optdepends = love: to debug love programs
 	provides = zerobrane-studio
 	conflicts = zerobrane-studio-git
-	source = https://github.com/pkulchenko/ZeroBraneStudio/tarball/1.30
+	source = https://github.com/pkulchenko/ZeroBraneStudio/tarball/1.40
 	source = zbstudio.patch
 	source = user.lua
-	md5sums = 28439bfe24813b02e7321ab91f75a25d
+	md5sums = e0137f3b2c96ef6e9832beb3142fc73e
 	md5sums = 3bb356b8549b60352e8ab36b9a6d9a92
 	md5sums = 73636b0c87d0412e316e7ad58151e70d
 
