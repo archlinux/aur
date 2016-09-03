@@ -2,7 +2,7 @@
 
 pkgname='monero-core-git'
 _gitname='monero-core'
-pkgver=r161.6efc368
+pkgver=r165.a3fa191
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
@@ -21,7 +21,7 @@ provides=('monero-core')
 conflicts=('monero-core')
 
 # TODO: create a LICENSE file in upstream monero-core repo
-source=("$_gitname::git+https://github.com/mbg033/monero-core.git"
+source=("$_gitname::git+https://github.com/monero-project/monero-core.git"
 	"https://raw.githubusercontent.com/monero-project/bitmonero/master/LICENSE"
         "0001-pro-link-against-libunwind.patch"
         "0001-pro-option-for-static-build.patch")
