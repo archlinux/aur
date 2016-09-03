@@ -1,45 +1,34 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=remarshal
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Convert between TOML, YAML and JSON"
-arch=('i686' 'x86_64')
-makedepends=('git' 'go')
+arch=('any')
+depends=('python' 'python-dateutil' 'python-pytoml' 'python-yaml')
+makedepends=('python-setuptools')
 url="https://github.com/dbohdan/remarshal"
 license=('MIT')
-options=('!strip' '!emptydirs')
+options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/dbohdan/$pkgname/tar.gz/v$pkgver)
-sha256sums=('b011d955bac62253dbfdb79abfa37b0a1f175618f2707ebbd0337532672ce683')
-
-prepare() {
-  msg 'Fetching toml go bindings...'
-  GOPATH="$srcdir" go get -d github.com/BurntSushi/toml
-
-  msg 'Fetching yaml go bindings...'
-  GOPATH="$srcdir" go get -d gopkg.in/yaml.v2
-}
+sha256sums=('19e85b010ada81f3094ce4e607d6f26aeb2ea40c92c4c704fe1cdb8fd8f637ee')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Building...'
-  GOPATH="$srcdir" go build remarshal.go
+  msg2 'Building...'
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Installing license...'
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  msg2 'Installing license...'
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
-  msg 'Installing documentation...'
-  install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  msg2 'Installing documentation...'
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
-  msg 'Installing...'
-  install -Dm 755 remarshal "$pkgdir/usr/bin/remarshal"
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  msg2 'Installing...'
+  python setup.py install --root="$pkgdir" --optimize=1
 }
