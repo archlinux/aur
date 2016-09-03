@@ -6,7 +6,7 @@
 # The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12)
 
 pkgname='unreal-engine'
-pkgver=4.13.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -18,16 +18,19 @@ source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
   '0001-ignore-return-value-error.patch'
+  '0002-remove-clang35-dependency.patch'
 )
 md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
   '08e0e6b8e6c9b186191a8419cc7bd435'
+  '604094f337176251bcfdacd3a21aa081'
 )
 options=(!strip staticlibs)
 
 build() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" 0001-ignore-return-value-error.patch
+  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" 0002-remove-clang35-dependency.patch
 
   cd $srcdir/UnrealEngine
   
@@ -74,6 +77,10 @@ package() {
   cp -r FeaturePacks "$pkgdir/opt/$pkgname/FeaturePacks"
   cp -r Samples "$pkgdir/opt/$pkgname/Samples"
   cp -r Templates "$pkgdir/opt/$pkgname/Templates"
+
+  # build scripts, used by some plugins
+  install -Dm755 GenerateProjectFiles.sh "$pkgdir/opt/$pkgname/GenerateProjectFiles.sh"
+  install -Dm755 Setup.sh "$pkgdir/opt/$pkgname/Setup.sh"
 
   # icon for .desktop file
   install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"

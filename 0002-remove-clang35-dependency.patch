@@ -1,0 +1,19 @@
+commit 9a991321e930899fe555b6182064f3d5b8b81d73
+Author: acerix <dylan@psilly.com>
+Date:   Sat Sep 3 13:45:02 2016 -0400
+
+    remove clang35 dependency
+
+diff --git a/Engine/Build/BatchFiles/Linux/Setup.sh b/Engine/Build/BatchFiles/Linux/Setup.sh
+index 787bfef..4d649e8 100755
+--- a/Engine/Build/BatchFiles/Linux/Setup.sh
++++ b/Engine/Build/BatchFiles/Linux/Setup.sh
+@@ -125,7 +125,7 @@ if [ -e /etc/os-release ]; then
+ 
+   # Arch Linux
+   if [[ "$ID" == "arch" ]] || [[ "$ID_LIKE" == "arch" ]]; then
+-    DEPS="clang35 mono python sdl2 qt4 dos2unix cmake"
++    DEPS="clang mono python sdl2 qt4 dos2unix cmake"
+     MISSING=false
+     for DEP in $DEPS; do
+       if ! pacman -Qs $DEP > /dev/null 2>&1; then
