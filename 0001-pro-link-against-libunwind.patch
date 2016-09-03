@@ -1,0 +1,25 @@
+From 03cb7145a8646317f0bf8a59543138798de9ed64 Mon Sep 17 00:00:00 2001
+From: redfish <redfish@galactica.pw>
+Date: Sat, 3 Sep 2016 05:58:05 +0000
+Subject: [PATCH] pro: link against libunwind
+
+Otherwise link fails with missing symbols.
+---
+ monero-core.pro | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/monero-core.pro b/monero-core.pro
+index 057b336..1159d69 100644
+--- a/monero-core.pro
++++ b/monero-core.pro
+@@ -84,6 +84,7 @@ linux {
+         -lssl \
+         -lcrypto \
+         -Wl,-Bdynamic \
++        -lunwind \
+         -ldl
+ }
+ 
+-- 
+2.9.3
+

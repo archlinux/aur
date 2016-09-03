@@ -1,0 +1,29 @@
+From 24b0e4b6d69cb3ff51aaa66c49a1e5f0d431345f Mon Sep 17 00:00:00 2001
+From: redfish <redfish@galactica.pw>
+Date: Sat, 3 Sep 2016 05:57:26 +0000
+Subject: [PATCH 1/2] pro: option for static build
+
+Distribution packages want dynamic builds.
+---
+ monero-core.pro | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/monero-core.pro b/monero-core.pro
+index 4b2bbf2..057b336 100644
+--- a/monero-core.pro
++++ b/monero-core.pro
+@@ -69,8 +69,10 @@ win32 {
+ }
+ 
+ linux {
++    CONFIG(static) {
++        LIBS+= -Wl,-Bstatic
++    }
+     LIBS+= \
+-        -Wl,-Bstatic \
+         -lboost_serialization \
+         -lboost_thread \
+         -lboost_system \
+-- 
+2.9.3
+
