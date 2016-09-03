@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc
-pkgver=5.3.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 url='http://www.gnu.org/software/gcc/'
@@ -15,7 +15,8 @@ conflicts=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2")
-sha256sums=('b84f5592e9218b73dbae612b5253035a7b34a9a1f7688d2e1bfaaf7267d5c4db')
+sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5')
+
 prepare() {
   cd gcc-${pkgver}
 
@@ -31,16 +32,19 @@ build() {
   export CXXFLAGS_FOR_TARGET="-G0 -O2"
 
   ../gcc-${pkgver}/configure \
+    --target=${_target} \
     --prefix=/usr \
     --with-sysroot=/usr/${_target} \
     --libexecdir=/usr/lib \
-    --target=${_target} \
     --with-gnu-as \
     --with-gnu-ld \
     --with-python-dir=share/gcc-${_target} \
+    --with-newlib \
+    --without-included-gettext \
+    --enable-checking=release \
     --enable-languages=c,c++ \
-    --disable-debug \
     --disable-decimal-float \
+    --disable-gold \
     --disable-libatomic \
     --disable-libgcj \
     --disable-libgomp \
@@ -49,18 +53,16 @@ build() {
     --disable-libquadmath-support \
     --disable-libsanitizer \
     --disable-libssp \
+    --disable-libunwind-exceptions \
+    --disable-libvtv \
     --disable-multilib \
     --disable-nls \
     --disable-shared \
     --disable-threads \
     --disable-werror \
-    --enable-gold \
+    --enable-plugin \
     --enable-lto \
     --enable-static \
-    --enable-plugin \
-    --enable-checking=release \
-    --with-newlib \
-    --without-included-gettext \
 
   make
 }
