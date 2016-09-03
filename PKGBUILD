@@ -26,15 +26,15 @@ makedepends=('git'
              'extra-cmake-modules'
              'kdoctools'
              )
-# optdepends=('cdrdao: for CD DAO mode burning support'
-#             'dvd+rw-tools: for CD, DVD & BluRay burning support'
-#             'cdrtools: replace for use instead of cdrkit (unmaintained)'
-#             'normalize: for WAV normalization'
-#             'vcdimager: for VCD burning support'
-#             'transcode: for advanced MPEG conversion support'
-#             'sox: for encode audio files in formats such as AIFF or VOC'
-#             'emovix: for bootable multimedia CD/DVD support'
-#             )
+optdepends=('cdrdao: for CD DAO mode burning support'
+            'dvd+rw-tools: for CD, DVD & BluRay burning support'
+            'cdrtools: replace for use instead of cdrkit (unmaintained)'
+            'normalize: for WAV normalization'
+            'vcdimager: for VCD burning support'
+            'transcode: for advanced MPEG conversion support'
+            'sox: for encode audio files in formats such as AIFF or VOC'
+            'emovix: for bootable multimedia CD/DVD support'
+            )
 provides=('k3b')
 conflicts=('k3b')
 source=('git://anongit.kde.org/k3b.git')
