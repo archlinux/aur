@@ -1,10 +1,11 @@
 # Maintainer: Onishin <onishin at onishin dot org>
 # Co-maintainer: redfish <redfish at galactica dot pw>
 
-pkgname='bitmonero-git'
+pkgbase=('bitmonero-git')
+pkgname=('bitmonero-git' 'libmonero-wallet-git')
 _gitname='bitmonero'
 pkgver=0.9.4
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -14,8 +15,6 @@ makedepends=('git' 'cmake' 'boost')
 
 
 pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
-provides=('bitmonero')
-conflicts=('bitmonero')
 source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
         "bitmonerod.service"
         "bitmonerod.conf"
@@ -27,13 +26,7 @@ md5sums=('SKIP'
          'eb04582e2007f8e450322c1794ed30ba' 
          '513a3ff4be5cb6f3faf13ffcb680b941')
 
-
-
-backup=('etc/bitmonerod.conf')
-install=bitmonero.install
-
-# Uncomment for a debug build
-# options=(!strip debug)
+_builddir=build
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -51,11 +44,12 @@ build() {
 	fi
 
 	CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_buildtype "
+	CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
 	CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
 	CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
 	CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
 
-	mkdir -p build && cd build
+	mkdir -p $_builddir && cd $_builddir
 	cmake $CMAKE_FLAGS ..
 	make
 }
@@ -73,7 +67,16 @@ check() {
 	make ARGS="$CTEST_ARGS" test
 }
 
-package() {
+package_bitmonero-git() {
+
+	provides=('bitmonero')
+	conflicts=('bitmonero')
+
+	backup=('etc/bitmonerod.conf')
+	install=bitmonero.install
+
+        # Uncomment for a debug build
+        # options=(!strip debug)
 
 	install -D -m755 "$srcdir/$_gitname/build/bin/bitmonerod" "$pkgdir/usr/bin/bitmonerod"
 	install -D -m755 "$srcdir/$_gitname/build/bin/simplewallet" "$pkgdir/usr/bin/simplewallet"
@@ -86,4 +89,18 @@ package() {
 	install -Dm644 $srcdir/bitmonerod.service "${pkgdir}/usr/lib/systemd/system/bitmonerod.service"
 	install -Dm644 "$srcdir/bitmonerod.conf" "$pkgdir/etc/bitmonerod.conf"
 	install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_libmonero-wallet-git() {
+
+	provides=('libmonero-wallet')
+	conflicts=('libmonero-wallet')
+
+        # NOTE: this is crucial, otherwise stripping breaks the .a archive:
+        # monero-core (GUI) fails to link against it (it can't find symbols
+        # that are clearly in the library).
+        options=(!strip)
+
+        cd $srcdir/$_gitname/$_builddir
+        make DESTDIR=$pkgdir install
 }
