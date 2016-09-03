@@ -42,6 +42,10 @@ package() {
   python2 setup.py install --root="${pkgdir}"
   install -Dm 644 "contrib/mergetools.rc" \
     "${pkgdir}/etc/mercurial/hgrc.d/thgmergetools.rc"
+  install -Dm 644 "contrib/thg.desktop" \
+    "${pkgdir}/usr/share/applications/thg.desktop"
+  install -Dm 644 "icons/svg/thg_logo.svg" \
+    "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
 
   # Remove VCS leftovers.
   find "${pkgdir}" -type d -name .hg -exec rm -r '{}' +
