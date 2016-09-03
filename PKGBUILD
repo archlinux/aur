@@ -9,7 +9,7 @@ _version=5.4.0
 _build=p1
 _buildtag=20160810
 pkgver=${_version}${_build}+${_buildtag}
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
 arch=('x86_64')
 url='https://unity3d.com/'
@@ -41,12 +41,12 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
 sha1sums=('b32060f4472ec949ad2321d70324b3568b587bb7'
-          '949c8c7808af14d946a18d0631b017b46c504e66'
+          '4f7146c680fd2f96a5c3ff0c1982fef69cc61938'
           '9172be394811c35dba79d2e9ac7d5bbd5fabccdc'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
 sha512sums=('1b1ea7a26d1275087769bad84d6b493ed970f1b1a978425db885002c0ba437bb405776fc20fca93fd53fc2e2db120f15eb6e98d39400c6600a7e941fea677986'
-            '63dcb18e4cc68dc1f991b4b2f67aa96fbf286682ef01c000c597eb3cf97ae42504063c6599921c3c11d5d98e79dfa33784c47f0cdc9aa0e494362235aa0e302f'
+            'ec7dbf7007812cb3a261b7fb2b6a7861593276660400575d793fc16ac6c415e79ec58fa324d4d5110101149b4622b8b174b41aa4d203547b2e6267fd990a9e67'
             'bf8a4ab65a2fc7dc51ff02e5f46ce3be365b660f32fa9d70d5b284575c20766ccd6abe53eef1049ae76b78d86eaeb830ce73184b63abab1237a3e735a0897709'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
             '44676f54d83357721bee844d1e0e997e584b2148c871dbf24385976dda840f37e4cf4a1796fa17dec90fac539bac58e0e47fa0af0abc98e4cf795f735b23c1b0')
