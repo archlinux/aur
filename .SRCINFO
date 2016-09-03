@@ -1,0 +1,23 @@
+pkgbase = python-dynd
+	pkgdesc = Bindings for the C++ dynd array library (numpy array replacement).
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/libdynd/dynd-python
+	arch = i686
+	arch = x86_64
+	groups = blaze-ecosystem
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-numpy>=1.7.1
+	makedepends = cython>=0.24
+	makedepends = python>=3.4
+	makedepends = cmake>=2.8.11
+	depends = python-numpy>=1.7.1
+	depends = dynd=0.7.2
+	depends = python>=3.4
+	source = https://github.com/libdynd/dynd-python/archive/v0.7.2.tar.gz
+	md5sums = 8d50606db6975e181212c997843797f7
+	sha1sums = e0c6aa25df0f1dacb536d6e5c438b484f050e01c
+
+pkgname = python-dynd
+
