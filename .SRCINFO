@@ -14,7 +14,7 @@ pkgbase = python-pyrepl-hg
 	source = fix-curses-_find_clib.patch
 	source = py3fixes.patch
 	md5sums = SKIP
-	md5sums = e19048f323570f1dafeda73bacc6b955
+	md5sums = 14f1a9fd02693f9d05d25fd9d1214070
 	md5sums = 3c2b239e29f8cbd617cb2de5cc93626e
 
 pkgname = python-pyrepl-hg
