@@ -2,13 +2,15 @@
 # Contributor: Etzos <supercodingmonkey @ gmail.com>
 # Contributer: Gordin <9ordin @t gmail dot com>
 # Contributor: Geequlim <geequlim@gmail.com>
+# Contributor: Antti Juhani Oja <antti.oja@gmail.com>
+
 
 pkgname=physicseditor
 pkgver=1.5.2
 pkgrel=2
 pkgdesc="Physics editor for certain game engines such as Cocos2D-X, Corona SDK, etc."
 arch=('x86_64')
-url="http://www.codeandweb.com/physicseditor"
+url="http://www.codeandweb.com/$pkgname"
 license=("custom:$pkgname")
 install="$pkgname.install"
 depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee-qt5'
