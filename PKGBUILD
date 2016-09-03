@@ -1,12 +1,12 @@
 # Maintainer: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=3.5.8.r0.8a5299d
+pkgver=16.10.5.r3.bb8c682
 pkgrel=1
 pkgdesc="MATE desktop tweak tool"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
-depends=('python' 'gtk3' 'dconf' 'gdk-pixbuf2' 'libnotify' 'python-gobject' 'python-psutil' 'python-configobj' 'mesa-demos')
+depends=('python' 'gtk3' 'dconf' 'gdk-pixbuf2' 'libnotify' 'python-gobject' 'python-psutil' 'python-configobj' 'mesa-demos' 'python-setproctitle')
 optdepends=('plank' 'docky' 'synapse' 'topmenu-gtk' 'gnome-main-menu' 'mate-menu' 'mate-netbook' 'mate-applet-dock-git' 'mutter' 'compiz')
 makedepends=('git' 'bzr' 'python-setuptools' 'python-distutils-extra') 
 provides=("${pkgname%-git}")
