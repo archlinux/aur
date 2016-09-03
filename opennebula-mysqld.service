@@ -1,7 +1,8 @@
 [Unit]
 Description=OpenNebula management
 After=network.target local-fs.target remote-fs.target mysqld.service 
-Conflicts=opennebula-mysqld
+Requires=mysqld.service
+Conflicts=opennebula
 
 [Service]
 User=oneadmin
