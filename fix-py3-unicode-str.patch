@@ -1,0 +1,22 @@
+# Fix TAB completion on objects in Python 3.
+# Source: https://bitbucket.org/antocuni/fancycompleter/issues/4/05-breaks-tab-completion-in-pdbpp-on#comment-28234453
+--- a/fancycompleter.py Sun Oct 05 12:25:21 2014 +0200
++++ b/fancycompleter.py Thu Jun 02 19:51:05 2016 +0200
+@@ -31,7 +31,7 @@
+ try:
+     unicode
+ except NameError:
+-    unicode = str
++    unicode = object()
+
+ # ----------------------
+
+@@ -219,7 +219,7 @@
+         values = []
+         n = len(attr)
+         for word in dir(object):
+-            if isinstance(word, unicode):
++            if not isinstance(word, str) and isinstance(word, unicode):
+                 # this is needed because pyrepl doesn't like unicode
+                 # completions: as soon as it finds something which is not str,
+                 # it stops.
