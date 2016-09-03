@@ -1,46 +1,45 @@
 pkgbase = dbus-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support
-	pkgver = 1.10.8
-	pkgrel = 1
-	url = http://www.freedesktop.org/Software/dbus
+	pkgver = 1.10.10
+	pkgrel = 3
+	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL
 	license = custom
-	makedepends = libx11
 	makedepends = systemd-selinux
 	makedepends = xmlto
 	makedepends = docbook-xsl
+	makedepends = python
+	makedepends = yelp-tools
+	makedepends = doxygen
 	makedepends = audit
 	makedepends = libselinux
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.8.tar.gz
-	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.10.8.tar.gz.asc
+	depends = libsystemd-selinux
+	depends = expat
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz.asc
+	source = 0001-Drop-Install-sections-from-user-services.patch
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
-	md5sums = e912e930f249454752512aa7ac864d43
-	md5sums = SKIP
+	sha256sums = 9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43
+	sha256sums = SKIP
+	sha256sums = 48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e
 
 pkgname = dbus-selinux
-	depends = libdbus-selinux
-	depends = expat
-	depends = audit
-	depends = libselinux
-	depends = libsystemd-selinux
-	optdepends = libx11: dbus-launch support
-	provides = dbus-core
-	provides = dbus=1.10.8-1
-	provides = selinux-dbus=1.10.8-1
-	conflicts = dbus-core
+	provides = libdbus
+	provides = libdbus-selinux
+	provides = dbus=1.10.10-3
+	provides = selinux-dbus=1.10.10-3
+	conflicts = libdbus
+	conflicts = libdbus-selinux
 	conflicts = dbus
 	conflicts = selinux-dbus
-	replaces = dbus-core
-	replaces = dbus
-
-pkgname = libdbus-selinux
-	pkgdesc = DBus library
-	depends = libsystemd-selinux
-	provides = libdbus=1.10.8-1
-	conflicts = libdbus
 	replaces = libdbus
+	replaces = libdbus-selinux
+
+pkgname = dbus-docs-selinux
+	pkgdesc = Freedesktop.org message bus system with SELinux support (documentation)
+	depends = dbus-selinux
 

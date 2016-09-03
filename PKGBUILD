@@ -1,74 +1,78 @@
 # $Id$
-# Maintainer: Tom Gundersen <teg@jklm.no>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=dbus-selinux
-pkgname=('dbus-selinux' 'libdbus-selinux')
-pkgver=1.10.8
-pkgrel=1
+pkgname=(dbus-selinux dbus-docs-selinux)
+pkgver=1.10.10
+pkgrel=3
 pkgdesc="Freedesktop.org message bus system with SELinux support"
-url="http://www.freedesktop.org/Software/dbus"
+url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
-license=('GPL' 'custom')
+license=(GPL custom)
 groups=('selinux')
-makedepends=('libx11' 'systemd-selinux' 'xmlto' 'docbook-xsl' 'audit' 'libselinux')
-source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz{,.asc})
-md5sums=('e912e930f249454752512aa7ac864d43'
-         'SKIP')
+depends=(libsystemd-selinux expat)
+makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen audit libselinux)
+source=(https://dbus.freedesktop.org/releases/${pkgbase/-selinux}/${pkgbase/-selinux}-$pkgver.tar.gz{,.asc}
+        0001-Drop-Install-sections-from-user-services.patch)
+sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
+            'SKIP'
+            '48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 prepare() {
-  cd dbus-$pkgver
+  cd ${pkgbase/-selinux}-$pkgver
+  patch -Np1 -i ../0001-Drop-Install-sections-from-user-services.patch
+  autoreconf -fvi
 }
 
 build() {
-  cd dbus-$pkgver
+  cd ${pkgbase/-selinux}-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
       --with-system-pid-file=/run/dbus/pid \
       --with-system-socket=/run/dbus/system_bus_socket \
       --with-console-auth-dir=/run/console/ \
-      --enable-inotify \
-      --disable-verbose-mode --disable-static \
-      --disable-tests --disable-asserts \
+      --enable-inotify --disable-static \
+      --disable-verbose-mode --disable-asserts \
       --with-systemdsystemunitdir=/usr/lib/systemd/system \
       --enable-systemd --enable-user-session \
       --enable-selinux --enable-libaudit
   make
 }
 
-package_dbus-selinux(){
-  depends=('libdbus-selinux' 'expat' 'audit' 'libselinux' 'libsystemd-selinux')
-  optdepends=('libx11: dbus-launch support')
-  provides=('dbus-core' "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-  conflicts=('dbus-core' "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
-  replaces=('dbus-core' "${pkgname/-selinux}")
+check() {
+  cd ${pkgbase/-selinux}-$pkgver
+  make check
+}
 
-  cd dbus-$pkgver
+package_dbus-selinux() {
+  provides=(libdbus libdbus-selinux "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  conflicts=(libdbus libdbus-selinux "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
+  replaces=(libdbus libdbus-selinux)
 
-  # Disable installation of libdbus
-  sed -i -e 's/^SUBDIRS = dbus/SUBDIRS =/' Makefile
+  cd ${pkgbase/-selinux}-$pkgver
 
   make DESTDIR="$pkgdir" install
 
-  rm -r "${pkgdir}/var/run"
-  rm -r "${pkgdir}/usr/lib/pkgconfig"
+  rm -r "$pkgdir/var/run"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus-selinux/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
+
+  # Split docs
+  mv "$pkgdir/usr/share/doc" "$srcdir"
 }
 
-package_libdbus-selinux(){
-  pkgdesc="DBus library"
-  depends=('libsystemd-selinux')
-  provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
-  conflicts=("${pkgname/-selinux}")
-  replaces=("${pkgname/-selinux}")
+package_dbus-docs-selinux() {
+  pkgdesc+=" (documentation)"
+  depends=(dbus-selinux)
 
-  cd dbus-$pkgver
-  make DESTDIR="$pkgdir" -C dbus install
-  make DESTDIR="$pkgdir" install-data-am
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/libdbus-selinux/COPYING"
+  install -d "$pkgdir/usr/share/licenses"
+  ln -s dbus-selinux "$pkgdir/usr/share/licenses/dbus-docs-selinux"
+
+  mv doc "$pkgdir/usr/share"
 }
