@@ -16,6 +16,11 @@ pkgbase = dbus-x11
 	depends = libsystemd
 	depends = expat
 	depends = dbus-docs
+	provides = libdbus
+	provides = dbus
+	conflicts = libdbus
+	conflicts = dbus
+	replaces = libdbus
 	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz
 	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz.asc
 	source = 0001-Drop-Install-sections-from-user-services.patch
@@ -26,7 +31,4 @@ pkgbase = dbus-x11
 	sha256sums = 48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e
 
 pkgname = dbus-x11
-	provides = libdbus
-	conflicts = libdbus
-	replaces = libdbus
 

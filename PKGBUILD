@@ -12,6 +12,9 @@ pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
 license=(GPL custom)
+provides=('libdbus' 'dbus')
+conflicts=('libdbus' 'dbus')
+replaces=(libdbus)
 depends=(libsystemd expat dbus-docs)
 makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen)
 source=(https://dbus.freedesktop.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz{,.asc}
@@ -49,10 +52,6 @@ check() {
 }
 
 package() {
-  provides=(libdbus)
-  conflicts=(libdbus)
-  replaces=(libdbus)
-
   cd $_pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
