@@ -4,11 +4,17 @@
 
 pkgname=minikube
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
 license=('Apache')
 arch=('x86_64')
+depends=(
+  'virtualbox'
+)
+optdepends=(
+  'kubectl-bin: to manage the cluster'
+)
 makedepends=()
 
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
