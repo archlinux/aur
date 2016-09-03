@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.26.18.21
+pkgver=1.26.18.22
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
@@ -11,7 +11,7 @@ optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support'
-	'chromium-pepper-flash: for inworld Flash support'
+	'pepper-flash: for inworld Flash support'
 	'gst-plugins-good: for video support'
 	'gst-plugins-bad: for video support'
 	'gst-plugins-ugly: for video support'
@@ -23,7 +23,7 @@ source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup
 
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('c0ce11101aa111e173a5e91a5a6edeb6'
+md5sums=('fea09e7de5cc569d9441df3e57cd285d'
          '88b0bca907149f4c26389449081a13fd'
          'fd78de1f6c1333a5120ece89873515e0')
 
