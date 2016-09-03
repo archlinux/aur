@@ -2,7 +2,7 @@
 
 pkgname=museeks
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight music player, cross-platform, written with Node.js, Electron and React.js."
 arch=("x86_64" "i686")
 url="http://museeks.io/"
