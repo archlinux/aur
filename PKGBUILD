@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-newlib
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=("${_target}-gcc-stage1")
 options=( '!strip' '!emptydirs')
 source=("ftp://sources.redhat.com/pub/newlib/newlib-$pkgver.tar.gz")
-sha256sums=('f8add263b0737591aff451b12a00c262c2efac4fa87d741fa1c318fc3bb335be')
+sha256sums=('545b3d235e350d2c61491df8b9f775b1b972f191380db8f52ec0b1c829c52706')
 
 build()
 {
@@ -39,8 +39,6 @@ package()
   make DESTDIR="${pkgdir}" install -j1
 
   find "$pkgdir"/usr/$_target/lib \( -name "*.a" -or -name "*.o" \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
-
-  rm "$pkgdir"/usr/share/info/*.info
 
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -m644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/newlib-$pkgver/COPYING*
