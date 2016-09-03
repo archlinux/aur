@@ -5,8 +5,8 @@
 pkgbase='python-cytoolz'
 pkgname='python-cytoolz'
 pkgver=0.8.0
-pkgrel=2
-pkgdesc="A set of utility functions for iterators, functions, and dictionaries."
+pkgrel=3
+pkgdesc="A high performance Cython implementation of Toolz functional utilities."
 arch=('i686' 'x86_64')
 url="https://github.com/pytoolz"
 license=('BSD')

@@ -1,7 +1,7 @@
 pkgbase = python-cytoolz
-	pkgdesc = A set of utility functions for iterators, functions, and dictionaries.
+	pkgdesc = A high performance Cython implementation of Toolz functional utilities.
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pytoolz
 	arch = i686
 	arch = x86_64
