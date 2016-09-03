@@ -1,15 +1,15 @@
 pkgname=eternalnightmare
-pkgver=5.1
-pkgrel=3
+pkgver=5.2
+pkgrel=1
 pkgdesc="Chrono Trigger randomizer"
 arch=(any)
 url="https://github.com/abyssonym/eternalnightmare"
 license=("unknown")
-source=("$pkgname.zip::https://github.com/abyssonym/eternalnightmare/archive/d8b24aa4aea90064e1e2b8c329ae3f60f25a2ac4.zip"
+source=("$pkgname.zip::https://github.com/abyssonym/eternalnightmare/archive/c80002a7ecd546f553817890dcd79383550a94ea.zip"
 "$pkgname.sh")
 depends=(python2-randomtools)
 makedepends=(dos2unix python2)
-md5sums=('e1867f5ab67f79b12ef13ff98fec0dca'
+md5sums=('086d7fe03a3bc3b4928a5029b5878fa4'
          'ed3cf3d1b1e771fcf6462cb48ae1b607')
 
 prepare() {
