@@ -2,10 +2,11 @@
 
 pkgname=lf-git
 _pkgname=lf
-pkgver=r27.19561f6
-pkgrel=2
+pkgver=r67.f304f86
+pkgrel=1
 license=('MIT')
 pkgdesc='lf is a terminal file manager written in Go'
+depends=("glibc")
 makedepends=("git" "go>=1.6")
 arch=("i686" "x86_64")
 url='https://github.com/gokcehan/lf'
@@ -26,7 +27,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 ./lf					${pkgdir}/usr/bin/lf
-  install -Dm644 ./LICENSE   	${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
-  install -Dm644 ./README.md 	${pkgdir}/usr/share/doc/${_pkgname}/README
+	install -Dm755 ./lf					"${pkgdir}/usr/bin/lf"
+  install -Dm644 ./LICENSE   	"${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 ./README.md 	"${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
