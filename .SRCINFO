@@ -1,0 +1,22 @@
+pkgbase = python-odo
+	pkgdesc = Data migration library for Python (csv, hdf5, SQL, etc.)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/blaze/odo/
+	arch = any
+	groups = blaze-ecosystem
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-datashape>=0.5.0
+	depends = python>=3.4
+	depends = python-numpy>=1.7
+	depends = python-pandas>=0.15.0
+	depends = python-toolz>=0.7.3
+	depends = python-multipledispatch>=0.4.7
+	depends = python-networkx
+	source = https://github.com/blaze/odo/archive/0.5.0.tar.gz
+	md5sums = aadddca014124a37730e8b2924fc41d6
+	sha1sums = f4d1b39a5b0852e0c990b53c873f24c7d2307cf6
+
+pkgname = python-odo
+
