@@ -11,7 +11,7 @@ _srcname=linux-4.6
 _pkgver=4.6.7
 _rtpatchver=rt11
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,7 +28,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
+        '0001-fix-dcache-try-1.patch')
 
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
@@ -41,7 +42,8 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             '63db5e7975054a40875c051eb1b1bc3fd2234e398d65c5cace9f64ef8c66bfd8'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
+            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
+            '8b96ecc7c4c1dc5fc81162d010d69606b590f0feee0563aee875706e0ab4d5f9')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -62,6 +64,9 @@ prepare() {
   msg "applying patch-${_pkgver}-${_rtpatchver}.patch"
   patch -p1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch"
 
+  msg "applying 0001-fix-dcache-try-1.patch"
+  patch -p1 -i "${srcdir}/0001-fix-dcache-try-1.patch"
+  
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
@@ -75,7 +80,7 @@ prepare() {
   # Stops X from hanging on certain NVIDIA cards
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
-
+  
   msg "All patches have successfully been applied"
 
   if [ "${CARCH}" = "x86_64" ]; then

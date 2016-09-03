@@ -1,0 +1,51 @@
+From 970e0abab56f86e253ee6d26b1495cb25293318b Mon Sep 17 00:00:00 2001
+From: Joakim Hernberg <jhernberg@alchemy.lu>
+Date: Fri, 2 Sep 2016 18:27:44 +0200
+Subject: [PATCH] fix dcache - try 1
+
+---
+ fs/dcache.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index 32c0bfe..4adb399 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -579,6 +579,7 @@ static struct dentry *dentry_kill(struct dentry *dentry)
+ 
+ failed:
+ 	spin_unlock(&dentry->d_lock);
++        cpu_chill();
+ 	return dentry; /* try again with same dentry */
+ }
+ 
+@@ -752,8 +753,6 @@ void dput(struct dentry *dentry)
+ 		return;
+ 
+ repeat:
+-	might_sleep();
+-
+ 	rcu_read_lock();
+ 	if (likely(fast_dput(dentry))) {
+ 		rcu_read_unlock();
+@@ -785,15 +784,8 @@ repeat:
+ 
+ kill_it:
+ 	dentry = dentry_kill(dentry);
+-	if (dentry) {
+-		int r;
+-
+-		/* the task with the highest priority won't schedule */
+-		r = cond_resched();
+-		if (!r)
+-			cpu_chill();
+-		goto repeat;
+-	}
++        if (dentry)
++                goto repeat;
+ }
+ EXPORT_SYMBOL(dput);
+ 
+-- 
+2.9.3
+
