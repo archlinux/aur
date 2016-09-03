@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=51.0.2704.79
+pkgver=53.0.2785.89
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -16,7 +16,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret' 'libvpx'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libvpx')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -25,9 +25,9 @@ options=('!strip')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        inox.desktop
-        chromium-widevine.patch
-        PNGImageDecoder.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-52.0.2743.116-unset-madv_free.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-google-url-tracker.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-default-extensions.patch
@@ -44,30 +44,39 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-update-pings.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-sandbox-pie.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch)
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('2323da80158f86e465f8fe257f681816ad58d831aaebddbb5337d72c5a86a036'
+sha256sums=('2e3c5f7b12b5b4f150b93004a718fb85778aeddc4df05bbf92b99a19a1c63dee'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
-            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
+            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '2d4b600d8085f1d5b3b4f30f8cfc6741558b1c8721dc19dd6b4de2b8dbedd80d'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
-            '241ffb6a5dfd4f331e11c87b70aa26a48475d52e14f5b9e86f6b69db7137ee84'
+            '6d56f80d8d5977e59551163d06b3ce1fee4efe1e2b2aea07863d6ac853071a63'
             '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
             'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
             'ed4471fa8a984ccea7fd1900a76865e65a8f5afb6a6390faa22a4758d77bbc07'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             '508ae6417ad5dc23581ca593ac19fa36cfdc019d16ac5e159b8cf1e5e1acb551'
-            '35b40aca3a043e309191447aa2607558eaeba72adf335fa93beebf57ec3e8dff'
+            'fe6eddac22aeb0cab1dfcf5932e6d996b7dc3f1a260f55f388a9c397f8cf3d00'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
             '0362593751abc09bbf2244109c93068fc9a40a51ba4dbd17bb2b107ff50d7dce'
             '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
             'cd0d2b665f9d39f7c25929f8e1b85b9a391b4a5a8a70d005cd815bbf2bb4e548'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
-            'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13')
+            'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13'
+            '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
+            '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
+            '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
+            '8c10e3b03b13555b461add586422472e0a96d3af49a078d6d952bc0719ba9d94'
+            'cc08b771d83b7434c3173c27419bc7d1d4ee375256f3169ef2b9333ba1f2beeb'
+            '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
+            '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
+            '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354')
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
 # instructions on how to build the toolchain from source don't work that well
@@ -108,9 +117,6 @@ prepare() {
   patch -Np1 -i ../disable-new-avatar-menu.patch
   patch -Np1 -i ../disable-first-run-behaviour.patch
 
-  # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
-  patch -p1 -i "$srcdir"/PNGImageDecoder.patch
-
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
   # ---
@@ -118,6 +124,10 @@ prepare() {
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+
+  # Disable MADV_FREE (if set by glibc)
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
+  patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -258,13 +268,8 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  for size in 22 24 48 64 128 256; do
-    install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
-  done
-
-  for size in 16 32; do
-    install -Dm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
+  for size in 16 22 24 32 48 64 128 256; do
+    install -Dm644 "$srcdir/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
