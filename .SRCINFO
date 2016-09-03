@@ -1,0 +1,31 @@
+pkgbase = python-blaze
+	pkgdesc = numpy and pandas interface to large datasets
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/blaze/blaze.git
+	arch = any
+	groups = blaze-ecosystem
+	license = BSD
+	makedepends = python-setuptools
+	depends = python>=3.4
+	depends = python-numpy>=1.7
+	depends = python-pandas>=0.15.0
+	depends = python-datashape
+	depends = python-odo
+	depends = python-toolz
+	depends = python-multipledispatch>=0.4.7
+	depends = python-sqlalchemy>=0.8.0
+	depends = python-psutil
+	depends = python-numpydoc
+	depends = python-dask
+	depends = python-flask>=0.10.1
+	depends = python-flask-cors
+	optdepends = python-pymongo: MongoDB support
+	optdepends = python-h5py: HDF5 support
+	optdepends = python-py4j: Spark support
+	source = https://github.com/blaze/blaze/archive/0.11.0.tar.gz
+	md5sums = 1ad77782e2c37130a3b77ec357dccb85
+	sha1sums = 32fe7ea987247006dcbb3c45a15bda54e87eccbf
+
+pkgname = python-blaze
+
