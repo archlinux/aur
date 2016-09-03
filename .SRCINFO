@@ -1,6 +1,6 @@
 pkgbase = mate-themes-3.20-gtk3
 	pkgdesc = Default themes for the MATE desktop
-	pkgver = 3.20.10
+	pkgver = 3.20.11
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = mate-themes-3.20-gtk3
 	provides = mate-themes-gtk3
 	conflicts = mate-themes
 	conflicts = mate-themes-gtk3
-	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-3.20.10.tar.xz
-	sha1sums = d44f484987c269820662a037f763c248a5d24356
+	source = http://pub.mate-desktop.org/releases/themes/3.20/mate-themes-3.20.11.tar.xz
+	sha1sums = 232d935685952fb9324410f0913221cc7e19ee11
 
 pkgname = mate-themes-3.20-gtk3
 
