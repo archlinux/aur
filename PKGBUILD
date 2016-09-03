@@ -2,7 +2,7 @@
  
 pkgname=guacamole-server
 pkgver=0.9.9
-pkgrel=8
+pkgrel=9
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
@@ -30,6 +30,15 @@ build() {
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
 	make DESTDIR="$pkgdir" install
-	mkdir -p "$pkgdir"/etc/systemd/system/
-	install -Dm644 "$srcdir"/guacd.service "$pkgdir"/etc/systemd/system/
+        mkdir -p "$pkgdir"/usr/lib/systemd/system/
+        install -Dm644 "$srcdir"/guacd.service "$pkgdir"//usr/lib/systemd/system/
+	echo
+	echo '-----------------------------------------------------------'
+	echo '------------------------- WARNING -------------------------'
+	echo '-----------------------------------------------------------'
+	echo '   Remember to add "guacd" to the MODULES array in your'
+	echo '   "/etc/rc.conf".'
+	echo 
+	echo '   Or for systemd, do systemctl enable guacd.'
+	echo '-----------------------------------------------------------'
 }
