@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=5.3.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 url="http://www.gnu.org/software/gcc/"
@@ -13,7 +13,7 @@ makedepends=('gmp' 'mpfr')
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=('!emptydirs' '!strip' )
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2")
-sha256sums=('b84f5592e9218b73dbae612b5253035a7b34a9a1f7688d2e1bfaaf7267d5c4db')
+sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5')
 
 prepare() {
   cd gcc-${pkgver}
@@ -28,6 +28,7 @@ build() {
 
   export CFLAGS_FOR_TARGET="-G0 -O2"
   export CXXFLAGS_FOR_TARGET="-G0 -O2"
+
   ../gcc-${pkgver}/configure \
     --target=${_target} \
     --prefix=/usr \
@@ -35,13 +36,14 @@ build() {
     --libexecdir=/usr/lib \
     --with-gnu-as \
     --with-gnu-ld \
-    --without-headers \
+    --with-python-dir=share/gcc-${_target} \
     --with-newlib \
+    --without-headers \
     --without-included-gettext \
+    --enable-checking=release \
     --enable-languages=c \
-    --enable-plugins \
-    --disable-debug \
     --disable-decimal-float \
+    --disable-gold \
     --disable-libatomic \
     --disable-libgcj \
     --disable-libgomp \
@@ -50,13 +52,14 @@ build() {
     --disable-libquadmath-support \
     --disable-libsanitizer \
     --disable-libssp \
+    --disable-libunwind-exceptions \
+    --disable-libvtv \
     --disable-multilib \
     --disable-nls \
     --disable-shared \
     --disable-threads \
     --disable-werror \
-    --enable-checking=release \
-    --enable-gold \
+    --enable-plugin \
     --enable-lto \
     --enable-static \
 
@@ -78,5 +81,4 @@ package() {
   rm -r "$pkgdir"/usr/share/man/man7
   rm -r "$pkgdir"/usr/share/info
   rm "$pkgdir"/usr/lib/libcc1.*
-
 }
