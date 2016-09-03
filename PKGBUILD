@@ -15,7 +15,7 @@ makedepends=('git' 'cmake' 'boost')
 
 
 pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
-source=("$_gitname::git+https://github.com/monero-project/bitmonero.git"
+source=("$_gitname::git+https://github.com/monero-project/monero.git"
         "bitmonerod.service"
         "bitmonerod.conf"
         "bitmonero.install"  
