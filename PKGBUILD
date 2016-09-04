@@ -11,6 +11,7 @@ url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-paralle
 license=("custom")
 install='install'
 
+makedepends=('wget')
 provides=('libcl')
 conflicts=('libcl' 'nvidia-utils')
 
