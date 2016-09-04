@@ -1,9 +1,23 @@
 #
-# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
+# Maintainer: Paul Dunn <pwjdunn AT gmail DOT com>
 #
 # Based on the linux package by:
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
+
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
 
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-nvme       # Build kernel with a different name
@@ -94,6 +108,18 @@ prepare() {
 
   # get kernel version
   make prepare
+
+### Optionally load needed modules for the make localmodconfig
+# See https://aur.archlinux.org/packages/modprobed-db
+if [ -n "$_localmodcfg" ]; then
+ msg "If you have modprobed-db installed, running it in recall mode now"
+   if [ -e /usr/bin/modprobed-db ]; then
+      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install via pacman -S sudo and configure to work with this user." && exit 1
+      sudo /usr/bin/modprobed-db recall
+   fi
+ msg "Running Steven Rostedt's make localmodconfig now"
+ make localmodconfig
+fi
 
   # rewrite configuration
   yes "" | make config >/dev/null
