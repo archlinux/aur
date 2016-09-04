@@ -8,8 +8,8 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbxvt-git
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="xcb terminal emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jefbed/jbxvt"
