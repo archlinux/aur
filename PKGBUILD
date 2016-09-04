@@ -1,3 +1,4 @@
+# Maintainer: Chris Cromer <chris@cromer.cl>
 # Maintainer: artoo <artoo@manjaro.org>
 # Contributor: Philip Müller <philm|manjaro|org>
 # Contributor: Dave Reisner <dreisner@archlinux.org>

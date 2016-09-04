@@ -26,6 +26,10 @@ pkgbase = eudev-systemdcompat
 	conflicts = libsystemd
 	conflicts = openrc-systemdcompat
 	replaces = openrc-systemdcompat
+	source = http://mirror.netcologne.de/archlinux/core/os/x86_64/libsystemd-221-1-x86_64.pkg.tar.xz
+	source = http://mirror.netcologne.de/archlinux/core/os/x86_64/systemd-221-1-x86_64.pkg.tar.xz
+	sha256sums = 567732f68b3a6c583516205bd2fddef4f7db63bd869988cb7c1f34b401968c15
+	sha256sums = 53faf6a01bd593b077a44b3d9a4bf66540f7c0f7ba3c6ea84a1ddcab28bdb573
 
 pkgname = eudev-systemdcompat
 
