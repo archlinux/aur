@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://forge.touhey.fr/lib/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('da4d02167c7884b7892ef2f709cfb7cc')
+md5sums=('4d59601f704771943e1bc0d207b22bd4')
 
 build() {
   cd "$pkgname-$pkgver"
