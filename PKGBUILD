@@ -2,9 +2,10 @@
 
 _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
-epoch=0
-pkgver=2016_7_1
-pkgrel=3
+epoch=1
+_pkgver=2015_2016
+pkgver=2015_2016
+pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -28,10 +29,12 @@ optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
   "idos-timetable-browser-license=${pkgver}"
-  "idos-for-windows=${pkgver}"
 )
 
-conflicts=("${_pkgname}")
+conflicts=(
+  "${_pkgname}"
+  "idos-timetable-browser-license"
+)
 
 replaces=("${_pkgname}<=${pkgver}")
 
@@ -52,7 +55,12 @@ sha256sums=(
 
 
 pkgver() {
-  wget -nv -O- "http://www.chaps.cz/eng/download/idos-install/zip" | grep 'Update date\:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  ### We do not get the version of the installer, since we only use the license file.
+  ### We use the version of the timetable year.
+  
+  echo "${_pkgver}"
+  
+  # wget -nv -O- "http://www.chaps.cz/eng/download/idos-install/zip" | grep 'Update date\:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 
