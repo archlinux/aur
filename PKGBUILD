@@ -4,7 +4,7 @@ _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_7_1
-pkgrel=2
+pkgrel=3
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -75,6 +75,11 @@ build() {
   msg ""
   msg "Also, do not change the other settings during installation. Only" 
   msg "at the very end, you can uncheck to view the ReadMe.txt."
+  msg ""
+  msg "Note: The GUI performs a full installation into a temporary"
+  msg "directory, but after that only the license file will be"
+  msg "extracted and copied to the proper location where the IDOS"
+  msg "timetable browser should already be installed."
   msg ""
   
   wine "./Setup.exe" /LOADINF="installer_settings.inf" /DIR="${_gui_inst}"
