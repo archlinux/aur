@@ -12,15 +12,13 @@ license=('APACHE')
 source=('git+https://github.com/dmlc/xgboost.git'
         'git+https://github.com/dmlc/dmlc-core'
         'git+https://github.com/dmlc/rabit'
-        'python_no_libs.patch'
-        'xgboost_fix_missing_include.patch')
+        'python_no_libs.patch')
 makedepends=('python2-setuptools' 'python-setuptools')
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '610f3ec61f30907eab32ca00ebe84ca0bc5d5566d462ed9c477b130c02f38a74'
-            '5c22abd1a58f0b6da16687e3083a3dbbb961f30f0de359c5637cdbc1948459af')
+            '610f3ec61f30907eab32ca00ebe84ca0bc5d5566d462ed9c477b130c02f38a74')
 
 pkgver() {
   cd "${_name}"
@@ -34,7 +32,6 @@ prepare() {
   git config submodule.rabit.url "${srcdir}/rabit"
   git submodule update
   patch -p1 < "${srcdir}/python_no_libs.patch"
-  grep -qF '<cmath>' src/tree/param.h || patch -p1 < "${srcdir}/xgboost_fix_missing_include.patch"
 }
 
 build() {
