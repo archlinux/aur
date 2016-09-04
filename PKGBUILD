@@ -1,7 +1,7 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
 url='https://github.com/facebook/zstd'
