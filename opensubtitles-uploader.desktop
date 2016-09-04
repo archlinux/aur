@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=Upload your subtitles to OpenSubtitles.org
+Comment[fr]=Envoyer les sous-titres à OpenSubtitles.org
+Name=OpenSubtitles Uploader
+X-GNOME-FullName=OpenSubtitles Uploader
+Exec=/opt/opensubtitles-uploader/opensubtitles-uploader %F
+Icon=opensubtitles-uploader
+StartupNotify=false
+Terminal=false
+Keywords=subtitles;captions;sous-titres;opensubtitles;
+Categories=AudioVideo;Video;Network;
+MimeType=text/x-microdvd;text/x-ssa;application/x-subrip;text/x-subviewer;
+Type=Application
+
