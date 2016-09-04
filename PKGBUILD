@@ -6,7 +6,7 @@ pkgname=('vala-panel-appmenu-translations-git' 'vala-panel-appmenu-xfce-git' 'va
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel and vala-panel"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -32,7 +32,6 @@ prepare() {
   cp -r . "${srcdir}/${_pkgbase}/cmake"
   cd "${srcdir}/${_dbusmenuname}"
   cp -r . "${srcdir}/${_pkgbase}/dbusmenu"
-  rm "${srcdir}/vala-panel-appmenu/vapi/glib-2.0.vapi"
 }
 
 build() {
