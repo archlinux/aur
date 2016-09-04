@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=rsbot
-pkgver=7033
+pkgver=7034
 pkgrel=1
 pkgdesc="The world's most popular RuneScape® bot since 2006"
 arch=('any')
@@ -12,7 +12,7 @@ noextract=("RSBot-${pkgver}.jar")
 source=("http://powerbot-dequeue.netdna-ssl.com/rsbot/releases/RSBot-${pkgver}.jar"
         'icon.png'
         'rsbot.desktop')
-md5sums=('08d8df8736db4089eb21c6825a98616f'
+md5sums=('ec27cb6c62ef4ed158e52396b5baac5e'
          '8cb7793ff1e3ab3057bb9e1218d71a87'
          '7a78455bf7f06bdac59b8699eeab362d')
 
