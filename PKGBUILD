@@ -1,32 +1,35 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 pkgname=kibana
-pkgver=4.5.4
-pkgrel=2
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'"
 arch=('any')
 url="https://www.elastic.co/products/kibana"
 license=('apache')
 depends=('nodejs')
-optdepends=('elasticsearch>=2.2')
+optdepends=('elasticsearch>=2.4')
 backup=('etc/elasticsearch/kibana/kibana.yml')
-install=kibana.install
+options=('!strip')
 source=(
-	"https://download.elasticsearch.org/kibana/kibana/$pkgname-$pkgver-linux-x64.tar.gz"
+	"https://download.elasticsearch.org/kibana/kibana/$pkgname-$pkgver-linux-x86_64.tar.gz"
 	kibana.service)
-sha256sums=('f4f11ce06679f734d01446d0e4016256c4d9f57be6d07a790dbf97bed0998b44'
+sha256sums=('9c6520727e565607bb17c7147591a1328b9de39aa63067e9196ef78cd4f0a3d5'
 			'SKIP')
 
 package() {
-	cd "$srcdir/`basename ${source[0]%.tar.gz}`"
+	cd "$pkgdir"
 
-	mkdir -p $pkgdir/usr/lib/kibana/
-	install -Dm644 "$srcdir/kibana.service" "$pkgdir/usr/lib/systemd/system/kibana.service"
-	install -Dm644 "config/kibana.yml" "$pkgdir/etc/elasticsearch/kibana/kibana.yml"
-	touch $srcdir/.babelcache.json
-	install -Dm666 -o nobody $srcdir/.babelcache.json $pkgdir/usr/lib/kibana/optimize/.babelcache.json
+	install -dm755 usr/lib/kibana
+
+	install -Dm644 "$srcdir/kibana.service" usr/lib/systemd/system/kibana.service
+
+	cd "$srcdir/$pkgname-$pkgver-linux-x86_64"
+
+	install -Dm644 config/kibana.yml "$pkgdir"/etc/elasticsearch/kibana/kibana.yml
 
 	rm -R ./node/
-	chmod +r -R src/
-	find src -type d -exec chmod +x {} \;
-	cp -Rp * "$pkgdir/usr/lib/kibana/"
+#	chmod +r -R src/; find src -type d -exec chmod +x {} \;
+	cp -Rp * "$pkgdir"/usr/lib/kibana/
+
+	chmod o+w "$pkgdir"/usr/lib/kibana/optimize/
 }
