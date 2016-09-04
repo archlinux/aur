@@ -24,7 +24,7 @@ source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-
 	asterisk.tmpfile \
 	'git+https://github.com/seanbright/asterisk-opus.git')
 install=${pkgname}.install
-sha256sums=('d916dff7b8a1648bea7257bb266e102149d88203ae42ef8e6ffe1acdcbe4a495'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
