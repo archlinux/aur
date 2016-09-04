@@ -1,0 +1,6 @@
+polkit.addRule(function(action, subject) {
+	if (action.id == "org.freedesktop.NetworkManager.settings.modify.system" &&
+		subject.isInGroup("network")) {
+		return "yes";
+	}
+});
