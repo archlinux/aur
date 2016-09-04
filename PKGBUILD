@@ -7,7 +7,7 @@
 _spkgrel=1
 _repo=http://mirror.netcologne.de/archlinux/core/os
 
-pkgbasee=eudev-systemdcompat
+pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=231
 pkgrel=3
