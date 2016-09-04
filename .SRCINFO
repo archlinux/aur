@@ -1,0 +1,50 @@
+pkgbase = linux-nvme
+	pkgver = 4.8rc4
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = elfutils
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/patch-4.8-rc4.xz
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = nvmepatch1.patch
+	source = nvmepatch2.patch
+	source = nvmepatch3.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10
+	sha256sums = 56832aae956174d01cf5381947fbb6a0339902285aab2d3ffc804028a4fc5d4a
+	sha256sums = 749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078
+	sha256sums = 7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = ee13c83bf95f8880a4c1346ccf7b2e36772bc06174d3b812c91d7109aca5b600
+	sha256sums = 52a44ac52356816e5b5f39a19c7de2eb08ce634a861821abe060debca479f7e2
+	sha256sums = 9762c163430aabca94efbab29ef702b483f1d9a97a912f84ad0239467cba16bc
+
+pkgname = linux-nvme
+	pkgdesc = The Linux-nvme kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-nvme.preset
+
+pkgname = linux-nvme-headers
+	pkgdesc = Header files and scripts for building modules for Linux-nvme kernel
+
+pkgname = linux-nvme-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-nvme kernel
+
