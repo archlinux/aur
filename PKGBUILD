@@ -6,8 +6,9 @@
 
 pkgname=asterisk-cert-opus
 _pkgname=asterisk-certified
-pkgver=13.8-cert2
-pkgrel=1
+pkgver=13.8.0
+_pkgver=13.8-cert2
+pkgrel=4
 pkgdesc="Certified Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
 url="http://www.asterisk.org"
@@ -17,7 +18,7 @@ makedepends=('sqlite3' 'gsm')
 optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 provides=("asterisk=${pkgver}")
 conflicts=("asterisk" "asterisk-opus")
-source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-${pkgver}.tar.gz \
+source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-${_pkgver}.tar.gz \
 	asterisk.service \
 	asterisk.logrotated \
 	asterisk.tmpfile \
