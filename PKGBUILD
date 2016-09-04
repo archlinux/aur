@@ -15,11 +15,11 @@ md5sums=('3bef73ef41afb6dcba7c578c6e34063f'
          'f8e90af7251e2c76a9d863e283aa3804')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   npm install
   gulp build
 }
