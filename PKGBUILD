@@ -5,7 +5,7 @@ pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver=2015_2016
 pkgver=2015_2016
-pkgrel=5
+pkgrel=6
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -44,6 +44,7 @@ source=(
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "copying.txt"
   "installer_settings.inf"
+  "idos-timetable-browser-license.install"
 )
 
 sha256sums=(
@@ -51,6 +52,7 @@ sha256sums=(
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "6382fff14035c4ec7387e7f0d20d7494e05da3d4c24155090fb39196fa944041"
   "1cdffacf6b199b9a16bb6fedd9a4e08f7e3f897bebb5d891b27601f400f5dffb"
+  "f692f387815e7980b418e6e6b2c2965d79f7f9dfe0fc962f6ed3bbfe5f99570a"
 )
 
 pkgver() {
@@ -68,6 +70,15 @@ build() {
   
   WINEPREFIX="${srcdir}/.wine"
   export WINEPREFIX
+  
+  if locale -a | grep -qE '^cs_CZ'; then
+    if locale -a | grep -qE '^cs_CZ' | grep -qi utf8; then
+      LC_CTYPE="$(locale -a | grep -E '^cs_CZ' | grep -i utf8 | head -n 1)"
+    else
+      LC_CTYPE="$(locale -a | grep -E '^cs_CZ' | tail -n 1)"
+    fi
+    export LC_CTYPE
+  fi
   
   _gui_inst="${srcdir}/IDOS"
   
