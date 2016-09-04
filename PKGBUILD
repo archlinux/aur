@@ -2,7 +2,7 @@
 
 pkgname='libopencl'
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 _appsdk_ver='3.0.0'
 
 pkgdesc='AMD OpenCL library and ICD loader'
