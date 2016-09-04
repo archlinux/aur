@@ -5,7 +5,7 @@ pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver=2015_2016
 pkgver=2015_2016
-pkgrel=1
+pkgrel=2
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -56,7 +56,7 @@ sha256sums=(
 
 pkgver() {
   ### We do not get the version of the installer, since we only use the license file.
-  ### We use the version of the timetable year.
+  ### We use as the version the timetable year.
   
   echo "${_pkgver}"
   
