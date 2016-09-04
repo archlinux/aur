@@ -1,4 +1,5 @@
-# Maintainer: Jochen Schalanda <jochen+aur (at) schalanda.name>
+# Maintainer:  Alad Wenter <alad (at) archlinux.info>
+# Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 # Contributor: C. Dominik Bódi <dominik.bodi@gmx.de>
 # Contributor: Pierre Carrier <pierre@spotify.com>
 # Contributor: Thomas Dziedzic <gostrc (at) gmail>
@@ -8,45 +9,37 @@
 # Contributor: dront78 <dront78 (at) gmail.com>
 # Contributor: hugelgupf <ckoch (at) cs.nmt.edu>
 #
-# NOTE: To request changes to this package, please submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
-#
 pkgname=dpkg
-pkgver=1.18.9
+pkgver=1.18.10
 pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/${pkgname}"
+url="http://packages.debian.org/dpkg"
 license=('GPL')
-depends=('bzip2' 'xz' 'zlib' 'ncurses')
-makedepends=('gcc' 'make' 'perl' 'pkg-config' 'perl-io-string' 'perl-timedate')
-optdepends=('fakeroot')
-replaces=(dpkg-ubuntu)
-conflicts=(dpkg-ubuntu)
-source=(
-	http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
-	dpkg-gzip-rsyncable.patch
-)
-md5sums=('8a28f8cd4b85d10a8a23e6428dd41c41'
-         '71fd0c244ca1fc7132c708022ca50ef0')
+depends=('xz' 'zlib' 'bzip2' 'perl')
+makedepends=('perl-io-string' 'perl-timedate')
+source=("http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver"{.tar.xz,.dsc})
+sha256sums=('025524da41ba18b183ff11e388eb8686f7cc58ee835ed7d48bd159c46a8b6dc5'
+'SKIP')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "$pkgname-$pkgver"
 
-	patch -p0 -i "${startdir}/dpkg-gzip-rsyncable.patch"
-
-	# Build
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin \
-		--disable-start-stop-daemon --disable-install-info --with-zlib --with-bz2 --with-liblzma
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--sbindir=/usr/bin \
+		--disable-start-stop-daemon \
+		--disable-install-info \
+		--with-zlib \
+		--with-liblzma
 	make
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
 
-	# Variables
-	install -d "${pkgdir}/var/${pkgname}/updates/"
-	touch ${pkgdir}/var/lib/${pkgname}/{status,available}
+	install -d "$pkgdir/var/$pkgname"/updates/
+	touch "${pkgdir}/var/lib/$pkgname"/{status,available}
 }
