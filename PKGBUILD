@@ -11,7 +11,7 @@ options=('!docs' '!emptydirs')
 install=$pkgname.install
 source=("https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.20-linux-amd64.deb")
 validpgpkeys=('6DDA23616E3FE905FFDA152AE61DA9241537994D')
-md5sums=('4f0080a3a8f5edd8a22f59cbb1ea28f3')
+md5sums=('ac01b14affa812808fc49e409e1ecd37')
 package() {
   msg2 "Extracting the data.tar.gz..."
   bsdtar -xf data.tar.gz -C "$pkgdir/"
