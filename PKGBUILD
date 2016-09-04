@@ -1,6 +1,6 @@
 # Maintainer: eaut@boehm.org
 pkgname=efistub-git
-pkgver=r16.34fa8de
+pkgver=r17.3548d68
 pkgrel=1
 pkgdesc="Manage UEFI only (secure) boot configurations for Linux EFISTUB kernels"
 arch=("any")
