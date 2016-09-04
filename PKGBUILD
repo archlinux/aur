@@ -1,18 +1,18 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
 pkgbase=xfce4-sntray-plugin
-pkgname=('xfce4-sntray-plugin' 'vala-panel-sntray' 'xfce4-sntray-plugin-translations')
+pkgname=('xfce4-sntray-plugin' 'mate-panel-sntray' 'vala-panel-sntray' 'xfce4-sntray-plugin-translations')
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.3.14
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('cmake' 'vala' 'gtk3' 'xfce4-panel>=4.11.2' 'vala-panel-git')
+makedepends=('cmake' 'vala' 'gtk3' 'xfce4-panel>=4.11.2' 'mate-panel-gtk3' 'vala-panel-git')
 source=("https://github.com/rilian-la-te/xfce4-sntray-plugin/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('e8d592f606ebeecbac784e2471db4a1fedf922c1a3ebb511af74c29bf76eecdd')
+sha256sums=('59fd29e49c9d7bb878516b35169d2ec600e480428ba13f954384f0421c92b3e4')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -34,7 +34,27 @@ package_xfce4-sntray-plugin() {
   make -C "src" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/vala-panel"
+  rm -rf "${pkgdir}/usr/share/mate-panel"
+  rm -rf "${pkgdir}/usr/lib/mate-panel"
   rm -rf "${pkgdir}/usr/share/glib-2.0"
+}
+package_mate-panel-sntray() {
+  install=vala-panel-sntray.install
+  pkgdesc="Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
+  depends=('gtk3' 'mate-panel-gtk3')
+  optdepends=('vala-panel-extras-volume: ALSA volume applet'
+            'vala-panel-extras-battery: UPower battery applet'
+            'vala-panel-extras-weather: Weather applet'
+            'vala-panel-extras-xkb: XKB applet'
+            'sni-qt: Qt applications for StatusNotifier'
+            'libappindicator-gtk2: Gtk2 applications for StatusNotifier'
+            'libappindicator-gtk3: Gtk3 applications for StatusNotifier')
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  make -C "src" DESTDIR="${pkgdir}" install
+  make -C "data" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib/vala-panel"
+  rm -rf "${pkgdir}/usr/lib/xfce4"
+  rm -rf "${pkgdir}/usr/share/xfce4"
 }
 package_vala-panel-sntray() {
   pkgdesc="Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
@@ -52,6 +72,8 @@ package_vala-panel-sntray() {
   make -C "data" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share/xfce4"
+  rm -rf "${pkgdir}/usr/share/mate-panel"
+  rm -rf "${pkgdir}/usr/lib/mate-panel"
 }
 package_xfce4-sntray-plugin-translations() {
   pkgdesc="Translations for StatusNotifier Menu"
