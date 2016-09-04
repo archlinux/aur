@@ -1,5 +1,5 @@
 pkgname=whatsie
-pkgver=2.0.19
+pkgver=2.0.20
 pkgrel=0
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
@@ -9,9 +9,9 @@ depends=('desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgud
 optdepends=('hunspell: spell check' )
 options=('!docs' '!emptydirs')
 install=$pkgname.install
-source=("https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.19-linux-amd64.deb")
+source=("https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.20-linux-amd64.deb")
 validpgpkeys=('6DDA23616E3FE905FFDA152AE61DA9241537994D')
-md5sums=('6634521db3637e95180b7e17abf86c64')
+md5sums=('659483797d26e43e729df15551d91f9b')
 package() {
   msg2 "Extracting the data.tar.gz..."
   bsdtar -xf data.tar.gz -C "$pkgdir/"

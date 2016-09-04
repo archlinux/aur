@@ -1,6 +1,6 @@
 pkgbase = whatsie
 	pkgdesc = A simple & beautiful desktop client for WhatsApp Web.
-	pkgver = 2.0.19
+	pkgver = 2.0.20
 	pkgrel = 0
 	url = https://whatsie.chat/
 	install = whatsie.install
@@ -22,7 +22,7 @@ pkgbase = whatsie
 	optdepends = hunspell: spell check
 	options = !docs
 	options = !emptydirs
-	source = https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.19-linux-amd64.deb
-	md5sums = 6634521db3637e95180b7e17abf86c64
+	source = https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.20-linux-amd64.deb
+	md5sums = 659483797d26e43e729df15551d91f9b
 
 pkgname = whatsie
