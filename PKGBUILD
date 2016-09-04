@@ -11,7 +11,7 @@ _GPU_TARGET=sm30
 ##### End
 
 pkgname=magma
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems. (with CUDA)"
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ url="http://icl.cs.utk.edu/magma/"
 license=(custom)
 depends=("cuda>=6.5.0" "gcc-libs-multilib" "gsl" "python" "cblas")
 options=('staticlibs')
-sha1sums=('5d039250c03ec4e9e197a2826b71015402dbe60b')
+sha1sums=('8bf2dce79bc55e414aae0bc858956f8bd08b9c91')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
@@ -37,15 +37,20 @@ build() {
     #make test
     make sparse
 
-    # FIXME: there is no install target
+    # FIXME: there is no shared library
     #mkdir build && cd build
-    #cmake -DGPU_TARGET=${_GPU_TARGET} ..
+    #cmake -DGPU_TARGET=${_GPU_TARGET} \
+    #    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+    #    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
     #make
 }
 
 package() {
     cd "${srcdir}/magma-${pkgver}"
     make prefix="${pkgdir}/opt/magma" install
+
+    #cd "${srcdir}/magma-${pkgver}/build"
+    #make DESTDIR="${pkgdir}" install
 
     mkdir -p ${pkgdir}/opt/magma/example
     cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
