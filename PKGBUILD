@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://forge.touhey.fr/casio/software/p7/"
 license=('GPL2')
 groups=()
-depends=('libusb' 'libp7')
+depends=('libusb' 'libp7>=1.3-1')
 makedepends=('make' 'clang' 'asciidoc' 'gzip')
 optdepends=()
 provides=()
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://forge.touhey.fr/casio/software/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('980e650f959454a159a93fcbb8025879')
+md5sums=('fa8a1fa30d8fd5d36c9b52ffff499f1a')
 
 build() {
   cd "$pkgname-$pkgver"
