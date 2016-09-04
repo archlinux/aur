@@ -57,8 +57,8 @@ package() {
     # actual installation
     cd $SRC
     make DESTDIR=$pkgdir install
-    cd -
-    pv="${_pkgname}"
+    cd ..
+    pv="${_pkgname}-$pkgver"
 
     # desktop entry file and corresponding icon
     install -Dm644 ../gvim.desktop      $pkgdir/usr/share/applications/gvim.desktop
