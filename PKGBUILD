@@ -1,18 +1,18 @@
 # Maintainer: Samantha McVey samantham@posteo.net
 # Based off the official Chromium package, but with a patch to enable VA-API
-# 
+#
 # Official Arch Linux Chromium package Maintainers and Contributors:
 #
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# 
+#
 pkgname=chromium-vaapi
-pkgver=53.0.2785.89
+pkgver=53.0.2785.92
 pkgrel=1
 _launcher_ver=3
-pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by 
+pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by
 your GPU."
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -39,12 +39,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-widevine.patch
         chromium-52.0.2743.116-unset-madv_free.patch
         chromium_vaapi.patch)
-sha256sums=('2e3c5f7b12b5b4f150b93004a718fb85778aeddc4df05bbf92b99a19a1c63dee'
+sha256sums=('6130483e86c0b22c02c75ec453cf0d54f1079abe2c5c151379fb2eba2411f0f0'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            '97c7878af098b0411a24efc7ca34d3a207ddb81d0fdd2479d164d8eab80c61a0')
+            '37bb0d812819cf21ab8826d04300514103a5fde5c010f7b9f06d7209f33e0c9d')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -84,13 +84,13 @@ prepare() {
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
-  
+
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
   patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
 
 
-  # Use Python 2 
+  # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
