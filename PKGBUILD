@@ -8,7 +8,7 @@
 # Contributor: squiddo <squiddo (at) intheocean.net>
 # Contributor: dront78 <dront78 (at) gmail.com>
 # Contributor: hugelgupf <ckoch (at) cs.nmt.edu>
-#
+
 pkgname=dpkg
 pkgver=1.18.10
 pkgrel=2
@@ -21,6 +21,7 @@ makedepends=('perl-io-string' 'perl-timedate')
 source=("http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver"{.tar.xz,.dsc})
 sha256sums=('025524da41ba18b183ff11e388eb8686f7cc58ee835ed7d48bd159c46a8b6dc5'
 'SKIP')
+#validpgpkeys=(4F3E74F436050C10F5696574B972BF3EA4AE57A3)
 
 build() {
 	cd "$pkgname-$pkgver"
