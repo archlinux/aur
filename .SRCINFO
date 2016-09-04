@@ -3,7 +3,7 @@
 pkgbase = asterisk-cert-opus
 	pkgdesc = Asterisk certified with patches for Opus support from https://github.com/seanbright/asterisk-opus
 	pkgver = 13.8.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.asterisk.org
 	install = asterisk.install
 	arch = i686
@@ -147,8 +147,6 @@ pkgbase = asterisk-cert-opus
 	source = asterisk.logrotated
 	source = asterisk.tmpfile
 	source = git+https://github.com/seanbright/asterisk-opus.git
-	source = https://issues.asterisk.org/jira/secure/attachment/54160/0001-pjproject_bundled-Disable-opus.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -8,7 +8,7 @@ pkgname=asterisk-cert-opus
 _pkgname=asterisk-certified
 pkgver=13.8.0
 _pkgver=13.8-cert2
-pkgrel=8
+pkgrel=9
 pkgdesc="Certified Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
 url="http://www.asterisk.org"
@@ -22,14 +22,12 @@ source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-
 	asterisk.service \
 	asterisk.logrotated \
 	asterisk.tmpfile \
-	'git+https://github.com/seanbright/asterisk-opus.git' \
-	https://issues.asterisk.org/jira/secure/attachment/54160/0001-pjproject_bundled-Disable-opus.patch)
+	'git+https://github.com/seanbright/asterisk-opus.git')
 install=${pkgname}.install
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-			'SKIP'
 			'SKIP')
 
 backup=('etc/asterisk/acl.conf'
