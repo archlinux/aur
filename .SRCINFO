@@ -1,36 +1,72 @@
-pkgbase = mupdf-nojs
+pkgbase = mupdf
 	pkgdesc = Lightweight PDF and XPS viewer
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9_a
+	pkgrel = 1
 	url = http://mupdf.com
-	install = mupdf.install
 	arch = i686
 	arch = x86_64
 	license = AGPL3
+	makedepends = curl
+	makedepends = desktop-file-utils
+	makedepends = freetype2
+	makedepends = glfw
+	makedepends = harfbuzz
+	makedepends = jbig2dec
+	makedepends = libjpeg
 	makedepends = mesa-libgl
+	makedepends = openjpeg2
+	makedepends = openssl
+	conflicts = libmupdf
+	conflicts = mupdf
+	conflicts = mupdf-gl
+	conflicts = mupdf-tools
+	options = staticlibs
+	source = http://mupdf.com/downloads/mupdf-1.9a-source.tar.gz
+	source = 0001-mupdf-openjpeg.patch
+	source = mupdf-0001-bug-696941-fix-use-after-free.patch::http://git.ghostscript.com/?p=mupdf.git;a=patch;h=fa1936405b6a84e5c9bb440912c23d532772f958
+	source = mupdf-0002-make-sure-that-number-of-colors-in-mesh-params-is-valid.patch::http://git.ghostscript.com/?p=mupdf.git;a=patch;h=39b0f07dd960f34e7e6bf230ffc3d87c41ef0f2e
+	source = mupdf.desktop
+	source = mupdf.xpm
+	sha256sums = 8015c55f4e6dd892d3c50db4f395c1e46660a10b460e2ecd180a497f55bbc4cc
+	sha256sums = 3bad2ab6dfd11d7f715c9ea5618856ac386a0841d0ee14a33f0eec55b60bda67
+	sha256sums = a8b72e0368f19349fe434d2fe7febc1e6623abf61d043dfa794a002aed8fef4c
+	sha256sums = e0b53f0999a2c91f7906a9c6d61f7494716507e535e9f2c4dccc8ea490fb1402
+	sha256sums = 70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078
+	sha256sums = a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8
+
+pkgname = libmupdf-nojs
+	pkgdesc = Library for Lightweight PDF and XPS viewer
+
+pkgname = mupdf-nojs
+	pkgdesc = Lightweight PDF and XPS viewer
 	depends = curl
 	depends = desktop-file-utils
 	depends = freetype2
+	depends = harfbuzz
 	depends = jbig2dec
 	depends = libjpeg
-	depends = libxext
+	depends = openjpeg2
+	depends = openssl
+
+pkgname = mupdf-gl-nojs
+	pkgdesc = Lightweight PDF and XPS viewer with OpenGL backend
+	depends = desktop-file-utils
+	depends = freetype2
+	depends = glfw
+	depends = harfbuzz
+	depends = jbig2dec
+	depends = libjpeg
+	depends = openjpeg2
+	depends = openssl
+	provides = mupdf
+	conflicts = mupdf
+
+pkgname = mupdf-tools-nojs
+	pkgdesc = Tools for Lightweight PDF and XPS viewer
+	depends = freetype2
+	depends = jbig2dec
+	depends = libjpeg
 	depends = openssl
 	depends = openjpeg2
-	depends = mesa
-	depends = libgl
-	depends = libxcursor
-	depends = libxrandr
-	depends = libxinerama
-	conflicts = mupdf
-	options = staticlibs
-	source = http://mupdf.com/downloads/mupdf-1.8-source.tar.gz
-	source = mupdf.desktop
-	source = mupdf.xpm
-	source = mupdf-1.5-openjpeg-2.1.0.patch
-	sha256sums = a2a3c64d8b24920f87cf4ea9339a25abf7388496440f13b37482d1403c33c206
-	sha256sums = 70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078
-	sha256sums = a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8
-	sha256sums = 6ea44355ac1309cbd6605a8478e7245f2c0f17f61b30bb72d8ec79f65732452d
-
-pkgname = mupdf-nojs
+	depends = harfbuzz
 
