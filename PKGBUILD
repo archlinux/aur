@@ -4,7 +4,7 @@ pkgbase=xfce4-sntray-plugin
 pkgname=('xfce4-sntray-plugin' 'mate-panel-sntray' 'vala-panel-sntray' 'xfce4-sntray-plugin-translations')
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=('cmake' 'vala' 'gtk3' 'xfce4-panel>=4.11.2' 'mate-panel-gtk3' 'vala-panel-git')
 source=("https://github.com/rilian-la-te/xfce4-sntray-plugin/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('59fd29e49c9d7bb878516b35169d2ec600e480428ba13f954384f0421c92b3e4')
+sha256sums=('3c94ce1e171d89ca8237e5c40a569384216fdb7b8dd18d89ecc21e8db6965e24')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
