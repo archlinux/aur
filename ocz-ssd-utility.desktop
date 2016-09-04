@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OCZ SSD Utility
+GenericName=OCZ SSD Utility
+Comment=SSD Utility is a Graphical User Interface (GUI) based tool for managing OCZ SSDs
+Exec=ocz-ssd-utility_polkit
+Icon=ocz-ssd-utility
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false

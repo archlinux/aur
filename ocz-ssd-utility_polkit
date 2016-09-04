@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+  pkexec --disable-internal-agent "/usr/bin/ocz-ssd-utility" "$@"
+else
+  /usr/bin/ocz-ssd-utility "$@"
+fi
+
