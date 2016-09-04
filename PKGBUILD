@@ -2,7 +2,7 @@
 # Maintainer: Sandro Vitenti <sandro@isoftware.com.br>
 
 pkgname=(python-healpy-git python2-healpy-git)
-pkgver=1.9.1.r986.g1c2fcb0
+pkgver=1.9.1.r999.g49c12f5
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
