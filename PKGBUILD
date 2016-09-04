@@ -8,7 +8,7 @@ pkgname=asterisk-cert-opus
 _pkgname=asterisk-certified
 pkgver=13.8.0
 _pkgver=13.8-cert2
-pkgrel=7
+pkgrel=8
 pkgdesc="Certified Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
 url="http://www.asterisk.org"
@@ -147,7 +147,7 @@ prepare() {
   cp -v "${srcdir}/asterisk-opus/codecs/"* "${srcdir}/${_pkgname}-${_pkgver}/codecs/"
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   patch -p1 < "${srcdir}/asterisk-opus/asterisk.patch"
-  patch -p1 < "0001-pjproject_bundled-Disable-opus.patch"
+  patch -p1 < "${srcdir}/0001-pjproject_bundled-Disable-opus.patch"
 }
 
 build() {
