@@ -4,7 +4,7 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.30.beta.3.gf4e37ee
+pkgver=2.5.0.11.g6f8da2f
 pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 
 depends=(
 	'qt5-x11extras' 'qt5-multimedia' 'ffmpeg' 'lame'
-	'desktop-file-utils' 'xdg-utils' 'lsof' 'pulseaudio-alsa'
+	'lsof' 'pulseaudio-alsa' 'libxrandr' 'xdg-utils'
 )
 makedepends=('git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
