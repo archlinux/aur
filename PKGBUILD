@@ -18,9 +18,9 @@ optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2'
 provides=("asterisk=${pkgver}")
 conflicts=("asterisk" "asterisk-opus")
 source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-${pkgver}.tar.gz \
-	${_pkgname}.service \
-	${_pkgname}.logrotated \
-	${_pkgname}.tmpfile \
+	asterisk.service \
+	asterisk.logrotated \
+	asterisk.tmpfile \
 	'git+https://github.com/seanbright/asterisk-opus.git')
 install=${_pkgname}.install
 sha256sums=('9953d3ea0023f7be0e14aed587725dacc199116c9453587093e1489073b53d5d'
