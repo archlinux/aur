@@ -1,35 +1,46 @@
 pkgbase = eudev
-	pkgdesc = The userspace dev tools (udev) forked by Gentoo
-	pkgver = 3.1.2
-	pkgrel = 4
+	pkgver = 3.2
+	pkgrel = 2
 	url = http://www.gentoo.org/proj/en/eudev/
 	arch = i686
 	arch = x86_64
+	groups = base
+	groups = base-openrc
 	license = GPL
 	makedepends = gobject-introspection
 	makedepends = gperf
 	makedepends = gtk-doc
 	makedepends = intltool
-	depends = glib2
+	makedepends = kmod
+	options = !libtool
+	options = !staticlibs
+	source = eudev-3.2.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.tar.gz
+	source = initcpio_hooks
+	source = initcpio_install
+	source = udev-hwdb.hook
+	sha256sums = 37829d37f4beb7e358ca33abc1ad0907d87f917ce157777aeaeebeacae24efdc
+	sha256sums = 892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13
+	sha256sums = 77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875
+	sha256sums = 7432c12205ba58ecb94a417198012fc1739ae107ffd0bf5a6e22dd9bdbf69d76
+
+pkgname = eudev
+	pkgdesc = The userspace dev tools (udev) forked by Gentoo
+	depends = libeudev
 	depends = kbd
 	depends = kmod
 	depends = hwids
 	depends = util-linux
-	optdepends = eudev-systemdcompat: makes packages compiled with systemd features run
-	optdepends = upower-pm-utils: pm-utils support
-	provides = udev=221
-	provides = libudev=221
+	optdepends = eudev-systemd: makes packages compiled with systemd features run
+	optdepends = udev-openrc: udev starup scripts for openrc
+	provides = udev=220
+	backup = etc/udev/udev.conf
+
+pkgname = libeudev
+	pkgdesc = eudev client libraries
+	depends = glib2
+	depends = glibc
+	optdepends = libeudev-systemd: systemd client libraries
+	provides = libudev=220
 	provides = libudev.so
 	conflicts = libudev.so
-	options = !makeflags
-	options = !libtool
-	backup = etc/udev/udev.conf
-	source = https://github.com/gentoo/eudev/archive/v3.1.2.tar.gz
-	source = initcpio_hooks
-	source = initcpio_install
-	sha256sums = f8b08fee36f7cf9389dd1dce67a863b717ea54437a96e0921f94e0497eb5dab6
-	sha256sums = 892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13
-	sha256sums = 77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875
-
-pkgname = eudev
 
