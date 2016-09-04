@@ -6,13 +6,13 @@
 
 pkgname=zabbix-proxy-sqlite
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.zabbix.com"
 license=('GPL')
 depends=('sqlite3' 'fping' 'openipmi' 'libxml2')
-makedepends=('binutils' 'gcc' 'make' 'fakeroot')
+makedepends=('binutils' 'gcc' 'make' 'fakeroot' 'openssl')
 backup=('etc/zabbix/zabbix_proxy.conf')
 
 install='zabbix-proxy.install'
@@ -35,7 +35,8 @@ build() {
 		--with-net-snmp \
 		--with-openipmi \
 		--with-libxml2 \
-		--with-libcurl
+		--with-libcurl \
+		--with-openssl
 
 	make
 }
