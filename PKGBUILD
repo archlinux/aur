@@ -12,7 +12,7 @@ url='ftp://ftp.porcupine.org/pub/security/index.html'
 license=('custom')
 depends=('lib32-glibc')
 source=("ftp://ftp.porcupine.org/pub/security/${_pkgname}_${pkgver}.tar.gz"
-	"http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz")
+	"https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/archlinux-stuff/tcp-wrappers-${pkgver}%2B.patch.gz")
 sha256sums=('9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
 	'875239e808030936c1dd576aba4dee6044496e8316bc32b2169468a2e9f471a1')
 
