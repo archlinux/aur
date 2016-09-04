@@ -2,7 +2,7 @@
 
 pkgbase=postgresql-beta
 pkgname=('postgresql-beta-libs' 'postgresql-beta-docs' 'postgresql-beta')
-pkgver=9.6beta4
+pkgver=9.6rc1
 _majorver=9.6
 pkgrel=1
 arch=('aarch64' 'i686' 'x86_64')
@@ -13,13 +13,13 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
         postgresql.service postgresql-check-db-dir)
-md5sums=('a08e5a1ff60b5ca2b5c3c93472b37c2a'
+md5sums=('ee9f4ee46f2e0c8c2e4e44ca310c4a86'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
          '5a7933453a572bbe12320b088272ee71'
          '6eb990a98cdd2e385de2c53c288a388c')
-sha256sums=('4725eb7779659325fcbf5338e3364f79bb095838517a645aa32e8c47b4d61432'
+sha256sums=('9e260252f04b7f6abe3877eb1cb8affa4ecc2abbadadf9bd874ad257e9a01a1d'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
