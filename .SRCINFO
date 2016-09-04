@@ -2,8 +2,8 @@
 # Tue Aug 23 12:51:25 UTC 2016
 pkgbase = p7
 	pkgdesc = Transfer files in and out of your CASIO fx calculator through USB
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://forge.touhey.fr/casio/software/p7/
 	arch = i686
 	arch = x86_64

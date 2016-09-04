@@ -1,7 +1,7 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Transfer files in and out of your CASIO fx calculator through USB"
 arch=('i686' 'x86_64')
 url="https://forge.touhey.fr/casio/software/p7/"
