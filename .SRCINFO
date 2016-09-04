@@ -1,0 +1,17 @@
+pkgbase = lib32-libmumble
+	pkgdesc = A voice chat application similar to TeamSpeak (32-bit overlay library)
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = http://mumble.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = mesa
+	makedepends = gcc-multilib
+	depends = mumble=1.2.16
+	depends = lib32-libgl
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.16/mumble-1.2.16.tar.gz
+	md5sums = 58e7574af80e36e0b943df0e6a44d6ce
+
+pkgname = lib32-libmumble
+

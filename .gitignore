@@ -1,0 +1,6 @@
+pkg/*
+src/*
+*.pkg.*
+
+# mumble source
+mumble*
