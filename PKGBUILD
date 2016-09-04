@@ -5,8 +5,8 @@
 
 pkgname=keepassx-git
 _gitname=keepassx
-pkgver=2.0.2.r87.g409e94d
-pkgrel=2
+pkgver=2.0.2.r94.gb654fde
+pkgrel=1
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassx/keepassx"
@@ -15,7 +15,7 @@ depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desk
 install=keepassx.install
 makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx-svn' 'keepassx2-git' 'keepassx' 'keepassx2' 'keepassx2-yubikey-git')
-provides=("keepassx"{,2}"=$pkgver" "keepassx-svn=$pkgver" "keepassx2-git=$pkgver")
+provides=("keepassx"{,2}"=${pkgver}" "keepassx-svn=${pkgver}" "keepassx2-git=${pkgver}")
 options=(!emptydirs)
 source=(git+https://github.com/keepassx/keepassx.git)
 md5sums=('SKIP')
