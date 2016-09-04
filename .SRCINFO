@@ -3,7 +3,7 @@
 pkgbase = asterisk-cert-opus
 	pkgdesc = Asterisk certified with patches for Opus support from https://github.com/seanbright/asterisk-cert-opus
 	pkgver = 13.8-cert2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.asterisk.org
 	install = asterisk.install
 	arch = i686
