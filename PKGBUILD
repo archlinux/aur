@@ -5,11 +5,12 @@
 
 pkgname=('tlp-pmu')
 _pkgname=tlp
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc='Advanced Power Management for Linux, with pm-utils support'
 depends=('hdparm' 'iw' 'pciutils' 'rfkill' 'usbutils' 'util-linux' 'pm-utils')
-optdepends=('acpi_call: Sandy Bridge and newer ThinkPad battery functions'
+optdepends=('acpi_call: ThinkPad battery functions, Sandy Bridge and newer'
+            'bash-completion: Bash completion'
             'ethtool: Disable Wake On Lan'
             'lsb-release: Display LSB release version in tlp-stat'
             'smartmontools: Display S.M.A.R.T. data in tlp-stat'
@@ -25,16 +26,12 @@ arch=('any')
 url='http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html'
 license=('GPL2' 'GPL3')
 source=("https://github.com/linrunner/TLP/archive/${pkgver}.tar.gz"
-        'tlp-arch.patch'
         'https://github.com/dywisor/tlp-portage/raw/maint/app-laptop/tlp/files/tlp-init.openrc-r2')
-sha256sums=('d5c0423fde7247cc519001caebd60e538ff5ef2be9456d2049303eef4da1aae3'
-            'd62af086a8c97db354c2bb57d21f4a2b4faa8e60335d5994fad07698e67b4eba'
+sha256sums=('887b226d443f930398fda5793ac690e1e1ef7dd2187db7be0278359315aa7a76'
             'dd2a5bade0e904d685a6a8d0313cda6455820dd3bf634b424dac6ebb7c8334ff')
 
 prepare() {
-  cd TLP-${pkgver}
-
-  patch -Np1 -i ../tlp-arch.patch
+  sed -e 's/\/sbin\/openrc-run/\/usr\/bin\/openrc-run/' -e 's/\/usr\/sbin\/tlp/\/usr\/bin\/tlp/g' -i tlp-init.openrc-r2
 }
 
 package() {
@@ -47,11 +44,7 @@ package() {
   export TLP_NO_PMUTILS='0'
   export TLP_WITH_SYSTEMD='0'
 
-  make DESTDIR="${pkgdir}" install-tlp
-
-  install -dm 755 "${pkgdir}"/usr/share/man/man{1,8}
-  install -m 644 man/*.1 "${pkgdir}"/usr/share/man/man1/
-  install -m 644 man/*.8 "${pkgdir}"/usr/share/man/man8/
+  make DESTDIR="${pkgdir}" install-tlp install-man
 
   # Move out tlp sysvinit service and replace it with the openrc one
   mv "${pkgdir}/etc/init.d/tlp" "${pkgdir}/etc/init.d/tlp.sysvinit"
