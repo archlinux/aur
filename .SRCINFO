@@ -23,6 +23,6 @@ pkgbase = whatsie
 	options = !docs
 	options = !emptydirs
 	source = https://dl.bintray.com/aluxian/aur/dist/whatsie-2.0.20-linux-amd64.deb
-	md5sums = 659483797d26e43e729df15551d91f9b
+	md5sums = 4f0080a3a8f5edd8a22f59cbb1ea28f3
 
 pkgname = whatsie
