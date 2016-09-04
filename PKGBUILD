@@ -4,7 +4,7 @@
 pkgbase=ca-certificates-blacklist
 pkgname=('ca-certificates-blacklist-cnnic' 'ca-certificates-blacklist-wosign' 'ca-certificates-blacklist-startcom')
 pkgver=3.26
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of broken CAs' certificates which should not be trusted"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(any)
@@ -32,7 +32,6 @@ package_ca-certificates-blacklist-cnnic() {
     cd "$srcdir/certs"
     install -Dm644 -t "$pkgdir/usr/share/ca-certificates/trust-source/blacklist/" \
         CNNIC_ROOT\:2.4.73.51.0.1.crt \
-        Certification_Authority_of_WoSign_G2:2.16.107.37.218.138.136.157.124.188.15.5.179.177.122.97.69.68.crt \
         China_Internet_Network_Information_Center_EV_Certificates_Root\:2.4.72.159.0.1.crt
 }
 
@@ -41,6 +40,7 @@ package_ca-certificates-blacklist-wosign() {
     cd "$srcdir/certs"
     install -Dm644 -t "$pkgdir/usr/share/ca-certificates/trust-source/blacklist/" \
         CA_WoSign_ECC_Root:2.16.104.74.88.112.128.107.240.143.2.250.246.222.232.176.144.144.crt \
+        Certification_Authority_of_WoSign_G2:2.16.107.37.218.138.136.157.124.188.15.5.179.177.122.97.69.68.crt \
         WoSign:2.16.94.104.214.17.113.148.99.80.86.0.104.243.62.201.197.145.crt \
         WoSign_China:2.16.80.112.107.205.216.19.252.27.78.59.51.114.210.17.72.141.crt
 }
