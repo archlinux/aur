@@ -11,8 +11,8 @@ pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.zabbix.com"
 license=('GPL')
-depends=('sqlite3' 'fping' 'openipmi' 'libxml2')
-makedepends=('binutils' 'gcc' 'make' 'fakeroot' 'openssl')
+depends=('sqlite3' 'fping' 'openipmi' 'libxml2' 'openssl')
+makedepends=('binutils' 'gcc' 'make' 'fakeroot')
 backup=('etc/zabbix/zabbix_proxy.conf')
 
 install='zabbix-proxy.install'
