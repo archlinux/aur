@@ -1,0 +1,24 @@
+pkgbase = efistub-git
+	pkgdesc = Manage UEFI only (secure) boot configurations for Linux EFISTUB kernels
+	pkgver = r16.34fa8de
+	pkgrel = 1
+	url = https://github.com/eaut/efistub
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = efibootmgr
+	depends = efitools
+	depends = efivar
+	depends = sbsigntools
+	depends = binutils
+	depends = openssl
+	depends = bash
+	depends = coreutils
+	depends = util-linux
+	provides = efistub
+	conflicts = efistub
+	source = efistub::git+https://github.com/eaut/efistub.git
+	sha256sums = SKIP
+
+pkgname = efistub-git
+
