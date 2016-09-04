@@ -1,0 +1,64 @@
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Art Gramlich <art@gramlich-net.com>
+# Maintainer: Kevin Perry <perry+aur@coffee-break.at>
+
+_pkgbase=icu
+_pkgmajor=50
+_pkgminor=1
+_pkgpatch=2
+_libdir='/usr/lib'
+
+pkgname=${_pkgbase}${_pkgmajor}
+pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
+pkgrel=1
+pkgdesc='International Components for Unicode library'
+url='http://site.icu-project.org/'
+license=('custom:icu')
+
+arch=('i686' 'x86_64')
+depends=('gcc-libs>=4.7.1-5' 'sh')
+source=("http://download.icu-project.org/files/${_pkgbase}4c/${pkgver}/${_pkgbase}4c-${pkgver//./_}-src.tgz"
+        'icu.8198.revert.icu5431.patch'
+        'icu-testtwodigityear.patch')
+md5sums=('beb98aa972219c9fcd9c8a71314943c9'
+         'ebd5470fc969c75e52baf4af94a9ee82'
+         '8d14652aee347adba25886cd14af1637')
+
+prepare() {
+  cd ${srcdir}/${_pkgbase}/source
+
+  # fix Malayalam encoding https://bugzilla.redhat.com/show_bug.cgi?id=654200
+  patch -Rp3 -i ${srcdir}/icu.8198.revert.icu5431.patch
+
+  # fix TestTwoDigitYear https://sourceforge.net/p/icu/mailman/message/32443311/
+  # patch taken from CentOS 7 source package
+  # http://vault.centos.org/7.2.1511/os/Source/SPackages/icu-50.1.2-15.el7.src.rpm
+  patch -p2 -i ${srcdir}/icu-testtwodigityear.patch
+}
+
+build() {
+  cd ${srcdir}/${_pkgbase}/source
+
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --mandir=/usr/share/man
+  make
+}
+
+check() {
+  cd ${srcdir}/${_pkgbase}/source
+  make check
+}
+
+package() {
+  cd ${srcdir}/${_pkgbase}/source
+
+  # copy only version specific libs
+  mkdir -p ${pkgdir}${_libdir}
+  cp -a lib/libicu*${_pkgmajor}* ${pkgdir}${_libdir}
+
+  # install license
+  install -Dm644 ${srcdir}/${_pkgbase}/license.html ${pkgdir}/usr/share/licenses/${pkgname}/license.html
+}
+
+# vim:set ts=2 sw=2 et:
