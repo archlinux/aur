@@ -1,6 +1,6 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=libp7
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
