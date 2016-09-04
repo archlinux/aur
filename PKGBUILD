@@ -141,20 +141,20 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/xmpp.conf')
 
 prepare() {
-  cp -v "${srcdir}/asterisk-opus/formats/"* "${srcdir}/${_pkgname}-${pkgver}/formats/"
-  cp -v "${srcdir}/asterisk-opus/codecs/"* "${srcdir}/${_pkgname}-${pkgver}/codecs/"
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cp -v "${srcdir}/asterisk-opus/formats/"* "${srcdir}/${_pkgname}-${_pkgver}/formats/"
+  cp -v "${srcdir}/asterisk-opus/codecs/"* "${srcdir}/${_pkgname}-${_pkgver}/codecs/"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   patch -p1 < "${srcdir}/asterisk-opus/asterisk.patch"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make
 }
 
 package(){
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   make "DESTDIR=${pkgdir}" install
   make "DESTDIR=${pkgdir}" samples
   
