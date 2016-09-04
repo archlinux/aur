@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-browser-license-installer-latest
 	pkgdesc = If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation.
 	pkgver = 2015_2016
-	pkgrel = 3
+	pkgrel = 5
 	epoch = 1
 	url = http://www.chaps.cz/eng/download/idos-install/
 	arch = i686

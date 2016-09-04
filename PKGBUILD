@@ -5,7 +5,7 @@ pkgname="${_pkgname}-latest"
 epoch=1
 _pkgver=2015_2016
 pkgver=2015_2016
-pkgrel=3
+pkgrel=5
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
@@ -53,7 +53,6 @@ sha256sums=(
   "1cdffacf6b199b9a16bb6fedd9a4e08f7e3f897bebb5d891b27601f400f5dffb"
 )
 
-
 pkgver() {
   ### We do not get the version of the installer, since we only use the license file.
   ### We use as the version the timetable year.
@@ -67,6 +66,9 @@ pkgver() {
 build() {
   cd "${srcdir}"
   
+  WINEPREFIX="${srcdir}/.wine"
+  export WINEPREFIX
+  
   _gui_inst="${srcdir}/IDOS"
   
   msg ""
@@ -78,8 +80,11 @@ build() {
   msg "If you purchased only a local license, not a network license,"
   msg "please MAKE SURE that the wine-drive we are going to install to"
   msg "is NOT A NETWORK DRIVE but a LOCAL HARDDISK. If necessary,"
-  msg "abort, run 'winecfg' to reconfigure, and then restart"
-  msg "installation."
+  msg "abort, run"
+  msg "  WINEPREFIX=${WINEPREFIX} winecfg"
+  msg "to reconfigure, and then resume installation (e.g. with makepkg)"
+  msg "from where you aborted, without deleting and re-creating"
+  msg "${srcdir} and ${WINEPREFIX}."
   msg ""
   msg "Also, do not change the other settings during installation. Only" 
   msg "at the very end, you can uncheck to view the ReadMe.txt."
@@ -90,8 +95,6 @@ build() {
   msg "timetable browser should already be installed."
   msg ""
   
-  WINEPREFIX="${srcdir}/.wine"
-  export WINEPREFIX
   wine "./Setup.exe" /LOADINF="installer_settings.inf" /DIR="${_gui_inst}"
 }
 
