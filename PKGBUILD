@@ -4,7 +4,7 @@ _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=1.27_lib2.8.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -46,6 +46,8 @@ source=(
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
   "README.datafiles.txt"
+  "ReadMe.cz.txt"
+  "ReadMe.en.txt"
   "idos-timetable-browser.install"
 )
 
@@ -55,6 +57,8 @@ sha256sums=(
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
   "45bf7c462d7154360d0007a6d7c00c6aa6b49339b6f178cf24e5b1a40ca702d7"
+  "0ea6e9a36d54a7b9de5b87e9182b40fad0a9f673ae2195c29f32bf4538fa2f76"
+  "3a99d362a56fb52d5259549bf932df184e227fae79ed46be60f5b80e5d95c492"
   "670e6a40bade4562fb93c7cb29191c1869c286acbb7f616c8b78f09842a82cbd"
 )
 
@@ -80,8 +84,12 @@ package() {
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
   chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
   install -D -m644 "${srcdir}/README.datafiles.txt"        "${pkgdir}/usr/share/doc/${_pkgname}/README.datafiles.txt"
+  install -D -m644 "${srcdir}/ReadMe.cz.txt"               "${pkgdir}/usr/share/doc/${_pkgname}/ReadMe.cz.txt"
+  install -D -m644 "${srcdir}/ReadMe.en.txt"               "${pkgdir}/usr/share/doc/${_pkgname}/ReadMe.en.txt"
 
   ln -s "/usr/share/doc/${_pkgname}/README.datafiles.txt"  "${_instdir}/README.datafiles.txt"
+  ln -s "/usr/share/doc/${_pkgname}/ReadMe.cz.txt"         "${_instdir}/ReadMe.cz.txt"
+  ln -s "/usr/share/doc/${_pkgname}/ReadMe.en.txt"         "${_instdir}/ReadMe.en.txt"
 
   install -D -m644 "${srcdir}/license-dummy.txt"           "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
   install -D -m644 "${srcdir}/IDOS-Licence.pdf"            "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
