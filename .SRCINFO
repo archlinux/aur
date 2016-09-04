@@ -1,0 +1,23 @@
+pkgbase = teamviewer-openrc
+	pkgdesc = OpenRC scripts for teamviewer.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/cromerc/arch-openrc
+	arch = any
+	license = GPL2
+	depends = teamviewer
+	depends = openrc
+	provides = teamviewer-openrc
+	backup = etc/conf.d/teamviewer
+	source = teamviewer.init
+	source = teamviewer.conf
+	sha256sums = dd1fa7d8d1513ce5a908dfa514cbe59ccf0d840714de14ce8297dfb49f752e3f
+	sha256sums = 5cd8485974ef1c62be8fbe4d92f31a03b616e1a3e46c11bcadef7bdb2c169d8a
+
+pkgname = teamviewer-openrc
+	pkgdesc = OpenRC scripts for teamviewer.
+	install = teamviewer-openrc.install
+	depends = teamviewer
+	depends = openrc
+	backup = etc/conf.d/teamviewer
+
