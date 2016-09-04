@@ -1,21 +1,24 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+
 pkgname=pyg3t
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python gettext Translation Toolkit"
 arch=(any)
-url="https://launchpad.net/pyg3t"
+url="https://github.com/pyg3t/pyg3t"
 license=('GPL')
 depends=('python2')
-source=($url/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('a05172b2988fd8a6ff1203c490b5217f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+md5sums=('89b67b54a08a7bd465d9ed69fd11dcb2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  sed -i "s#!/usr/bin/env python#&2#" \
-        pyg3t/poabc.py pyg3t/podiff.py pyg3t/gtxml.py \
-        pyg3t/gtgrep.py pyg3t/gtparse.py pyg3t/popatch.py
+    # fix python2 calls
+  PYTHON_CALLERS="$(grep -R 'python$' --exclude-dir=build | cut -d: -f1)"
+  sed -i -e 's|env python$|env python2|' \
+         -e 's|bin/python$|bin/python2|' \
+         ${PYTHON_CALLERS}
 
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
