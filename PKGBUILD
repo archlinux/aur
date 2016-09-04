@@ -3,8 +3,8 @@
 pkgname=(python2-astroml-git python-astroml-git)
 pkgbase=python2-astroml-git
 _pkgname=astroML
-pkgver=2015.07.15.gb9e783d
-pkgrel=2
+pkgver=2016.07.26.g0287fe0
+pkgrel=1
 pkgdesc="AstroML is a Python module for machine learning and data mining built on numpy, scipy, scikit-learn, and matplotlib."
 
 url='http://www.astroml.org/'
