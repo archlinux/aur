@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv6l' 'armv7h' 'armv7l')
 url='ftp://ftp.porcupine.org/pub/security/index.html'
 license=('custom')
 source=("ftp://ftp.porcupine.org/pub/security/${pkgbase}_${pkgver}.tar.gz"
-	"http://archlinux-stuff.googlecode.com/files/tcp-wrappers-${pkgver}%2B.patch.gz"
+	"https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/archlinux-stuff/tcp-wrappers-${pkgver}%2B.patch.gz"
 	'hosts.allow'
 	'hosts.deny')
 sha256sums=('9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
