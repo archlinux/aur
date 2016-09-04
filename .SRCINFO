@@ -1,0 +1,19 @@
+pkgbase = firewalld-openrc
+	pkgdesc = OpenRC scripts for firewalld.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/cromerc/arch-openrc
+	arch = any
+	license = GPL2
+	depends = firewalld
+	depends = openrc
+	provides = firewalld-openrc
+	source = firewalld.init
+	sha256sums = 96593cc0e8efcb60b0aa6b9e994dae31ec31cd812aca1145b7829b0a40e0dfa6
+
+pkgname = firewalld-openrc
+	pkgdesc = OpenRC scripts for firewalld.
+	install = firewalld-openrc.install
+	depends = firewalld
+	depends = openrc
+
