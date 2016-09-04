@@ -7,7 +7,7 @@
 
 pkgname=ttf-google-fonts-git
 pkgver=20151118
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType fonts from the Google Fonts project"
 arch=('any')
 url="https://github.com/google/fonts"
@@ -24,6 +24,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'googlefontdirectory'
            'jsmath-fonts'
            'lohit-fonts'
+           'noto-fonts'
            'oldstand-font'
            'openarch_fonts'
            'otf-bitter'
@@ -34,20 +35,20 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-cardo'
            'ttf-chromeos-fonts'
            'ttf-comfortaa'
+           'ttf-croscore'
            'ttf-droid'
            'ttf-fira-mono'
            'ttf-fira-sans'
            'ttf-google-fonts-hg'
+           'ttf-google-webfonts'
            'ttf-google-webfonts-git'
            'ttf-google-webfonts-hg'
-           'ttf-google-webfonts'
            'ttf-inconsolata'
            'ttf-kimberly_geswein_print'
            'ttf-lato'
            'ttf-lekton'
            'ttf-medievalsharp'
            'ttf-noto'
-           'noto-fonts'
            'ttf-nova'
            'ttf-oldstandard'
            'ttf-opensans'
