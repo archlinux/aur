@@ -3,17 +3,16 @@
 # Contributor: Santi Villalba <sdvillal@gmail.com>
 
 pkgname=python-guessit
-pkgver=0.11.0
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A library for guessing information from video files."
 arch=(any)
 url="http://pypi.python.org/pypi/guessit"
 license=(LGPL)
-depends=(python python-babelfish python-stevedore python-requests python-dateutil)
-makedepends=(python-distribute)
+depends=(python python-babelfish python-dateutil python-rebulk)
 conflicts=(${pkgname}-git)
 source=(http://pypi.python.org/packages/source/g/guessit/guessit-${pkgver}.tar.gz)
-md5sums=('ded69d55db57e0a57a588f0be6243871')
+sha256sums=('4f72e21fca9c294651abee26554e2ad778220d90a84f6e1195299a7ec17accb1')
 
 package() {
     cd "${srcdir}/guessit-${pkgver}"
