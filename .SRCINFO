@@ -1,7 +1,7 @@
 pkgbase = k3d-git
 	pkgdesc = A free 3D modelling and animation software
 	pkgver = r3516.5a9dcad
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.k-3d.org
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = k3d-git
 	makedepends = graphviz
 	makedepends = libxslt
 	depends = cgal
+	depends = collada-dom
 	depends = ftgl
 	depends = glew
 	depends = gnome-vfs
