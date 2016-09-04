@@ -4,7 +4,7 @@ _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=1.27_lib2.8.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -90,10 +90,12 @@ package() {
   ln -s "/usr/share/doc/${_pkgname}/README.datafiles.txt"  "${_instdir}/README.datafiles.txt"
   ln -s "/usr/share/doc/${_pkgname}/ReadMe.cz.txt"         "${_instdir}/ReadMe.cz.txt"
   ln -s "/usr/share/doc/${_pkgname}/ReadMe.en.txt"         "${_instdir}/ReadMe.en.txt"
-  ln -s "${_instdirbase}/ReadMe.en.txt"                    "${_instdir}/ReadMe.txt"
 
   install -D -m644 "${srcdir}/license-dummy.txt"           "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
   install -D -m644 "${srcdir}/IDOS-Licence.pdf"            "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
 
   install -D -m755 "${srcdir}/idos-timetable-browser.sh"   "${_execdir}/idos-timetable-browser"
+  
+  cd ${_instdir}
+  ln -s ReadMe.en.txt ReadMe.txt
 }
