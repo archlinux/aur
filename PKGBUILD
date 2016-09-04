@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-enigmail-bin
 _pkg_main_ver=1.9
-pkgver=${_pkg_main_ver}.3
+pkgver=${_pkg_main_ver}.5
 pkgrel=1
 pkgdesc="The Mozilla Thunderbird GnuPG encryption plugin for both 32 and 64 bit systems. Binary version."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('enigmail' 'thunderbird-enigmail' 'enigmail-cvs' 'thunderbird-enigmai
 replaces=('enigmail-64-bin' 'enigmail-bin')
 options=(!strip)
 install='thunderbird-enigmail-bin.install'
-source=("http://www.mozilla-enigmail.org/download/release/${_pkg_main_ver}/enigmail-${pkgver}-tb+sm.xpi"{,.asc})
+source=("http://www.mozilla-enigmail.org/download/release/${_pkg_main_ver}/enigmail-${pkgver}-sm+tb.xpi"{,.asc})
 noextract=(enigmail-${pkgver}-sm+tb.xpi)
 sha384sums=('SKIP'
             'SKIP')
