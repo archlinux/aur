@@ -12,7 +12,7 @@ url="http://docs.python.org/"
 license=('GPL')
 options=('docs')
 source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-	"devhelp-build-py2.patch"
+        "devhelp-build-py2.patch"
         "layout.html"
         "theme.conf")
 sha256sums=('d7837121dd5652a05fef807c361909d255d173280c4e1a4ded94d73d80a1f978'
