@@ -33,7 +33,7 @@ pkgbase = linux-nvme
 	sha256sums = 9762c163430aabca94efbab29ef702b483f1d9a97a912f84ad0239467cba16bc
 
 pkgname = linux-nvme
-	pkgdesc = The Linux-nvme kernel with patches made by Andy Lutomirski 
+	pkgdesc = The Linux kernel with patches made by Andy Lutomirski 
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
