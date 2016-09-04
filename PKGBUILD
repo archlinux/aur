@@ -5,7 +5,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=124.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -14,7 +14,8 @@ depends=('python2')
 makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
             'java-environment: for Java version of App Engine'
-            'php: for PHP version of App Engine')
+            'php: for PHP version of App Engine'
+            'python2-crcmod: verify the integrity of object contents')
 options=('!strip' 'staticlibs')
 
 # 64bit
@@ -85,6 +86,8 @@ package() {
     "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
   # this conflicts with google-appengine-python
   rm -f "$pkgdir/usr/bin/dev_appserver.py"
+  # this conflicts with google-appengine-python-php
+  rm -f "$pkgdir/usr/bin/endpointscfg.py"
 
   # The tarball is rather sloppy with it's file permissions
   msg2 "Fixing file permissions"
