@@ -8,13 +8,13 @@ pkgbase = vokoscreen-git
 	license = GPL2
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = libxrandr
 	depends = qt5-x11extras
 	depends = qt5-multimedia
 	depends = ffmpeg
 	depends = lame
 	depends = lsof
 	depends = pulseaudio-alsa
-	depends = libxrandr
 	depends = xdg-utils
 	provides = vokoscreen=2.5.0.11.g6f8da2f
 	conflicts = vokoscreen

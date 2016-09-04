@@ -13,9 +13,9 @@ license=('GPL2')
 
 depends=(
 	'qt5-x11extras' 'qt5-multimedia' 'ffmpeg' 'lame'
-	'lsof' 'pulseaudio-alsa' 'libxrandr' 'xdg-utils'
+	'lsof' 'pulseaudio-alsa' 'xdg-utils'
 )
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'libxrandr')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
