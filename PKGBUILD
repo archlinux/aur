@@ -16,21 +16,19 @@ conflicts=('libcl' 'nvidia-utils')
 
 _agr_url='http://developer.amd.com/amd-license-agreement-appsdk/'
 
-#Architecture resolution
-
-[ "$CARCH" = 'x86_64' ] && _file='AMD-APP-SDK-v3.0-0.113.50-Beta-linux64.tar.bz2' \
-                        || _file='AMD-APP-SDK-v3.0-0.113.50-Beta-linux32-1.tar.bz2'
-
-[ "$CARCH" = 'x86_64' ] && _hash='0d806087e5fef7fdfb9372388afe2ff7b382041ba5a23160d58143166005f2d4' \
-                        || _hash='0520a2fac0e945195419ec560e7d340cbcb2da3a3412cb2f38584263a7198d35'
+# Architecture resolution
 
 _arch="${CARCH/i6/x}"
 _bits="${_arch/x86/32}"
 _bits="${_bits/32_/}"
 
+_file="AMD-APP-SDKInstaller-v3.0.130.136-GA-linux${_bits}.tar.bz2"
+[ "$CARCH" = 'x86_64' ] && _hash='0aa436acd334b686820bd3caab9f09014608741b92e3996d3642d0b148ede0f7' \
+                        || _hash='181fb9815e735c90ca5713acc27a6f9ed7f85135d2f2a085bed7b4c7ed157b94'
+
 _tarball="AMD-APP-SDK-${_appsdk_ver}-${CARCH}.tar.bz2"
-_sfx="AMD-APP-SDK-v3.0-0.113.50-Beta-linux${_bits}.sh"
-[ "$CARCH" = 'x86_64' ] && _offset=9512 || _offset=9513
+_sfx="AMD-APP-SDK-v3.0.130.136-GA-linux${_bits}.sh"
+_offset=9484
 _inner='inner.tar.bz2'
 
 _wget()
@@ -68,9 +66,9 @@ prepare()
 		echo "${_hash} ${_tarball}" | sha256sum -c || exit 1
 
 		msg "Extracting ${_tarball} ..."
-		bsdtar -jxf "${_tarball}"
-		dd ibs="${_offset}" skip=1 if="${_sfx}" of="${_inner}" 2> /dev/null
-		bsdtar -jxf "${_inner}"
+		bsdtar -jxOf "${_tarball}" \
+		| dd ibs="${_offset}" skip=1 of="${_inner}" 2> /dev/null
+		bsdtar -zxf "${_inner}"
 	else
 		exit 1
 	fi
@@ -81,7 +79,7 @@ package()
 	#Install libOpenCL
 	#I'm not very sure about so version, so I'm going to cover several cases...
 	install -d -m 755 "${pkgdir}/usr/lib"
-	install -m 755 "lib/${_arch}/libOpenCL.so.1" "${pkgdir}/usr/lib/libOpenCL.so"
+	install -m 755 "lib/${_arch}/libOpenCL.so" "${pkgdir}/usr/lib/libOpenCL.so"
 	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.1"
 	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2"
 	ln -s 'libOpenCL.so' "${pkgdir}/usr/lib/libOpenCL.so.2.0"
