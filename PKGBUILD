@@ -8,7 +8,7 @@
 
 pkgname=minidlna-video-thumb
 pkgver=1.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to create video thumbnails"
 # The patch can be found here: https://sourceforge.net/p/minidlna/patches/92/
 arch=('i686' 'x86_64')
@@ -33,9 +33,9 @@ md5sums=('1970e553a1eb8a3e7e302e2ce292cbc4'
 
 prepare() {
   cd "$srcdir/minidlna-$pkgver"
-  ./autogen.sh
   patch -p1 < "$srcdir/video_thumbnail-1.1.4.patch"
   sed -i 's|#user=.*|user=minidlna|g' minidlna.conf
+  ./autogen.sh
 }
 
 build() {
