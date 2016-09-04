@@ -8,14 +8,14 @@ pkgname=asterisk-cert-opus
 _pkgname=asterisk-certified
 pkgver=13.8.0
 _pkgver=13.8-cert2
-pkgrel=5
+pkgrel=7
 pkgdesc="Certified Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
 url="http://www.asterisk.org"
 license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject' 'opus' 'libsrtp')
 makedepends=('sqlite3' 'gsm')
-optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
+optdepends=('lua51'  'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
 provides=("asterisk=${pkgver}")
 conflicts=("asterisk" "asterisk-opus")
 source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-${_pkgver}.tar.gz \
@@ -149,7 +149,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./bootstrap.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled
   make
 }
 
