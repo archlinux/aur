@@ -3,11 +3,11 @@
 pkgname=usbguard-git
 _pkgname=usbguard
 pkgver=0.6.0.r0.g94b9b99
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git")
-depends=("libqb-git" "libsodium" "libsystemd" "gcc-libs-multilib" "libcap-ng" "glib2" "libseccomp" "protobuf")
+depends=("libqb-git" "libsodium" "libsystemd" "gcc-libs-multilib" "libcap-ng" "glib2" "libseccomp" "protobuf" "qt5-base" "hicolor-icon-theme")
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
 source=("${_pkgname}::git+https://github.com/dkopecek/usbguard.git")
@@ -32,6 +32,7 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
+	--with-gui-qt=qt5 \
 	--with-bundled-spdlog \
 	--with-bundled-catch \
 	--with-bundled-pegtl
