@@ -21,5 +21,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX="/usr" DESTDIR="$pkgdir/" install
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 PATENTS "$pkgdir/usr/share/licenses/$pkgname/PATENTS"
 }
 
