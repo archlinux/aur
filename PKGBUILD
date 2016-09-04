@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mozo
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="MATE menu editing tool (GTK3 version)"
 url="http://mate-desktop.org"
@@ -17,7 +17,7 @@ depends=('gtk-update-icon-cache' 'mate-menus-dev' 'python2-gobject')
 makedepends=('mate-common-dev')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f15807f9050cb92d444c9e2e06c73b5aedda85cb')
+sha1sums=('ebbee79cdfe56adcfdd12ef182f01bb39b4d3a15')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
