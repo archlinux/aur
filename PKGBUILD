@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-tariff-chaps-trains-cz+sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_8_22
+pkgver=2016_9_2
 pkgrel=1
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains."
 arch=(any)
@@ -15,7 +15,6 @@ groups=(
        )
 
 depends=(
-         # "idos-timetable-data"
          "idos-timetable-data-trains"
         )
 
