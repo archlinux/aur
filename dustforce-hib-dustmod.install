@@ -1,0 +1,17 @@
+# make the program files writable by the 'dustmod' group to allow the dustmod
+# auto-updater to work
+
+post_install () {
+    groupadd -f dustmod
+    chgrp -R dustmod /opt/dustforce-dustmod
+    chmod -R g+w /opt/dustforce-dustmod
+
+    echo "To allow the dustmod auto-updater to work," \
+        "add your user to the 'dustmod' group."
+}
+
+post_remove () {
+    groupdel dustmod
+    # remove any files created by the auto-updater
+    rm -rf /opt/dustforce-dustmod
+}
