@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-common-latest
 	pkgdesc = Common files needed for train timetable data for the timetable search engines by CHAPS.
 	pkgver = 2016_9_2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
