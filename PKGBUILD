@@ -5,7 +5,7 @@ pkgname=('xfce4-sntray-plugin' 'mate-panel-sntray' 'vala-panel-sntray' 'xfce4-sn
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ package_xfce4-sntray-plugin() {
 package_mate-panel-sntray() {
   install=vala-panel-sntray.install
   pkgdesc="Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-  depends=('gtk3' 'mate-panel-gtk3')
+  depends=('gtk3' 'mate-panel-gtk3' 'xfce4-sntray-plugin-translations')
   optdepends=('vala-panel-extras-volume: ALSA volume applet'
             'vala-panel-extras-battery: UPower battery applet'
             'vala-panel-extras-weather: Weather applet'
@@ -55,10 +55,11 @@ package_mate-panel-sntray() {
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share/xfce4"
+  rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
 package_vala-panel-sntray() {
   pkgdesc="Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-  depends=('gtk3' 'vala-panel' 'libpeas')
+  depends=('gtk3' 'vala-panel' 'libpeas' 'xfce4-sntray-plugin-translations')
   install=vala-panel-sntray.install
   optdepends=('vala-panel-extras-volume: ALSA volume applet'
             'vala-panel-extras-battery: UPower battery applet'
@@ -74,12 +75,15 @@ package_vala-panel-sntray() {
   rm -rf "${pkgdir}/usr/share/xfce4"
   rm -rf "${pkgdir}/usr/share/mate-panel"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
+  rm -rf "${pkgdir}/usr/share/glib-2.0"
 }
 package_xfce4-sntray-plugin-translations() {
   pkgdesc="Translations for StatusNotifier Menu"
-  optdepends=('vala-panel-sntray-plugin'
-              'xfce4-sntray-plugin')
+  optdepends=('xfce4-sntray-plugin')
   arch=('any')
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C "po" DESTDIR="${pkgdir}" install
+  make -C "data" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/share/xfce4"
+  rm -rf "${pkgdir}/usr/share/mate-panel"
 }
