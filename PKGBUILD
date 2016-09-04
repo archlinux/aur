@@ -2,7 +2,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=k3d
 pkgver=0.8.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A free 3D modelling and animation software"
 arch=('x86_64' 'i686')
 url="http://www.k-3d.org"
@@ -28,20 +28,23 @@ makedepends=('asciidoc'
              'graphviz'
              'libxslt')
 source=("git+https://github.com/K-3D/${pkgname}.git#tag=${pkgname}-${pkgver}"
-        "cmake_paths_and_defs_fixes.patch")
+        "cmake_paths_and_defs_fixes.patch"
+        "glew.patch")
 sha256sums=(SKIP
-            'fc8b7be14382b6b49fa908ff43773df5ec4e7b3401cc22629f6e2f6f7c4ee704')
+            'fc8b7be14382b6b49fa908ff43773df5ec4e7b3401cc22629f6e2f6f7c4ee704'
+            'dbfb367e1a55b40e6e1c6a91f3d30d762e321128779e7fcf0557dbdf825b3b99')
 
 build() {
   cd "${srcdir}/${pkgname}"
   patch -Np1 -i "${srcdir}/cmake_paths_and_defs_fixes.patch"
+  patch -Np1 -i "${srcdir}/glew.patch"
   mkdir -p "${srcdir}/${pkgname}-build"
   cd "${srcdir}/${pkgname}-build"
-  # aqsis module: AUR package build is broken and cmake package information missing
-  # carve module: current library version is no longer compatible
-  # collada io module: current library version is no longer compatible 
-  # google perftools module: upstream release is broken, cmake error
-  # opencascade module: upstream release is broken, missing header
+  # aqsis: only required for Qt UI rendering preview
+  # carve: current library version is no longer compatible
+  # collada io: current library version is no longer compatible 
+  # google perftools: current library version is no longer compatible
+  # opencascade: current library version is no longer compatible
   cmake "${srcdir}/${pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DK3D_BUILD_AQSIS_MODULE=OFF \
@@ -55,4 +58,16 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-build"
   make DESTDIR="${pkgdir}/" install
+}
+
+post_install() {
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
 }
