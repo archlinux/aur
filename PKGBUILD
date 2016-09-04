@@ -3,8 +3,8 @@
 
 pkgname=chicken-readline
 _pkgname=readline
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.1.2
+pkgrel=1
 pkgdesc='An interface to the GNU readline library'
 arch=('i686' 'x86_64')
 url='http://wiki.call-cc.org/eggref/4/readline'
@@ -23,5 +23,5 @@ package() {
     chicken-install -p "$pkgdir/usr"
 
     # Modify setup-info file to use the typical install path.
-    find "$pkgdir/usr" -name "${_pkgname}.setup-info" -exec sed -e "s|$pkgdir||g" -i {} \;
+    find "$pkgdir/usr" -name "$_pkgname.setup-info" -exec sed -e "s|$pkgdir||g" -i {} \;
 }
