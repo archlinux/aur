@@ -1,7 +1,7 @@
 # Maintainer: Barnaby Gray <barnaby@pickle.me.uk>
 pkgname=cli53
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64')
 license=('BSD')
