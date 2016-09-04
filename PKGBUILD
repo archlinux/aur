@@ -1,17 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mktxn
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-pkgdesc="Double-entry bookkeeping transaction journal parser and serializer"
+pkgdesc="Double-entry accounting ledger packager"
 arch=('any')
 depends=('perl6'
          'perl6-config-toml'
          'perl6-file-presence'
-         'perl6-txn-parser')
+         'perl6-txn-parser'
+         'perl6-txn-remarshal')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
-groups=('perl6' 'nightscape')
+groups=('perl6')
 url="https://github.com/atweiden/mktxn"
 license=('UNLICENSE')
 source=($pkgname-$pkgver::git+https://github.com/atweiden/mktxn
