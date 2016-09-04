@@ -2,20 +2,16 @@
 
 pkgname=usbguard-git
 _pkgname=usbguard
-pkgver=0.5.14.r0.g9e2f0e2
+pkgver=0.6.0.r0.g94b9b99
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
-makedepends=("git" "libsodium")
-depends=("libqb-git")
+makedepends=("git")
+depends=("libqb-git" "libsodium" "libsystemd" "gcc-libs-multilib" "libcap-ng" "glib2" "libseccomp" "protobuf")
 arch=("i686" "x86_64")
 url='https://github.com/dkopecek/usbguard'
-source=(
-	"${_pkgname}::git+https://github.com/dkopecek/usbguard.git"
-	"disable_json_regression_test.patch")
-sha256sums=(
-	'SKIP'
-	'e9fb74e9b892e9956b5208a533595189f5e10da1cb564c5653925bd888b7697b')
+source=("${_pkgname}::git+https://github.com/dkopecek/usbguard.git")
+sha256sums=('SKIP')
 provides=("usbguard")
 conflicts=("usbguard")
 backup=(
@@ -29,7 +25,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 <../disable_json_regression_test.patch
 }
 
 build() {
@@ -37,7 +32,6 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
-	--with-bundled-json \
 	--with-bundled-spdlog \
 	--with-bundled-catch \
 	--with-bundled-pegtl
@@ -53,7 +47,7 @@ check() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	make SYSTEMD_UNIT_DIR="/usr/lib/systemd/system" DESTDIR="$pkgdir/" install
-	mkdir -p ${pkgdir}/etc/usbguard
-	install -p -m 644 ./usbguard-daemon.conf ${pkgdir}/etc/usbguard/usbguard-daemon.conf
-	install -p -m 644 ./rules.conf ${pkgdir}/etc/usbguard/rules.conf
+	mkdir -p "${pkgdir}/etc/usbguard"
+	install -p -m 644 ./usbguard-daemon.conf "${pkgdir}/etc/usbguard/usbguard-daemon.conf"
+	install -p -m 644 ./rules.conf "${pkgdir}/etc/usbguard/rules.conf"
 }
