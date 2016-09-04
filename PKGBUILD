@@ -14,10 +14,10 @@
 #
 pkgname=dpkg-jessie
 pkgver=1.17.27
-pkgrel=1
+pkgrel=2
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/${pkgname}"
+url="http://packages.debian.org/${pkgname//-jessie/}"
 license=('GPL')
 depends=('bzip2' 'xz' 'zlib' 'ncurses')
 makedepends=('gcc' 'make' 'perl' 'pkg-config' 'perl-io-string' 'perl-timedate')
@@ -25,14 +25,14 @@ optdepends=('fakeroot')
 replaces=(dpkg-ubuntu dpkg)
 conflicts=(dpkg-ubuntu dpkg)
 source=(
-	http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
+	http://ftp.debian.org/debian/pool/main/d/${pkgname//-jessie/}/${pkgname//-jessie/}_${pkgver}.tar.xz
 	dpkg-gzip-rsyncable.patch
 )
 md5sums=('6e2d761a3c4a9a9e1856337557ec1f9e'
          '71fd0c244ca1fc7132c708022ca50ef0')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname//-jessie/}-${pkgver}"
 
 	patch -p0 -i "${startdir}/dpkg-gzip-rsyncable.patch"
 
@@ -43,10 +43,10 @@ build() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname//-jessie/}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 	# Variables
-	install -d "${pkgdir}/var/${pkgname}/updates/"
-	touch ${pkgdir}/var/lib/${pkgname}/{status,available}
+	install -d "${pkgdir}/var/${pkgname//-jessie/}/updates/"
+	touch ${pkgdir}/var/lib/${pkgname//-jessie/}/{status,available}
 }
