@@ -8,7 +8,7 @@ url="https://forge.touhey.fr/casio/software/p7/"
 license=('GPL2')
 groups=()
 depends=('libusb' 'libp7>=1.3-1')
-makedepends=('make' 'clang' 'asciidoc' 'gzip')
+makedepends=('make' 'asciidoc' 'gzip')
 optdepends=()
 provides=()
 conflicts=()
