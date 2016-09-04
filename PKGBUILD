@@ -3,14 +3,14 @@
 
 pkgname=libretro-parallel-git
 _gitname=mupen64plus-libretro
-pkgver=4141.c52af9b
-pkgrel=1
+pkgver=4277.61ab4e9
+pkgrel=2
 pkgdesc="Mupen64plus with dynarec and vulvan powered rdp lle"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('custom' 'GPL' 'LGPL')
 makedepends=('git' 'vulkan-headers')
-depends=('libglvnd' 'vulkan-icd-loader')
+depends=('libglvnd' 'vulkan-icd-loader' 'clang')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
 
@@ -25,9 +25,9 @@ pkgver() {
 build() {
   cd "${_gitname}"
   if [ $CARCH == "i686" ];then
-   make WITH_DYNAREC=x86 HAVE_VULKAN=1
+   make WITH_DYNAREC=x86 HAVE_VULKAN=1 HAVE_PARALLEL_RSP=1
   else
-   make WITH_DYNAREC=$CARCH HAVE_VULKAN=1
+   make WITH_DYNAREC=$CARCH HAVE_VULKAN=1 HAVE_PARALLEL_RSP=1
   fi
 }
 
