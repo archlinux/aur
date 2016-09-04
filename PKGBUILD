@@ -22,12 +22,14 @@ source=(http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-
 	asterisk.service \
 	asterisk.logrotated \
 	asterisk.tmpfile \
-	'git+https://github.com/seanbright/asterisk-opus.git')
+	'git+https://github.com/seanbright/asterisk-opus.git' \
+	https://issues.asterisk.org/jira/secure/attachment/54160/0001-pjproject_bundled-Disable-opus.patch)
 install=${pkgname}.install
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+			'SKIP'
 			'SKIP')
 
 backup=('etc/asterisk/acl.conf'
@@ -145,6 +147,7 @@ prepare() {
   cp -v "${srcdir}/asterisk-opus/codecs/"* "${srcdir}/${_pkgname}-${_pkgver}/codecs/"
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   patch -p1 < "${srcdir}/asterisk-opus/asterisk.patch"
+  patch -p1 < "0001-pjproject_bundled-Disable-opus.patch"
 }
 
 build() {
