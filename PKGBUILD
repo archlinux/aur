@@ -2,7 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=lib32-talloc
-pkgver=2.1.6
+pkgver=2.1.8
 pkgrel=1
 pkgdesc='A hierarchical pool based memory allocator with destructors'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 source=("http://samba.org/ftp/talloc/talloc-${pkgver}.tar.gz")
 depends=('lib32-glibc' 'talloc')
 makedepends=('gcc-multilib' 'lib32-python2')
-sha256sums=('3b8e1a50bacb359d99942e0dd9941cef779ae4b5eb20f138873bd8270cb1d47b')
+sha256sums=('22d14911164d4de67ff76b5269fa5250d01f78c955bc77e28615350996877130')
 
 prepare() {
   cd talloc-${pkgver}
