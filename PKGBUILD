@@ -2,8 +2,8 @@
 
 pkgname=perl6-txn-parser
 pkgver=0.0.1
-pkgrel=2
-pkgdesc="Double-entry bookkeeping transaction journal parser"
+pkgrel=3
+pkgdesc="Double-entry accounting ledger parser"
 arch=('any')
 depends=('perl6' 'perl6-digest-xxhash')
 checkdepends=('perl')
