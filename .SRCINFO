@@ -1,0 +1,18 @@
+pkgbase = udev-openrc
+	pkgdesc = OpenRC udev startup scripts
+	pkgver = 31
+	pkgrel = 1
+	url = https://github.com/manjaro/packages-openrc
+	arch = any
+	groups = base
+	groups = openrc-base
+	license = GPL2
+	depends = openrc
+	depends = udev
+	source = http://dev.gentoo.org/~williamh/dist/udev-init-scripts-31.tar.gz
+	source = kmod-static-nodes.initd
+	sha256sums = f8113922f0e062527268da6cc0d8168e64c61e353f6e84292fc64d7c6e4bffae
+	sha256sums = 3ecbe7761b92a123a5a3d395ec3d9e090b0dfba7910a5987b4a2298c20a7e571
+
+pkgname = udev-openrc
+
