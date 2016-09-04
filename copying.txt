@@ -1,0 +1,1 @@
+This package provides a pesonal license file for customers who have purchased the product. The license file is generated after entering the personal registration code. This package may not be re-distributed and only be used by the qualified customer and according to the conditions under which he is allowed to use the licensed version of IDOS for Windows by CHAPS spol. s.r.o.

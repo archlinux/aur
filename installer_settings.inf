@@ -1,0 +1,6 @@
+[Setup]
+Group=IDOS Komplet
+NoIcons=1
+SetupType=custom
+Components=programtt
+Tasks=
