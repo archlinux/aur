@@ -10,10 +10,10 @@ url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 
 depends=(
-	'qt5-x11extras' 'qt5-multimedia' 'ffmpeg' 'lame' 
-	'lsof' 'pulseaudio-alsa' 'libxrandr' 'xdg-utils'
+	'qt5-x11extras' 'qt5-multimedia' 'ffmpeg' 'lame'
+	'lsof' 'pulseaudio-alsa' 'xdg-utils'
 )
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'libxrandr')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
