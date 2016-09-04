@@ -13,7 +13,6 @@ pkgbase = vokoscreen
 	depends = lame
 	depends = lsof
 	depends = pulseaudio-alsa
-	depends = desktop-file-utils
 	depends = libxrandr
 	depends = xdg-utils
 	provides = vokoscreen=2.5.0
