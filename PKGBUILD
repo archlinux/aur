@@ -3,11 +3,13 @@
 
 pkgname=python2-docs-devhelp
 pkgver=2.7.12
-pkgrel=1
-pkgdesc="Set of HTML documentation for Python 2.x with GNOME-Devhelp support."
+pkgrel=2
+pkgdesc="Set of HTML documentation for Python 2.x with GNOME Devhelp support."
 arch=('any')
 makedepends=('python2' 'python2-sphinx')
+depends=('devhelp')
 provides=('python2-docs')
+conflicts=('python2-docs')
 url="http://docs.python.org/"
 license=('GPL')
 options=('docs')
@@ -38,13 +40,15 @@ build() {
 }
 
 package() {
+  # Copy files
   install -m 755 -d "${pkgdir}/usr/share/doc/python2/html"
-  install -m 755 -d "${pkgdir}/usr/share/devhelp/books"
   cp -rf "${srcdir}/Python-${pkgver}/Doc/build/devhelp"/* \
          "${pkgdir}/usr/share/doc/python2/html/"
   find "${pkgdir}/usr/share/doc/python2/html/" -type f -exec chmod 0644 {} \;
   find "${pkgdir}/usr/share/doc/python2/html/" -type d -exec chmod 0755 {} \;
   mv "${pkgdir}/usr/share/doc/python2/html/Python.devhelp.gz" \
      "${pkgdir}/usr/share/doc/python2/html/python2.devhelp.gz"
+  # Add Devhelp book
+  install -m 755 -d "${pkgdir}/usr/share/devhelp/books"
   ln -s "../../doc/python2/html" "${pkgdir}/usr/share/devhelp/books/python2"
 }
