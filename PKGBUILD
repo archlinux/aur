@@ -2,7 +2,7 @@
 
 pkgname=(python-numba-llvmlite-git python2-numba-llvmlite-git)
 pkgbase=python-numba-llvmlite-git
-pkgver=0.22.1.r572.gf16f201
+pkgver=0.29.0.dev.r9.gbd492b8
 pkgrel=1
 pkgdesc="NumPy aware dynamic Python compiler using LLVMLITE, which is able to 
 work with LLVM 3.7, rather than LLVMPY."
