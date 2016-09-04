@@ -8,7 +8,7 @@ pkgname=asterisk-cert-opus
 _pkgname=asterisk-certified
 pkgver=13.8.0
 _pkgver=13.8-cert2
-pkgrel=4
+pkgrel=5
 pkgdesc="Certified Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
 url="http://www.asterisk.org"
@@ -28,8 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-			'SKIP'
-            'SKIP')
+			'SKIP')
 
 backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/adsi.conf'
