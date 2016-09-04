@@ -1,7 +1,7 @@
-pkgbase = mupdf
+pkgbase = mupdf-nojs
 	pkgdesc = Lightweight PDF and XPS viewer
 	pkgver = 1.9_a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mupdf.com
 	arch = i686
 	arch = x86_64

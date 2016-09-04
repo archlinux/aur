@@ -6,10 +6,11 @@
 # Contributor: Pierre-Paul Paquin <pierrepaulpaquin@gmail.com>
 # Contributor: xduugu
 
-pkgbase=mupdf
+_pkgbase=mupdf
+pkgbase=${_pkgbase}-nojs
 pkgname=(libmupdf-nojs mupdf-nojs mupdf-gl-nojs mupdf-tools-nojs)
 pkgver=1.9_a
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight PDF and XPS viewer'
 arch=('i686' 'x86_64')
 url='http://mupdf.com'
@@ -34,7 +35,7 @@ sha256sums=('8015c55f4e6dd892d3c50db4f395c1e46660a10b460e2ecd180a497f55bbc4cc'
 )
 
 prepare() {
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
 
   # remove bundled packages, we want our system libraries
   rm -rf thirdparty/{curl,freetype,glfw,harfbuzz,jbig2dec,jpeg,openjpeg,zlib}
@@ -67,14 +68,14 @@ build() {
   SYS_GLFW_LIBS="$(pkg-config --libs glfw3) -lGL"
   export HAVE_GLFW SYS_GLFW_CFLAGS SYS_GLFW_LIBS
 
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
   HAVE_MUJS="no" make build=release
 }
 
 package_libmupdf-nojs() {
   pkgdesc='Library for Lightweight PDF and XPS viewer'
 
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
 
   HAVE_MUJS="no" make build=release prefix="$pkgdir"/usr install
 
@@ -90,7 +91,7 @@ package_mupdf-nojs() {
   depends=('curl' 'desktop-file-utils' 'freetype2' 'harfbuzz' 'jbig2dec'
            'libjpeg' 'openjpeg2' 'openssl')
 
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
 
   install -D -m0755 build/release/mupdf-x11-curl "$pkgdir"/usr/bin/mupdf
 
@@ -110,7 +111,7 @@ package_mupdf-gl-nojs() {
   depends=('desktop-file-utils' 'freetype2' 'glfw' 'harfbuzz' 'jbig2dec'
            'libjpeg' 'openjpeg2' 'openssl')
 
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
 
   install -D -m0755 build/release/mupdf-gl "$pkgdir"/usr/bin/mupdf
 
@@ -129,7 +130,7 @@ package_mupdf-tools-nojs() {
   depends=('freetype2' 'jbig2dec' 'libjpeg'
          'openssl' 'openjpeg2' 'harfbuzz')
 
-  cd $pkgbase-${pkgver/_/}-source
+  cd ${_pkgbase}-${pkgver/_/}-source
 
   install -D -m0755 build/release/mutool "$pkgdir"/usr/bin/mutool
   install -D -m0755 build/release/mujstest "$pkgdir"/usr/bin/mujstest
