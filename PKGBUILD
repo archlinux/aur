@@ -11,7 +11,7 @@
 #
 pkgname=dpkg
 pkgver=1.18.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/dpkg"
@@ -30,9 +30,7 @@ build() {
 		--localstatedir=/var \
 		--sbindir=/usr/bin \
 		--disable-start-stop-daemon \
-		--disable-install-info \
-		--with-zlib \
-		--with-liblzma
+		--disable-install-info
 	make
 }
 
