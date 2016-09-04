@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-data-chaps-trains-cz
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_8_23
+pkgver=2016_9_2
 pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
