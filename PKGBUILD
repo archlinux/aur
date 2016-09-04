@@ -3,7 +3,7 @@
 pkgname=micro-nightly-bin
 pkgver=20160903
 pkgrel=1
-_hash="a4ac9f2 "
+_hash="a4ac9f2"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
