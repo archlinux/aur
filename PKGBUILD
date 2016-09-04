@@ -1,7 +1,8 @@
-# Maintainer: Erhan SAHIN < erhan@ssahin.net >
+# Contributor: Erhan SAHIN < erhan@ssahin.net >
+# Maintainer: Will Price <will.price94@gmail.com>
 
 pkgname=python2-semantic-version
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Semantic version comparison for Python"
 arch=('any')
@@ -11,7 +12,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/s/semantic_version/semantic_version-$pkgver.tar.gz")
-sha256sums=('33018ab2807ba395c418b4633993a7572b8a4b3e924823f5828788023b3c9b30')
+md5sums=('9a3f8e3ca00dcd2da16e30d55a4d4d99')
 
 package() {
   cd "$srcdir/semantic_version-$pkgver"
