@@ -4,7 +4,7 @@ _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_4
-pkgrel=1
+pkgrel=3
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -15,8 +15,6 @@ groups=(
        )
 
 depends=(
-         # "idos-timetable-data"
-         # "idos-timetable-data-chaps-all"
          "idos-timetable-data-trains-cz"
         )
 
