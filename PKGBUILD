@@ -12,7 +12,7 @@ url="https://cgit.freedesktop.org/xorg/lib/libXfont"
 license=('custom')
 groups=('xorg')
 depends=('glibc' 'systemd-tools' 'mtdev')
-makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto' 'git')
+makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto' 'git' 'xtrans')
 provides=("$_pkgname=$pkgver" 'xfont2')
 conflicts=('xorg-server<1.18.0' "$_pkgname")
 options=('!libtool' '!makeflags')
