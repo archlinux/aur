@@ -4,7 +4,7 @@ _pkgname=idos-timetable-additionalinfo-chaps-mhd-pid
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_2_17
-pkgrel=1
+pkgrel=2
 pkgdesc="Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -15,9 +15,7 @@ groups=(
        )
 
 depends=(
-         # "idos-timetable-data"
-         # "idos-timetable-data-chaps-all"
-         "idos-timetable-data-MHD-PID"
+         "idos-timetable-data-mhd-pid"
         )
 
 makedepends=(
@@ -29,7 +27,7 @@ optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
   
-  "idos-timetable-additionalinfo-MHD-PID=${pkgver}"
+  "idos-timetable-additionalinfo-mhd-pid=${pkgver}"
 )
 
 conflicts=(
