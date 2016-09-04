@@ -5,7 +5,7 @@
 
 name='babelfish'
 pkgname=python-$name
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A module to work with countries and languages"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python')
 options=(!emptydirs)
 
 source=("http://pypi.python.org/packages/source/b/$name/$name-$pkgver.tar.gz")
-md5sums=('49ef0bacc0886ffa2333bc85ca4b8799')
+sha256sums=('8380879fa51164ac54a3e393f83c4551a275f03617f54a99d70151358e444104')
 
 package() {
     cd "$srcdir/$name-$pkgver"
