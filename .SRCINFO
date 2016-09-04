@@ -1,0 +1,24 @@
+pkgbase = cbmc-git
+	pkgdesc = Bounded Model Checking for ANSI-C
+	pkgver = cbmc.5.5.r81.8f47419
+	pkgrel = 1
+	url = http://www.cprover.org/cbmc/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = patch
+	makedepends = make
+	makedepends = perl-libwww
+	makedepends = perl-lwp-protocol-https
+	depends = flex
+	depends = bison
+	provides = cbmc-git
+	conflicts = cbmc
+	conflicts = cbmc-git
+	conflicts = cbmc-bin
+	source = cbmc-git::git+https://github.com/diffblue/cbmc.git
+	md5sums = SKIP
+
+pkgname = cbmc-git
+
