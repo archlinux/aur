@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-all-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run.
 	pkgver = 2016_9_2
-	pkgrel = 1
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -19,11 +19,14 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-chaps-all=2016_9_2
 	provides = idos-timetable-data=2016_9_2
 	provides = idos-timetable-data-trains=2016_9_2
+	provides = idos-timetable-data-trains-cz=2016_9_2
+	provides = idos-timetable-data-trains-sk=2016_9_2
+	provides = idos-timetable-data-trains-europe=2016_9_2
 	provides = idos-timetable-data-bus=2016_9_2
 	provides = idos-timetable-data-mhd=2016_9_2
 	provides = idos-timetable-data-flights=2016_9_2
-	provides = idos-timetable-data-trains-cz=2016_9_2
-	provides = idos-timetable-data-trains-europe=2016_9_2
+	provides = idos-timetable-data-chaps-trains-cz=2016_9_2
+	provides = idos-timetable-data-chaps-trains-europe=2016_9_2
 	provides = idos-timetable-data-trains-idol=2016_9_2
 	provides = idos-timetable-data-trains-odis=2016_9_2
 	provides = idos-timetable-data-trains-pid=2016_9_2
@@ -148,11 +151,132 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-mhd-zatec=2016_9_2
 	provides = idos-timetable-data-mhd-zdarns=2016_9_2
 	conflicts = idos-timetable-data-chaps-all
-	conflicts = idos-timetable-data-chaps-trains
-	conflicts = idos-timetable-data-chaps-trains-cz
 	conflicts = idos-timetable-data-chaps-trains-europe
-	conflicts = idos-timetable-data-chaps-bus
-	conflicts = idos-timetable-data-chaps-mhd
+	conflicts = idos-timetable-data-chaps-trains-cz
+	conflicts = idos-timetable-data-chaps-trains-sk
+	conflicts = idos-timetable-data-trains-idol
+	conflicts = idos-timetable-data-trains-odis
+	conflicts = idos-timetable-data-trains-pid
+	conflicts = idos-timetable-data-bus-cz
+	conflicts = idos-timetable-data-bus-cz-history
+	conflicts = idos-timetable-data-bus-sk
+	conflicts = idos-timetable-data-bus-idol
+	conflicts = idos-timetable-data-bus-odis
+	conflicts = idos-timetable-data-mhd-adamov
+	conflicts = idos-timetable-data-mhd-as
+	conflicts = idos-timetable-data-mhd-benesov
+	conflicts = idos-timetable-data-mhd-beroun
+	conflicts = idos-timetable-data-mhd-bilina
+	conflicts = idos-timetable-data-mhd-blansko
+	conflicts = idos-timetable-data-mhd-brandysnl
+	conflicts = idos-timetable-data-mhd-idsjmk
+	conflicts = idos-timetable-data-mhd-bruntal
+	conflicts = idos-timetable-data-mhd-breclav
+	conflicts = idos-timetable-data-mhd-bystricenp
+	conflicts = idos-timetable-data-mhd-caslav
+	conflicts = idos-timetable-data-mhd-ceskalipa
+	conflicts = idos-timetable-data-mhd-ceskebudejovice
+	conflicts = idos-timetable-data-mhd-ceskytesin
+	conflicts = idos-timetable-data-mhd-dacice
+	conflicts = idos-timetable-data-mhd-decin
+	conflicts = idos-timetable-data-mhd-domazlice
+	conflicts = idos-timetable-data-mhd-duchcov
+	conflicts = idos-timetable-data-mhd-dvurkralovenl
+	conflicts = idos-timetable-data-mhd-frydekmystek
+	conflicts = idos-timetable-data-mhd-havirov
+	conflicts = idos-timetable-data-mhd-havlickuvbrod
+	conflicts = idos-timetable-data-mhd-hodonin
+	conflicts = idos-timetable-data-mhd-horice
+	conflicts = idos-timetable-data-mhd-hradeckralove
+	conflicts = idos-timetable-data-mhd-hranice
+	conflicts = idos-timetable-data-mhd-cheb
+	conflicts = idos-timetable-data-mhd-chomutov
+	conflicts = idos-timetable-data-mhd-chrudim
+	conflicts = idos-timetable-data-mhd-jabloncecnn
+	conflicts = idos-timetable-data-mhd-jachymov
+	conflicts = idos-timetable-data-mhd-jicin
+	conflicts = idos-timetable-data-mhd-jihlava
+	conflicts = idos-timetable-data-mhd-jindrichuvhradec
+	conflicts = idos-timetable-data-mhd-kadan
+	conflicts = idos-timetable-data-mhd-karlovyvary
+	conflicts = idos-timetable-data-mhd-karvina
+	conflicts = idos-timetable-data-mhd-kladno
+	conflicts = idos-timetable-data-mhd-klasterecno
+	conflicts = idos-timetable-data-mhd-klatovy
+	conflicts = idos-timetable-data-mhd-kolin
+	conflicts = idos-timetable-data-mhd-kostelecno
+	conflicts = idos-timetable-data-mhd-kralupynv
+	conflicts = idos-timetable-data-mhd-krnov
+	conflicts = idos-timetable-data-mhd-kromeriz
+	conflicts = idos-timetable-data-mhd-kutnahora
+	conflicts = idos-timetable-data-mhd-kyjov
+	conflicts = idos-timetable-data-mhd-liberec
+	conflicts = idos-timetable-data-mhd-litomerice
+	conflicts = idos-timetable-data-mhd-litomysl
+	conflicts = idos-timetable-data-mhd-louny
+	conflicts = idos-timetable-data-mhd-lovosice
+	conflicts = idos-timetable-data-mhd-marianskelazne
+	conflicts = idos-timetable-data-mhd-melnik
+	conflicts = idos-timetable-data-mhd-milevsko
+	conflicts = idos-timetable-data-mhd-mladaboleslav
+	conflicts = idos-timetable-data-mhd-mnisekpb
+	conflicts = idos-timetable-data-mhd-most
+	conflicts = idos-timetable-data-mhd-nachod
+	conflicts = idos-timetable-data-mhd-neratovice
+	conflicts = idos-timetable-data-mhd-novemestonm
+	conflicts = idos-timetable-data-mhd-novyjicin
+	conflicts = idos-timetable-data-mhd-nymburk
+	conflicts = idos-timetable-data-mhd-olomouc
+	conflicts = idos-timetable-data-mhd-opava
+	conflicts = idos-timetable-data-mhd-orlova
+	conflicts = idos-timetable-data-mhd-odis
+	conflicts = idos-timetable-data-mhd-ostrov
+	conflicts = idos-timetable-data-mhd-pardubice
+	conflicts = idos-timetable-data-mhd-pelhrim
+	conflicts = idos-timetable-data-mhd-pisek
+	conflicts = idos-timetable-data-mhd-plzen
+	conflicts = idos-timetable-data-mhd-policka
+	conflicts = idos-timetable-data-mhd-pid
+	conflicts = idos-timetable-data-mhd-prostej
+	conflicts = idos-timetable-data-mhd-prelouc
+	conflicts = idos-timetable-data-mhd-prerov
+	conflicts = idos-timetable-data-mhd-prestice
+	conflicts = idos-timetable-data-mhd-pribram
+	conflicts = idos-timetable-data-mhd-rokycany
+	conflicts = idos-timetable-data-mhd-roudnicenl
+	conflicts = idos-timetable-data-mhd-rychnovnk
+	conflicts = idos-timetable-data-mhd-slany
+	conflicts = idos-timetable-data-mhd-sokolov
+	conflicts = idos-timetable-data-mhd-strakon
+	conflicts = idos-timetable-data-mhd-stribro
+	conflicts = idos-timetable-data-mhd-studenka
+	conflicts = idos-timetable-data-mhd-spindleruvmlyn
+	conflicts = idos-timetable-data-mhd-steti
+	conflicts = idos-timetable-data-mhd-sumperk
+	conflicts = idos-timetable-data-mhd-tabor
+	conflicts = idos-timetable-data-mhd-tachov
+	conflicts = idos-timetable-data-mhd-teplicevc
+	conflicts = idos-timetable-data-mhd-trutnov
+	conflicts = idos-timetable-data-mhd-trebic
+	conflicts = idos-timetable-data-mhd-trinec
+	conflicts = idos-timetable-data-mhd-turnov
+	conflicts = idos-timetable-data-mhd-tynisteno
+	conflicts = idos-timetable-data-mhd-uherskehradiste
+	conflicts = idos-timetable-data-mhd-ustinl
+	conflicts = idos-timetable-data-mhd-valasskemezirici
+	conflicts = idos-timetable-data-mhd-varnsdorf
+	conflicts = idos-timetable-data-mhd-velkemezirici
+	conflicts = idos-timetable-data-mhd-vimperk
+	conflicts = idos-timetable-data-mhd-vlasim
+	conflicts = idos-timetable-data-mhd-vrchlabi
+	conflicts = idos-timetable-data-mhd-vsetin
+	conflicts = idos-timetable-data-mhd-vyskov
+	conflicts = idos-timetable-data-mhd-zabrehnm
+	conflicts = idos-timetable-data-mhd-zlin
+	conflicts = idos-timetable-data-mhd-znojmo
+	conflicts = idos-timetable-data-mhd-zamberk
+	conflicts = idos-timetable-data-mhd-zatec
+	conflicts = idos-timetable-data-mhd-zdarns
 	conflicts = idos-timetable-data-chaps-flights
 	source = komplet.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
