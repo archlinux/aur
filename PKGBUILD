@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-maps-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_8_23
+pkgver=2016_9_2
 pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
@@ -14,10 +14,7 @@ groups=(
         "idos-timetable"
        )
 
-depends=(
-         # "idos-timetable-data"
-         "idos-timetable-data-chaps-all"
-        )
+depends=("idos-timetable-data")
 
 makedepends=(
   "wget"
@@ -29,17 +26,46 @@ provides=(
   "${_pkgname}=${pkgver}"
   
   "idos-timetable-maps=${pkgver}"
+  "idos-timetable-maps-trains=${pkgver}"
+  "idos-timetable-maps-bus=${pkgver}"
+  "idos-timetable-maps-mhd=${pkgver}"
+  "idos-timetable-maps-mhd-cz=${pkgver}"
   
   "idos-timetable-maps-trains-cz=${pkgver}"
   "idos-timetable-maps-trains-sk=${pkgver}"
   "idos-timetable-maps-trains-europe=${pkgver}"
+  
   "idos-timetable-maps-bus-cz=${pkgver}"
   "idos-timetable-maps-bus-sk=${pkgver}"
-  "idos-timetable-maps-bus-MHD-all=${pkgver}"
+  
+  "idos-timetable-maps-mhd-idsjmk=${pkgver}"
+  "idos-timetable-maps-mhd-ceskebudejovice=${pkgver}"
+  "idos-timetable-maps-mhd-jihlava=${pkgver}"
+  "idos-timetable-maps-mhd-olomouc=${pkgver}"
+  "idos-timetable-maps-mhd-odis=${pkgver}"
+  "idos-timetable-maps-mhd-pid=${pkgver}"
+  "idos-timetable-maps-mhd-trebic=${pkgver}"
+  "idos-timetable-maps-mhd-ustinl=${pkgver}"
+  "idos-timetable-maps-mhd-zlin=${pkgver}"
 )
 
 conflicts=(
   "${_pkgname}"
+  
+  "idos-timetable-maps-chaps-trains-europe"
+  "idos-timetable-maps-chaps-trains-cz"
+  "idos-timetable-maps-chaps-trains-sk"
+  "idos-timetable-maps-bus-cz"
+  "idos-timetable-maps-bus-sk"
+  "idos-timetable-maps-mhd-idsjmk"
+  "idos-timetable-maps-mhd-ceskebudejovice"
+  "idos-timetable-maps-mhd-jihlava"
+  "idos-timetable-maps-mhd-olomouc"
+  "idos-timetable-maps-mhd-odis"
+  "idos-timetable-maps-mhd-pid"
+  "idos-timetable-maps-mhd-trebic"
+  "idos-timetable-maps-mhd-ustinl"
+  "idos-timetable-maps-mhd-zlin"
 )
 
 source=(

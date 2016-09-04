@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-maps-chaps-all-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run.
-	pkgver = 2016_8_23
+	pkgver = 2016_9_2
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvamap
@@ -8,16 +8,42 @@ pkgbase = idos-timetable-maps-chaps-all-latest
 	groups = idos-timetable
 	license = custom
 	makedepends = wget
-	depends = idos-timetable-data-chaps-all
-	provides = idos-timetable-maps-chaps-all=2016_8_23
-	provides = idos-timetable-maps=2016_8_23
-	provides = idos-timetable-maps-trains-cz=2016_8_23
-	provides = idos-timetable-maps-trains-sk=2016_8_23
-	provides = idos-timetable-maps-trains-europe=2016_8_23
-	provides = idos-timetable-maps-bus-cz=2016_8_23
-	provides = idos-timetable-maps-bus-sk=2016_8_23
-	provides = idos-timetable-maps-bus-MHD-all=2016_8_23
+	depends = idos-timetable-data
+	provides = idos-timetable-maps-chaps-all=2016_9_2
+	provides = idos-timetable-maps=2016_9_2
+	provides = idos-timetable-maps-trains=2016_9_2
+	provides = idos-timetable-maps-bus=2016_9_2
+	provides = idos-timetable-maps-mhd=2016_9_2
+	provides = idos-timetable-maps-mhd-cz=2016_9_2
+	provides = idos-timetable-maps-trains-cz=2016_9_2
+	provides = idos-timetable-maps-trains-sk=2016_9_2
+	provides = idos-timetable-maps-trains-europe=2016_9_2
+	provides = idos-timetable-maps-bus-cz=2016_9_2
+	provides = idos-timetable-maps-bus-sk=2016_9_2
+	provides = idos-timetable-maps-mhd-idsjmk=2016_9_2
+	provides = idos-timetable-maps-mhd-ceskebudejovice=2016_9_2
+	provides = idos-timetable-maps-mhd-jihlava=2016_9_2
+	provides = idos-timetable-maps-mhd-olomouc=2016_9_2
+	provides = idos-timetable-maps-mhd-odis=2016_9_2
+	provides = idos-timetable-maps-mhd-pid=2016_9_2
+	provides = idos-timetable-maps-mhd-trebic=2016_9_2
+	provides = idos-timetable-maps-mhd-ustinl=2016_9_2
+	provides = idos-timetable-maps-mhd-zlin=2016_9_2
 	conflicts = idos-timetable-maps-chaps-all
+	conflicts = idos-timetable-maps-chaps-trains-europe
+	conflicts = idos-timetable-maps-chaps-trains-cz
+	conflicts = idos-timetable-maps-chaps-trains-sk
+	conflicts = idos-timetable-maps-bus-cz
+	conflicts = idos-timetable-maps-bus-sk
+	conflicts = idos-timetable-maps-mhd-idsjmk
+	conflicts = idos-timetable-maps-mhd-ceskebudejovice
+	conflicts = idos-timetable-maps-mhd-jihlava
+	conflicts = idos-timetable-maps-mhd-olomouc
+	conflicts = idos-timetable-maps-mhd-odis
+	conflicts = idos-timetable-maps-mhd-pid
+	conflicts = idos-timetable-maps-mhd-trebic
+	conflicts = idos-timetable-maps-mhd-ustinl
+	conflicts = idos-timetable-maps-mhd-zlin
 	source = komplet_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_M.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
