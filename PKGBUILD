@@ -2,7 +2,7 @@
 
 pkgname=4kstogram
 pkgver=2.0.0.1115
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and backup Instagram photos shared by any user."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-stogram"
@@ -10,8 +10,8 @@ license=('custom:eula')
 depends=('qt5-script' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'libexif' 'libjpeg9')
 source=("${pkgname}.desktop"
         "${pkgname}.png")
-source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
-source_x86_64=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
+source_i686=("${pkgname}_${pkgver}_i386.tar.bz2"::"http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
+source_x86_64=("${pkgname}_${pkgver}_amd64.tar.bz2"::"http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('7970c1f1aacd5a546ca8252c2d48a874478a26e23eb57769f54c5feac7316f51'
             'b1add61c84f745911dee0672b25e021a3da0d90127843f3a814864858306ab8b')
 sha256sums_i686=('057333859d6e3222fa5215057ac520fc5fa5829397deb25654924f522b062610')
