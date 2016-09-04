@@ -32,13 +32,13 @@ diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.
 index 2d69bda..d3ee109 100644
 --- a/python-package/xgboost/libpath.py
 +++ b/python-package/xgboost/libpath.py
-@@ -20,7 +20,8 @@ def find_lib_path():
+@@ -21,7 +21,8 @@
      """
      curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
      # make pythonpack hack: copy this directory one level upper for setup.py
 -    dll_path = [curr_path, os.path.join(curr_path, '../../lib/'),
 +    dll_path = ["/usr/lib", curr_path,
 +                os.path.join(curr_path, '../../lib/'),
-                 os.path.join(curr_path, './lib/')]
+                 os.path.join(curr_path, './lib/'),
+                 os.path.join(sys.prefix, 'xgboost')]
      if os.name == 'nt':
-         if platform.architecture()[0] == '64bit':
