@@ -8,7 +8,7 @@
 
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbxvt-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="xcb terminal emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
