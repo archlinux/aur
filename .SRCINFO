@@ -16,6 +16,7 @@ pkgbase = openrw-git
 	depends = sdl2
 	depends = boost
 	provides = openrw
+	conflicts = openrw
 	source = openrw-git::git+https://github.com/rwengine/openrw.git
 	source = openrw.desktop
 	sha256sums = SKIP
