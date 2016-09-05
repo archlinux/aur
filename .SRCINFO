@@ -1,7 +1,7 @@
 pkgbase = xrootd
 	pkgdesc = The XROOTD project aims at giving high performance, scalable fault tolerant access to data repositories of many kinds.
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xrootd.org/
 	arch = i686
 	arch = x86_64
