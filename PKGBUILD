@@ -11,6 +11,7 @@ pkgdesc="Multi-algo CPUMiner & Reference Cryptonote Miner (JSON-RPC 2.0) - GIT c
 arch=('i686' 'x86_64')
 url="https://github.com/tpruvot/cpuminer-multi/"
 license=('GPLv2')
+replaces=('cpuminer-multi')
 depends=('curl' 'jansson')
 source=("git+https://github.com/tpruvot/cpuminer-multi.git")
 md5sums=('SKIP')

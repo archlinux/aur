@@ -8,6 +8,7 @@ pkgbase = cpuminer-multi-git
 	license = GPLv2
 	depends = curl
 	depends = jansson
+	replaces = cpuminer-multi
 	source = git+https://github.com/tpruvot/cpuminer-multi.git
 	md5sums = SKIP
 
