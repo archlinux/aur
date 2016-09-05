@@ -1,7 +1,8 @@
 # vim:set ts=2 sw=2 et:
 # $Id$
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
+# Original Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Original Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 # Contributor: [vEX] <niechift.dot.vex.at.gmail.dot.com>
 # Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
