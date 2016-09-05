@@ -1,17 +1,17 @@
 pkgbase = linux-source
 	pkgdesc = Source files for the Linux Kernel
-	pkgver = 4.5.1
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.5.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.5.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.2.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.2.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = f180afeb4298ea717b3ccea1f65d0e68ca29501272bf3f4254c1c3c2cf9dd860
+	sha256sums = 58493ee6569484fab1658e680fbb7a72ad75f02211316628fe7ee5fd39f96488
 	sha256sums = SKIP
 
 pkgname = linux-source
