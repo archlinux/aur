@@ -12,7 +12,6 @@ depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-gi
 makedepends=('git' 'intltool')
 provides=("${pkgname%-*}" 'lash')
 conflicts=("${pkgname%-*}" 'lash')
-install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/LADI/ladish.git")
 sha512sums=('SKIP')
 _branch=master
