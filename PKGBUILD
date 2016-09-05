@@ -1,9 +1,9 @@
 # Maintainer: David McInnis <davidm@eagles.ewu.edu
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 pkgname=micro-nightly-bin
-pkgver=20160903
+pkgver=20160904
 pkgrel=1
-_hash="a4ac9f2"
+_hash="93eadfb"
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
@@ -13,8 +13,8 @@ conflicts=( "micro-git" "micro" )
 provides=("micro")
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/nightly/micro-${_hash}-linux32.tar.gz")
-sha256sums_x86_64=('93d9a195dc0ea603545913464359c07aa88f41bc0f0c8a81d815c00142f5285e')
-sha256sums_i686=('3eed03273207bc4829b0c77de80333928e601674979f443dd63b815ce13c237a')
+sha256sums_x86_64=('58b8d399b10e57ef377cfbece18ccef3994b99ed437b999efbe469775b601aa6')
+sha256sums_i686=('3f4cf22ccf758fa17c502c8a9b297cc6defa1ab045ffedad96feb400d8b2f281')
 
 
 package(){
