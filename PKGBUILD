@@ -2,7 +2,7 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=uranium-git
-pkgver=2.1.3.1328.gd4a6d12
+pkgver=2.1.3.1385.gcff519a
 pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
@@ -13,7 +13,7 @@ conflicts=('uranium')
 depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'python-scipy' 'libarcus-git')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/Ultimaker/Uranium.git' 'site-packages-dir.patch')
-md5sums=('SKIP' '104a4190a8df6b305801fefd0fb55387')
+md5sums=('SKIP' 'd9d257943ae1d30bb9279b1183bd06bf')
 
 pkgver() {
   cd Uranium
