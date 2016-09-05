@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=0.10.0.129.g1c48664
+pkgver=0.10.0.135.g006391f
 pkgrel=1
 pkgdesc="The LXQt desktop panel"
 arch=("i686" "x86_64")
@@ -19,6 +19,7 @@ optdepends=(
 	"libpulse: Recompile for PulseAudio support in volume control plugin"
 	"lm_sensors: Recompile for Sensors (battery) plugin"
 	"libstatgrab: Recompile for network and CPU monitor plugin"
+	"libsysstat: Recompile for network and CPU monitor plugin"
 )
 makedepends=("git" "cmake" "qt5-tools")
 provides=("$_pkgname")
@@ -37,8 +38,7 @@ build() {
 	cd build
 	cmake "$srcdir/$_pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DSYSSTAT_PLUGIN=No
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib
 	make
 }
 
