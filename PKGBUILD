@@ -7,8 +7,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.17
-_rtpatchver=rt25
+_pkgver=4.4.19
+_rtpatchver=rt27
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -27,21 +27,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
+        'Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch'
+        '0001-fix-dcache-try-1.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '294960bddb6dcef7c80d80aa13b7d1fb9c4555975f16196b9dddb05728436604'
+            '61b34a8ab4ba778c50a6fb04471cb34192e179db68440d81b12694e45dea00fc'
             'SKIP'
-            '102eb54d7593d45a1a837c37a51551623681fcd2b0f0f03deea08f635cfc869c'
+            'bce223bb6b00d7bd9479edcc75a5042925140a45de46269ad274726894d61af9'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
+            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
+            '9f66f554bfae117d45d7c73db136dd1d46fd7364962aa7fd2324ba9f1c85ba3f'
+            '8b96ecc7c4c1dc5fc81162d010d69606b590f0feee0563aee875706e0ab4d5f9')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -65,11 +67,11 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  msg "0001-sdhci-revert.patch"
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+  msg "Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch"
+  patch -p1 -i "${srcdir}/Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch"
+  
+  msg "0001-fix-dcache-try-1.patch"
+  patch -p1 -i "${srcdir}/0001-fix-dcache-try-1.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
