@@ -1,6 +1,6 @@
 # Maintainer: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=ovito-git
-pkgver=2.6.1.r80.g6ebdb0e
+pkgver=2.7.1.r1.ga5f0a09
 pkgrel=1
 pkgdesc="Scientific visualization and analysis software for atomistic simulation data"
 arch=('i686' 'x86_64')
@@ -19,12 +19,6 @@ pkgver() {
   echo $(git describe --always --long | sed 's/^[v]//;s/-/-r/' | tr - .)
 }
 
-prepare() {
-  cd $srcdir/$_gitname
-  sed -i 's/NAMES qsciscintilla qt5scintilla2)/NAMES qsciscintilla qt5scintilla2 qscintilla2-qt5)/g' $srcdir/$_gitname/cmake/FindQScintilla.cmake
-  find . -name "*.cpp" -exec sed -i 's/\(\(\s*\).*ovito_[a-z_]*class<\([a-zA-Z_0-9]*\),.*\)/\2boost::python::register_ptr_to_python<OORef<\3>>();\n\1/' {} \;
-}
-
 build() {
   cd $srcdir/$_gitname
 
@@ -37,7 +31,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
       -DBoost_PYTHON_LIBRARY_RELEASE=/usr/lib/libboost_python3.so \
       -DCMAKE_EXE_LINKER_FLAGS='-Wl,-rpath,/usr/lib/ovito'
-  make -j8
+  make
 }
 
 package() {
