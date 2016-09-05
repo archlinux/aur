@@ -8,7 +8,7 @@ _GPU_TARGET=sm50
 ##### End
 
 pkgname=magma-atlas
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A dense linear algebra library, similar to LAPACK, for doing caluclations on GPUs and CPUs simultaneously (built against CUDA and atlas-lapack)"
 arch=("i686" "x86_64")
@@ -16,9 +16,9 @@ url="http://icl.cs.utk.edu/magma/"
 provides=(magma)
 conflicts=('magma')
 license=(custom)
-depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack")
+depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack" "openblas")
 options=('staticlibs')
-sha256sums=('930e0420692695f9bbdb7b89af93f0969e1adc3888df89f26800ba6bc3347f70')
+sha256sums=('ba0373fc80b078001a5e048b245185adadf591c451490de53e62ed7e1a167571')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
