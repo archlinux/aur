@@ -6,7 +6,7 @@ _tmx_cups_pkgver=1.2.2-1
 pkgrel=1
 pkgdesc="TM Series Printer Driver for Linux"
 arch=('x86_64') # if you want 32-bit, modify the PKGBUILD ;)
-url="https://download.epson-biz.com/modules/pos/index.php?page=single_soft&cid=4547&pcat=3&pid=3495"
+url="https://download.epson-biz.com/modules/pos/index.php?page=soft&pcat=3&scat=32"
 depends=('libcups')
 license=('custom')
 # Download from https://download.epson-biz.com/modules/pos/index.php?page=single_soft&cid=5012&pcat=3&scat=32 , I can't get a direct download link
