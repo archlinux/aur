@@ -1,8 +1,9 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Dennis S. <dennis@stengele.me>
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=atlassian-confluence
-pkgver=5.8.14
+pkgver=5.10.4
 pkgrel=1
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
@@ -19,18 +20,24 @@ install='confluence.install'
 source=("http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-$pkgver.tar.gz"
         'confluence.conf.d'
         'confluence.service')
-sha256sums=('b5d0a672ce98c44aaf400e006e80b9444b909366db2b929125bf6f0a18efbf1d'
-            '0cf76082cf11c04131ad03cf784c7d58152c2c20bfdcbe9809e552cfd42ae9a3'
-            '7017750e78fbe0611111ccc00a44f31a93241c4f924a893875804d50d085f9dd')
+sha256sums=('4a080e3c9940240154f6a35a013a353e4f8ea00cc6992dad07097a29320d631f'
+            'a6304ba13a8ab1e27761bd3be71d05d2c2e3d61ea308316f4a04723ea4b30fc1'
+            '7097bd9dbd42f74c601182ff60e523b4bde76528a32f09ec16e72cafa577994a')
 
 package() {
-  mkdir -p "$pkgdir/opt/atlassian-confluence/"
-  cp -r "$srcdir/atlassian-confluence-$pkgver/"* "$pkgdir/opt/atlassian-confluence/"
-  # remove unneeded *.bat files
-  find "$pkgdir/opt/atlassian-confluence/bin" -name '*.bat' -type f -exec rm "{}" \;
+    mkdir -p "$pkgdir/opt/atlassian-confluence/"
+    cp -r "$srcdir/atlassian-confluence-$pkgver/"* "$pkgdir/opt/atlassian-confluence/"
 
-  # setup systemd service
-  install -dm755 "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/confluence.service" "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/confluence.conf.d" "$pkgdir/etc/conf.d/confluence"
+    # Cleanup
+    # remove unneeded *.bat files
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.bat' -type f -exec rm "{}" \;
+
+    # Set Home dir
+    echo "confluence.home=/var/opt/atlassian-confluence" > "$pkgdir/opt/atlassian-confluence/confluence/WEB-INF/classes/confluence-init.properties"
+
+    # Create home directory
+    install -dm644 "$pkgdir/var/opt/atlassian-confluence"
+    # Install systemd unit
+    install -Dm644 "$srcdir/confluence.service" "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "$srcdir/confluence.conf.d" "$pkgdir/etc/conf.d/confluence"
 }

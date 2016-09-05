@@ -1,13 +1,41 @@
 [Unit]
-Description=Confluence
-After=network.target
+Description=Atlassian Confluence Service
+After=syslog.target network.target
 
 [Service]
-Type=forking
 User=confluence
+Type=simple
+SyslogIdentifier=confluence
+Environment="CATALINA_HOME=/opt/atlassian/confluence"
+Environment="CATALINA_BASE=/opt/atlassian/confluence"
+Environment="CATALINA_TMPDIR=/opt/atlassian/confluence/temp"
+Environment="JAVA_HOME=/usr/lib/jvm/default"
+Environment="CLASSPATH=/opt/atlassian/confluence/bin/bootstrap.jar:/opt/atlassian/confluence/bin/tomcat-juli.jar"
 EnvironmentFile=-/etc/conf.d/confluence
-ExecStart=/opt/atlassian-confluence/bin/startup.sh
-ExecStop=/opt/atlassian-confluence/bin/shutdown.sh
+
+ExecStart=${JAVA_HOME}/bin/java \
+$JAVA_OPTS $CATALINA_OPTS \
+-classpath ${CLASSPATH} \
+-Dcatalina.base=${CATALINA_BASE} \
+-Dcatalina.home=${CATALINA_HOME} \
+-Djava.endorsed.dirs=${JAVA_ENDORSED_DIRS} \
+-Djava.io.tmpdir=${CATALINA_TMPDIR} \
+-Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties \
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+org.apache.catalina.startup.Bootstrap \
+start
+
+ExecStop=${JAVA_HOME}/bin/java \
+$JAVA_OPTS \
+-classpath ${CLASSPATH} \
+-Dcatalina.base=${CATALINA_BASE} \
+-Dcatalina.home=${CATALINA_HOME} \
+-Djava.endorsed.dirs=${JAVA_ENDORSED_DIRS} \
+-Djava.io.tmpdir=${CATALINA_TMPDIR} \
+-Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties \
+-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
+org.apache.catalina.startup.Bootstrap \
+stop
 
 [Install]
 WantedBy=multi-user.target
