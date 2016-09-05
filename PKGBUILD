@@ -10,9 +10,9 @@ license=('GPL3')
 depends=('python')
 
 makedepends=(
-			'python2'
-			'python2-docopt'
-			'python2-setuptools')
+			'python'
+			'python-docopt'
+			'python-setuptools')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
 
