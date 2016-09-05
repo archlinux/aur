@@ -1,6 +1,6 @@
 pkgbase = quaternion-git
 	pkgdesc = Qt5-based IM client for the Matrix protocol
-	pkgver = 06fffd1
+	pkgver = afdab5b
 	pkgrel = 1
 	url = https://github.com/Fxrh/Quaternion
 	arch = any

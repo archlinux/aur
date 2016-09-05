@@ -1,7 +1,7 @@
 # Maintainer: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 pkgname=quaternion-git
-pkgver=06fffd1
+pkgver=afdab5b
 pkgrel=1
 pkgdesc="Qt5-based IM client for the Matrix protocol"
 arch=('any')
@@ -34,7 +34,8 @@ build() {
 }
  
 package() {
-  cd $_gitname/build
-  install -Dm755 "quaternion" -t "$pkgdir/usr/bin/"
+  cd $_gitname
+  install -Dm755 "build/quaternion" -t "$pkgdir/usr/bin/"
+  install -Dm644 "linux/quaternion.desktop" -t "$pkgdir/usr/share/applications/"
 }
 
