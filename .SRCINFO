@@ -1,10 +1,9 @@
 pkgbase = coherence
 	pkgdesc = A DLNA/UPnP MediaServer and MediaRenderer
 	pkgver = 0.6.6.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://coherence.beebits.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python2-distribute
 	depends = python2
@@ -30,12 +29,14 @@ pkgbase = coherence
 	source = coherence.service
 	source = coherence_pidfile.patch
 	source = samsung.patch
+	source = twisted_detection.patch
 	source = org.Coherence.service
 	md5sums = d7a1b4abf6831c61e37a3b9e2bdc560a
 	md5sums = 9a2fd979a83a4f4ceb6fd3564cdeda86
 	md5sums = c43416ac2fb8a8195917a7e23b806c7d
 	md5sums = b12f5f89fe34e48267c6c6e7cab5a4f4
 	md5sums = 039d4b84c0f0d023d9e9519fba1b101e
+	md5sums = 7ad9e42ab1e6dc8efa850d4b348e3052
 	md5sums = ed11837f08988600e5aac0caf8e5221a
 
 pkgname = coherence
