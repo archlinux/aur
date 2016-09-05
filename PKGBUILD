@@ -8,7 +8,7 @@ Easily adjustable in a config file à la \"<repopath> <command> <remote> <refspe
 Also added the special command addcommitpush, which does all three at once.
 "
 arch=('any')
-url=""
+url="https://github.com/mbrunnen/fetcher"
 license=('MIT')
 groups=()
 depends=('git')
