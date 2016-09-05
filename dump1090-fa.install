@@ -2,7 +2,6 @@ post_install() {
     if [ ! -L /usr/share/dump1090/html/data ]; then
         ln -s /var/run/dump1090 /usr/share/dump1090/html/data
     fi
-    systemctl enable dump1090
 
     echo "Internal webserver has been permanently disabled in dump1090"
     echo "To enable lighttpd, copy /usr/share/dump1090/lighttpd.conf to /etc/lighttpd/lighttpd.conf"
