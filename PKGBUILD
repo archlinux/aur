@@ -34,7 +34,7 @@ package() {
   cd "$srcdir/SFML-$pkgver"/build
 
   install -dm755 "$pkgdir/usr/lib32/pkgconfig"
-  install -m755 lib/*.so{,.*} "$pkgdir/usr/lib32/"
+  cp -a lib/*.so{,.*} "$pkgdir/usr/lib32/"
   install -m755 tools/pkg-config/*.pc "$pkgdir/usr/lib32/pkgconfig"
   install -Dm644 ../license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
