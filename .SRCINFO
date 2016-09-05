@@ -1,0 +1,23 @@
+pkgbase = sthttpd-git
+	pkgdesc = Supported fork of the thttpd web server
+	pkgver = 20150722.aa3f36c
+	pkgrel = 1
+	url = https://github.com/blueness/sthttpd
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	provides = sthttpd
+	conflicts = sthttpd
+	backup = etc/thttpd.conf
+	source = git+https://github.com/blueness/sthttpd
+	source = discreet.patch
+	source = service
+	source = config
+	sha1sums = SKIP
+	sha1sums = ae0143fce29cf7eb84ebbee9640b9a2c977b5093
+	sha1sums = 73bd76de0e89a9cc31e5605659837d83b3c8dfde
+	sha1sums = 7a6413491b6ba68625d450caa3c6f071af0ca1ac
+
+pkgname = sthttpd-git
+
