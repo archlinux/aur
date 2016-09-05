@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python' 'python-click')
 makedepends=('python-setuptools')
 provides=('python-ampy','ampy')
-source=("${pkgname}::https://github.com/adafruit/ampy")
+source=("${pkgname}::git+https://github.com/adafruit/ampy")
 sha512sums=('SKIP')
 
 package() {

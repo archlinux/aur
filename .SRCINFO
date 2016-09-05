@@ -9,7 +9,7 @@ pkgbase = python-ampy-git
 	depends = python
 	depends = python-click
 	provides = python-ampy,ampy
-	source = python-ampy-git::https://github.com/adafruit/ampy
+	source = python-ampy-git::git+https://github.com/adafruit/ampy
 	sha512sums = SKIP
 
 pkgname = python-ampy-git
