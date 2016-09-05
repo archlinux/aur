@@ -5,7 +5,7 @@
 # that doesn't depend on systemd
 
 pkgname=mkinitcpio-nosystemd
-pkgver=19
+pkgver=20
 pkgrel=1
 pkgdesc="Modular initramfs image creation utility"
 arch=('any')
@@ -25,7 +25,7 @@ source=("https://sources.archlinux.org/other/${pkgname%-nosystemd}/${pkgname%-no
  		'remove-systemd.patch'
 		)
 install=mkinitcpio.install
-sha256sums=('7170e7a3d1b9ed21b0961941a327886febe80e62e2dfee6b88359ed72d0da620'
+sha256sums=('913cd9f5629dff6c59e46ed9d44d5af8d4a0d2bddba0a1faffe716dc28bcf152'
             'SKIP'
 			'4921518d130b73724645b3732ba471005b8755a89a219bb6396e3b082414bb78'
 			)
