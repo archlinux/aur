@@ -57,7 +57,7 @@ build() {
 	  --enable-optimize \
 	  --enable-mmap \
 	  --enable-ccache \
-	  --with-wxversion=2.8
+	  --with-wxversion=3.0
 
   make -j`cat /proc/cpuinfo |grep "processor"|wc -l`
 }
