@@ -44,5 +44,7 @@ package() {
 
   install -d ${pkgdir}/usr/bin
   install -m755 higgins.gambas ${pkgdir}/usr/bin/higgins
+  install -D appicon.png ${pkgdir}/usr/share/pixmaps/higgins.png
+  install -D higgins.desktop ${pkgdir}/usr/share/applications/higgins.desktop
 }
 
