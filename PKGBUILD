@@ -5,20 +5,20 @@ pkgname=knode
 pkgdesc='News reader for KDE. Standalone version coinstallable with kdepim>=15.08'
 pkgver=4.14.10
 _kdeappver=15.04.3
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 url="http://kde.org/applications/internet/knode/"
 license=(GPL LGPL FDL)
 depends=(kdepimlibs4 grantlee-qt4)
-makedepends=(cmake automoc4 boost libxss libbaloo4)
+makedepends=(cmake automoc4 boost libxss)
 conflicts=('kdepim-libkdepim<5')
-source=("http://download.kde.org/stable/applications/${_kdeappver}/src/kdepim-${pkgver}.tar.xz")
+source=("http://download.kde.org/Attic/applications/${_kdeappver}/src/kdepim-${pkgver}.tar.xz" trim-baloo.patch)
 sha1sums=('6f74763dda68dbb44394e807eab9204777bddf0a')
 
 prepare() {
-	mkdir -p build
-
-	sed -e '253,257d;264,283d;287,294d;296,303d;310,313d;315d;318,327d' -i kdepim-$pkgver/CMakeLists.txt
+   mkdir -p build
+   cd kdepim-$pkgver
+   patch -p1 -i ../trim-baloo.patch
 }
 
 build() {

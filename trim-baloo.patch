@@ -1,0 +1,480 @@
+diff -ur kdepim-4.14.10.orig/CMakeLists.txt kdepim-4.14.10/CMakeLists.txt
+--- kdepim-4.14.10.orig/CMakeLists.txt	2016-09-05 18:51:50.235366624 +0200
++++ kdepim-4.14.10/CMakeLists.txt	2016-09-05 19:03:00.141789718 +0200
+@@ -178,9 +178,6 @@
+   find_package(Grantlee 0.4.0 QUIET CONFIG)
+   set_package_properties(Grantlee PROPERTIES DESCRIPTION "The Grantlee Template System" URL "http://www.gitorious.org/grantlee/pages/Home" TYPE REQUIRED PURPOSE "Grantlee is requires for kmail and templating, theming for KJots, KaddressBook, KNotes and MessageViewer(KMail)." )
+ 
+-  find_package(Baloo 4.14.0 QUIET CONFIG)
+-  set_package_properties(Baloo PROPERTIES DESCRIPTION "The Baloo libraries" URL "http://www.kde.org" TYPE REQUIRED PURPOSE "Baloo provides search capabilities in KMail and Akonadi")
+-
+   # Xsltproc
+   find_package(Xsltproc)
+   set_package_properties(Xsltproc PROPERTIES DESCRIPTION "XSLT processor from libxslt" TYPE REQUIRED PURPOSE "Required to generate D-Bus interfaces.")
+@@ -250,81 +247,25 @@
+   add_subdirectory(messagelist)
+   add_subdirectory(templateparser)
+ 
+-  if(QGPGME_FOUND)
+-    if(Boost_TOPOLOGICAL_SORT_DIR)
+-      macro_optional_add_subdirectory(kleopatra)
+-    endif()
+-  endif()
+ 
+   # The following components depend on QGpgME.
+   add_subdirectory(messageviewer)
+   macro_optional_add_subdirectory(messagecomposer)
+   add_subdirectory(pimcommon)
+   add_subdirectory(mailcommon) # TODO: does this make sense?!?
+-  macro_optional_add_subdirectory(kmail)
+-  macro_optional_add_subdirectory(grantleeeditor)
+-  if(KDEPIM_BUILD_MOBILE)
+-    add_subdirectory(mobile)
+-  endif()
+-
+-  if(KDEPIM_BUILD_EXAMPLES)
+-    add_subdirectory(examples)
+-  endif()
+-
+-  # If kmail is compiled, KMAIL_SUPPORTED is true (used in several places)
+-  if(BUILD_kmail)
+-    set(KMAIL_SUPPORTED TRUE)
+-    add_definitions(-DKMAIL_SUPPORTED)
+-  endif()
+-
+-  macro_optional_add_subdirectory(korganizer)
+-  macro_optional_add_subdirectory(korgac)
+-  macro_optional_add_subdirectory(sieveeditor)
+-  macro_optional_add_subdirectory(storageservicemanager)
+   add_subdirectory(kaddressbookgrantlee)
+   if(KDEPIM_BUILD_DESKTOP)
+     macro_optional_add_subdirectory(agents)
+-    macro_optional_add_subdirectory(akregator)
+-    macro_optional_add_subdirectory(importwizard)
+-    macro_optional_add_subdirectory(kaddressbook)
+-    macro_optional_add_subdirectory(kmailcvt)
+-    macro_optional_add_subdirectory(mboximporter)
+-    macro_optional_add_subdirectory(knotes)
+-    macro_optional_add_subdirectory(ksendemail)
+-    macro_optional_add_subdirectory(ktnef)
+     macro_optional_add_subdirectory(mailimporter)
+-    macro_optional_add_subdirectory(pimsettingexporter)
+-    macro_optional_add_subdirectory(kalarm)
+-
+-    if (LibKGAPI2_FOUND)
+-       macro_optional_add_subdirectory(blogilo)
+-    endif()
+-
+-    macro_optional_add_subdirectory(kjots)
+ 
+     if(KDEPIMLIBS_KRESOURCES_LIBRARY)
+       if(QT_QT3SUPPORT_FOUND)
+         macro_optional_add_subdirectory(knode)
+       endif()
+ 
+-      if(Q_WS_X11)
+-        macro_optional_add_subdirectory(ktimetracker)
+-      endif()
+-
+     endif()
+-    macro_optional_add_subdirectory(kontact) # must be the last one.
+   endif()
+ 
+-  macro_optional_add_subdirectory(akonadiconsole)
+-  macro_optional_add_subdirectory(console)
+-
+-  # These targets depend on optional applications
+-  if(KDEPIMLIBS_KRESOURCES_LIBRARY)
+-    add_subdirectory(kresources) # Must be after KAddressbook
+-  endif()
+-
+-  add_subdirectory(plugins) # Must be after KMail
+-
+ endif()
+ 
+ # doc must be a subdir of kdepim or packagers will kill us
+diff -ur kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit.cpp kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit.cpp
+--- kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit.cpp	2016-09-05 18:51:50.522035051 +0200
++++ kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit.cpp	2016-09-05 19:23:42.762259852 +0200
+@@ -28,7 +28,6 @@
+ #include "addresseelineedit_p.h"
+ #include "ldap/ldapclientsearch.h"
+ #include "kmailcompletion.h"
+-#include "baloocompletionemail.h"
+ 
+ #include <KABC/Addressee>
+ #include <KABC/ContactGroup>
+@@ -99,11 +98,6 @@
+     }
+ }
+ 
+-void AddresseeLineEdit::setEnableBalooSearch(bool enable)
+-{
+-    d->setEnableBalooSearch(enable);
+-}
+-
+ void AddresseeLineEdit::allowSemicolonAsSeparator( bool useSemicolonAsSeparator )
+ {
+     d->setUseSemicolonAsSeparator(useSemicolonAsSeparator);
+@@ -431,10 +425,6 @@
+         showOU->setChecked( d->showOU() );
+         connect(showOU, SIGNAL(triggered(bool)), d, SLOT(slotShowOUChanged(bool)));
+         menu->addAction(showOU);
+-        //Add i18n in kf5
+-        QAction *configureBalooBlackList = new QAction(QLatin1String( "Configure Email Blacklist..." ),menu);
+-        connect(configureBalooBlackList, SIGNAL(triggered(bool)), d, SLOT(slotConfigureBalooBlackList()));
+-        menu->addAction(configureBalooBlackList);
+     }
+ }
+ 
+diff -ur kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit_p.cpp kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit_p.cpp
+--- kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit_p.cpp	2016-09-05 18:51:50.522035051 +0200
++++ kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit_p.cpp	2016-09-05 19:28:49.526975791 +0200
+@@ -20,7 +20,6 @@
+ #include "addresseelineedit_p.h"
+ #include "addresseelineedit.h"
+ #include "kmailcompletion.h"
+-#include "baloocompletionemail.h"
+ 
+ #include <solid/networking.h>
+ #include <KLocalizedString>
+@@ -37,15 +36,10 @@
+ #include <Akonadi/Job>
+ #include <QApplication>
+ 
+-#include <baloo/pim/contactcompleter.h>
+-
+ #include <ldap/ldapclientsearch.h>
+ 
+ #include <Akonadi/Job>
+ 
+-#include <addressline/blacklistbaloocompletion/blacklistbalooemailcompletiondialog.h>
+-
+-
+ namespace KPIM {
+ K_GLOBAL_STATIC( AddresseeLineEditStatic, s_static )
+ AddresseeLineEditPrivate::AddresseeLineEditPrivate(KPIM::AddresseeLineEdit *qq, bool enableCompletion)
+@@ -58,8 +52,7 @@
+       m_lastSearchMode( false ),
+       m_searchExtended( false ),
+       m_useSemicolonAsSeparator( false ),
+-      m_showOU(false),
+-      m_enableBalooSearch(true)
++      m_showOU(false)
+ {
+     m_delayedQueryTimer.setSingleShot(true);
+     connect( &m_delayedQueryTimer, SIGNAL(timeout()), this, SLOT(slotTriggerDelayedQueries()) );
+@@ -140,8 +133,6 @@
+ 
+         }
+ 
+-        s_static->balooCompletionSource = q->addCompletionSource( i18nc( "@title:group", "Contacts found in your data"), -1 );
+-
+         s_static->updateLDAPWeights();
+ 
+         if ( !m_completionInitialized ) {
+@@ -166,7 +157,6 @@
+ 
+         KConfigGroup group( KGlobal::config(), "AddressLineEdit" );
+         m_showOU = group.readEntry( "ShowOU", false );
+-        loadBalooBlackList();
+     }
+ }
+ 
+@@ -197,30 +187,7 @@
+ 
+ QStringList AddresseeLineEdit::cleanupEmailList(const QStringList &inputList)
+ {
+-    return d->cleanupEmailList(inputList);
+-}
+-
+-QStringList AddresseeLineEditPrivate::cleanupEmailList(const QStringList &inputList)
+-{
+-    KPIM::BalooCompletionEmail completionEmail;
+-    completionEmail.setEmailList(inputList);
+-    completionEmail.setBlackList(m_balooBlackList);
+-    completionEmail.setExcludeDomain(m_domainExcludeList);
+-    const QStringList listEmail = completionEmail.cleanupEmailList();
+-    return listEmail;
+-}
+-
+-void AddresseeLineEditPrivate::searchInBaloo()
+-{
+-    const QString trimmedString = m_searchString.trimmed();
+-    Baloo::PIM::ContactCompleter com(trimmedString, 20);
+-    const QStringList listEmail = cleanupEmailList(com.complete());
+-    Q_FOREACH (const QString& email, listEmail) {
+-        addCompletionItem(email, 1, s_static->balooCompletionSource);
+-    }
+-    doCompletion( m_lastSearchMode );
+-    //  if ( q->hasFocus() || q->completionBox()->hasFocus() ) {
+-    //}
++    return inputList;
+ }
+ 
+ void AddresseeLineEditPrivate::alternateColor()
+@@ -446,10 +413,6 @@
+     if (m_searchString.isEmpty() || m_searchString.trimmed().size() <= 2)
+         return;
+ 
+-    if (m_enableBalooSearch) {
+-       searchInBaloo();
+-    }
+-
+     // We send a contactsearch job through akonadi.
+     // This not only searches baloo but also servers if remote search is enabled
+     akonadiPerformSearch();
+@@ -840,18 +803,6 @@
+     }
+ }
+ 
+-void AddresseeLineEditPrivate::slotConfigureBalooBlackList()
+-{
+-    QPointer<KPIM::BlackListBalooEmailCompletionDialog> dlg = new KPIM::BlackListBalooEmailCompletionDialog(q);
+-    dlg->setEmailBlackList(m_balooBlackList);
+-    if (dlg->exec()) {
+-        loadBalooBlackList();
+-        q->removeCompletionSource(i18nc( "@title:group", "Contacts found in your data"));
+-        s_static->balooCompletionSource = q->addCompletionSource( i18nc( "@title:group", "Contacts found in your data"), -1 );
+-    }
+-    delete dlg;
+-}
+-
+ bool AddresseeLineEditPrivate::useSemicolonAsSeparator() const
+ {
+     return m_useSemicolonAsSeparator;
+@@ -862,16 +813,6 @@
+     m_useSemicolonAsSeparator = useSemicolonAsSeparator;
+ }
+ 
+-bool AddresseeLineEditPrivate::enableBalooSearch() const
+-{
+-    return m_enableBalooSearch;
+-}
+-
+-void AddresseeLineEditPrivate::setEnableBalooSearch(bool enableBalooSearch)
+-{
+-    m_enableBalooSearch = enableBalooSearch;
+-}
+-
+ QString AddresseeLineEditPrivate::searchString() const
+ {
+     return m_searchString;
+@@ -932,14 +873,6 @@
+     m_showOU = showOU;
+ }
+ 
+-void AddresseeLineEditPrivate::loadBalooBlackList()
+-{
+-    KSharedConfig::Ptr config = KSharedConfig::openConfig( QLatin1String("kpimbalooblacklist") );
+-    KConfigGroup group( config, "AddressLineEdit" );
+-    m_balooBlackList = group.readEntry( "BalooBackList", QStringList() );
+-    m_domainExcludeList = group.readEntry("ExcludeDomain", QStringList());
+-}
+-
+ void AddresseeLineEditPrivate::removeCompletionSource(const QString &source)
+ {
+     s_static->removeCompletionSource(source);
+diff -ur kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit_p.h kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit_p.h
+--- kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit/addresseelineedit_p.h	2016-09-05 18:51:50.522035051 +0200
++++ kdepim-4.14.10/libkdepim/addressline/addresslineedit/addresseelineedit_p.h	2016-09-05 19:28:03.393431154 +0200
+@@ -36,8 +36,6 @@
+ public:
+     AddresseeLineEditPrivate( AddresseeLineEdit *qq, bool enableCompletion );
+     ~AddresseeLineEditPrivate();
+-    QStringList cleanupEmailList(const QStringList &inputList);
+-    void loadBalooBlackList();
+     void alternateColor();
+     void init();
+     void startLoadingLDAPEntries();
+@@ -70,9 +68,6 @@
+     QString searchString() const;
+     void setSearchString(const QString &searchString);
+ 
+-    bool enableBalooSearch() const;
+-    void setEnableBalooSearch(bool enableBalooSearch);
+-
+     bool useSemicolonAsSeparator() const;
+     void setUseSemicolonAsSeparator(bool useSemicolonAsSeparator);
+ 
+@@ -90,16 +85,13 @@
+     void slotAkonadiHandleItems( const Akonadi::Item::List &items );
+     void slotAkonadiSearchResult( KJob * );
+     void slotAkonadiCollectionsReceived( const Akonadi::Collection::List & );
+-    void searchInBaloo();
+     void slotTriggerDelayedQueries();
+     void slotShowOUChanged( bool );
+-    void slotConfigureBalooBlackList();
+ 
+ private:
+     AddresseeLineEdit *q;
+     QTimer m_delayedQueryTimer;
+     QColor m_alternateColor;
+-    QStringList m_balooBlackList;
+     QStringList m_domainExcludeList;
+     QString m_previousAddresses;
+     QString m_searchString;
+@@ -111,7 +103,6 @@
+     bool m_searchExtended; //has \" been added?
+     bool m_useSemicolonAsSeparator;
+     bool m_showOU;
+-    bool m_enableBalooSearch;
+ };
+ }
+ 
+Sólo en kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit: baloocompletionemail.cpp
+Sólo en kdepim-4.14.10.orig/libkdepim/addressline/addresslineedit: baloocompletionemail.h
+diff -ur kdepim-4.14.10.orig/libkdepim/addressline/completionconfiguredialog/completionconfiguredialog.cpp kdepim-4.14.10/libkdepim/addressline/completionconfiguredialog/completionconfiguredialog.cpp
+--- kdepim-4.14.10.orig/libkdepim/addressline/completionconfiguredialog/completionconfiguredialog.cpp	2016-09-05 18:51:50.518701697 +0200
++++ kdepim-4.14.10/libkdepim/addressline/completionconfiguredialog/completionconfiguredialog.cpp	2016-09-05 19:22:37.945309442 +0200
+@@ -29,7 +29,6 @@
+ #include <KSharedConfig>
+ #include <ldap/ldapclientsearch.h>
+ #include <addressline/completionorder/completionorderwidget.h>
+-#include <addressline/blacklistbaloocompletion/blacklistbalooemailcompletionwidget.h>
+ #include <addressline/recentaddress/recentaddresswidget.h>
+ 
+ using namespace KPIM;
+@@ -55,11 +54,6 @@
+     //KF5 add i18n
+     mTabWidget->addTab(mRecentaddressWidget, QLatin1String("Recent Address"));
+ 
+-    mBlackListBalooWidget = new KPIM::BlackListBalooEmailCompletionWidget;
+-    mBlackListBalooWidget->setObjectName(QLatin1String("blacklistbaloo_widget"));
+-    //KF5 add i18n
+-    mTabWidget->addTab(mBlackListBalooWidget, QLatin1String("Blacklist address email"));
+-
+ 
+     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+     buttonBox->setObjectName(QLatin1String("buttonbox"));
+@@ -105,7 +99,6 @@
+ void CompletionConfigureDialog::load()
+ {
+     mCompletionOrderWidget->loadCompletionItems();
+-    mBlackListBalooWidget->load();
+ }
+ 
+ bool CompletionConfigureDialog::recentAddressWasChanged() const
+@@ -120,12 +113,6 @@
+ 
+ void CompletionConfigureDialog::slotSave()
+ {
+-    mBlackListBalooWidget->save();
+     mCompletionOrderWidget->save();
+     accept();
+ }
+-
+-void CompletionConfigureDialog::setEmailBlackList(const QStringList &lst)
+-{
+-    mBlackListBalooWidget->setEmailBlackList(lst);
+-}
+diff -ur kdepim-4.14.10.orig/libkdepim/CMakeLists.txt kdepim-4.14.10/libkdepim/CMakeLists.txt
+--- kdepim-4.14.10.orig/libkdepim/CMakeLists.txt	2016-09-05 18:51:50.515368344 +0200
++++ kdepim-4.14.10/libkdepim/CMakeLists.txt	2016-09-05 19:12:10.369529939 +0200
+@@ -13,7 +13,6 @@
+ add_definitions(${QT_QTDBUS_DEFINITIONS})
+ 
+ include_directories( ${Boost_INCLUDE_DIR} )
+-include_directories( ${BALOO_INCLUDE_DIR} )
+ 
+ option(KDEPIM_INPROCESS_LDAP "Use in-process rather than KIO slave LDAP" FALSE)
+ if (KDEPIM_INPROCESS_LDAP)
+@@ -74,23 +73,13 @@
+    addressline/addresslineedit/addresseelineedit_p.cpp
+    addressline/addresslineedit/addresseelineeditstatic.cpp
+    addressline/addresslineedit/kmailcompletion.cpp
+-   addressline/addresslineedit/baloocompletionemail.cpp
+    addressline/completionconfiguredialog/completionconfiguredialog.cpp
+    addressline/recentaddress/recentaddressdialog.cpp
+    addressline/recentaddress/recentaddresswidget.cpp
+    addressline/recentaddress/recentaddresses.cpp
+ )
+ 
+-set(kdepim_addressline_blacklist_baloo_LIB_SRCS
+-   addressline/blacklistbaloocompletion/blacklistbalooemailcompletiondialog.cpp
+-   addressline/blacklistbaloocompletion/blacklistbalooemaillist.cpp
+-   addressline/blacklistbaloocompletion/blacklistbalooemailsearchjob.cpp
+-   addressline/blacklistbaloocompletion/blacklistbalooemailutil.cpp
+-   addressline/blacklistbaloocompletion/blacklistbalooemailcompletionwidget.cpp
+-) 
+-
+ set(kdepim_LIB_SRCS
+-   ${kdepim_addressline_blacklist_baloo_LIB_SRCS}
+    ${kdepim_progresswidget_LIB_SRCS}
+    ${kdepim_job_LIB_SRCS}
+    ${kdepim_widgets_LIB_SRCS}
+@@ -125,7 +114,6 @@
+   ${KDEPIMLIBS_KMIME_LIBS}
+   ${KDEPIMLIBS_AKONADI_LIBS}
+   ${KDEPIMLIBS_AKONADI_CONTACT_LIBS}
+-  ${BALOO_LIBRARIES}
+ )
+ 
+ 
+@@ -179,7 +167,3 @@
+ ########### install files ###############
+ 
+ install(FILES interfaces/org.kde.addressbook.service.xml interfaces/org.kde.mailtransport.service.xml DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+-
+-
+-add_subdirectory(addressline/blacklistbaloocompletion/autotests)
+-add_subdirectory(addressline/autotests/)
+diff -ur kdepim-4.14.10.orig/messagecomposer/composer/composerlineedit.cpp kdepim-4.14.10/messagecomposer/composer/composerlineedit.cpp
+--- kdepim-4.14.10.orig/messagecomposer/composer/composerlineedit.cpp	2016-09-05 18:51:50.525368405 +0200
++++ kdepim-4.14.10/messagecomposer/composer/composerlineedit.cpp	2016-09-05 20:01:08.057682279 +0200
+@@ -57,7 +57,6 @@
+ {
+     allowSemicolonAsSeparator( MessageComposerSettings::allowSemicolonAsAddressSeparator() );
+     loadContacts();
+-    setEnableBalooSearch( MessageComposerSettings::showBalooSearchInComposer() );
+ }
+ 
+ 
+diff -ur kdepim-4.14.10.orig/messagelist/core/filter.cpp kdepim-4.14.10/messagelist/core/filter.cpp
+--- kdepim-4.14.10.orig/messagelist/core/filter.cpp	2016-09-05 18:51:50.355367361 +0200
++++ kdepim-4.14.10/messagelist/core/filter.cpp	2016-09-05 20:20:11.814837269 +0200
+@@ -21,9 +21,6 @@
+ #include "core/filter.h"
+ #include "core/messageitem.h"
+ 
+-#include <baloo/pim/emailquery.h>
+-#include <baloo/pim/resultiterator.h>
+-
+ using namespace MessageList::Core;
+ 
+ Filter::Filter(QObject *parent)
+@@ -146,34 +143,6 @@
+         }
+         needToSplitString = true;
+     }
+-    if (!newStr.trimmed().isEmpty()) {
+-        Baloo::PIM::EmailQuery query;
+-        if (options & QuickSearchLine::SearchEveryWhere) {
+-            query.matches(newStr);
+-            query.setSplitSearchMatchString(needToSplitString);
+-        } else if (options & QuickSearchLine::SearchAgainstSubject) {
+-            query.subjectMatches(newStr);
+-        } else if (options & QuickSearchLine::SearchAgainstBody) {
+-            query.bodyMatches(newStr);
+-        } else if (options & QuickSearchLine::SearchAgainstFrom) {
+-            query.setFrom(newStr);
+-        } else if (options & QuickSearchLine::SearchAgainstBcc) {
+-            query.setBcc(QStringList() << newStr);
+-        } else if (options & QuickSearchLine::SearchAgainstTo) {
+-            query.setTo(QStringList() << newStr);
+-        }
+-
+-
+-        //If the collection is virtual we're probably trying to filter the search collection, so we just search globally
+-        if (mCurrentFolder.isValid() && !mCurrentFolder.isVirtual()) {
+-            query.addCollection(mCurrentFolder.id());
+-        }
+-
+-        Baloo::PIM::ResultIterator it = query.exec();
+-        while (it.next()) {
+-            mMatchingItemIds << it.id();
+-        }
+-    }
+     emit finished();
+ }
+ 
