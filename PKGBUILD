@@ -2,28 +2,22 @@
 
 pkgname=networkmanager-strongswan
 _pkgname=NetworkManager-strongswan
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Strongswan NetworkManager plugin"
 arch=('i686' 'x86_64')
 url="http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager"
 license=('GPL')
-depends=(networkmanager strongswan libgnomeui)
-makedepends=(intltool)
-source=("http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.gz"
-        'fix-vbox-parent.patch')
-sha256sums=('8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a'
-            'c9f7f6819753ff2834015ba18ffed39c4b5ae5e0e71c377ee49c105f0d9b1f99')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i ../fix-vbox-parent.patch
-}
+depends=('networkmanager' 'strongswan>=5.5.1' 'libnm-gtk')
+makedepends=('intltool')
+source=("http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.bz2"{,.sig})
+sha256sums=('02680f5226213ec69994b4e0c22229c1d777a3f8eff96a03f79326921ef5d661'
+            'SKIP')
+validpgpkeys=('12538F8F689B5F1F15F07BE1765FE26C6B467584') # Tobias Brunner
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
   ./configure --sysconfdir=/etc --prefix=/usr \
     --libexecdir=/usr/lib/networkmanager \
     --with-charon=/usr/lib/strongswan/charon-nm

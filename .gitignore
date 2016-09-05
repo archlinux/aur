@@ -8,3 +8,6 @@ pkg/
 
 # sources 
 *.tar.gz
+*.tar.gz.sig
+*.tar.bz2
+*.tar.bz2.sig
