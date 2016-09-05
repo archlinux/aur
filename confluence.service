@@ -6,14 +6,15 @@ After=syslog.target network.target
 User=confluence
 Type=simple
 SyslogIdentifier=confluence
-Environment="CATALINA_HOME=/opt/atlassian/confluence"
-Environment="CATALINA_BASE=/opt/atlassian/confluence"
-Environment="CATALINA_TMPDIR=/opt/atlassian/confluence/temp"
+Environment="CATALINA_HOME=/opt/atlassian-confluence"
+Environment="CATALINA_BASE=/opt/atlassian-confluence"
+Environment="CATALINA_TMPDIR=/opt/atlassian-confluence/temp"
 Environment="JAVA_HOME=/usr/lib/jvm/default"
-Environment="CLASSPATH=/opt/atlassian/confluence/bin/bootstrap.jar:/opt/atlassian/confluence/bin/tomcat-juli.jar"
+Environment="CLASSPATH=/opt/atlassian-confluence/bin/bootstrap.jar:/opt/atlassian-confluence/bin/tomcat-juli.jar"
 EnvironmentFile=-/etc/conf.d/confluence
+SuccessExitStatus=143
 
-ExecStart=${JAVA_HOME}/bin/java \
+ExecStart=/usr/bin/env ${JAVA_HOME}/bin/java \
 $JAVA_OPTS $CATALINA_OPTS \
 -classpath ${CLASSPATH} \
 -Dcatalina.base=${CATALINA_BASE} \
@@ -25,7 +26,7 @@ $JAVA_OPTS $CATALINA_OPTS \
 org.apache.catalina.startup.Bootstrap \
 start
 
-ExecStop=${JAVA_HOME}/bin/java \
+ExecStop=/usr/bin/env ${JAVA_HOME}/bin/java \
 $JAVA_OPTS \
 -classpath ${CLASSPATH} \
 -Dcatalina.base=${CATALINA_BASE} \
