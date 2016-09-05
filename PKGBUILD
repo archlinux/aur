@@ -1,22 +1,25 @@
 # Maintainer: Alan Berndt <alan@eatabrick.org>
 pkgname=dario
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="A falling block game made for Ludum Dare 32"
-url="http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50659"
-license='MIT'
+pkgdesc='A falling block game made for Ludum Dare 32'
+url='http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=50659'
+license=('MIT')
 arch=('i686' 'x86_64')
 depends=('sdl2' 'sdl2_mixer')
 provides=('dario')
-source=("http://ld32.eatabrick.org/final/dario-$pkgver.tgz")
-sha1sums=('e4180482ea4bd55131aa770f607b1e973f45c88f')
+source=("https://github.com/bentglasstube/ld32/archive/v$pkgver.tar.gz")
+sha1sums=('9fc7a3d7f7338b4fcf06f91f7ca7317ad70f65d4')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/ld32-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/ld32-$pkgver"
+
+  install -Dm 775 build/dario $pkgdir/usr/share/dario/game
+  install -Dm 775 launcher $pkgdir/usr/share/dario/launcher
+  install -Dt $pkgdir/usr/share/dario/content content/*
 }
