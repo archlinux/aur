@@ -94,7 +94,7 @@ for ((i=0; i < ${#lines[@]}; i++)); do
     fi
 
     case $gitcmd in
-        push)
+        addcommitpush)
             if $dryrun; then
                 cmd="git -C $path add -n -A"
                 cmd="$cmd && (git -C $path commit -n -v || true)"

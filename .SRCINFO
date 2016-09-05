@@ -1,14 +1,14 @@
 pkgbase = fetcher
-	pkgdesc = Update a list of git repos
+	pkgdesc = Automatic adding, commiting, pushing or pulling of git repos. Easily adjustable in a config file à la "<repopath> <command> <remote> <refspec>". Also added the special command addcommitpush, which does all three at once.
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	install = fetcher.install
 	arch = any
 	license = MIT
 	depends = git
 	source = fetcher.sh
 	source = fetcher.service
-	md5sums = de164dec82476dcfc15efad1b9617792
+	md5sums = 5df683b5b96f5e83331ab071b0979613
 	md5sums = ac026457052512cfdb9ae12e100ea696
 
 pkgname = fetcher

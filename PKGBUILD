@@ -2,8 +2,11 @@
 
 pkgname=fetcher
 pkgver=1.0
-pkgrel=0
-pkgdesc="Update a list of git repos"
+pkgrel=1
+pkgdesc="Automatic adding, commiting, pushing or pulling of git repos.
+Easily adjustable in a config file à la \"<repopath> <command> <remote> <refspec>\".
+Also added the special command addcommitpush, which does all three at once.
+"
 arch=('any')
 url=""
 license=('MIT')
@@ -13,7 +16,7 @@ install="$pkgname.install"
 source=("fetcher.sh"
         "fetcher.service")
 noextract=()
-md5sums=('de164dec82476dcfc15efad1b9617792'
+md5sums=('5df683b5b96f5e83331ab071b0979613'
          'ac026457052512cfdb9ae12e100ea696')
 
 package() {
