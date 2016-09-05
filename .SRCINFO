@@ -2,7 +2,7 @@
 # Sun May  1 19:39:26 UTC 2016
 pkgbase = centrifugo
 	pkgdesc = Real-time messaging server for web applications
-	pkgver = 1.4.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/centrifugal/centrifugo/
 	install = centrifugo.install
@@ -17,7 +17,7 @@ pkgbase = centrifugo
 	makedepends = git
 	depends = systemd
 	backup = etc/centrifugo/config.json
-	source = git+https://github.com/centrifugal/centrifugo.git#tag=v1.4.5
+	source = git+https://github.com/centrifugal/centrifugo.git#tag=v1.5.1
 	source = centrifugo.service
 	source = centrifugo.sysusers
 	sha256sums = SKIP

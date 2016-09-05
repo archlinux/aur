@@ -1,7 +1,7 @@
 # Maintainer: Marat Moustafine <m-dash-moustafine-at-yandex-dot-ru>
 
 pkgname=centrifugo
-pkgver=1.4.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Real-time messaging server for web applications"
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
