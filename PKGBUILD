@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=prey-node-client
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
@@ -15,8 +15,8 @@ source=('prey-node-client.patch')
 source_x86_64=("https://s3.amazonaws.com/prey-releases/node-client/$pkgver/prey-linux-$pkgver-x64.zip")
 source_i686=("https://s3.amazonaws.com/prey-releases/node-client/$pkgver/prey-linux-$pkgver-x86.zip")
 sha256sums=('181785784b44de48ff8ad0601f2a88a00ff4c26fe95b2c075546f23dc54de8c5')
-sha256sums_x86_64=('5ef68614c8422d533518ebd2f6176952949127b07e68176e54c5e2219be757f8')
-sha256sums_i686=('7617a1d2b94bd85fdee38c78aa439a8f2d0a13b94e4ac84e9ae1c1242342d32d')
+sha256sums_x86_64=('262dcf034da196514846485d0638da7fec7cd1a38b68f7dcdc969001faefa475')
+sha256sums_i686=('4da7dbc422d1ff7139f565f59c6e8efeace22f60faeabba17cba53a5e7be78ec')
 
 
 package() {
