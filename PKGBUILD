@@ -12,7 +12,6 @@ depends=('glade' 'jack' 'pygtk' 'python2' 'python2-enum' 'python2-yaml')
 makedepends=('git' 'python2-distutils-extra')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/LADI/laditools.git")
 sha512sums=('SKIP')
 _branch=master
