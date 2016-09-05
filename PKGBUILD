@@ -10,11 +10,11 @@ url='http://www.sfml-dev.org'
 license=('zlib')
 depends=('lib32-sfml')
 makedepends=('cmake')
-source=("$url/files/CSFML-${pkgver}-sources.zip")
+source=("$url/files/CSFML-$pkgver-sources.zip")
 md5sums=('4c5cfbd3179884b6f9f872d7a8fd19c4')
 
 build() {
-  cd "$srcdir/CSFML-${pkgver}"
+  cd "$srcdir/CSFML-$pkgver"
 
   export CFLAGS='-m32'
   export CXXFLAGS='-m32'
@@ -28,10 +28,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/CSFML-${pkgver}"/build
+  cd "$srcdir/CSFML-$pkgver"/build
 
-  mkdir -p "$pkgdir/usr/lib32"
-  cp -a lib/*.so{,.*} "${pkgdir}/usr/lib32/"
+  install -dm755 "$pkgdir/usr/lib32"
+  cp -a lib/*.so{,.*} "$pkgdir/usr/lib32/"
 
-  install -Dm644 ../license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ../license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
