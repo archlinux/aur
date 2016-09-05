@@ -1,13 +1,14 @@
 pkgbase = desktop-privileges
 	pkgdesc = A collection of polkit rules to manage automounting of removable media, suspend and hibernate actions and CPU frequency settings.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/desktop-privileges/
 	arch = any
 	license = GPL
 	depends = polkit-consolekit
 	depends = udisks2-nosystemd
-	depends = upower-pm-utils
+	depends = upower
+	depends = pm-utils
 	optdepends = mate-power-manager-upower
 	conflicts = polkit-automount-upower-rules
 	replaces = polkit-automount-upower-rules

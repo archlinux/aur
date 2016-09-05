@@ -5,12 +5,12 @@
 
 pkgname=desktop-privileges
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of polkit rules to manage automounting of removable media, suspend and hibernate actions and CPU frequency settings."
 arch=('any')
 url="https://aur.archlinux.org/packages/desktop-privileges/"
 license=('GPL')
-depends=('polkit-consolekit' 'udisks2-nosystemd' 'upower-pm-utils')
+depends=('polkit-consolekit' 'udisks2-nosystemd' 'upower' 'pm-utils')
 optdepends=('mate-power-manager-upower')
 conflicts=('polkit-automount-upower-rules')
 replaces=('polkit-automount-upower-rules')
