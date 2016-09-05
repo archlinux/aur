@@ -12,7 +12,6 @@ pkgbase = magma-atlas
 	depends = python
 	depends = cblas
 	depends = atlas-lapack
-	depends = openblas
 	provides = magma
 	conflicts = magma
 	options = staticlibs

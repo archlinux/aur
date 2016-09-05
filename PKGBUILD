@@ -16,7 +16,7 @@ url="http://icl.cs.utk.edu/magma/"
 provides=(magma)
 conflicts=('magma')
 license=(custom)
-depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack" "openblas")
+depends=("cuda>=5.5.0" "gcc-libs-multilib" "gsl" "python" "cblas" "atlas-lapack")
 options=('staticlibs')
 sha256sums=('ba0373fc80b078001a5e048b245185adadf591c451490de53e62ed7e1a167571')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
