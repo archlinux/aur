@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=babl-git
-pkgver=0.1.18.1.g654aa19
+pkgver=0.1.18.12.gef88a22
 pkgrel=1
 pkgdesc="babl is a dynamic, any to any, pixel format translation library."
 arch=('i686' 'x86_64')
@@ -23,8 +23,7 @@ _gitname=babl
 build() {
   cd "$srcdir/$_gitname"
 
-  ./autogen.sh
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr --disable-docs
   make
 }
 
