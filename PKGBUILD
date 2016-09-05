@@ -83,7 +83,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r11.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r0.patch'
         # Misc Patches
-        'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff'
+        'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff#commit=7bdf7eef0236f7962a03a76ea36954e9910c9a18'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch' # https://crbug.com/473866
