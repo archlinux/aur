@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-emacs-git
 pkgver=116892.41120e0
-pkgrel=3
+pkgrel=4
 pkgdesc="branch of GNU Emacs that replaces Emacs' own EmacsLisp engine with that of Guile."
 arch=('i686' 'x86_64')
 url="http://www.emacswiki.org/emacs/GuileEmacs"
@@ -11,8 +11,8 @@ makedepends=('git')
 conflicts=('emacs' 'ctags')
 provides=('emacs' 'ctags')
 options=('!strip' '!makeflags')
-source=("guilemacs::git://git.hcoop.net/git/bpt/emacs.git#branch=wip")
-md5sums=('SKIP')
+source=("guilemacs::git://git.hcoop.net/git/bpt/emacs.git#branch=wip" )
+sha256sums=('SKIP')
 _gitname="guilemacs"
 
 pkgver() {
@@ -20,14 +20,31 @@ pkgver() {
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+  [[ -x configure ]] || ./autogen.sh
+}
+
 build() {
   cd "$srcdir"/"$_gitname"
-  ./autogen.sh 
-  ./configure --prefix=/usr \
+  # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
+  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
+
+  CC=clang ./configure --prefix=/usr \
+	      --sysconfdir=/etc \
 	      --localstatedir=/var \
 	      --libexecdir=/usr/lib \
-	      --with-jpeg=no
-  make 
+	      --with-jpeg=no \
+	      --mandir=/usr/share/man \
+	      --with-gameuser=:games \
+	      --with-sound=alsa \
+	      --with-xft \
+	      --with-modules \
+	      --with-x-toolkit=gtk3 \
+	      --without-gconf \
+	      --with-gsettings
+  
+  make
 }
 
 package() {
