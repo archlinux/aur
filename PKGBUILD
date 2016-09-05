@@ -1,7 +1,7 @@
 # Maintainer: Keith Scheiwiller <k.scheiw@gmail.com>
 
 _pyver="python2"
-pkgname=python2-scruffington
+pkgname=python2-scruffy
 pkgver=0.3.6
 pkgrel=1
 pkgdesc="Scruffy is a framework for taking care of a bunch of boilerplate in Python apps."
