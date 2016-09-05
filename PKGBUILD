@@ -34,6 +34,9 @@ build() {
 package() {
   cd "$srcdir/$appname-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
+  # Avoid conflict with ncurses package
+  rm "$pkgdir/usr/share/terminfo/s/st"
+  rm "$pkgdir/usr/share/terminfo/s/st-256color"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }
