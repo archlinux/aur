@@ -6,7 +6,7 @@
 
 pkgname=coherence
 pkgver=0.6.6.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A DLNA/UPnP MediaServer and MediaRenderer"
 arch=('any')
 url="http://coherence.beebits.net/"
@@ -14,15 +14,13 @@ license=('MIT')
 depends=('python2' 'twisted-web2' 'python-elementtree' 'python2-configobj' 'libcaca')
 optdepends=('ampache: for the Ampache Backend'
             'gstreamer0.10-python: for the gstreamer MediaRenderer'
-            'libmtag: for MediaStore Backend ID3 Option A'
             'pyid3lib: for MediaStore Backend ID3 Option B'
-            'python-gdata: for the Picasa and YouTube Backends'
-            'python-mechanize: for the Flickr Backend'
+            'python2-gdata: for the Picasa and YouTube Backends'
+            'python2-mechanize: for the Flickr Backend'
             'rhythmbox: for the Rhythmbox DB Backend'
             'taglib: for MediaStore Backend ID3 Option A or C'
-            'tagpy: for MediaStore Backend ID3 Option C'
-            'tracker: for the TrackerStore Backend'
-            'dvb-daemon: for the DVB Daemon Backend (no package yet)')
+            'python2-tagpy: for MediaStore Backend ID3 Option C'
+            'tracker: for the TrackerStore Backend')
 makedepends=('python2-distribute')
 conflicts=('coherence-svn')
 source=(http://coherence.beebits.net/download/Coherence-${pkgver}.tar.gz
