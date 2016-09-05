@@ -1,19 +1,19 @@
 # Maintainer: 0strodamus <0strodamus at cox dot net>
 # Contributor : Martin Wimpress <code@flexion.org>
 #
-# notes: if you want epub support, add 'mathjax' to depends
+# notes: if you want epub support, add 'mathjax' and 'webkitgtk2' to depends
 #        and change --disable-epub to --enable-epub in build function
 
 pkgname=atril-xfce
 _pkgname=atril
 _ver=1.15
 pkgver=${_ver}.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MATE document viewer slimmed down for Xfce (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dconf' 'dbus' 'desktop-file-utils' 'gtk2' 'libsecret' 'libsm' 'libspectre' 'poppler-glib' 'webkitgtk2' 'zlib')
+depends=('dconf' 'dbus' 'desktop-file-utils' 'gtk2' 'libsecret' 'libsm' 'libspectre' 'poppler-glib' 'zlib')
 makedepends=('djvulibre' 'gobject-introspection' 'libgxps' 'mate-common>=1.15.0' 'texlive-bin' 'yelp-tools')
 optdepends=('djvulibre: DjVu support'
             'libgxps: XPS support'
