@@ -6,9 +6,9 @@
 
 pkgname=coherence
 pkgver=0.6.6.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A DLNA/UPnP MediaServer and MediaRenderer"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://coherence.beebits.net/"
 license=('MIT')
 depends=('python2' 'twisted-web2' 'python-elementtree' 'python2-configobj' 'libcaca')
@@ -30,6 +30,7 @@ source=(http://coherence.beebits.net/download/Coherence-${pkgver}.tar.gz
        coherence.service
        coherence_pidfile.patch
        samsung.patch
+       twisted_detection.patch
        org.Coherence.service)
 backup=('etc/coherence.conf')
 md5sums=('d7a1b4abf6831c61e37a3b9e2bdc560a'
@@ -37,6 +38,7 @@ md5sums=('d7a1b4abf6831c61e37a3b9e2bdc560a'
          'c43416ac2fb8a8195917a7e23b806c7d'
          'b12f5f89fe34e48267c6c6e7cab5a4f4'
          '039d4b84c0f0d023d9e9519fba1b101e'
+         '7ad9e42ab1e6dc8efa850d4b348e3052'
          'ed11837f08988600e5aac0caf8e5221a')
 
 prepare() {
@@ -44,6 +46,7 @@ prepare() {
 
   patch -Np0 -i "$srcdir/samsung.patch"
   patch -p1 -i "$srcdir/coherence_pidfile.patch"
+  patch -Np0 -i "$srcdir/twisted_detection.patch"
 }
 
 package() {

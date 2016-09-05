@@ -1,0 +1,10 @@
+--- coherence/__init__.py
+@@ -24,8 +24,6 @@
+     if twisted_version < Version("twisted", 2, 5, 0):
+         raise ImportError("Twisted >= 2.5 is required. Please install it.")
+ 
+-    if twisted_web_version < Version("twisted.web", 2, 5, 0):
+-        raise ImportError("Twisted.Web >= 2.5 is required. Please install it")
+ except ImportError, exc:
+     # log error to stderr, might be useful for debugging purpose
+     for arg in exc.args:
