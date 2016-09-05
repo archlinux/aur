@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=agedu-git
-pkgver=r125.a05fca7
+pkgver=r126.853cea9
 pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
