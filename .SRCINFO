@@ -1,7 +1,7 @@
 pkgbase = st-solarized-light
-	pkgdesc = A simple virtual terminal emulator for X.
-	pkgver = 0.6
-	pkgrel = 3
+	pkgdesc = A simple virtual terminal emulator for X. Patched for solarized light and Inconsolata font.
+	pkgver = 0.7
+	pkgrel = 1
 	url = http://st.suckless.org
 	arch = i686
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = st-solarized-light
 	makedepends = ncurses
 	depends = libxext
 	depends = libxft
-	source = http://dl.suckless.org/st/st-0.6.tar.gz
-	source = http://st.suckless.org/patches/st-0.6-no-bold-colors.diff
-	source = http://st.suckless.org/patches/st-0.6-solarized-light.diff
-	md5sums = 1a926f450b4eacb7e2f5ac5b8ffea7c8
-	md5sums = 318bffa6a563970754554694107b1ca1
-	md5sums = ce809cf3e1f06a0a341b3e46c94b7ef2
+	source = http://dl.suckless.org/st/st-0.7.tar.gz
+	source = http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff
+	source = http://st.suckless.org/patches/st-solarized-light-20160727-308bfbf.diff
+	sha256sums = f7870d906ccc988926eef2cc98950a99cc78725b685e934c422c03c1234e6000
+	sha256sums = 2e8cdbeaaa79ed067ffcfdcf4c5f09fb5c8c984906cde97226d4dd219dda39dc
+	sha256sums = d3f28d2a78647e52e64ff2a41df96802787ea15deb168a585c09a9f5cf2ba066
 
 pkgname = st-solarized-light
 
