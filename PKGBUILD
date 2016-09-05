@@ -2,7 +2,7 @@
 
 _pkgname=qt5-tools
 pkgname=$_pkgname-git
-pkgver=v5.6.0.alpha1.r22.g42632bf
+pkgver=v5.8.0.alpha1.r1.g13946e3
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (Development Tools, QtHelp)'
 arch=('i686' 'x86_64')
@@ -68,8 +68,8 @@ package() {
 
     # Useful symlinks
     install -d "${pkgdir}"/usr/bin
-    for b in "${pkgdir}"/usr/lib/qt/bin/*; do
-        ln -s /usr/lib/qt/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt5
+    for b in "${pkgdir}"/usr/bin/*; do
+        ln -s /usr/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt5
     done
 
     install -D -m644 $srcdir/$_pkgname/LGPL_EXCEPTION.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LGPL_EXCEPTION.txt
