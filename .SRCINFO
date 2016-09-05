@@ -22,7 +22,7 @@ pkgbase = amule-dlp-git
 	conflicts = amule-dlp
 	conflicts = amule-dlp-hg
 	conflicts = amule-dlp-git
-	source = git+https://github.com/persmule/amule-dlp.git#commit=4c904e5e94ed9909dbf18423c82605d6f9abc5ec
+	source = git+https://github.com/persmule/amule-dlp.git#commit=d41da5b9e588fc11f8560cffe69beeee25536303
 	source = amuled.systemd
 	source = amuleweb.systemd
 	sha256sums = SKIP

@@ -17,7 +17,7 @@ makedepends=(git)
 optdepends=('antileech')
 install=amule.install
 provides=('amule' 'amule-dlp')
-source=("git+https://github.com/persmule/amule-dlp.git#commit=4c904e5e94ed9909dbf18423c82605d6f9abc5ec"
+source=("git+https://github.com/persmule/amule-dlp.git#commit=d41da5b9e588fc11f8560cffe69beeee25536303"
         'amuled.systemd'
         'amuleweb.systemd')
 sha256sums=('SKIP'
