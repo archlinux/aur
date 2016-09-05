@@ -78,9 +78,10 @@ package() {
   cp -r Samples "$pkgdir/opt/$pkgname/Samples"
   cp -r Templates "$pkgdir/opt/$pkgname/Templates"
 
-  # build scripts, used by some plugins
+  # build scripts, used by some plugins (CLion)
   install -Dm755 GenerateProjectFiles.sh "$pkgdir/opt/$pkgname/GenerateProjectFiles.sh"
   install -Dm755 Setup.sh "$pkgdir/opt/$pkgname/Setup.sh"
+  install -Dm644 .ue4dependencies "$pkgdir/opt/$pkgname/.ue4dependencies"
 
   # icon for .desktop file
   install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
