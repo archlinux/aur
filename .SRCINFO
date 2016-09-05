@@ -1,0 +1,18 @@
+pkgbase = jsonix-schema-compiler
+	pkgdesc = Compiles XML Schemas into XML<->JSON mappings for Jsonix.
+	pkgver = 2.3.9
+	pkgrel = 1
+	url = https://github.com/highsource/jsonix-schema-compiler
+	arch = any
+	license = BSD
+	depends = java-runtime
+	noextract = jsonix-schema-compiler-full-2.3.9.jar
+	source = https://github.com/highsource/jsonix-schema-compiler/releases/download/2.3.9/jsonix-schema-compiler-full-2.3.9.jar
+	source = https://github.com/highsource/jsonix-schema-compiler/raw/2.3.9/LICENSE
+	source = jsonix-schema-compiler.sh
+	md5sums = d39494df9c0626c53eea7d18dd040af7
+	md5sums = 5ce6a47a9e9e030bba86c43efec26316
+	md5sums = 4b2a4cc81046d1f816e34d9887e23e35
+
+pkgname = jsonix-schema-compiler
+
