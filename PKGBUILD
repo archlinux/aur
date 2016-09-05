@@ -178,7 +178,8 @@ build() {
 
 check() {
     cd "${srcdir}/build"
-    make check
+    # Dirty fix for unittests failing because the shared lib is not in the library path.
+    LD_LIBRARY_PATH="${srcdir}/build/lib" make check
     make check-clang
 }
 
