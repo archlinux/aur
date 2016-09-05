@@ -19,7 +19,7 @@ source=('git+https://github.com/blueness/sthttpd'
 sha1sums=('SKIP'
           'ae0143fce29cf7eb84ebbee9640b9a2c977b5093'
           '73bd76de0e89a9cc31e5605659837d83b3c8dfde'
-          '7a6413491b6ba68625d450caa3c6f071af0ca1ac')
+          '4e2d1f714a68fadc2ae8fd6ba6b826c4785a77fd')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -33,7 +33,6 @@ prepare() {
 	cd "${srcdir}/${_pkgname}"
 	./autogen.sh
 	patch -p1 -i ../discreet.patch
-	sed '/DEFAULT_CHARSET/c #define DEFAULT_CHARSET "utf-8"' -i src/thttpd.h
 }
 
 build() {

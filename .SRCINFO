@@ -17,7 +17,7 @@ pkgbase = sthttpd-git
 	sha1sums = SKIP
 	sha1sums = ae0143fce29cf7eb84ebbee9640b9a2c977b5093
 	sha1sums = 73bd76de0e89a9cc31e5605659837d83b3c8dfde
-	sha1sums = 7a6413491b6ba68625d450caa3c6f071af0ca1ac
+	sha1sums = 4e2d1f714a68fadc2ae8fd6ba6b826c4785a77fd
 
 pkgname = sthttpd-git
 
