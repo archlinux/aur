@@ -1,18 +1,18 @@
-pkgbase = python2-scruffy
-	pkgdesc = Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc.
-	pkgver = 0.3.1
+pkgbase = python2-scruffington
+	pkgdesc = Scruffy is a framework for taking care of a bunch of boilerplate in Python apps.
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/snare/scruffy
 	arch = any
-	license = Beerware
+	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-pyyaml
 	depends = python2-six
 	depends = python2-sqlalchemy
 	options = !emptydirs
-	source = python2-scruffy-0.3.1.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v0.3.1
-	sha256sums = fe01da3267d16b7e416697072ac25f73c36be4d32813cf1ce92a5cc845fcecf3
+	source = scruffy-0.3.6.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v0.3.6
+	sha256sums = 98b9933bbe3a642d21f2de87f392dbe1151ca63d62573634b588e02fe8ef1723
 
-pkgname = python2-scruffy
+pkgname = python2-scruffington
 
