@@ -2,7 +2,7 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=v1.3.1.9.g14e98d4
+pkgver=v1.3.2.0.g24a6ca2
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ depends=('qt-solutions-git'
          'desktop-file-utils'
          'hicolor-icon-theme'
          )
-depends_i686=('lib32-mesa-libgl') #(?)
 makedepends=('cmake'
              'git'
              'qt5-tools'
