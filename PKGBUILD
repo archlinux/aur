@@ -1,6 +1,6 @@
 # Maintainer: Marco Melletti <melletti.marco@gmail.com>
 pkgname=uarm-git
-pkgver=v0.5.3.r26.3600cec
+pkgver=v0.5.3.r52.8b10fc0
 pkgrel=7
 pkgdesc="arm7tdmi based computer emulator with debugging tools"
 arch=('any')
@@ -25,7 +25,6 @@ pkgver() {
 build() {
 	cd "$_gitdir"
 
-	./compile -nc -- cleanall
 	./compile
 }
 
