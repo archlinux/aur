@@ -5,6 +5,7 @@ _trunkver=2.1
 pkgrel=1
 pkgdesc='Crontab module for read and writing crontab files and accessing the system cron automatically and simply using a direct API.'
 arch=('any')
+conflicts=('python-crontab' 'python2-crontab')
 url='https://launchpad.net/python-crontab'
 license=('LGPLv3')
 source=("https://launchpad.net/python-crontab/trunk/${_trunkver}/+download/${projname}-${pkgver}.tar.gz")
