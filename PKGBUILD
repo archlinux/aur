@@ -1,8 +1,8 @@
 # Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname='grass6'
-pkgver='6.4.5'
-pkgrel='3'
+pkgver='6.4.6'
+pkgrel='1'
 pkgdesc="Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization."
 arch=('i686' 'x86_64')
 url='https://grass.osgeo.org'
@@ -11,13 +11,13 @@ license=('GPL')
 # More about GRASS build and runtime deps on http://grasswiki.osgeo.org/wiki/Compile_and_Install.
 depends=('zlib' 'freetype2' 'cfitsio' 'fftw' 'gdal' 'geos' 'glu' 'libjpeg'
          'libpng' 'libtiff' 'libxmu' 'mesa' 'postgresql' 'proj' 'tcl' 'tk'
-         'wxpython2.8' 'wxgtk2.8' 'xorg-server' 'cairo' 'unixodbc' 'bc' 'xml2'
-         'python2' 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
+         'wxpython' 'xorg-server' 'cairo' 'unixodbc' 'bc' 'xml2' 'python2'
+	 'python2-numpy' 'python2-matplotlib' 'python2-pillow'
          'subversion')
 makedepends=('doxygen')
 optdepends=('r: R language interface. See http://grasswiki.osgeo.org/wiki/R_statistics.')
 source=("https://grass.osgeo.org/grass64/source/grass-${pkgver}.tar.gz")
-md5sums=('c58ab8db635ebd06cfd93dce7b70b6cb')
+md5sums=('c92c36b7a024b464a207ae4dcd4670a6')
 
 prepare() {
 
@@ -60,23 +60,11 @@ build() {
   # GRASS build system can't cope with current Arch's /etc/makepkg.conf default
   # CPPFLAGS="-D_FORTIFY_SOURCE=2".
   #
-  # At configure it throws:
+  # I have reported it in GRASS bugtracker: https://trac.osgeo.org/grass/ticket/2916.
   #
-  # checking for curses.h... no
-  # configure: error: *** Unable to locate curses includes.
-  #
-  # Due to (in config.log):
-  #
-  # In file included from /usr/include/assert.h:36:0,
-  #                  from configure:1527:
-  # /usr/include/features.h:330:4: warning: #warning _FORTIFY_SOURCE requires compiling with optimization (-O) [-Wcpp]
-  # #  warning _FORTIFY_SOURCE requires compiling with optimization (-O)
-  #    ^
-  #
-  # I don't have a better idea than removing any -D_FORTIFY_SOURCE occurences
-  # from CPPFLAGS.
+  # Using a workaround as follows:
 
-  CPPFLAGS=`echo $CPPFLAGS | sed 's/-D_FORTIFY_SOURCE=.//g'` CFLAGS="$CFLAGS -Wall" CXXFLAGS="$CXXFLAGS -Wall" ./configure \
+  FORTIFY_FLAGS=`echo "$CPPFLAGS" | sed '/^.*\(-D_FORTIFY_SOURCE=.\).*$/s//\1/'` CPPFLAGS=`echo "$CPPFLAGS" | sed 's/-D_FORTIFY_SOURCE=.//g'` CFLAGS="$FORTIFY_FLAGS $CFLAGS" CXXFLAGS="$FORTIFY_FLAGS $CXXFLAGS" ./configure \
     --prefix=/opt \
     --exec_prefix=/opt/$pkgname \
     --with-cxx \
@@ -88,8 +76,7 @@ build() {
     --with-postgres \
     --with-python=/usr/bin/python2-config \
     --with-readline \
-    --with-sqlite \
-    --with-wxwidgets=/usr/bin/wx-config-2.8
+    --with-sqlite
 
   # According to GRASS dev team, --enable-64bit has effect only on AIX, HP-UX,
   # IRIX and Solaris. It's *always* enabled on GNU/Linux if the build platform
