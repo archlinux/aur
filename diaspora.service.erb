@@ -1,6 +1,6 @@
 [Unit]
 Wants=redis.service
-Wants=%db%.service
+After=<%= db %>
 
 [Service]
 User=diaspora
