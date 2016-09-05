@@ -25,8 +25,8 @@ fi
 source_common="https://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-sha256sums_i686=("3f6dbf2e7a25e0931b4c3e573f7189e7ad378b9fb23ca8926154ca304dfcaf83")
-sha256sums_x86_64=("7e83a12d9424741908aed55af65b0f9cc684f2dda1614e4721b7bc9d26765ad0")
+sha256sums_i686=("aeee750c59d1eb2020568903d20fe7563a1dc66bdd4b8afdfcad22e5f959e294")
+sha256sums_x86_64=("8cba9d5d81fbc8a5254b3ae850246218e6a4667161bf01c1451ca6c61dad356c")
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
