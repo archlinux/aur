@@ -3,10 +3,7 @@
 pkgname=fetcher
 pkgver=1.0
 pkgrel=1
-pkgdesc="Automatic adding, commiting, pushing or pulling of git repos.
-Easily adjustable in a config file à la \"<repopath> <command> <remote> <refspec>\".
-Also added the special command addcommitpush, which does all three at once.
-"
+pkgdesc="Automatic adding, commiting, pushing or pulling of git repos via a systemd service unit."
 arch=('any')
 url="https://github.com/mbrunnen/fetcher"
 license=('MIT')
