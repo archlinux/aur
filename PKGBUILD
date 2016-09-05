@@ -2,7 +2,7 @@
 
 pkgname=zig
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='System programming language intended to replace C'
 arch=('x86_64' 'i686')
 url='http://ziglang.org/'
@@ -15,7 +15,13 @@ md5sums=('SKIP')
 build() {
   mkdir -p build
   cd build
-  cmake "../$pkgname" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -GNinja
+  cmake "../$pkgname" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DZIG_LIBC_LIB_DIR=$(dirname $(cc -print-file-name=crt1.o)) \
+    -DZIG_LIBC_INCLUDE_DIR=$(echo -n | cc -E -x c - -v 2>&1 | grep -B1 "End of search list." | head -n1 | cut -c 2-) \
+    -DZIG_LIBC_STATIC_LIB_DIR=$(dirname $(cc -print-file-name=crtbegin.o)) \
+    -GNinja
   ninja
 }
 
