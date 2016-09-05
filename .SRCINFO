@@ -1,6 +1,6 @@
 pkgbase = piaware-git
 	pkgdesc = Client-side package and programs for forwarding ADS-B data to FlightAware
-	pkgver = 3.0.3.r0.g29700f5
+	pkgver = 3.0.5.r0.g525ca1e
 	pkgrel = 1
 	url = https://github.com/flightaware/piaware
 	install = piaware-git.install
@@ -26,10 +26,8 @@ pkgbase = piaware-git
 	backup = etc/piaware.conf
 	source = piaware::git+git://github.com/flightaware/piaware
 	source = piaware.conf
-	source = exec-fail.patch
 	md5sums = SKIP
 	md5sums = fc8d49cd7b2ba136a097501647ed105b
-	md5sums = aa847e9b8a2cd4e9e427a94e21f9aee9
 
 pkgname = piaware-git
 
