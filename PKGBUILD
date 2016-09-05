@@ -4,7 +4,7 @@ pkgname=flightradar24
 pkgver=1.0.18
 _pkgverorig=1.0.18-5
 _pkgverorigarmhf=1.0.18-7
-pkgrel=1
+pkgrel=2
 pkgdesc="Feeder software for Flightradar24.com"
 url="http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ optdepends=('dump1090-git: for dump1090 in RasppberyPi')
 
 source=(fr24feed.service flightradar24.tmpfiles flightradar24.sysusers)
 sha256sums=(
-  '42488de23b25a9f8c3586a1f834972d54ddb669867a27c641b55c718459a841d'
+  'd27654efb9ce273ac117582b7b36d997d86a3843b2c77faf6f6fd131d3df1635'
   '32f6f289efe8e3e303767239b2a276405b2d7c0fcbbde8ed9473ee6889b676ff'
   '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0'
 )
