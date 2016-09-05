@@ -8,11 +8,9 @@ pkgrel=1
 pkgdesc="Enterprise wiki"
 url="https://www.atlassian.com/software/confluence"
 license=('custom')
-arch=('i686' 'x86_64')
-depends=('java-runtime=8')
-optdepends=('mysql-connector-java: connect to MySQL'
-            'libcups: used by bin/config.sh'
-            'fontconfig: used by bin/config.sh')
+arch=('any')
+depends=('java-environment=8')
+optdepends=('mysql-connector-java: connect to MySQL')
 backup=('etc/conf.d/confluence'
         'etc/webapps/atlassian-confluence/server.xml')
 install='confluence.install'
@@ -27,8 +25,17 @@ package() {
     mkdir -p "$pkgdir/opt/atlassian-confluence/"
     cp -r "$srcdir/atlassian-confluence-$pkgver/"* "$pkgdir/opt/atlassian-confluence/"
 
-    # remove unneeded *.bat files
+    # Copy License
+    mkdir -p "${pkgdir}/usr/share/licenses/atlassian-confluence"
+    cp "${pkgdir}/opt/atlassian-confluence/LICENSE" "${pkgdir}/usr/share/licenses/atlassian-confluence/LICENSE"
+
+    # remove unneeded files
     find "$pkgdir/opt/atlassian-confluence/bin" -name '*.bat' -type f -exec rm "{}" \;
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.exe' -type f -exec rm "{}" \;
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.dll' -type f -exec rm "{}" \;
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.x64' -type f -exec rm "{}" \;
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.sh' -type f -exec rm "{}" \;
+    find "$pkgdir/opt/atlassian-confluence/bin" -name '*.command' -type f -exec rm "{}" \;
 
     # Set home dir
     echo "confluence.home=/var/opt/atlassian-confluence" > "$pkgdir/opt/atlassian-confluence/confluence/WEB-INF/classes/confluence-init.properties"
