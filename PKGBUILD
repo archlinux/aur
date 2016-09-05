@@ -19,8 +19,6 @@ optdepends=('qt: enable built-in crash handler (Qt5 version; recompile needed)'
 
 provides=('arxlibertatis')
 conflicts=('arxlibertatis' 'arx-libertatisgit')
-makedepends=('rpmextract')
-
 source_x86_64=("http://download.opensuse.org/repositories/home:/dscharrer/Fedora_23/x86_64/$_pkgname-$pkgver-$rpmrel.1.x86_64.rpm")
 source_i386=("http://download.opensuse.org/repositories/home:/dscharrer/Fedora_23/i686/$_pkgname-$pkgver-$rpmrel.1.i686.rpm")
 
@@ -28,7 +26,6 @@ md5sums_x86_64=("576b07947d3a834d07e49232791753bd")
 md5sums_i386=("042f113c9e3e82715c0c7554b3fdfb2c ")
 
 package() {
-	cd $pkgdir
-	rpmextract.sh $srcdir/$_pkgname-$pkgver-*.rpm 
+	bsdtar -C $pkgdir -xf $srcdir/$_pkgname-$pkgver-*.rpm 
 }
 
