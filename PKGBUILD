@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-mew-git
-pkgver=6.7.17.g00dacb8
+pkgver=6.7.23.g2f9efcd
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Messaging in the  Emacs World"
