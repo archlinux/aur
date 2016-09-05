@@ -1,6 +1,6 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=16.2.r0.g0b67511
+pkgver=16.6.r0.g03016a6
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
@@ -17,6 +17,10 @@ pkgver() {
     cd "${pkgname}"
     # cutting off 'foo-' prefix that presents in the git tag
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+prepare() {
+  cd "${srcdir}/${pkgname}/src64"
+  cp -f ../../../mkAsm ./ 
 }
 
 build() {

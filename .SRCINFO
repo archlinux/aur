@@ -1,6 +1,6 @@
 pkgbase = picolisp
 	pkgdesc = Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines).
-	pkgver = 16.2.r0.g0b67511
+	pkgver = 16.6.r0.g03016a6
 	pkgrel = 1
 	url = http://www.picolisp.com
 	install = picolisp.install
