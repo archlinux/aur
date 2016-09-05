@@ -1,0 +1,30 @@
+dusr=diaspora
+dhome=/usr/share/webapps/diaspora
+dlog=/var/log/diaspora
+detc=/etc/webapps/diaspora
+ddata=/var/lib/diaspora
+
+_chown() {
+  chown -R $dusr:$dusr $dhome $dlog $detc $ddata
+  systemd-tmpfiles --create diaspora.conf
+}
+
+## arg 1:  the new package version
+post_install() {
+  getent passwd $dusr &> /dev/null || useradd -r -d $dhome -s /bin/bash $dusr
+  _chown
+  echo "Read the installation instructions at https://wiki.archlinux.org/index.php/Diaspora"
+}
+
+post_upgrade() {
+  _chown
+  echo "Read the upgrade instructions at https://wiki.archlinux.org/index.php/Diaspora"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  getent passwd $dusr &>/dev/null && userdel -f $dusr
+  return 0
+}
+
+# vim:set ts=2 sw=2 et:
