@@ -17,7 +17,7 @@ makedepends=(
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.patch")
 sha256sums=('d8b7c2f2d1650b132ca31035e625ee436a7b4ff9a9948119cf3f370fc3b17d22'
-            '63c8066854f138a73eef8b2e43b13d83f729b5f6428bdf3c9d19c98206c0676c')
+            '752a2dbd06fb212f8632cc2ddbcc7e3d90c733093ad8a0f4c9615dc9b3926650')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
