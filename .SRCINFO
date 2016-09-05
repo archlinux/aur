@@ -1,0 +1,27 @@
+pkgbase = mayavi-py3
+	pkgdesc = A 3-dimensional visualizer of scientific data, build with python3 bindings
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/enthought/mayavi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-mock
+	depends = vtk-py3-qt4
+	depends = python-traitsui
+	depends = python-configobj
+	depends = python-envisage
+	depends = wxpython
+	provides = python-mayavi
+	options = !emptydirs
+	source = mayavi-py3-4.5.0.tar.gz::https://github.com/enthought/mayavi/archive/4.5.0.tar.gz
+	source = vtk7-hack.patch
+	source = python35-ast.patch
+	md5sums = ed3b0004b810bd5741ae9bb46d197250
+	md5sums = d85d1b681b687a11399b3109f1486ff6
+	md5sums = 2e8da054570d81f830e5d7a840d3bd09
+
+pkgname = mayavi-py3
+
