@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Scruffy is a framework for taking care of a bunch of boilerplate in Python apps."
 arch=('any')
 depends=("${_pyver}"
-         "${_pyver}-pyyaml"
+         "${_pyver}-yaml"
          "${_pyver}-six"
          "${_pyver}-sqlalchemy")
 makedepends=("${_pyver}-setuptools")
