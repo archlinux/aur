@@ -1,0 +1,14 @@
+[Unit]
+Description=An open source client library for Spotify
+
+[Service]
+EnvironmentFile=/etc/librespot.conf
+ExecStart=/usr/bin/librespot \
+    --cache ${LIBRESPOT_CACHE} \
+    --name ${LIBRESPOT_NAME} \
+    --bitrate ${LIBRESPOT_BITRATE} \
+    --username ${LIBRESPOT_USERNAME} \
+    --password ${LIBRESPOT_PASSWORD}
+
+[Install]
+WantedBy=default.target
