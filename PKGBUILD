@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=('apache-ant: building for Android'
             'android-platform: building for Android'
             'android-sdk-build-tools: building for Android')
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-${pkgver//_/-}.tgz)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-${pkgver//_/-}.tgz)
 noextract=($_npmname-${pkgver//_/-}.tgz)
 sha1sums=('fe886017d03402b9e8a266c16767059036b6627e')
 
