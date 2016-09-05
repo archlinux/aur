@@ -13,7 +13,8 @@ depends=(kdepimlibs4 grantlee-qt4)
 makedepends=(cmake automoc4 boost libxss)
 conflicts=('kdepim-libkdepim<5')
 source=("http://download.kde.org/Attic/applications/${_kdeappver}/src/kdepim-${pkgver}.tar.xz" trim-baloo.patch)
-sha1sums=('6f74763dda68dbb44394e807eab9204777bddf0a')
+sha1sums=('6f74763dda68dbb44394e807eab9204777bddf0a'
+          '31fc07f9c27874b5c4206f443b9d010ad2b032e3')
 
 prepare() {
    mkdir -p build
