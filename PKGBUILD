@@ -6,7 +6,7 @@ pkgname=('vala-panel-appmenu-translations-git' 'vala-panel-appmenu-xfce-git' 'va
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel and vala-panel"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -86,8 +86,9 @@ package_vala-panel-appmenu-mate-git() {
   cd "${srcdir}/${_pkgbase}"
   make -C "lib" DESTDIR="${pkgdir}" install
   make -C "data" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/xfce4"
-  rm -rf "${pkgdir}/usr/share"
+  rm -rf "${pkgdir}/usr/share/xfce4"
 }
 
 package_vala-panel-appmenu-translations-git() {
