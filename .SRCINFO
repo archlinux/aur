@@ -1,0 +1,15 @@
+pkgbase = fetcher
+	pkgdesc = Update a list of git repos
+	pkgver = 1.0
+	pkgrel = 0
+	install = fetcher.install
+	arch = any
+	license = MIT
+	depends = git
+	source = fetcher.sh
+	source = fetcher.service
+	md5sums = de164dec82476dcfc15efad1b9617792
+	md5sums = ac026457052512cfdb9ae12e100ea696
+
+pkgname = fetcher
+
