@@ -1,0 +1,14 @@
+--- a/Examples/GUI/Qt/GraphicsView/CMakeLists.txt	2016-09-04 10:26:18.757476846 +0200
++++ b/Examples/GUI/Qt/GraphicsView/CMakeLists.txt	2016-09-04 10:26:17.427465256 +0200
+@@ -73,6 +73,11 @@
+   set(QT_USE_QTOPENGL 1)
+   set(QT_USE_QTWEBKIT 1)
+   include(${QT_USE_FILE})
++  # Use what VTK built with
++  set(QT_QMAKE_EXECUTABLE ${VTK_QT_QMAKE_EXECUTABLE} CACHE FILEPATH "")
++  set(QT_MOC_EXECUTABLE ${VTK_QT_MOC_EXECUTABLE} CACHE FILEPATH "")
++  set(QT_UIC_EXECUTABLE ${VTK_QT_UIC_EXECUTABLE} CACHE FILEPATH "")
++
+   if (NOT QT_QTWEBKIT_FOUND OR QT_VERSION_MINOR LESS 6)
+     message(STATUS "VTK isn't configured to use QtOpenGL, QtWebKit wasn't found, or Qt 4.6 wasn't found.  GraphicsView example is disabled.")
+   else()
