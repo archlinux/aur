@@ -1,0 +1,14 @@
+pkgbase = python-dota2api-git
+	pkgdesc = Dota 2 match data query API for Python.
+	pkgver = 267
+	pkgrel = 1
+	url = https://github.com/joshuaduffy/dota2api
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	source = git://github.com/joshuaduffy/dota2api.git
+	md5sums = SKIP
+
+pkgname = python-dota2api-git
+
