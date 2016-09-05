@@ -7,7 +7,7 @@ pkgname=(
 	psf-unifont
 	unifont-utils
 )
-pkgver=9.0.01
+pkgver=9.0.02
 pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=(
 )
 noextract=()
 sha512sums=(
-	'ff9de0293c7ee6394b9de5c41b43cfe797051222f27010871d44aa7a626d7db880f253679b7ff88c2b3621de42b67c3b1f0c97db37e7cf13ad72855acb55192a'
+	'74693fb9e7fdf6cbdb8b71cfeeb8106ea1d52b663def9c29f5b8c62660badd30d624be4b85bc9ca39c47d9d13cef19b1e40c76af361b82fbf3092895d0d48050'
 	'SKIP'
 	'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
 	'4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
@@ -52,15 +52,15 @@ if [[ -z "$_use_precompiled" ]]; then
 fi
 
 build() {
-	cd "$srcdir/unifont-${pkgver%.*}"
+	cd "$srcdir/unifont-${pkgver}"
 	make -j1 distclean
 	make -j1 clean
 
-	cd "$srcdir/unifont-${pkgver%.*}/src"
+	cd "$srcdir/unifont-${pkgver}/src"
 	msg2 "Building utilities"
 	make -j1
 
-	cd "$srcdir/unifont-${pkgver%.*}/font"
+	cd "$srcdir/unifont-${pkgver}/font"
 	if [[ -z "$_use_precompiled" ]]; then
 		if _wanted bdf-unifont; then
 			msg2 "Building the BDF version"
@@ -76,7 +76,7 @@ build() {
 		fi
 		if _wanted ttf-unifont; then
 			msg2 "Building the TTF version"
-			make -j1 ttf csurttf upperttf uppercsurttf -o distclean
+			make -j1 ttf csurttf upperttf -o distclean
 		fi
 	fi
 }
@@ -93,7 +93,7 @@ package_ttf-unifont() {
 
 	_ttfdir=/usr/share/fonts/TTF
 
-	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.ttf" \
 		"${pkgdir}${_ttfdir}/unifont.ttf"
 	install -D -m0644 "unifont_csur-${pkgver}.ttf" \
@@ -102,8 +102,8 @@ package_ttf-unifont() {
 		"${pkgdir}${_ttfdir}/unifont_sample.ttf"
 	install -D -m0644 "unifont_upper-${pkgver}.ttf" \
 		"${pkgdir}${_ttfdir}/unifont_upper.ttf"
-	install -D -m0644 "unifont_upper_csur-${pkgver}.ttf" \
-		"${pkgdir}${_ttfdir}/unifont_upper_csur.ttf"
+#	install -D -m0644 "unifont_upper_csur-${pkgver}.ttf" \
+#		"${pkgdir}${_ttfdir}/unifont_upper_csur.ttf"
 
 	cd "$srcdir"
 	install -D -m0644 fontconfig-noaa.conf \
@@ -118,7 +118,7 @@ package_pcf-unifont() {
 
 	_pcfdir=/usr/share/fonts/misc
 
-	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.pcf.gz" \
 		"${pkgdir}${_pcfdir}/unifont.pcf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.pcf.gz" \
@@ -133,7 +133,7 @@ package_bdf-unifont() {
 
 	_bdfdir=/usr/share/fonts/misc
 
-	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
 	install -D -m0644 "unifont-${pkgver}.bdf.gz" \
 		"${pkgdir}${_bdfdir}/unifont.bdf.gz"
 	install -D -m0644 "unifont_csur-${pkgver}.bdf.gz" \
@@ -146,7 +146,7 @@ package_psf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PSF version, for APL)"
 	arch=(any)
 
-	cd "$srcdir/unifont-${pkgver%.*}/font/$_compiled"
+	cd "$srcdir/unifont-${pkgver}/font/$_compiled"
 	install -D -m0644 "Unifont-APL8x16-${pkgver}.psf.gz" \
 		"${pkgdir}/usr/share/kbd/consolefonts/Unifont-APL8x16.psf.gz"
 }
@@ -160,8 +160,8 @@ package_unifont-utils() {
 	)
 	arch=(i686 x86_64)
 
-	cd "$srcdir/unifont-${pkgver%.*}/src"
+	cd "$srcdir/unifont-${pkgver}/src"
 	make install PREFIX="$pkgdir/usr"
-	cd "$srcdir/unifont-${pkgver%.*}/man"
+	cd "$srcdir/unifont-${pkgver}/man"
 	make install PREFIX="$pkgdir/usr" COMPRESS=1
 }
