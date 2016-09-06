@@ -64,6 +64,7 @@ pkgbase = vtk-py3-qt4
 	sha1sums = d880f0f7d979cc9efa9246eda82880fef29172c2
 	sha1sums = 127d302f46e2691980af83350542243ab76ca75f
 	sha1sums = 1b04eadd40b823092d620914ce5bc8314e1e4980
+	sha1sums = 9b1523da7b111a02390e85a5eee2b015680d05ea
 
 pkgname = vtk-py3-qt4
 

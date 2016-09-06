@@ -51,7 +51,8 @@ sha1sums=('7719fac36b36965eaf5076542166ba49bbe7afbb'
           'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
           'd880f0f7d979cc9efa9246eda82880fef29172c2'
           '127d302f46e2691980af83350542243ab76ca75f'
-          '1b04eadd40b823092d620914ce5bc8314e1e4980')
+          '1b04eadd40b823092d620914ce5bc8314e1e4980'
+          '9b1523da7b111a02390e85a5eee2b015680d05ea')
 
 prepare() {
   cd "${srcdir}"/VTK-$pkgver
