@@ -1,0 +1,18 @@
+pkgbase = izulu-git
+	pkgdesc = weather aware desktop background images
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/onli/izulu
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = imagemagick
+	depends = perl-xml-twig
+	depends = bc
+	depends = jq
+	source = izulu::git+https://github.com/onli/izulu.git
+	sha1sums = SKIP
+
+pkgname = izulu-git
+
