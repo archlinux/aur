@@ -1,8 +1,8 @@
 # Maintainer: Tobias Martin <tm-x at gmx dot net>
 
 _pkgname=gr-dvbt
-pkgname=$_pkgname-git
-pkgver=r464.58165b9
+pkgname=${_pkgname}-git
+pkgver=r467.a9fbb78
 pkgrel=1
 pkgdesc="Opensource implementation of DVB-T encoder/decoder according to ETSI 300 744 using gnuradio"
 arch=('i686' 'x86_64')
@@ -10,20 +10,17 @@ url="https://github.com/BogdanDIA/gr-dvbt"
 license=('GPL')
 depends=('gnuradio' 'python2')
 makedepends=('git' 'cmake' 'boost')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("git+http://github.com/BogdanDIA/$_pkgname")
+source=("${pkgname}::git+https://github.com/BogdanDIA/${_pkgname}")
 md5sums=('SKIP')
-_gitname=$_pkgname
 
 pkgver() {
-  cd $_gitname
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   export PYTHON=python2
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   msg "Starting build."
   mkdir -p build
   cd build
@@ -36,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/build/"
+  cd "$srcdir/$pkgname/build/"
   make DESTDIR="$pkgdir" install
 }
 
