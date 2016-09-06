@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon-git
-pkgver=20160819
+pkgver=20160906
 pkgrel=1
 pkgdesc="ring.cx is a secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht-git' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp' 'libnatpmp'
+         'expat' 'gsm' 'libupnp' 'libnatpmp'
          'pjproject-savoirfairelinux')
 makedepends=('git' 'boost' 'msgpack-c')
 conflicts=('ring-daemon')
