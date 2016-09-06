@@ -5,7 +5,7 @@
 pkgname=pyexiftoolgui-git
 pkgver=0.5.r43.17c7a0e
 pkgrel=1
-pkgdesc='a python pyside graphical frontend for the excellent open source command line tool ExifTool'
+pkgdesc='A python pyside graphical frontend for the excellent open source command line tool ExifTool.'
 arch=('any')
 url='https://github.com/hvdwolf/pyExifToolGUI'
 license=('GPL')
@@ -20,14 +20,9 @@ backup=()
 options=()
 install="${pkgname%-git}.install"
 noextract=()
-# source=("${pkgname%-git}::git://github.com/hvdwolf/pyExifToolGUI.git"
-# fix.patch
-# )
 source=(fix.patch)
-# md5sums=('SKIP'
-         # 'eb148b3f802330500e82c5dc26d3b554')
 md5sums=('eb148b3f802330500e82c5dc26d3b554')
-_gitrepo='git@github.com:hvdwolf/pyExifToolGUI.git'
+_gitrepo="$url.git"
 
 prepare() {
   # The other branch is huge > 100 MB, so we do it old school
