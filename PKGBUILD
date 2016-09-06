@@ -10,7 +10,7 @@ _electron_ver=0.36.12
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.10.1
 pkgver=1.10.1.aa1.6.2.db0.8.9.fu0.12.0.la0.9.1.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.8.t2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 _url='https://github.com/atom'
@@ -146,5 +146,5 @@ package() {
 
   install -Dm644 $srcdir/mydict/en_AU* "${pkgdir}/usr/share/atom/resources/app.asar.unpacked/node_modules/spellchecker/vendor/hunspell_dictionaries"
 
-  find . -name "package.json" -exec sed -i -e "s|$srcdir/apm|/usr/share/atom/resources/app/apm|g" '{}' +
+  find . -name "package.json" -exec sed -i -e "s|$srcdir/${_pkgname}-${_atomver}/apm|/usr/share/atom/resources/app/apm|g" '{}' +
 }
