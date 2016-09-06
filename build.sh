@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+dotnet restore
+
 pushd src/ResGen
 dotnet run -c Linux
 popd
@@ -13,6 +15,6 @@ dotnet run -c Linux  ../Microsoft.PowerShell.CoreCLR.AssemblyLoadContext/CorePsT
 popd
 
 cd src/powershell-unix
-dotnet -v build -c Linux && dotnet publish --no-build -c Linux
+dotnet build -c Linux && dotnet publish --no-build -c Linux
 
 # vim:set ts=2 sw=2 et:

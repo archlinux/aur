@@ -2,8 +2,8 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.9.192.g901af51
-pkgrel=2
+pkgver=6.0.0.alpha.9.247.g0c4472e
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
@@ -14,10 +14,12 @@ conflicts=('powershell' 'powershell-bin')
 provides=('powershell')
 source=($_pkgname::'git://github.com/PowerShell/PowerShell.git'
         'os-release'
+        'revert-commit-c695d41.patch'
         'build.sh')
 sha256sums=('SKIP'
             'e903a41166648f2e6113dff83b116e9ed6a5dc7d302ac24ae26811583bcb9cc2'
-            'deb50de5aec78f17b818897b783028a0809ab9b508074772470622d8f6ffd048')
+            '4568c69cf2a0a961d3f16c069b24391dea7898cd7c856cad94b70a73ef6a9224'
+            '190dfc2b3b0bbc49db8411c3b934f460cf9d1399e30e93a5ff50e9b33613428b')
 
 pkgver() {
   cd "${_pkgname}"
@@ -27,6 +29,19 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   git submodule update --init
+
+  # Starting off clean.
+  git clean -dfx
+  rm -rf ~/.nuget
+
+  # Workaround due to
+  # https://github.com/PowerShell/PowerShell/commit/c695d41c47c8baa48db1a590fe7378641a9e0ab9
+  net_version=$(dotnet --version)
+  net_build_number=${net_version##*-}
+  if [[ "${build_number}" -lt "3546" ]]; then
+    msg "Reverting powershell commit c695d41"
+    patch -p1 < ../revert-commit-c695d41.patch
+  fi
 }
 
 build() {
@@ -36,8 +51,6 @@ build() {
   cmake .
   make
   popd
-
-  dotnet restore
 
   proot -b "${srcdir}/os-release":/etc/os-release "${srcdir}/build.sh"
 }
