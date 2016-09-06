@@ -1,0 +1,64 @@
+#########################################################################
+#
+#  System-dependent definitions suitable for compiling xcrysden using
+#  a system shared libraries (needs Tcl/Tk/GL/GLU/FFTW libraries)
+#
+########################################################################
+
+
+#------------------------------------------------------------------------
+# if you have a GNU make it is better to set the MAKE variable to point
+# to gnu make
+#------------------------------------------------------------------------
+MAKE = make
+
+
+#------------------------------------------------------------------------
+# compilers & flags
+#------------------------------------------------------------------------
+CFLAGS = -ffast-math -funroll-loops -fPIC -DUSE_FONTS -pedantic -Wall -DUSE_INTERP_RESULT
+CC     = gcc -g
+#LDLIB  = -ldl
+MATH   = -lm -lc
+
+FFLAGS = 
+FC     = gfortran -fdefault-double-8 -fdefault-real-8 -O2
+
+#-------------------------------------------
+#debug options
+#CFLAGS = -g
+#-------------------------------------------
+
+
+#------------------------------------------------------------------------
+# X-libraries & include files
+#------------------------------------------------------------------------
+X_LIB     = -lXmu -lX11 
+X_INCDIR  =
+
+#------------------------------------------------------------------------
+#
+# Libraries
+#
+
+TCL_LIB      = -ltcl
+TK_LIB       = -ltk
+GLU_LIB      = -lGLU
+GL_LIB       = -lGL
+FFTW3_LIB    = -lfftw3
+EXT_LIB      = -lgl2ps
+# this is only used for some testing purposes
+#MESCHACH_LIB = -lmeschach
+
+#
+# Include directories
+#
+
+TCL_INCDIR      = -I/usr/include
+TK_INCDIR       =
+GL_INCDIR       =
+FFTW3_INCDIR    =
+# this is only used for some testing purposes
+#MESCHACH_INCDIR =
+
+#------------------------------------------------------------------------

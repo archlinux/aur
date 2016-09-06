@@ -1,0 +1,81 @@
+Author: Anton Kokalj <tone.kokalj@ijs.si>
+Reviewed-by: Daniel Leidert <dleidert@debian.org>
+Ported to Arch Linux: Adrian Hühn <adrian.huehn@web.de>
+
+Forwarded: not-needed
+
+Author: Anton Kokalj <tone.kokalj@ijs.si>
+Description: Use system libraries of libgl2ps and libtogl. Fix DESTDIR issue and
+xcrysden directory name in Makefile. Fix installation directory to point to
+/usr.
+Forwarded: not-needed
+
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@
+ # some varibales ...
+ 
+ all: tcl tk mesa fftw meschach xcrysden 
+-xcrysden: usage bwidget bindir src-C src-F src-Tcl
++xcrysden: usage bindir src-C src-F src-Tcl
+ 
+ usage: $(TOPDIR)/docs/xcrysden.1
+ 	man $(TOPDIR)/docs/xcrysden.1 | awk 'BEGIN {lprint=0; print "## do not edit changes will be lost (file automatically generated)\n"; } /SYNOPSIS/ { lprint=1; } /SEE ALSO/ { lprint=0; } /a*/ { if (lprint) print; }' > usage
+@@ -226,9 +226,9 @@
+ #
+ # ------------------------------------------------------------------------
+ 
+-prefix   ?= /usr/local
++prefix   ?= $(DESTDIR)/usr
+ version  := $(shell cat version)
+-xcrysden  = xcrysden-$(version)
++xcrysden  = xcrysden
+ 
+ install: xcrysden
+ 	@echo
+--- a/C/Makefile
++++ b/C/Makefile
+@@ -29,7 +29,7 @@
+ 
+ xcrys: $(XC_OBJS) $(EXTERNAL_OBJS)
+ 	$(CC)  $(CFLAGS) $(XC_OBJS) $(EXTERNAL_OBJS) \
+-	-o xcrys $(FFTW3_LIB) $(MESCHACH_LIB) $(TK_LIB) $(TCL_LIB) $(GLU_LIB) $(GL_LIB) $(X_LIB) $(MATH) $(LDLIB)
++	-o xcrys $(FFTW3_LIB) $(MESCHACH_LIB) $(TK_LIB) $(TCL_LIB) $(GLU_LIB) $(GL_LIB) $(X_LIB) $(MATH) $(LDLIB) $(EXT_LIB)
+ 
+ xctclsh: xcTclsh.o
+ 	$(CC) $(CFLAGS) xcTclsh.o -o xctclsh $(TCL_LIB) $(MATH) $(LDLIB)
+--- a/C/make-objects
++++ b/C/make-objects
+@@ -1,6 +1,5 @@
+ EXTERNAL_OBJS = \
+ 	togl.o \
+-	gl2ps.o \
+ 	sgiRasterFont.o \
+ 	sgiAux.o
+ 
+--- a/C/gl2psPrintTogl.c
++++ b/C/gl2psPrintTogl.c
+@@ -18,8 +18,8 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include "togl.h"
+-#include "gl2ps.h"
++#include "togl.h"
++#include <gl2ps.h>
+ #include "xcfunc.h"
+ 
+ extern void (*xcDisplay)(struct Togl *togl); 
+--- a/sys_utils/wrappers.sh
++++ b/sys_utils/wrappers.sh
+@@ -5,8 +5,8 @@
+ #!/bin/sh -f
+ 
+ # simple wrapper to run $cmd
+-XCRYSDEN_TOPDIR=$prefix/share/$xcrysden
+-XCRYSDEN_LIB_BINDIR=$prefix/lib/$xcrysden
++XCRYSDEN_TOPDIR=/usr/share/xcrysden
++XCRYSDEN_LIB_BINDIR=/usr/lib/xcrysden
+ export XCRYSDEN_TOPDIR
+ export XCRYSDEN_LIB_BINDIR
+ 
