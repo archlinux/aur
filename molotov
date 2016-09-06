@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
 [ -z "$XDG_DATA_DIRS" ] && export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
+# Avoid useless question about adding a start icon
+if [ ! -f "$HOME/.local/share/applications/appimagekit-Molotov.desktop" ]; then
+    cp /usr/share/applications/Molotov.desktop "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+    echo "NoDisplay=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+    echo "Hidden=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+fi
 exec /opt/appimages/Molotov-0.9.5.AppImage
