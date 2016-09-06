@@ -2,35 +2,34 @@
 # Contributor: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=discord
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.0.8
+pkgrel=1
 pkgdesc='Discord linux App'
-arch=('i686' 'x86_64')
-url='https://github.com/XNBlank/discord-linux'
+arch=('x86_64')
+url='https://discordapp.com/'
 provides=('discord')
 conflicts=('discord')
 license=('MIT')
-depends=('gtk2' 'gconf')
-optdepends=('freetype2-infinality: If you have black screens with emojis install this.')
+depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss')
+optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support')
 
 
 source=('Discord.desktop')
-source_i686=("https://github.com/XNBlank/discord-linux/archive/x86-${pkgver}.tar.gz")
-source_x86_64=("https://github.com/XNBlank/discord-linux/archive/x64-${pkgver}.tar.gz")
+source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/discord-canary-${pkgver}.tar.gz")
 sha256sums=('0826f0a07a567d3d966563151329e3e155bf47da528f0698bd677cb46cc468de')
-sha256sums_i686=('70bba92a003f31d6eb9ea2e1cdcdbcbd37cd4f6f0fe38561b162fe0b1906c970')
-sha256sums_x86_64=('623cbabb05963f0bbd002a919ce5a5c85c134684d4f36037d13bd247b2233010')
+sha256sums_x86_64=('7362afababed47a6c6ec114a755fdeccce247fe5de37a2e55bdb5dae639788bc')
 
 
 package() {
   case $CARCH in
-    'i686') _arch='x86';;
     'x86_64') _arch='x64';;
   esac
 
   # Install files
   install -d "${pkgdir}/opt/discord"
-  cp -a "${srcdir}/${pkgname}-linux-${_arch}-${pkgver}/." "${pkgdir}/opt/discord/"
+  cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/discord/"
+
+  mv "${pkgdir}/opt/discord/DiscordCanary" "${pkgdir}/opt/discord/discord"
 
   # Make binary executable
   chmod 755 "${pkgdir}/opt/discord/discord"
@@ -45,11 +44,11 @@ package() {
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
-  ln -s "/opt/discord/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/discord.png"
+  ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/discord.png"
 
   # Install license file
-  install -Dm644 "${pkgdir}/opt/discord/LICENSE" "${pkgdir}/usr/share/licenses/discord/LICENSE"
-  rm "${pkgdir}/opt/discord/LICENSE"
+  # install -Dm644 "${pkgdir}/opt/discord/LICENSE" "${pkgdir}/usr/share/licenses/discord/LICENSE"
+  # rm "${pkgdir}/opt/discord/LICENSE"
 
   # Dirty hack... we should tell the developer to store settings in user home...
   # chmod 666 "${pkgdir}/opt/discord/resources/app/init.json"
