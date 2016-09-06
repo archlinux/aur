@@ -1,0 +1,18 @@
+--- qtbase-opensource-src-5.1.0/mkspecs/features/qt_app.prf.orig
++++ qtbase-opensource-src-5.1.0/mkspecs/features/qt_app.prf
+@@ -20,6 +20,7 @@
+ QMAKE_LFLAGS += $$QMAKE_LFLAGS_GCSECTIONS
+ 
+ host_build: QT -= gui   # no host tool will ever use gui
++host_build: QMAKE_RPATHDIR += $$[QT_INSTALL_LIBS/dev] # force rpath
+ host_build:force_bootstrap {
+     !build_pass: CONFIG += release
+     contains(QT, core(-private)?|xml) {
+@@ -30,7 +30,6 @@
+ } else {
+     !build_pass:contains(QT_CONFIG, debug_and_release):contains(QT_CONFIG, build_all): CONFIG += release
+     target.path = $$[QT_INSTALL_BINS]
+-    CONFIG += relative_qt_rpath  # Qt's tools and apps should be relocatable
+ }
+ INSTALLS += target
+ 
