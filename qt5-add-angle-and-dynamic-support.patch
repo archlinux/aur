@@ -1,0 +1,75 @@
+--- configure.orig	2016-06-10 08:48:56.000000000 +0200
++++ configure	2016-09-04 20:38:55.345362982 +0200
+@@ -1287,6 +1287,7 @@
+         ;;
+     opengl)
+         if  [ "$VAL" = "auto" ] || [ "$VAL" = "desktop" ] ||
++            [ "$VAL" = "angle" ] || [ "$VAL" = "dynamic" ] ||
+             [ "$VAL" = "yes" ] || [ "$VAL" = "no" ] ||
+             [ "$VAL" = "es2" ]; then
+             CFG_OPENGL="$VAL"
+@@ -5312,7 +5313,7 @@
+     fi
+     if [ "$CFG_OPENGL" = "auto" ] || [ "$CFG_OPENGL" = "yes" ]; then
+         if compileTest x11/opengl "OpenGL"; then
+-            CFG_OPENGL=desktop
++            CFG_OPENGL=angle
+         elif compileTest unix/opengles2 "OpenGL ES 2.0"; then
+             CFG_OPENGL=es2
+         else
+@@ -5348,6 +5349,17 @@
+             echo " ${XQMAKESPEC}."
+             exit 1
+         fi
++    elif [ "$CFG_OPENGL" = "angle" ]; then
++        compileTest x11/opengl "OpenGL"
++        if [ $? != "0" ]; then
++            echo "The OpenGL functionality test failed!"
++            echo " You might need to modify the include and library search paths by editing"
++            echo " QMAKE_INCDIR_OPENGL, QMAKE_LIBDIR_OPENGL and QMAKE_LIBS_OPENGL in"
++            echo " ${XQMAKESPEC}."
++            exit 1
++        fi
++    elif [ "$CFG_OPENGL" = "dynamic" ]; then
++        true # FIXME: not sure whether/which test required
+     elif [ "$CFG_OPENGL" = "desktop" ]; then
+         # Desktop OpenGL support
+         compileTest x11/opengl "OpenGL"
+@@ -6423,6 +6435,16 @@
+     QT_CONFIG="$QT_CONFIG opengles2"
+ fi
+ 
++if [ "$CFG_OPENGL" = "angle" ]; then
++    QCONFIG_FLAGS="$QCONFIG_FLAGS QT_OPENGL_ES QT_OPENGL_ES_2"
++    QT_CONFIG="$QT_CONFIG opengles2 egl angle"
++fi
++
++if [ "$CFG_OPENGL" = "dynamic" ]; then
++    QCONFIG_FLAGS="$QCONFIG_FLAGS QT_OPENGL_DYNAMIC"
++    QT_CONFIG="$QT_CONFIG dynamicgl"
++fi
++
+ if [ "$CFG_SHARED" = "yes" ]; then
+     QT_CONFIG="$QT_CONFIG shared"
+     QTCONFIG_CONFIG="$QTCONFIG_CONFIG shared"
+@@ -7474,7 +7496,7 @@
+ report_support "  NIS ...................." "$CFG_NIS"
+ report_support "  OpenGL / OpenVG:"
+ report_support "    EGL .................." "$CFG_EGL"
+-report_support "    OpenGL ..............." "$CFG_OPENGL" yes "Desktop OpenGL" es2 "OpenGL ES 2.0+"
++report_support "    OpenGL ..............." "$CFG_OPENGL" yes "Desktop OpenGL" es2 "OpenGL ES 2.0+" angle "ANGLE" dynamic "Dynamic OpenGL"
+ report_support "    OpenVG ..............." "$CFG_OPENVG-$CFG_OPENVG_SHIVA" yes-yes "ShivaVG" yes-no "native"
+ report_support "  PCRE ..................." "$CFG_PCRE" yes "system library" qt "bundled copy"
+ if [ -n "$PKG_CONFIG" ]; then
+--- src/gui/opengl/qopenglfunctions.h.orig	2016-06-10 08:48:56.000000000 +0200
++++ src/gui/opengl/qopenglfunctions.h	2016-09-04 20:36:07.801522904 +0200
+@@ -56,9 +56,7 @@
+ 
+ //#define Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
+ 
+-#ifdef QT_OPENGL_ES
+ typedef double GLdouble;
+-#endif
+ 
+ #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
+ #include <stdio.h>
