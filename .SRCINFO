@@ -8,7 +8,7 @@ pkgbase = nemo-run-with-nvidia
 	depends = nemo
 	depends = bumblebee
 	source = https://github.com/rapgenic/nemo-run-with-nvidia/archive/0.0.2.zip
-	md5sums = 510180256c53ffb49b5d48aa05a2434e
+	md5sums = 22de5d0c37b4ffa8a95e6ac64b520a07
 
 pkgname = nemo-run-with-nvidia
 

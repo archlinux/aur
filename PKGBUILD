@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/rapgenic/nemo-run-with-nvidia"
 license=('GPL2')
 source=("https://github.com/rapgenic/${pkgname}/archive/${pkgver}.zip")
-md5sums=('510180256c53ffb49b5d48aa05a2434e')
+md5sums=('22de5d0c37b4ffa8a95e6ac64b520a07')
 depends=('nemo' 'bumblebee')
 
 package() {
