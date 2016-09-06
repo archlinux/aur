@@ -10,7 +10,7 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'speex' 'speexdsp' 'opus' 'libupnp' 'libsrtp' 'libnatpmp'
+         'expat' 'gsm' 'libupnp' 'libnatpmp'
          'pjproject-savoirfairelinux')
 makedepends=('git' 'boost' 'msgpack-c')
 source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=15f6d17399eda98ac4e8481f244354177c5ca1b7")
