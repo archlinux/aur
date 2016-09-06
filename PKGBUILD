@@ -30,6 +30,7 @@ depends=('python2'
          'python2-wheel'
          'python2-colorama')
 optdepends=('python2-virtualenv: Required for installing SDK'
+			'npm: Required for installing SDK'
             'arm-none-eabi-gcc: Required for installing SDK'
             'arm-none-eabi-newlib: Required for installing SDK'
 			'libpng12: Emulator support'
