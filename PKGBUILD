@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-09-04-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-09-05-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -25,17 +25,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch"
 )
-sha256sums=('ae9cd36588a82dc696c880217f7b333583e1fe3117324e679782acd43def15c2'
-            '25110388d527bc626bd67d0921c54e22f6234cc6bac5abd3271240f2609760fb'
-            '54a26e3645715283a443e0637b856b2932f5c8ff51f240b5a25ff498b83a6375'
-            '0936e0f93f71fe3eb44fc6cfc05a5d4e7df8ed56ad6ad44efe07384496159a14'
-            '918c25f95011381b7df4dd7ab74d885ddda375889299238b7bae33f7a80e4a2b'
-            '16d9023abbe6e8186560a72279e9577bde4e033d8c4dbcae1c52a32f1b38cb53'
-            '2dda19122e34fc77bfc24f5f99cc969fea8cc9f7f4001e62b9e499beba67fb15'
-            'cf1e4fd14df9921f6b6da66941a547ba4781bf96d1b44daa49bc5b5c0d70d62e'
-            '85cd254da80bac3472828a69d7d9dd86485afda1f02a0f580e8b1f0d647e7191'
-            '0d28c61b2e1a77d939bb12e743ce960a83bbf942d6d75b9050e93f020508174b'
-            'afb1dc7405986696eedb2491e618acf46fe1c1c28470a438a50b939dc2ffe94a'
+sha256sums=('d518454d34b5764753599489627aa43d8131c859cf7a3517ad9d0542040fcab2'
+            'cf206170c9164096ace7d606c77fbb810d5e1c5280db52995df6a71e595e85a9'
+            '6db98e497cece2e6e970745183774fd4c908cfe18a2f7c924d091a6b3b0e0e6a'
+            '41cfd0f436871adabf471032b5b808421ec43da0c15bdb7050e0d49469682609'
+            '452a90107283e1668c6f6428a3fb56f46df8bbe0095d80cdb6d955c25459857f'
+            'e2f8d34fc484f27e5a2fc28ab984ae689d490a6a1a928ef5d15a3627af8bbacb'
+            '142cdfe9771bc3e6780af94a41db59823a331d1243d9c9f16d57bf770a69ba65'
+            '8d70e08a8eeb83e80b057ed42cafb946c1b1544819dc368021c67e672f2e4c82'
+            '62a48f26130ab62145da9c33e23283b529946468c19ba328dbaa566035c060d7'
+            '4d2902a95b3634c559a5fa0630df2b99e9d6969a0a5e01fdc172679385fc1757'
+            'ac47e0e2c16ec791860881436c953f7ceea2e1a05e49947d556079d847c3ca0d'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
