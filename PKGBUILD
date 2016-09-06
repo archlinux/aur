@@ -2,14 +2,14 @@
 
 pkgname=libcec-git
 epoch=1
-pkgver=2.1.4.155.g1855591
+pkgver=3.1.0.25.g62b8520
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/libcec"
 license=('GPL')
-makedepends=('git' 'libplatform')
-depends=('udev>=151' 'lockdev' 'libplatform' 'libxrandr' 'python')
+makedepends=('git' 'p8-platform>=2.0')
+depends=('udev>=151' 'lockdev' 'p8-platform>=2.0' 'libxrandr' 'python')
 provides=('libcec')
 conflicts=('libcec')
 options=('!libtool')
