@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrticketbuyer-git' 'dcrwallet-git')
-pkgver=20160815
+pkgver=20160906
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -76,10 +76,9 @@ package_dcrd-git() {
               dcrcheckdevpremine \
               dcrctl \
               dcrd \
-              dcrdropafter \
+              dcrdbtool \
               dcrfindcheckpoint \
-              dcrgencerts \
-              dcrshowblock; do
+              dcrgencerts; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 }
