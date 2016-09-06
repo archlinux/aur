@@ -53,10 +53,10 @@ fi
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _toolchain_name=armv7-rpi2-linux-gnueabihf
-_pkgvermajmin="5.7"
+_pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
-_dev_suffix=""
+_dev_suffix="-alpha"
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}${_dev_suffix}
@@ -84,7 +84,7 @@ $_float && _device_configure_flags="$_device_configure_flags -qreal float"
 
 # PKGBUILD vars
 
-pkgrel=15
+pkgrel=1
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 $_static_build && pkgname="${pkgname}-static"
@@ -114,7 +114,7 @@ _provider=http://qt.mirror.constant.com/
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-  sha256sums=("SKIP" "04ca3b5cc26dfd7118052e33012e3ec5c27cecce202e00227f2c18b86523e650")
+  sha256sums=("SKIP" "de1f03829fc37d31491de3891f56a138d5456b3e223ca9db11abe8598720a5d0")
 fi
 
 options=('!strip')
@@ -184,9 +184,9 @@ if $_patching; then
   sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
 
   # hard coded off, so we have to hard code it on
-  local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
-  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
-  _device_configure_flags="$_device_configure_flags -reduce-relocations"
+  #local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
+  #sed -i "s/error/warning/" ${_reducerelocations} || exit 1
+  #_device_configure_flags="$_device_configure_flags -reduce-relocations"
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
@@ -291,7 +291,7 @@ fi
     sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
   fi
 
-  cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
+  #cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
 
   local _summary_file="${_bindir}/qtbase/config.summary"
   if [[ -f ${_summary_file} ]]; then
