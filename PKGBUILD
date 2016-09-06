@@ -5,7 +5,7 @@
 pkgbase=bcm20702a1-firmware
 pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
 pkgver=1201710
-pkgrel=4
+pkgrel=5
 arch=('any')
 pkgdesc="Broadcom bluetooth firmware."
 url="http://asus.com"
@@ -23,8 +23,8 @@ build() {
   while read p; do
     filename=$(echo $p|awk -F':' '{print $3}'|sed 's% %%g')
     bcm=$(echo $filename|awk -F'_' '{print $1}')
-    vid=$(echo $p|awk -F':' '{print $1}'|awk '{print tolower($0)}')
-    pid=$(echo $p|awk -F':' '{print $2}'|awk '{print tolower($0)}')
+    vid=$(echo $p|awk -F':' '{print tolower($1)}')
+    pid=$(echo $p|awk -F':' '{print tolower($2)}')
     hex2hcd "$srcdir/Win10_USB-BT400_DRIVERS/Win10_USB-BT400_Driver_Package/64/$filename" -o "$bcm-$vid-$pid.hcd"
   done < "${srcdir}/filelist.txt"
 }
