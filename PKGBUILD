@@ -23,11 +23,13 @@ build() {
   if ! test -e "build"; then
     mkdir "build";
   fi
+  cp "../../CMakeLists.txt" "3rdparty/CMakeLists.txt"
   sed -e '3s/# //' CMakeLists.txt > temporal.txt
   mv temporal.txt CMakeLists.txt
   cd "morpheus/core"
   sed -e '3s/# //' CMakeLists.txt > temporal.txt
   mv temporal.txt CMakeLists.txt
+
   cd "../.."
   cd "build"
   cmake ..
