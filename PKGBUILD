@@ -4,13 +4,12 @@
 pkgname=indicator-sound
 pkgver=12.10.1
 pkgrel=5
-pkgdesc='A unified sound menu'
+pkgdesc='Unified sound menu indicator.'
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${pkgname}"
 license=('GPL')
 depends=('ido' 'libdbusmenu-gtk3' 'libgee06' 'libindicator-gtk3' 'libpulse' 'libnotify')
 makedepends=('intltool' 'vala')
-install="${pkgname}.install"
 source=("${url}/${pkgver%.*}/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
         "http://pkgbuild.com/~bgyorgy/sources/${pkgname}-translations-20130310.tar.gz")
 sha256sums=('d3ae4e8a9e2bac6f9098e617364aba1ddca15ee118d5aa89ae85d0a1f3371af6'
