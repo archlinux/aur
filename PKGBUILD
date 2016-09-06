@@ -2,7 +2,7 @@
 
 pkgname=insomnia
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and beautiful REST API and HTTP client"
 arch=('i686' 'x86_64')
 url="http://insomnia.rest/"
@@ -21,4 +21,7 @@ package() {
     install -d "${pkgdir}"/opt/Insomnia
 
     chmod -R go-w "${pkgdir}"/usr
+
+    mkdir -p ${pkgdir}/usr/bin
+    ln -s /opt/Insomnia/Insomnia ${pkgdir}/usr/bin/insomnia
 }
