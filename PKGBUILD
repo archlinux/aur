@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql-git'
-pkgver=0.6.0.0.r60.ga85c8e7
+pkgver=0.6.0.0.r68.g99d8ca8
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (MySQL)"
 arch=('i686' 'x86_64')
@@ -91,6 +91,8 @@ build() {
 }
 
 package() {
+  _bundle=bundle
+  _ruby=ruby
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
