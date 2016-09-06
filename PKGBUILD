@@ -1,7 +1,7 @@
 # Maintainer: Giulio Girardi <giulio at rapgenic.it>
 
 pkgname=nemo-run-with-nvidia
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=0
 pkgdesc="Nemo action to run a program with Bumblebee"
 arch=('any')
