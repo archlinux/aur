@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('python2' 'openssl' 'zlib' 'nvidia' 'pyrit')
 makedepends=('gcc' 'python2' 'cuda')
-source=( https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyrit/${pkgname}-${pkgver}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyrit/${pkgname}-${pkgver}.tar.gz)
 md5sums=('e3eaf2bbd841409326670cb8f501f2c6')
 
 package() {
