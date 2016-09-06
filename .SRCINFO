@@ -1,18 +1,19 @@
 pkgbase = tif22pnm
 	pkgdesc = converter used by sam2p if available
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pts.szit.bme.hu
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libpng
-	depends = libtiff
-	provides = tif22pnm
-	source = http://sam2p.googlecode.com/files/tif22pnm-0.14.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sam2p/tif22pnm-0.14.tar.gz
 	source = do.sh.patch
-	md5sums = 7bb776bb2eca962f5237ea2cc6dcf85d
-	md5sums = 94a5d88cb8ddd234a6117a906c9d5a28
+	sha256sums = d59ea3f1fdd6802e66a44fbfa8979d4e61c9fd021de36675249a877392378e01
+	sha256sums = 3835af3f4f8db84744fef7e00ecbc1cca1c026e2f5794e0746af2cd0558e2127
 
 pkgname = tif22pnm
+	depends = libtiff
+
+pkgname = png22pnm
+	depends = libpng
 
