@@ -30,7 +30,7 @@ build() {
   # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
   export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
 
-  CFLAGS+=" -fno-builtin-malloc" ./configure --prefix=/usr \
+  CC=clang ./configure --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --localstatedir=/var \
 	      --libexecdir=/usr/lib \
