@@ -1,0 +1,13 @@
+pkgbase = getssl-git
+	pkgdesc = Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers.
+	pkgver = 1.0.r78.3753402
+	pkgrel = 1
+	url = https://github.com/srvrco/getssl
+	arch = any
+	license = GPL2
+	makedepends = git
+	source = getssl-git::git+https://github.com/srvrco/getssl.git
+	sha256sums = SKIP
+
+pkgname = getssl-git
+
