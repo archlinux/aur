@@ -1,13 +1,13 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Capture Agent for Opencast Matterhorn"
 arch=('any')
 url="https://github.com/lkiesow/pyCA"
 license=('LGPL')
 depends=('gnutls' 'python-pycurl' 'python-icalendar' 'python-dateutil' 'python-configobj')
-source=("https://github.com/JanKoppe/pyCA/archive/v$pkgver.tar.gz"
+source=("https://github.com/lkiesow/pyCA/archive/v$pkgver.tar.gz"
         "pyca.install"
         "pyca.service"
         "pyca")
