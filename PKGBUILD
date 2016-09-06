@@ -1,4 +1,4 @@
-# Maintainer: Jan Was <janek.jan(at)gmail(dot)com>
+# Maintainer: Alexander Pavel <alexpavel123(at)gmail(dot)com>
 
 pkgname=mattermost-desktop-bin
 pkgdesc="Mattermost chat desktop client for Linux (binary)"
