@@ -1,0 +1,18 @@
+pkgbase = ballandpaddle
+	pkgdesc = Breakout clone from the GNU project
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/ballandpaddle/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl>=1.2
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = guile1.8
+	source = http://ftp.gnu.org/gnu/ballandpaddle/ballandpaddle-0.8.1.tar.gz
+	sha256sums = de82d17ab032e9a997eb0537820053d6a84661b283df1be7724756d054f3f77d
+
+pkgname = ballandpaddle
+
