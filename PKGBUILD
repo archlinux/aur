@@ -3,7 +3,7 @@
 # Contributor: Christoph Hoopmann <christophhoopmann@gmail.com>
 
 pkgbase=bcm20702a1-firmware
-pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcn4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
+pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
 pkgver=1201710
 pkgrel=4
 arch=('any')
@@ -51,7 +51,7 @@ package_bcm4350c5-firmware() {
   done
 }
 
-package_bcn4356a2-firmware() {
+package_bcm4356a2-firmware() {
   pkgdesc="Broadcom bluetooth firmware for BCM4356A2 based devices."
 
   cd "${srcdir}"
