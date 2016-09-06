@@ -1,7 +1,7 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata.
 	pkgver = 1.30
-	pkgrel = 4
+	pkgrel = 5
 	url = http://openembedded.org
 	arch = any
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = bitbake
 	makedepends = python2-beautifulsoup4
 	makedepends = python2-codegen
 	source = https://github.com/openembedded/bitbake/archive/1.30.zip
-	md5sums = bb883123767ecb0451d80d20c7e9cea7
+	md5sums = 78f913fa7ca7674705b05fb04d1067ce
 
 pkgname = bitbake
 	install = bitbake.install
