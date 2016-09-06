@@ -1,12 +1,13 @@
 pkgbase = ghostess
 	pkgdesc = a simple GTK host for DSSI plugins
 	pkgver = 20120105
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.smbolton.com/linux.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = dssi
+	makedepends = ladspa
 	depends = gtk2
 	depends = liblo
 	depends = jack
