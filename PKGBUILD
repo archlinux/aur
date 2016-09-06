@@ -8,7 +8,7 @@ url=""
 install=mktexlsr.install
 license=('custom')
 arch=('any')
-dpeendes=('texlive-core' 'adobe-base-14-fonts')
+dpendes=('texlive-core' 'adobe-base-14-fonts')
 
 package() {
     install -d "${pkgdir}/usr/local/share/texmf/fonts/type1/adobe"
