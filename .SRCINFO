@@ -1,10 +1,12 @@
 pkgbase = tex-adobe-base-14-fonts
 	pkgdesc = change some of system to using adobe base 14 fonts in TeXLive
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	install = mktexlsr.install
 	arch = any
 	license = custom
+	depends = texlive-core
+	depends = adobe-base-14-fonts
 
 pkgname = tex-adobe-base-14-fonts
 

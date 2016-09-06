@@ -2,13 +2,13 @@
 
 pkgname=tex-adobe-base-14-fonts
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="change some of system to using adobe base 14 fonts in TeXLive"
 url=""
 install=mktexlsr.install
 license=('custom')
 arch=('any')
-dpendes=('texlive-core' 'adobe-base-14-fonts')
+depends=('texlive-core' 'adobe-base-14-fonts')
 
 package() {
     install -d "${pkgdir}/usr/local/share/texmf/fonts/type1/adobe"
