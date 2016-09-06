@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -11,11 +11,11 @@ url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
-        dcrticketbuyer-$pkgver.tar.gz::https://codeload.github.com/decred/dcrticketbuyer/tar.gz/v$pkgver
+        dcrticketbuyer-$pkgver::git+https://github.com/decred/dcrticketbuyer#commit=736f3fbd3c26ada655f37d6d42b307798d345186
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('d514d2df9775825286901fa7611592caa6cec551cfc0a764f94f5a48d2ba346b'
-            '7aab22b69db014b499ea8e5c896080fe4edb6d2065d6a667b7c1ff33a0a7422a'
-            'babf5485678e4eb74c8ca94d74fdaf518105c16c382c7fe2244c50fe406c6f37')
+sha256sums=('648791a98d37f75f395920c8b42fb813bbc92db7f1b9e9acdf409dea6c091b55'
+            'SKIP'
+            '13be89e0800d404ca492b72fcfe1ad58b758a538a758b50ad77c09815cd509cc')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -77,10 +77,9 @@ package_dcrd() {
               dcrcheckdevpremine \
               dcrctl \
               dcrd \
-              dcrdropafter \
+              dcrdbtool \
               dcrfindcheckpoint \
-              dcrgencerts \
-              dcrshowblock; do
+              dcrgencerts; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 }
