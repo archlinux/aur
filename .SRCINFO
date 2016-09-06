@@ -1,16 +1,32 @@
-pkgbase = bcm20702a1-firmware
-	pkgdesc = Broadcom bluetooth firmware for BCM20702A1 based devices (0b05:17cb, 0b05:17cf, 0a5c:21e1, 0a5c:21e6, 0a5c:21e8, 0a5c:216f)
-	pkgver = 1201650
-	pkgrel = 6
+pkgbase = bcm4335c0-firmware
+	pkgdesc = Broadcom bluetooth firmware.
+	pkgver = 1201710
+	pkgrel = 1
 	url = http://asus.com
 	arch = any
 	license = Custom
 	makedepends = bluez-utils
 	conflicts = bt-dw1560-firmware
-	source = http://dlcdnet.asus.com/pub/ASUS/misc/BT/Bluetooth_V1201650_WHQL_Win10.zip
-	source = BCM20702A1-0a5c-21e8.hcd::https://s3.amazonaws.com/plugable/bin/fw-0a5c_21e8.hcd
-	sha256sums = b8863fdb2f397c1ca7264fd4a0f457c2f9ab90350338e476128fb241720e32ad
-	sha256sums = d699c13fe1e20c068a8a88dbbed49edc12527b0ceeeaac3411e3298573451536
+	source = http://dlcdnet.asus.com/pub/ASUS/wireless/USB-BT400/DR_USB_BT400_1201710_Windows.zip
+	source = filelist.txt
+	sha256sums = a84889e296add13cae389524b790133519666826ba899c6f82cd6528a80fefcb
+	sha256sums = 03c49bf2e59cf341723ff40a23335c35c432a7c14f652aefae2060d8048624a9
+
+pkgname = bcm4335c0-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM4335C0 based devices.
+
+pkgname = bcm4350c5-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM4350C5 based devices.
+
+pkgname = bcn4356a2-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM4356A2 based devices.
 
 pkgname = bcm20702a1-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM20702A1 based devices.
+
+pkgname = bcm20702b0-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM20702B0 based devices.
+
+pkgname = bcm43142a0-firmware
+	pkgdesc = Broadcom bluetooth firmware for BCM43142A0 based devices.
 
