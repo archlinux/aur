@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.6.0.0.r62.ga53354e
+pkgver=0.6.0.0.r68.g99d8ca8
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
@@ -91,6 +91,8 @@ build() {
 }
 
 package() {
+  _bundle=bundle
+  _ruby=ruby
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
