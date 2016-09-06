@@ -1,6 +1,6 @@
 pkgbase = contao
 	pkgdesc = small yet powerful Content Management System (CMS) based on php
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://contao.org
 	install = contao.install
@@ -10,9 +10,9 @@ pkgbase = contao
 	depends = php-gd
 	depends = mysql
 	optdepends = php-mcrypt: data encryption
-	source = contao-4.2.2.tar::https://download.contao.org/4.2.2/tar
+	source = contao-4.2.3.tar::https://download.contao.org/4.2.3/tar
 	source = contao.install
-	md5sums = 6117a2a770ebe4b81b30c464b3f17e57
+	md5sums = 58277ad087f528e836da0e3b42fde8cf
 	md5sums = a79edf316b0d4e0862afdbca7dbcf23e
 
 pkgname = contao
