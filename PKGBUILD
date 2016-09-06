@@ -121,7 +121,7 @@ prepare() {
   patch -Np1 -i $srcdir/about-arch.patch
   popd
   mkdir -p node_modules/about-arch
-  cp -a $srcdir/about-arch/* node_modules/about-arch/
+  cp -r $srcdir/about-arch/* node_modules/about-arch/
 
   sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
 
