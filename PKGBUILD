@@ -156,9 +156,8 @@ build() {
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
   local _basedir="${_srcdir}/qtbase"
-  local _waylanddir="${_srcdir}/qtwayland"
+  local _declarativedir="${_srcdir}/qtdeclarative"
   local _webenginedir="${_srcdir}/qtwebengine"
-  local _locationdir="${_srcdir}/qtlocation"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
   if $_shadow_build; then
@@ -187,6 +186,9 @@ if $_patching; then
   #local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
   #sed -i "s/error/warning/" ${_reducerelocations} || exit 1
   #_device_configure_flags="$_device_configure_flags -reduce-relocations"
+
+  cd ${_declarativedir}
+  patch -p1 < ${startdir}/0001-WIP-V4-Free-up-2-address-bits-in-64bit-mode.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
