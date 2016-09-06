@@ -52,9 +52,9 @@
 ## Mozc compile option
 _bldtype=Release
 
-_zipcode_rel=201607
-_mozcver=2.17.2315.102
-_utdicver=20160815
+_zipcode_rel=201608
+_mozcver=2.18.2598.102
+_utdicver=20160905
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
@@ -80,10 +80,10 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
         git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
-        "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601101&FileTime=131158247218230000&Build=21031"
-        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601100&FileTime=131158247215130000&Build=21031"
-        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601102&FileTime=131158247220130000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F11%2F11036%2Fmozcdic-ut-${_utdicver}.tar.bz2
+        "x-ken-all${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605055&FileTime=131176310117130000&Build=21031"
+        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605057&FileTime=131176310119770000&Build=21031"
+        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1605056&FileTime=131176310118230000&Build=21031"
+        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F11%2F11060%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
@@ -98,7 +98,7 @@ prepare() {
     ./generate-mozc-ut.sh
   msg "Done."
 
-  cd "${srcdir}/mozc-ut-${pkgver}"
+  cd "${srcdir}/mozc-ut-${pkgver}/src"
 
   # Apply fcitx patch
   rm unix/fcitx -rf
@@ -121,7 +121,7 @@ prepare() {
   cd "$srcdir"
   for dep in gyp protobuf japanese_usage_dictionary fontTools
   do
-    cp -a $dep mozc-ut-${pkgver}/third_party/
+    cp -a $dep mozc-ut-${pkgver}/src/third_party/
   done
 }
 
@@ -131,7 +131,7 @@ build() {
   CFLAGS="${CFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
   CXXFLAGS="${CXXFLAGS} -I/usr/include/qt4 -fvisibility=hidden"
 
-  cd "${srcdir}/mozc-ut-${pkgver}"
+  cd "${srcdir}/mozc-ut-${pkgver}/src"
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
@@ -143,13 +143,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mozc-ut-${pkgver}"
+  cd "${srcdir}/mozc-ut-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -m 644 LICENSE doc-ut/README data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
-  cd doc-ut/dictionary
+  install -m 644 LICENSE ${srcdir}/mozc-ut-${pkgver}/docs-ut/README data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cd ${srcdir}/mozc-ut-${pkgver}/docs-ut/dictionaries
   for d in *
   do
     install -d "${pkgdir}/usr/share/licenses/dictionary/${d}"
@@ -157,7 +157,7 @@ package() {
   done
   install -m 644 ${srcdir}/EDICT_license.html "${pkgdir}/usr/share/licenses/dictionary/edict/license.html"
 
-  cd "${srcdir}/mozc-ut-${pkgver}"
+  cd "${srcdir}/mozc-ut-${pkgver}/src"
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
@@ -186,11 +186,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '93fd7bc960f46c8601d86f69e42444130c432b4604bc77e5c27caacd3c2c36e33ec42b04edff6ff41cf9020b93e520b907ad286b21e37e8946f85bab958963bb'
+            'c22438acaf2f493b1adc5183e2c289a1e52ec3ecf65661b759783e38d8992b4ebfe38d075e5502deb4ea28d3efc3af696bbff15606390a81c9e9f52218f27e3b'
             '6f6b740d7148a4f47f8bc0841bc70e5bba47f590d84b27a4ad45eacbc5e3c24e29532c3c871a4d554d1a13e69cfdd1eed1d5b8b6c4670efdd0d5177dda701596'
-            'fbec76ea50d806991c22cc272dabd465fef660b0fca3b31818e57091d79f13a99512029134bc2f48d3adefe80787745977c11d7e16ef4146cc838dfaa19d410c'
-            'a40d7aa86ed477d7d90832f6fe75f19348e3d6e5db302a16a24d6c757378c6d92207772921b4a12a5a0048d8c085c075050511283b6e6c355e337accbd3b5fe2'
+            '53f711c6c23a5d7e0cf3bdf3cb141bb693d8a0e4cff1277572a1b699f95d5ff72413ca907cfc7caaa1e23878168529a840864cd49547e87dcb3b40ef21937a33'
+            'c05297b876bcbf0693465defaf09ef375ab43ab770d56ea3566b61e3b5f77553ec5796c2451594fac3e08d4754c79becdd1c993ae03368b31c6b985054ab805c'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            '3b8d49eb8f6fff7443de48f10d6af122c08cef89c9ddf33857ba13b294fbad3e727a26067196cd249fe61ab4dd0d9ca8d7f8c64226a7f59580e5bd21e7b208eb'
+            '99707be2afd6b13cbb8c48ae438b76048b7a4d78db6fa5e85c05b9a327710eed334f2a24a2e5c86a1ad68424b22250ce38b6d4f008329ba30f7059c175dc4fe6'
             'a9a3ca5dba636c84d216a0a3574e5132d0e6ca69e913ccd5f1a1716af238ea34d5100a4b5d42bbd0c12649780b6009f4533e848e86050e51c22dc8859badd615'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
