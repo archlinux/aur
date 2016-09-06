@@ -2,55 +2,38 @@
 
 pkgname=omegat-beta
 _pkgname=omegat
-pkgver=3.6.0_02
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Beta version of a multiplatform CAT tool application, written in Java"
 arch=('any')
 url="http://www.omegat.org/en/omegat.html"
-license=('GPL')
+license=('GPL3')
 depends=('java-runtime' 'desktop-file-utils')
 conflicts=('omegat')
 provides=('omegat')
 options=('!strip')
 source=(http://downloads.sourceforge.net/${_pkgname}/OmegaT_${pkgver}_Beta_Without_JRE.zip
-        http://www.omegat.org/resources/icons.zip
-        ${_pkgname}.desktop)
-sha256sums=('2c7422f0e3d13779fc7ce85605ab042bd0718be4cca70195f9104c4165e585b1'
-            'e8b14887f513a505def059903348b5a06c0d016450711cf0f235802213a3dbbb'
-            '595de7433e91788e15fa7714e6a65188ccf56eeac824b4a48d50a6752b989700')
+        ${_pkgname}.desktop ${_pkgname}.sh)
+sha256sums=('ca4b47c047294c71fb1f4fbd9dccbec1650dc8d288ea4c96371baf806ea67fe1'
+            '595de7433e91788e15fa7714e6a65188ccf56eeac824b4a48d50a6752b989700'
+            'd543baf2307f9a1849011c6711d1588643bc299e21f75caf330efc2e977989d0')
 
 package() {
-  cd "${srcdir}"
-  install -d "${pkgdir}"/usr/share/java/${_pkgname} \
-             "${pkgdir}"/usr/bin
+  cd "${srcdir}"/OmegaT_${pkgver}_Beta_Without_JRE
 
-  find . -type f -exec chmod 644 "{}" \;
-  mv *.txt "${srcdir}"/docs
+  mv *.txt docs/
+  install -d "${pkgdir}"/usr/{bin,share/java/${_pkgname}}
   cp -r * "${pkgdir}"/usr/share/java/${_pkgname}
 
 #.desktop file + icon
   install -Dm644 "${srcdir}"/${_pkgname}.desktop \
     "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
-  install -Dm644 "${srcdir}"/icons/OmegaT_Icon.png \
-    "${pkgdir}"/usr/share/pixmaps/${_pkgname}.png
-
-#more images
-  install -m644 "${pkgdir}"/usr/share/java/${_pkgname}/icons/*.png \
-    "${pkgdir}"/usr/share/java/${_pkgname}/images/
+  install -Dm644 images/OmegaT.svg \
+    "${pkgdir}"/usr/share/pixmaps/${_pkgname}.svg
 
 #executable file
-  echo "#!/bin/sh" > "${pkgdir}"/usr/bin/${_pkgname}
-  echo "cd /usr/share/java/${_pkgname}/" >> "${pkgdir}"/usr/bin/${_pkgname}
-  echo "java -jar -Xmx512M OmegaT.jar \$*" >> "${pkgdir}"/usr/bin/${_pkgname}
-  chmod 755 "${pkgdir}"/usr/bin/${_pkgname}
+  install -Dm755 "${srcdir}"/${_pkgname}.sh "${pkgdir}"/usr/bin/${_pkgname}
 
 #removing obsolete files
-  rm -rf "${pkgdir}"/usr/share/java/${_pkgname}/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat,icons}
-  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/*.{dll,dylib}
-
-if [[ "$CARCH" == "x86_64" ]]; then
-  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/libhunspell-linux32.so
-else
-  rm "${pkgdir}"/usr/share/java/${_pkgname}/native/libhunspell-linux64.so
-fi
+  rm -rf "${pkgdir}"/usr/share/java/${_pkgname}/{*.{zip,desktop,sh,kaptn},OmegaT,OmegaT.bat}
 }
