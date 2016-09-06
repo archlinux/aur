@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=simgear-git
-pkgver=20160415
+pkgver=20160906
 pkgrel=1
 _gitname=simgear
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -23,10 +23,11 @@ pkgver() {
   echo "$(date +"%Y%m%d")"
 }
 
-prepare() {
-  cd ${srcdir}
-  patch -p0 -i getKern.patch
-}
+# To be used with OpenSceneGraph-git
+# prepare() {
+#   cd ${srcdir}
+#   patch -p0 -i getKern.patch
+# }
 
 build() {
   cd ${srcdir}/${_gitname}
