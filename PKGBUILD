@@ -1,13 +1,14 @@
 # Maintainer: Ivan Puntiy <ivan.puntiy-at-gmail>
 pkgname=mingw-w64-asio
 pkgver=1.10.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform C++ library for ASynchronous network I/O (mingw-w64)"
 arch=(any)
 url="http://asio.sourceforge.net/"
 license=("custom")
-depends=('mingw-w64-boost' 'mingw-w64-crt')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
+depends=('mingw-w64-crt')
+makedepends=('mingw-w64-configure' 'mingw-w64-boost')
+optdepends=('mingw-w64-boost: when not using ASIO_STANDALONE')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/asio/asio-${pkgver}.tar.bz2")
 md5sums=('85d014a356a6e004cd30ccd4c9b6a5c2')
