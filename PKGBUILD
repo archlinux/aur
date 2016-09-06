@@ -2,7 +2,7 @@
 # Maintainer: Rafael Fontenelle <rafaeff@gnome.org>
 
 pkgname=chrome-gnome-shell-git
-pkgver=6.2_7_gc2df1fe
+pkgver=7.r5.g1c84261
 pkgrel=1
 pkgdesc="Native connector for extensions.gnome.org"
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --tags | sed -e 's/v//;s/-/_/g'
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
