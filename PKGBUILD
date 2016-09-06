@@ -5,13 +5,12 @@
 pkgbase=bcm20702a1-firmware
 pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
 pkgver=1201710
-pkgrel=5
+pkgrel=6
 arch=('any')
 pkgdesc="Broadcom bluetooth firmware."
 url="http://asus.com"
 license=("Custom")
 makedepends=('bluez-utils' 'gawk' 'sed')
-conflicts=('bt-dw1560-firmware')
 source=("http://dlcdnet.asus.com/pub/ASUS/wireless/USB-BT400/DR_USB_BT400_${pkgver}_Windows.zip"
         "filelist.txt")
 sha256sums=('a84889e296add13cae389524b790133519666826ba899c6f82cd6528a80fefcb'
@@ -42,6 +41,7 @@ package_bcm4335c0-firmware() {
 
 package_bcm4350c5-firmware() {
   pkgdesc="Broadcom bluetooth firmware for BCM4350C5 based devices."
+  conflicts=('bcm4350-firmware')
 
   cd "${srcdir}"
   mkdir -p ${pkgdir}/usr/lib/firmware/brcm
@@ -64,6 +64,7 @@ package_bcm4356a2-firmware() {
 
 package_bcm20702a1-firmware() {
   pkgdesc="Broadcom bluetooth firmware for BCM20702A1 based devices."
+  conflicts=('bt-dw1560-firmware')
 
   cd "${srcdir}"
   mkdir -p ${pkgdir}/usr/lib/firmware/brcm
