@@ -13,7 +13,7 @@ makedepends=('opencl-headers' 'gcc' 'python2')
 optdepends=('opencl-catalyst: OpenCL implemention from AMD')
 conflicts=('cpyrit-calpp-svn' 'cpyrit-calpp' 'cpyrit-opencl' 'cpyrit-cuda')
 
-source=(http://pyrit.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyrit/${pkgname}-${pkgver}.tar.gz)
 md5sums=('9aea58eb00a147ed4e76802bb02541c5')
 
 build() {
