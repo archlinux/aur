@@ -1,11 +1,12 @@
 pkgbase = bcm20702a1-firmware
 	pkgdesc = Broadcom bluetooth firmware.
 	pkgver = 1201710
-	pkgrel = 1
+	pkgrel = 2
 	url = http://asus.com
 	arch = any
 	license = Custom
 	makedepends = bluez-utils
+	makedepends = gawk
 	conflicts = bt-dw1560-firmware
 	source = http://dlcdnet.asus.com/pub/ASUS/wireless/USB-BT400/DR_USB_BT400_1201710_Windows.zip
 	source = filelist.txt
