@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -36,6 +36,10 @@ build() {
   
   # help to clean up old builds when there is a new version
   # git clean -xdf
+
+  # revert a 4.13 commit which causes the editor to crash when opening a widget blueprint
+  # @see https://issues.unrealengine.com/issue/UE-35185
+  git revert 8fba9bbdc3cc4105d7c3de24adc94f7304c7d90b --no-edit
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
