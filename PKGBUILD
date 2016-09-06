@@ -3,13 +3,13 @@
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=0.9.99.713.2d61927
+pkgver=1.0beta2
 pkgrel=2
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('elementary')
+depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
