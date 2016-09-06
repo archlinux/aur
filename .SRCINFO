@@ -1,0 +1,16 @@
+pkgbase = plasma-applet-places-widget
+	pkgdesc = Plasmoid Places Widget for Plasma desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HessiJames/plasma-applet-places-widget
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = plasma-framework
+	depends = plasma-workspace
+	source = plasma-applet-places-widget::git+https://github.com/HessiJames/plasma-applet-places-widget.git
+	sha1sums = SKIP
+
+pkgname = plasma-applet-places-widget-git
+
