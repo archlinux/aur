@@ -86,6 +86,8 @@ build() {
 }
 
 package() {
+  _bundle=bundle
+  _ruby=ruby
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
