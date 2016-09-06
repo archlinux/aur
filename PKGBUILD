@@ -4,19 +4,19 @@
 
 pkgbase=scala_2.10
 pkgname=(scala_2.10 scala-docs_2.10 scala-sources_2.10)
-pkgver=2.10.5
+pkgver=2.10.6
 pkgrel=1
 pkgdesc="A Java-interoperable language with object-oriented and functional features. This is the maintenance version of Scala 2.10."
 arch=('any')
 url="http://www.scala-lang.org"
 license=('BSD')
 # for Java 8 incompatibility, see scala issue SI-8852
-depends=('java-runtime<=7')
-conflicts=('scala' 'scala-docs' 'scala-sources')
+depends=('jdk7')
+conflicts=('scala' 'scala-docs' 'scala-sources' 'jdk8')
 source=("http://www.scala-lang.org/files/archive/scala-${pkgver}.tgz"
         "http://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
-md5sums=('79c0f6551ce62d651f700073e654e141'
-         'e895c4641ad8fba4b8a983c957bae948')
+md5sums=('d79dc9fdc627b73289306bdaec81ca98'
+         '0a6a0598e365a4dea2541efa3e9e5ef7')
 
 package_scala_2.10() {
   depends=('java-runtime<=7')
