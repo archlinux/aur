@@ -2,14 +2,14 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=flightgear-git
-pkgver=20160515
+pkgver=20160906
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('i686' 'x86_64')
 url="http://flightgear.org/"
 license=('GPL')
-depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'qt5-base' 'fgdata-git' 'openscenegraph-git')
+depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'qt5-base' 'fgdata-git' 'openscenegraph')
 optdepends=()
 makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git')
 provides=('flightgear-git')
