@@ -9,7 +9,6 @@ pkgbase = amule-dlp-git
 	license = GPL
 	makedepends = git
 	depends = wxgtk
-	depends = wxgtk2.8
 	depends = gd
 	depends = geoip
 	depends = libupnp
