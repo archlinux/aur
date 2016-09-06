@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r3197.g1a7ca5a
+pkgver=1.1.0.insider.r4276.g2a215cc
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -17,7 +17,7 @@ source=("git+https://github.com/Microsoft/vscode"
         'product_json.patch')
 sha1sums=('SKIP'
           'a42e461ed586ef0fd31ff911ad662135f4f602aa'
-          '8a36a8af89af183e0fa29d9141a1bb4ae9cafd5a')
+          '34758e925f36cabe6167198c9bd11c12b07b2052')
 
 case "$CARCH" in
     i686)
@@ -34,7 +34,7 @@ esac
 
 pkgver() {
     cd "${srcdir}/vscode"
-    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --match '?.*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
