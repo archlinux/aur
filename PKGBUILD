@@ -1,18 +1,18 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=eflete
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="EFL Edje Theme Editor - a theme graphical editor"
 arch=('i686' 'x86_64')
-url="https://phab.enlightenment.org/w/projects/eflete/"
+url="https://www.enlightenment.org/about-eflete"
 license=('GPL2')
-depends=('efl>=1.17' 'elementary>=1.17')
+depends=('efl')
 provides=("ewe=${pkgver}")
 conflicts=("ewe")
 replaces=("ewe")
 source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4fe6d83836b1a8f9597ff70120070ef5')
+md5sums=('42bb14eaad84d60c3114d5487c9fe2ee')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
