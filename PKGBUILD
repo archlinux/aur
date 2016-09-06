@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/platform"
 license=('GPL')
 makedepends=('git')
-provides=('libplatform')
-conflicts=('libplatform')
+provides=('libplatform' 'p8-platform')
+conflicts=('libplatform' 'p8-platform')
 source=('libplatform::git+https://github.com/Pulse-Eight/platform.git')
 md5sums=('SKIP')
 
