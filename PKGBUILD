@@ -2,6 +2,7 @@
 # Contributor: Christopher Reimer <archlinux@tjbp.net>
 # Contributor: Christoph Hoopmann <christophhoopmann@gmail.com>
 
+pkgbase=bcm20702a1-firmware
 pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcn4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm43142a0-firmware')
 pkgver=1201710
 pkgrel=1

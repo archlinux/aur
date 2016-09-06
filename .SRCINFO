@@ -1,4 +1,4 @@
-pkgbase = bcm4335c0-firmware
+pkgbase = bcm20702a1-firmware
 	pkgdesc = Broadcom bluetooth firmware.
 	pkgver = 1201710
 	pkgrel = 1
