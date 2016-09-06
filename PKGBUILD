@@ -15,7 +15,7 @@ md5sums=('7accbd52132f3c0cfbc02d8e0c9e80de')
 build() {
 	cd "$pkgname-$pkgver"
 	# We do not set sbindir here so it's easier to delete in the package step.
-	./configure --prefix=/usr --localstatedir=/run --sysconfdir=/etc
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
 
@@ -28,6 +28,8 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
-	# get rid of halt / reboot
-	rm -rf $pkgdir/usr/sbin
+	# get rid of halt / reboot and the var dir
+	rm -r $pkgdir/usr/var
+	rm -r $pkgdir/usr/sbin
+	rm -r $pkgdir/usr/share/man/man8
 }
