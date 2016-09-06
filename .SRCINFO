@@ -1,14 +1,14 @@
 pkgbase = nemo-run-with-nvidia
 	pkgdesc = Nemo action to run a program with Bumblebee
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 0
 	url = https://github.com/rapgenic/nemo-run-with-nvidia
 	arch = any
 	license = GPL2
 	depends = nemo
 	depends = bumblebee
-	source = https://github.com/rapgenic/nemo-run-with-nvidia/archive/0.0.3.zip
-	md5sums = 161379853e366300a4c2349ffdaa5c79
+	source = https://github.com/rapgenic/nemo-run-with-nvidia/archive/0.0.4.zip
+	md5sums = 31be993d8dd86fac71b53598c5e6c862
 
 pkgname = nemo-run-with-nvidia
 
