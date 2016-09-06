@@ -4,7 +4,7 @@
 
 pkgname=sam2p
 pkgver=0.49.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A bitmap-to-eps-or-pdf-converter that produces very small files"
 arch=('i686' 'x86_64')
 url="http://www.inf.bme.hu/~pts"
@@ -12,12 +12,13 @@ license=('GPL2')
 depends=('gcc-libs')
 #makedepends=('imake')
 optdepends=('ghostscript: PS, EPS, PDF support'
-'libjpeg: JPEG support'
-'tif22pnm: for tiff and png support')
+	    'libjpeg: JPEG support'
+	    'tif22pnm: for tiff support'
+	    'png22pnm: for png support')
 # 'netpbm: PNG support'
-source=("http://sam2p.googlecode.com/files/$pkgname-$pkgver.tar.gz" makedep.patch)
-md5sums=('fd46bcd21576cf9441fc80639a6033b0'
-         '3c7754d87b6e1b43b6a37db3944c2c91')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sam2p/$pkgname-$pkgver.tar.gz" makedep.patch)
+sha256sums=('0e75d94bed380f8d8bd629f7797a0ca533b5d0b40eba2dab339146dedc1f79bf'
+            '36f7d93a61fa13ff2ae2925ca8e009ee096e0d491d6ec58b5d254390647938eb')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
