@@ -31,7 +31,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -dm755 "$pkgdir$_sysroot"
-  mv "$pkgdir"/lib/ld-musl*.so* "$pkgdir"/usr/lib
+  mv "$pkgdir"/lib/ld-musl*.so* "$pkgdir$_sysroot"/lib
   rmdir "$pkgdir"/lib
 
   pushd "$pkgdir"/usr/bin
