@@ -1,12 +1,12 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-_ver='2.5.8'
+_ver='2.5.9'
 _quagga='quagga'
 _cumulus='CumulusNetworks'
 pkgname="${_quagga}_cumulus"
 pkgver='0.99.23.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Routing daemon suite with ${_cumulus} patches. Support Multi-Instance OSPF."
 arch=('i686' 'x86_64')
 url="https://github.com/${_cumulus}/${_quagga}"
@@ -34,7 +34,7 @@ source=("http://download.savannah.gnu.org/releases/${_quagga}/${_quagga}-${pkgve
         "${_quagga}-${_cumulus}-2.5.6_json-c.patch")
 sha256sums=('3abf2046bc27539ce2d17c238e06c8fd0d479a8e402580c6aa455808bd48e004'
             '091e57dfe070c70264079e436999dd629cbe18f03a4eaff29cd87718669e05de'
-            'd378608d28b32e9200dd3e9377e2a81fd9be81bcc2bdacfcfe0c7c4264e02399'
+            'aadf4b9cf54397645b4ed4fdcf1cb2ed180aa83c714546faabf4bd62d122b984'
             'b531818654f9656c6a07127707785e55f7b3bd14568849e2f63c8f8e761223d0'
             '4debff53306539b79d8e3e08844081a388f1897cee20bf2bc84e0efaff40fd9b'
             '105b8eac3c7d7dc2f1fffa382a2d9d6bf86182c9462708465a5d7216e2be41bd'
