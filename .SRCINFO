@@ -1,6 +1,6 @@
 pkgbase = uex
 	pkgdesc = UltraEdit is a powerful text editor.
-	pkgver = 15.1.0.8
+	pkgver = 16.1.0.17
 	pkgrel = 1
 	url = http://www.ultraedit.com/products/uex.html
 	install = uex.install
@@ -12,8 +12,8 @@ pkgbase = uex
 	depends = libjpeg6
 	depends = libpng12
 	depends = libsm
-	source = http://www.ultraedit.com/files/uex/Other/uex-15.1.0.8_amd64.tar.gz
-	md5sums = 6d26c50adc6fe279c15357ff61c8187a
+	source = http://www.ultraedit.com/files/uex/Other/uex-16.1.0.17_amd64.tar.gz
+	md5sums = c8c9fd5e3af10ef16a10265f3e96776e
 
 pkgname = uex
 
