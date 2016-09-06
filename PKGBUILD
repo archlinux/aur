@@ -27,6 +27,7 @@ depends=('qt5-declarative')
 makedepends=('gcc' 'qt5-base')
 source=("git://github.com/qml-box2d/qml-box2d")
 sha256sums=('SKIP')
+options=('!strip')
 
 build() {
   cd "$srcdir/$pkgname"
