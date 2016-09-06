@@ -2,12 +2,12 @@
 
 pkgname=brave-bin
 pkgver=0.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
 license=('custom:several')
-depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'libgnome-keyring' 'libxtst' 'desktop-file-utils' 'ttf-font')
+depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
@@ -40,9 +40,9 @@ package() {
 
   cp --reflink=auto "$srcdir"/brave.png "$pkgdir"/usr/share/pixmaps/
 
-  install -d -m0755 "$pkgdir"/usr/share/licenses/brave
+  install -d -m0755 "$pkgdir"/usr/share/licenses/brave-bin
 
-  cp --reflink=auto "$srcdir"/MPL2 "$pkgdir"/usr/share/licenses/brave/MPL2
+  cp --reflink=auto "$srcdir"/MPL2 "$pkgdir"/usr/share/licenses/brave-bin/MPL2
 
-  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave
+  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-bin
 }
