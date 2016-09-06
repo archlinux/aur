@@ -5,7 +5,7 @@
 
 _gemname=sprockets-rails
 pkgname=ruby-$_gemname
-pkgver=3.0.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Sprockets Rails integration'
 arch=(any)
@@ -15,10 +15,11 @@ depends=(ruby ruby-sprockets ruby-actionpack ruby-activesupport)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e1f41fa9634384ec8c8c511582a8723ce531fd29')
+sha1sums=('6a30d8fb06f61f0873434914cf7c9e4d40b88af4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
