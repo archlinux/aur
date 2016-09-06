@@ -1,7 +1,7 @@
 pkgbase = lily
 	pkgdesc = An interpreted language with a focus on expressiveness and type safety
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beyondred.github.io/lily/
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = lily
 	arch = armv7h
 	license = MIT
 	makedepends = cmake
+	depends = glibc
 	provides = lily
 	conflicts = lily
-	source = https://github.com/beyondred/lily/archive/v0.17.tar.gz
+	source = https://github.com/FascinatedBox/lily/archive/v0.17.tar.gz
+	source = https://raw.githubusercontent.com/FascinatedBox/lily/master/license.txt
 	sha256sums = 08c1b313cfb182f58dcf3ff843ea8fccdb0e9471e8e63d1652600bc899c0e0af
+	sha256sums = e169a4a749995ef83c0939127180318e4d436bf47f039967c0c14d0de25c7a61
 
 pkgname = lily
 
