@@ -1,5 +1,5 @@
 pkgbase = pyexiftoolgui-git
-	pkgdesc = a python pyside graphical frontend for the excellent open source command line tool ExifTool
+	pkgdesc = A python pyside graphical frontend for the excellent open source command line tool ExifTool.
 	pkgver = 0.5.r43.17c7a0e
 	pkgrel = 1
 	url = https://github.com/hvdwolf/pyExifToolGUI
