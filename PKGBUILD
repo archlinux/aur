@@ -2,8 +2,8 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-7
-pkgver=7.1.1
-pkgrel=4
+pkgver=7.2.1
+pkgrel=1
 pkgdesc="Commercial Proprietary Music Production Software"
 arch=('x86_64')
 url="http://www.tracktion.com/"
@@ -16,7 +16,7 @@ optdepends=(
   'ladspa-plugins: A set of ladspa plugins'
 )
 source=(https://s3-us-west-2.amazonaws.com/tracktion-marketplace-public/TracktionInstall_7_Linux_64Bit_latest.deb)
-md5sums=('7edc03f27015187413816469688a1f4f')
+md5sums=('91d1877497e5509c0ab3d684c7c34b61')
 install=tracktion7.install
 
 package() {
