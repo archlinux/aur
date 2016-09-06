@@ -9,13 +9,13 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.4.1dev+9+ga3fd485
+pkgver=1.4.1dev+33+gc87b89b
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
-url="http://www.gnome.org/projects/NetworkManager/"
+url="https://wiki.gnome.org/Projects/NetworkManager"
 depends=("libnm-glib>=${pkgver}" 'iproute2' 'polkit-consolekit' 'consolekit'
          'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
@@ -34,7 +34,7 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-_commit=a3fd48545cf186a7e33aa9df8c3dd2bc016b350d
+_commit=c87b89bf8f7d0e45df08e84503eb16f5ef2ce3c6
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
