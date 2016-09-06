@@ -2,14 +2,14 @@
 
 pkgname=gtk-theme-onestepback
 _thname=OneStepBack
-pkgver=0.9
+pkgver=0.91
 pkgrel=1
 pkgdesc="A Gnome 2 and 3 theme with some colors and embossed widgets inspired by the good old NextStep look."
 arch=('any')
-url="http://gnome-look.org/content/show.php/OneStepBack?content=170904"
+url="https://www.gnome-look.org/content/show.php/OneStepBack?content=170904"
 license=('GPL3')
-source=("$pkgname-$pkgver.zip::https://dl.opendesktop.org/api/files/download/id/1470912851/OneStepBack.zip")
-sha256sums=('603fc630bab5aba4db2a6eb846239db331657c8d3fbfc5827e0ff94d26240698')
+source=("$pkgname-$pkgver.zip::https://dl.opendesktop.org/api/files/download/id/1472928821/1472928821-OneStepBack.zip")
+sha256sums=('c13def5dc50df72ea581cf726e2ee93c5a65a19c80153c4e128b8aa11e1713fb')
 
 package() {
 	cd "$srcdir/$_thname"
