@@ -1,16 +1,15 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gnu-apl
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 url="http://www.gnu.org/software/apl/"
-pkgdesc="an (almost) complete implementation of ISO standard 13751"
+pkgdesc="An (almost) complete implementation of ISO standard 13751"
 arch=('i686' 'x86_64')
 depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite')
 license=('GPL3')
 source=("ftp://ftp.gnu.org/gnu/apl/apl-${pkgver}.tar.gz")
-md5sums=('7302a67330ebdc2224212a1639927bc8')
-install='info.install'
+md5sums=('b439722cf8cace8e422d3424034e4c7f')
 
 build() {
     cd "$srcdir/apl-$pkgver"
