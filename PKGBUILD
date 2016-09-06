@@ -1,4 +1,5 @@
 # Maintainer: Augusto Borges <aborges@iflysib.unlp.edu.ar>
+# Contributor: Emanuel Cura Costa <ecuracosta@gmail.com>
 pkgname=morpheus-modeling
 pkgver=2.0
 pkgrel=2
