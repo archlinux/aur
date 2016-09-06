@@ -3,16 +3,16 @@
 
 pkgname=python-iniparse
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Better INI parser library for Python"
 arch=('any')
 license=('MIT')
-url="http://code.google.com/p/iniparse"
+url="https://pypi.python.org/pypi/iniparse"
 depends=('python' 'python-six')
-source=("http://iniparse.googlecode.com/files/iniparse-$pkgver.tar.gz"
+source=("https://pypi.python.org/packages/source/i/iniparse/iniparse-$pkgver.tar.gz"
         "http://pkgs.fedoraproject.org/cgit/$pkgname.git/plain/$pkgname-python3-compat.patch")
-sha1sums=('2b2af8a19f3e5c212c27d7c524cd748fa0b38650'
-          '670a6a70633b297a9586679b7da8312fe9720698')
+md5sums=('5e573e9e9733d97623881ce9bbe5eca6'
+         'e0eaf5cc93b73983aab71be56613ae7b')
 
 prepare() {
 	cd "iniparse-$pkgver"
