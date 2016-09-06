@@ -41,7 +41,8 @@ source=("http://www.vtk.org/files/release/${_majorver}/VTK-${pkgver}.tar.gz"
         ffmpeg3_compat.patch
         remove_args.patch
         find_gcc6.patch
-        fix-possible-segfault.patch)
+        fix-possible-segfault.patch
+        fix-qt4-moc.patch)
 options=(staticlibs !strip)
 sha1sums=('7719fac36b36965eaf5076542166ba49bbe7afbb'
           '1bbaa642a3e3676a58a08c956df73645326c2859'
@@ -60,6 +61,7 @@ prepare() {
   patch -p1 < ../remove_args.patch # https://gitlab.kitware.com/vtk/vtk/commit/52501fd085a64b55d1b53d40c1d3f86c6ce9addd
   patch -p1 < ../find_gcc6.patch # https://gitlab.kitware.com/vtk/vtk/commit/06e2a00bf8accb04db63b3c1c7a454e4afc6fea6
   patch -p1 < ../fix-possible-segfault.patch
+  patch -p1 < ../fix-qt4-moc.patch
 
 }
 
