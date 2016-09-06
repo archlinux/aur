@@ -1,7 +1,7 @@
 pkgbase = coherence
 	pkgdesc = A DLNA/UPnP MediaServer and MediaRenderer
 	pkgver = 0.6.6.2
-	pkgrel = 6
+	pkgrel = 8
 	url = http://coherence.beebits.net/
 	arch = any
 	license = MIT

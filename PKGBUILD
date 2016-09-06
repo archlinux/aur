@@ -6,7 +6,7 @@
 
 pkgname=coherence
 pkgver=0.6.6.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A DLNA/UPnP MediaServer and MediaRenderer"
 arch=('any')
 url="http://coherence.beebits.net/"
@@ -52,6 +52,8 @@ package() {
 
   python2 setup.py install --prefix=/usr --root="$pkgdir"
 
+  install -Dm644 "$srcdir/coherence.conf" "$pkgdir/etc/coherence.conf"
+  install -Dm644 "$srcdir/coherence.service" "$pkgdir/usr/lib/systemd/system/coherence.service"
   install -Dm644 "$srcdir/org.Coherence.service" "$pkgdir/usr/share/dbus-1/services/org.Coherence.service"
   install -Dm644 "$srcdir/Coherence-$pkgver/LICENCE" "$pkgdir/usr/share/licenses/coherence/LICENSE"
 }
