@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/pculture/${pkgname//-/}3/archive/v$pkgver.tar.gz"
         $pkgname.install)
 sha256sums=('3c564cf88e6264f206b9c0cef136809805412f92e536b5407f5d64c1c4dd9970'
-            '636af99ee4acbd889cc4c05d79929502f27bac22baef0a8f412a11168ac75346')
+            '3213bd620408c400a904ed989d21be94f8afaa6f3b20981f0fe09fafe29d9678')
 
 package() {
    cd "${pkgname//-/}3-$pkgver"
