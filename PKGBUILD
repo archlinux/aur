@@ -3,8 +3,8 @@
 # Upstream: https://github.com/bitpay/copay
 
 pkgname=copay
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip')
 source=('copay.desktop')
 
 md5sums=('e05610d1b08a2c688efccf9d687b8b92')
-md5sums_x86_64=('45905a77cee6b5eccf03e463d4555106'
+md5sums_x86_64=('7ff033094699afee187a9426758f51ee'
                 'SKIP')
 
 source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip"
