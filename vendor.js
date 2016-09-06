@@ -42,4 +42,5 @@ pref("datareporting.healthreport.about.reportUrl", "");
 pref("datareporting.healthreport.about.reportUrlUnified", "");
 pref("datareporting.policy.dataSubmissionEnabled", false);
 pref("datareporting.policy.dataSubmissionEnabled.v2", false);
-pref("xpinstall.signatures.required", false);
+pref("browser.safebrowsing.enabled", false);
+pref("browser.safebrowsing.malware.enabled", false);
