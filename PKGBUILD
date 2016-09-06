@@ -10,7 +10,7 @@ _electron_ver=0.36.12
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.10.1
 pkgver=1.10.1.aa1.6.2.db0.8.9.fu0.12.0.la0.9.1.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.37.8.t2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 _url='https://github.com/atom'
@@ -97,7 +97,7 @@ prepare() {
          -e "/-theme/d" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
          -e "/\"dependencies\": {/a \
-                     \"language-patch2\": \"${_language_patch2_url}\"," \
+                     \"language-patch2\": \"${_language_patch2_url}\",\n    \"atom-ui\": \"0.4.1\"," \
          -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          -e "/\"packageDependencies\": {/a \
