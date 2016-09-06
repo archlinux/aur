@@ -10,7 +10,6 @@ arch=('x86_64')
 url="http://www.xcrysden.org/"
 license=('GPL2')
 depends=('tk' 'tcl' 'gl2ps' 'fftw' 'bwidget' 'imagemagick' 'gcc-fortran' 'glu' 'libxmu')
-optdepends=('openbabel' 'x11-apps')
 replaces=('xcrysden-bin')
 source=("http://www.xcrysden.org/download/xcrysden-${pkgver}.tar.gz"
         "fix-xcrysden-install.patch"

@@ -15,7 +15,6 @@ pkgbase = xcrysden
 	depends = glu
 	depends = libxmu
 	optdepends = openbabel
-	optdepends = x11-apps
 	replaces = xcrysden-bin
 	source = http://www.xcrysden.org/download/xcrysden-1.5.60.tar.gz
 	source = fix-xcrysden-install.patch
