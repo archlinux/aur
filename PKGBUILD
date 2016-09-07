@@ -1,5 +1,5 @@
 pkgname=unenigmail
-pkgver=0.6
+pkgver=0.20
 pkgrel=1
 url='https://github.com/RoffelKartoffel/unenigmail'
 license=('none')
