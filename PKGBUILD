@@ -22,13 +22,13 @@ sha256sums=('SKIP'
 
 pkgver()
 {
-    cd $_pkgname
+    cd "$_pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build()
 {
-    cd $_pkgname
+    cd "$_pkgname"
     cargo build \
         --features pulseaudio-backend \
         --release
@@ -36,11 +36,11 @@ build()
 
 package()
 {
-    install -D -m 755 $_pkgname/target/release/librespot \
-        "${pkgdir}"/usr/bin/librespot
+    install -D -m 755 "$_pkgname"/target/release/librespot \
+        "$pkgdir"/usr/bin/librespot
     install -d -m 755 "$pkgdir"/var/cache/librespot
     install -D -m 640 librespot.conf \
-        "${pkgdir}"/etc/librespot.conf
+        "$pkgdir"/etc/librespot.conf
     install -D -m 644 librespot.service \
-        "${pkgdir}"/usr/lib/systemd/system/librespot.service
+        "$pkgdir"/usr/lib/systemd/system/librespot.service
 }
