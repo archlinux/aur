@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=kanban-bin
-pkgver=1.4.1
-pkgrel=6
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Self hosted Kanban board for GitLab issues (precompiled binary)"
 arch=('x86_64')
 url="http://kanban.leanlabs.io/"
@@ -14,7 +14,7 @@ source=("kanban::https://github.com/leanlabsio/kanban/releases/download/${pkgver
         "apache2.4.conf.example"
         "apache2.4-ssl.conf.example"
         )
-sha256sums=('6c4f9e3a48d29a16689fc825b34ff7e4705bea70dddb84cd4831a90397b0a455'
+sha256sums=('044944616a7baabaa6c1e11a4b6a503f96fdd59a14ce4b0af12325f36aa4560a'
             '40273cb5169a462b609b852b40e18eeb1cb742ebd6ced1181831e5eae108407e'
             'a9d1cb56a566cdc5ced67e8d783b683fd8a4bf27f14a2e876c965d4c2ffc99fc'
             '86f5a034ad456b786a0d809297a5451dc48443f9e2e2f92147477818bd552170')
