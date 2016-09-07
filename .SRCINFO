@@ -1,6 +1,6 @@
 pkgbase = eom-dev
 	pkgdesc = An image viewing and cataloging program for MATE
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = eom-dev
 	provides = eom-gtk3
 	conflicts = eom
 	conflicts = eom-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/eom-1.15.0.tar.xz
-	sha1sums = 2c52fded9b5c4b6967113727ba0047590b1415ca
+	source = http://pub.mate-desktop.org/releases/1.15/eom-1.15.1.tar.xz
+	sha1sums = 9a5a60748f19d3eb510affa7f9e429528b24bf0f
 
 pkgname = eom-dev
 	pkgdesc = An image viewing and cataloging program for MATE (GTK3 version)
