@@ -1,0 +1,454 @@
+diff --git a/Makefile b/Makefile
+index 26e64c6..40fdf65 100644
+--- a/Makefile
++++ b/Makefile
+@@ -57,34 +57,28 @@ appbundle : Super\ Mario\ War.app
+ install : install-data install-bin install-leveledit install-worldedit
+ 
+ install-data : all
+-	mkdir -p $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx gfx $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx maps $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx music $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx sfx $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx tours $(DESTDIR)/usr/share/games/smw/
+-	cp -ravx worlds $(DESTDIR)/usr/share/games/smw/
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/.svn
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/*/.svn
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/*/*/.svn
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/*/*/*/.svn
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/*/*/*/*/.svn
+-	rm -rf $(DESTDIR)/usr/share/games/smw/*/*/*/*/*/*/.svn
+-	chmod a+w $(DESTDIR)/usr/share/games/smw/maps -R
+-	chmod a+w $(DESTDIR)/usr/share/games/smw/worlds -R
++	mkdir -p $(DESTDIR)/usr/share/smw/
++	cp -ravx gfx $(DESTDIR)/usr/share/smw/
++	cp -ravx maps $(DESTDIR)/usr/share/smw/
++	cp -ravx music $(DESTDIR)/usr/share/smw/
++	cp -ravx sfx $(DESTDIR)/usr/share/smw/
++	cp -ravx tours $(DESTDIR)/usr/share/smw/
++	cp -ravx worlds $(DESTDIR)/usr/share/smw/
++	chmod a+w $(DESTDIR)/usr/share/smw/maps -R
++	chmod a+w $(DESTDIR)/usr/share/smw/worlds -R
+ 
+ install-bin : all
+ 	#assume DESTDIR is the prefix for installing
+-	mkdir -p $(DESTDIR)/usr/games/
+-	cp smw $(DESTDIR)/usr/games/
++	mkdir -p $(DESTDIR)/usr/bin/
++	cp smw $(DESTDIR)/usr/bin/
+ 
+ install-leveledit : all
+-	mkdir -p $(DESTDIR)/usr/games/
+-	cp leveledit $(DESTDIR)/usr/games/smw-leveledit
++	mkdir -p $(DESTDIR)/usr/bin/
++	cp leveledit $(DESTDIR)/usr/bin/smw-leveledit
+ 
+ install-worldedit : all
+-	mkdir -p $(DESTDIR)/usr/games/
+-	cp worldedit $(DESTDIR)/usr/games/smw-worldedit
++	mkdir -p $(DESTDIR)/usr/bin/
++	cp worldedit $(DESTDIR)/usr/bin/smw-worldedit
+ 
+ clean :
+ 	rm -rf build/*
+diff --git a/_src/map.cpp b/_src/map.cpp
+index 7b96ea1..113b05f 100644
+--- a/_src/map.cpp
++++ b/_src/map.cpp
+@@ -628,7 +628,7 @@ void CMap::loadMap(const std::string& file, ReadType iReadType)
+ 			
+ 			for(short iBackground = 0; iBackground < 26; iBackground++)
+ 			{
+-				char * szFindUnderscore = strstr(g_szBackgroundConversion[iBackground], "_");
++				const char * szFindUnderscore = strstr(g_szBackgroundConversion[iBackground], "_");
+ 
+ 				if(szFindUnderscore)
+ 					szFindUnderscore++;
+diff --git a/_src/savepng.cpp b/_src/savepng.cpp
+index 73b3efa..44ce736 100644
+--- a/_src/savepng.cpp
++++ b/_src/savepng.cpp
+@@ -1,170 +1,158 @@
+-#ifdef PNG_SAVE_FORMAT
++extern "C" {
+ 
++/*
++ * SDL_SavePNG -- libpng-based SDL_Surface writer.
++ *
++ * This code is free software, available under zlib/libpng license.
++ * http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
++ */
++#include <SDL.h>
++#include <png.h>
+ 
+-#include "SDL.h"
+-#include "savepng.h"
+-#include "png.h"
++#define SUCCESS 0
++#define ERROR -1
+ 
+-#define IMG_SetError(a) SDL_SetError(a)
++#define USE_ROW_POINTERS
+ 
++#if SDL_BYTEORDER == SDL_BIG_ENDIAN
++#define rmask 0xFF000000
++#define gmask 0x00FF0000
++#define bmask 0x0000FF00
++#define amask 0x000000FF
++#else
++#define rmask 0x000000FF
++#define gmask 0x0000FF00
++#define bmask 0x00FF0000
++#define amask 0xFF000000
++#endif
+ 
+-/* Save a PNG type image to an SDL datasource */
+-static void png_write_data(png_structp ctx, png_bytep area, png_size_t size)
+-{
+-	SDL_RWops *src;
+-	
+-	src = (SDL_RWops *)png_get_io_ptr(ctx);
+-	SDL_RWwrite(src, area, size, 1);
+-}
+-
+-static void png_io_flush(png_structp ctx)
++/* libpng callbacks */ 
++static void png_error_SDL(png_structp ctx, png_const_charp str)
+ {
+-	SDL_RWops *src;
+-	
+-	src = (SDL_RWops *)png_get_io_ptr(ctx);
+-	/* how do I flush src? */
++	SDL_SetError("libpng: %s\n", str);
+ }
+-
+-static int png_colortype_from_surface(SDL_Surface *surface)
++static void png_write_SDL(png_structp png_ptr, png_bytep data, png_size_t length)
+ {
+-	int colortype = PNG_COLOR_MASK_COLOR; /* grayscale not supported */
+-	
+-	if (surface->format->palette)
+-		colortype |= PNG_COLOR_MASK_PALETTE;
+-	else if (surface->format->Amask)
+-		colortype |= PNG_COLOR_MASK_ALPHA;
+-	
+-	return colortype;
++	SDL_RWops *rw = (SDL_RWops*)png_get_io_ptr(png_ptr);
++	SDL_RWwrite(rw, data, sizeof(png_byte), length);
+ }
+ 
+-static void png_user_warn(png_structp ctx, png_const_charp str)
++SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src) 
+ {
+-	fprintf(stderr, "libpng: warning: %s\n", str);
+-}
++	SDL_Surface *surf;
++	SDL_Rect rect = { 0 };
+ 
+-static void png_user_error(png_structp ctx, png_const_charp str)
+-{
+-	fprintf(stderr, "libpng: error: %s\n", str);
+-}
++	/* NO-OP for images < 32bpp and 32bpp images that already have Alpha channel */ 
++	if (src->format->BitsPerPixel <= 24 || src->format->Amask) {
++		src->refcount++;
++		return src;
++	}
+ 
++	/* Convert 32bpp alpha-less image to 24bpp alpha-less image */
++	rect.w = src->w;
++	rect.h = src->h;
++	surf = SDL_CreateRGBSurface(src->flags, src->w, src->h, 24,
++		src->format->Rmask, src->format->Gmask, src->format->Bmask, 0);
++	SDL_LowerBlit(src, &rect, surf, &rect);
+ 
++	return surf;
++}
+ 
+-int IMG_SavePNG_RW(SDL_Surface *face, SDL_RWops *src)
++int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *dst, int freedst) 
+ {
+-	png_structp png_ptr = 0;
+-	png_infop info_ptr = 0;
+-	png_bytep *row_pointers = 0;
+-	int i;
+-	int colortype;
+-	int result = -1;
+-	
+-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+-	int rmask = 0x00ff0000;
+-	int gmask = 0x0000ff00;
+-	int bmask = 0x000000ff;
+-	int amask = 0x00000000;
+-#else
+-	int rmask = 0x000000ff;
+-	int gmask = 0x0000ff00;
+-	int bmask = 0x00ff0000;
+-	int amask = 0x00000000;
++	png_structp png_ptr;
++	png_infop info_ptr;
++	png_colorp pal_ptr;
++	SDL_Palette *pal;
++	int i, colortype;
++#ifdef USE_ROW_POINTERS
++	png_bytep *row_pointers;
+ #endif
+-	
+-	SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, face->w, face->h, 24,
+-								rmask, gmask, bmask, amask);
+-	
+-	SDL_BlitSurface(face, NULL, surface, NULL);
+-	
+-	SDL_LockSurface(surface);
+-	
+-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, png_user_error, png_user_warn);
+-	
+-	if (png_ptr == NULL)
++	/* Initialize and do basic error checking */
++	if (!dst)
++	{
++		SDL_SetError("Argument 2 to SDL_SavePNG_RW can't be NULL, expecting SDL_RWops*\n");
++		return (ERROR);
++	}
++	if (!surface)
++	{
++		SDL_SetError("Argument 1 to SDL_SavePNG_RW can't be NULL, expecting SDL_Surface*\n");
++		if (freedst) SDL_RWclose(dst);
++		return (ERROR);
++	}
++	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, png_error_SDL, NULL); /* err_ptr, err_fn, warn_fn */
++	if (!png_ptr) 
+ 	{
+-		IMG_SetError("Couldn't allocate memory for PNG file");
+-		return -1;
++		SDL_SetError("Unable to png_create_write_struct on %s\n", PNG_LIBPNG_VER_STRING);
++		if (freedst) SDL_RWclose(dst);
++		return (ERROR);
+ 	}
+-	
+-	/* Allocate/initialize the image information data.  REQUIRED */
+ 	info_ptr = png_create_info_struct(png_ptr);
+-	if (info_ptr == NULL)
++	if (!info_ptr)
+ 	{
+-		IMG_SetError("Couldn't create image information for PNG file");
+-		goto done;
++		SDL_SetError("Unable to png_create_info_struct\n");
++		png_destroy_write_struct(&png_ptr, NULL);
++		if (freedst) SDL_RWclose(dst);
++		return (ERROR);
+ 	}
+-	
+-	/* Set error handling. */
+-	if (setjmp(png_ptr->jmpbuf))
++	if (setjmp(png_jmpbuf(png_ptr)))	/* All other errors, see also "png_error_SDL" */
+ 	{
+-		/* If we get here, we had a problem reading the file */
+-		IMG_SetError("Error writing the PNG file");
+-		goto done;
++		png_destroy_write_struct(&png_ptr, &info_ptr);
++		if (freedst) SDL_RWclose(dst);
++		return (ERROR);
+ 	}
+-	
+-	png_set_write_fn(png_ptr, src, png_write_data, png_io_flush);
+-	
+-	/* Set the image information here.  Width and height are up to 2^31,
+-		* bit_depth is one of 1, 2, 4, 8, or 16, but valid values also depend on
+-		* the color_type selected. color_type is one of PNG_COLOR_TYPE_GRAY,
+-		* PNG_COLOR_TYPE_GRAY_ALPHA, PNG_COLOR_TYPE_PALETTE, PNG_COLOR_TYPE_RGB,
+-		* or PNG_COLOR_TYPE_RGB_ALPHA.  interlace is either PNG_INTERLACE_NONE or
+-		* PNG_INTERLACE_ADAM7, and the compression_type and filter_type MUST
+-		* currently be PNG_COMPRESSION_TYPE_BASE and PNG_FILTER_TYPE_BASE. REQUIRED
+-		*/
+-	colortype = png_colortype_from_surface(surface);
+-	png_set_IHDR(png_ptr, info_ptr, surface->w, surface->h, 8,
+-			  colortype, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
+-	
+-	/* Write the file header information.  REQUIRED */
+-	png_write_info(png_ptr, info_ptr);
+-	
+-	/* pack pixels into bytes */
+-	//png_set_packing(png_ptr);
+-	
+-	/* Create the array of pointers to image data */
+-	//row_pointers = (png_bytep*) malloc(sizeof(png_bytep)*surface->h);
+-	row_pointers = new png_bytep[surface->h];
+-	
+-	if ( (row_pointers == NULL) ) 
++
++	/* Setup our RWops writer */
++	png_set_write_fn(png_ptr, dst, png_write_SDL, NULL); /* w_ptr, write_fn, flush_fn */
++
++	/* Prepare chunks */
++	colortype = PNG_COLOR_MASK_COLOR;
++	if (surface->format->BytesPerPixel > 0
++	&&  surface->format->BytesPerPixel <= 8
++	&& (pal = surface->format->palette))
+ 	{
+-		IMG_SetError("Couldn't allocate PNG row pointers");
+-		goto done;
++		colortype |= PNG_COLOR_MASK_PALETTE;
++		pal_ptr = (png_colorp)malloc(pal->ncolors * sizeof(png_color));
++		for (i = 0; i < pal->ncolors; i++) {
++			pal_ptr[i].red   = pal->colors[i].r;
++			pal_ptr[i].green = pal->colors[i].g;
++			pal_ptr[i].blue  = pal->colors[i].b;
++		}
++		png_set_PLTE(png_ptr, info_ptr, pal_ptr, pal->ncolors);
++		free(pal_ptr);
+ 	}
+-	
++	else if (surface->format->BytesPerPixel > 3 || surface->format->Amask)
++		colortype |= PNG_COLOR_MASK_ALPHA;
++
++	png_set_IHDR(png_ptr, info_ptr, surface->w, surface->h, 8, colortype,
++		PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
++
++//	png_set_packing(png_ptr);
++
++	/* Allow BGR surfaces */
++	if (surface->format->Rmask == bmask
++	&& surface->format->Gmask == gmask
++	&& surface->format->Bmask == rmask)
++		png_set_bgr(png_ptr);
++
++	/* Write everything */
++	png_write_info(png_ptr, info_ptr);
++#ifdef USE_ROW_POINTERS
++	row_pointers = (png_bytep*) malloc(sizeof(png_bytep)*surface->h);
+ 	for (i = 0; i < surface->h; i++)
+-		row_pointers[i] = (png_bytep)(Uint8 *)surface->pixels + i*surface->pitch;
+-	
+-	/* write out the entire image data in one call */
++		row_pointers[i] = (png_bytep)(Uint8*)surface->pixels + i * surface->pitch;
+ 	png_write_image(png_ptr, row_pointers);
++	free(row_pointers);
++#else
++	for (i = 0; i < surface->h; i++)
++		png_write_row(png_ptr, (png_bytep)(Uint8*)surface->pixels + i * surface->pitch);
++#endif
+ 	png_write_end(png_ptr, info_ptr);
+-	result = 0;  /* success! */
+-	
+-done:
+-        if (row_pointers)
+-			delete [] row_pointers;
+-	
+-	if (info_ptr->palette)
+-		delete info_ptr->palette;
+-	
+-	png_destroy_write_struct(&png_ptr, (png_infopp)NULL);
+-	
+-	
+-	SDL_UnlockSurface(surface);
+-	SDL_FreeSurface(surface);
+-	
+-	return result;
+-}
+ 
+-int IMG_SavePNG(SDL_Surface *surface, const char *file)
+-{
+-    SDL_RWops *out = SDL_RWFromFile(file, "wb");
+-    int ret;
+-    if(!out)
+-		return -1;
+-    ret = IMG_SavePNG_RW(surface, out);
+-    SDL_RWclose(out);
+-    return ret;
++	/* Done */
++	png_destroy_write_struct(&png_ptr, &info_ptr);
++	if (freedst) SDL_RWclose(dst);
++	return (SUCCESS);
+ }
+ 
+-#endif
+-
++}
+diff --git a/_src/savepng.h b/_src/savepng.h
+index 93caaaf..fc5c621 100644
+--- a/_src/savepng.h
++++ b/_src/savepng.h
+@@ -1,29 +1,48 @@
++#ifndef _SDL_SAVEPNG
++#define _SDL_SAVEPNG
+ /*
+- IMG_SavePNG.h
++ * SDL_SavePNG -- libpng-based SDL_Surface writer.
++ *
++ * This code is free software, available under zlib/libpng license.
++ * http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
++ */
++#include <SDL_video.h>
+ 
+- Originally a patch to SDL_image, LGPL
++#ifdef __cplusplus
++extern "C" { /* This helps CPP projects that include this header */
++#endif
++	
+ 
+- (c) 2001 Darren Grant
+- Endian fixes by J. Fortmann
+- 
+-*/
+-#ifndef _IMG_SavePNG_h
+-#define _IMG_SavePNG_h
++#define IMG_SavePNG(surface, file) SDL_SavePNG((surface), (file))
+ 
+-#include "SDL.h"
++/*
++ * Save an SDL_Surface as a PNG file.
++ *
++ * Returns 0 success or -1 on failure, the error message is then retrievable
++ * via SDL_GetError().
++ */
++#define SDL_SavePNG(surface, file) \
++	SDL_SavePNG_RW(surface, SDL_RWFromFile(file, "wb"), 1)
+ 
+-/* Set up for C function definitions, even when using C++ */
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
++/*
++ * Save an SDL_Surface as a PNG file, using writable RWops.
++ * 
++ * surface - the SDL_Surface structure containing the image to be saved
++ * dst - a data stream to save to
++ * freedst - non-zero to close the stream after being written
++ *
++ * Returns 0 success or -1 on failure, the error message is then retrievable
++ * via SDL_GetError().
++ */
++extern int SDL_SavePNG_RW(SDL_Surface *surface, SDL_RWops *rw, int freedst);
++
++/*
++ * Return new SDL_Surface with a format suitable for PNG output.
++ */
++extern SDL_Surface *SDL_PNGFormatAlpha(SDL_Surface *src);
+ 
+-int IMG_SavePNG_RW(SDL_Surface *face, SDL_RWops *src);	
+-int IMG_SavePNG(SDL_Surface *surface, const char *file);
+-	
+-/* Ends C function definitions when using C++ */
+ #ifdef __cplusplus
+-};
++} /* extern "C" */
+ #endif
+ 
+-#endif	// _IMG_SavePNG_h
+-
++#endif
+diff --git a/configure b/configure
+index 9b9861e..a81845c 100755
+--- a/configure
++++ b/configure
+@@ -49,7 +49,7 @@ fi
+ # Linux configuration
+ if [ "`uname`" = Linux ]
+ then
+-echo 'CFLAGS:=$(CFLAGS) -DLINUXFUNC -DPREFIXPATH=\"/usr/share/games/smw\" '`sdl-config --cflags` $CFLAGS >> configuration
++echo 'CFLAGS:=$(CFLAGS) -DLINUXFUNC -DPREFIXPATH=\"/usr/share/smw\" '`sdl-config --cflags` $CFLAGS >> configuration
+ echo 'LDFLAGS:=$(LDFLAGS) '`sdl-config --libs` $LDFLAGS -lSDL_image -lSDL_mixer -lpng >> configuration
+ echo 'COMMON_OBJS:=$(COMMON_OBJS) build/linfunc.o' >> configuration
+ fi

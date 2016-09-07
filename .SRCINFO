@@ -1,0 +1,31 @@
+pkgbase = smw-git
+	pkgdesc = Super Mario multiplayer game.
+	pkgver = 1.8.beta2
+	pkgrel = 1
+	url = http://smw.supersanctuary.net/site/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = imagemagick
+	depends = sdl_image
+	depends = sdl_mixer
+	provides = smw
+	conflicts = smw-svn
+	source = git://github.com/erlehmann/Super-Mario-War.git
+	source = smw.desktop
+	source = smw-leveledit.desktop
+	source = smw-worldedit.desktop
+	source = smw.png
+	source = smw-leveledit.png
+	source = smw-worldedit.png
+	md5sums = SKIP
+	md5sums = b4efac68e43d10d56d04ebb836407113
+	md5sums = 7035fa75a0283b34664a996e1e8b3baa
+	md5sums = b0ea8ca8fb8b0a5f74ed69d402f26775
+	md5sums = 58a1731de3de9d46c14d400ad2c6acdc
+	md5sums = 8ceb70b9311fde38e4fa598daf8c9f2b
+	md5sums = 0f5f9cfa11d102d9693d37b841c756aa
+
+pkgname = smw-git
+

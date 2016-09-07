@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Super Mario War
+Comment=Super Mario multiplayer game (level editor)
+Icon=smw-leveledit
+Exec=smw-leveledit %f
+Terminal=false
+Type=Application
+Categories=Game;
