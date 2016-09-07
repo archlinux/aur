@@ -1,0 +1,10 @@
+--- lizardfs-v.3.10.0/src/common/slice_read_planner.cc.orig	2016-09-07 10:05:08.436831333 +0100
++++ lizardfs-v.3.10.0/src/common/slice_read_planner.cc	2016-09-07 10:04:28.201447413 +0100
+@@ -16,6 +16,7 @@
+  along with LizardFS. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <cmath>
+ #include "common/platform.h"
+ 
+ #include "common/slice_read_planner.h"

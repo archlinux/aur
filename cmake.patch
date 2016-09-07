@@ -1,7 +1,0 @@
---- lizardfs-3.9.2/CheckIncludes.cmake.orig	2015-11-24 10:26:48.425365487 +0000
-+++ lizardfs-3.9.2/CheckIncludes.cmake	2015-11-24 10:27:03.269328267 +0000
-@@ -1,3 +1,4 @@
-+include(CheckIncludeFiles)
- function(check_includes INCLUDES)
-   set(INCLUDE_MISSING FALSE)
-   foreach(INCLUDE_FILE ${INCLUDES})
