@@ -2,7 +2,7 @@
 pkgname=intertext-editor
 _pkgname=InterText_editor
 _binname=InterText
-pkgver=1.3.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Editor for aligned parallel texts"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('imagemagick')
 install=
 source=("https://github.com/czcorpus/$_pkgname/archive/$pkgver.tar.gz"
         "$_binname.desktop")
-md5sums=('59326f9d2c1c05515b2735a5a5bf08f7'
+md5sums=('6a4749e65a5fa3a0abbf86797033b1d7'
          '41995ca7398f11b0ffc394e34a327cd6')
 
 _install_icon() {
