@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/patrick96/$pkgname"
 license=('GPL3')
 depends=('python' 'python-gobject' 'python-notify2' 'udevil')
-conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("3cd4421a03e997ae6a99e79851ccfcf8b76a7885821bb982cc59407ea828b138")
 

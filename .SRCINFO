@@ -9,7 +9,6 @@ pkgbase = notification-mount
 	depends = python-gobject
 	depends = python-notify2
 	depends = udevil
-	conflicts = notification-mount-git
 	source = notification-mount-1.0.1.tar.gz::https://github.com/patrick96/notification-mount/archive/v1.0.1.tar.gz
 	sha256sums = 3cd4421a03e997ae6a99e79851ccfcf8b76a7885821bb982cc59407ea828b138
 
