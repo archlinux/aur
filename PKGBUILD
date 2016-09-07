@@ -20,8 +20,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        #'input-i8042-break-load-dependency-between-atkbd-psmouse-and-i8042.patch'
-        #'input-i8042-set-up-shared-ps2_cmd_mutex-for-aux-ports.patch'
         )
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
