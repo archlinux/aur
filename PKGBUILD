@@ -25,4 +25,4 @@ package(){
 	find "${pkgdir}" -type d -exec chmod 0755 {} \;
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
-md5sums=('31f485febde4f88d22f80f7fff4c143f')
+md5sums=('eaa9d7fac088f00dffe3c9ecbe90f93d')
