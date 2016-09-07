@@ -2,14 +2,15 @@
 
 pkgname=snapcraft
 pkgver=2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Build Ubuntu snappy packages."
 arch=('any')
 url="http://snapcraft.io"
 license=('GPL')
 depends=('python-apt' 'python-requests-oauthlib' 'python-ssoclient' 'python-progressbar'
          'python-requests-toolbelt' 'python-petname' 'python-jsonschema' 'python-yaml'
-         'python-magic' 'python-docopt')
+         'python-magic' 'python-docopt' 'python-tabulate' 'python-pymacaroons-pynacl'
+         'python-simplejson')
 makedepends=('python-setuptools')
 optdepends=('lxd')
 options=(!emptydirs)
