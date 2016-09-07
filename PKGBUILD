@@ -5,11 +5,12 @@ _plugin_version=1.4.8
 
 pkgname=firefox-extension-tab-tree
 pkgver=${_plugin_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tab Tree shows your tabs in the form of a tree structure. And also makes the user interface compact (optionally) to allow more space for the Web."
 arch=('any')
 license=('GPL3')
 url="https://github.com/traxium/tabtree"
+makedepends=("unzip")
 depends=("firefox>=38")
 source=("https://addons.mozilla.org/firefox/downloads/file/420541/${_plugin_name}-${pkgver}-fx.xpi")
 sha256sums=('c5d3c1ebc40cc0d46fd3db1106cbdfdb45ebaf6118b0a6338c26cd26e99a35fb')
