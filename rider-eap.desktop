@@ -1,12 +1,11 @@
 [Desktop Entry]
-Name=Rider-EAP
+Name=Rider EAP
 Version=
 Type=Application
 Exec="/opt/rider-eap/bin/rider.sh" %f
 Icon=/opt/rider-eap/bin/Rider_128.png
-Comment="A cross-platform C# IDE by JetBrains."
+Comment=A cross-platform C# IDE by JetBrains.
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
 StartupWMClass=jetbrains-rider
-Name[en_US]=rider-eap.desktop
