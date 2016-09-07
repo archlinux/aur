@@ -4,7 +4,8 @@
 # This PKGBUILD is forked from atom-editor, which was eventually added
 # into the community repo under the name 'atom'.
 #
-# For any improvements/suggestions/fixes, make an issue/pull request under  
+# For any improvements/suggestions/fixes, make an issue/pull request 
+# via https://github.com/neonn/atom-notracking
 
 pkgname=atom-notracking
 pkgver=1.10.0
