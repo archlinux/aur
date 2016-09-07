@@ -1,0 +1,17 @@
+--- src/CMakeLists.txt	2016-09-07 10:54:28.551205779 +0200
++++ src/CMakeLists.txt	2016-09-07 10:54:41.631520079 +0200
+@@ -98,13 +98,7 @@
+     customlessoneditorwidget.cpp
+ )
+
+-if (X11_Xkbfile_FOUND)
+-    add_definitions(-DKTOUCH_BUILD_WITH_X11)
+-    include_directories(${X11_Xkbfile_INCLUDE_PATH})
+-    set(ktouch_SRCS ${ktouch_SRCS} x11_helper.cpp)
+-else (X11_Xkbfile_FOUND)
+-    set(ktouch_SRCS ${ktouch_SRCS} keyboardlayoutmenu.cpp)
+-endif (X11_Xkbfile_FOUND)
++set(ktouch_SRCS ${ktouch_SRCS} keyboardlayoutmenu.cpp)
+
+ kde4_add_kcfg_files(ktouch_SRCS preferences.kcfgc )
+

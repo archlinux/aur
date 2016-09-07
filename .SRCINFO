@@ -1,0 +1,28 @@
+pkgbase = kdeedu-ktouch-patched
+	pkgdesc = Touch Typing Tutor - Patched to fix bugs #350336, #346248 and #367891, #364011 (disable layout autodetect)
+	pkgver = 16.08.0
+	pkgrel = 1
+	url = http://kde.org/applications/education/ktouch/
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdeedu
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = mesa
+	depends = kdebase-runtime
+	depends = kqtquickcharts
+	depends = libxkbfile
+	conflicts = kdeedu-ktouch
+	source = http://download.kde.org/stable/applications/16.08.0/src/ktouch-16.08.0.tar.xz
+	source = fix-lag.patch::https://bugsfiles.kde.org/attachment.cgi?id=93186
+	source = nox11.patch
+	sha1sums = af8c32c33c9e3a5cf017d76497e94514a40d4f65
+	sha1sums = d066e0ee7d0dc95c63afe9469bf6a0a975bf18d2
+	sha1sums = ace197b951d64afa71c3bd8d815e5d1f970a44bc
+
+pkgname = kdeedu-ktouch-patched
+
