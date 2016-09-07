@@ -3,11 +3,11 @@
 # You must register at unrealengine.com and link your github account to access this private repo.
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
-# The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12)
+# The source is over 3 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
 pkgver=4.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -50,6 +50,9 @@ build() {
   #make ARGS=-clean
 
   make
+
+  # delete windows-only files
+  find -iregex '.*\.\(exe\|dll\|bat\|vcproj|sln\)$' -delete
 }
 
 package() {
