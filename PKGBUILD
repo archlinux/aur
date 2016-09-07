@@ -5,7 +5,7 @@
 
 pkgname=pybitmessage
 _realname=PyBitmessage
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
