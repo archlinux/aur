@@ -4,7 +4,7 @@
 _pkgbase=razer-driver
 pkgname=razer-driver-dkms
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An entirely open source driver for managing Razer peripherals on Linux. (DKMS)"
 arch=('x86_64')
 url="https://github.com/terrycain/razer_drivers"
@@ -13,7 +13,7 @@ depends=('dkms' 'udev')
 makedepends=('git' 'make')
 conflicts=("${_pkgbase}")
 install=${pkgname}.install
-source=("${_pkgbase}::git+git://github.com/terrycain/razer_drivers.git#tag=v$pkgver")
+source=("${_pkgbase}::git+git://github.com/terrycain/razer_drivers.git#tag=v${pkgver}-2")
 md5sums=('SKIP')
 
 package() {
