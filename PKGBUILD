@@ -53,6 +53,7 @@ build() {
 
   # delete windows-only files
   find -iregex '.*\.\(exe\|dll\|bat\|vcproj|sln\)$' -delete
+  rm -r Engine/Source/ThirdParty/Vulkan/Windows/
 }
 
 package() {
