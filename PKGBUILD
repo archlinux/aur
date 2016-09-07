@@ -2,6 +2,7 @@
 # Maintainer: Oskari Rauta <oskari.rauta dot gmail.com>
 
 pkgbase=network-manager-applet-passwordstore
+_pkgbase="network-manager-applet"
 pkgname=(nm-connection-editor-passwordstore network-manager-applet-passwordstore)
 pkgdesc="Applet for managing network connections with default setting to save authentication passwords in keyfile and make all new connections available for all users"
 conflicts=('nm-connection-editor' 'network-manager-applet')
@@ -14,7 +15,7 @@ license=(GPL2 LGPL2.1)
 depends=(libnm-glib libgudev gtk3 mobile-broadband-provider-info iso-codes)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection)
 options=(!emptydirs)
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgbase/${pkgver:0:3}/$pkgbase-$pkgver.tar.xz
+source=(http://ftp.gnome.org/pub/GNOME/sources/$_pkgbase/${pkgver:0:3}/$_pkgbase-$pkgver.tar.xz
 	enable-local-password-storage.patch
 	enable-new-connections-for-everyone-as-default.patch)
 sha256sums=('d9f5f1e151b8edbbcebb6f818eed9a49b53aadcb4e8aed2cae4fc09996278331'
@@ -24,13 +25,13 @@ sha256sums=('d9f5f1e151b8edbbcebb6f818eed9a49b53aadcb4e8aed2cae4fc09996278331'
 prepare() {
   mkdir -p nma/etc/xdg nma/usr/bin \
     nma/usr/share/{applications,icons/hicolor/22x22/apps,man/man1,nm-applet}
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   patch -p1 -i ../enable-new-connections-for-everyone-as-default.patch
   patch -p1 -i ../enable-local-password-storage.patch
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var \
       --libexecdir=/usr/lib/networkmanager \
@@ -46,7 +47,7 @@ build() {
 }
 
 check() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   make -k check
 }
 
@@ -56,7 +57,7 @@ package_nm-connection-editor-passwordstore() {
   conflicts=('libnm-gtk' 'nm-connection-editor')
   replaces=('libnm-gtk')
 
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
 ### Split network-manager-applet
