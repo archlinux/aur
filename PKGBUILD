@@ -16,9 +16,9 @@ url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Bitmessage/$_realname/archive/v$pkgver.tar.gz
         pybitmessage.sh)
-md5sums=('5efe6237c6dea02d5ab48ea1bcc962b2'
+md5sums=('3b353e344cb70649c764b553ef04f9c4'
          '0dfcad65e76e7403ae17ceeb6764d2b8')
-sha256sums=('3bee5ca3fe42a95a0bf1f9f7285904e18ae56b0189048968a5257676f25adc08'
+sha256sums=('ceb6585c816bbcafc63cf3ea55b709ddf1dc1d48012509ef3c47dcdb553ed2b9'
             'dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b')
 provides=('pybitmessage')
 conflicts=('pybitmessage-git')
