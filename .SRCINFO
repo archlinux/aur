@@ -1,0 +1,28 @@
+pkgbase = jupyter_contrib_nbextensions
+	pkgdesc = A collection of Jupyter nbextensions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ipython-contrib/jupyter_contrib_nbextensions
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	depends = jupyter
+	depends = jupyter-notebook
+	depends = jupyter-nbconvert
+	depends = jupyter_contrib_core
+	depends = jupyter_nbextensions_configurator
+	depends = python-yaml
+	depends = python-psutil
+	conflicts = jupyter-nbextensions
+	conflicts = python-jupyter-nbextensions
+	replaces = jupyter-nbextensions-git
+	replaces = jupyter-nbextensions
+	noextract = jupyter_contrib_nbextensions-0.1.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_nbextensions/jupyter_contrib_nbextensions-0.1.0-py2.py3-none-any.whl
+	source = user-default.patch::https://github.com/ipython-contrib/jupyter_contrib_nbextensions/commit/416df7776dbe3426ee83229c2a71f2783a73093f.patch
+	md5sums = f63f7add76a34ced5cf0b0dbb30f171a
+	md5sums = f81458a7304ba821831b65ee41395efd
+
+pkgname = jupyter_contrib_nbextensions
+
