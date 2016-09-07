@@ -1,0 +1,19 @@
+pkgbase = notification-mount-git
+	pkgdesc = Script to show notification for a block device with mount option
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/patrick96/notification-mount
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-notify2
+	depends = udevil
+	provides = notification-mount
+	conflicts = notification-mount
+	source = notification-mount::git+https://github.com/patrick96/notification-mount.git
+	md5sums = SKIP
+
+pkgname = notification-mount-git
+
