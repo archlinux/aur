@@ -1,16 +1,9 @@
+#/bin/sh
+
+# arg 1:  the new package version
 post_install() {
-  post_upgrade
-  passwd -l telegraf &>/dev/null
+  systemd-sysusers telegraf.conf
 }
 
-post_upgrade() {
-  # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
-  getent group telegraf >/dev/null || groupadd telegraf
-  getent passwd telegraf >/dev/null || useradd -c 'telegraf' -g telegraf -d '/var/lib/telegraf' -m -s /bin/false telegraf
+# vim:set ts=2 sw=2 et:
 
-  mkdir -p /var/lib/telegraf
-  mkdir -p /var/log/telegraf
-  mkdir -p /etc/telegraf/telegraf.d
-  chown telegraf.telegraf /var/lib/telegraf
-  chown telegraf.telegraf /var/log/telegraf
-}

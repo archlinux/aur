@@ -3,63 +3,54 @@
 pkgname='telegraf'
 pkgver='0.13.2'
 pkgrel='1'
-epoch=
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64')
 url='http://influxdb.org/'
 license=('MIT')
-groups=()
-depends=()
-makedepends=('go' 'godep' 'git')
-checkdepends=()
-optdepends=()
+depends=('go')
+makedepends=('go' 'git')
 provides=('telegraf')
-conflicts=()
-replaces=()
 backup=('etc/telegraf/telegraf.conf')
-options=()
-install="$pkgname.install"
-source=("$pkgname.install")
-changelog=
-noextract=()
-md5sums=('SKIP')
+install="telegraf.install"
+source=("git+https://github.com/influxdata/telegraf#tag=$pkgver"
+        'telegraf.install'
+        'telegraf.sysusers'
+				'telegraf.service')
+md5sums=('SKIP'
+         '9b2c2ba850bdb13e08bdfbfbc05a3a06'
+         '58cc9edf8fbf07e7d3a0357db78121b1'
+         'cd4d39cec1edf54ab2aa4b7599c81ecc')
 
-prepare()
-{
-  export GOPATH="$srcdir"
-  export GOBIN="$GOPATH/bin"
-  export TELEGRAFPATCH="$GOPATH/src/github.com/influxdata/telegraf"
-  if [ -d $GOBIN ]; then
-    rm -rf $GOBIN;
-  fi;
-
-  go get -v github.com/influxdata/telegraf
-  cd $TELEGRAFPATCH
-  git checkout $pkgver
-  go get -v github.com/sparrc/gdm
-  $GOBIN/gdm restore
-}
 build()
 {
-  echo "Building $pkgname version=${pkgver} ..."
-  cd $TELEGRAFPATCH
-  go build -o telegraf -ldflags="-X main.Version=$pkgver" cmd/telegraf/telegraf.go
+  export GOPATH="$srcdir"
+  export PATH="$PATH:$GOPATH/bin"
+  mkdir -p "$GOPATH/src/github.com/influxdata"
+  mv -f "$srcdir/telegraf" "$GOPATH/src/github.com/influxdata/"
+
+  cd "$GOPATH/src/github.com/influxdata/telegraf"
+
+  echo "Downloading dependencies"
+  go get github.com/sparrc/gdm
+  gdm restore
+
+  revision=`git rev-parse HEAD`
+  version=`git describe --tags`
+  echo "Building telegraf version=$version commit=$revision branch=master"
+	go install -ldflags="-X main.Version=$version -X main.commit=$revision -X main.branch=master" ./...
 }
 package()
 {
-  # systemctl service file
-  install -D -m644  "$TELEGRAFPATCH/scripts/telegraf.service" "$pkgdir/usr/lib/systemd/system/telegraf.service"
-  sed -i 's;/etc/opt/telegraf;/etc/telegraf;g' "$pkgdir/usr/lib/systemd/system/telegraf.service"
-  sed -i 's;/opt/telegraf;/usr/bin;g' "$pkgdir/usr/lib/systemd/system/telegraf.service"
+ 	cd $srcdir
+  install -Dm644 telegraf.sysusers "$pkgdir/usr/lib/sysusers.d/telegraf.conf"
+  install -Dm644 telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
 
-  # binaries
-  install -D -m755 "$TELEGRAFPATCH/telegraf" "$pkgdir/usr/bin/telegraf"
+  cd $GOPATH
+  install -Dsm755 bin/telegraf "$pkgdir/usr/bin/telegraf"
 
-  # configuration file
-  mkdir -p "$pkgdir/etc/telegraf"
-  mkdir -p "$pkgdir/etc/telegraf.d"
-  $TELEGRAFPATCH/telegraf -sample-config > "$pkgdir/etc/telegraf/telegraf.conf"
-
-  # license
-  install -Dm644 "$TELEGRAFPATCH/LICENSE" "$pkgdir/usr/share/licenses/telegraf/LICENSE"
+  cd "$GOPATH/src/github.com/influxdata/telegraf"
+  #install -Dm644 scripts/telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
+  install -Dm644 "etc/telegraf.conf" "$pkgdir/etc/telegraf/telegraf.conf"
+  mkdir "$pkgdir/etc/telegraf/telegraf.d"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/telegraf/LICENSE"
 }
