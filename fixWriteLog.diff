@@ -1,0 +1,15 @@
+diff --git a/src/files.h b/src/files.h
+index 8b8b6c0..79e387b 100644
+--- a/src/files.h
++++ b/src/files.h
+@@ -56,8 +56,8 @@ void SavePNG16(const char *filename, int quality, int width, int height, sRGB16*
+ void SavePNG16Alpha(const char *filename, int quality, int width, int height, cImage *image);
+ void SaveFromTilesPNG16(const char *filename, int width, int height, int tiles);
+ bool FileIfExists(const char *filename);
+-void WriteLog(const char *text);
+-void WriteLogDouble(const char *text, double value);
++#define WriteLog(text) if(0)
++#define WriteLogDouble(text,value) if(0)
+ int fcopy(const char *source, const char *dest);
+ void BufferNormalize16(sRGB16 *buffer, unsigned int size);
+ //void SaveAllImageLayers(const char *filename, cImage *image);
