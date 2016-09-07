@@ -22,11 +22,11 @@ pkgver() {
 build() {
   cd jbofihe
 
-  msg "Running config.pl..."
+  msg2 "Running config.pl..."
 
   perl config.pl --prefix=/usr
 
-  msg "Running make..."
+  msg2 "Running make..."
 
   # There is a Perl script that expects the locale to be an English one.
   LC_ALL=C make all
