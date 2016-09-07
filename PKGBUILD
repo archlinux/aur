@@ -3,14 +3,14 @@
 
 _pkgname=xfce4-whiskermenu-plugin
 pkgname=xfce4-whiskermenu-plugin-git
-pkgver=1.5.0.12.gaf5e8
+pkgver=2.0.0.6.g9613ee0
 pkgrel=1
 pkgdesc="Alternate Xfce menu"
 arch=("i686" "x86_64")
 url="http://gottcode.org/${_pkgname}/"
 license=("GPL2")
 depends=("xfce4-panel")
-makedepends=("cmake" "git")
+makedepends=("cmake" "exo>=0.11" "" "git")
 groups=("xfce4-goodies" "xfce4-goodies-git")
 provides=("xfce4-whiskermenu-plugin")
 conflicts=("xfce4-whiskermenu-plugin")
