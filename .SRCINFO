@@ -1,0 +1,17 @@
+pkgbase = jordyn-system-info-git
+	pkgdesc = Jordyn-system-info is a system infomation tool written in python 2, And is also a fork of archey.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/jcjordyn130/jordyn-system-info
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = lsb-release
+	optdepends = scrot: for taking screenshots of the output
+	provides = jordyn-system-info
+	source = git://github.com/jcjordyn130/jordyn-system-info.git
+	sha512sums = SKIP
+
+pkgname = jordyn-system-info-git
+
