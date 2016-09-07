@@ -1,8 +1,8 @@
 pkgbase = yubikey-manager-git
 	pkgdesc = Command line and GUI tool for configuring YubiKeys, over all transports.
 	pkgver = 0.1.0.r50.19abdf1
-	pkgrel = 1
-	url = https://developers.yubico.com/yubikey-manager/
+	pkgrel = 2
+	url = https://github.com/Yubico/yubikey-manager
 	arch = any
 	license = custom
 	depends = python
