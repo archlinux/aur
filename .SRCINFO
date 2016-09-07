@@ -1,0 +1,48 @@
+pkgbase = network-manager-applet-passwordstore
+	pkgdesc = Applet for managing network connections with default setting to save authentication passwords in keyfile and make all new connections available for all users
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = libsecret
+	makedepends = libnotify
+	makedepends = libmm-glib
+	makedepends = intltool
+	makedepends = gobject-introspection
+	depends = libnm-glib
+	depends = libgudev
+	depends = gtk3
+	depends = mobile-broadband-provider-info
+	depends = iso-codes
+	provides = nm-connection-editor=-
+	provides = network-manager-applet=-
+	conflicts = nm-connection-editor
+	conflicts = network-manager-applet
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/GNOME/sources/network-manager-applet-passwordstore/1.4/network-manager-applet-passwordstore-1.4.0.tar.xz
+	source = enable-local-password-storage.patch
+	source = enable-new-connections-for-everyone-as-default.patch
+	sha256sums = d9f5f1e151b8edbbcebb6f818eed9a49b53aadcb4e8aed2cae4fc09996278331
+	sha256sums = ae7232742e24d87c664479dac655c93a76db8dbbe52359144de21f573ed784c8
+	sha256sums = b4c585b9beaac036e2b441d8952a99dd9f2532eeb3ba50081ca69761ffb40439
+
+pkgname = nm-connection-editor-passwordstore
+	pkgdesc = NetworkManager GUI connection editor with default settings to save authentication passwords in keyfile and make all new connections available for all users
+	provides = libnm-gtk=1.4.0-1
+	provides = nm-connection-editor=1.4.0-1
+	conflicts = libnm-gtk
+	conflicts = nm-connection-editor
+	replaces = libnm-gtk
+
+pkgname = network-manager-applet-passwordstore
+	pkgdesc = Applet for managing network connections with default setting to save authentication passwords in keyfile and make all new connections available for all users
+	depends = nm-connection-editor-passwordstore
+	depends = libmm-glib
+	depends = libnotify
+	depends = libsecret
+	provides = network-manager-applet=1.4.0-1
+	conflicts = network-manager-applet
+

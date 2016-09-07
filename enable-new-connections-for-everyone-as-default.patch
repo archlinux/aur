@@ -1,0 +1,24 @@
+--- network-manager-applet-1.4.0/src/applet-device-wifi.c.orig	2016-09-06 23:47:42.579351733 +0300
++++ network-manager-applet-1.4.0/src/applet-device-wifi.c	2016-09-06 23:48:23.779352302 +0300
+@@ -539,7 +539,7 @@
+ 
+ 	/* Make the new connection available only for the current user */
+ 	s_con = (NMSettingConnection *) nm_setting_connection_new ();
+-	nm_setting_connection_add_permission (s_con, "user", g_get_user_name (), NULL);
++	// nm_setting_connection_add_permission (s_con, "user", g_get_user_name (), NULL);
+ 	nm_connection_add_setting (connection, NM_SETTING (s_con));
+ 
+ 	ssid = nm_access_point_get_ssid (ap);
+--- network-manager-applet-1.4.0/src/mobile-helpers.c.orig	2016-09-06 23:51:40.702688353 +0300
++++ network-manager-applet-1.4.0/src/mobile-helpers.c	2016-09-06 23:52:05.179355356 +0300
+@@ -219,8 +219,8 @@
+ 		              NM_SETTING_CONNECTION_UUID, uuid,
+ 		              NULL);
+ 		/* Make the new connection available only for the current user */
+-		nm_setting_connection_add_permission ((NMSettingConnection *) setting,
+-		                                      "user", g_get_user_name (), NULL);
++		//nm_setting_connection_add_permission ((NMSettingConnection *) setting,
++		//                                      "user", g_get_user_name (), NULL);
+ 		g_free (uuid);
+ 		g_free (id);
+ 		nm_connection_add_setting (connection, setting);
