@@ -8,6 +8,7 @@ pkgbase = gnome-shell-extension-redshift-git
 	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = pkg-config
 	makedepends = gnome-common
 	makedepends = intltool
 	source = git+https://github.com/tommie-lie/gnome-shell-extension-redshift

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/tommie-lie/gnome-shell-extension-redshift"
 license=('GPL3')
 depends=()
-makedepends=('git' 'autoconf' 'automake' 'gnome-common' 'intltool')
+makedepends=('git' 'autoconf' 'automake' 'pkg-config' 'gnome-common' 'intltool')
 source=("git+https://github.com/tommie-lie/gnome-shell-extension-redshift")
 md5sums=('SKIP')
 
