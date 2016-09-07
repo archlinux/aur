@@ -1,7 +1,7 @@
 # Maintainer: prash <prash.n.rao@gmail.com>
 
 pkgname=acpica
-pkgver=20160729
+pkgver=20160831
 pkgrel=1
 pkgdesc="An implementation of the ACPI specification. Contains tools like acpidump, iasl, acpixtract, etc."
 url="https://www.acpica.org/"
@@ -15,7 +15,7 @@ conflicts=('iasl')
 source=("https://acpica.org/sites/acpica/files/${pkgname}-unix-${pkgver}.tar.gz")
 
 
-md5sums=('952322ac9a9de75e16f2f6d0f3dd6a3a')
+md5sums=('09d7d59b92ad41e1a5e4f6adb043513c')
 
 build() {
   cd "${srcdir}/${pkgname}-unix-${pkgver}"
