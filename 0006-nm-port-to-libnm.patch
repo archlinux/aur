@@ -1,0 +1,317 @@
+From 0195709af106f66bd74a6f379580ffbc8076d514 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 21 Oct 2015 11:23:57 +0200
+Subject: [PATCH 06/10] nm: port to libnm
+
+---
+ auth-dialog/Makefile.am       |  4 +--
+ auth-dialog/main.c            |  9 +++---
+ configure.ac                  |  2 +-
+ nm-strongswan-service.name.in |  3 ++
+ properties/Makefile.am        |  4 +--
+ properties/nm-strongswan.c    | 73 +++++++++++++++++++++++++------------------
+ 6 files changed, 54 insertions(+), 41 deletions(-)
+
+diff --git a/auth-dialog/Makefile.am b/auth-dialog/Makefile.am
+index 34f9d6b..1ebef22 100644
+--- a/auth-dialog/Makefile.am
++++ b/auth-dialog/Makefile.am
+@@ -4,7 +4,7 @@ nm_strongswan_auth_dialog_CPPFLAGS = \
+ 	$(GTK_CFLAGS) \
+ 	$(LIBGNOMEUI_CFLAGS) \
+ 	$(GNOMEKEYRING_CFLAGS) \
+-	$(LIBNM_GLIB_CFLAGS) \
++	$(LIBNM_CFLAGS) \
+ 	-DG_DISABLE_DEPRECATED \
+ 	-DGNOME_DISABLE_DEPRECATED \
+ 	-DGNOMELOCALEDIR=\"$(datadir)/locale\" \
+@@ -17,5 +17,5 @@ nm_strongswan_auth_dialog_LDADD = \
+ 	$(GTK_LIBS) \
+ 	$(LIBGNOMEUI_LIBS) \
+ 	$(GNOMEKEYRING_LIBS) \
+-	$(LIBNM_GLIB_LIBS)
++	$(LIBNM_LIBS)
+ 
+diff --git a/auth-dialog/main.c b/auth-dialog/main.c
+index b9fd886..f579fc5 100644
+--- a/auth-dialog/main.c
++++ b/auth-dialog/main.c
+@@ -24,10 +24,9 @@
+ #include <gtk/gtk.h>
+ #include <gnome-keyring.h>
+ #include <libgnomeui/libgnomeui.h>
+-#include <nm-vpn-plugin.h>
+-#include <nm-setting-vpn.h>
+-#include <nm-setting-connection.h>
+-#include <nm-vpn-plugin-utils.h>
++
++#include <NetworkManager.h>
++#include <nm-vpn-service-plugin.h>
+ 
+ #define NM_DBUS_SERVICE_STRONGSWAN	"org.freedesktop.NetworkManager.strongswan"
+ 
+@@ -95,7 +94,7 @@ static char* get_connection_type(char *uuid)
+ 	GHashTable *data = NULL, *secrets = NULL;
+ 	char *method;
+ 
+-	if (!nm_vpn_plugin_utils_read_vpn_details (0, &data, &secrets)) {
++	if (!nm_vpn_service_plugin_read_vpn_details (0, &data, &secrets)) {
+ 		fprintf (stderr, "Failed to read data and secrets from stdin.\n");
+ 		return NULL;
+ 	}
+diff --git a/configure.ac b/configure.ac
+index 70fb42e..4a16c5b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,7 @@ AM_GLIB_GNU_GETTEXT
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.6)
+ PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0)
+ PKG_CHECK_MODULES(GNOMEKEYRING, gnome-keyring-1)
+-PKG_CHECK_MODULES(LIBNM_GLIB, NetworkManager >= 0.9.0 libnm-util libnm-glib libnm-glib-vpn)
++PKG_CHECK_MODULES(LIBNM_GLIB, NetworkManager >= 1.1.0 libnm-util libnm-glib libnm-glib-vpn)
+ 
+ PKG_CHECK_MODULES(LIBNM, libnm >= 1.1.0)
+ LIBNM_CFLAGS="$LIBNM_CFLAGS -DNM_VERSION_MIN_REQUIRED=NM_VERSION_1_2"
+diff --git a/nm-strongswan-service.name.in b/nm-strongswan-service.name.in
+index ca45ff2..a2f71a9 100644
+--- a/nm-strongswan-service.name.in
++++ b/nm-strongswan-service.name.in
+@@ -3,6 +3,9 @@ name=strongswan
+ service=org.freedesktop.NetworkManager.strongswan
+ program=@CHARON@
+ 
++[libnm]
++plugin=@PLUGINDIR@/libnm-vpn-plugin-strongswan.so
++
+ [GNOME]
+ auth-dialog=@LIBEXECDIR@/nm-strongswan-auth-dialog
+ properties=@PLUGINDIR@/libnm-strongswan-properties
+diff --git a/properties/Makefile.am b/properties/Makefile.am
+index 2a113c7..116e722 100644
+--- a/properties/Makefile.am
++++ b/properties/Makefile.am
+@@ -19,7 +19,7 @@ common_CFLAGS = \
+ 	-DGDK_DISABLE_DEPRECATED
+ 
+ libnm_vpn_plugin_strongswan_la_CFLAGS = \
+-	$(LIBNM_GLIB_CFLAGS) \
++	$(LIBNM_CFLAGS) \
+ 	$(common_CFLAGS)
+ 
+ libnm_strongswan_properties_la_CFLAGS = \
+@@ -29,7 +29,7 @@ libnm_strongswan_properties_la_CFLAGS = \
+ 
+ libnm_vpn_plugin_strongswan_la_LIBADD = \
+ 	$(GTK_LIBS) \
+-	$(LIBNM_GLIB_LIBS)
++	$(LIBNM_LIBS)
+ 
+ libnm_strongswan_properties_la_LIBADD = \
+ 	$(GTK_LIBS) \
+diff --git a/properties/nm-strongswan.c b/properties/nm-strongswan.c
+index 4cf6864..6c59fa7 100644
+--- a/properties/nm-strongswan.c
++++ b/properties/nm-strongswan.c
+@@ -1,4 +1,5 @@
+ /*
++ * Copyright (C) 2015 Lubomir Rintel
+  * Copyright (C) 2013 Tobias Brunner
+  * Copyright (C) 2008 Martin Willi
+  * Hochschule fuer Technik Rapperswil
+@@ -26,11 +27,14 @@
+ #include <glib/gi18n-lib.h>
+ #include <gtk/gtk.h>
+ 
+-#define NM_VPN_API_SUBJECT_TO_CHANGE
+-
++#ifdef NM_STRONGSWAN_OLD
++#define NM_VPN_LIBNM_COMPAT
+ #include <nm-vpn-plugin-ui-interface.h>
+ #include <nm-setting-vpn.h>
+ #include <nm-setting-connection.h>
++#else
++#include <NetworkManager.h>
++#endif
+ 
+ #include "nm-strongswan.h"
+ 
+@@ -41,18 +45,25 @@
+ 
+ /************** plugin class **************/
+ 
+-static void strongswan_plugin_ui_interface_init (NMVpnPluginUiInterface *iface_class);
++enum {
++	PROP_0,
++	PROP_NAME,
++	PROP_DESC,
++	PROP_SERVICE
++};
++
++static void strongswan_plugin_ui_interface_init (NMVpnEditorPluginInterface *iface_class);
+ 
+ G_DEFINE_TYPE_EXTENDED (StrongswanPluginUi, strongswan_plugin_ui, G_TYPE_OBJECT, 0,
+-						G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_PLUGIN_UI_INTERFACE,
++						G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR_PLUGIN,
+ 											   strongswan_plugin_ui_interface_init))
+ 
+ /************** UI widget class **************/
+ 
+-static void strongswan_plugin_ui_widget_interface_init (NMVpnPluginUiWidgetInterface *iface_class);
++static void strongswan_plugin_ui_widget_interface_init (NMVpnEditorInterface *iface_class);
+ 
+ G_DEFINE_TYPE_EXTENDED (StrongswanPluginUiWidget, strongswan_plugin_ui_widget, G_TYPE_OBJECT, 0,
+-						G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_PLUGIN_UI_WIDGET_INTERFACE,
++						G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR,
+ 											   strongswan_plugin_ui_widget_interface_init))
+ 
+ #define STRONGSWAN_PLUGIN_UI_WIDGET_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), STRONGSWAN_TYPE_PLUGIN_UI_WIDGET, StrongswanPluginUiWidgetPrivate))
+@@ -178,7 +189,7 @@ static gboolean
+ init_plugin_ui (StrongswanPluginUiWidget *self, NMConnection *connection, GError **error)
+ {
+ 	StrongswanPluginUiWidgetPrivate *priv = STRONGSWAN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+-	NMSettingVPN *settings;
++	NMSettingVpn *settings;
+ 	GtkWidget *widget;
+ 	const char *value;
+ 
+@@ -281,7 +292,7 @@ init_plugin_ui (StrongswanPluginUiWidget *self, NMConnection *connection, GError
+ }
+ 
+ static GObject *
+-get_widget (NMVpnPluginUiWidgetInterface *iface)
++get_widget (NMVpnEditor *iface)
+ {
+ 	StrongswanPluginUiWidget *self = STRONGSWAN_PLUGIN_UI_WIDGET (iface);
+ 	StrongswanPluginUiWidgetPrivate *priv = STRONGSWAN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+@@ -290,13 +301,13 @@ get_widget (NMVpnPluginUiWidgetInterface *iface)
+ }
+ 
+ static gboolean
+-update_connection (NMVpnPluginUiWidgetInterface *iface,
++update_connection (NMVpnEditor *iface,
+ 				   NMConnection *connection,
+ 				   GError **error)
+ {
+ 	StrongswanPluginUiWidget *self = STRONGSWAN_PLUGIN_UI_WIDGET (iface);
+ 	StrongswanPluginUiWidgetPrivate *priv = STRONGSWAN_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+-	NMSettingVPN *settings;
++	NMSettingVpn *settings;
+ 	GtkWidget *widget;
+ 	gboolean active;
+ 	char *str;
+@@ -386,17 +397,17 @@ update_connection (NMVpnPluginUiWidgetInterface *iface,
+ 	return TRUE;
+ }
+ 
+-static NMVpnPluginUiWidgetInterface *
++static NMVpnEditor *
+ nm_vpn_plugin_ui_widget_interface_new (NMConnection *connection, GError **error)
+ {
+-	NMVpnPluginUiWidgetInterface *object;
++	NMVpnEditor *object;
+ 	StrongswanPluginUiWidgetPrivate *priv;
+ 	char *ui_file;
+ 
+ 	if (error)
+ 		g_return_val_if_fail (*error == NULL, NULL);
+ 
+-	object = NM_VPN_PLUGIN_UI_WIDGET_INTERFACE (g_object_new (STRONGSWAN_TYPE_PLUGIN_UI_WIDGET, NULL));
++	object = g_object_new (STRONGSWAN_TYPE_PLUGIN_UI_WIDGET, NULL);
+ 	if (!object) {
+ 		g_set_error (error, STRONGSWAN_PLUGIN_UI_ERROR, 0, "could not create strongswan object");
+ 		return NULL;
+@@ -467,7 +478,7 @@ strongswan_plugin_ui_widget_init (StrongswanPluginUiWidget *plugin)
+ }
+ 
+ static void
+-strongswan_plugin_ui_widget_interface_init (NMVpnPluginUiWidgetInterface *iface_class)
++strongswan_plugin_ui_widget_interface_init (NMVpnEditorInterface *iface_class)
+ {
+ 	/* interface implementation */
+ 	iface_class->get_widget = get_widget;
+@@ -475,13 +486,13 @@ strongswan_plugin_ui_widget_interface_init (NMVpnPluginUiWidgetInterface *iface_
+ }
+ 
+ static guint32
+-get_capabilities (NMVpnPluginUiInterface *iface)
++get_capabilities (NMVpnEditorPlugin *iface)
+ {
+ 	return 0;
+ }
+ 
+-static NMVpnPluginUiWidgetInterface *
+-ui_factory (NMVpnPluginUiInterface *iface, NMConnection *connection, GError **error)
++static NMVpnEditor *
++get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
+ {
+ 	return nm_vpn_plugin_ui_widget_interface_new (connection, error);
+ }
+@@ -491,13 +502,13 @@ get_property (GObject *object, guint prop_id,
+ 			  GValue *value, GParamSpec *pspec)
+ {
+ 	switch (prop_id) {
+-	case NM_VPN_PLUGIN_UI_INTERFACE_PROP_NAME:
++	case PROP_NAME:
+ 		g_value_set_string (value, STRONGSWAN_PLUGIN_NAME);
+ 		break;
+-	case NM_VPN_PLUGIN_UI_INTERFACE_PROP_DESC:
++	case PROP_DESC:
+ 		g_value_set_string (value, STRONGSWAN_PLUGIN_DESC);
+ 		break;
+-	case NM_VPN_PLUGIN_UI_INTERFACE_PROP_SERVICE:
++	case PROP_SERVICE:
+ 		g_value_set_string (value, STRONGSWAN_PLUGIN_SERVICE);
+ 		break;
+ 	default:
+@@ -514,16 +525,16 @@ strongswan_plugin_ui_class_init (StrongswanPluginUiClass *req_class)
+ 	object_class->get_property = get_property;
+ 
+ 	g_object_class_override_property (object_class,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_PROP_NAME,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_NAME);
++									  PROP_NAME,
++									  NM_VPN_EDITOR_PLUGIN_NAME);
+ 
+ 	g_object_class_override_property (object_class,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_PROP_DESC,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_DESC);
++									  PROP_DESC,
++									  NM_VPN_EDITOR_PLUGIN_DESCRIPTION);
+ 
+ 	g_object_class_override_property (object_class,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_PROP_SERVICE,
+-									  NM_VPN_PLUGIN_UI_INTERFACE_SERVICE);
++									  PROP_SERVICE,
++									  NM_VPN_EDITOR_PLUGIN_SERVICE);
+ }
+ 
+ static void
+@@ -532,20 +543,20 @@ strongswan_plugin_ui_init (StrongswanPluginUi *plugin)
+ }
+ 
+ static void
+-strongswan_plugin_ui_interface_init (NMVpnPluginUiInterface *iface_class)
++strongswan_plugin_ui_interface_init (NMVpnEditorPluginInterface *iface_class)
+ {
+ 	/* interface implementation */
+-	iface_class->ui_factory = ui_factory;
++	iface_class->get_editor = get_editor;
+ 	iface_class->get_capabilities = get_capabilities;
+ 	/* TODO: implement delete_connection to purge associated secrets */
+ }
+ 
+ 
+-G_MODULE_EXPORT NMVpnPluginUiInterface *
+-nm_vpn_plugin_ui_factory (GError **error)
++G_MODULE_EXPORT NMVpnEditorPlugin *
++nm_vpn_editor_plugin_factory (GError **error)
+ {
+ 	if (error)
+ 		g_return_val_if_fail (*error == NULL, NULL);
+ 
+-	return NM_VPN_PLUGIN_UI_INTERFACE (g_object_new (STRONGSWAN_TYPE_PLUGIN_UI, NULL));
++	return g_object_new (STRONGSWAN_TYPE_PLUGIN_UI, NULL);
+ }
+-- 
+2.4.3
+

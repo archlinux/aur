@@ -1,0 +1,85 @@
+From adfd0573a1d63272277e688dbd42f93fc56596ff Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 21 Oct 2015 10:36:54 +0200
+Subject: [PATCH 04/10] nm: split the plugin into two halves
+
+They're both the same now. We'll port the new one to libnm in follow-up commits.
+
+NetworkManager 1.2 (which is currently versioned as 1.1.0) is going to bring
+some new ABI while still supporting the old one. There's new VPN service and UI
+plugin APIs in libnm.
+
+There's one difficulty though -- the connection editor 1.2 will be linked
+against libnm and a new libnma library it will provide (as opposed to
+libnm-glib and libnm-gtk), thus will be incapable of loading of property
+plugins that are linked with the old libraries (due to glib type system
+limitations).
+
+However, we must not break support for other connection editors (GNOME control
+center, older versions of nm-connection-editor, etc.) therefore we need
+to build two versions of the property plugin. NetworkManager 1.2's libnm will
+provide a shim that makes it easy.
+---
+ properties/Makefile.am | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/properties/Makefile.am b/properties/Makefile.am
+index 1b7fbb9..8233ccb 100644
+--- a/properties/Makefile.am
++++ b/properties/Makefile.am
+@@ -1,26 +1,44 @@
+ plugindir = $(libdir)/NetworkManager
+-plugin_LTLIBRARIES = libnm-strongswan-properties.la
++plugin_LTLIBRARIES = libnm-vpn-plugin-strongswan.la
++plugin_LTLIBRARIES += libnm-strongswan-properties.la
+ 
+-libnm_strongswan_properties_la_SOURCES = \
++libnm_vpn_plugin_strongswan_la_SOURCES = \
+ 	nm-strongswan.c \
+ 	nm-strongswan.h
+ 
++libnm_strongswan_properties_la_SOURCES = \
++	$(libnm_vpn_plugin_strongswan_la_SOURCES)
++
+ uidir = $(datadir)/gnome-vpn-properties/strongswan
+ ui_DATA = nm-strongswan-dialog.ui
+ 
+-libnm_strongswan_properties_la_CFLAGS = \
++common_CFLAGS = \
+ 	$(GTK_CFLAGS) \
+-	$(NM_UTILS_CFLAGS) \
+ 	-DUIDIR=\""$(uidir)"\" \
+ 	-DG_DISABLE_DEPRECATED \
+-	-DGDK_DISABLE_DEPRECATED \
+-	-DVERSION=\"$(VERSION)\"
++	-DGDK_DISABLE_DEPRECATED
++
++libnm_vpn_plugin_strongswan_la_CFLAGS = \
++	$(NM_UTILS_CFLAGS) \
++	$(common_CFLAGS)
+ 
+-libnm_strongswan_properties_la_LIBADD =      \
++libnm_strongswan_properties_la_CFLAGS = \
++	-DNM_STRONGSWAN_OLD \
++	$(NM_UTILS_CFLAGS) \
++	$(common_CFLAGS)
++
++libnm_vpn_plugin_strongswan_la_LIBADD = \
+ 	$(GTK_LIBS) \
+ 	$(NM_UTILS_LIBS)
+ 
+-libnm_strongswan_properties_la_LDFLAGS =     \
++libnm_strongswan_properties_la_LIBADD = \
++	$(GTK_LIBS) \
++	$(NM_UTILS_LIBS)
++
++libnm_vpn_plugin_strongswan_la_LDFLAGS = \
+ 	-avoid-version
+ 
++libnm_strongswan_properties_la_LDFLAGS = \
++	$(libnm_vpn_plugin_strongswan_la_LDFLAGS)
++
+ EXTRA_DIST = $(ui_DATA)
+-- 
+2.4.3
+

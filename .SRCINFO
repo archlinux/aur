@@ -1,0 +1,48 @@
+pkgbase = networkmanager-strongswan-passwordstore
+	pkgdesc = Strongswan NetworkManager plugin with default setting to save vpn password in keyfile
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = nm-connection-editor>=1.4.0
+	depends = libsecret
+	depends = strongswan
+	optdepends = network-manager-applet>=1.4.0:
+	optdepends = Graphical
+	optdepends = configuration
+	provides = networkmanager-strongswan=1.4.1
+	conflicts = networmanager-strongswan
+	source = http://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.3.1.tar.gz
+	source = fix-vbox-parent.patch
+	source = 0001-nm-set-full-path-to-the-connection-editor-plugin.patch
+	source = 0002-nm-drop-some-unneeded-dependencies.patch
+	source = 0003-nm-drop-useless-calls-to-AC_SUBST.patch
+	source = 0004-nm-split-the-plugin-into-two-halves.patch
+	source = 0005-nm-check-for-libnm.patch
+	source = 0006-nm-port-to-libnm.patch
+	source = 0007-nm-replace-libgnomeui-with-libnma-for-password-dialo.patch
+	source = 0008-nm-replace-libgnomekeyring-with-libsecret.patch
+	source = 0009-nm-bump-to-GTK-3.0.patch
+	source = 0010-nm-bump-minor-version-to-1.4.1.patch
+	source = 0011-nm-install-the-.name-file-into-usr-lib-NetworkManage.patch
+	source = 0012-nm-save-password-locally.patch
+	sha256sums = 8f67bf0e7281ee8dfb1c7fe28ef8d06774744e2135682f4ddae4342fd103d46a
+	sha256sums = c9f7f6819753ff2834015ba18ffed39c4b5ae5e0e71c377ee49c105f0d9b1f99
+	sha256sums = c2dd38ae4bc91e882d0a6c41dbb45f91fc3bf2124c33ca457c0d569c160d87ee
+	sha256sums = dd5a5ecb2bdf90b99bdc5deb037cd0ad83e8e212ae853abb505b117871972865
+	sha256sums = 4e9f5b7d889c596135e8cef6ca1b36ed96392479302e70ca6af258bd6b9279d3
+	sha256sums = d6baefb23c17a9ac0717ac9d1e81b4935f79270923f57ccf0d5259ae67f2f6b4
+	sha256sums = 2ea1cac933f5a4c09940bb77499b4d300e3726438185726448faa1bd8d0a2370
+	sha256sums = f2f64460fb5f94e9625f519e9a6886efd1fc5adfc664d46ec54ecfd65532bd8f
+	sha256sums = 6e1a0d0dc979d69efc5e4f112d2306d0ff8e94d00bd9a8fb0e150ecaf6145bbb
+	sha256sums = ec5aa3f85d7ef42e9ecdfd1cdf1b7c6bdc32b8586afb72b8fafdd5b2b53b9bbc
+	sha256sums = 0a06dd9ed6bf715a6229b30ad399eeab410510fa7eb3a49340b65040e7434328
+	sha256sums = 149967427c6e66b0666c233cdd2c7ea734ee9032f820f148212841b2ffe79188
+	sha256sums = 8f1bc53c5de2d431e1ce7c3370241e8ea1f815e7289aed1bfd00a059359655c6
+	sha256sums = 35180eb253c0bd55f1ef1c70d9a7d89290d659d568c7a2e05093c1f95e5eee35
+
+pkgname = networkmanager-strongswan-passwordstore
+

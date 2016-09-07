@@ -1,0 +1,87 @@
+From 60e61fa8330d4bc70a44786a26b8e54639f166de Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 21 Oct 2015 10:56:23 +0200
+Subject: [PATCH 05/10] nm: check for libnm
+
+libnm replaces libnm-glib. This will make sense with port to libnm and is done
+to reduce line noise in that commit.
+---
+ auth-dialog/Makefile.am | 5 ++---
+ configure.ac            | 9 +++++----
+ properties/Makefile.am  | 8 ++++----
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/auth-dialog/Makefile.am b/auth-dialog/Makefile.am
+index 6d3b3d6..34f9d6b 100644
+--- a/auth-dialog/Makefile.am
++++ b/auth-dialog/Makefile.am
+@@ -4,8 +4,7 @@ nm_strongswan_auth_dialog_CPPFLAGS = \
+ 	$(GTK_CFLAGS) \
+ 	$(LIBGNOMEUI_CFLAGS) \
+ 	$(GNOMEKEYRING_CFLAGS) \
+-	$(NETWORK_MANAGER_CFLAGS) \
+-	$(NM_UTILS_CFLAGS) \
++	$(LIBNM_GLIB_CFLAGS) \
+ 	-DG_DISABLE_DEPRECATED \
+ 	-DGNOME_DISABLE_DEPRECATED \
+ 	-DGNOMELOCALEDIR=\"$(datadir)/locale\" \
+@@ -18,5 +17,5 @@ nm_strongswan_auth_dialog_LDADD = \
+ 	$(GTK_LIBS) \
+ 	$(LIBGNOMEUI_LIBS) \
+ 	$(GNOMEKEYRING_LIBS) \
+-	$(NM_UTILS_LIBS)
++	$(LIBNM_GLIB_LIBS)
+ 
+diff --git a/configure.ac b/configure.ac
+index 71fcbf2..70fb42e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,10 +45,11 @@ AM_GLIB_GNU_GETTEXT
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.6)
+ PKG_CHECK_MODULES(LIBGNOMEUI, libgnomeui-2.0)
+ PKG_CHECK_MODULES(GNOMEKEYRING, gnome-keyring-1)
+-PKG_CHECK_EXISTS([libnm-glib],
+-	[PKG_CHECK_MODULES(NM_UTILS, NetworkManager >= 0.9.0 libnm-util libnm-glib libnm-glib-vpn)],
+-	[PKG_CHECK_MODULES(NM_UTILS, NetworkManager >= 0.9.0 libnm-util libnm_glib libnm_glib_vpn)]
+-)
++PKG_CHECK_MODULES(LIBNM_GLIB, NetworkManager >= 0.9.0 libnm-util libnm-glib libnm-glib-vpn)
++
++PKG_CHECK_MODULES(LIBNM, libnm >= 1.1.0)
++LIBNM_CFLAGS="$LIBNM_CFLAGS -DNM_VERSION_MIN_REQUIRED=NM_VERSION_1_2"
++LIBNM_CFLAGS="$LIBNM_CFLAGS -DNM_VERSION_MAX_ALLOWED=NM_VERSION_1_2"
+ 
+ AC_ARG_WITH(
+ 	[charon],
+diff --git a/properties/Makefile.am b/properties/Makefile.am
+index 8233ccb..2a113c7 100644
+--- a/properties/Makefile.am
++++ b/properties/Makefile.am
+@@ -19,21 +19,21 @@ common_CFLAGS = \
+ 	-DGDK_DISABLE_DEPRECATED
+ 
+ libnm_vpn_plugin_strongswan_la_CFLAGS = \
+-	$(NM_UTILS_CFLAGS) \
++	$(LIBNM_GLIB_CFLAGS) \
+ 	$(common_CFLAGS)
+ 
+ libnm_strongswan_properties_la_CFLAGS = \
+ 	-DNM_STRONGSWAN_OLD \
+-	$(NM_UTILS_CFLAGS) \
++	$(LIBNM_GLIB_CFLAGS) \
+ 	$(common_CFLAGS)
+ 
+ libnm_vpn_plugin_strongswan_la_LIBADD = \
+ 	$(GTK_LIBS) \
+-	$(NM_UTILS_LIBS)
++	$(LIBNM_GLIB_LIBS)
+ 
+ libnm_strongswan_properties_la_LIBADD = \
+ 	$(GTK_LIBS) \
+-	$(NM_UTILS_LIBS)
++	$(LIBNM_GLIB_LIBS)
+ 
+ libnm_vpn_plugin_strongswan_la_LDFLAGS = \
+ 	-avoid-version
+-- 
+2.4.3
+

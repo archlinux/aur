@@ -1,0 +1,35 @@
+From 27dd4b8a2ef3f1fd72f70865084bb2d18a279af3 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 21 Oct 2015 12:45:50 +0200
+Subject: [PATCH 01/10] nm: set full path to the connection editor plugin
+
+---
+ Makefile.am                   | 1 +
+ nm-strongswan-service.name.in | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1184711..2864eb2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -13,6 +13,7 @@ nmvpnservice_DATA = nm-strongswan-service.name
+ nm-strongswan-service.name: $(srcdir)/nm-strongswan-service.name.in
+ 	$(AM_V_GEN) \
+ 	sed -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|' \
++	    -e 's|[@]PLUGINDIR[@]|$(libdir)/NetworkManager|g' \
+ 	    -e 's|[@]CHARON[@]|$(charon)|' $< >$@
+ 
+ EXTRA_DIST = nm-strongswan-service.name.in \
+diff --git a/nm-strongswan-service.name.in b/nm-strongswan-service.name.in
+index 4120e55..ca45ff2 100644
+--- a/nm-strongswan-service.name.in
++++ b/nm-strongswan-service.name.in
+@@ -5,4 +5,4 @@ program=@CHARON@
+ 
+ [GNOME]
+ auth-dialog=@LIBEXECDIR@/nm-strongswan-auth-dialog
+-properties=libnm-strongswan-properties
++properties=@PLUGINDIR@/libnm-strongswan-properties
+-- 
+2.4.3
+
