@@ -26,4 +26,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     make prefix="$pkgdir/usr" install
+
+    cat INSTALL
 }
