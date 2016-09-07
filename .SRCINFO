@@ -1,7 +1,7 @@
 pkgbase = razer-driver-meta
 	pkgdesc = Meta package for razer-driver. Provides DKMS module, daemon and python library
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terrycain/razer_drivers
 	arch = any
 	license = GPLv3
