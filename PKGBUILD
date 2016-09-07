@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/terrycain/razer_drivers
 
 pkgname=razer-driver-meta
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Meta package for razer-driver. Provides DKMS module, daemon and python library"
 arch=('any')
