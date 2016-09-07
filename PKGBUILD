@@ -16,7 +16,7 @@ pkgver() {
   cd "$srcdir"/"$_gitname"
   printf "%s.%s" $(awk -F= '/version/ {print $2}' Cargo.toml|head -1|tr -d \") $(git rev-list --count HEAD)
 }
-
+q
 build() {
   cd "$srcdir"/"$_gitname"
   cargo clean
