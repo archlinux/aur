@@ -7,9 +7,8 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("encfs" "zenity" "xdg-utils")
-makedepends=("git")
-source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
-md5sums=('SKIP')
+source=("$url/archive/$pkgver.tar.gz")
+md5sums=('cf03e085c036919140fbbe27c59279ba')
 
 package() {
   cd "$pkgname-$pkgver"
