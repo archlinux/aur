@@ -2,7 +2,7 @@
 # Maintainer: Joe Julian
 
 pkgname=mgmt
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=1
 pkgdesc='Next generation config management.'
@@ -14,9 +14,9 @@ makedepends=('go' 'go-md2man' 'go-tools' 'mercurial')
 options=('!strip')
 backup=("etc/${pkgname}/${pkgname}.conf")
 
-source=('https://github.com/purpleidea/mgmt/archive/0.0.3.tar.gz'
+source=("https://github.com/purpleidea/mgmt/archive/${pkgver}.tar.gz"
         'mgmt.service')
-sha1sums=('8f8788683a04653a704725ec5e63b126c33bb409'
+sha1sums=('8dd7837e39bb738ffe5bc50f8f534ea9c56936ad'
           'ef0ecdb4d1c4441b884c7084b93806b52ec567c6')
 
 prepare() {
@@ -31,13 +31,14 @@ prepare() {
 
     export GOPATH="$srcdir"
     msg2 'installing go dependencies'
-    go get github.com/coreos/etcd/client
-    go get gopkg.in/yaml.v2
+    go get github.com/coreos/etcd
+    go get github.com/godbus/dbus
+    go get github.com/howeyc/gopass
+    go get github.com/kardianos/osext
+    go get github.com/pkg/sftp
+    go get github.com/urfave/cli
     go get gopkg.in/fsnotify.v1
-    go get github.com/codegangsta/cli
-    go get github.com/coreos/go-systemd/dbus
-    go get github.com/coreos/go-systemd/util
-    go get github.com/coreos/pkg/capnslog
+    go get gopkg.in/yaml.v2
 }
 
 build() {
