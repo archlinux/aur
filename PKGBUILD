@@ -52,11 +52,11 @@ build() {
   make
 
   # delete windows-only files
-  find \( -iname "Windows" -o -iname "Win64" -o -iname "vs2013" -o -iname "vs2015" \) -type d -exec rm -r "{}" \;
+  find \( -iname "Windows" -o -iname "Win64" -o -iname "vs2013" -o -iname "vs2015" \) -type d -prune -exec rm -r "{}" \;
   find -iregex '.*\.\(exe\|dll\|bat\|vcx?proj\(\.filters\|\.user\)?\|sln\)$' -delete
 
   # delete mac-only files (1+ GiB)
-  find Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -exec rm -r "{}" \;
+  find Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -prune -exec rm -r "{}" \;
 }
 
 package() {
