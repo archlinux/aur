@@ -8,7 +8,7 @@ pkgbase = nginx-mod-headers-more-git
 	license = custom
 	makedepends = git
 	depends = nginx=1.10.0
-	source = https://github.com/openresty/headers-more-nginx-module/archive/v0.31.tar.gz
+	source = https://github.com/openresty/headers-more-more-nginx-module/archive/v0.31.tar.gz
 	source = http://nginx.org/download/nginx-1.10.0.tar.gz
 	md5sums = 256add046870dc0338e1553977c57c00
 	md5sums = c184c873d2798c5ba92be95ed1209c02
