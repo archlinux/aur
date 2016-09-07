@@ -1,5 +1,5 @@
 pkgname=amule-git
-pkgver=2.4.0.r10355.966e24b
+pkgver=2.4.0.r10372.65abe6d
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
@@ -85,7 +85,7 @@ package() {
 
   make DESTDIR=$pkgdir install
 
-  rm $pkgdir/usr/share/pixmaps/amule.*
+  rm $pkgdir/usr/share/pixmaps/amule.xpm
   install -m644 $srcdir/amule.png $pkgdir/usr/share/pixmaps/
 
   install -m644 *.txt docs/{*.dia,AUTHORS,COPYING,README.*} README* $pkgdir/usr/share/doc/amule/
