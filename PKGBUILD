@@ -8,9 +8,8 @@ pkgname=(python-ipalib
          python2-ipaclient
          freeipa-common
          freeipa-client-common
-         freeipa-client
-         freeipa-admintools)
-pkgver=4.4.0
+         freeipa-client)
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -50,10 +49,10 @@ source=("http://freeipa.org/downloads/src/freeipa-$pkgver.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         0002-dogtag-vault-do-not-import-pki-in-makeapi.patch
         0003-client-install-do-not-assume-etc-krb5.conf.d-exists.patch)
-sha256sums=('5d846bbeb5bfe9121bd8e472385552a9ded5868d2d44e94cbe0ad9191a439b49'
-            'de0de8d251fd93254518228d4aa82a01ec1bdce7741289a41de9ec694176ebe7'
-            '7cebbb95f71abe30f9f206129968341553ff688a4ce3c0bbf3ddb8219b2a799e'
-            '5bb4e6ed7aa6d28ad1e8db93fb0f0a85c366bd6be3b2346891346de6ba33baee')
+sha256sums=('f5d7fbc47b6800be6edff1b62135f22dbd240fbfd3d2f72dd9bfbf2aa02be3ee'
+            'f83ce0074fcaad1cb038a1b41e29c355752aab24d97b6eae1778826c5986b109'
+            '9b294f4dd1172c5356b7526ca12657fc90c11154a32c2032e20a678fa9fcedc5'
+            '3939187f198ac317a9dfc1723037d1ae30aed4e174f3dd1fe5efbe21da07ceec')
 
 prepare() {
     cd "${pkgbase}-${pkgver}"
@@ -299,6 +298,7 @@ package_freeipa-client() {
              'authconfig'
              'pam-krb5'
              'curl>=7.21.7'
+             'yp-tools'
              'xmlrpc-c>=1.27.4'
              'sssd>=1.14.0'
              'certmonger>=0.78'
@@ -309,6 +309,8 @@ package_freeipa-client() {
              'autofs'
              'nfsidmap'
              'nfs-utils')
+    conflicts=('freeipa-admintools')
+    replaces=('freeipa-admintools')
     install=freeipa-client.install
 
     cd "${pkgbase}-${pkgver}"
@@ -317,40 +319,21 @@ package_freeipa-client() {
                                                         Contributors.txt
 
     local _file
-    for _file in _install/usr/bin/ipa-client-install \
+    for _file in _install/etc/bash_completion.d \
+                 _install/usr/bin/ipa \
+                 _install/usr/bin/ipa-client-install \
                  _install/usr/bin/ipa-client-automount \
                  _install/usr/bin/ipa-certupdate \
                  _install/usr/bin/ipa-getkeytab \
                  _install/usr/bin/ipa-rmkeytab \
                  _install/usr/bin/ipa-join \
+                 _install/usr/share/man/man1/ipa.1 \
                  _install/usr/share/man/man1/ipa-getkeytab.1.gz \
                  _install/usr/share/man/man1/ipa-rmkeytab.1.gz \
                  _install/usr/share/man/man1/ipa-client-install.1.gz \
                  _install/usr/share/man/man1/ipa-client-automount.1.gz \
                  _install/usr/share/man/man1/ipa-certupdate.1.gz \
                  _install/usr/share/man/man1/ipa-join.1.gz
-    do
-        _file="${_file#_install/}"
-        mkdir -p "$pkgdir"/"${_file%/*}"
-        mv _install/"$_file" "$pkgdir"/"$_file"
-    done
-}
-
-package_freeipa-admintools() {
-    pkgdesc="IPA administrative tools"
-    arch=('any')
-    depends=("python2-ipaclient=$pkgver-$pkgrel"
-             'python2-ldap')
-
-    cd "${pkgbase}-${pkgver}"
-
-    install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README \
-                                                        Contributors.txt
-
-    local _file
-    for _file in _install/usr/bin/ipa \
-                 _install/etc/bash_completion.d \
-                 _install/usr/share/man/man1/ipa.1
     do
         _file="${_file#_install/}"
         mkdir -p "$pkgdir"/"${_file%/*}"

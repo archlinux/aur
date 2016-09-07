@@ -1,4 +1,4 @@
-From 4efe2cba72d317a03abad3869532d97e1f0259a6 Mon Sep 17 00:00:00 2001
+From 0cd905ce9942c8d7c85202c160aaf71d17468911 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jcholast@redhat.com>
 Date: Tue, 2 Aug 2016 12:56:44 +0200
 Subject: [PATCH 2/3] dogtag, vault: do not import `pki` in makeapi
@@ -22,7 +22,7 @@ index aef1e88..53c3270 100644
      from pki.client import PKIConnection
      import pki.crypto as cryptoutil
 diff --git a/ipaserver/plugins/vault.py b/ipaserver/plugins/vault.py
-index c9b7cb9..52cbf17 100644
+index 5c4c096..2f097e2 100644
 --- a/ipaserver/plugins/vault.py
 +++ b/ipaserver/plugins/vault.py
 @@ -35,7 +35,7 @@ from ipalib import _, ngettext

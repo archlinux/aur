@@ -1,6 +1,6 @@
 pkgbase = freeipa
 	pkgdesc = The Identity, Policy and Audit system
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = http://www.freeipa.org/
 	arch = i686
@@ -36,19 +36,19 @@ pkgbase = freeipa
 	makedepends = ding-libs>=0.5.0
 	makedepends = python2-dbus
 	makedepends = python2-netifaces
-	source = http://freeipa.org/downloads/src/freeipa-4.4.0.tar.gz
+	source = http://freeipa.org/downloads/src/freeipa-4.4.1.tar.gz
 	source = 0001-platform-add-Arch-Linux-platform.patch
 	source = 0002-dogtag-vault-do-not-import-pki-in-makeapi.patch
 	source = 0003-client-install-do-not-assume-etc-krb5.conf.d-exists.patch
-	sha256sums = 5d846bbeb5bfe9121bd8e472385552a9ded5868d2d44e94cbe0ad9191a439b49
-	sha256sums = de0de8d251fd93254518228d4aa82a01ec1bdce7741289a41de9ec694176ebe7
-	sha256sums = 7cebbb95f71abe30f9f206129968341553ff688a4ce3c0bbf3ddb8219b2a799e
-	sha256sums = 5bb4e6ed7aa6d28ad1e8db93fb0f0a85c366bd6be3b2346891346de6ba33baee
+	sha256sums = f5d7fbc47b6800be6edff1b62135f22dbd240fbfd3d2f72dd9bfbf2aa02be3ee
+	sha256sums = f83ce0074fcaad1cb038a1b41e29c355752aab24d97b6eae1778826c5986b109
+	sha256sums = 9b294f4dd1172c5356b7526ca12657fc90c11154a32c2032e20a678fa9fcedc5
+	sha256sums = 3939187f198ac317a9dfc1723037d1ae30aed4e174f3dd1fe5efbe21da07ceec
 
 pkgname = python-ipalib
 	pkgdesc = Python libraries used by IPA
 	arch = any
-	depends = freeipa-common=4.4.0-1
+	depends = freeipa-common=4.4.1-1
 	depends = python-gssapi>=1.1.2
 	depends = gnupg
 	depends = keyutils
@@ -68,21 +68,21 @@ pkgname = python-ipalib
 	depends = python-dnspython>=1.11.1
 	depends = python-netifaces>=0.10.4
 	depends = python-pyusb
-	provides = python-ipapython=4.4.0-1
-	provides = python-ipaplatform=4.4.0-1
+	provides = python-ipapython=4.4.1-1
+	provides = python-ipaplatform=4.4.1-1
 
 pkgname = python-ipaclient
 	pkgdesc = Python libraries used by IPA client
 	arch = any
-	depends = freeipa-client-common=4.4.0-1
-	depends = freeipa-common=4.4.0-1
-	depends = python-ipalib=4.4.0-1
+	depends = freeipa-client-common=4.4.1-1
+	depends = freeipa-common=4.4.1-1
+	depends = python-ipalib=4.4.1-1
 	depends = python-dnspython>=1.11.1
 
 pkgname = python2-ipalib
 	pkgdesc = Python libraries used by IPA
 	arch = any
-	depends = freeipa-common=4.4.0-1
+	depends = freeipa-common=4.4.1-1
 	depends = python2-gssapi>=1.1.2
 	depends = gnupg
 	depends = keyutils
@@ -102,17 +102,17 @@ pkgname = python2-ipalib
 	depends = python2-dnspython>=1.11.1
 	depends = python2-netifaces>=0.10.4
 	depends = python2-pyusb
-	provides = python2-ipapython=4.4.0-1
-	provides = python2-ipaplatform=4.4.0-1
+	provides = python2-ipapython=4.4.1-1
+	provides = python2-ipaplatform=4.4.1-1
 	conflicts = freeipa-python
 	replaces = freeipa-python
 
 pkgname = python2-ipaclient
 	pkgdesc = Python libraries used by IPA client
 	arch = any
-	depends = freeipa-client-common=4.4.0-1
-	depends = freeipa-common=4.4.0-1
-	depends = python2-ipalib=4.4.0-1
+	depends = freeipa-client-common=4.4.1-1
+	depends = freeipa-common=4.4.1-1
+	depends = python2-ipalib=4.4.1-1
 	depends = python2-dnspython>=1.11.1
 
 pkgname = freeipa-common
@@ -128,9 +128,9 @@ pkgname = freeipa-client-common
 pkgname = freeipa-client
 	pkgdesc = IPA authentication for use on clients
 	install = freeipa-client.install
-	depends = freeipa-client-common=4.4.0-1
-	depends = freeipa-common=4.4.0-1
-	depends = python2-ipaclient=4.4.0-1
+	depends = freeipa-client-common=4.4.1-1
+	depends = freeipa-common=4.4.1-1
+	depends = python2-ipaclient=4.4.1-1
 	depends = python2-ldap
 	depends = cyrus-sasl-gssapi
 	depends = ntp
@@ -138,6 +138,7 @@ pkgname = freeipa-client
 	depends = authconfig
 	depends = pam-krb5
 	depends = curl>=7.21.7
+	depends = yp-tools
 	depends = xmlrpc-c>=1.27.4
 	depends = sssd>=1.14.0
 	depends = certmonger>=0.78
@@ -148,10 +149,6 @@ pkgname = freeipa-client
 	depends = autofs
 	depends = nfsidmap
 	depends = nfs-utils
-
-pkgname = freeipa-admintools
-	pkgdesc = IPA administrative tools
-	arch = any
-	depends = python2-ipaclient=4.4.0-1
-	depends = python2-ldap
+	conflicts = freeipa-admintools
+	replaces = freeipa-admintools
 
