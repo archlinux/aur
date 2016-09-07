@@ -4,14 +4,14 @@
 
 pkgname=subdl
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A command-line tool for downloading subtitles from opensubtitles.org"
 arch=('any')
-url="https://github.com/fbarthelery/$pkgname"
+url="https://github.com/alexanderwink/$pkgname"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
-source=(git+https://github.com/fbarthelery/subdl.git#commit=0d840f1)
+source=(git+https://github.com/alexanderwink/subdl.git#commit=d9478cc)
 sha256sums=('SKIP')
 
 package() {
