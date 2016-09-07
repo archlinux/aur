@@ -7,11 +7,10 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("python-html2text")
-makedepends=("git")
 backup=("etc/$pkgname.conf")
-source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
+source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('SKIP')
+md5sums=('fdd128a675d20e154104cd11c8a70afb')
 
 package() {
   cd "$pkgname-$pkgver"
