@@ -1,7 +1,7 @@
 pkgbase = sherlock-lv2
 	pkgdesc = An investigative LV2 plugin bundle
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://open-music-kontrollers.ch/lv2/sherlock
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sherlock-lv2
 	makedepends = cmake
 	makedepends = lv2
 	makedepends = flex
-	depends = elementary
+	depends = efl
 	depends = lilv
 	depends = sratom
 	depends = nanomsg
