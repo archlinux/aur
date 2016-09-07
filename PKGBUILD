@@ -26,7 +26,9 @@ md5sums=(
   '08e0e6b8e6c9b186191a8419cc7bd435'
   '604094f337176251bcfdacd3a21aa081'
 )
-options=(!strip staticlibs)
+
+# seems these are no longer necessaryand package is 3 Gib smaller with default options
+#options=(!strip staticlibs)
 
 build() {
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" 0001-ignore-return-value-error.patch
