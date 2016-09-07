@@ -9,7 +9,6 @@ url="http://torsion.org/borgmatic/"
 license=('GPL3')
 depends=('borg')
 makedepends=('python2-setuptools')
-optdepends=('attic')
 source=("https://torsion.org/hg/$pkgname/archive/$pkgver.tar.gz")
 provides=('borgmatic')
 sha256sums=('81d29ba3159193b02f4c9be0d476e2342a1aa56b72cce6331474c0634c1883a3')

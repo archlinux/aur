@@ -7,7 +7,6 @@ pkgbase = borgmatic
 	license = GPL3
 	makedepends = python2-setuptools
 	depends = borg
-	optdepends = attic
 	provides = borgmatic
 	source = https://torsion.org/hg/borgmatic/archive/1.0.3.tar.gz
 	sha256sums = 81d29ba3159193b02f4c9be0d476e2342a1aa56b72cce6331474c0634c1883a3
