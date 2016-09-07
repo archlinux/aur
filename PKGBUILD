@@ -56,7 +56,7 @@ build() {
   find -iregex '.*\.\(exe\|dll\|bat\|vcx?proj\(\.filters\|\.user\)?\|sln\)$' -delete
 
   # delete mac-only files (1+ GiB)
-  find UnrealEngine/Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -exec rm -r "{}" \;
+  find Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -exec rm -r "{}" \;
 }
 
 package() {
