@@ -10,8 +10,10 @@ license=('MIT')
 
 provides=('wd')
 makedepends=('git')
+install=$pkgname.install
 source=("$pkgname"::'git+https://github.com/mfaerevaag/wd-c')
 sha256sums=('SKIP')
+
 
 pkgver() {
     cd "$srcdir/$pkgname"
