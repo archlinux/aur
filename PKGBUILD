@@ -2,7 +2,7 @@
 
 _pkgname=tasksh
 pkgname=$_pkgname-git
-pkgver=20141222.r62.c5e6d77
+pkgver=20160905.r167.2f090c7
 pkgrel=1
 pkgdesc='A shell command that wraps Taskwarrior commands'
 url='http://tasktools.org/projects/tasksh.html'
@@ -16,6 +16,11 @@ sha512sums=('SKIP')
 pkgver() {
   cd $_pkgname
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  git submodule update --init --recursive
 }
 
 build() {
