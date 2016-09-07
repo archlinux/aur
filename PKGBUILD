@@ -72,14 +72,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
-_utdicver=20160815
+_utdicver=20160905
 _zipcoderel=201608
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.18.2548.102.20160815
+pkgver=2.18.2548.102.20160905
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -95,12 +95,12 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          'e8b55639229f0db31ff9791d4bbc499623c320da'
-          'fbb3392c67c25b20c0d4eaabf9fdf994338191e1'
+          'cb882107dcbf7451ae71bb29d91b1c12951d12eb'
+          '9f52caa8d87a893cbeb344660345fb2651f31d5a'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'a153bf7430f7054231ee4aacdf0b514839ac9ccb'
           'e79ff28cf6581cb23b783b60cf38ddf540738302'
-          'fd9b79fc4b81703549b266afe55b6b1598722d1b')
+          '66544a5b72988b3a8287cc59ff5a1e1a608673b9')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -156,7 +156,7 @@ prepare() {
     ./generate-mozc-ut.sh
   msg "Done."
 
-  cd "${srcdir}/${pkgbase}-`pkgver`"
+  cd "${srcdir}/${pkgbase}-`pkgver`/src"
 
   # uim-mozc
   if [[ "$_uim_mozc" == "yes" ]]; then
@@ -169,9 +169,6 @@ prepare() {
     head -n 32 unix/uim/mozc.cc > unix/uim/LICENSE
 
   fi
-
-  # Extract liccense part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
 }
 
 
@@ -194,7 +191,7 @@ build() {
 
   msg "Starting make..."
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool "
   [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
@@ -225,25 +222,26 @@ package_mozc-ut() {
   conflicts=('mozc' 'mozc-server' 'mozc-utils-gui')
   optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/lib/mozc/documents/"
   install    -m 644 data/installer/*.html "${pkgdir}/usr/lib/mozc/documents/"
 
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   _licpath="${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -D -m 644 LICENSE       "${_licpath}/LICENSE_MOZC"
-  install    -m 644 doc-ut/README "${_licpath}/README_MOZC-UT"
-  install    -m 644 data/installer/*.html "$_licpath"
+  install -D -m 644 LICENSE "${_licpath}/LICENSE_MOZC"
+  install    -m 644 docs-ut/README "${_licpath}/README_MOZC-UT"
+  install    -m 644 src/data/installer/*.html "$_licpath"
 
-  cd doc-ut/dictionary
+  cd docs-ut/dictionaries
   for d in *
   do
-    install -d "${_licpath}/dictionary/${d}"
-    install -m 644 "${d}"/* "${_licpath}/dictionary/${d}"
+    install -d "${_licpath}/dictionaries/${d}"
+    install -m 644 "${d}"/* "${_licpath}/dictionaries/${d}"
   done
-  install -m 644 "${srcdir}/EDICT_license.html" "${_licpath}/dictionary/edict/license.html"
+  install -m 644 "${srcdir}/EDICT_license.html" "${_licpath}/dictionaries/edict/license.html"
 }
 
 package_emacs-mozc-ut() {
@@ -256,7 +254,7 @@ package_emacs-mozc-ut() {
   provides=('emacs-mozc')
   conflicts=('emacs-mozc' 'emacs-mozc-bin')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/mozc_emacs_helper "${pkgdir}/usr/bin/mozc_emacs_helper"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc/"
   install -m 644 unix/emacs/mozc.el "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc"
@@ -270,7 +268,7 @@ package_ibus-mozc-ut() {
   provides=('ibus-mozc')
   conflicts=('ibus-mozc')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/ibus_mozc       "${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc"
   install -D -m 644 out_linux/${_bldtype}/gen/unix/ibus/mozc.xml "${pkgdir}/usr/share/ibus/component/mozc.xml"
   install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
@@ -296,7 +294,7 @@ package_uim-mozc-ut() {
   provides=('uim-mozc')
   conflicts=('uim-mozc')
 
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
   install -D -m 755 out_linux/${_bldtype}/libuim-mozc.so  "${pkgdir}/usr/lib/uim/plugin/libuim-mozc.so"
   install -d "${pkgdir}/usr/share/uim"
   install    -m 644 ${srcdir}/uim-mozc-${_uimmozcrev}/scm/*.scm       "${pkgdir}/usr/share/uim/"

@@ -15,7 +15,7 @@ sed -i \
     -e '/rm -f chimei\/\*.zip/d' \
     -e '/rm -f chimei\/gen_zip_code_seed.py/d' \
     -e '/rm -rf ..\/mozc-$MOZCVER\//d' \
-    -e 's|mozc-\$MOZCVER|mozc/src|g' \
+    -e 's|mozc-\$MOZCVER|mozc|g' \
     -e '/# unpack official mozc/,+6d' \
     -e '/wget http:\/\/www.post.japanpost.jp\/zipcode\/dl\/kogaki\/zip\/ken_all.zip/,+13d' \
     -e '/# modify zip code data/,+3d' \
