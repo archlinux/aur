@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
 pkgver=4.0.0.91
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -53,4 +53,5 @@ package() {
 
 	# According to GhettoGirl35, this extension segfaults in .91
 	rm $pkgdir/opt/$pkgname/extensions/libsvplight.so
+	rm -r $pkgdir/opt/$pkgname/extensions/light
 }
