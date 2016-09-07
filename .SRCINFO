@@ -1,0 +1,15 @@
+pkgbase = wd-git
+	pkgdesc = Jump to custom directories in terminal
+	pkgver = 0.1.0.r1.g7a3f4c4
+	pkgrel = 1
+	url = https://github.com/mfaerevaag/wd-c
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = wd
+	source = wd-git::git+https://github.com/mfaerevaag/wd-c
+	sha256sums = SKIP
+
+pkgname = wd-git
+
