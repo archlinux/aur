@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=6.3.2.3
+Name=XCTU
+Comment=Configuration and Test Utiity
+Icon=xctu.xpm
+Exec=env UBUNTU_MENUPROXY=0 GTK2_RC_FILES=$GTK2_RC_FILES:/opt/xctu/.gtkrc-eclipse /opt/xctu/app
+Terminal=false
+Path=/opt/xctu

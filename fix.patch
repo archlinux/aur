@@ -1,0 +1,11 @@
+diff -Naur a/xctu/configuration/config.ini b/xctu/configuration/config.ini
+--- a/xctu/configuration/config.ini	2016-09-07 19:05:45.151674115 +0200
++++ b/xctu/configuration/config.ini	2016-09-07 19:06:45.132030148 +0200
+@@ -9,5 +9,6 @@
+ osgi.splashPath=platform\:/base/plugins/com.digi.xctung
+ osgi.framework.extensions=
+ osgi.bundles.defaultStartLevel=4
+-eclipse.p2.data.area=@config.dir/../p2
++eclipse.p2.data.area.ReadOnly=@config.dir/../p2
+ eclipse.application=com.digi.xctung.application
++osgi.instance.area=@user.home/.config/xctu
