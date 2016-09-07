@@ -1,7 +1,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra-git"
-pkgver=r846.a3ece9b
-pkgrel=1
+pkgver=r849.f51e7d0
+pkgrel=2
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra"
@@ -11,22 +11,10 @@ optdepends=('python2-lxml: faster result processing')
 makedepends=('git')
 install='nzbhydra.install'
 provides=('nzbhydra')
-source=("nzbhydra-git::git+https://github.com/theotherp/nzbhydra.git"
+source=("${pkgname}::git+https://github.com/theotherp/nzbhydra.git"
         "nzbhydra.sh"
         "nzbhydra.service"
         "nzbhydra.install")
-md5sums=('SKIP'
-         '1430b962bb52c75abee5a63347e61dbd'
-         '0f45bcce81813f0a82319fd2be5d4dd9'
-         '4cb81156eb125cf6daefc2389ccf050a')
-sha1sums=('SKIP'
-          '9c928da41170ec913463347a833a0caad052b342'
-          '88b4abd1aa83471649b075a540c14ad8fe53630f'
-          '28d5f16cea5130ae7cc6844c486d001f18daba88')
-sha256sums=('SKIP'
-            '91552953d0d956101136cd3165f217de4d14eb65042b7dd3e9a09c8657319436'
-            'fa1000f4bdabef4c9cb730d4f903218eac05ea181ccac06b9f4344a4440f0c10'
-            '4419c7faed911a03ea0c9ccafa69607d2038cf49a508aa5595d9732146204649')
 sha512sums=('SKIP'
             '83aacf4f4f33af8d8cb99f1063958b44773f04ba168aaba12a303d1944a74f8ca729c483c57e2e8b8cadb7fac706d7297fc2de505a1c5608a8c09ddeee7690bf'
             'f0f79e0bb0aee5bce474811bb113593725772e31552aa48d74465565291005a977777469ce0a7b53c10800cffa16d952b63c368e2120cc2d0ed80f7288151f12'
