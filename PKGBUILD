@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.7
-_zenpatch=zen-4.7.2-3bc2dfc4bccf23e17f0988c3f03af91a2a18a2a0.diff
-pkgver=4.7.2
+_zenpatch=zen-4.7.3-82014da197e1762e424cdef63a703dba7735ffe3.diff
+pkgver=4.7.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -23,15 +23,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        )
+
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
+            '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
-            '4573c5f857ae868841b8083d642e96af38e1a35f0e806f6fac69945be7430458'
+            '0064be0bf4fbca003559e6d2cd5feb088ac6e72870d6b9f247f904fe2ba12416'
             'SKIP'
-            'd5c614e6dabb7d81ffdfb81ed9a21abb2863252ed5bd6dec50d5a3d1084e3268'
-            'ecc46479458bfae10382c64881f29f9493b3ec1148be8aa8e35defc29e4b13ba'
+            '7883a6a75b105cc02af162f8c6691cb772d009092a885828e2b7e0c5e3322bdd'
+            'd279f16321a9ab3c6b38340b7efc3bfa75e1b7d61ac4d278cc98110b857e93b8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
