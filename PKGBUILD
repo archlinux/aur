@@ -1,14 +1,14 @@
 # Maintainer: Barnaby Gray <barnaby@pickle.me.uk>
 pkgname=cli53
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=()
 makedepends=('go>=1.5' 'make')
 source=("https://github.com/barnybug/cli53/archive/$pkgver.tar.gz")
-sha256sums=('941e8fc15842b27127db1a4aed215f30ecf97a031e05d68634b26af5dfa69cf9')
+sha256sums=('0a9999f3e40f510d6d6faa01b64cefcd5a3ddeca1f785a25ede568f440d100bf')
 
 build() {
     export GOPATH="$srcdir"
