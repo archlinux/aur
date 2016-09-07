@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v0.99.1140.r0.gbad03a5
+pkgver=v1.0.8.r2.g9e05893
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
