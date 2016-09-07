@@ -1,14 +1,15 @@
-# Maintainer: Sebastian Jug <seb@stianj.ug>
-# Contributor: John Reese <jreese@noswap.com>
-# Upstream URL: https://github.com/atom/atom
 #
-# For improvements/fixes to this package, please send a pull request:
-# https://github.com/sjug/atom-editor
+# Maintainer: Neonn <neonn@users.noreply.github.com>
+# 
+# This PKGBUILD is forked from atom-editor, which was eventually added
+# into the community repo under the name 'atom'.
+#
+# For any improvements/suggestions/fixes, make an issue/pull request under  
 
-pkgname=atom-editor
+pkgname=atom-notracking
 pkgver=1.10.0
 pkgrel=1
-pkgdesc='Chrome-based text editor from Github'
+pkgdesc='Chrome-based text editor from GitHub, with tracking packages removed.'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
@@ -16,7 +17,7 @@ depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libn
 optdepends=('gvfs: file deletion support'
             'ctags: symbol indexing support')
 makedepends=('git' 'npm')
-conflicts=('atom-editor-bin' 'atom-editor-git')
+conflicts=('atom' 'atom-editor' 'atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
 sha256sums=('5fce9b85bbd27c5e2cb71c3316c563edb0a666120e7ad0dc73817d28e1e1faec')
 
