@@ -2,3 +2,4 @@ src
 pkg
 insomnia-*.deb
 insomnia-*-x86_64.pkg.tar*
+.idea
