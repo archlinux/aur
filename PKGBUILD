@@ -78,7 +78,6 @@ package() {
   cp -r Engine/Documentation "$pkgdir/opt/$pkgname/Engine/Documentation"
   cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Extras"
   install -d "$pkgdir/opt/$pkgname/Engine/Intermediate" # editor needs this, but not the files from the build
-  cp -r Engine/Intermediate "$pkgdir/opt/$pkgname/Engine/Intermediate"
   cp -r Engine/Plugins "$pkgdir/opt/$pkgname/Engine/Plugins"
   cp -r Engine/Programs "$pkgdir/opt/$pkgname/Engine/Programs"
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
