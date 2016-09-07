@@ -1,0 +1,14 @@
+pkgbase = python-begins
+	pkgdesc = Begins makes creating command line applications in Python easy.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/begins
+	arch = any
+	license = ASL
+	makedepends = python-distribute
+	depends = python
+	source = https://github.com/aliles/begins/archive/0.9.tar.gz
+	md5sums = db4d5aea6d0809e5118db87225a9607c
+
+pkgname = python-begins
+
