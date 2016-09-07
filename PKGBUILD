@@ -1,4 +1,5 @@
-# Maintainer:   AXVill
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor:   AXVill
 # Contributor:  dacoit <dacoit at tuta.io>
 # Contributor:  xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
 # Contributor:  uuwe
