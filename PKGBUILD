@@ -7,10 +7,9 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("python")
-makedepends=("git")
-source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
+source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('SKIP')
+md5sums=('5bb5924bd40d51471ff9db78da877ace')
 
 package() {
   cd "$pkgname-$pkgver"
