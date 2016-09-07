@@ -11,14 +11,17 @@ license=('GPL3')
 depends=('qt4')
 source=(http://downloads.sourceforge.net/$pkgname/${pkgname}_v$pkgver.zip
         $pkgname-$pkgver-gcc47.diff
+        patch.txt
         $pkgname.desktop)
 md5sums=('239a8171d54c10810da6b131ba5fbd64'
          '86841c3796e149cd12e5b3a27cdfc170'
+         'SKIP'
          '5535ab5a696309d44cc68c8d15f59693')
 
 build() {
   cd "$srcdir/${pkgname}_v$pkgver"
   patch -Np1 -i ../$pkgname-$pkgver-gcc47.diff
+  patch -p1 mainwindow.cpp -i ../patch.txt
   qmake-qt4 && make
 }
 
