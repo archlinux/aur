@@ -12,10 +12,10 @@ makedepends=('git' 'imagemagick')
 provides=('smw')
 conflicts=('smw-svn')
 
-source=('git://github.com/erlehmann/Super-Mario-War.git'
+source=('git://github.com/erlehmann/Super-Mario-War.git' 'build.patch'
 		'smw.desktop' 'smw-leveledit.desktop' 'smw-worldedit.desktop'
 		'smw.png' 'smw-leveledit.png' 'smw-worldedit.png')
-md5sums=('SKIP'
+md5sums=('SKIP' '8ccb01b1497ef9973fbf39eb9cfae576'
 		'b4efac68e43d10d56d04ebb836407113' '7035fa75a0283b34664a996e1e8b3baa' 'b0ea8ca8fb8b0a5f74ed69d402f26775'
 		'58a1731de3de9d46c14d400ad2c6acdc' '8ceb70b9311fde38e4fa598daf8c9f2b' '0f5f9cfa11d102d9693d37b841c756aa')
 
