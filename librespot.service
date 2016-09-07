@@ -9,6 +9,7 @@ ExecStart=/usr/bin/librespot \
     --bitrate ${LIBRESPOT_BITRATE} \
     --username ${LIBRESPOT_USERNAME} \
     --password ${LIBRESPOT_PASSWORD}
+Restart=always
 
 [Install]
 WantedBy=default.target

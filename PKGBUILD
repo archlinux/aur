@@ -16,9 +16,9 @@ conflicts=('librespot')
 source=('git+https://github.com/plietar/librespot'
         'librespot.conf'
         'librespot.service')
-sha1sums=('SKIP'
-          'b9c3c0bb96ab42d9bbe9f61ab9d84486a511e776'
-          '19348db822d42008fe0a3c55cb00c57fc54ebe5f')
+sha256sums=('SKIP'
+            '3d48207e0be5cf2e68a9ecfd8f418aa1d71fa7f97d562780aa73d2db1a46cac5'
+            'c41110008b16929c7e5f71512cea8dcf92fab36455a61bc2d56ced731918c602')
 
 pkgver()
 {
