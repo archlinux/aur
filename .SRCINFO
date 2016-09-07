@@ -1,7 +1,7 @@
 pkgbase = moony-lv2
 	pkgdesc = Realtime Lua as programmable glue in LV2
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://open-music-kontrollers.ch/lv2/moony
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = moony-lv2
 	makedepends = cmake
 	makedepends = lv2
 	makedepends = flex
-	depends = elementary
+	depends = efl
 	depends = lilv
 	depends = sratom
 	depends = nanomsg
