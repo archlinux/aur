@@ -1,7 +1,7 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 
 pkgname=borgmatic
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A simple Python wrapper script for the borg (and attic) backup software."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 optdepends=('attic')
 source=("https://torsion.org/hg/$pkgname/archive/$pkgver.tar.gz")
 provides=('borgmatic')
-sha256sums=('525711573a3c9028da8dcccc5947c8cdd3123f1478322d95b81d00e841f76b2f')
+sha256sums=('81d29ba3159193b02f4c9be0d476e2342a1aa56b72cce6331474c0634c1883a3')
 
 
 package() {
