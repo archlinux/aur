@@ -2,17 +2,18 @@
 
 _gemname=jekyll
 pkgname=ruby-$_gemname
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='A simple, blog aware, static site generator.'
 arch=(any)
 url='https://github.com/jekyll/jekyll'
 license=(MIT)
-depends=('ruby' 'ruby-colorator' 'ruby-jekyll-sass-converter' 'ruby-jekyll-watch' 'ruby-kramdown' 'ruby-liquid-3' 'ruby-mercenary' 'ruby-rouge' 'ruby-safe_yaml' 'ruby-rb-fsevent' 'ruby-rb-inotify')
+#depends=('ruby' 'ruby-colorator' 'ruby-jekyll-sass-converter' 'ruby-jekyll-watch' 'ruby-kramdown' 'ruby-liquid-3' 'ruby-mercenary' 'ruby-rouge' 'ruby-safe_yaml' 'ruby-rb-fsevent' 'ruby-rb-inotify')
+depends=('ruby' 'ruby-colorator' 'ruby-jekyll-sass-converter' 'ruby-jekyll-watch' 'ruby-kramdown' 'ruby-liquid-3' 'ruby-mercenary' 'ruby-pathutil' 'ruby-rouge' 'ruby-safe_yaml')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('a845d9d03c745c7d0984d0841ccda248909fc8881f0225402a72e5f466e4e1dd3fa9343fc21bf712d97dd7a68014173a908e859e574a7f4359d12ce30b345e7f')
+sha512sums=('2e9eef578f1bfc5a1351fc071e6bcd9475c80b811561deaecfb4cbe21e9c12e7df19a6dcba4d8c9a7e6fc941e71613acb11a13b2f3bd6238e2fafc1f78c7dce0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
