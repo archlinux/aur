@@ -3,7 +3,7 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.12.0.57
+pkgver=0.12.0.58
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
@@ -16,7 +16,7 @@ pkgdesc="Dash peer-to-peer network based digital currency "
 license=('MIT')
 source=("https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
         "dashd@.service")
-sha256sums=('74d734bb1589d95140a83b17a1670f59870343d8400a4551a4568e6b7ff27dad'
+sha256sums=('5e149b1a531af401e66ba655e95e7d16cb8ee4ab2ed7f5338f5ba3a9124dd744'
             '00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9')
 
 prepare() {
@@ -58,7 +58,7 @@ package_dash-qt() {
   depends+=('qt5-base' 'qt5-tools' 'miniupnpc')
   optdepends=('protobuf: Data interchange format used for payment protocol'
               'qrencode: Optional for generating QR codes')
-  install=dash-qt.install
+
   pkgdesc+="(Qt)"
 
   cd "${srcdir}/${pkgbase}-${pkgver}"

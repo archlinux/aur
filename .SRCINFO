@@ -1,6 +1,6 @@
 pkgbase = dash
 	pkgdesc = Dash peer-to-peer network based digital currency
-	pkgver = 0.12.0.57
+	pkgver = 0.12.0.58
 	pkgrel = 1
 	url = http://www.dashpay.io/
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = dash
 	optdepends = zeromq: Optional, allows generating ZMQ notifications
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = db4.8: Wallet storage
-	source = https://github.com/dashpay/dash/archive/v0.12.0.57.tar.gz
+	source = https://github.com/dashpay/dash/archive/v0.12.0.58.tar.gz
 	source = dashd@.service
-	sha256sums = 74d734bb1589d95140a83b17a1670f59870343d8400a4551a4568e6b7ff27dad
+	sha256sums = 5e149b1a531af401e66ba655e95e7d16cb8ee4ab2ed7f5338f5ba3a9124dd744
 	sha256sums = 00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9
 
 pkgname = dash-daemon
@@ -31,7 +31,6 @@ pkgname = dash-cli
 
 pkgname = dash-qt
 	pkgdesc = Dash peer-to-peer network based digital currency (Qt)
-	install = dash-qt.install
 	depends = boost-libs
 	depends = libevent
 	depends = qt5-base
