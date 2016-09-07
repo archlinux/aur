@@ -5,7 +5,7 @@ pkgver="2.0.0.4230"
 pkgrel=1
 pkgdesc="PVR for newsgroup users. Formerly known as NZBDrone"
 arch=(any)
-url="http://www.sonarr.tv"
+url="https://sonarr.tv"
 license=('GPL3')
 depends=('mono' 'libmediainfo' 'sqlite')
 optdepends=('sabnzbd: an NZB downloader'
@@ -18,7 +18,7 @@ install='sonarr.install'
 provides=('nzbdrone' 'nzbdrone-torrents')
 conflicts=('nzbdrone' 'nzbdrone-torrents')
 replaces=('nzbdrone' 'nzbdrone-torrents')
-source=("http://update.sonarr.tv/v2/master/mono/NzbDrone.master.${pkgver}.mono.tar.gz"
+source=("https://update.sonarr.tv/v2/master/mono/NzbDrone.master.${pkgver}.mono.tar.gz"
         "sonarr.sh"
         "sonarr.service")
 noextract=()
