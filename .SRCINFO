@@ -1,13 +1,11 @@
 pkgbase = bcm20702a1-firmware
 	pkgdesc = Broadcom bluetooth firmware.
 	pkgver = 1201710
-	pkgrel = 6
+	pkgrel = 7
 	url = http://asus.com
 	arch = any
 	license = Custom
 	makedepends = bluez-utils
-	makedepends = gawk
-	makedepends = sed
 	source = http://dlcdnet.asus.com/pub/ASUS/wireless/USB-BT400/DR_USB_BT400_1201710_Windows.zip
 	source = filelist.txt
 	sha256sums = a84889e296add13cae389524b790133519666826ba899c6f82cd6528a80fefcb

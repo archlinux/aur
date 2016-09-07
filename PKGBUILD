@@ -5,12 +5,12 @@
 pkgbase=bcm20702a1-firmware
 pkgname=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
 pkgver=1201710
-pkgrel=6
+pkgrel=7
 arch=('any')
 pkgdesc="Broadcom bluetooth firmware."
 url="http://asus.com"
 license=("Custom")
-makedepends=('bluez-utils' 'gawk' 'sed')
+makedepends=('bluez-utils')
 source=("http://dlcdnet.asus.com/pub/ASUS/wireless/USB-BT400/DR_USB_BT400_${pkgver}_Windows.zip"
         "filelist.txt")
 sha256sums=('a84889e296add13cae389524b790133519666826ba899c6f82cd6528a80fefcb'
