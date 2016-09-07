@@ -8,7 +8,7 @@ url='http://smw.supersanctuary.net/site/'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('sdl_image' 'sdl_mixer')
-makedepends=('git' 'imagemagick')
+makedepends=('git')
 provides=('smw')
 conflicts=('smw-svn')
 
