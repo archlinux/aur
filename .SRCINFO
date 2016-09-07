@@ -16,8 +16,8 @@ pkgbase = tint2-improved
 	conflicts = tint
 	conflicts = tint2-svn
 	conflicts = tint2-git
-	source = git+https://gitlab.com/oskarirauta/tint2.git
-	md5sums = SKIP
+	source = https://gitlab.com/oskarirauta/tint2/repository/archive.tar.gz?ref=5e231842fafc40282cd69ca3fcafa1af0a66b27b
+	md5sums = bb0eef013fe807ba51c822794a231b43
 
 pkgname = tint2-improved
 

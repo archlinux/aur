@@ -2,8 +2,9 @@
 
 pkgname=tint2-improved
 _pkgname=tint2
+_gitver=5e231842fafc40282cd69ca3fcafa1af0a66b27b
 pkgrel=1
-pkgver=0.12.12
+pkgver="0.12.12"
 pkgdesc="Tint2 with support for gradient backgrounds and separator plugins"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/oskarirauta/tint2"
@@ -13,17 +14,13 @@ makedepends=('cmake')
 install=${pkgname}.install
 provides=('tint2')
 conflicts=('tint2' 'tint' 'tint2-svn' 'tint2-git')
-source=("git+https://gitlab.com/oskarirauta/tint2.git")
-md5sums=('SKIP')
+source=("https://gitlab.com/oskarirauta/tint2/repository/archive.tar.gz?ref=$_gitver")
+md5sums=('bb0eef013fe807ba51c822794a231b43')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+prepare() {
+ cd "$srcdir"
+ mv "$_pkgname-$_gitver-$_gitver" "$_pkgname"
 }
-
 
 build() {
  cd "$srcdir/$_pkgname"
