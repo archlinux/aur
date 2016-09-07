@@ -1,16 +1,16 @@
 # Maintainer: Eric Pfeiffer <aur@computerfr33k.com>
 pkgname=librevault
-pkgver=0.1.18.7
+pkgver=0.1.18.8
 pkgrel=1
 pkgdesc="File synchronization designed with privacy in mind"
 arch=(x86_64 i686)
 url="https://librevault.com/"
 license=('GPL3')
 groups=()
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'qt5-tools')
 depends=(
         'qt5-websockets' 'qt5-svg' 'protobuf3>=3.0.0-1' 'boost-libs'
-        'crypto++' 'miniupnpc' 'qt5-tools' 'websocketpp' 'qt5-base'
+        'crypto++' 'miniupnpc' 'websocketpp' 'qt5-base'
         'openssl' 'libnatpmp' 'sqlite'
 )
 conflicts=("${pkgname}-git")
@@ -23,7 +23,6 @@ source=(
 )
 noextract=()
 sha256sums=('SKIP')
-_watch="none"
 
 prepare() {
 	mkdir -p ${srcdir}/${pkgname}/build && cd ${srcdir}/${pkgname}/build
