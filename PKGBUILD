@@ -1,9 +1,8 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 __pkgname='intelhex'
-#pkgname=('python-intelhex' 'python2-intelhex')
-pkgname=('python-intelhex')
+pkgname=('python-intelhex' 'python2-intelhex')
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python IntelHex library"
 url="https://github.com/bialix/intelhex"
 optdepends=()
