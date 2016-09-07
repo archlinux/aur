@@ -1,8 +1,8 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=jbofihe-git
-pkgver=20030418.22.g893dd52
-epoch=1
+pkgver=0.40
+epoch=2
 pkgrel=1
 pkgdesc="Tools to operate on Lojban text (main feature: approximate translation to English)."
 arch=('i686' 'x86_64')
