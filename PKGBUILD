@@ -7,13 +7,12 @@ url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
 depends=("python" "libinput" "xdotool")
-makedepends=("git")
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 backup=("etc/$pkgname.conf")
-source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
+source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('SKIP')
+md5sums=('8a5b6bae147359f72d2fb20ae6704f33')
 
 package() {
   cd "$pkgname-$pkgver"
