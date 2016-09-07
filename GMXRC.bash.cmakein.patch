@@ -1,0 +1,14 @@
+--- GMXRC.bash.cmakein	2013-11-08 13:09:33.000000000 +0200
++++ GMXRC.bash.cmakein.patch	2015-02-20 12:48:10.770670309 +0200
+@@ -4,6 +4,11 @@
+ # This is not 100% necessary, but very useful when we
+ # repeatedly switch between gmx versions in a shell.
+ 
++#Patch to avoid problems when gromacs is installed using /usr/ as root
++if [ "$GMXLDLIB" == "/usr/lib" ]; then export GMXLDLIB=""; fi
++if [ "$GMXBIN" == "/usr/bin" ]; then export GMXBIN=""; fi
++if [ "$GMXMAN" == "/usr/share/man" ]; then export GMXMAN=""; fi
++
+ # First remove gromacs part of ld_library_path
+ tmppath=""
+ for i in `echo $LD_LIBRARY_PATH | sed "s/:/ /g"`; do
