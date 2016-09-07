@@ -1,17 +1,17 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=cmanager
-pkgver=0.2.36
+pkgver=0.2.37
 pkgrel=1
 pkgdesc='Sync logs between geocaching.com and opencaching.de'
 arch=('any')
 url='https://github.com/RoffelKartoffel/cmanager'
 license=('GPL3')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 source=("$pkgname-$pkgver.jar::https://github.com/RoffelKartoffel/$pkgname/releases/download/$pkgver/cm-$pkgver.jar"
         "cmanager.sh"
         "cmanager.desktop")
-md5sums=('5acf08c3503b6f0323e400ac06f6b040'
+md5sums=('87e394c38c5237c0ffdc6f4c97ef3a1f'
          'c258a1a5adc27de5a84572563d7578e6'
          '5197054a612b57f0215c3f9092f6b741')
 noextract=("$pkgname-$pkgver.jar")
