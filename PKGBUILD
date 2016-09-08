@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.7
 pkgver=4.7.3
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -87,7 +87,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
-            'ea11e30a0eb2cae7253db86ed3cebb90f605f0220e41a19a78b9e6ce9c99abf3'
+            '34028186ffefea95ac81474470767781330c803e5ffe629ba6d9a1f6bbeebe85'
             'ea11e30a0eb2cae7253db86ed3cebb90f605f0220e41a19a78b9e6ce9c99abf3'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
