@@ -6,7 +6,7 @@
 pkgname='clam-git'
 _gitname=clams
 pkgver=1.4.5.277.g9085811
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="http://www.clamclient.com"
 depends=('qt4' 'miniupnpc' 'db4.8' 'boost-libs' 'qrencode')
@@ -43,15 +43,15 @@ package() {
 	# install clam-qt client
 	msg2 'Installing clam-qt...'
 	install -Dm755 "$srcdir/$_gitname/src/qt/clam-qt" "$pkgdir/usr/bin/clam-qt"
-	install -Dm644 "$srcdir/$_gitname/share/pixmaps/clams80.xpm" "$pkgdir/usr/share/pixmaps/clams80.xpm"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/clam-qt.desktop"
+#	install -Dm644 "$srcdir/$_gitname/share/pixmaps/clams80.xpm" "$pkgdir/usr/share/pixmaps/clams80.xpm"
+#	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/clam-qt.desktop"
 	
 	# install clam daemon
 	msg2 'Installing clam-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/clamd" "$pkgdir/usr/bin/clamd"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/clam.conf" "$pkgdir/usr/share/doc/$pkgname/examples/clam.conf"
- 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clamd.1" "$pkgdir/usr/share/man/man1/clamd.1"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clam.conf.5" "$pkgdir/usr/share/man/man5/clam.conf.5"
+#	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/clam.conf" "$pkgdir/usr/share/doc/$pkgname/examples/clam.conf"
+# 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clamd.1" "$pkgdir/usr/share/man/man1/clamd.1"
+#	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clam.conf.5" "$pkgdir/usr/share/man/man5/clam.conf.5"
 
 
 	# install license
