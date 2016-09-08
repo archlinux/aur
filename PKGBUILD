@@ -3,9 +3,9 @@
 # Contrubutor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-ck
-pkgver=370.23
+pkgver=370.28
 _extramodules=extramodules-4.7-ck
-pkgrel=4
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -18,19 +18,15 @@ conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck'
 license=('custom')
 install=nvidia-ck.install
 options=(!strip)
-source=(fix-abi.patch)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('51317ed14937e934fdc13f814f36804275265d0912cce45714e1e4c9e911b3bb')
-sha256sums_i686=('7a275413a3709ef11649ed65d07bae92368c0a1b754fec5c9f9769e516a19263')
-sha256sums_x86_64=('6c462f240ed434a1bb64b7b82a325c63b9056cc135dfe6d54473c9afedbf9693')
+sha256sums_i686=('6323254ccf2a75d7ced1374a76ca56778689d0d8a9819e4ee5378ea3347b9835')
+sha256sums_x86_64=('f498bcf4ddf05725792bd4a1ca9720a88ade81de27bd27f2f3c313723f11444c')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
-    cd "${_pkg}"
-		patch -Np0 -i ../fix-abi.patch
 }
 
 build() {
