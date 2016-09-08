@@ -57,7 +57,7 @@ build() {
 	export GOPATH="$srcdir/go"
 	export GOBIN=""
 
-    rm -rf "$srcdir/go/src/golang.org/x/tools/cmd/"{bundle,stress}
+    rm -rf "$srcdir/go/src/golang.org/x/tools/cmd/"{bundle,stress,godoc}
 
 	go get -v \
 		-gcflags "-trimpath $GOPATH/src" \
