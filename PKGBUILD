@@ -22,6 +22,10 @@ md5sums=(
 
 backup=(
 )
+conflicts=(
+    'go-tools'
+    'go-imports-git'
+)
 
 pkgver() {
 	if [[ "$PKGVER" ]]; then
@@ -53,6 +57,7 @@ build() {
 	export GOPATH="$srcdir/go"
 	export GOBIN=""
 
+    rm -rf "$srcdir/go/src/golang.org/x/tools/cmd/"{bundle,stress,
 	go get -v \
 		-gcflags "-trimpath $GOPATH/src" \
 		./cmd/...
