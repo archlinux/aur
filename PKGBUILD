@@ -2,12 +2,13 @@
 
 pkgname=netflix
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch Netflix and stream it to chromecast."
 arch=('i686' 'x86_64')
 url=""
 license=('MIT')
 depends=('google-chrome')
+optdepends=('google-chrome>=51: Chromecast support')
 source=("$pkgname.png"
         "$pkgname.desktop")
 md5sums=('56ced67fc54f8dbc53977f9262eb8736'
