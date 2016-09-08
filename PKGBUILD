@@ -28,7 +28,7 @@ readonly _mtxrun=${_mtxpath}/mtxrun.lua
 _mtx-script () {
   local scr="mtx-$1.lua"
   shift
-  ${_luatex} ${_mtxrun} --script "${_mtxpath}/${scr}" $@
+  MTX_PLATFORM=linux TEXOS=texmf-linux ${_luatex} ${_mtxrun} --script "${_mtxpath}/${scr}" $@
 }
 
 pkgver() {
