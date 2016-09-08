@@ -2,14 +2,14 @@
 
 pkgbase=python-vine
 pkgname=('python-vine' 'python2-vine')
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Promises, promises, promises"
 arch=('any')
 license=('BSD')
 url="https://github.com/celery/vine"
 makedepends=('python-setuptools' 'python2-setuptools' 'python-case' 'python2-case' 'git')
-checkdepends=('python-nose' 'python2-nose')
+checkdepends=('python-pytest' 'python2-pytest')
 source=("git+https://github.com/celery/vine.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
