@@ -5,8 +5,8 @@
 
 pkgname='clam-git'
 _gitname=clams
-pkgver=1.4.5.273.g304677d
-pkgrel=1
+pkgver=1.4.5.277.g9085811
+pkgrel=2
 arch=('any')
 url="http://www.clamclient.com"
 depends=('qt4' 'miniupnpc' 'db4.8' 'boost-libs' 'qrencode')
@@ -15,7 +15,7 @@ license=('MIT')
 pkgdesc="The most widely held crypto-currency ever! This package provides both the GUI QT4 and daemon clients."
 provides=('clam-qt' 'clamd')
 conflicts=('clam-qt' 'clamd')
-source=("git://github.com/nochowderforyou/clams.git"
+source=("git://github.com/ShapeShifter499/clams.git"
         "diff.patch")
 sha256sums=('SKIP'
       
@@ -26,10 +26,10 @@ pkgver() {
         git describe | sed "s/^v//; s/-/./g"
 }
 
-prepare() {
-    cd "$srcdir/$_gitname"
-    patch -Np1 -i "$srcdir"/diff.patch
-}
+#prepare() {
+#    cd "$srcdir/$_gitname"
+#    patch -Np1 -i "$srcdir"/diff.patch
+#}
 
 build() {
 	cd "$srcdir/$_gitname"
@@ -41,11 +41,19 @@ build() {
 
 package() {
 	# install clam-qt client
-	install -D -m755 "$srcdir/$_gitname/src/qt/clam-qt" "$pkgdir/usr/bin/clam-qt"
-
+	msg2 'Installing clam-qt...'
+	install -Dm755 "$srcdir/$_gitname/src/qt/clam-qt" "$pkgdir/usr/bin/clam-qt"
+	install -Dm644 "$srcdir/$_gitname/share/pixmaps/clams80.xpm" "$pkgdir/usr/share/pixmaps/clams80.xpm"
+	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/clam-qt.desktop"
+	
 	# install clam daemon
-	install -D -m755 "$srcdir/$_gitname/src/clamd" "$pkgdir/usr/bin/clamd"
+	msg2 'Installing clam-daemon...'
+	install -Dm755 "$srcdir/$_gitname/src/clamd" "$pkgdir/usr/bin/clamd"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/clam.conf" "$pkgdir/usr/share/doc/$pkgname/examples/clam.conf"
+ 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clamd.1" "$pkgdir/usr/share/man/man1/clamd.1"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clam.conf.5" "$pkgdir/usr/share/man/man5/clam.conf.5"
+
 
 	# install license
-	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
