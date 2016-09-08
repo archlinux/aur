@@ -1,0 +1,14 @@
+pkgbase = podiff
+	pkgdesc = Diff tool for PO Gettext files
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://puszcza.gnu.org.ua/projects/podiff
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://download.gnu.org.ua/pub/release/podiff/podiff-1.1.tar.gz
+	md5sums = 56d8f879c138bb9688334d4c3a4fd85f
+	sha256sums = a97480109c26837ffa868ff629a32205622a44d8b89c83b398fb17352b5be6ff
+
+pkgname = podiff
+
