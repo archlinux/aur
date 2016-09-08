@@ -1,5 +1,5 @@
 pkgname=hamster-time-tracker-git
-pkgver=2.0.rc1.r4.g8c739fe
+pkgver=2.0.rc1.r10.gc3e5fb7
 pkgrel=1
 pkgdesc="Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track"
 arch=('any')
