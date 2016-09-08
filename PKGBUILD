@@ -1,5 +1,5 @@
 pkgname=dpdk
-pkgver=16.04
+pkgver=16.07
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -10,18 +10,26 @@ depends=()
 makedepends=(linux-headers libpcap)
 checkdepends=()
 source=(http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz)
-sha1sums=('580d8bb773a867dcc85a85e74714f130d0c76da3')
+sha1sums=('d78ef2b9ccafdd4f2c7987f6108b0e728724d1e6')
 
 prepare() {
   cd dpdk-$pkgver
-  make config T=x86_64-native-linuxapp-gcc
-  sed -ri 's,(PMD_PCAP=).*,\1y,' build/.config
+  make T=x86_64-native-linuxapp-gcc config
+
+  sed -ri 's,(RTE_MACHINE=).*,\1default,'    build/.config
+  sed -ri 's,(RTE_APP_TEST=).*,\1n,'         build/.config
+  sed -ri 's,(RTE_BUILD_SHARED_LIB=).*,\1y,' build/.config
+  sed -ri 's,(RTE_NEXT_ABI=).*,\1n,'         build/.config
+  sed -ri 's,(LIBRTE_VHOST=).*,\1y,'         build/.config
+  sed -ri 's,(LIBRTE_PMD_PCAP=).*,\1y,'      build/.config
+  #sed -ri 's,(LIBRTE_PMD_XENVIRT=).*,\1y,'   build/.config
+
   sed 's|\bpython\b|python2|' -i mk/rte.sdktest.mk
 }
 
 build() {
   cd dpdk-$pkgver
-  make T=x86_64-native-linuxapp-gcc
+  make
 }
 
 check() {
@@ -32,5 +40,6 @@ check() {
 
 package() {
   cd dpdk-$pkgver
-  make T=x86_64-native-linuxapp-gcc DESTDIR="$pkgdir/opt/$pkgname" install
+  make DESTDIR="$pkgdir" prefix=/usr sbindir=bin install
+  cp -a "$pkgdir"/lib/ "$pkgdir"/usr/ && rm -rf "$pkgdir"/lib/
 }
