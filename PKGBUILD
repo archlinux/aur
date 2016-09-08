@@ -1,5 +1,5 @@
 # Maintainer: Jason Scurtu (scujas) <jscurtu@gmail.com>
-# Contributor: Marcin Tydelski <marcin.tydelski@gmail.com> 
+# Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
 pkgname=feedreader
@@ -13,7 +13,6 @@ depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install="${pkgname%-*}.install"
 source=('https://github.com/jangernert/FeedReader/archive/v'${pkgver}'.tar.gz')
 sha256sums=('0e3921b795c9a96e92ac575cb21746775660e27bcd8546930904b901d649356f')
 
