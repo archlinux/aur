@@ -1,10 +1,106 @@
+3.4
+---
+
+ - New module :py:mod:`pyteomics.mzxml` for parsing of MzXML files.
+
+ - New parameter `dtype` in :py:func:`pyteomics.mgf.read`, :py:func:`pyteomics.mzml.read`
+   and :py:func:`pyteomics.mzxml.read`
+   allows changing the dtype of arrays yielded by the parsers.
+
+ - :py:mod:`pyteomics.featurexml` moved into a subpackage :py:mod:`pyteomics.openms`.
+
+ - New module :py:mod:`pyteomics.openms.trafoxml` for OpenMS transformation files.
+
+ - Bugfix in XML indexing code to make it work on Python 3.x versions prior to 3.5.
+
+ - Bugfix in :py:func:`pyteomics.pylab_aux.scatter_trend` (support for lists and other non-ndarrays).
+
+ - Performance improvements in :py:mod:`pyteomics.achrom` calibration functions.
+
+3.3.1
+-----
+
+New submodule :py:mod:`pyteomics.featurexml` with a parser for OpenMS **featureXML** files.
+
+3.3
+---
+
+ - mzML and mzIdentML parsers can now create an index of element offsets.
+   This allows quick random access to elements by unique ID.
+
+ - mzML parsers now come in two flavors: :py:class:`pyteomics.mzml.MzML` and
+   :py:class:`pyteomics.mzml.PreIndexedMzML`. The latter uses the byte offsets
+   listed at the end of the file.
+
+ - New parameters `convert_arrays` and `read_charges` in :py:func:`mgf.read`
+   allow using it without :py:mod:`numpy` and possibly improve performance.
+   The default behavior is retained.
+
+ - Performance optimizations in :py:func:`mgf.read` and :py:func:`parser.cleave`.
+
+ - New decoy generation mode called "fused decoy", described in the paper accepted to JASMS.
+
+API changes
+...........
+
+ - :py:func:`pyteomics.parser.cleave` no longer accepts the `labels` argument.
+   It is emphasized that the input sequences are expected to be in plain one-letter
+   notation, but no checks are performed.
+
+ - :py:func:`DataFrame` functions in :py:mod:`pepxml` and :py:mod:`tandem` now
+   extract more protein-related information. The list-like protein-related values
+   can be reported as lists or packed into strings, depending on the optional
+   paramter `sep`. Some column names have changed as a result.
+
+ - Call signatures of :py:func:`pyteomics.fasta.decoy_sequence` and the functions using it
+   are slightly changed. Standard modes are now also exposed as individual functions.
+
+3.2
+---
+
+New submodule :py:mod:`pyteomics.mass.unimod` contains rewritten machinery
+for handling of Unimod relational databases (contributed by Joshua Klein).
+This is a substitution and extension for the old :py:class:`mass.Unimod` class.
+:py:mod:`pyteomics.mass.unimod` requires SQLAlchemy.
+
+Other changes:
+
+ - New function :py:func:`pyteomics.auxiliary.linear_regression_perpendicular`
+   provides a linear fit minimizing distances from data points to the fit line
+   (as opposed to :py:func:`pyteomics.auxiliary.linear_regression`, which
+   minimizes vertical distances).
+
+ - Both new and old linear regression functions now accept a single array of shape (N, 2).
+
+ - :py:func:`pyteomics.pylab_aux.scatter_trend` now has an optional parameter
+   `regression` which can be a callable performing the regression.
+   Also, the regression equation is now the label of the regression line, not
+   the scatter plot.
+
+ - Another two new parameters for :py:func:`pyteomics.pylab_aux.scatter_trend`
+   are `sigma_kwargs` and `sigma_values`.
+
+ - :py:mod:`pyteomics.pylab_aux` functions :py:func:`plot_line` and
+   :py:func:`scatter_trend` now return the objects they create.
+
+ - Writer functions (:py:func:`pyteomics.mgf.write`, :py:func:`pyteomics.fasta.write`,
+   :py:func:`pyteomics.fasta.write_decoy_db`) now accept a `file_mode` argument that
+   overrides the mode in which the file is opened.
+
+ - In :py:func:`pyteomics.mgf.write` one can now override the format spec for fragment m/z,
+   intensity and charge values using the optinal `fragment_format` argument. Key order and
+   key-value parameter formatters are now also handled via optional arguments.
+
+ - :py:func:`pyteomics.fasta.decoy_db` now supports `ignore_comments` and `parser` arguments.
+
+
 3.1.1
 -----
 
  - Bugfix in :py:mod:`pyteomics.auxiliary`.
 
  - New parameter `show_legend` in :py:func:`pyteomics.pylab_aux.scatter_trend`.
- 
+
  - Performance improvements in :py:mod:`pyteomics.parser`.
 
 3.1
@@ -176,8 +272,10 @@ Fix for a memory leak in :py:func:`pyteomics.mzid.get_by_id`, which affects
 -----
 
  - Bugfixes in :py:func:`pyteomics.parser.isoforms`:
-  - handling of the `labels` argument is now in accordance with new policy
-  - solved memory problems when using `max_mods`
+
+   - handling of the `labels` argument is now in accordance with new policy
+   - solved memory problems when using `max_mods`
+
  - :py:func:`pyteomics.parser.cleave` does not require a valid *modX* sequence
    by default.
 
