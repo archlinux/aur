@@ -1,7 +1,7 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=c2go-git
-pkgver=0.1.r0.g9ad7755
+pkgver=0.1.r11.gde9c496
 pkgrel=1
 pkgdesc='C to Go conversion helper'
 arch=('any')
