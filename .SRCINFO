@@ -1,0 +1,15 @@
+pkgbase = transi2p
+	pkgdesc = Transparent proxy for i2p.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/transi2p
+	arch = any
+	license = BSD
+	depends = python2-twisted
+	depends = txi2p
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/transi2p/transi2p-1.2.3.tar.gz
+	sha256sums = 670eeee9fccf740b25b32174e89f3d84c7411fb7b6d8ee3454ac7f84eea57a80
+
+pkgname = transi2p
+
