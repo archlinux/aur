@@ -1,6 +1,6 @@
 pkgbase = sidef-git
 	pkgdesc = A modern object-oriented programming language. (-git version)
-	pkgver = 2.30
+	pkgver = 2.31
 	pkgrel = 1
 	url = https://github.com/trizen/sidef
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = sidef-git
 	makedepends = git
 	depends = perl>=5.22.0
 	depends = perl-data-dump
-	depends = perl-math-gmpq>=0.39
-	depends = perl-math-gmpz
+	depends = perl-math-gmpq>=0.41
+	depends = perl-math-gmpz>=0.39
 	depends = perl-math-mpfr>=3.29
 	depends = perl-math-mpc
 	provides = sidef
