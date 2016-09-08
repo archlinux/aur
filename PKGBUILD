@@ -3,9 +3,9 @@
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
 pkgname=feedreader
-pkgver=1.6.1
-pkgrel=2
-pkgdesc='A simple feedreader client for web services like Tiny Tiny RSS and in the future others.'
+pkgver=1.6.2
+pkgrel=1
+pkgdesc='simple feedreader client for web services like Tiny Tiny RSS and others in the future'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/feedreader'
 license=('GPL3')
@@ -14,7 +14,7 @@ makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=('https://github.com/jangernert/FeedReader/archive/v'${pkgver}'.tar.gz')
-sha256sums=('0e3921b795c9a96e92ac575cb21746775660e27bcd8546930904b901d649356f')
+sha256sums=('c9ddb59d14a2cb04d00db07fcd90f3de07f9ae1f2fb0f21783db8e9a242991ed')
 
 build() {
   cd "${srcdir}"
