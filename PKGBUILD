@@ -53,7 +53,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.7
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -62,11 +62,11 @@ options=('!strip')
 _ckpatchversion=3
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2'
+_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
 _bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
 _bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r2-for.patch'
+_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -87,8 +87,8 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
-            'f06f784ffb10bbe665015c2530a1726957ded6ae0e2fa454662053daf288c719'
-            '58f516b8b1aed68a1f1925c6136b9f281d74a9f1009e2feeddca9eb54841dc61'
+            'ea11e30a0eb2cae7253db86ed3cebb90f605f0220e41a19a78b9e6ce9c99abf3'
+            'ea11e30a0eb2cae7253db86ed3cebb90f605f0220e41a19a78b9e6ce9c99abf3'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '437f0be184042e44826fa76fce08b5daea1a7d2e85e7c63177e109efb50793f1'
@@ -96,7 +96,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
             '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
             'db34093296bc02df769faa25dd609453321b05836d8265416e6975ebe9542821'
-            '9620022c602f60e666ae0faa65ad33d52024219895ad1aef06701cce4d9492aa')
+            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
