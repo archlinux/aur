@@ -12,7 +12,7 @@ url="http://www.paraview.org/"
 license=('custom')
 source=("http://www.paraview.org/files/v${pkgver:0:3}/${_PkgName}-${_pkgver}-Qt4-OpenGL2-MPI-Linux-64bit.tar.gz"
         "https://gitlab.kitware.com/paraview/paraview/raw/v${_pkgver}/License_v1.2.txt")
-sha256sums=('0c81c9a2af80bc4cc99a025b5f84ede1bd9e8fb979974bdb886b9a9d589c43f5'
+sha256sums=('7b1c1878632b596a5e4b4fa92507ac4cef750c5c621087eebcff406e9ed23d75'
             'd2b1ab821f9b09f99c2b8ddb50438e1a0a7bae18bbb00e6a8962fb57ec64a197')
 conflicts=('paraview')
 provides=('paraview')
