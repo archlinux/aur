@@ -1,0 +1,16 @@
+pkgbase = opendungeons
+	pkgdesc = Open source, real time strategy game sharing game elements with the Dungeon Keeper series and Evil Genius
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://opendungeons.github.io
+	arch = x86_64
+	license = GPL3
+	depends = zziplib
+	options = !strip
+	source = ftp://download.tuxfamily.org/opendungeons/0.7/OpenDungeons-0.7.1-Linux64.tar.bz2
+	source = opendungeons_startup
+	md5sums = ad05df375a5f0b720120147975029229
+	md5sums = a9b6e78b78d09e07b87a76b36ffa6969
+
+pkgname = opendungeons
+
