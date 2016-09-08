@@ -3,7 +3,7 @@
 
 pkgbase=sentry
 pkgname=('sentry' 'sentry-dsym')
-pkgver=8.7.0
+pkgver=8.8.0
 pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
