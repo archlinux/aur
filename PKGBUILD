@@ -40,7 +40,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 	'nvmepatch1.patch'
 	'nvmepatch2.patch'
-	'nvmepatch3.patch')
+	'nvmepatch3.patch'
+	'change-default-console-loglevel.patch')
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             '5d3bb6f9c07fefc102669e905765b7d2ec4be746594ace5510b7f355f1b1f0f0'
             '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
@@ -48,7 +49,8 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'ee13c83bf95f8880a4c1346ccf7b2e36772bc06174d3b812c91d7109aca5b600'
             '52a44ac52356816e5b5f39a19c7de2eb08ce634a861821abe060debca479f7e2'
-            '9762c163430aabca94efbab29ef702b483f1d9a97a912f84ad0239467cba16bc')
+            '9762c163430aabca94efbab29ef702b483f1d9a97a912f84ad0239467cba16bc'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -73,7 +75,7 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   
-  #patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Added custom NVME patches in here
   patch -p1 -i "${srcdir}/nvmepatch1.patch"
