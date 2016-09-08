@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager"
 license=('GPL')
 provides=("networkmanager-strongswan=$pkgver")
-conflicts=("networmanager-strongswan")
+conflicts=("networkmanager-strongswan")
 depends=("nm-connection-editor>=1.4.0" "libsecret" "strongswan")
 optdepends=("network-manager-applet>=1.4.0": Graphical configuration)
 makedepends=('intltool')

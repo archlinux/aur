@@ -14,7 +14,7 @@ pkgbase = networkmanager-strongswan-passwordstore
 	optdepends = Graphical
 	optdepends = configuration
 	provides = networkmanager-strongswan=1.4.1
-	conflicts = networmanager-strongswan
+	conflicts = networkmanager-strongswan
 	source = http://download.strongswan.org/NetworkManager/NetworkManager-strongswan-1.3.1.tar.gz
 	source = fix-vbox-parent.patch
 	source = 0001-nm-set-full-path-to-the-connection-editor-plugin.patch
