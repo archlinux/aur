@@ -1,9 +1,9 @@
 pkgname=txi2p
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="I2P bindings for Twisted"
 arch=('any')
-url="https://pypi.python.org/pypi/transi2p"
+url="https://pypi.python.org/pypi/txi2p"
 license=('BSD')
 depends=('python2-twisted' 'python2-parsley')
 options=('!emptydirs')
