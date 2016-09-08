@@ -30,7 +30,7 @@ source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
 source_x86_64+=("http://downloads.arduino.cc/arduino-${_arduino}-linux64.tar.xz"
                 "http://www.pjrc.com/teensy/td_${_pkgver//./}/TeensyduinoInstall.linux64")
 sha256sums=('473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
-            'ee25f5421e529aacb11c19307c78ce97202329b14935f8eb6cbbf70806ae183b'
+            '0ad3b85a1b5a9a0dc0cd64685742b66368a338777a80a0bff29d01ac26816173'
             '270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323'
             'SKIP'
             'fa7eff0e0f1e8230941c3b016c40617887f52f1991db655a498309824291ca54'
@@ -47,7 +47,7 @@ elif [ "$CARCH" == 'i686' ]; then
 fi
 
 build() {
-  msg2 "Running Teensyduino installer (takes around 60 seconds)"
+  msg2 "Running Teensyduino installer (takes around 50 seconds)"
 
   chmod +x "TeensyduinoInstall.linux${_bits}"
   xvfb-run ./teensyduino.sh "./TeensyduinoInstall.linux${_bits}" "${srcdir}/arduino-${_arduino}"
