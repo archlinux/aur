@@ -5,7 +5,7 @@
 pkgname=mousepad-gtk3
 _pkgname=mousepad
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple text editor for Xfce"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -29,7 +29,7 @@ build() {
     --localstatedir=/var \
     --disable-static \
     --disable-debug \
-    --enable-gkt3
+    --enable-gtk3
   make
 }
 
