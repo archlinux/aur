@@ -15,7 +15,7 @@ options=(!strip staticlibs)
 license=('GPL' 'LGPL' 'custom')
 depends=('gtk2' 'libusb-compat' 'libusb' 'java-runtime' 'libpng12' 'libsm'
          'desktop-file-utils' 'giflib' 'avrdude')
-makedepends=('xorg-server-xvfb' 'libxft' 'xdotool')
+makedepends=('xorg-server-xvfb' 'libxft' 'xdotool' 'git')
 provides=('arduino')
 conflicts=('arduino' 'teensy-loader-cli')
 install="teensyduino.install"
