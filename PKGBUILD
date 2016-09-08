@@ -1,18 +1,18 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=libreport
-pkgver=2.6.2
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='Generic library for reporting various problems'
 arch=('i686' 'x86_64')
-depends=('satyr' 'augeas' 'libtar' 'libffi' 'libnewt' 'gtk3' 'xmlto' 'xmlrpc-c' 'json-c')
+depends=('satyr' 'augeas' 'libtar' 'libffi' 'libnewt' 'gtk3' 'xmlto' 'xmlrpc-c' 'json-c' 'nss')
 makedepends=('intltool' 'asciidoc' 'python' 'python2')
 optdepends=('python: python 3.x bindings'
 	'python2: python 2.x bindings')
 url='https://github.com/abrt/libreport'
 license=('GPL')
 source=("https://fedorahosted.org/released/abrt/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7d26a39b3a6f9c69ccd6def1d68ab8d369be06ffa18e8696c70c7cd73e90cd92')
+sha256sums=('88d79b0c5fe2e87acabeb99707207f027ccb705cb4721226014fdd0d7703f0cb')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
