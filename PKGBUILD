@@ -21,11 +21,11 @@ makedepends=('git' 'ninja' 'sh' 'pkg-config')
 depends=('libevdev' 'libev')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
-pkgver=v0.2.r5.g8cce610
+pkgver=0.4.r2.ga05e66d
 pkgver() {
 	cd "$srcdir/$_bpn"
 	( set -o pipefail
-		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
