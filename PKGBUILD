@@ -5,7 +5,7 @@
 
 pkgname=mitmproxy
 pkgver=0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
@@ -30,6 +30,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd mitmproxy
+
+  sed -i 's/length_field/lengthfield/' mitmproxy/contrib/tls/_constructs.py
 
   # Let's remove all the upper bounds, use system certificate store and ssl.match_hostname
   sed -e '/certifi/d' \
