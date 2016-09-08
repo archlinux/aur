@@ -1,0 +1,14 @@
+pkgbase = em-keyboard
+	pkgdesc = Command-line utility for referencing emoji characters by name
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/kennethreitz
+	arch = any
+	license = custom:MIT
+	depends = python-docopt
+	depends = python-xerox
+	source = https://github.com/kennethreitz/em/archive/v0.0.7.tar.gz
+	sha512sums = 38463627c3cbf6f2194089af309c7aab626d13d9fa51b67a2be1b4fc392a1f6db40b6563fd6d7054f3b7a60229255a6915391c54ec81782cf45d655a9b627472
+
+pkgname = em-keyboard
+
