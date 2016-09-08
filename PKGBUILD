@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=solidity
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc and lllc)"
 arch=('i686' 'x86_64')
