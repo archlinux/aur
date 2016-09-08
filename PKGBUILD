@@ -1,6 +1,6 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
-pkgver=2.6.5
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('automake')
 options=(!emptydirs)
 changelog=lives.changelog
 source=(http://lives-video.com/releases/LiVES-$pkgver.tar.bz2 disable-toonz.patch)
-md5sums=('7514aca89eb7b3800c7f3f53a1678ef8' '9820005ad3c3626dc4853fb09301f7bc')
+md5sums=('f79dff0f35a97f3cc9a5ef2be9c573b6' '9820005ad3c3626dc4853fb09301f7bc')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
   PKG_CONFIG_PATH=/usr/lib/ffmpeg2.8/pkgconfig\
-    ./configure --prefix=/usr --enable-turbo
+    ./configure --prefix=/usr --enable-turbo --disable-doxygen
   make
 }
 

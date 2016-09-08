@@ -1,3 +1,8 @@
+2016-09-08 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Excluded Doxygen documentation generation from the build phase
+
 2016-08-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
