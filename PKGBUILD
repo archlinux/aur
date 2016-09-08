@@ -4,16 +4,16 @@
 
 pkgbase=python-billiard
 pkgname=('python-billiard' 'python2-billiard')
-pkgver=3.5.0.0
+pkgver=3.5.0.1
 pkgrel=1
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('i686' 'x86_64')
 url="http://pypi.python.org/pypi/billiard"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('python-nose' 'python2-nose' 'python-case' 'python2-case')
+checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-case' 'python2-case')
 source=("https://pypi.io/packages/source/b/billiard/billiard-$pkgver.tar.gz")
-md5sums=('b0d26f4ebde1a9a2c51d41567eb02929')
+md5sums=('8192bc8dc918e7cb7bd4cc8b63e5e04b')
 
 prepare() {
   cp -a billiard-$pkgver{,-py2}
@@ -29,10 +29,10 @@ build() {
 
 check() {
   cd "$srcdir"/billiard-$pkgver
-  nosetests3
+  python setup.py ptr
 
   cd "$srcdir"/billiard-$pkgver-py2
-  nosetests2
+  python2 setup.py ptr
 }
 
 package_python-billiard() {
@@ -41,9 +41,6 @@ package_python-billiard() {
   cd "$srcdir"/billiard-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm0664 "$srcdir"/billiard-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  # Avoid conflicts
-  mv "$pkgdir"/usr/lib/python3.5/site-packages/{funtests,billiard/}
 }
 
 package_python2-billiard() {
@@ -52,7 +49,4 @@ package_python2-billiard() {
   cd "$srcdir"/billiard-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm0664 "$srcdir"/billiard-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  # Avoid conflicts
-  mv "$pkgdir"/usr/lib/python2.7/site-packages/{funtests,billiard/}
 }
