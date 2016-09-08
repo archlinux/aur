@@ -5,66 +5,54 @@
 
 pkgname='influxdb'
 _gitname='influxdb'
-pkgver='0.13.0'
+pkgver='1.0.0'
 pkgrel='1'
-epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
 license=('MIT')
-groups=()
-depends=()
-makedepends=('autoconf' 'go' 'godep' 'git')
-checkdepends=()
-optdepends=()
+depends=('go')
+makedepends=('go' 'git')
 provides=('influxdb')
-conflicts=()
-replaces=()
 backup=('etc/influxdb/influxdb.conf')
-options=()
-install="$pkgname.install"
-source=("$pkgname.install")
-changelog=
-noextract=("$pkgtar")
-md5sums=('SKIP')
-
-prepare()
-{
-  export GOPATH="${srcdir}"
-  export GOBIN="$GOPATH/bin"
-  export INFLUXDBPATH="$GOPATH/src/github.com/influxdata/influxdb"
-  if [ -d $GOBIN ]; then
-    rm -rf $GOBIN;
-  fi;
-
-  go get github.com/influxdata/influxdb
-  cd $INFLUXDBPATH
-  git checkout "v$pkgver"
-  go get github.com/sparrc/gdm
-  $GOBIN/gdm restore
-}
+install='influxdb.install'
+source=("git+https://github.com/influxdata/influxdb#tag=v$pkgver"
+        "influxdb.install"
+        "influxdb.sysusers")
+md5sums=('SKIP'
+         '3fe2817930f48f59596f6021aa4a67d7'
+         '349ecdadb3035718a57e781913a01cf6')
 build()
 {
-  cd $INFLUXDBPATH
-  commit=`git rev-parse HEAD`
-  echo "Building $pkgname version=${pkgver} commit=$commit"
-  go install -ldflags="-X main.version=${pkgver} -X main.commit=$commit" ./...
+  export GOPATH="$srcdir"
+  export PATH="$PATH:$GOPATH/bin"
+  mkdir -p "$GOPATH/src/github.com/influxdata"
+  mv -f "$srcdir/influxdb" "$GOPATH/src/github.com/influxdata/"
+
+  cd "$GOPATH/src/github.com/influxdata/influxdb"
+
+  echo "Downloading dependencies"
+  go get github.com/sparrc/gdm
+  gdm restore
+
+  revision=`git rev-parse HEAD`
+  version=`git describe --tags`
+  echo "Building influxdb version=$version commit=$revision branch=master"
+  go install -ldflags="-X main.version=$version -X main.commit=$revision -X main.branch=master" ./...
+
 }
 package()
 {
-  # systemctl service file
-  install -D -m644  "$INFLUXDBPATH/scripts/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  cd $srcdir
+  install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
 
-  # binaries
-  install -D -m755 "$GOBIN/influxd" "$pkgdir/usr/bin/influxd"
-  install -D -m755 "$GOBIN/influx" "$pkgdir/usr/bin/influx"
+  cd $GOPATH
+  install -Dsm755 bin/influxd "$pkgdir/usr/bin/influxd"
+  install -Dsm755 bin/influx "$pkgdir/usr/bin/influx"
+  install -Dsm755 bin/influx_tsm "$pkgdir/usr/bin/influx_tsm"
 
-  # migration tool from 0.9 to 0.10
-  install -D -m755 "$GOBIN/influx_tsm" "$pkgdir/usr/bin/influx_tsm"
-
-  # configuration file
-  install -D -m644 "$INFLUXDBPATH/etc/config.sample.toml" "${pkgdir}/etc/influxdb/influxdb.conf"
-
-  # license
-  install -Dm644 "$INFLUXDBPATH/LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
+  cd "$GOPATH/src/github.com/influxdata/influxdb"
+  install -Dm644 scripts/influxdb.service "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  install -Dm644 "etc/config.sample.toml" "$pkgdir/etc/influxdb/influxdb.conf"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
 }

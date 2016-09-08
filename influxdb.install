@@ -1,15 +1,8 @@
+#/bin/sh
+
+# arg 1:  the new package version
 post_install() {
-  post_upgrade
-  passwd -l influxdb &>/dev/null
+  systemd-sysusers influxdb.conf
 }
 
-post_upgrade() {
-  # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
-  getent group influxdb >/dev/null || groupadd influxdb
-  getent passwd influxdb >/dev/null || useradd -c 'InfluxDB' -g influxdb -d '/var/lib/influxdb' -m -s /bin/false influxdb
-  mkdir -p /var/lib/influxdb
-  chown influxdb:influxdb -R /var/lib/influxdb
-
-  mkdir -p /var/log/influxdb
-  chown influxdb:influxdb -R /var/log/influxdb
-}
+# vim:set ts=2 sw=2 et:
