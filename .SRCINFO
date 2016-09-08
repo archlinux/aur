@@ -1,0 +1,19 @@
+pkgbase = context-mkiv
+	pkgdesc = The ConTeXt MkIV typesetting system; additional files
+	pkgver = 20160905_1028
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = rsync
+	makedepends = luatex-svn
+	makedepends = context-git
+	depends = luatex-svn
+	depends = context-git
+	conflicts = context-minimals-git
+	source = context-setup-env.sh
+	source = context-wrap-mtxrun.sh
+	sha512sums = f7b52dbede67e8c4a924e2700df93a843704045c3b00a17b593dbf7771ec7c857b48c7a6aa95c8bb4923a4c91e68adf63a6223f59c84c0fab3a6023ad0589aaa
+	sha512sums = aa3f9fd05f438965576ad57f5ad1bb2d873b672586f29716e0a2087bde0edc3d3ccf1d0c67b503eb3140dd0ff87bc5be3b9e627867e229cbcddb68cf0ba01099
+
+pkgname = context-mkiv
+
