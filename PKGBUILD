@@ -1,8 +1,8 @@
 # Maintainer: Thomas Weischuh <thomas t-8ch de>
 
 pkgname=ubuntu-keyring
-pkgver=2012.05.19
-pkgrel=2
+pkgver=2016.09.01
+pkgrel=1
 pkgdesc="GnuPG keys of the Ubuntu archive"
 arch=('any')
 url="http://packages.ubuntu.com/trusty/ubuntu-keyring"
@@ -12,7 +12,7 @@ depends=('gnupg')
 source=("http://mirror.netcologne.de/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_${pkgver}_all.deb")
 
 package() {
-  tar xzvf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
+  tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
 }
 
-sha256sums=(315a58b14eec1e9252b2a2e294f2a4be1ccd043adb58bf5b7f56a538843ed504)
+sha256sums=('8b8956f84e446859f5009a5836956173109dc63f4fc4eb018ea9cb120f77d2e0')
