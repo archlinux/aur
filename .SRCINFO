@@ -1,7 +1,7 @@
 pkgbase = networkmanager-strongswan-passwordstore
 	pkgdesc = Strongswan NetworkManager plugin with default setting to save vpn password in keyfile
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager
 	arch = i686
 	arch = x86_64
