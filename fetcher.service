@@ -1,13 +1,10 @@
 [Unit]
 Description=Update some git repos
-Wants=network-online.target
 After=network-online.target
 
 [Service]
-Type=simple
-User=%i
-ExecStart=/bin/bash /usr/bin/fetcher -f=/home/%i/.config/fetcher.conf
+ExecStart=/bin/bash /usr/bin/fetcher -f=%h/.config/fetcher.conf
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ; vim:set ft=systemd:

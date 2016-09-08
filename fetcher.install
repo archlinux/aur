@@ -1,6 +1,9 @@
 post_install() {
     echo ================================== Important =================================
+    echo Start the fetcher daemon with:
+    echo systemctl start --user fetcher.service
+    echo ==============================================================================
     echo Enable the fetcher daemon with:
-    echo systemctl enable fetcher@\$USER.service
+    echo systemctl enable --user fetcher.service
     echo ==============================================================================
 }
