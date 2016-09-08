@@ -5,7 +5,7 @@ pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.7
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -26,8 +26,8 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
-            '2b2cf30386b5b89b181bf125aeb5e40857266dbcfb23b2f37b48b487e9b73b1d'
-            '1afe2b3290b3978a0700d2e3608159a8c47d90196676443a32028ee562aba643'
+            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
+            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
