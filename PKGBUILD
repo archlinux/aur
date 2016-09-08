@@ -6,7 +6,7 @@
 pkgname='clam-git'
 _gitname=clams
 pkgver=1.4.5.277.g9085811
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://www.clamclient.com"
 depends=('qt4' 'miniupnpc' 'db4.8' 'boost-libs' 'qrencode')
