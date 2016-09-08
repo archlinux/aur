@@ -1,11 +1,10 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bitchx-git
-pkgver=0+24_e60bfb7
+pkgver=1.2.1.r118.gdc17b05
 pkgrel=1
 pkgdesc="An IRC (Internet Relay Chat) client."
 arch=('i686' 'x86_64')
-#url="http://www.bitchx.ca/"
-url="https://github.com/BitchX/BitchX"
+url="http://bitchx.sourceforge.net/"
 license=('GPL2')
 groups=()
 depends=('openssl')
@@ -16,13 +15,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname::git+https://github.com/BitchX/BitchX.git")
+source=("$pkgname::git+git://git.code.sf.net/p/bitchx/git")
 noextract=()
 md5sums=('SKIP')
 
 pkgver () {
   cd "$srcdir/$pkgname"
-  echo "0+$(git rev-list --count HEAD)_$(git describe --always )"
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^bitchx\.//'
 }
 
 build() {
@@ -39,5 +38,6 @@ build() {
 package() {
   cd $srcdir/$pkgname
   make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYRIGHT $pkgdir/usr/share/doc/${pkgname%-*}/COPYRIGHT
 }
 
