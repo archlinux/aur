@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=342.940c381
+pkgver=394.ab671bc
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -20,7 +20,6 @@ options=('!strip')
 
 build(){
   cd $srcdir/${_pkgname}
-#  npm install --production
   npm install
   npm run build
   rm -rf {.git*,.eslint*,.travis*}
@@ -49,4 +48,4 @@ pkgver() {
 
 md5sums=('SKIP'
          '33bdb461a15ea719be2bf41caa9d72d5'
-         'd7394c8c503c5c930a7d3ceb005a2d3d')
+         'c73725d3737122cca0197da8fedee48f')
