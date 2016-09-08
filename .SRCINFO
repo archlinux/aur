@@ -1,0 +1,24 @@
+pkgbase = cronograph-conky
+	pkgdesc = A free, conky clock widget for X which displays date, time and weather information
+	pkgver = 262.81b2d8f
+	pkgrel = 1
+	url = https://github.com/drxspace/cronoconky
+	install = cronograph-conky.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = fontconfig
+	depends = curl
+	depends = lm_sensors
+	optdepends = hddtemp: https://wiki.archlinux.org/index.php/Hddtemp
+	provides = cronograph-conky
+	options = !strip
+	options = !docs
+	options = !emptydirs
+	options = !optipng
+	options = !debug
+	source = git+https://github.com/drxspace/cronoconky.git
+	sha1sums = SKIP
+
+pkgname = cronograph-conky
+

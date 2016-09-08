@@ -1,0 +1,75 @@
+post_install() {
+	echo "Building font information cache files. Please wait...";
+	fc-cache -f;
+	echo ;
+	echo -e "\e[37;46m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[37;46m│ From now on, due to brevity, I'll call this project as “crono”         │\e[0m";
+	echo -e "\e[37;46m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+	echo -e "\e[37;44m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[37;44m│ \e[48;5;18m                     Instruction - HDDTEMP                            \e[44m │\e[0m";
+	echo -e "\e[37;44m│ If you want “crono” to display your HDD temperature you have to        │\e[0m";
+	echo -e "\e[37;44m│ install the \e[1mhddtemp\e[21m package. To do so type in terminal:                │\e[0m";
+	echo -e "\e[37;44m│ ‑ $ \e[1msudo pacman -S hddtemp\e[21m                                             │\e[0m";
+	echo -e "\e[37;44m│ Then you should check the service script and select proper disk        │\e[0m";
+	echo -e "\e[37;44m│ by typing, first the command $ \e[1mlsblk\e[21m to find your disk and then:       │\e[0m";
+	echo -e "\e[37;44m│ ‑ $ \e[1msudo vi /usr/lib/systemd/system/hddtemp.service\e[21m                    │\e[0m";
+	echo -e "\e[37;44m│ Next, edit the line starting as \e[1mExecStart=\e[21m                             │\e[0m";
+	echo -e "\e[37;44m│ P.S. check also this: \e[1mhttps://wiki.archlinux.org/index.php/Hddtemp\e[21m     │\e[0m";
+	echo -e "\e[37;44m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+	echo -e "\e[37;41m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[37;41m│ \e[30;48;5;196m                     Instruction - TEMPERATURE UNIT                   \e[37;41m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m· At first, visit: \e[1mhttps://www.yahoo.com/news/weather\e[21m and click on    \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  the link \e[1;7mChange location\e[21;27m to detect yours. The \e[1mWOEID\e[21m is the number   \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  appears at the right of the URL, next to the dash. Next, type the   \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  command:                                                            \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  ‑ $ \e[1msudo sed -i 's/WOEID=.*/WOEID=<WOEID-code-of-yours>/'\e[21m           \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m       \e[1m/opt/cronograph_blk/yahooweather/forecasts.sh\e[21m                  \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m· If you live in a country that uses the imperial system of units then\e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  you have to enter the following two commands in the terminal so you \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  can see, all objects display a temperature, in “fahrenheit” degree  \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  ‑ $ \e[1msudo sed -i 's/^--temperature_unit/temperature_unit/'\e[21m           \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m       \e[1m/opt/cronograph_blk/cronorc\e[21m                                    \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  ‑ $ \e[1msudo sed -i 's/^#temperature_unit/temperature_unit/'\e[21m            \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m       \e[1m/opt/cronograph_blk/yahooweather/forecasts.sh\e[21m                  \e[37m │\e[0m";
+	echo -e "\e[37;41m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+	echo -e "\e[91;40m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[91;40m│ \e[37;101m                     Instruction - CONKY                              \e[91;40m │\e[0m";
+	echo -e "\e[91;40m│ \e[97m· In order “crono” to work you need to install a \e[1mconky\e[21m package that   \e[91m │\e[0m";
+	echo -e "\e[91;40m│ \e[97m  has \e[1mLUA\e[21m bindings enabled. I'd recommend \e[1mONE\e[21m of the following two    \e[91m │\e[0m";
+	echo -e "\e[91;40m│ \e[97m  AUR packages:                                                       \e[91m │\e[0m";
+	echo -e "\e[91;40m│ \e[97m  ‑ https://aur.archlinux.org/packages/conky-lua-archers              \e[91m │\e[0m";
+	echo -e "\e[91;40m│ \e[97m  ‑ \e[1mhttps://aur.archlinux.org/packages/conky-lua-archers-git\e[21m          \e[91m │\e[0m";
+	echo -e "\e[91;40m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+	echo -e "\e[30;107m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[30;107m│ \e[47m                     I N S T R U C T I O N S                          \e[30;107m │\e[0m";
+	echo -e "\e[30;107m│ · You can use three commands to manipulate “crono”. These are:         │\e[0m";
+	echo -e "\e[30;107m│   ‑ $ \e[1mstart_crono\e[21m (starts it ... try it now!)                          │\e[0m";
+	echo -e "\e[30;107m│   ‑ $ \e[1mrestart_crono\e[21m (restarts it)                                      │\e[0m";
+	echo -e "\e[30;107m│   ‑ $ \e[1mstop_crono\e[21m (yay... stops it)                                     │\e[0m";
+	echo -e "\e[30;107m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+}
+
+pre_upgrade() {
+	echo "I'll try to stop the “crono”. If it's not running an error comes up. It's normal.";
+	stop_crono 2>/dev/null;
+}
+
+post_upgrade() {
+	echo ;
+	echo -e "\e[30;107m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
+	echo -e "\e[30;107m│ \e[47m                      I N S T R U C T I O N                           \e[30;107m │\e[0m";
+	echo -e "\e[30;107m│ · You can now run (if you want) in terminal the command:               │\e[0m";
+	echo -e "\e[30;107m│   ‑ $ \e[1mstart_crono\e[21m                                                      │\e[0m";
+	echo -e "\e[30;107m└────────────────────────────────────────────────────────────────────────┘\e[0m";
+	echo ;
+}
+
+pre_remove() {
+	echo "I'll try to stop the “crono”. If it's not running an error comes up. It's normal.";
+	stop_crono 2>/dev/null;
+}
