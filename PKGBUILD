@@ -15,7 +15,7 @@ license=('MIT')
 pkgdesc="The most widely held crypto-currency ever! This package provides both the GUI QT4 and daemon clients."
 provides=('clam-qt' 'clamd')
 conflicts=('clam-qt' 'clamd')
-source=("git://github.com/ShapeShifter499/clams.git"
+source=("git://github.com/nochowderforyou/clams.git"
         "diff.patch")
 sha256sums=('SKIP'
       
@@ -26,10 +26,10 @@ pkgver() {
         git describe | sed "s/^v//; s/-/./g"
 }
 
-#prepare() {
-#    cd "$srcdir/$_gitname"
-#    patch -Np1 -i "$srcdir"/diff.patch
-#}
+prepare() {
+    cd "$srcdir/$_gitname"
+    patch -Np1 -i "$srcdir"/diff.patch
+}
 
 build() {
 	cd "$srcdir/$_gitname"
