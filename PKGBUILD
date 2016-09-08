@@ -10,6 +10,7 @@ url="http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager"
 license=('GPL')
 depends=('networkmanager' 'strongswan>=5.5.1' 'libnm-gtk')
 makedepends=('intltool')
+conflicts=('networkmanager-strongswan-passwordstore')
 source=("http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.bz2"{,.sig})
 sha256sums=('02680f5226213ec69994b4e0c22229c1d777a3f8eff96a03f79326921ef5d661'
             'SKIP')
