@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Netflix
+GenericName=Netflix viewer
+GenericName[de]=Netflix Betrachter
+Comment=Actually it's just Chrome
+Comment[de]=Eigentlich Chrome
+StartupWMClass=google-chrome
+Exec=/usr/bin/google-chrome-stable --app=https://www.netflix.com/browse/
+Terminal=false
+Icon=netflix
+Type=Application
+Categories=AudioVideo;Video;
+X-Desktop-File-Install-Version=0.22

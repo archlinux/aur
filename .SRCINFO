@@ -1,0 +1,15 @@
+pkgbase = netflix
+	pkgdesc = Watch Netflix and stream it to chromecast.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = google-chrome
+	source = netflix.png
+	source = netflix.desktop
+	md5sums = 56ced67fc54f8dbc53977f9262eb8736
+	md5sums = 2fded08652e2b3e1d837f838e7936f4a
+
+pkgname = netflix
+
