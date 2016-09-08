@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=plasma5-applets-volumewin7mixer
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="A fork of the default volume plasmoid with a Windows 7 theme (vertical sliders)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('plasma-workspace' 'qt5-declarative')
 makedepends=('extra-cmake-modules')
 source=(https://github.com/Zren/plasma-applets/archive/volumewin7mixer-$pkgver.tar.gz
         https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-volumewin7mixer/Add_CMakeLists.patch)
-md5sums=('f582e67fca264c17cbea3be7c58015b6'
+md5sums=('6b8ec6492494c4d2992fc9f871e25973'
          '78e377c969441382dd6d931688f43cbe')
 
 prepare() {
