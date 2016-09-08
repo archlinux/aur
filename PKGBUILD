@@ -1,7 +1,7 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname=('python-nexusformat' 'python2-nexusformat')
 _pkgname=nexusformat
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Provides an API to open, create, and manipulate NeXus data."
 url="https://github.com/nexpy/nexusformat"
@@ -9,7 +9,7 @@ arch=("any")
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/nexpy/nexusformat/archive/v${pkgver}.tar.gz")
-md5sums=('d8cec5304952793130d0286e5e07a4f5')
+md5sums=('3be301fcd0d53ef889bcf28646157068')
 
 prepare() {
     cp -a "${srcdir}/$_pkgname-$pkgver"{,-py2}
