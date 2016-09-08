@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=0.7.1
+Name=OpenDungeons
+GenericName=Open source game inspired by the Dungeon Keeper series
+Exec=/usr/bin/opendungeons
+Categories=Game
