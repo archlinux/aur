@@ -1,0 +1,15 @@
+pkgbase = context-git
+	pkgdesc = The ConTeXt typesetting system; sources from Git
+	pkgver = 3f59c56
+	pkgrel = 1
+	url = http://pragma-ade.nl
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = luatex-svn
+	conflicts = context-minimals-git
+	source = context-mirror-git::git+https://bitbucket.org/phg/context-mirror.git#branch=beta
+	sha256sums = SKIP
+
+pkgname = context-git
+
