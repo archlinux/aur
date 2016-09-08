@@ -3,7 +3,7 @@
 
 pkgname=vivaldi
 pkgver=1.4.589.11
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -28,10 +28,10 @@ package() {
     chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
 
     # make /usr/bin/vivaldi available if its not there
-    if [[ ! -e "$pkgdir/usr/bin/vivaldi" ]]; then
+    if [[ ! -e "$pkgdir/usr/bin/vivaldi-stable" ]]; then
         install -dm 755 "$pkgdir/usr/bin"
         ln -sf /opt/vivaldi/vivaldi \
-            "$pkgdir/usr/bin/vivaldi"
+            "$pkgdir/usr/bin/vivaldi-stable"
     fi
 
     # install icons
