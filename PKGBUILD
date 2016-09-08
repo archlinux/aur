@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=solidity-git
-pkgver=v0.3.6.r45.g7c15fa6
+pkgver=v0.4.0.r2.g8a057e3
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
