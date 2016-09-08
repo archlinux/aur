@@ -1,10 +1,12 @@
 pkgbase = yubikey-manager
 	pkgdesc = Command line and GUI tool for configuring YubiKeys, over all transports.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.yubico.com/yubikey-manager/
 	arch = any
 	license = BSD
+	makedepends = python2-pyside-tools
+	makedepends = imagemagick
 	depends = python
 	depends = python-pyusb
 	depends = python-pyscard
@@ -13,7 +15,9 @@ pkgbase = yubikey-manager
 	depends = libu2f-host
 	depends = yubikey-personalization
 	source = https://developers.yubico.com/yubikey-manager/Releases/yubikey-manager-0.1.0.tar.gz
+	source = ykman-gui.desktop
 	sha256sums = a710b1ba35e88d2651e7ab8a0b93a68dceab4be6be457dd56fb8c84f22674f3d
+	sha256sums = 57e9637916c0f32f06294ddeae09310a881db0c3443ac14bdef18cc9141d34be
 
 pkgname = yubikey-manager
 
