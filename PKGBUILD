@@ -4,7 +4,7 @@
 
 pkgname=sunflower
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Small, customizable twin-panel file manager"
 url="http://sunflower-fm.org"
 arch=('any')
@@ -21,7 +21,7 @@ options=(!strip !zipman)
 source=($url/pub/${pkgname}-${pkgver}-61.tgz
         sunflower)
 md5sums=('a5cd28438e83b88e5a4edeb3aacef0c6'
-         '95b68d1631f9406d55bd772231b021e6')
+         '2b82893044516c131b6d05dba5b94807')
 
 package() {
   install -Dm755 sunflower "${pkgdir}/usr/bin/sunflower"
@@ -29,5 +29,6 @@ package() {
   cd Sunflower
   cp -r * "${pkgdir}/usr/share/sunflower"
   install -Dm644 Sunflower.desktop "${pkgdir}/usr/share/applications/sunflower.desktop"
-  install -Dm644 images/sunflower_64.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
+  install -Dm644 images/sunflower.svg "${pkgdir}/usr/share/pixmaps/sunflower.svg"
+  install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
 }
