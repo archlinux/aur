@@ -1,8 +1,8 @@
 pkgbase = txi2p
 	pkgdesc = I2P bindings for Twisted
 	pkgver = 0.3
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/transi2p
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/txi2p
 	arch = any
 	license = BSD
 	depends = python2-twisted
