@@ -1,0 +1,22 @@
+From 10175a16b762282acd90ee624a73b55a362fbbca Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Sun, 14 Feb 2016 17:07:07 +0800
+Subject: [PATCH] Use system git's diff_highlight
+
+---
+ diff-so-fancy | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/diff-so-fancy b/diff-so-fancy
+index b17cf29..9f62e72 100755
+--- a/diff-so-fancy
++++ b/diff-so-fancy
+@@ -19,7 +19,7 @@ hash gsed 2> /dev/null && SED=gsed || SED=sed
+ if hash diff-highlight 2> /dev/null; then
+   diff_highlight=diff-highlight
+ else
+-  diff_highlight="$(get_script_dir)/third_party/diff-highlight/diff-highlight"
++  diff_highlight="/usr/share/git/diff-highlight/diff-highlight"
+ fi
+ 
+ CSI=$'\x1b\['
