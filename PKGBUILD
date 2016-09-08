@@ -3,9 +3,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=162.1967.5
+_buildver=162.1967.10
 _pkgver=2016.2.3
-_eap="True"
+_eap="False"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
 epoch=2
@@ -15,8 +15,7 @@ options=('!strip')
 url="https://confluence.jetbrains.com/pages/viewpage.action?pageId=23004355"
 license=("custom")
 makedepends=("wget")
-provides=("pycharm-professional" "pycharm-pro-eap")
-conflicts=("pycharm-professional" "pycharm-pro-eap")
+provides=('pycharm' 'pycharm-professional')
 groups=("development" "IDE" "editor" "jetbrains")
 
 if [[ "True" = "${_eap}" ]]; then
