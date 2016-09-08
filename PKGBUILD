@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=mate-common
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=1
 pkgdesc="Common development macros for MATE (GTK3 version)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('autoconf' 'automake' 'gettext' 'gtk-doc' 'intltool' 'libtool'
 groups=('mate')
 url="http://mate-desktop.org"
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f9fa3d4758472f79850f864177ed879059f1e34f')
+sha1sums=('69a23aa68d85832572712d0aaadda84c8c546679')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
