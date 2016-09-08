@@ -1,0 +1,18 @@
+pkgbase = luatex-svn
+	pkgdesc = The LuaTeX engine, current SVN trunk, standalone binary
+	pkgver = r6121
+	pkgrel = 1
+	url = http://www.luatex.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	license = boost
+	license = MIT
+	license = libpng
+	license = LGPL2.1
+	makedepends = subversion
+	conflicts = context-minimals-git
+
+pkgname = luatex-svn
+
