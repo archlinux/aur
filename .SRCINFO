@@ -1,7 +1,7 @@
 pkgbase = yubikey-manager-git
 	pkgdesc = Command line and GUI tool for configuring YubiKeys, over all transports.
 	pkgver = 0.1.0.r50.19abdf1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Yubico/yubikey-manager
 	arch = any
 	license = BSD
@@ -19,8 +19,10 @@ pkgbase = yubikey-manager-git
 	conflicts = yubikey-manager
 	source = yubikey-manager::git+https://github.com/Yubico/yubikey-manager.git
 	source = git+https://github.com/Yubico/python-yubicommon.git
+	source = ykman-gui.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 57e9637916c0f32f06294ddeae09310a881db0c3443ac14bdef18cc9141d34be
 
 pkgname = yubikey-manager-git
 
