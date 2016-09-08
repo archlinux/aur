@@ -1,11 +1,11 @@
 pkgname=bliss-git
 _gitname=bliss
-pkgver=0.6.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=3
 pkgdesc="A music analyzer library"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('ffmpeg' 'gtk3')
+depends=('ffmpeg')
 source=('git://github.com/Polochon-street/bliss')
 md5sums=('SKIP')
  
