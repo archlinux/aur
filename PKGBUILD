@@ -1,16 +1,16 @@
 # Maintainer: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-uncompyle6
-pkgver=2.4.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Python byte-code disassembler and source-code converter."
 arch=('any')
 url="https://github.com/rocky/python-uncompyle6/"
 license=('MIT')
 makedepends=('python')
-depends=('python-spark-parser>=1.2.1')
-source=("https://pypi.python.org/packages/85/85/c266830c16aa339869dd3b9c09c158b20295b0ac11126af9720bf9f18cac/uncompyle6-${pkgver}.tar.gz")
-sha256sums=('3ea9877d880ea28f678524a5f846a7f8c09ad32681bcede8de3755ddf8bc1c3e')
+depends=('python-spark-parser>=1.4.0')
+source=("https://pypi.python.org/packages/ce/ce/186078fad64990b7ceefc7f144eace02363ff46d7fb45ad8ac23be7a3463/uncompyle6-${pkgver}.tar.gz")
+sha256sums=('f42de9f551e5680cd411d146a0dafca2971ed546691015f147f790816718090a')
 
 build() {
     cd "$srcdir/uncompyle6-${pkgver}"
