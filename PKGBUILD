@@ -4,11 +4,10 @@
 
 pkgname=mawk
 pkgver=1.3.4_20160905
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the AWK Programming Language"
 arch=('i686' 'x86_64')
 license=('GPL')
-provides=('awk')
 depends=('glibc')
 url="http://invisible-island.net/mawk/"
 source=("$pkgname-$pkgver.tar.gz::http://invisible-island.net/datafiles/release/$pkgname.tar.gz")
