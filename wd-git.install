@@ -8,7 +8,7 @@ post_install() {
     echo "                                                      "
     echo " example for bash:                                    "
     echo "     # mkdir ~/bin/                                   "
-    echo "     # cp ${pkgdir}/usr/share/wd/wd.sh ~/bin/         "
+    echo "     # ln -s ${pkgdir}/usr/share/wd/wd.sh ~/bin/      "
     echo "     # echo \"source ~/bin/wd.sh\" >> ~/.bashrc       "
     echo "                                                      "
     echo "======================================================"
