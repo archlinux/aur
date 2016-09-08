@@ -3,10 +3,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=linux-bld       # Build kernel with a different name
-_srcname=linux-4.6
+_srcname=linux-4.7
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.6.7
+pkgver=4.7.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -14,10 +14,10 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqversion=v8r2
+_bfqversion=v8r3
 _bfqversion_old=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqversion}"
-_BLDpatch="BLD-4.6.patch"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-${_bfqversion}"
+_BLDpatch="BLD-4.7.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -28,27 +28,27 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-4.6.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-for-4.6.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-4.7.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-for-4.7.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-${_bfqversion}-for.patch"
+        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
-sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
+sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            'e06e9f84571856b02eb5c1d399e120a7ae8d618e4b444009dd53c9ca8f89fa11'
+            '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
-            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
+            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
+            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '1857e05fd79baffc04dd075be81257d0a43351c244b7f360b48408a28ecfde2d'
-            '595887ea141ee7373460d325368f362ca87695259b9bca3499f12ef76322172b'
+            'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
+            '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
             'd90d5525e3b4fefbd218e04b09c2234700226ecd8a350e8d88a3145c02b82c18'
-            '61aee69b0421c984d366b40102fa930c3fca272ef5d38f44cff3710dbc5543c4'
-            'f7c6dead74777b8b3f2c229556265e01205a8ac5e49f92273169511842bf69be')
+            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27'
+            'bc13eb1b36f6549d3340bbf3aab1e54b421adfd85afe9959a2e446e0b28da9b3')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
