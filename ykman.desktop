@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=YubiKey Manager
+GenericName=YubiKey Manager
+Comment=Graphical application for configuring a YubiKey.
+Exec=ykman
+Icon=ykman
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=YubiKey;Manager;
