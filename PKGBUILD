@@ -5,7 +5,7 @@
 _ver=1.15
 _pkgbase=libmateweather
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=2
 pkgdesc="Provides access to weather information from the Internet (GTK3 version)"
 url="http://mate-desktop.org"
@@ -17,7 +17,7 @@ depends=('dconf' 'gtk3' 'libsoup' 'glib2' 'gtk-update-icon-cache')
 groups=('mate-extra')
 makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ad4357c0a2e2d5c61b601b4b8fddbd409b82186f')
+sha1sums=('afda6d54267ed27dfd7a19af8d7dc9ebed300163')
 
 prepare() {
     cd "${srcdir}"
