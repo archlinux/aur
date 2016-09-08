@@ -3,7 +3,7 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.5+p67+g77e4d1b
+pkgver=2.7+p0+gd2d5968
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -22,12 +22,14 @@ source=(git://git.sv.gnu.org/freetype/freetype2.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
+        0005-freetype-2.5.2-more-demos.patch
         freetype2.sh)
 sha1sums=('SKIP'
           'SKIP'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
           '41d27140fd590945e22e012c9dce62de3d6f11e6'
+          '72cfecbe738085eec475e012617661ad0cc9b76f'
           'bc6df1661c4c33e20f5ce30c2da8ad3c2083665f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
@@ -43,6 +45,7 @@ prepare() {
   ./autogen.sh
 
   cd ../freetype2-demos
+  patch -Np1 -i ../0005-freetype-2.5.2-more-demos.patch
 
   # Suppress RPATH
   sed -i '/X11_LIB:%=-R%/d' graph/x11/rules.mk
