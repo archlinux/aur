@@ -2,9 +2,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-_commit=6276dcb0ae497766056b4c09ea75be1d76a8b679
+_commit=4fc690be310dd02e0ab6529c0b9bf348a8b26a19
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -16,9 +16,9 @@ provides=('vscode-oss')
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'product_json.patch')
-sha1sums=('0b76cd30c84eef47ad4043c71467027148bcfebd'
+sha1sums=('3fbfcc0e8acbc8795db310b7edd250cb263c21d8'
           '9c4176c4d99103736df6746ca174b5026bd57e6b'
-          '8a36a8af89af183e0fa29d9141a1bb4ae9cafd5a')
+          'ba8febe936932080610d899fdb57294fc2f9f614')
 
 case "$CARCH" in
     i686)
