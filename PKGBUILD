@@ -3,12 +3,12 @@
 pkgname=('yubikey-manager-git')
 _gitname='yubikey-manager'
 pkgver=0.1.0.r50.19abdf1
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line and GUI tool for configuring YubiKeys, over all transports.'
 arch=('any')
 url='https://github.com/Yubico/yubikey-manager'
-license=('custom')
-depends=('python' 'python-pyusb' 'python-pyscard' 'python-pyside' 'python-click')
+license=('BSD')
+depends=('python' 'python-pyusb' 'python-pyscard' 'python-pyside' 'python-click' 'libu2f-host' 'yubikey-personalization')
 conflicts=('yubikey-manager')
 provides=('yubikey-manager')
 source=("$_gitname::git+https://github.com/Yubico/yubikey-manager.git"
