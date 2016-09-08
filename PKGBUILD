@@ -19,7 +19,7 @@ source=("git://github.com/nochowderforyou/clams.git"
         "diff.patch")
 sha256sums=('SKIP'
       
-'35bf3c157717e8d6376c3a15b18297b6dadf842f5aff79c9243e26b77bbb1bb6')
+'ee44c9ecbe2a9be8680c6d558185781341fcf020f0dea43ef1066475c44c7d27')
 
 pkgver() {
         cd "$srcdir/$_gitname"
