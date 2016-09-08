@@ -1,0 +1,14 @@
+_update_fonts() {
+  echo "Rescaning system to build font cache"
+  fc-cache --force --system-only
+}
+
+post_install() {
+  _update_fonts
+}
+
+post_upgrade() {
+  _update_fonts
+}
+
+# vim:set ts=2 sw=2 et:
