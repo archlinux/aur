@@ -1,3 +1,22 @@
+3.4
+---
+
+ - New module :py:mod:`pyteomics.mzxml` for parsing of MzXML files.
+
+ - New parameter `dtype` in :py:func:`pyteomics.mgf.read`, :py:func:`pyteomics.mzml.read`
+   and :py:func:`pyteomics.mzxml.read`
+   allows changing the dtype of arrays yielded by the parsers.
+
+ - :py:mod:`pyteomics.featurexml` moved into a subpackage :py:mod:`pyteomics.openms`.
+
+ - New module :py:mod:`pyteomics.openms.trafoxml` for OpenMS transformation files.
+
+ - Bugfix in XML indexing code to make it work on Python 3.x versions prior to 3.5.
+
+ - Bugfix in :py:func:`pyteomics.pylab_aux.scatter_trend` (support for lists and other non-ndarrays).
+
+ - Performance improvements in :py:mod:`pyteomics.achrom` calibration functions.
+
 3.3.1
 -----
 
@@ -5,10 +24,10 @@ New submodule :py:mod:`pyteomics.featurexml` with a parser for OpenMS **featureX
 
 3.3
 ---
-   
+
  - mzML and mzIdentML parsers can now create an index of element offsets.
    This allows quick random access to elements by unique ID.
-   
+
  - mzML parsers now come in two flavors: :py:class:`pyteomics.mzml.MzML` and
    :py:class:`pyteomics.mzml.PreIndexedMzML`. The latter uses the byte offsets
    listed at the end of the file.
@@ -81,7 +100,7 @@ Other changes:
  - Bugfix in :py:mod:`pyteomics.auxiliary`.
 
  - New parameter `show_legend` in :py:func:`pyteomics.pylab_aux.scatter_trend`.
- 
+
  - Performance improvements in :py:mod:`pyteomics.parser`.
 
 3.1
