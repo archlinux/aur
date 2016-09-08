@@ -9,7 +9,7 @@
 pkgbase=python-django-extensions
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-extensions python2-django-extensions)
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='A collection of custom extensions for the Django Framework.'
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('6fde370094ce6f828100a1fc8a31b4f585a03e572416c5b99c69d4ede60a13ba')
+sha256sums=('74e965288bef1936e08cf4b5967c9a4efb7fc79a79ae07112aeffc759a92c270')
 
 package_python-django-extensions() {
   depends=(python-django python-six)
