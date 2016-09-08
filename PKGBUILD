@@ -8,8 +8,8 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=kodi-standalone-service
-pkgver=1.8
-pkgrel=5
+pkgver=1.81
+pkgrel=1
 pkgdesc="Systemd service and user to run kodi in stand-alone mode"
 # Arch ARM users do NOT attempt to use this package on Arch ARM!
 # This is only for x86_64 and i686. You have been warned.
@@ -20,7 +20,7 @@ depends=('systemd' 'xorg-server' 'xorg-xinit' 'kodi' 'polkit')
 replaces=('xbmc-standalone-service')
 install=readme.install
 source=("https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a165a66e976bb1a6ac622618887c2f9699acd84d8790af517b85a66bf5e0474c')
+sha256sums=('06910727cf133aeeb07dbe40dd3c1cf1b2dd2ed71b5d98ae7e9c352e7a59a70c')
 
 package() {
 	install -Dm644 "$srcdir/$pkgname-$pkgver/init/kodi.service" \
