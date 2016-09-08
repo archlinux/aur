@@ -1,0 +1,15 @@
+pkgbase = blender-plugin-uvsquares-git
+	pkgdesc = Blender addon for reshaping UV selection into grid.
+	pkgver = r63.db80da3
+	pkgrel = 1
+	url = https://cgcookiemarkets.com/blender/all-products/uv-squares/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = blender
+	conflicts = blender-plugin-uvsquares
+	source = uvsquares::git+https://github.com/Radivarig/UvSquares.git
+	md5sums = SKIP
+
+pkgname = blender-plugin-uvsquares-git
+
