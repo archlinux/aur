@@ -2,9 +2,9 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-systemview
-pkgver=2.40
+pkgver=2.40a
 pkgrel=2
-epoch=2
+epoch=3
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,8 +14,8 @@ source=("cookie::https://www.segger.com/downloads/login")
 source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_i386.tgz")
 md5sums=('SKIP')
-md5sums_i686=('06f6720487492e3fde17ac1b89a3f01e')
-md5sums_x86_64=('8720d22642a8c091cdcbb6ed54ff63ea')
+md5sums_i686=('7245c7a6175111fcf9b654a531b6d7c7')
+md5sums_x86_64=('6ffbfb90e0ae2519354b9fada44f87bc')
 url="https://www.segger.com/downloads/free_tools"
 DLAGENTS=("https::/usr/bin/env curl -c cookie -d name=archsegger@free.fr -d password=QfNDbvDUa7 %u -o %o")
 
