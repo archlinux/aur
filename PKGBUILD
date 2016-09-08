@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
 depends=(kmime)
-makedepends=(extra-cmake-modules python akonadi kdelibs4support kdesignerplugin kdoctools boost)
+makedepends=(extra-cmake-modules python akonadi boost)
 source=("http://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz")
 md5sums=('6bc7804c4aef2f7c0f3c0ba465833968')
 
