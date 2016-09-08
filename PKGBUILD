@@ -1,23 +1,26 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=toggl-bin
-pkgver=7.3.247
-pkgrel=9
+pkgver=7.3.325
+pkgrel=1
 pkgdesc="Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)"
 arch=('x86_64')
 url="https://toggl.com"
 license=('BSD')
 install=${pkgname}.install
-source=("https://github.com/toggl/toggldesktop/releases/download/v7.3.247/toggldesktop_linux_x86_64-7_3_247.tar.gz"
-"toggl.desktop" "TogglDesktop.sh")
-md5sums=("928f8e6d1cc25b4fe6e3d0b7c653161c"
-		 "8c12ccdabee1dac4d6bec24cc5b9f5d5"
-		 "9b04cfe4447c0da00d78ad09f44fad1f")
+
+source=(
+	"https://github.com/toggl/toggldesktop/releases/download/v7.3.325/toggldesktop_linux_x86_64-7_3_325.tar.gz"
+	"toggl.desktop"
+)
+md5sums=(
+	"602b11cd5c14efb93460ad2ac0a6fedc"
+	"8c12ccdabee1dac4d6bec24cc5b9f5d5"
+)
 
 package() {
 	cd "${srcdir}"
 	install -dm755 "${pkgdir}/opt/"
 	chmod -R 755 "toggldesktop"
-	cp "TogglDesktop.sh" "toggldesktop/TogglDesktop.sh"
 	chmod +x "toggldesktop/TogglDesktop.sh"
 	cp -r "toggldesktop" "${pkgdir}/opt/toggldesktop"
 	chmod -R 755 "${pkgdir}/opt/toggldesktop"
@@ -27,7 +30,6 @@ package() {
   	done
   	install -dm755 "${pkgdir}/usr/share/applications"
   	install -Dm644 "toggl.desktop" "${pkgdir}/usr/share/applications/toggl.desktop"
-
   	install -dm755 "${pkgdir}/usr/bin"
   	ln -s "/opt/toggldesktop/TogglDesktop.sh" "${pkgdir}/usr/bin/toggl"
 }
