@@ -1,0 +1,17 @@
+[Unit]
+Description=mattermost push server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mattermost-push-proxy -config /etc/mattermost-push-proxy/config.json
+User=mattermost-push-proxy
+Group=mattermost-push-proxy
+NoNewPrivileges=yes
+ReadOnlyDirectories=/etc/mattermost-push-proxy
+ProtectSystem=full
+ProtectHome=yes
+PrivateDevices=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

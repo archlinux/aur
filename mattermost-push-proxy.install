@@ -1,0 +1,13 @@
+post_install() {
+	post_upgrade
+}
+
+post_upgrade() {
+	getent group mattermost-push-proxy >/dev/null || groupadd -r mattermost-push-proxy
+	getent passwd mattermost-push-proxy >/dev/null || useradd -r -g mattermost-push-proxy -d / -s /sbin/nologin -c "Mattermost push proxy" mattermost-push-proxy
+}
+
+post_remove() {
+	getent passwd mattermost-push-proxy >/dev/null && userdel mattermost-push-proxy || true
+	getent group mattermost-push-proxy >/dev/null && (groupdel mattermost-push-proxy || true) || true
+}
