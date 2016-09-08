@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-notes
-pkgver=16.08.0
+pkgver=16.08.1
 pkgrel=1
 pkgdesc="Libraries and daemons to implement management of notes in Akonadi"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(kmime)
 makedepends=(extra-cmake-modules python akonadi kdelibs4support kdesignerplugin kdoctools boost)
 source=("http://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz")
-md5sums=('570a8054b70caec44b9a22e336a1eeba')
+md5sums=('6bc7804c4aef2f7c0f3c0ba465833968')
 
 prepare() {
   mkdir -p build
