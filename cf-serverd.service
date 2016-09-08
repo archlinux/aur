@@ -1,13 +1,22 @@
 [Unit]
 Description=CFEngine Server Daemon
-PartOf=cfengine3.service
+Documentation=man:cf-serverd https://docs.cfengine.com/latest/reference-components-cf-serverd.html
+
 After=network.target
+
+# The following ensures that the service is activated only if we have a
+# promises.cf in place.
+PartOf=cfengine3.service
+
+[Install]
+# The following ensures that the symlink to this unit is created in the
+# cfengine3.service.requires/ directory when this unit is enabled
+# with "systemctl enable" command, and removed with "systemctl disable"
+RequiredBy=cfengine3.service
 
 [Service]
 ExecStart=/var/cfengine/bin/cf-serverd
 Type=forking
 PIDFile=/var/cfengine/cf-serverd.pid
 
-[Install]
-WantedBy=cfengine3.service
-WantedBy=multi-user.target
+

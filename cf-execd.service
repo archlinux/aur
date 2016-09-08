@@ -1,13 +1,27 @@
 [Unit]
 Description=CFEngine Execution Daemon
+Documentation=man:cf-execd https://docs.cfengine.com/latest/reference-components-cf-execd.html
+
 After=network.target
+
+# The following ensures that the service is activated only if we have a
+# promises.cf in place. If there is no promises.cf, there is no configuration
+# for the service either...
+ConditionPathExists=/var/cfengine/inputs/promises.cf
+
+# The following allows stopping/restarting of this service when
+# cfengine3.serice is stopped/restarted
 PartOf=cfengine3.service
+
+[Install]
+# The following ensures that the symlink to this unit is created in the
+# cfengine3.service.requires/ directory when this unit is enabled
+# with "systemctl enable" command, and removed with "systemctl disable"
+RequiredBy=cfengine3.service
 
 [Service]
 ExecStart=/var/cfengine/bin/cf-execd
 Type=forking
 PIDFile=/var/cfengine/cf-execd.pid
 
-[Install]
-WantedBy=cfengine3.service
-WantedBy=multi-user.target
+

@@ -1,13 +1,25 @@
 [Unit]
 Description=CFEngine Monitoring Daemon
-PartOf=cfengine3.service
+Documentation=man:cf-monitord https://docs.cfengine.com/latest/reference-components-cf-monitord.html
+
 After=network.target
+
+# The following ensures that the service is activated only if we have a
+# promises.cf in place. 
+ConditionPathExists=/var/cfengine/inputs/promises.cf
+
+# The following allows stopping/restarting of this service when
+# cfengine3.serice is stopped/restarted
+PartOf=cfengine3.service
+
+[Install]
+# The following ensures that the symlink to this unit is created in the
+# cfengine3.service.requires/ directory when this unit is enabled
+# with "systemctl enable" command, and removed with "systemctl disable"
+RequiredBy=cfengine3.service
+
 
 [Service]
 ExecStart=/var/cfengine/bin/cf-monitord
 Type=forking
 PIDFile=/var/cfengine/cf-monitord.pid
-
-[Install]
-WantedBy=cfengine3.service
-WantedBy=multi-user.target
