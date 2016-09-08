@@ -1,0 +1,47 @@
+diff -aur a/redirfs/rfs.h b/redirfs/rfs.h
+--- a/redirfs/rfs.h	2016-09-08 11:19:33.782302808 +0100
++++ b/redirfs/rfs.h	2016-09-08 11:39:40.808414921 +0100
+@@ -124,11 +124,11 @@
+ 
+ inline static void rfs_inode_mutex_lock(struct inode *inode)
+ {
+-	mutex_lock(&inode->i_mutex);
++	inode_lock(inode);
+ }
+ inline static void rfs_inode_mutex_unlock(struct inode *inode)
+ {
+-	mutex_unlock(&inode->i_mutex);
++	inode_unlock(inode);
+ }
+ #else
+ #define rfs_mutex_t mutex
+@@ -140,11 +140,11 @@
+ 
+ inline static void rfs_inode_mutex_lock(struct inode *inode)
+ {
+-	mutex_lock(&inode->i_mutex);
++	inode_lock(inode);
+ }
+ inline static void rfs_inode_mutex_unlock(struct inode *inode)
+ {
+-	mutex_unlock(&inode->i_mutex);
++	inode_unlock(inode);
+ }
+ #endif
+ 
+diff -aur a/redirfs/rfs_dcache.c b/redirfs/rfs_dcache.c
+--- a/redirfs/rfs_dcache.c	2016-09-08 11:29:37.711005419 +0100
++++ b/redirfs/rfs_dcache.c	2016-09-08 11:39:43.121757790 +0100
+@@ -138,10 +138,10 @@
+ 	rv = rfs_dcache_get_subs(dir, sibs);
+ 	rfs_inode_mutex_unlock(dir->d_inode);
+ #else
+-	lock = mutex_trylock(&dir->d_inode->i_mutex);
++	lock = inode_trylock(dir->d_inode);
+ 	rv = rfs_dcache_get_subs(dir, sibs);
+ 	if (lock)
+-		mutex_unlock(&dir->d_inode->i_mutex);
++		inode_unlock(dir->d_inode);
+ #endif
+ 
+ 	return rv;

@@ -1,5 +1,5 @@
 run_depmod() {
-  KERNEL=4.4.1-1-ARCH
+  KERNEL=4.7.2-1-ARCH
   depmod $KERNEL
 }
 
