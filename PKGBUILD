@@ -13,7 +13,7 @@ depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=('https://github.com/jangernert/FeedReader/archive/v'${pkgver}'.tar.gz')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jangernert/FeedReader/archive/v${pkgver}.tar.gz)
 sha256sums=('c9ddb59d14a2cb04d00db07fcd90f3de07f9ae1f2fb0f21783db8e9a242991ed')
 
 build() {
