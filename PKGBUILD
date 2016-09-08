@@ -3,7 +3,7 @@
 
 pkgname=xgrabcolor
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A basic color picker"
 arch=('i686' 'x86_64')
 url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=xgrabcolor&full=0"
@@ -11,7 +11,6 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake')
 source=(http://hugo.pereira.free.fr/software/tgz/$pkgname-$pkgver.tar.gz)
-options=(ccache)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
