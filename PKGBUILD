@@ -1,19 +1,18 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Contributor: Lex Black <autumn-wind at web dot de>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
 _pyname=xxhash
-_pyver=0.5.0
 pkgname=python-${_pyname,,}
-pkgver=$_pyver
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Python binding for xxHash'
+arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/$_pyname/"
 depends=('python')
-makedepends=()
-checkdepends=()
 license=('BSD')
-arch=('i686' 'x86_64')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-${_pyver:-$pkgver}.tar.gz")
-md5sums=('a12d5502c3a216c690f290f9d38eca4a')
+source=("https://pypi.io/packages/source/${_pyname:0:1}/$_pyname/$_pyname-${_pyver:-$pkgver}.tar.gz")
+md5sums=('bcdbd843eecfda715b089c0aa387b4e7')
+
 
 build() {
   cd $srcdir/$_pyname-${_pyver:-$pkgver}
