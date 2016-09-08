@@ -5,7 +5,7 @@
 
 pkgname='clam-git'
 _gitname=clams
-pkgver=1.4.5.265.ge15b722
+pkgver=1.4.5.273.g304677d
 pkgrel=1
 arch=('any')
 url="http://www.clamclient.com"
@@ -16,9 +16,10 @@ pkgdesc="The most widely held crypto-currency ever! This package provides both t
 provides=('clam-qt' 'clamd')
 conflicts=('clam-qt' 'clamd')
 source=("git://github.com/nochowderforyou/clams.git"
-        "https://github.com/bitcoin/bitcoin/commit/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch")
+        "diff.patch")
 sha256sums=('SKIP'
-            '0910004577764c2251a33c4868c7358a42da68f94d6462e44bbcb1945cefd748')
+      
+'35bf3c157717e8d6376c3a15b18297b6dadf842f5aff79c9243e26b77bbb1bb6')
 
 pkgver() {
         cd "$srcdir/$_gitname"
@@ -27,7 +28,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    patch -Np1 -i "$srcdir"/9f3e48e5219a09b5ddfd6883d1f0498910eff4b6.patch
+    patch -Np1 -i "$srcdir"/diff.patch
 }
 
 build() {
