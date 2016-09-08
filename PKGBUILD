@@ -2,14 +2,14 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.8.1.r123.g71de593
-pkgrel=2
+pkgver=v0.10.0.r1.g8d4dd3c
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
-url="http://searx.me"
+url="https://asciimoo.github.io/searx/"
 license=('AGPL')
-makedepends=('git')
-depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient')
+makedepends=('git' 'openssl')
+depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient' 'python-pysocks')
 backup=('usr/lib/python2.7/site-packages/searx/settings.yml')
 install=searx.install
 source=('git+https://github.com/asciimoo/searx.git'
@@ -28,16 +28,19 @@ pkgver() {
   )
 }
 
-package() {
+prepare() {
   cd $srcdir/searx
 
-  #sed -i \
-  #  -e "s|certifi==2015.11.20.1|certifi>=2015.11.20.1|" \
-  #  -e "s|lxml==3.5.0|lxml>=3.5.0|" \
-  #  -e "s|pygments==2.0.2|pygments>=2.0.2|" \
-  #  -e "s|python-dateutil==2.4.2|python-dateutil>=2.4.2|" \
-  #  requirements.txt
+  # Break stuff... for science
   sed -i "s|==|>=|g" requirements.txt
+
+  msg2 "Generating ultra-secret key..."
+  sed -i "s/ultrasecretkey\" # change this!/`openssl rand -hex 128`\"/g" searx/settings.yml
+  sleep 2
+}
+
+package() {
+  cd $srcdir/searx
 
   python2 setup.py install --root=$pkgdir --optimize=1
   
