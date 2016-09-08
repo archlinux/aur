@@ -2,13 +2,14 @@
 
 pkgname=podiff
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diff tool for PO Gettext files"
 url="http://puszcza.gnu.org.ua/projects/podiff"
 arch=(i686 x86_64)
 license=('GPL')
 depends=()
 makedepends=()
+conflicts=('pyg3t')
 source=("http://download.gnu.org.ua/pub/release/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
