@@ -4,17 +4,18 @@
 
 pkgname=android-sdk-dummy
 _pkgname=android-sdk
-pkgver=25.1.7
+pkgver=25.2.2
 pkgrel=1
 pkgdesc='Google Android SDK, dummy package'
 arch=('i686' 'x86_64')
 url='http://developer.android.com/sdk/'
 license=('custom')
-depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl' 'ncurses' 'swt'
-              'zlib' 'ncurses5-compat-libs')
-depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libstdc++5' 'lib32-libxv'
-                'lib32-mesa' 'lib32-ncurses' 'lib32-sdl' 'lib32-zlib' 'lib32-fontconfig'
-                'lib32-libpulse' 'swt' 'ncurses5-compat-libs')
+depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
+              'ncurses' 'swt' 'zlib')
+depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
+               'lib32-libstdc++5' 'lib32-libxv' 'lib32-mesa' 'lib32-ncurses'
+               'lib32-sdl' 'lib32-zlib' 'lib32-fontconfig' 'lib32-libpulse'
+               'swt')
 optdepends=('android-udev: udev rules for Android devices'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx')
 provides=("${_pkgname}")
