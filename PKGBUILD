@@ -29,6 +29,7 @@ makedepends=(
     'mtdev'
     'libexif'
     'libwebp'
+    'google-breakpad-git'
     
     # QT5 build dependencies
     'xcb-util-keysyms'
@@ -54,10 +55,8 @@ makedepends=(
 qt_version=5.6.0
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
-    "http://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
-    "http://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
-    "breakpad::git+https://chromium.googlesource.com/breakpad/breakpad"
-    "breakpad-lss::git+https://chromium.googlesource.com/linux-syscall-support"
+    "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
+    "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
     "telegramdesktop.desktop"
     "tg.protocol"
 )
@@ -65,8 +64,6 @@ sha256sums=(
     'SKIP'
     '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
     '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
-    'SKIP'
-    'SKIP'
     '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
 )
@@ -89,17 +86,15 @@ prepare() {
         patch -p1 -i "$qt_patch_file"
     fi
     
-    if [ ! -h "$srcdir/Libraries/breakpad" ]; then
-        ln -s "$srcdir/breakpad" "$srcdir/Libraries/breakpad"
-        ln -s "$srcdir/breakpad-lss" "$srcdir/Libraries/breakpad/src/third_party/lss"
-    fi
-    
     sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
     sed -i 's,#xkbcommon\\,xkbcommon\\,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
+    sed -i 's,LIBS += ./../../../Libraries/breakpad/src/client/linux/libbreakpad_client.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
+    sed -i 's,./../../Libraries/breakpad/src,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
     
     sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
     
     (
+        echo "PKGCONFIG += breakpad-client"
         echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
         echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
     ) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
@@ -137,11 +132,6 @@ build() {
     qmake .
     make
     make install
-    
-    # Build breakpad
-    cd "$srcdir/Libraries/breakpad"
-    ./configure
-    make
     
     # Build codegen_style
     mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_style/Release"
