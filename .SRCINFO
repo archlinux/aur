@@ -1,0 +1,16 @@
+pkgbase = python-openzwave
+	pkgdesc = The python-openzwave package without the web component. Used with home-assistant.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/OpenZWave/python-openzwave
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pydispatcher
+	depends = python-urwid
+	options = !emptydirs
+	source = https://github.com/OpenZWave/python-openzwave/raw/master/archives/python-openzwave-0.3.1.tgz
+	sha256sums = 829df24774289a8dc8bd6415b57b94dd4f9eb7ec2cb00c49a6c9e4a5068eb0e5
+
+pkgname = python-openzwave
+
