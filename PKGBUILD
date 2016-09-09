@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A comprehensive solution to managing your dotfiles"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
-depends=('git' 'sed' 'grep' 'bash' 'gpg')
+depends=('git' 'sed' 'grep' 'bash')
 source=('git+https://github.com/Cube777/dotgit.git')
 md5sums=('SKIP')
 
