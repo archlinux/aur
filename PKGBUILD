@@ -3,13 +3,13 @@
 # Contributor: David Danier <david.danier@team23.de>
 
 pkgname=solr
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
 license=('Apache')
 url="http://lucene.apache.org/solr/"
-depends=('java-environment-common')
+depends=('java-runtime-headless')
 makedepends=('unzip')
 source=("http://archive.apache.org/dist/lucene/$pkgname/$pkgver/solr-$pkgver.tgz"
         "solr.service")
@@ -19,7 +19,7 @@ backup=(opt/solr/server/etc/jetty{,-http,-https,-ssl}.xml
         opt/solr/server/solr/zoo.cfg)
 install="$pkgname.install"
 options=(!strip)
-sha256sums=('74630a06d45eb44c0afe2bfb6e2cd80c9d8d92aa0c48a563e39c32996a76c8b0'
+sha256sums=('ba7c93e1c8d28717d6d84788ebdc2e8e9211a32f48b5a30b2a904762a0b7cd39'
             'e4ca86de2ef9425913280deeeec42d6e8ff310b08ea55d9156193ceef3c847bd')
 build() {
   cd "$srcdir/$pkgname-$pkgver"/bin
