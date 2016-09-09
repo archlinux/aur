@@ -4,7 +4,7 @@
 
 pkgname=curlmirror
 pkgver=20150310
-pkgrel=2
+pkgrel=3
 pkgdesc="Mirrors a web site by using curl to download each page"
 arch=('any')
 url="https://github.com/cudeso/tools/blob/master/curlmirror.txt"
@@ -17,11 +17,11 @@ md5sums=('14c8928d727e08d023a6325e0ec5af3f')
 
 
 prepare() {
-  dos2unix -F "${pkgname}.txt"
+  dos2unix -n "${pkgname}"{.txt,}
 }
 
 package() {
-  install -m755 -D "${pkgname}.txt" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm755 "${pkgname}" -t "$pkgdir/usr/bin/"
 }
 
 # vim:set ts=2 sw=2 et:
