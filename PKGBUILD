@@ -25,12 +25,13 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "ring-kde"
-
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "ring-kde"
+	# fix missing tray icon
+	sed 's|setIconByPixmap(.*);|setIconByName("ring-kde");|' -i src/widgets/systray.cpp
 }
 
 build() {
@@ -45,6 +46,5 @@ build() {
 
 package() {
 	cd "ring-kde/build"
-
 	make DESTDIR="$pkgdir" install
 }
