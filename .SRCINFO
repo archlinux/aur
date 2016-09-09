@@ -1,20 +1,17 @@
 pkgbase = googleplaydownloader
 	pkgdesc = A graphical software to download APKs from the Google Play store.
-	pkgver = 2.0
-	pkgrel = 2
-	url = https://codingteam.net/project/googleplaydownloader
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://framagit.org/tuxicoman/googleplaydownloader
 	arch = any
 	license = AGPL
-	makedepends = subversion
+	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
-	depends = python2-configparser
-	depends = python2-protobuf
 	depends = python2-requests
+	depends = python2-pyasn1
 	depends = wxpython
-	depends = python2-ndg-httpsclient
-	optdepends = java-runtime: needed for autogeneration of a new AndroiID
-	source = googleplaydownloader-2.0::svn+http://svn.codingteam.net/googleplaydownloader#revision=72
+	source = git+https://framagit.org/tuxicoman/googleplaydownloader.git#commit=52b54662334f5088832388ccf92ece024da5d1ed
 	sha256sums = SKIP
 
 pkgname = googleplaydownloader
