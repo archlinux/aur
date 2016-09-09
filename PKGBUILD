@@ -1,7 +1,7 @@
 _ver=1.15
 _pkgbase=mate-netbook
 pkgname=${_pkgbase}-dev
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=1
 pkgdesc="A simple window management tool ."
 url="http://mate-desktop.org"
