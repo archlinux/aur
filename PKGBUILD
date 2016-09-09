@@ -3,10 +3,10 @@
 pkgname=i3lock-wrapper
 _gitname=i3-extras
 pkgver=2015.04.28.g93a888c
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple wrapper around i3lock which blurs the current desktop'
 arch=('any')
-url='https://github.com/ashinkarov/i3-extras/'
+url="https://github.com/ashinkarov/${_gitname}/"
 license=('ISC')
 groups=('i3')
 depends=('i3lock' 'scrot' 'imagemagick')
