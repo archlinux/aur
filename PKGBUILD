@@ -2,8 +2,8 @@
 # Needs a lot of improvement!
 
 pkgname=vkquake-git
-pkgver=0.60.0
-pkgrel=2
+pkgver=0.71.0
+pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
 url="https://github.com/Novum/vkquake"
