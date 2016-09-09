@@ -1,4 +1,4 @@
-# Maintainer: gavin lyons <whitelight999@live.ie>
+# Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/whitelight999/cylon
 pkgname=cylon
 pkgver=1.4
