@@ -1,0 +1,16 @@
+pkgbase = synchronisation
+	pkgdesc = Folder synchronisation software
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/synchronisation/
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-pyside
+	depends = gettext
+	depends = desktop-file-utils
+	source = Synchronisation_linux.tar.gz::https://sourceforge.net/projects/synchronisation/files/1.0.0/Synchronisation_linux.tar.gz/download
+	md5sums = ef273e4091ece999fad3308937f82dde
+
+pkgname = synchronisation
+
