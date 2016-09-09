@@ -1,18 +1,18 @@
---- misc/paths.txt	2016-02-11 17:57:49.000000000 -0500
-+++ misc/new-paths.txt	2016-05-11 16:55:58.166541098 -0400
-@@ -23,11 +23,11 @@
+--- misc/paths.txt	2016-07-25 16:47:13.000000000 -0300
++++ misc/new-paths.txt	2016-09-09 13:11:36.099757908 -0300
+@@ -27,11 +27,11 @@
  # http://en.wikipedia.org/wiki/.properties
  
  # Where the settings are stored:
--#settings=C:\\path\\to\\settings\\folder
-+settings=${user.home}/.config/Docfetcher
+-#settings=C:/path/to/settings/folder
++settings=${user.home}/.config/docfetcher
  
  # Where the indexes are stored. Note: The DocFetcher daemon currently ignores
  # this setting.
--#indexes=C:\\path\\to\\indexes\\folder
+-#indexes=C:/path/to/indexes/folder
 +indexes=${user.home}/.cache/docfetcher
  
  # Where the SWT library files will be written to:
--#swt=C:\\path\\to\\swt-libs
+-#swt=C:/path/to/swt-libs
 \ No newline at end of file
 +swt=${user.home}/.local/share/docfetcher
