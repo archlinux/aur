@@ -26,8 +26,6 @@ md5sums=('cb89a68bf599205d3c33ee1ee1e13ea0'
          '87e1b1a24ec09f81321c01f2cdea513d')
 
 prepare() {
-  cd "$srcdir/$_name-Source"
-  sed -i '/if (${CMAKE_COMPILER_IS_GNUCXX})/a add_definitions("-fext-numeric-literals")' CMakeLists.txt
   cd "$srcdir/sc3-plugins-Version-$pkgver/external_libraries"
   git clone https://github.com/timblechmann/nova-simd.git
   rmdir stk
@@ -39,7 +37,7 @@ build() {
   [ -d b ] || mkdir b && cd b
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
-           -DLIBSCSYNTH=ON
+           -DLIBSCSYNTH=ON -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fext-numeric-literals"
   make
 
   cd "$srcdir/sc3-plugins-Version-$pkgver"
