@@ -5,8 +5,8 @@ pkgver=0.9.6
 pkgrel=1
 pkgdesc="A program to extract files from a yaffs image"
 arch=("i686" "x86_64")
-url="http://code.google.com/p/unyaffs/"
-license=(GPL3)
+url="https://github.com/ehlers/unyaffs"
+license=(GPL)
 depends=('glibc')
 
 source=(https://github.com/ehlers/unyaffs/archive/$pkgver/$pkgname-$pkgver.tar.gz)
