@@ -2,10 +2,10 @@
 pkgname=dotgit
 pkgver=1.2.3
 pkgrel=1
-pkgdesc="An easy to use dotfiles manager that can keep multiple configs in a single repo"
+pkgdesc="A comprehensive solution to managing your dotfiles"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
-depends=('git' 'sed' 'grep' 'bash' )
+depends=('git' 'sed' 'grep' 'bash' 'gpg')
 source=('git+https://github.com/Cube777/dotgit.git')
 md5sums=('SKIP')
 
