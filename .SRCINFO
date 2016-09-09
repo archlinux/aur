@@ -1,6 +1,6 @@
 pkgbase = litecoin-git
 	pkgdesc = A peer-to-peer network-based digital currency (git version)
-	pkgver = 4179.88e2a2e
+	pkgver = 7869.623f20b
 	pkgrel = 1
 	epoch = 1
 	url = http://www.litecoin.org/
@@ -35,7 +35,11 @@ pkgbase = litecoin-git
 	conflicts = litecoin-bin
 	conflicts = litecoin-daemon
 	source = git://github.com/litecoin-project/litecoin.git
-	md5sums = SKIP
+	source = https://github.com/litecoin-project/litecoin/pull/241.patch
+	source = https://github.com/litecoin-project/litecoin/pull/251.patch
+	sha256sums = SKIP
+	sha256sums = 740a2519897e3d9953a6c0c1df09e9d4ce3dea2dd98243544914dd0bdf3f1d9f
+	sha256sums = 0a16e5a66d988ca8dabf86bf7c1002db5aa9c52a7107fe3a2f6941c4b03c5b58
 
 pkgname = litecoin-git
 
