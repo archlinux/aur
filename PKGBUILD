@@ -14,7 +14,7 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('e9600aa8e99b2592bc4695ad482aba0546ac80c6c4cbbe294d0747563ddb64c5'
+sha256sums=('92523f77731036f773f6dbbb41e412cfc48311ddf81d210def20c548a25fb2cc'
             '8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
