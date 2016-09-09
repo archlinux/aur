@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.17.1rc1.r14.geb6a7cf
+pkgver=0.17.2.r81.g685da5a
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
