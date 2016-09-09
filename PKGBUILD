@@ -2,7 +2,7 @@
 
 pkgname=freecad-netgen-git
 pkgver=r8391.ae02a45
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -18,7 +18,7 @@ source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
 	"freecad.xml"
 	"mod-and-lib-path.patch")
 md5sums=('SKIP'
-         '382cd66757dae635b53105d207679fce'
+         '21877b80638efa9269e8b1b1c391d407'
          'c2f4154c8e4678825411de8e7fa54c6b'
          '976f1674ce36b32108af8cb4d6e4e92d')
 
