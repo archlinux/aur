@@ -1,0 +1,21 @@
+diff --git a/Makefile.am b/Makefile.am
+index 47f4a41..8cbd516 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,16 +16,6 @@ BUILT_SOURCES = $(common_nodist)
+ 
+ man_MANS = cado.1 caprint.1 scado.1 cado.conf.5
+ 
+-install-exec-hook:
+-	(useradd -r -s /bin/nologin -g `getent passwd | grep cado | cut -f 3 -d ':'` cado ||\
+-	 useradd -r -s /bin/nologin -U cado) || true
+-	(mkdir -p ${SPOOL_DIR} ; chown root:cado ${SPOOL_DIR} && chmod 4770 $(SPOOL_DIR)) 
+-	chown :cado $(DESTDIR)$(bindir)/scado
+-	chmod g+s $(DESTDIR)$(bindir)/scado
+-	chown cado $(DESTDIR)$(bindir)/cado
+-	chmod u+s $(DESTDIR)$(bindir)/cado
+-	$(DESTDIR)$(bindir)/cado -s
+-
+ CLEANFILES = cado_paths.h
+ cado_paths.h: Makefile
+ 	@echo 'creating $@'

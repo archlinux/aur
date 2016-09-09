@@ -1,0 +1,19 @@
+bindir="/bin";
+DESTDIR="/usr";
+SPOOL_DIR="/var/spool/cado";
+
+post_install() {
+	(useradd -r -s /bin/nologin -g `getent passwd | grep cado | cut -f 3 -d ':'` cado 2>/dev/null ||\
+	 useradd -r -s /bin/nologin -U cado) || true
+	(mkdir -p ${SPOOL_DIR} ; chown root:cado ${SPOOL_DIR} && chmod 4770 ${SPOOL_DIR}) 
+	chown :cado ${DESTDIR}${bindir}/scado
+	chmod g+s ${DESTDIR}${bindir}/scado
+	chown cado ${DESTDIR}${bindir}/cado
+	chmod u+s ${DESTDIR}${bindir}/cado
+	${DESTDIR}${bindir}/cado -s
+}
+
+pre_remove() {
+	userdel cado || true
+	rm -rf ${SPOOL_DIR}
+}

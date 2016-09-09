@@ -11,14 +11,16 @@ arch=('i686' 'x86_64' 'arm')
 url="https://github.com/rd235/cado"
 license=('GPL')
 makedepends=('autoconf' 'git')
-depends=('libcap' 'pam')
+depends=('libcap' 'pam' 'mhash' 'libs2argv-execs-git')
 provides=('cado' 'caprint')
 conflicts=('cado' 'caprint')
-source=("git://github.com/rd235/cado.git")
-md5sums=('SKIP')
+source=("git://github.com/rd235/cado.git" "cado-0.9.2-arch.patch")
+install="cado-git.install"
+md5sums=('SKIP' 'ab1dffca550b1b771e74d35c9ced400c')
 
 build() {
 	cd "$srcdir/$_gitname"
+	patch -p1 < ../../cado-0.9.2-arch.patch
 	autoreconf -fi
 	./configure --prefix=/usr
 	make
@@ -28,3 +30,4 @@ package() {
 	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir/" install
 }
+
