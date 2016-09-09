@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=430.e7086bc
+pkgver=459.1ab4d17
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(any)
@@ -39,6 +39,10 @@ package() {
 
   msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}-next.service
+  
+  msg2 "Symlinking for gui launch"
+  install -dm755 $pkgdir/var/opt/openbazaar-go/
+  ln -sr /usr/bin/${_pkgname}-next $pkgdir/var/opt/openbazaar-go/openbazaard
 }
 
 pkgver() {
@@ -47,4 +51,4 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-         'ef438cefc3a16d1f6a7137869f7c9bac')
+         '68337635293ceefce599514a25788dc3')
