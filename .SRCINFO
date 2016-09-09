@@ -1,7 +1,7 @@
 pkgbase = yubikey-manager
 	pkgdesc = Command line and GUI tool for configuring YubiKeys, over all transports.
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developers.yubico.com/yubikey-manager/
 	arch = any
 	license = BSD
