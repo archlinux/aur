@@ -4,12 +4,12 @@
 
 pkgname=solr
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
 license=('Apache')
 url="http://lucene.apache.org/solr/"
-depends=('java-runtime-headless')
+depends=('java-runtime-headless>=8')
 makedepends=('unzip')
 source=("http://archive.apache.org/dist/lucene/$pkgname/$pkgver/solr-$pkgver.tgz"
         "solr.service")
