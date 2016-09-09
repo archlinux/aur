@@ -5,8 +5,8 @@
 
 pkgname='clam-git'
 _gitname=clams
-pkgver=1.4.5.277.g9085811
-pkgrel=4
+pkgver=1.4.5.273.g304677d
+pkgrel=2
 arch=('any')
 url="http://www.clamclient.com"
 depends=('qt4' 'miniupnpc' 'db4.8' 'boost-libs' 'qrencode')
@@ -16,10 +16,9 @@ pkgdesc="The most widely held crypto-currency ever! This package provides both t
 provides=('clam-qt' 'clamd')
 conflicts=('clam-qt' 'clamd')
 source=("git://github.com/nochowderforyou/clams.git"
-        "diff.patch")
+        "http://github.com/nochowderforyou/clams/pull/295.patch")
 sha256sums=('SKIP'
-      
-'ee44c9ecbe2a9be8680c6d558185781341fcf020f0dea43ef1066475c44c7d27')
+            '121528e6e76c30379b9041f62058e719d2f054f5e8df69c7540b924195f38331')
 
 pkgver() {
         cd "$srcdir/$_gitname"
@@ -28,7 +27,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    patch -Np1 -i "$srcdir"/diff.patch
+    git apply "$srcdir"/241.patch
 }
 
 build() {
@@ -43,16 +42,15 @@ package() {
 	# install clam-qt client
 	msg2 'Installing clam-qt...'
 	install -Dm755 "$srcdir/$_gitname/src/qt/clam-qt" "$pkgdir/usr/bin/clam-qt"
-#	install -Dm644 "$srcdir/$_gitname/share/pixmaps/clams80.xpm" "$pkgdir/usr/share/pixmaps/clams80.xpm"
-#	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/clam-qt.desktop"
-	
+	install -Dm644 "$srcdir/$_gitname/share/pixmaps/clams80.xpm" "$pkgdir/usr/share/pixmaps/clams80.xpm"
+	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/clam-qt.desktop"
+
 	# install clam daemon
 	msg2 'Installing clam-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/clamd" "$pkgdir/usr/bin/clamd"
-#	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/clam.conf" "$pkgdir/usr/share/doc/$pkgname/examples/clam.conf"
-# 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clamd.1" "$pkgdir/usr/share/man/man1/clamd.1"
-#	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clam.conf.5" "$pkgdir/usr/share/man/man5/clam.conf.5"
-
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/clam.conf" "$pkgdir/usr/share/doc/$pkgname/examples/clam.conf"
+ 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clamd.1" "$pkgdir/usr/share/man/man1/clamd.1"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/clam.conf.5" "$pkgdir/usr/share/man/man5/clam.conf.5"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
