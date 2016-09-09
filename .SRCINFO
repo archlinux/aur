@@ -15,6 +15,7 @@ pkgbase = moony-lv2
 	depends = sratom
 	depends = nanomsg
 	depends = libwebsockets
+	depends = xdg-utils
 	source = https://github.com/OpenMusicKontrollers/moony.lv2/archive/0.18.0.tar.gz
 	md5sums = ce52f752fec8791baf901d12de1c2810
 
