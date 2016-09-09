@@ -1,7 +1,7 @@
 pkgbase = google-chrome-beta
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Beta Channel)
 	pkgver = 54.0.2840.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/chrome
 	install = google-chrome-beta.install
 	arch = x86_64

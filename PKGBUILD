@@ -6,7 +6,7 @@
 
 pkgname=google-chrome-beta
 pkgver=54.0.2840.16
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
@@ -48,7 +48,7 @@ package() {
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
 
   msg2 "Fixing Chrome icon resolution..."
-  sed -i "/Exec=/i\StartupWMClass=google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
+  sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
   msg2 "Removing unnecessities (e.g. Debian Cron job)..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/
