@@ -1,10 +1,11 @@
-# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: DerFlob <derflob at derflob dot de>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=tilda-git
 _gitname=tilda
-pkgver=284651c
+pkgver=tilda.1.3.2.r9.gbc08cf2
 pkgrel=1
 pkgdesc="Linux terminal based on classic terminals from first person shooter games"
 arch=('i686' 'x86_64')
@@ -16,11 +17,11 @@ provides=('tilda')
 conflicts=('tilda')
 
 source=('git://github.com/lanoxx/tilda.git')
-md5sums=('SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --always | sed 's|-|.|g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
