@@ -10,7 +10,7 @@ url="https://opendungeons.github.io"
 options=('!strip')
 license=("GPL3")
 depends=("zziplib")
-source=("ftp://download.tuxfamily.org/opendungeons/0.7/OpenDungeons-0.7.1-Linux64.tar.bz2"
+source=("ftp://download.tuxfamily.org/opendungeons/0.7/${_pkgname}.tar.bz2"
         "opendungeons_startup"
         "opendungeons.desktop")
 md5sums=("ad05df375a5f0b720120147975029229"
