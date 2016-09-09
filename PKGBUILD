@@ -8,7 +8,7 @@
 
 pkgbase=python-matplotlib2
 pkgname=('python2-matplotlib2' 'python-matplotlib2')
-pkgver=2.0.0b3
+pkgver=2.0.0b4
 pkgrel=1
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ makedepends=('python2-pytz' 'python2-numpy' 'python2-pyqt4' 'python-pytz' 'pytho
              'python2-setuptools' 'python-cycler' 'python2-cycler')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/matplotlib/matplotlib/archive/v$pkgver.tar.gz"
         setup.cfg)
-sha512sums=('07876d8c6aad365295a4196226e601200c88d5623792a185fd191905dfb33f3874f55f0e43fcaff21e5981d6b08a6b0edb424caddc45bf148e0ae24661c15ef2'
+sha512sums=('9b5e529cad41996a919da71333d24b2a923c5579884ceb564f0171d5e1571a13e247e4821c7d5fc7170c87f2ed1876d490a0ecb5b87705a5289ef7fc1d6f1208'
             '493a08914755d7d27d98025fc309f19cc3ec45e777fc81a56fa50430f90c0b39c2f66c2a01f6fd14a2e351005151365a25d2ab71ae2e80a54c6f57ceeacea35b')
 
 prepare() {
