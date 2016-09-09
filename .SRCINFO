@@ -1,13 +1,13 @@
 pkgbase = firefox-mega
 	pkgdesc = MEGA extension for Firefox; enables better support for mega.co.nz downloads
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://mega.co.nz
 	arch = any
 	groups = firefox-addons
 	license = BSD
 	source = https://mega.nz/meganz.xpi
-	md5sums = eaa9d7fac088f00dffe3c9ecbe90f93d
+	md5sums = f450148becc01cf0bb0b63ea7cceba8f
 
 pkgname = firefox-mega
 	depends = firefox

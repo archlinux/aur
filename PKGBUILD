@@ -3,7 +3,7 @@
 # Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
 
 pkgname=firefox-mega
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 groups=("firefox-addons")
 pkgdesc="MEGA extension for Firefox; enables better support for mega.co.nz downloads"
@@ -25,4 +25,4 @@ package(){
 	find "${pkgdir}" -type d -exec chmod 0755 {} \;
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
-md5sums=('eaa9d7fac088f00dffe3c9ecbe90f93d')
+md5sums=('f450148becc01cf0bb0b63ea7cceba8f')
