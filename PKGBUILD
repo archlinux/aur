@@ -5,7 +5,7 @@ _passengerver=5.0.30
 
 pkgname=nginx-passenger
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP Server with Passenger Module"
 arch=('i686' 'x86_64')
 url='http://nginx.org'
