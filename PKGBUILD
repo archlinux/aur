@@ -1,8 +1,7 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
-# https://github.com/t-richards/aur-nginx-passenger
 
 _nginxver=1.10.1
-_passengerver=5.0.29
+_passengerver=5.0.30
 
 pkgname=nginx-passenger
 pkgver=1.10.1
@@ -35,7 +34,7 @@ source=("https://nginx.org/download/nginx-${_nginxver}.tar.gz"
         'logrotate'
         'packaging.patch')
 sha256sums=('1fd35846566485e03c0e318989561c135c598323ff349c503a6c14826487a801'
-            '84dd9553f305b6b87227c87a086068b42f2ba979e7af3f8acd745c99c40f10cc'
+            'f367e0c1d808d7356c3749222194a72ea03efe61a3bf1b682bd05d47f087b4e3'
             '6fe4c5eb7332f5eebdd7e08e46256a3d344bd375e9134be66013fbc52059e1ac'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             '2da1ede016ca328f254bfb10e95ff0a5ef2790382a9a87ffde77524956a31749')
