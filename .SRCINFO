@@ -1,0 +1,20 @@
+pkgbase = doom64ex-git
+	pkgdesc = Doom64EX is a reverse-engineering project aimed to recreate Doom64 as close as possible with additional modding features.
+	pkgver = r128.8ee9313
+	pkgrel = 1
+	url = https://github.com/svkaiser/Doom64EX
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = fluidsynth
+	depends = libpng
+	depends = sdl2
+	depends = sdl2_net
+	depends = zlib
+	source = git+https://github.com/svkaiser/Doom64EX
+	sha256sums = SKIP
+
+pkgname = doom64ex-git
+
