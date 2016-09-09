@@ -1,7 +1,7 @@
 pkgname=tor6-git
 _branch=master
 #_branch=maint-0.2.6
-pkgver=0.2.8.0.alpha.21273
+pkgver=0.2.9.2.alpha.22832
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version, route length 6)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
