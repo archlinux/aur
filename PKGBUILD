@@ -6,7 +6,7 @@
 
 _pkgname=vim
 pkgname=gvim-gtk3
-pkgver=7.4.2348
+pkgver=7.4.2349
 pkgrel=1
 pkgdesc="Vim, the text editor. CLI version and GTK3 GUI providing majority of features."
 arch=("i686" "x86_64")
@@ -21,7 +21,7 @@ conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
            "vim-minimal" "vim" "vim-python3" "gvim" "gvim-python3" "gvim-git")
 source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
-sha256sums=('65d34fd85c722d9ff52aa04e3ddb6db431628b776103060adb96397ed8def61d'
+sha256sums=('5ef5c506cd04109b8980d1bea0b40e5df09c5c7c20a291561deb83dd06c7f0d7'
             '86e4e5d23ae91580460baee86e49d64e40659408daa9836d488af516e22dd1e9')
 install=gvim.install
 
