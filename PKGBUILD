@@ -1,23 +1,24 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=unyaffs
-pkgver=2008.10
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="A program to extract files from a yaffs image"
 arch=("i686" "x86_64")
 url="http://code.google.com/p/unyaffs/"
 license=(GPL3)
 depends=('glibc')
 
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/unyaffs/unyaffs.{c,h})
+source=(https://github.com/ehlers/unyaffs/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 
-sha256sums=('82b28c82d9e56d3ea1c082c42bf3fac49169b7646de0f9c58f989d09ffb4636b'
-            'cd421a9abb8ed02e33db06578184b95a25547eb343084987109c235e9e1a9e47')
+sha256sums=('33c46419ab5cc5290f3b780f0cc9d93729962799f5eb7cecb9b352b85939fbbf')
 
 build() {
-	gcc -o "$srcdir/unyaffs" "$srcdir/unyaffs.c"
+	cd $pkgname-$pkgver
+	make unyaffs
 }
 
 package() {
-	install -D -m 0755 "$srcdir/unyaffs" "$pkgdir/usr/bin/unyaffs"
+	cd $pkgname-$pkgver
+	install -D -m 0755 unyaffs "$pkgdir"/usr/bin/unyaffs
 }
