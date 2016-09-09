@@ -25,7 +25,7 @@ pkgbase = amule-dlp-git
 	source = amuled.systemd
 	source = amuleweb.systemd
 	sha256sums = SKIP
-	sha256sums = 527a2cca6d56b8269722aafc77a89734f59a929f946f342bd0f69b256f9c7522
+	sha256sums = 6dbdd1ad1c3c3d8637b8f4cbd5416f39c8e4277a2f8498577b08bf6cda8dbca9
 	sha256sums = f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2
 
 pkgname = amule-dlp-git
