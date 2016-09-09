@@ -1,4 +1,5 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
+# Co-Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
 # Contributor: Josh 'jheretic' King <josh at chambana dot net>
 # Contributor: James An <james@jamesan.ca>
