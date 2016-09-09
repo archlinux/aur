@@ -1,6 +1,6 @@
-diff -aur pkg.pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW pkg.new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW
---- pkg.pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-20 21:56:06.302059556 -0400
-+++ pkg.new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-20 21:59:18.332061342 -0400
+diff -aur pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW
+--- pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-21 00:24:32.495475668 -0400
++++ new/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwrapper_HLL2380DW	2016-08-21 00:26:23.022143362 -0400
 @@ -43,15 +43,7 @@
  $width=-1;
  $height=-1;
@@ -14,15 +14,19 @@ diff -aur pkg.pristine/opt/brother/Printers/HLL2380DW/cupswrapper/brother_lpdwra
 -
 -$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
 -
-+my $basedir = "/usr/share/brother/printers/HLL2380DW"
++my $basedir = "/usr/share/brother/Printers/HLL2380DW/";
  
  %units = ( pt   => \&pt2dot, 
  	   mm   => \&mm2dot, 
-@@ -85,6 +77,7 @@
+@@ -83,10 +75,7 @@
+     $CUPSINPUT=$ARGV[7];
+ }
  
+-
+-$PRINTER =~ s/^\/opt\/.*\/Printers\///g;
+-$PRINTER =~ s/\/cupswrapper//g;
+-$PRINTER =~ s/\///g;
++$PRINTER = "HLL2380DW";
  
- $PRINTER =~ s/^\/opt\/.*\/Printers\///g;
-+$PRINTER =~ s/^\/usr\/share\/.*\/Printers\///g;
- $PRINTER =~ s/\/cupswrapper//g;
- $PRINTER =~ s/\///g;
- 
+ for  (my $i = 0 ; $i < @ARGV ; $i ++){
+     logprint( 0 , "ARG$i      = $ARGV[$i]\n");
