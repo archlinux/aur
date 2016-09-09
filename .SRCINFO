@@ -1,0 +1,33 @@
+pkgbase = openswan-git
+	pkgdesc = Open Source implementation of IPsec for the Linux operating system
+	pkgver = 2.6.49.r5.g1a1bda3
+	pkgrel = 1
+	url = https://www.openswan.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	depends = gmp
+	depends = perl
+	depends = iproute2
+	optdepends = python2
+	provides = openswan
+	conflicts = openswan
+	conflicts = ipsec-tools
+	options = !makeflags
+	backup = etc/ipsec.conf
+	backup = etc/ipsec.d/policies/block
+	backup = etc/ipsec.d/policies/clear
+	backup = etc/ipsec.d/policies/clear-or-private
+	backup = etc/ipsec.d/policies/private
+	backup = etc/ipsec.d/policies/private-or-clear
+	source = openswan-git::git+https://github.com/xelerance/Openswan.git#branch=2.6.50dev
+	source = openswan.service
+	md5sums = SKIP
+	md5sums = 8195505574c86f990cec2fb85ac9a780
+
+pkgname = openswan-git
+
