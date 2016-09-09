@@ -1,28 +1,31 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+# Maintainer: nl6720 <nl6720@gmail.com>
+# Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 
 pkgname=yodl
-pkgver=3.05.00
+pkgver=3.08.01
 pkgrel=1
-pkgdesc="Implements a pre-document language and tools to process it."
+pkgdesc='Implements a pre-document language and tools to process it.'
 arch=('i686' 'x86_64')
-url="http://yodl.sourceforge.net"
+url='https://fbb-git.github.io/yodl/'
 license=('GPL3')
 depends=('bash')
-makedepends=('icmake')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}.orig.tar.gz")
-sha512sums=('45eccfb59853f57ffe2219b6de26e9851a28c59049b6165cc5dbd7201b5078b5930a286c0b2c61f534483b80f7c8c5de79925784ac6c29843d8c3842b508f7a8')
+makedepends=('icmake>=8.00.00')
+source=("${pkgname}-${pkgver}.tar.gz::http://github.com/fbb-git/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('958497939d9f3d1c6d0e2e74f7592d5a98f9ddb6f95c50c1247e41600d2765b7')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 	./build programs
 	./build macros
 	./build man
+	./build html
 }
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 	./build install programs "${pkgdir}"
 	./build install macros "${pkgdir}"
 	./build install man "${pkgdir}"
+	./build install manual "${pkgdir}"
 }
