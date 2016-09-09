@@ -9,7 +9,7 @@ diff -ur kernel/nvidia-drm/nvidia-drm-drv.c kernel-patched/nvidia-drm/nvidia-drm
  
  #include <drm/drm_crtc_helper.h>
  
-@@ -420,7 +421,7 @@
+@@ -424,7 +425,7 @@
  
  static
  void nvidia_drm_master_drop(struct drm_device *dev,
@@ -18,7 +18,7 @@ diff -ur kernel/nvidia-drm/nvidia-drm-drv.c kernel-patched/nvidia-drm/nvidia-drm
  {
      struct nvidia_drm_device *nv_dev = dev->dev_private;
      int ret;
-@@ -453,7 +454,7 @@
+@@ -457,7 +458,7 @@
      mutex_lock(&dev->master_mutex);
  
      if (!file_priv->is_master ||
@@ -27,7 +27,7 @@ diff -ur kernel/nvidia-drm/nvidia-drm-drv.c kernel-patched/nvidia-drm/nvidia-drm
      {
          goto done;
      }
-@@ -474,7 +475,7 @@
+@@ -478,7 +479,7 @@
       * NVKMS modeset ownership, because nvidia_drm_master_set()'s call to
       * grabOwnership() will fail.
       */
@@ -36,19 +36,6 @@ diff -ur kernel/nvidia-drm/nvidia-drm-drv.c kernel-patched/nvidia-drm/nvidia-drm
      file_priv->is_master = 0;
  
      ret = 0;
-Only in kernel-patched/nvidia-drm: nvidia-drm-drv.c.orig
-diff -ur kernel/nvidia-drm/nvidia-drm-fence.c kernel-patched/nvidia-drm/nvidia-drm-fence.c
---- kernel/nvidia-drm/nvidia-drm-fence.c	2016-08-09 02:43:19.000000000 +0300
-+++ kernel-patched/nvidia-drm/nvidia-drm-fence.c	2016-08-26 20:14:29.115451900 +0300
-@@ -325,7 +325,7 @@
-     struct nvidia_drm_gem_object *nv_gem;
- };
- 
--static void nvidia_drm_gem_prime_soft_fence_event
-+static void NVKMS_KAPI_CALL nvidia_drm_gem_prime_soft_fence_event
- (
-     void *dataPtr,
-     NvU32 dataU32
 diff -ur kernel/nvidia-drm/nvidia-drm-modeset.c kernel-patched/nvidia-drm/nvidia-drm-modeset.c
 --- kernel/nvidia-drm/nvidia-drm-modeset.c	2016-08-09 02:43:19.000000000 +0300
 +++ kernel-patched/nvidia-drm/nvidia-drm-modeset.c	2016-08-26 20:14:29.113947800 +0300
