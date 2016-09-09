@@ -1,0 +1,17 @@
+diff -aur freecad/src/App/FreeCADInit.py freecad.patched/src/App/FreeCADInit.py
+--- freecad/src/App/FreeCADInit.py	2016-09-08 22:57:21.770940841 +0200
++++ freecad.patched/src/App/FreeCADInit.py	2016-09-08 23:43:10.839381192 +0200
+@@ -41,11 +41,11 @@
+ 		FreeCAD.Console.PrintError("\n\nSeems the python standard libs are not installed, bailing out!\n\n")
+ 		raise
+ 	# Checking on FreeCAD module path ++++++++++++++++++++++++++++++++++++++++++
+-	ModDir = FreeCAD.getHomePath()+'Mod'
++	ModDir = FreeCAD.getHomePath()+'lib/freecad/Mod'
+ 	ModDir = os.path.realpath(ModDir)
+ 	BinDir = FreeCAD.getHomePath()+'bin'
+ 	BinDir = os.path.realpath(BinDir)
+-	LibDir = FreeCAD.getHomePath()+'lib'
++	LibDir = FreeCAD.getHomePath()+'lib/freecad'
+ 	LibDir = os.path.realpath(LibDir)
+ 	Lib64Dir = FreeCAD.getHomePath()+'lib64'
+ 	Lib64Dir = os.path.realpath(Lib64Dir)
