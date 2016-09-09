@@ -3,7 +3,7 @@ post_install() {
 	fc-cache -f;
 	echo ;
 	echo -e "\e[37;46m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
-	echo -e "\e[37;46m│\e[32m From now on, due to brevity, I'll call this project as “crono”         \e[37m│\e[0m";
+	echo -e "\e[37;46m│\e[30m From now on, due to brevity, I'll call this project as “crono”         \e[37m│\e[0m";
 	echo -e "\e[37;46m└────────────────────────────────────────────────────────────────────────┘\e[0m";
 	echo ;
 	echo -e "\e[37;44m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
