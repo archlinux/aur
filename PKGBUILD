@@ -10,7 +10,7 @@ arch=('x86_64')
 makedepends=()
 provides=('minishift')
 
-source=(minikube_${pkgver}::https://github.com/jimmidyson/minishift/releases/download/v${pkgver}/minishift-linux-amd64)
+source=(minishift_${pkgver}::https://github.com/jimmidyson/minishift/releases/download/v${pkgver}/minishift-linux-amd64)
 sha256sums=('784cefddc622a9dc10482404266e2fee65d57ad2433dc2d27d744a4f1b944761')
 
 
