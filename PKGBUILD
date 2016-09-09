@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgdesc='A CUDA backend for Torch7'
 pkgname='torch7-cutorch-git'
-pkgver=r521.7d2a5d5
+pkgver=r607.04c3dbc
 pkgrel=1
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'cuda')
@@ -13,7 +13,7 @@ license=('BSD')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
-pkgver () {
+pkgver(){
 	cd "${pkgname}"
 	(
 		set -o pipefail
@@ -22,15 +22,18 @@ pkgver () {
 	)
 }
 
-build () {
+prepare(){
+	cd $srcdir/$pkgname
+	sed -i '/c99/aSET(CMAKE_CXX_FLAGS "-std=c++98 ${CMAKE_CXX_FLAGS}")' CMakeLists.txt
+}
+
+build(){
 	cd "${pkgname}"
-	export CC=gcc-5
-	export CXX=g++-5
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
-package () {
+package(){
 	cd "${pkgname}"
 	make DESTDIR="${pkgdir}" install
 
