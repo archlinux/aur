@@ -5,7 +5,7 @@ _author=A/AZ/AZAWAWI
 _perlmod=Wx-Scintilla
 pkgname=perl-wx-scintilla-dev
 pkgver=0.40_02
-pkgrel=2
+pkgrel=3
 pkgdesc='Wx::Scintilla - Scintilla source code editing component for wxWidgets - Developer Release'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/~azawawi/Wx-Scintilla/'
@@ -35,7 +35,7 @@ options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz"
 remove-uneeded-libs.patch
 # wx-config-2.8.patch
-Fix_STC_compilation_with_GCC6.patch::https://anonscm.debian.org/cgit/pkg-perl/packages/libwx-scintilla-perl.git/plain/debian/patches/Fix_STC_compilation_with_GCC6.patch?id=da71bd9
+https://anonscm.debian.org/cgit/pkg-perl/packages/libwx-scintilla-perl.git/plain/debian/patches/Fix_STC_compilation_with_GCC6.patch
 )
 sha256sums=('4772ef1502ce332a8a91f1a53518616498b9a8f5d16a296052cc86fa622f270e'
             '53d8f6018affd735b4deb5d80128c9a0106185ddab5ed53f1409975319188e52'
