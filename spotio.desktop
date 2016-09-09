@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Spotio
+GenericName=Music Player
+Comment=A proof-of-concept Rdio-inspired skin for Spotify.
+Icon=spotio
+Exec=spotio %U
+TryExec=spotify %U
+Terminal=false
+Type=Application
+Categories=Audio;Music;Player;AudioVideo;
+MimeType=x-scheme-handler/spotify;
+Name[it_IT]=spotio

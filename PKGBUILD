@@ -7,8 +7,9 @@ _pkgver=1.0.37.152
 _another_pkgver=gc83ea995
 _yetanotherpkgrel=42
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}.${_yetanotherpkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
+makedepends=('imagemagick')
 arch=('x86_64' 'i686')
 license=('MIT')
 url="http://spotio.devinhalladay.com/"
@@ -19,9 +20,13 @@ conflicts=('spotify' 'spotify-legacy' 'spotify094')
 
 source=('spotify'
 'spotify.protocol'
+'spotio-icons.zip'
+'spotio.desktop'
 'spotio.zip::https://github.com/devinhalladay/spotio/archive/master.zip')
 md5sums=('cfef2f72647980c639201c6ab39e8534'
-         'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4'
+	 'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4'
+	 'afbd86ae37f8752fc439edf4e81b7d8e'
+	 '8bb5b67c4483819e1c3e92f2c9350651'
 	 'SKIP')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel}_amd64.deb")
@@ -67,17 +72,41 @@ package() {
 
   # Spotio installation (from now on the commands are taken from setup-linux.sh)
 
-	find $pkgdir/usr/share/spotify/Apps/ -iname "*.spa" -exec bash -c 'mv "$0" "${0%\.spa}.zip"' {} \;
+	find "${pkgdir}/usr/share/spotify/Apps/" -iname "*.spa" -exec bash -c 'mv "$0" "${0%\.spa}.zip"' {} \;
 
-	ls $pkgdir/usr/share/spotify/Apps/*.zip | awk -F'.zip' '{print "unzip -o "$0" -d "$1}' | bash
+	ls ${pkgdir}/usr/share/spotify/Apps/*.zip | awk -F'.zip' '{print "unzip -o "$0" -d "$1}' | bash
 
-	rm $pkgdir/usr/share/spotify/Apps/*.zip
+	rm ${pkgdir}/usr/share/spotify/Apps/*.zip
 
 	cp -R spotio-master/Apps/* $pkgdir/usr/share/spotify/Apps/
 
 	find $pkgdir/usr/share/spotify/Apps/* -maxdepth 0 -type d | awk -F '' '{print "END_DIR=`basename " $0"`; cd " $0 "; zip -q -r ../$END_DIR.spa *; cd ../../../../../ ; rm -r "$0}' | bash
 
-	ln -s /usr/bin/spotify $pkgdir/usr/bin/spotio # ok, this is actually mine
+	ln -s "/usr/bin/spotify" "${pkgdir}/usr/bin/spotio" # ok, this is actually mine
+	
+	JUNK=( 22 24 32 48 64 128 256 512 )
 
+	for i in "${JUNK[@]}" ; do # replace all the spotify icons with the spotio icons.
+		rm "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/spotify.png"
+
+		install -Dm644 "${srcdir}/spotio-icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/spotio.png"
+
+		rm ${pkgdir}/usr/share/spotify/icons/spotify-linux-{16,${i}}.png
+
+		install -Dm644 "${srcdir}/spotio-icons/${i}x${i}.png" "${pkgdir}/usr/share/spotify/icons/spotify-linux-${i}.png"
+
+		install -Dm644 "${srcdir}/spotio-icons/16x16.png" "${pkgdir}/usr/share/spotify/icons/spotify-linux-16.png"
+
+		rm "${pkgdir}/usr/share/pixmaps/spotify-client.png"
+
+		install -Dm644 "${srcdir}/spotio-icons/512x512.png" "${pkgdir}/usr/share/pixmaps/spotify-client.png"
+	done
+
+	rm "${pkgdir}/usr/share/spotify/icons/spotify_icon.ico"
+
+	convert "${srcdir}/spotio-icons/48x48.png" "${pkgdir}/usr/share/spotify/icons/spotify_icon.ico"
+
+	install -Dm644 "${srcdir}/spotio.desktop" "${pkgdir}/usr/share/applications/spotio.desktop"
+	rm "${pkgdir}/usr/share/applications/spotify.desktop" # replace the spotify .desktop file with the spotio's one.
 }
 
