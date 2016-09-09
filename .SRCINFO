@@ -1,0 +1,12 @@
+pkgbase = latexcalc
+	pkgdesc = Program made to calculate values within LaTeX files before typesetting
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://latexcalc.sourceforge.net
+	arch = any
+	makedepends = tar
+	source = http://downloads.sourceforge.net/project/latexcalc/latexcalc-1.0.1.tar
+	sha256sums = SKIP
+
+pkgname = latexcalc
+
