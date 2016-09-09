@@ -1,6 +1,6 @@
 # Maintainer: Johnny Nielsen <j_e_n_pub at yahoo dot dk>
 pkgname='archupgrade'
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Automatic Arch Linux Upgrade"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python>=3.5' 'pacman' 'sudo')
 makedepends=('gettext')
 install=$pkgname.install
 source=("https://github.com/Johnny1000/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('c32ea064e3a2ef8c86bf72c6b2230ef1')
+md5sums=('f3cbf9d566553f0af5f2c1fec1df9c16')
 
 package() {
     srcdir=${srcdir}/${pkgname}-${pkgver}
