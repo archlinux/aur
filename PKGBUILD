@@ -2,7 +2,7 @@
 # Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=gnome-mpv-git
-pkgver=0.10.r3.g64144a8
+pkgver=0.10.r19.g6266427
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ depends=('gtk3' 'mpv')
 makedepends=('git' 'intltool' 'autoconf-archive' 'appstream-glib')
 optdepends=('youtube-dl: for video-sharing websites playback')
 conflicts=('gnome-mpv')
+provides=('gnome-mpv')
 source=("$pkgname::git+https://github.com/gnome-mpv/gnome-mpv.git")
 md5sums=('SKIP')
 
