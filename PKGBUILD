@@ -7,8 +7,9 @@ pkgdesc="A program to extract files from a yaffs image"
 arch=("i686" "x86_64")
 url="http://code.google.com/p/unyaffs/"
 license=(GPL3)
+depends=('glibc')
 
-source=("http://unyaffs.googlecode.com/files/$pkgname.c" "http://unyaffs.googlecode.com/files/$pkgname.h")
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/unyaffs/unyaffs.{c,h})
 
 sha256sums=('82b28c82d9e56d3ea1c082c42bf3fac49169b7646de0f9c58f989d09ffb4636b'
             'cd421a9abb8ed02e33db06578184b95a25547eb343084987109c235e9e1a9e47')
