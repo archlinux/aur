@@ -2,7 +2,7 @@
 # Maintainer : Colin Arnott <arnottcr@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=20160708.1.1.32.g32b8255
+pkgver=r942.f477d9e
 pkgrel=1
 arch=('any')
 license=('GPLv3')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    echo `date +%Y%m%d`.`git describe --tags | sed "s/-/./g"`
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
