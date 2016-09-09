@@ -22,3 +22,5 @@ package() {
 }
 
 # vim:set ft=sh:
+md5sums=('70b877d59239bb454d435876fb900cc9'
+         'dab6b2be6bfbd3f2b77b000814e1e9fd')
