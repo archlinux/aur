@@ -1,0 +1,20 @@
+--- pysvn-1.9.3/Source/setup_configure.py.orig	2016-09-10 02:40:51.946542206 +0800
++++ pysvn-1.9.3/Source/setup_configure.py	2016-09-10 02:41:18.483208108 +0800
+@@ -425,7 +425,7 @@
+         # assume that newer version are always usable
+         if self.pycxx_version < min_pycxx_version:
+             raise SetupError( 'PyCXX version %d.%d.%d required, but found %d.%d.%d.' %
+-                                (pycxx_version[0], pycxx_version[1], pycxx_version[2]
++                                (min_pycxx_version[0], min_pycxx_version[1], min_pycxx_version[2]
+                                 ,self.pycxx_version[0], self.pycxx_version[1], self.pycxx_version[2]) )
+ 
+         self._addVar( 'PYCXX_SRC',      self.find_pycxx_src() )
+@@ -1177,7 +1177,7 @@
+         CompilerGCC.__init__( self, setup )
+ 
+         self._find_paths_pycxx_dir = [
+-                        '../Import/pycxx-%d.%d.%d' % pycxx_version,
++                        '../Import/pycxx-%d.%d.%d' % min_pycxx_version,
+                         distutils.sysconfig.get_python_inc() # typical Linux
+                         ]
+         self._find_paths_pycxx_src = [
