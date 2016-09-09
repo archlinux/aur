@@ -6,7 +6,7 @@
 pkgname='clam-git'
 _gitname=clams
 pkgver=1.4.5.273.g304677d
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://www.clamclient.com"
 depends=('qt4' 'miniupnpc' 'db4.8' 'boost-libs' 'qrencode')
@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    git apply "$srcdir"/241.patch
+    git apply "$srcdir"/295.patch
 }
 
 build() {
