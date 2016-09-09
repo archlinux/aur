@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.1.0+22448.809989ceb5d3
+pkgver=4.2.0_rc122457.ae58225940da
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -34,7 +34,7 @@ pkgver() {
     hg clone ${_hgroot}${_hgrepo}
   fi > /dev/null 2>&1
   cd "$srcdir/$_hgrepo"
-  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d [])
+  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
   printf "%s%s.%s" "${_appver}" "$(hg log|head -1|cut -d: -f2|tr -d " ")" "$(hg log|head -1|cut -d: -f3)"
 }
 
