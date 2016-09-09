@@ -1,5 +1,6 @@
 # Maintainer: timcowchip <timcowchip@gmail>
 pkgname=k9copy-kde4
+_pkgname=k9copy
 pkgver=3.0.3
 pkgrel=1
 pkgdesc="A small utility to copy DVD"
@@ -12,11 +13,13 @@ makedepends=('automoc4' 'cmake')
 provides=('k9copy-reloaded')
 conflicts=('k9copy' 'k9copy-frameworks')
 install=k9copy.install
-source=("http://sourceforge.net/projects/k9copy-reloaded/files/$pkgname-$pkgver.tar.gz")
-md5sums=('53158282e23a4aa4fb8f4336f1424521')
+source=("http://sourceforge.net/projects/k9copy-reloaded/files/$_pkgname-$pkgver.tar.gz" "ffmpeg3andgcc6.patch")
+md5sums=('53158282e23a4aa4fb8f4336f1424521' '3a7bf5dd2affedf83e41b2ecdca47630')
 
 build(){
     cd "$srcdir/k9copy"
+    
+    patch -Np1 -i ../ffmpeg3andgcc6.patch
 
     # Fix desktop files
     sed -e 's|Name=k9copy|Name=K9copy|g' \
