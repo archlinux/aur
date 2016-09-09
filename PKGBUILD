@@ -6,7 +6,7 @@
 # #commit=<commit_id> in source url.
 
 pkgname=ring-kde-git
-pkgver=2.0.0.r177.g49fb1c3
+pkgver=2.0.0.r267.g211b337
 pkgrel=1
 pkgdesc="KDE client for Ring"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ groups=("ring")
 depends=("libringclient-git" "ring-daemon-git" "qt5-base" "qt5-svg"
          "attica-qt5" "kconfig" "kguiaddons" "kdbusaddons" "ki18n"
          "kwindowsystem" "kxmlgui" "kiconthemes" "kinit" "kio" "kcompletion"
-         "kcrash" "kdelibs" "knotifications")
+         "kcrash" "kdelibs" "knotifications" "knotifyconfig" "python" "glu")
 makedepends=("git" "cmake" "extra-cmake-modules")
 provides=("ring-kde")
 changelog="ChangeLog"
