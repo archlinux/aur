@@ -6,8 +6,8 @@
 ## Mozc compile option
 _bldtype=Release
 
-_mozcver=2.17.2322.102
-_dicver=20160627
+_mozcver=2.18.2598.102
+_dicver=20160905
 _revision=1
 
 _fcitxver=2.17.2313.102.1
@@ -20,17 +20,17 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
-makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt4' 'subversion' 'zinnia' 'fcitx')
+makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt4' 'zinnia' 'fcitx')
 source=(mozc-neologd-ut-${pkgver}.tar.xz::https://sourceforge.net/projects/trickart-aur/files/mozc-neologd-ut/mozc-neologd-ut-${pkgver}.tar.xz
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
-sha1sums=('37e7ea7e30afd7acaeff5bad92b57087f6d5cada'
+sha1sums=('2ce2794370be8df36cea9e2346b86659d44a06ee'
           '31de8917e9369bfd638e5725d57469bfde6aeb84'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
-  cd mozc-neologd-ut-${pkgver}
+  cd mozc-neologd-ut-${pkgver}/src
 
   # Adjust to use python2
   find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
@@ -38,13 +38,10 @@ prepare() {
 
   # Apply fcitx patch
   patch -Np2 -i "${srcdir}/fcitx-mozc-${_fcitxver}.patch"
-
-  # Extract license part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
 }
 
 build() {
-  cd mozc-neologd-ut-${pkgver}
+  cd mozc-neologd-ut-${pkgver}/src
 
   # Use Qt4
   _rcc_loc=`pkg-config QtCore --variable=rcc_location`
@@ -64,12 +61,12 @@ package_mozc-neologd-ut() {
   arch=('i686' 'x86_64')
   depends=('qt4' 'zinnia')
   conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut' 'mozc-ut')
-  cd mozc-neologd-ut-${pkgver}
+  cd mozc-neologd-ut-${pkgver}/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -m 644 LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m 644 ../LICENSE data/installer/*.html "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package_fcitx-mozc-neologd-ut() {
@@ -78,7 +75,7 @@ package_fcitx-mozc-neologd-ut() {
   depends=("mozc-neologd-ut=${pkgver}" 'fcitx')
   replaces=('fcitx-mozc', 'fcitx-mozc-ut')
 
-  cd mozc-neologd-ut-${pkgver}
+  cd mozc-neologd-ut-${pkgver}/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
