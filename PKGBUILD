@@ -1,10 +1,10 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Sébastien Luttringer
 
 pkgname=xdg-utils-git
-pkgver=1.1.1.r9.g6acfbbe
+pkgver=1.1.1.r12.g338f54e
 pkgrel=1
 pkgdesc='Command line tools that assist applications with a variety of desktop integration tasks (git version)'
 url='http://www.freedesktop.org/wiki/Software/xdg-utils/'
