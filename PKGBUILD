@@ -41,8 +41,8 @@ package() {
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}-next.service
   
   msg2 "Symlinking for gui launch"
-  install -dm755 $pkgdir/var/opt/openbazaar-go/
-  ln -sr /usr/bin/${_pkgname}-next $pkgdir/var/opt/openbazaar-go/openbazaard
+  install -dm755 $pkgdir/opt/openbazaar-go/
+  ln -sr /usr/bin/${_pkgname}-next $pkgdir/opt/openbazaar-go/openbazaard
 }
 
 pkgver() {
