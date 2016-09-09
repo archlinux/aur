@@ -7,7 +7,7 @@ pkgbase=linux-zen           # Build -zen kernel
 _srcname=linux-4.7
 _zenpatch=zen-4.7.3-82014da197e1762e424cdef63a703dba7735ffe3.diff
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -32,8 +32,8 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '0064be0bf4fbca003559e6d2cd5feb088ac6e72870d6b9f247f904fe2ba12416'
             'SKIP'
-            '7883a6a75b105cc02af162f8c6691cb772d009092a885828e2b7e0c5e3322bdd'
-            'd279f16321a9ab3c6b38340b7efc3bfa75e1b7d61ac4d278cc98110b857e93b8'
+            'a97a5dd950afccfce41834475bef7d26ca013b49ec5bf18a8bb12738cf6182f8'
+            '0eca0ffbc816305014d1cdfba1e7488c100e687906ba106d542c480acf5ed954'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
