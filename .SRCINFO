@@ -1,7 +1,7 @@
 pkgbase = fetcher
 	pkgdesc = Automatic adding, commiting, pushing or pulling of git repos via a systemd service unit.
 	pkgver = 1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mbrunnen/fetcher
 	install = fetcher.install
 	arch = any

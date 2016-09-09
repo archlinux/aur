@@ -29,7 +29,9 @@ exec 2> >(tee >(systemd-cat --identifier="$script_name" --priority="warning") >&
 function config_usage() {
     echo "Create your fetcher config file $configfile like this:"
     echo $HOME/workspace/repo pull
-    echo $HOME/.vim pull
+    echo $HOME/workspace/repo2 commit
+    echo $HOME/workspace/repo2 push
+    echo $HOME/.vim addcommitpush
     echo $HOME/workspace/project1 pull origin master:master
     echo $HOME/workspace/project2 alias
 }
@@ -97,11 +99,11 @@ for ((i=0; i < ${#lines[@]}; i++)); do
         addcommitpush)
             if $dryrun; then
                 cmd="git -C $path add -n -A"
-                cmd="$cmd && (git -C $path commit -n -v || true)"
+                cmd="$cmd && git -C $path commit -n -v"
                 cmd="$cmd && git -C $path push -n $remote $branch"
             else
                 cmd="git -C $path add -A"
-                cmd="$cmd && (git -C $path commit -v || true)"
+                cmd="$cmd && git -C $path commit -v"
                 cmd="$cmd && git -C $path push $remote $branch"
             fi
             ;;
