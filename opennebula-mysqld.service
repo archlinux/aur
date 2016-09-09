@@ -2,7 +2,7 @@
 Description=OpenNebula management
 After=network.target local-fs.target remote-fs.target mysqld.service 
 Requires=mysqld.service
-Conflicts=opennebula
+Conflicts=opennebula.service
 
 [Service]
 User=oneadmin
