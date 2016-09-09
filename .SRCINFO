@@ -3,7 +3,7 @@
 pkgbase = gdcm
 	pkgdesc = a C++ library for DICOM medical files
 	pkgver = 2.6.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gdcm.sourceforge.net
 	arch = i686
 	arch = x86_64
