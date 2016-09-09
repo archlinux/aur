@@ -132,7 +132,7 @@ build() {
   ###########################################################################
 
   # This builds the vanilla OpenNebula package. Tweak this line as desired.
-  scons new_xmlrpc=yes
+  scons -j "$(nproc)" new_xmlrpc=yes
 }
 
 package() {
