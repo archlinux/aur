@@ -1,8 +1,7 @@
 pkgbase = litecoin-git
 	pkgdesc = A peer-to-peer network-based digital currency (git version)
-	pkgver = 7869.623f20b
+	pkgver = v0.10.4.0.6.g623f20b
 	pkgrel = 1
-	epoch = 1
 	url = http://www.litecoin.org/
 	arch = i686
 	arch = x86_64

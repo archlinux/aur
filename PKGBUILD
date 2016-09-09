@@ -3,8 +3,7 @@
 
 pkgname=litecoin-git
 _gitname=litecoin
-epoch=1
-pkgver=7869.623f20b
+pkgver=v0.10.4.0.6.g623f20b
 pkgrel=1
 pkgdesc="A peer-to-peer network-based digital currency (git version)"
 arch=('i686' 'x86_64')
@@ -22,8 +21,8 @@ sha256sums=('SKIP'
          '0a16e5a66d988ca8dabf86bf7c1002db5aa9c52a7107fe3a2f6941c4b03c5b58')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$srcdir/$_gitname"
+  git describe --tags| sed "s/-/./g"
 }
 
 prepare() {
