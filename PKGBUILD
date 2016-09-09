@@ -1,15 +1,15 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
-# https://github.com/t-richards/aur-libpdfium-bin
+
 pkgname=libpdfium-bin
-pkgver=0.1+git20150311
+pkgver=20151208.015427
 pkgrel=1
 pkgdesc="An open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium.git"
 license=('GPL')
 depends=('freetype2' 'freeimage')
-source=('http://s3.documentcloud.org.s3.amazonaws.com/pdfium/libpdfium-dev_0.1%2Bgit20150311-1_amd64.deb')
-sha256sums=('0a25d618c99d441f7112b098ec4be9e8d49f8672b7647d402c6db860852919b3')
+source=("https://assets.documentcloud.org/pdfium/libpdfium-dev_${pkgver}_amd64.deb")
+sha256sums=('971bd440bdb351922a78b8c2e10c434ee06345325f52823e1c0cc2589bd5bec8')
 
 build() {
     tar xvf data.tar.xz
