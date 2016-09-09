@@ -21,7 +21,7 @@ source=("git+https://github.com/persmule/amule-dlp.git#commit=d41da5b9e588fc11f8
         'amuled.systemd'
         'amuleweb.systemd')
 sha256sums=('SKIP'
-            '527a2cca6d56b8269722aafc77a89734f59a929f946f342bd0f69b256f9c7522'
+            '6dbdd1ad1c3c3d8637b8f4cbd5416f39c8e4277a2f8498577b08bf6cda8dbca9'
             'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2')
 
 pkgver() {
