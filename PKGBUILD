@@ -121,13 +121,8 @@ build() {
   ###########################################################################
   ##                                                                       ##
   ## It is highly recommended that you read the documentation and tweak    ##
-  ##     the PKGBUILD accordingly:                                         ##
+  ## the PKGBUILD accordingly:                                             ##
   ## http://docs.opennebula.org/stable/integration/references/compile.html ##
-  ##                                                                       ##
-  ## This package assumes a self-contained install. If you do NOT want a   ##
-  ##     self-contained install, then remove `-d /srv/cloud/one` from the  ##
-  ##     package() function and MAKE SURE you properly change the          ##
-  ##     appropriate sections of opennebula-unstable.install               ##
   ##                                                                       ##
   ###########################################################################
 
