@@ -12,7 +12,7 @@ license=('BSD')
 provides=('nvdock')
 conflicts=('nvdock')
 depends=('gtk2')
-source=("http://bobmajdakjr.googlecode.com/files/nvdock-${pkgver}.tar.bz2"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bobmajdakjr/nvdock-${pkgver}.tar.bz2"
         "fix-build.patch"
 	"use-bumblebee.patch")
 md5sums=('e18c4eeff936dc3b671fd8b5a9bb5145'
