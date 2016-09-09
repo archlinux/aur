@@ -45,7 +45,7 @@ package() {
 	python2 setup.py qt_resources
 	python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-	install -D -m0644 resources/yubikey-neo-manager.png "${pkgdir}/usr/share/icons/hicolor/128x128/neoman.png"
+	install -D -m0644 resources/yubikey-neo-manager.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/neoman.png"
 	for SIZE in 16 24 32 48 64 96; do
 		convert -scale ${SIZE} \
 			resources/yubikey-neo-manager.png \
