@@ -1,0 +1,35 @@
+pkgbase = arm-none-eabi-gcc49-linaro-alternative
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
+	pkgver = 4.9_2016.02
+	pkgrel = 1
+	url = https://releases.linaro.org/
+	arch = i686
+	arch = x86_64
+	groups = arm-none-eabi-toolchain
+	license = GPL
+	license = LGPL
+	makedepends = flex
+	makedepends = bison
+	depends = arm-none-eabi-binutils>=2.26-1
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = zipman
+	options = docs
+	source = http://releases.linaro.org/components/toolchain/gcc-linaro/4.9-2016.02/gcc-linaro-4.9-2016.02.tar.xz
+	source = http://releases.linaro.org/15.01/components/toolchain/newlib-linaro/newlib-linaro-2.2.0-2015.01.tar.xz
+	source = gcc-4.9-fix-build-with-gcc-6.patch
+	source = gcc-4.9-multilib2.patch
+	source = gcc-4.9-no-exceptions.patch
+	sha256sums = 63bd38c028fec87a85eff1f3728b9e8f9a7070346ab337a57963c413da4859a2
+	sha256sums = d29fe53d70f545c2fb080b9686e05d0f8af5088fec9b7dc78bc788a98765ef99
+	sha256sums = b328e9cdca4e2869490d932191b78ef1a61c60382cea3a23d1ef86e7c1fb86a7
+	sha256sums = 104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf
+	sha256sums = 3a1d6a17aba8a578ade3552a6d1beb66a129fb4f3268539596d39cbbef88ac6c
+
+pkgname = arm-none-eabi-gcc49-linaro-alternative
+
