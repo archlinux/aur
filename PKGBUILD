@@ -1,18 +1,18 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 pkgname=netgen-nogui
 pkgver=5.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="NETGEN is an automatic 3d tetrahedral mesh generator"
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="https://sourceforge.net/projects/netgen-mesher"
-license=('LGPL')
-depends=('oce' 'openmpi' 'metis')
-makedepends=('patch')
-provides=('netgen')
-options=('!libtool')
+license=("LGPL")
+depends=("opencascade" "openmpi" "metis")
+makedepends=("patch")
+provides=("netgen")
+options=("!libtool")
 source=("https://sourceforge.net/projects/netgen-mesher/files/netgen-mesher/5.3/netgen-$pkgver.tar.gz/download"
-        'occ-pi-constant.patch'
-	'occ-relativemode.patch')
+        "occ-pi-constant.patch"
+        "occ-relativemode.patch")
 md5sums=('afd5a9b0b1296c242a9c554f06af6510'
          '0595a7f4d99d0662e44323932122b335'
          '5d40b3e7fd70bde4d9eef8cf89ac347b')
@@ -22,8 +22,8 @@ _builddir="build"
 
 prepare() {
 	cd "$srcdir/netgen-$pkgver"
-	patch -Np1 < ../occ-pi-constant.patch
-	patch -Np1 < ../occ-relativemode.patch
+	patch -p1 -i "$srcdir/occ-pi-constant.patch"
+	patch -p1 -i "$srcdir/occ-relativemode.patch"
 }
 
 build() {
@@ -32,9 +32,13 @@ build() {
 	# create dir for out-of-source build
 	mkdir "$_builddir" && cd "$_builddir"
 
-	CPPFLAGS="-I/usr/include/openmpi/ompi/mpi/cxx -I/opt/oce/include/oce"
-	../configure --prefix=/usr --with-occ=/opt/oce/ --enable-occ \
-		--disable-gui --enable-nglib --datadir=/usr/share
+	CPPFLAGS="-I/usr/include/openmpi/ompi/mpi/cxx -I/opt/opencascade/inc"
+	../configure --prefix=/usr \
+	             --with-occ=/opt/opencascade/ \
+	             --enable-occ \
+	             --disable-gui \
+	             --enable-nglib \
+	             --datadir=/usr/share
 	make
 }
 
