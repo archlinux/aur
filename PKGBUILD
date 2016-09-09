@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
-             'opencv' 'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
+             'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qt5-multimedia' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-5.1-fix-build.patch
@@ -80,7 +80,7 @@ package_kipi-plugins() {
   cd $srcdir/build/doc/kipi-plugins
   make DESTDIR="$pkgdir" install
   cd $srcdir/build/doc-translated/kipi-plugins
-  make DESTDIR="pkgdir" install
+  make DESTDIR="$pkgdir" install
   cd $srcdir/build/po
   make DESTDIR="$pkgdir" install
 
