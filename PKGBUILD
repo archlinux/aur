@@ -3,7 +3,7 @@
 pkgname=('yubikey-manager-git')
 _gitname='yubikey-manager'
 pkgver=0.1.0.r50.19abdf1
-pkgrel=5
+pkgrel=6
 pkgdesc='Command line and GUI tool for configuring YubiKeys, over all transports.'
 arch=('any')
 url='https://github.com/Yubico/yubikey-manager'
@@ -46,8 +46,8 @@ package() {
   install -Dm0644 "$srcdir/ykman-gui.desktop" "$pkgdir/usr/share/applications/ykman-gui.desktop"
 
   install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README "$pkgdir/usr/share/doc/yubikey-manager/README"
-  install -Dm0644 NEWS "$pkgdir/usr/share/doc/yubikey-manager/NEWS"
+  install -Dm0644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm0644 NEWS "$pkgdir/usr/share/doc/$pkgname/NEWS"
 
   install -d "$pkgdir/usr/share/bash-completion/completions/"
   _YKMAN_COMPLETE=source "$pkgdir/usr/bin/ykman" > "$pkgdir/usr/share/bash-completion/completions/ykman" || true
