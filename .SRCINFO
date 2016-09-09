@@ -1,0 +1,16 @@
+pkgbase = morebin
+	pkgdesc = 'more' for binary files
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/peterfpeterson/morebin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	source = https://github.com/peterfpeterson/morebin/archive/v2.3.4.tar.gz
+	sha1sums = 8d1b7db395104e35a0ad88a8288ba88e57d06848
+
+pkgname = morebin
+
