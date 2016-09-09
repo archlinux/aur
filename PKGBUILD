@@ -2,7 +2,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.23.0
+pkgver=1.23.2
 pkgrel=1
 everelname="yc.118.7"
 everelver=1.4
@@ -29,6 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('04f7d0c6c4c96daf7675721d72658029'
-         '53ae38c0f4840359e08e155ba72753c5'
+md5sums=('f2a720fd1e3b7aa390ef3cf7643b5501'
+         '6a1a208170f36111c55af46e7749a2bb'
          '9937192cfce7f5e16e9cf26086f1899c')
