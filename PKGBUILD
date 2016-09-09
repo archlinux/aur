@@ -4,12 +4,13 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=124.0.0
-pkgrel=2
+pkgver=125.0.0
+pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
+conflicts=('kubectl-bin')
 depends=('python2')
 makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
@@ -21,13 +22,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('418349aea5484faab64758d4ca8b592f988240ae'
+sha1sums_x86_64=('dd9d9b18bdd5664edeb1e89922347aea7b35c0a2'
                  '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('b10acdd8273da1b343db0fe5627baaa861a3d343'
+sha1sums_i686=('8895d62c08f795cee3c30849181ca513afd4f6b6'
                '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 prepare() {
