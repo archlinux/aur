@@ -1,8 +1,8 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Put icons always in folder with version and release
 pkgname=super-ultra-flat-numix-remix-icons-git
-pkgver=4.7
-pkgrel=4
+pkgver=4.8
+pkgrel=0
 pkgdesc="super-ultra-flat-numix-remix-git is an icon theme build upon 5 different icon sets - check github for more info"
 arch=('any')
 url="https://github.com/erikdubois/Super-Ultra-Flat-Numix-Remix"
