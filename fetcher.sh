@@ -124,7 +124,7 @@ for ((i=0; i < ${#lines[@]}; i++)); do
     echo '=============================================================================='
     echo "$script_name runs:"
     echo "$cmd"
-    eval "$cmd"
+    eval "$cmd" || true
     echo
 done
 

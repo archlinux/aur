@@ -1,7 +1,7 @@
 # Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
 
 pkgname=fetcher
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="Automatic adding, commiting, pushing or pulling of git repos via a systemd service unit."
 arch=('any')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("fetcher.sh"
         "fetcher.service")
 noextract=()
-md5sums=('5df683b5b96f5e83331ab071b0979613'
+md5sums=('c8caa52bf3ac2c3b2f0a82330c1ab5b0'
          'dab6b2be6bfbd3f2b77b000814e1e9fd')
 
 package() {
