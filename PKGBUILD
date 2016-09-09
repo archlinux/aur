@@ -12,7 +12,7 @@ makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
-sha1sums=('699de846c9e7f4fe435691e73ca27ecd55f192ec')
+sha1sums=('5e09d4da8d934c6350d1a7e40b78fdf557e8edf4')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"

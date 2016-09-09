@@ -17,7 +17,7 @@ pkgbase = mate-netbook-dev
 	conflicts = mate-netbook
 	conflicts = mate-netbook-gtk3
 	source = http://pub.mate-desktop.org/releases/1.15/mate-netbook-1.15.2.tar.xz
-	sha1sums = 699de846c9e7f4fe435691e73ca27ecd55f192ec
+	sha1sums = 5e09d4da8d934c6350d1a7e40b78fdf557e8edf4
 
 pkgname = mate-netbook-dev
 	pkgdesc = A simple window management tool . (GTK3 version)
