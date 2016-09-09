@@ -1,20 +1,21 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Boris Timofeev <mashin87@gmail.com>
 pkgname=xroar
-pkgver=0.33.2
+pkgver=0.34.3
 pkgrel=1
 pkgdesc="A Dragon and Tandy CoCo emulator."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.6809.org.uk/dragon/xroar.shtml"
-depends=('gtk2' 'sdl' 'libgl' 'libsndfile')
+depends=('gtk2' 'sdl2' 'libgl' 'libsndfile' 'gtkglext')
 makedepends=()
 install=xroar.install
 source=(http://www.6809.org.uk/xroar/dl/$pkgname-$pkgver.tar.gz
         xroar.desktop
         xroar.png)
-md5sums=('d17eb0c201d0c8572fb4f89605ea0f79'
-         'b72be2c92759966c932b6e61c1ae4fef'
-         '8d34759e88a1ddc929a5db982db06e6a')
+sha1sums=('b2f5cde204b6fe9904bb014d8f5cc8734d181765'
+          'dd02919bbe5c1fd4f6291fc734de15900c33ec7d'
+          '39af4e1493f50cea1937da7a77cfed3751a00308')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
