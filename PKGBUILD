@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=substance-designer
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Substance Designer is a node-based non-destructive application for material authoring."
 arch=('x86_64')
@@ -15,12 +15,12 @@ depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3'
 )
 makedepends=('pkgextract')
 options=('!strip')
-source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-designer/5.x/Substance_Designer-5.5.0-1.el6.standard.full.x86_64.rpm'
+source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-designer/5.x/Substance_Designer-5.5.1-1.el6.standard.full.x86_64.rpm'
         'substance-designer-icon.png'
         'substance-designer.desktop'
         'substance-designer')
 noextract=()
-md5sums=('634772ee767a854200f9f04994e2c667'
+md5sums=('5e00b9b93b7fc4ac35fd820d4d9fd61b'
          '6cbffe7041d82640a39132d8b0dbb11a'
          'c58b3078d344453b2198d3ba5946bf71'
          '55a27095415c1e013649186c1a84228a')
