@@ -1,3 +1,5 @@
+.PHONY: install pkg clean
+
 install: pkg
 	sudo pacman -U backupninja-borg-git-*.pkg.tar.xz
 
