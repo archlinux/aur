@@ -1,6 +1,6 @@
 
 pkgname=gneural_network
-pkgver=0.5.0
+pkgver=0.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="GNU package which implements a programmable neural network"
@@ -9,7 +9,7 @@ depends=('glibc')
 license=('GPL')
 url="http://www.gnu.org/software/gneuralnetwork/"
 source=("gneural_network-${pkgver}.tar.gz::http://cvs.savannah.gnu.org/viewvc/*checkout*/gneuralnetwork/gneural_network-${pkgver}.tar.gz?revision=1.1&root=gneuralnetwork")
-sha1sums=('f63552b5f157838e430b7b48bdc7a39ede4354c0')
+sha1sums=('e9a27be22b5366260ac02a36ac034fe5c5a049df')
 
 prepare()
 {
