@@ -1,5 +1,4 @@
-*.pkg.tar*
-*.src.tar*
-/RetroArch/
-src
-pkg
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
