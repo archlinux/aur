@@ -3,7 +3,7 @@
 
 _themename=Bluebird
 pkgname=xfce-theme-bluebird-git
-pkgver=1.2.r154
+pkgver=1.2.r158
 pkgrel=1
 pkgdesc="A light blue Xfce theme, introduced in the release of Xubuntu 10.10"
 arch=('any')
