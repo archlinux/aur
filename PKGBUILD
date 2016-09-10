@@ -8,7 +8,7 @@ pkgdesc="Client library for accessing Enginio service from Qt and QML code."
 arch=("i686" "x86_64")
 url="https://github.com/qt/qtenginio"
 license=("BSD")
-depends=('qt5-base>=5.5.0')
+depends=('qt5-base>=5.5.0' 'openssl' 'perl>=5.10')
 makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
