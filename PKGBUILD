@@ -2,14 +2,14 @@
 
 pkgname="svgcleaner"
 pkgver=0.6.90
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that cleans svg images from unnecessary data in batch mode."
 provides=("svg-cleaner")
 arch=("i686" "x86_64")
 url="https://github.com/RazrFalcon/SVGCleaner"
 license=("GPL3")
-makedepends=("qt4")
-depends=("p7zip" "qt4")
+makedepends=("qt4" "cargo")
+depends=("p7zip" "qt4" "cargo")
 source=("svgcleaner.install"
 	"https://github.com/RazrFalcon/SVGCleaner/archive/v${pkgver}.tar.gz")
 install="svgcleaner.install"
@@ -17,21 +17,13 @@ sha512sums=('938b5a1ab4a90512f1d25190cb4c246ee565aca841b8172fa93da81b0820d69c159
 	'986001e9e75645d61e3ee5fe9df9ebe67500b9dd54e5355992cb2cfa5ad5780f6724dea258a1149e3030ddd40d93787a96e7362d7bab6241484275c9e6460c7b')
 
 build() {
-	cd "${srcdir}/SVGCleaner-${pkgver}/src/cli/"
-	qmake-qt4 cli.pro CONFIG+="release"
-	make -j $(nproc)
+	cd "${srcdir}/svgcleaner-${pkgver}/src/"
+	cargo build --release
 
-	# fix lrelease name
-	cd "${srcdir}/SVGCleaner-${pkgver}"
-	sed 's/QMAKE_LRELEASE = lrelease/QMAKE_LRELEASE = lrelease-qt4/' -i translations/translations.pri
-
-	cd "${srcdir}/SVGCleaner-${pkgver}/src/gui/"
-	qmake-qt4 gui.pro CONFIG+="release"
-	make -j $(nproc)
 }
 
 package() {
-	cd "${srcdir}/SVGCleaner-${pkgver}"
+	cd "${srcdir}/svgcleaner-${pkgver}"
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/svgcleaner/presets"
 	mkdir -p "${pkgdir}/usr/share/svgcleaner/translations"
