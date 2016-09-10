@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gog-lovers-in-a-dangerous-spacetime
-pkgver=2.7.0.9
+pkgver=2.8.0.10
 pkgrel=1
 pkgdesc="Only through teamwork can you triumph over the evil forces of Anti-Love."
 url="http://www.loversinadangerousspacetime.com/"
@@ -12,7 +12,7 @@ depends_x86_64=('lib32-glib2')
 depends_i686=('glib2')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('29a953ef4be2e5087ac757fc7299575df3fa5a98cefa37b2325d9203e5ad1190'
+sha256sums=('e18bb73920ddd6678f40dfaba0d3f7159098ee557f95b50518b460915d572007'
             '996a51f45a1745d5641eab449efe5d3d0fa8d6786599ca997af493f7a7cb81d6')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
