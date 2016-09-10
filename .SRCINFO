@@ -1,0 +1,31 @@
+pkgbase = dbus-x11-nosystemd
+	pkgdesc = Freedesktop.org message bus system
+	pkgver = 1.10.10
+	pkgrel = 3
+	url = https://wiki.freedesktop.org/www/Software/dbus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = python
+	makedepends = yelp-tools
+	makedepends = doxygen
+	makedepends = xorg-server-common
+	depends = expat
+	depends = dbus-docs
+	provides = libdbus
+	provides = dbus
+	conflicts = libdbus
+	conflicts = dbus
+	replaces = libdbus
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz
+	source = https://dbus.freedesktop.org/releases/dbus/dbus-1.10.10.tar.gz.asc
+	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
+	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
+	sha256sums = 9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43
+	sha256sums = SKIP
+
+pkgname = dbus-x11-nosystemd
+
