@@ -1,9 +1,10 @@
-# Maintainer: Bidossessi Sodonon
+# Maintainer: Firas Zaidan
+# Contributors: Bidossessi Sodonon, Firas Zaidan
 
-pkgname=odoo
+pkgname=odoo8
 pkgver=8.0
-_pkgsubver=20150929
-pkgrel=5
+_pkgsubver=20160910
+pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -64,7 +65,7 @@ optdepends=(
 )
 
 source=(
-  "http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
+  "http://nightly.odoo.com/8.0/nightly/src/odoo_${pkgver}.${_pkgsubver}.tar.gz"
   odoo.confd
   odoo.service
   odoo.conf
@@ -74,7 +75,7 @@ install=odoo.install
 
 package()
 {
-  cd ${srcdir}/${pkgname}-${pkgver}-${_pkgsubver}
+  cd ${srcdir}/odoo-${pkgver}-${_pkgsubver}
   # Force package data inclusion
   sed -i -e s/#include_package_data/include_package_data/ setup.py
   python2 setup.py install --root="${pkgdir}"
@@ -84,7 +85,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('d4a7e5d5f2ae6f956c3e999003ff21a1'
+md5sums=('6e24ae05ec706e01fb830dcac7e0dfcb'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')

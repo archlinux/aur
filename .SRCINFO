@@ -1,7 +1,7 @@
-pkgbase = odoo
+pkgbase = odoo8
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 8.0
-	pkgrel = 5
+	pkgrel = 1
 	url = http://odoo.com/
 	install = odoo.install
 	arch = any
@@ -52,18 +52,18 @@ pkgbase = odoo
 	depends = wkhtmltopdf-static
 	depends = python2-zsi
 	optdepends = antiword
-	provides = odoo
+	provides = odoo8
 	conflicts = openerp
 	replaces = openerp
 	backup = etc/odoo/odoo.conf
-	source = http://nightly.odoo.com/8.0/nightly/src/odoo_8.0.20150929.tar.gz
+	source = http://nightly.odoo.com/8.0/nightly/src/odoo_8.0.20160910.tar.gz
 	source = odoo.confd
 	source = odoo.service
 	source = odoo.conf
-	md5sums = d4a7e5d5f2ae6f956c3e999003ff21a1
+	md5sums = 6e24ae05ec706e01fb830dcac7e0dfcb
 	md5sums = 742fa9ad94a92ac2aa910197a26af4e8
 	md5sums = 00314ef227c9075767d0165527de9841
 	md5sums = 0c205f95168a60d140411cce4e173eb8
 
-pkgname = odoo
+pkgname = odoo8
 
