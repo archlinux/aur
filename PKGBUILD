@@ -8,7 +8,7 @@ pkgdesc="A experimental command line based spaced repetition software (SRS) Inst
 arch=('i686' 'x86_64')
 url="https://github.com/jsageryd/gaku"
 license=('MIT')
-depends=('ruby')
+depends=('ruby=>1.9')
 provides=('gaku')
 conflicts=('gaku')
 source=("https://github.com/jsageryd/gaku/archive/v${pkgver}.tar.gz")
