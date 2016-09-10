@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('qt5-base')
 makedepends=('imagemagick')
 install=
-source=("https://github.com/czcorpus/$_pkgname/archive/$pkgver.tar.gz"
+source=("https://github.com/czcorpus/$_pkgname/archive/v$pkgver.tar.gz"
         "$_binname.desktop")
 md5sums=('6a4749e65a5fa3a0abbf86797033b1d7'
          '41995ca7398f11b0ffc394e34a327cd6')
