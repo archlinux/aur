@@ -2,7 +2,7 @@
 # Maintainer: Max Bruckner (FSMaxB)
 
 pkgname=json-sh
-pkgver=r84.ed3f9dd
+pkgver=r99.022ec33
 pkgrel=1
 pkgdesc="command line json tool written in bash"
 arch=('any')
@@ -14,17 +14,17 @@ md5sums=('SKIP')
 depends=('bash')
 
 pkgver() {
-	cd "JSON.sh"
+	cd "JSON.sh" || exit 1
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check() {
-	cd "$srcdir/JSON.sh"
+	cd "$srcdir/JSON.sh" || exit 1
 	sh "all-tests.sh"
 }
 
 package() {
-	cd "JSON.sh"
+	cd "JSON.sh" || exit 1
 	install -Dm755 "$srcdir/JSON.sh/JSON.sh" "$pkgdir/usr/bin/JSON.sh"
 	install -Dm644 "$srcdir/JSON.sh/LICENSE.MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
