@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenNebula Web Interface
+Description=OpenNebula onegate Server
 After=network.target local-fs.target remote-fs.target opennebula.service
 Requires=opennebula.service
 
@@ -8,8 +8,8 @@ User=oneadmin
 Group=cloud
 Type=forking
 PermissionsStartOnly=true
-ExecStart=/usr/bin/sunstone-server start
-ExecStop=/usr/bin/sunstone-server stop
+ExecStart=/usr/bin/onegate-server start
+ExecStop=/usr/bin/onegate-server stop
 
 [Install]
 WantedBy=multi-user.target

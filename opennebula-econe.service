@@ -8,10 +8,6 @@ User=oneadmin
 Group=cloud
 Type=forking
 PermissionsStartOnly=true
-ExecStartPre=/usr/bin/mkdir -p /var/run/one
-ExecStartPre=/usr/bin/mkdir -p /var/lock/one
-ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/run/one
-ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/lock/one
 ExecStart=/usr/bin/econe-server start
 ExecStop=/usr/bin/econe-server stop
 
