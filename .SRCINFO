@@ -1,0 +1,17 @@
+pkgbase = qt5-enginio-git
+	pkgdesc = Client library for accessing Enginio service from Qt and QML code.
+	pkgver = r1173.3bdf6de
+	pkgrel = 1
+	url = https://github.com/qt/qtenginio
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = qt5-base>=5.5.0
+	provides = qt5-enginio
+	conflicts = qt5-enginio
+	source = qt5-enginio::git+https://github.com/qt/qtenginio.git
+	sha256sums = SKIP
+
+pkgname = qt5-enginio-git
+
