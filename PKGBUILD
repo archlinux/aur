@@ -21,13 +21,6 @@ pkgver() {
   echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/chicken-core"
-
-  # Clean up after any old builds
-  make PLATFORM=linux spotless
-}
-
 build() {
   cd "$srcdir/chicken-core"
 
