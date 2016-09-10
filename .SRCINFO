@@ -1,7 +1,7 @@
 pkgbase = odoo8
 	pkgdesc = Web-based Open Source Business Apps
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://odoo.com/
 	install = odoo.install
 	arch = any
@@ -41,6 +41,7 @@ pkgbase = odoo8
 	depends = python2-requests
 	depends = python2-simplejson
 	depends = python2-six
+	depends = python2-stdnum
 	depends = python2-qrcode
 	depends = python2-unittest2
 	depends = python2-vatnumber

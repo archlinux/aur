@@ -4,7 +4,7 @@
 pkgname=odoo8
 pkgver=8.0
 _pkgsubver=20160910
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -49,6 +49,7 @@ depends=(
     'python2-requests'
     'python2-simplejson'
     'python2-six'
+    'python2-stdnum'
     'python2-qrcode'
     'python2-unittest2'
     'python2-vatnumber'
