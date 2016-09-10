@@ -3,16 +3,16 @@
 
 pkgname=gcolor3-git
 _gitname=gcolor3
-pkgver=2015.09.06
-pkgrel=3
+pkgver=2016.08.20
+pkgrel=1
 pkgdesc="A simple color selection dialog in GTK3. Git version."
 arch=('i686' 'x86_64')
-url="http://unia.github.io/projects/gcolor3/"
+url="http://hjdskes.github.io/projects/gcolor3/"
 license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme')
 makedepends=('git' 'intltool' 'gnome-common')
 conflicts=('gcolor3')
-source=('git://github.com/Unia/gcolor3.git')
+source=('git://github.com/Hjdskes/gcolor3.git')
 md5sums=('SKIP')
 
 pkgver() {
