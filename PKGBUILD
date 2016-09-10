@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('gtk3' 'mpv')
 makedepends=('intltool')
 optdepends=('youtube-dl: Video integration to YouTube and other video sites.')
-conflicts=('gnome-mpv-git')
 source=("https://github.com/gnome-mpv/gnome-mpv/releases/download/v${pkgver}/gnome-mpv-${pkgver}.tar.xz")
 sha256sums=('92d967bbbbfabdfa3ab1f19be625f684959513890b2035ca6102292392fbf183')
 
