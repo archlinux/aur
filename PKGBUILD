@@ -6,8 +6,8 @@ arch=('i686' 'x86_64')
 url="http://asio.sourceforge.net"
 license=('custom')
 depends=('boost')
-provides=('asio==1.10.6')
-conflicts=('asio')
+provides=("${pkgname%-patched}==${pkgver}")
+conflicts=("${pkgname%-patched}")
 source=("http://downloads.sourceforge.net/${pkgname%-patched}/${pkgname%-patched}-${pkgver}.tar.bz2"
         "openssl-nosslv3.patch")
 md5sums=('85d014a356a6e004cd30ccd4c9b6a5c2'
