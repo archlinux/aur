@@ -100,12 +100,11 @@ for ((i=0; i < ${#lines[@]}; i++)); do
             if $dryrun; then
                 cmd="git -C $path add -n -A"
                 cmd="$cmd && git -C $path commit -n -v"
-                # Push nonetheles
                 cmd="$cmd; git -C $path push -n $remote $branch"
             else
                 cmd="git -C $path add -A"
                 cmd="$cmd && git -C $path commit -v"
-                cmd="$cmd && git -C $path push $remote $branch"
+                cmd="$cmd; git -C $path push $remote $branch"
             fi
             ;;
         pull)

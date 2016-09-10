@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("fetcher.sh"
         "fetcher.service")
 noextract=()
-md5sums=('442e141f5fc23b1205bbcb57409c834a'
+md5sums=('80d6df35f96d39d542d9f0c9dff9e5f1'
          'dab6b2be6bfbd3f2b77b000814e1e9fd')
 
 package() {
