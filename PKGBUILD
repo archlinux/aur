@@ -8,8 +8,8 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.7
-pkgrel=1
-pkgdesc="Blackmagic's DeckLink SDK (need to register and download from upstream URL)"
+pkgrel=2
+pkgdesc="Blackmagic's DeckLink SDK (needs registration at upstream URL and manual download)"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/"
 license=('custom')
@@ -21,10 +21,17 @@ sha256sums=('01562df363dce1f427273ef96595aa6964dbf8cbe492fa2eddaf9d9aff3eaadd'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 package() {
+	mkdir -p "${pkgdir}/usr/include"
+	mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+	
+	# Includes
 	cd "${srcdir}/Blackmagic DeckLink SDK ${pkgver}/Linux/include"
-	
-	mkdir -p "${pkgdir}"/usr/include
-	
 	install -D -m644 * "${pkgdir}"/usr/include
+	
+	# Documentation
+	cd "${srcdir}/Blackmagic DeckLink SDK ${pkgver}"
+	install -D -m644 *.pdf "${pkgdir}/usr/share/doc/${pkgname}"
+	
+	# License
 	install -D -m644 "$srcdir"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
