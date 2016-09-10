@@ -2,7 +2,7 @@
 
 pkgname=jcadencii
 pkgver=3.3.9+svn20110818.r1732
-pkgrel=1
+pkgrel=5
 pkgdesc="Piano roll editor for singing synthesis, supporting VOCALOID, VOCALOID2, UTAU, WORLD, AquesTone synthesis engines"
 arch=('any')
 url="https://packages.debian.org/sid/main/jcadencii"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('java-environment')
 optdepends=('wine')
 provides=('cadencii')
-source=("ftp://ftp.debian.org/debian/pool/main/c/cadencii/jcadencii_${pkgver}-5_all.deb")
+source=("ftp://ftp.debian.org/debian/pool/main/c/cadencii/jcadencii_${pkgver}-${pkgrel}_all.deb")
 sha1sums=('27f6ccd21200da3d74ac6ba55814c3658e5e3841')
 
 package() {
