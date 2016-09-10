@@ -1,7 +1,7 @@
 # Maintainer: Samadi van Koten
 
 pkgname=chicken-git
-pkgver=0.r3356.116f42e
+pkgver=4.11.1.r3356.116f42e
 pkgrel=1
 pkgdesc='Feature rich R5RS Scheme compiler and interpreter'
 arch=('any')
@@ -16,9 +16,9 @@ source=('git://code.call-cc.org/chicken-core.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd chicken-core
+  cd "$srcdir/chicken-core"
 
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(cat buildversion).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
