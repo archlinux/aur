@@ -16,7 +16,7 @@ makedepends=('bzr' 'cmake' 'gnome-doc-utils' 'gobject-introspection'
 provides=('pantheon-mail')
 conflicts=('pantheon-mail')
 install='pantheon-mail.install'
-source=('pantheon-mail::bzr++http://bazaar.launchpad.net/~elementary-apps/pantheon-mail/loki')
+source=('pantheon-mail::bzr++http://code.launchpad.net/~elementary-apps/pantheon-mail/loki')
 sha256sums=('SKIP')
 
 pkgver() {

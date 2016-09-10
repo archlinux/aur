@@ -35,7 +35,7 @@ pkgbase = pantheon-mail-loki-bzr
 	depends = libgranite.so
 	provides = pantheon-mail
 	conflicts = pantheon-mail
-	source = pantheon-mail::bzr++http://bazaar.launchpad.net/~elementary-apps/pantheon-mail/loki
+	source = pantheon-mail::bzr++http://code.launchpad.net/~elementary-apps/pantheon-mail/loki
 	sha256sums = SKIP
 
 pkgname = pantheon-mail-loki-bzr
