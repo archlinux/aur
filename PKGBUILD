@@ -14,7 +14,7 @@ license=('GPL2' 'LGPL2.1')
 url="http://git.xfce.org/xfce/exo/tree/README"
 groups=('xfce4-git')
 provides=("exo=$pkgver")
-depends=('libxfce4util' 'gtk3>=3.20' 'glib2>=2.22.4' 
+depends=('libxfce4util' 'gtk3>=3.20' 'glib2>=2.22.4' 'gtk2<=2.24'
 'hicolor-icon-theme' 'libxfce4ui-devel' 'libsm')
 makedepends=('xfce4-dev-tools' 'git' 'pkgconfig' 'libnotify' 'perl-uri' 'pygtk>=2.13')
 optdepends=('libnotify: enables notification support'
