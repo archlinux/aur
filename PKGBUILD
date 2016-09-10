@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r23
+pkgver=r24
 pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -32,17 +32,9 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-svpflow2-bin'
          )
 makedepends=('git')
-source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz"
-        'https://github.com/HomeOfVapourSynthEvolution/havsfunc/commit/bc2a6a810c3bae23488b53c80d04318921f23ae0.patch')
-sha1sums=('f73f291ea0295f0d24504875e6275bd443e22a9f'
-          'd4c784e8483f603bc8d407f885b589ce03ff2e42'
-          )
+source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
+sha1sums=('37367ad47f495056197ec77db80399115bc644a4')
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-
-prepare() {
-  cd "${_plug}-${pkgver}"
-  patch -p1 -i "${srcdir}/bc2a6a810c3bae23488b53c80d04318921f23ae0.patch"
-}
 
 package() {
   install -Dm644 "${_plug}-${pkgver}/${_plug}.py" "${pkgdir}${_sites_packages}/${_plug}.py"
