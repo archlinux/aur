@@ -1,7 +1,7 @@
 # Maintainer: Dan Bright <productions at zaziork dot com>
 pkgname=videotagger
 pkgrel=1 # package release (reset to 1 when new package version released (pkgver)
-pkgver=0.1.2.r16 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
+pkgver=0.1.3.r17 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
 pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. GTK 3.x research tool application to take timestamped tags/notes of streamed or locally played video clips. The application controls and uses MPV player."
 arch=('any')
 url="https://github.com/ZWS2014/VideoTagger"
@@ -21,7 +21,7 @@ package() {
 mv $srcdir/VideoTagger/VideoTagger $srcdir/VideoTagger/VideoTagger-$pkgver
 cd "$srcdir/VideoTagger/VideoTagger-$pkgver"
 PIP_CONFIG_FILE=/dev/null
-pip install --root="$pkgdir/" --isolated "$srcdir/VideoTagger/VideoTagger-$pkgver/dist/"*.whl
+pip install --upgrade --root="$pkgdir/" --ignore-installed --isolated "$srcdir/VideoTagger/VideoTagger-$pkgver/dist/"*.whl
 install -Dm644 "$srcdir/VideoTagger/VideoTagger-$pkgver/VideoTagger/resources/videotagger.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 install -Dm644 "$srcdir/VideoTagger/VideoTagger-$pkgver/VideoTagger/resources/videotagger_icon_256x256.png" "$pkgdir/usr/share/pixmaps/videotagger_icon_256x256.png"
 }
