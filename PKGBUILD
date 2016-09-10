@@ -2,7 +2,7 @@
 
 pkgname=perl6-shell-command
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Common shell command replacements"
 arch=('any')
 depends=('perl6' 'perl6-file-find' 'perl6-file-which')
@@ -44,5 +44,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
