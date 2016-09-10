@@ -1,4 +1,5 @@
-# Maintainer:  tilal6991 <lalitmaganti@gmail.com>
+# Co-Maintainer:  tilal6991 <lalitmaganti@gmail.com>
+# Co-Maintainer:  vanpra <pranavmaganti@gmail.com>
 # Contributor: danyf90 <daniele.formichelli@gmail.com>
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
@@ -7,10 +8,10 @@
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-pkgver=2.2.0rc1
-_pkgver=2.2.0.10
+pkgver=2.2.0rc2
+_pkgver=2.2.0.11
 pkgrel=1
-_build=145.3240973
+_build=145.3253452
 pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
@@ -23,7 +24,7 @@ oidprovides=("android-studio=$pkgver")
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha1sums=('bfed1c30a3727ec5ccb2c72424ce5f34d1228a52'
+sha1sums=('38046857e008d059ca1a1655dc4f4d2250bbc157'
             '4d7153ef796a332d5318e64b59ab5b5c92c5dca9')
 
 if [ "$CARCH" = "i686" ]; then
