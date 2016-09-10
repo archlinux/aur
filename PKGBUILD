@@ -5,7 +5,7 @@ pkgver=1.0.2
 pkgrel=1
 pkgdesc="Enable and disable xorg input devices in a easy and clean way"
 arch=('any')
-url="https://github.com/Hugao/ToggleInput"
+url="https://github.com/hmrodrigues/ToggleInput"
 license=('GPL3')
 groups=('xorg-apps')
 depends=('grep' 'xorg-xinput' 'bash')
@@ -13,7 +13,7 @@ optdepends=('libnotify: For desktop notifications')
 makedepends=('git')
 conflicts=('toggle-input')
 provides=('toggle-input')
-source=("git://github.com/Hugao/ToggleInput.git")
+source=("git://github.com/hmrodrigues/ToggleInput.git")
 md5sums=('SKIP')
 
 prepare() {

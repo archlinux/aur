@@ -2,7 +2,7 @@ pkgbase = toggle-input-git
 	pkgdesc = Enable and disable xorg input devices in a easy and clean way
 	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://github.com/Hugao/ToggleInput
+	url = https://github.com/hmrodrigues/ToggleInput
 	arch = any
 	groups = xorg-apps
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = toggle-input-git
 	optdepends = libnotify: For desktop notifications
 	provides = toggle-input
 	conflicts = toggle-input
-	source = git://github.com/Hugao/ToggleInput.git
+	source = git://github.com/hmrodrigues/ToggleInput.git
 	md5sums = SKIP
 
 pkgname = toggle-input-git
