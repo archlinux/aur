@@ -6,7 +6,7 @@ pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. GTK 3.x research tool applica
 arch=('any')
 url="https://github.com/ZWS2014/VideoTagger"
 license=('GPL3')
-depends=('python>=3.0.0' 'python-gobject' 'git' 'libyaml' 'mpv' 'python-pip')
+depends=('python>=3.0.0' 'python-gobject' 'git' 'libyaml' 'mpv' 'python-pip' 'python-yaml')
 source=("VideoTagger::git+https://github.com/ZWS2014/VideoTagger")
 #source=($pkgname-$pkgver.tar.gz)
 sha256sums=('SKIP')
