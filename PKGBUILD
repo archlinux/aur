@@ -1,8 +1,9 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=kio-gdrive
 pkgname=$_gitname-git
-pkgver=r97.6b9991b
+pkgver=0.9.81.r0.g5a51272
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="KIO Slave to access Google Drive"
@@ -15,7 +16,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
