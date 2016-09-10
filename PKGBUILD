@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-gnome-git
-pkgver=20160817
+pkgver=20160908
 pkgrel=1
 pkgdesc="The GNOME client for ring.cx (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ depends=("libringclient-git" "ring-daemon-git"
          "qt5-base" "gtk-update-icon-cache" "desktop-file-utils"
          "evolution-data-server" "libnotify")
 makedepends=('git' 'cmake')
-optdepends=('libnm-glib: to notify the daemon when network changes')
+optdepends=('libnm-glib: to make Network Manager notify the daemon when network changes')
 conflicts=('ring-gnome-client-git' 'ring-gnome-client' 'ring-gnome')
 source=("git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome")
 sha256sums=('SKIP')
