@@ -6,7 +6,6 @@ pkgbase = chicken-git
 	arch = any
 	license = BSD 3-Clause
 	makedepends = git
-	makedepends = make
 	makedepends = chicken
 	provides = chicken
 	conflicts = chicken
