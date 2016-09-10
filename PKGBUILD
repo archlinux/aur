@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.1.90.r362.g07021ed
+pkgver=1.1.90.r398.ga4f5834
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -21,7 +21,7 @@ optdepends=('wine: Windows VST support (experimental)'
             'pulseaudio: Optional PulseAudio backend'
             'oss: Optional OSS backend'
             'libsoundio: For soundio support')
-makedepends=('git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
+makedepends=('qt5-tools' 'git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
 options=('!strip')
 provides=('lmms')
 conflicts=('lmms' 'lmms-git')
