@@ -6,11 +6,11 @@ pkgver=1.0
 pkgrel=7
 pkgdesc="GNOME thumbnailer for GIMP XCF files."
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/sid/gnome-xcf-thumbnailer"
+url="https://download.gnome.org/sources/gnome-xcf-thumbnailer/"
 license=('GPL2')
 depends=('glib2' 'libpng12>=1.2.13')
 optdepends=('gimp: Required to create thumbnails')
-source=("http://ftp.acc.umu.se/pub/gnome/sources/gnome-xcf-thumbnailer/${pkgver}/gnome-xcf-thumbnailer-${pkgver}.tar.bz2"
+source=("https://download.gnome.org/sources/gnome-xcf-thumbnailer/${pkgver}/gnome-xcf-thumbnailer-${pkgver}.tar.bz2"
         "gnome-xcf-thumbnailer.thumbnailer"
         "no-popt.patch"
         "CVE-2009-0217.patch")
