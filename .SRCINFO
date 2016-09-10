@@ -1,0 +1,17 @@
+pkgbase = chicken-git
+	pkgdesc = Feature rich R5RS Scheme compiler and interpreter (from Git)
+	pkgver = 0.r3356.116f42e
+	pkgrel = 1
+	url = http://call-cc.org/
+	arch = any
+	license = BSD 3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = chicken
+	provides = chicken
+	conflicts = chicken
+	source = git://code.call-cc.org/chicken-core.git
+	md5sums = SKIP
+
+pkgname = chicken-git
+

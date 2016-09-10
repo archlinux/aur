@@ -1,0 +1,4 @@
+chicken-core/
+pkg/
+src/
+chicken-git-*.pkg.tar.xz
