@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
 arch=('x86_64')
 license=('GPL')
@@ -16,26 +16,27 @@ depends=('intel-mkl'
         'intel-compiler-base'
         'intel-fortran-compiler'
         'bzip2'
-        'libpng'
-        'libjpeg'
-        'libtiff'
-        'ncurses'
-        'pcre'
-        'readline'
-        'zlib'
-        'perl'
-        'gcc-libs'
-        'libxt'
-        'libxmu'
-        'pango'
-        'xz'
         'desktop-file-utils'
+        'gcc-libs'
+        'libjpeg'
+        'libpng'
+        'libtiff'
+        'libxmu'
+        'libxt'
+        'ncurses'
+        'pango'
+        'pcre'
+        'perl'
+        'readline'
+        'unzip'
+        'xz'
         'zip'
-        'unzip')
+        'zlib')
 makedepends=('jdk8-openjdk'
             'gcc-fortran'
             'tk')
-optdepends=('texlive-bin: LaTeX sty files')
+optdepends=('texlive-bin: LaTeX sty files'
+            'tk: tcl-tk interface')
 backup=('etc/R/Makeconf'
         'etc/R/Renviron'
         'etc/R/ldpaths'
@@ -59,7 +60,7 @@ sha512sums=('d0ff85e99b9ec9cac672aa30d7d1a854778c6a610bcc5336e8c60c8c74f20856f2b
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
 # Build with GCC/GFortran or the Intel Compiler Suite
-_CC="icc" # uncomment to build with the Intel compiler suite
+_CC="icc" # comment to build with GCC
 
 prepare() {
   cd R-${pkgver}
@@ -86,7 +87,7 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -xHost -ipo -qopenmp -parallel -m64 -fp-model precise -fp-model source -diag-disable=188 -mp1 -qopt-mem-layout-trans=3"
+    _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -parallel -mkl=parallel -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
     export MAIN_LDFLAGS=" -qopenmp"
     export FLIBS=" -lgfortran"
 
@@ -95,11 +96,17 @@ build() {
       -lmkl_intel_thread \
       -lmkl_core \
       -liomp5 \
+      -limf \
+      -lsvml \
+      -lirc \
+      -lunwind \
+      -lifcore \
+      -lifport \
       -lpthread \
       -lm \
       -ldl"
 
-    export CC="icc -std=c99"
+    export CC="icc"
     export CXX="icpc"
     export AR="xiar"
     export LD="xild"
@@ -120,6 +127,7 @@ build() {
       -lmkl_core \
       -liomp5 \
       -lpthread \
+      -limf \
       -lm \
       -ldl"
 
@@ -143,9 +151,6 @@ build() {
     --with-lapack \
     --enable-R-shlib \
     LIBnn=lib
-
-  # Place Intel's basic math library prior to GLIBC libm
-  sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
 
   # Build the package
   make
