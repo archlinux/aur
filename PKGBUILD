@@ -33,13 +33,11 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "language-unix-shell::git+${_fusurl}/language-shellscript"
 "git+${_fusurl}/mydict"
 "git+${_fusurl}/terminal-fusion"
-"git+${_fusurl}/toolbar-fusion"
 "atom"
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
 md5sums=('ea511e7a2f8c9fac6bc2062e52435cd9'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
