@@ -1,8 +1,8 @@
 # Maintainer: Mitsu <archlinux AT suumitsu DOT eu>
 
 pkgname="svgcleaner"
-pkgver=0.6.2
-pkgrel=4
+pkgver=0.6.90
+pkgrel=1
 pkgdesc="An application that cleans svg images from unnecessary data in batch mode."
 provides=("svg-cleaner")
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ source=("svgcleaner.install"
 	"https://github.com/RazrFalcon/SVGCleaner/archive/v${pkgver}.tar.gz")
 install="svgcleaner.install"
 sha512sums=('938b5a1ab4a90512f1d25190cb4c246ee565aca841b8172fa93da81b0820d69c1598593ffcf44fee9c4be5f153e90f89ff09a32ad95a28eff16ed1b623b459a0'
-	'37815f456d93d59301be765050b4c96851f4adfb16f86febbb597d707d74df4ec5b2fd5d45c48a94e98a7c32d435b265cf8c9fcafcf0c748efcc8b0407afa9d7')
+	'986001e9e75645d61e3ee5fe9df9ebe67500b9dd54e5355992cb2cfa5ad5780f6724dea258a1149e3030ddd40d93787a96e7362d7bab6241484275c9e6460c7b')
 
 build() {
 	cd "${srcdir}/SVGCleaner-${pkgver}/src/cli/"
