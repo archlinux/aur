@@ -4,7 +4,7 @@
 # Contributor:  xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
 # Contributor:  uuwe
 pkgname=openswan
-pkgver=2.6.47
+pkgver=2.6.49
 pkgrel=1
 pkgdesc='Open Source implementation of IPsec for the Linux operating system'
 url='https://www.openswan.org'
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  make USE_XAUTH=true USE_OBJDIR=true programs || return 1
+  make USE_XAUTH=true USE_OBJDIR=true programs
 }
 
 package() {
@@ -60,6 +60,6 @@ package() {
   # fix python2
   sed -i '1s|python|python2|' "$pkgdir/usr/lib/openswan/verify"
 }
-md5sums=('54aa71adb46e4f1b07f3db534540058a'
-         'd8b465c10838c72e31329d65011002b6')
 
+sha512sums=('2c8847b6594a88afc260c27374f5ba9202dc8fb20e5c2b00319f5c3491d783ccbc0066515224640ad41cd54e8c2383a70a5712e98decb556b1685253202d3295'
+            'a234e97a4fe10fb85a8a1b69d0b55b7c7a4a9ef44c199f876f64bb7290e9f161b20e4c721112e26c6a5636a898a27a36b525aae0944cf6217ff81c36389d5803')

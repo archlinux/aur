@@ -4,6 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
+RuntimeDirectory=pluto
+RuntimeDirectoryMode=0700
 ExecStart=/usr/lib/systemd/scripts/ipsec --start
 ExecStop=/usr/lib/systemd/scripts/ipsec --stop
 ExecReload=/usr/lib/systemd/scripts/ipsec --restart
