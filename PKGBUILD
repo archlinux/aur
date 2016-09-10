@@ -1,7 +1,7 @@
 # Maintainer: Dan Bright <productions at zaziork dot com>
 pkgname=videotagger
 pkgrel=1 # package release (reset to 1 when new package version released (pkgver)
-pkgver=0.1.2.r14 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
+pkgver=0.1.2.r16 # package version (increment when new application version released,  but overwritten on build with pkgver() method below)
 pkgdesc="NOTE: THIS IS BETA. USE AT YOUR OWN RISK. GTK 3.x research tool application to take timestamped tags/notes of streamed or locally played video clips. The application controls and uses MPV player."
 arch=('any')
 url="https://github.com/ZWS2014/VideoTagger"
