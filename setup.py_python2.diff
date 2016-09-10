@@ -1,0 +1,38 @@
+--- setup.py	2008-05-22 11:34:41.000000000 +1000
++++ setup.py.new	2016-09-10 21:04:25.694842962 +1000
+@@ -135,7 +135,7 @@
+ def build_blob():
+     mods = CORE[:]
+     do_chdir(os.path.join(TOPDIR,'tinypy'))
+-    for mod in mods: do_cmd('python py2bc.py %s.py %s.tpc'%(mod,mod))
++    for mod in mods: do_cmd('python2 py2bc.py %s.py %s.tpc'%(mod,mod))
+     do_chdir(os.path.join(TOPDIR))
+     
+     out = []
+@@ -216,12 +216,12 @@
+     if TEST:
+         mods.append('tests')
+         do_cmd("gcc $WFLAGS -g vmmain.c $FLAGS -lm -o vm")
+-        do_cmd('python tests.py $SYS')
++        do_cmd('python2 tests.py $SYS')
+         for mod in mods:
+-            py2bc('python py2bc.py $SRC $DEST',mod)
++            py2bc('python2 py2bc.py $SRC $DEST',mod)
+     else:
+         for mod in mods:
+-            py2bc('python py2bc.py $SRC $DEST -nopos',mod)
++            py2bc('python2 py2bc.py $SRC $DEST -nopos',mod)
+     if BOOT:
+         do_cmd('$VM tests.tpc $SYS')
+         for mod in mods: py2bc('$VM py2bc.tpc $SRC $DEST',mod)
+@@ -293,8 +293,8 @@
+     mods = CORE[:]; mods.append('tests')
+     os.chdir(os.path.join(TOPDIR,'tinypy'))
+     do_cmd('cl vmmain.c /D "inline=" /Od /Zi /MD /Fdvm.pdb /Fmvm.map /Fevm.exe')
+-    do_cmd('python tests.py -win')
+-    for mod in mods: do_cmd('python py2bc.py %s.py %s.tpc'%(mod,mod))
++    do_cmd('python2 tests.py -win')
++    for mod in mods: do_cmd('python2 py2bc.py %s.py %s.tpc'%(mod,mod))
+     do_cmd('vm.exe tests.tpc -win')
+     for mod in mods: do_cmd('vm.exe py2bc.tpc %s.py %s.tpc'%(mod,mod))
+     build_bc()
