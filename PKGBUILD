@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
-pkgver=4.01.04
+pkgver=4.03.00
 pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ license=('GPL')
 depends=('openssl' 'libx11>=1.6.2')
 # TODO: yodl should be >=3.06.00, waiting for the corresponding AUR package to
 # be updated
-makedepends=('icmake>=8.00.04' 'openssl' 'readline' 'libmilter>=8.14.4' 
-             'libx11>=1.6.2' 'yodl>=3.05.00')
+makedepends=('icmake>=8.01.00' 'openssl' 'readline' 'libmilter>=8.14.4' 
+             'libx11>=1.6.2' 'yodl>=3.07.01')
 optdepends=()
 source=("https://github.com/fbb-git/bobcat/archive/${pkgver}.tar.gz")
-md5sums=('ae09e52f832a25bcf7214922627b07f8')
+md5sums=('c85f6793efbaf8dcd1079c4b5bf29a24')
 
 build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
