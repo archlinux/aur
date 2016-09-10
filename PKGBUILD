@@ -1,14 +1,14 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=apper-git
-pkgver=r1128.bfee5e5
+pkgver=r1139.ef57b76
 pkgrel=1
 pkgdesc='An application and package manager using PackageKit'
 arch=(i686 x86_64)
 url='https://userbase.kde.org/Apper'
 license=(LGPL)
 depends=(packagekit-qt5 kdelibs4support kcmutils)
-makedepends=(extra-cmake-modules git python kdoctools plasma-workspace)
+makedepends=(extra-cmake-modules git python kdoctools plasma-workspace kdesignerplugin)
 conflicts=(apper)
 provides=(apper)
 source=('git://anongit.kde.org/apper.git')
