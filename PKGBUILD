@@ -6,7 +6,7 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -19,8 +19,8 @@ optdepends=('libx11: dbus-launch support'
             'dbus-openrc: dbus openrc initscript'
             'dbus-docs: documentation')
 provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
-conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev')
-replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev')
+conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
+replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
 	30-dbus.sh dbus)
@@ -59,6 +59,7 @@ package(){
   make DESTDIR="$pkgdir" install
 
   rm -rf "${pkgdir}/var/run"
+  rm -rf "${pkgdir}/usr/share/doc"
 
   install -Dm755 ../dbus "$pkgdir/etc/rc.d/dbus"
   install -Dm755 ../30-dbus.sh "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
