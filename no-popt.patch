@@ -1,0 +1,22 @@
+--- a/Makefile.am	2008-05-01 17:45:49.000000000 +0100
++++ b/Makefile.am	2008-05-08 19:39:04.000000000 +0100
+@@ -18,7 +18,7 @@
+ 
+ gnome_xcf_thumbnailer_CPPFLAGS = $(LIBPNG_CFLAGS) $(GIO_CFLAGS) -DOPTSTRING=\"h\"
+ 
+-gnome_xcf_thumbnailer_LDADD = $(LIBPNG_LIBS) $(GIO_LIBS) -lpopt
++gnome_xcf_thumbnailer_LDADD = $(LIBPNG_LIBS) $(GIO_LIBS)
+ 
+ 
+ schemasdir = $(GCONF_SCHEMA_FILE_DIR)
+--- a/Makefile.in	2008-05-01 17:45:51.000000000 +0100
++++ b/Makefile.in	2008-05-08 19:38:59.000000000 +0100
+@@ -204,7 +204,7 @@
+ 	options.i xcf2png.oi
+ 
+ gnome_xcf_thumbnailer_CPPFLAGS = $(LIBPNG_CFLAGS) $(GIO_CFLAGS) -DOPTSTRING=\"h\"
+-gnome_xcf_thumbnailer_LDADD = $(LIBPNG_LIBS) $(GIO_LIBS) -lpopt
++gnome_xcf_thumbnailer_LDADD = $(LIBPNG_LIBS) $(GIO_LIBS)
+ schemasdir = $(GCONF_SCHEMA_FILE_DIR)
+ schemas_in_files = gnome-xcf-thumbnailer.schemas.in
+ schemas_DATA = gnome-xcf-thumbnailer.schemas
