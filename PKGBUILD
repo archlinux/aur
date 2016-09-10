@@ -12,7 +12,7 @@ _pkgname=atom
 _apmver=1.12.7
 _atomver=1.10.2
 pkgver=${_atomver}.apm${_apmver}.e${_ELECTRON_VERSION}
-pkgrel=2
+pkgrel=3
 pkgdesc='A bleeding-edge version of the latest Atom stable release, built with the latest versions of all bundled packages. Includes extra packages to turn Atom into an IDE. Pre-built binary found in pkgbuild-current repository.'
 arch=('i686' 'x86_64')
 url="${_atom_url}/atom"
@@ -517,6 +517,9 @@ build() {
   cd node_modules/autocomplete-clang/lib
   sed -i -e 's/.coffee//g' *.coffee
   cd ../../..
+  cd node_modules/linter/lib
+  sed -i -e 's/.coffee//g' *.coffee
+  cd ../../..
   # Use system ctags
   cd node_modules/symbols-view
   patch -Np1 -i "${srcdir}"/symbols-view-use-system-ctags.patch
@@ -524,6 +527,13 @@ build() {
   cd ../..
   cd node_modules/tree-view
   patch -Np1 -i ${srcdir}/tree-view.patch
+  cd ../..
+  cd node_modules/git-plus/lib
+  sed -i -e 's/.coffee//g' *.coffee
+  cd ..
+  sed -i -e "/\"version\": \".*\",/a \
+              \"readmeFilename\": \"README.md\",\n    \"readme\": \"Run git commands without a terminal.\"," \
+         -e "s/\"readmeFilename\"/    \"readmeFilename\"/g" package.json
   cd ../..
 
   # Fix for Electron 1.3.0
