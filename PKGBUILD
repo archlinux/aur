@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mktxn
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Double-entry accounting ledger packager"
 arch=('any')
