@@ -4,8 +4,8 @@
 
 pkgname=gimp-plugin-registry
 pkgver=7.20141204
-pkgrel=7
-debrel=0wily3~ppa
+pkgrel=8
+debrel=0trusty0~ppa
 debrepo=https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files
 pkgdesc="Repository of optional extensions for GIMP"
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ install=${pkgname}.install
 
  if [ "$CARCH" = "x86_64" ]; then
     _debarch=amd64
-    sha256sums=('c0ec1d7a154ed68d8e2e88537ed62d47154bf0e393818ad8a6d3acb8f4622428')
+    sha256sums=('d3be3e1a9d49850aa4328c9090607b0eaf5b9472342bf1b05f4a0f957dc3b6f0')
 else
     _debarch=i386
-    sha256sums=('38aba88c8c3a6c738aea71597e277b64162accae18e367133dd0e254ba0f6eea')
+    sha256sums=('0faf68f804d0aa3b2482633a1ed743602f6c6c12b89212969abdd8004461bfe0')
  fi
 
 source=("${debrepo}/${pkgname}_${pkgver}-${debrel}_${_debarch}.deb")
