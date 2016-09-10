@@ -89,6 +89,10 @@ build() {
   unset CLASSPATH
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
+  # Fixes build issues for some people
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
+
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
