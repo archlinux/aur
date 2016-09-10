@@ -2,16 +2,18 @@
 
 pkgname=ygopro-bin
 pkgver=1.033.A
-pkgrel=2
+pkgrel=3
 _pkgrel=2
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('x86_64')
 url='https://github.com/cromerc/ygopro'
 license=('GPL2')
-depends=('openal' 'openssl' 'freetype2' 'libevent' 'sfml')
+depends=('openal' 'openssl' 'freetype2' 'libevent' 'sfml' 'libgit2')
 backup=(opt/ygopro/system.conf)
-source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz")
-sha256sums=('f67dc54506f6f41e9463958283ab980fffb364bb10e783a8b46f5ad3b6233c59')
+source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz"
+        ygopro.sh)
+sha256sums=('f67dc54506f6f41e9463958283ab980fffb364bb10e783a8b46f5ad3b6233c59'
+            '706523e0c9732107e889cb20f3eece86096791237a959847bcd1debbdeb09532')
 options=('!strip' 'emptydirs')
 install=${pkgname}.install
 
@@ -30,4 +32,6 @@ package() {
 	cd "$pkgdir/usr/lib"
 	ln -s libsfml-audio.so.2.4 libsfml-audio.so.2.3
 	ln -s libsfml-system.so.2.4 libsfml-system.so.2.3
+
+    install -DTm755 ${srcdir}/ygopro.sh ${pkgdir}/usr/bin/ygopro
 }
