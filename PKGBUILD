@@ -2,7 +2,7 @@
 
 pkgname=perl6-file-find
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="File::Find for Perl 6"
 arch=('any')
 depends=('perl6')
@@ -44,5 +44,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
