@@ -1,22 +1,26 @@
-# Maintainer :  jyantis <yantis@yantis.net>
+# Maintainer : ????
+# Contributor: Pablo Lezaeta <prflr arro'a gmail puntocom> (I tryed)
+# Contributor: jyantis <yantis@yantis.net>
 # Contributor: Diego Principe <cdprincipeat gmaildot com>
 # Contributor: Jan Jezek <honzin.jezek@gmail.com>
 # Contributor: Berseker <berseker86 at gmail dot com>
 
 pkgname=exo-git
 pkgver=0.10.6.r1635.ce731c3
-pkgrel=2
-pkgdesc="Extensions to Xfce by os-cillation."
+pkgrel=9
+pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=(i686 x86_64)
 license=('GPL2' 'LGPL2.1')
 url="http://git.xfce.org/xfce/exo/tree/README"
 groups=('xfce4-git')
-depends=('libxfce4util' 'gtk2>=2.18.6-1' 'glib2>=2.22.4-1' 'hicolor-icon-theme' 'libxfce4ui' 'libsm')
-makedepends=('xfce4-dev-tools' 'git' 'pkgconfig' 'libnotify' 'perl-uri' 'pygtk>=2.13') 
-optdepends=('libnotify: enables notification support' 'perl: enables mail-compose helper script')
+provides=("exo=$pkgver")
+depends=('libxfce4util' 'gtk3>=3.20' 'glib2>=2.22.4' 'hicolor-icon-theme' 'libxfce4ui-git' 'libsm')
+makedepends=('xfce4-dev-tools' 'git' 'pkgconfig' 'libnotify' 'perl-uri' 'pygtk>=2.13')
+optdepends=('libnotify: enables notification support'
+	'perl: enables mail-compose helper script')
 conflicts=('exo')
 provides=('exo')
-source=('git://git.xfce.org/xfce/exo')
+source=('exo-git::git://git.xfce.org/xfce/exo')
 options=('!libtool')
 install=$pkgname.install
 md5sums=('SKIP')
@@ -47,6 +51,8 @@ build() {
     --localstatedir=/var  \
     --disable-static \
     --enable-gtk-doc \
+    --enable-gtk2 \
+    --enable-gtk3 \
     --disable-debug
   make
 }
