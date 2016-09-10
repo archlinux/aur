@@ -1,0 +1,37 @@
+From 44f3ade708f98a355a322be16985db39b5da5314 Mon Sep 17 00:00:00 2001
+From: Christopher Kohlhoff <chris@kohlhoff.com>
+Date: Tue, 17 Nov 2015 09:50:06 +1100
+Subject: [PATCH] Support for building with OpenSSL when OPENSSL_NO_SSL3 is
+ defined.
+
+---
+ include/asio/ssl/impl/context.ipp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/include/asio/ssl/impl/context.ipp b/include/asio/ssl/impl/context.ipp
+index 383711b..c3bf1e3 100644
+--- a/include/asio/ssl/impl/context.ipp
++++ b/include/asio/ssl/impl/context.ipp
+@@ -84,6 +84,14 @@ context::context(context::method m)
+     handle_ = ::SSL_CTX_new(::SSLv2_server_method());
+     break;
+ #endif // defined(OPENSSL_NO_SSL2)
++#if defined(OPENSSL_NO_SSL3)
++  case context::sslv3:
++  case context::sslv3_client:
++  case context::sslv3_server:
++    asio::detail::throw_error(
++        asio::error::invalid_argument, "context");
++    break;
++#else // defined(OPENSSL_NO_SSL3)
+   case context::sslv3:
+     handle_ = ::SSL_CTX_new(::SSLv3_method());
+     break;
+@@ -93,6 +101,7 @@ context::context(context::method m)
+   case context::sslv3_server:
+     handle_ = ::SSL_CTX_new(::SSLv3_server_method());
+     break;
++#endif // defined(OPENSSL_NO_SSL3)
+   case context::tlsv1:
+     handle_ = ::SSL_CTX_new(::TLSv1_method());
+     break;
