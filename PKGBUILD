@@ -11,24 +11,24 @@ url="https://github.com/linuxmint/nemo"
 _branch='master'
 license=('GPL')
 depends=('cinnamon-desktop'
-	'cinnamon-translations'
-	'dconf'
-	'desktop-file-utils'
-	'exempi'
-	'gvfs'
-	'libexif'
-	'libnotify'
-	'libxml2'
-	'python')
+    'cinnamon-translations'
+    'dconf'
+    'desktop-file-utils'
+    'exempi'
+    'gvfs'
+    'libexif'
+    'libnotify'
+    'libxml2'
+    'python')
 makedepends=('autoconf-archive'
-    'git'
-	'gnome-common'
-	'gobject-introspection'
-	'gtk-doc'
-	'intltool'
-	'python-gobject'
-	'python2-gobject'
-	'python-polib')
+   	'git'
+    'gnome-common'
+    'gobject-introspection'
+    'gtk-doc'
+    'intltool'
+    'python-gobject'
+    'python2-gobject'
+    'python-polib')
 conflicts=('nemo')
 provides=('nemo')
 options=('!emptydirs')
