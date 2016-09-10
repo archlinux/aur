@@ -2,7 +2,7 @@
 
 pkgname=perl6-librarymake
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt to simplify building native code for a perl6 module"
 arch=('any')
 depends=('perl6')
@@ -44,5 +44,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
