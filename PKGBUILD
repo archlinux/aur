@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/terrycain/razer_drivers
 
 pkgname=python-razer
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="A python library for controlling razer-daemon"
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
@@ -12,7 +12,7 @@ depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
 makedepends=('git')
 optdepends=('razercommander-git: gtk frontend for razer-drivers')
 install=${pkgname}.install
-source=("${pkgname}::git+git://github.com/terrycain/razer_drivers.git#tag=v${pkgver}-2")
+source=("${pkgname}::git+git://github.com/terrycain/razer_drivers.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 package() {

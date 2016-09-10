@@ -1,7 +1,7 @@
 pkgbase = python-razer
 	pkgdesc = A python library for controlling razer-daemon
-	pkgver = 1.0.7
-	pkgrel = 2
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = https://github.com/terrycain/razer_drivers
 	install = python-razer.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-razer
 	depends = python-dbus
 	depends = python-numpy
 	optdepends = razercommander-git: gtk frontend for razer-drivers
-	source = python-razer::git+git://github.com/terrycain/razer_drivers.git#tag=v1.0.7-2
+	source = python-razer::git+git://github.com/terrycain/razer_drivers.git#tag=v1.0.8
 	md5sums = SKIP
 
 pkgname = python-razer
