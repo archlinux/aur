@@ -1,58 +1,69 @@
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: K0n24d <konrad AT knauber DOT net>
-pkgname=urbackup2-client-no-gui
-pkgver=2.0.29
-pkgrel=1
-pkgdesc="Client Server backup system"
+
+set -u
+pkgname='urbackup2-client-no-gui'
+pkgver='2.0.32'
+pkgrel='1'
+pkgdesc='Client Server backup system'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
-url="http://www.urbackup.org/"
-license=("GPL")
-makedepends=('gcc-libs' 'gcc' 'make')
+url='https://www.urbackup.org/'
+license=('GPL')
 depends=('crypto++' 'zlib')
-conflicts=('urbackup2-client' 'urbackup-client-no-gui' 'urbackup-client')
-source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${pkgver}.0.tar.gz"
-	'btrfs_create_filesystem_snapshot'
-	'btrfs_remove_filesystem_snapshot'
-	'dattobd_create_filesystem_snapshot'
-	'dattobd_remove_filesystem_snapshot'
-	'defaults_client'
-	'lvm_create_filesystem_snapshot'
-	'lvm_remove_filesystem_snapshot')
+makedepends=('gcc-libs' 'gcc' 'make')
+conflicts=(urbackup{,2}-{client,client-no-gui,server})
+_verwatch=("${url}/download.html" '//hndl\.urbackup\.org/Client/[0-9\.]\+/urbackup-client-\([0-9\.]\+\)\.tar\.gz' 'l')
+_scripts=(
+  'btrfs_create_filesystem_snapshot'
+  'btrfs_remove_filesystem_snapshot'
+  'dattobd_create_filesystem_snapshot'
+  'dattobd_remove_filesystem_snapshot'
+  'lvm_create_filesystem_snapshot'
+  'lvm_remove_filesystem_snapshot'
+)
+source=(
+  "https://hndl.urbackup.org/Client/${pkgver}/urbackup-client-${pkgver}.tar.gz"
+  'defaults_client'
+  "${_scripts[@]}"
+)
+sha256sums=('ab23bfa50a8205f426677477877605613616a230078d1f0ecaf5e23579eaacde'
+            'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
+            '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
+            '334d9eb67a642d96e04874fd27c1b57d578c35b4cdc768d50db7ac2436f0927c'
+            '869e6244efbf6e370938e2e5c94a16c0130f583815ddbd34802578656989048b'
+            '23d6bdad352d33fe41acd50e0114f986cd4324c2c65ca16cea365cb99d90addd'
+            'd5b462879e7c80139688c9d20ce1b1fe553386df9459def5e1d093d3a13d71fb'
+            '0ffb3bbbf5faf939564681d24786767a4706132f2f081b7a870ecc718a8e9413')
 
-md5sums=('2abba0a9a1339257aa127f055c5ea65b'
-         'fcdef7852b3d847c5c2468a619e7fba9'
-         'b5f82ed45105f9929e9b98eee8b288fc'
-         '5a3c106ff05e9939902272c936b653eb'
-         'b001546cc988ac8ea8646c9e1438316b'
-         'b3442a7228cbb9ce56da85ba219ad925'
-         'e17da398a0d4074a3aae23c46d93db0b'
-         'b8972631f9633b24b711bc831c972d42')
-
-CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
-CXXFLAGS="${CFLAGS} -ansi"
-MAKEFLAGS="-j$(nproc)"
+prepare() {
+  set -u
+  cd "urbackup-client-${pkgver}.0"
+  CFLAGS='-march=native -O2 -pipe -fstack-protector-strong' \
+  CXXFLAGS="${CFLAGS} -ansi" \
+  ./configure --prefix='/usr' --sbindir='/usr/bin' --localstatedir='/var' --sysconfdir='/etc' --enable-headless
+  set +u
+}
 
 build() {
-	cd "${srcdir}/urbackup-client-${pkgver}.0"
-	./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc --enable-headless
-	make
+  set -u
+  cd "urbackup-client-${pkgver}.0"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
+  set +u
 }
 
 package() {
-	cd "${srcdir}/urbackup-client-${pkgver}.0"
-	make DESTDIR="${pkgdir}" install
+  set -u
+  cd "urbackup-client-${pkgver}.0"
+  make DESTDIR="${pkgdir}" install
 
-	install -Dm644 urbackupclientbackend-debian.service \
-		"${pkgdir}"/usr/lib/systemd/system/urbackupclientbackend.service
-	install -Dm644 docs/urbackupclientbackend.1 \
-		"${pkgdir}"/usr/share/man/man1/urbackupclientbackend.1
+  install -Dpm644 'urbackupclientbackend-debian.service' "${pkgdir}/usr/lib/systemd/system/urbackupclientbackend.service"
+  install -Dpm644 'docs/urbackupclientbackend.1' -t "${pkgdir}/usr/share/man/man1/"
 
-	cd "${srcdir}"
-	install -Dm644 defaults_client "${pkgdir}/etc/default/urbackupclient"
-	install -Dm700 btrfs_create_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
-	install -Dm700 btrfs_remove_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
-	install -Dm700 lvm_create_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
-	install -Dm700 lvm_remove_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
-	install -Dm700 dattobd_create_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
-	install -Dm700 dattobd_remove_filesystem_snapshot "${pkgdir}/usr/share/urbackup"
+  cd "${srcdir}"
+  install -Dpm644 'defaults_client' "${pkgdir}/etc/default/urbackupclient"
+  install -Dpm700 "${_scripts[@]}" -t "${pkgdir}/usr/share/urbackup/"
+  set +u
 }
+set +u
 # vim: ts=2
