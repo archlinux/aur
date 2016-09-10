@@ -2,7 +2,7 @@
 
 pkgname=fetcher
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic adding, commiting, pushing or pulling of git repos via a systemd service unit."
 arch=('any')
 url="https://github.com/mbrunnen/fetcher"
