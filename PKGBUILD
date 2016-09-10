@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('java-environment')
 optdepends=('wine')
 provides=('cadencii')
-source=("http://ftp.debian.org/debian/pool/main/c/cadencii/jcadencii_${pkgver}-4_all.deb")
-md5sums=('SKIP')
+source=("ftp://ftp.debian.org/debian/pool/main/c/cadencii/jcadencii_${pkgver}-5_all.deb")
+sha1sums=('27f6ccd21200da3d74ac6ba55814c3658e5e3841')
 
 package() {
     cd "$pkgdir"
