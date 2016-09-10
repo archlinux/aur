@@ -1,10 +1,10 @@
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Maintainer: rafaelff <rafael.f.f@gnome.org>
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.4.5
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
@@ -15,7 +15,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'perl-parse-yapp')
 source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz")
-md5sums=('6950c5e9f7bdeb8a610c2ca957a15be4')
+md5sums=('723c483d6a4ebebaa3bfd5099dcff5af')
 
 build() {
   cd samba-${pkgver}
