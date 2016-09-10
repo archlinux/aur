@@ -1,0 +1,19 @@
+pkgbase = power.sh
+	pkgdesc = tiny automated power settings
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = CC0
+	depends = systemd
+	depends = sh
+	source = power.sh
+	source = power.sh.rules
+	source = power.sh.service
+	source = power.sh.sleep.service
+	md5sums = 33a7b13b276192125f5f3ec64cac759a
+	md5sums = e75bf13f0d7bc46dd03db58905013cd0
+	md5sums = 5f814dc5093bef00dfc3c96f70f90e26
+	md5sums = 07a8380291782b467d60bc6b78769120
+
+pkgname = power.sh
+

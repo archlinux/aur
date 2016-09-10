@@ -1,0 +1,4 @@
+[Service]
+ExecStart=/usr/bin/sh -c '/usr/bin/udevadm settle; /usr/share/power.sh 1'
+ExecStop=/usr/share/power.sh 0
+RemainAfterExit=yes

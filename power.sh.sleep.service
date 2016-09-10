@@ -1,0 +1,10 @@
+[Unit]
+Requisite=power.sh.service
+After=power.sh.service
+Before=sleep.target
+StopWhenUnneeded=yes
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/share/power.sh 0
+ExecStop=/usr/share/power.sh 1
