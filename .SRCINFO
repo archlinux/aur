@@ -1,5 +1,5 @@
 pkgbase = chicken-git
-	pkgdesc = Feature rich R5RS Scheme compiler and interpreter (from Git)
+	pkgdesc = Feature rich R5RS Scheme compiler and interpreter
 	pkgver = 0.r3356.116f42e
 	pkgrel = 1
 	url = http://call-cc.org/

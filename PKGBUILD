@@ -3,7 +3,7 @@
 pkgname=chicken-git
 pkgver=0.r3356.116f42e
 pkgrel=1
-pkgdesc='Feature rich R5RS Scheme compiler and interpreter (from Git)'
+pkgdesc='Feature rich R5RS Scheme compiler and interpreter'
 arch=('any')
 url='http://call-cc.org/'
 license=('BSD 3-Clause')
