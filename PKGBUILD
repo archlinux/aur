@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=3.0.5.r4.g8d897c6
+pkgver=3.0.6.r32.g0d9fc38
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -20,7 +20,9 @@ depends=('cinnamon-desktop'
 	'libnotify'
 	'libxml2'
 	'python')
-makedepends=('git'
+makedepends=('autoconf-archive'
+    'gcc5'
+    'git'
 	'gnome-common'
 	'gobject-introspection'
 	'gtk-doc'
@@ -56,7 +58,8 @@ build() {
       --disable-update-mimedb \
       --disable-tracker \
       --disable-gtk-doc-html \
-      --disable-schemas-compile
+      --disable-schemas-compile \
+      --enable-compile-warnings=yes
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=656231
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
