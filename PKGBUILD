@@ -21,7 +21,6 @@ depends=('cinnamon-desktop'
 	'libxml2'
 	'python')
 makedepends=('autoconf-archive'
-    'gcc5'
     'git'
 	'gnome-common'
 	'gobject-introspection'
