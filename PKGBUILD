@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon
-pkgver=2.1.0.r630.g15f6d17
+pkgver=2.1.0.r640.g12996f1
 pkgrel=1
 epoch=1
 pkgdesc="ring.cx is a secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
@@ -13,7 +13,8 @@ depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'expat' 'gsm' 'libupnp' 'libnatpmp'
          'pjproject-savoirfairelinux')
 makedepends=('git' 'boost' 'msgpack-c')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=15f6d17399eda98ac4e8481f244354177c5ca1b7")
+optdepends=('restbed: for the REST interface to the daemon (untested)')
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=12996f11f7cd76a771338a7c2d3287f4a72505a7")
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,6 +27,7 @@ build() {
 
   msg2 'Building...'
   autoreconf --force --install --verbose
+  # To compile with restbed, add `--with-restbed` here.
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
