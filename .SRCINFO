@@ -1,0 +1,24 @@
+pkgbase = backupninja-borg-git
+	pkgdesc = A centralized way to configure and schedule many different backup utilities
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://0xacab.org/riseuplabs/backupninja
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	optdepends = dialog: to use ninjahelper
+	optdepends = rdiff-backup: rdiff backups
+	optdepends = gzip: compress backups
+	optdepends = hwinfo: getting hardware information
+	optdepends = mariadb-clients: mysql backups
+	optdepends = rsync: secure and reliable remote syncronisation tool
+	optdepends = borg: borg backups
+	optdepends = duplicity: duplicity backups
+	conflicts = backupninja-git
+	backup = etc/backupninja.conf
+	source = git+https://github.com/benzhaomin/backupninja.git#branch=borg_support
+	md5sums = SKIP
+
+pkgname = backupninja-borg-git
+
