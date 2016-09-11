@@ -2,7 +2,7 @@
 
 pkgname=chicken-git
 pkgver=4.11.1.r3356.116f42e
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature rich R5RS Scheme compiler and interpreter'
 arch=('any')
 url='http://call-cc.org/'
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/chicken-core"
 
-  make PLATFORM=linux
+  make PLATFORM=linux PREFIX='/usr'
 }
 
 check() {
