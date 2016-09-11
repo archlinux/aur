@@ -3,7 +3,7 @@
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
 pkgver=2.7.15dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
 url="http://fs-uae.net/download-devel"
@@ -21,8 +21,6 @@ md5sums=('bf390e0185aa833fb8d2c5f49c63e64b')
 
 prepare() {
    cd ${_pkgname}-${pkgver}
-   # argument needed
-   sed 's/__()/__(parent)/' -i fsui/qt/adapter.py
    # disable included six, OpenGL
    sed '/OpenGL/d; /six/d' -i setup.py
 }
