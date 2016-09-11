@@ -1,7 +1,7 @@
 # Maintainer: Jesse Li <jessejesse123@gmail.com>
 _gitname='tty-countdown'
 pkgname='tty-countdown-git'
-pkgver=r12.babbd33
+pkgver=r13.331d388
 pkgrel=1
 pkgdesc="Simple countdown timer"
 arch=('any')
