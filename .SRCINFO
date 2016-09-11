@@ -1,9 +1,8 @@
 pkgbase = qtqr
 	pkgdesc = A Graphical interface QR Code generator and decoder.
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://launchpad.net/qr-tools
-	install = qtqr.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,8 +10,8 @@ pkgbase = qtqr
 	depends = python2-qrtools
 	depends = python2-pyqt4
 	provides = qtqr
-	source = https://launchpad.net/qr-tools/trunk/1.2/+download/qr-tools-1.2.tar.gz
-	sha256sums = 7e2ec216bef3d24640acdcdeb268c2b5c6bc2bf0c8ea4181e9fb2b28ee006bc9
+	source = https://launchpad.net/~qr-tools-developers/+archive/ubuntu/daily/+files/qtqr_1.4-0~23~ubuntu16.10.1.tar.gz
+	sha256sums = b1d3ba45594ddacd96c2da906b8ed90a0f0f50cc0348b9d2435ff11c93eebae1
 
 pkgname = qtqr
 
