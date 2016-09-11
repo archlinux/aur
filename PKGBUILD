@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/whitelight999/cylon
 pkgname=cylon
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=3
 epoch=
 pkgdesc="Maintenance , backup and system checks in a menu driven  Bash script"
 arch=('any')
