@@ -2,9 +2,9 @@
 # Maintainer: Chris Fordham <chris [at] fordham [hyphon] nagy [dot] id [dot] au> aka flaccid
 
 pkgname=rightlink-bin
-pkgver=10.3.0
+pkgver=10.5.2
 pkgrel=1
-pkgdesc="RightLink version 10 (RL10) is a new version of RightScale's server agent that connects servers managed through RightScale to the RightScale cloud management platform."
+pkgdesc="RightLink RL10 is a new version of RightScale's server agent that connects servers managed through RightScale to the RightScale cloud management platform."
 license=('RightScale')
 arch=('x86_64')
 url="http://docs.rightscale.com/release-notes/right-link-10.html"
@@ -14,7 +14,7 @@ replaces=(rightscale)
 depends=('cloud-init')
 provides=('rightlink')
 source=("https://rightlink.rightscale.com/rll/$pkgver/rightlink.tgz")
-md5sums=('22080fefbc3c46790bcd29f7261f50e1')
+md5sums=('cb1ad7eb6b17ed99424c65183ac63b8f')
 install='rightlink.install'
 options=(emptydirs strip !docs !libtool !staticlibs)
 
