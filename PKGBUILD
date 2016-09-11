@@ -6,7 +6,7 @@
 
 pkgname=emacs-lucid
 pkgver=24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -15,11 +15,14 @@ depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'hicolor-icon-the
 install=emacs.install
 conflicts=('emacs')
 provides=('emacs')
-source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz)
-md5sums=('50560ee00bac9bb9cf0e822764cd0832')
+source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz
+        0020-Always-define-gmalloc-etc.-in-src-gmalloc.c.patch)
+md5sums=('50560ee00bac9bb9cf0e822764cd0832'
+         '841bd19e15f8ab3c2ab94e82529ca0ea')
 
 prepare() {
   cd "$srcdir"/emacs-$pkgver
+  patch -N -p1 -i ../0020-Always-define-gmalloc-etc.-in-src-gmalloc.c.patch
 }
 
 build() {
@@ -36,13 +39,13 @@ package() {
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
-  
+
   # remove conflict with texinfo
   rm "$pkgdir"/usr/share/info/info.info.gz
-  
+
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
-  
+
   # fix perms on /var/games
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs

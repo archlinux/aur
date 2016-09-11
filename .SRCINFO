@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
 	pkgver = 24.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/emacs.html
 	install = emacs.install
 	arch = i686
@@ -22,7 +22,9 @@ pkgbase = emacs-lucid
 	provides = emacs
 	conflicts = emacs
 	source = ftp://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz
+	source = 0020-Always-define-gmalloc-etc.-in-src-gmalloc.c.patch
 	md5sums = 50560ee00bac9bb9cf0e822764cd0832
+	md5sums = 841bd19e15f8ab3c2ab94e82529ca0ea
 
 pkgname = emacs-lucid
 

@@ -1,0 +1,84 @@
+>From 4b1436b702d56eedd27a0777fc7232cdfb7ac4f6 Mon Sep 17 00:00:00 2001
+From: Wolfgang Jenkner <wjenkner@inode.at>
+Date: Sat, 26 Dec 2015 12:12:02 -0800
+Subject: [PATCH] Always define gmalloc etc. in src/gmalloc.c
+
+This is a work-around to prevent the compiler from using semantic
+knowledge about malloc for optimization purposes.  E.g., gcc 5.2
+with -O2 replaces most of calloc's definition by a call to calloc;
+see Bug#22085.
+* src/gmalloc.c [!HYBRID_MALLOC] (malloc, realloc, calloc)
+(aligned_alloc, free): Do not undef.  Instead, define these as
+functions (perhaps renamed to gmalloc etc.) in terms of gmalloc etc.
+---
+ src/gmalloc.c | 36 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 33 insertions(+), 3 deletions(-)
+
+diff --git a/src/gmalloc.c b/src/gmalloc.c
+index a88f4ab..90a52a1 100644
+--- a/src/gmalloc.c
++++ b/src/gmalloc.c
+@@ -49,6 +49,17 @@ extern "C"
+ 
+ #include <stddef.h>
+ 
++#undef malloc
++#undef realloc
++#undef calloc
++#undef aligned_alloc
++#undef free
++#define malloc gmalloc
++#define realloc grealloc
++#define calloc gcalloc
++#define aligned_alloc galigned_alloc
++#define free gfree
++#define malloc_info gmalloc_info
+ 
+ /* Allocate SIZE bytes of memory.  */
+ extern void *malloc (size_t size);
+@@ -1747,6 +1758,42 @@ valloc (size_t size)
+   return aligned_alloc (pagesize, size);
+ }
+ 
++#undef malloc
++#undef realloc
++#undef calloc
++#undef aligned_alloc
++#undef free
++
++void *
++malloc (size_t size)
++{
++  return gmalloc (size);
++}
++
++void *
++calloc (size_t nmemb, size_t size)
++{
++  return gcalloc (nmemb, size);
++}
++
++void
++free (void *ptr)
++{
++  gfree (ptr);
++}
++
++void *
++aligned_alloc (size_t alignment, size_t size)
++{
++  return galigned_alloc (alignment, size);
++}
++
++void *
++realloc (void *ptr, size_t size)
++{
++  return grealloc (ptr, size);
++}
++
+ #ifdef GC_MCHECK
+ 
+ /* Standard debugging hooks for `malloc'.
+-- 
+2.8.1
+
