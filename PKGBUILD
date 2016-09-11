@@ -1,6 +1,6 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 pkgname=vgrep
-pkgver=15.11
+pkgver=16.09.1
 pkgrel=1
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('2a7d645d3173e308f6f45e71ca89e9b7')
+md5sums=('4889f7cef154750c1a16031e720f29ba')
