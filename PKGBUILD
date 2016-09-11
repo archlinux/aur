@@ -1,7 +1,7 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.1.2.g3465bed
-pkgrel=2
+pkgver=6.1.6.gab9571b
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
