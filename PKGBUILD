@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 pkgname=vim-csound
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of Tools for Editing Csound Files with Vim"
 arch=('any')
 url="https://github.com/luisjure/csound"
@@ -32,7 +32,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "$srcdir/csound-master/LICENSE" \
                   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  mkdir -p "$pkdir/usr/share/doc/$pkgname"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "$srcdir/csound-master/README.md" \
                   "$pkgdir/usr/share/doc/$pkgname/README.md"
 
