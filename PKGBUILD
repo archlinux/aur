@@ -2,8 +2,8 @@
 # Contributor: Kamil Śliwak <cameel2/at/gmail/com>
 
 pkgname=mdbtools-git
-pkgver=0.7.r198.gbd88fb7
-pkgrel=2
+pkgver=0.7.r217.g9d56b0c
+pkgrel=1
 pkgdesc="A set of libraries and utilities for reading Microsoft Access database (MDB) files."
 arch=('i686' 'x86_64')
 url="https://github.com/brianb/mdbtools"
