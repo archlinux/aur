@@ -10,21 +10,22 @@ groups=('vim-plugins')
 depends=('vim')
 optdepends=('csound')
 install='vim-csound.install'
-source=('http://www.eumus.edu.uy/docentes/jure/csound/vim/csound.vim.tar.gz')
-sha256sums=('5b33db43e2d224d8d5fca92feeae5402e51e38575df28a5c58ceac2e3e6d1ecf')
+# FIXME: version numbers are coming soon, for now use master git
+source=('csound.vim.tar.gz'::'https://github.com/luisjure/csound/archive/master.zip')
+sha256sums=('ba8d1ff197dea423a17843e9818728adfcae22f570478553fd38c076129d8d15')
 
 package() {
-  install -Dm 644 ${srcdir}/doc/csound.txt \
+  install -Dm 644 ${srcdir}/csound-master/doc/csound.txt \
                   ${pkgdir}/usr/share/vim/vimfiles/doc/csound.txt
-  install -Dm 644 ${srcdir}/ftdetect/csoundft.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/ftdetect/csoundft.vim
-  install -Dm 644 ${srcdir}/macros/csound_macros.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/macros/csound_macros.vim
-  install -Dm 644 ${srcdir}/syntax/csound.vim \
+  install -Dm 644 ${srcdir}/csound-master/ftdetect/csound.vim \
+                  ${pkgdir}/usr/share/vim/vimfiles/ftdetect/csound.vim
+  install -Dm 644 ${srcdir}/csound-master/macros/csound.vim \
+                  ${pkgdir}/usr/share/vim/vimfiles/macros/csound.vim
+  install -Dm 644 ${srcdir}/csound-master/syntax/csound.vim \
                   ${pkgdir}/usr/share/vim/vimfiles/syntax/csound.vim
-  install -Dm 644 ${srcdir}/syntax/csound_opcodes.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/syntax/csound_opcodes.vim
-  install -Dm 644 ${srcdir}/templates/template.csd \
+  install -Dm 644 ${srcdir}/csound-master/syntax/csound.vim \
+                  ${pkgdir}/usr/share/vim/vimfiles/syntax/csound.vim
+  install -Dm 644 ${srcdir}/csound-master/templates/template.csd \
                   ${pkgdir}/usr/share/vim/vimfiles/templates/template.csd
 }
 
