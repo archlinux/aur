@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.7.3-2 Kernel Configuration
+# Linux/x86 4.7.3-4 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -152,7 +152,7 @@ CONFIG_MEMCG_SWAP_ENABLED=y
 CONFIG_BLK_CGROUP=y
 # CONFIG_DEBUG_BLK_CGROUP is not set
 CONFIG_CGROUP_WRITEBACK=y
-CONFIG_CGROUP_SCHED=y
+# CONFIG_CGROUP_SCHED is not set
 CONFIG_CGROUP_PIDS=y
 CONFIG_CGROUP_FREEZER=y
 # CONFIG_CGROUP_HUGETLB is not set
