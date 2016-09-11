@@ -1,32 +1,33 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
-
+#
+# Contributor: ValHue <vhuelamo at gmail dot com>
+#
 _python="python2"
 _name="qr-tools"
 _subname="qrtools"
-
+_ubuntur="0~23~ubuntu16.10.1"
 pkgname="${_python}-${_subname}"
-pkgver="1.2"
-pkgrel="4"
+pkgver="1.4"
+pkgrel="1"
 pkgdesc="A high level library for reading and generating QR codes."
 url="https://launchpad.net/qr-tools"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=("${_python}" "${_python}-pillow" "zbar" 'qrencode')
 provides=("${pkgname}")
-source=("https://launchpad.net/${_name}/trunk/${pkgver}/+download/${_name}-${pkgver}.tar.gz")
-md5sums=('07bd6018e2325dd29acb5f7623b3e018')
+source=("https://launchpad.net/~${_name}-developers/+archive/ubuntu/daily/+files/python-${_subname}_${pkgver}-${_ubuntur}.tar.gz")
+sha256sums=('dcbaaf10204696fff7c028415803247df1c8b99d3e1c21950144c14b1b5f8cfb')
 
 build() {
-    cd "${_name}"
-    
+    cd "python-${_subname}-${pkgver}"
     sed -i 's|env python|env python2|' "${_subname}.py"
-    sed -i 's|import Image|from PIL import Image|' "${_subname}.py"
 }
 
 package() {
-    cd "${_name}"
-
+    cd "python-${_subname}-${pkgver}"
     install -d ${pkgdir}/usr/lib/python2.7/site-packages
     install -m 644 qrtools.py ${pkgdir}/usr/lib/python2.7/site-packages    
 }
+
+# vim:set ts=4 sw=2 ft=sh et:
