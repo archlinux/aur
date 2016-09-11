@@ -3,7 +3,7 @@
 
 _pkgname=enca
 pkgname=lib32-${_pkgname}
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Charset analyser and converter (32 bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="http://cihar.com/software/enca/"
 license=('GPL')
 depends=('recode' "${_pkgname}")
 source=("http://dl.cihar.com/${_pkgname}/${_pkgname}-${pkgver}.tar.xz")
-md5sums=('a139a6ba811c375f50947f9c547b3306')
+md5sums=('a7a0c152658e012db701a48ae8b79525')
 
 build() {
 export CC='gcc -m32'  
