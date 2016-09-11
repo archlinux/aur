@@ -1,6 +1,6 @@
 pkgbase = rtl8812au_rtl8821au-dkms-git
-	pkgdesc = Kernel module for RTL8812AU, RTL8821AU, RTL8811AU based on v4.3.14 driver from Realtek
-	pkgver = 4.3.22_beta.r9.928e27f
+	pkgdesc = Kernel module for RTL8812AU, RTL8821AU based on v4.3.20 driver from Realtek
+	pkgver = 4.3.20.r8.9fea6c0
 	pkgrel = 1
 	url = https://github.com/Grawp/rtl8812au_rtl8821au
 	arch = armv7h
@@ -9,7 +9,7 @@ pkgbase = rtl8812au_rtl8821au-dkms-git
 	license = GPL
 	makedepends = git
 	depends = dkms
-	source = git+https://github.com/Grawp/rtl8812au_rtl8821au.git#branch=4.3.22_beta
+	source = git+https://github.com/Grawp/rtl8812au_rtl8821au.git#branch=4.3.20
 	source = dkms.conf
 	md5sums = SKIP
 	md5sums = a92f81619a38b678e40abfdc309d30c8

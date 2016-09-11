@@ -2,10 +2,10 @@
 
 _pkgname=rtl8812au_rtl8821au
 pkgname=rtl8812au_rtl8821au-dkms-git
-_pkgver=4.3.22_beta
-pkgver=4.3.22_beta.r9.928e27f
+_pkgver=4.3.20
+pkgver=4.3.20.r8.9fea6c0
 pkgrel=1
-pkgdesc="Kernel module for RTL8812AU, RTL8821AU, RTL8811AU based on v4.3.14 driver from Realtek"
+pkgdesc="Kernel module for RTL8812AU, RTL8821AU based on v4.3.20 driver from Realtek"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/Grawp/rtl8812au_rtl8821au"
 license=('GPL')
