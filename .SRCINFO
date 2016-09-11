@@ -1,7 +1,7 @@
 pkgbase = shutter-bzr
 	pkgdesc = A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch
 	pkgver = 1278
-	pkgrel = 4
+	pkgrel = 5
 	url = http://shutter-project.org/
 	arch = i686
 	arch = x86_64
@@ -41,7 +41,9 @@ pkgbase = shutter-bzr
 	conflicts = shutter
 	replaces = gscrot
 	source = bug_1396368.patch
+	source = bug_1618310.patch
 	md5sums = 0d35f8b2439cb5634fe75d3210d6c3e9
+	md5sums = 7ee557dbbc0d12f7a1dfdb29b062783c
 
 pkgname = shutter-bzr
 
