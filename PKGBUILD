@@ -1,10 +1,10 @@
 # Maintainer: Ainola
 pkgname=vim-csound
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of Tools for Editing Csound Files with Vim"
 arch=('any')
-url="http://www.eumus.edu.uy/docentes/jure/csound/vim/"
+url="https://github.com/luisjure/csound"
 license=('custom')
 groups=('vim-plugins')
 depends=('vim')
