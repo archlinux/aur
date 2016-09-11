@@ -12,7 +12,9 @@ pkgbase = stupidterm-git
 	conflicts = stupidterm
 	conflicts = st
 	source = stupidterm::git+https://github.com/esmil/stupidterm.git
+	source = st.desktop
 	md5sums = SKIP
+	md5sums = 23b1a68491fef30c9bcbb9459ec67a23
 
 pkgname = stupidterm-git
 

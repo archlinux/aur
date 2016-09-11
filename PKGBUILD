@@ -11,8 +11,14 @@ url="https://github.com/esmil/stupidterm"
 license=("LGPL")
 depends=("vte3")
 conflicts=("stupidterm" "st")
-source=("${_pkgname}::git+https://github.com/esmil/stupidterm.git")
-md5sums=('SKIP')
+source=(
+    "${_pkgname}::git+https://github.com/esmil/stupidterm.git"
+    'st.desktop'
+)
+md5sums=(
+    'SKIP'
+    '23b1a68491fef30c9bcbb9459ec67a23'
+)
 
 pkgver() {
     cd "${_pkgname}"
@@ -30,4 +36,10 @@ package() {
     cd "${_pkgname}"
 
     make DESTDIR="${pkgdir}" prefix=/usr install
+
+    # Create path for .dsktop file
+    mkdir -p $pkgdir/usr/share/applications/
+
+    # Copy .desktop file to package
+    cat $srcdir/st.desktop > $pkgdir/usr/share/applications/st.desktop
 }
