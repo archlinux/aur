@@ -17,25 +17,25 @@ source=("libsearpc-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libsearpc.pc.patch")
 
 prepare () {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i "$srcdir"/libsearpc.pc.patch
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p1 -i "${srcdir}"/libsearpc.pc.patch
 }
 
 build () {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     ./autogen.sh
     ./configure --prefix=/usr PYTHON=/usr/bin/python2
     make
 }
 
 check () {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     make check
 }
 
 package () {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
 sha256sums=('efee6b495f93e70101c87849c78b135014dfd2f0e5c08dcfed9834def47cb939'
             'aec39a303aaebc0777a22d8c53367f52f619654d63f62b362d75c1c599e632f4')
