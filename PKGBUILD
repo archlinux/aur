@@ -3,7 +3,7 @@
 _pkgname=fs-uae-arcade
 pkgname=fs-uae-arcade-devel
 pkgver=2.7.15dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-screen game browser for FS-UAE (development version)."
 arch=("any")
 url="http://fs-uae.net/download-devel"
@@ -21,8 +21,6 @@ md5sums=('c92a79056b6c520f3bc083a167332e7b')
 
 prepare() {
    cd ${_pkgname}-${pkgver}
-   # argument needed
-   sed 's/__()/__(parent)/' -i fsui/qt/adapter.py
    # disable included six, OpenGL
    sed '/OpenGL/d; /six/d' -i setup.py
 }
