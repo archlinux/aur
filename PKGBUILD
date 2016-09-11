@@ -8,12 +8,12 @@ pkgver=3.0.7
 pkgrel=2
 pkgdesc="A simple and easy-to-use C language RPC framework (including both server side & client side) based on GObject System."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/haiwen/libsearpc/"
+url="https://github.com/haiwen/libsearpc"
 license=('GPLv3')
 depends=('glib2' 'pacman>=4.1' 'jansson' 'python2')
 optdepends=('python2-simplejson')
 options=('!makeflags')
-source=("libsearpc-v${pkgver}.tar.gz::https://github.com/haiwen/libsearpc/archive/v${pkgver}.tar.gz"
+source=("libsearpc-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libsearpc.pc.patch")
 
 prepare () {
