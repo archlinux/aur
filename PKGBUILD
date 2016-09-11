@@ -24,3 +24,16 @@ package() {
     install -D -m644 PATENTS "$pkgdir/usr/share/licenses/$pkgname/PATENTS"
 }
 
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    # The distribution includes a full test suite which unfortunately takes
+    # several minutes to run. Here we just perform a quick smoke test.
+    (
+        file="$(mktemp)"
+        trap "rm $file" exit
+        dd if=/dev/urandom of="$file" bs=4M count=1 status=none
+        <"$file" ./zstd - - | ./zstd -d - - | cmp "$file" -
+    )
+}
+
