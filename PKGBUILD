@@ -32,7 +32,7 @@ build() {
 
 package() {
 
-  install -Dm644 "${_gitname}/libgambatte/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "${srcdir}/${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
   install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
 
 }
