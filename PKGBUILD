@@ -32,6 +32,10 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "$srcdir/csound-master/LICENSE" \
                   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkdir/usr/share/doc/$pkgname"
+  install -Dm 644 "$srcdir/csound-master/README.md" \
+                  "$pkgdir/usr/share/doc/$pkgname/README.md"
+
 }
 
 # vim: ts=2 sw=2 et
