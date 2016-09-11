@@ -1,6 +1,6 @@
 pkgbase = python-memcached
 	pkgdesc = A python memcached client library
-	pkgver = 1.57
+	pkgver = 1.58
 	pkgrel = 1
 	url = https://github.com/linsomniac/python-memcached
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-memcached
 	makedepends = python
 	depends = python
 	depends = memcached
-	source = https://pypi.python.org/packages/source/p/python-memcached/python-memcached-1.57.tar.gz
-	md5sums = de21f64b42b2d961f3d4ad7beb5468a1
+	source = https://pypi.python.org/packages/f7/62/14b2448cfb04427366f24104c9da97cf8ea380d7258a3233f066a951a8d8/python-memcached-1.58.tar.gz
+	md5sums = 23b258105013d14d899828d334e6b044
 
 pkgname = python-memcached
 
