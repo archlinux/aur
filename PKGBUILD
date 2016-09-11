@@ -3,8 +3,8 @@
 
 pkgname=shutter-bzr
 _realname=shutter
-pkgver=1272
-pkgrel=3
+pkgver=1278
+pkgrel=4
 pkgdesc="A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch"
 arch=('i686' 'x86_64')
 url="http://shutter-project.org/"
@@ -29,8 +29,8 @@ optdepends=('gnome-web-photo: web screenshot support'
 provides=('gscrot' 'shutter')
 conflicts=('shutter')
 replaces=('gscrot')
-source=()
-md5sums=()
+source=('bug_1396368.patch')
+md5sums=('0d35f8b2439cb5634fe75d3210d6c3e9')
 
 _bzrtrunk=lp:shutter
 _bzrmod=trunk
@@ -51,6 +51,7 @@ build() {
 	[ -d ./${_bzrmod}-build ] && rm -rf ./${_bzrmod}-build
 	mkdir ${_bzrmod}-build
 	cp -r ./${_bzrmod}/* ./${_bzrmod}-build
+	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/system/upload_plugins/upload/Dropbox.pm < bug_1396368.patch
 }
 package() {
 	cd ${srcdir}/${_bzrmod}-build
