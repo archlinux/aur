@@ -1,6 +1,6 @@
 pkgbase = herbstluftwm-git
 	pkgdesc = Manual tiling window manager for X
-	pkgver = 0.7.0.r14.gba32a3c
+	pkgver = 0.7.0.r38.g7589ee1
 	pkgrel = 1
 	epoch = 1
 	url = http://herbstluftwm.org
