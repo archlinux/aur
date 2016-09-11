@@ -21,7 +21,7 @@ package() {
 mv $srcdir/VideoTagger/VideoTagger $srcdir/VideoTagger/VideoTagger-$pkgver
 cd "$srcdir/VideoTagger/VideoTagger-$pkgver"
 PIP_CONFIG_FILE=/dev/null
-pip install --root="$pkgdir/" "$srcdir/VideoTagger/VideoTagger-$pkgver/dist/"*.whl
+pip install --root="$pkgdir/" --isolated "$srcdir/VideoTagger/VideoTagger-$pkgver/dist/"*.whl
 install -Dm644 "$srcdir/VideoTagger/VideoTagger-$pkgver/VideoTagger/resources/videotagger.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 install -Dm644 "$srcdir/VideoTagger/VideoTagger-$pkgver/VideoTagger/resources/videotagger_icon_256x256.png" "$pkgdir/usr/share/pixmaps/videotagger_icon_256x256.png"
 }
