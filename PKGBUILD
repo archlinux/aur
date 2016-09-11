@@ -2,7 +2,7 @@
 
 _srcname=leap_mail
 pkgname=python2-$_srcname
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='The magick sauce for leap encrypted email!'
 arch=('any')
@@ -15,16 +15,11 @@ depends=(
   'python2-service-identity'
   'python2-leap_pycommon'
   'python2-leap_soledad_client'
-  'python2-leap_keymanager')
+  'python2-leap_keymanager'
+)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha256sums=('a7dd17f6e8209bdc66ba2148fad8a88340e86b87d6b136da461490b3c5277848')
-
-prepare() {
-  cd "$srcdir/$_srcname-$pkgver"
-  # Workaround changelog find fail
-  sed -i 's/CHANGELOG/CHANGELOG.rst/' setup.py
-}
+sha512sums=('6abcc10bafb7b918bb80808f11de5a388c43321c0acac0d8fd9b1cce98a4933bc6ed0c33d001a3bea6c7e93c8d6e09c3c6413ea4eeaa2372766daa9d7f8c441f')
 
 build() {
   cd "$srcdir/$_srcname-$pkgver"
