@@ -23,7 +23,7 @@ source=('removelibs.list'
 	'toggldesktop.bin')
 
 prepare() {
-	    tar -zxf data.tar.gz
+	    tar -xf data.tar.xz
 	    for lib in `cat removelibs.list`
 	    do
 		rm -rf $srcdir/opt/toggldesktop/lib/$lib
