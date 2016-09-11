@@ -1,16 +1,24 @@
 # Maintainer: Will Price <will.price94+aur@gmail.com>
 
 pkgname=boot-vhdl-git
-pkgver=4.5
+pkgver=r48.883635b
 pkgrel=1
 pkgdesc="A VHDL simulator and synthesizer"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://code.google.com/p/boot-vhdl/"
-depends=('python2' 'ghdl' 'pywebkitgtk' 'python2-mechanize'
-'python2-pygments')
-source=('boot-vhdl::git+https://code.google.com/p/boot-vhdl/')
+url="http://freerangefactory.org/boot.html"
+depends=('python2'
+         'ghdl'
+         'pywebkitgtk'
+         'python2-mechanize'
+         'python2-pygments')
+source=('boot-vhdl::git+https://github.com/willprice/boot.git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   _fix_python_invocations
