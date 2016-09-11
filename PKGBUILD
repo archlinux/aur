@@ -2,7 +2,7 @@
 
 _pkgname=sres
 pkgname=${_pkgname}-git
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc='Print the current screen resolution'
 arch=('i686' 'x86_64')
