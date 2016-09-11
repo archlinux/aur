@@ -9,7 +9,7 @@ url='https://launchpad.net/pantheon-mail'
 license=('GPL3')
 depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gnome-keyring'
          'gtk3' 'libcanberra' 'libgee' 'libnotify' 'libsecret' 'libxml2'
-         'pango' 'sqlite' 'webkitgtk' 'libgsignon-glib' 'libaccounts-glib '
+         'pango' 'sqlite' 'webkitgtk' 'libgsignon-glib' 'libaccounts-glib'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'gnome-doc-utils' 'gobject-introspection'
              'granite-bzr' 'intltool' 'vala')

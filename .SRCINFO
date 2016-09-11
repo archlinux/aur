@@ -39,4 +39,3 @@ pkgbase = pantheon-mail-loki-bzr
 	sha256sums = SKIP
 
 pkgname = pantheon-mail-loki-bzr
-
