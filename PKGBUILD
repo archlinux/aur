@@ -2,7 +2,7 @@
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
 pkgver=4.03.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
 url="https://fbb-git.github.io/bobcat/"
@@ -17,10 +17,12 @@ md5sums=('c85f6793efbaf8dcd1079c4b5bf29a24')
 
 build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
-  CXXFLAGS="$CXXFLAGS --std=c++11 -pthread"
+
+  CXXFLAGS="$CXXFLAGS -std=c++14"
   LDFLAGS="$LDFLAGS -pthread"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
+  # ./build -P libraries all
   ./build libraries all
   ./build man
 }
