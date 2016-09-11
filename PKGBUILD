@@ -2,7 +2,7 @@
 
 pkgname=madx-dev
 pkgver=5.02.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -38,6 +38,7 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBINARY_POSTFIX=_dev \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_RPATH='$ORIGIN' \
         ${srcdir}/${sources}
 }
 
