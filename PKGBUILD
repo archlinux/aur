@@ -9,23 +9,29 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-pkgver=7.4.884
+pkgver=7.4.2334
 _versiondir=74
 pkgrel=1
 _upstream_pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom:vim')
 url='http://www.vim.org'
-makedepends=('gpm' 'python2' 'ruby' 'libxt' 'desktop-file-utils' 'lua')
+makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'lua' 'gawk' 'tcl')
 source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=('SKIP'
-          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
+sha1sums=('3a1cf404cf54ec0ea09d86202f63d345cf3b284a'
+          'b8ca9132826e53cd14431ef9767e4fd820faa782'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (X11 support, no GUI)'
-depends=("vim-runtime=${pkgver}-${_upstream_pkgrel}" 'gpm' 'ruby' 'lua' 'python2' 'acl')
+depends=("vim-runtime=${pkgver}-${_upstream_pkgrel}" 'gpm' 'acl')
+optdepends=('python2: Python 2 language support'
+            'python: Python 3 language support'
+            'ruby: Ruby language support'
+            'lua: Lua language support'
+            'perl: Perl language support'
+            'tcl: Tcl language support')
 conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
 provides=("vim=${pkgver}-${_upstream_pkgrel}" 'xxd')
 
@@ -63,11 +69,12 @@ build() {
     --enable-multibyte \
     --enable-cscope \
     --enable-netbeans \
-    --enable-perlinterp \
-    --enable-pythoninterp \
-    --disable-python3interp \
-    --enable-rubyinterp \
-    --enable-luainterp
+    --enable-perlinterp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-luainterp=dynamic \
+    --enable-tclinterp=dynamic
 
   make
 }
@@ -89,6 +96,9 @@ package() {
 
   # Runtime provided by runtime package
   rm -r "${pkgdir}"/usr/share/vim
+
+  # no desktop files and icons
+  rm -r "${pkgdir}"/usr/share/{applications,icons}
 
   # license
   install -Dm644 runtime/doc/uganda.txt \
