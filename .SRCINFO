@@ -1,6 +1,6 @@
 pkgbase = tty-countdown-git
 	pkgdesc = Simple countdown timer
-	pkgver = r7.c4c86db
+	pkgver = r9.7226eaa
 	pkgrel = 1
 	url = https://github.com/veggiedefender/tty-countdown
 	arch = any
