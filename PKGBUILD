@@ -1,16 +1,16 @@
-# Maintainer : Johnathan Jenkins <twodopeshaggy@gmail.com>
-# Contributor:  prettyvanilla <prettyvanilla@posteo.at>
+# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-ppsspp-git
-pkgver=17170.ea17e27
+pkgver=17174.e1bb9da
 pkgrel=1
-pkgdesc="libretro implementation of PPSSPP. (PlayStation Portable/PSP)"
-arch=('i686' 'x86_64' 'arm' 'armv6h')
-url="https://github.com/libretro/ppsspp"
+pkgdesc="libretro implementation of PPSSPP (PlayStation Portable/PSP)"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+url="https://github.com/libretro/libretro-ppsspp"
 license=('GPL')
 depends=('zlib' 'libgl')
 makedepends=('git')
 
+_libname=ppsspp_libretro
 _gitname=libretro-ppsspp
 source=("git+https://github.com/libretro/${_gitname}.git"
         "git+https://github.com/hrydgard/minidx9.git"
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'e0f4c3aa2f4799d438c291f2b2a464c8')
+         'SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -52,10 +52,10 @@ prepare() {
 
 build() {
   cd "${_gitname}/libretro"
-  make 
+  make
 }
 
 package() {
-  install -Dm644 "${_gitname}/libretro/ppsspp_libretro.so" "${pkgdir}/usr/lib/libretro/ppsspp_libretro.so"
-  install -Dm644 "ppsspp_libretro.info" "${pkgdir}/usr/lib/libretro/ppsspp_libretro.info"
+  install -Dm644 "${_gitname}/libretro/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
 }
