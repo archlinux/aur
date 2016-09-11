@@ -15,18 +15,19 @@ source=('csound.vim.tar.gz'::'https://github.com/luisjure/csound/archive/master.
 sha256sums=('ba8d1ff197dea423a17843e9818728adfcae22f570478553fd38c076129d8d15')
 
 package() {
-  install -Dm 644 ${srcdir}/csound-master/doc/csound.txt \
-                  ${pkgdir}/usr/share/vim/vimfiles/doc/csound.txt
-  install -Dm 644 ${srcdir}/csound-master/ftdetect/csound.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/ftdetect/csound.vim
-  install -Dm 644 ${srcdir}/csound-master/macros/csound.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/macros/csound.vim
-  install -Dm 644 ${srcdir}/csound-master/syntax/csound.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/syntax/csound.vim
-  install -Dm 644 ${srcdir}/csound-master/syntax/csound.vim \
-                  ${pkgdir}/usr/share/vim/vimfiles/syntax/csound.vim
-  install -Dm 644 ${srcdir}/csound-master/templates/template.csd \
-                  ${pkgdir}/usr/share/vim/vimfiles/templates/template.csd
+  _vimdir="$pkgdir/usr/share/vim/vimfiles"
+  install -Dm 644 "$srcdir/csound-master/doc/csound.txt" \
+                  "$_vimdir/doc/csound.txt"
+  install -Dm 644 "$srcdir/csound-master/ftdetect/csound.vim" \
+                  "$_vimdir/ftdetect/csound.vim"
+  install -Dm 644 "$srcdir/csound-master/macros/csound.vim" \
+                  "$_vimdir/macros/csound.vim"
+  install -Dm 644 "$srcdir/csound-master/syntax/csound.vim" \
+                  "$_vimdir/syntax/csound.vim"
+  install -Dm 644 "$srcdir/csound-master/syntax/csound.vim" \
+                  "$_vimdir/syntax/csound.vim"
+  install -Dm 644 "$srcdir/csound-master/templates/template.csd" \
+                  "$_vimdir/templates/template.csd"
 }
 
 # vim: ts=2 sw=2 et
