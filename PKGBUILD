@@ -1,4 +1,4 @@
-# Maintainer: Zamarin Arthur <arthurzam@gmail.com>
+# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: pukyxd
@@ -28,25 +28,30 @@ sha256sums=('789c4f353e4c5ce0a2aba2e82861d3fd0e5218bc76d8da1a332f2c7b1b27e4ee'
             'de232b7f2264f9d576ba77f43f79dc698f6ba987d059468f5b2bb5f40cf644d3')
 
 prepare() {
+
   cd "$pkgname-${pkgver/.1/}"
 
   # libpng fix
   patch -Np1 < ../include-zlib.patch
+
   # compilation fixes
   patch -Np1 < ../gcc-fix.patch
   patch -Np0 < ../return-null.patch
   patch -Np1 < ../curl-ptr.patch
+
 }
 
 build() {
-  cd "$pkgname-${pkgver/.1/}"
 
+  cd "$pkgname-${pkgver/.1/}"
   ./configure --prefix=/usr
   make
+
 }
 
 package() {
-  cd "$pkgname-${pkgver/.1/}"
 
+  cd "$pkgname-${pkgver/.1/}"
   make DESTDIR="$pkgdir" install
+
 }
