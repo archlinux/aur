@@ -15,7 +15,7 @@ backup=('etc/prometheus/prometheus.yml')
 source=("https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz"
                 'prometheus.service')
 sha256sums=('1a924ce9d8880a6dbff11eefbb823cdcc0af5977488deb8e5d16a74ae68d4708'
-            'e17b33a12e46f337e4eda60df99944d601467c9a38e10fb25975acc2efe5c541')
+            '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
