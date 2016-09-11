@@ -1,28 +1,15 @@
 pkgbase = connman-nmcompat
-	pkgdesc = Connman network manager with NetworkManager compatibility for all NetworkManager aware applications
+	pkgdesc = Transition package. Connman network manager with NetworkManager compatibility for all NetworkManager aware applications
 	pkgver = 1.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/connman
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = bluez
-	makedepends = wpa_supplicant
-	makedepends = openconnect
-	makedepends = openvpn
-	makedepends = ppp
-	depends = dbus
-	depends = iptables
-	depends = gnutls
-	depends = glib2
-	optdepends = bluez: Support for Bluetooth devices
-	optdepends = wpa_supplicant: For WiFi devices
-	optdepends = pptpclient: for ppp support
-	provides = connman
-	source = http://www.kernel.org/pub/linux/network/connman/connman-1.33.tar.xz
-	source = allow_group_network.diff
-	md5sums = c51903fd3e7a6a371d12ac5d72a1fa01
-	md5sums = a8d22ee089fb0ed725130d16ad393047
+	depends = connman
+	source = connman-nmcompat.install
+	md5sums = 6b4e71ea46e1d65eea4f9c2185295d55
 
 pkgname = connman-nmcompat
+	install = connman-nmcompat.install
 

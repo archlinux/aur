@@ -1,0 +1,4 @@
+post_upgrade() {
+	printf "*********************************************************************************************\n"
+	printf "Now that the Official Arch package has Network Manager compatibility build in, you should remove this package as it will be going away soon.  This package update was just a transition package to the official connman package\n\n\n\n"
+}
