@@ -3,7 +3,7 @@
 
 pkgname=upower-git
 _pkgname=upower
-pkgver=0.99.4.r6.g29c5c85
+pkgver=0.99.4.r12.g402640b
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
 arch=('i686' 'x86_64')
