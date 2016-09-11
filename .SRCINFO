@@ -1,0 +1,14 @@
+pkgbase = tty-countdown-git
+	pkgdesc = Simple countdown timer
+	pkgver = r7.c4c86db
+	pkgrel = 1
+	url = https://github.com/veggiedefender/tty-countdown
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	source = git+https://github.com/veggiedefender/tty-countdown
+	md5sums = SKIP
+
+pkgname = tty-countdown-git
+
