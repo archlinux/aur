@@ -20,6 +20,7 @@ sha256sums=('d0489a00a493242f65db22e2861d37f59c540055dd1aa573bb09886180ab4bd0'
             '8a56cf5cd9fdb1aa677f93236c110572450c5f702cd3cb8fa5517ecbe6b0f1a8')
 
 prepare(){
+  # Patches used by Debian to build
   patch -d gnome-xcf-thumbnailer-$pkgver -p1 < no-popt.patch
   patch -d gnome-xcf-thumbnailer-$pkgver -p1 < CVE-2009-0217.patch
 }
