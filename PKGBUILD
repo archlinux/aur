@@ -4,7 +4,7 @@
 pkgname=shutter-bzr
 _realname=shutter
 pkgver=1278
-pkgrel=5
+pkgrel=6
 pkgdesc="A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch"
 arch=('i686' 'x86_64')
 url="http://shutter-project.org/"
@@ -30,9 +30,11 @@ provides=('gscrot' 'shutter')
 conflicts=('shutter')
 replaces=('gscrot')
 source=('bug_1396368.patch'
-			'bug_1618310.patch')
+			'bug_1618310.patch'
+			'CVE-2015-0854.patch')
 md5sums=('0d35f8b2439cb5634fe75d3210d6c3e9'
-			'7ee557dbbc0d12f7a1dfdb29b062783c')
+			'7ee557dbbc0d12f7a1dfdb29b062783c'
+			'49abe60d2560ab40fffa2c3cdaf1e947')
 
 _bzrtrunk=lp:shutter
 _bzrmod=trunk
@@ -55,6 +57,7 @@ build() {
 	cp -r ./${_bzrmod}/* ./${_bzrmod}-build
 	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/system/upload_plugins/upload/Dropbox.pm < bug_1396368.patch
 	patch ${srcdir}/${_bzrmod}-build/bin/shutter < bug_1618310.patch
+	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm < CVE-2015-0854.patch
 }
 package() {
 	cd ${srcdir}/${_bzrmod}-build
