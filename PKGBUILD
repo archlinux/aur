@@ -12,7 +12,6 @@ license=('Artistic2.0')
 depends=('allegro' 'dumb' 'libogg' 'libtheora' 'libvorbis')
 makedepends=('wxgtk')
 optdepends=('wine: for installing and configuring the game')
-conflicts=('ags-git')
 install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
 sha256sums=('029e0a4f2c12617a9672eee7cfc7e9c9aba0421bfb18c8a8210bf7fba5f63825')
