@@ -10,10 +10,8 @@ pkgdesc="A simple and easy-to-use C language RPC framework (including both serve
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/haiwen/libsearpc"
 license=('GPLv3')
-depends=('glib2' 'pacman>=4.1' 'jansson' 'python2')
-optdepends=('python2-simplejson')
-options=('!makeflags')
 source=("libsearpc-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+depends=("glib2>=2.26.0" "jansson>=2.2.1" "python2-gobject2>=2.26.0" 'python2-simplejson')
         "libsearpc.pc.patch")
 
 prepare () {
