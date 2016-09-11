@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=flexc++
-pkgver=2.03.04
+pkgver=2.05.00
 pkgrel=1
 pkgdesc="C++ scanner generator"
 arch=('i686' 'x86_64')
@@ -9,17 +9,15 @@ url="https://fbb-git.github.io/flexcpp/"
 license=('GPL')
 # Versions taken from the 'required' file in sources
 depends=('libbobcat>=4.01.00')
-# TODO: yodl should be >=3.06.00, waiting for the corresponding AUR package to
-# be updated
-makedepends=('icmake>=8.00.04' 'yodl>=3.05.00')
+makedepends=('icmake>=8.00.04' 'yodl>=3.06.00')
 optdepends=()
 source=("https://github.com/fbb-git/flexcpp/archive/${pkgver}.tar.gz")
-md5sums=('56c9e911f7f6da1df05a4097ecce9f8a')
+md5sums=('a95e9bf427934fae77474f0457655476')
 
 build() {
   cd "$srcdir/flexcpp-${pkgver}/flexc++"
 
-  CXXFLAGS="$CXXFLAGS --std=c++11"
+  CXXFLAGS="$CXXFLAGS --std=c++14"
   # Add the -P option not to use precompiled headers, which can be useful since
   # they require a lot of free space, compared to a normal compilation:
   # ./build -P program
