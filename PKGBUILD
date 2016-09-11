@@ -15,7 +15,7 @@ depends=('libevent>=2.0.0' 'oniguruma')
 makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
-source=("${_pkgname}-${pkgver}.zip::https://github.com/ellzey/libevhtp/archive/${pkgver}.zip")
+source=("${_pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip")
 
 build () {
     cd "${srcdir}/${_pkgname}-${pkgver}"
