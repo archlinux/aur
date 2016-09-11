@@ -1,11 +1,19 @@
 post_install(){
-	echo ''
-	echo 'After installation, please run the following inside Neovim as root:'
-	echo '  :helptags $VIM/runtime/doc'
-	echo 'This is to generate the Csound helpfiles accessed via Shift-K'
-	echo 'There will likely be some errors due to conflicts, feel free to ignore them.'
-	echo 'In order to use templates, help tags and syntax highlighting, put:'
-	echo '  syntax on'
-	echo 'in your ~/.config/nvim/init.vim file'
-	echo ''
+  echo ''
+  echo 'To generate the Csound helptags accessed via Shift-K run'
+  echo '  mkdir -p ~/.config/nvim/doc/ && \ '
+  echo '  ln -s /usr/share/nvim/runtime/doc/csound.txt ~/.config/nvim/doc/csound.txt && \'
+  echo '  cd ~/.config/nvim/ && \'
+  echo '  nvim -c "helptags doc/"'
+  echo ''
 }
+
+post_upgrade(){
+  echo ''
+  echo 'Remember to update your helptags by running'
+  echo '  cd ~/.config/nvim/ && \'
+  echo '  nvim -c "helptags doc/"'
+  echo ''
+}
+
+# vim: et sw=2 ts=2
