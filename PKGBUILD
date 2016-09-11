@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.snes9x.com/"
 license=('LGPL')
 makedepends=('intltool' 'nasm' 'mesa' 'libpulse'  'libpng' 'sdl' 'gtk2' 'libxv'
-             'adwaita-icon-theme')
+             'adwaita-icon-theme' 'autogen')
 provides=('snes9x' 'snes9x-gtk') 
 conflicts=('snes9x' 'snes9x-gtk') 
 source=("$pkgname"::'git://github.com/snes9xgit/snes9x.git')
