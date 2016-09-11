@@ -1,7 +1,7 @@
 # Maintainer: Andy Crowd <andy_crowd@ainsdata.se>
 pkgname="lsdesktopf"
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=0
 pkgdesc="List available *.desktop files and search in their content."
 arch=(any)
 depends=('bash>=4.0' 'gawk' 'grep')
