@@ -1,8 +1,8 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
-# Needs a lot of improvement!
+# Please note you must have a Vulkan-capable GPU
 
 pkgname=vkquake-git
-pkgver=0.71.0
+pkgver=0.71.r0.gfd23ad1
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
@@ -19,6 +19,11 @@ source=('vkquake-git::git+https://github.com/Novum/vkquake.git'
 md5sums=('SKIP'
 	 'c8843622c6521b93b60ed91df51aaa6b'
 	 'c0d980f9a737d450021b9dc6a6b94a01')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   
@@ -55,6 +60,6 @@ package() {
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
   install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png" 
-  # install -Dm644 "$srcdir/$pkgname.1" "/usr/share/man/man1/$pkgname.1" 
   install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake-git/
+
 }
