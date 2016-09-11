@@ -16,6 +16,8 @@ options=('!makeflags')
 
 source=("${pkgname}-v${pkgver}-server.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}-server.tar.gz"
     "libccnet.pc.patch")
+sha256sums=('bb7be1c4a6c0a6d4cc9456089c6d16bbeba72541a4a9b59ead8a4075f067fc93'
+            '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver-server"
@@ -33,5 +35,3 @@ package () {
     cd "$srcdir/$pkgname-$pkgver-server"
     make DESTDIR="$pkgdir" install
 }
-sha256sums=('bb7be1c4a6c0a6d4cc9456089c6d16bbeba72541a4a9b59ead8a4075f067fc93'
-            '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f')
