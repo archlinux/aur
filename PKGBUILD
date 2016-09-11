@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-arcade
 pkgname=fs-uae-arcade-devel
-pkgver=2.7.14dev
+pkgver=2.7.15dev
 pkgrel=1
 pkgdesc="Full-screen game browser for FS-UAE (development version)."
 arch=("any")
@@ -15,24 +15,26 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 provides=("fs-uae-game-center")
 conflicts=("fs-uae-game-center" "fs-uae-game-center-devel")
 replaces=("fs-uae-game-center-devel")
-md5sums=('1c3911787a916857f5e1e350b02d01d9')
+md5sums=('c92a79056b6c520f3bc083a167332e7b')
 
 
 
-build() {
+prepare() {
    cd ${_pkgname}-${pkgver}
    # argument needed
    sed 's/__()/__(parent)/' -i fsui/qt/adapter.py
-   make
+   # disable included six, OpenGL
+   sed '/OpenGL/d; /six/d' -i setup.py
 }
 
+build() {
+   cd ${_pkgname}-${pkgver}
+   make
+}
 
 package() {
    cd ${_pkgname}-${pkgver}
    make install DESTDIR="${pkgdir}" prefix=/usr
-   # remove included six, OpenGL
-   rm -rf "${pkgdir}"/usr/share/${_pkgname}/six
-   rm -rf "${pkgdir}"/usr/share/${_pkgname}/OpenGL
 }
 
 
