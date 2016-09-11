@@ -1,16 +1,16 @@
-pkgname=transi2p
+pkgname=python2-transi2p
 pkgver=1.2.3
 pkgrel=1
 pkgdesc="Transparent proxy for i2p."
 arch=('any')
 url="https://pypi.python.org/pypi/transi2p"
-license=('BSD')
-depends=('python2-twisted' 'txi2p')
+license=('')
+depends=('python2-twisted' 'python2-txi2p')
 options=('!emptydirs')
 source=("https://pypi.python.org/packages/source/t/transi2p/transi2p-${pkgver}.tar.gz")
 sha256sums=('670eeee9fccf740b25b32174e89f3d84c7411fb7b6d8ee3454ac7f84eea57a80')
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/transi2p-$pkgver"
 
   # argparse is part of python 2.7+, so we can remove it from install_requires
   sed -i "/'argparse',/d" setup.py
@@ -22,7 +22,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/transi2p-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 
   #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
