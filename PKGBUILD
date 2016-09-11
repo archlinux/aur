@@ -80,6 +80,10 @@ package() {
   cd ${srcdir}/${_basedir}/build
   make -j1 DESTDIR=${pkgdir} install
 
+  # workaround for as
+  mkdir -p ${pkgdir}/usr/arm-none-eabi-4.9/arm-none-eabi/bin/
+  ln -s /usr/arm-none-eabi/bin/as ${pkgdir}/usr/arm-none-eabi-4.9/arm-none-eabi/bin/as
+
   # libiberty.a conflicts with host version
   rm -f  $pkgdir/usr/lib/libiberty.a
 }
