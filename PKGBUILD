@@ -5,10 +5,10 @@ pkgrel=2
 pkgdesc="Set of Tools for Editing Csound Files with Vim"
 arch=('any')
 url="https://github.com/luisjure/csound"
-license=('custom')
+license=('MIT')
 groups=('vim-plugins')
-depends=('vim')
-optdepends=('csound')
+optdepends=('csound'
+            'vim')
 install='vim-csound.install'
 # FIXME: version numbers are coming soon, for now use master git
 source=('csound.vim.tar.gz'::'https://github.com/luisjure/csound/archive/master.zip')
@@ -28,6 +28,10 @@ package() {
                   "$_vimdir/syntax/csound.vim"
   install -Dm 644 "$srcdir/csound-master/templates/template.csd" \
                   "$_vimdir/templates/template.csd"
+
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "$srcdir/csound-master/LICENSE" \
+                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et
