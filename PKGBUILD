@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=521
+pkgver=600
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -22,8 +22,7 @@ source=("git+https://github.com/iortcw/iortcw.git"
 	'iortcwmp.launcher'
 	'iortcwded.launcher'
 	'iortcw.desktop'
-	'iortcw.png'
-	'Makefile.local')
+	'iortcw.png')
 
 pkgver() {
   cd "$srcdir/iortcw"
@@ -32,9 +31,9 @@ pkgver() {
 
 build() {
   if [ ! -f /opt/iortcw-data/pak0.pk3 ]; then
-   echo "pak0.pk3 doesn't exist. This process will be terminated"
+   echo "pak0.pk3 doesn't exist. The game will not start"
    echo "Follow the iortcw-data package instructions!"
-   exit 1
+   sleep 5
   fi
 }
 
@@ -44,11 +43,9 @@ package() {
   cd "$srcdir/iortcw"
   
   cd SP
-  cp $srcdir/Makefile.local .
-  make COPYDIR=$pkgdir/opt/iortcw/ copyfiles
+  make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/iortcw/ copyfiles
   cd ../MP
-  cp $srcdir/Makefile.local .
-  make COPYDIR=$pkgdir/opt/iortcw/ copyfiles
+  make USE_INTERNAL_LIBS=0 COPYDIR=$pkgdir/opt/iortcw/ copyfiles
 
     
   ln -s -r /opt/iortcw-data/mp_bin.pk3	$pkgdir/opt/iortcw/main
@@ -120,5 +117,4 @@ md5sums=('SKIP'
          '1406929a04621267f4aa02fb661b154a'
          '1cb1d7fda29d223a57003d097a1a4a31'
          '30c95f4d2b130703d36345ebd259d738'
-         'bf26dc4c10d4bbfbd0c7a052a00c3cdf'
-         '4e725ae8584aa6cffe05d75e5dbb9730')
+         'bf26dc4c10d4bbfbd0c7a052a00c3cdf')
