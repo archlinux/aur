@@ -9,12 +9,12 @@
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbxvt-git
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="xcb terminal emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jefbed/jbxvt"
 license=('MIT')
-depends=('libxcb' 'gc' 'xcb-util-keysyms' 'xcb-util-wm')
+depends=('libxcb' 'gc' 'xcb-util-keysyms' 'xcb-util-wm' 'libx11')
 makedepends=('git')
 provides=('xterm')
 
