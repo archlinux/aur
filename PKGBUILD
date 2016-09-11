@@ -1,22 +1,18 @@
 pkgname="plymouth-theme-arch-logo-new"
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Replace the logo from package plymouth-theme-arch-logo"
 arch=('any')
 url="http://shadow.ma"
 license=('GPL')
 depends=('plymouth')
-conflicts=('plymouth-theme-arch-logo')
-replaces=('plymouth-theme-arch-logo')
-options=('')
-install='plymouth-arch-logo.install'
-source=("plymouth-arch-logo.tar.gz"
-	"plymouth-arch-logo.install")
+install='plymouth-arch-logo-new.install'
+source=("plymouth-arch-logo-new.tar.gz")
+md5sums=('936949ef6c4c42af47289683ae02b640')
+
 
 package() {
     cd $srcdir/arch-logo
-    mkdir -p $pkgdir/usr/share/plymouth/themes/arch-logo
-    install -Dm644 * $pkgdir/usr/share/plymouth/themes/arch-logo
+    mkdir -p $pkgdir/usr/share/plymouth/themes/arch-logo-new
+    install -Dm644 * $pkgdir/usr/share/plymouth/themes/arch-logo-new
 }
-md5sums=('f0fd0a27e145264a89aea00b6fc87f63'
-	 'd1a92e9f3b27a963009885b719b23f1f')
