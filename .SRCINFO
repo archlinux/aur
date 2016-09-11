@@ -1,15 +1,16 @@
 pkgbase = python2-gdspy
 	pkgdesc = Gdspy is a Python module for creating GDSII stream files, usually CAD layouts.
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/heitzmann/gdspy
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-numpy
-	source = https://github.com/heitzmann/gdspy/releases/download/v0.9/gdspy-0.9.zip
-	md5sums = e91a58e6834a5a0ad68e49ad4d1fda0d
+	source = https://github.com/heitzmann/gdspy/archive/v1.0.tar.gz
+	md5sums = c116dd0e209cd4b4dd2a6f487b8040bb
 
 pkgname = python2-gdspy
 
