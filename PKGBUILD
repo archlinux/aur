@@ -5,14 +5,14 @@
 pkgbase=seafile
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/seafile"
 license=('GPL3')
 makedepends=("vala" "intltool"
              "python2" "sqlite" "fuse"
-             "ccnet>=${pkgver}" "libevhtp-seafile=1.2.9")
+             "ccnet>=${pkgver}" "libevhtp-seafile")
 source=("seafile-server-${pkgver}.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "seafile-admin_virtualenv.patch"
         "seafile-server@.service"
@@ -52,7 +52,8 @@ build() {
     --enable-python \
     --enable-server \
     --prefix=/usr \
-    PYTHON=/usr/bin/python2
+    PYTHON=/usr/bin/python2 \
+    CFLAGS="${CFLAGS} -I/usr/include/evhtp"
 
   make
 }
