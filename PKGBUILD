@@ -8,7 +8,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1074.aab5fe6
+pkgver=1.3.6.r1096.51b0e61
 pkgrel=1
 #epoch=1
 git_name=RetroArch
@@ -23,7 +23,8 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
          'libx11' 'libxcb' 'libxext' 'libxinerama' 'libxkbcommon' 'libxv'
          'libxxf86vm' 'mesa' 'openal' 'sdl2' 'wayland' 'zlib'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-         'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so')
+         'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
+	 'nvidia-cg-toolkit')
 makedepends=('git' 'vulkan-icd-loader')
 optdepends=('libretro-desmume: Nintendo DS core'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
@@ -71,7 +72,6 @@ build() {
   cd RetroArch
   ./configure \
     --prefix='/usr' \
-    --disable-cg \
     --disable-jack \
     --disable-oss
   make
