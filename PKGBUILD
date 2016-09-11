@@ -23,8 +23,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
          'libx11' 'libxcb' 'libxext' 'libxinerama' 'libxkbcommon' 'libxv'
          'libxxf86vm' 'mesa' 'openal' 'sdl2' 'wayland' 'zlib'
          'libass.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-         'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
-	 'xdg-utils-git')
+         'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so')
 makedepends=('git' 'vulkan-icd-loader')
 optdepends=('libretro-desmume: Nintendo DS core'
             'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
@@ -39,7 +38,8 @@ optdepends=('libretro-desmume: Nintendo DS core'
             'libretro-overlays: Collection of overlays'
             'libretro-shaders: Collection of shaders'
             'retroarch-assets-xmb: XMB menu assets'
-            'retroarch-autoconfig-udev: udev joypad autoconfig')
+            'retroarch-autoconfig-udev: udev joypad autoconfig'
+	    'xdg-utils-git')
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
