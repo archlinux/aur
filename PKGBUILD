@@ -7,7 +7,7 @@
 pkgname=dbus-x11-nosystemd
 _pkgname=dbus
 pkgver=1.10.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ license=(GPL custom)
 provides=('libdbus' 'dbus')
 conflicts=('libdbus' 'dbus')
 replaces=(libdbus)
-depends=(expat dbus-docs)
+depends=(expat)
 makedepends=(xmlto docbook-xsl python yelp-tools doxygen xorg-server-common)
 source=(https://dbus.freedesktop.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz{,.asc})
 sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
@@ -38,6 +38,7 @@ build() {
       --enable-inotify --disable-static \
       --disable-verbose-mode --disable-asserts \
       --enable-user-session \
+      --disable-systemd \
       --enable-x11-autolaunch
   make
 }
@@ -53,6 +54,9 @@ package() {
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir/var/run"
+
+  # git rid of the systemd folder
+  rm -r "$pkgdir/usr/lib/systemd"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 

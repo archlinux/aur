@@ -1,7 +1,7 @@
 pkgbase = dbus-x11-nosystemd
 	pkgdesc = Freedesktop.org message bus system
 	pkgver = 1.10.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = dbus-x11-nosystemd
 	makedepends = doxygen
 	makedepends = xorg-server-common
 	depends = expat
-	depends = dbus-docs
 	provides = libdbus
 	provides = dbus
 	conflicts = libdbus
