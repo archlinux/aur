@@ -1,5 +1,7 @@
+# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
-# Maintainer: Edvinas Valatka <edacval@gmail.com>
+# Contributor: Edvinas Valatka <edacval@gmail.com>
+# Contributor: Adrian Hühn <adrian.huehn@web.de>
 
 pkgname=libsearpc
 pkgver=3.0.7
