@@ -2,7 +2,7 @@
 
 _pkgname=xwinfo
 pkgname=${_pkgname}-git
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc='Print window informations'
 arch=('i686' 'x86_64')
