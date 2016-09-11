@@ -5,14 +5,14 @@
 
 pkgname=lib32-libnotify
 pkgver=0.7.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for sending desktop notifications (32-bit)"
 arch=('x86_64')
 url="https://developer.gnome.org/notification-spec/"
 license=('LGPL')
 depends=("${pkgname#lib32-}" 'lib32-gdk-pixbuf2')
 makedepends=('gcc-multilib' 'git' 'gnome-common' 'gobject-introspection' 'lib32-gtk3')
-_commit=2f2c5649ef210b1dffeb46cddf062d20e1518ccf
+_commit=6b03c47e04e556691445590c15d594aaff5a1066
 source=("git://git.gnome.org/libnotify#commit=$_commit")
 sha512sums=('SKIP')
 
