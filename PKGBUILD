@@ -2,10 +2,10 @@
 
 pkgname=postgresql-jdbc
 _mainver=9.4
-_build=1208
+_build=1210
 pkgver=${_mainver}.${_build}
 pkgrel=1
-pkgdesc="The official JDBC driver for PostgreSQL. Contains JDBC 4.0 and 4.1 drivers."
+pkgdesc="The official JDBC driver for PostgreSQL. Contains JDBC 4.0, 4.1 & 4.2 drivers."
 arch=('any')
 url="http://jdbc.postgresql.org/"
 license=("Custom: BSD")
@@ -15,11 +15,13 @@ source=(LICENSE
         postgresql-jdbc-${pkgver}.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-${_mainver}.${_build}.jre7.jar
         postgresql-jdbc-${pkgver}.jdbc42.jar::http://jdbc.postgresql.org/download/postgresql-${_mainver}.${_build}.jar)
 md5sums=('da7e6f8b26deefe7c03b391454732a0d'
-         'ad222fd5d73c16db63aed7bc19396019'
-         'e23f33f6bac5638842ed0f810590e3d4'
-         '19c06fdfc4fe514acf0bfacd1f8afd6a')
+         '295275b40a51136084703138a83ba64c'
+         '6534096c3ba3b5cbb372bdec30bc6566'
+         'd99577d30083889b4ea4bd10256d0d59')
 
-noextract=(postgresql-${pkgver}.jdbc4.jar postgresql-${pkgver}.jdbc41.jar postgresql-${pkgver}.jdbc41.jar)
+noextract=(postgresql-jdbc-${pkgver}.jdbc4.jar
+           postgresql-jdbc-${pkgver}.jdbc41.jar
+           postgresql-jdbc-${pkgver}.jdbc42.jar)
 
 package() {
   install -d -m755 "${pkgdir}/usr/share/java/${pkgname}"
@@ -32,5 +34,9 @@ package() {
   ln -s postgresql-jdbc-${pkgver}.jdbc41.jar "${pkgdir}/usr/share/java/${pkgname}/postgresql-jdbc41.jar"
   ln -s postgresql-jdbc-${pkgver}.jdbc42.jar "${pkgdir}/usr/share/java/${pkgname}/postgresql-jdbc42.jar"
 
+  ln -s postgresql-jdbc-${pkgver}.jdbc4.jar "${pkgdir}/usr/share/java/${pkgname}/postgresql-${_mainver}.${_build}.jre6.jar"
+  ln -s postgresql-jdbc-${pkgver}.jdbc41.jar "${pkgdir}/usr/share/java/${pkgname}/postgresql-${_mainver}.${_build}.jre7.jar"
+  ln -s postgresql-jdbc-${pkgver}.jdbc42.jar "${pkgdir}/usr/share/java/${pkgname}/postgresql-${_mainver}.${_build}.jar"
+  
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
