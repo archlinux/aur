@@ -2,8 +2,8 @@ post_install(){
   echo ''
   echo 'To generate the Csound helptags accessed via Shift-K run'
   echo '  mkdir -p ~/.config/nvim/doc/ && \ '
-  echo '  ln -s /usr/share/nvim/runtime/doc/csound.txt ~/.config/nvim/doc/csound.txt && \'
-  echo '  cd ~/.config/nvim/ && \'
+  echo '  ln -s /usr/share/nvim/runtime/doc/csound.txt ~/.config/nvim/doc/csound.txt && \ '
+  echo '  cd ~/.config/nvim/ && \ '
   echo '  nvim -c "helptags doc/"'
   echo ''
 }
@@ -11,7 +11,7 @@ post_install(){
 post_upgrade(){
   echo ''
   echo 'Remember to update your helptags by running'
-  echo '  cd ~/.config/nvim/ && \'
+  echo '  cd ~/.config/nvim/ && \ '
   echo '  nvim -c "helptags doc/"'
   echo ''
 }
