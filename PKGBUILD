@@ -1,12 +1,12 @@
 # Maintainer: Sebastian Jug <seb@stianj.ug>
-# Contributor: John Reese <jreese@noswap.com>
+# Contributor: Samuel Henrique <samueloph@gmail.com>
 # Upstream URL: https://github.com/atom/atom
 #
 # For improvements/fixes to this package, please send a pull request:
 # https://github.com/sjug/atom-editor
 
 pkgname=atom-editor
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ optdepends=('gvfs: file deletion support'
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
-sha256sums=('5fce9b85bbd27c5e2cb71c3316c563edb0a666120e7ad0dc73817d28e1e1faec')
+sha256sums=('de47aa7d80b3e31f1c42823fec6e98a9473021c022970a8548cb36c498a7e6f8')
 
 prepare() {
   cd "atom-$pkgver"
