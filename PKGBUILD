@@ -3,7 +3,7 @@
 
 pkgname=prometheus
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source service monitoring system and time series database."
 depends=('glibc')
 makedepends=('go')
@@ -15,7 +15,7 @@ backup=('etc/prometheus/prometheus.yml')
 source=("https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz"
                 'prometheus.service')
 sha256sums=('1a924ce9d8880a6dbff11eefbb823cdcc0af5977488deb8e5d16a74ae68d4708'
-            '777ba00e14678d1714b8ce04faeffe9d03125b0b0b9dd1409db85aa2a2edabb1')
+            'e17b33a12e46f337e4eda60df99944d601467c9a38e10fb25975acc2efe5c541')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 pkgbase = prometheus
 	pkgdesc = An open-source service monitoring system and time series database.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://prometheus.io
 	install = prometheus.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = prometheus
 	source = https://github.com/prometheus/prometheus/archive/v1.1.2.tar.gz
 	source = prometheus.service
 	sha256sums = 357bf047057243bbe6212b57182d4580fc4746cd2694ec3d877946487db7a072
-	sha256sums = 777ba00e14678d1714b8ce04faeffe9d03125b0b0b9dd1409db85aa2a2edabb1
+	sha256sums = e17b33a12e46f337e4eda60df99944d601467c9a38e10fb25975acc2efe5c541
 
 
 pkgname = prometheus
