@@ -8,8 +8,8 @@
 
 _pack=queueing
 pkgname=octave-$_pack
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="The queueing package provides functions for queueing networks and Markov chains analysis. This package can be used to compute steady-state performance measures for open, closed and mixed networks with single or multiple job classes. Mean Value Analy [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('7345655557c5c35a76de29490304dcfe')
+md5sums=('f43f9a51819517506d9d8438657a34ae')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
