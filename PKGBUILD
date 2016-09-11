@@ -9,8 +9,6 @@ url="https://fbb-git.github.io/bobcat/"
 license=('GPL')
 # Versions taken from the 'required' file in sources
 depends=('openssl' 'libx11>=1.6.2')
-# TODO: yodl should be >=3.06.00, waiting for the corresponding AUR package to
-# be updated
 makedepends=('icmake>=8.01.00' 'openssl' 'readline' 'libmilter>=8.14.4' 
              'libx11>=1.6.2' 'yodl>=3.07.01')
 optdepends=()
