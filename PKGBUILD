@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=(
-'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 'libogg' 
+ 'git' 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 'libogg' 
 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
 )
 install=$pkgname.install
