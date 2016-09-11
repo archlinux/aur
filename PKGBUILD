@@ -27,8 +27,10 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/ags-v.${pkgver}/Engine/ags" "$pkgdir/usr/bin/ags"
-  install -Dm644 "$srcdir/ags-v.${pkgver}/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/ags-v.${pkgver}/Engine/ags" \
+                 "$pkgdir/usr/bin/ags"
+  install -Dm644 "$srcdir/ags-v.${pkgver}/License.txt" \
+                 "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et
