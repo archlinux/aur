@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
-pkgver=2.7.14dev
+pkgver=2.7.15dev
 pkgrel=1
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
@@ -15,24 +15,26 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae-launcher")
 conflicts=("fs-uae-launcher")
-md5sums=('d61eebe80869c9aee00a71d2b5a01487')
+md5sums=('bf390e0185aa833fb8d2c5f49c63e64b')
 
 
 
-build() {
+prepare() {
    cd ${_pkgname}-${pkgver}
    # argument needed
    sed 's/__()/__(parent)/' -i fsui/qt/adapter.py
-   make
+   # disable included six, OpenGL
+   sed '/OpenGL/d; /six/d' -i setup.py
 }
 
+build() {
+   cd ${_pkgname}-${pkgver}
+   make
+}
 
 package() {
    cd ${_pkgname}-${pkgver}
    make install DESTDIR="${pkgdir}" prefix=/usr
-   # remove included six, OpenGL
-   rm -rf "${pkgdir}"/usr/share/${_pkgname}/six
-   rm -rf "${pkgdir}"/usr/share/${_pkgname}/OpenGL
 }
 
 
