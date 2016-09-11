@@ -1,7 +1,7 @@
 pkgbase = chicken-git
 	pkgdesc = Feature rich R5RS Scheme compiler and interpreter
 	pkgver = 4.11.1.r3356.116f42e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://call-cc.org/
 	arch = any
 	license = BSD 3-Clause
