@@ -5,16 +5,21 @@
 
 pkgname=lib32-libnotify
 pkgver=0.7.6
-pkgrel=4
-pkgdesc="Desktop notification library (32-bit)"
+pkgrel=5
+pkgdesc="Library for sending desktop notifications (32-bit)"
 arch=('x86_64')
-url="http://library.gnome.org/devel/notification-spec/"
+url="https://developer.gnome.org/notification-spec/"
 license=('LGPL')
 depends=("${pkgname#lib32-}" 'lib32-gdk-pixbuf2')
-makedepends=('gcc-multilib' 'gobject-introspection' 'lib32-gtk3')
-options=('!libtool')
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname#lib32-}/0.7/${pkgname#lib32-}-${pkgver}.tar.xz")
-sha512sums=('5d656ee7ee5caeb95aec4adb973795dc72fc620cd36b9fe3d4f910951945bd5df70ee1c422cd6aca9c38a9ba2760562e479fc8fb9269449924a5b24d762d03df')
+makedepends=('gcc-multilib' 'git' 'gnome-common' 'gobject-introspection' 'lib32-gtk3')
+_commit=2f2c5649ef210b1dffeb46cddf062d20e1518ccf
+source=("git://git.gnome.org/libnotify#commit=$_commit")
+sha512sums=('SKIP')
+
+prepare() {
+  cd ${pkgname#lib32-}
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
@@ -24,12 +29,12 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
-  cd "${pkgname#lib32-}-${pkgver}"
+  cd ${pkgname#lib32-}
   ./configure --build=i686-pc-linux-gnu --prefix=/usr --disable-static --libdir=/usr/lib32
   make
 }
 
 package() {
-  make -C "${pkgname#lib32-}-${pkgver}" DESTDIR="${pkgdir}" install
+  make -C "${pkgname#lib32-}" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
 }
