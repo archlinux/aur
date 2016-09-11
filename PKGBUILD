@@ -2,7 +2,7 @@
 
 pkgname=auri
 pkgver=0.1.0_alpha
-pkgrel=1
+pkgrel=2
 pkgdesc='A way to set up static Arch Linux machines'
 
 arch=(any)
@@ -12,6 +12,7 @@ license=(GPL3)
 makedepends=(git)
 source=("$pkgname::git+$url.git#tag=${pkgver//_/-}")
 md5sums=(SKIP)
+install="$pkgname.install"
 
 package() {
     cd "$pkgname"

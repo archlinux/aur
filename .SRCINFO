@@ -1,8 +1,9 @@
 pkgbase = auri
 	pkgdesc = A way to set up static Arch Linux machines
 	pkgver = 0.1.0_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crescent-scroll/auri
+	install = auri.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,4 +11,3 @@ pkgbase = auri
 	md5sums = SKIP
 
 pkgname = auri
-
