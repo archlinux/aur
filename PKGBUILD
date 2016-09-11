@@ -3,7 +3,7 @@
 # Contributor: quantax
 
 pkgname=ags
-pkgver=3.3.5.10
+pkgver=3.3.5.11
 pkgrel=1
 pkgdesc="A development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('wine: for installing and configuring the game')
 conflicts=('ags-git')
 install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('8afa31e4520606f4a81bd0181e3e89b33e424ac25d6fafef9bf04cf0ec132e11')
+sha256sums=('029e0a4f2c12617a9672eee7cfc7e9c9aba0421bfb18c8a8210bf7fba5f63825')
 
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
@@ -32,4 +32,4 @@ package() {
   install -Dm644 "$srcdir/ags-v.${pkgver}/License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et
