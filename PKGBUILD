@@ -13,6 +13,8 @@ license=('GPLv3')
 source=("libsearpc-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 depends=("glib2>=2.26.0" "jansson>=2.2.1" "python2-gobject2>=2.26.0" 'python2-simplejson')
         "libsearpc.pc.patch")
+sha256sums=('13fddb5494f5367dc36c31afb7b7b868570225e37f6bb7a13ec6e323ef527eb2'
+            'aec39a303aaebc0777a22d8c53367f52f619654d63f62b362d75c1c599e632f4')
 
 prepare () {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,5 +37,3 @@ package () {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha256sums=('efee6b495f93e70101c87849c78b135014dfd2f0e5c08dcfed9834def47cb939'
-            'aec39a303aaebc0777a22d8c53367f52f619654d63f62b362d75c1c599e632f4')
