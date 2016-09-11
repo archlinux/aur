@@ -1,7 +1,7 @@
 # Maintainer: Karel Louwagie <karel@louwagie.net>
 
 pkgname=toggldesktop
-pkgver=7.3.247
+pkgver=7.3.325
 pkgrel=1
 pkgdesc="Time Tracking Software."
 arch=('x86_64')
@@ -36,5 +36,5 @@ package() {
 }
 
 sha512sums=('5c8fc6fcc8d9905455cc54a61412dc772667599c5abab056d308223c54c85ef47afc3078acbb44ac84f8e1b31ccd838d245e3ce0a3037ddec9201549125f6847'
-            'fbd60c57d59054be67b7cd1df1e51b1ad6f070af7451a9026457f8f4912d4ef8d4dd86675a248cf1be62966bcaca40e5444936c97bb1112cd602c3c49d522ec8'
+            '2886bce2a1fbac3ebf97ad45ca09f82a7aa0e722fdad711a1d0fb4fded3a39f3b6699ce678581e472d4fca47699a5b1e08495cf9936080ccdba60e21fd70ae68'
             'b784a9beff75e0aab5b59f53c1d200c377a2df967b92762ddc371043940c09fba169642f3e0c066b49060d4cf62e6cf68305a5ad8ad73d120ea18f0fd280307f')
