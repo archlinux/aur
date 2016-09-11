@@ -2,8 +2,8 @@ post_install(){
   echo ''
   echo 'To generate the Csound helptags accessed via Shift-K run'
   echo '  mkdir -p ~/.vim/doc/ && \ '
-  echo '  ln -s /usr/share/vim/vimfiles/doc/csound.txt ~/.vim/doc/csound.txt && \'
-  echo '  cd ~/.vim/ && \'
+  echo '  ln -s /usr/share/vim/vimfiles/doc/csound.txt ~/.vim/doc/csound.txt && \ '
+  echo '  cd ~/.vim/ && \ '
   echo '  vim -c "helptags doc/"'
   echo ''
 }
@@ -11,7 +11,7 @@ post_install(){
 post_upgrade(){
   echo ''
   echo 'Remember to update your helptags by running'
-  echo '  cd ~/.vim/ && \'
+  echo '  cd ~/.vim/ && \ '
   echo '  vim -c "helptags doc/"'
   echo ''
 }
