@@ -1,0 +1,4 @@
+148c148
+<     CC_SAFE_DELETE_ARRAY(_tiles);
+---
+>     CC_SAFE_FREE(_tiles);

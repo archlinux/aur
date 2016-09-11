@@ -4,7 +4,7 @@
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -18,6 +18,7 @@ source=("${url}${_appname}-${pkgver}.zip"
 "$_appname.csh"
 "RuntimeCCSImpl.patch"
 "SocketIO.patch"
+"CCTMXLayer.patch"
 )
 sha1sums=(
 '30ab3a821467578df4e1ee9d9b2bbb39ae0605e4'
@@ -26,6 +27,7 @@ sha1sums=(
 '49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
 '716869895fc2b071c66a58f727c643f48e927569'
 'b042a9fa4c7ea6d472985b1b61d0a57ebf56708a'
+'c6cf99ba9fcd7fa4f80c1f3014c6c0b5fd34120a'
 )
 
 
@@ -44,6 +46,7 @@ package() {
 	# Patch memory leaks:
 	patch "$srcdir"/$_appname-$pkgver/tools/simulator/libsimulator/lib/runtime/RuntimeCCSImpl.cpp RuntimeCCSImpl.patch
 	patch "$srcdir"/$_appname-$pkgver/cocos/network/SocketIO.cpp SocketIO.patch
+	patch "$srcdir"/$_appname-$pkgver/cocos/2d/CCTMXLayer.cpp CCTMXLayer.patch
 
 	# Necessary libfmod symbolic link
 	mkdir -p "$pkgdir/usr/lib"
