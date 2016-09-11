@@ -18,6 +18,8 @@ build() {
   cd ${srcdir}/$pkgname-$pkgver
   sed -i 's/\-mt//g' sinfo/Makefile.*
   sed -i 's/\-mt//g' sinfod/Makefile.*
+# Required setting of explicit standard for g++, otherwise libboost template handling will break after g++ 6  
+  export CXXFLAGS="-std=c++98"
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
