@@ -16,6 +16,7 @@ makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
 source=("${_pkgname}-${pkgver}.zip::${url}/archive/${pkgver}.zip")
+sha256sums=('fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a')
 
 build () {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -30,4 +31,3 @@ package () {
 
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-sha256sums=('fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a')
