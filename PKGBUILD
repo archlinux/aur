@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/luisjure/csound"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim')
-optdepends=('csound')
+optdepends=('csound'
+            'neovim')
 install='neovim-csound.install'
 # FIXME: version numbers are coming soon, for now use master git
 source=('csound.vim.tar.gz'::'https://github.com/luisjure/csound/archive/master.zip')
