@@ -3,7 +3,7 @@
 
 pkgname='perl-ppi-xs'
 pkgver='0.902'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="(Minor) XS acceleration for PPI"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
