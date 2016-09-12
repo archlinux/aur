@@ -10,6 +10,7 @@ pkgbase = verge-git
 	makedepends = git
 	makedepends = qt5-webkit
 	makedepends = qt5-base
+	makedepends = qt5-tools
 	makedepends = boost-libs
 	makedepends = boost
 	makedepends = gcc

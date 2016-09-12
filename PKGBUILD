@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://vergecurrency.com/"
 license=('MIT')
 depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
-makedepends=('pkg-config' 'git' 'qt5-webkit' 'qt5-base' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
+makedepends=('pkg-config' 'git' 'qt5-webkit' 'qt5-base' 'qt5-tools' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 provides=('verge' 'verge-qt' 'verged' 'verge-bin' 'verge-daemon')
 conflicts=('verge' 'verge-qt' 'verged' 'verge-bin' 'verge-daemon')
 source=('git://github.com/vergecurrency/VERGE.git')
@@ -32,7 +32,8 @@ prepare() {
 build() {
 	cd "$srcdir/$_gitname"
 	./autogen.sh
-	./configure
+	./configure --with-gui=qt5
+	qmake
 	make
 }
 
