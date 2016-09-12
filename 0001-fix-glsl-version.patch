@@ -1,0 +1,19 @@
+--- a/cogl/driver/gl/gl/cogl-driver-gl.c
++++ b/cogl/driver/gl/gl/cogl-driver-gl.c
+@@ -403,9 +403,13 @@
+                                       &ctx->glsl_minor);
+     }
+
+-  if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 2))
+-    /* We want to use version 120 if it is available so that the
+-     * gl_PointCoord can be used. */
++  if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 5))
++    ctx->glsl_version_to_use = 150;
++  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 4))
++    ctx->glsl_version_to_use = 140;
++  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 3))
++    ctx->glsl_version_to_use = 130;
++  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 2))
+     ctx->glsl_version_to_use = 120;
+   else
+     ctx->glsl_version_to_use = 110;

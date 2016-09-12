@@ -1,0 +1,31 @@
+pkgbase = cogl-amdgpu-pro
+	pkgdesc = cogl with support for amdgpu-pro
+	pkgver = 1.22.2
+	pkgrel = 1
+	url = http://www.clutter-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	depends = mesa
+	depends = libdrm
+	depends = libxext
+	depends = libxdamage
+	depends = libxcomposite
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = libxrandr
+	optdepends = amdgpu-pro: hybrid driver for AMDGPU cards
+	provides = cogl
+	conflicts = cogl
+	replaces = cogl
+	options = !emptydirs
+	source = git://git.gnome.org/cogl#commit=f38cda9046913c3627c52108467ba90e53d18c33
+	source = 0001-fix-glsl-version.patch
+	sha256sums = SKIP
+	sha256sums = 1766949fb76a45c218dffaf191f70362791a5547aa72cbc3f51249f0379f3469
+
+pkgname = cogl-amdgpu-pro
+
