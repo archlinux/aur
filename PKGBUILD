@@ -54,6 +54,7 @@ fi
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _toolchain_name=armv7-rpi2-linux-gnueabihf
+_toolchain_pkg_prefix=qpi
 _pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
@@ -71,6 +72,7 @@ __glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
 if [[ "${_piver}" = "3" ]]; then
     _toolchain_name=aarch64-rpi3-linux-gnueabi
+    _toolchain_pkg_prefix=${_toolchain_pkg_prefix}-aarch64
     _use_mesa=true
     _float=false
 fi
@@ -108,7 +110,7 @@ pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
-depends=("qpi-toolchain" "qtcreator")
+depends=("${_toolchain_pkg_prefix}-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 _provider=http://qt.mirror.constant.com/
 #_provider=https://download.qt.io
