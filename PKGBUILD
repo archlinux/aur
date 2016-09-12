@@ -1,4 +1,6 @@
 # Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
+# Contributor: Jeremy Audet <ichimonji10#gmail.com>
+# Contributor: Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 # Contributor: Jason St. John <jstjohn .. purdue . edu>
 # Contributor: Mikhail Kulemin <mihkulemin@gmail.com>
 # Contributor: Michael Pusterhofer <pusterhofer (at) student (dot) tugraz (dot) at>
