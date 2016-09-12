@@ -13,7 +13,7 @@ source=('chromium-fullscreen.service'
         'chromium-fullscreen.sh')
 md5sums=('738beda830fcf4f094b83659c9c936c4'
          '9e979fbdd1e4a5a04fd0e91ce6a9a7be'
-         '4f88ade0f45fa6358cd942881229b873')
+         '9cdf91af72c57eb9e4f359942ced5ddd')
 
 package() {
   # Copy autorun script

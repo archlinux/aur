@@ -12,8 +12,12 @@ post_install() {
   chown -R chromium:chromium /home/chromium
 
   # Print additional useful informations
-  echo "==> [INFO] To run Chromium Fullscreen everytime at boot please run ==> systemctl enable chromium-fullscreen.service"
-  echo "==> [INFO] To simply start Chromium Fullscreen just run ==> systemctl start chromium-fullscreen.service"
+  echo -e "==> [INFO] For comodity, the file '/home/chromium/chromium-autostart-url.txt' has been created for you. That file although can be located also on:"
+  echo -e "==> [INFO] - '/boot/chromium-autostart-url.txt'"
+  echo -e "==> [INFO] - '/home/chromium/chromium-autostart-url.txt'"
+  echo -e "==> [INFO] Order is mandatory! The first that matches, is the first that wins."
+  echo -e "==> [INFO] To run Chromium Fullscreen everytime at boot please run ==> systemctl enable chromium-fullscreen.service"
+  echo -e "==> [INFO] To simply start Chromium Fullscreen just run ==> systemctl start chromium-fullscreen.service"
 }
 
 post_upgrade() {
