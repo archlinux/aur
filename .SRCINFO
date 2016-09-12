@@ -120,7 +120,6 @@ pkgbase = rk-apricity-apps
 	depends = mkvtoolnix-gui
 	depends = ttf-cheapskate
 	depends = deluge
-	depends = mbuffer
 	optdepends = rk-desktop-gnome-games: All the nice gnome mini-games
 	optdepends = rk-desktop-gnome-removegames: Remove all gnome mini-games
 	optdepends = rk-desktop-apps: The most-used desktop apps

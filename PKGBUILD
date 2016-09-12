@@ -132,7 +132,7 @@ depends=("pkgtools"
 "mkvtoolnix-gui"
 "ttf-cheapskate"
 "deluge"
-"mbuffer"
+#"mbuffer"
 #"zfs-dkms"
 )
 conflicts=(
