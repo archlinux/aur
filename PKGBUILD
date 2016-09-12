@@ -2,20 +2,18 @@
 
 pkgname=verge-git
 _gitname=VERGE
-pkgver=r465.87922b3
-pkgrel=3
+pkgver=r467.d5d3d81
+pkgrel=1
 pkgdesc="VERGE is the privacy focused & secure alternative to other cryptocurrencies. (git version)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://vergecurrency.com/"
 license=('MIT')
 depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
 makedepends=('pkg-config' 'git' 'qt5-webkit' 'qt5-base' 'qt5-tools' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 provides=('verge' 'verge-qt' 'verged' 'verge-bin' 'verge-daemon')
 conflicts=('verge' 'verge-qt' 'verged' 'verge-bin' 'verge-daemon')
-source=('git://github.com/vergecurrency/VERGE.git'
-        'https://github.com/vergecurrency/VERGE/pull/40.patch')
-sha256sums=('SKIP'
-            'c608694554c0f303bb0e0f1f8357a1b375a37146a0e59f938866166e2ac0a594')
+source=('git://github.com/vergecurrency/VERGE.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -23,12 +21,6 @@ pkgver() {
     git describe --tags 2>/dev/null | sed "s/-/./g" ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-	cd "$srcdir/$_gitname"
-	msg2 "Fixing verge-qt.desktop icons so we don't conflict with bitcoin"
-	git apply "$srcdir"/40.patch
 }
 
 build() {

@@ -1,10 +1,9 @@
 pkgbase = verge-git
 	pkgdesc = VERGE is the privacy focused & secure alternative to other cryptocurrencies. (git version)
-	pkgver = r465.87922b3
-	pkgrel = 3
+	pkgver = r467.d5d3d81
+	pkgrel = 1
 	url = http://vergecurrency.com/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = pkg-config
 	makedepends = git
@@ -36,9 +35,7 @@ pkgbase = verge-git
 	conflicts = verge-bin
 	conflicts = verge-daemon
 	source = git://github.com/vergecurrency/VERGE.git
-	source = https://github.com/vergecurrency/VERGE/pull/40.patch
 	sha256sums = SKIP
-	sha256sums = c608694554c0f303bb0e0f1f8357a1b375a37146a0e59f938866166e2ac0a594
 
 pkgname = verge-git
 
