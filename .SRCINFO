@@ -23,8 +23,10 @@ pkgbase = vkquake-git
 	conflicts = vkquake
 	source = git+https://github.com/Novum/vkquake.git
 	source = vkquake.desktop
+	source = vkquake.png
 	md5sums = SKIP
-	md5sums = 1fa01ded4b66b9795eaee856093e4a01
+	md5sums = c0180462ed8dcced29e7878e1d940824
+	md5sums = ffc3103326b0378af770b1318cf4e7e6
 
 pkgname = vkquake-git
 

@@ -17,9 +17,12 @@ depends=(
 )
 install=$pkgname.install
 source=('git+https://github.com/Novum/vkquake.git'
-	'vkquake.desktop')
+	'vkquake.desktop'
+	'vkquake.png')
 md5sums=('SKIP'
-	 '1fa01ded4b66b9795eaee856093e4a01')
+	 'c0180462ed8dcced29e7878e1d940824'
+	 'ffc3103326b0378af770b1318cf4e7e6')
+
 pkgver() {
 
   cd "$_gitname"
