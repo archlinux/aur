@@ -1,12 +1,16 @@
-# Maintainer: Donald Carr<sirspudd@gmail.com>
-# Upstream URL: https://wiki.qt.io/Qt_Build_Suite
-#
-# For improvements/fixes to this package, please send a pull request:
-# http://code.qt.io/cgit/qt-labs/qbs.git/
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
 
-pkgname=qpi-toolchain
+_aarch64=false
+
+_pkgname=qpi
+_toolchainname=armv7-rpi2-linux-gnueabihf
+if $_aarch64; then
+  _pkgname="$_pkgname-aarch64"
+  _toolchainname=aarch64-rpi3-linux-gnueabi
+fi
+pkgname=${_pkgname}-toolchain
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="cross-tool-ng compiled GCC toolchain for the pi"
 arch=("x86_64")
 license=("GPL")
@@ -14,12 +18,6 @@ makedepends=("git")
 
 _toolchainreponame=crosstool-ng-toolchains
 
-# toolchains
-
-# aarch64-rpi3-linux-gnueabi
-# armv7-rpi2-linux-gnueabihf
-
-_toolchainname=armv7-rpi2-linux-gnueabihf
 url="https://github.com/sirspudd/${_toolchainreponame}"
 source=("git+https://github.com/sirspudd/${_toolchainreponame}.git#tag=GCC-${pkgver}-${_toolchainname}")
 sha256sums=("SKIP")
