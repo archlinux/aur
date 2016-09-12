@@ -27,7 +27,7 @@ build() {
 	cd "$srcdir/$_gitname"
 	./autogen.sh
 	./configure --with-gui=qt5
-	make
+	make -j$(nproc)
 }
 
 package() {
