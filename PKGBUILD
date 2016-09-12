@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl6-export-attrs'
-pkgver='0.000004'
+pkgver='0.000005'
 pkgrel='1'
 pkgdesc="The Perl 6 'is export(...)' trait as a Perl 5 attribute"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl-padwalker')
 makedepends=()
 url='https://metacpan.org/release/Perl6-Export-Attrs'
-source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Export-Attrs-0.000004.tar.gz')
-md5sums=('e65c7eece62f9892a79ad6ce00aa95bd')
-sha512sums=('c9408417d5c4e338448473c19328bfe70a5be058e339f57df5242ea1106ef1088eff0c01719c31fdea890fc03feb56f4d2b21bab143ed6924e782053f5606fe0')
-_distdir="Perl6-Export-Attrs-0.000004"
+source=('http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Export-Attrs-0.000005.tar.gz')
+md5sums=('aeb0ca750ae349937fff127aacdfb89d')
+sha512sums=('4b9bf7949f630b8dcf5096fbbdd641811e694222a962ce97513ecbe618a1512b8fddbadcae4069a4c7e5a1dc96fa441ca3ad0c88cb2ddfb2a54e23d141833edc')
+_distdir="Perl6-Export-Attrs-0.000005"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
