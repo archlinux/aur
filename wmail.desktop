@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=WMail
+Exec=/usr/bin/wmail
+Icon=/usr/share/pixmaps/WMail.png
+Type=Application
+Categories=Network
