@@ -1,7 +1,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=tagspaces
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ url="http://tagspaces.org"
 license=("AGPL")
 depends=("electron")
 makedepends=("bower" "gendesk")
-sha256sums=('b83b1fd10d325a300d8e91f229c27611e88e1cfc16855e998b3618e82841dfce')
+sha256sums=('6e4413b4309fe826f58d442e8ca6a70642dc6d663aefc9909b7728d4c4ff6dc5')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 prepare() {
   # create desktop file and run script
