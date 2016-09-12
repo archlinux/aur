@@ -1,0 +1,22 @@
+post_install() {
+  # Update systemd sysusers
+  systemd-sysusers
+
+  # Create Home folder
+  mkdir -p /home/chromium
+
+  # Fix permissions
+  chown -R chromium:chromium /home/chromium
+
+  # Print additional useful informations
+  echo "==> [INFO] To run Chromium Fullscreen everytime at boot please run ==> systemctl enable chromium-fullscreen.service"
+  echo "==> [INFO] To simply start Chromium Fullscreen just run ==> systemctl start chromium-fullscreen.service"
+}
+
+post_upgrade() {
+  # Update systemd sysusers
+  systemd-sysusers
+
+  # Fix permissions
+  chown -R chromium:chromium /home/chromium
+}

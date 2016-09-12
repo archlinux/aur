@@ -1,0 +1,24 @@
+pkgbase = chromium-fullscreen
+	pkgdesc = Systemd service and user to run Chromium in fullscreen mode
+	pkgver = 1
+	pkgrel = 1
+	install = chromium-fullscreen.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = xorg-server
+	depends = xorg-xrandr
+	depends = xorg-xinit
+	depends = chromium
+	source = chromium-fullscreen.service
+	source = chromium-fullscreen.sysuser
+	source = chromium-fullscreen.sh
+	md5sums = c1b2275b9f28359fe8742b6ed0f120e1
+	md5sums = 9e979fbdd1e4a5a04fd0e91ce6a9a7be
+	md5sums = 4f88ade0f45fa6358cd942881229b873
+
+pkgname = chromium-fullscreen
+

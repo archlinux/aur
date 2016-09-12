@@ -1,0 +1,8 @@
+u chromium /sbin/nologin "Chromium user" /home/chromium
+m chromium video
+m chromium audio
+m chromium input
+m chromium disk
+m chromium storage
+m chromium optical
+m chromium floppy
