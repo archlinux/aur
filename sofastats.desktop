@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SOFA Statistics
+GenericName=Analysis package
+Comment=VoIP and Instant Messaging client
+Icon=/usr/lib/python2.7/site-packages/sofastats/images/sofa_48x48.xpm
+Type=Application
+Categories=Science
+Exec=/usr/bin/sofastats
+Terminal=false
