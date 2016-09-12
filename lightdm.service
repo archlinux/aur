@@ -1,13 +1,12 @@
 [Unit]
-Description=LightDM Display Manager
+Description=Light Display Manager
 Documentation=man:lightdm(1)
-After=systemd-user-sessions.service
+Conflicts=getty@tty1.service
+After=getty@tty1.service systemd-user-sessions.service plymouth-quit.service acpid.service
 
 [Service]
-ExecStart=/usr/sbin/lightdm
-StandardOutput=syslog
-# Don't want a continuous loop if X fails to start
-#Restart=always
+ExecStart=/usr/bin/lightdm
+Restart=always
 IgnoreSIGPIPE=no
 BusName=org.freedesktop.DisplayManager
 

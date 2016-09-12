@@ -1,16 +1,13 @@
-# Maintainer: Michael Healy <horsemanoffaith@gmail.com>
-
-# This package no longer depends on a specific toolkit. It will build the GTK and
-# Qt libraries and recommend the installation of those respective tookits using
-# optdepends.
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname%-*}, repo=xenial
+# vercheck-ubuntu: name=${pkgname%-*}, repo=yakkety
 # vercheck-launchpad: name=${pkgname%-*}
 
-pkgname=lightdm-ubuntu
+pkgbase=lightdm-ubuntu
+pkgname=(lightdm-ubuntu liblightdm-qt4-ubuntu liblightdm-qt5-ubuntu)
 _ubuntu_rel=0ubuntu1
-pkgver=1.18.0
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="A lightweight display manager"
 arch=(i686 x86_64)
@@ -18,140 +15,178 @@ url="https://launchpad.net/lightdm"
 # Libraries are LGPLv3+, everything else is GPLv3+
 license=(GPL3 LGPL3)
 groups=(unity)
-depends=(libgcrypt libxcb libxdmcp libxklavier)
-# Useful dependencies, but not required
-#depends=('gnome-themes-standard' 'gnome-backgrounds' 'gnome-icon-theme' 'webkitgtk3')
-makedepends=(gnome-common gobject-introspection gtk-doc gtk3-ubuntu intltool qt4 qt5-base yelp-tools)
-optdepends=('accountsservice: DBus interface for querying user information'
-            'gnome-keyring: For pam_gnome_keyring.so in the greeter PAM config'
-            'gtk3: For using the GTK greeter'
-            'lightdm-unity-greeter: Default Ubuntu 16.04 Greeter')
-provides=("lightdm=${pkgver}")
-conflicts=(lightdm)
-options=(emptydirs)
-backup=(etc/lightdm/keys.conf
-        etc/lightdm/lightdm.conf
-        etc/lightdm/users.conf)
-install=lightdm.install
+makedepends=(glib2 gobject-introspection gtk-doc intltool itstool libgcrypt
+             libx11 libxcb libxdmcp libxklavier pam polkit qt4 qt5-base vala)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_${pkgver}-${_ubuntu_rel}.tar.gz"
         lightdm.service
-        lightdm.tmpfiles.d
+        lightdm.tmpfiles
         lightdm.pam
         lightdm-autologin.pam
-        lightdm-greeter.pam
         lightdm.rules
-        0001-guest-account-Use-cross-distro-commands.patch)
-sha512sums=('a0d203c0acdcd6bbc068341bea847d1b7a037b8d361357197933a2413438282da705e40b637f7cbc34aeeb0920d0518df1c5e6019ffae4c6cd33d59a743cf4d8'
-            '26bb333e58ee63a6a0d472bb0a7f9006b93c7de629780399b1dff4af3aaccea02aa74ed0410b8fa6ba55b285f7c7bb6180db059928feba56f779c5b8f3ba8b86'
-            '81a76a49eb208b1d33f5ac0184d87a377cd37c522d74a93ccd3d96b3d6e32c44872a65873b91fec3daba0846cdb5a938b51944697e636c045d03259bd5424644'
-            '1067bcb25b6d6d01256b176b5854d1ace700ba2b7323b4af257aa95d2f47d5043ac22811f65e99f1e961772cd1e81c153ef69b162918827bd9d7d50d458908df'
-            '6f59d97515b37d53fb4f56de0f65994710e02c197c6d4c096aa7cdb9fe518d29223960018ae4ad8003056fed3210f47f3aa459c85b8efca80089f2046196892c'
-            '3b482f7e551df20a5c5d9331a420275d1dad5bb6aad287247baea82dc40dc31dca22db4da180fbb950865e37cf94f1737fa1ee7ec2f5233540f82f2f570a408b'
+        lightdm-default-config.patch
+        Xsession
+        0001-guest-account-Add-default-GSettings-support.patch)
+sha512sums=('4c43309a5f0520047108646dcc8c5ede6da5f1478fd2ed7df30da738efe36129b1c98ab1872391a04b64ccf38afc3d28f99137a92fa824b3d0e60838490e2c97'
+            'd49344e79f6468ef06538068cbb12c37e313e02ade28984a75dad4d50e1e962372451908e9910ae60c74bd5230ae45e6a6346bb0f7c6af83c346a691f5714556'
+            'c359dbea59d9a38faa244fc52fa7fbe2a099984bdaa015e38046abfef71ed4941230b86a238c1691f04bda6f7608f403e99b04018a7cd5b7217fa89fc703af9f'
+            'cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0'
+            '61115380c8eb07b855c074f0c83f2f1f78a9c0ea0458cbb1e8cb1271db72e751ce6b54f80a591906c792f247cac463e8af2cc4707d3d6c1d43cb70e394fde104'
             '8d6aa12c4d129c25e56ecf2904db4e294d46631d11bd8bec2f20a76c871ba758094abb24616d3d2038a684fbb736ee61d1f80697d525d62c4dc68113e101194f'
-            '67c32e5d0865efd6d8a8bad42efa52eaa36ad4ec5c31e083edb908a5ef5ff489905ca34a46714d83e2875dcc5c96606d63d1c42fad3e555b48cbc6bd9f559ead')
+            '62ef6fd02664d539c6169000774978c9780156d1483fabf25474073c221dc2d943f21c81b5225030f9b375eab1a83ccdefaf289d4a40a71b1fe91397da7d1425'
+            '5e0f47e6d338e35548235dcfdb8b22622b749ffd69d5d6a4463021f51df0c679d1d78e0be17bbc072239d9916a027669aac9c6456afabe0ca3fde881b611b576'
+            '393ede18563aab484aace26c6c470b07e16f79025fec5eec03e0f1072e39316bc73a73d45da843c6b76f356e8b069fda66fa3863f39d1106dbf1f3ff7e4175a6')
 
 prepare() {
-  cd "lightdm-${pkgver}"
+    cd "lightdm-${pkgver}"
 
-  #patch -p1 -i "../lightdm_${pkgver}-${_ubuntu_rel}.diff"
+    patch -p1 -i "${srcdir}"/lightdm-default-config.patch
 
-  # Apply Ubuntu patches
-
-  # Disable patches
     # Do not use Ubuntu's language-tools
-      sed -i '/04_language_handling.patch/d' debian/patches/series
+    sed -i '/04_language_handling.patch/d' debian/patches/series
 
-  for i in $(grep -v '#' debian/patches/series); do
-    patch -p1 -i "debian/patches/${i}"
-  done
+    for i in $(grep -v '#' debian/patches/series); do
+        patch -p1 -i "debian/patches/${i}"
+    done
 
-   # Do not depend on Debian/Ubuntu specific adduser package
-  patch -p1 -i ../0001-guest-account-Use-cross-distro-commands.patch
+    # Add support for settings GSettings/dconf defaults in the guest session. Just
+    # put the files in /etc/guest-session/gsettings/. The file format is the same
+    # as the regular GSettings override files.
+    patch -p1 -i ../0001-guest-account-Add-default-GSettings-support.patch
 }
 
 build() {
-  cd "lightdm-${pkgver}"
+    cd "lightdm-${pkgver}"
 
-  export MOC4=moc-qt4
-  export MOC5=moc-qt5
+    export MOC4=moc-qt4
+    export MOC5=moc-qt5
 
-  gtkdocize
-  aclocal --install --force
-  autoreconf -vfi
-  intltoolize -f
+    gtkdocize
+    aclocal --install --force
+    autoreconf -vfi
+    intltoolize -f
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --sbindir=/usr/bin \
-    --disable-static \
-    --libexecdir=/usr/lib/lightdm \
-    --localstatedir=/var \
-    --with-user-session=ubuntu \
-    --with-greeter-user=lightdm
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/lightdm \
+        --localstatedir=/var \
+        --sbindir=/usr/bin \
+        --sysconfdir=/etc \
+        --with-greeter-user=lightdm \
+        --with-greeter-session=lightdm-gtk-greeter \
+        --with-user-session=ubuntu \
+        --disable-static \
+        --disable-tests
 
-  make
+    make
 }
 
-package() {
-  cd "lightdm-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
+package_lightdm-ubuntu() {
+    depends=(glib2 libgcrypt libx11 libxcb libxdmcp libxklavier pam polkit)
+    optdepends=('accountsservice: DBus interface for querying user information'
+                'bindfs: Used for guest session to avoid copying skeleton dotfiles'
+                'gnome-keyring: For pam_gnome_keyring.so in the greeter PAM config'
+                'gtk3: For using the GTK greeter'
+                'lightdm-gtk-greeter: GTK greeter'
+                'lightdm-kde-greeter: Qt greeter'
+                'lightdm-unity-greeter: Default Ubuntu Greeter')
+    provides=("lightdm=${pkgver}")
+    conflicts=(lightdm)
+    backup=(etc/apparmor.d/lightdm-guest-session
+            etc/lightdm/keys.conf
+            etc/lightdm/lightdm.conf
+            etc/lightdm/users.conf
+            etc/lightdm/Xsession
+            etc/pam.d/lightdm
+            etc/pam.d/lightdm-autologin
+            etc/pam.d/lightdm-greeter)
+    install=lightdm.install
 
-  install -dm755 "${pkgdir}/usr/lib/systemd/system/"
+    cd "lightdm-${pkgver}"
 
-  # Additional LightDM configuration files
-  install -dm755 "${pkgdir}"/etc/lightdm/lightdm.conf.d/
-  install -m644 debian/50-{xserver-command,greeter-wrapper,guest-wrapper}.conf \
-                "${pkgdir}"/etc/lightdm/lightdm.conf.d/
+    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" -C liblightdm-qt uninstall
 
-  # Install PAM service
-  install -dm755  "${pkgdir}"/etc/pam.d/
-  install -m644 "${srcdir}"/lightdm.pam "${pkgdir}"/etc/pam.d/lightdm
-  install -m644 "${srcdir}"/lightdm-autologin.pam \
-                "${pkgdir}"/etc/pam.d/lightdm-autologin
-  install -m644 "${srcdir}"/lightdm-greeter.pam \
-                "${pkgdir}"/etc/pam.d/lightdm-greeter
+    install -m755 ../Xsession "${pkgdir}"/etc/lightdm/Xsession
+    rm -rf "${pkgdir}"/etc/init
+    rm -rf "${pkgdir}"/usr/include/lightdm-qt{,5}-*
 
-  # Install configuration files
-  install -dm755 "${pkgdir}"/usr/share/doc/lightdm/
-  install -m644 "${pkgdir}"/etc/lightdm/lightdm.conf \
-                "${pkgdir}"/usr/share/doc/lightdm/
-  install -m644 "${pkgdir}"/etc/lightdm/keys.conf \
-                "${pkgdir}"/usr/share/doc/lightdm/
+    install -dm755 "${pkgdir}"/var/cache/lightdm
+    install -dm770 "${pkgdir}"/var/lib/lightdm{,-data}
+    install -dm711 "${pkgdir}"/var/log/lightdm
+    chmod +t "${pkgdir}"/var/{cache/lightdm,lib/lightdm{,-data}}
+    chown 620:620 -R "${pkgdir}"/var/lib/lightdm{,-data}
+    chgrp 620 "${pkgdir}"/var/log/lightdm
 
-  # Install binaries and scripts
-  install -dm755 "${pkgdir}"/usr/bin/
-  install -m755 debian/guest-account.sh "${pkgdir}"/usr/bin/guest-account
-  install -m755 debian/lightdm-session "${pkgdir}"/usr/bin/
-  install -m755 debian/lightdm-greeter-session "${pkgdir}"/usr/lib/lightdm/
-  install -m755 debian/config-error-dialog.sh "${pkgdir}"/usr/lib/lightdm/
+    # PAM
+    install -m644 ../lightdm.pam "${pkgdir}"/etc/pam.d/lightdm
+    install -m644 ../lightdm-autologin.pam "${pkgdir}"/etc/pam.d/lightdm-autologin
 
-  # Install systemd service
-  install -m644 "${srcdir}"/lightdm.service "${pkgdir}"/usr/lib/systemd/system/
+    # PolicyKit
+    install -dm750 -g102 "${pkgdir}"/usr/share/polkit-1/rules.d
+    install -m644 ../lightdm.rules "${pkgdir}"/usr/share/polkit-1/rules.d/lightdm.rules
 
-  # Install systemd tmpfiles.d file
-  install -dm755 "${pkgdir}"/usr/lib/tmpfiles.d/
-  install -m644 "${srcdir}"/lightdm.tmpfiles.d \
-                "${pkgdir}"/usr/lib/tmpfiles.d/lightdm.conf
+    # Systemd
+    install -dm755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d}
+    install -m644 ../lightdm.service "${pkgdir}"/usr/lib/systemd/system/lightdm.service
+    install -m644 ../lightdm.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lightdm.conf
 
-  # Install PolicyKit rules from Fedora which allow the lightdm user to access
-  # the systemd-logind, consolekit, and upower DBus interfaces
-  install -dm700 "${pkgdir}"/usr/share/polkit-1/rules.d/
-  install -m644 "${srcdir}"/lightdm.rules \
-                "${pkgdir}"/usr/share/polkit-1/rules.d/
+    # Additional LightDM configuration files
+    install -dm755 "${pkgdir}"/etc/lightdm/lightdm.conf.d/
+    install -m644 debian/50-{xserver-command,greeter-wrapper,guest-wrapper,disable-log-backup}.conf \
+                  "${pkgdir}"/etc/lightdm/lightdm.conf.d/
 
-  # Configuration settings that differ from Ubuntu
-  sed -i \
-    -e 's/^\(minimum-uid=\).*$/\11000/g' \
-    -e 's@/usr\(/sbin/nologin\)$@\1@g' \
-    "${pkgdir}"/etc/lightdm/users.conf
+    # Install binaries and scripts
+    install -dm755 "${pkgdir}"/usr/bin/
+    install -m755 debian/guest-account.sh "${pkgdir}"/usr/bin/guest-account
+    install -m755 debian/guest-session-auto.sh "${pkgdir}"/usr/lib/lightdm/
+    install -m755 debian/lightdm-session "${pkgdir}"/usr/bin/
+    install -m755 debian/lightdm-greeter-session "${pkgdir}"/usr/lib/lightdm/
+    install -m755 debian/config-error-dialog.sh "${pkgdir}"/usr/lib/lightdm/
 
-  # Configuration files specific to Ubuntu
-  rm -rvf "${pkgdir}"/etc/init/
+    # Skeleton files for guest account
+    install -dm755 "${pkgdir}"/usr/share/lightdm/guest-session/skel/.config/autostart/
+    install -m644 debian/guest-session-startup.desktop \
+                  "${pkgdir}"/usr/share/lightdm/guest-session/skel/.config/autostart/
+    install -m755 debian/guest-session-setup.sh \
+                  "${pkgdir}"/usr/share/lightdm/guest-session/setup.sh
 
-  # Create GSettings defaults directory
-  install -dm755 "${pkgdir}"/etc/guest-session/gsettings/
+    # Create GSettings defaults directory
+    install -dm755 "${pkgdir}"/etc/guest-session/gsettings/
 
-  # Remove apparmor stuff
-  rm -rvf "${pkgdir}"/etc/apparmor.d/
+    # Remove apparmor stuff
+    rm -rvf "${pkgdir}"/etc/apparmor.d/
+}
+
+package_liblightdm-qt4-ubuntu() {
+	pkgdesc='LightDM Qt4 client library'
+	depends=(lightdm-ubuntu qt4)
+    provides=("liblightdm-qt4=${pkgver}")
+    conflicts=(liblightdm-qt4)
+	options=(!emptydirs)
+
+	cd "lightdm-${pkgver}"
+
+    make DESTDIR="${pkgdir}" -C liblightdm-gobject install
+    make DESTDIR="${pkgdir}" -C liblightdm-qt install
+    make DESTDIR="${pkgdir}" -C liblightdm-gobject uninstall
+    find "${pkgdir}" -type d -name *qt5* -exec rm -rf {} +
+    find "${pkgdir}" -type f -name *qt5* -exec rm {} +
+    find "${pkgdir}" -type l -name *qt5* -exec rm {} +
+}
+
+package_liblightdm-qt5-ubuntu() {
+	pkgdesc='LightDM Qt5 client library'
+    depends=(lightdm-ubuntu qt5-base)
+    provides=("liblightdm-qt5=${pkgver}")
+    conflicts=(liblightdm-qt5)
+    options=(!emptydirs)
+
+    cd "lightdm-${pkgver}"
+
+    make DESTDIR="${pkgdir}" -C liblightdm-gobject install
+    make DESTDIR="${pkgdir}" -C liblightdm-qt install
+    make DESTDIR="${pkgdir}" -C liblightdm-gobject uninstall
+    find "${pkgdir}" -type d -name *qt[!5]* -exec rm -rf {} +
+    find "${pkgdir}" -type f -name *qt[!5]* -exec rm {} +
+    find "${pkgdir}" -type l -name *qt[!5]* -exec rm {} +
 }
