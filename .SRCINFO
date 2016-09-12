@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 7.20141204
-	pkgrel = 8
+	pkgrel = 9
 	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = i686
@@ -98,6 +98,8 @@ pkgbase = gimp-plugin-registry
 	conflicts = gimp-script-vintage-look
 	conflicts = gimp-script-white-balance-puzzle
 	replaces = gimp-refocus<0.9.0
+	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_7.20141204-0trusty0~ppa_i386.deb
+	sha256sums = 0faf68f804d0aa3b2482633a1ed743602f6c6c12b89212969abdd8004461bfe0
 	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_7.20141204-0trusty0~ppa_amd64.deb
 	sha256sums = d3be3e1a9d49850aa4328c9090607b0eaf5b9472342bf1b05f4a0f957dc3b6f0
 

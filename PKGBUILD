@@ -4,7 +4,7 @@
 
 pkgname=gimp-plugin-registry
 pkgver=7.20141204
-pkgrel=8
+pkgrel=9
 debrel=0trusty0~ppa
 debrepo=https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files
 pkgdesc="Repository of optional extensions for GIMP"
