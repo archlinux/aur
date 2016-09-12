@@ -1,0 +1,34 @@
+pkgbase = pantheon-files-loki-bzr
+	pkgdesc = The Pantheon Files for loki
+	pkgver = r2304
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-files
+	install = pantheon-files.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = gnome-common
+	makedepends = granite-bzr
+	makedepends = vala
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libcanberra
+	depends = libgee
+	depends = libnotify
+	depends = libsecret
+	depends = libxml2
+	depends = pango
+	depends = sqlite
+	depends = libgranite.so
+	provides = pantheon-files
+	conflicts = pantheon-files
+	source = pantheon-files::bzr+lp:pantheon-files/0.3.x
+	sha256sums = SKIP
+
+pkgname = pantheon-files-loki-bzr
+
