@@ -29,7 +29,14 @@ pkgbase = bitcoin-git
 	provides = bitcoin-bin
 	provides = bitcoin-daemon
 	provides = bitcoin-tx
-	provides = bitcoin-cli) conflicts=(bitcoin bitcoin-qt bitcoind bitcoin-bin bitcoin-daemon bitcoin-core bitcoin-core-git
+	provides = bitcoin-cli
+	conflicts = bitcoin
+	conflicts = bitcoin-qt
+	conflicts = bitcoind
+	conflicts = bitcoin-bin
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-core
+	conflicts = bitcoin-core-git
 	source = git://github.com/bitcoin/bitcoin.git
 	sha256sums = SKIP
 
