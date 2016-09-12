@@ -1,7 +1,9 @@
-#Maintainer:xgdgsc<xgdgsc@gmail.com>
+# Original Author: xgdgsc<xgdgsc@gmail.com>
+# Maintainer: chendaniely<chendaniely@gmail.com>
+# Contributor: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=rodeo
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
@@ -9,15 +11,14 @@ arch=('x86_64')
 depends=('jupyter' 'gconf')
 license=('AGPL3')
 install=rodeo.install
-md5sums_x86_64=('5484b763efcd9da4414be3a34d6c2907')
-
+md5sums_x86_64=('b2cca95c1974152f3391e4637de8689f')
 source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver.deb")
-# source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-amd64.deb")
-# source_i686=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-ia32.deb")
 
 build() {
-  cd "${srcdir}"
-  tar -xf data.tar.xz
+    cd "${srcdir}"
+    # bsdtar should be used, instead of tar, as makepkg uses it to decompress
+    # archives, so it's automatically available
+    bsdtar -xf data.tar.gz
 }
 
 package() {
