@@ -2,13 +2,13 @@
 
 pkgname=rk-apricity-apps
 pkgver=2016.9.12
-pkgrel=7
+pkgrel=8
 pkgdesc="Metapackage that installs all some nice apps which are missing in apricitys default installation."
 url="http://notyetthere.com"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=("pkgtools"
-"preload"
+#"preload"
 "yp-tools"
 "dos2unix"
 "traceroute"
