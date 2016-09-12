@@ -43,7 +43,7 @@ if [[ -n "$_piver" ]]; then
   rm -Rf $temp_pkgdir
   mkdir $temp_pkgdir
   INSTALL_ROOT="$temp_pkgdir" make install
-  mv ${temp_pkgdir}/mnt/pi/* $pkgdir
+  mv ${temp_pkgdir}/mnt/pi${_piver}/* $pkgdir
 else
   INSTALL_ROOT="$pkgdir" make install
 fi
