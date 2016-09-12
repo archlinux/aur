@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment[zh_CN]=BiliBili本地弹幕播放器
+Comment=BiliBili本地弹幕播放器
+Exec=/usr/bin/bililocal-osx %U
+GenericName[zh_CN]=BiliLocal-OSX
+GenericName=BiliLocal-OSX
+Icon=bililocal-osx
+Name[zh_CN]=bililocal-osx
+Name=BiliLocal-OSX
+Categories=Qt;AudioVideo;Player;Video;
+StartupNotify=false
+Terminal=false
+Type=Application
