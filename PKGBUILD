@@ -15,14 +15,20 @@ conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+        fix-insn-delay_cycles_32x.patch)
 sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5'
-            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb')
+            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb'
+            '0cd87771d1fd8ec5d0c413ae8c18b9b2599f2c66a0fa8b5fd4aa2f01ac1b5f86')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
   [[ -L isl ]] && rm -f isl
   ln -s ../isl-${_islver} isl
+
+  # fix for:
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=77570
+  patch -p1 < ../fix-insn-delay_cycles_32x.patch
 
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
