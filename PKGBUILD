@@ -25,7 +25,7 @@ sha256sums=('d20292a9e593b87f923f40dc68e249a6168193ea1af813aae65c62c74b50841b'
 package() {
   mkdir -p "${pkgdir}/tmp"
   mkdir -p "${pkgdir}/usr/share/wmail"
-  bsdtar -C "${pkgdir}/tmp" -xf "${srcdir}/wmail-linux-v${pkgver}.zip"
+  bsdtar -C "${pkgdir}/tmp" -xf "${srcdir}/wmail-linux-v${pkgver}.tar.gz"
   cp -R "${pkgdir}/tmp/WMail-linux-x64/." "${pkgdir}/usr/share/wmail"
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/usr/share/wmail/WMail" "${pkgdir}/usr/bin/wmail"
