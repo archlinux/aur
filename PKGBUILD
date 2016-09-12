@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-http'
-pkgver='0.40'
+pkgver='0.42'
 pkgrel='1'
 pkgdesc="Date conversion routines"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-datetime>=0.17' 'perl-http-date>=1.44')
 makedepends=()
-url='http://search.cpan.org/dist/DateTime-Format-HTTP'
-source=('http://search.cpan.org/CPAN/authors/id/C/CK/CKRAS/DateTime-Format-HTTP-0.40.tar.gz')
-md5sums=('dac502bc95a4c034ce03dcec7941b308')
-sha512sums=('1884f692e0c8d40ce5dc1786131094d2064270fb1d1e32df3bf8bedaa4ac863f53688ec53e95260a48cd20e878a77af5952eb0d6f03ccd09b4a14d024f7167a0')
-_distdir="DateTime-Format-HTTP-0.40"
+url='https://metacpan.org/release/DateTime-Format-HTTP'
+source=('http://search.cpan.org/CPAN/authors/id/C/CK/CKRAS/DateTime-Format-HTTP-0.42.tar.gz')
+md5sums=('e5dfec811e1f9fe4fc72842f0c56c86f')
+sha512sums=('d8ff064d4bd0c9f41ec14a6e06d12a401e9c5162ef1f41381ba4314fc4776d1898cf07971243cf1b4a90096a8ed5f59361616d3fc2d6c62a7bdbdcc331fe81b8')
+_distdir="DateTime-Format-HTTP-0.42"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
