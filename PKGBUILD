@@ -3,7 +3,7 @@
 
 pkgname='perl-devel-declare'
 pkgver='0.006018'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Adding keywords to perl, in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
