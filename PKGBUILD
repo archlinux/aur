@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_gitname"
-	msg2 "Fix verge-qt.desktop, don't conflict with bitcoin"
+	msg2 "Fixing verge-qt.desktop, don't conflict with bitcoin"
 	grep -rl Icon contrib/debian/verge-qt.desktop | xargs sed -i 's/bitcoin80/vergecurrency80/g'
 }
 
