@@ -4,13 +4,13 @@
 
 pkgbase=python-ioflo
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='http://ioflo.com'
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
+makedepends=('python-setuptools' 'python2-setuptools' 'python2-enum34' 'git')
 checkdepends=('python-nose' 'python2-nose')
 source=("git+https://github.com/ioflo/ioflo.git#tag=v$pkgver")
 md5sums=('SKIP')
@@ -43,7 +43,7 @@ package_python-ioflo() {
 }
 
 package_python2-ioflo() {
-  depends=('python2')
+  depends=('python2-enum34')
 
   cd ioflo-py2
   python2 setup.py install --root="$pkgdir" -O1
