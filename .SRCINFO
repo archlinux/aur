@@ -8,8 +8,8 @@ pkgbase = bdrss
 	makedepends = git
 	depends = python
 	depends = python-feedparser
-	source = git+https://github.com/Nycroth/bdrss.git#tag=v3
-	md5sums = SKIP
+	source = https://github.com/Nycroth/bdrss/archive/v3.tar.gz
+	md5sums = 2a91d7b8f81e2441b7ef1db1258f2313
 
 pkgname = bdrss
 

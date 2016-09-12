@@ -8,11 +8,11 @@ url="https://github.com/Nycroth/${pkgname}"
 license=('MIT')
 makedepends=('git')
 depends=('python' 'python-feedparser')
-source=("git+${url}.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("${url}/archive/v${pkgver}.tar.gz")
+md5sums=('2a91d7b8f81e2441b7ef1db1258f2313')
 
 package() {
-	cd "${srcdir}/bdrss"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	install -d "${pkgdir}/usr/bin/"
 	install -m 755 "bdrss" "${pkgdir}/usr/bin/${pkgname}"
