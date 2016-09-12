@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-digest-whirlpool'
-pkgver='1.09'
+pkgver='2.04'
 pkgrel='1'
 pkgdesc="A 512-bit, collision-resistant, one-way hash function"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Digest-Whirlpool'
-source=('http://search.cpan.org/CPAN/authors/id/A/AV/AVAR/Digest-Whirlpool-1.09.tar.gz')
-md5sums=('852a7672ef11d46b229c0be77330e991')
-sha512sums=('f8e5ee280d2e4fbe0fa34d52455ccbdd281c6206980da52ae12b6a03d10dff7fbea43a224ca8bb070d6bce8128e9363a9baccd276236b3b1eba1e8a969021252')
-_distdir="Digest-Whirlpool-1.09"
+url='https://metacpan.org/release/Digest-Whirlpool'
+source=('http://search.cpan.org/CPAN/authors/id/A/AV/AVAR/Digest-Whirlpool-2.04.tar.gz')
+md5sums=('b3f1c042e2ab3226a71cc51a07b3f66a')
+sha512sums=('c9b7e372446fd45a0aff4a439e89032c789ea224eada777bd8457c63b884c4d39379f8070130d01cf9239f771ff1bf039e2ce1adfac7fce413222f206b4a10d4')
+_distdir="Digest-Whirlpool-2.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
