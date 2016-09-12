@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0-PREVIEW-6
+_swiftver=3.0-GM-CANDIDATE
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses')
+         'sqlite' 'ncurses' 'libkqueue')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
              'python2-sphinx')
 source=(
@@ -21,20 +21,21 @@ source=(
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
-    #"swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
+    "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch"
 )
-sha256sums=('0807eb5a4b4e23716bd1b506db1b530e1ea27ac79cec822eca7ef01fe1da4a4f'
-            '759cf3749fbcf9aa7a53d7629d6f9006643f4f7604bbc1fad11521d11a017196'
-            '912c2ed0b955e8bc3b9271338a07b7c08bdab484c4f611134a1e2cc1d91316e7'
-            '299d7b131e0c85a7239e1eb0f0d229d1ba42cfce14472d7050519305b3193e85'
-            '9df2389519c80121231f7e36d51dd3bc5ce22e231cbd152292a0e94d39fed993'
-            '2594b415c5eee04142f7b9e70c56ebeac35162cf704e0610485a2d033c250151'
-            'cb434ec4697acc9c46a057727fcf33198db0e668b3b199dc328a97e01c5a4131'
-            '0306247379f24730fb473a7f0fafb43024e294ca7c5c89f30e18d0367902e381'
-            '8a5d901d39865b26013f0523aef2953754a91bfde900d733b8142ceb33b064b8'
-            '0b9dd5527d0ffd960833bd1016a867f70e09be4a4410d4566651dace9b8da45a'
+sha256sums=('cf26a73f860063f39eab2268d96e484143a81adeb80315fd3769a5f1725ebcb3'
+            'cf67f9498f37ab7587efcea2e238386b9aa14da111663d480f4710d02cab4a5c'
+            '1382425c6a04c26ee65437f5430a483c0f4494346f2ffc6aa79b128ab89a7887'
+            'f00007b8aefd2385c218f2010418b2b380604ec70c4f9daee2ffe43a7c5526ae'
+            '4133ede1a738a61bd50a52345cb3413843fb7a4325b8e1fa1d586bf1150bdc9a'
+            'a1f68a9be8b22a2813826aa6cdac774454b5aa31d99092674290a96480ba73c2'
+            '95e6b93276faa08bb4a26be002717707757f10d907046f1f9e8b0c687d01ddfe'
+            '6b04369075206f7b29acba0558fa3d1df71c0f5e2859e19468f5484a763dc8c6'
+            '04383efa8ca82c4bdcff0c7b202960f7176eef63827e219c8af6c2b55b8cb7ca'
+            '23825fb5a64769a7aa6925f2236f037190e082899d4bb37bdf370b97150c4117'
+            '6bd4706ec57979e36deca1df57bb8388b8969b186ecd7d05c9e77781a23972fc'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
@@ -54,7 +55,9 @@ prepare() {
     for sdir in llvm clang lldb cmark llbuild; do
         ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
     done
-    for sdir in corelibs-xctest corelibs-foundation integration-tests; do
+    for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
+                integration-tests
+    do
         ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
     done
     ln -sf swift-swift-${_swiftver} swift
@@ -72,7 +75,7 @@ build() {
     export LDFLAGS='-ldl -lpthread'
     export PATH="$PATH:/usr/bin/core_perl"
     utils/build-script -R \
-        --lldb --llbuild --swiftpm --xctest --foundation \
+        --lldb --llbuild --swiftpm --xctest --foundation --libdispatch \
         -j "$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
 }
 
@@ -121,6 +124,12 @@ package_swift-preview() {
         install -m644 lib/swift/pm/PackageDescription.swiftmodule "$pkgdir/usr/lib/swift/pm"
     )
     (
+        cd xctest-linux-$CARCH
+        install -m755 libXCTest.so "$pkgdir/usr/lib/swift/linux/"
+        install -m644 XCTest.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
+        install -m644 XCTest.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
+    )
+    (
         cd foundation-linux-$CARCH
         install -m755 Foundation/libFoundation.so "$pkgdir/usr/lib/swift/linux/"
         install -m644 Foundation/Foundation.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
@@ -130,10 +139,8 @@ package_swift-preview() {
         cp -r Foundation/usr/lib/swift/CoreFoundation "$pkgdir/usr/lib/swift/"
     )
     (
-        cd xctest-linux-$CARCH
-        install -m755 libXCTest.so "$pkgdir/usr/lib/swift/linux/"
-        install -m644 XCTest.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
-        install -m644 XCTest.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
+        cd libdispatch-linux-$CARCH
+        make install DESTDIR="$pkgdir"
     )
 
     # License file
