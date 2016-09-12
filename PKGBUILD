@@ -12,7 +12,7 @@ depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gnome-keyring'
          'pango' 'sqlite' 'webkitgtk' 'libgsignon-glib' 'libaccounts-glib'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'gnome-doc-utils' 'gobject-introspection'
-             'granite-bzr' 'intltool' 'vala')
+             'intltool' 'vala')
 provides=('pantheon-mail')
 conflicts=('pantheon-mail')
 install='pantheon-mail.install'

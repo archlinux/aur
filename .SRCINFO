@@ -11,7 +11,6 @@ pkgbase = pantheon-mail-loki-bzr
 	makedepends = cmake
 	makedepends = gnome-doc-utils
 	makedepends = gobject-introspection
-	makedepends = granite-bzr
 	makedepends = intltool
 	makedepends = vala
 	depends = cairo
