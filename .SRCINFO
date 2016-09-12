@@ -1,7 +1,7 @@
 pkgbase = pidcat
 	pkgdesc = Colored logcat script which only shows log entries for a specific application package.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 3
 	url = https://github.com/JakeWharton/pidcat
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pidcat
 	depends = python2
 	provides = pidcat-git
 	conflicts = pidcat-git
-	source = https://github.com/JakeWharton/pidcat/archive/2.0.0.tar.gz
+	source = https://github.com/JakeWharton/pidcat/archive/2.1.0.tar.gz
 	source = pidcat.patch
-	md5sums = 7f4c73b829f10aae0475a3f661902d57
+	md5sums = d5229661b9026c8f66eb91ae3e9255f8
 	md5sums = 88dd654d600d8de4ff42174d042f0a77
 
 pkgname = pidcat
