@@ -8,6 +8,7 @@ pkgbase = panzer-git
 	makedepends = git
 	depends = pandoc
 	depends = python
+	depends = python-pandocfilters
 	provides = panzer-git
 	conflicts = panzer-git
 	source = git://github.com/msprev/panzer.git
