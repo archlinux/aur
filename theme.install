@@ -1,9 +1,5 @@
 post_install()
 {
-	theme_name='tendou'
-	echo "Setting Tendou as the default LightDM Theme"
-	sed -i "s|greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
-	sed -i "s|#greeter-session=.*webkit2.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
-	sed -i "s|webkit-theme=.*|webkit-theme=$theme_name|g" /etc/lightdm/lightdm-webkit2-greeter.conf
-	sed -i "s|#webkit-theme=antergos|webkit-theme=$theme_name|g" /etc/lightdm/lightdm-webkit2-greeter.conf
+	echo "Don't forget to set greeter-session to lightdm-webkit2-greeter in /etc/lightdm/lightdm.conf!"
+	echo "Don't forget to set webkit-theme to tendou in /etc/lightdm/lightdm-webkit2-greeter.conf!"
 }
