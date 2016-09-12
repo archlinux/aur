@@ -17,7 +17,7 @@ options=(!emptydirs)
 
 source=("https://github.com/jbruchon/winregfs/archive/master.zip")
 
-md5sums=("9941ba8d6863cf52852d4bde11ba0252")
+md5sums=("a19ca831e7966d0b3abd1d76d596c4d0")
 
 
 build() {
