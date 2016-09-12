@@ -87,7 +87,8 @@ build() {
 		--with-http_v2_module \
 		--with-file-aio \
 		--with-pcre-jit \
-		--with-stream
+		--with-stream \
+		--with-stream_ssl_module
 
 	make
 }
