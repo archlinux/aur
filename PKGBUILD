@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-escape-xs'
-pkgver='0.10'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="Drop-In replacement for URI::Escape"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/URI-Escape-XS'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/URI-Escape-XS-0.10.tar.gz')
-md5sums=('23453334534498de37a758de3b077793')
-sha512sums=('a7288c712cddf2e0a9766d3a0d56bd0c63a078e13c4eb80226fb5b67f0b8d7a7217d65e4bf0b4bb1130c8a0794fa286d808d57283dae6aea994e2c30b86c363b')
-_distdir="URI-Escape-XS-0.10"
+url='https://metacpan.org/release/URI-Escape-XS'
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/URI-Escape-XS-0.14.tar.gz')
+md5sums=('b9fe3d87872103a989a9afc3e5366d55')
+sha512sums=('acd24c468a140c7fc84a1280a9db305d1fb2a68450ef988f9e78d6b384e20196bc41d6bc7af249b904131d42f7a257440ea8051a62ac0daf24fc2913e69f97ca')
+_distdir="URI-Escape-XS-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
