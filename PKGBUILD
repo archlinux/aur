@@ -1,29 +1,14 @@
-# Maintainer: Erik Beran <eberan AT_gmail_DOT com>
-# Contributor: Thor K. H. <thor at roht dot no>
-# Contributor: Babken Vardanyan <483ken 4tgma1l
-# Contributor: mikezackles
-# Contributor: z33ky
-# Contributor: stykr
-# Contributor: Svenstaro
-# Contributor: KaiSforza
-# Contributor: Simon Gomizelj <simongmzlj@gmail.com>
-# Contributor: Daniel Micay <danielmicay@gmail.com>
-# Contributor: shmilee
-# Contributor: foobster
-# Contributor: archdria
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Erik Beran <eberan AT gmail DOT com>
+# Maintainer: Erik Beran <tarek AT ring0 DOT de>
 
-_CLANG_LIB_FILENAME="libclang.so.3.8"
-_CLANG_VERSION="3.8.0"
-_CLANG_URL="http://llvm.org/releases/${_CLANG_VERSION}"
-_CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
-_CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
+#pkg build conf
+SINGEL_CORE=0 #bool for multithread builds
 
 pkgname=vim-youcompleteme-git
-pkgver=1849.d38ffc5
+pkgver=1863.30871bc
 pkgver() {
-  cd "YouCompleteMe"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "YouCompleteMe" || exit
+  echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
 pkgrel=1
 pkgdesc="A code-completion engine for Vim"
@@ -54,79 +39,80 @@ source=('git+https://github.com/Valloric/YouCompleteMe.git' #ycm
         )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+_COMPLETER="USE_SYSTEM_LIBCLANG"
 install=install
 
 prepare() {
   msg2 'Setting up Git submodules...'
 
-  cd "$srcdir/YouCompleteMe"
-  git submodule init
-  git config submodule.third_party/requests-futures.url "$srcdir/requests-futures"
-  git config submodule.third_party/ycmd.url "$srcdir/ycmd"
-  git submodule update
+  YouCompleteMe=("requests-futures" "ycmd")
+  gitprepare "YouCompleteMe" "third_party/" "${YouCompleteMe[@]}"
 
-  cd "$srcdir/YouCompleteMe/third_party/ycmd"
-  git submodule init
-  git config submodule.third_party/argparse.url "$srcdir/argparse"
-  git config submodule.third_party/bottle.url "$srcdir/bottle"
-  git config submodule.third_party/frozendict.url "$srcdir/python-frozendict"
-  git config submodule.third_party/python-future.url "$srcdir/python-future"
-  git config submodule.third_party/JediHTTP.url "$srcdir/JediHTTP"
-  git config submodule.third_party/waitress.url "$srcdir/waitress"
-  git config submodule.third_party/gocode.url "$srcdir/gocode"
-  git config submodule.third_party/godef.url "$srcdir/godef"
-  git config submodule.third_party/OmniSharpServer.url "$srcdir/OmniSharpServer"
-  git config submodule.third_party/requests.url "$srcdir/requests"
-  git config submodule.third_party/racerd.url "$srcdir/racerd"
-  git submodule update
+  ycmd=("argparse" "bottle" "python-frozendict" "python-future" "JediHTTP" "waitress" "gocode" "godef" "OmniSharpServer" "requests" "racerd")
+  gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/JediHTTP"
-  git submodule init
-  git config submodule.vendor/argparse.url "$srcdir/argparse"
-  git config submodule.vendor/waitress.url "$srcdir/waitress"
-  git config submodule.vendor/jedi.url "$srcdir/jedi"
-  git config submodule.vendor/bottle.url "$srcdir/bottle"
-  git submodule update
+  JediHTTP=("argparse" "waitress" "jedi" "bottle")
+  gitprepare "YouCompleteMe/third_party/ycmd/third_party/JediHTTP" "vendor/" "${JediHTTP[@]}"
 
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer"
+  OmniSharpServer=("NRefactory" "cecil")
+  gitprepare "YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" "" "${OmniSharpServer[@]}"
+}
+
+gitprepare() {
+  CD_DIR=$1
+  GIT_PREFIX=$2
+  c=0
+  for val in "$@" ; do
+    if [ $c -gt 1 ]; then
+      FEED[$c]=$val
+    fi
+    c=$(( c + 1 ))
+  done
+  cd "$srcdir/$CD_DIR" || exit
   git submodule init
-  git config submodule.NRefactory.url "$srcdir/NRefactory"
-  git config submodule.cecil.url "$srcdir/cecil"
+  for GITSUBVAR in "${FEED[@]}" ; do
+    git config submodule.$GIT_PREFIX$GITSUBVAR.url "$srcdir/$GITSUBVAR"
+  done
   git submodule update
+  unset -v FEED
 }
 
 build() {
-  # https://github.com/Valloric/ycmd/blob/master/build.py {{{
+  # investigating number of logic cores
+  if [[ -f /proc/cpuinfo && $SINGEL_CORE -eq 0 ]]; then
+    CPUS=$(( $(grep -c processor /proc/cpuinfo)*2))
+  else
+    CPUS=1
+  fi
 
   msg2 'Building ycmd...' # BuildYcmdLibs()
   mkdir -p "$srcdir/ycmd_build"
-  cd "$srcdir/ycmd_build"
+  cd "$srcdir/ycmd_build" || exit
   cmake -G "Unix Makefiles" -D${_COMPLETER}=1 . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
-  make ycm_core
+  make -j $CPUS ycm_core
 
   msg2 'Building OmniSharp completer...' # BuildOmniSharp()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
   pwd
   xbuild /property:Configuration=Release
 
   msg2 'Building Gocode completer...' # BuildGoCode()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode" || exit
   pwd
   go build
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef" || exit
   pwd
   go build
 
   msg2 'Building Rust completer...' # BuildRacerd()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
   pwd
   cargo build --release
 
   msg2 'Building Tern completer...' # SetUpTern()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime"
+  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
   pwd
   npm install --production --python=python2
-  # }}}
 }
 
 package() {
@@ -141,13 +127,6 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles/third_party"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
-
-  if [[ "${_COMPLETER}" == "USE_CLANG_COMPLETER" ]]; then
-    cp "$srcdir/ycmd_build/${_CLANG_DIRNAME}/lib/${_CLANG_LIB_FILENAME}" \
-      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
-    cp -r "$srcdir/YouCompleteMe/third_party/ycmd/clang_includes" \
-      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/clang_includes"
-  fi
 
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,python-future,requests,tern_runtime,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
