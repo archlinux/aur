@@ -1,24 +1,29 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 # Contributor: Alexey Rochev <equeim at gmail dot com>
 
-pkgname=xfce4-snw-plugin
-pkgver=0.7.1
+_pkgname=snw-plugin
+pkgname="xfce4-${_pkgname}"
+pkgver=0.8
 pkgrel=1
-pkgdesc="Xfce panel plugin to show StatusNotifierItems (AppIndicators)"
-url="https://github.com/equeim/xfce4-snw-plugin"
+url="https://github.com/equeim/snw-plugin"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('xfce4-panel' 'libdbusmenu-gtk2')
+depends=('libdbusmenu-gtk2' 'xfce4-panel')
 makedepends=('vala' 'python' 'intltool')
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('5af533bdac4ac114ef73f5bfd915a6d49abbb42b12abdda16289902724894e6b')
+source=("${_pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
+sha256sums=('dd62c4f75221965a280e4b6c41ea785a7796a8d7be939327fe94b0835677b612')
+
+prepare() {
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	./waf configure --prefix="/usr" --libdir="/usr/lib"
+}
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./waf configure build --prefix="/usr" --libdir="/usr/lib"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	./waf build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
 }
