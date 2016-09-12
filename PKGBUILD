@@ -26,8 +26,8 @@ build() {
       --enable-cairo-output \
       --enable-xpdf-headers \
       --enable-libjpeg --enable-zlib \
-      --enable-poppler-qt4 \
-      --enable-poppler-qt5 \
+      --disable-poppler-qt4 \
+      --disable-poppler-qt5 \
       --enable-poppler-glib \
       --enable-libopenjpeg=openjpeg2
 
@@ -46,8 +46,9 @@ package_poppler-lcdfilter() {
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
   conflicts=("poppler-qt3<${pkgver}")
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  provides=("poppler=$pkgver")
+ 
+  cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's/^glib_subdir =.*/glib_subdir =/' \
       -e 's/^qt4_subdir =.*/qt4_subdir =/' \
       -e 's/^qt5_subdir =.*/qt5_subdir =/' -i Makefile
@@ -58,9 +59,11 @@ package_poppler-lcdfilter() {
 
 package_poppler-glib-lcdfilter() {
   pkgdesc="Poppler glib bindings"
-  depends=("poppler=${pkgver}" 'glib2')
+  depends=("poppler-lcdfilter=${pkgver}" 'glib2')
+  conflicts=("poppler-glib")
+  provides=("poppler-glib=$pkgver")
 
-  cd "${pkgbase}-${pkgver}"
+  cd "${_pkgbase}-${pkgver}"
   make -C poppler DESTDIR="${pkgdir}" install-libLTLIBRARIES
   make -C glib DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
