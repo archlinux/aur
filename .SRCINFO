@@ -1,0 +1,19 @@
+pkgbase = quaternion
+	pkgdesc = Qt5-based IM client for the Matrix protocol
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Fxrh/Quaternion
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = tar
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	provides = quaternion
+	conflicts = quaternion
+	source = https://github.com/Fxrh/Quaternion/releases/download/v0.0.1/quaternion-source-0.0.1.tar.gz
+	sha256sums = 2fa6708e72a78a1dd1001b059fd077ef4665a4aab53288c688869246cd2db8c5
+
+pkgname = quaternion
+
