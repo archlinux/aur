@@ -7,10 +7,10 @@ pkgdesc='The Pantheon Files for loki'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-files'
 license=('GPL3')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 
-         'gtk3' 'libcanberra' 'libgee' 'libnotify' 'libsecret' 'libxml2'
-         'pango' 'sqlite' 'libgranite.so')
-makedepends=('bzr' 'cmake' 'gnome-common' 'granite-bzr' 'vala')
+depends=('atk' 'cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 
+         'gtk3' 'libcanberra' 'libgee' 'pango' 'sqlite' 'libgranite.so'
+         'zeitgeist' 'contractor' 'tumbler')
+makedepends=('bzr' 'cmake' 'gnome-common' 'vala')
 provides=('pantheon-files')
 conflicts=('pantheon-files')
 install='pantheon-files.install'
