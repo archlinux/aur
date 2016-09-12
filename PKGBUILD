@@ -2,7 +2,7 @@
 
 _npmname=livescript
 pkgname=nodejs-livescript
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="LiveScript is a language which compiles to JavaScript"
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('e33f24783761c8f803dff70fc5a3023c87484029')
+sha1sums=('4fe7121c41217e4608e334eb9cbe1762e63e5566')
 
 package() {
   cd "$srcdir"
