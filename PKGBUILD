@@ -14,7 +14,7 @@ license=('GPL')
 depends=('pygtk' 'python2-simplejson' 'python2-pysqlite' 'gstreamer0.10-python' 'gstreamer0.10-bad-plugins' 'python2-numpy' 'gstreamer0.10-ugly-plugins' 'python2-lxml')
 optdepends=('gnome-python-extras' 'python2-notify')
 source=("pyjama.tgz::http://bazaar.launchpad.net/~pyjamateam/pyjama/main/tarball/273?start_revid=273")
-sha256sums=('70e2b2e130668b27546fbf7a4ef45dcb5d80f8a1df1a3a585ad565b6fe4e6678')
+sha256sums=('6d99d2c4f22174d16054defdb1f0b23eb521e25d1bf9a7a1ef2dc2a54bd56aa5')
 
 _pyjama_bin="#!/bin/bash
 python2 /usr/share/apps/pyjama/pyjama.py"
