@@ -2,7 +2,7 @@
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=k3d
 pkgver=0.8.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A free 3D modelling and animation software"
 arch=('x86_64' 'i686')
 url="http://www.k-3d.org"
@@ -20,6 +20,7 @@ depends=('cgal'
          'libjpeg-turbo'
          'ode'
          'openexr')
+optdepends=('aqsis')
 makedepends=('asciidoc'
              'boost'
              'cmake'
