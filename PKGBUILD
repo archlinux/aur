@@ -1,6 +1,6 @@
 # Maintainer: Alexander Keller <contact@nycroth.com>
 pkgname=bdrss
-pkgver='2.1'
+pkgver='3'
 pkgrel='1'
 pkgdesc='Brain Dead RSS'
 arch=('any')
