@@ -1,7 +1,7 @@
 # Maintainer: Raansu <Gero3977@gmail.com>
 
 pkgname=verge-git
-_gitname=verge
+_gitname=VERGE
 pkgver=r465.87922b3
 pkgrel=1
 pkgdesc="VERGE is the privacy focused & secure alternative to other cryptocurrencies. (git version)"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_gitname"
   ( set -o pipefail
-    git describe --tags | sed "s/-/./g" ||
+    git describe --tags 2>/dev/null | sed "s/-/./g" ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
