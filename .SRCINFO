@@ -1,0 +1,16 @@
+pkgbase = x86_64-apple-darwin-binutils
+	pkgdesc = Cross binutils for the Apple Darwin cross-compiler
+	pkgver = 2.27
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils
+	arch = i386
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.27.tar.gz
+	md5sums = 41b053ed4fb2c6a8173ef421460fbb28
+
+pkgname = x86_64-apple-darwin-binutils
+
