@@ -2,7 +2,7 @@
 # Maintainer: Erik Beran <tarek AT ring0 DOT de>
 
 pkgname=vim-youcompleteme-git
-pkgver=26.37ee000
+pkgver=28.972eecb
 pkgver() {
   cd "YouCompleteMe" || exit
   echo "$(git rev-list --count master).$(git rev-parse --short master)"
