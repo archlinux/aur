@@ -1,9 +1,9 @@
 # Maintainer: <jnbek1972 at gmail dot com>
-
+# Contributor: <raku at rakutiki.tv>
 pkgname=firefox-beta
-pkgver=49.0b1
-_realpkgver=49.0b1
-_rcbuild=3
+pkgver=49.0b10
+_realpkgver=49.0b10
+_rcbuild=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ source=(https://download-installer.cdn.mozilla.net/pub/firefox/candidates/$_real
         vendor.js
         firefox-fixed-loading-icon.png
         no-libnotify.patch)
-sha512sums=('f2c57b3b8b59cbe5ffb141b2de56f544a04e68967bc139cce972db36a8e771d29dfffe7d1ba097add68da7d17d009b3d6e635d310e2c8465995eb232b5d56ae5'
-            '704e1e2b2c7b4ec8a97abeb34a59e51b9f5384ec94f0925dc3b7aa97888b1bfe41c2cc6075797dfb96add8b43e66e7ec2057b827c965d428d7a7f28f6d728909'
+sha512sums=('7dc45b7a00c6c3381977684c0be5225ee0a480d35dbd890e77c1346a62158de4a831d44f7f980afdc6171f3b8214ea47d10af9cbef85f82ad46eefbeef3f340b'
+            '66050a95fd254baa7b670bbc0ee8149759d1b5c1bb4c6188973acf4f3113241779ee9612da4c202c217957fd07642ea851e9a25c2f711554300de2efc52808fc'
             'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
@@ -56,10 +56,6 @@ prepare() {
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
-  # Notifications with libnotify are broken
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
-  patch -Np1 -i ../no-libnotify.patch
-
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
@@ -69,10 +65,10 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  mkdir "$srcdir/path"
+  mkdir -p "$srcdir/path"
 
   # WebRTC build tries to execute "python" and expects Python 2
-  ln -s /usr/bin/python2 "$srcdir/path/python"
+  ln -fs /usr/bin/python2 "$srcdir/path/python"
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
@@ -99,7 +95,7 @@ build() {
 package() {
   cd firefox-$_realpkgver
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
-  mkdir "$pkgdir"/opt/firefox-beta
+  mkdir -p "$pkgdir"/opt/firefox-beta
   mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
   rm -r "$pkgdir"/opt/firefox
 
@@ -135,3 +131,4 @@ package() {
   ln -s /opt/firefox-beta/firefox "$pkgdir"/usr/bin/firefox-beta
   ln -s /opt/firefox-beta/firefox "$pkgdir"/usr/bin/firefox-beta-bin
 }
+
