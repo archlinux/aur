@@ -4,7 +4,7 @@
 _pkgbase=poppler
 pkgbase=poppler-lcdfilter
 pkgname=('poppler-lcdfilter' 'poppler-glib-lcdfilter')
-pkgver=0.47.0
+pkgver=0.43.0
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
@@ -14,7 +14,7 @@ url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz
         test::git+https://cgit.freedesktop.org/poppler/test/#commit=0d2bfd4
         poppler-subpixel.patch)
-sha256sums=('b872e7228fc34a71ce4b47a5aea2a57ae67528818fa846e1e0eda089319bd242'
+sha256sums=('SKIP'
          'SKIP'
          'SKIP')
 
@@ -53,6 +53,7 @@ package_poppler-lcdfilter() {
       -e 's/^qt4_subdir =.*/qt4_subdir =/' \
       -e 's/^qt5_subdir =.*/qt5_subdir =/' -i Makefile
   make DESTDIR="${pkgdir}" install
+  ln -sr "${pkgdir}"/usr/lib/libpoppler.so.60 "${pkgdir}"/usr/lib/libpoppler.so.63
 
   rm -f "${pkgdir}"/usr/lib/pkgconfig/poppler-{glib,qt4,qt5}.pc
 }
