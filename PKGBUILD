@@ -8,9 +8,9 @@ pkgdesc="Allows starting VirtualBox virtual machines from Krunner (Plasma 5 vers
 arch=('i686' 'x86_64')
 depends=('plasma-workspace>=5')
 makedepends=('cmake' 'extra-cmake-modules')
-url="http://kde-apps.org/content/show.php/VBox+Runner?content=174305"
+url="https://store.kde.org/p/1080708"
 license=('GPL')
-source=(http://kde-apps.org/CONTENT/content-files/174305-${_srcname}-${pkgver}.zip)
+source=(https://dl.opendesktop.org/api/files/download/id/1461768302/174305-${_srcname}-${pkgver}.zip)
 sha1sums=('e9d0f744c6188dc28ccb4cdeebaf36c9bff1561e')
 
 prepare() {
