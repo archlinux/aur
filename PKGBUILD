@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-tiny'
-pkgver='1.001'
+pkgver='1.006'
 pkgrel='1'
 pkgdesc="Minimalist class construction"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Class-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Class-Tiny-1.001.tar.gz')
-md5sums=('2a5bfa3a8bb50a1ea930fa97514eeed4')
-sha512sums=('7d64a78f72edb249b988da9ab7e4769f2721030eeb1dd3e111f1d0ae2bed76ea6ee0d5feb30867eaf78f0d436ff2e72f701cb2c51d53ce40bb0840f9b3c33dc7')
-_distdir="Class-Tiny-1.001"
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Class-Tiny-1.006.tar.gz')
+md5sums=('fa905646a85a1478b2db1fc9113cb6ac')
+sha512sums=('0a6ca0b99bd10a39445bb582bcf89f3668747f05b13b1f7271e934a73781c855a0418ae19a41593c64288b74710f49c1dcda0005be4edf9965e8020139ca0c7e')
+_distdir="Class-Tiny-1.006"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
