@@ -2,7 +2,7 @@
 
 pkgname=dtc-git
 pkgrel=1
-pkgver=1.4.1.r29.gb06e55c
+pkgver=1.4.1.r54.g1ed45d4
 pkgdesc='Device Tree Compiler'
 arch=(i686 x86_64)
 license=(GPL2)
