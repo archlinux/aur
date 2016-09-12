@@ -5,6 +5,9 @@ post_install() {
   # Create Home folder
   mkdir -p /home/chromium
 
+  # Create a first sample of Autostart Url
+  echo -e "https://www.archlinux.org/\n" >> /home/chromium/chromium-autostart-url.txt
+
   # Fix permissions
   chown -R chromium:chromium /home/chromium
 
