@@ -1,39 +1,37 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
-
 pkgname=xt7-player-mpv-git
-pkgver=20150430
+pkgver=20160912
 pkgrel=1
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
 url="http://xt7-player.sourceforge.net/xt7forum/"
 license=('custom')
 
-depends=('gambas3-gb-image>=3.6.2' 
-    'gambas3-runtime>=3.6.2'
-    'gambas3-gb-form>=3.6.2'
-	'gambas3-gb-qt4>=3.6.2'
-	'gambas3-gb-form>=3.6.2'
-	'gambas3-gb-dbus>=3.6.2' 
-	'gambas3-gb-desktop>=3.6.2' 
-	'gambas3-gb-settings>=3.6.2' 
-	'gambas3-gb-form-mdi>=3.6.2' 
-	'gambas3-gb-form-dialog>=3.6.2' 
-	'gambas3-gb-net>=3.6.2' 
-	'gambas3-gb-net-curl>=3.6.2' 
-	'gambas3-gb-qt4-ext>=3.6.2' 
-	'gambas3-gb-web>=3.6.2' 
-	'gambas3-gb-libxml>=3.6.2' 
-	'gambas3-gb-form-stock>=3.6.2' 
-	'gambas3-gb-image>=3.6.2'
-	'gambas3-gb-compress>=3.6.2'
-	'gambas3-gb-signal>=3.6.2'
-	'gambas3-gb-desktop-x11>=3.6.2'
-	'gambas3-gb-args>=3.6.2'
-	'gambas3-gb-util-web'
+depends=('gambas3-gb-image>=3.9.0' 
+    'gambas3-runtime>=3.9.0'
+    'gambas3-gb-form>=3.9.0'
+	'gambas3-gb-qt5>=3.9.0'
+	'gambas3-gb-form>=3.9.0'
+	'gambas3-gb-dbus>=3.9.0' 
+	'gambas3-gb-desktop>=3.9.0' 
+	'gambas3-gb-settings>=3.9.0' 
+	'gambas3-gb-form-mdi>=3.9.0' 
+	'gambas3-gb-form-dialog>=3.9.0' 
+	'gambas3-gb-net>=3.9.0' 
+	'gambas3-gb-net-curl>=3.9.0' 
+	'gambas3-gb-web>=3.9.0' 
+	'gambas3-gb-libxml>=3.9.0' 
+	'gambas3-gb-form-stock>=3.9.0' 
+	'gambas3-gb-image>=3.9.0'
+	'gambas3-gb-compress>=3.9.0'
+	'gambas3-gb-signal>=3.9.0'
+	'gambas3-gb-desktop-x11>=3.9.0'
+	'gambas3-gb-args>=3.9.0'
+	'gambas3-gb-util-web>=3.9.0'
 	'mpv>=1:0.10.0'
 	'taglib'
-	'youtube-dl>=2015.08.28'
+	'youtube-dl>=2016.09.08'
 	'wget')
 
 makedepends=('gambas3-devel' 'git')
