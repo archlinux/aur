@@ -5,7 +5,7 @@
 pkgname=aseprite-git
 name=aseprite
 pkgver=v1.1.7.r29.gf97dc79
-pkgrel=5
+pkgrel=6
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
@@ -58,7 +58,7 @@ package() {
     "$pkgdir/usr/share/applications/$name.desktop"
   install -Dm644 "../data/icons/ase48.png" \
     "$pkgdir/usr/share/pixmaps/$name.png"
-  install -Dm644 "../EULA.txt" "/usr/share/licenses/$name/EULA.txt"
+  install -Dm644 "../EULA.txt" "$pkgdir/usr/share/licenses/$name/EULA.txt"
 }
 
 # vim:set ts=2 sw=2 et:
