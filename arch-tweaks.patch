@@ -1,10 +1,10 @@
 diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override pantheon-default-settings/debian/elementary-default-settings.gsettings-override
---- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2016-05-06 10:35:59.277076000 +0200
-+++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2016-05-06 10:35:39.111720681 +0200
+--- pantheon-default-settings.orig/debian/elementary-default-settings.gsettings-override	2016-09-12 15:40:03.128022316 +0200
++++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2016-09-12 15:41:11.141869826 +0200
 @@ -1,14 +1,13 @@
  [net.launchpad.plank.dock.settings]
--dock-items=['gala-multitaskingview.dockitem','midori.dockitem','pantheon-mail.dockitem','maya-calendar.dockitem','noise.dockitem','audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem','appcenter.dockitem']
-+dock-items=['gala-multitaskingview.dockitem','midori.dockitem','pantheon-mail.dockitem','maya-calendar.dockitem','noise.dockitem','audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem']
+-dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','maya-calendar.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem','org.pantheon.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','maya-calendar.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem']
  hide-delay=250
  hide-mode='window-dodge'
  show-dock-item=false
@@ -18,7 +18,7 @@ diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gse
  primary-color='#000000'
  show-desktop-icons=false
  
-@@ -22,7 +21,6 @@ font-name='Open Sans 9'
+@@ -25,7 +24,6 @@ font-name='Open Sans 9'
  gtk-theme='elementary'
  icon-theme='elementary'
  monospace-font-name='Roboto Mono 10'
@@ -26,7 +26,7 @@ diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gse
  toolbar-style='icons'
  
  [org.gnome.desktop.peripherals.touchpad]
-@@ -103,7 +101,6 @@ active=false
+@@ -120,7 +118,6 @@ active=false
  
  [org.gnome.settings-daemon.plugins.media-keys]
  screensaver='<Super>l'
@@ -34,17 +34,17 @@ diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gse
  
  [org.gnome.settings-daemon.plugins.power]
  ambient-enabled=false
-diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/appcenter.dockitem pantheon-default-settings/plank/dock1/launchers/appcenter.dockitem
---- pantheon-default-settings.orig/plank/dock1/launchers/appcenter.dockitem	2016-05-06 10:35:59.277076000 +0200
-+++ pantheon-default-settings/plank/dock1/launchers/appcenter.dockitem	1970-01-01 01:00:00.000000000 +0100
+diff -rupN pantheon-default-settings.orig/plank/dock1/launchers/org.pantheon.appcenter.dockitem pantheon-default-settings/plank/dock1/launchers/org.pantheon.appcenter.dockitem
+--- pantheon-default-settings.orig/plank/dock1/launchers/org.pantheon.appcenter.dockitem	2016-09-12 15:40:03.128022316 +0200
++++ pantheon-default-settings/plank/dock1/launchers/org.pantheon.appcenter.dockitem	1970-01-01 01:00:00.000000000 +0100
 @@ -1,4 +0,0 @@
 -[PlankDockItemPreferences]
--Launcher=file:///usr/share/applications/appcenter.desktop
+-Launcher=file:///usr/share/applications/org.pantheon.appcenter.desktop
 -
 -
 diff -rupN pantheon-default-settings.orig/policykit.desktop pantheon-default-settings/policykit.desktop
---- pantheon-default-settings.orig/policykit.desktop	2016-05-06 10:35:59.277076000 +0200
-+++ pantheon-default-settings/policykit.desktop	2016-05-06 10:35:39.108387445 +0200
+--- pantheon-default-settings.orig/policykit.desktop	2016-09-12 15:40:03.138027788 +0200
++++ pantheon-default-settings/policykit.desktop	2016-09-12 15:40:37.940389932 +0200
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Name=Authentication Dialog
@@ -54,8 +54,8 @@ diff -rupN pantheon-default-settings.orig/policykit.desktop pantheon-default-set
  Terminal=false
  Type=Application
 diff -rupN pantheon-default-settings.orig/settings.ini pantheon-default-settings/settings.ini
---- pantheon-default-settings.orig/settings.ini	2016-05-06 10:35:59.277076000 +0200
-+++ pantheon-default-settings/settings.ini	2016-05-06 10:35:39.108387445 +0200
+--- pantheon-default-settings.orig/settings.ini	2016-09-12 15:40:03.138027788 +0200
++++ pantheon-default-settings/settings.ini	2016-09-12 15:40:37.940389932 +0200
 @@ -2,6 +2,6 @@
  gtk-theme-name = elementary
  gtk-icon-theme-name = elementary
