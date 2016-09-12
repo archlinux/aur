@@ -1,13 +1,13 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Transfer files in and out of your CASIO fx calculator through USB"
 arch=('i686' 'x86_64')
-url="https://forge.touhey.fr/casio/software/p7/"
+url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libusb' 'libp7>=1.3-1')
+depends=('libusb' 'libp7>=1.5-1')
 makedepends=('make' 'asciidoc' 'gzip')
 optdepends=()
 provides=()
@@ -19,17 +19,17 @@ install=
 changelog=
 source=(https://forge.touhey.fr/casio/software/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('a0fd06eb5e25b886700de9197099e0db')
+md5sums=('554cb0d4a77a79d48c48fe797e5b2338')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  ./configure --prefix=$pkgdir/usr
-  make all all-doc
+  ./configure --root=$pkgdir
+  make
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  make install install-doc
+  make install
 }
