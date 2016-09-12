@@ -5,36 +5,43 @@
 # Contributor: Tom < reztho at archlinux dot us >
 #
 pkgname="pyjama"
-pkgver="0.3.0.78"
-pkgrel="2"
+pkgver="0.3.1"
+pkgrel="1"
 pkgdesc="Unofficial Python/GTK Medialibrary for Jamendo"
 arch=('any')
 url="https://launchpad.net/pyjama"
 license=('GPL')
 depends=('pygtk' 'python2-simplejson' 'python2-pysqlite' 'gstreamer0.10-python' 'gstreamer0.10-bad-plugins' 'python2-numpy' 'gstreamer0.10-ugly-plugins' 'python2-lxml')
 optdepends=('gnome-python-extras' 'python2-notify')
-source=("http://xn--ngel-5qa.de/pyjama/release/pyjama-${pkgver}_all.tar.gz")
-sha256sums=('1a96e9ca85fa7fa91a41da535f807cfe66e183d909a22fefe02fd737e6919886')
+source=("pyjama.tgz::http://bazaar.launchpad.net/~pyjamateam/pyjama/main/tarball/273?start_revid=273")
+sha256sums=('70e2b2e130668b27546fbf7a4ef45dcb5d80f8a1df1a3a585ad565b6fe4e6678')
 
-package() 
-{
-    cd "${srcdir}/${pkgname}-${pkgver}_all"
+_pyjama_bin="#!/bin/bash
+python2 /usr/share/apps/pyjama/pyjama.py"
+
+build() {
+    cd "${srcdir}"
+    echo -e "$_pyjama_bin" | tee pyjama
+}
+
+package() {
+    cd "${srcdir}/~pyjamateam/${pkgname}/main/release"
 
     find . -name "*~*" -exec rm {} \;
 
-    mkdir -p ${pkgdir}/usr/share/apps/pyjama
+    install -d ${pkgdir}/usr/share/apps/pyjama
 
-    cp -R ${srcdir}/${pkgname}-${pkgver}_all/src/* ${pkgdir}/usr/share/apps/pyjama/
+    cp -R ./src/* ${pkgdir}/usr/share/apps/pyjama/
 
-    mkdir -p ${pkgdir}/usr/share/pixmaps
-    mkdir -p ${pkgdir}/usr/share/applications
+    install -d ${pkgdir}/usr/share/pixmaps
+    install -d ${pkgdir}/usr/share/applications
     cp ${pkgdir}/usr/share/apps/pyjama/images/pyjama.xpm ${pkgdir}/usr/share/pixmaps
     cp ${pkgdir}/usr/share/apps/pyjama/pyjama.desktop ${pkgdir}/usr/share/applications
 
-    mkdir -p ${pkgdir}/usr/bin/
-    echo '#!/bin/bash
-python2 /usr/share/apps/pyjama/pyjama.py' > ${pkgdir}/usr/bin/pyjama
-    chmod 755 ${pkgdir}/usr/bin/pyjama
+    install -d ${pkgdir}/usr/bin
+
+    cd "${srcdir}"
+    install -m 755 pyjama ${pkgdir}/usr/bin/
 
     # It's compatible only with python 2
     sed -i 's@#!/usr/bin/env python@#!/usr/bin/env python2@' ${pkgdir}/usr/share/apps/pyjama/pyjama.py
