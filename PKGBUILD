@@ -2,7 +2,7 @@ pkgname=parity-git
 _pkgname=parity
 pkgdesc="Fast, light, robust Ethereum implementation"
 pkgrel=1
-pkgver=1.3.0.4731
+pkgver=1.4.0.5440
 arch=('i686' 'x86_64')
 conflicts=("parity")
 provides=("parity")
@@ -10,10 +10,8 @@ url="https://github.com/ethcore/parity"
 license=('GPL-3.0')
 depends=('rocksdb')
 makedepends=('rust' 'cargo' 'git' 'python-pytoml')
-source=('git://github.com/ethcore/parity.git')
-sha256sums=(
-	'SKIP'
-)
+source=('git+https://github.com/ethcore/parity.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -28,4 +26,6 @@ build() {
 package() {
 	cd $_pkgname
 	install -D -m755 "$srcdir/$_pkgname/target/release/parity" "$pkgdir/usr/bin/parity"
+	install -D -m644 "$srcdir/$_pkgname/scripts/parity.service" "$pkgdir/usr/lib/systemd/system/parity.service"
+	install -D -m644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
