@@ -1,7 +1,7 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=libnexus
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="libnexus provides functionality for loading/saving the nexus file format for scientific data"
 url="http://www.nexusformat.org/"
