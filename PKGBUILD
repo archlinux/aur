@@ -1,66 +1,57 @@
 # Maintainer: Raansu <Gero3977@gmail.com>
-# Contributor: Richard "Nothing4You" Schwab <mail NOSPAM w.tf-w.tf>
 
-# Updated PKGBUILD from original to ensure the menu shortcuts get copied over correctly.
-
-pkgname='bitcoin-git'
+pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=0.9.0rc2.3425.g86cfd23
+pkgver=v0.13.0
 pkgrel=1
-epoch=1
-pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides both the GUI QT4 and daemon clients."
-arch=('i686' 'x86_64')
-url="http://www.bitcoin.org/"
-depends=('qt4' 'gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf' 'bash-completion')
-makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
-conflicts=('bitcoin-bin' 'bitcoin' 'bitcoind' 'bitcoin-daemon' 'bitcoin-qt')
-provides=('bitcoin' 'bitcoind' 'bitcoin-qt')
+pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
+arch=('any')
+url="https://bitcoin.org"
 license=('MIT')
-source=(git://github.com/bitcoin/bitcoin.git)
-sha512sums=(SKIP)
+depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
+makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
+provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli)
+conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' bitcoin-core-git')
+source=('git://github.com/bitcoin/bitcoin.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_gitname
-  git describe | sed "s/^v//; s/-/./g"
+  cd "$srcdir/$_gitname"
+  git describe --tags $(git rev-list --tags --max-count=1) | sed "s/-/./g"
 }
 
 build() {
-  
-  cd $srcdir/$_gitname
+  cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure --prefix=/usr
-  make 
+  ./configure --with-gui=qt5
+   make -j$(nproc)
+
 }
 
 package() {
-  cd $srcdir/$_gitname
+	# install bitcoin-qt client
+	msg2 'Installing bitcoin-qt...'
+	install -Dm755 "$srcdir/$_gitname/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin128.xpm" "$pkgdir/usr/share/pixmaps/bitcoin128.xpm"
+	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian-bitcoin/bitcoin-qt.desktop"
+	
+	# install bitcoin-daemon
+	msg2 'Installing bitcoin-daemon...'
+	install -Dm755 "$srcdir/$_gitname/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoind.1" "$pkgdir/usr/share/man/man1/bitcoind.1"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/bitcoin.conf.5" "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
 
-  make DESTDIR="${pkgdir}" install
+	# install bitcoin-cli
+	msg2 'Installing bitcoin-cli...'
+	install -Dm755 "$srcdir/$_gitname/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
 
-  # Copy mans
-  cat contrib/debian/*.manpages | sed -e 's@^\(debian\)@contrib/\1@' | install_man
+	# install bitcoin-tx
+	msg2 'Installing bitcoin-tx...'
+	install -Dm755 "$srcdir/$_gitname/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
 
-  # Copy examples
-  mkdir -p "$pkgdir/usr/share/bitcoin"
-  cat contrib/debian/*.examples | sed -e 's@^\(debian\)@contrib/\1@' | xargs -I{} install -Dm644 {} "$pkgdir/usr/share/bitcoin/"
-
-  # Install bash completion
-  mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-  install -Dm644 contrib/bitcoind.bash-completion "$pkgdir/etc/bash_completion.d/bitcoind"
-  
-  # Install menu shortcuts for GUI
-  mkdir -p "$pkgdir/usr/share/pixmaps/"
-  mkdir -p "$pkgdir/usr/share/applications/"
-  install -Dm644 share/pixmaps/bitcoin128.png "$pkgdir"/usr/share/pixmaps/bitcoin128.png
-  install -Dm644 contrib/debian/bitcoin-qt.desktop "$pkgdir"/usr/share/applications/bitcoin.desktop
-}
-
-# guess correct /usr/share/man's subdirectory for man every file
-# FIXME Uber-fat crunch. It should another, simple way...
-install_man() {
-  while read man; do
-    local man_d="$pkgdir/usr/share/man/man${man#${man%?}}/"
-    mkdir -p "$man_d"
-    install -Dm0644 "$man" "$man_d"
-  done
+	# install license
+	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
