@@ -1,7 +1,7 @@
 # Maintainer: Luigi Guevara <@killua99>
 
 pkgname=pantheon-mail-loki-bzr
-pkgver=r2169
+pkgver=r2160
 pkgrel=1
 pkgdesc='The Pantheon Mail Client for loki'
 arch=('i686' 'x86_64')

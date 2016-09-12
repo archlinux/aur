@@ -1,6 +1,6 @@
 pkgbase = pantheon-mail-loki-bzr
 	pkgdesc = The Pantheon Mail Client for loki
-	pkgver = r2169
+	pkgver = r2160
 	pkgrel = 1
 	url = https://launchpad.net/pantheon-mail
 	install = pantheon-mail.install
@@ -39,3 +39,4 @@ pkgbase = pantheon-mail-loki-bzr
 	sha256sums = SKIP
 
 pkgname = pantheon-mail-loki-bzr
+
