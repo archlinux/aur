@@ -1,0 +1,15 @@
+pkgbase = wrangler
+	pkgdesc = Wrangler -- An Erlang Refactorer
+	pkgver = 20160511
+	pkgrel = 1
+	url = https://www.cs.kent.ac.uk/projects/wrangler/Wrangler/Home.html
+	arch = i686
+	arch = x86_64
+	license = BSD-new
+	depends = erlang
+	depends = emacs
+	source = wrangler::git+https://github.com/RefactoringTools/wrangler.git
+	md5sums = SKIP
+
+pkgname = wrangler
+
