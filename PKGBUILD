@@ -1,8 +1,9 @@
-# Maintainer: Ian Brunelli (brunelli) <ian@brunelli.me>
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Contributor: Ian Brunelli (brunelli) <ian@brunelli.me>
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.111.r9.g2fe1e28
+pkgver=0.9.113.r89.gdc4541b
 pkgrel=1
 pkgdesc='Music player for GNOME'
 arch=('i686' 'x86_64')
@@ -14,9 +15,8 @@ optdepends=('libsecret: Last.FM support'
             'python-pylast: Last.FM support'
             'python-wikipedia: display advanced artist information')
 options=('!emptydirs')
-install=lollypop.install
 source=("git://github.com/gnumdk/${_gitname}.git")
-md5sums=('SKIP')
+sha1sums=('SKIP')
 conflicts=('lollypop')
 provides=("lollypop=$pkgver")
 
