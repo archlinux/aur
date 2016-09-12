@@ -6,7 +6,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='http://docs.opennebula.org/stable'
@@ -91,6 +91,7 @@ source=("http://downloads.opennebula.org/packages/${pkgname}-${pkgver}/${pkgname
         'opennebula-sunstone.service'
         'opennebula-econe.service'
         'opennebula-oneflow.service'
+        'opennebula-onegate.service'
         'chown_fix.patch'
         'set_locations.patch'
         'fix_kvm_emulator.patch')
@@ -99,6 +100,7 @@ sha512sums=('95d61476538e32b75c3ac870c4ba19e4f352a90e1d6e76355efab4f4679291ba2fc
             '2d1921ccacb222b0c652be6f4f7f74bd3ba482754a9cf19db63c51b7a62b803e4de9b90284e16d51b1b4db215d65ad3fed7269d55cc57135ddfd050fd32b7407'
             '79a778c3086bdd1ef286252add60922d61384f193a44facc47442516e21b6997560326e2a4f6dc9a554615bbd78bf343a1a29569966f25d30238ead346da29d7'
             'ab5b458f53047d1c1320f5fc3fb134b19c391ad85332577b5ffadfb8cedd299a4d47bb0973a6bfb1394ab9d15d7e92c7d1e22c269c0aeeb833a2a140ece8d06e'
+            '497683976be3dcdc087e8d059fb08487d90010b28d0025e48b8e5becab568fd1d60de51a2a88cd43a3e7cc696e620b6c50f364a06a08d4d39f2965aaba10547f'
             '8d6a311072da61ca49458aaf787daf4ef5c5969a9aa282f2276d679dc38e14e5fd1c23bc51b12a29d2d40b65aa45bd2c38d6741726b09d75a38565b7d4ad4677'
             '1f20e688a0f6d36a6bc875392473e75c7de77b159b9cbdf262ac0f093b4d65555231ab15897156e2558d0df6ae631f8d79a3265073ea8c0546586937544e47c9'
             '997218a2dbc807cf2114fc5bb68a3da8d17cdf38aa3d7b51afaab52cf2638cc46293d42799a6d805b799c7748e326ab2780f81ca73121ebdf320ec046c41407d')
@@ -136,6 +138,7 @@ package() {
   install -D -m644 "${srcdir}/opennebula-sunstone.service" "${pkgdir}/usr/lib/systemd/system/opennebula-sunstone.service"
   install -D -m644 "${srcdir}/opennebula-econe.service" "${pkgdir}/usr/lib/systemd/system/opennebula-econe.service"
   install -D -m644 "${srcdir}/opennebula-oneflow.service" "${pkgdir}/usr/lib/systemd/system/opennebula-oneflow.service"
+  install -D -m644 "${srcdir}/opennebula-onegate.service" "${pkgdir}/usr/lib/systemd/system/opennebula-onegate.service"
 
   DESTDIR="${pkgdir}" ./install.sh -u oneadmin -g cloud
 }
