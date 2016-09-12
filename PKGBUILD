@@ -28,7 +28,8 @@ depends=('ruby>=1.8.7'
          'ruby-nokogiri')
 makedepends=('xmlrpc-c>=1.31'
              'pkgconfig'
-             'scons>=0.98')
+             'scons>=0.98'
+             'libmariadbclient')
 optdepends=('nfs-utils: for using the shared file system storage model'
             'mariadb>=5.1: optional replacement for SQLite as the DB back-end'
             'libmariadbclient>=5.1: required if using MariaDB/MySQL instead of SQLite'
@@ -125,7 +126,7 @@ build() {
   ###########################################################################
 
   # This builds the vanilla OpenNebula package. Tweak this line as desired.
-  scons -j "$(nproc)" new_xmlrpc=yes
+  scons -j "$(nproc)" new_xmlrpc=yes mysql=yes
 }
 
 package() {
