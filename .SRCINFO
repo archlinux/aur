@@ -11,7 +11,9 @@ pkgbase = orion-git
 	provides = orion
 	conflicts = orion
 	source = git+https://github.com/alamminsalo/orion.git
-	md5sums = SKIP
+	source = Orion.desktop
+	sha256sums = SKIP
+	sha256sums = a0bb773176dd7ec448ecd5702da9c32b35da27ea3070b23496fe51abb15d8d44
 
 pkgname = orion-git
 

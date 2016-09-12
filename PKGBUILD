@@ -15,9 +15,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/alamminsalo/orion.git')
+source=('git+https://github.com/alamminsalo/orion.git'
+    'Orion.desktop'
+)
+
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP'
+            'a0bb773176dd7ec448ecd5702da9c32b35da27ea3070b23496fe51abb15d8d44')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -28,11 +32,16 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir "build" && cd "./build"
-	qmake ../
+	qmake 
 	make
 }
 
 package() {
-	cp -r "$srcdir/${pkgname%-git}" "$pkgdir" 
+    mkdir -p "$pkgdir/usr/share/icons"
+    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/bin"
+
+	cp "$srcdir/${pkgname%-git}/orion.svg" "$pkgdir/usr/share/icons/" 
+	cp "./Orion.desktop" "$pkgdir/usr/share/applications/"
+	cp "$srcdir/${pkgname%-git}/orion" "$pkgdir/usr/bin/" 
 }
