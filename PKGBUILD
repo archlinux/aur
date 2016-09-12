@@ -7,10 +7,12 @@ pkgdesc='The Pantheon Files for loki'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-files'
 license=('GPL3')
-depends=('atk' 'cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 
+depends=('atk' 'cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gtk3' 'libcanberra' 'libgee' 'pango' 'sqlite' 'libgranite.so'
          'zeitgeist' 'contractor' 'tumbler')
 makedepends=('bzr' 'cmake' 'gnome-common' 'vala')
+optdepends=('contractor: Various context menu entries'
+            'tumbler: Thumbnails generation')
 provides=('pantheon-files')
 conflicts=('pantheon-files')
 install='pantheon-files.install'
@@ -36,10 +38,11 @@ build() {
   cd pantheon-files/build
 
   cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DDESKTOP_UPDATE='FALSE' \
-    -DGSETTINGS_COMPILE='FALSE' \
-    -DGSETTINGS_COMPILE_IN_PLACE='FALSE'
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DCMAKE_SKIP_RPATH='TRUE' \
+    -DGSETTINGS_COMPILE='FALSE'
   make
 }
 
