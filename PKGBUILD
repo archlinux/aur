@@ -188,6 +188,9 @@ if $_patching; then
   #sed -i "s/error/warning/" ${_reducerelocations} || exit 1
   #_device_configure_flags="$_device_configure_flags -reduce-relocations"
 
+  cd ${_basedir}
+  patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
+
   cd ${_declarativedir}
   patch -p1 < ${startdir}/0001-WIP-V4-Free-up-2-address-bits-in-64bit-mode.patch
 
