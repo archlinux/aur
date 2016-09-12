@@ -17,8 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-VERSION=1.32.0
-SHA512SUM="202d0dde45612f9ef45cdb73cd4aeba6c75dcd52790e7f156b2ff404616887af4019e5bd061e3c6607f4f96ac136132c31d180dda31a71bfb31ade5da508b832"
+VERSION=1.34.0
+SHA512SUM="ebee4f2baa89a5c6341ab63a657d90a0a45a434d18b2af30e2222b65b794577325def13b429a849e598c9224b263add577c030dc1678f16df6aa58a6c407d89e"
 
 set -e
 umask 022

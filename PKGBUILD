@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.32.3
+pkgver=1.34.2
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -40,6 +40,7 @@ makedepends=("qemu"
              "perl-string-shellquote"
              "perl-libintl-perl"
              "perl-sys-virt"
+	     "perl-module-build"
 #             "lua"
 #             "ghc"
              "ruby"
@@ -63,8 +64,8 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('bd4bf48929ecf82b4db96cd78672ba40e1b7ba6a4121bf44a5b9e4e535cb133d32080b91759696cfdddda4d6ca53d1d864ca5c8cda8b779ffaa0ec823659c6a2'
-            'e8d9c879a221c218a5df7117aafa6391baa416f6a24885e928f19569d9c526f4585100a20a360464055d2ecc689759d1e63aeeec3e66c8f0237a4a6f5484ac13')
+sha512sums=('dabb01ecf1d3f64a0703c75b658bb95948fcd998da97d4ab74e49c4b0ae16ee87be7d1d146b521803a537ca4f0a0e1abe356f05a64ee4627854e5e4001e736cd'
+            '987f75b4bd7ecd860a92feb9d3270808973dcebda9ad7cac419c28e9c536a0af841dd0e606033686fc05b9b3939a59796620c549af72a7d22965ff1860ea24c3')
 
 check() {
     # test-lock fails, perhaps related to:
