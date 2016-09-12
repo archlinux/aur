@@ -3,7 +3,7 @@
 
 pkgname='perl-perlio-utf8-strict'
 pkgver='0.006'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Fast and correct UTF-8 IO"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
