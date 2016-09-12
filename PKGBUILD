@@ -2,20 +2,22 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.2.0.r301.g97f9233
+pkgver=v1.3.0.r154.ge55f4ed
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web."
 url="https://github.com/firehol/netdata/wiki"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libmnl' 'libnetfilter_acct' 'zlib')
+depends=('libutil-linux' 'libmnl' 'libnetfilter_acct' 'zlib')
 optdepends=('nodejs: Webbox plugin')
 source=("$_gitname::git+https://github.com/firehol/netdata")
 provides=('netdata')
 conflicts=('netdata')
-backup=('etc/netdata/netdata.conf' 'etc/netdata/charts.d.conf' 'etc/netdata/apps_groups.conf')
+#backup=('etc/netdata/netdata.conf' 'etc/netdata/charts.d.conf' 'etc/netdata/apps_groups.conf')
+backup=('etc/netdata/'{apps_groups,charts.d,health_alarm_notify,health_email_recipients,netdata,python.d}.conf
+        'etc/netdata/health.d/'{apache,cpu,disks,entropy,memcached,mysql,named,net,nginx,qos,ram,redis,retroshare,squid,swap}.conf
+        'etc/netdata/python.d/'{apache_cache,apache,cpufreq,dovecot,example,exim,hddtemp,ipfs,memcached,mysql,nginx,nginx_log,phpfpm,postfix,redis,retroshare,sensors,squid,tomcat}.conf)
 install="$pkgname.install"
-
 
 pkgver() {
 	cd "$_gitname"
