@@ -1,6 +1,6 @@
 # Maintainer: Willem Herremans <whpgf at scarlet.be>
 pkgname=tkpacman
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A lightweight GUI for pacman built with Tcl/Tk"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('sudo: if you want to use sudo instead of su'
             'roxterm: alternative terminal emulator')
 source=(http://downloads.sourceforge.net/tkpacman/tkpacman-$pkgver/tkpacman-$pkgver.tar.gz)
 #source=(tkpacman-$pkgver.tar.gz)
-md5sums=('51c87139a3be3519bd22ccad460c0c0f')
+md5sums=('12eb424d71d3e13ddda2b12b85b7e456')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
