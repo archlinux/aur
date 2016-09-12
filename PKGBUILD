@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-cpan-meta-yaml'
-pkgver='0.22'
+pkgver='0.25'
 pkgrel='1'
-pkgdesc="Validate your CPAN META.yml files"
+pkgdesc="Validate a META.yml file within a CPAN distribution."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-test-yaml-valid>=0.03')
 makedepends=()
-url='http://search.cpan.org/dist/Test-CPAN-Meta-YAML'
-source=('http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-CPAN-Meta-YAML-0.22.tar.gz')
-md5sums=('c5acd14f7ecbe1dbf21cc3548ee3dfef')
-sha512sums=('3570c29066ec2655d921f35742a106ba178fc12c9127ffe59b0803ebcb64c626010192ef9584cc6f5863aafdbf4d83d042969f9f456c2bc2e8f8e67bc46d0a2f')
-_distdir="Test-CPAN-Meta-YAML-0.22"
+url='https://metacpan.org/release/Test-CPAN-Meta-YAML'
+source=('http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-CPAN-Meta-YAML-0.25.tar.gz')
+md5sums=('a7fe1dd638c879433fdc0cbe69a018cf')
+sha512sums=('4e908f8aae7511e2251a4f0f7198470e622828b5813d0bc3d78969c87884fc89167ba8243303b4b2c5e0cb97174b1ef582ec5bb2c00eaf410633181bd2c5a19f')
+_distdir="Test-CPAN-Meta-YAML-0.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
