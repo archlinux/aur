@@ -5,7 +5,7 @@
 SINGEL_CORE=0 #bool for multithread builds
 
 pkgname=vim-youcompleteme-git
-pkgver=1863.30871bc
+pkgver=26.37ee000
 pkgver() {
   cd "YouCompleteMe" || exit
   echo "$(git rev-list --count master).$(git rev-parse --short master)"
