@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cgi-emulate-psgi'
-pkgver='0.15'
+pkgver='0.22'
 pkgrel='1'
 pkgdesc="PSGI adapter for CGI"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.0' 'perl-http-message')
-makedepends=('perl-test-requires')
-url='http://search.cpan.org/dist/CGI-Emulate-PSGI'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/CGI-Emulate-PSGI-0.15.tar.gz')
-md5sums=('3f0b6ae68d1e84e66ea8eb629e569284')
-sha512sums=('0dd95fd4d7f208d713101533408e8faf6c97db039abf442e469d74a0f467624d833b9625d25f162929c5c1c23c8af0ee2b723287c1d4d13c6b9e0b2ba4abd4d8')
-_distdir="CGI-Emulate-PSGI-0.15"
+depends=('perl-cgi>=3.63' 'perl-http-message' 'perl>=5.8.1')
+makedepends=()
+checkdepends=('perl-test-requires>=0.08')
+url='https://metacpan.org/release/CGI-Emulate-PSGI'
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/CGI-Emulate-PSGI-0.22.tar.gz')
+md5sums=('806886224149a8b49faddce65cf9513f')
+sha512sums=('a0adf28a49f71702439258cd0bbf510c322b7856b18f01d977613e6d8aeab43daf2f956f67c1491e19945b79f40d8229fb928653864de35faed4c13284b70401')
+_distdir="CGI-Emulate-PSGI-0.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
