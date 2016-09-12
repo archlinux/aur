@@ -7,7 +7,7 @@
 pkgname=saga-gis
 _pkgname=saga
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
 license=("GPL3")
@@ -20,7 +20,7 @@ depends=('wxgtk>=3.0.0'
          'unixodbc'
          'jasper'
          'swig')
-optdepends=('opencv2'
+optdepends=('opencv'
             'vigra'
             'liblas'
             'libharu')
