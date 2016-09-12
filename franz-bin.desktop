@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Franz
 Comment=A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.
-Exec=franz -- %u
+Exec=franz-bin -- %u
 StartupWMClass=Franz
 Icon=franz-bin
 Terminal=false
