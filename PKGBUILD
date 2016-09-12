@@ -1,4 +1,5 @@
-# Maintainer: Jason Scurtu (scujas) <jscurtu@gmail.com>
+# Maintainer: poisonby <poisonby@tutanota.com>
+# Contributor: Jason Scurtu (scujas) <jscurtu@gmail.com>
 # Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
@@ -7,9 +8,9 @@ pkgver=1.6.2
 pkgrel=1
 pkgdesc='simple feedreader client for web services like Tiny Tiny RSS and others in the future'
 arch=('i686' 'x86_64')
-url='https://launchpad.net/feedreader'
+url='http://jangernert.github.io/FeedReader/'
 license=('GPL3')
-depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret')
+depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'gnome-keyring')
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
