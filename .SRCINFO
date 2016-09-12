@@ -1,7 +1,7 @@
 pkgbase = rk-apricity-apps
 	pkgdesc = Metapackage that installs all some nice apps which are missing in apricitys default installation.
 	pkgver = 2016.9.12
-	pkgrel = 3
+	pkgrel = 4
 	url = http://notyetthere.com
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = rk-apricity-apps
 	depends = preload
 	depends = yp-tools
 	depends = dos2unix
-	depends = pm-utils
 	depends = traceroute
 	depends = ethtool
 	depends = sdparm
