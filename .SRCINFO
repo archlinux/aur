@@ -1,9 +1,8 @@
 pkgbase = gnome-settings-daemon-ubuntu
 	pkgdesc = The GNOME Settings daemon with Ubuntu's patches
-	pkgver = 3.19.92
+	pkgver = 3.20.1
 	pkgrel = 1
 	url = http://www.gnome.org
-	install = gnome-settings-daemon.install
 	arch = i686
 	arch = x86_64
 	groups = gnome
@@ -17,7 +16,6 @@ pkgbase = gnome-settings-daemon-ubuntu
 	depends = dconf
 	depends = gnome-desktop
 	depends = gsettings-desktop-schemas-ubuntu
-	depends = hicolor-icon-theme
 	depends = libcanberra-pulse
 	depends = libnotify
 	depends = libsystemd
@@ -30,13 +28,14 @@ pkgbase = gnome-settings-daemon-ubuntu
 	depends = geocode-glib
 	depends = geoclue2
 	depends = nss
-	provides = gnome-settings-daemon=3.19.92
+	depends = libgudev
+	provides = gnome-settings-daemon=3.20.1
 	conflicts = gnome-settings-daemon
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.19/gnome-settings-daemon-3.19.92.tar.xz
-	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gnome-settings-daemon/gnome-settings-daemon_3.19.92-0ubuntu1~xenial1.debian.tar.xz
-	sha512sums = 7a243216e19520937c90c8b7e5a18081721cf82e7f936a27352e7ceac0acd3cf638a7ef7130b20f63e75172d0fa44c4d104b39a0c6dcb15e1af9cf72d28e6f07
-	sha512sums = 86b149a70e0bcb0af01e2b1cb7b7ee63cc4ae115539b446e78cb2fb11ce40ae6c1dc7f98d7b28d1e3293f1141a9135b5c9ef1f6c6f78ebbca4b1d754adfe600b
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.20/gnome-settings-daemon-3.20.1.tar.xz
+	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gnome-settings-daemon/gnome-settings-daemon_3.20.1-2ubuntu1~ubuntu16.04.1.debian.tar.xz
+	sha512sums = 4d8ec7c8d508a0dead00c08ef591c9814bf1c33d0016626c6cd5153bd2aad601ea1146b0e5617465ee276b44d8d622b664817a83e045cece69c2be76c5e33a84
+	sha512sums = 8eb04cf39ad83c8ed1a1b5d280021f19fe87723be387d5569f1f85bf882f366c7bf8a42870726d91408b28d3b7b39011797eb06b625650123128936b73bf8eee
 
 pkgname = gnome-settings-daemon-ubuntu
 
