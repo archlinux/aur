@@ -10,7 +10,7 @@ depends=('openssl' 'libidn' 'pcre' 'lua')
 optdepends=("ca-certificates: HTTPS Downloads")
 makedepends=('git' 'perl')
 provides=('wget-lua')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 source=("http://warriorhq.archiveteam.org/downloads/wget-lua/wget-1.14.lua.LATEST.tar.bz2"
         "lua.patch"
         "ssl.patch")
