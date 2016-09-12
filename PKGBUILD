@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20160901
+pkgver=3.0.0v20160912
 _pkgver=3.0.0
-_snapshot_=20160901
-_snapver_=0221
+_snapshot_=20160912
+_snapver_=0238
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -112,5 +112,5 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha1sums=('8cae040b3b7c2ac0b84ad5df9b2974d5582822d1'
+sha1sums=('067b4278dd64a1461cc4b062b83bbc826eedbc0c'
           'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee')
