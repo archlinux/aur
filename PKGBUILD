@@ -7,8 +7,7 @@ pkgdesc="pandoc + styles"
 arch=('any')
 url="http://github.com/msprev/panzer"
 license=('unknown')
-#depends=('pandoc' 'python' 'python-pandocfilters')
-depends=('pandoc' 'python')
+depends=('pandoc' 'python' 'python-pandocfilters')
 
 makedepends=('git')
 provides=('panzer-git')
