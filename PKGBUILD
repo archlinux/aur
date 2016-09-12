@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=audience-bzr
-pkgver=r529
+pkgver=r651
 pkgrel=1
 pkgdesc='The Pantheon Video Player'
 arch=('i686' 'x86_64')
@@ -11,10 +11,9 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'desktop-file-utils' 'gst-plugins-base-libs'
          'libgranite.so')
-makedepends=('bzr' 'clutter-gst' 'cmake' 'granite-bzr' 'vala')
+makedepends=('bzr' 'clutter-gst' 'cmake' 'granite-bzr' 'intltool' 'vala')
 provides=('audience')
 conflicts=('audience')
-install='audience.install'
 source=('bzr+lp:audience')
 sha256sums=('SKIP')
 
