@@ -1,0 +1,22 @@
+
+post_install() {
+cat << _EOF
+
+==> scratch installation notes:
+    ----------------------------------------
+    In June 2012 scratch module was ported to Lua 5.2, which changes the
+    way this module is loaded to remain backwards compatible with Lua 5.1
+    installations:
+        local scratch = require("scratch")
+    
+_EOF
+
+}
+
+post_upgrade() {
+        post_install
+}
+
+op=$1
+shift
+$op $*
