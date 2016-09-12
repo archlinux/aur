@@ -1,9 +1,6 @@
 # Maintainer: Erik Beran <eberan AT gmail DOT com>
 # Maintainer: Erik Beran <tarek AT ring0 DOT de>
 
-#pkg build conf
-SINGEL_CORE=0 #bool for multithread builds
-
 pkgname=vim-youcompleteme-git
 pkgver=26.37ee000
 pkgver() {
@@ -78,18 +75,11 @@ gitprepare() {
 }
 
 build() {
-  # investigating number of logic cores
-  if [[ -f /proc/cpuinfo && $SINGEL_CORE -eq 0 ]]; then
-    CPUS=$(( $(grep -c processor /proc/cpuinfo)*2))
-  else
-    CPUS=1
-  fi
-
   msg2 'Building ycmd...' # BuildYcmdLibs()
   mkdir -p "$srcdir/ycmd_build"
   cd "$srcdir/ycmd_build" || exit
   cmake -G "Unix Makefiles" -D${_COMPLETER}=1 . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
-  make -j $CPUS ycm_core
+  make ycm_core
 
   msg2 'Building OmniSharp completer...' # BuildOmniSharp()
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
