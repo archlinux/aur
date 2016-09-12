@@ -3,7 +3,7 @@
 pkgname=verge-git
 _gitname=VERGE
 pkgver=r465.87922b3
-pkgrel=1
+pkgrel=2
 pkgdesc="VERGE is the privacy focused & secure alternative to other cryptocurrencies. (git version)"
 arch=('i686' 'x86_64')
 url="http://vergecurrency.com/"
