@@ -1,0 +1,209 @@
+*** sendEmail	2009-09-29 12:25:27.000000000 -0400
+--- ../../../../perl/sendemail/sendEmail	2014-06-20 20:30:22.238098314 -0400
+***************
+*** 1,4 ****
+--- 1,19 ----
+  #!/usr/bin/perl -w
++ # Warning: This script has been modified
++ # 1. , has been removed as an email list split character 
++ #    because , is valid and useful to have in an email name. Use ; for your split character
++ # Example: a@a.com;b@b.com;c@c.com
++ # 2. Attachments can be of the form /path/Name1^Name2
++ #    Name1 can have a unique value for multi user file name collision management. 
++ #    Name2 is what the recipient sees.
++ # Example: T42^Result123456.pdf
++ #   T42 is a per user/terminal unique value that ensures multiple users cannot produce the same file name
++ #   Recipient sees Result123456.pdf
++ # Note: $ has special meaning in shells. % has special meaning in gs or perl
++ # 3. SSL negotiation worked in SCO but not in Arch Linux. Arch needs the modification
++ #    described here: http://unix.stackexchange.com/questions/53065/invalid-ssl-version-specified-at-usr-share-perl5-io-socket-ssl-pm-line-332
++ #    but then I just removed the whole thing so TLS negotiates with default settings.
++ # 4. Logging format for better readability
+  ##############################################################################
+  ## sendEmail
+  ## Written by: Brandon Zehm <caspian@dotconf.net>
+***************
+*** 268,275 ****
+          elsif ($ARGS[$counter] =~ /^-t$/) {                  ## To ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;,]/) {
+!                     push (@to, split(/[;,]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@to,$ARGS[$counter]);
+--- 283,290 ----
+          elsif ($ARGS[$counter] =~ /^-t$/) {                  ## To ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;]/) {
+!                     push (@to, split(/[;]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@to,$ARGS[$counter]);
+***************
+*** 281,288 ****
+          elsif ($ARGS[$counter] =~ /^-cc$/) {                 ## Cc ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;,]/) {
+!                     push (@cc, split(/[;,]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@cc,$ARGS[$counter]);
+--- 296,303 ----
+          elsif ($ARGS[$counter] =~ /^-cc$/) {                 ## Cc ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;]/) {
+!                     push (@cc, split(/[;]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@cc,$ARGS[$counter]);
+***************
+*** 294,301 ****
+          elsif ($ARGS[$counter] =~ /^-bcc$/) {                ## Bcc ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;,]/) {
+!                     push (@bcc, split(/[;,]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@bcc,$ARGS[$counter]);
+--- 309,316 ----
+          elsif ($ARGS[$counter] =~ /^-bcc$/) {                ## Bcc ##
+              $counter++;
+              while ($ARGS[$counter] && ($ARGS[$counter] !~ /^-/)) {
+!                 if ($ARGS[$counter] =~ /[;]/) {
+!                     push (@bcc, split(/[;]/, $ARGS[$counter]));
+                  }
+                  else {
+                      push (@bcc,$ARGS[$counter]);
+***************
+*** 864,870 ****
+          @attachlines, $content_type);
+      my $bin = 1;
+      
+!     @fields = split(/\/|\\/, $filename);             ## Get the actual filename without the path  
+      $filename_name = pop(@fields);       
+      push @attachments_names, $filename_name;         ## FIXME: This is only used later for putting in the log file
+      
+--- 879,885 ----
+          @attachlines, $content_type);
+      my $bin = 1;
+      
+!     @fields = split(/\/|\\|\^/, $filename);             ## Get the actual filename without the path  
+      $filename_name = pop(@fields);       
+      push @attachments_names, $filename_name;         ## FIXME: This is only used later for putting in the log file
+      
+***************
+*** 1115,1121 ****
+      ## Make sure input is sane
+      $level = 0 if (!defined($level));
+      $message =~ s/\s+$//sgo;
+!     $message =~ s/\r?\n/, /sgo;
+      
+      ## Continue only if the debug level of the program is >= message debug level.
+      if ($conf{'debug'} >= $level) {
+--- 1130,1136 ----
+      ## Make sure input is sane
+      $level = 0 if (!defined($level));
+      $message =~ s/\s+$//sgo;
+!     #$message =~ s/\r?\n/, /sgo;
+      
+      ## Continue only if the debug level of the program is >= message debug level.
+      if ($conf{'debug'} >= $level) {
+***************
+*** 1903,1912 ****
+      if ($conf{'tls_server'} == 1 and $conf{'tls_client'} == 1 and $opt{'tls'} =~ /^(yes|auto)$/) {
+          printmsg("DEBUG => Starting TLS", 2);
+          if (SMTPchat('STARTTLS')) { quit($conf{'error'}, 1); }
+!         if (! IO::Socket::SSL->start_SSL($SERVER, SSL_version => 'SSLv3 TLSv1')) {
+              quit("ERROR => TLS setup failed: " . IO::Socket::SSL::errstr(), 1);
+          }
+!         printmsg("DEBUG => TLS: Using cipher: ". $SERVER->get_cipher(), 3);
+          printmsg("DEBUG => TLS session initialized :)", 1);
+          
+          ## Restart our SMTP session
+--- 1918,1927 ----
+      if ($conf{'tls_server'} == 1 and $conf{'tls_client'} == 1 and $opt{'tls'} =~ /^(yes|auto)$/) {
+          printmsg("DEBUG => Starting TLS", 2);
+          if (SMTPchat('STARTTLS')) { quit($conf{'error'}, 1); }
+!         if (! IO::Socket::SSL->start_SSL($SERVER)) {
+              quit("ERROR => TLS setup failed: " . IO::Socket::SSL::errstr(), 1);
+          }
+!         printmsg("DEBUG => TLS: Using cipher: ". $SERVER->get_cipher()." ".$SERVER->get_sslversion(), 3);
+          printmsg("DEBUG => TLS session initialized :)", 1);
+          
+          ## Restart our SMTP session
+***************
+*** 2191,2224 ****
+      printmsg("Generating a detailed exit message", 3);
+      
+      ## Put the message together
+!     my $output = "Email was sent successfully!  From: <" . (returnAddressParts($from))[1] . "> ";
+      
+      if (scalar(@to) > 0) {
+!         $output .= "To: ";
+          for ($a = 0; $a < scalar(@to); $a++) {
+              $output .= "<" . (returnAddressParts($to[$a]))[1] . "> ";
+          }
+      }
+      if (scalar(@cc) > 0) {
+!         $output .= "Cc: ";
+          for ($a = 0; $a < scalar(@cc); $a++) {
+              $output .= "<" . (returnAddressParts($cc[$a]))[1] . "> ";
+          }
+      }
+      if (scalar(@bcc) > 0) {
+!         $output .= "Bcc: ";
+          for ($a = 0; $a < scalar(@bcc); $a++) {
+              $output .= "<" . (returnAddressParts($bcc[$a]))[1] . "> ";
+          }
+      }
+!     $output .= "Subject: [$subject] " if ($subject);
+      if (scalar(@attachments_names) > 0) { 
+!         $output .= "Attachment(s): ";
+          foreach(@attachments_names) {
+              $output .= "[$_] ";
+          }
+      }
+!     $output .= "Server: [$conf{'server'}:$conf{'port'}]";
+      
+      
+  ######################
+--- 2206,2239 ----
+      printmsg("Generating a detailed exit message", 3);
+      
+      ## Put the message together
+!     my $output = "\n\nEmail was sent successfully!\n\nFrom: <" . (returnAddressParts($from))[1] . "> ";
+      
+      if (scalar(@to) > 0) {
+!         $output .= "\nTo: ";
+          for ($a = 0; $a < scalar(@to); $a++) {
+              $output .= "<" . (returnAddressParts($to[$a]))[1] . "> ";
+          }
+      }
+      if (scalar(@cc) > 0) {
+!         $output .= "\nCc: ";
+          for ($a = 0; $a < scalar(@cc); $a++) {
+              $output .= "<" . (returnAddressParts($cc[$a]))[1] . "> ";
+          }
+      }
+      if (scalar(@bcc) > 0) {
+!         $output .= "\nBcc: ";
+          for ($a = 0; $a < scalar(@bcc); $a++) {
+              $output .= "<" . (returnAddressParts($bcc[$a]))[1] . "> ";
+          }
+      }
+!     $output .= "\nSubject: [$subject] " if ($subject);
+      if (scalar(@attachments_names) > 0) { 
+!         $output .= "\nAttachment(s): ";
+          foreach(@attachments_names) {
+              $output .= "[$_] ";
+          }
+      }
+!     $output .= "\nServer: [$conf{'server'}:$conf{'port'}]";
+      
+      
+  ######################
