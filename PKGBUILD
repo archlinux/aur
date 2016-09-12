@@ -2,10 +2,13 @@
 # Please note you must have a Vulkan-capable GPU
 
 pkgname=vkquake-git
-pkgver=0.71.r0.gfd23ad1
-pkgrel=1
+_gitname=vkquake
+pkgver=0.71.r1.g0b74d6a
+pkgrel=3
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
+conflicts=('vkquake')
+provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=(
@@ -13,21 +16,20 @@ depends=(
 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
 )
 install=$pkgname.install
-source=('vkquake-git::git+https://github.com/Novum/vkquake.git'
-	'vkquake-git.desktop'
-	'vkquake-git.png')
+source=('git+https://github.com/Novum/vkquake.git'
+	'vkquake.desktop')
 md5sums=('SKIP'
-	 'c8843622c6521b93b60ed91df51aaa6b'
-	 'c0d980f9a737d450021b9dc6a6b94a01')
-
+	 '1fa01ded4b66b9795eaee856093e4a01')
 pkgver() {
-  cd "$pkgname"
+
+  cd "$_gitname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
   
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_gitname"
 
   # clean
   msg "Cleaning make files"
@@ -49,17 +51,17 @@ build() {
 
 package() {
 
-  cd "$srcdir/$pkgname/"
+  cd "$srcdir/$_gitname"
+
+  # Install main binary
+  install -Dm644 Quake/vkquake "$pkgdir"/usr/bin/$pkgname
 
   # Make doc dir
-  mkdir -p $pkgdir/usr/share/doc/vkquake-git/
-
-  # main binary
-  install -Dm755 Quake/vkquake "$pkgdir"/usr/bin/$pkgname
+  mkdir -p $pkgdir/usr/share/doc/vkquake/
 
   # supplemental files
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop" 
-  install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png" 
-  install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake-git/
+  install -Dm644 "$srcdir/$_gitname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
+  install -Dm644 "$srcdir/$_gitname.png" "$pkgdir/usr/share/pixmaps/vkquake.png"
+  install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake/readme.md
 
 }
