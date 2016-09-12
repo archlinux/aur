@@ -1,7 +1,7 @@
 pkgbase = rk-apricity-apps
 	pkgdesc = Metapackage that installs all some nice apps which are missing in apricitys default installation.
 	pkgver = 2016.9.12
-	pkgrel = 6
+	pkgrel = 7
 	url = http://notyetthere.com
 	arch = i686
 	arch = x86_64
@@ -116,7 +116,6 @@ pkgbase = rk-apricity-apps
 	depends = mp3gain
 	depends = mac
 	depends = libaacs
-	depends = libbdplus
 	depends = mono
 	depends = mkvtoolnix-gui
 	depends = ttf-cheapskate
