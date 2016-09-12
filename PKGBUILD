@@ -6,6 +6,7 @@ pkgname="xfce4-${_pkgname}"
 pkgver=0.8
 pkgrel=1
 url="https://github.com/equeim/snw-plugin"
+pkgdesc="Xfce panel plugin to show StatusNotifierItems (AppIndicators)"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('libdbusmenu-gtk2' 'xfce4-panel')
