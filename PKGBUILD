@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-perl-critic'
-pkgver='1.02'
+pkgver='1.03'
 pkgrel='1'
-pkgdesc="Use Perl::Critic in test programs."
+pkgdesc="Use Perl::Critic in test programs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-critic>=1.082')
+depends=('perl-mce>=1.52' 'perl-critic>=1.105')
 makedepends=()
-url='http://search.cpan.org/dist/Test-Perl-Critic'
-source=('http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-1.02.tar.gz')
-md5sums=('7f1e75cc3d933e4deab5097c5b8c812d')
-sha512sums=('af18523fa6ad2ed35114bc5a466c8d92f27cfaca3a32c3fc6d24bdafd6f962187f0f18f5cae96949cb81a4c2f1cac280993c8b5236a8b02ccc130d01c8990348')
-_distdir="Test-Perl-Critic-1.02"
+url='https://metacpan.org/release/Test-Perl-Critic'
+source=('http://search.cpan.org/CPAN/authors/id/T/TH/THALJEF/Test-Perl-Critic-1.03.tar.gz')
+md5sums=('b10da607ed6c6c07eba99e48ce77d88a')
+sha512sums=('2b6b9e7a73d00c99584853fdc5aef74dea5a581bb4bbe103eb65b086de659cb3328b0e58ec6e64413b76fa37a834083ff0c87cdc02413576f910904e0efd7b30')
+_distdir="Test-Perl-Critic-1.03"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,21 +24,21 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  /usr/bin/perl Build install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
