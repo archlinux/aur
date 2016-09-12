@@ -70,7 +70,7 @@ isNoOpenGL() {
 
 pkgname=mingw-w64-qt5-base
 pkgver=5.7.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -78,11 +78,11 @@ url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
-	 'mingw-w64-pcre')
+         'mingw-w64-pcre')
 groups=('mingw-w64-qt' 'mingw-w64-qt5')
-optdepends=('mingw-w64-postgresql-libs: PostgreSQL support' 'mingw-w64-mariadb-connector-c: MySQL support'
+optdepends=('mingw-w64-postgresql: PostgreSQL support' 'mingw-w64-mariadb-connector-c: MySQL support'
             'qtchooser')
-makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql-libs' 'mingw-w64-mariadb-connector-c' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-pkg-config')
 options=(!strip !buildflags staticlibs !emptydirs)
 _pkgfqn="qtbase-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
