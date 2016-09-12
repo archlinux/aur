@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=26.4.0.1
+pkgver=26.4.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
             'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
             'gstreamer0.10-ffmpeg: h.264 decoding')
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release_Linux"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         mozconfig.in)
 md5sums=('SKIP'
          '6c23b737a8ef846926d247116b69f33d')
