@@ -4,17 +4,17 @@
 _pkgbase=poppler
 pkgbase=poppler-lcdfilter
 pkgname=('poppler-lcdfilter' 'poppler-glib-lcdfilter')
-pkgver=0.42.0
-pkgrel=0
+pkgver=0.47.0
+pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'gtk2' 'qt4' 'pkgconfig' 'lcms2' 'gobject-introspection' 'icu' 'qt5-base' 'git' 'python2')
 options=('!emptydirs')
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz
-        git://anongit.freedesktop.org/poppler/test
+        test::git+https://cgit.freedesktop.org/poppler/test/#commit=0d2bfd4
         poppler-subpixel.patch)
-md5sums=('SKIP'
+sha256sums=('b872e7228fc34a71ce4b47a5aea2a57ae67528818fa846e1e0eda089319bd242'
          'SKIP'
          'SKIP')
 
@@ -28,7 +28,10 @@ build() {
       --enable-libjpeg --enable-zlib \
       --enable-poppler-qt4 \
       --enable-poppler-qt5 \
-      --enable-poppler-glib
+      --enable-poppler-glib \
+      --enable-libopenjpeg=openjpeg2
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
 
   make
 }
@@ -40,12 +43,11 @@ check() {
 
 package_poppler-lcdfilter() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
-  depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg' 'lcms2')
+  depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
-  conflicts=("poppler-qt3<${pkgver}" "poppler")
-  provides=("poppler=$pkgver")
+  conflicts=("poppler-qt3<${pkgver}")
 
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   sed -e 's/^glib_subdir =.*/glib_subdir =/' \
       -e 's/^qt4_subdir =.*/qt4_subdir =/' \
       -e 's/^qt5_subdir =.*/qt5_subdir =/' -i Makefile
@@ -56,11 +58,9 @@ package_poppler-lcdfilter() {
 
 package_poppler-glib-lcdfilter() {
   pkgdesc="Poppler glib bindings"
-  depends=("poppler-lcdfilter=${pkgver}" 'glib2')
-  conflicts=("poppler-glib")
-  provides=("poppler-glib=$pkgver")
+  depends=("poppler=${pkgver}" 'glib2')
 
-  cd "${_pkgbase}-${pkgver}"
+  cd "${pkgbase}-${pkgver}"
   make -C poppler DESTDIR="${pkgdir}" install-libLTLIBRARIES
   make -C glib DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
