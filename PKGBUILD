@@ -33,7 +33,6 @@ build() {
 	cd "$srcdir/$_gitname"
 	./autogen.sh
 	./configure --with-gui=qt5
-	qmake
 	make
 }
 
