@@ -2,7 +2,7 @@
 
 pkgname=pantheon-calculator
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-calculator'
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'intltool' 'vala')
 source=("https://launchpad.net/pantheon-calculator/0.4-loki/${pkgver}/+download/pantheon-calculator-${pkgver}.tar.xz")
 sha256sums=('7278300642872e296eb558e656ee4a838f10ca3664cbec7d63e689a8b96e0625')
 
