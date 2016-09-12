@@ -25,8 +25,9 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_gitname"
-	msg2 "Fixing verge-qt.desktop, don't conflict with bitcoin"
-	grep -rl Icon contrib/debian/verge-qt.desktop | xargs sed -i 's/bitcoin80/vergecurrency80/g'
+	msg2 "Fixing verge-qt.desktop icons so we don't conflict with bitcoin"
+	grep -rl Icon contrib/debian/verge-qt.desktop | xargs sed -i 's/bitcoin80/verge80/g'
+	grep -rl Exec contrib/debian/verge-qt.desktop | xargs sed -i 's/verge-qt/VERGE-qt/g'
 }
 
 build() {
@@ -39,14 +40,14 @@ build() {
 package() {
 	# install verge-qt client
 	msg2 'Installing verge-qt...'
-	install -Dm755 "$srcdir/$_gitname/src/qt/verge-qt" "$pkgdir/usr/bin/verge-qt"
-	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin80.xpm" "$pkgdir/usr/share/pixmaps/vergecurrency80.xpm"
+	install -Dm755 "$srcdir/$_gitname/src/qt/VERGE-qt" "$pkgdir/usr/bin/VERGE-qt"
+	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin80.xpm" "$pkgdir/usr/share/pixmaps/verge80.xpm"
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/verge-qt.desktop"
 
 	# install verge-daemon
 	msg2 'Installing verge-daemon...'
-	install -Dm755 "$srcdir/$_gitname/src/verged" "$pkgdir/usr/bin/verged"
-	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/novacoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/verge.conf"
+	install -Dm755 "$srcdir/$_gitname/src/VERGEd" "$pkgdir/usr/bin/VERGEd"
+	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/novacoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/VERGE.conf"
 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/verged.1" "$pkgdir/usr/share/man/man1/verged.1"
 	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/verge.conf.5" "$pkgdir/usr/share/man/man5/verge.conf.5"
 
