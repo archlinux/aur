@@ -54,7 +54,7 @@ package() {
 	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/manpages/litecoind.1" "$pkgdir/usr/share/man/man1/litecoind.1"
 	install -Dm644 "$srcdir/$_gitname/contrib/debian-litecoin/manpages/litecoin.conf.5" "$pkgdir/usr/share/man/man5/litecoin.conf.5"
 
-	# install litcoin-cli
+	# install litecoin-cli
 	msg2 'Installing litecoin-cli...'
 	install -Dm755 "$srcdir/$_gitname/src/litecoin-cli" "$pkgdir/usr/bin/litecoin-cli"
 
