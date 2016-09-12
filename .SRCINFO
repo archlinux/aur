@@ -1,6 +1,6 @@
 pkgbase = verge-git
 	pkgdesc = VERGE is the privacy focused & secure alternative to other cryptocurrencies. (git version)
-	pkgver = v0.10.4.0.6.g623f20b
+	pkgver = r465.87922b3
 	pkgrel = 1
 	url = http://vergecurrency.com/
 	arch = i686
