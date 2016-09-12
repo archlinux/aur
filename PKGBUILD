@@ -4,15 +4,15 @@
 # Contributor: Manolis Tzanidakis
 pkgname=ucspi-tcp
 pkgver=0.88
-pkgrel=6
+pkgrel=7
 pkgdesc="Easy-to-use command-line tools for building TCP client-server applications."
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64')
 url="http://cr.yp.to/ucspi-tcp.html"
 license=('public-domain')
 depends=('glibc')
 makedepends=('gcc' 'make' 'patch')
 source=("http://cr.yp.to/$pkgname/$pkgname-$pkgver.tar.gz"
-        "http://www.bltweb.net/qmail/ucspi-tcp-$pkgver-ipv6.patch"
+        "ucspi-tcp-$pkgver-ipv6.patch"
         "head-1.patch")
 sha512sums=('44efbd477dacf31d39fc970e2d2f74526dc815b905742f6127f0d5c80928ecc7e743089eaab0492386a58d5b97905113fbe8bbc7214ae179b7be27966b7566c7'
             '4180f2e8e0bd23bc345d363b5cfeab321293360203386fc93672bcb5c6fd8145d82c4eedb261abd0faacbce15bcd3180d7b02f2604039db735def7cdcd30abbc'
