@@ -1,7 +1,7 @@
 pkgbase = rk-apricity-apps
 	pkgdesc = Metapackage that installs all some nice apps which are missing in apricitys default installation.
 	pkgver = 2016.9.12
-	pkgrel = 5
+	pkgrel = 6
 	url = http://notyetthere.com
 	arch = i686
 	arch = x86_64
@@ -104,7 +104,6 @@ pkgbase = rk-apricity-apps
 	depends = lshw
 	depends = ttf-google-fonts-git
 	depends = gstreamer-vaapi
-	depends = gstreamer0.10-vaapi
 	depends = libva-vdpau-driver
 	depends = libva-intel-driver
 	depends = gstreamer0.10-python

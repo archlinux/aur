@@ -2,7 +2,7 @@
 
 pkgname=rk-apricity-apps
 pkgver=2016.9.12
-pkgrel=5
+pkgrel=6
 pkgdesc="Metapackage that installs all some nice apps which are missing in apricitys default installation."
 url="http://notyetthere.com"
 arch=('i686' 'x86_64')
@@ -113,8 +113,6 @@ depends=("pkgtools"
 "ttf-google-fonts-git"
 
 "gstreamer-vaapi"
-
-"gstreamer0.10-vaapi"
 
 "libva-vdpau-driver"
 "libva-intel-driver"
