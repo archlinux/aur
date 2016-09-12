@@ -1,0 +1,15 @@
+pkgbase = python-ndjson-testrunner
+	pkgdesc = A python unittest test runner that outputs newline delimited JSON results
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/flying-sheep/ndjson-testrunner
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	noextract = ndjson_testrunner-1.0.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/n/ndjson_testrunner/ndjson_testrunner-1.0.0-py3-none-any.whl
+	md5sums = 93905c1463c629f800168d4ebeaa0e82
+
+pkgname = python-ndjson-testrunner
+
