@@ -14,7 +14,6 @@ depends=('desktop-file-utils' 'glib2' 'glibc' 'gtk3' 'libnotify' 'pango' 'vte3'
 makedepends=('bzr' 'cmake' 'intltool' 'vala')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
-install='pantheon-terminal.install'
 source=('pantheon-terminal::bzr+lp:pantheon-terminal')
 sha256sums=('SKIP')
 
