@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=53.0.2785.89
+pkgver=53.0.2785.101
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -28,6 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-52.0.2743.116-unset-madv_free.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-battery-status-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-google-url-tracker.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-default-extensions.patch
@@ -47,11 +48,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('2e3c5f7b12b5b4f150b93004a718fb85778aeddc4df05bbf92b99a19a1c63dee'
+sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
+            'c46e918f9e469aefdf4861967dcba98a30b3af0fedb5cb0f674efbdf253bc87a'
             '2d4b600d8085f1d5b3b4f30f8cfc6741558b1c8721dc19dd6b4de2b8dbedd80d'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
             '6d56f80d8d5977e59551163d06b3ce1fee4efe1e2b2aea07863d6ac853071a63'
@@ -99,6 +101,9 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
+  # Make it possible to remove third_party/adobe
+  echo > "flapper_version.h"
+
   # Apply Inox patches
   patch -Np1 -i ../disable-autofill-download-manager.patch
   patch -Np1 -i ../disable-google-url-tracker.patch
@@ -116,6 +121,10 @@ prepare() {
   patch -Np1 -i ../chromium-sandbox-pie.patch
   patch -Np1 -i ../disable-new-avatar-menu.patch
   patch -Np1 -i ../disable-first-run-behaviour.patch
+  patch -Np1 -i ../disable-battery-status-service.patch
+
+  ## Fix linker errors if building with -Dsafe_browsing=0
+  #patch -Np1 -i ../fix-building-without-safebrowsing.patch
 
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
@@ -134,6 +143,7 @@ prepare() {
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
+
   # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
   if (( $_build_nacl )); then
     python2 build/download_nacl_toolchains.py \
@@ -160,11 +170,13 @@ build() {
   # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
   # https://bugs.chromium.org/p/v8/issues/detail?id=3782
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
-  CFLAGS+=' -fno-delete-null-pointer-checks'
+  CFLAGS+=' '
 
-  local _chromium_conf=(
+  local _inox_conf=(
     -Dwerror=
-    -Dclang=0
+    -Dclang_use_chrome_plugins=0
+    -Dclang=1
+    -Dmake_clang_dir=/usr
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
@@ -202,7 +214,7 @@ build() {
     -Ddisable_glibc=1
     -Denable_webrtc=0
     -Denable_google_now=0
-    -Denable_remoting=0
+    -Dremoting=0
     -Dsafe_browsing_mode=0
     -Denable_rlz=0
     -Denable_hangout_services_extension=0
@@ -215,18 +227,21 @@ build() {
     -Denable_print_preview=0
     -Dtracing_like_official_build=1
     -Dfieldtrial_testing_like_official_build=1
+    -Dflapper_version_h_file=flapper_version.h
     -Dfastbuild=1
     )
 
   if (( ! $_build_nacl )); then
-    _chromium_conf+=(
+    _inox_conf+=(
       -Ddisable_nacl=1
       -Ddisable_pnacl=1
     )
   fi
 
-  build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
-  build/gyp_chromium --depth=. "${_chromium_conf[@]}"
+  set GYP_GENERATORS=ninja
+
+  python2 build/linux/unbundle/replace_gyp_files.py "${_inox_conf[@]}"
+  python2 build/gyp_chromium --depth=. "${_inox_conf[@]}"
 
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
