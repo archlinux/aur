@@ -24,7 +24,7 @@ _building=true
 if [[ -z ${startdir} ]]; then _building=false; fi
 
 # Options
-_sysroot=/mnt/pi
+_sysroot=""
 _piver=""
 _use_mesa=false
 _float=true
@@ -39,6 +39,7 @@ _patching=true
 
 if $_building; then
   if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then _piver=$LOCAL_PI_VER; fi
+  _sysroot=/mnt/pi${_piver}
   if [[ -z "${_piver}" ]]; then
     echo "You have to set a pi version (_piver) to build"
     exit 1
