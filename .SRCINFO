@@ -1,7 +1,7 @@
 pkgbase = rk-apricity-apps
 	pkgdesc = Metapackage that installs all some nice apps which are missing in apricitys default installation.
 	pkgver = 2016.9.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://notyetthere.com
 	arch = i686
 	arch = x86_64
@@ -112,7 +112,6 @@ pkgbase = rk-apricity-apps
 	depends = xosd
 	depends = libgoom2
 	depends = twolame
-	depends = lirc-utils
 	depends = libva-intel-driver
 	depends = vorbis-tools
 	depends = vorbisgain

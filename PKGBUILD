@@ -2,7 +2,7 @@
 
 pkgname=rk-apricity-apps
 pkgver=2016.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackage that installs all some nice apps which are missing in apricitys default installation."
 url="http://notyetthere.com"
 arch=('i686' 'x86_64')
@@ -124,7 +124,6 @@ depends=("pkgtools"
 "xosd"
 "libgoom2"
 "twolame"
-"lirc-utils"
 "libva-intel-driver"
 "vorbis-tools"
 "vorbisgain"
