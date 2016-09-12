@@ -1,7 +1,8 @@
-# Maintainer: Gabriel Fornaeus <gf@hax0r.se>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Gabriel Fornaeus <gf@hax0r.se>
 _pkgname=arc-colors-revival
 pkgname=${_pkgname}-git
-pkgver=v2.0.1.r3.gd42d496
+pkgver=v0.1.r1.gda24820
 pkgrel=1
 pkgdesc="This is a set of backgrounds (and their sources) created to fit with the gnome-colors-revival icon theme and shiki-colors-revival GTK theme."
 arch=('any')
@@ -17,32 +18,17 @@ _gitname="https://github.com/Somasis/arc-colors-revival"
 
 pkgver() {
     cd "$pkgname"
-      git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+      git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_pkgname" ]]; then
-    cd "$_pkgname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitname $_pkgname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_pkgname-build"
-  git clone "$srcdir/$_pkgname" "$srcdir/$_pkgname-build"
-  cd "$srcdir/$_pkgname-build"
+  cd "$srcdir/$pkgname"
 
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-build"
+  cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
 }
 
