@@ -1,7 +1,7 @@
 # Maintainer: Austin Adams <aur@austinjadams.com>
 _pkgname=vlmcsd
 pkgname=$_pkgname-git
-pkgver=r3.0c0b23a
+pkgver=r8.213ac7d
 pkgrel=1
 pkgdesc="KMS Emulator in C (for activating Microsoft products)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non
 license=('unknown')
 provides=('vlmcsd')
 conflicts=('vlmcsd-svn')
-source=("$_pkgname::git+$url.git"
+source=("$_pkgname::git+https://github.com/Wind4/vlmcsd.git"
         'vlmcsd.service'
         'vlmcsd@.service'
         'vlmcsd.socket')
