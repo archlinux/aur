@@ -2,9 +2,10 @@
 
 pkgname=cuberite
 pkgver=1.9.4
-_build=541
-_build_arm=516
-pkgrel=5
+_build_i686=579
+_build_x86_64=578
+_build_arm=556
+pkgrel=6
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://cuberite.org/"
@@ -20,17 +21,17 @@ source=("${pkgname}-backup.service"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.sh")
-source_i686=("Cuberite.b${_build}_i686.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/${_build}/artifact/Cuberite.tar.gz")
-source_x86_64=("Cuberite.b${_build}_x86_64.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/${_build}/artifact/Cuberite.tar.gz")
-source_armv7h=("Cuberite.b${_build}_armhf.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/${_build_arm}/artifact/Cuberite.tar.gz")
+source_i686=("Cuberite.b${_build_i686}_i686.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/${_build_i686}/artifact/Cuberite.tar.gz")
+source_x86_64=("Cuberite.b${_build_x86_64}_x86_64.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/${_build_x86_64}/artifact/Cuberite.tar.gz")
+source_armv7h=("Cuberite.b${_build_arm}_armhf.tar.gz"::"https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/${_build_arm}/artifact/Cuberite.tar.gz")
 md5sums=('262b66be8e102bbd171c2b3057f6634c'
          '312b38afb20c4fb38c260fd6ef8cf138'
          '286800e1783006675d0fec31f566c328'
          'f72ae1914637f80347b104b1b1099526'
          'cd31623dc471e01dbe0f0e0410abc1e7')
-md5sums_i686=('83ee27d00e4fa7df453c25f546a30412')
-md5sums_x86_64=('44408e0d3f7b2d76549327e65078a742')
-md5sums_armv7h=('c0a535983f455c076617b941cfa3f0b7')
+md5sums_i686=('a7c5b5f34397e69523c11ec01362247f')
+md5sums_x86_64=('f81fbe921b7036918d0a7e2dbe637e83')
+md5sums_armv7h=('f0a3f32dd575c1a268c5e7ccc8bc4219')
 
 _game="cuberite"
 _server_root="/srv/cuberite"

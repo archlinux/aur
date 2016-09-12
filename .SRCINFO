@@ -1,7 +1,7 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
 	pkgver = 1.9.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://cuberite.org/
 	install = cuberite.install
 	arch = i686
@@ -29,11 +29,11 @@ pkgbase = cuberite
 	md5sums = 286800e1783006675d0fec31f566c328
 	md5sums = f72ae1914637f80347b104b1b1099526
 	md5sums = cd31623dc471e01dbe0f0e0410abc1e7
-	source_i686 = Cuberite.b541_i686.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/541/artifact/Cuberite.tar.gz
-	md5sums_i686 = 83ee27d00e4fa7df453c25f546a30412
-	source_x86_64 = Cuberite.b541_x86_64.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/541/artifact/Cuberite.tar.gz
-	md5sums_x86_64 = 44408e0d3f7b2d76549327e65078a742
-	source_armv7h = Cuberite.b541_armhf.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/516/artifact/Cuberite.tar.gz
-	md5sums_armv7h = c0a535983f455c076617b941cfa3f0b7
+	source_i686 = Cuberite.b579_i686.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/579/artifact/Cuberite.tar.gz
+	md5sums_i686 = a7c5b5f34397e69523c11ec01362247f
+	source_x86_64 = Cuberite.b578_x86_64.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/578/artifact/Cuberite.tar.gz
+	md5sums_x86_64 = f81fbe921b7036918d0a7e2dbe637e83
+	source_armv7h = Cuberite.b556_armhf.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/556/artifact/Cuberite.tar.gz
+	md5sums_armv7h = f0a3f32dd575c1a268c5e7ccc8bc4219
 
 pkgname = cuberite
