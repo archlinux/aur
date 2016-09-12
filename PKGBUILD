@@ -25,6 +25,7 @@ depends=(
 		'gambas3-gb-image'
 		'gambas3-gb-args'
 		'gambas3-gb-image-effect'
+		'gambas3-gb-util-web'
 		'xbindkeys')
 
 _gitroot="https://github.com/kokoko3k/higgins.git"
