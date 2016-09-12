@@ -4,7 +4,7 @@ pkgname=('peercoin-qt' 'peercoind')
 pkgbase=peercoin
 _gitname=ppcoin
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Peercoin wallet client."
 makedepends=('boost' 'miniupnpc' 'openssl' 'qt4')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
@@ -17,17 +17,25 @@ source=(https://github.com/ppcoin/ppcoin/archive/v${pkgver}ppc.tar.gz
         peercoin-qt@.service
         peercoin-qt-tor@.service
         peercoind@.service
-        peercoind-tor@.service)
+        peercoind-tor@.service
+	net.patch)
 sha256sums=('61d9de36f111c833afa491d4db2473985e126a26fd5f913db6663bdec88c1075'
             '6cb18e19847bbf4066920dbbf4371ddf07409392408fc6d079487e8759ea322e'
             'bc898697baab589b87b0b78edd5aed35a3b800fe039afc03637b4895cfd28f32'
             '3f71859675561dd35c4527d96651b07996968e318dfbf26e8ce959f61a0d682f'
             '80dcdf2bf3540a3ddd3c2cd1299aa97db06bf1efdadee4ad847e3371658dd62f'
-            'fb91690d271faa28919ce11e902f1d2ec926d8eb8ddebff28bef5d2cee78be1e')
+            'fb91690d271faa28919ce11e902f1d2ec926d8eb8ddebff28bef5d2cee78be1e'
+            '27e4cfd3f189a80693befeeefe2655edcbd1ce31aed743846e3ced6ba42b591d')
+
+prepare() {
+	cd "$srcdir/${_gitname}-${pkgver}ppc/src"
+	## patch to solve incompatibility with current boost
+	patch -Np1 < ../../net.patch
+}
 
 build() {
 	cd "$srcdir/${_gitname}-${pkgver}ppc"
-
+	
 	## make qt gui
 	qmake-qt4 USE_QRCODE=1 USE_UPNP=1 USE_SSL=1 \
 	    QMAKE_CFLAGS="${CFLAGS}"\
@@ -35,7 +43,7 @@ build() {
 	make
 
 	## make ppcoind
-  	make -f makefile.unix USE_UPNP=1 USE_SSL=1 -e PIE=1 -C src
+  	make -f makefile.unix USE_UPNP=1 -e PIE=1 -C src
 }
 
 check() {
