@@ -1,7 +1,8 @@
 # Maintainer: Aaron Abbott <aabmass@gmail.com>
+# Contributer: fleischie
 pkgname=hyperterm
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A terminal emulator built with JS/HTML/CSS on electron"
 arch=('any')
@@ -19,13 +20,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/zeit/$pkgname/archive/v${pkgver}.tar.gz")
+source=(
+    "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
+    "autohide-menu.patch"
+)
 noextract=()
-md5sums=('f06827cbae82f13237cc20dfd0ee170d')
+md5sums=('f06827cbae82f13237cc20dfd0ee170d'
+         'f5ca4b1eed8199186edfed94dd137dbc')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+
+    # this patch temporarily "fixes" https://github.com/zeit/hyperterm/issues/158
+    # thanks @fleischie
+    patch -p1 < ../autohide-menu.patch
+
     npm install
 }
 

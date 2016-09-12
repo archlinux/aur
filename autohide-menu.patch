@@ -1,0 +1,12 @@
+diff -aur package.pristine/app/index.js package.new/app/index.js
+--- package.pristine/app/index.js       2016-07-26 20:35:30.000000000 +0200
++++ package.new/app/index.js    2016-09-12 15:23:14.737276532 +0200
+@@ -56,7 +56,8 @@
+       icon: resolve(__dirname, 'static/icon.png'),
+       // we only want to show when the prompt
+       // is ready for user input
+-      show: process.env.HYPERTERM_DEBUG || isDev
++      show: process.env.HYPERTERM_DEBUG || isDev,
++      autoHideMenuBar: true
+     };
+     const browserOptions = plugins.getDecoratedBrowserOptions(browserDefaults);
