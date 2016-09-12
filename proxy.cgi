@@ -11,20 +11,21 @@ set -e
 [[ $REMOTE_ADDR = 127.0.0.1 ]]
 
 cd /var/cache/pacman/pkg
-
 touch used-by-proxy
 
 MIR=$(awk -F '[$=]' '(!/^#/){print$2;exit}' /etc/pacman.d/mirrorlist)
-
 MIR=${MIR# }
-
-[[ $PATH_INFO = /vesath/* ]] &&
-MIR='http://arch.vesath.org'
+MIR=${MIR%/}
 
 PKG=${PATH_INFO##*/}
 
+if [[ $PATH_INFO = /vesath/* ]]; then
+	MIR='http://arch.vesath.org/'
+	PATH_INFO=${PATH_INFO#/vesath/os/}
+fi
+
 [[ $PKG = *.db* ]] &&
-exec curl --silent --include "${MIR# }$PATH_INFO"
+exec curl --silent --include "$MIR$PATH_INFO"
 
 cat <<EOF
 Content-Type: application/octet-stream
