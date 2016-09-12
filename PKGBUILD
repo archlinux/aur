@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-runtime-conflicts'
-pkgver='0.002'
+pkgver='0.003'
 pkgrel='1'
 pkgdesc="Provide information on conflicts for Module::Runtime"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dist-checkconflicts' 'perl-module-runtime')
+depends=('perl-dist-checkconflicts' 'perl-module-runtime' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Module-Runtime-Conflicts'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Module-Runtime-Conflicts-0.002.tar.gz')
-md5sums=('6171a55eb2937b4429bed8dfd75080a9')
-sha512sums=('e07ee4e7707b6c8ee52afc01f7fb7e8a04fc9ab3f3e4624fa7f4011bb314aa77aa0e060c58592e3bc21d9fb6d9d83190bb655b43940e79a4d95557ce720530af')
-_distdir="Module-Runtime-Conflicts-0.002"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Module-Runtime-Conflicts-0.003.tar.gz')
+md5sums=('67aaf699072063cc00c5b6afd4c67a6f')
+sha512sums=('1b72ea7cc9516721290d5ea433169697b4134b5fc77872d6822e4c395a154bf956d469ab5da2802d587d60dfb13b9784014fe492988cf3f8b5820da2d63e8ca1')
+_distdir="Module-Runtime-Conflicts-0.003"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
