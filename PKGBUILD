@@ -11,7 +11,7 @@ install='chromium-fullscreen.install'
 source=('chromium-fullscreen.service'
         'chromium-fullscreen.sysuser'
         'chromium-fullscreen.sh')
-md5sums=('738beda830fcf4f094b83659c9c936c4'
+md5sums=('c1b2275b9f28359fe8742b6ed0f120e1'
          '9e979fbdd1e4a5a04fd0e91ce6a9a7be'
          '9cdf91af72c57eb9e4f359942ced5ddd')
 
