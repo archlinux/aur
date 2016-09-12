@@ -3,16 +3,16 @@
 
 pkgname=mopidy-spotmop
 _pkgname=spotmop
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='A Mopidy Web client that utilizes the Spotify and EchoNest frameworks.'
 arch=('any')
 url="https://github.com/jaedb/spotmop"
 license=('APACHE')
-depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj')
+depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj' 'mopidy-local-images')
 makedepends=('python2' 'python2-setuptools')
 source=("https://github.com/jaedb/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('c81bea4bc57dfe1b375bdbfb5c1ae695')
+md5sums=('639333d9f2606822cbbbec1e47ca685f')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
