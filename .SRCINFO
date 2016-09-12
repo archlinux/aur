@@ -1,0 +1,17 @@
+pkgbase = panzer-git
+	pkgdesc = pandoc + styles
+	pkgver = 1.0.r14.g52bc933
+	pkgrel = 1
+	url = http://github.com/msprev/panzer
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = pandoc
+	depends = python
+	provides = panzer-git
+	conflicts = panzer-git
+	source = git://github.com/msprev/panzer.git
+	md5sums = SKIP
+
+pkgname = panzer-git
+
