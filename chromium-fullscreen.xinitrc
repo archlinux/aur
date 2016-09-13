@@ -11,6 +11,22 @@ elif [ -f "/home/chromium/chromium-autostart-url.txt" ]; then
   URL=`cat /home/chromium/chromium-autostart-url.txt`
 fi
 
+# Disable all energy save features, and leave the monitor always on
+xset s off         # don't activate screensaver
+xset -dpms         # disable DPMS (Energy Star) features.
+xset s noblank     # don't blank the video device
+
+# Hide mouse cursor
+unclutter -display :0.0 -noevents -grab -root -reset &
 
 # Autostart Chromium in Fullscreen mode
-exec /usr/bin/chromium --desktop-window-1080p --kiosk "$URL"
+exec /usr/bin/chromium --disable \
+    --no-first-run \
+    --disable-translate \
+    --disable-infobars \
+    --disable-suggestions-service \
+    --disable-save-password-bubble \
+    --disable-session-crashed-bubble \
+    --window-position="0,0" \
+    --window-size="1920,1080" \
+    --kiosk "$URL"
