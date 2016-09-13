@@ -802,17 +802,22 @@ index 3881cfe..ceb23ce 100644
          # Map preview code
          if self.mapname != message['mapname']:
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index fdcf950..a58fef2 100644
+index fdcf950..f4fc217 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -1,21 +1,26 @@
+@@ -1,21 +1,29 @@
  import sys
- 
+-
  import os
 +import subprocess
++import getpass
  from ctypes import *
-+from config import Settings
  
++from PyQt4.QtGui import QDesktopServices
++
++from config import Settings
++from PyQt4.QtGui import QDesktopServices
++
  # Developer mode flag
  def developer():
 -    return sys.executable.endswith("python.exe")
@@ -827,62 +832,23 @@ index fdcf950..a58fef2 100644
 -UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
 -
 -#These are paths relative to the executable or main.py script
--COMMON_DIR = os.path.join(os.getcwd(), "res")
-+if sys.platform == 'win32':
-+    #On Windows the res dir is relative to the executable or main.py script
-+    COMMON_DIR = os.path.join(os.getcwd(), "res")
-+else:
-+    #On Linux the res dir is instaled as /usr/share/fafclient
++# On Windows the res dir is relative to the executable or main.py script
+ COMMON_DIR = os.path.join(os.getcwd(), "res")
++if sys.platform != 'win32' and not os.path.exists(COMMON_DIR):
++    #On Linux the res dir is installed as /usr/share/fafclient
 +    COMMON_DIR = os.path.join("/usr", "share", "fafclient")
  
  # These directories are in Appdata (e.g. C:\ProgramData on some Win7 versions)
  if 'ALLUSERSPROFILE' in os.environ:
-@@ -62,23 +67,26 @@ PREFSFILENAME = os.path.join(LOCALFOLDER, "game.prefs")
- DOWNLOADED_RES_PIX = {}
- DOWNLOADING_RES_PIX = {}
+@@ -52,33 +60,42 @@ REPO_DIR = os.path.join(APPDATA_DIR, "repo")
+ if not os.path.exists(REPO_DIR):
+     os.makedirs(REPO_DIR)
  
--# This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
--# so we are nice and create a new home for them in the APPDATA_DIR
--try:
--    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
--
--    import ctypes
--    from ctypes.wintypes import MAX_PATH
-+if sys.platform == 'win32':
-+    # This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
-+    # so we are nice and create a new home for them in the APPDATA_DIR
-+    try:
-+        os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
- 
--    dll = ctypes.windll.shell32
--    buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
--    if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
--        PERSONAL_DIR = (buf.value)
--    else:
--        raise StandardError
--except:
--    PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
-+        import ctypes
-+        from ctypes.wintypes import MAX_PATH
- 
-+        dll = ctypes.windll.shell32
-+        buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
-+        if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
-+            PERSONAL_DIR = (buf.value)
-+        else:
-+            raise StandardError
-+    except:
-+        PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
-+else:
-+    PERSONAL_DIR = os.path.expanduser("~")
-+    
- #Ensure Application data directories exist
- if not os.path.isdir(APPDATA_DIR):
-     os.makedirs(APPDATA_DIR)
-@@ -154,6 +162,15 @@ __themedir = None
- from config import _settings
- settings = _settings
- 
++# Public settings object
++# Stolen from Config because reasons
++from config import _settings
++settings = _settings
++
 +# initialize wine settings for non Windows platforms
 +if sys.platform != 'win32':
 +    wine_exe = settings.value("wine/exe", "wine", type=str)
@@ -892,10 +858,58 @@ index fdcf950..a58fef2 100644
 +    else:
 +        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
 +
+ LOCALFOLDER = os.path.join(os.path.expandvars("%LOCALAPPDATA%"), "Gas Powered Games",
+                            "Supreme Commander Forged Alliance")
+ if not os.path.exists(LOCALFOLDER):
+     LOCALFOLDER = os.path.join(os.path.expandvars("%USERPROFILE%"), "Local Settings", "Application Data",
+                                "Gas Powered Games", "Supreme Commander Forged Alliance")
++if not os.path.exists(LOCALFOLDER) and sys.platform != 'win32':
++    LOCALFOLDER = os.path.join(wine_prefix, "drive_c", "users", getpass.getuser(), "Local Settings", "Application Data",
++                               "Gas Powered Games", "Supreme Commander Forged Alliance")
++
+ PREFSFILENAME = os.path.join(LOCALFOLDER, "game.prefs")
++if not os.path.exists(PREFSFILENAME):
++    PREFSFILENAME = os.path.join(LOCALFOLDER, "Game.prefs")
+ 
+ DOWNLOADED_RES_PIX = {}
+ DOWNLOADING_RES_PIX = {}
+ 
+-# This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
+-# so we are nice and create a new home for them in the APPDATA_DIR
++PERSONAL_DIR = QDesktopServices.storageLocation(QDesktopServices.DocumentsLocation)
+ try:
+-    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
+-
+-    import ctypes
+-    from ctypes.wintypes import MAX_PATH
+-
+-    dll = ctypes.windll.shell32
+-    buf = ctypes.create_unicode_buffer(MAX_PATH + 1)
+-    if dll.SHGetSpecialFolderPathW(None, buf, 0x0005, False):
+-        PERSONAL_DIR = (buf.value)
+-    else:
+-        raise StandardError
++    getpass.getuser().decode('ascii')  # Try to see if the user has a wacky username
+ except:
+     PERSONAL_DIR = os.path.join(APPDATA_DIR, "user")
+-
++    
+ #Ensure Application data directories exist
+ if not os.path.isdir(APPDATA_DIR):
+     os.makedirs(APPDATA_DIR)
+@@ -149,11 +166,6 @@ __theme = None
+ __themedir = None
+ 
+ 
+-# Public settings object
+-# Stolen from Config because reasons
+-from config import _settings
+-settings = _settings
+-
  def clean_slate(path):
      if os.path.exists(path):
          logger.info("Wiping " + path)
-@@ -560,23 +577,17 @@ def md5(file_name):
+@@ -560,23 +572,17 @@ def md5(file_name):
  
  def uniqueID(user, session):
      ''' This is used to uniquely identify a user's machine to prevent smurfing. '''
