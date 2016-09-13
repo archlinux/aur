@@ -1,6 +1,6 @@
 pkgbase = my-weather-indicator
 	pkgdesc = A simple indicator for the weather
-	pkgver = r44.sfg43sd
+	pkgver = r30.b8fb5fb
 	pkgrel = 1
 	url = https://launchpad.net/my-weather-indicator
 	install = my-weather-indicator.install

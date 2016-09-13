@@ -1,7 +1,7 @@
 # Maintainer: Luigi Guevara <@killua99>
 
 pkgname=my-weather-indicator
-pkgver=r44.sfg43sd
+pkgver=r30.b8fb5fb
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('i686' 'x86_64')
@@ -21,7 +21,6 @@ pkgver() {
   cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 package() {
   cd $pkgname
