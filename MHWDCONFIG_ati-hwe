@@ -2,7 +2,7 @@
 
 NAME="video-ati-hwe"
 INFO="X.org ati video driver. Standard open source driver for AMD graphic cards with OpenCL, VAAPI and VDPAU support."
-VERSION="2016.08.22"
+VERSION="2016.09.13"
 FREEDRIVER="true"
 PRIORITY="2"
 
@@ -14,7 +14,7 @@ DEVICEIDS=">/var/lib/mhwd/ids/pci/ati.ids"
 MHWDCONFLICTS="video-amdgpu video-ati video-catalyst video-vesa video-amdgpu-hwe"
 
 # Dependencies
-DEPENDS="xf86-video-ati libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
+DEPENDS="xorg-server xf86-video-ati libva-mesa-driver libva-vdpau-driver mesa-vdpau opencl-mesa"
 DEPENDS_64="lib32-libva-vdpau-driver lib32-mesa-vdpau"
 
 

@@ -1,10 +1,14 @@
-# Sea Island experimental support
-# in experimental support
-# broken
-# 130F
+## Sea Island experimental support
+## in experimental support
+# Kaveri [Radeon R7 Graphics]
+130F
+# Hawaii PRO [Radeon R9 290/390]
+67B1
+## broken Hardware
+# 
 #
-# Volcanic & Arctic Islands (Official support)
-# in support
+# #Volcanic & Arctic Islands (Official support)
+# #in support
 67C0
 67DF
 67E0
