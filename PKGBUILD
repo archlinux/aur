@@ -8,7 +8,7 @@ pkgdesc='A command line tool that converts magnet links in to .torrent files.'
 arch=('any')
 url='https://github.com/danfolkes/Magnet2Torrent'
 license=('GPL3')
-depends=('python' 'python-libtorrent-rasterbar')
+depends=('python' 'libtorrent-rasterbar>=1.1')
 makedepends=('git')
 source=("${pkgname}"::'git://github.com/danfolkes/Magnet2Torrent.git')
 md5sums=('SKIP')

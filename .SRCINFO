@@ -7,7 +7,7 @@ pkgbase = magnet2torrent-git
 	license = GPL3
 	makedepends = git
 	depends = python
-	depends = python-libtorrent-rasterbar
+	depends = libtorrent-rasterbar>=1.1
 	source = magnet2torrent-git::git://github.com/danfolkes/Magnet2Torrent.git
 	md5sums = SKIP
 
