@@ -1,8 +1,8 @@
 # Maintainer: Crescent Scroll <crescent-scroll@users.noreply.github.com>
 
 pkgname=auri
-pkgver=0.1.0_alpha
-pkgrel=3
+pkgver=0.2.0_alpha
+pkgrel=1
 pkgdesc='A way to set up static Arch Linux machines'
 
 arch=(any)
