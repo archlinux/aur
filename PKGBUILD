@@ -2,6 +2,7 @@ pkgname=voms-clients
 pkgver=3.0.7
 _gitrev="730a42813a8d520b7d82e34f27adc568dba8fe55" # v3.0.7
 pkgrel=1
+pkgdesc="Virtual Organization Membership Service (Java-based clients)"
 arch=(any)
 url="http://italiangrid.github.io/voms/"
 depends=(java-runtime)
