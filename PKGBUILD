@@ -15,8 +15,8 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.6.5_r419_g9907cc1_4.7.2_1
-pkgrel=1
+pkgver=0.7.0_rc1_r12_gb8eb3c4_4.7.2_1
+pkgrel=6
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git" "linux=4.7.2")
 makedepends=("linux-headers=4.7.2" "git")
@@ -28,18 +28,20 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
         "zfs-utils.initcpio.hook")
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "8190b69853d9670c6aaf1d14c674598a14c58f8ec359e249a1c3010c0b39d074"
-            "67a96169d36853d8f18ee5a2443ecfcd2461a20f9109f4b281bee3945d83518a")
+            "dfafce18240722bee26b5864982b4db1cd6d682c4b93a8b1f4832c98686f50d2"
+            "5f749dbe3b853c5b569d5050b50226b53961cf1fa2cfc5cea0ecc3df75885d2f")
 license=("CDDL")
 groups=("archzfs-linux-git")
 provides=("zfs-utils")
+install=zfs-utils.install
+replaces=("zfs-utils-git")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.7 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.8 \
                 --with-config=user
     make
 }
@@ -53,6 +55,9 @@ package() {
     # move module tree /lib -> /usr/lib
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
+    # Autoload the zfs module at boot
+    mkdir -p "${pkgdir}/etc/modules-load.d"
+    printf "%s\n" "zfs" > "${pkgdir}/etc/modules-load.d/zfs.conf"
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
