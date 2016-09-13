@@ -1,13 +1,13 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7screen
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Display screen streaming ot of your CASIO fx calculator"
 arch=('i686' 'x86_64')
 url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libusb' 'libp7>=1.5-1' 'sdl>=1.2')
+depends=('libp7>=1.5-1' 'sdl>=1.2')
 makedepends=('make' 'asciidoc' 'gzip')
 optdepends=()
 provides=()
