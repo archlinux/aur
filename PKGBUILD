@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-datetime
-pkgver=0.1.1
+pkgver=0.1.1.1
 pkgrel=1
 pkgdesc='Date & Time plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-datetime/loki/${pkgver}/+download/switchboard-plug-datetime-${pkgver}.tar.xz")
-sha256sums=('f182a3a4f0eb431cce240029954a9db35de8f2916b51c0e7ce9dcf7607165ff2')
+sha256sums=('f17ca0bc26ef8228ae50e165c2fcb26daa0f7091997e387e5130afa4ba66cf20')
 
 prepare() {
   cd switchboard-plug-datetime-${pkgver}
