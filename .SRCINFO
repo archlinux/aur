@@ -1,0 +1,20 @@
+pkgbase = gravitation
+	pkgdesc = Gravitation is a retro gravity cave flyer for 1-4 players, featuring single player time trials or multiplayer racing and dogfighting.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://www.demonstudios.com/gravitation.html
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	source = http://www.demonstudios.com/Gravitation_Linux.zip
+	source = gravitation.desktop
+	source = gravitation
+	md5sums = 4578a3e316561bec8f016d7e0285aec7
+	md5sums = 84f0cfadf91e2785d1e6386c6ccbc73f
+	md5sums = e78709ba830c99bfceb6828f313b2df0
+
+pkgname = gravitation
+
