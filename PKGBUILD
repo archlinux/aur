@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=capnet-assist
-pkgver=0.2
+pkgver=0.2.0.1
 pkgrel=1
 pkgdesc='Captive Portal Assistant'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ groups=('pantheon')
 depends=('gcr' 'glib2' 'glibc' 'gtk3' 'libsoup' 'networkmanager' 'webkit2gtk')
 makedepends=('cmake' 'intltool' 'vala')
 source=("https://launchpad.net/capnet-assist/loki/${pkgver}/+download/capnet-assist-${pkgver}.tar.xz")
-sha256sums=('f44f3abe8913a709b111bf105718cdb4a129b06704ad6d1b7bd516c3ab6a8134')
+sha256sums=('d278b62940d985a55e00b1e17be3e336949be9d89e165bc744226afcfd624e44')
 
 prepare() {
   cd capnet-assist-${pkgver}
