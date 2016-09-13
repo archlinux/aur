@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=(mmixware{,-docs,-src})
-pkgver=20131017
-pkgrel=5
+pkgver=20160804
+pkgrel=1
 pkgdesc="MMIX assembler and simulator"
 arch=('i686' 'x86_64')
 url="http://mmix.cs.hm.edu/"
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('texlive-core')
 source=("http://mmix.cs.hm.edu/src/mmix-$pkgver.tgz"
         LICENSE)
-sha256sums=('aa64c4b9dc3cf51f07b330791f8ce542b0ae8a1132e098fa95a19b31350050b4'
+sha256sums=('fad8e64fddf2d75cbcd5080616b47e11a2d292a428cdb0c12e579be680ecdee9'
             '62d0fc588ebbbc531699c94860bec447a77b94fa5078787e354b1a0593bcdb75')
 noextract=("mmix-${pkgver}.tgz")
 
