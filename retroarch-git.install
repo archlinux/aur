@@ -2,7 +2,7 @@ post_install() {
 	cat <<- EOF
 		:: You can find a list of libretro cores by searching
 		:: "libretro" in the Arch Linux User Repository.
-		:: e.g. 'pacaur -s libretro'
+		:: For example: 'pacaur -s libretro'
 	EOF
 }
 
