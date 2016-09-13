@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=scratch-text-editor-bzr
-pkgver=r1755
+pkgver=r1756
 pkgrel=1
 pkgdesc='The Pantheon Text Editor'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ groups=('pantheon-unstable')
 depends=('desktop-file-utils' 'glib2' 'glibc' 'gtk3' 'gtksourceview3' 'libgee'
          'libpeas' 'pango' 'zeitgeist'
          'libgranite.so')
-makedepends=('cmake' 'gobject-introspection' 'gtkspell3' 'intltool' 'vala'
-             'vte3' 'webkit2gtk')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'gtkspell3' 'intltool'
+             'vala' 'vte3' 'webkit2gtk')
 optdepends=('gtkspell3: Spell Check extension'
             'vala: Outline extension'
             'vte3: Terminal extension'
