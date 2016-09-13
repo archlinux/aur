@@ -1,6 +1,6 @@
 pkgname=telegram-desktop
 pkgver=0.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -58,19 +58,21 @@ source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
+    "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtwayland-opensource-src-$qt_version.tar.xz"
     "git+https://chromium.googlesource.com/external/gyp"
     "telegramdesktop.desktop"
     "tg.protocol"
-    "fix-build.diff"
+    "aur-fixes.diff"
 )
 sha256sums=(
     'SKIP'
     '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
     '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
+    'b55d0142f245c927970031ef908e98cb20f1d7a2a5441647ed937252fed3bfcc'
     'SKIP'
     '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-    '617383830419170c71aea86b8776ff884c0cb737a3c5d586c05a8595b9dc7863'
+    'f792a8c994978dee7e5b04997d4f133e55c400f94059ffd0946ad9735ac2e625'
 )
 
 prepare() {
@@ -86,6 +88,7 @@ prepare() {
         
         mv "$srcdir/qtbase-opensource-src-$qt_version" "$qt_src_dir/qtbase"
         mv "$srcdir/qtimageformats-opensource-src-$qt_version" "$qt_src_dir/qtimageformats"
+        mv "$srcdir/qtwayland-opensource-src-$qt_version" "$qt_src_dir/qtwayland"
         
         cd "$qt_src_dir/qtbase"
         patch -p1 -i "$qt_patch_file"
@@ -105,7 +108,7 @@ prepare() {
     fi
     
     cd "$srcdir/tdesktop"
-    git apply "$srcdir/fix-build.diff"
+    git apply "$srcdir/aur-fixes.diff"
 }
 
 build() {
@@ -127,16 +130,21 @@ build() {
         -system-pcre \
         -system-xcb \
         -system-xkbcommon-x11 \
-        -no-opengl \
         -no-gtkstyle \
         -static \
         -nomake examples \
         -nomake tests
+        #-no-opengl
     make
     make install
     export PATH="$srcdir/qt/bin:$PATH"
     
     cd "$qt_src_dir/qtimageformats"
+    qmake .
+    make
+    make install
+    
+    cd "$qt_src_dir/qtwayland"
     qmake .
     make
     make install

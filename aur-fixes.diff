@@ -1,12 +1,40 @@
+diff --git a/Telegram/SourceFiles/platform/linux/linux_libs.cpp b/Telegram/SourceFiles/platform/linux/linux_libs.cpp
+index 484b6c5..ab77e35 100644
+--- a/Telegram/SourceFiles/platform/linux/linux_libs.cpp
++++ b/Telegram/SourceFiles/platform/linux/linux_libs.cpp
+@@ -201,6 +201,10 @@ f_unity_launcher_entry_get_for_desktop_id unity_launcher_entry_get_for_desktop_i
+ void start() {
+ 	DEBUG_LOG(("Loading libraries"));
+ 
++	// Workaround for wayland support
++	if (QString(getenv("QT_QPA_PLATFORM")).startsWith(qstr("wayland"), Qt::CaseInsensitive))
++		return;
++
+ 	bool gtkLoaded = false;
+ 	bool indicatorLoaded = false;
+ 	QLibrary lib_gtk, lib_indicator;
+diff --git a/Telegram/SourceFiles/stdafx.cpp b/Telegram/SourceFiles/stdafx.cpp
+index 06bd4af..755d97f 100644
+--- a/Telegram/SourceFiles/stdafx.cpp
++++ b/Telegram/SourceFiles/stdafx.cpp
+@@ -34,6 +34,7 @@ Q_IMPORT_PLUGIN(QGenericEnginePlugin)
+ #elif defined Q_OS_LINUX // Q_OS_LINUX
+ Q_IMPORT_PLUGIN(QWebpPlugin)
+ Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)
++Q_IMPORT_PLUGIN(QWaylandIntegrationPlugin)
+ Q_IMPORT_PLUGIN(QConnmanEnginePlugin)
+ Q_IMPORT_PLUGIN(QGenericEnginePlugin)
+ Q_IMPORT_PLUGIN(QNetworkManagerEnginePlugin)
 diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
-index 0e8db70..2934e50 100644
+index 0e8db70..7f5a7d8 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
-@@ -69,19 +69,15 @@
+@@ -69,19 +69,16 @@
      ],
  
      'defines': [
 -      'AL_LIBTYPE_STATIC',
++      '__STDC_FORMAT_MACROS',
 +      'TDESKTOP_DISABLE_AUTOUPDATE',
 +      'TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME',
      ],
@@ -26,7 +54,7 @@ index 0e8db70..2934e50 100644
      'sources': [
        '<@(qrc_files)',
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
-index ea6f0f5..dcd2cfd 100644
+index ea6f0f5..9fc159c 100644
 --- a/Telegram/gyp/qt.gypi
 +++ b/Telegram/gyp/qt.gypi
 @@ -29,7 +29,6 @@
@@ -68,7 +96,7 @@ index ea6f0f5..dcd2cfd 100644
              ],
            }],
          ],
-@@ -206,8 +190,15 @@
+@@ -206,15 +190,36 @@
          '<(qt_loc)/plugins/platforms/xcb/xcb-static',
        ],
        'libraries': [
@@ -84,8 +112,9 @@ index ea6f0f5..dcd2cfd 100644
 +        'jpeg',
          'X11',
          'X11-xcb',
++        'GL',
          'dbus-1',
-@@ -215,6 +206,19 @@
+         'dl',
          'gthread-2.0',
          'glib-2.0',
          'pthread',
@@ -106,10 +135,10 @@ index ea6f0f5..dcd2cfd 100644
        'include_dirs': [
          '<(qt_loc)/mkspecs/linux-g++',
 diff --git a/Telegram/gyp/telegram_linux.gypi b/Telegram/gyp/telegram_linux.gypi
-index 15bfbb6..5992643 100644
+index 15bfbb6..5ed7872 100644
 --- a/Telegram/gyp/telegram_linux.gypi
 +++ b/Telegram/gyp/telegram_linux.gypi
-@@ -29,31 +29,41 @@
+@@ -29,31 +29,46 @@
        ],
      },
      'include_dirs': [
@@ -140,6 +169,9 @@ index 15bfbb6..5992643 100644
 -      'libva-drm.a',
 -      'libva.a',
 -      'libz.a',
++      'Qt5WaylandClient',
++      'qwayland-generic',
++      'qwayland-egl',
 +      'xkbcommon',
 +      'xkbcommon-x11',
 +      'xcb-randr',
@@ -151,6 +183,8 @@ index 15bfbb6..5992643 100644
 +      'xcb-keysyms',
 +      'xcb-image',
 +      'xcb-render-util',
++      'wayland-client',
++      'wayland-cursor',
 +      'proxy',
 +      'lzma',
 +      'openal',
