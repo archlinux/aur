@@ -1,4 +1,6 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Generate new listing of cores: 
+# pacaur -s libretro | sed 's/aur\///' | sed 'N;s/\n/ /' | awk '{print $1}'
 # This package tracks the latest source code on GitHub
 # Clone specific tags:
 
@@ -8,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1096.51b0e61
+pkgver=1.3.6.r1142.337a0aa
 pkgrel=1
 #epoch=1
 git_name=RetroArch
@@ -26,21 +28,12 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
          'libfreetype.so' 'libswresample.so' 'libswscale.so' 'libudev.so'
 	 'nvidia-cg-toolkit')
 makedepends=('git' 'vulkan-icd-loader')
-optdepends=('libretro-desmume: Nintendo DS core'
-            'libretro-gambatte: Nintendo Game Boy/Game Boy Color core'
-            'libretro-genesis-plus: Sega Master System/Genesis/Game Gear/CD/32X core'
-            'libretro-mgba: Nintendo Game Boy Advance core'
-            'libretro-mupen64plus: Nintendo 64 core'
-            'libretro-nestopia: Nintendo Entertainment System core'
-            'libretro-pcsx-rearmed: Sony PlayStation core'
-            'libretro-reicast: Sega Dreamcast core'
-            'libretro-snes9x: Super Nintendo Entertainment System core'
-            'libretro-yabause: Sega Saturn core'
-            'libretro-overlays: Collection of overlays'
-            'libretro-shaders: Collection of shaders'
-            'retroarch-assets-xmb: XMB menu assets'
-            'retroarch-autoconfig-udev: udev joypad autoconfig'
-	    'xdg-utils-git')
+install=$pkgname.install
+optdepends=('libretro-overlays: Collection of overlays'
+	    'libretro-shaders: Collection of shaders'
+	    'retroarch-assets-xmb: XMB menu assets'
+	    'retroarch-autoconfig-udev: udev joypad autoconfig'
+	    'xdg-utils-git: Includes updated screensaver suspend fixes')
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
