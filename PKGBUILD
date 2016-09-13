@@ -16,22 +16,22 @@
 #
 #
 pkgname="spl-linux-lts"
-pkgver=0.6.5.7_4.4.20_1
-pkgrel=1
+pkgver=0.6.5.8_4.4.20_1
+pkgrel=2
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-lts" "kmod" "linux-lts=4.4.20")
 makedepends=("linux-lts-headers=4.4.20")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.7.tar.gz")
-sha256sums=("dc8690e407183eeb7a6af0e7692d6e0a1cd323d51dd1aa492522c421b1924ea0")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/spl-0.6.5.8.tar.gz")
+sha256sums=("2d22117106782222d2b7da88cc657b7b9c44d281b1cc74d60761e52d33ab1155")
 groups=("archzfs-linux-lts")
 license=("GPL")
 install=spl.install
 provides=("spl")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.7"
+    cd "${srcdir}/spl-0.6.5.8"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
                 --with-linux=/usr/lib/modules/4.4.20-1-lts/build \
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/spl-0.6.5.7"
+    cd "${srcdir}/spl-0.6.5.8"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
