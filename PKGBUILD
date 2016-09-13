@@ -1,20 +1,20 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r778.1601ab1
+pkgver=r1054.9393cc2
 pkgrel=1
-pkgdesc="Drive your FRC robot with your phone or tablet!"
+pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
-url="https://github.com/wint-3794/qdriverstation"
+url="https://github.com/FRC-Utilities/qdriverstation"
 license=('MIT')
 groups=()
-depends=('sdl2' 'qt5-multimedia')
+depends=('sdl2' 'qt5-multimedia' 'qt5-quickcontrols')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=('qdriverstation::git+https://github.com/WinT-3794/QDriverStation.git')
+source=('qdriverstation::git+https://github.com/FRC-Utilities/QDriverStation.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -41,4 +41,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make INSTALL_ROOT="$pkgdir/" install
+
+	# Install MIT license
+	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
