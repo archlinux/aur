@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Adapted from https://wiki.zandronum.com/Compiling_Zandronum_on_Linux#Arch_Linux
 pkgname=zandronum-hg
 pkgver=r9707.dd165ac5fc29
-pkgrel=1
+pkgrel=2
 _fmod_ver_true="4.24.16"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer. (Development branch checkout)"
@@ -39,8 +39,8 @@ source_i686=("http://zandronum.com/essentials/fmod/fmodapi${_fmod_ver}linux.tar.
 # see https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules if you require git submodules
 sha512sums=('SKIP'
 	    'b928f3211ff31f17fc2d754728e299b5783e1b946b4019713718b7613e13ff0a7c4f02087c0ab4f137f7a0de57a2bfeaa6ed63285d0e6063d2b4734b097ce9e1'
-            '7595135cc49c02278b9871afe5291e45fb6811b858b900f52f6b606239aafc02f6f046f0de516922fad4cac2236320fde9711040a18c0a639f3b1be26fd54404'
-            'ffa128418e045dc8a978f10a09964f385e0097a71fb6e62396447707a0c396d7526f24b3fc74c33aecca109b79aa8a36c309774904293909182dd80637e9c5e1'
+            '994d8aeba3a7eb13a0bdf9eaf1497b262b51c146bfc0f4769de41d64a640e411236f388d266cd80fcd19d93a04c67d27666fb2132407a1841d11dace886ec8b9'
+            'bef074f7d9b68fd61c1ed978525e7ef3385a986565be64478e41eaccccdb57e157cab1910f02ad467b07bef82f6d6200faf7a1dc1ce2322197101fab259f1325'
             'SKIP'
             'SKIP'
             'SKIP')
