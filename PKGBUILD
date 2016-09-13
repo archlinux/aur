@@ -16,7 +16,7 @@
 #
 pkgname="zfs-utils-linux-git"
 pkgver=0.7.0_rc1_r12_gb8eb3c4_4.7.2_1
-pkgrel=6
+pkgrel=7
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git" "linux=4.7.2")
 makedepends=("linux-headers=4.7.2" "git")
@@ -34,6 +34,7 @@ license=("CDDL")
 groups=("archzfs-linux-git")
 provides=("zfs-utils")
 install=zfs-utils.install
+conflicts=('zfs-utils-linux' 'zfs-utils-linux-lts')
 replaces=("zfs-utils-git")
 
 build() {
