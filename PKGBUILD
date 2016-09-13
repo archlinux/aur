@@ -1,15 +1,14 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=2.2.1-RELEASE
-_swiftold=2.2-SNAPSHOT-2016-01-11-a
+_swiftver=3.0-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=4
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses')
+         'sqlite' 'ncurses' 'libkqueue')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
              'python2-sphinx')
 
@@ -19,36 +18,26 @@ source=(
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch" "pod2man_release.patch"
+    "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
+    "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
+    "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
+    "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
+    "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
+    "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
+    "swift-sphinx2.patch"
 )
-sha256sums=('e971e2287055da72564356f369bad97e95821afb1ef36157e954a04a7e90753a'
-            'f7977e5bb275494b5dac4490afc5d634f894ba5f209f3b2dbd5b7e520fa5fce2'
-            '40bdfa7eec0497ec69005d6a5d018b12c85aa2c0959d3408ecaaa9e34ff0415f'
-            '2098043dbda98374e784d3357f71f8e931aea3ac958c042adf0df0fae7bc22a3'
-            '254d3c02bf2b03ad456fa3ad27b4da854e36318fcaf6b6f199fdb3e978a90803'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
-            '68fe01cac3bf796fd06a0d42ab97fcf3db9eba27e582dad06bde76a9992d7028')
-
-# Set this to 1 to enable the experimental parts (swiftpm, corelibs)
-# Otherwise, the standard libraries, llbuild, and swiftpm will NOT be available
-# (The default [0] matches Apple's release notes for Linux at
-# https://swift.org/blog/swift-2-2-released/ )
-_experimental=0
-
-if (( _experimental )); then
-    source+=(
-        "swift-llbuild-${_swiftold}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftold}.tar.gz"
-        "swift-package-manager-${_swiftold}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftold}.tar.gz"
-        "swift-corelibs-xctest-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftold}.tar.gz"
-        "swift-corelibs-foundation-${_swiftold}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftold}.tar.gz"
-    )
-    sha256sums+=(
-        'c5e92b71daecbeeb8fe043fe58bc85c7deacaadc21caa38357d569ae4093a023'
-        '60b11af87b565d68dd5e6d13af5052f359923e3146a6ffc8336c86d68b5c4fa6'
-        '5fde35c76b688ec37d8e25f0bc3cc1738548d8bd03a709bcfb3cb2744b221a9e'
-        '66bf0fb21c37bb2792b113b770e225c90bca548b2246f86054e14c6cc79f0517'
-    )
-fi
+sha256sums=('a278ca9ef489fbab00dc9864a2ac1bd84c8324bba7463ce7e3797debaf8cee84'
+            '30bff4c69fae90a6b3aeb7fef14681c1e291fd57cf695d330adb095eac2718e6'
+            '75027d876a58c42200d2439c2f0e3aa569a98d2c245f609eab0c5d32a6514db4'
+            'd4244307aa18842ba48f93c48aa23184c218641fbdcdd77fa7207765961d3cbc'
+            'c2d4c81ebfc9602091b7b536a54acc1ce7719f23ce4c3866e1bdb8c33a949ab6'
+            '6dd33ec7b513492f8c0aa6f0449ef21799331c43cb7f329225dcdddf17a706d8'
+            '1dc3bac89e096f2a338c19a0599c9448fd04e67d8e9c954790754b924c36b91f'
+            '1f9c170e259ebaf7d0ec623520e7f8f15c8ede85164423e0ca527db3ce4edd9d'
+            '391bd525be98396efcf7845dc88be676db585ead77a823df93fd4f1feea75b1a'
+            '7f2554a218b6571a7d7e15a7101139cd6e672334d18e07b13b20a5d6caf6df52'
+            '2a2072d52c4c361bd946136ccc8db4fbf1d0944f40b67d14a2b1e2ebf4f36709'
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
     # Use python2 where appropriate
@@ -64,28 +53,20 @@ prepare() {
          "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
 
     # Use directory names which build-script expects
-    for sdir in llvm clang lldb cmark; do
+    for sdir in llvm clang lldb cmark llbuild; do
         ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
     done
+    for sdir in corelibs-xctest corelibs-foundation corelibs-libdispatch \
+                integration-tests
+    do
+        ln -sf swift-${sdir}-swift-${_swiftver} swift-${sdir}
+    done
     ln -sf swift-swift-${_swiftver} swift
-
-    if (( _experimental )); then
-        for sdir in corelibs-xctest corelibs-foundation; do
-            ln -sf swift-${sdir}-swift-${_swiftold} swift-${sdir}
-        done
-        ln -sf swift-llbuild-swift-${_swiftold} llbuild
-        ln -sf swift-package-manager-swift-${_swiftold} swiftpm
-    fi
+    ln -sf swift-package-manager-swift-${_swiftver} swiftpm
 
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
-
-    # Recent versions of pod2man require an argument to --release.  If no
-    # argument is provided, it will treat the next option as its argument,
-    # thereby breaking all subsequent arguments.  So let's put something
-    # useful there instead :)
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/pod2man_release.patch" )
 }
 
 build() {
@@ -93,9 +74,9 @@ build() {
 
     export SWIFT_SOURCE_ROOT="$srcdir"
     export LDFLAGS='-ldl -lpthread'
-    local _buildargs=(--lldb)
-    (( _experimental )) && _buildargs+=(--llbuild --swiftpm --xctest --foundation)
-    utils/build-script -R "${_buildargs[@]}" \
+    export PATH="$PATH:/usr/bin/core_perl"
+    utils/build-script -R \
+        --lldb --llbuild --swiftpm --xctest --foundation --libdispatch \
         -j "$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
 }
 
@@ -121,7 +102,7 @@ package_swift() {
     # These are based roughly on what's included in the binary release packages
     (
         cd swift-linux-$CARCH
-        install -m755 bin/swift bin/swift-{demangle,compress,ide-test} "$pkgdir/usr/bin"
+        install -m755 bin/swift bin/swift-{demangle,ide-test} "$pkgdir/usr/bin"
         ln -s swift "$pkgdir/usr/bin/swiftc"
         ln -s swift "$pkgdir/usr/bin/swift-autolink-extract"
 
@@ -129,37 +110,39 @@ package_swift() {
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
 
         umask 0022
-        cp -rL lib/swift/{clang,glibc,linux,shims} "$pkgdir/usr/lib/swift/"
+        cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
     )
-    if (( _experimental )); then
-        (
-            cd llbuild-linux-$CARCH
-            install -m755 bin/swift-build-tool "$pkgdir/usr/bin"
-        )
-        (
-            cd swiftpm-linux-$CARCH
-            install -m755 debug/swift-build "$pkgdir/usr/bin"
+    (
+        cd llbuild-linux-$CARCH
+        install -m755 bin/swift-build-tool "$pkgdir/usr/bin"
+    )
+    (
+        cd swiftpm-linux-$CARCH
+        install -m755 debug/swift-{build,test,package} "$pkgdir/usr/bin"
 
-            install -dm755 "$pkgdir/usr/lib/swift/pm"
-            install -m755 lib/swift/pm/libPackageDescription.so "$pkgdir/usr/lib/swift/pm"
-            install -m644 lib/swift/pm/PackageDescription.swiftmodule "$pkgdir/usr/lib/swift/pm"
-        )
-        (
-            cd foundation-linux-$CARCH
-            install -m755 Foundation/libFoundation.so "$pkgdir/usr/lib/swift/linux/"
-            install -m644 Foundation/Foundation.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
-            install -m644 Foundation/Foundation.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
+        install -dm755 "$pkgdir/usr/lib/swift/pm"
+        install -m755 lib/swift/pm/libPackageDescription.so "$pkgdir/usr/lib/swift/pm"
+        install -m644 lib/swift/pm/PackageDescription.swiftmodule "$pkgdir/usr/lib/swift/pm"
+    )
+    (
+        cd xctest-linux-$CARCH
+        install -m755 libXCTest.so "$pkgdir/usr/lib/swift/linux/"
+        install -m644 XCTest.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
+        install -m644 XCTest.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
+    )
+    (
+        cd foundation-linux-$CARCH
+        install -m755 Foundation/libFoundation.so "$pkgdir/usr/lib/swift/linux/"
+        install -m644 Foundation/Foundation.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
+        install -m644 Foundation/Foundation.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
 
-            umask 0022
-            cp -r Foundation/usr/lib/swift/CoreFoundation "$pkgdir/usr/lib/swift/"
-        )
-        (
-            cd xctest-linux-$CARCH
-            install -m755 libXCTest.so "$pkgdir/usr/lib/swift/linux/"
-            install -m644 XCTest.swiftdoc "$pkgdir/usr/lib/swift/linux/$CARCH"
-            install -m644 XCTest.swiftmodule "$pkgdir/usr/lib/swift/linux/$CARCH"
-        )
-    fi
+        umask 0022
+        cp -r Foundation/usr/lib/swift/CoreFoundation "$pkgdir/usr/lib/swift/"
+    )
+    (
+        cd libdispatch-linux-$CARCH
+        make install DESTDIR="$pkgdir"
+    )
 
     # License file
     install -dm755 "$pkgdir/usr/share/licenses/swift"
