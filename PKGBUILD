@@ -16,7 +16,7 @@
 #
 pkgname="zfs-utils-linux"
 pkgver=0.6.5.8_4.7.2_1
-pkgrel=6
+pkgrel=7
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux" "linux=4.7.2")
 makedepends=("linux-headers=4.7.2")
@@ -34,6 +34,7 @@ license=("CDDL")
 groups=("archzfs-linux")
 provides=("zfs-utils")
 install=zfs-utils.install
+conflicts=('zfs-utils-linux-git' 'zfs-utils-linux-lts')
 replaces=("zfs-utils-git")
 
 build() {
