@@ -1,8 +1,8 @@
 # Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=sorr
-pkgver=5.0
-pkgrel=1
+pkgver=5.0.0
+pkgrel=2
 pkgdesc="Streets of Rage Remake (fan remake)"
 arch=('i686' 'x86_64')
 url="http://www.soronline.net/sorr.htm"
