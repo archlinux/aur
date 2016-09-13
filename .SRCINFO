@@ -1,0 +1,30 @@
+pkgbase = my-weather-indicator
+	pkgdesc = A simple indicator for the weather
+	pkgver = r44.sfg43sd
+	pkgrel = 1
+	url = https://launchpad.net/my-weather-indicator
+	install = my-weather-indicator.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libappindicator-gtk3
+	depends = gtk3
+	depends = glib2
+	depends = libnotify
+	depends = webkitgtk
+	depends = geocode-glib
+	depends = python-pytz
+	depends = python-cairo
+	depends = python-lxml
+	depends = python-dateutil
+	depends = python2-requests-oauthlib
+	depends = geoclue2
+	depends = geoip
+	provides = my-weather-indicator
+	conflicts = my-weather-indicator
+	source = git+https://git.launchpad.net/my-weather-indicator
+	sha256sums = SKIP
+
+pkgname = my-weather-indicator
+
