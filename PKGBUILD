@@ -1,11 +1,11 @@
 pkgname=voms-clients
-pkgver=3.0.6
+pkgver=3.0.7
+_gitrev="730a42813a8d520b7d82e34f27adc568dba8fe55" # v3.0.7
 pkgrel=1
 arch=(any)
 url="http://italiangrid.github.io/voms/"
 depends=(java-runtime)
 makedepends=(java-environment maven)
-_gitrev="c30b6625f842f9c8f4fac3441745ae8845bf2adb" # v3.0.6
 source=("git+https://github.com/italiangrid/voms-clients#commit=$_gitrev")
 sha256sums=('SKIP')
 
