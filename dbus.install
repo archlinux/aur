@@ -1,0 +1,21 @@
+_svc="dbus"
+_rlvl="default"
+
+post_install() {
+	_cmd="rc-update add ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}
+
+post_upgrade() {
+    post_install "$1"
+  # Make sure new rc script can shutdown running dbus
+  if [ -f run/dbus.pid -a -d run/dbus ]; then
+    mv run/dbus.pid run/dbus/pid
+  fi
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc} ${_rlvl}"
+	echo "	==> run '${_cmd}'"
+}
+
