@@ -1,8 +1,8 @@
-# Maintainer: Rob Lynn <rob22uk at gmail dot com>
-# Contributor: Michal Lisowski <lisu87@gmail.com>
+# Maintainer: Michal Lisowski <lisu87@gmail.com>
 # Contributor: Angelo "Encelo" Theodorou <encelo@users.sourceforge.net>
 # Contributor: Alessio 'alexwizard' Sergi <sergi.alessio {at} gmail.com>
 # Contributor: Eran Yahav <eran910@gmail.com>
+# Contributor: Rob Lynn <rob22uk at gmail dot com>
 
 pkgname=gnome-gmail-notifier
 pkgver=0.10.1
