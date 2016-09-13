@@ -12,7 +12,7 @@ url=''
 depends=()
 conflicts=()
 provides=('yubikey-u2f-udevrules')
-makedepends=('git')
+makedepends=()
 install='yubikey-u2f-udevrules.install'
 source=('70-smartcard.rules'
         '70-u2f.rules')

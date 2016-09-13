@@ -5,7 +5,6 @@ pkgbase = yubikey-u2f-udevrules
 	install = yubikey-u2f-udevrules.install
 	arch = any
 	license = publicdomain
-	makedepends = git
 	provides = yubikey-u2f-udevrules
 	source = 70-smartcard.rules
 	source = 70-u2f.rules
