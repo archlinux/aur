@@ -1,0 +1,12 @@
+pkgbase = firacode-fonts
+       	pkgdesc = Monospaced font with programming ligatures
+       	pkgver = 1.201
+       	pkgrel = 1
+       	install = firacode-fonts.install
+       	arch = any
+       	depends = fontconfig
+       	depends = xorg-font-utils
+       	source = https://github.com/tonsky/FiraCode/releases/download/1.201/FiraCode_1.201.zip
+       	md5sums = 632adc945ab5fff15ea164455508ac72
+
+pkgname = firacode-fonts
