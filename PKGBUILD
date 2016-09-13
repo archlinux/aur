@@ -9,7 +9,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.28
-pkgver=${_pkgmajor}.1
+pkgver=${_pkgmajor}.2
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -26,7 +26,7 @@ options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su})
-md5sums=('e2d863efaf4fd330a42c5efe9f1b02b4'
+md5sums=('46a232a37bce45371a86d19300edc47a'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
