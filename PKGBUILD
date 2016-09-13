@@ -192,9 +192,8 @@ if $_patching; then
   sed -i "s/linux-clang/linux*/" ${_webenginefileoverride} || exit 1
 
   # hard coded off, so we have to hard code it on
-  #local _reducerelocations="${_basedir}/config.tests/unix/bsymbolic_functions.test"
-  #sed -i "s/error/warning/" ${_reducerelocations} || exit 1
-  #_device_configure_flags="$_device_configure_flags -reduce-relocations"
+  local _reducerelocations="${_basedir}/config.tests/unix/reduce_relocs/bsymbolic_functions.c"
+  sed -i "s/error/warning/" ${_reducerelocations} || exit 1
 
   cd ${_basedir}
   patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
@@ -228,6 +227,10 @@ fi
                  -v \
                  \
                  $_build_type \
+                 -fontconfig \
+                 -system-freetype \
+                 -reduce-relocations \
+                 -reduce-exports \
                  -silent \
                  -qtlibinfix "Pi${_piver}" \
                  -pch \
