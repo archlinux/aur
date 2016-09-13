@@ -9,6 +9,7 @@ pkgbase = my-weather-indicator-git
 	license = GPL3
 	makedepends = git
 	makedepends = libappindicator-gtk3
+	makedepends = python-distutils-extra
 	depends = gtk3
 	depends = glib2
 	depends = libnotify
