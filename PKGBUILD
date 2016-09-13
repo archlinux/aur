@@ -3,7 +3,7 @@
 # Contributor: dserban <dserban01@yahoo.com>
 
 pkgname=switchboard-bzr
-pkgver=r566
+pkgver=r680
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee' 'wayland'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'vala')
+makedepends=('bzr' 'cmake' 'intltool' 'vala')
 optdepends=('switchboard-plug-about-bzr: About plug'
             'switchboard-plug-default-applications-bzr: Default applications plug'
             'switchboard-plug-elementary-tweaks-bzr: Elementary tweaks plug'
@@ -21,7 +21,6 @@ optdepends=('switchboard-plug-about-bzr: About plug'
             'switchboard-plug-power-bzr: Power plug')
 provides=('switchboard' 'libswitchboard-2.0.so')
 conflicts=('switchboard')
-install='switchboard.install'
 source=('bzr+lp:switchboard')
 sha256sums=('SKIP')
 
