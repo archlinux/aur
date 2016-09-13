@@ -23,7 +23,7 @@ pkgbase = my-weather-indicator-git
 	depends = geoip
 	provides = my-weather-indicator
 	conflicts = my-weather-indicator
-	source = $pkgname::git+https://git.launchpad.net/my-weather-indicator
+	source = my-weather-indicator-git::git+https://git.launchpad.net/my-weather-indicator
 	sha256sums = SKIP
 
 pkgname = my-weather-indicator-git

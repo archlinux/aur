@@ -15,7 +15,7 @@ makedepends=('git' 'libappindicator-gtk3')
 provides=('my-weather-indicator')
 conflicts=('my-weather-indicator')
 install='my-weather-indicator.install'
-source=('$pkgname::git+https://git.launchpad.net/my-weather-indicator')
+source=($pkgname::git+https://git.launchpad.net/my-weather-indicator)
 sha256sums=('SKIP')
 
 pkgver() {
