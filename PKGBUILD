@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc='A way to set up static Arch Linux machines'
 
 arch=(any)
-url="https://github.com/crescent-scroll/$pkgname.git"
+url="https://github.com/crescent-scroll/$pkgname"
 license=(GPL3)
 
 makedepends=(git)
-source=("$pkgname::git+$url#tag=${pkgver//_/-}")
+source=("$pkgname::git+$url.git#tag=${pkgver//_/-}")
 md5sums=(SKIP)
 install="$pkgname.install"
 
