@@ -12,7 +12,6 @@ pkgbase = ffmpeg-full
 	license = custom:UNREDISTRIBUTABLE
 	makedepends = hardening-wrapper
 	makedepends = libvdpau
-	makedepends = nvidia-sdk
 	makedepends = yasm
 	depends = alsa-lib
 	depends = bzip2

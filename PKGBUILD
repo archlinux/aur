@@ -24,7 +24,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'opencl-headers' 'rubberband' 'rtmpdump' 'shine' 'smbclient'
          'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
          'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
-makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
+makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
 optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -43,8 +43,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --extra-cflags="-I/usr/include/nvidia-sdk \
-                    -I/usr/lib/jvm/$(archlinux-java get)/include \
+    --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
                     -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
     --disable-debug \
     --disable-static \
@@ -121,7 +120,6 @@ build() {
     --enable-libzvbi \
     --enable-netcdf \
     --enable-nonfree \
-    --enable-nvenc \
     --enable-omx \
     --enable-openal \
     --enable-opencl \
