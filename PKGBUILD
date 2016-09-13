@@ -3,9 +3,9 @@
 
 pkgname=sptk
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of speech signal processing tools."
-arch=('any')
+arch=('x86_64')
 url="http://sp-tk.sourceforge.net/"
 license=('BSD')
 depends=('glibc')
