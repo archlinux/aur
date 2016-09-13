@@ -2,9 +2,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
-_commit=07d663dc1bd848161edf4cd4ce30cce410d3d877
+_commit=66f37fd2a99eb9d628dd374d81d78835b410c39b
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -13,10 +13,10 @@ depends=('gtk2' 'gconf' 'libnotify')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
 
-source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
+source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
         "${pkgname}.desktop"
         'product_json.patch')
-sha1sums=('195cc8adc2d796fc98461533de82f2abb40c66f4'
+sha1sums=('ee1a08145abbc28d65babc7523391a5f81d4afc0'
           '9c4176c4d99103736df6746ca174b5026bd57e6b'
           'ba8febe936932080610d899fdb57294fc2f9f614')
 
@@ -34,7 +34,7 @@ case "$CARCH" in
 esac
 
 prepare() {
-    cd "${srcdir}/vscode-${pkgver}"
+    cd "${srcdir}/vscode-${_commit}"
 
     patch -p1 -i "${srcdir}/product_json.patch"
     _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
@@ -43,7 +43,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/vscode-${pkgver}"
+    cd "${srcdir}/vscode-${_commit}"
 
     ./scripts/npm.sh install
 
