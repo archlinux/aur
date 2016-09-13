@@ -1,0 +1,14 @@
+show_warning() {
+    echo ">>> WARNING: The systemd unit files for archzfs have changed!"
+    echo ">>>          You may need re-enable the zfs systemd service."
+    echo ">>>          See https://github.com/archzfs/archzfs/issues/72"
+}
+
+post_install() {
+    show_warning
+}
+
+post_upgrade() {
+    show_warning
+}
+
