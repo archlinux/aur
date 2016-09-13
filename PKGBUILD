@@ -1,6 +1,7 @@
 # Maintainer: Luigi Guevara <@killua99>
+# Author: Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>
 
-pkgname=my-weather-indicator
+pkgname=my-weather-indicator-git
 pkgver=r30.b8fb5fb
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
@@ -14,7 +15,7 @@ makedepends=('git' 'libappindicator-gtk3')
 provides=('my-weather-indicator')
 conflicts=('my-weather-indicator')
 install='my-weather-indicator.install'
-source=('git+https://git.launchpad.net/my-weather-indicator')
+source=('$pkgname::git+https://git.launchpad.net/my-weather-indicator')
 sha256sums=('SKIP')
 
 pkgver() {
