@@ -3,7 +3,7 @@
 
 _pkgname=socnetv
 pkgname=$_pkgname-git
-pkgver=1.6.r112.g4279da4
+pkgver=2.0.r14.g46dd188
 pkgrel=1
 pkgdesc="Social Networks Analysis and Visualisation (Development version)"
 arch=('any')
@@ -18,12 +18,11 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_pkgname"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "${srcdir}/$_pkgname"
-
 	qmake-qt5
 	make
 }
@@ -31,7 +30,6 @@ build() {
 package() {
 	cd "${srcdir}/$_pkgname"
 
-	install -d "$pkgdir/usr/share/doc/socnetv/"
 	install -d "$pkgdir/usr/share/socnetv/"
 	install -D socnetv "$pkgdir/usr/bin/socnetv"
 	install -D socnetv.desktop "$pkgdir/usr/share/applications/socnetv.desktop"
@@ -39,5 +37,4 @@ package() {
 	install -D "man/socnetv.1.gz" "$pkgdir/usr/share/man/man1/socnetv.1.gz"
 
 	cp -r translations/ "$pkgdir/usr/share/socnetv/"
-	cp -r manual/ "$pkgdir/usr/share/doc/socnetv/"
 }
