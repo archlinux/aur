@@ -1,0 +1,12 @@
+post_install() {
+  systemd-sysusers plex.conf # Create plex user
+
+  if [[ -d /var/lib/plex ]]; then
+    # The directory may have been made by another package
+    chown -R plex:plex /var/lib/plex
+  else
+    install -dm 750 -o plex -g plex /var/lib/plex
+  fi
+}
+
+# vim: ts=2 sw=2 et:
