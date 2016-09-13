@@ -1,19 +1,19 @@
 pkgbase = mhwd-addon-amdgpu-hwe
-	pkgdesc = Enables some extras for AMDGPU-open, and radeon(ati) stack, like OpenCL, VAAPI & VDPAU
-	pkgver = 20160828BETA
-	pkgrel = 1
+	pkgdesc = Enables some extras for the AMDGPU-open, and radeon(ati) stack, like OpenCL, VAAPI & VDPAU in Manjaro
+	pkgver = 20160913BETA
+	pkgrel = 2
 	url = https://forum.manjaro.org/t/amdgpu-improvements-for-manjaro
 	arch = any
 	license = custom
 	depends = mhwd-db
-	depends = linux47
+	depends = linux47>=4.7.3
 	depends = grub
 	source = MHWDCONFIG_amdgpu-hwe
 	source = MHWDCONFIG_ati-hwe
 	source = amdgpu-hwe.ids
-	md5sums = 2b6b58220e7fd50e555d0470d9fde346
-	md5sums = f0eb5d9cfcca4dc9620cc351a8e87422
-	md5sums = 475a1e63fd1bff0f203c159b6825ef3d
+	md5sums = 5724e205b1e7a324c87e3e005621e03c
+	md5sums = 2308886ddadd1702b408267f51063198
+	md5sums = fa24af3fb4c4b537d7ae420914443a1d
 
 pkgname = mhwd-addon-amdgpu-hwe
 
