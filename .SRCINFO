@@ -1,0 +1,19 @@
+pkgbase = jpeg-archive
+	pkgdesc = Utilities for archiving JPEGs for long term storage
+	pkgver = 2.1.1.r13.b4f705d
+	pkgrel = 1
+	url = https://github.com/danielgtaylor/jpeg-archive/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = nasm
+	provides = jpeg-archive
+	conflicts = jpeg-archive
+	source = jpeg-archive::git+https://github.com/danielgtaylor/jpeg-archive.git
+	source = mozjpeg::git+https://github.com/mozilla/mozjpeg.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jpeg-archive
+
