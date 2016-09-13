@@ -4,7 +4,7 @@
 
 pkgname=yubikey-u2f-udevrules
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev rules to enable you to use the U2F features of your yubikey"
 arch=('any')
 license=('publicdomain')
@@ -13,6 +13,7 @@ depends=()
 conflicts=()
 provides=('yubikey-u2f-udevrules')
 makedepends=('git')
+install='yubikey-u2f-udevrules.install'
 source=('70-smartcard.rules'
         '70-u2f.rules')
 sha256sums=('b0db431dc9aa97041e1ee92a467daf9ccb019cfe71e122322ec277b6568e1645'
