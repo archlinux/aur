@@ -1,9 +1,9 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.6.0a0.r102398+.646ad4894c32+
+pkgver=3.7.0a0.r103770+.2c9e07db0ac4+
 pkgrel=1
-_pybasever=3.6
+_pybasever=3.7
 _pkgname=cpython
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" \
-      "3.6.0a0" \
+      "3.7.0a0" \
       "$(hg identify -n)" \
       "$(hg identify -i)"
       #"$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
@@ -71,7 +71,7 @@ package() {
     "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
 
   # Fix pycairo build
-  ln -sf python3.6m-config "${pkgdir}/usr/bin/python3.6-config"
+  ln -sf python3.7m-config "${pkgdir}/usr/bin/python3.7-config"
 
   # Clean-up reference to build directory
   sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
