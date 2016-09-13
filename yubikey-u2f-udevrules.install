@@ -1,0 +1,12 @@
+#!/bin/sh
+
+post_install() {
+  # Create U2F group if needed
+  grep -q u2f /etc/group || groupadd u2f
+
+  # Reload udev rules
+  udevadm control --reload
+
+  # Tell user what to do..
+  echo "NOTE: You need to add your user to the 'u2f' group!"
+}

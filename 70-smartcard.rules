@@ -1,0 +1,9 @@
+# Udev rules for letting the console user access the Yubikey USB
+# device node, needed for challenge/response to work correctly.
+
+# this udev file should be used with udev 188 and newer
+ACTION!="add|change", GOTO="smartcard_end"
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0113|0114|0115|0116|0120|0402|0403|0405|0406|0407|0410", MODE="0660", GROUP="u2f"
+
+LABEL="smartcard_end"
