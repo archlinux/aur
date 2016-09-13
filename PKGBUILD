@@ -7,7 +7,7 @@ url="https://github.com/zekesonxx/puush4linux"
 license=('WTFPL')
 source=('git+https://github.com/zekesonxx/puush4linux.git')
 md5sums=('SKIP')
-depends=('bash' 'scrot' 'curl' 'libnotify' 'xclip')
+depends=('bash' 'scrot' 'curl' 'libnotify' 'xclip' 'optipng')
 makedepends=('git')
 
 package() {
