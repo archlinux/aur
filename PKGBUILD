@@ -13,14 +13,14 @@
 pkgname=plex-media-server-plexpass
 pkgver=1.1.4.2757
 _pkgsum=24ffd60
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
 provides=('plex-media-server')
-conflicts=('plex-media-server')
+conflicts=('plex-media-server' 'plex-media-server-plexpass-dvr')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
