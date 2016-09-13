@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=maya-calendar
-pkgver=0.4.0.1
+pkgver=0.4.0.2
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('cairo' 'clutter' 'clutter-gtk' 'contractor' 'evolution-data-server'
          'libgranite.so')
 makedepends=('cmake' 'intltool' 'vala')
 source=("https://launchpad.net/maya/loki/${pkgver}/+download/maya-calendar-${pkgver}.tar.xz")
-sha256sums=('2c7fd1cad97bfb86474ad35b77125946eb321b2a6b3049e4e62e0aae059fe569')
+sha256sums=('853164e291e9cf4e705c413a7dae13c810a248d9d3ee263fbf56d785e941170b')
 
 prepare() {
   cd maya-calendar-${pkgver}
