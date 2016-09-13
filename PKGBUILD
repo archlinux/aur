@@ -14,8 +14,8 @@ if [[ -n "$_piver" ]]; then
 fi
 
 pkgname="qcec"
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.1
+pkgrel=1
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgdesc="Qt CEC keyboard plugin for the Raspberry Pi"
@@ -24,7 +24,7 @@ url="http://www.github.com/sirspudd/qcec"
 license=("GPL3")
 makedepends=("qt-sdk-raspberry-pi${_piver}")
 depends=("qt-sdk-raspberry-pi-target-libs")
-source=("git://github.com/sirspudd/${pkgname}.git")
+source=("git://github.com/sirspudd/${pkgname}.git#tag=${pkgver}")
 sha256sums=("SKIP")
 options=('!strip')
 
