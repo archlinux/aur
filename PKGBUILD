@@ -6,7 +6,7 @@ pkgver=1.2.2
 pkgrel=1
 pkgdesc="A powerful statically typed language for writing large programs in groups"
 arch=("any")
-url="http://ceylon-lang.org/"
+url="https://ceylon-lang.org/"
 license=("Apache" "custom:GPL-CP" "LGPL")
 install="${pkgname}.install"
 depends=("java-environment>=7" "bash")
