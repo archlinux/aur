@@ -7,6 +7,7 @@ pkgbase = sorr
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = zlib
 	source = http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz
 	md5sums = SKIP
 
