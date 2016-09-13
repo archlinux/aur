@@ -1,25 +1,23 @@
 # Maintainer: Adam Scott <ascott.ca@gmail.com>
 pkgname='pico8-bin'
 _pkgname='pico8'
-pkgver='0.1.8'
-pkgrel=2
-pkgdesc="PICO-8 is a fantasy console for making, sharing and playing tiny games and other computer programs."
+pkgver='0.1.9'
+pkgrel=1
+pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.lexaloffle.com/pico-8.php"
 license=('custom:commercial')
-depends=('glibc')
-makedepends=('unzip')
-# Zip uses other terms for the architecture
-[ "${CARCH}" = "i686" ] && _platform="i386"
-[ "${CARCH}" = "x86_64" ] && _platform="amd64"
-[ "${CARCH}" = "armv6h" ] && _platform="arm"
-[ "${CARCH}" = "armv7h" ] && _platform="arm"
-_file_i386="pico-8_${pkgver}_i386.zip"
-_file_amd64="pico-8_${pkgver}_amd64.zip"
-_file_arm="pico-8_${pkgver}_arm.zip"
-_sha256sum_i386="ea5dedfb078e29f2f2e635708cace383a75a60fb864414b8ee1eb1e2bdcfc041"
-_sha256sum_amd64="6e851e40883e03bb94369b9d25bec3e3baa21bc7d18e0063937b5bb19903ce8a"
-_sha256sum_arm="e90bd42f2fe7767506415111465f6df645d2903aab8c1dc571139dfbb6fa9f76"
+depends=('glibc' 'hicolor-icon-theme')
+# Lexaloffle uses other terms for architecture
+_arch_i386="i386"
+_arch_amd64="amd64"
+_arch_arm="raspi"
+_file_i386="pico-8_${pkgver}_${_arch_i386}.zip"
+_file_amd64="pico-8_${pkgver}_${_arch_amd64}.zip"
+_file_arm="pico-8_${pkgver}_${_arch_arm}.zip"
+_sha256sum_i386="8bfd377990effe22a550e86337fc2979516709a433486011dc80db86eaa778f3"
+_sha256sum_amd64="c467f9ee7ca4a88a9b22c1e01e1c0e09d78ce771873d0dd816a6b7ef4d86a421"
+_sha256sum_arm="f686c71a411a9b95157b24fe7aada8b7478c90400c1919e7a12466f04911fb8b"
 source_i686=("local://${_file_i386}")
 source_x86_64=("local://${_file_amd64}")
 source_armv6h=("local://${_file_arm}")
@@ -29,30 +27,48 @@ sha256sums_x86_64=("${_sha256sum_amd64}")
 sha256sums_armv6h=("${_sha256sum_arm}")
 sha256sums_armv7h=("${_sha256sum_arm}")
 
+# Gets the current platform
+[ "${CARCH}" = "i686" ] && _platform="${_arch_i386}"
+[ "${CARCH}" = "x86_64" ] && _platform="${_arch_amd64}"
+[ "${CARCH}" = "armv6h" ] && _platform="${_arch_arm}"
+[ "${CARCH}" = "armv7h" ] && _platform="${_arch_arm}"
+
 prepare () {
-  # Change directory to extracted folder
-  cd "pico-8"
+  # As for version 0.1.9, the amd64 release is the only one with a subfolder named pico-8
+  if [ "${_platform}" = "${_arch_amd64}" ]; then
+    mv "./pico-8/"* .
+  fi
+
   # Changes licence and icon filenames in order to comply naming conventions
   mv "license.txt" "LICENSE"
   mv "lexaloffle-pico8.png" "pico8.png"
 }
 
 package () {
-  # Change directory to extracted folder
-  cd "${srcdir}/pico-8"
-  # Creates variables storing paths
-  local _wantedlicensedir="/usr/share/licenses/${pkgname}"
-  local _licensedir="${pkgdir}/${_wantedlicensedir}"
-  local _wanteddestdir="/usr/share/${_pkgname}"
-  local _destdir="${pkgdir}/${_wanteddestdir}"
-  local _wantedbindir="/usr/bin"
-  local _bindir="${pkgdir}/${_wantedbindir}"
-  local _wantedmimedir="/usr/share/mime/packages"
-  local _mimedir="${pkgdir}/${_wantedmimedir}"
-  local _wantedappsdir="/usr/share/applications"
-  local _appsdir="${pkgdir}/${_wantedappsdir}"
-  local _wantedpixmapsdir="/usr/share/icons/hicolor/128x128/apps"
-  local _pixmapsdir="${pkgdir}/${_wantedpixmapsdir}"
+  # Creates variables storing target paths
+  local _target_licenses="/usr/share/licenses/${pkgname}"
+  local _target_share="/usr/share/${_pkgname}"
+  local _target_bin="/usr/bin"
+  local _target_mimepackages="/usr/share/mime/packages"
+  local _target_apps="/usr/share/applications"
+  local _target_icons="/usr/share/icons/hicolor/128x128/apps"
+
+  # Creates variables storing pkg paths
+  local _pkg_licenses="${pkgdir}/${_target_licenses}"
+  local _pkg_share="${pkgdir}/${_target_share}"
+  local _pkg_bin="${pkgdir}/${_target_bin}"
+  local _pkg_mimepackages="${pkgdir}/${_target_mimepackages}"
+  local _pkg_apps="${pkgdir}/${_target_apps}"
+  local _pkg_icons="${pkgdir}/${_target_icons}"
+
+  # Creates pkg directories
+  mkdir -p "${_pkg_licenses}"
+  mkdir -p "${_pkg_share}"
+  mkdir -p "${_pkg_bin}"
+  mkdir -p "${_pkg_mimepackages}"
+  mkdir -p "${_pkg_apps}"
+  mkdir -p "${_pkg_icons}"
+
   # Creates local variables storing filenames
   local _pico8_license="LICENSE"
   local _pico8_bin="pico8"
@@ -62,11 +78,7 @@ package () {
   local _pico8_mime="pico8.xml"
   local _pico8_desktop="pico8.desktop"
   local _pico8_icon="pico8.png"
-  # Makes fakeroot folders
-  mkdir -p "${_destdir}"
-  mkdir -p "${_bindir}"
-  mkdir -p "${_appsdir}"
-  mkdir -p "${_pixmapsdir}"
+
   # Creates a MIME configuration file
   cat <<< "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <mime-info xmlns=\"http://www.freedesktop.org/standards/shared-mime-info\">
@@ -79,6 +91,7 @@ package () {
     <glob pattern=\"*.p8\"/>
   </mime-type>
 </mime-info>" > "${_pico8_mime}"
+
   # Creates a desktop entry file
   cat <<< "[Desktop Entry]
 Type=Application
@@ -90,16 +103,22 @@ MimeType=application/pico8
 Icon=${_pico8_bin}
 Terminal=false
 Categories=Development;Game" > "${_pico8_desktop}"
+
+  # The raspi release is now the only one to ship with pico8_dyn
+  if [ "${_platform}" = "${_arch_arm}" ]; then
+    install -Dm644 "${_pico8_dyn}" "${_pkg_share}/${_pico8_dyn}"
+  fi
+
   # Installs the extracted files
-  install -Dm644 "${_pico8_license}" "${_licensedir}/${_pico8_license}"
-  install -Dm755 "${_pico8_bin}" "${_destdir}/${_pico8_bin}"
-  install -Dm644 "${_pico8_dyn}" "${_destdir}/${_pico8_dyn}"
-  install -Dm644 "${_pico8_dat}" "${_destdir}/${_pico8_dat}"
-  install -Dm644 "${_pico8_txt}" "${_destdir}/${_pico8_txt}"
-  install -Dm644 "${_pico8_mime}" "${_mimedir}/${_pico8_mime}"
-  install -Dm644 "${_pico8_desktop}" "${_appsdir}/${_pico8_desktop}"
-  install -Dm644 "${_pico8_icon}" "${_pixmapsdir}/${_pico8_icon}"
+  install -Dm644 "${_pico8_license}" "${_pkg_licenses}/${_pico8_license}"
+  install -Dm755 "${_pico8_bin}" "${_pkg_share}/${_pico8_bin}"
+  install -Dm644 "${_pico8_dat}" "${_pkg_share}/${_pico8_dat}"
+  install -Dm644 "${_pico8_txt}" "${_pkg_share}/${_pico8_txt}"
+  install -Dm644 "${_pico8_mime}" "${_pkg_mimepackages}/${_pico8_mime}"
+  install -Dm644 "${_pico8_desktop}" "${_pkg_apps}/${_pico8_desktop}"
+  install -Dm644 "${_pico8_icon}" "${_pkg_icons}/${_pico8_icon}"
+
   # Links the installed binary to /usr/bin
-  ln -s "/usr/share/${_pkgname}/pico8" "${_bindir}/pico8"
+  ln -s "${_target_share}/${_pico8_bin}" "${_pkg_bin}/${_pico8_bin}"
 }
 
