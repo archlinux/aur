@@ -3,7 +3,7 @@
 # Contributor: Shizeeg Unadequatov <shizeeque@gmail.com>
 
 pkgname=kakoune-git
-pkgver=r4053.61c155f
+pkgver=r4278.6faed96
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('i686' 'x86_64')
