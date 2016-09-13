@@ -1,4 +1,5 @@
-# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: nl6720 <nl6720@gmail.com>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _USE_GNU_EFI="1"
@@ -65,14 +66,14 @@ sha1sums=('SKIP'
           'b6bc8653eb15a650b557db177378e65f6cbd52a3')
 
 pkgver() {
-	
+
 	cd "${srcdir}/${__pkgname}/"
-	
-	_ACTUAL_REFIND_VER="$(grep 'rEFInd Version' "${srcdir}/${__pkgname}/refind/main.c" | awk '{print $4}' | sed -e 's|");||g')"
-	echo "${_ACTUAL_REFIND_VER}.$(git rev-list --count HEAD).$(git describe --always)" | sed -e 's|-|.|g'
-	
+
+	_ACTUAL_REFIND_VER="$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${__pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')"
+	echo "${_ACTUAL_REFIND_VER}.$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
+
 	unset _ACTUAL_REFIND_VER
-	
+
 }
 
 _setup_tianocore_env_vars() {
