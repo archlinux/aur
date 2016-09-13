@@ -1,18 +1,19 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-lv2-bin
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Linux Studio Plugins: LV2 format"
 arch=('i686' 'x86_64')
 url="http://lsp-plug.in"
 license=('custom')
 depends=('libsndfile' 'gtk2')
+optdepends=('lsp-plugins-doc: HTML documentation')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-i586.tar.gz")
 source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-x86_64.tar.gz")
-sha1sums_i686=('4d1b7e7bf8739cbbf45e13ae5129ba06bd70f8eb')
-sha1sums_x86_64=('3c25a24278a466ede8dac84271aaf6c558f1d3a6')
+sha1sums_i686=('0799716e133e954c56924ad56d61c239acf6456d')
+sha1sums_x86_64=('86e97ba906e3c7efe7d95172d0cea4a5408ec2ff')
 
 package() {
 	cd $srcdir
