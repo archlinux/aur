@@ -1,0 +1,11 @@
+--- light-locker.orig/configure.ac.in	2016-08-30 10:52:46.843809660 +0800
++++ light-locker/configure.ac.in	2016-08-30 10:52:23.564394873 +0800
+@@ -424,7 +424,7 @@ AC_ARG_WITH(systemd,
+             [with_systemd=$withval], [with_systemd=auto])
+ 
+ PKG_CHECK_MODULES(SYSTEMD,
+-                  [libsystemd-login],
++                  [libsystemd],
+                   [have_systemd=yes], [have_systemd=no])
+ 
+ if test "x$with_systemd" = "xauto" ; then
