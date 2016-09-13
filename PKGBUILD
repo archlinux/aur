@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=htslib
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('curl')
 provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
-source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('16d78f90b72f29971b042e8da8be6843')
+source=(https://github.com/samtools/htslib/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+md5sums=('64742a2a812da1bb6eb4417128be6944')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
