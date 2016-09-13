@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.soronline.net/sorr.htm"
 license=('GPL')
 makedepends=('git')
-depends=('zlib')
+depends=('zlib' 'zenity')
 source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz")
 md5sums=('SKIP')
 

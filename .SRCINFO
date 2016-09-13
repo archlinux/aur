@@ -8,6 +8,7 @@ pkgbase = sorr
 	license = GPL
 	makedepends = git
 	depends = zlib
+	depends = zenity
 	source = http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz
 	md5sums = SKIP
 
