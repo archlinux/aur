@@ -15,30 +15,27 @@
 # archzfs github page.
 #
 pkgname="spl-utils-linux"
-pkgver=0.6.5.7_4.6.4_1
-pkgrel=1
+pkgver=0.6.5.8_4.7.2_1
+pkgrel=6
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.7.tar.gz"
-        "spl-utils.hostid")
-sha256sums=("dc8690e407183eeb7a6af0e7692d6e0a1cd323d51dd1aa492522c421b1924ea0"
-            "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/spl-0.6.5.8.tar.gz")
+sha256sums=("2d22117106782222d2b7da88cc657b7b9c44d281b1cc74d60761e52d33ab1155")
 groups=("archzfs-linux")
 license=("GPL")
 provides=("spl-utils")
-makedepends=("linux-headers=4.6.4")
+makedepends=("linux-headers=4.7.2")
 replaces=("spl-utils-git")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.7"
+    cd "${srcdir}/spl-0.6.5.8"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin --with-config=user
     make
 }
 
 package() {
-    cd "${srcdir}/spl-0.6.5.7"
+    cd "${srcdir}/spl-0.6.5.8"
     make DESTDIR="${pkgdir}" install
-    install -D -m644 "${srcdir}"/spl-utils.hostid "${pkgdir}"/etc/hostid
 }
