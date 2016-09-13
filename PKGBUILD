@@ -3,7 +3,7 @@
 _srcname=leap.bitmask
 pkgname=bitmask_client
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
@@ -12,11 +12,13 @@ depends=(
   'desktop-file-utils'
   'xdg-utils'
   'openvpn'
+  'qtwebkit'
   'python2-argh'
   'python2-requests'
   'python2-srp'
   'python2-pyopenssl'
   'python2-coloredlogs'
+  'python2-colorama'
   'python2-psutil'
   'python2-ipaddr'
   'python2-twisted'
