@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/whitelight999/cylon
 pkgname=cylon
-pkgver=1.5
-pkgrel=3
+pkgver=1.6
+pkgrel=4
 epoch=
 pkgdesc="Maintenance , backup and system checks in a menu driven  Bash script"
 arch=('any')
@@ -14,5 +14,6 @@ md5sums=('SKIP')
 package() {
 	cd "$srcdir/${pkgname%-git}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname%-git}" 
+    install -D -m644 Readme.md "$HOME"/.config/cylonReadme.md
 }
 md5sums=('SKIP')
