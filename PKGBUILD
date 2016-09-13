@@ -3,7 +3,7 @@
 # Contributor: John Schoenick <john@pointysoftware.net>
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-git
-pkgver=r1525.f7be481
+pkgver=r1536.b857dfe
 pkgrel=1
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
