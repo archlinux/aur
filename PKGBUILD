@@ -1,13 +1,14 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
 pkgname=orion-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r205.3339da5
+pkgver=r214.5545bf1
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
 url="https://github.com/alamminsalo/orion"
 license=('GPL')
 groups=()
-depends=('libcommuni-git')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-svg' 'qt5-webengine' 'libcommuni-git')
+optdepends=('mpv: for video output', 'qtav: alternate video output', 'qt5-multimedia: alternate video output')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
