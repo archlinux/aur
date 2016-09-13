@@ -2,7 +2,7 @@
 #Maintainer: Tom Tryfonidis <tomtryf [at] gmail [dot] com>
 
 pkgname=socnetv
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="Social Networks Analysis and Visualisation"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('qt5-base')
 provides=('socnetv')
 conflicts=('socnetv-git')
 source=(http://downloads.sourceforge.net/socnetv/SocNetV-$pkgver.tar.gz)
-md5sums=('288d27b1841237e2c9e1d57bd42ddda3')
+sha256sums=('6c1029df89471a1ea086e9fcd74f968f859c19c4faada8ff389dff0d5d7e7833')
 
 build() {
 	cd "${srcdir}/$pkgname-$pkgver"
@@ -23,7 +23,6 @@ build() {
 package() {
 	cd "${srcdir}/$pkgname-$pkgver"
 
-	install -d "$pkgdir/usr/share/doc/socnetv/"
 	install -d "$pkgdir/usr/share/socnetv/"
 	install -D socnetv "$pkgdir/usr/bin/socnetv"
 	install -D socnetv.desktop "$pkgdir/usr/share/applications/socnetv.desktop"
@@ -31,5 +30,4 @@ package() {
 	install -D "man/socnetv.1.gz" "$pkgdir/usr/share/man/man1/socnetv.1.gz"
 
 	cp -r translations/ "$pkgdir/usr/share/socnetv/"
-	cp -r manual/ "$pkgdir/usr/share/doc/socnetv/"
 }
