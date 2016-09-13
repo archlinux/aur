@@ -6,8 +6,7 @@ case "$1" in
 		echo 'powersave' > /sys/module/pcie_aspm/parameters/policy
 		echo '1' | tee /sys/module/snd_hda_intel/parameters/power_save_controller \
 			/sys/module/*/parameters/power_save
-		echo 'auto' | tee /sys/bus/*/devices/*/power/control \
-			/sys/bus/*/devices/*/device/power/control
+		echo 'auto' | tee $(find /sys/devices -type f -path '*/power/control')
 		;;
 
 	0)
@@ -15,7 +14,6 @@ case "$1" in
 		echo 'performance' > /sys/module/pcie_aspm/parameters/policy
 		echo '0' | tee /sys/module/snd_hda_intel/parameters/power_save_controller \
 			/sys/module/*/parameters/power_save
-		echo 'on' | tee /sys/bus/*/devices/*/power/control \
-			/sys/bus/*/devices/*/device/power/control
+		echo 'on' | tee $(find /sys/devices -type f -path '*/power/control')
 		;;
 esac >/dev/null 2>/dev/null
