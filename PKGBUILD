@@ -39,8 +39,8 @@ package()
   cd "$srcdir/binutils-$pkgver/build-psp"
   make install DESTDIR="$pkgdir"
   rm -r "$pkgdir"/usr/share
-  cp -r "$pkgdir"/usr/`gcc -dumpmachine`/psp "$pkgdir"/usr
-  rm -r "$pkgdir"/usr/`gcc -dumpmachine`
+  cp -r "$pkgdir"/usr/*-linux-gnu/psp "$pkgdir"/usr
+  rm -r "$pkgdir"/usr/*-linux-gnu
   rm -r "$pkgdir"/usr/lib
 }
 
