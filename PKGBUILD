@@ -1,8 +1,8 @@
 # Maintainer: Márk Sági-Kazár <mark.sagi-kazar@gmail.com>
 
 pkgname=php-build-git
-pkgver=0.10.0.r412.gf36ea7b
-pkgrel=8
+pkgver=0.10.0.r437.g0aed607
+pkgrel=1
 pkgdesc="Install PHP versions"
 arch=("any")
 url="https://github.com/php-build/php-build"
