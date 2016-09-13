@@ -3,9 +3,9 @@
 
 pkgname=orion
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
-arch=('x86_64' 'x86')
+arch=('x86_64' 'i686')
 url="https://github.com/alamminsalo/orion/"
 license=('GPL')
 groups=()
