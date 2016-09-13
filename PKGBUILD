@@ -24,14 +24,14 @@ build()
     patch -p1 < ../fix-zlib.patch
 
     CXXFLAGS=-Wno-narrowing ./autogen.sh --prefix=/usr
-    sed -i 's/\(bin_PROGRAMS = .*\)/\1 tabfile$(EXEEXT)/' src/Makefile
+    sed -i 's/noinst_PROGRAMS =/bin_PROGRAMS +=/' src/Makefile
     make
 }
 
 package() {
     cd "$srcdir/${pkgname}-$pkgver"
-    mv "$pkgdir"/usr/bin/tabfile "$pkgdir"/usr/bin/stardict-tabfile 
     make DESTDIR="$pkgdir" install
+    find "$pkgdir"/usr/bin/ -not -name 'stardict-*' -type f | sed 'p;s#usr/bin/#usr/bin/stardict-#' | xargs -n2 mv
 }
 md5sums=('56762aa24df6c985c44e893c56bdd5d6'
     'dd55902a93e7c8cd4dcddc2efb407c57'
