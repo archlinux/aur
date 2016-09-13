@@ -2,7 +2,7 @@
 license=('GPL' 'custom:Brother')
 arch=('i686' 'x86_64')
 pkgname=brscan4
-pkgver=0.4.3_3
+pkgver=0.4.4_1
 pkgrel=1
 pkgdesc="SANE drivers from Brother for brscan4 compatible models"
 depends=('sane' 'libusb-compat')
@@ -10,7 +10,7 @@ url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.
 install=brscan4.install
 
 [ "$CARCH" = "x86_64" ] && pkg="dlf006648/${pkgname}-${pkgver/_/-}.x86_64.rpm" || pkg="dlf006647/${pkgname}-${pkgver/_/-}.i386.rpm"
-[ "$CARCH" = "x86_64" ] && pkg_md5sum="df3c07db9902ad44132b4b6ce559f6f6" || pkg_md5sum="bdfc563ad776ba304a1bea920d141761"
+[ "$CARCH" = "x86_64" ] && pkg_md5sum="0df990f21c58c086cf1cc7806e5a5a6d" || pkg_md5sum="c146b0b8eb4058af59bf6e4c60a4828f"
 
 source=("http://download.brother.com/welcome/$pkg"
 	"http://www.brother.com/agreement/English_sane/agree.html"
