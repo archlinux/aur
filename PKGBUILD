@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts
-pkgver=0.3
+pkgver=0.3.0.1
 pkgrel=1
 pkgdesc='Online Accounts plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('glib2' 'glibc' 'gsignond-extension-pantheon-bzr'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-onlineaccounts/loki/${pkgver}/+download/switchboard-plug-onlineaccounts-${pkgver}.tar.xz")
-sha256sums=('76864fedb90b60239aabc51cde494b7ae8d1a1f8b966e1d4d0a2ba1e1065c0b6')
+sha256sums=('ac7fdaebdab65403fd7e2776d381a0e205bc131a5acf6d29420b2dbaae3680a9')
 
 prepare() {
   cd switchboard-plug-onlineaccounts-${pkgver}
