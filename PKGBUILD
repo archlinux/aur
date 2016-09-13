@@ -3,12 +3,12 @@
 
 pkgname=plumed
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed-code.org/"
 license=("GPL")
 arch=(i686 x86_64)
-depends=('atlas-lapack-base' 'zlib' 'bash' 'libmatheval')
+depends=('blas' 'lapack' 'cblas' 'zlib' 'bash' 'libmatheval')
 makedepends=()
 provides=('plumed')
 #install=$pkgname.install
