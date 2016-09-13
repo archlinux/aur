@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=python2-telegrambot-api
 _name=pyTelegramBotAPI
-pkgver=2.0.5
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Python Telegram bot api"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python2' 'python2-pytest' 'python2-requests' 'python2-six')
 
 source=("https://github.com/eternnoir/$_name/archive/$pkgver.tar.gz")
-md5sums=('3ef034c16564459a6ded27fa59f85da5') 
+md5sums=('a1ccbfa7165e0d472f54b3d524b0de08') 
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
