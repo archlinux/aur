@@ -1,10 +1,11 @@
 # $Id$
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer:  Brenton Horne <brentonhorne77@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: t3ddy  <t3ddy1988 "at" gmail {dot} com>
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=0ad-git
 _pkgname=0ad
-pkgver=18062
+pkgver=18069
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game — built from git source tree. WARNING: the 0ad git repo is 2.7 GB in size!"
 arch=('i686' 'x86_64')
@@ -45,13 +46,13 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}"/usr/{bin,lib/${pkgname},share/"${pkgname}"/data}
+  install -d "${pkgdir}"/usr/{bin,lib/${_pkgname},share/"${_pkgname}"/data}
   cd "$srcdir/${_pkgname}"
 
   install -Dm755 binaries/system/pyrogenesis "${pkgdir}/usr/bin"
-  install -Dm755 binaries/system/*.so "${pkgdir}/usr/lib/$pkgname"
+  install -Dm755 binaries/system/*.so "${pkgdir}/usr/lib/${_pkgname}"
 
-  cp -r binaries/data/l10n/ ${pkgdir}/usr/share/${pkgname}/data/
+  cp -r binaries/data/l10n/ ${pkgdir}/usr/share/${_pkgname}/data/
 
   install -Dm755 build/resources/${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 build/resources/${_pkgname}.desktop \
