@@ -1,4 +1,4 @@
-# Contributer: Donald Carr <sirspudd@gmail.com>
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 set -e
 
@@ -16,8 +16,6 @@ fi
 pkgname="qcec"
 pkgver=0.1
 pkgrel=1
-provides=("$pkgname")
-conflicts=("$pkgname")
 pkgdesc="Qt CEC keyboard plugin for the Raspberry Pi"
 arch=("any")
 url="http://www.github.com/sirspudd/qcec"
