@@ -1,4 +1,4 @@
 pkgname=('lightdm-pantheon-greeter')
-builddeps=('libindicator-gtk3' 'wingpanel')
+builddeps=('gala-bzr' 'wingpanel')
 
 # vim: ts=2 sw=2 et:
