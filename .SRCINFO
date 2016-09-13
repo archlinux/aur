@@ -2,7 +2,7 @@ pkgbase = quelea-bin
 	pkgdesc = Free projection software for churches
 	pkgver = 2016.1
 	pkgrel = 2
-	url = http://www.quelea.com
+	url = http://www.quelea.org
 	arch = i686
 	arch = x86_64
 	groups = base-devel
@@ -10,7 +10,7 @@ pkgbase = quelea-bin
 	depends = java-runtime
 	optdepends = vlc
 	optdepends = openoffice
-	source = https://sourceforge.net/projects/quelea/files/2016.1/quelea-2016.1-deb-install.deb
+	source = https://dl.sourceforge.net/quelea/quelea-2016.1-deb-install.deb
 	md5sums = cbfdb2b68db0d95cb8e59dfc093c6c4b
 
 pkgname = quelea-bin
