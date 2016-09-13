@@ -2,8 +2,8 @@
 # Maintainer: Jozef Riha <jose1711@gmail.com>
 
 pkgname=perl-set-object
-pkgver=1.34
-pkgrel=2
+pkgver=1.35
+pkgrel=1
 pkgdesc="Set of Objects (smalltalkish: IdentitySet)"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~rurban/Set-Object-${pkgver}/"
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-$pkgver.tar.gz) 
-md5sums=('15721030d597c2744ff3846ccdd419dc')
+md5sums=('95be9c38e94a140bfd2209cae282d5d8')
 
 build() {
   cd  $srcdir/Set-Object-$pkgver
