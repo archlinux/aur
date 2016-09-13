@@ -3,9 +3,9 @@
 
 pkgname=libretro-parallel-git
 _gitname=mupen64plus-libretro
-pkgver=4277.61ab4e9
-pkgrel=2
-pkgdesc="Mupen64plus with dynarec and vulvan powered rdp lle"
+pkgver=4285.5b86c3e
+pkgrel=1
+pkgdesc="Mupen64plus with dynarec and vulkan powered rdp lle"
 arch=('i686' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro"
 license=('custom' 'GPL' 'LGPL')
