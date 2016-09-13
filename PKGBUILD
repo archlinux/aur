@@ -9,11 +9,17 @@ depends=('glibc' 'bash')
 makedepends=('go' 'rsync')
 optdepends=('etcd: etcd cluster required to run Kubernetes')
 arch=('x86_64' 'i686')
-source=("https://github.com/GoogleCloudPlatform/kubernetes/archive/v$pkgver.tar.gz"
+source=("https://github.com/kubernetes/kubernetes/archive/v$pkgver.tar.gz"
 	"https://github.com/kubernetes/contrib/archive/$_contribver.tar.gz"
         "kubernetes.install")
 url="http://kubernetes.io/"
 license=("APACHE")
+backup=('etc/kubernetes/apiserver'
+	'etc/kubernetes/config'
+	'etc/kubernetes/controller-manager'
+	'etc/kubernetes/kubelet'
+	'etc/kubernetes/proxy'
+	'etc/kubernetes/scheduler')
 install=kubernetes.install
 sha256sums=('f7c1dca76fab3580a9e47eb0617b5747d134fb432ee3c0a93623bd85d7aec1d1'
             '1d4e651ea59ea0d2b440e290fda5e166a21847891abca2907b8a1683c2252b8d'
