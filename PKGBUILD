@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot
-pkgver=0.1
+pkgver=0.1.0.1
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgranite.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/screenshot-tool/0.1.x/${pkgver}/+download/screenshot-tool-${pkgver}.tar.xz")
-sha256sums=('9ea6b48ca202457338aca71575f812f6eb03e8216d70bd92fbd9ac834e5911b2')
+sha256sums=('c82365f1e62d360165008e9ebffacce85a9178ef9b2f83fc9ab163ca2fc5766a')
 
 prepare() {
   cd screenshot-tool-${pkgver}
