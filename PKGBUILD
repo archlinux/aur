@@ -8,7 +8,7 @@ license=('EULA')
 groups=('base-devel')
 depends=(java-runtime)
 optdepends=(vlc openoffice)
-source=(https://dl.sourceforge.net/quelea/quelea-2016.1-deb-install.deb)
+source=(http://heanet.dl.sourceforge.net/project/quelea/2016.1/quelea-2016.1-deb-install.deb)
 md5sums=(cbfdb2b68db0d95cb8e59dfc093c6c4b)
 
 package() {
