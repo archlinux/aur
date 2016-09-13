@@ -16,37 +16,38 @@
 #
 #
 pkgname="zfs-utils-archiso-linux"
-pkgver=0.6.5.7_4.5.4_1
+pkgver=0.6.5.8_4.7.2_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-archiso-linux" "linux=4.5.4")
-makedepends=("linux-headers=4.5.4")
+depends=("spl-archiso-linux" "linux=4.7.2")
+makedepends=("linux-headers=4.7.2")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.7.tar.gz"
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/zfs-0.6.5.8.tar.gz"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
-sha256sums=("4a9e271bb9a6af8d564e4d5800e4fff36224f1697b923a7253659bdda80dc590"
+sha256sums=("d77f43f7dc38381773e2c34531954c52f3de80361b7bb10c933a7482f89cfe84"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df"
-            "67a96169d36853d8f18ee5a2443ecfcd2461a20f9109f4b281bee3945d83518a")
+            "dfafce18240722bee26b5864982b4db1cd6d682c4b93a8b1f4832c98686f50d2"
+            "5f749dbe3b853c5b569d5050b50226b53961cf1fa2cfc5cea0ecc3df75885d2f")
 license=("CDDL")
 groups=("archzfs-archiso-linux")
 provides=("zfs-utils")
+install=zfs-utils.install
 
 build() {
-    cd "${srcdir}/zfs-0.6.5.7"
+    cd "${srcdir}/zfs-0.6.5.8"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.7 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.8 \
                 --with-config=user
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5.7"
+    cd "${srcdir}/zfs-0.6.5.8"
     make DESTDIR="${pkgdir}" install
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
@@ -54,6 +55,9 @@ package() {
     # move module tree /lib -> /usr/lib
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
+    # Autoload the zfs module at boot
+    mkdir -p "${pkgdir}/etc/modules-load.d"
+    printf "%s\n" "zfs" > "${pkgdir}/etc/modules-load.d/zfs.conf"
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
