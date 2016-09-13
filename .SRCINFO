@@ -1,13 +1,11 @@
 pkgbase = dbus-openrc-initscript
 	pkgdesc = OpenRC init script for dbus.Freedesktop.org message bus system
 	pkgver = 1.10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	install = dbus.install
-	arch = i686
-	arch = x86_64
-	license = GPL
-	license = custom
+	arch = any
+	license = GPL2
 	depends = dbus>=1.10
 	provides = dbus-openrc=1.10.10
 	conflicts = dbus-openrc

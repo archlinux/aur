@@ -8,11 +8,11 @@ _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=dbus-openrc-initscript
 pkgver=1.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRC init script for dbus.Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
-arch=("i686" "x86_64")
-license=("GPL" "custom")
+arch=("any")
+license=("GPL2")
 provides=("dbus-openrc=${pkgver}")
 replaces=("dbus-openrc<10.10.10")
 depends=("dbus>=1.10")
