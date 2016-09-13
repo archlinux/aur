@@ -1,13 +1,13 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Transfer files in and out of your CASIO fx calculator through USB"
 arch=('i686' 'x86_64')
 url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libusb' 'libp7>=1.5-1')
+depends=('libp7>=1.5-1')
 makedepends=('make' 'asciidoc' 'gzip')
 optdepends=()
 provides=()
