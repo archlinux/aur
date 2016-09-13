@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=kingbash-gb-git
-pkgver=20150930
+pkgver=20160916
 pkgrel=1
 pkgdesc="Menu driven auto-completion for bash terminals under X"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 	'gambas3-gb-desktop-x11'
 	'gambas3-gb-form>=3.6.2'
 	'gambas3-gb-image>=3.6.2'
-	'gambas3-gb-qt4>=3.6.2'
+	'gambas3-gb-qt5>=3.6.2'
 	)
 
 makedepends=('gambas3-devel' 'git')
