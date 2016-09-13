@@ -110,7 +110,6 @@ depends=("pkgtools"
 "lyx"
 
 "lshw"
-"ttf-google-fonts-git"
 
 "gstreamer-vaapi"
 

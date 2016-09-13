@@ -101,7 +101,6 @@ pkgbase = rk-apricity-apps
 	depends = hunspell-de
 	depends = lyx
 	depends = lshw
-	depends = ttf-google-fonts-git
 	depends = gstreamer-vaapi
 	depends = libva-vdpau-driver
 	depends = libva-intel-driver
