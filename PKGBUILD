@@ -16,7 +16,7 @@
 #
 pkgname="spl-linux"
 pkgver=0.6.5.8_4.7.2_1
-pkgrel=6
+pkgrel=7
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux" "kmod" "linux=4.7.2")
 makedepends=("linux-headers=4.7.2")
@@ -28,6 +28,7 @@ groups=("archzfs-linux")
 license=("GPL")
 install=spl.install
 provides=("spl")
+conflicts=('spl-utils-linux-git' 'spl-utils-linux-lts')
 replaces=("spl-git")
 
 build() {
