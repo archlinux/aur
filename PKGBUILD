@@ -10,7 +10,7 @@ makedepends=('python2' )
 license=('GPL3')
 arch=('any')
 source=('https://github.com/FAForever/faftools/archive/develop.zip')
-sha256sums=('953536ad82ba499030f0018a10a13135cd9669cae29a0fd77f5e005967b21e3a')
+sha256sums=('da13d9dba7e18db6c49ae6ff83fa57a354791b0cce3cbb034b13db1e3a0b24b6')
 
 build() {
     cd $srcdir/faftools-develop
