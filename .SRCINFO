@@ -11,7 +11,7 @@ pkgbase = jackett-public
 	conflicts = jackett
 	source = https://github.com/dreamcat4/Jackett-public/releases/download/v0.6.45.3/Jackett-public.Binaries.Mono.tar.gz
 	source = jackett.service
-	md5sums = 8699545e98891d50ffef692b669d9f7e
+	md5sums = 7ed61a1574a82b86ded63350dc4d5ba2
 	md5sums = da51e3269b530a99da65e323eebd7f06
 
 pkgname = jackett-public
