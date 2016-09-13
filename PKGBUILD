@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
@@ -30,7 +30,6 @@ prepare() {
   cd "$_pkgname" || exit
   git submodule update --init --recursive
   mkdir build
-  sed 's/python2.7/python3.5/g' -i lib/xpp/CMakeLists.txt
 }
 
 build() {
