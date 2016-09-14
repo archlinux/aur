@@ -2,8 +2,8 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.6.1
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
 url="https://quodlibet.readthedocs.org/"
@@ -12,12 +12,10 @@ depends=('mutagen' 'gtk3' 'python2-gobject' 'python2-cairo')
 makedepends=('intltool' 'gettext')
 #optdepends=('python2-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=('quodlibet')
-_base_src="${_pkgbase}-${pkgver}.tar.gz"
-_base_url="https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases"
-source=("${_base_url}/${_base_src}" "${_base_url}/${_base_src}.sig")
-#_checksum="$(curl -s "${_base_url}/${_base_src}.sha256" | cut -d " " -f1)"
-#sha256sums=("${_checksum}" 'SKIP')
-sha256sums=('e6525bbdebd790992431b15775e9ec257f72a4dccb1136994186c32549c04a48' 'SKIP')
+_base_src=""
+_base_url=""
+source=("https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
+sha256sums=('326be5ea5a2033017d2b944f44ee6c488037c976cee904ebcd82adf472f30e81' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
