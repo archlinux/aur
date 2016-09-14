@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20160912
+pkgver=3.0.0v20160913
 _pkgver=3.0.0
-_snapshot_=20160912
-_snapver_=0238
+_snapshot_=20160913
+_snapver_=0237
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -61,7 +61,7 @@ provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
 #backup=("usr/share/${_appname_}/lua/http/.hosts"
 #        "usr/share/${_appname_}/lua/http/dialogs/.hosts")
-options=("!libtool" "!emptydirs")
+options=("!libtool" "!emptydirs" "debug")
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz"  "update-vlc-plugin-cache.hook")
 
 pkgver() {
@@ -112,5 +112,5 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha1sums=('067b4278dd64a1461cc4b062b83bbc826eedbc0c'
+sha1sums=('5cd45bd78159d60f7ca3ea105c2809aa474c76bf'
           'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee')
