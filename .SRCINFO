@@ -1,0 +1,17 @@
+pkgbase = dragondisk
+	pkgdesc = DragonDisk, a free-as-in-beer Amazon S3 GUI client
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = http://www.dragondisk.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt4
+	depends = libstdc++5
+	depends = zlib
+	depends = openssl
+	source = https://s3.amazonaws.com/bilkueclinlcejcfgdfitnhdnnjhuvteju-dragon/dragondisk_1.0.5-0debian_amd64.deb
+	sha256sums = c57afda11cdebbb2f0b4ac8e240716afd0dcc31f59de763dad0f3e91929eb569
+
+pkgname = dragondisk
+
