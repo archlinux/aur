@@ -1,8 +1,8 @@
 pkgbase = dbus-openrc-initscript
 	pkgdesc = OpenRC init script for dbus.Freedesktop.org message bus system
 	pkgver = 1.10.10
-	pkgrel = 2
-	url = https://wiki.freedesktop.org/www/Software/dbus/
+	pkgrel = 3
+	url = https://raw.githubusercontent.com/gentoo/gentoo/master/sys-apps/dbus/files/dbus.initd-r1
 	install = dbus.install
 	arch = any
 	license = GPL2
@@ -10,9 +10,9 @@ pkgbase = dbus-openrc-initscript
 	provides = dbus-openrc=1.10.10
 	conflicts = dbus-openrc
 	replaces = dbus-openrc<10.10.10
-	source = dbus.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/sys-apps/dbus/files/dbus.initd-r1
+	source = dbus.initd
 	source = dbus.install
-	sha256sums = 4491c09942d72fd464bc1da286c4f5a237ec8debfbaba83c6fbf4a46d46fe51e
+	sha256sums = 20518ae49d0d230de4273f0e4a32edec804cb60f60451b4da9356d7dbe6281cb
 	sha256sums = 03944588f0a4c90f4bcfac96f5bc380473473d65d88d6c2c54b7397fe1103396
 
 pkgname = dbus-openrc-initscript
