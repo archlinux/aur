@@ -45,7 +45,7 @@ prepare() {
 build() {
         cd $srcdir/libical-${_libicalver}
 
-	./configure --prefix=$pkgdir/usr
+	./configure --prefix=/usr
 	make
 }
 
