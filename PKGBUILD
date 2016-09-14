@@ -3,7 +3,7 @@
 # Contributor: RealGecko <realgecko@realgecko.com>
 
 pkgname=kde-cdemu-manager-kf5
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu.KF5 version"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('kde-cdemu-manager')
 conflicts=('kde-cdemu-manager')
 makedepends=('extra-cmake-modules' 'kdoctools' 'qt5-tools' 'python')
 source=(https://github.com/Real-Gecko/KDE-CDEmu/archive/$pkgver.tar.gz)
-md5sums=('a134b8090a7107884ca9f3d89e295eb9')
+md5sums=('59d0c471d9257e598f1f848ea8187329')
 
 prepare() {
   mkdir -p build
