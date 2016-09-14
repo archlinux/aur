@@ -1,6 +1,29 @@
 # Change Log
 
-## [0.800b](https://github.com/ari-zah/gaiasky/tree/0.800b) (2016-04-27)
+## [1.0.0](https://github.com/ari-zah/gaiasky/tree/1.0.0) (2016-09-13)
+[Full Changelog](https://github.com/ari-zah/gaiasky/compare/0.800b...1.0.0)
+
+**Implemented enhancements:**
+
+- Add orientation lock [\#74](https://github.com/ari-zah/gaiasky/issues/74)
+- Fix frame rate when recording camera [\#73](https://github.com/ari-zah/gaiasky/issues/73)
+- Add planetarium mode [\#72](https://github.com/ari-zah/gaiasky/issues/72)
+- Add sliders for star point size and minimum opacity [\#68](https://github.com/ari-zah/gaiasky/issues/68)
+- Add LOD sliders [\#67](https://github.com/ari-zah/gaiasky/issues/67)
+- Implement anaglyphic 3D [\#65](https://github.com/ari-zah/gaiasky/issues/65)
+- Add distortion to VR\_HEADSET stereoscopic mode [\#64](https://github.com/ari-zah/gaiasky/issues/64)
+- Add data source selection to Preferences [\#63](https://github.com/ari-zah/gaiasky/issues/63)
+- Add support for proper motion vectors [\#62](https://github.com/ari-zah/gaiasky/issues/62)
+- Add interface to data loaders in config dialog [\#15](https://github.com/ari-zah/gaiasky/issues/15)
+
+**Fixed bugs:**
+
+- Add ambient light to persisted properties [\#69](https://github.com/ari-zah/gaiasky/issues/69)
+- GUI should be hidden when stereoscopic is on at startup [\#66](https://github.com/ari-zah/gaiasky/issues/66)
+- Fix mouse input in stereoscopic mode [\#61](https://github.com/ari-zah/gaiasky/issues/61)
+- app won't start [\#13](https://github.com/ari-zah/gaiasky/issues/13)
+
+## [0.800b](https://github.com/ari-zah/gaiasky/tree/0.800b) (2016-04-28)
 [Full Changelog](https://github.com/ari-zah/gaiasky/compare/0.707b...0.800b)
 
 **Implemented enhancements:**
