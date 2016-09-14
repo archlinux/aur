@@ -3,17 +3,18 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+_name=c++utilities
 _reponame=cpp-utilities
-pkgname=c++utilities-doc
-pkgver=3.4.0
+pkgname=$_name-doc
+pkgver=4.0.0
 pkgrel=1
 arch=('any')
-pkgdesc="Common C++ classes and routines used by my applications such as argument parser, IO and conversion utilities (API documentation)."
+pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (API documentation)'
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'dia' 'graphviz')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('90434cc672f9c273dd5a338e8a4d5e545faeebd1777019573a85a26d5f2522c2')
+source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('903ac50b3c4104728d077cb851a9f9628c3cfdcba6a20e826b7cbe8debf44083')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
