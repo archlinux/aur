@@ -69,6 +69,6 @@ build() {
 package() {
     cd $srcdir/libvmime-${_libvmimever}
     
-    make install
+    make install DESTDIR="$(realpath ${pkgdir})"
     #scons prefix=$pkgdir/usr install  || return 1
 }
