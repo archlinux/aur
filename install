@@ -61,47 +61,80 @@ post_install() {
     _presence_password="$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16)"
     setconf "server_secret_key" "${_presence_password}" "/etc/zarafa/presence.cfg"
 
+    echo
+    echo
+    echo "[....] Zarafa-Server installation"
 
-    # INFORM
-    cat <<EOF
+    if [[ -e "/var/lib/mysql" ]] \
+     && [[ "$(ls -A /var/lib/mysql)" == "" ]];
+    then
+	echo "[....] Setup database"
+	/usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh		
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	systemctl start mysqld
 
+	/usr/share/doc/zarafa/zarafa-pietma/install-mysql-secure.sh
+	mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa;"
+	mysql -u root -e "GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';"
+	echo "[DONE] Setup database"
+    else
+cat <<EOF
 
-Zarafa-Server installation
+Please setup database
 
-1.) Initialize MySQL:
+1.) Optimize Mysql and Zarafa for installed system
+
+  $ /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh
+
+2.) Initialize MySQL:
 
   $ mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
   $ systemctl start mysqld
   $ mysql_secure_installation  
 
-2.) Create/Install Zarafa database:
+3.) Create/Install Zarafa database:
 
   $ mysql -u root -p
 
   mysql> CREATE DATABASE IF NOT EXISTS zarafa;
   mysql> GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';
 
-3.) Create SSL-Keys/ -Certificates
+EOF
+    fi
+
+    if [ ! -f "/etc/ssl/private/zarafa.key" ] \
+     || [ ! -f "/etc/ssl/private/zarafa.crt" ] \
+     || [ ! -f "/etc/ssl/private/zarafa.dh" ];
+    then
+	echo "[....] Setup SSL keys"    
+	/usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh    
+	echo "[DONE] Setup SSL keys"
+    else
+cat <<EOF
+
+Please setup SSL keys 
+
+1.) Create SSL-Keys/ -Certificates
  
   $ /usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh
-  
-4.) Optimize Mysql and Zarafa for installed system
 
-  $ /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh
-  
-5.) Start Zarafa-Server and create tables
+EOF
+    fi
+    
+cat <<EOF    
+
+Please start Zarafa-Server and create tables
 
   $ systemctl start zarafa-server
 
-6.)  Read More
+Read More
 
    https://wiki.archlinux.org/index.php/MySQL
    https://pietma.com/run-and-access-zarafa/
    https://pietma.com/optimize-zarafa-and-mysql-mariadb/
+  
+EOF    
 
-   
-EOF
- 
     return 0
 }
 
