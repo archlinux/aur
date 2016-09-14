@@ -1,0 +1,131 @@
+diff -ruN src_orig/moduls/special/FLibSYS/sysfnc.h src/moduls/special/FLibSYS/sysfnc.h
+--- src_orig/moduls/special/FLibSYS/sysfnc.h	2016-07-14 20:01:09.000000000 +0300
++++ src/moduls/special/FLibSYS/sysfnc.h	2016-09-14 16:57:21.838886790 +0300
+@@ -152,7 +152,7 @@
+ 	string descr( )	{ return _("Put message to system."); }
+
+ 	void calc( TValFunc *val ) {
+-	    message(val->getS(0).c_str(), (TMess::Type)val->getI(1), "%s", val->getS(2).c_str());
++	    message_(val->getS(0).c_str(), (TMess::Type)val->getI(1), "%s", val->getS(2).c_str());
+ 	}
+ };
+
+diff -ruN src_orig/moduls/transport/SSL/modssl.cpp src/moduls/transport/SSL/modssl.cpp
+--- src_orig/moduls/transport/SSL/modssl.cpp	2016-07-14 20:01:10.000000000 +0300
++++ src/moduls/transport/SSL/modssl.cpp	2016-09-14 16:57:21.838886790 +0300
+@@ -289,7 +289,9 @@
+ #ifndef OPENSSL_NO_SSL2
+     if(ssl_method == "SSLv2")	meth = SSLv2_server_method();
+ #endif
++#ifndef OPENSSL_NO_SSL3
+     if(ssl_method == "SSLv3")	meth = SSLv3_server_method();
++#endif
+     if(ssl_method == "TLSv1")	meth = TLSv1_server_method();
+
+     try {
+@@ -763,7 +765,9 @@
+ #ifndef OPENSSL_NO_SSL2
+     if(ssl_method == "SSLv2")	meth = SSLv2_client_method();
+ #endif
++#ifndef OPENSSL_NO_SSL3
+     if(ssl_method == "SSLv3")	meth = SSLv3_client_method();
++#endif
+     if(ssl_method == "TLSv1")	meth = TLSv1_client_method();
+
+     try {
+diff -ruN src_orig/moduls/ui/QTCfg/tuimod.cpp src/moduls/ui/QTCfg/tuimod.cpp
+--- src_orig/moduls/ui/QTCfg/tuimod.cpp	2016-07-14 20:01:11.000000000 +0300
++++ src/moduls/ui/QTCfg/tuimod.cpp	2016-09-14 16:57:21.838886790 +0300
+@@ -264,7 +264,7 @@
+ void TUIMod::postMess( const string &cat, const string &mess, TUIMod::MessLev type, QWidget *parent )
+ {
+     //Put the system message
+-    message(cat.c_str(),(type==TUIMod::Crit)?TMess::Crit:
++    message_(cat.c_str(),(type==TUIMod::Crit)?TMess::Crit:
+ 	(type==TUIMod::Error)?TMess::Error:
+ 	(type==TUIMod::Warning)?TMess::Warning:TMess::Info, "%s", mess.c_str());
+
+diff -ruN src_orig/moduls/ui/Vision/tvision.cpp src/moduls/ui/Vision/tvision.cpp
+--- src_orig/moduls/ui/Vision/tvision.cpp	2016-07-14 20:01:15.000000000 +0300
++++ src/moduls/ui/Vision/tvision.cpp	2016-09-14 16:57:21.838886790 +0300
+@@ -486,7 +486,7 @@
+ void TVision::postMess( const QString &cat, const QString &mess, TVision::MessLev type, QWidget *parent )
+ {
+     //Put system message
+-    message(cat.toStdString().c_str(), (type==TVision::Crit) ? TMess::Crit :
++    message_(cat.toStdString().c_str(), (type==TVision::Crit) ? TMess::Crit :
+ 			(type==TVision::Error)?TMess::Error:
+ 			(type==TVision::Warning)?TMess::Warning:TMess::Info,"%s",mess.toStdString().c_str());
+
+diff -ruN src_orig/moduls/ui/WebCfg/web_cfg.cpp src/moduls/ui/WebCfg/web_cfg.cpp
+--- src_orig/moduls/ui/WebCfg/web_cfg.cpp	2016-07-14 20:01:17.000000000 +0300
++++ src/moduls/ui/WebCfg/web_cfg.cpp	2016-09-14 16:57:31.622220546 +0300
+@@ -1021,7 +1021,7 @@
+ void TWEB::messPost( string &page, const string &cat, const string &mess, MessLev type )
+ {
+     //Put system message.
+-    message(cat.c_str(), (type==Error) ? TMess::Error :
++    message_(cat.c_str(), (type==Error) ? TMess::Error :
+ 			 (type==Warning) ? TMess::Warning :
+ 			  TMess::Info,"%s",mess.c_str());
+
+diff -ruN src_orig/moduls/ui/WebVision/web_vision.cpp src/moduls/ui/WebVision/web_vision.cpp
+--- src_orig/moduls/ui/WebVision/web_vision.cpp	2016-07-14 20:01:14.000000000 +0300
++++ src/moduls/ui/WebVision/web_vision.cpp	2016-09-14 16:57:21.838886790 +0300
+@@ -570,7 +570,7 @@
+ void TWEB::messPost( string &page, const string &cat, const string &mess, MessLev type )
+ {
+     //Put system message.
+-    message(cat.c_str(), (type==Error) ? TMess::Error : (type==Warning) ? TMess::Warning : TMess::Info,"%s",mess.c_str());
++    message_(cat.c_str(), (type==Error) ? TMess::Error : (type==Warning) ? TMess::Warning : TMess::Info,"%s",mess.c_str());
+
+     //Prepare HTML messages
+     page += "<table border='2' width='40%' align='center'><tbody>\n";
+diff -ruN src_orig/tcontroller.cpp src/tcontroller.cpp
+--- src_orig/tcontroller.cpp	2016-07-14 20:01:19.000000000 +0300
++++ src/tcontroller.cpp	2016-09-14 16:57:21.842220123 +0300
+@@ -395,7 +395,7 @@
+
+ void TController::alarmSet( const string &mess, int lev, const string &prm )
+ {
+-    message(("al"+owner().modId()+":"+id()+(prm.size()?("."+prm):"")).c_str(), lev, mess.c_str());
++    message_(("al"+owner().modId()+":"+id()+(prm.size()?("."+prm):"")).c_str(), lev, mess.c_str());
+ }
+
+ TVariant TController::objFuncCall( const string &iid, vector<TVariant> &prms, const string &user )
+diff -ruN src_orig/tmess.cpp src/tmess.cpp
+--- src_orig/tmess.cpp	2016-07-14 20:01:19.000000000 +0300
++++ src/tmess.cpp	2016-09-14 16:57:21.842220123 +0300
+@@ -102,7 +102,7 @@
+
+     if(mLogDir & DIR_SYSLOG) {
+ 	int level_sys;
+-	switch(abs(level))
++	switch((int)abs(level))
+ 	{
+ 	    case Debug:		level_sys = LOG_DEBUG;	break;
+ 	    case Info:		level_sys = LOG_INFO;	break;
+diff -ruN src_orig/tmess.h src/tmess.h
+--- src_orig/tmess.h	2016-07-14 20:01:19.000000000 +0300
++++ src/tmess.h	2016-09-14 16:57:21.842220123 +0300
+@@ -31,7 +31,7 @@
+ #define _(mess) Mess->I18N(mess)
+ #define FTM(rec) ((int64_t)rec.time*1000000 + rec.utime)
+ #define FTM2(tm, utm) ((int64_t)tm*1000000 + utm)
+-#define message(cat,lev,fmt,args...) Mess->put(cat,lev,fmt,##args)
++#define message_(cat,lev,fmt,args...) Mess->put(cat,lev,fmt,##args)
+ #define mess_debug(cat,fmt,args...) Mess->put(cat,TMess::Debug,fmt,##args)
+ #define mess_info(cat,fmt,args...) Mess->put(cat,TMess::Info,fmt,##args)
+ #define mess_note(cat,fmt,args...) Mess->put(cat,TMess::Notice,fmt,##args)
+diff -ruN src_orig/tsys.cpp src/tsys.cpp
+--- src_orig/tsys.cpp	2016-07-14 20:01:19.000000000 +0300
++++ src/tsys.cpp	2016-09-14 16:57:21.842220123 +0300
+@@ -1944,7 +1944,7 @@
+     //  cat - message category
+     //  level - message level
+     //  mess - message text
+-    if(iid == "message" && prms.size() >= 3)	{ message(prms[0].getS().c_str(), (TMess::Type)prms[1].getI(), "%s", prms[2].getS().c_str()); return 0; }
++    if(iid == "message" && prms.size() >= 3)	{ message_(prms[0].getS().c_str(), (TMess::Type)prms[1].getI(), "%s", prms[2].getS().c_str()); return 0; }
+     // int mess{Debug,Info,Note,Warning,Err,Crit,Alert,Emerg}(string cat, string mess) -
+     //		formation of the system message <mess> with the category <cat> and the appropriate level
+     //  cat - message category
