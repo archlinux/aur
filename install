@@ -40,7 +40,7 @@ function installbasics() {
 
 post_install() {
     installbasics
-
+    
     # CONFIG
     # => defaults
     for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
@@ -61,14 +61,14 @@ post_install() {
     _presence_password="$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16)"
     setconf "server_secret_key" "${_presence_password}" "/etc/zarafa/presence.cfg"
 
-
     # => optimization
     echo "[....] Install optimizations"
     /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh		
     echo "[DONE] Install optimizations"
-    
+
     # => mysql-database
-    if [[ -e "/var/lib/mysql" ]] \
+    if [[ ! -e "/.arch-chroot" ]] \
+     && [[ -e "/var/lib/mysql" ]] \
      && [[ "$(ls -A /var/lib/mysql)" == "" ]];
     then
 	echo "[....] Setup database"    
@@ -99,9 +99,10 @@ EOF
     fi
 
     # => ssl-keys / -certificates
-    if [ ! -f "/etc/ssl/private/zarafa.key" ] \
-     || [ ! -f "/etc/ssl/private/zarafa.crt" ] \
-     || [ ! -f "/etc/ssl/private/zarafa.dh" ];
+    if [[ ! -e "/.arch-chroot" ]] \
+     && [ ! -e "/etc/ssl/private/zarafa.key" ] \
+     && [ ! -e "/etc/ssl/private/zarafa.crt" ] \
+     && [ ! -e "/etc/ssl/private/zarafa.dh" ];
     then
 	echo "[....] Setup SSL keys"    
 	/usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh    
