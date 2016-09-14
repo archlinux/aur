@@ -1,0 +1,16 @@
+pkgbase = natpos-sdr
+	pkgdesc = A Linux based SDR program similar in operation and features to other programs like Gqrx, HDSDR, and SDR#
+	pkgver = 43
+	pkgrel = 1
+	url = http://www.ecstaticlyrics.com/radio/sdr/natpos/
+	arch = i686
+	arch = x86_64
+	license = custom:Antiviral
+	depends = rtl-sdr
+	depends = alsa-lib
+	depends = glfw-x11
+	source = http://www.ecstaticlyrics.com/radio/sdr/natpos/download/natpos-43.tgz
+	md5sums = 2d4604613ad333a3d21181183630fb21
+
+pkgname = natpos-sdr
+
