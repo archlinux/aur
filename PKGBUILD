@@ -4,7 +4,7 @@ pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.80.2
 _version=4.80
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -29,7 +29,7 @@ sha512sums=('3059061c694e3a6587d0f142a9befa9cda1ad9a7f98442553a3840c1794bf16e68d
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
 
 prepare() {
-	cd "$srcdir/uEye-Linux-$pkgver-64-bit"
+	cd "$srcdir"
 	mkdir -p "$srcdir/ueyeethd"
 	mkdir -p "$srcdir/ueyeusbd"
 	sh "./ueyesdk-setup-${_version}-eth-amd64.gz.run" --noexec --target "$srcdir/ueyeethd"
