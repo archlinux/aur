@@ -72,7 +72,7 @@ post_install() {
      && [[ "$(ls -A /var/lib/mysql)" == "" ]];
     then
 	echo "[....] Setup database"    
-	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql || return 0
 	systemctl start mysqld
 
 	/usr/share/doc/zarafa/zarafa-pietma/install-mysql-secure.sh
