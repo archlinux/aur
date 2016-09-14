@@ -3,7 +3,7 @@
 
 pkgname=openscada-lts
 pkgver=0.8.16
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenSCADA is a open supervisory control and data acquisition system"
 arch=('i686' 'x86_64')
 url="http://oscada.org/"
