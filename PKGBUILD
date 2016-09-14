@@ -5,8 +5,8 @@
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.0.0
-pkgrel=4
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("i686" "x86_64")
 url="http://www.gnuplot.info"
@@ -20,8 +20,8 @@ options=(!makeflags)
 install="$_pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha1sums=("ca5163e3cb466b4aeb878f1173b0fe624367f08a"
-	"9005fa9e4da91ceedb8ccd1d761866e7b064f8b1")
+sha1sums=('3a616a1beca8e86662afcc9d368aad6847ed4e0f'
+          '9005fa9e4da91ceedb8ccd1d761866e7b064f8b1')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -40,10 +40,12 @@ build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
 	./configure  --prefix=/usr \
-		--libexecdir=/usr/bin \
-		--with-gihdir=/usr/share/gnuplot \
-		--disable-wxwidgets \
-		--with-readline=gnu
+        --libexecdir=/usr/bin \
+        --with-gihdir=/usr/share/gnuplot \
+        --disable-wxwidgets \
+        --with-qt=no \
+        --without-x \
+        --with-readline=gnu
 
 	make pkglibexecdir=/usr/bin
 }
