@@ -1,7 +1,7 @@
 # Maintainer: Matt Kline <matt at bitbashing dot io>
 pkgname='brother-hl3180cdw'
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother HL-3180CDW"
 arch=('any')
 url='http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hl3180cdw_us_as'
@@ -24,24 +24,23 @@ md5sums=('14bd3e7abdc7783b6c7ad2ced3707b8c'
 prepare() {
   cd "$srcdir/opt/" || return 1
   patch -p1 < ../brother-hl3180cdw.patch
-  # Replace /opt/brother/Printers/ with /usr/share/brother
-  cd "$srcdir/opt/brother/Printers/hl3180cdw" || return 1
-  sed -i 's%opt/brother/\(Printers\|${device_model}\)%usr/share/brother%g' \
-    cupswrapper/cupswrapperhl3180cdw inf/setupPrintcapij lpd/filterhl3180cdw
 
   cd "$srcdir" || return 1
   "$srcdir/opt/brother/Printers/hl3180cdw/cupswrapper/cupswrapperhl3180cdw"
 }
 
 package() {
-  # Copy over drivers, cups wrapper files, and the config program
-  mkdir -p "$pkgdir/usr/share"
-  cp -r "$srcdir/opt/brother/Printers" "$pkgdir/usr/share/brother"
-  cp -r "$srcdir/usr/bin" "$pkgdir/usr/"
+  # Copy everything over.
+  # Unfortunately, we can't place files according to Arch packaging guidelines,
+  # as several programs in the driver use "/opt/brother/Printers/hl3180cdw/..."
+  # hard-coded paths.
+  # Short of binary patching the drivers (which seems flaky), there's not much
+  # we can do.
+  cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir"
 
   # Strip out the script we just ran and the PPD
-  rm "$pkgdir/usr/share/brother/hl3180cdw/cupswrapper/cupswrapperhl3180cdw"
-  mv "$pkgdir/usr/share/brother/hl3180cdw/cupswrapper/brother_hl3180cdw_printer_en.ppd" ppd_file
+  rm "$pkgdir/opt/brother/Printers/hl3180cdw/cupswrapper/cupswrapperhl3180cdw"
+  mv "$pkgdir/opt/brother/Printers/hl3180cdw/cupswrapper/brother_hl3180cdw_printer_en.ppd" ppd_file
 
   # Install the PPD, the filter, and the license.
   install -m 644 -D ppd_file "$pkgdir/usr/share/cups/model/brother_hl3180cdw_printer_en.ppd"
