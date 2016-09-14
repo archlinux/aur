@@ -1,0 +1,14 @@
+pkgbase = vlevel-git
+	pkgdesc = VLevel is a tool to amplify the soft parts of music so you don't have to fiddle with the volume control.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/radiocicletta/vlevel
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	source = git+https://github.com/radiocicletta/vlevel.git
+	md5sums = SKIP
+
+pkgname = vlevel-git
+
