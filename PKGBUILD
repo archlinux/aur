@@ -1,6 +1,6 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz"
 source_i686=("https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-ia32.zip")
 source_x86_64=("https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip")
 
-sha256sums=('d4440dba7355fbec4191b8a1ee02169cd81ef2e59477e50ebc92632e751fd063'
+sha256sums=('8200f4aed962f087041225fdf85d78844e038ea1911282ccb6009f91cdfc651a'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
 sha256sums_i686=('cecdd036689eb5ea90ad0f35da38505a95ad7120dfb8653387e5abdd142a77cd')
 sha256sums_x86_64=('954dd9054a9f8735b4c09755da910e98ec23cfdb9e2c5ff32dba04cb7a5e0151')
