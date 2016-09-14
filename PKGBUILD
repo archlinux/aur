@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=snx
-pkgver=800007097
-pkgrel=2
+pkgver=800007107
+pkgrel=1
 pkgdesc="Check Point SSL Network Extender (vpn client)"
 arch=('x86_64')
 url=""
@@ -19,7 +19,7 @@ install=snx.install
 changelog=
 source=("https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh")
 noextract=("${source[@]%%::*}")
-md5sums=('82b517242eab2788dceaedb6b8f952cc')
+md5sums=('e603351ee4f3d04da6879eb8d895d47856e43253')
 
 build() {
     cd "$pkgname-$pkgver"
