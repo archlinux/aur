@@ -7,13 +7,13 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=2.4.29
+pkgver=2.4.30
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('libpulse' 'giflib' 'vte' 'gtkglext' 'libpcap' 'mpg123' 'libieee1284' 'portaudio')
+depends=('libpulse' 'giflib' 'vte' 'gtkglext' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
 makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf')
 options=('!makeflags')
 install=$pkgname.install
@@ -28,17 +28,16 @@ source=(
   'no-fc-cache-no-lib64.patch'
   'zlib-1.2.7.patch'
   'notexi-notxt.patch'
-  'cw.h'
 )
+
 sha512sums=(
-  '010b9937d5e1f5fcd7eab276960be638f8ba832c05bbdae104b25238314b65c1fcbcf43b4a08cd41918ca5b65009ca19638733b0299341e73c69951d67b89f0f'
+  'e558288f9b672b7694141fb2803549ce2aa1a1972e53635c7f2627d2354e2e15f64cc34fd6f9e32fd4f2e864d8586c0640a3d28539e76b4ab912a8461e0a776e'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
   '076e684ecac402ccb014faebe5eaab5bb46e9e9caca9ba23374ddf94a1c83172b0874343e449c91186763114d0f388dac0060afd831bdc9eceffc6cf3529c58d'
-  '702e00c0ff7117fd9b23c005728355d9fe325e5ab24a9d67ce8f39f77fda9aed786b4e65cc6a904ac8505cc2a5c52003525aa6bd937d9438460a20fe733d741d'
+  '2706f179cdc6fb4f86198f532dccbe520dce2676238c69013af5303055f94ed44d6b8ec50cd55c47b0bf8b46f3af260767466db728f00fe409281232c8d0165e'
   'd37544313037fa75971bab198b37d3824571a3e82d4e87bbe23b01d8a847fcf3f6652a23e4bc58cec6ae43deccc9322db2f77d046641b521f275e368aca940dd'
   'd7637b0604490f1792dde1083211d418b850ecbeaf688b3013913c5af7e752796fe8d45c8306b7a1593b62c028c9def7bf04e81bc0187d05cd464727f0c5645a'
-  'b94e2a5420c89dbef21504e2b7d6ae4b36fd8ba751811228ef0310882c7626eea43b3cf19dbc9d22d2f5821793da8922a9af28a9eed1c2bf0aab4611e3de76e8'
 )
 
 prepare() {
@@ -48,9 +47,6 @@ prepare() {
   patch -Np1 -i ../no-fc-cache-no-lib64.patch
   patch -Np1 -i ../zlib-1.2.7.patch
   patch -Np1 -i ../notexi-notxt.patch
-
-  # Add missing header file
-  install -Dm644 ../cw.h src/arch/unix/cw.h
 
   # Convert MS-DOS linebreaks to Unix style ones
   printf '%s ' 'Converting MS-DOS format linebreaks to Unix format...'
