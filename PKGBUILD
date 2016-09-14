@@ -3,7 +3,7 @@
 _pkgname="home-assistant"
 pkgname="python-home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.28
+pkgver=0.28.2
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -16,7 +16,7 @@ optdepends=('git: install component requirements from github'
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         "home-assistant.service")
-sha256sums=('8dd863a95d39d528dc4d99a903180cc71cfac5769b45b6eedf079438b9f76d51'
+sha256sums=('a0ce129db8c00ea128fb2fad576450a97e0f4dabf95bdb7c33c5fdd341f722d0'
             'SKIP')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
