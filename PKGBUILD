@@ -1,13 +1,13 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=orochi-git
-pkgver=r186.6105257
+pkgver=r202.5736d54
 pkgrel=1
 pkgdesc="Orochi is a command line client for 8tracks.com."
 arch=('any')
 url="https://github.com/dbrgn/orochi"
 license=('GPL')
 groups=()
-depends=('python')
+depends=('python' 'mplayer')
 makedepends=('git')
 provides=('orochi')
 conflicts=('orochi')
