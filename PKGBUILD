@@ -5,7 +5,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 pkgname=darkaudacity-git
 _gitname=audacity
-pkgver=2.1.2.r1445.g9e41323
+pkgver=2.1.3x.r105.g0329194
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ sha1sums=(SKIP
 
 pkgver() {
   cd ${_gitname}
-  git describe --tags | sed 's/^Audacity.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^\(Dark\)\?Audacity.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
