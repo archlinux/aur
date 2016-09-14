@@ -45,7 +45,7 @@ package_poppler-lcdfilter() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
-  conflicts=("poppler-qt3<${pkgver}")
+  conflicts=("poppler-qt3<${pkgver}" "poppler")
   provides=("poppler=$pkgver")
  
   cd "${srcdir}/${_pkgbase}-${pkgver}"
