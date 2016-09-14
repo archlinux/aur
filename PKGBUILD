@@ -1,3 +1,4 @@
+# Maintainer: siers <wimuan@gmail.com>
 # vim: ts=2 sw=2
 pkgname=massren
 pkgver=20160913
