@@ -52,6 +52,6 @@ build() {
 package() {
         cd $srcdir/libical-${_libicalver}
 
-	make install
+	make install DESTDIR="$(realpath ${pkgdir})"
         #scons prefix=$pkgdir/usr install  || return 1
 }
