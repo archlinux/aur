@@ -2,12 +2,12 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libcxml"
 license=('GPL')
-depends=('libxml++>=2.6' 'boost-libs' 'libasdcp-cth')
+depends=('libxml++>=2.6' 'boost-libs>=1.61.0' 'libasdcp-cth')
 makedepends=('python2' 'pkg-config' 'boost')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/libcxml/${pkgname}-${pkgver}.tar.bz2")
 #http://carlh.net/downloads/libcxml/libcxml-0.12.0.tar.bz2
