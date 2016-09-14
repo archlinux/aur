@@ -1,6 +1,21 @@
-diff -aur enchant-1.6.0/src/enchant.c enchant-1.6.0.new/src/enchant.c
---- enchant-1.6.0/src/enchant.c	2010-04-02 01:23:37.000000000 +0430
-+++ enchant-1.6.0.new/src/enchant.c	2013-07-31 23:26:05.244144048 +0430
+diff -ruN enchant-1-6-1/src/aspell/aspell_provider.c enchant-1-6-1.new/src/aspell/aspell_provider.c
+--- enchant-1-6-1/src/aspell/aspell_provider.c	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/aspell/aspell_provider.c	2016-09-14 14:36:25.953255717 +0430
+@@ -284,9 +284,9 @@
+ #endif
+ 
+ static void
+-aspell_provider_free_string_list (EnchantProvider * me, char **str_list)
++aspell_provider_free_string_list (EnchantProvider * me, const char * const *str_list)
+ {
+-	g_strfreev (str_list);
++	g_strfreev ((char **) str_list);
+ }
+ 
+ static void
+diff -ruN enchant-1-6-1/src/enchant.c enchant-1-6-1.new/src/enchant.c
+--- enchant-1-6-1/src/enchant.c	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/enchant.c	2016-09-14 14:36:25.953255717 +0430
 @@ -208,7 +208,9 @@
  	GSList *module_dirs = NULL;
  
@@ -11,6 +26,24 @@ diff -aur enchant-1.6.0/src/enchant.c enchant-1.6.0.new/src/enchant.c
  
  	{
  		char* user_module_dir;
+@@ -730,7 +732,7 @@
+ /********************************************************************************/
+ 
+ static void
+-enchant_provider_free_string_list (EnchantProvider * provider, char ** string_list)
++enchant_provider_free_string_list (EnchantProvider * provider, const char * const * string_list)
+ {
+ 	if (provider && provider->free_string_list)
+ 		(*provider->free_string_list) (provider, string_list);
+@@ -831,7 +833,7 @@
+  */
+ static int
+ enchant_dict_merge_suggestions(EnchantDict * dict, 
+-								const char ** suggs, 
++								char ** suggs, 
+ 								size_t n_suggs,
+ 								const char * const* const new_suggs,
+ 								size_t n_new_suggs)
 @@ -840,6 +842,7 @@
  	size_t i, j;
  
@@ -19,9 +52,172 @@ diff -aur enchant-1.6.0/src/enchant.c enchant-1.6.0.new/src/enchant.c
  
  	for(i = 0; i < n_new_suggs; i++)
  		{
-diff -aur enchant-1.6.0/src/pwl.c enchant-1.6.0.new/src/pwl.c
---- enchant-1.6.0/src/pwl.c	2010-04-02 01:23:37.000000000 +0430
-+++ enchant-1.6.0.new/src/pwl.c	2013-07-31 23:27:14.200816371 +0430
+@@ -926,7 +929,8 @@
+ {
+ 	EnchantSession * session;
+ 	size_t n_suggs = 0, n_dict_suggs = 0, n_pwl_suggs = 0, n_suggsT = 0;
+-	char **suggs, **dict_suggs = NULL, **pwl_suggs = NULL, **suggsT;
++	char **suggs;
++  const char * const *dict_suggs = NULL, * const *pwl_suggs = NULL, * const *suggsT;
+ 
+ 	g_return_val_if_fail (dict, NULL);
+ 	g_return_val_if_fail (word, NULL);
+@@ -942,11 +946,11 @@
+ 	/* Check for suggestions from provider dictionary */
+ 	if (dict->suggest) 
+ 		{
+-			dict_suggs = (*dict->suggest) (dict, word, len,	
++			dict_suggs = (const char * const *) (*dict->suggest) (dict, word, len,	
+ 							&n_dict_suggs);
+ 			if(dict_suggs)
+ 				{
+-					suggsT = enchant_dict_get_good_suggestions(dict, dict_suggs, n_dict_suggs, &n_suggsT);
++					suggsT = (const char * const *) enchant_dict_get_good_suggestions(dict, dict_suggs, n_dict_suggs, &n_suggsT);
+ 					enchant_provider_free_string_list (session->provider, dict_suggs);
+ 					dict_suggs = suggsT;
+ 					n_dict_suggs = n_suggsT;
+@@ -956,10 +960,10 @@
+ 	/* Check for suggestions from personal dictionary */
+ 	if(session->personal)
+ 		{
+-			pwl_suggs = enchant_pwl_suggest(session->personal, word, len, dict_suggs, &n_pwl_suggs);
++			pwl_suggs = (const char * const *) enchant_pwl_suggest(session->personal, word, len, dict_suggs, &n_pwl_suggs);
+ 			if(pwl_suggs)
+ 				{
+-					suggsT = enchant_dict_get_good_suggestions(dict, pwl_suggs, n_pwl_suggs, &n_suggsT);
++					suggsT = (const char * const *) enchant_dict_get_good_suggestions(dict, pwl_suggs, n_pwl_suggs, &n_suggsT);
+ 					enchant_pwl_free_string_list (session->personal, pwl_suggs);
+ 					pwl_suggs = suggsT;
+ 					n_pwl_suggs = n_suggsT;
+@@ -991,8 +995,8 @@
+ 			suggs = NULL;
+ 		}
+ 	
+-	g_strfreev(dict_suggs);
+-	g_strfreev(pwl_suggs);
++	g_strfreev((char **) dict_suggs);
++	g_strfreev((char **) pwl_suggs);
+ 
+ 	if (out_n_suggs)
+ 		*out_n_suggs = n_suggs;
+@@ -1942,9 +1946,9 @@
+ 				{
+ 					const char * tag, * name, * desc, * file;
+ 					size_t n_dicts, i;
+-					char ** dicts;				       
++					const char * const * dicts;				       
+ 
+-					dicts = (*provider->list_dicts) (provider, &n_dicts);
++					dicts = (const char * const *) (*provider->list_dicts) (provider, &n_dicts);
+ 					name = (*provider->identify) (provider);
+ 					desc = (*provider->describe) (provider);
+ 					file = g_module_name (module);
+@@ -2011,9 +2015,9 @@
+ 	else if (provider->list_dicts)
+ 		{
+ 			size_t n_dicts, i;
+-			char ** dicts;				       
++			const char * const * dicts;				       
+ 			
+-			dicts = (*provider->list_dicts) (provider, &n_dicts);
++			dicts = (const char * const *) (*provider->list_dicts) (provider, &n_dicts);
+ 			
+ 			for (i = 0; (i < n_dicts) && !exists; i++)
+ 				{
+@@ -2333,7 +2337,7 @@
+ 	return dirs;
+ }
+ 
+-ENCHANT_MODULE_EXPORT(char *)
++ENCHANT_MODULE_EXPORT(const char *)
+ enchant_get_version (void) {
+ 	return ENCHANT_VERSION_STRING;
+ }
+diff -ruN enchant-1-6-1/src/enchant.h enchant-1-6-1.new/src/enchant.h
+--- enchant-1-6-1/src/enchant.h	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/enchant.h	2016-09-14 14:36:25.953255717 +0430
+@@ -51,8 +51,7 @@
+ typedef struct str_enchant_broker EnchantBroker;
+ typedef struct str_enchant_dict   EnchantDict;
+ 
+-/* const */
+-ENCHANT_MODULE_EXPORT (char *)
++ENCHANT_MODULE_EXPORT (const char *)
+      enchant_get_version (void);
+ 
+ ENCHANT_MODULE_EXPORT (EnchantBroker *) 
+diff -ruN enchant-1-6-1/src/enchant-provider.h enchant-1-6-1.new/src/enchant-provider.h
+--- enchant-1-6-1/src/enchant-provider.h	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/enchant-provider.h	2016-09-14 14:36:25.953255717 +0430
+@@ -130,7 +130,7 @@
+ 
+ 	/* frees string lists returned by list_dicts and dict->suggest */
+ 	void (*free_string_list) (struct str_enchant_provider * me,
+-				  char **str_list);
++				  const char * const *str_list);
+ 
+ 	char ** (*list_dicts) (struct str_enchant_provider * me,
+ 							   size_t * out_n_dicts);
+diff -ruN enchant-1-6-1/src/hspell/hspell_provider.c enchant-1-6-1.new/src/hspell/hspell_provider.c
+--- enchant-1-6-1/src/hspell/hspell_provider.c	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/hspell/hspell_provider.c	2016-09-14 14:37:45.579920143 +0430
+@@ -51,7 +51,7 @@
+  */
+ static int is_hebrew (const char *const iso_word, gsize len)
+ {
+-	int i;
++	unsigned int i;
+ 	
+ 	for ( i = 0; (i < len) && (iso_word[i]); i++ )
+ 		{
+@@ -142,7 +142,7 @@
+ 		     size_t len, size_t * out_n_suggs)
+ {
+ 	
+-	int res;
++	//int res;
+ 	gsize length;
+ 	char *iso_word;
+ 	char **sugg_arr = NULL;
+@@ -254,9 +254,9 @@
+ }
+ 
+ static void
+-hspell_provider_free_string_list (EnchantProvider * me, char **str_list)
++hspell_provider_free_string_list (EnchantProvider * me, const char * const *str_list)
+ {
+-	g_strfreev (str_list);
++	g_strfreev ((char **) str_list);
+ }
+ 
+ static void
+diff -ruN enchant-1-6-1/src/myspell/myspell_checker.cpp enchant-1-6-1.new/src/myspell/myspell_checker.cpp
+--- enchant-1-6-1/src/myspell/myspell_checker.cpp	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/myspell/myspell_checker.cpp	2016-09-14 14:36:25.953255717 +0430
+@@ -38,6 +38,8 @@
+ #include "enchant.h"
+ #include "enchant-provider.h"
+ 
++#include "atypes.hxx"
++
+ #ifdef near
+ #undef near
+ #endif
+@@ -530,9 +532,9 @@
+ }
+ 
+ static void
+-myspell_provider_free_string_list (EnchantProvider * me, char **str_list)
++myspell_provider_free_string_list (EnchantProvider * me, const char * const *str_list)
+ {
+-	g_strfreev (str_list);
++	g_strfreev ((char **) str_list);
+ }
+ 
+ static EnchantDict *
+diff -ruN enchant-1-6-1/src/pwl.c enchant-1-6-1.new/src/pwl.c
+--- enchant-1-6-1/src/pwl.c	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/pwl.c	2016-09-14 14:36:25.953255717 +0430
 @@ -282,7 +282,7 @@
  {
  	char buffer[BUFSIZ];
@@ -31,3 +227,27 @@ diff -aur enchant-1.6.0/src/pwl.c enchant-1.6.0.new/src/pwl.c
  	FILE *f;
  	struct stat stats;
  
+@@ -803,9 +803,9 @@
+ 
+ }
+ 
+-void enchant_pwl_free_string_list(EnchantPWL *pwl, char** string_list)
++void enchant_pwl_free_string_list(EnchantPWL *pwl, const char * const * string_list)
+ {
+-	g_strfreev(string_list);
++	g_strfreev((char **) string_list);
+ }
+ 
+ static EnchantTrie* enchant_trie_init(void)
+diff -ruN enchant-1-6-1/src/pwl.h enchant-1-6-1.new/src/pwl.h
+--- enchant-1-6-1/src/pwl.h	2011-07-04 14:32:28.000000000 +0430
++++ enchant-1-6-1.new/src/pwl.h	2016-09-14 14:36:25.953255717 +0430
+@@ -50,7 +50,7 @@
+ char** enchant_pwl_suggest(EnchantPWL *me,const char *const word,
+ 			   size_t len, const char*const*const suggs, size_t* out_n_suggs);
+ void enchant_pwl_free(EnchantPWL* me);
+-void enchant_pwl_free_string_list(EnchantPWL* me, char** string_list);
++void enchant_pwl_free_string_list(EnchantPWL* me, const char * const * string_list);
+ 
+ #ifdef __cplusplus
+ }
