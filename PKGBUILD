@@ -3,7 +3,7 @@
 pkgname=arc-faenza-icon-theme
 _gitname=arc-icon-theme
 pkgver=20160605.r5.g664c05e
-pkgrel=1
+pkgrel=2
 pkgdesc='Combination of Arc icon theme and Faenza dark icon theme. Also includes some icons from other sets for icon sizes 22 and 24.'
 arch=(any)
 url=https://github.com/horst3180/arc-icon-theme
@@ -249,7 +249,7 @@ add_faenza_icons() {
 	link_icon "gpm-primary-100-charging.png" "battery-full-charging-symbolic.png"
 	link_icon "gpm-primary-100-charging.png" "gpm-battery-100-charging.png"
 	link_icon "gpm-primary-100-charging.png" "gpm-ups-100-charging.png"
-	link_icon "gpm-primary-100-charging.png" "notificaiton-battery-100-plugged.png"
+	link_icon "gpm-primary-100-charging.png" "notification-battery-100-plugged.png"
 	link_icon "gpm-primary-100-charging.png" "notification-gpm-battery-100-charging.png"
 	link_icon "gpm-primary-100-charging.png" "notification-gpm-ups-100-charging.png"
 	link_icon "gpm-primary-100-charging.png" "xfpm-battery-100-charging.png"
