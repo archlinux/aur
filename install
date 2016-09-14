@@ -128,7 +128,7 @@ Read More
    https://pietma.com/run-and-access-zarafa/
    https://pietma.com/optimize-zarafa-and-mysql-mariadb/
   
-EOF    
+EOF
 
     return 0
 }
