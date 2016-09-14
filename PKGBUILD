@@ -24,7 +24,8 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
          'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so')
+         'libx264.so' 'libx265.so'
+         'raspberrypi-firmware-tools')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'

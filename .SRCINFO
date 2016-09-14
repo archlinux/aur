@@ -47,6 +47,7 @@ pkgbase = ffmpeg-mmal
 	depends = libvpx.so
 	depends = libx264.so
 	depends = libx265.so
+	depends = raspberrypi-firmware-tools
 	optdepends = ladspa: LADSPA filters
 	provides = libavcodec.so
 	provides = libavdevice.so
