@@ -19,7 +19,7 @@ install=snx.install
 changelog=
 source=("https://vpnportal.aktifbank.com.tr/SNX/INSTALL/snx_install.sh")
 noextract=("${source[@]%%::*}")
-md5sums=('e603351ee4f3d04da6879eb8d895d47856e43253')
+md5sums=('17c676d6e0e6f4d53d0e4398c2211db2')
 
 build() {
     cd "$pkgname-$pkgver"
