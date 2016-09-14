@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Albion Staging Server
+Comment=The first true cross-platform Sandbox MMO -- staging server
+Exec=albion-online-staging
+Icon=/opt/albion-online-launcher-bin/AlbionOnline.xpm
+Terminal=false
