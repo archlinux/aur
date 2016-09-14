@@ -8,21 +8,23 @@
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - use -fPIC in host cflags for armv7 to fix print_options.c compile
+# Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.0
+pkgver=3.1.3
 pkgrel=1
 epoch=1
-pkgdesc='Complete solution to record, convert and stream audio and video'
+pkgdesc='ffmpeg built with MMAL hardware acceleration support'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://ffmpeg.org/'
 license=('GPL3')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
-         'libass' 'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh'
-         'libtheora' 'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg'
-         'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-         'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-         'libvpx.so' 'libx264.so' 'libx265.so')
+         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
+         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+         'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+         'v4l-utils' 'xvidcore' 'zlib'
+         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
+         'libx264.so' 'libx265.so')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -31,7 +33,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('f19ff77a2f7f736a41dd1499eef4784bf3cb7461f07c13a268164823590113c0'
+sha256sums=('58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
             'SKIP')
 
 build() {
@@ -52,10 +54,10 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
-    --enable-libdcadec \
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
+    --enable-libiec61883 \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
@@ -77,6 +79,7 @@ build() {
     --enable-libx265 \
     --enable-libxvid \
     --enable-mmal \
+    --enable-netcdf \
     --enable-shared \
     --enable-version3 \
     --enable-x11grab \
