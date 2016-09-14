@@ -112,9 +112,7 @@ EOF
     else
 cat <<EOF
 
-Please setup SSL keys 
-
-1.) Create SSL-Keys/ -Certificates
+Please create SSL-Keys/ -Certificates
  
   $ /usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh
 
