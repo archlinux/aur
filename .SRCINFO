@@ -5,6 +5,8 @@ pkgbase = cbvike
 	url = http://forums.codeblocks.org/index.php?topic=19281.0
 	arch = x86_64
 	arch = i686
+	makedepends = cmake
+	makedepends = codeblocks
 	depends = codeblocks
 	source = git://github.com/marmistrz/cbvike.git
 	md5sums = SKIP
