@@ -1,0 +1,23 @@
+pkgbase = python-pytyle3-git
+	pkgdesc = An automatic tiler that is compatible with Openbox Multihead
+	pkgver = 20150519
+	pkgrel = 1
+	url = http://burntsushi.net/X11/pytyle
+	install = pytyle3.install
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git://github.com/BurntSushi/pytyle3.git
+	source = setup3.py
+	md5sums = SKIP
+	md5sums = 9d29a233ad59473d1a575fb60f45fc75
+
+pkgname = python-pytyle3-git
+	depends = python
+	depends = python-xpybutil
+
+pkgname = python2-pytyle3-git
+	pkgdesc = An automatic tiler that is compatible with Openbox Multihead (Python2.x)
+	depends = python2>=2.7
+	depends = xpybutil-git
+

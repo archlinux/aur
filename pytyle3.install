@@ -1,0 +1,12 @@
+post_install() {
+  echo "Place config.py and keybind.py in ~/.config/pytyle3"
+  echo "They can be found in /etc/xdg/pytyle3"
+}
+
+post_upgrade() {
+  post_install
+  echo "The configuration file /etc/xdg/pytyle3/config.py has been updated to "
+  echo "support margins. Please incorporate the new changes if you want to "
+  echo "manually specify margins. This is optional."
+}
+
