@@ -19,6 +19,8 @@ sha512sums=(SKIP)
 
 package() {
   cd ${srcdir}/${_pkgname_main}/${_pkgname_sub}
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp LICENSE.* "${pkgdir}/usr/share/licenses/${pkgname}/"
   mkdir -p "${pkgdir}/usr/share/${_pkgname_main}"
   cp LICENSE.* ${_pkgname_sub}* "${pkgdir}/usr/share/${_pkgname_main}/"
 }
