@@ -21,7 +21,7 @@ install=gaiasky.install
 changelog=CHANGELOG.md
 source=("http://wwwstaff.ari.uni-heidelberg.de/gaiasandbox/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=("@md5checksum@")
+md5sums=("f12603c55a40fdc22ae40f14c67dcb70")
 validpgpkeys=()
 
 prepare() {

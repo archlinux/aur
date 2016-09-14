@@ -9,7 +9,7 @@ pkgbase = gaiasky
 	license = LGPL3
 	depends = jre8-openjdk
 	source = http://wwwstaff.ari.uni-heidelberg.de/gaiasandbox/1.0.0.3e6fc36/gaiasky-1.0.0.3e6fc36.tar.gz
-	md5sums = @md5checksum@
+	md5sums = f12603c55a40fdc22ae40f14c67dcb70
 
 pkgname = gaiasky
 
