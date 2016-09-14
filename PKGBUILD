@@ -5,7 +5,7 @@ pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 _libvmimever=0.9.2
-pkgrel=96
+pkgrel=97
 pkgdesc="A C++ class library for working with MIME messages"
 arch=('armv7h'
       'armv6h'
@@ -38,7 +38,7 @@ md5sums=('0ba65ad889488b2f851d7f028bfb6e9e'
          '21dcfca3eedb6b08fac57a5c9f267490'
          'cde4f6e8a17bf09b6069290cc53da44f')
 
-build() {
+prepare() {
     cd $srcdir/libvmime-${_libvmimever}
         
     # Patching
@@ -46,6 +46,11 @@ build() {
         echo "Patching ${pa}"
         patch -p1 <${pa}
     done
+
+}
+
+build() {
+    cd $srcdir/libvmime-${_libvmimever}
 
     ./configure --disable-debug \
 	--enable-sasl \
@@ -62,6 +67,8 @@ build() {
 }
 
 package() {
+    cd $srcdir/libvmime-${_libvmimever}
+    
     make install
     #scons prefix=$pkgdir/usr install  || return 1
 }
