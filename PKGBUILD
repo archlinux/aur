@@ -1,7 +1,7 @@
 pkgname=(
     'mailhog-bin'
 )
-pkgver=v0.2.0
+pkgver=v0.2.1
 pkgrel=2
 pkgdesc="Web and API based SMTP testing"
 arch=('i686' 'x86_64')
