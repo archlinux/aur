@@ -1,10 +1,9 @@
 pkgbase = mpv-rpi
-	pkgdesc = Video player based on MPlayer/mplayer2
-	pkgver = 0.16.0
+	pkgdesc = mpv with Raspberry Pi support
+	pkgver = 0.20.0
 	pkgrel = 1
 	epoch = 1
 	url = http://mpv.io
-	install = mpv.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +13,7 @@ pkgbase = mpv-rpi
 	makedepends = ladspa
 	makedepends = hardening-wrapper
 	makedepends = git
-	depends = ffmpeg
+	depends = ffmpeg-mmal
 	depends = lcms2
 	depends = libcdio-paranoia
 	depends = libgl
@@ -40,8 +39,10 @@ pkgbase = mpv-rpi
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-0.16.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.16.0.tar.gz
-	sha256sums = fc3619de0ede16fbb023ac72589090e8e77fd9d9e03a81adc728105d50ef38ba
+	source = mpv-0.20.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.20.0.tar.gz
+	source = http://www.freehackers.org/~tnagy/release/waf-1.8.12
+	sha256sums = fe6ec9d2ded5ce84b963f54b812d579d04f944f4a737f3ae639c4d5d9e842b56
+	sha256sums = 01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b
 
 pkgname = mpv-rpi
 

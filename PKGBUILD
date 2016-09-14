@@ -6,18 +6,20 @@
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - armv7/aarch64 needs to be built with fPIC
+# Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/community/mpv/PKGBUILD
 
 pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
-pkgver=0.16.0
+pkgver=0.20.0
 pkgrel=1
-pkgdesc='Video player based on MPlayer/mplayer2'
+_waf_version=1.8.12
+pkgdesc='mpv with Raspberry Pi support'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 url='http://mpv.io'
 depends=(
-  'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
+  'ffmpeg-mmal' 'lcms2' 'libcdio-paranoia' 'libgl' 'enca' 'libxss'
   'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
   'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'libdvdnav'
   'libxrandr' 'jack' 'smbclient' 'rubberband'
@@ -25,16 +27,17 @@ depends=(
 makedepends=('mesa' 'python-docutils' 'ladspa' 'hardening-wrapper' 'git')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
+  "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
+sha256sums=('fe6ec9d2ded5ce84b963f54b812d579d04f944f4a737f3ae639c4d5d9e842b56'
+  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 provides=('mpv')
 conflicts=('mpv')
-install=mpv.install
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('fc3619de0ede16fbb023ac72589090e8e77fd9d9e03a81adc728105d50ef38ba')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
 
-  ./bootstrap.py
+  install -m755 "${srcdir}"/waf-${_waf_version} waf
 }
 
 build() {
@@ -44,9 +47,10 @@ build() {
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
-    --enable-zsh-comp \
-    --enable-libmpv-shared \
     --enable-cdda \
+    --enable-encoding \
+    --enable-libmpv-shared \
+    --enable-zsh-comp \
     --enable-egl-x11 \
     --enable-rpi
 
