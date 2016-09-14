@@ -61,15 +61,17 @@ post_install() {
     _presence_password="$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16)"
     setconf "server_secret_key" "${_presence_password}" "/etc/zarafa/presence.cfg"
 
-    echo
-    echo
-    echo "[....] Zarafa-Server installation"
 
+    # => optimization
+    echo "[....] Install optimizations"
+    /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh		
+    echo "[DONE] Install optimizations"
+    
+    # => mysql-database
     if [[ -e "/var/lib/mysql" ]] \
      && [[ "$(ls -A /var/lib/mysql)" == "" ]];
     then
-	echo "[....] Setup database"
-	/usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh		
+	echo "[....] Setup database"    
 	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 	systemctl start mysqld
 
@@ -102,6 +104,7 @@ Please setup database
 EOF
     fi
 
+    # => ssl-keys / -certificates
     if [ ! -f "/etc/ssl/private/zarafa.key" ] \
      || [ ! -f "/etc/ssl/private/zarafa.crt" ] \
      || [ ! -f "/etc/ssl/private/zarafa.dh" ];
