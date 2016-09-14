@@ -2,7 +2,7 @@
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.7
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,10 +24,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r2/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r2-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch'
         "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/8e9ecc9caee1ae1d18c2cc4572729ef355091b6e/drivers/input/joystick/xpad.c")
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
@@ -41,7 +41,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
             '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
             'db34093296bc02df769faa25dd609453321b05836d8265416e6975ebe9542821'
-            '9620022c602f60e666ae0faa65ad33d52024219895ad1aef06701cce4d9492aa'
+            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27'
             'a1d3a169196c07de2a2ab6bee89e1def9e09e1d06da4cd4dfa03fefc972928e1')
 
 
@@ -70,7 +70,7 @@ prepare() {
   patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch"
   patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch"
   patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
-  patch -p1 -i "${srcdir}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r2-for.patch"
+  patch -p1 -i "${srcdir}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch"
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
