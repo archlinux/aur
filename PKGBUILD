@@ -2,15 +2,23 @@
 
 pkgname=zig
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='System programming language intended to replace C'
 arch=('x86_64' 'i686')
 url='http://ziglang.org/'
 license=('MIT')
 depends=('llvm' 'clang')
 makedepends=('cmake')
-source=("git://github.com/andrewrk/zig.git#commit=f18e34c")
-md5sums=('SKIP')
+source=("git://github.com/andrewrk/zig.git#commit=f18e34c"
+        "https://github.com/andrewrk/zig/commit/3f05fdc8e8fdc25faec2ca51547404411b314ce1.patch")
+md5sums=('SKIP'
+         '8a106418ee946cb978dbced687836298')
+
+prepare() {
+  cd "$pkgname"
+
+  patch -p1 -i ../3f05fdc8e8fdc25faec2ca51547404411b314ce1.patch
+}
 
 build() {
   mkdir -p build
@@ -28,7 +36,7 @@ build() {
 check() {
   cd build
 
-  ./run_tests || true # test 164 of 165 fails: https://github.com/andrewrk/zig/issues/184
+  ./run_tests
 }
 
 package() {
