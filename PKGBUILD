@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.4.589.4
+pkgver=1.5.604.4
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -17,8 +17,8 @@ optdepends=(
 )
 source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
 source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha256sums_i686=('7aa806eda565346d7b1062fa587a8056e04f858198b7c5e17cf3e080bf1452fe')
-sha256sums_x86_64=('445b3b053d9073b95aaa8145e681fadd3ba2caf57dd52336c588c6f058430855')
+sha256sums_i686=('72ebfca37addbc01a0d4b9d0e7b446cacb5f9b131e8e8f74265d552bce9a0bbd')
+sha256sums_x86_64=('c8262ee17af7b8a1bc3e70fd0f1d09df99baaaaab67c003f4094f3d7e7786b13')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
@@ -27,10 +27,10 @@ package() {
     chmod 4755 "$pkgdir/opt/vivaldi-snapshot/vivaldi-sandbox"
 
     # make /usr/bin/vivaldi-snapshot available
-    if [[ ! -e "$pkgdir/usr/bin/vivaldi-snapshot" ]]; then
+    binf="$pkgdir/usr/bin/vivaldi-snapshot"
+    if [[ ! -e "$binf" ]] && [[ ! -f "$binf" ]] && [[ ! -L "$binf" ]]; then
         install -dm755 "$pkgdir/usr/bin"
-        ln -s /opt/vivaldi-snapshot/vivaldi-snapshot \
-            "$pkgdir/usr/bin/vivaldi-snapshot"
+        ln -s /opt/$pkgname/$pkgname "$binf"
     fi
 
     # install icons
