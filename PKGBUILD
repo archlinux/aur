@@ -22,7 +22,7 @@ sha1sums=('31361c2868f27343ee917fbd259c1463821b6145'
           '45ccd2d2f4441f47181c8998039d555fa43b20e3')
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/add-ons/"
-  cp -dpr --no-preserve=ownership "${srcdir}/google_phone_x86-${_build}-mac-x86" "${pkgdir}/opt/android-sdk/add-ons/addon-google_apis-google-${_sdkint}"
+  cp -dpr --no-preserve=ownership "${srcdir}/google_phone_x86-${_build}-linux-x86" "${pkgdir}/opt/android-sdk/add-ons/addon-google_apis-google-${_sdkint}"
   chmod -R ugo+rX "${pkgdir}/opt"
   install -m644 "${srcdir}/source.properties" "${pkgdir}/opt/android-sdk/add-ons/addon-google_apis-google-${_sdkint}/source.properties"
 }
