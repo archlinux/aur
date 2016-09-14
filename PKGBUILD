@@ -2,12 +2,12 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
 url="http://carlh.net/asdcplib"
 license=('GPL')
-depends=('libxml++>=2.6' 'boost-libs')
+depends=('libxml++>=2.6' 'boost-libs>=1.61.0')
 makedepends=('python2' 'pkg-config' 'boost')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/asdcplib-cth/${pkgname}-${pkgver}.tar.bz2")
 #http://carlh.net/downloads/libcxml/libcxml-0.12.0.tar.bz2o
