@@ -32,7 +32,7 @@ md5sums=('e0403c31e1ed82569325685f8c15959c'
          'e641a1e9af799c056e52f31cf5f0f991'
          '26c814b710ea249b748e531f7930a5ef')
 
-package() {
+prepare() {
         cd $srcdir/libical-${_libicalver}
         
 	# Patching
@@ -40,8 +40,18 @@ package() {
 	    echo "Patching ${pa}"
 	    patch -p1 <${pa}
 	done
+}
+
+build() {
+        cd $srcdir/libical-${_libicalver}
 
 	./configure --prefix=$pkgdir/usr
-	make && make install
+	make
+}
+
+package() {
+        cd $srcdir/libical-${_libicalver}
+
+	make install
         #scons prefix=$pkgdir/usr install  || return 1
 }
