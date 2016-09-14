@@ -1,30 +1,31 @@
-# Maintainer: Peter Krauß <ptrxyz@gmail.com>
+# Maintainer: SY Zhang <lastavengers at outlook dot com>
+# Contributor: wallnuss <v dot churavy at gmail dot com>
 
-pkgname=trayer-srg-git
-_gitname=trayer-srg
-pkgver=r107.a5a0766
-pkgrel=2
-pkgdesc="trayer fork with multi monitor support, cleaned up codebase and other fancy stuff (git-version)"
-arch=(i686 x86_64)
+pkgname=trayer-srg
+pkgver=1.1.6
+pkgrel=3
+pkgdesc="A trayer fork with multi monitor support, cleaned up codebase and other fancy stuff."
+arch=('i686' 'x86_64')
 url="https://github.com/sargon/trayer-srg"
-depends=('gtk2')
-makedepends=('git')
-provides=('trayer')
-conflicts=('trayer')
-source=("trayer-srg::git+http://github.com/sargon/trayer-srg.git")
-md5sums=("SKIP")
+license=('MIT')
+depends=('gtk2' 'libxmu')
+conflicts=('trayer' 'trayer-srg-git')
+replaces=('trayer' 'trayer-srg-git')
+provides=('trayer-srg')
+source=("https://github.com/sargon/${pkgname}/archive/trayer-${pkgver}.tar.gz")
+md5sums=('0ef2041c963dccf414bb8ebb34d64cb6')
 
-pkgver() {
-  cd "$srcdir/$_gitname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+_srcdir=${pkgname}-trayer-${pkgver}
+
+build() {
+  cd ${_srcdir}
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${_srcdir}
+  make PREFIX="${pkgdir}/usr" install
 
-  ./configure
-  make PREFIX="$pkgdir/usr" install
+  install -D -m644 man/trayer.1 "${pkgdir}/usr/share/man/man1/trayer.1"
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
