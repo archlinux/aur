@@ -20,7 +20,7 @@ function installdir() {
 
 function installbasics() {
     # create tempdirs and users from /usr/lib/*.d
-    systemctl restart systemd-sysusers
+    systemd-sysusers
     systemd-tmpfiles --create
 
     installdir zarafa:zarafa 0700 0600 /var/log/zarafa
