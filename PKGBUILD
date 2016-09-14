@@ -12,7 +12,7 @@ url="https://pypi.python.org/pypi/lz4"
 license=('BSD')
 makedepends=('python-distribute')
 depends=('python3')
-source=(https://pypi.python.org/packages/b5/f0/e1de2bb7feb54011f3c4dcf35b7cca3536e19526764db051b50ea26b58e7/lz4-$pkgver.tar.gz)
+source=("https://pypi.python.org/packages/b5/f0/e1de2bb7feb54011f3c4dcf35b7cca3536e19526764db051b50ea26b58e7/lz4-$pkgver.tar.gz")
 md5sums=('50dc6c2cb99c43ce6ed95cf6ae965f0e')
 
 package() {
