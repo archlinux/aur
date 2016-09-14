@@ -1,17 +1,18 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=kfoldersync
-pkgver=3.2.0
+_pkgname=KFolderSync
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('i686' 'x86_64')
-url="http://kde-apps.org/content/show.php/KFolderSync?content=164092"
+url="https://www.linux-apps.com/content/show.php/${_pkgname}?content=164092"
 license=('GPLv2')
 depends=('hicolor-icon-theme' 'kconfigwidgets' 'kcoreaddons' 'kdbusaddons' 'ki18n' 'kitemviews' 'kio' 'kwindowsystem' 'kxmlgui')
 makedepends=('coreutils' 'extra-cmake-modules' 'gettext' 'phonon-qt5-gstreamer')
-source=("http://kde-apps.org/CONTENT/content-files/164092-kfoldersync-${pkgver}.tar.xz" "${pkgname}.install")
+source=("https://dl.opendesktop.org/api/files/download/id/1472295821/${pkgname}-${pkgver}.tar.xz" "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('77c59d1ab569682a5801e4202416d671' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('436ae6a7f5a62e08ec15f50a83615bbd' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
