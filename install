@@ -116,7 +116,7 @@ Please create SSL-Keys/ -Certificates
 EOF
     fi
     
-cat <<EOF    
+cat <<EOF
 
 Please start Zarafa-Server and create tables
 
