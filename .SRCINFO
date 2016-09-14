@@ -1,0 +1,17 @@
+pkgbase = perl-tap-harness-junit
+	pkgdesc = Generate JUnit compatible output from TAP results
+	pkgver = 0.42
+	pkgrel = 1
+	url = https://metacpan.org/release/TAP-Harness-JUnit
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build
+	makedepends = perl-test-deep
+	depends = perl-xml-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JL/JLAVALLEE/TAP-Harness-JUnit-0.42.tar.gz
+	sha512sums = 79223cc7333aa093b66e071c2550241b9e05a1134a4bd2d539019cc92fdf5e46d9a0f2549adb7692c2645f0463c5f956af00f995d56e7c25cdd1c48188b49d7d
+
+pkgname = perl-tap-harness-junit
+

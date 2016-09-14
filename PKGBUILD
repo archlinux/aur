@@ -1,0 +1,40 @@
+# Contributor: Andrew Rabert <draje@nullsum.net>
+
+pkgname='perl-tap-harness-junit'
+pkgver='0.42'
+pkgrel='1'
+pkgdesc="Generate JUnit compatible output from TAP results"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-xml-simple')
+makedepends=('perl-module-build' 'perl-test-deep')
+url='https://metacpan.org/release/TAP-Harness-JUnit'
+source=('http://search.cpan.org/CPAN/authors/id/J/JL/JLAVALLEE/TAP-Harness-JUnit-0.42.tar.gz')
+sha512sums=('79223cc7333aa093b66e071c2550241b9e05a1134a4bd2d539019cc92fdf5e46d9a0f2549adb7692c2645f0463c5f956af00f995d56e7c25cdd1c48188b49d7d')
+_distdir="TAP-Harness-JUnit-0.42"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Build.PL
+    ./Build
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    ./Build test destir${pkgdir}
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  ./Build install destir${pkgdir}
+}
