@@ -2,7 +2,7 @@
 pkgname=ensenso-sdk
 pkgdesc="Ensenso SDK and tools"
 pkgver=1.3.180
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
@@ -27,16 +27,18 @@ __install_dir() {
 	done
 }
 
+_revision='676119d'
+
 package() {
 	cd "$srcdir"
 
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/usr/lib"                            "$pkgdir/usr/lib"                     755
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/usr/bin"                            "$pkgdir/usr/bin"                     755
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/manual/html"            "$pkgdir/usr/share/doc/ensenso"       644
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/development/c/include"  "$pkgdir/usr/include/ensenso"         644
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/development/examples"   "$pkgdir/usr/share/ensenso/examples"  644
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
-	__install_dir  "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/usr/lib"                            "$pkgdir/usr/lib"                     755
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/usr/bin"                            "$pkgdir/usr/bin"                     755
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/manual/html"            "$pkgdir/usr/share/doc/ensenso"       644
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/c/include"  "$pkgdir/usr/include/ensenso"         644
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/examples"   "$pkgdir/usr/share/ensenso/examples"  644
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
+	__install_dir  "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/development/halcon"     "$pkgdir/usr/share/ensenso/halcon"    644
 
-	install -D "EnsensoSDK-$pkgver-x64-676119d/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/ensenso-sdk/LICENSE"
+	install -D "EnsensoSDK-$pkgver-x64-$_revision/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/ensenso-sdk/LICENSE"
 }
