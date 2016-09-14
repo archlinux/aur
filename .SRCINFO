@@ -1,7 +1,7 @@
 pkgbase = gnuplot-nogui
 	pkgdesc = Plotting package which outputs to X11, files and others. Without wxgtk/qt.
-	pkgver = 5.0.0
-	pkgrel = 4
+	pkgver = 5.0.4
+	pkgrel = 1
 	url = http://www.gnuplot.info
 	install = gnuplot.install
 	arch = i686
@@ -22,9 +22,9 @@ pkgbase = gnuplot-nogui
 	conflicts = gnuplot-nox
 	replaces = gnuplot-notk
 	options = !makeflags
-	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.0.0.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-5.0.4.tar.gz
 	source = lua53_compat.patch
-	sha1sums = ca5163e3cb466b4aeb878f1173b0fe624367f08a
+	sha1sums = 3a616a1beca8e86662afcc9d368aad6847ed4e0f
 	sha1sums = 9005fa9e4da91ceedb8ccd1d761866e7b064f8b1
 
 pkgname = gnuplot-nogui
