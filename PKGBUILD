@@ -1,7 +1,7 @@
 # Maintainer: Matt Kline <matt at bitbashing dot io>
 pkgname='brother-hl3180cdw'
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL-3180CDW"
 arch=('any')
 url='http://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hl3180cdw_us_as'
@@ -34,12 +34,15 @@ prepare() {
 }
 
 package() {
-  # Copy over drivers and cups wrapper files
+  # Copy over drivers, cups wrapper files, and the config program
   mkdir -p "$pkgdir/usr/share"
   cp -r "$srcdir/opt/brother/Printers" "$pkgdir/usr/share/brother"
+  cp -r "$srcdir/usr/bin" "$pkgdir/usr/"
+
   # Strip out the script we just ran and the PPD
   rm "$pkgdir/usr/share/brother/hl3180cdw/cupswrapper/cupswrapperhl3180cdw"
   mv "$pkgdir/usr/share/brother/hl3180cdw/cupswrapper/brother_hl3180cdw_printer_en.ppd" ppd_file
+
   # Install the PPD, the filter, and the license.
   install -m 644 -D ppd_file "$pkgdir/usr/share/cups/model/brother_hl3180cdw_printer_en.ppd"
   install -m 755 -D wrapper "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hl3180cdw"
