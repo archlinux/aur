@@ -1,0 +1,18 @@
+pkgbase = pywbem
+	pkgdesc = Python WBEM Client and Provider Interface
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pywbem/pywbem
+	arch = any
+	license = LGPLv2.1+
+	depends = python3
+	depends = python-pip
+	depends = python2
+	depends = python2-pip
+	source = https://github.com/pywbem/pywbem/archive/v0.9.0.tar.gz
+	sha256sums = e5a38cfffceca2bb984a531b17837c5d6a89cdbdedf08a527712bc365f19f2bb
+
+pkgname = python-pywbem
+
+pkgname = python2-pywbem
+
