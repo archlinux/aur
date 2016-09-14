@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.18
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -53,6 +53,7 @@ _depends=(
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
   libpcap         lib32-libpcap
+  lib32-libtxc_dxtn
   desktop-file-utils
 )
 
