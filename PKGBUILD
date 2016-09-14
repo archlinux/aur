@@ -62,7 +62,7 @@ build() {
 	--enable-messaging-proto-imap \
 	--enable-messaging-proto-maildir \
 	--enable-messaging-proto-sendmail \
-    	--prefix=$pkgdir/usr
+    	--prefix=/usr
     make
 }
 
