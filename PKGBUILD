@@ -3,7 +3,7 @@
 
 pkgname=vivaldi-snapshot
 pkgver=1.5.604.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -17,7 +17,7 @@ optdepends=(
 )
 source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
 source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha256sums_i686=('72ebfca37addbc01a0d4b9d0e7b446cacb5f9b131e8e8f74265d552bce9a0bbd')
+sha256sums_i686=('7153c3d416b30eeee35cba67544683686b6261dccd6d785d090fd30397c2424c')
 sha256sums_x86_64=('c8262ee17af7b8a1bc3e70fd0f1d09df99baaaaab67c003f4094f3d7e7786b13')
 
 package() {
