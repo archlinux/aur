@@ -1,8 +1,8 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop
-_pkgname=Wire
+_pkgname=wire
 pkgver=2.10.2654
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -14,9 +14,7 @@ source=("https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.g
 sha256sums=('98d3fb727ec38a5c01429f83a6afec3490a0ae29b0efdbc07c8da08e87fdc0fd')
 
 prepare() {
-  # create desktop file and run script
-  gendesk -f -n --name=${_pkgname} --pkgname=${pkgname} --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="Network"
-  echo "cd /opt/${pkgname}/ && ./Wire ." > ${pkgname}-1
+  gendesk -f -n --name=Wire --pkgname=${pkgname} --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
 }
 
 build() {
@@ -26,14 +24,25 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt/${pkgname}
+  # Place files
+  install -d ${pkgdir}/opt/${pkgname}
   if [ $CARCH == 'x86_64' ]; then
-    cp -R ${srcdir}/${pkgname}-release-${pkgver}/wrap/build/Wire-linux-x64/* ${pkgdir}/opt/${pkgname}
+    cp -a ${srcdir}/${pkgname}-release-${pkgver}/wrap/build/Wire-linux-x64/* ${pkgdir}/opt/${pkgname}
   else
-    cp -R ${srcdir}/${pkgname}-release-${pkgver}/wrap/build/Wire-linux-ia32/* ${pkgdir}/opt/${pkgname}
+    cp -a ${srcdir}/${pkgname}-release-${pkgver}/wrap/build/Wire-linux-ia32/* ${pkgdir}/opt/${pkgname}
   fi
   
-  install -Dm755 ${pkgname}-1 ${pkgdir}/usr/bin/${pkgname}
+  # Symlink main binary
+  install -d ${pkgdir}/usr/bin
+  ln -s "/opt/${pkgname}/Wire" "${pkgdir}/usr/bin/${_pkgname}"
+  
+  # Place desktop entry and icon
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 ${srcdir}/${pkgname}-release-${pkgver}/electron/img/wire.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+
+  # Place license files
+  install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+  rm "${pkgdir}/opt/${pkgname}/LICENSE"
+  rm "${pkgdir}/opt/${pkgname}/LICENSES.chromium.html"
 }
