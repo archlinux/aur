@@ -171,3 +171,30 @@ diff -r 9401662c4e6c pyrepl/readline.py
          chars.sort()
          return ''.join(chars)
  
+
+Fix crash after readline input.
+
+  File "/usr/lib/python3.5/pdb.py", line 259, in user_line
+    self.interaction(frame, None)
+  File "/usr/lib/python3.5/site-packages/pdb.py", line 250, in interaction
+    self.cmdloop()
+  File "/usr/lib/python3.5/cmd.py", line 137, in cmdloop
+    line = self.precmd(line)
+  File "/usr/lib/python3.5/pdb.py", line 396, in precmd
+    marker = line.find(';;')
+TypeError: a bytes-like object is required, not 'str'
+
+diff -r 9401662c4e6c pyrepl/readline.py
+--- a/pyrepl/readline.py        Fri Dec 04 13:10:13 2015 +0000
++++ b/pyrepl/readline.py        Fri Sep 16 00:41:57 2016 +0200
+@@ -199,7 +205,9 @@
+         except _error:
+             return _old_raw_input(prompt)
+         reader.ps1 = prompt
+-        return reader.readline(startup_hook=self.startup_hook)
++        # Unicode/str is required for Python 3 (3.5.2).
++        return unicode(reader.readline(startup_hook=self.startup_hook),
++                       ENCODING)
+ 
+     def multiline_input(self, more_lines, ps1, ps2, returns_unicode=False):
+         """Read an input on possibly multiple lines, asking for more

@@ -1,7 +1,7 @@
 pkgbase = python-pyrepl-hg
 	pkgdesc = A Python library for building flexible command line interfaces
 	pkgver = r263+.9401662c4e6c+
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/pyrepl
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-pyrepl-hg
 	source = py3fixes.patch
 	md5sums = SKIP
 	md5sums = 14f1a9fd02693f9d05d25fd9d1214070
-	md5sums = 3c2b239e29f8cbd617cb2de5cc93626e
+	md5sums = 7c5479c079bf68e91d8117a5b9bd2bd8
 
 pkgname = python-pyrepl-hg
 

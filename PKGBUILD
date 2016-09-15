@@ -4,7 +4,7 @@
 pkgname=python-pyrepl-hg
 _realpkg=pyrepl
 pkgver=r263+.9401662c4e6c+
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for building flexible command line interfaces"
 url="http://pypi.python.org/pypi/pyrepl"
 arch=("any")
@@ -17,7 +17,7 @@ source=("hg+https://bitbucket.org/pypy/pyrepl"
         "py3fixes.patch")
 md5sums=('SKIP'
          '14f1a9fd02693f9d05d25fd9d1214070'
-         '3c2b239e29f8cbd617cb2de5cc93626e')
+         '7c5479c079bf68e91d8117a5b9bd2bd8')
 makedepends=('mercurial' 'python')
 
 pkgver() {
