@@ -1,5 +1,10 @@
+2016-09-15 Pierre Choffet <peuc@wanadoo.fr>
+	* 2.0.0.r269.g910e74e :
+	Reduce dependencies lists - thanks ArchangeGabriel for the input. Add
+	conflict with ring-kde package.
+
 2016-01-09 Pierre Choffet <peuc@wanadoo.fr>
-        * 2.0.0.r177.g49fb1c3
+	* 2.0.0.r177.g49fb1c3 :
 	The client incompatibilities have now been fixed upstream, so the package
 	specific patches have been removed.
 
