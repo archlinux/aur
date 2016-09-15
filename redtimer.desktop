@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RedTimer
+GenericName=Redmine Time Tricker
+Comment=RedTimer is an easy-to-use platform-independent time tracker which allows the user to track time while working on an issue
+Exec=redtimer
+Icon=redtimer
+Terminal=false
+Type=Application
+Categories=Development
