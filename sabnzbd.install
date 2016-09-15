@@ -11,7 +11,7 @@ post_install() {
   # add x-nzb mimetype
   if [[ -f /usr/bin/xdg-mime ]]; then
     xdg-mime install --mode system "${SABNZBD_DIR}/x-nzb.xml"
-    xdg-icon-resource install --context mimetypes --size 64 "${SABNZBD_DIR}/nzb-2.png" application-x-nzb
+    xdg-icon-resource install --context mimetypes --size 256 "${SABNZBD_DIR}/nzb.png" application-x-nzb
   fi
 
   post_upgrade
@@ -54,7 +54,7 @@ pre_remove() {
 
   if [[ -f /usr/bin/xdg-mime ]]; then
     xdg-mime uninstall --mode system "${SABNZBD_DIR}/x-nzb.xml"
-    xdg-icon-resource uninstall --context mimetypes --size 64 application-x-nzb
+    xdg-icon-resource uninstall --context mimetypes --size 256 application-x-nzb
   fi
 }
 
