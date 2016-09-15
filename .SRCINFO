@@ -1,0 +1,16 @@
+pkgbase = astrosound-redux
+	pkgdesc = A modern music player made with Electron
+	pkgver = 0.0.5
+	pkgrel = 4
+	url = https://github.com/XNBlank/astrosound-redux
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = tar
+	makedepends = npm
+	makedepends = gendesk
+	source = https://github.com/XNBlank/astrosound-redux/archive/0.0.5-4.tar.gz
+	sha256sums = 7f685a663d5ac0d9a6c57fdcc1f47eacb3e1007ec713af9d0978cb2b839585b5
+
+pkgname = astrosound-redux
+
