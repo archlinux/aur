@@ -11,6 +11,8 @@ license=('AGPLv3')
 depends=('python-tornado' 'python-aioftp')
 makedepends=('python-setuptools')
 source=('git+https://gitlab.com/localg-host/watchghost.git')
+sha256sums=('SKIP')
+install=watchghost.install
 
 pkgver(){
     cd $srcdir/$name
@@ -22,7 +24,11 @@ package() {
     cd "$srcdir/$name"
     python3 setup.py build
     python3 setup.py install --prefix=/usr --root="${pkgdir}"
-}
 
-sha256sums=('SKIP')
+    install -D $startdir/sysusers.conf $pkgdir/usr/lib/sysusers.d/watchghost.conf
+    install -D $startdir/watchghost.service $pkgdir/usr/lib/systemd/system/watchghost.service
+    for filename in groups loggers servers watchers ; do
+      install -D $srcdir/watchghost/watchghost/etc/$filename $pkgdir/etc/watchghost/$filename
+    done
+}
 

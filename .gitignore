@@ -3,3 +3,6 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!sysusers.conf
+!watchghost.install
+!watchghost.service

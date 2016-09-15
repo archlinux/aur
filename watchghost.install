@@ -1,0 +1,19 @@
+post_install() {
+    systemd-sysusers watchghost.conf
+    systemctl daemon-reload
+}
+
+post_upgrade() {
+    systemd-sysusers watchghost.conf
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop watchghost.service;
+    systemctl disable watchghost.service;
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
+

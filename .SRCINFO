@@ -3,6 +3,7 @@ pkgbase = watchghost-git
 	pkgver = 0.1.0.git_99.0005a9e
 	pkgrel = 1
 	url = https://gitlab.com/localg-host/watchghost/
+	install = watchghost.install
 	arch = any
 	license = AGPLv3
 	makedepends = python-setuptools

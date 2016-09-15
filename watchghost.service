@@ -1,0 +1,13 @@
+[Unit]
+Description=Watchghost daemon
+After=network.target
+
+[Service]
+Type=simple
+User=watchghost
+Group=watchghost
+ExecStart=/usr/bin/watchghost-server.py --config=/etc/watchghost
+
+[Install]
+WantedBy=multi-user.target
+
