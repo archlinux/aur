@@ -1,0 +1,21 @@
+pkgbase = okcash-git
+	pkgdesc = Okcash Qt Wallet, git version
+	pkgver = r164.784546e
+	pkgrel = 1
+	url = http://okcash.co
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	depends = openssl
+	optdepends = miniupnpc: adds UPnP
+	optdepends = qrencode: adds qr code functionality
+	provides = okcash
+	conflicts = okcash
+	source = git+https://github.com/okcashpro/okcash.git
+	md5sums = SKIP
+
+pkgname = okcash-git
+
