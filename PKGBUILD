@@ -2,7 +2,7 @@
 
 pkgname=linx-server
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'

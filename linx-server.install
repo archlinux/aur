@@ -1,7 +1,7 @@
 pre_install() {
   # create user and group
   /usr/bin/getent group linx &> /dev/null || /usr/bin/groupadd -r linx &> /dev/null
-  /usr/bin/getent passwd linx &> /dev/null || /usr/bin/useradd -r -g linx -s /usr/bin/nologin linx &> /dev/null
+  /usr/bin/getent passwd linx &> /dev/null || /usr/bin/useradd -r -g linx -s /usr/bin/nologin -d /usr/share/webapps/linx-server linx &> /dev/null
 }
 
 post_install() {
