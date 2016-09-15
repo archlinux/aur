@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=125.0.0
+pkgver=126.0.0
 pkgrel=1
 pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
 url="https://cloud.google.com/sdk/"
@@ -22,13 +22,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('dd9d9b18bdd5664edeb1e89922347aea7b35c0a2'
+sha1sums_x86_64=('577e2658611db6816666302ad27f77cf107ee9fb'
                  '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('8895d62c08f795cee3c30849181ca513afd4f6b6'
+sha1sums_i686=('37ae38913135ca6c154265566f2bfc5dd4449b79'
                '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
 
 prepare() {
