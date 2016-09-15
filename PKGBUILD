@@ -3,10 +3,12 @@
 # Contributor: Guillermo Garcia <ahioros@NO-SPAM.gmail.com>
 
 pkgname=plymouth-theme-arch-logo
-pkgver=0.1
-pkgrel=5
+pkgver=1
+pkgrel=1
 pkgdesc='A remake of the ubuntu-logo Plymouth theme, based on the debian-logo theme, but featuring the Arch Linux logo.'
 arch=('any')
+# Alternative websites
+#url='https://www.gnome-look.org/content/show.php/Arch-logo+plymouth?content=141697'
 #url='http://arch-stuff.org/content/show.php/Arch-logo+plymouth?content=141696'
 url='http://karlinux.deviantart.com/art/Arch-Logo-Plymouth-Theme-209553250'
 license=('GPL')
@@ -14,6 +16,7 @@ depends=('plymouth')
 install="${pkgname}.install"
 source=(
 	# Mirrors
+	#'https://dl.opendesktop.org/api/files/download/id/1460753768/141697-Arch-logo-plymouth.tar.gz'
 	#'http://arch-stuff.org/CONTENT/content-files/141696-Arch-logo-plymouth.tar.gz'
 	'http://orig01.deviantart.net/455a/f/2011/140/5/0/arch_logo_plymouth_theme_by_karlinux-d3grgbm.zip'
 )
