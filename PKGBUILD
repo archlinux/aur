@@ -1,7 +1,7 @@
-# Maintainer: David Christenson <david@the-david.com> 
+# Maintainer: boscowitch <boscowitch@boscowitch.de>
 
 pkgname=advcp
-pkgver=8.24
+pkgver=8.25
 pkgrel=1
 
 _pkgname=coreutils
@@ -15,9 +15,9 @@ provides=("acp" "amv")
 install=${pkgname}.install
 source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig}
         advcpmv-${pkgver}.patch)
-sha256sums=("a2d75286a4b9ef3a13039c2da3868a61be4ee9f17d8ae380a35a97e506972170"
+sha256sums=("31e67c057a5b32a582f26408c789e11c2e8d676593324849dcf5779296cdce87"
             "SKIP"
-            "3e4a9aa16c5aa7177d375310e4035717cbd1ba3b311c44458c8c2fa99f630eed")
+            "357034a0dca1a5f2e8fc3a0fabe0268c378192449c4094f690e3f900f7a5ae7f")
 validpgpkeys=("6C37DC12121A5006BC1DB804DF6FD971306037D9") # Pádraig Brady
 
 build() {
