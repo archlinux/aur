@@ -1,7 +1,8 @@
-# Maintainer: Alexey Ermakov <fufler[at]gmail[dot]com>
+# Former maintainer: Alexey Ermakov <fufler[at]gmail[dot]com>
+# Maintainer: Antoine Viallon <antoine[dot]viallon[at]gmail[dot]com>
 
 pkgname=hpl
-pkgver=2.1
+pkgver=2.2
 pkgrel=2
 pkgdesc="A portable implementation of the high-performance Linpack benchmark for distributed-memory computers"
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('custom:bsd')
 depends=('openmpi' 'cblas' 'lapack' 'mpich')
 makedepends=('git' 'gcc-fortran')
 source=("http://www.netlib.org/benchmark/hpl/hpl-${pkgver}.tar.gz" "hpl-${pkgver}-arch.patch")
-md5sums=('091aa58c3e62bdf598b403420d8387ef' '542fcac3a92f9860eb4dd4cb717db865')
+md5sums=('0eb19e787c3dc8f4058db22c9e0c5320' '542fcac3a92f9860eb4dd4cb717db865')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
