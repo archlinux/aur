@@ -1,7 +1,7 @@
 pkgbase = qt5-styleplugins-nogconf-git
 	pkgdesc = Additional style plugins for Qt5 (without gconf)
 	pkgver = 5.0.0.r9.7b11d50
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.qt.io/cgit/qt/qtstyleplugins.git
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,11 @@ pkgbase = qt5-styleplugins-nogconf-git
 	provides = qt5-styleplugins=5.0.0.r9.7b11d50
 	conflicts = qt5-styleplugins
 	source = qtstyleplugins::git+https://code.qt.io/qt/qtstyleplugins.git
+	source = qtstyleplugins_no_gconf.diff
 	md5sums = SKIP
+	md5sums = 124030eef158dcf979ffeec6f7b5e2fd
+	sha512sums = SKIP
+	sha512sums = 0c506d01859118cd87ea7e09bfc5a40c5475610064ee90510409ac083f6a20441d01cb5390ff7aa11a862fbc5009596eddc030e4ac01ec07653ef44d6f44dd08
 
 pkgname = qt5-styleplugins-nogconf-git
 
