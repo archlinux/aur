@@ -1,0 +1,35 @@
+pkgbase = devscripts-git
+	pkgdesc = Scripts to make the life of a Debian Package maintainer easier (git-latest)
+	pkgver = v2.16.7
+	pkgrel = 1
+	url = https://anonscm.debian.org/git/collab-maint/devscripts.git
+	install = devscripts-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = po4a
+	makedepends = perl-timedate
+	makedepends = perl-libwww
+	makedepends = docbook-xsl
+	makedepends = perl-file-desktopentry
+	makedepends = perl-file-basedir
+	makedepends = perl-parse-debcontrol
+	makedepends = python-setuptools
+	depends = dpkg
+	depends = wget
+	depends = sed
+	depends = perl
+	depends = debianutils
+	depends = debhelper
+	depends = perl-timedate
+	optdepends = sensible-utils: for sensible alternative selection
+	provides = devscripts
+	conflicts = devscripts
+	options = !makeflags
+	source = git+https://anonscm.debian.org/git/collab-maint/devscripts.git
+	source = fixes.patch
+	md5sums = SKIP
+	md5sums = 110857b0eb4a9dbf57a8b562d992ab33
+
+pkgname = devscripts-git
+
