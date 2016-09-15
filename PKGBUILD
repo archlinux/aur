@@ -1,6 +1,6 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
 pkgname=orion-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r214.5545bf1
+pkgver=r229.8381087
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
