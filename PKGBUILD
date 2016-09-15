@@ -2,7 +2,7 @@
 # Maintainer: Gheorghe Valentin Rafael <grvconstanta@gmail.com>
 
 pkgname=ez
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Script wrapper arround pacman, yaourt, pbget, makepkg"
 arch=('i686' 'x86_64')
