@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('firefox')
 conflicts=('firefox-extension-vimfx')
-source=("VimFx-$pkgver.xpi::https://github.com/akhodakivskiy/VimFx/releases/download/v$pkgver/VimFx.xpi")
+source=("VimFx-$pkgver.xpi::$url/releases/download/v$pkgver/VimFx.xpi")
 noextract=("${source%%::*}")
 sha256sums=('3bccc26506e40c05ff7af32a82a2b529995f8c1ed84e471caf01734d54047d8c')
 
