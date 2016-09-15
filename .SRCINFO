@@ -10,7 +10,8 @@ pkgbase = python-pomegranate
 	depends = cython
 	depends = python-networkx
 	depends = python-joblib
-	depends = python-numpypython-scipy
+	depends = python-numpy
+	depends = python-scipy
 	source = https://pypi.python.org/packages/60/8a/7631cef015f03956ea5902d705199050ebe65ec9eeb9573e73e1e600f051/pomegranate-0.6.0.tar.gz
 	md5sums = ab106cafc9939a7e198de9edec83c161
 
@@ -19,5 +20,6 @@ pkgname = python-pomegranate
 	depends = cython
 	depends = python-networkx
 	depends = python-joblib
-	depends = python-numpypython-scipy
+	depends = python-numpy
+	depends = python-scipy
 
