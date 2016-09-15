@@ -3,8 +3,8 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=sdl-ball
-pkgver=1.02
-pkgrel=3
+pkgver=1.03
+pkgrel=1
 pkgdesc="A Breakout clone with pretty graphics"
 arch=('i686' 'x86_64')
 url="http://sdl-ball.sourceforge.net/"
@@ -15,11 +15,11 @@ license=('GPL3')
 depends=('glu' 'sdl_mixer' 'sdl_ttf' 'sdl_image')
 # uncomment line below if building the gimp-leveleditor
 #makedepends=('gimp')
-source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('03ae91c0ddbcf055a224b765da55dc5c8417e9b09971eb56280c8e602ba01423')
+source=("http://sourceforge.net/projects/${pkgname}/files/SDL-Ball_1.03_build-6_src.tar.xz")
+sha256sums=('6910a7166d16e3bfe4a67b538d02e25eec0d06276aef399b9143fd246cd76442')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/SDL-Ball_source_build_0006_src"
   
   # uncomment following 2 lines for wiimote support.
   #export LIBS="-lwiiuse"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/SDL-Ball_source_build_0006_src"
 
   mkdir -p "${pkgdir}/usr/share/games/${pkgname}"
   cp -r README themes "${pkgdir}/usr/share/games/${pkgname}/"
@@ -47,3 +47,4 @@ package() {
   #install -Dm644 readme "${pkgdir}/usr/share/games/${pkgname}/leveleditor/gimp-leveleditor/readme"
   #install -Dm644 sdlball.xcf "${pkgdir}/usr/share/games/${pkgname}/leveleditor/gimp-leveleditor/sdlball.xcf" 
 }
+
