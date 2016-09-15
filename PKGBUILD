@@ -2,7 +2,7 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.1.12.r248.g4c5402c
+pkgver=1.1.12.r287.g17da3d8
 pkgrel=1
 url="http://backintime.le-web.org"
 license=('GPL')
@@ -10,16 +10,10 @@ arch=('any')
 makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
 source=($_pkgname::git://github.com/bit-team/backintime.git)
 md5sums=('SKIP')
-# https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
-#validpgpkeys=('3E70692EE3DB8BDDA5991C90615F366D944B4826') # Germar Reitze
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $_pkgname
 }
 
 build() {
@@ -27,7 +21,7 @@ build() {
   ./configure --python3 --no-fuse-group
   make
 
-  cd "$srcdir/$_pkgname/qt4"
+  cd "$srcdir/$_pkgname/qt"
   ./configure --python3
   make
 }
@@ -59,7 +53,7 @@ package_backintime-git() {
   provides=($_pkgname)
   conflicts=($_pkgname $_pkgname-gnome $_pkgname-gtk $_pkgname-kde4 $_pkgname-qt4 $_pkgname-qt5)
 
-  cd $_pkgname/qt4
+  cd $_pkgname/qt
   make DESTDIR="$pkgdir" install 
 }
 
