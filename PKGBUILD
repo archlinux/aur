@@ -5,14 +5,14 @@ _fus_url="https://github.com/fusion809"
 _lee_url="https://github.com/lee-dohm"
 _mur_url="https://github.com/Murriouz"
 _language_patch2_url="${_fus_url}/language-patch2"
-export _ELECTRON_VERSION=1.3.5
+export _ELECTRON_VERSION=1.3.6
 
 pkgname=atom-bleeding
 _pkgname=atom
 _apmver=1.12.7
 _atomver=1.10.2
 pkgver=${_atomver}.apm${_apmver}.e${_ELECTRON_VERSION}
-pkgrel=4
+pkgrel=1
 pkgdesc='A bleeding-edge version of the latest Atom stable release, built with the latest versions of all bundled packages. Includes extra packages to turn Atom into an IDE. Pre-built binary found in pkgbuild-current repository.'
 arch=('i686' 'x86_64')
 url="${_atom_url}/atom"
