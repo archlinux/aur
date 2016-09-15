@@ -1,0 +1,19 @@
+pkgbase = ez
+	pkgdesc = Script wrapper arround pacman, yaourt, pbget, makepkg
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Ipssisimus/ez
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pbget
+	depends = diffutils
+	depends = pacman>=5.0
+	depends = package-query>=1.8
+	depends = gettext
+	backup = etc/ezrc
+	source = https://github.com/Ipssisimus/ez/archive/ez-0.0.1-1.tar.gz
+	md5sums = c223e34cb341b44ee246a54202c6d26b
+
+pkgname = ez
+
