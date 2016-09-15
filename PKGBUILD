@@ -3,7 +3,7 @@
 
 pkgname=mgmt
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Next generation config management.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -55,6 +55,6 @@ package() {
 
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 "misc/bashrc.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
+    install -Dm644 "misc/bashrc.sh" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
     install -Dm644 "misc/example.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 }
