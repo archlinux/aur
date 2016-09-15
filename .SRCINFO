@@ -1,6 +1,6 @@
 pkgbase = shotcut-bin
 	pkgdesc = A free, open source, cross-platform video editor.
-	pkgver = 160812
+	pkgver = 160901
 	pkgrel = 1
 	url = https://www.shotcut.org/
 	install = shotcut-bin.install
@@ -11,9 +11,9 @@ pkgbase = shotcut-bin
 	depends = desktop-file-utils
 	depends = gstreamer0.10-base
 	provides = shotcut
-	source = https://github.com/mltframework/shotcut/releases/download/v16.08/shotcut-debian8-x86_64-160812.tar.bz2
+	source = https://github.com/mltframework/shotcut/releases/download/v16.09/shotcut-debian8-x86_64-160901.tar.bz2
 	source = shotcut.png
-	md5sums = 24c3a1a947a8cb17b98a72108f7507ac
+	md5sums = fee49f63767329a0d57a93fdaef73c4b
 	md5sums = 457bc6ae5a299dee017521ec058e833b
 
 pkgname = shotcut-bin
