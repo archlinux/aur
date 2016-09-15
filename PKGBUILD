@@ -8,6 +8,7 @@ pkgdesc="libretro implementation of libgambatte. (Game Boy Color)"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
 url="git@github.com:libretro/gambatte-libretro.git"
 license=('GPLv2')
+groups=('libretro')
 makedepends=('git')
 _libname=gambatte_libretro
 _gitname=gambatte-libretro
