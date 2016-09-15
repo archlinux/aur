@@ -7,6 +7,7 @@ pkgdesc="libretro implementation of PicoDrive. (Sega Megadrive/Genesis/Sega Mast
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/picodrive"
 license=('GPL')
+groups=('libretro')
 depends=('glibc')
 makedepends=('git')
 
