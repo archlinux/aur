@@ -2,7 +2,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=3.0-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -24,7 +24,7 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch"
+    "swift-sphinx2.patch" "xar-1.6.patch"
 )
 sha256sums=('a278ca9ef489fbab00dc9864a2ac1bd84c8324bba7463ce7e3797debaf8cee84'
             '30bff4c69fae90a6b3aeb7fef14681c1e291fd57cf695d330adb095eac2718e6'
@@ -37,7 +37,8 @@ sha256sums=('a278ca9ef489fbab00dc9864a2ac1bd84c8324bba7463ce7e3797debaf8cee84'
             '391bd525be98396efcf7845dc88be676db585ead77a823df93fd4f1feea75b1a'
             '7f2554a218b6571a7d7e15a7101139cd6e672334d18e07b13b20a5d6caf6df52'
             '2a2072d52c4c361bd946136ccc8db4fbf1d0944f40b67d14a2b1e2ebf4f36709'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
+            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
 
 prepare() {
     # Use python2 where appropriate
@@ -67,6 +68,9 @@ prepare() {
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
+
+    # Fix for xar 1.6.1+ (backported from LLVM trunk)
+    ( cd "${srcdir}/llvm" && patch -p1 -i "${srcdir}/xar-1.6.patch" )
 }
 
 build() {
