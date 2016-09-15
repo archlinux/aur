@@ -1,5 +1,7 @@
 #!/bin/bash
 
+installlog="/tmp/zarafa-install.log"
+
 function setconf() {
     # 1: field / 2: value / 3: file
     sed -i "s|^#*\s*\($1\).*|\1 = $2|" $3
@@ -40,7 +42,7 @@ function installbasics() {
 
 post_install() {
     installbasics
-    
+
     # CONFIG
     # => defaults
     for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
@@ -63,7 +65,7 @@ post_install() {
 
     # => optimization
     echo "[....] Install optimizations"
-    /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh		
+    /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh >> $installlog
     echo "[DONE] Install optimizations"
 
     # => mysql-database
@@ -71,29 +73,52 @@ post_install() {
      && [[ -e "/var/lib/mysql" ]] \
      && [[ "$(ls -A /var/lib/mysql)" == "" ]];
     then
-	echo "[....] Setup database"    
-	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql || true
-	systemctl start mysqld
+	echo "[....] Initialize MySQL database"
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql  | tail -n +1 >> $installlog
+	echo "[DONE] Initialize MySQL database"    
 
-	/usr/share/doc/zarafa/zarafa-pietma/install-mysql-secure.sh
-	mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa;"
-	mysql -u root -e "GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';"
-	echo "[DONE] Setup database"
+	echo "[....] Start MySQL database"
+	systemctl start mysqld >> $installlog
+	echo "[DONE] Start MySQL database"	
+
+	echo "[....] Secure MySQL database"	
+	/usr/share/doc/zarafa/zarafa-pietma/install-mysql-secure.sh >> $installlog
+	echo "[DONE] Secure MySQL database"		
+	
+	echo "[....] Create Zarafa database"	
+	mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa;" >> $installlog
+	mysql -u root -e "GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';" >> $installlog
+	echo "[DONE] Create Zarafa database"	
+	
+        echo "[....] Start Zarafa and install database tables"
+	systemctl start zarafa-server >> $installlog
+        echo "[DONE] Start Zarafa and install database tables"
+        
+        echo "[....] Stop Zarafa and MySQL"
+	systemctl start mysqld >> $installlog
+	systemctl start zarafa-server >> $installlog	
+        echo "[DONE] Stop Zarafa and MySQL"	
     else
 cat <<EOF
 
 Please initialize MySQL:
 
   $ mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+Please secure MySQL:
+
   $ systemctl start mysqld
   $ mysql_secure_installation  
 
 Please create Zarafa database:
 
   $ mysql -u root -p
-
   mysql> CREATE DATABASE IF NOT EXISTS zarafa;
   mysql> GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';
+
+Please start Zarafa-Server and create database tables
+
+  $ systemctl start zarafa-server
 
 EOF
     fi
@@ -104,24 +129,24 @@ EOF
      && [ ! -e "/etc/ssl/private/zarafa.crt" ] \
      && [ ! -e "/etc/ssl/private/zarafa.dh" ];
     then
-	echo "[....] Setup SSL keys"    
-	/usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh    
-	echo "[DONE] Setup SSL keys"
+	echo "[....] Create SSL-Keys/Certificates and trust them (this will take a while >10min)"
+	/usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh >> $installlog
+	echo "[DONE] Create SSL-Keys/Certificates and trust them"
     else
 cat <<EOF
 
-Please create SSL-Keys/ -Certificates
+Please create SSL-Keys/Certificates and trust them
  
   $ /usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh
 
 EOF
     fi
+
     
 cat <<EOF
 
-Please start Zarafa-Server and create tables
-
-  $ systemctl start zarafa-server
+Please read the full installation log:
+   $ cat ${installlog}
 
 Read More
 
