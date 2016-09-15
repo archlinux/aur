@@ -1,7 +1,7 @@
 pkgbase = libqtelegram-ae-git
 	pkgdesc = Telegram library written in Qt based on telegram-cli code
 	pkgver = 10.0.0.stable.r17.g10a4fd2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://github.com/Aseman-Land/libqtelegram-aseman-edition
 	arch = x86_64
