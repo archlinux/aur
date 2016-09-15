@@ -3,7 +3,7 @@
 pkgname=docker-openrc-scripts-git
 pkgver=1.13.0.dev.27256.b248de7
 pkgrel=1
-pkgdesc='Install the openrc script & config file for openrc'
+pkgdesc='Install the openrc startup script from the official openrc git repo'
 arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
@@ -47,6 +47,10 @@ package() {
 
 md5sums=('SKIP'
          '8237f8b8af3b5a088f5472455558e466')
+md5sums=('SKIP'
+         '81147c95b4a53a42031057a735dffe9d')
+md5sums=('SKIP'
+         '81147c95b4a53a42031057a735dffe9d')
 md5sums=('SKIP'
          '81147c95b4a53a42031057a735dffe9d')
 md5sums=('SKIP'
