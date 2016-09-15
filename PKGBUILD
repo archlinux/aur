@@ -1,10 +1,9 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
-# Contributor: Jinbei Li (Petron) <i@jingbei.li>
 
 pkgname=python-tensorflow-git
-pkgver=0.10.0rc0.r778.g6d04d60
+pkgver=0.10.0.r1362.g4addf4b
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -20,10 +19,8 @@ makedepends=('git' 'python-pip' 'bazel' 'rsync' 'gcc5')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 source=("git+https://github.com/tensorflow/tensorflow"
-        "git+https://github.com/google/protobuf"
         "fix_cuda_compilation.patch")
 md5sums=('SKIP'
-         'SKIP'
          '3db030a479228df99419145f77571981')
 
 pkgver() {
@@ -33,9 +30,6 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/tensorflow
-  git submodule init
-  git config submodule.google/protobuf.url ${srcdir}/protobuf
-  git submodule update
 
   # clean and create the directory to store the wheel file
   if [ -d ${srcdir}/tmp ]; then
