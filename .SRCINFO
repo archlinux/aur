@@ -1,6 +1,6 @@
 pkgbase = python-sqlalchemy-utils
 	pkgdesc = Various utility functions, new data types and helpers for SQLAlchemy.
-	pkgver = 0.32.0
+	pkgver = 0.32.9
 	pkgrel = 1
 	url = https://github.com/kvesteri/sqlalchemy-utils
 	arch = any
@@ -14,12 +14,11 @@ pkgbase = python-sqlalchemy-utils
 	depends = python-phonenumbers
 	depends = python-passlib
 	depends = python-colour
-	depends = python-ipaddr
 	depends = python-dateutil
 	depends = python-furl
 	depends = python-cryptography
-	source = https://pypi.python.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-0.32.0.tar.gz
-	md5sums = ccf82b341312d60f8df86b54e0fcd023
+	source = https://pypi.python.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-0.32.9.tar.gz
+	md5sums = 58d81cc05dc6eca9233c7aa32d8e3af2
 
 pkgname = python-sqlalchemy-utils
 
