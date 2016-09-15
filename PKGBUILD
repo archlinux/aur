@@ -3,7 +3,7 @@
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hunspell-vi
-pkgver=20160613
+pkgver=20160915
 _pkgver=2.40
 __pkgver=2-40
 pkgrel=1
@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/1ec5/hunspell-vi"
 license=('LGPL3')
 depends=('hunspell')
-source=("http://downloads.sourceforge.net/project/aoo-extensions/917/3/vi_spellchecker_ooo3.oxt?r=http%3A%2F%2Fextensions.openoffice.org%2Fen%2Fproject%2FVietnamese_SpellChecker&ts=1471931429&use_mirror=pilotfiber")
+source=('vi_spellchecker_ooo3.oxt')
 sha256sums=('SKIP')
 
 package() {
