@@ -1,0 +1,15 @@
+pkgbase = watchghost-git
+	pkgdesc = Your invisible but loud monitoring pet
+	pkgver = 0.1.0.git_99.0005a9e
+	pkgrel = 1
+	url = https://gitlab.com/localg-host/watchghost/
+	arch = any
+	license = AGPLv3
+	makedepends = python-setuptools
+	depends = python-tornado
+	depends = python-aioftp
+	source = git+https://gitlab.com/localg-host/watchghost.git
+	sha256sums = SKIP
+
+pkgname = watchghost-git
+
