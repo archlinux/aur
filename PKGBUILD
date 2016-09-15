@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 LICENSE "$pkgdir"/usr/share/licenses/ttygif/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ttygif/LICENSE
   install -Dm755 ttygif "$pkgdir"/usr/bin/ttygif
 }
