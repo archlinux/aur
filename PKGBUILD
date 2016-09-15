@@ -6,7 +6,7 @@
 # Contributor in Chakra: totoloco <totoloco@gmx.com>
 
 pkgname=cutegram-git
-pkgver=2.9.5.dev.r16.gd6329cb
+pkgver=2.9.5.dev.r26.g20690bd
 pkgrel=1
 pkgdesc="Telegram client by Aseman Land"
 arch=('i686' 'x86_64')
@@ -34,12 +34,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/build"
-  qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr CONFIG+=binaryMode ..
+  qmake-qt5 .. QMAKE_CFLAGS_ISYSTEM= CONFIG+=binaryMode PREFIX=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}/build"
-
+  # make INSTALL_ROOT="${pkgdir}" install
   install -Dm755 cutegram "${pkgdir}/usr/bin/cutegram"
 }
