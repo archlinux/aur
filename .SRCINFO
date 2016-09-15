@@ -1,6 +1,6 @@
 pkgbase = devscripts-git
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier (git-latest)
-	pkgver = v2.16.7
+	pkgver = 2.16.7.r9.ge27bff6
 	pkgrel = 1
 	url = https://anonscm.debian.org/git/collab-maint/devscripts.git
 	install = devscripts-git.install

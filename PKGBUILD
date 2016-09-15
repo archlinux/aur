@@ -6,7 +6,8 @@
 # to your AUR helper (common flag).
 
 pkgname=devscripts-git 
-_gitname=devscripts pkgver=v2.16.7 
+_gitname=devscripts 
+pkgver=2.16.7.r9.ge27bff6 
 pkgrel=1 pkgdesc="Scripts to make the life of a Debian Package maintainer easier (git-latest)" 
 arch=('any') 
 url="https://anonscm.debian.org/git/collab-maint/devscripts.git" 
@@ -27,8 +28,9 @@ md5sums=('SKIP'
          '110857b0eb4a9dbf57a8b562d992ab33') 
 
 pkgver() {
+
   cd "$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 
 }
 
