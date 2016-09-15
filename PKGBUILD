@@ -1,7 +1,7 @@
 # Maintainer: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack-git
-pkgver=r3655
+pkgver=r3657
 pkgrel=1
 pkgdesc="An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software"
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ build() {
   ln -sf /usr/include/xplane_sdk/Wrappers xplane_sdk/CHeaders/
   ln -sf /usr/include/xplane_sdk/Widgets xplane_sdk/CHeaders/
   ln -sf /usr/include/xplane_sdk/XPLM xplane_sdk/CHeaders/
-  sed -i 's/refresh_all_bundles[(]true[)]/refresh_all_bundles()/' ../gui/main-window.cpp
   cmake -DCMAKE_BUILD_TYPE=Release -DSDK_ENABLE_LIBEVDEV=ON -DSDK_XPLANE=xplane_sdk -DSDK_WINE_PREFIX=/ -DCMAKE_INSTALL_PREFIX=/opt/opentrack ..
   make
 }
