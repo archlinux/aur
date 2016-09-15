@@ -1,13 +1,13 @@
 pkgbase = python-fancycompleter
 	pkgdesc = Colorful TAB completion for Python prompt
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/antocuni/fancycompleter
 	install = python-fancycompleter.install
 	arch = any
 	license = GPL
 	depends = python
-	depends = python-pyrepl-hg
+	optdepends = python-pyrepl-hg
 	source = https://pypi.python.org/packages/2d/4c/753646af3c4eafc6a4e4a0886f1becd09ddb3bb179bd3c350d8ac357b29a/fancycompleter-0.5.tar.gz
 	source = fix-py3-unicode-str.patch
 	md5sums = 5eacad3b56b3b6a8435af44df7899e65

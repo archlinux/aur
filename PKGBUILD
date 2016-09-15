@@ -1,13 +1,16 @@
-# Maintainer: S.Leduc <sebastien@sleduc.fr>
+# Maintainer: Daniel Hahler <archlinux+aur@thequod.de>
+# Based on https://aur.archlinux.org/packages/python2-fancycompleter
 pkgname=python-fancycompleter
 _realpkg=fancycompleter
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorful TAB completion for Python prompt"
 arch=("any")
 url="https://bitbucket.org/antocuni/fancycompleter"
 license=('GPL')
-depends=('python' 'python-pyrepl-hg')
+depends=('python')
+# pyrepl is optional, and buggy on py3.
+optdepends=('python-pyrepl-hg')
 install="$pkgname.install"
 source=("https://pypi.python.org/packages/2d/4c/753646af3c4eafc6a4e4a0886f1becd09ddb3bb179bd3c350d8ac357b29a/${_realpkg}-${pkgver}.tar.gz"
         'fix-py3-unicode-str.patch')
