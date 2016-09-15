@@ -1,16 +1,16 @@
-# Maintainer Daniel Landau <daniel.landau@iki.fi>
+# Maintainer: Daniel Landau <daniel.landau@iki.fi>
 # Contributor: Prurigro
 # Ported from the package by AlexanderR <alexander r at gmx com>
 
 pkgname=fdroidserver
-pkgver=0.6.0
+pkgver=0.7.0
 epoch=2
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('GPL3')
-depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests' 'python2-yaml')
-makedepends=('python2-setuptools' 'python2-pillow' 'python2-paramiko' 'java-environment')
+depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml')
+makedepends=('python-setuptools' 'python-pillow' 'python-paramiko' 'java-environment')
 optdepends=(
      'android-sdk: Build apps from source'
      'android-sdk-build-tools: Work with apks in the repository'
@@ -24,8 +24,8 @@ optdepends=(
      'git: Download app sources that use git or svn (via git svn)'
      'mercurial: Download app sources that use hg'
      'bzr: Download app sources that use bzr'
-     'python2-pillow: Resize and manage app icons'
-     'python2-paramiko: SSH2 support'
+     'python-pillow: Resize and manage app icons'
+     'python-paramiko: SSH2 support'
      'rsync: Transfer repo files to the web server'
      'vagrant: Buildserver virtual machine support'
      'virtualbox: Buildserver virtual machine support'
@@ -34,12 +34,12 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("https://gitlab.com/fdroid/${pkgname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('0bce8cd575a30ade8302828bad857bce3dff97708bf0b7a81d9cf4696bc04c4a')
+sha256sums=('2c59775efd65cc60f0dd310242739b8a070f515205c4f4f7beec5ca5e212b073')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-"*
 
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
+    python setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
     rm -rf "$pkgdir/tmp"
 
     mkdir -p "$pkgdir/usr/bin"
