@@ -2,7 +2,7 @@
 
 pkgname=livestreamer-twitch-gui-git
 _pkgname=livestreamer-twitch-gui
-pkgver=1183.3ad836e
+pkgver=1239.feaa6dc
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Livestreamer"
 arch=("i686" "x86_64")
