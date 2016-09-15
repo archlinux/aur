@@ -1,7 +1,7 @@
 # Maintainer: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=pymonopoly-git
-pkgver=0.300.611c6a3
+pkgver=0.369
 pkgrel=1
 pkgdesc="Famous monopoly board game (russian variation - 'Manager'). In active development"
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "0.$(git rev-list --count HEAD)"
 }
 
 build() {
