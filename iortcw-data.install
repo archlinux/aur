@@ -4,7 +4,6 @@ post_install() {
     echo ">>> /opt/iortcw-data/main/ directory in order to play:"
     echo ">>>    pak0.pk3"
     echo ">>>    sp_pak1.pk3"
-    echo ">>>    sp_pak2.pk3"
     echo ">>>    mp_pak0.pk3"
     echo ">>>"
 }
