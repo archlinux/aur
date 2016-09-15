@@ -1,6 +1,6 @@
 # Maintainer: James Clark <s1127853@sms.ed.ac.uk>
 pkgname=opencoarrays
-pkgver=1.6.2
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A transport layer for coarray Fortran compilers."
 url="http://www.opencoarrays.org/"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('mpich' 'gcc-fortran')
 makedepends=('cmake')
 source=("https://github.com/sourceryinstitute/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5a4da993794f3e04ea7855a6678981ba')
+md5sums=('16383b7f4ad075d2a0985d40e739906c')
 
 build() {
   cd "${srcdir}/OpenCoarrays-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = opencoarrays
 	pkgdesc = A transport layer for coarray Fortran compilers.
-	pkgver = 1.6.2
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = http://www.opencoarrays.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = opencoarrays
 	makedepends = cmake
 	depends = mpich
 	depends = gcc-fortran
-	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/1.6.2/opencoarrays-1.6.2.tar.gz
-	md5sums = 5a4da993794f3e04ea7855a6678981ba
+	source = https://github.com/sourceryinstitute/opencoarrays/releases/download/1.7.2/opencoarrays-1.7.2.tar.gz
+	md5sums = 16383b7f4ad075d2a0985d40e739906c
 
 pkgname = opencoarrays
 
