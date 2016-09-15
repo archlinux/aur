@@ -1,7 +1,7 @@
-From 7268834eddd02930b2cf0ce06316f175d3276b0f Mon Sep 17 00:00:00 2001
+From 681ceebc9625294243613e8737c5c2aac485462f Mon Sep 17 00:00:00 2001
 From: Erik Verbruggen <erik.verbruggen@digia.com>
 Date: Thu, 1 Sep 2016 15:34:57 +0200
-Subject: [PATCH] WIP: V4: Free up 2 address bits in 64bit mode.
+Subject: [PATCH] V4: Free up 2 address bits in 64bit mode
 
 This allows for the OS to use 49 address bits. It also maps JS Undefined
 to the C++ nullptr on 64bit.
@@ -13,8 +13,8 @@ Change-Id: I7cc90620f499be1506a61aac77d72d067308838c
  src/qml/jit/qv4assembler_p.h   |   5 ++
  src/qml/jit/qv4isel_masm.cpp   |  85 ++++++++++++++-----
  src/qml/jit/qv4isel_masm_p.h   |   4 +-
- src/qml/jsruntime/qv4value_p.h | 184 ++++++++++++++++++-----------------------
- 5 files changed, 184 insertions(+), 132 deletions(-)
+ src/qml/jsruntime/qv4value_p.h | 186 ++++++++++++++++++-----------------------
+ 5 files changed, 186 insertions(+), 132 deletions(-)
 
 diff --git a/src/qml/jit/qv4assembler.cpp b/src/qml/jit/qv4assembler.cpp
 index 929726f..b7dbc81 100644
@@ -260,7 +260,7 @@ index 6e9b02b..f6d9364 100644
      bool visitCJumpNullUndefined(IR::Type nullOrUndef, IR::Binop *binop,
                                   IR::BasicBlock *trueBlock, IR::BasicBlock *falseBlock);
 diff --git a/src/qml/jsruntime/qv4value_p.h b/src/qml/jsruntime/qv4value_p.h
-index 5abf5ad..78d535e 100644
+index 5abf5ad..942b6ee 100644
 --- a/src/qml/jsruntime/qv4value_p.h
 +++ b/src/qml/jsruntime/qv4value_p.h
 @@ -70,23 +70,27 @@ private:
@@ -352,7 +352,7 @@ index 5abf5ad..78d535e 100644
      }
  
  #ifndef QV4_USE_64_BIT_VALUE_ENCODING
-@@ -166,101 +190,63 @@ public:
+@@ -166,101 +190,65 @@ public:
          SilentNaNBit           =                  0x00040000,
          NaN_Mask               =                  0x7ff80000,
          NotDouble_Mask         =                  0x7ffa0000,
@@ -422,19 +422,21 @@ index 5abf5ad..78d535e 100644
      };
 -
 -
-+#endif
-     enum ValueTypeInternal {
+-    enum ValueTypeInternal {
 -        Null_Type_Internal = Null_Type,
 -        Boolean_Type_Internal = Boolean_Type,
 -        Integer_Type_Internal = Integer_Type
++    enum {
++        Managed_Type_Internal  = 0
+     };
+ #endif
++    enum ValueTypeInternal {
 +        Empty_Type_Internal   = Immediate_Mask   | 0,
 +        ConvertibleToInt      = Immediate_Mask   | 0x10000u, // bit 47
 +        Null_Type_Internal    = ConvertibleToInt | 0x08000u,
 +        Boolean_Type_Internal = ConvertibleToInt | 0x04000u,
 +        Integer_Type_Internal = ConvertibleToInt | 0x02000u,
-+        Managed_Type_Internal  = 0
-     };
--#endif
++    };
  
 -    inline unsigned type() const {
 -        return tag() & Type_Mask;
@@ -483,7 +485,7 @@ index 5abf5ad..78d535e 100644
      inline bool integerCompatible() const { return (tag() & ConvertibleToInt) == ConvertibleToInt; }
      static inline bool integerCompatible(Value a, Value b) {
          return ((a.tag() & b.tag()) & ConvertibleToInt) == ConvertibleToInt;
-@@ -500,14 +486,14 @@ struct Q_QML_PRIVATE_EXPORT Primitive : public Value
+@@ -500,14 +488,14 @@ struct Q_QML_PRIVATE_EXPORT Primitive : public Value
  inline Primitive Primitive::undefinedValue()
  {
      Primitive v;
@@ -500,7 +502,7 @@ index 5abf5ad..78d535e 100644
      return v;
  }
  
-@@ -553,31 +539,23 @@ inline Primitive Primitive::fromUInt32(uint i)
+@@ -553,31 +541,23 @@ inline Primitive Primitive::fromUInt32(uint i)
  
  struct Encode {
      static ReturnedValue undefined() {

@@ -198,10 +198,8 @@ if $_patching; then
   cd ${_basedir}
   patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
 
-if [[ "${_piver}" = "3" ]]; then
   cd ${_declarativedir}
-  patch -p1 < ${startdir}/0001-WIP-V4-Free-up-2-address-bits-in-64bit-mode.patch
-fi
+  patch -p1 < ${startdir}/0001-V4-Free-up-2-address-bits-in-64bit-mode.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
