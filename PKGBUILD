@@ -3,7 +3,7 @@
 pkgbase=python-sphinx-quark-theme
 pkgname=($pkgbase 'python2-sphinx-quark-theme')
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sphinx theme for QTextBrowser'
 arch=('any')
 url='https://bitbucket.org/fk/quark-sphinx-theme'
