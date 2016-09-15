@@ -9,6 +9,7 @@ pkgdesc="libretro implementation of DeSmuME. (Nintendo DS)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/desmume"
 license=('GPL')
+groups=('libretro')
 makedepends=('git')
 _libname=desmume_libretro
 _gitname=desmume
