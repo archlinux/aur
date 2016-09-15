@@ -125,7 +125,7 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.4'	
+	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.5'	
 	'zarafa-sysusers.conf')
 md5sums=('0790d8314fa4aef9788e5020be832535'
          'SKIP'
