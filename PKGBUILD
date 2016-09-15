@@ -13,7 +13,7 @@ _TIANO_DIR_="edk2"
 _TIANOCORE_PKG="Shell"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC49"
+_COMPILER="GCC5"
 ###############
 
 ###############
@@ -27,7 +27,7 @@ _COMPILER="GCC49"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=19533.39dbc4d
+pkgver=19949.8c0b0b3
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
@@ -75,7 +75,8 @@ _prepare_tianocore_sources() {
 	msg "Delete bogus dependency files"
 	find . -name '*.d' -delete
 	
-	sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
+        msg "Disable build ID generation"
+	sed 's|,--gc-sections|,--gc-sections,--build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
 	
 	msg "Use python2 for UDK BaseTools"
 	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
