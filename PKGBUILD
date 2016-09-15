@@ -1,13 +1,12 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="6.0.317.1"
+pkgver="6.0.318.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('i686' 'x86_64')
 depends=('wine' 'hicolor-icon-theme')
 makedepends=('p7zip' 'icoutils' 'gendesk')
-install=pdf-xchange.install
 url="http://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="http://www.tracker-software.com/downloads"
 _x86file="EditorV6.x86.msi"
@@ -15,10 +14,10 @@ _x64file="EditorV6.x64.msi"
 _installdir="/usr/lib"
 
  source_x86_64+=($_downloadsource/$_x64file)
- md5sums_x86_64+=(5d3039d213a7ce0ca9da9260e3ac2d61)
+ sha1sums_x86_64+=('52463ef917462c5b33f5afb493a60b4b394fa194')
 
  source_i686+=($_downloadsource/$_x86file)
- md5sums_i686+=(6eefc5f1629d9cb76e3283114453f089)
+ sha1sums_i686+=('dfe3cbebe2c792edece4525ead704e5d599bfe6b')
 
 prepare()
 {
