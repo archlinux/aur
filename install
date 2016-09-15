@@ -64,7 +64,7 @@ post_install() {
     setconf "server_secret_key" "${_presence_password}" "/etc/zarafa/presence.cfg"
 
     # => optimization
-    echo "[....] Install optimizations"
+    echo "[    ] Install optimizations"
     /usr/share/doc/zarafa/zarafa-pietma/install-optimization.sh >> $installlog
     echo "[DONE] Install optimizations"
 
@@ -73,28 +73,28 @@ post_install() {
      && [[ -e "/var/lib/mysql" ]] \
      && [[ "$(ls -A /var/lib/mysql)" == "" ]];
     then
-	echo "[....] Initialize MySQL database"
+	echo "[    ] Initialize MySQL database"
 	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql  | tail -n +1 >> $installlog
 	echo "[DONE] Initialize MySQL database"    
 
-	echo "[....] Start MySQL database"
+	echo "[    ] Start MySQL database"
 	systemctl start mysqld >> $installlog
 	echo "[DONE] Start MySQL database"	
 
-	echo "[....] Secure MySQL database"	
+	echo "[    ] Secure MySQL database"	
 	/usr/share/doc/zarafa/zarafa-pietma/install-mysql-secure.sh >> $installlog
 	echo "[DONE] Secure MySQL database"		
 	
-	echo "[....] Create Zarafa database"	
+	echo "[    ] Create Zarafa database"	
 	mysql -u root -e "CREATE DATABASE IF NOT EXISTS zarafa;" >> $installlog
 	mysql -u root -e "GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';" >> $installlog
 	echo "[DONE] Create Zarafa database"	
 	
-        echo "[....] Start Zarafa and install database tables"
+        echo "[    ] Start Zarafa and install database tables"
 	systemctl start zarafa-server >> $installlog
         echo "[DONE] Start Zarafa and install database tables"
         
-        echo "[....] Stop Zarafa and MySQL"
+        echo "[    ] Stop Zarafa and MySQL"
 	systemctl start mysqld >> $installlog
 	systemctl start zarafa-server >> $installlog	
         echo "[DONE] Stop Zarafa and MySQL"	
@@ -129,7 +129,7 @@ EOF
      && [ ! -e "/etc/ssl/private/zarafa.crt" ] \
      && [ ! -e "/etc/ssl/private/zarafa.dh" ];
     then
-	echo "[....] Create SSL-Keys/Certificates and trust them (this will take a while >10min)"
+	echo "[    ] Create SSL-Keys/Certificates and trust them (this will take a while >10min)"
 	/usr/share/doc/zarafa/zarafa-pietma/install-ssl.sh >> $installlog
 	echo "[DONE] Create SSL-Keys/Certificates and trust them"
     else
