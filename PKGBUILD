@@ -11,34 +11,39 @@
 
 pkgname=dpkg
 pkgver=1.18.10
-pkgrel=2
+pkgrel=3
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/dpkg"
+url="https://tracker.debian.org/pkg/dpkg"
 license=('GPL')
 depends=('xz' 'zlib' 'bzip2' 'perl')
-makedepends=('perl-io-string' 'perl-timedate')
-source=("http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver"{.tar.xz,.dsc})
-sha256sums=('025524da41ba18b183ff11e388eb8686f7cc58ee835ed7d48bd159c46a8b6dc5'
-'SKIP')
-#validpgpkeys=(4F3E74F436050C10F5696574B972BF3EA4AE57A3)
+makedepends=('perl-io-string' 'perl-timedate' 'git')
+checkdepends=('perl-io-string' 'perl-test-pod')
+source=("$pkgname-$pkgver::git+https://anonscm.debian.org/git/dpkg/dpkg.git#tag=$pkgver")
+sha256sums=('SKIP')
+
+check() {
+    cd "$pkgname-$pkgver"
+    make check
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    autoreconf -f -i
 
-	./configure --prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--sbindir=/usr/bin \
-		--disable-start-stop-daemon \
-		--disable-install-info
-	make
+    ./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --sbindir=/usr/bin \
+        --disable-start-stop-daemon \
+        --disable-install-info
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 
-	install -d "$pkgdir/var/$pkgname"/updates/
-	touch "${pkgdir}/var/lib/$pkgname"/{status,available}
+    install -d "$pkgdir/var/$pkgname"/updates/
+    touch "${pkgdir}/var/lib/$pkgname"/{status,available}
 }
