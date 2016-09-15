@@ -90,13 +90,14 @@ post_install() {
 	mysql -u root -e "GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY '${_mysql_password}';" >> $installlog 2>> $installlog
 	echo "[DONE] Create Zarafa database"	
 	
-        echo "[....] Start Zarafa and install database tables"
+        echo "[....] Start Zarafa and install database tables (this will take a while >1min)"
 	systemctl start zarafa-server >> $installlog 2>> $installlog
+	sleep 60 >> $installlog 2>> $installlog
         echo "[DONE] Start Zarafa and install database tables"
         
         echo "[....] Stop Zarafa and MySQL"
-	systemctl start mysqld >> $installlog 2>> $installlog
-	systemctl start zarafa-server >> $installlog 2>> $installlog
+	systemctl stop zarafa-server >> $installlog 2>> $installlog
+	systemctl stop mysqld >> $installlog 2>> $installlog
         echo "[DONE] Stop Zarafa and MySQL"	
     else
 cat <<EOF
