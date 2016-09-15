@@ -8,8 +8,8 @@ arch=(i686 x86_64)
 url="https://github.com/sargon/trayer-srg"
 depends=('gtk2')
 makedepends=('git')
-provides=('trayer')
-conflicts=('trayer')
+provides=('trayer-srg-git')
+conflicts=('trayer' 'trayer-srg')
 source=("trayer-srg-git::git+http://github.com/sargon/trayer-srg.git")
 md5sums=("SKIP")
 
