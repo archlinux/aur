@@ -1,0 +1,17 @@
+pkgbase = libvpx-1.5
+	pkgdesc = The VP8 Codec SDK (version 1.5, provides libvpx.so.3)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.webmproject.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = yasm
+	makedepends = git
+	depends = glibc
+	conflicts = libvpx<1.6
+	source = http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2
+	sha256sums = 306d67908625675f8e188d37a81fbfafdf5068b09d9aa52702b6fbe601c76797
+
+pkgname = libvpx-1.5
+
