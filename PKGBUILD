@@ -1,14 +1,15 @@
 # Maintainer: BrainDamage
 
 pkgname=libretro-reicast-git
-pkgver=2261.e622b36
-pkgrel=3
+pkgver=2331.ccc206c
+pkgrel=2
 pkgdesc="libretro implementation of Reicast Sega Dreamcast Emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/reicast-emulator"
 license=('GPL2' 'LGPL')
 makedepends=('git' 'mesa')
 depends=('alsa-lib' 'libgl' 'glibc' 'gcc-libs')
+groups=('libretro')
 provides=('libretro-reicast')
 conflicts=('libretro-reicast')
 source=("git://github.com/libretro/reicast-emulator.git"
