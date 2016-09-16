@@ -1,0 +1,20 @@
+pkgbase = brother-ql1060n
+	pkgdesc = LPR and CUPS driver for Brother QL-1060N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql1060n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002231/ql1060nlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002233/ql1060ncupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = f2c2f919ec15b6159e13bfec60bb2d515f8c77a812e349a0ed1ec68ac29f5a25
+	sha256sums = bf7a1d86234d643547fc9052df55524a5e4ddbd4bf07799988c18666e7d2d3eb
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-ql1060n
+
