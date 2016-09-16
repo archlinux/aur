@@ -41,5 +41,5 @@ package() {
 	install -m644 "README.md" "$pkgdir/usr/share/games/$pkgname/README.md"
 
 	msg2 "Installing configuration files..."
-	install -Dm644 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
+	install -m777 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
 }
