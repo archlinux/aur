@@ -2,7 +2,7 @@
 # Mod: http://www.moddb.com/mods/brutal-doom
 pkgname=brutal-doom
 pkgver=20
-pkgrel=1
+pkgrel=2
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom"
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('gzdoom')
 optdepends=('doomseeker')
 makedepends=('git')
-source=('http://www.moddb.com/downloads/mirror/95667/114/b01b809c5b56bf230a184a6ac954332d'
-        'http://www.moddb.com/downloads/mirror/61238/115/0d3f85cb2e4bc674f5b7d697c27309cb'
+source=('http://www.moddb.com/downloads/mirror/95667/114/faa37e9cb128f86a92d71ee5db227e89'
+        'http://www.moddb.com/downloads/mirror/61238/114/5f4c5b91df555944d115f983c8d65698'
 	'gzdoom.ini'
 	'README.md')
 sha512sums=('ba37b0c3a2837130d1d6bf7e9ad12ad8eb3d82a8f1abb316083550cb1811199267b4b301fcc13855b3dcb6334f57dd033b4f0bcd9af39731d9bfd7d5dcedfd4a'
