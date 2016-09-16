@@ -2,6 +2,7 @@
 # new version (without -$pkgrel): ${2%%-*}
 
 post_install() {
+    echo 'DKMS install...'
     dkms install evdi/${1%%-*}
 }
 
@@ -14,5 +15,6 @@ post_upgrade() {
 }
 
 pre_remove() {
+    echi 'DKMS remove...'
     dkms remove evdi/${1%%-*} --all
 }
