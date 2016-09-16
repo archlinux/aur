@@ -1,1 +1,1 @@
-CATALINA_HOME=/opt/atlassian-jira
+JAVA_OPTS="-Xms1024M -Xmx1024M"
