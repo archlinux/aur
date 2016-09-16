@@ -1,0 +1,24 @@
+pkgbase = ttf-iosevka-dotted-zero-open-g-hooky-i-italic-l-short-m
+	pkgdesc = A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://be5invis.github.io/Iosevka/
+	install = ttf-iosevka-dotted-zero-open-g-hooky-i-italic-l-short-m.install
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = fontforge
+	makedepends = ttfautohint
+	makedepends = otfcc
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-iosevka-hooky
+	conflicts = ttf-iosevka-zshaped
+	conflicts = ttf-iosevka
+	source = https://github.com/be5invis/Iosevka/archive/v1.9.3.tar.gz
+	md5sums = f2f3b9b8795b51dc3ee77016cf8fc1a7
+
+pkgname = ttf-iosevka-dotted-zero-open-g-hooky-i-italic-l-short-m
+
