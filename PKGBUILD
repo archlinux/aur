@@ -1,7 +1,7 @@
 # Maintainer: Alain Kalker <a.c.kalker@gmail.com>
 pkgname=libvirt-sandbox
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
@@ -13,6 +13,8 @@ optdepends=('dhclient: for sandbox network configuration using DHCP'
 source=(http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc})
 md5sums=('546eb0caaa79d50a723adf58f32da87f'
          '633854ecab0fb2a4f5f4ee958a731daf')
+validpgpkeys=('DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF')
+# Daniel P. Berrange <dan@berrange.com>
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
