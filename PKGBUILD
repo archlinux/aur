@@ -8,7 +8,7 @@ pkgdesc="A shader effect compiler for GLSL"
 arch=("i686" "x86_64")
 url="https://github.com/maizensh/glfx"
 license=('BSD2')
-depends=()
+depends=('glew')
 makedepends=('git' 'cmake')
 source=("git+$url")
 sha256sums=('SKIP')
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/$_pkgname"
     mkdir build && cd build
-    cmake ..
-    make || return 1
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+    make all || return 1
 }
 
 package() {
     cd "$srcdir/$_pkgname"
     cd build
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install || return 1
 }
