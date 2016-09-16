@@ -2,7 +2,7 @@
 # Fri Feb 27 10:52:19 UTC 2015
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL
-	pkgver = 0.16.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = http://www.scipy.org/
 	arch = i686
@@ -16,8 +16,10 @@ pkgbase = python-scipy-mkl
 	makedepends = python-numpy
 	makedepends = python2-numpy
 	makedepends = swig
-	source = http://downloads.sourceforge.net/scipy/scipy-0.16.1.tar.gz
-	md5sums = 967cdb8588a4249f820344d8264a2143
+	makedepends = cython
+	makedepends = cython2
+	source = https://codeload.github.com/scipy/scipy/tar.gz/v0.18.0-1
+	md5sums = 9c6bc68693d7307acffce690fe4f1076
 
 pkgname = python-scipy-mkl
 	depends = python-numpy-mkl

@@ -9,28 +9,31 @@ pkgbase="python-scipy-mkl"
 pkgname="python-scipy-mkl"
 true && pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 
-pkgver=0.16.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL"
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
-makedepends=('intel-fortran-compiler' 'intel-compiler-base' 'intel-mkl' 'python-numpy' 'python2-numpy' 'swig')
+makedepends=('intel-fortran-compiler' 'intel-compiler-base' 'intel-mkl' 'python-numpy' 'python2-numpy' 'swig' 'cython' 'cython2')
 checkdepends=('python-nose' 'python2-nose')
-source=("http://downloads.sourceforge.net/scipy/scipy-${pkgver}.tar.gz" )
+source=("https://codeload.github.com/scipy/scipy/tar.gz/v0.18.0-1" )
 
-md5sums=( '967cdb8588a4249f820344d8264a2143' )
+md5sums=( '9c6bc68693d7307acffce690fe4f1076' )
 
 build() {
   unset LDFLAGS
   unset FFLAGS
   export LDFLAGS="" 
   export FFLAGS="-fPIC -openmp"
-
+  
+  mv scipy-0.18.0-1 scipy-0.18.0
+  
   # Changing the arithmetic parameter (Thanks to Fabrizio Castellano)
-  sed -i "s/\#define\ UNK\ 1/\#define\ IBMPC\ 1/" \
-    scipy-${pkgver}/scipy/special/cephes/mconf.h
+  #sed -i "s/\#define\ UNK\ 1/\#define\ IBMPC\ 1/" \
+  #  scipy-${pkgver}/scipy/special/cephes/mconf.h
 
+  
   # 2 builds
   cp -r scipy-${pkgver} scipy-${pkgver}-py2
 
