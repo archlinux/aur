@@ -15,6 +15,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-    echi 'DKMS remove...'
+    echo 'DKMS remove...'
     dkms remove evdi/${1%%-*} --all
 }
