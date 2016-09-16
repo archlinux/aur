@@ -20,18 +20,18 @@ source=("${pkgname}::git+https://github.com/UshakovVasilii/gnome-shell-extension
 sha512sums=('SKIP')
 _branch=master
 
+prepare() {
+  cd "${pkgname}"
+  git checkout ${_branch}
+  git pull
+}
+
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
+  cd "${pkgname}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^EGO.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch}
 }
 
 package() {
