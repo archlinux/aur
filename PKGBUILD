@@ -52,4 +52,8 @@ package() {
   cd $srcdir/$_gitname
   make DESTDIR=$pkgdir install
 
+  # remove conflicting file provided by bash-completion in the community repo
+  msg "Removing conflicting file already provided by package 'bash-completion'"
+  rm -v $pkgdir/usr/share/bash-completion/completions/bts
+
 }
