@@ -1,0 +1,37 @@
+post_install ()
+{
+echo '########################################################################'
+echo 'You must setup shell intergration for go by running "python2 -m go"'
+echo 'Or copy and paste text below into $HOME/.bashrc or $HOME/.bash_profile'
+echo
+echo '# Bash shell driver for 'go' (http://code.google.com/p/go-tool/).'
+echo 'function go {'
+echo '    export GO_SHELL_SCRIPT=$HOME/.__tmp_go.sh'
+echo '    python2 -m go $*'
+echo '    if [ -f $GO_SHELL_SCRIPT ] ; then'
+echo '        source $GO_SHELL_SCRIPT'
+echo '    fi'
+echo '    unset GO_SHELL_SCRIPT'
+echo '}'
+echo 
+echo '##########################################################################'
+}
+
+post_remove ()
+{
+echo '########################################################################'
+echo 'You can remove shell intergration lines from $HOME/.bashrc or $HOME/.bash_profile'
+echo 'I will work on the pkgbuild adding and removing this text in the future.'
+echo
+echo '# Bash shell driver for 'go' (http://code.google.com/p/go-tool/).'
+echo 'function go {'
+echo '    export GO_SHELL_SCRIPT=$HOME/.__tmp_go.sh'
+echo '    python2 -m go $*'
+echo '    if [ -f $GO_SHELL_SCRIPT ] ; then'
+echo '        source $GO_SHELL_SCRIPT'
+echo '    fi'
+echo '    unset GO_SHELL_SCRIPT'
+echo '}'
+echo 
+echo '##########################################################################'
+}

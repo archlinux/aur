@@ -1,0 +1,17 @@
+pkgbase = go-tool-git
+	pkgdesc = Small shell command for changing directories quickly
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/trentm/go-tool/
+	install = go-tool.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python2
+	provides = go-tool
+	source = git+https://github.com/trentm/go-tool.git
+	sha256sums = SKIP
+
+pkgname = go-tool-git
+
