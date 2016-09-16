@@ -1,0 +1,21 @@
+post_install() {
+    echo "Run 'gzdoom' to initialize: (Click cancel after it fails to open if required)
+
+	gzdoom 
+
+Ensure all of your existing .wad files use lowercase only, no UpperCase allowed.
+Now copy your existing .wad files to ~/.gzdoom/:
+
+    $ cp *.wad ~/.gzdoom/
+
+Now copy gzdoom.ini to ~/.gzdoom/:
+
+    $ cp /usr/share/games/brutal-doom/gzdoom.ini ~/.gzdoom/gzdoom.ini
+
+Good to go!"
+
+}
+
+post_upgrade() {
+    post_install
+}
