@@ -1,0 +1,20 @@
+pkgbase = brother-td4100n
+	pkgdesc = LPR and CUPS driver for Brother TD-4100N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-td4100n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp100141/td4100nlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp100142/td4100ncupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = 2591432602d4e2e3f7dbe471bac88f783845047d753d7910ea96614c00bb48b0
+	sha256sums = 1ab776174363eb709bae52745b5b18492a6394a0a6877ba2f44f6ec5cfe23247
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-td4100n
+
