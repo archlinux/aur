@@ -1,0 +1,24 @@
+# Contributor: János Illés <ijanos@gmail.com>
+# Contributor: Borislav Lilov
+pkgname=hdsentinel
+pkgver=0.16
+pkgrel=1
+pkgdesc="A freeware, closed source, SMART analysis tool"
+arch=('i686' 'x86_64')
+url="http://www.hdsentinel.com/hdslin.php"
+license=('unknown')
+depends=()
+if [[ $CARCH == "i686" ]]; then
+  source=(http://www.hdsentinel.com/hdslin/hdsentinel-016.gz)
+  md5sums=('4169d8e09265ca9818f6e2d04609461a')
+elif [[ $CARCH == "x86_64" ]]; then
+  source=(http://www.hdsentinel.com/hdslin/hdsentinel-016-x64.tar.gz)
+  md5sums=('2ecf56573fcb8a339fc1b2819d1b96a9')
+fi
+
+package() {
+  cd $srcdir
+  install -m755 -D HDSentinel $pkgdir/usr/bin/hdsentinel || return 1
+}
+
+# vim:set ts=2 sw=2 et:
