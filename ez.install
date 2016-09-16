@@ -1,0 +1,6 @@
+#! /bin/bash
+
+tar -xvf ez-0.0.2-1.tar.gz
+cd ez-ez-0.0.2-1
+sudo mv ez-0.0.2-1 /usr/bin/ez
+
