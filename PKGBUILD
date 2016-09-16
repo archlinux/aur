@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.4.r134.ge5a26ab
+pkgver=2.5.4.r138.g0776bad
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -15,9 +15,15 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!emptydirs')
 source=("${pkgname}::git://git.code.sf.net/p/zynaddsubfx/code/"
+        "DPF::git+https://github.com/DISTRHO/DPF.git"
+        "instruments::git://git.code.sf.net/p/zynaddsubfx/instruments"
+        "rtosc::git+https://github.com/fundamental/rtosc.git"
         "http://zynaddsubfx.sourceforge.net/doc/instruments/unsortedzynaddsubfxParameters_20140402.zip")
-noextract=("${source[1]##*/}")
+noextract=("${source[4]##*/}")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '13e7ed9746d0ce7959afa067211175cd007fdeb77500756dd5b0a57e6230e425934a7fe267a5197b539c3305c497745beb2fef2f5e79e4c8662a9c57cf2345f0')
 _branch=master
 
@@ -33,9 +39,12 @@ prepare() {
   cd "${pkgname}"
   [ -d build ] || mkdir build
   git checkout ${_branch}
-
-  # Pull rtosc and instruments
-  git submodule update --init
+  git pull
+  git submodule init
+  git config submodule.DPF.url "${srcdir}/DPF"
+  git config submodule.instruments.url "${srcdir}/instruments"
+  git config submodule.rtosc.url "${srcdir}/rtosc"
+  git submodule update DPF instruments rtosc
 
   # Prevent use of /usr/lib64
   sed -i 's:lib64:lib:' src/CMakeLists.txt
@@ -76,7 +85,7 @@ package() {
   # Additional parameters
   install -d "${pkgdir}/usr/share/${pkgname%-*}/parameters"
   bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
-                 ${srcdir}/${source[1]##*/} -C \
+                 ${srcdir}/${source[4]##*/} -C \
                  "${pkgdir}/usr/share/${pkgname%-*}/parameters"
                  
   # Desktop file sans predefied I/O
