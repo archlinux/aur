@@ -1,0 +1,11 @@
+pkgbase = matlab-engine-for-python
+	pkgdesc = MATLAB Engine API for Python
+	pkgver = 9.1
+	pkgrel = 1
+	url = http://www.mathworks.com/help/matlab/matlab-engine-for-python.html
+	arch = any
+	license = custom
+	depends = python
+
+pkgname = matlab-engine-for-python
+
