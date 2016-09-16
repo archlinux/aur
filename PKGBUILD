@@ -5,7 +5,7 @@ _fus_url="https://github.com/fusion809"
 _lee_url="https://github.com/lee-dohm"
 _mur_url="https://github.com/Murriouz"
 _language_patch2_url="${_fus_url}/language-patch2"
-export _ELECTRON_VERSION=1.3.6
+export _ELECTRON_VERSION=1.4.0
 
 pkgname=atom-bleeding
 _pkgname=atom
