@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.7.2 Kernel Configuration
+# Linux/x86 4.7.4 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -325,8 +325,6 @@ CONFIG_MODVERSIONS=y
 # CONFIG_MODULE_SRCVERSION_ALL is not set
 # CONFIG_MODULE_SIG is not set
 # CONFIG_MODULE_COMPRESS is not set
-# CONFIG_MODULE_COMPRESS_GZIP is not set
-# CONFIG_MODULE_COMPRESS_XZ is not set
 CONFIG_MODULES_TREE_LOOKUP=y
 CONFIG_BLOCK=y
 CONFIG_BLK_DEV_BSG=y
