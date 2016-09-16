@@ -2,27 +2,19 @@
 
 _pkgname=habitica
 pkgname=python-habitica
-pkgver=0.0.13
-pkgrel=2
+pkgver=0.0.15
+pkgrel=1
 pkgdesc="Commandline interface to Habitica."
 arch=('any')
 url="https://pypi.python.org/pypi/habitica"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-requests')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/h/habitica/${_pkgname}-$pkgver.tar.gz"
-        auth.cfg.sample
-        habitica_api_v3.patch)
-md5sums=('4fffa63a0f2c97a72826dbb77a603163'
-         '73203917ea9a075cafaf287f9d707a15'
-         '51b8709c608ac1d6a95f6d3031cd53d6')
+source=("https://pypi.python.org/packages/a6/20/65ab6fc5dc8a41b28e08a628096707ae5acf384b7015f1ccaecd9d3d1f25/${_pkgname}-$pkgver.tar.gz"
+        auth.cfg.sample)
+md5sums=('09de19d6f692a78b07064fcc29c7e2a1'
+         '73203917ea9a075cafaf287f9d707a15')
 
-
-prepare() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  
-  patch -p0 -i $srcdir/habitica_api_v3.patch
-}
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
