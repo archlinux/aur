@@ -13,6 +13,8 @@ pkgbase = backup-rotation
 	source = https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.timer
 	source = https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.service
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = backup-rotation
 
