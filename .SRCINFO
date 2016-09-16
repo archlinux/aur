@@ -1,0 +1,17 @@
+pkgbase = pacitude
+	pkgdesc = a pacman/pacaur wrapper with apt inspired syntax
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/undeadrevo/pacitude
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = sudo
+	depends = pacaur
+	depends = cower
+	source = git://github.com/undeadrevo/pacitude.git
+	md5sums = SKIP
+
+pkgname = pacitude
+
