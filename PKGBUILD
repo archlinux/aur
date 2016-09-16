@@ -3,7 +3,7 @@
 
 _gitname=gnome-games
 pkgname=gnome-games-git
-pkgver=3.21.2.r1.g0da3e43
+pkgver=3.21.92.r15.g58aac8e
 pkgrel=1
 pkgdesc='A game manager application for GNOME'
 arch=('i686' 'x86_64')
