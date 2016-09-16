@@ -9,14 +9,8 @@ depends=('sudo' 'pacaur' 'cower')
 makedepends=('git')
 source=('git://github.com/undeadrevo/pacitude.git')
 md5sums=('SKIP')
-_gitname="pacitude"
-pkgver() {
-        cd "$_gitname" &&
-        printf '%s.%s\n' "$(git rev-list --count HEAD)" \
-                         "$(git rev-parse --short HEAD)"
-}
 
 package() {
-        cd "$_gitname" &&
+        cd "$pkgname" &&
         install -m 755 -D pacitude "$pkgdir/usr/bin/pacitude"
 }
