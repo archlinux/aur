@@ -1,7 +1,7 @@
 # Maintainer: bobi
 
 pkgname=germinal
-pkgver=16
+pkgver=17
 pkgrel=1
 pkgdesc="Minimalist terminal emulator based on vte and tmux"
 
@@ -11,12 +11,12 @@ source=("http://www.imagination-land.org/files/$pkgname/$pkgname-$pkgver.tar.xz"
 
 makedepends=('intltool' 'appstream-glib')
 
-depends=('glib2' 'vte3' 'pango' 'tmux')
+depends=('glib2' 'vte3' 'pango' 'tmux' 'pcre2')
 
 install=$pkgname.install
 
 arch=('i686' 'x86_64')
-md5sums=('7489d2dc86baefa50f0df6d918dd4fd1')
+md5sums=('c751da8eaf3da8c1f33cbbb97e814f2c')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
