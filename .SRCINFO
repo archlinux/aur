@@ -1,0 +1,20 @@
+pkgbase = brother-td2130n
+	pkgdesc = LPR and CUPS driver for Brother TD-2130N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-td2130n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002221/td2130nlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp100007/td2130ncupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = ecb36df69d8bcac2be2acab2edcf73eaa14b4dcd33358b803b7ac4dd6508144b
+	sha256sums = bd78139b453fd19197bf6527d7948b6e4ab142cc4aeb563a4ec5a124438139e9
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-td2130n
+
