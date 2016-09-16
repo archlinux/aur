@@ -1,8 +1,8 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jkazip
 pkgver=2.3.1
-pkgrel=1
-pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
+pkgrel=2
+pkgdesc="A suite to compress and decompress tar, xz, gzip, bzip2, zip, rar and 7zip"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
 license=('GPL3')

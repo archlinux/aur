@@ -1,7 +1,7 @@
 pkgbase = jkazip
-	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
+	pkgdesc = A suite to compress and decompress tar, xz, gzip, bzip2, zip, rar and 7zip
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://proyecto.jkanetwork.com
 	arch = any
 	groups = jka-toolkit
