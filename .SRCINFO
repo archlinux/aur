@@ -1,0 +1,20 @@
+pkgbase = brother-ql650td
+	pkgdesc = LPR and CUPS driver for Brother QL-650TD label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql650td.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002185/ql650tdlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002187/ql650tdcupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = 371301a0c297bb0879f387ab709f60304376d2a94ae9989c05f3ee86b8a0971d
+	sha256sums = 0aa08b6214de134ed6828fef8ea6ae1975077947a577f62904d3e618d3f4c7b0
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-ql650td
+
