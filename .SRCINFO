@@ -1,5 +1,5 @@
 pkgbase = pacitude
-	pkgdesc = a pacman/pacaur wrapper with apt inspired syntax
+	pkgdesc = a pacman/pacaur wrapper script with apt inspired syntax
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/undeadrevo/pacitude
