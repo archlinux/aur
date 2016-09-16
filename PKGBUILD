@@ -1,8 +1,8 @@
 #PKGBUILD Maintainer: Rafael Reggiani Manzo <rr.manzo#gmail.com>
 
 pkgname=analizo
-pkgver=1.18.1
-pkgrel=6
+pkgver=1.19.0
+pkgrel=1
 pkgdesc="Analizo is a free, multi-language, extensible source code analysis and visualization toolkit."
 groups=('analizo')
 arch=('any')
@@ -18,7 +18,7 @@ depends=('perl' 'sloccount' 'doxyparse'
          'perl-statistics-online' 'perl-findbin-libs' 'perl-graph-writer-dsm')
 makedepends=('git')
 source=("${url}/download/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('2184796a58a0d8ffe52c8dcb551c620986194926437ea99ab18cad6a014346b766bec26f6848579051686ac1562c50ab19d5d164afe6c4ec78ebe958d0ee4a9c')
+sha512sums=('6f1a69545562e599dde68a4ddd1df90f36156a8e75b1c4883edb1496af3b78b2d00e72720c9833afcde0c54a65f8ee537edcd38a6eb30110042e19ab4c173bbc')
 
 build(){
   cd "${srcdir}/${pkgname}"
