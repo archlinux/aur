@@ -16,26 +16,26 @@ source=("${pkgname}::git+https://github.com/LADI/laditools.git")
 sha512sums=('SKIP')
 _branch=master
 
+prepare() {
+  cd "${pkgname}"
+  git checkout ${_branch}
+  git pull
+}
+
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
+  cd "${pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch}
-}
-
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}/"
 }
