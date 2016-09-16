@@ -2,11 +2,12 @@
 
 pkgname=libretro-atari800-git
 pkgver=15.6e1883b
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/r-type/libretro-atari800.git"
 license=('GPL2')
+groups=('libretro')
 depends=('zlib')
 makedepends=('git')
 
