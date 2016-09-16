@@ -1,7 +1,7 @@
 pkgbase = brutal-doom
 	pkgdesc = Brutal Doom via the GzDoom engine.
 	pkgver = 20
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.moddb.com/mods/brutal-doom
 	install = brutal-doom.install
 	arch = any

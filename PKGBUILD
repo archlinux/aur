@@ -2,7 +2,7 @@
 # Mod: http://www.moddb.com/mods/brutal-doom
 pkgname=brutal-doom
 pkgver=20
-pkgrel=3
+pkgrel=4
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom"
@@ -29,7 +29,7 @@ package() {
 	install -d "$pkgdir/usr/share/games/$pkgname"
 
 	msg2 "Installing launcher"
-	install -m644 ../brutal-doom "$pkgdir/usr/bin/brutal-doom"
+	install -m644 "brutal-doom" "$pkgdir/usr/bin/brutal-doom"
 
 	msg2 "Installing brutalv20b.pk3  and DoomMetalVol4.wad..."
 	install -m644 "$srcdir/brutalv20b.pk3" "$pkgdir/usr/share/games/$pkgname/brutalv20b.pk3"
