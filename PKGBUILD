@@ -1,12 +1,13 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mednafen-wswan-git
-pkgver=611.87fda21
+pkgver=612.9f0b3f7
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen WonderSwan to libretro, itself a fork of Cygne."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/beetle-wswan-libretro"
 license=('GPL2')
+groups=('libretro')
 makedepends=('git')
 
 _libname=mednafen_wswan_libretro
