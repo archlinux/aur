@@ -3,7 +3,7 @@
 
 pkgname=ptask-git
 pkgver=1.0.0.r1.g9554c87
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK+ graphical user interface for managing tasks in taskwarrior'
 arch=('i686'
       'x86_64')
@@ -19,7 +19,7 @@ makedepends=('git'
 source=("$pkgname::git+http://git.wpitchoune.net/${pkgname%-git}.git"
         'task-2.5.1-compat.patch')
 sha512sums=('SKIP'
-            '52f57df194d69b8b1541a9b28af18976bc346ce26c607d28ffcd23fc99df6e463336cb2f176e61199b6b301c477613e0f9a98c1fba9f80aa140ab1b73a2c8aa7')
+            'ab473814b7a3ffb9d4825d90f43f88778f99cf5afe2b05eb83997cd9622ce6f0a4c1bbdd4684ad196dfb35d803a27cf9ad479b5d9836c3dee747ec40d18e914c')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
