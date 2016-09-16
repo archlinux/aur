@@ -1,0 +1,11 @@
+post_install() {
+	cat <<- EOF
+		:: Make sure you add a valid WAD file to 
+		:: /usr/share/games/brutal-doom/
+		:: e.g. DOOM.WAD, DOOM2.WAD.
+	EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
