@@ -1,20 +1,21 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-virtualjaguar-git
-pkgver=145.424ce6e
+pkgver=151.8be4390
 pkgrel=1
 pkgdesc="libretro implementation of Virtual Jaguar. (Atari Jaguar)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/virtualjaguar-libretro"
 license=('GPL3')
+groups=('libretro')
 makedepends=('git')
 
 _libname=virtualjaguar_libretro
 _gitname=virtualjaguar-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-md5sums=('SKIP'
-         'SKIP')
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
+sha256sums=('SKIP'
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
