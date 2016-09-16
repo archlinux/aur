@@ -37,6 +37,7 @@ build() {
 	     VAL_SYSCONFRC=mail.rc \
 	     VAL_LIBEXECDIR=/usr/lib \
 	     OPT_AUTOCC=0 \
+	     LD_LIBRARY_PATH="$(fakeroot sh -c 'echo $LD_LIBRARY_PATH')" \
 	     ${config_target:-} \
 	     config
 
@@ -47,7 +48,7 @@ build() {
 
 package() {
 	cd s-nail
-	make DESTDIR="${pkgdir}" chown=/usr/bin/true install
+	make DESTDIR="${pkgdir}" install
 
 	ln -sf s-nail "${pkgdir}"/usr/bin/mail
 	ln -sf s-nail "${pkgdir}"/usr/bin/mailx
