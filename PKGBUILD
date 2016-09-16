@@ -23,25 +23,25 @@ sha512sums=('SKIP'
             'SKIP')
 _branch=glfw3
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
 prepare() {
   cd "${pkgname}"
   [[ -d build ]] || mkdir build
   git checkout ${_branch}
+  git pull
   git submodule init
   git config submodule.plugins/src/mesh.importers/cal3d.url "${srcdir}/cal3d"
   git submodule update plugins/src/mesh.importers/cal3d
   # Patch CAL3D to build against GCC 6.1.1
   sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/loader.cpp"
   sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/xmlformat.cpp"
+}
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
