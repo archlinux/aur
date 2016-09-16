@@ -3,12 +3,13 @@
 
 pkgname=displaylink
 pkgver=1.1.62
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux driver for DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi' 'glibc' 'grep' 'gawk')
+depends=('evdi')
+makedepends=('glibc' 'grep' 'gawk')
 install=
 changelog="release-note.txt"
 source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file\?id\=607
