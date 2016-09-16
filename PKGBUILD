@@ -1,19 +1,20 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-database-git
-pkgver=283.500dc9f
+pkgver=713.8e27203
 pkgrel=1
 pkgdesc="Repository containing cheatcode files, content data files, etc."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-database"
 license=('GPL3')
+groups=('libretro')
 depends=('zlib')
 makedepends=('git')
 
 _libname=4do_libretro
 _gitname=libretro-database
 source=("git+https://github.com/libretro/${_gitname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
