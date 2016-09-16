@@ -31,6 +31,9 @@ makedepends=(
     'libwebp'
     'google-breakpad-git'
     'chrpath'
+    'cmake'
+    'python'
+    'python2'
     
     # QT5 build dependencies
     'xcb-util-keysyms'
