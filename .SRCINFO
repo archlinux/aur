@@ -3,7 +3,6 @@ pkgbase = brutal-doom
 	pkgver = 20
 	pkgrel = 4
 	url = http://www.moddb.com/mods/brutal-doom
-	install = brutal-doom.install
 	arch = any
 	license = GPL3
 	makedepends = git
