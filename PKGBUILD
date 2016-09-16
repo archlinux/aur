@@ -1,17 +1,18 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 # Contributor: TingPing <tingping@tingping.se>
+# Contributor: Omar Pakker <omar.pakker@oracle.com>
 
 pkgname=retro-gtk
-pkgver=0.6
+pkgver=0.8
 pkgrel=1
 pkgdesc='Toolkit to write Gtk+ 3 based libretro frontends'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url='https://github.com/Kekun/retro-gtk'
-depends=('cairo' 'clutter-gtk' 'glib2' 'gtk3' 'libpulse' 'retro-gobject')
-makedepends=('cairo' 'clutter-gtk' 'gobject-introspection' 'glib2' 'gtk3' 'intltool' 'libtool' 'libpulse' 'retro-gobject' 'vala')
-source=("https://github.com/Kekun/retro-gtk/archive/${pkgver}.tar.gz")
-sha256sums=('c6c75c2077016162293d590ba31eb72884e41f446f6d75d0c1052feabe0a15e6')
+url='https://git.gnome.org/browse/retro-gtk/'
+depends=('gtk3' 'libpulse')
+makedepends=('gobject-introspection' 'gtk3' 'intltool' 'libtool' 'libpulse' 'vala')
+source=("https://git.gnome.org/browse/retro-gtk/snapshot/retro-gtk-${pkgver}.tar.xz")
+sha256sums=('28b1974445618245768e22667a80b5fc18f67f881fbd88738e4521d3117d0f20')
 
 build() {
 	cd "$pkgname-$pkgver"
