@@ -2,11 +2,12 @@
 
 pkgname=libretro-ppsspp-git
 pkgver=17174.e1bb9da
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of PPSSPP (PlayStation Portable/PSP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-ppsspp"
 license=('GPL')
+groups=('libretro')
 depends=('zlib' 'libgl')
 makedepends=('git')
 
@@ -21,7 +22,7 @@ source=("git+https://github.com/libretro/${_gitname}.git"
         "git+https://github.com/hrydgard/ppsspp-redist"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/ppsspp_libretro.info"
        )
-md5sums=('SKIP'
+sha256sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
