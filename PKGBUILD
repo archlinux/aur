@@ -4,7 +4,7 @@
 
 pkgbase=python-libnacl
 pkgname=('python-libnacl' 'python2-libnacl')
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
