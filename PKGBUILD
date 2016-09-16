@@ -3,9 +3,9 @@
 pkgname=brutal-doom
 pkgver=20
 pkgrel=1
-pkgdesc="Prepare to see the most disturbing, sadistic and morbid manifestation of violence that you ever seen in your life. This is the definitive gameplay enhancement mod for the GZDoom and Zandronum engines."
+pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
-url="http://www.moddb.com/mods/brutal-doom/downloads/brutal-doom-v20b-main-file-only"
+url="http://www.moddb.com/mods/brutal-doom"
 license=('GPL3')
 depends=('gzdoom')
 optdepends=('doomseeker')
