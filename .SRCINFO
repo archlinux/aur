@@ -1,0 +1,20 @@
+pkgbase = brother-ql580n
+	pkgdesc = LPR and CUPS driver for Brother QL-580N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql580n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002179/ql580nlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002181/ql580ncupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = 349a8003004a59fe993a1d76573b9cbd02c4c2217d6fb1d2ddfbd0c20e4b9c39
+	sha256sums = 08bd1d70ac13b5442eb5ed9ee65dce75252b4a21861a77323ab27e1657069e5f
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-ql580n
+
