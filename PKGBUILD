@@ -3,10 +3,10 @@
 pkgname=go-tool
 _pkgname=go
 pkgver=42
-pkgrel=1
+pkgrel=2
 pkgdesc="Small shell command for changing directories quickly"
 arch=('i686' 'x86_64')
-url="https://github.com/trentm/$pkgname/"
+url="https://github.com/trentm/go-tool/"
 license=('MIT')
 depends=('python2')
 makedepends=('git')
