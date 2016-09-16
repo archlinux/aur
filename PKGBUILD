@@ -2,21 +2,23 @@
 
 pkgname=libretro-frodo-git
 pkgver=154.d085442
-pkgrel=2
+pkgrel=3
 pkgdesc="libretro implementation of Frodo v4.2 (Commodore C64) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/r-type/frodo-libretro"
 license=('GPL2')
 groups=('libretro')
 depends=('zlib')
-makedepends=('git')
+makedepends=('git' 'gcc5')
 
 _libname=frodo_libretro
 _gitname=frodo-libretro
 source=("git+https://github.com/r-type/${_gitname}.git"
-	"${_libname}.info")
+	"${_libname}.info"
+	'gcc5.patch')
 sha256sums=('SKIP'
-	'bc3915800b5170f100c49c0cddc9990e3e0ddb68c2e1cb4dde82caecd25b882b')
+	    'SKIP'
+	    '852e17c6e23debadc8b87098d5bdd10dc688d2bc43d7cdbf029b3c5661ab4aea')
 
 pkgver() {
   cd "${_gitname}"
@@ -25,6 +27,7 @@ pkgver() {
 
 build() {
   cd ${_gitname}
+  patch < ${srcdir}/gcc5.patch
   make -f Makefile.libretro
 }
 

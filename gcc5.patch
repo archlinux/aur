@@ -1,0 +1,11 @@
+--- Makefile.libretro.org	2016-09-16 14:09:48.276431132 +0200
++++ Makefile.libretro	2016-09-16 14:09:06.926626716 +0200
+@@ -35,6 +35,8 @@
+ 
+ 
+ ifeq ($(platform), unix)
++   CC = gcc-5
++   CXX = g++-5
+    TARGET := $(TARGET_NAME)_libretro.so
+    LDFLAGS += -shared -Wl,--version-script=libretro/link.T -lz
+    
