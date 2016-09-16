@@ -1,6 +1,6 @@
 libvos/
 pkg/
-rescached/
+rescached-git/
 src/
 *.tar
 *.xz

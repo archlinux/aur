@@ -1,6 +1,6 @@
 # Maintainer: sulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=1.2.0.r5.g180e523
+pkgver=1.2.0.r19.g5eda417
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 provides=('rescached')
 conflicts=('bind' 'nsd' 'pdnsd' 'powerdns' 'unbound')
 
-makedepends=('gcc' 'make' 'fakeroot' 'git' 'asciidoc')
+makedepends=('gcc' 'make' 'fakeroot' 'git')
 source=(
 	"$pkgname::git+https://github.com/shuLhan/rescached.git"
 	"libvos::git+https://github.com/shuLhan/libvos.git"
