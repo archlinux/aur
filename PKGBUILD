@@ -13,6 +13,7 @@ makedepends=('git' 'vulkan-headers')
 depends=('libglvnd' 'vulkan-icd-loader' 'clang')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
+groups=('libretro')
 
 md5sums=('SKIP'
 	 'SKIP')

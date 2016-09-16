@@ -5,6 +5,7 @@ pkgbase = libretro-parallel-git
 	url = https://github.com/libretro/mupen64plus-libretro
 	arch = i686
 	arch = x86_64
+	groups = libretro
 	license = custom
 	license = GPL
 	license = LGPL
