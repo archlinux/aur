@@ -1,6 +1,6 @@
 pkgbase = pacitude
 	pkgdesc = a pacman/pacaur wrapper with apt inspired syntax
-	pkgver = 1.0
+	pkgver = 9.a5172d7
 	pkgrel = 1
 	url = https://github.com/undeadrevo/pacitude
 	arch = i686
