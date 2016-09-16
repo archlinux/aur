@@ -1,12 +1,13 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-81-git
-pkgver=112.8760d1e
+pkgver=115.b78bed4
 pkgrel=1
 pkgdesc="A port of the EightyOne ZX81 Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/81-libretro.git"
 license=('GPL3')
+groups=('libretro')
 depends=('zlib')
 makedepends=('git')
 
