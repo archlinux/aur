@@ -3,7 +3,7 @@
 
 pkgname=litecoin-git
 _gitname=litecoin
-pkgver=v0.10.4.0.6.g623f20b
+pkgver=v0.10.4.0.8.g865c17d
 pkgrel=1
 pkgdesc="A peer-to-peer network-based digital currency (git version)"
 arch=('i686' 'x86_64')
@@ -14,11 +14,9 @@ makedepends=('pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'au
 provides=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
 conflicts=('litecoin' 'litecoin-qt' 'litecoind' 'litecoin-bin' 'litecoin-daemon')
 source=('git://github.com/litecoin-project/litecoin.git'
-        'https://github.com/litecoin-project/litecoin/pull/241.patch'
         'https://github.com/litecoin-project/litecoin/pull/251.patch')
-sha256sums=('SKIP'
-         '740a2519897e3d9953a6c0c1df09e9d4ce3dea2dd98243544914dd0bdf3f1d9f'
-         '0a16e5a66d988ca8dabf86bf7c1002db5aa9c52a7107fe3a2f6941c4b03c5b58')
+sha256sums=('SKIP'         
+            '0a16e5a66d988ca8dabf86bf7c1002db5aa9c52a7107fe3a2f6941c4b03c5b58')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -27,7 +25,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_gitname"
-    git apply "$srcdir"/241.patch 
     git apply "$srcdir"/251.patch
 }
 
