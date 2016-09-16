@@ -5,7 +5,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.16.6
+pkgver=2.16.7
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('any')
@@ -13,11 +13,11 @@ url="http://packages.qa.debian.org/d/devscripts.html"
 license=('GPL2')
 depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils' 'debhelper' 'perl-timedate')
 optdepends=('sensible-utils: for sensible alternative selection')
-makedepends=('po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file-desktopentry' 'perl-file-basedir' 'perl-parse-debcontrol' 'python-setuptools')
+makedepends=('po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file-desktopentry' 'perl-file-basedir' 'perl-parse-debcontrol' 'python-setuptools' 'bash-completion')
 options=('!makeflags')
 source=(http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz fixes.patch)
 install='devscripts.install'
-md5sums=('d49c996acbed9b339328f663b41c8a7a'
+md5sums=('ba7491d3e9973d7440c49aefed937fbc'
          '110857b0eb4a9dbf57a8b562d992ab33')
 
 build() {
@@ -27,12 +27,9 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/etc/bash_completion.d
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/lib/devscripts
-  mkdir -p $pkgdir/usr/share/devscripts
-
-
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
+
+  # bts completion is present already in the official package
+  rm $pkgdir/usr/share/bash-completion/completions/bts
 }
