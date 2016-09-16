@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=6.3.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
@@ -10,27 +10,31 @@ url='http://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
          'python-pyenchant' 'python-pygeoip')
 makedepends=('git' 'python-sphinx')
-checkdepends=('python-pytest-runner' 'ipython')
+checkdepends=('python-pytest' 'ipython')
 backup=('etc/sopel.cfg')
 source=("git+https://github.com/sopel-irc/sopel.git#tag=$pkgver")
 md5sums=('SKIP')
 
+prepare() {
+  sed -i 's/requests>.*/requests/' sopel/requirements.txt
+
+  export LC_CTYPE=en_US.UTF-8
+}
+
 build() {
-  cd "$srcdir/sopel"
+  cd sopel
   python setup.py build
   make -C docs man
 }
 
 check() {
-  cd "$srcdir/sopel"
-  mv build ../
-  python setup.py ptr || warning "Tests failed"
-  mv ../build ./
+  cd sopel
+  py.test --ignore=sopel.py --ignore=build/ || warning "Tests failed"
 }
 
 package() {
-  cd "$srcdir/sopel"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd sopel
+  python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 contrib/sopel.cfg "$pkgdir/etc/sopel.cfg"
