@@ -2,7 +2,7 @@
 
 _gemname=chunky_png
 pkgname=ruby-${_gemname}
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Read/write access to PNG images in pure Ruby'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=("rubygems")
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 options=(!strip)
-sha512sums=('334ea571194a3357003ddbdf41c669ae189c6927c43182a8814e5aa5b3cdee2a3adef80cae4453a3d6d186652c78fdde496bf9080a28227d26dd411dbe0d880e')
+sha512sums=('0cd9314ad551128d3d9dd234b3998ed8a96d1a038ed92288485538873be76e5034233e205f16491031ebdade9501593133ea8bfd7b0288bfd83c03de034a5bc7')
 
 package() {
 	local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
