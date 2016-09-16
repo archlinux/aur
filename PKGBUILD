@@ -21,9 +21,12 @@ source=('https://raw.githubusercontent.com/thaibault/backupRotation/master/backu
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
-    install -D --mode 755 "${srcdir}/backupRotation.sh" "${pkgdir}/usr/bin/backupRotation"
-    install -D --mode 755 "${srcdir}/backupRotation.service" "${pkgdir}/etc/systemd/system/"
-    install -D --mode 755 "${srcdir}/backupRotation.timer" "${pkgdir}/etc/systemd/system/"
+    install -D --mode 755 "${srcdir}/backupRotation.sh" \
+        "${pkgdir}/usr/bin/backupRotation"
+    install -D --mode 755 "${srcdir}/backupRotation.service" \
+        "${pkgdir}/etc/systemd/system/backupRotation.service"
+    install -D --mode 755 "${srcdir}/backupRotation.timer" \
+        "${pkgdir}/etc/systemd/system/backupRotation.timer"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
