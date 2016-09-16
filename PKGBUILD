@@ -1,15 +1,15 @@
+# Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Sébastien Luttringer
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: Laszlo Papp <djszapi at archlinux us>
 # Contributor: Donald Ephraim Curtis <dcurtis@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 
 _pkgname=lua-posix
 pkgname="${_pkgname}-git"
-pkgver=33.2.1.73.g5536f10
-pkgrel=1
+pkgver=33.4.0.11.g3ab67b5
+pkgrel=2
 pkgdesc='POSIX library for Lua'
 arch=('x86_64' 'i686')
 url='https://github.com/luaposix/luaposix'
@@ -36,13 +36,16 @@ build() {
   cd "${_pkgname}"
 
   luaver=$(/usr/bin/lua -v | cut -d " " -f 2 | cut -d "." -f 1,2)
+
   ./bootstrap
+
   ./configure \
       LUA=/usr/bin/lua \
       --prefix=/usr \
       --libdir=/usr/lib/lua/${luaver} \
       --datadir=/usr/share/lua/${luaver} \
       --docdir=/usr/share/doc/lua-posix
+
   make
 }
 
