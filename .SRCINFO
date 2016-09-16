@@ -1,0 +1,17 @@
+pkgbase = fnotify
+	pkgdesc = irssi plugin to notify discussions over desktop
+	pkgver = 0.0.4
+	pkgrel = 2
+	url = http://www.mtroy.net
+	install = .install
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = irssi,
+	depends = xfce4-notifyd
+	source = fnotify-0.0.4.tar.gz::http://pkg.helios.so:44000/src/fnotify-0.0.4.tar.gz
+	validpgpkeys = CE8D66E2FBEE8306
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+
+pkgname = fnotify
+

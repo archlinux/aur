@@ -1,0 +1,99 @@
+USER=$([[ `id -u` = 0 ]] && echo "$SUDO_USER" || echo "$USER")
+#$(( $UID == 0 ? $SUDO_SER : $USER ))
+
+ENDPATH=/home/$USER/.irssi/scripts
+NAME=fnotify
+BIN=fnotify.pl
+VER=0.0.4
+
+
+
+post_install() {
+
+USER=$([[ `id -u` = 0 ]] && echo "$SUDO_USER" || echo "$USER")
+#$(( $UID == 0 ? $SUDO_SER : $USER ))
+
+ENDPATH=/home/$USER/.irssi/scripts
+NAME=fnotify
+BIN=fnotify.pl
+VER=0.0.4
+
+cp /usr/share/irssi/scripts/$BIN $ENDPATH
+cd $ENDPATH
+
+if [ ! -d autorun ];
+then
+	mkdir autorun && cd autorun
+else
+	cd autorun
+fi
+	
+ln -sf $ENDPATH/$BIN .
+cd $ENDPATH
+chown -R $USER: $BIN autorun
+
+
+
+cls=$(tput cols);
+bar=$(($cls-12));
+#bar=$(($cls*80/100));
+#bor=$(($cls-$bar/2));
+#bar=$(yes "20 " | head -n $cls | tr '\n' ' ')
+
+#cls=$(printf "20 %.0s" {1..40})
+#cls=$(printf "%-${cls}s" "20 ")
+#echo "${s// /*}"
+
+#echo $(seq -s'20 ' 1 $cls)
+
+#for i in {16..21} $(printf "20 %.0s" {1..50}) {21..16};
+for i in {16..21} $(yes "20 " 2>/dev/null | head -n $bar | tr '\n' ' ') {21..16};
+do
+    echo -en "\e[38;5;${i}m§\e[0m";
+done;
+echo
+
+banner="$(tr '[:lower:]' '[:upper:]' <<< ${NAME:0:1})${NAME:1}-$VER successfully installed !"
+printf "\e[104m%*s\e[104m\n\e[49m" $[$cls/2+15] "$banner"
+#echo -e "\e[104mInstall successfull\e[49m"
+
+for i in {16..21} $(yes "20 " 2>/dev/null | head -n $bar | tr '\n' ' ') {21..16};
+do
+    echo -en "\e[38;5;${i}m§\e[0m";
+done;
+echo
+
+cat << EOF
+
+Plugin is now linked in autorun config of irssi.
+
+Note:
+If script is not active during irc instance, you may load it manually like:
+   /script load $NAME
+
+And check if its loaded correctly (list all running scripts)
+   /script load
+
+EOF
+}
+
+
+post_upgrade() {
+  post_install $1
+}
+
+
+post_remove() {
+
+USER=$([[ `id -u` = 0 ]] && echo "$SUDO_USER" || echo "$USER")
+#$(( $UID == 0 ? $SUDO_SER : $USER ))
+
+ENDPATH=/home/$USER/.irssi/scripts
+NAME=fnotify
+BIN=fnotify.pl
+VER=0.0.4
+
+
+	rm $ENDPATH/$NAME.pl
+	rm $ENDPATH/autorun/$NAME.pl
+}
