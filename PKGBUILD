@@ -2,7 +2,7 @@
 # Maintainer: holos
 
 pkgname=flycheck
-pkgver=0.28
+pkgver=0.29
 pkgrel=1
 pkgdesc='Modern on-the-fly syntax checking extension for GNU Emacs'
 arch=('any')
