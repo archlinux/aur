@@ -1,11 +1,11 @@
 pkgbase=linux-criu
-# $Id: PKGBUILD 274645 2016-08-25 20:14:22Z tpowa $
+# $Id: PKGBUILD 276446 2016-09-15 13:08:54Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 _srcname=linux-4.7
-pkgver=4.7.2
-pkgrel=1
+pkgver=4.7.3
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,14 +19,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        )
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
+            '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
             'SKIP'
-            '2ee8d5ae3f2aeafbe37bf821981b328b839313b1ff6eef723bbf47549e253d76'
-            '08152e71ea2c87250be4d6d983b7bcf109ae0659e1282811f9e558fef5ad6e40'
+            'd20fe3d9ce82ab8596661457af7bbf7259240e53090cebc8cb67fa48ec449da6'
+            '42c5d9b7ccda23872e91d588bd930d6ab989ac2b4909f5567716bc0cb4c194b8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
