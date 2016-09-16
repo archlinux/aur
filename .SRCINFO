@@ -1,0 +1,25 @@
+pkgbase = argos3-git
+	pkgdesc = ARGoS 3 Large-scale robot simulator
+	pkgver = 3.0.0.beta43.r6.gb16f6be
+	pkgrel = 1
+	url = http://www.argos-sim.info
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc>=4.3
+	makedepends = git
+	makedepends = cmake>=2.6
+	depends = freeimage>=3.15
+	depends = qt4>=4.6
+	depends = freeglut>=2.6.0
+	depends = libxi
+	depends = libxmu
+	depends = lua
+	depends = doxygen>=1.7.3
+	depends = graphviz>=2.28
+	depends = asciidoc>=8.6.2
+	source = git://github.com/ilpincy/argos3.git
+	md5sums = SKIP
+
+pkgname = argos3-git
+
