@@ -6,7 +6,7 @@
 # Contributor: Alexander <iam.asm89@gmail.com>
 
 pkgname=hipchat
-pkgver=4.26.0.1657
+pkgver=4.27.0.1658
 pkgrel=1
 pkgdesc="Persistent group chat using XMPP"
 arch=('x86_64')
