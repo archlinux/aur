@@ -1,0 +1,13 @@
+pkgbase = bash_unit
+	pkgdesc = bash unit testing enterprise edition framework for professionals
+	pkgver = 114.7732279
+	pkgrel = 1
+	url = https://github.com/pgrange/bash_unit
+	arch = any
+	license = GPL
+	depends = bash
+	source = git+https://github.com/pgrange/bash_unit.git
+	md5sums = SKIP
+
+pkgname = bash_unit
+
