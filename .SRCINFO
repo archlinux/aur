@@ -1,6 +1,6 @@
 pkgbase = monodevelop-stable
 	pkgdesc = An IDE primarily designed for C# and other .NET languages
-	pkgver = 6.0.2.73
+	pkgver = 6.1.0.5441
 	pkgrel = 1
 	url = http://www.monodevelop.com
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = monodevelop-stable
 	makedepends = cmake
 	makedepends = git
 	makedepends = nuget
+	makedepends = fsharp
 	makedepends = mono-pcl
 	depends = mono>=4.0.1
 	depends = mono-addins>=0.6.2
@@ -18,7 +19,7 @@ pkgbase = monodevelop-stable
 	provides = monodevelop
 	conflicts = monodevelop
 	options = !makeflags
-	source = git://github.com/mono/monodevelop.git#tag=monodevelop-6.0.2.73
+	source = git://github.com/mono/monodevelop.git#tag=monodevelop-6.1.0.5441
 	md5sums = SKIP
 
 pkgname = monodevelop-stable

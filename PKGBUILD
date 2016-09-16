@@ -7,14 +7,14 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=6.0.2.73
+pkgver=6.1.0.5441
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('any')
 url="http://www.monodevelop.com"
 license=('GPL')
 depends=('mono>=4.0.1' 'mono-addins>=0.6.2' 'gnome-sharp' 'hicolor-icon-theme')
-makedepends=('rsync' 'cmake' 'git' 'nuget' 'mono-pcl')
+makedepends=('rsync' 'cmake' 'git' 'nuget' 'fsharp' 'mono-pcl')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
 provides=('monodevelop')
@@ -32,6 +32,13 @@ build() {
   git clean -dfx
 
   ./configure --prefix=/usr --profile=stable
+  
+  # fix MonoDevelop.FSharp.Shared.ToolTips
+  # tips https://bugzilla.xamarin.com/show_bug.cgi?id=43657#c13
+  # source https://github.com/mono/monodevelop/commit/e4037243e8ba2d78136d033578efd9b48a5a3fa3
+  sed -i -e "s/MonoDevelop.FSharp.Shared.ToolTip /MonoDevelop.FSharp.Shared.ToolTips.ToolTip /" "${srcdir}/${_pkgname}"/main/external/fsharpbinding/MonoDevelop.FSharpBinding/FSharpTextEditorCompletion.fs
+  sed -i -e "s/MonoDevelop.FSharp.Shared.EmptyTip /MonoDevelop.FSharp.Shared.ToolTips.EmptyTip /" "${srcdir}/${_pkgname}"/main/external/fsharpbinding/MonoDevelop.FSharpBinding/FSharpTextEditorCompletion.fs
+  
   XDG_CONFIG_HOME="$srcdir"/config LD_PRELOAD="" make
 }
 
@@ -43,6 +50,6 @@ package() {
   rm -r $(find $pkgdir/usr/share/mime/ -type f | grep -v "packages")
   rm -r $MONO_SHARED_DIR
 
-  # NuGet.exe is missing somehow, fixed FS#43423
-  install -Dm755 "${srcdir}"/monodevelop/main/external/nuget-binary/NuGet.exe "${pkgdir}"/usr/lib/monodevelop/AddIns/MonoDevelop.PackageManagement/NuGet.exe
+  # nuget.exe is missing somehow, fixed FS#43423
+  install -Dm755 "${srcdir}"/monodevelop/main/external/nuget-binary/nuget.exe "${pkgdir}"/usr/lib/monodevelop/AddIns/MonoDevelop.PackageManagement/nuget.exe
 }
