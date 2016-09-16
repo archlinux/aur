@@ -1,12 +1,13 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mednafen-ngp-git
-pkgver=729.0d6b50e
+pkgver=736.501b9fc
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen NGP, itself a fork of Neopop (Neo Geo Pocket/Color)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/beetle-ngp-libretro"
 license=('GPL2')
+groups=('libretro')
 makedepends=('git')
 
 _libname=mednafen_ngp_libretro
