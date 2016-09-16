@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# We always want it to return success
+tracer -e || true

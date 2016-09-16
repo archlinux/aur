@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Checking if anything needs restarted...
+Depends = tracer
+When = PostTransaction
+Exec = /usr/lib/tracer/tracer-hook-wrapper
