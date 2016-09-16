@@ -2,7 +2,7 @@
 # Maintainer: Andreas Born <futur[DOT]andy[AT]goooglemail[DOT]com>
 # Contributor: Andreas Born <futur[DOT]andy[AT]goooglemail[DOT]com>
 pkgname=lrz-syncshare
-pkgver=10.5.391
+pkgver=10.6.447
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
@@ -10,7 +10,7 @@ arch=('any')
 license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-jre=8' 'xdg-utils')
 source=("https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz")
-md5sums=('1e4b437193141b0c6a91b71cf8599ef9')
+md5sums=('80a04d464228ef32898a1a0f8146d13e')
 
 pkgver() {
   cat "${srcdir}/LRZ_Sync_Share/VERSION"
@@ -20,7 +20,8 @@ prepare() {
   cd "${srcdir}/LRZ_Sync_Share"
 
   sed -e "s;^CLIENT_INSTALL=.*\$;CLIENT_INSTALL=/usr/share/${pkgname};" \
-      -e 's;^RUN_CMD="$CLIENT_INSTALL/jre/bin/java ;RUN_CMD="/usr/lib/jvm/java-8-jre/jre/bin/java ;' -i LRZ_Sync_Share-Client.sh
+      -e 's;^RUN_CMD="$CLIENT_INSTALL/jre/bin/java ;RUN_CMD="/usr/lib/jvm/java-8-jre/jre/bin/java ;' \
+      -i LRZ_Sync_Share-Client.sh
   sed -e "s;^Icon=.*;Icon=${pkgname};" \
       -e "s;^Exec=.*;Exec=${pkgname};" -i install-files/LRZ_Sync_Share.desktop
 }
