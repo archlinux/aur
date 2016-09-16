@@ -1,12 +1,12 @@
 # Maintainer: Moses Miller <Majora320@gmail.com>
 pkgname=jelly-git
-pkgver=r223.6de53f3
-pkgrel=2
+pkgver=r226.6136ca6
+pkgrel=1
 pkgdesc="An esoratic programming language"
 arch=('any')
 url="http://github.com/DennisMitchell/jelly"
 license=('unknown')
-depends=('python3' 'python-sympy')
+depends=('python3' 'python-sympy' 'python-numpy')
 makedepends=('git')
 source=("jelly-git::git+http://github.com/DennisMitchell/jelly")
 md5sums=('SKIP')
