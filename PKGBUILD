@@ -1,12 +1,13 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2003-git
-pkgver=303.78a7cfa
+pkgver=325.7b55725
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of late 2003 version of MAME (0.78) (Arcade)"
 url="https://github.com/libretro/mame2003-libretro"
 license=('custom:MAME License')
+groups=('libretro')
 makedepends=('git' 'python2')
 
 _libname=mame2003_libretro
