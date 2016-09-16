@@ -2,7 +2,7 @@
 
 pkgname=sorr
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streets of Rage Remake (fan remake)"
 arch=('i686' 'x86_64')
 url="http://www.soronline.net/sorr.htm"
@@ -42,6 +42,6 @@ package() {
   install -m644 "${srcdir}/Manual.html" "${pkgdir}/usr/share/doc/sorr"
 
   install -m644 "${srcdir}/sorr.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/sorr" "${pkgdir}/usr/bin/sorr"
+  install -m755 "${srcdir}/sorr" "${pkgdir}/usr/bin/sorr"
 
 }
