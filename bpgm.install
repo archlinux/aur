@@ -1,0 +1,9 @@
+pre_install(){
+  echo ">> Blossom's Pokémon Go Manager starting from 0.1.2 works only with Oracle's JRE:"
+  echo "    https://github.com/Wolfsblvt/BlossomsPokemonGoManager/issues/306"
+}
+
+post_install(){
+  echo ">> This package creates a wrapper sript called 'bpgm'"
+  echo ">> Using it makes that all the generated files to get saved to '~/.bpgm'"
+}
