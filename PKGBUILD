@@ -1,25 +1,24 @@
 # Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
 
 pkgname=blossoms-pokemon-go-manager
-_pkgnum=0.1.1
-pkgver=${_pkgnum}.beta
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="BlossomsPokemonGoManager is a tool created for managing your game. It allows you to sort your Pokémon by several values, to rename, transfer, evolve or to power-up one or several of them. (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
-url='https://github.com/Blossomforth/BlossomsPokemonGoManager'
+url='https://github.com/Wolfsblvt/BlossomsPokemonGoManager'
 license=('Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International')
-depends=('java-runtime')
+depends=('jre')
 makedepends=('unzip')
-source=("https://github.com/Wolfsblvt/BlossomsPokemonGoManager/releases/download/0.1.1-Beta/BlossomsPogoManager.zip"
+source=("https://github.com/Wolfsblvt/BlossomsPokemonGoManager/releases/download/v${pkgver}/BPGM_v${pkgver}.zip"
         'bpgm')
-sha512sums=('39bf6fa9422b3d071d1606b0e008fe17a6bd0fb1f13e1abcae5b61774426ca5b4d2a91aaf7c07a920a58cb2af39316f31dee92c6c38fac296534f8633ff4deb2'
-            'ea7b20d0d75141aa5c5b6a95eae134c274f8597f47d0b8da79e0eb563240a4d807d2ea08a95b7c80433e512d1f47e79b8f4bcee39e5c467a177aaaab78e9e5b2')
+sha512sums=('455a42dc1249612c8269559e5341dccee28d2a4352b6b67ed1763e1b9dbac7b10ad51e40dc3e6260f851e51200df1529c67c00e2405c81e594e7434dd7cd84fc'
+            '5b72b358a1f0c3e8dde715e48231b4c0eef0d647370effbf95d723e254a9c999971424e02ae444ad019c28c3ccbfba0d5ecf27752cfcea80b3ed793731ac0da1')
 
 prepare() {
-  unzip -u BlossomsPogoManager.zip
+  unzip -u BPGM_v${pkgver}.zip
 }
 
 package() {
-  install -D -m644 "${srcdir}/BlossomsPogoManager.jar" "${pkgdir}/usr/share/java/blossoms-pokemon-go-manager/BlossomsPogoManager.jar"
+  install -D -m644 "${srcdir}/v${pkgver}/BlossomsPogoManager.jar" "${pkgdir}/usr/share/java/blossoms-pokemon-go-manager/BlossomsPogoManager.jar"
   install -D -m755 "${srcdir}/bpgm" "${pkgdir}/usr/bin/bpgm"
 }
