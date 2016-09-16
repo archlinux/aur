@@ -24,8 +24,8 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    export PYTHON='/usr/bin/python2.7-32'
-    export PYTHON_CONFIG='/usr/bin/python2.7-32-config'
+    export PYTHON='/usr/bin/python2-32'
+    export PYTHON_CONFIG='/usr/bin/python2-32-config'
 	
 	./configure --prefix=/usr \
 		--disable-rpath \
