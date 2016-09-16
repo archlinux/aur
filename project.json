@@ -1,0 +1,21 @@
+{
+  "version": "1.5.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Autofac": "4.0.0",
+    "KTOP.Base": "1.5.0-*",
+    "KTOP.Helper": "1.5.0-*",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    }
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {      
+    }
+  }
+}

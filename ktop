@@ -1,0 +1,3 @@
+#!/bin/sh
+dotnet /usr/share/KTOP/KTOP.CLI.dll "$@"
+
