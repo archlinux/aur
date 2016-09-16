@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=jacktrip-git
-pkgver=1.1.r25.gfd3da44
+pkgver=1.1.r27.g4c90453
 pkgrel=1
 pkgdesc="Tool to manage and tune JACK settings for optimum performance between networked machines."
 arch=('i686' 'x86_64')
@@ -15,31 +15,31 @@ source=("${pkgname}::git+https://github.com/jcacerec/jacktrip.git")
 sha512sums=('SKIP')
 _branch=master
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^jacktrip.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   git checkout ${_branch}
+  git pull
   
   # Fix missing /externals/
   [[ -f ${srcdir}/${pkgname}/src/RtAudio.h ]] || ln -s ${srcdir}/${pkgname}/externals/rtaudio-4.1.1/RtAudio.h ${srcdir}/${pkgname}/src/RtAudio.h
   [[ -f ${srcdir}/${pkgname}/src/RtAudio.cpp ]] || ln -s ${srcdir}/${pkgname}/externals/rtaudio-4.1.1/RtAudio.cpp ${srcdir}/${pkgname}/src/RtAudio.cpp
 }
 
+pkgver() {
+  cd "${pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^jacktrip.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
 build() {
-  cd "${srcdir}/${pkgname}/src"
+  cd "${pkgname}/src"
   ./build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/src"
+  cd "${pkgname}/src"
   install -Dm755 jacktrip "${pkgdir}/usr/bin/${pkgname%-*}"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   sed -n '1,30p' ../documentation/documentation.cpp > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
