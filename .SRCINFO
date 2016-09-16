@@ -1,6 +1,6 @@
 pkgbase = libreoffice-uglyfix-freetype2
 	pkgdesc = Installs freetype2 .so files in the LibreOffice directory to fix font ugliness
-	pkgver = 2.6.3
+	pkgver = 2.7
 	pkgrel = 1
 	url = http://freetype.sourceforge.net
 	arch = i686
@@ -12,21 +12,19 @@ pkgbase = libreoffice-uglyfix-freetype2
 	depends = harfbuzz
 	depends = libreoffice
 	options = !docs
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.6.3.tar.bz2
-	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.6.3.tar.bz2.sig
+	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.bz2
+	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.bz2.sig
 	source = libreoffice-uglyfix-noautohint.patch
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-Enable-subpixel-rendering.patch
-	source = 0003-Enable-subpixel-hinting.patch
-	source = 0004-Mask-subpixel-hinting-with-an-env-var.patch
+	source = 0003-Enable-infinality-subpixel-hinting.patch
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
-	sha256sums = 371e707aa522acf5b15ce93f11183c725b8ed1ee8546d7b3af549863045863a2
+	sha256sums = d6a451f5b754857d2aa3964fd4473f8bc5c64e879b24516d780fb26bec7f7d48
 	sha256sums = SKIP
 	sha256sums = 65915726ba3adfc5903ddd6b706ce91751994e7635ea6111e33e5939c674496b
 	sha256sums = 9de28c1156c0a5edff1b3860ad44f4cc2494fc5663bd40c3914fdd64e8ee0724
 	sha256sums = 60e767ccee37939bfea73fa86229108c51b665713a89fbda5506759af2e7d629
-	sha256sums = 78aba5d04418952cf4a29351420fc82c5830616d221e95a21a0c8e3da827d681
-	sha256sums = 3672ef244d6c455623bd0ddecde46bd3758152713a03d475f91aaccfa1a2e0f4
+	sha256sums = d043fa4ce22b6e6cfafa0d2e2898b1c5cd000ec66094a97ab57c9126934ba371
 
 pkgname = libreoffice-uglyfix-freetype2
 
