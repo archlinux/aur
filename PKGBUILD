@@ -1,7 +1,7 @@
 # Maintainer: Perry Hung <perry@leaflabs.com>
 
 pkgname=decklink
-_dvver=10.6.7a1 # DesktopVideo
+_dvver=10.8a2 # DesktopVideo
 _mever=3.5.2a2 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
@@ -17,9 +17,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/76fe80ebd9e9490abbde3923c42ea95f"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/73a8a96378d2459182251738aa516d63"
 pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_sha256sum="f7d9768acebc2ea9c5f63ffdb645ce758276f98ed43fd64a3fc5cc26fdabaf19"
+pkgsrc_sha256sum="09d3593b2fd499bdeb794e1cea3972c0dcd997d08eedbe959ea5965d18983268"
 
 prepare() {
   temp_url=`curl --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
