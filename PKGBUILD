@@ -1,12 +1,13 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame-git
-pkgver=44983.8149dd0
+pkgver=44990.9359b71
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of MAME 2015. (Arcade)"
 url="https://github.com/libretro/mame"
 license=('custom:MAME License')
+groups=('libretro')
 makedepends=('git' 'python2')
 
 _libname=mame_libretro
