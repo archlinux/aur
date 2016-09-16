@@ -2,11 +2,12 @@
 
 pkgname=libretro-cap32-git
 pkgver=76.39b48f1
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of Caprice32 (Amstrad CPC)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-cap32"
 license=('GPL')
+groups=('libretro')
 makedepends=('git')
 
 _libname=cap32_libretro
