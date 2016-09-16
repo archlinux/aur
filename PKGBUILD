@@ -23,19 +23,21 @@ noextract=()
 md5sums=('579889b974e3f1f889bf1dfa47190cea')
 
 build() {
-  cd "$pkgname-$pkgver"
+  # We only need to build the library in this step, dmks will build the module
+  cd "$pkgname-$pkgver/library"
 
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
+  # Predfine some target folders
+  SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"		# This one is needed for dkms
   LIBNAME=lib$pkgname
 
-  install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME/$LIBNAME.so
-  install -D -m 755 module/*.o $pkgdir/usr/lib/$LIBNAME
+  cd "$pkgname-$pkgver"
+
+  install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME.so
   
-  install -d $pkgdir/usr/include/$LIBNAME
-  install -D -m 755 module/*.h $pkgdir/usr/include/$LIBNAME
+  install -d $SRCDIR
+  install -D -m 755 module/* $SRCDIR
 }
