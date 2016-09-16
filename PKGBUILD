@@ -2,11 +2,12 @@
 
 pkgname=libretro-pcem-git
 pkgver=149.e0e0458
-pkgrel=1
+pkgrel=2
 pkgdesc="Libretro port of PCem, based on mooch's personal fork of PCem, based on OBattler's experimental branch"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-pcem"
 license=('GPL2')
+groups=('libretro')
 depends=('zlib' 'allegro4' 'openal' 'freealut')
 makedepends=('git')
 
