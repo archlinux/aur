@@ -1,0 +1,20 @@
+pkgbase = brother-td4000
+	pkgdesc = LPR and CUPS driver for Brother TD-4000 label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-td4000.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp100136/td4000lpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp100137/td4000cupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = a60f9a77cd05a90129f1aa816c61c5344e5e7ca7ee5b282aa9de4d435d0c2dcb
+	sha256sums = 8fd901d31a7bfb4ab7b927c664b2cebd5621fc3cced517fb2cc286d8b3f1c0fd
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-td4000
+
