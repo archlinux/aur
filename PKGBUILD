@@ -2,7 +2,7 @@
 # Based on heirloom-mailx PKGBUILD
 
 pkgname=s-nail-git
-pkgver=14.8.6_x12_g778f90c
+pkgver=14.9.0_pre1_x6_gfcd2892
 pkgrel=1
 pkgdesc="Commandline utility for sending and receiving email"
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ pkgver() {
 	cd s-nail
 	# pacman treats "_" like a ".", so use "_x" to seperate the git tag.
 	# otherwise pacman may think XX.Y_git to XX.Y.Z_git is a downgrade
-	gitver=$(git describe --tags | cut -c 2-)
-	gitver=${gitver//-/_}; echo ${gitver/_/_x}
+	git describe --tags | cut -c 2- | tr - _ | sed 's#_\([0-9]\)#_x\1#'
 }
 
 build() {
@@ -33,12 +32,11 @@ build() {
 		config_target="CONFIG=DEVEL"
 	fi
 
-	make PREFIX=/usr \
-	     SYSCONFDIR=/etc \
-	     SYSCONFRC=mail.rc \
-	     LIBEXECDIR=/usr/lib \
-	     MAILSPOOL=/var/spool/mail \
-	     WANT_AUTOCC=0 \
+	make VAL_PREFIX=/usr \
+	     VAL_SYSCONFDIR=/etc \
+	     VAL_SYSCONFRC=mail.rc \
+	     VAL_LIBEXECDIR=/usr/lib \
+	     OPT_AUTOCC=0 \
 	     ${config_target:-} \
 	     config
 
@@ -49,7 +47,7 @@ build() {
 
 package() {
 	cd s-nail
-	make DESTDIR="${pkgdir}" chown=/usr/bin/true packager-install
+	make DESTDIR="${pkgdir}" chown=/usr/bin/true install
 
 	ln -sf s-nail "${pkgdir}"/usr/bin/mail
 	ln -sf s-nail "${pkgdir}"/usr/bin/mailx
