@@ -1,0 +1,20 @@
+pkgbase = brother-ql1050n
+	pkgdesc = LPR and CUPS driver for Brother QL-1050N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-ql1050n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002227/ql1050lpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002229/ql1050cupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = 77b087b31a0a4fbe8732a9c343ea4d3a2771acde38104ad0c553a043e076a340
+	sha256sums = 5ead2a83a89a646ba968a95e6caab2f1ce3671cd7432aebe69b3bfaafaecd484
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-ql1050n
+
