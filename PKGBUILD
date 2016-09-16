@@ -2,7 +2,7 @@
 #Contributor: Lars Jose <larsjose77@gmail.com>
 pkgname=franz-bin
 pkgver=4.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Franz is a free messaging app / former Emperor of Austria and combines chat & messaging services into one application. Franz currently supports Slack, WhatsApp, WeChat, HipChat, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more.'
 arch=('i686' 'x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'libxss')
@@ -13,7 +13,7 @@ source=("${pkgname}.sh" "${pkgname}.desktop" "${pkgname}.png" "LICENSE" "CHANGEL
 source_i686=("https://github.com/imprecision/franz-app/releases/download/$pkgver/Franz-linux-ia32-$pkgver.tgz")
 source_x86_64=("https://github.com/imprecision/franz-app/releases/download/$pkgver/Franz-linux-x64-$pkgver.tgz")
 sha256sums=('e21d21df5781413e416f8955d09d20dfa9e96d845c0be113796ceba529fb56f2'
-            '3918510c61bca983e55c0e4cb544a7189223e5de5c3c7649c8f0c98dffa6b72b'
+            '7e2a87980efe24f4bd725169cfb00309349d2d3202bbe50735ff5ac508383a16'
             '6e761371afadf155b8bc25e94fd7de371c16130a87338300e5800924916a7a28'
             'f99c2ecb2bc00e05690dbfd62dbe6a0253ec4e156b097ed79e3cec7c820fbfd8'
             'dd0d0fd89d6f3bcdc1e318e910509035204b461a553ff0d32127e37b25692e0c')
@@ -32,7 +32,7 @@ package() {
     install -d ${pkgdir}/{opt/franz-bin,usr/{bin,share/pixmaps}}
     cp -R ${srcdir}/${_path}/* ${pkgdir}/opt/${pkgname}/
     install -Dm755 $srcdir/${pkgname}.sh  ${pkgdir}/usr/bin/${pkgname}
-    install -Dm644 $srcdir/${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+    install -Dm644 $srcdir/${pkgname}.png ${pkgdir}/usr/share/pixmaps/franz.png
     install -Dm644 $srcdir/LICENSE        ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 $srcdir/CHANGELOG      ${pkgdir}/opt/${pkgname}/CHANGELOG
     desktop-file-install ${srcdir}/${pkgname}.desktop --dir ${pkgdir}/usr/share/applications/
