@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=gitdit
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="gitdit - Git DIalog inTerface"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 groups=('jka-toolkit')
 options=(!emptydirs)
 source=("https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/gitdit")
-md5sums=('03aee2f971077fa2745da2e3d679923d')
+md5sums=('653e2297bf29bf1b53d688a58d36b56e')
 
 package() {
   install -Dm755 $srcdir/gitdit "${pkgdir}/usr/bin/gitdit"
