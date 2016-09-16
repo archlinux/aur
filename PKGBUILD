@@ -1,12 +1,13 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-4do-git
-pkgver=124.cbd700e
+pkgver=125.23e5f76
 pkgrel=1
 pkgdesc="libretro implementation of 4DO/libfreedo (3DO)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/4do-libretro"
 license=('GPL3')
+groups=('libretro')
 depends=('zlib')
 makedepends=('git')
 
