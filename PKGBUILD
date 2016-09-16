@@ -1,16 +1,19 @@
-# Maintainer: Fabian Köhler fkoehler1024@gmail.com
+# Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
+# contributor: Fabian Köhler fkoehler1024@gmail.com
+
 _pkgname=lmod
 pkgname=$_pkgname-git
-pkgver=6.0.4.r23.gf67163f
-pkgrel=3
+pkgver=6.5.11.r29.g3a81f6b
+pkgrel=1
 pkgdesc="An Environment Module System based on Lua, Reads TCL Modules, Supports a Software Hierarchy"
 arch=('i686' 'x86_64')
 url="https://www.tacc.utexas.edu/research-development/tacc-projects/lmod"
 license=('custom:lmod')
-makedepends=('git' 'make')
-depends=('sh' 'tcl' 'lua')
-optdepends=('csh: supported shell'
+makedepends=('git' 'make' 'rsync')
+depends=('tcl' 'lua' 'lua-filesystem' 'lua-posix')
+optdepends=('tcsh: supported shell'
             'zsh: supported shell')
+options=(!emptydirs)
 provides=("$_pkgname")
 conflicts=('modules')
 source=("$_pkgname::git+https://github.com/TACC/Lmod.git")
@@ -27,13 +30,16 @@ package() {
 
   # the Lmod build system is messed up, e.g. --mandir does not have any influence on where
   # the manpage will be stored
-  ./configure --prefix="$pkgdir/opt"
-  make install
+  ./configure \
+      --prefix="/opt"
 
-  install License $pkgdir/usr/share/licenses/lmod-git/LICENSE
-  install $pkgdir/opt/lmod/6.0.4/share/man/cat1/module.1 $pkgdir/usr/share/man/cat1/modules.1
-  rm -rf $pkgdir/opt/lmod/6.0.4/share
-  install $pkgdir/opt/lmod/6.0.4/init/profile $pkgdir/etc/profile.d/modules.sh
-  install $pkgdir/opt/lmod/6.0.4/init/cshrc $pkgdir/etc/profile.d/modules.csh
-  install $pkgdir/opt/lmod/6.0.4/init/zsh $pkgdir/etc/profile.d/modules.zsh
+  make DESTDIR="$pkgdir" install
+
+  _pkgver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 3 | tr -d ")")
+  install License $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install $pkgdir/opt/lmod/$_pkgver/share/man/cat1/module.1 $pkgdir/usr/share/man/cat1/modules.1
+  rm -rf $pkgdir/opt/lmod/$_pkgver/share
+  install $pkgdir/opt/lmod/$_pkgver/init/profile $pkgdir/etc/profile.d/modules.sh
+  install $pkgdir/opt/lmod/$_pkgver/init/cshrc $pkgdir/etc/profile.d/modules.csh
+  install $pkgdir/opt/lmod/$_pkgver/init/zsh $pkgdir/etc/profile.d/modules.zsh
 }
