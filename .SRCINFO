@@ -1,0 +1,13 @@
+pkgbase = webnode
+	pkgdesc = a high reliable python web library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://torben.website/webNode
+	arch = any
+	license = CC-BY-3.0
+	depends = python
+	source = https://raw.githubusercontent.com/thaibault/webNode/master/webNode
+	md5sums = SKIP
+
+pkgname = webnode
+
