@@ -2,11 +2,11 @@
 
 _pkgname=KTOP
 pkgname=ktop-git
-pkgver=r25.0239d1e
+pkgver=1.5.1b.r4.g38c9bfa
 pkgrel=1
 pkgdesc='Make Persian EPUBs compatible to E-Readers such as Kindle'
 url='https://github.com/al1b/KTOP'
-license=('GPL')
+license=('GPL3')
 source=('git+https://github.com/al1b/KTOP.git' 'project.json' 'ktop')
 sha256sums=('SKIP'
             '7188af436bf7f392ab31252010a8f20d728d70824d29c5f952dd06f449bfb71d'
@@ -16,20 +16,25 @@ depends=('dotnet-cli')
 makedepends=('git')
 conflicts=('ktop')
 provides=('ktop')
+install=$pkgname.install
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+prepare() {
   cp -f "${srcdir}/project.json" "${srcdir}/${_pkgname}/src/KTOP.CLI/project.json"
+}
+
+build() {
   cd "${srcdir}/${_pkgname}"
   dotnet restore
   cd 'src/KTOP.CLI'
   dotnet publish
+}
+
+package() {
   install  -d "${pkgdir}/usr/share/${_pkgname}"
   cp -ar "${srcdir}/${_pkgname}/src/KTOP.CLI/bin/Debug/netcoreapp1.0/publish/." "${pkgdir}/usr/share/${_pkgname}"
   install -Dm755 "${srcdir}/ktop" "${pkgdir}/usr/bin/ktop"

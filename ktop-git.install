@@ -1,0 +1,12 @@
+# Colored makepkg-like functions
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+
+post_install() {
+    printf "\n"
+    printf "==> NOTE: Execute by running ${bold}ktop${all_off}\n"
+}
+
+post_upgrade() {
+    post_install
+}
