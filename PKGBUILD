@@ -27,14 +27,6 @@ sha512sums=('SKIP'
             '13e7ed9746d0ce7959afa067211175cd007fdeb77500756dd5b0a57e6230e425934a7fe267a5197b539c3305c497745beb2fef2f5e79e4c8662a9c57cf2345f0')
 _branch=master
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 prepare() {
   cd "${pkgname}"
   [ -d build ] || mkdir build
@@ -48,6 +40,14 @@ prepare() {
 
   # Prevent use of /usr/lib64
   sed -i 's:lib64:lib:' src/CMakeLists.txt
+}
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
