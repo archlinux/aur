@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 #
 pkgname=chromium-vaapi
-pkgver=53.0.2785.101
+pkgver=53.0.2785.116
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by
@@ -38,13 +38,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium.desktop
         chromium-widevine.patch
         chromium-52.0.2743.116-unset-madv_free.patch
-        chromium_vaapi.patch)
-sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0'
+        chromium_vaapi.patch
+        chromium_vaapi-intel.patch
+        chromium_vaapi-other.patch)
+sha256sums=('7a87629504346f64122ca7754574d187a4c1bf5736dea672ff3e247a0af16062'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            '37bb0d812819cf21ab8826d04300514103a5fde5c010f7b9f06d7209f33e0c9d')
+            '4700a2d75c5cec59ff4d78c284d20df591c07321565bb25e4bbbd5c671a5d22e'
+            'c479910bc405666f8c8c7760e983abc20ab65764ca1d889040bcba34e8b5b4b9'
+            'c6196905893027dd2e74d34d3000fd6cf50ceaa238b748a504434d4442d7f1ba')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -76,7 +80,16 @@ prepare() {
     patch -Np1
 
   # Patch to enable VA-API
+  printf "Applying chromium_vaapi.patch\n"
   patch -p1 -i "$srcdir"/chromium_vaapi.patch
+
+  if [ $pkgname == "chromium-vaapi" ]; then
+    printf "Applying chromium_vaapi-intel.patch\n" 
+    patch -p1 -i "$srcdir"/chromium_vaapi-intel.patch
+  else
+     printf "Applying chromium_vaapi-other.patch\n"
+     patch -p1 -i "$srcdir"/chromium_vaapi-other.patch
+  fi
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
   # ---

@@ -1,6 +1,6 @@
 pkgbase = chromium-vaapi
 	pkgdesc = Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by your GPU.
-	pkgver = 53.0.2785.101
+	pkgver = 53.0.2785.116
 	pkgrel = 1
 	url = http://www.chromium.org/
 	install = chromium.install
@@ -46,18 +46,22 @@ pkgbase = chromium-vaapi
 	provides = chromium
 	conflicts = chromium
 	options = !strip
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-53.0.2785.101.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-53.0.2785.116.tar.xz
 	source = chromium-launcher-3.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v3.tar.gz
 	source = chromium.desktop
 	source = chromium-widevine.patch
 	source = chromium-52.0.2743.116-unset-madv_free.patch
 	source = chromium_vaapi.patch
-	sha256sums = edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0
+	source = chromium_vaapi-intel.patch
+	source = chromium_vaapi-other.patch
+	sha256sums = 7a87629504346f64122ca7754574d187a4c1bf5736dea672ff3e247a0af16062
 	sha256sums = 8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28
 	sha256sums = 028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9
 	sha256sums = d6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808
 	sha256sums = 3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227
-	sha256sums = 37bb0d812819cf21ab8826d04300514103a5fde5c010f7b9f06d7209f33e0c9d
+	sha256sums = 4700a2d75c5cec59ff4d78c284d20df591c07321565bb25e4bbbd5c671a5d22e
+	sha256sums = c479910bc405666f8c8c7760e983abc20ab65764ca1d889040bcba34e8b5b4b9
+	sha256sums = c6196905893027dd2e74d34d3000fd6cf50ceaa238b748a504434d4442d7f1ba
 
 pkgname = chromium-vaapi
 
