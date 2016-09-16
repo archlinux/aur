@@ -1,0 +1,20 @@
+pkgbase = brother-td2120n
+	pkgdesc = LPR and CUPS driver for Brother TD-2120N label printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-td2120n.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlfp002215/td2120nlpr-1.0.1-0.i386.rpm
+	source = http://download.brother.com/welcome/dlfp002217/td2120ncupswrapper-1.0.1-0.i386.rpm
+	source = LICENSE
+	sha256sums = 808e6f544c30c5527487ac6cac373119933a9e1f2612435f2865c38a49c4d482
+	sha256sums = 2a0bc308e7cd8f595bd0ce31c25d6e8c5d9d3d346e7529f43d65db789f04c2ca
+	sha256sums = cdd1955a9996bc246ba54e84f0a5ccbfdf6623962b668188762389aa79ef9811
+
+pkgname = brother-td2120n
+
