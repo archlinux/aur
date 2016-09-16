@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname="gnome-shell-extension-easyscreencast-git"
-pkgver=0.9.8.5.r0.g7e4d50e
+pkgver=0.9.8.5.r11.g3b751d9
 pkgrel=1
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
@@ -16,22 +16,22 @@ source=("${pkgname}::git+https://github.com/iacopodeenosee/EasyScreenCast.git")
 sha512sums=('SKIP')
 _branch=master
 
+prepare() {
+  cd "${pkgname}"
+  git checkout ${_branch}
+  git pull
+}
+
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch} --quiet
+  cd "${pkgname}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  git checkout ${_branch}
-}
-
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   # Locate the extension.
   _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
