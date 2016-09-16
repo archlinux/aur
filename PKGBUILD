@@ -16,20 +16,20 @@ source=("${pkgname}::git+https://github.com/LADI/ladish.git")
 sha512sums=('SKIP')
 _branch=master
 
+prepare() {
+  cd "${pkgname}"
+  git checkout ${_branch}
+  git pull
+  sed -i "s|env python|&2|" ladish_control
+  sed -i "s|\(RELEASE = \).*|\1True|" wscript
+}
+
 pkgver() {
   cd "${pkgname}"
-  git checkout ${_branch} --quiet
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/^ladish.//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "${pkgname}"
-  git checkout ${_branch}
-  sed -i "s|env python|&2|" ladish_control
-  sed -i "s|\(RELEASE = \).*|\1True|" wscript
 }
 
 build() {
