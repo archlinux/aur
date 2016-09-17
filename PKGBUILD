@@ -17,7 +17,7 @@ arch=('any')
 url='http://torben.website/reachableWatcher'
 license=('CC-BY-3.0')
 depends=('bash' 'curl' 'grep' 'coreutils')
-optdepends=('msmtp')
+optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(reachable-watcher)
 source=('https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.sh' \
     'https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.service')
