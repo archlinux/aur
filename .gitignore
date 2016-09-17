@@ -1,0 +1,11 @@
+# .gitignore
+
+# packages
+/*.pkg.tar.xz
+
+# source
+/dirvish-*.tgz
+/src
+
+# build directory
+/pkg

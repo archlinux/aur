@@ -1,0 +1,16 @@
+pkgbase = dirvish
+	pkgdesc = Dirvish is a fast, disk based, rotating network backup system.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.dirvish.org/
+	arch = any
+	license = OSLv2
+	makedepends = perl
+	depends = perl
+	depends = perl-time-parsedate
+	depends = perl-time-period
+	source = http://www.dirvish.org/dirvish-1.2.1.tgz
+	sha256sums = 6b7f29c3541448db3d317607bda3eb9bac9fb3c51f970611ffe27e9d63507dcd
+
+pkgname = dirvish
+
