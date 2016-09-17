@@ -3,7 +3,7 @@
 # Contributor: Max Roder <maxroder at web dot de>
 
 pkgname=tor-browser-bin
-pkgver=6.0.4
+pkgver=6.0.5
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -24,9 +24,9 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(tor-browser.desktop
          tor-browser.png
          tor-browser.sh)
-sha256sums_i686=('65137a21905d7f3e5851448eb787c70acd3f368d007f4e0b34c197d70c7955b4'
+sha256sums_i686=('e0c3ce406b6de082692ce3db52b6e04053e205194b26fbf0eee9014be543d98d'
                  'SKIP')
-sha256sums_x86_64=('187984a2133faa559b91b89a789c0069da98993863b1086a5c90bc995d1aba91'
+sha256sums_x86_64=('fc917bd702b1275cae3f7fa8036c3c44af9b4f003f3d4a8fbb9f6c0974277ad4'
                    'SKIP')
 sha512sums+=('eaa9f60d8b6343253c12c2438f3a6b805768b407ec43c34e88780ceec6a6f853c13b56749bccd73d7183402fd490a68c61de356728531744ca3b2f744fc92ffe'
              '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'
@@ -37,7 +37,7 @@ noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 
 package() {
-  cd ${srcdir}
+  cd $srcdir
 
   sed -i \
     -e "s|REPL_VERSION|${pkgver}|g" \
@@ -45,16 +45,16 @@ package() {
     tor-browser.sh
 
   install -Dm 0644 tor-browser.desktop \
-    ${pkgdir}/usr/share/applications/tor-browser.desktop
+    $pkgdir/usr/share/applications/tor-browser.desktop
   install -Dm 0644 tor-browser.png \
-    ${pkgdir}/usr/share/pixmaps/tor-browser.png
-  install -Dm 0755 tor-browser.sh ${pkgdir}/usr/bin/tor-browser
+    $pkgdir/usr/share/pixmaps/tor-browser.png
+  install -Dm 0755 tor-browser.sh $pkgdir/usr/bin/tor-browser
 
   if [ "$CARCH" == "i686" ]; then
     install -Dm 0644 tor-browser-linux32-${pkgver}_${_language}.tar.xz \
-      ${pkgdir}/opt/tor-browser/tor-browser-linux32-${pkgver}_${_language}.tar.xz
+      $pkgdir/opt/tor-browser/tor-browser-linux32-${pkgver}_${_language}.tar.xz
   else
     install -Dm 0644 tor-browser-linux64-${pkgver}_${_language}.tar.xz \
-      ${pkgdir}/opt/tor-browser/tor-browser-linux64-${pkgver}_${_language}.tar.xz
+      $pkgdir/opt/tor-browser/tor-browser-linux64-${pkgver}_${_language}.tar.xz
   fi
 }
