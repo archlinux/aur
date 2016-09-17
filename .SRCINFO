@@ -1,6 +1,6 @@
 pkgbase = i3-kde
 	pkgdesc = An improved dynamic tiling window manager (with KDE patches)
-	pkgver = 4.11
+	pkgver = 4.12
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = i3-kde
 	conflicts = i3bar
 	options = docs
 	options = !strip
-	source = git+https://github.com/sLite/i3.git#branch=all-master
+	source = git+https://github.com/sLite/i3.git#branch=kde-master
 	sha1sums = SKIP
 
 pkgname = i3-kde

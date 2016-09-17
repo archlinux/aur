@@ -2,7 +2,7 @@
 # Maintainer: Daniel Selinger <daniel@slite.org>
 
 pkgname=i3-kde
-pkgver=4.11
+pkgver=4.12
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager (with KDE patches)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'perl-json-xs: For i3-save-tree'
             'perl-anyevent-i3: For i3-save-tree')
 options=('docs' '!strip')
-source=('git+https://github.com/sLite/i3.git#branch=all-master')
+source=('git+https://github.com/sLite/i3.git#branch=kde-master')
 sha1sums=('SKIP')
 
 _gitname='i3'
