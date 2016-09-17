@@ -1,0 +1,37 @@
+pkgbase = moc-pulse-git
+	pkgdesc = An ncurses console audio player with support for pulseaudio (using latest upstream sources)
+	pkgver = 2.6_alpha2.r2312
+	pkgrel = 1
+	url = http://moc.daper.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = speex
+	makedepends = ffmpeg
+	makedepends = taglib
+	makedepends = libmpcdec
+	makedepends = wavpack
+	makedepends = libmodplug
+	makedepends = faad2
+	depends = libmad
+	depends = libid3tag
+	depends = jack
+	depends = curl
+	depends = libltdl
+	depends = file
+	depends = pulseaudio
+	optdepends = speex: for using the speex plugin
+	optdepends = ffmpeg: for using the ffmpeg plugin
+	optdepends = taglib: for using the musepack plugin
+	optdepends = libmpcdec: for using the musepack plugin
+	optdepends = wavpack: for using the wavpack plugin
+	optdepends = faad2: for using the aac plugin
+	optdepends = libmodplug: for using the modplug plugin
+	provides = moc
+	conflicts = moc
+	source = moc-pulse::git+https://git.hans.ninja/git/hans/moc-pulse.git
+	sha1sums = SKIP
+
+pkgname = moc-pulse-git
+
