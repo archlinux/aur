@@ -25,7 +25,7 @@ diff -aur chromium-53.0.2785.101/content/common/sandbox_linux/bpf_gpu_policy_lin
 +      const char* LIB_VA_Path                  = NULL;
 +      const char* LIB_VA_X11_Path              = NULL;
 +      const char* R600_Drv_VideoPath           = NULL;
-+      const char* RADEONSIDrvVideoPath         = NULL;
++      const char* RADEONSI_Drv_VideoPath       = NULL;
 +      const char* VDPAU_Drv_VideoPath          = NULL;
 +
 +      if (IsArchitectureX86_64() || IsArchitectureI386() ) {
