@@ -32,7 +32,7 @@ build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
   ./configure
-   make
+   make -j$(nproc)
 
 }
 
