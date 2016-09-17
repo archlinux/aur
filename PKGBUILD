@@ -43,14 +43,13 @@ pkgver() {
 build() {
   mkdir -p "${srcdir}/${_pkgname}-build"
   cd "${srcdir}/${_pkgname}-build"
-  # aqsis: only required for Qt UI rendering preview
   # for profiling add -DK3D_ENABLE_PROFILING=ON to cmake configuration and gperftools to dependencies
   cmake "${srcdir}/${_pkgname}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DK3D_BUILD_CARVE_MODULE=OFF \
         -DBOOST_SYSTEM_NO_DEPRECATED=1 \
         -DPython_ADDITIONAL_VERSIONS=2.7
-  make -j $(cat /proc/cpuinfo | grep processor | wc -l)
+  make
 }
 
 package() {
