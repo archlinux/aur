@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=VERSION
-pkgrel=2
+pkgrel=3
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -22,6 +22,7 @@ source=('git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
 
 pkgver() {
+    cd "$pkgname"
     printf "1.0.$(git rev-list --count HEAD)"
 }
 
