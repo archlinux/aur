@@ -1,8 +1,8 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom-git
-pkgver=2.0.0
-pkgrel=5
+pkgver=r4578.5df086c
+pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
 url="http://kristianduske.com/trenchbroom"
@@ -20,6 +20,11 @@ build() {
 	cd TrenchBroom
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release .
 	cmake --build . --target TrenchBroom
+}
+
+pkgver() {
+  cd TrenchBroom
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
