@@ -11,13 +11,13 @@
 # endregion
 pkgname=generic-service-handler
 pkgver=VERSION
-pkgrel=3
+pkgrel=4
 pkgdesc='easy service handling'
 arch=('any')
 url='http://torben.website/genericServiceHandler'
 license=('CC-BY-3.0')
 depends=('bash' 'coreutils' 'proxps-ng' 'sed' 'grep' 'util-linux')
-optdepens=('sudo')
+optdepens=('sudo: for root service handling and configured user switching support')
 provides=(generic-service-handler)
 source=('https://raw.githubusercontent.com/thaibault/genericServiceHandler/master/genericServiceHandler.sh')
 md5sums=('SKIP')
