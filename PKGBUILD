@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=file-linker
-pkgver=VERSION
-pkgrel=5
+pkgver=1.0.2
+pkgrel=6
 pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/fileLinker'
@@ -20,10 +20,6 @@ depends=('python')
 provides=(file-linker)
 source=('https://raw.githubusercontent.com/thaibault/fileLinker/master/fileLinker.py')
 md5sums=('SKIP')
-
-pkgver() {
-    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
-}
 
 package() {
     install -D --mode 755 "${srcdir}/fileLinker.py" \
