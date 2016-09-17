@@ -17,7 +17,7 @@
 #
 pkgname="zfs-utils-linux-lts"
 pkgver=0.6.5.8_4.4.21_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-lts" "linux-lts=4.4.21")
 makedepends=("linux-lts-headers=4.4.21")
@@ -29,8 +29,8 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/zfs-0.6
         "zfs-utils.initcpio.hook")
 sha256sums=("d77f43f7dc38381773e2c34531954c52f3de80361b7bb10c933a7482f89cfe84"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
-            "dfafce18240722bee26b5864982b4db1cd6d682c4b93a8b1f4832c98686f50d2"
-            "5f749dbe3b853c5b569d5050b50226b53961cf1fa2cfc5cea0ecc3df75885d2f")
+            "17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77"
+            "90d50df503464e8d76770488dbd491cb633ee27984d4d3a31b03f1a4e7492038")
 license=("CDDL")
 groups=("archzfs-linux-lts")
 provides=("zfs-utils")
