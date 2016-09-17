@@ -1,0 +1,17 @@
+#!/bin/bash
+# Game: Streets of Rage Remake
+# Home Page: http://www.bombergames.net
+# Date: 01.07.2012
+#
+SELECT=`zenity --list --window-icon=/usr/local/games/sorr/sorr.png --width=270 --height=190 --radiolist --column "AT" --column "SELECT" \
+       TRUE  "Start: Streets Of Rage Remake"\
+	   FALSE "Manual Streets Of Rage Remake"`
+if echo "$SELECT" | grep $"Start: Streets Of Rage Remake"; then
+	cd "/usr/share/games/sorr/"
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:bennugd:data:/usr/lib32/
+	./bgdi SorR.dat
+fi
+if echo "$SELECT" | grep $"Manual Streets Of Rage Remake"; then
+	cd "/usr/share/games/sorr/"
+	sensible-browser Manual.html
+fi
