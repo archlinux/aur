@@ -11,7 +11,7 @@
 # endregion
 pkgname=generic-service-handler
 pkgver=1.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc='easy service handling'
 arch=('any')
 url='http://torben.website/genericServiceHandler'
@@ -21,6 +21,7 @@ optdepens=('sudo: for root service handling and configured user switching suppor
 provides=(generic-service-handler)
 source=('genericServiceHandler.sh')
 md5sums=('SKIP')
+copyToAUR=true
 
 package() {
     install -D --mode 755 "${srcdir}/genericServiceHandler.sh" \
