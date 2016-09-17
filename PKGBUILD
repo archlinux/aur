@@ -27,6 +27,7 @@ pkgver() {
 }
 
 package() {
+    install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
     cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
 }
 # region vim modline
