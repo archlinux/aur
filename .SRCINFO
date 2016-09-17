@@ -1,14 +1,14 @@
 pkgbase = boostnode
 	pkgdesc = a high reliable python library
 	pkgver = 1.0.4
-	pkgrel = 23
+	pkgrel = 25
 	url = http://torben.website/boostNode
 	arch = any
 	license = CC-BY-3.0
 	makedepends = git
 	makedepends = findutils
 	depends = python
-	source = git+https://github.com/thaibault/boostNode
+	source = PKGBUILD
 	md5sums = SKIP
 
 pkgname = boostnode
