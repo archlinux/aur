@@ -3,13 +3,13 @@
 
 pkgname=gnome-xcf-thumbnailer
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="GNOME thumbnailer for GIMP XCF files."
 arch=('i686' 'x86_64')
 url="https://download.gnome.org/sources/gnome-xcf-thumbnailer/"
 license=('GPL2')
-depends=('glib2' 'libpng')
-optdepends=('gimp: Required to create thumbnails')
+# Without gimp, .xcf thumbnails are never displayed
+depends=('glib2' 'libpng' 'gimp')
 source=("https://download.gnome.org/sources/gnome-xcf-thumbnailer/${pkgver}/gnome-xcf-thumbnailer-${pkgver}.tar.bz2"
         "gnome-xcf-thumbnailer.thumbnailer"
         "no-popt.patch"
