@@ -15,7 +15,7 @@ pkgdesc="An IDE primarily designed for C# and other .NET languages - built from 
 arch=('any')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono>=4.6.0' 'mono-addins>=0.6.2' 'gnome-sharp' 'hicolor-icon-theme')
+depends=('mono>=4.0.1' 'mono-addins>=0.6.2' 'gnome-sharp' 'hicolor-icon-theme')
 makedepends=('rsync' 'cmake' 'git' 'nuget' 'mono-pcl')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')
