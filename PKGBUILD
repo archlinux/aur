@@ -11,7 +11,7 @@
 # endregion
 pkgname=file-linker
 pkgver=VERSION
-pkgrel=3
+pkgrel=4
 pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/fileLinker'
@@ -22,7 +22,8 @@ source=('https://raw.githubusercontent.com/thaibault/fileLinker/master/fileLinke
 md5sums=('SKIP')
 
 pkgver() {
-    printf "1.0.$(git rev-list --count HEAD)"
+    cd fileLinker
+    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
