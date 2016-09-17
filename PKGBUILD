@@ -1,7 +1,7 @@
 # Maintainer: Joshua Merrell <joshuamerrell@gmail.com>
 pkgname=minisphere
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, lightweight implementation of the Sphere game engine"
 arch=('i686' 'x86_64')
 url="https://github.com/fatcerberus/minisphere"
