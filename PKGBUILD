@@ -1,10 +1,10 @@
 # $Id$
-# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
-# Contributor: Malah <malah@neuf.fr>
-# Contributor: Daniel Isenmann <daniel@archlinux.org>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Malah <malah at neuf dot fr>
+# Contributor: Daniel Isenmann <daniel at archlinux dot org>
 # Contributor: arojas
-# Contributor: Timm Preetz <timm@preetz.us>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Timm Preetz <timm at preetz dot us>
+# Contributor: Giovanni Scafora <giovanni at archlinux dot org>
 
 pkgname=monodevelop-git
 _pkgname=monodevelop
