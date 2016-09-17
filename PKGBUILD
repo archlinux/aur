@@ -3,8 +3,8 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.13
-pkgrel=2
+pkgver=3.13.1
+pkgrel=1
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -12,7 +12,8 @@ license=('MIT License')
 depends=('glew' 'glfw' 'glibc' 'fontconfig' 'libgl' 'curl' 'libx11' 'zlib' 'libpng' 'freetype2' 'python2')
 #depends=('openssl' 'sqlite3')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("${url}${_appname}-${pkgver}.zip"
+source=(
+"${url}${_appname}-${pkgver}.zip"
 "README"
 "$_appname.sh"
 "$_appname.csh"
@@ -21,7 +22,7 @@ source=("${url}${_appname}-${pkgver}.zip"
 "CCTMXLayer.patch"
 )
 sha1sums=(
-'30ab3a821467578df4e1ee9d9b2bbb39ae0605e4'
+'1138d61fbbebf3a2edd12d81f0d9834c5ead6df3'
 '2cff669a51b66d513824be811688aa9da553e400'
 '353bdefe07bdb6eb7f53aff20d20e83b488c1c05'
 '49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
@@ -54,14 +55,17 @@ package() {
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
 	else
-		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
-		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
+		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib32/libfmod.so.6"
+		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib32/libfmodL.so.6"
 	fi
 
 	# Set sdkbox python interpreter to python2
 	sed -e 's/python/python2/g' -i "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/plugins/plugin_package/sdkbox
 
+	# Fix permissions:
+	chmod 755 "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/bin/cocos
+	chmod 755 "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/plugins/plugin_package/sdkbox
+
 	# Package source
 	mv "$srcdir"/$_appname-$pkgver/* "$pkgdir/opt/$_appname" 	
-
 }
