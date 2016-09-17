@@ -2,7 +2,7 @@
 # Co-Maintainer: basica <aur basica at gmail dot com>
 
 pkgname=ttf-noto
-pkgver=20150927
+pkgver=20160917
 pkgrel=1
 pkgdesc="Fonts support all languages/characters in Unicode"
 arch=('any')
