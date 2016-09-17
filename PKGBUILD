@@ -11,7 +11,7 @@
 # endregion
 pkgname=reachable-watcher
 pkgver=VERSION
-pkgrel=3
+pkgrel=4
 pkgdesc='Check status codes of web servers and sends notification e-mails'
 arch=('any')
 url='http://torben.website/reachableWatcher'
@@ -24,7 +24,7 @@ source=('https://raw.githubusercontent.com/thaibault/reachableWatcher/master/rea
 md5sums=('SKIP')
 
 pkgver() {
-    printf "1.0.$(git rev-list --count HEAD)"
+    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
