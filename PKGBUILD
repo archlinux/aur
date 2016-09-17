@@ -11,7 +11,7 @@
 # endregion
 pkgname=reachable-watcher
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Check status codes of web servers and sends notification e-mails'
 arch=('any')
 url='http://torben.website/reachableWatcher'
@@ -21,6 +21,7 @@ optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(reachable-watcher)
 source=('reachableWatcher.sh' 'reachableWatcher.service')
 md5sums=('SKIP')
+copyToAUR=true
 
 package() {
     install -D --mode 755 "${srcdir}/reachableWatcher.sh" \
