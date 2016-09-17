@@ -30,8 +30,9 @@ _oc_cluster_up() {
     --host-config-dir="${ORIGIN_HOME}/openshift.local.config" \
     --host-volumes-dir="${ORIGIN_HOME}/openshift.local.volumes" \
     --public-hostname="${PUBLIC_HOSTNAME}" \
-    --routing-suffix="${ROUTING_SUFFIX}"
-
+    --routing-suffix="${ROUTING_SUFFIX}" \
+    --version="${VERSION}" \
+    --metrics
 }
 
 
