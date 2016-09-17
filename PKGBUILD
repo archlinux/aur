@@ -11,7 +11,7 @@
 # endregion
 pkgname=reachable-watcher
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Check status codes of web servers and sends notification e-mails'
 arch=('any')
 url='http://torben.website/reachableWatcher'
@@ -19,8 +19,7 @@ license=('CC-BY-3.0')
 depends=('bash' 'curl' 'grep' 'coreutils')
 optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(reachable-watcher)
-source=('https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.sh' \
-    'https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.service')
+source=('reachableWatcher.sh' 'reachableWatcher.service')
 md5sums=('SKIP')
 
 package() {

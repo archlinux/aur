@@ -1,0 +1,11 @@
+[Unit]
+Description=Checks server reachabilities.
+Conflicts=shutdown.target reboot.target halt.target
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Restart=always
+RestartSec=10
+ExecStart=/usr/bin/reachableWatcher.sh
+NotifyAccess=all
