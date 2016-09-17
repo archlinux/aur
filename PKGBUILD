@@ -1,8 +1,8 @@
 # Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=sorr
-pkgver=5.0.0
-pkgrel=5
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Streets of Rage Remake (fan remake)"
 arch=('i686' 'x86_64')
 url="http://www.soronline.net/sorr.htm"
@@ -10,8 +10,10 @@ license=('GPL')
 makedepends=('git')
 depends=('zlib' 'zenity' 'lib32-sdl_mixer')
 source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
+	"http://www.soronline.net/downloads/SORRv051_REV030.zip"
 	'sorr')
 md5sums=('SKIP'
+	 '3951863625d44a2222630d47153a19e5'
 	 '3d60078ecdd2582e383e477dfdc67ec4')
 
 package() {
