@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=boostnode
-pkgver=VERSION
+pkgver=1.0.1
 pkgrel=21
 pkgdesc='a high reliable python library'
 arch=('any')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd boostNode
-    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
+    echo "r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
