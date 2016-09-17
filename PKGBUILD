@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=webnode
-pkgver=VERSION
-pkgrel=4
+pkgver=1.0.2
+pkgrel=5
 pkgdesc='a high reliable python web library'
 arch=('any')
 url='http://torben.website/webNode'
@@ -23,11 +23,6 @@ optdepends=('sqlite: for sqlite database support'
 source=('https://raw.githubusercontent.com/thaibault/webNode/master/webNode')
 source=('git+https://github.com/thaibault/webNode')
 md5sums=('SKIP')
-
-pkgver() {
-    cd webNode
-    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
-}
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"

@@ -1,7 +1,7 @@
 pkgbase = webnode
 	pkgdesc = a high reliable python web library
-	pkgver = VERSION
-	pkgrel = 4
+	pkgver = 1.0.2
+	pkgrel = 5
 	url = http://torben.website/webNode
 	arch = any
 	license = CC-BY-3.0
