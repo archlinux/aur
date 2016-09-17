@@ -3,15 +3,15 @@
 
 pkgname=xfce4-multiload-ng-plugin
 _pkgname=multiload-ng
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='A modern graphical system monitor, Xfce version'
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
 license=('GPL2')
 depends=('xfce4-panel' 'libxfce4util' 'libxfce4ui' 'gtk2' 'cairo' 'libgtop')
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
-md5sums=('407ce554980fb40b2ab37cb76b6eb0c9')
+md5sums=('f44757c42039ea422df5a94a06574e26')
 
 build() {
 	cd "$_pkgname-$pkgver"
