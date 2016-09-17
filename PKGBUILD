@@ -18,19 +18,18 @@ sha1sums=('SKIP'
 
 build() {
 	cd TrenchBroom
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release \
-	-DwxWidgets_PREFIX=/usr/include/wx-3.1 .
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release .
 	cmake --build . --target TrenchBroom
 }
 
 pkgver() {
-  cd TrenchBroom
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd TrenchBroom
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd TrenchBroom
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 "${srcdir}/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
+	install -Dm644 "$srcdir/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
 	install -Dm644 "./Resources/images/AppIcon.png" "$pkgdir/usr/share/pixmaps/trenchbroom.png"
 }
