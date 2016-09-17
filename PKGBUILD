@@ -5,7 +5,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.7
-pkgver=4.7.2
+pkgver=4.7.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,14 +21,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        )
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
+            'a7e9415d35cee130f2ea5ae4edc652d4be784d9bbfd77e850f1e999f812b2116'
             'SKIP'
-            '6fe04748b639dfbad8488c9c24f9da9524cc3e83bc2cbe46be10f2fcab48f99d'
-            '0cce5069aac52008de106cfeac693cf9ac96256bdc7f71dd6afe79acb7e05d0c'
+            'f110b34351b44dfa23c7fc7485e5ca7f7049143497c19cd437392bd2130146e1'
+            'a3d1f11c6f017a8b5bc6baf85dfdcaa7a851ea3f1fc2563339282cd516cbb4b5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
