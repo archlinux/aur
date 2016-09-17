@@ -1,0 +1,28 @@
+pkgbase = wxgtk-trenchbroom
+	pkgdesc = GTK+ implementation of wxWidgets API for GUI with TrenchBroom patches
+	pkgver = 3.1.0
+	pkgrel = 5
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = gstreamer0.10-base-plugins
+	makedepends = gconf
+	makedepends = webkitgtk2
+	makedepends = glu
+	depends = gtk2
+	depends = gstreamer0.10-base
+	depends = libsm
+	optdepends = webkitgtk2: for webview support
+	provides = wxgtk
+	conflicts = wxgtk
+	options = !emptydirs
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.0/wxWidgets-3.1.0.tar.bz2
+	source = make-abicheck-non-fatal.patch
+	source = wxGLContext_ctor_x11Direct20160316.patch
+	sha1sums = 2170839cfa9d9322e8ee8368b21a15a2497b4f11
+	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
+	sha1sums = 6941a40b202f29f4ae36ff332fb8f1ff95244737
+
+pkgname = wxgtk-trenchbroom
+
