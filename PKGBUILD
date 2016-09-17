@@ -35,13 +35,15 @@ sha256sums=(SKIP
             'fc8b7be14382b6b49fa908ff43773df5ec4e7b3401cc22629f6e2f6f7c4ee704'
             'dbfb367e1a55b40e6e1c6a91f3d30d762e321128779e7fcf0557dbdf825b3b99')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}"
   patch -Np1 -i "${srcdir}/cmake_paths_and_defs_fixes.patch"
   patch -Np1 -i "${srcdir}/glew.patch"
+}
+
+build() {
   mkdir -p "${srcdir}/${pkgname}-build"
   cd "${srcdir}/${pkgname}-build"
-  # aqsis: only required for Qt UI rendering preview
   # carve: current library version is no longer compatible
   # collada io: current library version is no longer compatible 
   # google perftools: current library version is no longer compatible
@@ -53,7 +55,7 @@ build() {
         -DK3D_BUILD_COLLADA_IO_MODULE=OFF \
         -DK3D_BUILD_GOOGLE_PERFTOOLS_MODULE=OFF \
         -DK3D_BUILD_OPENCASCADE_MODULE=OFF
-  make -j $(cat /proc/cpuinfo | grep processor | wc -l)
+  make
 }
 
 package() {
