@@ -1,15 +1,15 @@
 # Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=windows10-icons
-pkgver=0.4.2
+pkgver=0.5
 pkgrel=1
 pkgdesc="Icons to emulate a Windows 10 look"
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
 license=('GPL')
 # depends
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.9.7/Windows.10.Icons.v0.4.2.zip")
-sha1sums=('435b20fdf0ffbfd9ac0f0dea1c1458cf67e8278d')
+source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.9.9-AU/Windows.10.Icons.v0.5.tar.gz")
+sha1sums=('0268015ec0f43d7944ee096b400bbf2a221c58ca')
 
 package()
 {
