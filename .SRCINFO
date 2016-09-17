@@ -1,0 +1,17 @@
+pkgbase = xfce-theme-blackbird-git
+	pkgdesc = Dark Desktop Suite for Xfce. Git version.
+	pkgver = v0.4.r33.gab4a30e
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Blackbird
+	arch = any
+	license = CCPL:by-sa-3.0
+	license = GPL
+	makedepends = git
+	depends = gtk-engine-murrine
+	provides = xfce-theme-blackbird
+	conflicts = xfce-theme-blackbird
+	source = Blackbird::git+https://github.com/shimmerproject/Blackbird.git
+	md5sums = SKIP
+
+pkgname = xfce-theme-blackbird-git
+
