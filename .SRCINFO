@@ -1,0 +1,28 @@
+pkgbase = quetoo-git
+	pkgdesc = Quetoo is a Free first person shooter for Mac, PC and Linux.
+	pkgver = r2744.66a6c9f
+	pkgrel = 1
+	url = http://quetoo.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	makedepends = clang
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = check
+	depends = quetoo-data-git
+	depends = curl
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = physfs
+	depends = mesa
+	depends = libgl
+	source = git://github.com/jdolan/quetoo
+	source = quetoo.desktop
+	sha1sums = SKIP
+	sha1sums = f987aa5296d263138f752321efc23f6cf1acb10a
+
+pkgname = quetoo-git
+

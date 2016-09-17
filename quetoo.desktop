@@ -1,0 +1,12 @@
+[Desktop Entry]
+Exec=quetoo
+GenericName=FPS Game
+Comment=A Quake Based FPS Game
+Icon=quetoo
+Name=Quetoo
+Terminal=0
+Type=Application
+Categories=Game
+Keywords=quake;fps;game;
+
+Name[en_GB]=quetoo.desktop
