@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=bash-link
-pkgver=1.0.0
-pkgrel=1
+pkgver=VERSION
+pkgrel=2
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
@@ -19,6 +19,11 @@ license=('CC-BY-3.0')
 depends=()
 source=('https://raw.githubusercontent.com/thaibault/bashLink/master/bashLink.sh')
 md5sums=('SKIP')
+
+pkgver() {
+    cd bashLink
+    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
+}
 
 package() {
     install -D --mode 755 "${srcdir}/bashLink.sh" "${pkgdir}/usr/bin/bashLink"
