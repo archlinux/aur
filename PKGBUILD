@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=VERSION
-pkgrel=4
+pkgrel=5
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
