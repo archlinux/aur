@@ -11,13 +11,13 @@
 # endregion
 pkgname=boostnode
 pkgver=1.0.5
-pkgrel=29
+pkgrel=30
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
 license=('CC-BY-3.0')
 depends=('python')
-makedepends=('base-devel' 'git' 'findutils')
+makedepends=('git' 'findutils')
 source=('git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
 
