@@ -3,13 +3,13 @@
 
 pkgname=orion
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'i686')
 url="https://github.com/alamminsalo/orion/"
 license=('GPL')
 groups=()
-depends=('mpv' 'qt5-webengine' 'qt5-svg')
+depends=('mpv' 'qt5-webengine' 'qt5-svg' 'qt5-quickcontrols')
 makedepends=('qtchooser' 'libcommuni')
 provides=("${pkgname}")
 conflicts=("${pkgname%-git}")
