@@ -1,11 +1,10 @@
 pkgbase = webnode
 	pkgdesc = a high reliable python web library
 	pkgver = 1.0.2
-	pkgrel = 9
+	pkgrel = 10
 	url = http://torben.website/webNode
 	arch = any
 	license = CC-BY-3.0
-	makedepends = base-devel
 	makedepends = git
 	makedepends = findutils
 	depends = python
