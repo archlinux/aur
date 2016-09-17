@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.6.5.7
+pkgver=0.6.5.8
 pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms=${pkgver}")
@@ -30,7 +30,7 @@ build() {
                 --libdir=/usr/lib \
                 --datadir=/usr/share \
                 --includedir=/usr/include \
-                --with-udevdir=/lib/udev \
+                --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib/zfs \
                 --with-config=user
     make
@@ -47,7 +47,8 @@ package_zfs-dkms() {
     cp -a ${srcdir}/zfs/. ${dkmsdir}
 
     cd "${dkmsdir}"
-    make clean distclean
+    make clean
+    make distclean
     find . -name ".git*" -print0 | xargs -0 rm -fr --
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
@@ -64,10 +65,6 @@ package_zfs-utils() {
     rm -r "${pkgdir}"/etc/init.d
     rm -r "${pkgdir}"/usr/lib/dracut
     rm -r "${pkgdir}"/usr/share/initramfs-tools
-
-    # move module tree /lib -> /usr/lib
-    cp -r "${pkgdir}"/{lib,usr}
-    rm -r "${pkgdir}"/lib
 
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
