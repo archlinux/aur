@@ -2,7 +2,7 @@
 
 pkgname=stock_quote
 pkgver=0.7.1
-pkgrel=0
+pkgrel=1
 pkgdesc="python script to get stock quotes and calculate gains and losses"
 arch=('any')
 license=('GPL')
