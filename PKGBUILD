@@ -1,6 +1,6 @@
 # Maintainer: pigt <pay2630 at gmail dot com>
 pkgname=injection
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A Python-based ASCII programming-puzzle game."
 arch=('i686' 'x86_64')
@@ -12,17 +12,20 @@ source=(injection.sh injection.desktop icon.png INJECTION_${pkgver}_src.zip.md5)
 md5sums=('5f21ca7a8891291e250f5296ba855324'
          'cf419413f1dda3dcae7c665c9bb4bf46'
          '2e6543984ecc80ddf57ed822b344e0e1'
-         'd06f2f1c19813ef44a6a62f53c1331b9')
+         '24756c3e064541f9db4a42166d582639')
 
-_release_url="https://schilcote.itch.io/injection/file/235400?after_download_lightbox=true"
+_release_url="https://schilcote.itch.io/injection/file/270829?after_download_lightbox=true"
 
 prepare() {
 	#Download url always changing to prevent hotlink. So we must deal with it.
 	#url extraction code was copied from "after school"'s package.
 	_dl_url=$(curl -s -XPOST "${_release_url}" | grep -Po '"url":.*?[^\\]",' | cut -c8- | rev |cut -c3- | rev | sed 's/\\\//\//g')
-	curl "$_dl_url" -o "INJECTION_${pkgver}_src.zip"
+	if [ ! -f INJECTION_${pkgver}_src.zip ]; then
+		curl "$_dl_url" -o "INJECTION_${pkgver}_src.zip"
+	fi
 	md5sum -c INJECTION_${pkgver}_src.zip.md5
 	unzip INJECTION_${pkgver}_src.zip -d "$pkgname-$pkgver"
+	mv $pkgname-$pkgver/INJECTION\ 0.9.3\ src/* "$pkgname-$pkgver"
 }
 
 _python_depends=('pymsgbox' 'pygcurse')
