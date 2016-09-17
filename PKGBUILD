@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "1.0.$(git rev-list --count HEAD)"
+    echo "1.0.$(git rev-list --count HEAD)"
 }
 
 package() {
