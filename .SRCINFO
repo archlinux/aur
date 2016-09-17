@@ -1,7 +1,7 @@
 pkgbase = mono42
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler
 	pkgver = 4.2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mono-project.com/
 	install = mono42.install
 	arch = i686
@@ -15,12 +15,10 @@ pkgbase = mono42
 	depends = sh
 	depends = python
 	depends = ca-certificates
-	provides = monodoc
-	provides = mono=4.2.4.4
-	conflicts = monodoc
-	conflicts = mono
 	source = http://download.mono-project.com/sources/mono/mono-4.2.4.4.tar.bz2
+	source = mono42-dev-env
 	sha256sums = ae74292c672e276276edc5461914f3e184d427a7a2ac099d3ce2640abe5dc0c6
+	sha256sums = 2de4aa94b4f59a840fb5d75f2fb6016dd4f666832fd831316402cffd7187752e
 
 pkgname = mono42
 
