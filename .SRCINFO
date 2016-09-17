@@ -1,12 +1,18 @@
 pkgbase = reachable-watcher
 	pkgdesc = Check status codes of web servers and sends notification e-mails
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = VERSION
+	pkgrel = 3
 	url = http://torben.website/reachableWatcher
 	arch = any
 	license = CC-BY-3.0
+	depends = bash
 	depends = curl
+	depends = grep
+	depends = coreutils
+	optdepends = msmtp
+	provides = reachable-watcher
 	source = https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.sh
+	source = https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.service
 	md5sums = SKIP
 
 pkgname = reachable-watcher

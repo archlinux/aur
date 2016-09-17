@@ -10,19 +10,28 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=reachable-watcher
-pkgver=1.0.0
-pkgrel=1
+pkgver=VERSION
+pkgrel=3
 pkgdesc='Check status codes of web servers and sends notification e-mails'
 arch=('any')
 url='http://torben.website/reachableWatcher'
 license=('CC-BY-3.0')
-depends=('curl')
-source=('https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.sh')
+depends=('bash' 'curl' 'grep' 'coreutils')
+optdepends=('msmtp')
+provides=(reachable-watcher)
+source=('https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.sh' \
+    'https://raw.githubusercontent.com/thaibault/reachableWatcher/master/reachableWatcher.service')
 md5sums=('SKIP')
+
+pkgver() {
+    printf "1.0.$(git rev-list --count HEAD)"
+}
 
 package() {
     install -D --mode 755 "${srcdir}/reachableWatcher.sh" \
-        "${pkgdir}/usr/bin/reachableWatcher"
+        "${pkgdir}/usr/bin/reachable-watcher"
+    install -D --mode 755 "${srcdir}/reachableWatcher.service" \
+        "${pkgdir}/etc/systemd/system/reachable-watcher.service"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
