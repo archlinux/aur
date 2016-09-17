@@ -20,7 +20,11 @@ post_install() {
   mkdir -p /var/spool/sks
   chown sks:sks /var/spool/sks
 
-  echo ">> Place 'sks' in DAEMONS= in /etc/rc.conf to enable sks on system boot."
+  echo "NOTE: sks-db could not started without any imported database."
+  echo "      Please before to start the sks-db service first import"
+  echo "      a database. Read instructions from:"
+  echo
+  echo "      https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Peering#!initial-keydump"
 }
 
 post_remove() {
@@ -28,8 +32,9 @@ post_remove() {
   userdel sks && echo "done."
  
   rm -r /var/run/sks
- 
-  echo "Not removing tmp and log directories"
+
+  echo "Keeping /var/lib/sks, /var/spool/sks and /var/log/sks"
+  echo "Remove them manually if you want."
 }
 
 op=$1
