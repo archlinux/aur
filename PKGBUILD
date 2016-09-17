@@ -22,7 +22,7 @@ source=('git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd boostNode
     echo "1.0.$(git rev-list --count HEAD)"
 }
 
