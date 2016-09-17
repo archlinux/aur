@@ -32,7 +32,7 @@ pkgbase = linux-ct
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-ct
-	pkgdesc = The Linux-ct kernel and modules
+	pkgdesc = The Linux Kernel patched for HDMI audio support for Cherry Trail based SoCs
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
