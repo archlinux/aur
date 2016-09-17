@@ -3,8 +3,8 @@
 
 pkgname=xfce4-multiload-ng-plugin-git
 _pkgname=multiload-ng
-pkgver=r388.1a714d9
-pkgrel=5
+pkgver=r603.a3ee936
+pkgrel=6
 pkgdesc="A modern graphical system monitor, Xfce version"
 arch=('i686' 'x86_64')
 url="https://udda.github.io/multiload-ng/"
