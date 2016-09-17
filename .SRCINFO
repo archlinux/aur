@@ -1,6 +1,6 @@
 pkgbase = ttf-noto
 	pkgdesc = Fonts support all languages/characters in Unicode
-	pkgver = 20150927
+	pkgver = 20160917
 	pkgrel = 1
 	url = http://www.google.com/get/noto
 	install = ttf-noto.install
