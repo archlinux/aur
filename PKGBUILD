@@ -58,10 +58,18 @@ check() {
 	cd "$srcdir/$_gitname"
 	cd build
 
+	# Run unit_tests test separately to exclude DNS tests which often fail with
+	# DNS nameservers configured on some systems
+	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
+	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
+	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
+	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS"
+
 	# Temporarily disable some a tests:
 	#  * coretests takes too long (~25000s)
 	#  * libwallet_api_tests fail (Issue #895)
-	CTEST_ARGS+="-E 'coretests|libwallet_api_tests'"
+	#  * unit_tests were run separately above
+	CTEST_ARGS+="-E 'coretests|libwallet_api_tests|unit_tests'"
 	echo ">>> NOTE: some tests excluded: $CTEST_ARGS"
 
 	make ARGS="$CTEST_ARGS" test
