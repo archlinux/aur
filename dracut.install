@@ -10,7 +10,7 @@ post_install() {
 	printf "\n 98dracut-systemd in the above mentioned config location."
 	printf "\n"
 	printf "\n To set the default font for your distribution, add"
-	printf "\n i18n_default_font=\"latarcyrheb-sun16\" to the respective config file\n " 
+	printf "\n i18n_default_font=latarcyrheb-sun16 to the respective config file\n " 
 }
 
 post_upgrade(){
