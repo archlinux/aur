@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd boostNode
-    echo "r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
+    echo "${pkgver}r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
