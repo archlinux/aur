@@ -11,12 +11,12 @@
 # endregion
 pkgname=webnode
 pkgver=VERSION
-pkgrel=3
+pkgrel=4
 pkgdesc='a high reliable python web library'
 arch=('any')
 url='http://torben.website/webNode'
 license=('CC-BY-3.0')
-depends=('python' 'python-sqlalchemy')
+depends=('python' 'python-sqlalchemy' 'boostnode')
 makedepends=('git' 'findutils')
 optdepends=('sqlite: for sqlite database support'
             'nginx: for autoconfiguring them as proxy server')
@@ -33,8 +33,8 @@ package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
     cp --recursive --force "${srcdir}/webNode" "${pkgdir}/usr/lib/python3.5"
     find "$pkgdir" -type f -not -name '*.py' -delete
-    rm "${pkgdir}/.git" --recursive --force
-    rm "${pkgdir}/documentation" --recursive --force
+    rm "${pkgdir}/usr/lib/python3.5/webNode/.git" --recursive --force
+    rm "${pkgdir}/usr/lib/python3.5/webNode/documentation" --recursive --force
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
