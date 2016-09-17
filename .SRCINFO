@@ -1,0 +1,18 @@
+pkgbase = qzdl
+	pkgdesc = A ZDoom launcher using Qt
+	pkgver = 3.2.2.2
+	pkgrel = 1
+	url = http://zdl.vectec.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = gdb
+	makedepends = make
+	depends = qt4
+	conflicts = qzdl-git
+	source = git://github.com/qbasicer/qzdl.git
+	md5sums = SKIP
+
+pkgname = qzdl
+
