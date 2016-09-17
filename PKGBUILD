@@ -28,10 +28,9 @@ prepare() {
   # enable flags for non-embedded systems
   sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
   sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
-  # fix OpenVPN compilation
-  #for f in $( find include/mbedtls -type f ); do
-  #	sed -i '1s|^|#define\ mbedtls_time_t\ time_t\n|' $f
-  #done
+
+  # FS#49914
+  sed -i 's|<time.h>|"platform.h"|' include/mbedtls/ssl.h
 }
 
 build() {
