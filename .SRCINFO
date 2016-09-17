@@ -1,0 +1,23 @@
+pkgbase = objectivelymvc-git
+	pkgdesc = Object oriented MVC framework for OpenGL, SDL2 and GNU C. Inspired by Apple's AppKit.
+	pkgver = r252.dd425fd
+	pkgrel = 1
+	url = https://github.com/jdolan/Objectively
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = clang
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = check
+	depends = objectively-git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = fontconfig
+	source = git://github.com/jdolan/ObjectivelyMVC
+	sha1sums = SKIP
+
+pkgname = objectivelymvc-git
+
