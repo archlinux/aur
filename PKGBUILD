@@ -3,12 +3,13 @@
 _gemname=nokogiri
 pkgname="ruby-${_gemname}"
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML, XML, SAX, and Reader parser'
 arch=('any')
 url='http://nokogiri.org'
 license=('MIT')
 depends=('libxml2' 'libxslt' 'ruby' 'ruby-mini_portile2')
+makedepends=('ruby-pkg-config')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
