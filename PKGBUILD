@@ -11,14 +11,14 @@
 # endregion
 pkgname=file-linker
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/fileLinker'
 license=('CC-BY-3.0')
 depends=('python')
 provides=(file-linker)
-source=('https://raw.githubusercontent.com/thaibault/fileLinker/master/fileLinker.py')
+source=('fileLinker.py')
 md5sums=('SKIP')
 
 package() {

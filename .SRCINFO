@@ -1,13 +1,13 @@
 pkgbase = file-linker
 	pkgdesc = keeps hard links in sync.
 	pkgver = 1.0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://torben.website/fileLinker
 	arch = any
 	license = CC-BY-3.0
 	depends = python
 	provides = file-linker
-	source = https://raw.githubusercontent.com/thaibault/fileLinker/master/fileLinker.py
+	source = fileLinker.py
 	md5sums = SKIP
 
 pkgname = file-linker
