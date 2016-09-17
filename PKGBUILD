@@ -8,7 +8,7 @@
 
 pkgname=monodevelop-git
 _pkgname=monodevelop
-pkgver=6.1.0.5441.445
+pkgver=6.1.0.5441.448
 _pkgver=6.1.0.5441
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data."
@@ -28,6 +28,13 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
   _REV=$(git rev-list --count monodevelop-${_pkgver}..HEAD)
   printf "${_pkgver}.${_REV}"
+}
+
+prepare() {
+  cd $srcdir/$_pkgname
+
+  sed -i -e "s/MonoDevelop.FSharp.Shared.ToolTip /MonoDevelop.FSharp.Shared.ToolTips.ToolTip /" main/external/fsharpbinding/MonoDevelop.FSharpBinding/FSharpTextEditorCompletion.fs
+  sed -i -e "s/MonoDevelop.FSharp.Shared.EmptyTip /MonoDevelop.FSharp.Shared.ToolTips.EmptyTip /" main/external/fsharpbinding/MonoDevelop.FSharpBinding/FSharpTextEditorCompletion.fs
 }
 
 build() {
