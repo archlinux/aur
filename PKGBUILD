@@ -10,6 +10,7 @@ depends=('texlive-bin')
 conflicts=('texlive-science')
 # url="http://www.ctan.org/tex-archive/macros/latex/contrib/"$_basename"/"
 # source=("http://mirrors.ctan.org/install/macros/latex/contrib/${_basename}.tds.zip")
+url="https://github.com/josephwright/$_basename/"
 source=("https://github.com/josephwright/$_basename/archive/v$pkgver.zip")
 license=('LPPL')
 install="$pkgname".install
