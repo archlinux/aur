@@ -1,0 +1,19 @@
+pkgbase = zdl
+	pkgdesc = A feature rich Doom launcher for ZDoom and GZDoom (Recommended Beta)
+	pkgver = 3.2.2.3
+	pkgrel = 2
+	url = http://zdl.vectec.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gdb
+	makedepends = make
+	makedepends = imagemagick
+	depends = qt4
+	optdepends = gzdoom
+	optdepends = zdoom
+	source = https://github.com/qbasicer/qzdl/archive/v3.2.2.3.tar.gz
+	md5sums = 50e61034d288d57ab3aecbd03dcf946a
+
+pkgname = zdl
+
