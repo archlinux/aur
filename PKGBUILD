@@ -10,21 +10,27 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=backup-rotation
-pkgver=1.0.3
-pkgrel=6
+pkgver=VERSION
+pkgrel=7
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
 license=('CC-BY-3.0')
-depends=('pacman' 'yaourt' 'rsync' 'findutils')
+depends=('bash' 'rsync' 'findutils')
+optdepends=('msmtp')
+provides=(backup-rotation)
 source=('https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.sh' \
         'https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.timer' \
         'https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.service')
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
+pkgver() {
+    printf "1.0.$(git rev-list --count HEAD)"
+}
+
 package() {
     install -D --mode 755 "${srcdir}/backupRotation.sh" \
-        "${pkgdir}/usr/bin/backupRotation"
+        "${pkgdir}/usr/bin/backup-rotation"
     install -D --mode 755 "${srcdir}/backupRotation.service" \
         "${pkgdir}/etc/systemd/system/backupRotation.service"
     install -D --mode 755 "${srcdir}/backupRotation.timer" \
