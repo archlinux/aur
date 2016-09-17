@@ -1,0 +1,15 @@
+pkgbase = perl-keystone
+	pkgdesc = A Perl binding for the keystone-engine library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/t00sh/perl-keystone
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = keystone
+	depends = perl
+	source = https://github.com/t00sh/perl-keystone/archive/v1.0.tar.gz
+	sha256sums = b4be863cc03cdb23af15f3c300e08286a9a743cb5dabd049c38c021cd9ff0ea7
+
+pkgname = perl-keystone
+
