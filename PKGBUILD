@@ -11,7 +11,7 @@
 # endregion
 pkgname=backup-rotation
 pkgver=VERSION
-pkgrel=10
+pkgrel=11
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
@@ -25,7 +25,6 @@ source=('https://raw.githubusercontent.com/thaibault/backupRotation/master/backu
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-    cd backupRotation
     echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
