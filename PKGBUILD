@@ -5,13 +5,13 @@ pkgver=5.0.0AB.7
 pkgrel=1
 pkgdesc="Ultradefrag 5.0 console for GNU/Linux to defragment NTFS filesystem"
 url="http://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html"
-arch=('x86_64' 'i686')
-license=('GPL2')
+arch=('x86_64')
+license=('GPL')
 makedepends=('unzip')
 depends=('ncurses' 'ntfs-3g')
 source=('http://jp-andre.pagesperso-orange.fr/ultradefrag-5.0.0AB.7.zip' 'udefrag.patch')
 md5sums=('20cdd938bed3efa5161aefc0ad08ba00'
-         'a9a7993bbe81af2a0c78402ba350850c')
+         '56db0ac242fceda8f38444e4a8cc173b')
 
 prepare() {
   mv udefrag.patch $srcdir/ultradefrag-5.0.0AB.7
