@@ -4,11 +4,17 @@ post_install() {
     openssl req -x509 -newkey rsa:2048 -nodes -keyout /etc/wechatircd/key.pem -out /etc/wechatircd/cert.pem -subj '/CN=127.0.0.1' -days 9999
     cat <<NOTE
 NOTE:
-1. Redirect https://res.wx.qq.com/zh_CN/htmledition/v2/js/webwxApp2cbd9c.js to https://127.0.0.1:9000/webwxapp.js
-2. Import /etc/wechatircd/cert.pem to your browser. Instructions for Chrome/Chromium are listed below:
+1. Install userscript https://github.com/MaskRay/wechatircd/raw/master/injector.user.js
+2. Import /etc/wechatircd/cert.pem to your browser.
+
+Instructions for Chrome/Chromium:
   a. Visit chrome://settings/certificates
   b. Import /etc/wechatircd/cert.pem
   c. 'Authorities' tab page -> 'Untrusted 127.0.0.1' -> 'Edit...' -> 'Trust this certificate for identifying websites.'
+
+Instructions for Firefox:
+  a. Visit https://127.0.0.1:9000/injector.js
+  b. Your connection is not secure，'Advanced->Add Exception->Confirm Security Exception'
 
 Refer to https://github.com/MaskRay/wechatircd for details.
 NOTE
