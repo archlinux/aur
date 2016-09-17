@@ -12,7 +12,7 @@ url="https://getmonero.org/"
 license=('custom:Cryptonote')
 
 depends=('boost-libs>=1.45'  'unbound>=1.4.16'  'miniupnpc>=1.6' 'libunwind' 'openssl')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'gtest')
 
 
 pkgdesc="Peer-to-peer network based anonymous digital currency (includes deaemon, wallet and miner)"
