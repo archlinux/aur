@@ -1,6 +1,6 @@
 pkgbase = linux-userns
 	pkgver = 4.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = linux-userns
 	source = config
 	source = config.x86_64
 	source = linux.preset
-	source = change-default-console-loglevel.patch
 	source = ubuntu-unprivileged-overlayfs.patch
+	source = change-default-console-loglevel.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10

@@ -6,7 +6,7 @@
 pkgbase=linux-userns
 _srcname=linux-4.7
 pkgver=4.7.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,8 +20,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
         'ubuntu-unprivileged-overlayfs.patch'
+        'change-default-console-loglevel.patch'
         )
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
