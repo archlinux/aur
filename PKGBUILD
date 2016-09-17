@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=VERSION
-pkgrel=13
+pkgrel=14
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -27,8 +27,7 @@ pkgver() {
 }
 
 package() {
-    cp --recursive --force "${srcdir}/boostNode" \
-        "${pkgdir}/usr/lib/python3.5/boostNode"
+    cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
