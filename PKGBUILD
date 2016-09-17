@@ -11,23 +11,22 @@
 # endregion
 pkgname=boostnode
 pkgver=1.0.4
-pkgrel=25
+pkgrel=24
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
 license=('CC-BY-3.0')
 depends=('python')
 makedepends=('git' 'findutils')
-# NOTE: "PKGBUILD" indicates to use entire folder.
-source=('PKGBUILD')
+source=('git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
-    find "$srcdir" -type f -not -name '*.py' -delete
-    rm "${srcdir}/.git" --recursive --force
-    rm "${srcdir}/documentation" --recursive --force
-    cp --recursive --force "$srcdir" "${pkgdir}/usr/lib/python3.5"
+    find "$scrdir/boostNode" -type f -not -name '*.py' -delete
+    rm "${scrdir}/boostNode/.git" --recursive --force
+    rm "${scrdir}/boostNode/documentation" --recursive --force
+    cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
