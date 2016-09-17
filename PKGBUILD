@@ -11,13 +11,13 @@
 # endregion
 pkgname=bash-link
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
 license=('CC-BY-3.0')
 depends=()
-source=('https://raw.githubusercontent.com/thaibault/bashLink/master/bashLink.sh')
+source=('bashLink.sh')
 md5sums=('SKIP')
 
 package() {
