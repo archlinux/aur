@@ -2,12 +2,12 @@
 
 pkgname='mozart2'
 pkgver='2.0.0_alpha.0.4140'
-pkgrel=3
+pkgrel=5
 pkgdesc='An open source implementation of Oz 3.'
-arch=('x86_64' 'i386')
+arch=('x86_64')
 url='https://mozart.github.io/'
 license=('BSD')
-depends=('tcl' 'tk' 'emacs')
+depends=('tk' 'emacs')
 source=(bin.rpm::https://sourceforge.net/projects/mozart-oz/files/v2.0.0-alpha.0/mozart2-2.0.0-alpha.0%2Bbuild.4140.005f700-x86_64-fc22.rpm/download
 	https://raw.githubusercontent.com/mozart/mozart2/master/LICENSE.txt
 	)
