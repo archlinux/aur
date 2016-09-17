@@ -8,7 +8,7 @@
 # Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r3561.6d3c290
+pkgver=r3619.7e16cf3
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
@@ -16,10 +16,10 @@ url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
 source=("${pkgname}::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 	'depot_tools.sh' 'repo_fix.sh' 'fixshebangs.py')
 license=('Custom')
-depends=('python2' 'ninja')
-makedepends=('git')
+depends=('git' 'ninja' 'python2')
 optdepends=(
 	'google-cloud-sdk: for gsutil and download_from_google_storage'
+	'subversion: for repositories using svn'
 )
 provides=('depot_tools' 'gclient')
 conflicts=('gclient-svn' 'depot_tools-svn')
