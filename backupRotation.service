@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup rotation logic.
+Conflicts=shutdown.target reboot.target halt.target
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/backupRotation.sh
+NotifyAccess=all

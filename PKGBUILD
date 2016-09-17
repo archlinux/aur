@@ -11,7 +11,7 @@
 # endregion
 pkgname=backup-rotation
 pkgver=1.0.2
-pkgrel=13
+pkgrel=14
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
@@ -19,9 +19,7 @@ license=('CC-BY-3.0')
 depends=('bash' 'rsync' 'findutils')
 optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(backup-rotation)
-source=('https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.sh' \
-        'https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.timer' \
-        'https://raw.githubusercontent.com/thaibault/backupRotation/master/backupRotation.service')
+source=('backupRotation.sh' 'backupRotation.timer' 'backupRotation.service')
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {

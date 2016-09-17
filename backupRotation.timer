@@ -1,0 +1,5 @@
+[Unit]
+Description=Run backupRotation.service every 24 hours
+
+[Timer]
+OnCalendar=*:24/00
