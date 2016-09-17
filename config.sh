@@ -12,7 +12,7 @@ ROUTING_SUFFIX=apps.$(hostname)
 ADMIN_USERNAME=$(whoami)
 # VERSION=latest
 # VERSION=v1.2.1
-VERSION=v1.3.0-alpha.3
+VERSION=v1.3.0
 
 #CERT_FILE=/path-to/$(hostname)/certificate
 #KEY_FILE=/path-to/$(hostname)/private-key
