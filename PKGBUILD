@@ -5,7 +5,7 @@ pkgver=r252.dd425fd
 pkgrel=1
 pkgdesc="Object oriented MVC framework for OpenGL, SDL2 and GNU C. Inspired by Apple's AppKit."
 arch=('i686' 'x86_64')
-url="https://github.com/jdolan/Objectively"
+url="https://github.com/jdolan/ObjectivelyMVC"
 license=('zlib')
 
 makedepends=('git' 'clang' 'autoconf' 'automake' 'check')
