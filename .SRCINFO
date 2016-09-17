@@ -1,7 +1,7 @@
 pkgbase = boostnode
 	pkgdesc = a high reliable python library
 	pkgver = VERSION
-	pkgrel = 17
+	pkgrel = 18
 	url = http://torben.website/boostNode
 	arch = any
 	license = CC-BY-3.0
