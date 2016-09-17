@@ -11,7 +11,7 @@
 # endregion
 pkgname=bash-link
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
@@ -19,6 +19,7 @@ license=('CC-BY-3.0')
 depends=()
 source=('bashLink.sh')
 md5sums=('SKIP')
+copyToAUR=true
 
 package() {
     install -D --mode 755 "${srcdir}/bashLink.sh" "${pkgdir}/usr/bin/bashLink"
