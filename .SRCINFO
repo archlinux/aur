@@ -1,14 +1,14 @@
 pkgbase = webnode
 	pkgdesc = a high reliable python web library
 	pkgver = 1.0.2
-	pkgrel = 10
+	pkgrel = 11
 	url = http://torben.website/webNode
 	arch = any
 	license = CC-BY-3.0
 	makedepends = git
 	makedepends = findutils
-	depends = python
-	depends = python-sqlalchemy
+	depends = python2
+	depends = python2-sqlalchemy
 	depends = boostnode
 	optdepends = sqlite: for sqlite database support
 	optdepends = nginx: for autoconfiguring them as proxy server

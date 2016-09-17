@@ -11,12 +11,12 @@
 # endregion
 pkgname=webnode
 pkgver=1.0.2
-pkgrel=10
+pkgrel=11
 pkgdesc='a high reliable python web library'
 arch=('any')
 url='http://torben.website/webNode'
 license=('CC-BY-3.0')
-depends=('python' 'python-sqlalchemy' 'boostnode')
+depends=('python2' 'python2-sqlalchemy' 'boostnode')
 makedepends=('git' 'findutils')
 optdepends=('sqlite: for sqlite database support'
             'nginx: for autoconfiguring them as proxy server')
