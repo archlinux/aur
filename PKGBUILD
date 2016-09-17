@@ -13,7 +13,7 @@ provides=('ttf-font')
 source=("https://noto-website-2.storage.googleapis.com/pkgs/Noto-hinted.zip")
 install=$pkgname.install
 PKGEXT='.pkg.tar' # because XZ compression is awfully slow
-md5sums=('1b8430f1d59f7492527123afec4ddea8')
+md5sums=('92e5af616ba8f5b420141a37c13b4d1c')
 
 package() 
 {	
