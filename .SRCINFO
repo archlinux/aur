@@ -1,0 +1,14 @@
+pkgbase = file-linker
+	pkgdesc = automate your installation process
+	pkgver = VERSION
+	pkgrel = 2
+	url = http://torben.website/fileLinker
+	arch = any
+	license = CC-BY-3.0
+	depends = python
+	provides = file-linker
+	source = https://raw.githubusercontent.com/thaibault/fileLinker/master/fileLinker.py
+	md5sums = SKIP
+
+pkgname = file-linker
+
