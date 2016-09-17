@@ -1,7 +1,7 @@
 pkgbase = file-linker
 	pkgdesc = keeps hard links in sync.
 	pkgver = VERSION
-	pkgrel = 4
+	pkgrel = 5
 	url = http://torben.website/fileLinker
 	arch = any
 	license = CC-BY-3.0
