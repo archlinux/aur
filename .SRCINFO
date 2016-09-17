@@ -10,7 +10,7 @@ pkgbase = disunity
 	source = https://github.com/ata4/disunity/releases/download/v0.5.0/disunity_v0.5.0.zip
 	source = launch.sh
 	sha256sums = 1915de291f1f6583e917d837416ac00a44e99bde4633898aecb9093a30c5bdac
-	sha256sums = da282d9263d78b39915bd90f8b57703076928001a21e5f9b2c8f7f83e309b0ab
+	sha256sums = 13c51e9ca5ef00f24fd8d4133a5a81d2318b22cb4cfc79e6899d5494e00b0ffb
 
 pkgname = disunity
 
