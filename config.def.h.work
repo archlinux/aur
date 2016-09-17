@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	{ "VirtualBox",         NULL,       NULL,                        1 << 1,       True,        True,         0 },
 	/* monitor 1 */
 	{ "chromium",           NULL,       NULL,                        1 << 1,       False,       False,        1 },
-	{ "google-chrome-beta", NULL,       NULL,                        1 << 1,       False,       False,        1 },
+	{ "Google-chrome-beta", NULL,       NULL,                        1 << 1,       False,       False,        1 },
 	{ NULL,                 "Browser",  NULL,                        1 << 1,       True,        True,         1 },
 	{ NULL,                 "dwb",      NULL,                        1 << 1,       False,       False,        1 },
 	{ "Firefox",            NULL,       NULL,                        1 << 1,       False,       False,        1 },
