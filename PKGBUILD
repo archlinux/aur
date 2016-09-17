@@ -11,7 +11,7 @@
 # endregion
 pkgname=webnode
 pkgver=1.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc='a high reliable python web library'
 arch=('any')
 url='http://torben.website/webNode'
@@ -25,9 +25,9 @@ md5sums=('SKIP')
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
-    find "$scrdir" -type f -not -name '*.py' -delete
-    rm "${scrdir}/webNode/.git" --recursive --force
-    rm "${scrdir}/webNode/documentation" --recursive --force
+    find "${srcdir}/webNode" -type f -not -name '*.py' -delete
+    rm "${srcdir}/webNode/.git" --recursive --force
+    rm "${srcdir}/webNode/documentation" --recursive --force
     cp --recursive --force "${srcdir}/webNode" "${pkgdir}/usr/lib/python3.5"
 }
 # region vim modline
