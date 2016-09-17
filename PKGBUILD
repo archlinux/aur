@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=VERSION
-pkgrel=8
+pkgrel=9
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd boostNode
-    echo "1.0.r$(git rev-list --count HEAD)"
+    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
