@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=2.2.0.g8fdcad0
+pkgver=2.2.1.20.g5fdef7a
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('zimg'
            'vapoursynth-plugin-zimg'
            'vapoursynth-plugin-zimg-git'
            )
-source=('git+https://github.com/sekrit-twc/zimg.git')
+source=('git+https://github.com/sekrit-twc/zimg.git#branch=hdr')
 sha1sums=('SKIP')
 
 pkgver() {
