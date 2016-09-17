@@ -1,0 +1,14 @@
+diff -aur package.pristine/include/core_api/color.h package.new/include/core_api/color.h
+--- package.pristine/include/core_api/color.h	2016-09-17 09:48:53.039092315 +0200
++++ package.new/include/core_api/color.h	2016-09-17 09:52:04.724350559 +0200
+@@ -53,8 +53,8 @@
+ 		color_t(CFLOAT g) { R=G=B=g; }
+ 		color_t(CFLOAT af[3]) { R=af[0];  G=af[1];  B=af[2]; }
+ 		bool isBlack() const { return ((R==0) && (G==0) && (B==0)); }
+-		bool isNaN() const { return (isnan(R) || isnan(G) || isnan(B)); }
+-		bool isInf() const { return (isinf(R) || isinf(G) || isinf(B)); }
++		bool isNaN() const { return (std::isnan(R) || std::isnan(G) || std::isnan(B)); }
++		bool isInf() const { return (std::isinf(R) || std::isinf(G) || std::isinf(B)); }
+ 		~color_t() {}
+ 		void set(CFLOAT r, CFLOAT g, CFLOAT b) { R=r;  G=g;  B=b; }
+ 
