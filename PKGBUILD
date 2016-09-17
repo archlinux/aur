@@ -4,13 +4,13 @@
 # Contributor: Geoffrey Teale <tealeg@googlemail.com>
 pkgname=google-breakpad-git
 pkgver=r1536.b857dfe
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://code.google.com/p/google-breakpad/"
 license=('BSD')
-makedepends=('git' 'depot-tools-git')
-depends=('gcc-libs')
+makedepends=('depot-tools-git')
+depends=()
 options=('staticlibs' '!strip')
 conflicts=('google-breakpad-svn')
 
