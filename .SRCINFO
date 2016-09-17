@@ -1,7 +1,7 @@
 pkgbase = sorr
 	pkgdesc = Streets of Rage Remake (fan remake)
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.soronline.net/sorr.htm
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sorr
 	source = http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz
 	source = sorr
 	md5sums = SKIP
-	md5sums = ed2721a9743c36bcf2cb6993e539c047
+	md5sums = 3d60078ecdd2582e383e477dfdc67ec4
 
 pkgname = sorr
 

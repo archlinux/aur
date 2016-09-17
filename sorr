@@ -13,5 +13,5 @@ if echo "$SELECT" | grep $"Start: Streets Of Rage Remake"; then
 fi
 if echo "$SELECT" | grep $"Manual Streets Of Rage Remake"; then
 	cd "/usr/share/games/sorr/"
-	sensible-browser Manual.html
+	xdg-open /usr/share/games/sorr/Manual.html
 fi
