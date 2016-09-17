@@ -4,14 +4,14 @@
 _gemname=unf
 pkgname=ruby-$_gemname
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.'
 arch=('any')
 url='https://github.com/knu/ruby-unf'
 license=('2-clause BSDL')
 options=(!emptydirs)
 noextract=($_gemname-$pkgver.gem)
-depends=('ruby')
+depends=('ruby' 'ruby-unf_ext')
 makedepends=('rubygems')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 sha256sums=('4999517a531f2a955750f8831941891f6158498ec9b6cb1c81ce89388e63022e')
