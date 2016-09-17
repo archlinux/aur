@@ -9,19 +9,10 @@ arch=('x86_64')
 url="http://ccminer.org/"
 license=('GPL3')
 depends=('cuda' 'curl' 'jansson')
-makedepends=('git' 'gcc5')
 conflicts=('ccminer-git')
 options=('!emptydirs')
 source=("https://github.com/tpruvot/ccminer/archive/${pkgver}-tpruvot.tar.gz")
 md5sums=('382b2f1e49e583dd7c9489ce35f87fda')
-
-prepare() {
-	# Workaround for CUDA not compiling with GCC 6
-	mkdir -p "${srcdir}/gcc-bin-override"
-	ln -sf "/usr/bin/gcc-5" "${srcdir}/gcc-bin-override/gcc"
-	ln -sf "/usr/bin/g++-5" "${srcdir}/gcc-bin-override/g++"
-	export PATH="${srcdir}/gcc-bin-override:${PATH}"
-}
 
 build() {
 	cd "${srcdir}/ccminer-${pkgver}-tpruvot"
