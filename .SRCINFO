@@ -1,0 +1,18 @@
+pkgbase = objectively-git
+	pkgdesc = Ultra-lightweight object oriented framework for GNU C.
+	pkgver = r331.170d201
+	pkgrel = 1
+	url = https://github.com/jdolan/Objectively
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = clang
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = check
+	source = git://github.com/jdolan/Objectively
+	sha1sums = SKIP
+
+pkgname = objectively-git
+
