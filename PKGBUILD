@@ -19,7 +19,7 @@ provides=('rust')
 
 build() {
   cd rustc-nightly
-  ./configure --prefix=/usr --disable-rpath 
+  ./configure --prefix=/usr --disable-rpath --enable-compiler-docs
   make
  }
 
