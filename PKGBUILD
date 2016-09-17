@@ -11,7 +11,7 @@
 # endregion
 pkgname=backup-rotation
 pkgver=1.0.2
-pkgrel=14
+pkgrel=15
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
@@ -21,6 +21,7 @@ optdepends=('msmtp: for automatic email notifications on missing sources')
 provides=(backup-rotation)
 source=('backupRotation.sh' 'backupRotation.timer' 'backupRotation.service')
 md5sums=('SKIP' 'SKIP' 'SKIP')
+copyToAUR=true
 
 package() {
     install -D --mode 755 "${srcdir}/backupRotation.sh" \
