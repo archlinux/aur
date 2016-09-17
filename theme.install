@@ -1,8 +1,5 @@
 post_install()
 {
-	echo "Setting Wisp as the default LightDM Theme"
-	sed -i 's|greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
-	sed -i 's|#greeter-session=.*webkit2.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
-	sed -i 's|webkit-theme=.*|webkit-theme=wisp|g' /etc/lightdm/lightdm-webkit2-greeter.conf
-	sed -i 's|#webkit-theme=antergos|webkit-theme=wisp|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+	echo "Don't forget to set greeter-session to lightdm-webkit2-greeter in /etc/lightdm/lightdm.conf!"
+	echo "Don't forget to set webkit-theme to wisp in /etc/lightdm/lightdm-webkit2-greeter.conf!"
 }
