@@ -23,7 +23,8 @@ source=('https://raw.githubusercontent.com/thaibault/genericServiceHandler/maste
 md5sums=('SKIP')
 
 pkgver() {
-    printf "1.0.$(git rev-list --count HEAD)"
+    cd genericServiceHandler
+    echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
 package() {
