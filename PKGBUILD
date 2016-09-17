@@ -17,7 +17,8 @@ arch=('any')
 url='http://torben.website/boostNode'
 license=('CC-BY-3.0')
 depends=('python')
-source=('https://raw.githubusercontent.com/thaibault/boostNode/master/boostNode')
+makedepends=('git')
+source=('boostNode::git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
 
 package() {
