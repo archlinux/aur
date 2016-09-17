@@ -2,10 +2,10 @@
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 
 _npmname=azure-cli
-_npmver=0.10.1
+_npmver=0.10.4
 pkgname=nodejs-${_npmname} # All lowercase
 pkgver=${_npmver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Windows Azure Cross Platform Command Line tool"
 arch=(any)
 url="https://github.com/Azure/azure-xplat-cli"
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
 options=(!strip)
-md5sums=('b398a2f5804ed6297cf516acac569dc4')
+md5sums=('c2f0b1f3eba2751a036b6630436d7e8c')
 
 package() {
   cd $srcdir
