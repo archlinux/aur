@@ -1,7 +1,7 @@
 pkgbase = backup-rotation
 	pkgdesc = This script allows you to create a local or remote backup rotation for your files.
 	pkgver = VERSION
-	pkgrel = 7
+	pkgrel = 8
 	url = http://torben.website/backupRotation
 	arch = any
 	license = CC-BY-3.0

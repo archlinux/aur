@@ -11,7 +11,7 @@
 # endregion
 pkgname=backup-rotation
 pkgver=VERSION
-pkgrel=7
+pkgrel=8
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
@@ -32,9 +32,9 @@ package() {
     install -D --mode 755 "${srcdir}/backupRotation.sh" \
         "${pkgdir}/usr/bin/backup-rotation"
     install -D --mode 755 "${srcdir}/backupRotation.service" \
-        "${pkgdir}/etc/systemd/system/backupRotation.service"
+        "${pkgdir}/etc/systemd/system/backup-rotation.service"
     install -D --mode 755 "${srcdir}/backupRotation.timer" \
-        "${pkgdir}/etc/systemd/system/backupRotation.timer"
+        "${pkgdir}/etc/systemd/system/backup-rotation.timer"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
