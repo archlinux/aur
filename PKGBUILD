@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=1.0.4
-pkgrel=24
+pkgrel=25
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
-    find "$scrdir/boostNode" -type f -not -name '*.py' -delete
+    find "${scrdir}/boostNode" -type f -not -name '*.py' -delete
     rm "${scrdir}/boostNode/.git" --recursive --force
     rm "${scrdir}/boostNode/documentation" --recursive --force
     cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
