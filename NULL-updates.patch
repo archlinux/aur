@@ -1,0 +1,14 @@
+--- a/xcf2png.c	2016-09-17 09:57:18.537771893 -0600
++++ b/xcf2png.c	2016-09-17 09:57:46.797525769 -0600
+@@ -71,9 +71,9 @@
+   
+   outfile = openout(flatspec.output_filename);
+   libpng = png_create_write_struct(PNG_LIBPNG_VER_STRING,
+-                                   png_voidp_NULL,
++                                   NULL,
+                                    my_error_callback,
+-                                   png_error_ptr_NULL);
++                                   NULL);
+   if( !libpng )
+     FatalUnexpected(_("Couldn't initialize libpng library"));
+   
