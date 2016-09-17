@@ -11,7 +11,7 @@
 # endregion
 pkgname=file-linker
 pkgver=1.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/fileLinker'
@@ -20,6 +20,7 @@ depends=('python')
 provides=(file-linker)
 source=('fileLinker.py')
 md5sums=('SKIP')
+copyToAUR=true
 
 package() {
     install -D --mode 755 "${srcdir}/fileLinker.py" \
