@@ -11,7 +11,7 @@
 # endregion
 pkgname=boostnode
 pkgver=VERSION
-pkgrel=18
+pkgrel=19
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -29,7 +29,7 @@ pkgver() {
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
     cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
-    find "$pkgdir" -file -not -name '*.py' -delete
+    find "$pkgdir" -type f -not -name '*.py' -delete
     rm "${pkgdir}.git" --recursive --force
 }
 # region vim modline
