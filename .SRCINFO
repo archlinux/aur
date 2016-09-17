@@ -5,8 +5,6 @@ pkgbase = linux-ct
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
 	makedepends = kmod
 	makedepends = inetutils
 	makedepends = bc
@@ -34,7 +32,7 @@ pkgbase = linux-ct
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-ct
-	pkgdesc = The Linux Kernel with a patch to add HDMI audio support for Cherry Trail based SoCs
+	pkgdesc = The Linux-ct kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -45,7 +43,4 @@ pkgname = linux-ct
 
 pkgname = linux-ct-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ct kernel
-
-pkgname = linux-ct-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-ct kernel
 
