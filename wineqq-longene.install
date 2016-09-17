@@ -3,5 +3,6 @@ post_install() {
     chmod +x /usr/bin/qq
     chmod +x /opt/longene/qq/firstrun
     mkdir -p $HOME/.longene/
+    tar -jxvf /opt/longene/qq/wine-lib.tar.bz2
     tar -jxvf -C $HOME/.longene/ /opt/longene/qq/qq7.8.tar.bz2
 }
