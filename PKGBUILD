@@ -22,7 +22,7 @@ fi
 
 package() {
 	mkdir -p $pkgdir/{opt/museeks,usr/{bin,share/applications}}
-	cd $srcdir/$pkgname-linux-$_arch
+	cd $srcdir/Museeks-linux-$_arch
 	cp -R * $pkgdir/opt/museeks
 	ln -s /opt/museeks/Museeks $pkgdir/usr/bin/museeks
 	cp $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
