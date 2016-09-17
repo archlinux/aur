@@ -1,12 +1,12 @@
 # Maintainer: nous <nous@archlinux.us>
 # Maintainer: artoo <artoo@manjaro.org>
 
-_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+_url="https://gitweb.gentoo.org/repo/gentoo.git/plain"
 
 #pkgbase=openrc-base
 pkgname=dbus-openrc
 pkgver=20160917
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRC dbus init script"
 arch=('any')
 url="https://github.com/OpenRC"
