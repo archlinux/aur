@@ -1,8 +1,9 @@
 pkgbase = wineqq-longene
 	pkgdesc = Longene Wine QQ 7.8.
 	pkgver = 20151109
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.longene.org/
+	install = wineqq-longene.install
 	arch = i686
 	arch = x86_64
 	license = unknown
