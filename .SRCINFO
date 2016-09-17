@@ -1,0 +1,28 @@
+pkgbase = mozart1-bin
+	pkgdesc = An open source implementation of Oz 3.
+	pkgver = 1.4.0.20080704_16189
+	pkgrel = 1
+	url = https://mozart.github.io/mozart-v1/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-tk85
+	depends = emacs
+	depends = lib32-glibc
+	depends = lib32-zlib
+	depends = lib32-gmp4
+	depends = lib32-gcc-libs
+	depends = lib32-libx11
+	depends = lib32-libxss
+	depends = lib32-libxext
+	depends = lib32-libxcb
+	depends = lib32-libxau
+	depends = lib32-libxdmcp
+	conflicts = mozart2
+	source = bin.rpm::https://sourceforge.net/projects/mozart-oz/files/v1/1.4.0-2008-07-04-mandriva/mozart-1.4.0.20080704-16189.i586.rpm/download
+	source = arch.patch
+	sha512sums = 035b1260b5a4ecffb84440586ebc2cee381fba387f6d597baf525e1d7808da92d115108fbd7b94f6265ac50edb397d1bb147d2cc8bdc89753a03edf0eb7a3aee
+	sha512sums = c80faadc49f777396a83d0e6db2d68887b9c064f78b313f65357bc793320574f20c6293f66f3496ab501f13a02a89a68f14aced2dd0e905009199bc7af0f2474
+
+pkgname = mozart1-bin
+

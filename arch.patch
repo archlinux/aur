@@ -1,0 +1,11 @@
+--- src/usr/lib/mozart/bin/ozplatform	2008-09-21 15:48:40.000000000 +0300
++++ src1/usr/lib/mozart/bin/ozplatform	2016-09-17 14:06:20.473679483 +0300
+@@ -36,7 +36,7 @@
+    ;;
+    RISC\ ULTRIX\ 4.*)	OZARCH=ultrix-mips
+    ;;
+-   i[4567]86\ Linux\ *) OZARCH=linux-i486
++   i[4567]86\ Linux\ *|x86_64\ Linux\ *) OZARCH=linux-i486
+    ;;
+    m68k\ Linux\ *)      OZARCH=linux-m68k
+    ;;
