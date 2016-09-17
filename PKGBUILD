@@ -2,7 +2,7 @@
 # Maintainer: MrSerenity
 
 pkgname=qsyncthingtray
-pkgver=0.5.1r2
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="tray app for syncthing"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-location' 'qt5-webengine')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sieren/QSyncthingTray/archive/$pkgver.tar.gz"
         "$pkgname.desktop")
-md5sums=('c152a69f836ddf67459a044cca0610ea'
+md5sums=('710afec7b4d6c209742a75759a3cec0b'
          '730d2ae862656d39f7b1980f20d8d8bf')
 
 _pkgname=QSyncthingTray
