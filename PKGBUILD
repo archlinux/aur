@@ -11,8 +11,8 @@
 # endregion
 pkgname=file-linker
 pkgver=VERSION
-pkgrel=2
-pkgdesc='automate your installation process'
+pkgrel=3
+pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/fileLinker'
 license=('CC-BY-3.0')
