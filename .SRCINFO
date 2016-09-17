@@ -1,7 +1,7 @@
 pkgbase = wxgtk-trenchbroom
-	pkgdesc = GTK+ implementation of wxWidgets API for GUI with TrenchBroom patches
+	pkgdesc = GTK+ implementation of wxWidgets API for GUI with TrenchBroom patches.
 	pkgver = 3.1.0
-	pkgrel = 5
+	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
