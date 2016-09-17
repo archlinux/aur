@@ -2,7 +2,7 @@
 
 pkgname=wechatircd-git
 _pkgname=wechatircd
-pkgver=r32.9732b27
+pkgver=r64.cd1b8b9
 pkgrel=1
 pkgdesc="IRC server capable of controlling Web WeChat"
 arch=('i686' 'x86_64')
@@ -24,6 +24,6 @@ pkgver() {
 
 package() {
   install -D "$_pkgname/wechatircd.py" "$pkgdir/usr/bin/wechatircd"
-  install -Dm644 "$_pkgname/webwxapp.js" -t "$pkgdir/usr/share/wechatircd/"
+  install -Dm644 "$_pkgname/injector.js" -t "$pkgdir/usr/share/wechatircd/"
   install -Dm644 wechatircd.service -t "$pkgdir/usr/lib/systemd/system/"
 }
