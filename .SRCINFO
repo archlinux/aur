@@ -1,0 +1,19 @@
+pkgbase = networkmanager-ssh-git
+	pkgdesc = SSH VPN support for NetworkManager
+	pkgver = r223.8e78731
+	pkgrel = 1
+	url = https://github.com/danfruehauf/NetworkManager-ssh
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = autoconf
+	depends = networkmanager>=1.1.0
+	depends = libnm-glib>=1.1.0
+	provides = networkmanager-ssh
+	source = networkmanager-ssh-git::git://github.com/danfruehauf/NetworkManager-ssh.git
+	md5sums = SKIP
+
+pkgname = networkmanager-ssh-git
+
