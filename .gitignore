@@ -1,0 +1,5 @@
+monodevelop
+*.xz
+*.gz
+src
+pkg
