@@ -19,9 +19,7 @@ provides=('rust')
 
 build() {
   cd rustc-nightly
-
-  CC=clang CXX=clang++ ./configure --prefix=/usr --enable-docs --disable-rpath 
-
+  ./configure --prefix=/usr --disable-rpath 
   make
  }
 
