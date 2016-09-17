@@ -3,12 +3,12 @@
 # Contributor: Libernux <dutchman55@gmx.com>
 pkgname="brother-hl3040cn"
 pkgver="1.1.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother HL3040cn"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
-depends=('cups' 'psutils')
+depends=('cups')
 install='brother-hl3040cn.install'
 source=(
 	"http://www.brother.com/pub/bsc/linux/dlf/hl3040cnlpr-$pkgver-1.i386.rpm"
