@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=boostnode
-pkgver=1.0.2
-pkgrel=22
+pkgver=1.0.3
+pkgrel=23
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostNode'
@@ -20,11 +20,6 @@ depends=('python')
 makedepends=('git' 'findutils')
 source=('git+https://github.com/thaibault/boostNode')
 md5sums=('SKIP')
-
-pkgver() {
-    cd boostNode
-    echo "${pkgver}r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
-}
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
