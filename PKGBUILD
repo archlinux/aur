@@ -8,7 +8,7 @@ pkgdesc="KIO Slave to access Google Drive"
 url="https://projects.kde.org/kio-gdrive"
 license=(GPL)
 depends=(libkgapi qtkeychain)
-makedepends=(extra-cmake-modules git kdesignerplugin)
+makedepends=(extra-cmake-modules git kdesignerplugin kdoctools)
 source=(http://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz)
 md5sums=('04049f497f3fd1339a42f9edad6f3a12')
 
