@@ -11,7 +11,7 @@
 # endregion
 pkgname=generic-service-handler
 pkgver=VERSION
-pkgrel=4
+pkgrel=5
 pkgdesc='easy service handling'
 arch=('any')
 url='http://torben.website/genericServiceHandler'
@@ -23,7 +23,6 @@ source=('https://raw.githubusercontent.com/thaibault/genericServiceHandler/maste
 md5sums=('SKIP')
 
 pkgver() {
-    cd genericServiceHandler
     echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
