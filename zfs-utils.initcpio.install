@@ -17,6 +17,7 @@ build() {
         dbufstat.py \
         fsck.zfs \
         mount.zfs \
+        seq \
         zdb \
         zed \
         zfs \
