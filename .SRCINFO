@@ -1,0 +1,16 @@
+pkgbase = libcs50
+	pkgdesc = CS50 Library for C (Harvard course)
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://cs50.harvard.edu/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = glibc
+	conflicts = lib50-c-git
+	conflicts = lib50-c
+	source = https://github.com/cs50/lib50-c/archive/7.1.0.tar.gz
+	md5sums = 8feb784fcbccf8521b6fe5656bfe3112
+
+pkgname = libcs50
+
