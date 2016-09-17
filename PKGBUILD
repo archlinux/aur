@@ -3,7 +3,7 @@
 
 _pkgbase='moc-pulse'
 pkgname="${_pkgbase}-git"
-pkgver=2.6_alpha2.r2312
+pkgver=2.6_alpha2.r2313
 pkgrel=1
 pkgdesc='An ncurses console audio player with support for pulseaudio (using latest upstream sources)'
 arch=('i686' 'x86_64')
