@@ -1,10 +1,11 @@
 pkgbase = generic-service-handler
 	pkgdesc = easy service handling
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = VERSION
+	pkgrel = 2
 	url = http://torben.website/genericServiceHandler
 	arch = any
 	license = CC-BY-3.0
+	provides = generic-service-handler
 	source = https://raw.githubusercontent.com/thaibault/genericServiceHandler/master/genericServiceHandler.sh
 	md5sums = SKIP
 
