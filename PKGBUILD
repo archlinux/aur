@@ -11,7 +11,7 @@
 # endregion
 pkgname=bash-link
 pkgver=VERSION
-pkgrel=2
+pkgrel=3
 pkgdesc='a high reliable bash library'
 arch=('any')
 url='http://torben.website/bashLink'
@@ -21,7 +21,6 @@ source=('https://raw.githubusercontent.com/thaibault/bashLink/master/bashLink.sh
 md5sums=('SKIP')
 
 pkgver() {
-    cd bashLink
     echo "1.0.r$(git rev-list --count HEAD)$(git rev-parse --short HEAD)"
 }
 
