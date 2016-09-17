@@ -18,7 +18,8 @@ sha1sums=('SKIP'
 
 build() {
 	cd TrenchBroom
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release .
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release \
+	-DwxWidgets_PREFIX=/usr/include/wx-3.1 .
 	cmake --build . --target TrenchBroom
 }
 
