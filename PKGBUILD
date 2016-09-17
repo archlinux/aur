@@ -11,7 +11,7 @@
 # endregion
 pkgname=webnode
 pkgver=1.0.2
-pkgrel=5
+pkgrel=7
 pkgdesc='a high reliable python web library'
 arch=('any')
 url='http://torben.website/webNode'
@@ -20,16 +20,15 @@ depends=('python' 'python-sqlalchemy' 'boostnode')
 makedepends=('git' 'findutils')
 optdepends=('sqlite: for sqlite database support'
             'nginx: for autoconfiguring them as proxy server')
-source=('https://raw.githubusercontent.com/thaibault/webNode/master/webNode')
 source=('git+https://github.com/thaibault/webNode')
 md5sums=('SKIP')
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
+    find "$scrdir" -type f -not -name '*.py' -delete
+    rm "${scrdir}/webNode/.git" --recursive --force
+    rm "${scrdir}/webNode/documentation" --recursive --force
     cp --recursive --force "${srcdir}/webNode" "${pkgdir}/usr/lib/python3.5"
-    find "$pkgdir" -type f -not -name '*.py' -delete
-    rm "${pkgdir}/usr/lib/python3.5/webNode/.git" --recursive --force
-    rm "${pkgdir}/usr/lib/python3.5/webNode/documentation" --recursive --force
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
