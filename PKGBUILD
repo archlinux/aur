@@ -2,13 +2,13 @@
 
 pkgname=quamachi
 _filename_=Quamachi
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A Hamachi GUI for Linux"
-arch=("any")
 url="http://${_filename_}.Xavion.name"
+arch=("any")
 license=("LGPL3")
-depends=("pyqt" "logmein-hamachi>=2")
+depends=("python-pyqt5" "logmein-hamachi>=2.1")
 optdepends=("mtr: A ping GUI"
 			"putty: An SSH GUI"
 			"gksu: A SU(do) GUI"
@@ -34,4 +34,4 @@ package() {
 	msg "Seek further information or send feedback via the 'Help' menu."
 }
 
-sha1sums=('74aec7977f2fdccb60235bb37f6cdf0797c39886')
+sha1sums=('73c6ac7e3901c8ebba86abf9bf8d68c6e5b4c66a')

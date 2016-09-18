@@ -4,9 +4,9 @@
 post_install() {
 	# Change file permissions
 	chmod 777 /usr/share/Quamachi/Source/
-	
+
 	# Add symlink to sys-bin dir
-	ln -s /usr/bin/Quamachi.sh /usr/sbin/
+	#ln -s /usr/bin/Quamachi.sh /usr/sbin/
 
 	# Remove old files
 	user_remove
