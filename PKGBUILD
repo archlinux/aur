@@ -5,14 +5,13 @@
 
 pkgname=gnome-shell-pomodoro
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection' 'perl-xml-sax-expat' 'telepathy-glib' 'libpeas')
-makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x')
-conflicts=('gnome-shell-pomodoro-git')
+depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libpeas')
+makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat')
 changelog='NEWS'
 source=("https://github.com/codito/gnome-pomodoro/archive/$pkgver.tar.gz")
 sha256sums=('8c20f2024877c0227241a730d46c5437be92b7c234f664e3b7853016e7c9bda9')
