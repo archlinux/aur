@@ -3,7 +3,7 @@ Name=Atom Bleeding
 Comment=A hackable text editor for the 21st Century built using web technologies on the Electron framework.
 GenericName=Text Editor
 Exec=/usr/bin/electron --app=/usr/lib/atom-bleeding %U
-Icon=atom
+Icon=atom-bleeding
 Type=Application
 StartupNotify=true
 Categories=GTK;TextEditor;Development;Atom;

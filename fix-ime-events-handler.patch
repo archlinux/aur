@@ -1,0 +1,47 @@
+--- a/src/text-editor-component.coffee
++++ b/src/text-editor-component.coffee
+@@ -119,6 +119,7 @@ class TextEditorComponent
+     @updateSync()
+     @checkForVisibilityChange()
+     @initialized = true
++    @checkpointForIME = null
+
+   destroy: ->
+     @mounted = false
+@@ -309,19 +310,20 @@ class TextEditorComponent
+     # User escape to cancel
+     #   4. compositionend fired
+     # OR User chooses a completion
+-    #   4. compositionend fired
+-    #   5. textInput fired; event.data == the completion string
++    #   4. textInput fired; event.data == the completion string
++    #   5. compositionend fired
+
+-    checkpoint = null
+     @domNode.addEventListener 'compositionstart', =>
+       if @openedAccentedCharacterMenu
+         @editor.selectLeft()
+         @openedAccentedCharacterMenu = false
+-      checkpoint = @editor.createCheckpoint()
++      @checkpointForIME = @editor.createCheckpoint()
+     @domNode.addEventListener 'compositionupdate', (event) =>
+       @editor.insertText(event.data, select: true)
+     @domNode.addEventListener 'compositionend', (event) =>
+-      @editor.revertToCheckpoint(checkpoint)
++      if @checkpointForIME
++        @editor.revertToCheckpoint(@checkpointForIME)
++        @checkpointForIME = null
+       event.target.value = ''
+
+   # Listen for selection changes and store the currently selected text
+@@ -373,6 +375,10 @@ class TextEditorComponent
+   onTextInput: (event) =>
+     event.stopPropagation()
+
++    if @checkpointForIME
++      @editor.revertToCheckpoint(@checkpointForIME)
++      @checkpointForIME = null
++
+     # WARNING: If we call preventDefault on the input of a space character,
+     # then the browser interprets the spacebar keypress as a page-down command,
+     # causing spaces to scroll elements containing editors. This is impossible
