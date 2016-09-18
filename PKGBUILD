@@ -6,7 +6,7 @@ pkgbase=('bitmonero-git')
 pkgname=('bitmonero-git' 'libmonero-wallet-git')
 _gitname='monero'
 pkgver=0.9.4
-pkgrel=6
+pkgrel=7
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 license=('custom:Cryptonote')
@@ -107,5 +107,10 @@ package_libmonero-wallet-git() {
         options=(!strip)
 
         cd $srcdir/$_gitname/$_builddir
-        make DESTDIR=$pkgdir install
+        _stagedir=stagedir
+        mkdir -p $_stagedir
+        make DESTDIR=$_stagedir install
+
+        cd $_stagedir
+        find usr/{include,lib} -type f -exec install -D -m 755 {} ${pkgdir}/{} \;
 }
