@@ -28,7 +28,6 @@ package() {
         cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/bin/* $pkgdir/usr/share/usr/bin/
         cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
         cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/lib64/* $pkgdir/usr/lib64/
         cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/lib/* $pkgdir/usr/lib/
     fi
 }
