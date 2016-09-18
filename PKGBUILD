@@ -3,7 +3,7 @@
  
 pkgname=emacs-org-mode-git
 pkgver=8.3.6.1146.g7cb0dec
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
 url="http://orgmode.org/"
@@ -22,10 +22,6 @@ _gitname="emacs-org-mode"
 pkgver() {
   cd "$srcdir"/$_gitname
   git describe --tags | sed 's+-+.+g' | cut -c9-
-}
-
-prepare() {
-  sed -i 's+pi{}d+pi d+' "$srcdir"/$_gitname/doc/org.texi
 }
 
 package () {
