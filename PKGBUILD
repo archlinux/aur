@@ -5,17 +5,17 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
-pkgver=2.74
-pkgrel=2
+pkgver=2.75
+pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
-makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2')
+makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'minizip' 'openal' 'sdl2')
 source=("https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
-        "http://www.etlegacy.com/download/file/74")
+        "http://www.etlegacy.com/download/file/87")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha512sums=('eafeb40fed714db76635ee2656b66ff738435385314e4a3d45d48643c0147365d643f3b024ea87c3fd984a08f48a963342226decbc2f878dcd6d863edd570c0f'
-            'aea236a3d17d418df2381d324e7ddbda4a0663aa5e3ed5f2c2dd39ee2e08cbb02b036dc20d2ca897d27bf59bc4b1ed18db874b5ff7e73bd80b760710e9e2f881')
+sha256sums=("846027d9bf3ca1a410bd2d3e1e72da9ae4686dbf5194dbc34bca92ab5964ffc4"
+            "494cf924d31640e32d5bfdaf7536be037d0861290362a86695de19b42beed227")
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -33,6 +33,7 @@ build() {
         -DBUILD_MOD=0 \
         -DBUILD_MOD_PK3=0 \
         -DBUILD_PAK3_PK3=0 \
+        -DBUNDLED_LIBS=0 \
         -DFEATURE_AUTOUPDATE=0 \
         -DINSTALL_OMNIBOT=0
 
@@ -41,7 +42,7 @@ build() {
 
 package_etlegacy() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)"
-    depends=('etlegacy-mod' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
+    depends=('etlegacy-mod' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
