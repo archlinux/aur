@@ -1,0 +1,4 @@
+pkg/
+src/
+django-debug-toolbar/
+python-django-debug-toolbar-git-*.pkg.tar.xz
