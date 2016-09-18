@@ -8,7 +8,11 @@ pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='https://www.svp-team.com/wiki/Plugins:_SVPflow'
 license=('GPL')
-depends=('qt5-base' 'jsoncpp')
+depends=('vapoursynth'
+         'qt5-base'
+         'jsoncpp'
+         )
+makedepends=('yasm')
 source=("svpflow1-src-${pkgver}.zip::http://www.svp-team.com/files/gpl/svpflow1-src.zip")
 sha1sums=('7e32bec0c45895b6770ce814f040757f71e145a5')
 
