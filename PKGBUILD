@@ -70,7 +70,7 @@ isNoOpenGL() {
 
 pkgname=mingw-w64-qt5-base-dynamic
 pkgver=5.7.0
-pkgrel=6
+pkgrel=8
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -129,7 +129,7 @@ md5sums=('184f9460b40752d71b15b827260580c2'
          '83139869355c2d46921adb25e47cf0fa'
          'b9565219e9252a17fc1b8fb9ee30662c'
          '20de722808e8a3fb684b0212bef8de46'
-         '1dc792faa7761d8d7d2f17170da04d6b'
+         'a60bd6bb231acfe9132f391a26b37e71'
          '41ec67d9e5e70e0d6d93b42aebd0e12a'
          '61c0f9d0095c5a6dec8d14e9ec35a608'
          '16a7d505b503bb1087fc00fad819f64b')
@@ -287,11 +287,18 @@ build() {
 
   for _arch in ${_architectures}; do
     # Phonon is disabled for now because we lack the directx headers
+    # FIXME: check whether this is still the case
+
     # The odd paths for the -hostbindir argument are on purpose
     # The qtchooser tool assumes that the tools 'qmake', 'moc' and others
     # are all available in the same folder with these exact file names
     # To prevent conflicts with the mingw-w64-qt4 package we have
     # to put these tools in a dedicated folder
+
+    # The last device option allows using ccache though the use of
+    # pre-compile header
+    # (sloppiness must be set to pch_defines,time_macros in ccache config)
+
     local qt_configure_args="\
       -xplatform win32-g++ \
       -optimized-qmake \
@@ -331,7 +338,8 @@ build() {
       -plugindir /usr/${_arch}/lib/qt/plugins \
       -sysconfdir /usr/${_arch}/etc \
       -translationdir /usr/${_arch}/share/qt/translations \
-      -device-option CROSS_COMPILE=${_arch}-"
+      -device-option CROSS_COMPILE=${_arch}- \
+      -device-option CROSS_COMPILE_CFLAGS=-fpch-preprocess"
 
     # Fix include directory of freetype2 and dbus
     qt_configure_args+=" $(${_arch}-pkg-config --cflags-only-I freetype2 dbus-1)"
