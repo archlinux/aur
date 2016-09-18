@@ -7,12 +7,12 @@
 pkgname=selenium-server-standalone
 pkgver=3.0.0_beta3
 _pkgver=3.0.0-beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="Test automation server for web applications"
 arch=('any')
 url="http://seleniumhq.org/"
 license=('APACHE')
-depends=('java-runtime>=6')
+depends=('java-runtime>=8')
 source=("http://selenium-release.storage.googleapis.com/3.0-beta3/$pkgname-$_pkgver.jar"
         'Selenium.desktop')
 noextract=("$pkgname-$_pkgver.jar")
