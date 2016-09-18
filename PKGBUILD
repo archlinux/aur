@@ -12,7 +12,7 @@ url="http://mega.co.nz"
 license=("BSD")
 groups=("firefox-addons")
 source=("https://mega.nz/meganz.xpi")
-
+sha512sums=('97d8fe4258f0d37127f21697aa0c852debb7f406fc0cc8579cc7b3f631355f9ae3412b7e6df012d710a89b475f87dfabdeef95ec489c18b2b6d847e7da4aa613')
 package(){
 	depends=("firefox")
 
@@ -25,4 +25,3 @@ package(){
 	find "${pkgdir}" -type d -exec chmod 0755 {} \;
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
-md5sums=('67e0fae2105492548dc6822c6da4ab5f')
