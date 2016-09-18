@@ -45,7 +45,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.0.32.r2.g85303a6
+pkgver=2.0.34.r14.gac76992
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
@@ -143,12 +143,14 @@ prepare() {
   sed -i -e 's:/usr/sbin/:/usr/bin/:g' 'urbackupserver/doc/admin_guide.tex' 'urbackup-server.service'
   sed -i -e 's,L"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\nL"/urbackup"\n#endif\n,g' 'urbackupserver/server_settings.cpp' # Irksome bug!
 
+if ! :; then
   # Quick patches for gcc 6. These need to be fixed by upstream.
   sed -i -e '# Always use static until you are forced to remove it!' \
          -e 's:^const char array:static &:g' \
          -e '# Something conflcts with gcc 6.0' \
          -e 's:array\[:html_array\[:g' 'stringtools.cpp'
   sed -i -e 's:^#define _exit exit:// &:g' 'cryptoplugin/dllmain.cpp'
+fi
 
   # fix the build scripts
   #sed -i -e 's:response.readall():response.read():g' 'build/replace_versions.py' # python was always a bad choice for these text replacements. As of Python 3.5 this script doesn't work at all and read() is not a proper replacement for readall().
@@ -169,7 +171,8 @@ prepare() {
          -e "# Version updates are now done here in PKGBUILD" \
          -e 's:^python3 :#&:g' \
          -e "# Instruct wget to resume our complete download" \
-         -e 's:^\s\+wget :&--continue :g' \
+         -e '#s:^\s\+wget :&--continue :g' \
+         -e 's:^\s\+wget :#&:g' \
     'build_server.Arch.sh' 'build_client.Arch.sh'
 
   # Dymanic downloads in configure are bad!
