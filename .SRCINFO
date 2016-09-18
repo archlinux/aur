@@ -1,12 +1,11 @@
 pkgbase = et-sdl-sound
 	pkgdesc = Replacement for standard OSS sound system of Wolfenstein: Enemy Territory
 	pkgver = 29
-	pkgrel = 11
+	pkgrel = 12
 	url = http://github.com/nullkey/et-sdl-sound/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = multilib-devel
 	depends = lib32-sdl
 	depends = lib32-alsa-lib
 	depends = lib32-alsa-plugins
@@ -22,7 +21,6 @@ pkgbase = et-sdl-sound
 	depends_i686 = alsa-lib
 	depends_i686 = alsa-plugins
 	optdepends_i686 = libpulse: PulseAudio audio driver
-	makedepends_i686 = base-devel
 
 pkgname = et-sdl-sound
 

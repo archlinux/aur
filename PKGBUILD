@@ -1,15 +1,14 @@
+# requires multilib-devel on x86_64
 pkgname=et-sdl-sound
 pkgver=29
-pkgrel=11
+pkgrel=12
 pkgdesc="Replacement for standard OSS sound system of Wolfenstein: Enemy Territory"
 arch=('i686' 'x86_64')
 url="http://github.com/nullkey/et-sdl-sound/"
 license=('GPL')
 depends_i686=('sdl' 'alsa-lib' 'alsa-plugins')
-makedepends_i686=('base-devel')
 optdepends_i686=('libpulse: PulseAudio audio driver')
 depends_x86_64=('lib32-sdl' 'lib32-alsa-lib' 'lib32-alsa-plugins')
-makedepends_x86_64=('multilib-devel')
 optdepends_x86_64=('lib32-libpulse: Pulseaudio audio driver')
 options=(!strip)
 source=("git://github.com/nullkey/et-sdl-sound.git"
