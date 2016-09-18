@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=webnode
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=11
 pkgdesc='a high reliable python web library'
 arch=('any')
