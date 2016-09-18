@@ -1,0 +1,8 @@
+--- lizardfs-3.10.2/src/cgi/cgiserv.py.in.orig	2016-09-18 16:43:05.075283198 +0100
++++ lizardfs-3.10.2/src/cgi/cgiserv.py.in	2016-09-18 16:43:11.145096379 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import fcntl
+ import errno
+ import posix

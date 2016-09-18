@@ -1,0 +1,8 @@
+--- lizardfs-3.10.2/src/cgi/lizardfs-cgiserver.py.in.orig	2016-09-18 16:35:35.542456837 +0100
++++ lizardfs-3.10.2/src/cgi/lizardfs-cgiserver.py.in	2016-09-18 16:35:49.685354565 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # vim: noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+ 
+ import fcntl
