@@ -1,7 +1,7 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=orderedset
 pkgname=python-${_pkgname}
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="An ordered set implementation in cython"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('cython' 'python-setuptools')
 source=("https://pypi.python.org/packages/source/o/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('1ad2abdd4a0fa7ae9c915ae7beb6f96a30280cf6a9bf39eed32a9109af53a464791111c96037ea37f2cef839b48410acc1098b475e8afa5de8b405ce3da06b61')
+sha512sums=('ab9d6763025d7ab8f2eb644ab5093b1360b9f4a29fa032e69c3343c7802055ef381f1206ad9499be32a0e4c7824c2f03921eeda05897dd32f536e369bea5df46')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
