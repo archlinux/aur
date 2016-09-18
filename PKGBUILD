@@ -31,8 +31,8 @@ gimp-script-white-balance-puzzle
 gimp-script-vintage-look
 gimp-script-split-tone
 )
-pkgver=0.24
-pkgrel=2
+pkgver=b3f4e3e7
+pkgrel=1
 pkgdesc='Varoius Gimp scripts made by elsamuko'
 arch=(any)
 url='https://sites.google.com/site/elsamuko/gimp'
@@ -40,16 +40,22 @@ license=(GPL3)
 depends=(gimp)
 options=(!strip)
 source=(
-"elsamuko-scripts.zip::https://github.com/elsamuko/gimp-elsamuko/archive/master.zip"
+git://github.com/elsamuko/gimp-elsamuko
 https://sites.google.com/site/elsamuko/forensics/up-down-curve/elsamuko-up-down.scm
 https://sites.google.com/site/elsamuko/forensics/up-down-curve/up-down
 https://sites.google.com/site/elsamuko/forensics/ela/elsamuko-error-level-analysis.scm
 )
-sha256sums=('e6dc49c68c0bc5da2d743137cdf11425173d3b874f364661fe08fb1ba1f27140'
-            'aa63e1ffbaa89e8f2fbe95f01f4f54ef3c065c2674a4c0937935e9cd48dc27d2'
-            '8b3bc05ae4974eb267a638b16f2da2cee13bbecca694e7524c42a8038bf9c34a'
-            'e342ab65d9d958fa4dbcbc7dd9f517978cabcb3c816383bcb7d477103815043e')
-# env
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+_gitname=gimp-elsamuko
+pkgver(){
+  if [ -d "$srcdir"/$_gitname ]; then
+    cd "$srcdir"/$_gitname
+    git describe --always | sed 's|-|.|g'
+  fi
+}
 _scriptsdir_eval='_scriptsdir="$pkgdir"/usr/share/gimp/2.0/scripts'
 package_gimp-elsamuko-scripts (){
   true && pkgdesc='Varoius Gimp scripts made by elsamuko, transition package to split build'
@@ -74,7 +80,7 @@ package_gimp-script-antique-border (){
   true && url='https://sites.google.com/site/elsamuko/gimp/antique-border'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-antique-border.scm $_scriptsdir/elsamuko-antique-border.scm
 }
 package_gimp-script-che-guevara (){
@@ -82,7 +88,7 @@ package_gimp-script-che-guevara (){
   true && url='https://sites.google.com/site/elsamuko/gimp/fitzpatrick'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-che-guevara.scm $_scriptsdir/elsamuko-che-guevara.scm
 }
 package_gimp-script-color-tint (){
@@ -90,7 +96,7 @@ package_gimp-script-color-tint (){
   true && url='https://sites.google.com/site/elsamuko/gimp/color-tint'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-color-tint.scm $_scriptsdir/elsamuko-color-tint.scm
 }
 package_gimp-script-cyanotype (){
@@ -98,7 +104,7 @@ package_gimp-script-cyanotype (){
   true && url='https://sites.google.com/site/elsamuko/gimp/cyanotype'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-cyanotype.scm $_scriptsdir/elsamuko-cyanotype.scm
 }
 package_gimp-script-difference-layers (){
@@ -106,7 +112,7 @@ package_gimp-script-difference-layers (){
   true && url='https://sites.google.com/site/elsamuko/gimp/difference'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-difference-layers.scm $_scriptsdir/elsamuko-difference-layers.scm
 }
 package_gimp-script-erosion-sharpen (){
@@ -114,7 +120,7 @@ package_gimp-script-erosion-sharpen (){
   true && url='https://sites.google.com/site/elsamuko/gimp/erosion-sharpen'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-erosion-sharpen.scm $_scriptsdir/elsamuko-erosion-sharpen.scm
 }
 package_gimp-script-escape-lines (){
@@ -122,7 +128,7 @@ package_gimp-script-escape-lines (){
   true && url='https://sites.google.com/site/elsamuko/gimp/escape-line'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-escape-lines.scm $_scriptsdir/elsamuko-escape-lines.scm
 }
 package_gimp-script-glass-displacement (){
@@ -130,7 +136,7 @@ package_gimp-script-glass-displacement (){
   true && url='https://sites.google.com/site/elsamuko/gimp/glass'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-glass-displacement.scm $_scriptsdir/elsamuko-glass-displacement.scm
 }
 package_gimp-script-film-grain (){
@@ -138,7 +144,7 @@ package_gimp-script-film-grain (){
   true && url='https://sites.google.com/site/elsamuko/gimp/grain'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-grain.scm $_scriptsdir/elsamuko-grain.scm
 }
 package_gimp-script-lomo (){
@@ -146,7 +152,7 @@ package_gimp-script-lomo (){
   true && url='https://sites.google.com/site/elsamuko/gimp/lomo'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-lomo.scm $_scriptsdir/elsamuko-lomo.scm
   install -Dm644 elsamuko-lomo-batch.scm $_scriptsdir/elsamuko-lomo-batch.scm
 }
@@ -155,7 +161,7 @@ package_gimp-script-movie-300 (){
   true && url='https://sites.google.com/site/elsamuko/gimp/300'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-movie-300.scm $_scriptsdir/elsamuko-movie-300.scm
 }
 package_gimp-script-national-geographic (){
@@ -163,7 +169,7 @@ package_gimp-script-national-geographic (){
   true && url='https://sites.google.com/site/elsamuko/gimp/ng'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-national-geographic.scm $_scriptsdir/elsamuko-national-geographic.scm
   install -Dm644 elsamuko-national-geographic-batch.scm \
     $_scriptsdir/elsamuko-national-geographic-batch.scm
@@ -173,7 +179,7 @@ package_gimp-script-obama-hope (){
   true && url='https://sites.google.com/site/elsamuko/gimp/fairey'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-obama-hope.scm $_scriptsdir/elsamuko-obama-hope.scm
 }
 package_gimp-script-first-photo-border (){
@@ -181,7 +187,7 @@ package_gimp-script-first-photo-border (){
   true && url='https://sites.google.com/site/elsamuko/gimp/cut-off'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-photo-border.scm $_scriptsdir/elsamuko-photo-border.scm
 }
 package_gimp-script-photochrom (){
@@ -189,7 +195,7 @@ package_gimp-script-photochrom (){
   true && url='https://sites.google.com/site/elsamuko/gimp/photochrom'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-photochrom.scm $_scriptsdir/elsamuko-photochrom.scm
   install -Dm644 elsamuko-photochrom-batch.scm \
     $_scriptsdir/elsamuko-photochrom-batch.scm
@@ -199,7 +205,7 @@ package_gimp-script-rainy-landscape (){
   true && url='https://sites.google.com/site/elsamuko/gimp/rain'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-rainy-landscape.scm $_scriptsdir/elsamuko-rainy-landscape.scm
 }
 package_gimp-script-sprocket-hole (){
@@ -208,7 +214,7 @@ package_gimp-script-sprocket-hole (){
   true && url='https://sites.google.com/site/elsamuko/gimp/sprocket'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-slide-with-sprockets.scm $_scriptsdir/elsamuko-slide-with-sprockets.scm
 }
 package_gimp-script-sunny-landscape (){
@@ -216,7 +222,7 @@ package_gimp-script-sunny-landscape (){
   true && url='https://sites.google.com/site/elsamuko/gimp/sunny'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-sunny-landscape.scm $_scriptsdir/elsamuko-sunny-landscape.scm
 }
 package_gimp-script-technicolor-2-color (){
@@ -224,7 +230,7 @@ package_gimp-script-technicolor-2-color (){
   true && url='https://sites.google.com/site/elsamuko/gimp/technicolor2'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-technicolor-2-color.scm $_scriptsdir/elsamuko-technicolor-2-color.scm
   install -Dm644 elsamuko-technicolor-2-color-batch.scm $_scriptsdir/elsamuko-technicolor-2-color-batch.scm
 }
@@ -233,7 +239,7 @@ package_gimp-script-technicolor-3-color (){
   true && url='https://sites.google.com/site/elsamuko/gimp/technicolor3'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-technicolor-3-color.scm $_scriptsdir/elsamuko-technicolor-3-color.scm
 }
 package_gimp-script-white-balance-puzzle (){
@@ -241,7 +247,7 @@ package_gimp-script-white-balance-puzzle (){
   true && url='https://sites.google.com/site/elsamuko/gimp/wb-puzzle'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 elsamuko-wb-puzzle.scm $_scriptsdir/elsamuko-wb-puzzle.scm
 }
 package_gimp-script-vintage-look (){
@@ -249,7 +255,7 @@ package_gimp-script-vintage-look (){
   true && url='https://sites.google.com/site/elsamuko/gimp/vintage'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 mm1-vintage-look.scm $_scriptsdir/mm1-vintage-look.scm
 }
 package_gimp-script-split-tone (){
@@ -257,6 +263,6 @@ package_gimp-script-split-tone (){
   true && url='https://sites.google.com/site/elsamuko/gimp/split-tone-ed'
   true && depends=(gimp-elsamuko-scripts)
   eval $_scriptsdir_eval
-  cd "$srcdir"/gimp-elsamuko-master/scripts
+  cd "$srcdir"/gimp-elsamuko/scripts
   install -Dm644 tuxcomputers-split-tone.scm $_scriptsdir/tuxcomputers-split-tone.scm
 }
