@@ -1,6 +1,6 @@
 pkgbase = sailautossh
 	pkgdesc = Automatic SSH Tunneling tool
-	pkgver = r120.5aaa9512be59
+	pkgver = r125.5b56c49ad778
 	pkgrel = 1
 	url = http://bitbucket.org/lyro/sailautossh
 	install = sailautossh.install

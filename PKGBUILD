@@ -5,7 +5,7 @@
 
 # Maintainer: Frank Fischer <frank-fischer@shadow-soft.de>
 pkgname=sailautossh
-pkgver=r120.5aaa9512be59
+pkgver=r125.5b56c49ad778
 pkgrel=1
 pkgdesc="Automatic SSH Tunneling tool"
 arch=('i686' 'x86_64')
