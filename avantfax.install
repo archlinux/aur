@@ -1,7 +1,7 @@
 _reload_http() {
   set -u
-  if systemctl is-active httpd.service >/dev/null; then
-    systemctl reload httpd.service # graceful
+  if systemctl is-active 'httpd.service' >/dev/null; then
+    systemctl reload 'httpd.service' # graceful
   fi
   set +u
 }
@@ -17,14 +17,14 @@ _start_systemd() {
 post_upgrade() {
   set -u
   _start_systemd
-  avantfaxsetup.sh 2 build post # updates are applied here from backup copied below
+  avantfaxsetup.sh 2 'build' 'post' # updates are applied here from backup copied below
   set +u
 }
 
 pre_upgrade() {
   set -u
-  avantfaxsetup.sh 1 preun
-  avantfaxsetup.sh 2 pre # copy backup info to apply update above
+  avantfaxsetup.sh 1 'preun'
+  avantfaxsetup.sh 2 'pre' # copy backup info to apply update above
   set +u
 }
 
@@ -35,7 +35,7 @@ pre_install() {
 post_install() {
   set -u
   _start_systemd
-  avantfaxsetup.sh 1 build pre post
+  avantfaxsetup.sh 1 'build' 'pre' 'post'
   _opt_SOURCEONLY=1; . 'avantfaxsetup.sh'; unset _opt_SOURCEONLY
   _httpinclude="Include conf/extra/httpd-${_opt_AVANTFAX_SERVERNAME}.conf"
   _httpconf='/etc/httpd/conf/httpd.conf'
@@ -68,18 +68,18 @@ pre_remove() {
     rm -f "${_conftemp}"
     _reload_http
   fi
-  avantfaxsetup.sh 0 preun
-  cp -p '/usr/bin/avantfaxsetup.sh'{,.password} /tmp
+  avantfaxsetup.sh 0 'preun'
+  cp -p '/usr/bin/avantfaxsetup.sh'{,.password} '/tmp'
   set +u
 }
 
 post_remove() {
   set -u
   systemctl daemon-reload
-  /tmp/avantfaxsetup.sh 0 postun
+  /tmp/avantfaxsetup.sh 0 'postun'
   _opt_SOURCEONLY=1; . '/tmp/avantfaxsetup.sh'; unset _opt_SOURCEONLY
   # This completely removes your config. Not everyone may want this.
-  rm -rf "/usr/share/webapps/${_opt_AVANTFAX_SERVERNAME}" "/root/avantfaxbackup"
+  rm -rf "/usr/share/webapps/${_opt_AVANTFAX_SERVERNAME}" '/root/avantfaxbackup'
   rm -f '/tmp/avantfaxsetup.sh'{,.password} '/usr/bin/avantfaxsetup.sh.password'
   set +u
 }

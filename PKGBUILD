@@ -14,6 +14,7 @@
 # TODO: Less destructive remove or better cleanup.
 # TODO: Even safer password storage (the current method is pretty safe)
 # TODO: SendEmail or smtp-cli.pl support instead of sendmail
+# TODO: We can't use hard links. They won't update as the system updates.
 # See avantfaxsetup.sh for more todo
 
 # VERIFIED: Upon remove (and cleanup) 'avantfax' isn't found in /etc /var/spool/hylafax
@@ -45,20 +46,20 @@ _opt_pagesize='letter' # a4, letter
 set -u
 pkgname='avantfax'
 _pkgnick="${pkgname}" # 'ArchFAX' # Changing this for an upgrade leaves cruft in many files.
-pkgver='3.3.3'
+pkgver='3.3.5'
 pkgrel='1'
 pkgdesc='a web-based application for managing faxes on HylaFAX fax servers'
 arch=('any') #('i686' 'x86_64')
-install='avantfax.install'
+url='http://www.avantfax.com/'
 license=('GPLv2')
 depends=('hylafax' 'sudo' 'ghostscript' 'gsfonts' 'dash'
-         'php' 'apache' 'php-apache' 'php-pear'
+         'php<6.0' 'apache' 'php-apache<6.0' 'php-pear'
          'pear-mail-mime' 'pear-mail-mime-decode' 'pear-net-smtp'
          'pear-mdb2>=2.5.0b5-1' 'pear-mdb2-mysql>=1.5.0b4-1' 'html2ps' # AUR in May 2015
          'mariadb' 'psutils' 'libtiff' 'libpng' 'imagemagick' 'netpbm' 'giflib'
          )
 optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not enabled in local-config, might already work
-            'AvantFAX-support: iFax Solutions can help configure your fax system'
+#            'AvantFAX-support: iFax Solutions can help configure your fax system'
 )
 
 # Searching config.php for 'extension_loaded' doesn't show any extensions we need at this time.
@@ -69,7 +70,8 @@ optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not 
 # 'vixie-cron'   # replaced with systemd timers. I use cronie.
 # 'rsync'        # used only in the manual upgrade scripts. rsync is not used in the package.
 #makedepends=('smtp-server') # sendmail isn't required. It can be used on another server.
-url='http://www.avantfax.com/'
+install='avantfax.install'
+_verwatch=("${url}/changelog.php" 'AvantFAX\s\([0-9\.]\+\)\s*' 'f')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tgz"
         'avantfaxsetup.sh'
         'avantfax.cron.service'
@@ -77,50 +79,54 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver
         'avantfax.phb.service'
         'avantfax.phb.timer')
 
-sha256sums=('b27deff3953af084d3930878e7377d382d434da43a05388a72251f6352e6133d'
+sha256sums=('7dc6cfbaea9e27d6ef696611dad79f50cbaa61be6e3b59ce25fa124af0cf1269'
             '615fcba915da20c10614c618dfc6a4d55ed526d2b689947c104102e3cc37e18c'
             '2c633cd03dd234cfbcf6d0530be573e9eaa2b1e92876faa946895bf99bfb3ebc'
             '057be12012e2bd10c8400cac9a2612b9d66ea1535476671f28dbf633c8eb6972'
             '51b4bcf2e26418f8392f765c7d0f363fe3c842ddfbefb8c950f484f4ce4a179a'
             '8a0baba7cfeea3b5e20353677335b923c9333a4d1ab6143b41ca4b2d47449bbd')
 
-build () {
+prepare() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
   # chmod 755 *.sh
   # All of the .php files marked as executable need to be executable.
   # find avantfax -executable -type f -name "*.php" -exec chmod 644 {} \;
 
-  # Patch to bring avantfax into compliance with php5
-  # http://sourceforge.net/p/avantfax/discussion/542402/thread/bfe70151/?limit=25
-  local _file
-  for _file in 'AFUserAccount.php' 'FormRules.php'; do
-    sed -i -e 's:^\(\s\+\)private \(function __unset.\+\)$:\1public \2:g' \
-           -e 's:^\(\s\+\)private \(function __isset.\+\)$:\1public \2:g' \
-           -e 's:^\(\s\+\)private \(function __get.\+\)$:\1public \2:g' \
-           -e 's:^\(\s\+\)private \(function __set.\+\)$:\1public \2:g' \
-      "${pkgname}/includes/${_file}"
-  done
+  if [ "$(vercmp "${pkgver}" '3.3.4')" -le 0 ]; then
+    # http://forum.joomla.org/viewtopic.php?t=618315
+    # Strict Standards patch, remove & from =&
+    sed -i -e 's|^\(\s\+$this->db =\)&\( MDB2::singleton\)|\1\2|g' \
+           -e 's|^\(\s\+$res =\)&\( $this->db->query\)|\1\2|g' \
+           -e 's|^\(\s\+$this->result =\)&\( $this->db->query\)|\1\2|g' \
+           -e 's|^\(\s\+$aff =\)&\( $this->db->exec\)|\1\2|g' \
+      "${pkgname}/includes/SQL.php"
+    #exit 1
+  fi
 
-  # http://forum.joomla.org/viewtopic.php?t=618315
-  # Strict Standards patch, remove & from =&
-  sed -i -e 's|^\(\s\+$this->db =\)&\( MDB2::singleton\)|\1\2|g' \
-         -e 's|^\(\s\+$res =\)&\( $this->db->query\)|\1\2|g' \
-         -e 's|^\(\s\+$this->result =\)&\( $this->db->query\)|\1\2|g' \
-         -e 's|^\(\s\+$aff =\)&\( $this->db->exec\)|\1\2|g' \
-    "${pkgname}/includes/SQL.php"
-  #exit 1
+  if [ "$(vercmp "${pkgver}" '3.3.3')" -le 0 ]; then
+    # Patch to bring avantfax into compliance with php5
+    # http://sourceforge.net/p/avantfax/discussion/542402/thread/bfe70151/?limit=25
+    local _file
+    for _file in 'AFUserAccount.php' 'FormRules.php'; do
+      sed -i -e 's:^\(\s\+\)private \(function __unset.\+\)$:\1public \2:g' \
+             -e 's:^\(\s\+\)private \(function __isset.\+\)$:\1public \2:g' \
+             -e 's:^\(\s\+\)private \(function __get.\+\)$:\1public \2:g' \
+             -e 's:^\(\s\+\)private \(function __set.\+\)$:\1public \2:g' \
+        "${pkgname}/includes/${_file}"
+    done
 
-  # This PEAR bug will never be fixed but is also unlikely to be deprecated so we'll supress it.
-  # http://pear.php.net/bugs/bug.php?id=17987
-  for _file in SQL.php MDBO.php; do
-    sed -i -e 's|(\(PEAR::isError\)|(@\1|g' \
-      "${pkgname}/includes/${_file}"
-  done
+    # This PEAR bug will never be fixed but is also unlikely to be deprecated so we'll supress it.
+    # http://pear.php.net/bugs/bug.php?id=17987
+    for _file in 'SQL.php' 'MDBO.php'; do
+      sed -i -e 's|(\(PEAR::isError\)|(@\1|g' \
+        "${pkgname}/includes/${_file}"
+    done
 
-  # I don't see a fast way to fix this one so I'll just supress the warning for now.
-  sed -i -e 's|\(^\s\+$source_content = \)\(preg_replace\)|\1@\2|g' \
-    "${pkgname}/includes/Smarty/Smarty_Compiler.class.php"
+    # I don't see a fast way to fix this one so I'll just supress the warning for now.
+    sed -i -e 's|\(^\s\+$source_content = \)\(preg_replace\)|\1@\2|g' \
+      "${pkgname}/includes/Smarty/Smarty_Compiler.class.php"
+  fi
   set +u
 }
 
@@ -243,7 +249,7 @@ EOF
 
   # We run the *modified* shell script
   export _opt_DESTDIR="${pkgdir}"
-  "${_shellfile}" 0 package # package ignores the flag
+  "${_shellfile}" 0 'package' # package ignores the flag
   set +u
 }
 
