@@ -2,7 +2,7 @@
 
 pkgname=cronograph-conky
 _prjname=cronoconky
-pkgver=265.dce9026
+pkgver=283.8f2c578
 pkgrel=1
 pkgdesc="A free, conky clock widget for X which displays date, time and weather information"
 arch=('any')
