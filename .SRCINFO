@@ -1,7 +1,7 @@
 pkgbase = et-sdl-sound
 	pkgdesc = Replacement for standard OSS sound system of Wolfenstein: Enemy Territory
 	pkgver = 29
-	pkgrel = 12
+	pkgrel = 13
 	url = http://github.com/nullkey/et-sdl-sound/
 	arch = i686
 	arch = x86_64

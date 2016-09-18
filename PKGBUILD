@@ -1,7 +1,7 @@
 # requires multilib-devel on x86_64
 pkgname=et-sdl-sound
 pkgver=29
-pkgrel=12
+pkgrel=13
 pkgdesc="Replacement for standard OSS sound system of Wolfenstein: Enemy Territory"
 arch=('i686' 'x86_64')
 url="http://github.com/nullkey/et-sdl-sound/"
@@ -21,7 +21,7 @@ _gitname="et-sdl-sound"
 
 pkgver() {
     cd "$pkgbase"
-    echo "r$pkgver"
+    echo "$pkgver"
 }
 
 build() {
