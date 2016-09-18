@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=filelinker
-pkgver=1.0.4
-pkgrel=10
+pkgver=1.0.5
+pkgrel=11
 pkgdesc='keeps hard links in sync.'
 arch=('any')
 url='http://torben.website/filelinker'
