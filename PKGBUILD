@@ -19,15 +19,20 @@ sha512sums_x86_64=('993dfd73adcfcfb1d130dbf7703830d8533c3e28c4b7a0509a20ccd132f7
 sha512sums_i686=('0bce76915139f31dbd204d69b9ab2fe455df370c7b4aa2b4635e90cedcccda63613bc747c33c27d61fe9824357e47d2bd313b20ef1665f8d44bc65fef9328020')
 
 package() {
+    mkdir -p $pkgdir/usr/bin/
+    mkdir -p $pkgdir/usr/share/applications/
+    mkdir -p $pkgdir/usr/share/icons
     if [ "$CARCH" = "x86_64" ]; then
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/bin/* /usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/applications/* /usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/icons/* /usr/share/icons/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/lib64/* /usr/lib64/
+        mkdir -p $pkgdir/usr/lib64
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/bin/* $pkgdir/usr/bin/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/applications/* $pkgdir/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/icons/* $pkgdir/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/lib64/* $pkgdir/usr/lib64/
     else
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/bin/* /usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/applications/* /usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/icons/* /usr/share/icons/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/lib/* /usr/lib/
+        mkdir -p $pkgdir/usr/lib
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/bin/* $pkgdir/usr/bin/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/applications/* $pkgdir/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/icons/* $pkgdir/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/lib/* $pkgdir/usr/lib/
     fi
 }
