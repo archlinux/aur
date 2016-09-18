@@ -10,23 +10,23 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=boostnode
-pkgver=1.0.7
-pkgrel=30
+pkgver=1.0.9
+pkgrel=32
 pkgdesc='a high reliable python library'
 arch=('any')
-url='http://torben.website/boostNode'
+url='http://torben.website/boostnode'
 license=('CC-BY-3.0')
 depends=('python')
 makedepends=('git' 'findutils')
-source=('git+https://github.com/thaibault/boostNode')
+source=('git+https://github.com/thaibault/boostnode')
 md5sums=('SKIP')
 
 package() {
     install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
-    find "${srcdir}/boostNode" -type f -not -name '*.py' -delete
-    rm "${srcdir}/boostNode/.git" --recursive --force
-    rm "${srcdir}/boostNode/documentation" --recursive --force
-    cp --recursive --force "${srcdir}/boostNode" "${pkgdir}/usr/lib/python3.5"
+    find "${srcdir}/boostnode" -type f -not -name '*.py' -delete
+    rm "${srcdir}/boostnode/.git" --recursive --force
+    rm "${srcdir}/boostnode/documentation" --recursive --force
+    cp --recursive --force "${srcdir}/boostnode" "${pkgdir}/usr/lib/python3.5"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
