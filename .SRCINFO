@@ -1,7 +1,7 @@
 pkgbase = zork2
 	pkgdesc = Zork II adventure game (for Infocom's z-code interpreter)
 	pkgver = 1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://infocom.elsewhere.org/scheyen/
 	arch = any
 	license = custom

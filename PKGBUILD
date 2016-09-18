@@ -4,10 +4,10 @@
 
 pkgname=zork2
 pkgver=1
-pkgrel=10
+pkgrel=11
 pkgdesc="Zork II adventure game (for Infocom's z-code interpreter)"
 url="http://infocom.elsewhere.org/scheyen/"
-depends=(jzip)
+depends=('jzip')
 source=(${url}Download/$pkgname.zip
         ${url}Maps/zork2/legend.gif
         ${url}Maps/zork2/zork2a.gif
@@ -19,7 +19,7 @@ md5sums=('ab521209656948516351996263a8ad34'
          '89a7c478b12b2bd0b16b6534c18bf181'
          'e1d314b3b784734c1a365a04ffff96c4')
 arch=('any')
-license="custom"
+license=('custom')
 
 package() {
   cd $srcdir
