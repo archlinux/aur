@@ -1,6 +1,6 @@
 pkgbase = libretro-parallel-git
 	pkgdesc = Mupen64plus with dynarec and vulkan powered rdp lle
-	pkgver = 4285.5b86c3e
+	pkgver = 4293.575a0c8
 	pkgrel = 1
 	url = https://github.com/libretro/mupen64plus-libretro
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = libretro-parallel-git
 	license = LGPL
 	makedepends = git
 	makedepends = vulkan-headers
+	makedepends = llvm
 	depends = libglvnd
 	depends = vulkan-icd-loader
 	depends = clang
