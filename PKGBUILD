@@ -5,7 +5,7 @@ _pkgname=kde-thumbnailer-blender
 pkgname=${_pkgname}-kf5-git
 pkgver=7.efd0ded
 pkgrel=1
-pkgdesc="Preview image generator plugin for Blender files. KF5 Ver."                                                                                      
+pkgdesc="Preview image generator plugin for Blender files. Latest version from upstream git"
 arch=('i686' 'x86_64')                                                                       
 url="https://github.com/kayosiii/kde-thumbnailer-blender"                                                  
 license=('GPL')                                                    
@@ -14,11 +14,6 @@ makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=("$_pkgname" "${_pkgname}-kf5")
 source=("git://github.com/kayosiii/kde-thumbnailer-blender.git")
 sha256sums=('SKIP')
-
-#prepare() {
-#    cd "${srcdir}"/${_pkgname}
-#    patch -p1 < ../port_to_qt5.patch
-#}
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
