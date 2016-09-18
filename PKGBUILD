@@ -2,16 +2,16 @@
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 pkgname=db4.8
 pkgver=4.8.30
-pkgrel=4
+pkgrel=5
 pkgdesc="The Berkeley DB embedded database system 4.8"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom')
 url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
 depends=('gcc-libs')
 options=('!libtool' '!makeflags')
 source=(http://download.oracle.com/berkeley-db/db-${pkgver}.tar.gz)
 md5sums=('f80022099c5742cd179343556179aa8c')
-sha1sums=('ab36c170dda5b2ceaad3915ced96e41c6b7e493c')
+sha256sums=('e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a')
 
 build() {
   cd "$srcdir/db-$pkgver/"
@@ -47,7 +47,6 @@ package() {
   done
 
 # Install license.
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 "$srcdir/db-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/db-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
