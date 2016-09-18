@@ -4,7 +4,7 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.74.717.g0b1bdc2
+pkgver=2.75.73.gf585645
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -60,14 +60,6 @@ build() {
     # bundled libs
     cmakeopts+=(
         "-D BUNDLED_LIBS=0"
-        "-D BUNDLED_SDL=0"
-        "-D BUNDLED_CURL=0"
-        "-D BUNDLED_JPEG=0"
-        "-D BUNDLED_LUA=0"
-        "-D BUNDLED_OGG_VORBIS=0"
-        "-D BUNDLED_GLEW=0"
-        "-D BUNDLED_FREETYPE=0"
-        "-D BUNDLED_JANSSON=0"
     )
     # features
     cmakeopts+=(
