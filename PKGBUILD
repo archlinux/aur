@@ -5,6 +5,7 @@
 
 # Maintainer: Frank Fischer <frank-fischer@shadow-soft.de>
 pkgname=sailautossh
+_dirname=lyro-sailautossh-f19b90d0637a
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Automatic SSH Tunneling tool"
@@ -15,16 +16,16 @@ depends=(qt5-base hicolor-icon-theme)
 makedepends=(mercurial)
 provides=('sailautossh')
 install=$pkgname.install
-source=("https://bitbucket.org/lyro/sailautossh/get/v1.3.0.tar.bz2")
+source=("https://bitbucket.org/lyro/$pkgname/get/v$pkgver.tar.bz2")
 sha256sums=('517485d292eeb0c08765b1d4472ebe6af38abf97eb46c56276745a90ff6c151a')
 
 build() {
-  cd "${srcdir}/sailautossh"
+  cd "${srcdir}/$_dirname"
   qmake PREFIX=/usr CONFIG+=BUILD_DESKTOP sailautossh.pro
   make
 }
 
 package() {
-	cd "${srcdir}/sailautossh"
+	cd "${srcdir}/$_dirname"
 	make INSTALL_ROOT="$pkgdir" install
 }
