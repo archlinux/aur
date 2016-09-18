@@ -1,7 +1,7 @@
 pkgbase = freecad-netgen-git
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = r8448.15c368d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freecadweb.org/
 	arch = i686
 	arch = x86_64
