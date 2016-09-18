@@ -28,3 +28,33 @@ pkgbase = robustirc-bridge
 
 pkgname = robustirc-bridge
 
+pkgbase = robustirc-bridge
+	pkgdesc = Bridge to robustirc.net-IRC-Network
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/robustirc/bridge
+	arch = i686
+	arch = x86_64
+	license = BSD-3-clause
+	makedepends = go
+	conflicts = robustirc-bridge-git
+	source = https://github.com/robustirc/bridge/archive/v1.5.tar.gz
+	sha1sums = a9cd85b332ac89c865839c05d62c79b74ebd72c9
+
+pkgname = robustirc-bridge
+
+pkgbase = robustirc-bridge
+	pkgdesc = Bridge to robustirc.net-IRC-Network
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/robustirc/bridge
+	arch = i686
+	arch = x86_64
+	license = BSD-3-clause
+	makedepends = go
+	conflicts = robustirc-bridge-git
+	source = https://github.com/robustirc/bridge/archive/v1.5.tar.gz
+	sha256sums = 09c131543c986d27a8b8f6ff8bc41a0c719811a76ea2637d83f6c2c1afb9a104
+
+pkgname = robustirc-bridge
+
