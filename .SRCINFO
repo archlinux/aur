@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Maintenance , backups and system checks in a menu driven Bash script
-	pkgver = 1.7
-	pkgrel = 5
+	pkgver = 1.8
+	pkgrel = 6
 	url = https://github.com/whitelight999/cylon
 	arch = any
 	license = GPL
