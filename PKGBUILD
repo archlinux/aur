@@ -1,4 +1,5 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 #######################################################################
 # CAVEAT LECTOR
@@ -39,7 +40,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 
 _pkgname=('emacs-git')
 pkgname=("$_pkgname-gtk2" "$_pkgname-docs")
-pkgver=25.1.r1
+pkgver=25.1.r1887
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -119,7 +120,7 @@ build() {
 }
 
 package_emacs-git-gtk2() {
-  pkgdesc="GNU Emacs, the extensible self-documenting text editor — built from git sources."
+  pkgdesc="GNU Emacs, the extensible self-documenting text editor — built from git sources. WARNING: emacs's git repository is 1.25 GB in size!"
   depends=('gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gtk2')
   conflicts=('emacs' 'emacs-git')
   provides=('emacs')
@@ -146,7 +147,7 @@ package_emacs-git-gtk2() {
 }
 
 package_emacs-git-docs() {
-  pkgdesc="GNU Emacs, built from git sources — HTML and PDF documentation package."
+  pkgdesc="GNU Emacs, built from git sources — HTML and PDF documentation package. WARNING: the emacs git repo is 1.25 GB in size!"
   makedepends+=('texlive-core')
   provides=('emacs-docs')
   conflicts=('emacs-docs')
