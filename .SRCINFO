@@ -1,8 +1,8 @@
 pkgbase = libreoffice-uglyfix-freetype2
-	pkgdesc = Installs freetype2 .so files in the LibreOffice directory to fix font ugliness
+	pkgdesc = TrueType font rendering library
 	pkgver = 2.7
-	pkgrel = 1
-	url = http://freetype.sourceforge.net
+	pkgrel = 2
+	url = http://www.freetype.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -19,12 +19,12 @@ pkgbase = libreoffice-uglyfix-freetype2
 	source = 0002-Enable-subpixel-rendering.patch
 	source = 0003-Enable-infinality-subpixel-hinting.patch
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
-	sha256sums = d6a451f5b754857d2aa3964fd4473f8bc5c64e879b24516d780fb26bec7f7d48
-	sha256sums = SKIP
-	sha256sums = 65915726ba3adfc5903ddd6b706ce91751994e7635ea6111e33e5939c674496b
-	sha256sums = 9de28c1156c0a5edff1b3860ad44f4cc2494fc5663bd40c3914fdd64e8ee0724
-	sha256sums = 60e767ccee37939bfea73fa86229108c51b665713a89fbda5506759af2e7d629
-	sha256sums = d043fa4ce22b6e6cfafa0d2e2898b1c5cd000ec66094a97ab57c9126934ba371
+	sha1sums = f251029d5ab542a96dd4531605fe577185077560
+	sha1sums = SKIP
+	sha1sums = ca4a8c9990fde44e30a155f597d836005df8b41d
+	sha1sums = b31882ef5e8447e761acee1c4a44c0630cd4d465
+	sha1sums = b1494810ed3aca25cdd8e8cedf634e5adfe6c09e
+	sha1sums = 41d27140fd590945e22e012c9dce62de3d6f11e6
 
 pkgname = libreoffice-uglyfix-freetype2
 
