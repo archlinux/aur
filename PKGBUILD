@@ -9,14 +9,15 @@
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbxvt-git
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="xcb terminal emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jefbed/jbxvt"
 license=('MIT')
-depends=('libxcb' 'gc' 'xcb-util-keysyms' 'xcb-util-wm' 'libx11')
+depends=('libxcb' 'gc' 'xcb-util-keysyms' 'xcb-util-wm' 'libx11'
+          'libutempter')
 makedepends=('git')
-provides=('xterm')
+provides=('xterm' 'xvt' 'rxvt')
 
 _gitroot=https://github.com/jefbed/jbxvt.git
 _gitname=jbxvt
@@ -50,6 +51,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
 
