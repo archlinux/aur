@@ -8,7 +8,6 @@ pkgbase = pyroom
 	depends = python2
 	depends = python2-xdg
 	depends = pygtk
-	depends = gettext
 	optdepends = python2-gconf: to use GNOME default fonts
 	source = http://launchpad.net/pyroom/0.4/0.4.1/+download/pyroom-0.4.1.tar.gz
 	md5sums = 35e6dfb611b2732471a78f88465ebf7f
