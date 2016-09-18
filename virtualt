@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ ! -d ~/.virtualt ]; then
+    FIRST_RUN=true
+    mkdir ~/.virtualt
+fi
+
+cd ~/.virtualt
+
+if [ $FIRST_RUN ]; then
+    ln -s /usr/lib/virtualt/ROMs
+    ln -s /usr/share/doc/virtualt/manual doc
+    cp /usr/share/virtualt/version .
+fi
+
+read USER_VERSION < version
+read SYSTEM_VERSION < /usr/share/virtualt/version
+if [ ${USER_VERSION} != ${SYSTEM_VERSION} ]; then
+    echo "The version of VirtualT in your home directory does not match that of the system." >&2
+    echo "If the included ROMs have been updated, your model support directories may be out of date." >&2
+    cp /usr/share/virtualt/version .
+fi
+
+cd ~/.virtualt
+/usr/lib/virtualt/virtualt $@
+
