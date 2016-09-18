@@ -1,0 +1,18 @@
+pkgbase = sailautossh
+	pkgdesc = Automatic SSH Tunneling tool
+	pkgver = r120.5aaa9512be59
+	pkgrel = 1
+	url = http://bitbucket.org/lyro/sailautossh
+	install = sailautossh.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = sailautossh
+	source = hg+http://bitbucket.org/lyro/sailautossh
+	sha256sums = SKIP
+
+pkgname = sailautossh
+
