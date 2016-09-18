@@ -13,21 +13,21 @@ url='http://bouml.fr/'
 license=('GPL')
 depends=('qt4')
 # makedepends=('rpmextract')
-source_x86_64=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-x86_64.tar.gz")
-source_i686=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-i686.tar.gz")
-sha512sums_x86_64=('ddb9093d3aa4c5b3e45250e5eaac9aa2c6cee339b7caf4434ee43f7967f71cf2eece1eab6fa6714813135662855e881c2dbde449d6c1c54863e2f8ab10c895ed')
-sha512sums_i686=('0cae433f9ca24a5dac8d82dce7695d62a4aa38618b512a73b945d63bb8719475b895ca2191caa96c12df0dc609eca3236fa32b6dc7d2c2d0f7c206b35b44cfa0')
+source_x86_64=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-64.tar.gz")
+source_i686=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-32.tar.gz")
+sha512sums_x86_64=('993dfd73adcfcfb1d130dbf7703830d8533c3e28c4b7a0509a20ccd132f79d4cc05e5b19051b523ac979c6236ca77594cd113120d98e907cafaef2513c50c7a8')
+sha512sums_i686=('0bce76915139f31dbd204d69b9ab2fe455df370c7b4aa2b4635e90cedcccda63613bc747c33c27d61fe9824357e47d2bd313b20ef1665f8d44bc65fef9328020')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-x86_64/usr/share/usr/bin/* $pkgdir/usr/share/usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-x86_64/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-x86_64/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-x86_64/usr/lib64/* $pkgdir/usr/lib64/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/bin/* $pkgdir/usr/share/usr/bin/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/lib64/* $pkgdir/usr/lib64/
     else
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/bin/* $pkgdir/usr/share/usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-i686/usr/lib/* $pkgdir/usr/lib/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/bin/* $pkgdir/usr/share/usr/bin/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/lib/* $pkgdir/usr/lib/
     fi
 }
