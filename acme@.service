@@ -1,0 +1,28 @@
+[Unit]
+Description=Check and renew ACME TLS certificates
+After=network.target
+Requires=network.target
+
+[Service]
+# You need to configure http server so that directory "/run/acme-challenge" was the alias of "/.well-known/acme-challenge"
+#
+# Nginx example:
+#
+#  location /.well-known/acme-challenge {
+#    alias /run/acme-challenge;
+#  }
+
+RuntimeDirectory=acme-challenge
+RuntimeDirectoryMode=0755
+
+SuccessExitStatus=2
+
+Environment="ACME_DIR=/var/lib/acme"
+Environment="ACME_ARGS=-vbnN"
+Environment="ACME_ACCOUNT=letsencrypt"
+
+EnvironmentFile=/etc/acme/%I.conf
+
+ExecStartPre=/usr/bin/install -dm0700 "${ACME_DIR}/certs/%I"
+
+ExecStart=/usr/bin/acme-client $ACME_ARGS -f "${ACME_DIR}/accounts/${ACME_ACCOUNT}.pem" -c "${ACME_DIR}/certs/%I" -k "${ACME_DIR}/certs/%I/privkey.pem" -C /run/acme-challenge $ACME_DOMAINS
