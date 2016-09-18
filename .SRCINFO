@@ -1,4 +1,5 @@
 pkgbase = itamae
+	pkgdesc = Configuration management tool inspired by Chef, but simpler and lightweight
 	pkgver = 1.9.6
 	pkgrel = 1
 	url = http://itamae.kitchen/
