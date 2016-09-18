@@ -1,5 +1,5 @@
 #! /bin/bash
-# aintainer: Nissar Chababy <funilrys at outlook dot com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: cros_145<joner14@hotmail.com>
 
@@ -12,7 +12,7 @@ options=('!strip')
 url='http://bouml.fr/'
 license=('GPL')
 depends=('qt4')
-makedepends=('rpmextract')
+# makedepends=('rpmextract')
 source_x86_64=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-x86_64.tar.gz")
 source_i686=("https://github.com/funilrys/archlinux-bouml-src/archive/v$pkgver-x86_64.tar.gz")
 sha512sums_x86_64=('ddb9093d3aa4c5b3e45250e5eaac9aa2c6cee339b7caf4434ee43f7967f71cf2eece1eab6fa6714813135662855e881c2dbde449d6c1c54863e2f8ab10c895ed')

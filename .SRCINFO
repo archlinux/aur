@@ -6,7 +6,6 @@ pkgbase = bouml
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = rpmextract
 	depends = qt4
 	options = !strip
 	source_i686 = https://github.com/funilrys/archlinux-bouml-src/archive/v6.11.2-x86_64.tar.gz
