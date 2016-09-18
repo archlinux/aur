@@ -10,6 +10,11 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'q
 source=("git+https://bitbucket.org/mikalair/titanim.git")
 sha256sums=("SKIP")
 
+pkgver() {
+	cd "$srcdir/titanim"
+	echo $(egrep -o "\"(.*)\"$" "version.h" | cut -d \" -f2).$(git rev-parse --short HEAD)
+}
+
 build() {
 	cd "$srcdir/titanim"
 	qmake
