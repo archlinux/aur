@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -138,7 +138,7 @@ depends=(
 
 	'lightdm'
 	'lightdm-webkit-greeter'
-	'lightdm-webkit-theme-bevel-git'
+	'lightdm-webkit-theme-bevel'
 	'i3lock-wrapper'
 
 	'compton'
