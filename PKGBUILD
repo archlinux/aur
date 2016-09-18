@@ -124,7 +124,7 @@ package() {
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
     # Move/link licenses
-    mv COPYRIGHT LICENSE README *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    mv COPYRIGHT README THIRDPARTYLICENSEREADME.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
