@@ -1,7 +1,7 @@
 # Maintainer: theferdi265 at gmail dot com
 
 pkgname=gtk-theme-numix-solarized-git
-pkgver=1.20160614.r66.g570244b
+pkgver=20160918.8fc9b31
 pkgrel=1
 pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20"
 arch=('any')
@@ -15,7 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "numix-solarized-gtk-theme"
-	git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+	local date=$(date --date "$(git show -s --format=%ci)" +%Y%m%d)
+	local commit=$(git rev-parse --short HEAD)
+	echo $date.$commit
 }
 
 package() {
