@@ -12,7 +12,7 @@ url='https://kristaps.bsd.lv/acme-client/'
 _sslver=2.4.2
 
 source=(${pkgname}::'git+https://github.com/kristapsdz/acme-client-portable.git'
-		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_sslver}.tar.gz"
+        "http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_sslver}.tar.gz"
         'acme@.timer'
         'acme@.service'
         'example.conf')
