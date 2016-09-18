@@ -26,8 +26,8 @@ sha256sums=('SKIP'
 depends=('libbsd')
 makedepends=('git')
 
-conflicts=('acme-client')
-provides=('acme-client')
+conflicts=('acme-client' 'letskencrypt')
+provides=('acme-client' 'letskencrypt')
 
 options=('emptydirs')
 
