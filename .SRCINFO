@@ -7,7 +7,6 @@ pkgbase = ckbcomp
 	license = GPL2
 	depends = perl
 	source = http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_1.148.tar.xz
-	md5sums = 5ad5071ca340424ff6b0f29f8ee5d314
 
 pkgname = ckbcomp
 
