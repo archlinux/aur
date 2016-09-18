@@ -3,7 +3,7 @@
 
 pkgname=signal
 pkgver=0.22.2
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('nwjs-bin')
@@ -23,7 +23,8 @@ package() {
   cd "Signal-Desktop-${pkgver}/dist"
   install -Ddm755 "${pkgdir}/opt/${pkgname}"
   install -Ddm755 "${pkgdir}/usr/bin"
-  zip -r "${pkgdir}/opt/${pkgname}/signal.nw" *
-  echo -e "#!/bin/bash\n/usr/bin/nw /opt/signal/signal.nw" > "${pkgdir}/usr/bin/signal"
+  #zip -r "${pkgdir}/opt/${pkgname}/signal.nw" *
+  cp -r * "${pkgdir}/opt/${pkgname}/"
+  echo -e "#!/bin/bash\n/usr/bin/nw /opt/signal" > "${pkgdir}/usr/bin/signal"
   chmod +x "${pkgdir}/usr/bin/signal"
 }
