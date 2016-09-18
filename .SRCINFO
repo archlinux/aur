@@ -1,0 +1,15 @@
+pkgbase = filelinker
+	pkgdesc = keeps hard links in sync.
+	pkgver = 1.0.4
+	pkgrel = 10
+	url = http://torben.website/filelinker
+	arch = any
+	license = CC-BY-3.0
+	depends = python
+	depends = boostnode
+	provides = filelinker
+	source = filelinker.py
+	md5sums = SKIP
+
+pkgname = filelinker
+
