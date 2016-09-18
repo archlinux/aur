@@ -21,13 +21,13 @@ sha512sums_i686=('0bce76915139f31dbd204d69b9ab2fe455df370c7b4aa2b4635e90cedcccda
 package() {
     if [ "$CARCH" = "x86_64" ]; then
         cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/bin/* $pkgdir/usr/share/usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
         cp -R $srcdir/archlinux-bouml-src-$pkgver-64/usr/lib64/* $pkgdir/usr/lib64/
     else
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/bin/* $pkgdir/usr/share/usr/bin/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
-        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/bin/* $pkgdir/usr/share/usr/bin/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/applications/* $pkgdir/usr/share/usr/share/applications/
+        cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/share/icons/* $pkgdir/usr/share/usr/share/icons/
         cp -R $srcdir/archlinux-bouml-src-$pkgver-32/usr/lib/* $pkgdir/usr/lib/
     fi
 }
