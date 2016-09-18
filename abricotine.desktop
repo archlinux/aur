@@ -2,10 +2,10 @@
 Name=Abricotine
 GenericName=Abricotine
 Comment=A markdown editor with inline preview
-Exec=abricotine
+Exec=abricotine %F
 Icon=abricotine
 Terminal=false
 Type=Application
 Category=Office;TextEditor;
-MimeType=text/x-markdown;
+MimeType=text/markdown;
 Keywords=Text;Editor;Markdown;
