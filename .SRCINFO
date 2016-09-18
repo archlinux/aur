@@ -38,7 +38,7 @@ pkgbase = freecad-netgen-git
 	source = freecad.xml
 	source = fem-rpath.patch
 	md5sums = SKIP
-	md5sums = 21877b80638efa9269e8b1b1c391d407
+	md5sums = 707712f9d2d514eff69dbe58327fd4df
 	md5sums = c2f4154c8e4678825411de8e7fa54c6b
 	md5sums = 99a41687a9ba980eea86aee4345d9a1d
 
