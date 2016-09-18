@@ -1,7 +1,7 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=multidict
 pkgname=python-${_pkgname}
-pkgver=1.2.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A multidict implementation"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('python')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/aio-libs/multidict/archive/v${pkgver}.tar.gz")
-sha512sums=('4d13f8183a93b2bbea1a978946f86fa58298c5cbe922b60dc73f13dcf20d13c9c7e31d66c32b5b5abdded0a5ec4fa739d6c6c314fcda37fceffd442af148f72e')
+sha512sums=('124691f3654b202cc35c59bf4e1c38a9da7d89ca3fed71f800d15313fb4042b55c0df25c012be72b0cf64ca1b8cc00707f001d007df649840e0d7a76d171d385')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
