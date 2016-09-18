@@ -1,0 +1,11 @@
+diff -urN a/config-handler.c b/config-handler.c
+--- a/config-handler.c	2005-03-30 15:17:45.000000000 +0200
++++ b/config-handler.c	2016-05-07 19:08:49.469953560 +0200
+@@ -92,6 +92,7 @@
+   entry->absolute = absolute;
+   entry->gid = gid;
+   entry->uid = uid;
++  entry->next = NULL;
+ 
+   /* remember last entry */
+   config_last_entry = entry;

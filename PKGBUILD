@@ -4,13 +4,13 @@
 
 pkgname=schedtoold
 pkgver=0.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Simple daemon to renice/nice and change priorities of processes while running them."
 depends=('bash' 'schedtool')
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 source=(http://www.darav.de/$pkgname-$pkgver.tar.bz2 \
-	schedtoold.patch schedtoold.conf schedtoold schedtoold.service utils.patch
+	schedtoold.patch schedtoold.conf schedtoold schedtoold.service utils.patch segv.patch
 )
 url="http://www.darav.de/schedtoold.html"
 md5sums=('c8f1d73c0f0d0b3dba005d2853f2cfa4'
@@ -18,13 +18,15 @@ md5sums=('c8f1d73c0f0d0b3dba005d2853f2cfa4'
          '2f095a0e26a341c99e0425ce58dd3b90'
          'b50e8e0580e68bc076216b9cb663bb76'
          'd32da7c1fa24a4a9baf7802db088a4c1'
-         'adf3cd0c15b4a4e5fa6c8f6a00b346c3')
+         'adf3cd0c15b4a4e5fa6c8f6a00b346c3'
+         '08513657ed542b6ad75c64c0ad2e3b4f')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
 
   patch -p0 -i $srcdir/$pkgname.patch
   patch -p0 -i $srcdir/utils.patch
+  patch -p1 -i "${srcdir}/segv.patch"
   make
 }
 
