@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-gpg_batch_sign
-pkgver=2016
+pkgver=2016.9
 pkgrel=1
 pkgdesc='A module and stand-alone script for batch-signing files with GPG.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-gpg_batch_sign"
 depends=(python3)
 source=(
-  http://xyne.archlinux.ca/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2016.tar.xz
-  http://xyne.archlinux.ca/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2016.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2016.9.tar.xz
+  http://xyne.archlinux.ca/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2016.9.tar.xz.sig
 )
 sha512sums=(
-  0844d663f148b8e0dac531bffca7fe477c795ff0fd255ad8db78e4d81ae7dadcdfed7e05f8ef9f316c1c31f4712742cd957c1447e733e8ccb4ce366ab89ab498
-  294427a7990a7a4b824296bbd91c0faf0ac7f4bb3669640d6d4aab23def95db4f09787bbd334a22c7ca730b014fef6e9f61b8a6f0871d2baf473f764ec2a8ccb
+  d2ca5a595f84b999bd87986cc314371e9ce8e377cad0d7bc0843d9c570448119a940f15b16ff6774eb57dfd8f592dde6faa1a0a9acdc1a06c6b5c7de40a92652
+  e9ba7c0e9be1a4305e87714370ef8ed6d840cca07117aa8cc9e2d6b37dafe1eec78e074c1f652c3f0aea957dbcfb845c71338bbf0b0fbc944439243ca413429d
 )
 md5sums=(
-  1210c34dd062a31b7a5045e338c88de3
-  d7081963592242d1e45fe41df1cbd6dc
+  b99b0b0dee62b03565967ea113709d2c
+  66f9c7d3ca720fa4d5dc485b57a1cc13
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
