@@ -5,7 +5,7 @@
 pkgname=jzip
 pkgver=2.1
 _dlpkgver=21-10oct2000
-pkgrel=7
+pkgrel=8
 pkgdesc="Jzip is an interpreter for games in the Infocom Zcode story file format"
 url="http://jzip.sourceforge.net/"
 depends=(ncurses)
@@ -13,7 +13,7 @@ depends=(ncurses)
 source=(http://prdownloads.sourceforge.net/$pkgname/$pkgname$_dlpkgver.zip makefile-patch.diff LICENSE)
 md5sums=('4c03c95bec15e45477899c12a545fc1d' '1625afeb6da07096571d3ccc964c01af' '54ec2719ddf62fd3805c732f058f1706')
 arch=('i686' 'x86_64')
-license="custom"
+license=('custom')
 
 build() {
   cd $startdir/src
