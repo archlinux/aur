@@ -4,10 +4,10 @@
 
 pkgname=zork3
 pkgver=1
-pkgrel=10
+pkgrel=11
 pkgdesc="Zork III adventure game (for Infocom's z-code interpreter)"
 url="http://infocom.elsewhere.org/scheyen/"
-depends=(jzip)
+depends=('jzip')
 source=(${url}Download/$pkgname.zip
         ${url}Maps/zork3/legend.gif
         ${url}Maps/zork3/north.gif
@@ -25,7 +25,7 @@ md5sums=('c1a15e9c56267366fa54476baa6fb7d4'
          'fea74edbc21405f5aea4e014a8e905ef'
          '0d52f90e8c314686da4d410581f2c8a6')
 arch=('any')
-license="custom"
+license=('custom')
 
 package() {
   cd $srcdir
