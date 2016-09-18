@@ -2,7 +2,7 @@
 
 pkgname=freecad-netgen-git
 pkgver=r8448.15c368d
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -16,12 +16,10 @@ optdepends=('python2-matplotlib' 'pycollada-git' 'python2-pyqt4')
 source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
 	"freecad.xml"
-	"mod-and-lib-path.patch"
 	"fem-rpath.patch")
 md5sums=('SKIP'
          '21877b80638efa9269e8b1b1c391d407'
          'c2f4154c8e4678825411de8e7fa54c6b'
-         '976f1674ce36b32108af8cb4d6e4e92d'
          '99a41687a9ba980eea86aee4345d9a1d')
 
 pkgver() {
@@ -31,7 +29,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	patch -p1 -i "$srcdir/mod-and-lib-path.patch"
 	patch -p1 -i "$srcdir/fem-rpath.patch"
 }
 
@@ -39,10 +36,7 @@ build() {
 	cd "$srcdir/$pkgname"
 
 	cmake -DCMAKE_BUILD_TYPE=Release \
-	      -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-	      -DCMAKE_INSTALL_DOCDIR:PATH="share/doc/freecad" \
-	      -DCMAKE_INSTALL_DATADIR:PATH="share/freecad" \
-	      -DCMAKE_INSTALL_LIBDIR:PATH="lib/freecad" \
+	      -DCMAKE_INSTALL_PREFIX:PATH="/opt/freecad" \
 	      -DOCC_INCLUDE_DIR:PATH=/opt/opencascade/inc \
 	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
 	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
@@ -59,7 +53,11 @@ package() {
 	cd "$srcdir/$pkgname"
 
 	make DESTDIR="$pkgdir" install
-	mv "$pkgdir/usr/Mod" "$pkgdir/usr/lib/freecad/Mod"
+	
+	# Symlink binaries to /usr/bin
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/freecad/bin/FreeCAD" "$pkgdir/usr/bin/FreeCAD"
+	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/FreeCADCmd"
 
 	# Install pixmaps and desktop shortcut
 	desktop-file-install \
