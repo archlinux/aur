@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-interactive-fiction">
+    <comment>Interactive fiction story</comment>
+    <comment xml:lang="en">Interactive fiction story</comment>
+    <comment xml:lang="pl">Plik fikcji interaktywnej</comment>
+    <icon name="gargoyle"/>
+    <!--blorbs-->
+    <glob pattern="*.blb"/>
+    <glob pattern="*.blorb"/>
+    <glob pattern="*.[zg]blorb"/>
+    <glob pattern="*.glb"/>
+    <glob pattern="*.gbl"/>
+    <glob pattern="*.zlb"/>
+    <glob pattern="*.zbl"/>
+    <!--ADVSYS-->
+    <glob pattern="*.dat"/>
+    <!--AGT-->
+    <glob pattern="*.agx"/>
+    <glob pattern="*.d$$"/>
+    <!--ALAN-->
+    <glob pattern="*.acd"/>
+    <glob pattern="*.a3c"/>
+    <!--ADRIFT-->
+    <glob pattern="*.taf"/>
+    <!--glulx-->
+    <glob pattern="*.ulx"/>
+    <!--HUGO-->
+    <glob pattern="*.hex"/>
+    <!--JACL-->
+    <glob pattern="*.jacl"/>
+    <glob pattern="*.j2"/>
+    <!--TADS-->
+    <glob pattern="*.gam"/>
+    <glob pattern="*.t3"/>
+    <!--Z-Code-->
+    <glob pattern="*.z[12345678]"/>
+    <!--Level9-->
+    <glob pattern="*.l9"/>
+    <glob pattern="*.sna"/>
+    <!--Magnetic-->
+    <glob pattern="*.mag"/>
+    <!--Quest-->
+    <glob pattern="*.asl"/>
+    <glob pattern="*.cas"/>
+    <!--SCOTT-->
+    <glob pattern="*.saga"/>
+  </mime-type>
+</mime-info>
