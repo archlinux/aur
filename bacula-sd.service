@@ -1,0 +1,18 @@
+#
+# Bacula Storage Daemon service
+#
+
+[Unit]
+Description=Bacula Storage Daemon
+Requires=network.target
+After=network.target remote-fs.target syslog.target
+
+[Service]
+Type=forking
+Restart=always
+PIDFile=/run/bacula-sd.9103.pid
+# EnvironmentFile=-/etc/sysconfig/bacula-sd
+ExecStart=/usr/bin/bacula-sd -c /etc/bacula/bacula-sd.conf
+
+[Install]
+WantedBy=multi-user.target

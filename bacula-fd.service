@@ -1,0 +1,18 @@
+#
+# Bacula File Daemon service
+#
+
+[Unit]
+Description=Bacula File Daemon
+Requires=network.target
+After=network.target remote-fs.target syslog.target
+
+[Service]
+Type=forking
+Restart=always
+ExecStart=/usr/bin/bacula-fd -c /etc/bacula/bacula-fd.conf
+IOSchedulingClass=idle
+PIDFile=/run/bacula-fd.9102.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+#
+# Bacula Director Daemon service
+#
+
+[Unit]
+Description=Bacula Director
+Alias=bacula-dir
+Requires=network.target
+After=network.target remote-fs.target syslog.target
+# Dependency about the database
+# We let administrators decide if they need it (if local db instance)
+#Wants=sqlite3.service
+# Check if working dir exist and is a directory
+ConditionPathIsDirectory=/var/lib/bacula
+
+[Service]
+Type=forking
+Restart=always
+PIDFile=/run/bacula-dir.9101.pid
+# EnvironmentFile=-/etc/sysconfig/bacula-dir
+ExecStart=/usr/bin/bacula-dir -c /etc/bacula/bacula-dir.conf
+
+[Install]
+WantedBy=multi-user.target
