@@ -1,18 +1,17 @@
-# Contributor: 404
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Josef Lusticky <evramp@gmail.com>
-# Maintainer Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=counter-strike-2d
-pkgver=0.1.2.7
-_ver=0127
+pkgver=1.0.0.2
+_ver=${pkgver//./}
 pkgrel=1
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="http://www.cs2d.com/"
 license=('custom')
-changelog=$pkgname.ChangeLog
 if [ "$CARCH" == "x86_64" ]; then
   depends=('lib32-freetype2' 'lib32-libtxc_dxtn' 'lib32-glu')
   optdepends=('lib32-openal: audio output'
@@ -20,11 +19,11 @@ if [ "$CARCH" == "x86_64" ]; then
               'lib32-intel-dri: video acceleration'
               'lib32-nouveau-dri: video acceleration')
 elif [ "$CARCH" == "i686" ]; then
-depends=('freetype2' 'libtxc_dxtn' 'glu')
-optdepends=('openal: audio output'
-            'ati-dri: video acceleration'
-            'intel-dri: video acceleration'
-            'nouveau-dri: video acceleration')
+  depends=('freetype2' 'libtxc_dxtn' 'glu')
+  optdepends=('openal: audio output'
+              'ati-dri: video acceleration'
+              'intel-dri: video acceleration'
+              'nouveau-dri: video acceleration')
 fi
 
 makedepends=('curl')
@@ -35,23 +34,21 @@ backup=(opt/cs2d/sys/autobuy.cfg  opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/mapcycle.cfg opt/cs2d/sys/more.cfg
         opt/cs2d/sys/server.cfg   opt/cs2d/sys/usgn.dat
         opt/cs2d/sys/usgn_pw.dat)
-sha512sums=('738be401192a795e76404cf3a97986fcfba2dc082dcec5c546a1c133a50b0a651b2d1f94885f77d830c90b0c37612e615e47fbf51a6f677a56034be62a8c5a6a'
-            'cbc3c7c8246907d8c8d8143679e13144449048df09398b4f25cc50ecae0473d8bc186752418727297da0f79b4b323d272a9e1b97a0b0249243bb9098abc23897'
-            '9db3ccddf9180461de5bfea671d52f5d7fe3ef9eb00bef69853362983b227315f75f931d8d4ed9e541a56872b461cb8a1864bbbf1cc88b3e9ed3a52c32a01238'
-            '18cee40fd348ffba864d22f6a1c3e20aeaeba031b0ac0d288885b0d8f82aa553a37047b9793e66440d7e6a008077bd11aeff6cecf6681a38b0a835a1bccf971a'
-            'dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80')        # hack for generated id, see also https://bbs.archlinux.org/viewtopic.php?id=141195
+sha512sums=('f385a6558f40a01324884a8b765f0fcb8dddcfb59bf983be110234a16cf937ba8c0089dce269fd1cec6b51a380810c5e1676e14a95112364b59cbb07e290a8bc'
+            'b387cd7172fa35c6e66d7457cd4ca457d5bab795944fa9b53a0879301d72d6e5f2c76b760c119df32ae4e69f158e6c593bf921a83e54e25f79cb4e3d2650965c'
+            'd7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992'
+            'dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80')
 _url=http://www.unrealsoftware.de/get.php?get
 
 grabcid() {
   local file=cs2d_${_ver}_linux.zip
-  echo "$(curl -Ss "$_url=${file}&p=1" | 
-            grep -o '"get.php[^"]\+"' | cut -d'"' -f2 | sed 's/&amp;/\&/g')"
+  echo "$(curl -Ss "$_url=${file}&p=1" | grep -o '"get.php[^"]\+"' | cut -d'"' -f2 | sed 's/&amp;/\&/g')"
 }
+
 _cid=$(grabcid) # this will hide the cmd line above from AUR interface
 source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=${_cid}"
         cs2d_${_ver}_win.zip::"$_url=cs2d_${_ver}_win.zip&p=1&cid=${_cid}"
         "cs2d.desktop"
-        "cs2d-fs.desktop"
         "cs2d.png")
 options=(emptydirs)
 
