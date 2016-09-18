@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="http://pan.rebelbase.com/"
 license=(GPL2)
 depends=(gtkspell3 webkitgtk gmime)
-makedepends=(intltool gtk2)
+makedepends=(intltool)
 source=("http://pan.rebelbase.com/download/releases/$pkgver/source/$pkgname-$pkgver.tar.bz2")
 md5sums=('6c6a879e8ea73efbb5512ac00977fd82')
 
