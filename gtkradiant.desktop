@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/gtkradiant/radiant.bin
+GenericName=Level Editor
+Comment=Level Editor
+Icon=gtkradiant
+Name=GtkRadiant
+Terminal=0
+Type=Application
+Categories=Game
+Keywords=quake;editor;game;
