@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=boostnode
-pkgver=1.0.9
-pkgrel=32
+pkgver=1.0.10
+pkgrel=33
 pkgdesc='a high reliable python library'
 arch=('any')
 url='http://torben.website/boostnode'
