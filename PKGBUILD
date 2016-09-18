@@ -1,24 +1,22 @@
 # Maintainer: Changaco
 # Maintainer: Pascal Bach
 # Maintainer: Achilleas Pipinellis <axilleas@archlinux.info>
+# Maintainer: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=origin-client-bin
-pkgver=1.2.1
-_hash=5e723f6
+pkgver=1.3.0
+_hash=3ab7af3d097b57f933eccef684a714f2368804e7
 pkgrel=1
 pkgdesc="The client tools for the Origin platform that powers OpenShift"
 arch=(i686 x86_64)
 url="https://github.com/openshift/origin"
 license=('Apache')
 
-_base_url=https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux
-if [[ $CARCH == 'x86_64' ]]; then
-	source=("$_base_url-64bit.tar.gz")
-	sha256sums=('50af8fc25295cebaf7a77d4cfe41ef19adc9d3bbecf57719ff4bdd9bb173b5d9')
-else
-	source=("$_base_url-32bit.tar.gz")
-	sha256sums=('1c914f59916402e63ed1a87fa6c6eed03b557bdb56b27af5640c7056ea638e80')
-fi
+source_x86_64=("https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-64bit.tar.gz")
+source_i686=("https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-32bit.tar.gz")
+
+sha256sums_x86_64=("0d3b632fae9bc2747caee2dae7970865097a4bc1d83b84afb31de1c05b356054")
+sha256sums_i686=("05c83a3337ab995bad24b7359b876a3d2d3bdbdf09cc40949835c52d2fc0c659")
 
 package() {
 	install -D -m755 $srcdir/*/oc $pkgdir/usr/bin/oc
