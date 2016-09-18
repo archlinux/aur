@@ -2,7 +2,7 @@
 
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=neomutt.20160808.r9.g6946736
+pkgver=neomutt.20160916.r1.gd6b6ee9
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
