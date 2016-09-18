@@ -5,7 +5,7 @@
 
 # Maintainer: Frank Fischer <frank-fischer@shadow-soft.de>
 pkgname=sailautossh
-pkgver=r125.5b56c49ad778
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Automatic SSH Tunneling tool"
 arch=('i686' 'x86_64')
@@ -15,13 +15,8 @@ depends=(qt5-base hicolor-icon-theme)
 makedepends=(mercurial)
 provides=('sailautossh')
 install=$pkgname.install
-source=("hg+http://bitbucket.org/lyro/sailautossh")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/sailautossh"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
+source=("https://bitbucket.org/lyro/sailautossh/get/v1.3.0.tar.bz2")
+sha256sums=('517485d292eeb0c08765b1d4472ebe6af38abf97eb46c56276745a90ff6c151a')
 
 build() {
   cd "${srcdir}/sailautossh"
