@@ -1,7 +1,7 @@
 _pkgname=verne
 _srcname=jesus
 pkgname=$_pkgname-git
-pkgver=r627.e810131
+pkgver=r633.9c620e3
 pkgrel=1
 pkgdesc="A filemanager build with EFL"
 arch=('i686' 'x86_64')
