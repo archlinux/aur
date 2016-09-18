@@ -2,7 +2,7 @@
 
 pkgname=usbguard
 _pkgname=usbguard
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
@@ -14,8 +14,8 @@ source=(
 	"${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz.sig")
 sha256sums=(
-	'582d6d069bc2369ff959e97c28295781dd3c5f562c6c0d9ab9eca2ec0ec39f6a'
-	'b482d6eb44186362ca486fce8ea75abe63d3e02459b10b3583848ef346b6cb4b')
+	'dad33da0312b95a3a41434a7b5bbd03f5ec7096f6ea9ee238ad2f15908bc51fd'
+	'244966be0712c0b41caa9db6f56f0c5cc45fd6845d378d1247c51932f678768c')
 validpgpkeys=("D36B9AB1E6809AF54691C23A3AEF037DB25991BC")
 provides=("usbguard")
 conflicts=("usbguard-git")
