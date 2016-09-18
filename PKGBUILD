@@ -10,8 +10,8 @@ license=("public domain")
 makedepends=(dos2unix)
 depends=(java-runtime)
 source=("https://github.com/ata4/disunity/releases/download/v$pkgver/disunity_v$pkgver.zip" "launch.sh")
-sha256sums=('1915de291f1f6583e917d837416ac00a44e99bde4633898aecb9093a30c5bdac'
-            '13c51e9ca5ef00f24fd8d4133a5a81d2318b22cb4cfc79e6899d5494e00b0ffb')
+sha512sums=('8fdd3b6d8051272d0a179f9e3a71e32646528ae286cace00436b3d031003260bd9057bc294c81721b6186226511b04a9f2b72b410f57a44bc7ceabc8a5c7146d'
+            '9d9c98e7bb43fb807826f2a51c969c98a05a1049df8537933d35f587a3a53df6b2ccaffb439f101f41e8b90f1ed96962d1b2fa9a093f16e95094fc9a48a73595')
 
 prepare() {
 	find . -type f -exec dos2unix {} \;
