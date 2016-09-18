@@ -9,8 +9,10 @@ pkgbase = bouml
 	makedepends = rpmextract
 	depends = qt4
 	options = !strip
-	source = http://bouml.fr/files/bouml-6.11.2-CentOS6.x86_64.rpm
-	sha512sums = 050a00253a96ba62bef334a24a160a1bb3dffd7014e2dcf3d5bfd163f3f5fbc8f3371849696dabbe4e076e3eaa0d06c3bfb1475325edffdbf7a695811266f7ae
+	source_i686 = https://github.com/funilrys/archlinux-bouml-src/archive/v6.11.2-x86_64.tar.gz
+	sha512sums_i686 = 0cae433f9ca24a5dac8d82dce7695d62a4aa38618b512a73b945d63bb8719475b895ca2191caa96c12df0dc609eca3236fa32b6dc7d2c2d0f7c206b35b44cfa0
+	source_x86_64 = https://github.com/funilrys/archlinux-bouml-src/archive/v6.11.2-x86_64.tar.gz
+	sha512sums_x86_64 = ddb9093d3aa4c5b3e45250e5eaac9aa2c6cee339b7caf4434ee43f7967f71cf2eece1eab6fa6714813135662855e881c2dbde449d6c1c54863e2f8ab10c895ed
 
 pkgname = bouml
 
