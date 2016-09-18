@@ -1,10 +1,10 @@
 pkgname=pacitude
 pkgver=1.0
-pkgrel=2
-pkgdesc="a pacman/pacaur wrapper script with apt inspired syntax"
+pkgrel=3
+pkgdesc="a pacman/pacaur tui based on yaourt-gui"
 arch=('i686' 'x86_64')
 url="https://github.com/undeadrevo/pacitude"
-license=('WTFPL')
+license=('GPL')
 depends=('sudo' 'pacaur' 'cower')
 makedepends=('git')
 source=('git://github.com/undeadrevo/pacitude.git')

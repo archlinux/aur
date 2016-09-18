@@ -1,11 +1,11 @@
 pkgbase = pacitude
-	pkgdesc = a pacman/pacaur wrapper script with apt inspired syntax
+	pkgdesc = a pacman/pacaur tui based on yaourt-gui
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/undeadrevo/pacitude
 	arch = i686
 	arch = x86_64
-	license = WTFPL
+	license = GPL
 	makedepends = git
 	depends = sudo
 	depends = pacaur
