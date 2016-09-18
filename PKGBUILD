@@ -38,16 +38,15 @@ pkgver() {
 
 build() {
 	pushd "libressl-${_sslver}"
-	./configure --disable-shared --disable-static --enable-static=tls,ssl,crypto
+	./configure --disable-shared --enable-static
 	make
 
 	popd
 
 	pushd "${pkgname}"
 	make \
-		LIBBSD='-Wl,-dy -lbsd' \
-		CFLAGS="-g -W -Wall -DHAVE_CONFIG_H -I../libressl-${_sslver}/include" \
-		LDFLAGS="-L../libressl-${_sslver}/{tls,ssl,crypto}/.libs -Wl,-dn"
+		CPPFLAGS="-I../libressl-${_sslver}/include" \
+		LDFLAGS="-L../libressl-${_sslver}/{tls,ssl,crypto}/.libs"
 }
 
 package() {
