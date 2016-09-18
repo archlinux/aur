@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
  
 pkgname=emacs-org-mode-git
-pkgver=8.3.6.1138.ge8c8386
+pkgver=8.3.6.1140.gc74f4c9
 pkgrel=1
 pkgdesc="Emacs Org Mode from git"
 arch=('any')
@@ -22,6 +22,10 @@ _gitname="emacs-org-mode"
 pkgver() {
   cd "$srcdir"/$_gitname
   git describe --tags | sed 's+-+.+g' | cut -c9-
+}
+
+prepare() {
+  sed -i 's+pi{}d+pi d+' "$srcdir"/$_gitname/doc/org.texi
 }
 
 package () {
