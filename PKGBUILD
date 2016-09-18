@@ -1,21 +1,24 @@
-# Maintainer: Sebastian Lau <arch _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 pkgname="liblogcpp"
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-url="https://github.com/nullptrT/liblogcpp"
-license=('LGPL2.1')
+url="https://github.com/nullptrT/liblogcpp.git"
+license=('LGPL3')
+conflicts=('liblogcpp')
+provides=('liblogcpp=${pkgver}')
+replaces=('liblogcpp')
 depends=()
 makedepends=('cmake' 'qt5-base')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nullptrT/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('3e9bcb649442f8aa5b86254dcafa959b')
+source=("liblogcpp-v${pkgver}::https://github.com/nullptrT/liblogcpp/archive/1.8.1.tar.gz")
+sha512=('')
+
 
 
 prepare() {
-	cd "$srcdir"
-	[[ -e build ]] && rm -r build
-	mkdir build
+        [[ -e "$srcdir/build" ]] && rm -r "$srcdir/build"
+        mkdir "$srcdir/build"
 }
 
 build() {
@@ -24,7 +27,7 @@ build() {
 	cmake -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
 		-DLOGCPP_INSTALL_LIBS=ON \
 		-DLOGCPP_ENABLE_QT_SUPPORT=ON \
-		"../liblogcpp-$pkgver"
+		"../liblogcpp"
 	
 	make
 }
@@ -34,3 +37,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
+md5sums=('c5ad03423f189421cc7cd031661203e5')
