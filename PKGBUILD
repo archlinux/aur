@@ -5,7 +5,7 @@
 
 pkgname=logrotate-nosystemd
 _pkgname=logrotate
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=("https://github.com/logrotate/logrotate/archive/${pkgver}.tar.gz"
         'paths.patch'
         'logrotate.conf'
         'logrotate.cron.daily')
-md5sums=('584bca013dcceeb23b06b27d6d0342fb'
+md5sums=('3995acb2791a8dfd81b5ffc0046d0e71'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          'dd5fd26724274fd9c827eadad60ff4c5')
