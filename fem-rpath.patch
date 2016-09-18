@@ -1,0 +1,23 @@
+diff --git a/src/Mod/Fem/App/CMakeLists.txt b/src/Mod/Fem/App/CMakeLists.txt
+index fd57fa0..3c649d4 100755
+--- a/src/Mod/Fem/App/CMakeLists.txt
++++ b/src/Mod/Fem/App/CMakeLists.txt
+@@ -263,5 +263,7 @@ fc_target_copy_resource(Fem
+ 
+ SET_BIN_DIR(Fem Fem /Mod/Fem)
+ SET_PYTHON_PREFIX_SUFFIX(Fem)
++set_property(TARGET Fem APPEND PROPERTY INSTALL_RPATH "/opt/vtk-qt4/lib")
++
+ 
+ INSTALL(TARGETS Fem DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/Mod/Fem/Gui/CMakeLists.txt b/src/Mod/Fem/Gui/CMakeLists.txt
+index cec8d78..b3a7c48 100755
+--- a/src/Mod/Fem/Gui/CMakeLists.txt
++++ b/src/Mod/Fem/Gui/CMakeLists.txt
+@@ -344,5 +344,6 @@ INSTALL(FILES ${FemGuiIcon_SVG} DESTINATION "${CMAKE_INSTALL_DATADIR}/Mod/Fem/Re
+ 
+ SET_BIN_DIR(FemGui FemGui /Mod/Fem)
+ SET_PYTHON_PREFIX_SUFFIX(FemGui)
++set_property(TARGET FemGui APPEND PROPERTY INSTALL_RPATH "/opt/vtk-qt4/lib")
+ 
+ INSTALL(TARGETS FemGui DESTINATION ${CMAKE_INSTALL_LIBDIR})

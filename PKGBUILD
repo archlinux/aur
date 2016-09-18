@@ -1,8 +1,8 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 
 pkgname=freecad-netgen-git
-pkgver=r8391.ae02a45
-pkgrel=2
+pkgver=r8448.15c368d
+pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -16,11 +16,13 @@ optdepends=('python2-matplotlib' 'pycollada-git' 'python2-pyqt4')
 source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
 	"freecad.xml"
-	"mod-and-lib-path.patch")
+	"mod-and-lib-path.patch"
+	"fem-rpath.patch")
 md5sums=('SKIP'
          '21877b80638efa9269e8b1b1c391d407'
          'c2f4154c8e4678825411de8e7fa54c6b'
-         '976f1674ce36b32108af8cb4d6e4e92d')
+         '976f1674ce36b32108af8cb4d6e4e92d'
+         '99a41687a9ba980eea86aee4345d9a1d')
 
 pkgver() {
 	cd "$pkgname"
@@ -30,6 +32,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 	patch -p1 -i "$srcdir/mod-and-lib-path.patch"
+	patch -p1 -i "$srcdir/fem-rpath.patch"
 }
 
 build() {
@@ -43,6 +46,8 @@ build() {
 	      -DOCC_INCLUDE_DIR:PATH=/opt/opencascade/inc \
 	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
 	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
+	      -DVTK_LIBRARY_DIRS=/opt/vtk-qt4/lib \
+	      -DVTK_INCLUDE_DIRS=/opt/vtk-qt4/include \
 	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
 	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic \
 	      -DBUILD_FEM_NETGEN=1
