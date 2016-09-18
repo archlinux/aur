@@ -1,0 +1,13 @@
+pkgbase = desktend-git
+	pkgdesc = automatic virtual desktop extender for X11
+	pkgver = 20110815
+	pkgrel = 1
+	url = https://github.com/ijanos/desktend
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libx11
+
+pkgname = desktend-git
+
