@@ -1,0 +1,15 @@
+pkgbase = db5.1
+	pkgdesc = The Berkeley DB embedded database system 5.1
+	pkgver = 5.1.29
+	pkgrel = 1
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = any
+	license = custom
+	depends = gcc-libs
+	options = !libtool
+	source = http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz
+	md5sums = a94ea755ab695bc04f82b94d2e24a1ef
+	sha256sums = a943cb4920e62df71de1069ddca486d408f6d7a09ddbbb5637afe7a229389182
+
+pkgname = db5.1
+
