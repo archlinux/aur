@@ -1,0 +1,22 @@
+pkgbase = python2-ceph-cfg-git
+	pkgdesc = Python library to Admin and deploy Ceph
+	pkgver = 4532f4b
+	pkgrel = 1
+	url = https://github.com/oms4suse/python-ceph-cfg
+	arch = any
+	license = apache
+	makedepends = git
+	makedepends = python2
+	depends = python2
+	depends = parted
+	depends = gptfdisk
+	depends = util-linux
+	depends = ceph
+	provides = python2-ceph-cfg
+	conflicts = python2-ceph-cfg
+	options = !emptydirs
+	source = python-ceph-cfg::git+https://github.com/oms4suse/python-ceph-cfg.git
+	md5sums = SKIP
+
+pkgname = python2-ceph-cfg-git
+
