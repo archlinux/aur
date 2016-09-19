@@ -1,6 +1,6 @@
 pkgbase = hangups-git
 	pkgdesc = The first third-party instant messaging client for Google Hangouts
-	pkgver = 0.3.3.r3.g99a9f24
+	pkgver = 0.3.6.r21.g1f31a92
 	pkgrel = 1
 	epoch = 1
 	url = http://github.com/tdryer/hangups
@@ -18,6 +18,7 @@ pkgbase = hangups-git
 	depends = python-reparser
 	depends = python-readlike
 	depends = python-protobuf
+	depends = python-mechanicalsoup
 	source = git+https://github.com/tdryer/hangups.git
 	md5sums = SKIP
 
