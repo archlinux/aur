@@ -1,0 +1,13 @@
+pkgbase = python-async-timeout
+	pkgdesc = asyncio-compatible timeout class
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aio-libs/async_timeout
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://github.com/aio-libs/async_timeout/archive/v1.0.0.tar.gz
+	md5sums = 1479add705fcf2a5afcd603c3658dbc7
+
+pkgname = python-async-timeout
+
