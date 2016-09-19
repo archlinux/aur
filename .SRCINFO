@@ -1,0 +1,20 @@
+pkgbase = legofy-git
+	pkgdesc = Make images look as if they are made out of 1x1 LEGO blocks
+	pkgver = r184.0154ef5
+	pkgrel = 1
+	url = https://github.com/JuanPotato/Legofy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-pillow
+	depends = python-click
+	provides = legofy
+	conflicts = legofy
+	options = !emptydirs
+	source = git://github.com/JuanPotato/Legofy
+	md5sums = SKIP
+
+pkgname = legofy-git
+
