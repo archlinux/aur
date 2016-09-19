@@ -1,0 +1,13 @@
+post_install() {
+  if ! getent group td-agent >/dev/null; then
+    groupadd --system td-agent
+  fi
+  if ! getent passwd td-agent >/dev/null; then
+    useradd --system -g td-agent --no-create-home td-agent
+  fi
+
+  mkdir -p /var/log/td-agent
+  chown td-agent:td-agent /var/log/td-agent
+
+  true
+}
