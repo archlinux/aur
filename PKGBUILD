@@ -5,8 +5,8 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.06.06
-pkgrel=3
+pkgver=6.06.08
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -42,14 +42,14 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'root.xml'
 'rootd'
 'settings.cmake')
-sha256sums=('0a7d702a130a260c72cb6ea754359eaee49a8c4531b31f23de0bfcafe3ce466b'
+sha256sums=('7cb836282014cce822ef589cad27811eb7a86d7fad45a871fa6b0e6319ec201a'
             '437ed0fb2c46d5ca8e37cc689f87dfe12429f6a243d4e5cf2d395a177de7e90f'
             'e03fff4accf7cee4e7329b305f1e0df7bf804dbced08d52566af789bc77ea0b0'
             'd566bc44f0df1915ac81c41b8ef7eff0d9fec8728533b00b9e654a2a4eff9af1'
             '71ed39f7e5a605a6a02e3d0ba79c997b8e7f02551898c27112eb78f07d9d8244'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
-            '4199f01443e78b6fb98f09488434b4cba827995a2cfb18d654c03920fc3984c3')
+            'bde2d9538aca33c3a20a3723c22f4e4e2fef64e5918a6a71dc3a452502ab2663')
 prepare(){
     ## https://sft.its.cern.ch/jira/browse/ROOT-6924
     cd ${pkgname}-${pkgver}
