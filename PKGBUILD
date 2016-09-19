@@ -11,24 +11,22 @@
 # endregion
 pkgname=webnode
 pkgver=1.0.8
-pkgrel=14
+pkgrel=15
 pkgdesc='a high reliable python web library'
 arch=('any')
-url='http://torben.website/webnode'
+url="http://torben.website/${pkgname}"
 license=('CC-BY-3.0')
 depends=('python2' 'python2-sqlalchemy' 'boostnode')
-makedepends=('git' 'findutils')
+makedepends=('unzip')
 optdepends=('sqlite: for sqlite database support'
             'nginx: for autoconfiguring them as proxy server')
-source=('git+https://github.com/thaibault/webnode')
+source=("http://torben.website/${pkgname}/data/distributionBundle.zip")
 md5sums=('SKIP')
 
 package() {
-    install --directory --mode 755 "${pkgdir}/usr/lib/python3.5"
-    find "${srcdir}/webnode" -type f -not -name '*.py' -delete
-    rm "${srcdir}/webnode/.git" --recursive --force
-    rm "${srcdir}/webnode/documentation" --recursive --force
-    cp --recursive --force "${srcdir}/webnode" "${pkgdir}/usr/lib/python3.5"
+    install --directory --mode 755 "${pkgdir}/usr/lib/python3.5/${pkgname}"
+    unzip -o -d "${pkgdir}/usr/lib/python3.5/${pkgname}" \
+        "distributionBundle.zip"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
