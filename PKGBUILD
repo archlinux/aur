@@ -72,7 +72,7 @@ package_rxvt-unicode-nobuiltins() {
 
 package_rxvt-unicode-nobuiltins-terminfo() {
   pkgdesc='Terminfo files for urxvt'
-  conflict=('rxvt-unicode-nobuiltins<=9.18-6')
+  conflict=('rxvt-unicode<=9.18-6')
   install -dm 755 "$pkgdir/usr/share/"
   mv terminfo "$pkgdir/usr/share/"
 }
