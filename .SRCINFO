@@ -1,0 +1,15 @@
+pkgbase = icecube-pal-git
+	pkgdesc = Positional Astronomy Library
+	pkgver = v0.9.1.r17.gd452780
+	pkgrel = 1
+	url = https://github.com/IceCube-SPNO/pal
+	arch = x86_64
+	arch = i686
+	license = gpl3+
+	depends = erfa
+	options = !libtool
+	source = pal::git+https://github.com/IceCube-SPNO/pal
+	md5sums = SKIP
+
+pkgname = icecube-pal-git
+
