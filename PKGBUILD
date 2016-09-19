@@ -2,13 +2,15 @@
 
 pkgname=svgcleaner-git
 pkgver=0.6.91.262
-pkgrel=1
+pkgrel=2
 pkgdesc="Program for reducing size of svg images without loss"
 arch=('i686' 'x86_64')
 url="https://github.com/RazrFalcon/SVGCleaner"
 license=('GPL2')
 depends=('gcc-libs')
 makedepends=('git' 'rust' 'cargo')
+conflicts=('svgcleaner')
+provides=('svgcleaner')
 source=('git+https://github.com/RazrFalcon/SVGCleaner.git')
 md5sums=('SKIP')
 _gitname="SVGCleaner"
