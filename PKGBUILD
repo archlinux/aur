@@ -4,7 +4,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=ding
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A Dictionary Lookup program and EN<->DE Dictionary"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 url="http://www-user.tu-chemnitz.de/~fri/ding"
 depends=('sh' 'tk' 'tre' 'aspell')
 source=(http://ftp.tu-chemnitz.de/pub/Local/urz/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('93ce724031f57efe43bd0197dbb3800c')
+sha256sums=('5817bad70d9661fc1efc8bad38939bf665818c549a9675e8e041fff487c61232')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
