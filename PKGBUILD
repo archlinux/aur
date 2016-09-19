@@ -38,7 +38,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.1.r125076
+pkgver=25.1.r125132
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -143,9 +143,6 @@ package() {
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-
-  # remove conflict with texinfo
-  rm "$pkgdir"/usr/share/info/info.info.gz
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
