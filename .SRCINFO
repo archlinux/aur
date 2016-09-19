@@ -1,0 +1,14 @@
+pkgbase = mkhexgrid
+	pkgdesc = Hex Grid Creator
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://www.nomic.net/~uckelman/mkhexgrid/
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = gd
+	source = http://www.nomic.net/~uckelman/mkhexgrid/releases/mkhexgrid-0.1.1.src.tar.bz2
+	md5sums = 5a0bdedbee65c97144288cd91e4415db
+
+pkgname = mkhexgrid
+
