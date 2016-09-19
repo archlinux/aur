@@ -11,20 +11,20 @@
 # endregion
 pkgname=filelinker
 pkgver=1.0.5
-pkgrel=11
+pkgrel=14
 pkgdesc='keeps hard links in sync.'
 arch=('any')
-url='http://torben.website/filelinker'
+url="http://torben.website/${pkgname}"
 license=('CC-BY-3.0')
 depends=('python' 'boostnode')
 provides=(filelinker)
-source=('filelinker.py')
+source=("${pkgname}.py")
 md5sums=('SKIP')
 copyToAUR=true
 
 package() {
-    install -D --mode 755 "${srcdir}/filelinker.py" \
-        "${pkgdir}/usr/bin/filelinker"
+    install -D --mode 755 "${srcdir}/${pkgname}.py" \
+        "${pkgdir}/usr/bin/${pkgname}"
 }
 # region vim modline
 # vim: set tabstop=4 shiftwidth=4 expandtab:
