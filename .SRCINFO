@@ -1,0 +1,17 @@
+pkgbase = teleport
+	pkgdesc = Modern SSH server for remotely accessing clusters of Linux servers via SSH or HTTPS
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gravitational.com/teleport
+	install = teleport.install
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go>=1.7.0
+	source = teleport-1.1.0.tar.gz::https://github.com/gravitational/teleport/archive/v1.1.0.tar.gz
+	source = teleport.service
+	sha256sums = f86e9bc410fa90d139df0268a6f7be194b406e94a1df5c029287dda262f41015
+	sha256sums = 3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc
+
+pkgname = teleport
+
