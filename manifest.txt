@@ -1,4 +1,6 @@
 .
+./bin
+./bin/rspec
 ./compiler
 ./compiler/exunit.vim
 ./ftdetect
@@ -13,6 +15,7 @@
 ./indent/elixir.vim
 ./LICENSE
 ./README.md
+./.ruby-version
 ./syntax
 ./syntax/eelixir.vim
 ./syntax/elixir.vim

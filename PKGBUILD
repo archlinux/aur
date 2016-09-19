@@ -12,7 +12,7 @@ source=('git+https://github.com/elixir-lang/vim-elixir.git'
         'manifest.txt'
         'vim-elixir-git.install')
 sha256sums=('SKIP'
-            'f912b234fdd331da79d7953e237fbb22aefcaded65c6a10f1345c4ad34d1185c'
+            '73dcd513f319459a40933f1d2852863c6d7b7e397a00c79f6d11b327e7c034d8'
             '8541cd602af3eb0350d80328a9cda051b7f7f1675446c8f083605514afbc1e91'
 )
 
