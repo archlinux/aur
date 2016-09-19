@@ -2,7 +2,7 @@
 # Contributor: Martin Wimpress <code@flexion.org>
 
 pkgname=caja-dropbox
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Dropbox for Linux - Caja extension"
 url="https://github.com/mate-desktop/caja-dropbox"
@@ -20,7 +20,7 @@ optdepends=('dropbox: Dropbox support')
 conflicts=('caja-dropbox-gtk3')
 options=('!emptydirs')
 source=("https://github.com/mate-desktop/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('632c4c3585df8ded44367ff68a45381aa2a296c4')
+sha1sums=('d672739f9a3fec02ad1d1e5478e3b59e671e0880')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
