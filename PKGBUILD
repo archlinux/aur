@@ -3,7 +3,7 @@
 pkgname=mars-mips
 pkgver=4.5
 _ver=${pkgver%.*}_${pkgver#*.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE for programming in MIPS assembly language intended for educational-level use"
 arch=('any')
 url="http://courses.missouristate.edu/KenVollmar/MARS/index.htm"
@@ -25,6 +25,6 @@ package() {
 }
 
 md5sums=('4709fae736e6c9d4078ea4b21e0be1e9'
-         'd7e664dcebde337e0b94a3aafb351fb8'
+         '1e93838f364be5c798b1c09de7e4a5b8'
          '6a74c887b0166d4adb5b06c64d6a444b'
          '83281c7998223ff073bb31efd473275c')
