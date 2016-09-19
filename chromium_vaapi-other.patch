@@ -27,7 +27,7 @@ diff -aur chromium-53.0.2785.101/content/common/sandbox_linux/bpf_gpu_policy_lin
 +      const char* R600_Drv_Video_Path          = NULL;
 +      const char* RADEONSI_Drv_Video_Path      = NULL;
 +      const char* VDPAU_Drv_Video_Path         = NULL;
-+      const char* NOUVEAU_Drv_VideoPath        = NULL;
++      const char* NOUVEAU_Drv_Video_Path        = NULL;
 +
 +      if (IsArchitectureX86_64() || IsArchitectureI386() ) {
 +        I965_Drv_Video_Path           = "/usr/lib/dri/i965_drv_video.so";
@@ -36,7 +36,7 @@ diff -aur chromium-53.0.2785.101/content/common/sandbox_linux/bpf_gpu_policy_lin
 +        R600_Drv_Video_Path           = "/usr/lib/dri/r600_drv_video.so";
 +        VDPAU_Drv_Video_Path          = "/usr/lib/dri/vdpau_drv_video.so";
 +        RADEONSI_Drv_Video_Path       = "/usr/lib/dri/radeonsi_drv_video.so";
-+        NOUVEAU_Drv_VideoPath         = "/usr/lib/dri/nouveau_drv_video.so";
++        NOUVEAU_Drv_Video_Path        = "/usr/lib/dri/nouveau_drv_video.so";
 
 -      if (IsArchitectureX86_64()) {
 -        I965DrvVideoPath = "/usr/lib64/va/drivers/i965_drv_video.so";
@@ -64,8 +64,8 @@ diff -aur chromium-53.0.2785.101/content/common/sandbox_linux/bpf_gpu_policy_lin
 +      if ( access(RADEONSI_Drv_Video_Path , X_OK|R_OK ) != -1 ) {
 +          dlopen(RADEONSI_Drv_Video_Path, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
 +      }
-+      if ( access(NOUVEAU_Drv_VideoPath , X_OK|R_OK ) != -1 ) {
-+          dlopen(NOUVEAU_Drv_VideoPath, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
++      if ( access(NOUVEAU_Drv_Video_Path , X_OK|R_OK ) != -1 ) {
++          dlopen(NOUVEAU_Drv_Video_Path, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
        }
 
 -      dlopen(I965DrvVideoPath, RTLD_NOW|RTLD_GLOBAL|RTLD_NODELETE);
