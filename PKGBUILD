@@ -2,23 +2,23 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=1.1.62
-pkgrel=5
+pkgver=1.2.58
+pkgrel=1
 pkgdesc="Linux driver for DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi')
+depends=('evdi' 'libusb>=1.0.0')
 makedepends=('grep' 'gawk')
 install=
 changelog="release-note.txt"
-source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file\?id\=607
+source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file\?id\=701
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
 
 # Update with > updpkgsums
-md5sums=('85879b750b26c464bd0f564fb76f398f'
+md5sums=('a69ffdbcd6157c9a5511d9e4a16597a2'
          '37e076a16be49985f1d6800f960d16b4'
          'c141a15e973481c7d961f8e135627ca4'
          '4185b016cd64c6069302239515afadff')
@@ -33,7 +33,7 @@ package() {
   
   COREDIR="$pkgdir/usr/lib/displaylink"
   install -d -m755 $COREDIR
-  install -d -m750 "$pkgdir/var/log/displaylink"
+  install -d -m755 "$pkgdir/var/log/displaylink"
 
   echo "Extracting DisplayLink Driver Package"
   cd $srcdir
@@ -46,19 +46,20 @@ package() {
   elif [ "$CARCH" == "x86_64" ]; then
     ARCH="x64"
   fi
+
+  ARCH+="-ubuntu-1604"
+  
   echo "Installing DisplayLink Manager $ARCH"
   install -D -m755 $ARCH/DisplayLinkManager $COREDIR/DisplayLinkManager
 
-  echo "Installing libraries"
-  ln -s $(ldconfig -p | grep libevdi | awk '{print $4}') $COREDIR/libevdi.so
+  # I wonder if this is even necessary but I'm too lazy to find out
+  echo "Creating symlinks for evdi and libusb"
+  ln -s $(ldconfig -p | grep libevdi | awk 'NR==1{print $4}') $COREDIR/libevdi.so
+
+  ln -s $(ldconfig -p | grep libusb- | awk 'NR==1{print $4}') $COREDIR/libusb-1.0.so.0.1.0
+  ln -s $(ldconfig -p | grep libusb- | awk 'NR==1{print $4}') $COREDIR/libusb-1.0.so.0
+  ln -s $(ldconfig -p | grep libusb- | awk 'NR==1{print $4}') $COREDIR/libusb-1.0.so
   
-  # This is using the libusb that is shipping with the displaylink archive.
-  # Maybe we could get rid of this  
-  install -D -m755 $ARCH/libusb-1.0.so.0.1.0 $COREDIR/libusb-1.0.so.0.1.0
-
-  ln -s /usr/lib/displaylink/libusb-1.0.so.0.1.0 $COREDIR/libusb-1.0.so.0
-  ln -s /usr/lib/displaylink/libusb-1.0.so.0.1.0 $COREDIR/libusb-1.0.so
-
   echo "Installing firmware packages"
   install -D -m644 *.spkg $COREDIR
 
