@@ -8,7 +8,7 @@
 
 pkgname=emacs24-git
 pkgver=24.5.50.r116792
-pkgrel=7
+pkgrel=8
 pkgdesc="GNU Emacs. Official git stable 24 branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -85,9 +85,6 @@ package() {
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-
-  # remove conflict with texinfo
-  rm "$pkgdir"/usr/share/info/info.info.gz
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
