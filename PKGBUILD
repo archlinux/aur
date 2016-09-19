@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flatcc
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="FlatBuffers Compiler and Library in C for C"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/dvidelabs/flatcc"
 license=('Apache')
 options=('staticlibs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/dvidelabs/$pkgname/tar.gz/v$pkgver)
-sha256sums=('6ad97168aa02d0ece1a705428008a404eea89af5109d6e099197477fc08303eb')
+sha256sums=('e43e6e669179c19c9a5716f6144974561a02619f331325758acf8a85d591e4ec')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
