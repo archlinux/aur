@@ -1,25 +1,32 @@
-# Maintainer: Konstantin Shalygin <k0ste@cn.ru>
-# Contributor: Konstantin Shalygin <k0ste@cn.ru>
+# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='yandex-tank'
-pkgver='1.7.32'
+pkgver='1.8.21'
 pkgrel='1'
 pkgdesc='Performance measurement tool'
 arch=('any')
 url="https://github.com/yandex/${pkgname}"
 license=('GPL')
-depends=('python2' 'python2-psutil' 'python2-ipaddr' 'python2-progressbar' 'python2-paramiko' 'python2-requests' 'python2-pyzmq' 'phantom')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1b6c2100b0c3e024ce44f52cac9b8262e5f710a414c194bdd4a9a53460a2e058')
+depends=('python2' 'python2-psutil' 'python2-numpy' 'python2-future' 'python2-pandas' 'python2-paramiko' 'python2-requests' 'phantom')
+makedepends=('python2' 'python-setuptools' 'gzip')
+source=("${pkgname}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('afaf4e1a1a7bdb02d57df392b861ce312cdcfef594a2d4e7d94de9a5acb5f106')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}/data"
+  gzip -f -9 load.conf.1 > load.conf.1.gz
+  gzip -f -9 ${pkgname}.1 > ${pkgname}.1.gz
+}
 
 build() {
-  pushd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py build
-  popd
 }
 
 package() {
-  pushd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
-  popd
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install -O1 --skip-build --root="${pkgdir}"
+  install -Dm644 "data/load.conf.1.gz" "${pkgdir}/usr/share/man/man1/load.conf.1.gz"
+  install -Dm644 "data/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
