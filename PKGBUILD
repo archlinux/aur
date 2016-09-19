@@ -22,9 +22,9 @@ source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariad
         '0002-Fix-_SIZE_T_DEFINED-under-mingw-w64.patch'
         '0003-Use-fopen-rather-than-fopen_s-for-XP-compatibility.patch')
 sha1sums=('7c12d46799e270a14ea414ea23a79aff48bf24e6'
-          '164de4f08355fbc40bfb22164ec0486ec8002ab2'
-          'dcf3d766ae6faf99aa93d1444e3b200c4f80c4f1'
-          '4d1b01a0f800b15ad6e44e387f2f8d8c147cdea3')
+          '1409632ae308a84fcb02bbec67b7c25851f9a0cf'
+          'f0d680703b019b7aaf7ca3b9580a5e39b8482ba4'
+          'dd7b5e0dc58178773c37ee846dad93e71af21554')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
