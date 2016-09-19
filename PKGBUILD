@@ -4,9 +4,9 @@
 # Contributor: Drew DeVault
 # Contributor: SirCmpwn <sir at cmpwn dot com>
 
-_modpkver=2.9.1
+_modpkgver=2.9.1
 pkgname=nginx-mainline-modsecurity
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with ModSecurity module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -31,8 +31,8 @@ conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
-        https://www.modsecurity.org/tarball/$_modpkver/modsecurity-$_modpkver.tar.gz)
-md5sums=('18275c1daa39c5fac12e56c34907d45b'
+        https://www.modsecurity.org/tarball/$_modpkgver/modsecurity-$_modpkgver.tar.gz)
+md5sums=('92666d60410f429ddbdb10060369a480'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '0fa92b852abc857a20b9e24f83f814cf')
@@ -67,7 +67,7 @@ _mainline_flags=(
 )
 
 prepare() {
-  cd "$srcdir"/modsecurity-$_modpkver
+  cd "$srcdir"/modsecurity-$_modpkgver
   ./configure \
     --enable-standalone-module \
     --disable-mlogc \
@@ -92,7 +92,7 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --add-module=../modsecurity-$_modpkver/nginx/modsecurity \
+    --add-module=../modsecurity-$_modpkgver/nginx/modsecurity \
     ${_common_flags[@]} \
     ${_mainline_flags[@]}
 
@@ -133,8 +133,8 @@ package() {
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
 
-  install -Dm644 "$srcdir"/modsecurity-"$_modpkver"/modsecurity.conf-recommended "$pkgdir"/etc/nginx/modsecurity.conf
-  install -Dm644 "$srcdir"/modsecurity-"$_modpkver"/unicode.mapping "$pkgdir"/etc/nginx/unicode.mapping
+  install -Dm644 "$srcdir"/modsecurity-"$_modpkgver"/modsecurity.conf-recommended "$pkgdir"/etc/nginx/modsecurity.conf
+  install -Dm644 "$srcdir"/modsecurity-"$_modpkgver"/unicode.mapping "$pkgdir"/etc/nginx/unicode.mapping
 
   #Set SecStatusEngine Off (default)
   #Fix logs path
