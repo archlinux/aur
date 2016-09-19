@@ -48,7 +48,7 @@ sha256sums=('7a87629504346f64122ca7754574d187a4c1bf5736dea672ff3e247a0af16062'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
             '4700a2d75c5cec59ff4d78c284d20df591c07321565bb25e4bbbd5c671a5d22e'
             'c479910bc405666f8c8c7760e983abc20ab65764ca1d889040bcba34e8b5b4b9'
-            '1dae940e726d91edd1e54e3afa25932fa4abadca7632652b4a9802df35d124a2')
+            'b0336dc8542335c900f745571463800e7d97b711a9e8068109f65dafe82f36e7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
