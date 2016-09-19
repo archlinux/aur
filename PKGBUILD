@@ -20,8 +20,8 @@ makedepends=('mate-common' 'python2-docutils')
 optdepends=('dropbox: Dropbox support')
 conflicts=('caja-dropbox')
 options=('!emptydirs')
-source=("http://pub.mate-desktop.org/releases/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha1sums=('85912fc58f95bb513b32ba3dea60bddff7f68d3d')
+source=("https://github.com/mate-desktop/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha1sums=('1bb337e8b7a7c1f3af06a96ecca0842b74cb15c0')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
