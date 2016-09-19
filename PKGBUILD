@@ -1,27 +1,22 @@
 # Maintainer: Étienne Deparis <etienne [at] depar.is>
 
 pkgname=galileo
-pkgver=0.5
-pkgrel=2
-_bitbucket_folder=benallard-galileo-1b2fc31c42a1
+pkgver=0.5.1
+pkgrel=1
+_bitbucket_folder=benallard-galileo-f0ebc19c748d
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server'
 license=('LGPL3')
 url='https://bitbucket.org/benallard/galileo'
-depends=('python2-pyusb-beta' 'python2-requests')
-makedepends=('python2-setuptools')
+depends=('python-pyusb' 'python-requests')
+makedepends=('python-setuptools')
 source=("https://bitbucket.org/benallard/${pkgname}/get/${pkgver}.tar.gz")
-sha256sums=('ef2c72a7b6d45ed99a804f5a0f170083e07d1ca7559434a110866c5d33e50d7d')
+sha256sums=('0dbf394c20acf2acb7226d2ea6609ff0199b8a6b63b545c2b8efffc6841ab411')
 arch=('any')
 options=(!emptydirs)
 backup=("etc/galileo/config")
 
 prepare() {
   cd $srcdir/$_bitbucket_folder
-
-  find . -type f -exec sed -i \
-    -e'1s|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
-    -e '1s|^#!/usr/bin/python$|#!/usr/bin/env python2|' \
-    "{}" \;
 
   sed -i 's/logging: verbose/logging: quiet # quiet is default/' galileorc.sample
   sed -i "26,35s/^\(.*\)$/\#\1/" galileorc.sample
@@ -31,7 +26,7 @@ prepare() {
 
 package(){
   cd $srcdir/$_bitbucket_folder
-  python2 setup.py install --root=$pkgdir
+  python setup.py install --root=$pkgdir
 
   install -d -m755                  $pkgdir/etc/{udev/rules.d, $pkgname}
   install -d -m755                  $pkgdir/usr/share/{man/man1, man/man5, doc/$pkgname}
