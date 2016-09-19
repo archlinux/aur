@@ -5,17 +5,17 @@
 
 pkgname=plexpy
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
-url="https://github.com/drzoidberg33/plexpy"
+url="https://github.com/JonnyWong16/plexpy"
 license=('GPL')
 makedepends=('curl')
 depends=('python2')
 conflicts=('plexpy-git')
 provides=("plexpy")
 install='plexpy.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/drzoidberg33/plexpy/archive/v$pkgver.tar.gz" 
+source=("$pkgname-$pkgver.tar.gz::https://github.com/JonnyWong16/plexpy/archive/v$pkgver.tar.gz" 
         'plexpy.service'
         'plexpy.install')
 sha256sums=('66486edd0fe01671a899fc20180042ae707e8ef68ce7fa0b4938defa51ed5dbd'
