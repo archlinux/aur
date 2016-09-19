@@ -1,12 +1,15 @@
 pkgbase = blender-plugin-retopoflow-git
 	pkgdesc = A suite of retopology tools for Blender
-	pkgver = 1.1.2
+	pkgver = 1.2.1.r0.g0e11d2d
 	pkgrel = 1
 	url = https://cgcookiemarkets.com/all-products/retopoflow/
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = blender
+	conflicts = blender-plugin-retopoflow
+	source = git+https://github.com/CGCookie/retopoflow.git
+	md5sums = SKIP
 
 pkgname = blender-plugin-retopoflow-git
 
