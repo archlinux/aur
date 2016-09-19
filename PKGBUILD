@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=xflux-gui-git
-pkgver=4125e70b
+pkgver=0b562044
 pkgrel=1
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
@@ -10,9 +10,11 @@ license=(MIT)
 provides=(xflux-gui)
 conflicts=(xflux-gui)
 depends=(
-python2-pexpect
-xflux
 hicolor-icon-theme
+libappindicator-sharp
+python2-pexpect
+python2-gconf
+xflux
 )
 makedepends=(git)
 install='xflux-gui.install'
