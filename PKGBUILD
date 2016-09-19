@@ -2,13 +2,14 @@
 pkgname=matwm2-git
 _pkgname=matwm2
 pkgver=0.1.2pre3.r626.g038b4ca
-pkgrel=2
+pkgrel=3
 pkgdesc="A nice tiling or floating window manager"
 arch=('i686' 'x86_64')
 url="https://github.com/segin/${_pkgname}"
 license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
+replaces=('matwm2-svn')
 depends=('libxinerama' 'libxft')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/segin/matwm2.git"
