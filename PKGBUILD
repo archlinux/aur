@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=alpscore-openmpi-git
-pkgver=0.5.4.r49.g3211c91
+pkgver=0.5.5.r0.g50ade13
 pkgrel=1
 pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
