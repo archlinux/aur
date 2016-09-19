@@ -1,7 +1,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-5.1-complete
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -12,7 +12,7 @@ makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz
         GMXRC.bash.cmakein.patch)
-sha1sums=('da1ff3124679e9f7175c7d1cbdc7b2ede0fc3ae0'
+sha1sums=('61343500ca995ff7edd497d0c3ad216da91dbe36'
           '014b2cbfa13db9b495c88f653805c330747117dc')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
