@@ -2,7 +2,7 @@
 # Contributor: EnteEnteEnte <ducksource@duckpond.ch>
 
 pkgname='teamspeak3-server'
-pkgver='3.0.13.3'
+pkgver='3.0.13.4'
 pkgrel=1
 pkgdesc='A proprietary VoIP conference software'
 license=('custom')
@@ -18,8 +18,8 @@ source_i686=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspea
 source_x86_64=("http://teamspeak.gameserver.gamed.de/ts3/releases/$pkgver/teamspeak3-server_linux_amd64-$pkgver.tar.bz2")
 sha256sums=('c678f5d657772920260c4ea4718677e6b00ef28ad74c317e05632a01d33b3ca5'
             'b0bbd849e6d385ad06c8024e9d698ecbf9f210377311534e54587a2e88379071')
-sha256sums_i686=('97a410a68f6567de0ae31aa7c36246f4fd19f9d5b32729e5c66d3ac92f70e2cf')
-sha256sums_x86_64=('e9f48c8a9bad75165e3a7c9d9f6b18639fd8aba63adaaa40aebd8114166273ae')
+sha256sums_i686=('ff2eb297ff9df103a210ccc67707b5b9c691bb441d2fd7f039d927759090fb62')
+sha256sums_x86_64=('cff353c3f395175ba251c787c5ca1cbb3d339be1ae1afe0cf10216a6e81ae5af')
 
 if [ "$CARCH" == "x86_64" ]; then
   _TSARCH='amd64'
