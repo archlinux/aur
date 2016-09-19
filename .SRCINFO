@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp
 	pkgdesc = http client/server for asyncio
-	pkgver = 0.22.5
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://pypi.python.org/pypi/aiohttp
 	arch = i686
 	arch = x86_64
@@ -14,20 +14,21 @@ pkgbase = python-aiohttp
 	depends = python>=3.5
 	depends = python-chardet
 	depends = python-multidict
-	noextract = aiohttp-0.22.5-cp35-cp35m-manylinux1_i686.whl
-	noextract = aiohttp-0.22.5-cp35-cp35m-manylinux1_x86_64.whl
-	source_i686 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-0.22.5-cp35-cp35m-manylinux1_i686.whl
-	md5sums_i686 = c7946d75ae80e417a3239ce2d1122732
-	source_x86_64 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-0.22.5-cp35-cp35m-manylinux1_x86_64.whl
-	md5sums_x86_64 = f941018bc68d5b6b73a44e573ce7c4af
-	source_arm = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-0.22.5.tar.gz
-	md5sums_arm = 8541b6085fee8f8b51e0144df6470186
-	source_armv6h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-0.22.5.tar.gz
-	md5sums_armv6h = 8541b6085fee8f8b51e0144df6470186
-	source_armv7h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-0.22.5.tar.gz
-	md5sums_armv7h = 8541b6085fee8f8b51e0144df6470186
-	source_aarch64 = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-0.22.5.tar.gz
-	md5sums_aarch64 = 8541b6085fee8f8b51e0144df6470186
+	depends = python-async-timeout
+	noextract = aiohttp-1.0.1-cp35-cp35m-manylinux1_i686.whl
+	noextract = aiohttp-1.0.1-cp35-cp35m-manylinux1_x86_64.whl
+	source_i686 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-1.0.1-cp35-cp35m-manylinux1_i686.whl
+	md5sums_i686 = c14bf016215d7de402f67f7f1d83f410
+	source_x86_64 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-1.0.1-cp35-cp35m-manylinux1_x86_64.whl
+	md5sums_x86_64 = dfdceb6b5d2dd90bbc62c44dea0b6fa0
+	source_arm = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.0.1.tar.gz
+	md5sums_arm = a66cca5431c0818b1984a054f25f3bc6
+	source_armv6h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.0.1.tar.gz
+	md5sums_armv6h = a66cca5431c0818b1984a054f25f3bc6
+	source_armv7h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.0.1.tar.gz
+	md5sums_armv7h = a66cca5431c0818b1984a054f25f3bc6
+	source_aarch64 = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.0.1.tar.gz
+	md5sums_aarch64 = a66cca5431c0818b1984a054f25f3bc6
 
 pkgname = python-aiohttp
 
