@@ -9,7 +9,7 @@ pkgbase = firefox-extension-self-destructing-cookies
 	depends = firefox
 	noextract = firefox-extension-self-destructing-cookies.xpi
 	source = firefox-extension-self-destructing-cookies.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi
-	sha1sums = SKIP
+	sha1sums = c0a06ffcf02e75daa8c347ebe8f86dd2e5c8f3b9
 
 pkgname = firefox-extension-self-destructing-cookies
 

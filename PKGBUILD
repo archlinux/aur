@@ -12,7 +12,7 @@ makedepends=('unzip' )
 depends=("firefox")
 license=('GPL2')
 source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi" )
-sha1sums=('SKIP') # skip check because this changes rapidly
+sha1sums=('c0a06ffcf02e75daa8c347ebe8f86dd2e5c8f3b9')
 noextract=("${pkgname}.xpi")
 
 pkgver(){
