@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('ruby-bundler' 'imagemagick')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-md5sums=('499e2e8e9d7d1d81403ebf8f65c8ced6')
+md5sums=('f7c43c972401c45873f48337f0da2a51')
 
 
 prepare() {
@@ -65,7 +65,4 @@ build() {
 package() {
    cd numix-gtk-theme-${pkgver}
    make SASS="bundle exec sass" DESTDIR="${pkgdir}" install
-   #rm -rf .git .gitignore CREDITS LICENSE README.md Makefile Gemfile{,.lock} ruby circle.yml
-   #install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
-   #cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Numix-Green
 }
