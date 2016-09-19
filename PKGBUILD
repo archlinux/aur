@@ -9,8 +9,8 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.18
-pkgrel=2
+pkgver=1.9.19
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -23,8 +23,8 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('73585e5484986f25a9a8748d2b5f301a0b159328'
-	  '93723a9d03802d170f55eba5cf2d1f46140a4a7f'
+sha1sums=('8b581ec3582e0f68b923f683425d7cc55ea92c49'
+	  '111fad3623ab517ed5e5043fa78550b6340d7e44'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
