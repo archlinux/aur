@@ -6,8 +6,8 @@
 
 pkgname=root-extra
 _pkgname=root
-pkgver=6.06.06
-pkgrel=4
+pkgver=6.06.08
+pkgrel=1
 provides=('root')
 conflicts=('root')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled.'
@@ -47,14 +47,14 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'root.xml'
 'rootd'
 'settings.cmake')
-sha256sums=('0a7d702a130a260c72cb6ea754359eaee49a8c4531b31f23de0bfcafe3ce466b'
+sha256sums=('7cb836282014cce822ef589cad27811eb7a86d7fad45a871fa6b0e6319ec201a'
             '437ed0fb2c46d5ca8e37cc689f87dfe12429f6a243d4e5cf2d395a177de7e90f'
             'd9fea8991d42a78cd694f9798615274e96a185cbbd6608b4b80c76d5e43982a6'
             '51dbcf86d9973e7b7204fc20ff0c3c3aacea01ee126e14e2fb3c9f33825cc558'
             '71ed39f7e5a605a6a02e3d0ba79c997b8e7f02551898c27112eb78f07d9d8244'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
             '6a4ef7b32710d414ee47d16310b77b95e4cf1d3550209cf8a41d38a945d05e5f'
-            '64369519b7e00c708205479edf2c0d33a88e0162517bd2bfa42b759046bee130')
+            'b0aaf22cc5f4865f4c603fd66d8299cd86ebb29d79ca7b4de3bdf99d2113a87a')
 prepare(){
     ## https://sft.its.cern.ch/jira/browse/ROOT-6924
     cd ${_pkgname}-${pkgver}
