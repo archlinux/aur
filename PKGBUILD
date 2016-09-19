@@ -1,7 +1,7 @@
 # Maintainer: Elie Bouttier <elie+aur@bouttier.eu>
 
 pkgname='python2-ldap3'
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A strictly RFC 4510 conforming LDAP V3 pure Python client."
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/cannatag/ldap3"
 license=('LGPL')
 depends=('python2' 'python2-pyasn1')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/e9/f7/cc13b338154bc05baaa6f0269a01c8008e57982d84d26bb18b5cc338c4eb/ldap3-$pkgver.tar.gz)
-md5sums=('fef414d2153d25f888f83f5a03111b83')
+source=(https://pypi.python.org/packages/76/06/cd070e0a8675529ca25172018837672d3e4ec5b2e0269383d1c793167d08/ldap3-$pkgver.tar.gz)
+md5sums=('f8d350f1e64a3bfdd32f5910bd820270')
 
 build() {
   cd "$srcdir/ldap3-$pkgver"
