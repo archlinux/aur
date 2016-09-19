@@ -5,17 +5,23 @@
 # Contributor: Ricardo <rikardo.horo@gmail.com>
 
 pkgname=gromacs
-pkgver=5.1.2
+pkgver=2016
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('atlas-lapack-base' 'fftw' 'lesstif' 'libxml2')
+depends=('blas' 'lapack' 'cblas' 'zlib' 'hwloc' 'libx11')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('4a9a77711206c8cd0e1f4dd31f2edc569589e9dc')
+sha1sums=('2dcbb922acce6df74f0b381f80989a4da63cd0ce')
+
+#With gcc5 currently there are less errors in the tests
+# also the compilation is possible in cuda capable machines
+export CC=gcc-5
+export CXX=g++-5
+
 
 build() {
   mkdir -p ${srcdir}/{single,double}
@@ -34,6 +40,7 @@ build() {
         -DGMX_X11=ON \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
+        -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DGMX_LIBS_SUFFIX=_d
   make
@@ -44,6 +51,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DBUILD_SHARED_LIBS=ON \
         -DGMX_X11=ON \
+        -DGMX_BUILD_OWN_FFTW=ON \
         -DREGRESSIONTEST_DOWNLOAD=ON \
         -DCMAKE_INSTALL_LIBDIR=lib
   make
