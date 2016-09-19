@@ -1,0 +1,18 @@
+pkgbase = matwm2-git
+	pkgdesc = A nice tiling or floating window manager
+	pkgver = 0.1.2pre3.r626.g038b4ca
+	pkgrel = 1
+	url = https://github.com/segin/matwm2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxinerama
+	depends = libxft
+	source = matwm2-git::git+https://github.com/segin/matwm2.git
+	source = matwm2.desktop
+	md5sums = SKIP
+	md5sums = 8b9993b93fe1d5337b631165db7252c9
+
+pkgname = matwm2-git
+
