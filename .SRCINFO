@@ -1,20 +1,18 @@
 pkgbase = pnmixer-git
-	pkgdesc = Lightweight GTK3 volume control program that runs in the system tray
-	pkgver = 0.5.r116.gd7c3ea0
+	pkgdesc = GTK volume mixer applet that runs in the system tray.
+	pkgver = 0.7.r0.ge4dc99c
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/nicklan/pnmixer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = gtk3
+	depends = gtk2
 	depends = alsa-lib
-	depends = libx11
 	depends = libnotify
 	provides = pnmixer
 	conflicts = pnmixer
-	source = git://github.com/nicklan/pnmixer.git
+	source = pnmixer-git::git+https://github.com/nicklan/pnmixer.git
 	md5sums = SKIP
 
 pkgname = pnmixer-git
