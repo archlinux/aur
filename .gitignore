@@ -1,5 +1,5 @@
-khard-*-any.pkg.tar.xz
+*.pkg.tar.xz
+*.tar.gz
 pkg/
 src/
-v*.tar.gz
-upload_changes.sh
+prepare_upload.sh
