@@ -2,7 +2,7 @@
 
 pkgname=mongobooster
 _shortpkgver=3.0
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="The Smartest MongoDB Admin GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!upx')
 depends=('nss' 'libxtst' 'gcc-libs-multilib' 'alsa-lib' 'gconf' 'gtk2')
 
 source_x86_64=("https://s3.amazonaws.com/mongobooster/download/${_shortpkgver}/mongobooster-${pkgver}-amd64.deb")
-md5sums_x86_64=('0d80698f6700b5234735d99e82545d65')
+md5sums_x86_64=('ab6fd550b8108bdc7a1853e95f32ef42')
 
 package() {
     cd "${srcdir}"
