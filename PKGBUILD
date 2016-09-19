@@ -3,7 +3,7 @@
 _pkgname="clang_complete"
 pkgname="vim-clang-complete-git"
 pkgver=v1.8.r334.gc7f5673
-pkgrel=1
+pkgrel=2
 pkgdesc='Plugin which uses clang for accurately completing C and C++ code. Git version.'
 arch=(any)
 url='https://github.com/Rip-Rip/clang_complete'
