@@ -50,7 +50,7 @@ build() {
     --enable-xim \
     --enable-xterm-scroll \
     --disable-pixbuf \
-    --disable-frills
+    --enable-frills
   sed '/BUILTIN_GLYPHS/d' -i src/rxvt.h
   make
 }
