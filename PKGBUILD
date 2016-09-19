@@ -57,7 +57,7 @@ build() {
 
 package_rxvt-unicode-nobuiltins() {
   pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt)'
-  depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification')
+  depends=('rxvt-unicode-nobuiltins-terminfo' 'libxft' 'perl' 'startup-notification')
   optdepends=('gtk2-perl: to use the urxvt-tabbed')
 
   cd $_pkgbase-$pkgver
@@ -72,7 +72,7 @@ package_rxvt-unicode-nobuiltins() {
 
 package_rxvt-unicode-nobuiltins-terminfo() {
   pkgdesc='Terminfo files for urxvt'
-  conflict=('rxvt-unicode<=9.18-6')
+  conflict=('rxvt-unicode-nobuiltins<=9.18-6')
   install -dm 755 "$pkgdir/usr/share/"
   mv terminfo "$pkgdir/usr/share/"
 }
