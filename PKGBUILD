@@ -9,13 +9,14 @@ provides=("parity")
 url="https://github.com/ethcore/parity"
 license=('GPL-3.0')
 depends=('rocksdb')
-makedepends=('rust' 'cargo' 'git' 'python-pytoml')
+makedepends=('rust' 'cargo' 'git')
 source=('git+https://github.com/ethcore/parity.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	echo "$(python -c "print(__import__('pytoml').loads('\n'.join(open('Cargo.toml').read().splitlines()[:7]))['package']['version'])").$(git rev-list --count HEAD)"
+
+	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
 }
 
 build() {
