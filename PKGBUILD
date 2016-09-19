@@ -3,7 +3,7 @@
 pkgname=mattercontrol
 _pkgname=MatterControl
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
 license=('custom')
@@ -18,7 +18,7 @@ source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol.png'
 	'mattercontrol.install')
 sha256sums=('SKIP'
-            'da65ca0ec46b54c92190b8177bd8679c68be7eea850e00f9cbe42c37343a8339'
+            '4954c0de00d6701d37c15c73d3509d0d91e67339c08afa3b273e9343dfd5cc61'
             '0dcc1674e524acbd475034c0b7b8e6e3daa29a9a4d1ddb642d2b8a0b9af63025'
             '6470dfabd982109638c2e9fc01acca51dc1109ce07aec261dbc4c86ead9f9927'
             '9d7b9c5a3751e6fbbc1a2f5c092ba6fad610251db0009afde98290998ae9b949')
