@@ -1,0 +1,16 @@
+pkgbase = ntl-threading
+	pkgdesc = A Library for doing Number Theory
+	pkgver = 9.10.0
+	pkgrel = 1
+	url = http://www.shoup.net/ntl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gf2x
+	depends = gmp
+	provides = ntl
+	source = http://www.shoup.net/ntl/ntl-9.10.0.tar.gz
+	md5sums = 3846639577fc4bcba30f45e079d82a69
+
+pkgname = ntl-threading
+
