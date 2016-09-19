@@ -1,19 +1,19 @@
-# Maintainer: dag.robole at gmail dot com
-# Contributor: defendor at riseup dot net
+# Maintainer: theferdi265 at gmail dot com
 
 pkgname=gtk-theme-numix-solarized
-pkgver=20151122
-pkgrel=2
-pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme"
+pkgver=20160918
+pkgrel=1
+pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20"
 arch=('any')
-url="http://bitterologist.deviantart.com/art/Numix-Solarized-417575928"
+url="https://github.com/Ferdi265/numix-solarized-gtk-theme"
 license=('GPL3')
 depends=('gtk-engine-murrine')
-source=('https://github.com/corebob/numix-solarized/archive/v0.2.zip')
-md5sums=('920102c90ae0bb59a0b6799010d5934f')
+makedepends=('make')
+source=('https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/20160918/NumixSolarized.tar.gz')
+md5sums=('SKIP')
 
 package() {
-	mkdir -p ${pkgdir}/usr/share/themes/
-	cp -r ${srcdir}/numix-solarized-0.2/Numix\ Solarized ${pkgdir}/usr/share/themes/
-	cp -r ${srcdir}/numix-solarized-0.2/Numix\ Solarized\ Light ${pkgdir}/usr/share/themes/
+	mkdir -p $pkgdir/usr/share/themes
+	cp -r NumixSolarized $pkgdir/usr/share/themes
 }
+
