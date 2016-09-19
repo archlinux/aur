@@ -4,7 +4,8 @@
 
 pkgname=aacskeys
 pkgver="0.4.0e"
-pkgrel=5
+_dmover="dmo7"
+pkgrel=7
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
@@ -12,14 +13,14 @@ license=("custom")
 depends=("openssl")
 makedepends=("java-environment" "premake3")
 source=("http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
-	"http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-dmo2.diff.gz")
+	"http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-${_dmover}.diff.gz")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
-	  '325504f38a5ac1e9f7be740a602faa2c8d4b812c')
+	  '481c737983332a4a38aab0b292ba0cd958bb629c')
 
 prepare() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ../${pkgname}_$pkgver-dmo2.diff
+  patch -Np1 -i ../${pkgname}_${pkgver}-${_dmover}.diff
 
   # Paranoia: remove binaries, make sure they aren't used
   rm -rf bin lib
@@ -27,9 +28,14 @@ prepare() {
   # If java-environement is installed for the first time
   # we need to source profile script to set JAVA_HOME
   if [ -z $JAVA_HOME ]; then
+  	[ -e /etc/profile.d/openjdk.sh ] && source /etc/profile.d/openjdk.sh
 	[ -e /etc/profile.d/openjdk6.sh ] && source /etc/profile.d/openjdk6.sh
+	[ -e /etc/profile.d/openjdk7.sh ] && source /etc/profile.d/openjdk7.sh
+	[ -e /etc/profile.d/openjdk8.sh ] && source /etc/profile.d/openjdk8.sh
 	[ -e /etc/profile.d/jdk.sh ] && source /etc/profile.d/jdk.sh
+	[ -e /etc/profile.d/jdk6.sh ] && source /etc/profile.d/jdk6.sh
 	[ -e /etc/profile.d/jdk7.sh ] && source /etc/profile.d/jdk7.sh
+	[ -e /etc/profile.d/jdk8.sh ] && source /etc/profile.d/jdk8.sh
   fi
 
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
