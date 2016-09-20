@@ -3,7 +3,7 @@
 pkgname=shfmt
 _pkg=sh
 _name="${pkgname}"
-pkgver=20160908
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Format shell programs"
 url="https://github.com/mvdan/${_pkg}"
@@ -11,7 +11,7 @@ license=('BSD')
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
 options=('!strip')
-source=("git+${url}")
+source=("git+${url}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 prepare() {
