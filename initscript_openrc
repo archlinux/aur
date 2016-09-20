@@ -8,6 +8,8 @@ _DAEMON_ARGS=(
               ${WWWOFFLE_ARGS}
              )
 
+extra_started_commands="reload"
+
 depend() {
   use logger dns
 }
@@ -27,3 +29,10 @@ stop() {
   
   eend "$?"
 }
+
+reload() {
+  ebegin "Re-reading configuration file for $(basename "${_DAEMON}")"
+  wwwoffle "${_DAEMON_ARGS[@]}" -config
+  eend "$?"
+}
+

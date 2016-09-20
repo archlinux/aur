@@ -53,13 +53,13 @@ source=(
 )
 
 sha256sums=(
-  # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae'
-  'SKIP'
-  'cd05738f73b109dd074f6dd919300eeae55c2aa812a15e0ae61b32622423c867'
-  '0d5bfcd1e348f6bdad042f780b2ea8a235314d5750a66ae008a0ea391bc5cc11'
-  '04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869'
-  '47f3df8ed05888452c00f8246f97456a4c55499b67e59c40da272b0e7fb1f2df'
-  '1b5ac98fff7a5c7b32439410cffdbdd8224c19fe8ca02db948d1a4430de793fd'
+  # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
+  'SKIP'                                                             # Main source, SVN
+  'cd05738f73b109dd074f6dd919300eeae55c2aa812a15e0ae61b32622423c867' # conf_d_wwwoffle
+  '090329f13d8889a3e6e3b46b3f9de152eea0963b71c10a2a7dbafb7bb7e17120' # initscript_openrc
+  '04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869' # initscript_systemd
+  '3938777ba2baa7faac569d4a4a8a8cb7adeef786cfa84e991b6f03e991bcfae8' # initscript_sysvinit
+  '1b5ac98fff7a5c7b32439410cffdbdd8224c19fe8ca02db948d1a4430de793fd' # ${install}
 )
 
 _pgmver() {

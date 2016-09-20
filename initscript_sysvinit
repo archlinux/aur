@@ -26,23 +26,33 @@ case "$1" in
       add_daemon wwwoffle
       stat_done
     fi
-    ;;
+  ;;
   stop)
     stat_busy "Stopping ${_pretty_name}"
-    [ ! -z "$PID" ]  && kill $PID &> /dev/null
+    [ ! -z "$PID" ] && kill $PID &> /dev/null
     if [ $? -gt 0 ]; then
       stat_fail
     else
       rm_daemon wwwoffle
       stat_done
     fi
-    ;;
+  ;;
   restart)
     $0 stop
     sleep 5
     $0 start
     ;;
+  reload)
+    stat_busy "Re-reading configuration file of ${_pretty_name}"
+    wwwoffle "${_DAEMON_ARGS[@]}" -config
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      stat_done
+    fi
+  ;;
   *)
     echo "usage: $0 {start|stop|restart}"  
+  ;;
 esac
 exit 0
