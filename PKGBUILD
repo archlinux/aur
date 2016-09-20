@@ -6,7 +6,7 @@
 
 pkgname=emacs-lucid
 pkgver=25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -24,7 +24,8 @@ build() {
   cd "$srcdir"/emacs-$pkgver
   ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
-      --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings
+      --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
+      --with-gameuser=:games
   make
 }
 
@@ -38,10 +39,4 @@ package() {
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
-
-  # fix perms on /var/games
-  chmod 775 "$pkgdir"/var/games
-  chmod 775 "$pkgdir"/var/games/emacs
-  chmod 664 "$pkgdir"/var/games/emacs/*
-  chown -R root:games "$pkgdir"/var/games
 }
