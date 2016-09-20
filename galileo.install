@@ -1,0 +1,15 @@
+post_upgrade() {
+    # We assume group cannot exists if user is not there.
+    getent passwd galileo &>/dev/null || useradd -U -r -s /usr/bin/nologin galileo >/dev/null
+    echo "You should consider adding yourself to the group galileo to run it without root priviledges."
+    echo "[sudo] gpasswd -a <yourself> galileo"
+}
+
+post_install() {
+    post_upgrade
+}
+
+post_remove() {
+    userdel galileo >/dev/null
+    groupdel galileo >/dev/null
+}

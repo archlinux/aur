@@ -2,7 +2,7 @@
 
 pkgname=galileo
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 _bitbucket_folder=benallard-galileo-f0ebc19c748d
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server'
 license=('LGPL3')
@@ -14,6 +14,7 @@ sha256sums=('0dbf394c20acf2acb7226d2ea6609ff0199b8a6b63b545c2b8efffc6841ab411')
 arch=('any')
 options=(!emptydirs)
 backup=("etc/galileo/config")
+install=galileo.install
 
 prepare() {
   cd $srcdir/$_bitbucket_folder
