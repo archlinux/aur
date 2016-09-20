@@ -2,7 +2,7 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=16.9.44
+pkgver=16.9.60
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -32,18 +32,18 @@ prepare() {
   cd "$srcdir"
 
   # Get current version of application
-  pkgver=$(ls *.dsc | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
+  _pkgver=$(ls *.dsc | egrep -o '[0-9]+\.[0-9]+\.[0-9]+')
 
   # Check checksum
-  chksum=($(sed '15q;d' "${pkgname}_${pkgver}.dsc"))
-  filesum=($(sha256sum "${pkgname}_${pkgver}.tar.gz"))
+  chksum=($(sed '15q;d' "${pkgname}_${_pkgver}.dsc"))
+  filesum=($(sha256sum "${pkgname}_${_pkgver}.tar.gz"))
   if [ $chksum != $filesum  ]; then
       error "Checksums not matching"
       exit
   fi
 
   # Extract, patch
-  tar --strip-components=1 -zxvf "${pkgname}_${pkgver}.tar.gz"
+  tar --strip-components=1 -zxvf "${pkgname}_${_pkgver}.tar.gz"
   patch -p1 -i fix-path.patch
 }
 
