@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('make')
 source=('https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/20160919/NumixSolarized.tar.gz')
-md5sums=('SKIP')
+md5sums=('3649953306ed02961b6df0862912e674')
 
 package() {
 	mkdir -p $pkgdir/usr/share/themes
