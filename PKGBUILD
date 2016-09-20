@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-td4000'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother TD-4000 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp100136/td4000lpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp100137/td4000cupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp100136/td4000lpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp100137/td4000cupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('a60f9a77cd05a90129f1aa816c61c5344e5e7ca7ee5b282aa9de4d435d0c2dcb'
             '8fd901d31a7bfb4ab7b927c664b2cebd5621fc3cced517fb2cc286d8b3f1c0fd'
