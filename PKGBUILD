@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.17.2.r81.g685da5a
+pkgver=0.17.2.r206.g6f0c5e5
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -14,7 +14,7 @@ depends=('python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
          'python2-signedjson' 'python2-pymacaroons-pynacl'
-         'python2-service-identity')
+         'python2-service-identity' 'python2-msgpack')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
             'python2-matrix-angular-sdk-git: built-in web client (UNMAINTAINED)'
@@ -28,7 +28,7 @@ source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'deps-relax-checks.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         '6a088fd21cdaa4b93b1eee67a5cc0090')
+         '74d3d018e588d70ff0a22863d3d7aa4e')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 provides=('matrix-synapse')

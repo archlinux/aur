@@ -1,4 +1,4 @@
-From 728c3a13ef41e002995033f3e82938d4c72bd297 Mon Sep 17 00:00:00 2001
+From 4963b2744c1c0312648e8bb4fe82d476ed2c614f Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Thu, 11 Feb 2016 22:55:01 +0300
 Subject: [PATCH] python_dependencies.py: relax versioned deps on pynacl and
@@ -12,7 +12,7 @@ This reverts commit 07cf96ebf7c806ba570d167e200e54e07034f5ce.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 86e3d89..9eca07d 100644
+index b9e4177..4efb853 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -22,7 +22,7 @@ REQUIREMENTS = {
@@ -31,8 +31,8 @@ index 86e3d89..9eca07d 100644
 -    "pysaml2>=3.0.0,<4.0.0": ["saml2>=3.0.0,<4.0.0"],
 +    "pysaml2": ["saml2"],
      "pymacaroons-pynacl": ["pymacaroons"],
+     "msgpack-python>=0.3.0": ["msgpack"],
  }
- CONDITIONAL_REQUIREMENTS = {
 -- 
-2.9.2
+2.10.0
 
