@@ -3,7 +3,7 @@
 pkgname=play-emu-git
 _gitname=Play-Build
 pkgver=r3.462d986
-pkgrel=3
+pkgrel=4
 pkgdesc="Play! is an experimental Playstation 2 emulator."
 arch=('i686' 'x86_64')
 url="https://github.com/jpd002"
