@@ -2,7 +2,7 @@
 # Co-Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=geth-git
-pkgver=1.4.11.r0.gfed692f
+pkgver=1.4.12.r0.g421df86
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
