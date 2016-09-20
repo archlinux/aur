@@ -1,5 +1,5 @@
 pkgbase = play-emu-git
-	pkgdesc = Experimental Playstation 2 emulation (WIP!)
+	pkgdesc = Play! is an experimental Playstation 2 emulator.
 	pkgver = r3.462d986
 	pkgrel = 2
 	url = https://github.com/jpd002
