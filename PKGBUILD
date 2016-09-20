@@ -2,7 +2,7 @@
 
 pkgname=redo-sh
 _pkgname=redo
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Redo implementation in Bourne Shell."
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=("graphviz: dependency graph support via redo-dot")
 provides=("redo")
 conflicts=("redo-c-git" "redo-python")
 source=("http://daten.dieweltistgarnichtso.net/src/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b151c99be16ba61c2dc9fedb4260c63e06ad81ddcd224b64269f96e80b169b02')
+sha256sums=('07397514189354480dedc889e64b43a096e7d46385736dd9b726190b55913529')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
