@@ -1,6 +1,6 @@
 pkgbase = v
 	pkgdesc = z for vim
-	pkgver = 11
+	pkgver = 24
 	pkgrel = 1
 	url = https://github.com/rupa/v
 	arch = i686

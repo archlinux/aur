@@ -1,7 +1,7 @@
 # Maintainer: Mark Cohen <m@markpcohen.com>
 
 pkgname=v
-pkgver=11
+pkgver=24
 pkgrel=1
 pkgdesc='z for vim'
 arch=('i686' 'x86_64')
