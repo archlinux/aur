@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-git-iwlwifi
 	pkgdesc = Emmanuel Grumbach's fork of linux-firmware.git
-	pkgver = 20160331.91041a01
+	pkgver = 20160725.26a5c2a
 	pkgrel = 1
 	url = git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = linux-firmware-git-iwlwifi
 	license = GPL3
 	license = custom
 	makedepends = git
-	provides = linux-firmware=20160331.91041a01
+	provides = linux-firmware=20160725.26a5c2a
 	conflicts = linux-firmware-git
 	conflicts = linux-firmware
 	conflicts = kernel26-firmware
