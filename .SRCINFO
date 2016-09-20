@@ -1,6 +1,6 @@
 pkgbase = retroarch-git
 	pkgdesc = Reference frontend for the libretro API (Git-latest)
-	pkgver = 1.3.6.r1181.233925b
+	pkgver = 1.3.6.r1439.8095fa9
 	pkgrel = 1
 	url = http://www.libretro.com/
 	install = retroarch-git.install
@@ -49,9 +49,11 @@ pkgbase = retroarch-git
 	source = git+https://github.com/libretro/RetroArch.git
 	source = git+https://github.com/KhronosGroup/glslang.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	source = default-paths.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 68cca008fb0123d6f9b989a0dfd361f8de2a5c3dfe3670d0d04cb661bd9aea5c
 
 pkgname = retroarch-git
 

@@ -10,10 +10,10 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1181.233925b
+pkgver=1.3.6.r1439.8095fa9
 pkgrel=1
 #epoch=1
-git_name=RetroArch
+_gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
 arch=('i686' 'x86_64')
 conflicts=('retroarch')
@@ -37,21 +37,23 @@ optdepends=('libretro-overlays: Collection of overlays'
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git')
+        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
+	'default-paths.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+	    '68cca008fb0123d6f9b989a0dfd361f8de2a5c3dfe3670d0d04cb661bd9aea5c')
 
 pkgver() {
 
-  cd RetroArch
+  cd $_gitname
   printf "%s" "$(git describe --first-parent --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
 
 }
 
 prepare() {
 
-  cd RetroArch
+  cd $_gitname
 
   git submodule init deps/{glslang/glslang,SPIRV-Cross}
   git config submodule.glslang.url ../glslang
@@ -62,7 +64,12 @@ prepare() {
 
 build() {
 
-  cd RetroArch
+  cd $_gitname
+
+  # Patch retroarch.cfg for sane defaults (core path, core info, joypad autoconfig)
+  msg2 "Patching retroarch.cfg for default paths"
+  patch -p1 < $srcdir/default-paths.patch
+
   ./configure \
     --prefix='/usr' \
     --disable-jack \
