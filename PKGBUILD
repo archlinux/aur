@@ -3,7 +3,7 @@
 pkgname=matrix-synapse
 _pkgver=0.18.0
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
 arch=('any')
@@ -29,7 +29,7 @@ source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'deps-relax-checks.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         '6a088fd21cdaa4b93b1eee67a5cc0090')
+         '74d3d018e588d70ff0a22863d3d7aa4e')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
