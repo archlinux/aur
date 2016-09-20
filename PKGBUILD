@@ -1,15 +1,15 @@
 # Maintainer: Andrew Martin <amartin@avidandrew.com>
 
 pkgname=photomatix
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=2
 pkgdesc="Professional HDR Creation Program"
 url="http://hdrsoft.com/download/photomatix-linux.html"
 arch=('x86_64')
 license=('custom')
 depends=('libtiff' 'openexr' 'gtkmm3')
-source=("http://hdrsoft.com/download/linux/PhotomatixLinux_Ubuntu_16.04.deb")
-sha1sums=('28a56527b8e2f463b96653a348034e7b1db02c93')
+source=("https://hdrsoft.com/download/linux/PhotomatixLinux1.0.1_Ubuntu16.04.deb")
+sha1sums=('7331eab255f114f550c5726ce6235198fc8d19ad')
 install="photomatix.install"
 
 package() {
