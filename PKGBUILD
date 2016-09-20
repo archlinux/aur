@@ -2,8 +2,8 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=unifi-controller-beta
-pkgver=5.3.2
-_pkgver=0ae4319d
+pkgver=5.3.3
+_pkgver=4ca096f9
 pkgrel=1
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('any')
