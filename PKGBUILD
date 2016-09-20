@@ -1,8 +1,8 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 
 pkgname=freecad-netgen-git
-pkgver=r8448.15c368d
-pkgrel=4
+pkgver=0.17pre.r1752.g008fed6
+pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -26,7 +26,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 prepare() {
