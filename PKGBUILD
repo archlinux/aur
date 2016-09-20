@@ -5,19 +5,22 @@
 # Contributor: Bill Pijewski (https://github.com/pijewski)
 # Maintainer: Oliver Mangold <o.mangold@gmail.com>
 
-_npmname=jsontool
-pkgname=nodejs-jsontool # All lowercase
-pkgver=7.0.2
+_npmname=json
+pkgname=nodejs-json
+pkgver=9.0.4
 pkgrel=1
 pkgdesc="a 'json' command for massaging JSON on the command line"
 arch=(any)
 url="http://github.com/trentm/json"
 license=( 'MIT' )
 depends=('nodejs')
-optdepends=()
+makedepends=('npm')
+replaces=('nodejs-jsontool')
+conflicts=('nodejs-jsontool')
+provides=('nodejs-jsontool')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('9c7e82a8cd5b71b1c866c7da0e6595c15bd4ec83f288985a4ac94089b504cffb')
+sha256sums=('62924b083a96fdfa011c892789e0b298f0f91df8ce6115706506f9681f903494')
 
 package() {
   cd $srcdir
@@ -26,7 +29,8 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
   chown -R root:root "$pkgdir/usr"
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share"
+  mv "$pkgdir/usr/lib/node_modules/json/man" "$pkgdir/usr/share/"
   ln -s "/usr/lib/node_modules/$_npmname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
