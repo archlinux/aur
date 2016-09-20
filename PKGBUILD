@@ -34,7 +34,7 @@ sha1sums=('644e94a802a1ee0d8596b4686553d6d3b5851123'
           'SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     [ -d src ] && rm -r src/
     mkdir -p src/github.com/{docker,opencontainers,jessevdk,Sirupsen,fsouza,hashicorp}
     ln -s "$srcdir/docker-master" src/github.com/docker/docker
@@ -48,16 +48,16 @@ prepare() {
     mkdir -p src/golang.org/x/net
     tar zxf "$srcdir/net.tar.gz" -C src/golang.org/x/net/
     export GOPATH="$PWD"
-	go get -d ./
+    go get -d ./
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     export GOPATH="$PWD"
     make build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 ./$pkgname-$pkgver "$pkgdir/usr/bin/$pkgname"
+    cd "$pkgname-$pkgver"
+    install -Dm755 ./$pkgname-$pkgver "$pkgdir/usr/bin/$pkgname"
 }
