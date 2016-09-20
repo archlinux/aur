@@ -1,5 +1,5 @@
 pkgbase = libretro-overlays-git
-	pkgdesc = Collection of overlays for libretro
+	pkgdesc = Collection of overlays for libretro (git-latest)
 	pkgver = r101.ee11805
 	pkgrel = 1
 	url = http://www.libretro.com/
