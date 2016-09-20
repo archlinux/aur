@@ -1,0 +1,16 @@
+pkgbase = libretro-overlays-git
+	pkgdesc = Collection of overlays for libretro
+	pkgver = r101.ee11805
+	pkgrel = 1
+	url = http://www.libretro.com/
+	arch = any
+	groups = libretro
+	license = GPL
+	makedepends = git
+	provides = libretro-overlays
+	conflicts = libretro-overlays
+	source = libretro-overlays::git+https://github.com/libretro/common-overlays.git
+	sha256sums = SKIP
+
+pkgname = libretro-overlays-git
+
