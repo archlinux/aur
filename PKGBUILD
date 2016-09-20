@@ -7,14 +7,14 @@
 pkgname=cgns
 _PKGNAME=CGNS
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations'
 arch=('i686' 'x86_64')
 url='http://www.cgns.org'
 license=('custom')
 provides=('libcgns' 'libcgns-paraview')
 conflicts=('ligcgns2')
-depends=('tk' 'hdf5' 'libxmu' 'glu')
+depends=('tk' 'hdf5-cpp-fortran' 'libxmu' 'glu')
 makedepends=('gcc-fortran' 'cmake')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_PKGNAME}/${_PKGNAME}/archive/v${pkgver}.tar.gz)
 sha256sums=('8422c67994f8dc6a2f201523a14f6c7d7e16313bdd404c460c16079dbeafc662')
