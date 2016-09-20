@@ -3,14 +3,14 @@
 
 pkgname=libdivecomputer-git
 _pkgname=libdivecomputer
-pkgver=20150602.e6f51ea
+pkgver=20160919.03c2523
 pkgrel=1
 pkgdesc='Library for communication with dive computers'
 url='http://www.libdivecomputer.org/'
 license=('LGPL')
 arch=('i686' 'x86_64')
 makedepends=('git')
-source=("${_pkgname}::git://git.code.sf.net/p/libdivecomputer/code")
+source=('git://git.libdivecomputer.org/libdivecomputer.git')
 sha1sums=('SKIP')
 
 provides=('libdivecomputer')
