@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-td2130n'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother TD-2130N label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002221/td2130nlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp100007/td2130ncupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002221/td2130nlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp100007/td2130ncupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('ecb36df69d8bcac2be2acab2edcf73eaa14b4dcd33358b803b7ac4dd6508144b'
             'bd78139b453fd19197bf6527d7948b6e4ab142cc4aeb563a4ec5a124438139e9'
