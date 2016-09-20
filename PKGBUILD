@@ -2,8 +2,8 @@
 # Contributor: Weegee <weegee at devzero dot info> 
 
 pkgname=qlivestreamer-git
-pkgver=20160204
-pkgrel=2
+pkgver=20160909
+pkgrel=1
 pkgdesc="qLiveStreamer is a small Qt/C++ frontend for Livestreamer, inspired by gLiveStreamer."
 arch=('i686' 'x86_64')
 url="https://github.com/Hyperz/qLiveStreamer"
