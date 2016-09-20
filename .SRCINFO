@@ -9,6 +9,7 @@ pkgbase = fgx-qt5
 	makedepends = binutils
 	makedepends = coreutils
 	depends = qt5-base
+	depends = qt5-webkit
 	provides = fgx
 	conflicts = fgx
 	conflicts = fgx-git
