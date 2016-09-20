@@ -1,7 +1,7 @@
 pkgbase = brother-ql500
 	pkgdesc = LPR and CUPS driver for Brother QL-500 label printer
 	pkgver = 1.0.1r0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql500.install
 	arch = i686
