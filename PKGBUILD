@@ -4,7 +4,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r3900.5cd3701
+pkgver=r3918.8bf09b5
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -15,8 +15,12 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/citra-emu/ext-boost'
         'git+https://github.com/svn2github/inih'
         'git+https://github.com/neobrain/nihstro'
-        'git+https://github.com/citra-emu/ext-soundtouch')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/citra-emu/ext-soundtouch'
+        'git+https://github.com/philsquared/Catch'
+        'git+https://github.com/MerryMage/dynarmic'
+        'git+https://github.com/fmtlib/fmt'
+        'git+https://github.com/herumi/xbyak')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -32,6 +36,13 @@ prepare() {
 	git config submodule.inih.url "$srcdir/inih"
 	git config submodule.nihstro.url "$srcdir/nihstro"
 	git config submodule.soundtouch.url "$srcdir/ext-soundtouch"
+	git config submodule.catch.url "$srcdir/Catch"
+	git config submodule.dynarmic.url "$srcdir/dynarmic"
+	git submodule update
+
+	cd externals/dynarmic
+	git config submodule.externals/fmt.url "$srcdir/fmt"
+	git config submodule.externals/xbyak.url "$srcdir/xbyak"
 	git submodule update
 }
 
@@ -39,6 +50,11 @@ build() {
 	cd "$srcdir/$_pkgbase/build"
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
+}
+
+check() {
+	cd "$srcdir/$_pkgbase/build"
+	make test
 }
 
 package_citra-git() {
