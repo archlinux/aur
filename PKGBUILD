@@ -2,14 +2,14 @@
 
 pkgname=rustfmt
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for formatting Rust code according to style guidelines"
 url="https://github.com/rust-lang-nursery/rustfmt"
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('Apache' 'MIT')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('f942beb83e9bc352bb5920dccf5be2a66a4596577e85331591fc7827e7d07b97')
+source=("https://github.com/rust-lang-nursery/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('bfec27178ed7fcc2da27ac46604abb231626e3f0a8800d70128d0b9a152c22f7')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -18,6 +18,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/rustfmt "$pkgdir/usr/bin/rustfmt"
-  install -Dm755 target/release/cargo-fmt "$pkgdir/usr/bin/cargo-fmt"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT LICENSE-APACHE
+  cd target/release
+  install -Dm755 -t "$pkgdir/usr/bin/" rustfmt cargo-fmt
 }
