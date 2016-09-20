@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.13.92
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -16,8 +16,10 @@ optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 options=('!emptydirs')
+
+# webkitgtk's signature scheme (sha1-file-as-pgp-message) is bananas and not supported
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha1sums=('f4d9039c80c44cd4ae0c182fbe409876f30605e1')
+sha256sums=('0513ad836c624a3d24bdf1a99f4b4aead984ab6684150bc70f16db651590ea0a')
 
 provides=('webkit2gtk')
 conflicts=('webkit2gtk')
