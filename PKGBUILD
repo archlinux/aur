@@ -6,13 +6,13 @@
 
 pkgname=firefox-unbranded
 _pkgname=firefox
-pkgver=48.0.1
+pkgver=49.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-provides=('firefox=48')
+provides=('firefox=49')
 conflicts=('firefox')
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
@@ -27,14 +27,13 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox.desktop
         firefox-install-dir.patch
         vendor.js
-        firefox-gtk3-20.patch
+
         no-libnotify.patch)
-sha256sums=('fcc08696dd40e42dc2bc2de99aed9ed9f15ac581364375b6bef2501c06ac5fe7'
+sha256sums=('6f7069fa94688f9fb5aa3bbb2ffa78456825067dd984afa714d74b3f0c6eaf63'
 	    '84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f'
             '9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9015feb60a23af7a3ac06620dd5fa0fbc5d1f1eec6ed65c0e530a63b07f7a992'
-            'c984c8bda3c173349d98f3fa71ec8ff8e8b74e6ca20a3f39f33596dbb4c4d1e8'
             'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
 
 prepare() {
@@ -42,9 +41,6 @@ prepare() {
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
-  patch -Np1 -i ../firefox-gtk3-20.patch
 
   # Notifications with libnotify are broken
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
