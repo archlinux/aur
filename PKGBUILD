@@ -7,19 +7,16 @@
 #
 # note: if you get "No suitable archive manager found" errors, you need
 #       to adjust Xfce Settings > MIME Type Editor associations for Engrampa
-#
-# Set _gtk_ver to 3 to compile against GTK3
 
-_gtk_ver=2
 _pkgname=engrampa
 pkgname=${_pkgname}-thunar
-pkgver=1.14.1
+pkgver=1.16.0
 pkgrel=1
-pkgdesc="Archive manipulator for MATE without Caja dependency (GTK2 by default, change _gtk_ver to build against GTK3)"
+pkgdesc="Archive manipulator for MATE without Caja dependency"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('bzip2' 'desktop-file-utils' 'gzip' 'libarchive' 'tar')
+depends=('bzip2' 'desktop-file-utils' 'gzip' 'libarchive' 'tar' 'gtk3')
 makedepends=('mate-common' 'yelp-tools')
 optdepends=('unrar: for RAR uncompression'
             'zip: for ZIP archives' 'unzip: for ZIP archives'
@@ -27,22 +24,12 @@ optdepends=('unrar: for RAR uncompression'
             'unace: extraction tool for the proprietary ace archive format'
             'yelp: for reading MATE help documents'
             'thunar-archive-plugin: create and extract archives in Thunar')
-provides=()
-conflicts=("${_pkgname}" "${_pkgname}-gtk3")
-
-if [ "${_gtk_ver}" == '3' ] ; then
-	depends+=('gtk3')
-	provides+=("${_pkgname}-gtk3")
-else
-	depends+=('gtk2')
-	provides+=("${_pkgname}")
-fi
-
+provides+=("${_pkgname}")
 options=( '!emptydirs')
 source=("http://pub.mate-desktop.org/releases/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
         'fr-rpm-bsdtar.patch'
         'engrampa.tap')
-sha1sums=('1245f5203b37b842cfaf818781b17cd22f1234b1'
+sha1sums=('90865e0c59bec33ed899c3a0a8d2787aa09d526b'
           '219b05a979bf6f249aaae27964f02345fd81168d'
           '84f023a660c77cf046cff71d1d890f7de5af4110')
 
@@ -57,7 +44,6 @@ build() {
     ./configure \
         --prefix=/usr \
         --libexecdir=/usr/lib/${_pkgname} \
-        --with-gtk=${_gtk_ver}.0 \
         --disable-static \
         --disable-packagekit \
         --disable-caja-actions \
