@@ -2,7 +2,7 @@
 
 pkgname=freecad-netgen-git
 pkgver=r8448.15c368d
-pkgrel=3
+pkgrel=4
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -13,6 +13,8 @@ depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade' 'med'
 makedepends=('git' 'xerces-c' 'boost' 'cmake' 'coin' 'desktop-file-utils'
              'eigen' 'gcc-fortran' 'swig' 'patch')
 optdepends=('python2-matplotlib' 'pycollada-git' 'python2-pyqt4')
+provides=('freecad')
+conflicts=('freecad')
 source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
         "freecad.desktop"
 	"freecad.xml"
