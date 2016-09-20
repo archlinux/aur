@@ -49,8 +49,6 @@ prepare() {
   gclient sync
 
   git checkout tags/$pkgver
-
-  sed "s/@VERSION@/$pkgver/g" -i "$srcdir/v8.pc"
 }
 
 build() {
