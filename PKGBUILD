@@ -1,7 +1,7 @@
 # Maintainer: Markus Faerevaag <m@frv.ag>
 
 pkgname=wd-git
-pkgver=0.1.1.r0.g33ce2dd
+pkgver=0.1.2.r0.g7f674f9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Jump to custom directories in terminal"
