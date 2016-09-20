@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql650td'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-650TD label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -12,9 +12,11 @@ depends='cups'
 if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
+provides=('brother-ql650td-cupswrapper' 'brother-ql650td-lpr')
+conflicts=('brother-ql650td-cupswrapper' 'brother-ql650td-lpr')
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002185/ql650tdlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002187/ql650tdcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002185/ql650tdlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002187/ql650tdcupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('371301a0c297bb0879f387ab709f60304376d2a94ae9989c05f3ee86b8a0971d'
             '0aa08b6214de134ed6828fef8ea6ae1975077947a577f62904d3e618d3f4c7b0'
