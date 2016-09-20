@@ -26,7 +26,7 @@ sha1sums=('ef6b319dedf921f410cfc39ea6912dc79dddf79b'
           '96b3f4bc5a18220744b4489d2c2a3dd3fde40091')
 
 prepare() {
-	cd "${srcdir}/uim-${pkgver}"
+    cd "${srcdir}/uim-${pkgver}"
 
     while read p; do
 
@@ -47,27 +47,27 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/uim-${pkgver}"
+    cd "${srcdir}/uim-${pkgver}"
 
     export QT_SELECT=qt5
 
-	./configure \
-		--disable-rpath \
-		--prefix=/usr \
-		--libexecdir=/usr/lib/uim \
-		--with-anthy-utf8 \
-		--with-gtk \
-		--with-gtk3 \
-		--with-qt4 \
-		--with-qt4-immodule \
-		--with-qt5 \
-		--with-qt5-immodule \
+    ./configure \
+        --disable-rpath \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/uim \
+        --with-anthy-utf8 \
+        --with-gtk \
+        --with-gtk3 \
+        --with-qt4 \
+        --with-qt4-immodule \
+        --with-qt5 \
+        --with-qt5-immodule \
 
-	make
+    make
 }
 
 package() {
-	cd "${srcdir}/uim-${pkgver}"
-	make DESTDIR="${pkgdir}" install -j1 # FS#41112
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    cd "${srcdir}/uim-${pkgver}"
+    make DESTDIR="${pkgdir}" install -j1 # FS#41112
+    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
