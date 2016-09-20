@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org
 
 pkgname=squishyball
-pkgver=20140210.19518
+pkgver=20140210.19583
 pkgrel=1
 pkgdesc='Perform sample comparison testing on the command line'
 url='https://svn.xiph.org/trunk/squishyball/'
