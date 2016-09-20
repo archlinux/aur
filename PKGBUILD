@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=epiphany-unstable
-pkgver=3.21.92
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (unstable version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=(libsoup libnotify gsettings-desktop-schemas 'webkit2gtk-unstable>=2.13.
 makedepends=(intltool itstool docbook-xml startup-notification
              gobject-introspection)
 source=(http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz)
-md5sums=('d6b0d578747fc1adcfb9494bbe8a419b')
+md5sums=('8cc2aaca0d4571d8a09f0d7d86fe6517')
 replaces=("$_pkgname")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
