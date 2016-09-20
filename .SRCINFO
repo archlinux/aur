@@ -1,12 +1,13 @@
 pkgbase = mate-netbook-dev
 	pkgdesc = A simple window management tool .
 	pkgver = 1.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = mate-common-dev
+	makedepends = intltool
 	depends = gtk3
 	depends = libfakekey
 	depends = libwnck3
@@ -21,5 +22,5 @@ pkgbase = mate-netbook-dev
 
 pkgname = mate-netbook-dev
 	pkgdesc = A simple window management tool . (GTK3 version)
-	groups = mate-extra
+	groups = mate-extra-gtk3
 
