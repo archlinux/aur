@@ -1,12 +1,16 @@
 pkgbase = play-emu-git
 	pkgdesc = Experimental Playstation 2 emulation (WIP!)
 	pkgver = r3.462d986
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpd002
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = boost
+	depends = cmake
+	depends = glew
+	depends = mysql++
 	depends = openal
 	depends = qt5-base
 	depends = zlib

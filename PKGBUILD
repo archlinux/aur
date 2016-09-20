@@ -3,13 +3,14 @@
 pkgname=play-emu-git
 _gitname=Play-Build
 pkgver=r3.462d986
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Playstation 2 emulation (WIP!)"
 arch=('i686' 'x86_64')
 url="https://github.com/jpd002"
 license=('GPL')
 makedepends=('git')
-depends=('openal' 'qt5-base' 'zlib')
+depends=('boost' 'cmake' 'glew' 'mysql++' 'openal' 
+	 'qt5-base' 'zlib')
 source=('Play-Build::git+https://github.com/jpd002/Play-Build.git')
 md5sums=('SKIP')
 
