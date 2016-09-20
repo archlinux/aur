@@ -16,8 +16,8 @@ source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}"
         "zfs.initcpio.hook")
 sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
-            '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
-            '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
+            '17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77'
+            '90d50df503464e8d76770488dbd491cb633ee27984d4d3a31b03f1a4e7492038')
 
 build() {
     cd "${srcdir}/zfs"
