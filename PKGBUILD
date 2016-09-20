@@ -5,30 +5,26 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=24.5
-pkgrel=2
+pkgver=25.1
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls' 'libxaw')
-install=emacs.install
+depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls' 'libxrandr' 'libxinerama')
 conflicts=('emacs')
 provides=('emacs')
-source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz
-        0020-Always-define-gmalloc-etc.-in-src-gmalloc.c.patch)
-md5sums=('50560ee00bac9bb9cf0e822764cd0832'
-         '841bd19e15f8ab3c2ab94e82529ca0ea')
-
-prepare() {
-  cd "$srcdir"/emacs-$pkgver
-  patch -N -p1 -i ../0020-Always-define-gmalloc-etc.-in-src-gmalloc.c.patch
-}
+validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
+              '28D3BED851FDF3AB57FEF93C233587A47C207910')
+source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz{,.sig})
+md5sums=('4f3d42fb22823a659e16bfa89078a74c'
+	     'SKIP')
 
 build() {
   cd "$srcdir"/emacs-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib \
-    --localstatedir=/var --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings
+  ./configure \
+      --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
+      --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings
   make
 }
 
@@ -39,9 +35,6 @@ package() {
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
-
-  # remove conflict with texinfo
-  rm "$pkgdir"/usr/share/info/info.info.gz
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
