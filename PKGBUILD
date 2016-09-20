@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-td4100n'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother TD-4100N label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp100141/td4100nlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp100142/td4100ncupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp100141/td4100nlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp100142/td4100ncupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('2591432602d4e2e3f7dbe471bac88f783845047d753d7910ea96614c00bb48b0'
             '1ab776174363eb709bae52745b5b18492a6394a0a6877ba2f44f6ec5cfe23247'
