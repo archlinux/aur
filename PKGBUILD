@@ -2,7 +2,7 @@
 # Contributor: mjheagle <mjheagle8@gmail.com>
 _name='zsh-syntax-highlighting'
 pkgname="${_name}-git"
-pkgver=0.4.0.r11.g38c3ac8
+pkgver=0.4.0.r167.gfdaeec4
 pkgrel=1
 pkgdesc='Fish shell like syntax highlighting for Zsh'
 url='https://github.com/zsh-users/zsh-syntax-highlighting'
