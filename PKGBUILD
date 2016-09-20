@@ -2,34 +2,41 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=vim-pydyn-xclip
-pkgver=7.4.2334
-_versiondir=74
+pkgver=8.0.0005
+_versiondir=80
 pkgrel=1
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
 arch=(i686 x86_64)
 url='http://www.vim.org'
 license=('custom:vim')
-depends=("vim-runtime" 'gpm' 'ruby' 'lua' 'python' 'python2' 'acl')
-makedepends=(gpm python2 python ruby libxt lua)
-provides=("vim" "vim-python3" "xxd")
+depends=('vim-runtime' 'gpm' 'acl')
+makedepends=(gpm python2 python ruby libxt lua gawk tcl)
+optdepends=('python2: Python 2 language support'
+            'python: Python 3 language support'
+            'ruby: Ruby language support'
+            'lua: Lua language support'
+            'perl: Perl language support'
+            'tcl: Tcl language support')
+provides=('vim' 'vim-python3' 'xxd')
 conflicts=('vim-minimal' 'vim' 'vim-python3' 'gvim' 'gvim-python3')
+replaces=('vim-python3' 'vim-minimal' 'gvim-python3')
 source=(vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz
         vimrc
         archlinux.vim)
-sha1sums=('3a1cf404cf54ec0ea09d86202f63d345cf3b284a'
-          '15ebf3f48693f1f219fe2d8edb7643683139eb6b'
+sha1sums=('a18072d7c2e22fbd50c3a6b92075a21e2b616160'
+          '0612c9d685ca7bb3b7bad8ebb9eaaefd5e724376'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
 prepare() {
-  cd vim-$pkgver
+  cd vim-$pkgver/src
 
   # define the place for the global (g)vimrc file (set to /etc/vimrc)
-  sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' \
-    src/feature.h
-  sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' \
-    src/feature.h
+  sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' feature.h
+  sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' feature.h
 
-  (cd src && autoconf)
+  autoconf
+
+  cd "$srcdir"
 }
 
 build() {
@@ -47,19 +54,19 @@ build() {
     --enable-multibyte \
     --enable-cscope \
     --enable-netbeans \
-    --enable-perlinterp \
-    --enable-pythoninterp \
-    --enable-python3interp \
-    --enable-rubyinterp \
-    --enable-luainterp
+    --enable-perlinterp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-python3interp=dynamic \
+    --enable-rubyinterp=dynamic \
+    --enable-luainterp=dynamic \
+    --enable-tclinterp=dynamic
 
   make
 }
 
 check() {
-  # disable tests because they seem to freeze
   cd "${srcdir}"/vim-$pkgver
-  #make test
+  TERM=xterm make -j1 test
 }
 
 package() {
@@ -80,6 +87,10 @@ package() {
 
   # Runtime provided by runtime package
   rm -r "${pkgdir}"/usr/share/vim
+
+
+  # no desktop files and icons
+  rm -r "${pkgdir}"/usr/share/{applications,icons}
 
   # license
   install -Dm644 runtime/doc/uganda.txt \
