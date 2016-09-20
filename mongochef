@@ -15,41 +15,9 @@ else
     echo "Using JDK / JRE 8 at "$JDK_PATH" for mongochef execution."
 fi  
 
-
-# Decide whether to use GTK2 or GTK3 based
-# on KDE being used or not
-# PURPOSE: Avoid crash due to bug in oxygen-gtk theme engine
-if [ "$1" = "useGtk2" ]; then
-	desktop="don't care"
-	useGtk2="yes"
-else
-	desktop=""
-	ps -e | grep -E '^.* kded4$' > /dev/null
-	if [ $? -eq 0 ]; then
-		desktop="KDE"
-	elif [ -n "$XDG_DATA_DIRS" ]; then
-		desktop=$XDG_DATA_DIRS
-	elif [ -n "$XDG_CURRENT_DESKTOP" ]; then
-		desktop=$XDG_CURRENT_DESKTOP
-	elif [ -n "$DESKTOP_SESSION" ]; then
-		desktop=$DESKTOP_SESSION
-	fi
-
-	echo $desktop |  grep -i KDE  > /dev/null
-	if [ $? -eq 0 ]; then
-		desktop="KDE"
-		useGtk2="no"
-	else
-		useGtk2="yes"
-		desktop="not KDE"
-	fi
-fi
-
-if [ "$useGtk2" = "yes" ]; then
-	# as workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=435773
-	export SWT_GTK3=0
-fi
+# JavaFX charts rendering requires this to be set.
+export SWT_GTK3=0
 
 # Launch the java program
-$JDK_PATH -jar /opt/mongochef/data-man-mongodb-core-*.jar
+$JDK_PATH -Dprism.order=sw -jar /opt/mongochef/data-man-mongodb-core-*.jar
 
