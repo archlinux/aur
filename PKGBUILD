@@ -1,15 +1,15 @@
 # Contributor: M0Rf30
 
 pkgname=capanalysis
-pkgver=v1.2.0
-pkgrel=3
+pkgver=v1.2.0.r45.gbc8e15d
+pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="PCAP files from another point of view"
 url="http://www.capanalysis.net/"
 license=('GPL')
 depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl' 'zlib' 'wireshark-cli' 'apache' 'php-apache' 'php-sqlite' 'php-pgsql' 'postgresql')
 makedepends=('xxd' 'ndpi')
-source=('capanalysis::git+https://github.com/xplico/CapAnalysis.git'
+source=('capanalysis::git+https://github.com/M0Rf30/CapAnalysis.git'
 	'xplico::git+https://github.com/M0Rf30/xplico.git'
 	capanalysis.service
 	capana.conf)
@@ -36,7 +36,7 @@ package() {
 
 pkgver() {
   cd capanalysis
-  echo $(git tag)
+  echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 md5sums=('SKIP'
