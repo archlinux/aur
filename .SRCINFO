@@ -1,0 +1,17 @@
+pkgbase = retroarch-assets-xmb-git
+	pkgdesc = XMB menu assets for RetroArch
+	pkgver = r228.47b809a
+	pkgrel = 1
+	url = http://www.libretro.com/
+	arch = any
+	groups = libretro
+	license = GPL
+	makedepends = git
+	depends = retroarch
+	provides = retroarch-assets-xmb
+	conflicts = retroarch-assets-xmb
+	source = git+https://github.com/libretro/retroarch-assets.git
+	sha256sums = SKIP
+
+pkgname = retroarch-assets-xmb-git
+
