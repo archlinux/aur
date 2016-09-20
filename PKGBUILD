@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql710w'
-pkgver=1.0.2
-pkgrel=0
+pkgver=1.0.2r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-710W label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002197/ql710wlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002199/ql710wcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002197/ql710wlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002199/ql710wcupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('02c8d6a5dd51f6fb9b446628c5d705d5ce2f059c072b9862b8014ef9b6305282'
             '3c3c26021591af23737f677f3462ec2c2c6fd072b5a614df649ffa01afc2ce27'

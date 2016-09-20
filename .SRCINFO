@@ -1,7 +1,7 @@
 pkgbase = brother-ql710w
 	pkgdesc = LPR and CUPS driver for Brother QL-710W label printer
-	pkgver = 1.0.2
-	pkgrel = 0
+	pkgver = 1.0.2r0
+	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-ql710w.install
 	arch = i686
