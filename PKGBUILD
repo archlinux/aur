@@ -1,7 +1,7 @@
 # Maintainer: Paul Weingardt <paulweingardt@web.de>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=2.6
+pkgver=2.8
 pkgrel=1
 pkgdesc="A powerful GUI for Git"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-pyinotify>=0.7.1: for inotify support'
 'tk: to use the built-in ssh-askpass handler')
 options=('!makeflags')
 source=("https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('ed566548793b4905005528d5e612c41bea5b5f7602649c0eec0787fbb0ab9cd2')
+sha256sums=('9962098bb73c2c13ea32ded01821e447e0c9fbece3d213eaccf6bb02413ccea5')
 
 build() {
 	cd "$srcdir/${pkgname}-$pkgver"
