@@ -2,19 +2,19 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql500'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-500 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
 license=('custom')
-depends='cups'
+depends=('cups')
 if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002167/ql550lpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002169/ql550cupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002167/ql550lpr-1.0.1-0.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002169/ql550cupswrapper-1.0.1-0.i386.rpm"
         'LICENSE')
 sha256sums=('83f622668f70785887f2645352a4634e649761fbf8f83dad9bb991ed6e2534e5'
             'a1ee42684b3d882fb786bfc5bcaec450a8c5e29f0750999b5b7d7e594be5986f'
