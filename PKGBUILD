@@ -27,7 +27,7 @@ prepare() {
 }
 
 package() {
-  _base_dir="${srcdir}/museeks-linux-${_platform}"
+  _base_dir="${srcdir}/Museeks-linux-${_platform}"
 
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
