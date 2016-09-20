@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.17.3
+_pkgver=0.18.0
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -15,7 +15,7 @@ depends=('python2-twisted>=15.1.0' 'python2-service-identity'
          'python2-pysaml2' 'python2-setuptools'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
          'python2-signedjson' 'python2-pymacaroons-pynacl'
-         'python2-service-identity')
+         'python2-service-identity' 'python2-msgpack')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial' 'git')
 optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
             'python2-matrix-angular-sdk: built-in web client (UNMAINTAINED)'
@@ -36,6 +36,7 @@ install='synapse.install'
 prepare() {
 	cd "synapse"
 	git apply -3 "$srcdir/deps-relax-checks.patch"
+#	git am -3 < "$srcdir/deps-relax-checks.patch"
 }
 
 build() {
