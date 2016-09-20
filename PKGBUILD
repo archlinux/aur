@@ -30,7 +30,7 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
 makedepends=('git' 'vulkan-icd-loader')
 install=$pkgname.install
 optdepends=('libretro-overlays-git: Collection of overlays'
-	    'libretro-shaders-git: Collection of shaders'
+	    'libretro-shaders-all-git: Collection of shaders'
 	    'retroarch-assets-xmb: XMB menu assets'
 	    'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)'
 	    'xdg-utils-git: Includes updated screensaver suspend fixes')
