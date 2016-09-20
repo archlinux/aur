@@ -17,7 +17,7 @@ pre_install() {
     echo "   # Capanalysis"
     echo "   Include conf/extra/httpd-capana.conf"
     echo "in /etc/httpd/conf/httpd.conf"
-    echo "Uncomment sqlite, pear, pdo_pgsql and gettext in /etc/php/php.ini"
+    echo "Uncomment sqlite, pdo_pgsql and gettext in /etc/php/php.ini"
 }
 
 post_remove(){
