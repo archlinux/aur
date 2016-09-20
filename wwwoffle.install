@@ -39,13 +39,16 @@ post_upgrade() {
   echo "Set bind-ipv4 = none in wwwoffle.conf if you get ipv4 related warnings."
   echo ""
   echo "-------------------"
-  if [ ! `grep wwwoffle /etc/group` ]; then
+  if [ ! `grep -E '^wwwoffle\:' /etc/group` ]; then
     echo ">>> Adding group wwwoffle."
-    groupadd wwwoffle &> /dev/null;
+    groupadd wwwoffle &> /dev/null
   fi
+  if [ ! `grep -E '^wwwoffle\:' /etc/passwd` ]; then
   id wwwoffle &> /dev/null || \
-    (echo ">>> Adding user wwwoffle." && useradd -g wwwoffle wwwoffle)
-  chown -R wwwoffle:wwwoffle /var/spool/wwwoffle /etc/wwwoffle
+    echo ">>> Adding user wwwoffle."
+    useradd -g wwwoffle wwwoffle
+  fi
+  chown -R wwwoffle:wwwoffle /var/spool/wwwoffle
 }
 
 pre_remove() {

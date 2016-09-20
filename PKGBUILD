@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
 epoch=1
 pkgver=2.9j+svn2227
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, abonnement, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -59,7 +59,7 @@ sha256sums=(
   '090329f13d8889a3e6e3b46b3f9de152eea0963b71c10a2a7dbafb7bb7e17120' # initscript_openrc
   '04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869' # initscript_systemd
   '3938777ba2baa7faac569d4a4a8a8cb7adeef786cfa84e991b6f03e991bcfae8' # initscript_sysvinit
-  '1b5ac98fff7a5c7b32439410cffdbdd8224c19fe8ca02db948d1a4430de793fd' # ${install}
+  '5d31c140b112cf3fdd8069b4049bbd13fc91699d87086a3118381e21a3aa0f8e' # ${install}
 )
 
 _pgmver() {
@@ -196,4 +196,7 @@ package() {
 
   ### Move config into final place (such that it is not automatically used, but user actually has to do some manual work).
   mv "${pkgdir}/etc/wwwoffle/wwwoffle.conf" "${pkgdir}/etc/wwwoffle/wwwoffle.conf.template"
+  
+  ### Set permissions of spool directory.
+  chmod -R ug=Xwr "${pkgdir}/var/spool/wwwoffle"
 }
