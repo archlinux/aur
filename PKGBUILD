@@ -10,8 +10,8 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1439.8095fa9
-pkgrel=3
+pkgver=1.3.6.r1440.6ac73c5
+pkgrel=1
 #epoch=1
 _gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
@@ -42,7 +42,7 @@ source=('git+https://github.com/libretro/RetroArch.git'
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-	    '68cca008fb0123d6f9b989a0dfd361f8de2a5c3dfe3670d0d04cb661bd9aea5c')
+	    '37aab0127cd15a7fa08e5f66982da14296e4c4b56807b054863d1f9eff5c64df')
 
 pkgver() {
 

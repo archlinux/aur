@@ -1,5 +1,5 @@
 --- RetroArch.orig/retroarch.cfg	2016-09-20 10:31:42.688072700 -0400
-+++ RetroArch/retroarch.cfg	2016-09-20 10:53:39.169243702 -0400
++++ RetroArch/retroarch.cfg	2016-09-20 13:45:50.057006464 -0400
 @@ -35,10 +35,10 @@
  # libretro_path = "/path/to/libretro.so"
  
@@ -9,7 +9,7 @@
  
  # A directory for where to search for libretro core information.
 -# libretro_info_path =
-+libretro_info_path = /usr/share/libretro/info
++libretro_info_path = /usr/lib/libretro
  
  # Sets log level for libretro cores (GET_LOG_INTERFACE).
  # If a log level issued by a libretro core is below libretro_log_level, it is ignored.
