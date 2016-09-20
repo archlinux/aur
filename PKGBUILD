@@ -1,7 +1,7 @@
 # Maintainer: Paul Weingardt <paulweingardt@web.de>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola-git
-pkgver=v2.1.2.52.gd3eb9f3
+pkgver=v2.8.38.g4aa46f4
 pkgrel=1
 pkgdesc="A powerful GUI for Git"
 arch=('any')
