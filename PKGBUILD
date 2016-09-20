@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=substance-painter
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Substance Painter is a 3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
@@ -15,12 +15,12 @@ depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3'
 )
 makedepends=('pkgextract')
 options=('!strip')
-source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-painter/2.x/Substance_Painter_2-2.2.0-1.el6.standard.full.x86_64.rpm'
+source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-painter/2.x/Substance_Painter_2-2.3.0-1.el6.standard.full.x86_64.rpm'
         'substance-painter-icon.png'
         'substance-painter.desktop'
         'substance-painter')
 noextract=()
-md5sums=('4baa9b83e0407dc349e3a95b33c081e5'
+md5sums=('49119c72800b0e2547baf0c830c42240'
          'd5715b07d3b99cc2083b9e09f9f3fb20'
          '1692487754dc28788c30f7d7d469a1dd'
          '2f33ebbfed213eb3e692e5f366af526e')
