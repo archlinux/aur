@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=WRPN
+Comment=Windows Reverse Polish Notation (HP-16C)
+Exec=wrpn
+Icon=wrpn
+Terminal=false
+Type=Application
+Categories=Utility;
