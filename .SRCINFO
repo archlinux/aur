@@ -1,0 +1,17 @@
+pkgbase = retroarch-autoconfig-udev-git
+	pkgdesc = udev joypad autoconfig for RetroArch (git-latest)
+	pkgver = r769.e2c6df1
+	pkgrel = 1
+	url = http://www.libretro.com/
+	arch = any
+	groups = libretro
+	license = GPL
+	makedepends = git
+	depends = retroarch
+	provides = retroarch-autoconfig-udev
+	conflicts = retroarch-autoconfig-udev
+	source = git+https://github.com/libretro/retroarch-joypad-autoconfig.git
+	sha256sums = SKIP
+
+pkgname = retroarch-autoconfig-udev-git
+
