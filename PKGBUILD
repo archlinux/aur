@@ -11,7 +11,7 @@
 
 pkgname=retroarch-git
 pkgver=1.3.6.r1439.8095fa9
-pkgrel=2
+pkgrel=3
 #epoch=1
 _gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'

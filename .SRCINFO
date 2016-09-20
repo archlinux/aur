@@ -1,7 +1,7 @@
 pkgbase = retroarch-git
 	pkgdesc = Reference frontend for the libretro API (Git-latest)
 	pkgver = 1.3.6.r1439.8095fa9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.libretro.com/
 	install = retroarch-git.install
 	arch = i686
