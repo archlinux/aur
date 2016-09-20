@@ -1,0 +1,11 @@
+post_install() {
+  if [[ -f /usr/lib/uim/plugin/libuim-mozc.so ]]; then
+	echo -n "Registering mozc on uim..."
+	/usr/bin/uim-module-manager --register mozc
+	[[ $? != 0 ]] && echo "Failed." || echo "Done."
+  fi
+}
+
+post_upgrade() {
+	post_install $1
+}
