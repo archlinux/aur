@@ -1,5 +1,5 @@
 pkgbase = retroarch-assets-xmb-git
-	pkgdesc = XMB menu assets for RetroArch
+	pkgdesc = XMB menu assets for RetroArch (git-latest)
 	pkgver = r228.47b809a
 	pkgrel = 1
 	url = http://www.libretro.com/
