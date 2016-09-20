@@ -3,11 +3,11 @@
 # Contributors: L42y, aeosynth, Dan Serban, Kalipath
 _name=firefox
 _channel=aurora
-_milestone=50.0a2
+_milestone=51.0a2
 _lang=ru
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
-pkgver=50.0a2.20160918004006
+pkgver=51.0a2.20160919065232
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en_US/${_name}/${_channel}/"
