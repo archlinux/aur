@@ -3,6 +3,7 @@
 pkgname=firefox-new-tab-override
 pkgver=3.0
 pkgrel=1
+epoch=1
 pkgdesc='Brings back the ability to change the page which is shown when opening a new tab'
 url=https://addons.mozilla.org/en-US/firefox/addon/new-tab-override/
 arch=('any')
