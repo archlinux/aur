@@ -1,14 +1,15 @@
 # Based on linux-firmware by Thomas BÃ¤chler <thomas@archlinux.org>
 # Maintainer: Matthew Pallissard <matthew.paul@pallissard.net>
 
-pkgname=linux-firmware-git-iwlwifi
+pkgname=linux-firmware-iwlwifi-git
 pkgrel=1
 pkgdesc="Emmanuel Grumbach's fork of linux-firmware.git"
 makedepends=('git')
 arch=('any')
 url="git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git"
 license=('GPL2' 'GPL3' 'custom')
-conflicts=('linux-firmware-git'
+conflicts=('linux-firmware-git-iwlwifi'
+           'linux-firmware-git'
            'linux-firmware'
            'kernel26-firmware'
            'ar9170-fw'
