@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-td2020'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother TD-2020 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002209/td2020lpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002211/td2020cupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002209/td2020lpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002211/td2020cupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('0612f7642304bb4cdd2a4e8d32f7abcfe9259e833e24fca4cb1374004f4d142c'
             '19bfcca9eec05712c68d4d2012c997e747851d85bc0fe9a5c51b7224aadcf4a7'
