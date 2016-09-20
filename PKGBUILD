@@ -1,13 +1,13 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 pkgname=python2-cliapp-git
-pkgver=0.0.0
-pkgrel=1
+pkgver=591.cb17626
+pkgrel=2
 pkgdesc="Python framework for Unix-like command line programs"
 arch=('i686' 'x86_64')
 url="http://liw.fi/cliapp/"
 license=('GPL3')
 groups=()
-depends=('python2')
+depends=('python2' 'python2-yaml')
 makedepends=('git')
 provides=('python2-cliapp')
 conflicts=('python2-cliapp')
