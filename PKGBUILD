@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-td2120n'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother TD-2120N label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002215/td2120nlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002217/td2120ncupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002215/td2120nlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002217/td2120ncupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('808e6f544c30c5527487ac6cac373119933a9e1f2612435f2865c38a49c4d482'
             '2a0bc308e7cd8f595bd0ce31c25d6e8c5d9d3d346e7529f43d65db789f04c2ca'
