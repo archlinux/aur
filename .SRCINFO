@@ -1,0 +1,17 @@
+pkgbase = bombardier-git
+	pkgdesc = The GNU Bombing utility (text game)
+	pkgver = 0.8.3.r0.g8a1d51d
+	pkgrel = 2
+	url = https://anonscm.debian.org/cgit/collab-maint/bombardier.git/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	depends = ncurses
+	conflicts = bombardier
+	source = bombardier-git::git://anonscm.debian.org/collab-maint/bombardier.git#branch=master
+	md5sums = SKIP
+
+pkgname = bombardier-git
+
