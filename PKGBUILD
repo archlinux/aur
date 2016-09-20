@@ -2,19 +2,19 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql720nw'
-pkgver=1.0.2
-pkgrel=0
+pkgver=1.0.2r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-720NW label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
 license=('custom')
-depends='cups'
+depends=('cups')
 if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002203/ql720nwlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002205/ql720nwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002203/ql720nwlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002205/ql720nwcupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('376dd85f57bffa6c681dfbf7ebffce554f9c69ee23f191abf99c6ffc4e8ecdfb'
             'c5fc46d1b70cf627f079cba109cccae8ddec3b7bbf49144d7f0566cb7fb5ac73'
