@@ -1,0 +1,13 @@
+pkgbase = djboxsym
+	pkgdesc = tool for quickly producing a gschem symbol from a minimal description
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.gedasymbols.org/user/dj_delorie/tools/djboxsym.html
+	arch = any
+	license = GPL2
+	depends = perl
+	source = http://www.gedasymbols.org/user/dj_delorie/tools/djboxsym
+	md5sums = 3a2f74349d769f60933d2f25caeac029
+
+pkgname = djboxsym
+
