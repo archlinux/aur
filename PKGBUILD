@@ -3,7 +3,7 @@
 gitname=pickups
 pkgname=python-${gitname}-git
 pkgver=36.b25967e
-pkgrel=1
+pkgrel=2
 pkgdesc='IRC gateway for Google Hangouts'
 arch=('any')
 license=('MIT')
