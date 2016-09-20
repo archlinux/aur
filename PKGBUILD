@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8.2
-_strver=0-8-2
+pkgver=0.8.3
+_strver=0-8-3
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
@@ -46,29 +46,32 @@ sha256sums=(
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
 )
 source_i686=(
-  "${pkgname}-${_strver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux32-$_strver.zip"
+  "${pkgname}-${_strver}-32.deb::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-$pkgver-ia32.deb"
 )
 sha256sums_i686=(
-  "e281b2b4e9f261d8983642ea03929063d28349265294150a1940feb0792f5f14"
+  "c1d9bf21bf01b6a000126a537a4d7b35131e1ba48d301edf33240cd82473bca0"
 )
 source_x86_64=(
-  "${pkgname}-${_strver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-linux64-$_strver.zip"
+  "${pkgname}-${_strver}-64.deb::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Mist-$pkgver.deb"
 )
 sha256sums_x86_64=(
-  "3a222dd76a3b9b8f5f768cae7e57258fc07cff138e95c9c566687b8547275fea"
+  "88faf16f85135f7a6fb1da57019db1cc5bf147411ea0fcd523472b88e5fcda4f"
 )
 
+prepare() {
+  tar xf "$srcdir/data.tar.xz"
+}
 package() {
   _arch="32"
   if [ "${CARCH}" = "x86_64" ]; then
     _arch="64"
   fi
 
-  rm "${srcdir}/${pkgname}-${_strver}-${_arch}.zip"
+  rm "${srcdir}/${pkgname}-${_strver}-${_arch}.deb"
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -a "${srcdir}/Mist-linux${_arch}-${_strver}/." "${pkgdir}/usr/share/${pkgname}"
+  cp -a "${srcdir}/opt/Mist/." "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}"
 
   install -d "${pkgdir}/usr/share/applications"
@@ -76,7 +79,7 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/Mist" "${pkgdir}/usr/bin/mist"
-  ln -s "/usr/share/${pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
+  ln -s "/usr/share/${pkgname}/nodes/geth/linux-x${_arch}/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
@@ -92,5 +95,5 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/${pkgname}/Mist"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/resources/node/geth/geth"
+  chmod 755 "${pkgdir}/usr/share/${pkgname}/nodes/geth/linux-x${_arch}/geth"
 }
