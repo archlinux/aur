@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql570'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-570 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -12,9 +12,11 @@ depends='cups'
 if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
+conflicts=('brother-ql570-cupswrapper' 'brother-ql570-lpr')
+provides=('brother-ql570-cupswrapper' 'brother-ql570-lpr')
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002173/ql570lpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002175/ql570cupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002173/ql570lpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002175/ql570cupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('b6a555a901358a43dd73465afed3865f42086231b43e1ff59252a633c612aef8'
             'c5aa368114608f029688847ee2a21be6e20a9b3f272f543cbcede875c62e56b6'
