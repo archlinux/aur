@@ -11,7 +11,7 @@
 
 pkgname=retroarch-git
 pkgver=1.3.6.r1439.8095fa9
-pkgrel=1
+pkgrel=2
 #epoch=1
 _gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
@@ -29,10 +29,10 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libdrm' 'libgl' 'libpulse' 'libusb'
 	 'nvidia-cg-toolkit')
 makedepends=('git' 'vulkan-icd-loader')
 install=$pkgname.install
-optdepends=('libretro-overlays: Collection of overlays'
-	    'libretro-shaders: Collection of shaders'
+optdepends=('libretro-overlays-git: Collection of overlays'
+	    'libretro-shaders-git: Collection of shaders'
 	    'retroarch-assets-xmb: XMB menu assets'
-	    'retroarch-autoconfig-udev: udev joypad autoconfig'
+	    'retroarch-autoconfig-udev-git: udev joypad autoconfig (git latest)'
 	    'xdg-utils-git: Includes updated screensaver suspend fixes')
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
