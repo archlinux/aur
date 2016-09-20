@@ -1,8 +1,9 @@
-# Maintainer: Daneel <aur@gnoulibre.org>
+# Maintainer: RISKO Gergely <risko@debian.org>
+# Contributor: Daneel <aur@gnoulibre.org>
 
 pkgname=bombardier-git
 pkgver=0.8.3.r0.g8a1d51d
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Bombing utility (text game)"
 arch=(i686 x86_64)
 url="https://anonscm.debian.org/cgit/collab-maint/bombardier.git/"
