@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 270895 2016-07-03 16:55:41Z bisson $
 # Maintainer: ponsfoot <cabezon dot hashimoto at gmail dot com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
