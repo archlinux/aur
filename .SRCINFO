@@ -15,7 +15,11 @@ pkgbase = play-emu-git
 	depends = qt5-base
 	depends = zlib
 	source = Play-Build::git+https://github.com/jpd002/Play-Build.git
+	source = play-emu.desktop
+	source = play.png
 	md5sums = SKIP
+	md5sums = 59e7114de681f2f96730697cde4f4595
+	md5sums = 2c6db31d8119437e5af6fa95b4c1fb8f
 
 pkgname = play-emu-git
 
