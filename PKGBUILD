@@ -18,7 +18,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
-pkgver=17.0b1
+pkgver=17.0b2
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/${pkgver}-${_codename}.tar.gz")
-sha256sums=('67f123ab0a06083381cdcb9db1b02802b937fc0a97e9eb01f7b71d23072b76d7')
+sha256sums=('18b21769b3921e6d9c18b04c3598a0a21f998cb9664ec4e1a3c97371b1d4adc3')
 
 _prefix='/usr'
 
