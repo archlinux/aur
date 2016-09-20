@@ -1,6 +1,6 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=livestreamer-twitch-gui
-pkgver=v0.15.0
+pkgver=v0.15.2
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Livestreamer"
 arch=("i686" "x86_64")
@@ -25,8 +25,8 @@ source=("https://raw.githubusercontent.com/bastimeyer/livestreamer-twitch-gui/ma
 source_i686=("https://github.com/bastimeyer/livestreamer-twitch-gui/releases/download/$pkgver/livestreamer-twitch-gui-$pkgver-linux32.tar.gz")
 source_x86_64=("https://github.com/bastimeyer/livestreamer-twitch-gui/releases/download/$pkgver/livestreamer-twitch-gui-$pkgver-linux64.tar.gz")
 md5sums=('0b62e5d2cf76f19fea17c82c1a56c583')
-md5sums_i686=('10584669448569b6519089c67e5f8bfa')
-md5sums_x86_64=('b7cca52893d7eb973c51ef094774a9b8')
+md5sums_i686=('ae56bf85369a9a9b1681b63e7dc40b3d')
+md5sums_x86_64=('969a44365319a9a8e2890a1eb2fe8f68')
 
 package() {
 	cd "$srcdir/$pkgname"
