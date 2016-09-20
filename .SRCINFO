@@ -1,0 +1,16 @@
+pkgbase = ruby-docbookrx
+	pkgdesc = Docbook to Asciidoc converter
+	pkgver = 1.0.0.dev
+	pkgrel = 1
+	url = https://github.com/asciidoctor/docbookrx
+	arch = any
+	license = MIT
+	makedepends = ruby-rspec>=3.4.0
+	depends = ruby>=2.3
+	depends = ruby-nokogiri>=1.6.7
+	options = !emptydirs
+	source = git+http://github.com/asciidoctor/docbookrx.git#commit=189022a6250737e2bc6ea83ae676bf1edb35a0eb
+	md5sums = SKIP
+
+pkgname = ruby-docbookrx
+
