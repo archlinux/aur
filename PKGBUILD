@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql580n'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-580N label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002179/ql580nlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002181/ql580ncupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002179/ql580nlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002181/ql580ncupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('349a8003004a59fe993a1d76573b9cbd02c4c2217d6fb1d2ddfbd0c20e4b9c39'
             '08bd1d70ac13b5442eb5ed9ee65dce75252b4a21861a77323ab27e1657069e5f'
