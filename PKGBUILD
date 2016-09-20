@@ -3,7 +3,7 @@
 
 pkgname='brother-ql500'
 pkgver=1.0.1r0
-pkgrel=2
+pkgrel=3
 pkgdesc='LPR and CUPS driver for Brother QL-500 label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -12,6 +12,8 @@ depends=('cups')
 if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
+conflicts=('brother-ql500-cupswrapper' 'brother-ql500-cupswrapperinch' 'brother-ql500-lpr')
+provides=('brother-ql500-cupswrapper' 'brother-ql500-cupswrapperinch' 'brother-ql500-lpr')
 install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlfp002167/ql550lpr-${pkgver/r/-}.i386.rpm"
         "http://download.brother.com/welcome/dlfp002169/ql550cupswrapper-${pkgver/r/-}.i386.rpm"
