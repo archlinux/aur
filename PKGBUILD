@@ -9,7 +9,7 @@ depends=('python>3.4' 'python-anyjson' 'python-babel' 'python-arrow' 'python-int
 makedepends=('python')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/S/${_name}/${_name}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/4e/85/bf1255b8fdef127a019f1ed7ff174a5f7482bc539f83213cf137eb703f1e/SQLAlchemy-Utils-0.32.9.tar.gz")
 md5sums=('58d81cc05dc6eca9233c7aa32d8e3af2')
 
 build() {
