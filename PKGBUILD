@@ -2,7 +2,7 @@
 
 pkgname=v8-static-gyp
 pkgver=5.4.374.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -78,8 +78,6 @@ package() {
   install -d $pkgdir/usr/lib/v8
 
   install -Dm755 out/Release/d8 $pkgdir/usr/bin/d8
-  install -Dm644 out/Release/natives_blob.bin $pkgdir/usr/lib/v8/natives_blob.bin
-  install -Dm644 out/Release/snapshot_blob.bin $pkgdir/usr/lib/v8/snapshot_blob.bin
 
 
   # V8 has several header files and ideally if it had its own folder in /usr/include
