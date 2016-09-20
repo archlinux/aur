@@ -1,0 +1,19 @@
+pkgbase = libretro-shaders-all-git
+	pkgdesc = Collection of shaders for libretro (git-latest)
+	pkgver = r629.237bb5b
+	pkgrel = 1
+	url = http://www.libretro.com/
+	arch = any
+	groups = libretro
+	license = GPL
+	makedepends = git
+	makedepends = nvidia-cg-toolkit
+	makedepends = python
+	makedepends = retroarch
+	provides = libretro-shaders
+	conflicts = libretro-shaders
+	source = libretro-shaders::git+https://github.com/libretro/common-shaders.git
+	sha256sums = SKIP
+
+pkgname = libretro-shaders-all-git
+
