@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=td-agent
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 _pkgrel=0
 pkgdesc='Open-Source Log Collector'
 arch=('x86_64')

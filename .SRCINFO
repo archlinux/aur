@@ -1,7 +1,7 @@
 pkgbase = td-agent
 	pkgdesc = Open-Source Log Collector
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fluentd.org/
 	install = td-agent.install
 	arch = x86_64
