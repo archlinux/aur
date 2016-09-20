@@ -5,8 +5,8 @@
 
 _pkgname="doublecmd"
 pkgname=("${_pkgname}-gtk2-svn")
-pkgver=r7033
-pkgrel=1
+pkgver="r7114"
+pkgrel="1"
 pkgdesc="Twin-panel (commander-style) file manager (GTK)"
 url="http://doublecmd.sourceforge.net/"
 arch=('i686' 'x86_64')
