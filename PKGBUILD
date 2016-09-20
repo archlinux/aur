@@ -2,11 +2,11 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.4
+pkgver=7.2.6
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
-depends=('lua52' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
+depends=('lua' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
@@ -16,10 +16,6 @@ source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgve
         "ipe.bash-completion"
         "config.patch"
         )
-md5sums=('790066c16aafdfdeb610b6e556c33cb3'
-         '95158c047f0a9b0916b688af1faed779'
-         '694f0d5402655901be385647e5d8d6e3'
-         '56c6de89f3def116fac7828f78834d37')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/src"
@@ -57,3 +53,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
+md5sums=('6ea3241e222706037ff20e629c816949'
+         '95158c047f0a9b0916b688af1faed779'
+         '694f0d5402655901be385647e5d8d6e3'
+         'd4e289bce01302a8b76a0df294c7de40')

@@ -4,8 +4,8 @@
  #
  # The name of the Lua package (it could be "lua", "lua52", or "lua5.2")
  #
--LUA_PACKAGE   ?= lua5.2
-+LUA_PACKAGE   ?= lua52
+-LUA_PACKAGE   ?= lua5.3
++LUA_PACKAGE   ?= lua53
  #
  ZLIB_CFLAGS   ?=
  ZLIB_LIBS     ?= -lz
