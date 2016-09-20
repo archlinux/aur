@@ -1,0 +1,33 @@
+--- src/lisp.h.orig	2014-06-05 09:02:17.000000000 -0600
++++ src/lisp.h	2015-02-09 12:30:00.000000000 -0700
+@@ -1154,6 +1154,9 @@
+ 
+ /* ------------------------ alignment definitions ------------------- */
+ 
++#if (defined (__STDC_VERSION__) && __STDC_VERSION__ < 201112L) || \
++    (defined (__cplusplus) && __cplusplus < 201103L) || \
++    (! defined (__STDC_VERSION__) && ! defined (__cplusplus))
+ /* No type has a greater alignment requirement than max_align_t.
+    (except perhaps for types we don't use, like long double) */
+ typedef union
+@@ -1163,6 +1166,7 @@
+   struct { void (*f)(void); } f;
+   struct { double d; } d;
+ } max_align_t;
++#endif
+ 
+ /* ALIGNOF returns the required alignment of a type -- i.e. a value such
+    that data of this type must begin at a memory address which is a
+@@ -1170,7 +1174,11 @@
+    as the type itself. */
+ 
+ #ifndef ALIGNOF
+-# if defined (__GNUC__) && (__GNUC__ >= 2)
++# if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
++#  define ALIGNOF(type) _Alignof(type)
++# elif defined (__cplusplus) && __cplusplus >= 201103L
++#  define ALIGNOF(type) alignof(type)
++# elif defined (__GNUC__) && (__GNUC__ >= 2)
+ /* gcc has an extension that gives us exactly what we want. */
+ #  define ALIGNOF(type) __alignof__ (type)
+ # elif ! defined (__cplusplus)
