@@ -4,7 +4,7 @@
 pkgname=vim-pydyn-xclip
 pkgver=8.0.0005
 _versiondir=80
-pkgrel=1
+pkgrel=2
 pkgdesc='Vi Improved with dynamic python (python/dyn, python3/dyn) and clipboard support'
 arch=(i686 x86_64)
 url='http://www.vim.org'
