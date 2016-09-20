@@ -3,7 +3,7 @@
 
 pkgname=qlivestreamer-git
 pkgver=20160204
-pkgrel=1
+pkgrel=2
 pkgdesc="qLiveStreamer is a small Qt/C++ frontend for Livestreamer, inspired by gLiveStreamer."
 arch=('i686' 'x86_64')
 url="https://github.com/Hyperz/qLiveStreamer"
