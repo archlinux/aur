@@ -3,7 +3,7 @@
 
 pkgname=displaylink
 pkgver=1.2.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver for DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -13,19 +13,22 @@ makedepends=('grep' 'gawk')
 install=
 changelog="release-note.txt"
 source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file\?id\=701
+	udev.sh
         99-displaylink.rules 
 	displaylink.service 
         displaylink-sleep.sh)
 
 # Update with > updpkgsums
 md5sums=('a69ffdbcd6157c9a5511d9e4a16597a2'
-         '37e076a16be49985f1d6800f960d16b4'
+         'd5de775e41af06edbd8073adc490139d'
+         '20495d81c7d2540910ef86dc437b7fac'
          'c141a15e973481c7d961f8e135627ca4'
-         '4185b016cd64c6069302239515afadff')
+         '7cbd9ab2ac79ba66e8297689c6e5483e')
 
 package() {
   echo "Adding udev rule for DisplayLink DL-3xxx/5xxx devices"
   install -D -m644 99-displaylink.rules "$pkgdir/etc/udev/rules.d/99-displaylink.rules"
+  install -D -m755 udev.sh "$pkgdir/opt/displaylink/udev.sh"
 
   echo "Installing DLM systemd service"
   install -D -m644 displaylink.service "$pkgdir/usr/lib/systemd/system/displaylink.service"
