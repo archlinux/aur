@@ -12,13 +12,13 @@ groups=('kde-applications')
 depends=('kdebase-runtime')
 makedepends=('cmake' 'automoc4')
 install=${pkgname}.install
-source=("http://download.kde.org/stable/applications/${pkgver}/src/amor-${pkgver}.tar.xz")
-sha1sums=('d8e4550e987a6df59abf75f22df99b3fab1e8ed3')
+source=(git+https://github.com/gregodadone/amor.git)
+sha1sums=('SKIP')
 
 build() {
   mkdir -p build
   cd build
-  cmake ../amor-${pkgver} \
+  cmake ../amor \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE4_BUILD_TESTS=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
