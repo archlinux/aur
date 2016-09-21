@@ -1,7 +1,7 @@
 # Maintainer: Anton Karmanov <starcom24@gmail.com>
 pkgname=stegosaurus-lv2
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="lv2 drum synthersizer without sampling"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/$pkgname"
