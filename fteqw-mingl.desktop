@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FTE Quake (Minimal OpenGL)
+Comment=FTE Quake OpenGL, minimalistic OpenGL
+Exec=/usr/bin/fteqw-mingl
+Icon=/usr/share/pixmaps/fteqw.png
+Terminal=false
+Type=Application
+Categories=Game;
+MimeType=x-scheme-handler/steam;
