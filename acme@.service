@@ -26,3 +26,14 @@ EnvironmentFile=/etc/acme/%I.conf
 ExecStartPre=/usr/bin/install -dm0700 "${ACME_DIR}/certs/%I"
 
 ExecStart=/usr/bin/acme-client $ACME_ARGS -f "${ACME_DIR}/accounts/${ACME_ACCOUNT}.pem" -c "${ACME_DIR}/certs/%I" -k "${ACME_DIR}/certs/%I/privkey.pem" -C /run/acme-challenge $ACME_DOMAINS
+
+CapabilityBoundingSet=CAP_SYS_CHROOT CAP_SETUID CAP_SETGID
+NoNewPrivileges=true
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/acme
+ReadWritePaths=/run/acme-challenge
