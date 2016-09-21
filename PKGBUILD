@@ -1,28 +1,21 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
-pkgname=lc-git
-pkgver=abd5c25
+pkgname=fnu
+pkgver=0.2
 pkgrel=1
 pkgdesc='Commandline utility for listing directory contents in columns'
 arch=('x86_64' 'i686')
-url='http://github.com/xyproto/lc'
+url='http://github.com/xyproto/fnu'
 license=('MIT')
 depends=('python')
-install='lc.install'
-source=('lc::git://github.com/xyproto/lc.git')
+source=("git://github.com/xyproto/fnu.git#tag=$pkgver")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-
-  git describe --always | sed 's|-|.|g'
-}
-
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd fnu
 
-  # /usr/bin/lc conflicts with mono :(
-  install -Dm755 lc "$pkgdir/usr/bin/lsc"
+  install -Dm755 fnu "$pkgdir/usr/bin/fnu"
+  install -Dm755 fnu_ascii "$pkgdir/usr/bin/fnu_ascii"
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
