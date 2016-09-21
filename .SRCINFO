@@ -15,6 +15,7 @@ pkgbase = gnome-shell-extension-mediaplayer-git
 	conflicts = gnome-shell-extension-mediaplayer
 	source = gnome-shell-extension-mediaplayer::git+https://github.com/eonpatapon/gnome-shell-extensions-mediaplayer
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-mediaplayer-git
 
