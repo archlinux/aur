@@ -54,16 +54,20 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 	
-	# Symlink binaries to /usr/bin
+	# Symlink binaries to /usr/bin.
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/freecad/bin/FreeCAD" "$pkgdir/usr/bin/FreeCAD"
 	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/FreeCADCmd"
 
-	# Install pixmaps and desktop shortcut
+	# Lowercase aliases like the official arch package.
+	ln -s "/opt/freecad/bin/FreeCAD" "$pkgdir/usr/bin/freecad"
+	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/freecadcmd"
+
+	# Install pixmaps and desktop shortcut.
 	desktop-file-install \
 	  --dir="$pkgdir/usr/share/applications" "$srcdir/freecad.desktop"
 
-	# Mime info
+	# Install mime info.
 	install -D -m644 "$srcdir/freecad.xml" \
 	  "$pkgdir/usr/share/mime/packages/freecad.xml"
 }
