@@ -1,23 +1,24 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
-url="https://easy-rpg.org/"
+url="https://easyrpg.org"
 license=('GPL3')
-makedepends=('boost')
-depends=("liblcf>=$pkgver" 'sdl2_mixer' 'pixman' 'freetype2')
-optdepends=('wine: for installing the run time packages (RTP)')
+depends=("liblcf>=$pkgver" 'sdl2_mixer' 'pixman' 'freetype2' 'libvorbis' 'mpg123'
+         'libsndfile' 'speexdsp')
+optdepends=('wine: for installing the run time packages (RTP)'
+            'libxmp: decoder for tracker music, used by few games')
 install=$pkgname.install
-source=("https://easy-rpg.org/downloads/player/$pkgname-$pkgver.tar.gz")
-sha256sums=('e839c5676867d3c88c996b81268f82c74dcaae5cdc5069b812154bcf73dd188b')
+source=("https://easyrpg.org/downloads/player/$pkgname-$pkgver.tar.gz")
+sha256sums=('21c9b95536fb6348e84b11ac8e5908688c6e61e9b4eb426247d546a44869241e')
 
 build () {
   cd $pkgname-$pkgver
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-fmmidi=fallback
   make
 }
 
