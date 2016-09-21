@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.4-gnu
-_pkgver=4.4.19-gnu
+_pkgver=4.4.21-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -49,6 +49,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-remove-spin_lock_and_spin_unlock.patch'
+        '0001-ARM-disable-implicit-function-declaration-error.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -60,7 +62,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '3c7586a77b5ed08d2daadd7cacf79f336ec861efd516db68ef59e9d516c3fdfd'
+            '2897fc1d2078ee490366cfd9a08076f8e489ce0d590df2f727caee5f262830f9'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -70,15 +72,17 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             'f820ffd8c6a31e97b0086c914415d52644ab8ef6d3b23c03e2cbe8313d383376'
             '5bfc50836ec2dcb49497d156a03f24bb97bbaebb50514addceb1215efd4d6c78'
-            'bde9a5450b46eb87429c19494d6aca68747627ee8d297365bbc317c74c480664'
+            '294ba13ad6221c7d37f3270792aa470ac935c03cc1185e080f51fec9a56a5b07'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '56b81ae6ccba9db85e89e32e1d093ae1fe890dae266729815d579c983fefb75b'
+            '87556459ae306d2e39acdce7e181690ce4d8736deea3c0aac529d0f7c7a284ad'
             'SKIP'
+            '73af660749be60c2b33ec85e06ffa840f538ca8fc169b96f245767436bdc36ee'
+            '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
             '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
@@ -118,6 +122,12 @@ prepare() {
     # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
     # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+
+    # fix RCN bugs
+    patch -p1 -i "${srcdir}/0001-ARM-remove-spin_lock_and_spin_unlock.patch"
+
+    # disable implicit function declaration error since there are old backports patches
+    patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
