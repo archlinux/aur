@@ -1,6 +1,6 @@
 pkgbase = peerio-client
 	pkgdesc = Peerio Client
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.peerio.com
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = peerio-client
 	depends = nss
 	depends = pango
 	options = !strip
-	source = http://linux.peerio.com/sources/peerio-client-1.5.0.tar.gz
-	md5sums = 81484cca31c467b78b432cb318ee02f8
+	source = http://linux.peerio.com/sources/peerio-client-1.6.0.tar.gz
+	md5sums = 2268c527a031662864b8de0614f726b8
 
 pkgname = peerio-client
 
