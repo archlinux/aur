@@ -2,7 +2,7 @@
 
 pkgname=v8-static-gyp
 pkgver=5.4.374.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -60,7 +60,10 @@ build() {
 
   msg2 "Start building..."
   ninja -C out/Release # or target 'v8 d8' if you do not need tests
- }
+
+  # Convert thin archives into thick ones
+  find -name '*.a' -type f -exec sh -c 'ar t {} | xargs ar rs {}.new && mv {}.new {}' \;
+}
 
 check() {
   cd v8
