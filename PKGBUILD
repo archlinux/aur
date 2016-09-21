@@ -2,8 +2,8 @@
 # Inspired by package brother-dcp130c
 
 pkgname='brother-ql1060n'
-pkgver=1.0.1
-pkgrel=0
+pkgver=1.0.1r0
+pkgrel=1
 pkgdesc='LPR and CUPS driver for Brother QL-1060N label printer'
 url='http://solutions.brother.com/linux/en_us/'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ if [ "$CARCH" = 'x86_64' ]; then
   depends+=('lib32-glibc')
 fi
 install="$pkgname.install"
-source=("http://download.brother.com/welcome/dlfp002231/ql1060nlpr-$pkgver-$pkgrel.i386.rpm"
-        "http://download.brother.com/welcome/dlfp002233/ql1060ncupswrapper-$pkgver-$pkgrel.i386.rpm"
+source=("http://download.brother.com/welcome/dlfp002231/ql1060nlpr-${pkgver/r/-}.i386.rpm"
+        "http://download.brother.com/welcome/dlfp002233/ql1060ncupswrapper-${pkgver/r/-}.i386.rpm"
         'LICENSE')
 sha256sums=('f2c2f919ec15b6159e13bfec60bb2d515f8c77a812e349a0ed1ec68ac29f5a25'
             'bf7a1d86234d643547fc9052df55524a5e4ddbd4bf07799988c18666e7d2d3eb'
