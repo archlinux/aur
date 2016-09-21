@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.9.3.1
+pkgver=0.12.1.78
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -10,7 +10,7 @@ url="https://www.brave.com/"
 license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'libgnome-keyring' 'desktop-file-utils' 'ttf-font')
-makedepends=('git' 'npm' 'xdg-utils')
+makedepends=('git' 'npm')
 optdepends=('cups: To print stuff')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
