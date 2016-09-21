@@ -2,7 +2,7 @@
 
 pkgname=xapps-git
 _pkgbasename=xapps
-pkgver=r7.a3c93c6
+pkgver=r8.17a09bc
 pkgrel=1
 pkgdesc="Common library for X-Apps project"
 arch=('i686' 'x86_64')
