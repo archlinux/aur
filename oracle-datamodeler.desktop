@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Oracle SQL Database Modeling
 Comment=A graphical tool for database modeling.
-Icon=/opt/oracle-datamodeler/datamodeler/icon.png
+Icon=/opt/oracle-datamodeler/icon.png
 Exec=/usr/bin/oracle-datamodeler
 Terminal=false
 Type=Application
