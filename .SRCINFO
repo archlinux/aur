@@ -1,6 +1,6 @@
 pkgbase = yadm
 	pkgdesc = Yet Another Dotfiles Manager
-	pkgver = 1.04.r10.g86bb3be
+	pkgver = 1.05.r0.g05ed83e
 	pkgrel = 1
 	url = https://github.com/TheLocehiliosan/yadm
 	arch = any
