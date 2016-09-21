@@ -3,10 +3,6 @@ post_install() {
   /usr/bin/vim --noplugins -u NONE -U NONE \
       --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
   echo "done."
-  echo "
-  >>> To use vundle, please check the file /usr/share/vundle/vimrc.sample
-  >>> and update your ~/.vimrc file, accordingly
-  "
 }
 
 post_upgrade() {
@@ -18,10 +14,6 @@ post_remove() {
   /usr/bin/vim --noplugins -u NONE -U NONE \
       --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
   echo "done."
-  echo "
-  >>> Please remember to remove vundle bundles from your ~/.vimrc file
-  >>> and from your ~/.vim directory!
-  "
 }
 
 # vim: ts=2 sw=2 et:
