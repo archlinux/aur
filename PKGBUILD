@@ -2,12 +2,12 @@
 
 pkgname=moksha
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the E17 window manager used by Bodhi Linux."
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('desktop-file-utils' 'e_dbus' 'elementary')
+depends=('desktop-file-utils' 'e_dbus' 'efl>1.17' 'elementary')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
             'connman: network module'
