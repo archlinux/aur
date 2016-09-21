@@ -12,6 +12,7 @@ pkgbase = mozilla-extension-gnome-keyring-git
 	conflicts = mozilla-extension-gnome-keyring
 	source = mozilla-extension-gnome-keyring::git+https://github.com/swick/mozilla-gnome-keyring
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mozilla-extension-gnome-keyring-git
 
