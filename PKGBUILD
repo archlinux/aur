@@ -20,8 +20,8 @@ source=(${pkgname}::'git+https://github.com/kristapsdz/acme-client-portable.git'
 sha256sums=('SKIP'
             '5f87d778e5d62822d60e38fa9621c1c5648fc559d198ba314bd9d89cbf67d9e3'
             'c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73'
-            '2fbe99262986b4e4d84e659bc868e1e616c3b150190d50994f4184b1d606dc60'
-            'b441b83feda96286a932add31237abfccb9f7bed7d13a3c6d85886e6a62fcc8f')
+            '10594d585c80630c4a6c36614249e4c9e6b59070caa18e1d6015bff61204b8cb'
+            '297cf2592b1baed8da591136334ab7fc1f4f64a6a093a1ac657ceaae45aa8583')
 
 depends=('libbsd')
 makedepends=('git')
