@@ -1,0 +1,27 @@
+pkgbase = ftequake-svn
+	pkgdesc = Engine for Quake 1, 2 and Hexen
+	pkgver = r5020
+	pkgrel = 1
+	url = http://fte.triptohell.info
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = zlib
+	depends = lib32-sdl_mixer
+	source = svn+http://svn.code.sf.net/p/fteqw/code/trunk
+	source = ftequake-gl.desktop
+	source = ftequake-mingl.desktop
+	source = ftequake-sv.desktop
+	source = ftequake-vk.desktop
+	source = ftequake.png
+	md5sums = SKIP
+	md5sums = 3879a4b6ea55c5df364379ab43f90faa
+	md5sums = 4f6526adc7e85d779bb09c011d9c2af7
+	md5sums = 0a7ddd62dfd97fc0b949d55f4f08182a
+	md5sums = bfedd017177061b25499036727a10723
+	md5sums = 0c1246661ff0e3c27ed0f31ae65bb6ea
+
+pkgname = ftequake-svn
+
