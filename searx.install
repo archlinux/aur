@@ -1,6 +1,14 @@
+pre_install() {
+  userdel searx
+}
+
 post_install() {
-  getent passwd searx >/dev/null || useradd -r searx
+  getent passwd searx >/dev/null || useradd -rb /usr/lib/python2.7/site-packages searx
   echo "Settings are at /usr/lib/python2.7/site-packages/searx/settings.yml"	
+}
+
+pre_upgrade() {
+  pre_install
 }
 
 post_upgrade() {

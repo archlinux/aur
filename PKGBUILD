@@ -2,8 +2,8 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.10.0.r1.g8d4dd3c
-pkgrel=2
+pkgver=v0.10.0.r12.gaaf5d50
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -15,9 +15,9 @@ install=searx.install
 source=('git+https://github.com/asciimoo/searx.git'
         'searx.install'
         'searx.service')
-sha512sums=('SKIP'
-            '47d9b0509b0ac637d6bd0aa44213115e974bb3c943f2bce513732648bcea4616bf9fa550ef7d8fbaa580980793a2d8b69a9342d6a6e31604164e75f246fc3107'
-            '07fbd0675c1bd05022bc79a3f7eb591d6f8276c1347beb6f99901014f01fd9c19638e8c4c8565b2ca248161d71ce8999474f5f1bc1b26494c6f4b63bfd07ab76')
+sha1sums=('SKIP'
+          'b7ee025f007993b3710a206f25877a39d2ebb577'
+          '2002036b99b7dbe403585d47aa050635c8eebfea')
 
 pkgver() {
   cd $srcdir/searx
@@ -47,5 +47,5 @@ package() {
   mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,searx/}
   mv $pkgdir/usr/lib/python2.7/site-packages/{tests,searx/}
 
-  install -Dm0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
+  install -Dm 0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
 }
