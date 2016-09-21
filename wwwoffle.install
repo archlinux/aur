@@ -3,7 +3,20 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "ATTENTION WWWOFFLE:"
+  echo "WWWOFFLE post-installation/ post-upgrade information, please read:"
+  echo "-------------------"
+  echo ""
+  echo "If you upgraded from a version below 2.9j+svn2227-5,"
+  echo "MANUAL INTERVENTION is required:"
+  echo "Format of /etc/conf.d/wwwoffle changed between version"
+  echo "2.9j+svn2227-4 and v2.9j+svn2227-5."
+  echo "If you upgraded from a version below 2.9j+svn2227-5, please make"
+  echo "sure you edit /etc/conf.d/wwwoffle."
+  echo "The old variable 'WWWOFFLE_ARGS' is no longer understood. Instead,"
+  echo "the place of the config file to use goes into 'WWWOFFLE_CONFIG_FILE',"
+  echo "and further arguments to be passed to the deamon upon startup go into"
+  echo "WWWOFFLED_EXTRA_ARGS."
+  echo ""
   echo "-------------------"
   echo ""
   echo "Configuration file template is installed at"
@@ -57,4 +70,3 @@ pre_remove() {
   echo ">>> Removing group wwwoffle."
   groupdel wwwoffle &> /dev/null
 }
-

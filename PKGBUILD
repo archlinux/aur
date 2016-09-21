@@ -7,7 +7,7 @@ pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
 epoch=1
 pkgver=2.9j+svn2227
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, abonnement, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -34,8 +34,9 @@ conflicts=(
 )
 
 backup=(
+  'etc/conf.d/wwwoffle'
   'etc/wwwoffle/wwwoffle.conf'
-  'etc/wwwoffle/wwwoffle.conf.template'
+  # 'etc/wwwoffle/wwwoffle.conf.template'
 )
 
 install="${_pkgname}.install"
@@ -53,13 +54,13 @@ source=(
 )
 
 sha256sums=(
-  # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
-  'SKIP'                                                             # Main source, SVN
-  'cd05738f73b109dd074f6dd919300eeae55c2aa812a15e0ae61b32622423c867' # conf_d_wwwoffle
-  '090329f13d8889a3e6e3b46b3f9de152eea0963b71c10a2a7dbafb7bb7e17120' # initscript_openrc
-  '04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869' # initscript_systemd
-  '3938777ba2baa7faac569d4a4a8a8cb7adeef786cfa84e991b6f03e991bcfae8' # initscript_sysvinit
-  'c36b8868587f1f274bc6382fe6d2dd38c1575bf725f788b1624a67a062e8bce2' # ${install}
+            # 'e6341a4ec2631dc22fd5209c7e5ffe628a5832ad191d444c56aebc3837eed2ae' # Main source, release
+            'SKIP'                                                             # Main source, SVN
+            '5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2' # conf_d_wwwoffle
+            '5f6d81094d8031172733500597e3d608632da3241cfadff8c166723af97d996a' # initscript_openrc
+            '03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87' # initscript_systemd
+            'c1c8f30bc0fe928d887212678c9857a526ea7767964192b13d994e81314ba002' # initscript_sysvinit
+            '106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12' # ${install}
 )
 
 _pgmver() {

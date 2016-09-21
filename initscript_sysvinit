@@ -2,24 +2,37 @@
 
 # source application-specific settings
 
-# WWWOFFLE_ARGS will be by sourcing '/etc/conf.d/wwwoffle'.
-WWWOFFLE_ARGS=
-[ -f /etc/conf.d/wwwoffle ] && . /etc/conf.d/wwwoffle
+# The controlling will be by sourcing '/etc/conf.d/wwwoffle'.
+WWWOFFLE_CONFIG_FILE=''
+WWWOFFLED_EXTRA_ARGS=''
+
+_initconffile='/etc/conf.d/wwwoffle'
+[ -f "${_initconffile}" ] && . "${_initconffile}"
 
 _pretty_name="wwwoffle"
 _DAEMON="/usr/sbin/wwwoffled"
 _DAEMON_ARGS=(
-              ${WWWOFFLE_ARGS}
+              -c "${WWWOFFLE_CONFIG_FILE}"
+              ${WWWOFFLED_EXTRA_ARGS}
              )
+
 
 . /etc/rc.conf
 . /etc/rc.d/functions
 
-PID=`pidof -o %PPID "${_DAEMON}"`
+_check_conf_file_var() {
+  if [ -z "${WWWOFFLE_CONFIG_FILE}" ]; then
+    echo "ERROR: Variable 'WWWOFFLE_CONFIG_FILE' not set or empty in '${_initconffile}'".
+    echo "ERROR: This variable needs to be set to the configuration file to use."
+    return 1
+  fi
+}
+
+PID=`pidof -o %PPID "${_DAEMON}"` || true
 case "$1" in
   start)
     stat_busy "Starting ${_pretty_name}"
-    [ -z "$PID" ] && "${_DAEMON}" "${_DAEMON_ARGS[@]}"
+    _check_conf_file_var && [ -z "$PID" ] && "${_DAEMON}" "${_DAEMON_ARGS[@]}"
     if [ $? -gt 0 ]; then
       stat_fail
     else
@@ -44,7 +57,16 @@ case "$1" in
     ;;
   reload)
     stat_busy "Re-reading configuration file of ${_pretty_name}"
-    wwwoffle "${_DAEMON_ARGS[@]}" -config
+    _check_conf_file_var && wwwoffle -c "${WWWOFFLE_CONFIG_FILE}" -config
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      stat_done
+    fi
+  ;;
+  status)
+    stat_busy "Querying status of ${_pretty_name}"
+    _check_conf_file_var && wwwoffle -c "${WWWOFFLE_CONFIG_FILE}" -status
     if [ $? -gt 0 ]; then
       stat_fail
     else
@@ -55,4 +77,3 @@ case "$1" in
     echo "usage: $0 {start|stop|restart}"  
   ;;
 esac
-exit 0

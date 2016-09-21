@@ -1,7 +1,7 @@
 pkgbase = wwwoffle-svn
 	pkgdesc = Simple caching proxy server with special features (request, recursive fetch, abonnement, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd.
 	pkgver = 2.9j+svn2227
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = http://www.gedanken.org.uk/software/wwwoffle/
 	install = wwwoffle.install
@@ -25,8 +25,8 @@ pkgbase = wwwoffle-svn
 	replaces = wwwoffle-sysvinit<=2.9j+svn2227
 	replaces = wwwoffle-openrc<=2.9j+svn2227
 	replaces = wwwoffle-systemd<=2.9j+svn2227
+	backup = etc/conf.d/wwwoffle
 	backup = etc/wwwoffle/wwwoffle.conf
-	backup = etc/wwwoffle/wwwoffle.conf.template
 	source = wwwoffle::svn+http://gedanken.org.uk/svn/wwwoffle/trunk
 	source = conf_d_wwwoffle
 	source = initscript_openrc
@@ -34,11 +34,11 @@ pkgbase = wwwoffle-svn
 	source = initscript_sysvinit
 	source = wwwoffle.install
 	sha256sums = SKIP
-	sha256sums = cd05738f73b109dd074f6dd919300eeae55c2aa812a15e0ae61b32622423c867
-	sha256sums = 090329f13d8889a3e6e3b46b3f9de152eea0963b71c10a2a7dbafb7bb7e17120
-	sha256sums = 04fd88f2a100e3ff9a96da6a70e58457252722cbf6350ffdbf08f17e62b64869
-	sha256sums = 3938777ba2baa7faac569d4a4a8a8cb7adeef786cfa84e991b6f03e991bcfae8
-	sha256sums = c36b8868587f1f274bc6382fe6d2dd38c1575bf725f788b1624a67a062e8bce2
+	sha256sums = 5491ffc23ae113db4b46167883594b5bcb6f1bbd0ce11432bc45047efbd635d2
+	sha256sums = 5f6d81094d8031172733500597e3d608632da3241cfadff8c166723af97d996a
+	sha256sums = 03bebce87a0da1b383666ab7a95b9810e15f2a024c0954f09c959d342c5d9c87
+	sha256sums = c1c8f30bc0fe928d887212678c9857a526ea7767964192b13d994e81314ba002
+	sha256sums = 106f4ce3de6d6ea020e8dcd8a4fd4f78ed2ae855e8a953a8783134e4d2cfba12
 
 pkgname = wwwoffle-svn
 

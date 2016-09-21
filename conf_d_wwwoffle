@@ -1,10 +1,15 @@
 #
-# Parameters to be passed to wwwoffle.
+# Parameters to be passed to wwwoffled.
 # 
 # NOTE:
 #   This file is parsed when using System V initscript or openrc-initscript,
 #   but it is ignored when using systemd to start up wwwoffle.
 #   When using systemd, edit the wwwoffle service definition directly to change startup options.
 #
+# The following variables are understood (as of version 2.9j+svn2227-5):
+# * WWWOFFLE_CONFIG_FILE holds the configuration file to use,
+# * WWWOFFLED_EXTRA_ARGS holds extra arguments to be passed to wwwoffled during startup (can be assigned the empty string).
+#
 
-WWWOFFLE_ARGS="-c /etc/wwwoffle/wwwoffle.conf"
+WWWOFFLE_CONFIG_FILE="/etc/wwwoffle/wwwoffle.conf"
+WWWOFFLED_EXTRA_ARGS=""
