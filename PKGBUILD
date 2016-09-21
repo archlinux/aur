@@ -8,8 +8,10 @@ pkgdesc="Engine for Quake 1, 2 and Hexen"
 arch=('i686' 'x86_64')
 url="http://fte.triptohell.info"
 license=('GPL')
-makedepends=('git' 'make')
-depends=('zlib' 'lib32-sdl_mixer')
+makedepends=('ecasound' 'libjpeg-turbo' 'libogg' 'libpng'
+	     'libvorbis' 'vulkan-validation-layers' 'zlib' 'mesa'
+	     'subversion')
+depends=('libpng' 'sdl2')
 conflicts=('ftequake')
 provides=('ftequake')
 source=('svn+http://svn.code.sf.net/p/fteqw/code/trunk'
