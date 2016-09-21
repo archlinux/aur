@@ -1,8 +1,8 @@
 pkgbase = vundle-git
 	pkgdesc = Plug-in manager for Vim
-	pkgver = 0.10.2.580.cfd3b2d
+	pkgver = 0.10.2.605.fef1c2f
 	pkgrel = 1
-	url = https://github.com/gmarik/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim
 	install = vundle.install
 	arch = any
 	license = MIT
@@ -10,10 +10,8 @@ pkgbase = vundle-git
 	depends = vim>=7.0
 	provides = vundle
 	conflicts = vundle
-	source = vundle-git::git+https://github.com/gmarik/Vundle.vim
-	source = vundle.vimrc
+	source = vundle-git::git+https://github.com/VundleVim/Vundle.vim
 	sha512sums = SKIP
-	sha512sums = 73329b4a1f302c684a6c203faac11ca040fd549ed4b4a5b09f4d94c53315748478e3b079bd4d2aed648e4eece2e62fd99d21ffcd34eb966e9e840ef73647c5fb
 
 pkgname = vundle-git
 
