@@ -3,10 +3,10 @@ pkgname=stegosaurus-lv2
 pkgver=0.0.3
 pkgrel=1
 pkgdesc="lv2 drum synthersizer without sampling"
-arch=("any")
+arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/$pkgname"
 license=('BSD')
-depends=('lv2')
+depends=('lv2' 'cairo')
 makedepends=('python-virtualenv' 'python2')
 source=("https://sourceforge.net/projects/$pkgname/files/"`
    `"Stegosaurus_LV2_${pkgver}.tar.gz")
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
     cd "stegosaurus-git"
-    ./waf configure --prefix=$pkgdir/usr/local
+    ./waf configure --prefix=$pkgdir/usr
     ./waf build
 }
 
