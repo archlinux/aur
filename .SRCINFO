@@ -13,6 +13,7 @@ pkgbase = gnome-shell-extension-scroll-workspaces-git
 	conflicts = gnome-shell-extension-scroll-workspaces
 	source = gnome-shell-extension-scroll-workspaces::git+http://github.com/gfxmonk/gnome-shell-scroll-workspaces
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-scroll-workspaces-git
 
