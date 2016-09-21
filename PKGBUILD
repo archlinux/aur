@@ -8,7 +8,7 @@ url="http://www.behringer.com/EN/products/X32.aspx"
 license=('custom:MUSIC Group End User License Agreement')
 install=x32edit.install
 depends_i686=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl')
-depends_x86_64=(lib32-libxext' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-pcre' 'lib32-mesa' 'lib32-mesa-libgl)
+depends_x86_64=('lib32-libxext' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-pcre' 'lib32-mesa' 'lib32-mesa-libgl')
 source=("http://downloads.music-group.com/software/behringer/X32/X32-Edit_LINUX_3.0.tar.gz"
 "http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf")
 sha512sums=('14792284c669d2d872df75d7b7de3dba516aa79446691ae9245191caa3d6b92c774dd0d20b5ff7360e9c9c78874f9c28ef8b38db0fc89f2688fb2a879fed27ba'
