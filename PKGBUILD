@@ -4,7 +4,7 @@
 
 pkgname=waf
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
 arch=('any')
@@ -38,7 +38,7 @@ build() {
   cd "$pkgname-$pkgver"
   ./waf-light \
     configure --prefix=/usr \
-    build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse'
+    build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse,qt4,kde4'
 
   # Strip packed library from binary. The plain files are installed separately.
   sed -i '/^#==>$/,/^#<==$/d' waf
