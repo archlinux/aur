@@ -1,0 +1,14 @@
+--- lib/GUI.pm	2016-09-21 18:44:45.096895860 +0200
++++ lib/GUI.pm	2016-09-21 18:44:45.096895860 +0200
+@@ -27,6 +27,11 @@
+ my $box;
+ 
+ sub start_gui {
++    my $theme = Gtk2::IconTheme->get_default;
++    $theme->append_search_path('/usr/share/icons/gnome/24x24/actions');
++    $theme->append_search_path('/usr/share/icons/gnome/24x24/places');
++    $theme->append_search_path('/usr/share/icons/gnome/24x24/mimetypes');
++
+     $window = Gtk2::Window->new;
+     $window->signal_connect(
+         destroy => sub {

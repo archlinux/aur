@@ -1,9 +1,8 @@
 pkgbase = clamtk
 	pkgdesc = GUI front-end for ClamAV using Perl and Gtk libraries. It is designed to be an easy-to-use, on-demand scanner for Linux systems
-	pkgver = 5.20
+	pkgver = 5.22
 	pkgrel = 1
-	url = https://github.com/dave-theunsub/clamtk/
-	install = clamtk.install
+	url = https://dave-theunsub.github.io/clamtk/
 	arch = any
 	license = GPL
 	depends = clamav
@@ -19,8 +18,13 @@ pkgbase = clamtk
 	depends = zenity
 	depends = desktop-file-utils
 	depends = gnome-icon-theme
-	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.20.tar.gz
-	sha512sums = fb6a09c16c622f3161bcc9384f4cc9fa7bdf0609c44e19afcbec980d5636670a7e1adb232bac980100d9ed50e2b668aa71633a035a6faa5b113157d09c4f11bb
+	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.22.tar.gz
+	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.22.tar.gz.asc
+	source = fix-gtk-icon.patch
+	validpgpkeys = 5DD47B3B121EE5C354A20305F51D19546ADA59DE
+	sha512sums = 221935d1485ae408386ab0b353b6a344249173cabee4edfab3ff777f37335b8a401353da73c32fae7dd064af37cffaaff00a4986a45283ccb1b5e5779347852c
+	sha512sums = SKIP
+	sha512sums = a59757d95dc531f96364bcffb57a27840d575623165c180793184cb3eaaca496b66a69d46f7e6913750922e49ba35342e066e14ffa1228cc8b7985e624bee7e1
 
 pkgname = clamtk
 
