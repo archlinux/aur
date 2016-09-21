@@ -2,7 +2,7 @@
 
 pkgname=cronograph-conky
 _prjname=cronoconky
-pkgver=285.0df290c
+pkgver=292.771fdd1
 pkgrel=1
 pkgdesc="A free, conky clock widget for X which displays date, time and weather information"
 arch=('any')
@@ -36,6 +36,9 @@ package() {
 	ln -fs /opt/cronograph_blk/start_crono.sh "${pkgdir}"/usr/local/bin/start_crono
 	ln -fs /opt/cronograph_blk/restart_crono.sh "${pkgdir}"/usr/local/bin/restart_crono
 	ln -fs /opt/cronograph_blk/stop_crono.sh "${pkgdir}"/usr/local/bin/stop_crono
+
+	install -dm 755 "${pkgdir}"/usr/share/applications
+	cp "${srcdir}/${_prjname}"/cronograph_conky.desktop "${pkgdir}"/usr/share/applications
 
 	install -dm 755 "${pkgdir}"/etc/xdg/autostart
 	cp "${srcdir}/${_prjname}"/cronograph_conky.desktop "${pkgdir}"/etc/xdg/autostart

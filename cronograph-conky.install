@@ -1,6 +1,6 @@
 post_install() {
 	echo "Building font information cache files. Please wait...";
-	fc-cache -f;
+	fc-cache "${pkgdir}"/usr/share/fonts/TTF/ttf-cronograph;
 	echo ;
 	echo -e "\e[37;46m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
 	echo -e "\e[37;46m│\e[30m From now on, due to brevity, I'll call this project as “crono”         \e[37m│\e[0m";
@@ -22,10 +22,9 @@ post_install() {
 	echo -e "\e[37;41m│ \e[30;48;5;196m                     Instruction - TEMPERATURE UNIT                   \e[37;41m │\e[0m";
 	echo -e "\e[37;41m│ \e[97m· At first, visit: \e[1mhttps://www.yahoo.com/news/weather\e[21m and click on    \e[37m │\e[0m";
 	echo -e "\e[37;41m│ \e[97m  the link \e[1;7mChange location\e[21;27m to detect yours. The \e[1mWOEID\e[21m is the number   \e[37m │\e[0m";
-	echo -e "\e[37;41m│ \e[97m  appears at the right of the URL, next to the dash. Next, type the   \e[37m │\e[0m";
-	echo -e "\e[37;41m│ \e[97m  command:                                                            \e[37m │\e[0m";
-	echo -e "\e[37;41m│ \e[97m  ‑ $ \e[1msudo sed -i 's/WOEID=.*/WOEID=<WOEID-code-of-yours>/'\e[21m           \e[37m │\e[0m";
-	echo -e "\e[37;41m│ \e[97m       \e[1m/opt/cronograph_blk/yahooweather/forecasts.sh\e[21m                  \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  appears at the right of the URL, next to the dash. Next, after the  \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  “crono” application has run once, use your favorite editor to edit  \e[37m │\e[0m";
+	echo -e "\e[37;41m│ \e[97m  the file \e[1m~/.config/cronograph_blk/cronorc\e[21m and change it properly.   \e[37m │\e[0m";
 	echo -e "\e[37;41m│ \e[97m· If you live in a country that uses the imperial system of units then\e[37m │\e[0m";
 	echo -e "\e[37;41m│ \e[97m  you have to enter the following two commands in the terminal so you \e[37m │\e[0m";
 	echo -e "\e[37;41m│ \e[97m  can see, all objects display a temperature, in “fahrenheit” degree  \e[37m │\e[0m";
@@ -65,6 +64,8 @@ post_upgrade() {
 	echo -e "\e[30;107m│ \e[47m                      I N S T R U C T I O N                           \e[30;107m │\e[0m";
 	echo -e "\e[30;107m│ · You can now run (if you want) in terminal the command:               │\e[0m";
 	echo -e "\e[30;107m│   ‑ $ \e[1mstart_crono\e[21m                                                      │\e[0m";
+	echo -e "\e[30;107m│ · Use your favorite editor to edit the file:                           │\e[0m";
+	echo -e "\e[30;107m│   \e[1m~/.config/cronograph_blk/cronorc\e[21m and change it properly.             │\e[0m";
 	echo -e "\e[30;107m└────────────────────────────────────────────────────────────────────────┘\e[0m";
 	echo ;
 }
