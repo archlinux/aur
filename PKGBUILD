@@ -3,7 +3,7 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -22,7 +22,6 @@ source=("$url$pkgbase-$pkgver.tar.xz")
 sha256sums=('b9571fe96568ced2f70c19c9090cb15e078b74769331e1b04f3ef4e5258d8d7e')
 
 prepare() {
-  mv "$pkgbase-\"$pkgver\"" "$pkgbase-$pkgver"
   cd "$pkgbase-$pkgver"
 
   for patch in ../*.patch; do
