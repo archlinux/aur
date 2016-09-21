@@ -2,14 +2,14 @@
 
 _pkgname=ngp
 pkgname=$_pkgname-git
-pkgver=1.3.r61.g80dd78b
+pkgver=1.3.r98.g25e0fe5
 pkgrel=1
 pkgdesc="Ncurses grep tool"
 arch=('i686' 'x86_64')
 url="https://github.com/jonathanklee/ngp"
 license=('GPL')
 depends=('ncurses')
-makedepends=('git' 'libconfig')
+makedepends=('cmake' 'git' 'libconfig')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($pkgname::git://github.com/jonathanklee/ngp.git)
@@ -22,12 +22,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-
-  # Ignore warning
-  CFLAGS="$CFLAGS -Wno-error=misleading-indentation"
-
-  ./autogen.sh
-  ./configure --prefix=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
