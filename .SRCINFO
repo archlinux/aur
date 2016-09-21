@@ -17,6 +17,7 @@ pkgbase = ftequake-svn
 	makedepends = subversion
 	depends = libpng
 	depends = sdl2
+	depends = vulkan-validation-layers
 	provides = ftequake
 	conflicts = ftequake
 	source = svn+http://svn.code.sf.net/p/fteqw/code/trunk

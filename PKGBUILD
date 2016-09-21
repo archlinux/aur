@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('ecasound' 'libjpeg-turbo' 'libogg' 'libpng'
 	     'libvorbis' 'vulkan-validation-layers' 'zlib' 'mesa'
 	     'subversion')
-depends=('libpng' 'sdl2')
+depends=('libpng' 'sdl2' 'vulkan-validation-layers')
 conflicts=('ftequake')
 provides=('ftequake')
 source=('svn+http://svn.code.sf.net/p/fteqw/code/trunk'
