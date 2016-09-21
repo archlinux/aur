@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.7-gnu
-_pkgver=4.7.2-gnu
+_pkgver=4.7.4-gnu
 _grsecver=3.1
-_timestamp=201608211829
+_timestamp=201609152234
 _knockpatchver=4.7_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -21,9 +21,10 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
-pkgver=${_pkgver//-/_}.${_timestamp}
+epoch=1
+pkgver=${_pkgver//-/_}.r${_timestamp}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
@@ -69,9 +70,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
             'SKIP'
-            '5909e909e4e8a7bf9deca13041690411652fff40da5a19351c780dac45bc96f5'
+            'cfb0b64a49565e9f54a7e561c53151f1e60f48880ba26087e4e23905827a1bd2'
             'SKIP'
             'ae7ea068d703220716591ed3d865238b7ac140181b83d7eb466cc9c140933113'
             'SKIP'
@@ -81,14 +82,14 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'fa67e88bf5f687867b743f140be56e6893dcea353281d7ea88c549a278e5cc9b'
-            '0e1ee976e3db298fa22ba15575dfbe299d7df0d22b69c687dbb56b9d8acee1a5'
+            '16b9b1d52bdeadd3222b03d95e41f399034d71fb52ca34b97ce90c67d770650a'
+            'e666e07a2451937795b10691affcfc9cae68dfaca4697543c555c2479e14d33c'
             'b0d9e3b7faffb798ca69a6d21a90353c0fea4fa49b9499ed36432324c2d141ae'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'a20cc81faad77ce6f82a7d8f83a2dd96cd91900ee5ad529543c491eff296618c'
+            '54f1c14015ab933420265d1818f3e7d1cfb8dd76ca7e0aa6bfdbc10311370f19'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
