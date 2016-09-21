@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-hidetopbar-git
 	conflicts = gnome-shell-extension-hidetopbar
 	source = gnome-shell-extension-hidetopbar::git+https://github.com/mlutfy/hidetopbar
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-hidetopbar-git
 
