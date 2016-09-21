@@ -13,6 +13,7 @@ pkgbase = gnome-shell-extension-caffeine-git
 	conflicts = gnome-shell-extension-caffeine
 	source = gnome-shell-extension-caffeine::git+https://github.com/eonpatapon/gnome-shell-extension-caffeine
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-caffeine-git
 
