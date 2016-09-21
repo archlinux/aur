@@ -14,6 +14,7 @@ pkgbase = gnome-shell-extension-maximus-two-git
 	conflicts = gnome-shell-extension-maximus-two
 	source = gnome-shell-extension-maximus-two::git+https://github.com/danielkza/GnomeExtensionMaximusTwo
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-maximus-two-git
 
