@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.7-gnu
-_pkgver=4.7.2-gnu
+_pkgver=4.7.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -60,7 +60,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -68,14 +68,14 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'ac109d51bbfca8ccdd6a004290d03f19e36f150eee86fb33deb8de3eafe97d56'
-            '3cedd3cd7519d1eaa9eac4df781e668aa70b4b869c5344e5dc2e014ae1d6649c'
+            '78cb3512b7c23d0b89826ff4312cd0b9395e1ebef3eb797a0e999c953011b7d7'
+            'befdd3b96e792858ddc5e258324ff51d56667aeb7a79fd63b3d42e156e37f63a'
             'b991af3f44c035a5980ddd74d17f92d2947b5df062476a3808f49b443a4e2c0f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'cfe0b429cf1989bfa33ca4a844630bc00d7347feb0219a81fb2731145500fd83'
+            '8c5cd4d408a496bad61aace20fbada48287aaca6a5fb6d5fcb9cbf854faad83f'
             'SKIP'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
             'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
