@@ -7,7 +7,7 @@ pkgbase = vundle
 	arch = any
 	license = MIT
 	depends = vim>=7.0
-	source = vundle-0.10.2.tar.gz::https://github.com/gmarik/Vundle.vim/archive/v0.10.2.tar.gz
+	source = vundle-0.10.2.tar.gz::https://github.com/VundleVim/Vundle.vim/archive/v0.10.2.tar.gz
 	sha512sums = 4a06e6600956cccb4db2852812a100ae31f499b11fe1a4a0d524da84a51c5e1f267770fe8032d8a28b4fb3f6313a2b8f087e277a65fd4a4d507aa4e7d87a96ea
 
 pkgname = vundle
