@@ -6,12 +6,13 @@
 
 pkgname=invada-studio-plugins-lv2
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of LV2 audio effect plugins, ported from VST."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/invada-studio/"
 license=('GPL2')
 groups=('lv2-plugins')
+makedepends=('lv2')
 depends=('gtk2')
 source=("https://launchpad.net/invada-studio/lv2/1.2/+download/${pkgname}_${pkgver}-nopkg.tgz"
 		"invada-studio-fixes.patch")
