@@ -22,14 +22,10 @@ conflicts=('monero-core')
 
 # TODO: create a LICENSE file in upstream monero-core repo
 source=("$_gitname::git+https://github.com/monero-project/monero-core.git"
-	"https://raw.githubusercontent.com/monero-project/bitmonero/master/LICENSE"
-        "0001-pro-link-against-libunwind.patch"
-        "0001-pro-option-for-static-build.patch")
+        "https://raw.githubusercontent.com/monero-project/bitmonero/master/LICENSE")
 
 md5sums=('SKIP'
-         '9c96f49f1150e64a87089d967f47983e'
-         '64ea8c1233a5d3f0b66966ec3493ed7b'
-         'fc98261637af18c42508a1ed4a8f5993')
+         '9c96f49f1150e64a87089d967f47983e')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -40,13 +36,6 @@ pkgver() {
 
 prepare() {
         cd "$srcdir/$_gitname"
-
-        # Merge fix for broken build that is not yet merged
-        git fetch https://github.com/mbg033/monero-core.git
-        git cherry-pick f2a126790a777c6dce5370921f5461f7627f8e5e
-
-        patch -p1 < ../0001-pro-link-against-libunwind.patch
-        patch -p1 < ../0001-pro-option-for-static-build.patch
 }
 
 build() {
