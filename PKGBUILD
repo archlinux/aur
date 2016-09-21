@@ -1,8 +1,8 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvolaplayer
-pkgver=3.0.2
-pkgrel=4
+pkgver=3.0.4
+pkgrel=1
 
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ url='https://tiliado.eu/nuvolaplayer/'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz"
         'nuvola-app-1.5.1.template')
-sha256sums=('0ba442b06df7df58f6fbaaa36be905d49fef079254bf923e6a80a54ea4bd6df6'
+sha256sums=('6577f96f305fd9a1d294c6f1a49b5d6a515dd42b026ce58ef89aeb19cd03349d'
             '429f12bfa9bb8100c493eb80de067677e0023a7dec629d2fe895124e687f7a51')
 
 depends=('diorite' 'webkit2gtk' 'libarchive')
