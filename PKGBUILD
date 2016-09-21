@@ -1,8 +1,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.7
-pkgver=4.7.2
-pkgrel=2
+pkgver=4.7.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -32,10 +32,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '031cb0e7b86f2ef2cc4d0dde9d73495f68e8d23e4c41f50f7f95b065ee33a71d'
+            'a7e9415d35cee130f2ea5ae4edc652d4be784d9bbfd77e850f1e999f812b2116'
             'SKIP'
-            'daa4311ae89761fec6172d89e5314f40ce3f03476a8de9311a78eb909628b53a'
-            '53d42d95e6fb62fcaccebba5fd471a63503a74c74ca618bee0cb8b6b659614f3'
+            '109a84df46989dea57015858c58ccba66fe4b3d73246a2f92d5d8d318334b807'
+            '7754450077e1e3e25fc37f92fb46d3eb05ead00fdc8a8af51e65e20fc9f7cf2a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
