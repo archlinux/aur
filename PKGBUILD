@@ -3,7 +3,7 @@
 
 pkgname=zulucrypt
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="http://mhogomchungu.github.io/${_altpkgname}"
@@ -16,6 +16,7 @@ makedepends=('cmake')
 options=('!buildflags')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.bz2")
 md5sums=('f1b472b7d56784e5968d8ecb22b7951b')
+sha256sums=('53a970173c7f87cf3b2c4a9bf12c36fa7796147d99235cc37de9aa2cbcbddcde')
 changelog=${pkgname}.changelog
 install=${pkgname}.install
 
