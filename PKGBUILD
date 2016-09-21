@@ -2,7 +2,7 @@
 
 pkgname='monero-core-git'
 _gitname='monero-core'
-pkgver=r165.a3fa191
+pkgver=r186.6e5f5e1
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
@@ -20,12 +20,9 @@ pkgdesc="Official GUI for Monero, a private, secure, untraceable peer-to-peer cu
 provides=('monero-core')
 conflicts=('monero-core')
 
-# TODO: create a LICENSE file in upstream monero-core repo
-source=("$_gitname::git+https://github.com/monero-project/monero-core.git"
-        "https://raw.githubusercontent.com/monero-project/bitmonero/master/LICENSE")
+source=("$_gitname::git+https://github.com/monero-project/monero-core.git")
 
-md5sums=('SKIP'
-         '9c96f49f1150e64a87089d967f47983e')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -48,5 +45,5 @@ build() {
 package() {
 
 	install -D -m755 "$srcdir/$_gitname/release/bin/monero-core" "$pkgdir/usr/bin/monero-core"
-	install -D -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
