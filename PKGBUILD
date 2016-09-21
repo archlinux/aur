@@ -12,7 +12,11 @@ license=(GPL)
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-md5sums+=('SKIP')
+for integ in $(get_integlist)
+do
+  typeset -n array="${integ}sums"
+  array+=('SKIP')
+done
 provides+=("$_gitname=$pkgver")
 conflicts+=("$_gitname")
 pkgver() {
