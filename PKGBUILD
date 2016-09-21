@@ -1,7 +1,7 @@
 # Maintainer: Markus Hovorka <m.hovorka@live.de>
 
 pkgname=freecad-netgen-git
-pkgver=0.17pre.r1768.g53531b6
+pkgver=0.17pre.r1769.g40c79f1
 pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
