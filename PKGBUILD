@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.7-gnu
-_pkgver=4.7.2-gnu
+_pkgver=4.7.4-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -60,9 +60,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
             'SKIP'
-            'fbaa87174e05b721baebd65c2f7538856a9b3311c0177b81f4cc4e18f071f572'
+            'd7c300b1f0fcdb60936102b198ee8b533c1ad7ad6dbaad05c070c702fefb41ee'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -70,12 +70,12 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'a1374041d7d5949e7283bb672c076ede4a445208c66b592fd8d7ddf678f79163'
-            '3fb3ade34c18402a77c3138df5f002e413cc02ab36122dee500516c3a86a3a47'
-            '7c2ec514ff6136a5164fdc0eddd0c9de9b7d262c8b5e77fd65740b1360029634'
+            '295ff582f28fa5e00af9a2e9feb98f8aa39ca5fe57127858dc178c0a18b8d0c4'
+            '6c9b6d6b6065da5788cb461313fb2c1053c015acde20faf589e665cf68030484'
+            '515448fb9f4a76fb63c7183c3513e423b4c66b3323fccbbfff2c55673df41fc9'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'cfe0b429cf1989bfa33ca4a844630bc00d7347feb0219a81fb2731145500fd83'
+            '8c5cd4d408a496bad61aace20fbada48287aaca6a5fb6d5fcb9cbf854faad83f'
             'SKIP'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
             'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
