@@ -42,8 +42,6 @@ build() {
 	      -DOCC_INCLUDE_DIR:PATH=/opt/opencascade/inc \
 	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
 	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
-	      -DVTK_LIBRARY_DIRS=/opt/vtk-qt4/lib \
-	      -DVTK_INCLUDE_DIRS=/opt/vtk-qt4/include \
 	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
 	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic \
 	      -DBUILD_FEM_NETGEN=1
