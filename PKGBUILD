@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2
-pkgver=16.09.04
+pkgver=16.09.21
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
@@ -9,11 +9,10 @@ url='http://zaps166.sourceforge.net/?app=QMPlay2'
 license=('LGPL')
 depends=('qt5-base' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'xdg-utils')
 optdepends=('pulseaudio: PulseAudio support'
-            'youtube-dl: Better YouTube support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'cmake')
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha1sums=(7d2c5027af5b01ab5868bb41cdefadb6eb405a40)
+sha1sums=(35265315f4ec08860cf0be42a066bea6248c0235)
 
 build()
 {
