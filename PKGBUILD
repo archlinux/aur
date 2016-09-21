@@ -1,14 +1,16 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
-pkgdesc='HTTP/2 web server with built-in support for Markdown, Lua, Pongo2, JSX and Redis'
+pkgdesc='HTTP/2 web server with built-in support for Markdown, Lua, Sass (SCSS), JSX and Redis'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
-makedepends=('go' 'git')
-optdepends=('redis')
+makedepends=('go' 'git' 'glide')
+optdepends=('redis: For using the Redis database backend'
+            'mariadb: For using the MariaDB/MySQL database backend'
+            'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua')
 source=("git://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
@@ -17,13 +19,13 @@ install='algernon.install'
 prepare() {
   cd "$pkgname"
 
-  GOPATH="$srcdir" go get -d
+  glide install
 }
 
 build() {
   cd "$pkgname"
 
-  GOPATH="$srcdir" go build
+  go build
 }
 
 package() {
