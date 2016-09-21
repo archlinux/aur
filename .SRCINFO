@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-wintitle-git
 	conflicts = gnome-shell-extension-wintitle
 	source = gnome-shell-extension-wintitle::git+https://github.com/meghprkh/wintitle
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-wintitle-git
 
