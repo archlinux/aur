@@ -11,14 +11,16 @@ depends=()
 if [[ $CARCH == "i686" ]]; then
   source=(http://www.hdsentinel.com/hdslin/hdsentinel-016.gz)
   md5sums=('4169d8e09265ca9818f6e2d04609461a')
+  _HDSentinel="hdsentinel-016"
 elif [[ $CARCH == "x86_64" ]]; then
   source=(http://www.hdsentinel.com/hdslin/hdsentinel-016-x64.tar.gz)
   md5sums=('2ecf56573fcb8a339fc1b2819d1b96a9')
+  _HDSentinel="HDSentinel"
 fi
 
 package() {
   cd $srcdir
-  install -m755 -D HDSentinel $pkgdir/usr/bin/hdsentinel || return 1
+  install -m755 -D $_HDSentinel $pkgdir/usr/bin/hdsentinel || return 1
 }
 
 # vim:set ts=2 sw=2 et:
