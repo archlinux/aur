@@ -13,8 +13,8 @@ pkgbase = amor
 	makedepends = cmake
 	makedepends = automoc4
 	depends = kdebase-runtime
-	source = http://download.kde.org/stable/applications/15.08.3/src/amor-15.08.3.tar.xz
-	sha1sums = d8e4550e987a6df59abf75f22df99b3fab1e8ed3
+	source = git+https://github.com/gregodadone/amor.git
+	sha1sums = SKIP
 
 pkgname = amor
 
