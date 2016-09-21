@@ -9,8 +9,8 @@
 
 _pack=cgi
 pkgname=octave-$_pack
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Common Gatway Interface for Octave"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('87b9726bd1e4804896521fc0f75ee5b7')
+md5sums=('0b37a42a23c17963946092939d80c158')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
