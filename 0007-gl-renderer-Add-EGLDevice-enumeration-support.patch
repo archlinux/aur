@@ -1,4 +1,4 @@
-From 1ba420dd543f35b3f5b9988efb5368c26f34c270 Mon Sep 17 00:00:00 2001
+From 21f53facea84443ed09fbd400530a58e3695906b Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 15:56:37 +0200
 Subject: [PATCH 07/11] gl-renderer: Add EGLDevice enumeration support
@@ -16,16 +16,18 @@ Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
+
+[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- src/gl-renderer.c | 87 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
- src/gl-renderer.h |  7 +++++
+ libweston/gl-renderer.c | 87 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ libweston/gl-renderer.h |  7 ++++
  2 files changed, 93 insertions(+), 1 deletion(-)
 
-diff --git a/src/gl-renderer.c b/src/gl-renderer.c
-index c208f36a5165..098440ce30a2 100644
---- a/src/gl-renderer.c
-+++ b/src/gl-renderer.c
-@@ -3175,6 +3175,88 @@ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface)
+diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
+index 067e677f8a7b..b5d93531c944 100644
+--- a/libweston/gl-renderer.c
++++ b/libweston/gl-renderer.c
+@@ -3208,6 +3208,88 @@ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface)
  	return 0;
  }
  
@@ -42,9 +44,9 @@ index c208f36a5165..098440ce30a2 100644
 +		return -1;
 +	}
 +
-+	if (!check_extension(extensions, "EGL_EXT_device_base") &&
-+	    (!check_extension(extensions, "EGL_EXT_device_query") ||
-+	     !check_extension(extensions, "EGL_EXT_device_enumeration"))) {
++	if (!weston_check_egl_extension(extensions, "EGL_EXT_device_base") &&
++	    (!weston_check_egl_extension(extensions, "EGL_EXT_device_query") ||
++	     !weston_check_egl_extension(extensions, "EGL_EXT_device_enumeration"))) {
 +		weston_log("EGL_EXT_device_base not supported\n");
 +		return -1;
 +	}
@@ -77,9 +79,9 @@ index c208f36a5165..098440ce30a2 100644
 +		return -1;
 +	}
 +
-+	if (!check_extension(extensions, "EGL_EXT_device_base") &&
-+	    (!check_extension(extensions, "EGL_EXT_device_query") ||
-+	     !check_extension(extensions, "EGL_EXT_device_enumeration"))) {
++	if (!weston_check_egl_extension(extensions, "EGL_EXT_device_base") &&
++	    (!weston_check_egl_extension(extensions, "EGL_EXT_device_query") ||
++	     !weston_check_egl_extension(extensions, "EGL_EXT_device_enumeration"))) {
 +		weston_log("EGL_EXT_device_base not supported.\n");
 +		return -1;
 +	}
@@ -96,7 +98,7 @@ index c208f36a5165..098440ce30a2 100644
 +		return -1;
 +	}
 +
-+	if (!check_extension(extensions, "EGL_EXT_device_drm")) {
++	if (!weston_check_egl_extension(extensions, "EGL_EXT_device_drm")) {
 +		weston_log("EGL_EXT_device_drm not supported.\n");
 +		return -1;
 +	}
@@ -114,7 +116,7 @@ index c208f36a5165..098440ce30a2 100644
  WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
  	.opaque_attribs = gl_renderer_opaque_attribs,
  	.alpha_attribs = gl_renderer_alpha_attribs,
-@@ -3185,5 +3267,8 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+@@ -3218,5 +3300,8 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
  	.output_destroy = gl_renderer_output_destroy,
  	.output_surface = gl_renderer_output_surface,
  	.output_set_border = gl_renderer_output_set_border,
@@ -124,11 +126,11 @@ index c208f36a5165..098440ce30a2 100644
 +	.get_devices = gl_renderer_get_devices,
 +	.get_drm_device_file = gl_renderer_get_drm_device_file
  };
-diff --git a/src/gl-renderer.h b/src/gl-renderer.h
-index f778cd9b6f69..f376edd80106 100644
---- a/src/gl-renderer.h
-+++ b/src/gl-renderer.h
-@@ -129,5 +129,12 @@ struct gl_renderer_interface {
+diff --git a/libweston/gl-renderer.h b/libweston/gl-renderer.h
+index 02f8011247db..871aa6589b01 100644
+--- a/libweston/gl-renderer.h
++++ b/libweston/gl-renderer.h
+@@ -114,5 +114,12 @@ struct gl_renderer_interface {
  				  int32_t tex_width, unsigned char *data);
  
  	void (*print_egl_error_state)(void);
@@ -142,5 +144,5 @@ index f778cd9b6f69..f376edd80106 100644
  };
  
 -- 
-2.8.3
+2.10.0
 

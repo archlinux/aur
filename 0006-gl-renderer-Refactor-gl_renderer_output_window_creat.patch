@@ -1,4 +1,4 @@
-From 2309d0381a9353651f7d080190c43702c76d2075 Mon Sep 17 00:00:00 2001
+From d53c17a0c190f240b71e573c03bdf3abb264126f Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Fri, 26 Feb 2016 15:44:59 +0100
 Subject: [PATCH 06/11] gl-renderer: Refactor
@@ -15,14 +15,16 @@ Bonus: Fix EGLSurface leakage upon gl_renderer_setup() failure.
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
----
- src/gl-renderer.c | 96 ++++++++++++++++++++++++++++++++++++-------------------
- 1 file changed, 64 insertions(+), 32 deletions(-)
 
-diff --git a/src/gl-renderer.c b/src/gl-renderer.c
-index 1d76488c2165..c208f36a5165 100644
---- a/src/gl-renderer.c
-+++ b/src/gl-renderer.c
+[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
+---
+ libweston/gl-renderer.c | 87 +++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 59 insertions(+), 28 deletions(-)
+
+diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
+index dd04caa87102..067e677f8a7b 100644
+--- a/libweston/gl-renderer.c
++++ b/libweston/gl-renderer.c
 @@ -1,6 +1,7 @@
  /*
   * Copyright © 2012 Intel Corporation
@@ -31,7 +33,7 @@ index 1d76488c2165..c208f36a5165 100644
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -2546,24 +2547,21 @@ gl_renderer_output_set_border(struct weston_output *output,
+@@ -2543,24 +2544,21 @@ gl_renderer_output_set_border(struct weston_output *output,
  static int
  gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface);
  
@@ -60,7 +62,7 @@ index 1d76488c2165..c208f36a5165 100644
  	}
  
  	if (egl_config != gr->egl_config &&
-@@ -2571,48 +2569,82 @@ gl_renderer_output_window_create(struct weston_output *output,
+@@ -2568,42 +2566,75 @@ gl_renderer_output_window_create(struct weston_output *output,
  		weston_log("attempted to use a different EGL config for an "
  			   "output but EGL_MESA_configless_context is not "
  			   "supported\n");
@@ -68,10 +70,31 @@ index 1d76488c2165..c208f36a5165 100644
 +		return EGL_NO_SURFACE;
  	}
  
--	go = zalloc(sizeof *go);
--	if (go == NULL)
--		return -1;
 +	log_egl_config_info(gr->egl_display, egl_config);
++
++	if (gr->create_platform_window)
++		egl_surface = gr->create_platform_window(gr->egl_display,
++							 egl_config,
++							 window_for_platform,
++							 NULL);
++	else
++		egl_surface = eglCreateWindowSurface(gr->egl_display,
++						     egl_config,
++						     window_for_legacy, NULL);
++
++	return egl_surface;
++}
++
++static int
++gl_renderer_output_create(struct weston_output *output,
++                          EGLSurface surface)
++{
++	struct gl_output_state *go;
++	int i;
++
+ 	go = zalloc(sizeof *go);
+ 	if (go == NULL)
+ 		return -1;
  
 -	if (gr->create_platform_window) {
 -		go->egl_surface =
@@ -85,46 +108,14 @@ index 1d76488c2165..c208f36a5165 100644
 -					       egl_config,
 -					       window_for_legacy, NULL);
 -	}
-+	if (gr->create_platform_window)
-+		egl_surface = gr->create_platform_window(gr->egl_display,
-+		                                         egl_config,
-+		                                         window_for_platform,
-+		                                         NULL);
-+	else
-+		egl_surface = eglCreateWindowSurface(gr->egl_display,
-+		                                     egl_config,
-+		                                     window_for_legacy, NULL);
- 
+-
 -	if (go->egl_surface == EGL_NO_SURFACE) {
 -		weston_log("failed to create egl surface\n");
 -		free(go);
 -		return -1;
 -	}
-+	return egl_surface;
-+}
-+
-+static int
-+gl_renderer_output_create(struct weston_output *output,
-+                          EGLSurface surface)
-+{
-+	struct weston_compositor *ec = output->compositor;
-+	struct gl_renderer *gr = get_renderer(ec);
-+	struct gl_output_state *go;
-+	int i;
- 
- 	if (gr->egl_context == NULL)
--		if (gl_renderer_setup(ec, go->egl_surface) < 0) {
--			free(go);
-+		if (gl_renderer_setup(ec, surface) < 0) {
- 			return -1;
- 		}
- 
-+	go = zalloc(sizeof *go);
-+	if (go == NULL)
-+		return -1;
-+
 +	go->egl_surface = surface;
-+
+ 
  	for (i = 0; i < BUFFER_DAMAGE_COUNT; i++)
  		pixman_region32_init(&go->buffer_damage[i]);
  
@@ -149,10 +140,10 @@ index 1d76488c2165..c208f36a5165 100644
 +	int ret = 0;
 +
 +	egl_surface = gl_renderer_create_window_surface(gr,
-+	                                                window_for_legacy,
-+	                                                window_for_platform,
-+	                                                config_attribs,
-+	                                                visual_id, n_ids);
++							window_for_legacy,
++							window_for_platform,
++							config_attribs,
++							visual_id, n_ids);
 +	if (egl_surface == EGL_NO_SURFACE) {
 +		weston_log("failed to create egl surface\n");
 +		return -1;
@@ -169,5 +160,5 @@ index 1d76488c2165..c208f36a5165 100644
  gl_renderer_output_destroy(struct weston_output *output)
  {
 -- 
-2.8.3
+2.10.0
 

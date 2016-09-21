@@ -1,4 +1,4 @@
-From cb241882dc1903c2330dc68f08c21c76c9a14e91 Mon Sep 17 00:00:00 2001
+From fa43bbf17f0f06a1b7c70087fe9d172fb691bd35 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Thu, 28 Jan 2016 19:37:10 +0100
 Subject: [PATCH 11/11] compositor-drm: Add support for EGLDevice+EGLOutput
@@ -25,18 +25,38 @@ Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
 
-[aplattner@nvidia.com: rebased on top of Weston 1.11.0]
+[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- src/compositor-drm.c | 328 +++++++++++++++++++++++++++++++++++----------------
- src/compositor-drm.h |   3 +
- src/main.c           |   2 +
+ compositor/main.c          |   2 +
+ libweston/compositor-drm.c | 328 +++++++++++++++++++++++++++++++--------------
+ libweston/compositor-drm.h |   3 +
  3 files changed, 233 insertions(+), 100 deletions(-)
 
-diff --git a/src/compositor-drm.c b/src/compositor-drm.c
-index 51d90e1d6437..0844cec9f570 100644
---- a/src/compositor-drm.c
-+++ b/src/compositor-drm.c
-@@ -76,6 +76,10 @@
+diff --git a/compositor/main.c b/compositor/main.c
+index 0e5af5b17fe6..9e9758253eeb 100644
+--- a/compositor/main.c
++++ b/compositor/main.c
+@@ -522,6 +522,7 @@ usage(int error_code)
+ 		"  --seat=SEAT\t\tThe seat that weston should run on\n"
+ 		"  --tty=TTY\t\tThe tty to use\n"
+ 		"  --use-pixman\t\tUse the pixman (CPU) renderer\n"
++		"  --use-egldevice\tUse EGLDevice and EGLOutput with the GL renderer\n"
+ 		"  --current-mode\tPrefer current KMS mode over EDID preferred mode\n\n");
+ #endif
+ 
+@@ -1020,6 +1021,7 @@ load_drm_backend(struct weston_compositor *c,
+ 		{ WESTON_OPTION_INTEGER, "tty", 0, &config.tty },
+ 		{ WESTON_OPTION_BOOLEAN, "current-mode", 0, &config.use_current_mode },
+ 		{ WESTON_OPTION_BOOLEAN, "use-pixman", 0, &config.use_pixman },
++		{ WESTON_OPTION_BOOLEAN, "use-egldevice", 0, &config.use_egldevice },
+ 	};
+ 
+ 	parse_options(options, ARRAY_LENGTH(options), argc, argv);
+diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
+index d1cb21c6b37a..096ca79a3e2b 100644
+--- a/libweston/compositor-drm.c
++++ b/libweston/compositor-drm.c
+@@ -77,6 +77,10 @@
  #define GBM_BO_USE_CURSOR GBM_BO_USE_CURSOR_64X64
  #endif
  
@@ -47,7 +67,7 @@ index 51d90e1d6437..0844cec9f570 100644
  struct drm_backend {
  	struct weston_backend base;
  	struct weston_compositor *compositor;
-@@ -91,7 +95,10 @@ struct drm_backend {
+@@ -92,7 +96,10 @@ struct drm_backend {
  		int fd;
  		char *filename;
  	} drm;
@@ -58,7 +78,7 @@ index 51d90e1d6437..0844cec9f570 100644
  	uint32_t *crtcs;
  	int num_crtcs;
  	uint32_t crtc_allocator;
-@@ -114,6 +121,7 @@ struct drm_backend {
+@@ -115,6 +122,7 @@ struct drm_backend {
  	int cursors_are_broken;
  
  	int use_pixman;
@@ -66,7 +86,7 @@ index 51d90e1d6437..0844cec9f570 100644
  
  	uint32_t prev_state;
  
-@@ -523,17 +531,21 @@ drm_output_render_gl(struct drm_output *output, pixman_region32_t *damage)
+@@ -569,17 +577,21 @@ drm_output_render_gl(struct drm_output *output, pixman_region32_t *damage)
  	output->base.compositor->renderer->repaint_output(&output->base,
  							  damage);
  
@@ -98,7 +118,7 @@ index 51d90e1d6437..0844cec9f570 100644
  	}
  }
  
-@@ -658,9 +670,14 @@ drm_output_repaint(struct weston_output *output_base,
+@@ -704,9 +716,14 @@ drm_output_repaint(struct weston_output *output_base,
  		output_base->set_dpms(output_base, WESTON_DPMS_ON);
  	}
  
@@ -116,15 +136,15 @@ index 51d90e1d6437..0844cec9f570 100644
  		weston_log("queueing pageflip failed: %m\n");
  		goto err_pageflip;
  	}
-@@ -731,7 +748,6 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
- 	struct drm_output *output = (struct drm_output *) output_base;
- 	struct drm_backend *backend = (struct drm_backend *)
- 		output_base->compositor->backend;
+@@ -777,7 +794,6 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+ 	struct drm_output *output = to_drm_output(output_base);
+ 	struct drm_backend *backend =
+ 		to_drm_backend(output_base->compositor);
 -	uint32_t fb_id;
  	struct timespec ts, tnow;
  	struct timespec vbl2now;
  	int64_t refresh_nsec;
-@@ -787,10 +803,14 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -833,10 +849,14 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  	/* Immediate query succeeded, but didn't provide valid timestamp.
  	 * Use pageflip fallback.
  	 */
@@ -142,7 +162,7 @@ index 51d90e1d6437..0844cec9f570 100644
  		weston_log("queueing pageflip failed: %m\n");
  		goto finish_frame;
  	}
-@@ -1322,6 +1342,9 @@ static void
+@@ -1365,6 +1385,9 @@ static void
  drm_output_fini_pixman(struct drm_output *output);
  
  static void
@@ -151,8 +171,8 @@ index 51d90e1d6437..0844cec9f570 100644
 +static void
  drm_output_destroy(struct weston_output *output_base)
  {
- 	struct drm_output *output = (struct drm_output *) output_base;
-@@ -1352,12 +1375,10 @@ drm_output_destroy(struct weston_output *output_base)
+ 	struct drm_output *output = to_drm_output(output_base);
+@@ -1394,12 +1417,10 @@ drm_output_destroy(struct weston_output *output_base)
  	b->crtc_allocator &= ~(1 << output->crtc_id);
  	b->connector_allocator &= ~(1 << output->connector_id);
  
@@ -168,7 +188,7 @@ index 51d90e1d6437..0844cec9f570 100644
  
  	weston_plane_release(&output->fb_plane);
  	weston_plane_release(&output->cursor_plane);
-@@ -1456,9 +1477,7 @@ drm_output_switch_mode(struct weston_output *output_base, struct weston_mode *mo
+@@ -1498,9 +1519,7 @@ drm_output_switch_mode(struct weston_output *output_base, struct weston_mode *mo
  			return -1;
  		}
  	} else {
@@ -179,7 +199,7 @@ index 51d90e1d6437..0844cec9f570 100644
  		if (drm_output_init_egl(output, b) < 0) {
  			weston_log("failed to init output egl state with "
  				   "new mode");
-@@ -1545,11 +1564,6 @@ create_gbm_device(int fd)
+@@ -1587,11 +1606,6 @@ create_gbm_device(int fd)
  {
  	struct gbm_device *gbm;
  
@@ -191,7 +211,7 @@ index 51d90e1d6437..0844cec9f570 100644
  	/* GBM will load a dri driver, but even though they need symbols from
  	 * libglapi, in some version of Mesa they are not linked to it. Since
  	 * only the gl-renderer module links to it, the call above won't make
-@@ -1562,6 +1576,39 @@ create_gbm_device(int fd)
+@@ -1604,6 +1618,39 @@ create_gbm_device(int fd)
  	return gbm;
  }
  
@@ -231,7 +251,7 @@ index 51d90e1d6437..0844cec9f570 100644
  /* When initializing EGL, if the preferred buffer format isn't available
   * we may be able to substitute an ARGB format for an XRGB one.
   *
-@@ -1588,38 +1635,61 @@ fallback_format_for(uint32_t format)
+@@ -1630,38 +1677,61 @@ fallback_format_for(uint32_t format)
  static int
  drm_backend_create_gl_renderer(struct drm_backend *b)
  {
@@ -316,7 +336,7 @@ index 51d90e1d6437..0844cec9f570 100644
  		return -1;
  	}
  
-@@ -1846,55 +1916,95 @@ find_crtc_for_connector(struct drm_backend *b,
+@@ -1888,55 +1958,95 @@ find_crtc_for_connector(struct drm_backend *b,
  static int
  drm_output_init_egl(struct drm_output *output, struct drm_backend *b)
  {
@@ -353,7 +373,7 @@ index 51d90e1d6437..0844cec9f570 100644
 -		return -1;
 -	}
 +		/* Create a black dumb fb for modesetting */
-+		output->dumb[0] = drm_fb_create_dumb(b, w, h);
++		output->dumb[0] = drm_fb_create_dumb(b, w, h, b->gbm_format);
 +		if (!output->dumb[0]) {
 +			weston_log("failed to create dumb framebuffer\n");
 +			return -1;
@@ -451,7 +471,7 @@ index 51d90e1d6437..0844cec9f570 100644
  static int
  drm_output_init_pixman(struct drm_output *output, struct drm_backend *b)
  {
-@@ -2344,8 +2454,10 @@ create_output_for_connector(struct drm_backend *b,
+@@ -2399,8 +2509,10 @@ create_output_for_connector(struct drm_backend *b,
  
  	mode = b->configure_output(b->compositor, b->use_current_mode,
  				   output->base.name, &config);
@@ -464,7 +484,7 @@ index 51d90e1d6437..0844cec9f570 100644
  
  	setup_output_seat_constraint(b, &output->base,
  				     config.seat ? config.seat : "");
-@@ -2955,6 +3067,11 @@ recorder_binding(struct weston_keyboard *keyboard, uint32_t time, uint32_t key,
+@@ -3003,6 +3115,11 @@ recorder_binding(struct weston_keyboard *keyboard, uint32_t time, uint32_t key,
  	struct drm_output *output;
  	int width, height;
  
@@ -476,7 +496,7 @@ index 51d90e1d6437..0844cec9f570 100644
  	output = container_of(b->compositor->output_list.next,
  			      struct drm_output, base.link);
  
-@@ -3010,11 +3127,20 @@ switch_to_gl_renderer(struct drm_backend *b)
+@@ -3058,11 +3175,20 @@ switch_to_gl_renderer(struct drm_backend *b)
  
  	weston_log("Switching to GL renderer\n");
  
@@ -502,7 +522,7 @@ index 51d90e1d6437..0844cec9f570 100644
  	}
  
  	wl_list_for_each(output, &b->compositor->output_list, base.link)
-@@ -3023,7 +3149,8 @@ switch_to_gl_renderer(struct drm_backend *b)
+@@ -3071,7 +3197,8 @@ switch_to_gl_renderer(struct drm_backend *b)
  	b->compositor->renderer->destroy(b->compositor);
  
  	if (drm_backend_create_gl_renderer(b) < 0) {
@@ -512,7 +532,7 @@ index 51d90e1d6437..0844cec9f570 100644
  		weston_log("Failed to create GL renderer. Quitting.\n");
  		/* FIXME: we need a function to shutdown cleanly */
  		assert(0);
-@@ -3080,6 +3207,7 @@ drm_backend_create(struct weston_compositor *compositor,
+@@ -3128,6 +3255,7 @@ drm_backend_create(struct weston_compositor *compositor,
  	b->sprites_are_broken = 1;
  	b->compositor = compositor;
  	b->use_pixman = config->use_pixman;
@@ -520,11 +540,11 @@ index 51d90e1d6437..0844cec9f570 100644
  	b->configure_output = config->configure_output;
  	b->use_current_mode = config->use_current_mode;
  
-diff --git a/src/compositor-drm.h b/src/compositor-drm.h
-index 3f150dba28b3..816830434aeb 100644
---- a/src/compositor-drm.h
-+++ b/src/compositor-drm.h
-@@ -87,6 +87,9 @@ struct weston_drm_backend_config {
+diff --git a/libweston/compositor-drm.h b/libweston/compositor-drm.h
+index 1266031f09f1..feb423d8f49c 100644
+--- a/libweston/compositor-drm.h
++++ b/libweston/compositor-drm.h
+@@ -89,6 +89,9 @@ struct weston_drm_backend_config {
  	/** Whether to use the pixman renderer instead of the OpenGL ES renderer. */
  	bool use_pixman;
  
@@ -534,26 +554,6 @@ index 3f150dba28b3..816830434aeb 100644
  	/** The seat to be used for input and output.
  	 *
  	 * If NULL the default "seat0" will be used.  The backend will
-diff --git a/src/main.c b/src/main.c
-index 3279ac6a8b02..ad1a1fc98344 100644
---- a/src/main.c
-+++ b/src/main.c
-@@ -277,6 +277,7 @@ usage(int error_code)
- 		"  --seat=SEAT\t\tThe seat that weston should run on\n"
- 		"  --tty=TTY\t\tThe tty to use\n"
- 		"  --use-pixman\t\tUse the pixman (CPU) renderer\n"
-+		"  --use-egldevice\tUse EGLDevice and EGLOutput with the GL renderer\n"
- 		"  --current-mode\tPrefer current KMS mode over EDID preferred mode\n\n");
- #endif
- 
-@@ -750,6 +751,7 @@ load_drm_backend(struct weston_compositor *c, const char *backend,
- 		{ WESTON_OPTION_INTEGER, "tty", 0, &config.tty },
- 		{ WESTON_OPTION_BOOLEAN, "current-mode", 0, &config.use_current_mode },
- 		{ WESTON_OPTION_BOOLEAN, "use-pixman", 0, &config.use_pixman },
-+		{ WESTON_OPTION_BOOLEAN, "use-egldevice", 0, &config.use_egldevice },
- 	};
- 
- 	parse_options(options, ARRAY_LENGTH(options), argc, argv);
 -- 
-2.8.3
+2.10.0
 

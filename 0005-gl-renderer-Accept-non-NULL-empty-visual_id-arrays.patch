@@ -1,4 +1,4 @@
-From d55b51e9bdd451c0ff635d8937e1e818a6de1216 Mon Sep 17 00:00:00 2001
+From 4c883f42265ecdddada48ba12818fdf373931f04 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 30 Mar 2016 15:29:37 +0200
 Subject: [PATCH 05/11] gl-renderer: Accept non-NULL empty <visual_id> arrays
@@ -10,15 +10,17 @@ This change modifies egl_choose_config() to accept a non-NULL but empty
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
+
+[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- src/gl-renderer.c | 2 +-
+ libweston/gl-renderer.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/gl-renderer.c b/src/gl-renderer.c
-index 7f522055fac8..1d76488c2165 100644
---- a/src/gl-renderer.c
-+++ b/src/gl-renderer.c
-@@ -2493,7 +2493,7 @@ egl_choose_config(struct gl_renderer *gr, const EGLint *attribs,
+diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
+index 729abd62c0d6..dd04caa87102 100644
+--- a/libweston/gl-renderer.c
++++ b/libweston/gl-renderer.c
+@@ -2490,7 +2490,7 @@ egl_choose_config(struct gl_renderer *gr, const EGLint *attribs,
  		goto out;
  	}
  
@@ -28,5 +30,5 @@ index 7f522055fac8..1d76488c2165 100644
  
  	for (i = 0; config_index == -1 && i < n_ids; i++)
 -- 
-2.8.3
+2.10.0
 

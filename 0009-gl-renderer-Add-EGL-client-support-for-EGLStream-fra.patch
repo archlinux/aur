@@ -1,4 +1,4 @@
-From 1b660d12f9586b8d7b58fc0d18a22728febaf727 Mon Sep 17 00:00:00 2001
+From c3a7bff36253229bfbfed8c72a82f334819ba3e5 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Mon, 2 May 2016 18:22:47 +0200
 Subject: [PATCH 09/11] gl-renderer: Add EGL client support for EGLStream frame
@@ -23,23 +23,25 @@ Note that some unpublished EGL extensions were needed:
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Adam Cheney <acheney@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
+
+[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- src/gl-renderer.c | 175 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ libweston/gl-renderer.c | 175 +++++++++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 174 insertions(+), 1 deletion(-)
 
-diff --git a/src/gl-renderer.c b/src/gl-renderer.c
-index 764bd880d743..608f4bf4cb92 100644
---- a/src/gl-renderer.c
-+++ b/src/gl-renderer.c
+diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
+index 01c5933966ca..be0c5e9b4745 100644
+--- a/libweston/gl-renderer.c
++++ b/libweston/gl-renderer.c
 @@ -30,6 +30,7 @@
  #include <GLES2/gl2.h>
  #include <GLES2/gl2ext.h>
  
 +#include <unistd.h>
  #include <stdbool.h>
+ #include <stdint.h>
  #include <stdlib.h>
- #include <string.h>
-@@ -161,6 +162,9 @@ struct gl_surface_state {
+@@ -163,6 +164,9 @@ struct gl_surface_state {
  	int height; /* in pixels */
  	int y_inverted;
  
@@ -49,7 +51,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	struct weston_surface *surface;
  
  	struct wl_listener surface_destroy_listener;
-@@ -212,6 +216,7 @@ struct gl_renderer {
+@@ -214,6 +218,7 @@ struct gl_renderer {
  
  	PFNEGLCREATESTREAMKHRPROC create_stream;
  	PFNEGLDESTROYSTREAMKHRPROC destroy_stream;
@@ -57,7 +59,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	int has_egl_stream;
  
  	PFNEGLCREATESTREAMPRODUCERSURFACEKHRPROC create_stream_producer_surface;
-@@ -225,6 +230,13 @@ struct gl_renderer {
+@@ -227,6 +232,13 @@ struct gl_renderer {
  #endif
  	int has_egl_stream_acquire_mode;
  
@@ -71,7 +73,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	int has_dmabuf_import;
  	struct wl_list dmabuf_images;
  
-@@ -1937,6 +1949,132 @@ gl_renderer_attach_dmabuf(struct weston_surface *surface,
+@@ -1934,6 +1946,132 @@ gl_renderer_attach_dmabuf(struct weston_surface *surface,
  	gs->y_inverted = buffer->y_inverted;
  }
  
@@ -204,7 +206,7 @@ index 764bd880d743..608f4bf4cb92 100644
  static void
  gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
  {
-@@ -1960,6 +2098,12 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
+@@ -1957,6 +2095,12 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
  		gs->num_textures = 0;
  		gs->buffer_type = BUFFER_TYPE_NULL;
  		gs->y_inverted = 1;
@@ -217,7 +219,7 @@ index 764bd880d743..608f4bf4cb92 100644
  		return;
  	}
  
-@@ -1972,7 +2116,7 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
+@@ -1969,7 +2113,7 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
  		gl_renderer_attach_egl(es, buffer, format);
  	else if ((dmabuf = linux_dmabuf_buffer_get(buffer->resource)))
  		gl_renderer_attach_dmabuf(es, buffer, dmabuf);
@@ -226,7 +228,7 @@ index 764bd880d743..608f4bf4cb92 100644
  		weston_log("unhandled buffer type!\n");
  		weston_buffer_reference(&gs->buffer_ref, NULL);
  		gs->buffer_type = BUFFER_TYPE_NULL;
-@@ -2160,6 +2304,10 @@ surface_state_destroy(struct gl_surface_state *gs, struct gl_renderer *gr)
+@@ -2157,6 +2301,10 @@ surface_state_destroy(struct gl_surface_state *gs, struct gl_renderer *gr)
  
  	weston_buffer_reference(&gs->buffer_ref, NULL);
  	pixman_region32_fini(&gs->texture_damage);
@@ -237,7 +239,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	free(gs);
  }
  
-@@ -2210,6 +2358,8 @@ gl_renderer_create_surface(struct weston_surface *surface)
+@@ -2207,6 +2355,8 @@ gl_renderer_create_surface(struct weston_surface *surface)
  
  	gs->surface = surface;
  
@@ -246,7 +248,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	pixman_region32_init(&gs->texture_damage);
  	surface->renderer_state = gs;
  
-@@ -2935,6 +3085,7 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+@@ -2902,6 +3052,7 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
  		(void *) eglGetProcAddress("eglQueryOutputLayerAttribEXT");
  	gr->create_stream = (void *) eglGetProcAddress("eglCreateStreamKHR");
  	gr->destroy_stream = (void *) eglGetProcAddress("eglDestroyStreamKHR");
@@ -254,7 +256,7 @@ index 764bd880d743..608f4bf4cb92 100644
  	gr->create_stream_producer_surface =
  		(void *) eglGetProcAddress("eglCreateStreamProducerSurfaceKHR");
  	gr->stream_consumer_output =
-@@ -2943,6 +3094,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+@@ -2910,6 +3061,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
  	gr->stream_consumer_acquire_attrib =
  		(void *) eglGetProcAddress("eglStreamConsumerAcquireAttribEXT");
  #endif
@@ -267,20 +269,20 @@ index 764bd880d743..608f4bf4cb92 100644
  
  	extensions =
  		(const char *) eglQueryString(gr->egl_display, EGL_EXTENSIONS);
-@@ -3005,6 +3162,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
- 	if (check_extension(extensions, "EGL_EXT_stream_acquire_mode"))
+@@ -2969,6 +3126,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+ 	if (weston_check_egl_extension(extensions, "EGL_EXT_stream_acquire_mode"))
  		gr->has_egl_stream_acquire_mode = 1;
  
-+	if (check_extension(extensions, "EGL_KHR_stream_consumer_gltexture"))
++	if (weston_check_egl_extension(extensions, "EGL_KHR_stream_consumer_gltexture"))
 +		gr->has_egl_stream_consumer_gltexture = 1;
 +
-+	if (check_extension(extensions, "EGL_KHR_stream_cross_process_fd"))
++	if (weston_check_egl_extension(extensions, "EGL_KHR_stream_cross_process_fd"))
 +		gr->has_egl_stream_cross_process_fd = 1;
 +
  	renderer_setup_egl_client_extensions(gr);
  
  	return 0;
-@@ -3220,6 +3383,16 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+@@ -3236,6 +3399,16 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
  			goto fail_terminate;
  		}
  
@@ -298,5 +300,5 @@ index 764bd880d743..608f4bf4cb92 100644
  			weston_log("warning: EGL page flip event notification not"
  			           " supported\n");
 -- 
-2.8.3
+2.10.0
 
