@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-coverflow-alt-tab-git
 	conflicts = gnome-shell-extension-coverflow-alt-tab
 	source = gnome-shell-extension-coverflow-alt-tab::git+https://github.com/dmo60/CoverflowAltTab
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-coverflow-alt-tab-git
 
