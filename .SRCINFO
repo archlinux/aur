@@ -17,6 +17,7 @@ pkgbase = python-grip-git
 	conflicts = python-grip
 	source = python-grip::git+https://github.com/joeyespo/grip
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-grip-git
 
