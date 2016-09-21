@@ -5,7 +5,7 @@
 # Contributor: Farhan Yousaf <farhany at xaviya dot com>
 
 pkgname=netatalk
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc='Open-source implementation of the Apple Filing Protocol'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ backup=('etc/afp.conf'
 install=$pkgname.install
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
 	python2.patch)
-md5sums=('d1d385ae6c3dc45eef4c923472f8fa5f'
+md5sums=('335a23f0df707400caa9b68b08be5e56'
 	'97bc0467dd8a866d9f0835d6440e3c19')
 
 prepare() {
