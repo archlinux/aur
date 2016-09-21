@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.7-gnu
-_pkgver=4.7.2-gnu
+_pkgver=4.7.4-gnu
 _grsecver=3.1
-_timestamp=201608211829
+_timestamp=201609152234
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,9 +20,10 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
-pkgver=${_pkgver//-/_}.${_timestamp}
+epoch=1
+pkgver=${_pkgver//-/_}.r${_timestamp}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
 license=('GPL2')
@@ -64,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
             'SKIP'
-            '5909e909e4e8a7bf9deca13041690411652fff40da5a19351c780dac45bc96f5'
+            'cfb0b64a49565e9f54a7e561c53151f1e60f48880ba26087e4e23905827a1bd2'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -74,14 +75,14 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '4fb36b19ced3e0dd87ee0076cbe24b52f563d21f1613f90a785fa89b3a97bd5f'
-            '0e06087fad6a6c9e86f965f0909b3309c4c301ebbf76ea35bac2fd17167f6852'
+            '3640353a0ed2af89de91ce6cc89642569710b24b0c523ad3527277c782a893da'
+            '9cbd7e2f9f0b91fd46cb9cb0ab0dba6212bcd86f9367c1cf3f9edeee3eed0630'
             'e4dbbbbc3466ed673b5da651b1db8c56404d534aca6a327feb93771604467052'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'a20cc81faad77ce6f82a7d8f83a2dd96cd91900ee5ad529543c491eff296618c'
+            '54f1c14015ab933420265d1818f3e7d1cfb8dd76ca7e0aa6bfdbc10311370f19'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
