@@ -120,7 +120,7 @@ build() {
 }
 
 package_emacs-git-gtk2() {
-  pkgdesc="GNU Emacs, the extensible self-documenting text editor — built from git sources. WARNING: emacs's git repository is 1.25 GB in size!"
+  pkgdesc="GNU Emacs, the extensible self-documenting text editor, with GTK2 graphical interface — built from git sources. WARNING: emacs's git repository is 1.25 GB in size!"
   depends=('gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gtk2')
   conflicts=('emacs' 'emacs-git')
   provides=('emacs')
