@@ -12,7 +12,7 @@ pkgbase=linux-libre-rt
 _pkgbasever=4.6-gnu
 _pkgver=4.6.7-gnu
 _rtbasever=4.6
-_rtpatchver=rt11
+_rtpatchver=rt13
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -49,8 +49,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-disable-implicit-function-declaration-error.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -63,7 +64,7 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             '2eb81e54aa5133159040ca5ce9ace126181ad75e7f832d0821f331d4a7a24d3d'
             'SKIP'
-            '49ef783f4de2d57165135083a1b84cea1aab4e8f8f44571e2d7565448c69c3db'
+            '18240a6d6f2c853a5cffe3a2051c7b7f9d6ac5ae2d8001a19db139c063da0464'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -73,13 +74,14 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             'f82fc9e36dccff9bc761f3d4801ca78c8da08d269acdabc62b0c5c7b01356886'
             '55aa06cb017dbbeb13b1da1bb124c479aadfa60b40957f25579a1a84db94f791'
-            '166d6bd39b9b2e9ebd5e58c0c07b189f6961776b73862c5d8de7bfecaf53dd28'
+            '45930d28f4e63cee7197919eae0ffc8bd88a3b658c920dd4066d984e26c7a13f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'a39764a58ef8f56275dea1b91bbe6883280f0ae3c5f17c3b5262606b3296310d'
+            'c23e4baa0acdcf3070b900a3d5fe83a4d358246ffb4b9be61355c255deeae763'
             'SKIP'
+            '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
             '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
             '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
@@ -124,7 +126,10 @@ prepare() {
     # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
     # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
     # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
-    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+    git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
+
+    # disable implicit function declaration error since there are old backports patches
+    patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
