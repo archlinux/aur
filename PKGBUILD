@@ -3,7 +3,7 @@
 pkgbase=snes9x-git
 pkgname=('snes9x-git' 'snes9x-gtk-git')
 pkgver=1.53.r301.gf388fac
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of the Snes9x emulator (git version). Includes Gtk version."
 arch=('i686' 'x86_64')
 url="http://www.snes9x.com/"
@@ -25,12 +25,12 @@ pkgver() {
 build() {
 
   cd ${pkgbase}/unix
-  ./configure --prefix=/usr --with-sdd1-decomp --enable-netplay
+  ./configure --prefix=/usr --enable-netplay
   make
 
   cd ../gtk
   ./autogen.sh
-  ./configure --prefix=/usr --with-sdd1-decomp --with-netplay --with-opengl
+  ./configure --prefix=/usr --with-netplay --with-opengl
   make
 
 }
