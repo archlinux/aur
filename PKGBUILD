@@ -7,8 +7,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.19
-_rtpatchver=rt27
+_pkgver=4.4.21
+_rtpatchver=rt29
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -33,9 +33,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '61b34a8ab4ba778c50a6fb04471cb34192e179db68440d81b12694e45dea00fc'
+            '278c4ea17ef539e81cb597f0e7e84750649d0f7fddcb27d99abfcb46da9db737'
             'SKIP'
-            'bce223bb6b00d7bd9479edcc75a5042925140a45de46269ad274726894d61af9'
+            '3ad4a934d154cc352a67957908cf9135ba64ec5721dd10d67018fce1c240fe68'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
@@ -67,7 +67,7 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  msg "Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch"
+  #msg "Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch"
   patch -p1 -i "${srcdir}/Fix-a-compilation-issue-introduced-by-upstream-commit-4b44f2d18a330565227a7348844493c59366171e.patch"
   
   msg "0001-fix-dcache-try-1.patch"
