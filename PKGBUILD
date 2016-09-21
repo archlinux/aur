@@ -8,8 +8,8 @@ _features=('awslambda' 'cors' 'filemanager' 'git' 'hugo' 'ipfilter' 'jwt' 'local
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
