@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-remove-dropdown-arrows-git
 	conflicts = gnome-shell-extension-remove-dropdown-arrows
 	source = gnome-shell-extension-remove-dropdown-arrows::git+https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows#branch=master
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-remove-dropdown-arrows-git
 
