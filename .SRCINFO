@@ -1,0 +1,13 @@
+pkgbase = emacs-markup-faces
+	pkgdesc = As font-lock-faces, but tailored for markup languages instead programming languages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://github.com/sensorflo/markup-faces
+	arch = any
+	license = GPL
+	depends = emacs
+	source = git+http://github.com/sensorflo/markup-faces#commit=c43612633c6c161857a3bab5752ae192bb03f5f3
+	md5sums = SKIP
+
+pkgname = emacs-markup-faces
+
