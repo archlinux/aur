@@ -14,6 +14,7 @@ pkgbase = gnome-shell-extension-window-buttons-git
 	conflicts = gnome-shell-extension-window-buttons
 	source = gnome-shell-extension-window-buttons::git+https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-window-buttons-git
 
