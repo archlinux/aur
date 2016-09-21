@@ -2,7 +2,7 @@
 
 _pkgname=mutt
 pkgname="${_pkgname}-hg"
-pkgver=6742.7b9763564598
+pkgver=6793.405cbc43c3ac
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
