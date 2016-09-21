@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('fzf'
 	'pacman'
 	'yaourt'
-	'pacman-mirrors'
+	'pacman-mirrorlist'
 	'sudo'
 	'gzip'
 	'downgrade'
