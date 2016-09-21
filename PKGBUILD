@@ -2,17 +2,17 @@
 
 pkgname=freecad-netgen-git
 pkgver=0.17pre.r1752.g008fed6
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade' 'med'
-         'python2-pivy' 'python2-pyside' 'python2-shiboken' 'qtwebkit'
+depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
+         'med' 'python2-pivy' 'python2-pyside' 'qtwebkit' 'libtheora'
          'shared-mime-info' 'python2-pyside-tools' 'netgen-nogui' 'vtk-qt4')
 makedepends=('git' 'xerces-c' 'boost' 'cmake' 'coin' 'desktop-file-utils'
              'eigen' 'gcc-fortran' 'swig' 'patch')
-optdepends=('python2-matplotlib' 'pycollada-git' 'python2-pyqt4')
+optdepends=('python2-matplotlib' 'pycollada-git' 'python2-pyside-tools')
 provides=('freecad')
 conflicts=('freecad')
 source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
