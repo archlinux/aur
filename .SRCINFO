@@ -13,6 +13,7 @@ pkgbase = gnome-shell-extension-stealmyfocus-git
 	replaces = gnome-shell-extension-justshowthewindow
 	source = gnome-shell-extension-stealmyfocus::git+https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-stealmyfocus-git
 
