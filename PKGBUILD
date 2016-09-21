@@ -1,8 +1,8 @@
 # Maintainer: M0Rf30
 
 pkgname=pump.io
-pkgver=0.3.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="This is pump.io. It's a stream server that does most of what people really want from a social network"
 url='http://pump.io'
 license=('Apache')
@@ -24,6 +24,7 @@ build() {
   npm install
   npm install databank-mongodb
   npm install databank-redis
+  npm prune --production
 }
 
 package() {
@@ -37,7 +38,7 @@ package() {
   cp $pkgname.service $pkgdir/usr/lib/systemd/system/
 }
 
-md5sums=('fdc06c33645594049eaab481af133f75'
+md5sums=('9ceb4f24a99f0f10b7313275d9e4a75b'
          'dcfd7c74792755996d0d9589bfaf6747'
          'd072eb2d992586e013c06c64786fc4ca'
          '067b3c2fee9cef8a596bac9e9d89ae75')
