@@ -2,7 +2,7 @@
 
 pkgname=v8-static-gyp
 pkgver=5.4.374.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -37,6 +37,7 @@ prepare() {
 
   export PATH=`pwd`/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
+  export GYP_CHROMIUM_NO_ACTION=0
 
   if [ ! -d "v8" ]; then
     msg2 "Fetching V8 code"
