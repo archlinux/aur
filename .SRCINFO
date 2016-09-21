@@ -14,6 +14,7 @@ pkgbase = mozilla-extension-gnotifier-git
 	conflicts = mozilla-extension-gnotifier
 	source = mozilla-extension-gnotifier::git+https://github.com/mkiol/GNotifier
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mozilla-extension-gnotifier-git
 
