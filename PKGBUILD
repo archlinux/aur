@@ -1,6 +1,6 @@
  # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname=vector-web
-_upstream_version=0.8.0
+_upstream_version=0.8.1
 pkgver="${_upstream_version//-/_}" # sometimes upstream uses hyphens; we can't
 pkgrel=1
 pkgdesc="A glossy Matrix collaboration client for the web"
@@ -15,7 +15,7 @@ install="$pkgname.install"
 changelog="CHANGELOG.md"
 source=("https://github.com/vector-im/$pkgname/archive/v$_upstream_version.tar.gz"
         'Caddyfile.example')
-sha256sums=('3c595d53860376493845c88be1d52caf378af3c542775eafbddecbc42c6d7297'
+sha256sums=('ed9abe77ed04c6a6f57cd8f2d458e5d56269cba672c88368c44128a52d30c213'
             '73b20f2c48eec6a800cce1364db80b4298f0df89df8faa339a1a76b6f1615add')
 
 build() {
