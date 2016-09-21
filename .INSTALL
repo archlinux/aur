@@ -1,0 +1,19 @@
+post_install() {
+    LINK=/usr/bin/phalcon
+    if [ -L $LINK ]; then
+    	rm -f $LINK
+    fi
+	ln -s /opt/phalcon-devtools/phalcon.php $LINK
+	chmod ugo+x $LINK
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    LINK=/usr/bin/phalcon
+    if [ -L $LINK ]; then
+    	rm -f $LINK
+    fi
+}
