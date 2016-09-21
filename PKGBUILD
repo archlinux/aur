@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.7-gnu
-_pkgver=4.7.2-gnu
+_pkgver=4.7.4-gnu
 _grsecver=3.1
-_timestamp=201608211829
+_timestamp=201609152234
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,9 +20,10 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
-pkgver=${_pkgver//-/_}.${_timestamp}
+epoch=1
+pkgver=${_pkgver//-/_}.r${_timestamp}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x3
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
 license=('GPL2')
@@ -64,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'c8f7fb230f95d91b9923790c3e4aaa8d5c1eb1eaaca09c87ac0a1a0153af310b'
+            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
             'SKIP'
-            '5909e909e4e8a7bf9deca13041690411652fff40da5a19351c780dac45bc96f5'
+            'cfb0b64a49565e9f54a7e561c53151f1e60f48880ba26087e4e23905827a1bd2'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -74,14 +75,14 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '98ed92518d0f0869d2c0f0958cfd2505e0f7ff3fcaaec5cb8281e0c62d9c7a98'
-            '565989b3cb826032bef2018a7b3587e16b9d42eabcf6dec1c4060bbd77d21ebe'
+            '6260f192f5fede9178ae16f948484f42f2794353ff642d774c1ffc23b6fa283e'
+            '73e9140f688d401bd3a8f797d869961d9aab98dca2e317e56c040f331c777b3b'
             '7d48ad9a24f5f9d5a6a46c05ff6e051752db8d52867261e8075e049613669c41'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'a20cc81faad77ce6f82a7d8f83a2dd96cd91900ee5ad529543c491eff296618c'
+            '54f1c14015ab933420265d1818f3e7d1cfb8dd76ca7e0aa6bfdbc10311370f19'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
@@ -208,7 +209,7 @@ _package() {
               'gradm: to configure and enable Role Based Access Control (RBAC)'
               'paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   depends_i686=('mkinitcpio>=0.7')
   depends_x86_64=('mkinitcpio>=0.7')
@@ -277,7 +278,7 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  conflicts=("${_replacesoldkernels[@]/%/-headers}")
   replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -418,7 +419,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
-  conflicts=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  conflicts=("${_replacesoldkernels[@]/%/-docs}")
   replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"
