@@ -13,6 +13,7 @@ pkgbase = python-path-and-address-git
 	options = !emptydirs
 	source = python-path-and-address::git+https://github.com/joeyespo/path-and-address
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-path-and-address-git
 
