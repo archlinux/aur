@@ -1,5 +1,5 @@
 pkgbase = ftequake-svn
-	pkgdesc = Engine for Quake 1, 2 and Hexen
+	pkgdesc = Engine for Quake 1,2,3 and Hexen 2
 	pkgver = r5020
 	pkgrel = 3
 	url = http://fte.triptohell.info
