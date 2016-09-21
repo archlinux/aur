@@ -1,0 +1,12 @@
+pkgbase = emacs-prerelease
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version
+	pkgver = 25.1
+	pkgrel = 0.2
+	url = http://www.gnu.org/software/emacs/emacs.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = emacs-pretest
+
+pkgname = emacs-prerelease
+
