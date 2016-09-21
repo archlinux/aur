@@ -1,4 +1,4 @@
-# Maintainer: Donald Carr <sirspudd@gmail.com>
+# Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 pkgname=libspkgname
 _declarative_pkgname="qt5-declarative"
