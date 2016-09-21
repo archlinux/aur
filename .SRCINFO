@@ -1,16 +1,16 @@
 pkgbase = liblcf
 	pkgdesc = Library to handle RPG Maker 2000/2003 and EasyRPG projects
-	pkgver = 0.4.1
-	pkgrel = 2
-	url = https://easy-rpg.org/
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://easyrpg.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = expat
 	depends = icu
-	source = https://easy-rpg.org/downloads/player/liblcf-0.4.1.tar.gz
-	sha256sums = 038a3c382759a27956338d983043f330afeb71caefc4f5de8966925ebff539fe
+	source = https://easyrpg.org/downloads/player/liblcf-0.5.0.tar.gz
+	sha256sums = 5f77e40bac5b48ab3163c9628846825e44ae8b5ecb4367de2d55845b2ba48524
 
 pkgname = liblcf
 
