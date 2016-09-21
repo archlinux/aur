@@ -1,7 +1,7 @@
 # Maintainer: Doyle Fermi <doylefermi@gmail.com>
 pkgname=wmail-bin-git
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The missing desktop client for Gmail & Google Inbox"
 arch=('x86_64')
 url="https://github.com/Thomas101/wmail"
