@@ -3,24 +3,28 @@
 pkgname=ftequake-svn
 _svndir=trunk
 pkgver=r5020
-pkgrel=1
+pkgrel=2
 pkgdesc="Engine for Quake 1, 2 and Hexen"
 arch=('i686' 'x86_64')
 url="http://fte.triptohell.info"
 license=('GPL')
 makedepends=('git' 'make')
 depends=('zlib' 'lib32-sdl_mixer')
+conflicts=('ftequake')
+provides=('ftequake')
 source=('svn+http://svn.code.sf.net/p/fteqw/code/trunk'
 	'ftequake-gl.desktop'
 	'ftequake-mingl.desktop'
 	'ftequake-sv.desktop'
 	'ftequake-vk.desktop'
+	'commandline.txt'
 	'ftequake.png')
 md5sums=('SKIP'
 	 '3879a4b6ea55c5df364379ab43f90faa'
 	 '4f6526adc7e85d779bb09c011d9c2af7'
 	 '0a7ddd62dfd97fc0b949d55f4f08182a'
 	 'bfedd017177061b25499036727a10723'
+	 '8dd76f7027810a6d20fa1db654151e9a'
 	 '0c1246661ff0e3c27ed0f31ae65bb6ea')
 
 pkver() {
@@ -55,6 +59,7 @@ package() {
   install -Dm644 $startdir/ftequake-vk.desktop "$pkgdir"/usr/share/applications/ftequake-vk.desktop
 
   install -Dm644 $startdir/ftequake.png $pkgdir/usr/share/pixmaps/ftequake.png
+  install -Dm644 $startdir/commandline.txt "$pkgdir"/usr/share/games/ftequake
 
 }
 
