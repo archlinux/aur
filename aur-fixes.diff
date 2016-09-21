@@ -54,7 +54,7 @@ index 0e8db70..7f5a7d8 100644
      'sources': [
        '<@(qrc_files)',
 diff --git a/Telegram/gyp/qt.gypi b/Telegram/gyp/qt.gypi
-index b82f833..7430ea0 100644
+index 2a8f010..7fc819e 100644
 --- a/Telegram/gyp/qt.gypi
 +++ b/Telegram/gyp/qt.gypi
 @@ -29,7 +29,6 @@
@@ -74,13 +74,11 @@ index b82f833..7430ea0 100644
              'qt_lib_prefix': 'lib',
              'qt_lib_debug_postfix': '.a',
              'qt_lib_release_postfix': '.a',
-@@ -91,20 +90,6 @@
+@@ -91,18 +90,6 @@
                '<@(qt_libs)',
                'Qt5DBus',
                'Qt5Core',
 -              'qtpcre',
--              'ssl',
--              'crypto',
 -              'Xi',
 -              'Xext',
 -              'SM',
@@ -95,12 +93,14 @@ index b82f833..7430ea0 100644
              ],
            }],
          ],
-@@ -202,16 +187,36 @@
-   'conditions': [
-     [ 'build_linux', {
+@@ -202,18 +189,36 @@
+         '<(qt_loc)/plugins/platforminputcontexts',
+       ],
        'libraries': [
 -        '/usr/local/lib/libxkbcommon.a',
          '<@(qt_libs_release)',
+-        '/usr/local/ssl/lib/libssl.a',
+-        '/usr/local/ssl/lib/libcrypto.a',
 +        'z',
 +        'pcre16',
 +        'harfbuzz',
@@ -109,6 +109,8 @@ index b82f833..7430ea0 100644
 +        'icui18n',
 +        'png16',
 +        'jpeg',
++        'ssl',
++        'crypto',
          'xcb',
 +        'xcb-shm',
 +        'xcb-xfixes',
@@ -121,8 +123,6 @@ index b82f833..7430ea0 100644
          'gthread-2.0',
          'glib-2.0',
          'pthread',
-+        'ssl',
-+        'crypto',
 +        'Xi',
 +        'Xext',
 +        'SM',
@@ -202,11 +202,11 @@ index 15bfbb6..5ed7872 100644
      ],
      'cflags_cc': [
 diff --git a/Telegram/gyp/utils.gyp b/Telegram/gyp/utils.gyp
-index 117c87a..5ff1a4c 100644
+index 209c737..41425f1 100644
 --- a/Telegram/gyp/utils.gyp
 +++ b/Telegram/gyp/utils.gyp
-@@ -101,8 +101,6 @@
-     },
+@@ -109,8 +109,6 @@
+     ],
      'include_dirs': [
        '<(src_loc)',
 -      '<(libs_loc)/lzma/C',
@@ -214,7 +214,7 @@ index 117c87a..5ff1a4c 100644
      ],
      'sources': [
        '<(src_loc)/_other/packer.cpp',
-@@ -122,11 +120,10 @@
+@@ -130,11 +128,10 @@
              ],
            }, {
              'include_dirs': [
@@ -228,7 +228,7 @@ index 117c87a..5ff1a4c 100644
              ],
            }]
          ],
-@@ -144,11 +141,10 @@
+@@ -152,11 +149,10 @@
              ],
            }, {
              'include_dirs': [

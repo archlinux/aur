@@ -1,6 +1,6 @@
 pkgname=telegram-desktop
-pkgver=0.10.6
-pkgrel=3
+pkgver=0.10.7
+pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -58,7 +58,7 @@ makedepends=(
 )
 qt_version=5.6.0
 source=(
-    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=8660ab555bc759a008658a78981a6e3ea06502d5"
+    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtwayland-opensource-src-$qt_version.tar.xz"
@@ -75,7 +75,7 @@ sha256sums=(
     'SKIP'
     '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-    '41f69a194113c9ee1aae0261346a94d9b812db80029f834ba50889668f7c2b50'
+    '5990d96687352f9bb13f94029dd21aadb0a21047015858fd9724ebcf62e6fb1e'
 )
 
 prepare() {
