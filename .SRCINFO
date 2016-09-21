@@ -3,7 +3,7 @@
 pkgbase = rocksdb
 	pkgdesc = Embedded key-value store for fast storage
 	pkgver = 4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rocksdb.org
 	arch = i686
 	arch = x86_64

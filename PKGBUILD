@@ -1,6 +1,6 @@
 pkgname=rocksdb
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
