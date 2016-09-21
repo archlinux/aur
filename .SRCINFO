@@ -12,6 +12,7 @@ pkgbase = gnome-shell-extension-volume-mixer-git
 	conflicts = gnome-shell-extension-volume-mixer
 	source = gnome-shell-extension-volume-mixer::git+https://github.com/aleho/gnome-shell-volume-mixer
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-volume-mixer-git
 
