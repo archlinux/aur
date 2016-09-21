@@ -44,10 +44,10 @@ post_upgrade() {
     groupadd wwwoffle &> /dev/null
   fi
   if [ ! `grep -E '^wwwoffle\:' /etc/passwd` ]; then
-  id wwwoffle &> /dev/null || \
     echo ">>> Adding user wwwoffle."
     useradd -g wwwoffle wwwoffle
   fi
+  echo ">>> Changing ownership of /var/spool/wwwoffle to wwwoffle:wwwoffle (recursively)."
   chown -R wwwoffle:wwwoffle /var/spool/wwwoffle
 }
 
@@ -58,6 +58,3 @@ pre_remove() {
   groupdel wwwoffle &> /dev/null
 }
 
-op=$1
-shift
-$op $*
