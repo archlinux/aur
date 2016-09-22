@@ -21,8 +21,6 @@ sha256sums=('3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638'
             '414b39df3d60bd897ea7f19c28314e8c9fae56106a0962d9116fc65aef9aba2f'
             '64a3c49eb6032dbd2bd0bbbe8110dea77d1d8a99379d96eca15c6b7c0a6f658e')
 
-_install_docs=1
-
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -72,12 +70,9 @@ package(){
 
   make DESTDIR="${pkgdir}" install
 
-  if [ ${_install_docs} -eq 1 ]
-  then
-    make DESTDIR="${pkgdir}" install-html
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/docs/Silo.book.pdf" \
-      "${pkgdir}/usr/share/doc/${pkgname}/Silo.book.pdf"
-  fi
+  make DESTDIR="${pkgdir}" install-html
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/docs/Silo.book.pdf" \
+    "${pkgdir}/usr/share/doc/${pkgname}/Silo.book.pdf"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
