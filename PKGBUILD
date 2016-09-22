@@ -29,12 +29,15 @@ pkgrel=4
 arch=('i686' 'x86_64')
 license=('Propietary')
 depends=('cups')
-source=('http://www.eid.toshiba.com.au/drivers/eBX/eBX_CUPS_Colour_V7.22.zip')
+source=('http://business.toshiba.com/downloads/KB/f1Ulds/14079/TOSHIBA_ColorMFP_CUPS.tar')
 install='ppd-toshiba-estudio5560c.install'
-md5sums=('2e450664cf34c8c4aed92fb76bf82d2d')
+md5sums=('f13f40e1ade3a4cadec46be49ff7f0d4')
 
 package() {
-  cd ${pkgdir}
-  tar xf ${srcdir}/eBX_CUPS_Colour_V7.22/normal/TOSHIBA_ColorMFP_CUPS.tar
+  cd ${srcdir}
+  # This two files will be installed
+  # usr/lib/cups/filter/est6550_Authentication
+  # usr/share/cups/model/Toshiba/TOSHIBA_ColorMFP_CUPS.gz
+  cp -av usr ${pkgdir}/
 }
 

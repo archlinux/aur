@@ -28,8 +28,8 @@ pkgbase = ppd-toshiba-estudio5560c
 	provides = ppd-toshiba-estudio5560c
 	provides = ppd-toshiba-estudio6560c
 	provides = ppd-toshiba-estudio6570c
-	source = http://www.eid.toshiba.com.au/drivers/eBX/eBX_CUPS_Colour_V7.22.zip
-	md5sums = 2e450664cf34c8c4aed92fb76bf82d2d
+	source = http://business.toshiba.com/downloads/KB/f1Ulds/14079/TOSHIBA_ColorMFP_CUPS.tar
+	md5sums = f13f40e1ade3a4cadec46be49ff7f0d4
 
 pkgname = ppd-toshiba-estudio5560c
 
