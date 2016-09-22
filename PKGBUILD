@@ -2,14 +2,14 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.12.1.78
+pkgver=0.12.2.RC1
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
 license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
-depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'libgnome-keyring' 'desktop-file-utils' 'ttf-font')
+depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libgnome-keyring' 'libxss' 'ttf-font')
 makedepends=('git' 'npm')
 optdepends=('cups: To print stuff')
 provides=('brave' 'brave-browser')
@@ -53,11 +53,11 @@ package() {
 
   install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
-  install -d -m0755 "$pkgdir"/usr/share/licenses/brave
+  install -d -m0755 "$pkgdir"/usr/share/licenses/brave-git
 
-  cp --reflink=auto LICENSE.txt "$pkgdir"/usr/share/licenses/brave/MPL2
+  cp --reflink=auto LICENSE.txt "$pkgdir"/usr/share/licenses/brave-git/MPL2
 
-  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave
+  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-git/
 }
 
 # vim:set ts=2 sw=2 et:
