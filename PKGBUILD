@@ -40,6 +40,7 @@ prepare() {
     if [[ "${_npm_ver%-*}" == "3.10.8" ]]; then
         echo "npm 3.10.8 is known to have a bug which prevents the successful build of vscode"
         echo "Please downgrade to 3.10.7 or wait for a fixed version."
+        echo "Refer to https://github.com/npm/npm/issues/14042 for details."
         exit 1
     fi
 
