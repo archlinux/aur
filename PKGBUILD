@@ -338,7 +338,7 @@ pkgver() {
   _tf_ver="$(describe terminal-fusion)"
   _tree_view_ver="$(describe tree-view)"
 
-  printf "${_atomver}.a${_autocomplete_plus_ver}.ap${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.f${_file_icons_ver}.fu${_fusion_ui_ver}.g${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.l${_linter_ver}.la${_language_archlinux_ver}.lc${_linter_clang_ver}.lu${_language_unix_shell_ver}.mp${_markdown_preview_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.tb${_toolbar_fusion_ver}.tf${_tf_ver}.tv${_tree_view_ver}"
+  printf "${_atomver}.a${_autocomplete_plus_ver}.ap${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.f${_file_icons_ver}.fu${_fusion_ui_ver}.g${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.la${_language_archlinux_ver}.lc${_linter_clang_ver}.lu${_language_unix_shell_ver}.m${_markdown_preview_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.tb${_toolbar_fusion_ver}.tf${_tf_ver}.tv${_tree_view_ver}"
 }
 
 prepare() {
