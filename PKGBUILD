@@ -33,7 +33,7 @@ build() {
 
 package_konqueror-git() {
 	pkgdesc='KDE File Manager & Web Browser'
-	depends=(keditbookmarks-git dolphin kded)
+	depends=(keditbookmarks-git libkonq-git dolphin)
 	url="http://kde.org/applications/system/konqueror/"
 	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git konq-plugins)
 	provides=(konqueror)
