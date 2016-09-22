@@ -1,16 +1,16 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=python-fritzconnection-git
-pkgver=r24.825d90687d62
-pkgrel=2
-pkgdesc='Communicate with the AVM FritzBox (python 3 fixes)'
+pkgver=r40.8171434b964b
+pkgrel=1
+pkgdesc='Python-Tool to communicate with the AVM FritzBox. Uses the TR-064 protocol.'
 license=('MIT')
 arch=('x86_64' 'i686')
 url='https://bitbucket.org/kbr/fritzconnection'
 depends=('python-lxml')
 makedepends=('python-setuptools')
-source=("hg+https://bitbucket.org/Fettlaus/fritzconnection")
+source=("hg+https://bitbucket.org/kbr/fritzconnection")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,5 +22,3 @@ package() {
   cd fritzconnection
   python setup.py install --root="$pkgdir"
 }
-
-# vim:set ts=2 sw=2 et:

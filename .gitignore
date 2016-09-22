@@ -1,0 +1,7 @@
+pkg
+src
+
+fritzconnection
+
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
