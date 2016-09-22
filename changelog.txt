@@ -1,2 +1,13 @@
+v1.2.1 -- Thu, 22 Sep 2016 09:44:53 GMT
+
+Fixes date formatting issues, adds wallpaper customization.
+Aether now respects 'background_images' setting in addition 
+to allowing non-hardcoded wallpapers.
+
+See: https://github.com/NoiSek/Aether#using-your-own-wallpapers
+
+===============================================================================
+
 v1.0 -- Thu, 14 Jul 2016 10:40:24 GMT
+
 Initial release. Feature complete.
