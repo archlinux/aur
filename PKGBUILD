@@ -2,9 +2,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
-_commit=66f37fd2a99eb9d628dd374d81d78835b410c39b
+_commit=5be4091987a98e3870d89d630eb87be6d9bafd27
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -16,7 +16,7 @@ provides=('vscode-oss')
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
         "${pkgname}.desktop"
         'product_json.patch')
-sha1sums=('ee1a08145abbc28d65babc7523391a5f81d4afc0'
+sha1sums=('05d493941339c3e8f7255d62e17d083405660f72'
           '9c4176c4d99103736df6746ca174b5026bd57e6b'
           'ba8febe936932080610d899fdb57294fc2f9f614')
 
@@ -35,6 +35,13 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode-${_commit}"
+
+    _npm_ver=$(pacman -Q npm | cut -d' ' -f2)
+    if [[ "${_npm_ver%-*}" == "3.10.8" ]]; then
+        echo "npm 3.10.8 is known to have a bug which prevents the successful build of vscode"
+        echo "Please downgrade to 3.10.7 or wait for a fixed version."
+        exit 1
+    fi
 
     patch -p1 -i "${srcdir}/product_json.patch"
     _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
