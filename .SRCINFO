@@ -1,0 +1,16 @@
+pkgbase = dlangide
+	pkgdesc = D language IDE based on DlangUI
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/buggins/dlangide
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = BSL
+	makedepends = dmd
+	makedepends = git
+	source = https://github.com/buggins/dlangide/archive/v0.7.6.tar.gz
+	sha256sums = 57929661899f8707602d160e0592cce2476b7483e5d1c8dc778d5bc25aa2b416
+
+pkgname = dlangide
+
