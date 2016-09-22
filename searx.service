@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=searx
+Environment=SEARX_SETTINGS_PATH=/etc/searx/settings.yml
 ExecStart=/usr/bin/searx-run
 Restart=on-abort
 
