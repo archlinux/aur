@@ -26,8 +26,6 @@ PermissionsStartOnly=true
 # ExecStartPre run sequentially
 ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/log/arangodb3
 ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/lib/arangodb3
-RuntimeDirectory=arangodb
-RuntimeDirectoryMode=0755
 ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangod --supervisor
 
 
