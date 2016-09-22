@@ -1,0 +1,7 @@
+gl-* = OpenGL & Dedicated Server
+mingl-* = Minimalistic OpenGL
+d3d-* = Direct3D (only available on Windows machines)
+m-* = Merged (Direct3D, OpenGL & Dedicated Server)
+sv-* = Dedicated Server
+
+note * is rel or dbg or profile. rel = release, dbg = debug, profile = profiling (release with profiling support).
