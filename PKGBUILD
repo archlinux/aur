@@ -1,6 +1,5 @@
-# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>
-# Contributor: Arkham <arkham at archlinux dot us>
-# Contributor: StaCk <proc.null at gmail dot com>
+# Maintainer:  Joey Pabalinas <alyptik@protonmail.com>
+# Contributor:  Joey Pabalinas <alyptik@protonmail.com>
 
 pkgname=fhs-manpages
 pkgver=2.2
