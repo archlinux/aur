@@ -3,7 +3,7 @@
 
 pkgname=sheeplifter
 pkgver=2
-pkgrel=6
+pkgrel=7
 pkgdesc='Control a wolf in a spaceship and abduct sheep in 3D (arcade game)'
 url='http://code.google.com/p/sheeplifter/'
 license=('BSD')
@@ -15,7 +15,7 @@ source=('https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
         'run.sh')
 sha256sums=('0d35701e538b8a6c61e6940dae63d222c6df799e60958bdfd2bd0199aba5c527'
             '15c09faf8ee47847dda8071853639663bd09b8fcc638ce599398d7beb103e5c7'
-            'ca257e05e4849cc215120923d656f6e43fdea7cc280009fc92b02c902db52f63')
+            '94e85a8d3a5634f23e4cc2f87f275991cef6c4e760de079586a6c678954ec796')
 
 prepare() {
   cd "$pkgname"
