@@ -1,0 +1,18 @@
+pkgbase = feed2tweet
+	pkgdesc = Parse rss feed and tweet new posts to Twitter
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/chaica/feed2tweet
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-persistentlist
+	depends = python-tweepy
+	depends = python-feedparser
+	source = https://github.com/chaica/feed2tweet/archive/0.7.tar.gz
+	md5sums = 63fe09883d1c38ba140bc775907fade1
+
+pkgname = feed2tweet
+
