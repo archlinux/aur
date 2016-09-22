@@ -51,27 +51,26 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    mkdir -p "$srcdir/build"
+    cd "$srcdir/build"
     cmake \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/ \
           -DMOZART_BOOST_USE_STATIC_LIBS=OFF \
-          .
+          "$srcdir/$pkgname"
 
     make #VERBOSE=1
 }
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/build"
     make test
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/build"
     make DESTDIR="$pkgdir/" install
-    rm -rf "$pkgdir/usr/include/gtest"
-    rm -rf "$pkgdir/usr/lib"
 
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "$srcdir/$pkgname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
