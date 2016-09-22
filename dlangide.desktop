@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DlangIDE
+Comment=D Integrated Development Environmrnt
+Icon=dlangui-logo1
+Exec=dlangide
+Terminal=false
+Type=Application
+Categories=Development;IDE;D
+StartupNotify=true

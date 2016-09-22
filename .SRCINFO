@@ -1,0 +1,21 @@
+pkgbase = dlangide-git
+	pkgdesc = D language IDE based on DlangUI
+	pkgver = r555.12b8651
+	pkgrel = 1
+	url = https://github.com/buggins/dlangide
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = BSL
+	makedepends = dmd
+	makedepends = git
+	conflicts = dlangide
+	source = git+https://github.com/buggins/dlangide.git
+	source = dlangide.desktop
+	source = dlangide.install
+	sha256sums = SKIP
+	sha256sums = dc3b72ef22bec75722266497f398b87a057b44b9add7dbf1ca1140521d553efa
+	sha256sums = 9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e
+
+pkgname = dlangide-git
+
