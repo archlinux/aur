@@ -1,0 +1,19 @@
+pkgbase = dracut-antievilmaid
+	pkgdesc = Dracut module and conf file to enable Anti Evil Maid support.
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = http://www.qubes-os.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dracut
+	depends = trousers
+	optdepends = antievilmaid: Anti Evil Maid installation script
+	provides = dracut-antievilmaid
+	conflicts = dracut-antievilmaid
+	source = git://github.com/QubesOS/qubes-antievilmaid
+	sha256sums = SKIP
+
+pkgname = dracut-antievilmaid
+
