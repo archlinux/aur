@@ -72,7 +72,7 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
 
 # You want to use gstreamer, or else h.264 html5 videos will not play
-ac_add_options --enable-gstreamer=1.0
+ac_add_options --enable-gstreamer
 
 # disable stuff we probably don't need or want
 ac_add_options --disable-parental-controls
