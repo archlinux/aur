@@ -17,13 +17,13 @@ provides=(python3-graph-tool)
 conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
-source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('3c4929fb7b6bae13a12115afdf8c07d6531aeeba548305376ba7b0ac710ec4d4')
+source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2" "0001-Fix-compilation-problem-with-newer-CGAL.patch")
+sha256sums=('3c4929fb7b6bae13a12115afdf8c07d6531aeeba548305376ba7b0ac710ec4d4'
+            '6d325261f5e592c45c8eafb5c0b82d28e16fe4a11335d2c0c49f8e3439007f09')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  aclocal
-  autoconf
+  patch -Np1 < ../0001-Fix-compilation-problem-with-newer-CGAL.patch
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
