@@ -12,7 +12,7 @@ pkgver='20160203'
 # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/tree/scripts/checkbashisms.pl
 # Click [search]
 # To see the diff, click on the commit
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Debian script that checks for bashisms'
 arch=('any')
 url='http://packages.qa.debian.org/d/devscripts.html'
@@ -20,14 +20,14 @@ license=('GPL')
 depends=('perl')
 conflicts=('devscripts')
 _srcfile="checkbashisms.pl.${pkgver}"
-_srcbash='checkbashisms.bash_completion.20160513'
+_srcbash='checkbashisms.bash_completion.20160915'
 source=("${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl"
         'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
         "${_srcbash}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.bash_completion" # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/log/scripts/checkbashisms.bash_completion?qt=grep&q=
 )
 sha256sums=('6943f31aae8552fdec53f5d4c386f08ec029630bf0df46576c2d7c43a2f25081'
             'c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
-            '08f1587d3219b494377ef1af265f71f11c67c291d846b4c1f886a04b90eeb860')
+            '35031c64e3b1f96777444f7bdf725d085e71eccccf93ff10b0b6ac539225637b')
 
 # Version checking devscripts won't help us. We need to watch for changes to this file.
 _vercheck() { :; }
