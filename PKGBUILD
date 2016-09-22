@@ -2,7 +2,7 @@
 # Contributor: Cesar Alcalde <lambda512 _at_ gmail.com>
 pkgname=scmccid
 pkgver=5.0.35
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary driver for the SCM smart card readers"
 arch=('i686' 'x86_64')
 url="http://support.identiv.com/products/"
@@ -23,7 +23,7 @@ sha512sums=('b96fb39af2c6b43d2d54ac62c27aee50f3418c91dcd0bc061250af2f7e4edea52d7
 package() {
 	cd "$srcdir"
 	unzip "scmccid_${pkgver}_linux.zip"
-	if [ "$arch" = "x86_64" ]; then
+	if [ "$CARCH" = "x86_64" ]; then
 		tar xvf "scmccid_${pkgver}_linux_64bit.tar.gz"
 	else
 		tar xvf "scmccid_${pkgver}_linux.tar.gz"

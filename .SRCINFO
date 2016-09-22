@@ -1,7 +1,7 @@
 pkgbase = scmccid
 	pkgdesc = Binary driver for the SCM smart card readers
 	pkgver = 5.0.35
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.identiv.com/products/
 	install = scmccid.install
 	arch = i686
