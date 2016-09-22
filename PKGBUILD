@@ -8,19 +8,22 @@ arch=(i686 x86_64)
 url="https://code.google.com/p/touchegg/"
 license=(GPL)
 depends=(qt4 geis)
-source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('9a7e89946f2c5fc9be9eff0fef3d79151a6fbc89dbb964bf52f8a67123cecd2549723f8f90e1c06c1a1cb3bfd76551524d812d00317945466091538563072551')
+source=("https://github.com/JoseExposito/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('99d934b1c5e161a19499ecce54ac3efd92b739937ff0844d68d0af73a4fcd4b6b2ab39e7e3780f6372486d6dd3433aec3e8e011e240df87ff42e912a4d50222f')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-
-  # Cannot build with default compiler/linker flags
-  unset CXXFLAGS CFLAGS LDFLAGS
+  cd "$srcdir/${pkgname}-${pkgver}/touchegg"
+  qmake-qt4 
+  make 
+  
+  cd "$srcdir/${pkgname}-${pkgver}/touchegg-gui"
   qmake-qt4
-  make -j1
+  make 
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}-${pkgver}/touchegg"
+  make INSTALL_ROOT="${pkgdir}" install
+  cd "$srcdir/${pkgname}-${pkgver}/touchegg-gui"
   make INSTALL_ROOT="${pkgdir}" install
 }
