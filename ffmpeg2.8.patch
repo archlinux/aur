@@ -1,0 +1,94 @@
+diff -urN src.ori/bomi/bomi.pro src/bomi/bomi.pro
+--- src.ori/bomi/bomi.pro	2016-04-21 18:38:40.301930585 +0900
++++ src/bomi/bomi.pro	2016-04-21 18:39:19.158598613 +0900
+@@ -9,7 +9,7 @@
+ DESTDIR = $${PWD}/../../build
+ LIB_DIR = $${DESTDIR}/lib
+ INCLUDEPATH += ../mpv ../mpv/build kiss_fft
+-LIBS += -L$${LIB_DIR} -lbz2 -lz
++LIBS += -L$${LIB_DIR} -L/usr/lib/ffmpeg2.8 -lbz2 -lz
+ 
+ include(configure.pro)
+ !isEmpty(BOMI_RELEASE) {
+@@ -19,6 +19,7 @@
+ }
+ 
+ QMAKE_CXXFLAGS_CXX11 = -std=c++1y
++CONFIG += c++14
+ 
+ contains(QMAKE_CXX, clang++) {
+ QMAKE_CXXFLAGS += -Wno-missing-braces
+diff -urN src.ori/bomi/dialog/encoderdialog.cpp src/bomi/dialog/encoderdialog.cpp
+--- src.ori/bomi/dialog/encoderdialog.cpp	2016-04-21 18:38:40.301930585 +0900
++++ src/bomi/dialog/encoderdialog.cpp	2016-04-21 18:38:50.685264282 +0900
+@@ -255,7 +255,7 @@
+ {
+     if (d->size.isEmpty())
+         return tr("No video stream exists.");
+-    d->g.unix = QDateTime::currentMSecsSinceEpoch();
++    d->g._unix = QDateTime::currentMSecsSinceEpoch();
+     d->g.dateTime = QDateTime::currentDateTime();
+     d->g.start = d->ui.a->time();
+     d->g.end = d->ui.b->time();
+diff -urN src.ori/bomi/misc/filenamegenerator.cpp src/bomi/misc/filenamegenerator.cpp
+--- src.ori/bomi/misc/filenamegenerator.cpp	2016-04-21 18:38:40.305263919 +0900
++++ src/bomi/misc/filenamegenerator.cpp	2016-04-21 18:38:50.685264282 +0900
+@@ -51,8 +51,8 @@
+         };
+         get[u"%MEDIA_DISPLAY_NAME%"_q] = [] (const FileNameGenerator *g) { return g->mediaName; };
+ 
+-        get[u"%UNIX%"_q]     = [] (const FileNameGenerator *g) { return _N(g->unix / 1000llu); };
+-        get[u"%UNIX_MS%"_q]  = [] (const FileNameGenerator *g) { return _N(g->unix); };
++        get[u"%UNIX%"_q]     = [] (const FileNameGenerator *g) { return _N(g->_unix / 1000llu); };
++        get[u"%UNIX_MS%"_q]  = [] (const FileNameGenerator *g) { return _N(g->_unix); };
+         return get;
+     }();
+     auto ret = func.value(ph);
+diff -urN src.ori/bomi/misc/filenamegenerator.hpp src/bomi/misc/filenamegenerator.hpp
+--- src.ori/bomi/misc/filenamegenerator.hpp	2016-04-21 18:38:40.305263919 +0900
++++ src/bomi/misc/filenamegenerator.hpp	2016-04-21 18:38:50.685264282 +0900
+@@ -11,7 +11,7 @@
+     QTime start, end;
+     QString mediaName;
+     Mrl mrl;
+-    quint64 unix = 0;
++    quint64 _unix = 0;
+ };
+ 
+ #endif // FILENAMEGENERATOR_HPP
+diff -urN src.ori/bomi/player/mainwindow_p.cpp src/bomi/player/mainwindow_p.cpp
+--- src.ori/bomi/player/mainwindow_p.cpp	2016-04-21 18:38:40.308597252 +0900
++++ src/bomi/player/mainwindow_p.cpp	2016-04-21 18:38:50.685264282 +0900
+@@ -910,7 +910,7 @@
+     g.dateTime = QDateTime::currentDateTime();
+     g.start = QTime::fromMSecsSinceStartOfDay(e.time());
+     g.end = end.isNull() ? g.start : end;
+-    g.unix = QDateTime::currentMSecsSinceEpoch();
++    g._unix = QDateTime::currentMSecsSinceEpoch();
+     g.mrl = e.mrl();
+     g.mediaName = e.media()->name();
+     return g;
+diff -urN src.ori/bomi/player/mainwindow_p.hpp src/bomi/player/mainwindow_p.hpp
+--- src.ori/bomi/player/mainwindow_p.hpp	2016-04-21 18:38:40.308597252 +0900
++++ src/bomi/player/mainwindow_p.hpp	2016-04-21 18:38:50.685264282 +0900
+@@ -101,7 +101,7 @@
+ 
+     struct {
+         QDate date; QTime time, position;
+-        quint64 unix = 0;
++        quint64 _unix = 0;
+         QMap<QString, std::function<QString(void)>> get;
+     } ph;
+     QTimer waiter, hider, dialogWorkaround;
+diff -urN src.ori/mpv/wscript src/mpv/wscript
+--- src.ori/mpv/wscript	2016-04-21 18:38:40.318597252 +0900
++++ src/mpv/wscript	2016-04-21 18:38:50.685264282 +0900
+@@ -921,6 +921,8 @@
+ 
+     ctx.store_dependencies_lists()
+ 
++    ctx.env.append_value('INCLUDES', ['/usr/include/ffmpeg2.8'])
++
+ def build(ctx):
+     if ctx.options.variant not in ctx.all_envs:
+         from waflib import Errors
