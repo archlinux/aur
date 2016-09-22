@@ -1,0 +1,13 @@
+diff --git a/JASP-Desktop/enginesync.cpp b/JASP-Desktop/enginesync.cpp
+index 49e215b..a87db98 100644
+--- a/JASP-Desktop/enginesync.cpp
++++ b/JASP-Desktop/enginesync.cpp
+@@ -408,7 +408,7 @@ void EngineSync::startSlaveProcess(int no)
+ 
+ 	env.insert("LD_LIBRARY_PATH", rHome.absoluteFilePath("lib") + ";" + rHome.absoluteFilePath("library/RInside/lib") + ";" + rHome.absoluteFilePath("library/Rcpp/lib") + ";" + rHome.absoluteFilePath("site-library/RInside/lib") + ";" + rHome.absoluteFilePath("site-library/Rcpp/lib"));
+ 	env.insert("R_HOME", rHome.absolutePath());
+-	env.insert("R_LIBS", programDir.absoluteFilePath("R/library") + ":" + rHome.absoluteFilePath("library") + ":" + rHome.absoluteFilePath("site-library"));
++	env.insert("R_LIBS", programDir.absoluteFilePath("R/library") + ":" + rHome.absoluteFilePath("library") + ":" + rHome.absoluteFilePath("site-library") + ":/usr/share/jasp-desktop/R/library");
+ 
+ #endif
+ 

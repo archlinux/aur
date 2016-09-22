@@ -15,9 +15,9 @@ conflicts=('jasp' 'jasp-desktop')
 install='jasp-desktop-git.install'
 options=('!strip')
 source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.0.0Beta2" 
-	"jasp-desktop.svg"
 	"include.patch"
-	"sem.patch")
+	"sem.patch"
+	"rlibrary.patch")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -33,6 +33,8 @@ prepare() {
   patch -p1 < $srcdir/include.patch
   #Patch simplesem back into the linux version
   patch -p1 < $srcdir/sem.patch
+  #Patch to allow multiple R libraries
+  patch -p1 < $srcdir/rlibrary.patch
 
   #Create separate build dir
   mkdir -p $srcdir/$_buildname
@@ -51,28 +53,22 @@ package() {
   #Install files
   cd $srcdir/$_buildname
   mkdir -p $pkgdir/usr/share/$_pkgname
-  mkdir -p $pkgdir/usr/lib
-  cp -r R $pkgdir/usr/lib/
+  cp -r R $pkgdir/usr/share/$_pkgname
   cp -r jasp JASPEngine Resources libJASP-Common.a libJASP-Desktop.a $pkgdir/usr/share/$_pkgname/
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
-  cp $srcdir/jasp-desktop.svg $pkgdir/usr/share/pixmaps/
+  cp $srcdir/$_pkgname/Tools/debian/jasp.svg $pkgdir/usr/share/pixmaps/
 
   #Install .desktop file
   mkdir -p $pkgdir/usr/share/applications
-cat  << EOF > $pkgdir/usr/share/applications/jasp-desktop.desktop
-[Desktop Entry]
-Name=JASP Desktop
-GenericName=Statistical Program
-Comment=A low fat alternative to SPSS, a delicious alternative to R.
-Exec=/usr/share/jasp-desktop/jasp
-Icon=jasp-desktop
-Type=Application
-Categories=Science;
-EOF
+  cp $srcdir/$_pkgname/Tools/debian/jasp.desktop $pkgdir/usr/share/applications
+
+  #Install link to binary
+  mkdir -p $pkgdir/usr/bin/
+  ln -s /usr/share/$_pkgname/jasp $pkgdir/usr/bin/JASP
 }
 md5sums=('SKIP'
-         'bcaf403001283553bb63b72c268d0290'
          '55f6dd36a413afa371fd112d3afa038e'
-         'c7381a233ac6c6d7f6ccd85434f93f41')
+         'c7381a233ac6c6d7f6ccd85434f93f41'
+         '7359b62112feac921e59346f52a74b4d')
