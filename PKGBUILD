@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgbase=kde-baseapps-git
-pkgname=(konqueror-git kdepasswd-git kdialog-git kfind-git keditbookmarks-git libkonq-git konq-plugins-git)
-pkgver=r19935.ad39e00
+pkgname=(konqueror-git kdepasswd-git kdialog-git kfind-git keditbookmarks-git libkonq-git)
+pkgver=r19988.613afe4
 pkgrel=1
 pkgdesc="Collection of applications used for file and Internet browsing"
 arch=(i686 x86_64)
@@ -33,10 +33,12 @@ build() {
 
 package_konqueror-git() {
 	pkgdesc='KDE File Manager & Web Browser'
-	depends=(keditbookmarks-git dolphin-git kded)
+	depends=(keditbookmarks-git dolphin kded)
 	url="http://kde.org/applications/system/konqueror/"
-	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git)
+	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git konq-plugins)
 	provides=(konqueror)
+        replaces=(konq-plugins-git)
+        optdepends=('tidy: Tidy HTML plugin' 'kdesu: shell command plugin')
 	cd build/konqueror
 	make DESTDIR="$pkgdir" install
 }
@@ -61,7 +63,7 @@ package_kdialog-git() {
 
 package_kfind-git() {
 	pkgdesc='Find Files/Folders'
-	depends=(libkonq-git)
+	depends=(libkonq-git kdelibs4support hicolor-icon-theme)
         conflicts=(kdebase-kfind kfind kfind-frameworks-git)
         provides=(kfind)
 	url="http://kde.org/applications/utilities/kfind/"
@@ -71,7 +73,7 @@ package_kfind-git() {
 
 package_keditbookmarks-git() {
         pkgdesc='Bookmark organizer and editor'
-        depends=(libkonq-git)
+        depends=(kparts)
         conflicts=(kdebase-keditbookmarks keditbookmarks keditbookmarks-frameworks-git)
         provides=(keditbookmarks)
         url="http://www.kde.org/"
@@ -81,17 +83,8 @@ package_keditbookmarks-git() {
 
 package_libkonq-git() {
 	pkgdesc='KDE libraries for the basic desktop applications'
-	depends=(kdelibs4support)
+	depends=(kparts)
 	conflicts=(kdebase-lib libkonq-frameworks-git)
 	cd build/lib
 	make DESTDIR="$pkgdir" install
-}
-
-package_konq-plugins-git() {
-        pkgdesc='Extra plugins for Konqueror'
-        depends=(kdelibs4support khtml tidy)
-        conflicts=(kdebase-konq-plugins konq-plugins konq-plugins-frameworks-git)
-        provides=(konq-plugins)
-        cd build/konq-plugins
-        make DESTDIR="$pkgdir" install
 }
