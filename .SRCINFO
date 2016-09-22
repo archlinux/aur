@@ -1,14 +1,14 @@
 pkgbase = python2-flask-compress
 	pkgdesc = custom actions for flask to help manage your application
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/Flask-Compress/
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2-flask
-	source = http://pypi.python.org/packages/source/F/Flask-Compress/Flask-Compress-1.3.0.tar.gz
-	sha1sums = 3a5e30a7ce0b927421d5afca416a27f71c6a47f0
+	source = https://pypi.io/packages/source/F/Flask-Compress/Flask-Compress-1.3.1.tar.gz
+	sha1sums = ec4ac23f3f6ad71e63882c6a2a371e13771f1915
 
 pkgname = python2-flask-compress
 

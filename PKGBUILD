@@ -1,6 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
+_pythonmod=Flask-Compress
 pkgname='python2-flask-compress'
-pkgver='1.3.0'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc='custom actions for flask to help manage your application'
 arch=('any')
@@ -9,8 +10,8 @@ license=('BSD')
 depends=('python2-flask')
 makedepends=('python2-setuptools')
 
-source=("http://pypi.python.org/packages/source/F/Flask-Compress/Flask-Compress-${pkgver}.tar.gz")
-sha1sums=('3a5e30a7ce0b927421d5afca416a27f71c6a47f0')
+source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
+sha1sums=('ec4ac23f3f6ad71e63882c6a2a371e13771f1915')
 
 build() {
   cd "Flask-Compress-${pkgver}"
