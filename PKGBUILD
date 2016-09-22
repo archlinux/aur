@@ -1,4 +1,4 @@
-# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=lwjgl
 pkgver=3.0.0b
 pkgrel=1
