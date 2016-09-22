@@ -1,6 +1,6 @@
 pkgbase = ktop-git
 	pkgdesc = Make Persian EPUBs compatible to E-Readers such as Kindle
-	pkgver = r25.0239d1e
+	pkgver = 1.5.1b.r13.g5d9c82b-1
 	pkgrel = 1
 	url = https://github.com/al1b/KTOP
 	arch = any
