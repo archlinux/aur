@@ -9,7 +9,7 @@ pkgver=v0.75.18.g42a22fe
 pkgrel=1
 arch=('any')
 pkgdesc="Utility for creating Dell BIOS flash disks"
-url="http://linux.dell.com/cgi-bin/cgit.cgi/biosdisk.git"
+url="https://github.com/dell/${gitname}"
 license=("GPL")
 makedepends=('git')
 depends=('dos2unix' 'wget' 'syslinux' 'python2')
@@ -17,7 +17,7 @@ conflicts=("${gitname}")
 provides=("${gitname}")
 backup=("etc/biosdisk.conf")
 options=('!strip')
-source=("git+http://linux.dell.com/cgi-bin/cgit.cgi/${gitname}.git#commit=42a22fe0785e9f4a8e5285733bc8e2f8e5a18104")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
