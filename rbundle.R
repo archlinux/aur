@@ -6,6 +6,7 @@ path <- commandArgs(trailingOnly = TRUE)
 print(path)
 
 .libPaths(new = path)
+.Library <- ''
 
 #List of R packages to be installed
 libs <- c('BayesFactor','lme4','Rcpp','RInside','afex','base64','car','effects','qgraph','hypergeo','lavaan',
