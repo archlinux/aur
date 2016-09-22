@@ -1,7 +1,7 @@
 # Maintainer: Bian Jiaping <ssbianjp@gmail.com>
 
 pkgname=sublime-text-dev-imfix2
-pkgver=3.3114
+pkgver=3.3124
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - beta build with input method support for CJK users"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ sha256sums=('f355c6bec64e962a5735d0a7d1e11ac39b5b82aacaaf23b222c0bc202e15d866'
             'f0d3cc429aa79585fdd2f83046de5eecf48a474c07bbdb57a1655f98ee2d580c'
             '5903b47f7dfbf079987c566361c5735a002dcbf25d0f86de86b7dce424f36700'
            )
-sha256sums_i686=('0d78a377c2d55c336c95de1b62cc713861c467e83f6d6844a7b0701acde92e77')
-sha256sums_x86_64=('c6409bfc0841a02dfa3ba194015c7c87ea41ade9d61407d421ca947fe713b15a')
+sha256sums_i686=('25fdf648b200216d8fbbd38b52d32498b5a91dde63cb1536ca98eb2b5beb5046')
+sha256sums_x86_64=('8466c09660396b7e739e72db9d8a6527c321e5c196294871cf4d50073edb517b')
 
 build() {
   # build imfix library
