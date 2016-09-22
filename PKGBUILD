@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Cairo plotting library"
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('cairo libbsd')
+depends=('cairo' 'libbsd')
 url="https://kristaps.bsd.lv/kplot/"
 
 _pkgname="${pkgname}-${pkgver}"
