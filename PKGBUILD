@@ -4,7 +4,7 @@ pkgname=steam-wrapper
 # shellcheck disable=SC2034
 pkgdesc="Steam wrapper for common operations"
 # shellcheck disable=SC2034
-pkgver=0.5.0
+pkgver=0.6.0
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -27,7 +27,7 @@ url="https://github.com/pyamsoft/${pkgname}"
 # shellcheck disable=SC2034
 source=("$url/archive/${pkgver}.tar.gz")
 # shellcheck disable=SC2034
-sha256sums=('4dd9b66b60d287066da6566c0f99b19b52a21cef7c246c2949aa5065d6b24270')
+sha256sums=('9d77cd58a5458a8391965934d6dde232f80fe4dca06818ee4337752331bc2c57')
 
 package() {
   # shellcheck disable=SC2154
