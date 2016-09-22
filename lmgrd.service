@@ -1,0 +1,9 @@
+[Unit]
+Description=FLEXnet License Manager Daemon (from Autodesk)
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/flexnetserver/lmgrd
+
+[Install]
+WantedBy=multi-user.target
