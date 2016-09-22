@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = A new Android development environment based on IntelliJ IDEA.
-	pkgver = 2.1.3.0
+	pkgver = 2.2.0.12
 	pkgrel = 1
 	url = http://developer.android.com/sdk/installing/studio.html
 	arch = i686
@@ -21,10 +21,12 @@ pkgbase = android-studio
 	optdepends = android-sources
 	optdepends = android-support
 	optdepends = android-support-repository
+	optdepends = gtk2
+	optdepends = libgl
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2.1.3.0/android-studio-ide-143.3101438-linux.zip
+	source = https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-linux.zip
 	source = android-studio.desktop
-	sha512sums = 3890dcec1c773732a4b54e6e6dd90f9f9b63c396fb0d2712fa4a5b2b8487a055e910f983a8c4da8e3e5b103021267415eb6065f291bd35a633c4723e5cb648cb
+	sha512sums = 71310d6b9fb071fc6b9810765389a2311a62cc706cbe71b2fe466167fb2ded7ebcc2441fe49d34a2942bb79d516f6acfcba5e214e1af42c9e2bc988a28c6fb79
 	sha512sums = 7c1ab152b3f26a0a4796c085bb7bf66aa4711a010910636c0c82a37609155c819b21a732fc3874b55e7d443c989c46f29d51ed54538795829c8eb835308b5aaa
 
 pkgname = android-studio
