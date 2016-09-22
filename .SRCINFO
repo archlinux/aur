@@ -1,14 +1,14 @@
 pkgbase = pacutils
 	pkgdesc = alpm front-end tools
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/andrewgregory/pacutils
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = pacman>=5.0
-	source = pacutils::git://github.com/andrewgregory/pacutils.git#tag=v0.3.0
+	source = pacutils::git://github.com/andrewgregory/pacutils.git#tag=v0.4.0
 	source = mini.c::git://github.com/andrewgregory/mINI.c.git
 	source = tap.c::git://github.com/andrewgregory/tap.c.git
 	sha1sums = SKIP
