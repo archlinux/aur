@@ -1,10 +1,10 @@
 # AUR php-box-git
 A [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) script for use in
-the [Arch User Repository](https://aur4.archlinux.org/) that will build a
+the [Arch User Repository](https://aur.archlinux.org/) that will build a
 package containing the latest version of the PHP
 [Box](https://github.com/box-project/box2) phar.
 
-[https://aur4.archlinux.org/packages/php-box-git/](https://aur4.archlinux.org/packages/php-box-git/)
+[https://aur.archlinux.org/packages/php-box-git/](https://aur.archlinux.org/packages/php-box-git/)
 
 ## References
 * [Arch Build System](https://wiki.archlinux.org/index.php/Arch_Build_System)
