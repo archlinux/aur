@@ -1,0 +1,15 @@
+pkgbase = rofi-mpd
+	pkgdesc = Mopidy extension for playing music from Subsonic servers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Prior99/mopidy-subidy
+	arch = any
+	license = GPL3
+	depends = mpc
+	depends = zsh
+	provides = rofi-mpd
+	source = https://github.com/prior99/rofi-mpd/archive/0.1.0.tar.gz
+	sha256sums = 7cb8666c26002e3586198f8aebd9ac808c19eced196434980fa3fe3346f26f00
+
+pkgname = rofi-mpd
+
