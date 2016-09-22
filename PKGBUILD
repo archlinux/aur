@@ -1,4 +1,4 @@
-# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 _pkgname=lwjgl
 pkgname=${_pkgname}2
 pkgver=2.9.3
@@ -17,17 +17,17 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   _sharedir="$pkgdir/usr/share"
   # Install licenses
-  install -d $_sharedir/licenses/$pkgname/3rdparty
-  install -m644 -t $_sharedir/licenses/$pkgname/3rdparty doc/3rdparty/*
-  install -m644 -t $_sharedir/licenses/$pkgname doc/LICENSE
+  install -d "$_sharedir/licenses/$pkgname/3rdparty"
+  install -m644 -t "$_sharedir/licenses/$pkgname/3rdparty" doc/3rdparty/*
+  install -m644 -t "$_sharedir/licenses/$pkgname" doc/LICENSE
   rm -rf doc/LICENSE doc/3rdparty
   # Install docs
-  install -d $_sharedir/doc/$pkgname
-  install -m644 -t $_sharedir/doc/$pkgname doc/*
+  install -d "$_sharedir/doc/$pkgname"
+  install -m644 -t "$_sharedir/doc/$pkgname" doc/*
   rm -rf doc
   # Install library files
-  install -d $_sharedir/$pkgname
-  mv * $_sharedir/$pkgname
+  install -d "$_sharedir/$pkgname"
+  mv * "$_sharedir/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
