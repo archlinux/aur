@@ -69,6 +69,8 @@ check() {
 package() {
     cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir/" install
+    rm -rf "$pkgdir/usr/include/gtest"
+    rm -rf "$pkgdir/usr/lib"
 
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
