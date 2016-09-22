@@ -18,24 +18,24 @@ source=("git+https://github.com/rdnetto/YCM-Generator.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}"/YCM-Generator/
-     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}"/YCM-Generator/
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}"/YCM-Generator/
-	DESTDIR="${pkgdir}"/usr/share/YCM-Generator 
-	VIMPLUGIN="${pkgdir}"/usr/share/vim/vimfiles/plugin
-	sed "s/expand(\"<sfile>:p:h:h\")/\"\/usr\/share\/YCM\-Generator\/\"/g" -i plugin/ycm-generator.vim 
-	mkdir -p "${DESTDIR}"
-	mkdir -p "${VIMPLUGIN}"
-	cp -r * "${DESTDIR}"
+    cd "${srcdir}"/YCM-Generator/
+    DESTDIR="${pkgdir}"/usr/share/YCM-Generator 
+    VIMPLUGIN="${pkgdir}"/usr/share/vim/vimfiles/plugin
+    sed "s/expand(\"<sfile>:p:h:h\")/\"\/usr\/share\/YCM\-Generator\/\"/g" -i plugin/ycm-generator.vim 
+    mkdir -p "${DESTDIR}"
+    mkdir -p "${VIMPLUGIN}"
+    cp -r * "${DESTDIR}"
 
-	#move vim plugin directory
-	mv ${DESTDIR}/plugin/* ${VIMPLUGIN}
+    #move vim plugin directory
+    mv ${DESTDIR}/plugin/* ${VIMPLUGIN}
 
     #link the execute file to /usr/bin 
     mkdir -p  "${pkgdir}"/usr/bin
-	ln -s "${DESTDIR}"/config_gen.py \
-		"${pkgdir}"/usr/bin/ycm_generator
+    ln -s /usr/share/YCM-Generator/config_gen.py "${pkgdir}"/usr/bin/ycm_generator 
+         
 }
