@@ -1,82 +1,78 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Markus Hovorka <m.hovorka@live.de>
+# Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=freecad-git
-pkgver=0.16.pre.r3.g192dca3
+pkgver=0.17pre.r1771.gf944ab3
 pkgrel=1
+epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
-depends=('boost-libs' 'curl' 'opencascade>=6.6.0' 'python2-pivy' 'xerces-c'
-	'libspnav' 'shared-mime-info' 'hicolor-icon-theme'
-	'python2-matplotlib' 'python2-shiboken' 'python2-pyside' 'qtwebkit')
-makedepends=('git' 'boost' 'eigen' 'gcc-fortran' 'swig' 'desktop-file-utils'
-	'cmake' 'coin' 'python2-pyside-tools')
-optdepends=('freecad-dxf: import DXF files'
-	'pycollada-git: create, edit and load COLLADA documents')
+depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
+         'med' 'xerces-c' 'python2-pivy' 'python2-pyside' 'qtwebkit'
+	 'libtheora' 'shared-mime-info' 'vtk-qt4' 'jsoncpp')
+makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside-tools'
+             'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig' 'patch')
+optdepends=('python2-matplotlib'
+            'pycollada-git: Create, edit and load COLLADA documents.')
 provides=('freecad')
 conflicts=('freecad')
 install=freecad.install
-source=('freecad::git://github.com/FreeCAD/FreeCAD'
-	'freecad.desktop'
-	'freecad.xml')
-sha256sums=('SKIP'
-	'886688f1f3624fafe92710890bda7504d1e0181c2c5239b313066eb412a78e0f'
-	'248918de7d3c2145b5cc4fbbc9e224d22f4a6ca7ead2680e8c3a32e91772482a')
+source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
+	"freecad.install"
+        "freecad.desktop"
+	"freecad.xml"
+	"fem-rpath.patch")
+md5sums=('SKIP'
+         '2fad48203f96f1e7cb97934ea20ed848'
+         '0a4d0635dbd97d9f594ac8e927284316'
+         'c2f4154c8e4678825411de8e7fa54c6b'
+         '99a41687a9ba980eea86aee4345d9a1d')
 
 pkgver() {
-	cd freecad/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 prepare() {
-	sed -i \
-		-e "46i\\\tModDir = '/usr/share/freecad/Mod'" \
-		-e "50i\\\tLibDir = '/usr/lib/freecad'" \
-		"${srcdir}/freecad/src/App/FreeCADInit.py"
+	cd "$srcdir/$pkgname"
+	patch -p1 -i "$srcdir/fem-rpath.patch"
 }
 
 build() {
-	cd freecad/
-	mkdir -p build
-	cd build
+	cd "$srcdir/$pkgname"
 
-	cmake .. \
-		-DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-		-DCMAKE_INSTALL_DOCDIR:PATH="share/freecad/doc" \
-		-DCMAKE_INSTALL_DATADIR:PATH="share/freecad" \
-		-DCMAKE_INSTALL_LIBDIR:PATH="lib/freecad" \
-		-DOCC_INCLUDE_DIR:PATH=/opt/opencascade/inc/ \
-		-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
-		-DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic \
-		-DFREECAD_USE_EXTERNAL_PIVY:BOOL=ON
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_INSTALL_PREFIX:PATH="/opt/freecad" \
+	      -DOCC_INCLUDE_DIR:PATH=/opt/opencascade/inc \
+	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
+	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
+	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
+	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic
 
 	make
 }
 
 package() {
-	cd freecad/build/
+	cd "$srcdir/$pkgname"
 
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="$pkgdir" install
+	
+	# Symlink binaries to /usr/bin.
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s "/opt/freecad/bin/FreeCAD" "$pkgdir/usr/bin/FreeCAD"
+	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/FreeCADCmd"
 
-	# Symlink to /usr/bin
-	ln -sf "FreeCAD" "${pkgdir}/usr/bin/freecad"
-	ln -sf "FreeCADCmd" "${pkgdir}/usr/bin/freecadcmd"
+	# Lowercase aliases like the official arch package.
+	ln -s "/opt/freecad/bin/FreeCAD" "$pkgdir/usr/bin/freecad"
+	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/freecadcmd"
 
-	cp -ra "${pkgdir}/usr/Mod" "${pkgdir}/usr/share/freecad/"
-	rm -r "${pkgdir}/usr/Mod"
-
-	# Install pixmaps and desktop shortcut
+	# Install pixmaps and desktop shortcut.
 	desktop-file-install \
-		--dir="${pkgdir}/usr/share/applications" \
-		"${srcdir}/freecad.desktop"
+	  --dir="$pkgdir/usr/share/applications" "$srcdir/freecad.desktop"
 
-	# Mime info
-	install -D -m644 "${srcdir}/freecad.xml" "${pkgdir}/usr/share/mime/packages/freecad.xml"
+	# Install mime info.
+	install -D -m644 "$srcdir/freecad.xml" \
+	  "$pkgdir/usr/share/mime/packages/freecad.xml"
 }
-
