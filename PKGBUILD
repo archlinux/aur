@@ -6,7 +6,6 @@ pkgver=2.2
 pkgrel=1
 pkgdesc="A manpage for the Filesystem Hierarchy Standard."
 arch=('any')
-depends=('gzip')
 url="https://github.com/alyptik/fhs-manpages"
 license=('GPL')
 source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.mm")
