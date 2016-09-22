@@ -37,7 +37,7 @@ sha256sums_x86_64=('fc917bd702b1275cae3f7fa8036c3c44af9b4f003f3d4a8fbb9f6c097427
 sha256sums_i686=(  'e0c3ce406b6de082692ce3db52b6e04053e205194b26fbf0eee9014be543d98d' 'SKIP')
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-             '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
+             'fed673448233f0eb0818c89f83d4c4e7b1295a48fd387343abedbd58d7dc1311')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
