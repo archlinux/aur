@@ -1,6 +1,6 @@
 # Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 pkgname=lwjgl
-pkgver=3.0.0b
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Lightweight Java Game Library - for use in game projects in Java.'
 arch=(any)
@@ -8,17 +8,17 @@ url='https://lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
-source=("https://github.com/LWJGL/lwjgl3/releases/download/$pkgver/$pkgname-$pkgver.zip")
-md5sums=('61d15b686bebddfeee5b17774039b236')
-sha1sums=('37a95095ab4c0d9be8ecf2d5d6da95ca21c8ce81')
+source=("$pkgname-$pkgver.zip::https://github.com/LWJGL/lwjgl3/releases/download/$pkgver/$pkgname.zip")
+md5sums=('1c3148216400988d731b3987993a0a43')
+sha1sums=('1f309cbd7a687a0e41636b167a41101b4f48854c')
 
 package() {
   _sharedir="$pkgdir/usr/share"
   # Install licenses
   install -d "$_sharedir/licenses/$pkgname/3rdparty"
   install -m644 -t "$_sharedir/licenses/$pkgname/3rdparty" doc/3rdparty/*
-  install -m644 -t "$_sharedir/licenses/$pkgname" doc/LICENSE.txt
-  rm -rf doc/LICENSE.txt doc/3rdparty
+  install -m644 -t "$_sharedir/licenses/$pkgname" LICENSE
+  rm -rf LICENSE doc/3rdparty
   # Install docs
   install -d "$_sharedir/doc/$pkgname"
   install -m644 -t "$_sharedir/doc/$pkgname" doc/*
