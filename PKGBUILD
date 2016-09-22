@@ -1,8 +1,8 @@
 # Maintainer: petRUShka <petrushkin@yandex.ru>
 
 pkgname=nuvola-app-yandex-music-git
-pkgver=r3.62a66ee
-pkgrel=3
+pkgver=r9.996782a
+pkgrel=2
 pkgdesc="Yandex Music integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-yandex-music"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd "$pkgname"
 	make build
-    mv LICENSE-BSD.txt LICENSE
+    cp LICENSE-BSD.txt LICENSE
 }
 
 package() {
