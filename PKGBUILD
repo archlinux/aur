@@ -12,6 +12,7 @@ license=('MIT')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tolga9009/sidewinderd/archive/${pkgver}.tar.gz")
 md5sums=('92b344b7e8054805a08f2bdac1081f10')
+backup=('etc/sidewinderd.conf')
 
 prepare() {
 	mkdir -p build

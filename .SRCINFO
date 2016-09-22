@@ -10,6 +10,7 @@ pkgbase = sidewinderd
 	depends = libconfig
 	depends = systemd
 	depends = tinyxml2
+	backup = etc/sidewinderd.conf
 	source = sidewinderd-0.4.0.tar.gz::https://github.com/tolga9009/sidewinderd/archive/0.4.0.tar.gz
 	md5sums = 92b344b7e8054805a08f2bdac1081f10
 
