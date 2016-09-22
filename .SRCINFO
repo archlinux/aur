@@ -1,7 +1,7 @@
 pkgbase = strongswan-pkcs11
 	pkgdesc = The best OpenSource IPsec implementation with PKCS11 support
 	pkgver = 5.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.strongswan.org
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = strongswan-pkcs11
 	depends = sqlite
 	depends = libcap
 	depends = libsystemd
+	depends = pam
 	provides = strongswan=5.5.0-1
 	conflicts = openswan,
 	conflicts = strongswan
