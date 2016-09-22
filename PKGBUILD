@@ -16,7 +16,7 @@ depends=("gtk3" "hicolor-icon-theme" "gtk-update-icon-cache" "desktop-file-utils
 optdepends=("lua: Lua interpreter" "perl: Perl interpreter" "python: Python 3 interpreter"
             "python2: Python 2 interpreter" "ruby: Ruby interpreter")
 makedepends=("git" "lua" "python" "python2" "ruby")
-provides=("gvim" "xxd" "vim-runtime")
+provides=("gvim" "xxd" "vim-runtime" "vim")
 conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
            "vim-minimal" "vim" "vim-python3" "gvim" "gvim-python3" "gvim-git")
 source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
