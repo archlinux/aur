@@ -2,8 +2,8 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=ozone
-pkgver=2.18c
-pkgrel=2
+pkgver=2.20d
+pkgrel=1
 epoch=2
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ provides=('jlink-debugger')
 depends=('qt4' 'jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("Ozone_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/Ozone_Linux_V${pkgver/./}_i386.tgz")
-md5sums_i686=('269c859f9a5ccc427af20eef912b684d')
-md5sums_x86_64=('d64d83e50a5ffd5ef19bfa48f4ffc0eb')
+md5sums_i686=('88f5a621cc1791556e473de536d28606')
+md5sums_x86_64=('d4bb74c0e624248ecf0fb5f0823c822a')
 url="https://www.segger.com/jlink-software.html"
 
 
@@ -44,7 +44,7 @@ package(){
     find . -name ".svn" | xargs rm -rf
 
     # Bulk copy everything
-    cp --preserve=mode -r Ozone Plugins Doc Config Lib "${pkgdir}/opt/SEGGER/Ozone"
+    cp --preserve=mode -r Ozone Plugins Doc Config Lib Ozone.png "${pkgdir}/opt/SEGGER/Ozone"
 
     # Create links where needed
     ln -s /opt/SEGGER/Ozone/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
