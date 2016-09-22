@@ -2,7 +2,7 @@
 
 pkgname=rnaz
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="predicting structural noncoding RNAs"
 arch=('x86_64' 'i686')
 url="http://www.tbi.univie.ac.at/~wash/RNAz/"
@@ -14,15 +14,11 @@ md5sums=('748dec1d1de7e73d7f42290e51c14052')
 build() {
   cd $srcdir/RNAz-$pkgver
 
-  ./configure --prefix=/usr --disable-static
+  export CFLAGS="-g -O2 -std=gnu89 $CFLAGS"
+
+  ./configure --prefix=/usr
 
   make
-}
-
-check() {
-   cd $srcdir/RNAz-$pkgver
-
-   make check
 }
 
 package() {
