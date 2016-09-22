@@ -2,7 +2,7 @@
 
 _pkgname=KTOP
 pkgname=ktop-git
-pkgver=1.5.1b.r4.g38c9bfa
+pkgver=1.5.1b.r13.g5d9c82b
 pkgrel=1
 pkgdesc='Make Persian EPUBs compatible to E-Readers such as Kindle'
 url='https://github.com/al1b/KTOP'
@@ -21,10 +21,6 @@ install=$pkgname.install
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cp -f "${srcdir}/project.json" "${srcdir}/${_pkgname}/src/KTOP.CLI/project.json"
 }
 
 build() {
