@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgbase=kde-baseapps-git
-pkgname=(konqueror-git kdepasswd-git kdialog-git kfind-git keditbookmarks-git libkonq-git)
-pkgver=r19988.613afe4
+pkgname=(konqueror-git kdepasswd-git kdialog-git kfind-git keditbookmarks-git)
+pkgver=r19991.cb458cf
 pkgrel=1
 pkgdesc="Collection of applications used for file and Internet browsing"
 arch=(i686 x86_64)
@@ -33,11 +33,12 @@ build() {
 
 package_konqueror-git() {
 	pkgdesc='KDE File Manager & Web Browser'
-	depends=(keditbookmarks-git libkonq-git dolphin)
+	depends=(keditbookmarks-git dolphin)
 	url="http://kde.org/applications/system/konqueror/"
-	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git konq-plugins)
+	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git
+                   libkonq-git libkonq-frameworks-git konq-plugins)
 	provides=(konqueror)
-        replaces=(konq-plugins-git)
+        replaces=(konq-plugins-git libkonq-git)
         optdepends=('tidy: Tidy HTML plugin' 'kdesu: shell command plugin')
 	cd build/konqueror
 	make DESTDIR="$pkgdir" install
@@ -63,7 +64,7 @@ package_kdialog-git() {
 
 package_kfind-git() {
 	pkgdesc='Find Files/Folders'
-	depends=(libkonq-git kdelibs4support hicolor-icon-theme)
+	depends=(kdelibs4support hicolor-icon-theme)
         conflicts=(kdebase-kfind kfind kfind-frameworks-git)
         provides=(kfind)
 	url="http://kde.org/applications/utilities/kfind/"
@@ -79,12 +80,4 @@ package_keditbookmarks-git() {
         url="http://www.kde.org/"
         cd build/keditbookmarks
         make DESTDIR="$pkgdir" install
-}
-
-package_libkonq-git() {
-	pkgdesc='KDE libraries for the basic desktop applications'
-	depends=(kparts)
-	conflicts=(kdebase-lib libkonq-frameworks-git)
-	cd build/lib
-	make DESTDIR="$pkgdir" install
 }
