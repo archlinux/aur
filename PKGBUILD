@@ -3,7 +3,7 @@
 pkgname=guile-git
 _gitname=guile
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  CFLAGS="" ./configure --prefix=/usr --disable-error-on-warning \
+  ./configure --prefix=/usr --disable-error-on-warning \
 	--program-suffix=-2.2
   make LDFLAGS+="-lpthread"
 }
