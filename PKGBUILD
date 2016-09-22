@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libjpeg-turbo
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
@@ -13,7 +13,7 @@ url="http://libjpeg-turbo.virtualgl.org"
 source=("http://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-$pkgver.tar.gz"
 "0001-header-compat.mingw.patch"
 "libjpeg-turbo-1.3.1-libmng-compatibility.patch")
-sha1sums=('9adc21b927e48e4c6889e77079f6c1f3eecf98ab'
+sha1sums=('ebb3f9e94044c77831a3e8c809c7ea7506944622'
           '204f9a62bb7170f54b1a997059fa77b9b02a71ba'
           '35413e30c3ea18839f4a023283a0bd444136839f')
 
