@@ -63,9 +63,7 @@ Options:
   -u|--update       Force update of the copy in your home directory
   --dir=<directory> The Tor-Browser directory to use
 
-  All unrecognized arguments will be passed to the browser,
-  but arguments with spaces will break, until Tor fixes this bug:
-  https://trac.torproject.org/projects/tor/ticket/12161
+  All unrecognized arguments will be passed to the browser.
 EOF
 }
 
