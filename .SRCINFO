@@ -10,7 +10,8 @@ pkgbase = lightdm-webkit-theme-aether
 	depends = lightdm
 	depends = lightdm-webkit2-greeter
 	source = https://github.com/NoiSek/Aether/archive/v1.2.1.tar.gz
-	md5sums = 2fc7044bbba02bbeca253287de3d6123
+        md5sums = 0c5771274264d3c377a565573f8e073f
+
 
 pkgname = lightdm-webkit-theme-aether
 
