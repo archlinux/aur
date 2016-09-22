@@ -1,7 +1,11 @@
 post_install() {
-  setcap 'cap_net_bind_service=+ep' usr/bin/caddy
+    getent passwd www-data || useradd --system -s /usr/bin/nologin -d / -U www-data
+
+    mkdir -p /etc/ssl/caddy
+    chmod 770 /etc/ssl/caddy
+    chown www-data:www-data /etc/ssl/caddy
 }
 
 post_upgrade() {
-  post_install
+    post_install
 }
