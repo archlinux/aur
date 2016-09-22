@@ -8,12 +8,13 @@ pkgname=pebble-sdk
 pkgver=4.4.1
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
-url="https://developer.getpebble.com/2/getting-started/"
+url="https://developer.pebble.com/sdk"
 arch=('i386' 'x86_64')
 license=('MIT')
 install='pebble-sdk.install'
 depends=('python2'
 		 'python2-libpebble2-git'
+		 'python2-virtualenv'
 		 'python2-enum34'
          'python2-httplib2'
          'python2-oauth2client'
