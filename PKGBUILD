@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.21.3
+pkgver=0.21.7
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ backup=(etc/openrc/inittab
         etc/openrc/conf.d/{tmpfiles,urandom})
 source=(http://dev.gentoo.org/~williamh/dist/$pkgname-$pkgver.tar.bz2
         $pkgname.logrotate)
-md5sums=('8959307464ad4c2e900c890158822e0b'
+md5sums=('5d368d55eece3e5ba4315a4c1ed3ee4a'
          'ede356beae529d1b16b769c9da70ad52')
 
 _makeargs=(BRANDING='Arch Linux')
