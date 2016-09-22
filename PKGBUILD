@@ -6,7 +6,7 @@
 
 pkgname=emacs-lucid
 pkgver=25.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -39,4 +39,6 @@ package() {
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
+
+  chmod 775 "$pkgdir"/var/games
 }
