@@ -9,7 +9,7 @@ url="http://www.blambot.com/font_animeace2.shtml"
 license=("http://www.blambot.com/license.shtml")
 depends=('fontconfig')
 install=${pkgname}.install
-source=('http://www.blambot.com/fonts/animeace2bb_tt.zip')
+source=('http://www.blambot.com/_fonts/animeace2bb_tt.zip')
 md5sums=('3e2a52d8585fa93a66d2b7f922310f11')
 
 package() {
