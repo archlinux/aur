@@ -8,8 +8,9 @@
 
 pkgname=monodevelop-git
 _pkgname=monodevelop
-pkgver=6.1.0.5441.448
-_pkgver=6.1.0.5441
+pkgver=6.1.1.15.0
+_pkgver=6.1.1.15
+_branch="cycle8-sr0"
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data."
 arch=('any')
@@ -26,7 +27,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _REV=$(git rev-list --count monodevelop-${_pkgver}..HEAD)
+  _REV=$(git rev-list --count monodevelop-${_pkgver}..${_branch})
   printf "${_pkgver}.${_REV}"
 }
 
