@@ -10,7 +10,7 @@ url="http://zulko.github.io/moviepy/"
 license=("MIT")
 makedepends=('python2-setuptools')
 depends=('ffmpeg' 'imagemagick' 'opencv'
-	 'python2-decorator' 'python2-numpy' 'python2-pillow' 'python2-pygame'
+	 'python2-decorator' 'python2-numpy' 'python2-pygame'
 	 'python2-scikit-image' 'python2-scipy' 'python-tqdm')
 provides=('python2-moviepy-git')
 conflicts=('python2-moviepy-git')
