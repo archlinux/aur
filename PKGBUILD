@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=scorep
-pkgver=2.0.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.vi-hps.org/projects/score-p/"
 license=('BSD')
 depends=('cube-perf' 'openmpi' 'otf2' 'opari2')
 source=(http://www.vi-hps.org/upload/packages/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=('e885cc63b4993dab100c6079568891c5a8904f77')
+sha1sums=('196d72bfd8e6fb4c9be5e83e5400f69cdd020d71')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
