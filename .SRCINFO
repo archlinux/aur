@@ -1,0 +1,43 @@
+pkgbase = apricity-calamares-git
+	pkgdesc = An AUR package of the calamares used in Apricity
+	pkgver = 2.4.1
+	pkgrel = 5
+	url = https://github.com/calamares
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = solid
+	depends = yaml-cpp
+	depends = parted
+	depends = boost
+	depends = hwinfo
+	depends = qt5-svg
+	depends = polkit-qt5
+	depends = gptfdisk
+	depends = kdebase-runtime
+	depends = rsync
+	depends = python
+	depends = dmidecode
+	depends = ki18n
+	depends = squashfs-tools
+	depends = kpmcore
+	depends = qt5-webengine
+	depends = qt5ct
+	depends = qt5-styleplugins-git
+	depends = kparts
+	conflicts = calamares
+	backup = usr/share/calamares/modules/bootloader.conf
+	backup = usr/share/calamares/modules/displaymanager.conf
+	backup = usr/share/calamares/modules/initcpio.conf
+	backup = usr/share/calamares/modules/unpackfs.conf
+	source = git+https://github.com/Apricity-OS/calamares#branch=master
+	sha256sums = SKIP
+
+pkgname = apricity-calamares-git
+
