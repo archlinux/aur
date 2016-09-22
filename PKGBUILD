@@ -2,7 +2,7 @@
 # Contributor: jedbrown
 
 pkgname=papi
-pkgver=5.4.3
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="http://icl.cs.utk.edu/papi/"
 license=('BSD')
 depends=('glibc' 'gcc-fortran')
 source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('3aefd581e274f0a103f001f1ffd1009019b297c637e97f4b8c5fc13fa5a1e675')
+sha256sums=('3ea15e6cc2354017335b659c1635409ddab1414e70573aa4df91fd892e99f98d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
