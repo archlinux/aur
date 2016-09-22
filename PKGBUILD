@@ -11,7 +11,7 @@ pkgname=atom-bleeding
 _pkgname=atom
 _apmver=1.12.7
 _atomver=1.10.2
-pkgver=1.10.2.ac0.10.0.apl.apy1.8.6.apm1.12.7.d0.8.9.e1.4.0.fi1.7.19.fu0.12.0.gc3.0.7.gp5.17.1.gt1.5.3.h0.0.38.hh1.3.3.l1.11.16.la0.9.1.lc3.4.4.lu0.38.0.m4.25.0.mp0.158.7.p0.35.0.s3.10.0.sc0.68.3.sv0.243.0.tb1.0.1.tbf0.8.5.tf2.4.1.tv0.209.3
+pkgver=1.10.2.a1.8.6.apm1.12.7.d0.8.9.e1.4.0.fi1.7.19.fu0.12.0.gc3.0.7.gp5.17.1.gt1.5.3.l1.11.16.la0.9.1.lc3.4.4.lu0.38.0.m4.25.0.mp0.158.7.o1.2.1.p0.35.0.s3.10.1.sc0.68.3.sv0.243.0.t0.101.1.tb1.0.1.tbf0.8.5.tf2.4.1.tv0.209.3
 pkgrel=1
 pkgdesc='A bleeding-edge version of the latest Atom stable release, built with the latest versions of all bundled packages. Includes extra packages to turn Atom into an IDE. Pre-built binary found in pkgbuild-current repository.'
 arch=('i686' 'x86_64')
@@ -308,56 +308,37 @@ pkgver() {
   function describe {
     printf "$(git -C "$srcdir/$1" describe --tags `git -C "$srcdir/$1" rev-list --tags --max-count=1` | sed 's/v//g')"
   }
-  _about_arch_ver=$(describe about-arch)
   _apmver=$(describe apm)
-  _ask_stack_ver="$(describe ask-stack)"
-  _autocomplete_clang_ver="$(describe autocomplete-clang)"
-  _autocomplete_java_ver="$(describe autocomplete-java)"
-  _autocomplete_python_ver="$(describe autocomplete-python)"
-  _autocomplete_modules_ver="$(describe autocomplete-modules)"
+  _autocomplete_plus_ver="$(describe autocomplete-plus)"
   _dark_bint_syntax_ver="$(describe dark-bint-syntax)"
   _file_icons_ver="$(describe file-icons)"
   _fusion_ui_ver="$(describe fusion-ui)"
   _git_plus_ver="$(describe git-plus)"
   _git_time_machine_ver="$(describe git-time-machine)"
   _gpp_compiler_ver="$(describe gpp-compiler)"
-  _hyperclick_ver="$(describe hyperclick)"
-  _hyperlink_hyperclick_ver="$(describe hyperlink-hyperclick)"
   _language_archlinux_ver="$(describe language-archlinux)"
-  _language_docker_ver="$(describe language-docker)"
-  _language_gfm2_ver="$(describe language-gfm2)"
-  _language_ini_desktop_ver="$(describe language-ini-desktop)"
-  _language_liquid_ver="$(describe language-liquid)"
-  _language_lisp_ver="$(describe language-lisp)"
-  _language_lua_ver="$(describe language-lua)"
-  _language_matlab_octave_ver="$(describe language-matlab-octave)"
-  _language_pascal_ver="$(describe language-pascal)"
-  _language_patch2_ver="$(describe language-patch2)"
-  _language_rust_ver="$(describe language-rust)"
-  _language_scala_ver="$(describe language-scala)"
+  _language_c_ver="$(describe language-c)"
+  _language_css_ver="$(describe language-css)"
+  _language_javascript_ver="$(describe language-javascript)"
+  _language_less_ver="$(describe language-less)"
+  _language_perl_ver="$(describe language-perl)"
   _language_unix_shell_ver="$(describe language-unix-shell)"
-  _language_vala_modern_ver="$(describe language-vala-modern)"
   _linter_clang_ver="$(describe linter-clang)"
-  _linter_coffeescript_ver="$(describe linter-coffeescript)"
-  _linter_jsonlint_ver="$(describe linter-jsonlint)"
-  _linter_pylint_ver="$(describe linter-pylint)"
-  _linter_lua_ver="$(describe linter-lua)"
-  _linter_javac_ver="$(describe linter-javac)"
-  _linter_ruby_ver="$(describe linter-ruby)"
-  _linter_rust_ver="$(describe linter-rust)"
   _linter_ver="$(describe linter)"
   _markdown_preview_ver="$(describe markdown-preview)"
   _minimap_ver="$(describe minimap)"
+  _open_on_github_ver="$(describe open-on-github)"
   _pigments_ver="$(describe pigments)"
   _script_ver="$(describe script)"
   _spell_check_ver="$(describe spell-check)"
   _settings_view_ver="$(describe settings-view)"
+  _tabs_ver="$(describe tabs)"
   _tool_bar_ver="$(describe tool-bar)"
   _toolbar_fusion_ver="$(describe toolbar-fusion)"
   _tf_ver="$(describe terminal-fusion)"
   _tree_view_ver="$(describe tree-view)"
 
-  printf "${_atomver}.ac${_autocomplete_clang_ver}.apl${_autocomplete_plus_ver}.apy${_autocomplete_python_ver}.apm${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.fi${_file_icons_ver}.fu${_fusion_ui_ver}.gc${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.h${_hyperclick_ver}.hh${_hyperlink_hyperclick_ver}.l${_linter_ver}.la${_language_archlinux_ver}.lc${_linter_clang_ver}.lu${_language_unix_shell_ver}.m${_minimap_ver}.mp${_markdown_preview_ver}.p${_pigments_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.tb${_tool_bar_ver}.tbf${_toolbar_fusion_ver}.tf${_tf_ver}.tv${_tree_view_ver}"
+  printf "${_atomver}.a${_autocomplete_plus_ver}.apm${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.fi${_file_icons_ver}.fu${_fusion_ui_ver}.gc${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.l${_linter_ver}.la${_language_archlinux_ver}.lc${_linter_clang_ver}.lu${_language_unix_shell_ver}.m${_minimap_ver}.mp${_markdown_preview_ver}.o${_open_on_github_ver}.p${_pigments_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.t${_tabs_ver}.tb${_tool_bar_ver}.tbf${_toolbar_fusion_ver}.tf${_tf_ver}.tv${_tree_view_ver}"
 }
 
 prepare() {
