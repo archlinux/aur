@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PICO-8
+Comment=A fantasy console for making, sharing and playing tiny games and other computer programs.
+Exec=/usr/bin/pico8
+MimeType=application/pico-8
+Icon=pico-8
+Terminal=false
+Categories=Game

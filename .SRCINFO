@@ -1,0 +1,27 @@
+pkgbase = pico-8
+	pkgdesc = A fantasy console for making, sharing and playing tiny games and other computer programs.
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = http://www.lexaloffle.com/pico-8.php
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = custom:commercial
+	depends = glibc
+	depends = hicolor-icon-theme
+	source = pico-8.desktop
+	source = pico-8.xml
+	sha512sums = f63b8f4d32b7183c9785a418c7e8d2ea98343edd90c8553397c7d1776b888eb2b49f0308ec7918bde6c41c9a53b6a00318a533d264fa20e0bbd3d8a9f88c2244
+	sha512sums = 0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92
+	source_i686 = hib://pico-8_0.1.9_i386.zip
+	sha512sums_i686 = a22c49e77ed69d24780504ef138a592afc58c7edea57e5dd7d65805c9da9a3cee2e64678d07a7af092b4f3246eb7512bd8a0a9ab8dc6a2e54174f9717c024e07
+	source_x86_64 = hib://pico-8_0.1.9_amd64.zip
+	sha512sums_x86_64 = 453f0061a88405256ab50ca9c2e5b1a4ff22f6a341032734961daa345f7cd20d5225c95291c0e27fba8f51849209eea36f2000fdc89ae555383e5fdab3515481
+	source_armv6h = hib://pico-8_0.1.9_raspi.zip
+	sha512sums_armv6h = 1494dc849707cc85593245c7e119997d9affb7335c642a8469c5b870b09c25330cd7e4a951c35a706e2600151f95ae8ab597783a03c3c79861cb14aa9a597b61
+	source_armv7h = hib://pico-8_0.1.9_raspi.zip
+	sha512sums_armv7h = 1494dc849707cc85593245c7e119997d9affb7335c642a8469c5b870b09c25330cd7e4a951c35a706e2600151f95ae8ab597783a03c3c79861cb14aa9a597b61
+
+pkgname = pico-8
+
