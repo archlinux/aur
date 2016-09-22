@@ -1,12 +1,12 @@
 pkgbase = bomi
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv
 	pkgver = 0.9.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bomi-player.github.io
 	install = bomi.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = mesa
 	makedepends = gcc
 	makedepends = pkg-config

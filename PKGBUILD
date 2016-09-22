@@ -1,14 +1,16 @@
 # Maintainer: xylosper <darklin20@gmail.com>
 # Contributor: willemw <willemw12@gmail.com>
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
+# Contributor: itsme <mymail@ishere.ru>
+
 
 pkgname=bomi
 pkgver=0.9.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv"
 arch=('i686' 'x86_64')
 url="http://$pkgname-player.github.io"
-license=('GPL')
+license=('GPL2')
 provides=('cmplayer')
 conflicts=('bomi-fresh' 'bomi-git')
 install=$pkgname.install
@@ -27,6 +29,7 @@ md5sums=('543c592f588c68d6f0c3cf254c288f58'
          '7bb39aea99bb5c0f6607cda44edc11ae')
 #options=(debug !strip)
 
+
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p0 < "../ffmpeg2.8.patch"
@@ -40,5 +43,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DEST_DIR=$pkgdir install
+  make DEST_DIR="$pkgdir/" install
 }
