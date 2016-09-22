@@ -1,6 +1,6 @@
 pkgname=pacitude
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="a pacman/pacaur tui based on yaourt-gui"
 arch=('i686' 'x86_64')
 url="https://github.com/undeadrevo/pacitude"
