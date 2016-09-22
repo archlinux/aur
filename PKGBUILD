@@ -13,36 +13,34 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=2.13.0.r30922.b6c714a
-_pkgver=2.13
+pkgver=2.99
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
-         'python2-qscintilla' 'python2-sip' 'python2-psycopg2' 'python2-six' 'python2-dateutil'
-         'python2-httplib2' 'python2-jinja' 'python2-markupsafe' 'python2-pygments' 'python2-pytz' 'git')
-makedepends=('cmake' 'txt2tags' 'perl')
-optdepends=('gpsbabel: GPS Tool plugin')
-install="$_pkgname.install"
+depends=('qt5-base' 'proj' 'geos' 'sqlite3' 'gdal' 'qwt' 'expat' 'python-qscintilla-qt5')
+makedepends=('git' 'cmake' 'flex' 'bison')
+optdepends=('grass: for GRASS providers and plugin (6 or 7)'
+            'gsl: for georeferencer'
+            'postgresql: for postgis and SPIT support'
+            'gpsbabel: for gps plugin'
+            'python: for mapserver and PyQGIS'
+            'python-sip: for python support'
+            'pyqt: for python support'
+            'fastcgi: for qgis mapserver'
+            'ocilib: oracle provider')
+
+#install="$_pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git")
 md5sums=('SKIP')
 conflicts=('qgis')
-
-pkgver() {
-  cd $_pkgname
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "$_pkgver.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 prepare() {
   cd $_pkgname
 
   # Fixing shebang for .py files
-  sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
+  # sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -52,24 +50,25 @@ prepare() {
       -i debian/qgis.xml
 
   # Fix console.py for new pyqt build system
-  sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
-      -e '/import pyqtconfig/d' \
-      -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
-      -i python/console/console.py
+  #sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
+  #    -e '/import pyqtconfig/d' \
+  #    -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
+  #    -i python/console/console.py
+  
+  sed -i 's/QWT_LIBRARY_NAMES qwt-qt5 qwt6-qt5/QWT_LIBRARY_NAMES qwt qwt-qt5 qwt6-qt5/'  cmake/FindQwt.cmake
 
   [[ -d build ]] || mkdir build
 }
 
 build() {
   cd $_pkgname/build
-
+  
   cmake -G "Unix Makefiles" ../ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
-    -DCMAKE_SKIP_RPATH=TRUE \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DWITH_INTERNAL_{QWTPOLAR,DATEUTIL,HTTPLIB2,JINJA2,MARKUPSAFE,PYGMENTS,PYTZ,SIX}=FALSE \
+    -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
