@@ -1,7 +1,7 @@
 pkgbase = bomi
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv
 	pkgver = 0.9.11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bomi-player.github.io
 	install = bomi.install
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = bomi
 	depends = jack
 	depends = libchardet
 	depends = libbluray
+	depends = hicolor-icon-theme
 	depends = libva
 	depends = libvdpau
 	depends = libgl

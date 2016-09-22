@@ -6,7 +6,7 @@
 
 pkgname=bomi
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv"
 arch=('i686' 'x86_64')
 url="http://$pkgname-player.github.io"
@@ -16,7 +16,7 @@ conflicts=('bomi-fresh' 'bomi-git')
 install=$pkgname.install
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg'
          'libdvdread' 'libdvdnav' 'libcdio-paranoia' 'libcdio' 'smbclient'
-         'alsa-lib' 'libpulse' 'jack' 'libchardet' 'libbluray'
+         'alsa-lib' 'libpulse' 'jack' 'libchardet' 'libbluray' 'hicolor-icon-theme'
          'libva' 'libvdpau' 'libgl' 'fribidi' 'libass' 'ffmpeg2.8')
 makedepends=('mesa' 'gcc' 'pkg-config' 'python' 'qt5-tools')
 optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
