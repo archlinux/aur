@@ -17,7 +17,6 @@ backup=('usr/share/calamares/modules/bootloader.conf'
 
 source=("git+https://github.com/Apricity-OS/calamares#branch=master")
 
-conflicts=('calamares')
 sha256sums=('SKIP')
 
 prepare() {
