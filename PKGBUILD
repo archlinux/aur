@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=43.03
 _pkgver=43_03
 _dfhack_pkgrel=r1
-pkgrel=4
+pkgrel=5
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -56,7 +56,6 @@ source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
-        "pylnp-terminal.patch"
         "dfhack-twbt.patch"
         "dfhack-visualizers.patch"
         "lnp"
@@ -85,7 +84,6 @@ md5sums=('SKIP'
          'SKIP'
          '17d9ceb486fd476b4c6e8f0834d21d2e'
          'affd6273731c321d364c55a8da314fea'
-         '35e4942313f50d35e58e9c2a51874a82'
          '856c54681faed3608cd951bf286d12d5'
          '5cc79b5dc202d8faa02086293badfcee'
          '389e34b6937f843c8f635d5e7326c9fc'
@@ -140,8 +138,6 @@ prepare() {
     -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
     -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}"
 
-  cd $srcdir/python-lnp/core
-  patch -uN terminal.py $srcdir/pylnp-terminal.patch
 
 }
 build() {
