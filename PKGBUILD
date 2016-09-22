@@ -2,15 +2,15 @@
 # Contributor: nmeum <nmeum-aur@8pit.net>
 
 pkgname=tpm
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='tiny password manager'
 url='http://github.com/nmeum/tpm'
 license=('GPL')
 arch=('any')
 depends=('gnupg')
-source=("https://github.com/nmeum/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b73d995d89537b8cf3deee432bf4e510a4f72dd9e8bc3a30112a7b569c47fc35')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nmeum/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('9ea145e7f731c50ba3a8dfa252c7d0b31cd5b12b03db33dd95d7d8ebb53d4e6b')
 
 
 build() {
