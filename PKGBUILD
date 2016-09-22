@@ -1,7 +1,7 @@
 # Maintainer: bill-auger <bill-auger@programmer.net>
 # AUR Maintainer: lucifermstar<8bit.demoncoder@gmail.com>
 pkgname=av-caster
-pkgver=0.16.003
+pkgver=0.16.004
 pkgrel=1
 epoch=
 pkgdesc="A simple native gStreamer GUI for screencast, webcam, and audio streaming"
@@ -23,7 +23,7 @@ changelog=
 rootdir="$pkgname"-"$pkgver"
 source=('https://github.com/bill-auger/av-caster/archive/v'"$pkgver"'.tar.gz')
 noextract=()
-md5sums=('af3c934f64d355fc539578c3bc9486b2')
+md5sums=('40ab29745aa9cd8af4d753047159cac8')
 validpgpkeys=()
 
 #prepare() {}
