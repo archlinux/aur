@@ -3,7 +3,7 @@
 
 pkgname=cronograph-conky
 pkgver=6.5.220916
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, conky clock widget for X which displays date, time and weather information"
 arch=('any')
 url="https://github.com/drxspace/cronoconky"
