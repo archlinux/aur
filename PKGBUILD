@@ -53,7 +53,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('6ea3241e222706037ff20e629c816949'
+md5sums=('e59bc60229eb076b95b6eb2b0ece37d6'
          '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40')
