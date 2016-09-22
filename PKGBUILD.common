@@ -1,7 +1,7 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=15.2.3
+pkgver=15.2.4
 pkgrel=1
 arch=(i686 x86_64)
 groups=('bareos')
