@@ -3,7 +3,7 @@
 
 pkgbase=rust-nightly
 pkgname=rust-nightly
-pkgver=1.13.0_2016.09.21
+pkgver=1.13.0_2016.09.22
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
