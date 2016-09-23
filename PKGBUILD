@@ -52,7 +52,7 @@ else
 	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
 	makedepends+=('git' 'python2')
 
-	_UDK_version='UDK2014'
+	_UDK_VERSION='UDK2014'
 	_TIANO_DIR_="edk2-${_UDK_VERSION}"
 
 	_TIANOCORE_PKG='Mde'
