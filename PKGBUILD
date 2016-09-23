@@ -17,6 +17,11 @@ build() {
   make PREFIX="/usr"
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  make check
+}
+
 package() {
   cd "$pkgname-$pkgver"
   make PREFIX="/usr" DESTDIR="$pkgdir/" install
