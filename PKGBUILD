@@ -1,4 +1,4 @@
-# Author: Einhard Leichtfuß <respiranto@icloud.com>
+# Author: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=ctct
 pkgver=0.2.2
 pkgrel=1
