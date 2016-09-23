@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-allegro
-pkgver=5.2.0.0
+pkgver=5.2.1.1
 pkgrel=1
 pkgdesc='Portable library mainly aimed at video game and multimedia programming (32 bit)'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('lib32-jack' 'lib32-libxpm' 'lib32-libxxf86dga' 'lib32-libgl' 'lib32-ph
          'lib32-gtk2' 'lib32-libpulse' 'lib32-alsa-lib' 'lib32-libtheora'
          "${pkgname#*-}")
 makedepends=('cmake' 'gcc-multilib' 'lib32-mesa' 'lib32-glu')
-source=("http://download.gna.org/allegro/allegro/${pkgver%.*}/allegro-${pkgver%.*}.tar.gz")
-sha256sums=('af5a69cd423d05189e92952633f9c0dd0ff3a061d91fbce62fb32c4bd87f9fd7')
+source=("http://download.gna.org/allegro/allegro/$pkgver/allegro-$pkgver.tar.gz")
+sha256sums=('b5d9df303bc6d72d54260c24505889acd995049b75463b46344e797a58a44a71')
 
 prepare() {
   # reset build folder
