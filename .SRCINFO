@@ -1,14 +1,14 @@
 pkgbase = ripgrep
 	pkgdesc = A search tool that combines the usability of The Silver Searcher with the raw speed of grep.
-	pkgver = 0.1.11
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/BurntSushi/ripgrep
 	arch = i686
 	arch = x86_64
 	license = UNLICENSE
 	makedepends = cargo
-	source = https://github.com/BurntSushi/ripgrep/archive/0.1.11.tar.gz
-	sha256sums = d29beb1a43a263d75ce4ef23a07253ed6ea306b14ffb5b37bc4972fb5d98238c
+	source = https://github.com/BurntSushi/ripgrep/archive/0.1.14.tar.gz
+	sha256sums = 3bb74c9d7242c2249ae7dafcb74187df0f352a2f5c41300a9dbb8ca047661e2c
 
 pkgname = ripgrep
 
