@@ -2,12 +2,12 @@
 pkgname=ciphr
 pkgver=120.f1f049d
 _gemver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool for encoding, decoding, encryption, decryption, and hashing streams of data."
 url="https://github.com/frohoff/ciphr"
 arch=('any')
 license=('MIT')
-depends=('ruby' 'ruby-parslet' 'ruby-base32' 'ruby-slop-3')
+depends=('ruby' 'ruby-parslet-1.5' 'ruby-base32' 'ruby-slop-3')
 makedepends=('git' 'ruby-bundler')
 source=('git+https://github.com/frohoff/ciphr.git')
 sha256sums=('SKIP')
