@@ -1,12 +1,10 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=vim-wombat
 pkgver=2.0
 pkgrel=2
 pkgdesc="Two versions of the 256-color Wombat scheme for vim"
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=2465
-     http://blog.echofish.org/?p=55"
+url="http://www.vim.org/scripts/script.php?script_id=2465"
 license=('GPL')
 depends=('vim')
 source=(wombat256.vim::http://www.vim.org/scripts/download_script.php?src_id=13397
@@ -24,4 +22,3 @@ package() {
   install -Dm644 "$srcdir/wombat256mod.vim" \
     "$pkgdir/usr/share/vim/vim74/colors/wombat256mod.vim"
 }
-
