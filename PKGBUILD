@@ -16,7 +16,7 @@ package() {
     cd "$srcdir"
 
     install -d -m755 "${pkgdir}/opt/"
-    cp -dpr --no-preserve=ownership "${srcdir}/Jackett"* "${pkgdir}/opt/"
+    cp -dpr --no-preserve=ownership "${srcdir}/Jackett" "${pkgdir}/opt/"
     install -D -m644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -d -m755 "${pkgdir}/usr/share/Jackett"
 }
