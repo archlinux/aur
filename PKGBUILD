@@ -1,7 +1,7 @@
 # Contributor: Andrew Gallant <jamslam@gmail.com>
 # Maintainer: Andrew Gallant
 pkgname=ripgrep
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/BurntSushi/ripgrep"
 license=('UNLICENSE')
 makedepends=('cargo')
 source=("https://github.com/BurntSushi/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3bb74c9d7242c2249ae7dafcb74187df0f352a2f5c41300a9dbb8ca047661e2c')
+sha256sums=('ced856378c4ca625e4798ccae85418badd22e099fc324bcb162df51824808622')
 
 build() {
   cd "$pkgname-$pkgver"
