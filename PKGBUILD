@@ -8,8 +8,8 @@
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
 pkgname=arduino
-pkgver=1.6.11
-pkgrel=5
+pkgver=1.6.12
+pkgrel=1
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,11 +17,13 @@ url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'avrdude')
 makedepends=('java-environment=8' 'apache-ant' 'unzip')
+provides=('arduino-builder')
+conflicts=('arduino-builder')
 options=(!strip staticlibs)
 install="arduino.install"
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz"
         "arduino.sh")
-sha512sums=('f18f173c95aea1b60aa4e7ef98e0dc1a44595571d522569b53842fe8c110e92da82902c25aea6b1affe4e3dfe0098ce0c173cf73c42b2237ce353a5a70932f68'
+sha512sums=('2d386ddf26babc920767db9062304b75bf0b6b12ac469a33597b9b8abcc306a1ea6c18dd8b59f51fa2ecd7ffd66f36e80ade1953fd104cf29f0d74b5ab9da2d9'
             '6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28')
 
 build() {
