@@ -1,19 +1,30 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.48.2
+pkgver=2.50.0
 pkgrel=1
 pkgdesc="Network-related giomodules for glib"
 url="https://git.gnome.org/browse/glib-networking/"
 arch=(i686 x86_64)
 license=(GPL2)
 depends=(glib2 libproxy gnutls ca-certificates gsettings-desktop-schemas)
-makedepends=(intltool)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('925c0c49d6b2b8b5695f2e33cd952d1dbb7d18d3f2f796413577719315bb3a84')
+makedepends=(intltool git)
+_commit=e5fb3e2a0463097812b301a2ba60d7e60d90845b
+source=("git://git.gnome.org/glib-networking#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ./configure --prefix=/usr --sysconfdir=/etc \
     --libexecdir=/usr/lib/$pkgname --disable-static \
     --disable-installed-tests
@@ -21,12 +32,12 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make -j1 -k check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install testfiles_DATA=
 }
 
