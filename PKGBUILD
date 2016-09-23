@@ -2,7 +2,7 @@
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=1.8.0.2.gf7bdcb1
+pkgver=1.8.5.95.g7ceac14
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -30,9 +30,12 @@ build() {
   cp vagrant-*.gem vagrant.gem
 
   GEM_PATH="$srcdir"/$_pkgname/gems-$pkgver-$pkgrel GEM_HOME="$GEM_PATH" \
-  GEMRC="$EMBEDDED_DIR"/etc/gemrc CPPFLAGS="-I$EMBEDDED_DIR"/include \
+  GEMRC="$EMBEDDED_DIR"/etc/gemrc \
+  CPPFLAGS="-I$EMBEDDED_DIR/include -I${EMBEDDED_DIR}/include/libxml2" \
+  CFLAGS="${CPPFLAGS}" \
   LDFLAGS="-L$EMBEDDED_DIR"/lib PATH="$EMBEDDED_DIR/bin:$PATH" \
   SSL_CERT_FILE="$EMBEDDED_DIR"/cacert.pem \
+  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 \
     "$EMBEDDED_DIR"/bin/gem install $_pkgname.gem --no-ri --no-rdoc
 }
 
