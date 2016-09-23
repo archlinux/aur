@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xelb-git
-pkgver=r112.7cc5d1b
+pkgver=r113.4dcf60b
 pkgrel=1
 pkgdesc="emacs interface to xcb"
 arch=('any')
