@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=19.0.7
+pkgver=19.1
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
@@ -21,12 +21,12 @@ optdepends=('erlang-unixodbc: database support'
             'lksctp-tools: for SCTP support')
 options=('staticlibs')
 source=("git://github.com/erlang/otp.git#tag=OTP-$pkgver"
-        "http://www.erlang.org/download/otp_doc_man_${pkgver%.*}.tar.gz"
+        "http://www.erlang.org/download/otp_doc_man_$pkgver.tar.gz" # ${pkgver%.*}
         'epmd.service'
         'epmd.socket'
         'epmd.conf')
 sha256sums=('SKIP'
-            'c7a3d6d85a5a2b96d844297a3fa1bee448c3dd86237734688466249fd5a1401e'
+            '7200e9e5b3a229a6b3838046e1b3e64afc869265539d49d0e4853212f19c0c79'
             'b121ec9053fb37abca5f910a81c526f93ec30fe13b574a12209223b346886a9e'
             '998a759e4cea4527f9d9b241bf9f32527d7378d63ea40afa38443c6c3ceaea34'
             '78ce5e67b21758c767d727e56b20502f75dc4385ff9b6c6db312d8e8506f2df2')
@@ -48,7 +48,7 @@ package() {
   # Documentation
   install -d "$pkgdir/usr/share/doc/erlang"
   install -m0644 "$srcdir/otp/README.md" \
-    "$srcdir"/{README,COPYRIGHT} \
+    "$srcdir"/COPYRIGHT \
     "$pkgdir/usr/share/doc/erlang"
 
   # Compressed man pages
