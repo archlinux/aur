@@ -11,7 +11,7 @@ pkgbase = vaulty
 	depends = gnupg
 	depends = xclip
 	source = vaulty-0.1.0.tar.gz::https://github.com/fanktom/vaulty/tarball/0.1.0
-	md5sums = c98bc91d11a73a60e70e593b2afd6b40
+  md5sums = f77f92796aaa1b50a0f2157a2446718d
 
 pkgname = vaulty
 
