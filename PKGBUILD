@@ -1,13 +1,13 @@
 # Maintainer: gandalf3 <zzyxpaw at gmail dot com>
 
 pkgname=('enigma-dev-git')
-pkgver=0.0.0
-pkgrel=3
+pkgver=3881.cca83e0
+pkgrel=1
 pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'bin32-jre' 'desktop-file-utils' \
+depends=('alure' 'zlib' 'openal' 'libx11' 'libgl' 'mesa' 'gtk2' 'dumb' 'java-runtime-common' 'desktop-file-utils' \
   'hicolor-icon-theme')
 
 makedepends=('git' 'python')
@@ -15,7 +15,7 @@ conflicts=('lateralgm')
 provides=('lateralgm')
 install='enigma-dev-git.install'
 source=('lateralgm' 'lateralgm.desktop' 'git://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
-md5sums=('111835b7a7706d338c3faa850bd927ef'
+md5sums=('5e2cff3955ed238666e0c4462c228a01'
          '0eca65efd1ad5b863e22a284be894b59'
          'SKIP'
          'e6daacba04f0491b256f8a4d2cc9181a')
