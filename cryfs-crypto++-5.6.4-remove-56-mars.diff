@@ -1,0 +1,106 @@
+diff --git a/src/cpp-utils/crypto/symmetric/ciphers.cpp b/src/cpp-utils/crypto/symmetric/ciphers.cpp
+index f0f5017..33960be 100644
+--- a/src/cpp-utils/crypto/symmetric/ciphers.cpp
++++ b/src/cpp-utils/crypto/symmetric/ciphers.cpp
+@@ -23,8 +23,6 @@ namespace cpputils {
+     DEFINE_CIPHER(Cast256_GCM);
+     DEFINE_CIPHER(Cast256_CFB);
+ 
+-    DEFINE_CIPHER(Mars448_GCM);
+-    DEFINE_CIPHER(Mars448_CFB);
+     DEFINE_CIPHER(Mars256_GCM);
+     DEFINE_CIPHER(Mars256_CFB);
+     DEFINE_CIPHER(Mars128_GCM);
+diff --git a/src/cpp-utils/crypto/symmetric/ciphers.h b/src/cpp-utils/crypto/symmetric/ciphers.h
+index 284aff0..31d2cdc 100644
+--- a/src/cpp-utils/crypto/symmetric/ciphers.h
++++ b/src/cpp-utils/crypto/symmetric/ciphers.h
+@@ -41,9 +41,7 @@ static_assert(32 == CryptoPP::CAST256::MAX_KEYLENGTH, "If Cast offered larger ke
+ DECLARE_CIPHER(Cast256_GCM, "cast-256-gcm", GCM_Cipher, CryptoPP::CAST256, 32);
+ DECLARE_CIPHER(Cast256_CFB, "cast-256-cfb", CFB_Cipher, CryptoPP::CAST256, 32);
+ 
+-static_assert(56 == CryptoPP::MARS::MAX_KEYLENGTH, "If Mars offered larger keys, we should offer a variant with it");
+-DECLARE_CIPHER(Mars448_GCM, "mars-448-gcm", GCM_Cipher, CryptoPP::MARS, 56);
+-DECLARE_CIPHER(Mars448_CFB, "mars-448-cfb", CFB_Cipher, CryptoPP::MARS, 56);
++static_assert(32 == CryptoPP::MARS::MAX_KEYLENGTH, "If Mars offered larger keys, we should offer a variant with it");
+ DECLARE_CIPHER(Mars256_GCM, "mars-256-gcm", GCM_Cipher, CryptoPP::MARS, 32);
+ DECLARE_CIPHER(Mars256_CFB, "mars-256-cfb", CFB_Cipher, CryptoPP::MARS, 32);
+ DECLARE_CIPHER(Mars128_GCM, "mars-128-gcm", GCM_Cipher, CryptoPP::MARS, 16);
+diff --git a/src/cryfs/config/CryCipher.cpp b/src/cryfs/config/CryCipher.cpp
+index 573ea8d..28c563b 100644
+--- a/src/cryfs/config/CryCipher.cpp
++++ b/src/cryfs/config/CryCipher.cpp
+@@ -73,8 +73,6 @@ const vector<shared_ptr<CryCipher>> CryCiphers::SUPPORTED_CIPHERS = {
+         make_shared<CryCipherInstance<Serpent128_CFB>>(INTEGRITY_WARNING),
+         make_shared<CryCipherInstance<Cast256_GCM>>(),
+         make_shared<CryCipherInstance<Cast256_CFB>>(INTEGRITY_WARNING),
+-        make_shared<CryCipherInstance<Mars448_GCM>>(),
+-        make_shared<CryCipherInstance<Mars448_CFB>>(INTEGRITY_WARNING),
+         make_shared<CryCipherInstance<Mars256_GCM>>(),
+         make_shared<CryCipherInstance<Mars256_CFB>>(INTEGRITY_WARNING),
+         make_shared<CryCipherInstance<Mars128_GCM>>(),
+diff --git a/test/cpp-utils/crypto/symmetric/CipherTest.cpp b/test/cpp-utils/crypto/symmetric/CipherTest.cpp
+index aa3b2e8..68dd4b8 100644
+--- a/test/cpp-utils/crypto/symmetric/CipherTest.cpp
++++ b/test/cpp-utils/crypto/symmetric/CipherTest.cpp
+@@ -244,9 +244,6 @@ INSTANTIATE_TYPED_TEST_CASE_P(Cast256_CFB, CipherTest, Cast256_CFB); //CFB mode
+ INSTANTIATE_TYPED_TEST_CASE_P(Cast256_GCM, CipherTest, Cast256_GCM);
+ INSTANTIATE_TYPED_TEST_CASE_P(Cast256_GCM, AuthenticatedCipherTest, Cast256_GCM);
+ 
+-INSTANTIATE_TYPED_TEST_CASE_P(Mars448_CFB, CipherTest, Mars448_CFB); //CFB mode is not authenticated
+-INSTANTIATE_TYPED_TEST_CASE_P(Mars448_GCM, CipherTest, Mars448_GCM);
+-INSTANTIATE_TYPED_TEST_CASE_P(Mars448_GCM, AuthenticatedCipherTest, Mars448_GCM);
+ INSTANTIATE_TYPED_TEST_CASE_P(Mars256_CFB, CipherTest, Mars256_CFB); //CFB mode is not authenticated
+ INSTANTIATE_TYPED_TEST_CASE_P(Mars256_GCM, CipherTest, Mars256_GCM);
+ INSTANTIATE_TYPED_TEST_CASE_P(Mars256_GCM, AuthenticatedCipherTest, Mars256_GCM);
+@@ -275,8 +272,6 @@ TEST(CipherNameTest, TestCipherNames) {
+   EXPECT_EQ("cast-256-gcm", string(Cast256_GCM::NAME));
+   EXPECT_EQ("cast-256-cfb", string(Cast256_CFB::NAME));
+ 
+-  EXPECT_EQ("mars-448-gcm", string(Mars448_GCM::NAME));
+-  EXPECT_EQ("mars-448-cfb", string(Mars448_CFB::NAME));
+   EXPECT_EQ("mars-256-gcm", string(Mars256_GCM::NAME));
+   EXPECT_EQ("mars-256-cfb", string(Mars256_CFB::NAME));
+   EXPECT_EQ("mars-128-gcm", string(Mars128_GCM::NAME));
+diff --git a/test/cryfs/config/CryCipherTest.cpp b/test/cryfs/config/CryCipherTest.cpp
+index b223134..4d4ba60 100644
+--- a/test/cryfs/config/CryCipherTest.cpp
++++ b/test/cryfs/config/CryCipherTest.cpp
+@@ -100,8 +100,6 @@ TEST_F(CryCipherTest, CreatesCorrectEncryptedBlockStore) {
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Serpent128_CFB>("serpent-128-cfb");
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Cast256_GCM>("cast-256-gcm");
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Cast256_CFB>("cast-256-cfb");
+-    EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Mars448_GCM>("mars-448-gcm");
+-    EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Mars448_CFB>("mars-448-cfb");
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Mars256_GCM>("mars-256-gcm");
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Mars256_CFB>("mars-256-cfb");
+     EXPECT_CREATES_CORRECT_ENCRYPTED_BLOCKSTORE<Mars128_GCM>("mars-128-gcm");
+@@ -121,10 +119,6 @@ TEST_F(CryCipherTest, ThereIsACipherWithIntegrityWarning) {
+     EXPECT_THAT(CryCiphers::find("aes-256-cfb").warning().get(), MatchesRegex(".*integrity.*"));
+ }
+ 
+-TEST_F(CryCipherTest, EncryptionKeyHasCorrectSize_448) {
+-    EXPECT_EQ(Mars448_GCM::EncryptionKey::STRING_LENGTH, CryCiphers::find("mars-448-gcm").createKey(Random::PseudoRandom()).size());
+-}
+-
+ TEST_F(CryCipherTest, EncryptionKeyHasCorrectSize_256) {
+     EXPECT_EQ(AES256_GCM::EncryptionKey::STRING_LENGTH, CryCiphers::find("aes-256-gcm").createKey(Random::PseudoRandom()).size());
+ }
+diff --git a/test/cryfs/config/CryConfigCreatorTest.cpp b/test/cryfs/config/CryConfigCreatorTest.cpp
+index 5c45e00..3dc0346 100644
+--- a/test/cryfs/config/CryConfigCreatorTest.cpp
++++ b/test/cryfs/config/CryConfigCreatorTest.cpp
+@@ -114,13 +114,6 @@ TEST_F(CryConfigCreatorTest, ChoosesEmptyRootBlobId) {
+     EXPECT_EQ("", config.RootBlob()); // This tells CryFS to create a new root blob
+ }
+ 
+-TEST_F(CryConfigCreatorTest, ChoosesValidEncryptionKey_448) {
+-    AnswerNoToDefaultSettings();
+-    EXPECT_ASK_FOR_CIPHER().WillOnce(ChooseCipher("mars-448-gcm"));
+-    CryConfig config = creator.create(none, none);
+-    cpputils::Mars448_GCM::EncryptionKey::FromString(config.EncryptionKey()); // This crashes if invalid
+-}
+-
+ TEST_F(CryConfigCreatorTest, ChoosesValidEncryptionKey_256) {
+     AnswerNoToDefaultSettings();
+     EXPECT_ASK_FOR_CIPHER().WillOnce(ChooseCipher("aes-256-gcm"));
