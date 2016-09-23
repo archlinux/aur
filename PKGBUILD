@@ -4,10 +4,10 @@ pkgver=1.2
 pkgrel=1
 pkgdesc="Tool for uploading a local mbox file to IMAP4 server"
 arch=('any')
-url="http://imap-upload.sourceforge.net/"
+url="https://imap-upload.sourceforge.net/"
 license=('MIT')
 depends=('python2')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.zip")
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.zip")
 md5sums=('bd1a0ea13e0e77707c6ac87ea5240ff2')
 
 prepare() {
