@@ -1,7 +1,7 @@
 diff -ru sage-7.3.orig/src/sage/coding/code_bounds.py sage-7.3/src/sage/coding/code_bounds.py
 --- sage-7.3.orig/src/sage/coding/code_bounds.py        2016-08-05 20:26:10.033204091 +0200
 +++ sage-7.3/src/sage/coding/code_bounds.py     2016-08-05 20:32:27.276579565 +0200
-@@ -554,7 +554,7 @@
+@@ -536,7 +536,7 @@
      if q < 2:   # Here we check that q is actually at least 2
          raise ValueError("The value q must be an integer greater than 1")
  
@@ -13,7 +13,7 @@ diff -ru sage-7.3.orig/src/sage/coding/code_bounds.py sage-7.3/src/sage/coding/c
 diff -ru sage-7.3.orig/src/sage/numerical/optimize.py sage-7.3/src/sage/numerical/optimize.py
 --- sage-7.3.orig/src/sage/numerical/optimize.py        2016-08-05 20:26:10.816536625 +0200
 +++ sage-7.3/src/sage/numerical/optimize.py     2016-08-05 20:32:21.449907130 +0200
-@@ -15,7 +15,7 @@
+@@ -16,7 +16,7 @@
  from sage.rings.real_double import RDF
  
  
@@ -25,7 +25,7 @@ diff -ru sage-7.3.orig/src/sage/numerical/optimize.py sage-7.3/src/sage/numerica
 diff -ru sage-7.3.orig/src/sage/symbolic/expression.pyx sage-7.3/src/sage/symbolic/expression.pyx
 --- sage-7.3.orig/src/sage/symbolic/expression.pyx      2016-08-05 20:26:11.333202767 +0200
 +++ sage-7.3/src/sage/symbolic/expression.pyx   2016-08-05 20:32:14.236566826 +0200
-@@ -10884,7 +10884,7 @@
+@@ -10952,7 +10952,7 @@
              ret = ret[0]
          return ret
  

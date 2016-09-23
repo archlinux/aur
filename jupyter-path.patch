@@ -8,8 +8,8 @@
 -JUPYTER_PATH = ENV_JUPYTER_PATH[0]
 +JUPYTER_PATH = os.environ.get('JUPYTER_PATH') 
  
+ 
  class SageKernelSpec(object):
-
 @@ -151,7 +151,7 @@
               '{connection_file}']
          """

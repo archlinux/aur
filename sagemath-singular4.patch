@@ -1,3 +1,16 @@
+diff --git a/src/bin/sage b/src/bin/sage
+index abb7e37..6df99a1 100755
+--- a/src/bin/sage
++++ b/src/bin/sage
+@@ -472,7 +472,7 @@ fi
+ 
+ if [ "$1" = '-singular' -o "$1" = '--singular' ]; then
+     shift
+-    exec singular "$@"
++    exec Singular "$@"
+ fi
+ 
+ if [ "$1" = '-sqlite3' -o "$1" = '--sqlite3' ]; then
 diff --git a/src/doc/de/tutorial/interfaces.rst b/src/doc/de/tutorial/interfaces.rst
 index c452b11..037cfc3 100644
 --- a/src/doc/de/tutorial/interfaces.rst
@@ -95,7 +108,7 @@ index 4be09f9..41b04ca 100644
      //   number of vars : 2
      //        block   1 : ordering dp
 diff --git a/src/module_list.py b/src/module_list.py
-index 5948fa2..240078c 100644
+index 2a6ac04..bc933b2 100644
 --- a/src/module_list.py
 +++ b/src/module_list.py
 @@ -58,6 +58,12 @@ linbox_libs = list(linbox_pc['libraries'])
@@ -215,7 +228,7 @@ index 5948fa2..240078c 100644
  
      Extension('sage.matrix.matrix_rational_dense',
                sources = ['sage/matrix/matrix_rational_dense.pyx'],
-@@ -1585,19 +1545,13 @@ ext_modules = [
+@@ -1581,19 +1541,13 @@ ext_modules = [
                sources = ['sage/rings/polynomial/multi_polynomial.pyx']),
  
      Extension('sage.rings.polynomial.multi_polynomial_ideal_libsingular',
@@ -252,7 +265,7 @@ index c0ffd96..c03a365 100644
          Multivariate Polynomial Ring in x, y over Ring of integers modulo 7
  
 diff --git a/src/sage/categories/pushout.py b/src/sage/categories/pushout.py
-index c04531a..979e56f 100644
+index 60dfc3a..37a0914 100644
 --- a/src/sage/categories/pushout.py
 +++ b/src/sage/categories/pushout.py
 @@ -3201,6 +3201,7 @@ class BlackBoxConstructionFunctor(ConstructionFunctor):
@@ -264,10 +277,10 @@ index c04531a..979e56f 100644
          //   number of vars : 1
          //        block   1 : ordering lp
 diff --git a/src/sage/interfaces/expect.py b/src/sage/interfaces/expect.py
-index 8149e1e..309bc09 100644
+index f9de7d0..c86a9bd 100644
 --- a/src/sage/interfaces/expect.py
 +++ b/src/sage/interfaces/expect.py
-@@ -1210,6 +1210,7 @@ If this all works, you can then make calls like:
+@@ -1212,6 +1212,7 @@ If this all works, you can then make calls like:
  
              sage: R.<x> = QQ[]; f = x^3 + x + 1;  g = x^3 - x - 1; r = f.resultant(g); gap(ZZ); singular(R)
              Integers
@@ -288,7 +301,7 @@ index 7c86013..0ee4207 100644
              //   number of vars : 1
              //        block   1 : ordering lp
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
-index 5ebe7d2..4994909 100644
+index 5ebe7d2..0887e0c 100644
 --- a/src/sage/interfaces/singular.py
 +++ b/src/sage/interfaces/singular.py
 @@ -64,6 +64,7 @@ factorization::
@@ -456,6 +469,36 @@ index 5ebe7d2..4994909 100644
          //   characteristic : 0
          //   number of vars : 1
          //        block   1 : ordering lp
+@@ -2252,13 +2275,15 @@ def generate_docstring_dictionary():
+         sage: from sage.interfaces.singular import generate_docstring_dictionary
+         sage: generate_docstring_dictionary()
+     """
++    from sage.env import SAGE_LOCAL
++
+     global nodes
+     global node_names
+ 
+     nodes.clear()
+     node_names.clear()
+ 
+-    singular_docdir = os.environ["SAGE_LOCAL"]+"/share/singular/"
++    singular_docdir = SAGE_LOCAL+"/share/singular/"
+ 
+     new_node = re.compile("File: singular\.hlp,  Node: ([^,]*),.*")
+     new_lookup = re.compile("\* ([^:]*):*([^.]*)\..*")
+diff --git a/src/sage/interfaces/tests.py b/src/sage/interfaces/tests.py
+index e41f15c..af9797a 100644
+--- a/src/sage/interfaces/tests.py
++++ b/src/sage/interfaces/tests.py
+@@ -39,7 +39,7 @@ Test that write errors to stderr are handled gracefully by GAP
+     0
+     sage: subprocess.call("echo syntax error | ipython", **kwds) in (0,1)
+     True
+-    sage: subprocess.call("echo syntax error | singular", **kwds)
++    sage: subprocess.call("echo syntax error | Singular", **kwds)
+     0
+ """
+ from __future__ import print_function
 diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
 index 7a5af56..8235e9d 100644
 --- a/src/sage/libs/singular/decl.pxd
@@ -1845,7 +1888,7 @@ index b02b53a..e06566e 100644
 -
 -
 diff --git a/src/sage/libs/singular/singular.pyx b/src/sage/libs/singular/singular.pyx
-index 7245090..c83c5ea 100644
+index 7245090..7495325 100644
 --- a/src/sage/libs/singular/singular.pyx
 +++ b/src/sage/libs/singular/singular.pyx
 @@ -5,12 +5,14 @@ AUTHOR:
@@ -2491,7 +2534,7 @@ index 7245090..c83c5ea 100644
  
  cdef init_libsingular():
      """
-@@ -712,18 +761,25 @@ cdef init_libsingular():
+@@ -712,18 +761,26 @@ cdef init_libsingular():
  
      cdef void *handle = NULL
  
@@ -2505,6 +2548,7 @@ index 7245090..c83c5ea 100644
 -                    print(err)
 -            break
 +    import os
++    from sage.env import SAGE_LOCAL 
 +    UNAME = os.uname()[0]
 +    if UNAME[:6] == "CYGWIN":
 +        extension = "dll"
@@ -2514,7 +2558,7 @@ index 7245090..c83c5ea 100644
 +        extension = "so"
 +
 +    # library name changed from libsingular to libSingular btw 3.x and 4.x
-+    lib = os.environ['SAGE_LOCAL']+"/lib/libSingular."+extension
++    lib = SAGE_LOCAL+"/lib/libSingular."+extension
 +
 +    if not os.path.exists(lib):
 +        raise ImportError("cannot locate Singular library ({})".format(lib))
@@ -2528,7 +2572,7 @@ index 7245090..c83c5ea 100644
  
      # load SINGULAR
      siInit(lib)
-@@ -737,9 +793,7 @@ cdef init_libsingular():
+@@ -737,9 +794,7 @@ cdef init_libsingular():
      _saved_options = (int(singular_options), 0, 0)
      _saved_verbose_options = int(singular_verbose_options)
  
@@ -2545,13 +2589,13 @@ index 2348c4b..8abb91c 100644
 +++ b/src/sage/misc/cython.py
 @@ -310,7 +310,7 @@ def cython(filename, verbose=False, compile_message=False,
          sage: code = [
-         ... "#clang C++",
-         ... "#cinclude %s/include/singular %s/include/factory"%(SAGE_LOCAL, SAGE_LOCAL),
--        ... "#clib m readline singular givaro ntl gmpxx gmp",
-+        ... "#clib m readline Singular givaro ntl gmpxx gmp",
-         ... "from sage.rings.polynomial.multi_polynomial_libsingular cimport MPolynomial_libsingular",
-         ... "from sage.libs.singular.polynomial cimport singular_polynomial_pow",
-         ... "def test(MPolynomial_libsingular p):",
+         ....: "#clang C++",
+         ....: "#cinclude %s/include/singular %s/include/factory"%(SAGE_LOCAL, SAGE_LOCAL),
+-        ....: "#clib m readline singular givaro ntl gmpxx gmp",
++        ....: "#clib m readline Singular givaro ntl gmpxx gmp",
+         ....: "from sage.rings.polynomial.multi_polynomial_libsingular cimport MPolynomial_libsingular",
+         ....: "from sage.libs.singular.polynomial cimport singular_polynomial_pow",
+         ....: "def test(MPolynomial_libsingular p):",
 diff --git a/src/sage/rings/multi_power_series_ring_element.py b/src/sage/rings/multi_power_series_ring_element.py
 index 6388859..142f38b 100644
 --- a/src/sage/rings/multi_power_series_ring_element.py
@@ -3610,6 +3654,44 @@ index 20a1a2d..8e59d6d 100644
              //   characteristic : 2
              //   number of vars : 2
              //        block   1 : ordering dp
+diff --git a/src/sage/schemes/curves/affine_curve.py b/src/sage/schemes/curves/affine_curve.py
+index 40235a1..72c520d 100644
+--- a/src/sage/schemes/curves/affine_curve.py
++++ b/src/sage/schemes/curves/affine_curve.py
+@@ -729,9 +729,9 @@ class AffineCurve(Curve_generic, AlgebraicScheme_subscheme_affine):
+             (Affine Plane Curve over Number Field in a0 with defining polynomial y^4 - 4*y^2 + 16 defined by
+             24*x^2*ss1^3 + 24*ss1^3 + (a0^3 - 8*a0),
+              Affine Plane Curve over Number Field in a0 with defining polynomial y^4 - 4*y^2 + 16 defined by
+-             24*s1^2*ss0 + (a0^3 - 8*a0)*ss0^2 + (6*a0^3)*s1,
++             24*s1^2*ss0 + (a0^3 - 8*a0)*ss0^2 + (-6*a0^3)*s1,
+              Affine Plane Curve over Number Field in a0 with defining polynomial y^4 - 4*y^2 + 16 defined by
+-             8*y^2*s0^4 + (-4*a0^3)*y*s0^3 - 32*s0^2 + (a0^3 - 8*a0)*y)
++             8*y^2*s0^4 + (4*a0^3)*y*s0^3 - 32*s0^2 + (a0^3 - 8*a0)*y)
+ 
+         ::
+ 
+@@ -1471,7 +1471,7 @@ class AffinePlaneCurve(AffineCurve):
+               To:   Affine Plane Curve over Number Field in a with defining
+             polynomial a^2 + 7 defined by x^2 + y^2 + 7
+               Defn: Defined on coordinates by sending (t) to
+-                    (((7*a)*t^2 + (a))/(-7*t^2 + 1), (-14*t)/(-7*t^2 + 1))
++                    ((-7*t^2 + 7)/((-a)*t^2 + (-a)), 14*t/((-a)*t^2 + (-a)))
+         """
+         para = self.projective_closure(i=0).rational_parameterization().defining_polynomials()
+         # these polynomials are homogeneous in two indeterminants, so dehomogenize wrt one of the variables
+diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
+index f666231..e62a177 100644
+--- a/src/sage/schemes/curves/projective_curve.py
++++ b/src/sage/schemes/curves/projective_curve.py
+@@ -1537,7 +1537,7 @@ class ProjectivePlaneCurve(ProjectiveCurve):
+               To:   Projective Plane Curve over Number Field in a with defining
+               polynomial a^2 + 1 defined by x^2 + y^2 + z^2
+               Defn: Defined on coordinates by sending (s : t) to
+-                    (s^2 - t^2 : (a)*s^2 + (a)*t^2 : -2*s*t)
++                    ((-a)*s^2 + (-a)*t^2 : s^2 - t^2 : 2*s*t)
+         """
+         if self.genus() != 0:
+             raise TypeError("this curve must have geometric genus zero")
 diff --git a/src/sage/structure/element.pyx b/src/sage/structure/element.pyx
 index e3114f4..839151f 100644
 --- a/src/sage/structure/element.pyx

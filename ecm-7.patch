@@ -30,7 +30,7 @@
                  # assert len(result) == 2
                  return result
          raise ValueError('failed to parse ECM output')
-@@ -501,7 +498,6 @@
+@@ -500,7 +497,6 @@
          if factor_digits is not None:
              B1 = self.recommended_B1(factor_digits)
          kwds['one'] = True
@@ -38,7 +38,7 @@
          cmd = self._make_cmd(B1, None, kwds)
          out = self._run_ecm(cmd, n)
          return self._parse_output(n, out)
-@@ -828,8 +828,8 @@
+@@ -832,8 +828,8 @@
  Step 1 took 12ms
  Step 2 took 17ms
  ********** Factor found in step 2: 79792266297612017
@@ -49,7 +49,7 @@
  """
  
  TEST_ECM_OUTPUT_2 = """
-@@ -839,8 +839,8 @@
+@@ -843,8 +839,8 @@
  Step 1 took 2ms
  Step 2 took 3ms
  ********** Factor found in step 2: 179424673
@@ -60,7 +60,7 @@
  """
  
  TEST_ECM_OUTPUT_3 = """
-@@ -858,7 +858,7 @@
+@@ -862,7 +858,7 @@
  Step 1 took 5ms
  Step 2 took 4ms
  ********** Factor found in step 2: 197002597249
@@ -69,7 +69,7 @@
  Composite cofactor 339872432034468861533158743041639097889948066859 has 48 digits
  """
  
-@@ -870,5 +870,5 @@
+@@ -874,5 +870,5 @@
  Step 2 took 2ms
  ********** Factor found in step 2: 265748496095531068869578877937
  Found composite factor of 30 digits: 265748496095531068869578877937

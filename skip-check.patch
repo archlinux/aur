@@ -1,6 +1,6 @@
 --- src/bin/sage.orig	2014-12-18 09:47:27.354829070 +0100
 +++ src/bin/sage	2014-12-18 09:48:00.041563401 +0100
-@@ -352,18 +352,6 @@
+@@ -355,18 +355,6 @@
  
  # Prepare for running Sage, either interactively or non-interactively.
  sage_setup() {
@@ -17,6 +17,5 @@
 -    fi
 -
      # Display the startup banner (unless SAGE_BANNER is explictly "no")
-     if [ "$SAGE_BANNER" != "no" ]; then
-         # can be 'bare', or 'yes', or unspecified
-
+     sage_banner
+ 

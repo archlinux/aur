@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=7.4.beta3.r0.g8246a66
+pkgver=7.4.beta5.r0.g0ae5fd8
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -38,19 +38,19 @@ source=("git://git.sagemath.org/sage.git#branch=develop"
         increase-rtol.patch sagemath-singular4.patch)
 md5sums=('SKIP'
          'a906a180d198186a39820b0a2f9a9c63'
-         'd4d3c235c99b2bc92dde9f6e53935a8d'
-         '6d9ae0978ce6a05a0da2cafdfb178a09'
-         '6cafcb381437d4751fd55b25d5090987'
-         'a1bcdd3fe620dbae60ed8b0e98b2ece7'
-         'b3ecf7c93a90e0afccbc686af9fdc85f'
+         'ad5cb4a0f8daab9d12e13ff3f13e0589'
+         '34fa3af30eca3cf554fc411d7c16cb3e'
+         '17771a1e59e14535cc837a189d3cb8a7'
+         '1fc960b3c64ed407a991ee26c222a689'
+         '5dca842e4440e4ef235ae18c1b1f20e3'
          '9ba81f717ffd4e20b8b2f2a318307488'
-         '4eb23a3c7363258bc9ba764d6e5512ba'
-         '16b529194c6105c3364127bd8f1efa83'
+         'a40b32a7b5d83379745b538be85064c8'
+         'f3c2264ec392d717a82e61e53d085b73'
          'cdcabd475b80afe0534a5621e972736e'
          'ef927896f2071b442b1d07d7e69f5f3a'
-         '0c9a57d35de80c2cd418ebec912efbbb'
-         '39d3fded716d2a7ae0ab03e0896b7497'
-         '803627177ff5c28e1e73f2678d15c4df')
+         'e4a91dcedbc5e617919e5a9bf1310f24'
+         '1db8db7bfed5f991d55ae11d810ff5cb'
+         '1baa1f7f09ca0b2b18a8b7b440508d69')
 
 pkgver() {
   cd sage
