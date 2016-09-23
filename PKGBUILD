@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sam-git
-pkgver=r110.66c9497
+pkgver=r287.04656a3
 pkgrel=1
 epoch=
 pkgdesc="An updated version of the sam text editor."
