@@ -3,7 +3,7 @@
 
 pkgname=numix-themes-archblue-git
 pkgver=2.6.4.r2.5a0ec95
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -47,8 +47,9 @@ package() {
 
   rm src/assets/*.png
 
+  cd src
   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-ArchBlue
-  rm -rf .git .gitignore CREDITS LICENSE README.md
+  rm -rf ../{.git,.gitignore,CREDITS,LICENSE,README.md}
   cp -dr --no-preserve='ownership' * "${pkgdir}"/usr/share/themes/Numix-ArchBlue/
 }
 
