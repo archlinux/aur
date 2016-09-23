@@ -4,9 +4,9 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
-_pkgver=5.1.0
-pkgver=${_pkgver//-/_}
-pkgrel=4
+_pkgver=5.2.0
+pkgver=${_pkgver//-/_} # for beta versions
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,22 +14,12 @@ url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
              'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qt5-multimedia' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'libmediawiki' 'libkvkontakte')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-5.1-fix-build.patch
-        kdebug-367675.patch::"https://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=463667c8&o=plain")
-sha1sums=('87a843c39f45b8704ead6e6029e52fb03ee44680'
-          '5b6644c8b5534a1712f46fc84948de9a0039a601'
-          'd669d6f248d6c7dec6728037992fdf8d4e14c1d9')
+             'knotifyconfig' 'libmediawiki' 'libkvkontakte' 'gphoto2')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
+sha1sums=('329195ac7ea890a3bec435cd2ed83b04bc80ba1d')
 
 prepare() {
   mkdir -p build
-
-  cd $pkgname-$pkgver
-  # Fix build on i686
-  patch -p1 -i ../digikam-5.1-fix-build.patch
-  # Fix digikamhelperdir
-  cd core
-  patch -p1 -i "$srcdir"/kdebug-367675.patch
 }
 
 build() {
@@ -39,13 +29,13 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_TESTING=OFF \
     -DENABLE_KFILEMETADATASUPPORT=ON \
     -DENABLE_MEDIAPLAYER=ON \
     -DENABLE_AKONADICONTACTSUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_OPENCV3=ON
+    -DENABLE_OPENCV3=ON \
+    -DENABLE_APPSTYLES=ON
   make
 }
 
@@ -54,13 +44,11 @@ package_digikam() {
   depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
 	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: export to various online services'
-              'hugin: panorama tool')
+              'hugin: panorama tool' 'qt5-imageformats: WEBP format support')
 
   cd build/core
   make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc/digikam
-  make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc-translated/digikam
+  cd $srcdir/build/doc
   make DESTDIR="$pkgdir" install
   cd $srcdir/build/po
   make DESTDIR="$pkgdir" install
@@ -76,10 +64,6 @@ package_kipi-plugins() {
               'libkvkontakte: VKontakte.ru Exporter plugin')
 
   cd build/extra
-  make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc/kipi-plugins
-  make DESTDIR="$pkgdir" install
-  cd $srcdir/build/doc-translated/kipi-plugins
   make DESTDIR="$pkgdir" install
   cd $srcdir/build/po
   make DESTDIR="$pkgdir" install
