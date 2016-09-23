@@ -3,7 +3,7 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
 pkgver=4.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -26,15 +26,14 @@ prepare() {
 
   patch -p1 < ${srcdir}/minorSOname.patch
   patch -p1 < ${srcdir}/no-nested-deprecated-warnings.patch
+
+  mkdir ${srcdir}/gcc-build
 }
 
 build() {
-  cd "${srcdir}/gcc-${pkgver}"
+  cd "${srcdir}/gcc-build"
 
-  [[ -d gcc-build ]] || mkdir gcc-build
-  cd gcc-build
-
-  ../configure \
+  ${srcdir}/gcc-${pkgver}/configure \
     --prefix=/usr \
     --program-prefix=${_target}- \
     --target=${_target} \
