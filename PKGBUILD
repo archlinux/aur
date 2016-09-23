@@ -3,7 +3,7 @@
 # Contributor: Omar Pakker <omar.pakker@oracle.com>
 
 pkgname=retro-gtk
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Toolkit to write Gtk+ 3 based libretro frontends'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='https://git.gnome.org/browse/retro-gtk/'
 depends=('gtk3' 'libpulse')
 makedepends=('gobject-introspection' 'gtk3' 'intltool' 'libtool' 'libpulse' 'vala')
 source=("https://git.gnome.org/browse/retro-gtk/snapshot/retro-gtk-${pkgver}.tar.xz")
-sha256sums=('28b1974445618245768e22667a80b5fc18f67f881fbd88738e4521d3117d0f20')
+sha256sums=('ed9976bb2eff191be0d0d1f4450bdf51cbe1c9b6156b95088acdf383b61c8087')
 
 build() {
 	cd "$pkgname-$pkgver"
