@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/terrycain/razer_drivers
 
 pkgname=razer-daemon
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A daemon for controlling razer-driver"
 arch=('any')
