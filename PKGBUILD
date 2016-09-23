@@ -52,17 +52,16 @@ else
 	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
 	makedepends+=('git' 'python2')
 
-	_TIANOCORE_GIT_URL='https://github.com/tianocore/edk2'
-	_TIANO_DIR_='edk2'
+	_UDK_version='UDK2014'
+	_TIANO_DIR_="edk2-${_UDK_VERSION}"
 
 	_TIANOCORE_PKG='Mde'
 	_TIANOCORE_TARGET='RELEASE'
 	_UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
-	_COMPILER='GCC49'
+	_COMPILER='GCC48'
 
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		source+=("${_TIANO_DIR_}-${_DIR_}::git+${_TIANOCORE_GIT_URL}-${_DIR_}.git#branch=master")
-	done
+	source+=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=${_UDK_VERSION}")
+	sha256sums+=('SKIP')
 
 fi
 
@@ -77,7 +76,7 @@ pkgver() {
 _setup_tianocore_env_vars() {
 
 	# Setup UDK PATH ENV variables
-	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}"
+	export _UDK_DIR="${srcdir}/${_TIANO_DIR_}_build"
 	export EDK_TOOLS_PATH="${_UDK_DIR}/BaseTools"
 
 }
@@ -88,11 +87,7 @@ _prepare_tianocore_sources() {
 	rm -rf "${_UDK_DIR}/" || true
 
 	# Create UDK BUILD dir
-	mkdir -p "${_UDK_DIR}/"
-
-	for _DIR_ in BaseTools MdePkg MdeModulePkg IntelFrameworkPkg IntelFrameworkModulePkg ; do
-		mv "${srcdir}/${_TIANO_DIR_}-${_DIR_}" "${_UDK_DIR}/${_DIR_}"
-	done
+	cp -r "${srcdir}/${_TIANO_DIR_}" "${_UDK_DIR}"
 
 	cd "${_UDK_DIR}/"
 
@@ -159,34 +154,12 @@ _prepare_refind_sources() {
 		sed "s|-m64|-maccumulate-outgoing-args -m64|g" -i "${srcdir}/${__pkgname}_build/filesystems/Make.gnuefi" || true
 	else
 		# Fix UDK Path in rEFInd Makefiles
-		sed "s|EDK2BASE = /usr/local/UDK2014/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2014/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2014/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2014/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano" || true
-		sed "s|EDK2BASE = /usr/local/UDK2010/MyWorkSpace|EDK2BASE = ${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
-
-		# Fix GenFw: ERROR 3000: Invalid, refind_x64.dll bad symbol definition
-		sed -e 's|--strip-unneeded|--strip-unneeded -R .eh_frame|g' -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		sed -e 's|--strip-unneeded|--strip-unneeded -R .eh_frame|g' -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		sed -e 's|--strip-unneeded|--strip-unneeded -R .eh_frame|g' -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano"
-		sed -e 's|--strip-unneeded|--strip-unneeded -R .eh_frame|g' -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
+		sed "s|^export EDK2BASE=.*$|export EDK2BASE=${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/Makefile" || true
 
 		# Fix GenFw: ERROR 3000: Invalid section alignment
-		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano" || true
-		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano"
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/Make.tiano" || true
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/refind/Make.tiano" || true
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/filesystems/Make.tiano"
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/gptsync/Make.tiano" || true
+		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
+		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
+		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
 	fi
 
 }
