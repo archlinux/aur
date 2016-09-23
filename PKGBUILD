@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=femtolisp-git
-pkgver=r268.bf5e0d2
+pkgver=r269.47b3876
 pkgrel=1
 pkgdesc="lightweight, robust, scheme-like lisp implementation"
 arch=('i686' 'x86_64')
