@@ -13,7 +13,7 @@ depends=('chromium-dev'
          )
 options=('!strip')
 source=('https://www.google.com/chrome/intl/en/eula_text.html')
-sha1sums=('1ffba5152cb749300a016efec909b828eba9a64a')
+sha1sums=('3947b92192375268d4baf08b7996f4cc23491201')
 _metadata="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz" | gzip -df)"
 _rpm_ver="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
 _rpm_rel="$(echo "${_metadata}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
