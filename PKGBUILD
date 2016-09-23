@@ -2,7 +2,7 @@
 
 pkgname=python2-libkeepass
 pkgdesc="library for keepassx"
-url="http://github.com/phpwutz/libkeepass"
+url="http://github.com/crass/libkeepass"
 depends=(
     'python2-crypto'
     'python2-nose'
@@ -13,7 +13,7 @@ license=('GPLv2')
 arch=('any')
 pkgver=0.1.0
 pkgrel=1
-source=('git+git://github.com/phpwutz/libkeepass.git')
+source=('git+git://github.com/crass/libkeepass.git')
 md5sums=('SKIP')
 
 package() {
