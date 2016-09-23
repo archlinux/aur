@@ -7,7 +7,7 @@
 
 pkgname=packettracer
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
 depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends_x86_64=('gcc-multilib')
@@ -21,8 +21,8 @@ source_x86_64=('local://PacketTracer70_64bit_linux.tar.gz')
 sha512sums=(
 '3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
 '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
-sha512sums_i686=('2ec0c7c3c6e5c9f95baf39cabb48bb6e5e19423310010f20b295efff09255cbda02b0c165894820f96da554b0d91ed30b54a5a5690baca9d36e90b10dd6a33fd')
-sha512sums_x86_64=('fc97ffd272269baf8f2fde3f7a545d07c1913507d0a6013dc862f20fdb3baffe4ebef7c0a0d6faa926daf7ee06ca5acfe15143018b8ee76f3a0b4d3d23ec3b9b')
+sha512sums_i686=('eb80fa9b56de1130ed751e67a20845f3b5c79e9967a64634f5a5058c4b1ac3274d68d7662456c1d247a984d27e5056da324efb4424fe8669a0aec11782b3e1b2')
+sha512sums_x86_64=('77e52d67c6d4a50e5e2508ea9a2a274d54dd1fbbbdd5995d0b4e975f4acf7ceb98a8914c0e7fe63bf8dacea65635668860bf2733d9d10377a2300ceecf657359')
 
 # We don't want to strip anything from the static libraries
 # We want to keep all binaries orginal (Cisco is goofy)
@@ -80,7 +80,7 @@ package() {
 
   # Desktop File
   install -D -m644 ./bin/Cisco-PacketTracer.desktop ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
-  sed 's/\/usr\/local\/PacketTracer7/\/usr\/share\/packettracer/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
+  sed 's/\/usr\/local\/PacketTracer6/\/usr\/share\/packettracer/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
   rm ${pkgdir}/usr/share/packettracer/bin/Cisco-PacketTracer.desktop
 }
 
