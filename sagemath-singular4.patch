@@ -1,0 +1,3650 @@
+diff --git a/src/doc/de/tutorial/interfaces.rst b/src/doc/de/tutorial/interfaces.rst
+index c452b11..037cfc3 100644
+--- a/src/doc/de/tutorial/interfaces.rst
++++ b/src/doc/de/tutorial/interfaces.rst
+@@ -197,6 +197,7 @@ Sages Singular-Schnittstelle (ohne die ``....:``):
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/doc/en/constructions/rings.rst b/src/doc/en/constructions/rings.rst
+index d301a38..58abf8a 100644
+--- a/src/doc/en/constructions/rings.rst
++++ b/src/doc/en/constructions/rings.rst
+@@ -56,6 +56,7 @@ Here's an example using the Singular interface:
+     sage: R = singular.ring(97, '(a,b,c,d)', 'lp')
+     sage: I = singular.ideal(['a+b+c+d', 'ab+ad+bc+cd', 'abc+abd+acd+bcd', 'abcd-1'])
+     sage: R
++    polynomial ring, over a field, global ordering
+     //   characteristic : 97
+     //   number of vars : 4
+     //        block   1 : ordering lp
+diff --git a/src/doc/en/developer/coding_in_other.rst b/src/doc/en/developer/coding_in_other.rst
+index 6432644..f40cbc3 100644
+--- a/src/doc/en/developer/coding_in_other.rst
++++ b/src/doc/en/developer/coding_in_other.rst
+@@ -401,6 +401,7 @@ interface to Singular::
+ 
+     sage: singular.LIB("brnoeth.lib")
+     sage: singular.ring(5,'(x,y)','lp')
++        polynomial ring, over a field, global ordering
+         //   characteristic : 5
+         //   number of vars : 2
+         //        block   1 : ordering lp
+diff --git a/src/doc/en/tutorial/interfaces.rst b/src/doc/en/tutorial/interfaces.rst
+index eeb98ed..3cd29da 100644
+--- a/src/doc/en/tutorial/interfaces.rst
++++ b/src/doc/en/tutorial/interfaces.rst
+@@ -196,6 +196,7 @@ Singular (do not type the ``....:``):
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/doc/fr/tutorial/interfaces.rst b/src/doc/fr/tutorial/interfaces.rst
+index a1fc5cf..6d4dde9 100644
+--- a/src/doc/fr/tutorial/interfaces.rst
++++ b/src/doc/fr/tutorial/interfaces.rst
+@@ -198,6 +198,7 @@ fournie par Sage (n'entrez pas les ``....:``) :
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/doc/ja/tutorial/interfaces.rst b/src/doc/ja/tutorial/interfaces.rst
+index 99158bb..18e83e9 100644
+--- a/src/doc/ja/tutorial/interfaces.rst
++++ b/src/doc/ja/tutorial/interfaces.rst
+@@ -172,6 +172,7 @@ Singularは，グレブナー基底，多変数多項式のgcd，平面曲線の
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/doc/pt/tutorial/interfaces.rst b/src/doc/pt/tutorial/interfaces.rst
+index 7feea55..4aabfa6 100644
+--- a/src/doc/pt/tutorial/interfaces.rst
++++ b/src/doc/pt/tutorial/interfaces.rst
+@@ -196,6 +196,7 @@ digite ``...``):
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/doc/ru/tutorial/interfaces.rst b/src/doc/ru/tutorial/interfaces.rst
+index 4be09f9..41b04ca 100644
+--- a/src/doc/ru/tutorial/interfaces.rst
++++ b/src/doc/ru/tutorial/interfaces.rst
+@@ -190,6 +190,7 @@ Singular предоставляет массивную и продуманную
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+diff --git a/src/module_list.py b/src/module_list.py
+index 5948fa2..240078c 100644
+--- a/src/module_list.py
++++ b/src/module_list.py
+@@ -58,6 +58,12 @@ linbox_libs = list(linbox_pc['libraries'])
+ linbox_library_dirs = list(linbox_pc['library_dirs'])
+ linbox_cflags = pkgconfig.cflags('linbox').split()
+ 
++# Singular
++singular_pc = pkgconfig.parse('Singular')
++singular_libs = list(singular_pc['libraries'])
++singular_library_dirs = list(singular_pc['library_dirs'])
++singular_cflags = pkgconfig.cflags('Singular').split()
++
+ # PNG image library
+ png_pc = pkgconfig.parse('libpng')
+ png_libs = list(png_pc['libraries'])
+@@ -88,6 +94,9 @@ aliases = dict(
+     LINBOX_CFLAGS=linbox_cflags,
+     LINBOX_LIBRARIES=linbox_libs,
+     LINBOX_LIBDIR=linbox_library_dirs,
++    SINGULAR_CFLAGS=singular_cflags,
++    SINGULAR_LIBRARIES=singular_libs,
++    SINGULAR_LIBDIR=singular_library_dirs
+ )
+ 
+ #########################################################
+@@ -112,12 +121,6 @@ except ValueError:
+     pass
+ 
+ #########################################################
+-### Singular
+-#########################################################
+-
+-singular_libs = ['singular', 'flint', 'ntl', 'gmpxx', 'gmp', 'readline', 'm']
+-
+-#########################################################
+ ### Library order
+ #########################################################
+ 
+@@ -130,8 +133,8 @@ singular_libs = ['singular', 'flint', 'ntl', 'gmpxx', 'gmp', 'readline', 'm']
+ # listed here will be added at the end of the list (without changing
+ # their relative order). There is one exception: stdc++ is always put
+ # at the very end of the list.
+-library_order_list = [
+-    "singular", "ec", "ecm",
++library_order_list = singular_libs + [
++    "ec", "ecm",
+ ] + linbox_libs  + gsl_libs + [
+     "pari", "flint", "ratpoints", "ecl", "glpk", "ppl",
+     "arb", "fplll", "mpfi", "mpfr", "mpc", "gmp", "gmpxx",
+@@ -190,20 +193,7 @@ ext_modules = [
+                language='c++',
+                libraries = ["flint", "gmp", "gmpxx", "m", "ntl"]),
+ 
+-    Extension('sage.algebras.letterplace.free_algebra_letterplace',
+-              sources = ['sage/algebras/letterplace/free_algebra_letterplace.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.algebras.letterplace.free_algebra_element_letterplace',
+-              sources = ['sage/algebras/letterplace/free_algebra_element_letterplace.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.algebras.letterplace.letterplace_ideal',
+-              sources = ['sage/algebras/letterplace/letterplace_ideal.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
++    Extension('*', sources = ['sage/algebras/letterplace/*.pyx']),
+ 
+     Extension('sage.algebras.quatalg.quaternion_algebra_cython',
+                sources = ['sage/algebras/quatalg/quaternion_algebra_cython.pyx'],
+@@ -678,35 +668,7 @@ ext_modules = [
+               sources = ['sage/libs/readline.pyx'],
+               libraries = ['readline']),
+ 
+-    Extension('sage.libs.singular.singular',
+-              sources = ['sage/libs/singular/singular.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.libs.singular.polynomial',
+-              sources = ['sage/libs/singular/polynomial.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.libs.singular.ring',
+-              sources = ['sage/libs/singular/ring.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.libs.singular.groebner_strategy',
+-              sources = ['sage/libs/singular/groebner_strategy.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.libs.singular.function',
+-              sources = ['sage/libs/singular/function.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
+-
+-    Extension('sage.libs.singular.option',
+-              sources = ['sage/libs/singular/option.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
++    Extension('*', sources = ['sage/libs/singular/*.pyx']),
+ 
+     Extension('sage.libs.symmetrica.symmetrica',
+               sources = ["sage/libs/symmetrica/symmetrica.pyx"],
+@@ -973,9 +935,7 @@ ext_modules = [
+               sources = ['sage/matrix/matrix_modn_sparse.pyx']),
+ 
+     Extension('sage.matrix.matrix_mpolynomial_dense',
+-              sources = ['sage/matrix/matrix_mpolynomial_dense.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
++              sources = ['sage/matrix/matrix_mpolynomial_dense.pyx']),
+ 
+     Extension('sage.matrix.matrix_rational_dense',
+               sources = ['sage/matrix/matrix_rational_dense.pyx'],
+@@ -1585,19 +1545,13 @@ ext_modules = [
+               sources = ['sage/rings/polynomial/multi_polynomial.pyx']),
+ 
+     Extension('sage.rings.polynomial.multi_polynomial_ideal_libsingular',
+-              sources = ['sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
++              sources = ['sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx']),
+ 
+     Extension('sage.rings.polynomial.plural',
+-              sources = ['sage/rings/polynomial/plural.pyx'],
+-              libraries = ['m', 'readline', 'singular', 'givaro', 'gmpxx', 'gmp'],
+-              language="c++"),
++              sources = ['sage/rings/polynomial/plural.pyx']),
+ 
+     Extension('sage.rings.polynomial.multi_polynomial_libsingular',
+-              sources = ['sage/rings/polynomial/multi_polynomial_libsingular.pyx'],
+-              libraries = singular_libs,
+-              language="c++"),
++              sources = ['sage/rings/polynomial/multi_polynomial_libsingular.pyx']),
+ 
+     Extension('sage.rings.polynomial.multi_polynomial_ring_generic',
+               sources = ['sage/rings/polynomial/multi_polynomial_ring_generic.pyx']),
+diff --git a/src/sage/arith/misc.py b/src/sage/arith/misc.py
+index c0ffd96..c03a365 100644
+--- a/src/sage/arith/misc.py
++++ b/src/sage/arith/misc.py
+@@ -3246,7 +3246,7 @@ def binomial(x, m, **kwds):
+ 
+         sage: K.<x,y> = Integers(7)[]
+         sage: binomial(y,3)
+-        -y^3 + 3*y^2 - 2*y
++        6*y^3 + 3*y^2 + 5*y
+         sage: binomial(y,3).parent()
+         Multivariate Polynomial Ring in x, y over Ring of integers modulo 7
+ 
+diff --git a/src/sage/categories/pushout.py b/src/sage/categories/pushout.py
+index c04531a..979e56f 100644
+--- a/src/sage/categories/pushout.py
++++ b/src/sage/categories/pushout.py
+@@ -3201,6 +3201,7 @@ class BlackBoxConstructionFunctor(ConstructionFunctor):
+         sage: FG(ZZ).parent()
+         Gap
+         sage: FS(QQ['t'])
++        polynomial ring, over a field, global ordering
+         //   characteristic : 0
+         //   number of vars : 1
+         //        block   1 : ordering lp
+diff --git a/src/sage/interfaces/expect.py b/src/sage/interfaces/expect.py
+index 8149e1e..309bc09 100644
+--- a/src/sage/interfaces/expect.py
++++ b/src/sage/interfaces/expect.py
+@@ -1210,6 +1210,7 @@ If this all works, you can then make calls like:
+ 
+             sage: R.<x> = QQ[]; f = x^3 + x + 1;  g = x^3 - x - 1; r = f.resultant(g); gap(ZZ); singular(R)
+             Integers
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+diff --git a/src/sage/interfaces/interface.py b/src/sage/interfaces/interface.py
+index 7c86013..0ee4207 100644
+--- a/src/sage/interfaces/interface.py
++++ b/src/sage/interfaces/interface.py
+@@ -732,6 +732,7 @@ class InterfaceElement(RingElement):
+             PolynomialRing( Rationals, ["x"] )
+             sage: S = singular.ring(0, ('x'))
+             sage: loads(dumps(S))
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
+index 5ebe7d2..4994909 100644
+--- a/src/sage/interfaces/singular.py
++++ b/src/sage/interfaces/singular.py
+@@ -64,6 +64,7 @@ factorization::
+ 
+     sage: R1 = singular.ring(0, '(x,y)', 'dp')
+     sage: R1
++    polynomial ring, over a field, global ordering
+     //   characteristic : 0
+     //   number of vars : 2
+     //        block   1 : ordering dp
+@@ -241,6 +242,7 @@ Groebner basis for some ideal, using Singular through Sage.
+ 
+     sage: singular.lib('poly.lib')
+     sage: singular.ring(32003, '(a,b,c,d,e,f)', 'lp')
++            polynomial ring, over a field, global ordering
+             //   characteristic : 32003
+             //   number of vars : 6
+             //        block   1 : ordering lp
+@@ -611,6 +613,7 @@ class Singular(ExtraTabCompletion, Expect):
+             // dimension (affine) = 0
+             // degree (affine)  = 8
+             // ** right side is not a datum, assignment ignored
++            ...
+ 
+         rather than ignored
+ 
+@@ -995,6 +998,7 @@ class Singular(ExtraTabCompletion, Expect):
+ 
+             sage: R = singular.ring(0, '(x,y,z)', 'dp')
+             sage: R
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 3
+             //        block   1 : ordering dp
+@@ -1034,7 +1038,7 @@ class Singular(ExtraTabCompletion, Expect):
+             sage: R = singular.ring(7, '(a,b)', 'ds')
+             sage: S = singular.ring('real', '(a,b)', 'lp')
+             sage: singular.new('10*a')
+-            1.000e+01*a
++            (1.000e+01)*a
+             sage: R.set_ring()
+             sage: singular.new('10*a')
+             3*a
+@@ -1074,6 +1078,7 @@ class Singular(ExtraTabCompletion, Expect):
+             sage: R = singular.ring(7, '(a,b)', 'ds')
+             sage: S = singular.ring('real', '(a,b)', 'lp')
+             sage: singular.current_ring()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0 (real)
+             //   number of vars : 2
+             //        block   1 : ordering lp
+@@ -1081,6 +1086,7 @@ class Singular(ExtraTabCompletion, Expect):
+             //        block   2 : ordering C
+             sage: singular.set_ring(R)
+             sage: singular.current_ring()
++            polynomial ring, over a field, local/mixed ordering
+             //   characteristic : 7
+             //   number of vars : 2
+             //        block   1 : ordering ds
+@@ -1122,12 +1128,14 @@ class Singular(ExtraTabCompletion, Expect):
+ 
+             sage: r = PolynomialRing(GF(127),3,'xyz', order='invlex')
+             sage: r._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 3
+             //        block   1 : ordering rp
+             //                  : names    x y z
+             //        block   2 : ordering C
+             sage: singular.current_ring()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 3
+             //        block   1 : ordering rp
+@@ -1345,6 +1353,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             sage: cpQ=copy(Q)
+             sage: cpQ.set_ring()
+             sage: cpQ
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 2
+             //        block   1 : ordering dp
+@@ -1600,7 +1609,10 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+         # using Singular's term order
+         from sage.rings.polynomial.term_order import termorder_from_singular
+         from sage.all import PolynomialRing
+-        if singular.eval('typeof(basering)')=='ring':
++        # Meanwhile Singulars quotient rings are also of 'ring' type, not 'qring' as it was in the past.
++        # To find out if a singular ring is a quotient ring or not checking for ring type does not help
++        # and instead of that we we check if the quotient ring is zero or not:
++        if (singular.eval('ideal(basering)==0')=='1'):
+             return PolynomialRing(BR, names=singular.eval('varstr(basering)'), order=termorder_from_singular(singular))
+         P = PolynomialRing(BR, names=singular.eval('varstr(basering)'), order=termorder_from_singular(singular))
+         return P.quotient(singular('ringlist(basering)[4]')._sage_(P), names=singular.eval('varstr(basering)'))
+@@ -1722,11 +1734,18 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             singular_poly_list = self.parent().eval("string(coef(%s,%s))"%(\
+                     self.name(),variable_str)).split(",")
+ 
+-        if singular_poly_list == ['1','0'] :
+-            return R(0)
++        # Directly treat constants
++        if singular_poly_list[0] in ['1', '(1.000e+00)']:
++            return R(singular_poly_list[1])
+ 
+         coeff_start = len(singular_poly_list) // 2
+ 
++        # Singular 4 puts parentheses around floats and sign outside them
++        charstr = self.parent().eval('charstr(basering)').split(',',1)
++        if charstr[0] in ['real', 'complex']:
++              for i in range(coeff_start, 2*coeff_start):
++                  singular_poly_list[i] = singular_poly_list[i].replace('(','').replace(')','')
++
+         if isinstance(R,(MPolynomialRing_polydict,QuotientRing_generic)) and (ring_is_fine or can_convert_to_singular(R)):
+             # we need to lookup the index of a given variable represented
+             # through a string
+@@ -1778,7 +1797,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+                         exp = int(1)
+ 
+                 if kcache is None:
+-                    sage_repr[exp]=k(singular_poly_list[coeff_start+i])
++                    sage_repr[exp] = k(singular_poly_list[coeff_start+i])
+                 else:
+                     elem = singular_poly_list[coeff_start+i]
+                     if elem not in kcache:
+@@ -1861,7 +1880,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+         ::
+ 
+             sage: singular.eval('ring R = integer, (x,y,z),lp')
+-            '// ** redefining R **'
++            '// ** redefining R (ring R = integer, (x,y,z),lp;)'
+             sage: I = singular.ideal(['x^2','y*z','z+x'])
+             sage: I.sage()
+             Ideal (x^2, y*z, x + z) of Multivariate Polynomial Ring in x, y, z over Integer Ring
+@@ -1883,7 +1902,8 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+         Note that the current base ring has not been changed by asking for another ring::
+ 
+             sage: singular('basering')
+-            //   coeff. ring is : Integers
++            polynomial ring, over a domain, global ordering
++            //   coeff. ring is : integer
+             //   number of vars : 3
+             //        block   1 : ordering lp
+             //                  : names    x y z
+@@ -1967,6 +1987,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             sage: R = singular.ring(7, '(a,b)', 'ds')
+             sage: S = singular.ring('real', '(a,b)', 'lp')
+             sage: singular.current_ring()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0 (real)
+             //   number of vars : 2
+             //        block   1 : ordering lp
+@@ -1974,6 +1995,7 @@ class SingularElement(ExtraTabCompletion, ExpectElement):
+             //        block   2 : ordering C
+             sage: R.set_ring()
+             sage: singular.current_ring()
++            polynomial ring, over a field, local/mixed ordering
+             //   characteristic : 7
+             //   number of vars : 2
+             //        block   1 : ordering ds
+@@ -2229,6 +2251,7 @@ def reduce_load():
+     By :trac:`18848`, pickling actually often works::
+ 
+         sage: loads(dumps(singular.ring()))
++        polynomial ring, over a field, global ordering
+         //   characteristic : 0
+         //   number of vars : 1
+         //        block   1 : ordering lp
+diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
+index 7a5af56..8235e9d 100644
+--- a/src/sage/libs/singular/decl.pxd
++++ b/src/sage/libs/singular/decl.pxd
+@@ -1,3 +1,8 @@
++# distutils: extra_compile_args = SINGULAR_CFLAGS
++# distutils: libraries = SINGULAR_LIBRARIES
++# distutils: library_dirs = SINGULAR_LIBDIR
++# distutils: language = c++
++
+ """
+ Declarations of Singular's C/C++ Functions
+ 
+@@ -25,9 +30,6 @@ AUTHOR:
+ 
+ from sage.libs.gmp.types cimport mpz_t, mpz_ptr
+ 
+-cdef extern from "factor.h":
+-    cdef int libfac_interruptflag
+-
+ cdef extern from "factory/factory.h":
+ 
+     #
+@@ -45,15 +47,14 @@ cdef extern from "factory/factory.h":
+     cdef int SW_USE_NTL_GCD_P
+     cdef int SW_USE_NTL_SORT
+ 
+-
+-cdef extern from "libsingular.h":
++cdef extern from "singular/Singular/libsingular.h":
+ 
+     #
+     # OPTIONS
+     #
+ 
+-    cdef unsigned int singular_options "test"
+-    cdef unsigned int singular_verbose_options "verbose"
++    cdef unsigned int singular_options "si_opt_1"           # previously 'test'
++    cdef unsigned int singular_verbose_options "si_opt_2"   # previously 'verbose'
+ 
+     # actual options
+     cdef int OPT_PROT
+@@ -116,56 +117,81 @@ cdef extern from "libsingular.h":
+         mpz_t n
+         int s
+ 
+-    # finite extension field elements
++    # See singular/libpolys/coeffs/coeffs.h for documentation
++    cdef enum n_coeffType:
++        n_unknown
++        n_Zp
++        n_Q
++        n_R
++        n_GF
++        n_long_R
++        n_algExt
++        n_transExt
++        n_long_C
++        n_Z
++        n_Zn
++        n_Znm
++        n_Z2m
++        n_CF
+ 
+-    ctypedef struct napoly "polyrec"
++    ctypedef struct ring "ip_sring"
++    ctypedef struct AlgExtInfo
+ 
+-    # algebraic numbers
++    ctypedef struct n_Procs_s:
+ 
+-    ctypedef struct lnumber "slnumber":
+-        napoly *z
+-        napoly *n
+-        int s
++        number* cfDiv(number *, number *, const n_Procs_s* r)
++        number* cfAdd(number *, number *, const n_Procs_s* r)  # algebraic number addition
++        number* cfSub(number *, number *, const n_Procs_s* r)
++        number* cfMult(number *, number *, const n_Procs_s* r)  # algebraic number multiplication
+ 
+-    ctypedef struct ring "ip_sring"
++        number*  (*cfInit)(int i, const n_Procs_s* r ) # algebraic number from int
++        number*  (*cfParameter)(int i, const n_Procs_s* r)
++        int     (*cfParDeg)(number* n, const n_Procs_s* r)
++        int     (*cfSize)(number* n, const n_Procs_s* r)
++        int     (*cfInt)(number* n, const n_Procs_s* r)
++        int     (*cdDivComp)(number* a,number* b, const n_Procs_s* r)
++        number*  (*cfGetUnit)(number* a, const n_Procs_s* r)
++        number*  (*cfExtGcd)(number* a, number* b, number* *s, number* *t , const n_Procs_s* r)
+ 
+-    ctypedef struct n_Procs_s:
++        void (*cfDelete)(number **, const n_Procs_s*)
++
++        number*  (*cfInpNeg)(number* a,  const n_Procs_s* r)
++        number*  (*cfInvers)(number* a,  const n_Procs_s* r)
++        number*  (*cfCopy)(number* a,  const n_Procs_s* r) # deep copy of algebraic number
++        number*  (*cfRePart)(number* a, const n_Procs_s* cf)
++        number*  (*cfImPart)(number* a, const n_Procs_s* cf)
++        void    (*cfWrite)(number* a, const n_Procs_s* r)
++        void    (*cfNormalize)(number* a,  const n_Procs_s* r)
+ 
+-        number* nDiv(number *, number *)
+-        number* nAdd(number *, number *)
+-        number* nSub(number *, number *)
+-        number* nMul(number *, number *)
+-
+-        void    (*nNew)(number* * a)
+-        number*  (*nInit)(int i)
+-        number*  (*nPar)(int i)
+-        int     (*nParDeg)(number* n)
+-        int     (*nSize)(number* n)
+-        int     (*n_Int)(number* n, ring *)
+-        int     (*nDivComp)(number* a,number* b)
+-        number*  (*nGetUnit)(number* a)
+-        number*  (*nExtGcd)(number* a, number* b, number* *s, number* *t)
+-
+-        number*  (*nNeg)(number* a)
+-        number*  (*nInvers)(number* a)
+-        number*  (*nCopy)(number* a)
+-        number*  (*nRePart)(number* a)
+-        number*  (*nImPart)(number* a)
+-        void    (*nWrite)(number* a)
+-        void    (*nNormalize)(number* a)
+-
+-        bint (*nDivBy)(number* a, number* b)
+-        bint (*nEqual)(number* a,number* b)
+-        bint (*nIsZero)(number* a)
+-        bint (*nIsOne)(number* a)
+-        bint (*nIsMOne)(number* a)
+-        bint (*nGreaterZero)(number* a)
+-        void (*nPower)(number* a, int i, number* * result)
++
++
++        bint (*cfDivBy)(number* a, number* b, const n_Procs_s* r)
++        bint (*cfEqual)(number* a,number* b, const n_Procs_s* )
++        bint (*cfIsZero)(number* a, const n_Procs_s* ) # algebraic number comparison with zero
++        bint (*cfIsOne)(number* a, const n_Procs_s* )  # algebraic number comparison with one
++        bint (*cfIsMOne)(number* a, const n_Procs_s* )
++        bint (*cfGreaterZero)(number* a, const n_Procs_s* )
++        void (*cfPower)(number* a, int i, number* * result,  const n_Procs_s* r) # algebraic number power
++
++
++        ring *extRing
++        int ch
++        mpz_ptr    modBase;
++        unsigned long modExponent;
++
++        #n_coeffType type
++        int type
+ 
+     # polynomials
+ 
++    const char ** n_ParameterNames(const n_Procs_s* r)
++
++    int n_NumberOfParameters(const n_Procs_s* r)
++
+     ctypedef struct poly "polyrec":
+         poly *next
++        number *coef
++        unsigned long exp[1]
+ 
+     # ideals
+ 
+@@ -193,22 +219,33 @@ cdef extern from "libsingular.h":
+         p_Procs_s *p_Procs #polxnomial procs
+         ideal *qideal #quotient ideal
+ 
+-        char **parameter # parameter names
+-        ring *algring # base extension field
+         short N # number of variables
+-        short P # number of parameters
+-        int ch # characteristic (0:QQ, p:GF(p),-p:GF(q), 1:NF)
+-        unsigned int ringtype # field etc.
+-        mpz_ptr ringflaga
+-        unsigned long ringflagb
++
+         int pCompIndex # index of components
+         unsigned long bitmask # mask for getting single exponents
+ 
+-        n_Procs_s*    cf
++
++        n_Procs_s*    cf # coefficient field/ring
+         int ref
+ 
++        # return total degree of p
++
++        long (*pLDeg)(poly *p, int *l, ring *r)
++        long (*pLDegOrig)(poly *p, int *l, ring *r)
++        long (*pFDeg)(poly *p, ring *r)
++        long (*pFDegOrig)(poly *p, ring *r)
++
++
++    long p_Deg(poly *p, ring *r)    
++    long p_WTotaldegree(poly *p, ring *r)
++    long p_Totaldegree(poly *p, ring *r)
++    long p_WDegree(poly *p, ring *r)
++    
+     # available ring orders
+ 
++    ctypedef struct AlgExtInfo:
++        ring * r
++
+     cdef enum rRingOrder_t:
+         ringorder_no
+         ringorder_a
+@@ -368,7 +405,6 @@ cdef extern from "libsingular.h":
+ 
+     cdef ring *currRing
+     cdef ideal *currQuotient
+-
+     # omalloc bin for numbers
+ 
+     cdef omBin *rnumber_bin
+@@ -393,7 +429,7 @@ cdef extern from "libsingular.h":
+     cdef idhdl *currRingHdl
+ 
+     cdef int errorreported
+-    cdef int verbose
++    cdef int si_opt_2    #  previously 'verbose'
+     cdef void * currentVoice
+     cdef int myynest
+ 
+@@ -408,6 +444,10 @@ cdef extern from "libsingular.h":
+ 
+     int siInit(char *)
+ 
++    ctypedef short (*cfInitCharProc)(coeffs, void *)
++
++    n_coeffType nRegister(n_coeffType n, cfInitCharProc p)
++
+     # external resource init
+ 
+     void feInitResources(char *name)
+@@ -439,7 +479,25 @@ cdef extern from "libsingular.h":
+ 
+     # construct ring with characteristic, number of vars and names
+ 
+-    ring *rDefault(int char, int nvars, char **names)
++    ring *rDefault(int char , int nvars, char **names)
++    ring *rDefault(const n_Procs_s* cf, int nvars, char **names)
++    ring *rDefault(int ch             , int nvars, char **names,int ord_size, int *ord, int *block0, int *block1, int **wvhdl)
++    ring *rDefault(const n_Procs_s* cf, int nvars, char **names,int ord_size, int *ord, int *block0, int *block1, int **wvhdl)
++
++
++
++
++    # see coeffs.h
++    ctypedef struct  GFInfo:
++        int GFChar;
++        int GFDegree;
++        const char* GFPar_name;
++
++
++    # parameter is pointer to gGFInfo
++    #
++    n_Procs_s* nInitChar(n_coeffType t, void * parameter)
++
+ 
+     # ring destructor
+ 
+@@ -541,7 +599,7 @@ cdef extern from "libsingular.h":
+ 
+     # return whether a polynomial is homogenous
+ 
+-    int pIsHomogeneous(poly *p)
++    int p_IsHomogeneous(poly *p, const  ring *r)
+ 
+     # return string representation of p
+ 
+@@ -614,6 +672,8 @@ cdef extern from "libsingular.h":
+ 
+     long p_Totaldegree(poly *p, ring *r)
+ 
++    long pLDeg1_Totaldegree(poly * p,int *l, ring * r)
++
+     # iterate through the monomials of p
+ 
+     poly *pNext(poly *p)
+@@ -651,29 +711,26 @@ cdef extern from "libsingular.h":
+ 
+     # gcd of f and g
+ 
+-    poly *singclap_gcd ( poly *f, poly *g )
++    poly *singclap_gcd ( poly *f, poly *g, ring * r )
+ 
+     # resultant of f and g in x
+ 
+-    poly *singclap_resultant ( poly *f, poly *g , poly *x)
++    poly *singclap_resultant ( poly *f, poly *g , poly *x, ring * r)
+ 
+     # extended gcd of f and g
+ 
+-    int singclap_extgcd( poly *f, poly *g, poly *res, poly *pa, poly *pb )
++    int singclap_extgcd( poly *f, poly *g, poly *res, poly *pa, poly *pb, ring * r )
+ 
+     # full polynomial division (as opposed to monomial division)
+ 
+-    poly *singclap_pdivide ( poly *f, poly *g )
++    poly *singclap_pdivide ( poly *f, poly *g, ring * r )
+ 
+     # factorization
+ 
+-    ideal *singclap_factorize ( poly *f, intvec ** v , int with_exps)
+-
+-    # TRUE if p is square free
+-    int singclap_isSqrFree(poly *p)
++    ideal *singclap_factorize ( poly *f, intvec ** v , int with_exps, ring * r)
+ 
+     # return determinant of i
+-    poly *singclap_det(matrix *i)
++    poly *singclap_det(matrix *i, ring * r)
+ 
+     # normal form calculation of p with respect to i, q is quotient
+     # ring.
+@@ -685,9 +742,7 @@ cdef extern from "libsingular.h":
+ 
+     poly *pDiff(poly *p, int i)
+ 
+-    # return total degree of p
+ 
+-    int (*pLDeg)(poly *p, int *l, ring *r)
+ 
+     # TRUE if p is a vector
+ 
+@@ -716,13 +771,11 @@ cdef extern from "libsingular.h":
+ 
+     number *nlRInit(int)
+ 
+-    # rational number from numerator and denominator
+ 
+-    number *nlInit2gmp(mpz_t n, mpz_t d)
+ 
+     # rational number from numerator and denominator
+ 
+-    number *nlInit2(int i, int j)
++    number *nlInit2(int i, int j,const n_Procs_s* cf)
+ 
+     # simplify rational number (cancel common factors)
+ 
+@@ -732,65 +785,6 @@ cdef extern from "libsingular.h":
+ 
+     number *nlCopy(number *)
+ 
+-    # get numerator
+-
+-    number *nlGetNumerator(number *n, ring *r)
+-
+-    # get denominator
+-
+-    number *nlGetDenom(number *n, ring *r)
+-
+-    # delete rational number
+-
+-    void nlDelete(number **n, ring *r)
+-
+-    # i-th algebraic number paraemeter
+-
+-    number *naPar(int i)
+-
+-    # algebraic number power
+-
+-    void naPower(number *, int, number **)
+-
+-    # algebraic number multiplication
+-
+-    number *naMult(number *, number *)
+-
+-    # algebraic number addition
+-
+-    number *naAdd(number *, number *)
+-
+-    # deep copy of algebraic number
+-
+-    number *naCopy(number *)
+-
+-    # algebraic number from int
+-
+-    number *naInit(int, ring *r)
+-
+-    # algebraic number destructor
+-
+-    void naDelete(number **, ring*)
+-
+-    # algebraic number comparison with zero
+-
+-    int naIsZero(number *)
+-
+-    # algebraic number comparison with one
+-
+-    int naIsOne(number *)
+-
+-    # get current coefficent
+-
+-    number *napGetCoeff(napoly *z)
+-
+-    # get exponent of i-th variable
+-
+-    int napGetExpFrom(napoly *, int i, ring* r)
+-
+-    # normalize a number
+-
+-    void naNormalize(number *)
+ 
+     # number to integer handle
+ 
+@@ -800,19 +794,6 @@ cdef extern from "libsingular.h":
+ 
+     long SR_HDL(number *)
+ 
+-    # map Q -> Q(a)
+-    number *naMap00(number *c)
+-
+-    # init integer
+-    number *nrzInit(int i, ring *r)
+-
+-    # init ZmodN from GMP
+-    number *nrnMapGMP(number *v)
+-
+-    #init 2^m from a long
+-    number *nr2mMapZp(number *)
+-
+-
+     # get C int from ZmodN
+     int nrnInt(number *v)
+ 
+@@ -824,9 +805,6 @@ cdef extern from "libsingular.h":
+ 
+     void id_Delete(ideal **, ring *)
+ 
+-    # mappinf from ideal i1 in r1 by i2 to r2
+-
+-    ideal *fast_map(ideal *i1, ring *r1, ideal *i2, ring *r2)
+ 
+     # lifting
+ 
+@@ -842,7 +820,7 @@ cdef extern from "libsingular.h":
+ 
+     # rank of free module for m
+ 
+-    long idRankFreeModule(ideal *m, ring *r)
++    long id_RankFreeModule(ideal *m, ring *r)
+ 
+     # buchberger's algorithm
+ 
+@@ -1003,54 +981,127 @@ cdef extern from "libsingular.h":
+     void setFlag(leftv *A, int F)
+     void resetFlag(leftv *A, int F)
+ 
+-cdef extern from "singular/prCopy.h":
++
++
++
++cdef extern from "singular/coeffs/rmodulo2m.h":
++
++    #init 2^m from a long
++    number *nr2mMapZp(number *,const n_Procs_s* src,const n_Procs_s* dst)
++
++
++cdef extern from "singular/kernel/maps/fast_maps.h":
++
++    # mappinf from ideal i1 in r1 by i2 to r2
++
++    ideal *fast_map_common_subexp(ideal *i1, ring *r1, ideal *i2, ring *r2)
++
++
++
++cdef extern from "singular/polys/ext_fields/algext.h":
++
++    naInitChar(n_Procs_s* cf, void * infoStruct)
++
++    ctypedef number* (*nMapFunc)(number *c,const n_Procs_s* src,const n_Procs_s* dst)
++
++    nMapFunc naSetMap(const n_Procs_s* src, const n_Procs_s* dst)
++
++cdef extern from "singular/coeffs/rmodulon.h":
++
++    # init ZmodN from GMP
++    number *nrnMapGMP(number *v,const n_Procs_s* src,const n_Procs_s* dst)
++
++    nMapFunc nrnSetMap(const n_Procs_s* src,const n_Procs_s* dst)
++
++cdef extern from "singular/coeffs/rmodulon.h":
++    # see rmodulon.h
++
++    ctypedef struct ZnmInfo:
++       mpz_ptr base;
++       unsigned long exp;
++
++
++cdef extern from "singular/coeffs/rintegers.h":
++
++    # init integer
++    number *nrzInit(int i, const n_Procs_s* cf)
++
++
++cdef extern from "singular/polys/weight.h":
++
++
++    double wFunctionalBuch(int *degw, int *lpol, int npol, double *rel, double wx, double wNsqr)
++
++
++cdef extern from "singular/polys/prCopy.h":
+     poly *prCopyR_NoSort(poly *p, ring *r, ring *dest_r)
+     poly *prCopyR(poly *p, ring *r, ring *dest_r)
+ 
+     cdef int LANG_TOP
+ 
++cdef extern from "singular/polys/nc/nc.h":
+     # Non-commutative functions
+     ctypedef enum nc_type:
+-      nc_error # Something's gone wrong!
+-      nc_general # yx=q xy+...
+-      nc_skew # yx=q xy
+-      nc_comm # yx= xy
+-      nc_lie,  # yx=xy+...
+-      nc_undef, # for internal reasons */
+-      nc_exterior #
++        nc_error
++        nc_general
++        nc_skew
++        nc_comm
++        nc_lie
++        nc_undef
++        nc_exterior
+ 
+-
+-cdef extern from "singular/gring.h":
+     void ncRingType(ring *, nc_type)
+     nc_type ncRingType_get "ncRingType" (ring *)
+     int nc_CallPlural(matrix* CC, matrix* DD, poly* CN, poly* DN, ring* r)
+     bint nc_SetupQuotient(ring *, ring *, bint)
+ 
+-cdef extern from "singular/sca.h":
++
++cdef extern from "singular/coeffs/longrat.h":
++
++    # get numerator
++
++    number *nlGetNumerator(number *n, const n_Procs_s* cf)
++
++    # get denominator
++
++    number *nlGetDenom(number *n, const n_Procs_s* cf)
++
++
++    # rational number from numerator and denominator
++
++    number *nlInit2gmp(mpz_t n, mpz_t d,const n_Procs_s* cf)
++
++
++    # delete rational number
++
++    void nlDelete(number **n, const n_Procs_s* cf)
++
++
++cdef extern from "singular/polys/nc/sca.h":
+     void sca_p_ProcsSet(ring *, p_Procs_s *)
+     void scaFirstAltVar(ring *, int)
+     void scaLastAltVar(ring *, int)
+ 
+-cdef extern from "singular/ring.h":
++cdef extern from "singular/polys/monomials/ring.h":
+     bint rIsPluralRing(ring* r)
+     void rPrint "rWrite"(ring* r)
+     char* rOrderingString "rOrdStr"(ring* r)
+     void pDebugPrint "p_DebugPrint" (poly*p, ring* r)
+ 
+-cdef extern from "singular/stairc.h":
++cdef extern from "singular/kernel/combinatorics/stairc.h":
+     # Computes the monomial basis for R[x]/I
+     ideal *scKBase(int deg, ideal *s, ideal *Q)
+ 
+-cdef extern from "singular/lists.h":
++cdef extern from "singular/Singular/lists.h":
+     ctypedef struct lists "slists":
+         int    nr
+         leftv  *m
+         void (*Init)(int n)
+ 
+-cdef extern from "singular/kstd1.h":
++cdef extern from "singular/kernel/GBEngine/kstd1.h":
+     cdef extern int Kstd1_deg   # degBound, default 0
+     cdef extern int Kstd1_mu    # multBound, default 0
+ 
+-cdef extern from "singular/syz.h":
++cdef extern from "singular/kernel/GBEngine/syz.h":
+     ctypedef struct syStrategy "ssyStrategy":
+         short references
+diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
+index 74ecee3..9265099 100644
+--- a/src/sage/libs/singular/function.pyx
++++ b/src/sage/libs/singular/function.pyx
+@@ -43,7 +43,7 @@ available, use the :func:`lib` function as shown below::
+     sage: primdecSY = singular_function('primdecSY')
+     Traceback (most recent call last):
+     ...
+-    NameError: Function 'primdecSY' is not defined.
++    NameError: Singular library function 'primdecSY' is not defined
+ 
+     sage: singular_lib('primdec.lib')
+     sage: primdecSY = singular_function('primdecSY')
+@@ -202,7 +202,7 @@ cdef class RingWrap:
+             sage: ring(l, ring=P).npars()
+             0
+         """
+-        return self._ring.P
++        return n_NumberOfParameters(self._ring.cf)
+ 
+     def ordering_string(self):
+         """
+@@ -236,7 +236,7 @@ cdef class RingWrap:
+             sage: ring(l, ring=P).par_names()
+             []
+         """
+-        return [self._ring.parameter[i] for i in range(self.npars())]
++        return [n_ParameterNames(self._ring.cf)[i] for i in range(self.npars())]
+ 
+     def characteristic(self):
+         """
+@@ -252,7 +252,7 @@ cdef class RingWrap:
+             sage: ring(l, ring=P).characteristic()
+             0
+         """
+-        return self._ring.ch
++        return self._ring.cf.ch
+ 
+     def is_commutative(self):
+         """
+@@ -1061,7 +1061,7 @@ cdef class LibraryCallHandler(BaseCallHandler):
+             res = <leftv*> omAllocBin(sleftv_bin)
+             res.Init()
+             res.Copy(&iiRETURNEXPR)
+-            iiRETURNEXPR.Init();
++            iiRETURNEXPR.Init()
+             return res
+         raise RuntimeError("Error raised calling singular function")
+ 
+@@ -1104,7 +1104,7 @@ cdef class KernelCallHandler(BaseCallHandler):
+         cdef leftv *arg2
+         cdef leftv *arg3
+ 
+-        cdef int number_of_arguments = len(argument_list)
++        cdef Py_ssize_t number_of_arguments = len(argument_list)
+ 
+         # Handle functions with an arbitrary number of arguments, sent
+         # by an argument list.
+@@ -1147,7 +1147,9 @@ cdef class KernelCallHandler(BaseCallHandler):
+         global error_messages
+ 
+         errorreported += 1
+-        error_messages.append("Wrong number of arguments")
++        error_messages.append(
++                "Wrong number of arguments (got {} arguments, arity code is {})"
++                .format(number_of_arguments, self.arity))
+         return NULL
+ 
+     cdef bint free_res(self):
+@@ -1184,6 +1186,7 @@ cdef class SingularFunction(SageObject):
+             currRingHdl = ggetid("my_awesome_sage_ring")
+             if currRingHdl == NULL:
+                 currRingHdl = enterid("my_awesome_sage_ring", 0, RING_CMD, &IDROOT, 1)
++                currRingHdl.data.uring = <ring *>omAlloc0Bin(sip_sring_bin)
+             currRingHdl.data.uring.ref += 1
+ 
+     cdef BaseCallHandler get_call_handler(self):
+@@ -1248,9 +1251,9 @@ cdef class SingularFunction(SageObject):
+             sage: size(1,2)
+             Traceback (most recent call last):
+             ...
+-            RuntimeError: Error in Singular function call 'size':
+-             Wrong number of arguments
+-            sage: size('foobar')
++            RuntimeError: error in Singular function call 'size':
++            Wrong number of arguments (got 2 arguments, arity code is 300)
++            sage: size('foobar', ring=P)
+             6
+ 
+         Show the usage of the optional ``attributes`` parameter::
+@@ -1298,9 +1301,9 @@ cdef class SingularFunction(SageObject):
+             sage: _ = triangL(I)
+             Traceback (most recent call last):
+             ...
+-            RuntimeError: Error in Singular function call 'triangL':
+-             The input is no groebner basis.
+-             leaving triang.lib::triangL
++            RuntimeError: error in Singular function call 'triangL':
++            The input is no groebner basis.
++            leaving triang.lib::triangL
+ 
+             sage: G= Ideal(I.groebner_basis())
+             sage: triangL(G,attributes={G:{'isSB':1}})
+@@ -1510,8 +1513,8 @@ cdef inline call_function(SingularFunction self, tuple args, object R, bint sign
+ 
+     if errorreported:
+         errorreported = 0
+-        raise RuntimeError("Error in Singular function call '%s':\n %s"%
+-            (self._name, "\n ".join(error_messages)))
++        raise RuntimeError("error in Singular function call %r:\n%s"%
++            (self._name, "\n".join(error_messages)))
+ 
+     res = argument_list.to_python(_res)
+ 
+@@ -1552,7 +1555,7 @@ cdef class SingularLibraryFunction(SingularFunction):
+     cdef BaseCallHandler get_call_handler(self):
+         cdef idhdl* singular_idhdl = ggetid(self._name)
+         if singular_idhdl==NULL:
+-            raise NameError("Function '%s' is not defined."%self._name)
++            raise NameError("Singular library function {!r} is not defined".format(self._name))
+         if singular_idhdl.typ!=PROC_CMD:
+             raise ValueError("Not a procedure")
+ 
+@@ -1587,15 +1590,19 @@ cdef class SingularKernelFunction(SingularFunction):
+             sage: f = SingularKernelFunction("std")
+             sage: f(I)
+             [y - 1, x + 1]
++            sage: SingularKernelFunction("no_such_function")
++            Traceback (most recent call last):
++            ...
++            NameError: Singular kernel function 'no_such_function' is not defined
+         """
+         super(SingularKernelFunction,self).__init__(name)
+         self.call_handler = self.get_call_handler()
+ 
+     cdef BaseCallHandler get_call_handler(self):
+-        cdef int cmd_n = -1
++        cdef int cmd_n = 0
+         arity = IsCmd(self._name, cmd_n) # call by reverence for CMD_n
+-        if cmd_n == -1:
+-            raise NameError("Function '%s' is not defined."%self._name)
++        if not cmd_n:
++            raise NameError("Singular kernel function {!r} is not defined".format(self._name))
+ 
+         return KernelCallHandler(cmd_n, arity)
+ 
+@@ -1647,18 +1654,18 @@ def singular_function(name):
+         sage: factorize()
+         Traceback (most recent call last):
+         ...
+-        RuntimeError: Error in Singular function call 'factorize':
+-         Wrong number of arguments
++        RuntimeError: error in Singular function call 'factorize':
++        Wrong number of arguments (got 0 arguments, arity code is 303)
+         sage: factorize(f, 1, 2)
+         Traceback (most recent call last):
+         ...
+-        RuntimeError: Error in Singular function call 'factorize':
+-         Wrong number of arguments
++        RuntimeError: error in Singular function call 'factorize':
++        Wrong number of arguments (got 3 arguments, arity code is 303)
+         sage: factorize(f, 1, 2, 3)
+         Traceback (most recent call last):
+         ...
+-        RuntimeError: Error in Singular function call 'factorize':
+-         Wrong number of arguments
++        RuntimeError: error in Singular function call 'factorize':
++        Wrong number of arguments (got 4 arguments, arity code is 303)
+ 
+     The Singular function ``list`` can be called with any number of
+     arguments::
+@@ -1675,10 +1682,10 @@ def singular_function(name):
+ 
+     We try to define a non-existing function::
+ 
+-        sage: number_foobar = singular_function('number_foobar');
++        sage: number_foobar = singular_function('number_foobar')
+         Traceback (most recent call last):
+         ...
+-        NameError: Function 'number_foobar' is not defined.
++        NameError: Singular library function 'number_foobar' is not defined
+ 
+     ::
+ 
+@@ -1809,21 +1816,22 @@ def lib(name):
+         sage: primes(2,10, ring=GF(127)['x,y,z'])
+         (2, 3, 5, 7)
+     """
+-    global verbose
+-    cdef int vv = verbose
++    global si_opt_2
+ 
+-    if get_verbose() <= 0:
+-        verbose &= ~Sy_bit(V_LOAD_LIB)
++    cdef int vv = si_opt_2
+ 
+     if get_verbose() <= 0:
+-        verbose &= ~Sy_bit(V_REDEFINE)
++         si_opt_2 &= ~Sy_bit(V_LOAD_LIB)
++         si_opt_2 &= ~Sy_bit(V_REDEFINE)
+ 
+-    cdef bint failure = iiLibCmd(omStrDup(name), 1, 1, 1)
+-    verbose = vv
++    cdef char* cname = omStrDup(name)
++    sig_on()
++    cdef bint failure = iiLibCmd(cname, 1, 1, 1)
++    sig_off()
++    si_opt_2 = vv
+ 
+     if failure:
+-        raise NameError("Library '%s' not found."%(name,))
+-
++        raise NameError("Singular library {!r} not found".format(name))
+ 
+ 
+ def list_of_functions(packages=False):
+@@ -1832,11 +1840,12 @@ def list_of_functions(packages=False):
+ 
+     INPUT:
+ 
+-    - ``packages`` - include local functions in packages.
++    - ``packages`` -- include local functions in packages.
+ 
+     EXAMPLE::
+ 
+-        sage: 'groebner' in sage.libs.singular.function.list_of_functions()
++        sage: from sage.libs.singular.function import list_of_functions
++        sage: 'groebner' in list_of_functions()
+         True
+     """
+     cdef list l = []
+@@ -1856,7 +1865,6 @@ def list_of_functions(packages=False):
+     return l
+ 
+ 
+-#cdef ring*?
+ cdef inline RingWrap new_RingWrap(ring* r):
+     cdef RingWrap ring_wrap_result = RingWrap.__new__(RingWrap)
+     ring_wrap_result._ring = r
+diff --git a/src/sage/libs/singular/groebner_strategy.pyx b/src/sage/libs/singular/groebner_strategy.pyx
+index b4c2be9..a5843e3 100644
+--- a/src/sage/libs/singular/groebner_strategy.pyx
++++ b/src/sage/libs/singular/groebner_strategy.pyx
+@@ -23,7 +23,7 @@ cdef extern from *: # hack to get at cython macro
+ 
+ from sage.libs.singular.decl cimport ideal, ring, poly, currRing
+ from sage.libs.singular.decl cimport rChangeCurrRing
+-from sage.libs.singular.decl cimport new_skStrategy, delete_skStrategy, idRankFreeModule
++from sage.libs.singular.decl cimport new_skStrategy, delete_skStrategy, id_RankFreeModule
+ from sage.libs.singular.decl cimport initEcartBBA, enterSBba, initBuchMoraCrit, initS, pNorm, id_Delete, kTest
+ from sage.libs.singular.decl cimport omfree, redNF, p_Copy, redtailBba
+ 
+@@ -117,7 +117,7 @@ cdef class GroebnerStrategy(SageObject):
+         cdef ideal *i = sage_ideal_to_singular_ideal(L)
+         self._strat = new_skStrategy()
+ 
+-        self._strat.ak = idRankFreeModule(i, R._ring)
++        self._strat.ak = id_RankFreeModule(i, R._ring)
+         #- creating temp data structures
+         initBuchMoraCrit(self._strat)
+         self._strat.initEcart = initEcartBBA
+@@ -353,7 +353,7 @@ cdef class NCGroebnerStrategy(SageObject):
+         cdef ideal *i = sage_ideal_to_singular_ideal(L)
+         self._strat = new_skStrategy()
+ 
+-        self._strat.ak = idRankFreeModule(i, R._ring)
++        self._strat.ak = id_RankFreeModule(i, R._ring)
+         #- creating temp data structures
+         initBuchMoraCrit(self._strat)
+         self._strat.initEcart = initEcartBBA
+diff --git a/src/sage/libs/singular/polynomial.pyx b/src/sage/libs/singular/polynomial.pyx
+index b40dc07..e243fae 100644
+--- a/src/sage/libs/singular/polynomial.pyx
++++ b/src/sage/libs/singular/polynomial.pyx
+@@ -22,8 +22,8 @@ plusminus_pattern = re.compile("([^\(^])([\+\-])")
+ from sage.libs.singular.decl cimport number, ideal
+ from sage.libs.singular.decl cimport currRing, rChangeCurrRing
+ from sage.libs.singular.decl cimport p_Copy, p_Add_q, p_Neg, pp_Mult_nn, p_GetCoeff, p_IsConstant, p_Cmp, pNext
+-from sage.libs.singular.decl cimport p_GetMaxExp, pp_Mult_qq, pPower, p_String, p_GetExp, pLDeg
+-from sage.libs.singular.decl cimport n_Delete, idInit, fast_map, id_Delete
++from sage.libs.singular.decl cimport p_GetMaxExp, pp_Mult_qq, pPower, p_String, p_GetExp, p_Deg, p_Totaldegree, p_WTotaldegree, p_WDegree
++from sage.libs.singular.decl cimport n_Delete, idInit, fast_map_common_subexp, id_Delete
+ from sage.libs.singular.decl cimport omAlloc0, omStrDup, omFree
+ from sage.libs.singular.decl cimport p_GetComp, p_SetComp
+ from sage.libs.singular.decl cimport pSubst
+@@ -198,7 +198,7 @@ cdef int singular_polynomial_call(poly **ret, poly *p, ring *r, list args, poly
+     from_id.m[0] = p
+ 
+     rChangeCurrRing(r)
+-    cdef ideal *res_id = fast_map(from_id, r, to_id, r)
++    cdef ideal *res_id = fast_map_common_subexp(from_id, r, to_id, r)
+     ret[0] = res_id.m[0]
+ 
+     # Unsure why we have to normalize here. See #16958
+@@ -250,20 +250,19 @@ cdef int singular_polynomial_cmp(poly *p, poly *q, ring *r):
+             return 0
+         elif p_IsConstant(q,r):
+             # compare 0, const
+-            return 1-2*r.cf.nGreaterZero(p_GetCoeff(q,r)) # -1: <, 1: > #
++            return 1-2*r.cf.cfGreaterZero(p_GetCoeff(q,r), r.cf) # -1: <, 1: > #
+     elif q == NULL:
+         if p_IsConstant(p,r):
+             # compare const, 0
+-            return -1+2*r.cf.nGreaterZero(p_GetCoeff(p,r)) # -1: <, 1: >
+-    #else
++            return -1+2*r.cf.cfGreaterZero(p_GetCoeff(p,r), r.cf) # -1: <, 1: >
+ 
+     while ret==0 and p!=NULL and q!=NULL:
+         ret = p_Cmp( p, q, r)
+ 
+         if ret==0:
+-            h = r.cf.nSub(p_GetCoeff(p, r),p_GetCoeff(q, r))
++            h = r.cf.cfSub(p_GetCoeff(p, r),p_GetCoeff(q, r),r.cf)
+             # compare coeffs
+-            ret = -1+r.cf.nIsZero(h)+2*r.cf.nGreaterZero(h) # -1: <, 0:==, 1: >
++            ret = -1+r.cf.cfIsZero(h,r.cf)+2*r.cf.cfGreaterZero(h, r.cf) # -1: <, 0:==, 1: >
+             n_Delete(&h, r)
+         p = pNext(p)
+         q = pNext(q)
+@@ -332,7 +331,7 @@ cdef int singular_polynomial_div_coeff(poly** ret, poly *p, poly *q, ring *r) ex
+         raise ZeroDivisionError
+     sig_on()
+     cdef number *n = p_GetCoeff(q, r)
+-    n = r.cf.nInvers(n)
++    n = r.cf.cfInvers(n,r.cf)
+     ret[0] = pp_Mult_nn(p, n, r)
+     n_Delete(&n, r)
+     sig_off()
+@@ -524,14 +523,22 @@ cdef object singular_polynomial_str_with_changed_varnames(poly *p, ring *r, obje
+     return s
+ 
+ cdef long singular_polynomial_deg(poly *p, poly *x, ring *r):
+-    cdef int deg, _deg, i
+-
+-    deg = 0
++    cdef int  i
++    cdef long _deg, deg
++    
++    deg = -1
++    _deg = -1 
+     if p == NULL:
+         return -1
+     if(r != currRing): rChangeCurrRing(r)
+     if x == NULL:
+-        return pLDeg(p,&deg,r)
++        while p:  
++            _deg = p_WTotaldegree(p,r)
++          
++            if _deg > deg:
++                deg = _deg
++            p = pNext(p)
++        return deg
+ 
+     for i in range(1,r.N+1):
+         if p_GetExp(x, i, r):
+@@ -603,5 +610,3 @@ cdef int singular_polynomial_subst(poly **p, int var_index, poly *value, ring *r
+     p[0] = pSubst(p[0], var_index+1, value)
+     if unlikely(count >= 15 or exp > 15): sig_off()
+     return 0
+-
+-
+diff --git a/src/sage/libs/singular/ring.pyx b/src/sage/libs/singular/ring.pyx
+index 2feddbd..f7105af 100644
+--- a/src/sage/libs/singular/ring.pyx
++++ b/src/sage/libs/singular/ring.pyx
+@@ -18,11 +18,14 @@ from __future__ import print_function
+ from sage.libs.gmp.types cimport __mpz_struct
+ from sage.libs.gmp.mpz cimport mpz_init_set_ui, mpz_init_set
+ 
+-from sage.libs.singular.decl cimport number, lnumber, napoly, ring, currRing
+-from sage.libs.singular.decl cimport rChangeCurrRing, rCopy0, rComplete, rDelete
++from sage.libs.singular.decl cimport number, poly, ring, currRing
++from sage.libs.singular.decl cimport rChangeCurrRing, rCopy0, rComplete, rDelete, idInit
+ from sage.libs.singular.decl cimport omAlloc0, omStrDup, omAlloc, omAlloc0Bin,  sip_sring_bin, rnumber_bin
+ from sage.libs.singular.decl cimport ringorder_dp, ringorder_Dp, ringorder_lp, ringorder_rp, ringorder_ds, ringorder_Ds, ringorder_ls, ringorder_M, ringorder_C, ringorder_wp, ringorder_Wp, ringorder_ws, ringorder_Ws, ringorder_a
+-from sage.libs.singular.decl cimport p_Copy
++from sage.libs.singular.decl cimport p_Copy, prCopyR
++from sage.libs.singular.decl cimport n_unknown,  n_Zp,  n_Q,   n_R,   n_GF,  n_long_R,  n_algExt,n_transExt,n_long_C,   n_Z,   n_Zn,  n_Znm,  n_Z2m,  n_CF
++from sage.libs.singular.decl cimport n_coeffType, cfInitCharProc
++from sage.libs.singular.decl cimport rDefault, GFInfo, ZnmInfo, nInitChar, AlgExtInfo, nRegister, naInitChar
+ 
+ from sage.rings.integer cimport Integer
+ from sage.rings.integer_ring cimport IntegerRing_class
+@@ -109,30 +112,42 @@ cdef ring *singular_ring_new(base_ring, n, names, term_order) except NULL:
+         sage: P.<x,y,z> = Zmod(25213521351515232)[]; P
+         Multivariate Polynomial Ring in x, y, z over Ring of integers modulo 25213521351515232
+     """
++    cdef long cexponent
++    cdef GFInfo* _param
++    cdef ZnmInfo _info
+     cdef ring* _ring
+     cdef char **_names
++    cdef char **_ext_names
+     cdef char *_name
+     cdef int i,j
+     cdef int nblcks
+     cdef int offset
++    cdef int nvars
+     cdef int characteristic
+-    cdef int ringtype = 0
++    cdef int modbase
++
++    cdef n_coeffType ringtype = n_unknown
+     cdef MPolynomialRing_libsingular k
+     cdef MPolynomial_libsingular minpoly
+-    cdef lnumber *nmp
+-    cdef int * m
++    cdef AlgExtInfo extParam
++    cdef n_coeffType _type = n_unknown
+ 
+-    cdef __mpz_struct* ringflaga
+-    cdef unsigned long ringflagb
++    #cdef cfInitCharProc myfunctionptr;
+ 
+-    is_extension = False
++    _ring  = NULL
+ 
+     n = int(n)
+     if n<1:
+         raise ArithmeticError("The number of variables must be at least 1.")
+ 
++    nvars = n
+     order = TermOrder(term_order, n)
+ 
++    cdef nbaseblcks = len(order.blocks())
++    nblcks = nbaseblcks + order.singular_moreblocks()
++    offset = 0
++
++
+     _names = <char**>omAlloc0(sizeof(char*)*(len(names)))
+     for i from 0 <= i < n:
+         _name = names[i]
+@@ -149,20 +164,110 @@ cdef ring *singular_ring_new(base_ring, n, names, term_order) except NULL:
+     ##         p   -p : Fp(a)           *names         FALSE             (done)
+     ##         q    q : GF(q=p^n)       *names         TRUE              (todo)
+ 
+-    if base_ring.is_field() and base_ring.is_finite() and base_ring.is_prime_field():
++    _wvhdl  = <int **>omAlloc0((nblcks + 2) * sizeof(int *))
++    _order  = <int *>omAlloc0((nblcks + 2) * sizeof(int))
++    _block0 = <int *>omAlloc0((nblcks + 2) * sizeof(int))
++    _block1 = <int *>omAlloc0((nblcks + 2) * sizeof(int))
++
++
++
++    cdef int idx = 0
++    for i from 0 <= i < nbaseblcks:
++        s = order[i].singular_str()
++        if s[0] == 'M': # matrix order
++            _order[idx] = ringorder_M
++            mtx = order[i].matrix().list()
++            wv = <int *>omAlloc0(len(mtx)*sizeof(int))
++            for j in range(len(mtx)):
++                wv[j] = int(mtx[j])
++            _wvhdl[idx] = wv
++        elif s[0] == 'w' or s[0] == 'W': # weighted degree orders
++            _order[idx] = order_dict.get(s[:2], ringorder_dp)
++            wts = order[i].weights()
++            wv = <int *>omAlloc0(len(wts)*sizeof(int))
++            for j in range(len(wts)):
++                wv[j] = int(wts[j])
++            _wvhdl[idx] = wv
++        elif s[0] == '(' and order[i].name() == 'degneglex':  # "(a(1:n),ls(n))"
++            _order[idx] = ringorder_a
++            if len(order[i]) == 0:    # may be zero for arbitrary-length orders
++                nlen = n
++            else:
++                nlen = len(order[i])
++
++            _wvhdl[idx] = <int *>omAlloc0(len(order[i])*sizeof(int))
++            for j in range(nlen):  _wvhdl[idx][j] = 1
++            _block0[idx] = offset + 1     # same like subsequent rp block
++            _block1[idx] = offset + nlen
++
++            idx += 1;                   # we need one more block here
++            _order[idx] = ringorder_rp
++
++        else: # ordinary orders
++            _order[idx] = order_dict.get(s, ringorder_dp)
++
++        _block0[idx] = offset + 1
++        if len(order[i]) == 0: # may be zero in some cases
++            _block1[idx] = offset + n
++        else:
++            _block1[idx] = offset + len(order[i])
++        offset = _block1[idx]
++        idx += 1
++
++    # TODO: if we construct a free module don't hardcode! This
++    # position determines whether we break ties at monomials first or
++    # whether we break at indices first!
++    _order[nblcks] = ringorder_C
++
++
++    if isinstance(base_ring, RationalField):
++        characteristic = 0
++        _ring = rDefault( characteristic ,nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
++
++    elif isinstance(base_ring, NumberField) and base_ring.is_absolute():
++        characteristic = 1
++        try:
++            k = PolynomialRing(RationalField(), 1, [base_ring.variable_name()], 'lex')
++        except TypeError:
++            raise TypeError, "The multivariate polynomial ring in a single variable %s in lex order over Rational Field is supposed to be of type %s"%(base_ring.variable_name(), MPolynomialRing_libsingular)
++
++        minpoly = base_ring.polynomial()(k.gen())
++
++        _ext_names = <char**>omAlloc0(sizeof(char*))
++        extname = k.gen()
++        _name = k._names[0]
++        _ext_names[0] = omStrDup(_name)
++        _cfr = rDefault( 0, 1, _ext_names )
++
++        _cfr.qideal = idInit(1,1)
++        rComplete(_cfr, 1)
++        _cfr.qideal.m[0] = prCopyR(minpoly._poly, k._ring, _cfr)
++        extParam.r =  _cfr
++
++        # _type = nRegister(n_algExt, <cfInitCharProc> naInitChar);
++        _cf = nInitChar( n_algExt,  <void *>&extParam) #
++
++        if (_cf is NULL):
++            raise RuntimeError, "Failed to allocate _cf ring."
++
++        _ring = rDefault (_cf ,nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
++
++    elif isinstance(base_ring, IntegerRing_class):
++        _cf = nInitChar( n_Z, NULL) # integer coefficient ring
++        _ring = rDefault (_cf ,nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
++
++    elif (isinstance(base_ring, FiniteField_generic) and base_ring.is_prime_field()):
++        #or (is_IntegerModRing(base_ring) and base_ring.characteristic().is_prime()):
++
+         if base_ring.characteristic() <= 2147483647:
+             characteristic = base_ring.characteristic()
+         else:
+             raise TypeError("Characteristic p must be <= 2147483647.")
+ 
+-    elif isinstance(base_ring, RationalField):
+-        characteristic = 0
++        # example for simpler ring creation interface without monomial orderings:
++        #_ring = rDefault(characteristic, nvars, _names)
+ 
+-    elif isinstance(base_ring, IntegerRing_class):
+-        ringflaga = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
+-        mpz_init_set_ui(ringflaga, 0)
+-        characteristic = 0
+-        ringtype = 4 # integer ring
++        _ring = rDefault( characteristic , nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
+ 
+     elif isinstance(base_ring, FiniteField_generic):
+         if base_ring.characteristic() <= 2147483647:
+@@ -175,145 +280,90 @@ cdef ring *singular_ring_new(base_ring, n, names, term_order) except NULL:
+         except TypeError:
+             raise TypeError("The multivariate polynomial ring in a single variable %s in lex order over %s is supposed to be of type %s" % (base_ring.variable_name(), base_ring,MPolynomialRing_libsingular))
+         minpoly = base_ring.polynomial()(k.gen())
+-        is_extension = True
+ 
+-    elif isinstance(base_ring, NumberField) and base_ring.is_absolute():
+-        characteristic = 1
+-        try:
+-            k = PolynomialRing(RationalField(), 1, [base_ring.variable_name()], 'lex')
+-        except TypeError:
+-            raise TypeError("The multivariate polynomial ring in a single variable %s in lex order over Rational Field is supposed to be of type %s" % (base_ring.variable_name(), MPolynomialRing_libsingular))
+-        minpoly = base_ring.polynomial()(k.gen())
+-        is_extension = True
++        ch = base_ring.characteristic()
++        F = ch.factor()
++        assert(len(F)==1)
++
++        modbase = F[0][0]
++        cexponent = F[0][1]
++
++        _ext_names = <char**>omAlloc0(sizeof(char*))
++        _name = k._names[0]
++        _ext_names[0] = omStrDup(_name)
++        _cfr = rDefault( modbase, 1, _ext_names )
++
++        _cfr.qideal = idInit(1,1)
++        rComplete(_cfr, 1)
++        _cfr.qideal.m[0] = prCopyR(minpoly._poly, k._ring, _cfr)
++        extParam.r =  _cfr
++        _cf = nInitChar( n_algExt,  <void *>&extParam)
++
++        if (_cf is NULL):
++            raise RuntimeError, "Failed to allocate _cf ring."
++
++        _ring = rDefault (_cf ,nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
+ 
+     elif is_IntegerModRing(base_ring):
++
+         ch = base_ring.characteristic()
+-        if ch.is_power_of(2):
++        isprime = ch.is_prime()
++
++        if not isprime and ch.is_power_of(2):
+             exponent = ch.nbits() -1
+-            # it seems Singular uses ints somewhere
+-            # internally, cf. #6051 (Sage) and #138 (Singular)
+-            if exponent <= 30:
+-                ringtype = 1
+-            else:
+-                ringtype = 3
+-            characteristic = exponent
+-            ringflaga = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
+-            mpz_init_set_ui(ringflaga, 2)
+-            ringflagb = exponent
++            cexponent = exponent
++
++            if exponent <= 30:  ringtype = n_Z2m
++            else:               ringtype = n_Znm
++
++            if ringtype == n_Znm:
++
++              F = ch.factor()
++
++              modbase = F[0][0]
++              cexponent = F[0][1]
++
++              _info.base = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
++              mpz_init_set_ui(_info.base, modbase)
++              _info.exp = cexponent
++              _cf = nInitChar( n_Znm, <void *>&_info )
++
++            elif  ringtype == n_Z2m:
++                _cf = nInitChar( n_Z2m, <void *>cexponent )
++
+ 
+-        elif base_ring.characteristic().is_prime_power()  and ch < ZZ(2)**160:
++        elif not isprime and ch.is_prime_power() and ch < ZZ(2)**160:
+             F = ch.factor()
+             assert(len(F)==1)
+ 
+-            ringtype = 3
+-            ringflaga = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
+-            mpz_init_set(ringflaga, (<Integer>F[0][0]).value)
+-            ringflagb = F[0][1]
+-            characteristic = F[0][1]
++            modbase = F[0][0]
++            cexponent = F[0][1]
++
++            _info.base = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
++            mpz_init_set_ui(_info.base, modbase)
++            _info.exp = cexponent
++            _cf = nInitChar( n_Znm, <void *>&_info )
+ 
+         else:
+-            # normal modulus
+             try:
+                 characteristic = ch
+             except OverflowError:
+                 raise NotImplementedError("Characteristic %d too big." % ch)
+-            ringtype = 2
+-            ringflaga = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
+-            mpz_init_set_ui(ringflaga, characteristic)
+-            ringflagb = 1
+-    else:
+-        raise NotImplementedError("Base ring is not supported.")
+ 
+-    _ring = <ring*>omAlloc0Bin(sip_sring_bin)
+-    if (_ring is NULL):
+-        raise ValueError("Failed to allocate Singular ring.")
+-    _ring.ch = characteristic
+-    _ring.ringtype = ringtype
+-    _ring.N = n
+-    _ring.names  = _names
+-
+-    if is_extension:
+-        rChangeCurrRing(k._ring)
+-        _ring.algring = rCopy0(k._ring)
+-        rComplete(_ring.algring, 1)
+-        _ring.algring.pCompIndex = -1
+-        _ring.P = _ring.algring.N
+-        _ring.parameter = <char**>omAlloc0(sizeof(char*)*2)
+-        _ring.parameter[0] = omStrDup(_ring.algring.names[0])
+-
+-        nmp = <lnumber*>omAlloc0Bin(rnumber_bin)
+-        nmp.z= <napoly*>p_Copy(minpoly._poly, _ring.algring) # fragile?
+-        nmp.s=2
+-
+-        _ring.minpoly=<number*>nmp
+-
+-    cdef nbaseblcks = len(order.blocks())
+-    nblcks = nbaseblcks + order.singular_moreblocks()
+-    offset = 0
++            _info.base = <__mpz_struct*>omAlloc(sizeof(__mpz_struct))
++            mpz_init_set_ui(_info.base, characteristic)
++            _info.exp = 1
++            _cf = nInitChar( n_Zn, <void *>&_info )
++        _ring = rDefault( _cf ,nvars, _names, nblcks, _order, _block0, _block1, _wvhdl)
+ 
+-    _ring.wvhdl  = <int **>omAlloc0((nblcks + 2) * sizeof(int *))
+-    _ring.order  = <int *>omAlloc0((nblcks + 2) * sizeof(int))
+-    _ring.block0 = <int *>omAlloc0((nblcks + 2) * sizeof(int))
+-    _ring.block1 = <int *>omAlloc0((nblcks + 2) * sizeof(int))
+ 
+-    if order.is_local():
+-        _ring.OrdSgn = -1
+     else:
+-        _ring.OrdSgn = 1
+-
+-    cdef int idx = 0
+-    for i from 0 <= i < nbaseblcks:
+-        s = order[i].singular_str()
+-        if s[0] == 'M': # matrix order
+-            _ring.order[idx] = ringorder_M
+-            mtx = order[i].matrix().list()
+-            wv = <int *>omAlloc0(len(mtx)*sizeof(int))
+-            for j in range(len(mtx)):
+-                wv[j] = int(mtx[j])
+-            _ring.wvhdl[idx] = wv
+-        elif s[0] == 'w' or s[0] == 'W': # weighted degree orders
+-            _ring.order[idx] = order_dict.get(s[:2], ringorder_dp)
+-            wts = order[i].weights()
+-            wv = <int *>omAlloc0(len(wts)*sizeof(int))
+-            for j in range(len(wts)):
+-                wv[j] = int(wts[j])
+-            _ring.wvhdl[idx] = wv
+-        elif s[0] == '(' and order[i].name() == 'degneglex':  # "(a(1:n),ls(n))"
+-            _ring.order[idx] = ringorder_a
+-            if len(order[i]) == 0:    # may be zero for arbitrary-length orders
+-                nlen = n
+-            else:
+-                nlen = len(order[i])
+-
+-            _ring.wvhdl[idx] = <int *>omAlloc0(len(order[i])*sizeof(int))
+-            for j in range(nlen):  _ring.wvhdl[idx][j] = 1
+-            _ring.block0[idx] = offset + 1     # same like subsequent rp block
+-            _ring.block1[idx] = offset + nlen
+-
+-            idx += 1;                   # we need one more block here
+-            _ring.order[idx] = ringorder_rp
+-
+-        else: # ordinary orders
+-            _ring.order[idx] = order_dict.get(s, ringorder_dp)
++        raise NotImplementedError("Base ring is not supported.")
+ 
+-        _ring.block0[idx] = offset + 1
+-        if len(order[i]) == 0: # may be zero in some cases
+-            _ring.block1[idx] = offset + n
+-        else:
+-            _ring.block1[idx] = offset + len(order[i])
+-        offset = _ring.block1[idx]
+-        idx += 1
+ 
+-    # TODO: if we construct a free module don't hardcode! This
+-    # position determines whether we break ties at monomials first or
+-    # whether we break at indices first!
+-    _ring.order[nblcks] = ringorder_C
+-
+-    if ringtype != 0:
+-        _ring.ringflaga = ringflaga
+-        _ring.ringflagb = ringflagb
++    if (_ring is NULL):
++        raise ValueError("Failed to allocate Singular ring.")
+ 
+-    rComplete(_ring, 1)
+     _ring.ShortOut = 0
+ 
+     rChangeCurrRing(_ring)
+@@ -322,6 +372,16 @@ cdef ring *singular_ring_new(base_ring, n, names, term_order) except NULL:
+     if wrapped_ring in ring_refcount_dict:
+         raise ValueError('newly created ring already in dictionary??')
+     ring_refcount_dict[wrapped_ring] = 1
++
++    rComplete(_ring, 1)
++
++    _ring.ShortOut = 0
++ 
++    if order.is_local():
++        assert(_ring.OrdSgn == -1)
++    if order.is_global():
++         assert(_ring.OrdSgn == 1)
++
+     return _ring
+ 
+ 
+diff --git a/src/sage/libs/singular/singular.pxd b/src/sage/libs/singular/singular.pxd
+index b02b53a..e06566e 100644
+--- a/src/sage/libs/singular/singular.pxd
++++ b/src/sage/libs/singular/singular.pxd
+@@ -17,7 +17,7 @@ from sage.rings.number_field.number_field_base cimport NumberField
+ # Conversion from Singular to Sage types
+ # ======================================
+ 
+-cdef Rational si2sa_QQ(number (*),ring (*))
++cdef Rational si2sa_QQ(number (*), number **, ring (*))
+ cdef Integer  si2sa_ZZ(number (*),ring (*))
+ 
+ cdef FFgivE   si2sa_GFqGivaro(number *n, ring *_ring, Cache_givaro cache)
+@@ -53,9 +53,6 @@ cdef number *sa2si(Element elem, ring * _ring)
+ # Initialisation
+ # ==============
+ 
+-cdef int overflow_check(long e, ring *_ring) except -1
++cdef int overflow_check(unsigned long e, ring *_ring) except -1
+ 
+ cdef init_libsingular()
+-
+-
+-
+diff --git a/src/sage/libs/singular/singular.pyx b/src/sage/libs/singular/singular.pyx
+index 7245090..c83c5ea 100644
+--- a/src/sage/libs/singular/singular.pyx
++++ b/src/sage/libs/singular/singular.pyx
+@@ -5,12 +5,14 @@ AUTHOR:
+ 
+ - Martin Albrecht <malb@informatik.uni-bremen.de>
+ """
+-###############################################################################
++
++#*****************************************************************************
+ #       Copyright (C) 2005, 2006 William Stein <wstein@gmail.com>
+ #
+-#  Distributed under the terms of the GNU General Public License (GPL)
+-#  as published by the Free Software Foundation; either version 2 of
+-#  the License, or (at your option) any later version.
++# This program is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation, either version 2 of the License, or
++# (at your option) any later version.
+ #                  http://www.gnu.org/licenses/
+ ###############################################################################
+ from __future__ import print_function
+@@ -24,19 +26,7 @@ cdef extern from "limits.h":
+ import os
+ 
+ from libc.stdint cimport int64_t
+-from sage.libs.singular.decl cimport intvec
+-from sage.libs.singular.decl cimport SR_HDL, SR_INT, SR_TO_INT
+-from sage.libs.singular.decl cimport singular_options, singular_verbose_options
+-from sage.libs.singular.decl cimport On, Off, SW_USE_NTL, SW_USE_NTL_GCD_0, SW_USE_EZGCD, SW_USE_NTL_SORT, SW_USE_NTL_GCD_P
+-from sage.libs.singular.decl cimport napoly, lnumber, Sy_bit, OPT_REDSB, OPT_INTSTRATEGY, OPT_REDTAIL, OPT_REDTHROUGH
+-from sage.libs.singular.decl cimport nlGetNumerator, nlGetDenom, nlDelete, nlInit2gmp
+-from sage.libs.singular.decl cimport naIsOne, naIsOne, naIsZero, naPar, naInit, naAdd, naMult, naDelete, naMap00
+-from sage.libs.singular.decl cimport napGetCoeff, napGetExpFrom, pNext
+-from sage.libs.singular.decl cimport nrzInit, nr2mMapZp, nrnMapGMP
+-from sage.libs.singular.decl cimport siInit
+-from sage.libs.singular.decl cimport n_Init
+-from sage.libs.singular.decl cimport rChangeCurrRing, currRing
+-from sage.libs.singular.decl cimport WerrorS_callback, const_char_ptr
++from sage.libs.singular.decl cimport *
+ 
+ from sage.rings.rational_field import RationalField
+ from sage.rings.integer_ring cimport IntegerRing_class
+@@ -52,7 +42,7 @@ from sage.rings.polynomial.multi_polynomial_libsingular cimport MPolynomial_libs
+ 
+ _saved_options = (int(0),0,0)
+ 
+-cdef Rational si2sa_QQ(number *n, ring *_ring):
++cdef Rational si2sa_QQ(number *n, number **nn, ring *_ring):
+     """
+     TESTS::
+ 
+@@ -83,26 +73,27 @@ cdef Rational si2sa_QQ(number *n, ring *_ring):
+     ##  structures aligned on 4 byte boundaries and therefor have last bit zero.
+     ##  (The second bit is reserved as tag to allow extensions of this scheme.)
+     ##  Using immediates as pointers and dereferencing them gives address errors.
+-    nom = nlGetNumerator(n, _ring)
++    nom = nlGetNumerator(n, _ring.cf)
+     mpz_init(nom_z)
+ 
+     if (SR_HDL(nom) & SR_INT): mpz_set_si(nom_z, SR_TO_INT(nom))
+     else: mpz_set(nom_z,nom.z)
+ 
+     mpq_set_num(_z,nom_z)
+-    nlDelete(&nom,_ring)
++    nlDelete(&nom,_ring.cf)
+     mpz_clear(nom_z)
+ 
+-    denom = nlGetDenom(n, _ring)
++    denom = nlGetDenom(n, _ring.cf)
+     mpz_init(denom_z)
+ 
+     if (SR_HDL(denom) & SR_INT): mpz_set_si(denom_z, SR_TO_INT(denom))
+     else: mpz_set(denom_z,denom.z)
+ 
+     mpq_set_den(_z, denom_z)
+-    nlDelete(&denom,_ring)
++    nlDelete(&denom,_ring.cf)
+     mpz_clear(denom_z)
+ 
++    nn[0] = n
+     z = Rational()
+     z.set_from_mpq(_z)
+     mpq_clear(_z)
+@@ -140,31 +131,33 @@ cdef FFgivE si2sa_GFqGivaro(number *n, ring *_ring, Cache_givaro cache):
+         sage: K(R(0))
+         0
+     """
+-    cdef napoly *z
++    cdef poly *z
+     cdef int c, e
+     cdef int a
+     cdef int ret
+     cdef int order
++    cdef ring *cfRing = _ring.cf.extRing
+ 
+-    if naIsZero(n):
++    if _ring.cf.cfIsZero(n,_ring.cf):
+         return cache._zero_element
+-    elif naIsOne(n):
++    elif _ring.cf.cfIsOne(n,_ring.cf):
+         return cache._one_element
+-    z = (<lnumber*>n).z
++
++    z = <poly*>n
+ 
+     a = cache.objectptr.indeterminate()
+     ret = cache.objectptr.zero
+     order = cache.objectptr.cardinality() - 1
+ 
+     while z:
+-        c = cache.objectptr.initi(c, <int64_t>napGetCoeff(z))
+-        e = napGetExpFrom(z,1, _ring)
++        c = cache.objectptr.initi(c, <int64_t>p_GetCoeff(z, cfRing))
++        e = p_GetExp(z, 1, cfRing)
+         if e == 0:
+             ret = cache.objectptr.add(ret, c, ret)
+         else:
+             a = ( e * cache.objectptr.indeterminate() ) % order
+             ret = cache.objectptr.axpy(ret, c, a, ret)
+-        z = <napoly*>pNext(<poly*>z)
++        z = <poly*>pNext(<poly*>z)
+     return (<FFgivE>cache._zero_element)._new_c(ret)
+ 
+ cdef FFgf2eE si2sa_GFqNTLGF2E(number *n, ring *_ring, Cache_ntl_gf2e cache):
+@@ -179,26 +172,27 @@ cdef FFgf2eE si2sa_GFqNTLGF2E(number *n, ring *_ring, Cache_ntl_gf2e cache):
+         sage: type(f.lc())
+         <type 'sage.rings.finite_rings.element_ntl_gf2e.FiniteField_ntl_gf2eElement'>
+     """
+-    cdef napoly *z
++    cdef poly *z
+     cdef long c
+     cdef int e
+     cdef FFgf2eE a
+     cdef FFgf2eE ret
++    cdef ring *cfRing = _ring.cf.extRing
+ 
+-    if naIsZero(n):
++    if _ring.cf.cfIsZero(n,_ring.cf):
+         return cache._zero_element
+-    elif naIsOne(n):
++    elif _ring.cf.cfIsOne(n,_ring.cf):
+         return cache._one_element
+-    z = (<lnumber*>n).z
+ 
++    z = <poly*>n
+     a = cache._gen
+     ret = cache._zero_element
+ 
+     while z:
+-        c = <long>napGetCoeff(z)
+-        e = napGetExpFrom(z,1, _ring)
++        c = <long>p_GetCoeff(z, cfRing)
++        e = p_GetExp(z, 1, cfRing)
+         ret += c * a**e
+-        z = <napoly*>pNext(<poly*>z)
++        z = <poly*>pNext(<poly*>z)
+     return ret
+ 
+ cdef object si2sa_GFq_generic(number *n, ring *_ring, object base):
+@@ -222,29 +216,31 @@ cdef object si2sa_GFq_generic(number *n, ring *_ring, object base):
+         2147483646
+ 
+     """
+-    cdef napoly *z
++    cdef poly *z
+     cdef long c
+     cdef int e
+     cdef object a
+     cdef object ret
++    cdef ring *cfRing = _ring.cf.extRing
+ 
+-    if naIsZero(n):
++    if _ring.cf.cfIsZero(n,_ring.cf):
+         return base.zero()
+-    elif naIsOne(n):
++    elif _ring.cf.cfIsOne(n,_ring.cf):
+         return base.one()
+-    z = (<lnumber*>n).z
++
++    z = <poly*>n
+ 
+     a = base.gen()
+     ret = base.zero()
+ 
+     while z:
+-        c = <long>napGetCoeff(z)
+-        e = napGetExpFrom(z,1, _ring)
++        c = <long>p_GetCoeff(z, cfRing)
++        e = p_GetExp(z, 1, cfRing)
+         if e == 0:
+             ret = ret + c
+         elif c != 0:
+             ret = ret  + c * a**e
+-        z = <napoly*>pNext(<poly*>z)
++        z = <poly*>pNext(<poly*>z)
+     return ret
+ 
+ cdef object si2sa_NF(number *n, ring *_ring, object base):
+@@ -259,30 +255,40 @@ cdef object si2sa_NF(number *n, ring *_ring, object base):
+         sage: type(f.lc())
+         <type 'sage.rings.number_field.number_field_element_quadratic.NumberFieldElement_quadratic'>
+     """
+-    cdef napoly *z
++    cdef poly *z
+     cdef number *c
+     cdef int e
+     cdef object a
+     cdef object ret
++    cdef ring *cfRing = _ring.cf.extRing
+ 
+-    if naIsZero(n):
++    if _ring.cf.cfIsZero(n,_ring.cf):
+         return base._zero_element
+-    elif naIsOne(n):
++    elif _ring.cf.cfIsOne(n,_ring.cf):
+         return base._one_element
+-    z = (<lnumber*>n).z
++
++    z = <poly*>n
+ 
+     a = base.gen()
+     ret = base(0)
+ 
+     while z:
+-        c = napGetCoeff(z)
+-        coeff = si2sa_QQ(c, _ring)
+-        e = napGetExpFrom(z,1, _ring)
++        # p_GetCoeff returns a reference
++        c = p_GetCoeff(z, cfRing)
++        # si2sa_QQ might modify c
++        coeff = si2sa_QQ(c, &c, cfRing)
++        # so we force it back.
++        z.coef = c
++        #pSetCoeff0(z,c)
++        #p_SetCoeff(z, c, cfRing)
++        # rather than trying to let Cython and C++ automagically modify it
++        #coeff = si2sa_QQ(p_GetCoeff(z, cfRing), cfRing)
++        e = p_GetExp(z, 1, cfRing)
+         if e == 0:
+             ret = ret + coeff
+         elif coeff != 0:
+             ret = ret + coeff * a**e
+-        z = <napoly*>pNext(<poly*>z)
++        z = <poly*>pNext(<poly*>z)
+     return base(ret)
+ 
+ cdef inline object si2sa_ZZmod(number *n, ring *_ring, object base):
+@@ -322,13 +328,15 @@ cdef inline object si2sa_ZZmod(number *n, ring *_ring, object base):
+         3
+     """
+     cdef Integer ret
+-    if _ring.ringtype == 1:
++    if _ring.cf.type == n_Z2m:
+         return base(<long>n)
+-    else:
++    elif _ring.cf.type == n_Znm or _ring.cf.type == n_Zn:
+         ret = Integer()
+         ret.set_from_mpz(<mpz_ptr>n)
+         return base(ret)
+ 
++    return base(_ring.cf.cfInt(n,_ring.cf))
++
+ cdef number *sa2si_QQ(Rational r, ring *_ring):
+     """
+     TESTS::
+@@ -344,44 +352,39 @@ cdef number *sa2si_QQ(Rational r, ring *_ring):
+         12345678901234567890/23
+     """
+     if _ring != currRing: rChangeCurrRing(_ring)
+-    return nlInit2gmp( mpq_numref(r.value), mpq_denref(r.value) )
++    return nlInit2gmp( mpq_numref(r.value), mpq_denref(r.value),_ring.cf )
+ 
+ cdef number *sa2si_GFqGivaro(int quo, ring *_ring):
+     """
+     """
+     if _ring != currRing: rChangeCurrRing(_ring)
+-    cdef number *n1
+-    cdef number *n2
+-    cdef number *a
+-    cdef number *coeff
+-    cdef number *apow1
+-    cdef number *apow2
+-    cdef int b = - _ring.ch
++    cdef number *n1, *n2, *a, *coeff, *apow1, *apow2
++    cdef int b = _ring.cf.ch
+ 
+-    a = naPar(1)
++    a = _ring.cf.cfParameter(1, _ring.cf)
+ 
+-    apow1 = naInit(1, _ring)
+-    n1 = naInit(0, _ring)
++    apow1 = _ring.cf.cfInit(1, _ring.cf)
++    n1 = _ring.cf.cfInit(0, _ring.cf)
+ 
+     while quo!=0:
+-        coeff = naInit(quo%b, _ring)
++        coeff = _ring.cf.cfInit(quo%b, _ring.cf)
+ 
+-        if not naIsZero(coeff):
+-            apow2 = naMult(coeff, apow1)
+-            n2 = naAdd(apow2, n1)
+-            naDelete(&apow2, _ring)
+-            naDelete(&n1, _ring)
++        if not _ring.cf.cfIsZero(coeff, _ring.cf):
++            apow2 = _ring.cf.cfMult(coeff, apow1, _ring.cf)
++            n2 = _ring.cf.cfAdd(apow2, n1, _ring.cf)
++            _ring.cf.cfDelete(&apow2, _ring.cf)
++            _ring.cf.cfDelete(&n1, _ring.cf)
+             n1 = n2
+ 
+-        apow2 = naMult(apow1, a)
+-        naDelete(&apow1, _ring)
++        apow2 = _ring.cf.cfMult(apow1, a, _ring.cf)
++        _ring.cf.cfDelete(&apow1, _ring.cf)
+         apow1 = apow2
+ 
+         quo = quo/b
+-        naDelete(&coeff, _ring)
++        _ring.cf.cfDelete(&coeff, _ring.cf)
+ 
+-    naDelete(&apow1, _ring)
+-    naDelete(&a, _ring)
++    _ring.cf.cfDelete(&apow1, _ring.cf)
++    _ring.cf.cfDelete(&a, _ring.cf)
+     return n1
+ 
+ cdef number *sa2si_GFqNTLGF2E(FFgf2eE elem, ring *_ring):
+@@ -398,30 +401,30 @@ cdef number *sa2si_GFqNTLGF2E(FFgf2eE elem, ring *_ring):
+     cdef GF2X_c rep = GF2E_rep(elem.x)
+ 
+     if GF2X_deg(rep) >= 1:
+-        n1 = naInit(0, _ring)
+-        a = naPar(1)
+-        apow1 = naInit(1, _ring)
++        n1 = _ring.cf.cfInit(0, _ring.cf)
++        a = _ring.cf.cfParameter(1,_ring.cf)
++        apow1 = _ring.cf.cfInit(1, _ring.cf)
+ 
+         for i from 0 <= i <= GF2X_deg(rep):
+-            coeff = naInit(GF2_conv_to_long(GF2X_coeff(rep,i)), _ring)
++            coeff = _ring.cf.cfInit(GF2_conv_to_long(GF2X_coeff(rep,i)), _ring.cf)
+ 
+-            if not naIsZero(coeff):
+-                apow2 = naMult(coeff, apow1)
+-                n2 = naAdd(apow2, n1)
+-                naDelete(&apow2, _ring)
+-                naDelete(&n1, _ring);
++            if not _ring.cf.cfIsZero(coeff,_ring.cf):
++                apow2 = _ring.cf.cfMult(coeff, apow1,_ring.cf)
++                n2 = _ring.cf.cfAdd(apow2, n1,_ring.cf)
++                _ring.cf.cfDelete(&apow2, _ring.cf)
++                _ring.cf.cfDelete(&n1, _ring.cf);
+                 n1 = n2
+ 
+-            apow2 = naMult(apow1, a)
+-            naDelete(&apow1, _ring)
++            apow2 = _ring.cf.cfMult(apow1, a,_ring.cf)
++            _ring.cf.cfDelete(&apow1, _ring.cf)
+             apow1 = apow2
+ 
+-            naDelete(&coeff, _ring)
++            _ring.cf.cfDelete(&coeff, _ring.cf)
+ 
+-        naDelete(&apow1, _ring)
+-        naDelete(&a, _ring)
++        _ring.cf.cfDelete(&apow1, _ring.cf)
++        _ring.cf.cfDelete(&a, _ring.cf)
+     else:
+-        n1 = naInit(GF2_conv_to_long(GF2X_coeff(rep,0)), _ring)
++        n1 = _ring.cf.cfInit(GF2_conv_to_long(GF2X_coeff(rep,0)), _ring.cf)
+ 
+     return n1
+ 
+@@ -439,30 +442,30 @@ cdef number *sa2si_GFq_generic(object elem, ring *_ring):
+ 
+     if _ring != currRing: rChangeCurrRing(_ring)
+     if elem.degree() > 0:
+-        n1 = naInit(0, _ring)
+-        a = naPar(1)
+-        apow1 = naInit(1, _ring)
++        n1 = _ring.cf.cfInit(0, _ring.cf)
++        a = _ring.cf.cfParameter(1,_ring.cf)
++        apow1 = _ring.cf.cfInit(1, _ring.cf)
+ 
+         for i from 0 <= i <= elem.degree():
+-            coeff = naInit(int(elem[i]), _ring)
++            coeff = _ring.cf.cfInit(int(elem[i]), _ring.cf)
+ 
+-            if not naIsZero(coeff):
+-                apow2 = naMult(coeff, apow1)
+-                n2 = naAdd(apow2, n1)
+-                naDelete(&apow2, _ring)
+-                naDelete(&n1, _ring);
++            if not _ring.cf.cfIsZero(coeff,_ring.cf):
++                apow2 = _ring.cf.cfMult(coeff, apow1,_ring.cf)
++                n2 = _ring.cf.cfAdd(apow2, n1,_ring.cf)
++                _ring.cf.cfDelete(&apow2, _ring.cf)
++                _ring.cf.cfDelete(&n1, _ring.cf);
+                 n1 = n2
+ 
+-            apow2 = naMult(apow1, a)
+-            naDelete(&apow1, _ring)
++            apow2 = _ring.cf.cfMult(apow1, a,_ring.cf)
++            _ring.cf.cfDelete(&apow1, _ring.cf)
+             apow1 = apow2
+ 
+-            naDelete(&coeff, _ring)
++            _ring.cf.cfDelete(&coeff, _ring.cf)
+ 
+-        naDelete(&apow1, _ring)
+-        naDelete(&a, _ring)
++        _ring.cf.cfDelete(&apow1, _ring.cf)
++        _ring.cf.cfDelete(&a, _ring.cf)
+     else:
+-        n1 = naInit(int(elem), _ring)
++        n1 = _ring.cf.cfInit(int(elem), _ring.cf)
+ 
+     return n1
+ 
+@@ -477,32 +480,58 @@ cdef number *sa2si_NF(object elem, ring *_ring):
+     cdef number *naCoeff
+     cdef number *apow1
+     cdef number *apow2
++
++    cdef nMapFunc nMapFuncPtr = NULL;
++
++    nMapFuncPtr =  naSetMap(_ring.cf, currRing.cf) # choose correct mapping function
++
++    if (nMapFuncPtr is NULL):
++        raise RuntimeError, "Failed to determine nMapFuncPtr"
++
+     elem = list(elem)
+ 
+     if _ring != currRing: rChangeCurrRing(_ring)
+-    n1 = naInit(0, _ring)
+-    a = naPar(1)
+-    apow1 = naInit(1, _ring)
+-
++    n1 = _ring.cf.cfInit(0, _ring.cf)
++    a = _ring.cf.cfParameter(1,_ring.cf)
++    apow1 = _ring.cf.cfInit(1, _ring.cf)
++
++    cdef char *_name
++
++    # the result of nlInit2gmp() is in a plain polynomial ring over QQ (not an extension ring!),
++    # so we hace to get/create one :
++    #
++    # todo: reuse qqr/ get an existing Singular polynomial ring over Q.
++    varname = "a"
++    _name = omStrDup(varname)
++    cdef char **_ext_names
++    _ext_names = <char**>omAlloc0(sizeof(char*))
++    _ext_names[0] = omStrDup(_name)
++    qqr = rDefault( 0, 1, _ext_names);
++    rComplete(qqr,1)
++    qqr.ShortOut = 0
++    
++
++    nMapFuncPtr =  naSetMap( qqr.cf , _ring.cf ) # choose correct mapping function
++    cdef poly *_p
+     for i from 0 <= i < len(elem):
+-        nlCoeff = nlInit2gmp( mpq_numref((<Rational>elem[i]).value), mpq_denref((<Rational>elem[i]).value) )
+-        naCoeff = naMap00(nlCoeff)
+-        nlDelete(&nlCoeff, _ring)
++        nlCoeff = nlInit2gmp( mpq_numref((<Rational>elem[i]).value), mpq_denref((<Rational>elem[i]).value),  qqr.cf )
++        naCoeff = nMapFuncPtr(nlCoeff, qqr.cf , _ring.cf )
++        nlDelete(&nlCoeff, _ring.cf)
+ 
+         # faster would be to assign the coefficient directly
+-        apow2 = naMult(naCoeff, apow1)
+-        n2 = naAdd(apow2, n1)
+-        naDelete(&apow2, _ring)
+-        naDelete(&n1, _ring);
+-        naDelete(&naCoeff, _ring)
++        apow2 = _ring.cf.cfMult(naCoeff, apow1,_ring.cf)
++        n2 = _ring.cf.cfAdd(apow2, n1,_ring.cf)
++        _ring.cf.cfDelete(&apow2, _ring.cf)
++        _ring.cf.cfDelete(&n1, _ring.cf);
++        _ring.cf.cfDelete(&naCoeff, _ring.cf)
+         n1 = n2
+ 
+-        apow2 = naMult(apow1, a)
+-        naDelete(&apow1, _ring)
++        apow2 = _ring.cf.cfMult(apow1, a,_ring.cf)
++        _ring.cf.cfDelete(&apow1, _ring.cf)
+         apow1 = apow2
+ 
+-    naDelete(&apow1, _ring)
+-    naDelete(&a, _ring)
++    _ring.cf.cfDelete(&apow1, _ring.cf)
++    _ring.cf.cfDelete(&a, _ring.cf)
+ 
+     return n1
+ 
+@@ -521,7 +550,7 @@ cdef number *sa2si_ZZ(Integer d, ring *_ring):
+         12345678901234567890
+     """
+     if _ring != currRing: rChangeCurrRing(_ring)
+-    cdef number *n = nrzInit(0, _ring)
++    cdef number *n = nrzInit(0, _ring.cf)
+     mpz_set(<mpz_ptr>n, d.value)
+     return <number*>n
+ 
+@@ -563,20 +592,49 @@ cdef inline number *sa2si_ZZmod(IntegerMod_abstract d, ring *_ring):
+     """
+     nr2mModul = d.parent().characteristic()
+     if _ring != currRing: rChangeCurrRing(_ring)
+-    cdef int _d
+-    if _ring.ringtype == 1:
++
++    cdef number *nn
++
++    cdef int64_t _d
++    cdef char *_name
++    cdef char **_ext_names
++    varname = "a"
++
++    cdef nMapFunc nMapFuncPtr = NULL;
++
++    if _ring.cf.type == n_Z2m:
+         _d = long(d)
+-        return nr2mMapZp(<number *>_d)
+-    else:
++        return nr2mMapZp(<number *>_d, currRing.cf, _ring.cf)
++    elif _ring.cf.type == n_Zn or _ring.cf.type == n_Znm:
+         lift = d.lift()
+-        return nrnMapGMP(<number *>((<Integer>lift).value))
++
++        # if I understand nrnMapGMP/nMapFuncPtr correctly we need first
++        # a source value in ZZr
++        # create ZZr, a plain polynomial ring over ZZ with one variable.
++        #
++        # todo (later): reuse ZZr
++        _name = omStrDup(varname)
++        _ext_names = <char**>omAlloc0(sizeof(char*))
++        _ext_names[0] = omStrDup(_name)
++        _cf = nInitChar( n_Z, NULL) # integer coefficient ring
++        ZZr = rDefault (_cf ,1, _ext_names)
++        rComplete(ZZr,1)
++        ZZr.ShortOut = 0
++
++        nn = nrzInit(0, ZZr.cf)
++        mpz_set(<mpz_ptr>nn, (<Integer>lift).value)
++        nMapFuncPtr  = nrnSetMap( ZZr.cf, _ring.cf)
++
++        return nMapFuncPtr(nn, ZZr.cf, _ring.cf)
++    else:
++        raise ValueError
+ 
+ cdef object si2sa(number *n, ring *_ring, object base):
+     if isinstance(base, FiniteField_prime_modn):
+-        return base(_ring.cf.n_Int(n, _ring))
++        return base(_ring.cf.cfInt(n, _ring.cf))
+ 
+     elif isinstance(base, RationalField):
+-        return si2sa_QQ(n,_ring)
++        return si2sa_QQ(n,&n,_ring)
+ 
+     elif isinstance(base, IntegerRing_class):
+         return si2sa_ZZ(n,_ring)
+@@ -594,8 +652,8 @@ cdef object si2sa(number *n, ring *_ring, object base):
+         return si2sa_NF(n, _ring, base)
+ 
+     elif isinstance(base, IntegerModRing_generic):
+-        if _ring.ringtype == 0:
+-            return base(_ring.cf.n_Int(n, _ring))
++        if _ring.cf.type == n_unknown:
++            return base(_ring.cf.cfInt(n, _ring.cf))
+         return si2sa_ZZmod(n, _ring, base)
+ 
+     else:
+@@ -624,7 +682,7 @@ cdef number *sa2si(Element elem, ring * _ring):
+     elif isinstance(elem._parent, NumberField) and elem._parent.is_absolute():
+         return sa2si_NF(elem, _ring)
+     elif isinstance(elem._parent, IntegerModRing_generic):
+-        if _ring.ringtype == 0:
++        if _ring.cf.type == n_unknown:
+             return n_Init(int(elem),_ring)
+         return sa2si_ZZmod(elem, _ring)
+     else:
+@@ -654,45 +712,36 @@ cdef extern from "dlfcn.h":
+     cdef long RTLD_LAZY
+     cdef long RTLD_GLOBAL
+ 
+-cdef int overflow_check(long e, ring *_ring) except -1:
++cdef int overflow_check(unsigned long e, ring *_ring) except -1:
+     """
+-    Raises an ``OverflowError`` if e is > max degree per variable,
+-    or if it is not acceptable for Singular as exponent of the
+-    given ring.
++    Raise an ``OverflowError`` if e is > max degree per variable.
+ 
+     INPUT:
+ 
+-    - ``e`` - some integer representing a degree.
+-    - ``_ring`` - a pointer to some ring.
++    - ``e`` -- some integer representing a degree.
+ 
+-    TESTS:
++    - ``_ring`` -- a pointer to some ring.
+ 
+-    Whether an overflow occurs or not, partially depends
+-    on the number of variables in the ring. See :trac:`11856`::
++    Whether an overflow occurs or not partially depends
++    on the number of variables in the ring. See trac ticket
++    :trac:`11856`. With Singular 4, it is by default optimized
++    for at least 4 variables on 64-bit and 2 variables on 32-bit,
++    which in both cases makes a maximal default exponent of
++    2^16-1.
+ 
+-        sage: P.<x,y,z> = QQ[]
+-        sage: y^2^30
+-        Traceback (most recent call last):
+-        ...
+-        OverflowError: Exponent overflow (1073741824).
+-        sage: P.<x,y> = QQ[]
+-        sage: y^2^30
+-        y^1073741824                                   # 64-bit
+-        Traceback (most recent call last):             # 32-bit
+-        ...                                            # 32-bit
+-        OverflowError: Exponent overflow (1073741824). # 32-bit
++    EXAMPLES::
+ 
+-        sage: x^2^30*x^2^30
++        sage: P.<x,y> = QQ[]
++        sage: y^(2^16-1)
++        y^65535
++        sage: y^2^16
+         Traceback (most recent call last):
+         ...
+-        OverflowError: Exponent overflow (2147483648). # 64-bit
+-        OverflowError: Exponent overflow (1073741824). # 32-bit
+-
++        OverflowError: exponent overflow (65536)
+     """
+-    # 2^31 (pPower takes ints)
+-    if unlikely(e >= _ring.bitmask or e >= 2**31):
+-        raise OverflowError("Exponent overflow (%d)."%(e))
+-    return 0
++    if unlikely(e > _ring.bitmask):
++        raise OverflowError("exponent overflow (%d)"%(e))
++
+ 
+ cdef init_libsingular():
+     """
+@@ -712,18 +761,25 @@ cdef init_libsingular():
+ 
+     cdef void *handle = NULL
+ 
+-    for extension in ["so", "dylib", "dll"]:
+-        lib = os.environ['SAGE_LOCAL']+"/lib/libsingular."+extension
+-        if os.path.exists(lib):
+-            handle = dlopen(lib, RTLD_GLOBAL|RTLD_LAZY)
+-            if not handle:
+-                err = dlerror()
+-                if err:
+-                    print(err)
+-            break
++    import os
++    UNAME = os.uname()[0]
++    if UNAME[:6] == "CYGWIN":
++        extension = "dll"
++    elif UNAME == "Darwin":
++        extension = "dylib"
++    else:
++        extension = "so"
++
++    # library name changed from libsingular to libSingular btw 3.x and 4.x
++    lib = os.environ['SAGE_LOCAL']+"/lib/libSingular."+extension
++
++    if not os.path.exists(lib):
++        raise ImportError("cannot locate Singular library ({})".format(lib))
+ 
+-    if handle == NULL:
+-        raise ImportError("cannot load libSINGULAR library")
++    handle = dlopen(lib, RTLD_GLOBAL|RTLD_LAZY)   
++    if not handle:
++        err = dlerror()
++        raise ImportError("cannot load Singular library ({})".format(err))
+ 
+     # load SINGULAR
+     siInit(lib)
+@@ -737,9 +793,7 @@ cdef init_libsingular():
+     _saved_options = (int(singular_options), 0, 0)
+     _saved_verbose_options = int(singular_verbose_options)
+ 
+-    On(SW_USE_NTL)
+-    On(SW_USE_NTL_GCD_0)
+-    On(SW_USE_NTL_GCD_P)
++    #On(SW_USE_NTL)
+     On(SW_USE_EZGCD)
+     Off(SW_USE_NTL_SORT)
+ 
+diff --git a/src/sage/misc/cython.py b/src/sage/misc/cython.py
+index 2348c4b..8abb91c 100644
+--- a/src/sage/misc/cython.py
++++ b/src/sage/misc/cython.py
+@@ -310,7 +310,7 @@ def cython(filename, verbose=False, compile_message=False,
+         sage: code = [
+         ... "#clang C++",
+         ... "#cinclude %s/include/singular %s/include/factory"%(SAGE_LOCAL, SAGE_LOCAL),
+-        ... "#clib m readline singular givaro ntl gmpxx gmp",
++        ... "#clib m readline Singular givaro ntl gmpxx gmp",
+         ... "from sage.rings.polynomial.multi_polynomial_libsingular cimport MPolynomial_libsingular",
+         ... "from sage.libs.singular.polynomial cimport singular_polynomial_pow",
+         ... "def test(MPolynomial_libsingular p):",
+diff --git a/src/sage/rings/multi_power_series_ring_element.py b/src/sage/rings/multi_power_series_ring_element.py
+index 6388859..142f38b 100644
+--- a/src/sage/rings/multi_power_series_ring_element.py
++++ b/src/sage/rings/multi_power_series_ring_element.py
+@@ -1690,9 +1690,9 @@ class MPowerSeries(PowerSeries):
+             sage: aa.is_gen()
+             False
+             sage: aa.integral(aa)
+-            -2*a^2
++            3*a^2
+             sage: aa.integral(a)
+-            -2*a^2
++            3*a^2
+         """
+         P = self.parent()
+         R = P.base_ring()
+diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
+index 816c448..53df08a 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
++++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
+@@ -90,8 +90,8 @@ Or we can work with `\ZZ/17\ZZ` directly::
+ 
+     sage: a^2 + b^2 == 0
+     True
+-    sage: a^3 - b^2
+-    -a*b^2 - b^2
++    sage: a^3 - b^2 == -a*b^2 - b^2 == 16*a*b^2 + 16*b^2
++    True
+     sage: (a+b)^17
+     a*b^16 + b^17
+     sage: S(17) == 0
+@@ -187,10 +187,10 @@ when the system has no solutions over the rationals.
+         sage: I.change_ring(P.change_ring( GF(11777 ))).groebner_basis()
+         [x + 5633, y - 3007, z - 2626]
+ 
+-    The Groebner basis modulo any product of the prime factors is also non-trivial. ::
++    The Groebner basis modulo any product of the prime factors is also non-trivial::
+ 
+         sage: I.change_ring(P.change_ring( IntegerModRing(2*7) )).groebner_basis()
+-        [x + y + z, y^2 + 3*y, y*z + 11*y + 4, 2*y + 6, z^2 + 3, 2*z + 10]
++        [x + 3*y + 11*z, y^2 + 3*y, y*z + 11*y + 4, 2*y + 6, z^2 + 3, 2*z + 10]
+ 
+     Modulo any other prime the Groebner basis is trivial so there are
+     no other solutions. For example::
+@@ -712,10 +712,10 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.complete_primary_decomposition(); pd
+-            [(Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-              Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field),
+-             (Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-              Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
++            [(Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++              Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field),
++             (Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++              Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field)]
+ 
+             sage: I.primary_decomposition_complete(algorithm = 'gtz')
+             [(Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+@@ -832,8 +832,8 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.primary_decomposition(); pd
+-            [Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field]
++            [Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^6 + 4*z^3 + 4, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field]
+ 
+         ::
+ 
+@@ -904,8 +904,8 @@ class MPolynomialIdeal_singular_repr(
+             sage: p = z^2 + 1; q = z^3 + 2
+             sage: I = (p*q^2, y-z^2)*R
+             sage: pd = I.associated_primes(); pd
+-            [Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field,
+-             Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field]
++            [Ideal (z^2 + 1, y + 1) of Multivariate Polynomial Ring in x, y, z over Rational Field,
++             Ideal (z^3 + 2, y - z^2) of Multivariate Polynomial Ring in x, y, z over Rational Field]
+ 
+         ALGORITHM:
+ 
+@@ -3623,9 +3623,12 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+             sage: P.<a,b,c> = PolynomialRing(ZZ,3)
+             sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
+             sage: I.groebner_basis()
+-            [b^3 - 23*b*c^2 + 3*b^2 + 5*b*c, 2*b*c^2 - 6*c^3 - b^2 - b*c + 2*c^2,
+-             42*c^3 + 5*b^2 + 4*b*c - 14*c^2, 2*b^2 + 6*b*c + 6*c^2 - b - 2*c,
+-             10*b*c + 12*c^2 - b - 4*c, a + 2*b + 2*c - 1]
++            [b^3 - 181*b*c^2 + 222*c^3 - 26*b*c - 146*c^2 + 19*b + 24*c,
++             2*b*c^2 - 48*c^3 + 3*b*c + 22*c^2 - 2*b - 2*c,
++             42*c^3 + 45*b^2 + 54*b*c + 22*c^2 - 13*b - 12*c,
++             2*b^2 + 6*b*c + 6*c^2 - b - 2*c,
++             10*b*c + 12*c^2 - b - 4*c,
++             a + 2*b + 2*c - 1]
+ 
+         ::
+ 
+@@ -3642,7 +3645,7 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+             sage: I = P * (a + 2*b + 2*c - 1, a^2 - a + 2*b^2 + 2*c^2, 2*a*b + 2*b*c - b)
+             sage: I.groebner_basis()
+             [b*c^2 + 992*b*c + 712*c^2 + 332*b + 96*c,
+-             2*c^3 + 589*b*c + 862*c^2 + 762*b + 268*c,
++             2*c^3 + 214*b*c + 862*c^2 + 762*b + 268*c,
+              b^2 + 438*b*c + 281*b,
+              5*b*c + 156*c^2 + 112*b + 948*c,
+              50*c^2 + 600*b + 650*c, a + 2*b + 2*c + 999, 125*b]
+@@ -3652,7 +3655,6 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+             sage: R.<x,y,z> = PolynomialRing(Zmod(2233497349584))
+             sage: I = R.ideal([z*(x-3*y), 3^2*x^2-y*z, z^2+y^2])
+             sage: I.groebner_basis()
+-            verbose 0 (...: multi_polynomial_ideal.py, groebner_basis) Warning: falling back to very slow toy implementation.
+             [2*z^4, y*z^2 + 81*z^3, 248166372176*z^3, 9*x^2 - y*z, y^2 + z^2, x*z +
+             2233497349581*y*z, 248166372176*y*z]
+ 
+diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
+index b66653c..902283d 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_ideal_libsingular.pyx
+@@ -52,11 +52,12 @@ Two examples from the Mathematica documentation (done in Sage):
+ include "cysignals/signals.pxi"
+ 
+ from sage.libs.singular.decl cimport tHomog, number, IDELEMS, p_Copy, rChangeCurrRing
+-from sage.libs.singular.decl cimport idInit, id_Delete, currRing, currQuotient, Sy_bit, OPT_REDSB
+-from sage.libs.singular.decl cimport scKBase, poly, testHomog, idSkipZeroes, idRankFreeModule, kStd
++from sage.libs.singular.decl cimport idInit, id_Delete, currRing, Sy_bit, OPT_REDSB
++from sage.libs.singular.decl cimport scKBase, poly, testHomog, idSkipZeroes, id_RankFreeModule, kStd
+ from sage.libs.singular.decl cimport OPT_REDTAIL, singular_options, kInterRed, t_rep_gb, p_GetCoeff
+ from sage.libs.singular.decl cimport pp_Mult_nn, p_Delete, n_Delete
+ from sage.libs.singular.decl cimport rIsPluralRing
++from sage.libs.singular.decl cimport n_unknown,  n_Zp,  n_Q,   n_R,   n_GF,  n_long_R,  n_algExt,n_transExt,n_long_C,   n_Z,   n_Zn,  n_Znm,  n_Z2m,  n_CF
+ 
+ from sage.rings.polynomial.multi_polynomial_libsingular cimport new_MP
+ from sage.rings.polynomial.plural cimport new_NCP
+@@ -174,7 +175,7 @@ def kbase_libsingular(I):
+ 
+     cdef ideal *i = sage_ideal_to_singular_ideal(I)
+     cdef ring *r = currRing
+-    cdef ideal *q = currQuotient
++    cdef ideal *q = currRing.qideal
+ 
+     cdef ideal *result
+     singular_options = singular_options | Sy_bit(OPT_REDSB)
+@@ -244,7 +245,7 @@ def slimgb_libsingular(I):
+         id_Delete(&i, r)
+         raise TypeError("ordering must be global for slimgb")
+ 
+-    if i.rank < idRankFreeModule(i, r):
++    if i.rank < id_RankFreeModule(i, r):
+         id_Delete(&i, r)
+         raise TypeError
+ 
+@@ -274,12 +275,12 @@ def interred_libsingular(I):
+         sage: P.<x,y,z> = PolynomialRing(ZZ)
+         sage: I = ideal( x^2 - 3*y, y^3 - x*y, z^3 - x, x^4 - y*z + 1 )
+         sage: I.interreduced_basis()
+-        [y^3 - x*y, z^3 - x, x^2 - 3*y, 9*y^2 - y*z + 1]
++        [y*z^2 - 81*x*y - 9*y - z, z^3 - x, x^2 - 3*y, 9*y^2 - y*z + 1]
+ 
+         sage: P.<x,y,z> = PolynomialRing(QQ)
+         sage: I = ideal( x^2 - 3*y, y^3 - x*y, z^3 - x, x^4 - y*z + 1 )
+         sage: I.interreduced_basis()
+-        [y*z^2 - 81*x*y - 9*y - z, z^3 - x, x^2 - 3*y, y^2 - 1/9*y*z + 1/9]
++        [y*z^2 - 81*x*y - 9*y - z, z^3 - x, x^2 - 3*y, 9*y^2 - y*z + 1]
+     """
+     global singular_options
+ 
+@@ -296,7 +297,7 @@ def interred_libsingular(I):
+             return Sequence([], check=False, immutable=True)
+     except AttributeError:
+         pass
+-            
++
+     i = sage_ideal_to_singular_ideal(I)
+     r = currRing
+ 
+@@ -309,12 +310,12 @@ def interred_libsingular(I):
+ 
+ 
+     # divide head by coefficients
+-    if r.ringtype == 0:
++    if r.cf.type == n_unknown:
+         for j from 0 <= j < IDELEMS(result):
+             p = result.m[j]
+             if p:
+                 n = p_GetCoeff(p,r)
+-                n = r.cf.nInvers(n)
++                n = r.cf.cfInvers(n,r.cf)
+             result.m[j] = pp_Mult_nn(p, n, r)
+             p_Delete(&p,r)
+             n_Delete(&n,r)
+@@ -325,5 +326,3 @@ def interred_libsingular(I):
+ 
+     id_Delete(&result,r)
+     return res
+-
+-
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index 4210fd4..81f64bb 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -170,19 +170,20 @@ include "cysignals/signals.pxi"
+ 
+ # singular types
+ from sage.libs.singular.decl cimport ring, poly, ideal, intvec, number, currRing
++from sage.libs.singular.decl cimport n_unknown,  n_Zp,  n_Q,   n_R,   n_GF,  n_long_R,  n_algExt,n_transExt,n_long_C,   n_Z,   n_Zn,  n_Znm,  n_Z2m,  n_CF
+ 
+ # singular functions
+ from sage.libs.singular.decl cimport (
+-    errorreported, libfac_interruptflag,
++    errorreported,
+     p_ISet, rChangeCurrRing, p_Copy, p_Init, p_SetCoeff, p_Setm, p_SetExp, p_Add_q,
+     p_NSet, p_GetCoeff, p_Delete, p_GetExp, pNext, rRingVar, omAlloc0, omStrDup,
+     omFree, pDivide, p_SetCoeff0, n_Init, p_DivisibleBy, pLcm, p_LmDivisibleBy,
+     pDivide, p_IsConstant, p_ExpVectorEqual, p_String, p_LmInit, n_Copy,
+-    p_IsUnit, pInvers, p_Head, idInit, fast_map, id_Delete,
+-    pIsHomogeneous, pHomogen, p_Totaldegree, singclap_pdivide, singclap_factorize,
++    p_IsUnit, pInvers, p_Head, idInit, fast_map_common_subexp, id_Delete,
++    p_IsHomogeneous, pHomogen, p_Totaldegree,pLDeg1_Totaldegree, singclap_pdivide, singclap_factorize,
+     idLift, IDELEMS, On, Off, SW_USE_CHINREM_GCD, SW_USE_EZGCD,
+     p_LmIsConstant, pTakeOutComp1, singclap_gcd, pp_Mult_qq, p_GetMaxExp,
+-    pLength, kNF, singclap_isSqrFree, p_Neg, p_Minus_mm_Mult_qq, p_Plus_mm_Mult_qq,
++    pLength, kNF, p_Neg, p_Minus_mm_Mult_qq, p_Plus_mm_Mult_qq,
+     pDiff, singclap_resultant, p_Normalize,
+     prCopyR, prCopyR_NoSort )
+ 
+@@ -219,10 +220,12 @@ from sage.rings.integer cimport Integer
+ from sage.rings.finite_rings.integer_mod_ring import is_IntegerModRing
+ from sage.rings.number_field.number_field_base cimport NumberField
+ 
+-from sage.arith.all import gcd
++from sage.rings.arith import gcd
+ from sage.structure.element import coerce_binop
+ 
+ from sage.structure.parent cimport Parent
++from sage.structure.parent_base cimport ParentWithBase
++from sage.structure.parent_gens cimport ParentWithGens
+ from sage.structure.category_object cimport CategoryObject
+ 
+ from sage.structure.element cimport EuclideanDomainElement
+@@ -586,6 +589,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+         Coercion from SINGULAR elements::
+ 
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 3
+             //        block   1 : ordering dp
+@@ -806,7 +810,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+             if element.parent() is base_ring:
+                 # shortcut for GF(p)
+                 if isinstance(base_ring, FiniteField_prime_modn):
+-                    _p = p_ISet(int(element) % _ring.ch, _ring)
++                    _p = p_ISet(int(element) % _ring.cf.ch, _ring)
+                 else:
+                     _n = sa2si(element,_ring)
+                     _p = p_NSet(_n, _ring)
+@@ -830,7 +834,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+         elif isinstance(element, int) or isinstance(element, long):
+             if isinstance(base_ring, FiniteField_prime_modn):
+-                _p = p_ISet(element % _ring.ch, _ring)
++                _p = p_ISet(element % _ring.cf.ch, _ring)
+             else:
+                 _n = sa2si(base_ring(element), _ring)
+                 _p = p_NSet(_n, _ring)
+@@ -977,7 +981,6 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+         if is_Macaulay2Element(element):
+             return self(element.external_string())
+-
+         try:
+             return self(str(element))
+         except TypeError:
+@@ -1174,6 +1177,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: P.<x,y,z> = QQ[]
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 3
+             //        block   1 : ordering dp
+@@ -1189,6 +1193,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+             sage: k.<a> = GF(3^3)
+             sage: P.<x,y,z> = PolynomialRing(k,3)
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 3
+             //   1 parameter    : a
+             //   minpoly        : (a^3-a+1)
+@@ -1206,6 +1211,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+         TESTS:
+             sage: P.<x> = QQ[]
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -1245,6 +1251,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: P.<x,y,z> = QQ[]
+             sage: P._singular_init_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 3
+             //        block   1 : ordering dp
+@@ -1259,6 +1266,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+             sage: w = var('w')
+             sage: R.<x,y> = PolynomialRing(NumberField(w^2+1,'s'))
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   1 parameter    : s
+             //   minpoly        : (s^2+1)
+@@ -1269,6 +1277,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(GF(2**8,'a'),10,'x', order='invlex')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 2
+             //   1 parameter    : a
+             //   minpoly        : (a^8+a^4+a^3+a^2+1)
+@@ -1279,6 +1288,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(GF(127),2,'x', order='invlex')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 2
+             //        block   1 : ordering rp
+@@ -1287,6 +1297,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(QQ,2,'x', order='invlex')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 2
+             //        block   1 : ordering rp
+@@ -1295,6 +1306,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(QQ,2,'x', order='degneglex')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 2
+             //        block   1 : ordering a
+@@ -1306,6 +1318,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(QQ,'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -1314,6 +1327,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = PolynomialRing(GF(127),'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -1322,7 +1336,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = ZZ['x,y']
+             sage: singular(R)
+-            //   coeff. ring is : Integers
++            polynomial ring, over a domain, global ordering
++            //   coeff. ring is : integer
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+@@ -1330,6 +1345,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = IntegerModRing(1024)['x,y']
+             sage: singular(R)
++            polynomial ring, over a ring (with zero-divisors), global ordering
+             //   coeff. ring is : Z/2^10
+             //   number of vars : 2
+             //        block   1 : ordering dp
+@@ -1338,7 +1354,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: R = IntegerModRing(15)['x,y']
+             sage: singular(R)
+-            //   coeff. ring is : Z/15
++            polynomial ring, over a ring (with zero-divisors), global ordering
++            //   coeff. ring is : ZZ/15
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+@@ -1348,6 +1365,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+ 
+             sage: P.<x> = QQ[]
+             sage: P._singular_init_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -1370,14 +1388,14 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+             # singular converts to bits from base_10 in mpr_complex.cc by:
+             #  size_t bits = 1 + (size_t) ((float)digits * 3.5);
+             precision = base_ring.precision()
+-            digits = sage.arith.all.ceil((2*precision - 2)/7.0)
++            digits = sage.rings.arith.ceil((2*precision - 2)/7.0)
+             self.__singular = singular.ring("(real,%d,0)"%digits, _vars, order=order)
+ 
+         elif is_ComplexField(base_ring):
+             # singular converts to bits from base_10 in mpr_complex.cc by:
+             #  size_t bits = 1 + (size_t) ((float)digits * 3.5);
+             precision = base_ring.precision()
+-            digits = sage.arith.all.ceil((2*precision - 2)/7.0)
++            digits = sage.rings.arith.ceil((2*precision - 2)/7.0)
+             self.__singular = singular.ring("(complex,%d,0,I)"%digits, _vars,  order=order)
+ 
+         elif base_ring.is_prime_field():
+@@ -1615,8 +1633,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+             9/4
+ 
+             sage: P.monomial_quotient(x,y) # Note the wrong result
+-            x*y^1048575*z^1048575 # 64-bit
+-            x*y^65535*z^65535 # 32-bit
++            x*y^65535*z^65535
+ 
+             sage: P.monomial_quotient(x,P(1))
+             x
+@@ -1645,8 +1662,8 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_generic):
+         if r!=currRing: rChangeCurrRing(r)  # pDivide
+         res = pDivide(f._poly, g._poly)
+         if coeff:
+-            if r.ringtype == 0 or r.cf.nDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r)):
+-                n = r.cf.nDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r))
++            if r.cf.type == n_unknown or r.cf.cfDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r), r.cf):
++                n = r.cf.cfDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r), r.cf)
+                 p_SetCoeff0(res, n, r)
+             else:
+                 raise ArithmeticError("Cannot divide these coefficients.")
+@@ -2277,10 +2294,10 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+             9/4*x^2 - 1/4*y^2 - y - 1
+ 
+             sage: P.<x,y> = PolynomialRing(QQ,order='lex')
+-            sage: (x^2^30) * x^2^30
++            sage: (x^2^15) * x^2^15
+             Traceback (most recent call last):
+             ...
+-            OverflowError: Exponent overflow (...).
++            OverflowError: exponent overflow (...)
+         """
+         # all currently implemented rings are commutative
+         cdef poly *_p
+@@ -2391,10 +2408,10 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+             TypeError: non-integral exponents not supported
+ 
+             sage: P.<x,y> = PolynomialRing(QQ,order='lex')
+-            sage: (x+y^2^30)^10
++            sage: (x+y^2^15)^10
+             Traceback (most recent call last):
+             ....
+-            OverflowError: Exponent overflow (...).
++            OverflowError: exponent overflow (...)
+         """
+         if type(exp) is not Integer:
+             try:
+@@ -2541,7 +2558,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         argument ``std_grading=True``.
+ 
+             sage: tord = TermOrder(matrix([3,0,1,1,1,0,1,0,0]))
+-            sage: R.<x,y,z> = PolynomialRing(QQ,'x',3,order=tord)
++            sage: R.<x,y,z> = PolynomialRing(QQ,3,order=tord)
+             sage: (x^3*y+x*z^4).degree()
+             9
+             sage: (x^3*y+x*z^4).degree(std_grading=True)
+@@ -2650,10 +2667,10 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+ 
+         With a matrix term ordering, the grading changes.
+         To evaluate the total degree using the standard grading,
+-        use the optional argument``std_grading=True``.
++        use the optional argument``std_grading=True``::
+ 
+             sage: tord=TermOrder(matrix([3,0,1,1,1,0,1,0,0]))
+-            sage: R.<x,y,z> = PolynomialRing(QQ,'x',3,order=tord)
++            sage: R.<x,y,z> = PolynomialRing(QQ,3,order=tord)
+             sage: (x^2*y).total_degree()
+             6
+             sage: (x^2*y).total_degree(std_grading=True)
+@@ -3114,7 +3131,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         """
+         cdef ring *_ring = self._parent_ring
+         if(_ring != currRing): rChangeCurrRing(_ring)
+-        return bool(pIsHomogeneous(self._poly))
++        return bool(p_IsHomogeneous(self._poly,_ring))
+ 
+     cpdef _homogenize(self, int var):
+         """
+@@ -3184,7 +3201,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         _p = p_Head(self._poly, _ring)
+         _n = p_GetCoeff(_p, _ring)
+ 
+-        ret = bool((not self._poly.next) and _ring.cf.nIsOne(_n))
++        ret = bool((not self._poly.next) and _ring.cf.cfIsOne(_n,_ring.cf))
+ 
+         p_Delete(&_p, _ring)
+         return ret
+@@ -3274,17 +3291,16 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         We are catching overflows::
+ 
+             sage: R.<x,y> = QQ[]
+-            sage: n=1000; f = x^n
++            sage: n=100; f = x^n
+             sage: try:
+             ....:   f.subs(x = x^n)
+             ....:   print("no overflow")
+             ....: except OverflowError:
+-            ....:   print("overflow")
+-            overflow    # 32-bit
+-            x^1000000   # 64-bit
+-            no overflow # 64-bit
++            ....:   print "overflow"
++            x^10000
++            no overflow
+ 
+-            sage: n=100000;
++            sage: n=1000;
+             sage: try:
+             ....:   f = x^n
+             ....:   f.subs(x = x^n)
+@@ -3360,7 +3376,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+                     if  degree > _ring.bitmask:
+                         id_Delete(&to_id, _ring)
+                         p_Delete(&_p, _ring)
+-                        raise OverflowError("Exponent overflow (%d)."%(degree))
++                        raise OverflowError("exponent overflow (%d)"%(degree))
+                     to_id.m[mi-1] = p_Copy(_f, _ring)
+ 
+                 if _p == NULL:
+@@ -3398,7 +3414,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+                     if degree > _ring.bitmask:
+                         id_Delete(&to_id, _ring)
+                         p_Delete(&_p, _ring)
+-                        raise OverflowError("Exponent overflow (%d)."%(degree))
++                        raise OverflowError("exponent overflow (%d)"%(degree))
+                     need_map = 1
+ 
+                 if _p == NULL:
+@@ -3417,7 +3433,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+                 from_id.m[0] = _p
+ 
+                 rChangeCurrRing(_ring)
+-                res_id = fast_map(from_id, _ring, to_id, _ring)
++                res_id = fast_map_common_subexp(from_id, _ring, to_id, _ring)
+                 _p = res_id.m[0]
+ 
+                 from_id.m[0] = NULL
+@@ -3595,7 +3611,10 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+             Univariate Polynomial Ring in x over Rational Field
+         """
+         cdef poly *p = self._poly
++        cdef poly *p2 = self._poly
+         cdef ring *r = self._parent_ring
++        cdef long pTotDegMax
++
+         k = self.base_ring()
+ 
+         if not self.is_univariate():
+@@ -3609,12 +3628,20 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+                 R = self.base_ring()[str(self.variables()[0])]
+ 
+         zero = k(0)
+-        coefficients = [zero] * (self.degree() + 1)
+ 
+         if(r != currRing): rChangeCurrRing(r)
+ 
++        pTotDegMax = -1
++        while p2:
++            pTotDegMax = max(pTotDegMax, p_Totaldegree(p2, r))
++            p2 = pNext(p2)
++
++        coefficients = [zero] * (pTotDegMax + 1)
+         while p:
+-            coefficients[p_Totaldegree(p, r)] = si2sa(p_GetCoeff(p, r), r, k)
++            pTotDeg = p_Totaldegree(p, r)
++            if ( pTotDeg >= len(coefficients)  or  pTotDeg < 0 ):
++                raise IndexError("list index("+str(pTotDeg)+" out of range(0-"+str(len(coefficients))+")")
++            coefficients[pTotDeg] = si2sa(p_GetCoeff(p, r), r, k)
+             p = pNext(p)
+ 
+         return R(coefficients)
+@@ -3931,8 +3958,8 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         _self = <MPolynomial_libsingular>self
+         _right = <MPolynomial_libsingular>right
+ 
+-        if r.ringtype != 0:
+-            if r.ringtype == 4:
++        if r.cf.type != n_unknown:
++            if r.cf.type == n_Z:
+                 P = parent.change_ring(RationalField())
+                 f = P(self)//P(right)
+                 CM = list(f)
+@@ -3948,13 +3975,14 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+                         quo = p_Add_q(quo, temp, r)
+                     p = pNext(p)
+                 return new_MP(parent, quo)
+-            raise NotImplementedError("Division of multivariate polynomials over non fields by non-monomials not implemented.")
++            if r.cf.type == n_Znm or r.cf.type == n_Zn or r.cf.type == n_Z2m :
++                raise NotImplementedError("Division of multivariate polynomials over non fields by non-monomials not implemented.")
+ 
+         cdef int count = singular_polynomial_length_bounded(_self._poly,15)
+         if count >= 15:  # note that _right._poly must be of shorter length than self._poly for us to care about this call
+             sig_on()
+         if r!=currRing: rChangeCurrRing(r)   # singclap_pdivide
+-        quo = singclap_pdivide( _self._poly, _right._poly )
++        quo = singclap_pdivide( _self._poly, _right._poly, r )
+         if count >= 15:
+             sig_off()
+         f = new_MP(parent, quo)
+@@ -4230,7 +4258,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         iv = NULL
+         sig_on()
+         if _ring!=currRing: rChangeCurrRing(_ring)   # singclap_factorize
+-        I = singclap_factorize ( ptemp, &iv , 0)
++        I = singclap_factorize ( ptemp, &iv , 0, _ring)
+         sig_off()
+ 
+         ivv = iv.ivGetVec()
+@@ -4290,10 +4318,10 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+             ValueError: polynomial is not in the ideal
+             sage: foo = I.complete_primary_decomposition() # indirect doctest
+             sage: foo[0][0]
+-            Ideal (x2 - 1, x1 - 1) of Multivariate Polynomial Ring in x1, x2 over Rational Field
++            Ideal (x1 + 1, x2^2 - 3) of Multivariate Polynomial Ring in x1, x2 over Rational Field
+ 
+         """
+-        global errorreported, libfac_interruptflag
++        global errorreported
+         if not self._parent._base.is_field():
+             raise NotImplementedError("Lifting of multivariate polynomials over non-fields is not implemented.")
+ 
+@@ -4327,10 +4355,9 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+ 
+         if r!=currRing: rChangeCurrRing(r)  # idLift
+         res = idLift(_I, fI, NULL, 0, 0, 0)
+-        if errorreported != 0 or libfac_interruptflag != 0:
++        if errorreported != 0 :
+             errorcode = errorreported
+             errorreported = 0
+-            libfac_interruptflag = 0
+             if errorcode == 1:
+                 raise ValueError("polynomial is not in the ideal")
+             raise RuntimeError
+@@ -4561,14 +4588,17 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         else:
+             raise TypeError("algorithm %s not supported" % algorithm)
+ 
+-        if _ring.ringtype != 0:
+-            if _ring.ringtype == 4:
++        if _ring.cf.type != n_unknown:
++            if _ring.cf.type == n_Z:
+                 P = self._parent.change_ring(RationalField())
+                 res = P(self).gcd(P(right))
+                 coef = sage.rings.integer.GCD_list(self.coefficients() + right.coefficients())
+                 return self._parent(coef*res)
+ 
+-            raise NotImplementedError("GCD over rings not implemented.")
++            #TODO:
++            if _ring.cf.type == n_Znm or _ring.cf.type == n_Zn or _ring.cf.type == n_Z2m :
++                raise NotImplementedError("GCD over rings not implemented.")
++            #raise NotImplementedError("GCD over rings not implemented.")
+ 
+         if self._parent._base.is_finite() and self._parent._base.characteristic() > 1<<29:
+             raise NotImplementedError("GCD of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+@@ -4586,7 +4616,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         if count >= 20:
+             sig_on()
+         if _ring!=currRing: rChangeCurrRing(_ring)  # singclap_gcd
+-        _res = singclap_gcd(p_Copy(self._poly, _ring), p_Copy(_right._poly, _ring))
++        _res = singclap_gcd(p_Copy(self._poly, _ring), p_Copy(_right._poly, _ring), _ring )
+         if count >= 20:
+             sig_off()
+ 
+@@ -4632,14 +4662,15 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         cdef MPolynomial_libsingular _g
+         if _ring!=currRing: rChangeCurrRing(_ring)
+ 
+-        if _ring.ringtype != 0:
+-            if _ring.ringtype == 4:
++        if _ring.cf.type != n_unknown:
++            if _ring.cf.type == n_Z:
+                 P = self.parent().change_ring(RationalField())
+                 py_gcd = P(self).gcd(P(g))
+                 py_prod = P(self*g)
+                 return self.parent(py_prod//py_gcd)
+             else:
+-                raise TypeError("LCM over non-integral domains not available.")
++                if _ring.cf.type == n_Znm or _ring.cf.type == n_Zn or _ring.cf.type == n_Z2m :
++                    raise TypeError("LCM over non-integral domains not available.")
+ 
+         if self._parent is not g._parent:
+             _g = self._parent._coerce_c(g)
+@@ -4654,9 +4685,9 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         if count >= 20:
+             sig_on()
+         if _ring!=currRing: rChangeCurrRing(_ring)  # singclap_gcd
+-        gcd = singclap_gcd(p_Copy(self._poly, _ring), p_Copy(_g._poly, _ring))
++        gcd = singclap_gcd(p_Copy(self._poly, _ring), p_Copy(_g._poly, _ring), _ring )
+         prod = pp_Mult_qq(self._poly, _g._poly, _ring)
+-        ret = singclap_pdivide(prod , gcd )
++        ret = singclap_pdivide(prod , gcd , _ring)
+         p_Delete(&prod, _ring)
+         p_Delete(&gcd, _ring)
+         if count >= 20:
+@@ -4677,13 +4708,8 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+             sage: h.is_squarefree()
+             False
+         """
+-        cdef ring *_ring = self._parent_ring
+-
+-        if self._parent._base.is_finite() and self._parent._base.characteristic() > 1<<29:
+-            raise NotImplementedError("is_squarefree of multivariate polynomials over prime fields with characteristic > 2^29 is not implemented.")
+-
+-        if(_ring != currRing): rChangeCurrRing(_ring)
+-        return bool(singclap_isSqrFree(self._poly))
++        # TODO:  Use Singular (4.x) intrinsics.  (Temporary solution from #17254.)
++        return all([ e == 1 for (f, e) in self.factor() ])
+ 
+     @coerce_binop
+     def quo_rem(self, MPolynomial_libsingular right):
+@@ -4740,7 +4766,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         if count >= 15:  # note that _right._poly must be of shorter length than self._poly for us to care about this call
+             sig_on()
+         if r!=currRing: rChangeCurrRing(r)   # singclap_pdivide
+-        quo = singclap_pdivide( self._poly, right._poly )
++        quo = singclap_pdivide( self._poly, right._poly, r )
+         rem = p_Add_q(p_Copy(self._poly, r), p_Neg(pp_Mult_qq(right._poly, quo, r), r), r)
+         if count >= 15:
+             sig_off()
+@@ -5181,7 +5207,7 @@ cdef class MPolynomial_libsingular(sage.rings.polynomial.multi_polynomial.MPolyn
+         if count >= 20:
+             sig_on()
+         if _ring != currRing: rChangeCurrRing(_ring)   # singclap_resultant
+-        rt =  singclap_resultant(p_Copy(self._poly, _ring), p_Copy(other._poly, _ring),p_Copy((<MPolynomial_libsingular>variable)._poly, _ring))
++        rt =  singclap_resultant(p_Copy(self._poly, _ring), p_Copy(other._poly, _ring), p_Copy((<MPolynomial_libsingular>variable)._poly , _ring ), _ring)
+         if count >= 20:
+             sig_off()
+         return new_MP(self._parent, rt)
+diff --git a/src/sage/rings/polynomial/multi_polynomial_ring_generic.pyx b/src/sage/rings/polynomial/multi_polynomial_ring_generic.pyx
+index d4ff6fd..3abece4 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_ring_generic.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_ring_generic.pyx
+@@ -850,7 +850,7 @@ cdef class MPolynomialRing_generic(sage.rings.ring.CommutativeRing):
+ 
+             sage: R.<x> = PolynomialRing(Integers(3), 1)
+             sage: R.random_element()
+-            -x^2 + x
++            2*x^2 + x
+ 
+         To produce a dense polynomial, pick ``terms=Infinity``::
+ 
+diff --git a/src/sage/rings/polynomial/pbori.pyx b/src/sage/rings/polynomial/pbori.pyx
+index 4f2ab18..bd7fb83 100644
+--- a/src/sage/rings/polynomial/pbori.pyx
++++ b/src/sage/rings/polynomial/pbori.pyx
+@@ -1370,6 +1370,7 @@ cdef class BooleanPolynomialRing(MPolynomialRing_generic):
+ 
+             sage: B.<x,y> = BooleanPolynomialRing(2)
+             sage: B._singular_() # indirect doctest
++            polynomial ring, over a field, global ordering
+             //   characteristic : 2
+             //   number of vars : 2
+             //        block   1 : ordering lp
+diff --git a/src/sage/rings/polynomial/plural.pxd b/src/sage/rings/polynomial/plural.pxd
+index eec63df..0f0b659 100644
+--- a/src/sage/rings/polynomial/plural.pxd
++++ b/src/sage/rings/polynomial/plural.pxd
+@@ -5,6 +5,10 @@ from sage.structure.parent cimport Parent
+ from sage.libs.singular.function cimport RingWrap
+ from sage.rings.polynomial.multi_polynomial_libsingular cimport MPolynomialRing_libsingular
+ 
++from sage.libs.singular.decl cimport wFunctionalBuch
++
++from sage.libs.singular.decl cimport p_Totaldegree
++
+ cdef extern from *:
+     ctypedef long Py_hash_t
+ 
+diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
+index bba5da7..83d632a 100644
+--- a/src/sage/rings/polynomial/plural.pyx
++++ b/src/sage/rings/polynomial/plural.pyx
+@@ -110,14 +110,16 @@ from sage.categories.algebras import Algebras
+ 
+ # singular rings
+ 
++from sage.libs.singular.ring cimport singular_ring_new, singular_ring_delete, wrap_ring, singular_ring_reference
++
++from sage.libs.singular.singular cimport si2sa, sa2si, overflow_check
++
++
+ from sage.libs.singular.function cimport RingWrap
+ 
+ from sage.libs.singular.polynomial cimport (singular_polynomial_call, singular_polynomial_cmp, singular_polynomial_add, singular_polynomial_sub, singular_polynomial_neg, singular_polynomial_pow, singular_polynomial_mul, singular_polynomial_rmul, singular_polynomial_deg, singular_polynomial_str_with_changed_varnames, singular_polynomial_latex, singular_polynomial_str, singular_polynomial_div_coeff)
+ 
+ import sage.libs.singular.ring
+-from sage.libs.singular.ring cimport singular_ring_new, singular_ring_delete, wrap_ring, singular_ring_reference
+-
+-from sage.libs.singular.singular cimport si2sa, sa2si, overflow_check
+ 
+ from sage.rings.finite_rings.finite_field_prime_modn import FiniteField_prime_modn
+ from sage.rings.integer cimport Integer
+@@ -485,7 +487,7 @@ cdef class NCPolynomialRing_plural(Ring):
+             if  <Parent>element.parent() is base_ring:
+                 # shortcut for GF(p)
+                 if isinstance(base_ring, FiniteField_prime_modn):
+-                    _p = p_ISet(int(element) % _ring.ch, _ring)
++                    _p = p_ISet(int(element) % _ring.cf.ch, _ring)
+                 else:
+                     _n = sa2si(element,_ring)
+                     _p = p_NSet(_n, _ring)
+@@ -506,7 +508,7 @@ cdef class NCPolynomialRing_plural(Ring):
+         # Accepting int
+         elif isinstance(element, int):
+             if isinstance(base_ring, FiniteField_prime_modn):
+-                _p = p_ISet(int(element) % _ring.ch,_ring)
++                _p = p_ISet(int(element) % _ring.cf.ch,_ring)
+             else:
+                 _n = sa2si(base_ring(element),_ring)
+                 _p = p_NSet(_n, _ring)
+@@ -991,8 +993,8 @@ cdef class NCPolynomialRing_plural(Ring):
+ 
+         res = pDivide(f._poly,g._poly)
+         if coeff:
+-            if r.ringtype == 0 or r.cf.nDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r)):
+-                n = r.cf.nDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r))
++            if (r.cf.type == n_unknown) or r.cf.cfDivBy(p_GetCoeff(f._poly, r), p_GetCoeff(g._poly, r), r.cf):
++                n = r.cf.cfDiv( p_GetCoeff(f._poly, r) , p_GetCoeff(g._poly, r), r.cf)
+                 p_SetCoeff0(res, n, r)
+             else:
+                 raise ArithmeticError("Cannot divide these coefficients.")
+@@ -1371,8 +1373,6 @@ cdef class NCPolynomial_plural(RingElement):
+         if self._parent is not None and (<NCPolynomialRing_plural>self._parent)._ring != NULL and self._poly != NULL:
+             p_Delete(&self._poly, (<NCPolynomialRing_plural>self._parent)._ring)
+ 
+-#    def __call__(self, *x, **kwds): # ?
+-
+     def __reduce__(self):
+         """
+         TEST::
+@@ -1550,10 +1550,10 @@ cdef class NCPolynomial_plural(RingElement):
+             sage: P = A.g_algebra(relations={y*x:-x*y + z},  order='lex')
+             sage: P.inject_variables()
+             Defining x, z, y
+-            sage: (x^2^30) * x^2^30
++            sage: (x^2^15) * x^2^15
+             Traceback (most recent call last):
+             ...
+-            OverflowError: Exponent overflow (...).
++            OverflowError: exponent overflow (65536)
+         """
+         # all currently implemented rings are commutative
+         cdef poly *_p
+@@ -1620,10 +1620,10 @@ cdef class NCPolynomial_plural(RingElement):
+             sage: P = A.g_algebra(relations={y*x:-x*y + z},  order='lex')
+             sage: P.inject_variables()
+             Defining x, z, y
+-            sage: (x+y^2^30)^10
++            sage: (x+y^2^15)^10
+             Traceback (most recent call last):
+             ....
+-            OverflowError: Exponent overflow (...).
++            OverflowError: exponent overflow (327680)
+         """
+         if type(exp) is not Integer:
+             try:
+@@ -2327,7 +2327,7 @@ cdef class NCPolynomial_plural(RingElement):
+         """
+         cdef ring *_ring = (<NCPolynomialRing_plural>self._parent)._ring
+         if(_ring != currRing): rChangeCurrRing(_ring)
+-        return bool(pIsHomogeneous(self._poly))
++        return bool(p_IsHomogeneous(self._poly,_ring))
+ 
+ 
+     def is_monomial(self):
+@@ -2365,7 +2365,7 @@ cdef class NCPolynomial_plural(RingElement):
+         _p = p_Head(self._poly, _ring)
+         _n = p_GetCoeff(_p, _ring)
+ 
+-        ret = bool((not self._poly.next) and _ring.cf.nIsOne(_n))
++        ret = bool((not self._poly.next) and _ring.cf.cfIsOne(_n,_ring.cf))
+ 
+         p_Delete(&_p, _ring)
+         return ret
+diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
+index 01c8c84..1c8003f 100644
+--- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
++++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
+@@ -599,6 +599,7 @@ class PolynomialQuotientRing_generic(CommutativeRing):
+             sage: P.<x> = QQ[]
+             sage: Q = P.quo([(x^2+1)])
+             sage: singular(Q)        # indirect doctest
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+diff --git a/src/sage/rings/polynomial/polynomial_singular_interface.py b/src/sage/rings/polynomial/polynomial_singular_interface.py
+index 4784673..43bad63 100644
+--- a/src/sage/rings/polynomial/polynomial_singular_interface.py
++++ b/src/sage/rings/polynomial/polynomial_singular_interface.py
+@@ -80,6 +80,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R.<x,y> = PolynomialRing(CC,'x',2)
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0 (complex:15 digits, additional 0 digits)
+             //   1 parameter    : I
+             //   minpoly        : (I^2+1)
+@@ -89,7 +90,8 @@ class PolynomialRing_singular_repr:
+             //        block   2 : ordering C
+             sage: R.<x,y> = PolynomialRing(RealField(100),'x',2)
+             sage: singular(R)
+-            //   characteristic : 0 (real:29 digits, additional 0 digits)
++            polynomial ring, over a field, global ordering
++            //   characteristic : 0 (real)
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+@@ -98,6 +100,7 @@ class PolynomialRing_singular_repr:
+             sage: w = var('w')
+             sage: R.<x> = PolynomialRing(NumberField(w^2+1,'s'))
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   1 parameter    : s
+             //   minpoly        : (s^2+1)
+@@ -108,6 +111,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = PolynomialRing(GF(127),1,'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -116,6 +120,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = PolynomialRing(QQ,1,'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -124,6 +129,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = PolynomialRing(QQ,'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -132,6 +138,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = PolynomialRing(GF(127),'x')
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 1
+             //        block   1 : ordering lp
+@@ -140,6 +147,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = Frac(ZZ['a,b'])['x,y']
+             sage: singular(R)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   2 parameter    : a b
+             //   minpoly        : 0
+@@ -151,6 +159,7 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = IntegerModRing(1024)['x,y']
+             sage: singular(R)
++            polynomial ring, over a ring (with zero-divisors), global ordering
+             //   coeff. ring is : Z/2^10
+             //   number of vars : 2
+             //        block   1 : ordering dp
+@@ -159,7 +168,8 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = IntegerModRing(15)['x,y']
+             sage: singular(R)
+-            //   coeff. ring is : Z/15
++            polynomial ring, over a ring (with zero-divisors), global ordering
++            //   coeff. ring is : ZZ/15
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+@@ -167,7 +177,8 @@ class PolynomialRing_singular_repr:
+ 
+             sage: R = ZZ['x,y']
+             sage: singular(R)
+-            //   coeff. ring is : Integers
++            polynomial ring, over a domain, global ordering
++            //   coeff. ring is : integer
+             //   number of vars : 2
+             //        block   1 : ordering dp
+             //                  : names    x y
+@@ -178,6 +189,7 @@ class PolynomialRing_singular_repr:
+             sage: K = R.fraction_field()
+             sage: S = K['y']
+             sage: singular(S)
++            polynomial ring, over a field, global ordering
+             //   characteristic : 5
+             //   1 parameter    : x
+             //   minpoly        : 0
+@@ -221,6 +233,7 @@ class PolynomialRing_singular_repr:
+         EXAMPLES::
+ 
+             sage: PolynomialRing(QQ,'u_ba')._singular_init_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 1
+             //        block   1 : ordering lp
+diff --git a/src/sage/rings/polynomial/term_order.py b/src/sage/rings/polynomial/term_order.py
+index 17345c0..46bc69a 100644
+--- a/src/sage/rings/polynomial/term_order.py
++++ b/src/sage/rings/polynomial/term_order.py
+@@ -1665,6 +1665,7 @@ class TermOrder(SageObject):
+             sage: T.singular_str()
+             '(lp(3),Dp(5),lp(2))'
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 127
+             //   number of vars : 10
+             //        block   1 : ordering lp
+@@ -1692,6 +1693,7 @@ class TermOrder(SageObject):
+             sage: T.singular_str()
+             '(a(1:2),ls(2),a(1:2),ls(2))'
+             sage: P._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 4
+             //        block   1 : ordering a
+diff --git a/src/sage/rings/quotient_ring.py b/src/sage/rings/quotient_ring.py
+index 4c2ea8d..da9083a 100644
+--- a/src/sage/rings/quotient_ring.py
++++ b/src/sage/rings/quotient_ring.py
+@@ -1174,6 +1174,7 @@ class QuotientRing_nc(ring.Ring, sage.structure.parent_gens.ParentWithGens):
+             sage: R.<x,y> = PolynomialRing(QQ)
+             sage: S = R.quotient_ring(x^2+y^2)
+             sage: S._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 0
+             //   number of vars : 2
+             //        block   1 : ordering dp
+diff --git a/src/sage/rings/quotient_ring_element.py b/src/sage/rings/quotient_ring_element.py
+index 20a1a2d..8e59d6d 100644
+--- a/src/sage/rings/quotient_ring_element.py
++++ b/src/sage/rings/quotient_ring_element.py
+@@ -785,6 +785,7 @@ class QuotientRingElement(RingElement):
+             sage: I = sage.rings.ideal.FieldIdeal(P)
+             sage: Q = P.quo(I)
+             sage: Q._singular_()
++            polynomial ring, over a field, global ordering
+             //   characteristic : 2
+             //   number of vars : 2
+             //        block   1 : ordering dp
+diff --git a/src/sage/structure/element.pyx b/src/sage/structure/element.pyx
+index e3114f4..839151f 100644
+--- a/src/sage/structure/element.pyx
++++ b/src/sage/structure/element.pyx
+@@ -1781,15 +1781,14 @@ cdef class RingElement(ModuleElement):
+             ...
+             OverflowError: Exponent overflow (2147483648).
+ 
+-        Another example from :trac:`2956`; this should overflow on x32
+-        and succeed on x64::
++        Another example from :trac:`2956` which always overflows
++        with Singular 4::
+ 
+             sage: K.<x,y> = ZZ[]
+             sage: (x^12345)^54321
+-            x^670592745                                   # 64-bit
+-            Traceback (most recent call last):            # 32-bit
+-            ...                                           # 32-bit
+-            OverflowError: Exponent overflow (670592745). # 32-bit
++            Traceback (most recent call last):
++            ...
++            OverflowError: exponent overflow (670592745)
+ 
+         """
+         if dummy is not None:
+diff --git a/src/sage/tests/french_book/mpoly.py b/src/sage/tests/french_book/mpoly.py
+index e12740c..82b2988 100644
+--- a/src/sage/tests/french_book/mpoly.py
++++ b/src/sage/tests/french_book/mpoly.py
+@@ -163,7 +163,7 @@ Sage example in ./mpoly.tex, line 432::
+   [Ideal (z^17 - 1, y - 2*z^10, x - 3*z^3) of Multivariate
+   Polynomial Ring in x, y, z over Rational Field]
+   sage: J.transformed_basis()
+-  [z^17 - 1, -2*z^10 + y, -3*z^3 + x]
++  [z^17 - 1, -2*z^10 + y, -3/4*y^2 + x]
+ 
+ Sage example in ./mpoly.tex, line 534::
+ 

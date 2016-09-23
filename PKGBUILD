@@ -33,23 +33,24 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        anal.h env.patch paths.patch clean.patch skip-check.patch cython-sys-path.patch optional-extensions.patch package.patch
-        disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch)
+        anal.h env.patch clean.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
+        disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch
+        increase-rtol.patch sagemath-singular4.patch)
 md5sums=('SKIP'
          'a906a180d198186a39820b0a2f9a9c63'
          'd4d3c235c99b2bc92dde9f6e53935a8d'
-         '45b84ae5579273196df44f7464a01a30'
          '6d9ae0978ce6a05a0da2cafdfb178a09'
          '6cafcb381437d4751fd55b25d5090987'
          'a1bcdd3fe620dbae60ed8b0e98b2ece7'
-         '3ab07d49c874ea9024b288d66cbcfc23'
+         'b3ecf7c93a90e0afccbc686af9fdc85f'
          '9ba81f717ffd4e20b8b2f2a318307488'
          '4eb23a3c7363258bc9ba764d6e5512ba'
          '16b529194c6105c3364127bd8f1efa83'
          'cdcabd475b80afe0534a5621e972736e'
          'ef927896f2071b442b1d07d7e69f5f3a'
          '0c9a57d35de80c2cd418ebec912efbbb'
-         '39d3fded716d2a7ae0ab03e0896b7497')
+         '39d3fded716d2a7ae0ab03e0896b7497'
+         '803627177ff5c28e1e73f2678d15c4df')
 
 pkgver() {
   cd sage
@@ -69,8 +70,6 @@ prepare(){
   sed -e 's|png12|png|' -i src/module_list.py
 # set env variables
   patch -p0 -i ../env.patch
-# fix paths in python imports
-  patch -p0 -i ../paths.patch
 # don't try to remove installed files
   patch -p0 -i ../clean.patch
 # skip checking build status
@@ -97,6 +96,8 @@ prepare(){
   patch -p0 -i ../disable-fes.patch
 # replace is_package_installed usage http://trac.sagemath.org/ticket/20377
   patch -p1 -i ../is-package-installed.patch
+# port to Singular 4 https://trac.sagemath.org/ticket/17254
+  patch -p1 -i ../sagemath-singular4.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
