@@ -2,19 +2,16 @@
 
 pkgname=pacli-simple
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and interative Bash Frontend for Pacman/Yaourt"
 arch=(any)
 url="https://github.com/excalibur1234/$pkgname"
 license=('GPL3')
-depends=('fzf'
-	'pacman'
-	'yaourt'
-	'pacman-mirrorlist'
-	'sudo'
-	'gzip'
-	'downgrade'
-	'bash')
+depends=('base-devel'
+        'yaourt'
+        'pacman-mirrorlist'
+        'downgrade'
+        'fzf')
 makedepends=('git')
 optdepends=('update-notifier: Automatically get notified when updates are available')
 conflicts=('pacli')
