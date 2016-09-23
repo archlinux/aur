@@ -2,7 +2,7 @@
 
 pkgname=('dlangide')
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
 url="https://github.com/buggins/dlangide"
