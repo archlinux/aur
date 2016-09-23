@@ -13,13 +13,13 @@ provides=('mutant')
 arch=('x86_64')
 license=('MIT')
 depends=(
-  #'pkg-config'
-  #'sqlite'
-  #'git'
-  #'npm'
-  #'gtk+-3.0'
-  #'librsvg2-dev'
-  #'base-devel'
+  'pkg-config'
+  'sqlite'
+  'git'
+  'npm'
+  'gtk+-3.0'
+  'librsvg2-dev'
+  'base-devel'
 )
 makedepends=()
 backup=()
