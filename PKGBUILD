@@ -5,25 +5,25 @@ pkgver=0.3.7
 pkgrel=1
 pkgdesc="Custom Memory Allocator Interface"
 arch=('i686' 'x86_64')
-url="http://25thandclement.com/~william/projects/libarena.html"
+url='http://25thandclement.com/~william/projects/libarena.html'
 license=('MIT')
 depends=()
 options=()
-source=("http://25thandclement.com/~william/projects/releases/libarena-0.3.7.tgz")
+source=('http://25thandclement.com/~william/projects/releases/libarena-0.3.7.tgz')
 md5sums=('99339b429a34f32267be833a882008b9')
 
 build() {
-  cd "$pkgname-$pkgver"
-  make PREFIX="/usr"
+	cd "$pkgname-$pkgver"
+	make PREFIX="/usr"
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  make check
+	cd "$pkgname-$pkgver"
+	make check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make PREFIX="/usr" DESTDIR="$pkgdir/" install
-  install -D -m644 debian/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$pkgname-$pkgver"
+	make PREFIX="/usr" DESTDIR="$pkgdir/" install
+	install -D -m644 debian/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
