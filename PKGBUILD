@@ -3,8 +3,8 @@
 
 set -u
 pkgname='pixeluvo'
-pkgver='1.5.2'
-declare -A _pkgrel=([x86_64]='3' [i686]='1')
+pkgver='1.6.0'
+declare -A _pkgrel=([x86_64]='1' [i686]='1')
 pkgrel="${_pkgrel[${CARCH:-x86_64}]}"
 pkgdesc='photo editor with crop, vignette, text, captions, resize, color correction, raw file, filter, warp, layers, mask, and more.'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=('dummyfile')
 source_x86_64=("http://www.pixeluvo.com/downloads/pixeluvo-${pkgver}-${_pkgrel[x86_64]}.x86_64.rpm")
 source_i686=("http://www.pixeluvo.com/downloads/pixeluvo-${pkgver}-${_pkgrel[i686]}.i686.rpm")
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-sha256sums_i686=('7eca517c15f1fb14c1e469dadcd541c12159f89d58b39b8d30ba09cb50976183')
-sha256sums_x86_64=('4387182850cd1623080dd03c30b8c5703ddfe8c67a05503b9cd74f5395368406')
+sha256sums_i686=('c305332c1ec4004f85873edd7e1d0e4400419ec213728e216ab8bf00e0b5b52f')
+sha256sums_x86_64=('a9c288e1977d91080e13c6773f70bfcb9fba3ed95e1a173af4e442c148387b88')
 
 _vercheck() {
   curl -s 'http://www.pixeluvo.com/download/' | grep -F 'Latest Version' | sed -n -e 's:^.*; Pixeluvo \([0-9\.]\+\)<.*$:\1:p'
