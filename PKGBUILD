@@ -1,8 +1,8 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=ciphr
-pkgver=104.0ecd5fe
-_gemver=0.0.1
-pkgrel=2
+pkgver=120.f1f049d
+_gemver=0.0.3
+pkgrel=1
 pkgdesc="A CLI tool for encoding, decoding, encryption, decryption, and hashing streams of data."
 url="https://github.com/frohoff/ciphr"
 arch=('any')
