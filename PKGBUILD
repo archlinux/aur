@@ -2,9 +2,9 @@
 #Maintainer: float <flo.at at gmx dot de>
 
 pkgname=s25rttr
-pkgver=20160610
-build=76957e2b4be12a2cfb4aa904fa18a394aa324af8
-pkgrel=2
+pkgver=20160903
+build=3ed141966254ff3351d37404f691f4063b05f83d
+pkgrel=3
 pkgdesc="Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required)"
 arch=('i686' 'x86_64')
 url="http://www.siedler25.org/"
@@ -19,10 +19,10 @@ md5sums=('ccb9c1d1a579c6d8490589a84b068e90'
 
 if [[ $CARCH == 'i686' ]]; then
     source+=("http://www.siedler25.org/uploads/nightly/$pkgver/${pkgname}_${pkgver}-${build}_linux.i386.tar.bz2")
-    md5sums+=('f6ac173f923e94c7f02a7ee68e7da937')
+    md5sums+=('8952ce2859865b6173fd3a59ff9dc2ea')
 elif [[ $CARCH == 'x86_64' ]]; then
     source+=("http://www.siedler25.org/uploads/nightly/${pkgname}_${pkgver}-${build}_linux.x86_64.tar.bz2")
-    md5sums+=('958a8527abf1d427820803c4e693eb7e')
+    md5sums+=('fd9dd1d0029fbe98c36db86df2786bb8')
 fi
 
 package() {
@@ -39,4 +39,3 @@ package() {
 
     return 0
 }
-
