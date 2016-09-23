@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.6.5
+pkgver=2.7
 pkgrel=1
 pkgdesc="TrueType font rendering library (mingw-w64)"
 arch=('any')
@@ -18,15 +18,13 @@ conflicts=(mingw-w64-freetype)
 source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
-        0003-Make-subpixel-hinting-mode-configurable.patch
-        0004-Keep-default-interpreter-version-as-35.patch)
+        0003-Enable-infinality-subpixel-hinting.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('5db38ae2308c5a2c519c8e071e98b70d61585201'
+ha1sums=('f251029d5ab542a96dd4531605fe577185077560'
           'SKIP'
-          'e1fde7854d2a64868a5eef07415ad23c339fc630'
-          '7da3af8e1e002e39a247c37a05a10beb576007d6'
-          'c64ba9d37732fc75de7817d1d679a3e38efdb4cb'
-          '1f30feeba9c51c9ec745bd29ef07beccf9544338')
+          'b31882ef5e8447e761acee1c4a44c0630cd4d465'
+          'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
+          '41d27140fd590945e22e012c9dce62de3d6f11e6')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 if [[ $pkgname = "mingw-w64-freetype2-bootstrap" ]]; then
@@ -36,25 +34,19 @@ else
   # adding harfbuzz for improved OpenType features auto-hinting
   # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
   depends+=(mingw-w64-harfbuzz)
+  replaces+=(${_provides})
 fi
 provides+=(${_provides})
-replaces+=(${_provides})
 conflicts+=(${_provides})
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/freetype-${pkgver}"
+
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
-
-  # Provide a way to set the default subpixel hinting mode
-  # at runtime, without depending on the application to do so.
-  patch -Np1 -i ../0003-Make-subpixel-hinting-mode-configurable.patch
-
-  # Keep the classic subpixel hinting mode as default, as expected
-  # by upstream for the 2.6 series
-  patch -Np1 -i ../0004-Keep-default-interpreter-version-as-35.patch
+  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
 }
 
 build() {
