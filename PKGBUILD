@@ -3,9 +3,9 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.37.152
-_another_pkgver=gc83ea995
-_yetanotherpkgrel=42
+_pkgver=1.0.38.171
+_another_pkgver=g5e1cd7b2
+_yetanotherpkgrel=22
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}.${_yetanotherpkgrel}
 pkgrel=2
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
@@ -30,10 +30,10 @@ md5sums=('cfef2f72647980c639201c6ab39e8534'
 	 'SKIP')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel}_amd64.deb")
-md5sums_x86_64=('7fb0b777aa807bd79157f62ca3dc435f')
+md5sums_x86_64=('085e994bdc09f03b2ceb4cbe81752d75')
 
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel}_i386.deb")
-md5sums_i686=('3fe48999909ff10b0004dd7a4d845990')
+md5sums_i686=('f6f106ecbb5e8b27616a6f76821d5106')
 
 depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
