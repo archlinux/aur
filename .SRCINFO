@@ -1,0 +1,17 @@
+pkgbase = page_dewarp
+	pkgdesc = Text page dewarping using a cubic sheet model
+	pkgver = r18.835c7bb
+	pkgrel = 1
+	url = https://mzucker.github.io/2016/08/15/page-dewarping.html
+	arch = any
+	license = MIT
+	depends = python2
+	depends = opencv
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-pillow
+	source = git+http://github.com/mzucker/page_dewarp.git
+	md5sums = SKIP
+
+pkgname = page_dewarp
+
