@@ -3,10 +3,10 @@
 
 pkgname=python-fritzconnection-git
 pkgver=r40.8171434b964b
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-Tool to communicate with the AVM FritzBox. Uses the TR-064 protocol.'
 license=('MIT')
-arch=('x86_64' 'i686')
+arch=('any')
 url='https://bitbucket.org/kbr/fritzconnection'
 depends=('python-lxml')
 makedepends=('python-setuptools')
