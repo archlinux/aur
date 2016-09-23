@@ -19,7 +19,6 @@ depends=(
   'npm'
   'gtk3'
   'librsvg'
-  'base-devel'
 )
 makedepends=()
 backup=()
