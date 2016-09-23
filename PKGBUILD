@@ -4,12 +4,13 @@ _ver=1.14
 _pkgbase=mate-session-manager
 pkgname=(${_pkgbase}-upower)
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('mate-desktop' 'mate-polkit' 'mate-settings-daemon')
+depends=('mate-desktop' 'mate-polkit' 'mate-settings-daemon' 'upower-pm-utils=0.9.23'
+	'libsm' 'libxtst')
 makedepends=('intltool')
 optdepends=('mdm-nosystemd: the MDM Display Manager with consolekit support for non-systemd setups'
             'xdg-user-dirs-gtk: manage user directories')
