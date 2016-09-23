@@ -2,7 +2,7 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=numix-themes-archblue-git
-pkgver=2.6.1.r8.c65721b
+pkgver=2.6.4.r2.5a0ec95
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
@@ -36,6 +36,7 @@ prepare() {
         sed -i 's/#f0544c/#1793d1/g' "${FILE}"
         sed -i 's/#444444/#333333/g' "${FILE}"
         sed -i 's/#444/#333/g' "${FILE}"
+        sed -i 's/#f06860/#1793d1/g' "${FILE}"
         sed -i 's/Numix/Numix-ArchBlue/' "${FILE}"
     done
 }
@@ -44,7 +45,7 @@ package() {
   cd Numix
   make
 
-  rm gtk-3.0/assets/*.png
+  rm src/assets/*.png
 
   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-ArchBlue
   rm -rf .git .gitignore CREDITS LICENSE README.md
