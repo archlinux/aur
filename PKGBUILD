@@ -8,8 +8,7 @@ arch=('any')
 url='http://pypi.python.org/pypi/Flask-Genshi/'
 license=('BSD')
 depends=('python2-flask' 'python2-genshi')
-makedepends=('setuptools')
-#checkdepends=('python2-flatland') # aur package is broken
+makedepends=('python2-setuptools')
 
 source=("http://pypi.python.org/packages/source/F/Flask-Genshi/Flask-Genshi-${pkgver}.tar.gz")
 sha1sums=('4609c294557d3e338db08676162da966e1bf585f')
@@ -19,10 +18,10 @@ build() {
   python2 setup.py build
 }
 
-check() {
-  cd "Flask-Genshi-${pkgver}"
-  #python2 setup.py test
-}
+#check() {
+#  cd "Flask-Genshi-${pkgver}"
+#  #python2 setup.py test
+#}
 
 package() {
   cd "Flask-Genshi-${pkgver}"
