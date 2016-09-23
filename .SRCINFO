@@ -1,14 +1,15 @@
 pkgbase = python2-pytvmaze
 	pkgdesc = Python interface to the TV Maze API
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/pytvmaze
 	arch = any
 	license = MIT
 	makedepends = python2-distribute
 	depends = python2
-	source = https://pypi.io/packages/source/p/pytvmaze/pytvmaze-1.5.2.tar.gz
-	md5sums = 70e8813fed6b6eecfaa491ffd0b9bb39
+	depends = python2-requests
+	source = https://pypi.io/packages/source/p/pytvmaze/pytvmaze-1.5.3.tar.gz
+	md5sums = a9b31be478cc023e414bcbd35efea29e
 
 pkgname = python2-pytvmaze
 
