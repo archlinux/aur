@@ -11,4 +11,4 @@ depends=('binutils' 'gawk' 'gcc' 'libtool' 'libutil-linux' 'util-linux'
          'findutils' 'flex' 'gawk' 'gcc' 'gettext' 'grep' 'groff' 'gzip'
          'libtool' 'libutil-linux' 'm4' 'make' 'pacman' 'patch' 'pkg-config'
          'sed' 'sudo' 'texinfo' 'util-linux' 'which')
-url=("https://www.archlinux.org/")
+url="https://www.archlinux.org/"
