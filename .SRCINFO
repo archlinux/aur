@@ -1,6 +1,6 @@
 pkgbase = gifcurry
 	pkgdesc = Create animated GIFs, overlaid with optional text, from video files.
-	pkgver = 2.0.0.1_0
+	pkgver = 2.0.0.2_0
 	pkgrel = 1
 	url = https://github.com/lettier/gifcurry
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = gifcurry
 	depends = gtk3
 	options = strip
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/Gifcurry/2.0.0.1/Gifcurry-2.0.0.1.tar.gz
-	sha256sums = 2c0945fd5cf941537bcc25c70054c2494e441e4e8c1bca1a9954e4cff5b560a4
+	source = http://hackage.haskell.org/packages/archive/Gifcurry/2.0.0.2/Gifcurry-2.0.0.2.tar.gz
+	sha256sums = 1a7f269eda348fa34fe57f9a35cc810b304acc646f5146c4db2d72eb738c8b32
 
 pkgname = gifcurry
 
