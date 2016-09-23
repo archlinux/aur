@@ -12,19 +12,17 @@ pkgbase = refind-efi-git
 	depends = bash
 	depends = dosfstools
 	depends = efibootmgr
-	optdepends = mactel-boot: For bless command in Apple Mac systems
 	optdepends = imagemagick: For refind-mkfont script
 	optdepends = python: For refind-mkdefault script
-	provides = refind=0.10.3.r491.508d890
 	provides = refind-efi=0.10.3.r491.508d890
 	conflicts = refind-efi
 	options = !strip
-	options = docs
+	options = !buildflags
 	options = !makeflags
 	source = refind::git+http://git.code.sf.net/p/refind/code#branch=master
 	source = refind_linux.conf
-	sha1sums = SKIP
-	sha1sums = b6bc8653eb15a650b557db177378e65f6cbd52a3
+	sha256sums = SKIP
+	sha256sums = 098b703516cf10ffcc21193af7524a72c347970471a5e839dd1a79f65f81d763
 
 pkgname = refind-efi-git
 

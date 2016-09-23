@@ -26,19 +26,21 @@ license=('GPL3' 'custom')
 
 makedepends=('git')
 depends=('bash' 'dosfstools' 'efibootmgr')
-optdepends=('mactel-boot: For bless command in Apple Mac systems'
-            'imagemagick: For refind-mkfont script'
+optdepends=('imagemagick: For refind-mkfont script'
             'python: For refind-mkdefault script')
 
-options=('!strip' 'docs' '!makeflags')
+options=('!strip' '!buildflags' '!makeflags')
 
-conflicts=('refind-efi')
-provides=("refind=${pkgver}" "refind-efi=${pkgver}")
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 
 install="${_pkgname}.install"
 
 source=("refind::git+http://git.code.sf.net/p/refind/code#branch=master"
         'refind_linux.conf')
+
+sha256sums=('SKIP'
+            '098b703516cf10ffcc21193af7524a72c347970471a5e839dd1a79f65f81d763')
 
 if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
@@ -64,17 +66,11 @@ else
 
 fi
 
-sha1sums=('SKIP'
-          'b6bc8653eb15a650b557db177378e65f6cbd52a3')
-
 pkgver() {
 
 	cd "${srcdir}/${__pkgname}/"
 
-	_ACTUAL_REFIND_VER="$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${__pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')"
-	echo "${_ACTUAL_REFIND_VER}.$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
-
-	unset _ACTUAL_REFIND_VER
+	printf "%s.r%s.%s" "$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${__pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
@@ -155,7 +151,6 @@ _prepare_refind_sources() {
 
 	# Clean rEFInd git repo
 	git clean -x -d -f
-	echo
 
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		# Enable GNU_EFI_USE_MS_ABI
@@ -216,31 +211,14 @@ _build_tianocore_sources() {
 
 	cd "${_UDK_DIR}/"
 
-	# Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-
 	# Setup UDK Environment
 	source "${_UDK_DIR}/BaseTools/BuildEnv" BaseTools
-	echo
 
 	# Compile UDK BaseTools
 	make -C "${EDK_TOOLS_PATH}"
-	echo
-
-	# Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
 
 	# Compile UDK Libraries
 	"${EDK_TOOLS_PATH}/BinWrappers/PosixLike/build" -p "${_UDK_TARGET}" -a "${_TIANO_ARCH}" -b "${_TIANOCORE_TARGET}" -t "${_COMPILER}"
-	echo
 
 }
 
@@ -252,47 +230,22 @@ build() {
 
 	cd "${srcdir}/${__pkgname}_build/"
 
-	# Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
-
 	# Compile rEFInd UEFI application
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		make gnuefi
-		echo
 	else
 		make tiano
-		echo
 	fi
-
-	# Unset all compiler FLAGS
-	unset CFLAGS
-	unset CPPFLAGS
-	unset CXXFLAGS
-	unset LDFLAGS
-	unset MAKEFLAGS
 
 	# Compile UEFI FS drivers
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		make fs_gnuefi
-		echo
 	else
-		make fs
-		echo
+		make fs_tiano
 	fi
 
 	if [[ "${CARCH}" == 'x86_64' ]] && [[ "${_PXE}" == '1' ]]; then
 		cd "${srcdir}/${__pkgname}_build/net"
-
-		# Unset all compiler FLAGS
-		unset CFLAGS
-		unset CPPFLAGS
-		unset CXXFLAGS
-		unset LDFLAGS
-		unset MAKEFLAGS
 
 		# Compile Network support
 		make source
