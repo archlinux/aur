@@ -1,9 +1,9 @@
-# Maintainer: Anna Schumaker <anna@ocarinaproject.net>
+# Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 pkgname=ocarina
-pkgver=6.4.19
+pkgver=6.4.20
 pkgrel=1
 pkgdesc="A simple GTK+ and gstreamer based music player."
-url="http://www.ocarinaproject.net/"
+url="http://www.nowheycreamery.com/"
 arch=('x86_64' 'i686' 'armv7h')
 license=('GPL2')
 depends=('gtkmm3>=3.16' 'gstreamer' 'gst-plugins-base' 'taglib' 'libmusicbrainz5' 'libcoverart')
@@ -12,8 +12,8 @@ makedepends=('scons')
 conflicts=()
 replaces=()
 backup=()
-source=("http://ocarinaproject.net/wp-content/ocarina/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('11a4874b40132dccddb09d7a8bbaf0c1f67a3155')
+source=("http://nowheycreamery.com/wp-content/ocarina/${pkgname}-${pkgver}.tar.gz")
+sha1sums=('8dfa44bb48b84c9a76e7017720c831ce37e35f30')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
