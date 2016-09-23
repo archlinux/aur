@@ -2,6 +2,7 @@
 Description=Check and renew ACME TLS certificates
 After=network.target
 Requires=network.target
+AssertFileNotEmpty=/etc/acme/%I.conf
 
 [Service]
 # You need to configure http server so that directory "/run/acme-challenge" was the alias of "/.well-known/acme-challenge"
