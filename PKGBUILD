@@ -3,7 +3,7 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-gcc
 pkgver=4.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -65,7 +65,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/gcc-${pkgver}"/gcc-build
+  cd "${srcdir}/gcc-build"
 
   make "DESTDIR=$pkgdir" install-gcc install-target-libgcc \
     install-target-libstdc++-v3
