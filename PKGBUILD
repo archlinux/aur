@@ -25,19 +25,19 @@ backup=()
 install=''
 source=(
   "mutant::https://github.com/m0n0l0c0/$pkgname/archive/v$pkgver.tar.gz"
-  "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.1.tar.gz"
+  "mutant-packager::https://github.com/m0n0l0c0/mutant-packager/archive/v0.1.2.tar.gz"
 )
 sha256sums=(
   'a2d8ce8c386043b4579decbfd0602d77fa628775a568af6804c9a7782bcd1ea0'
-  'f30b6f953d5e671592b203e3c9ddfe49878c65f306836b1ffc40ca498b3212d4'
+  '4f2751e3e5129de18c0ca22654f5305df3298ab146ee3eb492df6bdfc6501842'
 )
 
 package() {
   # Prepare executable files
-  #chmod 755 -R "$srcdir/mutant-packager-0.1.1/"
+  #chmod 755 -R "$srcdir/mutant-packager-0.1.2/"
   # Launch npm installer
   echo "==> Launch installer"
-  "$srcdir/mutant-packager-0.1.1/install.sh" "$srcdir/Mutant-$pkgver"
+  "$srcdir/mutant-packager-0.1.2/install.sh" "$srcdir/Mutant-$pkgver"
   # Generate theme and list apps
     echo "==> Search theme..."
     # Default theme in most distros
@@ -53,25 +53,25 @@ package() {
     echo "{\"theme\": $theme }" > "$srcdir/Mutant-$pkgver/misc/theme.json"
     echo "==> Compile..."
     # Make compiler executable
-    chmod 755 "$srcdir/mutant-packager-0.1.1/gtkcc.sh"
-    "$srcdir/mutant-packager-0.1.1/gtkcc.sh" "$srcdir/mutant-packager-0.1.1/listApps"
+    chmod 755 "$srcdir/mutant-packager-0.1.2/gtkcc.sh"
+    "$srcdir/mutant-packager-0.1.2/gtkcc.sh" "$srcdir/mutant-packager-0.1.2/listApps"
     echo "==> Move"
     # Copy listApps to dst folder
-    mv "$srcdir/mutant-packager-0.1.1/listApps" "$srcdir/Mutant-$pkgver/apps/native/listApps"
+    mv "$srcdir/mutant-packager-0.1.2/listApps" "$srcdir/Mutant-$pkgver/apps/native/listApps"
     # Make listApps executable
     chmod 755 "$srcdir/Mutant-$pkgver/apps/native/listApps"
     echo "==> Done"
   
   # Make the program itself
-  "$srcdir/mutant-packager-0.1.1/mkDist.sh" "$srcdir/Mutant-$pkgver"
+  "$srcdir/mutant-packager-0.1.2/mkDist.sh" "$srcdir/Mutant-$pkgver"
   # Create necessary dirs
   install -dm755 "$pkgdir"/{opt,usr/{bin,share}}
   # Copy executable to fakeroot
   cp -R "$srcdir/Mutant-$pkgver/$pkgname-linux-x64" "$pkgdir/opt/$pkgname"
   # Set permissions on pkgdir
   chmod 755 "$pkgdir/opt/$pkgname/$pkgname"
-  install -Dm644 "$srcdir/mutant-packager-0.1.1/mutant.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/mutant-packager-0.1.1/icns/$pkgname.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/mutant-packager-0.1.2/mutant.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/mutant-packager-0.1.2/icns/$pkgname.png" "${pkgdir}/usr/share/pixmaps/$pkgname.png"
 
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
