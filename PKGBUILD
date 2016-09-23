@@ -2,22 +2,22 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Arnaud Durand-Favreau <biginoz at FREE point FR>
 #
-# namcap warns that 'java-environment' is a dependency. This is untrue:
-# java-runtime suffices. Also, java-runtime provides 'sh'.
+# java-runtime is insufficient as a dependency, as it gives the option of
+# installing either jre7-openjdk or jre8-openjdk, and the latter is required.
 #
 
 pkgname=mkgmap
-pkgver=r3694
+pkgver=r3695
 pkgrel=1
 pkgdesc='Create maps for Garmin GPS devices from OpenStreetMap (OSM) data.'
 url='http://www.mkgmap.org.uk'
 license=(GPL2)
 arch=(any)
-depends=(java-runtime)
+depends=(jre8-openjdk)
 conflicts=("${pkgname}-svn")
 source=("$pkgname" "http://www.mkgmap.org.uk/download/${pkgname}-${pkgver}.zip")
 sha256sums=('135dfbca5146cea34ef48ed6908a817efdfbbcccbb8adfbbb6a100f58c2c7bb6'
-            'fc39455c7bed238bd9ceb27f7cc098b90beff16aa2432e7584371e2be1651d9b')
+            '8d81606d3b804061d2d0aa1345b6000d50dad9c16223202ca8e337cf334c723c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
