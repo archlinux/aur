@@ -1,6 +1,6 @@
 # Maintainer: Andrew Walls <andrew.walls2 (at) gmail.com>
 pkgname=sconsify
-pkgver=0.3.0_rc1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="CLI Spotify client"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/fabiofalci/sconsify/releases/download/v${pkgver//_/-}/linux-$CARCH-$pkgname-${pkgver//_/-}.zip")
 noextract=()
-md5sums=('6eb8d70cc9a20653932395fb2816c90a')
+md5sums=('eee9e68031b608cd84d3180625194694')
 validpgpkeys=()
 
 package() {
