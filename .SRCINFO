@@ -1,12 +1,11 @@
 pkgbase = pacli-simple
 	pkgdesc = A simple and interative Bash Frontend for Pacman/Yaourt
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/excalibur1234/pacli-simple
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = base-devel
 	depends = yaourt
 	depends = pacman-mirrorlist
 	depends = downgrade
