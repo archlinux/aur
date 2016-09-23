@@ -16,7 +16,7 @@ backup=('opt/unifi/data/system.properties')
 install=unifi.install
 source=("https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         'unifi.service')
-sha512sums=('920d0ce7f31c59ffe851cb3ac34cc88905e577643267a21e1196ca397c05922c0188389a41cea3d184762145b58841c3cc51cb698373f8bd33c365678c044f31'
+sha512sums=('f5b5c2ca5fee30d2c52c8efd35d1114498072bd0ef0e8d747140a21f745ca8536f7cbcb13359daecda6764c51e51aaf634c7bd149f53115052ff421758621b3c'
             'eb6625d99634dee0298a961aaead6e3c504f2bf1c502ff071c52e46e8c0817e169ff2020d2e7bda9bac0f170c5214ec6939b14c16c6c6ce8da75ac6930ca2a47')
 
 package() {
