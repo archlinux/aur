@@ -1,11 +1,11 @@
 pkgbase = av-caster
 	pkgdesc = A simple native gStreamer GUI for screencast, webcam, and audio streaming
 	pkgver = 0.16.004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bill-auger/av-caster
 	arch = i686
 	arch = x86_64
-	license = LGPL3
+	license = GPL3
 	makedepends = alsa-lib
 	makedepends = curl
 	makedepends = freeglut

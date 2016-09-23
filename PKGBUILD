@@ -2,12 +2,12 @@
 # AUR Maintainer: lucifermstar<8bit.demoncoder@gmail.com>
 pkgname=av-caster
 pkgver=0.16.004
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple native gStreamer GUI for screencast, webcam, and audio streaming"
 arch=('i686' 'x86_64')
 url="https://github.com/bill-auger/av-caster"
-license=('LGPL3')
+license=('GPL3')
 groups=()
 depends=( 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gstreamer' )
 makedepends=( 'alsa-lib' 'curl' 'freeglut' 'freetype2' 'gcc' 'jack' 'libircclient' 'libx11' 'libxcomposite' 'libxcursor' 'libxinerama' 'libxrandr' 'mesa' )
