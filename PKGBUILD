@@ -27,4 +27,7 @@ package() {
 	install -m755 \
 		$srcdir/dlangide-$pkgver/bin/dlangide \
 		$pkgdir/usr/bin/dlangide
+	mkdir -p $pkgdir/usr/share/licenses/${pkgname}
+	install -m644 $srcdir/dlangide-$pkgver/LICENSE.txt \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
