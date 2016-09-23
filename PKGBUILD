@@ -32,7 +32,6 @@ makedepends=('git' 'python-setuptools'
 provides=('subliminal-git' 'subliminal' 'subliminal-git-doc')
 conflicts=('subliminal')
 replaces=('subliminal-git')
-install=subliminal-git.install
 pkgdesc="Python library and CLI tool for searching and downloading subtitles. (python3 version)"
 source=("${_gitname}::git+${_gitroot}.git#branch=master"
         'sphinx-manpages.patch')
@@ -57,7 +56,7 @@ build() {
 package() {
   cd ${srcdir}/${_gitname}
   python setup.py install --root="${pkgdir}/" --optimize=1
-  mv "${pkgdir}"/usr/bin/subliminal "${pkgdir}"/usr/bin/subliminal3
+  ln -s /usr/bin/subliminal "${pkgdir}"/usr/bin/subliminal3
 
   install -v -m755 -d "${pkgdir}/usr/share/licenses/python-subliminal-git"
   install -v -m644 ./LICENSE "${pkgdir}/usr/share/licenses/python-subliminal-git/"
