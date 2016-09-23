@@ -1,0 +1,16 @@
+pkgbase = tmssh-git
+	pkgdesc = SSH multiplexer over servers and tmux
+	pkgver = r27.85c40f8
+	pkgrel = 1
+	url = https://github.com/greymd/tmssh.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = bash
+	depends = tmux
+	provides = tmssh
+	source = git+https://github.com/greymd/tmssh.git
+	sha256sums = SKIP
+
+pkgname = tmssh-git
+
