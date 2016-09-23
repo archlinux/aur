@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=phrasendrescher
 pkgver="1.2.2b"
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular and multi processing pass phrase cracking tool."
 arch=('i686' 'x86_64')
 url="http://www.leidecker.info/projects/phrasendrescher/"
@@ -33,4 +33,6 @@ package() {
 	install -d -m755 ${pkgdir}/usr/share/man/man1
 	install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/man/pd.1.gz ${pkgdir}/usr/share/man/man1/
         install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/src/plugins/README ${pkgdir}/usr/share/doc/${_pkgname}/README.plugins
+	install -d -m755 ${pkgdir}/usr/share/licenses/${_pkgname}
+	install -D -m755 ${srcdir}/${_pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${_pkgname}/COPYING
 }
