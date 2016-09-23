@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
-pkgver=4.0.0.91
-pkgrel=2
+pkgver=4.0.0.91.1
+pkgrel=1
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d1
 # at https://gist.github.com/phiresky/1e2cbd30bed4e5978771af232d11afd1
 # so they are correctly versioned and old versions still exist
 noextract=()
-sha1sums=('187bbc4fe8eedcb58ab854c8419f10f8c953f55d')
+sha1sums=('73e8d337b17a829937aac6c36cebd1f1f77bae4c')
 validpgpkeys=()
 
 prepare() {
@@ -41,7 +41,7 @@ prepare() {
 }
 
 pkgver() {
-	xmllint --xpath '/Updates/PackageUpdate[Name="core.full"]/Version/text()' "$srcdir/installer/metadata/Updates.xml"
+	xmllint --xpath '/Updates/PackageUpdate[Name="core.full"]/Version/text()' "$srcdir/installer/metadata/Updates.xml" | tr '-' '.'
 }
 
 package() {
@@ -50,8 +50,4 @@ package() {
 	mv "$srcdir/extracted/"* "$pkgdir/opt/$pkgname"
 	ln -s "/opt/$pkgname/SVPManager" "$pkgdir/usr/bin/SVPManager"
 	chmod -R +rX "$pkgdir/opt/svp" "$pkgdir/usr/share"
-
-	# According to GhettoGirl35, this extension segfaults in .91
-	rm $pkgdir/opt/$pkgname/extensions/libsvplight.so
-	rm -r $pkgdir/opt/$pkgname/extensions/light
 }
