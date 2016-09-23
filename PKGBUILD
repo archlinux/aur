@@ -15,7 +15,7 @@ depends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fanktom/${pkgname}/tarball/${pkgver}")
-md5sums=('c98bc91d11a73a60e70e593b2afd6b40')
+md5sums=('f77f92796aaa1b50a0f2157a2446718d')
 changelog=ChangeLog
 
 package() {
