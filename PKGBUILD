@@ -13,7 +13,7 @@ url='http://testng.org/doc/index.html'
 license=('APACHE')
 depends=("java-runtime")
 source=("https://dl.bintray.com/cbeust/maven/org/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.jar")
-sha256sums=('d01a74435353b21d1177692cc64db181040d22cc282965a232386dd7a99f87de')
+sha256sums=('f8488fd426fd5ad7c033431faa1ca620152455e357779daa391de515ea1f835a')
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.jar" \
