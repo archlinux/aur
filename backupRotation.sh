@@ -33,7 +33,7 @@
 # Description:       see above
 ### END INIT INFO
 # endregion
-# region constants
+# region default options
 sourcePath='/tmp/source/'
 targetPath='/tmp/backup/'
 eMailAddress='' # Notification are disabled by default.
@@ -51,6 +51,11 @@ numberOfMonthlyRetentionDays=365 # Monthly backups for the last year.
 backupCommand='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose "$sourcePath" "$targetFilePath" && tar --dereference --create --verbose --gzip --file "${targetFilePath}.tar.gz" "$targetFilePath" && rm --recursive --verbose "$targetFilePath"'
 # Folder to delete is the last command line argument.
 cleanupCommand='rm --recursive --verbose'
+# endregion
+# region load options if present
+if [ -f /etc/backupRotation ]; then
+    source /etc/backupRotation
+fi
 # endregion
 # region controller
 # Get current month and week day number
