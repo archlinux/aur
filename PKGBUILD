@@ -1,9 +1,11 @@
-# Maintainer: Tobias Bohrmann <honeypot.carbage@aechelon.de>
+# Maintainer: Tobias Bohrmann (PlainTextField) <honeypot.carbage@aechelon.de>
+# Contributor: Bernd Prünster (JesusMcCloud) <aur@berndpruenster.org>
+
 pkgname=latexila
 provides=('latexila')
 conflicts=('latexila-git')
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 install=latexila.install
 pkgdesc="A LaTeX editor designed for the GNOME desktop"
 arch=('i686' 'x86_64')
