@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.2
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -10,14 +10,14 @@ license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('ruby-bundler' 'imagemagick')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-md5sums=('f7c43c972401c45873f48337f0da2a51')
+md5sums=('cdaca5ede2a40000d383d200e01c0395')
 
 
 prepare() {
-   cd numix-gtk-theme-${pkgver}
+   cd numix-gtk-theme-${pkgver}/src
    for FILE in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
-      gtk-3.0/assets/*.svg \
+      assets/*.svg \
       gtk-3.20/scss/_global.scss \
       metacity-1/metacity-theme-2.xml \
       metacity-1/metacity-theme-3.xml \
@@ -27,7 +27,7 @@ prepare() {
       xfwm4/*.xpm \
       unity/*.svg \
       index.theme \
-      Makefile
+      ../Makefile
    do
       sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
       sed -i 's/#d64937/#697740/Ig'  "${FILE}"
@@ -40,10 +40,10 @@ prepare() {
 
 
    # fix name change
-   cp gtk-3.0/assets/radio-{selected,checked}.svg
-   cp gtk-3.0/assets/radio-{selected,checked}-dark.svg
+   cp assets/radio-{selected,checked}.svg
+   cp assets/radio-{selected,checked}-dark.svg
 
-   for FILE in gtk-3.0/assets/*.svg
+   for FILE in assets/*.svg
    do
       if [[ -f ${FILE%.svg}.png ]]
       then
@@ -51,7 +51,7 @@ prepare() {
       fi
    done
 
-   echo -e "source 'https://rubygems.org'\ngem 'sass'" > Gemfile
+   echo -e "source 'https://rubygems.org'\ngem 'sass'" > ../Gemfile
 }
 
 
