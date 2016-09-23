@@ -1,8 +1,3 @@
-# $Id: PKGBUILD 275790 2016-09-06 16:10:26Z anatolik $
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Jonahtan Schaeffer <joschaeffer@gmail.com>
-# COntributor: Drake Arconis <lightdrake@gmail.com>
-
 _pkgbasename=jsoncpp
 pkgname=lib32-${_pkgbasename}
 pkgver=1.7.5
