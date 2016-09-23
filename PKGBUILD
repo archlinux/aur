@@ -14,7 +14,7 @@ md5sums=('99339b429a34f32267be833a882008b9')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make PREFIX="/usr"
+	make PREFIX="/usr" pic
 }
 
 check() {
