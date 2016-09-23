@@ -1,0 +1,153 @@
+#!/bin/bash
+
+function config {
+  if [[ ! -s $1 ]]; then
+    echo "Specify a valid properties file."
+    exit 1
+  fi
+
+  if [[ -s /usr/share/dom4/current ]]; then
+    game=$(</usr/share/dom4/current)
+    new=$(basename $1 .properties)
+    read -r -n 2 -p "A game named $game already exists. Set up to host $new instead? [Y/n] " ovr
+    if [[ $ovr != Y ]]; then
+      exit 0
+    fi
+  fi
+
+  echo "Copying properties file"
+
+  cp $1 /usr/share/dom4/config
+
+  mapfile=$(grep -oP "mapfile\s+\K.+" $1)
+  mapname=$(basename $mapfile .map)
+
+  echo "Copying $mapname map files"
+
+  mkdir -p /usr/share/dom4/maps
+
+  USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+  cp "$USER_HOME/dominions4/maps/$mapname."* /usr/share/dom4/maps
+
+  # Set name as current hosted game
+  echo $(basename $1 .properties) > /usr/share/dom4/current
+
+  cat <<EOF
+
+Done. Start the service to let players upload their pretenders.
+
+  sudo systemctl start dom4-server.service
+
+Once all pretenders have been uploaded, stop the service and set the game to ready.
+
+  sudo dom4 ready
+EOF
+}
+
+function ready {
+  if [[ ! -s /usr/share/dom4/current ]]; then
+    echo "No current game found. Use dom4 config to load game configuration."
+    exit 1
+  fi
+
+  game=$(</usr/share/dom4/current)
+  players=$(ls -1 /usr/share/dom4/savedgames/$game | wc -l)
+
+  if grep -qE "uploadtime|uploadmaxp" /usr/share/dom4/config/$game.properties ; then
+    echo "Upload flag already set. Start the service with systemctl."
+    exit 1
+  fi
+
+  echo "Setting start flag for $game ($players players)"
+
+  echo "uploadmaxp $players" >> "/usr/share/dom4/config/$game.properties"
+
+  cat <<EOF
+
+Flag set. Start the dom4-server service to begin the game.
+
+  sudo systemctl start dom4-server.service
+
+You may wish to enable it as well to ensure it restarts on boot.
+EOF
+}
+
+function delete {
+  if [[ -z $1 ]]; then
+    echo "Specify a game name to delete."
+    exit 0
+  fi
+
+  if [[ $1 = "default" ]]; then
+    echo "Not deleting the default config."
+    exit 0
+  fi
+
+  game=$(</usr/share/dom4/current)
+
+  if [[ $game = $1 ]]; then
+    read -r -n 2 -p "$game is currently being hosted. Really delete? [Y/n] " ovr
+    if [[ $ovr != Y ]]; then
+      exit 0
+    fi
+
+    rm /usr/share/dom4/current
+  fi
+
+  # leave the mapfile in case something else is using it
+  rm /usr/share/dom4/config/$1.properties
+  rm -rf /usr/share/dom4/savedgames/$1
+}
+
+if [[ $EUID -ne 0 && ! -z $1 ]]; then
+   echo "This script must be run as root or via sudo."
+   exit 1
+fi
+
+case $1 in
+  config)
+    config "${@:2}"
+    ;;
+
+  ready)
+    ready "${@:2}"
+    ;;
+
+  delete)
+    delete "${@:2}"
+    ;;
+
+  "")
+    cat <<EOF
+Get an example template to modify in your editor of choice:
+
+  cp /usr/share/dom4/config/default.properties mygame.properties
+
+Load a game config file:
+
+  sudo dom4 config path/to/mygame.properties
+
+Set start flag for current game after all pretenders have been uploaded, prior to running service:
+
+  sudo dom4 ready
+
+Delete a game:
+
+  sudo dom4 delete mygame
+
+Start the service:
+
+  sudo systemctl start dom4-server.service
+
+Stop the service:
+
+  sudo systemctl stop dom4-server.service
+
+Troubleshooting:
+
+If the service isn't running, figure out what's going wrong:
+
+  systemctl status dom4-server.service
+EOF
+    ;;
+esac

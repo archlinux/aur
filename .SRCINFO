@@ -1,0 +1,24 @@
+pkgbase = dom4-server
+	pkgdesc = Configure and run Dominions 4 as a headless server
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = dom4-server.install
+	arch = x86_64
+	license = MIT
+	source = dom4-server
+	source = dom4-server.install
+	source = dom4-server.service
+	source = dom4-sysusers.conf
+	source = dom4-tmpfile.conf
+	source = dom4
+	source = default.properties
+	md5sums = d8e3011dfa108d3f1574c57aefcecb32
+	md5sums = 5156ef9db21ecfc104bd03e74ca5ec15
+	md5sums = 7e51badb10054709bbec60bfcbf424ee
+	md5sums = e9772a237cc540558e74235b98df8a7f
+	md5sums = 338b8462868ecf6cc56c4a520cea6bac
+	md5sums = a6f06f3a3c5d4c12717b37db2c6f4dc7
+	md5sums = 22bdb16a296d12c51988c43c3218201b
+
+pkgname = dom4-server
+

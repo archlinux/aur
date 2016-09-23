@@ -1,0 +1,50 @@
+post_install() {
+  post_upgrade
+
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  if hash systemd-sysusers &> /dev/null; then
+    systemd-sysusers dom4.conf
+  fi
+
+  if hash systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create dom4.conf
+  fi
+
+  cat <<EOF
+Post-install tasks:
+
+Ensure Dominions 4 is installed to /opt/Dominions4. If you installed it from the Steam GUI with the default library path, use:
+
+  sudo cp -R ~/.local/share/Steam/steamapps/common/Dominions4 /opt
+
+If you installed it via SteamCMD (see README.md in the Git repository for instructions on doing that if you're starting from scratch):
+
+  sudo cp -R ~/Steam/steamapps/common/Dominions4 /opt
+
+If you can't find it at either of those locations, try 'locate dom4.sh' (if you *just* installed Dominions 4, 'sudo updatedb' first). This should output one line with the full path and filename of 'dom4.sh'. 'sudo cp -R' the path, excluding the filename.
+
+Your install directory must have a 'dom4key' file present containing your Dominions 4 license key. If the file does not already exist, you can create it using the license information from Steam.
+
+To begin setting up hosting, run 'dom4'.
+EOF
+}
+
+post_remove() {
+  if systemctl is-active dom4-server &> /dev/null; then
+    systemctl stop dom4-server
+  fi
+
+  systemctl daemon-reload
+  systemctl reset-failed
+
+  userdel dom4 > /dev/null
+
+  if [[ -s /usr/share/dom4/current ]]; then
+    rm /usr/share/dom4/current
+  fi
+
+  rm -rf /run/dom4
+}

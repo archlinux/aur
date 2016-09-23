@@ -1,0 +1,11 @@
+[Unit]
+Description=Dominions 4 Headless Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dom4-server
+Type=simple
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
