@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/buggins/dlangide"
 license=("BSL")
 groups=('dlang')
-makedepends=('dmd' 'git')
+makedepends=('dmd')
 
 source=(
 	"https://github.com/buggins/dlangide/archive/v$pkgver.tar.gz"
