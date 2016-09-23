@@ -17,8 +17,8 @@ depends=(
   'sqlite'
   'git'
   'npm'
-  'gtk+-3.0'
-  'librsvg2-dev'
+  'gtk3'
+  'librsvg'
   'base-devel'
 )
 makedepends=()
