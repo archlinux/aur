@@ -1,8 +1,8 @@
 # Maintainer: Swift Geek
 pkgname=ncpamixer-git
 _pkgname=ncpamixer
-pkgver=c03248b
-pkgrel=1
+pkgver=a
+pkgrel=2
 pkgdesc="ncurses PulseAudio Mixer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/fulhax/ncpamixer"
@@ -19,12 +19,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
+  cmake -DCMAKE_BUILD_TYPE=release $srcdir/$_pkgname/src\
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
   make
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
-  #make DESTDIR="${pkgdir}" install
-  install -d "$pkgdir/usr/bin/"
-  install -m 755 "build/Linux/debug/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
