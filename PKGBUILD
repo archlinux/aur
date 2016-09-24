@@ -6,14 +6,14 @@ pkgver=20160923_154728
 pkgrel=1
 pkgdesc="The Free On-line Dictionary of Computing for dictd et al."
 arch=('any')
-url="http://foldoc.org/"
+url="https://foldoc.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('dictd')
 provides=('dictd-foldoc')
 conflicts=('dictd-foldoc')
 install=$pkgname.install
-source=("http://foldoc.org/Dictionary.txt"
+source=("https://foldoc.org/Dictionary.txt"
         'sedfile')
 md5sums=('SKIP'
          '187e91f7b0734a85a81105d8745522c0')
