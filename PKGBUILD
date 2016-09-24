@@ -11,7 +11,7 @@ pkgname=atom-bleeding
 _pkgname=atom
 _apmver=1.12.7
 _atomver=1.10.2
-pkgver=1.10.2.a1.8.6.ap1.12.7.d0.8.9.e1.4.0.f1.7.19.fu0.12.0.g3.0.7.gp5.17.1.gt1.5.3.la0.9.1.lc3.4.4.lu0.38.0.m0.158.7.o1.2.1.s3.10.1.sc0.68.3.sv0.243.0.tb0.8.5.tf2.4.1.tv0.209.3
+pkgver=1.10.2.a1.8.6.ap1.12.7.d0.8.9.e1.4.0.f1.7.19.g3.0.7.gp5.17.1.gt1.5.3.l3.4.4.m0.158.7.o1.2.1.s3.10.1.sc0.68.3.sv0.243.0.t0.209.3
 pkgrel=1
 pkgdesc='A bleeding-edge version of the latest Atom stable release, built with the latest versions of all bundled packages. Includes extra packages to turn Atom into an IDE. Pre-built binary found in pkgbuild-current repository.'
 arch=('i686' 'x86_64')
@@ -338,7 +338,7 @@ pkgver() {
   _tf_ver="$(describe terminal-fusion)"
   _tree_view_ver="$(describe tree-view)"
 
-  printf "${_atomver}.a${_autocomplete_plus_ver}.ap${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.f${_file_icons_ver}.fu${_fusion_ui_ver}.g${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.la${_language_archlinux_ver}.lc${_linter_clang_ver}.lu${_language_unix_shell_ver}.m${_markdown_preview_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.tb${_toolbar_fusion_ver}.tf${_tf_ver}.tv${_tree_view_ver}"
+  printf "${_atomver}.a${_autocomplete_plus_ver}.ap${_apmver}.d${_dark_bint_syntax_ver}.e${_ELECTRON_VERSION}.f${_file_icons_ver}.g${_gpp_compiler_ver}.gp${_git_plus_ver}.gt${_git_time_machine_ver}.l${_linter_clang_ver}.m${_markdown_preview_ver}.s${_script_ver}.sc${_spell_check_ver}.sv${_settings_view_ver}.t${_tree_view_ver}"
 }
 
 prepare() {
