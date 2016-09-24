@@ -18,6 +18,7 @@ function change {
 
   echo "Setting $1 up for hosting."
   echo "$1" > /usr/share/dom4/current
+  chown dom4:dom4 /usr/share/dom4/current
 }
 
 # Load a properties file.
@@ -123,7 +124,7 @@ function ready {
   if [[ -s "/usr/share/dom4/savedgames/$game/ftherlnd" ]]; then
     echo "$game has already been started. If the service is not running, start it with systemctl."
 
-    exit 1
+    exit 0
   fi
 
   players=$(ls -1 /usr/share/dom4/savedgames/$game/*.2h | wc -l)
@@ -131,7 +132,7 @@ function ready {
   if grep -qE "uploadtime|uploadmaxp" /usr/share/dom4/config/$game.properties ; then
     echo "Upload flag already set for $game. Start the service with systemctl."
 
-    exit 1
+    exit 0
   fi
 
   echo "Setting start flag for $game ($players players)"

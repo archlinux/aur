@@ -13,6 +13,9 @@ post_upgrade() {
     systemd-tmpfiles --create dom4.conf
   fi
 
+  chown dom4:dom4 /usr/bin/dom4-server
+  chown -R dom4:dom4 /usr/share/dom4
+
   cat <<EOF
 
 Post-install tasks:

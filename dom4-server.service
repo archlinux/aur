@@ -5,6 +5,7 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/dom4-server
 Type=simple
+User=dom4
 RemainAfterExit=yes
 
 [Install]
