@@ -1,22 +1,21 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
 url="http://www.giadamusic.com/"
 license=('GPL3')
 depends=('fltk' 'jansson' 'libpulse' 'libxpm' 'rtmidi')
+makedepends=('steinberg-vst36')
 source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/grab/source"
-        'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip'
         'giada-rtmidi-header.patch'
         'giada-vst-no-werror.patch'
         "$pkgname.desktop"
         "$pkgname.png")
 install="$pkgname.install"
-md5sums=('cc0253ea3d0580d3e45ecb8db698e71b'
-         '1ac422ebb4aa2e86061278412c347b55'
+md5sums=('52d83bc0972e5696d6b8dbdf6c7bce0c'
          '82d7d245c8048f124324be51ab806b36'
          'a7fbba39f6fba5ff04c6048faa074571'
          '06238158680470ab01fbbeb33353e58e'
@@ -25,14 +24,13 @@ md5sums=('cc0253ea3d0580d3e45ecb8db698e71b'
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-src"
 
-  # copy VST headers needed by src/core
-  mkdir -p src/deps/vst
-  for header in aeffect.h aeffectx.h vstfxstore.h; do
-    cp -f "$srcdir/VST3 SDK/pluginterfaces/vst2.x/$header" src/deps/vst
+  # src/deps/juce/juce_audio_processors/format_types/juce_VST3Headers.h
+  msg2 "Fixing VST3 SDK include paths in JUCE sources..."
+  for file in \
+      src/deps/juce/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp
+  do
+    sed -i -e 's|pluginterfaces/vst2.x/|vst36/pluginterfaces/vst2.x/|g' "$file"
   done
-
-  # link dir structure from VST SDK needed by src/deps/juce
-  ln -sf "$srcdir/VST3 SDK/pluginterfaces" src/deps/vst
 
   # fix compiler flags in Makefile.am
   patch -p1 -r - -i "$srcdir/giada-vst-no-werror.patch"
