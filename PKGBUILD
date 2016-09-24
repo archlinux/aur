@@ -2,7 +2,7 @@
 # Maintainer: Rafael Fontenelle <rafaeff@gnome.org>
 
 pkgname=chrome-gnome-shell-git
-pkgver=7.r5.g1c84261
+pkgver=7.1.r0.g0816283
 pkgrel=1
 pkgdesc="Native connector for extensions.gnome.org"
 arch=('any')
