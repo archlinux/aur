@@ -1,5 +1,6 @@
 pkgbase = sublime-text-dev-imfix
-	pkgver = 3.3124
+	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Fcitx input method support
+	pkgver = 3.3126
 	pkgrel = 1
 	url = http://www.sublimetext.com/3
 	install = sublime_text_3_imfix.install
@@ -11,7 +12,7 @@ pkgbase = sublime-text-dev-imfix
 	depends = gtk2
 	depends = libpng
 	optdepends = gksu: sudo-save support
-	provides = sublime-text-dev=3.3124
+	provides = sublime-text-dev=3.3126
 	provides = sublime-text-nightly
 	conflicts = sublime-text-dev
 	conflicts = sublime-text-nightly
@@ -24,10 +25,10 @@ pkgbase = sublime-text-dev-imfix
 	sha512sums = 54b356867e6699fe88130c183ec76ea631f4afeab1a15f37e9ecd460f726bc7c80f056fd57637c24a67b865522e9d3bb5156414fe3cc5d091be9e1f21ef0f31f
 	sha512sums = 32023ae446a981cbf22c1e7c056d1bec76b1a8c4cba1a625d8314331c947ff3d12adaa24f267794f270de76a1170d19405a57100db1054760bfeeb29950bb5a0
 	sha512sums = 3ed8d47663d6e825ff3321155a65e1afa691fea541b96500d11ac763c55741db5712a307f6695fdf5f6d09a71d195efea494736026612bac5d0e410bc1e43c1f
-	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3124_x32.tar.bz2
-	sha512sums_i686 = 93776202439edd5d8b3c6c70f9eb37ac3f52480559da11df443969aaecbfb88b353ec41ff184a2975dfc25d538dc5c51cd078434e004e5d2b40adb2fb7991e52
-	source_x86_64 = http://download.sublimetext.com/sublime_text_3_build_3124_x64.tar.bz2
-	sha512sums_x86_64 = 0c5ee02086af776c2c5c8ec7dd824412f34f3c8e3ba73127d95c9e784ecaaa2fc631a0bdfaf4b308975cdba514f56eb9d49631a8243c9a1d35d3d2d2a77661df
+	source_i686 = https://download.sublimetext.com/sublime_text_3_build_3126_x32.tar.bz2
+	sha512sums_i686 = f8377adbad072577995918c7c8311ae63c7290581b00200e698ded18722893edf0baa7227480c8fc6143be30d695fae1e7312f7a9ac6728b8a397ea814a829fa
+	source_x86_64 = http://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2
+	sha512sums_x86_64 = a0a683b3cef45fba2a294cb044e5dc24ed3ea8d8a669321ee15844a48b88fbd345d50f499a9feb865735b15b44ff99d6b5f8aaee453245b9fd61e9e3d1c69f26
 
 pkgname = sublime-text-dev-imfix
 	pkgdesc = Sophisticated text editor for code, HTML and prose, development build with Fcitx input method support
