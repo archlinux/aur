@@ -1,16 +1,15 @@
 # Dominions 4 Server Configuration
 # Maintainer: Dian Fay <dian.m.fay@gmail.com>
 pkgname=dom4-server
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Configure and run Dominions 4 as a headless server"
 arch=('x86_64')
-url=""
+url="http://www.illwinter.com/dom4/"
 license=('MIT')
 install=$pkgname.install
 source=(
   dom4-server
-  dom4-server.install
   dom4-server.service
   dom4-sysusers.conf
   dom4-tmpfile.conf
