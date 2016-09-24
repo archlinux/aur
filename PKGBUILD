@@ -2,9 +2,10 @@
 
 pkgname=arch-audit
 pkgver=0.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
 url='https://github.com/ilpianista/arch-audit'
+depends=('curl')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
