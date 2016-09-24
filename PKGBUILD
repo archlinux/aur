@@ -5,7 +5,7 @@
 # Contributor: Diego <cdprincipe@gmail.com>
 
 pkgname=numix-themes-darkblue-git
-pkgver=2.5.1.r213.51284fd
+pkgver=2.6.4.r2.5a0ec95
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce) (Dark Blue Variant)'
 arch=('any')
@@ -21,9 +21,9 @@ md5sums=('SKIP'
          'a73ce14c46aabad53ddf6c1c467b2b67')
 
 prepare() {
-  cd numix-themes/
+  cd "$srcdir/numix-themes/src/"
 
-  patch -Np1 -i ../dark_colors.patch
+  patch -Np1 -i "$srcdir/dark_colors.patch"
   ln -srf gtk-3.0/gtk{-dark,}.css
   ln -srf gtk-3.20/gtk{-dark,}.css
 }
