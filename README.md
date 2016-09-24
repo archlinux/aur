@@ -32,11 +32,11 @@ If your computer is behind a router you will need to make sure the port is forwa
 
 ## Game Configuration
 
-Your game configuration is stored in key=value format in a properties file. Copy `default.properties` to a safe location and edit as needed. `mapfile` should reference the filename of a map in *your* `~/dominions4/maps` directory. Once ready:
+Your game configuration is stored in key=value format in a properties file. Copy `default.properties` to a safe location and edit as needed. `mapfile` should reference the filename of a map either in the same location as the properties file or in *your* `~/dominions4/maps` directory. Once ready:
 
 1. `sudo dom4 config mygame.properties` loads your config into the server and sets the current game name.
 1. `sudo systemctl start dom4-server` starts the server in pretender upload mode.
-1. If `uploadmaxp` or `uploadtime` are set in your configuration, you're done: the game will start automatically when the appropriate limit is reached. If not, wait for everyone to upload their pretenders and then bring the server down with `systemctl stop dom4-server`.
+1. If `uploadmaxp` or `uploadtime` are set in your configuration, you're done: the game will start automatically when the appropriate limit is reached. If not, wait for everyone to upload their pretenders and then bring the server down with `sudo systemctl stop dom4-server`.
 1. `sudo dom4 ready` sets the server up to host the last configured game, or you can pass in the name of another properties file (without the extension) after all pretenders have been uploaded.
 1. Restart the server using `sudo systemctl start dom4-server` again to begin the game.
 

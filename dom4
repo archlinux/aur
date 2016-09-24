@@ -15,19 +15,37 @@ function config {
     fi
   fi
 
-  echo "Copying properties file"
+  echo "Copying properties file..."
 
   cp $1 /usr/share/dom4/config
 
   mapfile=$(grep -oP "mapfile\s+\K.+" $1)
   mapname=$(basename $mapfile .map)
+  confdir=$(dirname $1)
 
-  echo "Copying $mapname map files"
+  echo "Looking for $mapname map files..."
 
   mkdir -p /usr/share/dom4/maps
 
   USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-  cp "$USER_HOME/dominions4/maps/$mapname."* /usr/share/dom4/maps
+
+  if [[ -s "$mapname.map" ]]; then
+    echo "Copying $mapname map files"
+
+    cp "$mapname".* /usr/share/dom4/maps
+  elif [[ -s "$confdir/$mapname".map ]]; then
+    echo "Copying $mapname map files from $confdir"
+
+    cp "$confdir/$mapname".* /usr/share/dom4/maps
+  elif [[ -s "$USER_HOME/dominions4/maps/$mapname".map ]]; then
+    echo "Copying $mapname map files from $USER_HOME/dominions4/maps"
+
+    cp "$USER_HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
+  else
+    echo "Could not find $mapname.map in $(pwd) or $USER_HOME/dominions4/maps. Please ensure the map file(s) exist and try again."
+
+    exit 1;
+  fi
 
   # Set name as current hosted game
   echo $(basename $1 .properties) > /usr/share/dom4/current
@@ -121,13 +139,13 @@ case $1 in
     delete "${@:2}"
     ;;
 
-  "")
+  *)
     cat <<EOF
 Get an example template to modify in your editor of choice:
 
   cp /usr/share/dom4/config/default.properties mygame.properties
 
-Load a game config file:
+Load a properties file into the server and set it as the current game:
 
   sudo dom4 config path/to/mygame.properties
 
