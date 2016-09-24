@@ -4,7 +4,7 @@
 
 pkgname=python2-pure-python-otr
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Off-The-Record Protocol Implementation in Python'
 arch=('any')
 url=https://github.com/afflux/pure-python-otr
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/python-otr/pure-python-otr/
 sha256sums=('909638104c65bfaf185e08cbfa7a328471e3d763da1a079569ab9dbfebee9f77')
 
 package() {
-  cd "$pkgbase-$pkgver"
+  cd pure-python-otr-"$pkgver"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
