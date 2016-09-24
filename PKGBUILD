@@ -3,19 +3,30 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=clutter
-pkgver=1.26.0
+pkgver=1.26.0+24+g79da526
 pkgrel=1
-pkgdesc="A GObject based library for creating fast, visually rich graphical user interfaces"
-arch=('i686' 'x86_64')
+pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
+arch=(i686 x86_64)
 url="http://clutter-project.org/"
-license=('LGPL')
-depends=('gtk3' 'cogl' 'libinput')
-makedepends=('gobject-introspection' 'gtk-doc')
-source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('67514e7824b3feb4723164084b36d6ce1ae41cb3a9897e9f1a56c8334993ce06')
+license=(LGPL)
+depends=(gtk3 cogl libinput)
+makedepends=(gobject-introspection gtk-doc git)
+_commit=79da526145de3033e01eb1de6d6ec712639a7ea5
+source=("git://git.gnome.org/clutter#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   ./configure --prefix=/usr \
     --enable-introspection \
     --enable-egl-backend \
@@ -33,6 +44,6 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
 }
