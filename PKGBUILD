@@ -1,23 +1,23 @@
-# Maintainer: rafaelff <rafaelff@gnome.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 _name=girl
 pkgname=$_name-git
-pkgver=9.5.1.4.g606bbb9
+pkgver=9.5.2.r0.gbc8dd5f
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
+url="https://wiki.gnome.org/Apps/Girl"
 license=(GPL)
 depends=(libgnomeui totem streamripper)
 makedepends=(intltool gtk-doc gnome-common git)
 provides=($_name)
 conflicts=($_name)
-url="https://wiki.gnome.org/Apps/Girl"
 source=("git+https://git.gnome.org/browse/$_name")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  git describe --tags | sed 's/GIRL_//g;s/_/./g;s/-/./g'
+  git describe --long | sed 's/GIRL_//g;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
