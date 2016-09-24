@@ -63,6 +63,10 @@ prepare() {
 }
 
 build() {
+  # bareos 15.2 doesn't work with gcc 6.1.1 and newer with optimizations
+  export CFLAGS="${CFLAGS/O2/O0}"
+  export CXXFLAGS="${CXXFLAGS/O2/O0}"
+
   pushd "${_pkgsrc}" &> /dev/null
   QMAKE="/usr/bin/qmake-qt4" DISTNAME="debian" ./configure $_configure_args
   make DESTDIR="$_instdir" install
