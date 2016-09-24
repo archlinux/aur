@@ -1,4 +1,4 @@
-# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 # Contributor: akane <grangerspit@gmail.com> <xmpp:heiß@neko.im>
 pkgname=dict-freedict-eng-deu
 pkgver=0.3.6
