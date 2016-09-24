@@ -16,7 +16,7 @@ sha256sums=('d9b152ae3dab76a334b9251702dba3311ceed91b58aaf52d916eb4ba1c2ab6e9'
 
 build() {
   cd "$srcdir"
-  rpmextract.sh "Linux/MegaCli-${pkgver//./-}-1.noarch.rpm"
+  rpmextract.sh "Linux/MegaCli-$pkgver-1.noarch.rpm"
 }
 
 package() {
