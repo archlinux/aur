@@ -10,7 +10,7 @@ url="http://search.cpan.org/~BRONSON/Term-ShellUI"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
-source=(http://www.cpan.org/authors/id/B/BR/BRONSON/Term-ShellUI-$pkgver.tar.gz)
+source=(https://cpan.metacpan.org/authors/id/B/BR/BRONSON/Term-ShellUI-$pkgver.tar.gz)
 sha256sums=('3279c01c76227335eeff09032a40f4b02b285151b3576c04cacd15be05942bdb')
 
 build() {
