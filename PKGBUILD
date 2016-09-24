@@ -162,7 +162,6 @@ fi
 # Build with GTK3?
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
-  makedepends+=('gtk2')
   _launcher_gtk='GTK=3'
   optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
   _gtk3=true
