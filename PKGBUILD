@@ -3,10 +3,10 @@
 pkgname=magnet2torrent-git
 _pkgname=magnet2torrent
 pkgver=0.r27.c02e075
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool that converts magnet links in to .torrent files.'
 arch=('any')
-url='https://github.com/danfolkes/Magnet2Torrent'
+url='https://github.com/LordAro/Magnet2Torrent'
 license=('GPL3')
 depends=('python' 'libtorrent-rasterbar>=1.1')
 makedepends=('git')
