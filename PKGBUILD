@@ -8,7 +8,7 @@ url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 install=$pkgname.install
-source=("http://sourceforge.net/projects/freedict/files/Spanish%20-%20English/$pkgver/freedict-spa-eng-$pkgver.tar.bz2")
+source=("https://sourceforge.net/projects/freedict/files/Spanish%20-%20English/$pkgver/freedict-spa-eng-$pkgver.tar.bz2")
 md5sums=('9611215259c816cfb25d30c5becf8c96')
 
 package()
