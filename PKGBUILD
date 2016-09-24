@@ -10,7 +10,7 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://nightly.mozilla.org'
 pkgver=99.0a1
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
@@ -19,8 +19,9 @@ _file="firefox-${_version}.en-US.linux-${CARCH}"
 curl -so {,${_srcurl}/}${_file}.checksums
 _sumbz2="$(grep -E sha512.+${_file}\.tar\.bz2 ${_file}.checksums | cut -d\  -f1)"
 _sumtxt="$(grep -E sha512.+${_file}\.txt ${_file}.checksums | cut -d\  -f1)"
-source=("${_srcurl}/${_file}.tar.bz2"
-        "${_srcurl}/${_file}.txt"
+_nametoday="${pkgname}-${pkgver}-$(date +%F)"
+source=("${_nametoday}.tar.bz2::${_srcurl}/${_file}.tar.bz2"
+        "${_nametoday}.txt::${_srcurl}/${_file}.txt"
         'firefox-nightly.desktop'
         'firefox-nightly-safe.desktop'
         'vendor.js')
@@ -41,7 +42,7 @@ provides=('firefox-nightly')
 conflicts=('firefox-nightly')
 
 pkgver() {
-  echo "${_version}.$(head -n1 ${_file}.txt | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_nametoday}.txt | cut -c-8)"
 }
 
 package() {
@@ -52,10 +53,10 @@ package() {
   # shortid 0x15A0A4BC
   if [[ $VERIFY_GPG -eq 1 ]]; then
     msg "Verifying GnuPG signature..."
-    FX_GPG="${_file}.checksums.asc"
-    curl -OR "${_srcurl}/${_file}.checksums"
-    curl -OR "${_srcurl}/${FX_GPG}"
-    gpg --verify ${FX_GPG}
+    _sums="${_file}.checksums"
+    curl -OR "${_srcurl}/${_sums}"
+    curl -OR "${_srcurl}/${_sums}.asc"
+    gpg --verify "${sums}.asc"
   fi
 
   #  uncomment this line to remove these
