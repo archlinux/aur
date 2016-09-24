@@ -1,1 +1,1 @@
-export FT2_SUBPIXEL_HINTING=0 
+export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
