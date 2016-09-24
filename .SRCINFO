@@ -7,7 +7,7 @@ pkgbase = dict-freedict-eng-fra
 	arch = any
 	license = GPL
 	optdepends = dictd: dict client and server
-	source = http://sourceforge.net/projects/freedict/files/English%20-%20French/0.1.4/freedict-eng-fra-0.1.4.tar.bz2
+	source = https://sourceforge.net/projects/freedict/files/English%20-%20French/0.1.4/freedict-eng-fra-0.1.4.tar.bz2
 	md5sums = b0ac25998cdebefc897cb2c20374a7f2
 
 pkgname = dict-freedict-eng-fra
