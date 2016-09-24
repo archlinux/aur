@@ -8,6 +8,7 @@ pkgbase = dict-freedict-fra-deu
 	license = GPL
 	optdepends = dictd: dict client and server
 	source = https://sourceforge.net/projects/freedict/files/French%20-%20German/2016-09-23/freedict-fra-deu-2016-09-23.tar.bz2
+	md5sums = 0c3488c6842f38e9c946a6c6593e07f6
 
 pkgname = dict-freedict-fra-deu
 
