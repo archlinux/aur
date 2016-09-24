@@ -14,6 +14,7 @@ post_upgrade() {
   fi
 
   cat <<EOF
+
 Post-install tasks:
 
 Ensure Dominions 4 is installed to /opt/Dominions4. If you installed it from the Steam GUI with the default library path, use:

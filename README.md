@@ -36,13 +36,13 @@ Your game configuration is stored in key=value format in a properties file. Copy
 
 1. `sudo dom4 config mygame.properties` loads your config into the server and sets the current game name.
 1. `sudo systemctl start dom4-server` starts the server in pretender upload mode.
-1. If `uploadmaxp` or `uploadtime` are set in your configuration, you're done: the game will start automatically when the appropriate limit is reached. If not, wait for everyone to upload their pretenders and then bring the server down with `sudo systemctl stop dom4-server`.
-1. `sudo dom4 ready` sets the server up to host the last configured game, or you can pass in the name of another properties file (without the extension) after all pretenders have been uploaded.
-1. Restart the server using `sudo systemctl start dom4-server` again to begin the game.
+1. If `uploadmaxp` or `uploadtime` are set in your configuration, you're done: the game will start automatically when the appropriate limit is reached.
+1. Once everyone has uploaded their pretenders, `sudo dom4 ready` sets the game start flag. You can `sudo dom4 ready mygame` to specify a game to host regardless of what was last configured.
+1. Restart the server using `sudo systemctl restart dom4-server` to begin the game.
 
 You may also want to `sudo systemctl enable dom4-server` in order to start the server automatically after reboots.
 
-Note that only one game may be served at a time. If you run `dom4 config` with a config file when a game has already been set up, it will ask if you want to overwrite the existing game. 
+Note that only one game may be served at a time. If you run `dom4 config` with a config file when a game has already been set up, it will ask if you want to host the new game instead. The previous config file will be preserved, unless the new one has the same name.
 
 ### Deleting Games
 

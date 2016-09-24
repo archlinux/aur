@@ -1,18 +1,49 @@
 #!/bin/bash
 
+# Change the current hosted game by editing /usr/share/dom4/current.
+# Params:
+#   $1  game name
+function change {
+  if [[ -s /usr/share/dom4/current ]]; then
+    game=$(</usr/share/dom4/current)
+
+    if [[ $1 != $game ]]; then
+      read -r -n 2 -p "Currently hosting $game. Set up to host $1 instead? [Y/n] " ovr
+      if [[ $ovr != Y ]]; then
+        exit 0
+      fi
+      echo
+    fi
+  fi
+
+  echo "Setting $1 up for hosting."
+  echo "$1" > /usr/share/dom4/current
+}
+
+# Load a properties file.
+# Params:
+#   $1  path to properties file
 function config {
-  if [[ ! -s $1 ]]; then
-    echo "Specify a valid properties file."
+  if [[ -z $1 ]]; then
+    cat <<EOF
+Usage:
+
+  sudo dom4 config path/to/mygame.properties
+EOF
     exit 1
   fi
 
-  if [[ -s /usr/share/dom4/current ]]; then
-    game=$(</usr/share/dom4/current)
-    new=$(basename $1 .properties)
-    read -r -n 2 -p "A game named $game already exists. Set up to host $new instead? [Y/n] " ovr
+  if [[ ! -s $1 ]]; then
+    echo "$1 does not exist. Specify a valid properties file."
+    exit 1
+  fi
+
+  if [[ -s "/usr/share/dom4/config/$1" ]]; then
+    read -r -n 2 -p "$1 is already configured. Overwrite? [Y/n] " ovr
     if [[ $ovr != Y ]]; then
       exit 0
     fi
+    echo
   fi
 
   echo "Copying properties file..."
@@ -23,22 +54,20 @@ function config {
   mapname=$(basename $mapfile .map)
   confdir=$(dirname $1)
 
-  echo "Looking for $mapname map files..."
-
   mkdir -p /usr/share/dom4/maps
 
   USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 
   if [[ -s "$mapname.map" ]]; then
-    echo "Copying $mapname map files"
+    echo "Copying $mapname map files..."
 
     cp "$mapname".* /usr/share/dom4/maps
   elif [[ -s "$confdir/$mapname".map ]]; then
-    echo "Copying $mapname map files from $confdir"
+    echo "Copying $mapname map files from $confdir..."
 
     cp "$confdir/$mapname".* /usr/share/dom4/maps
   elif [[ -s "$USER_HOME/dominions4/maps/$mapname".map ]]; then
-    echo "Copying $mapname map files from $USER_HOME/dominions4/maps"
+    echo "Copying $mapname map files from $USER_HOME/dominions4/maps..."
 
     cp "$USER_HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
   else
@@ -47,8 +76,9 @@ function config {
     exit 1;
   fi
 
-  # Set name as current hosted game
-  echo $(basename $1 .properties) > /usr/share/dom4/current
+  echo
+
+  change "$(basename $1 .properties)"
 
   cat <<EOF
 
@@ -62,21 +92,45 @@ Once all pretenders have been uploaded, stop the service and set the game to rea
 EOF
 }
 
+# Set game start flag in properties file.
+# Params:
+#   $1  game name (optional; uses whatever's in current if not supplied)
 function ready {
   if [[ ! -z $1 ]]; then
-    echo $1 > /usr/share/dom4/current
+    if [[ ! -s "/usr/share/dom4/config/$1.properties" ]]; then
+      echo "No game named '$1' found. Use dom4 config $1.properties to upload it."
+
+      exit 1
+    fi
+
+    change $1
   fi
 
   if [[ ! -s /usr/share/dom4/current ]]; then
     echo "No current game found. Use dom4 config to load game configuration."
+
     exit 1
   fi
 
   game=$(</usr/share/dom4/current)
-  players=$(ls -1 /usr/share/dom4/savedgames/$game | wc -l)
+
+  if [[ ! -d "/usr/share/dom4/savedgames/$game" ]]; then
+    echo "No pretenders uploaded for $game. Start the service with systemctl to let players upload."
+
+    exit 1
+  fi
+
+  if [[ -s "/usr/share/dom4/savedgames/$game/ftherlnd" ]]; then
+    echo "$game has already been started. If the service is not running, start it with systemctl."
+
+    exit 1
+  fi
+
+  players=$(ls -1 /usr/share/dom4/savedgames/$game/*.2h | wc -l)
 
   if grep -qE "uploadtime|uploadmaxp" /usr/share/dom4/config/$game.properties ; then
-    echo "Upload flag already set. Start the service with systemctl."
+    echo "Upload flag already set for $game. Start the service with systemctl."
+
     exit 1
   fi
 
@@ -122,20 +176,21 @@ function delete {
 }
 
 if [[ $EUID -ne 0 && ! -z $1 ]]; then
-   echo "This script must be run as root or via sudo."
+   echo "Use sudo to run this script."
+
    exit 1
 fi
 
 case $1 in
-  config)
+  "config" | "configure")
     config "${@:2}"
     ;;
 
-  ready)
+  "ready")
     ready "${@:2}"
     ;;
 
-  delete)
+  "delete")
     delete "${@:2}"
     ;;
 
@@ -145,7 +200,7 @@ Get an example template to modify in your editor of choice:
 
   cp /usr/share/dom4/config/default.properties mygame.properties
 
-Load a properties file into the server and set it as the current game:
+Load a properties file into the server and set it as the current hosted game:
 
   sudo dom4 config path/to/mygame.properties
 
@@ -153,22 +208,19 @@ Set start flag for current game after all pretenders have been uploaded, prior t
 
   sudo dom4 ready
 
+Set start flag for mygame after pretenders have been uploaded and set it as current hosted game:
+
+  sudo dom4 ready mygame
+
 Delete a game:
 
   sudo dom4 delete mygame
 
-Start the service:
+Service commands:
 
   sudo systemctl start dom4-server.service
-
-Stop the service:
-
   sudo systemctl stop dom4-server.service
-
-Troubleshooting:
-
-If the service isn't running, figure out what's going wrong:
-
+  sudo systemctl restart dom4-server.service
   systemctl status dom4-server.service
 EOF
     ;;
