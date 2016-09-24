@@ -11,7 +11,7 @@
 
 _use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
 _use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option, '_use_clang' is need set to 1
-_use_ccache=1          # Use ccache when build
+_use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
 _debug_mode=0          # Build in debug mode
@@ -100,7 +100,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           'e7db42be95f3ca28a270df45d884b12f66686716'
           'cb2fd59666b2904546d27e863613db515633a5f4'
           # Misc Patches
-          '0032f3b38c3cdf07e592fe0428cea3af2ce433b8'
+#          '0032f3b38c3cdf07e592fe0428cea3af2ce433b8'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           '17ba326edbd5df0aba71958d9eea56ba9653c995'
           # Patch from crbug (chromium bugtracker)
