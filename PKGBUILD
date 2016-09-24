@@ -1,4 +1,4 @@
-# Maintainer:  Einhard Leichtfuß  <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 # Contributor: Jan Keith Darunday <jkcdarunday@gmail.com>
 # Contributor: Enrico Morelli     <morelli@cerm.unifi.it>
 pkgname=dict-foldoc
