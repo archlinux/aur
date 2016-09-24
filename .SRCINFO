@@ -1,6 +1,6 @@
 pkgbase = probability
 	pkgdesc = Probability Machine Simulator
-	pkgver = 1.0
+	pkgver = b55e508d94e6
 	pkgrel = 3
 	url = https://bitbucket.org/ewaller/probability
 	arch = i686
