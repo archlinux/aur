@@ -2,7 +2,7 @@
 
 pkgname=arch-audit
 pkgver=0.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
 url='https://github.com/ilpianista/arch-audit'
 makedepends=('cargo')
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ilpianista/arch-audit/archi
         'arch-audit.service' 'arch-audit.timer')
 md5sums=('7f0115ebb9d3801aec5ff53c490ccf76'
          '2401eefbfb11627d9aaf14e98f350d3c'
-         '223d953fca28e71af0c5c2feb75e5be8')
+         '4ea3d2ef7d9543d69469cdaa537a94b2')
 
 build() {
   cd "$pkgname-$pkgver"
