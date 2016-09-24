@@ -1,4 +1,5 @@
 sudo pacman -R dom4-server <<< "Y"
 updpkgsums
 makepkg -cf
+makepkg --printsrcinfo > .SRCINFO
 makepkg -sri <<< "Y"

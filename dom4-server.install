@@ -34,17 +34,17 @@ EOF
 
 post_remove() {
   if systemctl is-active dom4-server &> /dev/null; then
-    systemctl stop dom4-server
+    systemctl stop dom4-server &> /dev/null
   fi
 
-  systemctl daemon-reload
-  systemctl reset-failed
+  systemctl daemon-reload &> /dev/null
+  systemctl reset-failed &> /dev/null
 
-  userdel dom4 > /dev/null
+  userdel dom4 &> /dev/null
 
   if [[ -s /usr/share/dom4/current ]]; then
-    rm /usr/share/dom4/current
+    rm /usr/share/dom4/current &> /dev/null
   fi
 
-  rm -rf /run/dom4
+  rm -rf /run/dom4 &> /dev/null
 }
