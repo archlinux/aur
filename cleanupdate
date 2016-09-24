@@ -1,0 +1,531 @@
+#!/bin/bash
+#
+# 'cleanupdate' by cubanpit at github.com
+#
+# Initial script found somewhere on internet (thanks to unknown).
+# Menu taken from a script by Chrysostomus.
+#
+# This script should help you to mantain an ArchLinux-based system.
+# More info at github.com/cubanpit/cleanupdate
+#
+################################################################################
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+################################################################################
+
+
+_BOLD=$(tput bold)
+_NORMAL=$(tput sgr0)
+_RED=$(tput setaf 1)
+_GREEN=$(tput setaf 2)
+_YELLOW=$(tput setaf 3)
+_LNG="eng"
+[[ "$LANG" =~ "it_IT" ]] && _LNG="ita"
+
+#
+# Function to print a message after a transaction, communicating the success
+#  or the failure.
+# Usage: end_msg "ok||no" "message"
+#
+function end_msg {
+	mod=$1
+	msg=$2
+	if [[ $mod = ok ]]
+	then
+		[[ $_LNG = ita ]] && echo "${_BOLD}[${_GREEN}FINITO${_NORMAL}${_BOLD}] $msg ${_NORMAL}"
+		[[ $_LNG = eng ]] && echo "${_BOLD}[${_GREEN}DONE${_NORMAL}${_BOLD}] $msg ${_NORMAL}"
+	elif [[ $mod = no ]]
+	then
+		[[ $_LNG = ita ]] && echo "${_BOLD}[${_RED}NON ESEGUITO${_NORMAL}${_BOLD}] $msg ${_NORMAL}"
+		[[ $_LNG = eng ]] && echo "${_BOLD}[${_RED}NOT EXECUTED${_NORMAL}${_BOLD}] $msg ${_NORMAL}"
+	else
+		[[ $_LNG = ita ]] && echo "ERRORE: modalità sconosciuta, vedere funzione end_msg()."
+		[[ $_LNG = eng ]] && echo "ERROR: unknown option, see end_msg() function."
+	fi
+}
+
+#
+# Function to print a question, setting the default answer.
+# Usage: qst_msg "yes||no" "question"
+#
+function qst_msg {
+	mod=$1
+	msg=$2
+	if [[ $mod = yes ]]
+	then
+		[[ $_LNG = ita ]] && echo -n "${_BOLD}${_YELLOW}>>${_NORMAL}${_BOLD} $msg [S/n]?${_NORMAL} "
+		[[ $_LNG = eng ]] && echo -n "${_BOLD}${_YELLOW}>>${_NORMAL}${_BOLD} $msg [Y/n]?${_NORMAL} "
+	elif [[ $mod = no ]]
+	then
+		[[ $_LNG = ita ]] && echo -n "${_BOLD}${_YELLOW}>>${_NORMAL}${_BOLD} $msg [s/N]?${_NORMAL} "
+		[[ $_LNG = eng ]] && echo -n "${_BOLD}${_YELLOW}>>${_NORMAL}${_BOLD} $msg [y/N]?${_NORMAL} "
+	else
+		[[ $_LNG = ita ]] && echo "ERRORE: risposta predefinita sconosciuta, vedere funzione qst_msg()."
+		[[ $_LNG = eng ]] && echo "ERROR: unknown default answer, see qst_msg() function."
+	fi
+}
+
+#
+# Function containing all system update operation.
+# Database sync, package upgrade, AUR upgrade.
+#
+function sys_update {
+	[[ $_LNG = ita ]] && echo " ${_BOLD}::Aggiornamento del sistema::${_NORMAL} "
+	[[ $_LNG = eng ]] && echo " ${_BOLD}::System update::${_NORMAL} "
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri aggiornare il database locale"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to update local database"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+	then
+		sudo pacman -Syy --color never
+		[[ $_LNG = ita ]] && end_msg "ok" "Aggiornamento database locale"
+		[[ $_LNG = eng ]] && end_msg "ok" "Local database update"
+	else
+		[[ $_LNG = ita ]] && end_msg "no" "Aggiornamento database locale"
+		[[ $_LNG = eng ]] && end_msg "no" "Local database update"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri aggiornare i pacchetti ufficiali"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to upgrade official packages"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+    then
+    	sudo pacman -Syu --color never
+    	[[ $_LNG = ita ]] && end_msg "ok" "Aggiornamento pacchetti ufficiali"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Official packages upgrade"
+	else
+    	[[ $_LNG = ita ]] && end_msg "no" "Aggiornamento pacchetti ufficiali"
+		[[ $_LNG = eng ]] && end_msg "no" "Official packages upgrade"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri aggiornare i pacchetti di AUR"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to upgrade AUR packages"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+	then
+		_PAC=$(pacman -Qi pacaur 2> /dev/null)
+		_YAU=$(pacman -Qi yaourt 2> /dev/null)
+		if [[ -n $_PAC ]]
+		then
+			pacaur -Sua
+			[[ $_LNG = ita ]] && end_msg "ok" "Aggiornamento AUR"
+			[[ $_LNG = eng ]] && end_msg "ok" "AUR upgrade"
+		elif [[ -n $_YAU ]]
+		then
+			yaourt -Sua --nocolor
+			[[ $_LNG = ita ]] && end_msg "ok" "Aggiornamento AUR"
+			[[ $_LNG = eng ]] && end_msg "ok" "AUR upgrade"
+		else
+			[[ $_LNG = ita ]] && echo "Non risulta installato né 'yaourt' né 'pacaur',"\
+				"non è possibile accedere agli aggiornamenti AUR tramite questo script."
+			[[ $_LNG = eng ]] && echo "You don't have neither 'yaourt' nor 'pacaur' installed,"\
+				"you can't access AUR updates through this script."
+			echo
+			[[ $_LNG = ita ]] && end_msg "no" "Aggiornamento AUR"
+			[[ $_LNG = eng ]] && end_msg "no" "AUR upgrade"
+		fi
+	else
+		[[ $_LNG = ita ]] && end_msg "no" "Aggiornamento AUR"
+		[[ $_LNG = eng ]] && end_msg "no" "AUR upgrade"
+	fi
+}
+
+#
+# Function containing all package clean operation.
+# Orphaned packages cleaing, cache cleaning, database optimization.
+#
+function clean_pkg {
+	[[ $_LNG = ita ]] && echo " ${_BOLD}::Pulizia pacchetti::${_NORMAL} "
+	[[ $_LNG = eng ]] && echo " ${_BOLD}::Clean packages::${_NORMAL} "
+	echo
+	[[ $_LNG = ita ]] && qst_msg "no" "Desideri cercare pacchetti orfani?"
+	[[ $_LNG = eng ]] && qst_msg "no" "Do you want search for orphaned packages"
+	read -r sure
+	if [[ ( $_LNG = eng && ( $sure = y || $sure = Y ) ) || \
+		  ( $_LNG = ita && ( $sure = s || $sure = S ) ) ]]
+    then
+		_ORP=$(pacman -Qdtq)
+		if [[ -n $_ORP ]]
+		then
+			sudo pacman --color never -Rs $_ORP
+		else
+			[[ $_LNG = ita ]] && echo "Non è presente alcun pacchetto orfano."
+			[[ $_LNG = eng ]] && echo "There isn't any orphaned packages."
+		fi
+		[[ $_LNG = ita ]] && end_msg "ok" "Pacchetti orfani"
+		[[ $_LNG = eng ]] && end_msg "ok" "Orphaned packages"
+	else
+		[[ $_LNG = ita ]] && end_msg "no" "Pacchetti orfani"
+		[[ $_LNG = eng ]] && end_msg "no" "Orphaned packages"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri pulire la cache dei pacchetti installati (conservando le ultime 2 versioni)"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to clean the cache of installed packages (keeping 2 versions)"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+    then
+    	sudo paccache -rk2 --nocolor
+    	[[ $_LNG = ita ]] && end_msg "ok" "Pulizia cache pacchetti installati"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Installed packages cache clean"
+	else
+    	[[ $_LNG = ita ]] && end_msg "no" "Pulizia cache pacchetti installati"
+		[[ $_LNG = eng ]] && end_msg "no" "Installed packages cache clean"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri pulire completamente la cache dei pacchetti non installati"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to completely clean the cache of uninstalled packages"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+    then
+    	sudo paccache -ruk0 --nocolor
+    	[[ $_LNG = ita ]] && end_msg "ok" "Pulizia cache pacchetti non installati"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Uninstalled packages cache clean"
+	else
+    	[[ $_LNG = ita ]] && end_msg "no" "Pulizia cache pacchetti non installati"
+		[[ $_LNG = eng ]] && end_msg "no" "Uninstalled packages cache clean"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "no" "Desideri ottimizzare (deframmentare) il database di pacaman (NO SSD)"
+	[[ $_LNG = eng ]] && qst_msg "no" "Do you want to optimize (defragment) pacman database (NO SSD)"
+	read -r sure
+	if [[ ( $_LNG = eng && ( $sure = y || $sure = Y ) ) || \
+		  ( $_LNG = ita && ( $sure = s || $sure = S ) ) ]]
+    then
+    	sudo pacman-optimize --nocolor
+    	[[ $_LNG = ita ]] && end_msg "ok" "Ottimizzazione database"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Database optimization"
+	else
+    	[[ $_LNG = ita ]] && end_msg "no" "Ottimizzazione database"
+		[[ $_LNG = eng ]] && end_msg "no" "Database optimization"
+	fi
+}
+
+#
+# Function containing all file clean operation.
+# Tmp file clean, cache & thumbs clean, residual file clean, trash clean.
+#
+function clean_file {
+	[[ $_LNG = ita ]] && echo " ${_BOLD}::Pulizia file::${_NORMAL} "
+	[[ $_LNG = eng ]] && echo " ${_BOLD}::Clean files::${_NORMAL} "
+	echo
+	[[ $_LNG = ita ]] && qst_msg "no" "Desideri rimuovere ogni file in /tmp"
+	[[ $_LNG = eng ]] && qst_msg "no" "Do you want to clean every /tmp files"
+	read -r sure
+	if [[ ( $_LNG = eng && ( $sure = y || $sure = Y ) ) || \
+		  ( $_LNG = ita && ( $sure = s || $sure = S ) ) ]]
+    then
+    	sudo rm -rf /tmp/*
+    	[[ $_LNG = ita ]] && end_msg "ok" "Pulizia file temporanei"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Tmp files clean"
+	else
+		[[ $_LNG = ita ]] && end_msg "no" "Pulizia file temporanei"
+		[[ $_LNG = eng ]] && end_msg "no" "Tmp files clean"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri stimare lo spazio occupato dai file poco recenti nella cache e tra le miniature"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to estimate disk space taken by old cache and thumbnails"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+   	then
+   		_OLD=$( find ~/.thumbnails -type f -atime +30 -print0 | du --files0-from=- -ck | tail -1 | cut -f 1 )
+		_OLD+=$( find ~/.cache -type f -atime +30 -print0 | du --files0-from=- -ck | tail -1 | cut -f 1 )
+		_OLD+=$( find ~/.thumbnails -empty -type d -atime +30 -print0 | du --files0-from=- -ck | tail -1 | cut -f 1 )
+		_OLD+=$( find ~/.cache -empty -type d -atime +30 -print0 | du --files0-from=- -ck | tail -1 | cut -f 1 )
+		if [[ $_OLD -gt 0 ]]
+		then
+			[[ $_LNG = ita ]] && qst_msg "yes" "L'eliminazione di questi file libererà $_OLD kb di spazio su disco, vuoi procedere"
+			[[ $_LNG = eng ]] && qst_msg "yes" "The deletion of these files will free $_OLD kb of disk space, do you want to continue"
+			read -r sure
+			if [[ $sure != "n" && $sure != "N" ]]
+			then
+				find ~/.thumbnails -type f -atime +30 -print0 | xargs -0 /bin/rm -f
+				find ~/.cache -type f -atime +30 -print0 | xargs -0 /bin/rm -f
+				find ~/.thumbnails -empty -type d -atime +30 -print0 | xargs -0 /bin/rm -rf
+				find ~/.cache -empty -type d -atime +30 -print0 | xargs -0 /bin/rm -rf
+   				[[ $_LNG = ita ]] && end_msg "ok" "Pulizia cache e miniature"
+   				[[ $_LNG = eng ]] && end_msg "ok" "Thumbs and cache clean"
+			else
+   				[[ $_LNG = ita ]] && end_msg "no" "Pulizia cache e miniature"
+				[[ $_LNG = eng ]] && end_msg "no" "Thumbs and cache clean"
+			fi
+		else
+			[[ $_LNG = ita ]] && echo "Non c'è necessità di eliminare alcun file, le cartelle sono sufficientemente pulite."
+			[[ $_LNG = eng ]] && echo "There is no need to delete any files, these folders are pretty clean."
+   			[[ $_LNG = ita ]] && end_msg "ok" "Pulizia cache e miniature"
+   			[[ $_LNG = eng ]] && end_msg "ok" "Thumbs and cache clean"
+		fi
+	else
+   		[[ $_LNG = ita ]] && end_msg "no" "Pulizia cache e miniature"
+		[[ $_LNG = eng ]] && end_msg "no" "Thumbs and cache clean"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "yes" "Desideri cercare file residui"
+	[[ $_LNG = eng ]] && qst_msg "yes" "Do you want to search for residual files"
+	read -r sure
+	if [[ $sure != "n" && $sure != "N" ]]
+    then
+    	_RES="$(find "$HOME" -name "Desktop.ini")$(find "$HOME" -name "*~")$(find "$HOME" -name "Thumbs.db")"
+		if [[ -n $_RES ]]
+		then
+			find "$HOME" -name "*~"
+    		find "$HOME" -name "Desktop.ini"
+    		find "$HOME" -name "Thumbs.db"
+    		[[ $_LNG = ita ]] && qst_msg "no" "Desideri rimuovere questi file"
+    		[[ $_LNG = eng ]] && qst_msg "no" "Do you want to remove these files"
+    		read -r sure
+			if [[ ( $_LNG = eng && ( $sure = y || $sure = Y ) ) || \
+			  ( $_LNG = ita && ( $sure = s || $sure = S ) ) ]]
+        	then
+        		find "$HOME" -name "*~" -print0 | xargs -0 /bin/rm -f
+        		find "$HOME" -name "Desktop.ini" -print0 | xargs -0 /bin/rm -f
+        		find "$HOME" -name "Thumbs.db" -print0 | xargs -0 /bin/rm -f
+        		[[ $_LNG = ita ]] && end_msg "ok" "Pulizia file residui"
+        		[[ $_LNG = eng ]] && end_msg "ok" "Residual files clean"
+    		else
+        		[[ $_LNG = ita ]] && end_msg "no" "Pulizia file residui"
+				[[ $_LNG = eng ]] && end_msg "no" "Residual files clean"
+    		fi
+		else
+			[[ $_LNG = ita ]] && echo "Non sono presenti file residui."
+			[[ $_LNG = eng ]] && echo "There are no residual files."
+        	[[ $_LNG = ita ]] && end_msg "ok" "Pulizia file residui"
+        	[[ $_LNG = eng ]] && end_msg "ok" "Residual files clean"
+		fi
+	else
+		[[ $_LNG = ita ]] && end_msg "no" "Pulizia file residui"
+		[[ $_LNG = eng ]] && end_msg "no" "Residual files search"
+	fi
+	echo
+	[[ $_LNG = ita ]] && qst_msg "no" "Desideri svuotare il cestino"
+	[[ $_LNG = eng ]] && qst_msg "no" "Do you want to clean trash"
+	read -r sure
+	if [[ ( $_LNG = eng && ( $sure = y || $sure = Y ) ) || \
+		  ( $_LNG = ita && ( $sure = s || $sure = S ) ) ]]
+    then
+    	sudo rm -rfv ~/.local/share/Trash/*
+    	[[ $_LNG = ita ]] && end_msg "ok" "Pulizia cestino"
+    	[[ $_LNG = eng ]] && end_msg "ok" "Trash clean"
+	else
+    	[[ $_LNG = ita ]] && end_msg "no" "Pulizia cestino"
+		[[ $_LNG = eng ]] && end_msg "no" "Trash clean"
+	fi
+}
+
+#
+# Function containing english documentation text.
+#
+function doc_eng {
+less -R << EOF
+Press 'q' to quit documentation
+
+${_BOLD}${_YELLOW}::Update system::${_NORMAL}
+
+${_BOLD}Update local database (pacman -Syy)${_NORMAL}
+Sync local database with online repositories, force the sync also if local database seems up to date. Repositories are configured in '/etc/pacman.conf'.
+
+${_BOLD}Update packages from repositories (pacman -Syu)${_NORMAL}
+Check that local database is up to date with online repositories, check packages version between database and installed packages, if versions are different runs update. It will print a warning if a package is newer than repository, in that case it's possible to downgrade with 'pacman -Syuu'.
+
+${_BOLD}Update packages from AUR (yaourt -Sua)${_NORMAL}
+Update packages from AUR repository, if needed. It can use different tools for that: 'pacaur' or 'yaourt'.
+
+${_BOLD}${_YELLOW}::Clean packages::${_NORMAL}
+
+${_BOLD}Search and uninstall orphaned packages (pacman -Qdtq)${_NORMAL}
+Search for packages installed as dependencies and no longer required, if there are some it asks before unistalling them.
+
+${_BOLD}Clean the cache of installed packages (paccache -rk2)${_NORMAL}
+By default pacman keeps forever a backup of every version of every installed package, this backups can grow and fill the hard disk, so it must be cleaned sometimes. This command removes all backups for all installed packages keeping only two version, just in case it is necessary to perform a downgrade.
+
+${_BOLD}Clean the cache of uninstalled packages (paccache -ruk0)${_NORMAL}
+See previous command explanation. This works with unisnstalled packages and doesn't keep any backup version.
+
+${_BOLD}Optimize (defragment) pacman database (NO SSD) (pacman-optimize)${_NORMAL}
+This command simply optimize access to pacman database, defragmenting it. For SSD it doesn't change anything in performances and it does a lot of writes, so it's not recommended.
+
+${_BOLD}${_YELLOW}::Clean files::${_NORMAL}
+
+${_BOLD}Clean temp files (rm -fr /tmp/*)${_NORMAL}
+All files in '/tmp' will be deleted, so it's a good choiche to close all applications before executing it. It's not recommended by default, because is useful in few cases, like big AUR compile files or big downloads from browser.
+
+${_BOLD}Clean old cache and thumbnail files${_NORMAL}
+Search in '~/.cache' and '~/.thumbnails' for files with last access more than 30 days ago and delete them, delete also empty folders inside those directories. Cache and thumbnail files are not necessary and are used by user applications to load faster images thumbnails or informations.
+
+${_BOLD}Search and clean residual files${_NORMAL}
+Search for files with names matching 'Thumbs.db', 'Desktop.ini' and '*~'. This files are temporary files from Windows (first and second one) and from Linux (last one) application, that store them to save some informations during work; they're important when you're using some applications, but they should disappears few seconds later, sometimes they don't.
+
+${_BOLD}Clean trash files (rm -rfv ~/.local/share/Trash/*)${_NORMAL}
+Simply clean the user trash, printing all file names so the user at first glance can check deleted files and their number.
+
+Press 'q' to quit documentation
+EOF
+}
+
+#
+# Function containing italian documentation text.
+#
+function doc_ita {
+less -R << EOF
+Premere 'q' per uscire dalla documentazione
+
+${_BOLD}${_YELLOW}::Aggiornamento del sistema::${_NORMAL}
+
+${_BOLD}Aggiornamento del database locale (pacman -Syy)${_NORMAL}
+Sincronizza il database locale di pacman con i repository online, in particolare forza la sincronizzazione effettuandola anche se il database locale risulta aggiornato. I repository possono essere aggiunti e configurati nel file '/etc/pacman.conf'.
+
+${_BOLD}Aggiornamento dei pacchetti dai repository ufficiali (pacman -Syu)${_NORMAL}
+Controlla che il database locale sia aggiornato, se ci sono differenze tra le versioni dei pacchetti installati e di quelli presenti nel database effettua l'upgrade (innalzamento di versione). Il comando notifica se la versione installata di un pacchetto è più recente di quella nei repository, in questo caso può essere utile eseguire un downgrade (abbassamento di versione) tramite il comando 'pacman -Syuu'.
+
+${_BOLD}Aggiornamento dei pacchetti di AUR (pacaur -Sua || yaourt -Sua)${_NORMAL}
+Effettua l'aggiornamento dei pacchetti provenienti dai repository AUR, se necessario. Può utilizzare come strumenti (in ordine di priorità) 'pacaur' oppure 'yaourt'.
+
+${_BOLD}${_YELLOW}::Pulizia pacchetti::${_NORMAL}
+
+${_BOLD}Ricerca e rimozione dei pacchetti orfani (pacman -Qdtq)${_NORMAL}
+Effettua una ricerca dei pacchetti orfani, cioè quelli installati come dipendenza di un altro pacchetto attualmente non più installato sul sistema, o le cui dipendenze sono state modificate.
+
+${_BOLD}Pulizia della cache dei pacchetti installati (paccache -rk2)${_NORMAL}
+Elimina le vecchie versioni dei pacchetti installati che pacman tiene come backup, lasciando le ultime due versioni. Il gestore di pacchetti pacman come comportamento predefinito tiene tutte le vecchie versioni dei pacchetti installati (e non), questo utilissimo backup può occupare col tempo molta memoria. È quindi consigliabile ripulire saltuariamente la cache dei pacchetti, lasciando solo le ultime versioni dei pacchetti, che possono risultare utili in caso di necessità di downgrade (installazione della versione precedente di un pacchetto).
+
+${_BOLD}Pulizia della cache dei pacchetti non installati (paccache -ruk0)${_NORMAL}
+Come la voce precedente, ma per i pacchetti non più installati sul sistema. Non essendoci necessità di effettuare downgrade non conserva neanche una versione di backup.
+
+${_BOLD}Ottimizzazione (deframmentazione) del database di pacman (NO SSD) (pacman-optimize)${_NORMAL}
+Ottimizza l'accesso al database di pacman, deframmentandolo. Non è un'ottimizzazione utile nel caso in cui si utilizzi un SSD a causa del funzionamento stesso dei dischi a stato solido, inoltre causa inutili scritture sul disco che nel caso degli SSD sarebbe meglio limitare se non necessarie.
+
+${_BOLD}${_YELLOW}::Pulizia file::${_NORMAL}
+
+${_BOLD}Pulizia file temporanei (rm -fr /tmp/*)${_NORMAL}
+Rimuove tutti i file presenti nella cartella di sistema '/tmp'. È consigliabile chiudere ogni applicazione prima di procedere con questa operazione. Può essere utile nel caso di sistemi con scarsa memoria RAM sui quali la stessa viene in parte saturata da download o prodotti della compilazione di pacchetti AUR. Sconsigliato e inutile per la manutenzione ordinaria del sistema.
+
+${_BOLD}Pulizia cache e miniature non recenti${_NORMAL}
+Ricerca nelle cartelle '~/.cache' e '~/.thumbnails' file con l'ultimo accesso risalente a più di 30 giorni prima e li cancella, elimina anche le eventuali cartelle vuote che si trovano all'interno. I file presenti in cache sono utilizzati dalle applicazioni per velocizzare alcune operazioni comuni (es. caricamento copertine album in un riproduttore multimediale), invece i thumbnails sono le miniature delle immagini che vengono utilizzate (es. dal gestore file) per caricare più velocemente le anteprime delle immagini presenti nel sistema.
+
+${_BOLD}Ricerca e rimozione file residui${_NORMAL}
+Effettua una ricerca sui file che si chiamano 'Thumbs.db', 'Desktop.ini' e '*~'. I primi due soo file creati dai sistemi Windows ed inutili su di un sistema Linux, che possono comparire se si condividono alcune cartelle con il sistema operativo di casa Microsoft. L'ultimo tipo di file (con il nome che finisce con una tilde) è un tipo di file temporaneo creato da molte applicazioni come salvataggio temporaneo del lavoro in corso di svolgimento, utile nel caso in cui improvvisamente il sistema si spenga per esempio; può succedere che questi file rimangano nel sistema più a lungo del necessario, creando disordine ed occupando spazio.
+
+${_BOLD}Pulizia cestino (rm -rfv ~/.local/share/Trash/*)${_NORMAL}
+Cancella tutti i file presenti nel cestino dell'utente, stampando tutti i file cancellati di modo che l'utente possa verificare velocemente l'entità dell'operazione.
+
+Premere 'q' per uscire dalla documentazione
+EOF
+}
+
+#
+# This function prints the menu and handles choice of different options.
+#
+function main {
+	while true; do
+	clear
+	echo
+	echo "      _                                  _       _        "
+	echo "  ___| | ___  __ _ _ __  _   _ _ __   __| | __ _| |_ ___  "
+	echo " / __| |/ _ \/ _\` | '_ \| | | | '_ \ / _\` |/ _\` | __/ _ \ "
+	echo "| (__| |  __/ (_| | | | | |_| | |_) | (_| | (_| | ||  __/ "
+	echo " \___|_|\___|\__,_|_| |_|\__,_| .__/ \__,_|\__,_|\__\___| "
+	echo "                              |_|                         "
+	echo
+	if [[ $_LNG = ita ]]
+	then
+		echo " ┌────────────────────────────────────────┐"
+		echo " │    1.  Aggiorna e pulisci tutto        │"
+		echo " │    2.  Aggiorna il sistema             │"
+		echo " │    3.  Pulisci i pacchetti             │"
+		echo " │    4.  Pulisci i file                  │"
+		echo " │                                        │"
+		echo " │    8.  Spiega le opzioni               │"
+		echo " │    9.  Cambia lingua (eng|${_BOLD}ita${_NORMAL})         │"
+		echo " │  q|0.  ESCI                            │"
+		echo " └────────────────────────────────────────┘"
+		echo
+		echo -n " Seleziona un'opzione : "
+	else
+		echo " ┌────────────────────────────────────────┐"
+		echo " │    1.  Update and clean everything     │"
+		echo " │    2.  Update system                   │"
+		echo " │    3.  Clean packages                  │"
+		echo " │    4.  Clean files                     │"
+		echo " │                                        │"
+		echo " │    8.  Explain options                 │"
+		echo " │    9.  Change language (${_BOLD}eng${_NORMAL}|ita)       │"
+		echo " │  q|0.  QUIT                            │"
+		echo " └────────────────────────────────────────┘"
+		echo
+		echo -n " Select an option : "
+	fi
+	read -rs -n1 ans
+	case $ans in
+		1)
+			clear
+			sys_update
+			echo
+			clean_pkg
+			echo
+			clean_file
+			echo
+			[[ $_LNG = ita ]] && echo "Finito! Premi un tasto qualsiasi per continuare. "
+			[[ $_LNG = eng ]] && echo "Finished! Press any key to continue. "
+			read -rs -n1
+			;;
+		2)
+			clear
+			sys_update
+			echo
+			[[ $_LNG = ita ]] && echo "Finito! Premi un tasto qualsiasi per continuare. "
+			[[ $_LNG = eng ]] && echo "Finished! Press any key to continue. "
+			read -rs -n1
+			;;
+		3)
+			clear
+			clean_pkg
+			echo
+			[[ $_LNG = ita ]] && echo "Finito! Premi un tasto qualsiasi per continuare. "
+			[[ $_LNG = eng ]] && echo "Finished! Press any key to continue. "
+			read -rs -n1
+			;;
+		4)
+			clear
+			clean_file
+			echo
+			[[ $_LNG = ita ]] && echo "Finito! Premi un tasto qualsiasi per continuare. "
+			[[ $_LNG = eng ]] && echo "Finished! Press any key to continue. "
+			read -rs -n1
+			;;
+		8)
+			clear
+			[[ $_LNG = ita ]] && doc_ita
+			[[ $_LNG = eng ]] && doc_eng
+			;;
+		9)
+			[[ $_LNG = eng ]] && _LNG="ita" || _LNG="eng"
+			;;
+		q|0)
+			clear && exit 0
+			;;
+		*)
+			echo
+			echo
+			[[ $_LNG = ita ]] && echo -n " Non esiste l'opzione '$ans'. Premi un tasto qualsiasi per continuare. "
+			[[ $_LNG = eng ]] && echo -n " There is no '$ans' option. Press any key to continue. "
+			read -rs -n1
+			;;
+	esac
+	done
+}
+
+main
+
+exit 1
