@@ -9,7 +9,7 @@ url="http://www.freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 install=$pkgname.install
-source=("http://sourceforge.net/projects/freedict/files/English%20-%20German/$pkgver/freedict-eng-deu-$pkgver.tar.bz2")
+source=("https://sourceforge.net/projects/freedict/files/English%20-%20German/$pkgver/freedict-eng-deu-$pkgver.tar.bz2")
 md5sums=('6b832d207ab166d49bff5e22e21ef328')
 
 package()
