@@ -2,7 +2,7 @@
 # Contributor: nylocx <aur@nyloc.de>
 
 pkgname=telegramqml-git
-pkgver=2.0.0.r0.g351f3e4
+pkgver=2.0.0.r18.gdb5ac2d
 pkgrel=1
 pkgdesc="Telegram API tools for QtQml and Qml"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Aseman-Land/TelegramQML"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia'
          'qt5-webkit' 'qt5-imageformats' 'qt5-graphicaleffects'
-         'qt5-quickcontrols' 'libqtelegram-ae')
+         'qt5-quickcontrols' 'libqtelegram-ae-git')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/TelegramQML.git")
 md5sums=('SKIP')
