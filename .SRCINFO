@@ -1,0 +1,14 @@
+pkgbase = abbrase-git
+	pkgver = r41.3834b28
+	pkgrel = 1
+	url = https://github.com/rmmh/abbrase
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = abbrase
+	conflicts = abbrase
+	source = abbrase-git::git+https://github.com/rmmh/abbrase.git
+	md5sums = SKIP
+
+pkgname = abbrase-git
+
