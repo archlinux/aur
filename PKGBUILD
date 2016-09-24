@@ -2,22 +2,22 @@
 
 pkgname=python2-faftools
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Forged Alliance Forever - Shared Library"
 url="http://www.faforever.com/"
 depends=('python2' )
 makedepends=('python2' )
 license=('GPL3')
 arch=('any')
-source=('https://github.com/FAForever/faftools/archive/develop.zip')
-sha256sums=('da13d9dba7e18db6c49ae6ff83fa57a354791b0cce3cbb034b13db1e3a0b24b6')
+source=('https://github.com/FAForever/faftools/archive/f94a1da9d4b260590448fa30cf442868cc6b97d2.zip')
+sha256sums=('ebc792a63ec8ae8e675d92686b2769e112efdfec9e2f2b0845c3e3b7ca0d19e7')
 
 build() {
-    cd $srcdir/faftools-develop
+    cd $srcdir/faftools-f94a1da9d4b260590448fa30cf442868cc6b97d2/
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/faftools-develop
+    cd $srcdir/faftools-f94a1da9d4b260590448fa30cf442868cc6b97d2/
     python2 setup.py install --root="$pkgdir" --optimize=1 
 }
