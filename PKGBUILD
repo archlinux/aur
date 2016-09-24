@@ -1,4 +1,4 @@
-# Maintainer: respiranto <respiranto@icloud.com>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=freesweep
 pkgver=0.92
 pkgrel=2
