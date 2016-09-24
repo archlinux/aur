@@ -1,4 +1,4 @@
-# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 # Contributor: Benjamin Vanderford <hazor_at_swrpg_dot_info
 pkgname=dict-freedict-eng-fra
 pkgver=0.1.4
