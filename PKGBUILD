@@ -3,7 +3,7 @@
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
 pkgname=android-google-repository
-pkgver=r34
+pkgver=r35
 pkgrel=1
 pkgdesc='Android SDK Local Maven repository for Google Libraries'
 arch=('any')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/google_m2repository_${pkgver}.zip"
 	"source.properties")
 
-sha1sums=('110383ee15b589d8ee635ab4056da67df4f827cb'
-          '598bcecb9830d90895b08f292d50f45776ebe092')
+sha1sums=('209d1f3b4c5db966044436b793fb8fbd77a7eaf1'
+          '8cc52ae7ef82171cf66a31e73e9447d5d30fee7b')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/extras/google/"
