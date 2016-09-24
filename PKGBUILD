@@ -1,3 +1,4 @@
+# Contributor: nous <@archlinux.us>
 # Maintainer: artoo <artoo@manjaro.org>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -6,18 +7,18 @@ _pkgname=upower
 
 pkgname=upower-pm-utils
 pkgver=0.9.23
-pkgrel=5
+pkgrel=7
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"
 license=('GPL')
 groups=('eudev-base')
-depends=('libusb' 'polkit-consolekit' 'pm-utils' 'dbus-glib' 'libimobiledevice' 'eudev-systemdcompat')
 backup=('etc/UPower/UPower.conf')
+depends=('libusb' 'polkit-consolekit' 'pm-utils' 'dbus-glib' 'libimobiledevice')
 makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2')
 provides=("upower=${pkgver}")
-conflicts=('upower' 'upower-nosystemd')
-replaces=('upower' 'upower-nosystemd')
+conflicts=('upower' 'upower-nosystemd' 'upower-git')
+replaces=('upower-nosystemd')
 options=('!libtool')
 source=($url/releases/upower-${pkgver}.tar.xz
 	'upower-pm-utils-0.9.23-clamp_percentage_for_overfull_batt.patch'
@@ -29,13 +30,12 @@ prepare(){
 	cd "$_pkgname-$pkgver"
 
 	sed  -e '/DISABLE_DEPRECATED/d' -i configure
- 	sed  -e 's|Cflags: |&-DUPOWER_ENABLE_DEPRECATED |' -i upower-glib.pc.in
+	sed  -e 's|Cflags: |&-DUPOWER_ENABLE_DEPRECATED |' -i upower-glib.pc.in
 
- 	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-create-dir-runtime.patch
- 	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-fix-segfault.patch
- 	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-clamp_percentage_for_overfull_batt.patch
-
- 	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-always_use_pm-utils_backend.patch
+	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-create-dir-runtime.patch
+	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-fix-segfault.patch
+	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-clamp_percentage_for_overfull_batt.patch
+	patch -p1 -i $srcdir/upower-pm-utils-0.9.23-always_use_pm-utils_backend.patch
 }
 
 build() {
