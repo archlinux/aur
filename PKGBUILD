@@ -20,7 +20,7 @@ source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.ta
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch)
 options=(!strip !buildflags !libtool staticlibs)
-ha1sums=('f251029d5ab542a96dd4531605fe577185077560'
+sha1sums=('f251029d5ab542a96dd4531605fe577185077560'
           'SKIP'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
