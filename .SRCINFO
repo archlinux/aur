@@ -1,0 +1,20 @@
+pkgbase = vkplayer
+	pkgdesc = VK audio player built in Python & GTK3.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://github.com/and3rson/vkplayer
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = gtk3
+	depends = libkeybinder3
+	depends = webkitgtk
+	depends = gobject-introspection-runtime
+	depends = python2-dbus
+	depends = python2-pyglet
+	options = !strip
+	source = git+https://github.com/and3rson/vkplayer.git
+	md5sums = SKIP
+
+pkgname = vkplayer
+
