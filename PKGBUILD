@@ -2,7 +2,7 @@
 
 pkgname=arch-audit
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
 url='https://github.com/ilpianista/arch-audit'
 makedepends=('cargo')
@@ -25,7 +25,7 @@ package() {
   install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 "${srcdir}/arch-audit.service" "${pkgdir}/usr/lib/systemd/system/arch-audit.service"
-  install -Dm644 "${srcdir}/arch-audit.timer" "${pkgdir}/usr/lib/systemd/system/arch-audit.timer"
-  install -Dm644 "${srcdir}/arch-audit.tempfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/arch-audit.conf"
+#  install -Dm644 "${srcdir}/arch-audit.service" "${pkgdir}/usr/lib/systemd/system/arch-audit.service"
+#  install -Dm644 "${srcdir}/arch-audit.timer" "${pkgdir}/usr/lib/systemd/system/arch-audit.timer"
+#  install -Dm644 "${srcdir}/arch-audit.tempfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/arch-audit.conf"
 }
