@@ -21,7 +21,7 @@ build() {
 
 package() {
   install -d "$pkgdir/opt/MegaRAID/MegaCli"
-  cp "$srcdir/opt/MegaRAID/MegaCli/*" "$pkgdir/opt/MegaRAID/MegaCli"
+  cp "$srcdir/opt/MegaRAID/MegaCli/"* "$pkgdir/opt/MegaRAID/MegaCli"
   case "$CARCH" in
     'i686')
         rm "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64"
