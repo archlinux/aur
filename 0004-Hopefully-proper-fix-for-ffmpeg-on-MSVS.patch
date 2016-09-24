@@ -1,0 +1,47 @@
+From c53c53642b40c82e40fd87905f4d8edb67b617cc Mon Sep 17 00:00:00 2001
+From: AlexVinS <alexvins@users.noreply.github.com>
+Date: Wed, 11 Nov 2015 12:41:28 +0300
+Subject: [PATCH] Hopefully proper fix for ffmpeg on MSVS
+
+---
+ client/CVideoHandler.cpp | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/client/CVideoHandler.cpp b/client/CVideoHandler.cpp
+index 4ccaf0e..a7770e7 100644
+--- a/client/CVideoHandler.cpp
++++ b/client/CVideoHandler.cpp
+@@ -155,11 +155,12 @@ bool CVideoPlayer::open(std::string fname, bool loop, bool useOverlay, bool scal
+ 	}
+ 
+ 	// Allocate video frame
+-#if LIBAVUTIL_VERSION_MAJOR > 52
+-	frame = av_alloc_frame();
++#if LIBAVUTIL_VERSION_MAJOR > 51
++	frame = av_frame_alloc();
+ #else
+ 	frame = avcodec_alloc_frame();
+ #endif
++
+ 	
+ 	//setup scaling
+ 	
+@@ -436,12 +437,12 @@ void CVideoPlayer::close()
+ 
+ 	if (frame)
+ 	{
+-#if LIBAVUTIL_VERSION_MAJOR > 52
+-		av_frame_free(frame);
++#if LIBAVUTIL_VERSION_MAJOR > 51
++		av_frame_free(&frame);//will be set to null
+ #else
+ 		av_free(frame);
++		frame = nullptr;		
+ #endif
+-		frame = nullptr;
+ 	}
+ 
+ 	if (codec)
+-- 
+2.9.3
+
