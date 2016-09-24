@@ -39,7 +39,14 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   rm -f "$pkgdir"/usr/bin/osvr_print_displays
+
+  # not needed and actually conflict with repo gmock and gtest
   rm -rf "$pkgdir"/usr/include/gtest/
+  rm -rf "$pkgdir"/usr/include/gmock/
+  rm -f "$pkgdir"/usr/lib/libgmock.a
+  rm -f "$pkgdir"/usr/lib/libgmock_main.a
+  rm -f "$pkgdir"/usr/lib/libgtest.a
+  rm -f "$pkgdir"/usr/lib/libgtest_main.a
 }
 md5sums=('SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
