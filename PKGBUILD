@@ -28,7 +28,7 @@ qtchooser
 qt5-svg
 qt5-tools
 )
-install='sqlitestudio.install'
+# install='sqlitestudio.install'
 source=(
 http://sqlitestudio.pl/files/sqlitestudio${_pkgver}/complete/tar/sqlitestudio-$pkgver.tar.gz
 sqlitestudio.desktop
