@@ -2,7 +2,7 @@
 
 pkgname=arch-audit
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
 url='https://github.com/ilpianista/arch-audit'
 makedepends=('cargo')
@@ -26,5 +26,5 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/arch-audit.service" "${pkgdir}/usr/share/${pkgname}/arch-audit.service"
-  install -Dm644 "${srcdir}/arch-audit.timer" "${pkgdir}/usr/share${pkgname}/arch-audit.timer"
+  install -Dm644 "${srcdir}/arch-audit.timer" "${pkgdir}/usr/share/${pkgname}/arch-audit.timer"
 }
