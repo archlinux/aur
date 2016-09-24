@@ -2,7 +2,7 @@
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
 pkgver=15.2.4
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -63,6 +63,10 @@ prepare() {
 }
 
 build() {
+  # bareos 15.2 doesn't work with gcc 6.1.1 and newer with optimizations
+  export CFLAGS="${CFLAGS/O2/O0}"
+  export CXXFLAGS="${CXXFLAGS/O2/O0}"
+
   pushd "${_pkgsrc}" &> /dev/null
   QMAKE="/usr/bin/qmake-qt4" DISTNAME="debian" ./configure $_configure_args
   make DESTDIR="$_instdir" install
