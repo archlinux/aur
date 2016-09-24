@@ -27,9 +27,9 @@ package() {
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Put code files into '/usr/share'
-  install -Dm755 "$pkgname/check_zfs.py" "$pkgdir/usr/share/check_zfs-git/check_zfs.py"
+  install -Dm755 "$pkgname/check_zfs.py" "$pkgdir/usr/share/check_zfs/check_zfs.py"
 
   # Install binary
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/check_zfs-git/check_zfs.py" "${pkgdir}/usr/bin/check_zfs"
+  ln -s "/usr/share/check_zfs/check_zfs.py" "${pkgdir}/usr/bin/check_zfs"
 }
