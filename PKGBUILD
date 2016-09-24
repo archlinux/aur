@@ -1,5 +1,18 @@
 # Maintainer: Erik Beran <eberan AT gmail DOT com>
-# Maintainer: Erik Beran <tarek AT ring0 DOT de>
+# Maintainer: Jan-Tarek Butt <tarek AT ring0 DOT de>
+# Contributor: Thor K. H. <thor at roht dot no>
+# Contributor: Babken Vardanyan <483ken 4tgma1l
+# Contributor: mikezackles
+# Contributor: z33ky
+# Contributor: stykr
+# Contributor: Svenstaro
+# Contributor: KaiSforza
+# Contributor: Simon Gomizelj <simongmzlj@gmail.com>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
+# Contributor: shmilee
+# Contributor: foobster
+# Contributor: archdria
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-youcompleteme-git
 pkgver=28.972eecb
