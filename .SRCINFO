@@ -1,13 +1,13 @@
 pkgbase = python-owslib
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://geopython.github.io/OWSLib
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-owslib-0.12.0.tar.gz::https://github.com/geopython/OWSLib/archive/0.12.0.tar.gz
-	sha256sums = 0f96a5ee17f4c0720796bb5253a0bf7a395b2a6516345f6eeb0b271b0f6cec6d
+	source = python-owslib-0.13.0.tar.gz::https://github.com/geopython/OWSLib/archive/0.13.0.tar.gz
+	sha256sums = bad5fb032de216cfc371c99ec1d3a3d6cb4fcd54e8836fee6ffa24037365ed91
 
 pkgname = python-owslib
 	pkgdesc = Python package for client programming with Open Geospatial Consortium (OGC) web service interface standards, and their related content models
