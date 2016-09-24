@@ -45,6 +45,10 @@ EOF
 }
 
 function ready {
+  if [[ ! -z $1 ]]; then
+    echo $1 > /usr/share/dom4/current
+  fi
+
   if [[ ! -s /usr/share/dom4/current ]]; then
     echo "No current game found. Use dom4 config to load game configuration."
     exit 1
