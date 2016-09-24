@@ -12,7 +12,7 @@ pkgdesc="Telegram client by Aseman Land"
 arch=('i686' 'x86_64')
 url="http://aseman.co/cutegram"
 license=('GPL')
-depends=('libqtelegram-ae' 'telegramqml' 'aseman-qt-tools')
+depends=('libqtelegram-ae-git' 'telegramqml-git' 'aseman-qt-tools-git')
 optdepends=('gst-plugins-good: for audio and notification support'
             'gst-plugins-bad: for audio support')
 makedepends=('git')
