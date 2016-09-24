@@ -7,7 +7,7 @@ pkgbase = dict-freedict-eng-spa
 	arch = any
 	license = GPL
 	optdepends = dictd: dict client and server
-	source = http://sourceforge.net/projects/freedict/files/English%20-%20Spanish/0.2.1/freedict-eng-spa-0.2.1.tar.bz2
+	source = https://sourceforge.net/projects/freedict/files/English%20-%20Spanish/0.2.1/freedict-eng-spa-0.2.1.tar.bz2
 	md5sums = 89abca9ccba27f3a34c7363a510b91a1
 
 pkgname = dict-freedict-eng-spa
