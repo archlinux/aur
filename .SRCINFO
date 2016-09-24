@@ -1,7 +1,7 @@
 pkgbase = probability
 	pkgdesc = Probability Machine Simulator
-	pkgver = b55e508d94e6
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 3
 	url = https://bitbucket.org/ewaller/probability
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = probability
 	makedepends = gcc
 	depends = gtk2
 	source = https://bitbucket.org/ewaller/probability/get/tip.tar.bz2
-	md5sums = b88bff8b275fce54509fcec44c39ecb5
+	md5sums = a5779da194b96279c45983b5e189d4f6
 
 pkgname = probability
 
