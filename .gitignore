@@ -1,0 +1,4 @@
+pkg/
+src/
+udis86-*.tar.gz
+*.pkg.tar.xz
