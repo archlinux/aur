@@ -3,7 +3,7 @@
 # Maintainer: Loïc Bidoux <loic.bidoux [at] owndata.org>
 
 pkgname=vrms-arch
-pkgver=0.1.0.r18.g7cda27d
+pkgver=0.1.0.r21.g4ef0a5c
 pkgrel=1
 pkgdesc="vrms for ArchLinux"
 arch=('any')
