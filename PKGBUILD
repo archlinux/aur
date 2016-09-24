@@ -2,17 +2,17 @@
 
 pkgname=urlview
 pkgver=0.9
-pkgrel=11
-_patchlevel=19
+pkgrel=12
+_patchlevel=20
 pkgdesc="A curses URL parser for text files"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://packages.qa.debian.org/u/urlview.html"
 license=('GPL')
 depends=('bash')
 source=(http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver.orig.tar.gz
         http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver-$_patchlevel.diff.gz)
 sha256sums=('746ff540ccf601645f500ee7743f443caf987d6380e61e5249fc15f7a455ed42'
-            '056883c17756f849fb9235596d274fbc5bc0d944fcc072bdbb13d1e828301585')
+            '0707956fd7195aefe6d6ff2eaabe8946e3d18821a1ce97c0f48d0f8d6e37514e')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver.orig
