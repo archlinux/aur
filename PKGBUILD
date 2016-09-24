@@ -1,13 +1,13 @@
 # Maintainer: Denys Popov <besisland@besisland.name>
 pkgname=rukbi
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Alternative Ukrainian and Russian keyboard layouts with miscellaneous useful typographic characters, including Ilya Birman’s layout"
 url="http://besisland.name/rukbi"
 arch=("any")
 license=("GPLv3")
 depends=("xkeyboard-config" "python")
-source=("http://rukbi.googlecode.com/files/$pkgname-$pkgver.tar.bz2")
+source=("https://bitbucket.org/denyspopov/rukbi/downloads/$pkgname-$pkgver.tar.bz2")
 md5sums=('58741c7318f99d8157675c454eff213c')
 sha1sums=('4195f1fd81535897a82f1f5a8aa2a851ccfe72a7')
 sha256sums=('ddcd326976039c4b85424da09c01b5db89188321e9d86831716d077c566ea8b0')
