@@ -8,8 +8,8 @@ url='https://github.com/ilpianista/arch-audit'
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-md5sums=('42c0091693a08185633103d5fbf595d3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ilpianista/arch-audit/archive/$pkgver.tar.gz")
+md5sums=('2fa05abcfea16bb4825f3b769bd6a2a4')
 
 build() {
   cd "$pkgname-$pkgver"
