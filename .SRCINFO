@@ -1,0 +1,20 @@
+pkgbase = speakerbot-git
+	pkgdesc = Multiserver music bot for Discord written in Go
+	pkgver = r17.51b0836
+	pkgrel = 1
+	url = https://github.com/dustinblackman/speakerbot
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = glide
+	makedepends = go
+	makedepends = git
+	depends = ffmpeg
+	depends = opus-tools
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/dustinblackman/speakerbot
+	md5sums = SKIP
+
+pkgname = speakerbot-git
+
