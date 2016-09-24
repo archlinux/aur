@@ -8,8 +8,8 @@ sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
 pkgver=3.1.0
+pkgrel=2
 _pkgver=3
-pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
 url='http://sqlitestudio.pl/'
@@ -65,7 +65,8 @@ build(){
 
   msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
-  qmake ../../../Plugins "INCLUDEPATH += /usr/include/c++/6.1.1" "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio"
+  GCC_VERSION=$(gcc -dumpversion)
+  qmake ../../../Plugins "INCLUDEPATH += /usr/include/c++/$GCC_VERSION" "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio"
   (
     cd $srcdir/Plugins/DbSqliteCipher
     ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
