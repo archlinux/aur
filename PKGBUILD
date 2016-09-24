@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 268047 2016-05-14 22:24:23Z bisson $
+# $Id: PKGBUILD 272771 2016-08-01 13:45:48Z bisson $
 # Maintainer (Arch): Gaetan Bisson <bisson@archlinux.org>
 # Contributor (Arch): Aaron Griffin <aaron@archlinux.org>
 # Contributor (Arch): judd <jvinet@zeroflux.org>
@@ -7,9 +7,9 @@
 
 _pkgname=openssh
 pkgname=openssh-knock
-pkgver=7.2p2
-_knockpatchver=7.2p2
-pkgrel=2
+pkgver=7.3p1
+_knockpatchver=7.3p1
+pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools, with support for stealth TCP sockets'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
@@ -31,8 +31,8 @@ source=("http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgve
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('70e35d7d6386fe08abbd823b3a12a3ca44ac6d38' 'SKIP'
-          '37d0c4e91e0507b00644f9fa47e3e0e64ad58741' 'SKIP'
+sha1sums=('bfade84283fcba885e2084343ab19a08c7d123a5' 'SKIP'
+          '241cc911cec1895c2e2ea26a2e3a65e34b946659' 'SKIP'
           'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
