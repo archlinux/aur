@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=check_smartmon-git
-pkgver=r25.c1569c3
+pkgver=r27.71d33af
 pkgrel=1
 pkgdesc="Nagios-Plugin that uses smartmontools (http://smartmontools.sourceforge.net/) to check disk health status and temperature."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ prepare() {
 
 package() {
   # Install License
-  install -Dm644 "$pkgname/LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Put code files into '/usr/share'
   install -Dm755 "$pkgname/check_smartmon.py" "$pkgdir/usr/share/check_smartmon/check_smartmon.py"
