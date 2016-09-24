@@ -24,7 +24,7 @@ pkgbase=linux-nvme       # Build kernel with a different name
 _srcname=linux-4.7
 _patchname=patch-4.8-rc7
 pkgver=4.8rc7
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -38,18 +38,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-	'nvmepatch1.patch'
-	'nvmepatch2.patch'
-	'nvmepatch3.patch'
+	'nvmepatch1-V4.patch'
+	'nvmepatch2-V4.patch'
+	'nvmepatch3-V4.patch'
 	'change-default-console-loglevel.patch')
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             '0af865700e23f0b86cd332246db633972e1250f57b8640cf41f0841538007045'
             '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
             '7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'ee13c83bf95f8880a4c1346ccf7b2e36772bc06174d3b812c91d7109aca5b600'
-            '52a44ac52356816e5b5f39a19c7de2eb08ce634a861821abe060debca479f7e2'
-            '9762c163430aabca94efbab29ef702b483f1d9a97a912f84ad0239467cba16bc'
+            '45a2b0344a5bea44e6e2a803238eb24223aff42c3c03ea6957cf6373b3bb5f6c'
+            'da53dd78823199502cd9d3941096e09a3b744d52a43b7a2314be59bde9b1c88d'
+            '7799f733063a426ba159e0cb1e90ca1755d05eee9b421f6b87c1867832baa038'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -78,9 +78,9 @@ prepare() {
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Added custom NVME patches in here
-  patch -p1 -i "${srcdir}/nvmepatch1.patch"
-  patch -p1 -i "${srcdir}/nvmepatch2.patch"
-  patch -p1 -i "${srcdir}/nvmepatch3.patch"
+  patch -p1 -i "${srcdir}/nvmepatch1-V4.patch"
+  patch -p1 -i "${srcdir}/nvmepatch2-V4.patch"
+  patch -p1 -i "${srcdir}/nvmepatch3-V4.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config

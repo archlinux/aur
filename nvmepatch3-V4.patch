@@ -1,21 +1,20 @@
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 9260d2971176..8aea8dfacda6 100644
+index b92a7f767bfc..a143c72c3d0d 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -56,6 +56,12 @@ EXPORT_SYMBOL_GPL(nvme_max_retries);
+@@ -56,6 +56,11 @@ EXPORT_SYMBOL_GPL(nvme_max_retries);
  static int nvme_char_major;
  module_param(nvme_char_major, int, 0);
  
-+static unsigned long default_apst_max_latency_us = 25000;
-+module_param_named(apst_max_latency_us, default_apst_max_latency_us,
-+		   ulong, 0644);
-+MODULE_PARM_DESC(apst_max_latency_us,
-+		 "default max APST latency; overridden per device in sysfs");
++static unsigned long default_ps_max_latency_us = 25000;
++module_param(default_ps_max_latency_us, ulong, 0644);
++MODULE_PARM_DESC(ps_max_latency_us,
++		 "default max power saving latency; overridden per device in sysfs");
 +
  static LIST_HEAD(nvme_ctrl_list);
  static DEFINE_SPINLOCK(dev_list_lock);
  
-@@ -1209,6 +1215,98 @@ static void nvme_set_queue_limits(struct nvme_ctrl *ctrl,
+@@ -1205,6 +1210,98 @@ static void nvme_set_queue_limits(struct nvme_ctrl *ctrl,
  	blk_queue_write_cache(q, vwc, vwc);
  }
  
@@ -33,8 +32,8 @@ index 9260d2971176..8aea8dfacda6 100644
 +	 * the requested maximum latency.
 +	 *
 +	 * We will not autonomously enter any non-operational state for
-+	 * which the total latency exceeds apst_max_latency_us.  Users
-+	 * can set apst_max_latency_us to zero to turn off APST.
++	 * which the total latency exceeds ps_max_latency_us.  Users
++	 * can set ps_max_latency_us to zero to turn off APST.
 +	 */
 +
 +	unsigned apste;
@@ -53,7 +52,7 @@ index 9260d2971176..8aea8dfacda6 100644
 +	if (!table)
 +		return;
 +
-+	if (ctrl->apst_max_latency_us == 0) {
++	if (ctrl->ps_max_latency_us == 0) {
 +		/* Turn off APST. */
 +		apste = 0;
 +	} else {
@@ -82,7 +81,7 @@ index 9260d2971176..8aea8dfacda6 100644
 +			total_latency_us =
 +				(u64)cpu_to_le32(ctrl->psd[state].entry_lat) +
 +				+ cpu_to_le32(ctrl->psd[state].exit_lat);
-+			if (total_latency_us > ctrl->apst_max_latency_us)
++			if (total_latency_us > ctrl->ps_max_latency_us)
 +				continue;
 +
 +			/*
@@ -114,7 +113,7 @@ index 9260d2971176..8aea8dfacda6 100644
  /*
   * Initialize the cached copies of the Identify data and various controller
   * register in our nvme_ctrl structure.  This should be called as soon as
-@@ -1275,6 +1373,10 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+@@ -1271,6 +1368,10 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  	ctrl->sgls = le32_to_cpu(id->sgls);
  	ctrl->kas = le16_to_cpu(id->kas);
  
@@ -125,7 +124,7 @@ index 9260d2971176..8aea8dfacda6 100644
  	if (ctrl->ops->is_fabrics) {
  		ctrl->icdoff = le16_to_cpu(id->icdoff);
  		ctrl->ioccsz = le32_to_cpu(id->ioccsz);
-@@ -1298,6 +1400,10 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+@@ -1294,6 +1395,10 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
  	}
  
  	kfree(id);
@@ -136,21 +135,21 @@ index 9260d2971176..8aea8dfacda6 100644
  	return ret;
  }
  EXPORT_SYMBOL_GPL(nvme_init_identify);
-@@ -1568,6 +1674,41 @@ static ssize_t nvme_sysfs_show_address(struct device *dev,
+@@ -1564,6 +1669,41 @@ static ssize_t nvme_sysfs_show_address(struct device *dev,
  }
  static DEVICE_ATTR(address, S_IRUGO, nvme_sysfs_show_address, NULL);
  
-+static ssize_t nvme_sysfs_show_apst_max_latency_us(
++static ssize_t nvme_sysfs_show_ps_max_latency_us(
 +	struct device *dev,
 +	struct device_attribute *attr,
 +	char *buf)
 +{
 +	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
 +
-+	return snprintf(buf, PAGE_SIZE, "%llu\n", ctrl->apst_max_latency_us);
++	return snprintf(buf, PAGE_SIZE, "%llu\n", ctrl->ps_max_latency_us);
 +}
 +
-+static ssize_t nvme_sysfs_store_apst_max_latency_us(
++static ssize_t nvme_sysfs_store_ps_max_latency_us(
 +	struct device *dev,
 +	struct device_attribute *attr,
 +	const char *buf, size_t size)
@@ -163,27 +162,27 @@ index 9260d2971176..8aea8dfacda6 100644
 +	if (ret)
 +		return ret;
 +
-+	if (ctrl->apst_max_latency_us != val) {
-+		ctrl->apst_max_latency_us = val;
++	if (ctrl->ps_max_latency_us != val) {
++		ctrl->ps_max_latency_us = val;
 +		nvme_configure_apst(ctrl);
 +	}
 +
 +	return size;
 +}
 +
-+static DEVICE_ATTR(apst_max_latency_us, 0644,
-+		   nvme_sysfs_show_apst_max_latency_us,
-+		   nvme_sysfs_store_apst_max_latency_us);
++static DEVICE_ATTR(ps_max_latency_us, 0644,
++		   nvme_sysfs_show_ps_max_latency_us,
++		   nvme_sysfs_store_ps_max_latency_us);
 +
  static struct attribute *nvme_dev_attrs[] = {
  	&dev_attr_reset_controller.attr,
  	&dev_attr_rescan_controller.attr,
-@@ -1609,8 +1750,33 @@ static struct attribute_group nvme_dev_attrs_group = {
+@@ -1605,8 +1745,33 @@ static struct attribute_group nvme_dev_attrs_group = {
  	.is_visible	= nvme_dev_attrs_are_visible,
  };
  
 +static struct attribute *nvme_dev_dynamic_attrs[] = {
-+	&dev_attr_apst_max_latency_us.attr,
++	&dev_attr_ps_max_latency_us.attr,
 +	NULL
 +};
 +
@@ -193,7 +192,7 @@ index 9260d2971176..8aea8dfacda6 100644
 +	struct device *dev = container_of(kobj, struct device, kobj);
 +	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
 +
-+	if (a == &dev_attr_apst_max_latency_us.attr) {
++	if (a == &dev_attr_ps_max_latency_us.attr) {
 +		if (!ctrl->apsta)
 +			return 0;
 +	}
@@ -212,16 +211,16 @@ index 9260d2971176..8aea8dfacda6 100644
  	NULL,
  };
  
-@@ -1995,6 +2161,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
+@@ -1991,6 +2156,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
  	ctrl->quirks = quirks;
  	INIT_WORK(&ctrl->scan_work, nvme_scan_work);
  	INIT_WORK(&ctrl->async_event_work, nvme_async_event_work);
-+	ctrl->apst_max_latency_us = default_apst_max_latency_us;
++	ctrl->ps_max_latency_us = default_ps_max_latency_us;
  
  	ret = nvme_set_instance(ctrl);
  	if (ret)
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 383ae22e169e..f445ad48dd0e 100644
+index c2151761ec5f..16d51006afc0 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
 @@ -129,13 +129,19 @@ struct nvme_ctrl {
@@ -238,8 +237,8 @@ index 383ae22e169e..f445ad48dd0e 100644
  	struct work_struct async_event_work;
  	struct delayed_work ka_work;
  
-+	/* APSTA configuration */
-+	u64 apst_max_latency_us;
++	/* Power saving configuration */
++	u64 ps_max_latency_us;
 +
  	/* Fabrics only */
  	u16 sqsize;
@@ -263,5 +262,3 @@ index d8b37bab2887..a76237dac4b0 100644
  enum nvme_admin_opcode {
 -- 
 2.7.4
-
-  

@@ -1,5 +1,5 @@
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 2feacc70bf61..9260d2971176 100644
+index 2feacc70bf61..b92a7f767bfc 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
 @@ -597,7 +597,7 @@ int nvme_identify_ns(struct nvme_ctrl *dev, unsigned nsid,
@@ -28,11 +28,11 @@ index 2feacc70bf61..9260d2971176 100644
  
  int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
 -					dma_addr_t dma_addr, u32 *result)
-+		      const void *buffer, size_t buflen, u32 *result)
++		      void *buffer, size_t buflen, u32 *result)
  {
  	struct nvme_command c;
  	struct nvme_completion cqe;
-@@ -625,12 +624,15 @@ int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
+@@ -625,12 +624,11 @@ int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
  
  	memset(&c, 0, sizeof(c));
  	c.features.opcode = nvme_admin_set_features;
@@ -42,16 +42,12 @@ index 2feacc70bf61..9260d2971176 100644
  
 -	ret = __nvme_submit_sync_cmd(dev->admin_q, &c, &cqe, NULL, 0, 0,
 -			NVME_QID_ANY, 0, 0);
-+	/*
-+	 * Casting buffer to void* is safe here: __nvme_submit_sync_cmd knows
-+	 * that we're writing because it decodes the opcode.
-+	 */
 +	ret = __nvme_submit_sync_cmd(dev->admin_q, &c, &cqe,
-+			(void *)buffer, buflen, 0, NVME_QID_ANY, 0, 0);
++			buffer, buflen, 0, NVME_QID_ANY, 0, 0);
  	if (ret >= 0 && result)
  		*result = le32_to_cpu(cqe.result);
  	return ret;
-@@ -664,7 +666,7 @@ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
+@@ -664,7 +662,7 @@ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
  	u32 result;
  	int status, nr_io_queues;
  
@@ -61,7 +57,7 @@ index 2feacc70bf61..9260d2971176 100644
  	if (status < 0)
  		return status;
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index ab18b78102bf..383ae22e169e 100644
+index ab18b78102bf..c2151761ec5f 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
 @@ -292,9 +292,9 @@ int nvme_identify_ns(struct nvme_ctrl *dev, unsigned nsid,
@@ -72,7 +68,7 @@ index ab18b78102bf..383ae22e169e 100644
 +		      void *buffer, size_t buflen, u32 *result);
  int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
 -			dma_addr_t dma_addr, u32 *result);
-+		      const void *buffer, size_t buflen, u32 *result);
++		      void *buffer, size_t buflen, u32 *result);
  int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count);
  void nvme_start_keep_alive(struct nvme_ctrl *ctrl);
  void nvme_stop_keep_alive(struct nvme_ctrl *ctrl);
@@ -109,5 +105,3 @@ index 44009105f8c8..c2a0a1c7d05d 100644
  	case MODE_PAGE_CONTROL:
 -- 
 2.7.4
-
-  
