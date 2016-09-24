@@ -11,7 +11,8 @@ depends=('ncurses5-compat-libs')
 makedepends=('rpmextract')
 source=("http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver//./-}_MegaCLI.zip"
 	'LICENSE')
-sha256sums=('d9b152ae3dab76a334b9251702dba3311ceed91b58aaf52d916eb4ba1c2ab6e9')
+sha256sums=('d9b152ae3dab76a334b9251702dba3311ceed91b58aaf52d916eb4ba1c2ab6e9'
+            '9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3')
 
 build() {
   cd "$srcdir"
