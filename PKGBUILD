@@ -27,7 +27,7 @@ package() {
         rm "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64"
         ;;
     'x86_64')
-        mv "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64 $pkgdir/opt/MegaRAID/MegaCli/MegaCli"
+        mv "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64" "$pkgdir/opt/MegaRAID/MegaCli/MegaCli"
         ;;
   esac
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
