@@ -1,6 +1,6 @@
 # Maintainer: Eric Waller <ewwaller dot gmail dot com>
 pkgname=probability
-pkgver=1.0
+pkgver=b55e508d94e6
 pkgrel=3
 pkgdesc="Probability Machine Simulator"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=(https://bitbucket.org/ewaller/probability/get/tip.tar.bz2)
 md5sums=('a5779da194b96279c45983b5e189d4f6')
 build() {
   cd "$srcdir/ewaller-$pkgname-$pkgver"
-  autoreconf
-  automake --add-missing
+  #autoreconf
+  automake --add-missing && true
   ./configure --prefix=/usr
   make
 }
