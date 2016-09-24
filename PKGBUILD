@@ -1,4 +1,4 @@
-# Maintainer: Einhard Leichtfuß <respiranto@icloud.com>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=dict-freedict-fra-deu
 pkgver=0.1.1
 pkgrel=6
