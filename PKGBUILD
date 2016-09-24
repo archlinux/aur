@@ -8,8 +8,8 @@ _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat'
          'libsystemd-knock-standalone' 'libudev-knock' 'nss-knock-myhostname' 'nss-knock-mymachines' 'nss-knock-resolve')
-pkgver=230
-pkgrel=4.2
+pkgver=231
+pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -21,7 +21,7 @@ makedepends_x86_64=('gnu-efi-libs')
 options=('strip' 'debug')
 source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         #'0001-adds-TCP-Stealth-support-to-systemd.patch::https://gnunet.org/sites/default/files/systemd-knock-patch.diff'
-        "https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-230.patch"{,.sig}
+        "https://repo.parabola.nu/other/knock/patches/systemd/0001-adds-TCP-Stealth-support-to-systemd-231.patch"{,.sig}
         "https://repo.parabola.nu/other/systemd/splash-parabola.bmp"{,.sig}
         'initcpio-hook-udev'
         'initcpio-install-systemd'
@@ -37,12 +37,12 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         '0006-FSDG-man-Use-FSDG-operating-systems-as-examples.patch'
         "https://repo.parabola.nu/other/systemd/splash-parabola.bmp"{,.sig})
 md5sums=('SKIP'
-         '32e8e7c8802dac3078a2c4b0e05abd30'
+         '62b46565502f4e6e696fa0a8708fea34'
          'SKIP'
          'f8253cd3c0f249591338fbb4c223d249'
          'SKIP'
          '90ea67a7bb237502094914622a39e281'
-         '976c5511b6493715e381f43f16cdb151'
+         'bee7fd6ccda39582259708e3f262ea6d'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '36ee74767ac8734dede1cbd0f4f275d7'
          '9b9f4a58e4c4009bf5290c5b297600c3'
@@ -61,17 +61,6 @@ validpgpkeys=(
 )
 
 _backports=(
-  # Revert "rules: allow users to access frame buffer devices" (#3333)
-  e77813ca9f4e0735fd0e3e2caae4d7d1ee436011
-
-  # {machine,system}ctl: always pass &changes and &n_changes (#3350)
-  acc0269cad31d1aaef2034a055b34c07c88a353d
-
-  # systemctl: fix return values on success
-  5f056378b0ceffb6e6fba3513f7eae72e2d09dc8
-
-  # automount: handle expire_tokens when the mount unit changes its state (#3434)
-  0a62f81045dd810c8f1223cccbac4d706ea2cb45
 )
 
 prepare() {
@@ -124,6 +113,7 @@ build() {
     --with-sysvrcnd-path=
     --with-ntp-servers="${timeservers[*]}"
     --with-default-dnssec=no
+    --with-dbuspolicydir=/usr/share/dbus-1/system.d
     --without-kill-user-processes
   )
 
@@ -178,15 +168,7 @@ package_systemd-knock() {
               'quota-tools: kernel-level quota management'
               'systemd-knock-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
-  backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
-          etc/dbus-1/system.d/org.freedesktop.hostname1.conf
-          etc/dbus-1/system.d/org.freedesktop.login1.conf
-          etc/dbus-1/system.d/org.freedesktop.locale1.conf
-          etc/dbus-1/system.d/org.freedesktop.machine1.conf
-          etc/dbus-1/system.d/org.freedesktop.timedate1.conf
-          etc/dbus-1/system.d/org.freedesktop.import1.conf
-          etc/dbus-1/system.d/org.freedesktop.network1.conf
-          etc/pam.d/systemd-user
+  backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
