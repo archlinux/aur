@@ -2,14 +2,14 @@
 
 _pkgname=rpgmakertrans
 pkgname=$_pkgname-hg
-pkgver=2016.03.19.r808.b698918e3f5c
+pkgver=2016.09.25.r808.b698918e3f5c
 pkgrel=1
 pkgdesc="Translation Tool for RPGMaker Games"
 arch=("i686" "x86_64")
 url="http://rpgmakertrans.bitbucket.org/index.html"
 license=("GPL3")
-depends=("python" "python-pyside" "python-autopep8" "python-coverage"
-        "python-fuzzywuzzy" "pep8" "python-pyenchant" "python-pylint"
+depends=("python" "python-pyside" "autopep8" "python-coverage"
+        "python-fuzzywuzzy" "python-pyenchant" "python-pylint"
         "python-levenshtein"
 )
 makedepends=("mercurial")
