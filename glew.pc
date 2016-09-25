@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib
+includedir=${prefix}/include
+
+Name: glew-libepoxy
+Description: GLEW-like wrapper around libepoxy
+Version: 99.0.0
+Cflags: -I${includedir}
+Libs: -L${libdir} -lGLEW
+Requires: glu
