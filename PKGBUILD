@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.2.20
+pkgver=2.3.33
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -29,8 +29,10 @@ depends=('python2'
          'python2-dateutil'
          'python2-jsonschema'
          'python2-path' #AUR#
-         'python2-guessit>=2.0.3'
+         'python2-guessit<=2.0.4'
          'python2-apscheduler>=3.2.0' #AUR#
+         'python2-terminaltables'
+         'python2-colorclass'
          'python2-pytvmaze>=1.4.8' #AUR#
          'python2-ordereddict'
          'python2-cherrypy>=3.7.0'
@@ -59,7 +61,7 @@ source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
 
 changelog=ChangeLog
 
-sha256sums=('3fcbc9c14935fe0bb3ee39c8751e57c86fb1089f56260af3f570896020653700'
+sha256sums=('45cca4df7b78503b88e60aab33cdac6e77035241a41c977be2824f4f1d495fb5'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
