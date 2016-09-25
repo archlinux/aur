@@ -4,14 +4,14 @@
 
 pkgbase=python-ioflo
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
 url='http://ioflo.com'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python2-enum34' 'git')
-checkdepends=('python-nose' 'python2-nose')
+checkdepends=('python-pytest-runner' 'python2-pytest-runner')
 source=("git+https://github.com/ioflo/ioflo.git#tag=v$pkgver")
 md5sums=('SKIP')
 
@@ -29,10 +29,10 @@ build() {
 
 check() {
   cd "$srcdir"/ioflo
-  python setup.py nosetests || warning "Tests failed"
+  python setup.py ptr || warning "Tests failed"
 
   cd "$srcdir"/ioflo-py2
-  python2 setup.py nosetests || warning "Tests failed"
+  python2 setup.py ptr || warning "Tests failed"
 }
 
 package_python-ioflo() {
