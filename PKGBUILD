@@ -8,7 +8,7 @@ pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS"
 license=('MIT')
-makedepends=('python-packaging' 'python2-packaging' 'git')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
 changelog=changelog
 source=(git+https://github.com/doloopwhile/PyExecJS.git#tag=v$pkgver)
 sha512sums=('SKIP')
