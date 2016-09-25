@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('lib32-zlib' 'lib32-xz')
 makedepends=('gcc-multilib')
 options=('!libtool')
-source=("ftp://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar.xz")
+source=("http://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar.xz")
 md5sums=('3cf469f40ec2ed51f56ba45ea03793e7')
 
 build() {
