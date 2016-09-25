@@ -1,0 +1,16 @@
+pkgbase = libprotobuf2
+	pkgdesc = Protocol Buffers Library 2 - provides protobuf2 library for protobuf3 installations
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = gcc-libs
+	depends = zlib
+	source = https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
+	md5sums = 11aaac2d704eef8efd1867a807865d85
+
+pkgname = libprotobuf2
+
