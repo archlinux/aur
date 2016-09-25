@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -30,8 +30,8 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 			  "restart.conf"
 			  "vpn.sh"
 			  "pia.8.gz"
-			  "git://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-			  "git://github.com/masterkorp/openvpn-update-resolv-conf.git"
+			  "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
+			  "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git"
 			  "update-resolv-conf.patch")
 		
 noextract=("openvpn.zip"
