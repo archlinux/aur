@@ -10,15 +10,15 @@
 
 pkgname=mate-utils-xfce
 _pkgname=mate-utils
-_ver=1.15
-pkgver=${_ver}.1
+_ver=1.16
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="MATE utilities slimmed down for Xfce (GTK2 version). Includes Disk Usage Analyzer, Log File Viewer, and Search Tool."
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('desktop-file-utils' 'gtk2' 'libcanberra' 'libgtop' 'libsm' 'zlib')
-makedepends=('mate-common>=1.15.0' 'rarian' 'yelp-tools')
+makedepends=("mate-common>=${_ver}" 'rarian' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 provides=('mate-utils')
 conflicts=('mate-utils' 'mate-utils-gtk3' 'mate-desktop')
@@ -28,7 +28,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.
         'mate-search-tool.desktop'
         'mate-system-log.desktop'
         'org.mate.interface.gschema.xml')
-sha1sums=('93f68f74aeaeb149f44150b4cce328ea55836584'
+sha1sums=('8435a42773bd2f5fcf27e2e6e71373fbf216eef9'
           '7ee8b6a8cd63bac617f2d3cd94479957ee553f18'
           'b37683262a64388678b319a83695f72115823729'
           '70a3a8161481e0708f7535d5a0bfd3f7a1b74db6'
@@ -60,6 +60,6 @@ package() {
     install -Dm755 "${srcdir}/mate-disk-usage-analyzer.desktop" "${pkgdir}/usr/share/applications/mate-disk-usage-analyzer.desktop"
     install -Dm755 "${srcdir}/mate-search-tool.desktop" "${pkgdir}/usr/share/applications/mate-search-tool.desktop"
     install -Dm755 "${srcdir}/mate-system-log.desktop" "${pkgdir}/usr/share/applications/mate-system-log.desktop"
-    # copy needed MATE schema file
+    # install needed MATE schema file
     install -Dm644 "${srcdir}/org.mate.interface.gschema.xml" "${pkgdir}/usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml"
 }
