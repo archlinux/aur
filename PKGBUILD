@@ -14,7 +14,7 @@ pkgdesc='Standalone web browser from mozilla.org, developer build - German'
 url='http://www.mozilla.org/firefox/developer'
 pkgver="${_release_version}_${_release_year}${_release_month}${_release_day}"
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_release_version}.de.linux-${CARCH}.tar.bz2"
 _release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time}-mozilla-aurora-l10n"
@@ -35,6 +35,6 @@ package() {
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-md5sums=('aae25ea2799e58c2202a4854d77d7499'
+md5sums=('267c6861e1090af5f11861a281ecc6b5'
          '5979b30b19cd645012ce518321fb16f1'
          '32618013911bf84445afce815e3875b1')
