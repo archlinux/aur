@@ -4,12 +4,14 @@
 pkgname=motion-git
 _pkgname=motion
 pkgver=release.3.4.1.r98.g7e16a9e
-pkgrel=1
+pkgrel=2
 pkgdesc="A software motion detector which grabs images from video4linux devices and/or from webcams"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://motion-project.github.io/"
 depends=('libjpeg' 'v4l-utils' 'ffmpeg')
+provides=('motion')
+conflicts=('motion')
 backup=('etc/motion/motion.conf')
 source=($_pkgname::git+https://github.com/Motion-Project/${_pkgname}.git)
 md5sums=('SKIP')
@@ -29,5 +31,10 @@ build() {
 package(){
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}"/etc/motion/motion{-dist,}.conf
+  mv "${pkgdir}"/etc/motion/camera1{-dist,}.conf
+  mv "${pkgdir}"/etc/motion/camera2{-dist,}.conf
+  mv "${pkgdir}"/etc/motion/camera3{-dist,}.conf
+  mv "${pkgdir}"/etc/motion/camera4{-dist,}.conf
   install -Dm644 "${pkgdir}/usr/share/motion/examples/motion.service" "${pkgdir}/usr/lib/systemd/system/motion.service"
 }
