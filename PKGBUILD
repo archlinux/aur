@@ -15,8 +15,8 @@ _openal=openal
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 _label='GZDoom'
 _desc='Advanced Doom source port with OpenGL support'
 pkgdesc="${_desc}"

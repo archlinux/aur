@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = gzdoom
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g2.1.1
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g2.2.0
 	source = launcher.desktop
 	sha256sums = SKIP
 	sha256sums = 59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d
