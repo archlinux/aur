@@ -19,8 +19,8 @@ depends=(
   'mingw-w64-libpng'
   'mingw-w64-openssl'
   'mingw-w64-libdbus')
-makedepends=('mingw-w64-gcc' 'mingw-w64-mariadb-connector-c' 'mingw-w64-postgresql-libs' 'mingw-w64-pkg-config')
-optdepends=('mingw-w64-postgresql-libs: PostgreSQL driver'
+makedepends=('mingw-w64-gcc' 'mingw-w64-mariadb-connector-c' 'mingw-w64-postgresql' 'mingw-w64-pkg-config')
+optdepends=('mingw-w64-postgresql: PostgreSQL driver'
             'mingw-w64-mariadb-connector-c: MariaDB driver')
 options=(!strip !buildflags !libtool staticlibs)
 replaces=("${pkgname/qt4/qt}<=4.8.5")
