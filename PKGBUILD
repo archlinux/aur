@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=0.r431.eed37cb
+pkgver=0.r434.fb17e06
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('custom:BSD')
+license=('ISC, custom:BSD')
 groups=()
 depends=('gsfonts')
 makedepends=('git')
@@ -36,13 +36,13 @@ source=("neatmkfn::git://repo.or.cz/neatmkfn.git"
         "http://litcave.rudi.ir/neateqn.pdf")
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-         '56e6abc4775a4b76ae4190cc5bae350b'
+         '936d68a71a5662b6a4d2da9e0820923b'
          '38ff8a13e7b1dbce1eb20f41139b8e16')
 sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'fcd3f9735f5b189b64f8a644df3bbbcf32486c06'
+          '2c7f129fc6d8911f0b9db9923a62e83862877fb5'
           '3e7b33efbdb3a9f944fc16d3e0f97ebd8aca697c')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'efda96099607e73a5e46c590102f27f77a913e409731dc7c983327c98fea635b'
+            '41a104c0eaf41423da4d8fb3803fcbb4b53af92e7491e8d48d16e6e9e8adef5e'
             '015589c6ceef39318d593dbc27cd19b307e536a2c18e4c44644e4d142ca92b9b')
 
 ## Ghostscript Fonts Location:
