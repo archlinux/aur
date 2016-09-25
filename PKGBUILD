@@ -4,7 +4,7 @@
 pkgname=notify-osd-customizable
 _realname=notify-osd
 pkgver=0.9.35
-pkgrel=4
+pkgrel=5
 _realver=${pkgver}+16.04.20160415
 pkgdesc="daemon that displays passive pop-up notifications, with leolik patch added"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ provides=('notification-daemon' 'notify-osd')
 conflicts=('notify-osd')
 install=$pkgname.install
 source=(${url}/+files/${_realname}_${_realver}-0ubuntu1-leolik~ppa0.tar.gz notify-osd)
-md5sums=('fb1b2b3e5c41d2ef328c56340719388a'
+md5sums=('2450cf0dd3d6036f408f3b371b613e02'
          '44180ae7a2ac9446133f76aface88bed')
 
 build() {
