@@ -1,14 +1,14 @@
 # Contributor: Andrew Querol <andrew@querol.me>
-# Maintainer: Rafael Fontenelle <rafaeff@gnome.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=chrome-gnome-shell-git
-pkgver=7.1.r0.g0816283
+pkgver=7.1.r2.g53e1456
 pkgrel=1
 pkgdesc="Native connector for extensions.gnome.org"
 arch=('any')
 url="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
 license=('GPL')
-depends=('gnome-shell' 'python')
+depends=('gnome-shell' 'python-requests')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 replaces=('gs-chrome-connector') # Old name, renamed at request of the maintainer
