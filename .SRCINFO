@@ -1,0 +1,36 @@
+pkgbase = gegl-cce-git
+	pkgdesc = gegl customized for GIMP-CCE
+	pkgver = r7236.b31ef18
+	pkgrel = 1
+	url = https://github.com/ellelstone/gegl
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = intltool
+	makedepends = python2
+	makedepends = ruby
+	makedepends = lua
+	makedepends = libraw
+	makedepends = openexr
+	makedepends = ffmpeg
+	makedepends = librsvg
+	makedepends = jasper
+	makedepends = libtiff
+	makedepends = suitesparse
+	depends = babl-cce-git
+	depends = libspiro
+	depends = json-glib
+	optdepends = openexr: for using the openexr plugin
+	optdepends = ffmpeg: for using the ffmpeg plugin
+	optdepends = librsvg: for using the svg plugin
+	optdepends = libtiff: tiff plugin
+	optdepends = jasper: for using the jasper plugin
+	optdepends = libraw: raw plugin
+	optdepends = suitesparse: matting-levin plugin
+	optdepends = lua: lua plugin
+	source = git+https://github.com/ellelstone/gegl
+	md5sums = SKIP
+
+pkgname = gegl-cce-git
+
