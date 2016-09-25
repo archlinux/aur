@@ -2,25 +2,31 @@
 
 pkgname=clutter-gst
 pkgver=3.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer bindings for clutter"
 arch=(i686 x86_64)
-url="http://www.clutter-project.org/"
+url="https://git.gnome.org/browse/clutter-gst"
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev)
-makedepends=(gobject-introspection)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a0011787ed2a2dafe914f973c1ede283d40b8eb75123f4a7b608ae6d1cc066c9')
+makedepends=(gobject-introspection gtk-doc git)
+_commit=a8fa2106708d7db768370e9cab0ff0d4e72e0362
+source=("git://git.gnome.org/clutter-gst#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
+  cd $pkgname
+  ./configure --prefix=/usr --sysconfdir=/etc \
+    --enable-gtk-doc
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -29,12 +35,12 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=746883
