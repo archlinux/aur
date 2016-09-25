@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo "-- Don't forget to run 'php maintenance/update.php' after upgrade"
+  echo "-- Mediawiki is in /usr/share/webapps now"
+  echo "-- Mediawiki-math is separate package now"
+}

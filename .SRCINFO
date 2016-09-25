@@ -1,0 +1,11 @@
+pkgbase = mediawiki-lts
+pkgname = mediawiki-lts
+pkgdesc = Latests MediaWiki LTS engine
+pkgver = 1.27.1
+pkgrel = 1
+url = http://www.mediawiki.org/wiki/MediaWiki
+arch = any
+license = GPL
+depends = php
+source = http://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.1.tar.gz
+sha256sums = 08a676c392625cf3c5730a6c1b9390ab1e11dcc17cfd0ff97a2ae3917ef5a36a
