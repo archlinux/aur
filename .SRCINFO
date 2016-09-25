@@ -27,7 +27,7 @@ pkgbase = animewatch-pyqt5
 	depends = youtube-dl
 	depends = wget
 	conflicts = animewatch-pyqt4
-	conflicts = animewatch-pyqt5.git
+	conflicts = animewatch-pyqt5-git
 	source = https://github.com/kanishka-linux/AnimeWatch/releases/download/v2.8.2-0/AnimeWatch-2.8.2-0.tar.bz2
 	md5sums = 281a4588b53ee853cc96bb3426507a85
 

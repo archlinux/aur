@@ -4,7 +4,7 @@ pkgver=2.8.2
 pkgrel=0
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection"
 arch=(any)
-conflicts=('animewatch-pyqt4' 'animewatch-pyqt5.git')
+conflicts=('animewatch-pyqt4' 'animewatch-pyqt5-git')
 license=('GPL3')
 depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'python-urllib3' 'curl' 'libnotify' 'python-dbus' 'libtorrent-rasterbar'
         'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib' 
