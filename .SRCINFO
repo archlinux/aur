@@ -1,0 +1,14 @@
+pkgbase = numad-git
+	pkgdesc = numad is a deamon that monitors NUMA topology and usage and distributes loads for good locality for the purpose of providing the best performance, by avoiding unnecessary latency.	
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://git.fedorahosted.org/git/numad.git
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = libsystemd
+	depends = git
+	options = 
+
+pkgname = numad-git
+
