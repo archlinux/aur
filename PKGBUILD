@@ -1,6 +1,6 @@
 # Maintainer: Mahmud Ridwan <m[at]hjr265[dot]me>
 pkgname=ibus-avro-git
-pkgver=20141017
+pkgver=20150925
 pkgrel=1
 pkgdesc="Avro Phonetic Bangla typing for Linux"
 url="http://linux.omicronlab.com"
@@ -21,13 +21,13 @@ build() {
     git clone -b develop git://github.com/sarim/ibus-avro.git $pkgname
     cd $pkgname
   fi
-  
+
   aclocal || return 1
   autoconf || return 1
 
   automake --add-missing
   ./configure --prefix=/usr
-  
+
   make || return 1
 }
 
@@ -36,6 +36,8 @@ package() {
 
   make DESTDIR="$pkgdir" installdeb
   install -Dm644 MPL-1.1.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  sed -i 's|<layout>bn</layout>|<layout>us</layout>|' "$pkgdir/usr/share/ibus/component/ibus-avro.xml"
 
   rmdir "$pkgdir/usr/libexec"
 }
