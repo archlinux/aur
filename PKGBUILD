@@ -2,7 +2,7 @@
 
 pkgbase=python-chameleon
 pkgname=('python-chameleon' 'python2-chameleon')
-pkgver=2.24
+pkgver=2.25
 pkgrel=1
 pkgdesc="Fast HTML/XML Template Compiler"
 arch=('any')
@@ -17,18 +17,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/chameleon"
+  cd "$srcdir"/chameleon
   python setup.py build
 
-  cd "$srcdir/chameleon-py2"
+  cd "$srcdir"/chameleon-py2
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir/chameleon"
+  cd "$srcdir"/chameleon
   python setup.py test
 
-  cd "$srcdir/chameleon-py2"
+  cd "$srcdir"/chameleon-py2
   python2 setup.py test
 }
 
@@ -36,14 +36,14 @@ package_python-chameleon() {
   depends=('python')
 
   cd chameleon
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
 package_python2-chameleon() {
   depends=('python2')
 
   cd chameleon-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
