@@ -4,8 +4,8 @@
 pkgname=notify-osd-customizable
 _realname=notify-osd
 pkgver=0.9.35
-pkgrel=3
-_realver=${pkgver}+13.10.20130917.1
+pkgrel=4
+_realver=${pkgver}+16.04.20160415
 pkgdesc="daemon that displays passive pop-up notifications, with leolik patch added"
 arch=(i686 x86_64)
 url="https://launchpad.net/~leolik/+archive/leolik"
