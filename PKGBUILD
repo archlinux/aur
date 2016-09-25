@@ -2,7 +2,7 @@
 
 pkgname=v8-static-gyp-5.4
 pkgver=5.4.420
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
@@ -61,7 +61,7 @@ build() {
   gypfiles/gyp_v8 -f ninja -Dv8_target_arch=$V8_ARCH -Dwerror= -Dlinux_use_bundled_gold=0 -Dv8_use_snapshot=1 -Dv8_use_external_startup_data=0 -Dclang=1 -Dhost_clang=1 -Dtest_isolation_mode=noop -Drelease_extra_cflags=-fPIC
 
   msg2 "Start building..."
-  ninja -C out/Release # or target 'v8 d8' if you do not need tests
+  ninja -C out/Release v8 d8
 
   # Convert thin archives into thick ones
   find out/Release -name '*.a' -type f -exec sh -c 'ar t {} | xargs ar rs {}.new && mv -v {}.new {}' \;
