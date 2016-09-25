@@ -3,8 +3,8 @@
 pkgname=perl-net-mpd
 _lastauthor=A/AB/ABERNDT
 _pkgname=Net-MPD
-pkgver=0.05
-pkgrel=2
+pkgver=0.06
+pkgrel=1
 pkgdesc="a lightweight replacment for Audio::MPD"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,9 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-harness>=3.29')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('38d631633ad6380ec0790aedc31d20f0ec2a268809af71eb9041fb93eaec5989')
+url="https://metacpan.org/release/${_pkgname}"
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('6c5caab6547b9b35bb196ba44ae78dc2dc56ea085f36268e58af5bcab2f27dc2')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
