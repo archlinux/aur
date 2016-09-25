@@ -1,0 +1,15 @@
+pkgbase = passtrust
+	pkgdesc = A Ruby-based tool that converts a simple passphrase into a secure password
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/xorond/passtrust
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler
+	depends = ruby
+	depends = xclip
+	source = https://github.com/xorond/passtrust/archive/v1.1.tar.gz
+	sha512sums = a743ab3569226e8216f933e83d24e325ed4c6ec16d97e08c49d4bc717d748bb950dd7be1b5a846724f45e87cabfe57ac50ece2e5eea1ba73ae0b7fe381d6bb37
+
+pkgname = passtrust
+
