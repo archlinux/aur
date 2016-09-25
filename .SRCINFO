@@ -6,7 +6,7 @@ pkgbase = blasphemer-wad
 	arch = any
 	license = BSD
 	replaces = blasphemer
-	source = https://blasphemer.googlecode.com/files/blasphemer-0.1.5.zip
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/blasphemer/blasphemer-0.1.5.zip
 	sha256sums = 4e49f89584e3a5254e183925c2e6af9764ff3f2a3d1ad7aece066b004af4a1fc
 
 pkgname = blasphemer-wad

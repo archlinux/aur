@@ -10,7 +10,7 @@ arch=('any')
 url="http://code.google.com/p/blasphemer"
 license=('BSD')
 replaces=('blasphemer')
-source=("https://blasphemer.googlecode.com/files/blasphemer-$pkgver.zip")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/blasphemer/blasphemer-$pkgver.zip")
 sha256sums=('4e49f89584e3a5254e183925c2e6af9764ff3f2a3d1ad7aece066b004af4a1fc')
 
 package() {
