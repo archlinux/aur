@@ -1,0 +1,34 @@
+pkgbase = rslsync
+	pkgdesc = Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://www.getsync.com
+	install = rslsync.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom:btsync
+	conflicts = btsync-1.4
+	conflicts = btsync
+	backup = etc/rslsync.conf
+	source = rslsync.service
+	source = rslsync_user.service
+	source = rslsync.conf
+	sha1sums = 68eaa07ad70ccb067d687641d6c77a3cfaca4082
+	sha1sums = 6bebc8a9e56a36091419632aad14f440845be3a7
+	sha1sums = ab421538a28dd8160bbdd973c70beb504f5164e3
+	source_i686 = rslsync_i386-2.4.0-1.tar.gz::https://download-cdn.resilio.com/stable/linux-i386/resilio-sync_i386.tar.gz
+	sha1sums_i686 = c442bbb2ebad67b2aa355dcd92c0dd05a9a06f57
+	source_x86_64 = rslsync_x64-2.4.0-1.tar.gz::https://download-cdn.resilio.com/stable/linux-x64/resilio-sync_x64.tar.gz
+	sha1sums_x86_64 = fe6802461b6be32351637fc19016952548827af7
+	source_arm = rslsync_arm-2.4.0-1.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz
+	sha1sums_arm = 3e7d00716c225aebe6618423d3445b01f313030c
+	source_armv6h = rslsync_arm-2.4.0-1.tar.gz::https://download-cdn.resilio.com/stable/linux-arm/resilio-sync_arm.tar.gz
+	sha1sums_armv6h = 3e7d00716c225aebe6618423d3445b01f313030c
+	source_armv7h = rslsync_armhf-2.4.0-1.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz
+	sha1sums_armv7h = af7fae7fac8c93ccd104d6d61f746a1f087a5013
+
+pkgname = rslsync
+
