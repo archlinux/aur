@@ -1,7 +1,8 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
+
 pkgname=private-internet-access-vpn
-pkgver=2.9
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -12,6 +13,7 @@ optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
 sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
+            '9d28e1883d5f2e1b017789c051c6377b1e97ed86f72f84f3ca33b15a909947c7'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
@@ -22,50 +24,41 @@ sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
             'b346249c40d4eab7cf5a2b682b10f574d5f8ad6cf2b62604f15261a246b5f5a1')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	"login-example.conf"
-	"pia-example.conf"
-	"restart.conf"
-	"vpn.sh"
-	"pia.8.gz"
-	"git://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-	"git://github.com/masterkorp/openvpn-update-resolv-conf.git"
-	"update-resolv-conf.patch")
+	          "https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+			  "login-example.conf"
+			  "pia-example.conf"
+			  "restart.conf"
+			  "vpn.sh"
+			  "pia.8.gz"
+			  "git://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
+			  "git://github.com/masterkorp/openvpn-update-resolv-conf.git"
+			  "update-resolv-conf.patch")
 		
 noextract=("openvpn.zip"
-           "pia.8.gz")
+                  "openvpn-strong.zip"
+                  "pia.8.gz")
 
 prepare() {
   cd "${srcdir}"
+  
+  msg2 "Extracting Certifications..."
+  bsdtar -xf openvpn.zip "*.pem" "*.crt"
+  bsdtar -xf openvpn-strong.zip "*.pem" "*.crt"
+  
+  msg2 "Extracting OpenVPN Configurations..."
   mkdir "vpn-configs"
-  bsdtar -xf openvpn.zip -C "vpn-configs"
-
+  bsdtar -xf openvpn.zip -C vpn-configs *.ovpn
+  
   cd "vpn-configs"
-
-  msg2 "Fixing Openvpn Files..."
-  for file in *.ovpn
+  msg2 "Creating Remote Host List..."
+  touch ../vpn-hosts.txt
+  
+  find *.ovpn -print0 | while read -d $'\0' file
   do
-    msg2 "  ${file/%.ovpn/ }..."
-    # Switch .ovpn file extensions to .conf.  This is what the openvpn systemd
-    # service expects
-    new_file_name="${file/%.ovpn/.conf}"
-	
-    # Swap spaces in filenames for underscores to be more command-line friendly
-    new_file_name="${new_file_name// /_}"
-    mv "$file" "$new_file_name"
-
-    # Prevent caching of password in memory 
-    echo "auth-nocache" >> "$new_file_name"
-	
-    # Attempt to ensure that we use PIA DNS servers
-    echo "script-security 2" >> "$new_file_name"
-    echo "up /etc/openvpn/update-resolv-conf.sh" >> "$new_file_name"
-    echo "down /etc/openvpn/update-resolv-conf.sh" >> "$new_file_name"
-	
-    # Fix certs in configs to use full path so when run from openvpn it works
-    # i.e. sudo openvpn --config /etc/openvpn/US_East.conf
-    sed -i -e 's:\(^ca.\):\1/etc/openvpn/:;s:\(^crl-verify.\):\1/etc/openvpn/:' "$new_file_name"
-
+    host=$(egrep -o "([-A-Za-z]+\.privateinternetaccess\.com)" "$file")
+    printf "%s,%s\n"  "${file/%.ovpn/}" ${host} >> ../vpn-hosts.txt
   done
+  
   msg2 "Done."
 
   msg2 "Patching update-resolv-conf ..."
@@ -81,7 +74,9 @@ package() {
 
   
   install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
-  install -D -m 600 vpn-configs/*.* "${pkgdir}/etc/openvpn"
+  install -D -m 644 vpn-hosts.txt "${pkgdir}/etc/private-internet-access"
+  install -D -m 644 *.crt "${pkgdir}/etc/openvpn"
+  install -D -m 644 *.pem "${pkgdir}/etc/openvpn"
   install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
 
   install -D -m 755 openvpn-update-resolv-conf/update-resolv-conf.sh "${pkgdir}/etc/openvpn/update-resolv-conf.sh"
