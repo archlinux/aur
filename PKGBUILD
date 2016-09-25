@@ -1,7 +1,6 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=googleplaydownloader
-pkgver=2.2
-_gitcommit=52b54662334f5088832388ccf92ece024da5d1ed
+pkgver=2.3
 pkgrel=1
 pkgdesc="A graphical software to download APKs from the Google Play store."
 arch=(any)
@@ -12,7 +11,7 @@ depends=('python2'
          'python2-pyasn1'
          'wxpython')
 makedepends=('git' 'python2-setuptools')
-source=("git+https://framagit.org/tuxicoman/googleplaydownloader.git#commit=$_gitcommit")
+source=("git+https://framagit.org/tuxicoman/googleplaydownloader.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {

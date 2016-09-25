@@ -1,6 +1,6 @@
 pkgbase = googleplaydownloader
 	pkgdesc = A graphical software to download APKs from the Google Play store.
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://framagit.org/tuxicoman/googleplaydownloader
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = googleplaydownloader
 	depends = python2-requests
 	depends = python2-pyasn1
 	depends = wxpython
-	source = git+https://framagit.org/tuxicoman/googleplaydownloader.git#commit=52b54662334f5088832388ccf92ece024da5d1ed
+	source = git+https://framagit.org/tuxicoman/googleplaydownloader.git#tag=v2.3
 	sha256sums = SKIP
 
 pkgname = googleplaydownloader
