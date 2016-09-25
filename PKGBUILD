@@ -2,15 +2,15 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgname=compton-conf
-pkgver=0.1.0
-pkgrel=3
-pkgdesc='A graphical configuration tool for Compton X composite manager. Qt4 UI.'
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI.'
 arch=('i686' 'x86_64')
-url="https://github.com/lxde/compton-conf"
+url='https://github.com/lxde/compton-conf'
 license=('LGPL2.1')
 
-depends=('qt4' 'libconfig')
-makedepends=('cmake')
+depends=('qt5-base' 'libconfig')
+makedepends=('cmake' 'qt5-tools' 'liblxqt')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
@@ -19,8 +19,8 @@ source=(
 	'desktop_entry.patch'
 )
 sha512sums=(
-	'863b7a90ba369fa91f943e4b03cec079457ce2f216d79987e7f695274a8249e15677f88bd169cf5bb1aff5f821342b150aa68e139d034321cf35542bd393b77a'
-	'16698ca382bd1eba895a4240756b7b4d03d2edfe69aacb182c984f1fbb6a9b1bf291738ebbe97113a6c588c5954061321feff817e33f70b2b1b1214916fc283a'
+	'8a386b936877ce516433e71329ae8e2531fec3b22e76f71b3d6fb16bbfa920bf0c508218001b0060b50e7b709746e96f4c50af8debc02b363035874e63301b6e'
+	'1874fd90bb791542440c444d7809a03f651045f2acde7db194d309f67c75d81cacf656912f4b4837fade265994737522a0b51b347fc930296ce6ce70051b020e'
 )
 
 prepare() {
