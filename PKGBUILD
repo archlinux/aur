@@ -1,10 +1,10 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
-url="http://plplot.sourceforge.net/"
+url="http://astrometry.net/"
 license=("GPL")
 depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python2' 'python2-pyfits'
 'python2-numpy' 'cfitsio' 'gsl')
@@ -13,7 +13,7 @@ source=("https://github.com/dstndstn/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make all py extra
+  make PYTHON=/usr/bin/python2 all py extra
 }
 
 package() {
