@@ -1,6 +1,6 @@
 pkgbase = mumble-stable-minimal
 	pkgdesc = Mumble stable without Text2Speech and Overlay
-	pkgver = 1.2.16
+	pkgver = 1.2.17
 	pkgrel = 1
 	url = http://mumble.info/
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = mumble-stable-minimal
 	depends = jack
 	depends = opus
 	depends = xdg-utils
-	provides = mumble=1.2.16
+	provides = mumble=1.2.17
 	conflicts = mumble
-	source = https://github.com/mumble-voip/mumble/releases/download/1.2.16/mumble-1.2.16.tar.gz
-	md5sums = 58e7574af80e36e0b943df0e6a44d6ce
+	source = https://github.com/mumble-voip/mumble/releases/download/1.2.17/mumble-1.2.17.tar.gz
+	md5sums = 98a28c10cb607bb51f13e568db2b9570
 
 pkgname = mumble-stable-minimal
 
