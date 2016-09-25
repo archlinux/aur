@@ -18,7 +18,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.81482.ga81b398
+pkgver=N.81760.g2134499
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ depends=(
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
     'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
     'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver' 'opencl-headers' 'ocl-icd'
-    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl' 'java-environment' 'libmfx-git' 'libomxil-bellagio'
+    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'java-environment' 'libmfx-git' 'libomxil-bellagio'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
@@ -183,7 +183,7 @@ build() {
 	        --enable-opencl \
 	        --enable-opengl \
 	        --enable-openssl \
-	        --enable-sdl \
+	        --enable-sdl2 \
 	        --enable-x11grab \
 	        --enable-xlib \
 	        --enable-zlib \
