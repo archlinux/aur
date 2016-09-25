@@ -5,7 +5,7 @@
 
 pkgname=setools
 pkgver=3.3.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -19,8 +19,10 @@ optdepends=('glib2: needed for graphical tools'
             'tk>=8.4.9: needed for graphical tools')
 makedepends=('java-environment' 'bwidget>=1.8' 'gtk2>=2.8' 'glib2'
              'libglade>=2.6.4' 'swig' 'tk>=8.4.9')
-conflicts=("selinux-${pkgname}")
-provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
+conflicts=("selinux-${pkgname}"
+           "setools3-libs")
+provides=("selinux-${pkgname}=${pkgver}-${pkgrel}"
+          "setools3-libs=${pkgver}-${pkgrel}")
 # Use patchs from git tree to be able to grab 0012-Make-the-SWIG-files-compatible-with-SWIG-3.patch
 # and 0013-Update-for-2015-02-02-Userspace-release-2.4.patch without conflicts,
 # which are needed to make setools build successfully.

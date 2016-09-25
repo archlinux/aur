@@ -1,7 +1,7 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
 	pkgver = 3.3.8
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/TresysTechnology/setools3/wiki
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgbase = setools
 	optdepends = bwidget>=1.8: needed for graphical tools
 	optdepends = libglade>=2.6.4: needed for graphical tools
 	optdepends = tk>=8.4.9: needed for graphical tools
-	provides = selinux-setools=3.3.8-5
+	provides = selinux-setools=3.3.8-6
+	provides = setools3-libs=3.3.8-6
 	conflicts = selinux-setools
+	conflicts = setools3-libs
 	source = https://raw.githubusercontent.com/wiki/TresysTechnology/setools3/files/dists/setools-3.3.8/setools-3.3.8.tar.bz2
 	source = https://github.com/TresysTechnology/setools3/commit/4560a00c872d0a664c1098585e5c1a209adf698b.patch
 	source = https://github.com/TresysTechnology/setools3/commit/76e333503433be018e8aee8992d8f77aa14979a5.patch
