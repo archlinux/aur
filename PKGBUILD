@@ -2,7 +2,7 @@
 
 _pkgname=osu
 pkgname=$_pkgname-git
-pkgver=r7.9b57c53
+pkgver=r84.8a168f2
 pkgrel=1
 
 pkgdesc='rhythm is just a *click* away!'
@@ -12,8 +12,6 @@ license=('MIT' 'custom:CCPL:by-nc-4.0')
 
 depends=('mono')
 makedepends=('git' 'nuget')
-provides=($_pkgname)
-conflicts=($_pkgname)
 
 source=("git+https://github.com/ppy/$_pkgname.git"
         "git+https://github.com/ppy/$_pkgname-resources.git"
