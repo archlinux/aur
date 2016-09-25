@@ -15,9 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd agrum-$pkgver
-
-  # see 6b89d669e8f5086f4de6ad8a4e34385080073b26
-  sed -i "s|<< traceFileName <<|<< traceFileName.str() <<|g" src/agrum/FMDP/planning/SPUDDPlanning.tcc
+  sed -i "49i#include <cmath>" src/agrum/core/math/chi2.cpp
 }
 
 build() {
