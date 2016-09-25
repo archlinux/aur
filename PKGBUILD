@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('LGPL')
 url="https://git.fedorahosted.org/git/numad.git"
 options=()
-depends=('libsystemd' 'git')
+depends=('cmake' 'libsystemd' 'git')
 source=("git+https://git.fedorahosted.org/git/numad.git")
 md5sums=('SKIP')
 
