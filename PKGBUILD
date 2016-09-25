@@ -3,7 +3,7 @@
 pkgname=perl-eval-closure
 _lastauthor=D/DO/DOY
 _pkgname=Eval-Closure
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="safely and cleanly create closures via string eval"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-try-tiny' 'perl-sub-exporter')
 checkdepends=('perl-test-requires' 'perl-test-fatal' 'perl-test-output')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('f87d8aa8af5f87611f95a8f1f44f9c403ab669f944b3a63a9f8ca6a80075ed957f0050bd57b2076581bc47fa57b710712ed9e3abe5670a1881b12dd674414f89')
+sha512sums=('fc55206bd39c4cb39360d06b6f39a65743f34b5e59d1a1ce99bf5831b9d88a03fb6dadf32fa9f0868e140fce719d53a7b13027f397cdd7f6ca05cc81277bdc08')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
