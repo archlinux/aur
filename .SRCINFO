@@ -1,0 +1,25 @@
+pkgbase = xe-guest-utilities-git
+	pkgver = r40.83de571
+	pkgrel = 1
+	url = https://github.com/xenserver/xe-guest-utilities
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/xenserver/xe-guest-utilities.git
+	source = xe-guest-utilities.service
+	sha256sums = SKIP
+	sha256sums = beda5dbcc03529959984267a1a9748439beda3fcd24db26589848aa7023333a7
+
+pkgname = xe-guest-utilities-git
+	pkgdesc = Writes distribution version information and IP address to XenStore
+	depends = lsb-release
+	provides = xe-guest-utilities
+	conflicts = xe-guest-utilities
+
+pkgname = xenstore-git
+	pkgdesc = Utilities for interacting with XenStore from within a Xen virtual machine
+	provides = xenstore
+	conflicts = xenstore
+
