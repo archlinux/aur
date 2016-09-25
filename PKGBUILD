@@ -1,45 +1,64 @@
-# Maintainer: Seth Barberee <seth.barberee@gmail.com>
-
 pkgname=animewatch-pyqt5
 _pkgname=AnimeWatch
-pkgver=3.0.0.r16.d5448f6
-pkgrel=1
-pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection based on PyQt5-WebEngine"
+pkgver=2.8.2
+pkgrel=0
+pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection"
 arch=(any)
-conflicts=('animewatch-pyqt4')
-url="https://github.com/kanishka-linux/AnimeWatch"
+conflicts=('animewatch-pyqt4' 'animewatch-pyqt5.git')
 license=('GPL3')
 depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'python-urllib3' 'curl' 'libnotify' 'python-dbus' 'libtorrent-rasterbar'
-        'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib')
-
+        'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib' 
+	'livestreamer' 	'youtube-dl' 'wget')
+#optdepends=('livestreamer' 'youtube-dl' 'wget')
 makedepends=('git')
 
-source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
-#source=("https://github.com/kanishka-linux/"${_pkgname}"/archive/v"${pkgver}-${pkgrel}".zip")
-md5sums=('SKIP')
-_gitname=AnimeWatch-PyQt5-WebEngine-Stable
+#source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
+source=("https://github.com/kanishka-linux/${_pkgname}/releases/download/v${pkgver}-${pkgrel}/${_pkgname}-${pkgver}-${pkgrel}.tar.bz2")
+md5sums=('281a4588b53ee853cc96bb3426507a85')
+_gitname=AnimeWatch-PyQt5
 
 
 package() {
 
-  _bpath="${srcdir}/AnimeWatch/${_gitname}"
+  _bpath="${srcdir}/${_pkgname}-${pkgver}-${pkgrel}/${_gitname}"
 
   install -d "${pkgdir}/usr/share/${_pkgname}/"
   install -d "${pkgdir}/usr/share/${_pkgname}/Plugins/"
   install -d "${pkgdir}/usr/share/applications/"
   install -d "${pkgdir}/usr/bin/"
   
-  install -Dm755 "${_bpath}"/{animeWatch.py,musicArtist.py,adb.py,1.png,input.conf,default.jpg,introspect.xml,stream.py,tray.png} "${pkgdir}/usr/share/${_pkgname}/"
-  cat "${_bpath}/AnimeWatch.desktop" | sed 's/Exec=/Exec=python -B \/usr\/share\/AnimeWatch\/animeWatch.py \%u/g' > "${pkgdir}/usr/share/applications/AnimeWatch.desktop"
-  echo '#!/bin/bash' > "${pkgdir}/usr/bin/anime-watch"
-  echo 'if [ -z "$1" ]; then python -B /usr/share/AnimeWatch/animeWatch.py; else python -B /usr/share/AnimeWatch/animeWatch.py "$(pwd)/$1"; fi' >> "${pkgdir}/usr/bin/anime-watch"
-  chmod +x "${pkgdir}/usr/bin/anime-watch"
-  
-  for file in "${_bpath}/Plugins/"*;do
+  for file in "${_bpath}/"*;do
   	nm=$(echo $file | rev | cut -d'/' -f1 | rev)
-  	if [ $nm != "installPlugins.py" ];then
-  		#echo $nm
-		install -Dm755 "$file" "${pkgdir}/usr/share/${_pkgname}/Plugins/"
+  	if [ -d "$file" ];then
+		if [ $nm == 'Plugins' ];then
+			_plugin_path="$file/"
+			for plugins in "${_plugin_path}"*;do
+				plugin_name=$(echo $plugins | rev | cut -d'/' -f1 | rev)
+				if [ plugin_name != 'installPlugins.py' ];then
+					echo $plugins
+					echo 'Plugins copying'
+					install -Dm755 "$plugins" "${pkgdir}/usr/share/${_pkgname}/Plugins/"
+				fi
+			done
+		fi
+  	else
+		if [ $nm == 'AnimeWatch.desktop' ];then
+			echo $file
+			echo 'desktop file copying'
+			cat "$file" | sed 's/Exec=/Exec=python -B \/usr\/share\/AnimeWatch\/animeWatch.py \%u/g' > "${pkgdir}/usr/share/applications/AnimeWatch.desktop"
+		elif [ $nm == 'anime-watch' ];then
+			echo $file
+			echo 'anime-watch script'
+			install -Dm755 "$file" "${pkgdir}/usr/bin/anime-watch"
+			chmod +x "${pkgdir}/usr/bin/anime-watch"
+		else 
+			if [ $nm != 'install.py' ];then
+				echo $file
+				echo 'source files copying'
+				install -Dm755 "$file" "${pkgdir}/usr/share/${_pkgname}/"
+			fi
+		fi
 	fi
-  done	
+  done
+  
 }
