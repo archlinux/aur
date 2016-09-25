@@ -1,0 +1,18 @@
+# ffmpeg patch for using only libopenjpeg 1.5
+# by Daniel Bermond, 2016
+# https://aur.archlinux.org/packages/ffmpeg-full-git/
+
+diff -Naur a/configure b/configure
+--- a/configure	2016-09-25 14:50:41.000000000 -0300
++++ b/configure	2016-09-25 14:52:18.057628473 -0300
+@@ -5709,9 +5709,7 @@
+                                  require opencv opencv2/core/core_c.h cvCreateImageHeader -lopencv_core -lopencv_imgproc; } ||
+                                require_pkg_config opencv opencv/cxcore.h cvCreateImageHeader; }
+ enabled libopenh264       && require_pkg_config openh264 wels/codec_api.h WelsGetCodecVersion
+-enabled libopenjpeg       && { check_lib openjpeg-2.1/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC ||
+-                               check_lib openjpeg-2.0/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC ||
+-                               check_lib openjpeg-1.5/openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC ||
++enabled libopenjpeg       && { check_lib openjpeg-1.5/openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC ||
+                                check_lib openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC ||
+                                die "ERROR: libopenjpeg not found"; }
+ enabled libopenmpt        && require_pkg_config "libopenmpt >= 0.2.6557" libopenmpt/libopenmpt.h openmpt_module_create

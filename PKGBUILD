@@ -18,7 +18,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.81760.g2134499
+pkgver=N.81765.gbd9e425
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -29,12 +29,13 @@ depends=(
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libebur128' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
-    'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'opus' 'pulseaudio' 'libopenmpt-svn'
-    'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
-    'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
-    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
-    'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver' 'opencl-headers' 'ocl-icd'
-    'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'java-environment' 'libmfx-git' 'libomxil-bellagio'
+    'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'libopenmpt-svn' 'opus'
+    'pulseaudio' 'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394'
+    'snappy' 'libsoxr' 'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab'
+    'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb'
+    'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
+    'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'java-environment'
+    'libmfx-git' 'libomxil-bellagio'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
@@ -48,9 +49,11 @@ conflicts=(
     'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
-        'UNREDISTRIBUTABLE.txt')
+        'UNREDISTRIBUTABLE.txt'
+        'libopenjpeg-use-only-1.5.patch')
 sha256sums=('SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '97d1a4a168ebbb2ae39e52bd1e14d94333c51666f039965d32b7e5d160507ed4')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -87,6 +90,10 @@ build() {
 	    _libnpp=""
 	    _intelsdklib=""
 	fi
+	
+	# Apply patch for using only openjpeg 1.5
+	# (openjpeg 2.1.1 is currently not supported)
+	patch -Np1 -i ../libopenjpeg-use-only-1.5.patch
 	
 	msg2 "Running ffmpeg configure script. Please wait..."
 	
@@ -142,7 +149,7 @@ build() {
 	        --enable-libopencore-amrwb \
 	        --enable-libopencv \
 	        --enable-libopenh264 \
-	        --disable-libopenjpeg \
+	        --enable-libopenjpeg \
 	        --enable-libopenmpt \
 	        --enable-libopus \
 	        --enable-libpulse \
