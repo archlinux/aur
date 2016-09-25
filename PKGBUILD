@@ -11,7 +11,7 @@ depends=('firefox')
 conflicts=('firefox-extension-vimfx')
 source=("VimFx-$pkgver.xpi::$url/releases/download/v$pkgver/VimFx.xpi")
 noextract=("${source%%::*}")
-sha256sums=('0fdf9484a2fe9efc5c024b2f2f881e201a77fe35873266df51647639599057e9')
+sha512sums=('a4945b716c36672d3efd4d10d83fcbe8f9c6181ce1529fb22e61b2f3c6c18a182e7857bf0ae495a857a36ff0c12336b5ba8317bdd26642efbc77eb4b21ab1cad')
 
 package() {
   install -Dm755 ${source%%::*} "$pkgdir"/usr/lib/firefox/browser/extensions/VimFx-unlisted@akhodakivskiy.github.com.xpi
