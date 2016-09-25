@@ -1,3 +1,7 @@
+2016-09-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 1.4.0-2:
+    pkg: replace dep on python(2)-packaging with python(2)-setuptools
+    pkg: use github release tarball
 2016-05-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 1.4.0:
     Fixed required libraries.
