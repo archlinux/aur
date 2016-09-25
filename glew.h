@@ -34,23 +34,23 @@ extern "C" {
 
 /* ----------------------------- GL_VERSION_1_2 ---------------------------- */
 
-#define GLEW_VERSION_1_2 epoxy_gl_version() >= 12
-#define GLEW_VERSION_1_2_1 epoxy_gl_version() >= 12
-#define GLEW_VERSION_1_3 epoxy_gl_version() >= 13
-#define GLEW_VERSION_1_4 epoxy_gl_version() >= 14
-#define GLEW_VERSION_1_5 epoxy_gl_version() >= 15
-#define GLEW_VERSION_2_0 epoxy_gl_version() >= 20
-#define GLEW_VERSION_2_1 epoxy_gl_version() >= 21
-#define GLEW_VERSION_3_0 epoxy_gl_version() >= 30
-#define GLEW_VERSION_3_1 epoxy_gl_version() >= 31
-#define GLEW_VERSION_3_2 epoxy_gl_version() >= 32
-#define GLEW_VERSION_3_3 epoxy_gl_version() >= 33
-#define GLEW_VERSION_4_0 epoxy_gl_version() >= 40
-#define GLEW_VERSION_4_1 epoxy_gl_version() >= 41
-#define GLEW_VERSION_4_2 epoxy_gl_version() >= 42
-#define GLEW_VERSION_4_3 epoxy_gl_version() >= 43
-#define GLEW_VERSION_4_4 epoxy_gl_version() >= 44
-#define GLEW_VERSION_4_5 epoxy_gl_version() >= 45
+#define GLEW_VERSION_1_2 (epoxy_gl_version() >= 12)
+#define GLEW_VERSION_1_2_1 (epoxy_gl_version() >= 12)
+#define GLEW_VERSION_1_3 (epoxy_gl_version() >= 13)
+#define GLEW_VERSION_1_4 (epoxy_gl_version() >= 14)
+#define GLEW_VERSION_1_5 (epoxy_gl_version() >= 15)
+#define GLEW_VERSION_2_0 (epoxy_gl_version() >= 20)
+#define GLEW_VERSION_2_1 (epoxy_gl_version() >= 21)
+#define GLEW_VERSION_3_0 (epoxy_gl_version() >= 30)
+#define GLEW_VERSION_3_1 (epoxy_gl_version() >= 31)
+#define GLEW_VERSION_3_2 (epoxy_gl_version() >= 32)
+#define GLEW_VERSION_3_3 (epoxy_gl_version() >= 33)
+#define GLEW_VERSION_4_0 (epoxy_gl_version() >= 40)
+#define GLEW_VERSION_4_1 (epoxy_gl_version() >= 41)
+#define GLEW_VERSION_4_2 (epoxy_gl_version() >= 42)
+#define GLEW_VERSION_4_3 (epoxy_gl_version() >= 43)
+#define GLEW_VERSION_4_4 (epoxy_gl_version() >= 44)
+#define GLEW_VERSION_4_5 (epoxy_gl_version() >= 45)
 
 #define GLEW_3DFX_multisample epoxy_has_gl_extension("GL_3DFX_multisample")
 #define GLEW_3DFX_tbuffer epoxy_has_gl_extension("GL_3DFX_tbuffer")
