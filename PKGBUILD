@@ -5,7 +5,7 @@
 # Maintainer: Erik Fleischer <erik [at] erlenweg [dot] de>
 
 pkgname=crossover
-pkgver=15.2.0
+pkgver=15.3.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('2e4596848601ff420a4a09eda6dc998e032e279e15c002c488933c6d9d814620')
+md5sums=('b4053a400706e3a203cc387fc48f1df3')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
