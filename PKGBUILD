@@ -16,8 +16,12 @@ license=('GPL')
 provides=('shc')
 #source=("${_verwatch[0]}${pkgname}-${pkgver}.tgz")
 _verwatch=("${url}/releases.atom" "\s\+<title>${pkgname}-\([^<]\+\)</title>.*" 'f') # RSS
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b7120f66177a35af7dc42763a55e7ade3a80043c0188739e57bcc648a5ac4bb3')
+source=(
+  "${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz"
+  'disableencryption.diff'
+)
+sha256sums=('b7120f66177a35af7dc42763a55e7ade3a80043c0188739e57bcc648a5ac4bb3'
+            '08f9ae1e3fdb2b2f86f9d96257930158fbaa302d3e0d71eadbc5e246fc01150d')
 
 if [ "$(vercmp "${pkgver}" '3.9.0')" -lt 0 ]; then
 # Maintained by: Francisco Rosales frosal...fi.upm.es
@@ -43,10 +47,17 @@ package() {
 }
 else
 # Maintained by: Jahidul Hamid jahidulhamid...yahoo.com
+
+# diff -c3 src/shc.c.orig src/shc.c > ../../disableencryption.diff
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  # patch -p0 -c < '../disableencryption.diff'
+  ./configure --prefix='/usr/'
+}
+
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix='/usr/'
   make -j1
   set +u
 }

@@ -1,0 +1,52 @@
+*** src/shc.c.orig	Sat Jul 30 09:00:22 2016
+--- src/shc.c	Sun Sep 25 15:15:38 2016
+***************
+*** 189,194 ****
+--- 189,195 ----
+  "void arc4(void * str, int len)",
+  "{",
+  "	unsigned char tmp, * ptr = (unsigned char *)str;",
++ "	len=0;",
+  "	while (len > 0) {",
+  "		indx++;",
+  "		tmp = stte[indx];",
+***************
+*** 611,616 ****
+--- 612,618 ----
+  void arc4(void * str, int len)
+  {
+  	unsigned char tmp, * ptr = (unsigned char *)str;
++ 	len=0;
+  	while (len > 0) {
+  		indx++;
+  		tmp = stte[indx];
+***************
+*** 781,786 ****
+--- 783,789 ----
+  {
+  	/* Without skew */
+  	unsigned rnd, top = RAND_MAX;
++ 	return 0;
+  	top -= top % mod;
+  	while (top <= (rnd = rand()))
+  		continue;
+***************
+*** 817,823 ****
+  	for (i = 0; i < n; i++) {
+  		if ((i & 0xf) == 0)
+  			fprintf(o, "\n\t\"");
+! 		fprintf(o, "\\%03o", (unsigned char)((i>=m) && (i<l) ? ptr[i-m] : rand_chr()));
+  		if ((i & 0xf) == 0xf)
+  			fprintf(o, "\"");
+  	}
+--- 820,829 ----
+  	for (i = 0; i < n; i++) {
+  		if ((i & 0xf) == 0)
+  			fprintf(o, "\n\t\"");
+! 		{
+! 		unsigned char foo=(unsigned char)((i>=m) && (i<l) ? ptr[i-m] : rand_chr());
+! 		fprintf(o, (foo>=32 && foo<=126 && foo!='"' && foo!='\\')?"%c":"\\%03o", foo);
+! 		}
+  		if ((i & 0xf) == 0xf)
+  			fprintf(o, "\"");
+  	}
