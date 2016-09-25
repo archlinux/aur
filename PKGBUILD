@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn-dev
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -11,8 +11,8 @@ makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
-sha256sums=('d318fb24aeefda24ad9057dd2955028972928172ed0b4683a10b20f0990e8180'
-            'ea06430722d559ef35fbe84f7fd09de80abaae2c0a2f1cf63380d109d087809b'
+sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
+            '9d28e1883d5f2e1b017789c051c6377b1e97ed86f72f84f3ca33b15a909947c7'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
