@@ -28,10 +28,10 @@ printf -v _features '%s,' "${_features[@]}"
 _features=${_features%,}
 _url_prefix="https://caddyserver.com/download/build?os=linux&features=${_features}"
 
-source_i686=("caddy.tar.gz::${_url_prefix}&arch=386")
-source_x86_64=("caddy.tar.gz::${_url_prefix}&arch=amd64")
-source_armv7h=("caddy.tar.gz::${_url_prefix}&arch=arm")
-source_aarch64=("caddy.tar.gz::${_url_prefix}&arch=arm64")
+source_i686=("caddy.tar.gz::http://bit.ly/2djygqB")
+source_x86_64=("caddy.tar.gz::http://bit.ly/2daBvir")
+source_armv7h=("caddy.tar.gz::http://bit.ly/2d99iES")
+source_aarch64=("caddy.tar.gz::http://bit.ly/2cMNaAA")
 
 package() {
   echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
