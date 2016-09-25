@@ -22,8 +22,7 @@ build() {
 	cd "$_gitname"
 	./configure \
 		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var/lib/xbps
+		--sysconfdir=/etc
 	make
 }
 
