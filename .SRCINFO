@@ -1,4 +1,4 @@
-pkgbase = animewatch-pyqt5.git
+pkgbase = animewatch-pyqt5-git
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection
 	pkgver = 3.0.0.r31.fffb7b9
 	pkgrel = 1
@@ -31,5 +31,5 @@ pkgbase = animewatch-pyqt5.git
 	source = git+https://github.com/kanishka-linux/AnimeWatch.git
 	md5sums = SKIP
 
-pkgname = animewatch-pyqt5.git
+pkgname = animewatch-pyqt5-git
 

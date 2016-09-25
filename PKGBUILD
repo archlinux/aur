@@ -1,4 +1,4 @@
-pkgname=animewatch-pyqt5.git
+pkgname=animewatch-pyqt5-git
 _pkgname=AnimeWatch
 pkgver=3.0.0.r31.fffb7b9
 pkgrel=1
