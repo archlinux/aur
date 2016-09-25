@@ -3,14 +3,14 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=v0.0.1.r0.g0f674c1
+pkgver=v0.0.1.r14.g1302293
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/VaccineApp/vaccine"
 license=('GPL3')
 depends=('gtk3' 'gtksourceview3' 'libsoup' 'json-glib' 'libgee' 'gst-plugins-bad')
-makedepends=('git' 'automake' 'autoconf-archive' 'vala' 'appstream-glib')
+makedepends=('git' 'meson' 'vala' 'appstream-glib')
 install='vaccine.install'
 provides=('vaccine')
 conflicts=('vaccine')
@@ -32,12 +32,12 @@ prepare() {
 
 build() {
     cd "$_gitname"
-    ./autogen.sh
-    ./configure --prefix=/usr --disable-debug
-    make -s
+    mkdir build
+    meson --prefix=/usr build
+    ninja -C build
 }
 
 package() {
     cd "$_gitname"
-    DESTDIR="$pkgdir" make install
+    DESTDIR="$pkgdir" ninja -C build install
 }
