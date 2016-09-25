@@ -3,7 +3,7 @@
 pkgname=perl-www-youtube-download
 _lastauthor=O/OA/OALDERS
 _pkgname=WWW-YouTube-Download
-pkgver=0.58
+pkgver=0.59
 pkgrel=1
 pkgdesc="Very simple YouTube video download interface"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-html-parser' 'perl-json' 'perl-libwww' 'perl-uri' 'perl-xml-treep
 makedepends=('perl-module-build-tiny')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('d2064a6eb528becbff0a9eadd2878930d0a7749448296753958988f9f5436cd6')
+sha256sums=('0176d0e7320b15e5450db7dc3526e4d7d482f9cebd6f3d5a9afbf150f76d6512')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
