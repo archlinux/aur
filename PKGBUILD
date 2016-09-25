@@ -2,7 +2,7 @@
 
 _pkgname='pavucontrol-qt'
 pkgname="$_pkgname-git"
-pkgver=r447.fc7847e
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Qt port of pavucontrol'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always | sed "s/-/./g"
 }
 
 build() {
