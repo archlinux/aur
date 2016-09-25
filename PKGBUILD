@@ -13,10 +13,8 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  #sed -i "s|print sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}')|print(sysconfig.get_python_lib(1,0,prefix='\${CMAKE_INSTALL_PREFIX}'))|g" wrappers/pyAgrum/CMakeLists.txt
-
-  # see 6b89d669e8f5086f4de6ad8a4e34385080073b26
-  #sed -i "s|<< traceFileName <<|<< traceFileName.str() <<|g" src/agrum/FMDP/planning/SPUDDPlanning.tcc
+  sed -i "49i#include <cmath>" src/agrum/core/math/chi2.cpp
+  sed -i "36,40d" wrappers/pyAgrum/CMakeLists.txt
 }
 
 build() {
