@@ -1,6 +1,6 @@
 # Maintainer: tokigami.kineko <>
 pkgname=libmypaint-cce-git
-pkgver=v1.3.0.beta.1.r10.g9491163
+pkgver=r686.9491163
 pkgrel=1
 pkgdesc="libmypaint for GIMP-CCE"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip libtool staticlibs emptydirs !buildflags)
 install=
 source=('git+https://github.com/mypaint/libmypaint.git')
 noextract=()
@@ -21,7 +21,8 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/libmypaint"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" \
+           "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -39,12 +40,12 @@ build() {
     cd $srcdir/libmypaint
     ./autogen.sh
     ./configure --prefix=$PREFIX --libdir=$PREFIX/$LIB
-    make -j5
+    make
 }
 
 package() {
     cd $srcdir/libmypaint
-    env DESTDIR="$pkgdir" make -j5 install
+    env DESTDIR="$pkgdir" make install
     install -D -m644 COPYING \
             "$pkgdir/usr/gimp-cce/share/licenses/$pkgname/LICENSE"
 }
