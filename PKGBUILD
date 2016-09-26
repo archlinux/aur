@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -29,17 +29,25 @@ prepare() {
 	rm npm-shrinkwrap.json
 
     sed -i \
+		-e '/"babel-/                  d' \
 		-e '/"electron-prebuilt"/      d' \
 		-e '/"grunt-electron"/         d' \
 		-e '/"grunt-appdmg"/           d' \
 		-e '/"grunt-contrib-compress"/ d' \
 		-e '/"grunt-contrib-deb"/      d' \
 		-e '/"grunt-contrib-watch"/    d' \
-		-e '/"postinstall"/            d' \
+		-e '/"grunt-contrib-uglify"/   d' \
+		-e '/"grunt-eslint"/           d' \
+		-e '/"eslint-/                 d' \
+		-e '/"uglify-loader"/          d' \
 	package.json
 
 	sed -i \
-		-e '/electronVersion/ d' \
+		-e '/electronVersion/      d' \
+		-e "/loader: 'babel'/,+2   d" \
+		-e "/'eslint',/            d" \
+		-e "/'uglify',/            d" \
+		-e "/loader: 'uglify'/     d" \
 	Gruntfile.js
 
 	# hide electron menu
@@ -54,9 +62,9 @@ build() {
 	npm install
 	node_modules/.bin/grunt
 
-    cp electron/* dist
+	cp -rT electron dist
 
-    asar p dist ../keeweb.asar
+	asar p dist ../keeweb.asar
 }
 
 package() {
