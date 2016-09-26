@@ -11,8 +11,8 @@ vuurmuur-devel
 vuurmuur-conf-devel
 )
 _pkgname=vuurmuur
-pkgver=0.8rc1
-pkgrel=2
+pkgver=0.8rc2
+pkgrel=1
 pkgdesc='Powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge - development release'
 arch=('i686' 'x86_64')
 url='http://www.vuurmuur.org'
@@ -25,7 +25,7 @@ vuurmuur.rc
 vuurmuur.service
 vuurmuur.script
 )
-sha512sums=('c84e9ed7ec99c554ac17adfb2186edf893aaf547611c1b0556a09bc1f16172e82f9e8e42b70669bf599b6682b8b064a384d51b156d27bedb6d48dfd1ba5fbca9'
+sha512sums=('0db3fbb049b9e64c65c268d459cc3da398f296a4245a9b0f571b39f84bdc80e7e14d327a21ddbb70d9f1a3af3e32366fa2a85ae2a23df9703e1460bc9a22a399'
             '897c0438ba7ef2481cc3f9b7e3396988064461cde99430e848ac31a73445200f2852e60cf11305d1c06397e34db997ebbd205adb80996d030bce519bb6f82564'
             '35a8e4dea8645be3f9fce76e9e9034da40b7f216f0f302833c6491d5ba017652d7a653121a8cf90d6ac8ac85455138b0d3e07cf80efec6525b723d789e34c709'
             '41dcbc9d4b386ecc2e4b688fcdd4df26f1e23afa53b6a3adda7cc059b9f1c68bd2c60de2167083fba097aab9a45e6ca942637377a1f3cd4b6fc825a5cf88ff0f'
