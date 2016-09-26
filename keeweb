@@ -1,1 +1,3 @@
-#!/usr/bin/electron /usr/lib/keeweb/keeweb.asar
+#!/usr/bin/sh
+
+exec /usr/bin/electron /usr/lib/keeweb/keeweb.asar "$@"

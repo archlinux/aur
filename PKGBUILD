@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -17,7 +17,7 @@ source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
 
 sha1sums=('82916cdf893ea1d2b1d69e2fe2592deccabd57dd'
           'd2ac08ed22950787a7a0c074be050822ca97f74f'
-          '339d6b5ca97f0c67f71db7e5b058047e921ef6dc')
+          'f12aa2f8de0bfd71a64a8cdf772c32a6274f7ef4')
 
 prepare() {
 
