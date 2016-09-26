@@ -1,0 +1,25 @@
+pkgbase = libressl-git
+	pkgdesc = FREE version of the SSL/TLS protocol forked from OpenSSL - HIGHLY EXPRIMENTAL ONLY
+	pkgver = 2.5.0.570.e168f3b
+	pkgrel = 1
+	url = http://www.libressl.org/
+	arch = i686
+	arch = x86_64
+	license = custom:Openssl
+	makedepends = git
+	depends = glibc
+	optdepends = ca-certificates
+	provides = libressl
+	provides = openssl
+	conflicts = libressl
+	conflicts = openssl
+	backup = etc/ssl/openssl.cnf
+	source = libressl-git::git+https://github.com/libressl-portable/portable
+	source = libressl-git-openbsd::git+https://github.com/libressl-portable/openbsd
+	source = libressl-dummy-rand-egd.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b
+
+pkgname = libressl-git
+
