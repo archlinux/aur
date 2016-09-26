@@ -1,18 +1,18 @@
 pkgname=osvr-vive-libre-git
-pkgver=0.1.81.e11bd47
+pkgver=0.2.110.f5282e8
 pkgrel=1
 pkgdesc="Free Software HTC Vive Driver for OSVR"
 arch=('x86_64')
 url="https://github.com/lubosz/OSVR-Vive-Libre"
 license=('LGPLv3+')
 makedepends=('git' 'cmake')
-depends=('osvr-core-git' 'zlib' 'hidapi')
+depends=('osvr-core-git' 'zlib' 'hidapi' 'jsoncpp' 'opencv' 'eigen')
 source=("osvr-vive::git+https://github.com/lubosz/OSVR-Vive-Libre.git")
 md5sums=('SKIP')
 
 
 subver() {
-  PREFIX="set (com_osvr_Vive_Libre_VERSION_$1"
+  PREFIX="set (org_osvr_Vive_Libre_VERSION_$1"
   echo $(grep "$PREFIX" CMakeLists.txt | eval sed "'s/$PREFIX//'" | sed 's/)//')
 }
  
