@@ -6,13 +6,13 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
 pkgver=2.3.1.r381.d41da5
-pkgrel=1
+pkgrel=2
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
 license=('GPL')
-depends=('wxgtk' 'wxgtk2.8' 'gd' 'geoip' 'libupnp' 'crypto++' 'libsm')
-conflicts=('amule' 'amule-dlp' 'amule-dlp-hg' 'amule-dlp-git')
+depends=('wxgtk' 'gd' 'geoip' 'libupnp' 'crypto++' 'libsm')
+conflicts=('amule' 'amule-dlp' 'amule-dlp-hg')
 makedepends=(git)
 optdepends=('antileech')
 install=amule.install
@@ -57,7 +57,7 @@ build() {
 	  --enable-optimize \
 	  --enable-mmap \
 	  --enable-ccache \
-	  --with-wxversion=2.8
+	  --with-wxversion=3.0
 
   make 
 }
