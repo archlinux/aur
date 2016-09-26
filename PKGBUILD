@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kreport-git
-pkgver=2.97.0.r1084.3c791e9
+pkgver=2.99.3.r1119.a284bf7
 pkgrel=1
 pkgdesc="A framework for creation and generation of reports in multiple formats. (GIT version)"
 url='https://www.kde.org/applications/graphics/kreport'
@@ -15,7 +15,9 @@ makedepends=('extra-cmake-modules'
              'kdoctools'
              'git'
              'python2'
+             'marble'
              )
+optdepends=('marble: marble plugin')
 conflicts=('kreport')
 provides=('kreport')
 source=('git://anongit.kde.org/kreport.git')
@@ -23,7 +25,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kreport
-  _ver="$(cat CMakeLists.txt | grep -m1 KREPORT_VERSION | cut -d '"' -f2)"
+  _ver="$(cat CMakeLists.txt | grep -m1 'KReport VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -42,7 +44,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DPYTHON_EXECUTABLE="/usr/bin/python2"
   make
 }
 
