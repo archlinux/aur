@@ -23,7 +23,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip libtool staticlibs emptydirs !buildflags)
 install=
 source=('git+https://github.com/ellelstone/gegl')
 noextract=()
@@ -45,7 +45,6 @@ build() {
     export LD_LIBRARY_PATH=$PREFIX/$LIB:$LD_LIBRARY_PATH
     export PATH=$PREFIX/bin:$PATH
     export XDG_DATA_DIRS=$PREFIX/share:$XDG_DATA_DIRS
-    # export ACLOCAL_FLAGS="-I $PREFIX/share/aclocal"
     export PKG_CONFIG_PATH=$PREFIX/$LIB/pkgconfig:$PKG_CONFIG_PATH
 
     cd $srcdir/gegl
@@ -53,12 +52,12 @@ build() {
                  --enable-gtk-doc-html=no --enable-gtk-doc-pdf=no \
                  --enable-workshop --without-libv4l2 --without-libavformat \
                  --without-sdl --libdir=$PREFIX/$LIB
-    make -j5
+    make
 }
 
 package() {
     cd $srcdir/gegl
-    env DESTDIR="$pkgdir" make -j install
+    env DESTDIR="$pkgdir" make install
 }
 
 # vim:set ts=2 sw=2 et:

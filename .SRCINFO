@@ -29,6 +29,11 @@ pkgbase = gegl-cce-git
 	optdepends = libraw: raw plugin
 	optdepends = suitesparse: matting-levin plugin
 	optdepends = lua: lua plugin
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	options = !buildflags
 	source = git+https://github.com/ellelstone/gegl
 	md5sums = SKIP
 
