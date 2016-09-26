@@ -2,13 +2,13 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=1.2.0.r106.3c2e070
+pkgver=1.2.0.r203.10b5f43
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
-depends=('gtkd>=3.3.0' 'vte3' 'dconf' 'gsettings-desktop-schemas')
+depends=('libx11' 'gtkd>=3.3.0' 'vte3' 'dconf' 'gsettings-desktop-schemas')
 optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus'\
             'vte3-notification: for desktop notifications support'\
 			'libsecret: for the password manager')
