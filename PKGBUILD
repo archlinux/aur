@@ -2,7 +2,7 @@
 
 _pkgname=audacious-plugins
 pkgname=${_pkgname}-qt5
-pkgver=3.7.2
+pkgver=3.8
 pkgrel=1
 pkgdesc="Plugins for Audacious (qt5 interface)"
 arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('fcf7488f01781c8f51e0af5cabacdd582b22537a0085f26aa5ca636373f8e1ff')
+sha256sums=('8179b80fffc893d4a2533fc7b7c4800981bc9ab3c6d1742a4c832fd6176ca24a')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -55,7 +55,6 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-amidiplug \
-    --disable-adplug \
     --enable-qt \
     --disable-gtk
   make
