@@ -1,14 +1,14 @@
 pkgbase=python-voluptuous
 pkgname=('python-voluptuous' 'python2-voluptuous')
-pkgver=0.8.11
-pkgrel=4
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Voluptuous is a Python data validation library"
 arch=('any')
 url='https://pypi.python.org/pypi/voluptuous'
 license=('BSD')
-source=(https://pypi.python.org/packages/source/v/voluptuous/voluptuous-$pkgver.tar.gz)
-md5sums=('0fb3c9de961a4acfac1cad1009657751')
-makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools' 'python2-pip' 'python-pip')
+source=(https://pypi.python.org/packages/e6/5d/2b9ed56f2e69fe54cf00d07b7b3b9b43e8c9763dff3015365bd4c3f6f2a6/voluptuous-0.9.3.tar.gz)
+md5sums=('3dfccea158f4d48c1b7ad23d48eabb6e')
+makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
 
 package_python-voluptuous() {
   depends=('python')
