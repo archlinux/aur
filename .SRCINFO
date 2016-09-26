@@ -1,0 +1,44 @@
+pkgbase = gimp-cce-git
+	pkgdesc = GIMP-CCE maintained by elle stone
+	pkgver = r37634.c5a635b
+	pkgrel = 1
+	url = https://github.com/ellelstone/gimp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gutenprint>=5.0.0
+	makedepends = intltool>=0.40.1
+	makedepends = gnome-python>=2.16.2
+	makedepends = poppler>=0.12.4
+	makedepends = alsa-lib>=1.0.0
+	makedepends = libxslt
+	depends = pygtk
+	depends = lcms2>=2.2
+	depends = libwmf>=0.2.8
+	depends = webkitgtk2>=1.6.1
+	depends = libgexiv2
+	depends = librsvg>=2.16.1
+	depends = desktop-file-utils
+	depends = libexif>=0.6.15
+	depends = libart-lgpl>=2.3.19
+	depends = dbus-glib
+	depends = gtk-doc
+	depends = babl-cce-git
+	depends = gegl-cce-git
+	depends = libmypaint-cce-git
+	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
+	optdepends = poppler-glib: for pdf support
+	optdepends = alsa-lib: for MIDI event controller module
+	optdepends = curl: for URI support
+	optdepends = ghostscript: for postscript support
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	options = !buildflags
+	source = git+https://github.com/ellelstone/gimp
+	md5sums = SKIP
+
+pkgname = gimp-cce-git
+
