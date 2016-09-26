@@ -8,7 +8,7 @@ url="https://github.com/tomtix/osux-lib/"
 license=("Apache")
 depends=('glib2' 'xz' 'openssl' 'sqlite')
 source=("https://github.com/tomtix/osux-lib/archive/v$pkgver.tar.gz")
-md5sums=('92ebbf80ef375960d721aa36b369fac7')
+md5sums=('b3978d21dd1044aff35ac304b6c7b954')
 
 build() {
 	cd "$srcdir/osux-lib-$pkgver/"
