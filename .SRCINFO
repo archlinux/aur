@@ -16,7 +16,7 @@ pkgbase = airdcpp-webclient
 	depends = libnatpmp
 	depends = intel-tbb
 	options = !strip
-	source = airdcpp-webclient::git+https://github.com/airdcpp-web/airdcpp-webclient.git
+	source = airdcpp-webclient::git+https://github.com/airdcpp-web/airdcpp-webclient#tag=1.3.0
 	sha256sums = SKIP
 
 pkgname = airdcpp-webclient
