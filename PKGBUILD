@@ -17,7 +17,7 @@ source=("nuclide"
         "nuclide.desktop"
         "nuclide.png"
         "https://github.com/facebook/nuclide/raw/master/LICENSE")
-sha256sums=('4c43ce8f2375ac04c7f9551d7b5543ec110d804b19691ea5f340150bf3d20cce'
+sha256sums=('a192eb4b861da4be525ee1d05bae407cbf560943bd4061eafd520914f044dc2c'
             'a05344ac5fb8bd5f7625997e9ed02703501bb0a626d3cfe0e9765c5a51833181'
             '1b5a67d8d07dea2d08184da3d4ab6f2c32051938e2b2753f417fb797f2e32e5f'
             '5921605d5898f217b774c481d5a8898da979717a1ea97e0e5ca47d86eb6d639b'
