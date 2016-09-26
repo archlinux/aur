@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=v0.10.0.r12.gaaf5d50
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -16,7 +16,7 @@ source=('git+https://github.com/asciimoo/searx.git'
         'searx.install'
         'searx.service')
 sha1sums=('SKIP'
-          'b7ee025f007993b3710a206f25877a39d2ebb577'
+          '12cc6464dfd578ce10180bea12e60f3a139b7138'
           '2002036b99b7dbe403585d47aa050635c8eebfea')
 
 pkgver() {
@@ -31,7 +31,6 @@ pkgver() {
 prepare() {
   cd $srcdir/searx
 
-  # Break stuff... for science
   sed -i "s|==|>=|g" requirements.txt
 
   msg2 "Generating ultra-secret key..."
