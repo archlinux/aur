@@ -2,8 +2,8 @@
 
 pkgname=remote_syslog2
 pkgver=0.18
-pkgrel=1
-pkgdesc="remote_syslog tails one or more log files and sends syslog messages to a remote central syslog server"
+pkgrel=2
+pkgdesc="Tails one or more log files and sends syslog messages to a remote central syslog server"
 arch=('x86_64' 'i686')
 url="https://github.com/papertrail/remote_syslog2"
 license=('MIT')
@@ -32,6 +32,7 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/${pkgname}" README.md LICENSE example_config.yml
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$startdir/remote_syslog2.service" "$pkgdir/lib/systemd/system/remote_syslog2.service"
 }
 
 # vim:set ts=2 sw=2 et:
