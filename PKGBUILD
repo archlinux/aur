@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=solidity
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 _chash='4fc6fc2ca59579fae2472df319c2d8d31fe5bde5'
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc and lllc)"
@@ -27,7 +27,7 @@ groups=('ethereum')
 url="https://github.com/ethereum/solidity"
 license=('GPL')
 source=("https://github.com/ethereum/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('83c2c5ac350efe862f481254c78e0bcc2e3ac67a4dbdcef87ba6b4e1b4e58871')
+sha256sums=('0dd176919cab5492aecb27d1d8de39182b5e880979d5082fca6d7a01ebce28f1')
 provides=(
   'lll'
   'lllc'
