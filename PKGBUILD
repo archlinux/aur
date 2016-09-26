@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kproperty-git
-pkgver=2.99.0.r514.fa50fe7
+pkgver=2.99.3.r527.1bd714b
 pkgrel=1
 pkgdesc="A property editing framework with editor widget similar to what is known from Qt Designer. (GIT version)"
 url='https://www.kde.org/applications/graphics/kproperty'
@@ -23,7 +23,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kproperty
-  _ver="$(cat CMakeLists.txt | grep -m1 KPROPERTY_VERSION | cut -d '"' -f2)"
+  _ver="$(cat CMakeLists.txt | grep -m1 'KProperty VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo -e "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
