@@ -17,7 +17,7 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'python: for mapserver and PyQGIS'
             'python-sip: for python support'
             'pyqt: for python support'
-            'fastcgi: for qgis mapserver'
+            'fcgi: for qgis mapserver'
             'ocilib: oracle provider'
 	    			'python-future')
 
