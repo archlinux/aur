@@ -29,7 +29,7 @@ prepare() {
 	patch -Np1 < "${srcdir}/0001-mysql-connector-c++-mariadb-api.patch"
 
 	# MariaDB will add JSON support in 10.2... No JSON for now.
-	patch -Np1 < "${srcdir}/no-JSON.patch"
+	patch -Np1 < "${srcdir}/0002-mysql-connector-c++-no-JSON.patch"
 }
 
 build() {
