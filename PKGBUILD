@@ -10,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1440.6ac73c5
+pkgver=1.3.6.r1588.2c0d8e8
 pkgrel=1
 #epoch=1
 _gitname=RetroArch
@@ -37,12 +37,10 @@ optdepends=('libretro-overlays-git: Collection of overlays'
 backup=('etc/retroarch.cfg')
 source=('git+https://github.com/libretro/RetroArch.git'
         'git+https://github.com/KhronosGroup/glslang.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
-	'default-paths.patch')
+        'git+https://github.com/KhronosGroup/SPIRV-Cross.git')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-	    '37aab0127cd15a7fa08e5f66982da14296e4c4b56807b054863d1f9eff5c64df')
+            'SKIP')
 
 pkgver() {
 
@@ -65,10 +63,6 @@ prepare() {
 build() {
 
   cd $_gitname
-
-  # Patch retroarch.cfg for sane defaults (core path, core info, joypad autoconfig)
-  msg2 "Patching retroarch.cfg for default paths"
-  patch -p1 < $srcdir/default-paths.patch
 
   ./configure \
     --prefix='/usr' \
