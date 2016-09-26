@@ -3,7 +3,7 @@
 _npmname=generator-aspnet
 
 pkgname=nodejs-generator-aspnet
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Yeoman generator for ASP.NET Core 1.0 apps"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs-yeoman')
 options=('!emptydirs')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('16f8ccd271bc4baa2693e7f55dbad904879859d88ea3ff7548f6e710a1d9755d')
+sha256sums=('80b4a1628697b4e39d2a418713d82042058b897d29b9e12b1ddf73cb092acd97')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
