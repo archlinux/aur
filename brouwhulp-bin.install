@@ -1,9 +1,13 @@
 post_install() {
 cat << EOF
+
+######################################################################
 	Please keep in mind the following additional AUR dependencies
 
 		(32 and 64bit) fann
 		(32bit only) lib32-qt4pass
+######################################################################
+
 EOF
 }
 
