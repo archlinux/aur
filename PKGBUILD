@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -34,6 +34,7 @@ prepare() {
 		-e '/"electron-prebuilt"/      d' \
 		-e '/"grunt-electron"/         d' \
 		-e '/"grunt-appdmg"/           d' \
+		-e '/"grunt-concurrent"/       d' \
 		-e '/"grunt-contrib-compress"/ d' \
 		-e '/"grunt-contrib-deb"/      d' \
 		-e '/"grunt-contrib-watch"/    d' \
@@ -61,11 +62,9 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	npm install
-	node_modules/.bin/grunt
+	node_modules/.bin/grunt build-web-app build-desktop-app-content
 
-	cp -rT electron dist
-
-	asar p dist ../keeweb.asar
+	asar p tmp/desktop/app ../keeweb.asar
 }
 
 package() {
