@@ -2,7 +2,6 @@
 # Contributor: vorbote P. A. López-Valencia;  palopezv on Google's email service
 # Contributor: ... (unknown)
 # Contributor: fnord0; fnord0 AAAAAAAAAAAAATTTTTTTTTTTTTTTTT riseup net
-# Category: system
 
 # Versions after 9.10 drop svg and pspcl6. The extra binaries will be
 # installed if the version you choose has a makefile produces them.
@@ -15,11 +14,9 @@
 # This project has acheived proof of concept, but is not actively being worked
 # on.
 
-# Recommended build command: makepkg -scCfi
-
 set -u
 pkgname='ghostpdl'
-pkgver='9.19'
+pkgver='9.20'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
@@ -29,9 +26,9 @@ depends=('ghostscript' 'glu' 'freeglut' 'libjpeg' 'libxt')
 #_verwatch=('http://downloads.ghostscript.com/public/' "${pkgname}-\(.*\)\.tar\.bz2" 'l')
 #source=("${_verwatch[0]}${pkgname}-${pkgver}.tar.bz2") # .gz and .bz2 are available. Unpacking .bz2 is a LOT slower so is not suited for package testing.
 _giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
-_verwatch=("${_giturl}/releases" "${_giturl##*\.com}/releases/download/gs[0-9\.]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
-source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('7db9aaa9ae3d3368bcd9b49b13ac3ca396df3ccef69b326cfc63a964486e4681')
+_verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
+source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('69bde6ca05fa34cdb66183dd8fb4651e7786ca5bbd9995a592b2bc55cda0d244')
 
 prepare() {
   set -u
