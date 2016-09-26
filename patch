@@ -36,3 +36,14 @@ diff -ru OSPRay-1.0.0/ospray/lights/SpotLight.cpp src/OSPRay-1.0.0/ospray/lights
      const float cosAngleScale = 1.0f/(cosAngleMin - cosAngleMax);
      
      ispc::SpotLight_set(getIE(),
+--- OSPRay-1.0.0/cmake/FindTBB.cmake	2016-07-20 13:30:36.000000000 -0500
++++ OSPRay-1.0.0/cmake/FindTBB.cmake	2016-09-25 23:22:28.673616827 -0500
+@@ -132,7 +132,7 @@
+ IF (TBB_INCLUDE_DIR)
+   FILE(READ ${TBB_INCLUDE_DIR}/tbb/tbb_stddef.h TBB_STDDEF_H)
+ 
+-  STRING(REGEX MATCH "#define TBB_VERSION_MAJOR ([0-9])" DUMMY "${TBB_STDDEF_H}")
++  STRING(REGEX MATCH "#define TBB_VERSION_MAJOR ([0-9]*)" DUMMY "${TBB_STDDEF_H}")
+   SET(TBB_VERSION_MAJOR ${CMAKE_MATCH_1})
+ 
+   STRING(REGEX MATCH "#define TBB_VERSION_MINOR ([0-9])" DUMMY "${TBB_STDDEF_H}")

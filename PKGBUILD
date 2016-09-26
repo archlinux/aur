@@ -6,12 +6,12 @@ pkgdesc="A Ray Tracing Based Rendering Engine for High-Fidelity Visualization"
 arch=('i686' 'x86_64')
 url="http://www.ospray.org/"
 license=('Apache')
-depends=('qt4>=4.6' 'ispc' 'intel-tbb')
+depends=('qt4>=4.6' 'ispc' 'intel-tbb' 'glut')
 makedepends=('cmake')
 source=(https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz
        patch)
 md5sums=('faf022e6448f4bc750055d2c28847fb7'
-         'a14f2a7da967fe078cf1b6aeb7beb961')
+         '73a59bcfac9db6c34e1df130de5d1435')
 
 prepare() {
   cd "$srcdir"
@@ -26,6 +26,7 @@ build() {
   cd "$srcdir/${pkgname}-build"
 
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DTBB_ROOT:PATH=/usr \
         ../OSPRay-$pkgver
   make
 }
