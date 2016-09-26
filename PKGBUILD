@@ -59,7 +59,7 @@ build() {
 	  --enable-ccache \
 	  --with-wxversion=2.8
 
-  make -j `nproc`
+  make 
 }
 
 package() {
