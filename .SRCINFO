@@ -1,0 +1,17 @@
+pkgbase = cf-update-git
+	pkgdesc = Updater for Cloudflare DNS records
+	pkgver = v0.1.r2.g9f963c8
+	pkgrel = 1
+	url = https://github.com/callummance/CF-Update
+	arch = any
+	license = GPL3
+	depends = python
+	backup = etc/cf.conf
+	source = cf-update-git::git+https://github.com/callummance/CF-Update.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = cf-update-git
+
