@@ -1,5 +1,3 @@
-# Maintainer: veluria <veluria ät anche.no>
-
 pkgname="launch4j"
 pkgver="3.9"
 pkgrel="1"
