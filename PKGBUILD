@@ -3,14 +3,14 @@
 
 _pkgname=mintstick
 pkgname=$_pkgname-git
-pkgver=r151.ce797e4
+pkgver=r155.ce797e4
 pkgrel=1
 pkgdesc="Format or write images to usb-sticks (Linux Mint tool)"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/mintstick"
 license=('GPL')
 depends=('python2-dbus' 'python2-gobject' 'python2-pyparted' 'udisks' 'dosfstools')
-optdepends=('coreutils' 'ntfs-3g' 'e2fsprogs')
+optdepends=('ntfs-3g' 'e2fsprogs')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
