@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Keeweb
+Comment=KeePass web app
+Exec=/usr/bin/keeweb
+Icon=/usr/share/pixmaps/keeweb.png
+Categories=Utility;
+Terminal=false
+StartupNotify=true
