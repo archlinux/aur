@@ -4,7 +4,7 @@
 _pkgbase=zsh
 pkgbase=zsh-git
 pkgname=('zsh-git' 'zsh-doc-git')
-pkgver=5.2.r72.ga8a00be
+pkgver=5.2.r502.ge35dcae
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.zsh.org/'
@@ -101,7 +101,6 @@ package_zsh-doc-git() {
 	pkgdesc='Info, HTML and PDF format of the ZSH documentation'
 	conflicts=('zsh-doc')
 	provides=('zsh-doc')
-	install=zsh-doc.install
 
 	cd "${srcdir}/${_pkgbase}"
 	make DESTDIR="${pkgdir}/" install.info install.html
