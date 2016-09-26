@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kexi-git
-pkgver=3.0.89.r12056.2599dc0
+pkgver=3.0.91.r12231.b29e54f
 pkgrel=1
 pkgdesc="A visual database applications creator. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ makedepends=('extra-cmake-modules'
              'marble'
              'kreport-git'
              'kdb-git'
+             'breeze-icons-git'
              )
 optdepends=('kreport-git: Report plugin'
             'marble: Geolocation plugin'
@@ -35,7 +36,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd kexi
-  _ver="$(cat CMakeLists.txt | grep -m3 -e KEXI_STABLE_VERSION_MAJOR -e KEXI_STABLE_VERSION_MINOR -e KEXI_VERSION_RELEASE | cut -d ')' -f1 | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat cmake/modules/SetKexiVersionInfo.cmake | grep -m3 -e KEXI_STABLE_VERSION_MAJOR -e KEXI_STABLE_VERSION_MINOR -e KEXI_VERSION_RELEASE | cut -d ')' -f1 | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
