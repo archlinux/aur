@@ -3,10 +3,10 @@
 
 pkgname=motion-git
 _pkgname=motion
-pkgver=release.3.4.1.r98.g7e16a9e
-pkgrel=2
+pkgver=release.3.4.1.r105.g7692717
+pkgrel=1
 pkgdesc="A software motion detector which grabs images from video4linux devices and/or from webcams"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url="https://motion-project.github.io/"
 depends=('libjpeg' 'v4l-utils' 'ffmpeg')
