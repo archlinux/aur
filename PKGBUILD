@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/airdcpp-web/${pkgname}"
 depends=('miniupnpc' 'boost' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 options=('!strip')
 source=("${pkgname}::git+${url}#tag=${pkgver}") 
 sha256sums=('SKIP')
