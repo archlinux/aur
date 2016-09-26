@@ -7,7 +7,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless2.8
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -33,7 +33,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg2.8')
 replaces=('ffmpeg2.8')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5')
+sha256sums=('b70848958feadca180315d17b1131a1b519527971590e6ee8363a4c568ed06a6')
 
 build() {
   cd ${_pkgname}-${pkgver}
