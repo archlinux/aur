@@ -13,7 +13,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip libtool staticlibs emptydirs !buildflags)
 install=
 source=('git+https://github.com/ellelstone/babl')
 noextract=()
@@ -32,17 +32,21 @@ build() {
         x86_64) LIB=lib64;;
         *) echo "Unknown architecture : $CARCH"; exit 1
     esac
+    export LD_LIBRARY_PATH=$PREFIX/$LIB:$LD_LIBRARY_PATH
+    export PATH=$PREFIX/bin:$PATH
+    export XDG_DATA_DIRS=$PREFIX/share:$XDG_DATA_DIRS
+    export PKG_CONFIG_PATH=$PREFIX/$LIB/pkgconfig:$PKG_CONFIG_PATH
 
     cd $srcdir/babl
     ./autogen.sh --prefix=$PREFIX --enable-mmx=no --enable-sse=no \
                  --enable-sse2=no --enable-sse4_1=no --enable-f16c=no \
                  --enable-altivec=no --disable-docs --libdir=$PREFIX/$LIB
-    make -j5
+    make
 }
 
 package() {
     cd $srcdir/babl
-    env DESTDIR="$pkgdir/" make -j5 install
+    env DESTDIR="$pkgdir/" make install
 }
 
 # vim:set ts=2 sw=2 et:

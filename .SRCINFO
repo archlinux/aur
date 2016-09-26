@@ -8,6 +8,11 @@ pkgbase = babl-cce-git
 	license = LGPL3
 	makedepends = git
 	depends = glibc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	options = !buildflags
 	source = git+https://github.com/ellelstone/babl
 	md5sums = SKIP
 
