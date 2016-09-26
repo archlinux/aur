@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export ATOM_HOME=$HOME/.config/nuclide
+export NUCLIDE_HOME=$ATOM_HOME
+export NUCLIDE_PACKAGES="nuclide tool-bar haskell-grammar highlight-selected language-babel language-ini language-ocaml language-swift language-thrift merge-conflicts sort-lines"
+for i in $NUCLIDE_PACKAGES; do
+    if [ ! -d "$ATOM_HOME/$i" ]; then
+      apm install $i
+    fi
+done
+
+electron --app=/usr/lib/atom $@

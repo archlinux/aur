@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export ATOM_HOME=$HOME/.config/nuclide
+apm $@

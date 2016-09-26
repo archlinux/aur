@@ -1,0 +1,20 @@
+# ignore everything
+*
+!.gitignore
+!README.md
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!ChangeLog
+!.SRCINFO
+
+# common wing-man files
+!*.diff
+!*.patch
+
+# add files that don't have an online source
+!nuclide
+!nuclide.desktop
+!nupm
+!nuclide.png

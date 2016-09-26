@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Nuclide
+Comment=A unified developer experience for web and mobile development
+GenericName=Nuclide Text Editor
+Exec=nuclide %U
+Icon=nuclide
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;TextEditor;Development;
+MimeType=text/plain;
