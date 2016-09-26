@@ -28,21 +28,4 @@ package() {
   tar xJf ${srcdir}/nfeh-${pkgver}.tar.xz -C ${pkgdir}/
 }
 
-post_install() {
-    :
-#!/bin/bash
-
-# Link to the binary
-ln -sf '/opt/nfeh/nfeh' '/usr/local/bin/nfeh'
-
-}
-post_remove() {
-    :
-#!/bin/bash
-
-# Delete the link to the binary
-rm -f '/usr/local/bin/nfeh'
-
-}
-
 # vim:set ts=2 sw=2 et:
