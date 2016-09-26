@@ -2,14 +2,14 @@
 # Contributor: fabioticconi <fabio dot ticconi at gmail dot com>
 
 pkgname=weidu-bin
-pkgver=239
+pkgver=240
 pkgrel=1
 pkgdesc="A dialogue compiler for Infinity Engine games (precompiled binary)"
 arch=('i686' 'x86_64')
 url="http://weidu.org"
 license=('GPL2')
 source=(http://www.weidu.org/~thebigg/WeiDU-Linux-$pkgver.zip)
-md5sums=('9159321f0b41bba6b7705faf58385949')
+md5sums=('12443e3a2577fd4320a9d929c17636b3')
 options=('!strip')
 
 package() {
