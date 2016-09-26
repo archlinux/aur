@@ -7,7 +7,7 @@
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
 pkgname=conky-mt
-pkgver=1.10.1
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='Lightweight system monitor for X'
 url='https://github.com/brndnmtthws/conky'
@@ -20,11 +20,11 @@ provides=('conky')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
         'lua53.patch'
         'xshape.patch'
-        'execgraph.patch')
-sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
+        )
+sha1sums=('f2da0e3b8e6ff8ebc42b35f710f822e228616993'
           'a3a74542b6524e5663ad37aaba292b48e8bea3b1'
-          '930f9d0313b7e32b895b75aa92be2cb128f957ed'
-          '7615818bc255032dc4f5eeba9a2e009b9a7c177c')
+          '4bb3ac31b61f46e57abb451df549186f455f8f8b'
+          )
 
 options=('!strip' 'debug')
 
@@ -33,7 +33,6 @@ prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p1 -i ../lua53.patch # lua_gettable returns an int in lua-5.3
 	patch -p1 -i ../xshape.patch # https://github.com/brndnmtthws/conky/issues/158
-	patch -p1 -i ../execgraph.patch # https://github.com/brndnmtthws/conky/issues/153
 }
 
 build() {

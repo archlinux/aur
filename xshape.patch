@@ -52,9 +52,9 @@ index 48f5197..15db872 100644
 -#include <X11/extensions/shape.h>
 -#include <X11/extensions/shapeconst.h>
 -#endif
- 
- #ifdef BUILD_ARGB
- bool have_argb_visual;
+ #ifdef BUILD_XINERAMA
+ #include <X11/extensions/Xinerama.h>
+ #endif
 @@ -716,26 +712,6 @@ static void init_window(lua::state &l __attribute__((unused)), bool own)
  
  			wmHint.flags = InputHint | StateHint;
