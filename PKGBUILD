@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdb-git
-pkgver=2.96.3.r1953.d842d28
+pkgver=2.99.3.r2107.7611adb
 pkgrel=1
 pkgdesc="A database connectivity and creation framework for various database vendors. (GIT version)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd kdb
-  _ver="$(cat CMakeLists.txt | grep -m1 KDB_VERSION | cut -d '"' -f2)"
+  _ver="$(cat CMakeLists.txt | grep -m1 'KDb VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -43,7 +43,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DPYTHON_EXECUTABLE="/usr/bin/python2"
   make
 }
 
