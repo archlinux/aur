@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
-provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly')
-conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin')
+provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly' 'rust-docs')
+conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin' 'rust-docs')
 depends=('gcc-libs' 'zlib' 'sh')
 source=("rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz.asc::https://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc"
         "rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
