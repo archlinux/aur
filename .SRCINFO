@@ -1,7 +1,7 @@
 pkgbase = firefox-unbranded-bin
 	pkgdesc = Standalone web browser from mozilla.org - Unbranded version (binary)
-	pkgver = 49.0.2
-	pkgrel = 2
+	pkgver = 49.0.2.1474711644
+	pkgrel = 1
 	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds
 	install = firefox-unbranded-bin.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = firefox-unbranded-bin
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=49.0.2
+	provides = firefox=49.0.2.1474711644
 	conflicts = firefox
 	conflicts = firefox-unbranded
 	source = firefox-unbranded-bin.desktop

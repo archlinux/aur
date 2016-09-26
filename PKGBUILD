@@ -4,8 +4,8 @@
 pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
-pkgver=49.0.2
-pkgrel=2
+pkgver=49.0.2.1474711644
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')
 url="https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds"
@@ -35,7 +35,7 @@ sha512sums=('88849a4d75ed528e21272364461c70a968fc92b661d1dd5007ff54aff11080d2555
 sha512sums_x86_64=("${_sha512sum}")
 
 pkgver() {
-	print "$_pkgver"
+	print "${_pkgver}.${_lasttmstmp}"
 }
 
 package() {
