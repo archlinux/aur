@@ -24,6 +24,9 @@ makedepends=(
   'cmake'
   'git'
 )
+optdepends=(
+  'solidity: The Solidity Contract-Oriented Programming Language'
+)
 groups=('ethereum')
 url="https://github.com/ethereum/cpp-ethereum"
 license=('GPL')
