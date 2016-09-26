@@ -14,7 +14,6 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
             'gpsbabel: for gps plugin'
-            'pyqt: for python support'
             'fcgi: for qgis mapserver'
             'ocilib: oracle provider')
 
