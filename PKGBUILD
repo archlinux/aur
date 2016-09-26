@@ -1,15 +1,4 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
-# Contributor: SaultDon <sault.don gmail>
-# Contributor: Lantald < lantald at gmx.com >
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
-# Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
-# Contributor: Eric Forgeot < http://esclinux.tk >
-
-# Globe Plugin and Map Server are disabled in cmake by default.
-# Uncomment them in the build() portion if you'd like them enabled.
-# You will also need to install osgearth or fcgi, respectively, before building.
+# Maintainer: gaelic
 
 pkgname=qgis-git
 _pkgname=qgis
@@ -19,8 +8,8 @@ pkgdesc='Geographic Information System (GIS) that supports vector, raster & data
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'proj' 'geos' 'sqlite3' 'gdal' 'qwt' 'expat' 'python-qscintilla-qt5')
-makedepends=('git' 'cmake' 'flex' 'bison')
+depends=('qt5-tools' 'qt5-script' 'qca-qt5' 'qt5-webkit' 'proj' 'geos' 'sqlite3' 'gdal' 'qwtpolar-qt5' 'expat' 'python-qscintilla-qt5')
+makedepends=('git' 'cmake')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
@@ -29,7 +18,8 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'python-sip: for python support'
             'pyqt: for python support'
             'fastcgi: for qgis mapserver'
-            'ocilib: oracle provider')
+            'ocilib: oracle provider'
+	    			'python-future')
 
 #install="$_pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git")
