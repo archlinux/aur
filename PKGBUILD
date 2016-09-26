@@ -1,11 +1,10 @@
 # Maintainer: Andreas Linz <alinz@klingt.net>
 
 pkgname=adapta-gtk-theme-deb
-_gtk_version='3.21.5'
-_git_version='git20160903'
+_gtk_version='3.22.0.28'
 _git_patch_release=''
-_package_version="${_gtk_version}+${_git_version}${_git_patch_release}-0"
-pkgver="${_gtk_version}.${_git_version}"
+_package_version="${_gtk_version}${_git_patch_release}-0"
+pkgver="${_gtk_version}"
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines.'
 arch=(any)
@@ -17,7 +16,7 @@ conflicts=('adapta-gtk-theme')
 makedepends=()
 optdepends=()
 source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb")
-md5sums=('4b0be59b757ea54085326e92258590ca')
+md5sums=('1773b1f6eae7a2b3fa8f2638a5a60c2e')
 
 package() {
     bsdtar -Oxf $srcdir/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb --include data.tar.xz  | tar -C $pkgdir -Jxf -
