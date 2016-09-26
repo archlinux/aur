@@ -1,0 +1,36 @@
+From f0a99b9f6860044e045b874549928c148087b626 Mon Sep 17 00:00:00 2001
+From: Kevin Enderby <enderby@apple.com>
+Date: Mon, 23 May 2016 22:18:59 +0000
+Subject: [PATCH] Tweak to change in r270491 to deal with the
+ lld-x86_64-darwin13 bot having a old xar.h header. Reviewed the change with
+ Chris Bieneman and Pete Cooper.
+
+git-svn-id: https://llvm.org/svn/llvm-project/llvm/trunk@270502 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ tools/llvm-objdump/MachODump.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tools/llvm-objdump/MachODump.cpp b/tools/llvm-objdump/MachODump.cpp
+index 2bafe55..b97cdca 100644
+--- a/tools/llvm-objdump/MachODump.cpp
++++ b/tools/llvm-objdump/MachODump.cpp
+@@ -5873,12 +5873,16 @@ static void DumpBitcodeSection(MachOObjectFile *O, const char *sect,
+       case XAR_CKSUM_MD5:
+         outs() << "XAR_CKSUM_MD5\n";
+         break;
++#ifdef XAR_CKSUM_SHA256
+       case XAR_CKSUM_SHA256:
+         outs() << "XAR_CKSUM_SHA256\n";
+         break;
++#endif
++#ifdef XAR_CKSUM_SHA512
+       case XAR_CKSUM_SHA512:
+         outs() << "XAR_CKSUM_SHA512\n";
+         break;
++#endif
+       default:
+         outs() << XarHeader.cksum_alg << "\n";
+     }
+-- 
+2.7.4
+

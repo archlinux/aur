@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0-GM-CANDIDATE
+_swiftver=3.0.1-PREVIEW-1
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -11,6 +11,7 @@ depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libkqueue')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
              'python2-sphinx')
+
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -23,20 +24,21 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch"
+    "swift-sphinx2.patch" "xar-1.6.patch"
 )
-sha256sums=('cf26a73f860063f39eab2268d96e484143a81adeb80315fd3769a5f1725ebcb3'
-            'cf67f9498f37ab7587efcea2e238386b9aa14da111663d480f4710d02cab4a5c'
-            '1382425c6a04c26ee65437f5430a483c0f4494346f2ffc6aa79b128ab89a7887'
-            'f00007b8aefd2385c218f2010418b2b380604ec70c4f9daee2ffe43a7c5526ae'
-            '4133ede1a738a61bd50a52345cb3413843fb7a4325b8e1fa1d586bf1150bdc9a'
-            'a1f68a9be8b22a2813826aa6cdac774454b5aa31d99092674290a96480ba73c2'
-            '95e6b93276faa08bb4a26be002717707757f10d907046f1f9e8b0c687d01ddfe'
-            '6b04369075206f7b29acba0558fa3d1df71c0f5e2859e19468f5484a763dc8c6'
-            '04383efa8ca82c4bdcff0c7b202960f7176eef63827e219c8af6c2b55b8cb7ca'
-            '23825fb5a64769a7aa6925f2236f037190e082899d4bb37bdf370b97150c4117'
-            '6bd4706ec57979e36deca1df57bb8388b8969b186ecd7d05c9e77781a23972fc'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
+sha256sums=('09a4c9ad15ab49c36c6c72a1e1747892937c4d24a90b3eeac3c446288511849c'
+            '13db7680025c55e122bb455ed749196e1ea2e41f9157d26c9e9ab2850104916d'
+            '09727ae1b963f95c441ee679295efe8fe7ad3f6cc328b6bb941a80809ed0c8a9'
+            'f68e8a4dc60c1a782ca1e511181b660333ecb3a243e5e183d50d3325bf5f92bc'
+            '38f50c138dd989a2441e902bf16374cd88138a4813e63995cd27ef8cb4be236a'
+            'f556a1919a7d0a96b1f99f2b47addf47015057dbe16e6e20b204368175b80773'
+            '02d090811a0ad507a7305d639a3ab15547e364c554a1ded9703f6f67d4ca4f4c'
+            'c52297b5cfac5cea700b909552a3375ac1f22a7013d3fe2d373f58348a3ef0a3'
+            '378ed451c66322ea2d7fda05c658af6daa4bdd6b7603d6488667bcf0b8241dc2'
+            'c54db125812205cf454bbe9c8cfded54b9b2a273b222e433be99c17303d8c822'
+            '7cb46a443ad22ca155185be8b480b43c3bf67170b7e9a9fe415d0c3882bb4b29'
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
+            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
 
 prepare() {
     # Use python2 where appropriate
@@ -66,6 +68,9 @@ prepare() {
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
+
+    # Fix for xar 1.6.1+ (backported from LLVM trunk)
+    ( cd "${srcdir}/llvm" && patch -p1 -i "${srcdir}/xar-1.6.patch" )
 }
 
 build() {
@@ -87,7 +92,7 @@ check() {
 }
 
 package_swift-preview() {
-    pkgdesc='The Swift programming language compiler and tools - development snapshot'
+    pkgdesc='The Swift programming language compiler and tools - preview release'
     provides=('swift-language' 'swift')
     conflicts=('swift-language-git' 'swift-git' 'swift-bin' 'swift')
     optdepends=('swift-lldb: Swift REPL and debugger')
@@ -149,7 +154,7 @@ package_swift-preview() {
 }
 
 package_swift-lldb-preview() {
-    pkgdesc='The Swift programming language debugger (LLDB) and REPL - development snapshot'
+    pkgdesc='The Swift programming language debugger (LLDB) and REPL - preview release'
     depends=('swift-language' 'python2-six')
     provides=('lldb' 'swift-lldb')
     conflicts=('lldb' 'swift-lldb')
