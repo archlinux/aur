@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.2.0_rc222533.d084f11189f9
+pkgver=4.2.0_rc222537.d16d38338077
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -19,7 +19,7 @@ makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 optdepends=('texinfo: for help-support in octave'
 	    'gnuplot: alternative plotting')
 conflicts=('octave')
-provides=("octave=4.1.0")
+provides=("octave=4.2.0")
 options=('!emptydirs' '!makeflags')
 source=(git://git.sv.gnu.org/gnulib)
 md5sums=('SKIP')
@@ -58,10 +58,10 @@ build() {
   make
 }
 
-#check() {
-#  cd "$srcdir"/${_hgrepo}-local/build
-#  make check
-#}
+check() {
+  cd "$srcdir"/${_hgrepo}-local/build
+  make test || true
+}
 
 package() {
   cd "$srcdir"/${_hgrepo}-local/build
