@@ -49,6 +49,8 @@ static const Rule rules[] = {
 	{ "Corebird",           NULL,           NULL,                        1 << 2,       True,        True,         0 },
 	{ "Spotify",            NULL,           NULL,                        1 << 2,       True,        True,         0 },
 	{ NULL,                 "libreoffice",  NULL,                        1 << 3,       False,       False,        0 },
+	{ NULL,                 "abiword",      NULL,                        1 << 3,       False,       False,        0 },
+	{ NULL,                 "gnumeric",     NULL,                        1 << 3,       False,       False,        0 },
 	{ NULL,                 "Eclipse",      NULL,                        1 << 3,       False,       False,        0 },
 	{ "Gimp",               NULL,           NULL,                        1 << 3,       False,       True,         0 },
 	{ "PacketTracer6",      NULL,           NULL,                        1 << 3,       True,        True,         0 },

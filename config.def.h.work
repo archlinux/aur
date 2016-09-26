@@ -39,6 +39,9 @@ static const Rule rules[] = {
 	{ "calibre-gui",        NULL,       NULL,                        1 << 1,       True,        True,         0 },
 	{ "PacketTracer6",      NULL,       NULL,                        1 << 1,       True,        True,         0 },
 	{ "VirtualBox",         NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "LibreOffice",        NULL,       NULL,                        1 << 3,       False,       False,        0 },
+	{ "Abiword",            NULL,       NULL,                        1 << 3,       False,       False,        0 },
+	{ "Gnumeric",           NULL,       NULL,                        1 << 3,       False,       False,        0 },
 	/* monitor 1 */
 	{ "chromium",           NULL,       NULL,                        1 << 1,       False,       False,        1 },
 	{ "Google-chrome-beta", NULL,       NULL,                        1 << 1,       False,       False,        1 },
@@ -50,7 +53,6 @@ static const Rule rules[] = {
 	{ "KeePass2",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
 	{ "Corebird",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
 	{ "Spotify",            NULL,       NULL,                        1 << 2,       True,        True,         1 },
-	{ "LibreOffice",        NULL,       NULL,                        1 << 0,       False,       False,        1 },
 	/* everywhere */
 	{ "Gimp",               NULL,       NULL,                        1 << 2,       False,       True,        -1 },
 	{ "feh",                NULL,       NULL,                        0,            True,        True,        -1 },
