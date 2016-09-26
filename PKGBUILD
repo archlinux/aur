@@ -2,7 +2,7 @@
 
 pkgname=remote_syslog2
 pkgver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc="Tails one or more log files and sends syslog messages to a remote central syslog server"
 arch=('x86_64' 'i686')
 url="https://github.com/papertrail/remote_syslog2"

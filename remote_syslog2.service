@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 ExecStartPre=/usr/bin/test -e /etc/log_files.yml
-ExecStart=/usr/bin/remote_syslog2 -D
+ExecStart=/usr/bin/remote_syslog2 --no-detach --tls
 Restart=always
 User=root
 Group=root
