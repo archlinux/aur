@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -23,13 +23,26 @@ prepare() {
 
     cd "${pkgname}-${pkgver}"
 
-    # skip electron installation
-    sed -i \
-        -e '/electron-prebuild/ d' \
-        -e '/grunt-electron/ d' \
-        -e '/postinstall/ d' \
-    package.json
 
+    # remove extra dependencies
+
+	rm npm-shrinkwrap.json
+
+    sed -i \
+		-e '/"electron-prebuilt"/      d' \
+		-e '/"grunt-electron"/         d' \
+		-e '/"grunt-appdmg"/           d' \
+		-e '/"grunt-contrib-compress"/ d' \
+		-e '/"grunt-contrib-deb"/      d' \
+		-e '/"grunt-contrib-watch"/    d' \
+		-e '/"postinstall"/            d' \
+	package.json
+
+	sed -i \
+		-e '/electronVersion/ d' \
+	Gruntfile.js
+
+	# hide electron menu
 	sed -i \
 		-e '/mainWindow = new electron\.BrowserWindow({$/ a \        autoHideMenuBar: true,' \
 	electron/app.js
