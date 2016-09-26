@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=svgtools
-pkgver=2016.9.26
+pkgver=2016.9.26.1
 pkgrel=1
 pkgdesc='Tools for working with SVG files and JessyInk presentations.'
 arch=(any)
@@ -9,16 +9,16 @@ url="http://xyne.archlinux.ca/projects/svgtools"
 depends=(python3)
 optdepends=('inkscape: ji2pdf and jessy_to_slides support' 'phantomjs: jessy_to_slides support' 'poppler: ji2pdf support')
 source=(
-  http://xyne.archlinux.ca/projects/svgtools/src/svgtools-2016.9.26.tar.xz
-  http://xyne.archlinux.ca/projects/svgtools/src/svgtools-2016.9.26.tar.xz.sig
+  http://xyne.archlinux.ca/projects/svgtools/src/svgtools-2016.9.26.1.tar.xz
+  http://xyne.archlinux.ca/projects/svgtools/src/svgtools-2016.9.26.1.tar.xz.sig
 )
 sha512sums=(
-  f584950cd33ce30af6a0b89d1862d1048410e4ac9431eab3daa21251236e5a54e531b9b0650e40b44e3eb00b92774db057d321da166d0de23c5819a42bf18efd
-  14198af994369bee33912ad33272fb0c642d0c2028c43cd64b072a0b87046d993cabb21329fd60fd06507bca602a5983846d7398103b4c25927072d96a0ccc89
+  3ea47b7fda168c7781b920941c1293250948babbee6a673750e068272fe4d785626348d163101e4e8b69b53eef86bca2015a4564d590cd8a79cd702ac90794df
+  914d6e85160d6f997c695c4ef9b526c64dbf57d6fbf6e56d654ec616da8ad2feb5cfa962df62139a66daf924c259233232507847c5c5772ed87416effff6d57b
 )
 md5sums=(
-  ea801bb9710b4370485f34a49a662981
-  148151ce9313e7a3fb0bf446f8d09040
+  0dbe677b334ca7f429611c6ba14949ab
+  d3b92c11a53c690019885fbfa136d5cb
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
