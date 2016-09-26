@@ -8,18 +8,15 @@ pkgdesc='Geographic Information System (GIS) that supports vector, raster & data
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-tools' 'qt5-script' 'qca-qt5' 'qt5-webkit' 'proj' 'geos' 'sqlite3' 'gdal' 'qwtpolar-qt5' 'expat' 'python-qscintilla-qt5')
+depends=('qt5-tools' 'qt5-script' 'qca-qt5' 'qt5-webkit' 'proj' 'geos' 'sqlite3' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-psycopg2' 'python-yaml' 'qwtpolar-qt5' 'expat' 'python-qscintilla-qt5')
 makedepends=('git' 'cmake')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
             'gpsbabel: for gps plugin'
-            'python: for mapserver and PyQGIS'
-            'python-sip: for python support'
             'pyqt: for python support'
             'fcgi: for qgis mapserver'
-            'ocilib: oracle provider'
-	    			'python-future')
+            'ocilib: oracle provider')
 
 #install="$_pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git")
