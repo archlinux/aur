@@ -2,7 +2,7 @@
 
 pkgname=fetcher
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic adding, commiting, pushing or pulling of git repos via a systemd service unit."
 arch=('any')
 url="https://github.com/mbrunnen/fetcher"
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("fetcher.sh"
         "fetcher.service")
 noextract=()
-md5sums=('c8caa52bf3ac2c3b2f0a82330c1ab5b0'
+md5sums=('fbe83829a00085425cd73fe66eddf288'
          'dab6b2be6bfbd3f2b77b000814e1e9fd')
 
 package() {
@@ -22,5 +22,3 @@ package() {
 }
 
 # vim:set ft=sh:
-md5sums=('70b877d59239bb454d435876fb900cc9'
-         'dab6b2be6bfbd3f2b77b000814e1e9fd')

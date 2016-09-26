@@ -21,9 +21,9 @@ exec 3>&1 4>&2
 # Restore stdout and stderr
 trap 'exec 2>&4 1>&3' 0 1 2 3
 # Use tee to redirect fd 1 to logfile.out and to stdout
-exec 1> >(tee >(systemd-cat --identifier="$script_name" --priority="debug") >&3)
+exec 1> >(tee >(systemd-cat --identifier="$script_name" --priority="info") >&3)
 # Use tee to redirect fd 2 to logfile.err and to stderr
-exec 2> >(tee >(systemd-cat --identifier="$script_name" --priority="warning") >&4)
+exec 2> >(tee >(systemd-cat --identifier="$script_name" --priority="notice") >&4)
 
 #================================= Functions =================================
 function config_usage() {
@@ -100,11 +100,11 @@ for ((i=0; i < ${#lines[@]}; i++)); do
             if $dryrun; then
                 cmd="git -C $path add -n -A"
                 cmd="$cmd && git -C $path commit -n -v"
-                cmd="$cmd && git -C $path push -n $remote $branch"
+                cmd="$cmd; git -C $path push -n $remote $branch"
             else
                 cmd="git -C $path add -A"
                 cmd="$cmd && git -C $path commit -v"
-                cmd="$cmd && git -C $path push $remote $branch"
+                cmd="$cmd; git -C $path push $remote $branch"
             fi
             ;;
         pull)
@@ -133,4 +133,3 @@ done
 echo '=============================================================================='
 echo "fetcher processed successfully $configfile."
 echo '=============================================================================='
-
