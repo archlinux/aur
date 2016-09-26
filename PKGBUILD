@@ -1,17 +1,16 @@
-# $Id$
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgname=jasper
+_pkgname=jasper
+pkgname=lib32-${_pkgname}
 pkgver=1.900.1
-pkgrel=15
-pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard"
-arch=('i686' 'x86_64')
+pkgrel=1
+pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (32-bit)"
+arch=('x86_64')
 url="http://www.ece.uvic.ca/~mdadams/jasper/"
 license=('custom:JasPer2.0')
-depends=('libjpeg')
-makedepends=('freeglut' 'libxmu' 'glu')
-optdepends=('freeglut: for jiv support' 'glu: for jiv support')
-source=(http://www.ece.uvic.ca/~mdadams/${pkgname}/software/${pkgname}-${pkgver}.zip
+depends=('lib32-libjpeg')
+source=(http://www.ece.uvic.ca/~mdadams/${_pkgname}/software/${_pkgname}-${pkgver}.zip
         patch-libjasper-stepsizes-overflow.diff jasper-1.900.1-CVE-2008-3520.patch
         jpc_dec.c.patch jasper-1.900.1-CVE-2008-3522.patch
         jasper-1.900.1-CVE-2014-8137.patch jasper-avoid-assert-abort.diff
@@ -41,7 +40,8 @@ sha1sums=('9c5735f773922e580bf98c7c7dfda9bbed4c5191'
           '101de5e73ebd690c08a7c1d7639fb35ede41faa3')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
   patch -p1 -i "${srcdir}/jpc_dec.c.patch"
   patch -p1 -i "${srcdir}/patch-libjasper-stepsizes-overflow.diff"
   patch -p1 -i "${srcdir}/jasper-1.900.1-CVE-2008-3520.patch"
@@ -60,13 +60,20 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --mandir=/usr/share/man --enable-shared
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  ./configure --prefix=/usr --libdir=/usr/lib32 --mandir=/usr/share/man \
+    --enable-shared
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
   make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/"{bin,include,share}
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
