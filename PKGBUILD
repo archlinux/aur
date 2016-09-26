@@ -5,23 +5,38 @@
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Travis Nickles <ryoohki7@yahoo.com>
 # Contributor: Stefan Lohmaier <noneuss at gmail dot com>
+# Contributor: Dan Guzek <dguzek@gmail.com>
 pkgname=stepmania-git
 _shortname=stepmania
-pkgver=v5.0.9.r221.g799eeaf
+pkgver=v5.1.0a3.r41.ge056908
 pkgrel=1
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
 url="http://www.stepmania.com/"
 license=('MIT')
-depends=('gtk2' 'libmad' 'ffmpeg' 'glew' 'jack')
+depends=('gtk2' 'libmad' 'jack' 'libpulse' 'libva')
 makedepends=('git' 'cmake')
-provides=('stepmania=5')
+provides=('stepmania=5.1')
 conflicts=('stepmania')
 replaces=('sm-ssc-hg')
 install="$pkgname.install"
 source=("git+https://github.com/$_shortname/$_shortname.git"
+        "git+https://github.com/$_shortname/fmt.git"
+        "git+https://github.com/$_shortname/ffmpeg.git"
+        "git+https://github.com/$_shortname/googletest.git"
+        "git+https://github.com/$_shortname/ogg.git"
+        "git+https://github.com/$_shortname/vorbis.git"
+        "git+https://github.com/$_shortname/libtomcrypt.git"
+        "git+https://github.com/$_shortname/libtommath.git"
         "$_shortname.sh")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'f9839a0c751fee40a5c21712110bce9f3b73863ece404f1c7e468d0fc1b528eb')
 
 pkgver() {
@@ -31,13 +46,22 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_shortname"
-  # BUG: fixes video crash on Arch's versions of ffmpeg but may break others
-  git revert --no-commit 62630f7
+
+  # Use local clones for submodules
+  git submodule init
+  git config submodule.extern/cppformat.url "$srcdir/fmt"
+  git config submodule.extern/ffmpeg-git.url "$srcdir/ffmpeg"
+  git config submodule.extern/googletest.url "$srcdir/googletest"
+  git config submodule.extern/libogg-git.url "$srcdir/ogg"
+  git config submodule.extern/libvorbis-git.url "$srcdir/vorbis"
+  git config submodule.extern/tomcrypt.url "$srcdir/libtomcrypt"
+  git config submodule.extern/tommath.url "$srcdir/libtommath"
+  git submodule update
 }
 
 build() {
   cd "$srcdir/$_shortname/Build"
-  cmake -D WITH_SYSTEM_FFMPEG=ON ..
+  cmake ..
   make
 }
 
