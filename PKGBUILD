@@ -6,7 +6,7 @@
 pkgbase=linux-macbook       # Build kernel with a different name
 _kernelname=-macbook
 _srcname=linux-4.7
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
+            '46be737415406fd06c1067d1280a4a435f8b0a76d70f5d31858964b41367cc8e'
             'SKIP'
             '55083afe584da6218b7db9ce1b7c3c20aef6f31f8c55b53864bcf7d45eb81b26'
             '64e99c3339734f7d58e390d71a4dde706640cb0bca857ac4e637b962d50a010d'
@@ -316,15 +316,3 @@ for _p in ${pkgname[@]}; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
-            'SKIP'
-            'a7e9415d35cee130f2ea5ae4edc652d4be784d9bbfd77e850f1e999f812b2116'
-            'SKIP'
-            '55083afe584da6218b7db9ce1b7c3c20aef6f31f8c55b53864bcf7d45eb81b26'
-            '64e99c3339734f7d58e390d71a4dde706640cb0bca857ac4e637b962d50a010d'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
-            '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
-            '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
-            '7094cbcfd657dbc1c17721d4f248f9f98511d803bc4be6d66637388801afdebc'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
