@@ -5,19 +5,19 @@
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
-pkgver=2.3.1.r381.4c904e5
+pkgver=2.3.1.r381.d41da5
 pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
 license=('GPL')
-depends=('wxgtk' 'gd' 'geoip' 'libupnp' 'crypto++' 'libsm')
+depends=('wxgtk' 'wxgtk2.8' 'gd' 'geoip' 'libupnp' 'crypto++' 'libsm')
 conflicts=('amule' 'amule-dlp' 'amule-dlp-hg' 'amule-dlp-git')
 makedepends=(git)
 optdepends=('antileech')
 install=amule.install
 provides=('amule' 'amule-dlp')
-source=("git+https://github.com/persmule/amule-dlp.git#commit=4c904e5e94ed9909dbf18423c82605d6f9abc5ec"
+source=("git+https://github.com/persmule/amule-dlp.git#commit=d41da5b9e588fc11f8560cffe69beeee25536303"
         'amuled.systemd'
         'amuleweb.systemd')
 sha256sums=('SKIP'
@@ -57,9 +57,9 @@ build() {
 	  --enable-optimize \
 	  --enable-mmap \
 	  --enable-ccache \
-	  --with-wxversion=3.0
+	  --with-wxversion=2.8
 
-  make -j`cat /proc/cpuinfo |grep "processor"|wc -l`
+  make -j `nproc`
 }
 
 package() {
