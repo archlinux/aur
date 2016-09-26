@@ -1,6 +1,6 @@
 pkgbase = texstudio-qt4
 	pkgdesc = Fork of the LaTeX IDE TexMaker. Gives you an environment where you can easily create and manage LaTeX documents. Built with Qt4.
-	pkgver = 2.11.0
+	pkgver = 2.11.2
 	pkgrel = 1
 	url = http://texstudio.sourceforge.net/
 	install = texstudio-qt4.install
@@ -18,7 +18,7 @@ pkgbase = texstudio-qt4
 	replaces = texmakerx
 	replaces = texstudio
 	replaces = texstudio-qt4-hg
-	source = hg+http://hg.code.sf.net/p/texstudio/hg
+	source = texstudio-qt4::hg+http://hg.code.sf.net/p/texstudio/hg#tag=2.11.2
 	sha256sums = SKIP
 
 pkgname = texstudio-qt4
