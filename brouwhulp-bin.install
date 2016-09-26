@@ -6,7 +6,7 @@ cat << EOF
 	Additional MANDATORY AUR dependencies
 
 		(32 and 64bit) fann
-		(32bit only) lib32-qt4pass
+		(32bit only) lib32-qt4pas
 ######################################################################
 
 EOF
