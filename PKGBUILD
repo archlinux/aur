@@ -11,7 +11,7 @@ url="https://github.com/airdcpp-web/${pkgname}"
 depends=('miniupnpc' 'boost' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
 makedepends=('cmake' 'git')
 options=('!strip')
-source=("${pkgname}::git+${url}#tag=${pkgver}") 
+source=("git+${url}.git#tag=${pkgver}") 
 sha256sums=('SKIP')
 
 package() {
