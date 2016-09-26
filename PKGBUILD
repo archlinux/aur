@@ -3,7 +3,7 @@
 # Your system will break if you install this. For breaking purposes only
 
 pkgname=libressl
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='FREE version of the SSL/TLS protocol forked from OpenSSL - EXPRIMENTAL ONLY'
 url='http://www.libressl.org/'
@@ -16,7 +16,7 @@ provides=('openssl')
 conflicts=('openssl')
 source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz{,.asc}
         libressl-dummy-rand-egd.patch)
-sha512sums=('147f6bc3cb17d7769e6cc7d947d66bcfa6904a1669eba791f3805c00db3349732adcc1f9e7921d9a8112b0a395b07a426ae1ed0c95580ebea4d94c723a8f133f'
+sha512sums=('abacecb318a787f5ef9d8469638b7485fe237d4d993f410d7da8c0773ab8eff8c7da988fe965f793b268711afe599dc28f994eedeaa2aafebeb40faa30af38db'
             'SKIP'
             '73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b')
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
@@ -25,7 +25,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
   # Dummy RAND_egd() function - Can help to compile some stuff
   # https://blog.hboeck.de/archives/851-LibreSSL-on-Gentoo.html
-  patch -p1 < ../libressl-dummy-rand-egd.patch
+  patch -p1 < "${srcdir}/libressl-dummy-rand-egd.patch"
   # fix manpage symlink locations
   sed -ri 's|(ln -sf )(.+) (.+)|\1\2.gz \3.gz|g' man/Makefile.in
 }
