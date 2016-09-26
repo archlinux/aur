@@ -5,7 +5,7 @@ pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
 pkgver=49.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')
 url="https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds"
@@ -22,11 +22,11 @@ conflicts=("firefox"
 install=$pkgname.install
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 _rooturl="https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel"
-_lasttmstmp="$(curl -s "${_rooturl}/" | grep -Po '(?<=/)\d+(?=/")' | sort -n | tail -n1)"
+_lasttmstmp=$(curl -s "${_rooturl}/" | grep -Po '(?<=/)\d+(?=/")' | sort -n | tail -n1)
 _srcurl="${_rooturl}/${_lasttmstmp}"
 _pkgver=$(curl -s "${_srcurl}/" | grep -Pom1 "(?<=/${_name}-)[\w.]+(?=\.en-US)")
 _file="${_name}-${_pkgver}.en-US.linux-x86_64-add-on-devel"
-_sha512sum="$(curl -s "${_srcurl}/${_file}.checksums" | grep "${_file}.tar.bz2" | grep sha512 | cut -d " " -f1)"
+_sha512sum=$(curl -s "${_srcurl}/${_file}.checksums" | grep "${_file}.tar.bz2" | grep sha512 | cut -d ' ' -f1)
 source=("$pkgname.desktop"
         "$pkgname-safe.desktop")
 source_x86_64=("${_srcurl}/${_file}.tar.bz2")

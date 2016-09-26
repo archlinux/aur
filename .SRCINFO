@@ -1,7 +1,7 @@
 pkgbase = firefox-unbranded-bin
 	pkgdesc = Standalone web browser from mozilla.org - Unbranded version (binary)
 	pkgver = 49.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds
 	install = firefox-unbranded-bin.install
 	arch = x86_64
