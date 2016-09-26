@@ -4,7 +4,7 @@
 _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
-pkgver=0.9.21
+pkgver=0.9.26
 pkgrel=1
 arch=("any")
 url="http://download.digital-devices.de"
@@ -16,7 +16,7 @@ conflicts=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-dr
 provides=('dddvb-dkms')
 install="${pkgname}.install"
 source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz")
-md5sums=('cbd7bbecf9713e537e58eccad312d249')
+md5sums=('2724912a8331a470a1ed4cb26fe4165b')
 
 prepare() {
   cd "$srcdir"
