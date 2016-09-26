@@ -1,7 +1,7 @@
 # Maintainer: Beini <bane at iki dot fi>
 pkgname=arm-compiler-rt-git
-pkgver=r6.b9e0059
-pkgrel=2
+pkgver=r20.0fcfe9a
+pkgrel=1
 pkgdesc="Compiler-rt builtins for bare metal ARM targets"
 arch=('i686' 'x86_64')
 url="https://github.com/ReservedField/arm-compiler-rt"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make
+  CC=arm-none-eabi-gcc make
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = arm-compiler-rt-git
 	pkgdesc = Compiler-rt builtins for bare metal ARM targets
-	pkgver = r6.b9e0059
-	pkgrel = 2
+	pkgver = r20.0fcfe9a
+	pkgrel = 1
 	url = https://github.com/ReservedField/arm-compiler-rt
 	arch = i686
 	arch = x86_64
