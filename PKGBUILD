@@ -1,21 +1,22 @@
 # Maintainer: droserasprout <droserasprout@tuta.io>
+# Contributor: atommixz <atommixz@gmail.com>
 
 pkgname=airdcpp-webclient
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A peer-to-peer file sharing client with web user interface"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/airdcpp-web/${pkgname}"
-depends=('miniupnpc' 'boost' 'bzip2' 'zlib' 'openssl' 'glibc' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
-makedepends=('git' 'make' 'cmake')
+depends=('miniupnpc' 'boost' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpmp' 'intel-tbb')
+makedepends=('cmake')
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 package() {
     cd ${pkgname}
-    cmake .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
     make install DESTDIR="$pkgdir"
 }
