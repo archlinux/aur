@@ -1,0 +1,40 @@
+pkgbase = firefox-unbranded-bin
+	pkgdesc = Standalone web browser from mozilla.org - Unbranded version (binary)
+	pkgver = 49.0.2
+	pkgrel = 1
+	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds
+	install = firefox-unbranded-bin.install
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libevent
+	depends = libvpx
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = sqlite
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	optdepends = libpulse: PulseAudio driver
+	optdepends = networkmanager: Location detection via available WiFi networks
+	optdepends = upower: Battery API
+	provides = firefox=49.0.2
+	conflicts = firefox
+	conflicts = firefox-unbranded
+	source = firefox-unbranded-bin.desktop
+	source = firefox-unbranded-bin-safe.desktop
+	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	sha512sums = 88849a4d75ed528e21272364461c70a968fc92b661d1dd5007ff54aff11080d2555666cdddd34f0969e2b4bd4d9e1f588133a073323c646b507bc2be6a4e2b23
+	sha512sums = cfc78bb8dbf4bff0da690ff185e9c27ad1cdfc742d8c65aebba22e711aefb634a55c9d941bcc3c46e4e17d515fdefd3a8bb1b4d61cb946ccda0854041181c3fb
+	source_x86_64 = https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel/1474711644/firefox-49.0.2.en-US.linux-x86_64-add-on-devel.tar.bz2
+	sha512sums_x86_64 = 7df80ccee6ec98f181b0247aac02fbbbca94bde8d47bdf5932c3ca012db2f0a1ea99b815a80a7c68f5c40e3c23c34b221040e6c5f12497b19c66940d2ef2313c
+
+pkgname = firefox-unbranded-bin
+
