@@ -2,7 +2,7 @@
 # Contributor: AlexanderR <alexander r at gmx com>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=fizmo
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A Z-Machine interpreter supporting unicode, sound, blorbfile and more."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('ncurses' 'freetype2' 'libxml2' 'libsndfile' 'libjpeg-turbo' 'libpng' 'sdl2')
 groups=('inform')
 source=("https://fizmo.spellbreaker.org/source/$pkgname-$pkgver.tar.gz")
-sha256sums=('2aeeee5cf6d5e0ce16d9c1c205a4a671315e68944c71d5ac49ab326415fc1a96')
+sha256sums=('369c3b58e019756229bf7e72cc5b15c049f1d6d5c65d7653267e67cef109e675')
 
 build() {
   cd $pkgname-$pkgver
@@ -19,7 +19,10 @@ build() {
   ./configure \
       --prefix=/usr \
       --disable-x11
-  make -j1
+  make
+
+  cd doc
+  ./create-txts.sh
 }
 
 package() {
