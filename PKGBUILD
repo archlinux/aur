@@ -34,7 +34,7 @@ replaces=("mkinitcpio-nban")
 conflicts=("mkinitcpio-nban")
 provides=("mkinitcpio-nban")
 source=(http://ninjaos.org/downloads/projects/"${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ac9c780316ef2056927647badefcf828f52a7d108d334ff7a53305adfd5faa72')
+sha256sums=('b4dd8fad52b2e6201f8976bc48dcabfa65b54dac76d6f111374ce5d5631e0efd')
 validpgpkeys=('D5E76841665A4408D73C2D8796FD6113A1F8331E')
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
