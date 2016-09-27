@@ -10,7 +10,7 @@ _minor=7
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=2
+_pfrel=4
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -350,7 +350,7 @@ package_linux-pf() {
 	    'nvidia-beta-all: NVIDIA drivers for all installed kernels'
 	    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
  #provides=(${pkgbase}=${_basekernel} 'aufs3')	# for $pkgname-optimized
- provides=(${pkgbase}=${_basekernel} 'aufs3')
+ provides=(${pkgbase}=$pkgver 'aufs3')
  # below 'provides' is for when you have no other kernel (which is a bad idea anyway)
  # provides=(${pkgbase}=${_basekernel} 'linux=${pkgver}' 'aufs3')
  # If generic build, then conflict with all optimized ones
@@ -711,10 +711,10 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
-            'eab02de671adbcb606b4ba6b713e9b999116257baf53dd33d8e1c79a934a9d0c'
-            'c8ae03adc19fc7dc6dac1101f4204d5423d9d7d4958e8a313110c38d244ab758'
+            '3fbc110417047ca9c4fe2e03800767752d61fc63ab928bee9b571940f36c783a'
+            '88403b23ecb16fcc3af2c94a96063dfa577267d226b209a5831c187fe354bc51'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '0cb521782c26a69aa5c61edba6d8914986e7ac22987c5a576fae113d46c7f8d2'
+            '7814efafa73321b13ce078182007a4fde3bbd9eec84e2a01561c4850ce9b0275'
             'SKIP'
             '7f257434e71ce1a84d061b2959227d51e65f344a5d49a08fe92971566151ad79')
