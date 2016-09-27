@@ -2,7 +2,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=hostapd-git
-pkgver=20150824.20f331b
+pkgver=20160927.a39a545
 pkgrel=1
 pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
 url='http://w1.fi/hostapd/'
