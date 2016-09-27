@@ -5,7 +5,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=gkrellm
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
 source=("${url}/releases/$pkgname-$pkgver.tar.bz2"
         "gkrellm.service")
-sha256sums=('f7a4642d2cc6b61242215e58e1bd8fe394e6fd984cd3c3f8964c1c554029735d'
+sha256sums=('8064ec03ac151c22d716e08d09851102e9deeb2156a265d97f5cf7ad547fa9e3'
             '2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376')
 
 build() {
