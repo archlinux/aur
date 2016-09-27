@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=16.04.34.g2d38227
+pkgver=16.09.7298.ba18113
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -19,13 +19,14 @@ _gitname="emacs-ess"
 
 pkgver() {
   cd "$_gitname"
-  printf "16.04%s" $(git describe --tags | tr '-' '.' |cut -c7-)
+  printf "%s.%s.%s" $(awk '/defvar ess-version/ {print $3}' lisp/ess-custom.el|tr -d \") $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
   cd "$_gitname/lisp"
   sed -i '67s+julia-mode.el++' Makefile
   cp /usr/share/emacs/site-lisp/julia-mode.el .
+  sed -i '163s+))+)))+' ess-help.el
   cd ../doc
   sed -i 's+ text html pdf++' Makefile
   sed -i 's+install-other-docs++' Makefile
