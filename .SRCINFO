@@ -1,0 +1,16 @@
+pkgbase = mimegpg
+	pkgdesc = A command-line utility to sign, encrypt or decrypt MIME-formatted e-mail messages using GnuPG. (Extracted from Courier SqWebMail.)
+	pkgver = 5.8.3
+	pkgrel = 1
+	url = http://courier-mta.org/sqwebmail/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	depends = courier-unicode>=1.3
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/courier/webmail/5.8.3/sqwebmail-5.8.3.tar.bz2
+	sha512sums = 313a8b860e1e55e2f1caded8984e8437b83ccb1e051735532a2d74295583f94be80461cdcaad79d9618b374249b5ef87807cd191c0462e4b18880dd6395d027e
+
+pkgname = mimegpg
+
