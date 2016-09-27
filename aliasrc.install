@@ -1,0 +1,16 @@
+post_install() {
+  cat << _EOF
+
+==> Installation:
+==> To use aliasrc add the following line to your shell initialization file:
+==> '[[ -e /etc/aliasrc ]] && source /etc/aliasrc'
+==>
+==> You can create a ~/.aliasrc file for custom per-user aliases
+
+
+_EOF
+}
+
+post_upgrade() {
+  post_install
+}
