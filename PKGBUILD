@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Web"
 license=('GPL')
 groups=('gnome')
-depends=(libsoup libnotify gsettings-desktop-schemas 'webkit2gtk-unstable>=2.13.1' nss iso-codes
+depends=(libsoup libnotify gsettings-desktop-schemas webkit2gtk nss iso-codes
          dconf gcr gnome-desktop libwnck3 gnome-themes-standard)
 makedepends=(intltool itstool docbook-xml startup-notification
              gobject-introspection)
