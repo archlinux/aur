@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  LDFLAGS="-lharfbuzz" make all
+  make LDFLAGS="-lharfbuzz" all
   make fbpdf2
 }
 
