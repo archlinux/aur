@@ -2,14 +2,14 @@
 
 pkgname=zeronoise
 pkgver=1.04.4
-pkgrel=3
+pkgrel=4
 pkgdesc='HDR, get tiff from several shots without noise and a lot of dynamic range'
 arch=('i686' 'x86_64')
 url='http://www.guillermoluijk.com/tutorial/zeronoise/index.htm'
 license=('custom:freeware')
-depends=(hicolor-icon-theme gsl libpng12 libtiff wxgtk2.8)
+depends=(hicolor-icon-theme gsl libpng12 libtiff libtiff4 wxgtk2.8)
 options=(!strip emptydirs)
-install='zeronoise.install'
+# install='zeronoise.install'
 source_i686=(https://sites.google.com/site/zeronoiselinux/file-cabinet/$pkgname-${pkgver}_i386.deb)
 source_x86_64=(https://sites.google.com/site/zeronoiselinux/file-cabinet/$pkgname-${pkgver}_amd64.deb)
 sha256sums_i686=('56a2f42b72c9740f50f3c287c529a30b9369e0ef618de628762831d7280d27f2')
@@ -34,6 +34,6 @@ package(){
 # workaround to missing lib*.so*
   install -dm755 "$pkgdir"/usr/lib
   cd "$pkgdir"/usr/lib
-  ln -s libtiff.so libtiff.so.4
+#   ln -s libtiff.so libtiff.so.4
   ln -s libgsl.so libgsl.so.0
 }
