@@ -1,14 +1,15 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 # Previous Maintainer of dehydrated-git: Patrick Burroughs (Celti) <celti@celti.name>
 
-pkgname=dehydrated
+pkgname=dehydrated-git
+_pkgname=dehydrated
 pkgver=v0.1.0.r76.ga316a09
 pkgrel=1
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/dehydrated"
 license=('MIT')
-source=("$pkgname::git+https://github.com/lukas2511/dehydrated.git"
+source=("$_pkgname::git+https://github.com/lukas2511/dehydrated.git"
         "dehydrated.timer" "dehydrated.service")
 depends=('curl' 'openssl')
 makedepends=('git')
@@ -17,12 +18,12 @@ sha256sums=('SKIP'
             '9721a64b90cd23971755fdb49bdea84068e8b6cc21ed913d141a0af7edda8b2f')
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	install -Dm755 dehydrated "$pkgdir/usr/bin/dehydrated"
 
 	install -Dm644 "$srcdir/dehydrated.timer" "$pkgdir/usr/lib/systemd/system/dehydrated.timer"
@@ -34,6 +35,6 @@ package() {
 	install -Dm644 docs/examples/domains.txt "$pkgdir/etc/dehydrated/domains.txt.example"
 	install -Dm644 docs/examples/hook.sh "$pkgdir/etc/dehydrated/hook.sh.example"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
 }
