@@ -1,0 +1,8 @@
+[Unit]
+Description=Check and renew ACME TLS certificates
+
+[Timer]
+OnCalendar=daily UTC
+
+[Install]
+WantedBy=timers.target
