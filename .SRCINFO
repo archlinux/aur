@@ -1,14 +1,14 @@
 pkgbase = nfeh
 	pkgdesc = Tiny GUI for feh
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 201609271
 	url = https://github.com/fa7ad/nfeh
 	arch = x86_64
 	license = MIT
 	depends = feh
 	depends = bash
-	source = https://github.com/fa7ad/nfeh/releases/download/1.0.0/nfeh-1.0.0.tar.xz
-	md5sums = 3ccc1a5a8827c0b010599db65789c5c5
+	source = https://github.com/fa7ad/nfeh/releases/download/1.1.0/nfeh-1.1.0.tar.xz
+	md5sums = 690641717f00ffb8171e6338a14382a7
 
 pkgname = nfeh
 

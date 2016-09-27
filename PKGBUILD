@@ -1,7 +1,7 @@
 # Maintainer: lucifermstar <8bit.demoncoder@gmail.com>
 pkgname=nfeh
-pkgver='1.0.0'
-pkgrel=2
+pkgver='1.1.0'
+pkgrel=201609271
 epoch=
 pkgdesc="Tiny GUI for feh"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/fa7ad/nfeh/releases/download/${pkgver}/nfeh-${pkgver}.tar.xz")
 noextract=()
-md5sums=('3ccc1a5a8827c0b010599db65789c5c5')
+md5sums=('690641717f00ffb8171e6338a14382a7')
 validpgpkeys=()
 
 package() {
