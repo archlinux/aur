@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fish-irssi-git
-pkgver=223.2764141
+pkgver=242.cc75638
 _pkgname=irssi
 _pkgver=0.8.19
 pkgrel=1
@@ -41,6 +41,6 @@ build() {
 package() {
   cd $srcdir/$pkgname
   install -Dm755 src/libfish.so $pkgdir/usr/lib/irssi/modules/libfish.so
-  install -Dm644 FiSH-irssi.txt $pkgdir/usr/share/doc/$pkgname/FiSH-irssi.txt
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
