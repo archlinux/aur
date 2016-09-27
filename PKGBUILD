@@ -8,7 +8,7 @@ url="http://qt-apps.org/content/show.php?content=79286"
 depends=('mingw-w64-crt' 'mingw-w64-qt4')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://qt-apps.org/CONTENT/content-files/79286-iistaskpanel-${pkgver}-src.zip")
+source=("https://dl.opendesktop.org/api/files/download/id/1466644899/79286-iistaskpanel-${pkgver}-src.zip")
 md5sums=('5a63ee322d49c404854071592e536c29')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
