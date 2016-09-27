@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
     cd "chewing-editor"
 
-    mkdir build
+    mkdir -p build
 }
 
 build() {
