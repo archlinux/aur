@@ -1,0 +1,16 @@
+post_install() {
+    echo ================================== Important =================================
+    echo Start the owcloud client daemon with:
+    echo systemctl start --user owncloud-client.service
+    echo ==============================================================================
+    echo Enable the owcloud client daemon with:
+    echo systemctl enable --user owncloud-client.service
+    echo ==============================================================================
+}
+post_remove() {
+    echo ================================== Important =================================
+    echo Disable the owcloud client daemon with:
+    echo systemctl disable --user owncloud-client.service
+    echo ==============================================================================
+#}
+# vim:set ts=2 sw=2 ft=sh et:

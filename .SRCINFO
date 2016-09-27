@@ -1,0 +1,13 @@
+pkgbase = owncloud-client-service
+	pkgdesc = Systemd service file for the owncloud client
+	pkgver = 1.0
+	pkgrel = 0
+	install = owncloud-client-service.install
+	arch = any
+	license = MIT
+	depends = owncloud-client
+	source = owncloud-client.service
+	md5sums = 16f131ea71561ef0cd80271884c3ebca
+
+pkgname = owncloud-client-service
+
