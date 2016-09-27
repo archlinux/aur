@@ -1,6 +1,6 @@
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
 
-_rev=r06
+_rev=r07
 _sdkver=7.0
 _sdkint=24
 pkgname=android-arm64-v8a-system-image-${_sdkint}
@@ -13,7 +13,7 @@ license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_arm64-v8a-${_sdkint}_${_rev}.zip")
-sha1sums=('ffc9af8bf3162ed42f48e1954cd0cf616d348f85')
+sha1sums=('e8ab2e49e4efe4b064232b33b5eeaded61437d7f')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
