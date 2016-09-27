@@ -3,7 +3,7 @@
 pkgname=etcd-bin
 _pkgname=etcd
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly-available key value store for shared configuration and service discovery - binary version'
 arch=('x86_64')
 url='https://github.com/coreos/etcd'
@@ -11,6 +11,7 @@ license=('Apache')
 provides=('etcd')
 conflicts=('etcd' 'etcd-git')
 backup=('etc/etcd/etcd.conf.yml')
+install="etcd.install"
 source=("https://github.com/coreos/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz"
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/contrib/systemd/${_pkgname}.service"
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/${_pkgname}.conf.yml.sample")
