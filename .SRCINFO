@@ -6,7 +6,7 @@ pkgbase = mvnvm
 	arch = any
 	license = unknown
 	makedepends = bash
-	conflicts = mvn
+	conflicts = maven
 	source = https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-1.0.8/mvn
 	sha256sums = 968e09aa2dec3c9374e2fb40aaaa73ef313a31b333abc71ca937a25d9e4a6c89
 

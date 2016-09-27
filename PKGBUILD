@@ -1,7 +1,7 @@
 # Maintainer: Avi Knoll <aknoll@atlassian.com>
 pkgname=mvnvm
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Run different versions of maven for different projects."
 arch=('any')
 url="http://mvnvm.org/"
@@ -9,7 +9,7 @@ license=('unknown')
 groups=()
 depends=()
 makedepends=(bash)
-conflicts=(mvn)
+conflicts=(maven)
 source=(
     https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn
 )
