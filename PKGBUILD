@@ -4,7 +4,7 @@
 
 pkgname=php56-composer
 epoch=1
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
@@ -14,21 +14,21 @@ depends=('php56')
 makedepends=('git')
 source=(
     "${pkgname}::git+https://github.com/composer/composer.git#tag=${pkgver}"
-    "${pkgname}-${pkgver}.phar::https://getcomposer.org/download/${pkgver}/composer.phar"
     'php56.patch'
     'phpunit56.patch'
 )
 sha256sums=(
     'SKIP'
-    'dc80131545ed7f7b1369ae058824587f0718892f6a84bd86cfb0f28ab5e39095'
     '9514fe689925720256dc94f7d0a4ea7a0f232f5bd76dbb08dfdd48a691ec4ee5'
     'fc5dfa06b58369c17d44eff9a595eaf8ed7dadef184da1fea06ae3562b8af24f'
 )
 
 prepare() {
+    wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php56 -- --quiet
+
     cd ${srcdir}/${pkgname}
 
-    php56 ${srcdir}/${pkgname}-${pkgver}.phar -n install --no-dev
+    php56 ${srcdir}/composer.phar -n install --no-dev
 }
 
 build() {
