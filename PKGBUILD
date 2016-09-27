@@ -2,8 +2,8 @@
 pkgname=kwebkitpart-frameworks-git
 pkgver=r994.628e1da
 pkgrel=1
-pkgdesc="A WebKit browser component for KDE 5"
-url="https://projects.kde.org/projects/extragear/base/kwebkitpart/"
+pkgdesc="A WebKit browser component for KDE5 - for use Webkit under Konqueror"
+url="https://quickgit.kde.org/?p=kwebkitpart.git"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('kdewebkit' 'kdelibs4support')
