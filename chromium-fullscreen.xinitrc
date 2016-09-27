@@ -27,7 +27,7 @@ exec /usr/bin/chromium --disable \
     --disable-suggestions-service \
     --disable-save-password-bubble \
     --disable-session-crashed-bubble \
-    --disable-web-security \
+    --load-extension=.extensions/disable-x-frame-option \
     --window-position="0,0" \
     --window-size="1920,1080" \
     --kiosk "$URL"

@@ -1,4 +1,4 @@
-post_install() {
+pre_install() {
   # Update systemd sysusers
   systemd-sysusers
 
@@ -8,6 +8,11 @@ post_install() {
   # Create a first sample of Autostart Url
   echo -e "https://www.archlinux.org/\n" > /home/chromium/chromium-autostart-url.txt
 
+  # Create the extensions folders
+  mkdir -p /home/chromium/.extensions/disable-x-frame-option
+}
+
+post_install() {
   # Fix permissions
   chown -R chromium:chromium /home/chromium
 
