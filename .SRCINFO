@@ -1,0 +1,14 @@
+pkgbase = zsh-completions-udisksctl
+	pkgdesc = zsh-completions-udisksctl
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://lists.freedesktop.org/archives/devkit-devel/2014-February/001554.html
+	arch = any
+	license = unknown
+	depends = zsh
+	depends = udisks2
+	source = _udisksctl
+	md5sums = 4e970a7b7f8706c2a9dab7d74cf68cd8
+
+pkgname = zsh-completions-udisksctl
+
