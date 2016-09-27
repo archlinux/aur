@@ -36,7 +36,7 @@ pkgbase = gimp-cce-git
 	options = libtool
 	options = staticlibs
 	options = emptydirs
-	options = !buildflags
+	options = !purge
 	source = git+https://github.com/ellelstone/gimp
 	md5sums = SKIP
 

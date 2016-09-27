@@ -23,7 +23,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip libtool staticlibs emptydirs !buildflags)
+options=(!strip libtool staticlibs emptydirs !purge)
 install=
 source=('git+https://github.com/ellelstone/gimp')
 noextract=()
@@ -56,7 +56,7 @@ build() {
 
 package() {
     cd $srcdir/gimp
-    env DESTDIR="$pkgdir" make install
+    make DESTDIR="$pkgdir" install
 
     case "$CARCH" in
         i686) LIB=lib;;
