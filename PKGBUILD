@@ -13,7 +13,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 package()
 {
-  cd ${srcdir}/arpack++
+  cd ${srcdir}/arpackpp-${pkgver}
 
   # install headers
   for _arch in ${_architectures}; do
