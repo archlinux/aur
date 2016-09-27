@@ -1,7 +1,7 @@
 # Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
 pkgname=owncloud-client-service
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Systemd service file for the owncloud client'
 arch=('any')
 license=(MIT)

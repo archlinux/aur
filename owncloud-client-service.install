@@ -12,5 +12,5 @@ post_remove() {
     echo Disable the owcloud client daemon with:
     echo systemctl disable --user owncloud-client.service
     echo ==============================================================================
-#}
+}
 # vim:set ts=2 sw=2 ft=sh et:
