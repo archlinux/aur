@@ -4,7 +4,7 @@
 
 pkgname=gcc-gcj-ecj
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of the Eclipse Java bytecode compiler for GCJ"
 depends=()
 provides=('eclipse-ecj')
@@ -13,6 +13,7 @@ arch=('any')
 license=('EPL')
 url="http://gcc.gnu.org/java/"
 source=(http://mirrors.kernel.org/sources.redhat.com/java/ecj-${pkgver}.jar ecj1)
+noextract=("ecj-${pkgver}.jar")
 
 package() {
 	install -D -m644 $srcdir/ecj-${pkgver}.jar $pkgdir/usr/share/java/eclipse-ecj.jar
