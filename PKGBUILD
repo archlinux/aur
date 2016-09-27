@@ -15,6 +15,7 @@ _use_ccache=0          # Use ccache when build
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
 _debug_mode=0          # Build in debug mode
+_patch_vaapi=0         # apply the vaapi patch by Saikrishna Arcot
 
 
 ##############################################
@@ -152,14 +153,9 @@ fi
 
 # Need you use clang?
 if [ "${_use_clang}" = "1" ]; then
-  makedepends+=('clang')
-fi
-if [ "${_use_bundled_clang}" = "1" ]; then
-  makedepends+=('cmake'
-                'ocaml'
-                'libffi'
-                'chrpath'
-                )
+  if [ "${_use_bundled_clang}" = "0" ]; then
+    makedepends+=('clang')
+  fi
 fi
 
 # Build with GTK3?
@@ -411,8 +407,10 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
 
   # Misc Patches:
-  (cd "${srcdir}"; bsdtar -xf "chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
+  if [ "${_patch_vaapi}" = "1" ]; then
+    (cd "${srcdir}"; bsdtar -xf "chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
+    patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
+  fi
   # fix paths
   sed -e 's|/usr/lib/|/usr/lib32/|g' \
       -e 's|/usr/lib64/|/usr/lib/|g' \
