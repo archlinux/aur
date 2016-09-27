@@ -1,6 +1,6 @@
 pkgbase = tinc-pre-git
 	pkgdesc = Virtual Private Network daemon (prerelease)
-	pkgver = 1.1pre14
+	pkgver = 1.1pre14.18.ge6497a2
 	pkgrel = 1
 	url = http://www.tinc-vpn.org/
 	arch = any
