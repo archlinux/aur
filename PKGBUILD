@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=tracy
-pkgver=0.07
+pkgver=0.08
 pkgrel=1
 pkgdesc="A system call tracer and injector"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 optdepends=(python)
 source=("https://github.com/MerlijnWajer/tracy/archive/$pkgname-$pkgver.tar.gz"
 )
-md5sums=('bf2ca7c645ee45d314197b4f29b4ed33')
+md5sums=('546ec78803e83697b1330190da7ce42c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-$pkgver/src"
