@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -84,7 +84,7 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         "git+$_aufs3#branch=aufs$_major.$_minor"
-        "https://raw.githubusercontent.com/dolohow/uksm/master/uksm-$_major.$_minor.patch"
+        "uksm-$_major.$_minor.patch"::'http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v4.7.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -717,4 +717,4 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0cb521782c26a69aa5c61edba6d8914986e7ac22987c5a576fae113d46c7f8d2'
             'SKIP'
-            '16f601b5b5d1d74230403eaf331f716c65f0b36b9b5a37cdcdf51c30ea19e341')
+            '7f257434e71ce1a84d061b2959227d51e65f344a5d49a08fe92971566151ad79')
