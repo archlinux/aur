@@ -2,13 +2,13 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
-pkgver=1.13.4
-pkgrel=2
+pkgver=1.13.5
+pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="http://www.wesnoth.org/"
 license=('GPL')
-depends=('pango>=1.14.8' 'sdl2_ttf>=2.0.0' 'sdl2_net>=2.0.0' 'sdl2_mixer>=2.0.0' 'sdl2_image>=2.0.0' 'fribidi>=0.10.9' 'dbus-core' 'python2' 'boost-libs' 'lua' 'desktop-file-utils')
+depends=('pango>=1.14.8' 'sdl2_ttf>=2.0.0' 'sdl2_net>=2.0.0' 'sdl2_mixer>=2.0.0' 'sdl2_image>=2.0.0' 'fribidi>=0.10.9' 'dbus' 'python2' 'boost-libs' 'lua' 'desktop-file-utils')
 makedepends=('boost>=1.60.0' 'scons>=0.98.3')
 install=${pkgname}.install
 source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.tar.bz2"
@@ -20,7 +20,7 @@ source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.ta
     "wesnothd-devel.service"
     "patch_gcc6.patch")
  
-md5sums=('70e949917df1b6e3d222469a58d09849'
+md5sums=('1c9e3fd18f29a47f00960c97a24c7e3c'
 'a906eae5d541a51de77038469b1f794b'
 'b9de9e7ee16f757aa406466657c274a9'
 'b73f4fdefd3e7daa158cce278f11be64'
@@ -45,7 +45,7 @@ build() {
   cd "${srcdir}/wesnoth-$pkgver"
  
   #gcc 6 patching
-  patch -p1 < ../../patch_gcc6.patch
+  #patch -p1 < ../../patch_gcc6.patch
 
   scons prefix=/usr program_suffix=-devel datadirname=wesnoth-devel prefsdir=.wesnoth-devel fifodir=/run/wesnothd-devel \
   boostdir=/usr/include boostlibdir=/usr/include \
