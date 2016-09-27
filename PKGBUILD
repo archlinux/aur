@@ -43,7 +43,7 @@ package() {
     rm "$pkgdir"/usr/${_arch}/lib/*.dll
     install -d "$pkgdir"/usr/${_arch}/bin
     install -m755 release/qscintilla2.dll "$pkgdir"/usr/${_arch}/bin
-    cd "$srcdir/QScintilla-gpl-${pkgver}/build-${_arch}-static"
+    cd "$srcdir/QScintilla_gpl-${pkgver}/build-${_arch}-static"
     install -m644 release/libqscintilla2.a "$pkgdir"/usr/${_arch}/lib/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
