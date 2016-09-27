@@ -1,3 +1,32 @@
+diff --git a/vmblock/Makefile b/vmblock/Makefile
+index bbfe225..8ec1a86 100644
+--- a/vmblock/Makefile
++++ b/vmblock/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+diff --git a/vmblock/Makefile.kernel b/vmblock/Makefile.kernel
+index ab7a727..e3ec9d2 100644
+--- a/vmblock/Makefile.kernel
++++ b/vmblock/Makefile.kernel
+@@ -19,7 +19,7 @@
+ 
+ INCLUDE += -I$(SRCROOT)/include
+ 
+-EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
++EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
+ 
+ EXTRA_CFLAGS += $(call vm_check_build, $(AUTOCONF_DIR)/cachecreate.c, -DVMW_KMEMCR_HAS_DTOR, )
+ EXTRA_CFLAGS += $(call vm_check_build, $(AUTOCONF_DIR)/cachector.c,   -DVMW_KMEMCR_CTOR_HAS_3_ARGS, )
 diff --git a/vmblock/linux/control.c b/vmblock/linux/control.c
 index 79716bd..5b6acb2 100644
 --- a/vmblock/linux/control.c
@@ -233,7 +262,7 @@ index d7ac1f6..c5e6604 100644
     .release = FileOpRelease,
  };
 diff --git a/vmblock/linux/inode.c b/vmblock/linux/inode.c
-index 098c94c..a179d72 100644
+index 098c94c..bd2bf01 100644
 --- a/vmblock/linux/inode.c
 +++ b/vmblock/linux/inode.c
 @@ -35,13 +35,24 @@
@@ -255,10 +284,10 @@ index 098c94c..a179d72 100644
 +static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
  static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
-+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +static const char *InodeOpGetLink(struct dentry *dentry, struct inode *inode,
 +                                  struct delayed_call *done);
-+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
 +#else
 +static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
@@ -270,10 +299,9 @@ index 098c94c..a179d72 100644
  };
  
 -static struct inode_operations LinkInodeOps = {
--   .readlink    = InodeOpReadlink,
 +struct inode_operations LinkInodeOps = {
-+   .readlink    = InodeOpReadlink,  
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
+    .readlink    = InodeOpReadlink,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +   .get_link = InodeOpGetLink,
 +#else
     .follow_link = InodeOpFollowlink,
@@ -306,20 +334,22 @@ index 098c94c..a179d72 100644
     inode->i_op = &LinkInodeOps;
  
     d_add(dentry, inode);
-@@ -176,8 +200,11 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -176,8 +200,13 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
     if (!iinfo) {
        return -EINVAL;
     }
 -
 +#if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 14, 99)
     return vfs_readlink(dentry, buffer, buflen, iinfo->name);
-+#else
++#elif LINUX_VERSION_CODE <= KERNEL_VERSION(4, 6, 99)
 +   return readlink_copy(buffer, buflen, iinfo->name);
++#else
++   return generic_readlink(dentry, buffer, buflen);
 +#endif
  }
  
  
-@@ -198,30 +225,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -198,30 +227,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
   *----------------------------------------------------------------------------
   */
  
@@ -328,18 +358,18 @@ index 098c94c..a179d72 100644
 +static
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
 +int
-+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +const char *
  #else
 -static int
 +void *
  #endif
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +InodeOpGetLink(struct dentry *dentry, struct inode *inode,
 +               struct delayed_call *done)
 +#else
  InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +                  void **cookie)
 +#else
                    struct nameidata *nd)   // OUT: stores result
@@ -350,7 +380,7 @@ index 098c94c..a179d72 100644
     VMBlockInodeInfo *iinfo;
  
     if (!dentry) {
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +      ret = -ECHILD;
 +#else
        Warning("InodeOpReadlink: invalid args from kernel\n");
@@ -359,7 +389,7 @@ index 098c94c..a179d72 100644
        goto out;
     }
  
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +   iinfo = INODE_TO_IINFO(inode);
 +#else
     iinfo = INODE_TO_IINFO(dentry->d_inode);
@@ -371,9 +401,9 @@ index 098c94c..a179d72 100644
  
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0)
     ret = vfs_follow_link(nd, iinfo->name);
-+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
 +   return (char *)(iinfo->name);
-+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
 +   return *cookie = (char *)(iinfo->name);
 +#else
 +   nd_set_link(nd, iinfo->name);

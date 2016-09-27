@@ -1,0 +1,51 @@
+NOTES
+===============================================================================
+I may not be able to update this aur package as quickly as some folks would
+like. I have disowned the package before, but nobody else stepped up to
+maintain it. Since I have to force the dkms modules into submission every so
+often anyway, I might as well continue to update this package whenever I am
+able, or until a new maintainer takes over. ~MK
+
+These patches are currently only compatible with the dkms module sources that
+come with VMware Workstation/Player 12.5, as far as I'm aware. ~MK
+
+A fair amount of the patches, I adapt from here:
+https://github.com/gentoo/vmware/tree/master/app-emulation/vmware-modules/files
+It's not always a one-to-one copy, as our patches seem to go back further than
+these, and, at the time of this writing, these patches are not updated for
+VMware Workstation/Player 12.5. There are also various other differences. ~MK
+
+I cannot test how the changes I make affect every version of the Linux kernel,
+so things might break if you're using an older version. Let me know if this
+happens and I'll see what I can do. ~MK
+
+Some of the changes made in commit 39dbbade236e336560e3db67cd6864bbf400da34 may
+need some review. In particular, the changes to the patching of
+vmci/linux/driver.c. This may also require a review of the change to
+vmci/shared/vmci_kernel_if.h. ~MK
+
+The version number we're using for the package (currently 308) comes from the
+VMMON_VERSION define in vmmon/include/iocontrols.h. This only seems to change
+with bumps to the major version number of VMware Workstation/Player, while the
+actual dkms module sources change more often. I would like to find something
+more reliable to base our version number on. In doing so, we might open up the
+possibility to make this package compatible with multiple versions of the dkms
+modules. ~MK
+
+I have my text editor set to trim trailing whitespace, and to ensure that files
+always end with a newline. Because of this, some superfluous patch chunks will
+likely make their way into the patches from time to time. Getting rid of these
+isn't the highest priority, but as I have time, I will try to neaten up the
+patch files. ~MK
+
+I considered adding the VMware Player 12.5 bundle to sources in PKGBUILD, so
+that we have a guaranteed fresh copy of the dkms module sources, but I have
+decided against it for the time-being. Feedback on this would be appreciated.
+~MK
+
+I would like to see about making an open-vm-tools package that is compatible
+with this one, as it would seem that there are many components in
+open-vm-tools, and only a small subset actually conflict. ~MK
+
+Currently, vsock doesn't work. It compiles fine, but it spits out symbol
+version disagreements when you try to load it. ~MK

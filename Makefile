@@ -14,7 +14,7 @@ KVERSION = $(shell uname -r)
 all: $(foreach m, $(MODULES), $m.ko)
 
 %.ko: % $(TARDIR)/%.tar
-	$(MAKE) VM_UNAME=$(KVERSION) VM_KBUILD=yes -C $*
+	$(MAKE) KVERSION=$(KVERSION) VM_KBUILD=yes -C $*
 	mv $*.o $*.ko
 
 $(MODULES): %: $(TARDIR)/%.tar

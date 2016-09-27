@@ -11,7 +11,7 @@
 pkgname=vmware-modules-dkms
 _pkgbase=vmware-modules
 pkgver=308.0
-pkgrel=9
+pkgrel=10
 pkgdesc="VMware Workstation kernel modules (DKMS)"
 arch=('i686' 'x86_64')
 url="http://www.vmware.com/"
@@ -32,15 +32,17 @@ source=('Makefile'
         'vmci.patch'
         'vmmon.patch'
         'vmnet.patch'
-        'vsock.patch')
-sha256sums=('ee3e5cfac51703ac392bce540e3375680c579eaac7aa31990e1e08ada589e89b'
+        'vsock.patch'
+        'NOTES')
+sha256sums=('9041b85cea2e2c35b27629d47bee2e37b913635e5ace54a46fd9c45f90c4f1d4'
             '7baecdfd979d57aed7dac0db57e0165fc1730b15ed6bf42ed25571e68ec34b52'
             '707596776b0b232f7f5de4a0ddff12262df3bc934180afd956ea2ee45ac4db9e'
-            '48951fcb72e1f964e21dc3f7ea4729dd673936abdd28b54008dbca9b0967683f'
-            'cea6c1e3d76063a95b6e71a46f90557a06e3a668457eb0eeede66e7f121cfa5f'
-            '8bb2e4dae95523024515b850a253baca4e6da914a85a5a3b237d4390c2617aa7'
-            '2eb2ad24722e0ddd97387c48266295204aea95de8970eec427e3931769d15e19'
-            'a97e5096ef1b1595b2d1ed6b86b0fde80e34c6310f566156bcd4f5d660a74a58')
+            'b81a2c26a6af145a934118a0d19d22ff7a73464dfa849d24ba0dd785f119ae7e'
+            '84ddf2d77039ca558466682a23280ecbb0ec4b6bf9a5b4561f161c78e32b57a1'
+            '663dbccace714d719e3d27337fc5acabded61dbe5889af7c3bd28e0fbcef115e'
+            '31c626d7686f9d8d50b3ab09ada45f6bdcaf97c47f62de3ff2494c99b19f90d0'
+            '50bf86f3306fbdafa0a5d5947fb64c06e2a236be84e2ba3f7057f84cc49f7828'
+            'SKIP')
 
 build()
 {
