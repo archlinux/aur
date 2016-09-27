@@ -1,0 +1,18 @@
+diff --git a/app/terminal.cpp b/app/terminal.cpp
+index 6b9681f..ac83213 100644
+--- a/app/terminal.cpp
++++ b/app/terminal.cpp
+@@ -109,9 +109,11 @@ bool Terminal::eventFilter(QObject* /* watched */, QEvent* event)
+ {
+     if (event->type() == QEvent::FocusIn)
+     {
+-        emit activated(m_terminalId);
+-
+         QFocusEvent* focusEvent = static_cast<QFocusEvent*>(event);
++        if (!terminalWidget()->isVisible())
++            return false;
++
++        emit activated(m_terminalId);
+ 
+         if (focusEvent->reason() == Qt::MouseFocusReason || focusEvent->reason() == Qt::OtherFocusReason
+                 || focusEvent->reason() == Qt::BacktabFocusReason)

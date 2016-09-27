@@ -1,0 +1,22 @@
+pkgbase = yakuake-sp-git
+	pkgdesc = A drop-down terminal emulator based on KDE Konsole technology. (GIT version with split focus patch)
+	pkgver = v3.0.2.7.g2c081e7.focusfix
+	pkgrel = 1
+	url = https://www.kde.org/applications/system/yakuake
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = knewstuff
+	depends = konsole
+	depends = kwayland
+	depends = hicolor-icon-theme
+	provides = yakuake
+	conflicts = yakuake
+	source = git://anongit.kde.org/yakuake.git
+	sha1sums = SKIP
+
+pkgname = yakuake-sp-git
+
