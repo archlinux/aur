@@ -8,7 +8,18 @@ arch=('i686' 'x86_64')
 url="https://github.com/jonasdn/nsntrace"
 license=('GPL2')
 groups=()
-depends=('libnl')
+depends=(
+    'dbus'
+    'glibc'
+    'libpcap'
+    'libgcrypt'
+    'libgpg-error'
+    'libnl'
+    'libsystemd'
+    'libusb'
+    'lz4'
+    'xz'
+)
 makedepends=('automake')
 optdepends=()
 provides=()
