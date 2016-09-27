@@ -2,7 +2,7 @@ pkgbase=pywbem
 pkgname=('python-pywbem'
          'python2-pywbem')
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python WBEM Client and Provider Interface"
 arch=('any')
 url='https://github.com/pywbem/pywbem'
@@ -11,6 +11,7 @@ makedepends=('python3' 'python-pip' 'python-yaml' 'python-ply'
              'python2' 'python2-pip' 'python2-yaml' 'python2-ply')
 source=("https://github.com/$pkgbase/$pkgbase/archive/v${pkgver}.tar.gz")
 sha256sums=('e5a38cfffceca2bb984a531b17837c5d6a89cdbdedf08a527712bc365f19f2bb')
+depends=("python2-m2crypto")
 
 build() {
     :
