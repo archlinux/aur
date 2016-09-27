@@ -2,7 +2,7 @@
 
 pkgname="aliasrc"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Another rc for a faster command line"
 arch=('any')
 url="https://github.com/nullptrT/aliasrc"
@@ -16,10 +16,9 @@ md5sums=('9616277f2cb6cb2d5b8c113198ae650f'
          'a82a1ea241b90b005b21998b00be273d')
 
 package() {
-	cd "$srcdir"
-	install -d "$pkgdir/etc/aliasrc.d"
-	for f in "$srcdir/aliasrc.d/*.aliasrc"; do
-		cp f "$pkgdir/etc/aliarc.d/"
-	done
-	cp aliasrc "$pkgdir/etc"
+	cd "$srcdir/aliasrc-$pkgver"
+
+	install -d -m644 "$pkgdir/etc/aliasrc.d"
+	install -m755 aliasrc.d/*.aliasrc $pkgdir/etc/aliasrc.d
+	install -m755 aliasrc "$pkgdir/etc"
 }
