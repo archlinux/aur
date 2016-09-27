@@ -16,7 +16,7 @@ depends=('')
 
 source=(teamdrive.desktop)
 #source_i686=("http://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/${pkgver}/TMDR/linux/Install-TeamDrive-${pkgver}_TMDR.run")
-source_x86_64=("http://s3download.teamdrive.net.s3.amazonaws.com/4.2.1547/TMDR/linux-x86_64/Install-TeamDrive-4.2.1.1547_TMDR.run")
+source_x86_64=("https://s3-eu-west-1.amazonaws.com/s3download.teamdrive.net/4.2.1547/TMDR/linux-x86_64/Install-TeamDrive-4.2.1.1547_TMDR.run")
 
 sha256sums=('f3b06b1d5f285e6a7c5db19fc441da3f82062a1c529b17137d19e5450b6b314f')
 #sha256sums_i686=('4ccc5d00788cc44bd76dbc8fb40c2cd6335ab4a955ad37a75d13d499e30b85b1')
