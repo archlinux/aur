@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn-dev
-pkgver=3.0
-pkgrel=3
+pkgver=3.1b
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -73,7 +73,7 @@ package() {
 
   
   install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
-  install -D -m 600 vpn-hosts.txt "${pkgdir}/etc/private-internet-access"
+  install -D -m 644 vpn-hosts.txt "${pkgdir}/etc/private-internet-access"
   install -D -m 644 *.crt "${pkgdir}/etc/openvpn"
   install -D -m 644 *.pem "${pkgdir}/etc/openvpn"
   install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
