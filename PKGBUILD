@@ -2,7 +2,7 @@
 
 pkgname=keeweb
 pkgver=1.3.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
@@ -12,24 +12,20 @@ makedepends=('npm' 'asar')
 optdepends=('xdotool: for auto-type')
 conflicts=("keeweb-desktop")
 source=("https://github.com/keeweb/keeweb/archive/v${pkgver}.tar.gz"
-        'keeweb.desktop'
         'keeweb'
 )
 
 sha1sums=('82916cdf893ea1d2b1d69e2fe2592deccabd57dd'
-          'd2ac08ed22950787a7a0c074be050822ca97f74f'
           '6f73285126a5d6d948712de73053957528aba0cc')
 
 prepare() {
 
-    cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
-
-    # remove extra dependencies
-
+	# remove extra dependencies
 	rm npm-shrinkwrap.json
 
-    sed -i \
+	sed -i \
 		-e '/"babel-/                  d' \
 		-e '/"electron-prebuilt"/      d' \
 		-e '/"grunt-electron"/         d' \
@@ -56,6 +52,10 @@ prepare() {
 	sed -i \
 		-e '/mainWindow = new electron\.BrowserWindow({$/ a \        autoHideMenuBar: true,' \
 	electron/app.js
+
+	sed -i \
+		-e '/Exec=/ c \Exec=keeweb %u' \
+	package/deb/usr/share/applications/keeweb.desktop
 }
 
 build() {
@@ -68,14 +68,16 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	install -Dm0644 -t "${pkgdir}/usr/lib/keeweb" ../keeweb.asar
-    install -Dm0755 -t "${pkgdir}/usr/bin"  ../keeweb
+	install -Dm0755 -t "${pkgdir}/usr/bin"        ../keeweb
 
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
 
-    install -Dm0644 -t "${pkgdir}/usr/share/applications" ../keeweb.desktop
-    install -Dm0644 electron/icon.png "${pkgdir}/usr/share/pixmaps/keeweb.png"
+	install -Dm0644 -t "${pkgdir}/usr/share/mime/packages" package/deb/usr/share/mime/packages/keeweb.xml
+	install -Dm0644 -t "${pkgdir}/usr/share/applications"  package/deb/usr/share/applications/keeweb.desktop
+
+	install -Dm0644 graphics/128x128.png "${pkgdir}/usr/share/pixmaps/keeweb.png"
 
 }
