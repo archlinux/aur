@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/gabmus/razercommander
 
 pkgname=razercommander-git
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A simple GTK control center for managing razer peripherals on Linux.'
 arch=('any')

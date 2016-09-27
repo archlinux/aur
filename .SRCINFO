@@ -1,6 +1,6 @@
 pkgbase = razercommander-git
 	pkgdesc = A simple GTK control center for managing razer peripherals on Linux.
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/gabmus/razercommander
 	arch = any
