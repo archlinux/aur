@@ -112,7 +112,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           )
 options=('!strip')
 install=chromium-dev.install
-noextract=('chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz')
+noextract=("chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz")
 
 ################################################
 ## -- Don't touch anything below this line -- ##
