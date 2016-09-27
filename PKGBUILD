@@ -13,7 +13,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip libtool staticlibs emptydirs !buildflags)
+options=(!strip libtool staticlibs emptydirs !purge)
 install=
 source=('git+https://github.com/mypaint/libmypaint.git')
 noextract=()
@@ -45,9 +45,7 @@ build() {
 
 package() {
     cd $srcdir/libmypaint
-    env DESTDIR="$pkgdir" make install
-    install -D -m644 COPYING \
-            "$pkgdir/usr/gimp-cce/share/licenses/$pkgname/LICENSE"
+    make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
