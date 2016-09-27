@@ -1,21 +1,33 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.14
+pkgver=0.12.14+2+ge1f6e59
 pkgrel=1
-pkgdesc="Gtk3 widget for displaying rasterized maps"
-url="http://projects.gnome.org/libchamplain/"
-license=('LGPL')
-arch=('i686' 'x86_64')
-depends=('clutter-gtk' 'libsoup' 'cairo' 'sqlite')
-makedepends=('gobject-introspection' 'gtk-doc' 'vala')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver:0:4}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('f1621ddec1ffe64ca01c3216db8663f60ae0bb107521195fc6856119d4b4568f')
+pkgdesc="A map widget"
+url="https://wiki.gnome.org/Projects/libchamplain"
+license=(LGPL)
+arch=(i686 x86_64)
+depends=(clutter-gtk libsoup cairo sqlite)
+makedepends=(gobject-introspection gtk-doc vala gnome-common git)
+_commit=e1f6e591ca752f20bb29cbe46b7f2e4e41468a56
+source=("git://git.gnome.org/libchamplain#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^LIBCHAMPLAIN_//;s/_/./g;s/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --disable-static --disable-debug --enable-vala --enable-gtk-doc
+  cd $pkgname
+  ./configure --prefix=/usr --disable-static --disable-debug \
+    --enable-vala --enable-gtk-doc
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -24,6 +36,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
