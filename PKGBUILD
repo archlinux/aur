@@ -4,8 +4,8 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=3879.3c0c7a9
-pkgrel=5
+pkgver=4186.2bec8a4
+pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -30,7 +30,7 @@ install=gogs.install
 _gourl=github.com/gogits/$_pkgname
 source=('gogs.service.patch'
         'app.ini.patch'
-        "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
+        "$_pkgname-$pkgver::git+https://${_gourl}.git#branch=${_branch}")
 
 sha512sums=(db36fd44c29de387b066e52a71a61214aa876a27574eb054ec9517a175b5a47db9a7de01be2dd635023a11d5e1224772a66accc4b63b6936f7c58e6314555a66
             43c8971b0b4e8ea8d5aa0ed15610e9737605dc46a626d3d578bb1c97c9f90912966f59b452e9f4ea7974e4e3beaa5dd40bc597b03319afed3358432ab6e59c7d
@@ -39,7 +39,7 @@ sha512sums=(db36fd44c29de387b066e52a71a61214aa876a27574eb054ec9517a175b5a47db9a7
 _goroot="/usr/lib/go"
 
 pkgver(){
-  cd "$srcdir/../$_pkgname"
+  cd "$srcdir/../$_pkgname-$pkgver"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -68,11 +68,12 @@ prepare() {
   
   mkdir -p "$GOPATH/src/github.com/gogits"
 
-  mv "$srcdir/$_pkgname" $GOPATH/src/${_gourl}
+  mv "$srcdir/$_pkgname-$pkgver" $GOPATH/src/${_gourl}
 
   # Glide
   msg2 "Download dependencies via Glide"
   cd $GOPATH/src/${_gourl}
+  glide update
   glide install
 
   # Execute patch
