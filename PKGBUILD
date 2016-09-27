@@ -3,7 +3,7 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.18.99.2 # http://lists.x.org/archives/xorg/2016-September/058265.html
+pkgver=1.18.99.901 # https://lists.x.org/archives/xorg/2016-September/058268.html
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -22,7 +22,7 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('b9cf5404eb5bfe4f8e366a570b91f027126299670275ab4912605ab4095770be'
+sha256sums=('c8425163b588de2ee7e5c8e65b0749f2710f55a7e02a8d1dc83b3630868ceb21'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
