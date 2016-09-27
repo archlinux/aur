@@ -2,12 +2,12 @@
 
 pkgname=molotov
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
 license=('unknown')
-depends=('fuse')
+depends=('fuse' 'gconf')
 makedepends=('p7zip')
 options=('!strip')
 source=("http://desktop-auto-upgrade.molotov.tv/linux/Molotov-${pkgver}.AppImage"
