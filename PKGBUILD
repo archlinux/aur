@@ -1,14 +1,14 @@
 
 pkgname=kwebkitpart-frameworks-git
-pkgver=r994.628e1da
-pkgrel=1
+pkgver=r995.16ae1e5
+pkgrel=2
 pkgdesc="A WebKit browser component for KDE5 - for use Webkit under Konqueror"
 url="https://quickgit.kde.org/?p=kwebkitpart.git"
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('kdewebkit' 'kdelibs4support')
 makedepends=('cmake')
-source=("git://anongit.kde.org/kwebkitpart.git#branch=frameworks")
+source=("git://anongit.kde.org/kwebkitpart.git")
 sha256sums=('SKIP')
 
 pkgver() {
