@@ -1,6 +1,6 @@
 pkgbase = dehydrated
 	pkgdesc = A Let's Encrypt (ACME) client implemented in bash
-	pkgver = 1.0
+	pkgver = v0.1.0.r76.ga316a09
 	pkgrel = 1
 	url = https://github.com/lukas2511/dehydrated
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = dehydrated
 	source = dehydrated.service
 	sha256sums = SKIP
 	sha256sums = c2b5556776d20a2a8610e70d10eb2bf830ec5ac725be641ea0fe42945641d684
-	sha256sums = 2fa8367f86a173a262c46804849fbeaf0180a36d6cad83e6927f7d245e8c9f77
+	sha256sums = 9721a64b90cd23971755fdb49bdea84068e8b6cc21ed913d141a0af7edda8b2f
 
 pkgname = dehydrated
 
