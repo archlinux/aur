@@ -46,6 +46,3 @@ decided against it for the time-being. Feedback on this would be appreciated.
 I would like to see about making an open-vm-tools package that is compatible
 with this one, as it would seem that there are many components in
 open-vm-tools, and only a small subset actually conflict. ~MK
-
-Currently, vsock doesn't work. It compiles fine, but it spits out symbol
-version disagreements when you try to load it. ~MK
