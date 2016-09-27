@@ -1,7 +1,7 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=pcsc-cyberjack
-_sp=SP09
+_sp=SP10
 pkgver=3.99.5_${_sp}
 _pkgver=3.99.5final.${_sp}
 pkgrel=1
@@ -13,13 +13,11 @@ replaces=('ctapi-cyberjack')
 conflicts=('ctapi-cyberjack')
 depends=('libusb' 'pcsclite')
 options=('!libtool' '!docs')
-source=("http://support.reiner-sct.de/downloads/LINUX/V${pkgver}/pcsc-cyberjack-${_pkgver}.tar.bz2")
-sha256sums=('1f8cb8da18aae3b39f7c972d06c3221d08e870119bc871a2eb198a09b01139d4')
+source=("http://downloads.reiner-sct.de/downloads/LINUX/V${pkgver}/pcsc-cyberjack_${_pkgver}.tar.tar")
+sha256sums=('11099c29594a73db19a4a0d9c448308c9c1ec3868862fd3838d0849b0debc7a8')
 
 build() {
     cd "${pkgname}-${_pkgver}"
-
-    autoreconf -i
 
     ./configure \
         --prefix=/usr \
