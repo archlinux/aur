@@ -11,6 +11,7 @@ arch=('any')
 url="http://www.tinc-vpn.org/"
 license=('GPL')
 depends=('lzo2' 'openssl')
+makedepends=('git')
 optdepends=('python2' 'wxpython: gui support')
 provides=('tinc-pre')
 conflicts=('tinc' 'tinc-pre' 'tinc-pre-systemd')
