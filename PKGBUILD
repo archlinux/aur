@@ -34,7 +34,7 @@ build() {
 package() {
     cd $srcdir/kubernetes-$pkgver
 
-    binaries=(kube-dns kube-proxy kube-apiserver kube-controller-manager kubelet kubeadm kubemark hyperkube kube-scheduler kubectl)
+    binaries=(kube-dns kube-proxy kube-apiserver kube-controller-manager kubelet kubemark hyperkube kube-scheduler kubectl)
     for bin in "${binaries[@]}"; do
         install -Dm755 _output/local/bin/linux/amd64/$bin $pkgdir/usr/bin/$bin
     done
