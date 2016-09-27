@@ -7,7 +7,7 @@ pkgdesc="LPR and CUPS driver for the Brother MFC-j480DW"
 url="http://solutions.brother.com/linux/en_us/"
 arch=("i686" "x86_64")
 license=('custom:brother commercial license')
-depends=("cups ghostscript a2ps")
+depends=(cups ghostscript a2ps)
 install="$pkgname.install"
 source=(
     "http://download.brother.com/welcome/dlf102091/mfcj480dwlpr-$pkgver-$pkgrel.i386.rpm"
