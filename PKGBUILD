@@ -5,13 +5,13 @@
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
 pkgver='1.5.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' "${_pkgbasename}=${pkgver}")
-makedepends=('gcc-multilib' 'cmake' 'xcb-proto' 'lib32-libegl' 'lib32-libgbm' 'lib32-libgl')
+makedepends=('cmake' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
 
 source=("https://github.com/waffle-gl/waffle/archive/v$pkgver.tar.gz")
 sha256sums=('d662f6743f688dc5ea4b7d29f558eb54bd8f57350080f04a006693d22e5d1d5b')
