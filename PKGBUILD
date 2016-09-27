@@ -2,7 +2,7 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.5.0.9.g3e5ac93
+pkgver=3.6.0.81.g5406d92
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -65,7 +65,7 @@ package() {
   # copy license
   cp "$dist_dir/LICENSE" usr/share/doc/gpmdp/
   # copy icon
-  cp "$dist_dir/resources/app/build/assets/img/main.png" usr/share/pixmaps/gpmdp.png
+  cp "$dist_dir/../../build/assets/img/main.png" usr/share/pixmaps/gpmdp.png
   # copy application
   cp -r "$dist_dir"/* usr/share/gpmdp
   # link binary
