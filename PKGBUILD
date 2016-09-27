@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-qscintilla-qt4
-pkgver=2.9.1
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="A port to Qt4 of Neil Hodgson's Scintilla C++ editor class (mingw-w64)"
 license=('GPL')
@@ -9,13 +9,13 @@ url="http://www.riverbankcomputing.co.uk/software/qscintilla/intro"
 depends=('mingw-w64-crt' 'mingw-w64-qt4')
 makedepends=('mingw-w64-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://downloads.sourceforge.net/pyqt/QScintilla-gpl-${pkgver}.tar.gz")
-md5sums=('38e6248cb970adf6d05aea7d94f1288e')
+source=("http://downloads.sourceforge.net/pyqt/QScintilla_gpl-${pkgver}.tar.gz")
+md5sums=('3b1cdbce9ef6c28cd868bcc58219f96e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "$srcdir/QScintilla-gpl-${pkgver}"
+  cd "$srcdir/QScintilla_gpl-${pkgver}"
   for _arch in ${_architectures}; do
     export QTDIR=/usr/${_arch}
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
@@ -37,7 +37,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/QScintilla-gpl-${pkgver}/build-${_arch}"
+    cd "$srcdir/QScintilla_gpl-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" INSTALL_ROOT="$pkgdir" install QMAKE=echo
     rm -rf "$pkgdir"/usr/${_arch}/share
     rm "$pkgdir"/usr/${_arch}/lib/*.dll
@@ -49,3 +49,4 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
+
