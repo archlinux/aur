@@ -33,7 +33,7 @@ pkgbase = gegl-cce-git
 	options = libtool
 	options = staticlibs
 	options = emptydirs
-	options = !buildflags
+	options = !purge
 	source = git+https://github.com/ellelstone/gegl
 	md5sums = SKIP
 

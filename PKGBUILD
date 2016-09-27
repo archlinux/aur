@@ -23,7 +23,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip libtool staticlibs emptydirs !buildflags)
+options=(!strip libtool staticlibs emptydirs !purge)
 install=
 source=('git+https://github.com/ellelstone/gegl')
 noextract=()
@@ -57,7 +57,7 @@ build() {
 
 package() {
     cd $srcdir/gegl
-    env DESTDIR="$pkgdir" make install
+    make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
