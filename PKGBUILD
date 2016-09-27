@@ -83,8 +83,9 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
         # Misc Patches
-#         "enable_vaapi_on_linux-${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/master/debian/patches/enable_vaapi_on_linux.diff"
+        "https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz"
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
@@ -99,8 +100,9 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           # Patch form Gentoo
           'e7db42be95f3ca28a270df45d884b12f66686716'
           'cb2fd59666b2904546d27e863613db515633a5f4'
+          '11c51c077d90d811418f0698a9dce6572653e7df'
           # Misc Patches
-#          '0032f3b38c3cdf07e592fe0428cea3af2ce433b8'
+          '1e3107ff88ce6084e4bd609edd903dc1f84d738b'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           '17ba326edbd5df0aba71958d9eea56ba9653c995'
           # Patch from crbug (chromium bugtracker)
@@ -109,6 +111,7 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           )
 options=('!strip')
 install=chromium-dev.install
+noextract=('chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz')
 
 ################################################
 ## -- Don't touch anything below this line -- ##
@@ -174,6 +177,9 @@ fi
 # Need you use ccache?
 if [ "${_use_ccache}" = "1" ]; then
   makedepends+=('ccache')
+  export CCACHE_CPP2=yes
+  export CCACHE_SLOPPINESS=time_macros
+  _ccache='ccache '
 fi
 
 # Are you use gnome-keyring/gnome?
@@ -298,7 +304,7 @@ _keeplibs=('base/third_party/dmg_fp'
            'third_party/x86inc'
            'third_party/xdg-utils'
            'third_party/yasm/run_yasm.py'
-           'third_party/zlib'
+           'third_party/zlib/google'
            'url/third_party/mozilla'
            'v8/src/third_party/valgrind'
            )
@@ -374,7 +380,7 @@ _use_system=('ffmpeg'
 #              're2' # need arch update
              'snappy'
              'yasm'
-#              'zlib' # broken
+             'zlib'
              )
 
 ################################################
@@ -402,9 +408,11 @@ prepare() {
   # Patch sources from Gentoo
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
   patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
+  patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
 
   # Misc Patches:
-#   patch -p1 -i "${srcdir}/enable_vaapi_on_linux-${pkgver}.diff"
+  (cd "${srcdir}"; bsdtar -xf "chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
   # fix paths
   sed -e 's|/usr/lib/|/usr/lib32/|g' \
       -e 's|/usr/lib64/|/usr/lib/|g' \
@@ -466,53 +474,32 @@ build() {
 
   cd "chromium-${pkgver}"
 
-  # Set ccache environment
-  if [ "${_use_ccache}" = "1" ]; then
-    msg2 "Setup ccache"
-    export CCACHE_CPP2=yes
-    export CCACHE_SLOPPINESS=time_macros
-  fi
-
   # Use system/bundled Clang? or GCC?
-  _bundled_clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin"
-
   if [ "${_use_clang}" = "0" ]; then
     msg2 "Setup for use system GCC"
     _flags+=('is_clang=false'
              'clang_use_chrome_plugins=false'
              )
-    if [ "${_use_ccache}" = "0" ]; then
-      export CC="gcc -Wall"
-      export CXX="g++ -Wall"
-    elif [ "${_use_ccache}" = "1" ]; then
-      export CC="ccache gcc -Wall"
-      export CXX="ccache g++ -Wall"
-    fi
+    export CC="${_ccache}gcc -Wall"
+    export CXX="${_ccache}g++ -Wall"
   elif [ "${_use_clang}" = "1" ]; then
     _flags+=('is_clang=true')
     if [ "${_use_bundled_clang}" = "0" ]; then
-    _flags+=('clang_use_chrome_plugins=false')
-    msg2 "Setup for use system Clang"
-      if [ "${_use_ccache}" = "0" ]; then
-        export CC="clang -Qunused-arguments"
-        export CXX="clang++ -Qunused-arguments"
-      elif [ "${_use_ccache}" = "1" ]; then
-        export CC="ccache clang -Qunused-arguments"
-        export CXX="ccache clang++ -Qunused-arguments"
-      fi
+      _flags+=('clang_use_chrome_plugins=false')
+      msg2 "Setup for use system Clang"
       export CXXFLAGS="${CXXFLAGS} -Wno-unknown-warning-option"
     elif [ "${_use_bundled_clang}" = "1" ]; then
-      _flags+=('clang_use_chrome_plugins=true')
-      msg2 "Setup and build bundled Clang"
-      python2 tools/clang/scripts/update.py --force-local-build --without-android --gcc-toolchain=/usr
-      if [ "${_use_ccache}" = "0" ]; then
-        export CC="${_bundled_clang_path}/clang -Qunused-arguments"
-        export CXX="${_bundled_clang_path}/clang++ -Qunused-arguments"
-      elif [ "${_use_ccache}" = "1" ]; then
-        export CC="ccache ${_bundled_clang_path}/clang -Qunused-arguments"
-        export CXX="ccache ${_bundled_clang_path}/clang++ -Qunused-arguments"
+      if [ "${CARCH}" = 'i686' ]; then
+        msg2 "Build with bundled clang is not possible in 32bit systems, Back to system clang"
+      elif [ "${CARCH}" = 'x86_64' ]; then
+        _flags+=('clang_use_chrome_plugins=true')
+        msg2 "Setup and build bundled Clang"
+        python2 tools/clang/scripts/update.py --without-android --gcc-toolchain=/usr
+       _bundled_clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
       fi
     fi
+    export CC="${_ccache}${_bundled_clang_path}clang -Qunused-arguments"
+    export CXX="${_ccache}${_bundled_clang_path}clang++ -Qunused-arguments"
   fi
 
   msg2 "Starting building Chromium..."
