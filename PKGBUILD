@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpdf-git
-pkgver=0.r82.58aac97
+pkgver=0.r91.43ca240
 pkgrel=1
 epoch=
 pkgdesc="A small framebuffer pdf viewer, based on MuPDF."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
 license=('custom:BSD')
 groups=()
-depends=('mupdf' 'poppler' 'djvulibre' 'openjpeg2')
+depends=('mupdf' 'libmupdf' 'mujs' 'poppler' 'djvulibre' 'openjpeg2')
 makedepends=('git')
 optdepends=('poppler' 'djvulibre')
 checkdepends=()
@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make all
+  LDFLAGS="-lharfbuzz" make all
   make fbpdf2
 }
 
