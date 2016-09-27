@@ -5,7 +5,7 @@
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
 pkgver='1.5.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
@@ -38,8 +38,6 @@ build() {
 }
 
 package() {
-	optdepends=('lib32-libegl: for x11_egl, gbm or wayland support' 'lib32-libgbm: for gbm support')
-
 	cd "$srcdir/${_pkgbasename}-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
