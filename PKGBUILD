@@ -6,7 +6,7 @@
 
 pkgname=aircrack-ng-svn
 _pkgname=aircrack-ng
-pkgver=20150527.2563
+pkgver=20160826.2860
 pkgrel=1
 pkgdesc='Key cracker for the 802.11 WEP and WPA-PSK protocols'
 url='http://www.aircrack-ng.org/'
