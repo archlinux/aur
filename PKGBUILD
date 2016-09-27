@@ -1,24 +1,26 @@
 # Maintainer: Luca Fulchir <luker at fenrirproject.org>
 pkgname=libraptorq
-pkgver=0.1.4
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Forward error correction library implementing RaptorQ algorithm'
 arch=('i686' 'x86_64')
 url='https://www.fenrirproject.org'
 license=('LGPL3')
-depends=('eigen>=3.1.0')
+depends=('gcc-libs')
+optdepends=('eigen: development')
 makedepends=('cmake')
 source=("https://www.fenrirproject.org/Luker/libRaptorQ/repository/archive.tar.gz?ref=v${pkgver}")
-sha1sums=('5f63c017fc427ff4cfe00e627e20c903f0ddc736')
-sha256sums=('d9ab1c4f12cfc3bf2641982ae67350bc0bb3e85c09b6186bb09a29b8beebf6e1')
+sha1sums=('a761ef4baa01310462f05001e88939843401559f')
+sha256sums=('7b7aebd45258726bfd94fbf65bc8e3f687f2951654498f7588903ffe60c59cce')
 
 build() {
-  mv "$srcdir/libRaptorQ-v$pkgver-ef4f5afe8fa0d65d2e6c9a32618e5a67ae421b7e" "$srcdir/$pkgname-$pkgver"
+  rm -rf "$srcdir/$pkgname-$pkgver"
+  mv "$srcdir/libRaptorQ-v$pkgver-bfeb4cd0fcfbb5ede2fdafcca70f54c410eb4421" "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver"
-  mkdir build
+  mkdir build &>/dev/null
   cd build
   cmake -D CMAKE_INSTALL_PREFIX=/usr ../
-  make
+  make || make || make  # yeah, *sometimes* can fail.
 }
 
 package() {
@@ -27,4 +29,5 @@ package() {
   make install DESTDIR=${pkgdir}
 
 }
+
 
