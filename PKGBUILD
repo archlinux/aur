@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libsquish
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="DXT compression library (mingw-w64)"
 arch=(any)
 url="http://sourceforge.net/projects/libsquish"
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt)
 options=(!libtool !strip !buildflags staticlibs)
 source=("http://downloads.sourceforge.net/libsquish/libsquish-$pkgver.tgz"
 "gcc440.patch")
-sha1sums=('7bcdd7d0f0460a29e25dcdab8dc41a30e58bb366'
+sha1sums=('6a395d8ffa01b201794499dd1affc8c67f92cad3'
           '51bcc11eafbf79d9cde24769397c7a42f886154a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
