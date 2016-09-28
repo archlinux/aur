@@ -4,8 +4,8 @@
 pkgname=papirus-dark-color-scheme-git
 pkgver=20160615
 pkgrel=1
-pkgdesc="Papirus Dark color scheme for KDE (git version)"
-url="https://github.com/droserasprout/${pkgname%-git}"
+pkgdesc="Papirus Dark color scheme for KDE Plasma 5"
+url="https://github.com/papirus-dark/${pkgname%-git}"
 arch=('any')
 license=('GPL')
 depends=('plasma-desktop')
