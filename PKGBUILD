@@ -1,13 +1,13 @@
 # Contributor: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-postgresql
 pkgver=9.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated object-relational DBMS (mingw-w64)"
 arch=(any)
 url="http://www.postgresql.org"
 license=("custom:PostgreSQL")
 makedepends=(mingw-w64-configure libxml2)
-depends=(mingw-w64-gettext "mingw-w64-openssl>=1.0.0" mingw-w64-libxml2)
+depends=(mingw-w64-gettext "mingw-w64-openssl>=1.0.0" mingw-w64-libxml2 mingw-w64-readline)
 options=(staticlibs !strip !buildflags)
 provides=(mingw-w64-postgresql-libs)
 conflicts=(mingw-w64-postgresql-libs)
@@ -29,7 +29,6 @@ build() {
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		${_arch}-configure \
-			--with-openssl \
 			--enable-thread-safety \
 			--enable-nls \
 			--with-libxml \
