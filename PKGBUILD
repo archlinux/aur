@@ -1,7 +1,7 @@
 pkgname=janusvr
 pkgdesc='JanusVR is a 3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
-pkgver=50.5
+pkgver=53.9
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -37,8 +37,10 @@ package() {
 
   # CAUTION: Everyone in the group "games" can replace the whole thing e.g. with malware
   # But for now there doesn't seem to be a better way, because it needs write accessess error_log.txt in its base directory, also temporary files are created there....
-  chown -R root:games ${pkgdir}/opt/janusvr
-  chmod -R g+w ${pkgdir}/opt/janusvr
+  chown -R root:games "${pkgdir}"/opt/janusvr
+  chmod -R g+w "${pkgdir}"/opt/janusvr
+
+  rm -f "$pkgdir"/opt/janusvr/libstdc++.so.6
 
   #mv "$pkgdir/opt/janusvr/libOVRRT64_0.so.5.0.1" "$pkgdir/opt/janusvr/libOVRRT64_0.so.5.0.1.bak"
   #install -m755 "$srcdir/libovr.so" "$pkgdir/opt/janusvr/libOVRRT64_0.so.5.0.1"
