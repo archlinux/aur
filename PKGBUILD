@@ -5,7 +5,7 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.6.0.r1.ga29d5d8
+pkgver=1.6.0.r20.g5b35411
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
