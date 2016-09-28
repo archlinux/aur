@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Raffre <nk+aur@nyuu.eu>
-# Original maintainer: Henrik Hodne <henrik@hodne.io>
-# Contributor: Duncan K. <duncank@fastmail.fm>
 # Contributor: Yuval Adam <yuval@y3xz.com>
+# Contributor: Duncan K. <duncank@fastmail.fm>
+# Contributor: Henrik Hodne <henrik@hodne.io>
 
 pkgname=terraform-bin
 pkgver=0.7.4
