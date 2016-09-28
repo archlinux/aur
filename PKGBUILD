@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.10.61.g20d4374
+pkgver=6.0.0.alpha.10.71.gd32bf23
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'proot' 'dotnet-cli')
 depends=('bash' 'icu55')
 conflicts=('powershell' 'powershell-bin')
 provides=('powershell')
-source=($_pkgname::'git://github.com/PowerShell/PowerShell.git'
+source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'os-release'
         'revert-commit-c695d41.patch'
         'build.sh')
