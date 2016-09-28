@@ -10,7 +10,7 @@ depends=('curl' 'openssl' 'ncurses>=5.7')
 makedepends=('dub' 'dmd>=2.071.0' 'git' 'dtools')
 optdepends=('mpv: for music playback')
 provides=('vk-cli')
-conflicts=('hardening-wrapper')
+conflicts=('hardening-wrapper' 'vk-cli')
 
 source=("git+https://github.com/HaCk3Dq/vk.git")
 md5sums=('SKIP')
