@@ -7,6 +7,8 @@ arch=('any')
 url="https://github.com/fceschmidt/bullshit"
 license=('GPL2')
 depends=('gawk')
+source=('https://raw.githubusercontent.com/fceschmidt/bullshit-arch/master/src/bullshit.tar.gz')
+md5sums=('70f68f9ae1758f4e7677b2a5d141ee7b')
 
 package(){
  install -Dm755 $srcdir/bullshit "$pkgdir/usr/bin/bullshit"
