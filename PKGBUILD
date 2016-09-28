@@ -1,11 +1,11 @@
 pkgname=mingw-w64-libjpeg-turbo
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
 depends=(mingw-w64-crt libjpeg-turbo)
-makedepends=(nasm mingw-w64-cmake)
+makedepends=(nasm mingw-w64-configure)
 provides=(mingw-w64-libjpeg)
 conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
 options=(staticlibs !strip !buildflags)
@@ -30,10 +30,8 @@ build() {
 	for _arch in ${_architectures}; do
     unset LDFLAGS
     mkdir "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DWITH_JPEG8=ON \
-      ..
+    ${_arch}-configure \
+			--with-jpeg8
     make
     popd
   done
@@ -42,9 +40,13 @@ build() {
 package() {
 	for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
-    make DESTDIR="$pkgdir" install
+    make \
+			DESTDIR="$pkgdir" \
+			docdir="/usr/${_arch}/share/doc/libjpeg-turbo" \
+			exampledir="/usr/${_arch}/share/doc/libjpeg-turbo" \
+			install
+    cp "${srcdir}"/libjpeg-turbo-${pkgver}/{jinclude,transupp}.h ${pkgdir}/usr/${_arch}/include/
     ln -s /usr/include/jpegint.h "$pkgdir/usr/${_arch}/include/jpegint.h"
-    rm -r "$pkgdir/usr/${_arch}/doc"
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
