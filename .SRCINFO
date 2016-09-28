@@ -1,14 +1,14 @@
 pkgbase = mawk
 	pkgdesc = An interpreter for the AWK Programming Language
-	pkgver = 1.3.4_20160918
-	pkgrel = 2
+	pkgver = 1.3.4_20160927
+	pkgrel = 1
 	url = http://invisible-island.net/mawk/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = mawk-1.3.4_20160918.tar.gz::http://invisible-island.net/datafiles/release/mawk.tar.gz
-	sha256sums = 1aa6ead8390cfa18a335ef8be76b8fee28bbadb97e2ed7ece6a7c1dd56662dc3
+	source = mawk-1.3.4_20160927.tar.gz::http://invisible-island.net/datafiles/release/mawk.tar.gz
+	sha256sums = d4ccc3311331d2692909f5bf9b4f13c73edfb00aab9c6a5de84512e331914458
 
 pkgname = mawk
 
