@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=rtapp
-pkgver=0.6.5
-pkgrel=4
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="Realtime application thread priority tuning"
 arch=('any')
 url="http://www.audio-linux.com"
