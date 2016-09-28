@@ -2,10 +2,10 @@ pkgbase = typora
 	pkgdesc = Typora will give you a seamless experience as both a reader and a writer.
 	pkgver = 0.9.19
 	pkgrel = 1
-	url = https://typora.io/./linux/typora_0.9.19_amd64.deb
+	url = https://typora.io/
 	arch = x86_64
 	license = Closed
-	source = https://typora.io/./linux/typora_0.9.19_amd64.deb
+	source = ://typora.io/./linux/typora_0.9.19_amd64.deb
 	md5sums = 30b9881f6d698a5442dff96002d9d812
 
 pkgname = typora
