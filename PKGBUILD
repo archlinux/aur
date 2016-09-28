@@ -2,21 +2,35 @@
 
 pkgname=eternity-engine
 pkgver=3.40.46
-pkgrel=4
+pkgrel=5
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl' 'sdl_mixer' 'sdl_net' 'zlib')
 makedepends=('cmake')
-source=(http://eternity.mancubus.net/ee-$pkgver-src.zip)
-sha256sums=('27c49450fb814c4d9c81e5f2895cbd825f9c7a9f3d024e824ed6feb70ef6965c')
+source=(https://github.com/team-eternity/eternity/archive/$pkgver.tar.gz
+        0001-Fix-wrong-Freedoom-IWAD-detection-fixes-7.patch)
+sha256sums=('6479c127bdc1986421d0daa821131d21bd3d95621c4181d3528f1efe14c0084b'
+            'f708c5838e7415e21e0ba4e7c1c01305dca5854f65159989e1fdb06c6f5d9658')
+
+prepare() {
+  cd "eternity-$pkgver"
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
+}
 
 build() {
   # Cannot do in-tree build.
   mkdir "ee-build"
   cd "ee-build"
-  cmake ../ee-$pkgver-src -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../eternity-$pkgver -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
