@@ -33,9 +33,6 @@ prepare() {
 	cd "${srcdir}"/build
 	cp -R ../PythonQt${pkgver}/* ./
 
-	# Fix PythonQt.pro line endings, patch complains about it
-	#dos2unix PythonQt.pro
-
 	# Merge upstream changes until r441
 	# It fixes some compilation errors and re-adds QtUiTools
 	patch -Np1 < ../upstream_fixes_r441.patch
