@@ -5,7 +5,7 @@ pkgname=gogs-git
 _pkgname=gogs
 _branch=master
 pkgver=4186.2bec8a4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -73,6 +73,7 @@ prepare() {
   # Glide
   msg2 "Download dependencies via Glide"
   cd $GOPATH/src/${_gourl}
+  glide cc
   glide update
   glide install
 
