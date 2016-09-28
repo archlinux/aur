@@ -65,6 +65,7 @@ makedepends=('libexif'
              'yasm'
              'git'
              'imagemagick'
+             'hwids'
              )
 optdepends=('pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
@@ -72,7 +73,7 @@ optdepends=('pepper-flash: PPAPI Flash Player'
             'kdebase-kdialog: Needed for file dialogs in KDE4/KF5'
             'kdialog-git: Needed for file dialogs in KF5'
             #
-            'kwalletmanager: Needed for storing passwords in KWallet in KF5'
+            'kwalletmanager: Needed for storing passwords in KWallet'
             #
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
@@ -134,15 +135,11 @@ _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
 _google_default_client_id="413772536636.apps.googleusercontent.com"
 _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
-# 32 or 64 bits?
+# Build NaCL?
 if [ "${CARCH}" = "i686" ]; then
   _build_nacl=0
-  _nacl_arch=32
-  _target=x86
 elif [ "${CARCH}" = "x86_64" ]; then
   _build_nacl=1
-  _nacl_arch=64
-  _target=x64
 fi
 _build_nacl=0
 
@@ -154,7 +151,9 @@ fi
 # Need you use clang?
 if [ "${_use_clang}" = "1" ]; then
   if [ "${_use_bundled_clang}" = "0" ]; then
-    makedepends+=('clang')
+    makedepends+=('clang'
+                  'ncurses5-compat-libs'
+                  )
   fi
 fi
 
@@ -314,7 +313,6 @@ fi
 # -Denable_sql_database=0| http://crbug.com/22208
 
 _flags=('is_debug=false'
-        "target_cpu=\"${_target}\""
 #        'is_component_build=true'
         'enable_widevine=true'
         'enable_hangout_services_extension=false'
@@ -427,13 +425,16 @@ prepare() {
 
   ##
   # Fix libpng errors
-  pushd chrome/app/theme &> /dev/null
-  export IFS=$'\n'
-  for i in $(find . -name '*.png' -type f); do
-    mogrify "${i}" &> /dev/null
+  msg2 "Attempt for fix libpng errors"
+  for _path in 'chrome/app/theme' 'chrome/renderer' 'ui'; do
+    pushd "${_path}" &> /dev/null
+    export IFS=$'\n'
+    for i in $(find . -name '*.png' -type f); do
+      mogrify "${i}" &> /dev/null
+    done
+    export IFS=' '
+    popd &> /dev/null
   done
-  export IFS=' '
-  popd &> /dev/null
 
   # Make it possible to remove third_party/adobe
   echo > "${srcdir}/flapper_version.h"
@@ -570,7 +571,7 @@ package() {
     install -Dm755 nacl_helper "${pkgdir}/usr/lib/chromium-dev/nacl_helper"
     install -Dm755 nacl_helper_bootstrap "${pkgdir}/usr/lib/chromium-dev/nacl_helper_bootstrap"
     install -Dm755 nacl_helper_nonsfi "${pkgdir}/usr/lib/chromium-dev/nacl_helper_nonsfi"
-    install -Dm755 "nacl_irt_x86_${_nacl_arch}.nexe" "${pkgdir}/usr/lib/chromium-dev/nacl_irt_x86_${_nacl_arch}.nexe"
+    install -Dm755 "nacl_irt_x86_64.nexe" "${pkgdir}/usr/lib/chromium-dev/nacl_irt_x86_64.nexe"
     (cd pnacl; for i in $(find -type f); do install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/pnacl/${i}"; done)
   fi
 
@@ -584,15 +585,6 @@ package() {
       -i "${pkgdir}/usr/share/applications/chromium-dev.desktop"
   install -Dm644 chromium-dev.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
-
-  # install gnome stuff if detect it
-  if [ "${_use_gnome}" = "1" ]; then
-    install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/default-app.template" "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
-    sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
-        -e 's|@@INSTALLDIR@@|/usr/bin|g' \
-        -e 's|@@PACKAGE@@|chromium-dev|g' \
-        -i "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
-  fi
 
   if [ "${_debug_mode}" = "0" ]; then
     # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
