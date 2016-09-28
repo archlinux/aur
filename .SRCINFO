@@ -1,6 +1,6 @@
 pkgbase = python-pysdl2
 	pkgdesc = A Python wrapper around the SDL2 library
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://bitbucket.org/marcusva/py-sdl2/overview
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-pysdl2
 	optdepends = sdl2_image
 	optdepends = sdl2_mixer
 	optdepends = sdl2_ttf
-	source = https://bitbucket.org/marcusva/py-sdl2/downloads/PySDL2-0.9.3.tar.gz
-	md5sums = 0ee011fdb68c0c04753cac11f97c8f9d
+	source = https://bitbucket.org/marcusva/py-sdl2/downloads/PySDL2-0.9.4.tar.gz
+	md5sums = 720b33ed048c169643406ae39ca4dd8d
 
 pkgname = python-pysdl2
 

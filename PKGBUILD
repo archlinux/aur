@@ -2,7 +2,7 @@
 # Contributor: feuri <mail at feuri dot de>
 
 pkgname=python-pysdl2
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A Python wrapper around the SDL2 library"
 
@@ -14,7 +14,7 @@ depends=('python' 'sdl2')
 optdepends=('sdl2_gfx' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 
 source=(https://bitbucket.org/marcusva/py-sdl2/downloads/PySDL2-${pkgver}.tar.gz)
-md5sums=('0ee011fdb68c0c04753cac11f97c8f9d')
+md5sums=('720b33ed048c169643406ae39ca4dd8d')
 
 build() {
   cd "${srcdir}/PySDL2-${pkgver}"
