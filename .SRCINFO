@@ -1,0 +1,15 @@
+pkgbase = osux-tools
+	pkgdesc = command line tools based on osux-lib
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/tomtix/osux-tools/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = glib2
+	depends = osux
+	source = https://github.com/tomtix/osux-tools/archive/v0.1.tar.gz
+	md5sums = bf9edae3c96bfb9986b49da5331b303e
+
+pkgname = osux-tools
+
