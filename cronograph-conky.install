@@ -34,15 +34,6 @@ post_install() {
 	echo -e "\e[37;41m│ \e[97m       \e[1m/opt/cronograph_blk/yahooweather/forecasts.sh\e[21m                  \e[37m │\e[0m";
 	echo -e "\e[37;41m└────────────────────────────────────────────────────────────────────────┘\e[0m";
 	echo ;
-	echo -e "\e[91;40m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
-	echo -e "\e[91;40m│ \e[37;101m                     Instruction - CONKY                              \e[91;40m │\e[0m";
-	echo -e "\e[91;40m│ \e[97m· In order “crono” to work you need to install a \e[1mconky\e[21m package that   \e[91m │\e[0m";
-	echo -e "\e[91;40m│ \e[97m  has \e[1mLUA\e[21m bindings enabled. I'd recommend \e[1mONE\e[21m of the following two    \e[91m │\e[0m";
-	echo -e "\e[91;40m│ \e[97m  AUR packages:                                                       \e[91m │\e[0m";
-	echo -e "\e[91;40m│ \e[97m  ‑ https://aur.archlinux.org/packages/conky-lua-archers              \e[91m │\e[0m";
-	echo -e "\e[91;40m│ \e[97m  ‑ \e[1mhttps://aur.archlinux.org/packages/conky-lua-archers-git\e[21m          \e[91m │\e[0m";
-	echo -e "\e[91;40m└────────────────────────────────────────────────────────────────────────┘\e[0m";
-	echo ;
 	echo -e "\e[30;107m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
 	echo -e "\e[30;107m│ \e[47m                     I N S T R U C T I O N S                          \e[30;107m │\e[0m";
 	echo -e "\e[30;107m│ · You can use three commands to manipulate “crono”. These are:         │\e[0m";
