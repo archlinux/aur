@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Duck <duckbrain30@gmail.com>
 pkgname=typora
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Typora will give you a seamless experience as both a reader and a writer."
 arch=('x86_64')
@@ -31,4 +31,5 @@ build() {
 
 package() {
 	tar xf data.tar.xz -C "$pkgdir"
+	chmod -R 755 "$pkgdir"
 }
