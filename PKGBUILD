@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.9.247.g0c4472e
+pkgver=6.0.0.alpha.10.61.g20d4374
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
@@ -32,7 +32,6 @@ prepare() {
 
   # Starting off clean.
   git clean -dfx
-  rm -rf ~/.nuget
 
   # Workaround due to
   # https://github.com/PowerShell/PowerShell/commit/c695d41c47c8baa48db1a590fe7378641a9e0ab9
