@@ -33,7 +33,7 @@ package() {
 
     # install other files
     cd ..
-    install -Dm644 spoofer-gui.desktop "$pkgdir/usr/share/spoofer/spoofer.desktop"
+    install -Dm644 spoofer-gui.desktop "$pkgdir/usr/share/applications/spoofer.desktop"
     install -Dm644 spoofer.service "$pkgdir/usr/lib/systemd/system/spoofer.service"
     install -Dm644 Spoofer.conf "$pkgdir/etc/xdg/CAIDA/Spoofer.conf"
     mkdir -p "$pkgdir/var/lib/spoofer"
