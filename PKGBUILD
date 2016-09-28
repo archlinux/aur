@@ -1,8 +1,8 @@
 pkgbase=python-cron-descriptor
 pkgname=('python-cron-descriptor' 'python2-cron-descriptor')
 projname=cron-descriptor
-pkgver=1.2.5
-pkgrel=2
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="A Python library that converts cron expressions into human readable strings."
 arch=('any')
 license=('MIT')
