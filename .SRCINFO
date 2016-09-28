@@ -1,0 +1,15 @@
+pkgbase = ttf-astra-sans
+	pkgdesc = Free russian sans-serif fonts by Astra
+	pkgver = 1001
+	pkgrel = 1
+	install = ttf-astra-sans.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://astralinux.com/images/fonts/PTAstraSans&Serif_TTF_ver1001.zip
+	md5sums = 31b30481edf94b82ff33c4129e60e48a
+
+pkgname = ttf-astra-sans
+
+pkgname = ttf-astra-serif
+
