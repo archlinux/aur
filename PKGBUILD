@@ -9,11 +9,8 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173871'
 license=('GPL')
 depends=('vapoursynth')
-makedepends=('git')
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
 source=("https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-miscfilters-${pkgver}.tar.gz")
-sha1sums=('SKIP')
+sha1sums=('dac36085bf4b11470a685ef870de7d5b1337a576')
 
 prepare() {
   cd *"${plug}"*
