@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="GIMP-CCE maintained by elle stone"
 arch=('i686' 'x86_64')
 url="https://github.com/ellelstone/gimp"
-license=('GPL')
+license=('LGPL3')
 groups=()
 depends=('pygtk' 'lcms2>=2.2' 'libwmf>=0.2.8' 'webkitgtk2>=1.6.1'
         'libgexiv2' 'librsvg>=2.16.1' 'desktop-file-utils'
@@ -23,7 +23,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!strip libtool staticlibs emptydirs !purge)
+options=(!strip)
 install=
 source=('git+https://github.com/ellelstone/gimp')
 noextract=()
@@ -49,7 +49,7 @@ build() {
 
     cd $srcdir/gimp
     ./autogen.sh --prefix=$PREFIX --disable-gtk-doc \
-                 --with-gimpdir=$PREFIX/config --libdir=$PREFIX/$LIB \
+                 --with-gimpdir=GIMP-CCE-GIT --libdir=$PREFIX/$LIB \
                  --enable-debug=yes
     make
 }

@@ -5,7 +5,7 @@ pkgbase = gimp-cce-git
 	url = https://github.com/ellelstone/gimp
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = LGPL3
 	makedepends = git
 	makedepends = gutenprint>=5.0.0
 	makedepends = intltool>=0.40.1
@@ -33,10 +33,6 @@ pkgbase = gimp-cce-git
 	optdepends = curl: for URI support
 	optdepends = ghostscript: for postscript support
 	options = !strip
-	options = libtool
-	options = staticlibs
-	options = emptydirs
-	options = !purge
 	source = git+https://github.com/ellelstone/gimp
 	md5sums = SKIP
 
