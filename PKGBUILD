@@ -1,7 +1,7 @@
 pkgbase=mingw-w64-harfbuzz
 pkgname=(mingw-w64-harfbuzz mingw-w64-harfbuzz-icu)
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=(any)
 url="http://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -32,6 +32,7 @@ build() {
 			--with-cairo \
 			--with-icu \
 			--with-gobject \
+			--with-graphite2 \
 			--disable-introspection
 		make
 		popd
@@ -39,7 +40,7 @@ build() {
 }
 
 package_mingw-w64-harfbuzz() {
-	depends=(mingw-w64-freetype2 mingw-w64-glib2)
+	depends=(mingw-w64-freetype2 mingw-w64-glib2 mingw-w64-graphite)
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz-${pkgver}/build-${_arch}"
 		make DESTDIR="${pkgdir}" install
