@@ -1,0 +1,10 @@
+#!/bin/sh
+
+PREFIX=/usr/gimp-cce
+export LD_LIBRARY_PATH=$PREFIX/$LIB:$LD_LIBRARY_PATH
+export PATH=$PREFIX/bin:$PATH
+export XDG_DATA_DIRS=$PREFIX/share:$XDG_DATA_DIRS
+export PKG_CONFIG_PATH=$PREFIX/$LIB/pkgconfig:$PKG_CONFIG_PATH
+export ACLOCAL_FLAGS="-I $PREFIX/share/aclocal $ACLOCAL_FLAGS"
+export GEGL_USE_OPENCL=no
+/usr/gimp-cce/bin/gimp-2.9 $@
