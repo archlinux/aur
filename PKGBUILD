@@ -2,7 +2,7 @@
 pkgname=('3dsconv-git')
 provides=('3dsconv')
 conflicts=('3dsconv')
-pkgver=r71.8a82606
+pkgver=r83.00a95c3
 pkgrel=1
 pkgdesc='Tool to convert Nintendo 3DS CTR Cart Image files (CCI, ".3ds") to the CTR Importable Archive format (CIA).'
 arch=('any')
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('git' 'tar')
 options=('!strip')
+optdepends=('python2-crypto: support for zerokey-encryption')
 
 source=(
     "$pkgname::git+https://github.com/ihaveamac/3dsconv.git"
