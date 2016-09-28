@@ -17,7 +17,7 @@ pkgname=(
 )
 _pkgname='llvm'
 
-pkgver=4.0.0svn_r280666
+pkgver=4.0.0svn_r282637
 pkgrel=1
 
 arch=('x86_64')
