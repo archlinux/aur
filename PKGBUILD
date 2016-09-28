@@ -124,11 +124,6 @@ prepare() {
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
 
-    # Fix docs installation directory
-    sed -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/html|\1share/doc|' \
-        -e 's|^\([[:blank:]]*DESTINATION[[:blank:]]\+\)docs/ocaml/html|\1share/doc/ocaml|' \
-        -i docs/CMakeLists.txt
-
     mkdir -p "${srcdir}/build"
 }
 
@@ -211,7 +206,7 @@ package_llvm-svn() {
     rm -rf "${srcdir}"/{clang,ocaml.{doc,lib}}
     mv "${pkgdir}/usr/lib/clang" "${srcdir}/clang"
     mv "${pkgdir}/usr/lib/ocaml" "${srcdir}/ocaml.lib"
-    mv "${pkgdir}/usr/share/doc/ocaml" "${srcdir}/ocaml.doc"
+    mv "${pkgdir}/usr/share/doc/llvm/ocaml-html" "${srcdir}/ocaml.doc"
 
     # Get rid of example Hello transformation
     rm -f "${pkgdir}"/usr/lib/*LLVMHello.*
@@ -281,9 +276,9 @@ package_llvm-ocaml-svn() {
     cd "${srcdir}/build"
 
     install -m755 -d "${pkgdir}/usr/lib"
-    install -m755 -d "${pkgdir}/usr/share/doc"
+    install -m755 -d "${pkgdir}/usr/share/doc/llvm"
     cp -a "${srcdir}/ocaml.lib" "${pkgdir}/usr/lib/ocaml"
-    cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/ocaml"
+    cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/llvm/ocaml-html"
 
     _install_license
 }
