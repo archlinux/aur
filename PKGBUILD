@@ -3,7 +3,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk
-pkgver=13.11.2
+pkgver=14.0.1
 pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'armv7h')
@@ -126,7 +126,7 @@ source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$
 	${pkgname}.logrotated \
 	${pkgname}.tmpfile)
 install=${pkgname}.install
-sha256sums=('6ea7001bb11ba11fcdbb5febb028b2fd62c44c7bda3cc966b8aaafcb429c5a3a'
+sha256sums=('c66bc7b1dafac0259afeeaeae7b210723bc2a503465436ce601e41bd60b664b5'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
