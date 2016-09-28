@@ -2,7 +2,7 @@
 
 pkgname=soundfont-jeux
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Jeux organ soundfont"
 arch=('any')
 url="http://realmac.info/jeux1.htm"
