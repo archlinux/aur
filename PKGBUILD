@@ -1,6 +1,6 @@
 pkgname=dpluzz
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="Software to retrieve videos from French website pluzz"
 arch=('any')
 url="http://forum.ubuntu-fr.org/viewtopic.php?id=1559861&p=1"
@@ -10,7 +10,7 @@ depends=('python2' 'pygtk' 'vte' 'mplayer' 'python2-beautifulsoup4' 'uni2ascii' 
 optdepends=()
 conflicts=()
 source=("https://launchpad.net/~yoggic/+archive/dpluzz/+files/dpluzz_$pkgver%7Eubuntu16.04_amd64.deb")
-sha1sums=('4469956303f5ca1b045d1d64e8e6e3e50f96dd60')
+sha1sums=('bd39b089f4fe1da247ceee9726dca13ad2ec2dc7')
 
 build(){
    cd "${srcdir}"
@@ -34,6 +34,7 @@ package(){
    mkdir -p ${pkgdir}/usr/local/bin
    ln -sf /usr/bin/ffmpeg ${pkgdir}/usr/local/bin/avconv
 }
+
 
 
 
