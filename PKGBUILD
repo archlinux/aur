@@ -2,9 +2,10 @@
 
 pkgname=dia2code
 pkgver=0.8.8
-pkgrel=1
-pkgdesc="Dia2Code is a small utility used to generate code from a Dia diagram."
-arch=('any')
+pkgrel=2
+pkgdesc="Small utility used to generate code from a Dia diagram."
+arch=('i686' 'x86_64')
+license=('GPL2')
 url="http://dia-installer.de/dia2code/index.html"
 depends=('libxml2')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
