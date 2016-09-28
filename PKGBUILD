@@ -3,19 +3,19 @@
 # Contributor: Nagisa <simonas@kazlauskas.me>
 # Contributor: Misc <andreas.reis@gmail.com>
 # Contributor: Jeagoss <jgoliver@jeago.com>
-# Contributor: Saikrishna Arcot <saiarcot895@gmail.com> (Author of https://github.com/saiarcot895/chromium-ubuntu-build/blob/master/debian/patches/enable_vaapi_on_linux.diff)
+# Contributor: Saikrishna Arcot <saiarcot895@gmail.com> (Author of enable_vaapi_on_linux.diff)
 
 #########################
 ## -- Build options -- ##
 #########################
 
 _use_clang=1           # Use clang compiler (system). Results in faster build and smaller chromium.
-_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option, '_use_clang' is need set to 1
-_use_ccache=0          # Use ccache when build
-_use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment
-_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2
-_debug_mode=0          # Build in debug mode
-_patch_vaapi=0         # apply the vaapi patch by Saikrishna Arcot
+_use_bundled_clang=1   # Use bundled clang compiler (needs build). NOTE: if use this option, '_use_clang' is need set to 1.
+_use_ccache=1          # Use ccache when build.
+_use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
+_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
+_debug_mode=0          # Build in debug mode.
+_patch_vaapi=0         # Apply the vaapi patch by Saikrishna Arcot.
 
 
 ##############################################
@@ -78,7 +78,8 @@ optdepends=('pepper-flash: PPAPI Flash Player'
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
             )
-source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
+source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
+        "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
         'chromium-dev.svg'
         'BUILD.gn'
@@ -87,15 +88,16 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
         # Misc Patches
-        "https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz"
+        'https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
         'https://codereview.chromium.org/download/issue2345013003_60001.diff'
+
         )
-sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.xz.hashes | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
-          "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha1 | cut -d " " -f3)"
+sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha1 | cut -d ' ' -f3)"
+          "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha1 | cut -d ' ' -f3)"
           'd18f8d96e80be9c31d994cc6362d7d8041c53319'
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           '04b6606e1110eb3f7f8f7d2483004313d33e49bb'
@@ -113,13 +115,13 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           )
 options=('!strip')
 install=chromium-dev.install
-noextract=("chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz")
+noextract=('chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz')
 
 ################################################
 ## -- Don't touch anything below this line -- ##
 ################################################
 
-# Build Debug mode?
+# Build Debug mode?.
 if [ "${_debug_mode}" = "1" ]; then
   _debug_flag=" symbol_level=1"
   _strip=false
@@ -135,7 +137,7 @@ _google_api_key="AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM"
 _google_default_client_id="413772536636.apps.googleusercontent.com"
 _google_default_client_secret="0ZChLK6AxeA3Isu96MkwqDR4"
 
-# Build NaCL?
+# Build NaCL?.
 if [ "${CARCH}" = "i686" ]; then
   _build_nacl=0
 elif [ "${CARCH}" = "x86_64" ]; then
@@ -143,21 +145,21 @@ elif [ "${CARCH}" = "x86_64" ]; then
 fi
 _build_nacl=0
 
-# If use PaX environment, need 'paxctl'
+# If use PaX environment.
 if [ "${_use_pax}" = "1" ]; then
   makedepends+=('paxctl')
 fi
 
-# Need you use clang?
+# Need you use clang?.
 if [ "${_use_clang}" = "1" ]; then
   if [ "${_use_bundled_clang}" = "0" ]; then
-    makedepends+=('clang'
-                  'ncurses5-compat-libs'
-                  )
+    makedepends+=('clang')
+  elif [ "${_use_bundled_clang}" = "1" ]; then
+    makedepends+=('ncurses5-compat-libs')
   fi
 fi
 
-# Build with GTK3?
+# Build with GTK3?.
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
   _launcher_gtk='GTK=3'
@@ -169,28 +171,29 @@ elif [ "${_use_gtk3}" = "0" ]; then
   _gtk3=false
 fi
 
-# Need you use ccache?
+# Need you use ccache?.
 if [ "${_use_ccache}" = "1" ]; then
   makedepends+=('ccache')
   export CCACHE_CPP2=yes
   export CCACHE_SLOPPINESS=time_macros
-  _ccache='ccache '
+  _ccache='ccache'
 fi
 
-# Are you use gnome-keyring/gnome?
+# Are you use gnome-keyring/gnome?.
 _gnome_keyring=false
 if [ -f /usr/lib/security/pam_gnome_keyring.so ]; then
   depends+=('gnome-keyring')
   _gnome_keyring=true
 fi
 
-# Are you use Pulseaudio?
+# Are you use Pulseaudio?.
 _pulseaudio=false
-if [ -x /usr/lib/libpulse.so ]; then
+if [ -f /usr/lib/pulseaudio/libpulsecore-9.0.so ]; then
+  depends+=('pulseaudio')
   _pulseaudio=true
 fi
 
-# List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare()
+# List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
 _keeplibs=('base/third_party/dmg_fp'
            'base/third_party/dynamic_annotations'
            'base/third_party/icu'
@@ -243,6 +246,7 @@ _keeplibs=('base/third_party/dmg_fp'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/hunspell'
            'third_party/iccjpeg'
+#            'third_party/icu' # NaCL
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
@@ -308,12 +312,9 @@ if [ "${_debug_mode}" = "1" ]; then
   _keeplibs+=('native_client/src/third_party/valgrind')
 fi
 
-# Set build flags
-# NOTE: need ported to GN
-# -Denable_sql_database=0| http://crbug.com/22208
+# Set build flags.
 
 _flags=('is_debug=false'
-#        'is_component_build=true'
         'enable_widevine=true'
         'enable_hangout_services_extension=false'
         "ffmpeg_branding=\"ChromeOS\""
@@ -339,7 +340,7 @@ _flags=('is_debug=false'
         'treat_warnings_as_errors=false'
         )
 
-# Set nacl flags
+# Set nacl flags.
 if [ "${_build_nacl}" = "1" ]; then
   _flags+=('enable_nacl=true'
            'enable_nacl_nonsfi=true'
@@ -350,7 +351,7 @@ elif [ "${_build_nacl}" = "0" ]; then
            )
 fi
 
-# Set the bundled/external components
+# Set the bundled/external components.
 # TODO: need ported to GN as GYP doing before. see status page: https://crbug.com/551343
 # hunspell
 # libusb
@@ -363,15 +364,15 @@ fi
 _use_system=('ffmpeg'
              'flac'
              'harfbuzz-ng'
-             'icu'
-#              'libevent' # get segfaults and other problems https://bugs.gentoo.org/593458
+#              'icu' Needed for build NaCL.
+#              'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
              'libjpeg'
              'libpng'
              'libvpx'
              'libwebp'
              'libxml'
              'libxslt'
-#              're2' # need arch update
+#              're2' # Need arch update.
              'snappy'
              'yasm'
              'zlib'
@@ -381,17 +382,17 @@ _use_system=('ffmpeg'
 
 prepare() {
 
-  # Use custom toolchain
+  # Use custom toolchain.
   _flags+=("custom_toolchain=\"${srcdir}:default\"")
 
-  # Set Python2 path
+  # Set Python2 path.
   mkdir -p python-path
   ln -s /usr/bin/python2 "${srcdir}/python-path/python"
   export PATH="${srcdir}/python-path:$PATH"
 
   cd "chromium-${pkgver}"
 
-  # Fix to save configuration in ~/.config/chromium-dev
+  # Fix to save configuration in ~/.config/chromium-dev.
   sed -e 's|filename = "chromium-browser"|filename = "chromium-dev"|' \
       -e 's|confdir = "chromium"|confdir = "chromium-dev"|' \
       -i chrome/BUILD.gn
@@ -399,32 +400,34 @@ prepare() {
       -i chrome/common/chrome_paths_linux.cc
 
   msg2 "Patching the sources"
-  # Patch sources from Gentoo
+  # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
   patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
   patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
 
   # Misc Patches:
   if [ "${_patch_vaapi}" = "1" ]; then
-    (cd "${srcdir}"; bsdtar -xf "chromium-browser_${pkgver}-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
+    (cd "${srcdir}"; bsdtar -xf "chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
     patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
+  elif [ "${_patch_vaapi}" = "0" ]; then
+    # Fix paths.
+    sed -e 's|/usr/lib/|/usr/lib32/|g' \
+        -e 's|/usr/lib64/|/usr/lib/|g' \
+        -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
   fi
-  # fix paths
-  sed -e 's|/usr/lib/|/usr/lib32/|g' \
-      -e 's|/usr/lib64/|/usr/lib/|g' \
-      -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
   patch -p1 -i "${srcdir}/minizip.patch"
   patch -p1 -i "${srcdir}/unset-madv_free.patch"
 
-  # Patch from crbug (chromium bugtracker)
+  # Patch from crbug (chromium bugtracker).
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
   # https://codereview.chromium.org/2345013003 (fail build if not revert this CL)
   patch -Rp1 -i "${srcdir}/issue2345013003_60001.diff"
 
+
   ##
-  # Fix libpng errors
+  # Fix libpng errors.
   msg2 "Attempt for fix libpng errors"
   for _path in 'chrome/app/theme' 'chrome/renderer' 'ui'; do
     pushd "${_path}" &> /dev/null
@@ -436,7 +439,7 @@ prepare() {
     popd &> /dev/null
   done
 
-  # Make it possible to remove third_party/adobe
+  # Make it possible to remove third_party/adobe.
   echo > "${srcdir}/flapper_version.h"
 
   # Remove most bundled libraries. Some are still needed.
@@ -456,10 +459,10 @@ prepare() {
 
   touch chrome/test/data/webui/i18n_process_css_test.html
 
-  # Changing bundle libraries to system ones
+  # Changing bundle libraries to system ones.
   python2 build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
 
-  # update libaddressinput strings
+  # update libaddressinput strings.
   python2 third_party/libaddressinput/chromium/tools/update-strings.py
 
   # Use the file at run time instead of effectively compiling it in.
@@ -473,14 +476,14 @@ build() {
 
   cd "chromium-${pkgver}"
 
-  # Use system/bundled Clang? or GCC?
+  # Use system/bundled Clang? or GCC?.
   if [ "${_use_clang}" = "0" ]; then
     msg2 "Setup for use system GCC"
     _flags+=('is_clang=false'
              'clang_use_chrome_plugins=false'
              )
-    export CC="${_ccache}gcc -Wall"
-    export CXX="${_ccache}g++ -Wall"
+    export CC="${_ccache} gcc -Wall"
+    export CXX="${_ccache} g++ -Wall"
   elif [ "${_use_clang}" = "1" ]; then
     _flags+=('is_clang=true')
     if [ "${_use_bundled_clang}" = "0" ]; then
@@ -497,14 +500,14 @@ build() {
        _bundled_clang_path="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin/"
       fi
     fi
-    export CC="${_ccache}${_bundled_clang_path}clang -Qunused-arguments"
-    export CXX="${_ccache}${_bundled_clang_path}clang++ -Qunused-arguments"
+    export CC="${_ccache} ${_bundled_clang_path}clang -Qunused-arguments"
+    export CXX="${_ccache} ${_bundled_clang_path}clang++ -Qunused-arguments"
   fi
 
   msg2 "Starting building Chromium..."
-  # Configure the builder
+  # Configure the builder.
   python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${_flags[*]} ${_debug_flag}"
-  out/Release/gn gen out/Release --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
+  out/Release/gn gen out/Release -v --args="${_flags[*]} ${_debug_flag}" --script-executable=/usr/bin/python2
 
   # Build mksnapshot and pax-mark it.
   if [ "${_use_pax}" = "1" ]; then
@@ -512,52 +515,53 @@ build() {
     paxctl -cm out/Release/mksnapshot
   fi
 
-  # Build all with ninja
+  # Build all with ninja.
   LC_ALL=C ninja -C out/Release -v pdf chrome chrome_sandbox chromedriver widevinecdmadapter clearkeycdm
 
-  # Pax-mark again
+  # Pax-mark again.
   if [ "${_use_pax}" = "1" ]; then
     paxctl -cm out/Release/chrome
   fi
 }
 
 package() {
-  # Install launcher
+  # Install launcher.
   make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" install-strip
   install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
 
   if [ "${_debug_mode}" = "1" ]; then
-    # Build with debug needs a tons of space. remove this save that space, but break the rebuild process
+    # Build with debug needs a tons of space. remove this save that space, but break the rebuild process.
     rm -fr "chromium-launcher-${_launcher_ver}/third_party"
   fi
 
-  # Install binaries
+  # Install binaries.
   install -Dm755 chrome "${pkgdir}/usr/lib/chromium-dev/chromium-dev"
   install -Dm644 chrome.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
   install -Dm4755 chrome_sandbox "${pkgdir}/usr/lib/chromium-dev/chrome-sandbox"
   install -Dm755 chromedriver "${pkgdir}/usr/lib/chromium-dev/chromedriver"
   ln -s /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
-  # Install libs
+  # Install libs.
   for i in libwidevinecdmadapter libclearkeycdm; do
     install -Dm755 "${i}.so" "${pkgdir}/usr/lib/chromium-dev/${i}.so"
   done
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
+#  install -Dm644 icudtl.dat "${pkgdir}/usr/lib/chromium-dev/icudtl.dat"
 
-  # Install Resources
+  # Install Resources.
   for i in chrome_100_percent chrome_200_percent keyboard_resources keyboard_resources mus_app_resources_100 mus_app_resources_200 mus_app_resources_strings resources views_mus_resources; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
 
-  # Install locales
+  # Install locales.
   find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
   find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
   (cd "${pkgdir}/usr/lib/chromium-dev"; ln -s locales remote_locales)
 
-  # Install icons
+  # Install icons.
   for _size in 16 22 24 32 48 128 256; do
     case "${_size}" in
       16|32) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/default_100_percent/chromium" ;;
@@ -566,7 +570,7 @@ package() {
     install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
   done
 
-  # Install pNaCL/NaCL stuff if is detected
+  # Install pNaCL/NaCL stuff if is detected.
   if [ "${_build_nacl}" = "1" ]; then
     install -Dm755 nacl_helper "${pkgdir}/usr/lib/chromium-dev/nacl_helper"
     install -Dm755 nacl_helper_bootstrap "${pkgdir}/usr/lib/chromium-dev/nacl_helper_bootstrap"
@@ -577,7 +581,7 @@ package() {
 
   popd &> /dev/null
 
-  # Install some external files
+  # Install some external files.
   install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/desktop.template" "${pkgdir}/usr/share/applications/chromium-dev.desktop"
   sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
       -e 's|@@USR_BIN_SYMLINK_NAME@@|chromium-dev|g' \
@@ -587,7 +591,7 @@ package() {
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 
   if [ "${_debug_mode}" = "0" ]; then
-    # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
+    # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact.
     if [ "${_build_nacl}" = "1" ]; then
       strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"nacl_helper{,_bootstrap,_nonsfi}
     fi
