@@ -1,22 +1,28 @@
 pkgname=mingw-w64-libgcrypt
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
 url="http://www.gnupg.org"
 license=("LGPL")
 depends=(mingw-w64-libgpg-error)
-makedepends=(mingw-w64-configure transfig ghostscript)
+makedepends=(mingw-w64-configure fig2dev ghostscript)
 options=(staticlibs !buildflags !strip)
-source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
-"libgcrypt-use-correct-def-file.patch")
-md5sums=('c869e542cc13a1c28d8055487bf7f5c4'
-         '531e089caca74b5daf130b7173c2a5c5')
+source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
+"libgcrypt-use-correct-def-file.patch"
+"Smarter-fig2dev-detection.all.patch")
+sha1sums=('5a034291e7248592605db448481478e6c963aa9c'
+          'SKIP'
+          'ccd4860aabc08793174376cffa357a7d094ae451'
+          '3613a5454aeaef8d264011f2bc9f2303248fb933')
+validpgpkeys=('031EC2536E580D8EA286A9F22071B08A33BD3F06' # "NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>"
+              'D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libgcrypt-${pkgver}"
   patch -p0 -i "$srcdir"/libgcrypt-use-correct-def-file.patch
+  patch -p1 -i "${srcdir}"/Smarter-fig2dev-detection.all.patch
   autoreconf -fi
 }
 
@@ -25,15 +31,9 @@ build() {
   unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    configure_args=""
-    if test "${_arch}" = "x86_64-w64-mingw32"
-    then
-      configure_args="ac_cv_sys_symbol_underscore=no --disable-padlock-support"
-    fi
     ${_arch}-configure \
-      --enable-pubkey-ciphers='dsa elgamal rsa ecc' \
       --with-gpg-error-prefix=/usr/${_arch} \
-      --disable-padlock-support $configure_args
+      --disable-padlock-support
     make
     popd
   done
