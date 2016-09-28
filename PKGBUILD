@@ -1,7 +1,7 @@
 # Maintainer: tokigami.kineko <>
 pkgname=gimp-cce-git
 pkgver=r37634.c5a635b
-pkgrel=2
+pkgrel=3
 pkgdesc="GIMP-CCE maintained by elle stone"
 arch=('i686' 'x86_64')
 url="https://github.com/ellelstone/gimp"
