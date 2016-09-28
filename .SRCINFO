@@ -1,7 +1,7 @@
 pkgbase = coccinelle
 	pkgdesc = Provides spatch program used to apply semantic patches
-	pkgver = 1.0.5
-	pkgrel = 4
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = http://coccinelle.lip6.fr/
 	arch = i686
 	arch = x86_64
@@ -9,19 +9,13 @@ pkgbase = coccinelle
 	makedepends = camlp4
 	makedepends = ocaml
 	makedepends = ocaml-findlib
-	makedepends = hevea
-	makedepends = texlive-core
-	makedepends = texlive-fontsextra
-	makedepends = texlive-latexextra
-	makedepends = texlive-pictures
 	depends = pcre
 	depends = python
 	optdepends = ocaml: OCaml scripting feature
 	optdepends = ocaml-findlib: OCaml scripting feature
 	options = !strip
-	options = !makeflags
-	source = http://coccinelle.lip6.fr/distrib/coccinelle-1.0.5.tgz
-	sha256sums = 5efb093b538145b7526a06946c09c7caaa715006658af2049faa8739f459743b
+	source = http://coccinelle.lip6.fr/distrib/coccinelle-1.0.6.tgz
+	sha256sums = 8452ed265c209dae99cbb33b67bc7912e72f8bca1e24f33f1a88ba3d7985e909
 
 pkgname = coccinelle
 
