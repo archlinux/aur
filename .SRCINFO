@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework.
-	pkgver = 6.0.0.alpha.10.71.gd32bf23
+	pkgver = 6.0.0.alpha.10.73.g0c9abbc
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	arch = x86_64
@@ -15,9 +15,13 @@ pkgbase = powershell-git
 	conflicts = powershell
 	conflicts = powershell-bin
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git
+	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
+	source = googletest::git+https://github.com/google/googletest.git
 	source = os-release
 	source = revert-commit-c695d41.patch
 	source = build.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e903a41166648f2e6113dff83b116e9ed6a5dc7d302ac24ae26811583bcb9cc2
 	sha256sums = 4568c69cf2a0a961d3f16c069b24391dea7898cd7c856cad94b70a73ef6a9224
