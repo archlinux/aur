@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgpg-error
 pkgver=1.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
 url="http://www.gnupg.org"
@@ -9,11 +9,13 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-gettext)
 options=(staticlibs !strip !buildflags)
 source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
+"01-mingw32-fix-potomo.mingw.patch"
 "02-fix-symbollist-on.mingw.patch"
 "05-w32-gen.all.patch"
 "07-windows-build.patch")
 sha1sums=('c3e5bd0c3ddea647416b429cd8e2ec755bad9d9e'
           'SKIP'
+          'b32a305f593835132a610272aeb219165dc354c4'
           'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
           '07f1c34b3861bc2658d1cad4fafe895f654815df'
           '367b3b33da0ae3a8f959ae8535d6584a997ad6b8')
@@ -22,6 +24,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd libgpg-error-$pkgver
+	patch -p1 -i ${srcdir}/01-mingw32-fix-potomo.mingw.patch
 	patch -p1 -i ${srcdir}/02-fix-symbollist-on.mingw.patch
 	patch -p1 -i ${srcdir}/05-w32-gen.all.patch
   patch -p1 -i ${srcdir}/07-windows-build.patch
