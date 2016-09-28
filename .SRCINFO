@@ -1,0 +1,12 @@
+pkgbase = dia2code
+	pkgdesc = Dia2Code is a small utility used to generate code from a Dia diagram.
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = http://dia-installer.de/dia2code/index.html
+	arch = any
+	depends = libxml2
+	source = http://downloads.sourceforge.net/project/dia2code/dia2code/0.8.8/dia2code-0.8.8.tar.gz
+	md5sums = a36077d4086271a216da915bcaeb2a79
+
+pkgname = dia2code
+
