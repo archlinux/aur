@@ -3,13 +3,13 @@
 pkgname=acme-client-git
 _pkgname=acme-client
 pkgver=0.1.11.r4.ge15995f
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 license=('BSD')
 pkgdesc="Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C."
 url='https://kristaps.bsd.lv/acme-client/'
 
-_sslver=2.4.2
+_sslver=2.4.3
 
 source=(${pkgname}::'git+https://github.com/kristapsdz/acme-client-portable.git'
         "http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_sslver}.tar.gz"
@@ -18,7 +18,7 @@ source=(${pkgname}::'git+https://github.com/kristapsdz/acme-client-portable.git'
         'example.conf')
 
 sha256sums=('SKIP'
-            '5f87d778e5d62822d60e38fa9621c1c5648fc559d198ba314bd9d89cbf67d9e3'
+            'bd5726f3e247e7a7d30ce69946d174b8fb92d999d22710c65f176c969812960e'
             'c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73'
             'd6e274929979a385308f29b4f15a923ce888b57faca9925b6f46a995b2bfd662'
             '297cf2592b1baed8da591136334ab7fc1f4f64a6a093a1ac657ceaae45aa8583')
