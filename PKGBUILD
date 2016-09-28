@@ -15,19 +15,19 @@ prepare() {
 }
 
 build() {
-	cd nemo-megasync-2.9.2
+	cd "${pkgname}-${pkgver}"
 	qmake-qt4 
 	make
 }
 
 package() {
-	cd nemo-megasync-2.9.2
+	cd "${pkgname}-${pkgver}"
 	make install
-	mkdir -p $pkgdir/usr/lib/nemo/extensions-3.0
-	install libMEGAShellExtNemo.so.1.0.0 -D $pkgdir/usr/lib/nemo/extensions-3.0/
-	cd $pkgdir/usr/lib/nemo/extensions-3.0/
-	ln -s libMEGAShellExtNemo.so.1.0.0 libMEGAShellExtNemo.so
-	ln -s libMEGAShellExtNemo.so.1.0.0 libMEGAShellExtNemo.so.1
-	ln -s libMEGAShellExtNemo.so.1.0.0 libMEGAShellExtNemo.so.1.0
-	rm -fr $pkgdir/usr/share/icons/hicolor/icon-theme.cache
+	mkdir -p "${pkgdir}/usr/lib/nemo/extensions-3.0"
+	install "libMEGAShellExtNemo.so.1.0.0" -D "${pkgdir}/usr/lib/nemo/extensions-3.0/"
+	cd "${pkgdir}/usr/lib/nemo/extensions-3.0/"
+	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so"
+	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1"
+	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1.0"
+	rm -rf "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
