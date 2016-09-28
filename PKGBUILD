@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
@@ -35,9 +35,12 @@ build() {
   "$EMBEDDED_DIR"/bin/gem build $pkgname.gemspec
 
   GEM_PATH="$srcdir"/$pkgname-$pkgver/gems-$pkgver-$pkgrel GEM_HOME="$GEM_PATH" \
-  GEMRC="$EMBEDDED_DIR"/etc/gemrc CPPFLAGS="-I$EMBEDDED_DIR"/include \
+  GEMRC="$EMBEDDED_DIR"/etc/gemrc \
+  CPPFLAGS="-I$EMBEDDED_DIR/include -I${EMBEDDED_DIR}/include/libxml2" \
+  CFLAGS="${CPPFLAGS}" \
   LDFLAGS="-L$EMBEDDED_DIR"/lib PATH="$EMBEDDED_DIR/bin:$PATH" \
   SSL_CERT_FILE="$EMBEDDED_DIR"/cacert.pem \
+  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 \
     "$EMBEDDED_DIR"/bin/gem install $pkgname-$pkgver.gem --no-ri --no-rdoc
 }
 
