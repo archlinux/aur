@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x5.1
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -51,7 +51,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
-        '0001-ARM-disable-implicit-function-declaration-error.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -74,14 +73,13 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             'f82fc9e36dccff9bc761f3d4801ca78c8da08d269acdabc62b0c5c7b01356886'
             '55aa06cb017dbbeb13b1da1bb124c479aadfa60b40957f25579a1a84db94f791'
-            '45930d28f4e63cee7197919eae0ffc8bd88a3b658c920dd4066d984e26c7a13f'
+            '63ea9e8933f90bbaa96a2a341b2f20a0d0ea38d5ca08894b222daa80957d4e5a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'c23e4baa0acdcf3070b900a3d5fe83a4d358246ffb4b9be61355c255deeae763'
+            '03efd78095d1c76ed64a8e723f8ce969f197d655d68808dee2d1cd6e8ecdeb1b'
             'SKIP'
-            '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
             '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
             '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
@@ -122,14 +120,12 @@ prepare() {
   rm localversion-rt
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
-    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
-    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
-    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
+    # RCN patch (CM3 firmware deblobbed, I2C/IIO/touchscreen backports, AUFS and RT removed)
+    # Note: For stability reasons, I2C/IIO/touchscreen backports, AUFS and RT have been
+    # removed in the RCN patch. We are supporting AUFS in linux-libre-pck through PCK patch
+    # and RT through its official patch in linux-libre-rt. See https://wiki.parabola.nu/PCK
+    # for further details about PCK.
     git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
-
-    # disable implicit function declaration error since there are old backports patches
-    patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
