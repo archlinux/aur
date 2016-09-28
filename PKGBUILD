@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=spoofer
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="client software for the spoofer internet research project on ip spoofing, BCP38 compliance"
 url="https://spoofer.caida.org"
 arch=('x86_64' 'i686')
@@ -22,16 +22,14 @@ options=(emptydirs)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./configure
+    ./configure --prefix="/usr"
     make
 }
  
 package() {
     # install binaries
     cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" PREFIX=/usr install 
-    mv "$pkgdir/usr/local/bin" "$pkgdir/usr/"
-    rmdir "$pkgdir/usr/local"
+    make DESTDIR="$pkgdir" install 
 
     # install other files
     cd ..

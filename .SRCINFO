@@ -1,7 +1,7 @@
 pkgbase = spoofer
 	pkgdesc = client software for the spoofer internet research project on ip spoofing, BCP38 compliance
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spoofer.caida.org
 	install = spoofer.install
 	arch = x86_64
