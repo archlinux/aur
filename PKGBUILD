@@ -2,7 +2,7 @@
 
 pkgname=vagrant-substrate-git
 _pkgname=vagrant-installers
-pkgver=526.6bb2e80
+pkgver=554.9772186
 pkgrel=1
 pkgdesc="Substrate layer for Vagrant"
 arch=('i686' 'x86_64')
@@ -14,12 +14,8 @@ options=('!emptydirs' '!makeflags')
 makedepends=('git' 'puppet' 'chrpath' 'wget')
 depends=('lzo')
 source=(git://github.com/mitchellh/$_pkgname.git
-        puppet_module_libiconv.patch
-        libiconv.patch
         readline.patch)
 md5sums=('SKIP'
-         'f6ac254962cf77cc4fba443c2d89644e'
-         'c1bd61a5617b64654c33a2afc506e499'
          'a4f87b2483c7bd724bb94a69aa5cf733')
 
 pkgver() {
@@ -36,7 +32,7 @@ prepare() {
     hiera/common.yaml
 
   # Use latest openssl
-  sed -i 's/openssl-1.0.2e.tar.gz/openssl-1.0.2g.tar.gz/' \
+  sed -i 's/openssl-1.0.2e.tar.gz/openssl-1.0.2j.tar.gz/' \
     modules/openssl/manifests/init.pp
 
   # Don't create a zip of the substrate
@@ -47,7 +43,6 @@ prepare() {
   find . -name *.pp -exec sed -i "/group.*.=.*.root/d" {} +
 
   # Fix compile issues
-  patch -Np0 -i "$srcdir"/puppet_module_libiconv.patch
   patch -Np0 -i "$srcdir"/readline.patch
 
   # https://github.com/mitchellh/vagrant-installers/issues/60
