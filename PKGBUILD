@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.7-gnu
-_pkgver=4.7.4-gnu
+_pkgver=4.7.5-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -60,9 +60,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
+            'a821afd07de72737abad33c714f9adbfba3725b5190aa9a4605efbce037e76dc'
             'SKIP'
-            'd7c300b1f0fcdb60936102b198ee8b533c1ad7ad6dbaad05c070c702fefb41ee'
+            '7da05a846682bae0580e5d9f199314b8196a609b90fefe34985905f555b7c99e'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -75,7 +75,7 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             '515448fb9f4a76fb63c7183c3513e423b4c66b3323fccbbfff2c55673df41fc9'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '8c5cd4d408a496bad61aace20fbada48287aaca6a5fb6d5fcb9cbf854faad83f'
+            'ae194aa82b84b35402d63adf4de2d514ba3cf0f5c388f2f9c570c186fa54450b'
             'SKIP'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
             'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
