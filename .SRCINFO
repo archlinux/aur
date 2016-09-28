@@ -1,0 +1,19 @@
+pkgbase = edimax_ac1750_8814au-dkms
+	pkgdesc = Kernel module for the Edimax AC1750 USB3 802.11ac adapter.
+	pkgver = 4.3.21_17997.20160531
+	pkgrel = 1
+	url = https://github.com/bsdfirst/rtl8814au_EW7833UAC
+	install = edimax_ac1750_8814au-dkms.install
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/bsdfirst/rtl8814au_EW7833UAC.git#branch=v4.3.21_17997.20160531
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = be3fe911a32f3235c87653cb2652c3fc14d044e5c869ace46bac1c25750b001b
+
+pkgname = edimax_ac1750_8814au-dkms
+
