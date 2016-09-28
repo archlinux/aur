@@ -1,12 +1,13 @@
 pkgname=cuddly-octo-tatertot-git
 _pkgname=cuddly-octo-tatertot
 pkgdesc='Silly python scripts'
-pkgrel=1
+pkgrel=2
 pkgver=r7.8d9bafb
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/vpzomtrrfrt/$_pkgname"
-makedepends=('git' 'python2' 'zenity' 'imagemagick')
+makedepends=('git')
+depends=('python2' 'zenity' 'imagemagick')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/vpzomtrrfrt/$_pkgname")
