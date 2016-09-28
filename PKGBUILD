@@ -3,8 +3,7 @@
 
 pkgname=jvlt
 pkgver=1.3.3
-_pkgver=`date +%Y%m%d`
-pkgrel=1
+pkgrel=2
 pkgdesc="A vocabulary learning tool with quizzes using flash cards similar to the Leitner system"
 arch=('any')
 url="http://jvlt.sourceforge.net"
@@ -16,6 +15,7 @@ md5sums=('e880ff05b7c6b089ef01580f1aab6892'
          '7f038c40100906d1058714dd76381165'
          'f04116276afcc092916e0cd749e036e7'
          'c656f737f05b858461c89368279eb1a8')
+noextract=(jvlt-1.3.3.jar)
 
 package() {
   install -D -m644 $pkgname-$pkgver.jar \
