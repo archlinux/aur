@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ license=('MIT')
 options=('!emptydirs')
 depends=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('fb69b95e0ad29ac3af90f919c818a39c')
+md5sums=('27b431b4fac3e0ef9c844d7dea904427')
 
 prepare() {
   cd $pkgname-$pkgver
