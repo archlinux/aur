@@ -1,0 +1,11 @@
+pkgbase = bullshit
+	pkgdesc = Assemble a stream of technology bullshit from words in a file
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/fceschmidt/bullshit
+	arch = any
+	license = GPL2
+	depends = gawk
+
+pkgname = bullshit
+
