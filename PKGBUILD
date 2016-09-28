@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 url='https://github.com/Salamek/cron-descriptor'
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Salamek/${projname}/archive/$pkgver.tar.gz")
-md5sums=('8d4244c74bf6ce31c08432bcb13eea09')
+md5sums=('2cce1cb2f81a2a2d005adae7152e97e9')
 
 package_python-cron-descriptor() {
   depends=('python')
