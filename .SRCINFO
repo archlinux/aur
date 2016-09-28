@@ -13,10 +13,6 @@ pkgbase = libmypaint-cce-git
 	depends = json-c
 	depends = gegl-cce-git
 	options = !strip
-	options = libtool
-	options = staticlibs
-	options = emptydirs
-	options = !purge
 	source = git+https://github.com/mypaint/libmypaint.git
 	md5sums = SKIP
 
