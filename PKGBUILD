@@ -1,8 +1,8 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=private-internet-access-vpn
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
