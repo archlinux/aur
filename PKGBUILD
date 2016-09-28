@@ -2,10 +2,10 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-dark-plasma-theme-git
-pkgver=20160615
+pkgver=20160928
 pkgrel=1
-pkgdesc="Papirus Dark Plasma 5 theme for KDE (git version)"
-url="https://github.com/droserasprout/${pkgname%-git}"
+pkgdesc="Papirus Dark theme for KDE Plasma 5"
+url="https://github.com/papirus-dark/${pkgname%-git}"
 arch=('any')
 license=('GPL')
 depends=('plasma-desktop')

@@ -1,6 +1,6 @@
 pkgbase = papirus-dark-plasma-theme-git
-	pkgdesc = Papirus Dark Plasma 5 theme for KDE (git version)
-	pkgver = 20160615
+	pkgdesc = Papirus Dark theme for KDE Plasma 5
+	pkgver = 20160928
 	pkgrel = 1
 	url = https://github.com/droserasprout/papirus-dark-plasma-theme
 	install = papirus-dark-plasma-theme-git.install
@@ -10,7 +10,7 @@ pkgbase = papirus-dark-plasma-theme-git
 	makedepends = make
 	depends = plasma-desktop
 	options = !strip
-	source = papirus-dark-plasma-theme-git::git+https://github.com/droserasprout/papirus-dark-plasma-theme.git
+	source = papirus-dark-plasma-theme-git::git+https://github.com/papirus-dark/papirus-dark-plasma-theme.git
 	sha256sums = SKIP
 
 pkgname = papirus-dark-plasma-theme-git
