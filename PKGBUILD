@@ -3,14 +3,14 @@
 _pkgname=screencloud
 pkgname=${_pkgname}-git
 pkgver=1.3.1.0.g54cd0c3
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use screenshot sharing tool. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
 license=('GPL2')
 
 depends=(
-	'qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt-qt5'
+	'qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt'
 	'quazip' 'xdg-utils' 'hicolor-icon-theme'
 )
 optdepends=(
