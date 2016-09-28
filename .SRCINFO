@@ -1,6 +1,6 @@
 pkgbase = starcal
 	pkgdesc = A full-featured international calendar writen in Python
-	pkgver = 3.0.1
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://ilius.github.io/starcal
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = starcal
 	depends = python-pymongo
 	optdepends = python-igraph
 	conflicts = starcal-git
-	source = https://github.com/ilius/starcal/archive/3.0.1.tar.gz
-	md5sums = 2267257fdfe03dd444b9cdf8210b2cfe
+	source = https://github.com/ilius/starcal/archive/3.0.4.tar.gz
+	md5sums = 3c08c2d26c60cc6f32cb0e6cedfc4370
 
 pkgname = starcal
 
