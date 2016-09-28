@@ -1,6 +1,6 @@
 pkgbase = palemoon
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 26.4.1
+	pkgver = 26.5.0
 	pkgrel = 1
 	url = http://www.palemoon.org/
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = palemoon
 	optdepends = gstreamer0.10-bad-plugins: aac, vp8 and opus decoding
 	optdepends = gstreamer0.10-ugly-plugins: h.264 and mp3 decoding
 	optdepends = gstreamer0.10-ffmpeg: h.264 decoding
-	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.4.1_Release
+	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.5.0_Release
 	source = mozconfig.in
 	md5sums = SKIP
 	md5sums = 6c23b737a8ef846926d247116b69f33d
