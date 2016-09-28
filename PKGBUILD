@@ -8,15 +8,31 @@ pkgrel=1
 pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
-install=codelite-git.install
 license=('GPL')
-depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh' 'xterm' 'python2' 'libedit' 'ncurses' 'valgrind')
-makedepends=('pkgconfig' 'cmake')
+install=codelite-git.install
+makedepends=('pkgconfig' 'cmake' 'clang')
+depends=(
+  'wxgtk'
+  'webkitgtk2'
+  'libedit'
+  'libssh'
+  'libmariadbclient'
+  'ncurses'
+  'xterm'
+  'curl'
+  'python2'
+  'clang'
+  'lldb'
+  'hunspell'
+)
 optdepends=(
   'graphviz: callgraph visualization'
-  'lldb: debugger used by the lldb plugin'
+  'clang: compiler'
+  'gcc: compiler'
+  'gdb: debugger'
+  'valgrind: debugger'
 )
-conflicts=('codelite' 'codelite-bin' 'codelite4-svn')
+conflicts=('codelite' 'codelite-bin')
 provides=('codelite')
 source=(
   git://github.com/eranif/codelite.git
@@ -43,7 +59,12 @@ build() {
   cd "${srcdir}/${_gitname}/build"
 
   CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
-  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_CLANG=1 -DCMAKE_INSTALL_LIBDIR=lib ..
+
+  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_CLANG=1 -DENABLE_LLDB=1 -DWITH_MYSQL=1 \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    ..
+
   make
 }
 
