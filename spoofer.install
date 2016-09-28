@@ -1,0 +1,4 @@
+post_install() {
+    echo "To use Spoofer, tweak config at /etc/xdg/CAIDA/Spoofer.conf"
+    echo "to your needs and start spoofer.service"
+}

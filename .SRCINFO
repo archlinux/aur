@@ -1,16 +1,26 @@
 pkgbase = spoofer
-	pkgdesc = client software for the spoofer internet research project on ip spoofing
+	pkgdesc = client software for the spoofer internet research project on ip spoofing, BCP38 compliance
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spoofer.caida.org
+	install = spoofer.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = libpcap
 	depends = protobuf
 	depends = qt5-base
+	options = emptydirs
 	source = https://www.caida.org/projects/spoofer/downloads/spoofer-1.0.5.tar.gz
+	source = spoofer-gui.desktop
+	source = spoofer.service
+	source = Spoofer.conf
+	source = spoofer.install
 	sha1sums = 7a9a497181bc7bcbab9276a0e741040075d92b15
+	sha1sums = fe2779dcfaf0e401f3fa8d7226e7fe97a7af5b66
+	sha1sums = ecbb2e4ee11288ca682e68ce5f76da4de42d4117
+	sha1sums = 20feb9ceffbb30d45a30d2c5e1908e4dabe2b17c
+	sha1sums = 01197fc6c9c8394934f1aa9891b9c5d124aa2b4e
 
 pkgname = spoofer
 

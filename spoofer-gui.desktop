@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=spoofer-gui
+Icon=spoofer
+GenericName=Spoofer
+Comment=BCP38 Compliance Tester, run as root
+Terminal=false
+Name=Spoofer
+Categories=Network;Qt;
