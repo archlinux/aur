@@ -4,6 +4,7 @@ pkgbase = ttf-astra-sans
 	pkgrel = 1
 	install = ttf-astra-sans.install
 	arch = any
+	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://astralinux.com/images/fonts/PTAstraSans&Serif_TTF_ver1001.zip
