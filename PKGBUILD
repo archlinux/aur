@@ -12,11 +12,13 @@ source=(
 	"http://gurpscharactersheet.com/downloads/$pkgver/$pkgname-$pkgver-linux.zip"
 	'gcs.sh'
 	'gcs.desktop'
+	'gcs.xml'
 )
 sha256sums=(
 	'8a7c4fabc6ae7ec53a9b5981f6a29489c42ce5ef94733fe92460421ae4a1efe8'
 	'25042c6759fd814e23bf9139e6f6c5f93f67eec826f55825db052f4ff84ce241'
-	'15f4bb0caaa0752cceba69c615e16848eba35f18b4d705caae0419a2aa0072f9'
+	'5b226260250972c1244f11be73c98bf43d3f30f428843c823c5a8a0ba01494ba'
+	'cddee2d3b844dddd3a346a7c15c26f76019c875cccc03b0be34489c4dd71a320'
 )
 
 package() {
@@ -32,12 +34,16 @@ package() {
 
 	# icon
 	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-	convert support/gcs.png -resize 128 "$pkgdir/usr/share/icons/hicolor/128x128/apps/gcs.png"
+	install -m644 support/gcs.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/gcs.png"
 
 	popd
 
 	# launcher
 	install -Dm755 "$srcdir/gcs.sh" "$pkgdir/usr/bin/gcs"
+
+	# MIME info
+	install -d "$pkgdir/usr/share/mime/packages"
+	install -m644 "$srcdir/gcs.xml" "$pkgdir/usr/share/mime/packages"
 
 	# .desktop
 	install -d "$pkgdir/usr/share/applications"
