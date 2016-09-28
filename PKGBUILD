@@ -1,7 +1,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-openssl
-_ver=1.0.2i
+_ver=1.0.2j
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
@@ -16,7 +16,7 @@ source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
 "openssl-1.0.0a-ldflags.patch"
 "openssl-1.0.1-x32.patch"
 "openssl-1.0.2a-parallel-build.patch")
-md5sums=('678374e63f8df456a697d3e5e5a931fb'
+md5sums=('96322138f0b69e61b7212bc53d5e912b'
          'SKIP'
          '990d027cc82ff8b2acffead24073d43c'
          'dd616e53eba607f5ab46634f93d5c5a5'
