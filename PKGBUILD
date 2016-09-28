@@ -2,7 +2,7 @@
 pkgname=splunkforwarder
 basever=6.5.0
 pkgver=${basever}_59c8927def0f
-pkgrel=1
+pkgrel=2
 pkgdesc="Splunk Universal Forwarder"
 url="http://www.splunk.com/"
 arch=('x86_64' 'i686')
@@ -22,4 +22,8 @@ package() {
 	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	mkdir "$pkgdir/opt"
 	cp -r "$pkgname" "$pkgdir/opt/"
+
+	# This file causes conflicts with existing installs
+	# and ships empty anyway, so just remove it
+	rm "$pkgdir/opt/$pkgname/etc/users/users.ini"
 }
