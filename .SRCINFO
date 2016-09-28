@@ -1,7 +1,7 @@
 pkgbase = gimp-cce-git
 	pkgdesc = GIMP-CCE maintained by elle stone
 	pkgver = r37634.c5a635b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ellelstone/gimp
 	arch = i686
 	arch = x86_64
