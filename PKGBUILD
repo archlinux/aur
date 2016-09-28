@@ -2,12 +2,13 @@
 pkgname=('3dsconv')
 provides=('3dsconv')
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to convert Nintendo 3DS CTR Cart Image files (CCI, ".3ds") to the CTR Importable Archive format (CIA).'
 arch=('any')
 url="https://github.com/ihaveamac/3dsconv"
 license=('MIT')
 depends=('python2')
+optdepends=('python2-crypto: support for zerokey-encryption')
 makedepends=('tar')
 options=('!strip')
 
