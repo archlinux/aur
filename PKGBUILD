@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Raffre <nk+aur@nyuu.ei>
+# Maintainer: Jonathan Raffre <nk+aur@nyuu.eu>
 # Original maintainer: Henrik Hodne <henrik@hodne.io>
 # Contributor: Duncan K. <duncank@fastmail.fm>
 # Contributor: Yuval Adam <yuval@y3xz.com>
