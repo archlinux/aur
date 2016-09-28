@@ -41,7 +41,7 @@ package() {
 
   cp "$srcdir/harmony" "$pkgdir/usr/bin/Harmony"
   cp "$srcdir/Harmony.desktop" "$pkgdir/usr/share/applications/"
-  cp "$srcdir/harmony-16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/"
-  cp "$srcdir/harmony-32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
-  cp "$srcdir/harmony-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
+  cp "$srcdir/harmony-16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/harmony.png"
+  cp "$srcdir/harmony-32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/harmony.png"
+  cp "$srcdir/harmony-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/harmony.png"
 }
