@@ -2,7 +2,7 @@
 
 pkgname=madgraph-madanalysis
 pkgver=1.1.8
-pkgrel=20160521
+pkgrel=20160926
 pkgdesc="Parton showering, hadronization and detector simulation."
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('madgraph' 'tcsh' 'perl')
 optdepends=('topdrawer')
 makedepends=('gcc-fortran')
 source=("http://madgraph.hep.uiuc.edu/Downloads/MadAnalysis_V${pkgver}.tar.gz")
-sha256sums=('bdf26c4605927007b08f41eae12f218e2053297cfda518eb0e865af289e54ffc')
+sha256sums=('248bd3493f9dc4f566dd85c033754b3e7b631107ac2ad55f4793f0015bb31669')
 
 build () {
     cd "${srcdir}/MadAnalysis"
