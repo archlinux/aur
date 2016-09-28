@@ -4,14 +4,14 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-git
-pkgver=0.15.4.r33.g07539da
+pkgver=0.16.1.r0.g6d16c51
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/jp9000/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
-         "qt5-x11extras" "curl" "hicolor-icon-theme")
+         "qt5-x11extras" "curl" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack" "vlc")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
@@ -19,7 +19,6 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "vlc: VLC Media Source")
 provides=("obs-studio")
 conflicts=("obs-studio")
-install=$pkgname.install
 source=("$pkgname::git+https://github.com/jp9000/obs-studio.git#branch=master")
 md5sums=("SKIP")
 
