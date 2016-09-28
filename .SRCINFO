@@ -1,7 +1,7 @@
 pkgbase = typora
 	pkgdesc = Typora will give you a seamless experience as both a reader and a writer.
 	pkgver = 0.9.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io/
 	arch = x86_64
 	license = Closed
