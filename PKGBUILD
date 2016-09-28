@@ -16,7 +16,7 @@ makedepends=('linux-aufs_friendly-headers')
 install=$_pkgname.install
 source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$_pkgname-$pkgver.tar.gz
         linux-4.5.patch
-				linux-4.7.patch)
+	linux-4.7.patch)
 sha256sums=('9dd8ae22115bcbef98c15b0b1e2160300cce3129ef7e0485d7e577188ba3fcc2'
             'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e'
             'bbdc817278b17a1803c74228eaccbddb347ae92424a9a6cc92a68946f5392969')
@@ -42,8 +42,8 @@ build() {
 }
 
 package() {
-	_kernver=$(pacman -Q linux | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
-	depends=("linux>=$_kernver" "linux<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
+	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
+	depends=("linux-aufs_friendly>=$_kernver" "linux-aufs_friendly<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
 	KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-aufs_friendly/version)
 	msg "Kernel = $KERNEL_VERSION"
 
