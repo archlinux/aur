@@ -1,6 +1,6 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 2.3.16.r10918.ff0d383
+	pkgver = 2.3.37.r11135.d53232f
 	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = flexget-git
 	depends = python2-jinja
 	depends = python2-requests>=2.8.0
 	depends = python2-requests<3.0
-	depends = python2-dateutil>=2.5.2
+	depends = python2-dateutil>=2.5.3
 	depends = python2-jsonschema>=2.0
 	depends = python2-path>=8.1.1
 	depends = python2-pathlib>=1.0
