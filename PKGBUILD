@@ -2,12 +2,12 @@
 # Contributor: Edgar Kalkowski <eMail@edgar-kalkowski.de>
 pkgname=texlive-alteswab
 pkgver=20060901
-pkgrel=2
+pkgrel=3
 pkgdesc="Alte Schwabacher fraktur font for use with LaTeX."
-arch='any'
+arch=('any')
 url="http://www.gaehrken.de/fraktur/"
 license=('custom')
-depends='texlive-core'
+depends=('texlive-core' 'texlive-frakturx')
 install=texlive-alteswab.install
 source=(http://www.gaehrken.de/fraktur/talteswab.zip LICENSE)
 md5sums=('e373b69be815eb48dd4b0a4819a8eb79'
