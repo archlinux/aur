@@ -13,7 +13,6 @@ optdepends=(
     'lttng-tools: LTTng tracing control tools'
     'babeltrace: trace viewer'
 )
-options=('!libtool')
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
 
