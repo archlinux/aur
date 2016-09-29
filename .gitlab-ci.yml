@@ -5,7 +5,7 @@ pages:
   - /usr/local/sbin/pkg.sh
   - sed -i 's/CARCH="x86_64"/CARCH="i686"/g' /etc/makepkg.conf
   - sudo -u maker makepkg --repackage
-  - mkdir -p public/_includes
+  - mkdir -p public
   - mv *.pkg.tar.xz public
   - curl -o index.sh https://gitlab.com/snippets/27473/raw
   - chmod +x index.sh
