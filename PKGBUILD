@@ -3,21 +3,21 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.52
-pkgrel=1
+pkgrel=2
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
 license=('None')
-depends_i686=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
-              'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glew1.10'
-              'glib2' 'glu' 'gtk2' 'libcaca' 'libcanberra' 'libcups'
-              'libcurl-compat' 'libcurl-gnutls' 'libdbus' 'libdrm' 'libice'
-              'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'libsm' 'libtheora'
-              'libtiff4' 'libudev0-shim' 'libusb' 'libvorbis' 'libxcomposite'
-              'libxcursor' 'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr'
-              'libxrender' 'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'pango'
-              'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl_image' 'sdl_mixer'
-              'sdl_ttf')
+depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
+         'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glew1.10'
+         'glib2' 'glu' 'gtk2' 'libcaca' 'libcanberra' 'libcups'
+         'libcurl-compat' 'libcurl-gnutls' 'libdbus' 'libdrm' 'libice'
+         'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'libsm' 'libtheora'
+         'libtiff4' 'libudev0-shim' 'libusb' 'libvorbis' 'libxcomposite'
+         'libxcursor' 'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr'
+         'libxrender' 'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'pango'
+         'sdl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl_image' 'sdl_mixer'
+         'sdl_ttf')
 depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig'
                 'lib32-freetype2' 'lib32-gconf' 'lib32-gdk-pixbuf2'
@@ -38,4 +38,3 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
 replaces=('steam-libs')
 
 # vim: ts=2 sw=2 et:
-
