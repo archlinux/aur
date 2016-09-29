@@ -9,15 +9,11 @@ url="https://github.com/electron/electron"
 license=('MIT')
 replaces=('atom-shell')
 optdepends=('nodejs')
-depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
+depends=('libgcrypt' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring')
 
-case $CARCH in
-  'arm'   ) _arch='arm' ; sha256sums=('eb4267d1bc95c7d99b65602753b098dccb028840897ff6dc4dda2b33accf8a19');;
-  'i686'  ) _arch='ia32'; sha256sums=('d42e373284324ffd7fadbbf8ed0c6c21452ca375e969a7a9d3b5319e2f21bf45');;
-  'x86_64') _arch='x64' ; sha256sums=('b850b55792df760984f18a1b594c954f06960a23e89c4d66e131f9ca735be22e');;
-esac
-
-source=("electron.zip::https://github.com/electron/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-${_arch}.zip")
+source_arm=("electron.zip::https://github.com/electron/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-arm.zip")
+source_i686=("electron.zip::https://github.com/electron/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-ia32.zip")
+source_x86_64=("electron.zip::https://github.com/electron/electron/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip")
 
 package() {
   rm "${srcdir}/electron.zip"
@@ -38,3 +34,7 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/electron037/electron"
 }
+
+sha256sums_arm=('eb4267d1bc95c7d99b65602753b098dccb028840897ff6dc4dda2b33accf8a19')
+sha256sums_i686=('d42e373284324ffd7fadbbf8ed0c6c21452ca375e969a7a9d3b5319e2f21bf45')
+sha256sums_x86_64=('b850b55792df760984f18a1b594c954f06960a23e89c4d66e131f9ca735be22e')
