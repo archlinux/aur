@@ -1,7 +1,7 @@
 # Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=pcp
-pkgver=3.11.4
+pkgver=3.11.5
 pkgrel=1
 pkgdesc="System performance and analysis framework"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ install="pcp.install"
 source=("https://bintray.com/artifact/download/pcp/source/pcp-$pkgver.src.tar.gz"
         "pcp.install"
         "pcp.tmpfiles")
-sha256sums=('b195f1b798a3d2dac166f7a18521ef3af85a357ed8d1f77dd0446389c130b412'
+sha256sums=('5e752a3a0c634ca5a9bc1627d322f5e606b138567f59e60b89ecc95d5693014f'
             '590d816edc87dd03e3700d7637f57ca81d24d63802f32f772709e0c33a4ca0b5'
             '48ce114e95ab640bfe6c6c9608c96c22a75b65ccb38dfa89bfa2b12621845f20')
 
