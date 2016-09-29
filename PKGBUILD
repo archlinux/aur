@@ -2,7 +2,7 @@
 # Contributor: kaptoxic <kaptoxic [at] yahoo [dot] com>
 
 pkgname=vim-gnome
-pkgver=7.4.854
+pkgver=8.0.0013
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor (with Gnome GUI)'
 arch=(i686 x86_64)
