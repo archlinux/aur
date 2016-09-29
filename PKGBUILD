@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=marytts
-pkgver=5.1.2
+pkgver=5.2
 pkgrel=1
 pkgdesc="An open-source, multilingual Text-to-Speech Synthesis platform written in Java"
 arch=('i686' 'x86_64')
@@ -22,7 +22,5 @@ package() {
   
 }
 
-md5sums=('c7e74cec8b16a3046a37407e267c036a'
-         '78f9ee795d5a14d27ae6d5a6b2b507c3')
-md5sums=('99e774dd4c6e791ad916ae76351522f0'
+md5sums=('60258d629ef0cc4803a88859ef2312ae'
          '78f9ee795d5a14d27ae6d5a6b2b507c3')
