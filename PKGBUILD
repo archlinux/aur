@@ -1,17 +1,17 @@
 pkgname=halcyon
-pkgver=0.9.27.6078
+pkgver=0.9.28.6115
 pkgrel=1
 pkgdesc="InWorldz Halcyon 3d virtual reality world simulator"
 arch=(any)
 url="https://github.com/InWorldz/$pkgname"
 license=("BSD")
 depends=(mono mariadb sqlite whip-server)
-makedepends=(doxygen)
+makedepends=(doxygen graphviz)
 provides=(opensimulator)
 source=("https://github.com/InWorldz/$pkgname/archive/v$pkgver.tar.gz"
 "$pkgname.sh"
 "hc-database.sh")
-md5sums=('0bedde1c41f1db7b8ef829860518258f'
+md5sums=('8c1e90863f02538beeb0759fb138304e'
          '86977d028c882ee1e9615f4b8d1a68e6'
          'ee63724ab4ed7ba836ea6205689b0029')
 
