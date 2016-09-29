@@ -1,0 +1,26 @@
+pkgbase = cmake-git
+	pkgdesc = A cross-platform open-source make system
+	pkgver = 3.6.2.1252.g5d29506
+	pkgrel = 1
+	url = http://www.cmake.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = qt5-base
+	makedepends = python-sphinx
+	makedepends = emacs
+	makedepends = git
+	makedepends = ncurses
+	depends = curl
+	depends = libarchive
+	depends = shared-mime-info
+	depends = jsoncpp
+	optdepends = qt5-base: cmake-gui
+	optdepends = libxkbcommon-x11: cmake-gui
+	provides = cmake
+	conflicts = cmake
+	source = git+https://cmake.org/cmake.git
+	md5sums = SKIP
+
+pkgname = cmake-git
+
