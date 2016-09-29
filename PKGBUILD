@@ -2,7 +2,7 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc="Graphical mkv demultiplexer"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('qt5-tools'
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/mkv-extractor-qt5_${pkgver}.orig.tar.gz")
-sha1sums=('4bc9d62a08ddfcdef735dac7db1a7cb45425b6e8')
+sha256sums=('e6831cab08634d254d61fb61724b8de63bafbec566a5f88cfe8097fca87ef252')
 
 prepare() {
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
@@ -57,6 +57,7 @@ package() {
   install -Dm644 ui_MKVExtractorQt5.py "${pkgdir}/usr/share/mkv-extractor-qt5/ui_MKVExtractorQt5.py"
   install -Dm644 QFileDialogCustom/QFileDialogCustom.py "${pkgdir}/usr/share/mkv-extractor-qt5/QFileDialogCustom/QFileDialogCustom.py"
   install -Dm644 QFileDialogCustom/QFileDialogCustom_fr_FR.qm "${pkgdir}/usr/share/mkv-extractor-qt5/QFileDialogCustom/QFileDialogCustom_fr_FR.qm"
+  install -Dm644 WhatsUp/WhatsUp.py "${pkgdir}/usr/share/mkv-extractor-qt5/WhatsUp/WhatsUp.py"
 
   install -Dm644 mkv-extractor-qt5.desktop "${pkgdir}/usr/share/applications/mkv-extractor-qt5.desktop"
 
