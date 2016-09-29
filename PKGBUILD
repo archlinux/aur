@@ -1,6 +1,6 @@
 pkgname=animewatch-pyqt5-git
 _pkgname=AnimeWatch
-pkgver=3.0.0.r31.fffb7b9
+pkgver=3.0.0.r32.0842ba9
 pkgrel=1
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection"
 arch=(any)
