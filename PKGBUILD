@@ -1,8 +1,8 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=gdb-dashboard
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc='Modular visual interface for GDB in Python'
 url='https://github.com/cyrus-and/gdb-dashboard'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gdb' 'binutils')
 optdepends=('python-pygments: syntax highlighting support')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/cyrus-and/gdb-dashboard/archive/v${pkgver}.tar.gz)
-sha512sums=('ec792aa666ed39688f5d2b15befacbea550b0fde7f1c0e703f2b077c1896083285b48f5ab5571198a3bd4b1367029696ee16cafb2806afd69973d05c7bda35af')
+sha512sums=('0476779b5711b1ec9d90955b9397d167c24f1c0acbbe1236ac59634f131efb7dc2a5a160fd984b5cb535b7c3e5cd9e62b377063eb52f2c71ba506b2d64fdbd80')
 
 package() {
   cd ${pkgname}-${pkgver}
