@@ -1,0 +1,18 @@
+pkgbase = hdepanel-git
+	pkgdesc = Qt5 based panel based on QtPanel
+	pkgver = v1.0.5.r0.gbd05f0a
+	pkgrel = 1
+	url = https://github.com/developing4all/hdepanel
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libxcomposite
+	depends = qt5-x11extras
+	provides = hdepanel
+	conflicts = hdepanel
+	source = git+https://github.com/developing4all/hdepanel.git
+	md5sums = SKIP
+
+pkgname = hdepanel-git
+
