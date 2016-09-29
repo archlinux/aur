@@ -42,7 +42,7 @@ source_aarch64=("caddy.tar.gz::http://bit.ly/2cMNaAA" "caddy-systemd-service.pat
 
 prepare() {
   msg2 "Patching systemd service file"
-  patch -Np1 -i "$srcdir/caddy-systemd-service.patch" "${srcdir}/init/linux-systemd/caddy.service"
+  patch -Np1 -i "${srcdir}/caddy-systemd-service.patch" "${srcdir}/init/linux-systemd/caddy.service"
 }
 
 package() {
