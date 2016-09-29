@@ -2,21 +2,15 @@ ETCD_DATA_DIR="/var/lib/etcd"
 
 pre_upgrade() {
 cat << EOF
-	To upgrade an existing etcd deployment to 2.2, you must be running 2.1.
-	If you’re running a version of etcd before 2.1, you must upgrade to 2.1 before upgrading to 2.2.
-        And you should, probably, read the following:
-		/usr/share/doc/etcd/04_to_2_snapshot_migration.md
-		/usr/share/doc/etcd/upgrade_2_1.md
-		/usr/share/doc/etcd/upgrade_2_2.md
+	To upgrade an existing v2 etcd deployment to 3.0 you must be running 2.3
+	And you should read the docs: /usr/share/doc/etcd/upgrades/
 EOF
 }
 
 post_install() {
     mkdir -p "${ETCD_DATA_DIR}"
-
     # create an etcd user
     id -u etcd &>/dev/null || useradd -r -M -U -d /dev/null -s /bin/nologin etcd
-
     chown -R etcd:etcd "${ETCD_DATA_DIR}"
 }
 
