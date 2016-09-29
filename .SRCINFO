@@ -1,0 +1,33 @@
+pkgbase = erlang-basho
+	pkgdesc = Version of Erlang/OTP needed for Basho RiakTS
+	pkgver = 16.2
+	pkgrel = 1
+	url = https://github.com/basho/otp/archive/OTP_R16B02_basho10.tar.gz
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = perl
+	makedepends = mesa
+	makedepends = lksctp-tools
+	makedepends = unixodbc
+	makedepends = wxgtk
+	makedepends = glu
+	makedepends = git
+	makedepends = libxslt
+	makedepends = fop
+	makedepends = java-environment
+	makedepends = autoconf
+	depends = ncurses
+	depends = glu
+	depends = wxgtk
+	depends = openssl
+	optdepends = erlang-unixodbc: database support
+	optdepends = java-environment: for Java support
+	optdepends = lksctp-tools: for SCTP support
+	conflicts = erlang
+	options = staticlibs
+	source = https://github.com/basho/otp/archive/OTP_R16B02_basho10.tar.gz
+	md5sums = eb946f87cedca861fae4aeae21ab514a
+
+pkgname = erlang-basho
+
