@@ -20,7 +20,7 @@ _jomol=0.0.3c
 _robover=20150625
 _droidver=20140815
 _sarabun=1.3.2
-pkgrel=9
+pkgrel=99
 depends=("fontconfig" "xorg-font-utils")
 optdepends=("ttf-chromeos-fonts: Part of the Chromium OS fonts suite"
 	"otf-ipafont: Part of the Chromium OS fonts suite, IPA support"
