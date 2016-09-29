@@ -2,7 +2,7 @@
 #Maintainer: Tom Tryfonidis <tomtryf [at] gmail [dot] com>
 
 pkgname=socnetv
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Social Networks Analysis and Visualisation"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('qt5-base')
 provides=('socnetv')
 conflicts=('socnetv-git')
 source=(http://downloads.sourceforge.net/socnetv/SocNetV-$pkgver.tar.gz)
-sha256sums=('6c1029df89471a1ea086e9fcd74f968f859c19c4faada8ff389dff0d5d7e7833')
+sha256sums=('928ba0b1851b502583844e5c997a9839347df2b8029a38498d4faa03cf3ebf17')
 
 build() {
 	cd "${srcdir}/$pkgname-$pkgver"
