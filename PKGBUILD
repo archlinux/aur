@@ -1,21 +1,26 @@
 # Maintainer: Ianis G. Vasilev <mail@ivasilev.net>
-
-pkgname=wintoggle-git
-pkgver=2.0
+pkgname=wintoggle
+pkgver=3.0.1
 pkgrel=0
-pkgdesc='A simple window focus toggler'
-arch=('x86_64')
-url='https://github.com/v--/wintoggle'
-license=('BSL-1.0')
+pkgdesc="A simple window focus toggler"
+arch=('x86_64' 'i386')
+url="https://github.com/v--/wintoggle"
+license=('Unlicense')
 depends=('libx11')
-provides=('wintoggle')
+makedepends=('git' 'ninja')
 conflicts=('wintoggle')
-source='git://github.com/v--/wintoggle.git'
+provides=('wintoggle')
+source=("git+https://github.com/v--/wintoggle.git#tag=v$pkgver")
 md5sums=('SKIP')
 
+build() {
+    cd "$pkgname"
+    ninja
+}
+
 package() {
-    cd "$srcdir/wintoggle"
-    dub build -b release
-    mkdir -p "$pkgdir/usr/bin"
-    cp "wintoggle" "$pkgdir/usr/bin/wintoggle"
+    cd "$pkgname"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 man/wintoggle.1 "${pkgdir}/usr/share/man/man1/wintoggle.1"
+    install -Dm755 wintoggle "${pkgdir}/usr/bin/wintoggle"
 }
