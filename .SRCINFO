@@ -1,9 +1,8 @@
 pkgbase = latexila
 	pkgdesc = A LaTeX editor designed for the GNOME desktop
 	pkgver = 3.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://projects.gnome.org/latexila/
-	install = latexila.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
