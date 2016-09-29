@@ -9,7 +9,11 @@ _features=('awslambda' 'cors' 'filemanager' 'git' 'hugo' 'ipfilter' 'jwt' 'local
 pkgname=caddy-full-bin
 _realname=caddy
 pkgver=0.9.3
+<<<<<<< HEAD
 pkgrel=4
+=======
+pkgrel=2
+>>>>>>> Patch caddy's systemd service file to reenable capabilities
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
@@ -33,10 +37,17 @@ printf -v _features '%s,' "${_features[@]}"
 _features=${_features%,}
 _url_prefix="https://caddyserver.com/download/build?os=linux&features=${_features}"
 
+<<<<<<< HEAD
 source_i686=("caddy.tar.gz::http://bit.ly/2djygqB" "caddy-systemd-service.patch")
 source_x86_64=("caddy.tar.gz::http://bit.ly/2daBvir" "caddy-systemd-service.patch")
 source_armv7h=("caddy.tar.gz::http://bit.ly/2d99iES" "caddy-systemd-service.patch")
 source_aarch64=("caddy.tar.gz::http://bit.ly/2cMNaAA" "caddy-systemd-service.patch")
+=======
+source_i686=("caddy.tar.gz::${_url_prefix}&arch=386" "caddy-systemd-service.patch")
+source_x86_64=("caddy.tar.gz::${_url_prefix}&arch=amd64" "caddy-systemd-service.patch")
+source_armv7h=("caddy.tar.gz::${_url_prefix}&arch=arm" "caddy-systemd-service.patch")
+source_aarch64=("caddy.tar.gz::${_url_prefix}&arch=arm64" "caddy-systemd-service.patch")
+>>>>>>> Patch caddy's systemd service file to reenable capabilities
 
 prepare() {
   patch -p0 -i caddy-systemd-service.patch
