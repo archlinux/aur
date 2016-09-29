@@ -17,7 +17,8 @@ url="https://caddyserver.com"
 license=('Apache')
 provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
-depends=('systemd>=229' 'patch')
+depends=('systemd>=229')
+makedepends=('patch')
 md5sums_i686=('SKIP'
               '77e89ee90f6b69730b11ca83c7fbf48b')
 md5sums_x86_64=('SKIP'
