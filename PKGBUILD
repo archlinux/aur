@@ -22,7 +22,6 @@ optdepends=(
     'babeltrace: view traces with `lttng view` command'
     'man-db: view man pages with the `lttng help` command'
 )
-options=('!libtool')
 sha1sums=('8e6e123d1879c0816eb2cd83f21257af355ef2a3')
 
 build()
