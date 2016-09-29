@@ -1,4 +1,4 @@
-pkgname=mingw-w64-arpack++
+pkgname=mingw-w64-arpackpp
 pkgver=2.3.0
 pkgrel=1
 pkgdesc="Arpack++ with patches (mingw-w64)"
