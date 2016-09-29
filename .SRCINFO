@@ -1,0 +1,16 @@
+pkgbase = whereami
+	pkgdesc = Uses WiFi signals and machine learning to predict where you are
+	pkgver = 0.2.29
+	pkgrel = 1
+	url = https://github.com/kootenpv/whereami
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-access_points
+	depends = python-tqdm
+	depends = python-scikit-learn
+	source = https://pypi.python.org/packages/82/54/ce860ee6a4af80dd2bf52b58e6852be33d484536b44a86b9bfc22416b651/whereami-0.2.29.tar.gz#
+	md5sums = 6d965a0049db9daf5bbf6526caa10ab9
+
+pkgname = whereami
+
