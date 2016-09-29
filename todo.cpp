@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
                                 active = false;
                         if( active ) {
                             listTodo.erase(begin(listTodo)+i);
-                            act = true;
+                            active = true;
                         }
                     }
                     break;
