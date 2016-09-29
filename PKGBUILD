@@ -2,7 +2,7 @@
 
 pkgname=mariadb-connector-c
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases."
 arch=('i686' 'x86_64')
 url="https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c/"
@@ -29,6 +29,7 @@ build() {
         -DWITH_OPENSSL=ON \
         -DWITH_MYSQLCOMPAT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
         ..
     make
 }
