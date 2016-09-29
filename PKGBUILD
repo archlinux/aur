@@ -11,7 +11,7 @@ depends='texlive-core'
 install=texlive-alteswab.install
 source=(http://www.gaehrken.de/fraktur/talteswab.zip LICENSE)
 md5sums=('e373b69be815eb48dd4b0a4819a8eb79'
-         '9abe7cb05a0a9031cbaf9622b2c1a56d')
+         'abff2d1d95bcbc3aa7c624a4fe0fcd47')
 
 package() {
   mkdir -p "$pkgdir/usr/share/texmf"
