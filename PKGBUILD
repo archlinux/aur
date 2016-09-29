@@ -2,16 +2,15 @@
 pkgname=jackman-kcm-git
 pkgver=r33.9d24d09
 pkgrel=1
-pkgdesc="KCM module for jackman"
+pkgdesc="KCM module for jackman, a collection of scripts that help managing multiple audio interfaces with Jack"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/jackman_kcm"
 provides=('jackman-kcm')
-license=("GPL")
+license=("GPL3")
 depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
 source=('jackman_kcm::git+https://github.com/progwolff/jackman_kcm.git')
 md5sums=('SKIP')
-screenshot=https://github.com/progwolff/jackman_kcm/raw/master/.screenshot.png
 
 _gitroot="https://github.com/progwolff/jackman_kcm.git"
 _gitname=jackman_kcm
