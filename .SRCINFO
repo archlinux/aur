@@ -1,12 +1,12 @@
 pkgbase = plasma5-applets-volumewin7mixer
 	pkgdesc = A fork of the default volume plasmoid with a Windows 7 theme (vertical sliders)
 	pkgver = 14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zren/plasma-applets/tree/master/org.kde.plasma.volumewin7mixer
 	arch = any
 	license = GPL
 	makedepends = extra-cmake-modules
-	depends = plasma-workspace
+	depends = plasma-pa
 	depends = qt5-declarative
 	source = https://github.com/Zren/plasma-applets/archive/volumewin7mixer-14.tar.gz
 	source = https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-volumewin7mixer/Add_CMakeLists.patch
