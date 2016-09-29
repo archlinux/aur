@@ -1,7 +1,7 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 pkgname=feedreader-git
-pkgver=2.0
-pkgrel=1
+pkgver=1.6.1
+pkgrel=2
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
