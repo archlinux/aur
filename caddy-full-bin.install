@@ -1,6 +1,5 @@
 post_install() {
-    getent passwd www-data || useradd --system --shell /usr/bin/nologin www-data
-    mkdir -p /etc/ssl/caddy && chown -R www-data:www-data /etc/ssl/caddy
+    mkdir -p /etc/ssl/caddy && chown -R http:http /etc/ssl/caddy
 }
 
 pre_upgrade() {
@@ -9,6 +8,16 @@ pre_upgrade() {
 
 post_upgrade() {
     systemctl daemon-reload
+    if [ $(vercmp $2 0.9.3-4) -lt 0 ]; then
+        userdel -r -f www-data
+	groupdel www-data
+        
+        chown -R http:http /etc/ssl/caddy
+	
+	echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
+        echo "With the package level 0.9.3-4 the caddy user is changed from 'www-data' to 'http'."
+        echo "You need to update the right for your caddy web directory with 'chown -R http:http <web-root>'"
+    fi
 }
 
 pre_remove() {
