@@ -14,7 +14,6 @@ provides=('lttng-ust')
 conflicts=('lttng-ust')
 optdepends=('babeltrace')
 options=('!libtool')
-install='lttng-ust-git.install'
 source=('git://git.lttng.org/lttng-ust.git')
 sha1sums=('SKIP')
 
