@@ -10,7 +10,8 @@ pages:
   - curl -o index.sh https://gitlab.com/snippets/27473/raw
   - chmod +x index.sh
   - sed -i -e 's/\r$//' index.sh
-  - ./index.sh
+  - cd public
+  - ../index.sh https://conoria.gitlab.io/wire-pkgbuilds > index.html
   
   artifacts:
     paths:
