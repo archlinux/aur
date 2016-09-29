@@ -8,6 +8,7 @@ url="https://github.com/progwolff/jackman_kcm"
 provides=('jackman-kcm')
 license=("GPL3")
 depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
+optdepends=('mplayer: test sound')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
 source=('jackman_kcm::git+https://github.com/progwolff/jackman_kcm.git')
 md5sums=('SKIP')
