@@ -1,8 +1,8 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=miceamaze
-pkgver=4.2.1
-pkgrel=3
+pkgver=4.2.2
+pkgrel=1
 pkgdesc="A free video game that features a maze with mice and snakes"
 arch=('i686' 'x86_64')
 url="http://www.miceamaze.org/"
@@ -21,4 +21,4 @@ package() {
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
-md5sums=('36b91880582c5292962a4b9be9655508')
+md5sums=('98346949e8c4da4b158ac58a94bf8d78')
