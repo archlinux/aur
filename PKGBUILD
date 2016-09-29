@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=amule-daemon
-pkgver=r10941
+pkgver=r10964
 pkgrel=1
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
@@ -24,11 +24,12 @@ source=("http://amule.sourceforge.net/tarballs/aMule-SVN-${pkgver}.tar.bz2"
         'amuleweb.service'
         'amule.sysuser'
         )
-sha1sums=('baf78a53dcdf00f0eb161adfd110cfa7c2b14f03'
+sha1sums=('cdd36b953d36db1308f92794232ce98243438a53'
           '3a2b451c3a35ab1745dd88726fe1454bc1227542'
           '4c4638e39f01c782e0e32d950fd29b4a6f4a398a'
           '128049ba8dce9dedc16357b7027736d99d583761'
-          '266dd97212b5e269f6c9b0665880cd76e68d83ea')
+          '266dd97212b5e269f6c9b0665880cd76e68d83ea'
+          )
 install=amule-daemon.install
 
 prepare() {
