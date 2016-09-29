@@ -1,0 +1,12 @@
+image: conoria/pkgbuilder:manjaro
+pages:
+  script:
+  - mkdir public
+  - mv *.pkg.tar.xz public
+  
+  artifacts:
+    paths:
+    - public
+    
+  only:
+  - master
