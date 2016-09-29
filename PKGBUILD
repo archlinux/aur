@@ -1,5 +1,5 @@
 pkgname=amule-git
-pkgver=2.4.0.r10372.65abe6d
+pkgver=2.4.0.r10389.f9aac98
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
@@ -42,6 +42,8 @@ pkgver() {
 
 prepare() {
   cd amule/
+
+  sed -i s/configure.in/configure.ac/ $srcdir/configure_ignore_gdlib-config_garbage.diff
 
   patch -Np1 < $srcdir/aMule-cas-datadir.patch
   patch -Np1 < $srcdir/configure_ignore_gdlib-config_garbage.diff
