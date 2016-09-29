@@ -1,6 +1,6 @@
 # Maintainer=alive4ever
 pkgname=libressl-netcat
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
@@ -11,7 +11,7 @@ provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
 source=("http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
 	"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
-sha256sums=('5f87d778e5d62822d60e38fa9621c1c5648fc559d198ba314bd9d89cbf67d9e3'
+sha256sums=('8652bf6b55ab51fb37b686a3f604a2643e0e8fde2c56e6a936027d12afda6eae'
             'SKIP')
 ## To automatically validate the gpg key during build, add 'keyserver_options auto_key_retrieve' line to your local build account ~/.gnupg/gpg.conf
 ## Alternatively, fetch the key manually before running makepkg: 'gpg --keyserver pgp.mit.edu --receive-key A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5'
