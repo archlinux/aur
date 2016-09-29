@@ -1,4 +1,4 @@
-# Maintainer: Ecmel B. CANLIER <ecbercnlmc(at)gmail.com>
+# Maintainer: Ecmel B. CANLIER <aur+<package name>(at)admicos.cf>
 pkgname="ccemuredux"
 pkgver=1.2
 pkgrel=1
