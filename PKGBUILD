@@ -1,3 +1,4 @@
+# Maintainer: Julian Wolff <wolff at julianwolff dot de>
 pkgname=jackman-kcm-git
 pkgver=r33.9d24d09
 pkgrel=1
@@ -10,6 +11,7 @@ depends=('jackman' 'xdg-utils' 'kdeclarative' 'kdelibs' 'plasma-framework')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
 source=('jackman_kcm::git+https://github.com/progwolff/jackman_kcm.git')
 md5sums=('SKIP')
+screenshot=https://github.com/progwolff/jackman_kcm/raw/master/.screenshot.png
 
 _gitroot="https://github.com/progwolff/jackman_kcm.git"
 _gitname=jackman_kcm
