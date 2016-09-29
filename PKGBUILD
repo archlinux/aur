@@ -3,13 +3,13 @@
 
 pkgname=fotowall
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A creative tool that allows you to layout your photos or pictures in a personal way"
 arch=('i686' 'x86_64')
 url="http://www.enricoros.com/opensource/fotowall/"
 license=('GPL2')
 depends=('qt4' 'v4l-utils')
-source=("http://fotowall.googlecode.com/files/Fotowall-${pkgver}.tar.bz2")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/fotowall/Fotowall-${pkgver}.tar.bz2")
 sha256sums=('e4d0c005d2cb1d7c09438bfc3098eadebc08946e4fbc0655b7fc8b046de3810d')
 
 prepare() {
