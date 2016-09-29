@@ -13,7 +13,6 @@ conflicts=('lttng-tools')
 makedepends=('git')
 depends=('popt' 'flex>=2.5.35' 'liburcu>=0.7.2' 'lttng-ust' 'linux>=2.6.27')
 optdepends=('lttng-modules: kernel tracing support' 'babeltrace: trace viewing')
-options=('!libtool')
 source=('git://git.lttng.org/lttng-tools.git')
 sha1sums=('SKIP')
 
