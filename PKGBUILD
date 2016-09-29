@@ -9,7 +9,7 @@ _features=('awslambda' 'cors' 'filemanager' 'git' 'hugo' 'ipfilter' 'jwt' 'local
 pkgname=caddy-full-bin
 _realname=caddy
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
@@ -19,13 +19,13 @@ conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229')
 makedepends=('patch')
 md5sums_i686=('SKIP'
-              '61c39378589e5c59314e7a157fbf9a53')
+              'bb3b2b3e58fe090a298e3d20b6f2597b')
 md5sums_x86_64=('SKIP'
-                '61c39378589e5c59314e7a157fbf9a53')
+                'bb3b2b3e58fe090a298e3d20b6f2597b')
 md5sums_armv7h=('SKIP'
-                '61c39378589e5c59314e7a157fbf9a53')
+                'bb3b2b3e58fe090a298e3d20b6f2597b')
 md5sums_aarch64=('SKIP'
-                 '61c39378589e5c59314e7a157fbf9a53')
+                 'bb3b2b3e58fe090a298e3d20b6f2597b')
 install='caddy-full-bin.install'
 
 # expand the feature array
@@ -40,11 +40,11 @@ source_armv7h=("caddy.tar.gz::${_url_prefix}&arch=arm" "caddy-systemd-service.pa
 source_aarch64=("caddy.tar.gz::${_url_prefix}&arch=arm64" "caddy-systemd-service.patch")
 
 prepare() {
-  patch -p0 -i caddy-systemd-service.patch
+  msg2 "Patching systemd service file"
+  patch -Np1 -i "$srcdir/caddy-systemd-service.patch" "${srcdir}/init/linux-systemd/caddy.service"
 }
 
 package() {
-  echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
   install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/bin/caddy"
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
   install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/${_realname}/service.txt"
