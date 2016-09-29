@@ -2,7 +2,7 @@ pkgname=(
     'mailhog-bin'
 )
 pkgver=v0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Web and API based SMTP testing"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -16,7 +16,7 @@ source_x86_64=("https://github.com/mailhog/MailHog/releases/download/${pkgver}/M
 md5sums_x86_64=('3e6f167e5c398d0220dd001f0aad7a85')
 
 source=("mailhog.service")
-md5sums=('fbe281034608abdbf8ce5c9527bbf6a8')
+md5sums=('9392d6c6fe29668d100fc3bb38bd93dd')
 
 package_mailhog-bin() {
     cd ${srcdir}
