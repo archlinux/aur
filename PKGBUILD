@@ -13,7 +13,6 @@ makedepends=('git' 'asciidoc' 'xmlto')
 provides=('lttng-ust')
 conflicts=('lttng-ust')
 optdepends=('babeltrace')
-options=('!libtool')
 source=('git://git.lttng.org/lttng-ust.git')
 sha1sums=('SKIP')
 
