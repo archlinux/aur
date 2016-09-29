@@ -5,8 +5,8 @@
 
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=aws-sdk-cpp-git
-pkgver=0.14.7.r0.gcfd293e
-pkgrel=2
+pkgver=1.0.10.r0.g9448c9d
+pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
 arch=(any)
@@ -31,10 +31,10 @@ validpgpkeys=()
 
 _gitname=${pkgname}-${pkgver}
 
-pkgver() {
-	cd $_gitname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#	cd $_gitname
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
 	cd $_gitname
