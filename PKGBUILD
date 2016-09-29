@@ -15,7 +15,6 @@ optdepends=(
 )
 options=('!libtool')
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-install='lttng-ust.install'
 sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
 
 build()
