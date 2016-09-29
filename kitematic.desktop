@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Kitematic
+Comment=Visual Docker Container Management
+Exec=/usr/bin/kitematic
+Terminal=false
+Icon=kitematic
+Categories=System
