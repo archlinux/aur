@@ -2,14 +2,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pdftxt
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple wrapper around mupdf library to extract text from pdf files."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir"
 license=('custom:BSD')
 groups=()
-depends=('mupdf')
+depends=('mupdf' 'libmupdf')
 makedepends=()
 optdepends=()
 checkdepends=()
