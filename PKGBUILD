@@ -1,7 +1,7 @@
 # Contributor: Darko82 <darko 82 (hat) gmail dotcom>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=photoflow-git
-pkgver=0.2.6.r205.gf2e39c0
+pkgver=0.2.7.r4.g8329025
 pkgrel=1
 pkgdesc="Non-destructive, layer-based photo retouching including RAW image development"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('libgexiv2' 'vips' 'gtkmm' 'pugixml' 'libjpeg-turbo' 'desktop-file-util
 makedepends=('git' 'gobject-introspection' 'cmake')
 provides=('photoflow')
 conflicts=('photoflow')
-install=photoflow.install
 
 source=("${pkgname%-*}"::"git://github.com/aferrero2707/PhotoFlow.git#branch=stable")
 md5sums=("SKIP")
