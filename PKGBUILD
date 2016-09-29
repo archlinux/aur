@@ -1,7 +1,7 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=aioxmpp
 pkgname=python-${_pkgname}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An XMPP library for use with Python 3.4 asyncio"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3' 'Apache')
 depends=('python' 'python-dnspython' 'libxml2' 'python-lxml' 'python-orderedset' 'python-tzlocal' 'python-pyopenssl' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiosasl' 'python-multidict')
 makedepends=('python-setuptools')
 source=("https://github.com/horazont/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ca9b3d854108ef78ff3b8b3aff220e5e2fb15140e2dd5376db979b2698072da3ca02e5697c8fe7c5e0f42e678b01070d0f13463febf5eaafcf01605cffd5a5c6')
+sha512sums=('7a00b816661f1a3f4684b8867a232ae009f6747eab2e2e505b4616081905c7203debec8bf40b6367daa1fc3042c7a4e65712080f3a22992e3c47e730afabfaee')
 
 package() {
     cd "$_pkgname-$pkgver"
