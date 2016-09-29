@@ -5,10 +5,10 @@
 
 pkgname=firejail-extras
 pkgver=0.9.42
-pkgrel=2
+pkgrel=3
 pkgdesc="Extra profiles for firejail"
 arch=('any')
-url="https://aur.archlinux.org/packages/firejail-profiles/"
+url="https://aur.archlinux.org/packages/firejail-extras/"
 license=('GPL2')
 source=("brackets.profile"
         "openshot.profile"

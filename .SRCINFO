@@ -1,8 +1,8 @@
 pkgbase = firejail-extras
 	pkgdesc = Extra profiles for firejail
 	pkgver = 0.9.42
-	pkgrel = 2
-	url = https://aur.archlinux.org/packages/firejail-profiles/
+	pkgrel = 3
+	url = https://aur.archlinux.org/packages/firejail-extras/
 	arch = any
 	license = GPL2
 	source = brackets.profile
