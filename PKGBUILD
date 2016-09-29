@@ -1,8 +1,8 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=toybox
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A BSD-licensed alternative to busybox"
 arch=("i686" "x86_64")
 license=("BSD")
@@ -11,7 +11,7 @@ url="http://landley.net/toybox/"
 depends=('attr')
 source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
 
-# Todo, prepare that chage the system minimal UID and user UIDs to the ones used in arch
+# ToDo, prepare that chage the system minimal UID and user UIDs to the ones used in arch
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,4 +35,4 @@ package() {
   cp "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/toybox/"
 }
 # MD5? blame Pacman dev team
-md5sums=('d86c78624b47625c2f0fc64eda599443')
+md5sums=('e959e5ff8c6806781eb06e56f302a393')
