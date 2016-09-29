@@ -2,13 +2,13 @@
 
 _pkgname=ext4-crypt
 pkgname=${_pkgname}-git
-pkgver=r19.772851d
+pkgver=r26.df324fe
 pkgrel=1
 pkgdesc="Userspace tool to create ext4 encrypted directories. Git checkout"
 arch=(i686 x86_64)
 url="https://github.com/gdelugre/ext4-crypt"
 license=('custom')
-depends=('keyutils' 'libscrypt')
+depends=('keyutils' 'libsodium')
 makedepends=('git' 'cmake')
 conflicts=($_pkgname)
 provides=($_pkgname)
