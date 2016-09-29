@@ -44,11 +44,6 @@ source_x86_64=("caddy.tar.gz::http://bit.ly/2daBvir" "caddy-systemd-service.patc
 source_armv7h=("caddy.tar.gz::http://bit.ly/2d99iES" "caddy-systemd-service.patch")
 source_aarch64=("caddy.tar.gz::http://bit.ly/2cMNaAA" "caddy-systemd-service.patch")
 
-prepare() {
-  msg2 "Patching systemd service file"
-  patch -Np1 -i "${srcdir}/caddy-systemd-service.patch" "${srcdir}/init/linux-systemd/caddy.service"
-}
-
 package() {
   install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/bin/caddy"
   install -Dm644 "${srcdir}/init/linux-systemd/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
