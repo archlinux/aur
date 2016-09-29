@@ -1,0 +1,4 @@
+d /var/lib/telegraf   0755 telegraf telegraf
+d /etc/telegraf       0755 telegraf telegraf
+x /var/lib/telegraf/*
+x /etc/telegraf/*

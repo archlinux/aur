@@ -2,7 +2,9 @@
 
 # arg 1:  the new package version
 post_install() {
-  systemd-sysusers telegraf.conf
+  systemd-sysusers /usr/lib/sysusers.d/telegraf.conf
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/telegraf.conf
+  systemctl daemon-reload
 }
 
 # vim:set ts=2 sw=2 et:

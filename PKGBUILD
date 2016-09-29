@@ -15,10 +15,12 @@ install="telegraf.install"
 source=("git+https://github.com/influxdata/telegraf#tag=$pkgver"
         'telegraf.install'
         'telegraf.sysusers'
+        'telegraf.tmpfiles'
 				'telegraf.service')
 md5sums=('SKIP'
-         '9b2c2ba850bdb13e08bdfbfbc05a3a06'
+         '9eb8a4195d3fe03e06c25ac56dd23e1a'
          '58cc9edf8fbf07e7d3a0357db78121b1'
+         '9c7a4df3556cab94837c432f5e46cf04'
          'cd4d39cec1edf54ab2aa4b7599c81ecc')
 
 build()
@@ -43,6 +45,7 @@ package()
 {
  	cd $srcdir
   install -Dm644 telegraf.sysusers "$pkgdir/usr/lib/sysusers.d/telegraf.conf"
+  install -Dm644 telegraf.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/telegraf.conf"
   install -Dm644 telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
 
   cd $GOPATH
