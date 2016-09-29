@@ -1,0 +1,15 @@
+#/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/kapacitor.conf
+  systemd-tmpfiles --create  /usr/lib/tmpfiles.d/kapacitor.conf
+  systemctl daemon-reload
+
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+}
+
+# vim:set ts=2 sw=2 et:

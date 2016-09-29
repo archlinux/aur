@@ -1,0 +1,6 @@
+d /var/lib/kapacitor   0755 kapacitor kapacitor
+d /var/log/kapacitor   0700 kapacitor kapacitor
+d /etc/kapacitor       0755 kapacitor kapacitor
+x /var/lib/kapacitor/*
+x /var/log/kapacitor/*
+x /etc/kapacitor/*
