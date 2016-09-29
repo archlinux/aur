@@ -19,13 +19,13 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229' 'patch')
 md5sums_i686=('SKIP'
-              '61c39378589e5c59314e7a157fbf9a53')
+              '77e89ee90f6b69730b11ca83c7fbf48b')
 md5sums_x86_64=('SKIP'
-                '61c39378589e5c59314e7a157fbf9a53')
+              '77e89ee90f6b69730b11ca83c7fbf48b')
 md5sums_armv7h=('SKIP'
-                '61c39378589e5c59314e7a157fbf9a53')
+              '77e89ee90f6b69730b11ca83c7fbf48b')
 md5sums_aarch64=('SKIP'
-                 '61c39378589e5c59314e7a157fbf9a53')
+              '77e89ee90f6b69730b11ca83c7fbf48b')
 install='caddy-full-bin.install'
 
 # expand the feature array
