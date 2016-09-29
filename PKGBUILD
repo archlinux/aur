@@ -2,12 +2,13 @@
 
 pkgname=prosody-mod-mam-archive
 pkgver=r2199.2582d09d2ec4
-pkgrel=1
+pkgrel=2
 pkgdesc="XEP-0136: Message Archiving for Prosody"
 arch=('any')
 url="https://modules.prosody.im/mod_mam_archive.html"
 license=('MIT')
-depends=('prosody' 'prosody-mod-mam')
+depends=('prosody' 'prosody-mod-mam-hg')
+provides=('prosody-mod-mam-archive')
 makedepends=('mercurial')
 source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
