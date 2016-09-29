@@ -3,7 +3,7 @@
 # Contributor: Jan Stępień <jstepien@users.sourceforge.net>
 
 pkgname=imgur.sh
-pkgver=6
+pkgver=7.1
 pkgrel=1
 pkgdesc="An Imgur uploader bash script"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('xsel: copy the URL to clipboard (or xclip)'
 conflicts=('imgurbash')
 replaces=('imgurbash')
 source=("https://github.com/tremby/imgur.sh/archive/v${pkgver}.tar.gz")
-sha256sums=('a4334d64b6e7cf3deb1f4a5091e9ef3da5539b158f6953b2379ded836b2930f6')
+sha256sums=('04b7d23d2dc6222bedaebb9f043c4fc9eeaef082a42deafbce8a3ef5ce6d2cf6')
 
 package() {
   cd "${pkgname}-${pkgver}"
