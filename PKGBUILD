@@ -2,7 +2,7 @@
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=libjpeg6-turbo
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nasm')
 provides=('libjpeg6')
 conflicts=('libjpeg6')
 source=("http://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz")
-sha256sums=('9f397c31a67d2b00ee37597da25898b03eb282ccd87b135a50a69993b6a2035f')
+sha256sums=('41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c')
 
 build() {
   cd libjpeg-turbo-${pkgver}
