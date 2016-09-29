@@ -14,7 +14,7 @@ makedepends=('git')
 
 #source=("git+https://github.com/kanishka-linux/AnimeWatch.git")
 source=("https://github.com/kanishka-linux/${_pkgname}/releases/download/v${pkgver}-${pkgrel}/${_pkgname}-${pkgver}-${pkgrel}.tar.bz2")
-md5sums=('a81041e3eb0369517e5f55c06a342bf8')
+md5sums=('dbedfa57f8282de1f3816b22c6555a17')
 _gitname=AnimeWatch-PyQt5
 
 
