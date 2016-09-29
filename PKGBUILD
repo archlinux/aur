@@ -17,16 +17,15 @@ url="https://caddyserver.com"
 license=('Apache')
 provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
-depends=('systemd>=229')
-makedepends=('patch')
+depends=('systemd>=229' 'patch')
 md5sums_i686=('SKIP'
-              'bb3b2b3e58fe090a298e3d20b6f2597b')
+              '61c39378589e5c59314e7a157fbf9a53')
 md5sums_x86_64=('SKIP'
-                'bb3b2b3e58fe090a298e3d20b6f2597b')
+                '61c39378589e5c59314e7a157fbf9a53')
 md5sums_armv7h=('SKIP'
-                'bb3b2b3e58fe090a298e3d20b6f2597b')
+                '61c39378589e5c59314e7a157fbf9a53')
 md5sums_aarch64=('SKIP'
-                 'bb3b2b3e58fe090a298e3d20b6f2597b')
+                 '61c39378589e5c59314e7a157fbf9a53')
 install='caddy-full-bin.install'
 
 # expand the feature array
@@ -34,6 +33,11 @@ printf -v _features '%s,' "${_features[@]}"
 # remove subsequent ,
 _features=${_features%,}
 _url_prefix="https://caddyserver.com/download/build?os=linux&features=${_features}"
+
+prepare() {
+  msg2 "Patching systemd service file"
+  patch -Np1 -i "${srcdir}/caddy-systemd-service.patch" "${srcdir}/init/linux-systemd/caddy.service"
+}
 
 source_i686=("caddy.tar.gz::http://bit.ly/2djygqB" "caddy-systemd-service.patch")
 source_x86_64=("caddy.tar.gz::http://bit.ly/2daBvir" "caddy-systemd-service.patch")
