@@ -3,12 +3,13 @@
 _basepkgname=libudev0-shim
 pkgname=lib32-${_basepkgname}
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='libudev.so.0 compatibility library for systems with newer udev versions (32 bit)'
 url='https://github.com/archlinux/libudev0-shim'
 arch=('x86_64')
 license=('GPL')
 provides=('lib32-libudev0')
+conflicts=('lib32-libudev0')
 depends=('lib32-systemd')
 makedepends=('systemd')
 source=(${_basepkgname}.tar.gz::https://github.com/archlinux/libudev0-shim/archive/v${pkgver}.tar.gz)
