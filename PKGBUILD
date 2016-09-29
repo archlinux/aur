@@ -5,10 +5,10 @@
 
 pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
-pkgver='7.0.0'
+pkgver='7.1.0'
 _pkgver=${pkgver//./_}
 pkgrel=1
-_pkgrel=846701
+_pkgrel=f2c212
 pkgdesc='easy-to-use UML2.x modeler'
 arch=('any')
 url="http://astah.net/editions/professional"
@@ -22,7 +22,7 @@ source=("http://cdn.astah.net/downloads/${pkgname}-${_pkgver}-$_pkgrel.zip"
 	"astah-professional-doc.png"
 	"LICENSE")
 
-md5sums=('72d70aa8385315016a14905e3ca8eeee'
+md5sums=('592e66d570840003da521fcc912642a1'
          '7f85e4ae3c0331d8a7d842a0c17090f9'
          'df84e754977e1958963779b3a59182e1'
          '2fbccb662c6435f75c62751437fb3f1e'
