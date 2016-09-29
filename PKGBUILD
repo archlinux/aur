@@ -3,7 +3,7 @@
 pkgname=madgraph
 pkgver=2.4.0
 _dirname="MG5_aMC_v${pkgver//./_}"
-pkgrel=20160513
+pkgrel=20160929
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -14,49 +14,40 @@ sha256sums=('9571bcdefb4a15546db1d403f6d2818fc4d21033558ca2a7d376cc71d197aa66')
 options=("!strip")
 
 prepare() {
-    echo "################################################################################"
-    echo "Patching python -> python2"
+    # Some of the build steps below require this patch
+    msg2 "Fixing python references for python2"
     cd ${srcdir}/${_dirname}
-    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*/usr/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
-    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*/usr/bin/python\s*$|#!/usr/bin/env python2|'
-    echo "################################################################################"
-    echo "Building CutTools"
+    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
+    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)\?/bin/python\s*$|#!/usr/bin/env python2|'
+
+    msg2 "Building CutTools"
     cd ${srcdir}/${_dirname}/vendor/CutTools
+    # CutTools' makefile does not allow parallel compilation, hence -j1
     make -j1
     make clean
-    echo "################################################################################"
-    # DisceteSampler doesn't compile (if someone needs this, I welcome a patch)
-    # echo ""
-    # echo "################################################################################"
-    # echo "Building DiscreteSampler"
+
+    # msg2 "Building CutTools"
+    msg2 "Can't build DiscreteSampler (if you need this, I welcome a patch)"
     # cd ${srcdir}/${_dirname}/vendor/DiscreteSampler
     # make
     # make clean
-    # echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Building IREGI"
+
+    msg2 "Building IREGI"
     cd ${srcdir}/${_dirname}/vendor/IREGI/src
     make
     make clean
-    echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Building SMWidth"
+
+    msg2 "Building SMWidth"
     cd ${srcdir}/${_dirname}/vendor/SMWidth
     make
     make clean
-    echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Building StdHEP"
+
+    msg2 "Building StdHEP"
     cd ${srcdir}/${_dirname}/vendor/StdHEP
     make
     make clean
-    echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Building Ninja"
+
+    msg2 "Building Ninja"
     cd ${srcdir}/${_dirname}/vendor/
     tar xf ninja.tar.gz
     rm ninja.tar.gz
@@ -64,39 +55,31 @@ prepare() {
     ./configure
     make
     make clean
-    echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Building OneLoop"
+
+    msg2 "Building OneLoop"
     cd ${srcdir}/${_dirname}/vendor/
     tar xf oneloop.tar.gz
     rm oneloop.tar.gz
     cd OneLOop-3.6
     ./create.py
     ./clean.sh
-    echo "################################################################################"
-    echo ""
-    echo "################################################################################"
-    echo "Extracting documentation"
+
+    msg2 "Extracting documentation"
     cd ${srcdir}/${_dirname}
     tar xf doc.tgz
     rm doc.tgz
 
-    echo "Patching python -> python2"
+    # This needs to be run again as there are new python files
+    msg2 "Fixing python references for python2"
     cd ${srcdir}/${_dirname}
-    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*/usr/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
-    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*/usr/bin/python\s*$|#!/usr/bin/env python2|'
+    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)\?/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
+    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)\?/bin/python\s*$|#!/usr/bin/env python2|'
 
-    echo "Patching root_path"
-    cd ${srcdir}/${_dirname}
-    find . -type f -print0 | xargs -0 sed -i 's|^\(\s*\)root_path\s*=.*$|\1root_path = "/usr/share/madgraph"|'
-
-    echo "Removing CVS directories"
+    msg2 "Removing CVS directories"
     cd ${srcdir}/${_dirname}
     find . -type d -name "CVS" | xargs rm -rf
     find . -type f -name ".bzrignore" | xargs rm -f
     find . -type f -name ".bzr" | xargs rm -rf
-    echo "################################################################################"
 
 }
 
@@ -105,6 +88,11 @@ package() {
     install -Dm755 "${srcdir}/${_dirname}/bin/mg5_aMC" "${pkgdir}/usr/bin/mg5_aMC"
     install -Dm755 "${srcdir}/${_dirname}/aloha/bin/aloha" "${pkgdir}/usr/bin/aloha"
     install -Dm755 "${srcdir}/${_dirname}/MadSpin/madspin" "${pkgdir}/usr/bin/madspin"
+
+    # This should be converted to a proper patch file in the future
+    msg2 "Patching root_path"
+    find ${pkgdir}/usr/bin -type f -print0 | xargs -0 sed -i 's|^\(\s*\)root_path\s*=.*$|\1root_path = "/usr/share/madgraph"|'
+
 
     install -Dm655 "${srcdir}/${_dirname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
