@@ -5,10 +5,10 @@ pkgrel=1
 pkgdesc='Collection of scripts that help managing multiple audio interfaces with Jack'
 arch=('any')
 url=''
-license=('GPL')
+license=('GPL3')
 conflicts=(jackman)
 provides=(jackman)
-depends=('jack2' 'alsa-utils' 'systemd' 'coreutils')
+depends=('jackdbus' 'alsa-utils' 'python2' 'systemd' 'coreutils')
 makedepends=('git')
 optdepends=('zenity: system notifications'
 	   'kdebase-kdialog: system notifications')
