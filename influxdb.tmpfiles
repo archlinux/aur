@@ -1,0 +1,4 @@
+d /var/lib/influxdb   0755 influxdb influxdb
+d /etc/influxdb       0755 influxdb influxdb
+x /var/lib/influxdb/*
+x /etc/influxdb/*

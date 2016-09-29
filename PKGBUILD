@@ -18,10 +18,12 @@ backup=('etc/influxdb/influxdb.conf')
 install='influxdb.install'
 source=("git+https://github.com/influxdata/influxdb#tag=v$pkgver"
         "influxdb.install"
-        "influxdb.sysusers")
+        "influxdb.sysusers"
+        "influxdb.tmpfiles")
 md5sums=('SKIP'
-         '3fe2817930f48f59596f6021aa4a67d7'
-         '349ecdadb3035718a57e781913a01cf6')
+         '19ce2f8bd9aa2058edc2efb3e7555cb7'
+         '349ecdadb3035718a57e781913a01cf6'
+         '175d54bf6a82222ffe491f4a684582bd')
 build()
 {
   export GOPATH="$srcdir"
@@ -45,6 +47,7 @@ package()
 {
   cd $srcdir
   install -Dm644 influxdb.sysusers "$pkgdir/usr/lib/sysusers.d/influxdb.conf"
+  install -Dm644 influxdb.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/influxdb.conf"
 
   cd $GOPATH
   install -Dsm755 bin/influxd "$pkgdir/usr/bin/influxd"
