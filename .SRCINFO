@@ -1,12 +1,12 @@
 pkgbase = noteshrink-git
 	pkgdesc = Convert scans of handwritten notes to beautiful, compact PDFs
 	pkgver = 0.1.r13.gfd645e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mzucker.github.io/2016/09/20/noteshrink.html
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-numpy
+	depends = python-numpy>=1.10
 	depends = python-scipy
 	depends = python-pillow
 	depends = imagemagick
