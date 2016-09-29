@@ -1,3 +1,4 @@
+# Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Maintainer: Andreas Linz <alinz@klingt.net>
 # Based on `caddy=all-features` by Eric Engestrom: https://aur.archlinux.org/packages/caddy-all-features/
 # Enable Cross Origin Resource Sharing
@@ -9,7 +10,7 @@ _features=('awslambda' 'cors' 'filemanager' 'git' 'hugo' 'ipfilter' 'jwt' 'local
 pkgname=caddy-full-bin
 _realname=caddy
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
