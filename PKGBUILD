@@ -2,8 +2,8 @@
 
 
 pkgname=cloudcross
-pkgver=v1.2.2
-pkgrel=2
+pkgver=v1.2.3
+pkgrel=1
 pkgdesc="CloudCross is a improved multi-cloud client with YAndex disk, Google Drive and Dropbox support."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=("http://cloudcross.mastersoft24.ru/download/archive/?r=pacman")
 
 
-md5sums=("ce3aa8ce169897549fb288a634d1c536")
+md5sums=("27d3febd4c3d2ba1d5ff6c1f1311eba5")
 
 
 build() {
