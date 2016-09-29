@@ -2,7 +2,7 @@
 
 pkgname=electron037
 pkgver=0.37.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for writing cross-platform desktop applications using JavaScript, HTML and CSS."
 arch=('arm' 'i686' 'x86_64')
 url="https://github.com/electron/electron"
