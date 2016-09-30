@@ -22,8 +22,12 @@ optdepends=('createrepo_c: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
-source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('e4d5b7424fd9c14fbe3b150367357a86')
+source=("$url/archive/$pkgname-$pkgver.tar.gz"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
+md5sums=('e4d5b7424fd9c14fbe3b150367357a86'
+         'd277502b9a95484594f86231d073dae0'
+         '1052fa4db74b59b0c195f4756bd865e8')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
@@ -50,6 +54,9 @@ package() {
 		    -i "$pkgdir/etc/security/console.apps/$pkgname"
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
+
+	install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:

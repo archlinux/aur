@@ -15,7 +15,11 @@ pkgbase = mock
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/site-defaults.cfg
 	source = https://github.com/rpm-software-management/mock/archive/mock-1.2.20.tar.gz
+	source = mock.sysusers
+	source = mock.tmpfiles
 	md5sums = e4d5b7424fd9c14fbe3b150367357a86
+	md5sums = d277502b9a95484594f86231d073dae0
+	md5sums = 1052fa4db74b59b0c195f4756bd865e8
 
 pkgname = mock
 
