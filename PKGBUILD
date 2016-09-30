@@ -17,7 +17,7 @@ __pkgname='refind'
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.10.3.r491.508d890
+pkgver=0.10.3.r493.c5bc1ce
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
 if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
 	pkgdesc="${pkgdesc} - Built with GNU-EFI libs"
-	makedepends=('gnu-efi-libs')
+	makedepends+=('gnu-efi-libs')
 
 else
 
