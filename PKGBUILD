@@ -1,103 +1,113 @@
-# Maintainer: ahjolinna <ahjolinna@yahoo.com>
+# Maintainer:  ahjolinna <@yahoo.com>
+
+# WARNING: The configure script will automatically enable any optional
+# features it finds support for on your system. If you want to avoid
+# linking against something you have installed, you'll have to disable
+# it in the configure below. The package() script will attempt to
+# update the dependencies based on dynamic libraries when packaging.
+
 pkgname=mpv-ahjolinna-git
-pkgver=20160929.b692037
-pkgrel=2
-pkgdesc="MPV with my ahjolinna config's (uses ffmpeg-full). (GIT version)"
+_gitname=mpv
+pkgver=0.20.0_76_g026ccca
+pkgrel=1
+pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('x86_64')
-depends=('desktop-file-utils'
-         'smbclient'
-         'libguess'
-         'enca'
-         'libxv'
-         'libcdio-paranoia'
-         'openal'
-         'luajit'
-         'lua'
-         'libssh'
-         'libcaca'
-         'rsound'
-         'libxss'
-         'libdvdnav'
-         'jack2'
-         'libbluray'
-         'libpulse'
-         'x264'
-         'x265'
-         'libbs2b'
-         'libgme'
-         'mesa'
-         'libxinerama'
-         'libxrandr'
-         'libxkbcommon'
-         'hicolor-icon-theme'
-         'sdl2'
-         'lcms2'
-         'lame'
-         'ffmpeg'
-         'libva'
-         'rubberband'
-         'uchardet'
-         'libarchive'
-         'libsoxr'
-         'v4l-utils'
-         'vapoursynth'
-            )
-license=('GPL3;BSD;LGPL')
-url="http://mpv.io"
-screenshot='http://i.imgur.com/eFjf71A.png'
-makedepends=('git'
-             'waf'
-             'python-docutils'
-             'yasm'
-             'ladspa'
-             'fontconfig'
-             'fribidi'
-             'acpitool'
-             'inxi'
-             )
-optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
+license=('GPL3')
+url='http://mpv.io'
+screenshot='http://i.imgur.com/6TacA5I.png'
+_undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
+depends=('pulseaudio' 'ffmpeg' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
+         'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
+	 'wayland' 'v4l-utils' 'luajit' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
+         'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
+
+optdepends=('ttf-soure-sans-pro:  needed for subtitles'
+            'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             'livestreamer: to watch live video streams (twitch.tv)'
             'vapoursynth-plugin-mvtools: Realtime motion interpolating playback in mpv'
             'acpitool: for battery detection'
-            'inxi: HIDPI-detection')
+            'inxi: HIDPI-detection'
+            'svp: SmoothVideo Project' )
 
-provides=('mpv' 'mpv-git')
-conflicts=('mpv' 'mpv-git')
+makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
+             'samba' 'acpitool' 'waf' 'inxi' 'git' 'vapoursynth'
+             'livestreamer' 'youtube-dl')
+# check kind of graphic card
+if [ -f /usr/bin/nvidia-settings ]||[ $_vdpau = 1 ]|| [ -f /usr/lib/xorg/modules/drivers/nouveau_drv.so ]; then
+   # msg "installing libvdpau for NVIDIA users" 
+makedepends+=('libvdpau')
+optdepends+=('libvdpau: hardware-acceleration for NVIDIA users')
+   elif [ -f /usr/bin/aticonfig ]||[ $_vdpau = 1 ]|| [ -f /usr/lib/xorg/modules/drivers/radeon_drv.so ]; then
+    msg "installing libvdpau for Radeon users" 
+makedepends+=('libvdpau')
+optdepends+=('libvdpau: hardware-acceleration for Radeon users')
+else
+    msg "installing libva for hardware-acceleration support for opensource driver users " 
+makedepends+=('libva')
+optdepends+=('libva: for open source driver users')
+    fi
+    
+provides=('mpv')
+conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' )
 options=('!emptydirs')
-install=mpv-git.install
-
-source=('git+https://github.com/mpv-player/mpv.git'
-        'ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip'
-        'https://github.com/ahjolinna/mpv-conf/raw/master/PKGBUILD/mpv.tar.gz'
-        'mpv-uq.desktop'
+install=mpv.install
+source=('git+https://github.com/mpv-player/mpv'
+        'find-deps.py'
+         "ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
+         "https://github.com/ahjolinna/mpv-conf/raw/master/PKGBUILD/mpv.tar.gz"
         'mpv-hq.desktop'
-        'mpv-mq.desktop'
-        'mpv-MVtools.desktop'
-        'mpv-lq.desktop'
-         )
+         'mpv-lq.desktop'
+         'mpv-mq.desktop'
+         'mpv-MVtools.desktop')
 
 sha256sums=('SKIP'
+            'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02'
             'd53aa2c59350a8e364b1a18a5509ba995826f7d37e34ad029251bee082f3c360'
             'fb0fea391407e3a91a158816a716a9ca2bbcc9d5070756a70ba07b31c6a76362'
-            'f76c836c56ce84659a4e4256cc0afb515f87aa77e33dfa164e25f79ee5e2bdd5'
             'ddd18dbccdaa4513586cb97299e88564e3289940f25d7ebe762c4482fbad3809'
+            'e02f7b07653ea4ce9745b9f699954f5a4eafd416ada5a5d032c7dd7294921f90'
             '8cf41f23572417836084209fce343f779e72dea9688dc84e23e8eb913d002d5f'
-            '9a7f7d78a71c5492709abfb8f4ad598fa02867e71b5645bb639850163264762b'
-            'e02f7b07653ea4ce9745b9f699954f5a4eafd416ada5a5d032c7dd7294921f90')
-
-
-backup=('etc/mpv/encoding-profiles.conf')
+            'b4a5a64a84c5be668de880d7199195e2e476f980b1e719743931665a7c3ec8bf')
 
 pkgver() {
-  cd $srcdir/mpv
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+  cd "$srcdir/$_gitname"
+  _curtag="$(git rev-list --tags --max-count=1)"
+  _tagver="$(git describe --tags $_curtag | sed -e 's:^v::' -e 's:-:_:g')"
+  _commits="$(git rev-list --count HEAD --since=$_tagver)"
+  _sha="$(git rev-parse --short HEAD)"
+  printf "%s_%s_g%s" $_tagver $_commits $_sha
+  #msg "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  ./bootstrap.py
 }
 
 build() {
-  cd $srcdir/mpv
+  cd "$srcdir/$_gitname"
+
+  CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
   
-  waf configure --prefix=/usr \
+msg "cheking if VPDAU or VAAPI will be enabled or disabled" 
+if [[ $_libvdpau = 1 ]] || [ -f /usr/bin/nvidia-settings ] ; then
+      _vdpau="--enable-vdpau"
+      _hwaccel="--enable-vdpau-hwaccel"
+      _vaapi=""
+      
+  elif [[ $_libvdpau = 1 ]] | [ -f /usr/bin/aticonfig ]|[ -f /usr/lib/xorg/modules/drivers/radeon_drv.so ]; then
+        _vdpau="--enable-vdpau"
+        _hwaccel="--enable-vdpau-hwaccel"
+      _vaapi=""
+  else
+     _vdpau=""
+       _vaapi="--enable-vaapi"
+       _hwaccel="--enable-vaapi-hwaccel"
+  fi
+
+  waf configure \
+    --prefix=/usr \
   --confdir=/etc/mpv \
   --disable-test \
   --disable-build-date \
@@ -110,56 +120,44 @@ build() {
   --enable-pulse \
   --enable-egl-x11 \
   --enable-wayland \
-  --enable-vdpau \
-  --enable-vaapi \
+  $_vdpau \
+  $_hwaccel \
+  $_vaapi \
   --enable-libsmbclient \
   --enable-dvdread \
   --enable-libarchive \
   --lua=luajit \
   --enable-libavdevice \
-  --enable-vapoursynth \
-  --enable-vdpau-hwaccel \
-  --enable-vaapi-hwaccel 
-  
- 
-  sed -i 's/vendor-completions/site-functions/' wscript_build.py
-
-  # waf looking for python2...
-  sed -i 's/$? != 0/$? >> 8 != 0/' TOOLS/zsh.pl
-
-  waf build
+  --enable-vapoursynth
+waf build
 }
 
 package() {
-  cd $srcdir/mpv
-  DESTDIR="${pkgdir}" waf install
+  cd "$srcdir/$_gitname"
+  waf install --destdir="${pkgdir}" 
 
-  install -Dm755 $srcdir/mpv/TOOLS/mpv_identify.sh "${pkgdir}/usr/bin/mpv-identify"
-  install -Dm755 $srcdir/mpv/TOOLS/umpv "${pkgdir}/usr/bin/umpv"
 
-  install -Dm644 $srcdir/mpv/DOCS/encoding.rst "${pkgdir}/usr/share/doc/mpv/encoding.rst"
-  install -Dm644 $srcdir/mpv/DOCS/edl-mpv.rst "${pkgdir}/usr/share/doc/mpv/edl-mpv.rst"
-  install -Dm644 $srcdir/mpv/DOCS/client-api-changes.rst "${pkgdir}/usr/share/doc/mpv/client-api-changes.rst"
-  install -Dm644 $srcdir/mpv/DOCS/contribute.md "${pkgdir}/usr/share/doc/mpv/contribute.md"
-  
-    # install the .desktop files
+ # install the .desktop files
   install -Dm644 "${srcdir}/mpv-lq.desktop" "${pkgdir}/usr/share/applications/mpv-lq.desktop"
   install -Dm644 "${srcdir}/mpv-mq.desktop" "${pkgdir}/usr/share/applications/mpv-mq.desktop"
   install -Dm644 "${srcdir}/mpv-hq.desktop" "${pkgdir}/usr/share/applications/mpv-hq.desktop"
-  install -Dm644 "${srcdir}/mpv-uq.desktop" "${pkgdir}/usr/share/applications/mpv-uq.desktop"
   install -Dm644 "${srcdir}/mpv-MVtools.desktop" "${pkgdir}/usr/share/applications/mpv-MVtools.desktop"
+  
   
   # install BT.709 ICC profiles (https://github.com/mpv-player/mpv/issues/534#issuecomment-35823203)
    install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.gamma.1.95.icc"
    install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.icc"
    install -Dm755 "${srcdir}/BT.709_Profiles/BT.709.gamma.1.95.icc" "${pkgdir}/usr/share/color/icc/BT.709_Profiles/BT.709.linear.icc"
   
-    #install configure files
-  cp -R ${srcdir}/mpv/etc*/* ${pkgdir}/etc/mpv
+  
+    #install ahjolinna "config-build" files
+ cp -R ${srcdir}/mpv/etc*/* ${pkgdir}/etc/mpv
     install -d "${pkgdir}/etc/mpv/"
   
 
- # sed 's|/usr/local/etc/mpv.conf|/etc/mpv.conf|g' -i "${pkgdir}/usr/share/doc/mpv/mpv.conf"
-
-  (cd $srcdir/mpv/TOOLS/lua; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/mpv/scripts/${i}"; done)
+  # Update dependencies automatically based on dynamic libraries
+  _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
+  msg 'Auto-detected dependencies:'
+  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
