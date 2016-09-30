@@ -4,7 +4,7 @@
 
 pkgname=android-studio-dummy
 _pkgname=android-studio
-pkgver=2.1.1.0
+pkgver=2.2.0.12
 pkgrel=1
 pkgdesc='A new Android development environment based on IntelliJ IDEA, dummy package'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('APACHE')
 depends_i686=('java-environment' 'python' 'ttf-font' 'fontconfig' 'libxrender' 'mesa')
 depends_x86_64=('java-environment' 'python' 'ttf-font' 'lib32-fontconfig' 'lib32-libxrender'
                 'lib32-mesa')
-optdepends=('android-google-repository' 'android-platform' 'android-sdk' 'android-sdk-platform-tools' 'android-sdk-build-tools' 'android-source' 'android-support' 'android-support-repository')
+optdepends=('android-google-repository' 'android-platform' 'android-sdk' 'android-sdk-platform-tools' 'android-sdk-build-tools' 'android-source' 'android-support' 'android-support-repository' 'gtk2' 'libgl')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'android-studio-beta' 'android-studio-dev' 'android-studio-canary')
