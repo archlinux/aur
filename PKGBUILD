@@ -2,7 +2,7 @@
 pkgname=autodesk-nlm
 pkgver=11.13.1.2
 pkgrel=1
-pkgdesc="FLEXnet License Manager + Autodesk® vendor daemon"
+pkgdesc="FLEXnet License Manager (lmgrd) + Autodesk® vendor daemon (adskflex)"
 arch=(x86_64)
 url="https://knowledge.autodesk.com/customer-service/network-license-administration"
 license=(custom:'¯\_(ツ)_/¯')
