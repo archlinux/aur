@@ -1,3 +1,6 @@
+Git commits 722f9bf->02f27c4
+	* Fix div by zero exception
+
 Git commits 71cb09c->722f9bf
 	* Fix some problems with wired steam controller
 	* Fix some issues with sc-gyro-plot.py
