@@ -1,25 +1,22 @@
-## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
+# $Id$
+# Maintainer: Mladen Pejaković <pejakm at autistici dot org>
+# Contributor AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=kim-frameworks
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Plasma 5 Image Menu to compress, resize, convert, rotate and webexport"
-arch=('x86_64')
-url=("http://www.audio-linux.com")
-license=('GPL')
-depends=('bash' 'imagemagick' 'dolphin' 'kdialog-frameworks-git')
-source=("http://www.tophifi.it/ftp/packages/$pkgname.tar.gz")
-sha256sums=('415cf12ac7c1f21aecd2142ad65f409d68fafd747c14d2b8d09c74a76b4e7075')
+url="https://www.linux-apps.com/content/show.php?content=11505"
+arch=(any)
+license=(GPL)
+depends=('bash' 'imagemagick' 'kdialog')
+source=("http://bouveyron.free.fr/kim/release/kim4-0.9.5.tar.gz")
+sha1sums=('2dfb43b51d3328dcbb287a23ca8ae7c4a879b799')
 
 package() {
- tar -xf $pkgname.tar.gz -C "$srcdir"
-     install -Dm755 "$srcdir/kim/kim_compress" "$pkgdir/usr/bin/kim_compress"
-     install -Dm755 "$srcdir/kim/kim_compress" "$pkgdir/usr/bin/kim_compress"
-     install -Dm755 "$srcdir/kim/kim_convert" "$pkgdir/usr/bin/kim_convert"
-     install -Dm755 "$srcdir/kim/kim_resize" "$pkgdir/usr/bin/kim_resize"
-     install -Dm755 "$srcdir/kim/kim_rotate" "$pkgdir/usr/bin/kim_rotate"
-     install -Dm755 "$srcdir/kim/kim_webexport" "$pkgdir/usr/bin/kim_webexport"
-
-     install -Dm644 "$srcdir/kim/kim_compressandresize.desktop" "$pkgdir/usr/share/kservices5/ServiceMenus/kim_compressandresize.desktop"
-     install -Dm644 "$srcdir/kim/kim_convertandrotate.desktop" "$pkgdir/usr/share/kservices5/ServiceMenus/kim_convertandrotate.desktop"
+  cd kim4/src
+  install -d ${pkgdir}/usr/bin/
+  install -d ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  install -m644 kim_{compressandresize,convertandrotate}.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/
+  install -m755 bin/kim_{compress,convert,flipflop,resize,rotate,webexport} ${pkgdir}/usr/bin/
 }
