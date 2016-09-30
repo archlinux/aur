@@ -1,7 +1,7 @@
 # Maintainer: ahjolinna <ahjolinna@yahoo.com>
 pkgname=mpv-ahjolinna-git
 pkgver=20160929.b692037
-pkgrel=1
+pkgrel=2
 pkgdesc="MPV with my ahjolinna config's (uses ffmpeg-full). (GIT version)"
 arch=('x86_64')
 depends=('desktop-file-utils'
@@ -62,8 +62,8 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'acpitool: for battery detection'
             'inxi: HIDPI-detection')
 
-provides=('mpv')
-conflicts=('mpv')
+provides=('mpv' 'mpv-git')
+conflicts=('mpv' 'mpv-git')
 options=('!emptydirs')
 install=mpv-git.install
 
