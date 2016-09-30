@@ -1,24 +1,25 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
-	pkgver = 15.2.4
-	pkgrel = 2
+	pkgver = 16.2.4rc1
+	pkgrel = 1
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
 	groups = bareos
 	license = AGPL3
-	makedepends = sqlite
+	makedepends = sqlite3
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
 	makedepends = lzo
 	makedepends = acl
 	makedepends = libcap
 	makedepends = python2
+	makedepends = python
 	optdepends = openssl: network encryption between daemons
-	source = https://github.com/bareos/bareos/archive/Release/15.2.4.tar.gz
+	source = http://download.bareos.org/bareos/release/16.2/Debian_8.0/bareos_16.2.4.orig.tar.gz
 	source = PKGBUILD.common
-	sha256sums = dde2b0b1ed8d878f9731cee9c7f723e3bac479b5fb367e61efca636465b40ebb
-	sha256sums = 518cb7c5417707245e19b2667ab4109f4984c17193cf94ed21c02b739baf8232
+	sha256sums = 920196b9e07044a99c2a9146bc90ddec9c3820839b20a0b38d72c4a4aaaa0f7a
+	sha256sums = 7c0ddad01de8194b5e5dfd3c7ad13439a65966452c74c7a528566e3398c9f9c4
 
 pkgname = bareos-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files
@@ -30,35 +31,35 @@ pkgname = bareos-bconsole
 	install = bareos-bconsole.install
 	groups = bareos
 	groups = bareos-client
-	depends = bareos-common=15.2.4
-	backup = 
+	depends = bareos-common=16.2.4rc1
+	backup = etc/bareos/bconsole.conf
 
 pkgname = bareos-database-common
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Generic abstration libs and tools for sql catalog
-	depends = bareos-common=15.2.4
-	depends = bareos-database-tools=15.2.4
+	depends = bareos-common=16.2.4rc1
+	depends = bareos-database-tools=16.2.4rc1
 	backup = 
 
 pkgname = bareos-database-mysql
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for mysql catalog
 	install = bareos-database-mysql.install
-	depends = bareos-database-common=15.2.4
+	depends = bareos-database-common=16.2.4rc1
 	depends = libmariadbclient
-	provides = bareos-database=15.2.4
+	provides = bareos-database=16.2.4rc1
 	backup = 
 
 pkgname = bareos-database-postgresql
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for postgresql catalog
-	depends = bareos-database-common=15.2.4
+	depends = bareos-database-common=16.2.4rc1
 	depends = postgresql-libs
-	provides = bareos-database=15.2.4
+	provides = bareos-database=16.2.4rc1
 	backup = 
 
 pkgname = bareos-database-sqlite3
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for sqlite3 catalog
-	depends = bareos-database-common=15.2.4
+	depends = bareos-database-common=16.2.4rc1
 	depends = sqlite3
-	provides = bareos-database=15.2.4
+	provides = bareos-database=16.2.4rc1
 	backup = 
 
 pkgname = bareos-database-tools
@@ -72,18 +73,41 @@ pkgname = bareos-devel
 pkgname = bareos-director
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Director daemon
 	install = bareos-director.install
-	depends = bareos-common=15.2.4
-	backup = 
+	depends = bareos-common=16.2.4rc1
+	backup = etc/bareos/tray-monitor.d/director/Director-local.conf
+	backup = etc/bareos/bareos-dir.d/storage/File.conf
+	backup = etc/bareos/bareos-dir.d/schedule/WeeklyCycle.conf
+	backup = etc/bareos/bareos-dir.d/schedule/WeeklyCycleAfterBackup.conf
+	backup = etc/bareos/bareos-dir.d/profile/operator.conf
+	backup = etc/bareos/bareos-dir.d/pool/Scratch.conf
+	backup = etc/bareos/bareos-dir.d/pool/Incremental.conf
+	backup = etc/bareos/bareos-dir.d/pool/Full.conf
+	backup = etc/bareos/bareos-dir.d/pool/Differential.conf
+	backup = etc/bareos/bareos-dir.d/messages/Standard.conf
+	backup = etc/bareos/bareos-dir.d/messages/Daemon.conf
+	backup = etc/bareos/bareos-dir.d/jobdefs/DefaultJob.conf
+	backup = etc/bareos/bareos-dir.d/job/RestoreFiles.conf
+	backup = etc/bareos/bareos-dir.d/job/BackupClient1.conf
+	backup = etc/bareos/bareos-dir.d/job/BackupCatalog.conf
+	backup = etc/bareos/bareos-dir.d/job/backup-bareos-fd.conf
+	backup = etc/bareos/bareos-dir.d/fileset/Windows.All.Drives.conf
+	backup = etc/bareos/bareos-dir.d/fileset/SelfTest.conf
+	backup = etc/bareos/bareos-dir.d/fileset/LinuxAll.conf
+	backup = etc/bareos/bareos-dir.d/fileset/Catalog.conf
+	backup = etc/bareos/bareos-dir.d/director/bareos-dir.conf
+	backup = etc/bareos/bareos-dir.d/console/bareos-mon.conf
+	backup = etc/bareos/bareos-dir.d/client/bareos-fd.conf
+	backup = etc/bareos/bareos-dir.d/catalog/MyCatalog.conf
+	backup = etc/logrotate.d/bareos-dir
 
 pkgname = bareos-storage-fifo
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - FIFO support for storage daemon
-	install = bareos-storage-fifo.install
-	depends = bareos-storage=15.2.4
+	depends = bareos-storage=16.2.4rc1
 	backup = 
 
 pkgname = bareos-tools
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild)
-	depends = bareos-common=15.2.4
+	depends = bareos-common=16.2.4rc1
 	backup = 
 
 pkgname = bareos-filedaemon
@@ -91,36 +115,50 @@ pkgname = bareos-filedaemon
 	install = bareos-filedaemon.install
 	groups = bareos
 	groups = bareos-client
-	depends = bareos-common=15.2.4
-	backup = 
+	depends = bareos-common=16.2.4rc1
+	backup = etc/bareos/tray-monitor.d/client/FileDaemon-local.conf
+	backup = etc/bareos/bareos-fd.d/messages/Standard.conf
+	backup = etc/bareos/bareos-fd.d/director/bareos-mon.conf
+	backup = etc/bareos/bareos-fd.d/director/bareos-dir.conf
+	backup = etc/bareos/bareos-fd.d/client/myself.conf
 
 pkgname = bareos-storage
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Storage daemon
 	install = bareos-storage.install
-	depends = bareos-common=15.2.4
+	depends = bareos-common=16.2.4rc1
 	optdepends = openssl: network encryption between daemons
 	optdepends = lzo2: LZO compression for Storage Daemon
-	backup = 
+	backup = etc/bareos/tray-monitor.d/storage/StorageDaemon-local.conf
+	backup = etc/bareos/bareos-sd.d/storage/bareos-sd.conf
+	backup = etc/bareos/bareos-sd.d/messages/Standard.conf
+	backup = etc/bareos/bareos-sd.d/director/bareos-mon.conf
+	backup = etc/bareos/bareos-sd.d/director/bareos-dir.conf
+	backup = etc/bareos/bareos-sd.d/device/FileStorage.conf
 
 pkgname = bareos-storage-tape
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tape support for storage daemon
-	install = bareos-storage-tape.install
-	depends = bareos-storage=15.2.4
+	depends = bareos-storage=16.2.4rc1
 	depends = mtx
-	backup = 
+	backup = etc/bareos/mtx-changer.conf
 
 pkgname = bareos-director-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for director daemon
-	depends = bareos-director=15.2.4
+	depends = bareos-director=16.2.4rc1
+	depends = python2
+	depends = python
 	backup = 
 
 pkgname = bareos-filedaemon-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for file daemon
-	depends = bareos-filedaemon=15.2.4
+	depends = bareos-filedaemon=16.2.4rc1
+	depends = python2
+	depends = python
 	backup = 
 
 pkgname = bareos-storage-python-plugin
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for storage daemon
-	depends = bareos-storage=15.2.4
+	depends = bareos-storage=16.2.4rc1
+	depends = python2
+	depends = python
 	backup = 
 

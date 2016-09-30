@@ -10,6 +10,7 @@ pre_install() {
 # arg 1:  the new package version
 post_install() {
 	chown bareos:bareos /var/lib/bareos/
+	#chown bareos:bareos /var/log/bareos/
 }
 
 # arg 1:  the new package version

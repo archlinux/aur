@@ -22,8 +22,8 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin")
 
-source=("https://github.com/bareos/bareos/archive/Release/${pkgver}.tar.gz"
+source=("http://download.bareos.org/bareos/release/16.2/Debian_8.0/bareos_${_pkgver}.orig.tar.gz"
         "PKGBUILD.common")
 
-sha256sums=('dde2b0b1ed8d878f9731cee9c7f723e3bac479b5fb367e61efca636465b40ebb'
-            '518cb7c5417707245e19b2667ab4109f4984c17193cf94ed21c02b739baf8232')
+sha256sums=('920196b9e07044a99c2a9146bc90ddec9c3820839b20a0b38d72c4a4aaaa0f7a'
+            '7c0ddad01de8194b5e5dfd3c7ad13439a65966452c74c7a528566e3398c9f9c4')
