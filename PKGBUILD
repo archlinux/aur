@@ -1,8 +1,8 @@
 # Maintainer: Meow'Dib <meowdib at gmail dot com>
 pkgname="brother-hl4040cn"
 pkgver="1.0.3_1"
-pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother HL2140"
+pkgrel=2
+pkgdesc="LPR and CUPS driver for the Brother HL-4040CN"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
