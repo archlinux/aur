@@ -9,8 +9,8 @@ pre_upgrade() {
 post_upgrade() {
     systemctl daemon-reload
     if [ $(vercmp $2 0.9.3-5) -lt 0 ]; then
-        userdel -r -f www-data
-	groupdel www-data
+        userdel -f www-data
+        groupdel www-data
         
         chown -R http:http /etc/ssl/caddy
 	
