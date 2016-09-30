@@ -1,0 +1,18 @@
+pkgbase = kmd
+	pkgdesc = Komodo Manchester Debugger
+	pkgver = 0.9.19
+	pkgrel = 1
+	url = http://brej.org/kmd/
+	arch = i386
+	arch = x86_64
+	license = GPL
+	depends = gtk>=1.2.0
+	depends = glib>=1.2.0
+	provides = kmd
+	source = http://brej.org/kmd/dist/KMD-0.9.19.tar.gz
+	source = KMD-0.9.19.patch
+	md5sums = 478e35adc758ca6fecbfd6a49c6d7c50
+	md5sums = SKIP
+
+pkgname = kmd
+
