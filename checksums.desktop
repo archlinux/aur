@@ -1,0 +1,65 @@
+############
+# Checksums v0.5 by Mladen Pejaković <pejakm at autistici dot org>
+# Licensed under GPL3
+# Service menu and a small script for calculation of md5, sha1 and sha256 checksums.
+#
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/allfiles;
+Actions=md5sum;sha1sum;sha256sum;checksums;
+X-KDE-Submenu=Checksums
+X-KDE-Submenu[sr]=Контролне суме
+X-KDE-Submenu[sr@latin]=Kontrolne sume
+X-KDE-Submenu[sr@ijekavian]=Контролне суме
+X-KDE-Submenu[sr@ijekavianlatin]=Kontrolne sume
+
+[Desktop Action md5sum]
+Name=MD5sum
+Name[sr]=МД5 сума
+Name[sr@latin]=MD5 suma
+Name[sr@ijekavian]=МД5 сума
+Name[sr@ijekavianlatin]=MD5 suma
+Exec=kdialog --icon=security-high --title "%n md5" --warningyesno "`md5sum %u | cut -d ' ' -f1` \nSave to file?" && cd %d && md5sum %n > %n.md5
+Exec[sr]=kdialog --icon=security-high --title "%n md5" --warningyesno "`md5sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && md5sum %n > %n.md5
+Exec[sr@latin]=kdialog --icon=security-high --title "%n md5" --warningyesno "`md5sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && md5sum %n > %n.md5
+Exec[sr@ijekavian]=kdialog --icon=security-high --title "%n md5" --warningyesno "`md5sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && md5sum %n > %n.md5
+Exec[sr@ijekavianlatin]=kdialog --icon=security-high --title "%n md5" --warningyesno "`md5sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && md5sum %n > %n.md5
+Icon=security-high
+
+[Desktop Action sha1sum]
+Name=SHA1sum
+Name[sr]=СХА1 сума
+Name[sr@latin]=SHA1 suma
+Name[sr@ijekavian]=СХА1 сума
+Name[sr@ijekavianlatin]=SHA1 suma
+Exec=kdialog --icon=security-high --title "%n sha1" --warningyesno "`sha1sum %u | cut -d ' ' -f1` \nSave to file?" && cd %d && sha1sum %n > %n.sha1
+Exec[sr]=kdialog --icon=security-high --title "%n sha1" --warningyesno "`sha1sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && sha1sum %n > %n.sha1
+Exec[sr@latin]=kdialog --icon=security-high --title "%n sha1" --warningyesno "`sha1sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && sha1sum %n > %n.sha1
+Exec[sr@ijekavian]=kdialog --icon=security-high --title "%n sha1" --warningyesno "`sha1sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && sha1sum %n > %n.sha1
+Exec[sr@ijekavianlatin]=kdialog --icon=security-high --title "%n sha1" --warningyesno "`sha1sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && sha1sum %n > %n.sha1
+Icon=security-high
+
+[Desktop Action sha256sum]
+Name=SHA256sum
+Name[sr]=СХА256 сума
+Name[sr@latin]=SHA256 suma
+Name[sr@ijekavian]=СХА256 сума
+Name[sr@ijekavianlatin]=SHA256 suma
+Exec=kdialog --icon=security-high --title "%n sha256" --warningyesno "`sha256sum %u | cut -d ' ' -f1` \nSave to file?" && cd %d && sha256sum %n > %n.sha256
+Exec[sr]=kdialog --icon=security-high --title "%n sha256" --warningyesno "`sha256sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && sha256sum %n > %n.sha256
+Exec[sr@latin]=kdialog --icon=security-high --title "%n sha256" --warningyesno "`sha256sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && sha256sum %n > %n.sha256
+Exec[sr@ijekavian]=kdialog --icon=security-high --title "%n sha256" --warningyesno "`sha256sum %u | cut -d ' ' -f1` \nСачувати у фајл?" && cd %d && sha256sum %n > %n.sha256
+Exec[sr@ijekavianlatin]=kdialog --icon=security-high --title "%n sha256" --warningyesno "`sha256sum %u | cut -d ' ' -f1` \nSačuvati u fajl?" && cd %d && sha256sum %n > %n.sha256
+Icon=security-high
+
+[Desktop Action checksums]
+Name=Check
+Name[sr]=Провери
+Name[sr@latin]=Proveri
+Name[sr@ijekavian]=Провјери
+Name[sr@ijekavianlatin]=Provjeri
+Exec=checksums.sh %u
+Icon=security-high
