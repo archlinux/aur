@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 pkgname=('python-astropy-helpers' 'python2-astropy-helpers')
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://github.com/astropy/astropy-helpers"
