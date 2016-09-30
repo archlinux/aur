@@ -1,7 +1,7 @@
 _npmname=hotel
-_npmver=0.4.11
+_npmver=0.5.8
 pkgname=nodejs-hotel
-pkgver=0.4.11
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="local .dev domains for everyone and more."
 arch=(any)
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("nodejs")
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('52d4e880cadd5f4ec2d76eabf90f6ca392807cef')
+sha1sums=('7877357099536d13089160f3257eac1148fd80dc')
 
 package() {
   cd $srcdir
