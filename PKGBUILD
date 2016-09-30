@@ -7,10 +7,10 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-#_uim_mozc="yes"
+_uim_mozc="yes"
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-#_emacs_mozc="yes"
+_emacs_mozc="yes"
 
 ## If you want to use 'kill-line' feature of uim, uncomment below.
 #_kill_line="yes"
@@ -73,7 +73,7 @@ _bldtype=Release
 
 _mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
 _utdicver=20160905
-_zipcoderel=201608
+_zipcoderel=201609
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
@@ -98,9 +98,10 @@ sha1sums=('SKIP'
           'cb882107dcbf7451ae71bb29d91b1c12951d12eb'
           '9f52caa8d87a893cbeb344660345fb2651f31d5a'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          'a153bf7430f7054231ee4aacdf0b514839ac9ccb'
-          'e79ff28cf6581cb23b783b60cf38ddf540738302'
-          '66544a5b72988b3a8287cc59ff5a1e1a608673b9')
+          '7fc1c5e2487e47db84e2791a88085c1d6c8782cc'
+          '3d012569963b9359d2d267216f78c1a07a395065'
+          '66544a5b72988b3a8287cc59ff5a1e1a608673b9'
+          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
