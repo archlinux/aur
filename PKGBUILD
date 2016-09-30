@@ -6,7 +6,7 @@
 _with_usermode=0
 
 pkgname=mock
-pkgver=1.2.20
+pkgver=1.2.21
 pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
@@ -25,7 +25,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$pkgname-$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('e4d5b7424fd9c14fbe3b150367357a86'
+md5sums=('fb6732796192c285ebd2f24f4efb13eb'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
