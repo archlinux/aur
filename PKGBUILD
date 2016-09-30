@@ -7,12 +7,12 @@ _with_usermode=0
 
 pkgname=mock
 pkgver=1.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('python')
+depends=('distribution-gpg-keys' 'python')
 ((_with_usermode)) && depends+=('usermode')
 makedepends=('bash-completion')
 optdepends=('createrepo_c: for mockchain command'
