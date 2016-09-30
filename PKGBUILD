@@ -1,7 +1,7 @@
 # Maintainer: Ianis G. Vasilev <mail@ivasilev.net>
 pkgname=wintoggle
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple window focus toggler"
 arch=('x86_64' 'i386')
 url="https://github.com/v--/wintoggle"
