@@ -1,0 +1,21 @@
+pkgbase = openalpr
+	pkgdesc = Automatic License Plate Recognition library.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/openalpr/openalpr/archive/v2.3.0.tar.gz
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = beanstalkd
+	depends = tesseract
+	depends = leptonica
+	depends = opencv
+	depends = curl
+	depends = log4cplus
+	provides = openalpr
+	source = https://github.com/openalpr/openalpr/archive/v2.3.0.tar.gz
+	md5sums = 7b864fd6378fb1c847f17953bf3e6ac0
+
+pkgname = openalpr
+
