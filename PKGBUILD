@@ -1,7 +1,8 @@
-# Maintainer: Jon Gjengset <jon@tsp.io>
+# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The Rust toolchain installer"
 arch=('i686' 'x86_64')
@@ -17,27 +18,28 @@ source=("rustup-${pkgver}.tar.gz::https://github.com/rust-lang-nursery/rustup.rs
 md5sums=('4c4d5982af51515ddccd16e6a10c405c')
 
 prepare() {
-	# instead of building directly in -$pkgver, we copy files over into a
-	# shared directory -- this may allow for incremental builds
-	test -e "$srcdir/$pkgname.rs" || mkdir "$srcdir/$pkgname.rs"
-	cp -r "$srcdir/$pkgname.rs-${pkgver}"/* "$srcdir/$pkgname.rs/"
-	rm -rf "$srcdir/$pkgname.rs-${pkgver}"
+    # instead of building directly in -$pkgver, we copy files over into a
+    # shared directory -- this may allow for incremental builds
+    test -e "$srcdir/$pkgname.rs" || mkdir "$srcdir/$pkgname.rs"
+    cp -r "$srcdir/$pkgname.rs-${pkgver}"/* "$srcdir/$pkgname.rs/"
+    rm -rf "$srcdir/$pkgname.rs-${pkgver}"
 }
 
 build() {
-	msg2 "Building rustup"
-	cd "$srcdir/$pkgname.rs"
-	cargo build --release --features no-self-update --bin rustup-init
+    msg2 "Building rustup"
+    cd "$srcdir/$pkgname.rs"
+    cargo update
+    cargo build --release --features no-self-update --bin rustup-init
 
-	msg2 "Running rustup-init"
-	mkdir -p "$srcdir/tmp/.cargo"
-	env -u CARGO_HOME "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
+    msg2 "Running rustup-init"
+    mkdir -p "$srcdir/tmp/.cargo"
+    env -u CARGO_HOME "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
 }
 
 package() {
-	cd "$pkgname.rs"
-	install -dm755 "$pkgdir/usr/bin"
-	cp "$srcdir/tmp/.cargo/bin"/* "$pkgdir/usr/bin/"
+    cd "$pkgname.rs"
+    install -dm755 "$pkgdir/usr/bin"
+    cp "$srcdir/tmp/.cargo/bin"/* "$pkgdir/usr/bin/"
 }
 
 # vim:filetype=sh:
