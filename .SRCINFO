@@ -1,13 +1,14 @@
 pkgbase = jxplorer
 	pkgdesc = Java LDAP client
-	pkgver = 3.3.1
+	pkgver = 3.3.1.2
 	pkgrel = 1
 	url = http://jxplorer.org/
 	arch = any
 	license = custom
+	makedepends = setconf
 	depends = java-runtime
-	source = http://downloads.sourceforge.net/project/jxplorer/jxplorer/version%203.3.1/jxplorer-3.3.1-linux-installer.run
-	md5sums = 19d7f034b3b0687800c0efb2f6ec35ab
+	source = http://downloads.sourceforge.net/project/jxplorer/jxplorer/version/3.3.1.2/jxplorer-3.3.1.2-linux-installer.run
+	sha256sums = 7ff5ff0a124d8e16d7688ae093cfcd859f4be3104f3455cc59d4b15d55a61ffa
 
 pkgname = jxplorer
 
