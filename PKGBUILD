@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.0.10.r0.g9448c9d
+pkgver=1.0.11.r0.ga181aaa
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
@@ -9,7 +9,7 @@ url="https://github.com/aws/aws-sdk-cpp"
 license=('BSD')
 groups=()
 depends=('cmake')
-makedepends=()
+makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
 checkdepends=()
 optdepends=()
 provides=()
