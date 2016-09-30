@@ -19,14 +19,16 @@ sha384sums=('187fd1564b994cbd70389d8201d2e21b0a36cc2cb31472328cf2402666ab6cc00f8
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f')
 
 build() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	#cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir"/browser-laptop-"$pkgver"dev-RC3
 
 	npm install
 	CHANNEL=dev npm run build-package
 }
 
 package() {
-	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	#cd "$srcdir"/browser-laptop-"$pkgver"dev
+	cd "$srcdir"/browser-laptop-"$pkgver"dev-RC3
 
 	install -dm0755 "$pkgdir"/usr/lib
 
