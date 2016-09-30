@@ -1,4 +1,6 @@
-pkgver=b9eacce
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+
+pkgver=1da72a0
 pkgrel=1
 _module=emprint
 _pkgname=moksha-modules-extra
