@@ -3,7 +3,7 @@
 
 pkgname=linux-show-player
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="sound cue playback software designed for live musical shows and theatre plays"
 url="http://linux-show-player.sourceforge.net/"
 arch=('any')
@@ -12,11 +12,11 @@ depends=('python-pyqt5' 'python-gobject' 'gst-plugins-good'
          'python-setuptools' 'python-sortedcontainers')
 optdepends=('portmidi: for portmidi support'
             'gst-libav: for larger format support')
-source=("https://github.com/FrancescoCeruti/${pkgname}/archive/0.4-fix1.tar.gz")
-md5sums=('3540ce8137771eabce5122ba5c19e7fc')
+source=("https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('661c12d8a401fb9232f1bd8de77abf86')
 
 package() {
-  cd "$srcdir/$pkgname-0.4-fix1"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/pixmaps"
