@@ -1,8 +1,10 @@
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+
 _module=net
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
 pkgname=moksha-module-${_module}-git
-pkgver=b9eacce
+pkgver=1da72a0
 pkgrel=1
 pkgdesc="Moksha networking module (displays network usage) - built from git sources"
 arch=('i686' 'x86_64')
