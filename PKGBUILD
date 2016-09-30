@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-about
-pkgver=0.2.1
+pkgver=0.2.1.1
 pkgrel=1
 pkgdesc='About plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee'
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-about/loki/${pkgver}/+download/switchboard-plug-about-${pkgver}.tar.xz"
         'about-archlinux.patch')
-sha256sums=('9b2c7f59e670b5b2c0157e9fb49c705920744d60b1fc1dca350d0209e3506cd8'
+sha256sums=('4ecaddd5f1ddf2e496f21bc91ca78b942e1973f7804c570b6648aa6d598ef19b'
             '792efaed1c32a03f058581887fe8fb48e53a9edadc66a0addd5ffbc7c288ad65')
 
 prepare() {
