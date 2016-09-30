@@ -1,0 +1,8 @@
+[Unit]
+Description=cubeSQL database management system
+
+[Service]
+ExecStart=/usr/bin/cubesql -x /var/lib/cubesql
+
+[Install]
+WantedBy=multi-user.target
