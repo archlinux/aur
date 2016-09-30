@@ -3,7 +3,7 @@
 pkgname=imgd
 _pkgname=imgd
 _pkgauthor=jarun
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Resize or rotate JPEG and PNG images. Official releases only."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python3' 'python-pillow')
 source=("https://github.com/${_pkgauthor}/${_pkgname}/archive/v$pkgver.tar.gz")
 conflicts=('imgd-git')
 provides=('imgd')
-sha256sums=('72db55b3ea1c79caf8993854317cb10f578888b1074f20ddad722a34c0565a98')
+sha256sums=('9897e3f1c36b7fb2a0d2196e15730bd87b9aececd3001d5e57abc49ec6807c18')
 
 package() {
 	make -C "${_pkgname}-$pkgver" DESTDIR="${pkgdir}" PREFIX="/usr" install
