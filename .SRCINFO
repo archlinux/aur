@@ -1,0 +1,20 @@
+pkgbase = kolide-git
+	pkgdesc = osquery command and control
+	pkgver = r58.ebf59ed
+	pkgrel = 1
+	url = https://www.kolide.co/
+	install = kolide.install
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	optdepends = osquery-git
+	optdepends = postgresql
+	optdepends = sqlite
+	source = git+https://github.com/kolide/kolide.git
+	source = kolide.sysusers
+	md5sums = SKIP
+	md5sums = 4934e838c831a12242550ae5e762a77a
+
+pkgname = kolide-git
+
