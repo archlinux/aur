@@ -2,10 +2,6 @@ post_install() {
     mkdir -p /etc/ssl/caddy && chown -R http:http /etc/ssl/caddy
 }
 
-pre_upgrade() {
-    systemctl stop caddy
-}
-
 post_upgrade() {
     systemctl daemon-reload
     if [ $(vercmp $2 0.9.3-5) -lt 0 ]; then
@@ -18,14 +14,7 @@ $ userdel -f www-data
 $ groupdel www-data
 EOF
 
-    echo "Changing ownership of /etc/ssl/caddy to http:http"
-    chown -R http:http /etc/ssl/caddy
-}
-
-pre_remove() {
-    systemctl stop caddy
-}
-
-post_remove() {
-    systemctl daemon-reload
+        echo "Changing ownership of /etc/ssl/caddy to http:http"
+        chown -R http:http /etc/ssl/caddy
+fi
 }
