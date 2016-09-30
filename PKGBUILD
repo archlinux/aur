@@ -7,7 +7,8 @@ pkgdesc="OSX-Arc-White Theme for Cinnamon, GNOME, Unity, Xfce and GTK+"
 arch=(any)
 license=('GPL3')
 url="https://github.com/fusion809/${_pkgname}"
-depends=('gtk3' 'gtk2' 'gnome-shell' 'cinnamon')
+depends=('gtk3' 'gtk2')
+optdepends=('gnome-shell' 'cinnamon')
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
@@ -19,5 +20,6 @@ pkgver () {
 
 package(){
 	cd "$srcdir/$_pkgname"
-	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+        install -dm644 "$pkgdir/usr/share/themes/${_pkgname}/"
+	cp -r */ "$pkgdir/usr/share/themes/${_pkgname}/"
 }
