@@ -11,7 +11,9 @@
 post_install() {
 	systemctl enable jackman_plug@" ".service
 	echo "if ulimit is too low (errors like "cannot lock down memory" appear) place the following line in /etc/pam.d/su:
-        session         required        pam_limits.so"
+        session         required        pam_limits.so
+
+see also https://github.com/progwolff/jackman#initial-jack-configuration for help on the initial configuration."
 }
 
 ## arg 1:  the new package version
