@@ -14,7 +14,7 @@ post_upgrade() {
         
         chown -R http:http /etc/ssl/caddy
 	
-	echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
+    	echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
         echo "With the package level 0.9.3-5 the caddy user is changed from 'www-data' to 'http'."
         echo "You need to update the permissions for your caddy web directory with 'chown -R http:http <web-root>'"
     fi
