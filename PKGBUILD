@@ -1,7 +1,7 @@
 # Maintainer: Alex Talker <alextalker at openmailbox dot org>
 # Original maintainer: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
-pkgver=13.2.20160904
+pkgver=13.2.20161001
 pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
@@ -18,7 +18,7 @@ source=("http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux6
 	'LICENSE.txt'
 	'x-visual-paradigm.xml')
 #sha256sums=('82a4f6a0c6fda6d6881a793ad8e7dfe3a0341211e3ede2f8cdf141d924823609'
-sha256sums=('4cd2061c878b958465b3d508fead5660be52735f7e50253fdf987e53abcbc76a'
+sha256sums=('c2cd317df7ce34c1782a8d972e3a5b9dd441e6a2c8c620762b7f58dd54d355d4'
 	'61b4974588ec66e6d037aee0870cea97cf735586e5ea8e8e7b13091fe57c58ae'
 	'c2cf0bd2fdc2879b2ae4814e1be5b6cbd7e5aa4c1247f5d4bc8e677eb6a94952'
 	'c861d708eb446f94abbebb4028a2f15f7bc6840aa5df1ee81f7301aac0fd00a9'
