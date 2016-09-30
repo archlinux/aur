@@ -23,7 +23,7 @@ sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1
             'e2930b9942b800a7a14faf4c27d59073c166e24bb1675f8604a0b5ac3fbd101f3642f7221bc8f5219231c8f021a2a8c4aa203f971ea5f2f9225be83d807cb80e')
 
 prepare() {
-	# Check for debris from previous builds and sweep it up if found.
+    # Check for debris from previous builds and sweep it up if found.
     [[ -d ${pkgbase}-gtk2-${pkgver} ]] && rm -rf ${pkgbase}-gtk2-${pkgver}
 
     cd ${pkgbase}-${pkgver}
