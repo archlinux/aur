@@ -1,0 +1,16 @@
+pkgbase = git-meld-git
+	pkgdesc = A wrapper around git and meld for comparing git trees.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wmanley/git-meld.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = meld
+	provides = git-meld
+	conflicts = git-meld
+	source = git+https://github.com/wmanley/git-meld.git
+	md5sums = SKIP
+
+pkgname = git-meld-git
+
