@@ -1,18 +1,19 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=15.2.4
-pkgrel=2
+pkgver=16.2.4rc1
+_pkgver=16.2.4
+pkgrel=1
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'lzo' 'acl' 'libcap' 'python2')
+makedepends=('sqlite3' 'libmariadbclient' 'postgresql-libs' 'lzo' 'acl' 'libcap' 'python2' 'python')
 optdepends=('openssl: network encryption between daemons')
 
 _instdir="${startdir}/install"
-_pkgsrc="${startdir}/src/bareos-Release-${pkgver}"
+_pkgsrc="${startdir}/src/bareos-${_pkgver}"
 _configure_args="--prefix=/usr \
   --with-sbin-perm=755 \
   --libdir=/usr/lib/bareos \
@@ -20,7 +21,7 @@ _configure_args="--prefix=/usr \
   --with-confdir=/etc/bareos \
   --with-archivedir=/var/lib/bareos/storage \
   --with-backenddir=/usr/lib/bareos/backends \
-  --with-configtemplatedir=/usr/lib/bareos/defaultconfigs \
+  --with-configtemplatedir="" \
   --with-scriptdir=/usr/lib/bareos/scripts \
   --with-plugindir=/usr/lib/bareos/plugins \
   --with-working-dir=/var/lib/bareos \
@@ -63,10 +64,6 @@ prepare() {
 }
 
 build() {
-  # bareos 15.2 doesn't work with gcc 6.1.1 and newer with optimizations
-  export CFLAGS="${CFLAGS/O2/O0}"
-  export CXXFLAGS="${CXXFLAGS/O2/O0}"
-
   pushd "${_pkgsrc}" &> /dev/null
   QMAKE="/usr/bin/qmake-qt4" DISTNAME="debian" ./configure $_configure_args
   make DESTDIR="$_instdir" install
@@ -76,22 +73,45 @@ build() {
 _install_files() {
   pushd $_instdir &> /dev/null
 
-  # Create needed directories
-  if [ -e "${_pkgsrc}/debian/$1.dirs" ]; then
-    while read dir
-    do
-      mkdir -p ${pkgdir}${dir}
-    done < ${_pkgsrc}/debian/$1.dirs
-  fi
-
   # Create files
-  while read file
-  do
-    set -f # Handle BLOB wild cards
-    file=$(echo $file | sed 's,\([^ ]*\).*,\1,g') # Remove second param, if exists
-    file=${file:1:${#file}-1}
-    set +f
-    cp --parents -a ${file} ${pkgdir}
+  while read line
+    do
+      # Don't expand globs yet, or it might be an old version
+      set -f
+      first=$(echo $line | sed 's,\([^ ]*\).*,\1,g') # First param
+      second=$(echo $line | sed 's,[^ ]*\(.*\),\1,g') # Second Param
+      file=$(basename $first)     # File
+      set +f
+
+      # Skip example files. they don't exist
+      if [[ $file == *".conf.example" ]]; then
+        continue 
+      fi
+
+      if [[ $second == "" ]]; then
+        pushd $_instdir &> /dev/null
+        set -f
+        srcpath=$(dirname $first)
+        srcpath=${srcpath#/}
+        set +f
+        cp -a --parents $srcpath/$file $pkgdir
+      else
+        destpath=${pkgdir}$(dirname $first)
+        mkdir -p $destpath
+        second=${second#' '} # Remove leading space from sed match
+
+        # Handle files that have a ? in them rename to '.'
+        # this only works if space files are also not paired with wildcards
+        if [[ $file == *"?"* ]]; then
+          newfile=${file//\?/.}
+          file=${file//\?/\ }
+          # Contains a space, rename to '.'
+          cp -a "${_pkgsrc}/src/defaultconfigs${second}${file}" $destpath/${newfile}
+        else
+          # No space, but may have wild cards
+          cp -a ${_pkgsrc}/src/defaultconfigs${second}${file} $destpath
+        fi
+      fi
   done < ${_pkgsrc}/debian/$1.install
 
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin" &> /dev/null || true
@@ -102,17 +122,24 @@ _install_files() {
 _etc_files() {
   pushd $_instdir &> /dev/null
 
-  # HACK: This allows mksrcinfo to work when determining etc files dynamically
-  [[ ${_pkgsrc} == $(readlink -f $(pwd)/..)* ]] || MKSRCINFO=1
-  [[ $MKSRCINFO -eq 1 ]] &&  _pkgsrc=${_pkgsrc:1:${#_pkgsrc}-1}
+  if [ ! -e "${_pkgsrc}/debian/$1" ]; then
+    return
+  fi
 
   while read file
   do
     file=$(echo $file | sed 's,\([^ ]*\).*,\1,g') # Remove second param, if exists
-    file=${file:1:${#file}-1}
+    file=${file:1:${#file}-1} # Remove leading /
+    file=${file//\?/.} # Convert ? to .
+    file=${file//\*/} # Drop wildcards, pacman doesn't support them for BACKUP.  Also there is only one at the moment
+
+    # Skip example files. they don't exist
+    if [[ "$file" == *".conf.example" ]]; then
+      continue 
+    fi
 
     if [[ "$file" =~ "etc" ]]; then
-      out="${file} $out"
+        out="${file} $out"
     fi
   done < ${_pkgsrc}/debian/$1
 
@@ -128,10 +155,6 @@ package_bareos-bat() {
   backup=(`_etc_files ${pkgname}.install`)
   install=bareos-bat.install
   _install_files ${pkgname}
-
-  # Temp, while waiting on bug: https://bugs.bareos.org/view.php?id=576
-  mv ${pkgdir}/usr/bin/bat ${pkgdir}/usr/bin/bareos-bat
-  mv ${pkgdir}/usr/share/man/man1/bat.1.gz ${pkgdir}/usr/share/man/man1/bareos-bat.1.gz
 }
 
 package_bareos-bconsole() {
@@ -208,7 +231,7 @@ package_bareos-director() {
 
 package_bareos-director-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
-  depends=("bareos-director=$pkgver")
+  depends=("bareos-director=$pkgver" "python2" "python")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
@@ -228,7 +251,7 @@ package_bareos-filedaemon() {
 
 package_bareos-filedaemon-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
-  depends=("bareos-filedaemon=$pkgver")
+  depends=("bareos-filedaemon=$pkgver" "python2" "python")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
@@ -250,13 +273,12 @@ package_bareos-storage-fifo() {
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
   depends=("bareos-storage=$pkgver")
   backup=(`_etc_files ${pkgname}.install`)
-  install=bareos-storage-fifo.install
   _install_files ${pkgname}
 }
 
 package_bareos-storage-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
-  depends=("bareos-storage=$pkgver")
+  depends=("bareos-storage=$pkgver" "python2" "python")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
@@ -265,7 +287,6 @@ package_bareos-storage-tape() {
   pkgdesc="${pkgdesc} - Tape support for storage daemon"
   depends=("bareos-storage=$pkgver" "mtx")
   backup=(`_etc_files ${pkgname}.install`)
-  install=bareos-storage-tape.install
   _install_files ${pkgname}
 }
 

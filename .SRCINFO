@@ -1,37 +1,38 @@
 pkgbase = bareos-x11
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
-	pkgver = 15.2.4
-	pkgrel = 2
+	pkgver = 16.2.4rc1
+	pkgrel = 1
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
 	groups = bareos
 	license = AGPL3
-	makedepends = sqlite
+	makedepends = sqlite3
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
 	makedepends = lzo
 	makedepends = acl
 	makedepends = libcap
 	makedepends = python2
+	makedepends = python
 	optdepends = openssl: network encryption between daemons
-	source = https://github.com/bareos/bareos/archive/Release/15.2.4.tar.gz
+	source = http://download.bareos.org/bareos/release/16.2/Debian_8.0/bareos_16.2.4.orig.tar.gz
 	source = PKGBUILD.common
-	sha256sums = dde2b0b1ed8d878f9731cee9c7f723e3bac479b5fb367e61efca636465b40ebb
-	sha256sums = 518cb7c5417707245e19b2667ab4109f4984c17193cf94ed21c02b739baf8232
+	sha256sums = 920196b9e07044a99c2a9146bc90ddec9c3820839b20a0b38d72c4a4aaaa0f7a
+	sha256sums = 7c0ddad01de8194b5e5dfd3c7ad13439a65966452c74c7a528566e3398c9f9c4
 
 pkgname = bareos-traymonitor
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tray Monitor (QT)
 	install = bareos-traymonitor.install
-	depends = bareos-common=15.2.4
+	depends = bareos-common=16.2.4rc1
 	depends = qt4
-	backup = etc/bareos/tray-monitor.conf
+	backup = etc/bareos/tray-monitor.d/monitor/bareos-mon.conf
 	backup = etc/xdg/autostart/bareos-tray-monitor.desktop
 
 pkgname = bareos-bat
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Admin Tool (GUI)
 	install = bareos-bat.install
-	depends = bareos-common=15.2.4
+	depends = bareos-common=16.2.4rc1
 	depends = qt4
 	backup = etc/bareos/bat.conf
 
