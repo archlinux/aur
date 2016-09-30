@@ -9,6 +9,7 @@ pkgbase = lifx-cli-git
 	license = MIT
 	depends = python
 	depends = python-requests
+	depends = python-setuptools
 	provides = lifx
 	source = lifx-cli::git+https://github.com/Rawa/lifx-cli.git
 	md5sums = SKIP
