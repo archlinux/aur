@@ -12,6 +12,7 @@ license=('MIT')
 depends=(
   'python'
   'python-requests'
+  'python-setuptools'
 )
 conflicts=('')
 source=("${_pkgname}::git+https://github.com/Rawa/lifx-cli.git")
