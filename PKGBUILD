@@ -1,13 +1,13 @@
 # Maintainer: Gustav Hansen <kusti8@gmail.com>
 pkgname=harmony-player
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A next-gen music player built with Electron."
 arch=('x86_64')
 url="http://getharmony.xyz/"
 license=('GPL')
 groups=()
-depends=('gnuplot' 'python' 'gconf' 'libxss' 'libxtst' 'nodejs' 'alsa-lib' 'nss' 'gtk2')
+depends=('gnuplot' 'gconf' 'libxss' 'libxtst' 'alsa-lib' 'nss' 'gtk2')
 makedepends=()
 optdepends=()
 provides=()
