@@ -9,19 +9,17 @@ pre_upgrade() {
 post_upgrade() {
     systemctl daemon-reload
     if [ $(vercmp $2 0.9.3-5) -lt 0 ]; then
-        userdel -f www-data
+        cat <<EOF \
+With the package level 0.9.3-5 the caddy user is changed from 'www-data' to 'http'.
+You need to update the permissions for your caddy web directory with 'chown -R http:http <web-root>'
 
-        # only remove group if no other users are part of it
-        if [ -z "$(getent group www-data | sed 's/.*://')" ]; then
-            groupdel www-data
-        fi
-        
-        chown -R http:http /etc/ssl/caddy
-	
-	echo "Migration guide for caddy <0.9: https://github.com/klingtnet/caddy-AUR/blob/master/README.md"
-        echo "With the package level 0.9.3-5 the caddy user is changed from 'www-data' to 'http'."
-        echo "You need to update the permissions for your caddy web directory with 'chown -R http:http <web-root>'"
-    fi
+Instruction to remove the www-data user and group (please check if it is not used in other places):
+$ userdel -f www-data
+$ groupdel www-data
+EOF
+
+    echo "Changing ownership of /etc/ssl/caddy to http:http"
+    chown -R http:http /etc/ssl/caddy
 }
 
 pre_remove() {
