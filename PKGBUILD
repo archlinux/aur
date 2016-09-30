@@ -2,7 +2,7 @@
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
 pkgver=2.07.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek 8152 network adapters"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -15,7 +15,7 @@ optdepends=('linux-headers: Build the module for Arch kernel'
 source=(http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0005-${_pkgbase}.53-$pkgver.tar.bz2
         'dkms.conf')
 sha256sums=('cabefb22eef081a2d34088322efc9f1ac55b73978965eb24643a8037837d8b7b'
-            '0a15d5490745d1763b812be21e0ee32c1e63bc434459229ef7e66f2af2c50b85')
+            '236d6d0b7caea466b107251c0c898fc7286999ae9eab04800a97125f3b719392')
 
 prepare() {
 	cd "r8152-$pkgver"
