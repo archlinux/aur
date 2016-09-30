@@ -1,186 +1,246 @@
-# $Id: PKGBUILD 269112 2016-06-08 06:44:42Z heftig $
+# $Id: PKGBUILD 276171 2016-09-11 08:06:09Z heftig $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
+
 #pkgbase=qemu
-#pkgname=('qemu'
-#         'qemu-arch-extra'
-#         'qemu-block-iscsi'
-#         'qemu-block-rbd'
-#         'qemu-block-gluster'
-#         'qemu-guest-agent')
+#pkgname=(qemu qemu-headless qemu-arch-extra qemu-headless-arch-extra
+#         qemu-block-{iscsi,rbd,gluster} qemu-guest-agent)
 pkgname='qemu-minimal'
-#pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation'
-pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server.'
-pkgver=2.6.0
-pkgrel=1
-arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL2.1')
-url='http://wiki.qemu.org/'
-#depends=('pixman' 'libjpeg' 'libpng' 'sdl2' 'alsa-lib' 'nss' 'glib2'
-#         'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'libsasl' 'libgl'
-#         'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp' 'libcacard'
-#         'spice' 'usbredir' 'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
-#         'ncurses' 'libx11' 'libusb' 'libpulse' 'libssh2' 'curl' 'vte3'
-#         'virglrenderer' 'jemalloc')
-#makedepends=('curl' 'libiscsi' 'spice-protocol' 'python2' 'ceph' 'glusterfs')
-depends=('pixman' 'libjpeg' 'glib2'
-         'util-linux' 'libsasl'
-         'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp'
-         'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
-         'ncurses' 'libssh2' 'curl'
-         'jemalloc')
-makedepends=('curl' 'python2')
-conflicts=('qemu')
-source=(http://wiki.qemu.org/download/${pkgname:0:-8}-${pkgver}.tar.bz2
+#pkgdesc="A generic and open source machine emulator and virtualizer"
+pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
+pkgver=2.7.0
+pkgrel=2
+arch=(i686 x86_64)
+license=(GPL2 LGPL2.1)
+url="http://wiki.qemu.org/"
+_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
+               lzo snappy curl vde2 libcap-ng spice usbredir)
+_minimaldeps=(seabios libaio jemalloc
+              lzo snappy curl libcap-ng)
+#depends=(virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
+#makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
+depends=("${_minimaldeps[@]}")
+makedepends=(python2)
+conflicts=('qemu' 'qemu-headless')
+source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
-md5sums=('ca3f70b43f093e33e9e014f144067f13'
-         '49778d11c28af170c4bebcc648b0ace1'
-         '44ee242d758f9318c6a1ea1dae96aa3a'
-         '33ab286a20242dda7743a900f369d68a')
+sha256sums=('326e739506ba690daf69fc17bd3913a6c313d9928d743bd8eddb82f403f81e53'
+            'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
+            '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
+            '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
 
-_extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
-mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
-sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
-_extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
-openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img slof.bin
-spapr-rtas.bin u-boot.e500)
+case $CARCH in
+  i?86) _corearch=i386 ;;
+  x86_64) _corearch=x86_64 ;;
+esac
 
 prepare() {
-  for _p in *.patch; do
-    [[ -e "$_p" ]] || continue
-    msg2 "Patching $_p"
-    patch -p1 -d ${pkgname:0:-8}-${pkgver} < "$_p"
-  done
-  sed -i 's/vte-2\.90/vte-2.91/g' ${pkgname:0:-8}-${pkgver}/configure
+#  mkdir build-{full,headless}
+#  mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
+  mkdir build-minimal
+
+  cd ${pkgname:0:-8}-${pkgver}
+  sed -i 's/vte-2\.90/vte-2.91/g' configure
 }
 
-build ()
-{
-  cd ${pkgname:0:-8}-${pkgver}
+build() {
+#  _build full \
+#    --audio-drv-list="pa alsa sdl"
+#
+#  _build headless \
+#    --audio-drv-list= \
+#    --disable-bluez \
+#    --disable-sdl \
+#    --disable-gtk \
+#    --disable-vte \
+#    --disable-opengl \
+#    --disable-virglrenderer \
+#    --disable-brlapi
+  _build minimal \
+    --audio-drv-list= \
+    --disable-bluez \
+    --disable-sdl \
+    --disable-gtk \
+    --disable-vte \
+    --disable-opengl \
+    --disable-virglrenderer \
+    --disable-brlapi \
+    --disable-spice
+}
+
+_build() (
+  cd build-$1
+
   # qemu vs. make 4 == bad
-  export ARFLAGS="rv"
+  export ARFLAGS=rv
+
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=' -fPIC'
-  # gtk gui breaks keymappings at the moment
-#  ./configure --prefix=/usr --sysconfdir=/etc --audio-drv-list='pa alsa sdl' \
-#              --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
-#              --enable-docs --libexecdir=/usr/lib/qemu \
-#              --enable-gtk --enable-linux-aio --enable-seccomp \
-#              --enable-spice --localstatedir=/var \
-#              --with-gtkabi=3.0 --with-sdlabi=2.0 --enable-vte \
-#              --enable-tpm --enable-jemalloc --enable-opengl \
-#              --enable-modules --enable-{rbd,glusterfs,libiscsi,curl}
-  ./configure --prefix=/usr --sysconfdir=/etc --audio-drv-list='' \
-              --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
-              --enable-docs --libexecdir=/usr/lib/qemu \
-              --disable-gtk --enable-linux-aio --enable-seccomp \
-              --disable-spice --localstatedir=/var \
-              --disable-vte \
-              --enable-tpm --enable-jemalloc --disable-opengl \
-              --enable-modules --enable-curl
-  make V=99
+  export CFLAGS+=" -fPIC"
+
+#  ../${pkgname}-${pkgver}/configure \
+  ../${pkgname:0:-8}-${pkgver}/configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/qemu \
+    --python=/usr/bin/python2 \
+    --smbd=/usr/bin/smbd \
+    --with-gtkabi=3.0 \
+    --with-sdlabi=2.0 \
+    --enable-modules \
+    --enable-jemalloc \
+    "${@:2}"
+
+  make
+)
+
+package_qemu() {
+  optdepends=('qemu-arch-extra: extra architectures support')
+  provides=(qemu-headless)
+  conflicts=(qemu-headless)
+  replaces=(qemu-kvm)
+
+  _package full
+}
+
+package_qemu-headless() {
+  pkgdesc="QEMU without GUI"
+  depends=("${_headlessdeps[@]}")
+  optdepends=('qemu-headless-arch-extra: extra architectures support')
+
+  _package headless
 }
 
 package() {
-  replaces=('qemu-kvm')
-#  optdepends=('samba: SMB/CIFS server support'
-#              'qemu-arch-extra: extra architectures support'
-#              'qemu-block-iscsi: iSCSI block support'
-#              'qemu-block-rbd: RBD block support'
-#              'qemu-block-gluster: glusterfs block support')
-  optdepends=('samba: for SMB Server support')
-  options=(!strip)
+  _package minimal
+}
+
+_package() {
+#  optdepends+=('samba: SMB/CIFS server support'
+#               'qemu-arch-extra: extra architectures support'
+#               'qemu-block-iscsi: iSCSI block support'
+#               'qemu-block-rbd: RBD block support'
+#               'qemu-block-gluster: glusterfs block support')
+  optdepends+=('samba: SMB/CIFS server support')
   install=qemu.install
+  options=(!strip)
 
-  make -C ${pkgname:0:-8}-${pkgver} DESTDIR="${pkgdir}" libexecdir="/usr/lib/qemu" install
-
-  cd "${pkgdir}"
-
-  # provided by seabios package
-  rm usr/share/qemu/bios.bin
-  rm usr/share/qemu/acpi-dsdt.aml
-  rm usr/share/qemu/bios-256k.bin
-  rm usr/share/qemu/vgabios-cirrus.bin
-  rm usr/share/qemu/vgabios-qxl.bin
-  rm usr/share/qemu/vgabios-stdvga.bin
-  rm usr/share/qemu/vgabios-vmware.bin
-
-  # remove conflicting /var/run directory
-  rm -r var
+  make -C build-$1 DESTDIR="$pkgdir" install "${@:2}"
 
   # systemd stuff
-  install -D -m644 "${srcdir}/65-kvm.rules" usr/lib/udev/rules.d/65-kvm.rules
-  install -D -m644 "${srcdir}/qemu.sysusers" usr/lib/sysusers.d/qemu.conf
+  install -Dm644 65-kvm.rules "$pkgdir/usr/lib/udev/rules.d/65-kvm.rules"
+  install -Dm644 qemu.sysusers "$pkgdir/usr/lib/sysusers.d/qemu.conf"
+
+  # remove conflicting /var/run directory
+  cd "$pkgdir"
+  rm -r var
+
+  cd usr/lib
+  tidy_strip
 
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
-  chmod u+s usr/lib/qemu/qemu-bridge-helper
+  chmod u+s qemu/qemu-bridge-helper
 
-#  # remove splitted block modules
-#  rm usr/lib/qemu/block-{iscsi,rbd,gluster}.so
+#  # remove split block modules
+#  rm qemu/block-{iscsi,rbd,gluster}.so
 
-  # remove guest agent
-  rm usr/bin/qemu-ga
+  cd ../bin
+  tidy_strip
 
   # remove extra arch
-  for _arch in "${_extra_arches[@]}"; do
-    rm -f usr/bin/qemu-${_arch} usr/bin/qemu-system-${_arch}
+  for _bin in qemu-*; do
+    [[ -f $_bin ]] || continue
+
+    case ${_bin#qemu-} in
+      # guest agent
+      ga) rm "$_bin"; continue ;;
+
+      # tools
+      img|io|nbd) continue ;;
+
+      # core emu
+      system-${_corearch}) continue ;;
+    esac
+
+#    mv "$_bin" "$srcdir/extra-arch-$1/usr/bin"
+    rm "$_bin"
   done
-  for _blob in "${_extra_blob[@]}"; do
-    rm usr/share/qemu/${_blob}
+
+  cd ../share/qemu
+  for _blob in *; do
+    [[ -f $_blob ]] || continue
+
+    case $_blob in
+      # provided by seabios package
+      bios.bin|acpi-dsdt.aml|bios-256k.bin|vgabios-cirrus.bin|vgabios-qxl.bin|\
+      vgabios-stdvga.bin|vgabios-vmware.bin) rm "$_blob"; continue ;;
+
+      # iPXE ROMs
+      efi-*|pxe-*) continue ;;
+
+      # core blobs
+      kvmvapic.bin|linuxboot.bin|multiboot.bin|sgabios.bin|vgabios*) continue ;;
+
+      # Trace events definitions
+      trace-events) continue ;;
+
+      # Logos
+      *.bmp|*.svg) continue ;;
+    esac
+
+#    mv "$_blob" "$srcdir/extra-arch-$1/usr/share/qemu"
+    rm "$_blob"
   done
 }
 
 package_qemu-arch-extra() {
-  pkgdesc='QEMU with full support for non x86 architectures'
-  depends=('qemu')
+  pkgdesc="QEMU for foreign architectures"
+  depends=(qemu)
+  provides=(qemu-headless-arch-extra)
+  conflicts=(qemu-headless-arch-extra)
   options=(!strip)
 
-  cd qemu-${pkgver}
-  install -dm755 "${pkgdir}"/usr/bin
-  for _arch in "${_extra_arches[@]}"; do
-    install -m755 ${_arch}-*/qemu-*${_arch} "${pkgdir}"/usr/bin
-  done
+  mv extra-arch-full/usr "$pkgdir"
+}
 
-  cd pc-bios
-  for _blob in "${_extra_blob[@]}"; do
-    install -Dm644 ${_blob} "${pkgdir}"/usr/share/qemu/${_blob}
-  done
+package_qemu-headless-arch-extra() {
+  pkgdesc="QEMU without GUI, for foreign architectures"
+  depends=(qemu-headless)
+  options=(!strip)
 
-  # manually stripping
-  find "${pkgdir}"/usr/bin -type f -exec strip {} \;
+  mv extra-arch-headless/usr "$pkgdir"
 }
 
 package_qemu-block-iscsi() {
-  pkgdesc='QEMU iSCSI block module'
-  depends=('glib2' 'libiscsi' 'jemalloc')
+  pkgdesc="QEMU iSCSI block module"
+  depends=(glib2 libiscsi jemalloc)
 
-  install -D qemu-${pkgver}/block-iscsi.so "${pkgdir}"/usr/lib/qemu/block-iscsi.so
+  install -D build-full/block-iscsi.so "$pkgdir/usr/lib/qemu/block-iscsi.so"
 }
 
 package_qemu-block-rbd() {
-  pkgdesc='QEMU RBD block module'
-  depends=('glib2' 'ceph')
+  pkgdesc="QEMU RBD block module"
+  depends=(glib2 ceph)
 
-  install -D qemu-${pkgver}/block-rbd.so "${pkgdir}"/usr/lib/qemu/block-rbd.so
+  install -D build-full/block-rbd.so "$pkgdir/usr/lib/qemu/block-rbd.so"
 }
 
 package_qemu-block-gluster() {
-  pkgdesc='QEMU GlusterFS block module'
-  depends=('glib2' 'glusterfs')
+  pkgdesc="QEMU GlusterFS block module"
+  depends=(glib2 glusterfs)
 
-  install -D qemu-${pkgver}/block-gluster.so "${pkgdir}"/usr/lib/qemu/block-gluster.so
+  install -D build-full/block-gluster.so "$pkgdir/usr/lib/qemu/block-gluster.so"
 }
 
 package_qemu-guest-agent() {
-  pkgdesc='QEMU Guest Agent'
-  depends=('gcc-libs' 'glib2')
+  pkgdesc="QEMU Guest Agent"
+  depends=(gcc-libs glib2)
 
-  install -D qemu-${pkgver}/qemu-ga "${pkgdir}"/usr/bin/qemu-ga
-  install -Dm644 qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
+  install -D build-full/qemu-ga "$pkgdir/usr/bin/qemu-ga"
+  install -Dm644 qemu-ga.service "$pkgdir/usr/lib/systemd/system/qemu-ga.service"
 }
 
 # vim:set ts=2 sw=2 et:
