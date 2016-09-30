@@ -3,7 +3,7 @@
 
 pkgname=bristol
 pkgver=0.60.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Vintage synthesizers emulator"
 arch=(i686 x86_64)
 url="http://bristol.sourceforge.net"
@@ -17,6 +17,7 @@ sha256sums=('7d1f0bbd0d7d303fc77c6b9549b61708d7a83b4dc007818011b1f55d1fa922ba')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i '/#include <alsa\/iatomic.h>/ s/^/\/\//' libbristolaudio/audioEngineJack.c # disable alsa/iatomic
   ./configure --prefix=/usr --disable-version-check --enable-jack-default-audio # --enable-jack-default-midi
   make
 }
