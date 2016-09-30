@@ -10,10 +10,11 @@ license=('custom')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libxss' 'ttf-font')
 makedepends=('npm' 'git')
 provides=('brave-browser')
-source=("https://github.com/brave/browser-laptop/archive/"$pkgver"dev.tar.gz"
+#source=("https://github.com/brave/browser-laptop/archive/"$pkgver"dev.tar.gz"
+source=("https://github.com/brave/browser-laptop/archive/0.12.3dev-RC3.tar.gz"
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
 	'brave.desktop')
-sha384sums=('3c33a51d67f0a87bdf8e600c7eced5ed24a2d437446c66073cae9b471ef49e2ead7762bac2aab6408acda1e1ed62e702'
+sha384sums=('187fd1564b994cbd70389d8201d2e21b0a36cc2cb31472328cf2402666ab6cc00f80c03eccd15fbaf00ea7aef89e3936'
             'b27caa103555393992e6e1de1c2663f3ecf8339054e1aee8961406c8cbc9d677ba78b4bab6efe7210143818f9207d16b'
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f')
 
