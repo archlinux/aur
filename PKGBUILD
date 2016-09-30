@@ -7,14 +7,14 @@
 
 pkgname=pidgin-musictracker
 pkgver=0.4.22
-pkgrel=5
+pkgrel=6
 pkgdesc="A plugin for Pidgin which displays the music track currently playing."
 url='http://code.google.com/p/pidgin-musictracker'
 license=('GPL2')
 depends=('pidgin' 'gtk2' 'dbus-glib')
 makedepends=('xmms2')
 arch=('i686' 'x86_64')
-source=("http://pidgin-musictracker.googlecode.com/files/${pkgname}-${pkgver}.tar.bz2")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pidgin-musictracker/pidgin-musictracker-$pkgver.tar.bz2")
 options=('!libtool')
 md5sums=('8d7225c705484db86b864cab5a536423')
 
