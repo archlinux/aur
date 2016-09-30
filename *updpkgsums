@@ -12,7 +12,7 @@ depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'intltool' 'vala')
 source=("https://launchpad.net/pantheon-calculator/0.4-loki/${pkgver}/+download/pantheon-calculator-${pkgver}.tar.xz")
-sha256sums=('cd1fb70ea4b4d09d29cdcbcbce7533df4a40a3b6b4b5472261d5dbb030309fea')
+sha256sums=('7278300642872e296eb558e656ee4a838f10ca3664cbec7d63e689a8b96e0625')
 
 prepare() {
   cd pantheon-calculator-${pkgver}
