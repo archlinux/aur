@@ -3,12 +3,12 @@
 pkgname=cmd-markdown
 _pkgname="${pkgname/-/_}"
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An enhanced Markdown editor with MathJax, flowchart & sequence-diagram support'
 arch=('x86_64' 'i686')
 url='https://www.zybuluo.com/cmd'
 license=('custom')
-depends=('nss' 'gconf' 'libnotify' 'gtk2' 'alsa-lib' 'libxtst' 'libudev.so.0')
+depends=('nss' 'gconf' 'libnotify' 'gtk2' 'alsa-lib' 'libxtst' 'libudev0-shim')
 install="${pkgname}.install"
 source=("${pkgname}.desktop")
 source_x86_64=('http://static.zybuluo.com/cmd_markdown_linux64.tar.gz')
@@ -20,7 +20,7 @@ options=('!strip')
 
 if [ "$CARCH" == "x86_64" ]; then
     DIR="${_pkgname}_linux64"
-elif [ "$CARCH" == "i686" ]; then 
+elif [ "$CARCH" == "i686" ]; then
     DIR="${_pkgname}_linux32"
 fi
 
