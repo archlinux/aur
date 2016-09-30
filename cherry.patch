@@ -1,5 +1,5 @@
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.c
---- linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.c	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/hdmi_audio_if.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.c
+--- linux-4.7.5/drivers/gpu/drm/i915/hdmi_audio_if.c	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.c	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,425 @@
 +/*
@@ -427,8 +427,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.c sound-byt-cht-hdmi
 +}
 +EXPORT_SYMBOL(mid_hdmi_audio_register);
 +#endif
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.h
---- linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.h	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/hdmi_audio_if.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.h
+--- linux-4.7.5/drivers/gpu/drm/i915/hdmi_audio_if.h	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/hdmi_audio_if.h	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,125 @@
 +/*
@@ -556,8 +556,23 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/hdmi_audio_if.h sound-byt-cht-hdmi
 +	void *had_data);
 +
 +#endif /* __HDMI_AUDIO_IF_H */
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_drv.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.c
---- linux-4.7.4/drivers/gpu/drm/i915/i915_drv.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_debugfs.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_debugfs.c
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_debugfs.c	2016-09-24 18:10:18.000000000 +1000
++++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_debugfs.c	2016-08-10 09:40:32.000000000 +1000
+@@ -2100,10 +2100,9 @@
+ 		return ret;
+ 
+ 	list_for_each_entry(ctx, &dev_priv->context_list, link)
+-		if (ctx != dev_priv->kernel_context) {
++		if (ctx != dev_priv->kernel_context)
+ 			for_each_engine(engine, dev_priv)
+ 				i915_dump_lrc_obj(m, ctx, engine);
+-		}
+ 
+ 	mutex_unlock(&dev->struct_mutex);
+ 
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_drv.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.c
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_drv.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.c	2016-08-10 09:40:32.000000000 +1000
 @@ -1578,9 +1578,6 @@
  
@@ -569,8 +584,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_drv.c sound-byt-cht-hdmi-v4.7
  	DRM_DEBUG_KMS("Device suspended\n");
  	return 0;
  }
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_drv.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.h
---- linux-4.7.4/drivers/gpu/drm/i915/i915_drv.h	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_drv.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.h
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_drv.h	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_drv.h	2016-08-10 09:40:32.000000000 +1000
 @@ -61,6 +61,8 @@
  #include "i915_gem_gtt.h"
@@ -660,8 +675,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_drv.h sound-byt-cht-hdmi-v4.7
  #define POSTING_READ(reg)	(void)I915_READ_NOTRACE(reg)
  #define POSTING_READ16(reg)	(void)I915_READ16_NOTRACE(reg)
  
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_gem_gtt.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_gem_gtt.c
---- linux-4.7.4/drivers/gpu/drm/i915/i915_gem_gtt.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_gem_gtt.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_gem_gtt.c
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_gem_gtt.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_gem_gtt.c	2016-08-10 09:40:32.000000000 +1000
 @@ -2826,7 +2826,6 @@
  		struct i915_hw_ppgtt *ppgtt = dev_priv->mm.aliasing_ppgtt;
@@ -671,8 +686,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_gem_gtt.c sound-byt-cht-hdmi-
  	}
  
  	i915_gem_cleanup_stolen(dev);
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_irq.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_irq.c
---- linux-4.7.4/drivers/gpu/drm/i915/i915_irq.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_irq.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_irq.c
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_irq.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_irq.c	2016-08-10 09:40:32.000000000 +1000
 @@ -603,6 +603,42 @@
  	__i915_disable_pipestat(dev_priv, pipe, enable_mask, status_mask);
@@ -890,8 +905,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_irq.c sound-byt-cht-hdmi-v4.7
  	WARN_ON(dev_priv->irq_mask != ~0);
  
  	dev_priv->irq_mask = ~enable_mask;
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_reg.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_reg.h
---- linux-4.7.4/drivers/gpu/drm/i915/i915_reg.h	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_reg.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_reg.h
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_reg.h	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_reg.h	2016-08-10 09:40:32.000000000 +1000
 @@ -1522,7 +1522,6 @@
  #define BALANCE_LEG_MASK(port)		(7<<(8+3*(port)))
@@ -964,8 +979,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_reg.h sound-byt-cht-hdmi-v4.7
  #define _TRANSA_MSA_MISC		0x60410
  #define _TRANSB_MSA_MISC		0x61410
  #define _TRANSC_MSA_MISC		0x62410
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_rpm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_rpm.c
---- linux-4.7.4/drivers/gpu/drm/i915/i915_rpm.c	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/i915_rpm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_rpm.c
+--- linux-4.7.5/drivers/gpu/drm/i915/i915_rpm.c	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/i915_rpm.c	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,476 @@
 +/*
@@ -1444,8 +1459,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/i915_rpm.c sound-byt-cht-hdmi-v4.7
 +void i915_rpm_disable(struct drm_device *drm_dev) {}
 +
 +#endif /*CONFIG_PM_RUNTIME*/
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_audio.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_audio.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_audio.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_audio.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_audio.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_audio.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_audio.c	2016-08-10 09:40:32.000000000 +1000
 @@ -600,8 +600,6 @@
  	if (!IS_SKYLAKE(dev_priv) && !IS_KABYLAKE(dev_priv))
@@ -1481,8 +1496,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_audio.c sound-byt-cht-hdmi-v
  	return err;
  }
  
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_crt.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_crt.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_crt.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_crt.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_crt.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_crt.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_crt.c	2016-08-10 09:40:32.000000000 +1000
 @@ -327,25 +327,10 @@
  	struct drm_device *dev = connector->dev;
@@ -1558,8 +1573,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_crt.c sound-byt-cht-hdmi-v4.
 -	intel_crt_reset(&crt->base.base);
 +	intel_crt_reset(connector);
  }
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_ddi.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ddi.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_ddi.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_ddi.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ddi.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_ddi.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ddi.c	2016-08-10 09:40:32.000000000 +1000
 @@ -145,7 +145,7 @@
  static const struct ddi_buf_trans skl_u_ddi_translations_dp[] = {
@@ -1756,8 +1771,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_ddi.c sound-byt-cht-hdmi-v4.
  
  		intel_hdmi->set_infoframes(encoder,
  					   crtc->config->has_hdmi_sink,
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_display.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_display.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_display.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_display.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_display.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_display.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_display.c	2016-08-10 09:40:32.000000000 +1000
 @@ -7964,6 +7964,8 @@
  {
@@ -1931,8 +1946,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_display.c sound-byt-cht-hdmi
  static void intel_user_framebuffer_destroy(struct drm_framebuffer *fb)
  {
  	struct drm_device *dev = fb->dev;
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_drv.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_drv.h
---- linux-4.7.4/drivers/gpu/drm/i915/intel_drv.h	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_drv.h sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_drv.h
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_drv.h	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_drv.h	2016-08-10 09:40:32.000000000 +1000
 @@ -751,6 +751,14 @@
  #define to_intel_plane_state(x) container_of(x, struct intel_plane_state, base)
@@ -1986,8 +2001,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_drv.h sound-byt-cht-hdmi-v4.
  
  
  /* legacy fbdev emulation in intel_fbdev.c */
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_hdmi.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hdmi.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_hdmi.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_hdmi.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hdmi.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_hdmi.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hdmi.c	2016-08-10 09:40:32.000000000 +1000
 @@ -38,6 +38,8 @@
  #include <drm/i915_drm.h>
@@ -2273,8 +2288,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_hdmi.c sound-byt-cht-hdmi-v4
 +	}
 +
  }
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_hotplug.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hotplug.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_hotplug.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_hotplug.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hotplug.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_hotplug.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_hotplug.c	2016-08-10 09:40:32.000000000 +1000
 @@ -453,47 +453,20 @@
   *
@@ -2433,8 +2448,52 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_hotplug.c sound-byt-cht-hdmi
 -	dev_priv->hotplug.stats[pin].state = HPD_ENABLED;
 -	spin_unlock_irq(&dev_priv->irq_lock);
 -}
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_pm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_pm.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_pm.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_opregion.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_opregion.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_opregion.c	2016-09-24 18:10:18.000000000 +1000
++++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_opregion.c	2016-08-10 09:40:32.000000000 +1000
+@@ -1013,23 +1013,6 @@
+ 	return err;
+ }
+ 
+-static int intel_use_opregion_panel_type_callback(const struct dmi_system_id *id)
+-{
+-	DRM_INFO("Using panel type from OpRegion on %s\n", id->ident);
+-	return 1;
+-}
+-
+-static const struct dmi_system_id intel_use_opregion_panel_type[] = {
+-	{
+-		.callback = intel_use_opregion_panel_type_callback,
+-		.ident = "Conrac GmbH IX45GM2",
+-		.matches = {DMI_MATCH(DMI_SYS_VENDOR, "Conrac GmbH"),
+-			    DMI_MATCH(DMI_PRODUCT_NAME, "IX45GM2"),
+-		},
+-	},
+-	{ }
+-};
+-
+ int
+ intel_opregion_get_panel_type(struct drm_device *dev)
+ {
+@@ -1055,16 +1038,6 @@
+ 		return -ENODEV;
+ 	}
+ 
+-	/*
+-	 * So far we know that some machined must use it, others must not use it.
+-	 * There doesn't seem to be any way to determine which way to go, except
+-	 * via a quirk list :(
+-	 */
+-	if (!dmi_check_system(intel_use_opregion_panel_type)) {
+-		DRM_DEBUG_KMS("Ignoring OpRegion panel type (%d)\n", ret - 1);
+-		return -ENODEV;
+-	}
+-
+ 	/*
+ 	 * FIXME On Dell XPS 13 9350 the OpRegion panel type (0) gives us
+ 	 * low vswing for eDP, whereas the VBT panel type (2) gives us normal
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_pm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_pm.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_pm.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_pm.c	2016-08-10 09:40:32.000000000 +1000
 @@ -31,6 +31,17 @@
  #include "../../../platform/x86/intel_ips.h"
@@ -2517,8 +2576,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_pm.c sound-byt-cht-hdmi-v4.7
 +	i915_rpm_put_disp(drm_dev);
 +}
 +EXPORT_SYMBOL(ospm_power_using_hw_end);
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_ringbuffer.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ringbuffer.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_ringbuffer.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_ringbuffer.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ringbuffer.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_ringbuffer.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_ringbuffer.c	2016-08-10 09:40:32.000000000 +1000
 @@ -1135,11 +1135,6 @@
  	/* WaDisableGafsUnitClkGating:skl */
@@ -2555,8 +2614,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_ringbuffer.c sound-byt-cht-h
  	/* WaDisableLSQCROPERFforOCL:kbl */
  	ret = wa_ring_whitelist_reg(engine, GEN8_L3SQCREG4);
  	if (ret)
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_runtime_pm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_runtime_pm.c
---- linux-4.7.4/drivers/gpu/drm/i915/intel_runtime_pm.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/intel_runtime_pm.c sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_runtime_pm.c
+--- linux-4.7.5/drivers/gpu/drm/i915/intel_runtime_pm.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/intel_runtime_pm.c	2016-08-10 09:40:32.000000000 +1000
 @@ -952,7 +952,6 @@
  
@@ -2588,8 +2647,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/intel_runtime_pm.c sound-byt-cht-h
  }
  
  static void vlv_display_power_well_enable(struct drm_i915_private *dev_priv,
-diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/Makefile sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/Makefile
---- linux-4.7.4/drivers/gpu/drm/i915/Makefile	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/drivers/gpu/drm/i915/Makefile sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/Makefile
+--- linux-4.7.5/drivers/gpu/drm/i915/Makefile	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/drivers/gpu/drm/i915/Makefile	2016-08-10 09:40:32.000000000 +1000
 @@ -14,7 +14,8 @@
  	  i915_sysfs.o \
@@ -2609,8 +2668,8 @@ diff -ENwbur linux-4.7.4/drivers/gpu/drm/i915/Makefile sound-byt-cht-hdmi-v4.7/d
  	  intel_ringbuffer.o \
  	  intel_uncore.o
  
-diff -ENwbur linux-4.7.4/sound/core/rawmidi.c sound-byt-cht-hdmi-v4.7/sound/core/rawmidi.c
---- linux-4.7.4/sound/core/rawmidi.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/core/rawmidi.c sound-byt-cht-hdmi-v4.7/sound/core/rawmidi.c
+--- linux-4.7.5/sound/core/rawmidi.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/core/rawmidi.c	2016-08-10 09:40:32.000000000 +1000
 @@ -1633,13 +1633,11 @@
  		return -EBUSY;
@@ -2642,8 +2701,8 @@ diff -ENwbur linux-4.7.4/sound/core/rawmidi.c sound-byt-cht-hdmi-v4.7/sound/core
  	sprintf(name, "midi%d", rmidi->device);
  	entry = snd_info_create_card_entry(rmidi->card, name, rmidi->card->proc_root);
  	if (entry) {
-diff -ENwbur linux-4.7.4/sound/core/timer.c sound-byt-cht-hdmi-v4.7/sound/core/timer.c
---- linux-4.7.4/sound/core/timer.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/core/timer.c sound-byt-cht-hdmi-v4.7/sound/core/timer.c
+--- linux-4.7.5/sound/core/timer.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/core/timer.c	2016-08-10 09:40:32.000000000 +1000
 @@ -35,9 +35,6 @@
  #include <sound/initval.h>
@@ -2735,8 +2794,8 @@ diff -ENwbur linux-4.7.4/sound/core/timer.c sound-byt-cht-hdmi-v4.7/sound/core/t
  
  		spin_lock_irq(&tu->qlock);
  		if (err < 0)
-diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks.h sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks.h
---- linux-4.7.4/sound/firewire/fireworks/fireworks.h	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/firewire/fireworks/fireworks.h sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks.h
+--- linux-4.7.5/sound/firewire/fireworks/fireworks.h	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks.h	2016-08-10 09:40:32.000000000 +1000
 @@ -108,6 +108,7 @@
  	u8 *resp_buf;
@@ -2746,8 +2805,8 @@ diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks.h sound-byt-cht-hdmi
  };
  
  int snd_efw_transaction_cmd(struct fw_unit *unit,
-diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_hwdep.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_hwdep.c
---- linux-4.7.4/sound/firewire/fireworks/fireworks_hwdep.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/firewire/fireworks/fireworks_hwdep.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_hwdep.c
+--- linux-4.7.5/sound/firewire/fireworks/fireworks_hwdep.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_hwdep.c	2016-08-10 09:40:32.000000000 +1000
 @@ -25,7 +25,6 @@
  {
@@ -2893,8 +2952,8 @@ diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_hwdep.c sound-byt-ch
  		events = POLLIN | POLLRDNORM;
  	else
  		events = 0;
-diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_proc.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_proc.c
---- linux-4.7.4/sound/firewire/fireworks/fireworks_proc.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/firewire/fireworks/fireworks_proc.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_proc.c
+--- linux-4.7.5/sound/firewire/fireworks/fireworks_proc.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_proc.c	2016-08-10 09:40:32.000000000 +1000
 @@ -188,8 +188,8 @@
  	else
@@ -2907,8 +2966,8 @@ diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_proc.c sound-byt-cht
  }
  
  static void
-diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_transaction.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_transaction.c
---- linux-4.7.4/sound/firewire/fireworks/fireworks_transaction.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/firewire/fireworks/fireworks_transaction.c sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_transaction.c
+--- linux-4.7.5/sound/firewire/fireworks/fireworks_transaction.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/firewire/fireworks/fireworks_transaction.c	2016-08-10 09:40:32.000000000 +1000
 @@ -121,11 +121,11 @@
  	size_t capacity, till_end;
@@ -2932,8 +2991,8 @@ diff -ENwbur linux-4.7.4/sound/firewire/fireworks/fireworks_transaction.c sound-
  	wake_up(&efw->hwdep_wait);
  
  	*rcode = RCODE_COMPLETE;
-diff -ENwbur linux-4.7.4/sound/firewire/tascam/tascam-hwdep.c sound-byt-cht-hdmi-v4.7/sound/firewire/tascam/tascam-hwdep.c
---- linux-4.7.4/sound/firewire/tascam/tascam-hwdep.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/firewire/tascam/tascam-hwdep.c sound-byt-cht-hdmi-v4.7/sound/firewire/tascam/tascam-hwdep.c
+--- linux-4.7.5/sound/firewire/tascam/tascam-hwdep.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/firewire/tascam/tascam-hwdep.c	2016-08-10 09:40:32.000000000 +1000
 @@ -16,14 +16,31 @@
  
@@ -2989,8 +3048,8 @@ diff -ENwbur linux-4.7.4/sound/firewire/tascam/tascam-hwdep.c sound-byt-cht-hdmi
  	return count;
  }
  
-diff -ENwbur linux-4.7.4/sound/hda/array.c sound-byt-cht-hdmi-v4.7/sound/hda/array.c
---- linux-4.7.4/sound/hda/array.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/hda/array.c sound-byt-cht-hdmi-v4.7/sound/hda/array.c
+--- linux-4.7.5/sound/hda/array.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/hda/array.c	2016-08-10 09:40:32.000000000 +1000
 @@ -21,15 +21,13 @@
  		return NULL;
@@ -3009,8 +3068,8 @@ diff -ENwbur linux-4.7.4/sound/hda/array.c sound-byt-cht-hdmi-v4.7/sound/hda/arr
  		array->list = nlist;
  		array->alloced = num;
  	}
-diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.c sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.c
---- linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.c	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio.c sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.c
+--- linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio.c	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.c	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,2053 @@
 +/*
@@ -5066,9 +5125,9 @@ diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.c sound-byt-cht-h
 +}
 +late_initcall(alsa_card_intelhad_init);
 +module_exit(alsa_card_intelhad_exit);
-diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.h sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.h
---- linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.h	1970-01-01 10:00:00.000000000 +1000
-+++ sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.h	2016-09-17 11:02:18.546397181 +1000
+diff -ENwbur linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio.h sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.h
+--- linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio.h	1970-01-01 10:00:00.000000000 +1000
++++ sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio.h	2016-09-30 10:58:53.418259226 +1000
 @@ -0,0 +1,740 @@
 +/*
 + *   intel_mid_hdmi_audio.h - Intel HDMI audio driver for MID
@@ -5810,8 +5869,8 @@ diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio.h sound-byt-cht-h
 + int had_write_register(uint32_t reg_addr, uint32_t data);
 + int had_read_modify(uint32_t reg_addr, uint32_t data, uint32_t mask);
 +#endif
-diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio_if.c sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio_if.c
---- linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio_if.c	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio_if.c sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio_if.c
+--- linux-4.7.5/sound/hdmi_audio/intel_mid_hdmi_audio_if.c	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/intel_mid_hdmi_audio_if.c	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,533 @@
 +/*
@@ -6347,8 +6406,8 @@ diff -ENwbur linux-4.7.4/sound/hdmi_audio/intel_mid_hdmi_audio_if.c sound-byt-ch
 +	}
 +	return retval;
 +}
-diff -ENwbur linux-4.7.4/sound/hdmi_audio/Makefile sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/Makefile
---- linux-4.7.4/sound/hdmi_audio/Makefile	1970-01-01 10:00:00.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/hdmi_audio/Makefile sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/Makefile
+--- linux-4.7.5/sound/hdmi_audio/Makefile	1970-01-01 10:00:00.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/hdmi_audio/Makefile	2016-08-10 09:40:32.000000000 +1000
 @@ -0,0 +1,9 @@
 +DRIVER_NAME := hdmi_audio
@@ -6360,8 +6419,8 @@ diff -ENwbur linux-4.7.4/sound/hdmi_audio/Makefile sound-byt-cht-hdmi-v4.7/sound
 +	intel_mid_hdmi_audio_if.o
 +
 +obj-m += $(DRIVER_NAME).o
-diff -ENwbur linux-4.7.4/sound/Kconfig sound-byt-cht-hdmi-v4.7/sound/Kconfig
---- linux-4.7.4/sound/Kconfig	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/Kconfig sound-byt-cht-hdmi-v4.7/sound/Kconfig
+--- linux-4.7.5/sound/Kconfig	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/Kconfig	2016-08-10 09:40:32.000000000 +1000
 @@ -134,3 +134,12 @@
  	  sound subsystem and other function drivers completely unrelated to
@@ -6376,8 +6435,8 @@ diff -ENwbur linux-4.7.4/sound/Kconfig sound-byt-cht-hdmi-v4.7/sound/Kconfig
 +        help
 +          Choose this option to support HDMI.
 +
-diff -ENwbur linux-4.7.4/sound/Makefile sound-byt-cht-hdmi-v4.7/sound/Makefile
---- linux-4.7.4/sound/Makefile	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/Makefile sound-byt-cht-hdmi-v4.7/sound/Makefile
+--- linux-4.7.5/sound/Makefile	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/Makefile	2016-08-10 09:40:32.000000000 +1000
 @@ -8,6 +8,7 @@
  obj-$(CONFIG_SND) += core/ i2c/ drivers/ isa/ pci/ ppc/ arm/ sh/ synth/ usb/ \
@@ -6387,8 +6446,8 @@ diff -ENwbur linux-4.7.4/sound/Makefile sound-byt-cht-hdmi-v4.7/sound/Makefile
  
  # This one must be compilable even if sound is configured out
  obj-$(CONFIG_AC97_BUS) += ac97_bus.o
-diff -ENwbur linux-4.7.4/sound/pci/hda/hda_intel.c sound-byt-cht-hdmi-v4.7/sound/pci/hda/hda_intel.c
---- linux-4.7.4/sound/pci/hda/hda_intel.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/pci/hda/hda_intel.c sound-byt-cht-hdmi-v4.7/sound/pci/hda/hda_intel.c
+--- linux-4.7.5/sound/pci/hda/hda_intel.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/pci/hda/hda_intel.c	2016-08-10 09:40:32.000000000 +1000
 @@ -906,23 +906,20 @@
  	struct snd_card *card = dev_get_drvdata(dev);
@@ -6476,8 +6535,8 @@ diff -ENwbur linux-4.7.4/sound/pci/hda/hda_intel.c sound-byt-cht-hdmi-v4.7/sound
  	{ PCI_DEVICE(0x1002, 0x1308),
  	  .driver_data = AZX_DRIVER_ATIHDMI_NS | AZX_DCAPS_PRESET_ATI_HDMI_NS },
  	{ PCI_DEVICE(0x1002, 0x157a),
-diff -ENwbur linux-4.7.4/sound/pci/hda/patch_realtek.c sound-byt-cht-hdmi-v4.7/sound/pci/hda/patch_realtek.c
---- linux-4.7.4/sound/pci/hda/patch_realtek.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/pci/hda/patch_realtek.c sound-byt-cht-hdmi-v4.7/sound/pci/hda/patch_realtek.c
+--- linux-4.7.5/sound/pci/hda/patch_realtek.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/pci/hda/patch_realtek.c	2016-08-10 09:40:32.000000000 +1000
 @@ -4674,22 +4674,6 @@
  	}
@@ -6566,8 +6625,8 @@ diff -ENwbur linux-4.7.4/sound/pci/hda/patch_realtek.c sound-byt-cht-hdmi-v4.7/s
  	SND_HDA_PIN_QUIRK(0x10ec0256, 0x1028, "Dell", ALC255_FIXUP_DELL1_MIC_NO_PRESENCE,
  		ALC256_STANDARD_PINS),
  	SND_HDA_PIN_QUIRK(0x10ec0280, 0x103c, "HP", ALC280_FIXUP_HP_GPIO4,
-diff -ENwbur linux-4.7.4/sound/soc/atmel/atmel_ssc_dai.c sound-byt-cht-hdmi-v4.7/sound/soc/atmel/atmel_ssc_dai.c
---- linux-4.7.4/sound/soc/atmel/atmel_ssc_dai.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/soc/atmel/atmel_ssc_dai.c sound-byt-cht-hdmi-v4.7/sound/soc/atmel/atmel_ssc_dai.c
+--- linux-4.7.5/sound/soc/atmel/atmel_ssc_dai.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/soc/atmel/atmel_ssc_dai.c	2016-08-10 09:40:32.000000000 +1000
 @@ -299,8 +299,7 @@
  	clk_enable(ssc_p->ssc->clk);
@@ -6579,8 +6638,8 @@ diff -ENwbur linux-4.7.4/sound/soc/atmel/atmel_ssc_dai.c sound-byt-cht-hdmi-v4.7
  		ssc_writel(ssc_p->ssc->regs, CR, SSC_BIT(CR_SWRST));
  
  	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-diff -ENwbur linux-4.7.4/sound/usb/line6/pcm.c sound-byt-cht-hdmi-v4.7/sound/usb/line6/pcm.c
---- linux-4.7.4/sound/usb/line6/pcm.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/usb/line6/pcm.c sound-byt-cht-hdmi-v4.7/sound/usb/line6/pcm.c
+--- linux-4.7.5/sound/usb/line6/pcm.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/usb/line6/pcm.c	2016-08-10 09:40:32.000000000 +1000
 @@ -55,6 +55,7 @@
  		err = line6_pcm_acquire(line6pcm, LINE6_STREAM_IMPULSE);
@@ -6600,8 +6659,8 @@ diff -ENwbur linux-4.7.4/sound/usb/line6/pcm.c sound-byt-cht-hdmi-v4.7/sound/usb
  		if (direction == SNDRV_PCM_STREAM_CAPTURE) {
  			line6pcm->prev_fbuf = NULL;
  			line6pcm->prev_fsize = 0;
-diff -ENwbur linux-4.7.4/sound/usb/line6/pod.c sound-byt-cht-hdmi-v4.7/sound/usb/line6/pod.c
---- linux-4.7.4/sound/usb/line6/pod.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/usb/line6/pod.c sound-byt-cht-hdmi-v4.7/sound/usb/line6/pod.c
+--- linux-4.7.5/sound/usb/line6/pod.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/usb/line6/pod.c	2016-08-10 09:40:32.000000000 +1000
 @@ -244,8 +244,8 @@
  static ssize_t serial_number_show(struct device *dev,
@@ -6636,8 +6695,8 @@ diff -ENwbur linux-4.7.4/sound/usb/line6/pod.c sound-byt-cht-hdmi-v4.7/sound/usb
  
  	return sprintf(buf, "%d\n", pod->device_id);
  }
-diff -ENwbur linux-4.7.4/sound/usb/quirks.c sound-byt-cht-hdmi-v4.7/sound/usb/quirks.c
---- linux-4.7.4/sound/usb/quirks.c	2016-09-15 16:21:53.000000000 +1000
+diff -ENwbur linux-4.7.5/sound/usb/quirks.c sound-byt-cht-hdmi-v4.7/sound/usb/quirks.c
+--- linux-4.7.5/sound/usb/quirks.c	2016-09-24 18:10:18.000000000 +1000
 +++ sound-byt-cht-hdmi-v4.7/sound/usb/quirks.c	2016-08-10 09:40:32.000000000 +1000
 @@ -1128,7 +1128,6 @@
  {
