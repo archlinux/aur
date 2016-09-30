@@ -7,8 +7,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rednotebook
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="A simple desktop diary"
 arch=('any')
 url="http://rednotebook.sourceforge.net"
@@ -16,7 +16,7 @@ license=('GPL2')
 depends=('python2-gtkspell' 'pygtk' 'python2-yaml' 'pywebkitgtk' 'hicolor-icon-theme' 'librsvg')
 optdepends=('python-chardet: Python3 module for character encoding auto-detection')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ece365ec04dfaf5aaf25885a74bcd0ee29edbb9362bb5e5b5a7592bb4bd912cc')
+sha256sums=('f33bd410ae01d064c1e449c532359ce1c134169d44a97d74ef1e99ff8d287d88')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
