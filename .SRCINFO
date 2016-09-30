@@ -1,11 +1,11 @@
 pkgbase = cylon
 	pkgdesc = Maintenance , backups and system checks in a menu driven Bash script
-	pkgver = 1.9
-	pkgrel = 7
-	url = https://github.com/whitelight999/cylon
+	pkgver = 2.0
+	pkgrel = 8
+	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
-	source = git://github.com/whitelight999/cylon.git
+	source = git://github.com/gavinlyonsrepo/cylon.git
 	md5sums = SKIP
 
 pkgname = cylon
