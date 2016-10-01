@@ -4,12 +4,14 @@ After=network.service syslog.service
 
 [Service]
 TimeoutStartSec=0
-ExecStart=/usr/bin/osqueryd --config_path /etc/osquery/osquery.conf
+EnvironmentFile=/etc/conf.d/osqueryd
+ExecStartPre=/bin/sh -c "if [ ! -f $FLAG_FILE ]; then touch $FLAG_FILE; fi"
+ExecStart=/usr/bin/osqueryd \
+  --flagfile $FLAG_FILE \
+  --config_path $CONFIG_FILE
 Restart=on-failure
 KillMode=process
 KillSignal=SIGTERM
-SuccessExitStatus=143
-PIDFile=/var/osquery/osqueryd.pidfile
 
 [Install]
 WantedBy=multi-user.target

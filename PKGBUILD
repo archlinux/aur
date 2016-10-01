@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=1.8.2.r12.g85ed298
+pkgver=1.8.2.r172.g65f41d3
 pkgrel=1
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
@@ -10,10 +10,10 @@ url="https://osquery.io"
 license=('BSD')
 groups=()
 depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang' 'cmake'
-         'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
-         'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
+		 'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
+		 'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
 makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-             'cpp-netlib' 'magic' 'unzip' 'wget')
+			 'cpp-netlib' 'magic' 'unzip' 'wget')
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,52 +24,74 @@ options=()
 install=
 changelog=
 source=("${pkgname}::git+https://github.com/facebook/osquery"
-        "osqueryd.service"
-        "arch-linux.patch")
+		"osqueryd.conf.d"
+		"osqueryd.service"
+		"arch-linux.patch")
 noextract=()
 validpgpkeys=()
 sha256sums=('SKIP'
-            '1fa367325d4a7ad7dfef3b7b817b3c7588ad02a8d08fc11db24de66b486c6503'
-            '8fb9a37c2704647268e20ca6a8fd77b4866e054801cd2ab86362a2c028f03a8a')
+            '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
+            '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
+            'b39fd6563f02bcade66a2cb30a410177a53eb415d49fc74745e6b1c2def56166')
 
 _gitname=${pkgname}
-# last known working commit-ish
-_githash=85ed298fb9b35b4e2c1d690f7b207dbe368c8735
 
-pkgver() {
-    cd $_gitname
-
-    git describe --long --tags $_githash | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#	cd $_gitname
+#
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 prepare() {
-    cd $_gitname
+	cd $_gitname
 
-    git reset HEAD --hard
-    git checkout $_githash
-    git submodule update --init
-    patch -p1 -i "${srcdir}/arch-linux.patch"
+	git reset HEAD --hard
+	git submodule update --init
+
+	patch -p1 -i "${srcdir}/arch-linux.patch"
+
+	find . -type f -name '*apt_sources*' -delete
+	find . -type f -name '*deb_package*' -delete
+	find . -type f -name '*rpm_package*' -delete
+
+	make deps
 }
 
 build() {
-    cd $_gitname
+	cd $_gitname
 
-    make deps
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr
-    make -j $(nproc)
+	#SANITIZE_THREAD=True # Add -fsanitize=thread when using "make sanitize"
+	#OPTIMIZED=True # Enable specific CPU optimizations (not recommended)
+	#SKIP_TESTS=True # Skip unit test building (very very not recommended!)
+	#SKIP_BENCHMARKS=True # Build unit tests but skip building benchmark targets
+	#SKIP_TABLES=True # Build platform without any table implementations or specs
+	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
+	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
+
+	cmake -Wno-dev \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_VERBOSE_MAKEFILE=OFF
+
+	make -j $(nproc) all
 }
 
 package() {
-    cd $_gitname
+	cd $_gitname
 
-    make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 
-    install -dm755 "${pkgdir}/var/osquery/"
-    install -dm755 "${pkgdir}/var/log/osquery/"
+	# Remove legacy init script
+	rm "${pkgdir}/etc/init.d/osqueryd" && rmdir "${pkgdir}/etc/init.d"
 
-    install -Dm755 "${pkgdir}/usr/share/osquery/osquery.example.conf" \
-        "${pkgdir}/etc/osquery/osquery.conf"
+	install -dm755 "${pkgdir}/var/osquery/"
+	install -dm755 "${pkgdir}/var/log/osquery/"
 
-    install -Dm755 "${srcdir}/osqueryd.service" \
-        "${pkgdir}/usr/lib/systemd/system/osqueryd.service"
+	install -Dm644 "${srcdir}/osqueryd.conf.d" \
+		"${pkgdir}/etc/conf.d/osqueryd"
+
+	install -Dm644 "${srcdir}/osqueryd.service" \
+		"${pkgdir}/usr/lib/systemd/system/osqueryd.service"
+
+	install -Dm644 "${pkgdir}/usr/share/osquery/osquery.example.conf" \
+		"${pkgdir}/etc/osquery/osquery.conf"
 }

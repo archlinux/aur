@@ -1,30 +1,45 @@
 diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
-index 444b018..97c1a14 100644
+index a2e5608..ad5ea6e 100644
 --- a/osquery/CMakeLists.txt
 +++ b/osquery/CMakeLists.txt
-@@ -55,9 +55,9 @@ ADD_OSQUERY_LINK_CORE("lz4")
- ADD_OSQUERY_LINK_CORE("thrift")
- ADD_OSQUERY_LINK_CORE("gflags")
- ADD_OSQUERY_LINK_CORE("glog")
--ADD_OSQUERY_LINK_CORE("boost_system-mt")
--ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
--ADD_OSQUERY_LINK_CORE("boost_regex-mt")
-+ADD_OSQUERY_LINK_CORE("boost_system")
-+ADD_OSQUERY_LINK_CORE("boost_filesystem")
-+ADD_OSQUERY_LINK_CORE("boost_regex")
- 
- # TODO(#1956): Ignoring on WIN32 for now
- if(NOT WIN32)
+@@ -45,9 +45,9 @@ if(WINDOWS)
+ else()
+   ADD_OSQUERY_LINK_CORE("libpthread")
+   ADD_OSQUERY_LINK_CORE("libz")
+-  ADD_OSQUERY_LINK_CORE("boost_system-mt")
+-  ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
+-  ADD_OSQUERY_LINK_CORE("boost_regex-mt")
++  ADD_OSQUERY_LINK_CORE("boost_system")
++  ADD_OSQUERY_LINK_CORE("boost_filesystem")
++  ADD_OSQUERY_LINK_CORE("boost_regex")
+   ADD_OSQUERY_LINK_CORE("rocksdb_lite")
+   ADD_OSQUERY_LINK_CORE("snappy")
+   ADD_OSQUERY_LINK_CORE("gflags")
 diff --git a/tools/provision.sh b/tools/provision.sh
-index fc465d1..a66a7d4 100755
+index c363196..31019ff 100755
 --- a/tools/provision.sh
 +++ b/tools/provision.sh
-@@ -87,6 +87,8 @@ function main() {
+@@ -83,6 +83,8 @@ function main() {
      log "your $OS does not use a provision script"
    fi
- 
+
 +  exit
 +
    # The dependency directory (DEPS_DIR) will contain our legacy runtime glibc
    # and various compilers/library dependencies.
    if [[ ! -d "$DEPS_DIR" ]]; then
+diff --git a/osquery/tables/CMakeLists.txt b/osquery/tables/CMakeLists.txt
+index c8fe70d..ae85ff4 100644
+--- a/osquery/tables/CMakeLists.txt
++++ b/osquery/tables/CMakeLists.txt
+@@ -77,8 +77,8 @@ else()
+   ADD_OSQUERY_LINK_ADDITIONAL("magic")
+   ADD_OSQUERY_LINK_ADDITIONAL("tsk")
+
+-  ADD_OSQUERY_LINK_ADDITIONAL("apt-pkg dpkg lzma lz4 bz2")
+-  ADD_OSQUERY_LINK_ADDITIONAL("rpm rpmio beecrypt popt db")
++  #ADD_OSQUERY_LINK_ADDITIONAL("apt-pkg dpkg lzma lz4 bz2")
++  #ADD_OSQUERY_LINK_ADDITIONAL("rpm rpmio beecrypt popt db")
+ endif()
+
+ if(APPLE OR LINUX)
