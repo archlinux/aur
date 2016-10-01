@@ -8,7 +8,7 @@ url="https://github.com/jasonwhite/$pkgname"
 license=('MIT')
 depends=('lua')
 optdepends=()
-makedepends=()
+makedepends=('xxd')
 source=("https://github.com/jasonwhite/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('fd105bf2edf1b758c548e47dc7775bb3')
 
