@@ -4,7 +4,7 @@
 
 _pkgbase='wicd'
 pkgname='wicd-patched'
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 arch=(any)
 url="https://launchpad.net/wicd/"
@@ -23,7 +23,7 @@ source=(http://launchpad.net/wicd/1.7/$pkgver/+download/wicd-$pkgver.tar.gz
         wicd-1.7.3-urwid-1.3.0.patch
         wicd-1421918.patch
         curses_bitrate_fix.patch)
-md5sums=('162ca2e6f4ab903bb7ab2bc0adb7d1aa'
+md5sums=('aaa2e9f5320849e0b5d053099a6f0007'
          'f7e6085e482f37f2b8529326c21cbbbf'
          'd1568f48d63103df962b5b502d0ad0de'
          'a907075f648a0e8d91c0ce6898e973b5')
