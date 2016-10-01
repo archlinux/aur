@@ -2,9 +2,9 @@
 
 _gitname=with
 pkgname=$_gitname-git
-pkgver=r20.900a47f
+pkgver=r55.5f7e2d5
 pkgrel=1
-pkgdesc="Minimalistic init script"
+pkgdesc="Command prefixing for continuous workflow using a single tool."
 arch=('any')
 url="https://github.com/mchav/with"
 license=('Apache')
