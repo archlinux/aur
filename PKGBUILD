@@ -1,7 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
+_gamepkg=RimWorldAlpha15Linux.zip
+_pkg_subver=1279
+
 pkgname=rimworld
-pkgver=0.15.1279  # see ${srcdir}/Version.txt
+pkgver=0.15.${_pkg_subver}  # see ${srcdir}/Version.txt
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -18,7 +21,6 @@ if test "$CARCH" == i686; then
 elif test "$CARCH" == x86_64; then
   _rimworld_arch=x86_64
 fi
-_gamepkg=RimWorldAlpha15Linux.zip
 _pkgpaths_tries=("$startdir"
                  "$HOME/Downloads")
 
@@ -46,15 +48,15 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" -x 'RimWorld*Linux/Mods/Core/Languages/Russian/*RimWorld/*' 'RimWorld*Linux/Mods/Core/Languages/Russian/*.txt'
+  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" -x "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*RimWorld/*" "RimWorld${_pkg_subver}Linux/Mods/Core/Languages/Russian/*.txt"
 }
 
 package() {
-  cd "$srcdir"/RimWorld*Linux
+  cd "$srcdir"/RimWorld${_pkg_subver}Linux
 
   install -Dm755 "$srcdir/rimworld.sh" "$pkgdir/usr/bin/rimworld"
-  install -Dm755 RimWorld*Linux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
-  cp -r RimWorld*Linux_Data "$pkgdir/opt/rimworld/Data"
+  install -Dm755 RimWorld${_pkg_subver}Linux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
+  cp -r RimWorld${_pkg_subver}Linux_Data "$pkgdir/opt/rimworld/Data"
   cp -r Mods Source "$pkgdir/opt/rimworld"
   chgrp games "$pkgdir/opt/rimworld/Mods"
   chmod g+w "$pkgdir/opt/rimworld/Mods"
