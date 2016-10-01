@@ -1,0 +1,20 @@
+--- a/setup.py	2016-10-01 04:48:35.099482432 -0400
++++ b/setup.py	2016-10-01 04:48:25.082725137 -0400
+@@ -28,7 +28,7 @@
+   print('creating tar.gz file')
+   shutil.copy('README.md', rel)
+   shutil.copy('LICENSE.md', rel)
+-  
++
+   with tarfile.open(rel + '.tar.gz', 'w:gz') as tar:
+     tar.add(rel)
+   print('success!! binary release at {0}'.format(rel + '.tar.gz'))
+@@ -36,7 +36,7 @@
+   sys.exit()
+ 
+ 
+-reqs = ['pygit2==0.23.0', 'sh==1.11', 'clint==0.3.6']
++reqs = ['pygit2', 'sh', 'clint']
+ if sys.version_info < (2, 7) or (
+     sys.version_info < (3, 3) and sys.version_info > (3, 0)):
+   reqs.append('argparse')
