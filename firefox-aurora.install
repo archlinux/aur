@@ -12,16 +12,10 @@ post_remove() {
     post_install
 }
 
-repo_notify(){
-    ARCH=$(uname -m)
-    if [[ $ARCH -eq "x86_64" ]]; then
-        echo "!!!=== You may also use repo with prepared package: ===!!!"
-        echo "Just append the lines to your '/etc/pacman.conf':"
-        echo
-        echo "[alextalker]"
-        echo "SigLevel = Optional TrustAll"
-        echo "Server = http://alextalker.ho.ua/aurrepo/"
-        echo
-        echo "=========================================================="
-    fi
+repo_info() {
+    echo "============================="
+    echo "You can download the package in repo:"
+    echo "[home_alextalker_aur_Arch_Extra]"
+    echo "SigLevel = Never"
+    echo 'Server = http://download.opensuse.org/repositories/home:/alextalker:/aur/Arch_Extra/$arch'
 }
