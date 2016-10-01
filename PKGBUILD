@@ -1,9 +1,9 @@
 # Maintainer: Ray Song <i@maskray.me>
 
 pkgname=tmux-fullwidth-backspace
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
-pkgdesc='A terminal multiplexer (patched with support for fullwidth backspace'
+pkgdesc='A terminal multiplexer (patched with support for fullwidth backspace)'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -12,9 +12,9 @@ source=(https://github.com/tmux/tmux/releases/download/$pkgver/tmux-$pkgver.tar.
 	LICENSE fullwidth-backspace.patch)
 provides=('tmux')
 conflicts=('tmux')
-md5sums=('bd95ee7205e489c62c616bb7af040099'
+md5sums=('fcfd1611d705d8b31df3c26ebc93bd3e'
          '71601bc37fa44e4395580b321963018e'
-         'SKIP')
+         '9110efa8524cb8e34c8f7976a11318c1')
 
 prepare() {
 	cd "$srcdir/tmux-${pkgver/_/}"
