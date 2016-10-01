@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=53.0.2785.116
+pkgver=53.0.2785.143
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -34,13 +34,15 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch
-        chromium-52.0.2743.116-unset-madv_free.patch)
-sha256sums=('7a87629504346f64122ca7754574d187a4c1bf5736dea672ff3e247a0af16062'
+        chromium-52.0.2743.116-unset-madv_free.patch
+        chromium-cups-2.2.patch
+        chromium-widevine.patch)
+sha256sums=('c52a58b79bfb27bb87e4a0a6ff213001485fbc747657b290f75d39ddce07dcc3'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227')
+            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            '6519cf913cb68e2def1bbf9210ef40a178b45bc9d325297c41b7a784ff57cc8e'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -72,7 +74,10 @@ prepare() {
 
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
+  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+
+  # Fix compiling with CUPS 2.2 backend
+  patch -Np0 -i ../chromium-cups-2.2.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
