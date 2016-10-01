@@ -6,14 +6,13 @@ pkgdesc="Steam wrapper for common operations"
 # shellcheck disable=SC2034
 pkgver=0.6.0
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2034
 arch=('i686' 'x86_64')
 # shellcheck disable=SC2034
-optdepends=('steam-native: Native runtime library support' \
-        'steam-libs: Native steam libraries support')
+optdepends=('steam-native-runtime: Native runtime library support')
 # shellcheck disable=SC2034
-depends=('steam' 'bash' 'coreutils' 'findutils')
+depends=('steam')
 # shellcheck disable=SC2034
 makedepends=()
 # shellcheck disable=SC2034
