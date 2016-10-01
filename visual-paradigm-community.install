@@ -1,8 +1,17 @@
+repo_info() {
+    echo "============================="
+    echo "You can download the package in repo:"
+    echo "[home_alextalker_aur_Arch_Extra]"
+    echo "SigLevel = Never"
+    echo 'Server = http://download.opensuse.org/repositories/home:/alextalker:/aur/Arch_Extra/$arch'
+}
+
 post_install() {
   update-desktop-database -q
   update-mime-database /usr/share/mime
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   archlinux-java fix
+  repo_info
 }
 
 post_upgrade() {
