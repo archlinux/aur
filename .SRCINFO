@@ -1,7 +1,7 @@
 pkgbase = cbflib
 	pkgdesc = An ANSI C library for accessing Crystallographic Binary and Image-supporting Files
 	pkgver = 0.9.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.bernstein-plus-sons.com/software/CBF/
 	arch = i686
 	arch = x86_64
