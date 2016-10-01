@@ -1,0 +1,10 @@
+pkgbase = omxd-git
+	pkgdesc = daemon to maintain a playlist and play it via omxplayer
+	pkgver = 1.8.r5.ge824423
+	pkgrel = 1
+	arch = armv7h
+	source = omxd::git+https://github.com/subogero/omxd
+	sha1sums = SKIP
+
+pkgname = omxd-git
+
