@@ -3,14 +3,15 @@
 
 pkgname=cairo-dfb
 _pkgname=cairo
-pkgver=1.14.2
-pkgrel=1
+pkgver=1.14.6
+pkgrel=2
 pkgdesc="Cairo vector graphics library with directfb backend"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
-depends=('directfb' 'libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0' 'glib2' 'mesa' 'libgl' 'sh' 'lzo2')
-makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
+# requires libGL + libEGL - all libgl variants (mesa, nvidia-xxx-libgl/nvidia-utils) provide libEGL
+depends=('directfb' 'libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo2')
+makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'valgrind' 'git')
              # for the test suite:
 #             'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
 #optdepends=('xcb-util: for XCB backend') # really needed?
@@ -18,7 +19,7 @@ provides=('cairo-xcb' "cairo=${pkgver}")
 replaces=('cairo-xcb')
 conflicts=('cairo')
 source=(http://cairographics.org/releases/$_pkgname-$pkgver.tar.xz)
-sha1sums=('c8da68aa66ca0855b5d0ff552766d3e8679e1d24')
+sha1sums=('0a59324e6cbe031b5b898ff8b9e2ffceb9d114f5')
 
 build() {
   cd $_pkgname-$pkgver
