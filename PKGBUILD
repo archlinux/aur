@@ -5,7 +5,7 @@
 pkgname=zeal-git
 _appname=zeal
 pkgver=0.3.0.1.g0e6d4ff
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
 url="https://zealdocs.org/"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${_appname}
-	QT_SELECT=5 qmake PREFIX=/usr
+	QT_SELECT=5 qmake PREFIX=/usr CONFIG+=force_debug_info
 	make
 }
 
