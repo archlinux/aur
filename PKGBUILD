@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 #
 pkgname=chromium-vaapi
-pkgver=53.0.2785.116
+pkgver=53.0.2785.143
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium compiled with support for VA-API, allowing GPU accelerated decode of H.264 and other video formats supported by
@@ -41,7 +41,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium_vaapi.patch
         chromium_vaapi-intel.patch
         chromium_vaapi-other.patch)
-sha256sums=('7a87629504346f64122ca7754574d187a4c1bf5736dea672ff3e247a0af16062'
+sha256sums=('c52a58b79bfb27bb87e4a0a6ff213001485fbc747657b290f75d39ddce07dcc3'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
