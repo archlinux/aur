@@ -4,7 +4,7 @@ _pkgname="home-assistant"
 pkgname="python-home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
 pkgver=0.28.2
-pkgrel=2
+pkgrel=3
 url="https://home-assistant.io/"
 license=('MIT')
 arch=('any')
@@ -30,7 +30,7 @@ prepare() {
   sed -i 's/sqlalchemy==1.0.14/sqlalchemy>=1.0.13/' setup.py
 
   # Need a more recent version of limitless to avoid transition bugs
-  sed -i s/==1.0.0/>=1.0.2/ homeassistant/components/light/limitless.py
+  sed -i 's/==1.0.0/>=1.0.2/' homeassistant/components/light/limitlessled.py
 
   # typing package is a backport of standard library < 3.5
   sed -i '/typing>=3,<4/d' setup.py
