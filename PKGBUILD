@@ -5,7 +5,7 @@ pkgrel='1'
 pkgdesc='DHCPv4/DHCPv6 server'
 arch=('i686' 'x86_64')
 url='http://kea.isc.org'
-license=('ISC')
+license=('MPL2.0')
 
 depends=(
     'openssl'
