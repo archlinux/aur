@@ -2,7 +2,7 @@
 pkgname=kolide-git
 pkgver=r58.ebf59ed
 _pkgname=kolide
-pkgrel=1
+pkgrel=2
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
 arch=('x86_64' 'i686')
@@ -25,27 +25,30 @@ prepare() {
 
 	mkdir -p "go/src/github.com/kolide"
 	ln -sf "${srcdir}/${_pkgname}" "go/src/github.com/kolide/kolide"
-
-	export GOROOT="/usr/lib/go"
-	export GOPATH="${srcdir}/go"
-
-	go get -u github.com/jteeuwen/go-bindata/...
-	go get -u github.com/elazarl/go-bindata-assetfs/...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/kolide/kolide"
 
+	export GOROOT="/usr/lib/go"
+	export GOPATH="${srcdir}/go"
+
 	export PATH="$PATH:$GOPATH/bin"
+
+	make deps
 	make
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/kolide/kolide"
 
-	install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-	install -Dm644 "shared/kolide.service" "$pkgdir/usr/lib/systemd/system/kolide.service"
-	install -Dm644 "shared/kolide.toml" "$pkgdir/etc/$_pkgname/kolide.toml"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 "$srcdir/$_pkgname.sysusers" \
+		"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+	install -Dm644 "shared/kolide.service" \
+		"$pkgdir/usr/lib/systemd/system/kolide.service"
+	install -Dm644 "shared/kolide.toml" \
+		"$pkgdir/etc/$_pkgname/kolide.toml"
+	install -Dm644 "LICENSE" \
+		"$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -Dm755 "bin/kolide" "${pkgdir}/usr/bin/kolide"
 }
