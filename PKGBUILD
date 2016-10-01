@@ -1,7 +1,7 @@
 # Maintainer:  ainola <opp310@alh.rqh> (ROT13)
 
 pkgname=shadow-warrior-hib
-pkgver=1428602700
+pkgver=1429821199
 pkgrel=1
 pkgdesc="Shadow Warrior is a bold reimagining of the 3D Realms cult classic shooter."
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url="http://www.redbarrelsgames.com/"
 license=('custom: commercial')
 depends_i686=('sdl2')
 depends_x86_64=('lib32-sdl2')
-source=("hib://ShadowWarriorSetup_${pkgver}.sh"
+source=("hib://ShadowWarriorSetup${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=("fe6e5fb338af959879273e132774c35913735f5be0332dbfc17aad62aae955f4"
-            "87b88d9dc3e287e34f1101ad9640c366906588640d7b601cc6507181c0cbda23")
+sha256sums=('ed5edd01a0fc4a2e739cd54ef4c4dd19e0b37ebb82eefda696af8ada66796687'
+            '87b88d9dc3e287e34f1101ad9640c366906588640d7b601cc6507181c0cbda23')
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
 
@@ -31,7 +31,7 @@ package() {
     # Unzip will produce an error code because it is unable to unzip the Mojo Installer.
     # Therefore, a conditional into a no-op command will keep the PKGBUILD from failing
     # Of course, if you have any real problems unzipping the PKGBUILD will not abort.
-    unzip -d "${srcdir}" "ShadowWarriorSetup_${pkgver}.sh" || :
+    unzip -d "${srcdir}" "ShadowWarriorSetup${pkgver}.sh" || :
     mkdir -p "${pkgdir}/opt/${pkgname}/"
 
     # Launcher and Data
