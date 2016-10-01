@@ -5,7 +5,7 @@
 pkgname=qt5-3d
 _qtver=5.7.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
