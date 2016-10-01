@@ -2,7 +2,7 @@
 
 _pkgname="python2-pymavlink"
 pkgname="$_pkgname-git"
-pkgver=r1866.4a85883
+pkgver=r2072.984cbd2
 pkgrel=1
 pkgdesc="Python bindings for MAVLink micro air vehicle marshalling / communication library."
 arch=('any')
@@ -12,11 +12,19 @@ depends=('python2-pyserial')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+https://github.com/mavlink/mavlink.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/mavlink/mavlink.git"
+        "git+https://github.com/ArduPilot/pymavlink.git")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "mavlink"
+  git submodule init
+  git config submodule.pymavlink.url "$srcdir/pymavlink"
+  git submodule update
+}
 
 pkgver() {
-  cd "mavlink"
+  cd "mavlink/pymavlink"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
