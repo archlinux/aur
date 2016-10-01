@@ -3,11 +3,11 @@
 # Contributors: L42y, aeosynth, Dan Serban, Kalipath
 _name=firefox
 _channel=aurora
-_milestone=51.0a2
+_milestone=[% version %].0a2
 _lang=ru
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
-pkgver=51.0a2.20160930004005
+pkgver=[% version %].0a2.[% buildid %]
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en_US/${_name}/${_channel}/"
@@ -23,14 +23,14 @@ install="${_pkgname}.install"
 source=("${_pkgname}.desktop"
         "${_pkgname}-safe.desktop")
 
-source_i686=('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-51.0a2.ru.linux-i686.tar.bz2')
-source_x86_64=('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-51.0a2.ru.linux-x86_64.tar.bz2')
+source_i686=('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-[% version %].0a2.ru.linux-i686.tar.bz2')
+source_x86_64=('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-[% version %].0a2.ru.linux-x86_64.tar.bz2')
 
 sha512sums=('1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675'
             '749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610')
 
-sha512sums_i686=('b501d46d1854140c407d19208a00409f4d2d3b19c13b3cc988d5fe2395b3d77cdf7a02982ef9396e7a2cd084fe89a84f47ae71f39f82d53b9bbc31bc6837f0c3')
-sha512sums_x86_64=('cf7edf35ce34e4ae9507dfbab3ece77f01616948d301c72a2958520137459e8bffbb2255212a3bd3ba088e8c1bc572a96ef8d2530ae3b693edf376c4dac2c578')
+sha512sums_i686=('[% sha512sums_i686 %]')
+sha512sums_x86_64=('[% sha512sums_x86_64 %]')
 
 pkgver() {
   cd "${_name}"
