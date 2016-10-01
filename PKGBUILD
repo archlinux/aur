@@ -1,4 +1,5 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: qwence <queen.wenceslas@gmail.com>
+# Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 pkgname=xcape
 pkgver=1.1
 pkgrel=1
