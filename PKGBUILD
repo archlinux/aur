@@ -4,12 +4,13 @@
 
 pkgname=libgcrypt15
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose cryptographic library based on the code from GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org"
 license=('LGPL')
 depends=('libgpg-error')
+conflicts=('libgcrypt11')
 source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar."{gz,gz.sig})
 sha512sums=('8fced63f1bb2f3b60d456df168479ebe77acf2a8963f5dc831a25e839e0930148e21568117e54a63c69cc40650026b1ad12cb50a71d2b8665cfde226041f490d'
             'SKIP')
