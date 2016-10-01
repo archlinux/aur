@@ -1,0 +1,21 @@
+user="riak"
+group="riak"
+home="/opt/riakts"
+
+# arg 1:  the new package version
+post_install() {
+  useradd -r -d "$home" "$user"
+  chown -R "$user:$group" "$home"
+  chmod a+x "$home"
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  systemctl stop riakts &> /dev/null
+  userdel "$user" &> /dev/null
+  groupdel "$group" &> /dev/null
+
+  cat <<EOF
+==> WARNING! /opt/riakts/data has not been deleted.
+EOF
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Riak TS, distributed NoSQL key/value store
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/riakts/bin/riak start
+ExecStop=/opt/riakts/bin/riak stop
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

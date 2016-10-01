@@ -1,0 +1,23 @@
+pkgbase = riakts
+	pkgdesc = Distributed NoSQL key/value store optimized for time series data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://docs.basho.com/riak/ts/1.4.0/downloads/
+	install = riakts.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = erlang-basho
+	makedepends = java-environment
+	optdepends = jdk7-openjdk
+	conflicts = tsung,
+	conflicts = riak
+	options = !makeflags
+	backup = opt/riakts/etc/riak.conf
+	source = http://s3.amazonaws.com/downloads.basho.com/riak_ts/1.4/1.4.0/riak_ts-1.4.0.tar.gz
+	source = riakts.service
+	md5sums = d8ae0af59c8aa05d50babcf8d3089d70
+	md5sums = 370ce648bfed4ac00db20178f7a6735b
+
+pkgname = riakts
+
