@@ -1,4 +1,4 @@
-pkgbase = iop-blockchain-0.13
+pkgbase = iop-blockchain
 	pkgdesc = IoP is the digital currency from the Internet of People that enables instant payments to anyone, anywhere in the world.
 	pkgver = 0.13
 	pkgrel = 1

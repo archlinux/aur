@@ -4,7 +4,7 @@
 pkgname='iop-blockchain'
 pkgver=0.13
 pkgrel=1
-pkgbase="$pkgname-$pkgver"
+pkgbase="$pkgname"
 pkgdesc="IoP is the  digital currency from the Internet of People that enables instant payments to anyone, anywhere in the world."
 arch=('i686' 'x86_64')
 url="http://www.fermat.org/"
@@ -15,14 +15,14 @@ source=(https://github.com/Fermat-ORG/iop-blockchain/archive/${pkgver}.zip)
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgbase"
+  cd "$pkgbase-$pkgver"
   ./autogen.sh
   ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb
   make
 }
 
 package() {
-  cd "$pkgbase"
+  cd "$pkgbase-$pkgver"
   install -Dm755 src/qt/IoP-qt "$pkgdir"/usr/bin/IoP-qt
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
