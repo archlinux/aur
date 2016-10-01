@@ -1,7 +1,7 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=passtrust
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 pkgdesc="A Ruby-based tool that converts a simple passphrase into a secure password"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ruby' 'xclip')
 makedepends=('ruby-bundler')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('a743ab3569226e8216f933e83d24e325ed4c6ec16d97e08c49d4bc717d748bb950dd7be1b5a846724f45e87cabfe57ac50ece2e5eea1ba73ae0b7fe381d6bb37')
+sha512sums=('ad748c57a2338a440ea3215d394de46731f464338063bcc456e16be4c0794b94ebb3f273ff76fceba3d9b374a770bd55dc182dc71e060c387f3a19a72a0e7c21')
 
 package() {
   cd ${pkgname}-${pkgver}
@@ -23,6 +23,9 @@ package() {
 
   cd "${pkgdir}/usr/share/${pkgname}"
   bundle install --deployment --with optional
+
+  # remove references to ${pkgdir}
+  find . -name gem_make.out | xargs rm -rf
 
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
