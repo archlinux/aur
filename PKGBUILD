@@ -2,7 +2,7 @@
 
 pkgname=libxc
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="library of exchange-correlation functionals for density-functional theory"
 arch=('i686' 'x86_64')
 url="http://www.tddft.org/programs/octopus/wiki/index.php/Libxc"
@@ -15,7 +15,7 @@ options=(staticlibs)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  FCCPP='/usr/bin/cpp -P -ansi' ./configure --prefix=/usr
+  FCCPP='/usr/bin/cpp -P -ansi' ./configure --prefix=/usr --enable-shared
   make
 }
 
