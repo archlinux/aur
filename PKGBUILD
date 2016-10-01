@@ -6,7 +6,7 @@
 pkgname=oscam-git
 pkgver=11273
 _gitrev=9ae98a3c4544ae6e85d400c43526d5faf29c0ce0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -25,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/oscam"
-  git describe --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
