@@ -1,6 +1,7 @@
 # Maintainer: seb@sebleblanc.net
 pkgname=omxd-git
 pkgdesc="daemon to maintain a playlist and play it via omxplayer"
+url="https://github.com/subogero/omxd"
 
 _name=omxd
 
