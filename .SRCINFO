@@ -1,0 +1,35 @@
+pkgbase = nextcloud-client-git
+	pkgdesc = Nextloud client for linux
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = http://nextcloud.org/
+	install = nextcloud-client.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qtkeychain
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = python2-nautilus: integration with Nautilus
+	optdepends = nemo-python: integration with Nemo
+	provides = mirall
+	provides = mirall-git
+	provides = owncloud-client
+	provides = nextcloud-client
+	conflicts = mirall-git
+	conflicts = owncloud-client
+	conflicts = owncloud-client-ngs
+	conflicts = nextcloud-client
+	conflicts = owncloud-client-git
+	options = !strip
+	backup = etc/Nextcloud/sync-exclude.lst
+	source = nextcloud-client::git+https://github.com/nextcloud/client_theming.git
+	source = nextcloud-client.service
+	sha256sums = SKIP
+	sha256sums = 2dc7fdad6c7577548585e977ba6d148bdb3f35c55b79d05d0043773af09d661e
+
+pkgname = nextcloud-client-git
+

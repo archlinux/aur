@@ -1,0 +1,19 @@
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor
+  systemctl daemon-reload
+  echo ================================== Important =================================
+  echo Start the nextcloud client daemon with:
+  echo systemctl start --user nextcloud-client.service
+  echo ==============================================================================
+  echo Enable the nextcloud client daemon with:
+  echo systemctl enable --user nextcloud-client.service
+  echo ==============================================================================
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}

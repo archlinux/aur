@@ -1,0 +1,4 @@
+nextcloud-client/
+pkg/
+src/
+*.pkg.tar.xz
