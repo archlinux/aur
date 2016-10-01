@@ -1,0 +1,14 @@
+pkgbase = xxd-vim
+	pkgdesc = xxd stand-alone binary from vim source tree
+	pkgver = 8.0.0013
+	pkgrel = 1
+	url = http://vim.wikia.com/wiki/Hex_dump
+	arch = i686
+	arch = x86_64
+	license = gpl2
+	provides = xxd
+	source = vim-8.0.0013.tar.gz::http://github.com/vim/vim/archive/v8.0.0013.tar.gz
+	sha256sums = 46b509cd0c4d085cfec60b2e8d30daca568908c4d7dbcaa2af586ed897cc8d4b
+
+pkgname = xxd-vim
+
