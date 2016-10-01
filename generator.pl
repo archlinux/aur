@@ -26,7 +26,6 @@ sub _get_buildid_url {
 sub _get_latest_version {
     my ($ua) = @_;
 
-    print LATEST_URL;
     my $req = HTTP::Request->new(HEAD => LATEST_URL);
     my $res = $ua->request($req);
     my $uri;
