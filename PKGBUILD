@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
-_gamepkg=RimWorldAlpha15Linux.zip
-_pkg_subver=1279
+_gamepkg=RimWorldAlpha15cLinux.zip
+_pkg_subver=1284
 
 pkgname=rimworld
 pkgver=0.15.${_pkg_subver}  # see ${srcdir}/Version.txt
