@@ -6,10 +6,10 @@ pkgdesc="A wordlist of russian words for /usr/share/dict/."
 arch=('any')
 url="http://www.winedt.org/Dict/"
 license=('custom:copyright')
-source=("http://www.winedt.org/Dict/unicode/ru.zip"
-        "copyright::http://www.winedt.org/Dict/ru.txt")
+source=("http://www.winedt.org/dict/ru.zip"
+        "copyright::http://www.winedt.org/dict/ru.html")
 md5sums=('b6bb9cfcf20a923c1e6e4bc280201764'
-        '0b02ff27dd7b302f26ba41b5b13a0b57')
+        '8a9f68136e7efb386b5f711cf56ac785')
 
 build() {
     cd "$srcdir"
