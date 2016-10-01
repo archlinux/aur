@@ -2,15 +2,15 @@
 
 pkgname=python-access_points
 _pkgname=access_points
-pkgver=0.0.18
+pkgver=0.2.31
 pkgrel=1
 pkgdesc="Scan your WiFi and get access point information and signal quality"
 url='https://github.com/kootenpv/accces_points'
 arch=('any')
 license=('MIT')
 depends=('python')
-source=('https://pypi.python.org/packages/6e/0c/6542fae79e27ad2f8f6e741bf810c3ebd38868647f1b8197ecc467e09e4d/'$_pkgname'-'$pkgver'.tar.gz')
-md5sums=('d3a3ec325d888d5cc09710821162bff7')
+source=('https://pypi.python.org/packages/47/7b/1cc26fbdbf770e9c0b04bdc7a0788a4b366261f65ab9741693959105a87e/'$_pkgname'-'$pkgver'.tar.gz')
+md5sums=('fcbc7f910c8bdf9107e4424413598062')
 
 
 build() {
