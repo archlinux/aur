@@ -16,7 +16,7 @@ makedepends=('git' 'pcsclite')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 install='oscam.install'
-source=("git+http://www.oscam.cc/git/oscam-mirror#commit=$_gitrev"
+source=("git+https://github.com/nx111/oscam.git"
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
@@ -24,12 +24,12 @@ md5sums=('SKIP'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
 pkgver() {
-  cd "$srcdir/oscam-mirror"
-  git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
+  cd "$srcdir/oscam"
+  git describe --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/oscam-mirror"
+  cd "$srcdir/oscam"
 
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/oscam-mirror"
+  cd "$srcdir/oscam"
 
   #Install binaries
   install -Dm755 oscam "$pkgdir/usr/bin/oscam"

@@ -16,7 +16,7 @@ pkgbase = oscam-git
 	depends = openssl
 	optdepends = pcsclite: for use with PC/SC readers
 	optdepends = ccid: PC/SC reader generic driver
-	source = git+http://www.oscam.cc/git/oscam-mirror#commit=9ae98a3c4544ae6e85d400c43526d5faf29c0ce0
+	source = git+https://github.com/nx111/oscam.git
 	source = oscam.service
 	source = oscam.sysuser
 	md5sums = SKIP
