@@ -1,7 +1,7 @@
 # Maintainer: Julian Wolff <wolff at julianwolff dot de>
 pkgname=jackman-git
-pkgver=r44.b8fa19b
-pkgrel=1
+pkgver=r61.44efc9d
+pkgrel=2
 pkgdesc='Collection of scripts that help managing multiple audio interfaces with Jack'
 arch=('any')
 url=''
@@ -36,7 +36,6 @@ package() {
   cp ./${_gitname}/50-jackman.rules "$pkgdir/etc/udev/rules.d/"
   cp ./${_gitname}/jackman "$pkgdir/usr/bin/"
   cp ./${_gitname}/jackman_udev* "$pkgdir/usr/bin/"
-  cp ./${_gitname}/alsa* "$pkgdir/usr/bin/"
   cp ./${_gitname}/*.service "$pkgdir/usr/lib/systemd/system/"
   for d in `cd ./${_gitname}/po; ls -1 *.po 2>/dev/null`; do
   	mkdir -p "$pkgdir/usr/share/locale/${d%.po}/LC_MESSAGES"
