@@ -10,7 +10,7 @@ epoch=3
 
 makedepends=('cups' 'perl' 'libxml2' 'enscript' 'perl' 'net-snmp' 'bash' 'bzr')
 url="http://www.linuxprinting.org/foomatic.html"
-options=('!emptydirs')
+options=('!emptydirs' '!strip')
  
 source=(foomatic-db::bzr+http://bzr.linuxfoundation.org/openprinting/foomatic/foomatic-db/#revision=1307                    #2016-09-01
 )
