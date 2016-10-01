@@ -8,7 +8,7 @@ pkgname=('gtk2-dfb')
 if [ $multi_build ]
   then pkgname=('gtk2-dfb' 'gtk2' 'gtk-update-icon-cache')
 fi
-pkgver=2.24.28
+pkgver=2.24.31
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gtk.org/"
@@ -17,7 +17,7 @@ makedepends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxc
 license=('LGPL')
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-$pkgver.tar.xz
         gtkrc xid-collision-debug.patch)
-sha256sums=('b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656'
+sha256sums=('68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658'
             'bc968e3e4f57e818430130338e5f85a5025e21d7e31a3293b8f5a0e58362b805'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
@@ -101,7 +101,8 @@ package_gtk2() {
     install -Dm644 "$srcdir/gtkrc" "$pkgdir/usr/share/gtk-2.0/gtkrc"
 
     #split this out to use with gtk3 too
-    rm $pkgdir/usr/bin/gtk-update-icon-cache
+    rm "$pkgdir/usr/bin/gtk-update-icon-cache"
+    rm -r "$pkgdir/usr/share/gtk-doc"
 }
 package_gtk-update-icon-cache() {
     pkgdesc="The GTK+ update icon cache tool"
