@@ -2,18 +2,18 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=mp
-pkgver=5.2.9
-pkgrel=2
+pkgver=5.2.10
+pkgrel=1
 pkgdesc="A text editor for programmers."
 arch=(i686 x86_64)
 url="http://triptico.com/software/mp.html"
 license=('GPL')
-makedepends=('gtk3' 'qt4')
+makedepends=('gtk3' 'qt4' 'ncurses5-compat-libs')
 optdepends=('gtk3: gtk frontend'
             'qt4: qt frontend')
 options=('!emptydirs')
 source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz)
-sha256sums=('a30403f4b0c07905733168e914d488f48fb449bb95f67a5254d9ca9ecb6b795d')
+sha256sums=('f3ce1831d2cfb42a8540d197a9fdad163ecd17883a57cd798a2f30bfe791ddc1')
 
 prepare() {
   sed -i "s|ncursesw/||" ${srcdir}/mp-$pkgver/{config.sh,mpv_curses.c}
