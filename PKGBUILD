@@ -65,6 +65,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=5
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
+_muqssversion=101
+_muqsspatch="bfs502-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
@@ -75,7 +77,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-"http://ck.kolivas.org/patches/bfs/4.0/4.7/Testing/bfs502-MuQSS_100.patch"
+"http://ck.kolivas.org/patches/bfs/4.0/4.7/Testing/$_muqsspatch.patch"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
@@ -92,7 +94,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
             'SKIP'
-            '969e76688bc78212dc89665b5e8060958055973ab934129289c5351c56582fa9'
+            'cbc59726b8509fb1ed23a8c9879570cf5eab2ecf941742bd760b7b505eb1c621'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
             '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
@@ -137,7 +139,7 @@ prepare() {
 
 	if [ -n "$_MuQSS" ]; then
 		msg "Patching with MuQSS patch"
-		patch -Np1 -i "$srcdir/bfs502-MuQSS_100.patch"
+		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
 	fi
 
 	# Clean tree and copy ARCH config over
