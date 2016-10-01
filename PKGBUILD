@@ -3,7 +3,7 @@
 
 pkgname=searx-git
 pkgver=v0.10.0.r16.g295fc9c
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -16,7 +16,7 @@ source=('git+https://github.com/asciimoo/searx.git'
         'searx.install'
         'searx.service')
 sha1sums=('SKIP'
-          '57d562677e79e14e4c4b6890f33de6031cd9acbe'
+          'b6b255450c2eee590d0d591b1541a927c7b7dd3d'
 	  '39014add79c5d3e7a237bec42124eaed70c4423b')
 
 pkgver() {

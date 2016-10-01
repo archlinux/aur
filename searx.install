@@ -1,8 +1,6 @@
 post_install() {
   getent passwd searx >/dev/null || useradd -rb /usr/lib/python2.7/site-packages -s /usr/bin/nologin searx
-  echo
-  echo "  Settings are at /etc/searx/settings.yml"
-  echo
+  echo "==> Settings are at /etc/searx/settings.yml"
 }
 
 post_upgrade() {
