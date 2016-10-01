@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Duszynski <tduszyns@gmail.com>
 
 pkgname=grabserial
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Serial dump and timing program"
 arch=('any')
