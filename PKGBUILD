@@ -3,7 +3,7 @@
 pkgname=qt5-systems
 pkgver=5.4.0.20160303
 _commit=236b6b544fd2049eb46e8f79d13bb7aa35ba002f
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Publish and Subscribe Add-on Module"
 arch=('i686' 'x86_64')
 url="https://github.com/qtproject/qtsystems"
@@ -24,10 +24,6 @@ package() {
   cd qtsystems
 
   make INSTALL_ROOT="${pkgdir}" install
-
-  mkdir "$pkgdir/usr/bin"
-  ln -s ../lib/qt/bin/servicefw "$pkgdir/usr/bin/servicefw"
-  ln -s ../lib/qt/bin/sfwlisten "$pkgdir/usr/bin/sfwlisten"
 
   install -D -m644 LGPL_EXCEPTION.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
