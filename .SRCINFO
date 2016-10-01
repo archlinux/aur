@@ -1,0 +1,15 @@
+pkgbase = freechart
+	pkgdesc = Free powerful charting framework based on wxWidgets
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://wxcode.sourceforge.net/components/freechart/
+	arch = x86_64
+	arch = i686
+	license = custom:"wxWindows"
+	makedepends = git
+	depends = wxgtk
+	source = git+https://github.com/jasin/freechart
+	md5sums = SKIP
+
+pkgname = freechart
+
