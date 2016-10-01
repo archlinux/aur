@@ -7,11 +7,11 @@
      
 pkgname=med
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5_18' 'openmpi' 'swig')
+depends=('hdf5-cpp-fortran' 'openmpi' 'swig')
 makedepends=('gcc-fortran' 'coreutils')
 optdepends=('tk' 'python2')
 provides=()
@@ -22,11 +22,13 @@ arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz"
         "patch-include_2.3.6_med.h.in"
         "patch-include_med.h.in"
-        "patch-src_2.3.6_ci_MEDequivInfo.c")
+        "patch-src_2.3.6_ci_MEDequivInfo.c"
+        "patch-int2long")
 md5sums=('eb61df92f0624feb6328f517cd756a23'
          'b83949326d7ae0ca77a06822b754a329'
          '14a151cea108388d7a3b4c62887169f6'
-         '8f0cbf6f08783a6ba68ff5ab240dd62e')
+         '8f0cbf6f08783a6ba68ff5ab240dd62e'
+         '5cb73821913eaffc642a72882033e62c')
  
 build() {
   if [ "$CARCH" = "x86_64" ]; then
@@ -53,6 +55,7 @@ build() {
   patch -p0 < ${srcdir}/patch-include_2.3.6_med.h.in
   patch -p0 < ${srcdir}/patch-include_med.h.in
   patch -p0 < ${srcdir}/patch-src_2.3.6_ci_MEDequivInfo.c
+  patch -p0 < ${srcdir}/patch-int2long
  
   ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes || return 1
   make || return 1
