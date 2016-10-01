@@ -1,6 +1,6 @@
 pkgbase = steam-wrapper-git
 	pkgdesc = Steam wrapper for common operations (git version)
-	pkgver = 0.6.0.r144.28b64e9
+	pkgver = 0.6.0.r145.d1b762a
 	pkgrel = 1
 	url = https://github.com/pyamsoft/steam-wrapper.git
 	arch = i686
@@ -8,11 +8,7 @@ pkgbase = steam-wrapper-git
 	license = GPLv2
 	makedepends = git
 	depends = steam
-	depends = bash
-	depends = coreutils
-	depends = findutils
-	optdepends = steam-native: Native runtime library support
-	optdepends = steam-libs: Native steam libraries support
+	optdepends = steam-native-runtime: Native runtime library support
 	provides = steam-wrapper
 	conflicts = steam-wrapper
 	source = steam-wrapper::git+https://github.com/pyamsoft/steam-wrapper.git#branch=dev
