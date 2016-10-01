@@ -2,7 +2,7 @@
 pkgname=kolide-git
 pkgver=r58.ebf59ed
 _pkgname=kolide
-pkgrel=2
+pkgrel=3
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
+	cd "${srcdir}"
 
 	mkdir -p "go/src/github.com/kolide"
 	ln -sf "${srcdir}/${_pkgname}" "go/src/github.com/kolide/kolide"
@@ -42,13 +42,13 @@ build() {
 package() {
 	cd "${srcdir}/go/src/github.com/kolide/kolide"
 
-	install -Dm644 "$srcdir/$_pkgname.sysusers" \
-		"$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+	install -Dm644 "${srcdir}/${_pkgname}.sysusers" \
+		"${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 	install -Dm644 "shared/kolide.service" \
-		"$pkgdir/usr/lib/systemd/system/kolide.service"
+		"${pkgdir}/usr/lib/systemd/system/kolide.service"
 	install -Dm644 "shared/kolide.toml" \
-		"$pkgdir/etc/$_pkgname/kolide.toml"
+		"${pkgdir}/etc/${_pkgname}/kolide.toml"
 	install -Dm644 "LICENSE" \
-		"$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+		"${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 "bin/kolide" "${pkgdir}/usr/bin/kolide"
 }
