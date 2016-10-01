@@ -3,7 +3,7 @@ pkgname=xxd-vim
 pkgdesc="xxd stand-alone binary from vim source tree"
 url="http://vim.wikia.com/wiki/Hex_dump"
 pkgver=8.0.0013
-pkgrel=1
+pkgrel=2
 provides=('xxd')
 depends=('glibc')
 license=('gpl2')
@@ -20,5 +20,5 @@ build ()
 package ()
 {
     mkdir -p $pkgdir/usr/bin
-    install -m544 $srcdir/vim-$pkgver/src/xxd/xxd $pkgdir/usr/bin/
+    install -m755 $srcdir/vim-$pkgver/src/xxd/xxd $pkgdir/usr/bin/
 }
