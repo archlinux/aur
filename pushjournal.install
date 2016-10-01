@@ -2,9 +2,10 @@ post_install() {
     /usr/bin/getent group pushjournal &> /dev/null || /usr/bin/groupadd -r pushjournal &> /dev/null
     /usr/bin/getent passwd pushjournal &> /dev/null || /usr/bin/useradd -r -c "Pushjournal" -M -d / -g pushjournal -G systemd-journal -s /usr/bin/nologin pushjournal &> /dev/null
 
-    echo " >>> This package does not current ship with a default config file."
+    echo " >>> This package does not currently ship with a default config file."
     echo " >>> The default service unit expects to find configuration at /etc/pushjournal.yml"
     echo " >>> You should create this file before starting the pushjournal service."
+    echo " >>> You can find an example here: https://github.com/r-darwish/pushjournal/blob/develop/examples/pushjournal.yml"
 }
 
 post_remove() {
