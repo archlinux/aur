@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.52
-pkgrel=4
+pkgrel=5
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -11,7 +11,7 @@ license=('None')
 depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
          'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glew1.10'
          'glib2' 'glu' 'gtk2' 'libcaca' 'libcanberra' 'libcups'
-         'libcurl-compat' 'libcurl-gnutls' 'libdbus' 'libdrm' 'libgcrypt11'
+         'libcurl-compat' 'libcurl-gnutls' 'libdbus' 'libdrm' 'libgcrypt15'
          'libice' 'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse' 'libsm'
          'libtheora' 'libtiff4' 'libudev0-shim' 'libusb' 'libvorbis'
          'libxcomposite' 'libxcursor' 'libxft' 'libxi' 'libxinerama' 'libxmu'
@@ -24,7 +24,7 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-glew1.10' 'lib32-glib2' 'lib32-glu' 'lib32-gtk2'
                 'lib32-libcaca' 'lib32-libcanberra' 'lib32-libcups'
                 'lib32-libcurl-compat' 'lib32-libcurl-gnutls' 'lib32-libdbus'
-                'lib32-libdrm' 'lib32-libice' 'lib32-libgcrypt11'
+                'lib32-libdrm' 'lib32-libice' 'lib32-libgcrypt15'
                 'lib32-libjpeg6' 'lib32-libnm-glib' 'lib32-libpng12'
                 'lib32-libpulse' 'lib32-libsm' 'lib32-libtheora'
                 'lib32-libtiff4' 'lib32-libudev0-shim' 'lib32-libusb'
