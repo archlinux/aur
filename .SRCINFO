@@ -1,0 +1,15 @@
+pkgbase = zlib-ng-git
+	pkgdesc = zlib for the "next generation" systems. Drop-In replacement with some serious optimizations.
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://github.com/Dead2/zlib-ng
+	arch = i686
+	arch = x86_64
+	license = zlib
+	depends = glibc
+	conflicts = zlib
+	source = git://github.com/Dead2/zlib-ng.git
+	md5sums = SKIP
+
+pkgname = zlib-ng-git
+
