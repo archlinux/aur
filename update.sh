@@ -3,7 +3,7 @@
 VERSION=$1
 
 set -e
-sed -re -i "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
+sed -i -re "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 
 set +e
 makepkg -si
@@ -11,7 +11,7 @@ set -e
 
 checksum=$(sha256sum $VERSION.tar.gz | awk '{print $1}')
 
-sed -re -i "s/^sha256sums=.*$/sha256sums=$checksum/" PKGBUILD
+sed -i -re "s/^sha256sums=.*$/sha256sums=('$checksum'/" PKGBUILD
 
 makepkg -si
 
