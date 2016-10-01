@@ -141,14 +141,13 @@ if [ "${CARCH}" = "i686" ]; then
 elif [ "${CARCH}" = "x86_64" ]; then
   _build_nacl=1
   _nacl="true"
-  makedepends=('ncurses5-compat-libs')
+  makedepends+=('ncurses5-compat-libs')
 fi
 
 # If use PaX environment.
 if [ "${_use_pax}" = "1" ]; then
   makedepends+=('paxctl')
 fi
-
 
 # Build with GTK3?.
 if [ "${_use_gtk3}" = "1" ]; then
@@ -537,8 +536,17 @@ package() {
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
 
+  _resources=('chrome_100_percent'
+              'chrome_200_percent'
+              'keyboard_resources'
+              'mus_app_resources_100'
+              'mus_app_resources_200'
+              'mus_app_resources_strings'
+              'resources'
+              'views_mus_resources'
+              )
   # Install Resources.
-  for i in chrome_100_percent chrome_200_percent keyboard_resources keyboard_resources mus_app_resources_100 mus_app_resources_200 mus_app_resources_strings resources views_mus_resources; do
+  for i in "${_resources[@]}"; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
 
