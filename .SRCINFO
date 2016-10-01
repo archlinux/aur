@@ -1,0 +1,21 @@
+pkgbase = brain
+	pkgdesc = Official compiler of Brain Language
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/brain-labs/brain
+	install = brain.install
+	changelog = CHANGELOG
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = llvm-libs
+	makedepends = llvm
+	provides = brain
+	conflicts = brain
+	replaces = brain
+	source = https://github.com/brain-labs/brain/archive/v1.0.tar.gz
+	md5sums = 9665fc9ef1147d1ca394e232d468176d
+
+pkgname = brain
+

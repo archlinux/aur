@@ -1,0 +1,12 @@
+post_install() {
+	echo "The binary compiler was copied to /usr/bin/brain"
+}
+
+post_upgrade() {
+	post_install
+	echo "We got a new version of Brain!"
+}
+
+post_remove() {
+	sudo rm /usr/bin/brain
+}
