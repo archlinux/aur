@@ -15,8 +15,8 @@ md5sums_i686=('SKIP')
 source=("WhiteLabs.xml::http://wittepaard.roodetoren.nl/index.php?option=com_docman&task=doc_download&gid=314&Itemid=13")
 md5sums=('SKIP')
 makedepends=('xz')
-depends=('qt4pas')
-optdepends=('fann' 'lib32-qt4pas')
+depends=('qt4pas' 'fann')
+optdepends=('lib32-qt4pas')
 install="${pkgname}.install"
 package() {
 	cd "${srcdir}"
