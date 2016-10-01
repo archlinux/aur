@@ -1,3 +1,4 @@
+# Maintainer: Rubén Fdes Moreira <tmp-meteque@openmailbox.com>
 # Contributor: Sigmund Vestergaard <sigmundv at gmail dot com>
 # Contributor: MacCyber <jonas.enge at gmail dot com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
@@ -6,20 +7,24 @@
 
 pkgname=acestream-engine
 pkgver=3.0.5.1
-pkgrel=1
+[[ "$CARCH" == i686 ]] && pkgver=3.0.3
+pkgrel=2
 _ubuntuver=14.04
 pkgdesc="ACE Stream engine"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://acestream.org/"
 license=('unknown')
 depends=('python2-setuptools' 'python2-xlib' 'python2-m2crypto' 'python2-apsw')
 optdepends=('libappindicator-gtk2: GTK+ gui support')
 install='acestream-engine.install'
-source=('acestream-engine.service'
-        "http://dl.acestream.org/ubuntu/${_ubuntuver%.*}/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH.tar.gz")
-sha256sums=('b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0'
-            '5dbfc20af2ebe890f14f1e2a7565e45f53654e7888b389af8797cfaee9cda397')
-            
+
+source=('acestream-engine.service')
+source_x86_64=("http://dl.acestream.org/ubuntu/${_ubuntuver%.*}/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz")
+source_i686=("http://dl.acestream.org/ubuntu/${_ubuntuver%.*}/acestream_${pkgver}_ubuntu_${_ubuntuver}_i686.tar.gz")
+
+sha256sums=('b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0')
+sha256sums_x86_64=('5dbfc20af2ebe890f14f1e2a7565e45f53654e7888b389af8797cfaee9cda397')
+
 package() {
   cd "$srcdir/acestream_${pkgver}_ubuntu_${_ubuntuver}_$CARCH"
   install -Dm755 acestreamengine "$pkgdir/usr/bin/acestreamengine"
