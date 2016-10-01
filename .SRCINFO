@@ -8,6 +8,7 @@ pkgbase = blackpearl
 	makedepends = npm
 	depends = nodejs
 	depends = npm
+	depends = mpv
 	options = !emptydirs
 	source = blackpearl::git+https://github.com/rainbowintheshell/blackpearl.git
 	md5sums = SKIP
