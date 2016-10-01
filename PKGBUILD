@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=8.7
+pkgver=9.0
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -12,10 +12,18 @@ makedepends=('mercurial' 'wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#revision=70ce6812e62f"
+source=("hg+http://foicica.com/hg/textadept#revision=bdd7e352df48"
         "http://foicica.com/textadept/download/textadept_${pkgver}.modules.zip")
 
 build() {
+  msg ""
+  msg "If textadept can't be compiled try the following things in this order:"
+  msg "- Run: hg config -e , and then add these lines:"
+  msg "[hostsecurity]"
+  msg "foicica.com:minimumprotocol = tls1.0"
+  msg ""
+  msg "- Run makepkg with the -C argument"
+  msg ""
   cd "$srcdir/$pkgname/src"
   unset MAKEFLAGS
   unset CXXFLAGS
@@ -57,4 +65,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         'a4d424b6d0616999edf7cfc69c11f313')
+         '2e3cc33d2630ad64675b5ce73b49276a')
