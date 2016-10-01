@@ -5,6 +5,10 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
+# Patch with MuQSS (Multiple Queue Skiplist Scheduler)
+# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler.html
+_MuQSS=
+
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -71,6 +75,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+"http://ck.kolivas.org/patches/bfs/4.0/4.7/Testing/bfs502-MuQSS_100.patch"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
@@ -87,6 +92,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
             'SKIP'
+            '969e76688bc78212dc89665b5e8060958055973ab934129289c5351c56582fa9'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
             '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
@@ -128,6 +134,11 @@ prepare() {
 	patch -Np1 -i "$srcdir/$_bfqp2"
 	patch -Np1 -i "$srcdir/$_bfqp3"
 	patch -Np1 -i "$srcdir/$_bfqp4"
+
+	if [ -n "$_MuQSS" ]; then
+		msg "Patching with MuQSS patch"
+		patch -Np1 -i "$srcdir/bfs502-MuQSS_100.patch"
+	fi
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
