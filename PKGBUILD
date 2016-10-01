@@ -53,7 +53,7 @@ pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.6
 _pkgver=4.6.7
-_rtpatchver=rt13
+_rtpatchver=rt14
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -457,11 +457,11 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'                                                  
+sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
             'SKIP'
             '8b63eb1e7c830bdf59aefbb02c591299dd8088845532612ed6b91b52f9d645e78d8c47d8d596245b877a4b7fa247ff7b703d433830cd36331c546628761a8ace'
             'SKIP'
-            '86f923bcd89e3686361ae43b5ace18c1470761cf703baf3a281b79713a3da4bb994a3003d51f6166ada7e8c71ace4870748291e044ff81ea4a73c8628f9ecae1'
+            'b06d8d4b39064a11b0a68c97448120d789ba48ab46ea20fcc6294e360426e4d2c4619811b8cc46701bd5b27a6515e79f9cc9fe3252e241e6b212eff682c97cea'
             'SKIP'
             '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
             '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
