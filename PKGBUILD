@@ -1,12 +1,13 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.26.18.25
+pkgver=1.26.18.26
+_pkgver=1261826
 pkgrel=1
-pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
+pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
 license=('custom')
-depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
+depends=('apr-util' 'glib2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
 optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
@@ -16,23 +17,22 @@ optdepends=(
 	'gst-plugins-bad: for video support'
 	'gst-plugins-ugly: for video support'
 	'lib32-freealut: for OpenAL support')
-arch=('x86_64')
-conflicts=('coolvlviewer-legacy' 'coolvlviewer-experimental')
-install=coolvlviewer.install
-source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
 
+makedepends=("cmake" "bison" "flex" "python2" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama")
+arch=('i686' 'x86_64')
+conflicts=('coolvlviewer-bin' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
+install=coolvlviewer.install
+source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('1a65c064ad6f95861a023faf98709595'
+md5sums=('c50b66f32298091e82f714a26e8808d6'
          '88b0bca907149f4c26389449081a13fd'
          'fd78de1f6c1333a5120ece89873515e0')
 
 build() {
-cd $srcdir
-# Run the installer
-chmod +x CoolVLViewer-${pkgver}-Linux-x86_64-Setup
-./CoolVLViewer-${pkgver}-Linux-x86_64-Setup --mode silent --destination $srcdir/coolvlviewer/
 
+cd $srcdir/linden/indra
+./buildlinux.sh
 }
 
 package(){
@@ -41,7 +41,10 @@ install -D -m644 $srcdir/coolvlviewer.desktop \
 	$pkgdir/usr/share/applications/coolvlviewer.desktop
  
 # Install Icon File
-install -D -m755 $srcdir/coolvlviewer/cvlv_icon.png \
+
+#$srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/
+
+install -D -m755 $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/cvlv_icon.png \
 	$pkgdir/usr/share/pixmaps/clvl_icon.png
 
 # Install Launcher
@@ -49,10 +52,11 @@ install -D -m755 $srcdir/../coolvlviewer.launcher \
 	$pkgdir/usr/bin/coolvlviewer
     
 # Install License
-install -D -m644 $srcdir/coolvlviewer/licenses.txt \
+install -D -m644 $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/licenses.txt \
 	$pkgdir/usr/share/licenses/$pkgname/LISENSE
     
 # Move Data to Destination Directory
+mv $srcdir/linden/indra/viewer-linux-i686-release/newview/CoolVLViewer-i686-$pkgver/ $srcdir/coolvlviewer
 install -d $pkgdir/opt/
 mv coolvlviewer/ $pkgdir/opt/
     
@@ -62,5 +66,4 @@ chmod -R g+rw $pkgdir/opt/coolvlviewer
 
 # Make Binary Group-Executable
 chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
-    
 }
