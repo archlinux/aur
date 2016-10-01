@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/terrycain/razer_drivers
 
 pkgname=python-razer
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="A python library for controlling razer-daemon"
 arch=('any')
