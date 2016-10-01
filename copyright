@@ -1,0 +1,34 @@
+ English:
+
+  This is the forth release of the Russian spellchecker dictionary.
+  It consists of three parts, words of "General usage" (ru_gen4.dic),
+  "Physics" (ru_phys4.dic) and "Proper names" (ru_names4.dic)
+  wordlists. In comparison with the previous edition, prepared by Lev
+  Melnikov, support of Russian letter "io" has been added in
+  conformity with recommendations of the Ministry of Education and
+  Science of the Russian Federation. The dictionary is provided AS IS
+  without any warranty. Feel free to copy, use, distribute, abuse or
+  delete this dictionary in any way you wish. I tried to verify it to
+  my best, still if you find something that you believe is an error,
+  please contact me.
+
+  -------------------------------------------------------------------
+
+  UTF-8:
+
+  Это четвёртая редакция русского словаря. Теперь он состоит из трёх
+  частей -- слова "Общего употребления" (ru_gen4.dic), "Физическая"
+  терминология (ru_phys4.dic) и "Имена собственные" (ru_names4.dic).
+  По сравнению с предыдущим изданием, которое было подготовлено Львом
+  Мельниковым, была добавлена поддержка русской буквы "ё" в
+  соответствии с рекомендациями Министерства образования и науки РФ.
+  По-прежнему, словарь не претендует на сколь-нибудь полное отражение
+  "Великого и могучего" языка ни в физической ни в нефизической
+  области. Никаких гарантий (я не ГосСтрах) не предполагается. Вы
+  можете делать со словарем что угодно (не можешь проконтролировать -
+  лучше разреши). Если, вдруг, Вы обнаружите какие-либо ошибки, я их
+  с радостью исправлю.
+
+  -------------------------------------------------------------------
+
+  "Igor A. Kotelnikov"   <i.a.kotelnikov@inp.nsk.su>
