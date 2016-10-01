@@ -7,7 +7,7 @@
 # Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=dosemu-git
-pkgver=1.4.0.8.739.gc8f96f3
+pkgver=1.4.0.8.753.g18f6f5c
 pkgrel=1
 epoch=1
 pkgdesc="DOS emulator"
@@ -32,24 +32,30 @@ sha256sums=('SKIP'
 noextract=('dosemu-freedos-1.1-bin.tgz')
 
 pkgver() {
-  cd "$srcdir/dosemu"
+  cd "dosemu"
   local ver="$(git describe --long)"
   local ver="${ver/dosemu-/}"
   echo "${ver//-/.}"
 }
 
-build() {
-  cd "$srcdir/dosemu"
+prepare() {
+  cd "dosemu"
 
   patch -p1 -i ../debianize.patch
-
   sed -ie '/yyget_leng/ s/int/size_t/' src/base/init/lexer.h
+  sed -ie 's/((no_instrument_function/&,optimize("no-stack-protector")/' \
+          src/arch/linux/async/sigsegv.c src/arch/linux/async/signal.c
+}
+
+build() {
+  cd "dosemu"
+
   ./configure --prefix=/usr --with-fdtarball="$srcdir/dosemu-freedos-1.1-bin.tgz" --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd "$srcdir/dosemu"
+  cd "dosemu"
   make DESTDIR="$pkgdir" install
   install -Dm 644 "$srcdir"/xdosemu.desktop "$pkgdir"/usr/share/applications/xdosemu.desktop
   install -Dm 644 etc/dosemu.xpm "$pkgdir"/usr/share/icons/dosemu.xpm
