@@ -1,6 +1,6 @@
 # Maintainer: João Miguel <jmcf125 at openmailbox dot org>
 pkgname=auditd-openrc
-pkgver=20151011
+pkgver=20161001
 pkgrel=1
 pkgdesc="Auditd init script for OpenRC (from systemd-free.org - not apg's way)"
 url='http://people.redhat.com/sgrubb/audit/'
@@ -25,7 +25,7 @@ _inst_confd(){
 _inst_initd(){
    install -Dm755 "${srcdir}/${1}-init.d-2.4.3" "${pkgdir}/etc/init.d/$1"
 
-   sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
+   sed -e 's|#!.*|#!/usr/bin/openrc-run|' \  # .* because Gentoo keeps changing the link
 	 -e 's|/var/run|/run|g' \
 	 -i "${pkgdir}/etc/init.d/$1"
    # ^^--- should work without this, but actually does not (at boot)
