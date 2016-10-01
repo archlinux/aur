@@ -11,4 +11,9 @@ post_install() {
 post_upgrade() {
     (( $(vercmp $2 '0.12.26-4') < 0 )) && chown -R root:root /usr/share/factorio || true
     (( $(vercmp $2 '0.12.26-4') < 0 )) && post_install "$1" || true
+    (( $(vercmp $2 '0.14.12-1') < 0 )) && {
+        echo "AUTOSAVE_INTERVAL and AUTOSAVE_SLOTS must now be declared in /etc/factorio/server-settings.json"
+        echo "Please update /etc/factorio/server-settings.json and /etc/config.d/factorio now."
+        echo "Don't forget to run 'systemctl daemon-reload' before restarting your server."
+    } || true
 }
