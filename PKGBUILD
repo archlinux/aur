@@ -7,7 +7,7 @@ url="http://$pkgname.googlepages.com"
 license=('GPL2')
 depends=('nant' 'perl')
 backup=("etc/${pkgname}rc")
-source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('a83a71fa82f6eee178d01fab853575ee')
 
 package() {
