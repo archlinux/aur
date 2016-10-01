@@ -35,13 +35,10 @@ sub _get_latest_version {
 
     exit 2 unless $res->is_success;
 
-    if ( $res->is_success ) {
-        my $uri;
-        $uri = $res->base;
-        print "Uri: $uri";
-        $uri =~ /thunderbird-(?<version>[\d]{2}).0a2.en-US.linux-[xi0-9_]*.json/;
-        return %+ if %+;
-    }
+    my $uri = $res->base;
+    $uri =~ /thunderbird-(?<version>[\d]{2}).0a2.en-US.linux-[xi0-9_]*.json/;
+
+    return %+ if %+;
 
     print "Cannot get response on HEAD request about latest tarball";
     exit 1;
