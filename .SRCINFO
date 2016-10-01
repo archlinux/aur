@@ -1,0 +1,21 @@
+pkgbase = tigervnc-viewer-git
+	pkgdesc = TigerVNC (Viewer only), forked from the VNC 4 branch of TightVNC.
+	pkgver = 1.7.0
+	pkgrel = 2
+	url = http://www.tigervnc.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fltk
+	depends = gnutls
+	depends = libjpeg-turbo
+	conflicts = tightvnc
+	options = strip
+	source = https://github.com/TigerVNC/tigervnc/archive/v1.7.0.tar.gz
+	source = vncviewer.desktop
+	md5sums = 0930edf4f339283d856ce7027db40308
+	md5sums = 71cac0fb9701b0a041430f0fddfe00c8
+
+pkgname = tigervnc-viewer-git
+
