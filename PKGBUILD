@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -20,8 +20,7 @@ sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'dd15ff9d020d6779c51bff560c8571b462cc7ca3f4d2a92b8103056be4b2e0fd'
             'SKIP'
-            'SKIP'
-            'b346249c40d4eab7cf5a2b682b10f574d5f8ad6cf2b62604f15261a246b5f5a1')
+            'SKIP')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 	          "https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
@@ -31,8 +30,7 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 			  "vpn.sh"
 			  "pia.8.gz"
 			  "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-			  "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git"
-			  "update-resolv-conf.patch")
+			  "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
 		
 noextract=("openvpn.zip"
                   "openvpn-strong.zip"
@@ -61,8 +59,6 @@ prepare() {
   
   msg2 "Done."
 
-  msg2 "Patching update-resolv-conf ..."
-  patch -Np1 "${srcdir}/openvpn-update-resolv-conf/update-resolv-conf.sh" "${srcdir}/update-resolv-conf.patch"
 }
 
 package() {
