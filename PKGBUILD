@@ -6,7 +6,7 @@ pkgver=1.2.4
 pkgrel=2
 pkgdesc='Library for file management. Patched to allow directory thumbnails.'
 depends=('menu-cache')
-makedepends=('git' 'libexif' 'intltool' 'vala')
+makedepends=('git' 'gtk-doc' 'libexif' 'intltool' 'vala')
 provides=("$_name=$pkgver" "$_name-extra=$pkgver")
 conflicts=("$_name=$pkgver" "$_name-extra=$pkgver")
 url="https://github.com/lxde/$_name"
