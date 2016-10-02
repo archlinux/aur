@@ -14,7 +14,7 @@
 #
 
 pkgname=ejabberd-git
-pkgver=16.08.5.gb62aa3d
+pkgver=16.09.16.g15ebb79
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
@@ -97,7 +97,7 @@ md5sums=('SKIP'
          'f97c8a96160f30e0aecc9526c12e6606'
          '2253e277a6b3fae5124219c0aafa1089'
          'be2fa3c15c92a9c2b9b6b7a3957d5c3a'
-         '7cb3e95debcdac90b3ebcec950835706')
+         'd3f3e0db5306dc1eb4fa9c22ee34e81b')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"

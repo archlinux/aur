@@ -1,6 +1,6 @@
 pkgbase = ejabberd-git
 	pkgdesc = Jabber server written in Erlang
-	pkgver = 16.08.1.g9a5f075
+	pkgver = 16.09.16.g15ebb79
 	pkgrel = 1
 	url = http://www.ejabberd.im/
 	install = ejabberd.install
@@ -92,7 +92,7 @@ pkgbase = ejabberd-git
 	md5sums = f97c8a96160f30e0aecc9526c12e6606
 	md5sums = 2253e277a6b3fae5124219c0aafa1089
 	md5sums = be2fa3c15c92a9c2b9b6b7a3957d5c3a
-	md5sums = 7cb3e95debcdac90b3ebcec950835706
+	md5sums = d3f3e0db5306dc1eb4fa9c22ee34e81b
 
 pkgname = ejabberd-git
 
