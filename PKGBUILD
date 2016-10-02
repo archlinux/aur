@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.4.1dev+33+gc87b89b
+pkgver=1.4.2
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -34,7 +34,7 @@ replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
-_commit=c87b89bf8f7d0e45df08e84503eb16f5ef2ce3c6
+_commit=c2c006fca869fccf9ce8c2a63a738174269872e2  # tags/1.4.2^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
