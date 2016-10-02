@@ -52,16 +52,16 @@ package() {
 	rm "${pkgdir}${_alteradir}/quartus/linux/libuuid.so.1"
 
 	# backup Qt libraries
-	mv "${pkgdir}${_alteradir}/quartus/linux/libQtCore.so.4{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libQtGui.so.4{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libQtNetwork.so.4{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libQtXml.so.4{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtCore.so.4"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtGui.so.4"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtNetwork.so.4"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtXml.so.4"{,.bak}
 
 	# backup C++ standart libraries
-	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++-libc6.2-2.so.3{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.5{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.6{,.bak}"
-	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++-libc6.2-2.so.3"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.5"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.6"{,.bak}
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so"{,.bak}
 
 	cd "${srcdir}"
 
