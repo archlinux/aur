@@ -2,7 +2,7 @@
 # Contributor: Boris Shomodjvarac <spam AT shomodj DOT com>
 
 pkgname=qore
-pkgver=0.8.11
+pkgver=0.8.12.3
 pkgrel=1
 epoch=
 pkgdesc="Qore is a high-level, general-purpose, interpreted, dynamic programming language"
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://sourceforge.net/projects/qore/files/$pkgname/$pkgver/${pkgname}-${pkgver}.tar.bz2")
+source=("https://github.com/qorelanguage/qore/releases/download/release-$pkgver/qore-$pkgver.tar.bz2")
 md5sums=('483510cdcb6338ff6cb892cc29a98a63')
 noextract=()
 
@@ -47,8 +47,3 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
-
-
-
-# vim:set ts=2 sw=2 et:
- 
