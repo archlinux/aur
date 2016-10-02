@@ -2,9 +2,9 @@
 
 pkgname=("mc2xml-bin")
 pkgver=1.3
-pkgrel=6
+pkgrel=8
 pkgdesc="mc2xml is a small and fast standalone command line program for Windows/Linux/OSX that downloads media center, titantv, or schedules direct tv listings and outputs an XMLTV formatted (xmltv.dtd) .xml file."
-arch=("i686" "x86_64" "arm" "armv6h" "armv7h")
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="http://mc2xml.awardspace.info/"
 license=("custom")
 provides=("mc2xml")
@@ -13,10 +13,10 @@ replaces=("mc2xml")
 options=("!strip" "staticlibs")
 source=("file://mc2xml")
 md5sums=("3b612d906f295ea822abadeaf43727b0")
-if [ "${CARCH}" = "arm" ] || [ "${CARCH}" = "armv6h" ] || [ "${CARCH}" = "armv7h" ]; then
+if [ "${CARCH}" = "arm" -o "${CARCH}" = "armv6h" -o "${CARCH}" = "armv7h" -o "${CARCH}" = "aarch64" ]; then
 	depends+=("qemu-user-static-deb")
 	source+=("mc2xml.sh")
-	md5sums+=("c0384823baebcee630d18af9a75757ef")
+	md5sums+=("SKIP")
 fi
 
 package() {
