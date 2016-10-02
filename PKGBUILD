@@ -1,8 +1,8 @@
 # Maintainer: Tetsumi <tetsumi@vmail.me>
 
 pkgname=golo
-pkgver=3.1.0.incubation.M1
-_filename=golo-3.1.0-incubation-M1
+pkgver=3.2.0.M4
+_filename=golo-3.2.0-M4
 pkgrel=1
 pkgdesc="A lightweight dynamic language for the JVM."
 arch=(any)
@@ -12,8 +12,8 @@ depends=(java-runtime-headless bash)
 makedepends=('unzip')
 options=(!strip)
 noextract=("${_filename}.zip")
-source=(http://ftp.snt.utwente.nl/pub/software/eclipse//golo/${_filename}.zip)
-md5sums=('277f8d99de7b8d6569e9fe244ea72cd9')
+source=(http://mirror.dkm.cz/eclipse/golo/${_filename}.zip)
+md5sums=('1df3821973a5cf1994f82a307da7eef5')
 
 package() {
   cd "$pkgdir"
