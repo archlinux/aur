@@ -6,3 +6,6 @@ After=network.target
 User=linx
 Group=linx
 ExecStart=/usr/bin/linx-server -config /etc/webapps/linx-server/config.ini
+
+[Install]
+WantedBy=multi-user.target
