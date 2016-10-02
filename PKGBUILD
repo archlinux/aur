@@ -4,7 +4,7 @@
 
 pkgname=fortune-mod-matrix
 pkgver=20160822
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortune cookies: The Matrix trilogy"
 arch=('any')
 license=('custom')
