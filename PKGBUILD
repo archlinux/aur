@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=winusb-git
-pkgver=0ec7980
+pkgver=d339f1e
 pkgrel=1
 pkgdesc='Simple tool to create a usb stick installer for Windows (Vista and above)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('wxgtk' 'grub' 'ntfs-3g' 'gksu' 'parted')
 makedepends=('diffutils')
 conflicts=('winusb')
-provides=('winsub')
+provides=('winusb')
 source=('winusb-git::git+https://github.com/slacka/WinUSB.git')
 md5sums=('SKIP')
 sha256sums=('SKIP')
