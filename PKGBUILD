@@ -1,7 +1,7 @@
 # Maintainer : Alex Kubica <alexkubicail@gmail.com>
 pkgname=perl-text-bidi
 _dist=Text-Bidi
-pkgver=2.11
+pkgver=2.12
 pkgrel=1
 pkgdesc="Unicode bidi algorithm using libfribidi"
 arch=('any')
@@ -11,7 +11,7 @@ depends=(perl)
 makedepends=(perl-extutils-pkgconfig)
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/K/KA/KAMENSKY/$_dist-$pkgver.tar.gz") 
-md5sums=('09bf3b9212795a66877439751f3c8664')
+md5sums=('075019229cd1e6ce452494fb87959f32')
 
 build() {
   cd $srcdir/${_dist}-${pkgver}
