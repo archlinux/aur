@@ -3,6 +3,7 @@ pkgbase = qt5-styleplugins
 	pkgver = 5.0.0
 	pkgrel = 2
 	url = https://code.qt.io/cgit/qt/qtstyleplugins
+	install = install.sh
 	arch = i686
 	arch = x86_64
 	license = LGPL

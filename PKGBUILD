@@ -21,6 +21,8 @@ sha512sums=(
     'SKIP'
 )
 
+install='install.sh'
+
 prepare() {
     cd "${srcdir}/${_srcname}"
 
