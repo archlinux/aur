@@ -12,7 +12,7 @@ depends_i686=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig'
 depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
                 'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng')
 makedepends=('git' 'cmake')
-makedepends_x86_64=('gcc-multilib')
+makedepends_x86_64=('gcc-multilib' 'sdl2_ttf')
 options=('!buildflags')
 install=openrct2.install
 source=("https://github.com/OpenRCT2/OpenRCT2/archive/v$pkgver.tar.gz"
