@@ -1,6 +1,6 @@
-diff -Naur freetype-2.5.5/src/autofit/aflatin.c freetype-2.5.5.new/src/autofit/aflatin.c
---- freetype-2.5.5/src/autofit/aflatin.c	2014-11-19 16:37:26.000000000 -0500
-+++ freetype-2.5.5.new/src/autofit/aflatin.c	2015-04-21 18:35:03.311094903 -0400
+diff -Naur a/src/autofit/aflatin.c b/src/autofit/aflatin.c
+--- a/src/autofit/aflatin.c	2014-11-19 16:37:26.000000000 -0500
++++ b/src/autofit/aflatin.c	2015-04-21 18:35:03.311094903 -0400
 @@ -1973,14 +1973,14 @@
       *  We snap the width of vertical stems for the monochrome and
       *  horizontal LCD rendering targets only.

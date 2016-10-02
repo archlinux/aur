@@ -1,4 +1,5 @@
-# Maintainer: frames <markkuehn at outlook dot com>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: frames <markkuehn at outlook dot com>
 # Contributor: Estevao Valadao <estevao@archlinux-br.org>
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 # Contributor: Dave Reisner <d@falconindy.com>
@@ -6,7 +7,7 @@
 # Contributor: freedom
 
 pkgname=freetype2-cleartype
-pkgver=2.5.5
+pkgver=2.7
 pkgrel=1
 pkgdesc="TrueType font rendering library with ClearType patch"
 arch=('i686' 'x86_64')
@@ -17,24 +18,24 @@ conflicts=('freetype2')
 provides=("freetype2=$pkgver")
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2"
-    freetype-2.5.5-subpixel-disable-quantization.patch
-    freetype-2.5.5-bytecode.patch
-    freetype-2.5.5-enable-spr.patch
-    freetype-2.5.5-enable-valid.patch
-    freetype-2.5.5-memcpy-fix.patch)
-md5sums=('2a7a314927011d5030903179cf183be0'
-         'f76c05235aaa646b3fe224fcbf2b6ed7'
-         'f08498a4b121cd74dc94506a5bc989b9'
-         'a597c6b931bb830d9b3a995f0f327adb'
-         '0cb479622259cc6d94abf58c8704787f'
-         '9faed89411e6103213189652c8e57381')
+        '0001-subpixel-disable-quantization.patch'
+        '0002-bytecode.patch'
+        '0003-enable-spr.patch'
+        '0004-enable-valid.patch'
+        '0005-memcpy-fix.patch')
+md5sums=('be4601619827b7935e1d861745923a68'
+         '7d44826389c2ef5c8b3b1e0f2d315f00'
+         'fd6b679327c5aa57fffba2bd51af208b'
+         '618d7265f93a59b78550bb2c0ced7976'
+         'cef23c05395eb7ead5050b4ffc6616c1'
+         '029bf39a0f9995f8adf86a2ddf215761')
 
 prepare() {
     cd "freetype-$pkgver"
 
     for p in $(find "$srcdir" -maxdepth 1 -name '*.patch'); do
-	msg2 "Applying $p"
-	patch -Np1 -i "$p"
+        msg2 "Applying $p"
+        patch -Np1 -i "$p"
     done
 }
 
