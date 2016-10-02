@@ -1,0 +1,15 @@
+pkgbase = archlinux-lxqt-theme
+	pkgdesc = Dark Arch linux theme for the LXQt Desktop
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/stefonarch/archlinux-lxqt-theme
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	optdepends = breeze-icons: Breeze icon themes
+	provides = archlinux-lxqt-theme=1.1
+	source = https://github.com/stefonarch/archlinux-lxqt-theme/archive/1.1.tar.gz
+	md5sums = 27cbf712f06713b36b77a8b08835bdb4
+
+pkgname = archlinux-lxqt-theme
+
