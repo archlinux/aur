@@ -11,7 +11,7 @@ ExecStop=/usr/bin/openbazaard-next stop
 ExecReload=/usr/bin/openbazaard-next restart
 
 ## Security
-#InaccessibleDirectories=/home
+InaccessibleDirectories=/home
 
 [Install]
 WantedBy=multi-user.target
