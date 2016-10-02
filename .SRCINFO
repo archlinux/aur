@@ -1,7 +1,7 @@
 pkgbase = python-libtcod-cffi
 	pkgdesc = Python CFFI port of libtcod.
-	pkgver = 0.2.8
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/libtcod-cffi
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = python-libtcod-cffi
 	depends = sdl
 	depends = libpng
 	depends = zlib
-	source = libtcod-cffi-0.2.8.zip::https://pypi.python.org/packages/source/l/libtcod-cffi/libtcod-cffi-0.2.8.zip#md5=97a790694da1ea7eccb426a25c76f462
-	md5sums = 97a790694da1ea7eccb426a25c76f462
+	source = https://pypi.python.org/packages/08/e8/32a3bab98a7c3de162c917db2c6a6ad2f962019d48a01d2bae973eadb50a/libtcod-cffi-1.0.zip#md5=7463496b14cd282c9e8ac8a54b1063dc
+	md5sums = 7463496b14cd282c9e8ac8a54b1063dc
 
 pkgname = python-libtcod-cffi
 
