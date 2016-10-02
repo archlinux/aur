@@ -2,14 +2,14 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='nextcloud-client'
-pkgver='2.2.3'
-pkgrel='2'
+pkgver='2.2.4'
+pkgrel='1'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
-makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio')
+makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio' 'qtkeychain')
 optdepends=('python2-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
 conflicts=('owncloud-client')
 source=("${pkgname}::git+https://github.com/nextcloud/client_theming.git")
@@ -18,10 +18,7 @@ backup=('etc/Nextcloud/sync-exclude.lst')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git submodule update --init
-  cd client
-  git submodule update --init
-
+  git submodule update --init --recursive
   mkdir "${srcdir}/${pkgname}/build-linux"
 }
 
@@ -36,6 +33,10 @@ build() {
 
   make
   make doc-man
+}
+
+check() {
+  sed -Ei 's|Icon(\[.*\])?=nextcloud|Icon\1=Nextcloud|g' "${srcdir}/${pkgname}/build-linux/src/gui/nextcloud.desktop"
 }
 
 package() {
