@@ -22,6 +22,6 @@ package() {
   cp -dr --no-preserve='ownership' Surfn\ Evopop "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Surfn\ Majestic "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' Surfn\ Orange "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn\ "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn "${pkgdir}"/usr/share/icons/
 
 }
