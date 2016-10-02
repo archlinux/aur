@@ -13,8 +13,8 @@ makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-md5sums=('3a3a2724840d49cc34bfdb737e75ec3c'
-         '3cf0110f7eac62f57178515c7dee9b66')
+sha1sums=('5eaba70f7a1594520b9e88ee4e6343e1691ed862'
+          '7c8f7cb3872dc11bd72c1ba2ec69945ae710cfe2')
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 
