@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	export GOPATH="${srcdir}"
-	export GOBIN="."
+	export GOBIN="${PWD}"
 	cd "${srcdir}/meek/meek-server"
 	msg2 'Fetching necessary libraries...'
 	go get
