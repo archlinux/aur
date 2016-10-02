@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=soundcloud-dl-git
-pkgver=r137.d902c8e
+pkgver=r158.bf81d23
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
