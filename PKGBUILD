@@ -3,7 +3,7 @@
 pkgname=v8-5.2
 pkgver=5.2.361.4
 pkgrel=1
-pkgdesc="Fast and modern Javascript engine used in Google Chrome."
+pkgdesc="Fast and modern Javascript engine (old version for php-v8js)."
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/v8/"
 license=('BSD')
