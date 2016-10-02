@@ -3,8 +3,8 @@
 _pkgname=nwchem
 pkgname=${_pkgname}-bin
 pkgver=6.6.r27746.2
-_pkgver=6.6+r27746-2
-pkgrel=1
+_pkgver=6.6+r27746-2+b1
+pkgrel=2
 pkgdesc="Open Source High-Performance Computational Chemistry (Debian binary build)"
 arch=("i686" "x86_64")
 url="http://www.nwchem-sw.org"
@@ -16,11 +16,11 @@ options=("!strip" "libtool" "staticlibs")
 case "${CARCH}" in
   "i686")
     _arch='i386'
-    _sha256sum='1b19f6e6ac88b093698bff41aed898fee8ff4f31af908d4c396a70b95504336d'
+    _sha256sum='fa072e9dba383bafaeafb5cfcf38f4fcf5d945760275be334e29941d75d837a3'
     ;;
   "x86_64")
     _arch='amd64'
-    _sha256sum='aa5b19b249a261797dca8a8b8c8b4c99fa991b79a330df5399252379197ca745'
+    _sha256sum='e90a6b1ae559867c62fb947f4567a93b3f1de9a6e1a8934228032dd6c1b1bdf6'
     ;;
 esac
 source=("http://ftp.us.debian.org/debian/pool/main/n/nwchem/nwchem_${_pkgver}_${_arch}.deb")
