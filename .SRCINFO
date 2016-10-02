@@ -1,6 +1,6 @@
 pkgbase = orion-git
 	pkgdesc = QML/C++-written desktop client for Twitch.tv
-	pkgver = r229.8381087
+	pkgver = r238.46ce6ae
 	pkgrel = 1
 	url = https://github.com/alamminsalo/orion
 	arch = x86_64
