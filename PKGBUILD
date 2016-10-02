@@ -18,5 +18,5 @@ pkgver() {
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
-  install -D -m755 "${srcdir}/nzbsubs/nzbinfo.py" "${pkgdir}/usr/bin/nzbinfo"
+  install -D -m755 "${srcdir}/nzbinfo/nzbinfo.py" "${pkgdir}/usr/bin/nzbinfo"
 }
