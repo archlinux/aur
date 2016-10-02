@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=r603.d103baf
+pkgver=r645.b4ea839
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.'
 arch=('any')
