@@ -8,5 +8,7 @@ post_upgrade() {
 }
 
 post_remove() {
-	sudo rm /usr/bin/brain
+	echo "Brain removed successfully? No. We need remove another cancer too."
+	echo "I blame Rafael Nunes and Luiz Peres about this cancer routine."
+	rm -rf -v /usr/local/include/brain/io
 }

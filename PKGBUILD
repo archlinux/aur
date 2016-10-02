@@ -31,5 +31,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  sudo cp bin/brain /usr/bin/brain
+  # Creating need directories
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 "bin/brain" $pkgdir/usr/bin/brain
 }
