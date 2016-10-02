@@ -8,8 +8,8 @@ pkgdesc='The virgil3d rendering library is a library used by qemu to implement 3
 arch=('i686' 'x86_64')
 license=('MIT')
 url='https://virgil3d.github.io/'
-depends=()
-makedepends=('python2' 'libdrm' 'xorg-util-macros' 'git')
+depends=('libepoxy' 'mesa')
+makedepends=('python2' 'git')
 source=('git://anongit.freedesktop.org/git/virglrenderer')
 sha256sums=('SKIP')
 
