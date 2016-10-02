@@ -1,7 +1,7 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=wannier90
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Compute maximally-localised Wannier functions (MLWFs)."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('lapack' 'blas')
 makedepends=('gcc-fortran')
 optdepends=()
 source=(http://www.wannier.org/code/$pkgname-$pkgver.tar.gz)
-sha1sums=('1d257c542327cdcf7481450170fb5887a90673a0')
+sha1sums=('17af3f22a2623dc4d2c183dae7a5c63a6f0941bb')
 options=(staticlibs)
 
 build() {
