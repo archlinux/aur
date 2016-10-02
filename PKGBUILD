@@ -4,7 +4,7 @@
 
 pkgname=pocketsphinx
 pkgver=5prealpha
-pkgrel=5
+pkgrel=6
 pkgdesc='Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.'
 arch=('i686' 'x86_64')
 url='http://cmusphinx.sourceforge.net'
@@ -13,7 +13,7 @@ makedepends=('swig' 'python2' 'python')
 depends=('sphinxbase=5prealpha' 'gstreamer0.10-base' 'gst-plugins-base-libs')
 source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/pocketsphinx/master/LICENSE")
-sha256sums=('ad9f5f5c5ce79ff87b63d527f8f4d3e2f54c0c1da53793895991a8849ca47701'
+sha256sums=('ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9'
             '49181202f2b991d25f6cac8cd1705994494b9600d4311794ecbb9fcf8b188aef')
 options=('!libtool')
 
