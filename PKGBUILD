@@ -1,19 +1,25 @@
 pkgname=('qt5-styleplugins-git')
 _srcname='qtstyleplugins'
 pkgdesc='Additional style plugins for Qt5'
-pkgver='r1'
+pkgver='r22'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://code.qt.io/cgit/qt/${_srcname}"
 license=('LGPL')
 
-depends=('qt5-base' 'gconf' 'gtk2' 'libx11')
+depends=('qt5-base' 'gtk2' 'libx11')
 makedepends=('git')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=("${_srcname}::git+${url}.git")
-sha512sums=('SKIP')
+source=(
+    "${_srcname}::git+${url}.git"
+    'gconf.patch'
+)
+sha512sums=(
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "${srcdir}/${_srcname}"
@@ -22,6 +28,12 @@ pkgver() {
         "$( git rev-list --count 'HEAD' )" \
         "$( git log --max-count='1' --pretty='format:%ct' )" \
         "$( git rev-parse --short 'HEAD' )"
+}
+
+prepare() {
+    cd "${srcdir}/${_srcname}"
+
+    git apply "${srcdir}/gconf.patch"
 }
 
 build() {
