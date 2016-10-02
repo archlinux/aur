@@ -21,7 +21,7 @@ source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_
 md5sums=('ed0ffd04d2d9ce72fc2a9fd871ebdd98'
          '6d78d97e54e9feb75e3b1f835297ffd8'
          '6c096df3f55baf3e27c3bd605a418aa2'
-         'f848ecf41edb2d95f469ff2251bcfa4a'
+         '8b4aa0e2f5d769d902459c8f8d514336'
          '496120c33c2af986933bf33456fa6cf3')
 
 prepare() {
