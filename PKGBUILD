@@ -1,16 +1,17 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15@hw.ac.uk>
 
-pkgname=spideroak-systemd-git
+_pkgname=spideroak-systemd
+pkgname=${_pkgname}-git
 pkgdesc="Systemd service for SpiderOak-One"
-pkgver=r17.a0d0117
+pkgver=r20.cc2366a
 pkgrel=1
 arch=('any')
-url="https://github.com/hv15/spideroak-systemd"
-license=('custom')
+url="https://github.com/hv15/${_pkgname}"
+license=('custom:CC0-1.0')
 makedepends=('git')
 depends=('spideroak-one')
-install='spideroak-systemd.install'
-source=("spideroak-systemd-git::git+https://github.com/hv15/spideroak-systemd.git"
+install="${_pkgname}.install"
+source=("${pkgname}::git+https://github.com/hv15/${_pkgname}.git"
         'spideroak-systemd.install')
 md5sums=('SKIP'
          'f6884dd8db3619c7e184396b9cb8a164')
@@ -31,8 +32,9 @@ package() {
   install -Dm755 spideroak.sh "$pkgdir/usr/lib/systemd/scripts/spideroak"
 
   # example resource file
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 .spideroak.rc "$pkgdir/usr/share/$pkgname/spideroak.rc.proto"
 
   # license
-  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING.md"
+  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
