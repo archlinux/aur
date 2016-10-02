@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.7
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -32,7 +32,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            'a7e9415d35cee130f2ea5ae4edc652d4be784d9bbfd77e850f1e999f812b2116'
+            '46be737415406fd06c1067d1280a4a435f8b0a76d70f5d31858964b41367cc8e'
             'SKIP'
             '109a84df46989dea57015858c58ccba66fe4b3d73246a2f92d5d8d318334b807'
             '7754450077e1e3e25fc37f92fb46d3eb05ead00fdc8a8af51e65e20fc9f7cf2a'
