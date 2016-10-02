@@ -24,7 +24,8 @@ fi
 if [[ $CARCH = x86_64 ]]
 then
 	depends=('tcsh' 'lib32-glibc' 'lib32-libxext' 'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp'
-			 'lib32-freetype2' 'lib32-fontconfig' 'lib32-expat' 'lib32-libpng lib32-qt4 qtwebkit')
+			 'lib32-freetype2' 'lib32-fontconfig' 'lib32-expat' 'lib32-libpng' 'lib32-qt4' 
+			 'qtwebkit')
 fi
 
 source=("http://download.altera.com/software/acds/9.1sp2/350/download/91sp2_quartus_free_linux.tar"
