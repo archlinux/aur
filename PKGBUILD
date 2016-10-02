@@ -3,7 +3,7 @@
 
 pkgname=iridium
 pkgver=51.1
-pkgrel=3
+pkgrel=4
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
@@ -27,11 +27,15 @@ source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch
+        chromium-52.0.2743.116-unset-madv_free.patch
+        chromium-cups-2.2.patch
         fix_PNGImageDecoder.patch)
 sha256sums=('614a7cd4fe0a5ba57495fc7afbd407c0e5e59e8897d98c78f96f859e4c9bf80a'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
+            'ed0229c19fff2fa1867499b5557d815b25ed2b81b21bccb5d10bd27cf747bac4'
+            '6519cf913cb68e2def1bbf9210ef40a178b45bc9d325297c41b7a784ff57cc8e'
             '42086dbe5c68744a6bed4e4af6035defbd6e1dfc1c3f32a4711c5c953f938698')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -74,6 +78,13 @@ prepare() {
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+
+  # Disable MADV_FREE (if set by glibc)
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
+  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+
+  # Fix compiling with CUPS 2.2 backend
+  patch -Np0 -i ../chromium-cups-2.2.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
