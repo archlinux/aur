@@ -4,11 +4,11 @@ pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
 pkgver=r603.d103baf
 pkgrel=1
-pkgdesc='Syncs browser profiles to tmpfs. Unstable git version!'
+pkgdesc='Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.'
 arch=('any')
-url='https://github.com/graysky2/profile-sync-daemon/tree/unstable'
+url='https://github.com/graysky2/profile-sync-daemon'
 license=('MIT')
-depends=('procps-ng' 'rsync' 'systemd')
+depends=('procps-ng' 'rsync' 'systemd' 'findutils')
 makedepends=('git')
 conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
 'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon' 'profile-sync-daemon')
