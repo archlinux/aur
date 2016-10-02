@@ -19,8 +19,6 @@ optdepends=(
   'qt5-base: LV2 UI support'
   'zynaddsubfx: ZynAddSubFX banks'
 )
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
 source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2"
         "gcc6.patch")
 sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51'
