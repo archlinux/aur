@@ -8,14 +8,13 @@ arch=('any')
 url="https://github.com/iacopodeenosee/EasyScreenCast"
 license=('GPL3')
 depends=('gnome-shell')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git" 'gnome-shell-extensions-git')
+conflicts=('gnome-shell-extensions-git')
 install="gschemas.install"
 source=("${pkgname}::https://github.com/iacopodeenosee/EasyScreenCast/archive/${pkgver}.tar.gz")
 sha512sums=('5afb0a16d57fc3a06f77406c8be51052604895dd258de9e789e707ce19a89b92548c5c32816a97b6a4058459e5f85b7d3e74e9752a2f8f64e6449a24d522a510')
 
 package() {
-  cd "${srcdir}/EasyScreenCast-${pkgver}"
+  cd "EasyScreenCast-${pkgver}"
   # Locate the extension.
   _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
