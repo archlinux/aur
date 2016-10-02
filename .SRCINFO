@@ -1,18 +1,17 @@
 pkgbase = duo_unix
 	pkgdesc = Login utility and PAM module for Duo Security two-factor authentication
-	pkgver = 1.9.18
+	pkgver = 1.9.19
 	pkgrel = 1
 	url = https://www.duosecurity.com/docs/duounix
 	install = duo_unix.install
 	arch = i686
 	arch = x86_64
 	license = custom:GPL2
-	depends = openssl
 	depends = pam
 	backup = etc/duo/login_duo.conf
 	backup = etc/duo/pam_duo.conf
-	source = https://dl.duosecurity.com/duo_unix-1.9.18.tar.gz
-	sha1sums = 470ac92f0317cd571429441f1dc61a12cd933ba8
+	source = https://dl.duosecurity.com/duo_unix-1.9.19.tar.gz
+	sha1sums = d095f005ae42703d338f9002b13f12d5a2160fcb
 
 pkgname = duo_unix
 
