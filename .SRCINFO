@@ -1,0 +1,15 @@
+pkgbase = nzbinfo-git
+	pkgdesc = prints some info on input nzbs - just like mediainfo.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/dryes/nzbinfo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-pynzb
+	source = git://github.com/dryes/nzbinfo.git
+	md5sums = SKIP
+
+pkgname = nzbinfo-git
+
