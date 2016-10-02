@@ -1,0 +1,15 @@
+pkgbase = silver-lxqt-theme
+	pkgdesc = Silver theme for the LXQt Desktop
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/stefonarch/silver
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	optdepends = breeze-icons: Breeze icon themes
+	provides = silver-lxqt-theme=1.1
+	source = https://github.com/stefonarch/silver/archive/1.1.tar.gz
+	md5sums = b4ed8ed1648ce08b4b62797563f794ab
+
+pkgname = silver-lxqt-theme
+
