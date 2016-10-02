@@ -1,0 +1,4 @@
+*.tar.xz
+electricsheep-svn/
+pkg/
+src/
