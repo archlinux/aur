@@ -2,11 +2,11 @@
 
 _pkgname=openssl
 pkgname=lib32-$_pkgname-chacha20
-_ver=1.0.2h
+_ver=1.0.2j
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=3
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with ChaCha20 support (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -17,18 +17,18 @@ provides=("lib32-openssl=${pkgver}")
 optdepends=('ca-certificates')
 makedepends=('gcc-multilib')
 options=('!makeflags')
-_chacha20_patch='openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch'
+_chacha20_patch='openssl__chacha20_poly1305_draft_and_rfc_ossl102i.patch'
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'ca-dir.patch'
         "$_chacha20_patch")
 validpgpkeys=(8657ABB260F056B1E5190839D9C4D26D0E604491)
-md5sums=('9392e65072ce4b614c1392eefc1f23d0'
+md5sums=('96322138f0b69e61b7212bc53d5e912b'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
-         '3446d4ed9935c8a260d09300ec9fe404')
+         '6d44fc7cee088fb08049da7e54cf625f')
 
 prepare() {
 	cd $srcdir/$_pkgname-$_ver

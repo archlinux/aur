@@ -45,7 +45,7 @@ diff --git a/Configure b/Configure
 index 4a715dc..f3ab6cd 100755
 --- a/Configure
 +++ b/Configure
-@@ -146,25 +146,25 @@ my $tlib="-lnsl -lsocket";
+@@ -150,25 +150,25 @@ my $tlib="-lnsl -lsocket";
  my $bits1="THIRTY_TWO_BIT ";
  my $bits2="SIXTY_FOUR_BIT ";
  
@@ -85,7 +85,7 @@ index 4a715dc..f3ab6cd 100755
  
  # As for $BSDthreads. Idea is to maintain "collective" set of flags,
  # which would cover all BSD flavors. -pthread applies to them all, 
-@@ -710,6 +710,7 @@ my $idx_wp_obj = $idx++;
+@@ -714,6 +714,7 @@ my $idx_wp_obj = $idx++;
  my $idx_cmll_obj = $idx++;
  my $idx_modes_obj = $idx++;
  my $idx_engines_obj = $idx++;
@@ -93,7 +93,7 @@ index 4a715dc..f3ab6cd 100755
  my $idx_perlasm_scheme = $idx++;
  my $idx_dso_scheme = $idx++;
  my $idx_shared_target = $idx++;
-@@ -752,6 +753,7 @@ my $bf	="crypto/bf/bf_locl.h";
+@@ -756,6 +757,7 @@ my $bf	="crypto/bf/bf_locl.h";
  my $bn_asm	="bn_asm.o";
  my $des_enc="des_enc.o fcrypt_b.o";
  my $aes_enc="aes_core.o aes_cbc.o";
@@ -101,7 +101,7 @@ index 4a715dc..f3ab6cd 100755
  my $bf_enc	="bf_enc.o";
  my $cast_enc="c_enc.o";
  my $rc4_enc="rc4_enc.o rc4_skey.o";
-@@ -1210,7 +1212,7 @@ $openssldir=$prefix . "/" . $openssldir if $openssldir !~ /(^\/|^[a-zA-Z]:[\\\/]
+@@ -1211,7 +1212,7 @@ $openssldir=$prefix . "/" . $openssldir if $openssldir !~ /(^\/|^[a-zA-Z]:[\\\/]
  
  print "IsMK1MF=$IsMK1MF\n";
  
@@ -110,7 +110,7 @@ index 4a715dc..f3ab6cd 100755
  my $cc = $fields[$idx_cc];
  # Allow environment CC to override compiler...
  if($ENV{CC}) {
-@@ -1239,6 +1241,7 @@ my $wp_obj = $fields[$idx_wp_obj];
+@@ -1240,6 +1242,7 @@ my $wp_obj = $fields[$idx_wp_obj];
  my $cmll_obj = $fields[$idx_cmll_obj];
  my $modes_obj = $fields[$idx_modes_obj];
  my $engines_obj = $fields[$idx_engines_obj];
@@ -118,7 +118,7 @@ index 4a715dc..f3ab6cd 100755
  my $perlasm_scheme = $fields[$idx_perlasm_scheme];
  my $dso_scheme = $fields[$idx_dso_scheme];
  my $shared_target = $fields[$idx_shared_target];
-@@ -1405,7 +1408,7 @@ if ($no_asm)
+@@ -1407,7 +1410,7 @@ if ($no_asm)
  	{
  	$cpuid_obj=$bn_obj=$ec_obj=
  	$des_obj=$aes_obj=$bf_obj=$cast_obj=$rc4_obj=$rc5_obj=$cmll_obj=
@@ -127,9 +127,9 @@ index 4a715dc..f3ab6cd 100755
  	}
  
  if (!$no_shared)
-@@ -1558,6 +1561,14 @@ $bf_obj=$bf_enc		unless ($bf_obj =~ /\.o$/);
+@@ -1559,6 +1562,14 @@ $des_obj=$des_enc	unless ($des_obj =~ /\.o$/);
+ $bf_obj=$bf_enc		unless ($bf_obj =~ /\.o$/);
  $cast_obj=$cast_enc	unless ($cast_obj =~ /\.o$/);
- $rc4_obj=$rc4_enc	unless ($rc4_obj =~ /\.o$/);
  $rc5_obj=$rc5_enc	unless ($rc5_obj =~ /\.o$/);
 +if ($chapoly_obj =~ /\.o$/)
 +	{
@@ -139,10 +139,10 @@ index 4a715dc..f3ab6cd 100755
 +	{
 +	$chapoly_obj=$chapoly_enc;
 +	}
- if ($sha1_obj =~ /\.o$/)
+ if ($rc4_obj =~ /\.o$/)
  	{
- #	$sha1_obj=$sha1_enc;
-@@ -1740,6 +1751,7 @@ while (<IN>)
+ 	$cflags.=" -DRC4_ASM";
+@@ -1751,6 +1754,7 @@ while (<IN>)
  	s/^WP_ASM_OBJ=.*$/WP_ASM_OBJ= $wp_obj/;
  	s/^CMLL_ENC=.*$/CMLL_ENC= $cmll_obj/;
  	s/^MODES_ASM_OBJ.=*$/MODES_ASM_OBJ= $modes_obj/;
@@ -150,7 +150,7 @@ index 4a715dc..f3ab6cd 100755
  	s/^ENGINES_ASM_OBJ.=*$/ENGINES_ASM_OBJ= $engines_obj/;
  	s/^PERLASM_SCHEME=.*$/PERLASM_SCHEME= $perlasm_scheme/;
  	s/^PROCESSOR=.*/PROCESSOR= $processor/;
-@@ -1802,6 +1814,7 @@ print "RMD160_OBJ_ASM=$rmd160_obj\n";
+@@ -1813,6 +1816,7 @@ print "RMD160_OBJ_ASM=$rmd160_obj\n";
  print "CMLL_ENC      =$cmll_obj\n";
  print "MODES_OBJ     =$modes_obj\n";
  print "ENGINES_OBJ   =$engines_obj\n";
@@ -158,7 +158,7 @@ index 4a715dc..f3ab6cd 100755
  print "PROCESSOR     =$processor\n";
  print "RANLIB        =$ranlib\n";
  print "ARFLAGS       =$arflags\n";
-@@ -2200,7 +2213,7 @@ sub print_table_entry
+@@ -2211,7 +2214,7 @@ sub print_table_entry
  	my ($cc, $cflags, $unistd, $thread_cflag, $sys_id, $lflags,
  	    $bn_ops, $cpuid_obj, $bn_obj, $ec_obj, $des_obj, $aes_obj, $bf_obj,
  	    $md5_obj, $sha1_obj, $cast_obj, $rc4_obj, $rmd160_obj,
@@ -167,7 +167,7 @@ index 4a715dc..f3ab6cd 100755
  	    $perlasm_scheme, $dso_scheme, $shared_target, $shared_cflag,
  	    $shared_ldflag, $shared_extension, $ranlib, $arflags, $multilib)=
  	split(/\s*:\s*/,$table{$target} . ":" x 30 , -1);
-@@ -2231,6 +2244,7 @@ sub print_table_entry
+@@ -2242,6 +2245,7 @@ sub print_table_entry
  \$cmll_obj     = $cmll_obj
  \$modes_obj    = $modes_obj
  \$engines_obj  = $engines_obj
@@ -179,7 +179,7 @@ diff --git a/Makefile.org b/Makefile.org
 index 76fdbdf..6556ef6 100644
 --- a/Makefile.org
 +++ b/Makefile.org
-@@ -91,6 +91,7 @@ BN_ASM= bn_asm.o
+@@ -92,6 +92,7 @@ BN_ASM= bn_asm.o
  EC_ASM=
  DES_ENC= des_enc.o fcrypt_b.o
  AES_ENC= aes_core.o aes_cbc.o
@@ -187,7 +187,7 @@ index 76fdbdf..6556ef6 100644
  BF_ENC= bf_enc.o
  CAST_ENC= c_enc.o
  RC4_ENC= rc4_enc.o
-@@ -148,7 +149,7 @@ SDIRS=  \
+@@ -149,7 +150,7 @@ SDIRS=  \
  	bn ec rsa dsa ecdsa dh ecdh dso engine \
  	buffer bio stack lhash rand err \
  	evp asn1 pem x509 x509v3 conf txt_db pkcs7 pkcs12 comp ocsp ui krb5 \
@@ -196,7 +196,7 @@ index 76fdbdf..6556ef6 100644
  # keep in mind that the above list is adjusted by ./Configure
  # according to no-xxx arguments...
  
-@@ -234,6 +235,7 @@ BUILDENV=	LC_ALL=C PLATFORM='$(PLATFORM)' PROCESSOR='$(PROCESSOR)'\
+@@ -236,6 +237,7 @@ BUILDENV=	LC_ALL=C PLATFORM='$(PLATFORM)' PROCESSOR='$(PROCESSOR)'\
  		WP_ASM_OBJ='$(WP_ASM_OBJ)'			\
  		MODES_ASM_OBJ='$(MODES_ASM_OBJ)'		\
  		ENGINES_ASM_OBJ='$(ENGINES_ASM_OBJ)'		\
@@ -4346,7 +4346,7 @@ index aaaad98..e30b588 100644
  
  SRC= $(LIBSRC)
  
-@@ -263,6 +265,7 @@ e_cast.o: ../../include/openssl/objects.h ../../include/openssl/opensslconf.h
+@@ -264,6 +266,7 @@ e_cast.o: ../../include/openssl/objects.h ../../include/openssl/opensslconf.h
  e_cast.o: ../../include/openssl/opensslv.h ../../include/openssl/ossl_typ.h
  e_cast.o: ../../include/openssl/safestack.h ../../include/openssl/stack.h
  e_cast.o: ../../include/openssl/symhacks.h ../cryptlib.h e_cast.c evp_locl.h
@@ -4814,7 +4814,7 @@ diff --git a/ssl/s3_lib.c b/ssl/s3_lib.c
 index f846cb5..b0364c1 100644
 --- a/ssl/s3_lib.c
 +++ b/ssl/s3_lib.c
-@@ -2891,6 +2891,111 @@ OPENSSL_GLOBAL SSL_CIPHER ssl3_ciphers[] = {
+@@ -2945,6 +2945,111 @@ OPENSSL_GLOBAL SSL_CIPHER ssl3_ciphers[] = {
       256},
  #endif
  
@@ -4926,7 +4926,7 @@ index f846cb5..b0364c1 100644
  /* end of list */
  };
  
-@@ -4036,6 +4141,7 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
+@@ -4090,6 +4195,7 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
      int i, ii, ok;
      CERT *cert;
      unsigned long alg_k, alg_a, mask_k, mask_a, emask_k, emask_a;
@@ -4934,7 +4934,7 @@ index f846cb5..b0364c1 100644
  
      /* Let's see which ciphers we can support */
      cert = s->cert;
-@@ -4069,9 +4175,17 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
+@@ -4123,9 +4229,17 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
      if (s->options & SSL_OP_CIPHER_SERVER_PREFERENCE || tls1_suiteb(s)) {
          prio = srvr;
          allow = clnt;
@@ -4952,7 +4952,7 @@ index f846cb5..b0364c1 100644
      }
  
      tls1_set_cert_validity(s);
-@@ -4083,6 +4197,11 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
+@@ -4137,6 +4251,11 @@ SSL_CIPHER *ssl3_choose_cipher(SSL *s, STACK_OF(SSL_CIPHER) *clnt,
          if ((c->algorithm_ssl & SSL_TLSV1_2) && !SSL_USE_TLS1_2_CIPHERS(s))
              continue;
  
@@ -5025,7 +5025,7 @@ index 6957bda..21eae5c 100644
  };
  
  #define SSL_COMP_NULL_IDX       0
-@@ -363,6 +365,9 @@ static const SSL_CIPHER cipher_aliases[] = {
+@@ -362,6 +364,9 @@ static const SSL_CIPHER cipher_aliases[] = {
      {0, SSL3_TXT_DHE_RSA_DES_192_CBC3_SHA, 0,
       SSL_kDHE, SSL_aRSA, SSL_3DES, SSL_SHA1, SSL_SSLV3,
       SSL_NOT_EXP | SSL_HIGH | SSL_FIPS, 0, 0, 0,},
@@ -5035,7 +5035,7 @@ index 6957bda..21eae5c 100644
  };
  
  /*
-@@ -432,6 +437,11 @@ void ssl_load_ciphers(void)
+@@ -431,6 +436,11 @@ void ssl_load_ciphers(void)
      ssl_cipher_methods[SSL_ENC_AES256GCM_IDX] =
          EVP_get_cipherbyname(SN_aes_256_gcm);
  
@@ -5047,7 +5047,7 @@ index 6957bda..21eae5c 100644
      ssl_digest_methods[SSL_MD_MD5_IDX] = EVP_get_digestbyname(SN_md5);
      ssl_mac_secret_size[SSL_MD_MD5_IDX] =
          EVP_MD_size(ssl_digest_methods[SSL_MD_MD5_IDX]);
-@@ -582,6 +592,12 @@ int ssl_cipher_get_evp(const SSL_SESSION *s, const EVP_CIPHER **enc,
+@@ -581,6 +591,12 @@ int ssl_cipher_get_evp(const SSL_SESSION *s, const EVP_CIPHER **enc,
      case SSL_AES256GCM:
          i = SSL_ENC_AES256GCM_IDX;
          break;
@@ -5060,7 +5060,7 @@ index 6957bda..21eae5c 100644
      default:
          i = -1;
          break;
-@@ -797,6 +813,12 @@ static void ssl_cipher_get_disabled(unsigned long *mkey, unsigned long *auth,
+@@ -796,6 +812,12 @@ static void ssl_cipher_get_disabled(unsigned long *mkey, unsigned long *auth,
          (ssl_cipher_methods[SSL_ENC_AES256GCM_IDX] ==
           NULL) ? SSL_AES256GCM : 0;
      *enc |=
@@ -5149,41 +5149,41 @@ diff --git a/test/Makefile b/test/Makefile
 index b180971..554d536 100644
 --- a/test/Makefile
 +++ b/test/Makefile
-@@ -71,6 +71,7 @@
- VERIFYEXTRATEST=	verify_extra_test
+@@ -72,6 +72,7 @@
  CLIENTHELLOTEST=	clienthellotest
+ BADDTLSTEST=	bad_dtls_test
  SSLV2CONFTEST = 	sslv2conftest
 +CHAPOLYTEST=	chapolytest
- 
+ DTLSTEST =	dtlstest
+
  TESTS=		alltests
- 
-@@ -84,7 +85,7 @@
+@@ -86,7 +87,7 @@
  	$(EVPTEST)$(EXE_EXT) $(EVPEXTRATEST)$(EXE_EXT) $(IGETEST)$(EXE_EXT) $(JPAKETEST)$(EXE_EXT) $(SRPTEST)$(EXE_EXT) \
  	$(ASN1TEST)$(EXE_EXT) $(V3NAMETEST)$(EXE_EXT) $(HEARTBEATTEST)$(EXE_EXT) \
  	$(CONSTTIMETEST)$(EXE_EXT) $(VERIFYEXTRATEST)$(EXE_EXT) \
--	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT)
-+	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT) $(CHAPOLYTEST)$(EXE_EXT)
+-	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT) $(DTLSTEST)$(EXE_EXT) \
++	$(CLIENTHELLOTEST)$(EXE_EXT) $(SSLV2CONFTEST)$(EXE_EXT) $(CHAPOLYTEST)$(EXE_EXT) $(DTLSTEST)$(EXE_EXT) \
+ 	$(BADDTLSTEST)$(EXE_EXT)
  
  # $(METHTEST)$(EXE_EXT)
- 
-@@ -98,7 +99,7 @@
+@@ -101,7 +102,7 @@
  	$(BFTEST).o  $(SSLTEST).o  $(DSATEST).o  $(EXPTEST).o $(RSATEST).o \
  	$(EVPTEST).o $(EVPEXTRATEST).o $(IGETEST).o $(JPAKETEST).o $(ASN1TEST).o $(V3NAMETEST).o \
  	$(HEARTBEATTEST).o $(CONSTTIMETEST).o $(VERIFYEXTRATEST).o \
--	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o
-+	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o $(CHAPOLYTEST).o
+-	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o $(DTLSTEST).o ssltestlib.o \
++	$(CLIENTHELLOTEST).o  $(SSLV2CONFTEST).o $(CHAPOLYTEST).o $(DTLSTEST).o ssltestlib.o \
+ 	$(BADDTLSTEST).o
  
  SRC=	$(BNTEST).c $(ECTEST).c  $(ECDSATEST).c $(ECDHTEST).c $(IDEATEST).c \
- 	$(MD2TEST).c  $(MD4TEST).c $(MD5TEST).c \
-@@ -109,7 +110,7 @@
+@@ -113,7 +114,7 @@
  	$(BFTEST).c  $(SSLTEST).c $(DSATEST).c   $(EXPTEST).c $(RSATEST).c \
  	$(EVPTEST).c $(EVPEXTRATEST).c $(IGETEST).c $(JPAKETEST).c $(SRPTEST).c $(ASN1TEST).c \
  	$(V3NAMETEST).c $(HEARTBEATTEST).c $(CONSTTIMETEST).c $(VERIFYEXTRATEST).c \
--	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c
-+	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c $(CHAPOLYTEST).c
+-	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c $(DTLSTEST).c ssltestlib.c \
++	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c $(CHAPOLYTEST).c $(DTLSTEST).c ssltestlib.c \
+ 	$(BADDTLSTEST).c
  
  EXHEADER= 
- HEADER=	testutil.h $(EXHEADER)
 @@ -145,7 +146,7 @@
  	@(cd ..; $(MAKE) DIRS=apps all)
  
