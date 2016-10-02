@@ -1,95 +1,92 @@
-# Maintainer: yuki-san <yuki.from.akita _at_ gmail.com>
-# 
-# nethack Maintainer : schuay <jakob.gruber _at_ gmail.com>
-# nethack Contributor : kevin <kevin _at_ archlinux.org>
-# nethack Contributor : Christian Schmidt <mucknert _at_ gmx.net>
-# nethack Contributor : Markus Meissner <markus _at_ meissna.de>
-# nethack Contributor : Nick Erdmann <erdmann _at_ date.upb.de>
+# Maintainer: yuki-san <yuki.from.akita@gmail.com>
+
+# nethack Maintainer : schuay <jakob.gruber@gmail.com>
+# nethack Contributor : kevin <kevin@archlinux.org>
+# nethack Contributor : Christian Schmidt <mucknert@gmx.net>
+# nethack Contributor : Markus Meissner <markus@meissna.de>
+# nethack Contributor : Nick Erdmann <erdmann@date.upb.de>
 
 pkgname=jnethack
-pkgver=3.4.3_0.11
+pkgver=3.6.0_0.6
 _nethackver=${pkgver/_*/}
 pkgrel=6
 pkgdesc='Japanized Nethack, A single player dungeon exploration game'
 arch=('i686' 'x86_64')
-url="http://jnethack.sourceforge.jp/"
+url="http://jnethack.osdn.jp/"
 license=('custom')
 depends=('ncurses' 'gzip')
-makedepends=('bzip2')
+optdepends=('cocot: UTF-8 tty support' )
+makedepends=('bzip2' 'nkf' )
 install=jnethack.install
 options=(!makeflags)
 source=("http://downloads.sourceforge.net/${pkgname#j}/${pkgname#j}-${_nethackver//./}-src.tgz"
-        ${pkgname}-${pkgver//_/-}.diff.gz::"http://sourceforge.jp/frs/redir.php?f=%2Fjnethack%2F58545%2F${pkgname}-${pkgver//_/-}.diff.gz"
-        "http://jnethack.sourceforge.jp/patch/utf8-ibm.patch"
-        http://www.phys98.homeip.net/~ide/src/jnethack-3.4.3-0.10-yahpmon.patch.bz2
-        RND_MT.diff::"http://fr.osdn.jp/ticket/download.php?group_id=95&tid=4808&file_id=1064"
-        jnethack-3.4.3-0.11-mc.diff)
-md5sums=('21479c95990eefe7650df582426457f9'
-         '2d7ddbc4772a1fcff9a607abff851a75'
-         '33904a278b8c36cb5f17cf7a4db21a97'
-         '2d3b58e7b71ef44589d7887434bde3f8'
-         '5bc49d198cc34041ff07c3c8cd596223'
-         'b3b4de971fe61738f7de69802174d876')
+        ${pkgname}-${pkgver//_/-}.diff.gz::"https://osdn.jp/frs/redir.php?m=ymu&f=%2Fjnethack%2F65948%2F${pkgname}-${pkgver//_/-}.diff.gz"
+        "https://github.com/tung/nethack360-statuscolors/compare/master...statuscolors2.diff")
+md5sums=('d42147b26e5fb4746fb72536ce145984'
+         'fd6edba028a4a269021306e567613fdd'
+         '36008a4dacd9419b43c64515ba64bc53')
 
 prepare() {
-  cd "$srcdir/${pkgname#j}-${_nethackver}"
+  cd "$srcdir/${pkgname#j}-${_nethackver}/"
+
+  # Apply statuscolor2
+  patch -p1 < "$srcdir"/master...statuscolors2.diff
+
+  # Apply jnethack patch
   zcat "$srcdir"/${pkgname}-${pkgver//_/-}.diff.gz | patch -p1
-  patch -p1 < "$srcdir/utf8-ibm.patch"
-  bzcat "$srcdir/jnethack-3.4.3-0.10-yahpmon.patch.bz2" | patch -p1
-  patch -p1 < "$srcdir/jnethack-3.4.3-0.11-mc.diff"
-  patch -p1 < "$srcdir/RND_MT.diff"
-}
 
-build(){
-  cd "$srcdir/${pkgname#j}-${_nethackver}"
-  sh sys/unix/setup.sh
-
-  sed -e '/define HACKDIR/ s|/usr/games/lib/nethackdir|/var/games/nethack/|' \
-      -e "/^#define COMPRESS\s/ s|/usr/bin/compress|$(which gzip)|" \
-      -e '/^#define COMPRESS_EXTENSION/ s|".Z"|".gz"|' \
-      -e 's|^/\* \(#define DLB\) \*/|\1|' -i include/config.h
-
-  sed -e 's|^/\* \(#define SYSV\) \*/|\1|' \
-      -e 's|^/\* \(#define LINUX\) \*/|\1|' \
-      -e 's|^/\* \(#define TERMINFO\) \*/|\1|' \
+  sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
       -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' -i include/unixconf.h
 
-  sed -e 's|^# \(WINTTYLIB = -lncurses\)|\1|' \
-      -e 's|^WINTTYLIB = -ltermlib|#&|' \
-      -e 's|^\(CFLAGS =\).*$|\1 -O2 -fomit-frame-pointer -I../include|' -i src/Makefile
-
-  sed -e 's|^\(CFLAGS =\).*$|\1 -O2 -fomit-frame-pointer -I../include|' -i util/Makefile
   # we are setting up for setgid games, so modify all necessary permissions
   # to allow full access for groups
 
-  sed -e '/^GAMEDIR\s*=/ s|/games/.*$|/var/games/$(GAME)|' \
-      -e '/^GAMEUID\s*=/ s|games|root|' \
-      -e '/^GAMEGRP\s*=/ s|bin|games|' \
-      -e '/^GAMEPERM\s*=/ s|04755|02755|' \
+  sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/games/jnethack/|' \
+      -e '/^SHELLDIR/ s|/games|/usr/bin|' \
+      -e '/^VARDIRPERM/ s|0755|0775|' \
+      -e '/^VARFILEPERM/ s|0600|0664|' \
+      -e '/^GAMEPERM/ s|0755|02755|' \
+      -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/games/jnethack/sysconf\\"|' \
+      -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/games/jnethack/\\"|' -i sys/unix/hints/linux
+
+  sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
+      -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
       -e '/^FILEPERM\s*=/ s|0644|0664|' \
-      -e '/^DIRPERM\s*=/ s|0755|0775|' \
-      -e '/^SHELLDIR\s*=/ s|/games|/usr/bin|' -i Makefile
+      -e '/^DIRPERM\s*=/ s|0755|0775|' -i sys/unix/Makefile.top
 
-  sed -e "/^MANDIR\s*=/s|/usr/local/man/man6|$pkgdir/usr/share/man/man6|" -i doc/Makefile
+  sed -e "/^MANDIR\s*=/s|/usr/man/man6|$pkgdir/usr/share/man/man6|" -i sys/unix/Makefile.doc
 
+  echo "CFLAGS+=-DSTATUS_VIA_WINDOWPORT -DSTATUS_COLORS" >> sys/unix/hints/linux
+  find . -type f | xargs nkf -e --overwrite
+}
+
+build(){
+  cd "$srcdir/${pkgname#j}-${_nethackver}"/sys/unix
+  sh setup.sh hints/linux
+
+  cd "$srcdir/${pkgname#j}-${_nethackver}/"
   make
 }
   
 package() {
-  cd "$srcdir/${pkgname#j}-${_nethackver}"
+  cd "$srcdir/${pkgname#j}-${_nethackver}/"
 
-  install -dm755 $pkgdir/usr/share/{man/man6,doc/$pkgname}
+  install -dm755 $pkgdir/usr/share/{man/man6,doc/jnethack}
   install -dm775 $pkgdir/var/games/
-  make PREFIX=$pkgdir install manpages
+  make PREFIX=$pkgdir install manpages # Multi-threaded builds fail.
   sed -e "s|HACKDIR=$pkgdir/|HACKDIR=/|" \
       -e 's|HACK=$HACKDIR|HACK=/usr/lib/jnethack|' \
       -i $pkgdir/usr/bin/jnethack
 
-  install -dm755 $pkgdir/usr/lib/$pkgname
-  mv $pkgdir/var/games/jnethack/{jnethack,recover} $pkgdir/usr/lib/$pkgname/
+  install -dm755 $pkgdir/usr/lib/jnethack
+  mv $pkgdir/var/games/jnethack/{jnethack,recover} $pkgdir/usr/lib/jnethack/
 
-  install -Dm644 doc/Guidebook.txt $pkgdir/usr/share/doc/$pkgname/
-  install -Dm644 doc/jGuidebook.txt $pkgdir/usr/share/doc/$pkgname/
-      
+  # FS#43414: /var/games should be owned by root:games.
+  chown -R root:games $pkgdir/var/games/
+  chown root:games $pkgdir/usr/lib/jnethack/jnethack
+  #chmod 02755 $pkgdir/usr/lib/nethack/nethack
+
+  install -Dm644 doc/Guidebook.txt $pkgdir/usr/share/doc/$pkgname/Guidebook.txt
   install -Dm644 dat/license $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
