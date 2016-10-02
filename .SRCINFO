@@ -1,0 +1,17 @@
+pkgbase = perl-text-bidi
+	pkgdesc = Unicode bidi algorithm using libfribidi
+	pkgver = 2.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-Bidi
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-extutils-pkgconfig
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/K/KA/KAMENSKY/Text-Bidi-2.11.tar.gz
+	md5sums = 09bf3b9212795a66877439751f3c8664
+
+pkgname = perl-text-bidi
+
