@@ -16,12 +16,12 @@ package() {
   cd Surfn
 
   install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' Surfn Arc "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn Arch Blue "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn Breeze Dark "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn Evopop "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn Majestic "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn Orange "${pkgdir}"/usr/share/icons/
-  cp -dr --no-preserve='ownership' Surfn "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Arc "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Arch\ Blue "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Breeze\ Dark "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Evopop "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Majestic "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ Orange "${pkgdir}"/usr/share/icons/
+  cp -dr --no-preserve='ownership' Surfn\ "${pkgdir}"/usr/share/icons/
 
 }
