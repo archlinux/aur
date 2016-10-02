@@ -1,8 +1,7 @@
 post_install() {
   login='webvirtcloud'
 
-  getent group "${login}" > /dev/null || groupadd -r "${login}" > /dev/null
-  getent passwd "${login}" > /dev/null || useradd -r -g "${login}" -G kvm -d "/var/lib/${login}" "${login}" -m > /dev/null
+  getent passwd "${login}" > /dev/null || useradd -r -U -d "/var/lib/${login}" "${login}" -m > /dev/null
 
   PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py migrate --run-syncdb --noinput
   chown webvirtcloud:webvirtcloud /usr/lib/webvirtcloud/db.sqlite3 /usr/lib/webvirtcloud
