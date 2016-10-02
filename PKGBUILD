@@ -20,7 +20,7 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2h"
+_OPENSSL_VERSION="1.0.2j"
 ################
 
 _pkgname="ovmf"
@@ -46,7 +46,7 @@ source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master
         "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 sha1sums=('SKIP'
-          '577585f5f5d299c44dd3c993d3c0ac7a219e4949')
+          'bdfbdb416942f666865fa48fe13c2d0e588df54f')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
