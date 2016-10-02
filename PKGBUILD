@@ -3,7 +3,7 @@
 
 _pkgname=openssl
 pkgname=${_pkgname}102
-_ver=1.0.2h
+_ver=1.0.2j
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -22,12 +22,12 @@ source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
 	"https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
 	'no-rpath.patch'
 	'ca-dir.patch'
-	'openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch')
-sha256sums=('1d4007e53aad94a5b2002fe045ee7bb0b3d98f1a47f8b2bc851dcd1c74332919'
+	'openssl__chacha20_poly1305_draft_and_rfc_ossl102i.patch')
+sha256sums=('e7aff292be21c259c6af26469c7a9b3ba26e9abaaffd325e3dccc9785256c431'
             'SKIP'
             '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
             '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
-            '09a2e88f95d8cd12bd9c23cd87554ab700fb1625a848c0502951849fb1d564fc')
+            '7c15abacf3940dc5022e24be82618f211c184ef59e783a8fd63e6c3e4af408ad')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
@@ -37,7 +37,7 @@ prepare() {
 	patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
-	patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch
+	patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102i.patch
 }
 
 build() {
