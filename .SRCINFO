@@ -1,6 +1,6 @@
 pkgbase = iop-blockchain
 	pkgdesc = IoP is the digital currency from the Internet of People that enables instant payments to anyone, anywhere in the world.
-	pkgver = 0.13
+	pkgver = 1.0.0b
 	pkgrel = 1
 	url = http://www.fermat.org/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = iop-blockchain
 	depends = qrencode
 	depends = protobuf
 	depends = zeromq
-	source = https://github.com/Fermat-ORG/iop-blockchain/archive/0.13.zip
+	source = https://github.com/Fermat-ORG/iop-blockchain/archive/beta-1.0.0.zip
 	sha256sums = SKIP
 
 pkgname = iop-blockchain
