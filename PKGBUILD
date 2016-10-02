@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 source=('fortunes.txt')
 url="https://en.wikiquote.org/wiki/The_Matrix_%28franchise%29"
-md5sums=('3ff9ab5a2362b72d3f14768b5a36b06c')
+sha256sums=('69865bd645b9ba561b5750a183734d7b1edf0f997ed043adae739931e0be8ba3')
 
 build() {
   if true; then # change true to false to have pure ASCII quotes
