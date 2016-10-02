@@ -13,7 +13,7 @@
 _pppver=2.4.7
 
 pkgname=networkmanager-consolekit-noscan
-pkgver=1.4.1dev+33+gc87b89b
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Network Management daemon with scan disabled after connection established"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ conflicts=('networkmanager' 'networkmanager-consolekit')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
 			"ppp=$_pppver" 'modemmanager' 'dbus-glib' 'iproute2' 'nss'
 			 'polkit-consolekit' 'wpa_supplicant' 'libsoup' 'eudev-systemd' 'libgudev' 'libmm-glib'
-			 'rp-pppoe' 'libnewt' 'libndp' 'libteam' 'vala' 'perl-yaml' 'python-gobject' 'git')
+			 'rp-pppoe' 'libnewt' 'libndp' 'libteam' 'vala' 'perl-yaml' 'python-gobject')
 checkdepends=('libx11' 'python-dbus' 'eudev-systemd')
 depends=('libnm-glib' 'iproute2' 'polkit-consolekit' 'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam' 'consolekit' 'eudev')
 optdepends=('dnsmasq: connection sharing'
@@ -36,26 +36,27 @@ optdepends=('dnsmasq: connection sharing'
 			'modemmanager: cellular network support')
 backup=('etc/NetworkManager/NetworkManager.conf')
 
-_commit=c87b89bf8f7d0e45df08e84503eb16f5ef2ce3c6
-# "https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz"
-source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
+# _commit=c87b89bf8f7d0e45df08e84503eb16f5ef2ce3c6
+# "git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
+
+source=("https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz"
         'disable_wifi_scan_when_connected.patch'
         'NetworkManager.conf'
         '01-org.freedesktop.NetworkManager.settings.modify.system.rules'
         '50-org.freedesktop.NetworkManager.rules')
-sha256sums=('SKIP'
+sha256sums=('a864e347ddf6da8dabd40e0185b8c10a655d4a94b45cbaa2b3bb4b5e8360d204'
             '3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d'
             '452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103'
             '4b815f43de58379e68653d890f529485aec4d2f83f11d050b08b31489d2267c2'
             '02d9f7d836d297d6ddf39482d86a8573b3e41735b408aa2cd6df22048ec5f6c4')
 
-pkgver() {
-  cd NetworkManager
-  git describe | sed 's/-dev/dev/;s/-/+/g'
-}
+# pkgver() {
+#   cd NetworkManager
+#   git describe | sed 's/-dev/dev/;s/-/+/g'
+# }
 
 prepare() {
-  cd NetworkManager #-$pkgver
+  cd NetworkManager-$pkgver
 
   2to3 -w libnm src tools
 
@@ -65,7 +66,7 @@ prepare() {
 }
 
 build() {
-	cd NetworkManager #-$pkgver
+	cd NetworkManager-$pkgver
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
@@ -98,12 +99,12 @@ build() {
 }
 
 check() {
-	cd NetworkManager #-$pkgver
+	cd NetworkManager-$pkgver
 	make -k check
 }
 
 package() {
-	cd NetworkManager #-$pkgver
+	cd NetworkManager-$pkgver
 	make DESTDIR="$pkgdir" install
 	make DESTDIR="$pkgdir" -C libnm uninstall
 	make DESTDIR="$pkgdir" -C libnm-glib uninstall
