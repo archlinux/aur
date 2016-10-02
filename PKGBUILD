@@ -10,7 +10,7 @@ pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
 url='http://www.webmproject.org/'
 license=('BSD')
-depends=('lib32-glibc' 'lib32-gcc-libs')
+depends=('lib32-glibc')
 makedepends=('yasm' 'git')
 provides=('libvpx.so')
 source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz"
@@ -33,6 +33,7 @@ build() {
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
+    --target='x86-linux-gcc' \
     --enable-runtime-cpu-detect \
     --enable-shared \
     --enable-pic \
