@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Quartus II
+Comment=Quartus II design software for Altera FPGA's
+Exec=_alteradir/quartus/bin/quartus
+Icon=_alteradir/quartus/adm/quartusii.png
+Terminal=false
+Type=Application
+Categories=Development
