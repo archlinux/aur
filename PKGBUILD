@@ -17,14 +17,14 @@ _alteradir="/opt/altera91"
 
 if [[ $CARCH = i686 ]]
 then
-	depends=('tcsh' 'glibc' 'libxext' 'libx11' 'libxau' 'libxdmcp' 'freetype2' 'fontconfig' 'expat' 
-'libpng')
+	depends=('tcsh' 'glibc' 'libxext' 'libx11' 'libxau' 'libxdmcp' 'freetype2' 'fontconfig' 'expat'
+			 'libpng' 'qt4' 'qtwebkit')
 fi
 
 if [[ $CARCH = x86_64 ]]
 then
 	depends=('tcsh' 'lib32-glibc' 'lib32-libxext' 'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp'
-			 'lib32-freetype2' 'lib32-fontconfig' 'lib32-expat' 'lib32-libpng')
+			 'lib32-freetype2' 'lib32-fontconfig' 'lib32-expat' 'lib32-libpng lib32-qt4 qtwebkit')
 fi
 
 source=("http://download.altera.com/software/acds/9.1sp2/350/download/91sp2_quartus_free_linux.tar"
@@ -50,6 +50,18 @@ package() {
 	# remove old version libraries
 	rm "${pkgdir}${_alteradir}/quartus/linux/libX11.so.6"
 	rm "${pkgdir}${_alteradir}/quartus/linux/libuuid.so.1"
+
+	# backup Qt libraries
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtCore.so.4{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtGui.so.4{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtNetwork.so.4{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libQtXml.so.4{,.bak}"
+
+	# backup C++ standart libraries
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++-libc6.2-2.so.3{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.5{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so.6{,.bak}"
+	mv "${pkgdir}${_alteradir}/quartus/linux/libstdc++.so{,.bak}"
 
 	cd "${srcdir}"
 
