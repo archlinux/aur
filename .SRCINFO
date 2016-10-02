@@ -1,0 +1,18 @@
+pkgbase = fsplayer
+	pkgdesc = FS.TO video player built in Python & GTK3.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://github.com/and3rson/fsplayer
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = gtk3
+	depends = python2-beautifulsoup4
+	depends = python2-selenium
+	depends = gobject-introspection-runtime
+	options = !strip
+	source = git+https://github.com/and3rson/fsplayer.git
+	md5sums = SKIP
+
+pkgname = fsplayer
+
