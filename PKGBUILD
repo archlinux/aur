@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/qorelanguage/qore/releases/download/release-$pkgver/qore-$pkgver.tar.bz2")
-md5sums=('483510cdcb6338ff6cb892cc29a98a63')
+md5sums=('75442325f2d878bc689a29aa13c08f1f')
 noextract=()
 
 build() {
