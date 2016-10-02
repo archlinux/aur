@@ -1,0 +1,11 @@
+post_install ()
+{
+  echo "Add \"bidi\" to the \"urxvt.perl-ext\" field in ~/.Xdefaults and enable it by"
+  echo "adding the line: URxvt.bidi.enabled: 1"
+}
+
+post_remove ()
+{
+  echo "Don't forget to remove \"bidi\" from the \"urxvt.perl-ext\" field and the line"
+  echo "that enables it in ~/.Xdefaults."
+}
