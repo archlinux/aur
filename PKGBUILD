@@ -4,14 +4,13 @@ pkgname=codelite-bin
 _pkgname=codelite
 pkgver=9.2.2
 pkgrel=1
-pkgdesc="Cross platform IDE for the C/C++ programming languages"
+pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh'
 				 'xterm' 'python2' 'libedit' 'ncurses'
 				 'valgrind' 'libmariadbclient' 'lldb' 'clang')
-pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
 
 makedepends=('tar' 'xz')
 optdepends=( 'graphviz: callgraph visualization'
