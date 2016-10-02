@@ -1,0 +1,14 @@
+pkgbase = portmapper-git
+	pkgdesc = The UPnP PortMapper can be used to easily manage the port mappings/port forwarding of a UPnP enabled internet gateway/router in the local network.
+	pkgver = 204
+	pkgrel = 1
+	url = https://github.com/kaklakariada/portmapper
+	arch = i686
+	arch = x86_64
+	depends = jdk8-openjdk
+	depends = jre8-openjdk
+	source = git+https://github.com/kaklakariada/portmapper.git
+	md5sums = SKIP
+
+pkgname = portmapper-git
+
