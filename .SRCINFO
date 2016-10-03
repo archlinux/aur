@@ -1,5 +1,5 @@
 pkgbase = chromium-libnotify-notifications
-	pkgdesc = Causes the Chromium web browser to automatically install and update the Vimium.
+	pkgdesc = Causes the Chromium web browser to automatically install and update the libnotify-notifications.
 	pkgver = latest
 	pkgrel = 1
 	url = https://chrome.google.com/webstore/detail/libnotify-notifications-i/epckjefillidgmfmclhcbaembhpdeijg
