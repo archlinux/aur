@@ -9,7 +9,7 @@ url="http://github.com/falconindy/cower"
 license=('MIT')
 depends=('curl' 'openssl' 'pacman' 'yajl')
 makedepends=('perl')
-source=("http://code.falconindy.com/archive/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
+source=("https://pkgbuild.com/~dreisner/sources/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig})
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53')  # Dave Reisner
 md5sums=('f141e441b7775df3d3a1ba3a80bc3d1d'
          'SKIP')
