@@ -1,8 +1,9 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-daemon-git
-pkgver=20160124
-pkgrel=2
+pkgbase=radeon-profile-daemon
+pkgver=20161003.r0.gda49107
+pkgrel=1
 pkgdesc="System daemon for radeon-profile"
 url="http://github.com/marazmista/radeon-profile-daemon"
 arch=('i686' 'x86_64')
@@ -12,7 +13,12 @@ provides=('radeon-profile-daemon')
 replaces=('radeon-profile-daemon')
 source=('git+https://github.com/marazmista/radeon-profile-daemon.git')
 sha256sums=('SKIP')
- 
+  
+pkgver() {
+cd "$srcdir/$pkgbase"
+git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
 mkdir -p build
 cd build
