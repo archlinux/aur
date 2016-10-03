@@ -2,7 +2,7 @@
 
 pkgname=avocode
 pkgrel=1
-pkgver=2.10.1
+pkgver=2.11.0
 pkgdesc="The bridge between designers and developers"
 url="http://avocode.com/"
 provides=('avocode')
@@ -18,8 +18,8 @@ source_i686=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-a
 source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-${pkgver}.zip")
 md5sums=('e2c75eca26477c665c946beec421423a'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
-md5sums_i686=('ee5c42a75d7822e010ec214120617c16')
-md5sums_x86_64=('ff943f91c402961aeb9061ac143b4054')
+md5sums_i686=('bb4b1bfd4cdfd79a605b2a1b2d6a47c5')
+md5sums_x86_64=('fa6f42f40db591f59d134eef2d6e96f7')
 package() {
 	install -d "$pkgdir"/opt
 	cp -R "$srcdir"/Avocode-linux-x64/ "$pkgdir"/opt/avocode
