@@ -5,7 +5,7 @@
 # Maintainer: Kaleb Elwert (belak) <belak@coded.io>
 
 pkgname=bitlbee-git
-pkgver=3.4.1.r25.gf5bbaba
+pkgver=3.4.2.r65.g58d285a
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
@@ -43,7 +43,8 @@ build() {
     --ssl=gnutls \
     --strip=0 \
     --otr=plugin \
-    --skype=plugin
+    --skype=plugin \
+    --purple=1
 
   make
 }
