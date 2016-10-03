@@ -32,8 +32,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' "ffmpeg2.8")
 conflicts=('ffmpeg2.8')
 replaces=('ffmpeg2.8')
-source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('b70848958feadca180315d17b1131a1b519527971590e6ee8363a4c568ed06a6')
+source=(https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz)
+sha256sums=('f94e2f71aacd1fdb1e28aac8cf36aa457c13b0fc9bf704b467d91489705d2199')
 
 build() {
   cd ${_pkgname}-${pkgver}
