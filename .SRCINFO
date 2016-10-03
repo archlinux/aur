@@ -1,8 +1,8 @@
 pkgbase = networkmanager-noscan
 	pkgdesc = Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless cards)
-	pkgver = 1.2.4
+	pkgver = 1.4.2
 	pkgrel = 1
-	url = http://www.gnome.org/projects/NetworkManager/
+	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -32,13 +32,14 @@ pkgbase = networkmanager-noscan
 	makedepends = vala
 	makedepends = perl-yaml
 	makedepends = python-gobject
+	makedepends = git
 	provides = networkmanager
 	conflicts = networkmanager
 	replaces = networkmanager
-	source = https://download.gnome.org/sources/NetworkManager/1.2/NetworkManager-1.2.4.tar.xz
+	source = git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=c2c006fca869fccf9ce8c2a63a738174269872e2
 	source = NetworkManager.conf
 	source = disable_wifi_scan_when_connected.patch
-	sha256sums = 19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa
+	sha256sums = SKIP
 	sha256sums = 67f112c1ac8ee3726eb229f5cd783de19f09cc252af49e157343d82b324b923f
 	sha256sums = 3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d
 

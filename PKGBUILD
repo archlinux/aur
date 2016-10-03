@@ -6,28 +6,29 @@ pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.2.4
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless
 cards)"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
-url="http://www.gnome.org/projects/NetworkManager/"
+url="https://wiki.gnome.org/Projects/NetworkManager"
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
              "ppp=$_pppver" modemmanager dbus-glib iproute2 nss polkit
              wpa_supplicant libsoup systemd libgudev libmm-glib rp-pppoe
-             libnewt libndp libteam vala perl-yaml python-gobject)
+             libnewt libndp libteam vala perl-yaml python-gobject git)
 checkdepends=(libx11 python-dbus)
-source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
+_commit=c2c006fca869fccf9ce8c2a63a738174269872e2  # tags/1.4.2^0
+source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
         disable_wifi_scan_when_connected.patch)
-sha256sums=('19bfb7306dd472d010443a8027d91f9fd50fe6e0c5aa4ea8083845de0fa38faa'
+sha256sums=('SKIP'
             '67f112c1ac8ee3726eb229f5cd783de19f09cc252af49e157343d82b324b923f'
             '3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d')
 
 prepare() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
 
   # disable wifi scans when connected
   patch -Np1 -i ../disable_wifi_scan_when_connected.patch
@@ -37,8 +38,13 @@ prepare() {
   NOCONFIGURE=1 ./autogen.sh
 }
 
+pkgver() {
+  cd NetworkManager
+  git describe | sed 's/-dev/dev/;s/-/+/g'
+}
+
 build() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
@@ -71,7 +77,7 @@ build() {
 }
 
 check() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
   make -k check
 }
 
@@ -87,7 +93,7 @@ package() {
               'modemmanager: cellular network support')
   backup=('etc/NetworkManager/NetworkManager.conf')
 
-  cd NetworkManager-$pkgver
+  cd NetworkManager
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" -C libnm uninstall
   make DESTDIR="$pkgdir" -C libnm-glib uninstall
