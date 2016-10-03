@@ -3,7 +3,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=fuse-emulator
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="ZX Spectrum emulator."
 arch=('i686' 'x86_64')
@@ -32,5 +32,5 @@ package() {
 	done
 }
 
-md5sums=('3968c9358485622d5934b7f8b06a388a'
+md5sums=('6b6fdca1542d2f7a41147c9635185758'
          '0abe9522e8d0bcfa51997dbd6a602197')
