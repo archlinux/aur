@@ -5,7 +5,7 @@
 # Contributor: mefistofeles
 
 pkgname=mathics-git
-pkgver=1.0.dev.2692.g2808cb4
+pkgver=1.0.dev.2706.gbcf10a3
 pkgrel=1
 arch=('any')
 pkgdesc='General-purpose online computer algebra system featuring Mathematica-compatible syntax and functions'
