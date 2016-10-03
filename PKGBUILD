@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -15,8 +15,8 @@ depends=('mingw-w64-crt' 'mingw-w64-libiconv')
 optdepends=("$pkgname-doc: API documentation")
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('903ac50b3c4104728d077cb851a9f9628c3cfdcba6a20e826b7cbe8debf44083')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('ae00eb82754d9d49b0956444079bb1bcccd345e7ecaf06e3e91f33c81ffe4cbf')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations+=('static: -DENABLE_STATIC_LIBS:BOOL=ON -DDISABLE_SHARED_LIBS:BOOL=ON')
@@ -24,7 +24,6 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  export CXXFLAGS='-O0'
   for _arch in ${_architectures}; do
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config%%: *} version for ${_arch}"
