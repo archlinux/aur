@@ -1,0 +1,11 @@
+--- a/Makefile	2016-10-03 16:56:19.036462531 +0300
++++ b/Makefile	2016-10-03 16:56:30.413366038 +0300
+@@ -606,7 +606,7 @@
+ # Installation rules
+ #
+ install: all install-test install-prog install-icc2ps install-osx-hotplug \
+-	    install-extra install-crd install-foo install-ppd \
++	    install-extra install-crd install-ppd \
+ 	    install-gui install-desktop install-filter \
+ 	    install-man install-doc
+ 	#

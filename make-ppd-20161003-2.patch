@@ -1,0 +1,15 @@
+--- a/Makefile	2016-10-03 16:57:22.842911250 +0300
++++ b/Makefile	2016-10-03 16:59:11.368922611 +0300
+@@ -1389,10 +1389,8 @@
+ 	    *)                  driver=foo2zjs;; \
+ 	    esac; \
+ 	    echo $$driver - $$printer; \
+-	    ENGINE=../foomatic/foomatic-db-engine; \
+-	    PERL5LIB=$$ENGINE/lib \
+-		FOOMATICDB=foomatic-db \
+-		$$ENGINE/foomatic-ppdfile \
++	    FOOMATICDB=foomatic-db \
++		foomatic-ppdfile \
+ 		-d $$driver -p $$printer \
+ 		> PPD/$$printer.ppd; \
+ 	done
