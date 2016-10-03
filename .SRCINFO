@@ -1,0 +1,14 @@
+pkgbase = perl-test-needs
+	pkgdesc = Skip tests when modules not available
+	pkgver = 0.002005
+	pkgrel = 1
+	url = http://search.cpan.org/~haarg/Test-Needs-0.002005
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/Test-Needs-0.002005.tar.gz
+	md5sums = 356634a56c99282e8059f290f5d534c8
+
+pkgname = perl-test-needs
+
