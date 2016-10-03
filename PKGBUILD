@@ -33,8 +33,8 @@ package() {
   echo "cd /usr/share/shadow-of-the-wyrm/sotw" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
   echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
   chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
-  install -D -m644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/shadow-of-the-wyrm/LICENSE"
-  install -d -m777 ${srcdir}/${pkgname}/sotw "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw"
+  install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/shadow-of-the-wyrm/LICENSE"
+  install -d -m777 ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/howdoi.txt "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/howdoi.txt"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/README.md "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/README.md"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini"
