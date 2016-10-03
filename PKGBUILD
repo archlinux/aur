@@ -2,21 +2,21 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.0.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
 url='http://www.wireshark.org/'
 license=('GPL2')
 
-depends=('c-ares' 'geoip' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('c-ares' 'geoip' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme' 'libssh')
 makedepends=('python')
 
 provides=('wireshark-cli' 'wireshark-gtk')
 conflicts=('wireshark-cli' 'wireshark-gtk')
 install=wireshark-gtk2.install
 source=(http://www.wireshark.org/download/src/all-versions/${_pkgbase}-${pkgver}.tar.bz2)
-sha1sums=('ab77c632d8babf731bf0ecac0876fe3ff2923d04')
+sha1sums=('4b47bf8e2053073585318646e27d2aa9dc7c7238')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
@@ -25,8 +25,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--with-qt=no \
-		--with-gtk2=yes \
-		--with-gtk3=no \
+		--with-gtk=2 \
 		--with-pcap \
 		--with-zlib \
 		--with-lua \
@@ -35,9 +34,8 @@ build() {
 		--with-krb5 \
 		--with-c-ares \
 		--with-geoip \
-		--without-adns \
-		--without-libsmi \
-		--without-sbc
+		--with-libsmi=no \
+		--with-sbc=no
 	make all
 }
 
@@ -53,7 +51,7 @@ package() {
 	# Headers
 	install -dm755 "${pkgdir}"/usr/include/${_pkgbase}/{epan/{crypt,dfilter,dissectors,ftypes,wmem},wiretap,wsutil}
 
-	install -m644 color.h config.h register.h ws_symbol_export.h "${pkgdir}/usr/include/${_pkgbase}"
+	install -m644 config.h register.h ws_diag_control.h ws_symbol_export.h "${pkgdir}/usr/include/${_pkgbase}"
 	for d in epan epan/crypt epan/dfilter epan/dissectors epan/ftypes epan/wmem wiretap wsutil; do
 		install -m644 ${d}/*.h "${pkgdir}"/usr/include/${_pkgbase}/${d}
 	done
