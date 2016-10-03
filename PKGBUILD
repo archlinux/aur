@@ -1,16 +1,16 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-pythonmagick
-pkgver=0.9.12
-pkgrel=3
+pkgver=0.9.14
+pkgrel=1
 pkgdesc="Object-oriented Python2 bindings for the ImageMagick library"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
-depends=('boost<1.60.0' 'python2' 'imagemagick') # 'libstdc++5')
+depends=('boost' 'python2' 'imagemagick')
 makedepends=('perl' 'automake')
 options=('!libtool')
-source=("http://www.imagemagick.org/download/python/PythonMagick-$pkgver.tar.gz")
-md5sums=('5187cb51f3a850a88a95568bb96e62e3')
+source=("http://www.imagemagick.org/download/python/releases/PythonMagick-$pkgver.tar.gz")
+md5sums=('c9549c177f799076340c78266bde6161')
 
 build() {
   cd "$srcdir/PythonMagick-$pkgver"
@@ -20,7 +20,6 @@ build() {
   PYTHON_LIB="`python2-config --libs`" \
   ./configure --prefix=/usr
 
-#  sed -i 's:-l$(PYTHON_LIB):$(PYTHON_LIB):' Makefile
   make
 }
 
