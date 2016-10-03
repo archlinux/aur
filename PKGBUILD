@@ -9,7 +9,7 @@ url="https://github.com/brain-labs/brain"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=("gcc" "llvm-libs" "llvm")
+makedepends=("clang" "llvm-libs" "llvm")
 optdepends=()
 provides=('brain')
 conflicts=('brain')
@@ -25,7 +25,7 @@ md5sums=("9665fc9ef1147d1ca394e232d468176d") #autofill using updpkgsums
 build() {
   cd "$pkgname-$pkgver"
 
-  make build-gcc
+  make
 }
 
 package() {
