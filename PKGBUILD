@@ -2,7 +2,7 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=2
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
@@ -18,5 +18,6 @@ md5sums=('SKIP')
 
 package () {
 	cd "$srcdir"
-		install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
