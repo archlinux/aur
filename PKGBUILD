@@ -1,7 +1,7 @@
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname='thelounge'
 _npmname='thelounge'
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Web-based IRC client - Official community fork of Shout"
 url='https://thelounge.github.io/'
@@ -18,7 +18,7 @@ source=(
 )
 noextract=("$_npmname-$pkgver.tgz")
 sha256sums=(
-	'58b78a572d193663cea3a64fb7b5155411a4e01561f5865b7bec94e52515e144'
+	'8eedf5df4c513ec36e82aaa2bbe467d27d0a420a04de14bf7c0814b2af06d847'
 	'SKIP'
 	'SKIP'
 )
