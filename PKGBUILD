@@ -13,8 +13,8 @@ url='https://github.com/openresty/echo-nginx-module'
 license=('custom')
 depends=("nginx=$_ngx_ver")
 makedepends=('git')
-source=(https://github.com/openresty/${_mod_name}-nginx-module/archive/${pkgver}.tar.gz
-        http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
+source=("https://github.com/openresty/${_mod_name}-nginx-module/archive/${pkgver}.tar.gz
+        http://nginx.org/download/nginx-${_ngx_ver}.tar.gz")
 md5sums=('897338c2c4bc44f2d56ae06ab9820372'
          'c184c873d2798c5ba92be95ed1209c02')
 
@@ -67,4 +67,3 @@ package() {
   sed -n '1806,1827p' "$srcdir"/${_mod_name}-nginx-module/README.markdown > \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
