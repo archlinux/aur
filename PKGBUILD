@@ -7,7 +7,9 @@ arch=('i686' 'x86_64')
 url='https://github.com/pmoulon/CMVS-PMVS'
 license=('GPL')
 depends=('libjpeg' 'boost-libs')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('gcc5' 'git' 'cmake' 'boost')
+provides=('cmvs' 'pmvs')
+conflicts=('cmvs' 'pmvs')
 _gitname='CMVS-PMVS'
 source=("git+https://github.com/pmoulon/${_gitname}.git"
        )
@@ -23,7 +25,7 @@ build() {
   cd "${srcdir}"
   mkdir -p cmvs-pmvs_build
   cd cmvs-pmvs_build
-  cmake -DCMAKE_BUILD_TYPE=RELEASE "../${_gitname}/program"
+  cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5 "../${_gitname}/program"
   make
 }
 
