@@ -4,17 +4,17 @@
 # Thanks to the patch from the MXE project <mxe.cc>
 
 pkgname=mingw-w64-readline
-_basever=6.3
-_patchlevel=008
+_basever=7.0
+_patchlevel=000
 pkgver=$_basever.$_patchlevel
-pkgrel=3
+pkgrel=1
 pkgdesc="MinGW port of readline for editing typed command lines (mingw-w64)"
 arch=('any')
 depends=('mingw-w64-crt' 'mingw-w64-pdcurses')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 license=('GPL')
-url="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+url="https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
 source=("http://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
         "readline-1.patch")
 if [ $_patchlevel -gt 00 ]; then
@@ -23,25 +23,9 @@ if [ $_patchlevel -gt 00 ]; then
     done
 fi
 
-md5sums=('33c8fb279e981274f485fd91da77e94a'
+md5sums=('205b03a87fc83dab653b628c59b9fc91'
          'SKIP'
-         '5e131046492793cf36ff6bf5ab61fbd7'
-         '4343f5ea9b0f42447f102fb61576b398'
-         'SKIP'
-         '700295212f7e2978577feaee584afddb'
-         'SKIP'
-         'af4963862f5156fbf9111c2c6fa86ed7'
-         'SKIP'
-         '11f9def89803a5052db3ba72394ce14f'
-         'SKIP'
-         '93721c31cd225393f80cb3aadb165544'
-         'SKIP'
-         '71dc6ecce66d1489b96595f55d142a52'
-         'SKIP'
-         '062a08ed60679d3c4878710b3d595b65'
-         'SKIP'
-         'ee1c04072154826870848d8b218d7b04'
-         'SKIP')
+         'e1564909905d0670fca91da3dc4053f7')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"

@@ -1,87 +1,6 @@
 This file is part of MXE.
 See index.html for further information.
 
-From c0572cecbeadc8fe24c70c5c39d49210a39ac719 Mon Sep 17 00:00:00 2001
-From: Timothy Gu <timothygu99@gmail.com>
-Date: Tue, 30 Sep 2014 10:32:33 -0700
-Subject: [PATCH 1/2] signals: safeguard the remaining usage of frequently
- missing signals
-
-diff --git a/input.c b/input.c
-index 117dfe8..465f0b9 100644
---- a/input.c
-+++ b/input.c
-@@ -532,18 +532,23 @@
- 	 Otherwise (not EINTR), some error occurred, also signifying EOF. */
-       if (errno != EINTR)
- 	return (RL_ISSTATE (RL_STATE_READCMD) ? READERR : EOF);
--      else if (_rl_caught_signal == SIGHUP || _rl_caught_signal == SIGTERM)
-+      else if (_rl_caught_signal == SIGTERM
-+#if defined(SIGHUP)
-+               || _rl_caught_signal == SIGHUP
-+#endif
-+              )
- 	return (RL_ISSTATE (RL_STATE_READCMD) ? READERR : EOF);
--      /* keyboard-generated signals of interest */
--      else if (_rl_caught_signal == SIGINT || _rl_caught_signal == SIGQUIT)
-+      else if (_rl_caught_signal == SIGINT
-+#if defined(SIGQUIT)
-+               || _rl_caught_signal == SIGQUIT
-+#endif
-+              )
-         RL_CHECK_SIGNALS ();
-+      else if (_rl_caught_signal == SIGINT
-+#if defined(SIGQUIT)
-+               || _rl_caught_signal == SIGQUIT
--      /* non-keyboard-generated signals of interest */
--      else if (_rl_caught_signal == SIGALRM
--#if defined (SIGVTALRM)
--		|| _rl_caught_signal == SIGVTALRM
- #endif
-+              )
--	      )
--        RL_CHECK_SIGNALS ();
- 
-       if (rl_signal_event_hook)
- 	(*rl_signal_event_hook) ();
-diff --git a/signals.c b/signals.c
-index 61f02f9..7c921d6 100644
---- a/signals.c
-+++ b/signals.c
-@@ -216,7 +216,9 @@ _rl_handle_signal (sig)
-       /* FALLTHROUGH */
- 
-     case SIGTERM:
-+#if defined (SIGHUP)
-     case SIGHUP:
-+#endif
- #if defined (SIGTSTP)
-     case SIGTSTP:
-     case SIGTTOU:
-@@ -426,7 +428,9 @@ rl_set_signals ()
- 
-       rl_maybe_set_sighandler (SIGINT, rl_signal_handler, &old_int);
-       rl_maybe_set_sighandler (SIGTERM, rl_signal_handler, &old_term);
-+#if defined (SIGHUP)
-       rl_maybe_set_sighandler (SIGHUP, rl_signal_handler, &old_hup);
-+#endif
- #if defined (SIGQUIT)
-       rl_maybe_set_sighandler (SIGQUIT, rl_signal_handler, &old_quit);
- #endif
-@@ -491,7 +495,9 @@ rl_clear_signals ()
- 	 overhead */
-       rl_maybe_restore_sighandler (SIGINT, &old_int);
-       rl_maybe_restore_sighandler (SIGTERM, &old_term);
-+#if defined (SIGHUP)
-       rl_maybe_restore_sighandler (SIGHUP, &old_hup);
-+#endif
- #if defined (SIGQUIT)
-       rl_maybe_restore_sighandler (SIGQUIT, &old_quit);
- #endif
--- 
-1.8.3.2
-
-
 From 6896ffa4fc85bf0dfae58e69a860d2076c1d9fd2 Mon Sep 17 00:00:00 2001
 From: Timothy Gu <timothygu99@gmail.com>
 Date: Tue, 30 Sep 2014 17:16:32 -0700
@@ -201,3 +120,24 @@ index 3eb7f29..854a2c9 100644
 -- 
 1.8.3.2
 
+diff --git a/histfile.c b/histfile.c
+--- a/histfile.c
++++ b/histfile.c
+@@ -610,8 +610,6 @@
+      user is running this, it's a no-op.  If the shell is running after sudo
+      with a shared history file, we don't want to leave the history file
+      owned by root. */
+-  if (rv == 0 && exists)
+-    r = chown (filename, finfo.st_uid, finfo.st_gid);
+ 
+   xfree (filename);
+   FREE (tempname);
+@@ -757,8 +755,6 @@
+      user is running this, it's a no-op.  If the shell is running after sudo
+      with a shared history file, we don't want to leave the history file
+      owned by root. */
+-  if (rv == 0 && exists)
+-    mode = chown (histname, finfo.st_uid, finfo.st_gid);
+ 
+   FREE (histname);
+   FREE (tempname);
