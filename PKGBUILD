@@ -1,22 +1,23 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Chromaryu <knight.ryu12@gmail.com>
 pkgname=libxmp-git
-pkgver=4.4.0
+pkgver=libxmp.4.4.0.r59.g6d1fa98
 pkgrel=1
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
 arch=('i686' 'x86_64')
 url="http://xmp.sourceforge.net/"
 license=('GPL')
-depends=('glibc' 'git')
+depends=('glibc')
 optdepends=('pulseaudio')
+makedepends=('git')
 conflicts=('libxmp')
 provides=('libxmp')
 source=("$pkgname"::"git+https://github.com/cmatsuoka/libxmp.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$srcdir/$pkgname"
