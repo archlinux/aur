@@ -4,7 +4,7 @@
 
 pkgname=numix-themes-blue-git
 pkgver=2.6.4.r6.c138b78
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -28,21 +28,22 @@ prepare() {
   cd Numix/src
 
   # Kill it all
-  orange=('f0544c' 'd64937' 'f1544d' 'f06860' 'fc6f5d')
+  ORANGE=('f0544c' 'd64937' 'f1544d' 'f06860' 'fc6f5d')
   for FILE in $(find -type f)
   do
-    for o in ${orange[@]}
+    for O in ${ORANGE[@]}
     do
-      sed -i "s/#${o}/#2d81e5/g" "${FILE}"
+      sed -i "s/#${O}/#2d81e5/g" "${FILE}"
     done
+    sed -i 's/Numix/Numix-Blue/' "${FILE}"
   done
 
   cd assets
   rm -f *.png
-  svg="all-assets.svg"
-  for file in $(inkscape --query-all $svg | grep -Po "(?<=^EXP-).+?(?=,)")
+  SVG="all-assets.svg"
+  for FILE in $(inkscape --query-all "${SVG}" | grep -Po '(?<=^EXP-).+?(?=,)')
   do
-    inkscape $svg -i EXP-$file -e $file.png
+    inkscape "${SVG}" -i "EXP-${FILE}" -e "${FILE}.png"
   done
 }
 
