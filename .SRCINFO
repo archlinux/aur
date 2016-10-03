@@ -6,11 +6,16 @@ pkgbase = cmvs-pmvs-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gcc5
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
 	depends = libjpeg
 	depends = boost-libs
+	provides = cmvs
+	provides = pmvs
+	conflicts = cmvs
+	conflicts = pmvs
 	source = git+https://github.com/pmoulon/CMVS-PMVS.git
 	md5sums = SKIP
 
