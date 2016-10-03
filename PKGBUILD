@@ -12,8 +12,8 @@ pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=($_cpan_md5)
-depends=('perl-authen-simple' 'perl-json' 'perl-ipc-run3' 'perl-log-dispatch')
-makedepends=('perl-module-build')
+depends=('')
+makedepends=('')
 checkdepends=()
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
