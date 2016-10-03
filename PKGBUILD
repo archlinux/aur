@@ -24,7 +24,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname"
+	cd shadow-of-the-wyrm
 	premake4 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
 	make config=release
 }
