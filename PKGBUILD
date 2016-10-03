@@ -4,7 +4,7 @@
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
 pkgver=3.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
@@ -17,7 +17,7 @@ install=install_zookeeper.sh
 
 _closest="https://archive.apache.org/dist/"
 _app_path="/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-source=(${_closest}/${_app_path},
+source=(${_closest}/${_app_path}
         systemd_zookeeper.service
         systemd_zookeeper@.service
         systemd_sysusers.d_zookeeper.conf
