@@ -3,14 +3,14 @@
 # Contributor: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=numix-themes-blue-git
-pkgver=2.5.1.r199.bde0a73
+pkgver=2.6.4.r6.c138b78
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('git' 'ruby-bundler' 'svg2png')
+makedepends=('git' 'ruby-bundler' 'inkscape')
 conflicts=('numix-themes-blue')
 replaces=('numix-themes-blue')
 source=("git+https://github.com/shimmerproject/Numix.git"
@@ -25,21 +25,24 @@ pkgver() {
 }
 
 prepare() {
-  cd Numix
+  cd Numix/src
 
-  for FILE in $(find -path ./.\* -prune -o -type f -print)
+  # Kill it all
+  orange=('f0544c' 'd64937' 'f1544d' 'f06860' 'fc6f5d')
+  for FILE in $(find -type f)
   do
-    sed -i 's/#f0544c/#2d81e5/g' "${FILE}"
-    sed -i 's/#d64937/#2d81e5/g' "${FILE}"
-    sed -i 's/Numix/Numix-Blue/' "${FILE}"
+    for o in ${orange[@]}
+    do
+      sed -i "s/#${o}/#2d81e5/g" "${FILE}"
+    done
   done
 
-  cd gtk-3.0/assets
+  cd assets
   rm -f *.png
-  for FILE in *.svg
+  svg="all-assets.svg"
+  for file in $(inkscape --query-all $svg | grep -Po "(?<=^EXP-).+?(?=,)")
   do
-    OUTNAME=$(echo ${FILE} | sed -e "s/selected/checked/" -e "s/\\.svg$/.png/")
-    svg2png ${FILE} ${OUTNAME}
+    inkscape $svg -i EXP-$file -e $file.png
   done
 }
 
@@ -53,8 +56,7 @@ package() {
   cd Numix
 
   install -dm 755 "$pkgdir"/usr/share/themes/Numix-Blue
-  cp -dr --no-preserve='ownership' * "$pkgdir"/usr/share/themes/Numix-Blue/
-  rm -rf "$pkgdir"/usr/share/themes/Numix-Blue/{CREDITS,LICENSE,Makefile,README.md}
+  cp -dr --no-preserve='ownership' src/* "$pkgdir"/usr/share/themes/Numix-Blue/
 }
 
 # vim: ts=2 sw=2 et:
