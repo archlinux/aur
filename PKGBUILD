@@ -30,25 +30,25 @@ build() {
 }
 
 package() {
-  echo "cd /usr/share/shadow-of-the-wyrm/sotw" > ${srcdir}/${pkgname}/sotw.sh
-  echo "./sotw" >> ${srcdir}/${pkgname}/sotw.sh
-  chmod +x ${srcdir}/${pkgname}/sotw.sh
-  install -D -m644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -d -m777 ${srcdir}/${pkgname}/sotw "${pkgdir}/usr/share/${pkgname}/sotw"
-  install -D ${srcdir}/${pkgname}/sotw/howdoi.txt "${pkgdir}/usr/share/${pkgname}/sotw/howdoi.txt"
-  install -D ${srcdir}/${pkgname}/sotw/README.md "${pkgdir}/usr/share/${pkgname}/sotw/README.md"
-  install -D ${srcdir}/${pkgname}/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/${pkgname}/sotw/shadowofthewyrmtext_blank.ini"
-  install -D ${srcdir}/${pkgname}/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/${pkgname}/sotw/shadowofthewyrmtext_en.ini"
-  install -D ${srcdir}/${pkgname}/sotw/sotw "${pkgdir}/usr/share/${pkgname}/sotw/sotw"
-  install -D ${srcdir}/${pkgname}/sotw/swyrm.ini "${pkgdir}/usr/share/${pkgname}/sotw/swyrm.ini"
-  install -D ${srcdir}/${pkgname}/ShadowOfTheWyrm "${pkgdir}/usr/share/${pkgname}/ShadowOfTheWyrm"
-  install -D ${srcdir}/${pkgname}/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/${pkgname}/shadowofthewyrmtext_blank.ini"
-  install -D ${srcdir}/${pkgname}/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/${pkgname}/shadowofthewyrmtext_en.ini"
-  install -D ${srcdir}/${pkgname}/swyrm.ini "${pkgdir}/usr/share/${pkgname}/swyrm.ini"
-  cp -R ${srcdir}/${pkgname}/sotw/data ${pkgdir}/usr/share/${pkgname}/sotw/data
-  cp -R ${srcdir}/${pkgname}/sotw/docs ${pkgdir}/usr/share/${pkgname}/sotw/docs
-  cp -R ${srcdir}/${pkgname}/sotw/licenses ${pkgdir}/usr/share/${pkgname}/sotw/licenses
-  cp -R ${srcdir}/${pkgname}/sotw/scripts ${pkgdir}/usr/share/${pkgname}/sotw/scripts
-  cp -R ${srcdir}/${pkgname}/sotw/texts ${pkgdir}/usr/share/${pkgname}/sotw/texts
-  install -D ${srcdir}/${pkgname}/sotw.sh ${pkgdir}/usr/bin/sotw  
+  echo "cd /usr/share/shadow-of-the-wyrm/sotw" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
+  echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
+  chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
+  install -D -m644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/shadow-of-the-wyrm/LICENSE"
+  install -d -m777 ${srcdir}/${pkgname}/sotw "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/howdoi.txt "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/howdoi.txt"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/README.md "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/README.md"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/sotw "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/sotw"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/swyrm.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/ShadowOfTheWyrm "${pkgdir}/usr/share/shadow-of-the-wyrm/ShadowOfTheWyrm"
+  install -D ${srcdir}/shadow-of-the-wyrm/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/shadowofthewyrmtext_blank.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/shadowofthewyrmtext_en.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/swyrm.ini "${pkgdir}/usr/share/${pkgname}/swyrm.ini"
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/data
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/docs
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/licenses
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/scripts ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/scripts
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/texts ${pkgdir}/usr/share/shadow-of-the-wyrm/sotw/texts
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw  
 }

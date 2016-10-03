@@ -7,11 +7,11 @@ pkgbase = sotw
 	license = MIT
 	makedepends = premake
 	makedepends = mercurial
-	makedepends = boost
 	depends = xerces-c
 	depends = zlib
 	depends = ncurses
 	depends = lua51
+	depends = boost
 	source = hg+https://hg@bitbucket.org/prolog/shadow-of-the-wyrm
 	md5sums = SKIP
 
