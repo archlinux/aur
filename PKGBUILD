@@ -8,7 +8,7 @@ _webview_provider=webkit
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -19,8 +19,8 @@ depends=('qtutilities' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('122a64f4d08caa2e1cca1dd279d4db85023d46ee9f12b041b341b8d7c33dea9d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('311731a3541c31e4f98209a1f42460f13ebf4b5e4e5d1270a8768b9daac54862')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
