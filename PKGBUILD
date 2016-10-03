@@ -13,7 +13,7 @@
 # http://pkgbuild.com/git/aur-mirror.git/tree/lib32-libmumble/PKGBUILD
 
 pkgname=lib32-libmumble
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A voice chat application similar to TeamSpeak (32-bit overlay library)"
