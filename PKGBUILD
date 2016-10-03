@@ -7,10 +7,10 @@
 ## If you will not be using ibus, comment out below.
 _ibus_mozc="yes"
 ## If you will be using uim, uncomment below.
-_uim_mozc="yes"
+#_uim_mozc="yes"
 
 ## If you will be using mozc.el on Emacs, uncomment below.
-_emacs_mozc="yes"
+#_emacs_mozc="yes"
 
 ## If you want to use 'kill-line' feature of uim, uncomment below.
 #_kill_line="yes"
@@ -71,7 +71,7 @@ _emacs_mozc="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
+_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
 _utdicver=20160905
 _zipcoderel=201609
 _uimmozcrev=321.3ea28b1
@@ -79,7 +79,7 @@ _uimmozcrev=321.3ea28b1
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.18.2548.102.20160905
+pkgver=2.18.2612.102.20160905
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -100,8 +100,7 @@ sha1sums=('SKIP'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '7fc1c5e2487e47db84e2791a88085c1d6c8782cc'
           '3d012569963b9359d2d267216f78c1a07a395065'
-          '66544a5b72988b3a8287cc59ff5a1e1a608673b9'
-          '22b7c2a5b0a7fef778ee72ebe5873a75e879d26b')
+          '66544a5b72988b3a8287cc59ff5a1e1a608673b9')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
@@ -122,7 +121,7 @@ fi
 
 
 mozcver() {
-  . "${srcdir}/mozc/src/data/version/mozc_version_template.txt"
+  . "${srcdir}/mozc/src/data/version/mozc_version_template.bzl"
   printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
 }
 
@@ -143,9 +142,11 @@ prepare() {
 
   # Generate zip code seed
   msg "Generating zip code seed..."
-  python2 src/dictionary/gen_zip_code_seed.py \
-    --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" \
-    >> src/data/dictionary_oss/dictionary09.txt
+  PYTHONPATH="${PYTHONPATH}:${srcdir}/mozc/src/" \
+            python2 src/dictionary/gen_zip_code_seed.py \
+            --zip_code="${srcdir}/x-ken-all.csv" \
+            --jigyosyo="${srcdir}/JIGYOSYO.CSV" \
+            >> "${srcdir}/mozc/src/data/dictionary_oss/dictionary09.txt"
   msg "Done."
 
   cd "${srcdir}/mozcdic-ut-${_utdicver}"
