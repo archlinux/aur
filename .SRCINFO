@@ -2,8 +2,8 @@
 # Tue Dec 29 15:10:50 UTC 2015
 pkgbase = gammaray
 	pkgdesc = A tool for examining the internals of a Qt application and to some extent also manipulate it
-	pkgver = 2.5.1
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = http://www.kdab.com/kdab-products/gammaray/
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = gammaray
 	depends = qt5-webkit
 	depends = qt5-declarative
 	depends = qt5-location
-	source = https://github.com/KDAB/GammaRay/archive/v2.5.1.tar.gz
-	md5sums = 3f74740a97b135c8cf80bac31e7edb8f
+	source = https://github.com/KDAB/GammaRay/archive/v2.6.0.tar.gz
+	md5sums = 5e1d1034b68dc0f101d4b0f0beb21cce 
 
 pkgname = gammaray
 
