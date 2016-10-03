@@ -9,7 +9,7 @@ pkgdesc="The Free Unix Spectrum Emulator (SDL UI)."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
 license=("GPL2")
-depends=('sdl' 'libspectrum>=1.2.0' 'libxml2' 'libpng')
+depends=('sdl' "libspectrum=$pkgver" 'libxml2' 'libpng')
 conflicts=('fuse-emulator')
 source=("http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-$pkgver.tar.gz"
         "fuse-emulator.png" "fuse-emulator.desktop")
