@@ -1,7 +1,7 @@
 # Maintainer: lolilolicon <lolilolicon@gmail.com>
 
 _name=FFcast
-_ver=2.4.2
+_ver=2.4.3
 pkgname=ffcast
 epoch=1
 pkgver=${_ver//-/}
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=('bash>=4.3' ffmpeg xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
 makedepends=(autoconf automake perl)
 source=("https://github.com/lolilolicon/$_name/archive/$_ver.tar.gz")
-md5sums=('c5fe26e8aaf6f7a9b69a1ad565838c35')
+md5sums=('45635ac9ee1aa3e996226638d22a9968')
 
 prepare() {
   cd "$_name-$_ver"
