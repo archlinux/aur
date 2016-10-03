@@ -4,7 +4,7 @@
 
 pkgname=psensor
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical hardware temperature monitor for Linux"
 arch=('i686' 'x86_64')
 url="http://wpitchoune.net/psensor"
@@ -18,9 +18,17 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'json-c: required for remote monitoring'
 	'curl: required for remote monitoring'
 	'libgtop: required for CPU usage')
-conflicts=('libappindicator-gtk2' 'libappindicator-activate-gtk2' 'libappindicator-gtk2-ubuntu' 'lib32-libappindicator-gtk2')
-source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz")
-md5sums=('db6fa7496576b63979c1c6e5e707142e')
+source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"
+	"libappindicator2.patch")
+md5sums=('db6fa7496576b63979c1c6e5e707142e'
+         '29a560881054ea29c494e7e760a3a23e')
+options=('!makeflags') # Parallel build seems broken in some case
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	patch -p1 -i "$srcdir/libappindicator2.patch"
+	autoreconf --force --install
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
