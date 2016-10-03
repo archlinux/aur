@@ -1,6 +1,6 @@
 pkgbase = syncevolution
 	pkgdesc = Synchronize PIM data via various protocols
-	pkgver = 1.5.1
+	pkgver = 1.5.1+20160926+SE+8fccc44+unclean+SYSYNC+59b55aa
 	pkgrel = 1
 	url = https://syncevolution.org/
 	arch = i686
@@ -9,18 +9,15 @@ pkgbase = syncevolution
 	makedepends = intltool
 	makedepends = boost
 	depends = evolution-data-server
+	depends = libgnome-keyring
 	depends = neon
 	depends = openobex
 	depends = python2
 	depends = libunique
-	source = https://download.01.org/syncevolution/syncevolution/sources/syncevolution-1.5.1.tar.gz
-	source = syncevolution-1.5.1-casts.patch
-	source = syncevolution-1.5.1-libical2.patch
-	source = syncevolution-1.5.1-python2.patch
-	sha256sums = 39f52049006c4a703bfe4b7cea3bb3298fe61b4ba9a8dbc367492409e4091c70
-	sha256sums = c72fcc0f06d7958fbef98ffd379ebc95407d7bd29924e6ba63507ba7f82fcac6
-	sha256sums = e12fd70af74b2771c6a83a6f42cfd64a943e9e5d3db93624865b08476d4b8f2c
-	sha256sums = 3ccb195d45de1c1ad87f76dfc5927997988afa7031feb9f335fab63d6a317910
+	source = http://downloads.syncevolution.org/syncevolution/sources/syncevolution-1.5.1%2B20160926%2BSE%2B8fccc44%2Bunclean%2BSYSYNC%2B59b55aa.tar.gz
+	source = syncevolution-1.5.1+20160926+SE+8fccc44+unclean+SYSYNC+59b55aa-python2.patch
+	sha256sums = 3563ebaf6b9a29c9a8baa6487554821480bcc6ff5b870af632a45ed92fe31d11
+	sha256sums = 8167ca6bb392ccb2f36093eef0e76d8c6cde5d43dcc595ad73af9af838ea14ce
 
 pkgname = syncevolution
 
