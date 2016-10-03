@@ -4,7 +4,6 @@ _cpan_name=Role-Basic
 _cpan_desc="Just roles. Nothing else."
 _cpan_author=ovid
 _cpan_version=0.13
-_cpan_md5=4398256133d96a266acfdbb6bea76a73
 _cpan_md5=2985fbb47bd0a862bd56bc7cbba6e673
 
 pkgrel=1
@@ -26,14 +25,14 @@ arch=('any')
 
 
 build() {
-        cd $srcdir/$name-$pkgver
+		cd $srcdir/${_cpan_name}-$pkgver
         PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
         make
         make test
 }
 
 package() {
-        cd $srcdir/$name-$pkgver
+		cd $srcdir/${_cpan_name}-$pkgver
         make install DESTDIR=$pkgdir
 }
 
