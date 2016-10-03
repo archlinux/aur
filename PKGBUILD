@@ -2,7 +2,7 @@
 
 pkgname=gromacs-4.6-complete
 pkgver=4.6.7
-pkgrel=3
+pkgrel=4
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("GPL")
@@ -19,6 +19,11 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format). 
+
+#With gcc5 currently there are less errors in the tests
+# also the compilation is possible in cuda capable machines
+export CC=gcc-5
+export CXX=g++-5
 
 prepare() {
 cd ${srcdir}/gromacs-${pkgver}/scripts/
