@@ -1,0 +1,12 @@
+pkgbase = perl-spawn-safe
+	pkgdesc = Fork and exec a process "safely"
+	pkgver = 2.006
+	pkgrel = 1
+	url = http://search.cpan.org/~jeagle/Spawn-Safe-2.006
+	arch = any
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JEAGLE/Spawn-Safe-2.006.tar.gz
+	md5sums = df585d11c7ff316fb736e6718fe9e639
+
+pkgname = perl-spawn-safe
+
