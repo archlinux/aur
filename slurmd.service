@@ -5,10 +5,15 @@ Requires=munge.service
 ConditionPathExists=/etc/slurm-llnl/slurm.conf
 
 [Service]
-Type=simple
-EnvironmentFile=/etc/default/slurm-llnl
-ExecStart=/usr/bin/slurmd -D $SLURMD_OPTIONS
-PIDFile=/var/run/slurm/slurmd.pid
+Type=forking
+EnvironmentFile=-/etc/default/slurm-llnl
+ExecStart=/usr/bin/slurmd $SLURMD_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/slurm-llnl/slurmd.pid
+KillMode=process
+LimitNOFILE=51200
+LimitMEMLOCK=infinity
+LimitSTACK=infinity
 
 [Install]
 WantedBy=multi-user.target

@@ -38,9 +38,9 @@ source=("slurm-tmpfiles.conf"
 	"${pkgname}"::"git+https://github.com/SchedMD/slurm.git")
 md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
          'cae664b8ef44d01783dade9088e25b53'
-         '834b641efbcb45d300630f51f08a9122'
-         '231a6634fcf774642021377920fffe39'
-         'cef9d45137b9bd431dce3cbe85ef9bca'
+         '06b572524c0e419d91c81d84c169358b'
+         '5cfc5d7bf548dd0dd3b6ac3708daccb7'
+         'da7a52451ce31c9269211b309f9ebe1c'
          'SKIP')
 
 pkgver() {
