@@ -6,7 +6,7 @@ pkgver=0.1.7
 pkgrel=1
 pkgdesc="SOCKS proxy client for asyncio and aiohttp"
 arch=("any")
-license=("APACHE-2")
+license=("Apache")
 depends=("python>=3.4" "python-setuptools")
 optdepends=("python-aiohttp: For aiosocks.SocksConnector")
 source=("https://pypi.python.org/packages/cd/d5/f522e746a07b0e454dc1d909d1494d55f7da6bc0e4671e27175691046a95/aiosocks-0.1.7.zip")
