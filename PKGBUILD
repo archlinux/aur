@@ -1,7 +1,7 @@
 # Maintainer: Harley Wiltzer <harleyw@hotmail.com>
 pkgname=hasklock
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A binary clock in ncurses written in Haskell"
 arch=('x86_64')
 url="https://github.com/DestructiveReasoning/hasklock"
