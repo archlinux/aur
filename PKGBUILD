@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 epoch=
 pkgdesc="A GUI front-end for scrot"
@@ -20,7 +20,7 @@ depends=("python"
         "python-gobject")
 makedepends=("fakeroot")
 checkdepends=()
-optdepends=()
+optdepends=('slop: improved region and window selection')
 provides=()
 conflicts=()
 replaces=()
@@ -29,7 +29,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('c7c1b7a9f4e7319e50d8c9ee15344a9856e08652f92076b2f7a5c74787ba75d0')
+sha256sums=('69221a583aeefe61fc924632e43c60b22c450bcf11067d9d4b538db2b0dae7d5')
 validpgpkeys=()
 
 prepare() {
