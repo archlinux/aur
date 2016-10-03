@@ -9,7 +9,7 @@ pkgdesc="Plugin for Qt-based Multimedia Player (Qmmp) to search and play musics 
 arch=('i686' 'x86_64')
 url="https://github.com/rigon/qmmp-plugin-youtube"
 license=('GPL')
-depends=('qmmp' 'python>=3.5' 'python<3.6' 'youtube-dl' 'qjson' 'pythonqt-qt5')
+depends=('qmmp' 'python>=3.5' 'python<3.6' 'youtube-dl' 'qjson' 'pythonqt')
 install=$pkgname.install
 source=(https://github.com/rigon/$pkgname/archive/v$pkgver.tar.gz
         http://qmmp.ylsoftware.com/files/qmmp-$_qmmpver.tar.bz2)
