@@ -5,9 +5,9 @@ pkgbase = fhs-manpages
 	url = https://github.com/alyptik/fhs-manpages
 	arch = any
 	license = GPL
-	depends = gzip
-	source = https://github.com/alyptik/fhs-manpages/raw/master/fhs.mm
-	sha256sums = 833f5950d4e3698bdf5fa71d192d09457a3594d5b2b0b9b626622e7087f4bd7f
+	options = zipman
+	source = https://github.com/alyptik/fhs-manpages/raw/master/fhs.5
+	sha256sums = 8efaf26cb09e258cafc7b9554bddf3b70c8e4be601509abbd7193863572314e2
 
 pkgname = fhs-manpages
 

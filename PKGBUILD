@@ -8,12 +8,13 @@ pkgdesc="A manpage for the Filesystem Hierarchy Standard."
 arch=('any')
 url="https://github.com/alyptik/fhs-manpages"
 license=('GPL')
-source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.mm")
-sha256sums=('833f5950d4e3698bdf5fa71d192d09457a3594d5b2b0b9b626622e7087f4bd7f')
-build() {
-	cat "$srcdir/fhs.mm" | gzip > "$srcdir/fhs.5.gz"
-}
+options=('zipman')
+source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.5")
+#source=("https://github.com/alyptik/${pkgname}/raw/master/fhs.mm")
+sha256sums=('8efaf26cb09e258cafc7b9554bddf3b70c8e4be601509abbd7193863572314e2')
+#sha256sums=('')
 package() {
-    install -d "$pkgdir/usr/share/man/man5/"
-    install -m 644 "$srcdir/fhs.5.gz" "$pkgdir/usr/share/man/man5/"
+	[ -f "$srcdir/fhs.mm" ] || mv "$srcdir/fhs.mm" "$srcdir/fhs.5"
+	install -d "$pkgdir/usr/share/man/man5/"
+	install -m 644 "$srcdir/fhs.5" "$pkgdir/usr/share/man/man5/"
 }
