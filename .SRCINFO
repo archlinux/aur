@@ -1,0 +1,14 @@
+pkgbase = chess-merida-unicode
+	pkgdesc = A truetype chess font for diagrams and figurine notation
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://mip.noekeon.org/HTMLTTChess/chess_merida_unicode.html
+	arch = any
+	license = custom
+	source = https://github.com/xeyownt/htmlttchess/raw/master/chess_merida_unicode.ttf
+	source = https://github.com/xeyownt/htmlttchess/raw/master/COPYING
+	md5sums = 707494358789579b59d80fc073ddea91
+	md5sums = a23a74b3f4caf9616230789d94217acb
+
+pkgname = chess-merida-unicode
+
