@@ -87,7 +87,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-r7.patch'
         # Misc Patches
-        'https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz'
+        'https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_55.0.2873.0-0ubuntu1~ppa3~16.10.1.debian.tar.xz'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
@@ -104,7 +104,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '9e7bd19f8ee7a67393d0f7f50f5f27e52cb943602107d3784a28f31cf684748c'
             '90cb9498355c420b5b81873d4339a8fe45e96b206296968ea5f01b5a7de16b78'
             # Misc Patches
-            'd5df04b9a828e9449309ef021be824344fb26bc9ce3955c292ad160c2613b82c'
+            '32b6d1267672bbc8faaa54e0ed30f23e511cad534cb6279452649109dd2007e2'
             'c1131b4f969d4ff20208aa26bada30b75752c1c18853a2aa41d40901f53c8f31'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
             # Patch from crbug (chromium bugtracker)
