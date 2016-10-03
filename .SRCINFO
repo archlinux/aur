@@ -1,7 +1,7 @@
 pkgbase = octopus
 	pkgdesc = A scientific program aimed at ab initio virtual experimentation
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tddft.org/programs/octopus/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = octopus
 	depends = arpack
 	depends = libxc
 	depends = gd
+	depends = libyaml
 	source = http://www.tddft.org/programs/octopus/download/6.0/octopus-6.0.tar.gz
 	sha256sums = 4a802ee86c1e06846aa7fa317bd2216c6170871632c9e03d020d7970a08a8198
 
