@@ -1,0 +1,22 @@
+pkgbase = brother-mfc-6890cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-6890CDW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfc6890cdw_all
+	install = brother-mfc-6890cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc6890cdwlpr-1.1.2-4.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc6890cdwcupswrapper-1.1.2-4.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 03be7d462d6353b77f4abb39769fe880f47c6c1bce8f5ae7ea99fd3b7b15435b
+	sha256sums = 244c6a0d0ab2cda7696635680f8494b8491abcee8cffdb2a90dfc17c2fc65b9b
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+
+pkgname = brother-mfc-6890cdw
+
