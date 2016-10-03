@@ -1,0 +1,17 @@
+pkgbase = vim-neco-ghc-git
+	pkgdesc = A completion plugin for Haskell, using ghc-mod
+	pkgver = r140.7f02a9c
+	pkgrel = 1
+	url = https://github.com/eagletmt/neco-ghc
+	install = vimdoc.install
+	arch = any
+	license = BSD3
+	makedepends = git
+	depends = ghc-mod
+	provides = vim-neco-ghc
+	conflicts = vim-neco-ghc
+	source = git://github.com/eagletmt/neco-ghc.git
+	md5sums = SKIP
+
+pkgname = vim-neco-ghc-git
+
