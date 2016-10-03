@@ -28,12 +28,12 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201609
-_mozcrev=5d0e6164f5e88248990fa9488eef42dc7f042c8b
+_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.18.2548.102
+pkgver=2.18.2612.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
@@ -61,7 +61,7 @@ fi
 
 
 pkgver() {
-  . "${srcdir}/${pkgbase}/src/data/version/mozc_version_template.txt"
+  . "${srcdir}/${pkgbase}/src/data/version/mozc_version_template.bzl"
   printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
 }
 
@@ -84,9 +84,11 @@ prepare() {
   if [[ "$_zipcode" == "yes" ]]; then
     msg "Generating zip code dict seed..."
     cd "$srcdir"
-    python2 ${pkgbase}/src/dictionary/gen_zip_code_seed.py \
-      --zip_code=x-ken-all.csv --jigyosyo=JIGYOSYO.CSV \
-      >> ${pkgbase}/src/data/dictionary_oss/dictionary09.txt
+    PYTHONPATH="${PYTHONPATH}:${srcdir}/${pkgbase}/src/" \
+              python2 mozc/src/dictionary/gen_zip_code_seed.py \
+              --zip_code=x-ken-all.csv \
+              --jigyosyo=JIGYOSYO.CSV \
+              >> "${srcdir}/${pkgbase}/src/data/dictionary_oss/dictionary09.txt"
     msg "Done."
   fi
 
@@ -121,7 +123,7 @@ build() {
   unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
         NM NM_host NM_target READELF READELF_host READELF_target
   QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
-    python2 build_mozc.py gyp
+    python2 build_mozc.py gyp --target_platform=Linux
   python2 build_mozc.py build -c $_bldtype $_targets
 
   if [[ "$_ibus_mozc" == "yes" ]]; then
