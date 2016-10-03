@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=surfn-icons-git
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Surfn is a colourfull icon theme."
 arch=('any')
 url="https://github.com/erikdubois/Surfn"
