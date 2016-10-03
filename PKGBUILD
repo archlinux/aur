@@ -1,5 +1,4 @@
 # Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
-# Contributor: boyska <piuttosto@logorroici.org>
 
 _pkgname=ddcutil
 pkgname=ddcutil-git
