@@ -4,10 +4,11 @@ After=network.target mysqld.service
 ConditionPathExists=/etc/slurm-llnl/slurmdbd.conf
 
 [Service]
-Type=simple
-EnvironmentFile=/etc/default/slurm-llnl
-ExecStart=/usr/bin/slurmdbd -D $SLURMDBD_OPTIONS
-PIDFile=/var/run/slurm/slurmdbd.pid
+Type=forking
+EnvironmentFile=-/etc/default/slurm-llnl
+ExecStart=/usr/bin/slurmdbd $SLURMDBD_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/slurm-llnl/slurmdbd.pid
 
 [Install]
 WantedBy=multi-user.target
