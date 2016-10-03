@@ -36,9 +36,9 @@ pkgbase = slurm-llnl-dev
 	source = http://www.schedmd.com/download/total/slurm-17.02.0-0pre2.tar.bz2
 	md5sums = 51e4ae2c51edf7c145d1b87bec4c344e
 	md5sums = cae664b8ef44d01783dade9088e25b53
-	md5sums = 834b641efbcb45d300630f51f08a9122
-	md5sums = 231a6634fcf774642021377920fffe39
-	md5sums = cef9d45137b9bd431dce3cbe85ef9bca
+	md5sums = 06b572524c0e419d91c81d84c169358b
+	md5sums = 5cfc5d7bf548dd0dd3b6ac3708daccb7
+	md5sums = da7a52451ce31c9269211b309f9ebe1c
 	md5sums = e598e54a25ea5ebf503563ec5448ca7a
 
 pkgname = slurm-llnl-dev

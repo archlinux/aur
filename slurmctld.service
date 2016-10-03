@@ -5,10 +5,11 @@ Requires=munge.service
 ConditionPathExists=/etc/slurm-llnl/slurm.conf
 
 [Service]
-Type=simple
-EnvironmentFile=/etc/default/slurm-llnl
-ExecStart=/usr/bin/slurmctld -D $SLURMCTLD_OPTIONS
-PIDFile=/var/run/slurm/slurmctld.pid
+Type=forking
+EnvironmentFile=-/etc/default/slurm-llnl
+ExecStart=/usr/bin/slurmctld $SLURMCTLD_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/slurm-llnl/slurmctld.pid
 
 [Install]
 WantedBy=multi-user.target
