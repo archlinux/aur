@@ -1,7 +1,7 @@
 pkgbase = astrometry.net
 	pkgdesc = Automatic recognition of astronomical images
 	pkgver = 0.67
-	pkgrel = 3
+	pkgrel = 4
 	url = http://astrometry.net/
 	arch = i686
 	arch = x86_64

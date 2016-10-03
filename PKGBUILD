@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make PYTHON=/usr/bin/python2 all py extra
+  make SYSTEM_GSL=yes PYTHON=/usr/bin/python2 all py extra
 }
 
 package() {
@@ -26,9 +26,11 @@ package() {
   make INSTALL_DIR=${pkgdir}/usr \
 	    DATA_INSTALL_DIR=${pkgdir}/usr/share/astrometry \
 	    LIB_INSTALL_DIR=${pkgdir}/usr/lib/ \
+	    PY_BASE_INSTALL_DIR=${pkgdir}/usr/lib/python2.7/site-packages/astrometry/ \
 	    ETC_INSTALL_DIR=${pkgdir}/etc \
 	    FINAL_DIR=/usr \
 	    DATA_FINAL_DIR=/usr/share/astrometry \
+	    SYSTEM_GSL=yes \
 	install
 }
 md5sums=('b7b3277bb9779ef19b06b8e2377a63d4')
