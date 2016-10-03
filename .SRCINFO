@@ -1,0 +1,11 @@
+pkgbase = chromium-libnotify-notifications
+	pkgdesc = Causes the Chromium web browser to automatically install and update the Vimium.
+	pkgver = latest
+	pkgrel = 1
+	url = https://chrome.google.com/webstore/detail/libnotify-notifications-i/epckjefillidgmfmclhcbaembhpdeijg
+	arch = any
+	license = MIT
+	depends = chromium
+
+pkgname = chromium-libnotify-notifications
+
