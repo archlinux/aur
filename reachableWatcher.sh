@@ -9,6 +9,9 @@
 # This library written by Torben Sickert stand under a creative commons naming
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 
+# Watches a list of urls and sends mails to configured email addresses if one
+# doesn't fit the expected status code.
+
 # Dependencies:
 
 # - bash (or any bash like shell)
@@ -17,9 +20,6 @@
 # - grep - Print lines matching a pattern.
 # - msmtp - An SMTP client.
 # - sleep - Delay for a specified amount of time.
-
-# Watches a list of urls and sends mails to configured email addresses if one
-# doesn't fit the expected status code.
 
 # You have to install program "msmtp" to get this script working. A proper user
 # specific "~/.msmtprc" or global "/etc/msmtprc" have to be present on wating
@@ -34,14 +34,14 @@
 # tls_starttls   on
 # tls_trust_file /etc/ssl/certs/ca-certificates.crt
 # logfile        /tmp/msmtpLog
-#
+
 # account        gmail
 # host           smtp.gmail.com
 # port           587
 # from           ACCOUNT_E_MAIL_ADDRESS
 # user           ACCOUNT_NAME@gmail.com
 # password       ACCOUNT_PASSWORD
-#
+
 # account        default : gmail
 # endregion
 # region default options
