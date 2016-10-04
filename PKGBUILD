@@ -6,13 +6,13 @@ _cpan_author=mramberg
 _cpan_version=0.1
 _cpan_md5=55fea6cdaa85433060c3d55a4982272e
 
-pkgrel=1
+pkgrel=2
 pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=($_cpan_md5)
-depends=('perl-www-mechanize-cgi' 'perl-test-www-mechanize')
-makedepends=('')
+depends=('perl-www-mechanize-cgi' 'perl-test-www-mechanize' 'perl-cgi')
+makedepends=()
 checkdepends=()
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
