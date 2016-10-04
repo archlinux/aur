@@ -4,6 +4,8 @@ Description=Automates voting on installed and uninstalled AUR packages
 [Service]
 Type=simple
 User=root
+Requires=network-online.target
+After=network-online.target
 # enter your username and password here
 ExecStart=/usr/bin/aur-auto-vote $username
 Environment="AUR_AUTO_VOTE_PASSWORD=$password"
