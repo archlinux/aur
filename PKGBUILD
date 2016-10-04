@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/vicr123/themedia"
 license=('GPL3')
 depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5'  'qt5-base')
-makedepends=('qtchooser' 'git' 'clang')
+makedepends=('git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/themedia.git')
 md5sums=('SKIP')
 

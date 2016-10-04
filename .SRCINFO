@@ -5,7 +5,6 @@ pkgbase = themedia
 	url = https://github.com/vicr123/themedia
 	arch = x86_64
 	license = GPL3
-	makedepends = qtchooser
 	makedepends = git
 	makedepends = clang
 	depends = libmusicbrainz5
