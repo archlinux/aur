@@ -1,8 +1,8 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='snap'
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A btrfs snapshot manager"
 arch=('any')
 url="https://github.com/rumpelsepp/snap"
