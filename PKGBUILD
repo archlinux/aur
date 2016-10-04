@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   'xorg-xprop: Desktop Environment and Window Manager'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('2d2c70c671d529865eeb90f875638782')
+md5sums=('b59c9c2c86c1863937ee866a8d70c7c8')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
