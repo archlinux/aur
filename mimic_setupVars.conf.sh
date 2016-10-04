@@ -24,7 +24,7 @@ getIPv6stuff()
 	fi
 }
 
-#from official pihole basic-install.sh, almost
+# from official pihole basic-install.sh, almost
 finalExports() {
     #If it already exists, lets overwrite it with the new values.
     if [[ -f ${setupVars} ]];then
