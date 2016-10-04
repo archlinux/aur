@@ -5,9 +5,9 @@ pkgbase = tsscreenlock
 	url = https://github.com/vicr123/tsscreenlock
 	arch = x86_64
 	license = GPL3
-	makedepends = qtchooser
 	makedepends = git
 	depends = tscheckpass
+	depends = qt5-base
 	source = tsscreenlock-1.6::git+https://github.com/vicr123/tsscreenlock#branch=master
 	md5sums = SKIP
 
