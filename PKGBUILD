@@ -4,7 +4,7 @@
 pkgname=scuolabook
 pkgver=3.1
 pkgrel=3
-pkgdesc="ScuolaBook reader for Linux"
+pkgdesc="Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi libri scolastici digitali."
 arch=('i686' 'x86_64')
 url="http://www.scuolabook.it/applicazioni"
 license=('custom')

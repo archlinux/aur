@@ -1,5 +1,5 @@
 pkgbase = scuolabook
-	pkgdesc = ScuolaBook reader for Linux
+	pkgdesc = Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi libri scolastici digitali.
 	pkgver = 3.1
 	pkgrel = 3
 	url = http://www.scuolabook.it/applicazioni
