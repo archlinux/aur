@@ -1,17 +1,18 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
+# Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.1.2
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.lesbonscomptes.com/upmpdcli/"
 license=('GPL2')
-depends=('libmpdclient' 'libupnpp>=0.14.1')
+depends=('libmpdclient' 'libupnpp>=0.15.1')
 optdepends=('python2: OpenHome Radio Service')
 install=upmpdcli.install
 source=(http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('4866a4a5c54f8e3355ca7337860b998e1c8c562a7d26c4d8ae72eefdf9279982')
+sha256sums=('309471e12a8ecb5b3001dbedb584ac125706edcb6889381b0ea3215f6525fbae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
