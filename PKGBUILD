@@ -3,7 +3,8 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=27.0.0_alpha2
+pkgver=27.0.0_beta1
+_tagver=27.0.0b1
 pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -19,22 +20,22 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gst-libav: h.264 support'
             'gst-plugins-good: h.264 support')
 conflicts=('palemoon' 'palemoon-bin')
-source=(#git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver" #pm-proper
-        git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$_tagver" #pm-proper
+        #git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2" #tycho
         mozconfig.in)
 md5sums=('SKIP'
-         '21a65e2c3583b5c7877f6c19a2fa23a4')
+         'beec8aa0c30d66b42e52667d0ccfce62')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
-  cd Tycho
+  cd Pale-Moon
 
   chmod -R +x build/autoconf/* python/*
   find . -name '*.sh' -exec chmod +x {} \;
 }
 
 build() {
-  cd Tycho
+  cd Pale-Moon
 
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZCONFIG="$srcdir/mozconfig"
@@ -72,5 +73,5 @@ package() {
   rm -f "$pkgdir/usr/lib/$pkgname/palemoon-bin"
 
   # install desktop file
-  install -Dm644 "$srcdir/Tycho/browser/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/Pale-Moon/browser/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
