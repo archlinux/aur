@@ -9,7 +9,6 @@ pkgbase = theweb
 	makedepends = clang
 	depends = kwidgetsaddons
 	depends = xdg-utils
-	depends = qtchooser
 	depends = qt5-base
 	source = theweb-15.0::git+https://github.com/vicr123/theweb#branch=master
 	source = http://opensource.spotify.com/cefbuilds/cef_binary_3.2785.1481.gc3a7e2c_linux64_minimal.tar.bz2
