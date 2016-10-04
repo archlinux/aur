@@ -1,11 +1,10 @@
-pkgbase = theshell-blueprint
+pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 3.1b
+	pkgver = 4.1b
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
-	makedepends = qtchooser
 	makedepends = git
 	depends = kwidgetsaddons
 	depends = xdg-utils
@@ -16,14 +15,18 @@ pkgbase = theshell-blueprint
 	depends = redshift
 	depends = tsscreenlock
 	depends = libcups
+	depends = qt5-base
 	depends = qt5-location
 	depends = kscreen
+	depends = kdepimlibs4
+	depends = akonadi
 	depends = ts-polkitagent
+	depends = ts-bt
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-blueprint-3.1b::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-4.1b::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
-pkgname = theshell-blueprint
+pkgname = theshell
 
