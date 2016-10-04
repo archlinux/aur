@@ -1,7 +1,7 @@
 # Maintainer: Simón Oroño <sron611@gmail.com>
 
 pkgname='iop-blockchain'
-pkgver=1.0.0b
+pkgver=1.0.2b
 pkgrel=1
 pkgbase="$pkgname"
 pkgdesc="IoP is the  digital currency from the Internet of People that enables instant payments to anyone, anywhere in the world."

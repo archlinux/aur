@@ -1,6 +1,6 @@
 pkgbase = iop-blockchain
 	pkgdesc = IoP is the digital currency from the Internet of People that enables instant payments to anyone, anywhere in the world.
-	pkgver = 1.0.0b
+	pkgver = 1.0.2b
 	pkgrel = 1
 	url = http://www.fermat.org/
 	arch = i686
