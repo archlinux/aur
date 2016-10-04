@@ -7,7 +7,7 @@ pkgname=('python-jira'
 pkgdesc="Python library for interacting with JIRA via REST APIs"
 pkgver="1.0.7"
 _pkgver="${pkgver}.dev20160607111203"
-pkgrel=3
+pkgrel=4
 url="https://pypi.python.org/pypi/jira"
 license=('BSD')
 arch=('any')
@@ -21,6 +21,7 @@ prepare(){
 }
 
 package_python-jira(){
+makedepends=('python-requests')
 depends=('python'
   'python-requests'
   'python-six'
@@ -34,6 +35,7 @@ depends=('python'
 
 
 package_python2-jira(){
+makedepends=('python2-requests')
 depends=('python2'
   'python2-requests'
   'python2-six'
