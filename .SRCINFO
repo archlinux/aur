@@ -1,5 +1,5 @@
 pkgbase = filebot
-	pkgdesc = The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums
+	pkgdesc = The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums.
 	pkgver = 4.7.2
 	pkgrel = 1
 	url = http://filebot.sourceforge.net/

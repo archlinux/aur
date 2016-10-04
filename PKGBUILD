@@ -6,7 +6,7 @@
 pkgname=filebot
 pkgver=4.7.2
 pkgrel=1
-pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums"
+pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('any')
 url="http://filebot.sourceforge.net/"
 license=('GPL')
