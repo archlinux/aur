@@ -1,2 +1,5 @@
-*tar*
-*log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.obconf-qt.install
