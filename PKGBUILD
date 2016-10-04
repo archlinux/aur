@@ -2,13 +2,13 @@
 # Contributor: speps <speps at aur dot archlinux dor org>
 
 pkgname=qmidinet-git
-pkgver=113.dfb4f77
-pkgrel=2
+pkgver=136.9e0494f
+pkgrel=1
 pkgdesc="A MIDI Network Gateway via UDP/IP Multicast (git version)"
 arch=(i686 x86_64)
 url="http://qmidinet.sourceforge.net/"
 license=('GPL')
-depends=('qt5-base' 'qt5-tools' 'qtchooser' 'alsa-lib' 'jack')
+depends=('qt5-base' 'qt5-tools' 'alsa-lib' 'jack')
 provides=('qmidinet')
 conflicts=('qmidinet')
 install="$pkgname.install"
