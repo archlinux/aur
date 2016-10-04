@@ -5,7 +5,6 @@ pkgbase = thepackage
 	url = https://github.com/vicr123/thepackage
 	arch = x86_64
 	license = GPL2
-	makedepends = qtchooser
 	depends = qt5-base
 	depends = xdg-utils
 	depends = wget

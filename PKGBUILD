@@ -7,8 +7,8 @@ pkgdesc="Simple Package Manager that invokes Pacman directly"
 arch=("x86_64")
 url="https://github.com/vicr123/thepackage"
 license=('GPL2')
-depends=('qt5-base' 'xdg-utils' 'wget' 'package-query' 'git')
-makedepends=('qtchooser')
+depends=('qt5-base' 'xdg-utils' 'wget' 'package-query' 
+'git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thepackage#branch=master')
 md5sums=('SKIP')
 
