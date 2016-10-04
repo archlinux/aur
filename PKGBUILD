@@ -22,7 +22,7 @@ arch=('i686' 'x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
-makedepends=('java-environment-openjdk=8' 'mercurial' 'bison' 'gperf' 'qtchooser' 'gtk2'
+makedepends=('java-environment-openjdk=8' 'mercurial' 'bison' 'gperf' 'gtk2'
              'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2' 'ruby')
 source=(openjfx::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=${_hgtag}
         gradle.properties
