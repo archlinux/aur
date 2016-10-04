@@ -12,9 +12,10 @@
 # Dependencies:
 
 # - bash (or any bash like shell)
+# - curl - Transfers a url contents.
 # - date - Print or set the system date and time.
-# - msmtp - An SMTP client.
 # - grep - Print lines matching a pattern.
+# - msmtp - An SMTP client.
 # - sleep - Delay for a specified amount of time.
 
 # Watches a list of urls and sends mails to configured email addresses if one
