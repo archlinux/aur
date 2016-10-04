@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="C++17 header-only utility library"
 arch=('any')
 url="https://github.com/nyorain/nytl"
-license=('MIT')
+license=('Boost')
 groups=()
 depends=()
 makedepends=('git') 
@@ -37,6 +37,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	make -C build DESTDIR="$pkgdir/" install
 }
