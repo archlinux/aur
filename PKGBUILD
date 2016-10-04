@@ -1,10 +1,12 @@
-# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer:
+# Contrigutor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 
 __pkgname="shim"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.8.32.g6d4803a
+pkgver=0.9.r51.rgd3884fe
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/rhinstaller/shim"
@@ -24,7 +26,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${__pkgname}/"
-	echo "$(git describe --tags)" | sed -e 's|-|.|g'
+	echo "$(git describe --tags)" | sed -e 's|-|.r|g'
 }
 
 prepare() {
@@ -59,7 +61,7 @@ package() {
 	cd "${srcdir}/${__pkgname}/"
 	
 	install -d "${pkgdir}/usr/lib/shim/"
-	install -D -m0644 "${srcdir}/${__pkgname}/shim.efi" "${pkgdir}/usr/lib/shim/shimx64.efi"
+	install -D -m0644 "${srcdir}/${__pkgname}/shim"*.efi "${pkgdir}/usr/lib/shim/shimx64.efi"
 	install -D -m0644 "${srcdir}/${__pkgname}/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi.signed"
 	install -D -m0644 "${srcdir}/${__pkgname}/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi.signed"
 	
