@@ -1,18 +1,17 @@
 pkgbase = checkstyle
 	pkgdesc = A tool to help programmers write Java code that adheres to a coding standard
-	pkgver = 7.1.1
+	pkgver = 7.1.2
 	pkgrel = 1
-	url = http://checkstyle.sourceforge.net
-	arch = i686
-	arch = x86_64
+	url = https://github.com/checkstyle/checkstyle
+	arch = any
 	license = LGPL2.1
 	makedepends = maven
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
-	source = http://checkstyle.sourceforge.net/archive/checkstyle-7.1.1.tar.gz
+	source = https://github.com/checkstyle/checkstyle/archive/checkstyle-7.1.2.tar.gz
 	source = checkstyle
-	sha256sums = bff636d85abd5d3d17d99a9bbc2adacdf8ff9afe484a86b73e1d759053763a26
-	sha256sums = 6ac8fd25eb47e096c9e709dbe92cefbd85f0639433874e9b67abfd17beb31daf
+	sha256sums = 12fc9ff42ed74fc69af67e9a663a1baa455df16030648d83af67b4553ceee25b
+	sha256sums = fd16398cd50d9e066c0fcd496c50132ba054706a2bc2e8260f1111f78324edc7
 
 pkgname = checkstyle
 
