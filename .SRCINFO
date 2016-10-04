@@ -1,4 +1,4 @@
-pkgbase = linux-bcache
+pkgbase = linux-bcache-git
 	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/alyptik/linux-bcache-git
@@ -24,8 +24,8 @@ pkgbase = linux-bcache
 	sha256sums = 0e22f8e6086b91b3b5f7d59375879431332f2f3d187d6124d82f6837b4ac3894
 	sha256sums = 652ca340be5ea4fb36c0f69c457448ffcce96be0e32b48f9bf7ea5a77b3160c3
 
-pkgname = linux-bcache
-	pkgdesc = The Linux-bcache kernel and modules
+pkgname = linux-bcache-git
+	pkgdesc = The Linux-bcache-git kernel and modules
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -33,11 +33,11 @@ pkgname = linux-bcache
 	depends = mkinitcpio>=0.7
 	depends = xf86-input-libinput
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-bcache.preset
+	backup = etc/mkinitcpio.d/linux-bcache-git.preset
 
-pkgname = linux-bcache-headers
-	pkgdesc = Header files and scripts for building modules for Linux-bcache kernel
+pkgname = linux-bcache-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux-bcache-git kernel
 
-pkgname = linux-bcache-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcache kernel
+pkgname = linux-bcache-git-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcache-git kernel
 

@@ -1,7 +1,7 @@
 # Maintainer:  Joey Pabalinas <alyptik@protonmail.com>
 # Contributor:  Kent Overstreet <kent.overstreet@gmail.com>
 
-pkgbase=linux-bcache
+pkgbase=linux-bcache-git
 _srcname=linux-4.7.0
 pkgver=4.7.0
 pkgrel=1
