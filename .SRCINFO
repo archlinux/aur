@@ -1,0 +1,16 @@
+pkgbase = python2-v4l2capture
+	pkgdesc = Capture video with video4linux2
+	pkgver = 12.0.0
+	pkgrel = 1
+	url = https://launchpad.net/python-v4l2-capture
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	depends = v4l-utils
+	source = https://pypi.python.org/packages/59/33/dbf42b3ce4857923c496c5338df1acd388982977ddfbcda02dcb949cfcfb/v4l2capture-12.tar.gz
+	md5sums = 0f6240665573698cda01f17d8194f732
+
+pkgname = python2-v4l2capture
+
