@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+# region header
+# Copyright Torben Sickert (info["~at~"]torben.website) 16.12.2012
+
+# License
+# -------
+
+# This library written by Torben Sickert stand under a creative commons naming
+# 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
+
+# Dependencies:
+
+# - bash (or any bash like shell)
+# - date - Print or set the system date and time.
+# - msmtp - An SMTP client.
+# - grep - Print lines matching a pattern.
+# - sleep - Delay for a specified amount of time.
 
 # Watches a list of urls and sends mails to configured email addresses if one
 # doesn't fit the expected status code.
@@ -25,21 +42,13 @@
 # password       ACCOUNT_PASSWORD
 #
 # account        default : gmail
-
-# Needed for the LSBInitScripts specification.
-### BEGIN INIT INFO
-# Provides:          isWebServerReachableWatcher
-# Required-Start:
-# Required-Stop:
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: see above
-# Description:       see above
-### END INIT INFO
-
-declare -A urls_to_check=(
-    ['URL1']='200 RECIPIENT_E_MAIL_ADDRESS' \
-    ['URL2']='200 RECIPIENT_E_MAIL_ADDRESS ANOTHER_RECIPIENT_E_MAIL_ADDRESS')
+# endregion
+# region default options
+# Example:
+# declare -A urls_to_check=(
+#     ['URL1']='200 RECIPIENT_E_MAIL_ADDRESS' \
+#     ['URL2']='200 RECIPIENT_E_MAIL_ADDRESS ANOTHER_RECIPIENT_E_MAIL_ADDRESS')
+declare -A urls_to_check=()
 # Wait for 5 minutes (60 * 5 = 300)
 delay_between_two_consequtive_requests_in_seconds='300'
 date_time_format='%T:%N at %d.%m.%Y'
@@ -47,7 +56,13 @@ sender='ACCOUNT_E_MAIL_ADDRESS'
 replier="$sender"
 verbose=false
 name='NODE_NAME'
-
+# endregion
+# region load options if present
+if [ -f /etc/reachableWatcher ]; then
+    source /etc/reachableWatcher
+fi
+# endregion
+# region controller
 while true; do
     for url_to_check in "${!urls_to_check[@]}"; do
         expected_status_code="$(echo "${urls_to_check[$url_to_check]}" | grep \
@@ -78,3 +93,8 @@ EOF
     $verbose && echo "Wait for $delay_between_two_consequtive_requests_in_seconds seconds until next check."
     sleep "$delay_between_two_consequtive_requests_in_seconds"
 done
+# endregion
+# region vim modline
+# vim: set tabstop=4 shiftwidth=4 expandtab:
+# vim: foldmethod=marker foldmarker=region,endregion:
+# endregion
