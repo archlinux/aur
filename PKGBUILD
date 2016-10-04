@@ -3,7 +3,7 @@
 # Contributor: Behem0th <grantipak@gmail.com>
 _pkgbasename=libvdpau-va-gl
 pkgname=lib32-libvdpau-va-gl
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='VDPAU driver with OpenGL/VAAPI backend'
 arch=('x86_64')
@@ -27,5 +27,5 @@ build() {
 package() {
   make -C $_pkgbasename-$pkgver DESTDIR="$pkgdir" install
   #Yes, an ugly hack!
-  mv $pkgdir/usr/lib $pkgdir/usr/lib32 
+  mv $pkgdir/usr/lib $pkgdir/usr/lib32
 }
