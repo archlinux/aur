@@ -1,0 +1,14 @@
+diff --git a/Sources/CommonObjects.h b/Sources/CommonObjects.h
+index 7cc69f1..c121d05 100644
+--- a/Sources/CommonObjects.h
++++ b/Sources/CommonObjects.h
+@@ -14,6 +14,9 @@
+ #ifdef Q_OS_MAC
+ # define AB_INI "AwesomeBump.ini"
+ # define AB_LOG "AwesomeBump.log"
++#elif defined(Q_OS_LINUX)
++# define AB_INI "config.ini"
++# define AB_LOG "/tmp/awesomebump-log.txt"
+ #else
+ # define AB_INI "config.ini"
+ # define AB_LOG "log.txt"
