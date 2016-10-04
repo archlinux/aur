@@ -4,7 +4,7 @@ pkgname=sabre-zarafa
 groups=('zarafa'
 	'kopano')
 pkgver=0.23
-pkgrel=125
+pkgrel=126
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
