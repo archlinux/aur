@@ -3,7 +3,7 @@
 pkgname=mystudio
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Rizzoli Education - Il sistema digitale per studenti e insegnati"
+pkgdesc="Rizzoli Education - Il sistema digitale per studenti e insegnati."
 arch=('i686' 'x86_64')
 url="http://mystudio.rizzolieducation.it/"
 license=('unknown')

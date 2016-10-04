@@ -1,5 +1,5 @@
 pkgbase = mystudio
-	pkgdesc = Rizzoli Education - Il sistema digitale per studenti e insegnati
+	pkgdesc = Rizzoli Education - Il sistema digitale per studenti e insegnati.
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://mystudio.rizzolieducation.it/
