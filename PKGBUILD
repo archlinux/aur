@@ -2,30 +2,26 @@
 
 _pkgname=ratox
 pkgname=$_pkgname-git
-pkgver=0.2.1.r0.g1a84f07
-pkgrel=3
+pkgver=0.0.0.390
+pkgrel=1
 pkgdesc="FIFO based tox client"
 arch=('i686' 'x86_64')
-url="http://ratox.2f30.org"
+url="https://github.com/pranomostro/ratox"
 license=('custom')
 depends=('glibc' 'toxcore')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://git.2f30.org/ratox/"
-        "config.h")
-md5sums=('SKIP'
-         'SKIP')
+source=("$_pkgname::git+https://github.com/pranomostro/ratox.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  echo "0.0.0.$(git rev-list --count HEAD)"
 }
 
 prepare() {
   cd "$_pkgname"
-  # uncomment, if you want to use your own config.h
-  #cp "$srcdir/config.h" .
 }
 
 build() {
