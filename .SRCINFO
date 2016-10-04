@@ -5,9 +5,9 @@ pkgbase = ts-polkitagent
 	url = https://github.com/vicr123/ts-polkitagent
 	arch = x86_64
 	license = GPL3
-	makedepends = qtchooser
 	makedepends = git
 	depends = polkit-qt5
+	depends = qt5-base
 	source = ts-polkitagent-1.2::git+https://github.com/vicr123/ts-polkitagent#branch=master
 	md5sums = SKIP
 

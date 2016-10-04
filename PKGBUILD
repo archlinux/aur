@@ -7,8 +7,8 @@ pkgdesc="Polkit Agent for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/ts-polkitagent"
 license=('GPL3')
-depends=('polkit-qt5')
-makedepends=('qtchooser' 'git')
+depends=('polkit-qt5' 'qt5-base')
+makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/ts-polkitagent#branch=master')
 md5sums=('SKIP')
 
