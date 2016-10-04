@@ -5,7 +5,7 @@
 
 pkgname=electricsheep-svn
 pkgver=r134
-pkgrel=3
+pkgrel=4
 pkgdesc="A screensaver that realize the collective dream of sleeping computers from all over the Internet"
 url="http://www.electricsheep.org/"
 arch=('i686' 'x86_64')
@@ -16,11 +16,15 @@ makedepends=('subversion')
 provides=('electricsheep-svn')
 
 source=("$pkgname::svn+https://github.com/scottdraves/electricsheep/"
-        'electricsheep-160.patch')
+        'electricsheep-160.patch'
+        'libav.patch'
+        'luaver.patch')
         
 
 sha1sums=('SKIP'
-          '02c507eff0fccd13071c157bda44231294e17e56')
+          '02c507eff0fccd13071c157bda44231294e17e56'
+          'f4fcb0d1f7238305638235f69ea29c9ac895824b'
+          'a92928fef66f2d612546ebbbd4fae353f4f85565')
 
 pkgver() {
     cd "$pkgname"
@@ -31,8 +35,10 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}/trunk"
 
-    #TODO: Apply patch only if it hasn't been applied already
+    #TODO: Apply patches only if they haven't been applied already
     patch --forward -p0 < "${srcdir}/electricsheep-160.patch"
+    patch --forward -p0 < "${srcdir}/libav.patch"
+    patch --forward -p0 < "${srcdir}/luaver.patch"
 
     cd "client_generic"
     ./autogen.sh

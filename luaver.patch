@@ -1,0 +1,11 @@
+--- client_generic/configure.ac	2016-10-04 06:05:56.577882696 -0400
++++ ../../configure.ac	2016-10-04 14:40:19.148741667 -0400
+@@ -164,7 +164,7 @@
+ 
+ dnl Check for lua
+ 
+-PKG_CHECK_MODULES([LUA], [lua5.1],, 
++PKG_CHECK_MODULES([LUA], [lua51],, 
+ 	[PKG_CHECK_MODULES([LUA], [lua >= 5.1])
+ ])
+ 

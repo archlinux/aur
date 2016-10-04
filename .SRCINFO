@@ -1,7 +1,7 @@
 pkgbase = electricsheep-svn
 	pkgdesc = A screensaver that realize the collective dream of sleeping computers from all over the Internet
 	pkgver = r134
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.electricsheep.org/
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,12 @@ pkgbase = electricsheep-svn
 	provides = electricsheep-svn
 	source = electricsheep-svn::svn+https://github.com/scottdraves/electricsheep/
 	source = electricsheep-160.patch
+	source = libav.patch
+	source = luaver.patch
 	sha1sums = SKIP
 	sha1sums = 02c507eff0fccd13071c157bda44231294e17e56
+	sha1sums = f4fcb0d1f7238305638235f69ea29c9ac895824b
+	sha1sums = a92928fef66f2d612546ebbbd4fae353f4f85565
 
 pkgname = electricsheep-svn
 

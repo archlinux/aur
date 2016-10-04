@@ -1,0 +1,12 @@
+--- client_generic/ContentDecoder/ContentDecoder.h	2016-10-02 15:51:59.070513556 -0400
++++ ../../ContentDecoder.h	2016-10-02 15:53:23.072223197 -0400
+@@ -35,6 +35,9 @@
+ 	#include "swscale.h"
+ #endif
+ }
++#define PixelFormat AVPixelFormat
++#define PIX_FMT_RGB24 AV_PIX_FMT_RGB24
++#define PIX_FMT_BGR32 AV_PIX_FMT_BGR32
+ 
+ #include	"base.h"
+ #include	<string>
