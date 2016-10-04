@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=reachable-watcher
-pkgver=1.0.5
-pkgrel=11
+pkgver=1.0.6
+pkgrel=12
 pkgdesc='Check status codes of web servers and sends notification e-mails'
 arch=('any')
 url='http://torben.website/reachableWatcher'
