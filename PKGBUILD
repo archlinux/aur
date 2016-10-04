@@ -11,8 +11,8 @@ pkgname=perl-${_cpan_name,,}
 pkgdesc=$_cpan_desc
 pkgver=$_cpan_version
 md5sums=($_cpan_md5)
-depends=('perl-authen-radius')
-makedepends=('')
+depends=('perl-authen-simple' 'perl-authen-radius')
+makedepends=('perl-test-pod' 'perl-test-pod-coverage')
 checkdepends=()
 
 _cpan_path=${_cpan_author:0:1}/${_cpan_author:0:2}/${_cpan_author}
@@ -26,7 +26,7 @@ build() {
 	cd $srcdir/${_cpan_name}-$pkgver
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make
-	make test
+	TEST_POD=true make test
 }
 
 package() {
