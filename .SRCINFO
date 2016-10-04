@@ -2,7 +2,7 @@
 # Wed Apr  1 16:32:36 UTC 2015
 pkgbase = jitsi-nightly
 	pkgdesc = An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)
-	pkgver = 2.9.20160617
+	pkgver = 2.9.20161004
 	pkgrel = 1
 	url = http://jitsi.org
 	install = jitsi-nightly.install
@@ -25,7 +25,7 @@ pkgbase = jitsi-nightly
 	options = zipman
 	options = !libtool
 	options = docs
-	source = http://download.jitsi.org/jitsi/nightly/src/jitsi-src-2.9-nightly.latest.zip
+	source = git+https://github.com/jitsi/jitsi.git
 	source = jitsi.desktop
 	source = jitsi.sh
 	md5sums = SKIP

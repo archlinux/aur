@@ -7,7 +7,7 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.9
 # pkgver is determined automatically
-pkgver=2.9.20160617
+pkgver=2.9.20161004
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=(
 )
 options=(!strip !emptydirs zipman !libtool docs)
 source=(
-  http://download.jitsi.org/jitsi/nightly/src/jitsi-src-${_pkgvermajor}-nightly.latest.zip
+  git+https://github.com/jitsi/jitsi.git
   ${_pkgname}.desktop
   ${_pkgname}.sh
 )
