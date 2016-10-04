@@ -3,7 +3,7 @@
 pkgname=booktab
 pkgver=1.7
 pkgrel=1
-pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva"
+pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="http://mystudio.rizzolieducation.it/"
 license=('unknown')
