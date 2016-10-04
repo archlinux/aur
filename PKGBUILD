@@ -4,7 +4,7 @@
 
 pkgname=joxi
 pkgver=3.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use screenshot sharing application (Russian)"
 arch=('i686' 'x86_64')
 url="http://joxi.net"
@@ -14,7 +14,7 @@ depends=('qt5-declarative' 'qt5-x11extras' 'qt5-base' 'qt5-script' 'qt5-xmlpatte
 
 if [ "${CARCH}" = 'x86_64' ]; then
     ARCH='amd64'
-    md5sums=("5f486dc525c3031a46416194cb1845be" "fa1d9cf5344c0e586d1cf0784713195b" "35fc3adf057a6c83ab216fe76dbe5b9a")
+    md5sums=("c461bee02f6e739c6881ac2ed28f04fa" "fa1d9cf5344c0e586d1cf0784713195b" "35fc3adf057a6c83ab216fe76dbe5b9a")
 elif [ "${CARCH}" = 'i686' ]; then
     ARCH='i386'
     md5sums=("48327f33e6b055c26d25ba40717e291b" "fa1d9cf5344c0e586d1cf0784713195b" "35fc3adf057a6c83ab216fe76dbe5b9a")
