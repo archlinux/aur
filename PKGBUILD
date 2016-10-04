@@ -28,8 +28,7 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   # Clone kernel bcache-dev kernel repository.
-  #git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${_srcname}"
-  git clone "https://github.com/8l/Bcachefs" "${srcdir}/${_srcname}"
+  git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${_srcname}"
 
   cd "${srcdir}/${_srcname}"
 
