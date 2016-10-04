@@ -58,7 +58,7 @@ makedepends=(
 )
 qt_version=5.6.0
 source=(
-    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#commit=9fdd75113f3b9e0265163938a032ebf94983a26d"
+    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtwayland-opensource-src-$qt_version.tar.xz"
