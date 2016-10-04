@@ -1,8 +1,8 @@
-# Maintainer: rafaelff <rafaelff@gnome.org>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 _name=gnome-2048
 pkgname=$_name-git
-pkgver=3.20.1.r178.38bd300
+pkgver=3.22.0.r205.41f89c7
 pkgrel=1
 pkgdesc="Obtain the 2048 tile"
 arch=('i686' 'x86_64')
