@@ -1,7 +1,7 @@
 pkgbase = timedoctorpro
 	pkgdesc = App to track work time from timedoctor.com
-	pkgver = 1.4.75
-	pkgrel = 2
+	pkgver = 1.4.75.13
+	pkgrel = 1
 	url = https://www.timedoctor.com/download.html
 	arch = x86_64
 	license = proprietary
@@ -10,8 +10,8 @@ pkgbase = timedoctorpro
 	depends = zlib
 	depends = qt4
 	depends = opencv2
-	source = https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_1.4.75-12ubuntu16.04_amd64.deb
-	md5sums = 4b9273274ed90aff40fbcde13cf4ce6d
+	source = https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_1.4.75-13ubuntu16.04_amd64.deb
+	md5sums = 5529730788fd82ecf549eacd92006a1a
 
 pkgname = timedoctorpro
 
