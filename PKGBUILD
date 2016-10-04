@@ -1,5 +1,5 @@
 pkgname=osvr-vive-libre-git
-pkgver=0.2.110.f5282e8
+pkgver=0.2.127.68fbc21
 pkgrel=1
 pkgdesc="Free Software HTC Vive Driver for OSVR"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/lubosz/OSVR-Vive-Libre"
 license=('LGPLv3+')
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'zlib' 'hidapi' 'jsoncpp' 'opencv' 'eigen')
-source=("osvr-vive::git+https://github.com/lubosz/OSVR-Vive-Libre.git")
+source=("git+https://github.com/collabora/OSVR-Vive-Libre.git")
 md5sums=('SKIP')
 
 
@@ -23,22 +23,17 @@ pkgver() {
   echo $(subver MAJOR).$(subver MINOR).$revision.$hash
 }
 
-prepare() {
-  cd osvr-vive
-  mkdir -p "$srcdir/osvr-vive-build"
-}
-
 build() {
-  cd osvr-vive-build
+  cd OSVR-Vive-Libre
   cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
-    ../osvr-vive
+    .
   make
 }
 
 package() {
-  cd osvr-vive-build
+  cd OSVR-Vive-Libre
   make DESTDIR="$pkgdir/" install
 }
 
