@@ -1,10 +1,17 @@
 pkgbase = cylon
-	pkgdesc = Maintenance , backups and system checks in a menu driven Bash script
-	pkgver = 2.0
-	pkgrel = 8
+	pkgdesc = Maintenance , backup and system checks in a menu driven Bash script
+	pkgver = 2.1
+	pkgrel = 9
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
+	optdepends = cower: AUR package for AUR work
+	optdepends = gdrive: AUR package for google drive backup
+	optdepends = lostfiles: AUR package for finding lost files
+	optdepends = rmlint: Finds lint and other unwanted
+	optdepends = rkhunter: finds root kits malware
+	optdepends = clamav: used for finding malware
+	optdepends = bleachbit: used for system clean
 	source = git://github.com/gavinlyonsrepo/cylon.git
 	md5sums = SKIP
 
