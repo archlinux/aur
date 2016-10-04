@@ -19,7 +19,7 @@ groups=('zarafa'
 	'zarafa-webapp-plugins')
 pkgver=2.2.0.414
 _pkgrel=2.2.0
-pkgrel=29
+pkgrel=30
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
