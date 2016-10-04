@@ -1,0 +1,17 @@
+pkgbase = libsixel
+	pkgdesc = libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs
+	pkgver = v1.7.2
+	pkgrel = 1
+	url = https://saitoha.github.io/libsixel/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = python
+	depends = curl
+	source = https://github.com/saitoha/libsixel/archive/v1.7.2.tar.gz
+	sha1sums = e6f7a745f5c7675f8abaaae3a28b8780567de49a
+
+pkgname = libsixel
+
