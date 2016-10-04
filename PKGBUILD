@@ -6,7 +6,7 @@ pkgdesc="A tabletop-inspired RPG you can play solo or co-op, at any pace."
 arch=(x86_64)
 url="https://www.playconclave.com/"
 license=('custom: "commercial"')
-depends=('gtkglext' 'libgcrypt15' 'libudev.so.0')
+depends=('gtkglext' 'libgcrypt15' 'libudev0-shim')
 source=(http://s3.amazonaws.com/conclave/downloads/linux/${pkgname}-${pkgver}.tar.gz conclave.desktop conclave.png)
 md5sums=('b0eabf7c1e00166a5bddae3c478116ee'
          '9ca98eba646a9441869615fac80a898c'
