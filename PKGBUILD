@@ -2,7 +2,7 @@
 
 pkgname=xflux-gui-git
 pkgver=0b562044
-pkgrel=1
+pkgrel=2
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
@@ -11,13 +11,13 @@ provides=(xflux-gui)
 conflicts=(xflux-gui)
 depends=(
 hicolor-icon-theme
-libappindicator-sharp
 python2-pexpect
 python2-gconf
 xflux
+libindicator-gtk2
 )
 makedepends=(git)
-install='xflux-gui.install'
+# install='xflux-gui.install'
 source=('git://github.com/xflux-gui/xflux-gui.git')
 _gitname='xflux-gui'
 md5sums=(SKIP)
