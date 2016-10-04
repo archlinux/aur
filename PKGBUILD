@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.7-gnu
-_pkgver=4.7.4-gnu
+_pkgver=4.7.6-gnu
 _grsecver=3.1
-_timestamp=201609152234
+_timestamp=201609301918
 _knockpatchver=4.7_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -70,9 +70,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'd34e4ae8773c7b9bbbebd27aab0cb11de18141956d3647ad7048c86ac23624f2'
+            'fb98fce9aa7f53a052dac58fb5192c855c6bffc0d1d75a2e5681d5b690d6aa91'
             'SKIP'
-            'cfb0b64a49565e9f54a7e561c53151f1e60f48880ba26087e4e23905827a1bd2'
+            'a9256a7e276275f4528771579a7008a7890b9e1ba33d0cc27588e964b6dc1fcb'
             'SKIP'
             'ae7ea068d703220716591ed3d865238b7ac140181b83d7eb466cc9c140933113'
             'SKIP'
@@ -89,7 +89,7 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '54f1c14015ab933420265d1818f3e7d1cfb8dd76ca7e0aa6bfdbc10311370f19'
+            '387892636b83ef1cffff34e795d521273401c459386b168aeebcac8fe923aa99'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
