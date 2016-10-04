@@ -22,16 +22,29 @@
 # - test - Check file types and compare values.
 # - msmtp - An SMTP client.
 
-# Needed for the LSBInitScripts specification.
-### BEGIN INIT INFO
-# Provides:          generic
-# Required-Start:
-# Required-Stop:
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: see above
-# Description:       see above
-### END INIT INFO
+# You have to install program "msmtp" to get this script working. A proper user
+# specific "~/.msmtprc" or global "/etc/msmtprc" have to be present on wating
+# distribution. A sample configuration using simple gmail account to send
+# mails (Replace "ACCOUNT_NAME", "ACCOUNT_E_MAIL_ADDRESS",
+# "ACCOUNT_PASSWORD", "RECIPIENT_E_MAIL_ADDRESS", "URL1" and remove or edit
+# "URL2", "NODE_NAME" and "ANOTHER_RECIPIENT_E_MAIL_ADDRESS"):
+
+# defaults
+# auth           on
+# tls            on
+# tls_starttls   on
+# tls_trust_file /etc/ssl/certs/ca-certificates.crt
+# logfile        /tmp/msmtpLog
+
+# account        gmail
+# host           smtp.gmail.com
+# port           587
+# from           ACCOUNT_E_MAIL_ADDRESS
+# user           ACCOUNT_NAME@gmail.com
+# password       ACCOUNT_PASSWORD
+
+# account        default : gmail
+
 # endregion
 # region default options
 sourcePath='/tmp/source/'
