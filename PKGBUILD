@@ -2,7 +2,7 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=1.7.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
@@ -26,7 +26,7 @@ md5sums=('23dbf0e7ccf06d57f9beaeb297aa4c41'
 
 package() {
     install -d "$pkgdir"/opt
-    cp -R "$srcdir"/GitKraken "$pkgdir"/opt/gitkraken
+    cp -R "$srcdir"/gitkraken "$pkgdir"/opt/gitkraken
 
     find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
