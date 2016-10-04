@@ -4,8 +4,8 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs
-pkgver=20160902
-pkgrel=4
+pkgver=20161003
+pkgrel=1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
