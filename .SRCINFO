@@ -1,0 +1,14 @@
+pkgbase = perl-www-mechanize-cgi
+	pkgdesc = Use WWW::Mechanize with CGI applications.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://search.cpan.org/~mramberg/WWW-Mechanize-CGI-0.3
+	arch = any
+	depends = perl-www-mechanize
+	depends = perl-http-request-ascgi
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/WWW-Mechanize-CGI-0.3.tar.gz
+	md5sums = 67576d3b49654bce6657f0b3e5eb78d3
+
+pkgname = perl-www-mechanize-cgi
+
