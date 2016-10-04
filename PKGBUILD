@@ -76,6 +76,7 @@ optdepends=('pepper-flash: PPAPI Flash Player'
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
             )
+_vaapi_patch_sources=chromium-browser_55.0.2873.0-0ubuntu1~ppa3~16.10.1.debian.tar.xz
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
@@ -87,7 +88,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-r7.patch'
         # Misc Patches
-        'https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/chromium-browser_55.0.2873.0-0ubuntu1~ppa3~16.10.1.debian.tar.xz'
+        "https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/${_vaapi_patch_sources}"
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
@@ -112,7 +113,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             )
 options=('!strip')
 install=chromium-dev.install
-noextract=('chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz')
+noextract=("${_vaapi_patch_sources}")
 
 ################################################
 ## -- Don't touch anything below this line -- ##
@@ -394,7 +395,7 @@ prepare() {
 
   # Misc Patches:
   if [ "${_patch_vaapi}" = "1" ]; then
-    (cd "${srcdir}"; bsdtar -xf "chromium-browser_55.0.2868.3-0ubuntu1~ppa2~16.10.1.debian.tar.xz" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
+    (cd "${srcdir}"; bsdtar -xf "${_vaapi_patch_sources}" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
     patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
   elif [ "${_patch_vaapi}" = "0" ]; then
     # Fix paths.
