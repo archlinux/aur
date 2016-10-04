@@ -16,6 +16,7 @@ optdepends=(
   'rkhunter: finds root kits malware'
   'clamav: used for finding malware'
   'bleachbit: used for system clean'
+  'gnu-netcat: used for checking network'
 )
 source=("git://github.com/gavinlyonsrepo/${pkgname%-git}.git")
 md5sums=('SKIP')

@@ -12,6 +12,7 @@ pkgbase = cylon
 	optdepends = rkhunter: finds root kits malware
 	optdepends = clamav: used for finding malware
 	optdepends = bleachbit: used for system clean
+	optdepends = gnu-netcat: used for checking network
 	source = git://github.com/gavinlyonsrepo/cylon.git
 	md5sums = SKIP
 
