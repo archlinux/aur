@@ -1,13 +1,13 @@
 pkgbase = conclave
 	pkgdesc = A tabletop-inspired RPG you can play solo or co-op, at any pace.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.playconclave.com/
 	arch = x86_64
 	license = custom: "commercial"
 	depends = gtkglext
 	depends = libgcrypt15
-	depends = libudev.so.0
+	depends = libudev0-shim
 	source = http://s3.amazonaws.com/conclave/downloads/linux/conclave-1.0.0.tar.gz
 	source = conclave.desktop
 	source = conclave.png

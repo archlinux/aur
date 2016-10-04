@@ -1,7 +1,7 @@
 # Maintainer: Chad Bergeron <chad@chadbergeron.com>
 pkgname=conclave
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tabletop-inspired RPG you can play solo or co-op, at any pace."
 arch=(x86_64)
 url="https://www.playconclave.com/"
