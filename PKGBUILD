@@ -2,25 +2,24 @@
 # Submitter : Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=obconf-qt
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Openbox configuration tool. Qt port of ObConf"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "openbox" "qt5-x11extras")
-makedepends=("cmake" "qt5-tools")
+makedepends=("cmake" "qt5-tools" "liblxqt" "git")
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=("https://github.com/lxde/obconf-qt/archive/${pkgver}.tar.gz")
-sha256sums=('69d4629cad819c11446ce9971bf9cd262d2066dab16052f16ca5e859525817d5')
+sha256sums=('5cff74c0a4859b426302092de48c2c9e982cea6f3e00cdb2fa7a37ee6a306fea')
 
 build() {
 	mkdir -p build
 	cd build
 	cmake "$srcdir/$pkgname-$pkgver" \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DUSE_QT5=true
+            -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
