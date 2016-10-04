@@ -3,11 +3,11 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('GPL2')
-url="https://github.com/jacobsalmela/pi-hole"
+url="https://github.com/pi-hole/pi-hole"
 depends=('dnsmasq' 'openresolv')
 conflicts=('pi-hole-server')
 install=$pkgname.install
@@ -20,16 +20,18 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/V$pkgver.tar.gz
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
 	whitelist.txt
-	blacklist.txt)
+	blacklist.txt
+	mimic_setupVars.conf.sh)
 
 md5sums=('479bffbd8a6a61417cbe1201f8c02c78'
          '334a055a32b5479141baea8011a9f928'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
-         '09a4bb7aef7bbe1a1f4c6c85c1fd48b4'
+         '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
          'd41d8cd98f00b204e9800998ecf8427e'
-         'd41d8cd98f00b204e9800998ecf8427e')
+         'd41d8cd98f00b204e9800998ecf8427e'
+         '4691fb24119998fb4fd1b2c1bdad462f')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -129,15 +131,6 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
   sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -i "s|/opt/pihole|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 12" && return 1 ; fi
-
-# -----------------
-
-  # gravity call paths changing
-  sed -i "s|/opt/pihole/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: gravity call paths changing" && return 1 ; fi
-
 # -----------------
 
   # adlists.default is already there
@@ -154,11 +147,15 @@ prepare() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/usr/bin/gravity.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/pihole "$pkgdir"/usr/bin/pihole || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/usr/bin/blacklist.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/usr/bin/whitelist.sh || return 1
 
+  install -dm755 "$pkgdir"/opt/pihole
+  install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/opt/pihole/gravity.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/opt/pihole/blacklist.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/opt/pihole/whitelist.sh || return 1
+
+  install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh || return 1
+  
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
   install -Dm644 "$_pkgname-gravity.service" $pkgdir/usr/lib/systemd/system/$_pkgname-gravity.service
