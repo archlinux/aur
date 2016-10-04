@@ -1,0 +1,18 @@
+pkgbase = quark-git
+	pkgdesc = An extremly small and simple http get-only web server. It only serves static pages on a single host.
+	pkgver = r100.29d53f6
+	pkgrel = 1
+	url = http://tools.suckless.org/quark
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	depends = glibc
+	provides = quark
+	conflicts = quark
+	source = quark-git::git+http://git.suckless.org/quark
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = quark-git
+
