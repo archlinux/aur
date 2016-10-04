@@ -1,0 +1,19 @@
+pkgbase = skia-git
+	pkgdesc = Chromiums high-performance rendering library (static)
+	pkgver = r24473.1818701
+	pkgrel = 1
+	url = https://github.com/google/skia
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = ninja
+	makedepends = depot-tools-git
+	makedepends = python2
+	makedepends = gcc
+	makedepends = gn-git
+	depends = freeglut
+	depends = mesa
+	depends = libgl
+
+pkgname = skia-git
+
