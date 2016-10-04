@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs
 pkgver=20160902
-pkgrel=3
+pkgrel=4
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -25,7 +25,7 @@ source=('http://foo2zjs.rkkda.com/foo2zjs.tar.gz'
         'make-ppd-20161003-2.patch'
         'compile-flags-20161004-1.patch')
 
-sha256sums=('0e04ecf67c38538dd463a1b635d43339dbdbe018af96fe6d2828668852d5c6e7'
+sha256sums=('d38c915894443cbc406fd5a1febb5eb8864fa5ddc781f00ae9b4b9e69d5d3cba'
             '6fe2abe505305c627e35123ffdf80279b0e6e065b34a1967674fe56f09380f6a'
             '2a104b8f93d8cb4bd0a10156043f9cf47eddaa728f6317d235bc6d9843312f05'
             '5fe072326173d5008741ffed2e122053f821eabc0d3369ef64a2e346e4e327d1'
