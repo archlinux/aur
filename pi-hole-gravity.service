@@ -3,7 +3,7 @@ Description=Ad-serving domains collector
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/gravity.sh
+ExecStart=/usr/bin/pihole updateGravity
 Nice=19
 IOSchedulingClass=best-effort
 IOSchedulingPriority=7
