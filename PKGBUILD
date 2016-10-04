@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami-utils
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Intel VA-API Media Applications and Scripts for libyami"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('Apache')
 depends=('libbsd' 'libyami' 'ffmpeg')
 options=('!emptydirs')
 changelog=
-#source=($url/archive/$pkgver.tar.gz -> $pkgname-$pkgver.tar.gz)
+#source=($url/archive/libyami-$pkgver.tar.gz -> $pkgname-$pkgver.tar.gz)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('45de376a3f744f01c720ab0f0f33efde6dee75fcdfb8c1c1bdd434673ac1c565')
+sha256sums=('6795fe47ccedec369f09c96380303f0e69092f0f9baba3a73415d029ec819f2d')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
