@@ -1,0 +1,16 @@
+pkgbase = emsdk
+	pkgdesc = The Emscripten SDK
+	pkgver = 1.35
+	pkgrel = 1
+	url = https://kripken.github.io/emscripten-site/
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = cmake
+	source = https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+	source = emsdk.sh
+	sha256sums = 39114f25e1b3f4d1e15dc8d8f59227c30be855e79cbff91fbf2e3f31f7bb2cd1
+	sha256sums = 88a64d125b390a0b00ab79abaa5ff7a73dedc734701ea3ccca265598f09e9d60
+
+pkgname = emsdk
+
