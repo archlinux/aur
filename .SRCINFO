@@ -1,6 +1,6 @@
 pkgbase = zplug
 	pkgdesc = A next-generation plugin manager for zsh
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://zplug.sh
 	install = zplug.install
@@ -8,8 +8,8 @@ pkgbase = zplug
 	license = MIT
 	depends = git
 	depends = zsh
-	source = https://github.com/zplug/zplug/archive/2.2.1.tar.gz
-	sha1sums = dc7c3798439aa72cbca4c45a5c72487939edb3e3
+	source = https://github.com/zplug/zplug/archive/2.3.0.tar.gz
+	sha1sums = d386a1632c91a5fdde0641818ecb13891c398553
 
 pkgname = zplug
 
