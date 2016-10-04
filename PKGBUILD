@@ -1,6 +1,6 @@
 # Maintainer: nyorain <nyorain at gmail dot com>
 pkgname=nytl-git 
-pkgver=v0.3.alpha
+pkgver=v0.3.alpha.r1.832e271
 pkgrel=1
 pkgdesc="C++17 header-only utility library"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/nyorain/nytl"
 license=('Boost')
 groups=()
 depends=()
-makedepends=('git') 
+makedepends=('git' 'cmake' 'gcc') 
 provides=()
 conflicts=()
 replaces=()
