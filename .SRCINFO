@@ -1,0 +1,17 @@
+pkgbase = sdump-git
+	pkgdesc = sixel variant of idump with a w3mimgdisplay-compatible program
+	pkgver = 20161004.c5fb55b
+	pkgrel = 1
+	url = https://github.com/uobikiemukot/sdump/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libsixel
+	optdepends = wget: to use surl
+	source = git+https://github.com/uobikiemukot/sdump
+	sha1sums = SKIP
+
+pkgname = sdump-git
+
