@@ -53,8 +53,8 @@ declare -A urls_to_check=()
 # Wait for 5 minutes (60 * 5 = 300)
 delay_between_two_consequtive_requests_in_seconds='300'
 date_time_format='%T:%N at %d.%m.%Y'
-sender='ACCOUNT_E_MAIL_ADDRESS'
-replier="$sender"
+sender_e_mail_address='ACCOUNT_E_MAIL_ADDRESS'
+replier_e_mail_address="$sender_e_mail_address"
 verbose=false
 name='NODE_NAME'
 # endregion
@@ -79,9 +79,9 @@ while true; do
             do
                 $verbose && echo "$message" >/dev/stderr
                 msmtp -t <<EOF
-From: $sender
+From: $sender_e_mail_address
 To: $e_mail_address
-Reply-To: $replier
+Reply-To: $replier_e_mail_address
 Date: $(date)
 Subject: $name registers: "$url_to_check" responses with status code $current_status_code!
 
