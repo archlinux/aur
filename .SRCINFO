@@ -1,0 +1,14 @@
+pkgbase = pulseaudio-bluetooth-a2dp-gdm-fix
+	pkgdesc = Unload bluetooth modules from gdm instance of pulseaudio. Fixes availability a2dp profile of bluetooth headset
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Talk:Bluetooth_headset#GDMs_pulseaudio_instance_captures_bluetooth_headset
+	arch = any
+	license = unknown
+	depends = gdm
+	depends = pulseaudio-bluetooth
+	source = default.pa
+	md5sums = b44e302eb9c156ba2f88d152b5598dbb
+
+pkgname = pulseaudio-bluetooth-a2dp-gdm-fix
+
