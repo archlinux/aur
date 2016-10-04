@@ -1,6 +1,6 @@
 pkgname=serviio
 pkgver=1.7
-pkgrel=0
+pkgrel=1
 pkgdesc="Free DLNA media server"
 arch=('any')
 url="http://www.serviio.org/"
