@@ -33,7 +33,7 @@ prepare() {
 	# download/sync skia
 	cd "$srcdir"
 	gclient config --unmanaged https://skia.googlesource.com/skia.git
-	# gclient sync
+	gclient sync
 
 	# make python2 default python
 	mkdir -p .pkgbuild-bin 
