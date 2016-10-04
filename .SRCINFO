@@ -1,0 +1,14 @@
+pkgbase = perl-test-www-mechanize-cgi
+	pkgdesc = Test CGI applications with Test::WWW::Mechanize
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://search.cpan.org/~mramberg/Test-WWW-Mechanize-CGI-0.1
+	arch = any
+	depends = perl-www-mechanize-cgi
+	depends = perl-test-www-mechanize
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MR/MRAMBERG/Test-WWW-Mechanize-CGI-0.1.tar.gz
+	md5sums = 55fea6cdaa85433060c3d55a4982272e
+
+pkgname = perl-test-www-mechanize-cgi
+
