@@ -1,13 +1,14 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theterminal
-pkgver=1.0
+pkgver=1.1
 pkgrel=0
 pkgdesc="Simple Terminal Emulator"
 arch=("x86_64")
 url="https://github.com/vicr123/theterminal"
 license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils' 'qtermwidget')
-makedepends=('qtchooser' 'git' 'clang')
+depends=('kwidgetsaddons' 'xdg-utils' 'qtermwidget' 
+'qt5-base')
+makedepends=('git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theterminal#branch=master')
 md5sums=('SKIP')
 

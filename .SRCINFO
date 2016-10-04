@@ -1,17 +1,17 @@
 pkgbase = theterminal
 	pkgdesc = Simple Terminal Emulator
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/vicr123/theterminal
 	arch = x86_64
 	license = GPL2
-	makedepends = qtchooser
 	makedepends = git
 	makedepends = clang
 	depends = kwidgetsaddons
 	depends = xdg-utils
 	depends = qtermwidget
-	source = theterminal-1.0::git+https://github.com/vicr123/theterminal#branch=master
+	depends = qt5-base
+	source = theterminal-1.1::git+https://github.com/vicr123/theterminal#branch=master
 	md5sums = SKIP
 
 pkgname = theterminal
