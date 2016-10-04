@@ -1,6 +1,6 @@
 pkgbase = backupninja-git
 	pkgdesc = A centralized way to configure and schedule many different backup utilities
-	pkgver = 1.0.1.r59.g41c3544
+	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://labs.riseup.net/code/projects/backupninja
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = backupninja-git
 	optdepends = mariadb-clients: mysql backups
 	optdepends = rsync: secure and reliable remote syncronisation tool
 	optdepends = duplicity: duplicity backups
-	backup = etc/backupninja/backupninja.conf
-	source = git+https://labs.riseup.net/code/backupninja.git
+	backup = etc/backupninja.conf
+	source = git+https://0xacab.org/riseuplabs/backupninja.git
 	md5sums = SKIP
 
 pkgname = backupninja-git

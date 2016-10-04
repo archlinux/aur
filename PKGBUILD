@@ -1,6 +1,7 @@
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
 _pkgname=backupninja
 pkgname=$_pkgname-git
-pkgver=1.0.1.r59.g41c3544
+pkgver=1.0.2
 pkgrel=2
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
@@ -14,7 +15,7 @@ optdepends=('rdiff-backup: rdiff backups'
             'mariadb-clients: mysql backups'
             'rsync: secure and reliable remote syncronisation tool'
             'duplicity: duplicity backups')
-source=('git+https://labs.riseup.net/code/backupninja.git')
+source=('git+https://0xacab.org/riseuplabs/backupninja.git')
 md5sums=('SKIP')
 backup=('etc/backupninja.conf')
 pkgver() {
