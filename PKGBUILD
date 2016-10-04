@@ -12,8 +12,8 @@ license=('Eclipse')
 depends=('java-runtime' 'gtk2')
 source_x86_64=("http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/TIBCOJaspersoftStudio-${pkgver}.final-linux-x86_64.tgz")
 source_i686=("http://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/TIBCOJaspersoftStudio-${pkgver}.final-linux-x86.tgz")
-md5sums_x86_64=('74256ad51f2e00d67398836287d4e5aa')
-md5sums_i686=('b61f5f05c2ce37f877fff9ecf49295cf')
+md5sums_x86_64=('707eb623c8a3202a6cd6a3d0528abc1e')
+md5sums_i686=('b275a509254604eb59f7cd22923c65f8')
 
 package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
