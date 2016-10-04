@@ -3,7 +3,7 @@
 pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
 _binname="Jaspersoft Studio"
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('i686' 'x86_64')
