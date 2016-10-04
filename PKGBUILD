@@ -1,6 +1,6 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=signing-party
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc."
 url="http://pgp-tools.alioth.debian.org/"
@@ -29,7 +29,7 @@ source=("http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-pa
         "series"
         "gpgwrap_makefile.patch")
 
-sha256sums=('ea208ccfa7a430daeb9d6de1e49bad7cdb65b299a287f8b6fe5ce41cded0e7db'
+sha256sums=('02b3487ab80cb3030d33317ce1290c2700241fd2138f6768a49c63a55a6a62fe'
             'ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea'
             '2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34')
 
