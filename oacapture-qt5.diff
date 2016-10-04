@@ -1,0 +1,262 @@
+diff -ru -N oacapture-1.0.0-orig/oalive/advancedSettings.h oacapture-1.0.0/oalive/advancedSettings.h
+--- oacapture-1.0.0-orig/oalive/advancedSettings.h	2016-06-29 22:31:50.000000000 +0100
++++ oacapture-1.0.0/oalive/advancedSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #include <openastro/userConfig.h>
+ 
+diff -ru -N oacapture-1.0.0-orig/oalive/cameraControls.h oacapture-1.0.0/oalive/cameraControls.h
+--- oacapture-1.0.0-orig/oalive/cameraControls.h	2016-06-29 22:31:39.000000000 +0100
++++ oacapture-1.0.0/oalive/cameraControls.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ extern "C" {
+ #include <openastro/camera.h>
+diff -ru -N oacapture-1.0.0-orig/oalive/captureSettings.h oacapture-1.0.0/oalive/captureSettings.h
+--- oacapture-1.0.0-orig/oalive/captureSettings.h	2016-06-29 22:31:34.000000000 +0100
++++ oacapture-1.0.0/oalive/captureSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ 
+ class CaptureSettings : public QWidget
+diff -ru -N oacapture-1.0.0-orig/oalive/controlsWidget.h oacapture-1.0.0/oalive/controlsWidget.h
+--- oacapture-1.0.0-orig/oalive/controlsWidget.h	2016-06-29 22:31:32.000000000 +0100
++++ oacapture-1.0.0/oalive/controlsWidget.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #include "cameraControls.h"
+ #include "stackingControls.h"
+diff -ru -N oacapture-1.0.0-orig/oalive/demosaicSettings.h oacapture-1.0.0/oalive/demosaicSettings.h
+--- oacapture-1.0.0-orig/oalive/demosaicSettings.h	2016-06-29 22:31:37.000000000 +0100
++++ oacapture-1.0.0/oalive/demosaicSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ 
+ class DemosaicSettings : public QWidget
+diff -ru -N oacapture-1.0.0-orig/oalive/filterSettings.h oacapture-1.0.0/oalive/filterSettings.h
+--- oacapture-1.0.0-orig/oalive/filterSettings.h	2016-06-29 22:31:38.000000000 +0100
++++ oacapture-1.0.0/oalive/filterSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -28,7 +28,7 @@
+ 
+ #include "oa_common.h"
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ #include <openastro/filterwheel.h>
+ 
+ 
+diff -ru -N oacapture-1.0.0-orig/oalive/focusOverlay.h oacapture-1.0.0/oalive/focusOverlay.h
+--- oacapture-1.0.0-orig/oalive/focusOverlay.h	2016-06-29 22:31:41.000000000 +0100
++++ oacapture-1.0.0/oalive/focusOverlay.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ class FocusOverlay : public QWidget
+ {
+diff -ru -N oacapture-1.0.0-orig/oalive/generalSettings.h oacapture-1.0.0/oalive/generalSettings.h
+--- oacapture-1.0.0-orig/oalive/generalSettings.h	2016-06-29 22:31:31.000000000 +0100
++++ oacapture-1.0.0/oalive/generalSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #include "version.h"
+ 
+diff -ru -N oacapture-1.0.0-orig/oalive/mainWindow.cc oacapture-1.0.0/oalive/mainWindow.cc
+--- oacapture-1.0.0-orig/oalive/mainWindow.cc	2016-06-29 22:31:33.000000000 +0100
++++ oacapture-1.0.0/oalive/mainWindow.cc	2016-08-06 19:06:19.958093691 +0100
+@@ -99,7 +99,7 @@
+   state.filterWheel->updateAllSearchFilters();
+ 
+   char d[ PATH_MAX ];
+-  state.currentDirectory = QString::fromAscii ( getcwd ( d, PATH_MAX ));
++  state.currentDirectory = QString::fromLocal8Bit ( getcwd ( d, PATH_MAX ));
+ 
+   if ( connectedCameras == 1 && config.connectSoleCamera ) {
+     connectCamera ( 0 );
+@@ -1506,7 +1506,7 @@
+   if ( config.numCustomColours ) {
+     config.customColours.clear();
+     for ( int i = 0; i < config.numCustomColours; i++ ) {
+-      QRgb custCol = colourDialog->customColor ( i );
++      QRgb custCol = colourDialog->customColor ( i ).rgb();
+       config.customColours.append ( QColor ( custCol ));
+     }
+   }
+diff -ru -N oacapture-1.0.0-orig/oalive/mainWindow.h oacapture-1.0.0/oalive/mainWindow.h
+--- oacapture-1.0.0-orig/oalive/mainWindow.h	2016-06-29 22:31:39.000000000 +0100
++++ oacapture-1.0.0/oalive/mainWindow.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ extern "C" {
+ #include <openastro/camera.h>
+diff -ru -N oacapture-1.0.0-orig/oalive/outputHandler.h oacapture-1.0.0/oalive/outputHandler.h
+--- oacapture-1.0.0-orig/oalive/outputHandler.h	2016-06-29 22:31:36.000000000 +0100
++++ oacapture-1.0.0/oalive/outputHandler.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ class OutputHandler
+ {
+diff -ru -N oacapture-1.0.0-orig/oalive/profileSettings.h oacapture-1.0.0/oalive/profileSettings.h
+--- oacapture-1.0.0-orig/oalive/profileSettings.h	2016-06-29 22:31:41.000000000 +0100
++++ oacapture-1.0.0/oalive/profileSettings.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #include "configuration.h"
+ 
+diff -ru -N oacapture-1.0.0-orig/oalive/qtgui_all_includes.h oacapture-1.0.0/oalive/qtgui_all_includes.h
+--- oacapture-1.0.0-orig/oalive/qtgui_all_includes.h	1970-01-01 01:00:00.000000000 +0100
++++ oacapture-1.0.0/oalive/qtgui_all_includes.h	2016-08-06 19:06:26.807981864 +0100
+@@ -0,0 +1,57 @@
++#ifndef QTGUI_ALL_INCLUDES
++#define QTGUI_ALL_INCLUDES
++
++#include <QAbstractButton>
++#include <QAction>
++#include <QApplication>
++#include <QButtonGroup>
++#include <QCheckBox>
++#include <QColor>
++#include <QColorDialog>
++#include <QComboBox>
++#include <QFileDialog>
++#include <QFrame>
++#include <QGridLayout>
++#include <QHBoxLayout>
++#include <QIcon>
++#include <QImage>
++#include <QKeySequence>
++#include <QLabel>
++#include <QLayout>
++#include <QLayoutItem>
++#include <QLineEdit>
++#include <QList>
++#include <QListWidget>
++#include <QListWidgetItem>
++#include <QMenu>
++#include <QMessageBox>
++#include <QMouseEvent>
++#include <QObject>
++#include <QPaintDevice>
++#include <QPainter>
++#include <QPaintEvent>
++#include <QPushButton>
++#include <QRadioButton>
++#include <QRgb>
++#include <QScrollArea>
++#include <QSignalMapper>
++#include <QSlider>
++#include <QSpinBox>
++#include <QSplitter>
++#include <QStatusBar>
++#include <QString>
++#include <QTabWidget>
++#include <QtCore>
++#include <QtGui>
++#include <QtGuiDepends>
++#include <QtNetwork>
++#include <QTransform>
++#include <QtWidgets>
++#include <QVariant>
++#include <QVBoxLayout>
++#include <QVector>
++#include <QWheelEvent>
++#include <QWidget>
++
++#endif
++
+diff -ru -N oacapture-1.0.0-orig/oalive/saveControls.h oacapture-1.0.0/oalive/saveControls.h
+--- oacapture-1.0.0-orig/oalive/saveControls.h	2016-06-29 22:31:34.000000000 +0100
++++ oacapture-1.0.0/oalive/saveControls.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #define	CAPTURE_TIFF	1
+ #define	CAPTURE_FITS	2
+diff -ru -N oacapture-1.0.0-orig/oalive/settingsWidget.h oacapture-1.0.0/oalive/settingsWidget.h
+--- oacapture-1.0.0-orig/oalive/settingsWidget.h	2016-06-29 22:31:31.000000000 +0100
++++ oacapture-1.0.0/oalive/settingsWidget.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ #include "generalSettings.h"
+ #include "captureSettings.h"
+diff -ru -N oacapture-1.0.0-orig/oalive/stackingControls.h oacapture-1.0.0/oalive/stackingControls.h
+--- oacapture-1.0.0-orig/oalive/stackingControls.h	2016-06-29 22:31:51.000000000 +0100
++++ oacapture-1.0.0/oalive/stackingControls.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ extern "C" {
+ #include <openastro/camera.h>
+diff -ru -N oacapture-1.0.0-orig/oalive/viewWidget.h oacapture-1.0.0/oalive/viewWidget.h
+--- oacapture-1.0.0-orig/oalive/viewWidget.h	2016-06-29 22:31:34.000000000 +0100
++++ oacapture-1.0.0/oalive/viewWidget.h	2016-08-06 19:06:19.958093691 +0100
+@@ -26,7 +26,7 @@
+ 
+ #pragma once
+ 
+-#include <QtGui>
++#include "qtgui_all_includes.h"
+ 
+ extern "C" {
+ #include <openastro/camera.h>

@@ -1,27 +1,31 @@
 pkgname=oacapture
-_realname=oaCapture
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="oaCapture is a planetary imaging application in Qt4"
+pkgdesc="oaCapture is a planetary imaging application using Qt5"
 arch=('i686' 'x86_64')
 license=('GPLv3')
-depends=('qt4')
+depends=('qt5-base')
 url="http://www.openastroproject.org/oacapture/"
 optdepends=('fxload: support for QHY5 cameras')
 
-source=("http://www.openastroproject.org/wp-content/uploads/2015/05/oaCapture-0.5.0.tar.bz2" "configure.patch")
-sha1sums=('07bfbceae008fae97814689a97ead0f7246d8b52' 'bd8f1e136c33a444e92abea2ef8fb74fff7b9008')
+source=("http://www.openastroproject.org/wp-content/uploads/2016/06/oacapture-1.0.0.tar.bz2" "oacapture-qt5.diff")
+sha1sums=('e7afbdb1fd3c095e4a8c52c2240c1fff4077e238' 'ba82f58bccac9898192ea10540219cfe1ae72cf5')
 
 build() {
-	cd "${_realname}-${pkgver}"
-	patch -Np1 < ${srcdir}/configure.patch
+	cd "${pkgname}-${pkgver}"
+	cd "ext/libusb"
 	autoreconf --force --install
-	./configure --prefix=/usr
+	cd "../libdc1394"
+	autoreconf --force --install
+	cd "../.."
+	patch -Np1 < ${srcdir}/oacapture-qt5.diff
+	autoreconf --force --install
+	CXXFLAGS="-fPIC $CXXFLAGS" ./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "${_realname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 	# removing FFMPEG install, it's already linked in static
