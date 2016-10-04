@@ -1,0 +1,19 @@
+pkgbase = pyflame-git
+	pkgdesc = A tool for generating flame graphs for Python processes.
+	pkgver = r57.80f6cd3
+	pkgrel = 1
+	url = https://github.com/uber/pyflame
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc>=4.6
+	makedepends = git
+	depends = gcc-libs
+	provides = pyflames
+	source = pyflame-git::git+https://github.com/uber/pyflame.git
+	md5sums = SKIP
+
+pkgname = pyflame-git
+
