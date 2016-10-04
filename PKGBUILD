@@ -11,7 +11,7 @@
 
 
 pkgname=sudo-masochist
-_sudover=1.8.17p1
+_sudover=1.8.18
 pkgver=${_sudover/p/.p}
 pkgrel=2
 pkgdesc="Sudo with a lot of extra insults"
@@ -27,7 +27,7 @@ source=(https://www.sudo.ws/sudo/dist/sudo-$_sudover.tar.gz{,.sig}
         sudo.pam
         git+http://bitbucket.org/NextHendrix/sudo-masochist)
 
-sha256sums=('c690d707fb561b3ecdf6a6de5563bc0b769388eff201c851edbace408bb155cc'
+sha256sums=('8519e99e97fa51ac50fca2030e76f9aa5195f543ae2d15107753f4e4c4e3be13'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2'
             'SKIP')
