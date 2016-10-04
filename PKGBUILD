@@ -7,8 +7,8 @@ pkgdesc="Simple File Manager"
 arch=("x86_64")
 url="https://github.com/vicr123/thefile"
 license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils')
-makedepends=('qtchooser' 'git' 'clang')
+depends=('kwidgetsaddons' 'xdg-utils' 'qt5-base')
+makedepends=('git' 'clang')
 optdepends=('jmtpfs: for MTP support'
 	    'ifuse: for iOS support'
 	    'usbmuxd: for iOS support'
