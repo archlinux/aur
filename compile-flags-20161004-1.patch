@@ -1,0 +1,138 @@
+--- a/Makefile	2016-10-04 01:03:09.395540994 +0300
++++ b/Makefile	2016-10-04 01:04:17.631046575 +0300
+@@ -455,33 +455,15 @@
+ 	@echo "yourself."
+ 
+ 
+-foo2zjs: foo2zjs.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2zjs.o $(LIBJBG)
+-
+-foo2hp: foo2hp.o $(LIBJBG)
+-	# $(CC) $(CFLAGS) -o $@ foo2hp.o $(LIBJBG) /usr/local/lib/libdmalloc.a
+-	$(CC) $(CFLAGS) -o $@ foo2hp.o $(LIBJBG)
+-
+-foo2xqx: foo2xqx.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2xqx.o $(LIBJBG)
+-
+-foo2lava: foo2lava.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2lava.o $(LIBJBG)
+-
+-foo2qpdl: foo2qpdl.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2qpdl.o $(LIBJBG)
+-
+-foo2oak: foo2oak.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2oak.o $(LIBJBG)
+-
+-foo2slx: foo2slx.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2slx.o $(LIBJBG)
+-
+-foo2hiperc: foo2hiperc.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2hiperc.o $(LIBJBG)
+-
+-foo2hbpl2: foo2hbpl2.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
++foo2zjs: $(LIBJBG)
++foo2hp: $(LIBJBG)
++foo2xqx: $(LIBJBG)
++foo2lava: $(LIBJBG)
++foo2qpdl: $(LIBJBG)
++foo2oak: $(LIBJBG)
++foo2slx: $(LIBJBG)
++foo2hiperc: $(LIBJBG)
++foo2hbpl2: $(LIBJBG)
+ 
+ foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
+ 	[ ! -f $@ ] || chmod +w $@
+@@ -558,49 +540,21 @@
+ 	chmod 555 $@
+ 
+ all-icc2ps:
+-	cd icc2ps; $(MAKE) all
+-
+-ok: ok.o $(LIBJBG)
+-	$(CC) $(CFLAGS) ok.o $(LIBJBG) -o $@
+-
+-gipddecode: gipddecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) gipddecode.o $(LIBJBG) -o $@
+-
+-hbpldecode: hbpldecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) hbpldecode.o $(LIBJBG) -o $@
+-
+-hipercdecode: hipercdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) hipercdecode.o $(LIBJBG) -o $@
+-
+-lavadecode: lavadecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) lavadecode.o $(LIBJBG) -o $@
+-
+-oakdecode: oakdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -g oakdecode.o $(LIBJBG) -o $@
+-
+-opldecode: opldecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -g opldecode.o $(LIBJBG) -o $@
+-
+-qpdldecode: qpdldecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) qpdldecode.o $(LIBJBG) -o $@
+-
+-splcdecode: splcdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) splcdecode.o $(LIBJBG) -lz -o $@
+-
+-slxdecode: slxdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) slxdecode.o $(LIBJBG) -o $@
+-
+-xqxdecode: xqxdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) xqxdecode.o $(LIBJBG) -o $@
+-
+-zjsdecode: zjsdecode.o $(LIBJBG)
+-	$(CC) $(CFLAGS) zjsdecode.o $(LIBJBG) -o $@
+-
+-command2foo2lava-pjl: command2foo2lava-pjl.o
+-	$(CC) $(CFLAGS) -L/usr/local/lib command2foo2lava-pjl.o -lcups -o $@
++	$(MAKE) -C icc2ps all
+ 
+-command2foo2lava-pjl.o: command2foo2lava-pjl.c
+-	$(CC) $(CFLAGS) -I/usr/local/include -c command2foo2lava-pjl.c
++ok: $(LIBJBG)
++gipddecode: $(LIBJBG)
++hbpldecode: $(LIBJBG)
++hipercdecode: $(LIBJBG)
++lavadecode: $(LIBJBG)
++oakdecode: $(LIBJBG)
++opldecode: $(LIBJBG)
++qpdldecode: $(LIBJBG)
++splcdecode: $(LIBJBG)
++slxdecode: $(LIBJBG)
++xqxdecode: $(LIBJBG)
++zjsdecode: $(LIBJBG)
++command2foo2lava-pjl: LDLIBS += -lcups
+ 
+ #
+ # Installation rules
+--- a/icc2ps/Makefile	2016-03-14 00:01:59.000000000 +0300
++++ b/icc2ps/Makefile	2016-10-04 01:04:26.580995863 +0300
+@@ -9,19 +9,20 @@
+ LIB=	cmscam97.c cmscnvrt.c cmserr.c cmsgamma.c cmsgmt.c cmsintrp.c cmsio1.c \
+ 	cmslut.c cmsmatsh.c cmsmtrx.c cmsnamed.c cmspack.c cmspcs.c cmsps2.c \
+ 	cmssamp.c cmswtpnt.c cmsxform.c cmsio0.c cmsvirt.c
+-CFLAGS=	-O3
+-INSTALL=install
++CFLAGS += -O3
++LDLIBS += -lm
++INSTALL ?= install
+ ifeq ($(UNAME),SunOS)
+-    INSTALL=/usr/ucb/install
+-    CC=gcc
++    INSTALL ?= /usr/ucb/install
++    CC ?= gcc
+ endif
+ 
+ .SUFFIXES: .1 .1in
+ 
+ all: foo2zjs-icc2ps man
+ 
+-foo2zjs-icc2ps: $(SRC) $(LIB)
+-	$(CC) $(CFLAGS) $(SRC) $(LIB) -lm -o $@
++foo2zjs-icc2ps: $(SRC:.c=.o) $(LIB:.c=.o)
++	$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
+ 
+ install: all
+ 	$(INSTALL) -c foo2zjs-icc2ps $(BIN)
