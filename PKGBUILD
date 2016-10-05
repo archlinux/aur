@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.winpdb.org/"
 license=('GPL')
 depends=('wxpython')
-source=(http://winpdb.googlecode.com/files/$pkgname-$pkgver.tar.gz
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/winpdb/winpdb-1.4.8.tar.gz"
         winpdb.desktop)
 md5sums=('e28049cc93c1614b9db20960d76b7ea3'
          '07bbfecd2587df6e5d2471c0955e5834')
