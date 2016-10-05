@@ -1,11 +1,11 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=2.2.1_unstable.r0.ge3ce2de
+pkgver=2.2.0_unstable.r10.ga1dc9ca
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
-url="https://persepolis.github.io/"
+url="https://persepolisdm.github.io/"
 license=('GPL3')
 depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'qt5-svg')
 makedepends=('git')
