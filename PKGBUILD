@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs
 pkgver=20161004
-pkgrel=1
+pkgrel=2
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('tix: required by hplj10xx_gui.tcl')
 arch=('i686' 'x86_64')
 options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
-source=('http://foo2zjs.rkkda.com/foo2zjs.tar.gz'
+source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
         'destdir-support-20140329-1.patch'
         'gen-fixes-20140329-1.patch'
         'firmware-loader-20130602-1.patch'
