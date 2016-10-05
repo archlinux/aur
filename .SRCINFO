@@ -28,7 +28,7 @@ pkgbase = pi-hole-standalone
 	md5sums = d42a864f88299998f8233c0bc0dd093d
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
-	md5sums = 4691fb24119998fb4fd1b2c1bdad462f
+	md5sums = f7edaba060103dc22e2727e378649dd6
 
 pkgname = pi-hole-standalone
 
