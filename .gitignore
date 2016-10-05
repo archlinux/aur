@@ -1,8 +1,7 @@
 # Package dirs
-src
-pkg
+src/
+pkg/
 # Package files
 *.tar
+*.tar.gz
 *.tar.xz
-# Generated files
-clion.desktop
