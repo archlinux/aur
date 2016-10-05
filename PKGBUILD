@@ -1,7 +1,7 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=apacman
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="AUR wrapper forked from packer"
 url="http://github.com/oshazard/apacman"
@@ -10,13 +10,15 @@ arch=('any')
 depends=('bash' 'binutils' 'ca-certificates' 'curl' 'fakeroot' 'file' 'grep' 'jshon' 'sed' 'tar' 'wget')
 optdepends=('apacman-deps: Required AUR build depends' 
             'apacman-utils: Useful AUR tools'
+            'bash-bats: Run unit tests'
             'customizepkg: Tool to auto-patch AUR PKGBUILDs'
             'pkgfile: Search local package metadata'
+            'proot: Allows running unit tests as user'
             'man: Debug network errors'
             'rsync: Built-in ABS support')
 provides=('packer')
 source=("https://github.com/oshazard/apacman/releases/download/v${pkgver}/apacman-${pkgver}.tar.gz")
-md5sums=('eced738c37868feab02eeca86643d1d7')
+md5sums=('339ef570f678c3d2366d57071e85cf2b')
 backup=('etc/apacman.conf')
 install=$pkgname.install
 
@@ -43,4 +45,9 @@ package() {
   # Install tab completion
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
   install -m644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_apacman"
+
+  # Install unit test
+  mkdir -p "${pkgdir}/usr/share/bats"
+  sed -i 's/APACMAN=.*/APACMAN="apacman"/' test.bats
+  install -m755 test.bats "$pkgdir/usr/share/bats/apacman.bats"
 }
