@@ -4,7 +4,7 @@
 # Contributor: Gaspar de Elías <caspercba_at_hotmail_dot_com>
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 pkgname=sky
-pkgver=2.1.6327_1
+pkgver=2.1.6343_1
 pkgrel=1
 pkgdesc="Lync and Skype for Business client on Linux"
 
@@ -40,7 +40,7 @@ optdepends=(
 )
 
 source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver//_/-}debian+jessie_amd64.deb")
-sha256sums_x86_64=('90fdc2638b8f0195df30ada8e0a1c3382b1dd0c277ed92e9b10f456a4618945b')
+sha256sums_x86_64=('f17978ebfa4e99d05c2b8c71191b36bce0308269ccbea59d2a59726aead6651d')
 
 package() {
 	local _sky_libdir="/usr/lib/sky/lib"
