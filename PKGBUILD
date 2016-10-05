@@ -6,7 +6,7 @@
 pkgname=xfce4-clipman-plugin-classic
 pkgver=1.2.6
 pkgrel=1
-pkgdesc='A clipboard plugin for the Xfce4 panel. Classic 1.2.6 version (fewer bugs, maintainer thinks)'
+pkgdesc='A clipboard plugin for the Xfce4 panel. Classic 1.2.6 version without the scroll bug'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-plugin'
