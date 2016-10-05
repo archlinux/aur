@@ -9,7 +9,7 @@
 _pkgname=hdf5
 pkgver=1.8.17
 pkgname=${_pkgname}-1.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data (legacy version with static libs)"
 url="http://www.hdfgroup.org/HDF5/"
