@@ -1,12 +1,12 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=opentracker
-pkgver=2015.12.11
+pkgver=2016.10.02
 pkgrel=1
 pkgdesc="A free and open torrent tracker"
 arch=('x86_64' 'i686' 'armv7h' 'armv7l' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
-license=('GPL')
+license=('Beerware')
 depends=('git' 'cvs')
 makedepends=('git' 'cvs')
 source=('git://erdgeist.org/opentracker')
