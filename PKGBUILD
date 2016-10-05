@@ -10,9 +10,8 @@ depends=('python2-numpy' 'python2-opengl')
 makedepends=('python2-distribute')
 optdepends=('python2-pyqt4: for Qt4 backend'
             'python2-pyside: for another Qt4 backend'
-            'python2-wxpython: for WxWidgets backend'
-            'pygtk: for GTK backend'
-            'pyfltk: for FLTK backend')
+            'wxpython: for WxWidgets backend'
+	    'pygtk: for GTK backend')
 source=("https://github.com/almarklein/visvis/archive/v${pkgver}.tar.gz" "license")
 md5sums=('8441970e546dbb11bc522c89fc828df9'
          '2dd246a9746e31c0ab2a512bbc114baf')
