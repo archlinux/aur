@@ -4,14 +4,14 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20160709.67af3ff
+pkgver=20161005.87524fa
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://mupdf.com/'
 license=('AGPL3')
 makedepends=('git')
-depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg' 'libxext')
+depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg-turbo' 'libxext' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
         'desktop')
 sha1sums=('SKIP'
@@ -29,12 +29,11 @@ prepare() {
 	cd "${srcdir}/${_pkgname}"
 
 	git submodule update --init thirdparty/mujs
-	git submodule update --init thirdparty/openjpeg
 
-	# fix memento.h confusion
-	sed '/^JBIG2DEC_CFLAGS :=/s|$| -I./include/mupdf|' -i Makethird
+	# link against system libopenjp2 dynamically
+	sed '/#define OPJ_STATIC/d' -i source/fitz/load-jpx.c
 
-	# embedding a CJK font into each binary is madness...
+	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
 }
 
@@ -54,6 +53,6 @@ package() {
 	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
 	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
 
-	# prevent the static-linking madness from spreading...
+	# prevent the static-linking disease from spreading...
 	rm -fr "${pkgdir}"/usr/{include,lib}
 }
