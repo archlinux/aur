@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Patch with MuQSS (Multiple Queue Skiplist Scheduler)
-# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler.html
+# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_5.html
 _MuQSS=
 
 # Tweak kernel options prior to a build via nconfig
@@ -65,8 +65,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=5
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
-_muqssversion=103
-_muqsspatch="bfs502-MuQSS_$_muqssversion"
+_muqssversion=106
+_muqsspatch="4.7-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
@@ -77,7 +77,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-"http://ck.kolivas.org/patches/bfs/4.0/4.7/Testing/$_muqsspatch.patch"
+"http://ck.kolivas.org/patches/muqss/4.0/4.7/$_muqsspatch.patch"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
@@ -94,7 +94,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
             'SKIP'
-            'e1e938f97ebca705bb2f21a819b74f47f34c43ef307bfc2c9ca18d3f293bc300'
+            '00fc411a547c42f18389915be79d751a1dc90feb5dff33949786324dc79512ec'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
             '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
@@ -122,10 +122,15 @@ prepare() {
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
 	# patch source with ck patchset with BFS
-	# fix double name in EXTRAVERSION
-	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck5 including BFS v0.502"
-	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	if [ -n "$_MuQSS" ]; then
+		msg "Patching with MuQSS"
+		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
+	else
+		# fix double name in EXTRAVERSION
+		sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
+		msg "Patching source with ck patchset including BFS v0.502"
+		patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	fi
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -136,12 +141,6 @@ prepare() {
 	patch -Np1 -i "$srcdir/$_bfqp2"
 	patch -Np1 -i "$srcdir/$_bfqp3"
 	patch -Np1 -i "$srcdir/$_bfqp4"
-
-	if [ -n "$_MuQSS" ]; then
-		msg "Patching with MuQSS patch"
-		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
-	fi
-
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
 	make mrproper
