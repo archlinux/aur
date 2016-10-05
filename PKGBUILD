@@ -9,7 +9,7 @@
 # 4. cp -va "VST3 SDK/." ~/SDKs/vstsdk2.4
 
 pkgname=radium
-pkgver=4.0.8
+pkgver=4.1.6
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "reenable-libbfd-workaround.patch"
         "use-gcc5-for-pluginhost.patch")
-md5sums=('24775dcefeec066b2e6e7f105d275877'
+md5sums=('538cb0ffab64719bbda03b1c434448e3'
          '74ea7a54f0e358035a7f0cc7baf54b6e'
          '9c19006defeef7e317ec23ed8eae1b72')
 
@@ -52,8 +52,8 @@ prepare() {
     # Fix faust2 compilation on llvm 3.8.1
     sed -i '105s/3.8.0/3.8.0 3.8.1/' "bin/packages/faust2/compiler/Makefile.unix"
 
-    # Fix Qt_instruments compilation
-    sed -i '1158s/$/ \$(API)radium_proc.h/' "Makefile.Qt"
+    # Fix QT_QPA_PLATFORM_PLUGIN_PATH problem
+    sed -i '2224d' "Qt/Qt_Main.cpp"
 
     # See https://github.com/kmatheussen/radium/commit/22be69fd24235cafb5878692d574d500f843c911#commitcomment-17394610
     patch -Np1 < "${srcdir}/reenable-libbfd-workaround.patch"
