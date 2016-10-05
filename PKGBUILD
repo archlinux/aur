@@ -2,8 +2,8 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=gitkraken
-pkgrel=2
-pkgver=1.7.0
+pkgrel=1
+pkgver=1.7.1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
@@ -19,7 +19,7 @@ source=(
     "gitkraken.png"
     "eula.html"
 )
-md5sums=('23dbf0e7ccf06d57f9beaeb297aa4c41'
+md5sums=('ddea6c87675a275bf5e6f73fa26e2c3d'
          'cf2a1746a0cafe11793af0801c78afeb'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
