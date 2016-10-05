@@ -11,7 +11,7 @@ url="http://kid3.sourceforge.net/"
 license=('GPL')
 depends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-multimedia')
 makedepends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2'
-             'hicolor-icon-theme' 'docbook-xml' 'extra-cmake-modules' 'python')
+             'hicolor-icon-theme' 'docbook-xsl' 'extra-cmake-modules' 'python')
 conflicts=('kid3-kde'' kid3-qt')
 provides=('kid3')
 changelog=${pkgname/-cli/}.changelog
