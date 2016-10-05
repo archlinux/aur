@@ -27,7 +27,7 @@ md5sums=('SKIP'
 build()
 {
   export GOPATH="$srcdir"
-  export PATH="$PATH:$GOPATH/bin"
+  export PATH="$GOPATH/bin:$PATH"
   mkdir -p "$GOPATH/src/github.com/influxdata"
   mv -f "$srcdir/kapacitor" "$GOPATH/src/github.com/influxdata/"
 
