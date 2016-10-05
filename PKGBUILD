@@ -1,7 +1,7 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 pkgname=lensfun-git
 _gitname=lensfun
-pkgver=0.3.2.r196.g226146d
+pkgver=0.3.2.r751.geced8c7
 pkgrel=1
 pkgdesc="Library to correct optical lens defects and lens database"
 arch=(i686 x86_64)
@@ -22,8 +22,9 @@ pkgver() {
 build() {
     cd $_gitname
     cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  .
+          -DCMAKE_INSTALL_LIBDIR=lib \
+          -DCMAKE_BUILD_TYPE=Release \
+          .
     make
 }
 
