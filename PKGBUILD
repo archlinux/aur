@@ -43,7 +43,7 @@ md5sums=('479bffbd8a6a61417cbe1201f8c02c78'
          '291d3c95e445fe65caf40c3605efd186'
          'd41d8cd98f00b204e9800998ecf8427e'
          'd41d8cd98f00b204e9800998ecf8427e'
-         '4691fb24119998fb4fd1b2c1bdad462f')
+         'f7edaba060103dc22e2727e378649dd6')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
