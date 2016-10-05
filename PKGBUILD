@@ -2,8 +2,8 @@
 # Contributor: Gregory BELLIER <gregory.bellier -- gmail -- com>
 
 pkgname=ocaml-mysql
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="OCaml bindings for MySQL"
 arch=('i686' 'x86_64')
 url="http://ocaml-mysql.forge.ocamlcore.org/"
@@ -13,7 +13,7 @@ depends=(camlp4)
 options=('!strip' 'staticlibs')
 #install=
 source=(https://forge.ocamlcore.org/frs/download.php/1500/ocaml-mysql-$pkgver.tar.gz)
-md5sums=('81d3bf217e4ed1829b9ea19f037dce65')
+md5sums=('776d07219ac3a6ffa000811defd91eb3')
 
 build() {
 
