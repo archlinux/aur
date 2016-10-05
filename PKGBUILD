@@ -1,14 +1,14 @@
 # Maintainer: Heorhi Valakhanovich <valahanovich@tut.by>
 
 pkgname=('dlangide-git')
-pkgver=r555.12b8651
+pkgver=r556.3bc212e
 pkgrel=1
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
 url="https://github.com/buggins/dlangide"
 license=("BSL")
 groups=('dlang')
-makedepends=('dmd' 'git')
+makedepends=('dmd' 'dub' 'git')
 conflicts=('dlangide')
 
 source=(
