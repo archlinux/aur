@@ -6,8 +6,8 @@ pkgbase = libconfini
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://github.com/madmurphy/libconfini/archive/0.9.tar.gz
-	md5sums = e33e995ad07f9d2a106378aeb1c1e2e0
+	source = https://github.com/madmurphy/libconfini/archive/0.9-1.tar.gz
+	md5sums = b726a08a4cdb3539035ea75a787f8137
 
 pkgname = libconfini
 

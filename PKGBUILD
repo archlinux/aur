@@ -7,12 +7,12 @@ pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url="https://github.com/madmurphy/libconfini/"
 license=("GPL")
-source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e33e995ad07f9d2a106378aeb1c1e2e0')
+source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
+md5sums=('b726a08a4cdb3539035ea75a787f8137')
 
 prepare() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
 	./autogen.sh
 	./configure --prefix=/usr
 
@@ -20,15 +20,15 @@ prepare() {
 
 build() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
 	make
 
 }
 
 package() {
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir" install
+	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
+	make DESTDIR="${pkgdir}" install
 
 }
 
