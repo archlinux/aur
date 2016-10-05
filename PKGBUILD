@@ -1,9 +1,9 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=tilemaker-git
-pkgver=r14.6a994ee
+pkgver=1.3.0.r3.g5a1b7b3
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 pkgrel=1
 pkgdesc="Convert OpenStreetMap .pbf files into vector tiles without the stack"
