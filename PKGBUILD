@@ -5,6 +5,14 @@
 # Uncomment if you want to disable compressing the package to save some time.
 #PKGEXT=.pkg.tar
 
+# These can be overridden on the makepkg command line
+# Note that AUR helpers may not support overriding these, so they can also
+# be modified here for convenience
+[[ -z "$USE_SYSTEM_JRE" ]] && USE_SYSTEM_JRE=0
+[[ -z "$BUNDLED_CMAKE"  ]] && BUNDLED_CMAKE=1
+[[ -z "$BUNDLED_GDB"    ]] && BUNDLED_GDB=1
+[[ -z "$BUNDLED_LLDB"   ]] && BUNDLED_LLDB=1
+
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
@@ -12,38 +20,50 @@ pkgver=163.5644.7
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
-optdepends=(
-  'java-runtime: native JRE (Please edit PKGBUILD to remove the bundled one)'
-  'gdb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
-  'cmake: native build system (You may want to edit PKGBUILD to remove the bundled one)'
-  'lldb: native debugger (You may want to edit PKGBUILD to remove the bundled one)'
+source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
+sha512sums=('e299717bf0fc5e10b7672911d99584dd4ab97ed3d485f4777183d05964bcddd2ed7f00050077f6606fab8735a2bd67d8228d79406d4ff740308c1a2522be76db')
+noextract=("${_archname}-${_pkgver}.tar.gz")
+depends=()
+optdepends=()
+
+if (( USE_SYSTEM_JRE )); then
+  depends+=('java-runtime')
+else
+  optdepends+=('java-runtime: native JRE')
+fi
+
+if (( ! BUNDLED_CMAKE )); then
+  depends+=('cmake')
+else
+  optdepends+=('cmake: native build system (Set BUNDLED_CMAKE=0 to remove the bundled one)')
+fi
+
+optdepends+=(
+  'gdb: native debugger (Set BUNDLED_GDB=0 to remove the bundled one)'
+  'lldb: native debugger (Set BUNDLED_LLDB=0 to remove the bundled one)'
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
   'gtest: C++ testing'
   'swift: Swift programming language support (Also requires the plugin)'
-  'python: Python programming language support (Also requires the plugin)'
-  'python2: Python 2 programming language support (Also requires the plugin)'
+  'python: Python programming language support'
+  'python2: Python 2 programming language support'
   'doxygen: Code documentation generation'
 )
-source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('e299717bf0fc5e10b7672911d99584dd4ab97ed3d485f4777183d05964bcddd2ed7f00050077f6606fab8735a2bd67d8228d79406d4ff740308c1a2522be76db')
-noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${_archname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${_archname}-${_pkgver}.tar.gz" \
+         -C "${pkgdir}/opt/${pkgname}"
 
-  # Uncomment to use system JRE
-  #rm -r "${pkgdir}/opt/${pkgname}/jre"
-  # Uncomment to remove bundled CMake, GDB and/or LLDB
-  #rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
-  #rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
-  #rm -r "${pkgdir}/opt/${pkgname}/bin/lldb"
+  (( USE_SYSTEM_JRE )) && rm -r "${pkgdir}/opt/${pkgname}/jre"
+  (( ! BUNDLED_CMAKE )) && rm -r "${pkgdir}/opt/${pkgname}/bin/cmake"
+  (( ! BUNDLED_GDB )) && rm -r "${pkgdir}/opt/${pkgname}/bin/gdb"
+  (( ! BUNDLED_LLDB )) && rm -r "${pkgdir}/opt/${pkgname}/bin/lldb"
 
   if [[ $CARCH = 'i686' ]]; then
     rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
@@ -69,16 +89,20 @@ Categories=Development;IDE;
 StartupNotify=true
 StartupWMClass=jetbrains-${_pkgname}
 EOF
-) > ${startdir}/jetbrains-${pkgname}.desktop
+) > ${srcdir}/jetbrains-${pkgname}.desktop
 
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m 644 "${startdir}/jetbrains-${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  install -m 644 "${srcdir}/jetbrains-${pkgname}.desktop" \
+            "${pkgdir}/usr/share/applications/"
 
-  ln -s "/opt/${pkgname}/bin/${_pkgname}.svg"               "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-  ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/opt/${pkgname}/bin/${_pkgname}.sh"                "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.svg" \
+            "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  ln -s "/opt/${pkgname}/license/CLion_Preview_License.txt" \
+            "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/opt/${pkgname}/bin/${_pkgname}.sh" \
+            "${pkgdir}/usr/bin/${pkgname}"
 }
