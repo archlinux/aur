@@ -11,7 +11,7 @@ pkgbase = lit
 	options = !strip
 	source = lit-3.4.4.zip::https://lit.luvit.io/packages/luvit/lit/v3.4.4.zip
 	source = fakeluvi
-	sha256sums = 08c02bf970f6d55d9decc1bc8cab3db4e4fc0423bdc14ca90f1986ddaeb90e58
+	sha256sums = b3ae9b15ab1ab596d38c3bfbd8b61a901227625fb13603f996e60639e9597e4c
 	sha256sums = c152cdc2d87b031302234b5b6b6047d34017119354fee312a81bb349989fbe7b
 
 pkgname = lit
