@@ -1,5 +1,5 @@
-# Maintainer: Severen Redwood <severen@shrike.me>
-# Report all package issues to `https://github.com/SShrike/pkgbuilds`
+# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
+# Contributor: Severen Redwood <severen@shrike.me>
 
 _gemname='i18n'
 pkgname="ruby-${_gemname}"
