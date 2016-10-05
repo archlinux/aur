@@ -24,7 +24,6 @@ prepare() {
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
   tar -xf data.tar.xz > /dev/null
-  tar -xf control.tar.gz > /dev/null
 }
 
 package() {
