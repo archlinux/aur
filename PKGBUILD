@@ -1,6 +1,6 @@
 pkgname=caddy
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+	export GOPATH="$srcdir/build"
 	cd $srcdir/build/src/$gopkgname/caddy
 	echo 'compile'
 	bash build.bash
