@@ -1,16 +1,17 @@
-# Maintainer: James An <james@jamesan.ca>
+  # Maintainer: James An <james@jamesan.ca>
 # Contributor: Tess 'socketwench' Flynn <tess@deninet.com>
 
 pkgname=drush-git
 _pkgname=${pkgname%-git}
-pkgver=9.0.0.alpha1.r159.g8042c32
+pkgver=9.0.0.alpha1.r230.g4d0ca6c
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="http://$_pkgname.org"
 license=('GPL')
 depends=('bash' 'php-composer' 'php-gd')
-makedepends=('git' 'php-box')
+makedepends=('git')
+optdepends=('bash-completion')
 #~ checkdepends=('bzr' 'sqlite')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -33,40 +34,45 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  composer --no-interaction update --prefer-source
+  sed '/"git-commit":/d;/"git-version":/d' box.json.dist >| box.json
+
+  composer --no-interaction install --prefer-source
 }
 
-build() {
-  cd "$_pkgname"
+#~ build() {
+  #~ cd "$_pkgname"
 
-  php -d phar.readonly=Off /usr/bin/php-box build
-}
+  #~ php -d phar.readonly=Off /usr/bin/php-box build
+#~ }
 
 check() {
   cd "$_pkgname"
 
-  msg2 'Verifying PHAR file'
-  php -d phar.readonly=Off /usr/bin/php-box verify $_pkgname.phar
-
-  #~ msg2 'Testing on Drupal 7'
-  #~ UNISH_DRUPAL_MAJOR_VERSION=7 UNISH_DB_URL=sqlite://test vendor/bin/phpunit -d extensions=pdo_sqlite.so -d extensions=gd.so--configuration tests
-  #~ msg2 'Testing on Drupal 8'
-  #~ UNISH_DRUPAL_MAJOR_VERSION=8 UNISH_DB_URL=sqlite://test vendor/bin/phpunit -d extensions=pdo_sqlite.so -d extensions=gd.so--configuration tests
+  #~ UNISH_DRUPAL_MAJOR_VERSION=7 UNISH_DB_URL=sqlite://test ./unish.sh --verbose --exclude-group slow
 }
 
 package() {
   cd "$_pkgname"
-  install -Dm755 "$_pkgname.phar" "$pkgdir/usr/share/webapps/$_pkgname/$_pkgname.phar"
-  install -Dm644 "$_pkgname.complete.sh" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -Dm644 ../php.ini "$pkgdir/etc/php/conf.d/$_pkgname.ini"
+
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/doc/$_pkgname"
-  install --directory "$pkgdir/usr/share/webapps/$_pkgname/commands"
-  cp -a CONTRIBUTING.md README.md docs examples "$pkgdir/usr/share/doc/$_pkgname"
-  ln -s "/usr/share/webapps/$_pkgname/$_pkgname.phar" "$pkgdir/usr/bin/$_pkgname"
+  install --directory "$pkgdir/usr/share/webapps/$_pkgname"
+
+  # Derive space-separated list of folders and files to copy:
+  files="$(egrep '"(files|directories)"' box.json | sed -r -e 's/^.*\[(.*)\].*$/\1/'  -e 's/(docs|drush.complete.sh|examples|README.md)//g' | tr -d '",')"
+  docs="README.md docs examples"
+  cp --archive --target-directory "$pkgdir/usr/share/webapps/$_pkgname" $files
+  cp --archive --target-directory "$pkgdir/usr/share/doc/$_pkgname" $docs
+  for file in $(find vendor -name '*.php' -type f | egrep -v '\b(phing|(t|T)est(|s))\b'); do
+    install -Dm644 {,"$pkgdir/usr/share/webapps/$_pkgname/"}$file
+  done
+
+  install -Dm644 "$_pkgname.complete.sh" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 ../php.ini "$pkgdir/etc/php/conf.d/$_pkgname.ini"
+  ln -s "/usr/share/webapps/$_pkgname/$_pkgname.php" "$pkgdir/usr/bin/$_pkgname"
 
   # Symlink upstream's hard-coded drush base path
-  ln -s "/usr/share/webapps/$_pkgname" "$pkgdir/usr/share/$_pkgname"
+  #~ ln -s "/usr/share/webapps/$_pkgname" "$pkgdir/usr/share/$_pkgname"
 
   install -Dm644 "examples/example.aliases.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/aliases.${_pkgname}rc.php"
   install -Dm644 "examples/example.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/${_pkgname}rc.php"
