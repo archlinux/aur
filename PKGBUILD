@@ -4,7 +4,7 @@
 pkgname=newlisp-devel
 _pkgname=newlisp
 pkgver=10.7.1
-pkgrel=18
+pkgrel=19
 pkgdesc="A LISP like, general purpose scripting language. Ongoing development version."
 url="http://www.newlisp.org"
 license=('GPL3')
@@ -35,5 +35,5 @@ package() {
   install -d $pkgdir/usr/share/man/man1
   make bindir=$pkgdir/usr/bin mandir=$pkgdir/usr/share/man \
        datadir=$pkgdir/usr/share install
-  ln -sf /usr/bin/newlisp-10.?.? $pkgdir/usr/bin/newlisp
+  ln -sf /usr/bin/newlisp-$pkgver $pkgdir/usr/bin/newlisp
 }
