@@ -2,22 +2,22 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=mayavi
-pkgver=4.4.4
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A 3-dimensional visualizer of scientific data"
 arch=('i686' 'x86_64')
 url="https://github.com/enthought/mayavi"
 license=('BSD')
-depends=('ipython2' 'vtk6' 'python2-envisage' 'wxpython2.8')
-makedepends=('python2-setuptools' 'python2-sphinx' 'python2-twisted' 'xorg-server-xvfb'
-             'hdf5' 'jsoncpp' 'gdal' 'unixodbc')
+depends=('ipython2' 'vtk6' 'python2-envisage' 'python2-traitsui' 'python2-configobj' 'wxpython2.8'
+         'gdal' 'unixodbc' 'jsoncpp' 'hdf5' 'openmpi' 'libtheora' 'ffmpeg' 'qt5-base')
+makedepends=('python2-setuptools' 'python2-sphinx' 'python2-twisted' 'xorg-server-xvfb')
 replaces=('python2-mayavi')
 provides=('python2-mayavi')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enthought/mayavi/archive/${pkgver}.tar.gz"
         "mayavi.sh" "mayavi.csh" "vtk6.patch")
-md5sums=('31a95371bdec9affd97b178b311afb9c'
+md5sums=('ed3b0004b810bd5741ae9bb46d197250'
          '3e998f4f3cb1d9bc3353fbb933984458'
          'd68e29e3c805ad2e0a5e82b1744b1f0a'
          '1b91b3aaf31a44ddc5e770f4fb1e3c5f')
