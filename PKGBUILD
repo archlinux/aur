@@ -5,7 +5,7 @@
 #pkgbase=linux                      # Build stock -ARCH kernel
 pkgbase=linux-ct                    # Build kernel with a different name
 _srcname=linux-4.7
-pkgver=4.7.5
+pkgver=4.7.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
