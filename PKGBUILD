@@ -1,6 +1,6 @@
 # Maintainer: SoniEx2 <endermoneymod at gmail dot com>
 pkgname=luvi-bin
-pkgver=2.7.3
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="A project in-between luv and luvit"
 arch=(i686 x86_64)
@@ -24,5 +24,5 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir"
 
-  install -Dm755 luvi-regular-Linux_x86_64 "$pkgdir/usr/bin/luvi"
+  install -Dm755 "luvi-regular-Linux_$CARCH" "$pkgdir/usr/bin/luvi"
 }
