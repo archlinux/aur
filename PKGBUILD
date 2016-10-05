@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=circus
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A program that will let you run and watch multiple processes and sockets."
 arch=('any')
 url="http://circus.readthedocs.org"
@@ -10,9 +10,9 @@ depends=('python-iowait' 'python-psutil' 'python-pyzmq' 'python-tornado')
 makedepends=('python-distribute')
 options=(!emptydirs)
 
-source=("https://pypi.python.org/packages/source/c/circus/circus-${pkgver}.tar.gz"
+source=("https://github.com/circus-tent/circus/archive/${pkgver}.tar.gz"
         "circus.ini" "circus.service")
-md5sums=('cddd4a8844907d8b6b402ca9c713d176'
+md5sums=('066fd34445a743f5404a5873f1ca3f84'
          '6ce050f557ad88cafcc476513e0578dc'
          '94dcc7c18eb935c62699135c5d048a1a')
 
