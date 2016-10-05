@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=solidity-git
-pkgver=v0.4.0.r28.g6a80511
+pkgver=v0.4.0.r59.gf52634a
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 groups=('ethereum')
 url="https://github.com/ethereum/solidity"
 license=('GPL')
-source=("${pkgname%-git}::git+https://github.com/ethereum/solidity")
+source=("${pkgname%-git}::git+https://github.com/ethereum/solidity#branch=develop")
 sha256sums=('SKIP')
 provides=(
   'lll'
@@ -40,16 +40,12 @@ provides=(
 
 pkgver() {
   cd ${pkgname%-git}
-  git checkout -q develop
-  git pull -q
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   msg 'Updating...'
   cd ${pkgname%-git}
-  git checkout develop
-  git pull
   git submodule update --init --recursive
 
   msg 'Building...'
