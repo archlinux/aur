@@ -1,7 +1,7 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python2-pycares
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Python interface for c-ares"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python2')
 options=('!emptydirs')
 source=("https://github.com/saghul/pycares/archive/pycares-${pkgver}.tar.gz")
-md5sums=('2e44481a17088a287066ba60b16abb95')
+md5sums=('29e03784b88ac3d6863122e42eda7786')
 
 prepare() {
   cd "$srcdir"
