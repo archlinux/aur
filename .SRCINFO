@@ -1,0 +1,35 @@
+pkgbase = recoll-with-recollq
+	pkgdesc = Full text search tool based on Xapian backend
+	pkgver = 1.22.3
+	pkgrel = 2
+	url = http://www.lesbonscomptes.com/recoll/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python
+	depends = xapian-core>=1.0.15-1
+	depends = qt4
+	depends = openssl
+	depends = hicolor-icon-theme
+	depends = qtwebkit
+	optdepends = libxslt: for XML based formats (fb2,etc)
+	optdepends = unzip: for the OpenOffice.org documents
+	optdepends = poppler: for pdf
+	optdepends = pstotext: for postscipt
+	optdepends = antiword: for msword
+	optdepends = catdoc: for ms excel and powerpoint
+	optdepends = unrtf: for RTF
+	optdepends = untex: for dvi support with dvips
+	optdepends = djvulibre: for djvu
+	optdepends = id3lib: for mp3 tags support with id3info
+	optdepends = python2: for using some filters
+	optdepends = mutagen: Audio metadata
+	optdepends = python2-pychm: CHM files
+	optdepends = perl-image-exiftool: EXIF data from raw files
+	optdepends = aspell-en: English stemming support
+	conflicts = recoll
+	source = http://www.lesbonscomptes.com/recoll/recoll-1.22.3.tar.gz
+	md5sums = afb5dc53b9d2ac0c6bdaeb9cbd399c78
+
+pkgname = recoll-with-recollq
+
