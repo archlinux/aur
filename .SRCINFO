@@ -1,0 +1,35 @@
+pkgbase = monitorix-git
+	pkgdesc = A lightweight system monitoring tool that uses rrd databases.
+	pkgver = 8a0b97c
+	pkgrel = 1
+	url = http://www.monitorix.org
+	install = readme.install
+	arch = any
+	license = GPLv2
+	depends = perl
+	depends = perl-cgi
+	depends = perl-mailtools
+	depends = perl-mime-lite
+	depends = perl-libwww
+	depends = perl-dbi
+	depends = perl-xml-simple
+	depends = perl-config-simple
+	depends = perl-config-general
+	depends = rrdtool
+	depends = perl-http-server-simple
+	optdepends = anything-sync-daemon: offload your databases to tmpfs to save i/o to your disk.
+	optdepends = hddtemp: enable support for hdd temp monitoring.
+	optdepends = lm_sensors: enable support for system temp monitoring.
+	optdepends = net-tools: for netstat monitoring
+	optdepends = nvidia: enable support for nVidia card temp and usage monitoring.
+	optdepends = perl-dbd-mysql: for mysql monitoring
+	optdepends = smartmontools: enable support for hdd bad sector monitoring.
+	optdepends = terminus-font: if graphs do not contain characters, you may need this font package.
+	conflicts = monitorix
+	replaces = monitorix
+	backup = etc/monitorix/monitorix.conf
+	source = git://github.com/mikaku/Monitorix
+	sha256sums = SKIP
+
+pkgname = monitorix-git
+
