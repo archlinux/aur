@@ -1,7 +1,7 @@
 #Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='fbx-sdk'
-pkgver=2016.1.1
+pkgver=2017.0.1
 pkgrel=1
 pkgdesc='Platform and API toolkit to transfer existing content into the FBX format.'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url='http://www.autodesk.com/products/fbx/overview'
 license=('custom')
 install='fbx-sdk.install'
 _verstr=`echo ${pkgver:0:4}${pkgver:5} | sed 's/\./_/g'`
-source=("http://download.autodesk.com//us/fbx_release_older/${pkgver}/fbx${_verstr}_fbxsdk_linux.tar.gz")
-md5sums=('6a8c1d0570fdf9a81024ebce350895e1')
+source=("http://download.autodesk.com/us/fbx/${pkgver:0:4}/${pkgver}/fbx${_verstr}_fbxsdk_linux.tar.gz")
+md5sums=('314132bb31087a33132e112dfb46228a')
 
 build() {
   cd "$srcdir"
