@@ -1,5 +1,5 @@
 pkgbase = linux-ct
-	pkgver = 4.7.5
+	pkgver = 4.7.6
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = linux-ct
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.5.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.5.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.6.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
