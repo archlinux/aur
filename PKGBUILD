@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=giter8
-pkgver=0.6.8
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="a command line tool to apply templates defined on github"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('sbt')
 options=(!emptydirs)
 source=("giter8.properties_$pkgver::https://github.com/foundweekends/giter8/raw/v${pkgver}/src/main/conscript/g8/launchconfig"
 	"g8")
-md5sums=('28ac12267f81ccf896500584969416cb'
+md5sums=('3146e63e51bb7ebe98949216bc74b4f3'
          'de3e643189a99a3267329ff6c559eae1')
 
 package() {
