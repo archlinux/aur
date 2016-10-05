@@ -11,10 +11,10 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-bzip2')
 makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://downloads.sourceforge.net/boost/boost/${pkgver}/boost_${_boostver}.tar.bz2"
+source=("https://sourceforge.net/projects/boost/files/boost/${pkgver}/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
-sha1sums=('5eaba70f7a1594520b9e88ee4e6343e1691ed862'
-          '7c8f7cb3872dc11bd72c1ba2ec69945ae710cfe2')
+sha256sums=('36c96b0f6155c98404091d8ceb48319a28279ca0333fba1ad8611eb90afb2ca0'
+            'a89d730a8b7578188adb5421090a2d48c82f002a8c5a20d7bd6c9c01eff62fa7')
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 
