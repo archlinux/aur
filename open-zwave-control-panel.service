@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenZWave Control Panel
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/share/open-zwave-control-panel
+ExecStart=/usr/bin/ozwcp -p 8090
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

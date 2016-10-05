@@ -1,0 +1,6 @@
+*.tar.xz
+pkg/
+src/
+open-zwave
+*~
+open-zwave-control-panel-git
