@@ -9,9 +9,10 @@
 # Contributor: Joshua Lund <josh@joshlund.com>
 # Contributor: Matt Klich <matt.klich@readytalk.com>
 # Contributor: Michael DeHaan <michael@ansible.com>
+# Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=ansible-git
-pkgver=2.2.0.19358.85477fa
+pkgver=2.3.0.20858.d9d7e41
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -23,35 +24,35 @@ optdepends=('python2-passlib: crypt values for vars_prompt')
 conflicts=('ansible')
 provides=('ansible')
 backup=('etc/ansible/ansible.cfg')
-source=($pkgname::git+https://github.com/ansible/ansible.git)
+source=(ansible-git::git+https://github.com/ansible/ansible.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
   printf "%s.%s.%s" "$(cut -d' ' -f1 VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
   make PYTHON=python2
   make docs
 }
 
 package() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
-  install -dm755 $pkgdir/usr/share/ansible
-  cp -dpr --no-preserve=ownership ./examples "$pkgdir/usr/share/ansible"
+  install -dm755 "${pkgdir}/usr/share/ansible"
+  cp -dpr --no-preserve=ownership ./examples "${pkgdir}/usr/share/ansible"
 
-  python2 setup.py install -O1 --root="$pkgdir"
+  python2 setup.py install -O1 --root="${pkgdir}"
 
-  install -Dm644 examples/ansible.cfg $pkgdir/etc/ansible/ansible.cfg
+  install -Dm644 examples/ansible.cfg "${pkgdir}/etc/ansible/ansible.cfg"
 
-  install -Dm644 README.md $pkgdir/usr/share/doc/ansible/README.md
-  install -Dm644 COPYING $pkgdir/usr/share/doc/ansible/COPYING
-  install -Dm644 CHANGELOG.md $pkgdir/usr/share/doc/ansible/CHANGELOG.md
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/ansible/README.md"
+  install -Dm644 COPYING "${pkgdir}/usr/share/doc/ansible/COPYING"
+  install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/ansible/CHANGELOG.md"
 
-  install -dm755 ${pkgdir}/usr/share/man/man1
-  cp -dpr --no-preserve=ownership docs/man/man1/*.1 "$pkgdir/usr/share/man/man1"
+  install -dm755 "${pkgdir}/usr/share/man/man1"
+  install -Dm644 "${srcdir}/${pkgname}/docs/man/man1/"*.1 "${pkgdir}/usr/share/man/man1"
 }
