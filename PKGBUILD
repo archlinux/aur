@@ -1,4 +1,5 @@
-# Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
+# Maintainer: Michael Hansen <zrax0111 gmail com>
+# Contributor: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 # Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 # Uncomment if you want to disable compressing the package to save some time.
