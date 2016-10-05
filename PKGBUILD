@@ -2,7 +2,7 @@
 
 _pkgbasename=libxvmc
 pkgname=lib32-$_pkgbasename
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="X11 Video Motion Compensation extension library (32-bit)"
 arch=('x86_64')
@@ -12,9 +12,10 @@ depends=('lib32-libxv>=1.0.5' $_pkgbasename)
 makedepends=('pkgconfig' gcc-multilib)
 options=('!libtool')
 source=(${url}/releases/individual/lib/libXvMC-${pkgver}.tar.bz2{,.sig})
-sha256sums=('0703d7dff6ffc184f1735ca5d4eb9dbb402b522e08e008f2f96aee16c40a5756'
+sha256sums=('e501a079b5dfaef0897c56152770c77e05e362065cec58910289aa567277ee2e'
             'SKIP')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
+validpgpkeys+=('C41C985FDCF1E5364576638B687393EE37D128F8') # Matthieu Herrb <matthieu.herrb@laas.fr>
 
 build() {
   export CC="gcc -m32"
