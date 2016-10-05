@@ -1,7 +1,7 @@
 # Maintainer: lolilolicon <lolilolicon@gmail.com>
 
 _name=FFcast
-_ver=2.4.3
+_ver=2.4.4
 pkgname=ffcast
 epoch=1
 pkgver=${_ver//-/}
@@ -10,10 +10,11 @@ pkgdesc="FFcast has almost nothing to do with FFmpeg or screencast ;)"
 arch=(any)
 url="https://github.com/lolilolicon/FFcast"
 license=(GPL3)
-depends=('bash>=4.3' ffmpeg xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
+depends=('bash>=4.3' xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
+optdepends=('ffmpeg: for png rec' 'imagemagick: for trim')
 makedepends=(autoconf automake perl)
 source=("https://github.com/lolilolicon/$_name/archive/$_ver.tar.gz")
-md5sums=('45635ac9ee1aa3e996226638d22a9968')
+md5sums=('418c07d804d9119b62d800db8cdaaeee')
 
 prepare() {
   cd "$_name-$_ver"

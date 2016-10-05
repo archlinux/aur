@@ -1,6 +1,6 @@
 pkgbase = ffcast
 	pkgdesc = FFcast has almost nothing to do with FFmpeg or screencast ;)
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lolilolicon/FFcast
@@ -10,13 +10,14 @@ pkgbase = ffcast
 	makedepends = automake
 	makedepends = perl
 	depends = bash>=4.3
-	depends = ffmpeg
 	depends = xorg-xdpyinfo
 	depends = xorg-xprop
 	depends = xorg-xwininfo
 	depends = xrectsel
-	source = https://github.com/lolilolicon/FFcast/archive/2.4.3.tar.gz
-	md5sums = 45635ac9ee1aa3e996226638d22a9968
+	optdepends = ffmpeg: for png rec
+	optdepends = imagemagick: for trim
+	source = https://github.com/lolilolicon/FFcast/archive/2.4.4.tar.gz
+	md5sums = 418c07d804d9119b62d800db8cdaaeee
 
 pkgname = ffcast
 
