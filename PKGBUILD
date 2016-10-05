@@ -1,7 +1,7 @@
 # Maintainer: SoniEx2 <endermoneymod at gmail dot com>
 pkgname=luvit
-pkgver=2.11.4
-pkgrel=3
+pkgver=2.11.5
+pkgrel=1
 pkgdesc="node.js style APIs for luvi as either a luvi app or library."
 arch=(any)
 url="https://github.com/luvit/luvit"
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("luvit-$pkgver.zip::https://lit.luvit.io/packages/luvit/luvit/v$pkgver.zip" 'fakeluvi')
 noextract=("luvit-$pkgver.zip")
-sha256sums=('d564330480ca755a15b158a36dfa2b87ba8b93ec9f6206f99da1ce4a789fb431'
+sha256sums=('2d04ec51b84601827300e554d3477227d548b9476f62603ef7e99f322e57f959'
             'c152cdc2d87b031302234b5b6b6047d34017119354fee312a81bb349989fbe7b')
 
 build() {
