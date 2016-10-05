@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.14.12
+pkgver=0.14.13
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)"
 arch=('i686' 'x86_64')
@@ -114,7 +114,8 @@ _download() {
         msg2 "Logged in"
         msg "Downloading ${_gamepkg} from $_url ..."
 
-        curl --fail --location \
+        curl --retry 10 --retry-delay 3 \
+             --fail --location \
              --cookie "$cookie" \
              --continue-at - \
              --output "${file}.part" \
