@@ -18,15 +18,14 @@ optdepends=(
   'bleachbit: used for system clean'
   'gnu-netcat: used for checking network'
 )
-source=("git://github.com/gavinlyonsrepo/${pkgname%-git}.git")
+source=("git://github.com/gavinlyonsrepo/${pkgname}.git")
 md5sums=('SKIP')
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-    install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname%-git}" 
+	cd "$srcdir/${pkgname}"
+    install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
     mkdir -p "$HOME/.config/cylon/"
     install -D -m644 Readme.md "$HOME"/.config/cylon/cylonReadme.md
-    install -D -m644 License.md "$pkgdir/usr/share/licenses/${pkgname%-git}/License.md"
+    install -D -m644 License.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
 }
-
 
