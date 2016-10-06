@@ -1,0 +1,18 @@
+pkgbase = choosealicense-cli-git
+	pkgdesc = Bring http://choosealicense.com to your terminal
+	pkgver = 0.3.0.1.g57074b0
+	pkgrel = 1
+	url = https://github.com/lord63/choosealicense-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-requests
+	provides = choosealicense-cli
+	conflicts = choosealicense-cli
+	source = git+https://github.com/lord63/choosealicense-cli
+	md5sums = SKIP
+
+pkgname = choosealicense-cli-git
+
