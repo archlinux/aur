@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.7
-pkgrel=2
+pkgver=5.8
+pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 url='https://www.archlinux.org/'
