@@ -3,7 +3,7 @@
 # Contributor: Behem0th <grantipak@gmail.com>
 _pkgbasename=libvdpau-va-gl
 pkgname=lib32-libvdpau-va-gl
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='VDPAU driver with OpenGL/VAAPI backend'
 arch=('x86_64')
