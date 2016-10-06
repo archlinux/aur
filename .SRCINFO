@@ -1,4 +1,5 @@
 pkgbase = kmflcomp
+	pkgdesc = KMFL (Keyboard Mapping for Linux) compiler library
 	pkgver = 0.9.8
 	pkgrel = 1.1
 	url = http://kmfl.sourceforge.net/
