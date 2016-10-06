@@ -2,7 +2,7 @@
 pkgname=kmflcomp
 pkgver=0.9.8
 pkgrel=1.1
-pkgdesc=""
+pkgdesc="KMFL (Keyboard Mapping for Linux) compiler library"
 arch=('i686' 'x86_64')
 url="http://kmfl.sourceforge.net/"
 license=('GPL')
