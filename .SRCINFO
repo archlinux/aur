@@ -1,0 +1,13 @@
+pkgbase = ssterm
+	pkgdesc = A simple console-based serial port terminal
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/vsergeev/ssterm
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/vsergeev/ssterm.git#tag=v3.0.0
+	md5sums = SKIP
+
+pkgname = ssterm
+
