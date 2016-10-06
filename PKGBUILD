@@ -1,4 +1,4 @@
-# Maintainer: Pedro Freitas <pedrosffreitas@gmail.com>
+# Maintainer: Pedro Freitas <pedrosffreitas at gmail dot com>
 
 pkgname='ix'
 pkgver=1.0
