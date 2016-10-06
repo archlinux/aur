@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://wxphp.org"
 install=php-wxwidgets-git.install
 license=('PHP')
-depends=('gtk3' 'libgl' 'libxxf86vm' 'libsm' 'sdl' 'sdl_sound' 'gstreamer' 'php56' 'webkitgtk')
-makedepends=('mesa' 'glu' 'libxt' 'gstreamer' 'sdl' 'sdl_sound' 'php56' 'webkitgtk')
+depends=('gtk2' 'libgl' 'libxxf86vm' 'libsm' 'sdl' 'sdl_sound' 'gstreamer' 'php56' 'webkitgtk2')
+makedepends=('mesa' 'glu' 'libxt' 'gstreamer' 'sdl' 'sdl_sound' 'php56' 'webkitgtk2')
 source=(
     "http://downloads.sourceforge.net/wxwindows/wxWidgets-${_pkgver}.tar.bz2"
     "git://github.com/wxphp/${_gitname}.git"
@@ -48,7 +48,7 @@ build() {
 
         CFLAGS="-fPIC -O2 -Wall -W" CXXFLAGS="-fPIC -O2" \
         ./configure --prefix="${srcdir}/wxWidgets-${_pkgver}-static" \
-            --with-{gtk=3,libjpeg=sys,libpng=sys,libtiff=sys,libxpm=sys,opengl,regex=builtin,sdl} \
+            --with-{gtk=2,libjpeg=sys,libpng=sys,libtiff=sys,libxpm=sys,opengl,regex=builtin,sdl} \
             --enable-{graphics_ctx,unicode,monolithic} \
             --disable-shared
 
