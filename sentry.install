@@ -127,11 +127,6 @@ To install additional plugins, you'll need to use Sentry's local copy of pip:
 
     sudo -u sentry /opt/sentry/bin/pip install <package>
 
-REMOVAL
-
-As of Sentry 7.1.4, this package will no longer remove the Sentry user by
-default. You must perform this step manually.
-
 IMPORTANT 8.0 UPGRADE NOTICE
 
 If you're upgrading from an earlier version of Sentry, the Sentry team has
@@ -139,25 +134,6 @@ deprecated MySQL support. You will need to plan for one of the following
 options: 1) Manage schema migration manually, 2) consider migrating your data
 away from MySQL (there may be some tools to assist, linked below), or 3)
 reinstall from scratch with PostgreSQL.
-
-8.0 Notice:
-
-http://blog.getsentry.com/2016/01/08/sentry-8-on-premise.htmlA
-
-Django migration tools from MySQL-to-PostgreSQL:
-
-https://www.calazan.com/migrating-django-app-from-mysql-to-postgresql/
-http://www.ofbrooklyn.com/2010/07/18/migrating-django-mysql-postgresql-easy-way/
-  (2010!)
-
-And lastly, the PostgreSQL guide on moving your data (read carefully):
-
-https://wiki.postgresql.org/wiki/How_to_make_a_proper_migration_from_MySQL_to_PostgreSQL
-
-(Note: I'm not a Django developer although I have some experience with South
-prior to its deprecation; my experience is predominantly limited to
-SQLAlchemy, so I cannot vouch for the veracity of these tools and they are
-provided on an informational basis only.)
 
 SENTRY WON'T START?
 
@@ -178,30 +154,24 @@ project page:
 https://aur.archlinux.org/packages/sentry/
 https://github.com/zancarius/archlinux-pkgbuilds
 
-SENTRY 8.5.0 UPGRADE
+SENTRY 8.9.0 UPGRADE NOTICE
 
-Sentry's run command has introduced new controls and finished the deprecation of
-the old celery worker, replacing it with "sentry run worker" and
-"sentry run cron". Although this has lead to the further proliferation of
-systemd units, control has been coalesced into a single unit file. As of this
-upgrade, you should simply need to run:
+dsym support has been integrated into Sentry directly and is no longer a
+plugin. If you've been relying on the sentry-dsym package, you may notice that
+this package is no longer built. Instead, symsynd is installed automatically
+as part of Sentry's "install_requires" dependencies. You will encounter an
+error during Sentry's install as a consequence of this; that's normal. Remove
+your sentry-dsym package first.
 
-    sudo systemctl daemon-reload
-    sudo systemctl start sentry
-
-or to start Sentry at boot:
-
-    sudo systemctl enable sentry
-
-If you're upgrading from Sentry versions earlier than 8.5.0, you'll need to
-run:
-
-    sudo systemctl stop sentry sentry-celery
-
-first and continue with the upgrade process as instructed (starting with step
-#2). Do not issue "systemctl daemon-reload" until after Sentry's services have
-stopped. If you have a habit of stopping Sentry before upgrading, there is
-nothing more you need to do.
+If you haven't previously required dsym support, this means that Sentry now
+requires that you also install LLVM for symsynd. It may be possible to remove
+LLVM from the package dependencies, but the build may fail if it's not
+installed. As a workaround if you cannot have LLVM installed for whatever
+reason, try removing "llvm" from the "depends" array, build Sentry on a machine
+that has LLVM installed, and then copy the package to your target server. This
+will cause problems if you use something that requires dsym support, but it's
+presently the easiest way to install Sentry on a target host without LLVM
+installed.
 
 EOF
 
