@@ -83,11 +83,11 @@ for source_path in "${!source_target_mappings[@]}"; do
     target_path="$(echo "${source_target_mappings[$source_path]}" | \
         grep '^[^ ]+' --only-matching --extended-regexp)"
     if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+        target_file_path="${target_path}${daily_target_path}/${target_daily_file_name}"
     elif [[ "$week_day_number" == "$backup_monthe_day_number" ]]; then
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+        target_file_path="${target_path}${daily_target_path}/${target_daily_file_name}"
     else
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+        target_file_path="${target_path}${daily_target_path}/${target_daily_file_name}"
     fi
     mkdir --parents "$(dirname "$target_file_path")"
     $verbose && echo "Running \"${backup_command}\"."
