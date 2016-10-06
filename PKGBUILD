@@ -1,7 +1,7 @@
 # Maintainer: Shervin Khastoo <me@shervin.org>
 
 pkgname=openvpn-xor-patched
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=2
 pkgdesc="OpenVPN obfuscated with xor-patch which can bypass internet censoring"
 arch=(i686 x86_64)
@@ -9,24 +9,24 @@ url="https://github.com/clayface/openvpn_xorpatch"
 depends=('openssl' 'lzo' 'lz4' 'pam' 'libsystemd')
 optdepends=('easy-rsa: for easy key management')
 conflicts=('openvpn' 'openvpn-dev')
-provides=('openvpn=2.3.11' 'openvpn-dev')
+provides=('openvpn=2.3.12' 'openvpn-dev')
 license=('custom')
 source=(https://github.com/OpenVPN/openvpn/archive/v${pkgver}.tar.gz openvpn@.service git://github.com/clayface/openvpn_xorpatch.git)
-sha256sums=('ffab2e2fb50a4b65fc4b2d1ae972f52b2e5f91467af88349e2a5d27afd2d2846'
+sha256sums=('698c50519fcb7dfa8880c760e3d9be9c3d145689c9eb243ac5d5c6fd19317bbc'
             '47a4ee993f8aaa7370e9a84384fcfc993fd76aa4db11c46629b156d0c5fad49a'
             'SKIP')
 
 prepare() {
-    cp openvpn_xorpatch/openvpn_xor.patch openvpn-2.3.11/
+    cp openvpn_xorpatch/openvpn_xor.patch openvpn-2.3.12/
     
-    cd openvpn-2.3.11/
+    cd openvpn-2.3.12/
     
     # Xor Patch
     patch -Np1 -i openvpn_xor.patch
 }
 
 build() {
-	cd openvpn-2.3.11/
+	cd openvpn-2.3.12/
 
 	# Build openvpn
 	autoreconf -vi
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-	cd openvpn-2.3.11/
+	cd openvpn-2.3.12/
 
 	# Install openvpn
 	make DESTDIR=${pkgdir} install

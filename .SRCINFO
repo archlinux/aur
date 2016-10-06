@@ -1,6 +1,6 @@
 pkgbase = openvpn-xor-patched
 	pkgdesc = OpenVPN obfuscated with xor-patch which can bypass internet censoring
-	pkgver = 2.3.11
+	pkgver = 2.3.12
 	pkgrel = 2
 	url = https://github.com/clayface/openvpn_xorpatch
 	arch = i686
@@ -12,14 +12,14 @@ pkgbase = openvpn-xor-patched
 	depends = pam
 	depends = libsystemd
 	optdepends = easy-rsa: for easy key management
-	provides = openvpn=2.3.11
+	provides = openvpn=2.3.12
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev
-	source = https://github.com/OpenVPN/openvpn/archive/v2.3.11.tar.gz
+	source = https://github.com/OpenVPN/openvpn/archive/v2.3.12.tar.gz
 	source = openvpn@.service
 	source = git://github.com/clayface/openvpn_xorpatch.git
-	sha256sums = ffab2e2fb50a4b65fc4b2d1ae972f52b2e5f91467af88349e2a5d27afd2d2846
+	sha256sums = 698c50519fcb7dfa8880c760e3d9be9c3d145689c9eb243ac5d5c6fd19317bbc
 	sha256sums = 47a4ee993f8aaa7370e9a84384fcfc993fd76aa4db11c46629b156d0c5fad49a
 	sha256sums = SKIP
 
