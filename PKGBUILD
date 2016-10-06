@@ -150,7 +150,7 @@ package_lib32-llvm-svn() {
     make DESTDIR="${pkgdir}" install
 
     # The runtime libraries get installed in llvm-libs-svn
-    rm -f "${pkgdir}"/usr/lib32/lib{LLVM,LTO}{,-*}.so
+    rm -f "${pkgdir}"/usr/lib32/lib{LLVM,LTO}{,-*}.so{,.*}
     mv -f "${pkgdir}"/usr/lib32/{BugpointPasses,LLVMgold}.so "${srcdir}/"
 
     # Clang libraries go to a separate package
