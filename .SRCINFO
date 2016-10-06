@@ -1,0 +1,18 @@
+pkgbase = python2-spread
+	pkgdesc = Python2 bindings for the spread toolkit
+	pkgver = 1.5spread4
+	pkgrel = 1
+	url = http://www.spread.org
+	arch = x86_64
+	arch = i386
+	license = PSF
+	makedepends = python2-setuptools
+	depends = python2
+	depends = spread-daemon
+	provides = spread-python2
+	conflicts = spread-python2
+	source = http://www.spread.org/files/SpreadModule-1.5spread4.tgz
+	md5sums = 28c0da7a0658c2f13aa5596b2953d7ad
+
+pkgname = python2-spread
+
