@@ -30,6 +30,7 @@ install:-
         pack_install(aleph, [interactive(false)]),
         pack_install(auc, [interactive(false)]),
         pack_install(real, [interactive(false)]),
+        pack_install(matrix, [interactive(false)]),
         pack_install(cplint, [interactive(false)]).
 
 main:-

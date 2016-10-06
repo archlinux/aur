@@ -1,13 +1,13 @@
 startdir=
 
 post_install() {
+    echo ""
+    echo ""
     ${startdir}/install_web_iface_deps.pl
     echo ""
     echo ""
-    echo "Please install the matrix package \
-separately within swipl (run as root): pack_install(matrix)."
-    echo ""
-    echo "Start and enable swish-cplint.service"
+    echo "You can now start and enable \
+swish-cplint.service to run the server."
 }
 
 pre_remove() {
