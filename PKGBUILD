@@ -17,17 +17,17 @@ md5sums=('969d315ce857982192bd48441353d944'
          '93a08034a2a55644b8c57cd821e3a353')
 
 build() {
-	cd $srcdir/spread-src-$pkgver
+    cd $srcdir/spread-src-$pkgver
 
-	export CFLAGS="$CFLAGS -fPIC"
-	./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
-		--sbindir=/usr/bin
-	make || return 1
+    export CFLAGS="$CFLAGS -fPIC"
+    ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc \
+        --sbindir=/usr/bin
+    make || return 1
 }
 
 package() {
-	cd $srcdir/spread-src-$pkgver
-	make DESTDIR=$pkgdir install
-	install -D license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE || return 1
+    cd $srcdir/spread-src-$pkgver
+    make DESTDIR=$pkgdir install
+    install -D license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE || return 1
     install -Dm644 "${srcdir}/spread.service" "${pkgdir}/usr/lib/systemd/system/spread.service"
 }
