@@ -3,13 +3,13 @@
 
 pkgname="pushbullet-commons"
 pkgver="0.5.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A library to work width pushbullet"
 arch=('any')
 url="https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/"
 license=('GPL3')
-depends=('python2')
-makedepends=('python2-distutils-extra')
+depends=('python2' 'python-requests' 'python-cryptography')
+makedepends=('python2-distutils-extra' 'python2-polib')
 source=("https://launchpad.net/~atareao/+archive/ubuntu/pushbullet/+files/${pkgname}_${pkgver}-0extras16.04.4.tar.xz")
 sha256sums=('c8d597cb3c15e27073e6e4914a7673a48e9a3112c168d2bbe680ff7f429f2336')
 

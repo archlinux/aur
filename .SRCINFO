@@ -1,12 +1,15 @@
 pkgbase = pushbullet-commons
 	pkgdesc = A library to work width pushbullet
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.atareao.es/apps/pushbullet-indicator-para-enviar-archivos-entre-ubuntu-y-android/
 	arch = any
 	license = GPL3
 	makedepends = python2-distutils-extra
+	makedepends = python2-polib
 	depends = python2
+	depends = python-requests
+	depends = python-cryptography
 	source = https://launchpad.net/~atareao/+archive/ubuntu/pushbullet/+files/pushbullet-commons_0.5.6-0extras16.04.4.tar.xz
 	sha256sums = c8d597cb3c15e27073e6e4914a7673a48e9a3112c168d2bbe680ff7f429f2336
 
