@@ -8,7 +8,7 @@
 
 pkgname=paraview
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -73,7 +73,7 @@ build() {
    -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
    -DPARAVIEW_QT_VERSION=5 \
    -DVTK_QT_VERSION=5 \
-   -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt/bin/qhelpgenerator \
+   -DQT_HELP_GENERATOR:FILEPATH=/usr/bin/qhelpgenerator \
    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
    -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
    -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
