@@ -9,7 +9,7 @@ pkgbase = rsc
 	makedepends = git
 	makedepends = cmake
 	depends = boost
-	source = git+https://code.cor-lab.org/git/rsc.git#branch=0.14.5.4df6330
+	source = git+https://code.cor-lab.org/git/rsc.git#branch=0.14
 	md5sums = SKIP
 
 pkgname = rsc

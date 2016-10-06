@@ -9,7 +9,7 @@ url='https://projects.cor-lab.org/projects/rsc'
 license=('LGPL3')
 depends=('boost')
 makedepends=('git' 'cmake')
-source=("git+https://code.cor-lab.org/git/rsc.git#branch=${pkgver}")
+source=("git+https://code.cor-lab.org/git/rsc.git#branch=0.14")
 md5sums=('SKIP')
 
 pkgver() {
