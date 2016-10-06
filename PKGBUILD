@@ -3,7 +3,7 @@
 _pkgname=osu
 pkgname=$_pkgname-git
 pkgver=r182.3c01f59
-pkgrel=1
+pkgrel=2
 
 pkgdesc='rhythm is just a *click* away!'
 url='https://osu.ppy.sh'
@@ -17,6 +17,7 @@ source=("git+https://github.com/ppy/$_pkgname.git"
         "git+https://github.com/ppy/$_pkgname-resources.git"
         "git+https://github.com/ppy/$_pkgname-framework.git"
         "osu-native")
+install=$pkgname.install
 
 sha256sums=('SKIP'
             'SKIP'

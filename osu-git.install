@@ -1,0 +1,3 @@
+post_install() {
+  echo "-- Note: the osu-git executable is currently named osu-native"
+}
