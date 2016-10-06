@@ -34,10 +34,10 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir" install
-	install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -m644 -D "res/50-xorg-fix-xwiimote.conf" "$pkgdir/etc/X11/xorg.conf.d/50-fix-xwiimote.conf"
+  cd "$srcdir/$_pkgname"
+  make DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D "res/50-xorg-fix-xwiimote.conf" "$pkgdir/etc/X11/xorg.conf.d/50-fix-xwiimote.conf"
 }
 
 # vim:set ts=2 sw=2 et:
