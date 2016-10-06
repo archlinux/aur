@@ -1,7 +1,7 @@
 pkgbase = wmail-bin-git
 	pkgdesc = The missing desktop client for Gmail & Google Inbox
-	pkgver = 1.3.9
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 3
 	url = https://github.com/Thomas101/wmail
 	arch = x86_64
 	license = MIT
@@ -16,12 +16,12 @@ pkgbase = wmail-bin-git
 	optdepends = gvfs
 	optdepends = libnotify
 	conflicts = wmail
-	noextract = wmail-linux-v1.3.9.tar.gz
+	noextract = wmail-linux-v1.4.0.tar.gz
 	options = !strip
-	source = wmail-linux-v1.3.9.tar.gz::https://github.com/Thomas101/wmail/releases/download/v1.3.9/WMail_1_3_9_prerelease_linux_x64.tar.gz
-	source = app-v1.3.9.png::https://raw.githubusercontent.com/Thomas101/wmail/v1.3.9/assets/icons/app.png
+	source = wmail-linux-v1.4.0.tar.gz::https://github.com/Thomas101/wmail/releases/download/v1.4.0/WMail_1_4_0_prerelease_linux_x64.tar.gz
+	source = app-v1.4.0.png::https://raw.githubusercontent.com/Thomas101/wmail/v1.4.0/assets/icons/app.png
 	source = wmail.desktop
-	sha256sums = e82fb97a7fdab28a38c82a567ca9e3cd999c7d08a111d499775a4e1854d118fe
+	sha256sums = 4a47a8bf609af17c789aabe27294d377778cc0a4e7a53b9155d69a53c428bf1e
 	sha256sums = 08d2f7997cddab19598ebf25dc88210992a1e220381046662929f61b240a906b
 	sha256sums = 47fb6b3c0d49280cfca89b034b1b714d64a1e158114abcc20a7b6c40faff9a7b
 
