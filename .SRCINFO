@@ -1,8 +1,8 @@
 pkgbase = rst-converters-cpp
-	pkgdesc = Robotics Service Bus C++ spread transport
+	pkgdesc = Robotics Systems Types converters fro C++
 	pkgver = 0.14.0.ec05a16
 	pkgrel = 1
-	url = https://projects.cor-lab.org/projects/rsb
+	url = https://projects.cor-lab.org/projects/rst
 	arch = i686
 	arch = x86_64
 	license = LGPL3
