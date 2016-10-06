@@ -2,7 +2,7 @@
 
 _pkgbasename=libedit
 pkgname=lib32-libedit
-_pkgver=20160618-3.1
+_pkgver=20160903-3.1
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='Command line editor library providing generic line editing, history, and tokenization functions (32-bit)'
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('lib32-glibc' 'lib32-ncurses' 'libedit')
 makedepends=('gcc-multilib')
 source=("http://www.thrysoee.dk/editline/libedit-${pkgver/_/-}.tar.gz")
-sha1sums=('56590b6827bb208d84c26c791371360bf8c316a6')
+sha256sums=('0ccbd2e7d46097f136fcb1aaa0d5bc24e23bb73f57d25bee5a852a683eaa7567')
 
 build() {
 	export CC="gcc -m32"
