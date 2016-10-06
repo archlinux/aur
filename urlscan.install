@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+cat <<End-of-message
+
+    Configuration: 
+      The default system browser will be used (if set) to open URLs. If a particular browser is desired, set the BROWSER environment variable. For example, add:
+        export BROWSER="chromium"
+      to .bashrc
+End-of-message
+}
+# vim:set ts=2 sw=2 et:
