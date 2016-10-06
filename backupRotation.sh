@@ -107,12 +107,13 @@ for source_path in "${!source_target_mappings[@]}"; do
             -type d -exec "$cleanup_command" {} \;
     else
         message="Source files in \"$source_path\" should be backed up but aren't available."
+        $verbose && echo "$message" &>/dev/stderr
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
                 grep ' .+$' --only-matching --extended-regexp)
             do
-                $verbose && echo "$message" >/dev/stderr
+                echo A $e_mail_address
                 msmtp -t <<EOF
 From: $sender_e_mail_address
 To: $e_mail_address
