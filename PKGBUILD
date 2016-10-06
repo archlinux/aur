@@ -3,17 +3,15 @@
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.205.r5.g2009d1a
+pkgver=0.9.209.r3.gc25c015
 pkgrel=1
 pkgdesc='Music player for GNOME'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/gnumdk/${_gitname}"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-dbus' 'python-gobject' 'python-cairo' 'totem-plparser')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-dbus' 'python-gobject' 'python-cairo' 'totem-plparser' 'libsecret' 'python-pylast')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
-optdepends=('libsecret: Last.FM support'
-            'python-pylast: Last.FM support'
-            'python-wikipedia: display advanced artist information')
+optdepends=('python-wikipedia: display advanced artist information')
 options=('!emptydirs')
 source=("git://github.com/gnumdk/${_gitname}.git")
 sha1sums=('SKIP')
