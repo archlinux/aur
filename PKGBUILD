@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.12.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://conan.io"
 license=('MIT')
 makedepends=('python-setuptools')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
-sha512sums=('f5adc25e0745883adc99cc06f22c915106e308e2f455c93ffe7d3db0320fb9fbd0214bd00f743f6e5c0a97e3eebea0e7ace0eaf836a8b13757e550cc46f94218')
+sha512sums=('eb2e90af90fadaa3cd6da765bbfd12f76a3a7108989ad51a7a79de53b939d7b532ae2f7d77ceb595468aae540a1f13cb64a6a524e56fd4c9fd6224b3e6e7528b')
 
 
 build() {
