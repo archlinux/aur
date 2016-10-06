@@ -1,37 +1,42 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=5
+pkgrel=6
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
 license=("GPL")
-depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'cfitsio' 'gsl' 'python2'
-'python2-numpy' 'python2-pyfits')
+depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python2' 'python2-pyfits'
+'python2-numpy' 'netpbm' 'cfitsio' 'gsl')
 makedepends=('make' 'gcc')
 source=("https://github.com/dstndstn/${pkgname}/archive/${pkgver}.tar.gz")
 
 prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd astrometry.net-${pkgver}
+  sed -e 's/NETPBM_INC\ ?=/NETPBM_INC\ ?=\ -I\/usr\/include\/netpbm/g' -i util/makefile.netpbm
+  sed -e 's/-L.\ -lnetpbm/-L\/usr\/lib\ -lnetpbm/g' -i util/makefile.netpbm
   sed -e 's/python/python2/' -i util/makefile.common blind/Makefile util/Makefile sdss/Makefile libkd/Makefile
 }
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make SYSTEM_GSL=yes PYTHON=/usr/bin/python2 all py extra
+  make PYTHON=/usr/bin/python2 all py extra
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make INSTALL_DIR=${pkgdir}/usr \
-	    DATA_INSTALL_DIR=${pkgdir}/usr/share/astrometry \
-	    LIB_INSTALL_DIR=${pkgdir}/usr/lib/ \
-	    PY_BASE_INSTALL_DIR=${pkgdir}/usr/lib/python2.7/site-packages/astrometry/ \
-	    ETC_INSTALL_DIR=${pkgdir}/etc \
-	    FINAL_DIR=/usr \
-	    DATA_FINAL_DIR=/usr/share/astrometry \
-	    SYSTEM_GSL=yes \
-	install
-  rm -f ${pkgdir}/usr/bin/*.py
+  cd astrometry.net-${pkgver}
+
+  make INSTALL_DIR="${pkgdir}/usr" \
+       ETC_INSTALL_DIR="${pkgdir}/etc" \
+       EXAMPLE_INSTALL_DIR="${pkgdir}/usr/share/astrometry/examples" \
+       DATA_INSTALL_DIR="${pkgdir}/usr/share/astrometry/data" \
+       PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python2.7/astrometry" \
+       PY_BASE_LINK_DIR="../lib/python2.7/astrometry" \
+       install
+
+  cd ${pkgdir}; grep -r -l "/usr/bin/env python" . | xargs sed -i 's|/usr/bin/env python|/usr/bin/env python2|'
+  sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
+  rm ${pkgdir}/usr/doc/report.txt
 }
 md5sums=('b7b3277bb9779ef19b06b8e2377a63d4')

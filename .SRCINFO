@@ -1,7 +1,7 @@
 pkgbase = astrometry.net
 	pkgdesc = Automatic recognition of astronomical images
 	pkgver = 0.67
-	pkgrel = 5
+	pkgrel = 6
 	url = http://astrometry.net/
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,12 @@ pkgbase = astrometry.net
 	depends = cairo
 	depends = libpng
 	depends = libjpeg-turbo
+	depends = python2
+	depends = python2-pyfits
+	depends = python2-numpy
+	depends = netpbm
 	depends = cfitsio
 	depends = gsl
-	depends = python2
-	depends = python2-numpy
-	depends = python2-pyfits
 	source = https://github.com/dstndstn/astrometry.net/archive/0.67.tar.gz
 	md5sums = b7b3277bb9779ef19b06b8e2377a63d4
 
