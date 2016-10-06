@@ -8,6 +8,7 @@ pkgdesc="Maintenance , backup and system checks in a menu driven  Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
 license=('GPL')
+makedepends=('git')
 optdepends=(
   'cower: AUR package for AUR work'
   'gdrive: AUR package for google drive backup'
@@ -28,4 +29,3 @@ package() {
     install -D -m644 Readme.md "$HOME"/.config/cylon/cylonReadme.md
     install -D -m644 License.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
 }
-
