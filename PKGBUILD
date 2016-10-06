@@ -8,7 +8,7 @@ arch=(any)
 url='https://projects.cor-lab.org/projects/rsb'
 license=('LGPL3')
 depends=()
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'rsc')
 source=("rsb-proto::git+https://code.cor-lab.org/git/rsb.git.protocol#branch=0.14")
 md5sums=('SKIP')
 
