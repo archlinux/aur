@@ -1,0 +1,7 @@
+post_install() {
+  odbcinst -i -d -f opt/microsoft/msodbcsql/13.0.0.0/template.ini
+}
+
+post_upgrade() {
+  post_install
+}
