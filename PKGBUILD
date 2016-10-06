@@ -2,7 +2,7 @@
 # Contributor: Alessandro Sagratini <ale_sagra at hotmail dot com>
 
 pkgname=perl-net-sftp-foreign
-pkgver=1.81
+pkgver=1.86
 pkgrel=1
 pkgdesc="Perl SFTP client using the native SSH client application"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('perl-file-which' 'perl-sort-key')
 options=('!emptydirs')
 changelog=Changes
 source=("http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SFTP-Foreign-${pkgver}.tar.gz")
-sha256sums=('d1918f272f2d5b5d3f4d81bb9027788fddaa0e6507ebaf82938a0466accc1ed4')
+sha256sums=('c94daf13c50b3f6b7ac7e11294f524bab702e413b6719d8a331a723d4d870dec')
 
 build() {
 	cd "${srcdir}/Net-SFTP-Foreign-${pkgver}"
