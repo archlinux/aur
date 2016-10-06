@@ -6,7 +6,7 @@
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=53.0.2785.113
+pkgver=53.0.2785.143
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
@@ -20,10 +20,11 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'gtk2')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('gtk2: for flashplugin'
-            'kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet')
+            'kwallet: for storing passwords in KWallet'
+            'pepper-flash: for pepper-flash plugin'
+	    'gtk2: for pepper-flash plugin')
 conflicts=('chromium')
 replaces=('chromium')
 options=('!strip')
@@ -31,13 +32,15 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch
-        chromium-52.0.2743.116-unset-madv_free.patch)
-sha256sums=('d813f282eee0b5f24d099236fd01d57e672dd63a49387e3292689659ebf9880a'
+        chromium-52.0.2743.116-unset-madv_free.patch
+        chromium-cups-2.2.patch
+        chromium-widevine.patch)
+sha256sums=('c52a58b79bfb27bb87e4a0a6ff213001485fbc747657b290f75d39ddce07dcc3'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227')
+            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            '6519cf913cb68e2def1bbf9210ef40a178b45bc9d325297c41b7a784ff57cc8e'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -78,7 +81,10 @@ prepare() {
 
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
+  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+
+  # Fix compiling with CUPS 2.2 backend
+  patch -Np0 -i ../chromium-cups-2.2.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
