@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0.1-PREVIEW-1
+_swiftver=3.0.1-PREVIEW-2
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -26,17 +26,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "xar-1.6.patch"
 )
-sha256sums=('09a4c9ad15ab49c36c6c72a1e1747892937c4d24a90b3eeac3c446288511849c'
-            '13db7680025c55e122bb455ed749196e1ea2e41f9157d26c9e9ab2850104916d'
-            '09727ae1b963f95c441ee679295efe8fe7ad3f6cc328b6bb941a80809ed0c8a9'
-            'f68e8a4dc60c1a782ca1e511181b660333ecb3a243e5e183d50d3325bf5f92bc'
-            '38f50c138dd989a2441e902bf16374cd88138a4813e63995cd27ef8cb4be236a'
-            'f556a1919a7d0a96b1f99f2b47addf47015057dbe16e6e20b204368175b80773'
-            '02d090811a0ad507a7305d639a3ab15547e364c554a1ded9703f6f67d4ca4f4c'
-            'c52297b5cfac5cea700b909552a3375ac1f22a7013d3fe2d373f58348a3ef0a3'
-            '378ed451c66322ea2d7fda05c658af6daa4bdd6b7603d6488667bcf0b8241dc2'
-            'c54db125812205cf454bbe9c8cfded54b9b2a273b222e433be99c17303d8c822'
-            '7cb46a443ad22ca155185be8b480b43c3bf67170b7e9a9fe415d0c3882bb4b29'
+sha256sums=('3e4cd2f2a3083610e88ffe0b042b3a0c0bb9a10ee6952901d5ecae4c20327215'
+            '35c345b1308979fb7eeab2d3e35b673f675dd0642f882425df82aed610b07e6c'
+            'a9424a01d8e4cdd116550829c2c3cb8da571767506846e0f8804949fd2aa9971'
+            '520d09984e9095d15c03a878613eb8dfd26d6909aa904790e2da9811fceb0cc8'
+            'f6e5419cfd1abb21dcdee17d4ea756d884212fa0a54be00087dfcda2c55e1723'
+            '1a4852cd1cf8572733d6f775f6f2e20c542be36f7f262c89f966b7b3daa8a3ad'
+            '4c79d2b05940a3b3e6ca5928a57f6031f3b64b5d8b7b7f2d30529a7e307b0b47'
+            'fb24e051753c88a802bc942ea04a53e9beb8cf2bb5f26b66484ba93c0c441916'
+            'c6776946dc0de24fed0b0318f227a85f331cdb076fb5e5ed5e7c3a37a1f34e76'
+            '8a0e5e3caea15beb3f8adaeca062179d98269045542474d2e39c42a4751a21fe'
+            'a25f779457dff6f8ef6e8f8cc549ce472afa3fd6c7d483f6045933a666747199'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
 
