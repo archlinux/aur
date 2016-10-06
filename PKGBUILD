@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-openmesh
-pkgver=6.1
+pkgver=6.3
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2")
-sha1sums=('f1a6e46ac5490bbed2c89312494366c43cf9edd3')
+sha1sums=('c749ee7c9c1cbfad2d53a8cf43e8a9f77de6f7cd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
