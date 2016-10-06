@@ -64,7 +64,7 @@ backup_month_day_number=1
 number_of_daily_retention_days=14 # Daily backups for the last 14 days.
 number_of_weekly_retention_days=56 # Weekly backups for the last 2 month.
 number_of_monthly_retention_days=365 # Monthly backups for the last year.
-backup_command='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose "$sourcePath" "$targetFilePath" && tar --dereference --create --verbose --gzip --file "${targetFilePath}.tar.gz" "$targetFilePath" && rm --recursive --verbose "$targetFilePath"'
+backup_command='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose "$source_path" "$target_file_path" && tar --dereference --create --verbose --gzip --file "${target_file_path}.tar.gz" "$target_file_path" && rm --recursive --verbose "$target_file_path"'
 # Folder to delete is the last command line argument.
 cleanup_command='rm --recursive --verbose'
 verbose=false
@@ -90,6 +90,7 @@ for source_path in "${!source_target_mappings[@]}"; do
         target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
     fi
     mkdir --parents "$(dirname "$target_file_path")"
+    $verbose && echo "Running \"${backup_command}\"."
     if eval "$backup_command"; then
         # Clean outdated daily backups.
         find "$target_path" -mtime +"$number_of_daily_retention_days" -type d \
