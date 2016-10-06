@@ -37,19 +37,20 @@ prepareEnvironment() {
 
 build() {
 	prepareEnvironment
-	/usr/bin/perl Makefile.PL
-	make
+	/usr/bin/perl Build.PL
+	./Build
 }
 
 check() {
 	prepareEnvironment
-	make test
+	./Build test
 }
 
 package() {
 	prepareEnvironment
-	make install
+	./Build install --installdirs=vendor --destdir="$pkgdir"
 
-	# Remove "perllocal.pod" and ".packlist".
+# Remove "perllocal.pod" and ".packlist".
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
