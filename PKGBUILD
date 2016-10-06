@@ -5,12 +5,13 @@ pkgname=pam-face-authentication
 pkgver=0.3
 pkgrel=7
 pkgdesc="PAM face auth"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://code.google.com/p/pam-face-authentication"
 license=('GPL')
 depends=('pam' 'opencv' 'libx11' 'qt4')
 makedepends=('cmake')
-source=('http://pam-face-authentication.googlecode.com/files/pam-face-authentication-0.3.tar.gz')
+source=('https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pam-face-authentication/pam-face-authentication-${pkgver}.tar.gz')
+sha512sums=('a140aa6c2662c83e656727c92db61d9f8df6061e222b0934bb0bf73b6472e14b124027e2b3da1a3f5d7fa8b4d3d7d9b198bb3132f5a79f8ad0847f567ff0c79d')
 
 build() {
 cd "$srcdir"/${pkgname}-$pkgver
@@ -26,5 +27,3 @@ cd ${srcdir}/${pkgname}-$pkgver
 make || return 1
 make DESTDIR="$pkgdir/" install || return 1
 }
-
-md5sums=('5ef71bcf4bdebd2ee7216387ef17fc27')
