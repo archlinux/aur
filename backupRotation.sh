@@ -125,7 +125,6 @@ $message
 EOF
             done
         fi
-        echo "$message" &>/dev/stderr
         exit 1
     fi
 done
