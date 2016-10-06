@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.4.r138.g0776bad
+pkgver=2.5.4.r164.g8d2e849
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -28,6 +28,11 @@ sha512sums=('SKIP'
 _branch=master
 
 prepare() {
+  [ -f zynaddsubfx.desktop ] && rm zynaddsubfx.desktop
+  gendesk $startdir/PKGBUILD
+  # Match camel case of included .desktop files
+  setconf "${pkgname%-*}.desktop" Name "ZynAddSubFX"
+
   cd "${pkgname}"
   [ -d build ] || mkdir build
   git checkout ${_branch}
@@ -51,11 +56,6 @@ pkgver() {
 }
 
 build() {
-  [ -f zynaddsubfx.desktop ] && rm zynaddsubfx.desktop
-  gendesk $startdir/PKGBUILD
-  # Match camel case of included .desktop files
-  setconf "${pkgname%-*}.desktop" Name "ZynAddSubFX"
-
   # Does not build with --as-needed
   LDFLAGS=${LDFLAGS//,--as-needed}
 
