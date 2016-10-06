@@ -9,7 +9,7 @@ pkgdesc="Perl/CPAN Module Text::ASCIITable"
 arch=("i686" "x86_64")
 url="https://metacpan.org/pod/Text::ASCIITable"
 license=("GPL" "Artistic")
-source=("http://search.cpan.org/CPAN/authors/id/L/LU/LUNATIC/${_distname}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/L/LU/LUNATIC/${_distname}.tar.gz")
 sha256sums=('866a1c7dd0150be75e1a4be275858dfc048a165f378ef3845a844526f019a69c')
 
 package() {
