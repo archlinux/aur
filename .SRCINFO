@@ -1,0 +1,15 @@
+pkgbase = vavrdisasm
+	pkgdesc = An 8-bit Atmel AVR disassembler
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/vsergeev/vavrdisasm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	depends = glibc
+	source = git+https://github.com/vsergeev/vavrdisasm.git#tag=v3.1
+	md5sums = SKIP
+
+pkgname = vavrdisasm
+
