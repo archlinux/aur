@@ -1,5 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 17.0b2
+	pkgdesc = Kodi Media Center monthly development releases
 	pkgrel = 1
 	url = http://xbmc.org
 	arch = i686
@@ -60,7 +61,6 @@ pkgbase = kodi-devel
 	sha256sums = 18b21769b3921e6d9c18b04c3598a0a21f998cb9664ec4e1a3c97371b1d4adc3
 
 pkgname = kodi-devel
-	pkgdesc = Kodi Media Center monthly development releases
 	install = kodi-devel.install
 	depends = bluez-libs
 	depends = libcrossguid-git
@@ -162,7 +162,8 @@ pkgname = kodi-devel
 	conflicts = kodi-git
 
 pkgname = kodi-devel-eventclients
-	pkgdesc = Kodi Event Clients
+	pkgdesc = Kodi Media Center monthly development releases Event Clients
+	arch = any
 	depends = cwiid
 	conflicts = kodi-eventclients
 	conflicts = kodi-eventclients-devel

@@ -19,6 +19,7 @@
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
 pkgver=17.0b2
+pkgdesc="Kodi Media Center monthly development releases"
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -92,7 +93,6 @@ build() {
 }
 
 package_kodi-devel() {
-  pkgdesc="Kodi Media Center monthly development releases"
   provides=('xbmc' 'kodi')
   conflicts=('xbmc' 'xbmc-pulse' 'xbmc-svn' 'xbmc-git-xvba' 'xbmc-git' 'kodi' 'kodi-git')
   install="${pkgname}.install"
@@ -178,7 +178,7 @@ package_kodi-devel() {
 
   # Licenses
   msg2 "Copy licenses"
-  install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
+  install -dm755 "${pkgdir}${_prefix}/share/licenses/${pkgname}"
   for licensef in LICENSE.GPL copying.txt; do
     mv "${pkgdir}${_prefix}/share/doc/kodi/${licensef}" \
       "${pkgdir}${_prefix}/share/licenses/${pkgname}"
@@ -186,7 +186,8 @@ package_kodi-devel() {
 }
 
 package_kodi-devel-eventclients() {
-  pkgdesc="Kodi Event Clients"
+  arch=('any')
+  pkgdesc+=" Event Clients"
   depends=('cwiid')
   conflicts=('kodi-eventclients' 'kodi-eventclients-devel')
   replaces=('kodi-eventclients-devel')
