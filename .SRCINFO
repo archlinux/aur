@@ -1,7 +1,7 @@
 pkgbase = mayavi
 	pkgdesc = A 3-dimensional visualizer of scientific data
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enthought/mayavi
 	arch = i686
 	arch = x86_64
@@ -31,10 +31,12 @@ pkgbase = mayavi
 	source = mayavi.sh
 	source = mayavi.csh
 	source = vtk6.patch
+	source = setuptools.patch
 	md5sums = ed3b0004b810bd5741ae9bb46d197250
 	md5sums = 3e998f4f3cb1d9bc3353fbb933984458
 	md5sums = d68e29e3c805ad2e0a5e82b1744b1f0a
 	md5sums = 1b91b3aaf31a44ddc5e770f4fb1e3c5f
+	md5sums = fa81f3c6610942dedd072ef55428c41b
 
 pkgname = mayavi
 

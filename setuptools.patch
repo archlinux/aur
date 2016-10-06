@@ -1,0 +1,22 @@
+diff -urN mayavi-4.5.0.orig/tvtk/setup.py mayavi-4.5.0/tvtk/setup.py
+--- mayavi-4.5.0.orig/tvtk/setup.py	2016-10-06 09:59:45.021343207 +0200
++++ mayavi-4.5.0/tvtk/setup.py	2016-10-06 10:01:17.458009409 +0200
+@@ -19,12 +19,18 @@
+ 
+     config.add_subpackage('custom')
+     config.add_subpackage('pipeline')
++    config.add_subpackage('pyface')
++    config.add_subpackage('pyface.*')
++    config.add_subpackage('pyface.*.*')
++    config.add_subpackage('view')
++
+     config.add_data_dir('pipeline/images')
+     config.add_data_dir('pyface/images')
+     config.add_data_dir('tools/images')
+ 
+     config.add_subpackage('plugins')
+     config.add_subpackage('plugins.*')
++    config.add_subpackage('plugins.*.*')
+ 
+     config.add_subpackage('tools')
+     config.add_subpackage('util')

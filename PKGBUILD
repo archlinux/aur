@@ -3,7 +3,7 @@
 
 pkgname=mayavi
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3-dimensional visualizer of scientific data"
 arch=('i686' 'x86_64')
 url="https://github.com/enthought/mayavi"
@@ -16,17 +16,21 @@ provides=('python2-mayavi')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enthought/mayavi/archive/${pkgver}.tar.gz"
-        "mayavi.sh" "mayavi.csh" "vtk6.patch")
+        "mayavi.sh" "mayavi.csh" "vtk6.patch" "setuptools.patch")
 md5sums=('ed3b0004b810bd5741ae9bb46d197250'
          '3e998f4f3cb1d9bc3353fbb933984458'
          'd68e29e3c805ad2e0a5e82b1744b1f0a'
-         '1b91b3aaf31a44ddc5e770f4fb1e3c5f')
+         '1b91b3aaf31a44ddc5e770f4fb1e3c5f'
+         'fa81f3c6610942dedd072ef55428c41b')
 
 prepare() {
   cd "$srcdir"/mayavi-$pkgver
 
   # patch to force VTK6
   patch -p1 < ../vtk6.patch
+
+  # patch to fix setuptools 28.0 --- https://github.com/enthought/mayavi/issues/443
+  patch -p1 < ../setuptools.patch
 
   # force selection of wxpython 2.8
   sed -e "s/wxversion.ensureMinimal('2.8')/wxversion.select('2.8')/g" -i $(find . -name '*.py')
