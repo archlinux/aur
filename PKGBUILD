@@ -2,7 +2,7 @@
 _gitname=wallpaper-reddit
 _gitbranch=master
 pkgname=${_gitname}-git
-pkgver=967bbdfec50c947bce92fbc2e161448e4bbb09fa
+pkgver=37668c8cfa1767e2d98c7a6e3bd53c9a748601da
 pkgrel=1
 pkgdesc="Downloads and sets wallpapers pulled from reddit.com"
 arch=('any')
