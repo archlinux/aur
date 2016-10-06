@@ -2,8 +2,8 @@
 
 pkgname=lxd-lts
 _gitpkgname=lxd
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (LTS version)"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -31,7 +31,7 @@ source=(
     "networkmanager-dnsmasq-lxd.conf"
 )
 
-md5sums=('9e63bcd0ce9248eadf5c1a8e789af9ce'
+md5sums=('29e41a6e2607f6230c0f9e67dbf75fed'
          'b1780c0e01e404895e35ac277aa597c4'
          'b1fd16933c1b24aaa9ccc8f5a0e6478c'
          'f2bc527eabb1fdba810b0393ee41edd4'
