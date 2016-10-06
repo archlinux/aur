@@ -1,0 +1,17 @@
+pkgbase = lf
+	pkgdesc = lf: A terminal file manager, heavily inspired by ranger
+	pkgver = nightly
+	pkgrel = 1
+	url = https://github.com/gokcehan/lf
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = lf
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/gokcehan/lf/archive/nightly.tar.gz
+	sha256sums = ec0548d2169ef7748d8e9922c814adc4d445eb4886f6e8a51e90f5fff5ed7d90
+
+pkgname = lf
+
