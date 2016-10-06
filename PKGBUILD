@@ -7,7 +7,7 @@
 # Contributor: Verni <vernes.siljegovic@gmail.com>
 
 pkgname=netbeans-php
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="Netbeans IDE - PHP version"
 arch=('any')
@@ -21,9 +21,9 @@ optdepends=('php: php execution support'
 
 conflicts=('netbeans')
 install=netbeans-php.install
-source=('http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-php.zip'
+source=('http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-php.zip'
         'netbeans.desktop')
-sha256sums=('c8e1f90becc0dde3aa0be18046cf94ab9bba05e4975e98772605fe6a56fbe163'
+sha256sums=('51ae034b99f16c3bab66ab7dfd07c3554953e78828c2493cde1bb67c95c43e2b'
             'a2172e4ab1d73a6d5b6cd0d44a329472ecffbfb1b69a1144737929f3ed0d307c')
 options=('!strip')
 
