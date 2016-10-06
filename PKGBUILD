@@ -1,4 +1,4 @@
-# Contributor: Trizen <trizenx@gmail.com>
+# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-mpc'
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('gmp>=6.1.0' 'libmpc>=1.0.3' 'mpfr>=3.1.3.p4' 'perl-math-mpfr>=3.23')
 makedepends=()
 url='https://metacpan.org/release/Math-MPC'
-source=("http://search.cpan.org/CPAN/authors/id/S/SI/SISYPHUS/Math-MPC-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPC-$pkgver.tar.gz")
 md5sums=('4f86fb4fb339fdcf060dc33de9c6fdf2')
 sha512sums=('1bcf8298f8cd8a86372c60dffe380333fab16180170fd0bc0a6817da92d11b7b4e6c082df3188d4bf16e244a175b8d1d512bd57661e0f32df762b8143d7452ed')
 _distdir="Math-MPC-${pkgver}"
