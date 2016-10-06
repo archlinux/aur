@@ -106,7 +106,7 @@ for source_path in "${!source_target_mappings[@]}"; do
         find "$target_path" -mtime +"$number_of_monthly_retention_days" \
             -type d -exec "$cleanup_command" {} \;
     else
-        message="Source files on \"$source_path\" should be backed up but aren't available."
+        message="Source files in \"$source_path\" should be backed up but aren't available."
         if hash msmtp && [[ "$e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
