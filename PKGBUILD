@@ -9,10 +9,10 @@ depends=(desktop-file-utils hicolor-icon-theme libappindicator-gtk2 libxss)
 install=$pkgname.install
 
 if [[ $CARCH == 'i686' ]]; then
-    source=("http://desktime.com/updates/linux/beta/desktime-linux_$pkgver_i386.deb")
+    source=(http://desktime.com/updates/linux/beta/desktime-linux_"$pkgver"_i386.deb)
     md5sums=('467340ff81e6c1d12351715c7cafc1ae')
 else
-    source=("http://desktime.com/updates/linux/beta/desktime-linux_1.38_x64.deb")
+    source=(http://desktime.com/updates/linux/beta/desktime-linux_"$pkgver"_x64.deb)
     md5sums=('72600c449bddb225cda5deb2867505a0')
 fi
 
@@ -25,10 +25,6 @@ package()
 {
     cd "$srcdir"
     bsdtar -xf data.tar.xz -C "$srcdir/"
-    #install -d "$pkgdir/"usr/bin
-    #install -d "$pkgdir/"usr/share/applications
-    #install -d "$pkgdir/"usr/share/doc/desktime-linux
-    #install -d "$pkgdir/"usr/share/icons
 
     install -Dm755 "$srcdir/"usr/bin/desktime-linux "$pkgdir/"usr/bin/desktime-linux
     install -Dm644 "$srcdir/"usr/share/applications/desktime.desktop "$pkgdir/"usr/share/applications/desktime.desktop
