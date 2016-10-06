@@ -1,5 +1,6 @@
 [Unit]
 Description=PlexPy Service
+After=plexmediaserver.service
 
 [Service]
 User=plexpy
