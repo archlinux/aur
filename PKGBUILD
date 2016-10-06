@@ -4,7 +4,7 @@
 
 pkgname='perl-server-starter'
 _cpanname='Server-Starter'
-pkgver='0.12'
+pkgver='0.31'
 pkgrel='1'
 pkgdesc='A superdaemon for hot-deploying server programs.'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('perl-test-tcp>=0.11')
 url="http://search.cpan.org/dist/$_cpanname"
 source=("http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/$_cpanname-$pkgver.tar.gz")
-md5sums=('9df3edf787ff424d2ffd76bc70b15e87')
+md5sums=('48a6cca38adeb57878d5339891dcfacf')
 
 # Function to change to the working directory and set
 # environment variables to override undesired options.
