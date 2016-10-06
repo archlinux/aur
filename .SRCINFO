@@ -1,0 +1,21 @@
+pkgbase = rsb-spread-cpp
+	pkgdesc = Robotics Service Bus C++ implementation
+	pkgver = 0.14.2.e7324f4
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	checkdepends = python2
+	makedepends = git
+	makedepends = cmake
+	depends = rsc
+	depends = boost
+	depends = protobuf
+	depends = spread-daemon
+	depends = rsb-cpp
+	source = rsb-spread-cpp::git+https://code.cor-lab.org/git/rsb.git.spread-cpp#branch=0.14
+	md5sums = SKIP
+
+pkgname = rsb-spread-cpp
+
