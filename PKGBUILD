@@ -1,5 +1,5 @@
 pkgname=fmilib
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="http://www.jmodelica.org/FMILibrary"
 depends=('glibc')
 license=('BSD')
 source=("http://www.jmodelica.org/downloads/FMIL/FMILibrary-${pkgver}-src.zip")
-sha1sums=('975b23233e8eeba39eb503a429f8d74069cbcb3d')
+sha1sums=('901de5765ebabb67a3b3b29eef20b6a26c80fc5c')
 
 prepare() {
   cd "$srcdir"/FMILibrary-${pkgver}
