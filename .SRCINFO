@@ -1,7 +1,7 @@
 pkgbase = python2-rsb
 	pkgdesc = Robotics Service Bus Python implementation
 	pkgver = 0.14.1.cdf638a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = any
 	license = LGPL3
@@ -16,7 +16,7 @@ pkgbase = python2-rsb
 	makedepends = python2-nose
 	makedepends = python2-pylint
 	makedepends = python2-coverage
-	makedepends = spread-python2
+	makedepends = python2-spread
 	depends = python2
 	depends = python2-protobuf
 	optdepends = spread-python2

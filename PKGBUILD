@@ -2,13 +2,13 @@
 
 pkgname='python2-rsb'
 pkgver=0.14.1.cdf638a
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus Python implementation'
 arch=(any)
 url='https://projects.cor-lab.org/projects/rsb'
 license=('LGPL3')
 depends=('python2' 'python2-protobuf')
-makedepends=('git' 'python2-setuptools' 'rsb-proto' 'python2-nose' 'python2-pylint' 'python2-coverage' 'spread-python2')
+makedepends=('git' 'python2-setuptools' 'rsb-proto' 'python2-nose' 'python2-pylint' 'python2-coverage' 'python2-spread')
 optdepends=('spread-python2')
 checkdepends=('spread-daemon' 'spread-python2' 'python2-nose' 'python2-pylint' 'python2-coverage')
 source=("python2-rsb::git+https://code.cor-lab.org/git/rsb.git.python#branch=0.14")
