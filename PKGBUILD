@@ -1,19 +1,19 @@
 # Maintainer: Gao xiang<hughgao01@gmail.com>
 
 pkgname='gamess'
-pkgver=2014R1
+pkgver=2016R1
 pkgrel=1
 pkgdesc="A general ab initio quantum chemistry package. For single machine use only."
 arch=('x86_64')
 url="http://www.msg.ameslab.gov/GAMESS/GAMESS.html"
 license=('custom')
-depends=('gcc-fortran' 'tcsh' 'atlas-lapack-base')
+depends=('gcc-fortran' 'tcsh' 'atlas-lapack')
 install=${pkgname}.install
 
 # You MUST download the package from http://www.msg.ameslab.gov/GAMESS/GAMESS.html and put it in the PKGBUILD folder!
 source=('gamess-current.tar.gz::file://gamess-current.tar.gz' "rungms.patch")
 
-[ "$CARCH" = "x86_64" ] && md5sums=('6403592eaa885cb3691505964d684516' 'b3cce1982df9672b2a1aace1aa0b4177')
+[ "$CARCH" = "x86_64" ] && md5sums=('1bc784a96b6a1e234e51e0349897402b' 'b2b4fbe7f95c21b5a3e448ca67433e38')
 
 prepare() {
 	cd "$pkgname"
@@ -32,8 +32,8 @@ setenv GMS_BUILD_DIR       $_GMS_BUILD_DIR
 setenv GMS_TARGET          linux64
 # FORTRAN compiler setup
 setenv GMS_FORTRAN         gfortran
-# gamess does not support gfortran 5.x, using 4.9 instead
-setenv GMS_GFORTRAN_VERNO  4.9
+# gamess does not support gfortran 6.x, using 5.9 instead
+setenv GMS_GFORTRAN_VERNO  5.3
 # mathematical library setup
 setenv GMS_MATHLIB         atlas
 setenv GMS_MATHLIB_PATH    /usr/lib
@@ -41,6 +41,12 @@ setenv GMS_MATHLIB_PATH    /usr/lib
 setenv GMS_DDI_COMM        sockets
 # LIBCCHEM CPU/GPU code interface
 setenv GMS_LIBCCHEM        false
+# Intel Xeon Phi build: true/false
+setenv GMS_PHI             false
+# Shared memory type: sysv/posix
+setenv GMS_SHMTYPE         sysv
+# OpenMP support: true/false
+setenv GMS_OPENMP          false
 EOF
 
     # test the compiler setup by creating actvte.x

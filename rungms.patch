@@ -1,8 +1,7 @@
-Only in gamess.new: install.info
-diff -aur gamess/rungms gamess.new/rungms
---- gamess/rungms	2014-12-11 00:01:06.000000000 +0800
-+++ gamess.new/rungms	2016-02-20 23:30:05.511889439 +0800
-@@ -60,9 +60,9 @@
+diff -aur src/gamess/rungms src/gamess.new/rungms
+--- gamess/rungms	2016-08-18 23:24:44.000000000 +0800
++++ gamess.new/rungms	2016-10-06 11:00:18.753915705 +0800
+@@ -61,9 +61,9 @@
  #       See also a very old LoadLeveler "ll-gms" for some IBM systems.
  #
  set TARGET=sockets
@@ -15,7 +14,7 @@ diff -aur gamess/rungms gamess.new/rungms
  #
  set JOB=$1      # name of the input file xxx.inp, give only the xxx part
  set VERNO=$2    # revision number of the executable created by 'lked' step
-@@ -326,44 +326,44 @@
+@@ -351,52 +351,52 @@
  #          where all CPUs (aka COREs) are inside a -single- NODE.
  #     At other locations, you may wish to consider some of the examples
  #     that follow below, after commenting out this ISU specific part.
@@ -27,34 +26,42 @@ diff -aur gamess/rungms gamess.new/rungms
 -            set NNODES=1
 -            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 -            breaksw
+-         case cd.msg.chem.iastate.edu:
+-         case zn.msg.chem.iastate.edu:
+-         case ni.msg.chem.iastate.edu:
+-         case te.msg.chem.iastate.edu:
+-         case pb.msg.chem.iastate.edu:
+-         case bi.msg.chem.iastate.edu:
+-         case po.msg.chem.iastate.edu:
+-         case at.msg.chem.iastate.edu:
+-         case as.msg.chem.iastate.edu:
+-            if ($NCPUS > 4) set NCPUS=4
+-            set NNODES=1
+-            set HOSTLIST=(`hostname`:cpus=$NCPUS)
+-            breaksw
+-         case gd.msg.chem.iastate.edu:
+-         case bolt.iprt.iastate.edu:
+-            if ($NCPUS > 6) set NCPUS=6
+-            set NNODES=1
+-            set HOSTLIST=(`hostname`:cpus=$NCPUS)
+-            breaksw
 -         case br.msg.chem.iastate.edu:
 -            if ($NCPUS > 8) set NCPUS=8
 -            set NNODES=1
 -            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 -            breaksw
--         case cd.msg.chem.iastate.edu:
--         case zn.msg.chem.iastate.edu:
--         case ni.msg.chem.iastate.edu:
--         case co.msg.chem.iastate.edu:
--         case pb.msg.chem.iastate.edu:
--         case bi.msg.chem.iastate.edu:
--         case po.msg.chem.iastate.edu:
--         case at.msg.chem.iastate.edu:
--         case sc.msg.chem.iastate.edu:
--            if ($NCPUS > 4) set NCPUS=4
--            set NNODES=1
--            set HOSTLIST=(`hostname`:cpus=$NCPUS)
--            breaksw
 -         case ga.msg.chem.iastate.edu:
 -         case ge.msg.chem.iastate.edu:
--         case gd.msg.chem.iastate.edu:
--            if ($NCPUS > 6) set NCPUS=6
+-            if ($NCPUS > 12) set NCPUS=12
 -            set NNODES=1
 -            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 -            breaksw
 -         default:
--            echo I do not know how to run this node in parallel.
--            exit 20
+-            echo " "
+-            echo Assuming a single but multicore node.
+-            echo " "
+-            set NNODES=1
+-            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 -      endsw
 -   endif
 +#   if ($NCPUS > 1) then
@@ -65,40 +72,48 @@ diff -aur gamess/rungms gamess.new/rungms
 +#            set NNODES=1
 +#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 +#            breaksw
++#         case cd.msg.chem.iastate.edu:
++#         case zn.msg.chem.iastate.edu:
++#         case ni.msg.chem.iastate.edu:
++#         case te.msg.chem.iastate.edu:
++#         case pb.msg.chem.iastate.edu:
++#         case bi.msg.chem.iastate.edu:
++#         case po.msg.chem.iastate.edu:
++#         case at.msg.chem.iastate.edu:
++#         case as.msg.chem.iastate.edu:
++#            if ($NCPUS > 4) set NCPUS=4
++#            set NNODES=1
++#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
++#            breaksw
++#         case gd.msg.chem.iastate.edu:
++#         case bolt.iprt.iastate.edu:
++#            if ($NCPUS > 6) set NCPUS=6
++#            set NNODES=1
++#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
++#            breaksw
 +#         case br.msg.chem.iastate.edu:
 +#            if ($NCPUS > 8) set NCPUS=8
 +#            set NNODES=1
 +#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 +#            breaksw
-+#         case cd.msg.chem.iastate.edu:
-+#         case zn.msg.chem.iastate.edu:
-+#         case ni.msg.chem.iastate.edu:
-+#         case co.msg.chem.iastate.edu:
-+#         case pb.msg.chem.iastate.edu:
-+#         case bi.msg.chem.iastate.edu:
-+#         case po.msg.chem.iastate.edu:
-+#         case at.msg.chem.iastate.edu:
-+#         case sc.msg.chem.iastate.edu:
-+#            if ($NCPUS > 4) set NCPUS=4
-+#            set NNODES=1
-+#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
-+#            breaksw
 +#         case ga.msg.chem.iastate.edu:
 +#         case ge.msg.chem.iastate.edu:
-+#         case gd.msg.chem.iastate.edu:
-+#            if ($NCPUS > 6) set NCPUS=6
++#            if ($NCPUS > 12) set NCPUS=12
 +#            set NNODES=1
 +#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 +#            breaksw
 +#         default:
-+#            echo I do not know how to run this node in parallel.
-+#            exit 20
++#            echo " "
++#            echo Assuming a single but multicore node.
++#            echo " "
++#            set NNODES=1
++#            set HOSTLIST=(`hostname`:cpus=$NCPUS)
 +#      endsw
 +#   endif
  #
- #       3. How to run in a single computer, namely the "localhost", so
+ #       4. How to run in a single computer, namely the "localhost", so
  #          this computer needn't have a proper Internet name.
-@@ -375,13 +375,13 @@
+@@ -408,13 +408,13 @@
  #          Apple binary from our web site, provided it is uncommented,
  #          and the passage #2 just above is deleted or commented out.
  #
@@ -109,14 +124,13 @@ diff -aur gamess/rungms gamess.new/rungms
 -#--      @ n++
 -#--   end
 -#--   set NNODES=$NCPUS
-+    set HOSTLIST=()
-+    @ n=1
-+    while ($n <= $NCPUS)
-+        set HOSTLIST=($HOSTLIST localhost)
-+        @ n++
-+    end
-+    set NNODES=$NCPUS
++   set HOSTLIST=()
++   @ n=1
++   while ($n <= $NCPUS)
++      set HOSTLIST=($HOSTLIST localhost)
++      @ n++
++   end
++   set NNODES=$NCPUS
  #
- #       4. A phony example, of four dual processors (arbitrary names)
+ #       5. A phony example, of four dual processors (arbitrary names)
  #          Since their names never change, we just can just specify them.
-Only in gamess.new/tools: actvte.x
