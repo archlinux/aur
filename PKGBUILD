@@ -3,7 +3,7 @@
 pkgname='rsb-spread-cpp'
 pkgver=0.14.2.e7324f4
 pkgrel=1
-pkgdesc='Robotics Service Bus C++ implementation'
+pkgdesc='Robotics Service Bus C++ spread transport'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
 license=('LGPL3')

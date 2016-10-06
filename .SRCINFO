@@ -1,5 +1,5 @@
 pkgbase = rsb-spread-cpp
-	pkgdesc = Robotics Service Bus C++ implementation
+	pkgdesc = Robotics Service Bus C++ spread transport
 	pkgver = 0.14.2.e7324f4
 	pkgrel = 1
 	url = https://projects.cor-lab.org/projects/rsb
