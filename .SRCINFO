@@ -10,7 +10,7 @@ pkgbase = perl-math-gmpq
 	depends = perl>=5.10.1
 	depends = gmp>=6.1.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SI/SISYPHUS/Math-GMPq-0.41.tar.gz
+	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-0.41.tar.gz
 	md5sums = d68bc7492e953d53b0903c1be375ceea
 	sha512sums = cc8f163e2c6fbd0b0a3a143f0ceee3ffab3820758618df619d162b56bba7e4f2b81684e548a393ce6116d85d128a1a039fb3cc3f1d73609fe85ec29bded9b698
 

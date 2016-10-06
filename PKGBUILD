@@ -1,4 +1,4 @@
-# Contributor: Trizen <trizenx@gmail.com>
+# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpq'
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPq'
-source=("http://search.cpan.org/CPAN/authors/id/S/SI/SISYPHUS/Math-GMPq-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-$pkgver.tar.gz")
 md5sums=('d68bc7492e953d53b0903c1be375ceea')
 sha512sums=('cc8f163e2c6fbd0b0a3a143f0ceee3ffab3820758618df619d162b56bba7e4f2b81684e548a393ce6116d85d128a1a039fb3cc3f1d73609fe85ec29bded9b698')
 _distdir="Math-GMPq-$pkgver"
