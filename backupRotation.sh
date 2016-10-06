@@ -49,7 +49,7 @@
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
-#     ['SOURCE_URL2']='TARGET_URL2 ANOTHER_RECIPIENT_E_MAIL_ADDRESS')
+#     ['SOURCE_URL2']='TARGET_URL2 RECIPIENT_E_MAIL_ADDRESS ANOTHER_RECIPIENT_E_MAIL_ADDRESS')
 declare -A source_target_mappings=()
 sender_e_mail_address='ACCOUNT_E_MAIL_ADDRESS'
 replier_e_mail_address="$sender_e_mail_address"
@@ -82,12 +82,29 @@ week_day_umber="$(date +'%u')"
 for source_path in "${!source_target_mappings[@]}"; do
     target_path="$(echo "${source_target_mappings[$source_path]}" | \
         grep '^[^ ]+' --only-matching --extended-regexp)"
-    # TODO you have to check for remote files also!
-    # Check if source files exist and send an email if not
-    if [ ! -d "$source_path" ]; then
+    if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
+        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+    elif [[ "$week_day_number" == "$backup_monthe_day_number" ]]; then
+        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+    else
+        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
+    fi
+    mkdir --parents "$(dirname "$target_file_path")"
+    if eval "$backup_command"; then
+        # Clean outdated daily backups.
+        find "$target_path" -mtime +"$number_of_daily_retention_days" -type d \
+            -exec "$cleanup_command" {} \;
+        # Clean outdated weekly backups.
+        find "$target_path" -mtime +"$number_of_weekly_retention_days" \
+            -type d -exec "$cleanup_command" {} \;
+        # Clean outdated monthly backups.
+        find "$target_path" -mtime +"$number_of_monthly_retention_days" \
+            -type d -exec "$cleanup_command" {} \;
+    else
         message="Source files on \"$source_path\" should be backed up but aren't available."
         if hash msmtp && [[ "$e_mail_address" != '' ]]; then
-            for e_mail_address in $(echo "${source_target_mappings[$source_path]}" | \
+            for e_mail_address in \
+                $(echo "${source_target_mappings[$source_path]}" | \
                 grep ' .+$' --only-matching --extended-regexp)
             do
                 $verbose && echo "$message" >/dev/stderr
@@ -106,24 +123,6 @@ EOF
         echo "$message" &>/dev/stderr
         return 1
     fi
-    if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
-    elif [[ "$week_day_number" == "$backup_monthe_day_number" ]]; then
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
-    else
-        target_file_path="${target_path}${daily_target_path}${target_daily_file_name}"
-    fi
-    mkdir --parents "$(dirname "$target_file_path")"
-    eval "$backup_command"
-    # Clean outdated daily backups.
-    find "$target_path" -mtime +"$number_of_daily_retention_days" -type d -exec \
-        "$cleanup_command" {} \;
-    # Clean outdated weekly backups.
-    find "$target_path" -mtime +"$number_of_weekly_retention_days" -type d -exec \
-        "$cleanup_command" {} \;
-    # Clean outdated monthly backups.
-    find "$target_path" -mtime +"$number_of_monthly_retention_days" -type d -exec \
-        "$cleanup_command" {} \;
 done
 # endregion
 # region vim modline
