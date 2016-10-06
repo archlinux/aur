@@ -5,7 +5,6 @@ pkgbase = cylon
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
-	makedepends = git
 	optdepends = cower: AUR package for AUR work
 	optdepends = gdrive: AUR package for google drive backup
 	optdepends = lostfiles: AUR package for finding lost files
@@ -14,8 +13,8 @@ pkgbase = cylon
 	optdepends = clamav: used for finding malware
 	optdepends = bleachbit: used for system clean
 	optdepends = gnu-netcat: used for checking network
-	source = git://github.com/gavinlyonsrepo/cylon.git
-	md5sums = SKIP
+	source = https://github.com/gavinlyonsrepo/cylon/archive/2.1.tar.gz
+	md5sums = 7e6973306b95e8d91a45b64253ac55cd
 
 pkgname = cylon
 
