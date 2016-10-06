@@ -2,7 +2,7 @@
 
 _pkgname=osu
 pkgname=$_pkgname-git
-pkgver=r84.8a168f2
+pkgver=r182.3c01f59
 pkgrel=1
 
 pkgdesc='rhythm is just a *click* away!'
@@ -16,7 +16,7 @@ makedepends=('git' 'nuget')
 source=("git+https://github.com/ppy/$_pkgname.git"
         "git+https://github.com/ppy/$_pkgname-resources.git"
         "git+https://github.com/ppy/$_pkgname-framework.git"
-        "osu-bin")
+        "osu-native")
 
 sha256sums=('SKIP'
             'SKIP'
@@ -41,13 +41,14 @@ prepare() {
 
 build() {
   cd $_pkgname
-  xbuild /p:Configuration=Release
+  xbuild /p:Configuration=Release \
+         /p:TreatWarningsAsErrors=false
 }
 
 package() {
   cd $_pkgname
 
-  install -Dm755 "$srcdir"/osu-bin "$pkgdir"/usr/bin/osu
+  install -Dm755 "$srcdir"/osu-native "$pkgdir"/usr/bin/osu-native
 
   install -dm755 "$pkgdir"/usr/lib/$_pkgname
   install -Dm755 osu.Desktop/bin/Release/*.{exe,so,dll,dll.config} "$pkgdir"/usr/lib/$_pkgname
