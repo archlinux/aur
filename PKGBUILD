@@ -1,32 +1,41 @@
-# Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# EX-Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=wmail-bin
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The missing desktop client for Gmail & Google Inbox"
-arch=('x86_64')
+arch=("x86_64" "i686")
 url="https://github.com/Thomas101/wmail"
 repo="git://github.com/Thomas101/wmail.git"
 license=('MIT')
 options=(!strip)
+provides=('wmail')
 makedepends=('xdg-utils' 'desktop-file-utils')
 depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 optdepends=('gvfs' 'libnotify')
-conflicts=('wmail')
+conflicts=('wmail-bin<=1.3.6')
+source=('wmail.desktop')
+source_x86_64=("WMail_${pkgver//./_}_x64.tar.gz::https://github.com/Thomas101/wmail/releases/download/v${pkgver}/WMail_${pkgver//./_}_prerelease_linux_x64.tar.gz")
+source_i686=("WMail_${pkgver//./_}_x86.tar.gz::https://github.com/Thomas101/wmail/releases/download/v${pkgver}/WMail_${pkgver//./_}_prerelease_linux_x86.tar.gz")
 
-source=(
-  "wmail-linux-v${pkgver}.zip::https://github.com/Thomas101/wmail/releases/download/v${pkgver}/WMail_${pkgver//./_}_linux64.zip"
-  "app-v${pkgver}.png::https://raw.githubusercontent.com/Thomas101/wmail/v${pkgver}/assets/icons/app.png"
-  "wmail.desktop")
-noextract=("wmail-linux-v${pkgver}.zip")
-sha256sums=('625b2a5bb1a353337f50fae409c497548469d386c5ada56d5b245c84aa033b0c'
-            '0f5e584df5f365db4cf6f422d412937cdc5cd3a92a0e92aaaaaaa42799b87552'
-            '32f8dbaa210edc8e45ba2949ce309864fb6b0826a5a002cb96bd421d55e066cd')
+# noextract=("wmail-linux-v${pkgver}.zip")
+sha512sums=('3072b76eb4285ca4330b459ade2b37057dfea632e0be3336e4e89d41f3baf1081040dc7e0292616e3e24b839c5c891ea167a52597ae949f4b412e1512f8f4e37')
+sha512sums_x86_64=('1ea71b2ee88a4833ca99d283c1593d681d17abaf41ddf7d6dada5f5e20b9ba4ab1c0ae54819324d89a0aeae85a51f228733c81efbcffa1a71391f4bd78a44e5f')
+sha512sums_i686=('0a89bf2a22b0a7f7f7e510c588b8f61bb671cce7d1c59b38e29e7c8c51b873b27c12014c9094d73acbaf098ac17d15d53ae8b1235203d13539d4e04567f2dc5c')
 
 package() {
+  if [ $arch == "x86_64" ]
+  then
+      cd ${srcdir}/WMail-linux-x64
+  else
+      cd ${srcdir}/WMail-linux-ia32
+  fi
+
   mkdir -p "${pkgdir}/usr/share/wmail"
-  bsdtar -C "${pkgdir}/usr/share/wmail" -xf "${srcdir}/wmail-linux-v${pkgver}.zip"
   mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  cp -R ./* "${pkgdir}/usr/share/wmail"
   ln -s "/usr/share/wmail/WMail" "${pkgdir}/usr/bin/wmail"
-  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "${srcdir}/wmail.desktop"
-  install -Dm644 "${srcdir}/app-v${pkgver}.png" "${pkgdir}/usr/share/pixmaps/WMail.png"
+  cp $srcdir/wmail.desktop $pkgdir/usr/share/applications/wmail.desktop
+
 }

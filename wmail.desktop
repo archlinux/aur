@@ -2,7 +2,7 @@
 Exec=wmail %U
 Name=WMail
 GenericName=Google email client
-Icon=WMail
+Icon=/usr/share/wmail/icon.png
 StartupNotify=true
 Terminal=false
 Type=Application
