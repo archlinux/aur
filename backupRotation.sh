@@ -91,6 +91,9 @@ for source_path in "${!source_target_mappings[@]}"; do
     fi
     mkdir --parents "$(dirname "$target_file_path")"
     $verbose && echo "Running \"${backup_command}\"."
+    if ! $verbose; then
+        backup_command+="${backup_command} &>/dev/null"
+    fi
     if eval "$backup_command"; then
         # Clean outdated daily backups.
         find "$target_path" -mtime +"$number_of_daily_retention_days" -type d \
