@@ -1,0 +1,20 @@
+pkgbase = rsb-cpp
+	pkgdesc = Robotics Service Bus C++ implementation
+	pkgver = 0.14.2.bd9c803
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	checkdepends = python2
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsb-proto
+	depends = rsc
+	depends = boost
+	depends = protobuf
+	source = rsb-cpp::git+https://code.cor-lab.org/git/rsb.git.cpp#branch=0.14
+	md5sums = SKIP
+
+pkgname = rsb-cpp
+
