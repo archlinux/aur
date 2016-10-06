@@ -18,6 +18,8 @@ install=msodbcsql.install
 package() {
 	cd "$srcdir"/$pkgname-$pkgver
 	install -Dm0755 lib64/libmsodbcsql-13.0.so.0.0 "$pkgdir"/usr/lib/libmsodbcsql-13.0.so.0.0
+	install -Dm0755 lib64/msodbcsqlr13.rll "$pkgdir"/opt/microsoft/$pkgname/$pkgver/en_US/msodbcsqlr13.rll
+
 	install -Dm0644 include/msodbcsql.h "$pkgdir"/usr/include/msodbcsql.h
 	ln -s libcrypto.so "$pkgdir"/usr/lib/libcrypto.so.10
 	ln -s libssl.so "$pkgdir"/usr/lib/libssl.so.10
