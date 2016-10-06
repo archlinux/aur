@@ -28,7 +28,6 @@ pkgbase = google-chrome-dev
 	optdepends = kdebase-kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	provides = google-chrome
-	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
 	source = google-chrome-unstable_55.0.2873.0_amd64.deb::https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
