@@ -90,8 +90,9 @@ for source_path in "${!source_target_mappings[@]}"; do
         target_file_path="${target_path}/${daily_target_path}${target_daily_file_name}"
     fi
     mkdir --parents "$(dirname "$target_file_path")"
-    $verbose && echo "Running \"${backup_command}\"."
-    if ! $verbose; then
+    if $verbose; then
+        echo "Running \"${backup_command}\"."
+    else
         backup_command+="${backup_command} &>/dev/null"
     fi
     if eval "$backup_command"; then
