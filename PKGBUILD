@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=1
-pkgver=37.0.0_r8_g7b378a4
+pkgver=37.0.0_r48_g0f00a17
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/splintermind/Dwarf-Therapist"
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  qmake -qt=5 PREFIX=/usr
+  qmake-qt5 PREFIX=/usr
   make
 }
 
