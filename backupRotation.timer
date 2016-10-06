@@ -1,5 +1,8 @@
 [Unit]
 Description=Run backupRotation.service every 24 hours
+Conflicts=shutdown.target reboot.target halt.target
+Wants=network-online.target
+After=network.target network-online.target
 
 [Timer]
 OnCalendar=*:24/00
