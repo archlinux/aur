@@ -1,0 +1,18 @@
+pkgbase = gulp-cli
+	pkgdesc = The streaming build system
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://gulpjs.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = semver
+	provides = gulp
+	replaces = gulp
+	noextract = gulp-cli-1.2.2.tgz
+	source = https://registry.npmjs.org/gulp-cli/-/gulp-cli-1.2.2.tgz
+	md5sums = 663b2dde0bed198271c4e1d33babdd5a
+
+pkgname = gulp-cli
+
