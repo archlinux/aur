@@ -113,7 +113,6 @@ for source_path in "${!source_target_mappings[@]}"; do
                 $(echo "${source_target_mappings[$source_path]}" | \
                 grep ' .+$' --only-matching --extended-regexp)
             do
-                echo A $e_mail_address
                 msmtp -t <<EOF
 From: $sender_e_mail_address
 To: $e_mail_address
