@@ -1,4 +1,5 @@
 # Maintainer: Daniel Landau <daniel@landau.fi>
+# Contributor: Maxqia <contrib@maxqia.com>
 
 # The following people have contributed to keepassx-git package
 # Contributor: Lev Lybin <aur@devtrue.net>
@@ -39,7 +40,6 @@ build() {
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
-        -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=ON \
         -DCMAKE_BUILD_TYPE=Release ..
     make
@@ -54,5 +54,4 @@ package() {
     cd "${_gitname}/build"
     make DESTDIR="${pkgdir}" install
 }
-
 
