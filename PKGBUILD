@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.14.0')
 makedepends=()
 url='https://metacpan.org/release/Linux-DesktopFiles'
-source=("http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Linux-DesktopFiles-$pkgver.tar.gz")
 md5sums=('05ad2c27b232869dfbc74b084a875d06')
 sha512sums=('c32a755de572d1746e63adc48eb0bffceb9c507c9e11d7608303445d01edb5fabebad6db9a02fd3f7ea49e80b405e2ab5e8c5997cd52d46212bf4143ad71b24c')
 _distdir="Linux-DesktopFiles-${pkgver}"
