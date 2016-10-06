@@ -16,7 +16,7 @@ depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 
          'ttf-font' 'xdg-utils')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
-provides=('google-chrome' 'pepper-flash')
+provides=('pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable

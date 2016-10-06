@@ -27,7 +27,6 @@ pkgbase = google-chrome
 	depends = xdg-utils
 	optdepends = kdebase-kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
-	provides = google-chrome
 	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
