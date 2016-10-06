@@ -122,7 +122,7 @@ EOF
             done
         fi
         echo "$message" &>/dev/stderr
-        return 1
+        exit 1
     fi
 done
 # endregion
