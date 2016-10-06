@@ -1,0 +1,32 @@
+[Unit]
+Description=Asciinema Unicorn Server
+Requires=redis.service
+Wants=postgresql.service
+After=redis.ervice postgresql.service network.target
+
+[Service]
+ExecStartPre=/usr/bin/mkdir -p /run/asciinema/tmp
+ExecStart=/usr/bin/bundle exec rails server --pid=/run/asciinema/unicorn.pid $UNICORN_OPTS
+
+WorkingDirectory=/usr/share/webapps/asciinema
+Environment=RAILS_ENV=production
+EnvironmentFile=-/etc/conf.d/asciinema
+
+Restart=on-failure
+RestartSec=3
+PIDFile=/run/asciinema/unicorn.pid
+
+User=asciinema
+Group=asciinema
+
+CapabilityBoundingSet=
+NoNewPrivileges=true
+ProtectDevices=true
+ProtectSystem=full
+PrivateTmp=true
+
+RuntimeDirectory=asciinema
+RuntimeDirectoryMode=755
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,30 @@
+---
+# Integration
+#:add_this_profile_id: ""
+#:bugsnag_api_key: ""
+#:google_analytics_id: ""
+#:home_asciicast_id: 0
+
+# Security
+:secret_token: "CHANGE THIS TO SOMETHING SECRET"
+:admin_ids: [ ]
+
+# Mail
+:from_email: "My Asciinema <asciinema@example.com>"
+:scheme: "http"
+:host: "localhost:8085"
+#smtp_settings:
+#  :address: "localhost"
+#  :port: 25
+#  :user_name: "asciinema"
+#  :password: "asciinema"
+#  :authentication: "plain"
+#  :enable_starttls_auto: false
+
+# Storage
+#:aws_access_key_id: ""
+#:aws_bucket: ""
+#:aws_region: ""
+#:aws_secret_access_key: ""
+#:carrierwave_storage: "file"
+#:carrierwave_storage_dir_prefix: "./uploads"

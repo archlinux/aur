@@ -1,0 +1,33 @@
+ownstuff() {
+	getent group asciinema &>/dev/null || groupadd -r asciinema
+	getent passwd asciinema &>/dev/null || useradd -Mrg asciinema -d /usr/share/webapps/asciinema -s /bin/nologin -c 'Asciinema Server user' asciinema
+
+	chown -R asciinema:asciinema /var/lib/asciinema /var/log/asciinema
+}
+
+post_install() {
+	ownstuff
+
+	echo "Asciinema will listen on 127.0.0.1:8085"
+	echo "To change this, edit /etc/conf.d/asciinema."
+	echo
+	echo "Before starting Asciinema, you need to configure it and initialize the database."
+	echo "The configuration files are found in /etc/webapps/asciinema."
+	echo "To initialize the database, run:"
+	echo "# su - asciinema -s /bin/sh -c \"cd '/usr/share/webapps/asciinema'; bundle exec rake db:setup RAILS_ENV=production\""
+}
+
+post_upgrade() {
+	ownstuff
+
+	echo "You should upgrade your database:"
+	echo "# su - asciinema -s /bin/sh -c \"cd '/usr/share/webapps/asciinema'; bundle exec rake db:migrate RAILS_ENV=production\""
+	echo "Afterwards, restart Asciinema:"
+	echo "# systemctl daemon-reload"
+	echo "# systemctl restart asciinema-sidekiq asciinema-unicorn"
+}
+
+post_remove() {
+	getent passwd asciinema &>/dev/null && userdel asciinema || true
+	getent group asciinema &>/dev/null && (groupdel asciinema || true) || true
+}

@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: localhost
+  database: asciinema
+  username: asciinema
+  password: asciinema

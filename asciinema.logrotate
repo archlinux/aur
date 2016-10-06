@@ -1,0 +1,10 @@
+# Logrotate settings for the Asciinema Server
+
+/var/log/asciinema/*.log {
+	daily
+	missingok
+	rotate 20
+	compress
+	notifyempty
+	copytruncate
+}

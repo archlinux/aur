@@ -1,0 +1,32 @@
+[Unit]
+Description=Asciinema Sidekiq Server
+Requires=redis.service asciinema-unicorn.service
+Wants=postgresql.service
+After=redis.service postgresql.service asciinema-unicorn.service
+JounsNamespaceOf=asciinema-unicorn.service
+
+[Service]
+ExecStart=/usr/bin/bundle exec sidekiq -e production $SIDEKIQ_OPTS
+ExecStop=/usr/bin/bundle exec sidekiqctl stop /run/asciinema/sidekiq.pid
+
+WorkingDirectory=/usr/share/webapps/asciinema
+Evironment=RAILS_ENV=production
+EnvironmentFile=-/etc/conf.d/asciinema
+
+Restart=on-failur
+RestartSec=3
+PIDFile=/run/asciinema/sidekiq.pid
+
+User=asciinema
+Group=asciinema
+
+CapabilityBoundingSet=
+ProtectDevices=true
+ProtectSystem=full
+ProtectHome=true
+
+RuntimeDirectory=asciinema
+RuntimeDirectoryMode=755
+
+[Install]
+WantedBy=multi-user.target
