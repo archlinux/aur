@@ -1,0 +1,15 @@
+pkgbase = minifortune
+	pkgdesc = A minimal fortune-mod clone
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/vsergeev/minifortune
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	source = git+https://github.com/vsergeev/minifortune.git#tag=v2.5
+	md5sums = SKIP
+
+pkgname = minifortune
+
