@@ -1,7 +1,7 @@
 # Maintainer: Hexchain Tong <i@hexchain.org>
 
 pkgname=coursera-dl
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/coursera-dl/coursera-dl/"
 license=('LGPL3')
 depends=('python' 'python-pyasn1' 'python-html5lib' 'python-beautifulsoup4' 'python-setuptools' 'python-requests' 'python-six' 'python-keyring')
 makedepends=('git' 'pandoc')
-source=("git://github.com/coursera-dl/coursera-dl.git#tag=$pkgver")
+source=("git+https://github.com/coursera-dl/coursera-dl.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
