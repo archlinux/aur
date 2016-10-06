@@ -4,7 +4,7 @@
 # This package is based on the gog-terraria package and the gog-freedom-planet package from Ainola.
 
 pkgname=gog-shovel-knight
-pkgver=2.6.0.8
+pkgver=2.7.0.9
 pkgrel=2
 pkgdesc='Yacht Club Games'
 arch=("i686" "x86_64")
@@ -13,12 +13,11 @@ license=('custom:commercial')
 depends=('sdl2')
 groups=('games')
 source=("gog://${pkgname//-/_}_${pkgver}.sh" "${pkgname}.desktop")
-sha512sums=('455cbb79d232c6cda3aec402553497a87fb897b9b3e0575e0e018e1439581c09b3bc2d171c7238ef3259dcd4768fe1534d4dc80df91771b884185c501784c1cd'            
+sha512sums=('7fa66e8dfe1b7f165983d8571fc49512d12e706e8e4fdd855c77273ca73207d5610aebd752a12c4442a59148f190223d4df2340d143a726936b1f2f527dd6c77'            
             'a30a86d218c1249aef5e4f8116d90b61913c74a0bb0629ef1a04c3736d2a3d1960d6b28d562aa83bbc49383594c55de346f9e1893e222e50bba6ebe0d8cd43fc')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or 
-setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
+DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
 
 # If you want to use lgogdownloader
 # DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
