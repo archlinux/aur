@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-html-parser')
 makedepends=()
 url='https://metacpan.org/release/Perl-Tokenizer'
-source=('http://search.cpan.org/CPAN/authors/id/T/TR/TRIZEN/Perl-Tokenizer-0.04.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Perl-Tokenizer-$pkgver.tar.gz")
 md5sums=('61d337b6df1b3e5f3ebf08b3c6209750')
 sha512sums=('cad39e39c4be3888873e06edd9cddcde220fe03572d8e57e52e04d4151f7a7aa0224af00f7f3014a8ec99520d9d2fdc15369fd49c1e6d10127ab6880fe7b24b5')
-_distdir="Perl-Tokenizer-0.04"
+_distdir="Perl-Tokenizer-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
