@@ -45,13 +45,13 @@
 
 # account        default : gmail
 # endregion
-# region default options
+# region default options 
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
 #     ['SOURCE_URL2']='TARGET_URL2 RECIPIENT_E_MAIL_ADDRESS ANOTHER_RECIPIENT_E_MAIL_ADDRESS')
 declare -A source_target_mappings=()
-sender_e_mail_address='ACCOUNT_E_MAIL_ADDRESS'
+sender_e_mail_address='' # Disables by default
 replier_e_mail_address="$sender_e_mail_address"
 daily_target_path='daily/'
 weekly_target_path='weekly/'
@@ -107,7 +107,7 @@ for source_path in "${!source_target_mappings[@]}"; do
             -type d -exec "$cleanup_command" {} \;
     else
         message="Source files in \"$source_path\" should be backed up but aren't available."
-        if hash msmtp && [[ "$e_mail_address" != '' ]]; then
+        if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
                 grep ' .+$' --only-matching --extended-regexp)
