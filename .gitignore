@@ -1,0 +1,5 @@
+wxphp/
+pkg/
+src/
+*.tar.xz
+*.tar.bz2
