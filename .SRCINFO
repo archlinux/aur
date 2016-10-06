@@ -1,0 +1,21 @@
+pkgbase = rst-proto
+	pkgdesc = Robotics Systems Types library
+	pkgver = 0.14.2.7ca78f8
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsc
+	depends = protobuf
+	depends = python2
+	depends = python2-protobuf
+	depends = apache-ant
+	depends = protobuf-java
+	source = rst-proto::git+https://code.cor-lab.org/git/rst.git.proto#branch=0.14
+	md5sums = SKIP
+
+pkgname = rst-proto
+
