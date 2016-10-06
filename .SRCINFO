@@ -1,0 +1,38 @@
+pkgbase = keepassx-reboot
+	pkgdesc = A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/keepassxreboot/keepassx
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = zlib
+	makedepends = libgcrypt
+	depends = libxtst
+	depends = shared-mime-info
+	depends = qt5-x11extras
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = libmicrohttpd
+	provides = keepassx=2.0.2
+	provides = keepassx2=2.0.2
+	provides = keepassx-svn=2.0.2
+	provides = keepassx2-git=2.0.2
+	conflicts = keepassx-svn
+	conflicts = keepassx
+	conflicts = keepassx-git
+	conflicts = keepassx2-git
+	conflicts = keepassx2
+	conflicts = keepassx2-yubikey-git
+	conflicts = keepassx-http
+	conflicts = keepassx-reboot-git
+	replaces = keepassx-http
+	source = https://github.com/keepassxreboot/keepassx/archive/2.0.2.tar.gz
+	sha1sums = 9591e89484e3c62f7de040915ebf0ddd33fa85d7
+
+pkgname = keepassx-reboot
+
