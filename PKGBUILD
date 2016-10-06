@@ -13,7 +13,7 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-libressl
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 librever=2.4.2
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
@@ -51,7 +51,7 @@ source=( "nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610'
+            '06221c1f43f643bc6bfe5b2c26d19e09f2588d5cde6c65bdb77dfcce7c026b3b'
             'SKIP'
             '5f87d778e5d62822d60e38fa9621c1c5648fc559d198ba314bd9d89cbf67d9e3'
 	    'SKIP')
