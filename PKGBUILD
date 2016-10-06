@@ -9,8 +9,6 @@ conflicts=('')
 license=('GPL')
 depends=('ncurses' 'boost' 'boost-libs')
 options=(buildflags)
-# Required setting of explicit standard for g++, otherwise libboost template handling will break after g++ 6
-buildflags=('"CXXFLAGS="')
 source=(http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/$pkgname-$pkgver.tar.gz sinfod.service)
 url="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
 #
@@ -22,6 +20,7 @@ build() {
   sed -i 's/\-mt//g' sinfo/Makefile.*
   sed -i 's/\-mt//g' sinfod/Makefile.*
   ./configure --prefix=/usr --sbindir=/usr/bin
+# Required setting of explicit standard for g++, otherwise libboost template handling will break after g++ 6
   make CXXFLAGS="-std=c++98"
 }
 
