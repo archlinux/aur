@@ -1,5 +1,5 @@
 pkgbase = otf-cp-mono
-	pkgdesc = CP Mono OTF font
+	pkgdesc = CP Mono OTF font by Tino Meinert Copyright (c) 2009
 	pkgver = v07
 	pkgrel = 1
 	url = https://1-free-fonts.com/font/6748
