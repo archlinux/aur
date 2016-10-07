@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas 
 
 pkgname=okular-frameworks-git
-pkgver=r7376.bfa28f1
+pkgver=r7377.c7bbf6f
 pkgrel=1
 pkgdesc='Universal document viewer'
 arch=(i686 x86_64)
@@ -29,8 +29,7 @@ build() {
   cmake ../okular \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DKDE_INSTALL_LIBDIR=lib
   make
 }
 
