@@ -12,10 +12,12 @@ url="https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916"
 depends=('linux')
 makedepends=('git' 'linux-headers')
 install="depmod.install"
-source=("mt7610u_wifi_sta"::"git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git")
-md5sums=('SKIP')
+source=("mt7610u_wifi_sta"::"git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git" "0001-fix-compile-against-kernel-4.6.patch")
+md5sums=('SKIP' 'aef239125f6420706d7bf5252455d4af')
 
 build() {
+  cd "${srcdir}/${pkgname}"
+  patch -p1 < "${srcdir}/0001-fix-compile-against-kernel-4.6.patch"
 	make -C "${srcdir}/${pkgname}"
 }
 
