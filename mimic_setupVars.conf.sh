@@ -13,14 +13,16 @@ getDNSs()
 getIPv4stuff()
 {
 	piholeInterface=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
-	piholeIPv4=$(ip -o -f inet addr show dev "$piholeInterface" | awk '{print $4}' | awk 'END {print}')
+	# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
+	piholeIPv4="0.0.0.0"
 }
 
 # official pihole basic-install.sh code here
 getIPv6stuff()
 {
 	if [ -e /proc/net/if_inet6 ]; then
-		piholeIPv6=$(ip -6 route get 2001:4860:4860::8888 | awk -F " " '{ for(i=1;i<=NF;i++) if ($i == "src") print $(i+1) }')
+		# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
+		piholeIPv6="::"
 	fi
 }
 
