@@ -1,9 +1,10 @@
-# Maintainer: Jeffrey Lin <anaveragehuman.0 AT gmail DOT com>
+# Maintainer: Julio Gonzalez <juliolokooo AT gmail DOT com>
+# Contributor: Jeffrey Lin <anaveragehuman.0 AT gmail DOT com>
 # Contributor: Grogi <roman@algofacil.info>
 
 pkgname=netlogo
 pkgver=5.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -21,11 +22,15 @@ md5sums=('f1f2d0499ac007bc84f9de9d95f90cdd'
 
 prepare() {
     gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/NetLogo'
+	gendesk -n --pkgname "${pkgname}3D" --pkgdesc "$pkgdesc" --name='NetLogo3D' --exec='/opt/netlogo/NetLogo3D'
+
 }
 
 package() {
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "${pkgname}3D.desktop" "$pkgdir/usr/share/applications/${pkgname}3D.desktop"
     install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/${pkgname}3D.png"
 
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/$pkgname"
     cd "$srcdir/$pkgname-$pkgver-$_NARCH" || exit
