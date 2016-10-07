@@ -3,9 +3,9 @@
 _pkgname=nbnc
 pkgname=nbnc-git
 pkgver=r4.ff12d7d
-pkgrel=1
+pkgrel=2
 pkgdesc='a simple null (transparent) bnc (development version)'
-url='https://ngrok.com'
+url='https://github.com/neersighted/nbnc'
 license=('MIT')
 source=('git+https://github.com/neersighted/nbnc.git')
 sha256sums=('SKIP')
