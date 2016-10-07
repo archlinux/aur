@@ -1,5 +1,5 @@
 pkgname=('python-brotlipy-git' 'python2-brotlipy-git')
-pkgver=0.6.0.184
+pkgver=0.6.0.194
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/python-hyper/brotlipy"
@@ -10,7 +10,7 @@ source=("git+https://github.com/python-hyper/brotlipy.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd brotlipy
+	cd $srcdir/brotlipy
 	echo "$(python setup.py --version).$(git rev-list --count HEAD)"
 }
 
