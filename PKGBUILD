@@ -11,9 +11,9 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-git
-pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
+pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-vulkan-radeon-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version for multilib applications"
-pkgver=12.1.0_devel.84226.00c72ac
+pkgver=12.1.0_devel.85418.4d7d982
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
@@ -65,6 +65,8 @@ build() {
                --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
+               --with-vulkan-drivers=intel,radeon \
+               --disable-vulkan-icd-full-driver-path \
                --with-sha1=libnettle \
                --enable-texture-float \
                --enable-dri3 \
@@ -76,8 +78,7 @@ build() {
                --enable-vdpau \
                --enable-va \
                --with-va-libdir=/usr/lib32/dri \
-               --enable-glx-tls \
-               --with-vulkan-drivers=intel
+               --enable-glx-tls
                
 #
 # configure flag                description                                                             default                                         overridden
@@ -158,6 +159,22 @@ package_lib32-mesa-vulkan-intel-git() {
   install -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git/"
 }
+
+package_lib32-mesa-vulkan-radeon-git() {
+  pkgdesc="Vulkan mesa driver for selected amd gpus (32-bit git version)"
+  depends=('mesa-vulkan-radeon-git' 'lib32-vulkan-icd-loader' 'lib32-libgcrypt' 'lib32-wayland' 'lib32-libxcb')
+  provides=('lib32-vulkan-radeon')
+  conflicts=('lib32-vulkan-radeon')
+  replaces=('lib32-vulkan-radeon')
+  
+  install -m755 -d ${pkgdir}/usr/lib32
+  mv -v ${srcdir}/fakeinstall/usr/lib32/libvulkan_radeon.so ${pkgdir}/usr/lib32/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-radeon-git"
+}
+
+
 
 package_lib32-mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers (32-bit)"

@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version for multilib applications
-	pkgver = 12.1.0_devel.84226.00c72ac
+	pkgver = 12.1.0_devel.85418.4d7d982
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -64,6 +64,17 @@ pkgname = lib32-mesa-vulkan-intel-git
 	provides = lib32-vulkan-intel
 	conflicts = lib32-vulkan-intel
 	replaces = lib32-vulkan-intel
+
+pkgname = lib32-mesa-vulkan-radeon-git
+	pkgdesc = Vulkan mesa driver for selected amd gpus (32-bit git version)
+	depends = mesa-vulkan-radeon-git
+	depends = lib32-vulkan-icd-loader
+	depends = lib32-libgcrypt
+	depends = lib32-wayland
+	depends = lib32-libxcb
+	provides = lib32-vulkan-radeon
+	conflicts = lib32-vulkan-radeon
+	replaces = lib32-vulkan-radeon
 
 pkgname = lib32-mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library (32-bit)
