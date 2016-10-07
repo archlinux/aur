@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Patch with MuQSS (Multiple Queue Skiplist Scheduler)
-# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_5.html
+# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_7.html
 _MuQSS=
 
 # Tweak kernel options prior to a build via nconfig
@@ -65,7 +65,7 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=5
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
-_muqssversion=106
+_muqssversion=108
 _muqsspatch="4.7-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
@@ -94,7 +94,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
             'SKIP'
-            '00fc411a547c42f18389915be79d751a1dc90feb5dff33949786324dc79512ec'
+            '132b8b23bc4cdadec63291d65665b73e2d8c0e61e1d3523788da20e0b176d197'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
             '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
