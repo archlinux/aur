@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/jflesch/paperwork'
 license=('GPL3')
 depends=('pygobject2-devel' 'pygtk' 'python2-pycountry'
-         'python2-poppler' 'python2-pyinsane' 'python2-pyocr'
+         'python2-poppler' 'python2-pyinsane<2' 'python2-pyocr'
          'python2-levenshtein' 'python2-whoosh' 'python2-pyenchant'
          'python2-joblib' 'python2-numpy' 'python2-scipy' 'python2-scikit-learn'
          'python2-scikit-image' 'python2-gobject' 'python2-nltk'
