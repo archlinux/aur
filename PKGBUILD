@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=r498.f2ad8aa
-pkgrel=2
+pkgver=r764.5d410a5
+pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('mpv' 'qt5-x11extras')
+depends=('desktop-file-utils' 'mpv' 'qt5-x11extras')
 makedepends=('git')
 provides=('mpc-qt')
 conflicts=('mpc-qt')
