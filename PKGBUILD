@@ -1,17 +1,17 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python2-fafclient
 pkgver=0.11.60
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
 arch=('any')
 license=('GPL3')
 groups=()
-depends=('python2-pyqt4>=4.0.0' 'python2-ipaddress' 'python2-enum34' 'python2-pathlib' 'python2-py' 'python2-pycparser' 'python2-dateutil' 'python2-requests' 'python2-bsdiff4' 'python2-lupa' 'python2-trueskill' 'python2-cffi' 'python2-marshmallow-jsonapi' 'python2-faftools' 'xorg-xrandr' 'util-linux' 'pciutils' 'coreutils')
+depends=('python2-pyqt4>=4.0.0' 'python2-ipaddress' 'python2-enum34' 'python2-pathlib' 'python2-py' 'python2-pycparser' 'python2-dateutil' 'python2-requests' 'python2-bsdiff4' 'python2-lupa' 'python2-trueskill' 'python2-cffi' 'python2-marshmallow-jsonapi' 'python2-faftools' 'xorg-xrandr' 'util-linux' 'pciutils' 'coreutils' 'lib32-libpulse' 'wine>1.6.0')
 makedepends=('python2-setuptools' 'python2-pip')
 checkdepends=()
-optdepends=('wine>1.6.0')
+optdepends=()
 provides=()
 conflicts=()
 replaces=()
