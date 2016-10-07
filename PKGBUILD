@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8
 pkgver=4.8
-pkgrel=1.1
+pkgrel=1.2
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -81,15 +81,15 @@ prepare() {
   #  patch -p1 -i "${srcdir}/${i}"
   #done
 
-  # Add personal patches
-  for i in bfq.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
-    patch -p1 -i "${srcdir}/${i}"
-  done
-
   # Add RT patches
   xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1
   #xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
   #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
+
+  # Add personal patches
+  for i in bfq.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
+    patch -p1 -i "${srcdir}/${i}"
+  done
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
