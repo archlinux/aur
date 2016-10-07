@@ -2,7 +2,7 @@
 
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.4.1.r16.ddcd6fe
+pkgver=0.6.0.r17.4082150
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -22,11 +22,11 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk.git"
-        'https://patch-diff.githubusercontent.com/raw/HomeOfVapourSynthEvolution/vsTAAmbk/pull/1.patch'
+        'https://raw.githubusercontent.com/4re/vapoursynth-portage/master/media-plugins/vapoursynth-vstaambk/files/vapoursynth-vstaambk-9999-sangnom.patch'
         )
-sha1sums=('SKIP'
-          '4bc3de4848f38c39c323e47ceaba39edc3b26cc2'
-          )
+sha256sums=('SKIP'
+            '12fbbc538314692627a1e5973b10233cab16221ee40357abf6bc7c2fe5f7a731'
+            )
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
@@ -37,7 +37,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-  patch -p1 -i "${srcdir}/1.patch"
+  patch -p1 -i "${srcdir}/vapoursynth-vstaambk-9999-sangnom.patch"
 }
 
 package() {
