@@ -4,12 +4,12 @@
 pkgdesc='Base library for homegear home automation software'
 _gitname=('libhomegear-base')
 pkgname=('libhomegear-base-git')
-pkgver=0.6.0
+pkgver=0.6.220.0d96d9e
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/Homegear/libhomegear-base"
-makedepends=('gcc-libs' 'git' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6')
+makedepends=('gcc-libs' 'git' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6' 'wget')
 depends=('gcc-libs')
 conflicts=('libhomegear-base' 'homegear<0.6.0')
 provides=('libhomegear-base')
