@@ -11,13 +11,13 @@ depends=('libx11' )
 makedepends=('imake' 'xbitmaps')
 source=("http://ftp.de.debian.org/debian/pool/main/x/$pkgname/${pkgname}_${pkgver}.orig.tar.gz")
 md5sums=('d5e697708bf59cf7d4892666b5b85c35')
+
 build() {
-  cd ${srcdir}
   xmkmf
   make 
 }
+
 package() {
-  cd ${srcdir}
   install -D -m755 $pkgname ${pkgdir}/usr/bin/$pkgname
   install -D -m644 $pkgname.man \
     ${pkgdir}/usr/share/man/man1/$pkgname.1
