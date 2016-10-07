@@ -7,7 +7,7 @@
 
 pkgname=mantisbt
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-based issue tracking system'
 arch=('any')
 url='https://www.mantisbt.org/'
@@ -34,7 +34,6 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
-  chown http:http -R "${pkgdir}"/usr/share/webapps/mantisbt
 }
 
 # vim: ts=2 sw=2 et:
