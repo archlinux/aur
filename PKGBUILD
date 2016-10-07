@@ -2,7 +2,7 @@
 # Co-Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=geth-git
-pkgver=1.4.12.r0.g421df86
+pkgver=1.4.16.r17.g6881525
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=(
   'go-ethereum-git'
 )
 provides=('geth')
-source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git")
+source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
