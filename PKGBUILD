@@ -76,17 +76,19 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # Add personal patches
-  for i in bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
-    patch -p1 -i "${srcdir}/${i}"
-  done
+  # BFS patches not working currently
+  #for i in bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
+  #  patch -p1 -i "${srcdir}/${i}"
+  #done
 
+  # Add personal patches
   for i in bfq.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
     patch -p1 -i "${srcdir}/${i}"
   done
 
   # Add RT patches
-  xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
+  xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1
+  #xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
   #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
 
   # add upstream patch
