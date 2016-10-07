@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=parity
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="The fast, light, robust Ethereum client."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "COPYING::https://raw.githubusercontent.com/ethcore/parity/master/LICENSE"
 )
 sha256sums=(
-  'e00e144689eeb3a0eb90364eb1c29a59473ad5aa4d7149daa79445838af98586'
+  'dec8f88a2667847cca76a5ab0ca1023678140a98b81dec468d8e472c3c9a74d2'
   'd62f065830aa3739cc031156b9690805c7b2e811b4a178c8b4acd8725d561c94'
 )
 
