@@ -32,7 +32,7 @@ build() {
   # Don't complain about language files on startup.
   sed -i "s|\"./language\"|\"$_sharedir/$pkgname/language\"|g" src/eggdrop.h
 
-  ./configure --with-tcllib='/usr/lib/libtcl8.6.so' \
+  CFLAGS="-std=gnu89" ./configure --with-tcllib='/usr/lib/libtcl8.6.so' \
               --with-tclinc='/usr/include/tcl.h'
   make config
 
