@@ -5,6 +5,7 @@ pkgrel=3
 pkgdesc="Typora will give you a seamless experience as both a reader and a writer."
 arch=('x86_64')
 filename="${pkgname}_${pkgver}_amd64.deb"
+license=('custom:"Copyright (c) 2014 GitHub Inc."')
 url="https://typora.io/"
 source=("https://typora.io/./linux/$filename")
 md5sums=('30b9881f6d698a5442dff96002d9d812')
