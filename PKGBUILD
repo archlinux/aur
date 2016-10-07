@@ -2,7 +2,7 @@
 # Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=6
+pkgrel=7
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -29,14 +29,15 @@ package() {
 
   make INSTALL_DIR="${pkgdir}/usr" \
        ETC_INSTALL_DIR="${pkgdir}/etc" \
+       DOC_INSTALL_DIR="${pkgdir}/usr/share/doc/astrometry" \
        EXAMPLE_INSTALL_DIR="${pkgdir}/usr/share/astrometry/examples" \
        DATA_INSTALL_DIR="${pkgdir}/usr/share/astrometry/data" \
-       PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python2.7/astrometry" \
-       PY_BASE_LINK_DIR="../lib/python2.7/astrometry" \
+       PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python2.7/site-packages/astrometry" \
+       PY_BASE_LINK_DIR="../lib/python2.7/site-packages/astrometry" \
        install
 
   cd ${pkgdir}; grep -r -l "/usr/bin/env python" . | xargs sed -i 's|/usr/bin/env python|/usr/bin/env python2|'
   sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
-  rm ${pkgdir}/usr/doc/report.txt
+  rm ${pkgdir}/usr/share/doc/astrometry/report.txt
 }
 md5sums=('b7b3277bb9779ef19b06b8e2377a63d4')
