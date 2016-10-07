@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
-pkgver=v0.9.3_7_g3693635r985
-pkgrel=2
+pkgver=v0.9.3_9_gc3d1019r987
+pkgrel=1
 pkgdesc="The Ultimate Document Programming Framework from git"
 arch=('any')
 url="http://www.nongnu.org/skribilo/"
