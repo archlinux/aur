@@ -73,7 +73,6 @@ validpgpkeys=(
              )
 
 
-
 prepare() {
   KARCH=x86
 
