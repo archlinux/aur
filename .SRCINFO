@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 12.1.0_devel.84226.00c72ac
+	pkgver = 12.1.0_devel.85418.4d7d982
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -47,7 +47,7 @@ pkgname = opencl-mesa-git
 	depends = libcl
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.84226.00c72ac
+	depends = mesa-git=12.1.0_devel.85418.4d7d982
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=12.1.0-devel
 	conflicts = opencl-mesa
@@ -59,29 +59,39 @@ pkgname = mesa-vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
-	depends = mesa-git=12.1.0_devel.84226.00c72ac
+	depends = mesa-git=12.1.0_devel.85418.4d7d982
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
 
+pkgname = mesa-vulkan-radeon-git
+	pkgdesc = Vulkan mesa driver for selected amd gpus (git version)
+	depends = vulkan-icd-loader
+	depends = libgcrypt
+	depends = wayland
+	depends = libxcb
+	provides = vulkan-radeon
+	conflicts = vulkan-radeon
+	replaces = vulkan-radeon
+
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.84226.00c72ac
+	depends = mesa-git=12.1.0_devel.85418.4d7d982
 	provides = libva-mesa-driver=12.1.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=12.1.0_devel.84226.00c72ac
+	depends = mesa-git=12.1.0_devel.85418.4d7d982
 	provides = mesa-vdpau=12.1.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=12.1.0_devel.84226.00c72ac
+	depends = mesa-git=12.1.0_devel.85418.4d7d982
 	provides = mesa-libgl=12.1.0-devel
 	provides = libgl=12.1.0-devel
 	conflicts = mesa-libgl
@@ -89,7 +99,7 @@ pkgname = mesa-libgl-git
 
 pkgname = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	depends = libdrm>=2.4.66
+	depends = libdrm
 	depends = wayland
 	depends = libxxf86vm
 	depends = libxdamage
