@@ -1,7 +1,7 @@
 
 _pkgname=dontpanic
 pkgname=${_pkgname}-latest
-pkgver=0.0.2
+pkgver=1.6
 pkgrel=1
 #epoch=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
@@ -21,9 +21,7 @@ source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-l
 sha256sums=('af27c55778289a8bae5d7b18abe62fd36a06b42a29a06f60aa396b26044871ad')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}/src"
-#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-	echo 0.0.2
+	 wget -qO- http://3hg.toile-libre.org/dontpanic/version
 }
 
 package() {
