@@ -5,13 +5,13 @@
 pkgdesc='Homegear home automation software'
 _gitname=('homegear')
 pkgname=('homegear-git')
-pkgver=0.6.1292.8e85ee6
+pkgver=0.6.1330.332158d
 pkgrel=1
 arch=('any')
 license=('GPL')
 url="https://github.com/Homegear/homegear"
 depends=('libhomegear-base-git>=0.6.0' 'termcap' 'openssl' 'libxml2' 'enchant' 'gnutls' 'libmcrypt' 'sqlite')
-makedepends=('gcc-libs' 'git' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'libhomegear-base-git>=0.6.0' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6' 'php7-homegear' 'termcap' 'enchant')
+makedepends=('gcc-libs' 'git' 'gnutls>=3.3.0' 'libgpg-error>=1.14' 'libhomegear-base-git>=0.6.0' 'readline>=6.2' 'sqlite>=3.7.13' 'libxml2>=2.8.0' 'lzo>=2.0.6' 'php7-homegear' 'termcap' 'enchant' 'libxslt')
 conflicts=('homegear')
 provides=('homegear=0.6.0')
 source=("git+https://github.com/Homegear/homegear"
