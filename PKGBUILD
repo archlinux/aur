@@ -6,7 +6,7 @@ pkgname=netlogo-beta
 _pkgname=netlogo
 pkgver=6.0.BETA1
 _pkgver=6.0-BETA1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-agent programmable modeling environment. Beta version"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -20,8 +20,9 @@ optdepends=('alsa-lib' 'libnet' 'gtk2' 'gcc-libs-multilib')
 install=$_pkgname.install
 source=(http://ccl.northwestern.edu/netlogo/$_pkgver/NetLogo-$_pkgver-$_NARCH.tgz
         netlogo.png)
-md5sums=('57e782a15f1b687f0bf566a74f82fdbe'
-         'cf4189a0760219ab5bd3b3b75dabc119')
+md5sums_i686=('57e782a15f1b687f0bf566a74f82fdbe')
+md5sums_x86_64=('cf4189a0760219ab5bd3b3b75dabc119')
+md5sums=('4ee488fc0c5c07fad84cf1c24e44556d')
 
 prepare() {
     gendesk -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/NetLogo'
