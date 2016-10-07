@@ -1,0 +1,16 @@
+pkgbase = cnijfilter-mx470series
+	pkgdesc = Canon IJ Printer Driver (for MX470 series)
+	pkgver = 4.10
+	pkgrel = 1
+	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx475.aspx?type=drivers&language=EN&os=Linux%20(64-bit)
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libcups
+	depends = libxml2
+	source = http://gdlp01.c-wss.com/gds/9/0100005869/01/cnijfilter-mx470series-4.10-1-deb.tar.gz
+	sha256sums = d173883f280d568a701ab0d278f95f0fba266ed9d44969f534147144b4804506
+
+pkgname = cnijfilter-mx470series
+
