@@ -4,8 +4,8 @@
 _pkgname=aurvote
 pkgname=aurvote-git
 pkgver=r27.fd413f1
-pkgrel=1
-pkgdesc='Vote for your favorite AUR packages (development version)'
+pkgrel=2
+pkgdesc='Tool to vote for your favorite AUR packages (development version)'
 url='http://git.archlinux.fr/aurvote.git'
 license=('GPL')
 source=('git+https://github.com/archlinuxfr/aurvote.git')
