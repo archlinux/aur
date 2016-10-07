@@ -30,6 +30,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
+        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes1.patch'
+        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes2.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/block.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/btrfs.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/init.patch'
@@ -51,7 +53,9 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '48afded166076dc357bfb68640297e0337c70d6f72e05e1eb040e694de0ad7ed'
-            'c5d4477f2f91404f636218f38b6b4e550f094df7a79fe97a7f1a5c85861ae368'
+            '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
+            'cec65d71766429be99bdc9da7897584fdc4bf4df3a4b26d228ff55a76ea3d8ea'
+            '48d0d2e549ceddc18a59cc5f0d9325db5727ac82a9a4829c99a781ce979e1a6d'
             'ba5c7ee929108ac05800d7c8a7a28c28b2e04679ad33089ea53af15a955d5c5e'
             '95bbb2b4c84c1faf5ebbe229a9d458a1c37524175ba71f07adc6fc4dbf09a80e'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
@@ -73,7 +77,11 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # Add personal patches
-  for i in bfq.patch bfs.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
+  for i in bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
+    patch -p1 -i "${srcdir}/${i}"
+  done
+
+  for i in bfq.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
     patch -p1 -i "${srcdir}/${i}"
   done
 
