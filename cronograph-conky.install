@@ -50,12 +50,14 @@ pre_upgrade() {
 }
 
 post_upgrade() {
+	echo "Building font information cache files. Please wait...";
+	fc-cache "${pkgdir}"/usr/share/fonts/TTF/ttf-cronograph;
 	echo ;
 	echo -e "\e[30;107m┌────────────────────────────────────────────────────────────────────────┐\e[0m";
 	echo -e "\e[30;107m│ \e[47m                      I N S T R U C T I O N                           \e[30;107m │\e[0m";
-	echo -e "\e[30;107m│ · You can now run (if you want) in terminal the command:               │\e[0m";
+	echo -e "\e[30;107m│ · If you want, you can now type in terminal the command:               │\e[0m";
 	echo -e "\e[30;107m│   ‑ $ \e[1mstart_crono\e[21m                                                      │\e[0m";
-	echo -e "\e[30;107m│ · Use your favorite editor to edit the file:                           │\e[0m";
+	echo -e "\e[30;107m│ · Don't forget to use your favorite editor to edit the file:           │\e[0m";
 	echo -e "\e[30;107m│   \e[1m~/.config/cronograph_blk/cronorc\e[21m and change it properly.             │\e[0m";
 	echo -e "\e[30;107m└────────────────────────────────────────────────────────────────────────┘\e[0m";
 	echo ;
