@@ -1,0 +1,20 @@
+pkgbase = streamlink
+	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://streamlink.github.io/
+	arch = any
+	license = BSD
+	makedepends = python-sphinx
+	depends = python-requests
+	depends = python-setuptools
+	depends = rtmpdump
+	optdepends = python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.
+	source = https://github.com/streamlink/streamlink/releases/download/0.0.1/streamlink-0.0.1.tar.gz
+	source = https://github.com/streamlink/streamlink/releases/download/0.0.1/streamlink-0.0.1.tar.gz.asc
+	validpgpkeys = 1D2DA4B582D3E09EFA2C997CDA227403C037D617
+	sha256sums = 500c0e004cfd48dda72ccb0d46076adad8c871dc2dbd3c8ab32fdb15fb6c9ec9
+	sha256sums = SKIP
+
+pkgname = streamlink
+
