@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8
 pkgver=4.8
-pkgrel=1.3
+pkgrel=1.4
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -77,7 +77,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # BFS patches not working currently
-  #for i in bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
+  #for i in bfq.patch bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
   #  patch -p1 -i "${srcdir}/${i}"
   #done
 
@@ -87,7 +87,7 @@ prepare() {
   #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
 
   # Add personal patches
-  for i in bfq.patch block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
+  for i in block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
     patch -p1 -i "${srcdir}/${i}"
   done
 
