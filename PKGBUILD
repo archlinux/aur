@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc       # Build kernel with a different name
-_srcname=linux-4.7
-_stable=4.7.6
-_patchver=4.7.7
+_srcname=linux-4.8
+_stable=4.8
+_patchver=4.8.1
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -27,14 +27,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            '79705983331f05944c826219ac117df77923730677aa0a32f7829ad261c0d33b'
             'SKIP'
-            '6ba2e1a6a7aac7018170c5ea17e5617f7b9b5d5aba4b4724eeb472e57fd6bdc8'
+            '1e792ab86329694e3d57722b405b5a9234757491b99c8891dc9e56ed39e85a9f'
             'SKIP'
-            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
-            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
+            '111186c7dec2d8e3ec7946d6b4cc0283d30c8add570f1bb6ee158e472ca56d2e'
+            '7e892a9a9f4e6b0b043e44d9d17f93a549878e1d6aa7a72fa925f98e3f895c5c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -48,7 +48,8 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${_stable}"
+  # comment out for initial rc (ie 4.8 --> 4.8.1rc1
+  #patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
