@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairsoft
-pkgver=may16
+pkgver=may16p1
 pkgrel=1
 pkgdesc="Software collection provided by GSI/FAIR for analysis."
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=("https://github.com/FairRootGroup/FairSoft/archive/${pkgver}.tar.gz"
 	'arch.conf'
 	'fairsoft.install')
 noextract=()
-md5sums=('b4ef3f3f82508c88c24d7384c2fbaea6'
+md5sums=('93263b40ba5d5ddf30fc9698424111ba'
          '932f0e4d2d03c062de12651b278c947b'
          '748ceeb13cf954c4f732f93023ae879e')
 
@@ -56,17 +56,6 @@ PKGEXT='.pkg.tar.gz'
 prepare() {
 	mv FairSoft-$pkgver FairSoft
 	cd "FairSoft"
-
-	# Disable vc for the root package (needed for gcc 4.9.2)
-#	echo "Disabling vc for package root"
-#	sed -i "s/--enable-vc/--disable-vc/" tools/rootconfig.sh
-
-	# Enable optimizations for zeromq (needed from gcc 4.8)
-	# to suppress warning about FORTIFY_SOURCE=2 needing optimization
-#	echo "Enabling optimizations for zeromq"
-#	sed -i '/\.\/configure.*$/a echo "Patching src/Makefile" \
-#		sed -i "s/-O0/-O2/" src/Makefile' \
-#		scripts/install_zeromq.sh
 }
 
 build() {
