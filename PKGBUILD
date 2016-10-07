@@ -2,7 +2,7 @@
 
 _pkgname=podfox
 pkgname=$_pkgname-git
-pkgver=r57.68134b4
+pkgver=r71.cdcf304
 pkgrel=1
 pkgdesc="Catch and manage podcasts from the terminal"
 arch=('any')
@@ -20,8 +20,19 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd $pkgname
+  # Patch: add "global CONFIGURATION" statement
+  sed -i 's|\(^[ \t]*\)\([^ ]*\)\( = json.load\)|\1global \2\n\1\2\3|' podfox/__init__.py
+}
+
+build() {
+  cd $pkgname
+  python setup.py build
+}
+
 package() {
   cd $pkgname
-  install -Dm755 podfox.py "$pkgdir/usr/bin/podfox"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
