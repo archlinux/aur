@@ -1,6 +1,6 @@
 pkgbase = certbot
 	pkgdesc = Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode.
-	pkgver = 0.8.1
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://letsencrypt.org/
 	install = certbot.install
@@ -8,7 +8,7 @@ pkgbase = certbot
 	license = Apache
 	checkdepends = python2-nose
 	depends = ca-certificates
-	depends = python2-acme=0.8.1
+	depends = python2-acme=0.9.1
 	depends = python2-configargparse
 	depends = python2-configobj
 	depends = python2-cryptography
@@ -26,14 +26,14 @@ pkgbase = certbot
 	depends = python2-zope-interface
 	provides = certbot
 	conflicts = certbot
-	source = https://pypi.io/packages/source/c/certbot/certbot-0.8.1.tar.gz
-	source = https://pypi.io/packages/source/c/certbot/certbot-0.8.1.tar.gz.asc
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.9.1.tar.gz
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.9.1.tar.gz.asc
 	source = certbot.tmpfiles
 	source = certbot.sysusers
 	validpgpkeys = 148C30F6F7E429337A72D992B00B9CC82D7ADF2C
 	validpgpkeys = 1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD
 	validpgpkeys = A2CFB51FA275A7286234E7B24D17C995CD9775F2
-	md5sums = df6d44d2144939810093283179baa899
+	md5sums = b2442a8c09da8f61feca31a8a235f751
 	md5sums = SKIP
 	md5sums = 3d2a709a3ef1a2183d3b1fb159631eec
 	md5sums = bcdf4204508da91cde42ae6f5550f0e5
