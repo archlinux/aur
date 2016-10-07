@@ -1,0 +1,20 @@
+pkgbase = mopidy-spotify-web
+	pkgdesc = Mopidy extension for providing the browse feature of Spotify for artists and albums
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lfcabend/mopidy-spotify-web
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = mopidy>=0.19.0
+	depends = python2-pykka
+	depends = mopidy-spotify>=1.2.0
+	depends = python2-requests
+	depends = python2-spotipy
+	source = https://pypi.org/packages/source/M/Mopidy-Spotify-Web/Mopidy-Spotify-Web-0.3.0.tar.gz
+	md5sums = 79616cf599911c6a4e89930413c548b9
+
+pkgname = mopidy-spotify-web
+
