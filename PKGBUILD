@@ -3,7 +3,7 @@
 
 _pkgname=ngrok
 pkgname=ngrok-git
-pkgver=latest
+pkgver=1.7.1.r21.ga8e7fa4
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services (development version)'
 url='https://ngrok.com'
@@ -19,7 +19,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
