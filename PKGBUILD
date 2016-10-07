@@ -2,7 +2,7 @@
 
 pkgname=ttf-abkai
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Abkai Xanyan TTF font for Manchu, Sibe and Daur scripts"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
@@ -16,5 +16,5 @@ package() {
   cd "${srcdir}"
   install -d "$pkgdir/usr/share/fonts/TTF"
   install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF"
-  install -D -m644 LICENSE"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
