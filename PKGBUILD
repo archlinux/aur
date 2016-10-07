@@ -5,7 +5,7 @@
 
 _pkgname=charybdis
 pkgname=charybdis
-pkgver=3.5.1
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='A highly scalable IRCv3-compliant IRCd'
 url='http://www.charybdis.io/'
@@ -15,7 +15,7 @@ install=charybdis.install
 source=("http://distfiles.charybdis.io/charybdis-${pkgver}.tar.bz2"
         'charybdis.service'
         'charybdis.tmpfiles')
-sha256sums=('3d64138a9804c82be2ae652fefa09c014faba3fb292493b4bdbd9058244f6a25'
+sha256sums=('9fb928524acbadeabedef56b0b6446c2d6de365382e256f5c21170c75390e16b'
             '044f3567ed865365e76581942e1b28ba4f7193dd6c8022616ea0894295272062'
             '2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29')
 arch=('i686' 'x86_64')

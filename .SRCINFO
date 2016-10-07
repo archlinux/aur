@@ -1,6 +1,6 @@
 pkgbase = charybdis
 	pkgdesc = A highly scalable IRCv3-compliant IRCd
-	pkgver = 3.5.1
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://www.charybdis.io/
 	install = charybdis.install
@@ -13,7 +13,7 @@ pkgbase = charybdis
 	depends = zlib
 	provides = charybdis
 	options = !strip
-	source = http://distfiles.charybdis.io/charybdis-3.5.1.tar.bz2
+	source = http://distfiles.charybdis.io/charybdis-3.5.3.tar.bz2
 	source = charybdis.service
 	source = charybdis.tmpfiles
 	sha256sums = 3d64138a9804c82be2ae652fefa09c014faba3fb292493b4bdbd9058244f6a25
