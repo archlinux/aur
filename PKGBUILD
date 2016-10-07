@@ -2,13 +2,13 @@
 pkgname=rdkit-git-python3
 _pkgname=RDKit
 gitname=rdkit
-pkgver=20160107
+pkgver=20161007
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64")
 url="http://rdkit.org/"
 license=('New BSD License')
-depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python' 'sqlite3' 'python-numpy')
+depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python' 'sqlite3' 'python-numpy' 'python-cairocffi' 'python-pillow')
 makedepends=('git')
 source=("http://www.inchi-trust.org/download/104/INCHI-1-API.zip")
 md5sums=('8447bf108af12fe66eecba41bbc89918')
