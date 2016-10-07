@@ -1,10 +1,11 @@
-# Maintainer: "UnCO" Lin <trash__box <_at_> 163.com>
+# Maintainer: Aaron Bishop < erroneous gmail >
+# Contributor: "UnCO" Lin <trash__box <_at_> 163.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <Alexander@archlinux.org
 
 pkgname=xf86-input-evdev-debounce
 _pkgname=xf86-input-evdev
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="X.org evdev input driver with DebounceDelay setting, it can save your mouse's broken left button from double clicking hell."
 arch=(i686 x86_64)
