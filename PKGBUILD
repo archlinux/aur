@@ -3,7 +3,7 @@
 
 pkgname=dnssec-trigger
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders"
 arch=('i686' 'x86_64')
 url="http://www.nlnetlabs.nl/projects/dnssec-trigger/"
@@ -18,13 +18,18 @@ sha256sums=('1cafd9ec296edc1d17b9ed2a98e06c7057c80ef1dbd6d45dbfa11991d3703535'
             'c8ed3ef4ec9cba0bd00f47bfbf0e59c318130615aca4370bc597d98365445be9'
             '831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i "s!/usr/libexec/!/usr/lib/$pkgname/!g" 01-dnssec-trigger.in
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/bin/$pkgname \
+    --libexecdir=/usr/lib/$pkgname \
     --with-keydir=/etc/dnssec-trigger ;
   make
 }
