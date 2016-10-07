@@ -4,7 +4,7 @@ pkgbase=dune-core
 pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-grid' 'dune-istl')
 
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Core modules of the DUNE framework'
 groups=('dune')
@@ -29,6 +29,12 @@ md5sums=(
 )
 
 _dunecontrol="./dune-common-${pkgver}/bin/dunecontrol --use-cmake"
+
+prepare() {
+    cd "dune-istl-${pkgver}"
+
+    patch -p1 -i ../../avoid-boost-fusion-1.61.patch
+}
 
 package() {
     $_dunecontrol --only=${pkgname} make install DESTDIR="${pkgdir}"

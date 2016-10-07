@@ -1,7 +1,7 @@
 pkgbase = dune-core
 	pkgdesc = Core modules of the DUNE framework
 	pkgver = 2.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dune-project.org
 	arch = i686
 	arch = x86_64
