@@ -16,5 +16,5 @@ package() {
   cd "${srcdir}"
   install -d "$pkgdir/usr/share/fonts/TTF"
   install -Dm644 *.ttf "$pkgdir/usr/share/fonts/TTF"
-  install -Dm644 LICENSE"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
