@@ -1,0 +1,32 @@
+pkgbase = rsbag-tools-cl
+	pkgdesc = RSBag common lisp tools
+	pkgver = 0.14.1.632ea9d
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsbag
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsb-proto
+	makedepends = sbcl
+	options = !strip
+	source = rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#branch=0.14
+	source = rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl#branch=0.14
+	source = rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.14
+	source = rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.14
+	source = cl-protobuf::git+https://github.com/scymtym/cl-protobuf
+	source = network.spread::git+https://github.com/scymtym/network.spread
+	source = iterate-sequence::git+https://github.com/scymtym/iterate-sequence
+	source = architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rsbag-tools-cl
+
