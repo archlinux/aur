@@ -1,3 +1,8 @@
+2016-10-07 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+    * 2.0.2.r2.g78784de
+    Package updated to use pkgver function
+
 2015-12-23 Fabien Dubosson <fabien.dubosson@gmail.com>
 
     * v1.3.8.r10.g15f2d70-4:
