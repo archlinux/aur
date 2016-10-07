@@ -22,5 +22,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 build/sphinx/man/streamlink.1 \
+    "$pkgdir/usr/share/man/man1/streamlink.1"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
