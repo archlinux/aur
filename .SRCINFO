@@ -1,7 +1,7 @@
 pkgbase = beignet
 	pkgdesc = A GPGPU System for Intel Ivybridge GPUs
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/beignet
 	arch = x86_64
 	license = LGPL2.1
@@ -19,7 +19,9 @@ pkgbase = beignet
 	conflicts = opencl-headers
 	conflicts = opencl-headers12
 	source = https://01.org/sites/default/files/beignet-1.2.0-source.tar.gz
+	source = libdrm2471.patch
 	sha256sums = fc7af19efb7596b04510d26c558a576eba3e95e1ef86fd6951213c6a4bf58bff
+	sha256sums = a71ddc57c943f02a73fff24de190f078f0f6864a5c66fd5f859d63ea9d5daf54
 
 pkgname = beignet
 

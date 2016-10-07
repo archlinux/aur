@@ -5,7 +5,7 @@
 
 pkgname=beignet
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url="https://01.org/beignet"
@@ -14,13 +14,16 @@ depends=('glu' 'llvm' 'mesa' 'ocl-icd')
 makedepends=('clang' 'cmake' 'python2')
 provides=('opencl-intel' 'opencl-headers' 'opencl-headers12')
 conflicts=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-source=("https://01.org/sites/default/files/beignet-${pkgver}-source.tar.gz")
-sha256sums=('fc7af19efb7596b04510d26c558a576eba3e95e1ef86fd6951213c6a4bf58bff')
+source=("https://01.org/sites/default/files/beignet-${pkgver}-source.tar.gz" 'libdrm2471.patch')
+sha256sums=('fc7af19efb7596b04510d26c558a576eba3e95e1ef86fd6951213c6a4bf58bff'
+            'a71ddc57c943f02a73fff24de190f078f0f6864a5c66fd5f859d63ea9d5daf54')
 
-#prepare() {
+prepare() {
+	cd "${srcdir}/Beignet-${pkgver}-Source"
+    patch -p1 < "${srcdir}/libdrm2471.patch"
 #	cd "${srcdir}/Beignet-${pkgver}-Source/include/CL"
 #	rm cl.h cl.hpp cl_d3d10.h cl_d3d11.h cl_dx9_media_sharing.h cl_egl.h cl_ext.h cl_gl.h cl_gl_ext.h cl_platform.h opencl.h
-#}
+}
 
 build() {
 	mkdir -p "${srcdir}/Beignet-${pkgver}-Source/build"
