@@ -9,6 +9,7 @@ pkgdesc="AUR package build system"
 arch=('any')
 url="http://github.com/asdil12/aurbs"
 license=('GPL')
+conflicts=('aurbs')
 install="aurbs.install"
 depends=(
 	'devtools' 'rsync' 'python'
