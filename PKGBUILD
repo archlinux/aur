@@ -1,7 +1,7 @@
 pkgname=ttf-abkai
 pkgver=1.0
-pkgrel=1
-pkgdesc="TTF fonts for Manchu, Sibe and Daur Scripts"
+pkgrel=2
+pkgdesc="Abkai Xanyan TTF font for Manchu, Sibe and Daur scripts"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=("Ab-Xy.ttf" )

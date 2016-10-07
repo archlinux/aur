@@ -1,7 +1,7 @@
 pkgbase = ttf-abkai
-	pkgdesc = TTF fonts for Manchu, Sibe and Daur Scripts
+	pkgdesc = Abkai Xanyan TTF font for Manchu, Sibe and Daur scripts
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://abkai.net/core/en/
 	install = ttf-abkai.install
 	arch = any
