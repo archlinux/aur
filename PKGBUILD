@@ -2,7 +2,7 @@
 # Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=7
+pkgrel=8
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -20,8 +20,8 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make PYTHON=/usr/bin/python2 all py extra
+  cd ${pkgname}-${pkgver}
+  make SYSTEM_GSL=yes PYTHON=/usr/bin/python2 all py extra
 }
 
 package() {
