@@ -1,0 +1,15 @@
+pkgbase = ttf-abkai
+	pkgdesc = TTF fonts for Manchu, Sibe and Daur Scripts
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://abkai.net/core/en/
+	install = ttf-abkai.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = Ab-Xy.ttf
+	sha256sums = SKIP
+
+pkgname = ttf-abkai
+
