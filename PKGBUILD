@@ -1,16 +1,16 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=python-imapnotify
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Execute scripts on new messages using IDLE imap command (python version)'
 arch=('any')
 url='https://github.com/a-sk/python-imapnotify'
 license=('custom')
-depends=('python>=3.5' 'python-pytest-runner>=2.0' 'python-pytest-runner<3' 'python-aioimaplib>=0.5.14' 'python-aioimaplib<1.0.0')
+depends=('python>=3.5' 'python-pytest-runner>=2.0' 'python-pytest-runner<3' 'python-aioimaplib>=0.5.14' 'python-aioimaplib<1.0.0' 'python-boltons<17.0.0' 'python-boltons>=16.5.0')
 makedepends=('python-setuptools')
 source=("https://github.com/a-sk/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9c99d997667cc8c35acbbe5f3a95d5a9')
+md5sums=('8ca2cf1ab22fc5fabb4faf157b914aaf')
 
 package() {
   cd "${pkgname}-${pkgver}"
