@@ -6,7 +6,7 @@ pkgname=netlogo-beta
 _pkgname=netlogo
 pkgver=6.0.BETA1
 _pkgver=6.0-BETA1
-pkgrel=333
+pkgrel=3
 pkgdesc="A multi-agent programmable modeling environment. Beta version"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
