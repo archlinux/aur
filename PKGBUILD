@@ -3,21 +3,19 @@
 
 pkgname=python-gnupg
 _pkgsrcname=python-gnupg
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="This module allows easy access to GnuPG's key management, encryption and signature functionality from Python programs." 
 url="https://pypi.python.org/pypi/python-gnupg" 
 license=("BSD")
 arch=("any")
 depends=('python' 'gnupg') 
-source=("https://pypi.python.org/packages/source/p/python-gnupg/${pkgname}-${pkgver}.tar.gz"
-        "https://bitbucket.org/vinay.sajip/python-gnupg/commits/20b529201212d4169e1def37033a0c49e2d8d09d/raw")
-md5sums=('54d312056cb8903358bdd0a18522f702'
-         'f87e8965c47ecc2b3fd8b559cd9cb8d0')
+#source=("https://pypi.python.org/packages/source/p/python-gnupg/${pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/ec/bc/6e27b54c2fd74f40c0b040693a5d7be20ab4e6e996dc2344cd918e360c16/python-gnupg-0.3.9.tar.gz")
+md5sums=('426369c30d5693357b12319e454ccde6')
 
 prepare() {
 	cd $srcdir/${pkgname}-${pkgver}/
-	patch -p1 < ../raw
 
 }
 
