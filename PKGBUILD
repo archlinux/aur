@@ -2,7 +2,7 @@
 # Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=8
+pkgrel=9
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -10,6 +10,7 @@ license=("GPL")
 depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python2' 'python2-pyfits'
 'python2-numpy' 'netpbm' 'cfitsio' 'gsl')
 makedepends=('make' 'gcc')
+install=astrometry.net.install
 source=("https://github.com/dstndstn/${pkgname}/archive/${pkgver}.tar.gz")
 
 prepare() {
