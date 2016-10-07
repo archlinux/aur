@@ -1,0 +1,14 @@
+pkgbase = otf-cp-mono
+	pkgdesc = CP Mono OTF font
+	pkgver = v07
+	pkgrel = 1
+	url = https://1-free-fonts.com/font/6748
+	arch = any
+	license = CC BY 3.0 DE
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://1-free-fonts.com/fonts/download/6748/CPMono.zip
+	md5sums = dcaaa6caaf7faa13f2909d433ec84a99
+
+pkgname = otf-cp-mono
+
