@@ -1,6 +1,6 @@
 pkgbase = ffcast
 	pkgdesc = FFcast has almost nothing to do with FFmpeg or screencast ;)
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lolilolicon/FFcast
@@ -16,8 +16,8 @@ pkgbase = ffcast
 	depends = xrectsel
 	optdepends = ffmpeg: for png rec
 	optdepends = imagemagick: for trim
-	source = https://github.com/lolilolicon/FFcast/archive/2.4.4.tar.gz
-	md5sums = 418c07d804d9119b62d800db8cdaaeee
+	source = https://github.com/lolilolicon/FFcast/archive/2.4.5.tar.gz
+	sha256sums = faf318e82fe1a33a65cb03eb4f4ee3f9d9d71f27d9a9e1a02b24e7468c0618f9
 
 pkgname = ffcast
 
