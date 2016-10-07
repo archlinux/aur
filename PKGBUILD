@@ -2,7 +2,7 @@
 
 pkgbase=python-pytest-flake8
 pkgname=('python-pytest-flake8' 'python2-pytest-flake8')
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='pytest plugin to check FLAKE8 requirements'
 arch=('any')
@@ -13,6 +13,9 @@ source=("git+https://github.com/tholo/pytest-flake8#tag=$pkgver")
 md5sums=('SKIP')
 
 prepare() {
+  # https://github.com/tholo/pytest-flake8/pull/14
+  sed -i 's/flake8-ignore = E128/flake8-ignore = E128 E501/' pytest-flake8/tox.ini
+
   cp -a pytest-flake8{,-py2}
 }
 
