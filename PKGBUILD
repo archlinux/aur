@@ -4,7 +4,7 @@
 
 pkgname=gulp-cli
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The streaming build system'
 arch=('any')
 url="http://gulpjs.com/"
@@ -13,6 +13,7 @@ depends=('nodejs' 'semver')
 makedepends=('npm')
 replaces=('gulp')
 provides=('gulp')
+conflicts=('gulp')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=($pkgname-$pkgver.tgz)
 md5sums=('663b2dde0bed198271c4e1d33babdd5a')
