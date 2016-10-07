@@ -1,5 +1,5 @@
-# Maintainer: eagleeyetom <eagleeyetom@gmail.com>
-# Contrubutor: raininja <raijin@rai.ninja>
+# Contributor: eagleeyetom <eagleeyetom@gmail.com>
+# Maintainer: raininja <raijin@rai.ninja>
 
 pkgname=slimjet
 pkgver=11.0.7.0
@@ -16,7 +16,7 @@ provides=('slimjet' 'pepper-flash')
 options=('!emptydirs' '!strip')
 _channel=release
 source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/{$_channel}/${pkgname}_amd64.deb")
+source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/${_channel}/${pkgname}_amd64.deb")
 md5sums_i686=('7f28aa24e1d6548e96d2ba5a9e82fdbc')
 md5sums_x86_64=('71bbeb88a11fc7cd648f0fb0f0173b51')
 
