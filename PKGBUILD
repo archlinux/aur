@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner-gui-git
-pkgver=0.6.91.8.g8db2494
+pkgver=0.6.91.14.g172212e
 pkgrel=1
 pkgdesc="main GUI for svgcleaner"
 url="https://github.com/RazrFalcon/svgcleaner-gui"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "%s.%s.g%s" $(git describe --tags|tr -d v) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "0.6.91.%s.g%s"  $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {

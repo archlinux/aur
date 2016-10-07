@@ -1,6 +1,6 @@
 pkgbase = svgcleaner-gui-git
 	pkgdesc = main GUI for svgcleaner
-	pkgver = 0.6.91.8.g8db2494
+	pkgver = 0.6.91.14.g172212e
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/svgcleaner-gui
 	arch = i686
