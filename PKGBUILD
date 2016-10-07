@@ -6,8 +6,8 @@
 pkgbase=powerdevil
 pkgname=powerdevil-light
 pkgver=5.8.0
-pkgrel=1
-pkgdesc='Manages the power consumption settings of a Plasma Shell'
+pkgrel=2
+pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
@@ -30,6 +30,8 @@ build() {
     cd build
     cmake ../${pkgbase}-${pkgver} \
         -DCMAKE_BUILD_TYPE=Release \
+        -DKF5NetworkManagerQt_FOUND=OFF \
+        -DKF5BluezQt_FOUND=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DKDE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF

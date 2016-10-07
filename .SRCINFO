@@ -1,7 +1,7 @@
 pkgbase = powerdevil
-	pkgdesc = Manages the power consumption settings of a Plasma Shell
+	pkgdesc = Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.
 	pkgver = 5.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
 	arch = x86_64
