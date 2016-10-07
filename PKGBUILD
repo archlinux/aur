@@ -8,15 +8,15 @@
 
 pkgbase=boost
 pkgname=('boost-libs' 'boost')
-pkgver=1.61.0
+pkgver=1.62.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 url='http://www.boost.org/'
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('icu>=55.1' 'python>=3.5' 'python<3.6' 'python2' 'bzip2' 'zlib' 'openmpi')
 source=(https://downloads.sourceforge.net/project/${pkgbase}/${pkgbase}/${pkgver}/${pkgbase}_${_boostver}.tar.bz2)
-sha1sums=('f84b1a1ce764108ec3c2b7bd7704cf8dfd3c9d01')
+sha1sums=('5fd97433c3f859d8cbab1eaed4156d3068ae3648')
 
 build() {
    export _stagedir="${srcdir}/stagedir"
