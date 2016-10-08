@@ -1,3 +1,8 @@
+blacklist /usr/local/bin
+blacklist /usr/local/sbin
+blacklist /boot
+blacklist /media
+blacklist /mnt
 whitelist ${HOME}/.Natron
 whitelist ${HOME}/.cache/INRIA/Natron/
 whitelist ${HOME}/.config/INRIA/
@@ -8,18 +13,10 @@ whitelist ${HOME}/Videos
 
 whitelist /opt/natron/
 
-
 private-bin natron
-private-etc fonts,X11
-private-dev
-whitelist /tmp/.X11-unix
-
+private-etc fonts,X11,pulse
+whitelist /tmp/.X11-unix/
 noexec ${HOME}
 noexec /tmp
-
 shell none
-noroot
 ipc-namespace
-net none
-seccomp
-caps.drop all
