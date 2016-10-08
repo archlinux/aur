@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -540,13 +540,15 @@ package_linux-pf-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Header files and scripts for building modules for linux-pf kernel."
   depends=('linux-pf') 
-  conflicts=( "${pkgbase}") 
-  provides=( "${pkgbase}-headers=$pkver" )
+  conflicts=( "${pkgbase}"-headers) 
+  provides=( "${pkgbase}-headers=$pkgver" )
   cd "${srcdir}/linux-${_basekernel}"
 # c/p from linux-ARCH
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
+  mkdir -p ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool
+  cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
 
   cd "${srcdir}/${_srcname}"
   install -D -m644 Makefile \
