@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=2.10.0.r6013.390ddfa
+pkgver=2.10.0.r6029.f860b6a
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ depends=('qt5-webkit'
          'knotifyconfig'
          'kcmutils'
          'libkcddb-git'
-         'libsamplerate'
          'musicbrainz'
          'libdvdread'
          'libmpcdec'
@@ -38,7 +37,7 @@ optdepends=('cdrdao: for CD DAO mode burning support'
 provides=('k3b')
 conflicts=('k3b')
 source=('git://anongit.kde.org/k3b.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd k3b
@@ -57,7 +56,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=/usr/lib/k3b \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DK3B_ENABLE_PERMISSION_HELPER=ON
   make
