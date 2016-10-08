@@ -1,15 +1,15 @@
 pkgbase = python-autobgch
 	pkgdesc = A simple and automatic wallpaper changer supporting various backends for Linux
-	pkgver = 0.3.1
-	pkgrel = 1
+	pkgver = 0.4
+	pkgrel = 2
 	url = https://github.com/AlvinJian/auto_background_changer
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	optdepends = feh: lightweight window manager support
-	source = python-autobgch-0.3.1.tar.gz::https://github.com/AlvinJian/auto_background_changer/archive/v0.3.1.tar.gz
-	md5sums = 4d556b0f4d4234d0fbe6a77d6f89ebe5
+	source = python-autobgch-0.4.tar.gz::https://github.com/AlvinJian/auto_background_changer/archive/v0.4.tar.gz
+	md5sums = f5085e10fdcf99af12ba94ca433f2ad8
 
 pkgname = python-autobgch
 
