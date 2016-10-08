@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=1.9.50.r396.77d90c4
+pkgver=2.0.1.r408.a65d69e
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('extra-cmake-modules'
 provides=('libktorrent')
 conflicts=('libktorrent')
 source=('git://anongit.kde.org/libktorrent.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libktorrent
@@ -36,7 +36,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
