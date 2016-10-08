@@ -1,0 +1,16 @@
+pkgbase = ttf-tuladha
+	pkgdesc = Tuladha Jejeg TTF font for Javanese script
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://sites.google.com/site/jawaunicode/
+	install = ttf-tuladha.install
+	arch = any
+	license = SIL OFL
+	makedepends = libarchive
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://sites.google.com/site/jawaunicode/TuladhaJejegGr_2.01.zip
+	sha256sums = 353bf596d5b000096b72909c04f29f495de59a1a44b3f48abe0c8d00032fd670
+
+pkgname = ttf-tuladha
+
