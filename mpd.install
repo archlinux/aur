@@ -1,0 +1,11 @@
+post_install() {
+	getent group mpd &>/dev/null || groupadd -r -g 45 mpd >/dev/null
+	getent passwd mpd &>/dev/null || useradd -r -u 45 -g mpd -d /var/lib/mpd -s /bin/false -G audio mpd >/dev/null
+	usr/bin/systemd-tmpfiles --create mpd.conf || true
+}
+
+post_remove() {
+	getent passwd mpd &>/dev/null && userdel mpd >/dev/null
+	getent group mpd &>/dev/null && groupdel mpd >/dev/null
+	true
+}
