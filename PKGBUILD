@@ -9,11 +9,9 @@ url="https://github.com/sensics/OSVR-RenderManager"
 makedepends=('git' 'cmake')
 depends=('osvr-core-git') #TODO: add more deps
 source=("osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git"
-  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
-  "osvr_server_config.HDK20ExtendedLandscape.archlinux.json")
+  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git")
 md5sums=('SKIP'
-         'SKIP'
-         '7c814a9dc7fefca9ec3400f6895b0aac')
+         'SKIP')
 
 pkgver() {
   cd "$srcdir/osvr-rendermanager"

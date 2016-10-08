@@ -10,10 +10,8 @@ pkgbase = osvr-rendermanager-git
 	depends = osvr-core-git
 	source = osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git
 	source = vendor-vrpn::git+https://github.com/vrpn/vrpn.git
-	source = osvr_server_config.HDK20ExtendedLandscape.archlinux.json
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 7c814a9dc7fefca9ec3400f6895b0aac
 
 pkgname = osvr-rendermanager-git
 
