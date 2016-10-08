@@ -1,0 +1,15 @@
+pkgbase = gmsl
+	pkgdesc = GNU Make Standard Library: extra functions to extend functionality of Makefiles
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = http://gmsl.sourceforge.net/
+	arch = any
+	license = BSD
+	depends = make
+	source = http://downloads.sourceforge.net/project/gmsl/GNU%20Make%20Standard%20Library/v1.1.7/gmsl-1.1.7.tar.gz
+	source = LICENSE
+	md5sums = cc1b1a758a1d2567583f1c7f68368a07
+	md5sums = 13d815e33b3231faeb6ead3d1c2e41d6
+
+pkgname = gmsl
+
