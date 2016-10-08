@@ -1,6 +1,6 @@
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 pkgname=debmake
-pkgver=4.2.2
+pkgver=4.2.6
 pkgrel=1
 pkgdesc="Program to make the Debian source package"
 arch=('any')
@@ -9,12 +9,10 @@ license=('MIT')
 makedepends=('git' 'python')
 depends=('devscripts' 'dpkg' 'python' 'rsync')
 optdepends=('strace' 'wget' 'curl')
-source=("$pkgname"::'git+https://anonscm.debian.org/git/collab-maint/debmake.git')
+source=("$pkgname-$pkgver::git+https://anonscm.debian.org/git/collab-maint/debmake.git#tag=debian/$pkgver-$pkgrel")
 md5sums=('SKIP')
 
 package() {
-	cd $srcdir/"$pkgname"
-	git checkout debian/$pkgver-$pkgrel
-
+	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
