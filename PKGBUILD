@@ -1,6 +1,6 @@
 # Maintainer: Jordyn Carattini <onlinecloud1@gmail.com>
 pkgname="shgreeter-git"
-pkgver=r10.00cc278
+pkgver=r11.3859afb
 pkgrel=1
 pkgdesc="If placed in the proper directory, this script greets the user and offers some potentially interesting information about the system's current resources."
 url="https://github.com/jcjordyn130/shgreeter"
