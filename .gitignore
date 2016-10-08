@@ -1,0 +1,8 @@
+# emacs
+*~
+
+# files and directories that makepkg leaves around
+pkg/
+src/
+poltroon-*.pkg.tar.xz
+v*.tar.gz
