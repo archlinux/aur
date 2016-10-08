@@ -1,29 +1,31 @@
-# Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
+# Maintainer: Ralph Holmes <ybden@ybden.com>
+# Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc
-pkgver=1.9.9
+pkgver=1.13.4
 pkgrel=1
-pkgdesc="A suite of tools compiling mdoc from the OpenBSD project"
-arch=('x86_64' 'i686')
+pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
+arch=('i686' 'x86_64')
 url='http://mdocml.bsd.lv/'
-license=('ISC')
-source=("http://mdocml.bsd.lv/snapshots/mdocml-${pkgver}.tar.gz"
-        'mdocml-makefile.patch')
-md5sums=('d54e4b67308b44f895aa09c79cc6762c'
-         '585956c2741ed2b29dce9a103161cffb')
-depends=('glibc')
+license=('custom: ISC')
+depends=('sqlite')
+source=("http://mdocml.bsd.lv/snapshots/mdocml-$pkgver.tar.gz"
+        'configure.local')
+sha256sums=('0a55c1addb188071d6f784599303656b8465e98ec6b2f4f264e12fb96d79e0ef'
+            '3821922c5cbafb93f48f8224befbd61c48f7742f46ef608b652cb545c46f8f87')
 
-prepare () {
-	cd ${srcdir}/mdocml-${pkgver}
-	patch < ${srcdir}/mdocml-makefile.patch
+prepare() {
+	cp "$srcdir"/configure.local mdocml-$pkgver
 }
 
-build () {
-	cd ${srcdir}/mdocml-${pkgver}
-	make PREFIX=/usr/
+build() {
+	cd mdocml-$pkgver
+	./configure
+	make
 }
 
-package () {
-	cd ${srcdir}/mdocml-${pkgver}
-	make install DESTDIR=${pkgdir} PREFIX=/usr/
+package() {
+	cd mdocml-$pkgver
+	make -j1 install DESTDIR="$pkgdir"
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
