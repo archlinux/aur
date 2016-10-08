@@ -1,18 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libkdeaccessibilityclient-git
-pkgver=0.1.0.r243.f66d849
+pkgver=0.1.0.r245.1e1c469
 pkgrel=1
 pkgdesc="Helper to make writing accessibility tools easier. Used by screen readers for example. (GIT version)"
 url='https://projects.kde.org/projects/playground/accessibility/libkdeaccessibilityclient'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base')
-makedepends=('cmake' 'git')
+makedepends=('cmake'
+             'git'
+             )
 conflicts=('libkdeaccessibilityclient')
 provides=('libkdeaccessibilityclient')
 source=('git://anongit.kde.org/libkdeaccessibilityclient')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libkdeaccessibilityclient
