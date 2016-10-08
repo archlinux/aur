@@ -3,17 +3,18 @@
 
 pkgname=mp
 pkgver=5.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A text editor for programmers."
 arch=(i686 x86_64)
 url="http://triptico.com/software/mp.html"
 license=('GPL')
-makedepends=('gtk3' 'qt4' 'ncurses5-compat-libs')
+# depends=('ncurses5-compat-libs')
+makedepends=('gtk3' 'qt4')
 optdepends=('gtk3: gtk frontend'
             'qt4: qt frontend')
 options=('!emptydirs')
 source=(http://triptico.com/download/mp/mp-$pkgver.tar.gz)
-sha256sums=('f3ce1831d2cfb42a8540d197a9fdad163ecd17883a57cd798a2f30bfe791ddc1')
+md5sums=('16c425264e2728679ab5975f8e582acb')
 
 prepare() {
   sed -i "s|ncursesw/||" ${srcdir}/mp-$pkgver/{config.sh,mpv_curses.c}
