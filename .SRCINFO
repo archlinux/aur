@@ -1,0 +1,15 @@
+pkgbase = black-red-lxqt-theme
+	pkgdesc = Black and red glossy theme for LXQt
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/stefonarch/black-red
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	optdepends = breeze-icons: Breeze icon themes
+	provides = black-red-lxqt-theme=1.1
+	source = https://github.com/stefonarch/black-red/archive/1.1.tar.gz
+	md5sums = 02557d5652ab62bcc159c7a806b4a130
+
+pkgname = black-red-lxqt-theme
+
