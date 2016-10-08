@@ -4,27 +4,26 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 
-_spkgrel=1
+_spkgrel=3
 _repo=http://mirror.netcologne.de/archlinux/core/os
 
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=231
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64')
 license=('GPL2')
-groups=('base' 'base-openrc')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 source_i686=("$_repo/i686/libsystemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz"
         "$_repo/i686/systemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz")
 source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
-        "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz")
-#         "gummibootx64.efi")
-sha256sums_i686=('2f759a0864788357b4d27e77ebd743fbbf877c10a364bfb7b0dc004525b94e6a'
-                '40c5c372e008931240ec3e059a4b06ac67a58d86d492e66d4abb5651fef9483b')
-sha256sums_x86_64=('a53e9c88112c2852b11410cdcd5365ce57e66b408a4a23195070c8fe4ab58a41'
-                '5efc276863a80fe9fea8bbe7f3e2a33792f9ec6be5e5db21c55c028e889ac18d')
-#                 'e0c6a40c74dc3a597dda977cb44bdf21759b8869e152d898d35664b8d3675fd3')
+        "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
+        "gummibootx64.efi")
+md5sums_i686=('1b3fa9059c12eba0bec92cb16435e20d'
+              'dcb3c973314fb38b968869d4b169c4bc')
+md5sums_x86_64=('a4e2fbd6645aacf4bba5aafa9a220c68'
+                '6d09efd13c1f16a7227e77c56af0d4e9'
+                'ef357b701d67fa39355cbc1c3b9d5afd')
 
 package_eudev-systemd() {
     pkgdesc="systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package"
@@ -49,12 +48,12 @@ package_libeudev-systemd() {
     conflicts=('libsystemd' 'eudev-systemdcompat')
     replaces=('eudev-systemdcompat')
 
-    install -d $pkgdir/usr/lib #/systemd/boot/efi
+    install -d $pkgdir/usr/lib/systemd/boot/efi
     for f in usr/lib/libsystemd*.so*;do
         mv -v $f $pkgdir/usr/lib
     done
 
-#     if [[ $CARCH == 'x86_64' ]];then
-#         install $srcdir/gummibootx64.efi $pkgdir/usr/lib/systemd/boot/efi/systemd-bootx64.efi
-#     fi
+    if [[ $CARCH == 'x86_64' ]];then
+        install $srcdir/gummibootx64.efi $pkgdir/usr/lib/systemd/boot/efi/systemd-bootx64.efi
+    fi
 }
