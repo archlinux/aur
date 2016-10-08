@@ -8,7 +8,7 @@
 
 # Maintainer: Alvin Jian <alvinchien0624@gmail.com>
 pkgname=python-autobgch
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="A simple and automatic wallpaper changer supporting various backends for Linux"
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python')
 optdepends=('feh: lightweight window manager support')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlvinJian/auto_background_changer/archive/v${pkgver}.tar.gz")
-md5sums=('4d556b0f4d4234d0fbe6a77d6f89ebe5')
+md5sums=('f5085e10fdcf99af12ba94ca433f2ad8')
 
 package() {
   cd "$srcdir/auto_background_changer-$pkgver"
