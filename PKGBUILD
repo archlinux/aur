@@ -3,7 +3,7 @@
 pkgname=python-mahotas
 shrtname=mahotas
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast computer vision algorithms (all implemented in C++) operating over numpy arrays"
 url="http://luispedro.org/software/mahotas"
 depends=('python' 'python-numpy')
@@ -17,7 +17,6 @@ sha256sums=('e113fb73f1f717f1a9124b41496b030628efb72a23b0150a42ecb18b08b030c4')
 build() {
     cd $srcdir/$shrtname-$pkgver
     python setup.py build
-    make docs
 }
 
 check() {
@@ -28,12 +27,6 @@ check() {
 package() {
     cd $srcdir/$shrtname-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1
-    mkdir -p $pkgdir/usr/share/doc/python-mahotas/html
-    mkdir -p $pkgdir/usr/share/doc/python-mahotas/demos
-    cp -rf docs/mahotas/demos/* "$pkgdir/usr/share/doc/python-mahotas/demos/"
-    cp -rf docs/build/html/* "$pkgdir/usr/share/doc/python-mahotas/html/"
-    find $pkgdir/usr/share/doc/python-mahotas/ -type f -exec chmod 0644 {} \;
-    find $pkgdir/usr/share/doc/python-mahotas/ -type d -exec chmod 0755 {} \;
     install -m755 -d "${pkgdir}/usr/share/licenses/python-mahotas"
     install -m644 COPYING "${pkgdir}/usr/share/licenses/python-mahotas/LICENSE.txt"
 }
