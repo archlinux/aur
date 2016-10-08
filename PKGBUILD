@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.42
-pkgrel=6
+pkgrel=8
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://aur.archlinux.org/packages/firejail-extras/"
@@ -40,6 +40,10 @@ sha384sums=( 'SKIP'
 package() {
 	cd "${srcdir}"
 
+        rm   ${srcdir}/firejail-profiles/firefox.profile
+        rm   ${srcdir}/firejail-profiles/google-chrome.profile
+        rm   ${srcdir}/firejail-profiles/libreoffice.profile
+
 	mkdir -p "${pkgdir}/etc/firejail"
         
 
@@ -51,5 +55,7 @@ package() {
 	for file in ${srcdir}/firejail-profiles/*.profile
 	do
 		install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
+                sed -i 's/.kde/.kde4/g' *.profile
+                sed -i 's/openshot/openshot-qt/g' *.profile
 	done
 }
