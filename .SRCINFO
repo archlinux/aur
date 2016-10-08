@@ -1,13 +1,13 @@
 pkgbase = podget
 	pkgdesc = Simple tool to automate downloading of podcasts
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = http://podget.sourceforge.net/
 	arch = any
 	license = GPL3
 	depends = wget
-	source = http://downloads.sourceforge.net/project/podget/podget/podget-0.8.2/podget-0.8.2.tar.gz
-	md5sums = b6dede325ae11a4a4c1654958e8dee81
+	source = http://downloads.sourceforge.net/project/podget/podget/podget-0.8.3/podget-0.8.3.tar.gz
+	md5sums = 026174c163e37ede39c4d3f980ec8677
 
 pkgname = podget
 
