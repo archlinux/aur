@@ -1,13 +1,14 @@
 pkgname=janusvr
 pkgdesc='JanusVR is a 3D VR internet browser'
 url='http://www.dgp.toronto.edu/~mccrae/projects/firebox/'
-pkgver=53.9
+pkgver=53.11
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 janusver=$(curl http://www.janusvr.com/version.html)
 source=("janusvr${janusver}.gz::http://downloads.janusvr.com/janusvr_linux.tar.gz"
-        "janusvr.sh" "http://www.dgp.toronto.edu/~mccrae/projects/firebox/img/janus_logo5.jpg"
+        "janusvr.sh"
+	"http://janusvr.com/images/logotextoverlight.png"
         "janusvr.desktop")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib' 'qt5-multimedia')
 optdepends=("oculus-rift-sdk-jherico-git: For libOVR including a fix for mesa. Don't forget to Replace /opt/janusvr/libOVRRT64_0.so.5.0.1")
@@ -31,7 +32,7 @@ package() {
   install -m755 "$srcdir/janusvr.sh" "$pkgdir/usr/bin/janusvr"
 
   # segfaults for me with mesa with OpenCL. WAT
-  MAGICK_OCL_DEVICE=OFF convert "$srcdir/janus_logo5.jpg" -resize 128x128 "$pkgdir/usr/share/icons/janusvr.png" # screw the aspect ratio
+  MAGICK_OCL_DEVICE=OFF convert "$srcdir/logotextoverlight.png" -resize 128x128 "$pkgdir/usr/share/icons/janusvr.png" # screw the aspect ratio
 
   install "${srcdir}/janusvr.desktop" "${pkgdir}/usr/share/applications/janusvr.desktop"
 
@@ -48,5 +49,5 @@ package() {
 
 md5sums=('SKIP'
          'c05bb2fbfce12c89db560ed8b8bb036a'
-         'caa1d06e46c684365cb8cddcac29ee21'
+         '075d24ca32a4acd55850f0458ccecf9a'
          'a8a2ce8e4dfa4e4e87a6af811b5627a4')
