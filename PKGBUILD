@@ -1,8 +1,7 @@
-# maintainer: Sébastien Leblanc – seb [at] sebleblanc [dot] net
 pkgname=joyosc-git
 _name=joyosc
 
-pkgrel=1
+pkgrel=2
 pkgver=0.4.0.r14.g5caf4ac
 source=("git+https://github.com/danomatika/joyosc.git")
 md5sums=('SKIP')
@@ -35,8 +34,8 @@ make PREFIX=/usr
 package () {
 cd "$srcdir"/"$_name"
 
-make DESTDIR="$pkgdir"/"$_name" install
+make DESTDIR="$pkgdir" install
 
-cd "$pkgdir"/"$_name"
+cd "$pkgdir"
 rm usr/share/test.xml # why is this here?
 }
