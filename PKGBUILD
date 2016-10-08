@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8
 pkgver=4.8
-pkgrel=1.53
+pkgrel=1.55
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -138,10 +138,10 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make xconfig # X-based configuration
   #make nconfig # new CLI menu for configuration
-  #make olddefconfig
+  #make olddefconfia # Use current kernel configuration
   # ... or manually edit .config
 
-  printf '\n \033[32m %s \033[0m ' "[Run make nconfig? (Y/n)]"; read -r
+  printf '\n \033[32m %s \033[0m ' "[Run make nconfig? (Y/n)]"; read -r; echo
   case $REPLY in
           [Yy]*|'') make nconfig ;; # new CLI menu for configuration
           [Nn]*) printf ' \033[31m %s \n\033[0m ' "Continuing..."; make oldconfig ;;
