@@ -1,12 +1,14 @@
 pkgname=kdiagram-git
-pkgver=0.76.d4f94e0
+pkgver=0.89.0ebda26
 pkgrel=1
 pkgdesc="Powerful libraries (KChart, KGantt) for creating business diagrams. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://quickgit.kde.org/?p=kdiagram.git'
 license=('LGPL')
 depends=('qt5-svg')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git'
+             'extra-cmake-modules'
+             )
 conflicts=('kdiagram')
 provides=('kdiagram')
 source=("git://anongit.kde.org/kdiagram.git")
@@ -26,8 +28,7 @@ build() {
   cmake ../kdiagram \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
-      -DLIB_INSTALL_DIR=lib \
-      -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+      -DKDE_INSTALL_LIBDIR=lib \
       -DBUILD_TESTING=OFF
   make
 }
