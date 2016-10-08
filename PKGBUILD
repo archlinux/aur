@@ -1,9 +1,9 @@
 # Maintainer : nyyu <mail@nyyu.tk>
 
 _npmname=generator-jhipster
-_npmver=3.8.0
+_npmver=3.9.0
 pkgname=nodejs-generator-jhipster
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="JHipster is a fully Open Source, widely used application generator. Easily create high-quality Spring Boot + AngularJS projects!"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs-yeoman' 'bower' 'gulp')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('e898661d18d8450f7c2250ae23697f9c927ba530')
+sha1sums=('0ced3cc97c2ffdf0fdd143197bca51de7533c4e7')
 
 package() {
   cd "$srcdir"
