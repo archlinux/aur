@@ -1,6 +1,6 @@
 pkgbase = osvr-rendermanager-git
 	pkgdesc = TW, ATW and high performance rendering with OpenGL and GLES
-	pkgver = v00_06_52.r11.g03b6f9c
+	pkgver = v00_06_52.r48.g0e515eb
 	pkgrel = 1
 	url = https://github.com/sensics/OSVR-RenderManager
 	arch = i686
@@ -10,8 +10,10 @@ pkgbase = osvr-rendermanager-git
 	depends = osvr-core-git
 	source = osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git
 	source = vendor-vrpn::git+https://github.com/vrpn/vrpn.git
+	source = osvr_server_config.HDK20ExtendedLandscape.archlinux.json
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 7c814a9dc7fefca9ec3400f6895b0aac
 
 pkgname = osvr-rendermanager-git
 

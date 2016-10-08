@@ -1,0 +1,34 @@
+{
+    "description": "This configuration supports video (so-called 'positional') and IMU fusion tracking, in addition to orientation-only tracking, with the OSVR HDK. It is configured for RenderManager applications in non-direct extended-display landscape mode on HDK 2.0 optics.",
+    "display": "/usr/share/osvrcore/displays/OSVR_HDK_2_0.json",
+    "renderManagerConfig": "/usr/share/osvrcore/sample-configs/nondirectmode_HDK2.0.json",
+    "drivers": [{
+        "plugin": "com_osvr_VideoBasedHMDTracker",
+        "driver": "VideoBasedHMDTracker",
+        "params": {
+            "showDebug": false,
+            "includeRearPanel": true,
+            "headCircumference": 55.75,
+            "calibrationFile": "/var/tmp/videotrackerCombinedCalibrationFile13.json"
+        }
+    }, {
+        "plugin": "org_osvr_filter_videoimufusion",
+        "driver": "VideoIMUFusion",
+        "params": {
+            "name": "HeadFusion",
+            "input": {
+                "imu": "/com_osvr_Multiserver/OSVRHackerDevKitPrediction0/semantic/hmd",
+                "faceplate": "/com_osvr_VideoBasedHMDTracker/TrackedCamera0_0/semantic/hmd/front"
+            },
+            "eyeHeight": 0,
+            "cameraIsForward": true
+        }
+    }],
+    "aliases": {
+        "/headSpace": {
+            "translate": [0.0, 0.0, 0.04141],
+            "child": "/org_osvr_filter_videoimufusion/HeadFusion/semantic/fused"
+        },
+        "/me/head": "/headSpace"
+    }
+}

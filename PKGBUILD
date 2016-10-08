@@ -1,5 +1,5 @@
 pkgname=osvr-rendermanager-git
-pkgver=v00_06_52.r11.g03b6f9c
+pkgver=v00_06_52.r48.g0e515eb
 pkgrel=1
 pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
@@ -9,9 +9,11 @@ url="https://github.com/sensics/OSVR-RenderManager"
 makedepends=('git' 'cmake')
 depends=('osvr-core-git') #TODO: add more deps
 source=("osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git"
-  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git")
+  "vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
+  "osvr_server_config.HDK20ExtendedLandscape.archlinux.json")
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         '7c814a9dc7fefca9ec3400f6895b0aac')
 
 pkgver() {
   cd "$srcdir/osvr-rendermanager"
@@ -64,6 +66,9 @@ build() {
 package() {
   cd osvr-rendermanager-build
   make DESTDIR="$pkgdir/" install
+  install -d "$pkgdir"/usr/share/osvrcore/sample-configs/
+  cp -ra "$srcdir"/osvr-rendermanager/installer/* "$pkgdir"/usr/share/osvrcore/sample-configs/
+  install -m 0644 "$srcdir"/osvr_server_config.HDK20ExtendedLandscape.archlinux.json "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.HDK20ExtendedLandscape.archlinux.json
 }
 
 # vim:set ts=2 sw=2 et:
