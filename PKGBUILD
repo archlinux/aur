@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=20160315.9b1890e
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('any')
 url="http://www.bitcoinunlimited.info"
@@ -22,7 +22,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12bu
+source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12.1bu
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
@@ -40,7 +40,10 @@ install=bitcoin.install
 
 pkgver() {
 	cd "$srcdir/BitcoinUnlimited"
-  git log -1 --date=short --format="%cd.%h" | sed "s|-||g"
+
+  # The latest version was not tagged, so throw away the version we get
+  # from the top-most tag, but keep,the revision height and commit hash
+  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver.r\1/;s/-/./g"
 }
 
 build() {
