@@ -32,24 +32,11 @@ __EOF__
 
 upgrade_msg() {
     cat << __EOF__
-
-Note: If you are upgrading from one of the previous 4.2 xen builds, and are having issues
-      with graphics card passthrough, the default device model used has changed and the 
-      newer model can sometimes have issues. To work around these issue, support for the
-      old style qemu-xen-traditional device model has been enabled. To use, add (or change)
-      the following line into the configuration file for the domain you want to use 
-      passthrough with:
-         device_model_version = "qemu-xen-traditional"
-
-      Also remember to rebuild your grub configuration if upgrading from a non-xen 4.5.0
-      install.
-
-      The xend daemon and the xm toolset have now been removed with the xen 4.5 release.
-
-      This install is now using a new version of the 09_xen file, used when generating
-      a new grub.cfg file. The new version inherits the default linux kernel command
-      line settings; to use the old method, uncomment the 'XEN_LINUX_CMDLINE_OVERRIDE'
-      option in /etc/xen/grub.conf and change the '0' to '1'
+Xen 4.7
+Release notes
+http://wiki.xen.org/wiki/Xen_Project_4.7_Release_Notes
+Feature list
+http://wiki.xen.org/wiki/Xen_Project_4.7_Feature_List
 __EOF__
 
 }
