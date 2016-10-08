@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.1.r2250.0b2ad94
+pkgver=5.0.1.r2296.3d5742a
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,17 +24,26 @@ makedepends=('extra-cmake-modules'
              'kross'
              'kplotting'
              'kdesignerplugin'
+             'kdewebkit'
+             'kde-syndication'
              )
 optdepends=('kplotting: for stats plugin'
             'taglib: for mediaplayer plugin'
             'geoip: for infowidget plugin'
             'plasma-workspace: for shutdown plugin'
             'kdnssd: for zeroconf plugin'
+            'kdewebkit: for syndication plugin'
+            'kde-syndication: for syndication plugin'
+            'kross: for scripting plugin'
             )
 provides=('ktorrent')
 conflicts=('ktorrent')
-source=('git://anongit.kde.org/ktorrent.git')
-sha1sums=('SKIP')
+source=('git://anongit.kde.org/ktorrent.git'
+        'kf5kross.patch'
+        )
+sha256sums=('SKIP'
+            'b7f35f74ee2b68a7ebd22ce161e60c52efda36ebceda8cc9dabbadf827f302c0'
+            )
 
 pkgver() {
   cd ktorrent
@@ -44,6 +53,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd ktorrent
+  patch -p1 -i "${srcdir}/kf5kross.patch"
 }
 
 build() {
@@ -52,7 +64,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DWITH_SYSTEM_GEOIP=ON
   make
