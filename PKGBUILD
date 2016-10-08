@@ -43,6 +43,7 @@ build() {
         --sysconfdir=/etc \
         --enable-cdio-paranoia \
         --enable-libmpdclient \
+        --enable-pulse \
         --disable-ao \
         --disable-ffmpeg \
         --disable-jack \
