@@ -7,6 +7,7 @@ pkgbase = libucw
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc
+	depends = perl
 	source = http://www.ucw.cz/libucw//download/libucw-6.5.tar.gz
 	md5sums = f4614565e1966007bd99b81c0124284a
 
