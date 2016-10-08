@@ -2,8 +2,8 @@
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-unlimited-git
-pkgver=20160315.9b1890e
-pkgrel=3
+pkgver=0.12.1
+pkgrel=1
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="http://www.bitcoinunlimited.info"
@@ -13,7 +13,7 @@ makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12bu'
+source=('git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12.1bu'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
@@ -22,7 +22,10 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/BitcoinUnlimited"
-  printf "%s.%s" "$(git log -1 --format="%cd" --date=short | sed "s|-||g")" "$(git rev-parse --short HEAD)"
+
+  # The latest version was not tagged, so throw away the version we get
+  # from the top-most tag, but keep,the revision height and commit hash
+  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver.r\1/;s/-/./g"
 }
 
 build() {
