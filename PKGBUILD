@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=breeze-icons-git
-pkgver=5.26.0.r822.506f173
+pkgver=5.27.0.r857.3580a4a
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
@@ -33,7 +33,6 @@ build() {
   cmake ../breeze-icons \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DBINARY_ICONS_RESOURCE=ON
   make
