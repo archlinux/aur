@@ -7,12 +7,21 @@ pkgdesc="A screen magnifier. KF5 Frameworks branch. (GIT version)"
 url='http://kde.org/applications/utilities/kmag'
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('kio' 'libkdeaccessibilityclient-git' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
-conflicts=('kdegraphics-kmag' 'kmag')
+depends=('kio'
+         'libkdeaccessibilityclient'
+         'hicolor-icon-theme'
+         )
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python'
+             )
+conflicts=('kdegraphics-kmag'
+           'kmag'
+           )
 provides=('kmag')
 source=('git://anongit.kde.org/kmag#branch=frameworks')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd kmag
@@ -30,7 +39,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
