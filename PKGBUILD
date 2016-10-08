@@ -6,7 +6,7 @@ pkgname=bitcoind-unlimited-git
 pkgver=0.12.1
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
-arch=('any')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
 depends=('boost'
          'boost-libs'
