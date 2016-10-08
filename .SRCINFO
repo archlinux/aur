@@ -1,0 +1,18 @@
+pkgbase = joyosc-git
+	pkgver = 0.4.0.r14.g5caf4ac
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = armv6l
+	arch = armv7h
+	makedepends = sdl2
+	makedepends = liblo
+	makedepends = tinyxml2
+	depends = sdl2
+	depends = liblo
+	depends = tinyxml2
+	source = git+https://github.com/danomatika/joyosc.git
+	md5sums = SKIP
+
+pkgname = joyosc-git
+
