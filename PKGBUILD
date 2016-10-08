@@ -3,15 +3,15 @@
 
 pkgname=goatattack
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
 url="http://www.goatattack.net/"
 license=('GPL')
 depends=("sdl2" "libpng" "sdl2_mixer")
 makedepends=('gendesk')
-source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz" 'http://goatattack.net/images/goat_logo.png')
-md5sums=('e6879f4adcf098905b2d453bc3f6fe00' '7d7e98bfbe7dc77c08c71c79b99e925a')
+source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('e6879f4adcf098905b2d453bc3f6fe00')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -34,8 +34,6 @@ check() {
 
 package() {
 	cd "$srcdir"
-	# install icon
-	install -Dm644 "goat_logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	cd "$pkgname-$pkgver"
 	# install .desktop-file
