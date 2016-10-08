@@ -1,0 +1,17 @@
+pkgbase = dropbox-plasma-dark-icons-git
+	pkgdesc = Dropbox icons for Plasma 5 Dark Panels
+	pkgver = 20161008
+	pkgrel = 1
+	url = https://github.com/x11tete11x/dropbox-plasma-dark-icons
+	install = dropbox-plasma-dark-icons.install
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = dropbox
+	conflicts = dropbox-kfilebox-icons
+	conflicts = dropbox-plasma-light-icons-git
+	source = git://github.com/x11tete11x/dropbox-plasma-dark-icons.git
+	md5sums = SKIP
+
+pkgname = dropbox-plasma-dark-icons-git
+
