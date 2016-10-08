@@ -1,4 +1,5 @@
-# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Maintainer: redfish <redfish at galactica.pw>
+# Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-unlimited-git
 pkgver=20160315.9b1890e
