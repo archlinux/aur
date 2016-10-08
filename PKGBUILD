@@ -1,8 +1,8 @@
 # Maintainer: veyen <veyen33@gmail.com>
 
 pkgname=ttf-abkai
-pkgver=1.0
-pkgrel=5
+pkgver=20150717
+pkgrel=1
 pkgdesc="Abkai Xanyan TTF font for Manchu, Sibe and Daur scripts"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
