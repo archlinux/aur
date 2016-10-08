@@ -5,7 +5,7 @@
 # comes with this package.
 pkgname=cura-aleph-bin
 pkgver=21.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A full 3D printing solution aimed at RepRaps and the Ultimaker. 
 This is the Aleph Objects fork, specialized for the Lulzbot series of 3D printers."
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ elif [ "$CARCH" == i686 ]; then
 fi
 
 source+=(arch_aleph_patch.diff)
-sha1sums+=('ba7a71da6f433e57e4cb67b9a295d4c249518b6e')
+sha1sums+=('a6010f8e88b7d02900b5a2eb7f9f9fa2c50f7d57')
 
 check()
 {

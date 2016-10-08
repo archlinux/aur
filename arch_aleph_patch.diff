@@ -52,3 +52,12 @@ diff -Naur old/usr/share/cura/cura.py new/usr/share/cura/cura.py
  
  try:
  	import OpenGL
+--- old/usr/share/applications/cura.desktop	2016-10-06 12:43:18.036564081 +0200
++++ new/usr/share/applications/cura.desktop	2016-10-08 20:45:31.445697941 +0200
+@@ -6,5 +6,6 @@
+ Exec=/usr/bin/python2 /usr/share/cura/cura.py
+ Path=/usr/share/cura/
+ StartupNotify=true
++StartupWMClass=Cura.py
+ Terminal=false
+ Categories=Graphics;Electronics;
