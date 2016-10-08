@@ -43,6 +43,7 @@ package() {
         rm   ${srcdir}/firejail-profiles/firefox.profile
         rm   ${srcdir}/firejail-profiles/google-chrome.profile
         rm   ${srcdir}/firejail-profiles/libreoffice.profile
+        rm   ${srcdir}/firejail-profiles/skype.profile
 
 	mkdir -p "${pkgdir}/etc/firejail"
         
