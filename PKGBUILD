@@ -2,7 +2,7 @@
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-git
-pkgver=r186.83eae96
+pkgver=r260.bfecdbf
 pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN'
 arch=('i686' 'x86_64')
@@ -31,20 +31,24 @@ pkgver() {
 
 build() {
   cd "airvpn-client"
-  xbuild /p:Configuration="Release" /p:Platform="$_pkgarch" src/AirVPN.sln
+  xbuild /p:Configuration="Release" /p:Platform="$_pkgarch" src/Eddie_VS2015.sln
 }
 
 package() {
   cd "airvpn-client"
-  install -Dm755 "src/bin/$_pkgarch/Release/UI.Linux.exe" "$pkgdir/usr/lib/AirVPN//AirVPN.exe"
+  install -Dm755 "src/bin/$_pkgarch/Release/UI.Forms.Linux.exe" "$pkgdir/usr/lib/AirVPN//AirVPN.exe"
   install -Dm644 "src/bin/$_pkgarch/Release/Lib.Core.dll" "$pkgdir/usr/lib/AirVPN/Lib.Core.dll"
   install -Dm644 "src/bin/$_pkgarch/Release/Lib.Forms.dll" "$pkgdir/usr/lib/AirVPN/Lib.Forms.dll"
   install -Dm644 "src/bin/$_pkgarch/Release/Platforms.Linux.dll" "$pkgdir/usr/lib/AirVPN/Platforms.Linux.dll" 
   install -Dm755 "deploy/linux_$_pkgarch/update-resolv-conf" "$pkgdir/usr/lib/AirVPN/update-resolv-conf"
   install -Dm755 "resources/debian/usr/bin/airvpn" "$pkgdir/usr/bin/airvpn"
   
-  install -Dm644 "resources/debian/usr/share/pixmaps/AirVPN.png" "$pkgdir/usr/share/pixmaps/AirVPN.png"
-  desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
-    --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
-    "resources/debian/usr/share/applications/AirVPN.desktop"
+  install -Dm644 "resources/debian/usr/share/pixmaps/AirVPN.png" "$pkgdir/usr/share/pixmaps/airvpn.png"
+  cp "resources/debian/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
+  desktop-file-install\
+    -m 644\
+    --set-comment="VPN service based on OpenVPN"\
+    --dir="$pkgdir/usr/share/applications/"\
+    --set-icon="/usr/share/pixmaps/airvpn.png"\
+    "$srcdir/airvpn.desktop"
 }

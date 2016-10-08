@@ -1,6 +1,6 @@
 pkgbase = airvpn-git
 	pkgdesc = AirVPN client "Eddie" based on OpenVPN
-	pkgver = r186.83eae96
+	pkgver = r260.bfecdbf
 	pkgrel = 1
 	url = https://airvpn.org/linux/
 	install = airvpn-git.install
