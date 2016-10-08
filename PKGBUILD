@@ -1,6 +1,6 @@
 # Maintainer: Paul Fridrick <paul.fridrick@telecom-st-etienne.fr>
 pkgname=base-devel-multilib
-pkgver=2016.01.27
+pkgver=2016.10.08
 pkgrel=1
 pkgdesc="A meta package for the base, base-devel and multilib-devel groups"
 arch=('x86_64')
