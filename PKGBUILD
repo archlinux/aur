@@ -10,9 +10,13 @@
 
 set -u
 _opt_Debug=0
+# 0 = standard build
+# 1 = debug build
+# 2 = debug build with slow compile to make compile errors easy to see
 
-pkgname='dosemu2-git'
-pkgver=2.0pre6.1+dev+32+gc44b164
+_pkgname='dosemu2'
+pkgname="${_pkgname}-git"
+pkgver=2.0pre6.1.dev.34.g2c7ccd7
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -33,30 +37,37 @@ else
   depends+=('gdb')
 fi
 makedepends=('git')
-provides=('dosemu=2.0')
-conflicts=('dosemu')
+provides=('dosemu=2.0' "${_pkgname}=2.0")
+conflicts=('dosemu' "${_pkgname}")
 backup=(
   'etc/dosemu/dosemu.conf'
 # 'etc/dosemu/dosemu.users'
 # 'etc/dosemu/global.conf'
 )
+_github='stsp/dosemu2'
+_verwatch=("https://github.com/${_github}/releases.atom" "\s\+<title>${_pkgname}-\([^<]\+\)</title>" 'f')
 _freedos='dosemu-freedos-1.1-bin.tgz'
 source=(
   'git+https://github.com/stsp/dosemu2.git'
   "https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}"
   'build-system.patch'
   'xdosemu.desktop'
+  'http://downloads.sourceforge.net/sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz' # for the GNU utils
 )
 noextract=("${_freedos}")
 sha256sums=('SKIP'
             '0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613'
             'c4364f3837744775faebeac86ad22e5b636db411942c6e21e74e9b3277e066cf'
-            'ed210a850a1102fbf56bfd8a34b5dddca538caa2eee39210ee612406891c3e5a')
+            'ed210a850a1102fbf56bfd8a34b5dddca538caa2eee39210ee612406891c3e5a'
+            '080c306a1b611e1861fd64466062f268eb44d2bf38082b8a57efadb5a9c0ebc7')
 
 pkgver() {
   set -u
   cd 'dosemu2'
-  git describe --long | sed -e 's/^dosemu2-//; y/-/+/'
+  local _ver="$(git describe --tag --long)"
+  _ver="${_ver#${_pkgname}-}"
+  _ver="${_ver//-/.}"
+  echo "${_ver}"
   set +u
 }
 
@@ -72,25 +83,29 @@ prepare() {
          -e '# Adjust conf folder /etc' \
          -e 's:^\(\s*sysconfdir\)\s.*$:\1 /etc/dosemu:g' \
          -e '# Newer freedos' \
-         -e 's:^\(\s*fdtarball\)\s.*$:\1 dosemu-freedos-1.1-bin.tgz:g' \
+         -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
          -e '# Prefix' \
          -e 's:^}$:  prefix=/usr\n&:g' \
     'compiletime-settings'
-  if [ "${_opt_Debug}" -ne 0 ]; then
-    sed -i -e 's:^\(\s*debug\)\s.*$:\1 on:g' \
-      'compiletime-settings'
-  fi
   ./autogen.sh
+  local _opts=()
+  if [ "${_opt_Debug}" -ne 0 ]; then
+    _opts+=('-d' '--disable-xbacktrace')
+  fi
   CFLAGS="${CFLAGS} -Wno-unused-result" \
-  ./default-configure
+  ./default-configure ${_opts[@]:-}
   set +u
 }
 
 build() {
   set -u
   cd 'dosemu2'
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s -j "${_nproc}"
+  if [ "${_opt_Debug}" -gt 1 ]; then
+    make -j1
+  else
+    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+    make -s -j "${_nproc}"
+  fi
   set +u
 }
 
@@ -100,7 +115,8 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dpm644 "${srcdir}/xdosemu.desktop" -t "${pkgdir}/usr/share/applications/"
   install -Dpm644 'etc/dosemu.xpm' -t "${pkgdir}/usr/share/icons/"
-  install -Dpm644 'COPYING' 'COPYING.DOSEMU' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dpm644 'COPYING' 'COPYING.DOSEMU' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -Dpm644 '../dosemu/freedos/gnu'/* -t "${pkgdir}/usr/share/dosemu/freedos/gnu/"
   set +u
 }
 
