@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kokua-OpenSim
+GenericName=A third-party viewer for Open Simulator grids (only)
+Comment=A third party viewer for Open Simulator grids (only)
+Exec=/usr/bin/kokua-opensim
+Icon=/usr/share/pixmaps/kokua-opensim.png
+Terminal=false
+Categories=Game
