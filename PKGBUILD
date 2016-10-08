@@ -2,16 +2,13 @@
      
 pkgname=nvidia-pf
 pkgver=370.28
-pkgrel=4
-_goodkver=4.7
-_badkver=4.8
+pkgrel=5
+_goodkver=4.8
+_badkver=4.9
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-_SYSSRC="/usr/lib/modules/$_kernver/build"
-_pf_kernel=$(pacman -Qqo /boot/vmlinuz-linux-pf)
 #_pf_headers=$(pacman -Qqo ${_SYSSRC})
-_cpu=$(sed -e "s/linux-pf//" <<<${_pf_kernel})
 
 pkgdesc="NVIDIA drivers for linux-pf."
 arch=('i686' 'x86_64')
@@ -19,11 +16,6 @@ url="http://www.nvidia.com/"
 makedepends=("linux-pf-headers>=${_goodkver}" "linux-pf-headers<${_badkver}")
 depends=("linux-pf>=${_goodkver}" "linux-pf<${_badkver}" "nvidia-utils=${pkgver}")
 
-if [[ ${_cpu} ]]; then
-  true && pkgdesc="NVIDIA drivers for linux-pf${_cpu}."
-  true && makedepends=("linux-pf-headers${_cpu}>=${_goodkver}" "linux-pf-headers${_cpu}<${_badkver}")
-  true && depends=("linux-pf${_cpu}>=${_goodkver}" "linux-pf${_cpu}<${_badkver}" "nvidia-utils=${pkgver}")
-fi
 conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
   'nvidia-pf-atom' 'nvidia-pf-psc' 'nvidia-pf-p4' 'nvidia-pf-p3'
  'nvidia-pf-pm' 'nvidia-pf-k7')
@@ -32,6 +24,7 @@ install=nvidia.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+md5sums=('96a37004a3394b01385d3ea9d8e8fa86')
 md5sums_i686=('7d3e1c691cd53852f422a93169268178')
 md5sums_x86_64=('3bcd9a132e50a17b846869f1c57b9c75')
 
@@ -39,7 +32,7 @@ md5sums_x86_64=('3bcd9a132e50a17b846869f1c57b9c75')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
-     
+source+=('linux-4.8.patch')
 
 prepare()
 {
@@ -48,6 +41,7 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
+  patch -Np0 -i "$srcdir"/linux-4.8.patch
 
 }
 
@@ -59,10 +53,6 @@ build() {
 
 
 package() {
-  if [[ ${_cpu} ]]; then
-    true && pkgname=${pkgname}${_cpu}
-    true && conflicts=(${conflicts[@]/nvidia-pf${_cpu}/} 'nvidia-pf')
-  fi
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
           "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
