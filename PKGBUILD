@@ -8,7 +8,7 @@
 
 pkgname=mpd-light-pulse
 pkgver=0.19.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, shout, sidplay, soundcloud, wavpack, avahi, smbclient support.'
 url='http://www.musicpd.org/'
 license=('GPL')
