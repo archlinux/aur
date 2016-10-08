@@ -2,11 +2,11 @@
 _pkgname=dswitcher
 pkgname=${_pkgname}-git
 pkgver=10
-pkgrel=2
+pkgrel=3
 pkgdesc='Dmenu-based window switcher for EWHM-compliant X11 window managers'
 arch=('any')
 url="https://github.com/Antithesisx/dswitcher"
-license='GPLv3'
+license=('GPLv3')
 depends=('wmctrl' 'dmenu')
 makedepends=('git')
 source=("git://github.com/Antithesisx/dswitcher.git")
