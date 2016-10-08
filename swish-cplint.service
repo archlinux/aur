@@ -1,6 +1,6 @@
 [Unit]
 Description=Cplint on SWISH
-Documentation=http://github.com/friguzzi/cplint
+Documentation=http://github.com/friguzzi/cplint https://github.com/friguzzi/swish
 
 [Service]
 ExecStart=/usr/bin/swish-cplint

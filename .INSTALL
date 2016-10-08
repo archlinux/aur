@@ -11,5 +11,9 @@ swish-cplint.service to run the server."
 }
 
 pre_remove() {
+    echo ""
+    echo ""
     ${startdir}/remove_web_iface_deps.pl
+    echo ""
+    echo ""
 }
