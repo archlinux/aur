@@ -5,21 +5,21 @@
 pkgname='frogatto'
 arch=('i686' 'x86_64')
 pkgver=1.3.1
-pkgrel=19
+pkgrel=20
 pkgdesc="An old-school 2d platformer game, starring a certain quixotic frog"
 url="http://www.frogatto.com"
 license=('GPL')
 depends=('git' 'glew' 'sdl' 'sdl_image' 'sdl_ttf' 'sdl_mixer' 'libpng' 'boost-libs' 'frogatto-data' 'ttf-ubuntu-font-family')
 makedepends=('mesa' 'boost')
-source=("$pkgname-$pkgver::git+https://github.com/frogatto/frogatto.git#tag=1.3.1"
-        frogatto
+source=("$pkgname::git+https://github.com/frogatto/frogatto.git#tag=$pkgver"
+        launcher
         frogatto.desktop)
 md5sums=('SKIP'
          '9ed2c9ea59e95fe3c0b3ad49e58f8890'
          'e31563b04748a39292a59aaad633ff58')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   sed -i 's/ccache //g' Makefile
   sed -i 's/-lprofiler//g' Makefile
@@ -33,12 +33,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
 
   install -Dm 755 "game" "$pkgdir/opt/frogatto/game"
   install -Dm 755 "server" "$pkgdir/opt/frogatto/server"
   install -Dm 644 "src/LICENSE" "$pkgdir/usr/share/licenses/frogatto/LICENSE"
-  install -Dm 755 "$srcdir/frogatto" "$pkgdir/usr/bin/frogatto"
+  install -Dm 755 "$srcdir/launcher" "$pkgdir/usr/bin/frogatto"
   install -Dm 644 "$srcdir/frogatto.desktop" "$pkgdir/usr/share/applications/frogatto.desktop"
 
   # Make level editor work (FS#37139)
