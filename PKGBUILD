@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdb-git
-pkgver=2.99.3.r2107.7611adb
+pkgver=3.0.90.r2115.52b4f7e
 pkgrel=1
 pkgdesc="A database connectivity and creation framework for various database vendors. (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('postgresql-libs: PostgreSQL plugin'
 conflicts=('kdb')
 provides=('kdb')
 source=('git://anongit.kde.org/kdb.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd kdb
@@ -42,7 +42,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DPYTHON_EXECUTABLE="/usr/bin/python2"
   make
