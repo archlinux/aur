@@ -1,0 +1,15 @@
+pkgbase = black-green-lxqt-theme
+	pkgdesc = Black and green glossy theme for LXQt
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/stefonarch/black-green
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	optdepends = breeze-icons: Breeze icon themes
+	provides = black-green-lxqt-theme=1.1
+	source = https://github.com/stefonarch/black-green/archive/1.1.tar.gz
+	md5sums = 9248b3c0536e39d4333b6168b5c032a5
+
+pkgname = black-green-lxqt-theme
+
