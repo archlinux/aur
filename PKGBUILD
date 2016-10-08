@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=0.9.1.r3278.66dd7e8
+pkgver=0.9.2.r3313.77610b1
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ optdepends=('libmad: MP3 plugin'
 conflicts=('kwave')
 provides=('kwave')
 source=('git://anongit.kde.org/kwave.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd kwave
@@ -51,7 +51,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DWITH_MP3=ON
   make
