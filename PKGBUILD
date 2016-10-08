@@ -22,9 +22,7 @@ source=("git+https://github.com/rust-lang/rust.git"
 
         "git+https://github.com/rust-lang/rust.vim.git"
         "git+https://github.com/rust-lang/rust-mode.git"
-        "git+https://github.com/rust-lang/zsh-config.git"
-
-        docdir.patch)
+        "git+https://github.com/rust-lang/zsh-config.git")
 _noclone=(compiler-rt jemalloc libc llvm hoedown rust-installer)
 sha512sums=('SKIP'
             'SKIP'
@@ -35,8 +33,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'c440666dc08e503ffaad60e00a09dc35a532390a598c51c294cf0e05ebefdefdd21474eae74a50c9100a8d42a3cc6f3b84c4ef17cb7cbe850c0085fd72a4b33a')
+            'SKIP')
 
 pkgver() {
 	cd rust
@@ -47,7 +44,6 @@ prepare() {
 	rm -rf -- "${_noclone[@]}"
 
 	cd rust
-	git apply -3 "$srcdir"/docdir.patch
 	_srcdest="$SRCDEST" perl -pi -- /dev/stdin .gitmodules <<'END'
 		if (m{(?<assignment> \s* url \s* = \s*) .* / (?<submodule> [^/]*?)(?:\.git)?$}x) {
 			my $local = "$ENV{_srcdest}/$+{submodule}";
