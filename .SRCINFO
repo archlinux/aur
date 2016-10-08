@@ -18,11 +18,11 @@ pkgbase = janusvr
 	optdepends = oculus-rift-sdk-jherico-git: For libOVR including a fix for mesa. Don't forget to Replace /opt/janusvr/libOVRRT64_0.so.5.0.1
 	source = janusvr53.11.gz::http://downloads.janusvr.com/janusvr_linux.tar.gz
 	source = janusvr.sh
-	source = http://janusvr.com/images/logotextoverlight.png
+	source = http://janusvr.com/images/logoonly.png
 	source = janusvr.desktop
 	md5sums = SKIP
 	md5sums = c05bb2fbfce12c89db560ed8b8bb036a
-	md5sums = 075d24ca32a4acd55850f0458ccecf9a
+	md5sums = c2dd07b34a1f0f25ff619c12dd12ee9b
 	md5sums = a8a2ce8e4dfa4e4e87a6af811b5627a4
 
 pkgname = janusvr

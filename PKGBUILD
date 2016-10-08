@@ -8,7 +8,7 @@ license=('custom')
 janusver=$(curl http://www.janusvr.com/version.html)
 source=("janusvr${janusver}.gz::http://downloads.janusvr.com/janusvr_linux.tar.gz"
         "janusvr.sh"
-	"http://janusvr.com/images/logotextoverlight.png"
+	"http://janusvr.com/images/logoonly.png"
         "janusvr.desktop")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'sqlite' 'dbus-glib' 'qt5-multimedia')
 optdepends=("oculus-rift-sdk-jherico-git: For libOVR including a fix for mesa. Don't forget to Replace /opt/janusvr/libOVRRT64_0.so.5.0.1")
@@ -32,7 +32,7 @@ package() {
   install -m755 "$srcdir/janusvr.sh" "$pkgdir/usr/bin/janusvr"
 
   # segfaults for me with mesa with OpenCL. WAT
-  MAGICK_OCL_DEVICE=OFF convert "$srcdir/logotextoverlight.png" -resize 128x128 "$pkgdir/usr/share/icons/janusvr.png" # screw the aspect ratio
+  MAGICK_OCL_DEVICE=OFF convert "$srcdir/logoonly.png" -resize 128x128 "$pkgdir/usr/share/icons/janusvr.png" # screw the aspect ratio
 
   install "${srcdir}/janusvr.desktop" "${pkgdir}/usr/share/applications/janusvr.desktop"
 
@@ -49,5 +49,5 @@ package() {
 
 md5sums=('SKIP'
          'c05bb2fbfce12c89db560ed8b8bb036a'
-         '075d24ca32a4acd55850f0458ccecf9a'
+	 'c2dd07b34a1f0f25ff619c12dd12ee9b'
          'a8a2ce8e4dfa4e4e87a6af811b5627a4')
