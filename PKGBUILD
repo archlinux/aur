@@ -34,7 +34,7 @@ optdepends=(
 if [ "${_opt_Debug}" -ne 0 ]; then
   optdepends+=('gdb: debug support')
 else
-  depends+=('gdb')
+  depends+=('gdb' 'binutils')
 fi
 makedepends=('git')
 provides=('dosemu=2.0' "${_pkgname}=2.0")
@@ -46,7 +46,7 @@ backup=(
 )
 _github='stsp/dosemu2'
 _verwatch=("https://github.com/${_github}/releases.atom" "\s\+<title>${_pkgname}-\([^<]\+\)</title>" 'f')
-_freedos='dosemu-freedos-1.1-bin.tgz'
+_freedos='dosemu-freedos-1.1-bin.tgz' # 'dosemu-freedos-bin.tgz'
 source=(
   'git+https://github.com/stsp/dosemu2.git'
   "https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}"
@@ -75,25 +75,34 @@ prepare() {
   set -u
   cd 'dosemu2'
 
-  #patch -Np1 < ../build-system.patch
-  #sed -ie '/yyget_leng/ s/int/size_t/' src/base/init/lexer.h
-  ln -s "../${_freedos}" 'dosemu-freedos-1.1-bin.tgz' # 'dosemu-freedos-bin.tgz'
-  sed -i -e '# Enable VDE' \
-         -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
-         -e '# Adjust conf folder /etc' \
-         -e 's:^\(\s*sysconfdir\)\s.*$:\1 /etc/dosemu:g' \
-         -e '# Newer freedos' \
-         -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
-         -e '# Prefix' \
-         -e 's:^}$:  prefix=/usr\n&:g' \
-    'compiletime-settings'
-  ./autogen.sh
-  local _opts=()
-  if [ "${_opt_Debug}" -ne 0 ]; then
-    _opts+=('-d' '--disable-xbacktrace')
+  # Some makepkg options including -i erroneously run prepare() which should only be run when src is unpacked
+  local _prepareArch='prepare.Arch'
+  if [ ! -f "${_prepareArch}" ]; then
+    #patch -Np1 < ../build-system.patch
+    #sed -ie '/yyget_leng/ s/int/size_t/' src/base/init/lexer.h
+    ln -sf "../${_freedos}"
+    sed -i -e '# Enable VDE' \
+           -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
+           -e '# Adjust conf folder in /etc' \
+           -e 's:^\(\s*sysconfdir\)\s.*$:\1 /etc/dosemu:g' \
+           -e '# Update freedos' \
+           -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
+           -e '# Prefix' \
+           -e 's:^}$:  prefix=/usr\n&:g' \
+      'compiletime-settings'{,.devel}
+    ./autogen.sh
+    local _opts=()
+    if [ "${_opt_Debug}" -ne 0 ]; then
+      sed -i -e '# Temp fix for backtrace' \
+             -e 's:^#include <string\.h>:#include "config.h"\n&:g' \
+        'src/arch/linux/async/backtrace-symbols.c'
+      _opts+=('-d')
+      #_opts+=('-d' '--disable-xbacktrace')
+    fi
+    CFLAGS="${CFLAGS} -Wno-unused-result" \
+    ./default-configure ${_opts[@]:-}
+    echo -n > "${_prepareArch}"
   fi
-  CFLAGS="${CFLAGS} -Wno-unused-result" \
-  ./default-configure ${_opts[@]:-}
   set +u
 }
 
@@ -116,6 +125,7 @@ package() {
   install -Dpm644 "${srcdir}/xdosemu.desktop" -t "${pkgdir}/usr/share/applications/"
   install -Dpm644 'etc/dosemu.xpm' -t "${pkgdir}/usr/share/icons/"
   install -Dpm644 'COPYING' 'COPYING.DOSEMU' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  # Add the gnu tools to prevent compatibility problems
   install -Dpm644 '../dosemu/freedos/gnu'/* -t "${pkgdir}/usr/share/dosemu/freedos/gnu/"
   set +u
 }
