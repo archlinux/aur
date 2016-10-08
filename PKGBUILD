@@ -9,7 +9,7 @@ url="http://kde-apps.org/content/show.php/KDE+ePub+Thumbnailer?content=151210"
 depends=('kio')
 makedepends=('cmake' 'extra-cmake-modules')
 license=('GPL')
-source=("http://kde-apps.org/CONTENT/content-files/151210-${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/Caig/kde-thumbnailer-epub/archive/v1.1.tar.gz")
 md5sums=('SKIP')
 build() {
 	install -d "$pkgname-$pkgver"/build
