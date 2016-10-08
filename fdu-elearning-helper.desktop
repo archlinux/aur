@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=fdu elearning helper
+Comment=Fudan Elearning Helper
+Exec=xulrunner /usr/share/fdu-elearning-helper/xul/application.ini -no-remote
+Categories=Network;WebBrowser;Study;
+Terminal=false
+StartupNotify=true

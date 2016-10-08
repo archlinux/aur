@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!fdu-elearning-helper.desktop
+!.SRCINFO
