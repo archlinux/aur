@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot <tuftedocelot@fastmail.fm>
 # Contributor: Davbo <dave@davbo.org>
 pkgname=x3270
-pkgver=3.4ga10
+pkgver=3.5ga8
 pkgrel=1
 pkgdesc="An IBM 3270 terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
@@ -14,14 +14,13 @@ install=x3270.install
 source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz 
 	x3270.desktop)
 
-sha256sums=('e9c1b46a61e4e727538fa942657c7eea7eef42de916a78c72a086b57330e2417'
+sha256sums=('04d98c2644d8acc3b0089f85558074623500bc194c41609298b344b6e5d905d2'
             'bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f')
 
 build() {
    cd $srcdir/suite3270-${pkgver:0:3} 
    ./configure --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
 
-   make depend || return 1
    make || return 1
 
  }
