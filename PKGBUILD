@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.8
-_zenpatch=zen-4.8-401f5ba29a7976d80c010d2aea7a90e9a5fa6f1c.diff
-pkgver=4.8
-pkgrel=1.1
+_zenpatch=zen-4.8.1-977d84e196640b0d4ef187cb32be59dca0db9d8e.diff
+pkgver=4.8.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -15,8 +15,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
         "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
         # the main kernel config files
@@ -28,7 +28,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '838771244dd5e15d8587732e796af0b0f9016998ee365f32dcf5343735fe2258'
+            '79c7bda5b4ac4dee7791f34448464f7aa74d498f80df6e1e5ab73f96c5baea41'
+            'SKIP'
+            '0a468fb213636d68b30b9f98101372c705986a29d0aae7cccd505fba73fdc58e'
             'SKIP'
             '44aa052e6d4aae954d5a956633da5920ba72f8a74382418468115cd62eff5a3c'
             'f20a0237ce591336edee5fb6a6522fc1662ec893568523923f69dba96313c5dc'
@@ -46,7 +48,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
