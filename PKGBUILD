@@ -20,7 +20,7 @@ makedepends=('extra-cmake-modules'
 conflicts=('libkcompactdisc')
 provides=('libkcompactdisc')
 source=('git://anongit.kde.org/libkcompactdisc.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libkcompactdisc
@@ -38,7 +38,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
