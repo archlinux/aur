@@ -2,36 +2,31 @@
 # Contributor: mikers <mikeonthecomputer@gmail.com>
 # Contributor: Splex
 
-
 pkgname=kokua-secondlife
-pkgver=4.0.2.38137
-_pkgver=4_0_2_38137
-_pkgprever=4.0.2
+pkgver=4.1.1.39717
+_pkgver=4_1_1_39717
+_pkgprever=4.1.1
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
-optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'flashplugin: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
-replaces=('kokua-bin')
-conflicts=('kokua-bin')
+optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
+conflicts=('kokua-opensim')
 
-#http://bitbucket.org/kokua/downloads/downloads/Kokua_${_pkgver}_i686.tar.bz2"
-source_i686=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_${_pkgver}_i686.tar.txz"
-
+source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_${_pkgver}_i686.tar.txz"
              'kokua-secondlife.desktop'
              'kokua-secondlife.launcher')
         
-#"http://bitbucket.org/kokua/downloads/downloads/Kokua_64_${_pkgver}_x86_64.tar.bz2"
-
-source_x86_64=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
+source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-md5sums_i686=('b94695e087119dd1769807144a491938'
+
+md5sums_i686=('0321d6cabf3c0467da790b8fa5b2ac74'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('90e7d4bdca0f939a429f622c84f1f610'
+md5sums_x86_64=('ab8346f97ea7afd94a7f58fead0c6539'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
 
