@@ -40,7 +40,7 @@ package() {
     cp localsettings.example.js localsettings.js    
     cp config.example.yaml config.yaml
     mkdir -p "${pkgdir}/usr/share/webapps/${_pkgname}"
-    cp -R . "${pkgdir}/usr/share/webapps/${_pkgname}/"
+    tar c --exclude=.git . | tar x -C "${pkgdir}/usr/share/webapps/${_pkgname}/"
     install -Dm644 "${srcdir}/parsoid.service" "${pkgdir}/usr/lib/systemd/system/parsoid.service"
     install -D "COPYING.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
