@@ -1,5 +1,5 @@
 pkgname=osvr-openhmd-git
-pkgver=v1.0.1.r1.g10e5982
+pkgver=v1.0.2.r1.g129032a
 pkgrel=1
 pkgdesc="OSVR plugin providing Oculus Rift DK1 & DK2 orientation tracking via OpenHMD."
 arch=(i686 x86_64)
@@ -42,7 +42,7 @@ package() {
   mkdir -p "$pkgdir"/usr/share/osvrcore/sample-configs
   mkdir -p "$pkgdir"/usr/share/osvrcore/displays
 
-  cp -ra "$srcdir"/osvr-openhmd/sample-configs/ "$pkgdir"/usr/share/osvrcore/sample-configs/
+  cp -ra "$srcdir"/osvr-openhmd/sample-configs/* "$pkgdir"/usr/share/osvrcore/sample-configs/
   cp "$srcdir"/osvr-openhmd/sample-configs/renderManager.extended.landscape.json "$pkgdir"/usr/share/osvrcore/sample-configs/openhmd-dk1-renderManager.extended.landscape.json
   cp "$srcdir"/osvr-openhmd/sample-configs/osvr_server_config.json "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
   cp "$srcdir"/osvr-openhmd/sample-configs/Oculus_Rift_DK1.json "$pkgdir"/usr/share/osvrcore/displays/Oculus_Rift_DK1_openhmd.json
@@ -53,6 +53,11 @@ package() {
 
 
   sed -i 's|"renderManager.extended.landscape.json"|"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json"|g' "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.openhmd_dk1.json
+
+  # This file already has a version in osvr-core.
+  # The file deleted here has "maxMsBeforeVSync": 5 while the one in osvr-core sets it to 0.
+  # So if something is wrong, try setting it to 5
+  rm "$pkgdir"/usr/share/osvrcore/sample-configs/renderManager.extended.landscape.json
 }
 
 

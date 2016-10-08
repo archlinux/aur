@@ -1,6 +1,6 @@
 pkgbase = osvr-openhmd-git
 	pkgdesc = OSVR plugin providing Oculus Rift DK1 & DK2 orientation tracking via OpenHMD.
-	pkgver = v1.0.1.r1.g10e5982
+	pkgver = v1.0.2.r1.g129032a
 	pkgrel = 1
 	url = https://github.com/simlrh/OSVR-OpenHMD
 	arch = i686
