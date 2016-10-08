@@ -16,7 +16,7 @@ conflicts=('clearlooks-phenix-gtk-theme-git')
 source=("https://github.com/jpfleury/clearlooks-phenix/archive/${pkgver}.tar.gz")
 sha256sums=('2a9b21400f9960422e31dc4dabb4f320a16b76776a9574f0986bb00e97d357f4')
 
-shopt -s extglob
+shopt -s extglob || exit 1
 
 build() {
   cd "clearlooks-phenix-${pkgver}"
