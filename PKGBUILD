@@ -3,7 +3,7 @@
 # Contributor: Nagisa <simonas@kazlauskas.me>
 # Contributor: Misc <andreas.reis@gmail.com>
 # Contributor: Jeagoss <jgoliver@jeago.com>
-# Contributor: Saikrishna Arcot <saiarcot895@gmail.com> (Author of enable_vaapi_on_linux.diff)
+# Contributor: Saikrishna Arcot <saiarcot895@gmail.com> and Steven Newbury <steve@snewbury.org.uk> (Authors of VAAPI patch)
 
 #########################
 ## -- Build options -- ##
@@ -14,22 +14,19 @@ _use_ccache=0          # Use ccache when build.
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
 _debug_mode=0          # Build in debug mode.
-_patch_vaapi=0         # Apply the vaapi patch by Saikrishna Arcot.
-
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=55.0.2873.4
+pkgver=55.0.2882.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('i686' 'x86_64')
 url='http://www.chromium.org'
 license=('BSD')
-depends=('desktop-file-utils'
-         'jsoncpp'
+depends=('jsoncpp'
 #          'libsrtp'
          'libwebp'
          'libxslt'
@@ -41,12 +38,11 @@ depends=('desktop-file-utils'
          're2'
          'snappy'
          'speech-dispatcher'
-         'speex'
          'xdg-utils'
+         'libcups'
 #          'opus'
 #          'protobuf'
 #          'libevent'
-         'libvpx.so'
          'ffmpeg'
          )
 makedepends=('libexif'
@@ -65,7 +61,8 @@ makedepends=('libexif'
              'imagemagick'
              'hwids'
              )
-optdepends=('pepper-flash: PPAPI Flash Player'
+optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
+            'pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
             'kdebase-kdialog: Needed for file dialogs in KDE4/KF5'
@@ -76,7 +73,6 @@ optdepends=('pepper-flash: PPAPI Flash Player'
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
             )
-_vaapi_patch_sources=chromium-browser_55.0.2873.0-0ubuntu1~ppa3~16.10.1.debian.tar.xz
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
@@ -85,10 +81,8 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r1.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-r7.patch'
         # Misc Patches
-        "https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-dev/+files/${_vaapi_patch_sources}"
+        "https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/enable_vaapi_on_linux-55.diff"
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
@@ -102,10 +96,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
-            '9e7bd19f8ee7a67393d0f7f50f5f27e52cb943602107d3784a28f31cf684748c'
-            '90cb9498355c420b5b81873d4339a8fe45e96b206296968ea5f01b5a7de16b78'
             # Misc Patches
-            '32b6d1267672bbc8faaa54e0ed30f23e511cad534cb6279452649109dd2007e2'
+            'b75e10dc053a2723c3d4b11ec340991d6fe5b666d30c3f5322f8dd5798766c4f'
             'c1131b4f969d4ff20208aa26bada30b75752c1c18853a2aa41d40901f53c8f31'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
             # Patch from crbug (chromium bugtracker)
@@ -314,7 +306,7 @@ _flags=('is_debug=false'
         "use_gnome_keyring=${_gnome_keyring}"
         "use_gtk3=${_gtk3}"
         "use_pulseaudio=${_pulseaudio}"
-        "link_pulseaudio=${_pulseaudio}"
+        "link_pulseaudio=true"
         'use_kerberos=true'
         'use_cups=true'
         'use_sysroot=false'
@@ -390,19 +382,12 @@ prepare() {
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
   patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
-  patch -p1 -i "${srcdir}/chromium-system-zlib-r1.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-r7.patch"
 
   # Misc Patches:
-  if [ "${_patch_vaapi}" = "1" ]; then
-    (cd "${srcdir}"; bsdtar -xf "${_vaapi_patch_sources}" debian/patches/enable_vaapi_on_linux.diff; mv debian/patches/enable_vaapi_on_linux.diff .; rm -fr debian)
-    patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
-  elif [ "${_patch_vaapi}" = "0" ]; then
-    # Fix paths.
-    sed -e 's|/usr/lib/|/usr/lib32/|g' \
-        -e 's|/usr/lib64/|/usr/lib/|g' \
-        -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
-  fi
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-55.diff"
+  # Fix paths.
+  sed 's|/usr/lib64/va/drivers|/usr/lib/dri|g' -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
+
   patch -p1 -i "${srcdir}/minizip.patch"
   patch -p1 -i "${srcdir}/unset-madv_free.patch"
 
