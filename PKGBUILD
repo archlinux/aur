@@ -1,12 +1,12 @@
 # Maintainer: Aaron Abbott <aabmass@gmail.com>
 # Contributer: fleischie
-pkgname=hyperterm
-pkgver=0.7.1
-pkgrel=4
+pkgname=hyper
+pkgver=0.8.1
+pkgrel=1
 epoch=
-pkgdesc="A terminal emulator built with JS/HTML/CSS on electron"
+pkgdesc="A terminal built on web technologies"
 arch=('any')
-url="https://hyperterm.org/"
+url="https://hyper.is/"
 license=('MIT')
 groups=()
 depends=('nodejs' 'electron')
@@ -14,33 +14,26 @@ makedepends=('npm' 'python2')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
-replaces=()
+conflicts=('hyperterm')
+replaces=('hyperterm')
 backup=()
 options=()
 install=
 changelog=
 source=(
     "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
-    "autohide-menu.patch"
 )
 noextract=()
-md5sums=('f06827cbae82f13237cc20dfd0ee170d'
-         'f5ca4b1eed8199186edfed94dd137dbc')
+md5sums=('bf5575c5bcf8cbedcdf4d7118128c2cd')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
-
-    # this patch temporarily "fixes" https://github.com/zeit/hyperterm/issues/158
-    # thanks @fleischie
-    patch -p1 < ../autohide-menu.patch
-
+    cd "$pkgname-$pkgver"
     npm install
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     npm run pack
 }
 
@@ -51,11 +44,11 @@ package() {
     _libinstall="${pkgdir}${_appdir}"
 
     mkdir -p "$pkgdir/usr/bin" "$_libinstall"
-    cp -R dist/linux/* "$_libinstall"
+    cp -R dist/linux-unpacked/* "$_libinstall"
 
     # link the binary to /usr/bin
     cd $pkgdir/usr/bin
-    ln -s "../lib/$pkgname/HyperTerm" HyperTerm
+    ln -s "../lib/$pkgname/Hyper" Hyper
 
     # # TODO: remove included electron libs and use the system ones by symlink
     # cd "$_libinstall"
