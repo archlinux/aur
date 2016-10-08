@@ -1,6 +1,10 @@
 # Maintainer: Aaron Abbott <aabmass@gmail.com>
 # Contributer: fleischie
-pkgname=hyper
+# Contributer: auk
+
+## will rename by AUR mod
+# pkgname=hyper
+pkgname=hyperterm
 pkgver=0.8.1
 pkgrel=1
 epoch=
@@ -14,8 +18,11 @@ makedepends=('npm' 'python2')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('hyperterm')
-replaces=('hyperterm')
+
+## will uncomment these when an AUR mod renames this package. I can't push this
+## with the new name. Have to have it done manually.
+# conflicts=('hyperterm')
+# replaces=('hyperterm')
 backup=()
 options=()
 install=
