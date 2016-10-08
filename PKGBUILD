@@ -4,8 +4,8 @@
 pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
-pkgver=49.0.2.1474711644
-pkgrel=2
+pkgver=49.0.2.1475775722
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')
 url="https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds"
