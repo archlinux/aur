@@ -22,7 +22,7 @@ conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
 source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
 sha256sums=('b483e5214565407e3fba6e4ebd0691612caee25b25bc87692c58e33d680f8009'
-            '86e4e5d23ae91580460baee86e49d64e40659408daa9836d488af516e22dd1e9')
+            '9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12')
 install=gvim.install
 
 prepare() {
