@@ -1,0 +1,17 @@
+pkgbase = dropbox-plasma-light-icons-git
+	pkgdesc = Dropbox icons for Plasma 5 Light Panels
+	pkgver = 20161008
+	pkgrel = 1
+	url = https://github.com/x11tete11x/dropbox-plasma-light-icons
+	install = dropbox-plasma-light-icons.install
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = dropbox
+	conflicts = dropbox-kfilebox-icons
+	conflicts = dropbox-plasma-dark-icons-git
+	source = git://github.com/x11tete11x/dropbox-plasma-light-icons.git
+	md5sums = SKIP
+
+pkgname = dropbox-plasma-light-icons-git
+
