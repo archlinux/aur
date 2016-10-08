@@ -4,7 +4,7 @@ pkgbase=marble-git
 pkgname=('marble-git'
          'libastro-git'
          'marble-data-git')
-pkgver=1.14.21.r11770.b52b6e3
+pkgver=2.0.20.r12058.5c1022d
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='https://www.kde.org/applications/system/marble'
 license=('GPL')
 makedepends=('git'
              'gpsd'
-             'quazip-qt5'
+             'quazip'
              'shapelib'
              'libwlocate'
              'phonon-qt5'
@@ -28,7 +28,7 @@ makedepends=('git'
              'hicolor-icon-theme'
              )
 source=('git://anongit.kde.org/marble.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd marble
@@ -81,7 +81,7 @@ package_marble-git() {
            'kparts'
            'knewstuff'
            'opencv'
-           'quazip-qt5'
+           'quazip'
            )
   optdepends=('gpsd: position information via gpsd'
               'shapelib: reading and displaying .shp files'
