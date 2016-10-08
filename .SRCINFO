@@ -1,7 +1,7 @@
 pkgbase = cdm-git
 	pkgdesc = The Console Display Manager
-	pkgver = 2014.08.04
-	pkgrel = 1
+	pkgver = r144.719b4a5
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ghost1227/cdm
 	arch = any

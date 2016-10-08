@@ -1,13 +1,14 @@
-# Maintainer: Faule Socke <github@socker.lepus.uberspace.de>
-# Ex-Maintainer: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
+# Maintainer: Alex Kubica <alexkubicail@gmail.com>
+# Contributor: Faule Socke <github@socker.lepus.uberspace.de>
+# Contributor: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 # Contributor: Adlai Chandrasekhar <munchking@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
 
 pkgname=cdm-git
 _pkgname="cdm"
-pkgver=2014.08.04
-pkgrel=1
+pkgver=r144.719b4a5
+pkgrel=2
 pkgdesc="The Console Display Manager"
 arch=('any')
 url="https://github.com/ghost1227/cdm"
@@ -23,7 +24,7 @@ epoch=1
 
 pkgver() {
   cd "$_pkgname"
-  git log -1 --format=format:%cd --date=short | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -38,5 +39,3 @@ package() {
   install -Dm644 -t "$pkgdir/etc" cdmrc
   install -Dm755 -T profile.sh "$pkgdir/etc/profile.d/zzz-cdm.sh"
 }
-
-# vim:set ts=2 sw=2 et:
