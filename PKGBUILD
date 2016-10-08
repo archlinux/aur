@@ -62,6 +62,9 @@ makedepends=('libexif'
              'hwids'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
+            'libva-mesa-driver: HW video acceleration for Nouveau, r600 and radeonsi users'
+            'libva-intel-driver: HW video acceleration for intel users'
+            #
             'pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
