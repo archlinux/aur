@@ -1,0 +1,17 @@
+pkgbase = airmode-git
+	pkgdesc = AirMode - WiFi cracking framework (aircrack interface)
+	pkgver = 20160808
+	pkgrel = 1
+	url = https://github.com/ParrotSec/airmode
+	arch = any
+	license = GPL2
+	depends = gksu
+	depends = pyqt4-common
+	depends = aircrack-ng
+	depends = reaver
+	depends = cowpatty
+	depends = pyrit
+	depends = python2
+
+pkgname = airmode-git
+
