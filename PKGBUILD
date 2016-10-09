@@ -1,4 +1,5 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Steef Hegeman <steefhegeman@hotmail.com>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=ttf-typicons
 pkgver=2.0.8
