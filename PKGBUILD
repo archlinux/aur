@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname='solvespace-git'
-pkgver=r795.1e2f199
+pkgver=r945.fd54e5a
 pkgrel=1
 pkgdesc="SOLVESPACE is a parametric 3d CAD program."
 arch=('i686' 'x86_64')
@@ -22,6 +22,8 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   git submodule update --init extlib/libdxfrw
+  # uncomment if test fails
+  #sed -i 's|request/ttf_text/test.cpp||' request/ttf_text/test.cpp
 }
 
 # -std=c++11 or -std=gnu++11
