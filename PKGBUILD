@@ -1,8 +1,8 @@
 # Maintainer: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=lily
-pkgver=0.17
-pkgrel=5
+pkgver=0.18
+pkgrel=1
 pkgdesc='An interpreted language with a focus on expressiveness and type safety'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://fascinatedbox.github.io/lily/"
@@ -11,14 +11,8 @@ depends=('glibc')
 makedepends=('cmake')
 provides=('lily')
 conflicts=('lily')
-source=("https://github.com/fascinatedbox/lily/archive/v${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/fascinatedbox/lily/v${pkgver}/license.txt")
-sha256sums=('08c1b313cfb182f58dcf3ff843ea8fccdb0e9471e8e63d1652600bc899c0e0af'
-            'e169a4a749995ef83c0939127180318e4d436bf47f039967c0c14d0de25c7a61')
-
-prepare() {
-    sed -i 's|"lily"|"include/lily"|' "${srcdir}/lily-${pkgver}/src/CMakeLists.txt"
-}
+source=("https://github.com/fascinatedbox/lily/archive/v${pkgver}.tar.gz")
+sha256sums=('87ca3fb6d5c84f8dab78fb3bcf52ac74988a77ae21a01e43b02e82fbd8ed936f')
 
 build() {
     cd "${srcdir}/lily-${pkgver}"
