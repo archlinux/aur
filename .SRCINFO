@@ -1,0 +1,15 @@
+pkgbase = sjasm
+	pkgdesc = Z80 assembler
+	pkgver = 0.42c
+	pkgrel = 1
+	url = http://xl2s.eu.pn/sjasm.html
+	arch = i686
+	arch = x86_64
+	license = Custom
+	provides = sjasm
+	conflicts = sjasm
+	source = git+https://github.com/samsaga2/sjasm
+	md5sums = SKIP
+
+pkgname = sjasm
+
