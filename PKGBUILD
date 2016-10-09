@@ -1,14 +1,14 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='panther-launcher-git'
 pkgdesc='Fork of Slingshot launcher without Elementary dependencies'
-pkgver=1.11.2.r1.g7651ed8
+pkgver=1.12.0.r0.g3fdd1a5
 pkgrel=1
 url='https://github.com/rastersoft/panther_launcher'
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=("${pkgname}::git+${url}")
 makedepends=('git' 'vala' 'cmake')
-depends=('zeitgeist' 'gnome-menus' 'libgee' 'gnome-panel' 'gnome-icon-theme')
+depends=('gnome-menus' 'libgee' 'gnome-icon-theme')
 sha512sums=('SKIP')
 
 pkgver () {
@@ -29,7 +29,9 @@ build () {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
 		-DGSETTINGS_COMPILE=OFF \
-		-DHAVE_ZEITGEIST=OFF
+		-DHAVE_ZEITGEIST=OFF \
+		-DDISABLE_FLASHBACK=ON \
+		-DDISABLE_MATE=ON
 	make
 }
 
