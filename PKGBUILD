@@ -1,13 +1,14 @@
-# Maintainer: Martin Poljak <martin 'at' poljak 'dot' cz>
+# Maintainer: Kevin Brodsky <corax26 'at' gmail 'dot' com>
 # Contributor: Evan Penner <gryffyn@archlinux 'dot' net>
 # Contributor: Iru Cai <mytbk920423\x40gmail 'dot' com>
 # Contributor: Houlala <houlala 'at' gmail 'dot' com>
 # Contributor: Olivier Duclos <olivier.duclos gmail.com>
 # Contributor: wido <widomaker2k7@gmail.com>
 # Contributor: VuDu <vudu 'dot' curse 'at' gmail 'dot' com>
+# Contributor: Martin Poljak <martin 'at' poljak 'dot' cz>
 
 pkgname=xnviewmp
-pkgver=0.81
+pkgver=0.83
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
@@ -19,8 +20,8 @@ optdepends=('gvfs: support for moving files to trash')
 
 source_i686=("http://download.xnview.com/XnViewMP-linux.tgz")
 source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz")
-md5sums_x86_64=('c1718896dc542ae8d9b20f0186806116')
-md5sums_i686=('460f0845157b2875a912fbf2c2f64c72')
+md5sums_x86_64=('3c2c5032a0be2b1f0976b50adad8c80b')
+md5sums_i686=('4673c827de8aa326761433b2eda85a6b')
 
 package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
