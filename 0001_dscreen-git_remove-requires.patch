@@ -1,0 +1,13 @@
+diff -aur dscreen-git.pristine/setup.py dscreen-git.new/setup.py
+--- dscreen-git.pristine/setup.py	2016-10-09 20:43:27.416703548 +0200
++++ dscreen-git.new/setup.py	2016-10-09 20:44:07.352409557 +0200
+@@ -18,9 +18,6 @@
+         'Programming Language :: Python :: 3'
+     ],
+     keywords='screensaver dbus',
+-    install_requires=[
+-        'dbus-python',
+-    ],
+     entry_points={
+         'console_scripts': [
+             'dscreen = dscreen.__init__:daemonize'
