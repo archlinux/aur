@@ -2,13 +2,13 @@
 # Contributor: Davbo <dave@davbo.org>
 pkgname=x3270
 pkgver=3.5ga8
-pkgrel=1
+pkgrel=2
 pkgdesc="An IBM 3270 terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="http://x3270.bgp.nu/"
 license=('BSD' 'MIT')
 depends=('openssl' 'libxaw' 'xorg-mkfontdir')
-makedepends=('imake' 'openssl' 'libx11' 'libxaw' 'libxt' 'xbitmaps' 'tcl' 'mingw-w64-gcc')
+makedepends=('imake' 'openssl' 'libx11' 'libxaw' 'libxt' 'xbitmaps' 'tcl' 'mingw-w64-gcc' 'xorg-bdftopcf')
 backup=(etc/x3270/ibm_hosts)
 install=x3270.install
 source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz 
