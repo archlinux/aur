@@ -2,14 +2,14 @@
 # Contributor: DaZ <daz.root+arch@gmail.com> 
 
 pkgname=slic3r-bin
-pkgrel=2
+pkgrel=3
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 pkgver=1.2.9
 _pkgver="1-2-9-stable"
 arch=('i686' 'x86_64')
 url="http://www.slic3r.org"
 conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
-depends=('perl' 'libpng12')
+depends=('freeglut' 'glu' 'libpng12' 'perl')
 provides=('slic3r')
 license=('AGPL3')
 
