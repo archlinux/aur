@@ -7,8 +7,8 @@ all: .SRCINFO verify
 clean:
 	rm -rf pkg
 	rm -rf src
-	rm poltroon-*.pkg.tar.xz
-	rm v*.tar.gz
+	rm -f poltroon-*.pkg.tar.xz
+	rm -f v*.tar.gz
 
 verify:
 	makepkg -f
