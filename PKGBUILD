@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 _ecmwfname=bufrdc
 pkgname=libbufr-ecmwf
-pkgver=000405
+pkgver=000409
 pkgrel=1
 pkgdesc="ECMWF WMO FM-94 BUFR encode/decode library"
 arch=(i686 x86_64)
@@ -12,10 +12,11 @@ depends=()
 makedepends=(rsync gcc-fortran)
 options=('staticlibs')
 source=(https://software.ecmwf.int/wiki/download/attachments/35752466/${_ecmwfname}_${pkgver}.tar.gz)
-md5sums=('bd5feb691bad173bd695b1a9c0386ff2')
+md5sums=('4f924c5b821e280da84b4e6389f522f2')
 
 build() {
   cd ${srcdir}/${_ecmwfname}_${pkgver}
+  sed -i -e '/\/var\/tmp\/mac\/p4/d' test.sh
   sed -i -e "/CFLAGS/s|$| -fPIC|" config/config.linux_gfortran*.in
   sed -i -e "/FFLAGS/s|$| -fPIC|" config/config.linux_gfortran*.in
   # gcc/fortran: y; ifort: i
