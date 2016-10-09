@@ -1,0 +1,13 @@
+pkgbase = python-decorating
+	pkgdesc = A Meta Repo To Decorators
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/decorating
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/bf/2d/5306faa36889f29ca5a7e961c42ee7fb834b6f0bc5629f4952d3019d963f/decorating-0.5.tar.gz
+	md5sums = 2fec8caed3c165acde8f2ec7319429ce
+
+pkgname = python-decorating
+
