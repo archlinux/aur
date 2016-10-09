@@ -1,12 +1,12 @@
 pkgbase = poezio
 	pkgdesc = A full-featured command-line irc-like xmpp (jabber) client
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = http://poez.io
 	arch = i686
 	arch = x86_64
 	license = zlib
-	makedepends = setuptools
+	makedepends = python-setuptools
 	depends = python>=3.4
 	depends = python-slixmpp
 	optdepends = python-pyinotify: Autoaway with screen plugin
@@ -14,8 +14,8 @@ pkgbase = poezio
 	optdepends = figlet: ASCII art plugin
 	optdepends = pure-python-otr-git: OTR plugin
 	optdepends = python-sphinx: Generating documentation
-	source = http://dev.louiz.org/attachments/download/91/poezio-0.9.tar.xz
-	sha512sums = a6743dcd268abe2472da218b797a065936bfa52d5406275141dd5783aef2f9aba6396e3973c8a151702601a512f5f3959a7116b2171530bc7381701c6970fdfd
+	source = https://pypi.python.org/packages/a8/87/233467ce8d945498d12782a175a5bc1bed595633a796accc41a4aa583624/poezio-0.10.tar.gz
+	sha512sums = f4a8a1a5ed4e88d76bf596c55d91d8b20246e4d328e905ed51e8954ddafd583210e3be2cece76871d61631637e082b2df848bfc358e911a50d9c444e6c47110f
 
 pkgname = poezio
 
