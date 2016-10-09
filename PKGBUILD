@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=kvazaar
-pkgver=0.8.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="An open-source HEVC encoder licensed under LGPLv2.1"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('yasm')
 provides=('kvazaar' 'libkvazaar.so')
 conflicts=('kvazaar-git')
 source=("$pkgname"-"$pkgver".tar.gz::"https://github.com/ultravideo/kvazaar/archive/v${pkgver}.tar.gz")
-sha256sums=('a5cebc313bc2edcf631684e67c33227e56d803bfbc940cf8c2f3906b4f543a12')
+sha256sums=('40eb7b4b23897299e99050f0c011e9380cf898b25615dd143f018b278b972a46')
 
 prepare() {
 	cd "$pkgname"-"$pkgver"
