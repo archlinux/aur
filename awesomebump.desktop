@@ -2,7 +2,7 @@
 Name=AwesomeBump
 Comment=Program designed to generate normal, height, specular or ambient occlusion, roughness and metallic textures from a single image
 Icon=awesomebump
-Exec=AwesomeBump
+Exec=awesomeBump
 Terminal=false
 Type=Application
 Categories=Graphics;

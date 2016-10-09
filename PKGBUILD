@@ -11,15 +11,22 @@ depends=('qt5-base' 'qt5-location' 'qt5-script')
 conflicts=('awesomebump')
 makedepends=('imagemagick' 'git' 'wget' 'unzip')
 source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git"
+        "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
         "awesomebump.desktop")
 md5sums=('SKIP'
+         'ef914dfd9c801fc0e74ebc3d4ced7dca'
          '9371d46df5722a0667435209a1748755'
-         'a798a1946042f5c06505043100a32e28')
+         '8ec11bf7486fa4a3c0291efe86d79696')
 
 pkgver() {
   cd ${srcdir}/${pkgname}
   git describe --long --tags | sed 's/^Linuxv//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${srcdir}/${pkgname}
+  patch -Np1 -i ../awesomebump.log.file.moved.to.tmp.patch
 }
 
 build() {
