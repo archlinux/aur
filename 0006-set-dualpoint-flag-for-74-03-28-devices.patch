@@ -1,0 +1,31 @@
+diff --git a/drivers/input/mouse/alps.c b/drivers/input/mouse/alps.c
+index 25d2cad..431bc26 100644
+--- a/drivers/input/mouse/alps.c
++++ b/drivers/input/mouse/alps.c
+@@ -2776,6 +2776,7 @@ static int alps_identify(struct psmouse *psmouse, struct alps_data *priv)
+ 	const struct alps_protocol_info *protocol;
+ 	unsigned char e6[4], e7[4], ec[4];
+ 	int error;
++	int flags = 0;
+ 
+ 	/*
+ 	 * First try "E6 report".
+@@ -2817,6 +2818,10 @@ static int alps_identify(struct psmouse *psmouse, struct alps_data *priv)
+ 		} else if (e7[0] == 0x73 && e7[1] == 0x03 &&
+ 			   e7[2] == 0x14 && ec[1] == 0x02) {
+ 			protocol = &alps_v8_protocol_data;
++		} else if (e7[0] == 0x73 && e7[1] == 0x03 &&
++			   e7[2] == 0x28 && ec[1] == 0x01) {
++			protocol = &alps_v8_protocol_data;
++			flags |= ALPS_DUALPOINT | ALPS_DUALPOINT_WITH_PRESSURE;
+ 		} else {
+ 			psmouse_dbg(psmouse,
+ 				    "Likely not an ALPS touchpad: E7=%3ph, EC=%3ph\n", e7, ec);
+@@ -2830,6 +2835,7 @@ static int alps_identify(struct psmouse *psmouse, struct alps_data *priv)
+ 		error = alps_set_protocol(psmouse, priv, protocol);
+ 		if (error)
+ 			return error;
++		priv->flags |= flags;
+ 	}
+ 
+ 	return 0;

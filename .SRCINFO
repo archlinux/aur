@@ -1,0 +1,61 @@
+pkgbase = linux-dell-e7x70
+	pkgver = 4.7.6
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.7.6.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-split-up-ALPS_BUTTONPAD-behavior-change.patch
+	source = 0002-add-touchstick-support-for-V8-protocol.patch
+	source = 0003-add-device-description-for-dell-latitude-e7470.patch
+	source = 0004-handle-0-pressure-1F-events.patch
+	source = 0005-allow-touchsticks-to-report-pressure.patch
+	source = 0006-set-dualpoint-flag-for-74-03-28-devices.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10
+	sha256sums = SKIP
+	sha256sums = 2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836
+	sha256sums = SKIP
+	sha256sums = 8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a
+	sha256sums = 931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = c2b89a884c8e2001cc02180f556295cad4f72821f99daf215c92586ae98e5b61
+	sha256sums = 09039625f75905f03d4dd2fcd664f6b4b542fde9f31b602921c033800bce7f17
+	sha256sums = cf5350575ba157833031dfe70b0408d17c5fbcd763474cde18a69c8ad529249f
+	sha256sums = 0a5f7c9d08bc49eb4abbc3d1e13c48b7962c799c05ec05c2e34dbbefb6c8c819
+	sha256sums = ec41e30653dc9c2a7f0fc05f06992f09c83df224609920eba53ac4f3915fa69c
+	sha256sums = 55dbe78509382b666ee5fa7cb10e1a4e681b58d39aa258e914cfad4b5b59375c
+
+pkgname = linux-dell-e7x70
+	pkgdesc = The Linux-dell-e7x70 kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-dell-e7x70.preset
+
+pkgname = linux-dell-e7x70-headers
+	pkgdesc = Header files and scripts for building modules for Linux-dell-e7x70 kernel
+
+pkgname = linux-dell-e7x70-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-dell-e7x70 kernel
+
