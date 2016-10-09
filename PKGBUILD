@@ -1,12 +1,12 @@
 # Maintainer: tembleking <tembleking at gmail dot com>
 pkgname='python2-googlemaps'
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Client for Google Maps Services"
 arch=("any")
 url="https://github.com/googlemaps/google-maps-services-python"
 license=('Apache')
-depends=("python2")
+depends=("python2" "python2-requests")
 makedepends=("python2-setuptools")
 source=("https://github.com/googlemaps/google-maps-services-python/archive/$pkgver.tar.gz")
 
