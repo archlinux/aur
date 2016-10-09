@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.1.0.r1154.gd8cc782
+pkgver=release.2.1.0.r1814.g442204f
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url=http://www.darktable.org/
 license=('GPL3')
 depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbus-glib'
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
-	 'libsoup' 'gtk-engines' 'osm-gps-map' 'pugixml' 'colord')
+	 'libsoup' 'gtk-engines' 'osm-gps-map' 'pugixml' 'colord' 'lua52')
 makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
 optdepends=('librsvg' 'flickcurl: flickr upload')
 conflicts=(darktable)
@@ -26,8 +26,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git clean -dfx > /dev/null 2>&1
-  git reset --hard > /dev/null 2>&1
+#  git clean -dfx > /dev/null 2>&1
+#  git reset --hard > /dev/null 2>&1
 #  if you want a specific commit or branch... just put it here
 #  git checkout 441a3b44df770578240c1774b29d373aa4a08bb8 > /dev/null 2>&1
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
