@@ -1,6 +1,6 @@
---- makefile	2016-02-23 16:57:00.000000000 +0100
-+++ makefile.new	2016-07-15 08:40:50.162429077 +0200
-@@ -77,8 +77,8 @@
+--- makefile.orig	2016-07-27 16:18:28.000000000 +0200
++++ makefile	2016-10-09 12:20:15.439578445 +0200
+@@ -83,8 +83,8 @@
  #
  SHELL=/bin/sh
  
@@ -11,7 +11,7 @@
  # 
  # netcdf3: write netcdf files with netcdf-3 library
  # netcdf4: write netcdf files with netcdf-4 library
-@@ -98,20 +98,20 @@
+@@ -104,20 +104,20 @@
  #
  
  # Warning do not set both USE_NETCDF3 and USE_NETCDF4 to one
@@ -39,8 +39,8 @@
 +USE_G2CLIB=1
  USE_PNG=1
  USE_JASPER=1
- 
-@@ -187,7 +187,7 @@
+ USE_AEC=1
+@@ -194,7 +194,7 @@
  # wLDFLAGS has the directory/name of the library
  
  ifeq ($(findstring gcc,$(notdir $(CC))),gcc)
@@ -49,7 +49,7 @@
     netcdf3CPPFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -Werror=format-security -O3
     hdf5CFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -O1
  endif
-@@ -261,7 +261,7 @@
+@@ -277,7 +277,7 @@
        wLDFLAGS+=-L$(GFORTLIBDIR)
        wLDFLAGS+=-lgfortran
        wCPPFLAGS+=-DGFORTRAN
@@ -58,7 +58,7 @@
     endif
  
  # for open64 fortran - personal system
-@@ -305,10 +305,9 @@
+@@ -321,10 +321,9 @@
  #   
  
  ifeq ($(USE_G2CLIB),1)
@@ -72,7 +72,7 @@
  endif
  
  
-@@ -319,19 +318,17 @@
+@@ -335,19 +334,17 @@
  endif
  
  # gctpc library
@@ -99,7 +99,7 @@
     a:=$(shell echo "\#define USE_PROJ4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_PROJ4" >> ${CONFIG_H})
-@@ -340,12 +337,9 @@
+@@ -356,12 +353,9 @@
  # Jasper
  
  ifeq ($(USE_JASPER),1)
@@ -115,7 +115,20 @@
     a:=$(shell echo "\#define USE_JASPER" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_JASPER" >> ${CONFIG_H})
-@@ -364,14 +358,11 @@
+@@ -370,10 +364,8 @@
+ # AEC
+ 
+ ifeq ($(USE_AEC),1)
+-   aecdir=${cwd}/libaec-0.3.3
+-   aecsrc=libaec-0.3.3.tar.gz
+-   aeclib=${lib}/libaec.a
+-   wLDFLAGS+=-laec
++   aeclib=/usr/lib/libaec.so
++   wLDFLAGS+=-L/usr/lib -laec
+    a:=$(shell echo "\#define USE_AEC" >> ${CONFIG_H})
+ else
+    a:=$(shell echo "//\#define USE_AEC" >> ${CONFIG_H})
+@@ -391,14 +383,11 @@
  endif
  
  ifeq ($(USE_NETCDF4),1)
@@ -135,12 +148,12 @@
     a:=$(shell echo "\#define USE_NETCDF4" >> ${CONFIG_H})
  else
     a:=$(shell echo "//\#define USE_NETCDF4" >> ${CONFIG_H})
-@@ -428,19 +419,14 @@
+@@ -460,19 +449,14 @@
  # png 
  
  ifeq ($(USE_PNG),1)
--   p=${cwd}/libpng-1.2.54
--   psrc=${cwd}/libpng-1.2.54.tar.gz
+-   p=${cwd}/libpng-1.2.56
+-   psrc=${cwd}/libpng-1.2.56.tar.gz
 -   plib=${lib}/libpng.a
 -   wLDFLAGS+=-lpng
 -# wCPPFLAGS+=-I$p
@@ -162,7 +175,7 @@
  else
     a:=$(shell echo "//\#define USE_PNG" >> ${CONFIG_H})
  endif
-@@ -494,81 +480,6 @@
+@@ -526,89 +510,6 @@
  	cp wgrib2/wgrib2_api.h lib/
  	cd lib ; touch libwgrib2.a ; rm libwgrib2.a ; ar crsT libwgrib2.a *.a
  
@@ -173,6 +186,14 @@
 -	rm tmpj.tar
 -	cd "$j" && export CFLAGS="${wCPPFLAGS}" && ./configure --without-x --disable-libjpeg --disable-opengl --prefix=${cwd} && ${MAKE} check install
 -
+-${aeclib}:
+-	cp ${aecsrc} tmpaec.tar.gz
+-	gunzip -n -f tmpaec.tar.gz
+-	tar -xvf tmpaec.tar
+-	rm tmpaec.tar
+-	cd "${aecdir}" && export CFLAGS="${wCPPFLAGS}" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-
+-
 -${plib}:	${zlib}
 -	cp ${psrc} tmpp.tar.gz
 -	gunzip -n -f tmpp.tar.gz
@@ -181,15 +202,15 @@
 -#       for OSX
 -#	export LDFLAGS="-L$z" && cd "$p" && export CPPFLAGS="${wCPPFLAGS}" && make -f scripts/makefile.darwin
 -#	for everybody else
--	export LDFLAGS="-L${lib}" && cd "$p" && export CPPFLAGS="${wCPPFLAGS}" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-#	export LDFLAGS="-L${lib}" && cd "$p" && export CPPFLAGS="${wCPPFLAGS}" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
+-	export LDFLAGS="-L${lib}" && cd "$p" && export CPPFLAGS="${wCPPFLAGS} -DPNG_USER_WIDTH_MAX=200000000L" && ./configure --disable-shared --prefix=${cwd} && ${MAKE} check install
 -
 -${zlib}:
 -	cp $z.tar.gz tmpz.tar.gz
 -	gunzip -f tmpz.tar.gz
 -	tar -xvf tmpz.tar
 -	rm tmpz.tar
--	cd "$z" && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} && ${MAKE} check install
--
+-	cd "$z" && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} check install
 -
 -${glib}:	${jlib} ${plib} ${zlib}
 -	touch ${glib}
@@ -244,3 +265,13 @@
  ${iplib}:
  	cd "${ip}" && export FFLAGS="${wFFLAGS}" && ${MAKE} && cp libipolate.a ${iplib}
  
+@@ -634,9 +535,6 @@
+ ifeq ($(USE_JASPER),1)
+ 	mkdir -p $j && rm -rf $j
+ endif
+-ifeq ($(USE_AEC),1)
+-	mkdir -p ${aecdir} && rm -r ${aecdir}
+-endif
+ ifeq ($(USE_G2CLIB),1)
+ 	mkdir -p $g && cd $g && touch junk.a junk.o && rm *.o *.a
+ endif
