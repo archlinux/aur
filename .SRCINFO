@@ -1,5 +1,5 @@
 pkgbase = ttf-typicons
-	pkgdesc = Free-to-use vector icons embedded.
+	pkgdesc = 336 pixel perfect, all-purpose vector icons in a web-font kit
 	pkgver = 2.0.8
 	pkgrel = 1
 	url = http://typicons.com/
