@@ -46,9 +46,12 @@ makedepends=(
 # current url syntax:  http://archive.apache.org/dist/nutch/2.3.1/apache-nutch-2.3.1-src.tar.gz
 
 source=("https://archive.apache.org/dist/$pkgname/$pkgver/apache-$pkgname-$pkgver-src.tar.gz"
-        "nutch.service"
 	"https://archive.apache.org/dist/$pkgname/$pkgver/apache-$pkgname-$pkgver-src.tar.gz.asc"
-	"StartNutchServer.bash")
+        "nutch-rest.service"
+	"nutch-webapp.service"
+	"StartNutchServerRest.bash"
+	"StartNutchServerWebApp.bash"
+	)
 
 # I am keeping this here to remind me about the future
 # backup=(opt/solr/server/etc/jetty{,-http,-https,-ssl}.xml
@@ -60,9 +63,11 @@ install="$pkgname.install"
 options=(!strip)
 
 sha512sums=('6abae11990f4bd6c71e06105e05c976fcc67e2829387863f052a66492e538fbe41ca095c891ca726c0b85c6ff27d153f89cb40fcb73830d48fd1de706179055f'
-            '75833fa0f9768d87a05117f66f47fbdb5ab0269660f17ed325a4ce127d12b8c6dd6dda6ea3f562ddd2928330d736da62c3d4a6bfd42430b8632b38f577cfce3b'
-	    'e0f0b587c4a5759181779cb5721fde83479dd31387aa76b0e377c486eb46e94290b35299670eea2bf8bea5c2d5ce312328994604d55cb5f6458f3d8eb563a262'
+            'e0f0b587c4a5759181779cb5721fde83479dd31387aa76b0e377c486eb46e94290b35299670eea2bf8bea5c2d5ce312328994604d55cb5f6458f3d8eb563a262'
+	    '6bd806037b1d15ec57b991ddf2ff02b57b983abb864140ca753689fa963b22a6553c99b4b2bd10faf82780fc511ab5b4ba257cbbaf731c9a2a5d702084e8eb3d'
+	    '4b5455dd395ce01be17ab6ed79cd764e68307ba606d104df2843982d86c77a3ddea8aba48736fe9627233124fd8dabaf55b160eb6a044889263b8b0bec5dd69d'
 	    'dd8b89087eb33e32faea757bf22556aa0e31c200f74953dfa1b1251429a2d7a5c84f6ce1294b1c7560fe26d87833d581d07df346297b3fb003dae3e7408017ad'
+	    '256db0d75cc15bda5114032392f8d62755e8ecda0d08114326cd4ddfcd6b17ec0ccdc1e6eb6905cdb6d3a118220ac4157941c61d03cbb07f2604c03f3d242360'
 	    )
 build() {
   cd "$srcdir/apache-$pkgname-$pkgver"

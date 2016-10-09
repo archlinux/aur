@@ -1,14 +1,26 @@
 print_core_message() {
   cat <<EOT
-To use the nutch restful API
-which you really do not HAVE to do
-as the software can just be run
-by itself you will have to 
-Start the nutch service first!
-  $ sudo systemctl restart nutch
+3 Options:
+Use the nutch cli and run against it
+
+or to use the nutch restful API
+
+Start the nutch-rest service
+  $ sudo systemctl restart nutch-rest
 This basically runs
   nutch nutchserver
 but generates java home first
+
+There is also a Web Based Config tool
+  $ sudo systemctl restart nutch-webapp
+This basically runs
+  nutch webapp
+but generates java home first
+
+Port Defaults:
+8081 for rest api
+8080 for web based config tool
+
 EOT
 }
 

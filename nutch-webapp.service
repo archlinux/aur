@@ -1,5 +1,5 @@
 [Unit]
-Description=Nutch open source web crawler
+Description=Nutch open source web crawler webapp
 After=network.target
 
 [Service]
@@ -8,7 +8,7 @@ User=nutch
 Group=nutch
 PrivateTmp=true
 WorkingDirectory=/opt/nutch
-ExecStart=/opt/nutch/bin/StartNutchServer.bash
+ExecStart=/opt/nutch/bin/StartNutchServerWebApp.bash
 
 [Install]
 WantedBy=multi-user.target
