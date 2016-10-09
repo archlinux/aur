@@ -12,7 +12,7 @@ depends=('libmpdclient' 'libupnpp>=0.15.1' 'libmicrohttpd' 'jsoncpp' 'curl' 'exp
 optdepends=('python2: OpenHome Radio Service')
 install=upmpdcli.install
 source=(http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('309471e12a8ecb5b3001dbedb584ac125706edcb6889381b0ea3215f6525fbae')
+sha256sums=('e973e0289c7b0ff8a817a084af82b6f9c7c00dc5fae981b851413defd8639621')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
