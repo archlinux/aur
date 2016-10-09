@@ -1,6 +1,6 @@
 pkgbase = shgreeter-git
 	pkgdesc = If placed in the proper directory, this script greets the user and offers some potentially interesting information about the system's current resources.
-	pkgver = r11.3859afb
+	pkgver = r18.bd507a0
 	pkgrel = 1
 	url = https://github.com/jcjordyn130/shgreeter
 	arch = any
