@@ -44,7 +44,7 @@ pkgbase = linux-dell-e7x70
 	sha256sums = 55dbe78509382b666ee5fa7cb10e1a4e681b58d39aa258e914cfad4b5b59375c
 
 pkgname = linux-dell-e7x70
-	pkgdesc = The Linux-dell-e7x70 kernel and modules
+	pkgdesc = Stock ARCH kernel with additional patches for Dell Latitude E7x70 touchpad
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
