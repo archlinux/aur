@@ -79,11 +79,14 @@ build() {
 
 package() {
   cd "$srcdir/"
-  chmod +x StartNutchServer.bash
+  chmod +x StartNutchServerRest.bash
+  chmod +x StartNutchServerWebApp.bash
   cd "$srcdir/apache-$pkgname-$pkgver/runtime/local"
   mkdir -p "$pkgdir"/opt/nutch
   cp -R * "$pkgdir"/opt/nutch
-  cp "$srcdir/StartNutchServer.bash" "$pkgdir/opt/nutch/bin/"
+  cp "$srcdir/StartNutchServerRest.bash" "$pkgdir/opt/nutch/bin/"
+  cp "$srcdir/StartNutchServerWebApp.bash" "$pkgdir/opt/nutch/bin/" 
   chown -R 115:115 "$pkgdir/opt/nutch"
-  install -Dm644 "$srcdir/nutch.service" "$pkgdir/usr/lib/systemd/system/nutch.service"
+  install -Dm644 "$srcdir/nutch-rest.service" "$pkgdir/usr/lib/systemd/system/nutch-rest.service"
+  install -Dm644 "$srcdir/nutch-webapp.service" "$pkgdir/usr/lib/systemd/system/nutch-webapp.service"
 }
