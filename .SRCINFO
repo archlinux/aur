@@ -1,0 +1,17 @@
+pkgbase = bumprace
+	pkgdesc = Arcade Game. You've to get from the start to the finish line without crashing into deadly blocks.
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = http://www.linux-games.com/penguin-command/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = sdl
+	depends = libjpeg-turbo
+	depends = sdl_mixer
+	depends = sdl_image
+	source = https://bitbucket.org/karlb/bumprace/get/1.5.5.tar.gz
+	sha512sums = 503a04c4f8e3537861af91f2978aae36267288b8db61fe55da6dd96003c11d585ef0632080bebddf482a34f32405b10354710541a9e140b0e614a5857dd6be10
+
+pkgname = bumprace
+
