@@ -1,0 +1,19 @@
+pkgbase = python-hamster-lib
+	pkgdesc = A library for common timetracking functionality.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/projecthamster/hamster-lib
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-future
+	depends = python-icalendar
+	depends = python-sqlalchemy
+	depends = python-six
+	source = https://github.com/projecthamster/hamster-lib/archive/0.12.0.tar.gz
+	sha256sums = ca5f39508196f89731f8ff317a63cf414c4236283d5d181c1cf21351648d930e
+
+pkgname = python-hamster-lib
+
