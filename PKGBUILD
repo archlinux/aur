@@ -2,7 +2,7 @@ pkgname='bubblewrap-git'
 pkgdesc='Unprivileged sandboxing tool'
 url='https://github.com/projectatomic/bubblewrap'
 license=('LGPL')
-pkgver=0.1.2.r0.g089327d
+pkgver=0.1.2.r1.g169db04
 pkgrel=1
 arch=('x86_64' 'i686')
 makedepends=('autoconf' 'automake' 'libxslt')
@@ -11,13 +11,13 @@ provides=('bubblewrap')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
-_privmode='setuid'
+_privmode='caps'
 _set_privmode () {
 	if [[ -r /proc/config.gz ]] ; then
 		eval "$(zgrep '^CONFIG_USER_NS=' /proc/config.gz)"
 		if [[ -n ${CONFIG_USER_NS} && ${CONFIG_USER_NS} != n ]] ; then
 			install='bubblewrap.install'
-			_privmode='caps'
+			_privmode='none'
 		fi
 	fi
 }
